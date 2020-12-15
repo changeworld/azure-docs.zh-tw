@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 4c11e8c9cbd767bb95e094535a8a6cd7c8fe84fc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b4fc6b9facc79db109c5ce5be09576b16a2abdc7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340878"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510884"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>預覽：使用 Azure Active Directory authentication 登入 Azure 中的 Linux 虛擬機器
 
@@ -119,7 +119,7 @@ Azure 角色型存取控制 (Azure RBAC) 原則會決定誰可以登入 VM。 �
 - **虛擬機器使用者登入**：被指派此角色的使用者能夠以一般使用者權限登入 Azure 虛擬機器。
 
 > [!NOTE]
-> 若要讓使用者透過 SSH 登入 VM，您必須指派 [虛擬機器系統管理員登入] 或 [虛擬機器使用者登入] 角色。 被指派 VM 的 [擁有者] 或 [參與者] 角色的 Azure 使用者，並不會自動取得透過 SSH 登入 VM 的權限。
+> 若要讓使用者透過 SSH 登入 VM，您必須指派 [虛擬機器系統管理員登入] 或 [虛擬機器使用者登入] 角色。 虛擬機器系統管理員登入和虛擬機器使用者登入角色使用 dataActions，因此無法在管理群組範圍指派。 目前只能在訂用帳戶、資源群組或資源範圍指派這些角色。 被指派 VM 的 [擁有者] 或 [參與者] 角色的 Azure 使用者，並不會自動取得透過 SSH 登入 VM 的權限。 
 
 下列範例會使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 將 [虛擬機器系統管理員登入] 角色指派給您目前 Azure 使用者的 VM。 作用中 Azure 帳戶的使用者名稱可透過 [az account show](/cli/azure/account#az-account-show) 來取得，而 *範圍* 會設定為在上一個步驟中使用 [az vm show](/cli/azure/vm#az-vm-show) 建立的 VM。 您也可以在資源群組或訂用帳戶層級指派範圍，並套用一般的 Azure RBAC 繼承許可權。 如需詳細資訊，請參閱 [AZURE RBAC](../../role-based-access-control/overview.md)
 
@@ -138,7 +138,12 @@ az role assignment create \
 
 如需如何使用 Azure RBAC 來管理 Azure 訂用帳戶資源存取權的詳細資訊，請參閱使用 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)、 [Azure 入口網站](../../role-based-access-control/role-assignments-portal.md)或 [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)。
 
-您也可以設定 Azure AD，以要求特定使用者需要進行多因素驗證才能登入 Linux 虛擬機器。 如需詳細資訊，請參閱 [開始使用雲端中的 Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)。
+## <a name="using-conditional-access"></a>使用條件式存取
+
+您可以先強制執行條件式存取原則，例如多重要素驗證或使用者登入風險檢查，然後才會授權存取 Azure 中使用 Azure AD 登入啟用的 Linux Vm。 若要套用條件式存取原則，您必須從 [雲端應用程式] 或 [動作指派] 選項選取 [Azure Linux VM 登入] 應用程式，然後使用 [登入風險] 作為條件，並（或）要求多重要素驗證作為授與存取控制。 
+
+> [!WARNING]
+> VM 登入不支援對每位使用者啟用/強制執行的 Azure AD Multi-Factor Authentication。
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>登入 Linux 虛擬機器
 
@@ -195,6 +200,8 @@ Using keyboard-interactive authentication.
 Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute/virtualMachines/login/action', for example 'Virtual Machine User Login'
 Access denied
 ```
+> [!NOTE]
+> 如果您遇到 Azure 角色指派的問題，請參閱 [疑難排解 AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit)。
 
 ### <a name="continued-ssh-sign-in-prompts"></a>持續出現 SSH 登入提示
 

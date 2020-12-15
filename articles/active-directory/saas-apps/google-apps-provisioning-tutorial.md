@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2ce5ac43af57b82f912b10eeacf285a688888e9d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180875"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504571"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教學課程︰設定 G Suite 來自動佈建使用者
 
@@ -31,6 +31,9 @@ ms.locfileid: "96180875"
 > * 已新增對其他 G Suite 使用者和群組屬性的支援。
 > * 已更新 G Suite 目標屬性名稱，以符合[這裡](https://developers.google.com/admin-sdk/directory)的定義。
 > * 已更新預設屬性對應。
+
+> [!NOTE]
+> 本文包含字詞「*允許清單*」的參考 (Microsoft 已不再使用該字詞)。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ## <a name="capabilities-supported"></a>支援的功能
 > [!div class="checklist"]
@@ -259,7 +262,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]  。
+15. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
@@ -273,7 +276,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md) \(部分機器翻譯\) 深入了解隔離狀態。
 
 ## <a name="additional-resources"></a>其他資源
 

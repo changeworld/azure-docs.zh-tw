@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 12/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b07534c702e509b2b664fbee585aa2cff69f6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837595"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509983"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用規定
 
-Azure AD 使用規定提供一種簡單的方法，讓組織可用來向使用者呈現資訊。 此呈現可確保使用者看到合法或合規性需求的相關免責聲明。 本文說明如何開始使用使用條款。
+Azure AD 使用規定提供一種簡單的方法，讓組織可用來向使用者呈現資訊。 此呈現可確保使用者看到合法或合規性需求的相關免責聲明。 本文說明如何開始使用 (ToU) 的使用條款。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -52,7 +52,7 @@ Azure AD 使用規定具有下列功能：
 - 顯示使用規定活動的記錄，以進行合規性和審核。
 - 使用 [Microsoft Graph api](/graph/api/resources/agreement?view=graph-rest-beta) 來建立和管理使用規定 (目前為預覽) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用及設定 Azure AD 使用規定，您必須具備：
 
@@ -104,14 +104,14 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
    | Alice | 1 月 1 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 1 日 | 3 月 1 日 | 4 月 1 日 |
 
-1. 使用 [ **重新接受之前的持續時間] 需要 (天)** 設定來指定使用者必須重新接受使用規定之前的天數。 這可讓使用者遵循自己的排程。 例如，如果您將期間設定為 **30** 天，則下列兩個使用者所遇到的到期方式將如下所示：
+1. 使用 [ **reacceptance 需要 (天])** 設定來指定使用者必須重新接受使用條款之前的天數。 這可讓使用者遵循自己的排程。 例如，如果您將期間設定為 **30** 天，則下列兩個使用者所遇到的到期方式將如下所示：
 
    | User | 第一次接受日期 | 第一次到期日期 | 第二次到期日期 | 第三次到期日期 |
    | --- | --- | --- | --- | --- |
    | Alice | 1 月 1 日 | 1 月 31 日 | 3 月 2 日 | 4 月 1 日 |
    | Bob | 1 月 15 日 | 2 月 14 日 | 3 月 16 日 | 4 月 15 日 |
 
-   您可以同時使用 [到期同意] 和 [需要重新接受之前的期間 (天)] 設定，但通常您只會使用其中一個。
+   您可以使用 **過期的同意** 和 **持續時間，在 reacceptance 需要 (天)** 設定一起使用，但通常您會使用其中一個。
 
 1. 在 [ **條件式存取**] 下，使用 [強制搭配條件式 **存取原則範本** ] 清單來選取要強制使用使用條款的範本。
 
@@ -119,8 +119,8 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
    | 範本 | 說明 |
    | --- | --- |
-   | **所有來賓的雲端應用程式存取權** | 系統會為所有來賓和所有雲端應用程式建立條件式存取原則。 此原則會影響 Azure 入口網站。 建立此原則之後，您可能需要登出然後再登入。 |
-   | **所有使用者的雲端應用程式存取權** | 將會針對所有使用者和所有雲端應用程式建立條件式存取原則。 此原則會影響 Azure 入口網站。 建立此原則之後，您必須登出然後再登入。 |
+   | **所有來賓的雲端應用程式存取權** | 系統會為所有來賓和所有雲端應用程式建立條件式存取原則。 此原則會影響 Azure 入口網站。 一旦建立此項，您可能必須登出再登入。 |
+   | **所有使用者的雲端應用程式存取權** | 將會針對所有使用者和所有雲端應用程式建立條件式存取原則。 此原則會影響 Azure 入口網站。 一旦建立，您就必須登出再登入。 |
    | **自訂原則** | 選取將套用此使用條款的使用者、群組和應用程式。 |
    | **稍後建立條件式存取原則** | 此使用規定會在建立條件式存取原則時出現在授與控制清單中。 |
 
@@ -129,7 +129,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
     自訂條件式存取原則可對特定雲端應用程式或使用者群組啟用細微的使用規定。 如需詳細資訊，請參閱 [快速入門：在存取雲端應用程式之前，必須先接受使用](require-tou.md)規定。
 
-1. 按一下 [建立]。
+1. 按一下頁面底部的 [新增]  。
 
    如果您已選取自訂的條件式存取範本，則會出現新的畫面，讓您建立自訂的條件式存取原則。
 
@@ -219,15 +219,55 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 1. 登入 Azure 並瀏覽至 [https://aka.ms/catou](https://aka.ms/catou) 上的 [使用規定]。
 1. 選取您要編輯的使用條款。
 1. 按一下 [編輯使用規定]。
-1. 在 [編輯使用規定] 窗格中，變更名稱、顯示名稱，或要求使用者展開值。
+1. 在 [編輯使用規定] 窗格中，您可以變更下列各項：
+     - **名稱** -這是未與終端使用者共用的 ToU 內部名稱
+     - **顯示名稱** –這是使用者在觀看 ToU 時可以看到的名稱
+     - **要求使用者展開使用** 規定–將此設為 [ **開啟** ]，將會強制終端使用者在接受使用規定檔之前，先展開這些條款。
+     -  (Preview) 您可以 **更新現有的使用** 規定檔
+     - 您可以將語言新增至現有的 ToU
 
    如果有您想要變更的其他設定（例如 PDF 檔），要求使用者在每部裝置上同意、讓同意過期、在 reacceptance 之前的持續時間或條件式存取原則，您必須建立新的使用規定。
 
-   ![編輯使用規定窗格，顯示名稱和展開選項](./media/terms-of-use/edit-tou.png)
+    ![編輯顯示不同的語言選項 ](./media/terms-of-use/edit-terms-use.png)
 
-1. 按一下 [儲存] 以儲存變更。
+1. 完成之後，按一下 [ **儲存** ] 以儲存您的變更。
 
-   儲存您的變更後，使用者將不需要重新接受這些編輯後的規定。
+## <a name="update-the-version-or-pdf-of-an-existing-terms-of-use"></a>更新現有使用條款的版本或 pdf
+
+1.  登入 Azure 並流覽至 [使用規定](https://aka.ms/catou)
+2.  選取您要編輯的使用條款。
+3.  按一下 [編輯使用規定]。
+4.  針對您想要更新新版本的語言，請按一下 [動作] 資料行底下的 [ **更新** ]。
+ 
+     ![編輯使用規定窗格，顯示名稱和展開選項](./media/terms-of-use/edit-terms-use.png)
+
+5.  在右側窗格中，上傳新版本的 pdf
+6.  如果您想要要求使用者在下次登入時接受這個新版本，也有一個切換選項 **需要重新接受** 。 如果您需要使用者重新接受，下一次嘗試存取您的條件式存取原則中定義的資源時，系統會提示他們接受此新版本。 如果您不需要使用者進行重新接受，其先前的同意將會維持最新狀態，而且只有未事先同意或同意過期的新使用者才會看到新版本。
+
+    ![醒目提示 [編輯使用條款重新接受] 選項](./media/terms-of-use/re-accept.png)
+
+7.  當您上傳新的 pdf 並決定重新接受之後，請按一下窗格底部的 [新增]。
+8.  您現在會在 [檔] 資料行底下看到最新版本。
+
+## <a name="view-previous-versions-of-a-terms-of-use"></a>查看使用中的舊版使用條款
+
+1.  登入 Azure 並瀏覽至 https://aka.ms/catou 上的 [使用規定]。
+2.  選取您要用來查看版本歷程記錄的使用條款。
+3.  按一下 **語言和版本歷程記錄**
+4.  按一下 [ **查看先前的版本]。**
+
+    ![檔詳細資料，包括語言版本](./media/terms-of-use/document-details.png)
+
+5.  您可以按一下檔的名稱以下載該版本
+
+## <a name="see-who-has-accepted-each-version"></a>查看誰已接受每個版本
+
+1.  登入 Azure 並瀏覽至 https://aka.ms/catou 上的 [使用規定]。
+2.  若要查看目前已接受的使用者，請在您想要的 ToU 中，按一下 [已 **接受** ] 資料行底下的數位。
+3.  根據預設，下一個頁面會顯示每位使用者接受 ToU 的目前狀態。
+4.  如果您想要查看先前的同意事件，您可以從 [**目前狀態**] 下拉式清單中選取 [**全部**]。 現在您可以在每個版本的詳細資料中查看每個使用者的事件，以及發生什麼事。
+5.  或者，您可以從 [ **版本**  ] 下拉式清單中選取特定版本，以查看誰已接受該特定版本。
+
 
 ## <a name="add-a-terms-of-use-language"></a>新增使用規定語言
 
@@ -235,14 +275,14 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
 1. 登入 Azure 並瀏覽至 [https://aka.ms/catou](https://aka.ms/catou) 上的 [使用規定]。
 1. 選取您要編輯的使用條款。
-1. 在 [詳細資料] 窗格中，按一下 [語言] 索引標籤。
-
-   ![使用規定選取並顯示 [詳細資料] 窗格中的 [語言] 索引標籤](./media/terms-of-use/languages-tou.png)
-
-1. 按一下 [新增語言]。
+1. 按一下 [**編輯詞彙**]
+1. 按一下頁面底部的 [ **新增語言** ]。
 1. 在 [新增使用規定語言] 窗格中，上傳當地語系化的 PDF 並選取的語言。
 
-   ![使用上傳當地語系化 Pdf 的選項新增使用規定語言窗格](./media/terms-of-use/language-add-tou.png)
+   ![使用規定選取並顯示 [詳細資料] 窗格中的 [語言] 索引標籤](./media/terms-of-use/select-language.png)
+
+1. 按一下 [新增語言]。
+1. 按一下 [儲存] 
 
 1. 按一下 [新增] 來新增語言。
 
@@ -318,7 +358,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 > - 使用規定啟用條件式存取原則
 > - 或建立第二個使用條款
 
-## <a name="b2b-guests-preview"></a>B2B 來賓 (預覽)
+## <a name="b2b-guests"></a>B2B 來賓
 
 大部分的組織都有一個流程，可讓員工同意其組織的使用規定和隱私權聲明。 但在 Azure AD 企業對企業 (B2B) 來賓透過 SharePoint 或 Teams 新增的情況下，您要如何強制執行相同的同意程序呢？ 您可以使用條件式存取和使用規定，直接對 B2B 來賓使用者強制執行原則。 在邀請兌換流程中，使用者會看到使用規定。 這項支援目前只能預覽。
 
@@ -326,7 +366,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
 ![[使用者和群組] 窗格-已核取 [包含所有來賓使用者的索引標籤] 選項](./media/terms-of-use/b2b-guests.png)
 
-## <a name="support-for-cloud-apps-preview"></a>針對雲端應用程式的支援 (預覽)
+## <a name="support-for-cloud-apps"></a>雲端應用程式的支援
 
 使用規定可以用於不同的雲端應用程式，例如 Azure 資訊保護和 Microsoft Intune。 這項支援目前只能預覽。
 
@@ -387,7 +427,7 @@ A：是。 目前有108種不同的語言，系統管理員可以設定單一使
 答：如果您已設定 Azure AD 使用規定和 [Intune 條款及條件](/intune/terms-and-conditions-create)，則使用者必須接受這兩者。 如需詳細資訊，請參閱[為您組織的部落格文章選擇正確的條款解決方案](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409) \(英文\)。
 
 **問：使用規定服務會使用哪些端點進行驗證？**<br />
-答：使用規定會利用下列端點進行驗證： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果您的組織具有可供註冊之 Url 的允許清單，您將需要將這些端點新增至您的允許清單，以及用於登入的 Azure AD 端點。
+答：使用規定會利用下列端點進行驗證： https://tokenprovider.termsofuse.identitygovernance.azure.com 和 https://account.activedirectory.windowsazure.com 。 如果您的組織具有可供註冊之 Url 的允許清單，您必須將這些端點新增至您的允許清單，以及用於登入 Azure AD 端點。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3927133b9cbd59a5d085e7406d9dceb177a47637
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fe42948ee02170fb7718db5395a7e23480184a7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268633"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511751"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用隨選串流匯入 Postman 集合作業
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-本文內有 **Postman** 集合的定義，集合內有呼叫 Azure 媒體服務 REST API 的分組 HTTP 要求。 如需有關如何設定 **Postman** 讓它可以用來呼叫媒體服務 REST API 的詳細資訊，請參閱[設定 Postman 以進行媒體服務 REST API 呼叫](media-rest-apis-with-postman.md)教學課程。
+本文內有 **Postman** 集合的定義，集合內有呼叫 Azure 媒體服務 REST API 的分組 HTTP 要求。 如需有關如何設定 **Postman** 讓它可以用來呼叫媒體服務 REST API 的詳細資訊，請參閱 [設定 Postman 以進行媒體服務 REST API 呼叫](media-rest-apis-with-postman.md)教學課程。
 
 ```json
 {
@@ -3253,7 +3253,7 @@ ms.locfileid: "91268633"
                                     "key": "access-control-expose-headers",
                                     "value": "request-id, x-ms-request-id",
                                     "name": "access-control-expose-headers",
-                                    "description": "Lets a server whitelist headers that browsers are allowed to access."
+                                    "description": "Lets a server allowlist headers that browsers are allowed to access."
                                 },
                                 {
                                     "key": "request-id",
@@ -3456,7 +3456,7 @@ ms.locfileid: "91268633"
                                     "key": "access-control-expose-headers",
                                     "value": "request-id, x-ms-request-id",
                                     "name": "access-control-expose-headers",
-                                    "description": "Lets a server whitelist headers that browsers are allowed to access."
+                                    "description": "Lets a server allowlist headers that browsers are allowed to access."
                                 },
                                 {
                                     "key": "request-id",
@@ -5591,3 +5591,4 @@ ms.locfileid: "91268633"
     ]
 }
 ```
+

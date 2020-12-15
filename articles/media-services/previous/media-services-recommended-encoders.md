@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 91ccc4395bf328d14698e7fe5db634a773197660
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11456a8dc55a98778bf44225bf659e506e2d3a3f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259518"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510051"
 ---
 # <a name="recommended-on-premises-encoders"></a>建議的內部部署編碼器
 
@@ -64,7 +64,7 @@ Azure 媒體服務建議使用下列其中一種具有多位元速率分散式 M
 
 傳遞通道驗證
 1. 建立或造訪您的 Azure 媒體服務帳戶
-2. 建立並啟動**傳遞**通道
+2. 建立並啟動 **傳遞** 通道
 3. 設定您的編碼器以推送多位元速率即時資料流。
 4. 建立已發行的即時事件
 5. 將您的即時編碼器執行約 10 分鐘的時間
@@ -76,7 +76,7 @@ Azure 媒體服務建議使用下列其中一種具有多位元速率分散式 M
 
 即時編碼通道驗證
 1. 建立或造訪您的 Azure 媒體服務帳戶
-2. 建立及啟動**即時編碼**通道
+2. 建立及啟動 **即時編碼** 通道
 3. 設定您的編碼器以推送單一位元速率即時資料流。
 4. 建立已發行的即時事件
 5. 將您的即時編碼器執行約 10 分鐘的時間
@@ -88,7 +88,7 @@ Azure 媒體服務建議使用下列其中一種具有多位元速率分散式 M
 
 使用壽命驗證
 1. 建立或造訪您的 Azure 媒體服務帳戶
-2. 建立並啟動**傳遞**通道
+2. 建立並啟動 **傳遞** 通道
 3. 設定您的編碼器以推送多位元速率即時資料流。
 4. 建立已發行的即時事件
 5. 將您的即時編碼器執行一週或更久的時間

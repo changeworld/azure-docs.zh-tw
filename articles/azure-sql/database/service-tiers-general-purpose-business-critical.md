@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 01/30/2020
-ms.openlocfilehash: 33c63ffc4220da6d98c462039897067e4ba69491
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 12/14/2020
+ms.openlocfilehash: 9ee7440b10bc348d3ba87a4779208791a7b0e9ac
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793155"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512023"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database 和 Azure SQL 受控執行個體服務層級
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,7 +54,7 @@ Azure SQL Database 有額外的服務層級：
 | **記錄寫入輸送量** | SQL Database | [每個 vCore 1.875 MB/秒 (最多 30 MB/秒) ](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/秒 | [每個 vCore 6 MB/s (最大 96 MB/秒) ](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
 | | SQL 受控執行個體 | [每個 vCore 3 MB/s (最大 22 MB/秒) ](../managed-instance/resource-limits.md#service-tier-characteristics) | N/A | [每個 vcore 4 MB/s (最大 48 MB/秒) ](../managed-instance/resource-limits.md#service-tier-characteristics) |
 |**可用性**|全部| 99.99% |  [有一個次要複本的99.95%，有更多複本的99.99%](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [具有區域多餘單一資料庫的99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
-|**備份**|全部|RA-GRS、7-35 天 (預設為 7 天)| GRS、7天、常數時間點恢復 (PITR)  | RA-GRS、7-35 天 (預設為 7 天) |
+|**備份**|全部|GRS、7-35 天 (預設為7天) 。 基本層的最大保留期為7天。 | GRS、7天、常數時間點恢復 (PITR)  | RA-GRS、7-35 天 (預設為 7 天) |
 |**記憶體內部 OLTP** | | N/A | N/A | 可用 |
 |**唯讀複本**| | 0內建 <br> 使用[異地複寫的](active-geo-replication-overview.md)0-4 | 0-4 內建 | 1個內建，包含在價格中 <br> 使用[異地複寫的](active-geo-replication-overview.md)0-4 |
 |**定價/計費** | SQL Database | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/) 會收取費用。 <br/>IOPS 不會收費。 | [每個複本的 vCore 和使用的儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/) 都會收費。 <br/>尚未收費的 IOPS。 | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/) 會收取費用。 <br/>IOPS 不會收費。 |
@@ -93,8 +93,8 @@ Azure SQL Database 有額外的服務層級：
 
 資料庫備份的儲存體是配置用來支援時間點還原 (PITR) 和 [長期保留 (LTR) ](long-term-retention-overview.md) 的 SQL DATABASE 和 SQL 受控執行個體功能。 這個儲存體會分別配置給每個資料庫，並以兩個不同的每一資料庫費用來計費。
 
-- **PITR** ：系統會自動將個別的資料庫備份複製到 [讀取權限異地重複 (RA-GRS) 儲存體](../../storage/common/geo-redundant-design.md) 。 建立新的備份時，儲存體大小會動態增加。 每週完整備份、每日差異備份，以及每隔5分鐘複製一次的交易記錄備份都使用此儲存體。 儲存體耗用量取決於資料庫的變更率，以及備份的保留期限。 您可以為每個資料庫設定 7 到 35 天的不同保留期限。 最小儲存體數量100等於資料庫大小 (1x) 的最小儲存體數量，不需額外費用。 對於大多數資料庫來說，此數量就足以儲存 7 天份的備份。
-- **LTR** ：您也可以選擇設定完整備份的長期保留，最多10年 (這項功能在 [SQL 受控執行個體的有限公開預覽版](long-term-retention-overview.md#sql-managed-instance-support)中。 如果您設定 LTR 原則，這些備份會自動儲存在 GRS 儲存體中，但您可以控制複本備份的頻率。 為了符合不同的合規性需求，您可以針對每週、每月及/或每年備份選取不同的保留期限。 您選擇的設定會決定要將哪些儲存體用於 LTR 備份。 若要估計 LTR 儲存體的成本，您可以使用 LTR 定價計算機。 如需詳細資訊，請參閱 [SQL Database 長期保留](long-term-retention-overview.md)。
+- **PITR**：系統會自動將個別的資料庫備份複製到 [讀取權限異地重複 (RA-GRS) 儲存體](../../storage/common/geo-redundant-design.md) 。 建立新的備份時，儲存體大小會動態增加。 每週完整備份、每日差異備份，以及每隔5分鐘複製一次的交易記錄備份都使用此儲存體。 儲存體耗用量取決於資料庫的變更率，以及備份的保留期限。 您可以為每個資料庫設定 7 到 35 天的不同保留期限。 最小儲存體數量100等於資料庫大小 (1x) 的最小儲存體數量，不需額外費用。 對於大多數資料庫來說，此數量就足以儲存 7 天份的備份。
+- **LTR**：您也可以選擇設定完整備份的長期保留，最多10年 (這項功能在 [SQL 受控執行個體的有限公開預覽版](long-term-retention-overview.md#sql-managed-instance-support)中。 如果您設定 LTR 原則，這些備份會自動儲存在 GRS 儲存體中，但您可以控制複本備份的頻率。 為了符合不同的合規性需求，您可以針對每週、每月及/或每年備份選取不同的保留期限。 您選擇的設定會決定要將哪些儲存體用於 LTR 備份。 若要估計 LTR 儲存體的成本，您可以使用 LTR 定價計算機。 如需詳細資訊，請參閱 [SQL Database 長期保留](long-term-retention-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

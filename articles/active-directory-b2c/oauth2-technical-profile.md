@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 83b8755ea8e629e0f5c3f16d2a38e62882373a7f
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 78ce6466521c7903187798d902056948c659653c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386897"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509847"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OAuth2 技術設定檔
 
@@ -100,13 +100,13 @@ Azure Active Directory B2C (Azure AD B2C) 提供 OAuth2 通訊協定身分識別
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值為：`true` 或 `false` (預設)。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 | ResolveJsonPathsInJsonTokens  | 否 | 指出技術設定檔是否解析 JSON 路徑。 可能的值為：`true` 或 `false` (預設)。 使用此中繼資料可從嵌套的 JSON 元素讀取資料。 在 [OutputClaim](technicalprofiles.md#output-claims)中，將設定 `PartnerClaimType` 為您要輸出的 JSON 路徑元素。 例如： `firstName.localized` 、或 `data.0.to.0.email` 。|
 |token_endpoint_auth_method| 否| 指定 Azure AD B2C 將驗證標頭傳送至權杖端點的方式。 可能的值： `client_secret_post` (預設) 和 `client_secret_basic` (公開預覽) 。 如需詳細資訊，請參閱 [OpenID Connect 用戶端驗證一節](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
-|SingleLogoutEnabled| 否| 指出在登入技術設定檔時，是否嘗試從同盟身分識別提供者登出。 如需詳細資訊，請參閱 [Azure AD B2C 會話登出](session-overview.md#sign-out)。 可能的值： `true` (預設) 或 `false` 。|
+|SingleLogoutEnabled| 否| 指出在登入技術設定檔時，是否嘗試從同盟身分識別提供者登出。 如需詳細資訊，請參閱 [Azure AD B2C 會話登出](session-behavior.md#sign-out)。 可能的值： `true` (預設) 或 `false` 。|
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
 **CryptographicKeys** 元素包含下列屬性：
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 識別提供者應用程式的用戶端密碼。 只有在 **response_types** 中繼資料設為 `code` 時，才需要密碼編譯金鑰。 在此情況下，Azure AD B2C 會進行另一次呼叫，以交換存取權杖的授權碼。 如果中繼資料設定為 `id_token` ，您可以省略密碼編譯金鑰。 |
 

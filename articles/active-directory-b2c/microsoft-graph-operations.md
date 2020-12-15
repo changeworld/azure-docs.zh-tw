@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170934"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509813"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>適用于 Azure AD B2C 的 Microsoft Graph 作業
 
@@ -107,7 +107,7 @@ Microsoft Graph API 中原則金鑰的最上層資源是 [受信任的架構索�
 
 - [清單延伸模組屬性](/graph/api/application-list-extensionproperty)
 
-Azure AD B2C 提供一個目錄，可為每個使用者保存 100 個自訂屬性。 針對使用者流程，這些擴充屬性是 [使用 Azure 入口網站來管理](custom-policy-custom-attributes.md)。 在自訂原則中，Azure AD B2C 會在您第一次將值寫入擴充屬性時為您建立屬性。
+Azure AD B2C 提供一個目錄，可為每個使用者保存 100 個自訂屬性。 針對使用者流程，這些擴充屬性是 [使用 Azure 入口網站來管理](user-flow-custom-attributes.md)。 在自訂原則中，Azure AD B2C 會在您第一次將值寫入擴充屬性時為您建立屬性。
 
 ## <a name="audit-logs"></a>稽核記錄
 

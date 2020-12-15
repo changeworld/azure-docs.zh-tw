@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 06/10/2019
 ms.author: inhenkel
-ms.openlocfilehash: 2a78e8c8c204e5cedeb8bdd2a25cff40a3e5cc44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 524da91d55bad29a5f7c6dcec0eecc245b9954fd
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296544"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511904"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>使用媒體服務編碼時子剪輯影片-REST
 
@@ -26,7 +26,7 @@ ms.locfileid: "89296544"
 
 本主題中的 REST 範例會建立一項工作，以在提交編碼工作時修剪影片。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成此主題中所述的步驟，您必須：
 
@@ -41,7 +41,7 @@ ms.locfileid: "89296544"
 
 1. 在您下載的 Postman 集合中，選取 [**轉換] 和 [作業**  ->  **建立具有子剪切的作業**]。
     
-    **PUT**要求看起來像這樣：
+    **PUT** 要求看起來像這樣：
     
     ```
     https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName/jobs/:jobName?api-version={{api-version}}
@@ -49,7 +49,7 @@ ms.locfileid: "89296544"
 1. 使用您的轉換名稱來更新 "transformName" 環境變數的值。 
 1. 選取 [內文] 索引標籤， **並將 "** myOutputAsset" 更新為您的輸出資產名稱。
 
-    ```
+    ```json
     {
       "properties": {
         "description": "A Job with transform cb9599fb-03b3-40eb-a2ff-7ea909f53735 and single clip.",
@@ -58,8 +58,8 @@ ms.locfileid: "89296544"
           "@odata.type": "#Microsoft.Media.JobInputHttp",
           "baseUri": "https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/",
           "files": [
-                "Ignite-short.mp4"
-            ],
+            "Ignite-short.mp4"
+          ],
           "start": {
             "@odata.type": "#Microsoft.Media.AbsoluteClipTime",
             "time": "PT10S"

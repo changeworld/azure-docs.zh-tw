@@ -11,12 +11,12 @@ ms.date: 10/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbfeefc14059785ba82cbf245a60e5e72759db76
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 48c60878a6a58b2f4629768b81af894a741dab1c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840401"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509796"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中利用 OpenID Connect 的 Web 登入
 
@@ -56,7 +56,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | Prompt | 否 | 需要的使用者互動類型。 此時唯一有效的值是 `login`，可強制使用者針對該要求輸入其認證。 |
 | redirect_uri | 否 | 應用程式的 `redirect_uri` 參數，您的應用程式可以在其中傳送和接收驗證回應。 它必須完全符合 `redirect_uri` 您在 Azure 入口網站中註冊的其中一個參數，不同之處在于它必須以 URL 編碼。 |
 | response_mode | 否 | 用來將產生的授權碼傳回給應用程式的方法。 它可以是 `query`、`form_post` 或 `fragment`。  如需最佳安全性，建議使用 `form_post` 回應模式。 |
-| state | 否 | 要求中包含的值，也會在權杖回應中傳回。 它可以是您所想要內容中的字串。 隨機產生的唯一值通常用於防止跨站台要求偽造攻擊。 狀態也用來在驗證要求發生之前，將使用者狀態的相關資訊編碼，例如它們所在的頁面。 |
+| State | 否 | 要求中包含的值，也會在權杖回應中傳回。 它可以是您所想要內容中的字串。 隨機產生的唯一值通常用於防止跨站台要求偽造攻擊。 狀態也用來在驗證要求發生之前，將使用者狀態的相關資訊編碼，例如它們所在的頁面。 |
 
 此時，系統會要求使用者完成工作流程。 使用者可能必須輸入其使用者名稱和密碼、以社交身分識別登入，或註冊目錄。 視使用者流程的定義方式而定，可能會有其他數目的步驟。
 
@@ -262,7 +262,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 ## <a name="send-a-sign-out-request"></a>傳送登出要求
 
-當您想要將使用者登出應用程式時，並沒有足夠的方式可清除應用程式的 cookie 或結束使用者的會話。 將使用者重新導向至 Azure AD B2C 登出。如果您無法這麼做，使用者可能可以重新驗證您的應用程式，而不需要再次輸入認證。 如需詳細資訊，請參閱 [Azure AD B2C session](session-overview.md)。
+當您想要將使用者登出應用程式時，並沒有足夠的方式可清除應用程式的 cookie 或結束使用者的會話。 將使用者重新導向至 Azure AD B2C 登出。如果您無法這麼做，使用者可能可以重新驗證您的應用程式，而不需要再次輸入認證。 如需詳細資訊，請參閱 [Azure AD B2C session](session-behavior.md)。
 
 若要登出使用者，請將使用者重新導向至稍 `end_session` 早所述 OpenID Connect 元資料檔案中所列的端點：
 
@@ -277,14 +277,14 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | id_token_hint| 否 | 先前發行的識別碼權杖，可傳遞給登出端點，作為與用戶端目前已驗證的會話相關的提示。 `id_token_hint`可確保在 `post_logout_redirect_uri` 您的 Azure AD B2C 應用程式設定中，是已註冊的回復 URL。 如需詳細資訊，請參閱 [保護登出重新導向](#secure-your-logout-redirect)。 |
 | client_id | 否* | [Azure 入口網站](https://portal.azure.com/)指派給您應用程式的應用程式識別碼。<br><br>\**使用 `Application` 隔離 SSO 設定時需要此設定，且登出要求中的 _識別碼權杖_ 會設定為 `No` 。* |
 | post_logout_redirect_uri | 否 | 成功登出之後，使用者應該重新導向的 URL。如果未包含，Azure AD B2C 會顯示一般訊息給使用者。 除非您提供 `id_token_hint` ，否則您不應該在 Azure AD B2C 應用程式設定中將此 url 註冊為回復 url。 |
-| state | 否 | 如果要求中包含 `state` 參數，則回應中應該會出現相同的值。 應用程式應該確認 `state` 要求和回應中的值是否相同。 |
+| State | 否 | 如果要求中包含 `state` 參數，則回應中應該會出現相同的值。 應用程式應該確認 `state` 要求和回應中的值是否相同。 |
 
 ### <a name="secure-your-logout-redirect"></a>保護登出重新導向
 
 登出之後，會將使用者重新導向至參數中所指定的 URI `post_logout_redirect_uri` ，而不論已針對應用程式指定的回復 url。 但是，如果傳遞的 `id_token_hint` 是有效的，而且 **登出要求中的要求識別碼權杖** 已開啟，Azure AD B2C 會確認的值 `post_logout_redirect_uri` 符合其中一個應用程式設定的重新導向 uri，然後再執行重新導向。 如果未針對應用程式設定相符的回復 URL，則會顯示錯誤訊息，且不會重新導向使用者。
 
-若要在登出要求中設定所需的識別碼權杖，請參閱 Azure Active Directory B2C 中的設定 [會話行為](session-behavior-custom-policy.md#secure-your-logout-redirect)，並 [在 Azure Active Directory B2C 中使用自訂原則來設定會話行為](session-behavior-custom-policy.md#secure-your-logout-redirect)。
+若要在登出要求中設定所需的識別碼權杖，請參閱 [Azure Active Directory B2C 中的設定會話行為](session-behavior.md#secure-your-logout-redirect)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 [Azure AD B2C 會話](session-overview.md)。
+- 深入瞭解 [Azure AD B2C 會話](session-behavior.md)。

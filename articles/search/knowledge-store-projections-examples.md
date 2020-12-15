@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f40841887b8116ad1384dc2b827d8215ea659490
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3985564d49ce8a5c62b15f9537364418c0a8f5da
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537492"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509915"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>如何塑造和匯出擴充
 
@@ -576,13 +576,12 @@ Power BI 依賴這些產生的金鑰來探索資料表內的關聯性。 如果�
                     }
                 ],
                 "files": [
-                     {
+                    {
                         "storageContainer": "crossimages",
                         "generatedKeyName": "crossimages",
                         "source": "/document/crossProjection/images/*/image"
                     }
-                    ]
-                
+                ]
             }
         ]
     }
@@ -654,7 +653,7 @@ Power BI 依賴這些產生的金鑰來探索資料表內的關聯性。 如果�
     }
 ```
 
-## <a name="common-issues"></a>常見的問題
+## <a name="common-issues"></a>常見問題
 
 在定義投影時，有幾個常見的問題可能會導致非預期的結果。 如果知識存放區中的輸出不是您預期的結果，請檢查這些問題。
 

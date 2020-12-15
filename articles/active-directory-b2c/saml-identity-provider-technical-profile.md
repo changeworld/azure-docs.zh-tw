@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 572d6964384c711a7d2b98b0fa27852a7d28951f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 3f8ba563345f5aa4f35bcf07546abdad05c3b6ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936704"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509779"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 SAML 識別提供者技術設定檔
 
@@ -154,7 +154,7 @@ SAML 判斷提示：
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 描述 |
+| 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
 | PartnerEntity | 是 | SAML 識別提供者的中繼資料 URL。 複製識別提供者中繼資料，並在 CDATA 元素 `<![CDATA[Your IDP metadata]]>` 內新增它 |
 | WantsSignedRequests | 否 | 指出技術設定檔是否需要所有連出驗證要求都經過簽署。 可能的值：`true` 或 `false`。 預設值是 `true`。 將值設定為 `true` 時，**SamlMessageSigning** 密碼編譯金鑰必須經過簽署，而所有連出驗證要求也都要經過簽署。 如果將值設定為 `false`，則會略過要求中的 **SigAlg** 和 **Signature** 參數 (查詢字串或張貼參數)。 此中繼資料也會控制中繼資料 **AuthnRequestsSigned** 屬性，其為要與識別提供者共用之 Azure AD B2C 技術設定檔中繼資料內的輸出。 如果技術設定檔中繼資料中的 **WantsSignedRequests** 值設定為 `false` ，且識別提供者中繼資料 **WantAuthnRequestsSigned** 設定為或未指定，則 Azure AD B2C 不會簽署要求 `false` 。 |
@@ -168,13 +168,13 @@ SAML 判斷提示：
 | IncludeAuthnContextClassReferences | 否 | 指定識別驗證內容類別的一個或多個 URI 參考。 例如，若要允許使用者以使用者名稱和密碼登入，請將值設定為 `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`。 若要透過受保護的工作階段 (SSL/TLS)，才能允許以使用者名稱和密碼登入，請指定 `PasswordProtectedTransport`。 請查看您識別提供者的文件，以了解受支援的 **AuthnContextClassRef** URI。 以逗號分隔的清單方式指定多個 Uri。 |
 | IncludeKeyInfo | 否 | 指出當繫結設定為 `HTTP-POST` 時，SAML 驗證要求是否包含憑證的公開金鑰。 可能的值：`true` 或 `false`。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值為：`true` 或 `false` (預設)。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
-|SingleLogoutEnabled| 否| 指出在登入技術設定檔時，是否嘗試從同盟身分識別提供者登出。 如需詳細資訊，請參閱 [Azure AD B2C 會話登出](session-overview.md#sign-out)。 可能的值： `true` (預設) 或 `false` 。|
+|SingleLogoutEnabled| 否| 指出在登入技術設定檔時，是否嘗試從同盟身分識別提供者登出。 如需詳細資訊，請參閱 [Azure AD B2C 會話登出](session-behavior.md#sign-out)。 可能的值： `true` (預設) 或 `false` 。|
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
 **CryptographicKeys** 元素包含下列屬性：
 
-| 屬性 |必要 | 描述 |
+| 屬性 |必要 | 說明 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |是 | 用來簽署 SAML 訊息的 X509 憑證 (RSA 金鑰組)。 Azure AD B2C 會使用此金鑰來簽署要求，並將它們傳送到識別提供者。 |
 | SamlAssertionDecryption |否 |  (RSA 金鑰集) 的 X509 憑證。 SAML 身分識別提供者會使用憑證的公開部分來加密 SAML 回應的判斷提示。 Azure AD B2C 使用憑證的私用部分來解密判斷提示。 |

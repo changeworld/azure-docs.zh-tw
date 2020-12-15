@@ -4,12 +4,12 @@ description: 本文說明如何使用共用存取簽章來驗證事件中樞資�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332428"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510085"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用 (SAS) 的共用存取簽章來驗證事件中樞資源的存取權
 共用存取簽章 (SAS) 可讓您更精確地控制您授與具有共用存取簽章之用戶端的存取類型。 以下是您可以在 SAS 中設定的一些控制項： 
@@ -212,7 +212,7 @@ private static string createToken(string resourceUri, string keyName, string key
 >
 > 當用戶端將資料傳送至事件中樞時，它會以權杖標記其要求。 為了防止攻擊者竊聽及竊取權杖，用戶端與事件中樞之間的通訊必須透過已加密的通道進行。
 > 
-> 如果權杖遭攻擊者竊取，攻擊者便可以模擬權杖遭竊的用戶端。 列入封鎖清單發行者時，會轉譯該用戶端，直到收到使用不同發行者的新權杖為止。
+> 如果權杖遭攻擊者竊取，攻擊者便可以模擬權杖遭竊的用戶端。 封鎖發行者時，會轉譯該用戶端，直到收到使用不同發行者的新權杖為止。
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>使用 SAS 驗證事件中樞取用者 

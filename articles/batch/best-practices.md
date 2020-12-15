@@ -3,12 +3,12 @@ title: 最佳作法
 description: 瞭解開發 Azure Batch 解決方案的最佳作法和實用秘訣。
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1eaa34e02a4c505691662e9fc29334cb823a3185
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254658"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511207"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -140,6 +140,10 @@ Batch 可以自動重試工作。 重試的類型有兩種：使用者控制和�
 ### <a name="idempotent-start-tasks"></a>等冪啟動工作
 
 就像其他工作一樣，[啟動工作](jobs-and-tasks.md#start-task)應該具有等冪性，因為其會在每次節點啟動時重新執行。 等冪工作只是個執行多次仍會產生一致結果的工作。
+
+### <a name="isolated-nodes"></a>隔離的節點
+
+針對具有合規性或法規需求的工作負載，請考慮使用隔離的 VM 大小。 虛擬機器配置模式中支援的隔離大小包括、、、 `Standard_E64i_v3` `Standard_E80ids_v4` `Standard_F72s_v2` `Standard_G5` 、 `Standard_GS5` 和 `Standard_M128ms` 。 如需隔離 VM 大小的詳細資訊，請參閱 [Azure 中的虛擬機器隔離](https://docs.microsoft.com/azure/virtual-machines/isolation)。
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>透過作業系統服務介面管理長時間執行的服務
 

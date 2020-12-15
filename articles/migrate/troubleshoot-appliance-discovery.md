@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 90abe6bf680f6a186b970631dcd0a42d6d36bf94
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753411"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511581"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 
@@ -31,7 +31,7 @@ ms.locfileid: "96753411"
 2. 如果部署仍然失敗，而且您使用 VMware vSphere 用戶端來部署 OVF 檔案，請嘗試透過 vSphere web 用戶端進行部署。 如果部署仍然失敗，請嘗試使用不同的網頁瀏覽器。
 3. 如果您使用的是 vSphere web 用戶端，並嘗試將它部署在 vCenter Server 6.5 或6.7 上，請嘗試直接在 ESXi 主機上部署 OVA：
    - 直接連接至 ESXi 主機 (而不是 vCenter Server) 與 web 用戶端 (HTTPs://<*主機 IP 位址*>/ui contoso\) 。
-   - 在 [**主**  >  **目錄**] **File** 中，選取 [檔案  >  **部署 OVF 範本**]。 流覽至 OVA 並完成部署。
+   - 在 [**主**  >  **目錄**] 中，選取 [檔案  >  **部署 OVF 範本**]。 流覽至 OVA 並完成部署。
 4. 如果部署仍然失敗，請連絡 Azure Migrate 的支援。
 
 ## <a name="cant-connect-to-the-internet"></a>無法連接到網際網路
@@ -41,6 +41,13 @@ ms.locfileid: "96753411"
 - 如果 Proxy 需要授權認證，請務必提供該認證。
 - 如果您要使用以 URL 為基礎的防火牆 proxy 來控制輸出連線能力，請將 [這些 url](migrate-appliance.md#url-access) 新增至允許清單。
 - 如果您使用攔截 proxy 來連線至網際網路，請使用 [這些步驟](./migrate-appliance.md)將 proxy 憑證匯入設備 VM 上。
+
+
+## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>按一下 [Login '] 按鈕會開啟新的索引標籤，而不含裝置程式碼
+
+如果您在 [設備設定管理員] 上按一下 [Login ']，就會開啟新的索引標籤，但不含任何程式碼，請返回 [設備設定管理員] 索引標籤，您可以在 [Login '] 按鈕下找到以粗體字型顯示的裝置程式碼，如下列螢幕擷取畫面所示。 複製程式碼並貼到 [登入] 索引標籤上，以向 Azure 進行驗證。
+
+![裝置碼](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>無法從設備 web 應用程式登入 Azure
 

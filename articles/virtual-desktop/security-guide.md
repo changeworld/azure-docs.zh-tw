@@ -3,15 +3,15 @@ title: Windows 虛擬桌面安全性最佳作法-Azure
 description: 讓 Windows 虛擬桌面環境保持安全的最佳作法。
 author: heidilohr
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023151"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511530"
 ---
 # <a name="security-best-practices"></a>安全性最佳做法
 
@@ -29,16 +29,16 @@ Windows 虛擬桌面是受管理的虛擬桌面服務，其中包含許多安全
 
 | 安全性需求 | 客戶負責這項作業嗎？ |
 |---------------|:-------------------------:|
-|身分識別|Yes|
-| (行動裝置和電腦) 的使用者裝置|Yes|
-|應用程式安全性|Yes|
-|工作階段主機 OS|Yes|
-|部署設定|Yes|
-|網路控制措施|Yes|
-|虛擬化控制平面|No|
-|實體主機|No|
-|實體網路|No|
-|實體資料中心|No|
+|身分識別|是|
+| (行動裝置和電腦) 的使用者裝置|是|
+|應用程式安全性|是|
+|工作階段主機 OS|是|
+|部署設定|是|
+|網路控制措施|是|
+|虛擬化控制平面|否|
+|實體主機|否|
+|實體網路|否|
+|實體資料中心|否|
 
 客戶不負責的安全性需求由 Microsoft 處理。
 
@@ -99,6 +99,25 @@ Windows 虛擬桌面中的所有使用者和系統管理員需要多重要素驗
 
 工作階段主機是在 Azure 訂用帳戶和虛擬網路內部執行的虛擬機器。 您的 Windows 虛擬桌面部署的整體安全性，取決於您放在工作階段主機上的安全性控制項。 本節說明讓您的工作階段主機保持安全的最佳做法。
 
+### <a name="enable-screen-capture-protection-preview"></a>啟用螢幕擷取畫面保護 (預覽) 
+
+螢幕擷取畫面保護功能可防止在用戶端端點上捕獲機密資訊。 當您啟用此功能時，將會在螢幕擷取畫面和螢幕共用中自動封鎖或隱藏遠端內容。 它也會隱藏在可能持續捕捉您的螢幕內容的惡意軟體中。
+
+您可以設定登錄機碼，在主機層級強制執行此原則。 若要啟用此原則，請開啟 PowerShell 並執行下列 Cmdlet 來設定 **fEnableScreenCaptureProtection** 登錄機碼：
+
+```powershell
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /t REG_DWORD /d 1
+```
+
+若要測試這項新功能：
+
+- 請確定您的主機集區已布建在驗證環境中。
+- 請確定您已下載並安裝 Windows 桌面用戶端版本1.2.1526 或更新版本。
+
+>[!NOTE]
+>在預覽期間，只有來自 Windows 10 端點的完整桌面連線支援這項功能。
+
+
 ### <a name="enable-endpoint-protection"></a>啟用 endpoint protection
 
 若要保護您的部署免于已知的惡意軟體，建議您在所有的工作階段主機上啟用 endpoint protection。 您可以使用 Windows Defender 防毒軟體或協力廠商程式。 若要深入瞭解，請參閱 [VDI 環境中 Windows Defender 防毒軟體的部署指南](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)。
@@ -151,6 +170,6 @@ Windows 虛擬桌面中的所有使用者和系統管理員需要多重要素驗
 
 - 防止不想要的軟體在工作階段主機上執行。 您可以啟用應用程式保險箱以提供工作階段主機上的額外安全性，以確保只有您允許的應用程式可在主機上執行。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解如何啟用多重要素驗證，請參閱 [設定多重要素驗證](set-up-mfa.md)。

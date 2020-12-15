@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517082"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511275"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上開發安全的應用程式
 在本文中，我們會提供您在開發雲端應用程式時應考慮的安全性活動和控制。 其中涵蓋 Microsoft [安全性開發生命週期 (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) 執行期間和驗證階段所要考慮的安全性問題和概念。 其目標是要協助您定義活動和 Azure 服務，以便您用來開發更安全的應用程式。
@@ -48,15 +48,15 @@ Azure Marketplace 提供的[開發人員工具](https://azuremarketplace.microso
 
 在資料流程中預先驗證輸入，可確保只有格式正確的資料進入工作流程。 您應避免在資料庫中保存格式不正確的資料，或在下游元件中觸發故障事件。
 
-黑名單和白名單功能是執行輸入語法驗證的兩個一般方法：
+封鎖和 allowlisting 是執行輸入語法驗證的兩個一般方法：
 
-  - 黑名單功能會嘗試檢查指定的使用者輸入是否未包含「已知的惡意」內容。
+  - 封鎖會嘗試檢查指定的使用者輸入是否未包含「已知為惡意」內容。
 
-  - 白名單功能會嘗試檢查指定的使用者輸入是否符合一組「已知良好」的輸入。 字元型白名單是白名單的一種形式，其中應用程式會檢查使用者輸入是否只包含「已知良好」的字元，或輸入是否符合已知的格式。
+  - Allowlisting 嘗試檢查指定的使用者輸入是否符合一組「已知良好」輸入。 以字元為基礎的 allowlisting 是一種 allowlisting 形式，其中應用程式會檢查使用者輸入是否只包含「已知的良好」字元，或輸入符合已知的格式。
     例如，這可能牽涉到檢查使用者名稱是否只包含英數字元，或只包含剛好兩個數字。
 
-白名單是建立安全軟體的慣用方法。
-黑名單功能很容易發生錯誤，因為不可能考慮有可能是惡意輸入的完整名單。
+Allowlisting 是建立安全軟體的慣用方法。
+封鎖很容易發生錯誤，因為不可能想要有可能不正確輸入的完整清單。
 
 請在伺服器上執行此工作，而不是在用戶端 (或是在伺服器和用戶端上)。
 

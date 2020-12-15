@@ -10,12 +10,12 @@ ms.custom: REST, seodec18
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: eeca560989c174bcb654116eb13da40d6ec79e60
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: fbf21ba359ae7914acd2d812ec9e12f9f3ee557a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700506"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511938"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>使用 REST API 取得 Load Balancer 使用計量
 
@@ -52,7 +52,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | 時間範圍 | 查詢的時間範圍。 它是具有下列格式的字串 `startDateTime_ISO/endDateTime_ISO` 。 此選用參數會設定為傳回此範例中一天份的資料。 |
 | &nbsp; | &nbsp; |
 
-### <a name="request-body"></a>Request body
+### <a name="request-body"></a>要求本文
 
 這項作業不需要要求本文。
 

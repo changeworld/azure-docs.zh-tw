@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: e5f78c8b58cc3100d746957094ddfd9bab2b29fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51ae97567e9c3720c7e36a81bfa7bff44935aac6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813214"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511615"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立度量警示
 
@@ -270,7 +270,7 @@ az login
 
 az deployment group create \
     --name AlertDeployment \
-    --resource-group ResourceGroupofTargetResource \
+    --resource-group ResourceGroupOfTargetResource \
     --template-file simplestaticmetricalert.json \
     --parameters @simplestaticmetricalert.parameters.json
 ```
@@ -377,7 +377,7 @@ az deployment group create \
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -518,7 +518,7 @@ az deployment group create \
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -569,8 +569,7 @@ az deployment group create \
 - 在每個準則中，您只能為每個維度選取一個值。
 - 您不能使用 "\*" 作為維度值。
 - 當不同使用準則中設定的度量支援相同的維度時，您必須以相同的方式，針對相關使用準則) 中的所有計量 (明確地設定維度值。
-    - 在下列範例中，因為 **Transactions** 和 **SuccessE2ELatency** 計量都有 **ApiName** 維度，而且 *criterion1* 為 **ApiName** 維度指定了 *"GetBlob"* 值，所以 *criterion2* 也必須要為 **ApiName**維度設定 *"GetBlob"* 值。
-
+    - 在下列範例中，因為 **Transactions** 和 **SuccessE2ELatency** 計量都有 **ApiName** 維度，而且 *criterion1* 為 **ApiName** 維度指定了 *"GetBlob"* 值，所以 *criterion2* 也必須要為 **ApiName** 維度設定 *"GetBlob"* 值。
 
 根據本逐步解說的目的，請將以下的 JSON 儲存為 advancedstaticmetricalert.json。
 
@@ -806,7 +805,7 @@ az deployment group create \
 
 單一警示規則可以一次監視多個計量時間序列，如此可管理較少的警示規則。
 
-在下列範例中，警示規則會監視**交易**度量的 **>responsetype**和**ApiName**維度的維度值組合：
+在下列範例中，警示規則會監視 **交易** 度量的 **>responsetype** 和 **ApiName** 維度的維度值組合：
 1. **ResponsType** - 若使用 "\*" 萬用字元，表示針對 **ResponseType** 維度的每個值 (包括未來的值)，都會分別監視不同的時間序列。
 2. **ApiName** - 只針對 **GetBlob** 和 **PutBlob** 維度值監視不同的時間序列。
 
@@ -976,7 +975,7 @@ az deployment group create \
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }
@@ -1026,7 +1025,7 @@ az deployment group create \
 
 單一動態閾值警示規則可為數百個計量時間序列建立量身打造的閾值， (一次) 不同的類型，這會產生較少的警示規則來進行管理。
 
-在下列範例中，警示規則會監視**交易**度量的 **>responsetype**和**ApiName**維度的維度值組合：
+在下列範例中，警示規則會監視 **交易** 度量的 **>responsetype** 和 **ApiName** 維度的維度值組合：
 1. **ResponsType** - 針對 **ResponseType** 維度的每個值 (包括未來的值)，都會分別監視不同的時間序列。
 2. **ApiName** - 只針對 **GetBlob** 和 **PutBlob** 維度值監視不同的時間序列。
 

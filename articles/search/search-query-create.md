@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: a02d51d66b9d2b8bf3c08d4515713ecb062e0c8e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: db36a77d93735b151ad893b7e25ba86f104e7b90
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400211"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510459"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立查詢
 
@@ -23,7 +23,7 @@ ms.locfileid: "97400211"
 
 您將需要工具或 API 來建立查詢。 下列任何建議適用于測試和生產工作負載。
 
-| 方法 | 描述 |
+| 方法 | 說明 |
 |-------------|-------------|
 | 入口網站| [Search explorer (入口網站) ](search-explorer.md) 是 Azure 入口網站中的查詢介面，可針對基礎搜尋服務上的索引執行查詢。 入口網站會在幕後對 [搜尋檔](/rest/api/searchservice/search-documents) 作業進行 REST API 呼叫，但無法叫用自動完成、建議或檔查閱。<br/><br/> 您可以選取任何索引和 REST API 版本，包括預覽。 查詢字串可以使用簡單或完整語法，並支援所有查詢參數， (篩選、選取、searchFields 等) 。 在入口網站中，當您開啟索引時，您可以使用 [搜尋瀏覽器] 與 [並列] 索引標籤中的索引 JSON 定義一起使用，以方便存取欄位屬性。 檢查在測試查詢時可搜尋、可排序、可篩選和可 facet 的欄位。 <br/>建議進行早期調查、測試和驗證。 [深入了解。](search-explorer.md) |
 | Web 測試控管| [Postman 或 Visual Studio Code](search-get-started-rest.md) 是用來編寫 [搜尋檔](/rest/api/searchservice/search-documents) 要求的強式選擇，以及任何其他要求，也就是 REST。 REST Api 支援 Azure 認知搜尋中的每個可能的程式設計作業，而且當您使用 Postman 或 Visual Studio Code 之類的工具時，您可以透過互動方式發出要求，以瞭解功能在投資程式碼之前的運作方式。 如果您在 Azure 入口網站中沒有參與者或系統管理許可權，則 web 測試控管是不錯的選擇。 只要您有搜尋 URL 和查詢 API 金鑰，您就可以使用這些工具對現有的索引執行查詢。 |
@@ -33,7 +33,7 @@ ms.locfileid: "97400211"
 
 搜尋用戶端會向搜尋服務進行驗證、傳送要求和處理回應。 無論您使用哪一種工具或 API，搜尋用戶端都必須有下列各項：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |------------|-------------|
 | 端點 | 搜尋服務的 URL 可定址格式如下： `https://[service-name].search.windows.net` 。 |
 |  (系統管理員或查詢) 的 API 存取金鑰 | 驗證搜尋服務的要求。 |
@@ -76,31 +76,7 @@ POST https://myservice.search.windows.net/indexes/hotels-sample-index/docs/searc
 
 [完整的 Lucene 查詢語法](query-Lucene-syntax.md#bkmk_syntax)（當您新增 `queryType=full` 至要求時啟用）是以[Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)剖析器為基礎。
 
-完整語法是簡單語法的延伸模組，具有更多運算子，讓您可以建立簡單的查詢，例如模糊搜尋、萬用字元搜尋、鄰近搜尋和正則運算式。 下列範例說明點：相同的查詢，但有不同 **`queryType`** 的設定，這會產生不同的結果。 在第一個簡單的查詢中 `^3` ， `historic` 會將 after 視為搜尋詞彙的一部分。 此查詢的最高排名結果是「Marquis Plaza & 套件」，其描述中有 *海洋* 。
-
-```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "simple",
-    "search": "ocean historic^3",
-    "searchFields": "Description",
-    "select": "HotelId, HotelName, Tags, Description",
-}
-```
-
-使用完整 Lucene 剖析器的相同查詢會解讀 `^3` 為現場詞彙增強程式。 切換剖析器會變更排名，結果中會包含 *移至* 頂端的歷程記錄。
-
-```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "full",
-    "search": "ocean historic^3",
-    "searchFields": "Description",
-    "select": "HotelId, HotelName, Tags, Description",
-}
-```
+完整語法和簡單語法會重迭至兩者都支援相同前置詞和布林值作業的範圍，但完整語法會提供更多運算子。 在完整的情況下，布林運算式還有更多運算子，還有更多運算子可用於多個查詢，例如模糊搜尋、萬用字元搜尋、鄰近搜尋和正則運算式。
 
 ## <a name="choose-query-methods"></a>選取查詢方法
 

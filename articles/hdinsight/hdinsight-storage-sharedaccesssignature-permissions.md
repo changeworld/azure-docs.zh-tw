@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
-ms.openlocfilehash: eb8201ea888b98250d452e0b0e1c48f30cbb1efc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 141db7feee987b7fffc578e19c60bd94ad56d239
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022729"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511632"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure Blob 儲存體共用存取簽章來限制對 HDInsight 中資料的存取
 
@@ -188,7 +188,7 @@ Set-AzStorageblobcontent `
     az storage container policy list --container-name %AZURE_STORAGE_CONTAINER% --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
 
     # Generate a shared access signature for the container
-    az storage container generate-sas --name myPolicyCLI --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
+    az storage container generate-sas --name %AZURE_STORAGE_CONTAINER% --policy-name myPolicyCLI --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
 
     # Reversal
     # az storage container policy delete --container-name %AZURE_STORAGE_CONTAINER% --name myPolicyCLI --account-key %AZURE_STORAGE_KEY% --account-name %AZURE_STORAGE_ACCOUNT%
@@ -211,7 +211,7 @@ Set-AzStorageblobcontent `
 
 3. 選取 [設定]  ，並新增下列項目的值：
 
-    |項目 |描述 |
+    |項目 |說明 |
     |---|---|
     |StorageConnectionString|您想要為其建立預存原則和 SAS 的儲存體帳戶的連接字串。 其格式應為 `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey`，其中 `myaccount` 是儲存體帳戶名稱，而 `mykey` 是儲存體帳戶金鑰。|
     |ContainerName|您想要限制存取的儲存體帳戶中的容器。|
@@ -353,11 +353,11 @@ Remove-AzResourceGroup `
 
 1. 開啟叢集的 Ambari Web UI。 此頁面的位址是 `https://YOURCLUSTERNAME.azurehdinsight.net`。 出現提示時，使用您建立叢集時所使用的 admin 名稱 (admin) 和密碼來驗證叢集。
 
-1. 流覽至 **HDFS**  >  **Configs**  >  **Advanced**  >  **預先定義的自訂核心網站**。
+1. 流覽至 **HDFS**  >    >    >  **預先定義的自訂核心網站**。
 
 1. 展開 [ **自訂核心網站** ] 區段，並將它滾動至結尾，然後選取 [ **新增屬性 ...**]。使用下列值作為索引 **鍵** 和 **值**：
 
-    * 機 **碼**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **機碼**：`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
     * **值**：稍早執行的其中一個方法所傳回的 SAS。
 
     取代 `CONTAINERNAME` 為您搭配 c # 或 SAS 應用程式使用的容器名稱。 `STORAGEACCOUNTNAME`以您使用的儲存體帳戶名稱取代。

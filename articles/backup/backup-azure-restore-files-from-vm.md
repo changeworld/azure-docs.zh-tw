@@ -2,14 +2,14 @@
 title: 從 Azure VM 備份復原檔案和資料夾
 description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點復原檔案和資料夾。
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b9d5c90634dac3229e756ad93c10db91b268080c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d34fc48e5d16275d0225a1cef4b5fa63f0b66d6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841152"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511649"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -156,7 +156,7 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 
    ![已附加的修復磁片區](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-**針對具有大型磁片的備份 Vm (Windows)**
+#### <a name="for-backed-up-vms-with-large-disks-windows"></a>針對具有大型磁片的備份 Vm (Windows) 
 
 如果在執行檔案還原腳本之後，檔案復原程式停止回應 (例如，如果磁片從未裝載或已掛接，但磁片區未出現) ，請執行下列步驟：
   
@@ -182,7 +182,7 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
   ![Linux [檔案復原] 功能表](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
 
-**針對具有大型磁片的備份 Vm (Linux)**
+#### <a name="for-backed-up-vms-with-large-disks-linux"></a>針對具有大型磁片的備份 Vm (Linux) * *
 
 如果在執行檔案還原腳本之後，檔案復原程式停止回應 (例如，如果磁片從未裝載或已掛接，但磁片區未出現) ，請執行下列步驟：
 

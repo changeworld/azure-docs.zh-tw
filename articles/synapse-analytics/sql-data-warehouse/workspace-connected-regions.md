@@ -11,12 +11,12 @@ ms.date: 11/11/2020
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: references_regions
-ms.openlocfilehash: d46f8b518476cdf2f68b51ed93498cf822f8d8a5
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 4ecf8a578343a10e7c1ddb0ac5e9345a652bc9af
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504146"
+ms.locfileid: "97511700"
 ---
 # <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>在專用的 SQL 集區上啟用 Synapse 工作區功能， (先前在您區域中的 SQL DW) 。
 

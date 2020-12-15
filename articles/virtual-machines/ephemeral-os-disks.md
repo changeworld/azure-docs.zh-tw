@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927918"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510986"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure Vm 的暫時作業系統磁片
 
@@ -86,15 +86,15 @@ az vm create \
 
 針對擴展集，您可以 `--ephemeral-os-disk true` 針對 [az-vmss-create](/cli/azure/vmss#az-vmss-create) 使用相同的參數，並將 `--os-disk-caching` 參數設定為 `ReadOnly` 。
 
-## <a name="portal"></a>入口網站   
+## <a name="portal"></a>入口網站
 
-在 Azure 入口網站中，您可以選擇在部署 VM 時使用暫時磁片，方法是開啟 [ **磁片** ] 索引標籤的 [ **Advanced** ] 區段。若是 **使用暫時性 OS 磁片** ，請選取 **[是]** 。
+在 Azure 入口網站中，您可以選擇在部署 VM 時使用暫時磁片，方法是開啟 [**磁片**] 索引標籤的 [ **Advanced** ] 區段。若是 **使用暫時性 OS 磁片**，請選取 **[是]**。
 
 ![顯示選擇使用暫時性 OS 磁片之選項按鈕的螢幕擷取畫面](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
 如果使用暫時磁片的選項呈現灰色，表示您可能選取的 VM 大小沒有大於 OS 映射的快取大小，或不支援 Premium 儲存體的 VM 大小。 返回到 [ **基本** ] 頁面，然後嘗試選擇其他 VM 大小。
 
-您也可以使用入口網站來建立具有暫時 OS 磁片的擴展集。 只要確定您選取的 VM 大小具有夠大的快取大小，然後 **使用暫時性 OS 磁片** ，請選取 **[是]** 。
+您也可以使用入口網站來建立具有暫時 OS 磁片的擴展集。 只要確定您選取的 VM 大小具有夠大的快取大小，然後 **使用暫時性 OS 磁片** ，請選取 **[是]**。
 
 ![顯示選項按鈕的螢幕擷取畫面，可供選擇針對擴展集使用暫時的 OS 磁片](./media/virtual-machines-common-ephemeral/scale-set.png)
 
@@ -120,7 +120,7 @@ az vm create \
        "storageProfile": { 
         "osDisk": { 
           "diffDiskSettings": { 
-                "option": "Local" 
+            "option": "Local" 
           }, 
           "caching": "ReadOnly", 
           "createOption": "FromImage" 

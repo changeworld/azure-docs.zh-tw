@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: cd64c19e7e9af05becd7a6978ceb4d0306112170
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351890"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512040"
 ---
 # <a name="azure-resources-for-qna-maker"></a>適用于 QnA Maker 的 Azure 資源
 
@@ -62,7 +62,7 @@ QnA Maker 會使用數個 Azure 來源，各有不同的用途。 瞭解如何�
 
 下表為您提供某些高階指導方針。
 
-|                            | QnA Maker 管理 | App Service | Azue 認知搜尋 | 限制                      |
+|                            | QnA Maker 管理 | App Service 方案 | Azue 認知搜尋 | 限制                      |
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **測試**        | 免費 SKU             | 免費層   | 免費層    | 最多發佈 2 個 KB，大小為 50 MB  |
 | **開發/測試環境**   | 標準 SKU         | 共用      | 基本        | 最多發佈 14 KB，大小為 2 GB    |
@@ -93,7 +93,7 @@ QnA Maker 會使用數個 Azure 來源，各有不同的用途。 瞭解如何�
 |                            |Azue 認知搜尋 | 限制                      |
 | -------------------------- |------------ | -------------------------------- |
 | **測試**        |免費層    | 最多發佈 2 個 KB，大小為 50 MB  |
-| **開發/測試環境**   |基本        | 最多發佈 14 KB，大小為 2 GB    |
+| **開發/測試環境**   |Basic        | 最多發佈 14 KB，大小為 2 GB    |
 | **生產環境** |標準     | 最多發佈 49 個 KB，大小為 25 GB |
 
 ---
@@ -102,13 +102,13 @@ QnA Maker 會使用數個 Azure 來源，各有不同的用途。 瞭解如何�
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
-|目標 QPS | App Service | Azue 認知搜尋 |
+|目標 QPS | App Service 方案 | Azue 認知搜尋 |
 | -------------------- | ----------- | ------------ |
-| 3             | S1、1個實例   | S1、1個實例    |
-| 50         | S3、10個實例       | S1、12個實例         |
-| 80         | S3、10個實例      |  S3、12個實例  |
-| 100         | P3V2，10個實例  | S3、12個實例、3個磁碟分割   |
-| 200至250         | P3V2，20個實例 | S3、12個實例、3個磁碟分割    |
+| 3             | S1，1個複本   | S1，1個複本    |
+| 50         | S3、10個複本       | S1、12個複本         |
+| 80         | S3、10個複本      |  S3、12個複本  |
+| 100         | P3V2，10個複本  | S3、12個複本、3個磁碟分割   |
+| 200至250         | P3V2，20個複本 | S3、12個複本、3個磁碟分割    |
 
 # <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
@@ -162,7 +162,7 @@ Azure 入口網站的 [建立] 視窗可讓您建立 QnA Maker 資源，然後�
 
 * QnA Maker 資源
 * 認知搜尋資源
-* App Service
+* App Service 方案
 * App 方案服務
 * Application Insights 服務
 

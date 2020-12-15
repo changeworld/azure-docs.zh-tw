@@ -3,12 +3,12 @@ title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
 ms.date: 11/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 95b9bcf6bb9530afc9f6a23c323b6931e8975ad1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905118"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510646"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -90,7 +90,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 
 [Azure 監視器](../../azure-monitor/index.yml)：
 
-- 檢視委派之訂用帳戶的警示，並能夠在所有訂用帳戶之間檢視警示
+- 查看委派訂用帳戶的警示，並能夠在所有訂用帳戶之間查看並重新整理警示
 - 檢視委派之訂用帳戶的活動記錄詳細資料
 - Log analytics：從多個租使用者中的遠端工作區查詢資料
 - 在客戶租使用者中建立警示，以透過 webhook 在管理租使用者中觸發自動化（例如 Azure 自動化 runbook 或 Azure Functions）

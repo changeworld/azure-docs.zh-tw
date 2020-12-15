@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 12/3/2020
+ms.date: 12/15/2020
 ms.subservice: alerts
-ms.openlocfilehash: 0e4674c9e0513a0b8dae29f5868b1da79da8ab84
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 8f59f3488f6c8f5b35ec68d93db656447f882a92
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920572"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510677"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
@@ -41,10 +41,10 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.ClassicCompute/domainNames/slots/roles | 否 | 否 | [傳統雲端服務](./metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft.ClassicCompute/virtualMachines | 否 | 否 | [傳統虛擬機器](./metrics-supported.md#microsoftclassiccomputevirtualmachines) |
 |Microsoft.ClassicStorage/storageAccounts | 是 | 否 | [ (傳統) 的儲存體帳戶 ](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
-|Microsoft.ClassicStorage/storageAccounts/blobServices | 是 | 否 | |
-|Microsoft.ClassicStorage/storageAccounts/fileServices | 是 | 否 | |
-|Microsoft.ClassicStorage/storageAccounts/queueServices | 是 | 否 | |
-|Microsoft.ClassicStorage/storageAccounts/tableServices | 是 | 否 | |
+|Microsoft.ClassicStorage/storageAccounts/blobServices | 是 | 否 | [ (傳統) Blob 的儲存體帳戶](./metrics-supported.md#microsoftclassicstoragestorageaccountsblobservices) |
+|Microsoft.ClassicStorage/storageAccounts/fileServices | 是 | 否 | [儲存體帳戶 (傳統) 檔案](./metrics-supported.md#microsoftclassicstoragestorageaccountsfileservices) |
+|Microsoft.ClassicStorage/storageAccounts/queueServices | 是 | 否 | [儲存體帳戶 (傳統) -佇列](./metrics-supported.md#microsoftclassicstoragestorageaccountsqueueservices) |
+|Microsoft.ClassicStorage/storageAccounts/tableServices | 是 | 否 | [ (傳統) 資料表的儲存體帳戶](./metrics-supported.md#microsoftclassicstoragestorageaccountstableservices) |
 |Microsoft.CognitiveServices/accounts | 是 | 否 | [認知服務](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
 |Microsoft.Compute/virtualMachines | 是 | 是<sup>1</sup> | [虛擬機器](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | 是 | 否 |[虛擬機器擴展集](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
@@ -57,10 +57,9 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.DataShare/accounts | 是 | 否 | |
 |Microsoft.DBforMariaDB/servers | 否 | 否 | [適用于 mariadb 的 DB](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft.DBforMySQL/servers | 否 | 否 |[適用於 MySQL 的 DB](./metrics-supported.md#microsoftdbformysqlservers)|
-|Microsoft.DBforPostgreSQL/flexibleServers | 是 | 否 | |
 |Microsoft.DBforPostgreSQL/servers | 否 | 否 | [適用於 PostgreSQL 的 DB](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.DBforPostgreSQL/serversv2 | 否 | 否 | [適用于于 postgresql V2 的 DB](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|DBforPostgreSQL/彈性 | 否 | 否 | [適用于于 postgresql 的 DB (flexiable 伺服器) ](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
+|Microsoft.DBforPostgreSQL/flexibleServers | 是 | 否 | [DB for 于 postgresql (彈性的伺服器) ](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft.Devices/IotHubs | 是 | 否 |[IoT 中心](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft.Devices/provisioningServices| 是 | 否 | [裝置布建服務](./metrics-supported.md#microsoftdevicesprovisioningservices) |
 |DigitalTwins/digitalTwinsInstances | 是 | 否 | |
@@ -104,7 +103,10 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.Sql/servers/databases | 否 | 是 | [SQL Databases](./metrics-supported.md#microsoftsqlserversdatabases) |
 |Microsoft.Sql/servers/elasticPools | 否 | 是 | [SQL 彈性集區](./metrics-supported.md#microsoftsqlserverselasticpools) |
 |Microsoft.Storage/storageAccounts |是 | 否 | [儲存體帳戶](./metrics-supported.md#microsoftstoragestorageaccounts)|
-|Microsoft.Storage/storageAccounts/services | 是| 否 | [Blob 服務](./metrics-supported.md#microsoftstoragestorageaccountsblobservices)、[檔案服務](./metrics-supported.md#microsoftstoragestorageaccountsfileservices)、[佇列服務](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices)及[資料表服務](./metrics-supported.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft.Storage/storageAccounts/blobServices | 是| 否 | [儲存體帳戶-Blob](./metrics-supported.md#microsoftstoragestorageaccountsblobservices) |
+|Microsoft.Storage/storageAccounts/fileServices | 是| 否 | [儲存體帳戶-檔案](./metrics-supported.md#microsoftstoragestorageaccountsfileservices) |
+|Microsoft.Storage/storageAccounts/queueServices | 是| 否 | [儲存體帳戶-佇列](./metrics-supported.md#microsoftstoragestorageaccountsqueueservices) |
+|Microsoft.Storage/storageAccounts/tableServices | 是| 否 | [儲存體帳戶-資料表](./metrics-supported.md#microsoftstoragestorageaccountstableservices) |
 |Microsoft.StorageCache/caches | 是 | 否 | |
 |Microsoft.storagesync/storageSyncServices | 是 | 否 | [儲存體同步服務](./metrics-supported.md#microsoftstoragesyncstoragesyncservices) |
 |Microsoft.StreamAnalytics/streamingjobs | 是 | 否 | [串流分析](./metrics-supported.md#microsoftstreamanalyticsstreamingjobs) |
