@@ -11,14 +11,57 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483949"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401146"
 ---
 # <a name="speech-service-release-notes"></a>語音服務版本資訊
+
+## <a name="text-to-speech-2020-december-release"></a>文字轉換語音 2020-十二月發行
+
+**GA 和預覽中的新神經語音**
+
+已在54的語言/地區設定中，發行了51的新語音，共129個神經語音：
+
+- **46 GA 地區設定中的新語音**： `ar-EG` 阿拉伯文 (埃及) 、 `ar-SA` 阿拉伯文 (沙烏地阿拉伯) 、保加利亞文 (保加利亞) 、加泰羅尼亞文 (保加利亞) 、斯洛伐克文中的 Joana、捷克文 (捷克共和國) 、Antonin in 捷克文 (捷克文) 、德文（德文） (`bg-BG` `ca-ES` `cs-CZ` `da-DK` `de-AT` `de-CH` 瑞士) Nestoras 于 `el-GR` 希臘文 (希臘) 、 `en-CA` 英文 (加拿大) 、 `en-IE` 英文 (愛爾蘭) 、印度文中的 Madhur、印度 `en-IN` 文 (印度) 、Mohan （ `en-IN` 泰 `en-IN` `en-IN` ） `es-ES` `et-EE` `fi-FI` `fi-FI` （印度） (印度) 、Prabhat （英文） (印度) 、Valluvar in 芬蘭 (、Enric in 芬蘭) 芬蘭 (、Fabrice `fr-CH` 法文 (瑞士) 、愛爾蘭 (愛爾蘭) 、希伯來文中的 Avri、希伯來文 (以色列) 、匈牙利文 (克羅地亞) 、匈牙利文中的 Tamas、匈牙利文 (匈牙利) 、Gadis in 匈牙利文 (匈牙利) 、Leonas in 匈牙利文 (立陶宛) 、Nils in `ga-IE` 馬爾他 (馬爾他) `he-IL` 挪威文 `hr-HR` `hu-HU` `id-ID` `lt-LT` `lv-LV` `ms-MY` `mt-MT` 、Finn、 `nb-NO` 博克 (挪威) 、挪威文中的 Pernille、 `nb-NO` (挪威) 、 `nl-NL` 荷蘭文 (荷蘭) 、 `nl-NL` `pl-PL` `pl-PL` `pt-BR` `pt-PT` `ro-RO` `ru-RU` 荷蘭文 (荷蘭) 、荷蘭文 (荷蘭) 、Agnieszka in 波蘭文 (波蘭) 、Marek in 波蘭文 (波蘭) 、Duarte in 葡萄牙文 (羅馬尼亞) 、Raquel in 葡萄牙文 (羅馬尼亞) 、Potugal in 俄文 (俄羅斯) 、Svetlana 在 `ru-RU` 俄文 (俄羅斯) 、斯洛伐克文中的 Lukas `sk-SK` (斯洛伐克) 、Rok 在 `sl-SI` 斯洛維尼亞 (斯洛維尼亞) 、瑞典文中的 Mattias、瑞典文 (瑞典 `sv-SE` 文、瑞典文) 瑞典文)  ( (`sv-SE` 、泰文) 泰國 (、 `th-TH` 土耳其 `tr-TR` `vi-VN` `zh-TW` `zh-TW` `zh-HK` `zh-HK` 文) 土耳其 (、Ahmet in 土耳其文) 土耳其 (、NamMinh in 越南) 臺灣 (、HsiaoChen in 繁體中文中文) 臺灣 (、YunJhe In 繁體中文中文) 香港 (、HiuMaan in 中文廣東話) 香港。
+
+- **預覽地區設定中的5個新語音**： Kert 在 `et-EE` 愛沙尼亞 (愛沙尼亞) 、 `ga-IE` 愛爾蘭 (愛爾蘭) 、 `lv-LV` 拉脫維亞文 (拉脫維亞) 、拉脫維亞文中的 Leonas、立陶宛 (立陶宛) `lt-LT` 、Joseph 在 `mt-MT` 馬爾他 (馬爾他) 。
+
+在此版本中，我們現在支援所有54語言/地區設定的129類神經語音。 此外，49語言/地區設定中提供超過70種標準語音。 流覽 [語言支援](language-support.md#text-to-speech) 以取得完整清單。
+
+**音訊內容建立的更新**
+- 使用語音類別和詳細的語音描述來改善語音選擇 UI。 
+- 針對不同語言的所有神經聲音啟用聲調微調。
+- 根據瀏覽器的語言自動 localizaiton UI。
+- `StyleDegree`所有神經語音的已啟用控制項 `zh-CN` 。
+造訪 [音訊內容建立工具](https://speech.microsoft.com/audiocontentcreation) 以查看新功能。 
+
+**Zh 的更新-CN 語音**
+- 更新所有類 `zh-CN` 神經語音以支援英文說話。
+- 啟用所有類 `zh-CN` 神經語音以支援聲調調整。 SSML 或音訊內容建立工具可以用來調整以獲得最佳的聲調。
+- 更新所有 `zh-CN` 多樣式的神經語音以支援 `StyleDegree` 控制。 可以調整表情強度 (軟或強式) 。
+- 已更新 `zh-CN-YunyeNeural` 為可支援多個可執行不同表情的樣式。
+
+## <a name="text-to-speech-2020-november-release"></a>文字轉換語音 2020-11 月版
+
+**預覽版中的新地區設定和語音**
+- 神經 TTS 組合引進 **五種新的語音和語言**。 它們是：馬爾他 (馬爾他) 的寬限期、立陶宛文中的盡力 (立陶宛) 、愛沙尼亞文中的 Anu、愛沙尼亞 (、愛爾蘭) 愛爾蘭 (和拉脫維亞) 拉脫維亞 (中的 Everita。
+- **`zh-CN` 具有多個樣式和角色的五個新語音支援**： Xiaohan、Xiaomo、Xiaorui、Xiaoxuan 和 Yunxi。
+
+> 這些語音在三個 Azure 區域中都提供公開預覽： EastUS、SouthEastAsia 和 WestEurope。
+
+**類神經 TTS 容器 GA**
+- 使用類神經 TTS 容器時，開發人員可以在自己的環境中，使用最自然的數位語音來執行語音合成，以滿足特定的安全性和資料治理需求。 查看 [如何安裝語音容器](speech-container-howto.md)。 
+
+**新功能**
+- **自訂語音**： enabed 使用者將語音模型從一個區域複製到另一個區域;支援的端點暫停和繼續。 移至這裡的 [入口網站](https://speech.microsoft.com/customvoice) 。
+- [SSML 無聲標記](speech-synthesis-markup.md#add-silence) 支援。 
+- 一般 TTS 語音品質改進： nb 中已改善的單字層級發音精確度-否。 減少53% 的發音誤差。
+
+> 閱讀 [此技術 blog](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-previews-five-new-languages-with/ba-p/1907604)的詳細資訊。
 
 ## <a name="text-to-speech-2020-october-release"></a>文字轉換語音 2020-10 月版本
 
@@ -143,7 +186,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
     | `ja-JP` | Nanami |
     | `ko-KR` | Sun-Hi |
 
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 
 * 使用音訊內容建立工具修正了許多 bug 
     * 已修正自動重新整理的問題。 
@@ -248,7 +291,7 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
 
 * 改進了五種語言的單字層級發音精確度。
 
-    | Language | 發音錯誤減少 |
+    | 語言 | 發音錯誤減少 |
     |---|---|
     | `en-GB` | 51% |
     | `ko-KR` | 17% |
@@ -256,12 +299,12 @@ SPX 是在不需要撰寫程式碼的情況下，使用 Azure 語音服務的命
     | `pt-PT` | 77% |
     | `id-ID` | 46% |
 
-### <a name="bug-fixes"></a>Bug 修正
+### <a name="bug-fixes"></a>錯誤修正
 
 * 貨幣讀取
     * 修正了和的貨幣讀取問題 `es-ES``es-MX`
      
-    | Language | 輸入 | 改進後讀出 |
+    | 語言 | 輸入 | 改進後讀出 |
     |---|---|---|
     | `es-MX` | $1.58 | un 比索 cincuenta y ocho centavos |
     | `es-ES` | $1.58 | un dólar cincuenta y ocho centavos |

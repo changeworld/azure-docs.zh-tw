@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2020
-ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.date: 12/14/2020
+ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387661"
+ms.locfileid: "97400806"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>在 Azure 認知搜尋中查詢
 
-Azure 認知搜尋提供豐富的查詢語言，可支援各種不同的案例，從自由文字搜尋到高度指定的查詢模式。 本文將摘要說明您可以建立的查詢類型。
+Azure 認知搜尋提供豐富的查詢語言，可支援各種不同的案例，從自由文字搜尋到高度指定的查詢模式。 本文描述查詢要求，以及您可以建立的查詢種類。
 
-在認知搜尋中，查詢是一種反復存取作業的完整規格 **`search`** ，其中包含可通知查詢執行並塑造回應的參數。 參數和剖析器會決定查詢要求的類型。 下列查詢範例會使用 [ (REST API) 的搜尋檔 ](/rest/api/searchservice/search-documents)，以 [旅館示範索引](search-get-started-portal.md)為目標。
+在認知搜尋中，查詢是一種反復存取作業的完整規格 **`search`** ，其中包含可通知查詢執行並塑造回應的參數。 參數和剖析器會決定查詢要求的類型。 下列查詢範例是具有布林運算子的自由文字查詢，使用 [搜尋檔 (REST API) ](/rest/api/searchservice/search-documents)，以 [飯店範例-索引](search-get-started-portal.md) 檔集合為目標。
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,7 +34,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 }
 ```
 
-在查詢執行期間使用的參數：
+在查詢執行期間使用的參數包括：
 
 + **`queryType`** 設定剖析器，也就是 [預設的簡單查詢](search-query-simple-examples.md) 剖析器， (全文檢索搜尋) 的最佳方式，或是用於高階運算式、鄰近搜尋、模糊和萬用字元搜尋等先進查詢結構的 [完整 Lucene 查詢](search-query-lucene-examples.md) 剖析器。
 
@@ -66,7 +66,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 在認知搜尋中，全文檢索搜尋是以 Apache Lucene 查詢引擎為基礎。 全文檢索搜尋中的查詢字串會進行詞彙分析，讓掃描更有效率。 分析包括小寫的所有詞彙、移除 "" 這類的停用字組，以及將詞彙縮減為基本的根表單。 預設分析器是標準 Lucene。
 
-找到相符的字詞時，查詢引擎會重組包含相符的搜尋檔、依相關性順序排列檔的順序，並在回應中預設) 傳回前 50 (。
+找到相符的字詞時，查詢引擎會使用檔索引鍵或識別碼來組合域值、依相關性順序排列檔的順序，並根據) 預設傳回前 50 (（如果您指定的話），來重組搜尋檔 **`top`** 。
 
 如果您正在執行全文檢索搜尋，請瞭解您的內容如何標記化，以協助您進行任何查詢異常的偵錯工具。 以字元字串或特殊字元進行查詢，可能需要使用預設標準 Lucene 以外的分析器，以確定索引包含正確的標記。 您可以使用 [語言分析器](index-add-language-analyzers.md#language-analyzer-list) 或可修改詞法分析的 [特殊分析器](index-add-custom-analyzers.md#AnalyzerTable) 來覆寫預設值。 其中一個範例是將欄位的整個內容視為單一權杖的 [關鍵字](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) 。 這適合用於郵遞區號、識別碼和產品名稱等資料。 如需詳細資訊，請參閱 [部分詞彙搜尋和具有特殊字元的模式](search-query-partial-matching.md)。
 
@@ -78,7 +78,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 
 ## <a name="filter-search"></a>篩選搜尋
 
-篩選器廣泛用於包含認知搜尋的應用程式。 在應用程式頁面上，篩選通常會視覺化為連結導覽結構中的 facet，以進行使用者導向篩選。 篩選器也會在內部用來公開已編制索引之內容的磁區。 例如，如果索引包含英文和法文的欄位，您就可以篩選語言。 
+篩選器廣泛用於包含認知搜尋的應用程式。 在應用程式頁面上，篩選通常會視覺化為連結導覽結構中的 facet，以進行使用者導向篩選。 篩選器也會在內部用來公開已編制索引之內容的磁區。 例如，您可以使用產品類別目錄的篩選來初始化搜尋頁面，或者，如果索引包含英文和法文的欄位，則會使用語言來初始化。
 
 您可能還需要篩選器來叫用特定的查詢表單，如下表所述。 您可以使用篩選器搭配未指定的搜尋 (**`search=*`**) ，或使用包含詞彙、片語、運算子和模式的查詢字串。
 

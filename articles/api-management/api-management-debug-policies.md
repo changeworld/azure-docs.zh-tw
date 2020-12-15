@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8ed834c9ab093ae063e386978bca4d73fa46543
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91341874"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400721"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>在 Visual Studio Code 中進行 Azure API 管理原則的調試
 
@@ -28,11 +28,13 @@ Azure API 管理中的[原則](api-management-policies.md)提供強大的功能�
 > [!NOTE]
 > 這項功能處於公開預覽狀態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-先遵循本 [教學](get-started-create-service-instance.md) 課程，建立 API 管理開發人員層實例。
+* 先遵循本 [快速入門](get-started-create-service-instance.md) ，建立 API 管理開發人員層實例。
 
-針對 Visual Studio Code 安裝 [Visual Studio Code](https://code.visualstudio.com/) 和最新版的 [Azure API 管理延伸](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)模組。 
+* 針對 Visual Studio Code 安裝 [Visual Studio Code](https://code.visualstudio.com/) 和最新版的 [Azure API 管理延伸](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)模組。 
+
+* 將 API 匯入至 API 管理實例。 如需範例步驟，請參閱 [教學課程：使用適用于 Visual Studio Code 的 Api 管理延伸模組來匯入和管理 api](visual-studio-code-tutorial.md)。
 
 ## <a name="restrictions-and-limitations"></a>限制事項
 
