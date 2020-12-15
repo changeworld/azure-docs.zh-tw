@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/08/2020
-ms.openlocfilehash: f41a43e76993a03554d32fc7f3ce3149848989a9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 12/14/2020
+ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686693"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505591"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>在適用於 VM 的 Azure 監視器來賓健康情況 (預覽版中設定監視) 
 適用於 VM 的 Azure 監視器來賓健康狀態可讓您依定期取樣的一組效能測量所定義，來查看虛擬機器的健康情況。 本文說明如何使用 Azure 入口網站來修改預設監視。 它也會說明 [使用資料收集規則設定監視](vminsights-health-configure-dcr.md)所需的監視器基本概念。
@@ -27,12 +27,18 @@ ms.locfileid: "94686693"
 | 設定 | 描述 |
 |:---|:---|
 | 啟用 | 不論其父系的設定為何，都會啟用監視器。 |
-| Disabled | 無論其父系的設定為何，都會停用此監視器。 |
+| 已停用 | 無論其父系的設定為何，都會停用此監視器。 |
 | 與父系相同 | 系統會根據其父系的設定來啟用或停用監視。 |
 
 停用監視時，任何準則都會顯示為無法使用，如下列範例所示。
 
 ![停用監視](media/vminsights-health-configure/disabled-monitor.png)
+
+
+> [!NOTE]
+> 如果父監視已停用，則也會停用任何子監視。 如果您明確啟用子系監視，則也會啟用父代，但其設定狀態會維持不變。 在此情況下，您將會在父監視中收到下列訊息。
+>
+> *因為監視的設定狀態為 [已停用]，但健全狀況狀態不會反映該狀態，所以會發生差異。這是因為正在傳播設定的變更，或是已明確啟用任何其子監視。*
 
 ## <a name="enable-or-disable-virtual-machine"></a>啟用或停用虛擬機器
 您可以停用 VM 的監視，以暫時停止所有監視器。 您可以停用 VM 的監視，例如，當您在 VM 上執行維護。
@@ -40,7 +46,7 @@ ms.locfileid: "94686693"
 | 設定 | 描述 |
 |:---|:---|
 | 啟用  | 電腦的健全狀況狀態隨即顯示。 |
-| Disabled | 電腦的健全狀況狀態會顯示為 [ **已停用**]。 未建立警示。 |
+| 已停用 | 電腦的健全狀況狀態會顯示為 [ **已停用**]。 未建立警示。 |
 
 ## <a name="health-state-logic"></a>健全狀況狀態邏輯
 單位監視的健全狀況狀態邏輯會定義設定其健康情況狀態的準則。 您可以指定監視有多少健全狀況狀態，以及每個健全狀況狀態的計算閾值。

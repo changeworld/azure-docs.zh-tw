@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8c6fce5b22d67dd1022fbaac763ea5df3b0930f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254685"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505370"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>搭配 Azure Kubernetes Service 中部署的微服務使用 Azure API 管理
 
@@ -118,7 +118,7 @@ AKS 叢集中的服務可以使用 NodePort、LoadBalancer 或 ExternalName 的 
 缺點：
 * 增加部署和設定 API 管理以在 VNet 內運作的複雜度
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 [AKS 中應用程式的網路概念](../aks/concepts-network.md)
 * 深入瞭解 [如何搭配使用 API 管理與虛擬網路](./api-management-using-with-vnet.md)

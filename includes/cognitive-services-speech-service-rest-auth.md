@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b73d3f9011f9384fafa18394d9318e3eafa67
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88864937"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504486"
 ---
 ## <a name="authentication"></a>驗證
 
@@ -151,7 +151,7 @@ def get_token(subscription_key):
 
 存取權杖應傳送到服務作為 `Authorization: Bearer <TOKEN>` 標頭。 每一個存取權杖的有效時間為 10 分鐘。 您可以隨時取得新權杖，但為了盡量降低網路流量和延遲，建議您使用相同的權杖九分鐘。
 
-以下是文字轉語音 REST API 的範例 HTTP 要求：
+以下是簡短音訊語音轉換文字 REST API 的 HTTP 要求範例：
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

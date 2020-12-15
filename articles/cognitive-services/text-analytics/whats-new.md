@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 157bef31b375db54f294284ca0a5d97cd7035b17
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: c304c2aad3ba40d7b3a044f0e3222e31bb013648
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558958"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503976"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
 文字分析 API 會持續更新。 為了隨時掌握最新的開發，本文提供新版本和功能的相關資訊。
 
-## <a name="december-2020"></a>2020年12月
+## <a name="december-2020"></a>2020 年 12 月
 
 * [更新](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) 文字分析 API 的定價詳細資料
 
@@ -61,7 +61,7 @@ ms.locfileid: "96558958"
     * v3.0-preview。1
     
 > [!div class="nextstepaction"]
-> [深入瞭解文字分析 API 3.1-Preview。2](quickstarts/text-analytics-sdk.md)
+> [深入瞭解文字分析 API 3.1-Preview。2](quickstarts/client-libraries-rest-api.md)
 
 ### <a name="text-analytics-for-health-container-updates"></a>健全狀況容器更新的文字分析
 
@@ -178,13 +178,13 @@ JSON 回應中的下列屬性名稱已變更，適用于：
 ### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>文字分析 API v3 公開預覽的 SDK 支援
 
 作為 [整合 AZURE SDK 版本](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)的一部分，文字分析 API v3 SDK 現已提供下列程式設計語言的公開預覽版本：
-   * [C#](./quickstarts/text-analytics-sdk.md?pivots=programming-language-csharp&tabs=version-3)
-   * [Python](./quickstarts/text-analytics-sdk.md?pivots=programming-language-python&tabs=version-3)
-   * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
-   * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
+   * [C#](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-csharp&tabs=version-3)
+   * [Python](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-python&tabs=version-3)
+   * [JavaScript (Node.js)](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-javascript&tabs=version-3)
+   * [Java](./quickstarts/client-libraries-rest-api.md?pivots=programming-language-java&tabs=version-3)
    
 > [!div class="nextstepaction"]
-> [深入瞭解文字分析 API v3 SDK](./quickstarts/text-analytics-sdk.md?tabs=version-3)
+> [深入瞭解文字分析 API v3 SDK](./quickstarts/client-libraries-rest-api.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>命名實體辨識 v3 公開預覽
 

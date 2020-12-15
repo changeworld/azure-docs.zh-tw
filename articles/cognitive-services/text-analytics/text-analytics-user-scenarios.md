@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 4f540c7e853efe370c84b7c4d0a7d74911b8cd6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4c551a6e9b8d79fdeb7b5219f311c7c7c969757
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91823939"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505353"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Text Analytics API 的範例使用者案例
 
@@ -61,4 +61,4 @@ Text Analytics API 是雲端式服務，可對文字提供進階自然語言處�
 ## <a name="next-steps"></a>後續步驟
 
 * [什麼是文字分析 API？](overview.md)
-* [使用用戶端程式庫將要求傳送至文字分析 API](quickstarts/text-analytics-sdk.md)
+* [使用用戶端程式庫將要求傳送至文字分析 API](quickstarts/client-libraries-rest-api.md)

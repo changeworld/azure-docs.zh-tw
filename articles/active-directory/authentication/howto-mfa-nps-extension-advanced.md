@@ -11,16 +11,19 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdadc02c8bb1c3f9450ff34ac935547343989cf6
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 6d436414393d77c83acc835110f17e55e491dce1
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742964"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503484"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication 之 NPS 延伸模組的進階設定選項
 
-網路原則伺服器 (NPS) 擴充功能會將您的雲端式 Azure AD Multi-Factor Authentication 功能延伸至您的內部部署基礎結構。 本文假設您已經安裝延伸模組，而現在想要知道如何為您的需求自訂延伸模組。 
+網路原則伺服器 (NPS) 擴充功能會將您的雲端式 Azure AD Multi-Factor Authentication 功能延伸至您的內部部署基礎結構。 本文假設您已經安裝延伸模組，而現在想要知道如何為您的需求自訂延伸模組。
+
+> [!NOTE]
+> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 ## <a name="alternate-login-id"></a>替代登入識別碼
 

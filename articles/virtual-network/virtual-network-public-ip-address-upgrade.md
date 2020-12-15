@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6cabc340c0be347165a3e506703a6277f7eb1cea
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905786"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503928"
 ---
 # <a name="upgrade-public-ip-addresses"></a>升級公用 IP 位址
 
@@ -32,9 +32,6 @@ Azure 公用 IP 位址會使用 SKU （基本或標準）來建立，以決定�
 * 如何將傳統 Azure 保留的 IP 遷移至 Azure Resource Manager 基本 SKU 公用 IP
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>將公用 IP 位址從基本升級為標準 SKU
-
->[!NOTE]
->所有區域都無法使用將公用 Ip 從基本升級至標準的功能。  請參閱 [**限制**](#limitations) 以取得詳細資料。
 
 若要升級公用 IP，其不得與任何資源相關聯 (請參閱 [此頁面](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) ，以取得如何將公用 ip 解除關聯) 的詳細資訊。
 
@@ -147,15 +144,6 @@ Azure Resource Manager 中的新資源群組是使用上述範例中的已遷移
 ---
 
 ## <a name="limitations"></a>限制
-
-* 這項功能目前無法在下欄區域使用：<br>
-US Gov 維吉尼亞州<br>
-US DoD 東部<br>
-US DoD 中部<br>
-中國東部<br>
-中國東部 2<br>
-中國北部<br>
-中國北部 2
 
 * 為了升級基本公用 IP，它無法與任何 Azure 資源相關聯。  請參閱 [此頁面](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) ，以取得如何將公用 ip 解除關聯的詳細資訊。  同樣地，若要遷移保留的 IP，則無法與任何雲端服務相關聯。  請參閱 [此頁面](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) ，以取得如何將保留的 ip 解除關聯的詳細資訊。  
 * 從基本升級至標準 SKU 的公用 Ip 會繼續沒有 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) ，因此無法與區域冗余或區域性的 Azure 資源相關聯。  請注意，這只適用于提供可用性區域的區域。

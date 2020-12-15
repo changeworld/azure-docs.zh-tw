@@ -1,20 +1,20 @@
 ---
 title: Azure Arc 啟用的伺服器的 VM 延伸模組管理
 description: Azure Arc 啟用的伺服器可以管理虛擬機器擴充功能的部署，以使用非 Azure Vm 提供部署後設定和自動化工作。
-ms.date: 11/06/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7682f6c8631bbaf2310d501d7cee6aecb2311226
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358026"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504503"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>已啟用 Azure Arc 的伺服器的虛擬機器擴充功能管理
 
-虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure Vm 上提供部署後設定和自動化工作。 例如，如果虛擬機器需要軟體安裝、防毒保護，或是要在其中執行指令碼，您可以使用 VM 延伸模組。
+虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure Vm 上提供部署後設定和自動化工作。 例如，如果虛擬機器需要軟體安裝、防毒軟體或在其中執行腳本，則可以使用 VM 擴充功能。
 
-Azure Arc 啟用的伺服器可讓您將 Azure VM 擴充功能部署至非 Azure Windows 和 Linux Vm，並透過其生命週期簡化混合式機器在內部部署、邊緣和其他雲端環境的管理。 您可以在混合式電腦上使用下列方法來管理 VM 擴充功能，或在已啟用 Arc 的伺服器上管理伺服器：
+Azure Arc 啟用的伺服器可讓您將 Azure VM 擴充功能部署至非 Azure Windows 和 Linux Vm，並透過其生命週期簡化混合式機器的管理。 您可以在混合式電腦上使用下列方法來管理 VM 擴充功能，或在已啟用 Arc 的伺服器上管理伺服器：
 
 - [Azure 入口網站](manage-vm-extensions-portal.md)
 - [Azure CLI](manage-vm-extensions-cli.md)
@@ -27,7 +27,7 @@ Azure Arc 啟用的伺服器 VM 延伸模組支援提供下列主要優點：
 
 - 使用 [Azure 自動化狀態設定](../../automation/automation-dsc-overview.md) 來集中儲存設定，並維護透過 DSC VM 延伸模組啟用的混合式連線機器所需狀態。
 
-- 使用 Log Analytics 代理程式 VM 擴充功能 [Azure 監視器](../../azure-monitor/platform/data-platform-logs.md) 啟用記錄檔收集記錄資料以進行分析。 這適用于跨各種來源的資料執行複雜的分析。
+- 使用 Log Analytics 代理程式 VM 擴充功能 [Azure 監視器](../../azure-monitor/platform/data-platform-logs.md) 啟用記錄檔收集記錄資料以進行分析。 這對於跨不同類型來源的資料執行複雜的分析很有用。
 
 - 使用 [適用於 VM 的 Azure 監視器](../../azure-monitor/insights/vminsights-overview.md)時，會分析 Windows 和 Linux vm 的效能，並監視其進程和其他資源和外部進程的相依性。 這可透過啟用 Log Analytics 代理程式和 Dependency agent VM 延伸模組來達成。
 
@@ -43,7 +43,7 @@ VM 擴充功能只能在 [支援的區域](overview.md#supported-regions)清單�
 
 在此版本中，我們支援 Windows 和 Linux 機器上的下列 VM 擴充功能。
 
-|延伸模組 |OS |Publisher |其他資訊 |
+|延伸模組 |OS |發行者 |其他資訊 |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Windows 自訂腳本擴充功能](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Microsoft PowerShell|[Windows PowerShell DSC 延伸模組](../../virtual-machines/extensions/dsc-windows.md)|
@@ -58,7 +58,7 @@ VM 擴充功能只能在 [支援的區域](overview.md#supported-regions)清單�
 
 若要瞭解 Azure Connected Machine 代理程式封裝和延伸模組代理程式元件的詳細資料，請參閱 [代理程式總覽](agent-overview.md#agent-component-details)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 這項功能取決於您訂用帳戶中的下列 Azure 資源提供者：
 
@@ -67,9 +67,11 @@ VM 擴充功能只能在 [支援的區域](overview.md#supported-regions)清單�
 
 如果尚未註冊，請遵循 [註冊 Azure 資源提供者](agent-overview.md#register-azure-resource-providers)中的步驟。
 
+請務必參閱上表中所參考之每個 VM 擴充功能的檔，以瞭解是否有任何網路或系統需求。 這可協助您避免發生依賴該 VM 擴充功能的 Azure 服務或功能發生任何連線問題。
+
 ### <a name="log-analytics-vm-extension"></a>Log Analytics VM 延伸模組
 
-適用于 Linux 的 Log Analytics 代理程式 VM 擴充功能需要在目的電腦上安裝 Python 2.x。
+適用于 Linux 的 Log Analytics 代理程式 VM 擴充功能需要在目的電腦上安裝 Python 2.x。 
 
 ### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM 延伸模組 (預覽) 
 

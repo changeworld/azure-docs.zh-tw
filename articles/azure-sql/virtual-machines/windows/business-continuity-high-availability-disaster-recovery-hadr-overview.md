@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: dbe5fba838e7c4ad9487a29889eab11d4e42671f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1a0d1018991be9d78623b0826aeab3d13958e996
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358912"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504129"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的商務持續性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -85,20 +85,13 @@ Azure 支援下列商務持續性 SQL Server 技術：
 
 如果您有 [軟體保證](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)，則可以使用 SQL Server 執行混合式嚴重損壞修復 (DR) 計畫，而不會產生被動損壞修復實例的額外授權成本。
 
-例如，您可以在 Azure 中有作用中的主要內部部署，以及 DR 的免費被動次要資料庫： 
-
-![Azure 中的免費次要被動](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-secondary-in-azure.png)
-
-在上圖中，安裝程式會使用 SQL Server 在 Azure 虛擬機器上執行，其使用12個核心作為內部部署 SQL Server 部署（使用12個核心）的災難修復複本。 在過去，您必須為內部部署和 Azure 虛擬機器部署授權12個核心的 SQL Server。 新的權益可提供在 Azure 虛擬機器上執行的被動複本權益。 現在您只需要授權12個在內部部署執行的核心 SQL Server，只要在 Azure 虛擬機器上符合被動複本的災難復原準則即可。
-
-當三個複本都裝載在 Azure 中時，您也可以有兩個免費的被動次要資料庫： 
+例如，當所有三個複本都裝載在 Azure 中時，您可以有兩個免費的被動次要資料庫： 
 
 ![Azure 中的一切都有兩個免費 passives](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
 
-或者，您可以設定混合式容錯移轉環境，其中具有授權的主要內部部署、HA 有一個免費被動式，以及兩個用於 DR 的免費 passives： 
+或者，您可以設定混合式容錯移轉環境，其中包含授權的主要內部部署、HA 的免費被動式、DR 內部部署的免費被動式，以及 Azure 中 DR 的一個免費被動式：
 
 ![當環境與一個主要內部部署複本混合時，三個免費的 passives](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
-
 
 如需詳細資訊，請參閱[產品授權條款](https://www.microsoft.com/licensing/product-licensing/products)。 
 

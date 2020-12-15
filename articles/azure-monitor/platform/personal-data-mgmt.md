@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318312"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505268"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>儲存在 Log Analytics 和 Application Insights 中的個人資料指引
 
 Log Analytics 是有望找到個人資料的資料存放區。 Application Insights 會將其資料儲存在 Log Analytics 分割區中。 本文會討論這類資料一般是放在 Log Analytics 和 Application Insights 中的哪個位置，以及可供您處理這類資料的功能。
 
 > [!NOTE]
-> 根據本文的用途，_記錄資料_是指傳送至 Log Analytics 工作區的資料，而_應用程式資料_則是指 Application Insights 所收集的資料。
+> 根據本文的用途，_記錄資料_ 是指傳送至 Log Analytics 工作區的資料，而 _應用程式資料_ 則是指 Application Insights 所收集的資料。
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -60,7 +60,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
 * *使用者識別碼*：依預設，Application Insights 會使用隨機產生的識別碼來追蹤使用者和工作階段。 不過，通常這些欄位會經過覆寫以儲存與應用程式更相關的識別碼。 例如：使用者名稱，AAD GUID 等等。這些識別碼經常會歸類在個人資料範圍內，因此應妥善處理。 建議一律嘗試將這些識別碼模糊或匿名處理。 通常包含這些值的欄位有 session_Id、user_Id、user_AuthenticatedId、user_AccountId 以及 customDimensions。
-* *自訂資料*：Application Insights 能讓您將一組自訂維度附加至任何資料類型。 這些維度可以是*任何*資料。 您可以使用以下查詢來識別過去 24 小時內收集的任何自訂維度：
+* *自訂資料*：Application Insights 能讓您將一組自訂維度附加至任何資料類型。 這些維度可以是 *任何* 資料。 您可以使用以下查詢來識別過去 24 小時內收集的任何自訂維度：
     ```
     search * 
     | where isnotempty(customDimensions)
@@ -68,11 +68,11 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
     | project $table, timestamp, name, customDimensions 
     ```
 * *記憶體中和傳輸中的資料*：Application Insights 會追蹤例外狀況、要求、相依性呼叫及追蹤。 私人資料通常會在程式碼和 HTTP 呼叫層級收集。 檢閱例外狀況、要求、相依性及追蹤資料表來識別任何這類資料。 使用[遙測初始設定式](../app/api-filtering-sampling.md)，盡可能模糊處理這項資料。
-* *快照偵錯工具擷取*：Application Insights 中的[快照偵錯工具](../app/snapshot-debugger.md)功能可讓您在應用程式的生產執行個體上攔截到例外狀況時收集偵錯快照集。 快照集會公開導致例外狀況的完整堆疊追蹤，以及在堆疊中每個步驟的本機變數的值。 遺憾的是，這項功能不允許選擇性刪除快照點，或以程式設計的方式來存取快照集內的資料。 因此，如果預設快照集的保留率無法滿足您的合規性需求，則建議關閉此功能。
+* *快照偵錯工具擷取*：Application Insights 中的 [快照偵錯工具](../app/snapshot-debugger.md)功能可讓您在應用程式的生產執行個體上攔截到例外狀況時收集偵錯快照集。 快照集會公開導致例外狀況的完整堆疊追蹤，以及在堆疊中每個步驟的本機變數的值。 遺憾的是，這項功能不允許選擇性刪除快照點，或以程式設計的方式來存取快照集內的資料。 因此，如果預設快照集的保留率無法滿足您的合規性需求，則建議關閉此功能。
 
 ## <a name="how-to-export-and-delete-private-data"></a>如何匯出及刪除私人資料
 
-如先前的[個人資料處理策略](#strategy-for-personal-data-handling)一節所述，如果可以，__強烈__建議您重新制定資料收集政策以停止收集私人資料，或者模糊、匿名處理或修改私人資料，以免資料成為「私人」資料。 處理資料起先會導致您和團隊需要花費心力來定義並自動執行策略，建置介面供客戶與其資料互動，並產生長期維護成本。 此外，Log Analytics 和 Application Insights 的計算成本很高，而且大量的並行查詢或清除 API 呼叫可能會對 Log Analytics 功能的所有其他互動產生負面影響。 話雖如此，但在某些合理情況下，確實有必要收集私人資料。 在這些情況下，就應該採用本節所述的方式來處理資料。
+如先前的 [個人資料處理策略](#strategy-for-personal-data-handling)一節所述，如果可以，__強烈__ 建議您重新制定資料收集政策以停止收集私人資料，或者模糊、匿名處理或修改私人資料，以免資料成為「私人」資料。 處理資料起先會導致您和團隊需要花費心力來定義並自動執行策略，建置介面供客戶與其資料互動，並產生長期維護成本。 此外，Log Analytics 和 Application Insights 的計算成本很高，而且大量的並行查詢或清除 API 呼叫可能會對 Log Analytics 功能的所有其他互動產生負面影響。 話雖如此，但在某些合理情況下，確實有必要收集私人資料。 在這些情況下，就應該採用本節所述的方式來處理資料。
 
 [!INCLUDE [gdpr-intro-sentence](../../../includes/gdpr-intro-sentence.md)]
 
@@ -81,7 +81,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 針對檢視和匯出資料的要求，均應使用 [Log Analytics 查詢 API](https://dev.loganalytics.io/) 或 [Application Insights 查詢 API](https://dev.applicationinsights.io/quickstart)。 至於要如何將資料轉換為適當形式以提供給使用者，其實作邏輯則由您自行決定。 [Azure Functions](https://azure.microsoft.com/services/functions/) 很適合用來裝載這類邏輯。
 
 > [!IMPORTANT]
->  雖然絕大多數清除作業的完成速度應該都遠遠超過 SLA，但由於這些作業會對所使用的資料平台產生重大影響，所以**清除作業的正式完成 SLA 是設定為 30 天**。 這是自動化程序；沒有任何方法可以要求更快地處理作業。
+>  雖然絕大多數清除作業的完成速度應該都遠遠超過 SLA，但由於這些作業會對所使用的資料平台產生重大影響，所以 **清除作業的正式完成 SLA 是設定為 30 天**。 此 SLA 符合 GDPR 需求。 這是自動化的程式，因此無法要求以較快的速度處理操作。 
 
 ### <a name="delete"></a>刪除
 
@@ -89,6 +89,9 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 > Log Analytics 中的刪除動作具有破壞性，且將無法復原！ 進行這方面的作業時請格外小心。
 
 我們已將處理「清除」API 路徑的功能納入到隱私權中。 請謹慎使用此路徑，原因是這項操作會引發相關風險、可能影響效能，而且可能會扭曲整個彙總、量測和 Log Analytics 的其他方面。 如需替代的私人資料處理方法，請參閱[個人資料處理策略](#strategy-for-personal-data-handling)一節。
+
+> [!NOTE]
+> 執行清除作業之後，當 [清除作業狀態](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) 為 *暫* 止時，就無法存取資料。 
 
 清除作業極需相關權限，若未對 Azure 中的應用程式或使用者 (甚至包括資源擁有者) 明確授與 Azure Resource Manager 角色，其將無權執行此作業。 這個角色便是「資料清除者」，由於可能會遺失資料，委派此角色時請務必小心。 
 
@@ -109,7 +112,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
     ```
 
 > [!IMPORTANT]
->  雖然絕大多數清除作業的完成速度應該都遠遠超過 SLA，但由於這些作業會對 Log Analytics 所使用的資料平台產生重大影響，所以**清除作業的正式完成 SLA 是設定為 30 天**。 
+>  雖然絕大多數清除作業的完成速度應該都遠遠超過 SLA，但由於這些作業會對 Log Analytics 所使用的資料平台產生重大影響，所以 **清除作業的正式完成 SLA 是設定為 30 天**。 
 
 #### <a name="application-data"></a>應用程式資料
 
@@ -121,7 +124,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
    ```
 
 > [!IMPORTANT]
->  雖然絕大多數清除作業的完成速度應該都遠遠超過 SLA，但由於這些作業會對 Application Insights 所使用的資料平台產生重大影響，所以**清除作業的正式完成 SLA 是設定為 30 天**。
+>  雖然絕大多數清除作業的完成速度應該都遠遠超過 SLA，但由於這些作業會對 Application Insights 所使用的資料平台產生重大影響，所以 **清除作業的正式完成 SLA 是設定為 30 天**。
 
 ## <a name="next-steps"></a>後續步驟
 - 若要深入了解 Log Analytics 資料的收集、處理和保護方式，請參閱 [Log Analytics 資料安全性](./data-security.md)。

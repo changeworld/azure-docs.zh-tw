@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7bd9560399a2b2b377cb543a4f829883bcbdf7c8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7feac3ccb94cd8b4b0fab509477d4dbf772df2ae
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183765"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505523"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合式 Runbook 背景工作概觀
 
@@ -92,7 +92,7 @@ Azure 自動化混合式 Runbook 背景工作角色可在 Azure Government 中�
 
 * [隔離的虛擬機器](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines)。 部署時，它們會取用該電腦的整個實體主機，提供支援 IL5 工作負載所需的必要隔離層級。
 
-* [Azure 專用主機](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts)，可提供可裝載一或多個虛擬機器的實體伺服器，專用於一個 azure 訂用帳戶。
+* [Azure 專用主機](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host)，可提供可裝載一或多個虛擬機器的實體伺服器，專用於一個 azure 訂用帳戶。
 
 >[!NOTE]
 >透過混合式 Runbook 背景工作角色的計算隔離適用于 Azure 商業和美國政府雲端。 

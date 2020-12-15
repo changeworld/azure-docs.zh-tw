@@ -4,16 +4,16 @@ description: 說明如何使用 Azure 儲存體佇列作為「Azure 事件方格
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 502b44f276253be69362424c9de0fd516d20ad9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 12/15/2020
 ms.locfileid: "91270180"
 ---
 # <a name="storage-queue-as-an-event-handler-for-azure-event-grid-events"></a>以儲存體佇列作為 Azure 事件方格事件的事件處理常式
-事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 有幾項 Azure 服務已自動設定為會處理事件，**Azure 佇列儲存體**是其中之一。 
+事件處理常式是傳送事件的位置。 處理常式會採取一些進一步的動作來處理事件。 有幾項 Azure 服務已自動設定為會處理事件，**Azure 佇列儲存體** 是其中之一。 
 
-使用**佇列儲存體**來接收需要提取的事件。 若執行中的流程太過冗長導致回應時間過久，您可以使用佇列儲存體。 藉由傳送事件至佇列儲存體，應用程式即可按照自己的排程提取並處理事件。
+使用 **佇列儲存體** 來接收需要提取的事件。 若執行中的流程太過冗長導致回應時間過久，您可以使用佇列儲存體。 藉由傳送事件至佇列儲存體，應用程式即可按照自己的排程提取並處理事件。
 
 ## <a name="tutorials"></a>教學課程
 如需使用佇列儲存體作為事件處理常式的範例，請參閱下列教學課程。 

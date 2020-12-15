@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 11/02/2020
+ms.date: 12/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: fa8d40e4817b6adb42da6daa3035bd1c4a67c5d8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f273902aee47a22bcf29bdf507f617efe242f5a4
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325279"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505132"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 
@@ -319,7 +319,7 @@ print(service.state)
 | 過渡 | 服務正在進行部署。 | 否 |
 | Unhealthy | 服務已部署，但目前無法連線。  | 否 |
 | 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | 否 |
-| 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
+| Failed | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
 | Healthy | 服務狀況良好，且端點可供使用。 | 是 |
 
 

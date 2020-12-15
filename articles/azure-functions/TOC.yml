@@ -533,7 +533,16 @@
               href: functions-bindings-storage-queue-output.md
               displayName: Queue storage
         - name: RabbitMQ
-          href: 'https://github.com/azure/azure-functions-rabbitmq-extension'
+          items:
+            - name: 概觀
+              href: functions-bindings-rabbitmq.md
+              displayName: RabbitMQ
+            - name: 觸發程序
+              href: functions-bindings-rabbitmq-trigger.md
+              displayName: RabbitMQ
+            - name: 輸出
+              href: functions-bindings-rabbitmq-output.md
+              displayName: RabbitMQ
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: 服務匯流排

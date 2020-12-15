@@ -7,17 +7,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/18/2018
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9e7c537e85039675f27fa3e276b6b964ce1679b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: f3b918fdf753cef75782a47ef157c282ef47e1ed
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388590"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503636"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定直接登入
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 使用 Azure Active Directory (AD) B2C 為應用程式設定登入時，您可以預先填入登入名稱或直接登入至特定的社交識別提供者，例如 Facebook、LinkedIn 或 Microsoft 帳戶。
 
@@ -29,7 +32,9 @@ ms.locfileid: "85388590"
 
 使用者可以在登入文字方塊中變更值。
 
-如果您使用自訂原則，則會覆寫 `SelfAsserted-LocalAccountSignin-Email` 技術設定檔。 在 `<InputClaims>` 區段中，將 signInName 宣告的 DefaultValue 設定為 `{OIDC:LoginHint}`。 `{OIDC:LoginHint}` 變數包含 `login_hint` 參數的值。 Azure AD B2C 會讀取 signInName 宣告的值，並預先填入 signInName 文字方塊。
+::: zone pivot="b2c-custom-policy"
+
+若要支援登入提示參數，請覆寫 `SelfAsserted-LocalAccountSignin-Email` 技術設定檔。 在 `<InputClaims>` 區段中，將 signInName 宣告的 DefaultValue 設定為 `{OIDC:LoginHint}`。 `{OIDC:LoginHint}` 變數包含 `login_hint` 參數的值。 Azure AD B2C 會讀取 signInName 宣告的值，並預先填入 signInName 文字方塊。
 
 ```xml
 <ClaimsProvider>
@@ -45,13 +50,35 @@ ms.locfileid: "85388590"
 </ClaimsProvider>
 ```
 
+::: zone-end
+
 ## <a name="redirect-sign-in-to-a-social-provider"></a>將登入重新導向至社交提供者
 
 如果您已將應用程式的登入旅程圖設定為包含社交帳戶 (例如 Facebook、LinkedIn 或 Google)，您可以指定 `domain_hint` 參數。 此查詢參數會向 Azure AD B2C 提供應該用於登入的社交識別提供者相關提示。 例如，如果應用程式指定 `domain_hint=facebook.com`，則登入時會直接移至 Facebook 登入頁面。
 
 ![在 URL 中醒目提示 domain_hint query 參數的註冊登入頁面](./media/direct-signin/domain-hint.png)
 
-如果您要使用自訂原則，則可以使用任何 `<ClaimsProvider>` 的 `<Domain>domain name</Domain>` XML 元素來設定網域名稱。
+::: zone pivot="b2c-user-flow"
+
+網域提示查詢字串參數可以設定為下列其中一個網域：
+
+- amazon.com
+- facebook.com
+- github.com
+- google.com
+- linkedin.com
+- microsoft.com
+- qq.com
+- twitter.com
+- wechat.com
+- weibo.com 
+- 如需 [一般 OpenID Connect](identity-provider-generic-openid-connect.md)，請參閱 [網域提示](identity-provider-generic-openid-connect.md#response-mode)。
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+若要支援 domain hing 參數，您可以使用 any 的 XML 元素來設定功能變數名稱 `<Domain>domain name</Domain>` `<ClaimsProvider>` 。
 
 ```xml
 <ClaimsProvider>
@@ -62,4 +89,5 @@ ms.locfileid: "85388590"
     ...
 ```
 
+::: zone-end
 

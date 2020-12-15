@@ -5,16 +5,16 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 232a1ae5d125a2ea1d5723e85073fb3dd02420cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294072"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503551"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates-preview"></a>在範本 (預覽版中設定部署腳本的開發環境) 
+# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>針對範本中的部署腳本設定開發環境
 
 瞭解如何使用部署腳本映射來建立開發和測試部署腳本的開發環境。 您可以建立 [Azure 容器實例](../../container-instances/container-instances-overview.md) 或使用 [Docker](https://docs.docker.com/get-docker/)。 這兩篇文章皆涵蓋在內。
 
@@ -192,7 +192,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 ### <a name="test-the-deployment-script"></a>測試部署腳本
 
 1. 從 Azure 入口網站中，開啟您在其中部署容器實例和儲存體帳戶的資源群組。
-1. 開啟容器群組。 預設容器組名是附加 **cg** 的專案名稱。 您應該會看到容器實例處於執行中**狀態。**
+1. 開啟容器群組。 預設容器組名是附加 **cg** 的專案名稱。 您應該會看到容器實例處於執行中 **狀態。**
 1. 從左側功能表中選取 [ **容器** ]。 您應該會看到容器實例。  容器實例名稱是附加了 **容器** 的專案名稱。
 
     ![部署腳本 connect 容器實例](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)

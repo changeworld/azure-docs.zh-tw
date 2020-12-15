@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: azure, kinect,sdk, 下載更新, 最新, 可用, 安裝
-ms.openlocfilehash: 48a3df3962796cf561057e8ec85b754c974200f4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2fd14781c42192c713d826729f8fab6c698d6321
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358500"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505472"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect Sensor SDK 下載
 
@@ -26,14 +26,14 @@ ms.locfileid: "94358500"
 - [Azure Kinect Recorder](azure-kinect-recorder.md)。
 - [Azure Kinect Firmware Tool](azure-kinect-firmware-tool.md)。
 
-## <a name="windows-download-link"></a>Windows 下載連結
+## <a name="windows-installation-instructions"></a>Windows 安裝指示
 
-[Microsoft Installer](https://download.microsoft.com/download/3/d/6/3d6d9e99-a251-4cf3-8c6a-8e108e960b4b/Azure%20Kinect%20SDK%201.4.1.exe) | [GitHub 原始程式碼](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1093)
+您可以在 [這裡](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md)找到最新版本和舊版 Azure KINECT 感應器 SDK 和固件的安裝詳細資料。
+
+您可以在[這裡](https://github.com/microsoft/Azure-Kinect-Sensor-SDK)找到原始程式碼。
 
 > [!NOTE]
 > 安裝 SDK 時，請記住您安裝的路徑。 例如，"C:\Program Files\Azure Kinect SDK 1.2"。 您會在此路徑中找到文章所參考的工具。
-
-您可以在 [GitHub](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md) 上找到先前版本的 Azure Kinect Sensor SDK 和 Firmware。
 
 ## <a name="linux-installation-instructions"></a>Linux 安裝指示
 

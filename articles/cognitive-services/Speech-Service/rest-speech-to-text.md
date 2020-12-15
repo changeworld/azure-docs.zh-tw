@@ -8,35 +8,66 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 12/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dff7ff0afd6c236645731dc7edd936b0b808716b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c746666d58e21c2705a2ef1d6a17d0d1196f7590
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483915"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504469"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
-語音服務可讓您使用 REST API 轉換語音轉換文字，作為 [語音 SDK](speech-sdk.md)的替代方案。 每個可存取的端點皆與區域相關聯。 您的應用程式需要您打算使用之端點的訂用帳戶金鑰。 REST API 非常有限，而且只應在 [語音 SDK](speech-sdk.md) 無法使用的情況下使用。
+語音轉換文字有兩個不同的 REST Api。 每個 API 都提供其特殊用途，並使用不同的端點集合。
 
-使用語音轉換文字 REST API 之前，請考慮下列事項：
+語音轉換文字 REST Api 如下：
+- [語音轉換文字 REST API v3.0](#speech-to-text-rest-api-v30) 用於 [批次](batch-transcription.md) 轉譯和 [自訂語音](custom-speech-overview.md)。 v3.0 是 v2.0 [的後續版本](/azure/cognitive-services/speech-service/migrate-v2-to-v3)。
+- [適用于短音訊的語音轉換文字 REST API](#speech-to-text-rest-api-for-short-audio) 用於線上轉譯，作為 [語音 SDK](speech-sdk.md)的替代方案。 使用此 API 的要求只能針對每個要求傳輸最多60秒的音訊。 
 
-* 使用 REST API 和直接傳輸音訊的要求最多隻能包含60秒的音訊。
-* 語音轉文字 REST API 只會傳回最終結果， 不提供部分的結果。
+## <a name="speech-to-text-rest-api-v30"></a>語音轉換文字 REST API v3。0
 
-如果您的應用程式需要傳送較長的音訊，請考慮使用 [語音 SDK](speech-sdk.md) 或以檔案為基礎的 REST API，例如 [批次](batch-transcription.md)轉譯。
+語音轉換文字 REST API v3.0 用於 [批次](batch-transcription.md) 轉譯和 [自訂語音](custom-speech-overview.md)。 如果您需要透過 REST 與線上轉譯通訊，請使用 [語音轉換文字 REST API 進行短音訊](#speech-to-text-rest-api-for-short-audio)。
+
+使用 REST API v3.0：
+- 如果您想要讓同事存取您所建立的模型，或您想要將模型部署到多個區域，請將模型複製到其他訂用帳戶
+- 從容器轉譯資料 (大量轉譯) ，以及提供多個音訊檔案 Url
+- 使用 SAS Uri 從 Azure 儲存體帳戶上傳資料
+- 如果已針對該端點要求記錄，則取得每個端點的記錄
+- 要求您所建立之模型的資訊清單，以設定內部部署容器
+
+REST API v3.0 包含下列功能：
+- **通知-webhook**-服務的所有正在執行的進程現在都支援 webhook 通知。 REST API v3.0 提供可讓您在傳送通知的情況下註冊 webhook 的呼叫。
+- **更新端點後方的模型** 
+- **使用多個資料集進行模型** 調整—使用聲場、語言和發音資料的多個資料集組合來調整模型
+- **攜帶您自己的儲存體**-使用您自己的儲存體帳戶來儲存記錄、轉譯檔案和其他資料
+
+請參閱 [這篇文章](batch-transcription.md)，以瞭解搭配使用 REST API V3.0 與批次轉譯的範例。
+
+如果您使用語音轉換文字 REST API 2.0 版，請參閱 [本指南](/azure/cognitive-services/speech-service/migrate-v2-to-v3)中的如何遷移至 v3.0。
+
+請參閱 [這裡](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)的完整語音轉換文字 REST API v3.0 參考。
+
+## <a name="speech-to-text-rest-api-for-short-audio"></a>適用于短音訊的語音轉換文字 REST API
+
+語音服務可讓您使用 REST API 轉換語音轉換文字，作為 [語音 SDK](speech-sdk.md)的替代方案。 每個可存取的端點皆與區域相關聯。 您的應用程式需要您打算使用之端點的訂用帳戶金鑰。 簡短音訊的 REST API 非常有限，僅在 [語音 SDK](speech-sdk.md) 無法使用的情況下使用。
+
+使用語音轉換文字 REST API 進行短音訊之前，請考慮下列事項：
+
+* 使用短音訊的 REST API 以及直接傳輸音訊的要求，最多隻能包含60秒的音訊。
+* 適用于短音訊的語音轉換文字 REST API 只會傳回最終結果。 不提供部分的結果。
+
+如果您的應用程式需要傳送較長的音訊，請考慮使用 [語音 SDK](speech-sdk.md) 或 [語音轉換文字 REST API v3.0](#speech-to-text-rest-api-v30)。
 
 > [!TIP]
 > 請參閱政府雲端的 Azure 政府 [檔](../../azure-government/compare-azure-government-global-azure.md) (FairFax) 端點。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>區域與端點
+### <a name="regions-and-endpoints"></a>區域與端點
 
-REST API 的端點的格式如下：
+適用于 short 音訊的 REST API 端點的格式如下：
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
@@ -49,7 +80,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 > [!NOTE]
 > 必須將語言參數附加到 URL 後方，以避免收到 4xx HTTP 錯誤。 例如，使用美國西部端點設定為美式英文的語言是：`https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`。
 
-## <a name="query-parameters"></a>查詢參數
+### <a name="query-parameters"></a>查詢參數
 
 REST 要求的查詢字串中可能包括這些參數。
 
@@ -60,9 +91,9 @@ REST 要求的查詢字串中可能包括這些參數。
 | `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值是，它會將不雅 `masked` 內容取代為星號， `removed` 這會從結果中移除所有不雅內容，或 `raw` 在結果中包含不雅內容。 預設設定是 `masked`。 | 選擇性 |
 | `cid` | 使用 [自訂語音入口網站](./custom-speech-overview.md)建立自訂模型時，您可以透過在 [**部署**] 頁面上找到的 **端點識別碼**，使用自訂模型。 使用 **端點識別碼** 作為 `cid` 查詢字串參數的引數。 | 選擇性 |
 
-## <a name="request-headers"></a>要求標頭
+### <a name="request-headers"></a>要求標頭
 
-下表列出了語音轉文字要求的必要標頭和選用標頭。
+下表列出語音轉換文字要求的必要和選擇性標頭。
 
 |標頭| 描述 | 必要/選用 |
 |------|-------------|---------------------|
@@ -74,7 +105,7 @@ REST 要求的查詢字串中可能包括這些參數。
 | `Expect` | 如果使用區塊傳輸，請傳送 `Expect: 100-continue`。 語音服務會確認初始要求並等候其他資料。| 如果傳送的是音訊資料區塊，則為必要。 |
 | `Accept` | 如果提供，則必須是 `application/json`。 語音服務會以 JSON 提供結果。 某些要求架構會提供不相容的預設值。 最好的作法是一律包含 `Accept` 。 | 此為選用步驟，但建議執行。 |
 
-## <a name="audio-formats"></a>自動格式
+### <a name="audio-formats"></a>自動格式
 
 音訊是在 HTTP `POST` 要求的主體中傳送。 它必須是此表格中的格式之一：
 
@@ -84,9 +115,9 @@ REST 要求的查詢字串中可能包括這些參數。
 | OGG    | OPUS  | 256 kpbs | 16 kHz，單聲道 |
 
 >[!NOTE]
->您可以透過語音服務中的 REST API 和 WebSocket 來支援上述格式。 [語音 SDK](speech-sdk.md)目前支援具有 PCM 編解碼器的 WAV 格式，以及[其他格式](how-to-use-codec-compressed-audio-input-streams.md)。
+>使用語音服務中的簡短音訊和 WebSocket REST API 可支援上述格式。 [語音 SDK](speech-sdk.md)目前支援具有 PCM 編解碼器的 WAV 格式，以及[其他格式](how-to-use-codec-compressed-audio-input-streams.md)。
 
-## <a name="pronunciation-assessment-parameters"></a>發音評定參數
+### <a name="pronunciation-assessment-parameters"></a>發音評定參數
 
 下表列出發音評量的必要和選擇性參數。
 
@@ -123,7 +154,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 >[!NOTE]
 >「發音評定」功能目前僅供 `westus` `eastasia` 和區域使用 `centralindia` 。 這項功能目前僅適用于 `en-US` 語言。
 
-## <a name="sample-request"></a>範例要求
+### <a name="sample-request"></a>範例要求
 
 下列範例包含主機名稱和必要標頭。 請務必注意，此服務也預期會有此範例中未包含的音訊資料。 如先前所述，建議以區塊處理，但非必要。
 
@@ -143,7 +174,7 @@ Expect: 100-continue
 Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
-## <a name="http-status-codes"></a>HTTP 狀態碼
+### <a name="http-status-codes"></a>HTTP 狀態碼
 
 每個回應的 HTTP 狀態碼會指出成功或常見的錯誤。
 
@@ -155,9 +186,9 @@ Pronunciation-Assessment: eyJSZWZlcm...
 | `401` | 未經授權 | 訂用帳戶金鑰或授權權杖在指定的區域中無效，或是無效的端點。 |
 | `403` | 禁止 | 遺漏訂用帳戶金鑰或授權權杖。 |
 
-## <a name="chunked-transfer"></a>區塊傳輸
+### <a name="chunked-transfer"></a>區塊傳輸
 
-區塊傳輸 (`Transfer-Encoding: chunked`) 可協助減少辨識延遲。 它可讓語音服務在音訊檔案進行傳輸時開始處理。 REST API 不會提供部分或中間的結果。
+區塊傳輸 (`Transfer-Encoding: chunked`) 可協助減少辨識延遲。 它可讓語音服務在音訊檔案進行傳輸時開始處理。 Short 音訊的 REST API 不會提供部分或中間的結果。
 
 此程式碼範例說明如何以區塊傳送音訊。 只有第一個區塊應該包含音訊檔案的標頭。 `request` 是 `HttpWebRequest` 連接到適當 REST 端點的物件。 `audioFile` 是音訊檔案在磁碟上的路徑。
 
@@ -191,7 +222,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>回應參數
+### <a name="response-parameters"></a>回應參數
 
 結果以 JSON 格式提供。 `simple` 格式包含以下的最上層欄位。
 
@@ -233,7 +264,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `PronScore` | 表示指定語音之發音品質的整體分數。 這是從 `AccuracyScore` `FluencyScore` 和加權匯總而來 `CompletenessScore` 。 |
 | `ErrorType` | 此值會指出文字是否省略、插入或不太明顯，相較于 `ReferenceText` 。 可能的值為 `None` (表示這個字組沒有錯誤) `Omission` 、 `Insertion` 和 `Mispronunciation` 。 |
 
-## <a name="sample-responses"></a>回應範例
+### <a name="sample-responses"></a>回應範例
 
 辨識的一般回應 `simple` ：
 
@@ -309,3 +340,4 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 - [自訂原音模型](./how-to-custom-speech-train-model.md)
 - [自訂語言模型](./how-to-custom-speech-train-model.md)
+- [熟悉批次轉譯](batch-transcription.md)

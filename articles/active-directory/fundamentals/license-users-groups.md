@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2018
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e0fe1cf3bb628c40e774423e45ea88d6ab78a5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359708"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504401"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 入口網站中指派或移除授權
 
@@ -37,7 +37,7 @@ Azure AD 服務有數個可用的授權方案，包括：
 
 如需有關每個授權方案和相關授權詳細資料的特定資訊，請參閱 [我需要什麼授權？](https://azure.microsoft.com/pricing/details/active-directory/)。 若要註冊 Azure AD premium 授權方案，請參閱 [此處](./active-directory-get-started-premium.md)。
 
-某些位置無法使用部分 Microsoft 服務。 必須先為所有成員指定 [使用位置]，才可以將授權指派給群組。**** 您可以在 Azure AD 中的 [Azure Active Directory]&gt;[使用者]&gt;[設定檔]&gt;[設定] 區域中設定此值。**** 未指定其使用位置的任何使用者都會繼承 Azure AD 組織的位置。
+某些位置無法使用部分 Microsoft 服務。 必須先為所有成員指定 [使用位置]，才可以將授權指派給群組。 您可以在 Azure AD 中的 [Azure Active Directory]&gt;[使用者]&gt;[設定檔]&gt;[設定] 區域中設定此值。 未指定其使用位置的任何使用者都會繼承 Azure AD 組織的位置。
 
 ## <a name="view-license-plans-and-plan-details"></a>查看授權方案和方案詳細資料
 
@@ -47,13 +47,20 @@ Azure AD 服務有數個可用的授權方案，包括：
 
 1. 使用 Azure AD 組織中的授權系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com/) 。
 
-1. 選取 [Azure Active Directory]，然後選取 [授權]。********
+1. 選取 [Azure Active Directory]，然後選取 [授權]。
 
-    ![授權頁面，包含已購買的服務數目和指派的授權](media/license-users-groups/license-details-blade.png)
+    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="授權頁面，包含已購買的服務數目和指派的授權":::
 
-1. 選取 [ **購買** ] 連結以查看 [ **產品** ] 頁面，並查看您的授權方案所 **指派**、 **可用**和 **即將到期** 的號碼。
+1. 選取 [ **所有產品** ] 以查看 [所有產品] 頁面，並查看授權方案的 **總**、 **指派**、 **可用** 和 **即將到期** 的次數。
 
-    ![服務頁面，包含服務授權方案和相關聯的授權資訊](media/license-users-groups/license-products-blade-with-products.png)
+    :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="服務頁面-包含服務授權方案-相關聯的授權資訊":::
+
+    > [!NOTE]
+    > 這些數位的定義如下： 
+    > - 總計：購買的授權總數
+    > - 已指派：指派給使用者的授權數目
+    > - 可用：指派的可用授權數，包括即將過期
+    > - 即將到期：即將到期的授權數目
 
 1. 選取方案名稱以查看其授權的使用者和群組。
 
@@ -71,20 +78,20 @@ Azure AD 服務有數個可用的授權方案，包括：
 
     ![具有反白顯示指派選項的 [服務] 頁面](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. 在 [指派] 頁面上，選取 [使用者和群組]，然後搜尋並選取您想指派授權的使用者。********
+1. 在 [指派] 頁面上，選取 [使用者和群組]，然後搜尋並選取您想指派授權的使用者。
 
     ![指派授權頁面顯示反白的搜尋和 [選取] 選項](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-1. 選取 [指派] 選項，確認已開啟適當的授權選項，然後選取 [確定]。********
+1. 選取 [指派] 選項，確認已開啟適當的授權選項，然後選取 [確定]。
 
     ![授權選項頁面，其中包含授權方案中可用的所有選項](media/license-users-groups/license-option-blade-assignments.png)
 
-    [指派授權] 頁面隨即更新，顯示已選取一名使用者且已設定指派。****
+    [指派授權] 頁面隨即更新，顯示已選取一名使用者且已設定指派。
 
     > [!NOTE]
-    > 某些位置無法使用部分 Microsoft 服務。 必須先指定 [使用位置]，才可以將授權指派給使用者。**** 您可以在 Azure AD 中的 [Azure Active Directory]&gt;[使用者]&gt;[設定檔]&gt;[設定] 區域中設定此值。**** 未指定其使用位置的任何使用者都會繼承 Azure AD 組織的位置。
+    > 某些位置無法使用部分 Microsoft 服務。 必須先指定 [使用位置]，才可以將授權指派給使用者。 您可以在 Azure AD 中的 [Azure Active Directory]&gt;[使用者]&gt;[設定檔]&gt;[設定] 區域中設定此值。 未指定其使用位置的任何使用者都會繼承 Azure AD 組織的位置。
 
-1. 選取 [指派]****。
+1. 選取 [指派]。
 
     系統會將使用者新增至授權使用者清單中，且該使用者擁有隨附 Azure AD 服務的存取權。
     > [!NOTE]
@@ -96,21 +103,21 @@ Azure AD 服務有數個可用的授權方案，包括：
 
     ![產品分頁，具有反白顯示的產品授權方案](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. 在 [Azure Active Directory Premium Plan 2] 頁面上，選取 [指派]。********
+1. 在 [Azure Active Directory Premium Plan 2] 頁面上，選取 [指派]。
 
     ![[產品] 頁面顯示反白的 [指派] 選項](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. 在 [指派] 頁面上，選取 [使用者和群組]，然後搜尋並選取您想指派授權的群組。********
+1. 在 [指派] 頁面上，選取 [使用者和群組]，然後搜尋並選取您想指派授權的群組。
 
     ![指派授權頁面，反白顯示搜尋和選取選項2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-1. 選取 [指派] 選項，確認已開啟適當的授權選項，然後選取 [確定]。********
+1. 選取 [指派] 選項，確認已開啟適當的授權選項，然後選取 [確定]。
 
     ![授權選項頁面，其中包含授權方案2中的所有可用選項](media/license-users-groups/license-option-blade-group-assignments.png)
 
-    [指派授權] 頁面隨即更新，顯示已選取一名使用者且已設定指派。****
+    [指派授權] 頁面隨即更新，顯示已選取一名使用者且已設定指派。
 
-1. 選取 [指派]****。
+1. 選取 [指派]。
 
     系統會將群組新增至授權群組清單中，且所有成員均擁有隨附 Azure AD 服務的存取權。
 
@@ -122,7 +129,7 @@ Azure AD 服務有數個可用的授權方案，包括：
 
 1. 在服務方案的 [ **授權的使用者** ] 頁面上，選取應不再具有授權的使用者。 例如 _Alain Charon_。
 
-1. 選取 [移除授權]****。
+1. 選取 [移除授權]。
 
     ![[授權使用者] 頁面顯示反白的 [移除] 授權選項](media/license-users-groups/license-products-user-blade-with-remove-option-highlight.png)
 
@@ -133,7 +140,7 @@ Azure AD 服務有數個可用的授權方案，包括：
 
 1. 在授權方案的 [ **授權群組** ] 頁面上，選取應不再具有授權的群組。
 
-1. 選取 [移除授權]****。
+1. 選取 [移除授權]。
 
     ![已反白顯示 [移除授權] 選項的 [授權群組] 頁面2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     

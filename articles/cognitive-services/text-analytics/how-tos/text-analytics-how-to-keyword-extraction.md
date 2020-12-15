@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 68da6a134f2410ca81ae16b8e00c40d0a9c8f22c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 39823792a438e533134f38c04e72f2c314c57678
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965012"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505183"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>範例：如何使用文字分析來將關鍵字組解壓縮
 
@@ -33,7 +33,7 @@ ms.locfileid: "94965012"
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-關鍵片語擷取在處理較大量文字時的效果最佳。 這與情感分析相反，後者較適合用來處理較少量的文字。 若要從這兩項作業獲得最佳結果，請考慮據此重新建構輸入。
+關鍵片語擷取在處理較大量文字時的效果最佳。 這與情感分析相反，後者較適合用來處理較少量的文字。 若要從這兩個作業中取得最佳結果，請考慮據以重建輸入。
 
 您必須具有下列格式的 JSON 檔：識別碼、文字、語言
 
@@ -160,7 +160,7 @@ ms.locfileid: "94965012"
 ```
 如同前面所述，分析器會尋找並捨棄非必要的字組，並保留看似句子主體或物件的單一字詞或片語。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本文中，您已瞭解使用認知服務中的文字分析來進行關鍵字組解壓縮的概念和工作流程。 摘要說明：
 
@@ -177,5 +177,5 @@ ms.locfileid: "94965012"
 ## <a name="next-steps"></a>後續步驟
 
 * [文字分析概觀](../overview.md)
-* [使用文字分析用戶端程式庫](../quickstarts/text-analytics-sdk.md)
+* [使用文字分析用戶端程式庫](../quickstarts/client-libraries-rest-api.md)
 * [新功能](../whats-new.md)

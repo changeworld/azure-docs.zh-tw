@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fefa16a39545c0c4094db8dbd18b46fb94ef5025
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325299"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504027"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自動化的指令碼建立 Service Manager Web 應用程式
 
@@ -26,9 +26,12 @@ ms.locfileid: "87325299"
 - Web 應用程式的網站名稱前置詞
 - 服務匯流排命名空間。
 
-指令碼會使用您指定的名稱 (與其他可使它成為唯一的字串) 來建立 Web 應用程式。 它會產生 **Web 應用程式 URL**、 **用戶端識別碼**和 **用戶端密碼**。
+指令碼會使用您指定的名稱 (與其他可使它成為唯一的字串) 來建立 Web 應用程式。 它會產生 **Web 應用程式 URL**、 **用戶端識別碼** 和 **用戶端密碼**。
 
 儲存這些值，當您使用 IT 服務管理連接器建立連線時會用到這些值。
+
+> [!NOTE]
+> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -317,6 +320,6 @@ if(!$err)
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 [設定混合式連接](./itsmc-connections.md#configure-the-hybrid-connection)。
 

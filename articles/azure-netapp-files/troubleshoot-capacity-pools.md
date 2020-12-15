@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369234"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505455"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>針對容量集區問題進行疑難排解
 
@@ -33,7 +33,7 @@ ms.locfileid: "94369234"
 | 刪除容量集區的問題  |  確定您已在嘗試刪除容量集區的訂用帳戶中，移除所有 Azure NetApp Files 磁片區和快照集。 <br> 如果您已移除所有磁片區和快照集，但仍然無法刪除容量集區，則資源的參考可能仍會存在，而不會顯示在入口網站中。 在此情況下，請提出支援票證，並指定您已執行上述的建議步驟。 |
 | 磁片區建立或修改失敗，發生 `Requested throughput not available` 錯誤 | 磁片區的可用輸送量取決於其容量集區的大小和服務層級。 如果沒有足夠的輸送量，您應該增加集區大小或調整現有的磁片區輸送量。 | 
 
-## <a name="issues-moving-a-capacity-pool"></a>移動容量集區的問題 
+## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>變更磁片區的容量集區時發生的問題 
 
 > [!IMPORTANT] 
 > 以動態方式變更磁片區公開預覽註冊 [的服務層級](dynamic-change-volume-service-level.md) ，直到進一步通知為止。

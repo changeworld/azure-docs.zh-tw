@@ -16,18 +16,21 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40d77f4ebb897884f03377e6d9f1243a6d436766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500201"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504384"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 無縫單一登入：快速入門
 
 ## <a name="deploy-seamless-single-sign-on"></a>部署無縫單一登入
 
 使用者位於連線到公司網路的公司桌上型電腦時，Azure Active Directory (Azure AD) 無縫單一登入 (無縫 SSO) 會自動登入使用者。 無縫 SSO 可讓使用者輕鬆存取雲端式應用程式，而不需要任何額外的內部部署元件。
+
+> [!NOTE]
+> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 若要部署無縫 SSO，請遵循下列步驟。
 
@@ -124,7 +127,7 @@ ms.locfileid: "96500201"
 
 1. 開啟群組原則管理編輯器工具。
 2. 編輯套用至部分或所有使用者的群組原則。 此範例使用 **預設網域原則**。
-3. 流覽至 **User Configuration**[  >  **Policies** 系統管理範本 Windows 元件的使用者設定原則]  >  **Administrative Templates**  >  **Windows Components**  >  **Internet Explorer**[  >  **網際網路主控台**  >  **安全性] 頁面**。 然後選取 [指派網站到區域清單]。
+3. 流覽至[  >  系統管理範本 Windows 元件的使用者設定原則]  >    >    >  **Internet Explorer**[  >  **網際網路主控台**  >  **安全性] 頁面**。 然後選取 [指派網站到區域清單]。
     ![螢幕擷取畫面，顯示已選取 [網站至區域指派清單] 的 [安全性] 頁面。](./media/how-to-connect-sso-quick-start/sso6.png)
 4. 啟用原則，然後在對話方塊中輸入下列值：
    - **值名稱**：轉送 Kerberos 票證的 Azure AD URL。
@@ -144,7 +147,7 @@ ms.locfileid: "96500201"
 
     ![螢幕擷取畫面，顯示已選取區域指派的 [顯示內容] 視窗。](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. 流覽至 **User Configuration**  >  系統管理範本 Windows 元件的使用者設定 **原則**  >  **Administrative Templates**  >  **Windows Components**  >  **Internet Explorer**  >  **網際網路主控台**  >  **安全性頁面**  >  **內部網路區域**。 然後選取 [允許透過指令碼更新狀態列]。
+6. 流覽至  >  系統管理範本 Windows 元件的使用者設定 **原則**  >    >    >  **Internet Explorer**  >  **網際網路主控台**  >  **安全性頁面**  >  **內部網路區域**。 然後選取 [允許透過指令碼更新狀態列]。
 
     ![顯示 [近端內部網路區域] 頁面的螢幕擷取畫面，其中已選取 [允許透過腳本更新狀態列]。](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -156,7 +159,7 @@ ms.locfileid: "96500201"
 
 1. 開啟群組原則管理編輯器工具。
 2. 編輯套用至部分或所有使用者的群組原則。 此範例使用 **預設網域原則**。
-3. 流覽至 **使用者**  >  **Preferences**  >  **設定喜好設定 Windows 設定** 登錄  >  **Registry**  >  **新增** 登錄  >  **專案**。
+3. 流覽至 **使用者**  >    >  **設定喜好設定 Windows 設定** 登錄  >    >  **新增** 登錄  >  **專案**。
 
     ![螢幕擷取畫面，顯示已選取 [登錄]，並已選取 [登錄專案]。](./media/how-to-connect-sso-quick-start/sso15.png)
 

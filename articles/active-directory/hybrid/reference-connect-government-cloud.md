@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: e163ea34948906060996ee952f45ec0cdb467557
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518204"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504350"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Government 雲端的混合式身分識別考量
 
@@ -24,6 +24,9 @@ ms.locfileid: "96518204"
 
 > [!NOTE]
 > 若要將 Microsoft Active Directory 環境整合 (內部部署或裝載于與 Azure Government 雲端) 的相同雲端實例中的 IaaS，您需要升級至最新版本的 [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。
+
+> [!NOTE]
+> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 如需美國國防部的完整端點清單，請參閱這份[文件](/office365/enterprise/office-365-u-s-government-dod-endpoints)。
 
@@ -94,7 +97,7 @@ Mozilla Firefox 不會自動使用 Kerberos 驗證。 每個使用者都必須�
 
 ### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>以 Chromium 為基礎的 Microsoft Edge (所有平台)
 
-如果您已覆寫環境中的  `AuthNegotiateDelegateAllowlist` 或 `AuthServerAllowlist` 原則設定，請確保在其中新增 Azure AD URL `https://autologon.microsoft.us`。
+如果您已覆寫環境中的  `AuthNegotiateDelegateAllowlist` 或 `AuthServerAllowlist`  原則設定，請確保在其中新增 Azure AD URL `https://autologon.microsoft.us`。
 
 ### <a name="google-chrome-all-platforms"></a>Google Chrome (所有平台)
 

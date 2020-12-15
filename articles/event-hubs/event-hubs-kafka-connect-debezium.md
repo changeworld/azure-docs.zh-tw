@@ -5,18 +5,21 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a13713f01a6bdb0ffcd787ef9c1d2f9a0336f63c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369551"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505404"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>使用 Debezium for Change Data Capture 整合 Azure 事件中樞 (Preview) 上的 Apache Kafka Connect 支援
 
-**變更資料捕獲 (CDC) ** 是一種技術，用來追蹤資料庫資料表中的資料列層級變更，以回應建立、更新和刪除作業。 [Debezium](https://debezium.io/) 是以不同資料庫中可用的變更資料捕獲功能為基礎的分散式平臺 (例如，于 postgresql) [中的邏輯解碼](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html) 。 它提供一組 [Kafka Connect 連接器](https://debezium.io/documentation/reference/1.2/connectors/index.html) ，可在資料庫資料表中的資料列層級變更 (s) ，然後將它們轉換成事件串流，然後再傳送至 [Apache Kafka](https://kafka.apache.org/)。
+**變更資料捕獲 (CDC)** 是一種技術，用來追蹤資料庫資料表中的資料列層級變更，以回應建立、更新和刪除作業。 [Debezium](https://debezium.io/) 是以不同資料庫中可用的變更資料捕獲功能為基礎的分散式平臺 (例如，于 postgresql) [中的邏輯解碼](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html) 。 它提供一組 [Kafka Connect 連接器](https://debezium.io/documentation/reference/1.2/connectors/index.html) ，可在資料庫資料表中的資料列層級變更 (s) ，然後將它們轉換成事件串流，然後再傳送至 [Apache Kafka](https://kafka.apache.org/)。
 
 本教學課程會逐步引導您瞭解如何使用適用于 Kafka) 、 [AZURE DB For 于 postgresql](../postgresql/overview.md)和 Debezium 的[Azure 事件中樞](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (，在 azure 上設定變更資料捕獲型系統。 它將使用 [Debezium 于 postgresql 連接器](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) ，從于 postgresql 將資料庫修改串流至 Azure 事件中樞中的 Kafka 主題
+
+> [!NOTE]
+> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 在本教學課程中，您會執行下列步驟：
 
@@ -100,7 +103,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 ```
 
 > [!IMPORTANT]
-> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需取得連接字串的指示，請參閱 [取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例設定： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需有關取得連接字串的指示，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例組態：`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
 
 
 ### <a name="run-kafka-connect"></a>執行 Kafka Connect
@@ -113,7 +116,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 > [!NOTE]
 > Kafka Connect 會使用 Kafka AdminClient API，以使用建議的設定 (包括壓縮) 自動建立主題。 在 Azure 入口網站中快速檢查命名空間，會顯露出 Connect 背景工作角色的內部主題已自動建立。
 >
-> Kafka Connect 內部主題**必須使用壓縮**。  若未正確設定 [內部連線] 主題，事件中樞小組將不會負責修正不當的設定。
+> Kafka Connect 內部主題 **必須使用壓縮**。  若未正確設定 [內部連線] 主題，事件中樞小組將不會負責修正不當的設定。
 
 ### <a name="configure-and-start-the-debezium-postgresql-source-connector"></a>設定並啟動 Debezium 于 postgresql 來源連接器
 
@@ -276,7 +279,7 @@ tail -f /Users/foo/todos-cdc.txt
 ```
 
 
-## <a name="cleanup"></a>清理
+## <a name="cleanup"></a>清除
 Kafka Connect 會建立事件中樞主題，以儲存即使在 Connect 叢集關閉後仍會保存下來的設定、位移及狀態。 除非需要此持續性，否則建議您刪除這些主題。 您也可能想要刪除在 `my-server.public.todos` 此逐步解說過程中所建立的事件中樞。
 
 ## <a name="next-steps"></a>後續步驟
