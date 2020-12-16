@@ -10,21 +10,22 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 0420360b70485e49dc6cd06dbeb19400c0f73ef5
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 271d7ce38d50fd21975327eb1f21528aeacc485e
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070345"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937231"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>規劃您的電話語音和 SMS 解決方案
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Azure 通訊服務可讓您使用電話號碼撥打語音電話，並透過公用交換電話網路 (PSTN) 傳送 SMS 訊息。 在本文件中，我們將檢閱使用通訊服務規劃電話語音和 SMS 解決方案時所適用的電話號碼類型、設定選項和區域可用性。
 
-[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
+
+
 
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Azure 通訊服務中的電話號碼類型
@@ -52,6 +53,8 @@ Azure 通訊服務可讓您使用電話號碼撥打語音電話，並透過公�
 
 
 ## <a name="phone-number-features-in-azure-communication-services"></a>Azure 通訊服務中的電話號碼功能 
+
+[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
 
 針對大部分的電話號碼，我們都可讓您設定一組「單點」的功能。 當您在 Azure 通訊服務內租用電話號碼時，可以選取這些功能。
 

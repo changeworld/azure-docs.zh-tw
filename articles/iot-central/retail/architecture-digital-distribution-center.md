@@ -7,18 +7,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: b73d065b43aff5f9793e642a102ff8bb2a7be036
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2e6993cd8dc77ccb9b43a3d5aef7b25fd9d7250
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81001137"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347110"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>IoT Central 數位配送中心應用程式範本的架構
 
 
 
-夥伴與客戶可以使用應用程式範本及下列指引，來開發端對端**數位配送中心**解決方案。
+夥伴與客戶可以使用應用程式範本及下列指引，來開發端對端 **數位配送中心** 解決方案。
 
 > [!div class="mx-imgBorder"]
 > ![數位配送中心](./media/concept-ddc-architecture/digital-distribution-center-architecture.png)
@@ -26,7 +26,7 @@ ms.locfileid: "81001137"
 1. 將遙測資料傳送至閘道裝置的一組 IoT 感應器
 2. 將遙測資料和彙總的見解傳送至 IoT Central 的閘道裝置
 3. 資料會路由傳送至所需的 Azure 服務以進行操作
-4. 您可以使用 Azure 服務 (例如 ASA 或 Azure Functions) 來將資料流重新格式化，並將其傳送至所需的儲存體帳戶 
+4. 您可以使用 Azure 服務 (例如 ASA 或 Azure Functions) 來將資料流重新格式化，並將其傳送至所需的儲存體帳戶
 5. 已處理的資料會以進行近乎即時的動作儲存於經常性儲存體，或儲存於冷儲存體以根據 ML 或批次分析來增強其他見解。 
 6. Logic Apps 可在終端使用者的商務應用程式中，用來增強各種商務工作流程
 

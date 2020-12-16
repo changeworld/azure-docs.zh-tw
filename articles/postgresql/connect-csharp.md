@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 8820fd7b0812d925af6aca923a2b205d5bc92f3e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a06d07a7d54b6399ab5f83c41284fb2fab7217fb
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341445"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360266"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 .NET (C#) 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
@@ -32,7 +32,7 @@ ms.locfileid: "93341445"
   | **設定服務端點** | 公用 | [入口網站](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
   | **設定私人連結** | 私人 | [入口網站](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-- 安裝適用於您平台的 [.NET Framework](https://www.microsoft.com/net/download) (Windows、Ubuntu Linux 或 macOS)。 
+- 安裝適用於您平台的 [.NET Framework](https://www.microsoft.com/net/download) (Windows、Ubuntu Linux 或 macOS)。
 - 安裝 [Visual Studio](https://www.visualstudio.com/downloads/) 以建置您的專案。
 - 在 Visual Studio 中安裝 [Npgsql](https://www.nuget.org/packages/Npgsql/) NuGet 套件。
 
@@ -40,19 +40,19 @@ ms.locfileid: "93341445"
 取得連線到 Azure Database for PostgreSQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver** )。
+2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
  :::image type="content" source="./media/connect-csharp/1-connection-string.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫伺服器名稱":::
 
 ## <a name="step-1-connect-and-insert-data"></a>步驟 1：連線和插入資料
-使用下列程式碼搭配 **CREATE TABLE** 和 **INSERT INTO** SQL 陳述式來連線和載入資料。 程式碼會使用 NpgsqlCommand 類別搭配下列方法： 
+使用下列程式碼搭配 **CREATE TABLE** 和 **INSERT INTO** SQL 陳述式來連線和載入資料。 程式碼會使用 NpgsqlCommand 類別搭配下列方法：
 - [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) 建立 PostgreSQL 資料庫的連線。
 - [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) 設定 CommandText 屬性。
-- [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) 方法執行資料庫命令。 
+- [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) 方法執行資料庫命令。
 
 > [!IMPORTANT]
-> 以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。 
+> 以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。
 
 ```csharp
 using System;
@@ -91,7 +91,7 @@ namespace Driver
                 conn.Open();
 
                 using (var command = new NpgsqlCommand("DROP TABLE IF EXISTS inventory", conn))
-                { 
+                {
                     command.ExecuteNonQuery();
                     Console.Out.WriteLine("Finished dropping table (if existed)");
 
@@ -111,7 +111,7 @@ namespace Driver
                     command.Parameters.AddWithValue("q2", 154);
                     command.Parameters.AddWithValue("n3", "apple");
                     command.Parameters.AddWithValue("q3", 100);
-                    
+
                     int nRows = command.ExecuteNonQuery();
                     Console.Out.WriteLine(String.Format("Number of rows inserted={0}", nRows));
                 }
@@ -134,7 +134,7 @@ namespace Driver
 - [GetInt32()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInt32_System_Int32_) 和 [GetString()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetString_System_Int32_) 剖析記錄中的值。
 
 > [!IMPORTANT]
-> 以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。 
+> 以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。
 
 ```csharp
 using System;
@@ -187,6 +187,7 @@ namespace Driver
                                 )
                             );
                     }
+                    reader.Close();
                 }
             }
 
@@ -201,12 +202,12 @@ namespace Driver
 
 ## <a name="step-3-update-data"></a>步驟 3：更新資料
 使用下列程式碼搭配 **UPDATE** SQL 陳述式來連線和更新資料。 程式碼會使用 NpgsqlCommand 類別搭配下列方法：
-- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) 建立 PostgreSQL 的連線。 
+- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) 建立 PostgreSQL 的連線。
 - [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) 設定 CommandText 屬性。
 - [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) 方法執行資料庫命令。
 
 > [!IMPORTANT]
-> 以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。 
+> 以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。
 
 ```csharp
 using System;
@@ -247,7 +248,6 @@ namespace Driver
                 {
                     command.Parameters.AddWithValue("n", "banana");
                     command.Parameters.AddWithValue("q", 200);
-                    
                     int nRows = command.ExecuteNonQuery();
                     Console.Out.WriteLine(String.Format("Number of rows updated={0}", nRows));
                 }
@@ -265,12 +265,12 @@ namespace Driver
 [有任何問題嗎？請告訴我們。](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="step-4-delete-data"></a>步驟 4：刪除資料
-使用下列程式碼搭配 **DELETE** SQL 陳述式來連線和刪除資料。 
+使用下列程式碼搭配 **DELETE** SQL 陳述式來連線和刪除資料。
 
 此程式碼使用 NpgsqlCommand 類別搭配 [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) 方法來對 PostgreSQL 資料庫建立連線。 然後，程式碼會使用 [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) 方法，設定 CommandText 屬性，並呼叫 [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) 方法來執行資料庫命令。
 
 > [!IMPORTANT]
-> 以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。 
+> 以建立伺服器和資料庫時所指定的值，取代主機、資料庫名稱、使用者和密碼參數。
 
 ```csharp
 using System;

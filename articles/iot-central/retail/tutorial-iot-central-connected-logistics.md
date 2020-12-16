@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 0206c111be7cd6441d9de32af498e961833d214f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 398441123d5ad309d9c2d506a75b80b58a6d56d0
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980693"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346209"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>教學課程：部署並逐步執行聯網物流應用程式範本
 
@@ -41,9 +41,9 @@ ms.locfileid: "90980693"
 
     :::image type="content" source="media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png" alt-text="聯網物流範本":::
 
-2. 在 [聯網物流應用程式] 底下，選取 [建立應用程式]。
+1. 在 [聯網物流應用程式] 底下，選取 [建立應用程式]。
 
-3. [建立應用程式] 會開啟 [新增應用程式] 表單。 輸入下列詳細資料：
+1. [建立應用程式] 會開啟 [新增應用程式] 表單。 輸入下列詳細資料：
 
 
     * **應用程式名稱**：您可以使用建議的預設名稱，或輸入易記應用程式名稱。
@@ -51,9 +51,9 @@ ms.locfileid: "90980693"
     * **帳單資訊**：您需要目錄、Azure 訂用帳戶和區域詳細資料，才能佈建資源。
     * **建立**：選取頁面底部的 [建立]，以部署您的應用程式。
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="聯網物流範本":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="聯網物流應用程式範本":::
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="聯網物流範本":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="聯網物流計費資訊":::
 
 ## <a name="walk-through-the-application"></a>逐步執行應用程式
 
@@ -81,13 +81,13 @@ ms.locfileid: "90980693"
 * 檢視卡車運送的物流路線，以及海運運送的位置詳細資料。
 * 檢視閘道狀態與其他相關資訊。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="聯網物流範本":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="聯網物流儀表板":::
 
 * 您可以追蹤閘道、作用中和未知標籤的總數。
 * 您可以執行裝置管理操作，例如：更新韌體、停用和啟用感應器、更新感應器閾值、更新遙測間隔，以及更新裝置服務合約。
 * 檢視裝置電池耗用量。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="聯網物流範本":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="聯網物流儀表板狀態":::
 
 #### <a name="device-template"></a>裝置範本
 
@@ -95,11 +95,11 @@ ms.locfileid: "90980693"
 
 **閘道遙測和屬性** - 此介面會定義與感應器、位置和裝置資訊相關的所有遙測。 介面也會定義裝置對應項屬性功能，例如感應器閾值和更新間隔。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="聯網物流範本":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="遙測和屬性介面":::
 
 **閘道命令** - 此介面會組織所有閘道命令功能：
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="聯網物流範本":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="閘道命令介面":::
 
 ### <a name="rules"></a>規則
 
@@ -109,13 +109,13 @@ ms.locfileid: "90980693"
 
 **閘道沒有回應**：如果閘道長時間未向雲端回報，此規則將會觸發。 閘道可能因為電池電力不足、連線中斷或裝置損毀而導致沒有回應。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="聯網物流範本":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="角色定義":::
 
 ### <a name="jobs"></a>工作
 
 選取 [作業] 索引標籤，以查看此應用程式中的作業：
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="聯網物流範本":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="要執行的作業":::
 
 您可以使用作業來執行整個應用程式的操作。 此應用程式中的作業會使用裝置命令和對應項功能來執行工作，例如，停用所有閘道上的特定感應器，或根據出貨模式和路線修改感應器閾值：
 
@@ -127,7 +127,7 @@ ms.locfileid: "90980693"
 
 如果您不打算繼續使用此應用程式，請瀏覽 [系統管理]  >  [應用程式設定]，然後選取 [刪除] 以刪除應用程式範本。
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="聯網物流範本":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="範本清除":::
 
 ## <a name="next-steps"></a>下一步
 * 深入了解 

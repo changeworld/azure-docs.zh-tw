@@ -9,13 +9,13 @@ ms.topic: overview
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.custom: contperfq1, azuread-video-2020
-ms.openlocfilehash: b61da9710b51ad4802b46cae7625d6ba9a66e86c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperf-fy21q1, azuread-video-2020
+ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91595794"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033913"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>什麼是 Azure 角色型存取控制 (Azure RBAC)？
 
@@ -48,7 +48,7 @@ Azure RBAC 是建置於 [Azure Resource Manager](../azure-resource-manager/manag
 
 ### <a name="role-definition"></a>角色定義
 
-「角色定義」是權限集合。 一般會直接稱之為*角色*。 角色定義會列出可執行的作業，例如讀取、寫入和刪除。 角色可為高層級，例如擁有者或特定，例如虛擬機器讀取器。
+「角色定義」是權限集合。 一般會直接稱之為 *角色*。 角色定義會列出可執行的作業，例如讀取、寫入和刪除。 角色可為高層級，例如擁有者或特定，例如虛擬機器讀取器。
 
 ![角色指派的角色定義](./media/shared/rbac-role-definition.png)
 

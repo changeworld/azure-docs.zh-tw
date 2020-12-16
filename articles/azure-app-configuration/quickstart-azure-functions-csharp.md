@@ -2,18 +2,18 @@
 title: Azure 應用程式設定搭配 Azure Functions 的快速入門 | Microsoft Docs
 description: 在本快速入門中，使用 Azure 應用程式組態和 C# 建立 Azure Functions 應用程式。 建立並連線至應用程式組態存放區。 在本機測試函式。
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: 24620351cdd831ec5079e1f37726b2aa65339205
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 4197891949062123042736e578cfbcc5def4e1f9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075853"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930784"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式組態建立 Azure Functions 應用程式
 
@@ -22,7 +22,7 @@ ms.locfileid: "92075853"
 ## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/dotnet)
-- 包含 **Azure 開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
+- 包含 **Azure 開發** 工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
 - [Azure Functions 工具](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>建立應用程式組態存放區
@@ -45,7 +45,7 @@ ms.locfileid: "92075853"
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 
-1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽] 索引標籤上，搜尋 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 套件並新增至您的專案。 如果您找不到該套件，請選取 [包含發行前版本]**** 核取方塊。
+1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽] 索引標籤上，搜尋 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 套件並新增至您的專案。 如果您找不到該套件，請選取 [包含發行前版本] 核取方塊。
 
 2. 開啟 *Function1.cs*，並新增 .NET Core 組態和應用程式組態設定提供者的命名空間。
 

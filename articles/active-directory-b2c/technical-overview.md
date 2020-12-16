@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840545"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108378"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技術和功能概觀
 
@@ -162,7 +162,7 @@ Identity Experience Framework 可讓您利用任何步驟組合來建立使用�
 
 ![品牌自訂註冊或登入頁面的螢幕擷取畫面](media/technical-overview/seamless-ux.png)
 
-如需 UI 自訂相關資訊，請參閱[關於 Azure Active Directory B2C 中的使用者介面自訂](customize-ui-overview.md)。
+如需 UI 自訂相關資訊，請參閱[關於 Azure Active Directory B2C 中的使用者介面自訂](customize-ui-with-html.md)。
 
 ## <a name="localization"></a>當地語系化
 
@@ -170,7 +170,7 @@ Azure AD B2C 中的語言自訂可讓您適應不同的語言，以符合您客�
 
 ![以不同語言顯示 UI 文字的三個註冊登入頁面](media/technical-overview/localization.png)
 
-若要了解當地語系化的運作方式，請參閱 [Azure Active Directory B2C 中的語言自訂](user-flow-language-customization.md)。
+若要了解當地語系化的運作方式，請參閱 [Azure Active Directory B2C 中的語言自訂](language-customization.md)。
 
 ## <a name="add-your-own-business-logic"></a>新增您自己的商務邏輯
 
@@ -221,7 +221,7 @@ Azure AD B2C 租用戶會與用於員工和合作夥伴的企業 Azure Active Di
 
 Azure AD B2C 多重要素驗證 (MFA) 有助於保護對資料與應用程式的存取，同時讓使用者能夠方便使用。 它藉由要求第二種形式的驗證來提供額外的安全性，並藉由提供一系列易於使用的驗證方法來提供強式驗證。 因您可以管理員身分所做的設定決定不同，使用者不一定會通過 MFA。
 
-請參閱[在 Azure Active Directory B2C 中啟用多重要素驗證](custom-policy-multi-factor-authentication.md)，了解如何在使用者流程中啟用 MFA。
+請參閱[在 Azure Active Directory B2C 中啟用多重要素驗證](multi-factor-authentication.md)，了解如何在使用者流程中啟用 MFA。
 
 ### <a name="smart-account-lockout"></a>智慧帳戶鎖定
 
@@ -235,7 +235,7 @@ Azure AD B2C 多重要素驗證 (MFA) 有助於保護對資料與應用程式的
 
 在註冊期間或密碼重設期間，使用者必須提供符合複雜度規則的密碼。 根據預設，Azure AD B2C 會強制執行強式密碼原則。 Azure AD B2C 也會提供設定選項，以便指定客戶所用密碼的複雜度需求。
 
-您可以在[使用者流程](user-flow-password-complexity.md)和[自訂原則](custom-policy-password-complexity.md)中設定密碼複雜度需求。
+您可以在[使用者流程](password-complexity.md)和[自訂原則](password-complexity.md)中設定密碼複雜度需求。
 
 ## <a name="auditing-and-logs"></a>稽核和記錄
 

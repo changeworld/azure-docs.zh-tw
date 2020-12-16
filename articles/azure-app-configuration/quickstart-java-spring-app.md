@@ -3,20 +3,19 @@ title: 了解如何使用 Azure 應用程式設定的快速入門
 description: 在本快速入門中，您會建立 Java Spring 應用程式搭配 Azure 應用程式組態，以集中儲存和管理應用程式設定 (與您的程式碼分開)。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
-ms.author: lcozzens
-ms.openlocfilehash: dd2305e13322540e9e30223f200baed9919d1840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 40c8fae292f465b3ecc8778a21e4903bdf423a3a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075394"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932025"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式組態建立 Java Spring 應用程式
 
@@ -52,7 +51,7 @@ ms.locfileid: "92075394"
 
    - 使用 **Java** 產生 **Maven** 專案。
    - 指定 **Spring Boot** 版本，應等於或大於 2.0。
-   - 指定應用程式的**群組**和**成品**名稱。
+   - 指定應用程式的 **群組** 和 **成品** 名稱。
    - 新增 **Spring Web** 相依性。
 
 1. 在指定先前的選項之後，選取 [產生專案]  。 出現提示時，將專案下載至本機電腦上的路徑。

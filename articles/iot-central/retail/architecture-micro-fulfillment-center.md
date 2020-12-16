@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0d030240ebe22886826b7a25bd5ca7b8f54e358
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a0d91677770e89f3e249fc699057332cccaa323
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81001107"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347467"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>微型物流中心架構
 
@@ -22,11 +22,11 @@ ms.locfileid: "81001107"
 
 ![Azure IoT Central 商店分析](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- 將遙測資料傳送至閘道裝置的一組 IoT 感應器
-- 將遙測資料和彙總的見解傳送至 IoT Central 的閘道裝置
-- 連續資料匯出至所需的 Azure 服務以進行操作
-- 資料可利用所需格式進行結構化，並傳送至儲存體服務
-- 商務應用程式可以查詢資料，並產生支援零售營運的見解
+1. 將遙測資料傳送至閘道裝置的一組 IoT 感應器
+2. 將遙測資料和彙總的見解傳送至 IoT Central 的閘道裝置
+3. 連續資料匯出至所需的 Azure 服務以進行操作
+4. 資料可利用所需格式進行結構化，並傳送至儲存體服務
+5. 商務應用程式可以查詢資料，並產生支援零售營運的見解
  
 讓我們看看在微型物流中心解決方案中常會用到的主要元件。
 

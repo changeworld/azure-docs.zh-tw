@@ -32,7 +32,7 @@ ms.locfileid: "89566890"
 RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)時，使用複製到您邊緣裝置的影片檔案來模擬即時影片串流。 
 
 > [!NOTE]
-> 如果您使用自己的邊緣裝置，而不是我們的設定指令碼所佈建的裝置，請移至您的邊緣裝置，並以**管理員權限**執行下列命令，以提取並儲存用於本快速入門的範例影片檔案：  
+> 如果您使用自己的邊緣裝置，而不是我們的設定指令碼所佈建的裝置，請移至您的邊緣裝置，並以 **管理員權限** 執行下列命令，以提取並儲存用於本快速入門的範例影片檔案：  
 
 ```
 mkdir /home/lvaadmin/samples      

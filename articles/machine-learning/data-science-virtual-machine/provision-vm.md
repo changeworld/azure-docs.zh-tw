@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 3b5f96e60e088f94561bf3398469ec913a71bba6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e876ddc9b4df32cad5bbf15215da5ce2f912bba1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322445"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109720"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>快速入門：設定適用於 Windows 的資料科學虛擬機器
 
@@ -37,13 +37,13 @@ ms.locfileid: "93322445"
 
 1. 填寫 [基本]  索引標籤：
       * 訂用帳戶  ：如果您有多個訂用帳戶，請選取要在其中建立機器及計費的訂用帳戶。 您必須有此訂用帳戶的資源建立權限。
-      * **資源群組** ：建立新的群組或使用現有群組。
-      * **虛擬機器名稱** ：輸入虛擬機器的名稱。 這就是它在 Azure 入口網站中的顯示方式。
-      * **位置** ：選取最適合的資料中心。 如需最快速的網路存取，請選取擁有您大部分資料或是最接近您實際位置的資訊中心。 深入了解 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)。
-      * **映像** ：保留預設值。
-      * **Size** ：這應會自動填入適合一般工作負載的大小。 深入了解 [Azure 中的 Windows VM 大小](../../virtual-machines/sizes.md)。
-      * **使用者名稱** ：輸入系統管理員的使用者名稱。 這是您將用來登入虛擬機器的使用者名稱，不需要與您的 Azure 使用者名稱相同。
-      * **密碼** ：輸入您將用來登入虛擬機器的密碼。    
+      * **資源群組**：建立新的群組或使用現有群組。
+      * **虛擬機器名稱**：輸入虛擬機器的名稱。 這就是它在 Azure 入口網站中的顯示方式。
+      * **位置**：選取最適合的資料中心。 如需最快速的網路存取，請選取擁有您大部分資料或是最接近您實際位置的資訊中心。 深入了解 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)。
+      * **映像**：保留預設值。
+      * **Size**：這應會自動填入適合一般工作負載的大小。 深入了解 [Azure 中的 Windows VM 大小](../../virtual-machines/sizes.md)。
+      * **使用者名稱**：輸入系統管理員的使用者名稱。 這是您將用來登入虛擬機器的使用者名稱，不需要與您的 Azure 使用者名稱相同。
+      * **密碼**：輸入您將用來登入虛擬機器的密碼。    
 1. 選取 [檢閱 + 建立]  。
 1. **檢閱 + 建立**
    * 請確認您輸入的所有資訊都正確無誤。 
@@ -59,8 +59,6 @@ ms.locfileid: "93322445"
 建立並佈建 VM 之後，請遵循所列的步驟來[連線到 Azure 型虛擬機器](../../marketplace/azure-vm-create-using-approved-base.md)。 請使用您在建立虛擬機器的 **基本** 步驟中設定的管理員帳戶憑證。 
 
 您已準備好開始使用在 VM 上安裝及設定的工具。 許多工具都可透過 [開始]  功能表圖格和桌面圖示來存取。
-
-您也可以將 DSVM 連結至 Azure Notebooks，以在 VM 上執行 Jupyter Notebook，並忽略免費服務層的限制。 如需詳細資訊，請參閱[管理和設定 Notebooks 專案](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects)。
 
 <a name="tools"></a>
 

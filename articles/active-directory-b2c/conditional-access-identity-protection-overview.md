@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4a71740c487896208a3da7bf35bb39899c56937
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952058"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928387"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C 的 Identity Protection 和條件式存取
 
@@ -60,7 +60,7 @@ Azure AD B2C 中的 Identity Protection 和條件式存取運作方式通常與 
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-您也可以使用 Microsoft Graph API 來管理 Azure AD B2C 中的條件式存取原則。 如需詳細資訊，請參閱[條件式存取文件](../active-directory/conditional-access/overview.md)和 [Microsoft Graph 參考](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)。
+您也可以使用 Microsoft Graph API 來管理 Azure AD B2C 中的條件式存取原則。 如需詳細資訊，請參閱[條件式存取文件](../active-directory/conditional-access/overview.md)和 [Microsoft Graph 參考](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>後續步驟
 

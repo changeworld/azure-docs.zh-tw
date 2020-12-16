@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 5109139c7168026c74a475128832fbb0733ce832
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7bc15b369bfa4964384d4f7910d6953bdfeaa664
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447126"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094160"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>適用於 Azure SQL Database 和 Azure Synapse Analytics 的 Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -177,7 +177,7 @@ where session_id=@@SPID
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>使用 Polybase 和 COPY 陳述式從 Azure Synapse Analytics 連線至 Azure 儲存體
 
-PolyBase 和 COPY 陳述式通常用於將資料從 Azure 儲存體帳戶載入 Azure Synapse Analytics。 如果您正在載入資料的來源 Azure 儲存體帳戶限制只能透過私人端點、服務端點或 IP 型防火牆存取一組虛擬網路子網路，從 PolyBase 和 COPY 陳述式到帳戶的連線會中斷。 若要在 Azure Synapse Analytics 連線至固定到虛擬網路的 Azure 儲存體時，啟用匯入和匯出案例，請按照[這裡](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)提供的步驟執行作業。 
+PolyBase 和 COPY 陳述式通常用於將資料從 Azure 儲存體帳戶載入 Azure Synapse Analytics。 如果您正在載入資料的來源 Azure 儲存體帳戶限制只能透過私人端點、服務端點或 IP 型防火牆存取一組虛擬網路子網路，從 PolyBase 和 COPY 陳述式到帳戶的連線會中斷。 若要在 Azure Synapse Analytics 連線至固定到虛擬網路的 Azure 儲存體時，啟用匯入和匯出案例，請按照[這裡](vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)提供的步驟執行作業。 
 
 ## <a name="next-steps"></a>後續步驟
 

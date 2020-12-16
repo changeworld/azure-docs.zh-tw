@@ -7,12 +7,13 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 9d0dd8ee1b99ddd2abf4fad154c70315a3d33c83
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.subservice: deployment
+ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556415"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359637"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 SQL Server VM
 

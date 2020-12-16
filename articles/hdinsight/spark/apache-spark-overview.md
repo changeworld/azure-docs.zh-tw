@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: f581f7bc2f67093afc26dd2c2f15916841a106e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176b89c9fc80b198a8a639afdd14185ab0008aed
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854336"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029435"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>什麼是 Azure HDInsight 中的 Apache Spark
 
@@ -36,7 +36,7 @@ HDInsight 中的 Spark 叢集可提供完全受控的 Spark 服務。 以下列�
 | REST API |HDInsight 中的 Spark 叢集包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，它是 REST-API 型 Spark 作業伺服器，可用來遠端提交及監視作業。 請參閱[使用 Apache Spark REST API 將遠端作業提交至 HDInsight Spark 叢集](apache-spark-livy-rest-interface.md)。|
 | Azure 儲存體的支援 | HDInsight 中的 Spark 叢集可以使用 Azure Data Lake Storage Gen1/Gen2 作為主要儲存體或額外的儲存體。 如需 Data Lake Storage Gen1 的詳細資訊，請參閱 [Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-overview.md)。 如需 Data Lake Storage Gen2 的詳細資訊，請參閱 [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md)。|
 | Azure 服務整合 |HDInsight 中的 Spark 叢集隨附連至 Azure 事件中樞的連接器。 您可以使用事件中樞建立串流應用程式。 包括 Apache Kafka (已是 Spark 的一部分)。 |
-| ML Server 的支援 | 在 HDInsight 中會以 **ML 服務**叢集類型的形式提供 ML Server 的支援。 您可以設定 ML 服務叢集，以 Spark 叢集所承諾的速度來執行分散式 R 運算。 如需詳細資訊，請參閱[什麼是 Azure HDInsight 中的 ML 服務](../r-server/r-server-overview.md)。 |
+| ML Server 的支援 | 在 HDInsight 中會以 **ML 服務** 叢集類型的形式提供 ML Server 的支援。 您可以設定 ML 服務叢集，以 Spark 叢集所承諾的速度來執行分散式 R 運算。 如需詳細資訊，請參閱[什麼是 Azure HDInsight 中的 ML 服務](../r-server/r-server-overview.md)。 |
 | 第三方 IDE 整合 | HDInsight 提供數個 IDE 外掛程式，以用來建立應用程式，並將應用程式提交至 HDInsight Spark 叢集。 如需詳細資訊，請參閱[使用 Azure Toolkit for IntelliJ IDEA](apache-spark-intellij-tool-plugin.md)、[使用 Spark & Hive Tools for VSCode](../hdinsight-for-vscode.md) 和[使用 Azure Toolkit for Eclipse](apache-spark-eclipse-tool-plugin.md)。|
 | 並行查詢 |HDInsight 中的 Spark 叢集支援並行查詢。 此功能可讓來自單一使用者的多個查詢或來自不同使用者與應用程式的多個查詢，一起共用相同的叢集資源。 |
 | SSD 快取 |您可以選擇將資料快取在記憶體中，或快取在連接叢集節點的 SSD 中。 記憶體快取能提供最高的查詢效能，但可能所費不貲。 SSD 快取提供改善查詢效能的絕佳選項，而且您不需要建立大小可讓整個資料集納入記憶體的叢集。 請參閱[使用 Azure HDInsight IO 快取改進 Apache Spark 工作負載效能](apache-spark-improve-performance-iocache.md)。 |

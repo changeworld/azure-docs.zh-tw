@@ -3,13 +3,13 @@ title: 快速入門 - 在 Azure 中建立隨選的容器映像
 description: 使用 Azure Container Registry 命令，在 Azure 雲端中快速建置、推送和執行隨選的 Docker 容器映像。
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.custom: contperfq1, devx-track-azurecli
-ms.openlocfilehash: adb63b716172c979ca31f1ef70bf1523ff1ad5cc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: c6fe1fc246d112218b492072155175b2db99c8c9
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845045"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032944"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>快速入門：使用 Azure Container Registry 工作建置和執行容器映像
 
