@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4d3ee6df90424788c6f9b6bb4e2055023a5d56a6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182042"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607876"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教學課程：設定 MediusFlow 來自動佈建使用者
 
@@ -172,11 +172,11 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 
 11. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步處理至 MediusFlow 的群組屬性。 選取為 [比對] 屬性的屬性會用來比對 MediusFlow 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-      |屬性|類型|
-      |---|---|
-      |displayName|String|
-      |externalID|String|
-      |members|參考|
+    | 屬性 | 類型 |
+    |--|--|
+    | displayName | String |
+    | externalID | String |
+    | members | 參考 |
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

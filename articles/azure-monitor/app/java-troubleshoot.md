@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dbc9e48987f527c9579decc3db84091a432a17e5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601011"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607893"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>適用于 JAVA SDK 的 Application Insights 疑難排解和問與答
 
@@ -33,7 +33,7 @@ ms.locfileid: "96601011"
 * 確認 xml 檔案中沒有 `<DisableTelemetry>true</DisableTelemetry>` 節點。
 * 在防火牆中，您可能必須開啟 TCP 連接埠 80 和 443，以允許連出流量送往 dc.services.visualstudio.com。 請參閱 [完整的防火牆例外狀況清單](./ip-addresses.md)
 * 在 Microsoft Azure 開始面板中，查看服務狀態對應。 如果看到一些警示指示，請等待它們恢復 [正常]，然後關閉再重新開啟 Application Insights 應用程式刀鋒視窗。
-* [Turn on logging](#debug-data-from-the-sdk)藉由在專案) 中的 [資源] 資料夾中，于 [資源] 資料夾內的 [ `<SDKLogger />` ApplicationInsights.xml 檔 (的根節點下加入專案，然後檢查前面加上 AI： INFO/警告/錯誤的專案，以開啟記錄。 
+* [](#debug-data-from-the-sdk)藉由在專案) 中的 [資源] 資料夾中，于 [資源] 資料夾內的 [ `<SDKLogger />` ApplicationInsights.xml 檔 (的根節點下加入專案，然後檢查前面加上 AI： INFO/警告/錯誤的專案，以開啟記錄。 
 * 藉由查看主控台的輸出訊息「已成功找到組態檔」陳述式，確定 Java SDK 已成功載入正確的 ApplicationInsights.xml 檔案。
 * 如果找不到組態檔，請檢查輸出訊息以查看在何處搜尋組態檔，並確定 ApplicationInsights.xml 位在這些搜尋位置中的其中一個位置。 根據經驗法則，您可以將組態檔置於 Application Insights SDK JAR 附近。 例如：在 Tomcat 中，這可能表示 WEB-INF/classes 資料夾。 在開發過程中，您可以將 ApplicationInsights.xml 放在您 Web 專案的 resources 資料夾中。
 * 另外也請查看 [GitHub 問題頁面](https://github.com/Microsoft/ApplicationInsights-Java/issues) \(英文\) 以了解 SDK 的已知問題。
@@ -63,7 +63,6 @@ ms.locfileid: "96601011"
 或者，如果您的用戶端是[手機或其他裝置][platforms]中的應用程式，則可以從該處傳送遙測。
 
 使用相同的檢測機碼來設定用戶端和伺服器遙測。 資料會出現在相同的 Application Insights 資源中，而且您可以相互關聯來自用戶端和伺服器的事件。
-
 
 ## <a name="disabling-telemetry"></a>停用遙測
 **如何停用遙測收集？**
@@ -183,7 +182,6 @@ Application insights 會使用 `org.apache.http`。 這會重新配置在 Applic
 
 >[!NOTE]
 >如果您針對應用程式中的所有命名空間啟用 DEBUG 層級的記錄功能，它將適用於所有執行中的模組，包括已重新命名為 `com.microsoft.applicationinsights.core.dependencies.http` 的 `org.apache.http`。 Application Insights 將無法針對這些呼叫套用篩選，因為正在由 Apache 程式庫發出記錄呼叫。 DEBUG 層級記錄會產生相當大量的記錄資料，因此不建議用於即時生產環境執行個體。
-
 
 ## <a name="next-steps"></a>後續步驟
 **設定 Java 伺服器應用程式的 Application Insights。我還可以做什麼？**

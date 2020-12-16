@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 7a206d61124b2524feae0cf155083c1939696e18
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 20e9ed7e83ff3359651acebc11a939a998f2889d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853317"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607910"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -79,7 +79,6 @@ Application Insights 也會定義相互關聯 HTTP 通訊協定的 [延伸](http
 | `Operation_Id`                         | [追蹤識別碼](https://w3c.github.io/trace-context/#trace-id)                                           |
 | `Operation_ParentId`                   | 此範圍父範圍的[父系識別碼](https://w3c.github.io/trace-context/#parent-id)。 如果這是根範圍，則此欄位必須是空的。     |
 
-
 如需詳細資訊，請參閱 [Application Insights 遙測資料模型](../../azure-monitor/app/data-model.md)。
 
 ### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>啟用 .NET 應用程式的 W3C 分散式追蹤支援
@@ -103,7 +102,7 @@ Application Insights 也會定義相互關聯 HTTP 通訊協定的 [延伸](http
        <Param name ="enableW3CBackCompat" value = "true" />
     </Add>
     ```
-    
+
   - 針對春季 Boot 應用程式，請新增下列屬性：
 
     - `azure.application-insights.web.enable-W3C=true`
@@ -139,7 +138,7 @@ Application Insights 也會定義相互關聯 HTTP 通訊協定的 [延伸](http
   ```JavaScript
     distributedTracingMode: DistributedTracingModes.W3C
   ```
-  
+
 - **[以程式碼片段為基礎的設定](./javascript.md#snippet-based-setup)**
 
 新增下列設定：

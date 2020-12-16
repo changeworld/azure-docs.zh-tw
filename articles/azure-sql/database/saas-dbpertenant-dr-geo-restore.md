@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: daccbd9dfb3ed628d8a3e604cbb9af4045f1ebe6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3fe6095595f5270b18536e6ef46afe4a0a5b3268
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780881"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607706"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用異地還原從資料庫備份復原多租用戶 SaaS 應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -163,7 +163,7 @@ ms.locfileid: "92780881"
 
     * 租用戶資料庫在目錄中標示為「已上線」後，即可供應用程式存取。
 
-    * 租用戶資料庫中的 rowversion 值的總和會儲存在目錄中。 此總和會作為指紋，以允許回復程序判斷資料庫是否已在復原區域中更新。       
+    * 租用戶資料庫中的 rowversion 值的總和會儲存在目錄中。 此總和會作為指紋，以允許回復程序判斷資料庫是否已在復原區域中更新。
 
 ## <a name="run-the-recovery-script"></a>執行復原指令碼
 
