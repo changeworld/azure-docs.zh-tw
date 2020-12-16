@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9bdd70baa906d9dc03a37eecb0388eee5638f153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e05ecd162ccb333c6ab29b0185f6ffcb04a6213
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184275"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591356"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本新增 Azure 角色指派
 
@@ -109,14 +109,14 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 }
 ```
 
-以下是範例 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) 命令，示範在名為 ExampleGroup 的資源群組中啟動部署。
+以下是範例 [>new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group 建立](/cli/azure/deployment/group#az_deployment_group_create) 命令，可讓您在名為 ExampleGroup 的資源群組中開始部署。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json
 ```
 
 以下顯示在部署範本之後，將讀者角色指派給資源群組使用者的範例。
@@ -187,24 +187,24 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 > [!NOTE]
 > 除非為範本的每個部署提供相同的 `roleNameGuid` 值，否則此範本不具等冪性。 如果未提供任何 `roleNameGuid`，則根據預設會在每個部署上產生新的 GUID，而後續部署將會失敗，並出現 `Conflict: RoleAssignmentExists` 錯誤。
 
-角色指派的範圍是從部署層級決定。 以下是範例 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) 命令，示範如何在資源群組範圍中啟動部署。
+角色指派的範圍是從部署層級決定。 以下是範例 [>new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group 建立](/cli/azure/deployment/group#az_deployment_group_create) 的命令，可讓您在資源群組範圍開始部署。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-以下是範例 [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) 和 [az deployment create](/cli/azure/deployment#az-deployment-create) 命令，示範如何在訂用帳戶範圍啟動部署並指定位置。
+以下是範例 [test-azdeployment](/powershell/module/az.resources/new-azdeployment) 和 [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create) 命令，可讓您在訂用帳戶範圍開始部署，並指定位置。
 
 ```azurepowershell
 New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment sub create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 ### <a name="resource-scope"></a>資源範圍
@@ -290,14 +290,14 @@ az deployment create --location centralus --template-file rbac-test.json --param
 }
 ```
 
-若要部署先前的範本，您可以使用資源群組命令。 以下是範例 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) 命令，示範如何在資源範圍中啟動部署。
+若要部署先前的範本，您可以使用資源群組命令。 以下是範例 [>new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group 建立](/cli/azure/deployment/group#az_deployment_group_create) 的命令，可讓您在資源範圍開始部署。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
 以下顯示在部署範本之後，將參與者角色指派給儲存體帳戶使用者的範例。
@@ -360,14 +360,14 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 }
 ```
 
-以下是範例 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) 命令，示範如何在資源群組範圍中啟動部署。
+以下是範例 [>new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group 建立](/cli/azure/deployment/group#az_deployment_group_create) 的命令，可讓您在資源群組範圍開始部署。
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup2 --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup2 --template-file rbac-test.json
 ```
 
 以下顯示在部署範本之後，將參與者角色指派給新受控識別服務主體的範例。
@@ -385,7 +385,7 @@ az group deployment create --resource-group ExampleGroup2 --template-file rbac-t
 
 ## <a name="next-steps"></a>後續步驟
 
-- [快速入門：使用 Azure 入口網站建立及部署 Azure Resource Manager 範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
-- [了解 Azure Resource Manager 範本的結構和語法](../azure-resource-manager/templates/template-syntax.md)
+- [快速入門：使用 Azure 入口網站建立及部署 ARM 範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
+- [了解 ARM 範本的結構和語法](../azure-resource-manager/templates/template-syntax.md) \(部分機器翻譯\)
 - [在訂用帳戶層級建立資源群組和資源](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?term=rbac)

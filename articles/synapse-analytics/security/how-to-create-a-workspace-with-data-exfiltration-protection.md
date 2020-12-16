@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8f11f104e8d3d0a4f3a004ebe9f149cb4132d910
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501392"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590555"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>建立已啟用資料遭到外泄保護的工作區
 本文說明如何建立已啟用資料遭到外泄保護的工作區，以及如何管理此工作區已核准的 Azure AD 租使用者。
@@ -21,7 +21,7 @@ ms.locfileid: "96501392"
 >[!Note]
 >建立工作區之後，您就無法變更受控虛擬網路和資料遭到外泄保護的工作區設定。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 - 在 Azure 中建立工作區資源的許可權。
 - Synapse 工作區許可權，以建立受控私人端點。
 - 註冊網路資源提供者的訂閱。 [深入了解。](../../azure-resource-manager/management/resource-providers-and-types.md)
@@ -33,7 +33,7 @@ ms.locfileid: "96501392"
 1. 針對 [只允許通過核准目標的輸出資料流量] 選項選取 [是]。
 1. 選擇此工作區已核准的 Azure AD 租使用者。
 1. 檢查設定，並建立工作區。
-:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="使用資料遭到外泄保護建立工作區":::
+:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="顯示 [建立 Synapse] 工作區的螢幕擷取畫面，其中已選取 [啟用管理虛擬網路]。":::
 
 ## <a name="manage-approved-azure-active-directory-tenants-for-the-workspace"></a>管理工作區已核准的 Azure Active Directory 租使用者
 1. 從工作區的 Azure 入口網站中，流覽至 [核准的 Azure AD 租使用者]。 工作區已核准的 Azure AD 租使用者清單會列在這裡。 預設會包含工作區的租使用者，且不會列出。

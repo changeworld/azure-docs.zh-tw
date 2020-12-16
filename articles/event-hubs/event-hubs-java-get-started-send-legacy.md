@@ -4,19 +4,19 @@ description: 本文提供的逐步解說說明如何建立 Java 應用程式，�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b973f8c132d9faec4fd6c9185345c0926cc35e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e77ff762de11a9c8a723b162993db11efe715b66
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88942250"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591543"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>使用 Java 將事件傳送至 Azure 事件中樞或從中接收事件 (azure-eventhubs)
 
 本快速入門說明如何使用 **azure-eventhubs** Java 套件，來傳送事件至事件中樞和從事件中樞接收事件。
 
 > [!WARNING]
-> 本快速入門使用舊版的 **azure-eventhubs** 和 **azure-eventhubs-eph** 套件。 如需使用最新 **azure-messaging-eventhubs** 套件的快速入門，請參閱[使用 azure-messaging-eventhubs 傳送和接收事件](event-hubs-java-get-started-send.md)。 若要將應用程式從使用舊套件改為使用新套件，請參閱[從 azure-eventhubs 遷移至 azure-messaging-eventhubs 的指南](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)。 
+> 本快速入門使用舊版的 **azure-eventhubs** 和 **azure-eventhubs-eph** 套件。 如需使用最新 **azure-messaging-eventhubs** 套件的快速入門，請參閱 [使用 azure-messaging-eventhubs 傳送和接收事件](event-hubs-java-get-started-send.md)。 若要將應用程式從使用舊套件改為使用新套件，請參閱[從 azure-eventhubs 遷移至 azure-messaging-eventhubs 的指南](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)。 
 
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -74,8 +74,8 @@ public class SimpleSend {
 
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
-            
-            
+
+
     }
  }
 ```
@@ -176,13 +176,13 @@ eventHubClient.closeSync();
 
 若要使用 EventProcessorHost，您必須擁有 [Azure 儲存體帳戶][Azure 儲存體帳戶]：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取畫面左上方的 [建立資源]****。
-2. 選取 [儲存體]****，然後選取 [儲存體帳戶]****。 在 [建立儲存體帳戶]**** 視窗中，輸入儲存體帳戶名稱。 完成其餘欄位，選取您想要的區域，然後選取 [建立]****。
-   
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取畫面左上方的 [建立資源]。
+2. 選取 [儲存體]，然後選取 [儲存體帳戶]。 在 [建立儲存體帳戶] 視窗中，輸入儲存體帳戶名稱。 完成其餘欄位，選取您想要的區域，然後選取 [建立]。
+
     ![在 Azure 入口網站中建立儲存體帳戶](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
-3. 選取新建立的儲存體帳戶，然後選取 [存取金鑰]****：
-   
+3. 選取新建立的儲存體帳戶，然後選取 [存取金鑰]：
+
     ![在 Azure 入口網站中取得您的存取金鑰](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     將 key1 值複製到暫存位置。 您將在本教學課程稍後使用它。
@@ -207,11 +207,11 @@ eventHubClient.closeSync();
 對於不同類型的組建環境，您可以明確從 [Maven 中央儲存機制](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22)取得最新發佈的 JAR 檔案。
 
 1. 針對下列範例，在您最喜愛的 Java 開發環境中，先為主控台/殼層應用程式建立新的 Maven 專案。 類別稱為 `ErrorNotificationHandler`。     
-   
+
     ```java
     import java.util.function.Consumer;
     import com.microsoft.azure.eventprocessorhost.ExceptionReceivedEventArgs;
-   
+
     public class ErrorNotificationHandler implements Consumer<ExceptionReceivedEventArgs>
     {
         @Override
@@ -222,7 +222,7 @@ eventHubClient.closeSync();
     }
     ```
 2. 使用下列程式碼，建立名為 `EventProcessorSample`的新類別。 使用您建立事件中樞和儲存體帳戶時所用的值，取代預留位置：
-   
+
    ```java
    package com.microsoft.azure.eventhubs.samples.eventprocessorsample;
 
@@ -250,13 +250,13 @@ eventHubClient.closeSync();
            String storageConnectionString = "----AzureStorageConnectionString----";
            String storageContainerName = "----StorageContainerName----";
            String hostNamePrefix = "----HostNamePrefix----";
-        
+
            ConnectionStringBuilder eventHubConnectionString = new ConnectionStringBuilder()
                 .setNamespaceName(namespaceName)
                 .setEventHubName(eventHubName)
                 .setSasKeyName(sasKeyName)
                 .setSasKey(sasKey);
-        
+
            EventProcessorHost host = new EventProcessorHost(
                 EventProcessorHost.createHostName(hostNamePrefix),
                 eventHubName,
@@ -264,7 +264,7 @@ eventHubClient.closeSync();
                 eventHubConnectionString.toString(),
                 storageConnectionString,
                 storageContainerName);
-        
+
            System.out.println("Registering host named " + host.getHostName());
            EventProcessorOptions options = new EventProcessorOptions();
            options.setExceptionNotification(new ErrorNotificationHandler());
@@ -284,7 +284,7 @@ eventHubClient.closeSync();
            .thenAccept((unused) ->
            {
                System.out.println("Press enter to stop.");
-               try 
+                 try 
                {
                    System.in.read();
                }
@@ -294,8 +294,8 @@ eventHubClient.closeSync();
                }
            })
            .thenCompose((unused) ->
-           {
-               return host.unregisterEventProcessor();
+            {
+                return host.unregisterEventProcessor();
            })
            .exceptionally((e) ->
            {
@@ -307,13 +307,13 @@ eventHubClient.closeSync();
                return null;
            })
            .get(); // Wait for everything to finish before exiting main!
-        
+
            System.out.println("End of sample");
        }
    }
    ```
 3. 使用下列程式碼，再建立一個名為 `EventProcessor` 的類別：
-   
+
     ```java
     public static class EventProcessor implements IEventProcessor
     {
@@ -332,7 +332,7 @@ eventHubClient.closeSync();
         {
             System.out.println("SAMPLE: Partition " + context.getPartitionId() + " is closing for reason " + reason.toString());
         }
-        
+
         // onError is called when an error occurs in EventProcessorHost code that is tied to this partition, such as a receiver failure.
         @Override
         public void onError(PartitionContext context, Throwable error)
@@ -353,7 +353,7 @@ eventHubClient.closeSync();
                     System.out.println("SAMPLE (" + context.getPartitionId() + "," + data.getSystemProperties().getOffset() + "," +
                             data.getSystemProperties().getSequenceNumber() + "): " + new String(data.getBytes(), "UTF8"));
                     eventCount++;
-                    
+
                     // Checkpointing persists the current position in the event stream for this partition and means that the next
                     // time any host opens an event processor on this event hub+consumer group+partition combination, it will start
                     // receiving at the event after this one. 
@@ -361,7 +361,7 @@ eventHubClient.closeSync();
                     if ((checkpointBatchingCount % 5) == 0)
                     {
                         System.out.println("SAMPLE: Partition " + context.getPartitionId() + " checkpointing at " +
-                            data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
+                               data.getSystemProperties().getOffset() + "," + data.getSystemProperties().getSequenceNumber());
                         // Checkpoints are created asynchronously. It is important to wait for the result of checkpointing
                         // before exiting onEvents or before creating the next checkpoint, to detect errors and to ensure proper ordering.
                         context.checkpoint(data).get();
@@ -426,4 +426,3 @@ com.microsoft.azure.eventprocessorhost.EventProcessorHost 類別可為您提供�
 - [EventProcessorHost](event-hubs-event-processor-host.md)
 - [Azure 事件中樞的功能與術語](event-hubs-features.md)
 - [事件中樞常見問題集](event-hubs-faq.md)
-

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d193637122cb388ea2c5012638526719d245f524
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd7ec1f6cdfc8ecfe32de04f5d06b42f9492b88c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997358"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590897"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>使用 PowerShell 在虛擬機器擴展集上設定 Azure 資源的受控識別
 
@@ -29,6 +29,7 @@ ms.locfileid: "95997358"
 Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供自動受控識別。 您可以使用此身分識別來向任何支援 Azure AD 驗證的服務進行驗證，不需要任何您程式碼中的認證。 
 
 在本文中，您將了解如何使用 PowerShell，在虛擬機器擴展集上執行 Azure 資源受控識別作業：
+
 - 在虛擬機器擴展集上啟用和停用系統指派的受控識別
 - 在虛擬機器擴展集上新增和移除使用者指派的受控識別
 

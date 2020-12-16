@@ -7,12 +7,12 @@ ms.service: sql-db-mi
 ms.subservice: service
 ms.topic: conceptual
 ms.date: 09/13/2020
-ms.openlocfilehash: b0a10744d2b48fa620b48b731144222199f711c7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 96367b143711c4ec5f3f8d609f048c72c6fded16
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792526"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590846"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-sql-database--sql-managed-instance"></a>瞭解 Azure SQL Database & SQL 受控執行個體的根 CA 變更變更
 
@@ -72,7 +72,7 @@ Azure SQL Database & SQL 受控執行個體將會變更以 SSL 啟用之用戶�
 ### <a name="how-often-does-microsoft-update-their-certificates-or-what-is-the-expiry-policy"></a>Microsoft 更新其憑證或到期原則的頻率為何？
 Azure SQL Database & SQL 受控執行個體所使用的憑證是由受信任的憑證授權單位單位所提供， (CA) 。 因此，Azure SQL Database & SQL 受控執行個體的這些憑證支援系結至 CA 支援這些憑證。 不過，在這種情況下，這些預先定義的憑證可能會有未預期的錯誤，這些都必須儘早修正。
 
-### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-master-server-or-all-the-read-replicas"></a>如果我使用讀取複本，是否只需要在主伺服器或所有讀取複本上執行此更新？
+### <a name="if-i-am-using-read-replicas-do-i-need-to-perform-this-update-only-on-primary-server-or-all-the-read-replicas"></a>如果我使用讀取複本，我只需要在主伺服器或所有讀取複本上執行此更新嗎？
 由於這項更新是用戶端的變更，如果用戶端用來從複本伺服器讀取資料，則也必須套用這些用戶端的變更。 
 
 ### <a name="do-we-have-server-side-query-to-verify-if-ssl-is-being-used"></a>我們是否有伺服器端查詢，以確認是否正在使用 SSL？

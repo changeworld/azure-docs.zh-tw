@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 29a693ac8ff0b170abf59c9671d4b411b456b540
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 02c0ecfc24b65afd46d75464b5411cfd5cf61857
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346973"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591526"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫的根 CA 變更變更
 
@@ -129,8 +129,12 @@ ms.locfileid: "93346973"
 由於這項更新是用戶端的變更，如果用戶端用來從複本伺服器讀取資料，您也必須套用這些用戶端的變更。
 
 ###    <a name="12-if-i-am-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. 如果我使用資料輸入複寫，是否需要執行任何動作？
+
 如果您使用 [資料傳入](concepts-data-in-replication.md) 複寫來連接適用於 MySQL 的 Azure 資料庫，則需要考慮兩件事：
-*   如果資料複寫是來自 (內部內部部署或 Azure 虛擬機器) 到適用於 MySQL 的 Azure 資料庫的虛擬機器，則您必須檢查是否使用 SSL 來建立複本。 執行 **顯示從屬狀態** 並檢查下列設定。  
+
+> [!NOTE]
+>  本文包含詞彙從屬的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+*   如果資料複寫是來自 (內部內部部署或 Azure 虛擬機器) 到適用於 MySQL 的 Azure 資料庫的虛擬機器，則您必須檢查是否使用 SSL 來建立複本。 執行 **顯示從屬狀態** 並檢查下列設定。 
 
     ```azurecli-interactive
     Master_SSL_Allowed            : Yes
@@ -149,7 +153,7 @@ ms.locfileid: "93346973"
 若要確認您是否使用 SSL 連線來連線到伺服器，請參閱 [ssl 驗證](howto-configure-ssl.md#verify-the-ssl-connection)。
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. 如果我的憑證檔案中已經有 DigiCertGlobalRootG2，是否需要採取動作？
-否。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2** ，就不需要採取任何動作。
+否。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
 
 ###    <a name="15-what-if-i-have-further-questions"></a>15. 如果我有其他問題，該怎麼辦？
 如果您有任何疑問，請從 [Microsoft Q&中的](mailto:AzureDatabaseformariadb@service.microsoft.com)「社區專家」獲得解答。 如果您有支援方案，且需要技術協助，請 [與我們聯絡](mailto:AzureDatabaseformariadb@service.microsoft.com)。

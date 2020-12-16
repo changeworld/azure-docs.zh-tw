@@ -1,21 +1,21 @@
 ---
 title: 使用 Azure AD 認證來執行 PowerShell 命令以存取佇列資料
 titleSuffix: Azure Storage
-description: PowerShell 支援使用 Azure AD 認證登入，以 Azure 儲存體佇列資料上執行命令。 存取權杖是針對工作階段提供，用來授權呼叫作業。 許可權取決於指派給 Azure AD 安全性主體的 Azure 角色。
-services: storage
+description: PowerShell 支援使用 Azure AD 認證登入，以在 Azure 佇列儲存體資料上執行命令。 存取權杖是針對工作階段提供，用來授權呼叫作業。 許可權取決於指派給 Azure AD 安全性主體的 Azure 角色。
 author: tamram
-ms.service: storage
-ms.topic: how-to
-ms.date: 09/14/2020
+services: storage
 ms.author: tamram
 ms.reviewer: ozgun
+ms.date: 09/14/2020
+ms.topic: how-to
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 3636b0366dfe687c4825ec1a16c5e8094a7db10b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf2696d329f852741c42219219600dc773090623
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637307"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590710"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>使用 Azure AD 認證來執行 PowerShell 命令以存取佇列資料
 
@@ -25,7 +25,7 @@ Azure 儲存體提供 PowerShell 的延伸模組，可讓您以 Azure Active Dir
 
 ## <a name="supported-operations"></a>支援的作業
 
-佇列資料的作業支援 Azure 儲存體擴充功能。 您可以呼叫哪些作業取決於授與您用來登入 PowerShell 的 Azure AD 安全性主體的許可權。 透過 Azure RBAC 指派 Azure 儲存體佇列的許可權。 例如，如果您已獲指派 **佇列資料讀者** 角色，則您可以執行從佇列讀取資料的指令碼命令。 如果您已獲指派 **佇列資料參與者** 角色，則您可以執行指令碼命令，以讀取、寫入或刪除佇列或它們所包含的資料。
+佇列資料的作業支援 Azure 儲存體擴充功能。 您可以呼叫哪些作業取決於授與您用來登入 PowerShell 的 Azure AD 安全性主體的許可權。 佇列的許可權是透過 Azure RBAC 指派的。 例如，如果您已獲指派 **佇列資料讀者** 角色，則您可以執行從佇列讀取資料的指令碼命令。 如果您已獲指派 **佇列資料參與者** 角色，則您可以執行指令碼命令，以讀取、寫入或刪除佇列或它們所包含的資料。
 
 如需有關佇列上每個 Azure 儲存體作業所需許可權的詳細資訊，請參閱 [使用 OAuth 權杖呼叫儲存體作業](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)。
 

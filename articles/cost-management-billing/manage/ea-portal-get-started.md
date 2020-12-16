@@ -9,13 +9,13 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: 0f4f4d934361f1e59eceaaccca680f0cf155bb04
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 88bb4c24489b973aa4230ba6f2b34756f83c7dda
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348954"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030683"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>開始使用 Azure 企業版入口網站
 
@@ -169,7 +169,7 @@ Azure 企業版入口網站為企業客戶提供兩種類型的訂用帳戶：
     - Azure 環境 URL：[https://ea.azure.com](https://ea.azure.com)
     - 月數：介於 1 與 36 之間
     - 註冊號碼：您的註冊號碼
-1. 選取 [下一步]  。
+1. 選取 [下一步] 。
 1. 在 [帳戶金鑰] 方塊中輸入 API 金鑰。
 
    您可以在 Azure 企業版入口網站中找到 API 金鑰。 在 [下載使用量] 索引標籤底下查看，然後選取 [API 存取金鑰]。 複製該金鑰，然後其貼到 Power BI 的 [帳戶金鑰] 方塊中。

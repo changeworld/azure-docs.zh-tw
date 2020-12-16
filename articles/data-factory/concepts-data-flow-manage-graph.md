@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
-ms.openlocfilehash: 15a4a0ea78ef169480d4494683cb929cfefd16f2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026967"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590455"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>管理對應的資料流程圖
 
@@ -21,13 +21,13 @@ ms.locfileid: "93026967"
 
 對應資料流程是使用設計介面（也就是資料流程圖）來撰寫。 在圖形中，轉換邏輯是由左至右建立的，而且會由上而下新增其他資料串流。 若要加入新的轉換，請選取現有轉換右下角的加號。
 
-![畫布](media/data-flow/canvas2.png "畫布")
+![畫布](media/data-flow/canvas-2.png)
 
 當您的資料流程變得更複雜時，請使用下列機制有效地流覽和管理資料流程圖形。 
 
 ## <a name="moving-transformations"></a>移動轉換
 
-在對應資料流程中，一組連接的轉換邏輯稱為 **資料流程** 。 [內送 **資料流程** ] 欄位會指出目前轉換的資料串流。 每個轉換都有一或兩個傳入的資料流程，視其函式而定，並代表輸出資料流程。 傳入資料流程的輸出架構會決定目前轉換可以參考的資料行中繼資料。
+在對應資料流程中，一組連接的轉換邏輯稱為 **資料流程**。 [內送 **資料流程** ] 欄位會指出目前轉換的資料串流。 每個轉換都有一或兩個傳入的資料流程，視其函式而定，並代表輸出資料流程。 傳入資料流程的輸出架構會決定目前轉換可以參考的資料行中繼資料。
 
 ![移動節點](media/data-flow/move-nodes.png "移動節點")
 
@@ -55,7 +55,7 @@ ms.locfileid: "93026967"
 
 ## <a name="hide-reference-nodes"></a>隱藏參考節點
 
-如果您的資料流程具有任何聯結、查閱、存在或等位轉換，資料流程會顯示所有傳入資料流程的參考節點。 如果您想要將所花費的垂直空間量降至最低，您可以最小化您的參考節點。 若要這樣做，請以滑鼠右鍵按一下畫布，然後選取 [ **隱藏參考節點** ]。
+如果您的資料流程具有任何聯結、查閱、存在或等位轉換，資料流程會顯示所有傳入資料流程的參考節點。 如果您想要將所花費的垂直空間量降至最低，您可以最小化您的參考節點。 若要這樣做，請以滑鼠右鍵按一下畫布，然後選取 [ **隱藏參考節點**]。
 
 ![隱藏參考節點](media/data-flow/hide-reference-nodes.png "隱藏參考節點")
 

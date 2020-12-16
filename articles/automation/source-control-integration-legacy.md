@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dedbcf58e76b8c969f8607db6922e87a85f08e5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187331"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591868"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>在 Azure 自動化中使用原始檔控制整合 - 舊版
 
@@ -43,13 +43,13 @@ ms.locfileid: "86187331"
    | 選擇原始檔 |選取原始檔。 目前只支援 **GitHub** 。 |
    | 授權 |按一下 [授權]  按鈕，授與 GitHub 儲存機制的 Azure 自動化存取權。 如果您已在不同的視窗中登入您的 GitHub 帳戶，則會使用該帳戶的認證。 成功授權之後，頁面會在 [授權屬性] 之下顯示您的 GitHub 使用者名稱。 |
    | 選擇儲存機制 |從可用的儲存機制清單中選取 GitHub 儲存機制。 |
-   | 選擇分支 |從可用的分支清單中選取分支。 如果您尚未建立任何分支，只會顯示 **master** 分支。 |
-   | Runbook 資料夾路徑 |Runbook 資料夾路徑可指定 GitHub 儲存機制中的路徑，以便您從中推送或提取程式碼。 它必須以 **/foldername/subfoldername**格式輸入。 只有 Runbook 資料夾路徑中的 Runbook 會同步處理至您的自動化帳戶。 Runbook 資料夾路徑之子資料夾中的 Runbook **不會** 進行同步處理。 使用 **/** 來同步處理儲存機制下的所有 Runbook。 |
+   | 選擇分支 |從可用的分支清單中選取分支。 如果您尚未建立任何分支，則只會顯示 **主要** 分支。 |
+   | Runbook 資料夾路徑 |Runbook 資料夾路徑可指定 GitHub 儲存機制中的路徑，以便您從中推送或提取程式碼。 它必須以 **/foldername/subfoldername** 格式輸入。 只有 Runbook 資料夾路徑中的 Runbook 會同步處理至您的自動化帳戶。 Runbook 資料夾路徑之子資料夾中的 Runbook **不會** 進行同步處理。 使用 **/** 來同步處理儲存機制下的所有 Runbook。 |
 3. 例如，如果您有名為 **PowerShellScripts** 的儲存機制，其中包含名為 **RootFolder** 的資料夾，而該資料夾內含名為 **SubFolder** 的資料夾。 您可以使用下列字串來同步處理每個資料夾層級：
 
-   1. 若要從**存放庫**同步處理 Runbook，則 Runbook 資料夾路徑為 **/** 。
-   2. 若要從 **RootFolder**同步處理 Runbook，則 Runbook 資料夾路徑為 **/RootFolder**。
-   3. 若要從 **SubFolder**同步處理 Runbook，則 Runbook 資料夾路徑為 **/RootFolder/SubFolder**。
+   1. 若要從 **存放庫** 同步處理 Runbook，則 Runbook 資料夾路徑為 **/** 。
+   2. 若要從 **RootFolder** 同步處理 Runbook，則 Runbook 資料夾路徑為 **/RootFolder**。
+   3. 若要從 **SubFolder** 同步處理 Runbook，則 Runbook 資料夾路徑為 **/RootFolder/SubFolder**。
 4. 設定參數之後，其會顯示在 [設定原始檔控制] 頁面。  
 
     ![顯示設定的原始檔控制頁面](media/source-control-integration-legacy/automation-SourceControlConfigure.png)
@@ -66,7 +66,7 @@ ms.locfileid: "86187331"
      | `Type`  |String |
      | `Value` |{"Branch"： \<*Your branch name*> ，"RunbookFolderPath"： \<*Runbook folder path*> ，"ProviderType"： \<*has a value 1 for GitHub*> ，"Repository"： \<*Name of your repository*> ，"Username"： \<*Your GitHub user name*> } |
 
-   * **Microsoft.Azure.Automation.SourceControl.OauthToken**變數包含 OAuthToken 的安全加密值。  
+   * **Microsoft.Azure.Automation.SourceControl.OauthToken** 變數包含 OAuthToken 的安全加密值。  
 
      |**參數**            |**ReplTest1** |
      |:---|:---|

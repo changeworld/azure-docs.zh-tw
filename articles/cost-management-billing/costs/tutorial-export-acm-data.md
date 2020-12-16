@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 32989b4d5c595416f82fc9d3f1cec2eddec1d6ee
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929254"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400347"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教學課程：建立和管理匯出的資料
 
@@ -153,7 +153,7 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
 
-* > [!IMPORTANT]
+  > [!IMPORTANT]
   > **Az.CostManagement** PowerShell 模組處於預覽狀態，因此您必須使用 `Install-Module` Cmdlet 將其分開安裝。 此 PowerShell 模組正式推出後，便會成為未來 Az PowerShell 模組版本的一部分，且預設可從 Azure Cloud Shell 內使用。
 
   ```azurepowershell-interactive

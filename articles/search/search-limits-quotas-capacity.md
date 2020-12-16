@@ -7,25 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: f3763857af1df8f34f38b36835a667c6610e1909
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 12/15/2020
+ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107822"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591339"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure 認知搜尋中的服務限制
 
-儲存體與工作負載的最大限制，以及索引、文件和其他物件的數量上限，皆取決於您是在**免費**、**基本**、**標準**，還是**儲存體最佳化**定價層中[佈建 Azure 認知搜尋](search-create-service-portal.md)。
+儲存體與工作負載的最大限制，以及索引、文件和其他物件的數量上限，皆取決於您是在 **免費**、**基本**、**標準**，還是 **儲存體最佳化** 定價層中 [佈建 Azure 認知搜尋](search-create-service-portal.md)。
 
 + **免費** 的是 Azure 訂用帳戶隨附的多租用戶共用服務。 
 
-+ **基本**以較小的規模，為生產工作負載提供專用的計算資源，但與其他租用戶共用一些網路基礎架構。
++ **基本** 以較小的規模，為生產工作負載提供專用的計算資源，但與其他租用戶共用一些網路基礎架構。
 
-+ **標準**是在專用的機器上執行，在各層級具有更多的儲存和處理容量。 標準共有四個等級︰S1、S2、S3 及 S3 HD。 S3 高密度 (S3 HD) 是針對[多租用戶](search-modeling-multitenant-saas-applications.md)和大量的小型索引 (每個服務有三千個索引) 所設計。 S3 HD 未提供[索引子功能](search-indexer-overview.md)，而且資料擷取必須利用將資料從來源推送至索引的 API。 
++ **標準** 是在專用的機器上執行，在各層級具有更多的儲存和處理容量。 標準共有四個等級︰S1、S2、S3 及 S3 HD。 S3 高密度 (S3 HD) 是針對[多租用戶](search-modeling-multitenant-saas-applications.md)和大量的小型索引 (每個服務有三千個索引) 所設計。 S3 HD 未提供[索引子功能](search-indexer-overview.md)，而且資料擷取必須利用將資料從來源推送至索引的 API。 
 
-+ **儲存體最佳化**會在比**標準**更多儲存體、儲存體頻寬和記憶體的專用機器上執行。 此階層的目標是變更緩慢的大型索引。 儲存體最佳化分為兩個層級：L1 和 L2。
++ **儲存體最佳化** 會在比 **標準** 更多儲存體、儲存體頻寬和記憶體的專用機器上執行。 此階層的目標是變更緩慢的大型索引。 儲存體最佳化分為兩個層級：L1 和 L2。
 
 ## <a name="subscription-limits"></a>訂用帳戶限制
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
@@ -99,7 +99,7 @@ ms.locfileid: "92107822"
 <sup>5</sup> AI 擴充和影像分析會耗用大量運算資源，並且需要大量的可用處理能力。 這些工作負載的執行時間已縮短，可讓佇列中的其他作業有更多機會執行。
 
 > [!NOTE]
-> 如[索引限制](#index-limits)所述，從支援複雜類型的 GA API 版本 (`2019-05-06`) 開始，索引子也會在每個文件的所有複雜集合中，執行 3000 個元素的上限。 這表示如果您已使用先前的 API 版本建立索引子，則不會受限於此限制。 為了保持最大的相容性，如果索引子是使用先前的 API 版本建立的，然後使用 API 版本 `2019-05-06` 或更高版本更新，仍會**排除**在限制之外。 客戶應該注意擁有非常龐大的複雜集合的負面影響 (如先前所述)，而且我們強烈建議使用最新的 GA API 版本來建立任何新的索引子。
+> 如[索引限制](#index-limits)所述，從支援複雜類型的 GA API 版本 (`2019-05-06`) 開始，索引子也會在每個文件的所有複雜集合中，執行 3000 個元素的上限。 這表示如果您已使用先前的 API 版本建立索引子，則不會受限於此限制。 為了保持最大的相容性，如果索引子是使用先前的 API 版本建立的，然後使用 API 版本 `2019-05-06` 或更高版本更新，仍會 **排除** 在限制之外。 客戶應該注意擁有非常龐大的複雜集合的負面影響 (如先前所述)，而且我們強烈建議使用最新的 GA API 版本來建立任何新的索引子。
 
 ## <a name="shared-private-link-resource-limits"></a>共用的私人連結資源限制
 
@@ -143,7 +143,7 @@ ms.locfileid: "92107822"
 
 索引相關的作業靜態速率要求限制：
 
-+ 列出索引 (GET /indexes)：每個搜尋單位每秒 5 個
++ 列出索引 (取得/indexes) ：每個搜尋單位每秒3個
 + 取得索引 (GET /indexes/myindex)：每個搜尋單位每秒 10 個
 + 建立索引 (POST /indexes)：每個搜尋單位每分鐘 12 個
 + 建立或更新索引 (PUT /indexes/myindex)：每個搜尋單位每秒 6 個

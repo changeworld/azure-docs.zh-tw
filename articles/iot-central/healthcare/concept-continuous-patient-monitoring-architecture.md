@@ -3,21 +3,21 @@ title: Azure IoT Central 中的持續性患者監視架構 |Microsoft Docs
 description: 教學課程 - 了解持續性患者監視解決方案架構。
 author: philmea
 ms.author: philmea
-ms.date: 09/14/2020
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 3ef4790f9f7a3b3488dade9312203de41be1ff75
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: dad6327acd24fe7642bf1033b1527ef3e40b772e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122146"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590098"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>持續性患者監視架構
 
-本文說明從**持續性患者監視**應用程式範本建置的解決方案架構：
+本文說明從 **持續性患者監視** 應用程式範本建置的解決方案架構：
 
 您可以使用隨附的應用程式範本，並以下列架構作為指導方針，來建立持續性患者監視解決方案。
 

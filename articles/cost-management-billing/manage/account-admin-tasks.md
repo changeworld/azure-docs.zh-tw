@@ -9,13 +9,13 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contentperfq2
-ms.openlocfilehash: c9f344ec6eae40db2c76f3712df6f1f9d8cead37
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bd46e7b2f0713da67842def47dfeadc837027d8f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668865"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027963"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure 入口網站中的帳戶管理員工作
 
@@ -41,7 +41,7 @@ ms.locfileid: "92668865"
    > [!NOTE]
    > 如果您在這裡未看到某些訂用帳戶，原因可能是您在某個時間點變更了訂用帳戶目錄。 若要看到這些訂用帳戶，您必須將目錄切換到原始目錄 (您最初註冊時所在的目錄)。 然後，重複步驟 2。
 
-1. 選取 [ **付款方式** ]。
+1. 選取 [**付款方式**]。
 
     ![顯示 [付款方式] 頁面的螢幕擷取畫面，您可在其中新增付款方式。](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 

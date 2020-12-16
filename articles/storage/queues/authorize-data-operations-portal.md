@@ -2,21 +2,21 @@
 title: 選擇如何授權存取 Azure 入口網站中的佇列資料
 titleSuffix: Azure Storage
 description: 當您使用 Azure 入口網站來存取佇列資料時，入口網站會在幕後要求 Azure 儲存體。 Azure 儲存體的這些要求可使用您的 Azure AD 帳戶或儲存體帳戶存取金鑰來進行驗證和授權。
-services: storage
 author: tamram
-ms.service: storage
-ms.topic: how-to
-ms.date: 09/08/2020
+services: storage
 ms.author: tamram
 ms.reviewer: ozguns
+ms.date: 09/08/2020
+ms.topic: how-to
+ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 68ac9cd5e89617a820cba9a1d6c61890e50a56a7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 504d2eb939758e6045a2af095c66093c8754cb94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031737"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590744"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>選擇如何授權存取 Azure 入口網站中的佇列資料
 
@@ -28,22 +28,22 @@ ms.locfileid: "97031737"
 
 ### <a name="use-the-account-access-key"></a>使用帳戶存取金鑰
 
-若要使用帳戶存取金鑰來存取佇列資料，您必須擁有指派給您的 Azure 角色，其中包含 Azure RBAC 動作 **Microsoft. Storage/storageAccounts/listkeys/action**。 此 Azure 角色可能是內建或自訂角色。 支援 **Microsoft Storage/storageAccounts/listkeys/action** 的內建角色包括：
+若要使用帳戶存取金鑰來存取佇列資料，您必須擁有指派給您的 Azure 角色，其中包含 Azure RBAC 動作 `Microsoft.Storage/storageAccounts/listkeys/action` 。 此 Azure 角色可能是內建或自訂角色。 支援的內建角色 `Microsoft.Storage/storageAccounts/listkeys/action` 包括：
 
-- Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色
-- Azure Resource Manager [參與者](../../role-based-access-control/built-in-roles.md#contributor) 角色
-- [儲存體帳戶參與者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)角色
+- Azure Resource Manager [擁有者角色](../../role-based-access-control/built-in-roles.md#owner)
+- Azure Resource Manager [參與者角色](../../role-based-access-control/built-in-roles.md#contributor)
+- [儲存體帳戶參與者角色](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-當您嘗試存取 Azure 入口網站中的佇列資料時，入口網站會先檢查您是否已使用 **Microsoft. Storage/storageAccounts/listkeys/action** 指派角色。 如果您已獲指派具有此動作的角色，則入口網站會使用帳戶金鑰來存取佇列資料。 如果您未獲指派具有此動作的角色，則入口網站會嘗試使用您的 Azure AD 帳戶來存取資料。
+當您嘗試存取 Azure 入口網站中的佇列資料時，入口網站會先檢查您是否已指派角色給 `Microsoft.Storage/storageAccounts/listkeys/action` 。 如果您已獲指派具有此動作的角色，則入口網站會使用帳戶金鑰來存取佇列資料。 如果您未獲指派具有此動作的角色，則入口網站會嘗試使用您的 Azure AD 帳戶來存取資料。
 
 > [!NOTE]
-> 傳統訂用帳戶管理員角色服務系統管理員和 Co-Administrator 包含 Azure Resource Manager [擁有](../../role-based-access-control/built-in-roles.md#owner) 者角色的對等專案。 **擁有** 者角色包含所有動作（包括 **Microsoft. Storage/storageAccounts/listkeys/action**），因此具有其中一個系統管理角色的使用者也可以使用帳戶金鑰來存取佇列資料。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
+> 傳統訂用帳戶管理員角色 **服務管理員** 和 **共同管理員** 包含 Azure Resource Manager 角色的同等許可權 [`Owner`](../../role-based-access-control/built-in-roles.md#owner) 。 **擁有** 者角色包含所有動作（包括 `Microsoft.Storage/storageAccounts/listkeys/action` ），因此具有其中一個系統管理角色的使用者也可以使用帳戶金鑰來存取佇列資料。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
 
 ### <a name="use-your-azure-ad-account"></a>使用您的 Azure AD 帳戶
 
 若要使用您的 Azure AD 帳戶從 Azure 入口網站存取佇列資料，下列兩個語句都必須為 true：
 
-- 您已獲指派「Azure Resource Manager [讀者](../../role-based-access-control/built-in-roles.md#reader) 」角色的最小值範圍是儲存體帳戶或更高的層級。 **讀取** 者角色會授與最受限制的許可權，但也可以接受另一個授與儲存體帳戶管理資源存取權的 Azure Resource Manager 角色。
+- 您至少已將 Azure Resource Manager 角色指派給 [`Reader`](../../role-based-access-control/built-in-roles.md#reader) 儲存體帳戶或更高等級的範圍。 **讀取** 者角色會授與最受限制的許可權，但也可以接受另一個授與儲存體帳戶管理資源存取權的 Azure Resource Manager 角色。
 - 您已獲指派可存取佇列資料的內建或自訂角色。
 
 **讀者** 角色指派或其他 Azure Resource Manager 角色指派是必要的，讓使用者可以在 Azure 入口網站中查看和流覽儲存體帳戶管理資源。 授與佇列資料存取權的 Azure 角色並不會授與儲存體帳戶管理資源的存取權。 若要在入口網站中存取佇列資料，使用者需要流覽儲存體帳戶資源的許可權。 如需這項需求的詳細資訊，請參閱 [指派入口網站存取的讀取者角色](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)。
@@ -58,11 +58,11 @@ ms.locfileid: "97031737"
 不支援列出具有傳統訂用帳戶管理員角色的佇列。 若要列出佇列，使用者必須已指派 Azure Resource Manager **讀取** 者角色、 **儲存體佇列資料讀取** 者角色或 **儲存體佇列資料參與者** 角色。
 
 > [!IMPORTANT]
-> Azure 入口網站中的儲存體總管預覽版本不支援使用 Azure AD 認證來查看和修改佇列資料。 Azure 入口網站中的儲存體總管一律會使用帳戶金鑰來存取資料。 若要在 Azure 入口網站中使用儲存體總管，您必須被指派包含 **Microsoft storageAccounts/listkeys/action** 的角色。
+> Azure 入口網站中的儲存體總管預覽版本不支援使用 Azure AD 認證來查看和修改佇列資料。 Azure 入口網站中的儲存體總管一律會使用帳戶金鑰來存取資料。 若要在 Azure 入口網站中使用儲存體總管，您必須被指派包含的角色 `Microsoft.Storage/storageAccounts/listkeys/action` 。
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>流覽至 Azure 入口網站中的佇列
 
-若要在入口網站中查看佇列資料，請流覽至您儲存體帳戶的 **總覽** ，然後按一下 **佇列** 的連結。 或者，您也可以流覽至功能表中的 **佇列服務** 區段。
+若要在入口網站中查看佇列資料，請流覽至您儲存體帳戶的 **總覽** ，然後按一下 **佇列** 的連結。 或者，您也可以流覽至功能表中的 [ **佇列服務** ] 區段。
 
 :::image type="content" source="media/authorize-data-operations-portal/queue-access-portal.png" alt-text="顯示如何流覽至 Azure 入口網站中佇列資料的螢幕擷取畫面":::
 

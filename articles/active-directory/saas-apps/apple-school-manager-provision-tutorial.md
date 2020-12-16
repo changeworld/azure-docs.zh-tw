@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 00e3b40b0e3f4c799c54308b35ce3e810cde118c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: be21151be719098dd6ec65f369ea6fc81ff45a98
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181079"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591832"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>教學課程：設定 Apple School Manager 來自動佈建使用者
 
@@ -134,7 +134,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-13. 當您準備好要佈建時，按一下 [儲存]  。
+13. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
@@ -146,7 +146,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。  
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 ## <a name="additional-resources"></a>其他資源
 

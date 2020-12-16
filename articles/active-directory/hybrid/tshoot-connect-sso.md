@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc638eec174a52d501120d5e53bb2dc9e35b688
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997676"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591169"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>針對 Azure Active Directory 無縫單一登入進行疑難排解
 
@@ -55,9 +55,9 @@ ms.locfileid: "95997676"
 
 ![Azure Active Directory 管理中心：登入報告](./media/tshoot-connect-sso/sso9.png)
 
-流覽至 **Azure Active Directory**  >  Azure Active Directory 系統 [管理中心](https://aad.portal.azure.com/)內 Azure Active Directory **登入**，然後選取特定使用者的登入活動。 尋找 [登入錯誤碼] 欄位。 使用下表，將該欄位的值對應至失敗原因和解決方式：
+流覽至  >  Azure Active Directory 系統 [管理中心](https://aad.portal.azure.com/)內 Azure Active Directory **登入**，然後選取特定使用者的登入活動。 尋找 [登入錯誤碼] 欄位。 使用下表，將該欄位的值對應至失敗原因和解決方式：
 
-|登入錯誤碼|登入失敗原因|解決方法
+|登入錯誤碼|登入失敗原因|解決方案
 | --- | --- | ---
 | 81001 | 使用者的 Kerberos 票證太大。 | 降低使用者的群組成員資格，並再試一次。
 | 81002 | 無法驗證使用者的 Kerberos 票證。 | 請參閱[為檢查清單疑難排解](#troubleshooting-checklist)。
@@ -94,11 +94,11 @@ ms.locfileid: "95997676"
 如果網域控制站已啟用成功稽核，則每次使用者透過無縫 SSO 登入時，系統都會在事件記錄中記錄一個安全性項目。 您可以使用下列查詢來尋找這些安全性事件。 (請查看與電腦帳戶 **AzureADSSOAcc$** 有關連的事件 **4769**。)
 
 ```
-    <QueryList>
-      <Query Id="0" Path="Security">
-    <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
-      </Query>
-    </QueryList>
+  <QueryList>
+    <Query Id="0" Path="Security">
+      <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
+    </Query>
+  </QueryList>
 ```
 
 ## <a name="manual-reset-of-the-feature"></a>手動重設該功能

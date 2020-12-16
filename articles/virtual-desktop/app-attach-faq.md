@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73fb9bf436c043e903977fafbb5a502e2edc5488
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518680"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591190"
 ---
 # <a name="msix-app-attach-faq"></a>MSIX 應用程式附加常見問題
 
@@ -27,7 +27,7 @@ MSIX 是適用于應用程式的封裝格式，而 MSIX 應用程式附加則是
 
 MSIX 應用程式附加不會使用 FSLogix。 不過，MSIX 應用程式附加和 FSLogix 是設計來一起運作，以提供順暢的使用者體驗。
 
-## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>我可以使用 Windows 虛擬桌面以外的 MSIX 應用程式附加嗎？
+## <a name="can-i-use-the-msix-app-attach-outside-of-windows-virtual-desktop"></a>我可以使用 Windows 虛擬桌面以外的 MSIX 應用程式連接嗎？
 
 Power MSIX app 附加的 Api 可用於 Windows 10 企業版。 這些 Api 可以在 Windows 虛擬桌面之外使用。 但是，不會有管理平面可將 MSIX 應用程式附加至 Windows 虛擬桌面以外的地方。
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs 常見問題集 | Microsoft Docs
 description: 本文提供一些 Azure DevTest Labs 相關常見問題集 (FAQ) 的解答。
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328380"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590268"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs 常見問題集
 獲得一些關於 Azure DevTest Labs 最常見問題的解答。
@@ -86,9 +86,9 @@ DevTest Labs 是免費的服務。 在 DevTest Labs 建立實驗室和設定原�
 ### <a name="how-do-i-define-azure-role-based-access-control-for-my-devtest-labs-environments-to-ensure-that-it-can-govern-while-developerstest-can-do-their-work"></a>如何? 針對我的 DevTest Labs 環境定義 Azure 角色型存取控制，以確保其可在開發人員/測試可以執行其工作時進行管理？
 有一個廣泛的模式，但詳細資料取決於您的組織。
 
-中央 IT 應該只擁有必要項目，並讓專案和應用程式小組能夠擁有所需的控制層級。 一般而言，這表示中央 IT 擁有訂用帳戶並會處理核心 IT 函式，例如網路設定。 這組適用於訂用帳戶的**擁有者**應該很小。 這些擁有者可以在需要時提名其他擁有者，或套用訂用帳戶層級的原則，例如「沒有公用 IP」。
+中央 IT 應該只擁有必要項目，並讓專案和應用程式小組能夠擁有所需的控制層級。 一般而言，這表示中央 IT 擁有訂用帳戶並會處理核心 IT 函式，例如網路設定。 這組適用於訂用帳戶的 **擁有者** 應該很小。 這些擁有者可以在需要時提名其他擁有者，或套用訂用帳戶層級的原則，例如「沒有公用 IP」。
 
-可能有使用者子集需要跨訂用帳戶進行存取，例如第 1 層或第 2 層支援。 在此情況下，我們建議您為這些使用者授與**參與者**存取權，讓他們可以管理資源，但不提供使用者存取權或調整原則。
+可能有使用者子集需要跨訂用帳戶進行存取，例如第 1 層或第 2 層支援。 在此情況下，我們建議您為這些使用者授與 **參與者** 存取權，讓他們可以管理資源，但不提供使用者存取權或調整原則。
 
 DevTest Labs 資源應該由接近專案/應用程式小組的擁有者所擁有。 這是因為他們了解對於機器及必要軟體的需求。 在大多數組織中，此 DevTest Labs 資源的擁有者通常是專案/開發潛在客戶。 此擁有者可以管理實驗室環境內的使用者和原則，而且可以管理 DevTest Labs 環境中的所有 VM。
 
@@ -165,12 +165,12 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 您還可以將實驗室用於 Azure DevOps 專案內的特定專案。 然後，透過指定的 Azure Active Directory 群組套用安全性，以允許您存取這兩組資源。 指派到實驗室的虛擬網路可以是另一個要合併使用者的界限。
 
 ### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>如何防止刪除實驗室內的資源？
-我們建議您在實驗室層級設定適當的權限，這樣一來，就只有授權的使用者可以刪除資源或變更實驗室原則。 開發人員應該放置於 **DevTest Labs 使用者**群組內。 首席開發人員或基礎結構負責人都應該是 **DevTest Labs 擁有者**。 我們建議您只有兩位實驗室擁有者。 此原則會擴充到程式碼存放庫以避免損毀。 實驗室使用者有權使用資源，但無法更新實驗室原則。 請參閱下列文章，其中列出每個內建群組在實驗室中擁有的角色和權限：[在 Azure DevTest Labs 中新增擁有者和使用者](devtest-lab-add-devtest-user.md)。
+我們建議您在實驗室層級設定適當的權限，這樣一來，就只有授權的使用者可以刪除資源或變更實驗室原則。 開發人員應該放置於 **DevTest Labs 使用者** 群組內。 首席開發人員或基礎結構負責人都應該是 **DevTest Labs 擁有者**。 我們建議您只有兩位實驗室擁有者。 此原則會擴充到程式碼存放庫以避免損毀。 實驗室使用者有權使用資源，但無法更新實驗室原則。 請參閱下列文章，其中列出每個內建群組在實驗室中擁有的角色和權限：[在 Azure DevTest Labs 中新增擁有者和使用者](devtest-lab-add-devtest-user.md)。
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>如何共用我實驗室的直接連結？
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，移至實驗室。
-2. 從您的瀏覽器複製**實驗室 URL**，然後與您的實驗室使用者共用。
+2. 從您的瀏覽器複製 **實驗室 URL**，然後與您的實驗室使用者共用。
 
 > [!NOTE]
 > 實驗室使用者是具有 Microsoft 帳戶的外部使用者，但不屬於組織的 Active Directory 執行個體成員，該使用者在嘗試存取共用的連結時可能會看到錯誤訊息。 如果外部使用者看到錯誤訊息，請要求使用者先在 Azure 入口網站右上角選取其名稱。 然後，使用者就可以在功能表的 [目錄] 區段中，選取實驗室所在的目錄。
@@ -178,7 +178,7 @@ $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef
 ## <a name="virtual-machines"></a>虛擬機器
 
 ### <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>為何無法在 [虛擬機器] 頁面上看到我在 DevTest Labs 中看到的 VM？
-當您在 DevTest Labs 中建立 VM 時，您會獲得該 VM 的存取權限。 在 [實驗室] 頁面上以及 [虛擬機器] 頁面上，您都可以檢視 VM。 指派給 **DevTest Labs 擁有者**角色的使用者，可以在實驗室的 [所有虛擬機器] 頁面上看到實驗室內所建立的所有 VM。 不過，具有 **DevTest Labs 使用者**角色的使用者不會自動獲得其他使用者所建立之 VM 資源的讀取權限。 因此，這些 VM 不會顯示在 [虛擬機器] 頁面上。
+當您在 DevTest Labs 中建立 VM 時，您會獲得該 VM 的存取權限。 在 [實驗室] 頁面上以及 [虛擬機器] 頁面上，您都可以檢視 VM。 指派給 **DevTest Labs 擁有者** 角色的使用者，可以在實驗室的 [所有虛擬機器] 頁面上看到實驗室內所建立的所有 VM。 不過，具有 **DevTest Labs 使用者** 角色的使用者不會自動獲得其他使用者所建立之 VM 資源的讀取權限。 因此，這些 VM 不會顯示在 [虛擬機器] 頁面上。
 
 
 ### <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>如何從相同範本一次建立多個 VM？
@@ -318,7 +318,7 @@ foreach($labVM in $labVMs)
 - 將 Azure Repos 與 Azure 訂用帳戶用來進行驗證和授權的相同 Azure Active Directory 租用戶產生關聯。
 - 在集中管理的 Azure Active Directory 中，建立名為 `All DevTest Labs Developers` 的群組。 任何有助於成品開發的開發人員都應該放置於此群組中。
 - 相同的 Azure Active Directory 群組可用來提供存取 Azure Repos 存放庫及實驗室。
-- 在 Azure Repos 中，應該使用分支或派生，將開發中的存放庫與主要生產環境存放庫分隔開來。 只會在適當的程式碼檢閱之後，使用 Pull 要求來將內容新增至主要分支。 當程式碼檢閱者核准變更之後，負責維護主要分支的首席開發人員就會合併更新的程式碼。
+- 在 Azure Repos 中，應該使用分支或派生，將開發中的存放庫與主要生產環境存放庫分隔開來。 只有在適當的程式碼審核之後，才會將內容新增至具有提取要求的主要分支。 一旦程式碼審核者核准變更，負責維護主要分支的首席開發人員就會合並更新的程式碼。
 
 ## <a name="cicd-integration"></a>CI/CD 整合
 

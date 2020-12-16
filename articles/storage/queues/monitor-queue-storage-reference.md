@@ -1,20 +1,20 @@
 ---
-title: Azure 佇列儲存體監視資料參考 |Microsoft Docs
-description: 用於監視 Azure 佇列儲存體中資料的記錄和計量參考。
+title: Azure 佇列儲存體監視資料參考
+description: 從 Azure 佇列儲存體監視資料的記錄和計量參考。
 author: normesta
 services: azure-monitor
-ms.service: azure-monitor
-ms.topic: reference
-ms.date: 10/02/2020
 ms.author: normesta
+ms.date: 10/02/2020
+ms.topic: reference
+ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: a3a07f828bb8ef20da630e909e46f03e8556eb98
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780360"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590642"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure 佇列儲存體監視資料參考
 
@@ -30,19 +30,19 @@ ms.locfileid: "96780360"
 
 Azure 儲存體會提供下列 Azure 監視器容量計量。
 
-#### <a name="account-level"></a>帳戶層級
+#### <a name="account-level-capacity-metrics"></a>帳戶層級容量計量
 
-[!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
+[!INCLUDE [Account-level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="queue-storage"></a>佇列儲存體
+#### <a name="queue-storage-metrics"></a>佇列儲存體計量
 
 此表格顯示 [佇列儲存體計量](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)。
 
 | 計量 | 描述 |
 | ------------------- | ----------------- |
-| QueueCapacity | 儲存體帳戶所使用的佇列儲存體數量。 <br/><br/> 單位：位元組 <br/> 彙總類型：Average <br/> 值範例：1024 |
-| QueueCount   | 儲存體帳戶中的佇列數目。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 |
-| QueueMessageCount | 儲存體帳戶佇列服務中的佇列訊息大約數目。 <br/><br/>單位：Count <br/> 彙總類型：Average <br/> 值範例：1024 |
+| **QueueCapacity** | 儲存體帳戶所使用的佇列儲存體數量。 <br><br> 單位： `Bytes` <br> 匯總類型： `Average` <br> 值範例： `1024` |
+| **QueueCount** | 儲存體帳戶中的佇列數目。 <br><br> 單位： `Count` <br> 匯總類型： `Average` <br> 值範例： `1024` |
+| **QueueMessageCount** | 儲存體帳戶中的佇列訊息大約數目。 <br><br> 單位： `Count` <br> 匯總類型： `Average` <br> 值範例： `1024` |
 
 ### <a name="transaction-metrics"></a>交易度量
 
@@ -77,7 +77,7 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 
 [!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-logs-properties-service.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-- 如需監視 Azure 儲存體的說明，請參閱 [監視 Azure 佇列儲存體](monitor-queue-storage.md) 。
+- 如需監視 Azure 佇列儲存體的說明，請參閱 [監視 Azure 佇列儲存體](monitor-queue-storage.md) 。
 - 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器來監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md)。

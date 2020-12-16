@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e36b2d4576b43544bec89efd326363344b35be9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48b5260e883d85899953240f6ee4f83127681c9e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90994601"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591290"
 ---
 # <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>變更核准和要求者資訊 (預覽 Azure AD 權利管理中的存取套件) 設定
 
@@ -68,7 +68,7 @@ ms.locfileid: "90994601"
 
 1. 若要要求使用者提供理由來要求存取套件，請將 [ **要求要求者理由** ] 切換設定為 **[是]**。
     
-1. 現在判斷要求是否需要進行單一或2階段的核准。 設定要讓單一階段核准切換為**1**的**階段**數，或將切換設定為**2**階段核准。
+1. 現在判斷要求是否需要進行單一或2階段的核准。 設定要讓單一階段核准切換為 **1** 的 **階段** 數，或將切換設定為 **2** 階段核准。
 
     ![存取套件-要求-核准設定](./media/entitlement-management-access-package-approval-policy/approval.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "90994601"
     
     ![存取套件-要求-適用于目錄優先核准者的使用者](./media/entitlement-management-access-package-approval-policy/approval-single-stage-first-approver-manager.png)
 
-    如果將此原則設定為不在您目錄中的使用者管理存取權，您可以選取 [ **外部贊助** 者] 或 [ **內部贊助**者]。 或者，按一下 [選擇特定核准者] 下的 [ **新增核准者** 或群組]，以新增特定的使用者。
+    如果將此原則設定為不在您目錄中的使用者管理存取權，您可以選取 [ **外部贊助** 者] 或 [ **內部贊助** 者]。 或者，按一下 [選擇特定核准者] 下的 [ **新增核准者** 或群組]，以新增特定的使用者。
     
     ![存取套件-要求-使用者超出目錄優先核准者](./media/entitlement-management-access-package-approval-policy/out-directory-first-approver.png)
     
@@ -132,13 +132,15 @@ ms.locfileid: "90994601"
 
 1. 在第一個核准者、第二個核准者或兩者底下，按一下 [ **顯示 advanced request settings**]。
 
-    ![存取套件-原則-顯示 advanced request 設定](./media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png)
+    :::image type="content" source="media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png" alt-text="存取套件-原則-顯示 advanced request 設定":::
 
 1. 設定 **是否未採取任何動作，轉寄給替代核准者？** 切換為 **[是]**。
 
 1. 按一下 [ **新增其他核准者** ]，然後從清單中選取替代核准者 (s) 。
 
     ![存取套件-原則-新增替代核准者](./media/entitlement-management-access-package-approval-policy/alternate-approvers-add.png)
+
+    如果您選取管理員做為第一個核准者的核准者，您將會有另一個選項，也就是 **第二個層級管理員作為替代核准者**，可在替代核准者欄位中選擇。 如果您選取此選項，則必須新增回溯核准者以將要求轉送至，以防系統找不到第二個層級管理員。
 
 1. 在 [ **轉寄給替代核准者 (s]) [天數** ] 方塊之後，放入核准者核准或拒絕要求的天數。 如果沒有核准者在要求期間之前核准或拒絕要求，則要求會過期 (超時) ，而且使用者必須提交其他存取套件的要求。 
 
@@ -150,11 +152,11 @@ ms.locfileid: "90994601"
 
     當您完成建立存取套件之後，隨時都可以在未來啟用它。
 
-    如果您選取 [ **無] (系統管理員直接指派) ** 而且您將 [啟用] 設定為 [ **否**]，則系統管理員無法直接指派此存取套件。
+    如果您選取 [ **無] (系統管理員直接指派)** 而且您將 [啟用] 設定為 [ **否**]，則系統管理員無法直接指派此存取套件。
 
     ![存取套件-原則-啟用原則設定](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
-1. 按一下 [下一步]。
+1. 按一下 [下一步] 。
 
 ## <a name="collect-additional-requestor-information-for-approval-preview"></a> (預覽版收集額外的要求者資訊以進行核准) 
 
@@ -173,7 +175,7 @@ ms.locfileid: "90994601"
 
     ![存取套件-原則-設定當地語系化的文字](./media/entitlement-management-access-package-approval-policy/add-localization-question.png)
 
-1. 選取您希望要求者回答的 **回應格式** 。 答案格式包括： *簡短文字*、 *多重選取*和 *長文字*。
+1. 選取您希望要求者回答的 **回應格式** 。 答案格式包括： *簡短文字*、 *多重選取* 和 *長文字*。
  
     ![存取套件-原則-選取 view 和 edit multiple choice 回應格式](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
  

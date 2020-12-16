@@ -7,12 +7,12 @@ description: 使用 GitHub Actions 和 Azure Dev Spaces，直接在 Azure Kubern
 keywords: Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器、GitHub Actions、Helm、服務網格、服務網格路由、kubectl、k8s
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 447c41055ededfc55e44bebd92de89b3d23de3c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995554"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591560"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub Actions & Azure Kubernetes Service (preview) 
 
@@ -30,7 +30,7 @@ Azure Dev Spaces 提供使用 GitHub Actions 的工作流程，可讓您直接�
 > [!IMPORTANT]
 > 此功能目前為預覽狀態。 若您同意[補充的使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 * [已安裝 Azure CLI][azure-cli-installed]。
@@ -149,7 +149,7 @@ git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 git push origin bike-images
 ```
 
-推送完成之後，請流覽至 GitHub 上的分支存放庫，在您的分支存放庫中建立含有 *主要* 分支的提取要求，以作為與 *自行車映射* 分支相較的基底分支。
+推送完成之後，請流覽至 GitHub 上的分支存放庫，在您的分支存放庫中建立具有 *主要* 分支的提取要求，以作為與 *自行車映射* 分支相較的基底分支。
 
 開啟您的提取要求之後，請流覽至 [ *動作* ] 索引標籤。確認已開始新的動作，並且正在建立 *自行車* 服務。
 

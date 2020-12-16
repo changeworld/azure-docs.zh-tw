@@ -1,20 +1,20 @@
 ---
-title: 虛擬機器和磁碟效能
-description: 深入瞭解 Vm 及其連接的磁片如何結合效能
+title: 虛擬機器和磁片效能-Linux
+description: 深入瞭解虛擬機器及其連接的磁片如何結合以在 Linux 上使用效能。
 author: albecker1
 ms.author: albecker
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 092368bb66784a00d5116da0b6be6513f8ebb261
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 2c48672bcfd8c552b36e3ae0807135924669c1d9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518045"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591849"
 ---
-# <a name="virtual-machine-and-disk-performance"></a>虛擬機器和磁碟效能
+# <a name="virtual-machine-and-disk-performance-linux"></a> (Linux) 的虛擬機器和磁片效能
 [!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance.md)]
 
 ## <a name="virtual-machine-uncached-vs-cached-limits"></a>虛擬機器未快取與快取限制

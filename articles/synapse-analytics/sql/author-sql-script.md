@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 077815d117af0328a3466346727e135caaf8ff21
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8d4c1928ae1fac9b840245756c4bf5fe22a83f0f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458001"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590506"
 ---
 # <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Synapse Studio SQL 腳本 
 
@@ -79,7 +79,7 @@ Synapse Studio 提供 SQL 腳本 web 介面，可讓您撰寫 SQL 查詢。
 從 [開發 SQL 腳本] 下的 [動作] 功能表中，從 [開發 SQL 腳本] 下的 [動作] 功能表中選擇 [新增資料夾]。 並在快顯視窗中輸入新資料夾的名稱。 
 
 > [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/new-sql-script-create-folder.png)
+> ![螢幕擷取畫面，顯示已選取 [新增資料夾] 的 SQL 腳本範例。](./media/author-sql-script/new-sql-script-create-folder.png)
 
 若要將 SQL 腳本移至資料夾，您可以選取 sql 腳本，然後從 [動作] 功能表中選擇 [移至]。 然後在新視窗中尋找目的資料夾，然後將 sql 腳本移至選取的資料夾中。您也可以快速拖曳 sql 腳本，並將它放在資料夾中。  
 

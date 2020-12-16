@@ -2,26 +2,26 @@
 title: 佇列儲存體的安全性建議
 titleSuffix: Azure Storage
 description: 深入瞭解佇列儲存體的安全性建議。 依照我們的共同責任模型中所述，實施本指南將有助於您履行安全性義務。
-services: storage
 author: tamram
+services: storage
+ms.author: tamram
+ms.date: 03/11/2020
+ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
-ms.date: 03/11/2020
-ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 9ec7dcc12b7452ee4bd40fab9b2bc53b5cca9be3
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: db0e033adf553c25c6b7b401f8d0df1a2cd5995f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348803"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592155"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>佇列儲存體的安全性建議
 
-本文包含佇列儲存體的安全性建議。 依照我們的共同責任模型所述，執行這些建議有助於您履行安全性義務。 如需 Microsoft 如何履行服務提供者責任的詳細資訊，請參閱[雲端運算的共同責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)。
+本文包含佇列儲存體的安全性建議。 依照我們的共同責任模型所述，執行這些建議有助於您履行安全性義務。 如需 Microsoft 如何滿足服務提供者責任的詳細資訊，請參閱 [雲端運算的共同責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)。
 
-本文中包含的一些建議可由 Azure 資訊安全中心自動監視。 Azure 資訊安全中心是保護 Azure 中資源的第一道防線。 如需 Azure 資訊安全中心的詳細資訊，請參閱 [Azure 資訊安全中心是什麼？](../../security-center/security-center-introduction.md)。
+本文中包含的一些建議可由 Azure 資訊安全中心自動監視。 Azure 資訊安全中心是保護 Azure 中資源的第一道防線。 如需 Azure 資訊安全中心的詳細資訊，請參閱 [什麼是 Azure 資訊安全中心？](../../security-center/security-center-introduction.md)。
 
 Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找出潛在的安全性弱點。 接著，這會為您提供如何解決這些問題的建議。 如需 Azure 資訊安全中心建議的詳細資訊，請參閱 [Azure 資訊安全中心的安全性建議](../../security-center/security-center-recommendations.md)。
 
@@ -37,7 +37,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|
-| 使用 Azure Active Directory (Azure AD) 來授權佇列資料的存取權 | Azure AD 透過共用金鑰提供更高的安全性和使用，以授權佇列儲存體的要求。 如需詳細資訊，請參閱 [使用 Azure Active Directory 授與 Azure blob 和佇列的存取權](../common/storage-auth-aad.md)。 | - |
+| 使用 Azure Active Directory (Azure AD) 來授權佇列資料的存取權 | Azure AD 針對將要求傳送至佇列儲存體的共用金鑰授權提供了更高的安全性和易用的使用。 如需詳細資訊，請參閱 [使用 Azure Active Directory 授與 Azure blob 和佇列的存取權](../common/storage-auth-aad.md)。 | - |
 | 透過 Azure RBAC 將許可權指派給 Azure AD 安全性主體時，請記住最低許可權的主體。 | 將角色指派給使用者、群組或應用程式時，只授與該安全性主體執行其工作所需的許可權。 限制對資源的存取有助於防止不慎和惡意誤用您的資料。 | - |
 | 使用 Azure Key Vault 保護您的帳戶存取金鑰 | Microsoft 建議使用 Azure AD 來授權 Azure 儲存體的要求。 但是，如果您必須使用共用金鑰授權，請使用 Azure Key Vault 保護您的帳戶金鑰。 您可以在執行時間從金鑰保存庫中取出金鑰，而不是將它們儲存到您的應用程式。 | - |
 | 定期重新產生您的帳戶金鑰 | 輪替帳戶金鑰會定期減少將資料公開給惡意執行者的風險。 | - |
@@ -52,12 +52,12 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 | 為儲存體帳戶設定傳輸層安全性 (TLS) 的最小必要版本。  | 要求用戶端使用更安全的 TLS 版本，藉由設定該帳戶的最小 TLS 版本來對 Azure 儲存體帳戶提出要求。 如需詳細資訊，請參閱為 [儲存體帳戶設定傳輸層安全性的最小必要版本 (TLS) ](../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)| - |
 | 在您所有的儲存體帳戶上啟用「 **需要安全傳輸** 」選項 | 當您啟用「 **需要安全傳輸** 」選項時，對儲存體帳戶提出的所有要求都必須透過安全連線進行。 透過 HTTP 提出的任何要求都會失敗。 如需詳細資訊，請參閱 [Azure 儲存體中的「需要安全傳輸](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」。 | [是](../../security-center/security-center-remediate-recommendations.md) |
 | 啟用防火牆規則 | 設定防火牆規則，以將您儲存體帳戶的存取限制為源自指定 IP 位址或範圍的要求，或從 Azure 虛擬網路中的子網清單 (VNet) 。 如需設定防火牆規則的詳細資訊，請參閱 [設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。 | - |
-| 允許信任的 Microsoft 服務存取儲存體帳戶 | 開啟儲存體帳戶的防火牆規則會預設封鎖傳入的資料要求，除非要求源自 Azure 虛擬網路 (VNet) 內運作的服務或源自允許的公用 IP位址。 封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。 您可以藉由新增例外狀況來允許受信任的 Microsoft 服務存取儲存體帳戶，以允許來自其他 Azure 服務的要求。 如需為信任的 Microsoft 服務新增例外狀況的詳細資訊，請參閱 [設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。| - |
-| 使用私人端點 | 私人端點會從您的 Azure 虛擬網路將私人 IP 位址指派給儲存體帳戶 (VNet) 。 它會透過私人連結保護您的 VNet 與儲存體帳戶之間的所有流量。 如需私人端點的詳細資訊，請參閱 [使用 Azure 私人端點私下連接至儲存體帳戶](../../private-link/tutorial-private-endpoint-storage-portal.md)。 | - |
+| 允許信任的 Microsoft 服務存取儲存體帳戶 | 依預設，開啟儲存體帳戶的防火牆規則會封鎖資料的傳入要求，除非要求源自于 Azure VNet 內或來自允許的公用 IP 位址的服務。 封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。 您可以藉由新增例外狀況來允許受信任的 Microsoft 服務存取儲存體帳戶，以允許來自其他 Azure 服務的要求。 如需為信任的 Microsoft 服務新增例外狀況的詳細資訊，請參閱 [設定 Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。| - |
+| 使用私人端點 | 私人端點會將私人 IP 位址從您的 Azure VNet 指派給儲存體帳戶。 它會透過 Private Link 保護您的 VNet 與儲存體帳戶之間的所有流量。 如需私人端點的詳細資訊，請參閱 [使用 Azure 私人端點私下連接至儲存體帳戶](../../private-link/tutorial-private-endpoint-storage-portal.md)。 | - |
 | 使用 VNet 服務標記 | 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。 如需 Azure 儲存體所支援服務標籤的詳細資訊，請參閱 [Azure 服務標記總覽](../../virtual-network/service-tags-overview.md)。 如需示範如何使用服務標記來建立輸出網路規則的教學課程，請參閱 [限制對 PaaS 資源的存取](../../virtual-network/tutorial-restrict-network-access-to-resources.md)。 | - |
 | 限制對特定網路的網路存取 | 限制網路存取需要存取的用戶端需要存取，可減少您的資源暴露在網路攻擊的風險。 | [是](../../security-center/security-center-remediate-recommendations.md) |
 
-## <a name="loggingmonitoring"></a>記錄/監視
+## <a name="logging-and-monitoring"></a>記錄和監視
 
 | 建議 | 註解 | 資訊安全中心 |
 |-|----|--|

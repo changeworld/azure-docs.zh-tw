@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 680908fdb2b7badcc1bbf713805b638213590877
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: dd125860aab8e64d316a91ec8876a3678c646d52
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508079"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591464"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>適用於 PostgreSQL 的 Azure 資料庫中的連線架構
 本文說明適用於 PostgreSQL 的 Azure 資料庫連線架構，以及如何將流量導向至 Azure 內部和外部用戶端的適用於 PostgreSQL 的 Azure 資料庫資料庫實例。
@@ -30,7 +30,7 @@ ms.locfileid: "97508079"
 
 在進行中的服務維護過程中，我們會定期重新整理裝載閘道的計算硬體，以確保我們提供最安全且高效能的體驗。 重新整理閘道硬體時，會先建立新的計算節點信號。 這項新的通道會為所有新建立的適用於 PostgreSQL 的 Azure 資料庫伺服器提供流量，並且在相同區域中有來自較舊閘道環形的不同 IP 位址，以區別流量。 一旦新的環形可以正常運作，則提供現有伺服器的舊版閘道硬體會規劃解除委任。 解除閘道硬體之前，執行其伺服器並聯機到較舊閘道的客戶，會在解除委任之前的三個月內收到電子郵件和 Azure 入口網站的通知。 解除委任閘道可能會影響到您伺服器的連線能力。 
 
-* 您會在應用程式的連接字串中，將閘道 IP 位址硬編碼。 **不建議您這樣做**。 
+* 您會在應用程式的連接字串中，將閘道 IP 位址硬編碼。 **不建議您這樣做**。您應該在您的 <servername> 應用程式的連接字串中，以 postgres.database.azure.com 的格式使用伺服器的完整功能變數名稱 (FQDN) 。 
 * 您不會在用戶端防火牆中更新較新的閘道 IP 位址，以允許連出流量抵達新的閘道通道。
 
 下表列出所有資料區域適用於 PostgreSQL 的 Azure 資料庫閘道的閘道 IP 位址。 下表會維護每個區域的閘道 IP 位址最新資訊。 在下表中，資料行代表下列各項：

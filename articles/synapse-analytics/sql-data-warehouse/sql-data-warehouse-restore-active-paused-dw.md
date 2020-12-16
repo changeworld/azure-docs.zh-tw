@@ -1,5 +1,5 @@
 ---
-title: 還原現有的專用 SQL 集區
+title: '將現有的專用 SQL 集區還原 (先前的 SQL DW) '
 description: 在 Azure Synapse Analytics 中還原現有專用 SQL 集區的操作指南。
 services: synapse-analytics
 author: anumjs
@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d3c84f7d951db715d26042f524f385826197e076
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2ce552a13592c9d26ef70575f98b0b76ecc454ff
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450013"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591985"
 ---
 # <a name="restore-an-existing-dedicated-sql-pool-formerly-sql-dw"></a>將現有的專用 SQL 集區還原 (先前的 SQL DW) 
 

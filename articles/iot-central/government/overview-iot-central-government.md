@@ -3,22 +3,20 @@ title: 使用 Azure IoT Central 建置政府機關解決方案
 description: 了解如何使用 Azure IoT Central 應用程式範本來建置智慧城市解決方案。
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126561"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590812"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>使用 Azure IoT Central 建置政府機關解決方案
 
-
-
-開始使用 Azure IoT Central 應用程式範本來建置智慧城市解決方案。 立即開始使用**水質監視**、**用水量監視**，以及**連線廢棄物管理**。
+開始使用 Azure IoT Central 應用程式範本來建置智慧城市解決方案。 立即開始使用 **水質監視**、**用水量監視**，以及 **連線廢棄物管理**。
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>什麼是水質監視應用程式範本？   
 
@@ -41,7 +39,6 @@ ms.locfileid: "92126561"
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>什麼是用水量監視應用程式範本？ 
 
 傳統的用水量追蹤依賴用水操作員手動讀取計量網站上的用水量計量。 越來越多城市以先進的智慧計量取代傳統計量，讓您能夠遠端監視使用量，以及從遠端控制水閥來控制水流量。 用水量監視搭配給市民的數位意見反應訊息，可以提升認知並減少用水量。 
-
 
 「用水量監視」應用程式是一個 IoT Central 應用程式範本，可協助您開始進行 IoT 解決方案開發，讓水源公用事業和市政機關能夠從遠端監視和控制水流量，以減少用水量。 
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902291"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591890"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -41,9 +41,9 @@ ms.locfileid: "96902291"
 
 1.  開發人員會[建立功能分支](source-control.md#creating-feature-branches)以進行變更。 他們會使用最新的變更來對管線執行進行偵錯。 如需如何對管線執行進行偵錯的詳細資訊，請參閱[使用 Azure Data Factory 進行反覆式開發和偵錯](iterative-development-debugging.md)。
 
-1.  如果開發人員滿意其變更，便可從其功能分支建立對主要或共同作業分支的提取要求，讓同事檢閱其變更。
+1.  當開發人員對其變更感到滿意後，他們會建立從其功能分支到主要或共同作業分支的提取要求，以取得對等的已審核變更。
 
-1.  在提取要求經過核准並在主要分支中合併變更後，變更就會發佈到開發處理站。
+1.  在完成提取要求並將變更合併至主要分支之後，變更就會發行至開發 factory。
 
 1.  當小組準備好要將變更部署至測試或 UAT 時 (使用者接受度測試) factory 時，小組會進入 Azure Pipelines 版本，並將所需的開發 factory 版本部署至 UAT。 此部署會在 Azure Pipelines 工作中進行，並使用 Resource Manager 範本參數來套用適當的組態。
 
@@ -668,7 +668,7 @@ ms.locfileid: "96902291"
     - 資料處理站實體彼此相依。 例如，觸發程序取決於管線，而管線取決於資料集和其他管線。 選擇性發佈資源子集可能會導致非預期的行為和錯誤。
     - 在少數情況下，當您需要選擇性發佈時，請考慮使用 Hotfix。 如需詳細資訊，請參閱 [修復生產環境](#hotfix-production-environment)。
 
-- Azure Data Factory 團隊不建議將 Azure RBAC 控制項指派給資料處理站中 (管線、資料集等) 的個別實體。 例如，如果開發人員有管線或資料集的存取權，他們應該能夠存取資料處理站中的所有管線或資料集。 如果您認為您需要在資料處理站內執行許多 Azure 角色，請查看部署第二個 data factory。
+- Azure Data Factory 小組不建議將 Azure RBAC 控制項指派給資料處理站中 (管線、資料集等 ) 的個別實體。 例如，如果開發人員有管線或資料集的存取權，他們應該能夠存取資料處理站中的所有管線或資料集。 如果您認為您需要在資料處理站內執行許多 Azure 角色，請查看部署第二個 data factory。
 
 -   您無法從私人分支發佈。
 

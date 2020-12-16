@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31e4f80aa8ffec96538b53ac64df6918c632a950
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 90b18c2556796f23be0c1135b0bad0d53368a46d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997438"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590948"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別
 
@@ -37,7 +37,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 如果不熟悉 Azure 資源的受控識別，請參閱[什麼是 Azure 資源受控識別？](overview.md)。 若要了解系統指派和使用者指派的受控識別類型，請參閱[受控識別類型](overview.md#managed-identity-types)。
+- 如果不熟悉 Azure 資源的受控識別，請參閱 [什麼是 Azure 資源受控識別？](overview.md)。 若要了解系統指派和使用者指派的受控識別類型，請參閱[受控識別類型](overview.md#managed-identity-types)。
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 

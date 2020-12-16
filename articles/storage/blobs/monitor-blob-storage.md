@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b73146302c740dfd8d97d275bad003a6d8a9a23c
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9224d02e36dbca96d3e54946330d3135ff811829
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852773"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590761"
 ---
 # <a name="monitoring-azure-blob-storage"></a>監視 Azure Blob 儲存體
 
@@ -154,7 +154,7 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 使用 [>set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `StorageAccountId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 將 `<storage-service-resource--id>` 此程式碼片段中的預留位置取代為 blob 服務的資源識別碼。 在 Azure 入口網站中，開啟您儲存體帳戶的 [屬性] 頁面，即可尋找資源識別碼。
@@ -174,7 +174,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 使用 [>set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `EventHubAuthorizationRuleId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 以下是範例：
@@ -188,7 +188,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAutho
 使用 [>set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `WorkspaceId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 以下是範例：

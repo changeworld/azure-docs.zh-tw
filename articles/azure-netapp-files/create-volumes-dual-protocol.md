@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: b-juche
-ms.openlocfilehash: ee5e1230acd059d69648144b84a8fbfa652ef6e7
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854048"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591817"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的雙重通訊協定 (NFSv3 和 SMB) 磁片區
 
@@ -49,8 +49,8 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙協定
     
     | 安全性樣式    | 可以修改許可權的用戶端   | 用戶端可以使用的許可權  | 產生的有效安全性樣式    | 可以存取檔案的用戶端     |
     |-  |-  |-  |-  |-  |
-    | UNIX  | NFS   | NFSv3 模式位   | UNIX  | NFS 和 Windows   |
-    | NTFS  | Windows   | NTFS Acl     | NTFS  |NFS 和 Windows|
+    | `Unix`    | NFS   | NFSv3 模式位   | UNIX  | NFS 和 Windows   |
+    | `Ntfs`    | Windows   | NTFS Acl     | NTFS  |NFS 和 Windows|
 * 使用 NFS 裝載 NTFS 安全性樣式磁片區的 UNIX 使用者，將會被驗證為 `root` 適用于 UNIX 的 Windows 使用者 `root` 和 `pcuser` 所有其他使用者。 使用 NFS 時，請確定這些使用者帳戶都存在於您的 Active Directory 中。 
 
 
