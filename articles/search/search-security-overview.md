@@ -1,7 +1,7 @@
 ---
 title: 安全性概觀
 titleSuffix: Azure Cognitive Search
-description: Azure 認知搜尋符合 SOC 2、HIPAA 和其他認證的規範。 使用篩選條件運算式中的使用者和群組安全識別碼來進行連接和資料加密、驗證和身分識別存取。
+description: 瞭解 Azure 認知搜尋中的安全性功能，以保護端點、內容和作業。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: references_regions
-ms.openlocfilehash: 118ee6ffb189b7a5558477912bd6b27ea739afde
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: ffb5a78c13413a46565a9c57c87dc8273742fd24
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516161"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563444"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 認知搜尋中的安全性-總覽
 
@@ -40,7 +40,7 @@ ms.locfileid: "97516161"
 
 針對搜尋服務在內部處理的資料，下表描述 [資料加密模型](../security/fundamentals/encryption-models.md)。 某些功能（例如知識存放區、增量擴充和索引子型索引、讀取或寫入其他 Azure 服務中的資料結構）。 這些服務本身具有不同于 Azure 認知搜尋的加密支援層級。
 
-| 模型 | 鑰匙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 要求&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 限制 | 適用於 |
+| 型號 | 鑰匙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 要求&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 限制 | 適用於 |
 |------------------|-------|-------------|--------------|------------|
 | 伺服器端加密 | Microsoft 管理的金鑰 | 無 (內建)  | 無，適用于所有區域中的所有層級（在 24 2018 年1月之後建立的內容）。 | 內容 (索引和同義字對應) 和定義 (索引子、資料來源、技能集)  |
 | 伺服器端加密 | 客戶管理的金鑰 | Azure 金鑰保存庫 | 適用于所有區域中的可計費層級（適用于2019年1月之後建立的內容）。 | 資料磁片上) 的內容 (索引和同義字對應 |
@@ -126,7 +126,7 @@ Azure 認知搜尋的 [私人端點](../private-link/private-endpoint-overview.m
 
 如果您需要對搜尋結果進行細微的每個使用者控制，您可以在查詢上建立安全性篩選，並傳回與指定的安全性識別相關聯的檔。 身分識別型存取控制會實作為 *篩選* 條件，以根據身分識別來修剪檔和內容的搜尋結果，而不是預先定義的角色和角色指派。 下表說明兩個針對未經授權的內容縮減搜尋結果的方法。
 
-| 方法 | 描述 |
+| 方法 | 說明 |
 |----------|-------------|
 |[根據身分識別篩選進行安全性範圍縮減](search-security-trimming-for-azure-search.md)  | 記載實作使用者身分識別存取控制的基本工作流程。 其中涵蓋在索引中新增安全性識別碼，然後說明如何針對該欄位進行篩選來縮減所禁止內容的結果。 |
 |[根據 Azure Active Directory 身分識別進行安全性範圍縮減](search-security-trimming-for-azure-search-with-aad.md)  | 本文將擴充先前的文章，提供從 Azure 雲端平臺中的其中一項 [免費服務](https://azure.microsoft.com/free/) Azure Active Directory (Azure AD) 中取得身分識別的步驟。 |
@@ -150,7 +150,7 @@ Azure 原則是 Azure 內建的功能，可協助您管理多個標準的合規�
 
 針對 Azure 認知搜尋，目前有一個內建的定義。 它是用於診斷記錄。 使用此內建，您可以指派原則來識別缺少診斷記錄的任何搜尋服務，然後將其開啟。 如需詳細資訊，請參閱 [Azure 原則 Azure 認知搜尋的法規合規性控制](security-controls-policy.md)。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [Azure 安全性基本概念](../security/fundamentals/index.yml)
 + [Azure 安全性](https://azure.microsoft.com/overview/security)

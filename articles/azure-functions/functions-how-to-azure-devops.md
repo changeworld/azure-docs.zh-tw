@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 9312094d1d86ea25ebd573e5d14b6d5bd0619cfc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108230"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563410"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 持續傳遞
 
@@ -19,7 +19,7 @@ ms.locfileid: "92108230"
 
 您有兩個選項可定義管線：
 
-- **YAML**檔： YAML 檔案會描述管線。 檔案可能會有組建步驟區段和發行區段。 YAML 檔案必須位於與應用程式相同的存放庫中。
+- **YAML** 檔： YAML 檔案會描述管線。 檔案可能會有組建步驟區段和發行區段。 YAML 檔案必須位於與應用程式相同的存放庫中。
 - **範本**：範本是現成的工作，可建立或部署您的應用程式。
 
 ## <a name="yaml-based-pipeline"></a>以 YAML 為基礎的管線
@@ -258,7 +258,7 @@ Azure DevOps 中的範本是預先定義的工作群組，可建立或部署應�
 
     - 您必須擁有建立 GitHub 個人存取權杖的許可權， (PAT) 具有足夠的許可權。 如需詳細資訊，請參閱 [GITHUB PAT 許可權需求。](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)
 
-    - 您必須擁有在 GitHub 存放庫中認可至主要分支的許可權，才能認可自動產生的 YAML 檔案。
+    - 您必須擁有在 GitHub 存放庫中認可主要分支的許可權，才能認可自動產生的 YAML 檔案。
 
 - 如果您的程式碼位於 Azure Repos：
 
