@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349175"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516547"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>使用 Azure Databricks 將資料從 Cassandra 遷移至 Azure Cosmos DB Cassandra API 帳戶
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -42,7 +42,7 @@ Azure Cosmos DB 中的 Cassandra API 已成為在 Apache Cassandra 上執行之�
 
 ## <a name="provision-an-azure-databricks-cluster"></a>佈建 Azure Databricks 叢集
 
-您可以依照指示來布建 [Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)叢集。 不過，請注意，Apache Cassandra 連接器目前不支援 Apache Spark 3.x。 您將需要使用支援的2.x 版 Apache Spark 來布建 Databricks 執行時間。 我們建議6.6 版的 Databricks 執行時間：
+您可以依照指示來布建 [Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)叢集。 不過，請注意，Apache Cassandra 連接器目前不支援 Apache Spark 3.x。 您將需要使用支援的2.x 版 Apache Spark 來布建 Databricks 執行時間。 建議您選取支援最新版本 Spark 2.x 的 Databricks 執行時間版本，而不是在 Scala 2.11 版之前：
 
 :::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Databricks 執行時間":::
 

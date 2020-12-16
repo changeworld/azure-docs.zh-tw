@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e3245053fcc9943814268835fa5ac0f40a6f94c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750504"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516381"
 ---
 # <a name="secure-your-restful-services"></a>保護您的 RESTful 服務 
 
@@ -230,7 +230,7 @@ Authorization: Bearer <token>
 
 ### <a name="acquiring-an-access-token"></a>取得存取權杖 
 
-您可以透過下列其中一種方式取得存取權杖：[從同盟識別提供者](idp-pass-through-custom.md)取得、透過呼叫傳回存取權杖的 REST API 取得、使用 [ROPC 流程](../active-directory/develop/v2-oauth-ropc.md) 取得，或使用[用戶端認證流程](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)取得。  
+您可以透過下列其中一種方式取得存取權杖：[從同盟識別提供者](idp-pass-through-user-flow.md)取得、透過呼叫傳回存取權杖的 REST API 取得、使用 [ROPC 流程](../active-directory/develop/v2-oauth-ropc.md) 取得，或使用[用戶端認證流程](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)取得。  
 
 下列範例會使用 REST API 技術設定檔，使用以 HTTP 基本驗證傳遞的用戶端認證，向 Azure AD 權杖端點提出要求。 若要在 Azure AD 中進行此設定，請參閱 [Microsoft 身分識別平台與 OAuth 2.0 用戶端認證流程](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) (機器翻譯)。 您可能必須修改此設定，才能聯繫您的識別提供者。 
 

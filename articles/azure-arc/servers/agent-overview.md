@@ -3,12 +3,12 @@ title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 277e6616ce1bf90ada83516cb71f9cb55de1b7b0
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452948"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516809"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
@@ -55,6 +55,9 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
+
+> [!WARNING]
+> Linux 主機名稱或 Windows 電腦名稱稱不能使用名稱中的其中一個保留字或商標，否則嘗試向 Azure 註冊已連線的電腦將會失敗。 如需保留字清單，請參閱 [解決保留的資源名稱錯誤](../../azure-resource-manager/templates/error-reserved-resource-name.md) 。
 
 ### <a name="required-permissions"></a>所需的權限
 

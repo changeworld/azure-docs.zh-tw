@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 47c3c091e767cac63bb814469397ef1a0aeca3a4
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173561"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516500"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 身分識別平台最佳做法和建議
 
@@ -28,7 +28,7 @@ ms.locfileid: "96173561"
 使用下列檢查清單，以確保您的應用程式能夠有效地與 [Microsoft 身分識別平臺](./index.yml)整合。
 
 > [!TIP]
-> Azure 入口網站中的 [ *整合助理* ] 可協助您套用許多這些最佳作法和建議。 在 Azure 入口網站中選取您的任何 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ，然後選取 [ **整合助理] ([預覽])** 功能表項目，以開始使用助理。
+> Azure 入口網站中的 [ *整合助理* ] 可協助您套用許多這些最佳作法和建議。 在 Azure 入口網站中選取您的任何 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ，然後選取 [ **整合助理** ] 功能表項目以開始使用助理。
 
 ## <a name="basics"></a>基本
 

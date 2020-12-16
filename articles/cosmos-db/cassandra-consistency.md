@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: a02076c09d038b02c0ab846440ad14e799271733
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3107610215d5b37c43124ce4129b2eb5437e3b62
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339949"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516813"
 ---
-# <a name="apache-cassandra-and-azure-cosmos-db-consistency-levels"></a>Apache Cassandra 和 Azure Cosmos DB 一致性層級
+# <a name="apache-cassandra-and-azure-cosmos-db-cassandra-api-consistency-levels"></a>Apache Cassandra 和 Azure Cosmos DB Cassandra API 一致性層級
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 不同于 Azure Cosmos DB，Apache Cassandra 本身並不提供精確定義的一致性保證。 取而代之的是，Apache Cassandra 會提供「寫入」一致性層級和「讀取」一致性層級，以實現高可用性、一致性和延遲的取捨。 使用 Azure Cosmos DB 的 Cassandra API 時：
@@ -24,11 +24,24 @@ ms.locfileid: "93339949"
 
 * Azure Cosmos DB 會動態地將 Cassandra 用戶端驅動程式所指定的讀取一致性層級對應到讀取要求上動態設定的其中一個 Azure Cosmos DB 一致性層級。
 
+## <a name="multi-region-writes-vs-single-region-writes"></a>多重區域寫入與單一區域寫入
+
+Apache Cassandra 資料庫預設為多宿主系統，且不會提供現成的選項，可用於讀取的多重區域複寫的單一區域寫入。 不過，Azure Cosmos DB 提供了單一區域或 [多重區域](how-to-multi-master.md) 寫入設定的內部功能。 能夠在多個區域之間選擇單一區域寫入設定的優點之一，就是規避跨區域衝突案例，以及在多個區域之間維護強式一致性的選項。 
+
+透過單一區域寫入，您可以維持強式一致性，同時維持跨區域的高可用性，並具備 [自動容錯移轉](high-availability.md#multi-region-accounts-with-a-single-write-region-write-region-outage)。 在這項設定中，您仍然可以利用資料位置，藉由根據要求降級為最終一致性，來降低讀取延遲。 除了這些功能之外，Azure Cosmos DB 平臺也提供在選取區域時啟用 [區域冗余](high-availability.md#availability-zone-support) 的功能。 因此，不同于原生 Apache Cassandra，Azure Cosmos DB 可讓 [您以更細微的方式流覽](consistency-levels.md#rto) CAP 定理的範圍。
+
 ## <a name="mapping-consistency-levels"></a>對應一致性層級
 
-下表說明使用 Cassandra API 時，原生 Cassandra 一致性層級如何對應至 Azure Cosmos DB 的一致性層級：  
+Azure Cosmos DB 平臺提供一組五個定義完善、以商務使用案例為導向的一致性設定，並與 [CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem) 和 [PACLC 定理](https://en.wikipedia.org/wiki/PACELC_theorem)所定義的取捨相關。 因為此方法與 Apache Cassandra 明顯不同，所以建議您花時間複習和瞭解 [檔](consistency-levels.md)中 Azure Cosmos DB 一致性設定，或觀賞 [這段短片](https://www.youtube.com/watch?v=t1--kZjrG-o) ，瞭解 Azure Cosmos DB 平臺的一致性設定。
 
-:::image type="content" source="./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png" alt-text="Cassandra 一致性模型對應" lightbox="./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png" :::
+下表說明使用 Cassandra API 時，Apache Cassandra 和 Azure Cosmos DB 一致性層級之間的可能對應。 這會顯示單一區域的設定、單一區域寫入的多重區域讀取，以及多重區域寫入。
+
+> [!NOTE]
+> 這些都不是完全對應。 相反地，我們已提供最接近 Apache Cassandra 的雷同，並清楚說明最右邊的資料行中的任何定性差異。 如前所述，我們建議您檢查 Azure Cosmos DB 的 [一致性設定](consistency-levels.md)。 
+
+:::image type="content" source="./media/cassandra-consistency/account.png" alt-text="Cassandra 一致性帳戶層級對應" lightbox="./media/cassandra-consistency/account.png" :::
+
+:::image type="content" source="./media/cassandra-consistency/dynamic.png" alt-text="Cassandra 一致性動態對應" lightbox="./media/cassandra-consistency/dynamic.png" :::
 
 如果您的 Azure Cosmos 帳戶設定了強式一致性以外的一致性層級，您可以藉由查看 *機率限定過期* (PBS) 計量，找出用戶端可能會針對您的工作負載取得強式和一致讀取的可能性。 此計量會在 Azure 入口網站公開，若要深入了解，請參閱[監視機率限定過期 (PBS) 計量](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)。
 

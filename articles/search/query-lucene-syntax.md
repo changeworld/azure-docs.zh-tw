@@ -7,67 +7,40 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/23/2020
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/14/2020
+ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88923444"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516603"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 Lucene 查詢語法
 
-您可以根據特殊查詢形式的豐富 [Lucene 查詢](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 剖析器語法，針對 Azure 認知搜尋撰寫查詢：萬用字元、模糊搜尋、鄰近搜尋、正則運算式為一些範例。 在 Azure 認知搜尋中，大部分的 Lucene 查詢剖析器語法都是 [完整](search-lucene-query-architecture.md)的，但 *範圍搜尋* 的例外狀況是透過運算式在 Azure 認知搜尋中所建立 `$filter` 。 
+建立查詢時，您可以選擇特製化查詢表單的 [Lucene 查詢](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 剖析器語法：萬用字元、模糊搜尋、鄰近搜尋、正則運算式。 在 [Azure 認知搜尋中](search-lucene-query-architecture.md)，大部分的 Lucene 查詢剖析器語法都是完整的，但 *範圍搜尋* （透過運算式來建立）除外 **`$filter`** 。 
 
-> [!NOTE]
-> 完整的 Lucene 語法用於[搜尋檔](/rest/api/searchservice/search-documents)API 之**搜尋**參數中所傳遞的查詢運算式，而不是與該 api 的[$Filter](search-filters.md)參數所使用的[OData 語法](query-odata-filter-orderby-syntax.md)混淆。 這些不同的語法有自己的規則，可供您用來建立查詢、逸出字元串等等。
+完整的 Lucene 語法用於在搜尋檔的參數中傳遞的查詢運算式 **`search`** [ (REST API)](/rest/api/searchservice/search-documents) 要求，而不是與相同要求中用於和運算式的 [OData 語法](query-odata-filter-orderby-syntax.md) 混淆 [**`$filter`**](search-filters.md) [**`$orderby`**](search-query-odata-orderby.md) 。 OData 參數有不同的語法和規則，可用於建立查詢、逸出字元串等等。
 
-## <a name="invoke-full-parsing"></a>叫用完整剖析
+## <a name="example-full-syntax"></a>範例 (完整語法) 
 
-設定 `queryType` 搜尋參數以指定所要使用的剖析器。 有效值包括 `simple|full`，`simple` 為預設值，`full` 則用於 Lucene。 
+設定 **`queryType`** 參數以指定 Full Lucene。 下列範例會叫用欄位內搜尋和詞彙提升。 此查詢會尋找類別目錄欄位包含「預算」一詞的旅館。 任何包含「最近整修」片語的檔會因為詞彙提升值 (3) 而更高的等級。  
 
-<a name="bkmk_example"></a> 
-
-### <a name="example-showing-full-syntax"></a>顯示完整語法的範例
-
-下列範例會使用 Lucene 查詢語法 (這可從 `queryType=full` 參數輕易看出) 尋找索引中的文件。 此查詢會傳回類別欄位包含「預算」一詞以及所有可搜尋欄位包含「最近翻新」詞組的旅館。 包含「最近翻新」片語的文件會因為字詞提升值 (3) 而排在比較前面。  
-
-`searchMode=all` 參數在此範例中具有相關性。 每當在查詢上使用運算子時，您通常都應設定 `searchMode=all`，以確保*所有*的準則均相符。
-
-```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2020-06-30&querytype=full
-```
-
- 或者，可以使用 POST：  
-
-```
-POST /indexes/hotels/docs/search?api-version=2020-06-30
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-  "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",
+  "search": "category:budget AND \"recently renovated\"^3",
   "searchMode": "all"
 }
 ```
 
-如需其他範例，請參閱 [在 Azure 認知搜尋中建立查詢的 Lucene 查詢語法範例](search-query-lucene-examples.md)。 如需有關指定完整查詢參數的詳細資訊，請參閱 [Azure 認知搜尋 REST API&#41;搜尋檔 &#40;](/rest/api/searchservice/Search-Documents)。
+**`searchMode`** 參數在此範例中是相關的。 每當在查詢上使用運算子時，您通常都應設定 `searchMode=all`，以確保 *所有* 的準則均相符。  
 
-> [!NOTE]  
->  Azure 認知搜尋也支援 [簡單的查詢語法](query-simple-syntax.md)，這是一個簡單且健全的查詢語言，可用於直接關鍵字搜尋。  
+如需其他範例，請參閱 [Lucene 查詢語法範例](search-query-lucene-examples.md)。 如需查詢要求和參數的詳細資訊，請參閱 [REST API) 搜尋檔 (](/rest/api/searchservice/Search-Documents)。
 
-##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a>語法基礎  
+## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a>語法基礎  
 
-下列語法基礎適用于使用 Lucene 語法的所有查詢。  
+下列語法基礎適用於所有使用 Lucene 語法的查詢。  
 
 ### <a name="operator-evaluation-in-context"></a>內容中的運算子評估
 
@@ -95,39 +68,15 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 Unsafe 字元包括 ``" ` < > # % { } | \ ^ ~ [ ]``。 保留字元包括 `; / ? : @ = + &`。
 
-###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> 查詢大小限制
+## <a name="boolean-operators"></a><a name="bkmk_boolean"></a> 布林運算子
 
- 您可以傳送給 Azure 認知搜尋的查詢大小有限制。 具體來說，您最多可以有 1024 個子句 (以 AND、OR 等運算子分隔的運算式)。 此外，查詢中任何個別字詞的大小也有約 32 KB 的限制。 如果您的應用程式以程式設計方式產生搜尋查詢，建議您依照此方式設計，以避免產生無大小限制的查詢。  
+您可以在查詢字串中內嵌布林運算子，以改善相符的精確度。 完整語法除了字元運算子之外，還支援文字運算子。 文字布林運算子 (AND、OR、NOT) 須一律全部以大寫指定。
 
-### <a name="precedence-operators-grouping"></a>優先順序運算子 (分組) 
-
- 您可以使用括號，在加上括號的陳述式內加入運算子，以建立子查詢。 例如，`motel+(wifi||luxury)` 會搜尋包含 "motel" 一詞和 "wifi" 或 "luxury" (或兩者) 的文件。
-
-欄位分組也相類似，但分組的範圍會限定於單一欄位。 例如，`hotelAmenities:(gym+(wifi||pool))` 會在 "hotelAmenities" 欄位中搜尋 "gym" 和 "wifi"，或搜尋 "gym" 和 "pool"。  
-
-##  <a name="boolean-search"></a><a name="bkmk_boolean"></a> 布林值搜尋
-
- 文字布林運算子 (AND、OR、NOT) 須一律全部以大寫指定。  
-
-### <a name="or-operator-or-or-"></a>OR 運算子 `OR` 或 `||`
-
-OR 運算子是分隔號或直立線字元。 例如：`wifi || luxury` 會搜尋包含 "wifi" 或 "luxury" (或兩者) 的文件。 OR 是預設的連接詞運算子，因此您也可以將其省略，而使 `wifi luxury` 相當於 `wifi || luxury`。
-
-### <a name="and-operator-and--or-"></a>AND 運算子 `AND`、`&&` 或 `+`
-
-AND 運算子是 & 符號或加號。 例如：`wifi && luxury` 會搜尋同時包含 "wifi" 和 "luxury" 的文件。 加號字元 (+) 用於需要的字詞。 例如，`+wifi +luxury` 會指定這兩個字詞必須出現單一文件的某個欄位中。
-
-### <a name="not-operator-not--or--"></a>NOT 運算子 `NOT`、`!` 或 `-`
-
-NOT 運算子是負號。 例如， `wifi –luxury` 會搜尋具有 `wifi` 和/或不具有該詞彙的檔 `luxury` 。
-
-查詢要求的 **searchMode** 參數會控制使用 NOT 運算子的詞彙是否為以 and 連結或 or 運算，以及查詢中的其他詞彙 (假設 `+` `|`) 的其他詞彙沒有 or 運算子。 有效值包括 `any` 或 `all`。
-
-`searchMode=any` 藉由包含更多結果來提高查詢的召回率，且依預設 `-` 會將其解釋為 "OR NOT"。 例如，`wifi -luxury` 會比對出包含 `wifi` 一詞的文件，或不含 `luxury` 一詞的文件。
-
-`searchMode=all` 藉由包含較少的結果來提高查詢的精確度，而且根據預設，將會被解釋為 "AND NOT"。 例如，`wifi -luxury` 會比對出包含 `wifi` 一詞且不含 "luxury" 一詞的文件。 就 `-` 運算子而言，這算是較直覺化的行為。 因此， `searchMode=all` `searchMode=any` 如果您想要優化搜尋的精確度而不是召回率， *且* 您的使用者經常 `-` 在搜尋中使用運算子，您應該考慮使用而不是。
-
-決定 **searchMode** 設定時，請考慮各種應用程式中查詢的使用者互動模式。 搜尋資訊的使用者比較有可能在查詢中包含運算子，而不是具有更多內建導覽結構的電子商務網站。
+|文字運算子 | 字元 | 範例 | 使用量 |
+|--------------|----------- |--------|-------|
+| AND | `&`, `+` | `wifi + luxury` | 指定符合項必須包含的字詞。 在此範例中，查詢引擎會尋找包含和的檔 `wifi` `luxury` 。 使用 () 的加號字元 `+` 作為必要的詞彙。 例如，`+wifi +luxury` 會指定這兩個字詞必須出現單一文件的某個欄位中。|
+| OR | `|` | `wifi | luxury` | 找到任一詞彙時尋找相符的。 在此範例中，查詢引擎會在包含 `wifi` 或或兩者的檔上傳回相符的 `luxury` 。 OR 是預設的連接詞運算子，因此您也可以將其省略，而使 `wifi luxury` 相當於 `wifi | luxury`。|
+| NOT | `!`, `-` | `wifi –luxury` | 傳回包含字詞之檔的相符專案。 例如， `wifi –luxury` 會搜尋具有該詞彙的檔 `wifi` `luxury` 。 <br/><br/>`searchMode`查詢要求的參數會控制是否在查詢中使用 NOT 運算子的字詞以 and 連結或 or 運算， (假設 `+` `|`) 的其他詞彙沒有 or 運算子。 有效值包括 `any` 或 `all`。  <br/><br/>`searchMode=any` 藉由包含更多結果來提高查詢的召回率，且依預設 `-` 會將其解釋為 "OR NOT"。 例如，`wifi -luxury` 會比對出包含 `wifi` 一詞的文件，或不含 `luxury` 一詞的文件。  <br/><br/>`searchMode=all` 藉由包含較少的結果來提高查詢的精確度，而且根據預設，將會被解釋為 "AND NOT"。 例如，`wifi -luxury` 會比對出包含 `wifi` 一詞且不含 "luxury" 一詞的文件。 就 `-` 運算子而言，這算是較直覺化的行為。 因此， `searchMode=all` `searchMode=any` 如果您想要優化搜尋的精確度而不是召回率， *且* 您的使用者經常 `-` 在搜尋中使用運算子，您應該考慮使用而不是。<br/><br/>在決定設定時 `searchMode` ，請考慮各種應用程式中查詢的使用者互動模式。 搜尋資訊的使用者比較有可能在查詢中包含運算子，而不是具有更多內建導覽結構的電子商務網站。 |
 
 ##  <a name="fielded-search"></a><a name="bkmk_fields"></a> 回復搜尋
 
@@ -148,14 +97,13 @@ NOT 運算子是負號。 例如， `wifi –luxury` 會搜尋具有 `wifi` 和/
 
 模糊搜尋會尋找具有類似結構的相符專案，並將某個詞彙擴充到最大的50詞彙，以符合兩個或更少的距離準則。 如需詳細資訊，請參閱 [模糊搜尋](search-query-fuzzy.md)。
 
- 若要執行模糊搜尋，請在單一文字結尾使用波狀符號 "~"，加上選擇性參數，介於 0 和 2 (預設值) 之間且指定編輯距離的數值。 例如，"blue~" 或 "blue~1" 會傳回 "blue"、"blues" 和 "glue"。
+若要執行模糊搜尋，請在單一文字結尾使用波狀符號 "~"，加上選擇性參數，介於 0 和 2 (預設值) 之間且指定編輯距離的數值。 例如，"blue~" 或 "blue~1" 會傳回 "blue"、"blues" 和 "glue"。
 
- 模糊搜尋只能套用至詞彙（而不是片語），但是您可以在多部分名稱或片語中個別將波狀符號附加至每個詞彙。 例如，"Unviersty ~ ~" Wshington ~ "會符合「華盛頓大學」。
+模糊搜尋只能套用至詞彙（而不是片語），但是您可以在多部分名稱或片語中個別將波狀符號附加至每個詞彙。 例如，"Unviersty ~ ~" Wshington ~ "會符合「華盛頓大學」。
  
 ##  <a name="proximity-search"></a><a name="bkmk_proximity"></a> 鄰近搜尋
 
 鄰近搜尋可用來尋找文件中彼此相近的詞彙。 在片語的結尾插入波狀符號 "~"，後面加上建立鄰近界限的字數。 例如，`"hotel airport"~5` 會在文件中尋找相隔 5 個字以內的「飯店」和「機場」等字詞。  
-
 
 ##  <a name="term-boosting"></a><a name="bkmk_termboost"></a> 詞彙提升
 
@@ -194,9 +142,27 @@ Full Lucene 語法支援前置、中置和尾碼比對。 但是，如果您只�
 
 另一方面，Microsoft 分析器 (在這種情況下，就是使用詞形歸併還原，而不是詞幹) 分析。 這表示所有產生的標記都應為有效的英文字。 例如，「終止」、「終止」和「終止」大多會保留在索引中，而且對於相依于萬用字元和模糊搜尋的案例而言，是較理想的選擇。
 
-##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a>萬用字元和 regex 查詢的評分
+## <a name="scoring-wildcard-and-regex-queries"></a>萬用字元和 regex 查詢的評分
 
 Azure 認知搜尋針對文字查詢使用以頻率為基礎的評分 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 。 不過，針對字詞範圍可能很廣泛的萬用字元和 regex 查詢，則會忽略頻率因素，以防止罕見字詞的相符項目誤獲較高的排名。 系統對於萬用字元和 regex 搜尋的所有相符項目，會同等視之。
+
+## <a name="special-characters"></a>特殊字元
+
+在某些情況下，您可能會想要搜尋特殊字元，例如 ' ❤ ' 表情符號或 ' € ' 符號。 在這種情況下，請確定您使用的分析器不會將這些字元篩選掉。標準分析器會略過許多特殊字元，但不包括在您的索引中。
+
+將 token 化特殊字元的分析器包括「空白字元」分析器，它會考慮任何字元序列（以空白字元分隔為標記） (因此「❤」字串會被視為權杖) 。 此外，類似 Microsoft 英文分析器 ( "en-us" ) 的語言分析器會採用 "€" 字串作為權杖。 您可以 [測試分析器](/rest/api/searchservice/test-analyzer) ，以查看它為指定查詢產生的權杖。
+
+使用 Unicode 字元時，請確定已在查詢 url 中正確地將符號轉義 (例如，「❤」會使用) 的 escape 順序 `%E2%9D%A4+` 。 Postman 會自動進行這種轉譯。  
+
+## <a name="precedence-grouping"></a>優先順序 (分組) 
+
+您可以使用括號，在加上括號的陳述式內加入運算子，以建立子查詢。 例如，`motel+(wifi|luxury)` 會搜尋包含 "motel" 一詞和 "wifi" 或 "luxury" (或兩者) 的文件。
+
+欄位分組也相類似，但分組的範圍會限定於單一欄位。 例如，`hotelAmenities:(gym+(wifi|pool))` 會在 "hotelAmenities" 欄位中搜尋 "gym" 和 "wifi"，或搜尋 "gym" 和 "pool"。  
+
+## <a name="query-size-limits"></a>查詢大小限制
+
+您可以傳送給 Azure 認知搜尋的查詢大小有限制。 具體來說，您最多可以有 1024 個子句 (以 AND、OR 等運算子分隔的運算式)。 此外，查詢中任何個別字詞的大小也有約 32 KB 的限制。 如果您的應用程式以程式設計方式產生搜尋查詢，建議您依照此方式設計，以避免產生無大小限制的查詢。  
 
 ## <a name="see-also"></a>另請參閱
 

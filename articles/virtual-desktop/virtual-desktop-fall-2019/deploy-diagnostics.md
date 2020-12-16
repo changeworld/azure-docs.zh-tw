@@ -3,25 +3,20 @@ title: 部署適用于 Windows 虛擬桌面 (傳統) 的診斷工具-Azure
 description: 如何部署適用于 Windows 虛擬桌面的診斷 UX 工具 (傳統) 。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023066"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97515638"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虛擬桌面 (傳統) 診斷工具
 
 >[!IMPORTANT]
 >此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。
-
->[!IMPORTANT]
->從2020年3月16日起，我們已暫時停用會影響使用者體驗的診斷查詢（因為服務的需求增加）。 這會導致工具停止運作，因為它依賴這些查詢才能運作。 當診斷查詢再次可供使用時，我們將會更新這篇文章。
->
->在那之前，我們強烈建議您 [使用 Log Analytics](diagnostics-log-analytics-2019.md) 來繼續監視。
 
 以下是適用于 Windows 虛擬桌面的診斷工具可為您執行的動作：
 
@@ -43,8 +38,8 @@ ms.locfileid: "95023066"
 
 在開始之前，您也必須安裝這兩個 PowerShell 模組：
 
-- [Azure PowerShell 模組](/powershell/azure/install-az-ps?view=azps-2.4.0/)
-- [Azure AD 模組](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
+- [Azure PowerShell 模組](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
+- [Azure AD 模組](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
 
 當您登入時，請確定您已備妥訂用帳戶識別碼。
 
@@ -162,7 +157,7 @@ ms.locfileid: "95023066"
 2. 移至您的 Log Analytics 工作區。
 3. 在左面板的 [工作區資料來源] 底下，選取 [ **虛擬機器**]。
 4. 選取您要連接的 VM 名稱。
-5. 選取 [連接]  。
+5. 選取 [連接]。
 
 ## <a name="deploy-the-diagnostics-tool"></a>部署診斷工具
 
@@ -191,7 +186,7 @@ ms.locfileid: "95023066"
 4.  在左面板的 [管理] 區段下，選取 [ **驗證**]。
 5.  在 [重新 **導向 uri** ] 文字方塊中輸入所需的重新導向 uri，然後選取功能表左上角的 [ **儲存** ]。
 6. 在 [類型] 下方的下拉式功能表中選取 [ **Web** ]。
-7. 從應用程式總覽頁面輸入 URL，並將 **/security/signin-callback** 新增至其結尾。 例如：`https://<yourappname>.azurewebsites.net/security/signin-callback`。
+7. 從應用程式總覽頁面輸入 URL，並將 **/security/signin-callback** 新增至其結尾。 例如： `https://<yourappname>.azurewebsites.net/security/signin-callback` 。
 
    > [!div class="mx-imgBorder"]
    > ![重新導向 URI 頁面](../media/redirect-uri-page.png)
@@ -264,7 +259,7 @@ ms.locfileid: "95023066"
 
     - 閾值：高於2000毫秒會標示為狀況不良。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何使用 [Log Analytics 監視使用診斷](diagnostics-log-analytics-2019.md)的活動記錄。
 - 請參閱常見的錯誤案例，以及如何在 [找出及診斷問題](diagnostics-role-service-2019.md)時加以修正。

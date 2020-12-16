@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: alexeyo
-ms.openlocfilehash: c88a7820518d0a73bfb0e93d3b364190207b8f90
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 01a0171ed2b660fbabebf4276a74f8a3ea631bde
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97051210"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516524"
 ---
 # <a name="using-speech-services-with-private-endpoints-provided-by-azure-private-link"></a>使用語音服務搭配 Azure Private Link 提供的私用端點
 
@@ -53,11 +53,11 @@ ms.locfileid: "97051210"
 - 將會出現新的面板，其中包含為您的資源建立唯一自訂子域的指示。
 > [!WARNING]
 > 在您建立自訂功能變數名稱之後，就 **無法** 變更它。 請參閱上述警告中的詳細資訊。
-- 作業完成之後，您可能會想要選取 (*資源管理* 群組) 的 *金鑰和端點*，並確認您資源的新端點名稱，格式為`{your custom name}.cognitiveservices.azure.com`
+- 作業完成之後，您可能會想要選取 (*資源管理* 群組) 的 *金鑰和端點*，並確認您資源的新端點名稱，格式為 <p />`{your custom name}.cognitiveservices.azure.com`
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-本節需要使用 Azure PowerShell 模組版本5.1.0 或更新版本，在本機執行 PowerShell 7.x 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要安裝或升級，請參閱 [安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps) 。
+本節需要使用 Azure PowerShell 模組版本5.1.0 或更新版本，在本機執行 PowerShell 7.x 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
 
 繼續執行 `Connect-AzAccount` 以建立與 Azure 的連線之前，請先執行此作業。
 
@@ -272,13 +272,13 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 
 語音服務具有 [語音轉換文字](rest-speech-to-text.md) 和 [文字轉換語音](rest-text-to-speech.md)的 REST API。 必須針對啟用私人端點的案例考慮下列各項。
 
-語音轉換文字具有兩個不同的 REST Api。 每個 API 都有不同的用途，使用不同的端點，而且在啟用私人端點的案例中使用時，需要不同的方法。
+語音轉換文字有兩個不同的 REST Api。 每個 API 都有不同的用途，使用不同的端點，而且在啟用私人端點的案例中使用時，需要不同的方法。
 
 語音轉換文字 REST Api 如下：
-- [](rest-speech-to-text.md) V1.0 用於線上轉譯
-- v3.0 用於 [批次](batch-transcription.md) 轉譯和 [自訂語音](custom-speech-overview.md)。  (參閱 [完整參考](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)) 
+- [語音轉換文字 REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) 用於 [批次](batch-transcription.md) 轉譯和 [自訂語音](custom-speech-overview.md)。 v3.0 是 v2.0 [的後續版本](/azure/cognitive-services/speech-service/migrate-v2-to-v3)。
+- [簡短音訊的語音轉換文字 REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) 用於線上轉譯。 
 
-在私人端點案例中使用語音轉換文字1.0 版和文字轉換語音 REST API，與本文稍後所述的語音 SDK 案例相同且相當於 [語音 SDK 案例](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) 。 
+在私人端點案例中，針對簡短音訊和文字轉換語音 REST API 使用語音轉換文字 REST API，與本文稍後所述的語音 SDK 案例相同且相當於 [語音 SDK 案例](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk) 。 
 
 語音轉換文字 REST API v3.0 正在使用一組不同的端點，因此需要不同的方法來啟用私人端點的案例。
 
@@ -287,7 +287,7 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 
 ##### <a name="speech-to-text-rest-api-v30"></a>語音轉換文字 REST API v3。0
 
-語音資源通常會使用 [認知服務區域端點](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) 來與 [語音轉換文字 REST API v3.0](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)進行通訊。 這些資源具有下列命名格式： <p/>`{region}.api.cognitive.microsoft.com`
+語音資源通常會使用 [認知服務區域端點](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints) 來與 [語音轉換文字 REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30)進行通訊。 這些資源具有下列命名格式： <p/>`{region}.api.cognitive.microsoft.com`
 
 這是範例要求 URL：
 
@@ -311,15 +311,18 @@ https://my-private-link-speech.cognitiveservices.azure.com/speechtotext/v3.0/tra
 >
 > 語音資源自訂功能變數名稱 **未** 包含部署資源所在區域的相關資訊。 因此上述的應用程式邏輯將 **無法** 運作，而且需要更改。
 
-##### <a name="speech-to-text-rest-api-v10-and-text-to-speech-rest-api"></a>語音轉換文字 REST API v1.0 和文字轉換語音 REST API
+##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>簡短音訊和文字轉換語音 REST API 的語音轉換文字 REST API
 
-[語音轉換文字 REST API](rest-speech-to-text.md) V1.0 和 [文字轉換語音 REST API](rest-text-to-speech.md) 會使用兩種類型的端點：
+適用于簡短音訊和[文字轉換語音](rest-text-to-speech.md)[的語音轉換文字 REST API](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) REST API 會使用兩種類型的端點：
 - 用來與認知服務進行通訊的[認知服務區域端點](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)，REST API 以取得授權權杖
 - 所有其他作業的特殊端點
 
 您可以在下面的「使用語音 SDK 的使用方式」一節中，提供特殊端點的詳細說明，以及應如何針對啟用私人 [端點的語音](#general-principle) 資源轉換其 URL。 針對「語音轉換文字1.0」和「文字轉換語音」 REST API，適用于 SDK 的相同原則也適用。
 
-熟悉上一段所述小節中的材質，然後參閱下列範例。  (範例描述文字轉換語音 REST API;語音轉換文字1.0 版 REST API 的用法完全相同) 
+熟悉上一段所述小節中的材質，然後參閱下列範例。  (範例描述文字轉換語音 REST API;針對短音訊使用語音轉換文字 REST API 是完全相同的) 
+
+> [!NOTE]
+> 針對私人端點案例中 **的短音訊使用語音轉換文字 REST API** 時，您必須使用 [透過](rest-speech-to-text.md#request-headers) `Authorization` [標頭](rest-speech-to-text.md#request-headers)傳遞的授權權杖; 透過標頭將語音訂用帳戶金鑰傳遞給特殊端點 `Ocp-Apim-Subscription-Key` 將 **無法** 運作，且會產生錯誤401。
 
 **文字轉換語音 REST API 使用範例。**
 
@@ -497,14 +500,16 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 
 語音轉換文字 REST API v3.0 使用方式完全等同于 [啟用私人端點語音資源](#speech-to-text-rest-api-v30)的情況。
 
-##### <a name="speech-to-text-rest-api-v10-and-text-to-speech-rest-api"></a>語音轉換文字 REST API v1.0 和文字轉換語音 REST API
+##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>簡短音訊和文字轉換語音 REST API 的語音轉換文字 REST API
 
-在此情況下，語音轉換文字 REST API v1.0 和文字轉換語音 REST API 使用方式與一般案例沒有任何差異，而且應該依照 [語音轉換文字 REST API](rest-speech-to-text.md) V1.0 和 [文字轉換語音 REST API](rest-text-to-speech.md) 檔中所述的方式使用。
+在此情況下，語音轉換文字 REST API 針對短音訊和文字轉換語音 REST API 使用方式與一般案例沒有任何差異，因為語音轉換文字 REST API 的簡短音訊例外 (請參閱以下) 的附注。 這兩個 Api 都應該依照 [語音轉換文字 REST API 中的說明，以取得簡短的音訊](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) 和 [文字轉換語音 REST API](rest-text-to-speech.md) 檔。
 
+> [!NOTE]
+> 針對自訂網域案例中 **的短音訊使用語音轉換文字 REST API** 時，您必須使用 [透過](rest-speech-to-text.md#request-headers) `Authorization` [標頭](rest-speech-to-text.md#request-headers)傳遞的授權權杖; 透過標頭將語音訂用帳戶金鑰傳遞給特殊端點 `Ocp-Apim-Subscription-Key` 將 **無法** 運作，而且會產生錯誤401。
 
 #### <a name="speech-resource-with-custom-domain-name-without-private-endpoints-usage-with-speech-sdk"></a>沒有私人端點的自訂功能變數名稱的語音資源。 使用語音 SDK
 
-使用具有已啟用自訂功能變數名稱之語音資源的語音 SDK 時，您的應用程式程式碼必須 **經過** 審核和可能變更。 請注意，相較于 [啟用私人端點的語音資源](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk)，這些變更與案例 **不同**。 我們正在努力更順暢地支援私人端點/自訂網域。
+使用具有已啟用自訂功能變數名稱之語音資源的語音 SDK 時，您的應用程式程式碼必須 **經過** 審核和可能變更。 請注意，相較于 [啟用私人端點的語音資源](#speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk)，這些變更與案例 **不同**。 我們正在努力更順暢地支援私人端點/自訂網域案例。
 
 在本節中，我們將使用 `my-private-link-speech.cognitiveservices.azure.com` (自訂網域) 範例語音資源 DNS 名稱。
 

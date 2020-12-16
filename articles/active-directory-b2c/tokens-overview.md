@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0ad14481673f0061fb0170e60869109c87a6829
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379781"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516361"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>概述 Azure Active Directory B2C 中的權杖
 
@@ -44,7 +44,7 @@ Azure AD B2C 支援 [OAuth 2.0 和 OpenID Connect 通訊協定](protocols-overvi
 
 ## <a name="claims"></a>Claims
 
-當您使用 Azure AD B2C 時，您可以精確控制權杖的內容。 您可以設定[使用者流程](user-flow-overview.md)和[自訂原則](custom-policy-overview.md)，以在宣告中傳送傳送應用程式所需的特定使用者資料集。 這些宣告可包含標準屬性，例如 **displayName** 和 **emailAddress** 。 您的應用程式可以使用這些宣告來安全地驗證使用者和要求。
+當您使用 Azure AD B2C 時，您可以精確控制權杖的內容。 您可以設定[使用者流程](user-flow-overview.md)和[自訂原則](custom-policy-overview.md)，以在宣告中傳送傳送應用程式所需的特定使用者資料集。 這些宣告可包含標準屬性，例如 **displayName** 和 **emailAddress**。 您的應用程式可以使用這些宣告來安全地驗證使用者和要求。
 
 識別碼權杖中的宣告不會依任何特定順序傳回。 在識別碼權杖中可以隨時導入新的宣告。 導入新的宣告時，您的應用程式並不會中斷。 您也可以在宣告中加入[自訂使用者屬性](user-flow-custom-attributes.md)。
 
@@ -91,13 +91,13 @@ Azure AD B2C 支援 [OAuth 2.0 和 OpenID Connect 通訊協定](protocols-overvi
 
 - **簽發者 (iss) 宣告** - 此屬性可識別發出權杖的 Azure AD B2C 租用戶。 預設值是 `https://<domain>/{B2C tenant GUID}/v2.0/`。 `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` 的值包含包含 Azure AD B2C 租用戶和權杖要求中所用使用者流程的識別碼。 如果您的應用程式或程式庫需要 Azure AD B2C 符合 [OpenID Connect Discovery 1.0 規格](https://openid.net/specs/openid-connect-discovery-1_0.html)，請使用此值。
 
-- **主體 (子) 宣告** - 此屬性可識別權杖判斷提示資訊的實體。 預設值為 **ObjectID** ，會對權杖中的 `sub` 宣告填入使用者的物件識別碼。 **不支援的值** 僅供回溯相容性之用。 建議您盡快切換至 **ObjectID** 。
+- **主體 (子) 宣告** - 此屬性可識別權杖判斷提示資訊的實體。 預設值為 **ObjectID**，會對權杖中的 `sub` 宣告填入使用者的物件識別碼。 **不支援的值** 僅供回溯相容性之用。 建議您盡快切換至 **ObjectID**。
 
 - **代表原則識別碼的宣告** - 此屬性會識別在其中填入權杖要求中所用原則名稱的宣告類型。 預設值是 `tfp`。 `acr` 的值僅供回溯相容性之用。
 
 ## <a name="pass-through"></a>傳遞
 
-使用者旅程啟動時，Azure AD B2C 會收到識別提供者所提供的存取權杖。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您可[在使用者流程中啟用宣告](idp-pass-through-user-flow.md)或[在自訂原則中定義宣告](idp-pass-through-custom.md)，以將權杖傳至您在 Azure AD B2C 中註冊的應用程式。 您的應用程式必須使用 [建議的使用者流程](user-flow-versions.md) ，才能利用傳遞權杖作為宣告。
+使用者旅程啟動時，Azure AD B2C 會收到識別提供者所提供的存取權杖。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您可以在使用者流程中啟用宣告，以將 [權杖傳遞](idp-pass-through-user-flow.md) 至您在 Azure AD B2C 中註冊的應用程式。 您的應用程式必須使用 [建議的使用者流程](user-flow-versions.md) ，才能利用傳遞權杖作為宣告。
 
 Azure AD B2C 目前僅支援傳遞 OAuth 2.0 識別提供者的存取權杖，其中包括 Facebook 和 Google。 對於所有其他識別提供者，宣告會傳回空白。
 
@@ -107,7 +107,7 @@ Azure AD B2C 目前僅支援傳遞 OAuth 2.0 識別提供者的存取權杖，�
 
 ### <a name="validate-signature"></a>驗證簽章
 
-JWT 包含三個區段： *標頭* 、 *主體* 和 *簽章* 。 簽章區段可用來驗證權杖的真實性，您的應用程式才得以信任。 Azure AD B2C 權杖是經由業界標準非對稱式加密演算法 (例如 RSA 256) 進行簽署。
+JWT 包含三個區段：*標頭*、*主體* 和 *簽章*。 簽章區段可用來驗證權杖的真實性，您的應用程式才得以信任。 Azure AD B2C 權杖是經由業界標準非對稱式加密演算法 (例如 RSA 256) 進行簽署。
 
 權杖標頭包含用來簽署權杖的金鑰和加密方法相關資訊：
 
@@ -121,7 +121,7 @@ JWT 包含三個區段： *標頭* 、 *主體* 和 *簽章* 。 簽章區段可
 
 **alg** 宣告的值是用來簽署權杖的演算法。 **kid** 宣告的值是用來簽署權杖的公開金鑰。 無論何時，Azure AD B2C 都能使用任何一組公開-私密金鑰組來簽署權杖。 Azure AD B2C 會定期輪替一組可能的金鑰。 您應撰寫應用程式以自動處理這些金鑰變更。 檢查 Azure AD B2C 所使用的公開金鑰是否有更新的合理頻率為每 24 小時。 若要處理未預期的金鑰變更，您的應用程式應該撰寫成在收到非預期的 **小孩** 值時重新取出公開金鑰。
 
-Azure AD B2C 具有 OpenID Connect 中繼資料端點。 應用程式可以使用此端點，在執行階段要求 Azure AD B2C 的相關資訊。 這項資訊包括端點、權杖內容和權杖簽署金鑰。 您的 Azure AD B2C 租用戶包含每個原則的 JSON 中繼資料文件。 中繼資料文件是包含幾項實用資訊的 JSON 物件。 中繼資料包含 **jwks_uri** ，可指出用來簽署權杖的公開金鑰組的位置。 在此提供該位置，但最好使用中繼資料文件並剖析 **jwks_uri** 以動態擷取該位置：
+Azure AD B2C 具有 OpenID Connect 中繼資料端點。 應用程式可以使用此端點，在執行階段要求 Azure AD B2C 的相關資訊。 這項資訊包括端點、權杖內容和權杖簽署金鑰。 您的 Azure AD B2C 租用戶包含每個原則的 JSON 中繼資料文件。 中繼資料文件是包含幾項實用資訊的 JSON 物件。 中繼資料包含 **jwks_uri**，可指出用來簽署權杖的公開金鑰組的位置。 在此提供該位置，但最好使用中繼資料文件並剖析 **jwks_uri** 以動態擷取該位置：
 
 ```
 https://contoso.b2clogin.com/contoso.onmicrosoft.com/b2c_1_signupsignin1/discovery/v2.0/keys

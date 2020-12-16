@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0e209e8114d8f1791a00e87894fa12206edcf34e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 29a314553584843ed6241b9311e9d72b42ec8705
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700217"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516420"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>建立及管理 Azure 認知搜尋服務的 api 金鑰
 
@@ -27,7 +27,7 @@ ms.locfileid: "94700217"
 
 :::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="入口網站頁面、取得設定、金鑰區段" border="false":::
 
-## <a name="what-is-an-api-key"></a>什麼是 API 金鑰
+## <a name="what-is-an-api-key"></a>什麼是 api 金鑰？
 
 API 金鑰是由隨機產生的數字和字母所組成的字串。 透過[角色型權限](search-security-rbac.md)，您可以刪除或讀取金鑰，但是您無法使用使用者定義的密碼取代金鑰，也無法使用 Active Directory 作為存取搜尋作業的主要驗證方法。 
 
@@ -35,7 +35,7 @@ API 金鑰是由隨機產生的數字和字母所組成的字串。 透過[角�
 
 |Key|描述|限制|  
 |---------|-----------------|------------|  
-|系統管理員|授與所有作業的完整權限，包括能夠管理服務、建立和刪除索引、索引子及資料來源。<br /><br /> 當服務建立時，在入口網站中會產生兩個系統管理金鑰 (稱為「主要」和「次要」金鑰)，而且您可以視需要個別重新產生這些金鑰。 擁有兩個金鑰可讓您在變換一個金鑰時，使用第二個金鑰來繼續存取服務。<br /><br /> 指定管理金鑰時，只能在 HTTP 要求標頭中指定。 您無法將管理 API 金鑰放在 URL 中。|每個服務的上限為 2 個|  
+|Admin|授與所有作業的完整權限，包括能夠管理服務、建立和刪除索引、索引子及資料來源。<br /><br /> 當服務建立時，在入口網站中會產生兩個系統管理金鑰 (稱為「主要」和「次要」金鑰)，而且您可以視需要個別重新產生這些金鑰。 擁有兩個金鑰可讓您在變換一個金鑰時，使用第二個金鑰來繼續存取服務。<br /><br /> 指定管理金鑰時，只能在 HTTP 要求標頭中指定。 您無法將管理 API 金鑰放在 URL 中。|每個服務的上限為 2 個|  
 |查詢|授與索引和文件的唯讀存取權，且通常會分派給發出搜尋要求的用戶端應用程式。<br /><br /> 查詢金鑰是視需要建立的。 您可以在入口網站中手動建立這些金鑰，或是透過[管理 REST API](/rest/api/searchmanagement/) \(英文\) 以程式設計方式建立這些金鑰。<br /><br /> 您可以在 HTTP 要求標頭中指定查詢金鑰，以進行查詢、建議或查閱作業。 或者，您也可以在 URL 上將查詢金鑰當作參數來傳遞。 視您用戶端應用程式制定要求的方式而定，將金鑰當作查詢參數來傳遞可能會較為簡單：<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|每個服務 50 個|  
 
  管理金鑰或查詢金鑰在外觀上並無差別。 兩種金鑰都是由 32 個隨機產生的英數字元所組成。 如果您忘記在應用程式中指定的是哪種類型的金鑰，您可以[在入口網站中查看金鑰值](https://portal.azure.com)，或使用 [REST API](/rest/api/searchmanagement/) 來傳回值和金鑰類型。  
@@ -88,6 +88,7 @@ API 金鑰是由隨機產生的數字和字母所組成的字串。 透過[角�
 當您透過入口網站或管理層建立新的金鑰之後，會將存取權還原至您的內容 (索引、索引子、資料來源、同義字對應) 有新的金鑰，並在要求上提供這些金鑰。
 
 ## <a name="secure-api-keys"></a>保護 API 金鑰
+
 藉由限制透過入口網站或 Resource Manager 介面 (PowerShell 或命令列介面) 的存取來確保金鑰安全性。 如前所述，訂用帳戶系統管理員可以檢視及重新產生所有的 API 金鑰。 為以防萬一，請檢閱角色指派以了解誰具有管理員金鑰存取權。
 
 + 在服務儀表板中，按一下 [存取控制 (IAM)]，然後按一下 [角色指派] 索引標籤，以檢視您服務的角色指派。

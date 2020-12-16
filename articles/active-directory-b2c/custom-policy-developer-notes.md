@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68526fd542d8bc891358a36d031af3314edab4c2
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507977"
+ms.locfileid: "97516099"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>開發人員在 Azure Active Directory B2C 中使用自訂原則的注意事項
 
@@ -116,7 +116,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 此設�
 | 查詢字串參數 `login_hint` |  |  | X | 可作為宣告，可以傳遞至 IDP。 |
 | 透過 `client_assertion` 將 JSON 插入使用者旅程中 | X |  |  | 即將淘汰。 |
 | 將 JSON 插入使用者旅程中作為 `id_token_hint` |  | X |  | 傳遞 JSON 的前向方法。 |
-| [將識別提供者權杖傳遞至應用程式](idp-pass-through-custom.md) |  | X |  | 例如，從 Facebook 到應用程式。 |
+| [將識別提供者權杖傳遞至應用程式](idp-pass-through-user-flow.md) |  | X |  | 例如，從 Facebook 到應用程式。 |
 
 
 ### <a name="session-management"></a>工作階段管理

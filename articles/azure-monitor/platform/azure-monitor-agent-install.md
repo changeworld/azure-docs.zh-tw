@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 4c6252b31b4be05ea3c0bcf160a28bf335239b23
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 893a04f5acd48cf1e6f34033c06a758492e70abf
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324848"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516717"
 ---
 # <a name="install-the-azure-monitor-agent-preview"></a>安裝 Azure 監視器代理程式 (預覽版) 
 本文提供目前可用來在 Azure 虛擬機器和已啟用 Azure Arc 的伺服器上安裝 [Azure 監視器代理程式](azure-monitor-agent-overview.md) 的不同選項，以及用來建立 [與資料集合規則關聯](data-collection-rule-azure-monitor-agent.md) 的選項，這些規則會定義代理程式應收集哪些資料。
@@ -75,11 +75,11 @@ Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publishe
 使用下列 PowerShell 命令來安裝 Azure 監視器代理程式 onAzure 啟用 Arc 的伺服器。
 # <a name="windows"></a>[Windows](#tab/PowerShellWindowsArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
 ```
 # <a name="linux"></a>[Linux](#tab/PowerShellLinuxArc)
 ```powershell
-New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -VMName <virtual-machine-name> -Location <location>
+New-AzConnectedMachineExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName <resource-group-name> -MachineName <virtual-machine-name> -Location <location>
 ```
 ---
 ## <a name="azure-cli"></a>Azure CLI

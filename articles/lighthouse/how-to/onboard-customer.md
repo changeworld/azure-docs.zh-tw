@@ -1,18 +1,18 @@
 ---
 title: 讓客戶在 Azure Lighthouse 上線
 description: 瞭解如何將客戶上架到 Azure Lighthouse，讓其資源可透過您自己的租使用者使用 Azure 委派的資源管理來存取及管理。
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.topic: how-to
-ms.openlocfilehash: b353a8194b9f5dd48b315340435669531359e8d5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608464"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516126"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>讓客戶在 Azure Lighthouse 上線
 
-本文說明您以服務提供者的方式，如何讓客戶在 Azure Lighthouse 上架。 當您這樣做時，您可以使用 [Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)，透過您自己的 Azure Active Directory (Azure AD) 租使用者來存取及管理客戶的委派資源 (訂用帳戶和/或資源群組) 。
+本文說明您以服務提供者的方式，如何讓客戶在 Azure Lighthouse 上架。 當您這樣做時，您可以使用 [Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)，透過您自己的租使用者來管理委派資源 (訂用帳戶和/或資源群組) 在客戶的 Azure Active Directory (Azure AD) 租使用者中。
 
 > [!TIP]
 > 雖然我們會在本主題中參考服務提供者和客戶，但 [管理多個](../concepts/enterprise.md) 租使用者的企業可以使用相同的程式來設定 Azure Lighthouse 以及合併其管理經驗。
@@ -303,7 +303,19 @@ az account list
 
 如果您需要在上線客戶之後進行變更，您可以 [更新委派](update-delegation.md)。 您也可以完全 [移除委派的存取權](remove-delegation.md) 。
 
+## <a name="troubleshooting"></a>疑難排解
+
+如果您無法成功上架您的客戶，或您的使用者在存取委派的資源時發生問題，請檢查下列秘訣和需求，然後再試一次。
+
+- 此 `managedbyTenantId` 值不得與要上線之訂用帳戶的租使用者識別碼相同。
+- 相同的範圍中不能有多個指派 `mspOfferName` 。 
+- 您必須為委派的訂用帳戶註冊 **>microsoft.managedservices** 資源提供者。 這應該會在部署期間自動進行，但如果不是，您可以 [手動進行註冊](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
+- 授權不得包含擁有 [內建角色的任何](../../role-based-access-control/built-in-roles.md#owner) 使用者，或任何內建角色與 [DataActions](../../role-based-access-control/role-definitions.md#dataactions)。
+- 群組 [**類型**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) 必須設定為 [ **安全性** ]，而不是 [ **Microsoft 365**]。
+- 需要在 Azure 入口網站中查看資源的使用者，必須具有 (的 [讀取](../../role-based-access-control/built-in-roles.md#reader) 者角色，或包含讀取器存取) 的其他內建角色。
+
 ## <a name="next-steps"></a>後續步驟
 
 - 了解[跨租用戶管理體驗](../concepts/cross-tenant-management-experience.md)。
 - 前往 Azure 入口網站中的 [我的客戶]，以[檢視及管理客戶](view-manage-customers.md)。
+- 瞭解如何 [更新](update-delegation.md) 或 [移除](remove-delegation.md) 委派。

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: d3ce6e888c937676027f2b71578c38b56f3bd6af
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 266c04a049cab574576f781c397aee566efe5372
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97388015"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516614"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>部署具有無狀態節點類型的 Azure Service Fabric 叢集 (Preview) 
 Service Fabric 節點類型隨附固有的假設，在某個時間點，可設定狀態的服務可能會放在節點上。 無狀態節點類型可放寬此假設的節點類型，因此可讓節點類型使用其他功能（例如更快速的 scale out 作業）、支援以銅級持久性進行自動 OS 升級，以及在單一虛擬機器擴展集中相應放大至100個以上的節點。
@@ -24,6 +24,8 @@ Service Fabric 節點類型隨附固有的假設，在某個時間點，可設�
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>在 Service Fabric 叢集中啟用無狀態節點類型
 若要在叢集資源中將一或多個節點類型設定為無狀態，請將 **isStateless** 屬性設定為 "true"。 部署具有無狀態節點類型的 Service Fabric 叢集時，請記得在叢集資源中至少要有一個主要節點類型。
+
+* Service Fabric 叢集資源 apiVersion 應該是 "2020-12-01-preview" 或更高版本。
 
 ```json
 {
@@ -238,6 +240,8 @@ Service Fabric 節點類型隨附固有的假設，在某個時間點，可設�
 
 
 ### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>從使用基本 SKU Load Balancer 和基本 SKU IP 的叢集中，遷移至使用無狀態節點類型
+在所有的遷移案例中，都必須新增無狀態的節點類型。 現有的節點類型無法遷移為無狀態。
+
 若要遷移使用 Load Balancer 和 IP 與基本 SKU 的叢集，您必須先使用標準 SKU 建立全新的 Load Balancer 和 IP 資源。 不可能就地更新這些資源。
 
 新的 LB 和 IP 應該在您要使用的新無狀態節點類型中參考。 在上述範例中，會新增新的虛擬機器擴展集資源，以用於無狀態的節點類型。 這些虛擬機器擴展集會參考新建立的 LB 和 IP，並在 Service Fabric 叢集資源中標示為無狀態節點類型。
@@ -247,28 +251,8 @@ Service Fabric 節點類型隨附固有的假設，在某個時間點，可設�
 * 使用標準 SKU 的 Load Balancer 資源。
 * 您要在其中部署虛擬機器擴展集的子網所參考的 NSG。
 
-
-您可以在 [範例範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-2-NodeTypes-Windows-Stateless-Secure)中找到這些資源的範例。
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-    -ResourceGroupName $ResourceGroupName `
-    -TemplateFile $Template `
-    -TemplateParameterFile $Parameters
-```
-
 資源完成部署之後，您就可以開始停用節點類型中想要從原始叢集移除的節點。
 
-```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
-    -KeepAliveIntervalInSec 10 `
-    -X509Credential `
-    -ServerCertThumbprint $thumb  `
-    -FindType FindByThumbprint `
-    -FindValue $thumb `
-    -StoreLocation CurrentUser `
-    -StoreName My 
-```
 
 ## <a name="next-steps"></a>後續步驟 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

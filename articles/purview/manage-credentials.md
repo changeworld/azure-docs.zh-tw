@@ -7,20 +7,20 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: c991559d550b351ce70bcc5834f96f313f856a82
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551880"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516683"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure 範疇中來源驗證的認證
 
 本文說明如何在 Azure 範疇中建立認證，以快速重複使用並將已儲存的驗證資訊套用至您的資料來源掃描。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* Azure key vault。 如果您還沒有這項 (插入 KV 建立文章的連結) 建立一個發行項。
+* Azure 金鑰保存庫。 若要瞭解如何建立一個，請參閱 [快速入門：使用 Azure 入口網站建立金鑰保存庫](../key-vault/general/quick-create-portal.md)。
 
 ## <a name="introduction"></a>簡介
 認證是 Azure 範疇可用來向您註冊的資料來源進行驗證的驗證資訊。 您可以為各種類型的驗證案例建立認證物件 (例如需要使用者名稱/) 密碼的基本驗證，而且會根據所選的驗證方法類型，來取得所需的特定資訊。 認證會使用您現有的 Azure 金鑰保存庫秘密，在認證建立程式期間取得敏感性驗證資訊。

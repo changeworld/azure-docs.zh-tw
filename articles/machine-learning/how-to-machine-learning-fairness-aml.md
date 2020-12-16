@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3fbd4990fd330960bb8dbce2e2a8d1bcb578cf2a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 17b0564b4b73f5a5032343dcb78669cbf4cabd5a
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701179"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516143"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>使用 Azure Machine Learning 搭配 Fairlearn 開放原始碼套件，以評估 ML 模型 (預覽的公平) 
 
@@ -38,80 +38,99 @@ Azure Machine Learning 公平 SDK，會 `azureml-contrib-fairness` 在 Azure Mac
 pip install azureml-contrib-fairness
 pip install fairlearn==0.4.6
 ```
+較新版本的 Fairlearn 也應該在下列範例程式碼中運作。
 
 
 
 ## <a name="upload-fairness-insights-for-a-single-model"></a>上傳單一模型的公平見解
 
-下列範例顯示如何使用公平套件將模型公平見解上傳至 Azure Machine Learning，並查看 Azure Machine Learning studio 中的公平評量儀表板。
+下列範例顯示如何使用公平套件。 我們會將模型公平見解上傳至 Azure Machine Learning，並查看 Azure Machine Learning studio 中的公平評量儀表板。
 
 1. 將 Jupyter 筆記本中的範例模型定型。 
 
-    針對資料集，我們使用已知的成人人口普查資料集，我們使用 (載入 `shap` 方便) 。 基於此範例的目的，我們會將此資料集視為貸款決策問題，並假設該標籤指出每個人是否重金換回過去的貸款。 我們將使用資料來訓練預測，以預測先前看不見的個人是否會 repay 貸款。 假設模型預測是用來決定是否應將某一筆貸款提供給某個人。
+    針對資料集，我們會使用已知的成人人口普查資料集，這是我們從 OpenML 提取的資料集。 我們假設有一個貸款決策問題，而此標籤指出某個人是否重金換回了先前的貸款。 我們會將模型定型，以預測先前看不見的個人是否會 repay 貸款。 這類模型可能用於進行貸款決策。
 
     ```python
-    from sklearn.model_selection import train_test_split
-    from fairlearn.widget import FairlearnDashboard
-    from sklearn.linear_model import LogisticRegression
-    from sklearn.preprocessing import LabelEncoder, StandardScaler
+    import copy
+    import numpy as np
     import pandas as pd
-    import shap
+
+    from sklearn.compose import ColumnTransformer
+    from sklearn.datasets import fetch_openml
+    from sklearn.impute import SimpleImputer
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.model_selection import train_test_split
+    from sklearn.preprocessing import StandardScaler, OneHotEncoder
+    from sklearn.compose import make_column_selector as selector
+    from sklearn.pipeline import Pipeline
+    
+    from fairlearn.widget import FairlearnDashboard
 
     # Load the census dataset
-    X_raw, Y = shap.datasets.adult()
-    X_raw["Race"].value_counts().to_dict()
+    data = fetch_openml(data_id=1590, as_frame=True)
+    X_raw = data.data
+    y = (data.target == ">50K") * 1
     
-
     # (Optional) Separate the "sex" and "race" sensitive features out and drop them from the main data prior to training your model
-    A = X_raw[['Sex','Race']]
-    X = X_raw.drop(labels=['Sex', 'Race'],axis = 1)
-    X = pd.get_dummies(X)
+    X_raw = data.data
+    y = (data.target == ">50K") * 1
+    A = X_raw[["race", "sex"]]
+    X = X_raw.drop(labels=['sex', 'race'],axis = 1)
     
-    sc = StandardScaler()
-    X_scaled = sc.fit_transform(X)
-    X_scaled = pd.DataFrame(X_scaled, columns=X.columns)
+    # Split the data in "train" and "test" sets
+    (X_train, X_test, y_train, y_test, A_train, A_test) = train_test_split(
+        X_raw, y, A, test_size=0.3, random_state=12345, stratify=y
+    )
 
-    # Perform some standard data preprocessing steps to convert the data into a format suitable for the ML algorithms
-    le = LabelEncoder()
-    Y = le.fit_transform(Y)
-
-    # Split data into train and test
-    from sklearn.model_selection import train_test_split
-    from sklearn.model_selection import train_test_split
-    X_train, X_test, Y_train, Y_test, A_train, A_test = train_test_split(X_scaled, 
-                                                        Y, 
-                                                        A,
-                                                        test_size = 0.2,
-                                                        random_state=0,
-                                                        stratify=Y)
-
-    # Work around indexing issue
+    # Ensure indices are aligned between X, y and A,
+    # after all the slicing and splitting of DataFrames
+    # and Series
     X_train = X_train.reset_index(drop=True)
-    A_train = A_train.reset_index(drop=True)
     X_test = X_test.reset_index(drop=True)
+    y_train = y_train.reset_index(drop=True)
+    y_test = y_test.reset_index(drop=True)
+    A_train = A_train.reset_index(drop=True)
     A_test = A_test.reset_index(drop=True)
 
-    # Improve labels
-    A_test.Sex.loc[(A_test['Sex'] == 0)] = 'female'
-    A_test.Sex.loc[(A_test['Sex'] == 1)] = 'male'
+    # Define a processing pipeline. This happens after the split to avoid data leakage
+    numeric_transformer = Pipeline(
+        steps=[
+            ("impute", SimpleImputer()),
+            ("scaler", StandardScaler()),
+        ]
+    )
+    categorical_transformer = Pipeline(
+        [
+            ("impute", SimpleImputer(strategy="most_frequent")),
+            ("ohe", OneHotEncoder(handle_unknown="ignore")),
+        ]
+    )
+    preprocessor = ColumnTransformer(
+        transformers=[
+            ("num", numeric_transformer, selector(dtype_exclude="category")),
+            ("cat", categorical_transformer, selector(dtype_include="category")),
+        ]
+    )
 
+    # Put an estimator onto the end of the pipeline
+    lr_predictor = Pipeline(
+        steps=[
+            ("preprocessor", copy.deepcopy(preprocessor)),
+            (
+                "classifier",
+                LogisticRegression(solver="liblinear", fit_intercept=True),
+            ),
+        ]
+    )
 
-    A_test.Race.loc[(A_test['Race'] == 0)] = 'Amer-Indian-Eskimo'
-    A_test.Race.loc[(A_test['Race'] == 1)] = 'Asian-Pac-Islander'
-    A_test.Race.loc[(A_test['Race'] == 2)] = 'Black'
-    A_test.Race.loc[(A_test['Race'] == 3)] = 'Other'
-    A_test.Race.loc[(A_test['Race'] == 4)] = 'White'
-
-
-    # Train a classification model
-    lr_predictor = LogisticRegression(solver='liblinear', fit_intercept=True)
-    lr_predictor.fit(X_train, Y_train)
+    # Train the model on the test data
+    lr_predictor.fit(X_train, y_train)
 
     # (Optional) View this model in Fairlearn's fairness dashboard, and see the disparities which appear:
     from fairlearn.widget import FairlearnDashboard
     FairlearnDashboard(sensitive_features=A_test, 
-                       sensitive_feature_names=['Sex', 'Race'],
-                       y_true=Y_test,
+                       sensitive_feature_names=['Race', 'Sex'],
+                       y_true=y_test,
                        y_pred={"lr_model": lr_predictor.predict(X_test)})
     ```
 
@@ -149,11 +168,11 @@ pip install fairlearn==0.4.6
 
     ```python
     #  Create a dictionary of model(s) you want to assess for fairness 
-    sf = { 'Race': A_test.Race, 'Sex': A_test.Sex}
+    sf = { 'Race': A_test.race, 'Sex': A_test.sex}
     ys_pred = { lr_reg_id:lr_predictor.predict(X_test) }
     from fairlearn.metrics._group_metric_set import _create_group_metric_set
 
-    dash_dict = _create_group_metric_set(y_true=Y_test,
+    dash_dict = _create_group_metric_set(y_true=y_test,
                                         predictions=ys_pred,
                                         sensitive_features=sf,
                                         prediction_type='binary_classification')
@@ -207,28 +226,33 @@ pip install fairlearn==0.4.6
 
 ## <a name="upload-fairness-insights-for-multiple-models"></a>針對多個模型上傳公平見解
 
-如果您想要比較多個模型，並查看其公平評定有何不同，您可以傳遞多個模型至視覺效果儀表板，並流覽其效能公平取捨。
+若要比較多個模型，並查看其公平評定有何不同，您可以傳遞多個模型至視覺效果儀表板，並比較其效能公平取捨。
 
 1. 定型您的模型：
     
-    除了先前的羅吉斯回歸模型，我們現在會根據支援向量機器估算器建立第二個分類器，並使用 Fairlearn 的套件上傳公平的儀表板字典 `metrics` 。 請注意，在此我們會略過載入和預先處理資料的步驟，並直接移至模型定型階段。
+    我們現在會根據支援向量機器估算器建立第二個分類器，並使用 Fairlearn 的套件上傳公平的儀表板字典 `metrics` 。 我們假設先前定型的模型仍可供使用。
 
 
     ```python
-    # Train your first classification model
-    from sklearn.linear_model import LogisticRegression
-    lr_predictor = LogisticRegression(solver='liblinear', fit_intercept=True)
-    lr_predictor.fit(X_train, Y_train)
+    # Put an SVM predictor onto the preprocessing pipeline
+    from sklearn import svm
+    svm_predictor = Pipeline(
+        steps=[
+            ("preprocessor", copy.deepcopy(preprocessor)),
+            (
+                "classifier",
+                svm.SVC(),
+            ),
+        ]
+    )
 
     # Train your second classification model
-    from sklearn import svm
-    svm_predictor = svm.SVC()
-    svm_predictor.fit(X_train, Y_train)
+    svm_predictor.fit(X_train, y_train)
     ```
 
 2. 註冊您的模型
 
-    接下來，在 Azure Machine Learning 中註冊兩個模型。 為了方便起見，在後續的方法呼叫中，將結果儲存在字典中，這會將 `id` 已註冊模型的 (格式) 的字串對應 `name:version` 至預測項本身：
+    接下來，在 Azure Machine Learning 中註冊兩個模型。 為了方便起見，請將結果儲存在字典中，這會將 `id` 已註冊模型的)  (格式的字串對應 `name:version` 至預測項本身：
 
     ```python
     model_dict = {}
@@ -255,8 +279,8 @@ pip install fairlearn==0.4.6
     from fairlearn.widget import FairlearnDashboard
 
     FairlearnDashboard(sensitive_features=A_test, 
-                    sensitive_feature_names=['Sex', 'Race'],
-                    y_true=Y_test.tolist(),
+                    sensitive_feature_names=['Race', 'Sex'],
+                    y_true=y_test.tolist(),
                     y_pred=ys_pred)
     ```
 
@@ -265,7 +289,7 @@ pip install fairlearn==0.4.6
     使用 Fairlearn 的套件建立儀表板字典 `metrics` 。
 
     ```python
-    sf = { 'Race': A_test.Race, 'Sex': A_test.Sex }
+    sf = { 'Race': A_test.race, 'Sex': A_test.sex }
 
     from fairlearn.metrics._group_metric_set import _create_group_metric_set
 
@@ -313,7 +337,7 @@ pip install fairlearn==0.4.6
 
 若要查看示範如何使用 [方格搜尋](https://fairlearn.github.io/master/user_guide/mitigation.html#grid-search) 緩和演算法的範例 (使用不同的公平和效能取捨來建立緩和模型的集合) 請參閱此 [範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
 
-在單一回合中上傳多個模型的公平見解，將可讓您比較與公平和效能相關的模型。 您可以進一步按一下模型比較圖中顯示的任何模型，以查看特定模型的詳細公平見解。
+在單一回合中上傳多個模型的公平見解，可讓模型與公平和效能相比較。 您可以按一下模型比較圖中顯示的任何模型，以查看特定模型的詳細公平見解。
 
 
 [![模型比較 Fairlearn 儀表板](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png)](./media/how-to-machine-learning-fairness-aml/multi-model-dashboard.png#lightbox)

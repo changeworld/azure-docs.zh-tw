@@ -2,22 +2,22 @@
 title: Microsoft Azure 資料箱常見問題集 | 資料中的 Microsoft Docs
 description: 包含 Azure 資料箱的常見問題和解答，這是可讓您將大量資料傳輸到 Azure 的雲端解決方案。
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 12/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 4b65d1be9fa3ddb28a216d51e91ce2a8b20f15e6
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 18a1fc7f42884dcc194256e1f51ddecb62d2708c
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127177"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516390"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure 資料箱：常見問題集
 
-Microsoft Azure 資料箱混合式解決方案可讓您以快速、實惠且可靠的方式，使用傳輸裝置將數 TB 的資料傳送到 Azure。 此常見問題集包含您在 Azure 入口網站中使用資料箱時可能遇到的問題與其解答。 
+Microsoft Azure 資料箱混合式解決方案可讓您以快速、實惠且可靠的方式，使用傳輸裝置將數 TB 的資料傳送到 Azure。 此常見問題集包含您在 Azure 入口網站中使用資料箱時可能遇到的問題與其解答。
 
 問題和解答可分為下列幾個類別：
 
@@ -61,19 +61,19 @@ A. 美國、西歐、北歐、法國、英國、日本、澳大利亞和加拿�
 
 資料箱僅支援在與目的地相同的國家/地區內內嵌或輸出資料，而且不會跨越任何國際框線。 唯一的例外狀況是歐盟 (EU) 中的訂單，資料箱可以在任何歐盟國家/地區運送。
 
-例如，在匯入案例中，如果您有想要移至 Azure WestUS 儲存體帳戶的加拿大來源資料，您可以透過下列方式達成：
+例如，在匯入案例中，如果您的來源資料是在加拿大，而您想要移至 Azure 美國西部儲存體帳戶，您可以透過下列方式達成：
 
-1. 在 [Cananda] 中選擇儲存體帳戶，以在加拿大訂購資料箱。 裝置會從加拿大的 Azure 資料中心寄送至加拿大) 在訂單建立期間提供的運送位址 (。
+1. 在加拿大訂購資料箱，方法是選擇加拿大的儲存體帳戶。 裝置會從加拿大的 Azure 資料中心寄送至加拿大) 在訂單建立期間提供的運送位址 (。
 
 2. 將內部部署資料複製到資料箱之後，請將裝置退回至加拿大的 Azure 資料中心。 然後，資料箱上的資料會上傳至在訂單建立期間所選擇的加拿大 Azure 區域中的目的地儲存體帳戶。
 
-3. 然後，您可以使用 AzCopy 之類的工具，將資料複製到 WestUS 中的儲存體帳戶。 此步驟會產生不包含在資料箱計費中的 [標準儲存體](https://azure.microsoft.com/pricing/details/storage/) 和 [頻寬費用](https://azure.microsoft.com/pricing/details/bandwidth/) 。
+3. 然後，您可以使用 AzCopy 之類的工具，將資料複製到美國西部的儲存體帳戶。 此步驟會產生不包含在資料箱計費中的 [標準儲存體](https://azure.microsoft.com/pricing/details/storage/) 和 [頻寬費用](https://azure.microsoft.com/pricing/details/bandwidth/) 。
 
-### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Q. 如果遇到任何資料箱方面的問題，該與誰連絡？
-A. 如果您遇到任何資料箱方面的問題，請連絡 [Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)。
+### <a name="q-who-should-i-contact-if-i-come-across-any-issues-with-data-box"></a>Q. 如果我遇到任何資料箱問題，該如何聯繫誰？
+A. 如果您遇到任何資料箱問題，請 [聯絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)。
 
-### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>Q. 我遺失了資料箱。 裝置遺失是否需要費用？
-A. 是。 裝置遺失或損壞都需要費用。 [定價頁面](https://azure.microsoft.com/pricing/details/storage/databox/)及[產品服務條款](https://www.microsoft.com/licensing/product-licensing/products)均涵蓋這筆費用。
+### <a name="q-i-lost-my-data-box-is-there-a-lost-device-charge"></a>Q. 我的資料箱遺失。 裝置遺失是否需要費用？
+A. 是。 遺失或損毀的裝置會收取費用。 此費用涵蓋于 [定價頁面](https://azure.microsoft.com/pricing/details/storage/databox/) 和 [產品服務條款](https://www.microsoft.com/licensing/product-licensing/products)中。
 
 
 ## <a name="order-device"></a>訂購裝置
@@ -81,23 +81,39 @@ A. 是。 裝置遺失或損壞都需要費用。 [定價頁面](https://azure.m
 ### <a name="q-how-do-i-get-data-box"></a>Q. 如何取得資料箱？ 
 A.  若要取得 Azure 資料箱，請登入 Azure 入口網站並建立資料箱訂單。 請提供您的連絡資訊和通知詳細資料。 在您下單後，根據可用性，資料箱會在 10 天內寄送給您。 如需詳細資訊，請移至[訂購資料箱](data-box-deploy-ordered.md)。
 
-### <a name="q-i-was-not-able-to-create-a-data-box-order-in-the-azure-portal-why-would-this-be"></a>Q. 我無法在 Azure 入口網站中建立資料箱訂單。 為什麼會這樣？
-A. 如果您無法建立資料箱訂單，問題可能與您的訂用帳戶類型或存取權限有關。 
+### <a name="q-i-couldnt-create-a-data-box-order-in-the-azure-portal-why"></a>Q. 我無法在 Azure 入口網站中建立資料箱訂單。 為什麼？
+A. 如果您無法建立資料箱訂單，則您的訂用帳戶類型或存取可能會有問題。
 
-請檢查您的訂用帳戶。 資料箱僅適用於 Enterprise 合約 (EA) 和雲端解決方案提供者 (CSP) 訂用帳戶供應項目。 如果您的訂用帳戶不屬於上述任何一種類型，請連絡 Microsoft 支援服務以升級您的訂用帳戶。
+請檢查您的訂用帳戶。 資料箱僅適用於 Enterprise 合約 (EA) 和雲端解決方案提供者 (CSP) 訂用帳戶供應項目。 如果您沒有這兩種訂用帳戶類型，請聯絡 Microsoft 支援服務以升級您的訂用帳戶。
 
 如果您的訂用帳戶有支援的供應項目類型，請檢查您的訂用帳戶存取層級。 您必須是訂用帳戶中的參與者或擁有者，才能建立訂單。
 
-### <a name="q-i-ordered-a-couple-of-data-box-devices-i-am-not-able-to-create-any-additional-orders-why-would-this-be"></a>Q. 我訂購了一些資料箱裝置。 我無法再建立任何額外訂單。 為什麼會這樣？
-A. 針對每個商務服務界限 (特定的國家/地區和區域的組合) 中的每個訂用帳戶，最多允許 5 個有效訂單。 如果您需要訂購額外的裝置，請連絡 Microsoft 支援服務以提高訂用帳戶的限制。
+### <a name="q-how-long-will-my-order-take-from-order-creation-to-data-uploaded-to-azure"></a>Q. 從訂單建立到上傳至 Azure 的資料，我的訂單會花多久的時間？
+
+A. 以下是每個訂單處理階段的預估前置時間，可讓您瞭解預期的情況。  
+
+這些前置時間是 *估計值*。 每個訂單處理階段的時間會受到資料中心、並行訂單和其他環境條件的負載影響。
+
+**資料箱訂單的預估前置時間：**
+
+1. 訂購資料箱：幾分鐘的時間，從入口網站
+2. 裝置配置和準備：1-2 個工作天
+3. 運送：2-3 個工作天
+4. 客戶網站上的資料複製：取決於資料的本質、大小和檔案數目
+5. 送回運送：2-3 個工作天
+6. 在資料中心處理裝置：1-2 個工作天
+7. 將資料上傳至 Azure：當處理完成且裝置已連線時，就會開始。 上傳時間取決於資料的本質、大小和檔案數目。
+
+### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>Q. 我訂購了一些資料箱裝置。 我無法建立任何額外的訂單。 為什麼？
+A. 針對每個訂用帳戶，每個訂用帳戶最多可允許每個訂用帳戶的每個訂用帳戶)  (組合。 如果您需要訂購額外的裝置，請連絡 Microsoft 支援服務以提高訂用帳戶的限制。
 
 ### <a name="q-when-i-try-to-create-an-order-i-receive-a-notification-that-the-data-box-service-is-not-available-what-does-this-mean"></a>Q. 當我嘗試建立訂單時，我收到無法提供資料箱服務的通知。 這代表什麼？
-A. 這表示您選取的國家/地區和區域組合無法提供資料箱服務。 變更這個組合可能可以讓您使用資料箱服務。 如需可提供服務的區域清單，請移至[資料箱的區域可用性](data-box-overview.md#region-availability)。
+A. 您選取的國家/地區與區域組合無法使用資料箱服務。 變更這個組合可能可以讓您使用資料箱服務。 如需可提供服務的區域清單，請移至[資料箱的區域可用性](data-box-overview.md#region-availability)。
 
 ### <a name="q-i-placed-my-data-box-order-few-days-back-when-will-i-receive-my-data-box"></a>Q. 我幾天前已下訂了資料箱訂單。 何時才會收到資料箱？
 A. 當您下單時，我們會檢查裝置是否可供您的訂單使用。 如果裝置可用，我們將會在 10 天內寄出。 可以想見的是可能會有需求高峰期間。 在此情況下，您的訂單將會排入佇列，而且您可以在 Azure 入口網站中追蹤狀態變更。 如果您的訂單在 90 天後仍未完成，訂單將會自動取消。
 
-### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>Q. 我已將資料箱填滿資料，而需要再訂購一個資料箱。 有快速下訂單的方法嗎？
+### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>Q. 我已將資料填入資料箱，並需要訂購另一資料箱。 有快速下訂單的方法嗎？
 A. 您可以複製您的上一筆訂單。 複製會建立與之前相同的訂單，因此您只需編輯訂單詳細資料即可，而不需要輸入地址、連絡人和通知詳細資料。 只允許匯入順序的複製。
 
 ## <a name="configure-and-connect"></a>設定和連線
@@ -120,31 +136,43 @@ A. 是。 在資料箱上可以連線這兩個 10 GbE 介面來同時複製資�
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
 
-### Q. I could not set up Data Box using a Dynamic (DHCP) IP address. Why would this be?
+### Q. I could not set up Data Box using a Dynamic (DHCP) IP address. Why?
 A.
 
-### Q. I could not set up Data Box using a Static IP address. Why would this be?
+### Q. I could not set up Data Box using a Static IP address. Why?
 A.
 
-### Q. I could not set up Data Box on a private network. Why would this be?
+### Q. I could not set up Data Box on a private network. Why?
 A.-->
 
 ### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>Q. 前操作面板上的系統錯誤 LED 指示燈亮起。 我該怎麼辦？
-A. 如果系統錯誤 LED 指示燈亮起，表示您的系統健康情況不良。 [連絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md) 以進行後續步驟。
+A. 資料箱前方的電源按鈕底下有兩個 LED 燈。 最底部的燈是系統錯誤指示器，指出您的系統是否狀況良好。
 
-### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>Q. 我無法在 Azure 入口網站中存取資料箱解除鎖定密碼。 為什麼會這樣？
-A. 如果您無法在 Azure 入口網站中存取解除鎖定密碼，請檢查您的訂用帳戶與儲存體帳戶的權限。 請確定您有資源群組層級的參與者或擁有者權限。 如果沒有，則您至少需要擁有資料箱操作員角色權限，才能看到存取認證。
+紅色的系統錯誤指示器 LED 可能表示發生下列其中一個問題：
+- 風扇故障
+- CPU 溫度偏高
+- 主機板溫度偏高
+- 雙內嵌記憶體模組 (DIMM) 連接程式碼 (ECC) 錯誤時發生錯誤
+
+請執行下列步驟：
+1. 檢查風扇是否正常運作。
+2. 將裝置移至具有更高空氣的位置。
+
+如果系統錯誤指示器燈仍開啟， [請聯絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)。
+
+### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why"></a>Q. 我無法在 Azure 入口網站中存取資料箱解除鎖定密碼。 為什麼？
+A. 如果您無法存取 Azure 入口網站中的解除鎖定密碼，請檢查訂用帳戶和儲存體帳戶的許可權。 請確定您有資源群組層級的參與者或擁有者權限。 您必須至少擁有資料箱操作員角色許可權，才能看到存取認證。
 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>Q. 資料箱是否支援連接埠通道設定？ 是否支援 MPIO？
-A. 我們在資料箱上不支援連接埠通道設定、多重路徑 IO (MPIO) 設定或 vLAN 設定。
+A. 我們不支援埠通道設定、多重路徑 IO (MPIO) 設定或資料箱上的 vLAN 設定。
 
 ## <a name="track-status"></a>追蹤狀態
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>Q. 從我下單到將裝置送回的這段期間，要如何追蹤資料箱的狀態？ 
-A.  您可以在 Azure 入口網站中追蹤資料箱訂單的狀態。 當您建立訂單時，系統也會提示您提供通知電子郵件。 如果您有提供的話，您將會透過電子郵件獲知訂單的所有狀態變更。 請取得關於如何[設定通知電子郵件](data-box-portal-ui-admin.md#edit-notification-details)的資訊。
+A.  您可以在 Azure 入口網站中追蹤資料箱訂單的狀態。 當您建立訂單時，系統會提示您提供通知電子郵件。 如果您有提供，系統會透過電子郵件通知您訂單的所有狀態變更。 請取得關於如何[設定通知電子郵件](data-box-portal-ui-admin.md#edit-notification-details)的資訊。
 
 ### <a name="q-how-do-i-return-the-device"></a>Q. 如何送回裝置？ 
-A.  Microsoft 會在電子墨水顯示器上顯示出貨標籤。 如果出貨標籤沒有顯示在電子墨水顯示器上，請移至 [概觀] > [下載出貨標籤]。 下載並列印標籤，將標籤插入裝置上的塑膠貨籤中，然後將裝置投遞到貨運公司地點。 
+A.  Microsoft 會在電子墨水顯示器上顯示出貨標籤。 如果在電子筆墨顯示器上未顯示出貨標籤，請移至 **總覽 > 下載出貨標籤**。 下載並列印標籤、將標籤插入裝置上的 [清除塑膠] 標籤，然後在貨運公司的地點放置裝置。 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>Q. 我收到電子郵件通知我的裝置已經送達 Azure 資料中心。 我要如何知道資料是否正在上傳？
 A. 您可以移至 Azure 入口網站中的資料箱訂單，然後移至 [概觀]。 如果已開始將資料上傳至 Azure，您將會在右窗格中看到複製進度。 
@@ -161,7 +189,7 @@ A.  大小上限由 Azure 儲存體限制所控管。 區塊 Blob 上限大約�
 A. 我們實作了多種安全性功能，以確保您的資料箱在傳輸期間安全無虞。 其中包括防竄改封條、硬體和軟體竄改偵測、裝置解除鎖定密碼。 如需詳細資訊，請移至 [Azure 資料箱安全性和資料保護](data-box-security.md)。
 
 ### <a name="q-how-do-i-copy-the-data-to-the-data-box"></a>Q. 如何將資料複製到資料箱？ 
-A.  如果您使用 SMB 用戶端，可以使用 SMB 複製工具 (例如 Robocopy、Diskboss 或甚至是 Windows 檔案總管的拖放功能) 將資料複製到裝置上。 
+A.  如果使用 SMB 用戶端，您可以使用 `Robocopy` 、 `Diskboss` 或甚至是 Windows 檔案總管拖放來將資料複製到裝置上。 
 
 如果您使用 NFS 用戶端，可以使用 [rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/) 或 [Ultracopier](https://ultracopier.first-world.info/)。 
 
@@ -170,10 +198,10 @@ A.  如果您使用 SMB 用戶端，可以使用 SMB 複製工具 (例如 Roboco
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Q. 是否有任何秘訣可加快複製資料的速度？
 A.  若要加快複製程序：
 
-- 使用多個資料複製串流。 例如，採用 Robocopy 時，請使用多執行緒選項。 如需與使用之確切命令有關的詳細資訊，請移至[教學課程：將資料複製到 Azure 資料箱並確認](data-box-deploy-copy-data.md)。
+- 使用多個資料複製串流。 例如，使用時 `Robocopy` ，請使用多執行緒選項。 如需與使用之確切命令有關的詳細資訊，請移至[教學課程：將資料複製到 Azure 資料箱並確認](data-box-deploy-copy-data.md)。
 - 使用多個工作階段。
-- 請務必將資料放置在資料箱所連接的本機電腦上，而不要透過網路共用進行複製 (此方式可能會受限於網路速度)。
-- 對用來複製資料的電腦建立效能的基準。 請下載並使用 [Bluestop FIO 工具](https://ci.appveyor.com/project/axboe/fio)，以建立伺服器硬體效能的基準。 選取最新的 x86 或 x64 組建，選取 [成品] 索引標籤，然後下載 MSI。
+- 您可以將資料儲存在資料箱連接的本機電腦上，而不是透過網路共用進行複製 (其中的網路速度可以限制複製速度) ，將資料儲存在本機電腦上。
+- 對用來複製資料的電腦建立效能的基準。 下載並使用[ `Bluestop` FIO 工具](https://ci.appveyor.com/project/axboe/fio)來基準伺服器硬體的效能。 選取最新的 x86 或 x64 組建，選取 [成品] 索引標籤，然後下載 MSI。
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:
@@ -184,15 +212,15 @@ A.  To speed up the copy process:
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>Q. 是否可對資料箱使用多個儲存體帳戶？
-A.  是。 資料箱可支援最多 10 個儲存體帳戶、一般用途、傳統或 Blob 儲存體。 經常性存取和非經常性存取 Blob 均受支援。 
+A.  是。 資料箱可支援最多 10 個儲存體帳戶、一般用途、傳統或 Blob 儲存體。 經常性存取和非經常性存取 Blob 均受支援。
 
 
 ## <a name="ship-device"></a>寄送裝置
 
 <!--### Q. How do I schedule a pickup for my Data Box?--> 
 
-### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Q. 我已收到裝置，但裝置似乎已經損毀。 我該怎麼辦？
-A. 如果您收到的裝置已損毀，或是有遭到竄改的跡象，請勿使用該裝置。 請[連絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)並儘快送回裝置。 您也可以建立新的資料箱訂單來更換裝置。 在此情況下，將不會對您收取更換裝置的費用。
+### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Q. 我的裝置已到達，但裝置似乎已損毀。 我該怎麼辦？
+A. 如果您的裝置已損毀，或有辨識器的辨識項，請勿使用裝置。 [請聯絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md) ，並儘快退回裝置。 您也可以建立新的資料箱訂單來更換裝置。 在此情況下，您不需支付更換裝置的費用。
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. 我可以自取我的資料箱訂單嗎？ 我可以透過我選擇的貨運公司寄回資料箱嗎？
 A. 是。 Microsoft 也提供自我管理的運送。 當您對資料箱下訂單時，您可以選擇自我管理的運送選項。 如需詳細資訊，請參閱 [自我管理資料箱的運送](data-box-portal-customer-managed-shipping.md)。
@@ -201,12 +229,12 @@ A. 是。 Microsoft 也提供自我管理的運送。 當您對資料箱下訂�
 A. 所有的資料箱裝置都是在與目的地相同的國家/區域內寄送，並不會跨越任何跨國界。 唯一的例外狀況是位於歐盟 (EU) 的訂單，該地區的裝置可以在任何歐盟國家/區域之間運送。 這適用於資料箱及 Data Box Heavy 裝置。
 
 ### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>Q. 我在美國東部訂購了一個資料箱，但收到的裝置卻是從美國西部的某個位置出貨。 我應該將裝置送歸何處？
-A. 我們會設法讓您盡快收到資料箱裝置。 我們雖會優先從最接近您儲存體帳戶位置的資料中心出貨，但會從有可用庫存的任何 Azure 資料中心寄送裝置。 您的資料箱應送歸出貨標籤中所顯示的同一個出貨位置。
+A. 我們嘗試儘快取得資料箱裝置。 我們雖會優先從最接近您儲存體帳戶位置的資料中心出貨，但會從有可用庫存的任何 Azure 資料中心寄送裝置。 您的資料箱應送歸出貨標籤中所顯示的同一個出貨位置。
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Q. 電子墨水顯示器並未顯示寄回用的出貨標籤。 我該怎麼辦？
-A. 如果電子墨水顯示器並未顯示寄回用的出貨標籤，請執行下列步驟：
+A. 如果電子筆墨顯示器未顯示寄回出貨標籤，請執行下列步驟：
 - 將先前寄送時的舊出貨標籤與任何貼紙移除。
-- 移至 Azure 入口網站中的訂單。 移至 [概觀]，然後**下載出貨標籤**。 如需詳細資訊，請移至[下載出貨標籤](data-box-portal-admin.md#download-shipping-label)。
+- 移至 Azure 入口網站中的訂單。 移至 [概觀]，然後 **下載出貨標籤**。 如需詳細資訊，請移至[下載出貨標籤](data-box-portal-admin.md#download-shipping-label)。
 - 列印出貨標籤，然後將它插入裝置上隨附的乾淨塑膠保護套。 
 - 確認出貨標籤清晰可見。 
 
@@ -216,11 +244,11 @@ A.  在傳輸期間，資料箱上的下列功能可協助保護資料。
  - 裝置已鎖定，且需要解除鎖定密碼才能進入並存取資料。
 如需詳細資訊，請移至[資料箱安全性功能](data-box-security.md)。  
 
-### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Q. 我已完成匯入順序的準備，並關閉裝置。 是否還可以將更多資料新增到資料箱中？
-A. 是。 您可以將裝置開機，並新增更多資料。 一旦您完成資料複製，將需要再次執行**準備寄送**。
+### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-the-data-box"></a>Q. 我已完成匯入順序的準備，並關閉裝置。 我還可以將更多資料新增至資料箱嗎？
+A. 是。 您可以將裝置開機，並新增更多資料。 一旦您完成資料複製，將需要再次執行 **準備寄送**。
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Q. 我收到我的裝置，但無法開機？ 如何將裝置送回？
-A. 如果您的裝置無法開機，請移至您在 Azure 入口網站中的訂單。 下載出貨標籤並將該標籤貼在裝置上。 如需詳細資訊，請移至[下載出貨標籤](data-box-portal-admin.md#download-shipping-label)。
+A. 如果您的裝置未開機，請移至您在 Azure 入口網站中的訂單。 下載出貨標籤，並將其附加至裝置。 如需詳細資訊，請移至[下載出貨標籤](data-box-portal-admin.md#download-shipping-label)。
 
 ## <a name="verify-and-upload"></a>確認和上傳
 
@@ -228,21 +256,21 @@ A. 如果您的裝置無法開機，請移至您在 Azure 入口網站中的訂�
 A.  當 [資料複製] 的訂單狀態顯示為 [完成] 時，您應該就能立即存取您的資料。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Q. 我的資料在上傳後會存放於 Azure 的何處？
-A.  當您將資料複製到資料箱時，視資料為區塊 Blob、分頁 Blob 或 Azure 檔案而定，資料會上傳到 Azure 儲存體帳戶中的下列其中一個路徑。
+A.  當您將資料複製到資料箱時，視資料為區塊 blob 或分頁 blob 或 Azure 檔案而定，資料會上傳至您 Azure 儲存體帳戶中的下列其中一個路徑：
 - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
 - `https://<storage_account_name>.file.core.windows.net/<sharename>`
  
-  或者，您可以在 Azure 入口網站中移至您 Azure 儲存體帳戶，並從該處瀏覽。
+  或者，您可以移至 Azure 入口網站中的 Azure 儲存體帳戶，並從該處流覽。
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Q. 我剛剛發現我的容器並未遵循 Azure 命名需求。 我的資料會不會無法上傳至 Azure？
-A.  如果容器名稱包含大寫字母，這些名稱會自動轉換為小寫。 如果名稱在其他方面不符合規範 (特殊字元、其他語言等等)，則上傳會失敗。 如需有關命名共用、容器、檔案之最佳做法的詳細資訊，請移至：
+A.  如果容器名稱包含大寫字母，這些名稱會自動轉換為小寫。 如果名稱在其他方面不符合規範 (特殊字元、其他語言等等)，則上傳會失敗。 如需如何命名共用、容器和檔案的詳細指引，請移至：
 - [命名和參考共用](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [區塊 Blob 與分頁 Blob 慣例](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-data-box"></a>Q. 我要如何驗證複製到資料箱上的資料？
-A.  在資料複製完成之後，當您執行**準備寄送**時，便會驗證資料。 在驗證過程中，資料箱會產生一份檔案清單與總和檢查碼。 您可以下載檔案清單，並針對來源資料中的檔案進行確認。 如需詳細資訊，請移至[準備寄送](data-box-deploy-picked-up.md#prepare-to-ship)。
+A.  在資料複製完成之後，當您執行 **準備寄送** 時，便會驗證資料。 在驗證過程中，資料箱會產生一份檔案清單與總和檢查碼。 您可以下載檔案清單，並針對來源資料中的檔案進行確認。 如需詳細資訊，請移至[準備寄送](data-box-deploy-picked-up.md#prepare-to-ship)。
 
-### <a name="q-what-happens-to-my-data-after-i-have-returned-the-data-box"></a>Q. 在我送回資料箱之後，我的資料將會如何？
+### <a name="q-what-happens-to-my-data-after-i-return-the-data-box"></a>Q. 傳回資料箱之後，我的資料會發生什麼事？
 A.  當資料複製到 Azure 之後，資料箱磁碟中的資料將會根據 NIST SP 800-88 修訂 1 指導方針安全地清除。 如需詳細資訊，請移至[從資料箱清除資料](data-box-deploy-picked-up.md#erasure-of-data-from-data-box)。
 
 ## <a name="audit-report"></a>稽核報告
@@ -264,9 +292,9 @@ A.  下列報表類型可用來支援監管鏈：
 A.  貨運公司追蹤記錄可從資料箱訂單記錄中擷取。 當您的裝置送回到 Azure 資料中心，並清除裝置上的資料之後，就會將此報表提供給您。 若立即需要，您也可以直接移至貨運公司的網站，使用訂單追蹤號碼來取得追蹤資訊。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我是否可以親自將資料箱送到 Azure 資料中心？ 
-A.  否。 如果您選擇 Microsoft 管理的出貨，則無法傳輸資料。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
+A.  否。 如果您選擇 Microsoft 管理的出貨，則無法傳輸資料。 目前，Azure 資料中心不接受從客戶或 UPS 以外的貨運公司傳送資料箱。
 
-如果您選擇自行管理的運送，則可以從 Azure 資料中心挑選或卸載資料箱。
+如果您選擇自行管理的出貨，則可以從 Azure 資料中心收取或捨棄資料箱。
 
 
 ## <a name="next-steps"></a>後續步驟
