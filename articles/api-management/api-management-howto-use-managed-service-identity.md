@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: db1a8238cf9ddae57d73438d43daa54294ce6860
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2866633503399e9f6d78e8665f7a45d9063f01d9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686220"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585780"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用受控識別
 
@@ -279,7 +279,7 @@ ms.locfileid: "94686220"
 1. 像平常一樣在入口網站中建立 API 管理執行個體。 在入口網站中流覽至該網站。
 2. 選取 [ **受控** 識別]。
 3. 在 [ **使用者指派** ] 索引標籤上，選取 [ **新增**]。
-4. 搜尋您稍早建立的身分識別，然後選取它。 選取 [新增]  。
+4. 搜尋您稍早建立的身分識別，然後選取它。 選取 [新增]。
 
    :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="啟用使用者指派的受控識別的選取專案" border="true":::
 
@@ -361,7 +361,7 @@ ms.locfileid: "94686220"
                 "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]": {}
              }
         },
-        "dependsOn": [       
+         "dependsOn": [       
           "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName'))]"
         ]
     }]

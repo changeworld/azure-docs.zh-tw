@@ -9,15 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/10/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9d24bd65f1bd473560585ec9d594ddc77d858177
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 0f70c8d501a7d56f4bc29e0f2b065760cad625e5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111186"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585015"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中的客戶註冊期間停用電子郵件驗證
 
@@ -30,7 +31,7 @@ ms.locfileid: "97111186"
 > [!WARNING]
 > 在註冊程序期間停用電子郵件驗證可能會導致收到垃圾郵件。 如果您停用預設的 Azure AD B2C 提供的電子郵件驗證，建議您執行取代驗證系統。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 ## <a name="disable-email-verification"></a>停用電子郵件驗證

@@ -3,21 +3,21 @@ title: 使用 Azure Site Recovery 啟用 VMware Vm 以進行嚴重損壞修復
 description: 本文說明如何使用 Azure Site Recovery 服務，啟用 VMware VM 複寫以進行嚴重損壞修復
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 04/01/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1f4759bc40c4074f0dd618be8ac66ad088e848c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004206"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587739"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>讓 VMware VM 能夠複寫至 Azure
 
 本文說明如何啟用將內部部署 VMware 虛擬機器 (VM) 複寫至 Azure 的複寫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您的系統符合下列準則：
 
@@ -75,12 +75,12 @@ ms.locfileid: "96004206"
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="啟用複寫目標視窗":::
 
-1. 針對 **虛擬機器**  >  ，**選取 [虛擬機器**]，選取您要複寫的每部虛擬機器。 您只能選取可以啟用複寫的虛擬機器。 然後選取 [確定]  。 如果您看不到或無法選取任何特定的虛擬機器，請參閱 [Azure 入口網站中未列出來源電腦](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) 以解決此問題。
+1. 針對 **虛擬機器**  >  ，**選取 [虛擬機器**]，選取您要複寫的每部虛擬機器。 您只能選取可以啟用複寫的虛擬機器。 然後選取 [確定]。 如果您看不到或無法選取任何特定的虛擬機器，請參閱 [Azure 入口網站中未列出來源電腦](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) 以解決此問題。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="啟用複寫選取虛擬機器視窗":::
 
-1. 在 [設定屬性 **] 屬性**  >  **Configure properties** 中，選取進程伺服器用來自動在 VM 上安裝 Site Recovery 行動服務的帳戶。 此外，請根據您的資料變換模式，選擇要用於複寫的目標受控磁片類型。
-1. 根據預設，會複寫來源 VM 的所有磁片。 若要排除磁片不要複寫，請清除任何您不想要複寫之磁片的 [ **包含** ] 核取方塊。 然後選取 [確定]  。 您可以稍後再設定其他屬性。 [深入了解](vmware-azure-exclude-disk.md)排除磁碟。
+1. 在 [設定屬性 **] 屬性**  >  中，選取進程伺服器用來自動在 VM 上安裝 Site Recovery 行動服務的帳戶。 此外，請根據您的資料變換模式，選擇要用於複寫的目標受控磁片類型。
+1. 根據預設，會複寫來源 VM 的所有磁片。 若要排除磁片不要複寫，請清除任何您不想要複寫之磁片的 [ **包含** ] 核取方塊。 然後選取 [確定]。 您可以稍後再設定其他屬性。 [深入了解](vmware-azure-exclude-disk.md)排除磁碟。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="啟用複寫設定屬性視窗":::
 
@@ -93,7 +93,42 @@ ms.locfileid: "96004206"
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="啟用複寫視窗":::
 
-1. 選取 [啟用複寫]。 您可以在 [**設定** 工作] **Enable Protection**  >  **Jobs**  >  **Site Recovery 工作** 追蹤「啟用保護」工作的進度。 執行「 **完成保護** 」工作之後，虛擬機器就可以進行容錯移轉。
+1. 選取 [啟用複寫]。 您可以在 [**設定** 工作]   >    >  **Site Recovery 工作** 追蹤「啟用保護」工作的進度。 執行「 **完成保護** 」工作之後，虛擬機器就可以進行容錯移轉。
+
+## <a name="monitor-initial-replication"></a>監視初始複寫
+
+受保護專案的「啟用複寫」完成之後，Azure Site Recovery 會起始複寫 (同義于從來源電腦到目的地區域的資料同步處理) 。 在這段期間，會建立來源磁片的複本。 只有在複製原始磁片完成後，才會將差異變更複製到目的地區域。 複製原始磁片所花費的時間取決於多個參數，例如：
+
+- 來源機器磁片的大小
+- 可用來將資料傳輸到 Azure 的頻寬 (您可以利用 deployment planner 來找出所需的最佳頻寬) 
+- 進程伺服器資源，例如記憶體、可用磁碟空間、快取可用的 CPU & 處理從受保護的專案接收的資料 (確定進程伺服器的 [狀況良好](vmware-physical-azure-monitor-process-server.md#monitor-proactively)) 
+
+若要追蹤初始複寫的進度，請流覽至 [復原服務保存庫] 中 Azure 入口網站 > 複寫的專案-> 監視 [狀態] 資料行值的複寫專案。 狀態會顯示初始複寫完成的百分比。 當滑鼠停留在狀態上時，就可以使用「傳輸的資料總計」。 按一下 [狀態] 時，會開啟內容頁面，並顯示下列參數：
+
+- 上次重新整理時間-表示服務已重新整理整部電腦的複寫資訊最晚時間。
+- 已完成的百分比-指出 VM 的初始複寫已完成的百分比
+- 傳輸的總數據量-從 VM 傳輸到 Azure 的資料量
+
+:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="複寫狀態" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+
+- 在磁片層級追蹤詳細資料的同步處理進度 () 
+    - 複寫的狀態
+      - 如果複寫尚未啟動，則狀態會更新為「在佇列中」。 在初始複寫期間，一次只會複寫3個磁片。 遵循此機制可避免在進程伺服器上進行節流。
+      - 複寫開始之後，狀態會更新為「進行中」。
+      - 初始複寫完成後，狀態會標示為「完成」。        
+   - Site Recovery 讀取原始磁片、將資料傳輸至 Azure，並在磁片層級上捕獲進度。 請注意，Site Recovery 略過磁片未佔用大小的複寫，並將其新增至已完成的資料。 因此，在所有磁片之間傳輸的資料總和可能不會新增至 VM 層級的「傳輸的資料總計」。
+   - 當您按一下磁片上的資訊提示時，您可以取得複寫 (對磁片觸發同步處理) 的相關詳細資料、最後15分鐘內傳送至 Azure 的資料，以及上次重新整理的時間戳記。 這個時間戳記表示 Azure 服務從來源機器的初始複寫資訊收到的最晚時間（資訊:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-info-balloon.png" alt-text="-提示-詳細資料" lightbox="media/vmware-azure-enable-replication/initial-replication-info-balloon.png":::）
+   - 顯示每個磁片的健全狀況
+      - 如果複寫速度低於預期，則磁片狀態會變成警告
+      - 如果複寫未進展，磁片狀態會變成「重大」
+
+如果健全狀況處於「重大」/「警告」狀態，請確定機器和 [進程伺服器](vmware-physical-azure-monitor-process-server.md) 的複寫健全狀況狀況良好。 
+
+啟用複寫作業完成後，複寫進度會是0%，而傳輸的總數據則是 NA。 按一下時，針對每個已識別磁片的資料會是 "NA"。這表示複寫尚未啟動，Azure Site Recovery 還在接收最新的統計資料。 進度會以30分鐘的間隔重新整理。
+
+> [!NOTE]
+> 請務必將設定伺服器、向外延展進程伺服器和行動代理程式更新為9.36 或更高版本，以確保會將正確的進度捕獲並傳送給 Site Recovery 服務。
+
 
 ## <a name="view-and-manage-vm-properties"></a>檢視及管理 VM 屬性
 

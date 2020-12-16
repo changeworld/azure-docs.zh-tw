@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 869cf5a47831844b04e0461a95fb7d16aa4d1569
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111192"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585185"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中自訂使用者介面
 
@@ -29,9 +29,7 @@ ms.locfileid: "97111192"
 > [!TIP]
 > 如果您只想要修改使用者流程頁面的橫幅標誌、背景影像和背景色彩，您可以嘗試 [公司品牌](company-branding.md) 功能。
 
-
 ## <a name="custom-html-and-css-overview"></a>自訂 HTML 和 CSS 總覽
-
 
 Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](https://www.w3.org/TR/cors/)來執行程式碼。 在執行時間，會從您在使用者流程或自訂原則中指定的 URL 載入內容。 使用者體驗中的每個頁面都會從您為該頁面指定的 URL 載入其內容。 從您的 URL 載入內容之後，它會與 Azure AD B2C 所插入的 HTML 片段合併，然後向您的客戶顯示該頁面。
 
@@ -61,7 +59,7 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
 
 下表列出 Azure AD B2C 所提供的預設頁面內容。 下載這些檔案，並使用它們做為建立您專屬自訂頁面的起點。
 
-| 預設頁面 | 說明 | 內容定義識別碼<br/>僅 (自訂原則)  |
+| 預設頁面 | 描述 | 內容定義識別碼<br/>僅 (自訂原則)  |
 |:-----------------------|:--------|-------------|
 | [exception.html](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **錯誤頁面**。 在發生例外狀況或錯誤時，系統會顯示此頁面。 | api.error |
 | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) |  **自我判斷頁面**。 使用此檔案作為社交帳戶註冊頁面、本機帳戶註冊頁面、本機帳戶登入頁面、密碼重設等的自訂頁面內容。 此表單可以包含各種輸入控制項，例如文字輸入方塊、密碼輸入方塊、選項按鈕、單選下拉式清單方塊和多選核取方塊。 | *localaccountsignin*、api. *localaccountsignup*、 *localaccountpasswordreset*、 *api. selfasserted* |
@@ -118,10 +116,9 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 1. 為您的 Web 應用程式設定跨原始來源資源分享 (CORS)。
 1. 將您的原則指向您的自訂原則內容 URI。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
-
 
 ### <a name="1-create-your-html-content"></a>1. 建立您的 HTML 內容
 
@@ -235,7 +232,6 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 1. 選取 [ **傳送要求**]。
     結果應該是 `XHR status: 200` 。 
     如果您收到錯誤，請確定您的 CORS 設定正確無誤。 您也可能需要清除瀏覽器快取，或按 Ctrl+Shift+P 來開啟 InPrivate 瀏覽工作階段。
-
 
 ::: zone pivot="b2c-user-flow"
 
@@ -391,10 +387,7 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
 1. 現在修改原則，指向您的 HTML 檔案（如先前所述）。
 1. 如果您看到遺漏字型、影像或 CSS，請檢查延伸模組原則和 .html 檔案中的參考 \* 。
 
-
 ## <a name="next-steps"></a>後續步驟
 
 瞭解如何啟用 [用戶端 JavaScript 程式碼](javascript-and-page-layout.md)。
-
-
 

@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
-ms.openlocfilehash: 5ffd688a60f793ffa497cd0d23ed88437e56a07c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ec19497f8e718eaf081d0fd8e2a4012e3ee24bf7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022678"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587378"
 ---
 # <a name="troubleshoot-azure-hdinsight"></a>針對 Azure HDInsight 進行疑難排解
 
 | Apache 工作負載 | 最常見問題 |
 |---|---|
-|![hdinsight apache HBase 圖示圖示](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hbase.png)<br>[Apache HBase 疑難排解]()|<br>[未指派的區域](hbase/hbase-troubleshoot-unassigned-regions.md#scenario-unassigned-regions)<br><br>[Azure HDInsight 中的 'hbase hbck' 命令逾時](hbase/hbase-troubleshoot-timeouts-hbase-hbck.md)<br><br>[Apache Phoenix Azure HDInsight 中的連線能力問題](hbase/hbase-troubleshoot-phoenix-connectivity.md)<br><br>[什麼情況導致主要伺服器無法啟動？](hbase/hbase-troubleshoot-start-fails.md)<br><br>[BindException-位址已在使用中](hbase/hbase-troubleshoot-bindexception-address-use.md)|
+|![hdinsight apache HBase 圖示圖示](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hbase.png)<br>[Apache HBase 疑難排解]()|<br>[未指派的區域](hbase/hbase-troubleshoot-unassigned-regions.md#scenario-unassigned-regions)<br><br>[Azure HDInsight 中的 'hbase hbck' 命令逾時](hbase/hbase-troubleshoot-timeouts-hbase-hbck.md)<br><br>[Apache Phoenix Azure HDInsight 中的連線能力問題](hbase/hbase-troubleshoot-phoenix-connectivity.md)<br><br>[導致主伺服器無法啟動的原因為何？](hbase/hbase-troubleshoot-start-fails.md)<br><br>[BindException-位址已在使用中](hbase/hbase-troubleshoot-bindexception-address-use.md)|
 |![hdinsight apache hdfs 圖示圖示](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hdfs.png)<br>[Apache Hadoop HDFS 疑難排解](hdinsight-troubleshoot-hdfs.md)|<br>[如何從叢集內部存取本機 HDFS？](hdinsight-troubleshoot-hdfs.md#how-do-i-access-local-hdfs-from-inside-a-cluster)<br><br>[本機 HDFS 在 Azure HDInsight 叢集上卡在安全模式中](hadoop/hdinsight-hdfs-troubleshoot-safe-mode.md)|
 |![hdinsight apache Hive 圖示圖示](./media/hdinsight-troubleshoot-guide/hdinsight-apache-hive.png)<br>[針對 Apache Hive 進行疑難排解](hdinsight-troubleshoot-hive.md)|<br>[如何匯出 Hive 中繼存放區並匯入另一個叢集？](hdinsight-troubleshoot-hive.md#how-do-i-export-a-hive-metastore-and-import-it-on-another-cluster)<br><br>[如何在叢集上尋找 Apache Hive 記錄？](hdinsight-troubleshoot-hive.md#how-do-i-locate-hive-logs-on-a-cluster)<br><br>[如何在叢集上以特定設定啟動 Apache Hive Shell？](hdinsight-troubleshoot-hive.md#how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster)<br><br>[如何分析叢集關鍵路徑上的 Apache Tez DAG 資料？](hdinsight-troubleshoot-hive.md#how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path)<br><br>[如何從叢集下載 Apache Tez DAG 資料？](hdinsight-troubleshoot-hive.md#how-do-i-download-tez-dag-data-from-a-cluster)|
 |![hdinsight apache Spark 圖示圖示](./media/hdinsight-troubleshoot-guide/hdinsight-apache-spark.png)<br>[Apache Spark 疑難排解](./spark/apache-troubleshoot-spark.md)|<br>[如何使用 Apache Ambari 在叢集上設定 Apache Spark 應用程式？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters)<br><br>[如何使用 Jupyter Notebook 在叢集上設定 Apache Spark 應用程式？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters)<br><br>[如何使用 Apache Livy 在叢集上設定 Apache Spark 應用程式？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters)<br><br>[如何使用 spark-submit 在叢集上設定 Apache Spark 應用程式？](spark/apache-troubleshoot-spark.md#how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters)<br><br>[如何使用 IntelliJ 來設定 Apache Spark 應用程式？](spark/apache-spark-intellij-tool-plugin.md)<br><br>[如何使用 Eclipse 來設定 Apache Spark 應用程式？](spark/apache-spark-eclipse-tool-plugin.md)<br><br>[如何使用 VSCode 來設定 Apache Spark 應用程式？](hdinsight-for-vscode.md)<br><br>[Apache Spark 的 OutOfMemoryError 例外狀況](spark/apache-spark-troubleshoot-outofmemory.md#scenario-outofmemoryerror-exception-for-apache-spark)|

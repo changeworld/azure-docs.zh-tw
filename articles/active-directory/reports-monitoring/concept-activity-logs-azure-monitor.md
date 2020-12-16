@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dbf14b1816d367f864cc3a2977497b34111df3f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229849"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586188"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure 監視器中的 Azure AD 活動記錄 \(部分機器翻譯\)
 
@@ -42,13 +42,13 @@ ms.locfileid: "89229849"
 您可以使用這項功能將 Azure AD 稽核記錄和登入記錄路由至您的 Azure 儲存體帳戶、事件中樞、Azure 監視器記錄或自訂解決方案。 
 
 * **稽核記錄**：[稽核記錄活動報告](concept-audit-logs.md)可讓您對每個在租用戶中執行的工作存取歷程記錄。
-* **登入記錄**：透過[登入活動報告](concept-sign-ins.md)，您可以判斷是誰執行了稽核記錄中所報告的工作。
+* **登入記錄**：透過 [登入活動報告](concept-sign-ins.md)，您可以判斷是誰執行了稽核記錄中所報告的工作。
 
 > [!NOTE]
 > 目前不支援與 B2C 相關的稽核和登入活動記錄。
 >
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要使用此功能，您必須要有：
 
@@ -60,7 +60,7 @@ ms.locfileid: "89229849"
 
 根據您要路由稽核記錄資料的位置，您必須要有下列任何一項：
 
-* 您具有 *ListKeys* 權限的 Azure 儲存體帳戶。 建議您使用一般儲存體帳戶，而不要使用 Blob 儲存體帳戶。 如需儲存體價格資訊，請參閱 [Azure 儲存體價格計算機](https://azure.microsoft.com/pricing/calculator/?service=storage)。 
+* 您擁有 *ListKeys* 許可權的 Azure 儲存體帳戶。 建議您使用一般儲存體帳戶，而不要使用 Blob 儲存體帳戶。 如需儲存體價格資訊，請參閱 [Azure 儲存體價格計算機](https://azure.microsoft.com/pricing/calculator/?service=storage)。 
 * Azure 事件中樞命名空間，以便與第三方解決方案整合。
 * 用來將記錄傳送至 Azure 監視器記錄的 Azure Log Analytics 工作區。
 
@@ -111,11 +111,11 @@ ms.locfileid: "89229849"
 
 
 
-| 記錄分類       | 使用者人數 | 每日事件數 | 每月事件 (30 天)  | 每個月的成本，以美元 (est )  |
-| :--                | ---             | ---            | ---                        | --:                          |
-| 審核和登入 | 100,000         | 16500000     | 495000000                |  $1093.00                       |
-| 稽核              | 100,000         | 1500000      | 45,000,000                 |  $246.66                     |
-| 登入           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
+| 記錄分類 | 使用者人數 | 每日事件數 | 每月事件 (30 天)  | 每個月的成本，以美元 (est )  |
+|:-|--|--|--|-:|
+| 審核和登入 | 100,000 | 16500000 | 495000000 | $1093.00 |
+| 稽核 | 100,000 | 1500000 | 45,000,000 | $246.66 |
+| 登入 | 100,000 | 15,000,000 | 450,000,000 | $847.28 |
 
 
 
@@ -186,13 +186,13 @@ ms.locfileid: "89229849"
 
 **問: 如何整合 Azure AD 活動記錄與我的 Splunk 執行個體？**
 
-**答**: 首先，[將 Azure AD 活動記錄路由至事件中樞](./tutorial-azure-monitor-stream-logs-to-event-hub.md)，然後依照步驟[整合活動記錄與 Splunk](./howto-integrate-activity-logs-with-splunk.md)。
+**答**: 首先，[將 Azure AD 活動記錄路由至事件中樞](./tutorial-azure-monitor-stream-logs-to-event-hub.md)，然後依照步驟 [整合活動記錄與 Splunk](./howto-integrate-activity-logs-with-splunk.md)。
 
 ---
 
 **問: 如何整合 Azure AD 活動記錄與 Sumo Logic？** 
 
-**答**: 首先，[將 Azure AD 活動記錄路由至事件中樞](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)，然後依照步驟[在 SumoLogic 中安裝 Azure AD 應用程式及檢視儀表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。
+**答**: 首先，[將 Azure AD 活動記錄路由至事件中樞](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)，然後依照步驟 [在 SumoLogic 中安裝 Azure AD 應用程式及檢視儀表板](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)。
 
 ---
 

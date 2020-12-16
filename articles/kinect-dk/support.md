@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: azure、kinect、rgb、IR、錄製、感應器、sdk、存取、深度、影片、相機、imu、移動、感應器、音訊、麥克風、matroska、感應器 sdk、下載、主體、追蹤、支援
-ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9bb6e0ad8ebbb763389f13e317036eacc5c7d074
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357040"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587089"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect 支援選項和資源
 
@@ -56,6 +56,8 @@ Azure 訂閱者可以在 Azure 入口網站中建立及管理支援要求。 針
 [取得](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813) 裝置或感應器功能、固件更新或購買選項的協助。
 
 如需支援供應專案的詳細資訊，請參閱 [Microsoft 的商務支援](https://support.microsoft.com/help/4341255/support-for-business)。
+
+Microsoft 硬體[產品的歐盟](https://www.microsoft.com/en-us/eu-declarations-compliance?activetab=pivot1:primaryr3)聲明符合性
 
 ## <a name="next-steps"></a>後續步驟
 

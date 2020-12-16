@@ -9,15 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 5b04613a74755f8515d967b8dd28397b36816fec
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c8b942e66a76bcc3a095f9bd3d40b44bf4217e50
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516213"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584879"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Google 帳戶登入
 
@@ -47,7 +48,7 @@ ms.locfileid: "97516213"
 1. 在左側功能表選取 [認證]，然後選取 [建立認證] > [Oauth 用戶端識別碼]。
 1. 在 [應用程式類型] 下方，選取 [Web 應用程式]。
 1. 輸入應用程式的 **名稱**，在 [授權 JavaScript 來源] 中輸入 `https://your-tenant-name.b2clogin.com`，接著在 [授權重新導向 URI] 中輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 `your-tenant-name`。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。
-1. 按一下頁面底部的 [新增]  。
+1. 按一下 [建立]  。
 1. 複製 **用戶端識別碼** 和 **用戶端密碼** 的值。 您必須使用這兩個值，將 Google 設為租用戶中的身分識別提供者。 **用戶端密碼** 是重要的安全性認證。
 
 ::: zone pivot="b2c-user-flow"
@@ -61,7 +62,7 @@ ms.locfileid: "97516213"
 1. 輸入 [名稱]。 例如， *Google*。
 1. 針對 [ **用戶端識別碼**]，輸入您稍早建立之 Google 應用程式的用戶端識別碼。
 1. 針對 **用戶端密碼**，請輸入您所記錄的用戶端密碼。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ::: zone-end
 
@@ -190,7 +191,7 @@ ms.locfileid: "97516213"
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 按一下您想要使用 Google 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **Google**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

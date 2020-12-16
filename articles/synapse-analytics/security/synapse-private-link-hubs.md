@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2613a4fd931ad49a4f40a4221ea20e8c25f185fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501475"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586970"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>使用 Azure Private Link Hub 連接到 Azure Synapse Studio 
 
@@ -35,9 +35,9 @@ ms.locfileid: "96501475"
 ## <a name="azure-private-links-hubs-and-azure-virtual-network"></a>Azure Private Links 中樞和 Azure 虛擬網路
 您必須將 Azure 虛擬網路連線到 Synapse private link hub 資源，以保護 Synapse Studio 的端對端連線。 若要這樣做，您必須從您的虛擬網路建立私人端點至您所建立的私人連結中樞。 您可以使用私人連結中樞的 Azure 入口網站，並移至私人端點區段。 選取 [+ 私人端點] 以建立新的私人端點，以連接到您的私人連結中樞。
 
-:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="建立私人端點至私人連結中樞":::
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="顯示 [私人端點連接] 頁面的螢幕擷取畫面。":::
 
-請務必選擇 [資源] 索引標籤上的 "Synapse/privateLinkHubs" 資源類型。建立私人 :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="端點至私人連結中樞":::
+請務必選擇 [資源] 索引標籤上的 "Synapse/privateLinkHubs" 資源類型。顯示反:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="白顯示 [資源類型] 的 [建立私人端點] 頁面的螢幕擷取畫面":::。
 
 在 [設定] 索引標籤上，針對私人 DNS 區域選取 [privatelink.azuresynapse.net]，以便與您的虛擬網路和私人 DNS 區域整合。
 

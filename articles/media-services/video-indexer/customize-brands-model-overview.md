@@ -3,19 +3,19 @@ title: 在影片索引器中自訂品牌模型 - Azure
 titleSuffix: Azure Media Services
 description: 本文概要說明影片索引器中的品牌模型是什麼，以及如何加以自訂。
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
-ms.author: kumud
-ms.openlocfilehash: e0df698cb431e5e26c69047a9f464904f0546487
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/15/2019
+ms.author: juliako
+ms.openlocfilehash: 81d7dda854c6afcc9397289ff23ba45b02ed9fc4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294232"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586069"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>在影片索引器中自訂品牌模型
 
@@ -25,15 +25,15 @@ ms.locfileid: "89294232"
 
 ## <a name="out-of-the-box-detection-example"></a>現成的偵測範例
 
-在 [Microsoft Build 2017 Day 2](https://www.videoindexer.ai/media/ed6ede78ad/) 簡報中，"Microsoft Windows" 這個品牌會出現多次。 有時候是在文字記錄中，有時候是以視覺化文字的方式，而且絕不會逐字出現。 影片索引器會以高精確度的方式，根據上下文偵測到某個詞彙確實是品牌，其中涵蓋超過 90 個現成的品牌，而且持續更新中。 在 02:25 處，影片索引器從語音偵測到品牌，然後再次在 02:40 處，從視覺化文字偵測到該品牌，這是 Windows 標誌的一部分。
+在「Microsoft Build 2017 Day 2」簡報中，「Microsoft Windows」的品牌會出現多次。 有時候是在文字記錄中，有時候是以視覺化文字的方式，而且絕不會逐字出現。 影片索引器會以高精確度的方式，根據上下文偵測到某個詞彙確實是品牌，其中涵蓋超過 90 個現成的品牌，而且持續更新中。 在 02:25 處，影片索引器從語音偵測到品牌，然後再次在 02:40 處，從視覺化文字偵測到該品牌，這是 Windows 標誌的一部分。
 
 ![品牌概觀](./media/content-model-customization/brands-overview.png)
 
-根據知道如何從上下文釐清的進階機器學習演算法，談論建築方面的 windows (窗戶) 時，不會將 "Windows" 這個字偵測為品牌，這同樣適用於 Box、Apple、Fox 等等。 品牌偵測適用於所有我們支援的語言。 按一下這裡可取得[完整的 Microsoft Build 2017 Day 2 重點演說視訊和索引](https://www.videoindexer.ai/media/ed6ede78ad/)。
-
-若要產生您自己的品牌，請參閱「後續步驟」。
+根據知道如何從上下文釐清的進階機器學習演算法，談論建築方面的 windows (窗戶) 時，不會將 "Windows" 這個字偵測為品牌，這同樣適用於 Box、Apple、Fox 等等。 品牌偵測適用於所有我們支援的語言。  
 
 ## <a name="next-steps"></a>後續步驟
+
+若要攜帶您自己的品牌，請參閱下列主題：
 
 [使用 API 自訂品牌模型](customize-brands-model-with-api.md)
 

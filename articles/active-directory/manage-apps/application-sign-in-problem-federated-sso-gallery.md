@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028269"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586341"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>登入 SAML 型單一登入設定的應用程式時發生問題
 若要針對下列登入問題進行疑難排解，建議您遵循下列步驟來更妥善地進行診斷，並將解決步驟自動化：
@@ -33,7 +33,9 @@ ms.locfileid: "97028269"
 1.  在篩選搜尋方塊中輸入 **"Azure Active Directory"** ，然後選取 **Azure Active Directory** 專案。
 1.  在 Azure Active Directory 左側導覽功能表中，選取 [企業應用程式]。
 1.  選取 [所有應用程式]，以檢視所有應用程式的清單。
+
     若在這裡沒看到您要顯示的應用程式，請使用 [所有應用程式清單] 頂端的 [篩選] 控制項，並將 [顯示] 選項設定為 [所有應用程式]。
+
 1.  選取您要設為單一登入的應用程式。
 1. 應用程式載入之後，請從應用程式的左側導覽功能表中選取 [ **單一登入** ]。
 1. 選取 SAML 型 SSO。
@@ -63,7 +65,7 @@ ms.locfileid: "97028269"
 請確認 `AssertionConsumerServiceURL` SAML 要求中的值符合 Azure AD 中設定的 [回復 URL] 值。 
 
 確認或更新 [回復 URL] 文字方塊中的值，以符合 `AssertionConsumerServiceURL` SAML 要求中的值。   
-    
+
 當您更新 Azure AD 中的 [回復 URL] 值，且該值符合 SAML 要求中的應用程式所傳送的值之後，您應該能夠登入應用程式。
 
 ## <a name="user-not-assigned-a-role"></a>使用者未指派角色

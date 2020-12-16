@@ -10,18 +10,19 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c3056415d3432dbe64dd1f2bcf974a676bbf6c6b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020461"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586052"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>使用影片索引器 API 自訂品牌模型
 
-影片索引器支援在視訊和音訊內容的編製索引及重新編製索引期間，從語音和視覺文字偵測品牌。 品牌偵測功能可識別 Bing 的品牌資料庫建議所提及的產品、服務以及公司。 例如，如果影片或音訊內容中提及 Microsoft，或在影片中顯示視覺文字，則影片索引子會將其偵測為內容中的品牌。 自訂品牌模型可讓您從偵測到的品牌中排除特定品牌，並包含應該是您模型的一部分，但可能不在 Bing 品牌資料庫中的品牌。
+影片索引器支援在視訊和音訊內容的編製索引及重新編製索引期間，從語音和視覺文字偵測品牌。 品牌偵測功能可識別 Bing 的品牌資料庫建議所提及的產品、服務以及公司。 例如，如果影片或音訊內容中提及 Microsoft，或在影片中顯示視覺文字，則影片索引子會將其偵測為內容中的品牌。 自訂品牌模型可讓您從偵測到的品牌中排除特定品牌，並包含應該是您模型的一部分，但可能不在 Bing 品牌資料庫中的品牌。 如需詳細資訊，請參閱[概觀](customize-brands-model-overview.md)。
 
-如需詳細概觀，請參閱[概觀](customize-brands-model-overview.md)。
+> [!NOTE]
+> 如果您的影片是在新增品牌之前建立索引，則必須重新建立索引。
 
 您可以使用影片索引器 API 建立、使用和編輯在視訊中偵測到的自訂品牌模型，如本主題中所述。 您也可以使用影片索引器網站，如[使用影片索引器網站自訂品牌模型](customize-brands-model-with-api.md)中所述。
 

@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: how-to
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: ec83778d034cfc512582eddf79995412dad405c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97430d86cba1107ef67264a181925d2a4d7c12c3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710723"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586817"
 ---
 # <a name="exchange-peering-walkthrough"></a>Exchange 對等互連逐步解說
 
@@ -50,6 +50,6 @@ ms.locfileid: "84710723"
 > [!NOTE]
 > 如果您執行 PowerShell Cmdlet 來刪除線上狀態為 ProvisioningStarted 或 ProvisioningCompleted 時的 Exchange 對等互連，則作業將會失敗。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解 [設定與 Microsoft 的對等互連的必要條件](prerequisites.md)。

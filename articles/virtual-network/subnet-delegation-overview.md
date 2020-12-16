@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2019
+ms.date: 12/15/2020
 ms.author: kumud
-ms.openlocfilehash: 1fbb683754aed5b2a2e6e9c022713b7e87ad9ba9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e30697fe93e2debaa68e12561f18be7f85d772a4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329202"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586409"
 ---
 # <a name="what-is-subnet-delegation"></a>什麼是子網委派？
 
@@ -52,6 +52,7 @@ ms.locfileid: "91329202"
 - 指定委派子網中的 IP 位址空間，從私人 IP 位址空間 (10.0.0.0/8、192.168.0.0/16、172.16.0.0/12) 。
 - 指示自訂 DNS 設定有 Azure DNS 專案。
 - 需要先移除委派，才能刪除子網或虛擬網路。
+- 如果委派子網，則無法與私人端點一起使用。
 
 插入的服務也可以新增自己的原則，如下所示：
 - **安全性原則**：指定服務運作所需的安全性規則集合。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: aafdbe631426b4b0c8c762a81457369bc474f479
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a87a08db672c459138fc1efd865332dc0f19944e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181116"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586585"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Adobe Identity Management
 
@@ -35,7 +35,7 @@ ms.locfileid: "96181116"
 > * 在 Adobe 身分識別管理中布建群組和群組成員資格
 > * 單一登入 Adobe Identity Management (建議的) 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -57,11 +57,11 @@ ms.locfileid: "96181116"
 
 2. 按一下 [ **加入同步**]。
 
-      ![加](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
+      ![新增](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
 
 3. **從 Microsoft Azure** 選取 [同步處理使用者]，然後按 **[下一步]**。
 
-      ![同步](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+      ![顯示選取 [同步使用者自 Microsoft Azure Active Directory] 的螢幕擷取畫面。](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. 複製並儲存 **租使用者 URL** 和 **秘密權杖**。 這些值將會在 [ **租使用者 URL** ] 和 [ **秘密權杖** ] 欄位中輸入 Azure 入口網站中 Adobe Identity Management 應用程式的 [布建] 索引標籤中。
 
@@ -145,7 +145,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]  。
+15. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
@@ -156,7 +156,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。  
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 ## <a name="additional-resources"></a>其他資源
 

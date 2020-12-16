@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7af115d8f1244253e461f796c5665609d3b84b21
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 6af4fba8ddf50b795d847a2c7b4e2fbc02fe593f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517439"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587174"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全性架構︰密碼編譯 | 風險降低 
 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
 | **Web 應用程式** | <ul><li>[只使用核准的對稱封鎖密碼和金鑰長度](#cipher-length)</li><li>[針對對稱編碼器使用核准的區塊編碼器模式和初始化向量](#vector-ciphers)</li><li>[使用核准的非對稱演算法、金鑰長度和填補](#padding)</li><li>[使用核准的亂數產生器](#numgen)</li><li>[請勿使用對稱串流密碼](#stream-ciphers)</li><li>[使用已核准的 MAC/HMAC/金鑰雜湊演算法](#mac-hash)</li><li>[只使用核准的密碼編譯雜湊函數](#hash-functions)</li></ul> |
-| **資料庫** | <ul><li>[使用強式加密演算法來加密資料庫中的資料](#strong-db)</li><li>[SSIS 套件應經過加密和數位簽署](#ssis-signed)</li><li>[將數位簽章新增至重要資料庫安全性實體](#securables-db)</li><li>[使用 SQL server EKM 來保護加密金鑰](#ekm-keys)</li><li>[如果不應該對資料庫引擎顯示加密金鑰，請使用 AlwaysEncrypted 功能](#keys-engine)</li></ul> |
+| **Database** | <ul><li>[使用強式加密演算法來加密資料庫中的資料](#strong-db)</li><li>[SSIS 套件應經過加密和數位簽署](#ssis-signed)</li><li>[將數位簽章新增至重要資料庫安全性實體](#securables-db)</li><li>[使用 SQL server EKM 來保護加密金鑰](#ekm-keys)</li><li>[如果不應該對資料庫引擎顯示加密金鑰，請使用 AlwaysEncrypted 功能](#keys-engine)</li></ul> |
 | **IoT 裝置** | <ul><li>[在 IoT 裝置上安全地儲存密碼編譯金鑰](#keys-iot)</li></ul> | 
 | **IoT 雲端閘道** | <ul><li>[產生足夠長度的隨機對稱金鑰以向 IoT 中樞進行驗證](#random-hub)</li></ul> | 
 | **Dynamics CRM 行動用戶端** | <ul><li>[確定已備妥需要使用 PIN 並允許遠端抹除的裝置管理原則](#pin-remote)</li></ul> | 
@@ -109,7 +109,7 @@ ms.locfileid: "94517439"
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
-| **步驟** | <p>產品必須使用 SHA-2 系列的雜湊演算法 (SHA256、SHA384 及 SHA512)。 如果需要較短的雜湊，例如 128 位元的輸出長度，以配合設計時預設使用較短 MD5 雜湊的資料結構，產品小組可截斷其中一個 SHA2 雜湊 (通常是 SHA256)。 請注意，SHA384 是 SHA512 的截斷版本。 不允許基於安全性考量而將密碼編譯雜湊截斷為少於 128 位元。 新的程式碼不得使用 MD2、MD4、MD5、SHA-0、SHA-1 或 RIPEMD 雜湊演算法。 這些演算法在計算時可能會發生雜湊衝突，而結果便是打斷演算法。</p><p>為了實現受控密碼編譯靈活性所允許的 .NET 雜湊演算法 (依偏好順序)：</p><ul><li>SHA512Cng (符合 FIPS 規範)</li><li>SHA384Cng (符合 FIPS 規範)</li><li>SHA256Cng (符合 FIPS 規範)</li><li>SHA512Managed (不符合 FIPS 規範的)  (在呼叫 HashAlgorithm. Create 或 Cryptoconfig.createfromname. CreateFromName 時，使用 SHA512 作為演算法名稱) </li><li>SHA384Managed (不符合 FIPS 規範的)  (在呼叫 HashAlgorithm. Create 或 Cryptoconfig.createfromname. CreateFromName 時，使用 SHA384 作為演算法名稱) </li><li>SHA256Managed (不符合 FIPS 規範的)  (在 HashAlgorithm. Create 或 Cryptoconfig.createfromname. CreateFromName 的呼叫中使用 SHA256 作為演算法名稱) </li><li>SHA512CryptoServiceProvider (符合 FIPS 規範)</li><li>SHA256CryptoServiceProvider (符合 FIPS 規範)</li><li>SHA384CryptoServiceProvider (符合 FIPS 規範)</li></ul>| 
+| **步驟** | <p>產品必須使用 SHA-2 系列的雜湊演算法 (SHA256、SHA384 及 SHA512)。 如果需要較短的雜湊，例如 128 位元的輸出長度，以配合設計時預設使用較短 MD5 雜湊的資料結構，產品小組可截斷其中一個 SHA2 雜湊 (通常是 SHA256)。 請注意，SHA384 是 SHA512 的截斷版本。 不允許基於安全性考量而將密碼編譯雜湊截斷為少於 128 位元。 新的程式碼不得使用 MD2、MD4、MD5、SHA-0、SHA-1 或 RIPEMD 雜湊演算法。 這些演算法在計算時可能會發生雜湊衝突，而結果便是打斷演算法。</p><p>為了實現受控密碼編譯靈活性所允許的 .NET 雜湊演算法 (依偏好順序)：</p><ul><li>SHA512Cng (符合 FIPS 規範)</li><li>SHA384Cng (符合 FIPS 規範)</li><li>SHA256Cng (符合 FIPS 規範)</li><li>SHA512Managed (不符合 FIPS 規範) (使用 SHA512 作為 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 之呼叫中的演算法名稱)</li><li>SHA384Managed (不符合 FIPS 規範) (使用 SHA384 作為 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 之呼叫中的演算法名稱)</li><li>SHA256Managed (不符合 FIPS 規範) (使用 SHA256 作為 HashAlgorithm.Create 或 CryptoConfig.CreateFromName 之呼叫中的演算法名稱)</li><li>SHA512CryptoServiceProvider (符合 FIPS 規範)</li><li>SHA256CryptoServiceProvider (符合 FIPS 規範)</li><li>SHA384CryptoServiceProvider (符合 FIPS 規範)</li></ul>| 
 
 ## <a name="use-strong-encryption-algorithms-to-encrypt-data-in-the-database"></a><a id="strong-db"></a>使用增強式加密演算法來加密資料庫中的資料
 

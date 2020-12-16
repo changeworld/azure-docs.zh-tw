@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a95ee631797c4dcca87f3506a6cf29245328159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c86689681aa99f60c4345e92f7f5c426795a69e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263442"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586698"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>開始在 Azure 媒體服務上使用 Java 用戶端 SDK
 
@@ -51,7 +51,7 @@ ms.locfileid: "89263442"
 >從 `0.9.8` 版的 `azure-media` 套件開始，SDK 新增了 Azure Active Directory (AAD) 驗證的支援，並移除了 Azure 存取控制服務 (ACS) 驗證的支援。 建議您儘速移轉至 Azure AD 驗證模型。 如需有關移轉的詳細資訊，請閱讀[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)一文。
 
 >[!NOTE]
->您可以在我們的 [GitHub 存放庫](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)中找到 Azure 媒體服務 Java SDK 的原始程式碼。 請確定切換至 0.9 分支，而不是主要分支。 
+>您可以在我們的 [GitHub 存放庫](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media)中找到 Azure 媒體服務 Java SDK 的原始程式碼。 請務必切換至0.9 分支，而不是主要分支。 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>作法：搭配使用 Azure 媒體服務和 Java
 
@@ -68,7 +68,7 @@ ms.locfileid: "89263442"
 * `clientKey`：Azure AD 應用程式的用戶端金鑰
 * `restApiEndpoint`：Azure 媒體服務帳戶的 REST API 端點
 
-您可以建立 Azure AD 應用程式，並從 Azure 入口網站取得上述設定值。 如需詳細資訊，請參閱[利用 Azure 入口網站開始使用 Azure AD 驗證](./media-services-portal-get-started-with-aad.md)的**服務主體驗證**區段。
+您可以建立 Azure AD 應用程式，並從 Azure 入口網站取得上述設定值。 如需詳細資訊，請參閱 [利用 Azure 入口網站開始使用 Azure AD 驗證](./media-services-portal-get-started-with-aad.md)的 **服務主體驗證** 區段。
 
 此程式碼還需要用到儲存在本機的視訊檔案。 您必須編輯程式碼，以上傳您自己的本機檔案。
 

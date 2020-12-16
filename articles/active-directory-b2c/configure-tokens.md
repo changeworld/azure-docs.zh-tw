@@ -8,15 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9b5782df01cad260852fb6ee5c00e3d7669acf47
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: a4299eff296d9795f8d256ff1236a8e8b4ad3e42
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503519"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585202"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>設定 Azure Active Directory B2C 中的權杖
 
@@ -57,7 +58,7 @@ ms.locfileid: "97503519"
 1. 開啟您先前建立的使用者流程。
 1. 選取 [屬性] 。
 1. 在 [ **權杖存留期**] 下，調整屬性以符合您應用程式的需求。
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案]  。
 
 ::: zone-end
 
@@ -113,7 +114,7 @@ ms.locfileid: "97503519"
 1. 開啟您先前建立的使用者流程。
 1. 選取 [屬性] 。
 1. 在 [ **權杖相容性設定**] 下，調整屬性以符合您應用程式的需求。
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案]  。
 
 ::: zone-end
 
@@ -182,7 +183,7 @@ ms.locfileid: "97503519"
 1. 開啟您先前建立的使用者流程。
 1. 選取 [應用程式宣告]。
 1. 選擇您想要傳回給應用程式的宣告和屬性。
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案]  。
 
 ::: zone-end
 

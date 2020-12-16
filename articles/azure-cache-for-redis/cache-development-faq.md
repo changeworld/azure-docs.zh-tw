@@ -7,18 +7,18 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bafd8a9752d2587ec52fe586e442e3bfc86d7537
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544506"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585763"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure Cache for Redis 開發常見問題
 
 本文提供有關如何針對 Azure Cache for Redis 開發的常見問題的解答。
 
-## <a name="common-questions-and-answers"></a>常見問題與答案
+## <a name="common-questions-and-answers"></a>常見問題和解答
 本節涵蓋下列常見問題：
 
 * [如何開始使用 Azure Redis 快取？](#how-can-i-get-started-with-azure-cache-for-redis)
@@ -55,7 +55,7 @@ StackExchange.Redis 有許多選項。 本節談論一些常見設定。 如需 
 
 * **重試**
   * 對於 ConnectRetry 和 ConnectTimeout，一般指引是快速檢錯，然後再試一次。 此指引是根據您的工作負載，以及用戶端發出 Redis 命令到接收回應所需的平均時間。
-  * 讓 StackExchange.Redis 自動重新連線，而不檢查連線狀態，並自行重新連線。 **避免使用 ConnectionMultiplexer.IsConnected 屬性** 。
+  * 讓 StackExchange.Redis 自動重新連線，而不檢查連線狀態，並自行重新連線。 **避免使用 ConnectionMultiplexer.IsConnected 屬性**。
   * 滾雪球 - 有時，您可能會遇到問題，但越是重試，問題卻如雪球般越滾越大，不可能解決。 如果出現滾雪球的情況，您應該考慮使用指數輪詢重試演算法 (如 Microsoft Patterns & Practices 群組所發佈的[重試一般指引](/azure/architecture/best-practices/transient-faults)所述)。
   
 * **逾時值**
@@ -64,12 +64,12 @@ StackExchange.Redis 有許多選項。 本節談論一些常見設定。 如需 
   * 使用應用程式的單一 ConnectionMultiplexer 執行個體。 您可以使用 LazyConnection 建立 Connection 屬性所傳回的單一執行個體 (如 [使用 ConnectionMultiplexer 類別連線至快取](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)所示)。
   * 將 `ConnectionMultiplexer.ClientName` 屬性設定為應用程式執行個體唯一名稱，以進行診斷。
   * 針對自訂工作負載，使用多個 `ConnectionMultiplexer` 執行個體。
-      * 如果您的應用程式中有不同的負載，則可以遵循此模型。 例如：
-      * 您可以有一個多工器來處理大型索引鍵。
-      * 您可以有一個多工器來處理小型索引鍵。
-      * 您可以設定連線逾時的不同值，以及每個所使用 ConnectionMultiplexer 的重試邏輯。
-      * 在每個多工器上設定 `ClientName` 屬性，以協助診斷。
-      * 此指引可以疏解每個 `ConnectionMultiplexer` 的延遲。
+    * 如果您的應用程式中有不同的負載，則可以遵循此模型。 例如：
+    * 您可以有一個多工器來處理大型索引鍵。
+    * 您可以有一個多工器來處理小型索引鍵。
+    * 您可以設定連線逾時的不同值，以及每個所使用 ConnectionMultiplexer 的重試邏輯。
+    * 在每個多工器上設定 `ClientName` 屬性，以協助診斷。
+    * 此指引可以疏解每個 `ConnectionMultiplexer` 的延遲。
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>我可以使用哪些 Azure Redis 快取用戶端？
 Redis 最大的好處是，有許多用戶端支援許多不同的開發語言。 如需最新的用戶端清單，請參閱 [Redis 用戶端](https://redis.io/clients)。 如需涵蓋數個不同語言和用戶端的教學課程，請參閱[如何使用 Azure Cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md) 以及目錄中的同層級文章。
@@ -140,6 +140,6 @@ Redis 資料庫就是相同 Redis 執行個體內的資料邏輯分隔。 所有
 > 
 > 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解其他 [Azure Cache for Redis 常見問題](cache-faq.md)。

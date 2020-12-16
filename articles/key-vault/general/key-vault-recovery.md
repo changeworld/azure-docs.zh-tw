@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
-ms.date: 09/30/2020
-ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 12/15/2020
+ms.openlocfilehash: 485da2230de80150c9a5d13b262d1857c8c172fc
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324953"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587106"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>如何啟用虛刪除和清除保護
 
@@ -23,7 +23,7 @@ ms.locfileid: "96324953"
 
 虛刪除和清除保護有兩種不同的金鑰保存庫修復功能。
 > [!IMPORTANT]
-> 必須在所有金鑰保存庫上啟用虛刪除保護。 停用虛刪除保護的功能將于2020年12月淘汰。 請參閱 [**這裡** 的完整詳細資料。](soft-delete-change.md)
+> 開啟虛刪除很重要，可確保您的金鑰保存庫和認證受到保護，不會遭到意外刪除。 不過，開啟虛刪除會被視為重大變更，因為它可能會要求您變更應用程式邏輯，或為您的服務主體提供額外的許可權。 使用下列指示開啟虛刪除之前，請先確定您的應用程式與使用此檔的變更相容 [ ****。](soft-delete-change.md)
 
 虛 **刪除** 是設計來防止意外刪除金鑰保存庫、金鑰、秘密，以及儲存在金鑰保存庫中的憑證。 請考慮虛刪除，例如回收站。 當您刪除金鑰保存庫或金鑰保存庫物件時，它會保持可供使用者設定的保留期間使用，或預設為90天。 也可以 **清除** 虛刪除狀態中的金鑰保存庫，這表示這些金鑰保存庫會永久刪除。 這可讓您以相同的名稱重新建立金鑰保存庫和金鑰保存庫物件。 復原和刪除金鑰保存庫和物件都需要較高的存取原則許可權。 **啟用虛刪除之後，即無法停用。**
 
