@@ -6,27 +6,32 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6d111379cbeb0ea4eeac9ea0868b6d263a0a540c
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 35653840c5ddd6f5ae2d5dc078513f0fa35ab34a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435717"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560928"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure App Service 中啟用 .NET 應用程式的快照偵錯工具
 
 快照偵錯工具目前適用于在 Windows 服務方案 Azure App Service 上執行的 ASP.NET 和 ASP.NET Core 應用程式。 使用快照偵錯工具時，建議您在基本服務層級或更高版本上執行您的應用程式。 在大部分的應用程式中，免費和共用的服務層級沒有足夠的記憶體來儲存快照集。
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> 啟用快照偵錯工具
-若要為應用程式啟用快照偵錯工具，請遵循下列指示。 如果您正在執行不同類型的 Azure 服務，則以下是在其他支援的平臺上啟用快照偵錯工具的指示：
+若要為應用程式啟用快照偵錯工具，請遵循下列指示。
+
+如果您正在執行不同類型的 Azure 服務，則以下是在其他支援的平臺上啟用快照偵錯工具的指示：
 * [Azure 雲端服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric 服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虛擬機器和虛擬機器擴展集](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [內部部署虛擬或實體機器](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-如果您使用的是 .NET Core 的預覽版本，請先遵循針對 [其他環境啟用快照偵錯工具](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) 的指示，先將 [ApplicationInsights microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 套件包含在應用程式中，然後完成下列其餘的指示。 
+> [!NOTE]
+> 如果您使用的是 .NET Core 預覽版本，或您的應用程式參考 Application Insights SDK （直接或間接透過相依的元件），請先遵循針對 [其他環境啟用快照偵錯工具](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) 的指示，先將 [microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 套件包含在應用程式中，然後完成下列其餘的指示。 
 
-Application Insights 快照偵錯工具會預先安裝為 App Service 執行時間的一部分，但您需要將其開啟，以取得 App Service 應用程式的快照集。 部署應用程式之後，即使您已在原始程式碼中包含 Application Insights SDK，也請遵循下列步驟來啟用快照偵錯工具。
+快照偵錯工具已預先安裝為 App Service 執行時間的一部分，但您需要將其開啟，才能取得 App Service 應用程式的快照集。
+
+部署應用程式之後，請遵循下列步驟來啟用快照偵錯工具：
 
 1. 流覽至您 App Service 的 [Azure 控制台]。
 2. 移至 [ **設定] > Application Insights** ] 頁面。
@@ -44,11 +49,12 @@ Application Insights 快照偵錯工具會預先安裝為 App Service 執行時�
 ## <a name="disable-snapshot-debugger"></a>停用快照偵錯工具
 
 遵循與 **啟用快照偵錯工具** 相同的步驟，但將這兩個參數切換為 [ **關閉**] 快照偵錯工具。
+
 建議您在所有應用程式上都已啟用快照偵錯工具，以簡化應用程式例外狀況的診斷。
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
 
-針對 Azure App Service，您可以在 Azure Resource Manager 範本中設定應用程式設定，以啟用快照偵錯工具和 Profiler。 您將包含應用程式設定的 config 資源新增為網站的子資源：
+針對 Azure App Service，您可以在 Azure Resource Manager 範本內設定應用程式設定，以啟用快照偵錯工具和 Profiler，請參閱下列範本程式碼片段：
 
 ```json
 {

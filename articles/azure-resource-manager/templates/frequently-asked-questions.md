@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902998"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561897"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM 範本的常見問題
 
@@ -154,7 +154,7 @@ ms.locfileid: "96902998"
 
 * **當我使用 if 時，我在範本的屬性中看到了變更。是否預期會出現這種「雜訊」？**
 
-  假設處於預覽狀態。 我們正在努力減少雜訊。 您可以在以下的 GitHub 存放庫中提交問題，以協助我們改進： https://aka.ms/WhatIfIssues
+  我們正在努力減少雜訊。 您可以在以下的 GitHub 存放庫中提交問題，以協助我們改進： https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>範本視覺化
 

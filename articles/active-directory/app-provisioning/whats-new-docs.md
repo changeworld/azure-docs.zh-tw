@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 應用程式布建的新功能
 description: Azure Active Directory 應用程式布建的新增和更新的檔。
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: fd9be81e8c23686695f8cdb49d873d5a663d69c4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 053d342c8fbdd506ac5d4ba0916a1ae9361e7189
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571754"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562203"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory 應用程式布建：新功能
 
 歡迎使用 Azure Active Directory 應用程式布建檔的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。 若要瞭解布建服務的新功能，請參閱 [Azure Active Directory 中的新功能](../fundamentals/whats-new.md)。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="updated-articles"></a>更新的文章
+- [已知問題：應用程式布建](known-issues.md)
+- [什麼是在 Azure AD 中自動佈建 SaaS 應用程式使用者？](user-provisioning.md)
+- [教學課程 - 在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應](customize-application-attributes.md)
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -52,7 +60,7 @@ ms.locfileid: "96571754"
 
 ### <a name="new-articles"></a>新文章
 
-- [Docs 有哪些新功能？](whats-new-docs.md)
+- [檔有哪些新功能？](whats-new-docs.md)
 
 ### <a name="updated-articles"></a>更新的文章
 - [隔離狀態中的應用程式布建](application-provisioning-quarantine-status.md)

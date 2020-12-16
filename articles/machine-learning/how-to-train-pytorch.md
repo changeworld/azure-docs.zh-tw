@@ -8,25 +8,25 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 09/28/2020
+ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b03395b9c615466a4d64d8760db8ac23a040d832
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ed368615395614bc0d3e9a6f06727da8c64d8486
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360933"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559636"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 PyTorch 模型
 
 在本文中，您將瞭解如何使用 Azure Machine Learning，以企業規模執行您的 [PyTorch](https://pytorch.org/) 訓練腳本。
 
-本文中的範例腳本可用來將雞和土耳其映射分類，以根據 PyTorch 的轉移學習 [教學](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)課程，建立深度學習神經網路 (DNN) 。 
+本文中的範例腳本可用來將雞和土耳其映射分類，以根據 PyTorch 的轉移學習 [教學](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)課程，建立深度學習神經網路 (DNN) 。 轉移學習是一種技術，可從解決一個問題到不同但相關的問題，來運用所獲得的知識。 這種定型流程的快捷方式，是要求比從頭訓練更少的資料、時間和計算資源。
 
 無論您是從頭開始訓練深度學習 PyTorch 模型，或是將現有的模型帶到雲端，您都可以使用 Azure Machine Learning，利用彈性的雲端計算資源來擴充開放原始碼訓練作業。 您可以使用 Azure Machine Learning 來建立、部署、版本和監視生產等級的模型。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在下列任一環境中執行此程式碼：
 
@@ -213,13 +213,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>執行期間發生的情況
 執行執行時，它會經歷下列階段：
 
-- **準備** ：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
+- **準備**：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
 
-- **調整** ：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
+- **調整**：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
 
 - 執行 **中：腳本** 資料夾中的所有腳本都會上傳至計算目標、裝載或複製資料存放區，並 `script` 執行。 Stdout 和 **./logs** 資料夾的輸出會串流處理至執行歷程記錄，並可用來監視執行。
 
-- **後續處理** ：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
+- **後續處理**：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
 
 ## <a name="register-or-download-a-model"></a>註冊或下載模型
 
@@ -285,7 +285,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 ### <a name="distributeddataparallel"></a>DistributedDataParallel
 如果您使用 PyTorch 的內建 [DistributedDataParallel](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html) 模組，該模組是使用您定型程式碼中的 **torch 散發** 套件所建立，您也可以透過 Azure ML 啟動分散式作業。
 
-若要使用 DistributedDataParallel 執行分散式 PyTorch 作業，請指定 ScriptRunConfig 函[PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)式 `distributed_job_config` 之參數的 PyTorchConfiguration。 若要使用 torch 的 NCCL 後端，請 `communication_backend='Nccl'` 在 PyTorchConfiguration 中指定。 下列程式碼將設定2個節點的分散式工作。 NCCL 後端是建議用來 PyTorch 分散式 GPU 訓練的後端。
+若要使用 DistributedDataParallel 執行分散式 PyTorch 作業，請指定 ScriptRunConfig 函[](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)式 `distributed_job_config` 之參數的 PyTorchConfiguration。 若要使用 torch 的 NCCL 後端，請 `communication_backend='Nccl'` 在 PyTorchConfiguration 中指定。 下列程式碼將設定2個節點的分散式工作。 NCCL 後端是建議用來 PyTorch 分散式 GPU 訓練的後端。
 
 針對透過 PyTorchConfiguration 設定的分散式 PyTorch 作業，Azure ML 會在計算目標的節點上設定下列環境變數：
 

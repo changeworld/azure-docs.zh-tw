@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511530"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562611"
 ---
 # <a name="security-best-practices"></a>安全性最佳做法
 
@@ -101,7 +101,7 @@ Windows 虛擬桌面中的所有使用者和系統管理員需要多重要素驗
 
 ### <a name="enable-screen-capture-protection-preview"></a>啟用螢幕擷取畫面保護 (預覽) 
 
-螢幕擷取畫面保護功能可防止在用戶端端點上捕獲機密資訊。 當您啟用此功能時，將會在螢幕擷取畫面和螢幕共用中自動封鎖或隱藏遠端內容。 它也會隱藏在可能持續捕捉您的螢幕內容的惡意軟體中。
+螢幕擷取畫面保護功能可防止在用戶端端點上捕獲機密資訊。 當您啟用此功能時，將會在螢幕擷取畫面和螢幕共用中自動封鎖或隱藏遠端內容。 它也會隱藏在可能持續捕捉您的螢幕內容的惡意軟體中。 在使用此功能時，建議您停用剪貼簿重新導向，以防止將遠端內容複寫到端點。
 
 您可以設定登錄機碼，在主機層級強制執行此原則。 若要啟用此原則，請開啟 PowerShell 並執行下列 Cmdlet 來設定 **fEnableScreenCaptureProtection** 登錄機碼：
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/14/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: e239d9da4a083b50460ef746f9c538aa3081a577
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027317"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562118"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的驗證方法？
 
@@ -26,9 +26,11 @@ ms.locfileid: "97027317"
 
 無密碼驗證方法（例如 Windows Hello、FIDO2 安全性金鑰和 Microsoft Authenticator 應用程式）提供最安全的登入事件。
 
-Azure AD Multi-Factor Authentication 只會在使用者登入時，使用密碼新增額外的安全性。 系統會提示使用者輸入其他形式的驗證，例如回應推播通知、輸入軟體或硬體權杖中的程式碼，或回應 SMS 或來電。
+Azure AD Multi-Factor Authentication (MFA) 在使用者登入時，只會使用密碼新增額外的安全性。 系統會提示使用者輸入其他形式的驗證，例如回應推播通知、輸入軟體或硬體權杖中的程式碼，或回應 SMS 或來電。
 
-若要簡化使用者的上線體驗，並同時註冊 MFA 和 SSPR，建議您 [啟用合併的安全性資訊註冊](howto-registration-mfa-sspr-combined.md)。 為了復原，建議您要求使用者註冊多個驗證方法。 當使用者在登入或 SSPR 期間無法使用一個方法時，他們可以選擇使用其他方法進行驗證。 如需詳細資訊，請參閱 [Azure AD 中的建立復原存取控制管理原則](concept-resilient-controls.md)。
+為了簡化使用者的上線體驗，並註冊 MFA 和自助式密碼重設 (SSPR) ，我們建議您 [啟用合併的安全性資訊註冊](howto-registration-mfa-sspr-combined.md)。 為了復原，建議您要求使用者註冊多個驗證方法。 當使用者在登入或 SSPR 期間無法使用一個方法時，他們可以選擇使用其他方法進行驗證。 如需詳細資訊，請參閱 [Azure AD 中的建立復原存取控制管理原則](concept-resilient-controls.md)。
+
+以下是我們所建立的 [影片](https://www.youtube.com/watch?v=LB2yj4HSptc&feature=youtu.be) ，可協助您選擇最佳的驗證方法，讓您的組織保持安全。
 
 ## <a name="authentication-method-strength-and-security"></a>驗證方法強度和安全性
 
@@ -47,7 +49,10 @@ Azure AD Multi-Factor Authentication 只會在使用者登入時，使用密碼�
 | 語音                          | 適中   | 適中    | 適中       |
 | 密碼                       | 低度      | 高      | 高         |
 
-如需安全性的詳細資訊，請參閱 [驗證弱點和攻擊媒介](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)。
+如需有關安全性的最新資訊，請參閱我們的 blog 文章：
+
+- [現在可以在電話傳輸上掛斷以進行驗證](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)
+- [驗證弱點和攻擊媒介](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)
 
 > [!TIP]
 > 為了彈性和使用性，我們建議您使用 Microsoft Authenticator 應用程式。 此驗證方法可提供最佳的使用者體驗和多種模式，例如無密碼、MFA 推播通知和 OATH 代碼。

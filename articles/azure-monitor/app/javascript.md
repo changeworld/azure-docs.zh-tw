@@ -4,12 +4,12 @@ description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f5f81fe5d3f7f7d24e5e6618ba3956b80451570c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0588a3eac4ced6cec1e7aea431c6555bbe8bff0a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921870"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559874"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -107,7 +107,7 @@ IE 8 (或較少的) 不支援報告 SDK 載入失敗。 這有助於減少程式
 
 可用的設定選項為
 
-| 名稱 | 類型 | 描述
+| 名稱 | 類型 | 說明
 |------|------|----------------
 | src | 字串 **[必要]** | 要從何處載入 SDK 的完整 URL。 此值可用於動態新增之腳本/標記的 "src" 屬性 &lt; &gt; 。 您可以使用公用 CDN 位置或您自己的私人託管位置。
 | NAME | 字串 *[選用]* | 已初始化之 SDK 的全域名稱，預設為 `appInsights` 。 因此 ```window.appInsights``` 將會是已初始化之實例的參考。 注意：如果您提供名稱值或先前的實例透過全域名稱 appInsightsSDK 指派 () 則此名稱值也會定義在全域命名空間中 ```window.appInsightsSDK=<name value>``` ，這是 SDK 初始化程式碼所需的值，以確保其初始化和更新正確的程式碼片段基本架構和 proxy 方法。

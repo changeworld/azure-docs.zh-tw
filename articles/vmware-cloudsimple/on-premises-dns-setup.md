@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7a2b2344bbb110cd4b35cc1f6428f61e48552b01
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424709"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563002"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>針對從內部部署工作站私人雲端 vCenter 存取設定 DNS 進行名稱解析
 
@@ -23,7 +23,7 @@ ms.locfileid: "92424709"
 
 1. 登入 [CloudSimple 入口網站](access-cloudsimple-portal.md)。
 
-2. 流覽至**資源**  >  **私**用雲端，然後選取您想要連線的私人雲端。
+2. 流覽至 **資源**  >  **私** 用雲端，然後選取您想要連線的私人雲端。
 
 3. 在私人雲端 [**基本資訊**] 的 [**摘要**] 頁面上，複製私人雲端 DNS 伺服器 IP 位址。
 
@@ -44,6 +44,9 @@ ms.locfileid: "92424709"
 要設定的特定檔案和參數，會根據您的個別 DNS 設定而有所不同。
 
 例如，針對預設系結伺服器設定，請在您的 DNS 伺服器上編輯/etc/named.conf 檔案，並新增下欄區域資訊。
+
+> [!NOTE]
+>本文包含詞彙從屬的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 ```
 zone "az.cloudsimple.io"

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 12/15/2020
 ms.author: b-juche
-ms.openlocfilehash: ffa24115e8c827729b98656d319589101395d0e5
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 2b567eba43cfec9af05ebea262b3f6bd61b00259
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092511"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562543"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp Files 的方案架構
 本文提供最佳作法的參考，可協助您瞭解使用 Azure NetApp Files 的解決方案架構。  
@@ -38,6 +38,9 @@ ms.locfileid: "97092511"
 * [使用 Azure NetApp Files 的 Azure 上的 Oracle 部署最佳做法指南](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Oracle VM 映射及其在 Microsoft Azure 上的部署：共用存放裝置設定選項](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [使用 Azure NetApp Files 搭配 Oracle Database 的優點](solutions-benefits-azure-netapp-files-oracle-database.md)
+
+### <a name="machine-learning"></a>Machine Learning
+*   [Cloudera Machine Learning](https://docs.cloudera.com/machine-learning/cloud/requirements-azure/topics/ml-requirements-azure.html)
 
 ## <a name="windows-apps-and-sql-server-solutions"></a>Windows 應用程式和 SQL Server 解決方案
 

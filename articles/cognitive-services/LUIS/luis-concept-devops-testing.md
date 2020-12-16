@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 3017d0dec5acd3494600c42bef410ed346fead1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025937"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561217"
 ---
 # <a name="testing-for-luis-devops"></a>測試 LUIS DevOps
 
@@ -123,7 +123,7 @@ LUIS 入口網站中提供的測試功能不需要已發佈的端點，而且是
 您也可以使用 NLU。DevOps 封裝，以在命令列執行批次測試。
 
 * 使用 NLU。DevOps [test 命令](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md) 可將測試檔中的測試提交至端點，並在檔案中捕捉實際的預測結果，與單元測試相同。
-* 使用 NLU。[效能測試模式](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode)中的 DevOps [compare 命令](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md)可測量應用程式的效能，您也可以將應用程式的效能與基準效能基準進行比較，例如，最新認可至主版或目前版本的結果。 在效能測試模式中，此 `compare` 命令會以 JSON 格式產生 NUnit 測試輸出和 [批次測試結果](./luis-glossary.md#batch-test) 。
+* 使用 NLU。[效能測試模式](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode)中的 DevOps [compare 命令](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md)可測量應用程式的效能，您也可以將應用程式的效能與基準效能基準進行比較，例如，從最新認可到主要或目前版本的結果。 在效能測試模式中，此 `compare` 命令會以 JSON 格式產生 NUnit 測試輸出和 [批次測試結果](./luis-glossary.md#batch-test) 。
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUIS 不具決定性的訓練和對測試的影響
 
@@ -133,7 +133,7 @@ LUIS 入口網站中提供的測試功能不需要已發佈的端點，而且是
 
 如果您想要針對基於測試目的而建立的 LUIS 應用程式版本停用不具決定性的定型，請使用 [版本設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) ，並將設定 `UseAllTrainingData` 為 `true` 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何 [執行 CI/CD 工作流程](luis-concept-devops-automation.md)
 * 瞭解如何 [使用 GitHub 執行 LUIS 的 DevOps](luis-how-to-devops-with-github.md)

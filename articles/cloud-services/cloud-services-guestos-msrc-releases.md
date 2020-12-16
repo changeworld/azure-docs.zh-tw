@@ -10,22 +10,78 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/20/2020
+ms.date: 12/15/2020
 ms.author: yohaddad
-ms.openlocfilehash: 9cc86167b9d92289aa2edb605d8037a1bf6a9dcb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: adaea28d105b72152e1af28cc9d79da19c548c2c
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338719"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561404"
 ---
 # <a name="azure-guest-os"></a>Azure 客體作業系統
 下表為適用於 Azure 客體作業系統的 Microsoft Security Response Center (MSRC) 更新。 請搜尋本文章以判斷特定更新是否適用於您使用的客體作業系統。 已引進更新的特定[系列][family-explain]會持續推出更新。
 
+## <a name="december-2020-guest-os"></a>2020年12月的來賓 OS
+>[!NOTE] 
+
+>我們目前正在將 12 月客體 OS 推展到已設定要自動更新的雲端服務 VM。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 下列修補程式會包含在 12 月客體 OS 中。 此清單會隨時變動。 
+
+| 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-12 |  [4592440]  |  最新的累積更新 | 6.26 | 2020年12月8日 |
+|  Rel 20-12 |  [4580325]  |  Flash 更新 | 3.92、4.85、5.50、6.26 | 2020年10月13日 |
+|  Rel 20-12 |  [4586768]  |  IE 累積更新 | 2.105、3.92、4.85 | 2020年11月10日 |
+|  Rel 20-12 |  [4593226]  |  最新的累積更新 | 5.50 | 2020年12月8日 |
+|  Rel 20-12 |  [4052623]  |  Defender | 5.50、6.26 | 2020年12月13日 |
+|  Rel 20-12 |  [4578952]  |  .NET Framework 3.5 安全性和品質匯總套件 | 2.105 | 2020年11月10日 |
+|  Rel 20-12 |  [4578955]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 2.105 | 2020年11月10日 |
+|  Rel 20-12 |  [4578953]  |  .NET Framework 3.5 安全性和品質匯總套件 | 4.85 | 2020年11月10日 |
+|  Rel 20-12 |  [4578956]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 4.85 | 2020年11月10日 |
+|  Rel 20-12 |  [4578950]  |  .NET Framework 3.5 安全性和品質匯總套件 | 3.92 | 2020年11月10日 |
+|  Rel 20-12 |  [4578954]  |  .NET Framework 4.5.2 安全性和品質匯總套件 | 3.92 | 2020年11月10日 |
+|  Rel 20-12 |  [4578966]  |  .NET Framework 3.5 和4.7.2 累計更新 | 6.26 | 2020年10月13日 |
+|  Rel 20-12 |  [4592471]  |  每月彙總 | 2.105 | 2020年12月8日 |
+|  Rel 20-12 |  [4592468]  |  每月彙總 | 3.92 | 2020年12月8日 |
+|  Rel 20-12 |  [4592484]  |  每月彙總 | 4.85 | 2020年12月8日 |
+|  Rel 20-12 |  [4566426]  |  服務堆疊更新 | 3.92 | 2020年7月14日 |
+|  Rel 20-12 |  [4566425]  |  服務堆疊更新 | 4.85 | 2020年7月14日 |
+|  Rel 20-12 OOB |  [4578013]  |  獨立安全性更新 | 4.85 | 2020年8月19日 |
+|  Rel 20-12 |  [4576750]  |  服務堆疊更新 | 5.50 | 2020年9月8日 |
+|  Rel 20-12 |  [4592510]  |  服務堆疊更新 | 2.105 | 2020年12月8日 |
+|  Rel 20-12 |  [4587735]  |  服務堆疊更新 | 6.26 | 2020年11月10日 |
+|  Rel 20-12 |  [4494175]  |  微碼 | 5.50 | 2020年9月1日 |
+|  Rel 20-12 |  [4494174]  |  微碼 | 6.26 | 2020年9月3日 |
+
+[4592440]: https://support.microsoft.com/kb/4592440
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4593226]: https://support.microsoft.com/kb/4593226
+[4052623]: https://support.microsoft.com/kb/4052623
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4592471]: https://support.microsoft.com/kb/4592471
+[4592468]: https://support.microsoft.com/kb/4592468
+[4592484]: https://support.microsoft.com/kb/4592484
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4592510]: https://support.microsoft.com/kb/4592510
+[4587735]: https://support.microsoft.com/kb/4587735
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
 ## <a name="november-2020-guest-os"></a>2020年11月的來賓 OS
 >[!NOTE] 
 
->我們目前正在將 11 月客體 OS 推展到已設定要自動更新的雲端服務 VM。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 下列修補程式會包含在 10 月客體 OS 中。 此清單會隨時變動。 
+>我們目前正在將 11 月客體 OS 推展到已設定要自動更新的雲端服務 VM。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 下列修補程式會包含在 11 月客體 OS 中。 此清單會隨時變動。 
 
 | 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |

@@ -10,24 +10,24 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: dce8893cac156ce2941652e32409357cb8ec3b1a
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96015310"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562594"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>搭配 Kubernetes 和 Helm 使用電腦視覺容器
 
 管理內部部署電腦視覺容器的選項之一，是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 來定義電腦視覺的容器映射，我們將建立 Kubernetes 套件。 此套件將會部署到內部部署的 Kubernetes 叢集。 最後，我們將探討如何測試已部署的服務。 如需在沒有 Kubernetes 協調流程的情況下執行 Docker 容器的詳細資訊，請參閱 [安裝和執行電腦視覺容器](computer-vision-how-to-install-containers.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 使用內部部署電腦視覺容器之前的必要條件如下：
 
 | 必要 | 目的 |
 |----------|---------|
-| Azure 帳戶 | 如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶][free-azure-account]，再開始進行。 |
+| Azure 帳戶 | 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][free-azure-account]。 |
 | Kubernetes CLI | 需要 [KUBERNETES CLI][kubernetes-cli] 才能管理容器登錄中的共用認證。 Helm 之前也需要 Kubernetes，也就是 Kubernetes 套件管理員。 |
 | Helm CLI | 安裝 [HELM CLI][helm-install]，這是用來安裝 Helm 圖表 (容器套件定義) 。 |
 | 電腦視覺資源 |若要使用此容器，您必須具備：<br><br>Azure **電腦視覺** 資源和相關聯的 API 金鑰（端點 URI）。 這兩個值都可在資源的 [總覽] 和 [金鑰] 頁面上取得，而且必須要有這些值才能啟動容器。<br><br>**{API_KEY}**： [ **金鑰** ] 頁面上兩個可用資源金鑰的其中一個<br><br>**{ENDPOINT_URI}**： **總覽** 頁面上提供的端點|
@@ -166,6 +166,9 @@ spec:
 ```
 
 在相同的 *範本* 資料夾中，複製下列 helper 函式並貼到中 `helpers.tpl` 。 `helpers.tpl` 定義有助於產生 Helm 範本的實用函數。
+
+> [!NOTE]
+> 本文包含詞彙從屬的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 ```yaml
 {{- define "rabbitmq.hostname" -}}

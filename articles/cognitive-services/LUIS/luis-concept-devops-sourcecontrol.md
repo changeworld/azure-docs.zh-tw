@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1f5c0c7a877964eeb480fa958c7e76eb5706122f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95535549"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561268"
 ---
 # <a name="devops-practices-for-luis"></a>適用於 LUIS 的 DevOps 實務
 
@@ -48,7 +48,7 @@ DevOps 成功所依據的關鍵因素之一是 [原始檔控制](/azure/devops/u
 
 若要以格式儲存 LUIS 應用程式 `.lu` ，並將它放在原始檔控制之下：
 
-- 任一： [Export the app version](./luis-how-to-manage-versions.md#other-actions) `.lu` 從[LUIS 入口網站](https://www.luis.ai/)匯出應用程式版本，並將其新增至您的原始檔控制存放庫
+- 任一： [](./luis-how-to-manage-versions.md#other-actions) `.lu` 從[LUIS 入口網站](https://www.luis.ai/)匯出應用程式版本，並將其新增至您的原始檔控制存放庫
 
 - 或者：使用文字編輯器來建立 `.lu` LUIS 應用程式的檔案，並將它新增至您的原始檔控制存放庫
 
@@ -62,7 +62,7 @@ DevOps 成功所依據的關鍵因素之一是 [原始檔控制](/azure/devops/u
 
 - 使用 LUIS 入口網站從原始檔控制匯入應用程式的 [ `.lu` 版本](./luis-how-to-manage-versions.md#import-version) ，以及 [定型](./luis-how-to-train.md) 和 [發佈](./luis-how-to-publish-app.md) 應用程式。
 
-- 在命令列或 CI/CD 工作流程中，使用[LUIS 的 Bot Framework 命令列介面](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS)，將[import](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport)應用程式的 `.lu` 版本從原始檔控制匯入 LUIS 應用程式，以及[定型](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun)和[發佈](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish)應用程式。
+- 在命令列或 CI/CD 工作流程中，使用[LUIS 的 Bot Framework 命令列介面](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS)，將[](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport)應用程式的 `.lu` 版本從原始檔控制匯入 LUIS 應用程式，以及[定型](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun)和[發佈](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish)應用程式。
 
 ### <a name="files-to-maintain-under-source-control"></a>原始檔控制下要維護的檔案
 
@@ -98,7 +98,7 @@ Git 之類的分散式版本控制系統，讓小組成員能夠透過與他人�
 
 若要支援與 LUIS 專案在分支中獨立運作：
 
-- **Master 分支有自己的 LUIS 應用程式。** 此應用程式代表您的方案目前的解決方案狀態，而其目前的使用中版本應該一律對應至 `.lu` 主要分支中的來源。 `.lu`此應用程式來源的所有更新都應經過審核和測試，以便將此應用程式部署到任何時間的組建環境，例如生產環境。 當的更新 `.lu` 從功能分支合併至 master 時，您應該在 LUIS 應用程式中建立新的版本，並增加 [版本號碼](#versioning)。
+- **主要分支有自己的 LUIS 應用程式。** 此應用程式代表您的方案目前的解決方案狀態，而其目前的使用中版本應該一律對應至 `.lu` 主要分支中的來源。 `.lu`此應用程式來源的所有更新都應經過審核和測試，以便將此應用程式部署到任何時間的組建環境，例如生產環境。 當的更新 `.lu` 從功能分支合併到主要時，您應該在 LUIS 應用程式中建立新的版本，並增加 [版本號碼](#versioning)。
 
 - **每個功能分支都必須使用自己的 LUIS 應用程式實例**。 開發人員在功能分支中使用此應用程式，而不會影響在其他分支中工作的開發人員。 此「開發分支」應用程式是一種工作複本，應該在刪除功能分支時予以刪除。
 
@@ -108,13 +108,13 @@ Git 之類的分散式版本控制系統，讓小組成員能夠透過與他人�
 
 開發人員可以透過下列方式，在 LUIS 應用程式上與其他分支分開處理更新：
 
-1. 根據您的分支策略（通常是主要或開發) ），從主要分支 (建立功能分支。
+1. 從主要分支建立功能分支 (取決於您的分支策略，通常是主要或開發) 。
 
 1. [在 LUIS 入口網站中建立新的 LUIS 應用程式](./luis-how-to-start-new-app.md) (「*開發分支應用程式*」 ) 僅支援功能分支中的工作。
 
    * 如果 `.lu` 您的方案來源已經存在於您的分支中，因為它是在專案的另一個分支中完成工作之後儲存的，請匯入檔案以建立您的開發分支 LUIS 應用程式 `.lu` 。
 
-   * 如果您要開始使用新的專案，您的存放庫中還沒有 `.lu` MASTER LUIS 應用程式的來源。 您將會 `.lu` 在完成功能分支工作時從入口網站匯出開發分支應用程式，並將其提交為 PR 的一部分，以建立檔案。
+   * 如果您要開始使用新的專案，您的存放庫中還不會有 `.lu` 主要 LUIS 應用程式的來源。 您將會 `.lu` 在完成功能分支工作時從入口網站匯出開發分支應用程式，並將其提交為 PR 的一部分，以建立檔案。
 
 1. 使用開發分支應用程式的作用中版本，以執行所需的變更。 建議您只在適用于所有功能分支工作的單一版本開發分支應用程式中工作。 如果您在開發分支應用程式中建立多個版本，請小心追蹤哪個版本包含您想要在提高 PR 時簽入的變更。
 
@@ -124,7 +124,7 @@ Git 之類的分散式版本控制系統，讓小組成員能夠透過與他人�
 
 1. 簽入您的更新，並邀請對等評論您的更新。 如果您使用的是 GitHub，則會引發 [提取要求](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)。
 
-1. 核准變更時，請將更新合併到主要分支中。 至此，您將使用 master 中更新的來建立 *主要* LUIS 應用程式的新 [版本](./luis-how-to-manage-versions.md) `.lu` 。 如需設定版本名稱的考慮，請參閱 [版本控制](#versioning) 。
+1. 核准變更時，請將更新合併到主要分支中。 至此，您將會使用 main 中更新 [](./luis-how-to-manage-versions.md)的來建立 *主要* LUIS 應用程式的新版本 `.lu` 。 如需設定版本名稱的考慮，請參閱 [版本控制](#versioning) 。
 
 1. 刪除功能分支時，最好先刪除您為功能分支工作所建立的 dev branch LUIS 應用程式。
 
@@ -146,11 +146,11 @@ Git 之類的分散式版本控制系統，讓小組成員能夠透過與他人�
 
 - [將小組成員新增為](./luis-how-to-collaborate.md) DEV branch LUIS 應用程式的參與者。
 
-- 當功能分支工作完成時，請從 [版本] 清單匯出開發分支 LUIS 應用程式的作用中版本 `.lu` 、將更新的檔案儲存在存放庫中， [versions list](./luis-how-to-manage-versions.md) `.lu` 然後簽入並 PR 變更。
+- 當功能分支工作完成時，請從 [版本] 清單匯出開發分支 LUIS 應用程式的作用中版本 `.lu` 、將更新的檔案儲存在存放庫中， [](./luis-how-to-manage-versions.md) `.lu` 然後簽入並 PR 變更。
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>使用重設基底或合併，將變更從某個分支合併到另一個分支
 
-您小組中其他工作的其他開發人員可能會在 `.lu` 您建立功能分支之後，對來源進行更新並將其合併到主要分支。 您可能會想要將其變更併入您的工作版本，然後才能繼續在您的功能分支內進行變更。 您可以使用與任何其他程式碼資產相同的方式來 [重設基底或合併至 master](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) ，以達成此目的。 由於 LUIS 應用程式的 LUDown 格式是人類看得懂的，因此它支援使用標準合併工具進行合併。
+您小組中其他工作的其他開發人員可能會在 `.lu` 您建立功能分支之後，對來源進行更新並將其合併到主要分支。 您可能會想要將其變更併入您的工作版本，然後才能繼續在您的功能分支內進行變更。 您可以藉由 [重設基底或合併至 main](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) ，方式與任何其他程式碼資產相同。 由於 LUIS 應用程式的 LUDown 格式是人類看得懂的，因此它支援使用標準合併工具進行合併。
 
 如果您要在功能分支中重定基底 LUIS 應用程式，請遵循下列秘訣：
 
@@ -162,7 +162,7 @@ Git 之類的分散式版本控制系統，讓小組成員能夠透過與他人�
 
 ### <a name="merge-prs"></a>Merge Pr
 
-在您的 PR 獲得核准之後，您就可以將變更合併至您的主要分支。 適用于 LUIS 應用程式的 LUDown 來源並無任何特殊考慮：它是人類可閱讀的，因此支援使用標準合併工具進行合併。 任何合併衝突的解決方式，都與其他原始檔相同。
+在您的 PR 獲得核准之後，您就可以將變更合併至主要分支。 適用于 LUIS 應用程式的 LUDown 來源並無任何特殊考慮：它是人類可閱讀的，因此支援使用標準合併工具進行合併。 任何合併衝突的解決方式，都與其他原始檔相同。
 
 合併 PR 之後，建議您清除：
 
@@ -173,7 +173,7 @@ Git 之類的分散式版本控制系統，讓小組成員能夠透過與他人�
 以與應用程式程式碼資產相同的方式，您應該撰寫單元測試以伴隨 LUIS 應用程式更新。 您應採用持續整合工作流程來進行測試：
 
 - Pr 合併前的 PR 中的更新
-- PR 經核准之後的主要分支 LUIS 應用程式，且變更已合併至 master。
+- PR 核准之後的主要分支 LUIS 應用程式，且變更已合併至主要分支。
 
 如需 LUIS DevOps 測試的詳細資訊，請參閱 [DevOps FOR LUIS 測試](luis-concept-devops-testing.md)。 如需如何執行工作流程的詳細資訊，請參閱 [LUIS DevOps 的自動化工作流程](luis-concept-devops-automation.md)。
 
@@ -185,7 +185,7 @@ LUDown 格式的 LUIS 應用程式是人類看得懂的，可支援 PR 中適用
 
 應用程式是由多個元件所組成，這些元件可能包含在 [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)、 [QnA Maker](https://www.qnamaker.ai/)、 [azure 語音服務](../speech-service/overview.md)等專案中執行的 bot。 若要達到鬆散結合的應用程式目標，請使用 [版本控制](/azure/devops/learn/git/what-is-version-control) ，讓應用程式的每個元件獨立設定版本，讓開發人員只需查看版本號碼，就可以偵測重大變更或更新。 如果您在自己的存放庫中維護 LUIS 應用程式，就可以更輕鬆地將它與其他元件分開。
 
-Master 分支的 LUIS 應用程式應該套用版本設定配置。 當您將 LUIS 應用程式的更新合併到 `.lu` master 時，接著會將該更新的來源匯入至主要分支的 LUIS 應用程式中的新版本。
+適用于主要分支的 LUIS 應用程式應套用版本控制配置。 當您將 LUIS 應用程式的更新合併到 `.lu` 主要分支時，您會接著將該更新的來源匯入至主要分支的 LUIS 應用程式中的新版本。
 
 建議您針對主要 LUIS 應用程式版本使用數值版本設定配置，例如：
 
@@ -199,7 +199,7 @@ Master 分支的 LUIS 應用程式應該套用版本設定配置。 當您將 LU
 * 次要版本：回溯相容的次要變更，例如重要的新訓練
 * 組建：沒有任何功能變更，只是不同的組建。
 
-一旦您決定了主要 LUIS 應用程式最新版本的版本號碼之後，您必須建立並測試新的應用程式版本，並將它發佈至可在不同組建環境中使用的端點，例如品質保證或生產環境。 強烈建議您在持續整合 (CI) 工作流程中自動化上述所有步驟。
+一旦您決定了主要 LUIS 應用程式最新版本的版本號碼，您必須建立並測試新的應用程式版本，並將其發佈至可在不同組建環境中使用的端點，例如品質保證或生產環境。 強烈建議您在持續整合 (CI) 工作流程中自動化上述所有步驟。
 
 請參閱：
 - [自動化工作流程](luis-concept-devops-automation.md) ，以取得如何執行 CI 工作流程來測試和發行 LUIS 應用程式的詳細資料。
@@ -207,9 +207,9 @@ Master 分支的 LUIS 應用程式應該套用版本設定配置。 當您將 LU
 
 ### <a name="versioning-the-feature-branch-luis-app"></a>版本設定「feature 分支」 LUIS 應用程式
 
-當您使用的「開發分支」 LUIS 應用程式已建立為支援功能分支中的工作時，您將會在工作完成時匯出您的應用程式，而您將會在 PR 中包含更新的 `'lu` 。 在將 PR 合併到 master 之後，您的存放庫中的分支和「dev 分支」 LUIS 應用程式應該刪除。 因為此應用程式只是為了支援功能分支中的工作，所以沒有您需要在此應用程式中套用的特定版本設定配置。
+當您使用的「開發分支」 LUIS 應用程式已建立為支援功能分支中的工作時，您將會在工作完成時匯出您的應用程式，而您將會在 PR 中包含更新的 `'lu` 。 在將 PR 合併到 main 之後，您的存放庫中的分支和「dev 分支」 LUIS 應用程式應該刪除。 因為此應用程式只是為了支援功能分支中的工作，所以沒有您需要在此應用程式中套用的特定版本設定配置。
 
-當您的 PR 中的變更合併到 master 時，也就是應該套用版本控制時，讓 master 的所有更新都能獨立進行版本設定。
+當您的 PR 中的變更合併到主要時（也就是應該套用版本控制時），因此主要的所有更新會獨立建立版本。
 
 ## <a name="next-steps"></a>後續步驟
 

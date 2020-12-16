@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: duau
-ms.openlocfilehash: ae63173f683c97d71f22e0dd4d438be0a999bc08
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: e9354dade695367ed058506533603318c3cfc288
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511190"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561693"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -159,7 +159,7 @@ Azure 國家雲端彼此隔離，也與全球商業 Azure 隔離。 某個 Azure
 | **位置** | **位址** | **本地 Azure 區域**| **ER Direct** | **服務提供者** |
 | --- | --- | --- | --- | --- |
 | **亞特蘭大** | [Equinix AT1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at1/) | n/a | 10G、100G | Equinix |
-| **芝加哥** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | n/a | 10G、100G | AT&T NetBond、Equinix、Level 3 Communications、Verizon |
+| **芝加哥** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | n/a | 10G、100G | 在&T NetBond、英屬電信、Equinix、Level 3 通訊、Verizon |
 | **達拉斯** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | n/a | 10G、100G | Equinix、Megaport、Verizon |
 | **紐約** | [Equinix NY5](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny5/) | n/a | 10G、100G | Equinix、CenturyLink Cloud Connect、Verizon |
 | **Phoenix** | [CyrusOne Chandler](https://cyrusone.com/locations/arizona/phoenix-arizona-chandler/) | US Gov 亞利桑那州 | 10G、100G | AT&T NetBond、CenturyLink Cloud Connect、Megaport |

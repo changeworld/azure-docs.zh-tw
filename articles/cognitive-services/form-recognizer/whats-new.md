@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852841"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563155"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -23,6 +23,8 @@ ms.locfileid: "96852841"
 ## <a name="november-2020"></a>2020 年 11 月
 
 ### <a name="new-features"></a>新功能
+
+**表單辨識器2.1 版公開 preview 2 現已推出。** 2.1-preview. 2 已發行，包含下列功能： 
 
 - **新的預** 建發票模型-新的預建發票模型可讓客戶以各種不同的格式取得發票，並傳回結構化資料，以自動化發票處理。 它結合了強大的光學字元辨識 (OCR) 功能，以及瞭解深度學習模型，以英文的發票來解壓縮重要資訊。 它會將文字、資料表和資訊（例如客戶、供應商、發票識別碼、發票到期日、總計、到期日、稅額、出貨至帳單等等）解壓縮。
 
@@ -37,7 +39,7 @@ ms.locfileid: "96852841"
  
   > [深入瞭解版面配置解壓縮](concept-layout.md)
 
-- **用戶端程式庫更新** -適用于 .Net、Python、JAVA 和 JavaScript 的最新版 [用戶端程式庫](quickstarts/client-library.md) 支援表單辨識器 2.1 API。
+- **用戶端程式庫更新** -適用于 .Net、Python、JAVA 和 JavaScript 的最新 [用戶端程式庫](quickstarts/client-library.md) 版本支援表單辨識器 2.1 API。
 - **支援的新語言：日文** -現在支援下列新語言：適用于 `AnalyzeLayout` 和 `AnalyzeCustomForm` ：日文 (`ja`) 。 [語言支援](language-support.md)
 - **文字行樣式指示 (手寫/其他)  (僅限拉丁語言)** 表單辨識器現在 `appearance` 會輸出物件，以分類每個文字行是否為手寫樣式，以及信賴分數。 這項功能僅支援拉丁語言。
 - **品質改進** -解壓縮改進，包括單一數位的解壓縮改進。
@@ -59,7 +61,7 @@ ms.locfileid: "96852841"
 
 - **REST API 參考可供使用** -請參閱 [2.1-preview。1參考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
 - **除了英文以外，還支援的新語言**，現在支援下列 [語言](language-support.md) ：適用于 `Layout` 和 `Train Custom Model` ：英文 (`en`) 、中文 (簡體)  () `zh-Hans` 、荷蘭文 (`nl`) 、法文 (`fr`) 、德文 (`de`) 、義大利文 () 、葡萄牙文 () `it` `pt` 和西班牙 `es` 文 () 。
-- **核取方塊/選取標記偵測** -表單辨識器支援偵測和解壓縮選取標記，例如核取方塊和選項按鈕。 選取標記會在中解壓縮 `Layout` ，您現在也可以使用標籤來標記和定型， `Train Custom Model`  -  _Train with Labels_ 以將選取專案標記的索引鍵值組解壓縮。 
+- **核取方塊/選取標記偵測** -表單辨識器支援偵測和解壓縮選取標記，例如核取方塊和選項按鈕。 選取標記會在中解壓縮 `Layout` ，您現在也可以使用標籤來標記和定型， `Train Custom Model`  -  以將選取專案標記的索引鍵值組解壓縮。 
 - **模型撰寫** -允許以單一模型識別碼撰寫和呼叫多個模型。 提交檔以使用撰寫的模型識別碼進行分析時，會先執行分類步驟，將其路由至正確的自訂模型。 模型撰寫適用于 `Train Custom Model`  -  _使用標籤進行定型_。
 - **模型名稱** -將易記名稱新增至自訂模型，以方便管理及追蹤。
 - **[新的智慧卡預先建立的模型](concept-business-cards.md)** ，用來解壓縮英文、語言名片的一般欄位。

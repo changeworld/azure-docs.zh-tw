@@ -1,29 +1,26 @@
 ---
-title: '範本部署假設 (預覽) '
+title: 範本部署假設
 description: 在部署 Azure Resource Manager 範本之前，請先判斷您的資源會發生哪些變更。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87810066"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563087"
 ---
-# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 範本部署假設作業 (預覽) 
+# <a name="arm-template-deployment-what-if-operation"></a>ARM 範本部署 what-if 作業 \(部分機器翻譯\)
 
-在 (ARM 範本) 部署 Azure Resource Manager 範本之前，您可以預覽將會發生的變更。 Azure Resource Manager 提供「假設」作業，讓您在部署範本時查看資源的變更方式。 假設作業不會對現有的資源進行任何變更。 相反地，它會在指定的範本部署時預測變更。
-
-> [!NOTE]
-> 假設作業目前處於預覽狀態。 在預覽版本中，結果有時可能會顯示資源將會變更，但實際上不會有任何變更。 我們正在努力減少這些問題，但我們需要您的協助。 請在中報告這些問題 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 。
+在 (ARM 範本) 部署 Azure Resource Manager 範本之前，您可以預覽將會發生的變更。 Azure Resource Manager 提供「假設」作業，讓您在部署範本時查看資源的變更方式。 what-if 作業不會對現有的資源進行任何變更。 相反地，其會在部署指定的範本時預測變更。
 
 您可以搭配 Azure PowerShell、Azure CLI 或 REST API 作業來使用「假設」作業。 資源群組、訂用帳戶、管理群組和租使用者層級部署的支援假設。
 
 ## <a name="install-azure-powershell-module"></a>安裝 Azure PowerShell 模組
 
-若要在 PowerShell 中使用假設，您必須有 **Az 模組的4.2 版或更新**版本。
+若要在 PowerShell 中使用假設，您必須有 **Az 模組的4.2 版或更新** 版本。
 
 但是，在安裝所需的模組之前，請確定您已 PowerShell Core (6.x 或 7.x) 。 如果您有 PowerShell 5.x 或更早版本，請 [更新您的 powershell 版本](/powershell/scripting/install/installing-powershell)。 您無法在 PowerShell 5.x 或更早版本上安裝所需的模組。
 
@@ -37,34 +34,9 @@ Install-Module -Name Az -Force
 
 如需安裝模組的詳細資訊，請參閱 [安裝 Azure PowerShell](/powershell/azure/install-az-ps)。
 
-### <a name="uninstall-alpha-version"></a>卸載 Alpha 版本
-
-如果您先前已安裝「假設」模組的 Alpha 版本，請卸載該模組。 Alpha 版本僅適用于註冊早期預覽的使用者。 如果您未安裝該預覽版，可以略過本節。
-
-1. 以系統管理員身分執行 PowerShell
-1. 檢查您已安裝的 Az .Resources 模組版本。
-
-   ```powershell
-   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
-   ```
-
-1. 如果您的版本號碼是以 2.x **-Alpha**格式安裝的版本，請將該版本卸載。
-
-   ```powershell
-   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
-   ```
-
-1. 取消註冊您用來安裝預覽的假設存放庫。
-
-   ```powershell
-   Unregister-PSRepository -Name WhatIfRepository
-   ```
-
-您已經準備好使用假設。
-
 ## <a name="install-azure-cli-module"></a>安裝 Azure CLI 模組
 
-若要在 Azure CLI 中使用 if if，您必須擁有 Azure CLI 2.5.0 或更新版本。 如有需要，請 [安裝最新版本的 Azure CLI](/cli/azure/install-azure-cli)。
+若要在 Azure CLI 中使用 what-if，則必須具有 Azure CLI 2.5.0 或更新版本。 如有需要，請[安裝 Azure CLI 的最新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="see-results"></a>查看結果
 
@@ -129,8 +101,8 @@ Resource changes: 1 to modify.
 
 * [az deployment group](/cli/azure/deployment/group#az-deployment-group-what-if) for 資源群組部署的假設
 * [az deployment sub if](/cli/azure/deployment/sub#az-deployment-sub-what-if) for 訂用帳戶層級部署
-* [az 部署 mg](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) 適用于管理群組部署的結果
-* [az deployment tenant 假設](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) 租使用者部署
+* [az 部署 mg](/cli/azure/deployment/mg#az-deployment-mg-what-if) 適用于管理群組部署的結果
+* [az deployment tenant 假設](/cli/azure/deployment/tenant#az-deployment-tenant-what-if) 租使用者部署
 
 您可以使用 `--confirm-with-what-if` 參數 (或其簡短形式 `-c`) 來預覽變更，並提示您繼續進行部署。 將此參數新增至：
 
@@ -160,19 +132,19 @@ Resource changes: 1 to modify.
 
 - **建立**：資源目前不存在，但已在範本中定義。 將會建立資源。
 
-- **Delete**：只有在使用 [完整模式](deployment-modes.md) 進行部署時，才適用此變更類型。 資源存在，但未在範本中定義。 使用完整模式時，將會刪除資源。 只有 [支援完整模式刪除](complete-mode-deletion.md) 的資源會包含在此變更類型中。
+- **Delete**：只有在使用 [完整模式](deployment-modes.md) 進行部署時，才適用此變更類型。 資源存在，但未在範本中定義。 將使用「完整模式」刪除資源。 只有 [支援完整模式刪除](complete-mode-deletion.md) 的資源會包含在此變更類型中。
 
-- **略**過：資源存在，但未在範本中定義。 資源將不會部署或修改。
+- **略** 過：資源存在，但未在範本中定義。 將不會部署或修改資源。
 
-- **NoChange**：資源存在，而且是在範本中定義。 資源將會重新部署，但不會變更資源的屬性。 當 [ResultFormat](#result-format) 設定為 `FullResourcePayloads` （這是預設值）時，就會傳回此變更類型。
+- **NoChange**：資源存在，而且是在範本中定義。 資源將會重新部署，但資源的屬性不會變更。 當 [ResultFormat](#result-format) 設定為 `FullResourcePayloads` （這是預設值）時，就會傳回此變更類型。
 
-- **Modify**：資源存在，而且是在範本中定義。 資源將會重新部署，而資源的屬性將會變更。 當 [ResultFormat](#result-format) 設定為 `FullResourcePayloads` （這是預設值）時，就會傳回此變更類型。
+- **Modify**：資源存在，而且是在範本中定義。 資源將會重新部署，且資源的屬性將會變更。 當 [ResultFormat](#result-format) 設定為 `FullResourcePayloads` （這是預設值）時，就會傳回此變更類型。
 
-- **部署**：資源存在，而且是在範本中定義。 資源將會重新部署。 資源的屬性不一定會變更。 當作業沒有足夠的資訊來判斷是否有任何屬性變更時，會傳回此變更類型。 當 [ResultFormat](#result-format) 設定為時，您只會看到此情況 `ResourceIdOnly` 。
+- **部署**：資源存在，而且是在範本中定義。 將會重新部署資源。 資源的屬性不一定會變更。 當作業沒有足夠資訊可判斷是否有任何屬性變更時，作業會傳回此變更類型。 當 [ResultFormat](#result-format) 設定為時，您只會看到此情況 `ResourceIdOnly` 。
 
 ## <a name="result-format"></a>結果格式
 
-您可以控制針對預測的變更所傳回的詳細資料層級。 您有兩個選項：
+您可以控制針對預測的變更所傳回的詳細資料層級。 您有兩個選擇：
 
 * **FullResourcePayloads** -傳回將變更的資源清單，以及即將變更之屬性的詳細資料
 * **ResourceIdOnly** -傳回將變更的資源清單
@@ -282,7 +254,7 @@ az deployment group what-if \
 
 ---
 
-假設輸出顯示如下：
+what-if 輸出會與以下內容相似：
 
 ![Resource Manager 範本部署假設作業輸出](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -354,7 +326,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 假設作業支援使用 [部署模式](deployment-modes.md)。 當設定為 [完成] 模式時，會刪除不在範本中的資源。 下列範例會部署未在完整模式中 [定義任何資源的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) 。
 
-若要在部署範本之前預覽變更，請使用 [確認切換參數] 與 [部署] 命令。 如果變更如您所預期，請確認您想要完成部署。
+若要在部署範本之前先預覽變更，請在部署命令中使用 confirm switch 參數。 如果變更如您所預期，即可認可完成部署。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -415,15 +387,15 @@ Are you sure you want to execute the deployment?
 
 您可以透過 Azure Sdk 使用「假設」作業。
 
-* 若為 Python，請使用 [假設](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)。
+* 若為 Python，請使用 [假設](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)。
 
-* 針對 JAVA，請使用 [DeploymentWhatIf 類別](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable)。
+* 針對 JAVA，請使用 [DeploymentWhatIf 類別](/java/api/com.microsoft.azure.management.resources.deploymentwhatif)。
 
-* 針對 .NET，請使用 [DeploymentWhatIf 類別](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet)。
+* 針對 .NET，請使用 [DeploymentWhatIf 類別](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果您注意到您的預覽版本有不正確的結果，請在中報告問題 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 。
+- 如果您注意到「假設」作業有不正確的結果，請在中報告問題 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 。
 - 若要使用 Azure PowerShell 部署範本，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。
 - 若要使用 Azure CLI 部署範本，請參閱 [使用 ARM 範本部署資源和 Azure CLI](deploy-cli.md)。
 - 若要使用 REST 部署範本，請參閱 [使用 ARM 範本部署資源和 Resource Manager REST API](deploy-rest.md)。

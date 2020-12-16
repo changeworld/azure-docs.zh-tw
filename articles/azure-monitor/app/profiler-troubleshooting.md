@@ -1,17 +1,17 @@
 ---
 title: 針對 Azure 應用程式 Insights Profiler 的問題進行疑難排解
-description: 本文提供疑難排解步驟和資訊，可為無法啟用或使用 Application Insights Profiler 的開發人員提供協助。
+description: 本文提供疑難排解步驟和資訊，以協助開發人員啟用和使用 Application Insights Profiler。
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 47a452377c8fed9808957f45fcc4ec686fcef87d
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995347"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561030"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>針對啟用或檢視 Application Insights Profiler 的問題進行疑難排解
 
@@ -22,9 +22,12 @@ ms.locfileid: "95995347"
 
 ### <a name="profiles-are-uploaded-only-if-there-are-requests-to-your-application-while-profiler-is-running"></a>如果在 Profiler 執行時有對應用程式提出的要求，才會上傳設定檔
 
-Azure Application Insights Profiler 每小時會收集一次分析資料，每次兩分鐘。 此外，當您選取 [設定 Application Insights Profiler] 窗格中的 [立即分析] 按鈕時，也會收集資料。 不過，只有在分析資料可附加至 Profiler 執行期間所提出的要求時，才會上傳該資料。 
+Azure 應用程式 Insights Profiler 會每小時收集兩分鐘的資料。 當您在 [**設定 Application Insights Profiler** ] 窗格中選取 [**立即設定檔**] 按鈕時，也可以收集資料。
 
-Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights 資源。 您可以使用這些事件來查看 Profiler 的執行情形。 如果您認為 Profiler 應該正在執行並擷取追蹤，但 [效能] 窗格中並未顯示這些追蹤，您可以查看 Profiler 的執行情形：
+> [!NOTE]
+> 只有當分析資料可以附加至 Profiler 執行時所發生的要求時，才會上傳程式碼剖析資料。 
+
+Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights 資源。 您可以使用這些事件來查看 Profiler 的執行方式：
 
 1. 搜尋 Profiler 傳送給 Application Insights 資源的追蹤訊息和自訂事件。 您可以使用此搜尋字串來尋找相關資料：
 
@@ -35,28 +38,30 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
     
    * 在左側，應用程式在 Profiler 執行時並未接收要求。 訊息指出上傳已因沒有活動而取消。 
 
-   * 在右側，Profiler 已啟動，並在偵測到於 Profiler 執行期間有要求提出時傳送自訂事件。 如果顯示 ServiceProfilerSample 自訂事件，表示 Profiler 已將追蹤附加至要求，而您可以在 [Application Insights 效能] 窗格中檢視追蹤。
+   * 在右側，Profiler 已啟動，並在偵測到於 Profiler 執行期間有要求提出時傳送自訂事件。 如果 `ServiceProfilerSample` 顯示自訂事件，則表示已在 **Application Insights [效能** ] 窗格中捕捉到設定檔，且其可供使用。
 
-     若未顯示遙測資料，表示 Profiler 並未執行。 若要進行疑難排解，請參閱本文後續與您的應用程式類型有關的疑難排解章節。  
+     如果沒有顯示任何記錄，Profiler 就不會執行。 若要進行疑難排解，請參閱本文後續與您的應用程式類型有關的疑難排解章節。  
 
      ![搜尋 Profiler 遙測資料][profiler-search-telemetry]
-
-1. 如果在 Profiler 執行期間有要求，請確定這些要求會由已啟用 Profiler 的應用程式元件處理。 雖然應用程式有時候會由多個元件組成，但其中只有部分元件會啟用 Profiler。 [設定 Application Insights Profiler] 窗格會顯示已上傳追蹤的元件。
 
 ### <a name="other-things-to-check"></a>需要檢查的其他事項
 * 確定應用程式執行於 .NET Framework 4.6 上。
 * 如果 Web 應用程式是 ASP.NET Core 應用程式，則必須至少執行 ASP.NET Core 2.0。
 * 如果您嘗試檢視的資料已存在好幾週，請試著限縮時間篩選條件，然後再試一次。 追蹤會在七天後刪除。
-* 確定 Proxy 或防火牆未封鎖對 https://gateway.azureserviceprofiler.net 的存取。
+* 請確定 proxy 或防火牆未封鎖存取 https://gateway.azureserviceprofiler.net 。
 * 免費或共用的 app service 方案不支援 Profiler。 如果您使用的是其中一個方案，請嘗試相應增加至其中一個基本方案，分析工具應該會開始運作。
 
 ### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>平行執行緒重複計算
 
 在某些情況下，堆疊檢視器中的總時間計量會比要求的持續時間還長。
 
-如果要求有兩個或更多個關聯的執行緒，且這些執行緒以平行方式運作，就可能發生這種情形。 在此情況下，執行緒的總時間就會超出經過時間。 一個執行緒可能會等候另一個執行緒完成。 檢視器會嘗試偵測這種情況，並省略不重要的等候。 此時，它會寧可顯示過多資訊，以免省略可能具重要性的資訊。
+當有兩個或多個平行線程與要求相關聯時，就可能發生這種情況。 在此情況下，執行緒的總時間就會超出經過時間。
 
-當您在追蹤資料內看到平行執行緒時，請判斷正在等候的執行緒，以便確定要求的關鍵路徑。 通常，快速進入等候狀態的執行緒就只是在等候其他執行緒。 請專注在其他執行緒上，並忽略等候中執行緒的時間。
+一個執行緒可能會等候另一個執行緒完成。 檢視器會嘗試偵測這種情況，並省略不重要的等候。 此時，它會寧可顯示過多資訊，以免省略可能具重要性的資訊。
+
+當您在追蹤中看到平行線程時，請判斷正在等候的執行緒，讓您可以識別要求的最忙碌路徑。
+
+通常，快速進入等候狀態的執行緒就只是在等候其他執行緒。 請專注在其他執行緒上，並忽略等候中執行緒的時間。
 
 ### <a name="error-report-in-the-profile-viewer"></a>設定檔檢視器中的錯誤報表
 您可以在入口網站中提交支援票證。 請務必包含錯誤訊息中的相互關聯識別碼。
@@ -86,7 +91,27 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
       ![螢幕擷取畫面：顯示 [連續 WebJob 詳細資料] 窗格。][profiler-webjob-log]
 
-如果您無法找出分析工具無法正常運作的原因，您可以下載記錄，並將它傳送給我們的小組以取得協助 serviceprofilerhelp@microsoft.com 。 
+如果 Profiler 無法正常運作，您可以下載記錄，並將它傳送給我們的小組以取得協助 serviceprofilerhelp@microsoft.com 。
+
+### <a name="check-the-diagnostic-services-site-extension-status-page"></a>檢查診斷服務網站延伸模組的狀態頁面
+如果已透過入口網站中的 [ [Application Insights] 窗格](profiler.md) 啟用 Profiler，則是由診斷服務網站延伸模組啟用。
+
+您可以前往下列 url 來檢查此延伸模組的 [狀態] 頁面： `https://{site-name}.scm.azurewebsites.net/DiagnosticServices`
+
+> [!NOTE]
+> 狀態頁面連結的網域會依雲端而有所不同。
+此網域將與 App Service 的 Kudu 管理網站相同。
+
+此狀態頁面會顯示 Profiler 和 Snapshot Collector 代理程式的安裝狀態。 如果發生未預期的錯誤，則會顯示並顯示如何修正此問題。
+
+您可以使用 App Service 的 Kudu 管理網站取得此狀態頁面的基底 url：
+1. 在 Azure 入口網站中開啟您的 App Service 應用程式。
+2. 選取 [ **Advanced Tools**] 或 [搜尋 **Kudu**]。
+3. 選取 [執行]。
+4. 當您在 Kudu 管理網站上時，請在 URL 中 **附加下列各項， `/DiagnosticServices` 然後按 enter 鍵**。
+ 它會以下面的方式結束： `https://<kudu-url>/DiagnosticServices`
+
+它會顯示類似如下的狀態頁面： [ ![ 診斷服務狀態] 頁面](./media/diagnostic-services-site-extension/status-page.png)
     
 ### <a name="manual-installation"></a>手動安裝
 
@@ -107,7 +132,7 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
 ### <a name="too-many-active-profiling-sessions"></a>太多個使用中分析工作階段
 
-目前，您最多可以在於相同服務方案中執行的 4 個 Azure Web 應用程式及部署位置上啟用 Profiler。 如果您在一個 App Service 方案中執行四個以上的 Web 應用程式，Profiler 可能會擲回 *Microsoft.ServiceProfiler.Exceptions.TooManyETWSessionException*。 Profiler 會針對每個 Web 應用程式個別執行，並嘗試為每個應用程式啟動 Windows 事件追蹤 (ETW) 工作階段。 但一次可執行的 ETW 工作階段數目是有限的。 如果 Profiler WebJob 回報有太多作用中的分析工作階段，請將一些 Web 應用程式移至不同的服務方案。
+您最多可以在相同服務方案中執行的四個 Web Apps 上啟用 Profiler。 如果您有四個以上的，Profiler 可能會擲回 *ServiceProfiler。 TooManyETWSessionException*。 若要解決此問題，請將一些 web 應用程式移至不同的服務方案。
 
 ### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>部署錯誤：目錄尚有資料 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
 
@@ -115,7 +140,7 @@ Profiler 會將追蹤訊息和自訂事件寫入至您的 Application Insights �
 
 *目錄不是空的：主要 \\ \\ 網站 \\ wwwroot \\ App_Data \\ 作業」*
 
-如果您從指令碼或從 Azure DevOps 部署管線執行 Web Deploy，就會發生此錯誤。 解決方法是將下列額外的部署參數新增至 Web Deploy 工作：
+如果您從腳本或從 Azure Pipelines 執行 Web Deploy，就會發生這個錯誤。 解決方法是將下列額外的部署參數新增至 Web Deploy 工作：
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'
@@ -131,8 +156,8 @@ Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以
 
 >**已修正在 WAD for 雲端服務中隨附的程式碼剖析工具中的 bug。** 適用于雲端服務的最新版 WAD (1.12.2.0) 適用于所有最近的 App Insights SDK 版本。 雲端服務主機會自動升級 WAD，但不會立即升級。 若要強制進行升級，您可以重新部署服務或重新開機節點。
 
-若要查看 Azure 診斷是否已正確設定 Profiler，請執行下列三項作業： 
-1. 首先，請確認部署的 Azure 診斷組態內容是否符合您的預期。 
+若要查看 Azure 診斷是否已正確設定 Profiler，請遵循下列步驟： 
+1. 確認部署的 Azure 診斷設定內容是您預期的。 
 
 1. 其次，請確定 Azure 診斷在 Profiler 命令列上傳遞了正確的 iKey。 
 
@@ -170,7 +195,7 @@ Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以
 
 1. 使用上述 *config.js* 檔案中找到的路徑，檢查分析工具記錄檔，稱為 **BootstrapN .log**。 其中會顯示偵錯資訊，指出 Profiler 所使用的設定。 此外也會顯示來自 Profiler 的狀態和錯誤訊息。  
 
-    針對 Vm，檔案通常位於：
+    針對 Vm，檔案如下：
     ```
     C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
     ```
@@ -187,7 +212,9 @@ Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>編輯網路 Proxy 或防火牆規則
 
-如果您的應用程式透過 proxy 或防火牆連線到網際網路，您可能需要編輯規則，以允許您的應用程式與 Application Insights Profiler 服務進行通訊。 Application Insights Profiler 所使用的 Ip 會包含在 Azure 監視器服務標記中。
+如果您的應用程式透過 proxy 或防火牆連接到網際網路，您可能需要更新規則，以與分析工具服務進行通訊。
+
+Application Insights Profiler 所使用的 Ip 會包含在 Azure 監視器服務標記中。 如需詳細資訊，請參閱 [服務標記檔](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

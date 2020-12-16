@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 9e2210cdbcc2916723c8c2e2ed1ef514d427c9d6
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c304354f378708c43c25ef8b92b7b80b37ac03af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032164"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563104"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的 Azure 網路監視解決方案
 
@@ -107,19 +107,31 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>從 Azure 閘道分析解決方案遷移至 Azure 監視器活頁簿
 
 > [!NOTE]
-> Azure 應用程式閘道分析解決方案已過期，而取用分析的建議方式是透過應用程式閘道資源 Azure 監視器網路深入解析所公開的活頁簿。
+> Azure 監視器 Network Insights 活頁簿是針對應用程式閘道資源存取計量和 log analytics 的建議解決方案。
 
-* 如果已啟用診斷設定，以將記錄儲存到 Log Analytics 工作區，Azure 監視器 Network insights 活頁簿可以使用相同位置的資料。 不需要新的設定。
+1. 確定 [已啟用診斷設定](#enable-azure-application-gateway-diagnostics-in-the-portal) ，以將記錄儲存至 Log Analytics 工作區。 如果已設定，Azure 監視器 Network Insights 活頁簿將能夠取用相同位置的資料，而且不需要進行任何其他變更。
 
-* 已啟用從點診斷設定開始，活頁簿中所有過去的資料都已可供使用。 不需要進行資料傳輸。
+> [!NOTE]
+> 所有過去的資料都已在活頁簿中，從最初啟用的點診斷設定開始使用。 不需要進行資料傳輸。
 
-* 切換至活頁簿時，不需要使用任何活動切換。 分析解決方案和網路深入解析活頁簿都可以平行運作。
+2. 存取應用程式閘道資源的 [預設深入](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) 解析活頁簿。 應用程式閘道分析解決方案所支援的所有現有見解都將存在於活頁簿中。 您可以根據度量 & 記錄資料來新增自訂 [視覺效果](../platform/workbooks-overview.md#visualizations) ，以擴充此項。
 
-* Azure 監視器活頁簿沒有相關聯的額外成本。 Log Analytics 工作區將繼續依使用量計費。
-
-* 若要從您的工作區清除 Azure 閘道分析解決方案，您可以從解決方案資源頁面刪除解決方案。
+3. 當您可以看到所有計量和記錄深入解析之後，若要從您的工作區清除 Azure 閘道分析解決方案，您可以從解決方案資源頁面刪除解決方案。
 
 [![Azure 應用程式閘道分析解決方案的 [刪除] 選項的螢幕擷取畫面。](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
+
+### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Azure 監視器 Network Insights 活頁簿的新功能
+
+> [!NOTE]
+> Azure 監視器 Insights 活頁簿沒有相關聯的額外成本。 Log Analytics 工作區將繼續依使用量計費。
+
+網路深入解析活頁簿可讓您利用 Azure 監視器與 Log Analytics 的最新功能，包括：
+
+* 集中式主控台，可用於監視和疑難排解 [計量和記錄](../insights/network-insights-overview.md#resource-health-and-metrics) 資料。
+
+* 彈性的畫布，可支援建立自訂豐富的 [視覺效果](../platform/workbooks-overview.md#visualizations)。
+
+* 可以取用和共用更多的小組的活頁 [簿範本](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) 。
 
 若要尋找新活頁簿方案功能的詳細資訊，請參閱活頁 [簿-總覽](../platform/workbooks-overview.md)
 

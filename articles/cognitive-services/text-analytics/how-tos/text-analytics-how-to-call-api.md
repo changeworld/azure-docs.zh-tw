@@ -10,16 +10,34 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 7b035af85e250d97fb05625bf386bec8dc94a74c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.custom: references_regions
+ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505251"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562560"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何呼叫文字分析 REST API
 
 在本文中，我們會使用文字分析 REST API 和 [Postman](https://www.postman.com/downloads/) 來示範重要的概念。 API 提供數個同步和非同步端點，以使用服務的功能。 
+
+## <a name="create-a-text-analytics-resource"></a>建立文字分析資源
+
+> [!NOTE]
+> * 如果您想要使用或端點，您將需要使用標準 (S) [定價層](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) 的文字分析 `/analyze` 資源 `/health` 。 `/analyze`端點包含在您的[定價層](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)中。
+
+使用文字分析 API 之前，您必須使用應用程式的金鑰和端點來建立 Azure 資源。 
+
+1.  首先，移至 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) 並建立新的文字分析資源（如果您還沒有的話）。 選擇 [定價層](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)。
+
+2.  選取您要用於端點的區域。  請注意 `/analyze` ，和 `/health` 端點僅適用于下欄區域：美國西部2、美國東部2、美國中部、北歐和西歐。
+
+3.  建立文字分析資源，然後移至頁面左側的 [金鑰和端點] 分頁。 複製金鑰，以便稍後在呼叫 Api 時使用。 您稍後會將其新增為 `Ocp-Apim-Subscription-Key` 標頭的值。
+
+## <a name="using-the-api-synchronously"></a>同步使用 API
+
+您可以 () 的低延遲案例中，同步呼叫文字分析。 使用同步 API 時，您必須分別呼叫每個 API (功能) 。 如果您需要呼叫多項功能，請參閱下面的一節，以瞭解如何以非同步方式呼叫文字分析。 
 
 ## <a name="using-the-api-asynchronously"></a>以非同步方式使用 API
 
@@ -48,28 +66,20 @@ ms.locfileid: "97505251"
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>Prerequisites
-
-
-> [!NOTE]
-> * 如果您想要使用或端點，您將需要使用標準 (S) [定價層](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) 的文字分析 `/analyze` 資源 `/health` 。
-
-1.  首先，移至 [Azure 入口網站](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) 並建立新的文字分析資源（如果您還沒有的話）。 如果您想要使用或端點，請選擇 **標準 (S) 定價層** `/analyze` `/health` 。 `/analyze`端點包含在您的[定價層](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)中。
-
-2.  選取您要用於端點的區域。  請注意 `/analyze` ，和 `/health` 端點僅適用于下欄區域：美國西部2、美國東部2、美國中部、北歐和西歐。
-
-3.  建立文字分析資源，然後移至頁面左側的 [金鑰和端點] 分頁。 複製金鑰，以便稍後在呼叫 Api 時使用。 您稍後會將其新增為 `Ocp-Apim-Subscription-Key` 標頭的值。
-
 
 <a name="json-schema"></a>
 
-## <a name="api-request-format"></a>API 要求格式
+## <a name="api-request-formats"></a>API 要求格式
+
+您可以將同步和非同步呼叫傳送至文字分析 API。
 
 #### <a name="synchronous"></a>[同步](#tab/synchronous)
 
+### <a name="synchronous-requests"></a>同步要求
+
 針對所有同步作業，API 要求的格式都相同。 檔會以原始非結構化文字形式提交在 JSON 物件中。 不支援 XML。 JSON 架構包含以下所述的元素。
 
-| 元素 | 有效值 | 必要？ | 使用方式 |
+| 元素 | 有效值 | 必要？ | 使用量 |
 |---------|--------------|-----------|-------|
 |`id` |資料類型是字串，但實際上文件識別碼通常是整數。 | 必要 | 系統會使用您所提供的識別碼作為輸出的結構。 語言代碼、關鍵片語及情感分數會針對要求中的每個識別碼產生。|
 |`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 針對語言偵測，文字可以透過任何語言表示。 針對情感分析、關鍵片語擷取及實體識別，文字必須為[支援的語言](../language-support.md)。 |
@@ -89,7 +99,9 @@ ms.locfileid: "97505251"
 }
 ```
 
-#### <a name="analyze"></a>[分析](#tab/analyze)
+#### <a name="asynchronous"></a>[非同步](#tab/asynchronous)
+
+### <a name="asynchronous-requests-to-the-analyze-endpoint"></a>端點的非同步要求 `/analyze`
 
 > [!NOTE]
 > 文字分析用戶端程式庫的最新發行前版本可讓您使用用戶端物件來呼叫非同步分析作業。 您可以在 GitHub 上找到範例：
@@ -102,18 +114,18 @@ ms.locfileid: "97505251"
 * 關鍵片語擷取 
 * 命名實體辨識 (包括 PII 和 PHI) 
 
-| 元素 | 有效值 | 必要？ | 使用方式 |
+| 元素 | 有效值 | 必要？ | 使用量 |
 |---------|--------------|-----------|-------|
-|`displayName` | String | 選擇性 | 用來當做作業唯一識別碼的顯示名稱。|
+|`displayName` | 字串 | 選擇性 | 用來當做作業唯一識別碼的顯示名稱。|
 |`analysisInput` | 包含 `documents` 下欄欄位 | 必要 | 包含您要傳送之檔的資訊。 |
 |`documents` | 包含 `id` 以下的和 `text` 欄位 | 必要 | 包含所傳送之每份檔的資訊，以及檔的原始文字。 |
-|`id` | String | 必要 | 您提供的識別碼是用來結構輸出。 |
+|`id` | 字串 | 必要 | 您提供的識別碼是用來結構輸出。 |
 |`text` | 非結構化原始文字，最多125000個字元。 | 必要 | 必須是英文語言，這是目前唯一支援的語言。 |
 |`tasks` | 包含下列文字分析功能： `entityRecognitionTasks` `keyPhraseExtractionTasks` 或 `entityRecognitionPiiTasks` 。 | 必要 | 您要使用的一或多個文字分析功能。 請注意， `entityRecognitionPiiTasks` 具有 `domain` 可設定為或的選擇性參數 `pii` `phi` 。 如果未指定，系統會預設為 `pii` 。 |
 |`parameters` | 包含 `model-version` 以下的和 `stringIndexType` 欄位 | 必要 | 此欄位包含在您選擇的上述功能工作中。 它們包含您想要使用之模型版本的相關資訊，以及索引類型。 |
-|`model-version` | String | 必要 | 指定您想要使用的模型版本。  |
-|`stringIndexType` | String | 必要 | 指定符合您程式設計環境的文字解碼器。  支援的類型為 `textElement_v8` (預設) 、 `unicodeCodePoint` 、 `utf16CodeUnit` 。 如需詳細資訊，請參閱 [文字位移文章](../concepts/text-offsets.md#offsets-in-api-version-31-preview) 。  |
-|`domain` | String | 選擇性 | 只適用于做為工作的參數 `entityRecognitionPiiTasks` ，而且可以設定為 `pii` 或 `phi` 。 如果未指定，則預設為 `pii` 。  |
+|`model-version` | 字串 | 必要 | 指定您想要使用的模型版本。  |
+|`stringIndexType` | 字串 | 必要 | 指定符合您程式設計環境的文字解碼器。  支援的類型為 `textElement_v8` (預設) 、 `unicodeCodePoint` 、 `utf16CodeUnit` 。 如需詳細資訊，請參閱 [文字位移文章](../concepts/text-offsets.md#offsets-in-api-version-31-preview) 。  |
+|`domain` | 字串 | 選擇性 | 只適用于做為工作的參數 `entityRecognitionPiiTasks` ，而且可以設定為 `pii` 或 `phi` 。 如果未指定，則預設為 `pii` 。  |
 
 ```json
 {
@@ -154,11 +166,11 @@ ms.locfileid: "97505251"
 
 ```
 
-#### <a name="text-analytics-for-health"></a>[健康情況的文字分析](#tab/health)
+### <a name="asynchronous-requests-to-the-health-endpoint"></a>端點的非同步要求 `/health`
 
 健康情況託管 API 文字分析的 API 要求格式與其容器的格式相同。 檔會以原始非結構化文字形式提交在 JSON 物件中。 不支援 XML。 JSON 架構包含以下所述的元素。  請填寫並提交 [認知服務要求表單](https://aka.ms/csgate) ，以要求存取文字分析的健康狀態公開預覽。 您將不需支付文字分析的健康情況。 
 
-| 元素 | 有效值 | 必要？ | 使用方式 |
+| 元素 | 有效值 | 必要？ | 使用量 |
 |---------|--------------|-----------|-------|
 |`id` |資料類型是字串，但實際上文件識別碼通常是整數。 | 必要 | 系統會使用您所提供的識別碼作為輸出的結構。 |
 |`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 請注意，目前僅支援英文文字。 |
@@ -194,6 +206,8 @@ example.json
 
 #### <a name="synchronous"></a>[同步](#tab/synchronous)
 
+### <a name="endpoints-for-sending-synchronous-requests"></a>傳送同步要求的端點
+
 | 功能 | 要求類型 | 資源端點 |
 |--|--|--|
 | 語言偵測 | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
@@ -204,14 +218,16 @@ example.json
 | 命名實體辨識-PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
 | 命名實體辨識-PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
 
-#### <a name="analyze"></a>[分析](#tab/analyze)
+#### <a name="asynchronous"></a>[非同步](#tab/asynchronous)
+
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>將非同步要求傳送至端點的端點 `/analyze`
 
 | 功能 | 要求類型 | 資源端點 |
 |--|--|--|
 | 提交分析作業 | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | 取得分析狀態和結果 | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
-#### <a name="text-analytics-for-health"></a>[健康情況的文字分析](#tab/health)
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>將非同步要求傳送至端點的端點 `/health`
 
 | 功能 | 要求類型 | 資源端點 |
 |--|--|--|
@@ -267,6 +283,8 @@ example.json
  
 # <a name="synchronous"></a>[同步](#tab/synchronous)
 
+### <a name="example-responses-for-synchronous-operation"></a>同步作業的範例回應
+
 同步端點回應會依您使用的端點而有所不同。 請參閱下列文章以取得範例回應。
 
 + [語言偵測](text-analytics-how-to-language-detection.md#step-3-view-the-results)
@@ -274,70 +292,15 @@ example.json
 + [情感分析](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [實體辨識](text-analytics-how-to-entity-linking.md#view-results)
 
-# <a name="analyze"></a>[分析](#tab/analyze)
+# <a name="asynchronous"></a>[非同步](#tab/asynchronous)
+
+### <a name="example-responses-for-asynchronous-operations"></a>非同步作業的回應範例
 
 如果成功，對端點的 GET 要求 `/analyze` 會傳回包含所指派工作的物件。 例如 `keyPhraseExtractionTasks` 。 這些工作包含來自適當文字分析功能的回應物件。 如需詳細資訊，請參閱下列文章。
 
 + [關鍵片語擷取](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [實體辨識](text-analytics-how-to-entity-linking.md#view-results)
-
-
-```json
-{
-  "displayName": "My Analyze Job",
-  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
-  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
-  "createdDateTime": "2020-11-13T04:01:13Z",
-  "expirationDateTime": "2020-11-14T04:01:13Z",
-  "status": "running",
-  "errors": [],
-  "tasks": {
-      "details": {
-          "name": "My Analyze Job",
-          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
-      },
-      "completed": 1,
-      "failed": 0,
-      "inProgress": 2,
-      "total": 3,
-      "keyPhraseExtractionTasks": [
-          {
-              "name": "My Analyze Job",
-              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
-              "results": {
-                  "inTerminalState": true,
-                  "documents": [
-                      {
-                          "id": "doc1",
-                          "keyPhrases": [
-                              "sunny outside"
-                          ],
-                          "warnings": []
-                      },
-                      {
-                          "id": "doc2",
-                          "keyPhrases": [
-                              "favorite Seattle attraction",
-                              "Pike place market"
-                          ],
-                          "warnings": []
-                      }
-                  ],
-                  "errors": [],
-                  "modelVersion": "2020-07-01"
-              }
-          }
-      ]
-  }
-}
-```
-
-# <a name="text-analytics-for-health"></a>[健康情況的文字分析](#tab/health)
-
-請參閱下列文章，以取得健全狀況非同步 API 回應的文字分析詳細資訊：
-
 + [健康情況的文字分析](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
-
 
 --- 
 

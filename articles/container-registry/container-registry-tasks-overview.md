@@ -3,12 +3,12 @@ title: ACR 工作概觀
 description: ACR 工作的簡介，這是 Azure Container Registry 中的一組功能，可在雲端提供安全、自動化的容器映射組建、管理及修補。
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 14758e363e74450a10f1a2cbfc889f3e24782771
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027661"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562849"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 工作自動化容器映射組建和維護
 
@@ -16,7 +16,7 @@ ms.locfileid: "93027661"
 
 ## <a name="what-is-acr-tasks"></a>什麼是 ACR 工作？
 
-「ACR 工作」  是 Azure Container Registry 內的一套功能。 它提供以雲端為基礎的容器映射，適用于 [平臺](#image-platforms) （包括 Linux、WINDOWS 和 ARM），並可將 Docker 容器的 [作業系統和架構修補](#automate-os-and-framework-patching) 自動化。 ACR 工作不僅會使用隨需容器映射組建將您的「內部迴圈」開發週期延伸至雲端，還可讓您透過原始程式碼更新、容器的基底映射更新或計時器來觸發自動化的組建。 例如，使用基底映射更新觸發程式，您可以將作業系統和應用程式架構修補工作流程自動化，以維護安全的環境，同時遵守不可變容器的原則。
+「ACR 工作」是 Azure Container Registry 內的一套功能。 它提供以雲端為基礎的容器映射，適用于 [平臺](#image-platforms) （包括 Linux、WINDOWS 和 ARM），並可將 Docker 容器的 [作業系統和架構修補](#automate-os-and-framework-patching) 自動化。 ACR 工作不僅會使用隨需容器映射組建將您的「內部迴圈」開發週期延伸至雲端，還可讓您透過原始程式碼更新、容器的基底映射更新或計時器來觸發自動化的組建。 例如，使用基底映射更新觸發程式，您可以將作業系統和應用程式架構修補工作流程自動化，以維護安全的環境，同時遵守不可變容器的原則。
 
 ## <a name="task-scenarios"></a>工作案例
 
@@ -102,10 +102,10 @@ Azure CLI 中的 [az acr build][az-acr-build]命令會使用熟悉的 `docker bu
 
 下表顯示 ACR 工作支援的內容位置範例：
 
-| 內容位置 | 描述 | 範例 |
+| 內容位置 | 說明 | 範例 |
 | ---------------- | ----------- | ------- |
 | 本機檔案系統 | 本機檔案系統上目錄內的檔案。 | `/home/user/projects/myapp` |
-| GitHub 主要分支 | 主要 (或公用或私人 GitHub 存放庫的其他預設) 分支中的檔案。  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub 主要分支 | 公用或私人 GitHub 存放庫的主要 (或其他預設) 分支內的檔案。  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub 分支 | 公用或私人 GitHub 存放庫的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub 子資料夾 | 公用或私人 GitHub 存放庫中的子資料夾內的檔案。 範例顯示分支與子資料夾規格的組合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | GitHub 認可 | 公用或私人 GitHub 存放庫中的特定認可。 範例顯示 commit hash (SHA-1) 和子資料夾規格的組合。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |

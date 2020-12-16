@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 277e6616ce1bf90ada83516cb71f9cb55de1b7b0
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516809"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563019"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
@@ -80,9 +80,9 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 ### <a name="networking-configuration"></a>網路設定
 
-適用於 Linux 和 Windows 的 Connected Machine 代理程式會透過 TCP 連接埠 443，安全地將訊息輸出到 Azure Arc。 如果機器連線至防火牆或 Proxy 伺服器以透過網際網路通訊，請檢閱下面的需求，以了解網路設定需求。
+適用於 Linux 和 Windows 的 Connected Machine 代理程式會透過 TCP 連接埠 443，安全地將訊息輸出到 Azure Arc。 如果電腦透過防火牆或 proxy 伺服器連線到網際網路，請參閱下列各項以瞭解網路設定需求。
 
-如果您的防火牆或 Proxy 伺服器已限制輸出連線，請確定下面所列 URL 並未遭到封鎖。 如果您只允許代理程式用來與服務通訊所需的 IP 範圍或網域名稱，您也必須允許存取下列服務標籤和 URL。
+如果您的防火牆或 Proxy 伺服器已限制輸出連線，請確定下面所列 URL 並未遭到封鎖。 當您只允許代理程式用來與服務進行通訊所需的 IP 範圍或功能變數名稱時，您需要允許存取下列服務標籤和 Url。
 
 服務標籤：
 
@@ -181,8 +181,9 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
     |服務名稱 |顯示名稱 |程序名稱 |描述 |
     |-------------|-------------|-------------|------------|
-    |himds |Azure 混合式 Instance Metadata Service |himds.exe |此服務會將 Azure Instance Metadata service (IMDS) ，以管理與 Azure 的連線，以及連線電腦的 Azure 身分識別。|
-    |DscService |來賓設定服務 |dsc_service.exe |Desired State Configuration (DSC v2) 程式碼基底，可在 Azure 中用來執行 In-Guest 原則。|
+    |himds |Azure 混合式 Instance Metadata Service |himds |此服務會將 Azure Instance Metadata service (IMDS) ，以管理與 Azure 的連線，以及連線電腦的 Azure 身分識別。|
+    |GCArcService |來賓設定 Arc 服務 |gc_service |監視機器的 desired state configuration。|
+    |ExtensionService |來賓設定延伸模組服務 | gc_service |安裝以機器為目標的必要擴充。|
 
 * 下列環境變數是在代理程式安裝期間所建立。
 
@@ -232,8 +233,9 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
     |服務名稱 |顯示名稱 |程序名稱 |描述 |
     |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure 混合式 Instance Metadata Service |/opt/azcmagent/bin/himds |此服務會將 Azure Instance Metadata service (IMDS) ，以管理與 Azure 的連線，以及連線電腦的 Azure 身分識別。|
-    |dscd.service |來賓設定服務 |/opt/DSC/dsc_linux_service |這是在 Azure 內部用來實作客體內原則的 Desired State Configuration (DSC v2) 程式碼基底。|
+    |himdsd.service |Azure Connected Machine 代理程式服務 |himds |此服務會將 Azure Instance Metadata service (IMDS) ，以管理與 Azure 的連線，以及連線電腦的 Azure 身分識別。|
+    |gcad.servce |GC Arc 服務 |gc_linux_service |監視機器的 desired state configuration。 |
+    |extd 服務 |擴充服務 |gc_linux_service | 安裝以機器為目標的必要擴充。|
 
 * 有數個記錄檔可供進行疑難排解。 如下表中所述。
 

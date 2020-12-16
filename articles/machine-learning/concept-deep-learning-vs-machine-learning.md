@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 09/22/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: 0379fd186c499e19d949d9494b0eb5dec4f2bb50
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/15/2020
+ms.custom: contperf-fy21q1,contperfq1
+ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032536"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562832"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning 中的深度學習與機器學習
 
@@ -57,6 +57,16 @@ ms.locfileid: "97032536"
 |  **執行時間** | 花一點時間來定型，範圍從幾秒鐘到幾個小時。 | 定型通常需要較長的時間，因為深度學習演算法牽涉到許多圖層。 |
 |  **輸出** | 輸出通常是數值，例如分數或分類。 | 輸出可以有多種格式，例如文字、分數或音效。 |
 
+## <a name="transfer-learning"></a>轉移學習
+
+定型深度學習模型通常需要大量定型資料、高階計算資源 (GPU、TPU) 和較長的定型時間。 在您沒有上述任何一項可用的案例中，您可以使用稱為「轉移學習」的技術，以快捷方式訓練流程。
+
+轉移學習是一種技術，可從解決一個問題到不同但相關的問題，來運用所獲得的知識。
+
+因為類神經網路的結構，第一組圖層通常會包含較低層級的功能，而最後一組圖層會包含更接近問題領域的較高層級功能。 藉由重新調整要在新網域或問題中使用的最終層級，您可以大幅減少訓練新模型所需的時間、資料和計算資源量。 例如，如果您已經有可辨識車輛的模型，您可以使用「轉移學習」來調整該模型的用途，以同時辨識貨車、摩托車和其他類型的車輛。
+
+瞭解如何使用 Azure Machine Learning 中的開放原始碼架構來套用影像分類的轉移學習： [使用 Pytorch 模型將影像分類](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)。
+
 ## <a name="deep-learning-use-cases"></a>深度學習使用案例
 
 因為人工類神經網路結構，所以深度學習擅長在非結構化資料（例如影像、音效、影片和文字）中的識別模式。 基於這個理由，深度學習會快速轉換許多產業，包括醫療保健、能源、財務和運輸。 這些產業現在重新思考傳統的商務流程。 
@@ -72,8 +82,6 @@ ms.locfileid: "97032536"
 深度學習已套用在許多物件偵測使用案例中。 物件偵測包含兩個部分：影像分類和影像當地語系化。 影像 _分類_ 會識別影像的物件，例如車輛或人員。 影像 _當地語系化_ 會提供這些物件的特定位置。 
 
 物件偵測已用於遊戲、零售、觀光和自我駕駛汽車等產業中。
-
-瞭解如何在 Azure Machine Learning 中使用開放原始碼架構的影像分類模型： [使用 Pytorch 模型分類影像](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>產生影像標題
 
@@ -107,7 +115,7 @@ Feedforward 類神經網路是最簡單的人工類神經網路類型。 在 fee
 
 週期性神經網路是一種廣泛使用的人工類神經網路。 這些網路會儲存圖層的輸出，並將其饋送回輸入層，以協助預測圖層的結果。 週期性神經網路有絕佳的學習能力。 它們廣泛用於複雜的工作，例如時間序列預測、學習手寫和辨識語言。
 
-### <a name="convolutional-neural-networks"></a>卷積類神經網路
+### <a name="convolutional-neural-network"></a>卷積類神經網路
 
 卷積類神經網路是特別有效的人工類神經網路，並提供獨特的架構。 圖層是以三個維度組成：寬度、高度和深度。 某一層中的神經不會連接到下一層中的所有神經，而只會連線到圖層神經的小型區域。 最後的輸出會縮減為一種機率分數的向量，並沿著深度維度整理。 
 

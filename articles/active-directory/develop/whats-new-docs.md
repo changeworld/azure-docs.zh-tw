@@ -5,22 +5,43 @@ description: Microsoft 身分識別平臺的新檔和更新的檔。
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 108cd5f74b7b560534baf8f55f7d07ebb6557e7f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4813a71a0bdd14e747aa4cfe51ab5a4191df62a4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457149"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563036"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft 身分識別平臺檔：新功能
 
 歡迎使用 Microsoft 身分識別平臺檔中的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="new-articles"></a>新文章
+
+- [快速入門： ASP.NET Core 的 web 應用程式，可登入使用者並代表他們呼叫 Microsoft Graph](quickstart-v2-aspnet-core-webapp-calls-graph.md)
+- [處理 MSAL.NET 中的錯誤和例外狀況](msal-error-handling-dotnet.md)
+- [處理 iOS/macOS 版 MSAL 中的錯誤和例外狀況](msal-error-handling-ios.md)
+- [處理 Java 版 MSAL 中的錯誤和例外狀況](msal-error-handling-java.md)
+- [處理 MSAL.js 中的錯誤和例外狀況](msal-error-handling-js.md)
+- [處理 Python 版 MSAL 中的錯誤和例外狀況](msal-error-handling-python.md)
+- [使用 SAML 和 OIDC/OAuth 的 Microsoft 身分識別平臺權杖交換案例](scenario-token-exchange-saml-oauth.md)
+
+### <a name="updated-articles"></a>更新的文章
+
+- [教學課程：建置會使用 Microsoft 身分識別平台的多租用戶精靈](tutorial-v2-aspnet-daemon-web-app.md)
+- [登入使用者的 Web 應用程式：應用程式註冊](scenario-web-app-sign-user-app-registration.md)
+- [Microsoft 身分識別平臺和隱含授與流程](v2-oauth2-implicit-grant-flow.md)
+- [Microsoft 身分識別平台存取權杖](access-tokens.md)
+- [呼叫 web Api 的 web API：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 

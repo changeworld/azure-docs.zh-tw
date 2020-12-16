@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: cfe3d995cef888d2f0e973a6a6b2a06e0dd6cb54
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861794"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563206"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 識別提供者 (IdP) 來進行單一登入
 
@@ -273,7 +273,7 @@ Microsoft 支援將 Microsoft 雲端服務（例如 Microsoft 365）與您正確
 如需 "Set-msoluser" 結帳的詳細資訊，請參閱 [/previous-versions/azure/dn194096 (v = azure. 100) ](/previous-versions/azure/dn194096(v=azure.100))
 
 >[!NOTE]
->「UserPrinciplName」值必須符合您會為 SAML 2.0 宣告中的「IDPEmail」傳送的值，而「ImmutableID」值則必須符合「NameID」判斷提示中所傳送的值。
+>"UserPrincipalName" 值必須符合您在 SAML 2.0 宣告中為 "IDPEmail" 傳送的值，而 "ImmutableID" 值必須符合您在 "NameID" 判斷提示中傳送的值。
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>使用 SAML 2.0 IDP 驗證單一登入
 若您是系統管理員，請在驗證和管理單一登入 (也稱為身分識別同盟) 之前，先檢閱相關資訊並執行下列文章中的步驟，以設定使用 SAML 2.0 SP-Lite 型識別提供者來進行的單一登入：

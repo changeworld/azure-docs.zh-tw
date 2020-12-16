@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 8637b33ebc4b697ee6f498acb84ee33718c53f6d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 82b786f3c90a7ef482ccbcd6e66fb9abfc4eea5f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448855"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561931"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上，使用啟用 Redis on Arc 的 Kubernetes 叢集來部署 PHP 意見簿無狀態應用程式
 
@@ -31,6 +31,9 @@ ms.locfileid: "96448855"
 ## <a name="prerequisites"></a>必要條件
 
 在您可以部署無狀態應用程式之前，請確定您已在裝置上完成下列必要條件，以及用來存取裝置的用戶端：
+
+> [!NOTE]
+> 本文包含詞彙從屬的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 ### <a name="for-device"></a>針對裝置
 
@@ -83,7 +86,7 @@ ms.locfileid: "96448855"
 
 1. 在 [ **新增** 設定] 中，為欄位輸入適當的值， **然後選取 [** 套用]。
 
-    |參數  |描述 |
+    |參數  |說明 |
     |---------|---------|
     |組態名稱     | 設定資源的名稱。        |
     |運算子實例名稱     |用來識別特定設定之操作員的實例名稱。 Name 是最多253個字元的字串，必須是小寫、英數位元、連字號和句點。         |

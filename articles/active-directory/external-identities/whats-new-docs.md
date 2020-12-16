@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory 外部身分識別的新功能
 description: Azure Active Directory 外部身分識別的新檔和更新的檔。
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,32 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e614507fbcfce5fc006983e0be7963223bb0b7ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573896"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562373"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory 外部身分識別：新功能
 
 歡迎使用 Azure Active Directory 外部身分識別檔的新功能。 本文列出已新增的檔，以及過去三個月內有重大更新的新檔。 若要瞭解外部身分識別服務的新功能，請參閱 [Azure Active Directory 中的新功能](../fundamentals/whats-new.md)。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="updated-articles"></a>更新的文章
+
+- [Azure Active Directory B2B 共同作業常見問題集](faq.md)
+- [將 Google 新增為 B2B 來賓使用者的識別提供者](google-federation.md)
+- [外部身分識別的身分識別提供者](identity-providers.md)
+- [Azure Active Directory B2B 共同作業邀請兌換](redemption-experience.md)
+- [將 API 連接器新增至使用者流程](self-service-sign-up-add-api-connector.md)
+- [將自訂核准工作流程新增至自助式註冊](self-service-sign-up-add-approvals.md)
+- [針對 Azure Active Directory B2B 共同作業進行疑難排解](troubleshoot.md)
+- [什麼是 Azure Active Directory B2B 中的來賓使用者存取權？](what-is-b2b.md)
+- [Azure Active Directory B2B 最佳做法](b2b-fundamentals.md)
+- [啟用 B2B 外部共同作業及管理可邀請來賓的人員](delegate-invitations.md)
+- [電子郵件單次密碼驗證](one-time-passcode.md)
 
 ## <a name="november-2020"></a>2020 年 11 月
 

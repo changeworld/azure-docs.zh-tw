@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ffae02a11f2857e72cf7c5d2bbc84d8ab6174e17
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d8ed429003a9da7ae93fb93f4218cd66767dcd7b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425793"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562271"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>使用 Azure 入口網站設定 MSIX 應用程式附加
 
@@ -22,7 +22,7 @@ ms.locfileid: "97425793"
 
 本文將逐步引導您瞭解如何在 Windows 虛擬桌面環境中設定 MSIX 應用程式附加 (預覽) 。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 >[!IMPORTANT]
 >開始之前，請務必填寫並提交 [此表單](https://aka.ms/enablemsixappattach) ，以在您的訂用帳戶中啟用 MSIX 應用程式附加。 如果您沒有核准的要求，MSIX app attach 將無法運作。 要求的核准可能需要最多24小時的工作天。 當您的要求已接受且完成時，您會收到一封電子郵件。
@@ -31,6 +31,7 @@ ms.locfileid: "97425793"
 
 - 運作中的 Windows 虛擬桌面部署。 若要瞭解如何將 Windows 虛擬桌面部署 (傳統) ，請參閱 [在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。 若要瞭解如何使用 Azure Resource Manager 整合部署 Windows 虛擬桌面，請參閱 [使用 Azure 入口網站建立主機集](./create-host-pools-azure-marketplace.md)區。
 - 至少有一個作用中工作階段主機的 Windows 虛擬桌面主機集區。
+- 此主機集區必須在驗證環境中。 
 - MSIX 封裝工具。
 - MSIX 封裝的應用程式會展開至已上傳至檔案共用的 MSIX 映射中。
 - 您的 Windows 虛擬桌面部署中將儲存 MSIX 封裝的檔案共用。

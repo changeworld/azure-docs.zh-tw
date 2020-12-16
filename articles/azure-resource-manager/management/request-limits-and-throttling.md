@@ -2,14 +2,14 @@
 title: 要求限制和節流
 description: 描述如何在到達訂用帳戶限制時，對 Azure Resource Manager 要求使用節流。
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239370"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563121"
 ---
 # <a name="throttling-resource-manager-requests"></a>對 Resource Manager 要求進行節流
 
@@ -65,6 +65,13 @@ Microsoft 網路資源提供者會套用下列節流限制：
 ### <a name="azure-resource-graph-throttling"></a>Azure Resource Graph 節流
 
 [Azure Resource Graph](../../governance/resource-graph/overview.md) 會限制對其作業的要求數目。 這篇文章中的步驟可判斷剩餘的要求，以及當達到限制時如何回應，也適用于 Resource Graph。 不過，Resource Graph 會設定自己的限制和重設速率。 如需詳細資訊，請參閱 [Resource Graph 節流標頭](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers)。
+
+### <a name="other-resource-providers"></a>其他資源提供者
+
+如需其他資源提供者中節流的詳細資訊，請參閱：
+
+* [Azure Key Vault 節流指導方針](../../key-vault/general/overview-throttling.md)
+* [AKS 疑難排解](../../aks/troubleshooting.md#im-receiving-429---too-many-requests-errors)
 
 ## <a name="error-code"></a>錯誤碼
 

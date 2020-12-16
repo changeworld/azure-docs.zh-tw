@@ -9,13 +9,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.custom: how-to, devx-track-python, contperf-fy21q2
+ms.openlocfilehash: 7144d576694b6694f426533451717cef58c2da87
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302581"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562441"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>具有 Azure Machine Learning 的增強式學習 (預覽)
 
@@ -24,7 +24,7 @@ ms.locfileid: "96302581"
 > [!NOTE]
 > Azure Machine Learning 增強式學習目前是一項預覽功能。 目前只支援 Ray 和 RLlib 架構。
 
-在本文中，您將了解如何定型增強式學習 (RL) 代理程式，以進行 Pong 電玩遊戲。 您將會使用開放原始碼 Python 程式庫 [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) 搭配 Azure Machine Learning 來管理分散式 RL 作業的複雜性。
+在本文中，您將了解如何定型增強式學習 (RL) 代理程式，以進行 Pong 電玩遊戲。 您可以使用開放原始碼 Python 程式庫 [光線 RLlib](https://ray.readthedocs.io/en/master/rllib.html) 搭配 Azure Machine Learning 來管理分散式 RL 的複雜性。
 
 在本文中，您將了解如何：
 > [!div class="checklist"]
@@ -38,7 +38,7 @@ ms.locfileid: "96302581"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-在下列其中一個環境中建立執行此程式碼。 建議您嘗試 Azure Machine Learning 計算執行個體，以獲得最快速的啟動體驗。 增強式範例筆記本可快速複製並在 Azure Machine Learning 計算執行個體上執行。
+請在這些環境中執行此程式碼。 建議您嘗試 Azure Machine Learning 計算實例，以獲得最快的啟動體驗。 您可以在 Azure Machine Learning 計算實例上快速複製和執行增強式範例筆記本。
 
  - Azure Machine Learning 計算執行個體
 
@@ -61,19 +61,21 @@ ms.locfileid: "96302581"
 
 您的訓練代理程式會學習了解如何在 **模擬的環境** 中玩 Pong。 訓練代理程式會在遊戲的每個畫格上做出決定，以將球拍向上、向下或保持在原處。 其會查看遊戲的狀態 (螢幕的 RGB 影像) 來做出決定。
 
-RL 會使用 **報酬**，告訴代理程式其決策是否成功。 在此環境中，代理程式會在得分時取得正面獎勵，並在未得分時獲得負面獎勵。 經過多次反覆動作之後，訓練代理程式會根據其目前狀態來學習選擇動作，針對預期未來會得到的獎勵總和進行最佳化。
-
-通常會使用 **深度類神經網路** (DNN) 模型，在 RL 中執行這項最佳化。 一開始，學習代理程式的執行效能不佳，但每個遊戲都會產生額外的範例，以進一步改善模型。
+RL 會使用 **報酬**，告訴代理程式其決策是否成功。 在此範例中，代理程式會在分數為某個點，並在某個點對其進行評分時，取得正面的獎勵。 經過多次反覆動作之後，訓練代理程式會根據其目前狀態來學習選擇動作，針對預期未來會得到的獎勵總和進行最佳化。 通常會使用深度類 **神經網路** (DNN) 在 RL 中執行這項優化。 
 
 當代理程式在訓練期間中達成平均 18 分的奬勵分數時，即結束訓練。 這表示代理程式在最多 21 個回合中，以至少平均 18 點的分數擊敗對手。
 
-逐一查看模擬和重新訓練 DNN 的流程會耗用大量運算資源，而且需要大量資料。 若要改善 RL 作業的效能，其中一種方法是 **平行處理工作**，讓多個訓練代理程式可以採取行動並同時學習。 不過，管理分散式 RL 環境是一項複雜的工作。
+逐一查看模擬和重新定型 DNN 的程式會耗用大量運算資源，且需要大量的資料。 若要改善 RL 作業的效能，其中一種方法是 **平行處理工作**，讓多個訓練代理程式可以採取行動並同時學習。 不過，管理分散式 RL 環境是一項複雜的工作。
 
 Azure Machine Learning 提供架構來管理這些複雜性，以擴增您的 RL 工作負載。
 
 ## <a name="set-up-the-environment"></a>設定 Azure 環境
 
-透過載入所需的 Python 套件、初始化您的工作區、建立實驗，以及指定已設定的虛擬網路，來設定本機 RL 環境。
+設定本機 RL 環境：
+1. 載入所需的 Python 套件
+1. 正在初始化您的工作區
+1. 建立實驗
+1. 指定已設定的虛擬網路。
 
 ### <a name="import-libraries"></a>匯入程式庫
 
@@ -97,9 +99,7 @@ from azureml.contrib.train.rl import WorkerConfiguration
 
 ### <a name="initialize-a-workspace"></a>初始化工作區
 
-[Azure Machine Learning 工作區](concept-workspace.md)是 Azure Machine Learning 的最上層資源。 其可提供集中式位置以處理您建立的所有成品。
-
-從 [必要條件一節](#prerequisites)中建立的 `config.json` 檔案初始化工作區物件。 如果您在 Azure Machine Learning 計算執行個體中執行此程式碼，系統已經為您建立了組態檔。
+從「 [](concept-workspace.md) `config.json` [必要條件」一節](#prerequisites)中建立的檔案初始化工作區物件。 如果您在 Azure Machine Learning 計算執行個體中執行此程式碼，系統已經為您建立了組態檔。
 
 ```Python
 ws = Workspace.from_config()
@@ -117,7 +117,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>指定虛擬網路
 
-對於使用多個計算目標的 RL 作業，您必須指定具有開啟連接埠的虛擬網路，以允許背景工作節點和前端節點彼此通訊。 虛擬網路可以位於任何資源群組中，但其應該與您的工作區位於相同的區域。 如需設定虛擬網路的詳細資訊，請參閱必要條件一節中的工作區設定筆記本。 在這裡，您會在資源群組中指定虛擬網路的名稱。
+對於使用多個計算目標的 RL 作業，您必須指定具有開啟連接埠的虛擬網路，以允許背景工作節點和前端節點彼此通訊。
+
+虛擬網路可以位於任何資源群組中，但其應該與您的工作區位於相同的區域。 如需設定虛擬網路的詳細資訊，請參閱「必要條件」一節中的工作區安裝筆記本。 在這裡，您會在資源群組中指定虛擬網路的名稱。
 
 ```python
 vnet = 'your_vnet'
@@ -125,13 +127,13 @@ vnet = 'your_vnet'
 
 ## <a name="define-head-and-worker-compute-targets"></a>定義前端和背景工作計算目標
 
-這個範例會針對 Ray 前端和背景工作節點使用不同的計算目標。 這些設定可讓您根據預期的工作負載，擴大或縮小計算資源。 根據您的實驗需求，設定節點數目和每個節點的大小。
+這個範例會針對 Ray 前端和背景工作節點使用不同的計算目標。 這些設定可讓您根據您的工作負載，相應增加或減少計算資源。 根據您的需求，設定節點數目和每個節點的大小。
 
 ### <a name="head-computing-target"></a>前端計算目標
 
-這個範例會使用具有 GPU 的前端叢集，將深度學習效能最佳化。 前端節點會定型代理程式用來做出決策的類神經網路。 前端節點也會從背景工作節點收集資料點，以進一步將類神經網路定型。
+您可以使用配備 GPU 的前端叢集來改善深度學習效能。 前端節點會定型代理程式用來做出決策的類神經網路。 前端節點也會從背景工作節點收集資料點來定型類神經網路。
 
-前端計算會使用單一 [`STANDARD_NC6` 虛擬機器](../virtual-machines/nc-series.md) (VM)。 其有 6 個虛擬 CPU，這表示可以將工作分散到 6 個工作 CPU。
+前端計算會使用單一 [`STANDARD_NC6` 虛擬機器](../virtual-machines/nc-series.md) (VM)。 它有6個虛擬 Cpu 可將工作分散到多個。
 
 
 ```python
@@ -173,7 +175,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>背景工作計算叢集
 
-這個範例會針對背景工作角色計算目標使用四個 [`STANDARD_D2_V2` VM](../virtual-machines/nc-series.md)。 每個背景工作節點都有 2 個可用的 CPU，總共有 8 個可用的 CPU 可平行處理工作。
+這個範例會針對背景工作角色計算目標使用四個 [`STANDARD_D2_V2` VM](../virtual-machines/nc-series.md)。 每個背景工作節點都有2個可用的 Cpu，總共有8個可用的 Cpu。
 
 背景工作節點不需要 GPU，因為節點不會執行深度學習。 背景工作會執行遊戲模擬並收集資料。
 
@@ -212,14 +214,13 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>建立增強式學習估算器
+使用 [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) 將定型作業提交至 Azure Machine Learning。
 
-在本節中，您將了解如何使用 [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py)，將訓練作業提交至 Azure Machine Learning。
-
-Azure Machine Learning 會使用估算器類別來封裝回合組態資訊。 這可讓您輕鬆地指定如何設定指令碼執行。 
+Azure Machine Learning 會使用估算器類別來封裝回合組態資訊。 這可讓您指定如何設定腳本執行。 
 
 ### <a name="define-a-worker-configuration"></a>定義背景工作組態
 
-WorkerConfiguration 物件會告訴 Azure Machine Learning 如何將執行輸入腳本的背景工作叢集初始化。
+WorkerConfiguration 物件會告知 Azure Machine Learning 如何初始化執行輸入腳本的背景工作叢集。
 
 ```python
 # Pip packages we will use for both head and worker
@@ -246,9 +247,11 @@ worker_conf = WorkerConfiguration(
 
 輸入腳本 `pong_rllib.py` 會接受定義如何執行訓練作業的參數清單。 透過估算器傳遞這些參數作為封裝層，可讓您輕鬆地獨立變更指令碼參數和回合組態。
 
-指定正確的 `num_workers` 將會充分利用您的平行處理工作。 將背景工作的數目設定為與可用的 CPU 數目相同。 在此範例中，計算方式如下：
+指定正確的 `num_workers` 可充分利用平行處理工作。 將背景工作的數目設定為與可用的 CPU 數目相同。 在此範例中，您可以使用下列計算：
 
-前端節點是具有 6 個 vCPU 的 [Standard_NC6](../virtual-machines/nc-series.md)。 背景工作叢集為 4 個 [Standard_D2_V2 VMs](../cloud-services/cloud-services-sizes-specs.md#dv2-series) 具有 2 個 CPU，總共 8 個 CPU。 不過，您必須從背景工作計數減去 1 個 CPU，因為有 1 個 CPU 必須供前端節點角色專用。 6 個 CPU + 8 個 CPU -1 個前端 CPU = 13 個同時工作的背景工作。 Azure Machine Learning 會使用前端和背景工作叢集來區別計算資源。 不過，Ray 不會區分前端和背景工作，而且所有 CPU 都是可供背景工作執行緒執行的 CPU。
+前端節點是具有 6 個 vCPU 的 [Standard_NC6](../virtual-machines/nc-series.md)。 背景工作叢集為 4 個 [Standard_D2_V2 VMs](../cloud-services/cloud-services-sizes-specs.md#dv2-series) 具有 2 個 CPU，總共 8 個 CPU。 不過，您必須從背景工作計數減去 1 個 CPU，因為有 1 個 CPU 必須供前端節點角色專用。
+
+6 個 CPU + 8 個 CPU -1 個前端 CPU = 13 個同時工作的背景工作。 Azure Machine Learning 會使用前端和背景工作叢集來區別計算資源。 但是，光線並不區分前端和背景工作，而且所有 Cpu 都可作為工作者執行緒。
 
 
 ```python
@@ -409,7 +412,7 @@ run = exp.submit(config=rl_estimator)
 
 ## <a name="monitor-and-view-results"></a>監視及檢視結果
 
-使用 Azure Machine Learning Jupyter 小工具，即時查看您的執行狀態。 在此範例中，小工具會顯示兩個子執行：一個用於前端，另一個用於背景工作。 
+使用 Azure Machine Learning Jupyter 小工具，即時查看您的執行狀態。 Widget 會顯示兩個子執行：一個用於 head，另一個用於背景工作角色。 
 
 ```python
 from azureml.widgets import RunDetails
@@ -421,7 +424,7 @@ run.wait_for_completion()
 1. 等待小工具載入。
 1. 在執行清單中選取前端執行。
 
-選取 [按一下這裡以查看 Azure Machine Learning Studio 中的執行] 以取得工作室中的其他執行資訊。 在執行期間或完成後，您可以存取這項資訊。
+選取 [按一下這裡以查看 Azure Machine Learning Studio 中的執行] 以取得工作室中的其他執行資訊。 您可以在執行進行中或完成後存取此資訊。
 
 ![顯示執行詳細資料小工具的折線圖](./media/how-to-use-reinforcement-learning/pong-run-details-widget.png)
 
@@ -429,7 +432,7 @@ run.wait_for_completion()
 
 如果您瀏覽子執行的記錄，可以在 driver_log.txt 檔案中看到記錄的評估結果。 在「執行」頁面上，您可能需要等候幾分鐘，才會看到這些計量。
 
-您無需花費太多時間，就能了解如何設定多個計算資源將增強式學習代理程式定，讓 Pong 遊戲更加上手。
+在簡短的工作中，您已瞭解如何設定多個計算資源，以訓練增強式 learning 代理程式，使其非常適合用於電腦 oppponent。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743168"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559835"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用電子郵件作為替代登入識別碼 (預覽版來登入 Azure Active Directory) 
 
@@ -36,6 +36,9 @@ ms.locfileid: "96743168"
 
 > [!NOTE]
 > 這項功能僅適用于雲端驗證的 Azure AD 使用者。
+
+> [!NOTE]
+> 目前，在具有雲端驗證的租使用者 Azure AD 加入的 Windows 10 裝置上，不支援這項功能。 這項功能不適用於混合式 Azure AD 加入的裝置。
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD 登入方法概觀
 

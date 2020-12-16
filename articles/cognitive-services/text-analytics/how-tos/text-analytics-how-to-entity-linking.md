@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/15/2020
 ms.author: aahi
-ms.openlocfilehash: 5b064365a6f0bd8a544f57d67cd6e4beb98bb404
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505234"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562526"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用命名實體辨識
 
@@ -99,6 +99,14 @@ PII 功能是 NER 的一部分，而且可以識別和修訂與個別人員相�
 
 [命名實體辨識版本 3.1-預覽參考 `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
+**非同步作業**
+
+從開始 `v3.1-preview.3` ，您可以使用端點以非同步方式傳送 NER 要求 `/analyze` 。
+
+* 非同步作業- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+
+如需有關傳送非同步要求的資訊，請參閱 [如何呼叫文字分析 API](text-analytics-how-to-call-api.md) 。
+
 #### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 命名實體辨識 v3 針對 NER 和實體連結要求使用不同的端點。 根據您的要求使用下列 URL 格式：
@@ -117,7 +125,11 @@ PII 功能是 NER 的一部分，而且可以識別和修訂與個別人員相�
 
 設定要求標頭以包含您的文字分析 API 金鑰。 在要求主體中，提供您準備的 JSON 檔。
 
-### <a name="example-ner-request"></a>範例 NER 要求 
+## <a name="example-requests"></a>範例要求
+
+#### <a name="version-31-preview"></a>[3.1-preview 版](#tab/version-3-preview)
+
+### <a name="example-synchronous-ner-request"></a>同步 NER 要求範例 
 
 下列 JSON 是您可能傳送給 API 的內容範例。 這兩個 API 版本的要求格式是相同的。
 
@@ -131,8 +143,64 @@ PII 功能是 NER 的一部分，而且可以識別和修訂與個別人員相�
     }
   ]
 }
-
 ```
+
+### <a name="example-asynchronous-ner-request"></a>非同步 NER 要求範例
+
+如果您使用 `/analyze` 端點進行 [非同步作業](text-analytics-how-to-call-api.md)，您將會收到包含您傳送給 API 之工作的回應。
+
+```json
+{
+    "displayName": "My Job",
+    "analysisInput": {
+        "documents": [
+            {
+                "id": "doc1",
+                "text": "It's incredibly sunny outside! I'm so happy"
+            },
+            {
+                "id": "doc2",
+                "text": "Pike place market is my favorite Seattle attraction."
+            }
+        ]
+    },
+    "tasks": {
+        "entityRecognitionTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
+        "entityRecognitionPiiTasks": [{
+            "parameters": {
+                "model-version": "latest"
+            }
+        }]
+    }
+}
+```
+
+#### <a name="version-30"></a>[3.0 版](#tab/version-3)
+
+### <a name="example-synchronous-ner-request"></a>同步 NER 要求範例 
+
+版本3.0 只包含同步操作。 下列 JSON 是您可能傳送給 API 的內容範例。 這兩個 API 版本的要求格式是相同的。
+
+```json
+{
+  "documents": [
+    {
+        "id": "1",
+        "language": "en",
+        "text": "Our tour guide took us up the Space Needle during our trip to Seattle last week."
+    }
+  ]
+}
+```
+
+---
 
 ## <a name="post-the-request"></a>張貼要求
 
@@ -148,11 +216,68 @@ PII 功能是 NER 的一部分，而且可以識別和修訂與個別人員相�
 
 ### <a name="example-responses"></a>範例回應
 
-第3版提供適用于一般 NER、PII 和實體連結的個別端點。 這兩項作業的回應如下。 
+第3版提供適用于一般 NER、PII 和實體連結的個別端點。 版本 3.1-pareview 包含非同步分析模式。 這些作業的回應如下。 
 
 #### <a name="version-31-preview"></a>[3.1-preview 版](#tab/version-3-preview)
 
+### <a name="synchronous-example-results"></a>同步範例結果
+
+一般 NER 回應的範例：
+
+```json
+{
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "text": "tour guide",
+          "category": "PersonType",
+          "offset": 4,
+          "length": 10,
+          "confidenceScore": 0.45
+        },
+        {
+          "text": "Space Needle",
+          "category": "Location",
+          "offset": 30,
+          "length": 12,
+          "confidenceScore": 0.38
+        },
+        {
+          "text": "trip",
+          "category": "Event",
+          "offset": 54,
+          "length": 4,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "Seattle",
+          "category": "Location",
+          "subcategory": "GPE",
+          "offset": 62,
+          "length": 7,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "last week",
+          "category": "DateTime",
+          "subcategory": "DateRange",
+          "offset": 70,
+          "length": 9,
+          "confidenceScore": 0.8
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
+}
+```
+
 PII 回應的範例：
+
 ```json
 {
   "documents": [
@@ -236,6 +361,58 @@ PII 回應的範例：
   ],
   "errors": [],
   "modelVersion": "2020-02-01"
+}
+```
+
+### <a name="example-asynchronous-result"></a>非同步結果範例
+
+```json
+{
+  "displayName": "My Analyze Job",
+  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
+  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
+  "createdDateTime": "2020-11-13T04:01:13Z",
+  "expirationDateTime": "2020-11-14T04:01:13Z",
+  "status": "running",
+  "errors": [],
+  "tasks": {
+      "details": {
+          "name": "My Analyze Job",
+          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
+      },
+      "completed": 1,
+      "failed": 0,
+      "inProgress": 2,
+      "total": 3,
+      "keyPhraseExtractionTasks": [
+          {
+              "name": "My Analyze Job",
+              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
+              "results": {
+                  "inTerminalState": true,
+                  "documents": [
+                      {
+                          "id": "doc1",
+                          "keyPhrases": [
+                              "sunny outside"
+                          ],
+                          "warnings": []
+                      },
+                      {
+                          "id": "doc2",
+                          "keyPhrases": [
+                              "favorite Seattle attraction",
+                              "Pike place market"
+                          ],
+                          "warnings": []
+                      }
+                  ],
+                  "errors": [],
+                  "modelVersion": "2020-07-01"
+              }
+          }
+      ]
+  }
 }
 ```
 

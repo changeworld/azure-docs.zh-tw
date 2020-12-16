@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: b2ab22cff7a008cb55c7e3d2170113a2504ff697
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 95a97d3f5104891ef5e23a03ffe1477f9b6ad036
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843667"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561608"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>使用 GitHub Actions 的 Azure 春季 Cloud CI/CD
 
 GitHub Actions 支援自動化軟體發展生命週期工作流程。 您可以使用適用于 Azure 春季雲端的 GitHub Actions，在您的存放庫中建立工作流程，以建立、測試、封裝、發行及部署至 Azure。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 此範例需要 [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 
 ::: zone pivot="programming-language-csharp"
@@ -66,7 +66,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 az extension add --name spring-cloud
 az group create --location eastus --name <resource group name>
 az spring-cloud create -n <service instance name> -g <resource group name>
-az spring-cloud config-server git set -n <service instance name> --uri https://github.com/xxx/Azure-Spring-Cloud-Samples --label master --search-paths steeltoe-sample/config
+az spring-cloud config-server git set -n <service instance name> --uri https://github.com/xxx/Azure-Spring-Cloud-Samples --label main --search-paths steeltoe-sample/config
 ```
 
 ## <a name="build-the-workflow"></a>建立工作流程
@@ -92,10 +92,10 @@ az spring-cloud app create --name solar-system-weather
 name: Steeltoe-CD
 
 # Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# events but only for the main branch
 on:
   push:
-    branches: [ master ]
+    branches: [ main]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -216,7 +216,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
     
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
@@ -259,7 +259,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
     
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
@@ -300,7 +300,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
     
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
