@@ -9,15 +9,15 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 08/31/2020
-ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 7f30ff70e0219a803051b0f8e1208740c359863a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985513"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605389"
 ---
-# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 受控執行個體上使用者起始的手動容錯移轉
+# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>使用者在 SQL 受控執行個體上起始的手動容錯移轉
 
 本文說明如何在 SQL 受控執行個體一般用途 (GP) 和業務關鍵 (BC) 服務層級，手動容錯移轉主要節點，以及如何在 BC 服務層上手動容錯移轉次要唯讀複本節點。
 
@@ -140,11 +140,11 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 > [!IMPORTANT]
 > 使用者起始的手動容錯移轉的功能限制如下：
-> - 每隔 **30 分鐘** 可能會有一個 (1) 容錯移轉起始于相同的受控執行個體。
+> - 每隔 **15 分鐘** 可能會有一個 (1) 容錯移轉起始于相同的受控執行個體。
 > - 對於 BC 實例，必須有複本的仲裁，才能接受容錯移轉要求。
 > - 對於 BC 實例，無法指定要在哪個可讀取次要複本上起始容錯移轉。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [AZURE SQL 受控執行個體受控實例高可用性](../database/high-availability-sla.md)的高可用性。
 - 如需總覽，請參閱 [什麼是 AZURE SQL 受控執行個體？](sql-managed-instance-paas-overview.md)。

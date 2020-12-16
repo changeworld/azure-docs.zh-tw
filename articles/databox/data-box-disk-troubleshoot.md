@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa8a6643f1b7bd60fbf6e5950234e0381666177e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87925537"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605219"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>使用記錄針對 Azure 資料箱磁碟中的驗證問題進行疑難排解
 
@@ -51,21 +51,21 @@ ms.locfileid: "87925537"
 - 以下是當容器名稱無效時的錯誤記錄檔範例。 您在 `BlockBlob` 磁片上的、或資料夾下建立的資料夾， `PageBlob` `AzureFile` 會成為 Azure 儲存體帳戶中的容器。 容器的名稱必須遵循 [Azure 命名慣例](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)。
 
     ```xml
-        <?xml version="1.0" encoding="utf-8"?>
-        <ErrorLog Version="2018-10-01">
-          <SessionId>bbsession</SessionId>
-          <ItemType>BlockBlob</ItemType>
-          <SourceDirectory>E:\BlockBlob</SourceDirectory>
-          <Errors>
-            <Error Code="InvalidShareContainerFormat">
-              <List>
-                <Container Name="Azu-reFile" />
-                <Container Name="bbcont ainer1" />
-              </List>
-              <Count>2</Count>
-            </Error>
-          </Errors>
-          <Warnings />
+    <?xml version="1.0" encoding="utf-8"?>
+    <ErrorLog Version="2018-10-01">
+        <SessionId>bbsession</SessionId>
+        <ItemType>BlockBlob</ItemType>
+        <SourceDirectory>E:\BlockBlob</SourceDirectory>
+        <Errors>
+        <Error Code="InvalidShareContainerFormat">
+            <List>
+            <Container Name="Azu-reFile" />
+            <Container Name="bbcont ainer1" />
+            </List>
+            <Count>2</Count>
+        </Error>
+        </Errors>
+        <Warnings />
     </ErrorLog>
     ```
 

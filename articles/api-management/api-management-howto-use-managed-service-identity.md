@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 2866633503399e9f6d78e8665f7a45d9063f01d9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585780"
+ms.locfileid: "97605593"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用受控識別
 
@@ -38,7 +38,6 @@ ms.locfileid: "97585780"
 3. 在 [ **系統指派** ] 索引標籤上，將 [ **狀態** ] 切換為 **開啟**。 選取 [儲存]。
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="啟用系統指派的受控識別的選取專案" border="true":::
-
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -118,7 +117,6 @@ ms.locfileid: "97585780"
 ```
 
 `tenantId`屬性會識別身分識別所屬 Azure AD 租使用者。 `principalId`屬性是實例新身分識別的唯一識別碼。 在 Azure AD 中，服務主體的名稱與您提供給 API 管理實例的名稱相同。
-
 
 > [!NOTE]
 > API 管理實例可以同時具有系統指派和使用者指派的身分識別。 在此情況下， `type` 屬性會是 `SystemAssigned,UserAssigned` 。
@@ -265,7 +263,6 @@ ms.locfileid: "97585780"
 ### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>使用 API 管理身分識別來驗證後端
 
 您可以使用系統指派的身分識別，透過 [驗證管理](api-management-authentication-policies.md#ManagedIdentity) 的身分識別原則來驗證後端。
-
 
 ## <a name="create-a-user-assigned-managed-identity"></a>建立使用者指派的受控識別
 
@@ -415,7 +412,6 @@ ms.locfileid: "97585780"
 ### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>使用使用者指派的身分識別來驗證後端
 
 您可以使用使用者指派的身分識別，透過 [驗證管理](api-management-authentication-policies.md#ManagedIdentity) 的身分識別原則來向後端進行驗證。
-
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>移除身分識別
 

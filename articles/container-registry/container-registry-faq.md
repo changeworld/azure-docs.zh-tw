@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346990"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606278"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題集
 
@@ -111,6 +111,7 @@ az role assignment create --role "Reader" --assignee user@contoso.com --scope /s
 - [如何授與提取或推送映像的存取權，但不授與管理登錄資源的權限？](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [如何啟用登錄的自動映像隔離功能？](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [如何啟用匿名提取存取？](#how-do-i-enable-anonymous-pull-access)
+- [如何? 將不可轉散發層推送至登錄？](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>如何存取 Docker Registry HTTP API V2？
 
@@ -264,6 +265,33 @@ ACR 支援提供不同權限層級的[自訂角色](container-registry-roles.md)
 > [!NOTE]
 > * 您只能以匿名方式存取提取已知映射所需的 Api。 您可以匿名存取標記清單或存放庫清單等作業的其他 Api。
 > * 在嘗試匿名提取作業之前，請先執行， `docker logout` 以確定您已清除任何現有的 Docker 認證。
+
+### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>如何? 將不可轉散發層推送至登錄？
+
+資訊清單中的不可散發層包含可從中提取內容的 URL 參數。 啟用非可轉散發層推播的一些可能使用案例是針對網路受限登錄、具有限制存取的空調登錄，或是沒有網際網路連線的登錄。
+
+例如，如果您已設定 NSG 規則，讓 VM 只能從您的 Azure container registry 提取映射，則 Docker 將會提取外部/不可散發層級的失敗。 例如，Windows Server Core 映射會在其資訊清單中包含 Azure container registry 的外部層參考，而在此案例中無法提取。
+
+若要啟用不可散發層級的推送：
+
+1. 編輯檔案 `daemon.json` ，該檔案位於 `/etc/docker/` Linux 主機和 `C:\ProgramData\docker\config\daemon.json` Windows Server 上。 假設檔案之前是空的，請新增下列內容：
+
+   ```json
+   {
+     "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+   }
+   ```
+   > [!NOTE]
+   > 值是登錄位址的陣列，以逗號分隔。
+
+2. 儲存並結束檔案。
+
+3. 重新開機 Docker。
+
+當您將映射推送至清單中的登錄時，其不可散發的層會推送至登錄。
+
+> [!WARNING]
+> 不可散發的構件通常會限制其散發和共用的方式和位置。 這項功能只能用來將成品推送至私用登錄。 確定您符合任何涵蓋轉散發非可散發構件的條款。
 
 ## <a name="diagnostics-and-health-checks"></a>診斷和健康情況檢查
 

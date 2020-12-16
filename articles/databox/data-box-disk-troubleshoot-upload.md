@@ -9,12 +9,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 7225b04908753bb7c07ac89510859bac9db5b89c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b53cf607bdf60c785c7324d9ede526a0983b7e6
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565024"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605270"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>瞭解記錄以針對 Azure 資料箱磁碟中的資料上傳問題進行疑難排解
 
@@ -117,39 +117,39 @@ ms.locfileid: "85565024"
 `Summary`包含 `ValidationErrors` 和 `CopyErrors` 。 在此情況下，已將8個檔案或資料夾上傳至 Azure，而且沒有任何驗證錯誤。 當資料複製到 Azure 儲存體帳戶時，已成功上傳5個檔案或資料夾。 其餘3個檔案或資料夾已根據 Azure 容器命名慣例重新命名，然後成功上傳至 Azure。
 
 檔案層級狀態為 `BlobStatus` ，描述上傳 blob 所採取的任何動作。 在此情況下，由於複製資料的資料夾不符合容器的 Azure 命名慣例，因此會重新命名三個容器。 針對這些容器中上傳的 blob，會包含新的容器名稱、Azure 中的 blob 路徑、原始不正確檔案路徑和 blob 大小。
-    
+  
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
-    <DriveLog Version="2018-10-01">
-      <DriveId>18041C582D7E</DriveId>
-      <Summary>
+  <DriveLog Version="2018-10-01">
+    <DriveId>18041C582D7E</DriveId>
+    <Summary>
      <!--Summary for validation and data copy to Azure -->
-        <ValidationErrors>
-          <None Count="8" />
-        </ValidationErrors>
-        <CopyErrors>
-          <Completed Count="5" Description="No errors encountered" />
-          <ContainerRenamed Count="3" Description="Renamed the container as the original container name does not follow Azure conventions." />
-        </CopyErrors>
-      </Summary>
+      <ValidationErrors>
+        <None Count="8" />
+      </ValidationErrors>
+      <CopyErrors>
+        <Completed Count="5" Description="No errors encountered" />
+        <ContainerRenamed Count="3" Description="Renamed the container as the original container name does not follow Azure conventions." />
+      </CopyErrors>
+    </Summary>
     <!--List of renamed containers with the new names, new file path in Azure, original invalid file path, and size -->
-      <Blob Status="ContainerRenamed">
-        <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/private.vhd</BlobPath>
-        <OriginalFilePath>\PageBlob\pageblob test\private.vhd</OriginalFilePath>
-        <SizeInBytes>10490880</SizeInBytes>
-      </Blob>
-      <Blob Status="ContainerRenamed">
-        <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/resource.vhd</BlobPath>
-        <OriginalFilePath>\PageBlob\pageblob test\resource.vhd</OriginalFilePath>
-        <SizeInBytes>71528448</SizeInBytes>
-      </Blob>
-      <Blob Status="ContainerRenamed">
-        <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/role.vhd</BlobPath>
-        <OriginalFilePath>\PageBlob\pageblob test\role.vhd</OriginalFilePath>
-        <SizeInBytes>10490880</SizeInBytes>
-      </Blob>
-      <Status>CompletedWithErrors</Status>
-    </DriveLog>
+    <Blob Status="ContainerRenamed">
+      <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/private.vhd</BlobPath>
+      <OriginalFilePath>\PageBlob\pageblob test\private.vhd</OriginalFilePath>
+      <SizeInBytes>10490880</SizeInBytes>
+    </Blob>
+    <Blob Status="ContainerRenamed">
+      <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/resource.vhd</BlobPath>
+      <OriginalFilePath>\PageBlob\pageblob test\resource.vhd</OriginalFilePath>
+      <SizeInBytes>71528448</SizeInBytes>
+    </Blob>
+    <Blob Status="ContainerRenamed">
+      <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/role.vhd</BlobPath>
+      <OriginalFilePath>\PageBlob\pageblob test\role.vhd</OriginalFilePath>
+      <SizeInBytes>10490880</SizeInBytes>
+    </Blob>
+    <Status>CompletedWithErrors</Status>
+  </DriveLog>
 ```
 
 ## <a name="data-upload-errors"></a>資料上傳錯誤
@@ -181,6 +181,6 @@ ms.locfileid: "85565024"
 |`DiskRenamed` |這些檔案不符合 Azure 命名慣例，且已重新命名。 檢查 `BlobPath` 新名稱的欄位。 |
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [開啟資料箱磁碟問題的支援票證](data-box-disk-contact-microsoft-support.md)。

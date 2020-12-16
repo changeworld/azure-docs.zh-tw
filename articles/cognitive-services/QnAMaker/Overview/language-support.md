@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1edd5ffc2578a27a53c7e9a46a4a5f1cf61331ff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353114"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605054"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker 資源和知識庫的語言支援
 
@@ -83,61 +83,61 @@ ms.locfileid: "96353114"
 
 下列清單包含 QnA Maker 資源支援的語言。 
 
-|Language|
+| 語言 |
 |--|
-|阿拉伯文|
-|亞美尼亞文|
-|孟加拉文|
-|巴斯克文|
-|保加利亞文|
-|卡達隆尼亞文|
-|簡體中文|
-|繁體中文|
-|克羅埃西亞文|
-|捷克文|
-|丹麥文|
-|荷蘭文|
-|英文|
-|愛沙尼亞文|
-|芬蘭文|
-|法文|
-|加里斯亞文|
-|德文|
-|希臘文|
-|古吉拉特文|
-|Hebrew|
-|Hindi|
-|匈牙利文|
-|冰島文|
-|印尼文|
-|愛爾蘭文|
-|義大利文|
-|日文|
-|坎那達文|
-|韓文|
-|拉脫維亞文|
-|立陶宛文|
-|馬來亞拉姆文|
-|馬來文|
-|挪威文|
-|波蘭文|
-|葡萄牙文|
-|旁遮普文|
-|羅馬尼亞文|
-|俄文|
-|塞爾維亞文_斯拉夫|
-|塞爾維亞文_拉丁|
-|斯洛伐克文|
-|斯洛維尼亞文|
-|西班牙文|
-|瑞典文|
-|坦米爾文|
-|泰盧固文|
-|泰文|
-|土耳其文|
-|烏克蘭文|
-|烏都文|
-|越南文|
+| 阿拉伯文 |
+| 亞美尼亞文 |
+| 孟加拉文 |
+| 巴斯克文 |
+| 保加利亞文 |
+| 卡達隆尼亞文 |
+| 簡體中文 |
+| 繁體中文 |
+| 克羅埃西亞文 |
+| 捷克文 |
+| 丹麥文 |
+| 荷蘭文 |
+| 英文 |
+| 愛沙尼亞文 |
+| 芬蘭文 |
+| 法文 |
+| 加里斯亞文 |
+| 德文 |
+| 希臘文 |
+| 古吉拉特文 |
+| Hebrew |
+| Hindi |
+| 匈牙利文 |
+| 冰島文 |
+| 印尼文 |
+| 愛爾蘭文 |
+| 義大利文 |
+| 日文 |
+| 坎那達文 |
+| 韓文 |
+| 拉脫維亞文 |
+| 立陶宛文 |
+| 馬來亞拉姆文 |
+| 馬來文 |
+| 挪威文 |
+| 波蘭文 |
+| 葡萄牙文 |
+| 旁遮普文 |
+| 羅馬尼亞文 |
+| 俄文 |
+| 塞爾維亞文_斯拉夫 |
+| 塞爾維亞文_拉丁 |
+| 斯洛伐克文 |
+| 斯洛維尼亞文 |
+| 西班牙文 |
+| 瑞典文 |
+| 坦米爾文 |
+| 泰盧固文 |
+| 泰文 |
+| 土耳其文 |
+| 烏克蘭文 |
+| 烏都文 |
+| 越南文 |
 
 ## <a name="query-matching-and-relevance"></a>查詢比對和相關性
 QnA Maker 相依于 [Azure 認知搜尋語言分析器](/rest/api/searchservice/language-support) 來提供結果。

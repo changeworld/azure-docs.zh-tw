@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: b04a5535ada9532d62d395f7070d9bcd8aa4380c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591773"
+ms.locfileid: "97605139"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>使用後續追蹤提示來建立多回合對話
 
@@ -38,7 +38,6 @@ ms.locfileid: "97591773"
 在上圖中，使用者已輸入 **我的帳戶** 來開始交談。 知識庫有三個連結的問題和答案配對。 若要精簡答案，使用者可以選取知識庫中的三個選項之一。  ( # 1) 的問題，有三個後續的提示，在聊天機器人中提供三個選項 ( # 2) 。
 
 當使用者選取 ( # 3) 的選項時，就會顯示下一個精簡選項清單 ( # 4) 。 此順序會繼續 ( # 5) ，直到使用者判斷正確的最終答案 ( # 6) 為止。
-
 
 ### <a name="use-multi-turn-in-a-bot"></a>在 bot 中使用多重回合
 
@@ -79,7 +78,6 @@ ms.locfileid: "97591773"
 > [!Caution]
 > 不支援使用匯出的 TSV 或 .XLS 多重回合知識庫檔案作為新的或空白知識庫的資料來源。 您必須從 QnA Maker 入口網站的 [**設定**] 頁面匯 **入** 該檔案類型，才能將匯出的多回合提示新增至知識庫。
 
-
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>使用 Create API 建立具有多回合提示的知識庫
 
 您可以使用 [QnA Maker CREATE API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)來建立具有多回合提示的知識案例。 提示會在 `context` 屬性的陣列中新增 `prompts` 。
@@ -116,7 +114,6 @@ ms.locfileid: "97591773"
     |僅限內容| 選取此核取方塊。 只有當問題指定內容時，才會傳迴響應。|
     |回應的連結|輸入 **使用登入畫面** 來尋找現有的問答組。|
 
-
 1.  傳回一個相符的。 選取此答案做為後續追蹤，然後選取 [ **儲存**]。
 
     ![[後續追蹤提示 (預覽) ] 頁面](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
@@ -137,7 +134,6 @@ ms.locfileid: "97591773"
 1. 當您完成編輯顯示文字時，請選取 [ **儲存**]。
 1. 在頂端導覽列中， **儲存並定型**。
 
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>在後續的提示字元中加入新的問與答配對
 
 當您將新的問答組新增至知識庫時，每一組都應連結至現有的問題做為後續的提示。
@@ -155,7 +151,6 @@ ms.locfileid: "97591773"
     |||
 
     ![建立新的提示問題和解答](../media/conversational-context/create-child-prompt-from-parent.png)
-
 
 1. 選取 [ **建立新** 的]，然後選取 [ **儲存**]。
 
@@ -353,7 +348,6 @@ QnA Maker 的 _GenerateAnswer_ JSON 回應包含 `context` 物件中第一個專
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>使用 QnA Maker 識別碼查詢知識庫
 
 如果您要使用多回合功能來建立自訂應用程式。 在初始問題的回應中，會傳回任何後續的提示和其相關聯的 `qnaId` 。 現在您已有識別碼，您可以在後續提示的要求本文中傳遞此識別碼。 如果要求本文包含 `qnaId` 、和內容物件 (其中包含先前的 QnA Maker 屬性) ，則 GenerateAnswer 會依識別碼傳回確切的問題，而不是使用排名演算法來尋找問題文字的答案。
-
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>更新 API 中支援顯示順序
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 266c04a049cab574576f781c397aee566efe5372
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 6259de345b534bfb51ef6ba1a9c3895800546caf
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516614"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605491"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>部署具有無狀態節點類型的 Azure Service Fabric 叢集 (Preview) 
 Service Fabric 節點類型隨附固有的假設，在某個時間點，可設定狀態的服務可能會放在節點上。 無狀態節點類型可放寬此假設的節點類型，因此可讓節點類型使用其他功能（例如更快速的 scale out 作業）、支援以銅級持久性進行自動 OS 升級，以及在單一虛擬機器擴展集中相應放大至100個以上的節點。
@@ -37,7 +37,7 @@ Service Fabric 節點類型隨附固有的假設，在某個時間點，可設�
             "startPort": "[parameters('nt0applicationStartPort')]"
         },
         "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
-        "durabilityLevel": "Bronze",
+        "durabilityLevel": "Silver",
         "ephemeralPorts": {
             "endPort": "[parameters('nt0ephemeralEndPort')]",
             "startPort": "[parameters('nt0ephemeralStartPort')]"
@@ -54,7 +54,7 @@ Service Fabric 節點類型隨附固有的假設，在某個時間點，可設�
             "startPort": "[parameters('nt1applicationStartPort')]"
         },
         "clientConnectionEndpointPort": "[parameters('nt1fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
+        "durabilityLevel": "Bronze",
         "ephemeralPorts": {
             "endPort": "[parameters('nt1ephemeralEndPort')]",
             "startPort": "[parameters('nt1ephemeralStartPort')]"
@@ -103,7 +103,7 @@ Service Fabric 節點類型隨附固有的假設，在某個時間點，可設�
             "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
             "nodeTypeRef": "[parameters('vmNodeType1Name')]",
             "dataPath": "D:\\\\SvcFab",
-            "durabilityLevel": "Silver",
+            "durabilityLevel": "Bronze",
             "certificate": {
                 "thumbprint": "[parameters('certificateThumbprint')]",
                 "x509StoreName": "[parameters('certificateStoreValue')]"

@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: 瞭解如何使用 Windows 容器在現有的叢集上執行 Azure Dev Spaces
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器、Windows 容器
-ms.openlocfilehash: e6c4279717ef0a7bed0a66a9b0dba1d78e418835
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: a9aa24ae70afe062246e1b295cdc7e0724639596
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900163"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606754"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>使用 Azure Dev Spaces 與 Windows 容器互動
 
@@ -118,11 +118,11 @@ spec:
 
 ```cmd
 $ helm list --namespace dev
-NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+NAME             REVISION   UPDATED                    STATUS    CHART            APP VERSION    NAMESPACE
+windows-service    1        Wed Jul 24 15:45:59 2019   DEPLOYED  mywebapi-0.1.0   1.0            dev
 ```
 
-在上述範例中，您的部署名稱是 *windows 服務* 。 使用新的設定來更新您的 Windows 服務 `helm upgrade` ：
+在上述範例中，您的部署名稱是 *windows 服務*。 使用新的設定來更新您的 Windows 服務 `helm upgrade` ：
 
 ```cmd
 helm upgrade windows-service . --namespace dev

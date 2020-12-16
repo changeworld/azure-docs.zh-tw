@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b84d24174771e8395677874c9dac863fa6f27a54
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a6b92d1b7f36b73d91b8e0e8e519981b936d8735
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185907"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592427"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -40,7 +40,7 @@ Log Analytics 的預設定價是 **隨用隨付** 模型 (會以所擷取的資�
   
 除了隨用隨付模型外，Log Analytics 還有 **容量保留** 層，相較於隨用隨付價格，可讓您省下 25% 的費用。 容量保留定價可讓您從「100 GB/天」起購買保留。 高於保留層級的使用量則會以隨用隨付費率計費。 容量保留層有 31 天的承諾用量期間。 在承諾用量期間，您可以變更為較高層級的容量保留層 (這麼做會重新開始計算 31 天的承諾用量期間)，但在承諾用量期間結束之前，您都無法重新回到隨用隨付定價或較低的容量保留層。 容量保留層會每日計費。 [深入了解](https://azure.microsoft.com/pricing/details/monitor/) Log Analytics 的隨用隨付定價和容量保留定價。 
 
-在所有的定價層中，事件的資料大小是從記錄檔分析中針對此事件儲存的屬性（不論是從代理程式傳送，還是在內嵌進程期間新增）的字串表示所計算。 這包括任何 [自訂欄位](custom-fields.md) ，這些欄位會在收集資料時新增，然後儲存在 Log Analytics 中。 所有資料類型通用的數個屬性，包括一些 [Log Analytics 標準屬性](./log-standard-columns.md)，都會在事件大小的計算中排除。 這包括 `_ResourceId` 、 `_ItemId` 、 `_IsBillable` `_BilledSize` 和 `Type` 。 儲存在 Log Analytics 中的其他所有屬性都會包含在事件大小的計算中。 某些資料類型完全免費，資料內嵌費用，例如 AzureActivity、心跳和使用類型。 若要判斷是否從資料內嵌的計費中排除某個事件，您可以使用 `_IsBillable` 屬性，如下[below](#data-volume-for-specific-events)所示。 使用量會以 GB (1.0 E 9 bytes) 來回報。 
+在所有的定價層中，事件的資料大小是從記錄檔分析中針對此事件儲存的屬性（不論是從代理程式傳送，還是在內嵌進程期間新增）的字串表示所計算。 這包括任何 [自訂欄位](custom-fields.md) ，這些欄位會在收集資料時新增，然後儲存在 Log Analytics 中。 所有資料類型通用的數個屬性，包括一些 [Log Analytics 標準屬性](./log-standard-columns.md)，都會在事件大小的計算中排除。 這包括 `_ResourceId` 、 `_ItemId` 、 `_IsBillable` `_BilledSize` 和 `Type` 。 儲存在 Log Analytics 中的其他所有屬性都會包含在事件大小的計算中。 某些資料類型完全免費，資料內嵌費用，例如 AzureActivity、心跳和使用類型。 若要判斷是否從資料內嵌的計費中排除某個事件，您可以使用 `_IsBillable` 屬性，如下[](#data-volume-for-specific-events)所示。 使用量會以 GB (1.0 E 9 bytes) 來回報。 
 
 另請注意，某些解決方案 (例如 [Azure 資訊安全中心](https://azure.microsoft.com/pricing/details/security-center/)、[Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) 和[設定管理](https://azure.microsoft.com/pricing/details/automation/)) 有自己的定價模型。 
 
@@ -50,7 +50,7 @@ Log Analytics 專用叢集會將各工作區集合到單一的受控 Azure 資�
 
 叢集容量保留層級是使用中的參數，以程式設計方式透過 Azure Resource Manager 來設定 `Capacity` `Sku` 。 `Capacity` 會以 GB 為單位來指定，而且可以有「1000 GB/天」以上、增量單位為「100 GB/天」的值。 這詳述于 [Azure 監視器客戶管理的金鑰](customer-managed-keys.md#create-cluster)。 如果您的叢集需要「2000 GB/天」以上的保留量，請透過以下信箱與我們連絡：[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)。
 
-叢集上的使用量有兩種計費模式。 設定叢集時，參數可以指定這些 `billingType` 參數。 [configuring your cluster](customer-managed-keys.md#customer-managed-key-operations) 兩種模式為： 
+叢集上的使用量有兩種計費模式。 設定叢集時，參數可以指定這些 `billingType` 參數。 [](customer-managed-keys.md#customer-managed-key-operations) 兩種模式為： 
 
 1. 叢集 **：在** 此案例中 (是預設) ，內嵌資料的計費是在叢集層級進行。 與叢集相關聯的每個工作區所擷取的資料數量會彙總起來，以計算叢集的每日帳單。 請注意，系統會先在工作區層級套用來自 [Azure 資訊安全中心](../../security-center/index.yml)的每一節點配置，然後才針對叢集中所有工作區的彙總資料進行此彙總。 
 
@@ -150,11 +150,11 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 保留30天的工作區實際上可能保留資料31天。 如果資料一定要保留30天，請使用 Azure Resource Manager 將保留設定為30天，並使用 `immediatePurgeDataOn30Days` 參數。  
 
-`Usage` 和 `AzureActivity` 這兩個資料類型預設會保留至少 90 天，在這 90 天的保留期內不會有任何費用。 如果工作區保留時間增加到超過 90 天，則這些資料類型的保留期也會增加。  這些資料類型也不會有資料擷取費用。 
+根據預設，兩個資料類型（ `Usage` 和 `AzureActivity` -）會保留至少90天，而且此90天保留期不會收費。 如果工作區保留時間增加到超過 90 天，則這些資料類型的保留期也會增加。  這些資料類型也不會有資料擷取費用。 
 
 根據預設，工作區型 Application Insights 資源 (`AppAvailabilityResults`、`AppBrowserTimings`、`AppDependencies`、`AppExceptions`、`AppEvents`、`AppMetrics`、`AppPageViews`、`AppPerformanceCounters`、`AppRequests`、`AppSystemEvents` 和 `AppTraces`) 的資料類型也會保留 90 天，且這 90 天保留期內不會有任何費用。 您可以使用「依資料類型的保留期」功能來調整其保留期。 
 
-請注意，Log Analytics [清除 API](/rest/api/loganalytics/workspacepurge/purge) 不會影響保留計費，而且適用于極少數的情況。 若要減少保留費用，您必須針對工作區或特定資料類型來縮減保留期限。 
+請注意，Log Analytics 的[清除 API](/rest/api/loganalytics/workspacepurge/purge) 不會影響保留計費，而且僅適用於非常有限的案例。 若要減少保留費用，您必須針對工作區或特定資料類型來縮減保留期限。 
 
 ### <a name="retention-by-data-type"></a>依資料類型的保留期
 

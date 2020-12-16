@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 51430a37f34600d3191a646df7c1890b6d94f481
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033012"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607334"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) 運作時間 SLA
 
@@ -25,9 +25,8 @@ ms.locfileid: "97033012"
 
 ## <a name="region-availability"></a>區域可用性
 
-執行時間 SLA 適用于公用區域，以及 [支援 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的 Azure Government 區域。
-
-## <a name="limitations"></a>限制
+* 執行時間 SLA 適用于公用區域，以及 [支援 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的 Azure Government 區域。
+* 在支援 AKS 的所有區域中， [私用 AKS][private-clusters] 叢集都可以使用執行時間 SLA。
 
 ## <a name="sla-terms-and-conditions"></a>SLA 條款及條件
 
@@ -108,7 +107,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
   },
   ```
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 若要避免產生費用，請清除您所建立的任何資源。 若要刪除叢集，請使用 [`az group delete`][az-group-delete] 命令來刪除 AKS 資源群組：
 
@@ -138,3 +137,4 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-nodepool-update]: /cli/azure/aks/nodepool?#az-aks-nodepool-update
 [az-group-delete]: /cli/azure/group#az-group-delete
+[private-clusters]: private-clusters.md

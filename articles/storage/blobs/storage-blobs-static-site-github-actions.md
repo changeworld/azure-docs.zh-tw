@@ -9,22 +9,22 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 799c0dbc3ddb673cafe0fe4962f7346a841bd4b7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 544b22e3395cacf0cc2e7a21e4b86325a8f4d236
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95543097"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605253"
 ---
-# <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>設定要在 Azure 儲存體中部署靜態網站的 GitHub Actions 工作流程
+# <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>設定 GitHub Actions 工作流程，以在 Azure 儲存體中部署您的靜態網站
 
-使用工作流程將靜態網站部署至 Azure 儲存體帳戶，開始使用 [GitHub Actions](https://docs.github.com/en/actions) 。 設定 GitHub Actions 工作流程之後，您將能夠在對網站的程式碼進行變更時，從 GitHub 自動將您的網站部署至 Azure。
+使用工作流程將靜態網站部署至 Azure 儲存體帳戶，開始使用 [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) 。 設定 GitHub Actions 工作流程之後，您將能夠在對網站的程式碼進行變更時，從 GitHub 自動將您的網站部署至 Azure。
 
 > [!NOTE]
 > 如果您使用 [Azure 靜態 Web Apps](../../static-web-apps/index.yml)，則不需要手動設定 GitHub Actions 的工作流程。
 > Azure 靜態 Web Apps 會為您自動建立 GitHub Actions 的工作流程。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 Azure 訂用帳戶和 GitHub 帳戶。 
 
@@ -45,7 +45,7 @@ Azure 訂用帳戶和 GitHub 帳戶。
    az ad sp create-for-rbac --name {myStaticSite} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} --sdk-auth
 ```
 
-在上述範例中，請將預留位置取代為您的訂用帳戶識別碼和資源組名。 輸出是具有角色指派認證的 JSON 物件，可提供您儲存體帳戶的存取權，如下所示。 複製此 JSON 物件以供稍後之用。
+在上述範例中，請將預留位置取代為您的訂用帳戶識別碼和資源群組名稱。 輸出是具有角色指派認證的 JSON 物件，可提供您儲存體帳戶的存取權，如下所示。 複製此 JSON 物件以供後續使用。
 
 ```output 
   {

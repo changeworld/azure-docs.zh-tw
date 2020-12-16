@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 675f68a36963d19f42cb7c0c5d49ae8c4f0006f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5e899f28cf5b3c11ae5f935d7bc273c566214225
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010532"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606771"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>使用 PowerShell 建立以 Azure Data Lake Storage Gen1 作為預設儲存體的 HDInsight 叢集
 
@@ -140,7 +140,7 @@ ms.locfileid: "96010532"
     ```
 
     系統會提示您輸入私密金鑰密碼。 命令成功執行之後，您應該會在您指定的憑證目錄中看到 **CertFile.cer** 和 **mykey.pvk**。
-2. 使用 [Pvk2Pfx][pvk2pfx] 公用程式將 MakeCert 建立的 .pvk 和 .cer 檔案轉換成 .pfx 檔案。 執行以下命令：
+2. 使用 [Pvk2Pfx][pvk2pfx] 公用程式將 MakeCert 建立的 .pvk 和 .cer 檔案轉換成 .pfx 檔案。 執行下列命令：
 
     ```azurepowershell
     pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
@@ -207,8 +207,8 @@ ms.locfileid: "96010532"
     # Set these variables
 
     $location = "East US 2"
-    $storageAccountName = $dataLakeStorageGen1Name                         # Data Lake Storage Gen1 account name
-        $storageRootPath = "<Storage root path you specified earlier>" # E.g. /clusters/hdiadlcluster
+    $storageAccountName = $dataLakeStorageGen1Name    # Data Lake Storage Gen1 account name
+        $storageRootPath = "<Storage root path you specified earlier>"     # e.g. /clusters/hdiadlcluster
         $clusterName = "<unique cluster name>"
     $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
     $httpCredentials = Get-Credential

@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jgao
-ms.openlocfilehash: 63879350eba897cfe5a793309e5129323fe8bbde
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e13f18ef9c2ec71a351d8a80d72d600bf8e9715
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372369"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607400"
 ---
 # <a name="introduce-health-integration-rollout-to-azure-deployment-manager-public-preview"></a>介紹將健康情況整合推出至 Azure Deployment Manager (公開預覽) 
 
@@ -135,7 +135,7 @@ Azure Deployment Manager 中的新 *healthCheck* 步驟可讓您宣告指出狀�
     },
     ```
 
-1. 在您的 Azure Deployment Manager 首度發行中，于適當的時間叫用 healthCheck 步驟。 在下列範例中，會在**stepGroup2**的**postDeploymentSteps**中叫用健康情況檢查步驟。
+1. 在您的 Azure Deployment Manager 首度發行中，于適當的時間叫用 healthCheck 步驟。 在下列範例中，會在 **stepGroup2** 的 **postDeploymentSteps** 中叫用健康情況檢查步驟。
 
     ```json
     "stepGroups": [

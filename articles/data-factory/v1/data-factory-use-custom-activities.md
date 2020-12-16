@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b3391727b19e9e8e88646f72667545f1df7fe5a7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012862"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606941"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>在 Azure Data Factory 第1版管線中使用自訂活動
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -54,7 +54,7 @@ ms.locfileid: "96012862"
 
 1. 使用 [Azure 入口網站](https://portal.azure.com)建立 **Azure Batch 帳戶**。 請參閱[建立和管理 Azure Batch 帳戶][batch-create-account]一文以取得指示。
 2. 記下 Azure Batch 帳戶名稱、帳戶金鑰、URI，以及集區名稱。 您需要它們來建立 Azure Batch 連結服務。
-    1. 在 Azure Batch 帳戶首頁上，您會看到一串 URL 為下列格式︰`https://myaccount.westus.batch.azure.com`。 在此範例中，**myaccount** 是 Azure Batch 帳戶的名稱。 您在連結服務的定義中使用之 URI 是不含帳戶名稱的 URL。 例如：`https://<region>.batch.azure.com`。
+    1. 在 Azure Batch 帳戶首頁上，您會看到一串 URL 為下列格式︰`https://myaccount.westus.batch.azure.com`。 在此範例中，**myaccount** 是 Azure Batch 帳戶的名稱。 您在連結服務的定義中使用之 URI 是不含帳戶名稱的 URL。 例如： `https://<region>.batch.azure.com` 。
     2. 在左窗格上按一下 [金鑰]，然後複製 **主要存取金鑰**。
     3. 若要使用現有的集區，在功能表上按一下 [集區]，記下集區的 **識別碼**。 如果您沒有現有的集區，請移至下一個步驟。
 2. 建立 **Azure Batch 集** 區。
@@ -98,8 +98,10 @@ public IDictionary<string, string> Execute(
 此方法會傳回未來可用來將自訂活動鏈結在一起的字典。 尚未實作這項功能，因此會從方法傳回空的字典。
 
 ### <a name="procedure"></a>程序
+
 1. 建立 **.NET 類別庫** 專案。
-   <ol type="a">
+   
+    <ol type="a">
      <li>啟動 Visual Studio。</li>
      <li>按一下 [檔案]，指向 [新增]，然後按一下 [專案]。</li>
      <li>展開 [範本]，然後選取 [Visual C#]。 在此逐步解說中，您使用 C# 中，但您可以使用任何 .NET 語言來開發自訂活動。</li>
@@ -116,6 +118,7 @@ public IDictionary<string, string> Execute(
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
+
 4. 將 **Azure 儲存體** NuGet 封裝匯入專案中。
 
     ```powershell
@@ -149,16 +152,19 @@ public IDictionary<string, string> Execute(
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
+
 6. 將 **命名空間** 的名稱變更為 **MyDotNetActivityNS**。
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
+
 7. 將類別的名稱變更為 **MyDotNetActivity**，並從 **IDotNetActivity** 介面衍生它，如下列程式碼片段所示：
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
+
 8. 對 **MyDotNetActivity** 類別實作 (新增) **IDotNetActivity** 介面的 **Execute** 方法，並將下列範例程式碼複製到方法。
 
     下列範例會在每個與資料配量相關聯之 Blob 中計算搜尋詞彙 ("Microsoft") 的出現次數。
@@ -279,6 +285,7 @@ public IDictionary<string, string> Execute(
         return new Dictionary<string, string>();
     }
     ```
+
 9. 新增下列 Helper 方法：
 
     ```csharp
@@ -367,25 +374,30 @@ public IDictionary<string, string> Execute(
     ```
 
     Calculate 方法會在輸入檔案 (資料夾中的 blob) 計算關鍵字 Microsoft 的執行個體數目。 搜尋詞彙 ("Microsoft") 已在程式碼中硬式編碼。
+
 10. 編譯專案。 按一下功能表中的 [建置]，然後按一下 [建置方案]。
 
     > [!IMPORTANT]
     > 將 .NET Framework 4.5.2 版設定為您專案的目標架構：在專案上按一下滑鼠右鍵，然後按一下 [屬性] 來設定目標架構。 Data Factory 不支援針對 .NET Framework 4.5.2 版之後的版本編譯的自訂活動。
 
 11. 啟動 **Windows 檔案總管**，並根據組建的類型流覽至 **bin\debug** 或 **bin\release** 資料夾。
+
 12. 建立 zip 檔案 **MyDotNetActivity.zip** ，其中包含 \bin\Debug 資料夾中的所有二進位檔 \<project folder\> 。 新增 **MyDotNetActivity.pdb** 檔案，讓您可以取得額外的詳細資訊，例如如果有失敗時，原始程式碼中引起問題的程式碼行號。
 
     > [!IMPORTANT]
     > 自訂活動之 zip 檔案中的所有檔案都必須位於 **最上層** 且不包含任何子資料夾。
 
     ![二進位輸出檔案](./media/data-factory-use-custom-activities/Binaries.png)
-14. 如果名為 **customactivitycontainer** 的 Blob 容器不存在，請自行建立。
-15. 將 MyDotNetActivity.zip 作為 blob，上傳至 AzureStorageLinkedService 所參照之 **一般用途** Azure Blob 儲存體 (而不是經常性/非經常性 Blob 儲存體) 中的 customactivitycontainer。
+
+13. 如果名為 **customactivitycontainer** 的 Blob 容器不存在，請自行建立。
+
+14. 將 MyDotNetActivity.zip 作為 blob，上傳至 AzureStorageLinkedService 所參照之 **一般用途** Azure Blob 儲存體 (而不是經常性/非經常性 Blob 儲存體) 中的 customactivitycontainer。
 
 > [!IMPORTANT]
 > 如果您將這個 .NET 活動專案加入 Visual Studio 中包含 Data Factory 專案的方案，並從 Data Factory 應用程式專案加入 .NET 活動的參考，您就不需要執行最後兩個步驟，也就是建立 zip 檔案，和手動上傳到一般用途 Azure Blob 儲存體。 當您使用 Visual Studio 發佈 Data Factory 實體時，發佈程序會自動完成這些步驟。 如需詳細資訊，請參閱[Visual Studio 中的 Data Factory 專案](#data-factory-project-in-visual-studio)一節。
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>建立具有自訂活動的管線
+
 您已建立自訂活動，並將二進位檔的 zip 檔案上傳至 **一般用途** Azure 儲存體帳戶中的 blob 容器。 在本節中，您將透過使用自訂活動的管線建立 Azure Data Factory。
 
 自訂活動的輸入資料集代表 blob 儲存體中 adftutorial 容器之 customactivityinput 資料夾中的輸入 blob (檔案)。 活動的輸出資料集代表 blob 儲存體中 adftutorial 容器之 customactivityinput 資料夾中的輸出 blob。

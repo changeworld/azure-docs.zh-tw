@@ -4,12 +4,12 @@ description: 自動調整規模設定及其運作方式的詳細解說。 適用
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a914f6d71c013acea8dfde0f6578985bc009bb26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317462"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605234"
 ---
 # <a name="understand-autoscale-settings"></a>了解自動調整設定
 自動調整設定可協助您確保執行中的資源數量正確，能夠處理變動的應用程式負載。 您可以設定根據指出負載或效能的計量，或是在排定的日期和時間，觸發自動調整設定。 本文將詳細探討自動調整設定的剖析。 本文開頭是設定的結構描述和屬性，然後逐步說明可以設定的各種設定檔類型。 最後，本文會討論 Azure 中的自動調整功能如何評估在任何指定的時間要執行哪個設定檔。
@@ -60,7 +60,7 @@ ms.locfileid: "87317462"
               "cooldown": "PT5M"
             }
           },
-    {
+          {
             "metricTrigger": {
               "metricName": "Percentage CPU",
               "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1",
@@ -106,7 +106,7 @@ ms.locfileid: "87317462"
 | metricTrigger | timeAggregation | 用來彙總所取樣計量的彙總方法。 例如 **TimeAggregation = “Average”** 應該會透過計算平均值來彙總所取樣的計量。 在前述案例中會採用 10 個 1 分鐘樣本，然後計算其平均值。 |
 | rule (規則) | scaleAction | 觸發 metricTrigger 時要採取的動作。 |
 | scaleAction | direction | "Increase" 用於相應放大，或 "Decrease" 用於相應縮小。|
-| scaleAction | value | 要增加或減少多少資源容量。 |
+| scaleAction | 值 | 要增加或減少多少資源容量。 |
 | scaleAction | cooldown | 在進行調整作業之後、再次調整之前，所要等待的時間長度。 例如，如果 **cooldown = “PT10M”**，則自動調整在接下來 10 分鐘內不會再次嘗試進行調整。 cooldown 是用來在新增或移除執行個體之後，讓計量穩定。 |
 
 ## <a name="autoscale-profiles"></a>自動調整規模設定檔
@@ -119,34 +119,41 @@ ms.locfileid: "87317462"
 
 - **固定日期設定檔：** 這個設定檔用於特殊案例。 例如，假設您有一個在 2017 年 12 月 26 日 (PST) 發生的重要事件。 您希望當天資源的最小和最大容量不同，但仍會依據相同的計量進行調整。 在此情況下，您應該在設定的設定檔清單中新增一個固定日期設定檔。 此設定檔會設定為只在事件當天執行。 在任何其他日子，自動調整會使用一般設定檔。
 
-    ``` JSON
-    "profiles": [{
-    "name": " regularProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    },
-    {
-    ...
-    }]
-    },
-    {
-    "name": "eventProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    }, {
-    ...
-    }],
-    "fixedDate": {
-        "timeZone": "Pacific Standard Time",
-               "start": "2017-12-26T00:00:00",
-               "end": "2017-12-26T23:59:00"
-    }}
+    ```json
+    "profiles": [
+        {
+            "name": " regularProfile",
+            "capacity": {
+                ...
+            },
+            "rules": [
+                {
+                ...
+                },
+                {
+                ...
+                }
+            ]
+        },
+        {
+            "name": "eventProfile",
+            "capacity": {
+            ...
+            },
+            "rules": [
+                {
+                ...
+                }, 
+                {
+                ...
+                }
+            ],
+            "fixedDate": {
+                "timeZone": "Pacific Standard Time",
+                "start": "2017-12-26T00:00:00",
+                "end": "2017-12-26T23:59:00"
+            }
+        }
     ]
     ```
     
@@ -298,7 +305,7 @@ ms.locfileid: "87317462"
 
 例如，假設有目前容量為 10 的虛擬機器擴展集。 相應縮小規則有兩個：一個會減少 50% 的容量，而另一個則會使容量的計數減少 3。 第一個規則會產生新容量 5，而第二個規則則會產生容量 7。 為了確保服務可用性，自動調整會選擇產生最大容量的動作，因此會選擇第二個規則。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參考下列各項，以深入了解自動調整︰
 
 * [自動調整的概觀](./autoscale-overview.md)

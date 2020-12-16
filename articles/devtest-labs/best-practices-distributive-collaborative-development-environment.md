@@ -3,12 +3,12 @@ title: Azure DevTest Labs 資源的分散式協作式開發
 description: 提供設定分散式和共同作業開發環境的最佳作法，以開發 DevTest Labs 資源。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483800"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592359"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Azure DevTest Labs 資源的分散式和共同開發的最佳作法
 分散式共同作業開發可讓不同的小組或人員開發和維護程式碼基底。 若要成功，開發程式取決於建立、共用和整合資訊的能力。 這項主要開發原則可以在 Azure DevTest Labs 中使用。 實驗室中有數種類型的資源，通常會在企業內的不同實驗室之間散發。 不同類型的資源著重于兩個區域：

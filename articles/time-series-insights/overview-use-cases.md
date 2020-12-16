@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 12/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b8f13a20232fab61dc082c1b12b7ddaa11807554
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7d97958c5fd1274495da88c064b63e59e354f691
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016185"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606958"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure 時間序列深入解析 Gen2 使用案例
 
@@ -98,7 +98,7 @@ Azure 時間序列深入解析 Gen2 能以兩種簡單且符合成本效益的�
 
 * 其次，您可以將機器學習和預測模型的輸出送入 Azure 時間序列深入解析 Gen2，以視覺化並儲存其結果。 此程序可協助組織最佳化並調整其模型。 Azure 時間序列深入解析 Gen2 可讓您輕鬆地將相同平面上的串流遙測資料視覺化，如同定型的模型輸出。 如此一來，它可以協助資料科學小組找出異常狀況並識別模式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 [Azure 時間序列深入解析 Gen2 Explorer](./concepts-ux-panels.md)。
 * 閱讀 [Azure 時間序列深入解析 Gen2 的最佳作法](./how-to-plan-your-environment.md) ，以規劃您的環境。

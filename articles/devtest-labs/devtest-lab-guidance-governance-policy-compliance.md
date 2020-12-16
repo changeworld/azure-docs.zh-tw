@@ -4,12 +4,12 @@ description: 此文章提供治理適用於 Azure DevTest Labs 基礎結構之�
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: fe370ec882fd0462bba6afdf11c718cf46618f0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89fe380c3a8e0e0a82cc806bf19f9a3454041d94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480927"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592342"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>治理 Azure DevTest Labs 基礎結構 - 公司原則和合規性
 此文章提供治理適用於 Azure DevTest Labs 基礎結構之公司原則和合規性的相關指導方針。 
@@ -35,9 +35,9 @@ ms.locfileid: "85480927"
 作為貴組織整體治理和組態管理策略的一部分，我們建議您使用集中式存放庫。 當您使用多個存放庫時，它們可能會在經過一段時間之後成為非受控軟體的定址接收器。 使用中央存放庫，多個小組就能針對他們的專案，從此存放庫中取用成品。 它會強制執行標準化、安全性、簡化管理，並排除重複的工作。 在集中化過程中，下列動作為適用於長期管理和持續性的建議做法：
 
 - 將 Azure Repos 與 Azure 訂用帳戶用來進行驗證和授權的相同 Azure Active Directory 租用戶產生關聯。
-- 在集中管理的 Azure Active Directory 中，建立名為**所有 DevTest Labs 開發人員**的群組。 任何有助於成品開發的開發人員都應該放置於此群組中。
+- 在集中管理的 Azure Active Directory 中，建立名為 **所有 DevTest Labs 開發人員** 的群組。 任何有助於成品開發的開發人員都應該放置於此群組中。
 - 相同的 Azure Active Directory 群組可用來提供存取 Azure Repos 存放庫及實驗室。
-- 在 Azure Repos 中，應該使用分支或派生，將開發中的存放庫與主要生產環境存放庫分隔開來。 只會在適當的程式碼檢閱之後，使用 Pull 要求來將內容新增至主要分支。 當程式碼檢閱者核准變更之後，負責維護主要分支的首席開發人員就會合併更新的程式碼。 
+- 在 Azure Repos 中，應該使用分支或派生，將開發中的存放庫與主要生產環境存放庫分隔開來。 只有在適當的程式碼審核之後，才會將內容新增至具有提取要求的主要分支。 一旦程式碼審核者核准變更，負責維護主要分支的首席開發人員就會合並更新的程式碼。 
 
 ## <a name="corporate-security-policies"></a>公司安全性原則
 
@@ -67,5 +67,5 @@ ms.locfileid: "85480927"
 最後，需要在整個組織中套用相同類型的限制，其也必須負責可能會接受內容貼文之抽取式媒體或外部 URL 的所有可能方法。 請洽詢您的安全性專業人員來檢閱並實作安全性原則。 如需其他建議，請參閱 [Microsoft 網路安全性](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs)。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參閱[應用程式移轉與整合](devtest-lab-guidance-governance-application-migration-integration.md)。

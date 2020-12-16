@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1b49faabb1c61a10418bfce3ae2e8187429981ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 00e264cea34c7c3e7223b47217ecf5a59b76ba41
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186077"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592461"
 ---
 # <a name="azure-activity-log"></a>Azure 活動記錄
 活動記錄是 Azure 中的[平台記錄](platform-logs-overview.md)，可提供訂用帳戶層級事件的深入解析。 這包括修改資源或啟動虛擬機器時的資訊。 您可以在 Azure 入口網站中檢視活動記錄，或使用 PowerShell 和 CLI 來取出項目。 如需其他功能，您應該建立診斷設定，以將活動記錄傳送至 [Azure 監視器記錄](data-platform-logs.md)檔、Azure 事件中樞轉送至 Azure 外部，或用於封存的 Azure 儲存體。 本文提供有關查看活動記錄，並將其傳送至不同目的地的詳細資料。
@@ -56,7 +56,8 @@ ms.locfileid: "96186077"
 - 使用記錄查詢來執行複雜的分析，並深入瞭解活動記錄專案。
 - 使用記錄警示搭配活動專案，以允許更複雜的警示邏輯。
 - 儲存超過90天的活動記錄專案。
-- 在 Log Analytics 工作區中儲存的活動記錄資料不會有資料內嵌或資料保留費用。
+- 在 Log Analytics 工作區中儲存的活動記錄資料不會產生任何資料的費用。
+- 針對儲存在 Log Analytics 工作區中的活動記錄資料，在90天之前沒有任何資料保留費用。
 
 [建立診斷設定](diagnostic-settings.md) ，以將活動記錄傳送至 log Analytics 工作區。 您可以從任何單一訂用帳戶將活動記錄傳送到最多五個工作區。 在租用戶之間收集記錄需要 [Azure Lighthouse](../../lighthouse/index.yml)。
 

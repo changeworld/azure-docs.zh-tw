@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 25dda63c6450040e396de9ee0d3fb0a459416343
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369506"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606822"
 ---
 # <a name="translator-v20"></a>Translator 2.0 版
 
@@ -51,9 +51,9 @@ ms.locfileid: "94369506"
 
 |ProfanityAction    |動作 | (日文) 的範例來源  |英文) 範例轉譯 (  |
 |:--|:--|:--|:--|
-|NoAction   |預設值。 與未設定此選項時相同。 粗話會從來源傳遞到目標。        |彼はジャッカスです。     |He is a jackass.   |
-|Marked     |不雅字眼會以 XML 標籤 \<profanity> 和 \</profanity> 括住。       |彼はジャッカスです。 |He is a \<profanity>jackass\</profanity>.  |
-|已刪除    |將會從輸出中移除不雅字眼，但不予取代。     |彼はジャッカスです。 |He is a.   |
+|NoAction   |預設值。 與未設定此選項時相同。 粗話會從來源傳遞到目標。 |彼はジャッカスです。 |He is a jackass.  |
+|Marked |不雅字眼會以 XML 標籤 \<profanity> 和 \</profanity> 括住。 |彼はジャッカスです。   |He is a \<profanity>jackass\</profanity>.  |
+|已刪除    |將會從輸出中移除不雅字眼，但不予取代。 |彼はジャッカスです。 |He is a.   |
 
     
 ## <a name="excluding-content-from-translation"></a>從翻譯中排除內容
@@ -83,14 +83,14 @@ ms.locfileid: "94369506"
 
 ### <a name="parameters"></a>參數
 
-|參數|值|說明    |參數類型|資料類型|
+|參數|值|描述    |參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |appid  |(空白)    |必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢|字串|
-|text|(空白)   |必要。 字串，表示要轉譯的文字。 文字不可包含超過10000個字元。|查詢|字串|
+|文字|(空白)   |必要。 字串，表示要轉譯的文字。 文字不可包含超過10000個字元。|查詢|字串|
 |從|(空白)   |選擇性。 字串，表示所要翻譯文字的語言代碼。 例如，en 代表「英文」。|查詢|字串|
 |to|(空白) |必要。 字串，代表翻譯文字的語言代碼。|查詢|字串|
 |ContentType|(空白)    |選擇性。 要翻譯文字的格式。 支援的格式 `text/plain` (預設) 和  `text/html` 。 任何 HTML 專案都必須是格式正確且完整的元素。|查詢|字串|
-|category|(空白)   |選擇性。 字串，包含翻譯 (網域) 的分類。 預設為 `general`。|查詢|字串|
+|category|(空白)   |選擇性。 字串，包含翻譯 (網域) 的分類。 預設值為 `general`。|查詢|字串|
 |授權|(空白)  |如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。 授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
 |Ocp-Apim-Subscription-Key|(空白)  |如果 `appid` 欄位和 `Authorization` 標頭都保持空白，則為必要項。|header|字串|
 
@@ -139,7 +139,7 @@ ms.locfileid: "94369506"
 * `AppId`：必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `AppId` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。
 * `From`:選擇性。 字串，表示所要翻譯文字的語言代碼。 如果此欄位保留空白，回應將會包含自動語言偵測的結果。
 * `Options`:選擇性。 `Options`包含下列值的物件。 它們都是選擇性的，且預設為最常見的設定。 指定的項目必須以字母順序列出。
-    - `Category`：包含翻譯 (網域) 類別的字串。 預設為 `general`。
+    - `Category`：包含翻譯 (網域) 類別的字串。 預設值為 `general`。
     - `ContentType`：要翻譯文字的格式。 支援的格式 `text/plain` (預設) 、 `text/xml` 和 `text/html` 。 任何 HTML 專案都必須是格式正確且完整的元素。
     - `ProfanityAction`：指定如何處理粗話，如先前所述。 接受的值 `NoAction` (預設值) 、 `Marked` 和 `Deleted` 。
     - `State`：可協助將要求和回應相互關聯的使用者狀態。 回應中會傳回相同的內容。
@@ -188,7 +188,7 @@ ms.locfileid: "94369506"
 
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |授權|(空白)  |如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。 授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
 |Ocp-Apim-Subscription-Key|(空白)|如果 `appid` 欄位和 `Authorization` 標頭都保持空白，則為必要項。|header|字串|
@@ -229,10 +229,10 @@ ms.locfileid: "94369506"
  
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |appid|(空白)|必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢|字串|
-|locale|(空白) |必要。 表示下列其中一項的字串，用來將語言名稱當地語系化： <ul><li>與語言相關聯的 ISO 639 2 字母小寫文化特性代碼和 ISO 3166 2 字母大寫子文化特性代碼的組合。 <li>ISO 639 小寫文化特性代碼本身。|查詢|字串|
+|地區設定|(空白) |必要。 表示下列其中一項的字串，用來將語言名稱當地語系化： <ul><li>與語言相關聯的 ISO 639 2 字母小寫文化特性代碼和 ISO 3166 2 字母大寫子文化特性代碼的組合。 <li>ISO 639 小寫文化特性代碼本身。|查詢|字串|
 |授權|(空白)  |如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。 授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
 |Ocp-Apim-Subscription-Key|(空白)  |如果 `appid` 欄位和 `Authorization` 標頭都保持空白，則為必要項。|header|字串|
 
@@ -263,7 +263,7 @@ ms.locfileid: "94369506"
  
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |appid|(空白)|必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢|字串|
 |授權|(空白)  |如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。 授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
@@ -296,7 +296,7 @@ ms.locfileid: "94369506"
 
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |appid|(空白)|必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢|字串|
 |授權|(空白)|如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。 授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
@@ -328,13 +328,13 @@ BINARY
 
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |appid|(空白)|必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢|字串|
-|text|(空白)   |必要。 字串，包含一或多個要以指定語言讀出之資料流程的句子。 文字不能超過2000個字元。|查詢|字串|
+|文字|(空白)   |必要。 字串，包含一或多個要以指定語言讀出之資料流程的句子。 文字不能超過2000個字元。|查詢|字串|
 |語言|(空白)   |必要。 字串，表示用來說出文字之語言的支援語言代碼。 程式碼必須是方法所傳回的其中一個代碼 `GetLanguagesForSpeak` 。|查詢|字串|
 |format|(空白)|選擇性。 指定內容類型識別碼的字串。 目前可以使用 `audio/wav` 和 `audio/mp3`。 預設值是 `audio/wav`。|查詢|字串|
-|選項|(空白)    |選擇性。 指定合成語音屬性的字串：<ul><li>`MaxQuality` 並 `MinSize` 指定音訊信號的品質。 `MaxQuality` 提供最高品質。 `MinSize` 提供最小的檔案大小。 預設值為  `MinSize` 。</li><li>`female` 並 `male` 指定所需的聲音性別。 預設為 `female`。 使用垂直線 (<code>\|</code>) 包含多個選項。 例如，`MaxQuality|Male`。</li></li></ul>  |查詢|字串|
+|選項|(空白)    |選擇性。 指定合成語音屬性的字串：<ul><li>`MaxQuality` 並 `MinSize` 指定音訊信號的品質。 `MaxQuality` 提供最高品質。 `MinSize` 提供最小的檔案大小。 預設值為  `MinSize` 。</li><li>`female` 並 `male` 指定所需的聲音性別。 預設值為 `female`。 使用垂直線 (<code>\|</code>) 包含多個選項。 例如，`MaxQuality|Male`。</li></li></ul>  |查詢|字串|
 |授權|(空白)|如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。 授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
 |Ocp-Apim-Subscription-Key|(空白)  |如果 `appid` 欄位和 `Authorization` 標頭都保持空白，則為必要項。|header|字串|
 
@@ -364,10 +364,10 @@ BINARY
 
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |appid|(空白)  |必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢|字串|
-|text|(空白)|必要。 包含要識別其語言之文字的字串。 文字不能超過10000個字元。|查詢|  字串|
+|文字|(空白)|必要。 包含要識別其語言之文字的字串。 文字不能超過10000個字元。|查詢|  字串|
 |授權|(空白)|如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。 授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
 |Ocp-Apim-Subscription-Key  |(空白)    |如果 `appid` 欄位和 `Authorization` 標頭都保持空白，則為必要項。|header|字串|
 
@@ -420,7 +420,7 @@ BINARY
  
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |appid|(空白)|必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢|字串|
 |授權|(空白)|如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。  授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
@@ -454,16 +454,16 @@ BINARY
  
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型   |
+|參數|值|描述|參數類型|資料類型   |
 |:--|:--|:--|:--|:--|
 |appid|(空白)|必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢|字串|
 |originalText|(空白)|必要。 字串，包含要轉譯的文字。 字串的最大長度是1000個字元。|查詢|字串|
 |translatedText|(空白) |必要。 包含翻譯成目的語言之文字的字串。 字串的最大長度是2000個字元。|查詢|字串|
 |從|(空白)   |必要。 字串，表示文字原始語言的語言代碼。 例如，en 代表英文，取消德文。|查詢|字串|
 |to|(空白)|必要。 字串，表示要將文字轉譯成之語言的語言代碼。|查詢|字串|
-|rating|(空白) |選擇性。 表示字串品質評等的整數。 值介於-10 到10之間。 預設為 1。|查詢|integer|
+|rating|(空白) |選擇性。 表示字串品質評等的整數。 值介於-10 到10之間。 預設值是 1。|查詢|integer|
 |ContentType|(空白)    |選擇性。 要翻譯文字的格式。 支援的格式為 `text/plain` 和 `text/html` 。 任何 HTML 專案都必須是格式正確且完整的元素。    |查詢|字串|
-|category|(空白)|選擇性。 字串，包含翻譯 (網域) 的分類。 預設為 `general`。|查詢|字串|
+|category|(空白)|選擇性。 字串，包含翻譯 (網域) 的分類。 預設值為 `general`。|查詢|字串|
 |user|(空白)|必要。 用來追蹤提交的建立者的字串。|查詢|字串|
 |uri|(空白)|選擇性。 字串，包含翻譯的內容位置。|查詢|字串|
 |授權|(空白)|如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。  授權權杖：`"Bearer" + " " + "access_token"`。  |header|字串|
@@ -533,7 +533,7 @@ BINARY
  
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |授權|(空白)|如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。  授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
 |Ocp-Apim-Subscription-Key|(空白)|如果 `appid` 欄位和 `Authorization` 標頭都保持空白，則為必要項。|header|字串|
@@ -566,10 +566,10 @@ integer
 
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |appid|(空白)  |必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢| 字串|
-|text|(空白)   |必要。 表示要分割成句子之文字的字串。 文字的大小上限為10000個字元。|查詢|字串|
+|文字|(空白)   |必要。 表示要分割成句子之文字的字串。 文字的大小上限為10000個字元。|查詢|字串|
 |語言   |(空白)    |必要。 字串，表示輸入文字的語言代碼。|查詢|字串|
 |授權|(空白)|如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。 授權權杖：`"Bearer" + " " + "access_token"`。   |header|字串|
 |Ocp-Apim-Subscription-Key|(空白)|如果 `appid` 欄位和 `Authorization` 標頭都保持空白，則為必要項。|header|字串|
@@ -605,13 +605,13 @@ integer
 
 此 `TranslateOptions` 物件包含下列清單中的值。 它們都是選擇性的，且預設為最常見的設定。 指定的項目必須以字母順序列出。
 
-* `Category`：包含翻譯 (網域) 類別的字串。 預設為 `general`。
+* `Category`：包含翻譯 (網域) 類別的字串。 預設值為 `general`。
 * `ContentType`：唯一支援的選項以及預設值為 `text/plain` 。
 * `IncludeMultipleMTAlternatives`：布林值旗標，指定是否應該從 MT 引擎傳回一個以上的替代選項。 有效的值為 `true` ，且 `false` (區分大小寫的) 。 預設值是 `false` ，它只會傳回一個替代方法。 設定旗標可 `true` 讓您建立人工替代方案，與共同作業轉譯架構 (CTF) 完全整合在一起。 這項功能可讓您藉由在解碼器的 *n* 個最佳清單中新增人工替代專案，來傳回在 CTF 中沒有翻譯的句子替代專案。
     - 評級。 分級的套用方式如下： 
          - 最佳自動翻譯的評分為 5。
        - CTF 中的替代方案會反映審核者的授權單位。 範圍從-10 到 + 10。
-       - 自動產生的 ( *n* 最佳) 轉譯替代專案的評等為0，而相符程度為100。
+       - 自動產生的 (*n* 最佳) 轉譯替代專案的評等為0，而相符程度為100。
     - 替代專案的數目。 傳回的替代專案數目可以高達中指定的值 `maxTranslations` ，但可以較低。
     - 語言組。 這項功能不適用於簡體中文與繁體中文之間的翻譯。 它適用于 Microsoft Translator 支援的所有其他語言配對。
 * `State`：可協助將要求和回應相互關聯的使用者狀態。 回應中會傳回相同的內容。
@@ -663,10 +663,10 @@ integer
  
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |appid|(空白)|必要。 如果 `Authorization` 使用或 `Ocp-Apim-Subscription-Key` 標頭，請將 `appid` 欄位保留空白。 否則，請包含包含的字串 `"Bearer" + " " + "access_token"` 。|查詢|字串|
-|text|(空白)|必要。 字串，表示要轉譯的文字。 文字的大小上限為10000個字元。|查詢|字串|
+|文字|(空白)|必要。 字串，表示要轉譯的文字。 文字的大小上限為10000個字元。|查詢|字串|
 |從|(空白)|必要。 字串，表示所要翻譯文字的語言代碼。|查詢|字串|
 |to |(空白)    |必要。 字串，表示要將文字轉譯成之語言的語言代碼。|查詢|字串|
 |maxTranslations|(空白)|必要。 整數，表示要傳回的翻譯數目上限。|查詢|integer|
@@ -717,13 +717,13 @@ integer
 * `From`：必要。 字串，表示所要翻譯文字的語言代碼。
 * `MaxTranslations`：必要。 整數，表示要傳回的翻譯數目上限。
 * `Options`:選擇性。 `Options`包含下列值的物件。 它們都是選擇性的，且預設為最常見的設定。 指定的項目必須以字母順序列出。
-    - `Category`：包含翻譯 (網域) 類別的字串。 預設為 `general`。
+    - `Category`：包含翻譯 (網域) 類別的字串。 預設值為 `general`。
     - `ContentType`：唯一支援的選項以及預設值為 `text/plain` 。
     - `IncludeMultipleMTAlternatives`：布林值旗標，指定是否應該從 MT 引擎傳回一個以上的替代選項。 有效的值為 `true` ，且 `false` (區分大小寫的) 。 預設值是 `false` ，它只會傳回一個替代方法。 將旗標設定為可 `true` 在翻譯中產生人工替代方案，並與共同作業翻譯架構 (CTF) 完全整合。 這項功能可讓您藉由在解碼器的 *n* 個最佳清單中新增人工替代專案，來傳回在 CTF 中沒有替代專案的替代句子替代專案。
         - 分級的套用方式如下：
           - 最佳自動翻譯的評分為 5。
           - CTF 中的替代方案會反映審核者的授權單位。 範圍從-10 到 + 10。
-          - 自動產生的 ( *n* 最佳) 轉譯替代專案的評等為0，而相符程度為100。
+          - 自動產生的 (*n* 最佳) 轉譯替代專案的評等為0，而相符程度為100。
         - 替代專案的數目。 傳回的替代專案數目可以高達中指定的值 `maxTranslations` ，但可以較低。
         - 語言組。 這項功能不適用於簡體中文與繁體中文之間的翻譯。 它適用于 Microsoft Translator 支援的所有其他語言配對。
 * `State`：可協助將要求和回應相互關聯的使用者狀態。 回應中會傳回相同的內容。
@@ -786,7 +786,7 @@ integer
  
 ### <a name="parameters"></a>參數
 
-|參數|值|說明|參數類型|資料類型|
+|參數|值|描述|參數類型|資料類型|
 |:--|:--|:--|:--|:--|
 |授權  |(空白)    |如果 `appid` 欄位和 `Ocp-Apim-Subscription-Key` 標頭都保持空白，則為必要項。  授權權杖：`"Bearer" + " " + "access_token"`。|header|字串|
 |Ocp-Apim-Subscription-Key|(空白)  |如果 `appid` 欄位和 `Authorization` 標頭都保持空白，則為必要項。|header|字串|

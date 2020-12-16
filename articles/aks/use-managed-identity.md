@@ -3,13 +3,13 @@ title: 在 Azure Kubernetes Service 中使用受控識別
 description: '瞭解如何在 Azure Kubernetes Service (AKS 中使用受控識別) '
 services: container-service
 ms.topic: article
-ms.date: 12/06/2020
-ms.openlocfilehash: 68d8111da5ec10f23d14b375a18229bca075da84
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/16/2020
+ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97026824"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607281"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用受控識別
 
@@ -36,7 +36,7 @@ AKS 針對內建服務和附加元件使用了數個受控識別。
 
 | 身分識別                       | 名稱    | 使用案例 | 預設許可權 | 攜帶您自己的身分識別
 |----------------------------|-----------|----------|
-| 控制平面 | 看不到 | 由 AKS 控制平面元件用來管理叢集資源，包括輸入負載平衡器、AKS 受控公用 Ip 和叢集自動調整程式作業 | 節點資源群組的參與者角色 | 預覽
+| 控制平面 | 看不到 | 由 AKS 控制平面元件用來管理叢集資源，包括輸入負載平衡器、AKS 受控公用 Ip 和叢集自動調整程式作業 | 節點資源群組的參與者角色 | 支援
 | Kubelet | AKS 叢集名稱-agentpool | 使用 Azure Container Registry (ACR) 進行驗證 | NA 適用于 kubernetes v 1.15 +) 的 ( | 目前不支援
 | 附加元件 | AzureNPM | 不需要身分識別 | NA | 否
 | 附加元件 | AzureCNI 網路監視 | 不需要身分識別 | NA | 否

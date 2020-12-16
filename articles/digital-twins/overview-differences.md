@@ -7,19 +7,19 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: af8d768ceeaacdf1c8a0f6cdc8be0041e4ae4ed1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fb0d3e3c57a26f7ca14b74edc42cb657ba6074c3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099074"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604991"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>什麼是新的 Azure Digital Twins？ 新版與舊版 (2018) 有何不同？
 
 Azure Digital Twins 的第一個公開預覽版本已於 2018 年 10 月發行。 雖然第一版的核心概念已通過新的服務，但許多介面和實作為詳細資料已變更，讓服務更具彈性且更容易存取。 這些變更都是受到客戶的意見反應啟發所形成的。
 
 > [!IMPORTANT]
-> 在新服務的擴充功能中，先前的 Azure Digital Twins 服務將於2020 年年底淘汰。
+> 自2021年1月18日起，在新服務的擴充功能中，將淘汰先前的 Azure 數位 Twins 服務，其 Api 和相關聯的資料已無法再使用。
 
 如果您在第一次公開預覽期間使用第一版的 Azure 數位 Twins，請使用本文中的資訊和最佳作法，瞭解如何使用新的服務，並充分利用其功能。
 
@@ -38,7 +38,7 @@ Azure Digital Twins 的第一個公開預覽版本已於 2018 年 10 月發行�
 
 ## <a name="service-limits"></a>服務限制
 
-如需 Azure 數位 Twins 限制的清單，請參閱 [*參考：服務限制*](reference-service-limits.md)。
+如需 Azure Digital Twins 限制清單，請參閱 [*參考：服務限制：*](reference-service-limits.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

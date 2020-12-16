@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 0113af7e9380f38f4eb28e4f3d65459a2b749aa5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 41c0bd23bbd2d69506a979c5a36ac40f73258f2c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966780"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605508"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教學課程：使用 DMS 在線上將 MySQL 移轉至適用於 MySQL 的 Azure 資料庫
 
@@ -120,7 +120,7 @@ mysql.exe -h shausample.mysql.database.azure.com -u dms@shausample -p employees 
 
 如果您的結構描述中有外部索引鍵，則移轉的初始載入和持續同步將會失敗。  請在 MySQL Workbench 中執行下列指令碼，以擷取 Drop 外部索引鍵指令碼和 Add 外部索引鍵指令碼。
 
-```
+```sql
 SET group_concat_max_len = 8192;
     SELECT SchemaName, GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery, GROUP_CONCAT(AddQuery SEPARATOR ';\n') as AddQuery
     FROM

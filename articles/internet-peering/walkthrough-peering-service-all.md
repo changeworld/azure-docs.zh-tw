@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: how-to
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: 75ec1a4ededfea4f9b40461d69b6e16d947e6919
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 292c850f5352c80112e3f0bcc5c868f8128819be
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84712474"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592308"
 ---
 # <a name="peering-service-partner-walkthrough"></a>對等服務夥伴逐步解說
 
@@ -31,7 +31,7 @@ ms.locfileid: "84712474"
 1. 遵循指示， [使用入口網站將舊版直接對等互連轉換為 Azure 資源](howto-legacy-direct-portal.md)。 如有需要，請訂購額外的線路以符合高可用性需求。
 1. 然後，遵循下列步驟， [使用入口網站在直接對等互連上啟用對等互連服務](howto-peering-service-portal.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解對 [等互連原則](https://peering.azurewebsites.net/peering)。
 * 若要瞭解設定與 Microsoft 直接對等互連的步驟，請遵循 [直接對等互連逐步](walkthrough-direct-all.md)解說。

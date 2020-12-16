@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: a454c1297b0f25c64b11217811999d4331148205
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f2a0784b2795b82131880d73a6d9217acc1d72d3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022457"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606210"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory 支援的計算環境
 
@@ -32,7 +32,7 @@ ms.locfileid: "96022457"
 | [Azure Machine Learning Studio (傳統) ](#azure-machine-learning-studio-classic-linked-service) | [Machine Learning Studio (傳統) 活動：批次執行和更新資源](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning 執行管線](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
-| [AZURE sql](#azure-sql-database-linked-service)， [Azure Synapse Analytics (先前的 SQL 資料倉儲) ](#azure-synapse-analytics-linked-service)， [SQL Server](#sql-server-linked-service) | [預存程序](transform-data-using-stored-procedure.md) |
+| [AZURE SQL](#azure-sql-database-linked-service)， [Azure Synapse Analytics](#azure-synapse-analytics-linked-service)， [SQL Server](#sql-server-linked-service) | [預存程序](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Notebook](transform-data-databricks-notebook.md)、[Jar](transform-data-databricks-jar.md)、[Python](transform-data-databricks-python.md) |
 | [Azure Function](#azure-function-linked-service)         | [Azure 函式活動](control-flow-azure-function-activity.md)
 >  
@@ -253,7 +253,7 @@ Azure Data Factory 服務可自動建立隨選 HDInsight 叢集來處理資料�
 "dataNodeSize": "Standard_D4",
 ```
 
-若您為這些屬性指定錯誤的值，可能會顯示下列 **錯誤：** 無法建立叢集。 例外狀況：無法完成叢集建立作業。 作業失敗，錯誤碼為 '400'。 叢集剩餘狀態：「錯誤」。 訊息：「PreClusterCreationValidationFailure」。 出現此錯誤時，請確定您是使用 [虛擬機器的大小](../virtual-machines/sizes.md)一文的表格中的 **CMDLET 與 API** 名稱。          
+若您為這些屬性指定錯誤的值，可能會顯示下列 **錯誤：** 無法建立叢集。 例外狀況：無法完成叢集建立作業。 作業失敗，錯誤碼為 '400'。 叢集剩餘狀態：「錯誤」。 訊息：「PreClusterCreationValidationFailure」。 出現此錯誤時，請確定您是使用 [虛擬機器的大小](../virtual-machines/sizes.md)一文的表格中的 **CMDLET 與 API** 名稱。
 
 ### <a name="bring-your-own-compute-environment"></a>自備計算環境
 在這種組態中，使用者可以將現有的運算環境註冊為 Data Factory 中的連結服務。 此運算環境是由使用者管理並由 Data Factory 服務用來執行活動。
@@ -564,7 +564,7 @@ Azure Data Factory 服務可自動建立隨選 HDInsight 叢集來處理資料�
 
 ## <a name="azure-synapse-analytics-linked-service"></a>Azure Synapse Analytics 連結服務
 
-您可以建立 Azure Synapse Analytics (先前的 SQL 資料倉儲) 連結服務，並將其與 [預存程式活動](transform-data-using-stored-procedure.md) 搭配使用，以從 Data Factory 管線叫用預存程式。 如需此連結服務的詳細資訊，請參閱 [Azure Synapse Analytics (先前的 SQL 資料倉儲) 連接器](connector-azure-sql-data-warehouse.md#linked-service-properties) 文章。
+您可以建立 Azure Synapse Analytics 連結服務，並將其與 [預存程式活動](transform-data-using-stored-procedure.md) 搭配使用，以從 Data Factory 管線叫用預存程式。 如需此連結服務的詳細資訊，請參閱 [Azure Synapse Analytics 連接器](connector-azure-sql-data-warehouse.md#linked-service-properties) 文章。
 
 ## <a name="sql-server-linked-service"></a>SQL Server 連結服務
 

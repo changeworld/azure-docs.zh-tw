@@ -6,14 +6,14 @@ services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: conceptual
-ms.date: 11/27/2019
+ms.date: 12/15/2020
 ms.author: prmitiki
-ms.openlocfilehash: 20f25e0add5d05bb2dcf7f3ebdc86ccd5ae889d0
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bee41bb8e5beb4df3086ab50499cb185a83e4efe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510782"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592324"
 ---
 # <a name="peering-policy"></a>對等互連原則
 Microsoft 會維護一個選擇性的對等互連原則，其設計目的是為了確保客戶體驗的最佳體驗，可支援業界標準和最佳作法，並根據未來需求和策略性的對等互連來進行調整。 因此，Microsoft 保留在必要時對原則提出例外狀況的權利。 下列各節將說明來自您網路的 Microsoft 一般需求。 這些都適用于直接對等互連和交換對等互連要求。 

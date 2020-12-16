@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 3d4e5ad0b24b7163072d7e3110a523dad9608923
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ecdecc78d4c1adeba49a28f3cf555caa164a97a5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507366"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592444"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -154,9 +154,9 @@ ITSMC 支援與下列 ITSM 工具連線：
 
     * 如果您在工作專案下拉式清單中選取 [事件] 或 [警示]：如果您清除 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，則每個警示都會建立新的工作專案。 每個設定專案可能會有一個以上的警示。
 
-       ![顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration.png)
-
-    * 如果您在工作專案下拉式清單中選取 [事件]：如果您針對選項按鈕選取範圍中的 **每個記錄專案選取 [建立個別的工作專案** ]，則每個警示都會建立新的工作專案。 如果您針對選項按鈕選取範圍中的 **每個設定專案選取 [建立個別工作專案** ]，則每個設定專案都會有自己的工作專案。
+   ![顯示 [ITSM 票證] 視窗的螢幕擷取畫面，其中已選取 [工作專案] 的 [事件]。](media/itsmc-overview/itsm-action-configuration.png)
+   
+   * 如果您在工作專案下拉式清單中選取 [事件]：如果您針對選項按鈕選取範圍中的 **每個記錄專案選取 [建立個別的工作專案** ]，則每個警示都會建立新的工作專案。 如果您針對選項按鈕選取範圍中的 **每個設定專案選取 [建立個別工作專案** ]，則每個設定專案都會有自己的工作專案。
    ![顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. 選取 [確定]。

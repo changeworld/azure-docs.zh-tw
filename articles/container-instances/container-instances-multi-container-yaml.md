@@ -3,12 +3,12 @@ title: 教學課程 - 部署多容器群組 - YAML
 description: 在此教學課程中，您將了解如何使用 Azure CLI 和 YAML 檔案，在 Azure 容器執行個體中部署具有多個容器的容器群組。
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 8f1f13d4fa7e32b76988cdf356d5d1bb0528f824
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091288"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605156"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>教學課程：使用 YAML 檔案部署多容器群組
 
@@ -178,7 +178,6 @@ Connection: keep-alive
 您也可以使用 [Resource Manager 範本](container-instances-multi-container-group.md)，指定多容器群組。 當您需要使用容器群組來部署其他 Azure 服務資源時，可以隨時調整 Resource Manager 範本以因應各種情況。
 
 <!-- LINKS - External -->
-
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

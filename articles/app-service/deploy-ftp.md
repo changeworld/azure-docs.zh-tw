@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9884b109db3f3a34ceb323bef9fba1d5bfc23147
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150256"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605071"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 將您的應用程式部署至 Azure App Service
 
@@ -39,10 +39,10 @@ ms.locfileid: "92150256"
 
 ![複製 FTP 資訊](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-建議您使用**應用程式認證**來部署到您的應用程式，因為它對於每個應用程式都是唯一的。 不過，如果您按一下 [使用者認證]****，則可以設定使用者層級的認證，以將其用於 FTP/S 登入到訂用帳戶中的所有 App Service 應用程式。
+建議您使用 **應用程式認證** 來部署到您的應用程式，因為它對於每個應用程式都是唯一的。 不過，如果您按一下 [使用者認證]，則可以設定使用者層級的認證，以將其用於 FTP/S 登入到訂用帳戶中的所有 App Service 應用程式。
 
 > [!NOTE]
-> 使用使用者層級認證向 FTP/FTPS 端點進行驗證時，需要下列格式的使用者名稱： 
+> 使用使用者層級認證向 FTP/FTPS 端點進行驗證時，需要使用下列格式的使用者名稱： 
 >
 >`<app-name>\<user-name>`
 >
@@ -69,9 +69,9 @@ ms.locfileid: "92150256"
 
 為了加強安全性，您應該只允許 FTP over TLS/SSL。 如果您不使用 FTP 部署，您也可以停用 FTP 和 FTPS。
 
-在[Azure 入口網站](https://portal.azure.com)的應用程式資源頁面中 **，選取**  >  左側導覽中的 **[設定一般設定**]。
+在 [Azure 入口網站](https://portal.azure.com)的應用程式資源頁面中 **，選取**  >  左側導覽中的 **[設定一般設定**]。
 
-若要停用未加密的 FTP，請選取 [只有**ftp 狀態**的**FTPS** ]。 若要完全停用 FTP 和 FTPS，請選取 [ **停用**]。 完成時，按一下 [儲存]。 如果 **只使用 FTPS**，您必須流覽至 web 應用程式的 [ **tls/SSL 設定** ] 分頁，強制執行 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支援 [僅限 FTPS]**** 功能。
+若要停用未加密的 FTP，請選取 [只有 **ftp 狀態** 的 **FTPS** ]。 若要完全停用 FTP 和 FTPS，請選取 [ **停用**]。 完成時，按一下 [儲存]。 如果 **只使用 FTPS**，您必須流覽至 web 應用程式的 [ **tls/SSL 設定** ] 分頁，強制執行 TLS 1.2 或更高版本。 TLS 1.0 和 1.1 不支援 [僅限 FTPS] 功能。
 
 ![停用 FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
@@ -85,9 +85,18 @@ ms.locfileid: "92150256"
 
 ## <a name="troubleshoot-ftp-deployment"></a>疑難排解 FTP 部署
 
-- [如何疑難排解 FTP 部署？](#how-can-i-troubleshoot-ftp-deployment)
-- [我無法 FTP 及發佈我的程式碼。如何解決此問題？](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
-- [如何透過被動模式連線到 Azure App Service 中的 FTP？](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+- [使用 FTP/S 將您的應用程式部署至 Azure App Service](#deploy-your-app-to-azure-app-service-using-ftps)
+  - [開啟 FTP 儀表板](#open-ftp-dashboard)
+  - [取得 FTP 連線資訊](#get-ftp-connection-information)
+  - [將檔案部署至 Azure](#deploy-files-to-azure)
+  - [強制使用 FTPS](#enforce-ftps)
+  - [使用指令碼進行自動化](#automate-with-scripts)
+  - [疑難排解 FTP 部署](#troubleshoot-ftp-deployment)
+    - [如何疑難排解 FTP 部署？](#how-can-i-troubleshoot-ftp-deployment)
+    - [我無法 FTP 及發佈我的程式碼。如何解決此問題？](#im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue)
+    - [如何透過被動模式連線到 Azure App Service 中的 FTP？](#how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode)
+  - [後續步驟](#next-steps)
+  - [其他資源](#more-resources)
 
 ### <a name="how-can-i-troubleshoot-ftp-deployment"></a>如何疑難排解 FTP 部署？
 

@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: azure、kinect、規格、硬體、深色、功能、深度、色彩、RGB、IMU、陣列、深度、多重、同步處理
-ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361155"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592274"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>同步處理多個 Azure Kinect DK 裝置
 
@@ -41,9 +41,9 @@ ms.locfileid: "91361155"
 
 您可以使用下列其中一種方法來進行裝置設定：
 
-- **菊輪鍊**設定。 同步處理一部主要裝置和最多八個從屬裝置。  
+- **菊輪鍊** 設定。 同步處理一部主要裝置和最多八個從屬裝置。  
    ![此圖顯示如何連接菊輪鍊設定中 Azure Kinect DK 裝置。](./media/multicam-sync-daisychain.png)
-- **星星**設定。 同步處理一部主要裝置和最多兩個次級裝置。  
+- **星星** 設定。 同步處理一部主要裝置和最多兩個次級裝置。  
    ![此圖顯示如何設定星狀設定中的多個 Azure 深色裝置。](./media/multicam-sync-star.png)
 
 #### <a name="using-an-external-sync-trigger"></a>使用外部同步觸發程式
@@ -89,6 +89,9 @@ ms.locfileid: "91361155"
 
 在您的軟體中，請使用 ```depth_delay_off_color_usec``` 或， ```subordinate_delay_off_master_usec``` 以確定每個 IR 鐳射都在其本身的 160 s 視窗中引發， &mu; 或有不同的視圖欄位。
 
+> [!NOTE]  
+> 實際的脈衝寬度為125us，不過我們的州160us 會提供一些一點時間。 以 NFOV 包含尚未拋棄為例，每個125us 脈衝都會接著1450us 閒置。 這些向上 (9 x 125) + (8 x 1450) 的總計會產生12.8 毫秒的曝光時間。 您可以交錯使用2個裝置的這種方式，就是讓第二張相機的第一次脈衝落在第一個相機的第一次閒置期間。 第一個和第二個相機之間的延遲可能與 (125us 的距離) 的寬度小很多，但我們建議一些一點時間，因此160us。 指定160us 您可以交錯最多10個相機的曝光週期。
+
 ## <a name="prepare-your-devices-and-other-hardware"></a>準備您的裝置和其他硬體
 
 除了多部 Azure Kinect DK 裝置之外，您可能必須取得額外的主機電腦和其他硬體，才能支援您要建立的設定。 使用本節中的資訊，確保所有裝置和硬體都已就緒，然後再開始設定。
@@ -123,7 +126,7 @@ ms.locfileid: "91361155"
    > [!NOTE]  
    > 這些命令會將 USB 記憶體設定為 32 MB。 這是預設值兩倍的範例設定。 您可以為您的方案設定更大的值。
 1. 執行 **sudo update-grub**。
-1. 將電腦重新開機。
+1. 重新啟動電腦。
 
 ### <a name="cables"></a>纜線
 
@@ -166,12 +169,12 @@ ms.locfileid: "91361155"
    > 若要取得所有裝置之間的精確影像捕捉對齊，您必須先啟動主要裝置。  
 1. 在 [ **外部同步**] 底下，選取 [ **Sub**]。  
    ![附屬相機開始](./media/sub-device-start.png)
-1.  選取 [開始]  。  
+1.  選取 [開始]。  
     > [!NOTE]  
     > 因為這是從屬裝置，所以在裝置啟動後，Azure Kinect 檢視器不會顯示影像。 在從屬裝置收到來自主要裝置的同步信號之前，不會顯示任何影像。
 1. 在次級裝置啟動之後，請使用 Azure Kinect 檢視器的另一個實例來開啟主要裝置。
 1. 在 [ **外部同步**] 底下，選取 [ **Master**]。
-1. 選取 [開始]  。
+1. 選取 [開始]。
 
 當主要 Azure Kinect 裝置啟動時，Azure Kinect 檢視器的兩個實例都應該會顯示影像。
 

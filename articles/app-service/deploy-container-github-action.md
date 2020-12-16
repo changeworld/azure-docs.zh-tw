@@ -7,16 +7,16 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: ae587b9501c9c68600ff880744d311ba966923ed
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008022"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604969"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 將自訂容器部署至 App Service
 
-[GitHub Actions](https://help.github.com/en/articles/about-github-actions) 可讓您彈性地建立自動化軟體發展工作流程。 透過 [Azure Web Deploy 動作](https://github.com/Azure/webapps-deploy)，您可以將工作流程自動化，以使用 GitHub Actions 將自訂容器部署到 [App Service](overview.md) 。
+[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) 可讓您彈性地建立自動化軟體發展工作流程。 透過 [Azure Web Deploy 動作](https://github.com/Azure/webapps-deploy)，您可以將工作流程自動化，以使用 GitHub Actions 將自訂容器部署到 [App Service](overview.md) 。
 
 工作流程是由您存放庫內 `/.github/workflows/` 路徑中的 YAML (. yml) 檔案所定義的。 此定義包含工作流程中的各種步驟和參數。
 
@@ -28,7 +28,7 @@ ms.locfileid: "97008022"
 |**建置** | 1. 建立環境。 <br /> 2. 建立容器映射。 |
 |**部署** | 1. 部署容器映射。 |
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。 您必須要有 GitHub 存放庫中的程式碼，才能部署至 Azure App Service。 
@@ -39,7 +39,7 @@ ms.locfileid: "97008022"
 
 使用 Azure App Services 進行 GitHub Actions 驗證的建議方式是使用發行設定檔。 您也可以使用服務主體進行驗證，但此程式需要更多步驟。 
 
-將您的發佈設定檔認證或服務主體儲存為 [GitHub 秘密](https://docs.github.com/en/actions/reference/encrypted-secrets) ，以向 Azure 進行驗證。 您將會在工作流程記憶體取秘密。 
+將您的發佈設定檔認證或服務主體儲存為 [GitHub 秘密](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) ，以向 Azure 進行驗證。 您將會在工作流程記憶體取秘密。 
 
 # <a name="publish-profile"></a>[發行設定檔](#tab/publish-profile)
 
@@ -273,7 +273,7 @@ jobs:
 
 - [Docker 登入/登出](https://github.com/Azure/docker-login)
 
-- [觸發工作流程的事件](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [觸發工作流程的事件](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [K8s 部署](https://github.com/Azure/k8s-deploy)
 

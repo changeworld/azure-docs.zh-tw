@@ -8,19 +8,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c8d6f59f64aed2870494fa8697014e670e373337
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590353"
+ms.locfileid: "97607604"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>針對 Azure App Service 中的網域與 TLS/SSL 憑證問題進行疑難排解
 
 本文列出當您在 Azure App Service 中為 web 應用程式設定網域或 TLS/SSL 憑證時，可能會遇到的常見問題。 文中也會描述這些問題的可能原因和解決方案。
 
 如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 前往 [Azure 支援網站](https://azure.microsoft.com/support/options/) ，然後選取 [ **取得支援**]。
-
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

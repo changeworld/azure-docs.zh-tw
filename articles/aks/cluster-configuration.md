@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 439714f8fe4a6373f2ffce80e744802dd19b67f0
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928778"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606907"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
@@ -173,7 +173,7 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 * 您無法再存取 docker 引擎， `/var/run/docker.sock` 或使用 docker (DinD) 。
   * 如果您目前已從 Docker 引擎解壓縮應用程式記錄或監視資料，請改用類似于 [容器的 Azure 監視器](../azure-monitor/insights/container-insights-enable-new-cluster.md) 。 此外，AKS 不支援在可能導致不穩定的代理程式節點上執行任何頻外命令。
   * 即使在使用 Moby/docker 時，強烈建議您不要透過上述方法建立映射並直接利用 docker 引擎。 Kubernetes 並不完全知道這些耗用的資源，而這些方法會 [在這裡](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) 提供許多 [問題，例如](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)。
-* 建立映射-建立映射的建議方法是使用 [ACR 工作](../container-registry/container-registry-quickstart-task-cli.md)。 替代方法是使用更安全的叢集內選項，例如 [docker buildx](https://github.com/docker/buildx)。
+* 建立映射-除非您在 AKS 叢集中建立 imagages，否則您可以繼續使用目前的 docker 組建工作流程。 在此情況下，請考慮改用使用 [ACR 工作](../container-registry/container-registry-quickstart-task-cli.md)建立映射的建議方法，或使用 [docker buildx](https://github.com/docker/buildx)等更安全的叢集內選項。
 
 ## <a name="generation-2-virtual-machines-preview"></a>第2代虛擬機器 (預覽) 
 
