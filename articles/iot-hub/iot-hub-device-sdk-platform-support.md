@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 5df36cdb3c02fd4c813625c4869c21581f009b02
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b8f8403617a5fc8b442e8a3f74ab9226fe1479fe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152212"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588755"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT 裝置 Sdk 平臺支援
 
@@ -34,7 +34,7 @@ Microsoft 會在 GitHub 上發佈開放原始碼 Sdk，適用于下列語言： 
 
 針對每個列出的 Sdk，Microsoft：
 
-* 在數個受歡迎的平臺上，針對 GitHub 中相關 SDK 的主要分支，持續建立並執行端對端測試。  為了跨不同的編譯器版本提供測試涵蓋範圍，我們通常會針對最新的 LTS 版本和最受歡迎的版本進行測試。
+* 在數個常用平臺上，持續針對 GitHub 中相關 SDK 的主要分支，建立並執行端對端測試。  為了跨不同的編譯器版本提供測試涵蓋範圍，我們通常會針對最新的 LTS 版本和最受歡迎的版本進行測試。
 
 * 提供安裝指引或安裝套件（如果適用）。
 
@@ -138,7 +138,7 @@ Microsoft 與數個合作夥伴合作，持續擴充 Azure IoT universe 與 Azur
 
 * [Azure IoT 中樞 Python SDK 問題](https://github.com/Azure/azure-iot-sdk-python/issues)
 
-**技術問題**：您可以在[Microsoft Q&A](/answers/topics/azure-iot-sdk.html)上詢問技術問題，並使用*azure-iot-sdk*的標記來[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) 。
+**技術問題**：您可以在 [Microsoft Q&A](/answers/topics/azure-iot-sdk.html)上詢問技術問題，並使用 *azure-iot-sdk* 的標記來 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk) 。
 
 **Microsoft 客戶支援小組** –具有 [支援方案](https://azure.microsoft.com/support/plans/) 的使用者可以直接從 [Azure 入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)建立新的支援要求，以與 microsoft 客戶支援小組接洽。
 
@@ -147,4 +147,4 @@ Microsoft 與數個合作夥伴合作，持續擴充 Azure IoT universe 與 Azur
 ## <a name="next-steps"></a>後續步驟
 
 * [裝置與服務 SDK](iot-hub-devguide-sdks.md)
-* [移轉指引](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)
+* [移植指引](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)

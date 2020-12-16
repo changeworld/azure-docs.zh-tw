@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 89b01205c08216b3ce1ec2d36cce48335b49eb47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344278"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560537"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure 保留的自助式交換和退費
 
@@ -21,7 +21,7 @@ Azure 保留可提供彈性，以協助您滿足不斷演變的需求。 您可�
 自助式交換和取消功能不適用於美國政府 Enterprise 合約客戶。 可支援其他美國政府訂用帳戶類型，包括隨用隨付和雲端解決方案提供者雲端解決方案提供者 (CSP)。
 
 > [!NOTE]
-> - **您必須擁有保留訂單的擁有者存取權，才能對現有的保留進行交換和退款**。 您可以[新增或變更可以管理保留的使用者](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
+> - **您必須擁有保留訂單的擁有者存取權，才能對現有的保留進行交換和退款**。 您可以[新增或變更可以管理保留的使用者](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)。
 > - Microsoft 目前不收取保留退款的提早終止費用。 對於未來的退款，我們可能會收取費用。 我們目前尚未訂定啟用此費用的日期。
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>如何交換現有的保留或將其退款
@@ -66,7 +66,7 @@ Azure 有下列取消、交換和退款原則。
 **交換原則**
 
 - 您可以退還多個現有保留，以購買相同類型的新保留。 您無法交換不同類型的保留。 例如，您無法退還 VM 保留以購買 SQL 保留。 您可以透過交換來變更保留屬性，例如系列、版本、SKU、區域、數量和期間。
-- 只有保留擁有者可以處理交換。 [了解如何新增或變更可以管理保留的使用者](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
+- 只有保留擁有者可以處理交換。 [了解如何新增或變更可以管理保留的使用者](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)。
 - 交換會以退款和重新購買的形式來處理；針對取消和新的保留購買會產生不同的交易。 針對您折抵的保留，系統會按比例計算保留的退款金額。 新的購買則會收取完整費用。 按比例計算的保留金額是所退還保留的按日、按比例計算殘值。
 - 即使用來購買保留的 Enterprise 合約已到期並更新為新合約，您還是可以交換或退還保留。
 - 新保留的存留期承諾用量應大於或等於退還保留的剩餘承諾用量。 範例：針對每個月 100 美元，並在第 18 次付款後交換的三年保留期，新保留的存留期承諾用量應為 1,800 美元或更高的金額 (每月付費或預付)。
@@ -79,7 +79,7 @@ Azure 有下列取消、交換和退款原則。
 - 對於帳單設定檔或單一註冊，在 12 個月的滾動期間內，已取消的承諾用量總數不可超過 50,000 美元。 例如，針對每個月 100 美元，並在第 18 個月退款的三年保留期，取消的承諾用量為 1,800 美元。 退款之後，您新的可用退款限制將是 48,200 美元。 自退款日起算的 365 天後，48,200 美元的限制將會增加 1,800 美元，而您的新額度將會是 50,000 美元。 帳單設定檔或 EA 註冊的任何其他保留取消都將會使用相同的額度，且適用相同的補充邏輯。
 - 對於帳單設定檔或 EA 註冊，Azure 不會處理在 12 個月滾動期間內將超過 50,000 美元限制的任何退款。
 - 退款會根據您購買價格或目前保留價格的最低價格來計算。
-- 只有保留訂單擁有者可以處理退款。 [了解如何新增或變更可以管理保留的使用者](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
+- 只有保留訂單擁有者可以處理退款。 [了解如何新增或變更可以管理保留的使用者](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default)。
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 

@@ -4,20 +4,20 @@ description: Azure Key Vault 中的虛刪除可讓您復原已刪除的金鑰保
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 09/30/2020
-ms.openlocfilehash: 184003e42a14e786cc52c4f585c6781f7b9fe0e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 12/15/2020
+ms.openlocfilehash: 0f428954ac6ef74253e6e6e430977a85a3943f99
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452194"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589979"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault 虛刪除概觀
 
 > [!IMPORTANT]
-> 您必須立即在金鑰保存庫上啟用虛刪除。 退出宣告虛刪除的功能將在一年結束時淘汰，而且所有金鑰保存庫的虛刪除保護都會自動開啟。  請參閱[這裡](soft-delete-change.md)的完整詳細資料
+> 您必須立即在金鑰保存庫上啟用虛刪除。 退出宣告虛刪除的功能即將淘汰。 請參閱[這裡](soft-delete-change.md)的完整詳細資料
 
 Key Vault 的虛刪除功能可復原已刪除的保存庫，以及刪除的金鑰保存庫物件 (例如金鑰、秘密、憑證) ，稱為虛刪除。 具體而言，我們會處理下列案例：此保護提供下列保護：
 

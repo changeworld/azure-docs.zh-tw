@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3ed0fea4846b969c2af80aa525f7da64e7700bb5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535362"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587922"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>設定適用於 MariaDB 的 Azure 資料庫中的資料輸入複寫
 
@@ -54,7 +54,7 @@ ms.locfileid: "94535362"
 
 1. 繼續之前，請先檢查 [主伺服器需求](concepts-data-in-replication.md#requirements) 。 
 
-2. 請確定來源伺服器允許埠3306上的輸入和輸出流量，且來源伺服器具有 **公用 IP 位址** 、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
+2. 請確定來源伺服器允許埠3306上的輸入和輸出流量，且來源伺服器具有 **公用 IP 位址**、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
    
    藉由嘗試從另一部電腦上裝載的 MySQL 命令列，或從 Azure 入口網站提供的 [Azure Cloud Shell](../cloud-shell/overview.md) ，來測試來源伺服器的連線能力。
 
@@ -141,7 +141,7 @@ ms.locfileid: "94535362"
 
    **MySQL Workbench**
 
-   若要在 MySQL 工作臺中建立複寫角色，請在 [ **管理** ] 窗格中選取 [ **使用者和許可權** ]。 然後選取 [ **新增帳戶** ]。
+   若要在 MySQL 工作臺中建立複寫角色，請在 [ **管理** ] 窗格中選取 [ **使用者和許可權**]。 然後選取 [ **新增帳戶**]。
  
    ![使用者和權限](./media/howto-data-in-replication/users_privileges.png)
 
@@ -149,7 +149,7 @@ ms.locfileid: "94535362"
 
    ![同步處理使用者](./media/howto-data-in-replication/syncuser.png)
  
-   選取 [系統 **管理角色** ] 面板，然後在 **全域許可權** 清單中選取 [複寫 **從屬** ]。 選取 **[** 套用] 以建立複寫角色。
+   選取 [系統 **管理角色** ] 面板，然後在 **全域許可權** 清單中選取 [複寫 **從屬**]。 選取 **[** 套用] 以建立複寫角色。
 
    ![複寫從屬](./media/howto-data-in-replication/replicationslave.png)
 
@@ -284,7 +284,7 @@ ms.locfileid: "94535362"
     
     由於適用于 mariadb 中的原生複寫限制，您必須  [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) 在沒有 GTID 案例的複寫上設定和變數。
 
-    檢查從屬伺服器 `sync_master_info` 和 `sync_relay_log_info` 變數以確定資料在複寫中是穩定的，並將變數設定為 `1` 。
+    檢查您的複本伺服器 `sync_master_info` 和 `sync_relay_log_info` 變數以確定資料在複寫中是穩定的，並將變數設定為 `1` 。
     
 ## <a name="other-stored-procedures"></a>其他已儲存的程序
 

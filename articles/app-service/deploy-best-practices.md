@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bd7bc159f7f5974452adf6b2f51148d869b4ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708147"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589231"
 ---
 # <a name="deployment-best-practices"></a>部署最佳作法
 
@@ -30,7 +30,7 @@ ms.locfileid: "91708147"
 
 ### <a name="deployment-mechanism"></a>部署機制
 
-部署機制是用來將您的內建應用程式放入 web 應用程式之 */home/site/wwwroot* 目錄的動作。 */Wwwroot*目錄是由 web 應用程式的所有實例共用的已掛接儲存位置。 當部署機制將您的應用程式放在這個目錄時，您的實例會收到同步處理新檔案的通知。 App Service 支援下列部署機制：
+部署機制是用來將您的內建應用程式放入 web 應用程式之 */home/site/wwwroot* 目錄的動作。 */Wwwroot* 目錄是由 web 應用程式的所有實例共用的已掛接儲存位置。 當部署機制將您的應用程式放在這個目錄時，您的實例會收到同步處理新檔案的通知。 App Service 支援下列部署機制：
 
 - Kudu 端點： [Kudu](https://github.com/projectkudu/kudu/wiki) 是開放原始碼開發人員生產力工具，可在 Windows App Service 中作為個別的進程執行，並作為 Linux App Service 的第二個容器。 Kudu 會處理持續部署，並提供用於部署的 HTTP 端點，例如 zipdeploy。
 - FTP 和 WebDeploy：使用您的 [網站或使用者認證](deploy-configure-credentials.md)，您可以透過 [FTP](deploy-ftp.md) 或 WebDeploy 上傳檔案。 這些機制不會經過 Kudu。  
@@ -57,7 +57,7 @@ Azure Pipelines、Jenkins 和編輯器外掛程式等部署工具會使用其中
 
 1. **建立並標記映射**。 在組建管線中，使用 git 認可識別碼、時間戳記或其他可識別的資訊來標記映射。 最好不要使用預設的「最新」標記。 否則，很難追蹤目前部署的程式碼，這使得偵錯工具更難進行。
 1. **推送標記的映射**。 一旦建立並標記映射，管線就會將映射推送至容器登錄。 在下一個步驟中，部署位置會從容器登錄中提取標記的映射。
-1. **使用新的映射標記更新部署**位置。 更新此屬性時，網站會自動重新開機並提取新的容器映射。
+1. **使用新的映射標記更新部署** 位置。 更新此屬性時，網站會自動重新開機並提取新的容器映射。
 
 ![插槽使用量視覺效果](media/app-service-deploy-best-practices/slot_flow_container_diagram.png)
 
@@ -65,7 +65,7 @@ Azure Pipelines、Jenkins 和編輯器外掛程式等部署工具會使用其中
 
 ### <a name="use-azure-devops"></a>使用 Azure DevOps
 
-App Service 透過部署中心 [內建容器的持續傳遞](deploy-continuous-deployment.md) 。 在[Azure 入口網站](https://portal.azure.com/)中流覽至您的應用程式，然後選取 [**部署**] 底下的 [**部署中心**]。 請依照指示來選取您的儲存機制和分支。 這會設定 DevOps 組建和發行管線，以在新的認可推送至您選取的分支時，自動建立、標記及部署您的容器。
+App Service 透過部署中心 [內建容器的持續傳遞](deploy-continuous-deployment.md) 。 在 [Azure 入口網站](https://portal.azure.com/)中流覽至您的應用程式，然後選取 [**部署**] 底下的 [**部署中心**]。 請依照指示來選取您的儲存機制和分支。 這會設定 DevOps 組建和發行管線，以在新的認可推送至您選取的分支時，自動建立、標記及部署您的容器。
 
 ### <a name="use-github-actions"></a>使用 GitHub Actions
 
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     -name: Authenticate using a Service Principal
       uses: azure/actions/login@v1

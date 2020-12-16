@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dc6056653fc50976439d4b16594e6d554e62f061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65107b0924351ca6debf37201e8849ffe8dd1eab
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652817"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589421"
 ---
 # <a name="nvv3-series"></a>NVv3 系列
 
@@ -26,6 +26,7 @@ NVv3 實例中的每個 GPU 都有方格授權。 此授權可讓您彈性地使
 [即時移轉](maintenance-and-updates.md)：不支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：不支援<br>
 [VM 世代支援](generation-2.md)：第1代和第2代<br>
+加速網路：支援<br>
 <br>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | GPU | GPU 記憶體：GiB | 最大資料磁碟 | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC/預期的網路頻寬 (Mbps) | 虛擬工作站 | 虛擬應用程式 |
@@ -35,8 +36,6 @@ NVv3 實例中的每個 GPU 都有方格授權。 此授權可讓您彈性地使
 | Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80000/800 | 8 / 24000 | 4 | 100 |
 
 <sup>1</sup> 1 GPU = 半個 M60 卡。
-
-<sup>2</sup> 目前此 VM 系列不支援加速網路，因此真實世界的網路效能可能低於此處所攔截的尖峰理論數目。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Purview 簡介 (預覽)
 description: 本文提供 Azure Purview 的概觀，包括其具備的功能以及所解決的問題。 Azure Purview 可讓任何使用者註冊、探索、了解及取用資料來源。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: 9ead9a564c11901775ac7c471cd53fe65b3fdef9
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 77da3406897c31e48d808541f1f9d579eb0a9cb7
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855102"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401537"
 ---
 # <a name="what-is-azure-purview"></a>什麼是 Azure Purview？
 

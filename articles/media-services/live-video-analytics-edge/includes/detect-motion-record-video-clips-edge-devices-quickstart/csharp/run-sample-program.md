@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: f5e180cb85e65cf832ffe0a3746e25790644e1ba
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: c99d2489efe7c46b8d50b08861fcbbcd6f8a1966
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828925"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531862"
 ---
 1. 在 Visual Studio Code 中，開啟 [延伸模組] 索引標籤 (或按 Ctrl+Shift+X) 並搜尋 Azure IoT 中樞。
 1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
@@ -14,7 +14,50 @@ ms.locfileid: "91828925"
 1. 搜尋並啟用「顯示詳細資訊訊息」。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="延伸模組設定"
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="顯示詳細資訊訊息":::
+1. 選取 F5 來啟動偵錯工作階段。 [終端機] 視窗會列印一些訊息。
+1. *operations.json* 程式碼會呼叫直接方法 `GraphTopologyList` 和 `GraphInstanceList`。 如果您在完成先前的快速入門之後清除了資源，則此程序會傳回空的清單，然後暫停。 選取 Enter 鍵。
+    
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "2.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+  
+  [終端機] 視窗會顯示下一組直接方法呼叫：  
+  
+  * 呼叫 `topologyUrl` 以使用 `GraphTopologySet` 
+  * 呼叫 `GraphInstanceSet` 以使用下列主體：
+  
+  ```
+  {
+    "@apiVersion": "2.0",
+    "name": "Sample-Graph",
+    "properties": {
+      "topologyName": "EVRToFilesOnMotionDetection",
+      "description": "Sample graph description",
+      "parameters": [
+        {
+          "name": "rtspUrl",
+          "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+        },
+        {
+          "name": "rtspUserName",
+          "value": "testuser"
+        },
+        {
+          "name": "rtspPassword",
+          "value": "testpassword"
         }
       ]
     }

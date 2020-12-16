@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: df409af61556dfa113327302be9c1464e1427a14
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ebefd5ccec321e8c3d580109c3b3c9dc8ba310c3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829222"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531938"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>查看和編輯範例檔案
 
@@ -26,7 +26,7 @@ ms.locfileid: "91829222"
 1. 編輯 *operations.json* 檔案：
  
     * 變更圖表拓撲的連結：
-    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json"`
+    * `"topologyUrl"` : `"https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/2.0/topology.json"`
     * 在 GraphInstanceSet 底下，編輯圖表拓撲的名稱，使其符合上述連結中的值：
     * `"topologyName"` : `"InferencingWithGrpcExtension"`
     * 在 GraphTopologyDelete 底下，編輯名稱：
@@ -97,7 +97,7 @@ ms.locfileid: "91829222"
     * 名為 **rtspsim** 的模組，其會模擬 RTSP 伺服器並作為即時影片摘要的來源。
 
         > [!NOTE]
-        > 如果您使用自己的邊緣裝置，而不是我們的設定指令碼所佈建的裝置，請移至您的邊緣裝置，並以**管理員權限**執行下列命令，以提取並儲存用於本快速入門的範例影片檔案：  
+        > 如果您使用自己的邊緣裝置，而不是我們的設定指令碼所佈建的裝置，請移至您的邊緣裝置，並以 **管理員權限** 執行下列命令，以提取並儲存用於本快速入門的範例影片檔案：  
 
         ```
         mkdir /home/lvaadmin/samples
@@ -119,7 +119,7 @@ ms.locfileid: "91829222"
 1. 搜尋並啟用「顯示詳細資訊訊息」。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="延伸模組設定":::
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="顯示詳細資訊訊息":::
 1. 以滑鼠右鍵按一下 Live Video Analytics 裝置，然後選取 [開始監視內建事件端點]。 您需要執行此步驟，才能在 Visual Studio Code 的 [輸出] 視窗中監視 IoT 中樞事件。
 
    ![開始監視](../../../media/quickstarts/start-monitoring-built-event-endpoint-grpc.png)
@@ -133,7 +133,7 @@ ms.locfileid: "91829222"
     -------------------------------Executing operation GraphTopologyList-----------------------  
     Request: GraphTopologyList  --------------------------------------------------
     {
-    "@apiVersion": "1.0"
+    "@apiVersion": "2.0"
     }
     ---------------  
     Response: GraphTopologyList - Status: 200  ---------------
@@ -152,7 +152,7 @@ ms.locfileid: "91829222"
     
     ```
     {
-      "@apiVersion": "1.0",
+      "@apiVersion": "2.0",
       "name": "Sample-Graph-1",
       "properties": {
         "topologyName": "InferencingWithGrpcExtension",

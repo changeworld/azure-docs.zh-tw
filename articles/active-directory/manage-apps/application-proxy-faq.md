@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c40a0cb362f8c43541194cd1ca0c57abbf8fa974
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033097"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588585"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 應用程式 Proxy 常見問題
 
@@ -80,10 +80,12 @@ ms.locfileid: "97033097"
 連接器不需要位於相同的子網上。 不過，它需要 (DNS 的名稱解析、主機檔案) 至資源，以及必要的網路連線 (路由至資源、資源上開啟的埠等 ) 。 如需建議，請參閱 [使用 Azure Active Directory 應用程式 Proxy 時的網路拓撲考慮](application-proxy-network-topology.md)。
 
 ### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>我可以安裝連接器的 Windows Server 版本為何？
+
 應用程式 Proxy 需要 Windows Server 2012 R2 或更新版本。 Windows Server 2019 的 HTTP2 目前有限制。 若要在 Windows Server 2019 上成功使用連接器，您需要新增下列登錄機碼並重新啟動伺服器：
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+```
 
 ## <a name="application-configuration"></a>應用程式設定
 

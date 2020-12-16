@@ -3,12 +3,12 @@ title: 偵測動作、將影片錄製到 Azure 媒體服務
 description: 本快速入門說明如何在 IoT Edge 上使用 Live Video Analytics，以偵測即時影片串流中的動作，並將視訊剪輯錄製到 Azure 媒體服務。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776471"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511887"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>快速入門：偵測動作、將影片錄製到媒體服務
 
@@ -44,11 +44,11 @@ ms.locfileid: "91776471"
 1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="根據動作事件對資產進行以事件為基礎的影片錄製":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="延伸模組設定":::
 1. 搜尋並啟用「顯示詳細資訊訊息」。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="根據動作事件對資產進行以事件為基礎的影片錄製":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="顯示詳細資訊訊息":::
 
 ### <a name="invoke-graphtopologylist"></a>叫用 GraphTopologyList
 此步驟會列舉模組中的所有[圖表拓撲](media-graph-concept.md#media-graph-topologies-and-instances)。
@@ -59,7 +59,7 @@ ms.locfileid: "91776471"
     
 ```
 {
-    "@apiVersion" : "1.0"
+    "@apiVersion" : "2.0"
 }
 ```
 
@@ -84,7 +84,7 @@ ms.locfileid: "91776471"
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
@@ -331,7 +331,7 @@ ms.locfileid: "91776471"
 ```
 
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
@@ -474,7 +474,7 @@ ms.locfileid: "91776471"
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2",
     "properties" : {
         "topologyName" : "EVRtoAssetsOnMotionDetection",
@@ -556,7 +556,7 @@ ms.locfileid: "91776471"
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -580,7 +580,7 @@ ms.locfileid: "91776471"
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -759,7 +759,7 @@ ms.locfileid: "91776471"
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -787,7 +787,7 @@ ms.locfileid: "91776471"
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -811,7 +811,7 @@ ms.locfileid: "91776471"
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```

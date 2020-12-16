@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 9b870e21ffd5c6a8261b6731b939b5dff558256d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 17b31e365e311b97e322828927827f40733313a6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501187"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588823"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>適用於 C 的 Azure IoT 裝置 SDK
 
@@ -43,7 +43,7 @@ Azure IoT 裝置 SDK (適用於 C) 是以 ANSI C (C99) 撰寫，以獲得最大�
 
 您可以尋找 [**適用於 C 的 Azure IoT 裝置 SDK**](https://github.com/Azure/azure-iot-sdk-c) GitHub 儲存機制，然後在 [C API 參考資料](/azure/iot-hub/iot-c-sdk-ref/)中檢視 API 的詳細資料。
 
-在此儲存機制的 **master** 分支中可找到最新版的程式庫：
+您可以在存放庫的 **主要** 分支中找到最新版的程式庫：
 
   ![存放庫主要分支的螢幕擷取畫面](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
@@ -72,7 +72,7 @@ Azure IoT 裝置 SDK (適用於 C) 是以 ANSI C (C99) 撰寫，以獲得最大�
 
 套件是針對常見平台 (例如適用於 Windows 的 NuGet 或適用於 Debian 和 Ubuntu 的 apt_get) 所提供，且範例會在這些套件可用時加以使用。 在某些情況下，您需要為您的裝置或在裝置編譯 SDK。 如果您需要編譯 SDK，請參閱 GitHub 儲存機制中的[準備您的開發環境](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)。
 
-若要取得應用程式的程式碼範例，請從 GitHub 下載 SDK 的複本。 從 [GitHub 儲存機制](https://github.com/Azure/azure-iot-sdk-c)的 **master** 分支取得一份原始檔複本。
+若要取得應用程式的程式碼範例，請從 GitHub 下載 SDK 的複本。 從 [GitHub 存放庫](https://github.com/Azure/azure-iot-sdk-c)的 **主要** 分支取得來源的複本。
 
 
 ### <a name="obtain-the-device-credentials"></a>取得裝置認證

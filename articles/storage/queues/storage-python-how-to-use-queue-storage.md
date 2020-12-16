@@ -1,22 +1,22 @@
 ---
-title: 如何使用 Python 的 Azure 佇列儲存體-Azure 儲存體
-description: 瞭解如何使用 Python 中的 Azure 佇列服務來建立和刪除佇列，以及插入、取得和刪除訊息。
+title: 如何從 Python 使用 Azure 佇列儲存體-Azure 儲存體
+description: 瞭解如何使用 Python 中的 Azure 佇列儲存體來建立和刪除佇列，以及插入、取得和刪除訊息。
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/25/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.topic: how-to
-ms.reviewer: dineshm
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: ac75b89548d346945901d752672ef0f08601ccfb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: e473bf5c2761010a6aeea94e6430d34ca34989fb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345647"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588271"
 ---
-# <a name="how-to-use-azure-queue-storage-from-python"></a>如何使用 Python 的 Azure 佇列儲存體
+# <a name="how-to-use-azure-queue-storage-from-python"></a>如何從 Python 使用 Azure 佇列儲存體
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
@@ -24,7 +24,7 @@ ms.locfileid: "93345647"
 
 本文示範使用 Azure 佇列儲存體服務的常見案例。 涵蓋的案例包括插入、查看、取得和刪除佇列訊息。 此外也涵蓋建立和刪除佇列的程式碼。
 
-本文中的範例是以 Python 撰寫，並使用 [適用于 python 的 Azure 佇列儲存體用戶端程式庫]。 如需佇列的詳細資訊，請參閱[後續步驟](#next-steps)一節。
+本文中的範例是以 Python 撰寫，並使用 [適用于 python 的 Azure 佇列儲存體用戶端程式庫](https://github.com/Azure/Azure-SDK-for-Python/tree/master/sdk/storage/azure-storage-queue)。 如需佇列的詳細資訊，請參閱[後續步驟](#next-steps)一節。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "93345647"
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>下載並安裝 Azure Storage SDK for Python
 
-[適用于 python 的 AZURE 儲存體 SDK](https://github.com/azure/azure-storage-python)需要 python 2.7 版、3.3 版或更新版本。
+[適用于 python 的 AZURE 儲存體 SDK](https://github.com/azure/azure-storage-python)需要 python 2.7、3.3 版或更新版本。
 
 ### <a name="install-via-pypi"></a>透過 PyPI 安裝
 
@@ -53,9 +53,9 @@ pip install azure-storage-queue==2.1.0
 ---
 
 > [!NOTE]
-> 如果您要從 Azure Storage SDK for Python 版本 0.36 或更早版本升級，請先使用 `pip uninstall azure-storage` 解除安裝舊版的 SDK，再安裝最新的封裝。
+> 如果您要從 Azure 儲存體 SDK for Python v 0.36 或更早版本升級，請 `pip uninstall azure-storage` 在安裝最新封裝之前，先使用舊版 sdk 卸載。
 
-如需替代安裝方法，請參閱 [適用于 Python 的 AZURE SDK]。
+如需替代安裝方法，請參閱 [適用于 Python 的 AZURE SDK](https://github.com/Azure/Azure-SDK-for-Python)。
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -63,13 +63,13 @@ pip install azure-storage-queue==2.1.0
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-[QueueClient](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient)物件可讓您使用佇列。 將下列程式碼新增至您想要以程式設計方式存取 Azure 佇列之任何 Python 檔案的頂端附近：
+[`QueueClient`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient)物件可讓您使用佇列。 將下列程式碼新增至您想要以程式設計方式存取 Azure 佇列之任何 Python 檔案的頂端附近：
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_ImportStatements":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[QueueService](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2) 物件可讓您操作佇列。 下列程式碼會建立 `QueueService` 物件。 將下列程式碼新增至您想要以程式設計方式存取 Azure 儲存體之任何 Python 檔案的頂端附近：
+[`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2)物件可讓您使用佇列。 下列程式碼會建立 `QueueService` 物件。 將下列程式碼新增至您想要以程式設計方式存取 Azure 儲存體之任何 Python 檔案的頂端附近：
 
 ```python
 from azure.storage.queue import (
@@ -121,16 +121,16 @@ queue_service.create_queue(queue_name)
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-若要將訊息插入佇列中，請使用 [send_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) 方法。
+若要將訊息插入佇列中，請使用 [`send_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) 方法。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_AddMessage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-若要將訊息插入佇列中，請使用 [put_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) 方法來建立新訊息，並將它新增至佇列。
+若要將訊息插入佇列中，請使用 [`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-) 方法來建立新訊息，並將它新增至佇列。
 
 ```python
-message = u"Hello World"
+message = u"Hello, World"
 print("Adding message: " + message)
 queue_service.put_message(queue_name, message)
 ```
@@ -147,7 +147,7 @@ Azure 佇列訊息會儲存為文字。 如果您想要儲存二進位資料，�
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-設定佇列服務物件上的 Base64 編碼和解碼函數。
+在佇列儲存體物件上設定 Base64 編碼和解碼函式。
 
 ```python
 # Setup Base64 encoding and decoding functions
@@ -161,13 +161,13 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-您可以藉由呼叫 [peek_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) 方法來查看訊息，而不需要從佇列中移除訊息。 依預設，會 `peek_messages` 查看單一訊息。
+您可以藉由呼叫方法來查看訊息，而不需要從佇列中移除訊息 [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) 。 根據預設，這個方法會查看單一訊息。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_PeekMessage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-您可以藉由呼叫 [peek_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#peek-messages-queue-name--num-messages-none--timeout-none-) 方法來查看訊息，而不需要從佇列中移除訊息。 依預設，會 `peek_messages` 查看單一訊息。
+您可以藉由呼叫方法來查看訊息，而不需要從佇列中移除訊息 [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#peek-messages-queue-name--num-messages-none--timeout-none-) 。 根據預設，這個方法會查看單一訊息。
 
 ```python
 messages = queue_service.peek_messages(queue_name)
@@ -184,20 +184,20 @@ for peeked_message in messages:
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-下列程式碼會使用 [update_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) 方法來更新訊息。 可見度逾時設定為 0，表示會立即顯示訊息，並且會更新內容。
+下列程式碼會使用 [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) 方法來更新訊息。 可見度逾時設定為 0，表示會立即顯示訊息，並且會更新內容。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_ChangeMessage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-下列程式碼會使用 [update_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) 方法來更新訊息。 可見度逾時設定為 0，表示會立即顯示訊息，並且會更新內容。
+下列程式碼會使用 [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) 方法來更新訊息。 可見度逾時設定為 0，表示會立即顯示訊息，並且會更新內容。
 
 ```python
 messages = queue_service.get_messages(queue_name)
 
 for message in messages:
     queue_service.update_message(
-        queue_name, message.id, message.pop_receipt, 0, u"Hello World Again")
+        queue_name, message.id, message.pop_receipt, 0, u"Hello, World Again")
 ```
 
 ---
@@ -208,13 +208,13 @@ for message in messages:
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-[Get_queue_properties](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#get-queue-properties---kwargs-)方法會要求佇列服務傳回佇列的相關屬性，包括 `approximate_message_count` 。
+[Get_queue_properties](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#get-queue-properties---kwargs-)方法會傳回佇列屬性，包括 `approximate_message_count` 。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_GetQueueLength":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-[Get_queue_metadata](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-queue-metadata-queue-name--timeout-none-)方法會要求佇列服務傳回有關佇列的中繼資料，包括 `approximate_message_count` 。
+方法會傳回 [`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-queue-metadata-queue-name--timeout-none-) 佇列屬性，包括 `approximate_message_count` 。
 
 ```python
 metadata = queue_service.get_queue_metadata(queue_name)
@@ -224,7 +224,7 @@ print("Message count: " + str(count))
 
 ---
 
-由於佇列服務在回應您的要求之後可以新增或移除訊息，此結果僅為近似值。
+結果只是近似值，因為在服務回應您的要求之後，就可以新增或移除訊息。
 
 ## <a name="dequeue-messages"></a>清除佇列中的訊息
 
@@ -254,13 +254,13 @@ for message in messages:
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-下列程式碼範例會使用 [receive_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 方法，以批次方式取得訊息。 然後，它會使用嵌套迴圈處理每個批次中的每個訊息 `for` 。 它也會將可見度逾時設定為每個訊息五分鐘。
+下列程式碼範例會使用 [`receive_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 方法，以批次方式取得訊息。 然後，它會使用嵌套迴圈處理每個批次中的每個訊息 `for` 。 它也會將可見度逾時設定為每個訊息五分鐘。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_DequeueByPage":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-下列程式碼範例會使用 [get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) 方法，在一個呼叫中取得16個訊息。 接著其會使用 `for` 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘。
+下列程式碼範例會使用 [`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) 方法，在一個呼叫中取得16個訊息。 接著其會使用 `for` 迴圈處理每個訊息。 它也會將可見度逾時設定為每個訊息五分鐘。
 
 ```python
 messages = queue_service.get_messages(queue_name, num_messages=16, visibility_timeout=5*60)
@@ -276,13 +276,13 @@ for message in messages:
 
 # <a name="python-v12"></a>[Python v12](#tab/python)
 
-若要刪除佇列及其內含的所有訊息，請呼叫 [delete_queue](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) 方法。
+若要刪除佇列及其內含的所有訊息，請呼叫 [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) 方法。
 
 :::code language="python" source="~/azure-storage-snippets/queues/howto/python/python-v12/python-howto-v12.py" id="Snippet_DeleteQueue":::
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-若要刪除佇列及其內含的所有訊息，請呼叫 [delete_queue](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-queue-queue-name--fail-not-exist-false--timeout-none-) 方法。
+若要刪除佇列及其內含的所有訊息，請呼叫 [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-queue-queue-name--fail-not-exist-false--timeout-none-) 方法。
 
 ```python
 print("Deleting queue: " + queue_name)
@@ -297,10 +297,6 @@ queue_service.delete_queue(queue_name)
 
 既然您已瞭解佇列儲存體的基本概念，請參考下列連結以深入瞭解。
 
-- [Azure 佇列 Python API 參考](/python/api/azure-storage-queue)
+- [Azure 佇列儲存體 Python API 參考](/python/api/azure-storage-queue)
 - [Python 開發人員中心](https://azure.microsoft.com/develop/python/)
-- [Azure 儲存體服務 REST API](/rest/api/storageservices/)
-
-[適用于 Python 的 Azure 佇列儲存體用戶端程式庫]: https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue
-[適用於 Python 的 Azure SDK]: https://github.com/azure/azure-sdk-for-python
-[Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog
+- [Azure 儲存體 REST API 參考](/rest/api/storageservices/)

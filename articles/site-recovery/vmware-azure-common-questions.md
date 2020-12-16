@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 的 VMware 嚴重損壞修復常見問題
 description: 使用 Azure Site Recovery 取得內部部署 VMware Vm 至 Azure 的嚴重損壞修復常見問題解答。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379985"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587787"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware 到 Azure 的複寫常見問題
 
@@ -147,13 +147,17 @@ Site Recovery 會將內部部署 VMware Vm 和實體伺服器複寫至 Azure 中
 
 不支援延伸的或鏈結的複寫。 請在 [意見反應論壇](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中提出這項功能的要求。
 
+### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>如何追蹤初始複寫/同步處理的進度？
+
+這項功能最近才 Site Recovery 服務。 將 Site Recovery 基礎結構 (設定伺服器、相應放大進程伺服器) 和行動代理程式更新為9.36 或更高版本，以取得準確的詳細資料。 若要深入瞭解如何 [追蹤進度，](vmware-azure-enable-replication.md#monitor-initial-replication)請參閱。
+
 ### <a name="can-i-do-an-offline-initial-replication"></a>是否可執行離線初始複寫？
 
 不支援離線複寫。 請在 [意見反應論壇](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)中提出這項功能的要求。
 
 ### <a name="what-is-asrseeddisk"></a>什麼是 asrseeddisk？
 
-針對每個來源磁片，資料會複寫至 Azure 中的受控磁片。 此磁片的前置詞為 **asrseeddisk** 。 它會儲存來源磁片和所有復原點快照集的複本。
+針對每個來源磁片，資料會複寫至 Azure 中的受控磁片。 此磁片的前置詞為 **asrseeddisk**。 它會儲存來源磁片和所有復原點快照集的複本。
 
 ### <a name="can-i-exclude-disks-from-replication"></a>我可以從複寫中排除磁片嗎？
 
@@ -262,7 +266,7 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](./service-updates-how-to
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>是否可以不要下載 MySQL 而讓 Site Recovery 加以安裝？
 
-是。 請下載 MySQL 安裝程式，並將它放在 C:\Temp\ASRSetup 資料夾中。 當您設定伺服器 VM 時，請接受條款，然後選取 [ **下載並安裝** ]。 入口網站將會使用您新增的安裝程式來安裝 MySQL。
+是。 請下載 MySQL 安裝程式，並將它放在 C:\Temp\ASRSetup 資料夾中。 當您設定伺服器 VM 時，請接受條款，然後選取 [ **下載並安裝**]。 入口網站將會使用您新增的安裝程式來安裝 MySQL。
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>組態伺服器 VM 是否可用於任何其他位置？
 
@@ -286,7 +290,7 @@ Site Recovery 遵循 N-4 支援模型。 [深入瞭解](./service-updates-how-to
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>哪裡可以下載保存庫註冊金鑰？
 
-在復原服務保存庫中，選取 [ **Site Recovery 基礎結構** 管理] 中的 [設定 **伺服器** ]  >  **** 。 然後，在 [ **伺服器** ] 中，選取 [ **下載註冊金鑰** ] 以下載保存庫認證檔。
+在復原服務保存庫中，選取 [ **Site Recovery 基礎結構** 管理] 中的 [設定 **伺服器**]  >  ****。 然後，在 [ **伺服器**] 中，選取 [ **下載註冊金鑰** ] 以下載保存庫認證檔。
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>是否可以使用單一設定伺服器來保護多個 vCenter 實例？
 

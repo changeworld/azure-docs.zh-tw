@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca24a781f4f3ad5c210813dabbb896de35056ed6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090207"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588704"
 ---
 # <a name="collaborative-coding-with-git"></a>使用 Git 共同撰寫程式碼
 
@@ -39,7 +39,7 @@ Azure DevOps 提供一個便利的方式，將 Azure Boards 使用者案例或�
 git checkout -b <new branch name> <base branch name>
 
 ```
-如果您未指定 \<base branch name> ，則會根據建立新的分支 `master` 。 
+如果您未指定 \<base branch name> ，則會根據建立新的分支 `main` 。 
 
 若要切換至您的工作分支，請執行下列命令： 
 
@@ -47,7 +47,7 @@ git checkout -b <new branch name> <base branch name>
 git checkout <working branch name>
 ```
 
-切換至工作分支之後，您就可以開始開發程式碼或檔成品來完成工作專案。 執行 `git checkout master` 會將您切換回 `master` 分支。
+切換至工作分支之後，您就可以開始開發程式碼或檔成品來完成工作專案。 執行 `git checkout main` 會將您切換回 `main` 分支。
 
 為每個使用者案例工作專案建立 Git 分支是很好的作法。 然後，針對每個工作專案，您可以根據使用者案例分支建立分支。 當您有多位人員針對相同專案使用不同的使用者案例，或在相同使用者案例的不同工作上工作時，組織中對應至使用者 Story-Task 關聯性的分支。 您可以讓每個小組成員在不同的分支上工作，或是在共用分支時于不同的程式碼或其他成品上工作，以將衝突降至最低。 
 
@@ -105,7 +105,7 @@ git push origin script
 您也可以使用下列 Git bash 命令，將 `script` 工作分支合併至其基底分支，並在合併之後刪除工作分支：
 
 ```bash
-git checkout master
+git checkout main
 git merge script
 git branch -d script
 ```

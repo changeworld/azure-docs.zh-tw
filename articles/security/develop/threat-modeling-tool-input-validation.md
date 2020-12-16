@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4b0be672c0768b4facb6518c777d4fe56eb28aa9
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: c816fbad05831c83c891c70849986b38cb7fdbeb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515671"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589537"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>安全框架︰輸入驗證 | 風險降低 
 | 產品/服務 | 發行項 |
@@ -142,7 +142,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [XML 實體擴充](https://capec.mitre.org/data/definitions/197.html)、[XML 阻斷服務攻擊與防禦](/archive/msdn-magazine/2009/november/xml-denial-of-service-attacks-and-defenses)、[MSXML 安全性概觀](/previous-versions/windows/desktop/ms754611(v=vs.85))、[保護 MSXML 程式碼的最佳作法](/previous-versions/windows/desktop/ms759188(v=vs.85))、[NSXMLParserDelegate 通訊協定參考](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html)、[解析外部參考](/dotnet/standard/data/xml/resolving-external-resources) |
-| **步驟**| <p>雖然未被廣泛使用，但有一項 XML 功能可讓 XML 剖析器使用在文件本身內或從外部來源所定義的值，來擴充巨集實體。 例如，文件可能會使用值 "Microsoft" 定義實體 "companyname"，以便在每次文件中出現文字 "&companyname;" 時，就自動以文字 Microsoft 加以取代。 或者，文件可能會定義參考外部 Web 服務的實體 "MSFTStock"，以擷取 Microsoft 股票的目前股價。</p><p>然後，每當文件中出現 "&MSFTStock;" 時，就自動以目前股價加以取代。 不過，這項功能可能會遭到濫用，來造成阻斷服務 (DoS) 狀況。 攻擊者可將多個實體進行巢狀處理來製造會以指數方式擴張的 XML 炸彈 (XML bomb)，以耗用系統上所有可用的記憶體。 </p><p>或者，他也可以建立外部參考，以往回串流無限量的資料，或讓執行緒停止回應。 因此，所有小組必須完全停用其應用程式並未使用的內部及/或外部 XML 實體解析，或以手動方式限制可供應用程式取用來解析實體的記憶體和時間量 (如果這項功能有其絕對必要)。 如果應用程式不需要解析實體，則請停用。 </p>|
+| **步驟**| <p>雖然未被廣泛使用，但有一項 XML 功能可讓 XML 剖析器使用在文件本身內或從外部來源所定義的值，來擴充巨集實體。 例如，文件可能會使用值 "Microsoft" 定義實體 "companyname"，以便在每次文件中出現文字 "&companyname;" 時，就自動以文字 Microsoft 加以取代。 或者，文件可能會定義參考外部 Web 服務的實體 "MSFTStock"，以擷取 Microsoft 股票的目前股價。</p><p>然後，每當文件中出現 "&MSFTStock;" 時，就自動以目前股價加以取代。 不過，這項功能可能會遭到濫用，來造成阻斷服務 (DoS) 狀況。 攻擊者可將多個實體進行巢狀處理，來製造會以指數方式擴張的 XML 炸彈 (XML bomb)，以耗用系統上所有可用的記憶體。 </p><p>或者，他也可以建立外部參考，以往回串流無限量的資料，或讓執行緒停止回應。 因此，所有小組必須完全停用其應用程式並未使用的內部及/或外部 XML 實體解析，或以手動方式限制可供應用程式取用來解析實體的記憶體和時間量 (如果這項功能有其絕對必要)。 如果應用程式不需要解析實體，則請停用。 </p>|
 
 ### <a name="example"></a>範例
 針對 .NET Framework 程式碼，您可以使用下列方法︰

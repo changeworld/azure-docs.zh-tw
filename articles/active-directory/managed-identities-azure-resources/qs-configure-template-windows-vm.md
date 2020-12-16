@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18d38d3ab8cbbfb1f409b368cddc1df854baa8e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 960e1fc19567b03024000e84217b3846f89f94f3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89266879"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588551"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-templates"></a>使用範本在 Azure VM 上設定 Azure 資源的受控識別
 
@@ -32,7 +32,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ## <a name="prerequisites"></a>先決條件
 
-- 如果您不熟悉如何使用 Azure Resource Manager 部署範本，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
+- 如果您不熟悉如何使用 Azure Resource Manager 部署範本，請參閱[概觀一節](overview.md)。 **請務必檢閱 [系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 
 ## <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
@@ -105,13 +105,13 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>指派角色給虛擬機器的系統指派受控識別
 
-在虛擬機器上啟用系統指派的受控識別後，建議您授予虛擬機器在其中建立的資源群組**讀者**存取這類角色。
+在虛擬機器上啟用系統指派的受控識別後，建議您授予虛擬機器在其中建立的資源群組 **讀者** 存取這類角色。
 
 若要將角色指派給 VM 的系統指派受控識別，您的帳戶需要[使用者存取管理員](../../role-based-access-control/built-in-roles.md#user-access-administrator)角色指派。
 
 1. 無論您是在本機登入 Azure 或透過 Azure 入口網站登入，都請使用與包含虛擬機器的 Azure 訂用帳戶相關聯的帳戶。
 
-2. 在[編輯器](#azure-resource-manager-templates)中載入範本，然後新增下列資訊，以將 VM 在其中建立的資源群組**讀者**存取授與 VM。  您的範本結構可能會因您選擇的編輯器與部署模型而有所不同。
+2. 在 [編輯器](#azure-resource-manager-templates)中載入範本，然後新增下列資訊，以將 VM 在其中建立的資源群組 **讀者** 存取授與 VM。  您的範本結構可能會因您選擇的編輯器與部署模型而有所不同。
 
    在 `parameters` 區段下新增下列內容：
 

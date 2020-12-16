@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 3218df4601ef7a5e1b1e04c20c89eefc367b720b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746449"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588789"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>使用 Web 應用程式，將來自 Azure IoT 中樞的即時感應器資料視覺化
 
@@ -202,10 +202,10 @@ set EventHubConsumerGroup=YourConsumerGroupName
    git remote add webapp <Git clone URL>
    ```
 
-8. 若要將程式碼部署至 App Service，請在命令視窗中輸入下列命令。 如果系統提示提供認證，請輸入在步驟 5 中建立的使用者層級部署認證。 請確認推送至 App Service 遠端的主分支。
+8. 若要將程式碼部署至 App Service，請在命令視窗中輸入下列命令。 如果系統提示提供認證，請輸入在步驟 5 中建立的使用者層級部署認證。 請確定您將推送至 App Service 遠端的主要分支。
 
     ```cmd
-    git push webapp master:master
+    git push webapp main:main
     ```
 
 9. 命令視窗會更新部署進度。 如果部署成功，則會看到類似下列幾行輸出：
@@ -216,7 +216,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
     remote: Running post deployment command(s)...
     remote: Deployment successful.
     To https://contoso-web-app-3.scm.azurewebsites.net/contoso-web-app-3.git
-    6b132dd..7cbc994  master -> master
+    6b132dd..7cbc994  main -> main
     ```
 
 10. 執行下列命令查詢 Web 應用程式的狀態，並確認其正在執行：

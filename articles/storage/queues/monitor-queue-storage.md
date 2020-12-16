@@ -1,24 +1,25 @@
 ---
-title: 監視 Azure 佇列儲存體 |Microsoft Docs
+title: 監視 Azure 佇列儲存體
 description: 瞭解如何監視 Azure 佇列儲存體的效能和可用性。 監視 Azure 佇列儲存體資料、瞭解設定，以及分析計量和記錄資料。
 author: normesta
 services: storage
-ms.service: storage
-ms.topic: conceptual
-ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
+ms.date: 10/26/2020
+ms.topic: conceptual
+ms.service: storage
+ms.subservice: queues
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 15bc943052218761327fa57ce8ff6f5d32bfb116
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 18991f83bfb365d1ced141fa44267502671854b8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855085"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588289"
 ---
 # <a name="monitoring-azure-queue-storage"></a>監視 Azure 佇列儲存體
 
-當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 佇列儲存體所產生的監視資料，以及如何使用 Azure 監視器的功能來分析此資料的警示。
+當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 佇列儲存體所產生的監視資料，以及您可以如何使用 Azure 監視器的功能來分析此資料的警示。
 
 > [!NOTE]
 > Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 此預覽可讓 blob (記錄，其中包含 Azure Data Lake Storage Gen2) 、檔案、佇列和資料表。 這項功能適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 請參閱 [儲存體帳戶總覽](../common/storage-account-overview.md)。
@@ -29,9 +30,9 @@ ms.locfileid: "96855085"
 
 ## <a name="what-is-azure-monitor"></a>Azure 監視器是什麼？
 
-Azure 佇列儲存體使用 [Azure 監視器](../../azure-monitor/overview.md)來建立監視資料，這是 Azure 中的完整堆疊監視服務。 Azure 監視器提供一組完整的功能，可監視您的 Azure 資源以及其他雲端和內部部署環境中的資源。
+Azure 佇列儲存體會使用 [Azure 監視器](../../azure-monitor/overview.md)來建立監視資料，這是 Azure 中的完整堆疊監視服務。 Azure 監視器提供一組完整的功能來監視您的 Azure 資源，以及其他雲端和內部部署中的資源。
 
-請從使用下列內容來 [監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md) 的文章開始 Azure 監視器說明下列各項：
+開始使用 [Azure 監視器的監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md) ，其中說明下列各項：
 
 - Azure 監視器是什麼？
 - 與監視相關聯的成本
@@ -43,9 +44,9 @@ Azure 佇列儲存體使用 [Azure 監視器](../../azure-monitor/overview.md)�
 
 ## <a name="monitoring-data"></a>監視資料
 
-Azure 佇列儲存體會收集與其他 Azure 資源相同的監視資料類型，這些資源會在 [從 Azure 資源監視資料](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中說明。
+Azure 佇列儲存體會收集與其他 Azure 資源相同的監視資料類型，如 [azure 資源的監視資料](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中所述。
 
-如需 Azure 佇列儲存體所建立的計量和記錄計量的詳細資訊，請參閱 [Azure 佇列儲存體監視資料參考](monitor-queue-storage-reference.md) 。
+如需 Azure 佇列儲存體所建立計量和記錄計量的詳細資訊，請參閱 [Azure 佇列儲存體監視資料參考](monitor-queue-storage-reference.md) 。
 
 Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體帳戶。 Azure 監視器不支援傳統儲存體帳戶。 如果您想在傳統儲存體帳戶上使用計量或記錄，則必須遷移至 Azure Resource Manager 儲存體帳戶。 請參閱[遷移至 Azure Resource Manager](../../virtual-machines/migration-classic-resource-manager-overview.md)。
 
@@ -59,9 +60,9 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 
 | 類別 | 描述 |
 |:---|:---|
-| StorageRead | 物件的讀取作業。 |
-| StorageWrite | 對物件進行寫入作業。 |
-| StorageDelete | 刪除物件上的作業。 |
+| **StorageRead** | 物件的讀取作業。 |
+| **StorageWrite** | 對物件進行寫入作業。 |
+| **StorageDelete** | 刪除物件上的作業。 |
 
 ## <a name="creating-a-diagnostic-setting"></a>建立診斷設定
 
@@ -152,10 +153,10 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 使用 [>set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `StorageAccountId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccountId <storage-account-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
-將 `<storage-service-resource--id>` 此程式碼片段中的預留位置取代為佇列服務的資源識別碼。 在 Azure 入口網站中，開啟您儲存體帳戶的 [屬性] 頁面，即可尋找資源識別碼。
+將 `<storage-service-resource--id>` 此程式碼片段中的預留位置取代為佇列的資源識別碼。 在 Azure 入口網站中，開啟您儲存體帳戶的 [屬性] 頁面，即可尋找資源識別碼。
 
 您可以使用 `StorageRead` 、 `StorageWrite` 和做 `StorageDelete` 為 **Category** 參數的值。
 
@@ -172,7 +173,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -StorageAccoun
 使用 [>set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `EventHubAuthorizationRuleId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 以下是範例：
@@ -186,7 +187,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAutho
 使用 [>set-azdiagnosticsetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell Cmdlet 搭配參數來啟用記錄 `WorkspaceId` 。
 
 ```powershell
-Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
+Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operations-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
 ```
 
 以下是範例：
@@ -197,7 +198,7 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 首先，開啟 [Azure Cloud Shell](../../cloud-shell/overview.md)，或若已在本機[安裝](/cli/azure/install-azure-cli) Azure CLI，請開啟 Windows PowerShell 等命令主控台應用程式。
+1. 首先，開啟 [Azure Cloud Shell](../../cloud-shell/overview.md)，或如果您已在本機 [安裝 Azure CLI](/cli/azure/install-azure-cli) ，請開啟命令主控台應用程式（例如 PowerShell）。
 
 2. 如果您的身分識別與多個訂用帳戶相關聯，請將您的使用中訂用帳戶設定為您想要啟用記錄的儲存體帳戶訂用帳戶。
 
@@ -211,27 +212,27 @@ Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <
 
 如果您選擇將記錄封存至儲存體帳戶，則會支付傳送至儲存體帳戶的記錄數量。 如需特定的定價，請參閱 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)頁面的 [**平臺記錄**] 區段。
 
-使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令來啟用記錄。
+使用命令啟用記錄 [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --storage-account <storage-account-name> --resource <storage-service-resource-id> --resource-group <resource-group> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
 ```
 
-`<storage-service-resource--id>`將此程式碼片段中的預留位置取代為資源識別碼佇列儲存體服務。 在 Azure 入口網站中，開啟您儲存體帳戶的 [屬性] 頁面，即可尋找資源識別碼。
+將 `<storage-service-resource--id>` 此程式碼片段中的預留位置取代為佇列的資源識別碼。 在 Azure 入口網站中，開啟您儲存體帳戶的 [屬性] 頁面，即可尋找資源識別碼。
 
-您可以使用 `StorageRead` 、 `StorageWrite` 和做 `StorageDelete` 為 **category** 參數的值。
+您可以使用 `StorageRead` 、 `StorageWrite` 和做 `StorageDelete` 為參數的值 `category` 。
 
 以下是範例：
 
 `az monitor diagnostic-settings create --name setting1 --storage-account mystorageaccount --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --resource-group myresourcegroup --logs '[{"category": StorageWrite, "enabled": true, "retentionPolicy": {"days": 90, "enabled": true}}]'`
 
-如需每個參數的描述，請參閱透過 Azure CLI 的封存 [資源記錄](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)檔。
+如需每個參數的描述，請參閱透過 [Azure CLI 保存資源記錄](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)檔。
 
 #### <a name="stream-logs-to-an-event-hub"></a>將記錄串流至事件中樞
 
 如果您選擇將記錄串流至事件中樞，您將會支付傳送至事件中樞的記錄數量。 如需特定的定價，請參閱 [Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/#platform-logs)頁面的 [**平臺記錄**] 區段。
 
-使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令來啟用記錄。
+使用命令啟用記錄 [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --event-hub <event-hub-name> --event-hub-rule <event-hub-namespace-and-key-name> --resource <storage-account-resource-id> --logs '[{"category": <operations>, "enabled": true "retentionPolicy": {"days": <number-days>, "enabled": <retention-bool}}]'
@@ -241,11 +242,11 @@ az monitor diagnostic-settings create --name <setting-name> --event-hub <event-h
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/queueServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-如需每個參數的描述，請參閱透過 [Azure CLI 將串流資料串流至事件中樞](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)。
+如需每個參數的描述，請參閱透過 [Azure CLI 將資料串流至事件中樞](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)。
 
 #### <a name="send-logs-to-log-analytics"></a>將記錄傳送至 Log Analytics
 
-使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 命令來啟用記錄。
+使用命令啟用記錄 [`az monitor diagnostic-settings create`](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 。
 
 ```azurecli-interactive
 az monitor diagnostic-settings create --name <setting-name> --workspace <log-analytics-workspace-resource-id> --resource <storage-account-resource-id> --logs '[{"category": <category name>, "enabled": true "retentionPolicy": {"days": <days>, "enabled": <retention-bool}}]'
@@ -265,7 +266,7 @@ az monitor diagnostic-settings create --name <setting-name> --workspace <log-ana
 
 ## <a name="analyzing-metrics"></a>分析計量
 
-您可使用計量瀏覽器，利用其他 Azure 服務的計量來分析 Azure 儲存體的計量。 從 [Azure 監視器] 功能表中選擇 [計量]，以開啟計量瀏覽器。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)。
+您可以使用 Azure 計量瀏覽器，分析來自其他 Azure 服務的計量 Azure 儲存體計量。 從 [Azure 監視器] 功能表中選擇 [計量]，以開啟計量瀏覽器。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)。
 
 此範例說明如何檢視帳戶層級的 **交易**。
 
@@ -282,7 +283,7 @@ Azure 佇列儲存體的計量位於下列命名空間：
 - Microsoft.Storage/storageAccounts
 - Microsoft.Storage/storageAccounts/queueServices
 
-如需所有 Azure 監視器支援計量的清單，包括 Azure 佇列儲存體，請參閱 [Azure 監視器支援的度量](../../azure-monitor/platform/metrics-supported.md)。
+如需所有 Azure 監視器支援計量（包括 Azure 佇列儲存體）的清單，請參閱 [Azure 監視器支援的度量](../../azure-monitor/platform/metrics-supported.md)。
 
 ### <a name="accessing-metrics"></a>存取計量
 
@@ -295,7 +296,7 @@ Azure 佇列儲存體的計量位於下列命名空間：
 
 您可以列出儲存體帳戶或佇列儲存體服務的度量定義。 使用 [Get-AzMetricDefinition](/powershell/module/az.monitor/get-azmetricdefinition) Cmdlet。
 
-在此範例中，請將 `<resource-ID>` 預留位置取代為整個儲存體帳戶的資源識別碼或佇列儲存體服務的資源識別碼。 您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
+在此範例中，請將 `<resource-ID>` 預留位置取代為整個儲存體帳戶的資源識別碼或佇列的資源識別碼。 您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -304,7 +305,7 @@ Azure 佇列儲存體的計量位於下列命名空間：
 
 #### <a name="reading-metric-values"></a>讀取度量值
 
-您可以讀取儲存體帳戶或佇列儲存體服務的帳戶層級度量值。 使用 [Get-AzMetric](/powershell/module/Az.Monitor/Get-AzMetric) Cmdlet。
+您可以讀取儲存體帳戶或佇列儲存體服務的帳戶層級度量值。 使用 [Get-AzMetric](/powershell/module/az.monitor/get-azmetric) Cmdlet。
 
 ```powershell
    $resourceId = "<resource-ID>"
@@ -315,9 +316,9 @@ Azure 佇列儲存體的計量位於下列命名空間：
 
 #### <a name="list-the-account-level-metric-definition"></a>列出帳戶層級的計量定義
 
-您可以列出儲存體帳戶或佇列儲存體服務的度量定義。 使用 [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) 命令。
+您可以列出儲存體帳戶或佇列儲存體服務的度量定義。 使用 [`az monitor metrics list-definitions`](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) 命令。
 
-在此範例中，請將 `<resource-ID>` 預留位置取代為整個儲存體帳戶的資源識別碼或佇列儲存體服務的資源識別碼。 您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
+在此範例中，請將 `<resource-ID>` 預留位置取代為整個儲存體帳戶的資源識別碼或佇列的資源識別碼。 您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
 
 ```azurecli-interactive
    az monitor metrics list-definitions --resource <resource-ID>
@@ -325,7 +326,7 @@ Azure 佇列儲存體的計量位於下列命名空間：
 
 #### <a name="read-account-level-metric-values"></a>讀取帳戶層級的計量值
 
-您可以讀取儲存體帳戶或佇列儲存體服務的度量值。 使用 [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令。
+您可以讀取儲存體帳戶或佇列儲存體服務的度量值。 使用 [`az monitor metrics list`](/cli/azure/monitor/metrics#az-monitor-metrics-list) 命令。
 
 ```azurecli-interactive
    az monitor metrics list --resource <resource-ID> --metric "UsedCapacity" --interval PT1H
@@ -333,9 +334,9 @@ Azure 佇列儲存體的計量位於下列命名空間：
 
 ### <a name="net"></a>[.NET](#tab/azure-portal)
 
-Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) 來讀取計量定義和值。 [範例程式碼](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)示範如何使用 SDK 搭配不同的參數。 您必須使用 `0.18.0-preview` 或更新版本的儲存體計量。
+Azure 監視器提供 [.NET SDK](https://www.nuget.org/packages/microsoft.azure.management.monitor/) 來讀取計量定義和值。 [範例程式碼](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)示範如何使用 SDK 搭配不同的參數。 您必須使用 `0.18.0-preview` 或更新版本的儲存體計量。
 
-在這些範例中，請將 `<resource-ID>` 預留位置取代為整個儲存體帳戶或佇列儲存體服務的資源識別碼。 您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
+在這些範例中，請將 `<resource-ID>` 預留位置取代為整個儲存體帳戶或佇列的資源識別碼。 您可在 Azure 入口網站中儲存體帳戶的 [屬性] 頁面上找到這些資源識別碼。
 
 將 `<subscription-ID>` 變數取代為您的訂用帳戶識別碼。 如需有關如何取得 `<tenant-ID>`、`<application-ID>` 和 `<AccessKey>`值的指引，請參閱[使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -478,18 +479,18 @@ N/A。
 
 ## <a name="analyzing-logs"></a>分析記錄
 
-您可以透過儲存體帳戶中的佇列、事件資料，或透過記錄分析查詢來存取資源記錄。
+您可以透過儲存體帳戶中的佇列、事件資料，或透過 Log Analytics 查詢來存取資源記錄。
 
-如需這些記錄檔中出現之欄位的詳細參考，請參閱 [Azure 佇列儲存體監視資料參考](monitor-queue-storage-reference.md)。
+如需這些記錄中出現之欄位的詳細參考，請參閱 [Azure 佇列儲存體監視資料參考](monitor-queue-storage-reference.md)。
 
 > [!NOTE]
 > Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 此預覽可啟用 Blob (包括 Azure Data Lake Storage Gen2)、檔案、佇列、資料表、一般用途 v1 高階儲存體帳戶及一般用途 v2 儲存體帳戶的記錄。 不支援傳統儲存體帳戶。
 
-只有在對服務端點提出要求時，才會建立記錄項目。 例如，如果儲存體帳戶在其佇列端點中有活動，而不是在其資料表或 blob 端點中，則只會建立與佇列服務相關的記錄。 Azure 儲存體記錄包含對儲存體服務之成功和失敗要求的詳細資訊。 這項資訊可用來監視個別要求，並診斷儲存體服務的問題。 系統會以最佳方式來記錄要求。
+只有在對服務端點提出要求時，才會建立記錄項目。 例如，如果儲存體帳戶在其佇列端點中有活動，而不是在其資料表或 blob 端點中，則只會建立與佇列儲存體相關的記錄。 Azure 儲存體記錄包含對儲存體服務之成功和失敗要求的詳細資訊。 這項資訊可用來監視個別要求，並診斷儲存體服務的問題。 系統會以最佳方式來記錄要求。
 
 ### <a name="log-authenticated-requests"></a>記錄已驗證的要求
 
- 系統將記錄下列類型的驗證要求：
+系統將記錄下列類型的驗證要求：
 
 - 成功的要求
 - 失敗的要求，包括逾時、節流、網路、授權和其他錯誤
@@ -500,12 +501,12 @@ N/A。
 
 ### <a name="log-anonymous-requests"></a>記錄匿名要求
 
- 系統將記錄下列類型的匿名要求：
+系統將記錄下列類型的匿名要求：
 
 - 成功的要求
 - 伺服器錯誤
 - 用戶端與伺服器的逾時錯誤
-- 失敗的 GET 要求，其錯誤碼為 304 (未修改)
+- 失敗的 `GET` 要求，錯誤碼 304 (`Not Modified`) 
 
 系統不會記錄所有其他失敗的匿名要求。 如需已記錄資料的完整清單，請參閱[儲存體記錄的作業和狀態訊息](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)及[儲存體記錄格式](monitor-queue-storage-reference.md)。
 
@@ -521,7 +522,7 @@ N/A。
 
 ### <a name="accessing-logs-in-an-event-hub"></a>存取事件中樞內的記錄
 
-傳送至事件中樞的記錄不會儲存為檔案，但您可確認事件中樞已收到記錄資訊。 在 Azure 入口網站中，移至您的事件中樞並確認 **內送郵件** 計數大於零。
+傳送至事件中樞的記錄不會儲存為檔案，但您可確認事件中樞已收到記錄資訊。 在 Azure 入口網站中，移至您的事件中樞，並確認 `incoming requests` 計數大於零。
 
 ![稽核記錄](media/monitor-queue-storage/event-hub-log.png)
 
@@ -533,11 +534,11 @@ N/A。
 
 如需詳細資訊，請參閱[開始使用 Azure 監視器中的 Log Analytics](../../azure-monitor/log-query/log-analytics-tutorial.md)。
 
-資料會儲存在 **StorageQueueLogs** 資料表中。
+資料會儲存在 `StorageQueueLogs` 資料表中。
 
 #### <a name="sample-kusto-queries"></a>範例 Kusto 查詢
 
-以下是一些您可以在 **記錄搜尋** 列中輸入的查詢，可協助您監視佇列儲存體。 這些查詢使用[新語言](../../azure-monitor/log-query/log-query-overview.md)。
+以下是一些您可以在 **記錄搜尋** 列中輸入的查詢，可協助您監視佇列。 這些查詢使用[新語言](../../azure-monitor/log-query/log-query-overview.md)。
 
 > [!IMPORTANT]
 > 當您從 [儲存體帳戶資源群組] 功能表選取 [ **記錄** ] 時，會開啟 Log Analytics，並將查詢範圍設定為目前的資源群組。 這表示記錄查詢只會包含該資源群組中的資料。 如果您想要執行包含來自其他 Azure 服務之其他資源或資料之資料的查詢，請從 [ **Azure 監視器**] 功能表中選取 [**記錄**]。 如需詳細資訊，請參閱 [Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](../../azure-monitor/log-query/scope.md)。
@@ -599,9 +600,9 @@ N/A。
 
 ## <a name="faq"></a>常見問題集
 
-**Azure 儲存體是否支援受控磁碟或非受控磁碟的計量？**
+**Azure 儲存體是否支援受控磁片或非受控磁片的計量？**
 
-否。 Azure 計算支援磁碟的計量。 如需詳細資訊，請參閱[受控和非受控磁碟的每一磁碟計量](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
+否。 計算實例支援磁片上的度量。 如需詳細資訊，請參閱 [受控磁片和非受控磁片的每個磁片計量](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
 ## <a name="next-steps"></a>後續步驟
 

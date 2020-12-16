@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddf8236dbbc9714c705e442bb65eb2ac3d293cc7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80991564"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589571"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure Data Factory 來移動 HTTP 來源的資料
 
@@ -34,7 +34,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 ## <a name="supported-scenarios-and-authentication-types"></a>支援的案例和驗證類型
 
-您可以使用這個 HTTP 連接器，藉由使用 HTTP **GET**或 **POST** 方法，從雲端和內部部署 HTTP/S 端點擷取資料**。 支援下列驗證類型︰**匿名****基本**、**摘要**、**Windows**和 **ClientCertificate**。 請注意此連接器和 [Web 資料表連接器](data-factory-web-table-connector.md)的差異。 Web 資料表連接器可從 HTML 網頁擷取資料表內容。
+您可以使用這個 HTTP 連接器，藉由使用 HTTP **GET** 或 **POST** 方法，從雲端和內部部署 HTTP/S 端點擷取資料。 支援下列驗證類型︰**匿名****基本**、**摘要**、**Windows** 和 **ClientCertificate**。 請注意此連接器和 [Web 資料表連接器](data-factory-web-table-connector.md)的差異。 Web 資料表連接器可從 HTML 網頁擷取資料表內容。
 
 從內部部署 HTTP 端點複製資料時，您必須在內部部署環境或 Azure VM 中安裝資料管理閘道。 若要了解資料管理閘道和如何設定閘道的逐步指示，請參閱[在內部部署位置與雲端之間移動資料](data-factory-move-data-between-onprem-and-cloud.md)。
 
@@ -44,7 +44,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 - 若要建立管線，最簡單的方式就是使用「資料複製」精靈。 如需使用資料複製精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。
 
-- 您也可以使用下列工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API**或 **REST API**。 如需逐步指示來了解如何建立內含複製活動的管線，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 如需將資料從 HTTP 來源複製到 Azure Blob 儲存體的 JSON 範例，請參閱 [JSON 範例](#json-examples)。
+- 您也可以使用下列工具來建立管線： **Visual Studio**、 **Azure PowerShell**、 **Azure Resource Manager 範本**、 **.net API** 或 **REST API**。 如需逐步指示來了解如何建立內含複製活動的管線，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 如需將資料從 HTTP 來源複製到 Azure Blob 儲存體的 JSON 範例，請參閱 [JSON 範例](#json-examples)。
 
 ## <a name="linked-service-properties"></a>連結服務屬性
 
@@ -52,9 +52,9 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| type | **類型**屬性必須設定為 **Http**。 | 是 |
+| type | **類型** 屬性必須設定為 **Http**。 | 是 |
 | url | Web 伺服器的基底 URL。 | 是 |
-| authenticationType | 指定驗證類型。 允許的值為**匿名**、**基本**、**摘要**、**Windows** 和 **ClientCertificate**。 <br><br> 如需更多關於這些驗證類型的屬性和 JSON 範例，請參閱本文後續幾節。 | 是 |
+| authenticationType | 指定驗證類型。 允許的值為 **匿名**、**基本**、**摘要**、**Windows** 和 **ClientCertificate**。 <br><br> 如需更多關於這些驗證類型的屬性和 JSON 範例，請參閱本文後續幾節。 | 是 |
 | enableServerCertificateValidation | 如果來源是 HTTPS web 伺服器，指定是否啟用伺服器 TLS/SSL 憑證驗證。 當 HTTPS 伺服器使用自我簽署的憑證時，請將此屬性設定為 **false**。 | 否<br />  (預設值為 **true**)  |
 | gatewayName | 用來連線至內部部署 HTTP 來源的「資料管理閘道」執行個體名稱。 | 如果要從內部部署 HTTP 來源複製資料，則為是。 |
 | encryptedCredential | 用來存取 HTTP 端點的加密認證。 當您在複製精靈或藉由使用 **ClickOnce** 對話方塊設定驗證資訊時，便會自動產生此值。 | 否<br /> (當您從內部部署 HTTP 伺服器複製資料時才適用) |
@@ -63,7 +63,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>使用基本、摘要或 Windows 驗證
 
-將 **authenticationType** 設定為**基本**、**摘要**或 **Windows**。 除了上述幾節所述的一般 HTTP 連接器屬性外，也請設定下列屬性：
+將 **authenticationType** 設定為 **基本**、**摘要** 或 **Windows**。 除了上述幾節所述的一般 HTTP 連接器屬性外，也請設定下列屬性：
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
@@ -101,10 +101,10 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 如果您使用 **certThumbprint** 進行驗證且憑證已安裝在本機電腦的個人存放區中，請授與讀取權限給閘道服務︰
 
-1. 開啟 Microsoft Management Console (MMC)。 新增目標為 [本機電腦]**** 的 [憑證]**** 嵌入式管理單元。
+1. 開啟 Microsoft Management Console (MMC)。 新增目標為 [本機電腦] 的 [憑證] 嵌入式管理單元。
 2. 展開 [**憑證**  >  **個人**]，然後選取 [**憑證**]。
 3. 以滑鼠右鍵按一下個人存放區中的憑證，**然後選取 [**  > **管理私密金鑰**]。
-3. 在 [安全性]**** 索引標籤上，新增資料管理閘道主機服務使用憑證讀取存取執行所在的使用者帳戶。  
+3. 在 [安全性] 索引標籤上，新增資料管理閘道主機服務使用憑證讀取存取執行所在的使用者帳戶。  
 
 **範例︰使用用戶端憑證**
 
@@ -120,8 +120,8 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-            "certThumbprint": "thumbprint of certificate",
-            "gatewayName": "gateway name"
+        "certThumbprint": "thumbprint of certificate",
+        "gatewayName": "gateway name"
 
         }
     }
@@ -142,8 +142,8 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-            "embeddedCertData": "Base64-encoded cert data",
-            "password": "password of cert"
+        "embeddedCertData": "Base64-encoded cert data",
+        "password": "password of cert"
         }
     }
 }
@@ -159,26 +159,26 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的**類型**必須設定為 **Http**。 | 是 |
+| type | 資料集的 **類型** 必須設定為 **Http**。 | 是 |
 | relativeUrl | 包含資料之資源的相對 URL。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 <br><br> 若要建構動態 URL，您可以使用 [Data Factory 函式和系統變數](data-factory-functions-variables.md)。 範例：**relativeUrl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)**。 | 否 |
 | requestMethod | HTTP 方法。 允許的值為 **GET** 和 **POST**。 | 否 <br />(預設值為 **GET**) |
 | additionalHeaders | 其他 HTTP 要求標頭。 | 否 |
 | requestBody | HTTP 要求的主體。 | 否 |
-| format | 如果您想要「從 HTTP 端點依現狀擷取資料」** 而不剖析它，請略過此**格式**設定。 <br><br> 如果您想要在複製期間剖析 HTTP 回應內容，支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
+| format | 如果您想要「從 HTTP 端點依現狀擷取資料」而不剖析它，請略過此 **格式** 設定。 <br><br> 如果您想要在複製期間剖析 HTTP 回應內容，支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat** 和 **ParquetFormat**。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)。 |否 |
 | compression | 指定此資料的壓縮類型和層級。 支援的類型：**GZip**、**Deflate**、**BZip2** 及 **ZipDeflate**。 支援的層級：**Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 **範例︰使用 GET (預設值) 方法**
 
 ```json
 {
-    "name": "HttpSourceDataInput",
+  "name": "HttpSourceDataInput",
     "properties": {
-        "type": "Http",
+    "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
-            "relativeUrl": "XXX/test.xml",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-        },
+      "relativeUrl": "XXX/test.xml",
+        "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+    },
         "external": true,
         "availability": {
             "frequency": "Hour",
@@ -198,7 +198,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
             "relativeUrl": "/XXX/test.xml",
-           "requestMethod": "Post",
+       "requestMethod": "Post",
             "requestBody": "body for POST HTTP request"
         },
         "external": true,
@@ -230,7 +230,7 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 ## <a name="json-examples"></a>JSON 範例
 
-下列範例提供您可用來使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)建立管線的範例 JSON 定義。 這些範例示範如何將資料從 HTTP 來源複製到 Azure Blob 儲存體。 不過，您可以使用 Azure Data Factory 中的「複製活動」，將資料從任何來源「直接」** 複製到[所支援的](data-factory-data-movement-activities.md#supported-data-stores-and-formats)任何接收。
+下列範例提供您可用來使用 [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) 或 [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)建立管線的範例 JSON 定義。 這些範例示範如何將資料從 HTTP 來源複製到 Azure Blob 儲存體。 不過，您可以使用 Azure Data Factory 中的「複製活動」，將資料從任何來源「直接」複製到[所支援的](data-factory-data-movement-activities.md#supported-data-stores-and-formats)任何接收。
 
 **範例：將資料從 HTTP 來源複製到 Azure Blob 儲存體**
 
@@ -283,14 +283,14 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
 
 ```json
 {
-    "name": "HttpSourceDataInput",
+  "name": "HttpSourceDataInput",
     "properties": {
-        "type": "Http",
+    "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
             "relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)",
-            "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-        },
+        "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+    },
         "external": true,
         "availability": {
             "frequency": "Hour",

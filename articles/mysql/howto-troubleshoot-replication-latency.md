@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 30ac28ef996c42e99ebece27ec156777f0d033d2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087021"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587871"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>對適用於 MySQL 的 Azure 資料庫中的複寫延遲進行疑難排解
 
@@ -31,9 +31,12 @@ ms.locfileid: "93087021"
 
 在本文中，您將瞭解如何針對適用於 MySQL 的 Azure 資料庫中的複寫延遲進行疑難排解。 您也將瞭解複本伺服器上增加複寫延遲的一些常見原因。
 
+> [!NOTE]
+> 本文包含詞彙從屬的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+
 ## <a name="replication-concepts"></a>複寫概念
 
-當二進位記錄檔啟用時，來源伺服器會將認可的交易寫入二進位記錄檔中。 二進位記錄檔用於複寫。 它預設會針對最多支援 16 TB 儲存體的所有新布建伺服器開啟。 在複本伺服器上，兩個執行緒會在每個複本伺服器上執行。 其中一個執行緒是 *IO 執行緒* ，另一個則是 *SQL 執行緒* ：
+當二進位記錄檔啟用時，來源伺服器會將認可的交易寫入二進位記錄檔中。 二進位記錄檔用於複寫。 它預設會針對最多支援 16 TB 儲存體的所有新布建伺服器開啟。 在複本伺服器上，兩個執行緒會在每個複本伺服器上執行。 其中一個執行緒是 *IO 執行緒*，另一個則是 *SQL 執行緒*：
 
 - IO 執行緒會連接到來源伺服器，並要求更新的二進位記錄檔。 此執行緒會接收二進位記錄檔更新。 這些更新會儲存在複本伺服器上，名為「 *轉送」記錄* 檔的本機記錄檔中。
 - SQL 執行緒會讀取轉送記錄，然後將資料變更套用到複本伺服器上。

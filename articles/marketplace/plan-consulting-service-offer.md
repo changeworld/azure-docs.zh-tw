@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 10c06f5b36de880302f17dc17c1d47d5209dd902
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780700"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588466"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>如何在商業市場中規劃諮詢服務供應專案
 
@@ -29,17 +29,42 @@ ms.locfileid: "96780700"
 
 每個諮詢服務都必須專注于下列其中一項 Microsoft 產品，稱為供應專案的 **主要產品** ：
 
-|主要產品                               |                   |
-|-------------------------------|-------------------|
-|Azure                          |Dynamics 365 Project Service Automation |
-|Dynamics 365 Business Central  |Dynamics 365 Sales |
-|Dynamics 365 Commerce          |Dynamics 365 Supply Chain Management |
-|Dynamics 365 Customer Insights |Microsoft 365 |
-|Dynamics 365 Customer Service  |Power Apps |
-|Dynamics 365 Field Service     |Power Automate |
-|Dynamics 365 Finance           |Power BI |
-|Dynamics 365 Marketing         |Power Virtual Agents |
-|    |    |
+:::row:::
+    :::column:::
+        Azure
+
+        Dynamics 365 Business Central
+
+        Dynamics 365 Commerce
+
+        Dynamics 365 Customer Insights
+
+        Dynamics 365 Customer Service
+
+        Dynamics 365 Field Service
+
+        Dynamics 365 Finance
+
+        Dynamics 365 Marketing
+    :::column-end:::
+    :::column:::
+        Dynamics 365 Project Service Automation
+
+        Dynamics 365 Sales
+
+        Dynamics 365 Supply Chain Management
+
+        Microsoft 365
+
+        Power Apps
+
+        Power Automate
+
+        Power BI
+
+        Power Virtual Agents
+    :::column-end:::
+:::row-end:::
 
 您在合作夥伴中心中選取的主要產品，會決定您的供應專案是否會發佈至 Microsoft AppSource 或 Azure Marketplace。
 
@@ -98,7 +123,7 @@ ms.locfileid: "96780700"
 
 為了讓您更輕鬆地建立您的供應專案，請事先準備一些專案。 除非另有說明，否則需要下列專案。
 
-**名稱**：此名稱會顯示為商業市集中您的供應專案清單標題。 名稱可能是商標， 除非 (是商標和著作權符號) ，而且必須限制為50個字元，否則它不能包含 emoji。 此名稱必須包含供應專案的持續時間和服務類型，以最大化搜尋引擎優化 (SEO) 。 必要的格式為 *Name： Duration + type*。 請勿包含您的公司名稱，除非它也是產品名稱。 以下是一些範例：
+**名稱**：此名稱會顯示為商業市集中您的供應專案清單標題。 名稱可能是商標， 除非 (是商標和著作權符號) ，而且必須限制為50個字元，否則它不能包含 emoji。 此名稱必須包含供應專案的持續時間和服務類型，以最大化搜尋引擎優化 (SEO) 。 必要的格式為 *Name： Duration + type*。 請勿包含您的公司名稱，除非它也是產品名稱。 這裡有一些範例：
 
 |別說 |說出  |
 |---|---|

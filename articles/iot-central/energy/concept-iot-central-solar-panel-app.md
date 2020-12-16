@@ -3,22 +3,19 @@ title: Azure IoT Central 的架構概念 - 太陽能板 | Microsoft Docs
 description: 此文章介紹與 Azure IoT Central 太陽能板監視應用程式架構相關的重要概念。
 author: op-ravi
 ms.author: omravi
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 00ef6cf6d4149f139876cb0c2d845133ba00157c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: cd35381e4c2cdb849662ad134cfbef8229707eed
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127501"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516626"
 ---
 # <a name="azure-iot-central---solar-panel-app-architecture"></a>Azure IoT Central - 太陽能板應用程式架構
-
-
-
 
 此文章提供太陽能板監視應用程式範本架構的概觀。 下圖顯示在 Azure 上使用 IoT Central 平台之太陽能板應用程式的常用架構。
 
@@ -27,11 +24,9 @@ ms.locfileid: "92127501"
 
 此架構由下列元件組成。 有些應用程式可能不需要此處所列的每個元件。
 
-## <a name="solar-panels-and-connectivity"></a>太陽能板與連線能力 
+## <a name="solar-panels-and-connectivity"></a>太陽能板與連線能力
 
 太陽能板是可再生能源的重要來源之一。 根據太陽能板類型和設定而定，您可以使用閘道或其他中繼裝置和專屬系統來與其連線。 您可能需要建置 IoT Central 裝置橋接器，來連線無法直接連線的裝置。 IoT Central 裝置橋接器是一個開放原始碼解決方案，您可以[在這裡](../core/howto-build-iotc-device-bridge.md) \(部分機器翻譯\) 找到完整詳細資料。 
-
-
 
 ## <a name="iot-central-platform"></a>IoT Central 平台
 Azure IoT Central 是一個平台，能簡化 IoT 解決方案的建置，有助於降低 IoT 管理、作業與開發的負擔及費用。 利用 IoT Central，您可以輕鬆地大規模連線、監視並管理您的物聯網 (IoT) 資產。 將太陽能板連線到 IoT Central 之後，應用程式範本就會使用裝置模型、命令和儀表板等內建功能。 應用程式範本也會針對暖路徑案例使用 IoT Central 儲存體，例如，近乎即時的電表資料監視、分析、規則和視覺效果。

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 7466f037f0a39b67023b9ebcc27c2e19b27f42ab
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 79558bd2c8e9bfec0aff47d254944977d271a762
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485258"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587809"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>內部部署 Hyper-V VM 至 Azure 的災害復原支援矩陣
 
@@ -30,7 +30,7 @@ Hyper-V (不含 Virtual Machine Manager) | 您可以針對在不是由 Virtual M
 
 ## <a name="on-premises-servers"></a>內部部署伺服器
 
-**伺服器** | **Requirements** | **詳細資料**
+**Server** | **Requirements** | **詳細資料**
 --- | --- | ---
 Hyper-V (執行時不含 Virtual Machine Manager) |  Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 （含最新更新） <br/><br/> **注意：** 此外，也支援這些作業系統的 Server core 安裝。 | 如果您已使用 Azure Site Recovery 設定 Windows Server 2012 R2 和/或 SCVMM 2012 R2，並且打算升級作業系統，請依照此[文件](upgrade-2012R2-to-2016.md)的說明進行。
 Hyper-V (執行時含 Virtual Machine Manager) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 <br/><br/> **注意：** 此外，也支援這些作業系統的 Server core 安裝。  | 如果使用 Virtual Machine Manager，Windows Server 2019 主機應該在 Virtual Machine Manager 2019 中進行管理。 同樣地，Windows Server 2016 主機應該在 Virtual Machine Manager 2016 中進行管理。
@@ -94,7 +94,7 @@ Azure 虛擬網路服務端點<br/> (不含 Azure 儲存體防火牆) | 是 | �
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V 主機儲存體
 
-**Storage** | **具有 Virtual Machine Manager 的 hyper-v** | **沒有 Virtual Machine Manager 的 hyper-v**
+**儲存體** | **具有 Virtual Machine Manager 的 hyper-v** | **沒有 Virtual Machine Manager 的 hyper-v**
 --- | --- | --- 
 NFS | NA | NA
 SMB 3.0 | 是 | 是
@@ -103,7 +103,7 @@ SAN (ISCSI) | 是 | 是
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM 客體儲存體
 
-**Storage** | **具有 Virtual Machine Manager 的 hyper-v** | **沒有 Virtual Machine Manager 的 hyper-v**
+**儲存體** | **具有 Virtual Machine Manager 的 hyper-v** | **沒有 Virtual Machine Manager 的 hyper-v**
 --- | --- | ---
 VMDK | NA | NA
 VHD/VHDX | 是 | 是
@@ -131,6 +131,7 @@ RDM | NA | NA
 本地備援儲存體 | 是 | 是
 異地備援儲存體 | 是 | 是
 讀取權限異地備援儲存體 | 是 | 是
+區域備援儲存體 | 否 | 否
 非經常性儲存體 | 否 | 否
 經常性存取儲存體| 否 | 否
 區塊 Blob | 否 | 否
