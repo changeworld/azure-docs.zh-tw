@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: dcd64cf779b931dbf3b4f743844071835e0b8c91
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932051"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608488"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>探索適用於 Azure Cosmos DB 的 Azure 監視器
 
@@ -22,9 +22,9 @@ ms.locfileid: "91932051"
 
 其可提供：
 
-* 單一位置所有訂用帳戶中的 Azure Cosmos DB 資源**整體觀點**，而且能夠選擇性地將範圍僅限定在您想要評估的訂用帳戶和資源。
+* 單一位置所有訂用帳戶中的 Azure Cosmos DB 資源 **整體觀點**，而且能夠選擇性地將範圍僅限定在您想要評估的訂用帳戶和資源。
 
-* 特定 Azure CosmosDB 資源的**向下切入分析**，可協助診斷問題，或依類別 (使用量、失敗、容量和作業) 來執行詳細的分析。 選取其中任何一個選項可讓您深入檢視相關的 Azure Cosmos DB 計量。  
+* 特定 Azure CosmosDB 資源的 **向下切入分析**，可協助診斷問題，或依類別 (使用量、失敗、容量和作業) 來執行詳細的分析。 選取其中任何一個選項可讓您深入檢視相關的 Azure Cosmos DB 計量。  
 
 * **可自訂** - 此體驗建立在 Azure 監視器活頁簿範本的基礎之上，可讓您變更所顯示的計量、修改或設定符合限制的閾值，然後儲存到自訂的活頁簿中。 接著，活頁簿中的圖表可以釘選到 Azure 儀表板。  
 
@@ -39,7 +39,7 @@ ms.locfileid: "91932051"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋**監視器**，然後選取 [監視器]。
+2. 搜尋 **監視器**，然後選取 [監視器]。
 
     ![包含「監視器」一詞的搜尋方塊，以及一個顯示服務「監視器」和速度表樣式影像的下拉式清單](./media/cosmosdb-insights-overview/search-monitor.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "91932051"
 
 ![依 HTTP 要求類型細分失敗的螢幕擷取畫面](./media/cosmosdb-insights-overview/failures.png)
 
-| 程式碼      |  描述       | 
+| 程式碼 |  描述       | 
 |-----------|:--------------------|
 | `200 OK`  | 下列其中一個 REST 作業成功： </br>- 在資源上 GET。 </br> - 在資源上 PUT。 </br> - 在資源上 POST。 </br> - 在可執行預存程序的預存程序資源上 POST。|
 | `201 Created` | 建立資源的 POST 作業成功。 |

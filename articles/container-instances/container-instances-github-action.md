@@ -4,16 +4,16 @@ description: 設定 GitHub 動作，以自動化建立、推送及部署容器�
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 270aa69e74045a48a3567ca74b722ca48a030654
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7dfa2a66851db760049e7c3dc3446223c7dffad1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591628"
+ms.locfileid: "97609151"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>設定 GitHub 動作以建立容器執行個體
 
-[GitHub Actions](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) 是 GitHub 中的一組功能，可讓您在儲存程式碼及共同處理提取要求和問題的相同位置，自動化軟體發展工作流程。
+[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) 是 GitHub 中的一組功能，可讓您在儲存程式碼及共同處理提取要求和問題的相同位置，自動化軟體發展工作流程。
 
 使用 [ [部署至 Azure 容器實例](https://github.com/azure/aci-deploy) ] GitHub 動作，將單一容器的部署自動化至 Azure 容器實例。 此動作可讓您設定容器實例的屬性，類似于 [az container create][az-container-create] 命令中的內容。
 
@@ -31,7 +31,7 @@ ms.locfileid: "97591628"
 > [!IMPORTANT]
 > Azure 容器實例的 GitHub 動作目前為預覽狀態。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **GitHub 帳戶** -如果您還沒有帳戶，請建立一個帳戶 https://github.com 。
 * **Azure CLI** -您可以使用 Azure CLI 的 Azure Cloud Shell 或本機安裝來完成 Azure CLI 步驟。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
@@ -177,7 +177,7 @@ jobs:
 
 ![查看工作流程進度](./media/container-instances-github-action/github-action-progress.png)
 
-如需有關在您的工作流程中查看每個步驟的狀態和結果的詳細資訊，請參閱 [管理工作流程執行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) 。 如果工作流程未完成，請參閱 [查看記錄以診斷失敗](https://docs.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures)。
+如需有關在工作流程中查看每個步驟的狀態和結果的詳細資訊，請參閱 [觀看工作流程執行歷程記錄](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history) 。 如果工作流程未完成，請參閱 [查看記錄以診斷失敗](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures)。
 
 當工作流程順利完成時，請執行 [az container show][az-container-show]命令以取得名為 *aci-sampleapp* 的容器實例的相關資訊。 以您的資源組名取代： 
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>命令進度
 
-* 出現提示時，請提供您的 GitHub 認證，或提供 [github 個人存取權杖](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT) ，其中具有存放庫和 *使用者**範圍，可* 使用您的 GitHub 帳戶進行驗證。 如果您提供 GitHub 認證，此命令會為您建立 PAT。 遵循其他提示來設定工作流程。
+* 出現提示時，請提供您的 GitHub 認證，或提供 [github 個人存取權杖](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) (PAT) ，其中具有存放庫和 *使用者**範圍，可* 使用您的 GitHub 帳戶進行驗證。 如果您提供 GitHub 認證，此命令會為您建立 PAT。 遵循其他提示來設定工作流程。
 
 * 此命令會建立工作流程的存放庫秘密：
 
@@ -258,7 +258,7 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
-若要在 GitHub UI 中查看每個步驟的工作流程狀態和結果，請參閱 [管理工作流程執行](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)。
+若要在 GitHub UI 中查看每個步驟的工作流程狀態和結果，請參閱 [觀看工作流程執行歷程記錄](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history)。
 
 ### <a name="validate-workflow"></a>驗證工作流程
 

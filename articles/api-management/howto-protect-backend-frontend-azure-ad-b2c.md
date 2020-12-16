@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new, devx-track-js
-ms.openlocfilehash: aa3bce73d2a91538dff0fdeb9e0eb814d878459a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b157200b03bdc89e00bfa5c8264d78baf24875c1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676025"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609117"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>使用 OAuth 2.0、Azure Active Directory B2C 和 Azure API 管理來保護 SPA 後端
 
@@ -31,7 +31,7 @@ ms.locfileid: "92676025"
 
 針對深層防禦，我們接著會使用 EasyAuth 在後端 API 內再次驗證權杖。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要依照本文中的步驟進行，您必須有：
 * Azure (StorageV2) 一般用途 V2 儲存體帳戶，以裝載前端 JS 單一頁面應用程式
 * Azure API 管理實例 
@@ -180,7 +180,7 @@ ms.locfileid: "92676025"
    > 現在您的函式 API 不應從任何地方（透過 API 管理或您的位址）進行呼叫。
    
 ## <a name="import-the-function-app-definition"></a>匯入函數應用程式定義
-1. 開啟 [ *API 管理* ] 分頁，然後開啟 *您的實例* 。
+1. 開啟 [ *API 管理*] 分頁，然後開啟 *您的實例*。
 1. 從實例的 [API 管理] 區段中，選取 [Api] 分頁。
 1. 從 [新增 API] 窗格中，選擇 [函數應用程式]，然後從快顯視窗頂端選取 [完整]。
 1. 按一下 [流覽]，選擇您要在其中裝載 API 的函式應用程式，然後按一下 [選取]。
@@ -396,7 +396,8 @@ ms.locfileid: "92676025"
                     // Make the api call here
                 $.ajax({
                     type: "get",
-                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},                   url: applicationConfig.webApi
+                    headers: {'Authorization': 'Bearer ' + token, 'Ocp-Apim-Subscription-Key': applicationConfig.subKey},
+                    url: applicationConfig.webApi
                 }
                 ).done(function (body) {
                     document.getElementById("message").innerHTML = "The API Said " + body;

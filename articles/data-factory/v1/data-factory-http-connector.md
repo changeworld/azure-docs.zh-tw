@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ddf8236dbbc9714c705e442bb65eb2ac3d293cc7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 653a53d6bb5c69cd95fd5e9a2483b51de8293b40
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589571"
+ms.locfileid: "97608573"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure Data Factory 來移動 HTTP 來源的資料
 
@@ -26,7 +26,6 @@ ms.locfileid: "97589571"
 
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Azure Data Factory 服務，請參閱[第 2 版中的 HTTP 連接器](../connector-http.md)。
-
 
 本文概述如何使用 Azure Data Factory 中的複製活動，將內部部署或雲端 HTTP 端點中的資料移動到支援的接收資料存放區。 本文的建置是根據[使用複製活動來移動資料](data-factory-data-movement-activities.md)，該文會提供使用複製活動來移動資料的一般概觀。 本文也會列出複製活動所支援作為來源和接收的資料存放區。
 
@@ -120,9 +119,8 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-        "certThumbprint": "thumbprint of certificate",
-        "gatewayName": "gateway name"
-
+            "certThumbprint": "thumbprint of certificate",
+            "gatewayName": "gateway name"
         }
     }
 }
@@ -142,8 +140,8 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-        "embeddedCertData": "Base64-encoded cert data",
-        "password": "password of cert"
+            "embeddedCertData": "Base64-encoded cert data",
+            "password": "password of cert"
         }
     }
 }
@@ -176,9 +174,9 @@ Data Factory 目前只支援將資料從 HTTP 來源移到其他資料存放區�
     "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
-      "relativeUrl": "XXX/test.xml",
-        "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-    },
+          "relativeUrl": "XXX/test.xml",
+          "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+        },
         "external": true,
         "availability": {
             "frequency": "Hour",

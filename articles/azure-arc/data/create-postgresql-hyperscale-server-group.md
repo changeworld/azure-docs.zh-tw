@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d432f29e91097491fc4719ec59a11cb96948f431
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364417"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609049"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>建立已啟用 Azure Arc 的 PostgreSQL 超大規模資料庫伺服器群組
 
@@ -32,7 +32,7 @@ ms.locfileid: "92364417"
 - [儲存體設定和 Kubernetes 儲存體概念](storage-configuration.md)
 - [Kubernetes 資源模型](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 
-如果您想要在不自行布建完整環境的情況下嘗試進行，請在 Azure Kubernetes Service (AKS) 、AWS 彈性 Kubernetes 服務 (EKS) 、Google Cloud Kubernetes 引擎 (GKE) 或 Azure VM 中快速開始使用 [Azure Arc](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) 快速入門。
+如果您想要在不自行布建完整環境的情況下嘗試進行，請在 Azure Kubernetes Service (AKS) 、AWS 彈性 Kubernetes 服務 (EKS) 、Google Cloud Kubernetes 引擎 (GKE) 或 Azure VM 中快速開始使用 [Azure Arc](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) 快速入門。
 
 
 ## <a name="login-to-the-azure-arc-data-controller"></a>登入 Azure Arc 資料控制器
@@ -194,7 +194,7 @@ psql postgresql://postgres:<EnterYourPassword>@10.0.0.4:30655
     * [設計多租使用者資料庫](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [設計即時分析儀表板](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-    > \* 在上述檔中，略過登 **入 Azure 入口網站**的區段，& **建立適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) **。 在 Azure Arc 部署中執行其餘步驟。 這些區段僅適用于適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 提供作為 Azure 雲端中的 PaaS 服務，但檔的其他部分直接適用于您 Azure Arc 啟用的于 postgresql 超大規模。
+    > \* 在上述檔中，略過登 **入 Azure 入口網站** 的區段，& **建立適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus)**。 在 Azure Arc 部署中執行其餘步驟。 這些區段僅適用于適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 提供作為 Azure 雲端中的 PaaS 服務，但檔的其他部分直接適用于您 Azure Arc 啟用的于 postgresql 超大規模。
 
 - [擴增適用於 PostgreSQL 超大規模資料庫的 Azure 資料庫伺服器群組](scale-out-postgresql-hyperscale-server-group.md)
 - [儲存體設定和 Kubernetes 儲存體概念](storage-configuration.md)

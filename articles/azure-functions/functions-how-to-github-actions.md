@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: ae3ffb9dc387129153b684a849ba4e58274ad80c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563274"
+ms.locfileid: "97608505"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 動作進行持續傳遞
 
 使用 [GitHub Actions](https://github.com/features/actions) 定義工作流程，以自動建立程式碼並將其部署至您的 Azure 函數應用程式。 
 
-在 GitHub Actions 中， [工作流程](https://help.github.com/articles/about-github-actions#workflow) 是您在 GitHub 存放庫中定義的自動化流程。 此程式會告知 GitHub 如何在 GitHub 上建立和部署函數應用程式專案。 
+在 GitHub Actions 中， [工作流程](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) 是您在 GitHub 存放庫中定義的自動化流程。 此程式會告知 GitHub 如何在 GitHub 上建立和部署函數應用程式專案。 
 
 工作流程是由您存放庫內 `/.github/workflows/` 路徑中的 YAML (. yml) 檔案所定義的。 此定義包含組成工作流程的各種步驟與參數。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "97563274"
 | **建置** | 設定環境。<br/>建置函式應用程式。|
 | **部署** | 部署函數應用程式。|
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。  
@@ -40,7 +40,7 @@ ms.locfileid: "97563274"
 
 您可以使用發行設定檔，以 Azure Functions 進行 GitHub Actions 驗證的建議方式。 您也可以使用服務主體進行驗證。 若要深入瞭解，請參閱 [此 GitHub Actions 存放庫](https://github.com/Azure/functions-action)。 
 
-將您的發佈設定檔認證儲存為 [GitHub 秘密](https://docs.github.com/en/actions/reference/encrypted-secrets)之後，您會在工作流程中使用此秘密來向 Azure 進行驗證。 
+將您的發佈設定檔認證儲存為 [GitHub 秘密](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)之後，您會在工作流程中使用此秘密來向 Azure 進行驗證。 
 
 #### <a name="download-your-publish-profile"></a>下載您的發行設定檔
 

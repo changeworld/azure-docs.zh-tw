@@ -5,16 +5,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/14/2020
-ms.openlocfilehash: 29f0f0c3fd48920990519aecfe5ae58c32b43db9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b33b5c6078d096fa4b2acaa7b49bc14c95e31
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253831"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608267"
 ---
 # <a name="list-entity"></a>清單實體
 
-清單實體代表一組固定的封閉式相關字組及其同義字。 LUIS 並不會探索清單實體的額外值。 使用**建議**功能，以根據目前的清單查看適用於新字組的建議。 如果有多個清單實體具有相同的值，則在端點查詢中會傳回每個實體。
+清單實體代表一組固定的封閉式相關字組及其同義字。 LUIS 並不會探索清單實體的額外值。 使用 **建議** 功能，以根據目前的清單查看適用於新字組的建議。 如果有多個清單實體具有相同的值，則在端點查詢中會傳回每個實體。
 
 清單實體不是機器學習實體。 它是全文相符的項目。 LUIS 會將與任何清單中項目相符的項目，在回應中標示為實體。
 
@@ -85,7 +85,6 @@ ms.locfileid: "91253831"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-
 如果在 `verbose=false` 查詢字串中設定，則這是 JSON：
 
 ```json
@@ -130,7 +129,6 @@ ms.locfileid: "91253831"
 |資料物件|實體名稱|值|
 |--|--|--|
 |列出實體|`Cities`|`paris`|
-
 
 ## <a name="next-steps"></a>後續步驟
 

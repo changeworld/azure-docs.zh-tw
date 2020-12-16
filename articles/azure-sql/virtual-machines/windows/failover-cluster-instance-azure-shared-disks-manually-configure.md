@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 6a000daa7d9e2aa93e68844e8aec5aa168c9fa60
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: becf9f8c7f6a967ed63cfd3040de90de76e32fff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592410"
+ms.locfileid: "97607264"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 Azure 共用磁片 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,8 +27,7 @@ ms.locfileid: "97592410"
 
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
-
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 在您完成本文中的指示之前，您應該已經有：
 
@@ -37,12 +36,10 @@ ms.locfileid: "97592410"
 - 具有在 Azure 虛擬機器和 Active Directory 中建立物件權限的帳戶。
 - [PowerShell](/powershell/azure/install-az-ps)的最新版本。 
 
-
 ## <a name="add-azure-shared-disk"></a>新增 Azure 共用磁片
 部署已啟用共用磁片功能的受控進階 SSD 磁片。 設定 `maxShares` 為 **與叢集節點的數目一致** ，讓磁片可在所有 FCI 節點之間共用。 
 
 藉由執行下列動作來新增 Azure 共用磁片： 
-
 
 1. 將下列腳本儲存為 *SharedDiskConfig.js*： 
 
@@ -85,7 +82,6 @@ ms.locfileid: "97592410"
    }
    ```
 
-
 2. 使用 PowerShell *在上執行SharedDiskConfig.js* ： 
 
    ```powershell
@@ -119,7 +115,6 @@ ms.locfileid: "97592410"
 - 容錯移轉叢集的名稱。
 - 容錯移轉叢集的 IP 位址。 您可使用並未在叢集節點相同 Azure 虛擬網路和子網路中使用的 IP 位址。
 
-
 # <a name="windows-server-2012-2016"></a>[Windows Server 2012-2016](#tab/windows2012)
 
 下列 PowerShell 腳本會建立容錯移轉叢集。 使用節點名稱 (虛擬機器名稱) 和 Azure 虛擬網路的可用 IP 位址來更新指令碼。
@@ -139,7 +134,6 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 如需詳細資訊，請參閱[容錯移轉叢集：叢集網路物件](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)。
 
 ---
-
 
 ## <a name="configure-quorum"></a>設定仲裁
 
@@ -198,7 +192,6 @@ FCI 資料目錄必須位於 Azure 共用磁片上。
 
 若要從入口網站管理您的 SQL Server VM，請在 [輕量的管理模式](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)中，使用 SQL IaaS 代理程式擴充功能 (RP) 來註冊它，目前只有 Azure vm 上的 FCI 和 SQL Server 支援的模式。 
 
-
 使用 PowerShell 以輕量模式註冊 SQL Server VM：  
 
 ```powershell-interactive
@@ -221,7 +214,6 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 ## <a name="next-steps"></a>後續步驟
 
 如果您尚未這麼做，請使用 [虛擬網路名稱和 Azure 負載平衡器](failover-cluster-instance-vnn-azure-load-balancer-configure.md) 或 [分散式網路名稱（ (DNN) ](failover-cluster-instance-distributed-network-name-dnn-configure.md)）設定 FCI 的連線。 
-
 
 如果 Azure 共用磁片不是適合您的 FCI 儲存體解決方案，請考慮使用 [premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md) 或 [儲存空間直接存取](failover-cluster-instance-storage-spaces-direct-manually-configure.md) 來建立 FCI。 
 
