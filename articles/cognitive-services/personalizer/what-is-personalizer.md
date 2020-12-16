@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: 個人化工具, Azure 個人化工具, 機器學習
-ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171954"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094143"
 ---
 # <a name="what-is-personalizer"></a>什麼是個人化工具？
 
@@ -116,7 +116,7 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
 ## <a name="reference"></a>參考資料 
 
 * [個人化工具 C#/.NET SDK](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
-* [個人化工具 Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/personalizer/v1.0/personalizer)
+* [個人化工具 Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview)
 * [個人化工具 JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
 * [個人化工具 Python SDK](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)

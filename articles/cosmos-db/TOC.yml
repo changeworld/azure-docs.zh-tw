@@ -978,6 +978,8 @@
           href: find-request-unit-charge-cassandra.md
         - name: 儲存和管理 Spring 資料
           href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
+        - name: 針對常見問題進行疑難排解
+          href: cassandra-troubleshoot.md
         - name: Cassandra 和 Spark
           items:
             - name: 簡介

@@ -7,18 +7,19 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341969"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516520"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>適用於儲存體的 Azure Defender 簡介
 
-**適用於儲存體的 Azure Defender** 會偵測您 Azure 儲存體帳戶上可能有害的活動。 不論您的資料儲存為 Blob 容器、檔案共用或資料湖，皆可受到保護。
 
-這一層保護可讓您直接解決威脅，而*無須*成為安全性專家，並且可協助您管理安全性監視系統。
+**適用於儲存體的 Azure Defender** 是 Azure 原生安全性智慧層級，用於偵測儲存體帳戶中異常且可能有害的存取意圖或攻擊。 其會利用安全性 AI 的進階功能和 [Microsoft 威脅情報](https://go.microsoft.com/fwlink/?linkid=2128684)，來提供內容安全性警示和建議。
+
+出現異常活動時，就會觸發安全性警示。 這些警示會與 Azure 資訊安全中心整合，也會透過電子郵件將可疑活動的詳細資料，以及如何調查和修復威脅的建議傳送給訂閱系統管理員。
 
 
 ## <a name="availability"></a>可用性
@@ -26,7 +27,7 @@ ms.locfileid: "92341969"
 |層面|詳細資料|
 |----|:----|
 |版本狀態：|正式上市 (GA)|
-|定價：|**適用於儲存體的 Azure Defender** 的計費方式如[定價頁面](security-center-pricing.md)所示|
+|定價：|**適用於儲存體的 Azure Defender** 的計費方式如 [定價頁面](security-center-pricing.md)所示|
 |受保護的儲存體類型：|[Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure 檔案](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) \(部分機器翻譯\)|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov|
 |||
@@ -36,14 +37,14 @@ ms.locfileid: "92341969"
 
 出現下列情況時，就會觸發安全性警示：
 
-- **可疑的活動** - 例如，已從一般稱之為 Tor 的作用中結束節點的 IP 位址成功存取儲存體帳戶
-- **異常行為** - 例如，對儲存體帳戶的存取模式有所變更
-- **已上傳的潛在惡意程式碼** - 雜湊信譽分析指出上傳的檔案包含惡意程式碼
+- **可疑的存取模式** - 例如來自 Tor 結束節點的成功存取，或來自 Microsoft 威脅情報視為可疑的 IP
+- **可疑的活動** - 例如異常資料擷取或異常存取權限變更
+- **上傳惡意內容** - 例如潛在惡意程式碼檔案 (根據雜湊信譽分析) 或裝載網路釣魚內容
 
-警示中包含加以觸發之事件的詳細資料，以及如何調查和補救威脅的建議。
+警示中包含加以觸發之事件的詳細資料，以及如何調查和補救威脅的建議。 您可以將警示匯出至 Azure Sentinel 或其他任何第三方 SIEM 或任何其他外部工具。
 
 > [!TIP]
-> 您可以依照[此部落格文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的指示來模擬儲存體警示。
+> 最佳做法是在訂用帳戶層級上[設定適用於儲存體的 Azure Defender](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center)，但是您也可以[在個別的儲存體帳戶加以設定](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal)。
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>什麼是惡意程式碼的雜湊信譽分析？
@@ -55,7 +56,7 @@ ms.locfileid: "92341969"
 > [!NOTE]
 > 若要啟用資訊安全中心的威脅防護功能，您必須在包含適用工作負載的訂用帳戶上啟用 Azure Defender。
 >
-> 您可以在訂用帳戶層級或資源層級啟用**適用於儲存體的 Azure Defender**。
+> 您可以在訂用帳戶層級或資源層級啟用 **適用於儲存體的 Azure Defender**。
 
 
 

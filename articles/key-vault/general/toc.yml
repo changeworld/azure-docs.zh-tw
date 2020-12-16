@@ -114,10 +114,6 @@
           href: developers-guide.md
         - name: 使用 Azure Resource Manager 來部署金鑰保存庫
           href: vault-create-template.md
-        - name: 儲存 Web 應用程式祕密
-          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-        - name: 搭配 .NET 的服務對服務驗證
-          href: service-to-service-authentication.md
         - name: 使用 Key Vault 連線服務
           href: vs-key-vault-add-connected-service.md
     - name: 監視及管理
@@ -146,7 +142,7 @@
           href: move-subscription.md
         - name: 將金鑰保存庫移至另一個區域
           href: move-region.md
-    - name: 網路
+    - name: 網路功能
       items:
         - name: 診斷私人連結設定問題
           href: private-link-diagnostics.md

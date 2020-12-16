@@ -13,14 +13,14 @@ ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
-- contperfq2
+- contperf-fy21q2
 keywords: 電腦視覺, 電腦視覺應用程式, 電腦視覺服務
-ms.openlocfilehash: 09c3d10425e7688e84be7ddd845648def3e5cc39
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 62d82388d975f36c422f7eb1e9feff8ce2725d54
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852858"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033284"
 ---
 # <a name="what-is-computer-vision"></a>什麼是電腦視覺？
 

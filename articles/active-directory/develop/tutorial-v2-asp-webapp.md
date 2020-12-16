@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 0dad7add63102d462a2111f1ecf12ae43dae123c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996180"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507756"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教學課程：將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
@@ -373,15 +373,16 @@ ms.locfileid: "95996180"
    1. 在 [方案總管] 中，選取專案並查看 [屬性] 視窗 (如果您沒有看到 [屬性] 視窗，請按 F4)。
    1. 將 [SSL 已啟用] 變更為 `True`。
    1. 在 Visual Studio 中的專案上按一下滑鼠右鍵，選取 [屬性]  ，然後選取 [Web]  索引標籤。在 [伺服器]  區段中，將 [專案 URL]  設定變更為 [SSL URL]  。
-   1. 複製 SSL URL。 在下一個步驟中，將這個 URL 新增到註冊入口網站的重新導向 URL 清單。<br/><br/>![專案屬性](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-1. 移至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-1. 選取 [新增註冊]。
-1. 當 [註冊應用程式]  頁面出現時，輸入您應用程式的註冊資訊：
-   1. 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 **ASPNET-Tutorial**。
-   1. 在 [回覆 URL]  中，新增您透過步驟 1 從 Visual Studio 中複製的 SSL URL (例如 `https://localhost:44368/`)，然後選取 [註冊]  。
-1. 選取 [驗證]  功能表、在 [隱含授與]  下方選取 [識別碼權杖]  ，然後選取 [儲存]  。
+   1. 複製 SSL URL。 在下一個步驟中，將這個 URL 新增到註冊入口網站的重新導向 URI 清單的重新導向 URI 清單中。<br/><br/>![專案屬性](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+1. 輸入應用程式的 [名稱]，例如 `ASPNET-Tutorial`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+1. 在 [重新導向 URI] 中，新增在步驟 1 中從 Visual Studio 複製的 SSL URL (例如，`https://localhost:44368/`)。
+1. 選取 [註冊]。
+1. 在 [管理] 底下，選取 [驗證]。
+1. 在 [隱含授與] 區段中，選取 [識別碼權杖]，然後選取 [儲存]。
 1. 在位於根資料夾的 `configuration\appSettings` 區段中，於 web.config 檔案中新增下列內容：
 
     ```xml
@@ -425,7 +426,7 @@ ms.locfileid: "95996180"
 
 瀏覽至控制器檢視之後，您應該就會看到一個資料表，包含使用者的基本屬性：
 
-|屬性 |值 |描述 |
+|屬性 |值 |說明 |
 |---|---|---|
 |**名稱** |使用者的全名 | 使用者的名字和姓氏
 |**使用者名稱** |user<span>@domain.com</span> | 用來識別使用者的使用者名稱|

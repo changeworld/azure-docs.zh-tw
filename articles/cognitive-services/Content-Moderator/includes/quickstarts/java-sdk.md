@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7713765a36207f0d9da05c4c11629e4a7f1164d9
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356489"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561506"
 ---
 開始使用適用於 Java 的 Azure Content Moderator 用戶端程式庫。 請遵循下列步驟來安裝 Maven 套件，並試用基本工作的程式碼範例。 
 
@@ -24,8 +24,8 @@ Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、�
 
 使用適用於 Java 的 Content Moderator 用戶端程式庫可以：
 
-* 仲裁影像
 * 仲裁文字
+* 仲裁影像
 
 [參考文件](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator) |[成品 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator) | [範例](/samples/browse/?products=azure&term=content-moderator)
 
@@ -127,14 +127,42 @@ In the application's **ContentModeratorQuickstart** class, create variables for 
 這些程式碼片段說明如何使用適用於 Java 的 Content Moderator 用戶端程式庫來執行下列工作：
 
 * [驗證用戶端](#authenticate-the-client)
-* [仲裁影像](#moderate-images)
 * [仲裁文字](#moderate-text)
+* [仲裁影像](#moderate-images)
+
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
 在應用程式的 `main` 方法中，使用您的訂用帳戶端點值和訂用帳戶金鑰來建立 [ContentModeratorClient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) 物件。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+
+
+
+## <a name="moderate-text"></a>仲裁文字
+
+### <a name="set-up-sample-text"></a>設定範例文字
+
+在 **ContentModeratorQuickstart** 類別的頂端，定義對本地文字檔的參考。 將 .txt 檔案新增至您的專案目錄，並輸入想要分析的文字。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
+
+### <a name="analyze-text"></a>分析文字
+
+建立新的方法來讀取 .txt 檔案，並在每一行上呼叫 **screenText** 方法。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
+
+### <a name="print-text-moderation-results"></a>列印文字仲裁結果
+
+新增下列程式碼，將仲裁結果列印到專案目錄中的 .json 檔案。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
+
+關閉 `try` 和 `catch` 陳述式以完成此方法。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
+
 
 ## <a name="moderate-images"></a>仲裁影像
 
@@ -180,31 +208,6 @@ In the application's **ContentModeratorQuickstart** class, create variables for 
 關閉 `try` 陳述式，並新增用來完成此方法的 `catch` 陳述式。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
-
-## <a name="moderate-text"></a>仲裁文字
-
-### <a name="set-up-sample-text"></a>設定範例文字
-
-在 **ContentModeratorQuickstart** 類別的頂端，定義對本地文字檔的參考。 將 .txt 檔案新增至您的專案目錄，並輸入想要分析的文字。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
-
-### <a name="analyze-text"></a>分析文字
-
-建立新的方法來讀取 .txt 檔案，並在每一行上呼叫 **screenText** 方法。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
-
-### <a name="print-text-moderation-results"></a>列印文字仲裁結果
-
-新增下列程式碼，將仲裁結果列印到專案目錄中的 .json 檔案。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
-
-關閉 `try` 和 `catch` 陳述式以完成此方法。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
-
 
 ## <a name="run-the-application"></a>執行應用程式
 

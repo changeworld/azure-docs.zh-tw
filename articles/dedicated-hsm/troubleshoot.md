@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: b911181abea06894873e64da51afbb8799f1066a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927833"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508266"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>針對 Azure 專用 HSM 服務進行疑難排解
 
@@ -69,7 +69,7 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 當特定戳記或區域已滿時 (也就是，幾乎所有免費 HSM 都已佈建)，這可能會導致部署失敗。 每個戳記都有 11 個 HSM 可供客戶使用，這表示每個區域 22 個。 每個戳記中也有 3 個備援項目和 1 個測試裝置。 如果您認為您可能已達到限制，則透過電子郵件 HSMrequest@microsoft.com來取得特定戳記的填滿層級資訊。
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>如何查看已佈建的 HSM？
-由於專用 HSM 是允許的服務，因此會被視為 Azure 入口網站中的「隱藏類型」。 若要查看 HSM 資源，您必須勾選 [顯示隱藏的類型] 核取方塊，如下所示。 NIC 資源一律會遵循 HSM，而且是在使用 SSH 連線之前，用來找出 HSM IP 位址的最佳位置。
+由於專用 HSM 是允許清單中的服務，因此會被視為 Azure 入口網站中的「隱藏類型」。 若要查看 HSM 資源，您必須勾選 [顯示隱藏的類型] 核取方塊，如下所示。 NIC 資源一律會遵循 HSM，而且是在使用 SSH 連線之前，用來找出 HSM IP 位址的最佳位置。
 
 ![醒目提示勾選 [顯示隱藏類型] 的螢幕擷取畫面](./media/troubleshoot/hsm-provisioned.png)
 

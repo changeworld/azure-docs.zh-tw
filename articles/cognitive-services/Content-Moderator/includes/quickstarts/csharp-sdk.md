@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 793dc6d210751d0605ab756cd1c72b1dc5dd308f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8a715c23900ac0d5a16ff4a0a8ade5ea9458cfed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918676"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561489"
 ---
 開始使用適用於 .NET 的 Azure Content Moderator 用戶端程式庫。 請遵循下列步驟來安裝 NuGet 套件，並試用基本工作的程式碼範例。 
 
@@ -24,9 +24,9 @@ Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、�
 
 使用適用於 .NET 的 Content Moderator 用戶端程式庫可以：
 
-* [仲裁文字](#moderate-text)
-* [仲裁影像](#moderate-images)
-* [建立審核](#create-a-review)
+* 仲裁文字
+* 仲裁影像
+* 建立審核
 
 [參考文件](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [範例](../../samples-dotnet.md)
 
@@ -48,11 +48,11 @@ Content Moderator 是一種 AI 服務，可讓您處理可能具冒犯意味、�
 
 ### <a name="install-the-client-library"></a>安裝用戶端程式庫 
 
-建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.ContentModerator`。 選取版本 `2.0.0`，然後 **安裝** 。 
+建立新專案後，以滑鼠右鍵按一下 [方案總管] 中的專案解決方案，然後選取 [管理 NuGet 套件]，以安裝用戶端程式庫。 在開啟的套件管理員中，選取 [瀏覽]、核取 [包含發行前版本]，然後搜尋 `Microsoft.Azure.CognitiveServices.ContentModerator`。 選取版本 `2.0.0`，然後 **安裝**。 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `content-moderator-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔： *Program.cs* 。
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `content-moderator-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*Program.cs*。
 
 ```console
 dotnet new console -n content-moderator-quickstart
@@ -169,7 +169,7 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
-然後，在專案的根目錄中建立輸入檔 *ImageFiles.txt* 。 在此檔案中，您會新增要分析之影像的 URL &mdash; 每行一個 URL。 您可以使用下列範例影像：
+然後，在專案的根目錄中建立輸入檔 *ImageFiles.txt*。 在此檔案中，您會新增要分析之影像的 URL &mdash; 每行一個 URL。 您可以使用下列範例影像：
 
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
@@ -232,7 +232,7 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="define-the-review-creation-method"></a>定義審核建立方法
 
-現在您已準備就緒，可定義用來處理審核建立和查詢的方法。 新增方法 **CreateReviews** ，並定義下列本機變數。
+現在您已準備就緒，可定義用來處理審核建立和查詢的方法。 新增方法 **CreateReviews**，並定義下列本機變數。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_fields)]
 

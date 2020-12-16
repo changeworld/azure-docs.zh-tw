@@ -12,18 +12,18 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: 文字採礦, 情感分析, 文字分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 0f5e6a2327f5d952f92009b0c9e408ab8188d6d7
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558771"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563223"
 ---
 # <a name="what-is-the-text-analytics-api"></a>什麼是文字分析 API？
 
 文字分析 API 是一項雲端式服務，可提供自然語言處理 (NLP) 功能來進行文字採礦和文字分析，包括：情感分析、意見挖掘、關鍵片語擷取、語言偵測，以及具名實體辨識。
 
-此 API 屬於 [Azure 認知服務](../index.yml)的一部分，由雲端中的機器學習和 AI 演算法的集合所組成，可供您的開發專案使用。 您可以將這些功能與 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) \(英文\) 或[用戶端程式庫](quickstarts/text-analytics-sdk.md)搭配使用。
+此 API 屬於 [Azure 認知服務](../index.yml)的一部分，由雲端中的機器學習和 AI 演算法的集合所組成，可供您的開發專案使用。 您可以將這些功能與 [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) \(英文\) 或[用戶端程式庫](quickstarts/client-libraries-rest-api.md)搭配使用。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
@@ -64,7 +64,7 @@ ms.locfileid: "96558771"
 
 工作流程很簡單：您提交資料以進行分析，並在程式碼中處理輸出。 分析器會依原狀使用，不需要額外的設定或自訂。
 
-1. [建立文字分析的 Azure 資源](../cognitive-services-apis-create-account.md)。 其後，請[取得為您產生的金鑰](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)，用以驗證您的要求。
+1. [建立文字分析的 Azure 資源](how-tos/text-analytics-how-to-call-api.md)。 其後，請[取得為您產生的金鑰](how-tos/text-analytics-how-to-call-api.md)，用以驗證您的要求。
 
 2. [編寫要求](how-tos/text-analytics-how-to-call-api.md#json-schema)，其中包含 JSON 格式的原始非結構化文字，作為您的資料。
 
@@ -109,7 +109,7 @@ ms.locfileid: "96558771"
 
 + [建立文字分析的 Azure 資源](../cognitive-services-apis-create-account.md)，以取得應用程式的金鑰和端點。
 
-+ 使用[快速入門](quickstarts/text-analytics-sdk.md)以開始傳送 API 呼叫。 請了解如何以最少的程式碼提交文字、選擇分析，以及檢視結果。
++ 使用[快速入門](quickstarts/client-libraries-rest-api.md)以開始傳送 API 呼叫。 請了解如何以最少的程式碼提交文字、選擇分析，以及檢視結果。
 
 + 如需新版本和功能的詳細資訊，請參閱[文字分析 API 的新功能](whats-new.md)。
 

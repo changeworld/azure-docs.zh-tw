@@ -118,31 +118,31 @@
       items:
         - name: 一般用途
           href: ../virtual-machines/sizes-general.md
-          maintainContext: true
           items:
             - name: B 系列 Burstable
               href: ../virtual-machines/sizes-b-series-burstable.md
               maintainContext: true
+          maintainContext: true
         - name: 計算最佳化
           href: ../virtual-machines/sizes-compute.md
           maintainContext: true
         - name: 記憶體最佳化
           href: ../virtual-machines/sizes-memory.md
-          maintainContext: true
           items:
             - name: 限制 vCPU
               href: ../virtual-machines/constrained-vcpu.md
               maintainContext: true
+          maintainContext: true
         - name: 儲存體最佳化
           href: ../virtual-machines/sizes-storage.md
           maintainContext: true
         - name: GPU 最佳化
           href: ../virtual-machines/sizes-gpu.md
-          maintainContext: true
           items:
             - name: 設定 NVIDIA GPU 驅動程式
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
+          maintainContext: true
         - name: 高效能計算
           href: ../virtual-machines/sizes-hpc.md
           maintainContext: true
@@ -165,8 +165,6 @@
     - name: 維護和更新
       href: ../virtual-machines/maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
       maintainContext: true
-    - name: 協調流程模式
-      href: orchestration-modes.md
     - name: 磁碟儲存體
       items:
         - name: 受控磁碟
@@ -414,5 +412,5 @@
           href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-vm-scale-set'
