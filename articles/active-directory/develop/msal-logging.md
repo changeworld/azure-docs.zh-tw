@@ -13,12 +13,12 @@ ms.date: 11/11/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2d41b48613ef7ba883a6a51b0fa67407fb730719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b53a12db9203121d12a69c10aaa81bceab5c1754
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846219"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584250"
 ---
 # <a name="logging-in-msal-applications"></a>在 MSAL 應用程式中記錄
 
@@ -129,7 +129,7 @@ Logger.getInstance().setEnableLogcatLog(true);
  藉由在建立實例的設定期間傳遞記錄器物件，在 MSAL.js (JavaScript) 中啟用記錄 `UserAgentApplication` 。 此記錄器物件具有下列屬性：
 
 - `localCallback`：可由開發人員提供的回呼實例，以自訂的方式取用和發佈記錄。 請依您想要將記錄重新導向的方式實作 localCallback 方法。
-- `level` (選擇性) ：可設定的記錄層級。 支援的記錄層級為： `Error` 、 `Warning` 、 `Info` 和 `Verbose` 。 預設為 `Info`。
+- `level` (選擇性) ：可設定的記錄層級。 支援的記錄層級為： `Error` 、 `Warning` 、 `Info` 和 `Verbose` 。 預設值為 `Info`。
 - `piiLoggingEnabled` (選擇性) ：如果設為 true，則會記錄個人和組織資料。 依預設，此值為 false，因此您的應用程式不會記錄個人資料。 個人資料記錄永遠不會被寫入如 Console、Logcat 或 NSLog 等的預設輸出。
 - `correlationId` (選擇性的) ：唯一識別碼，用來將要求對應至偵測用途的回應。 預設為 RFC4122 4 版 guid (128 位元)。
 
@@ -142,15 +142,15 @@ var msalConfig = {
     auth: {
         clientId: "<Enter your client id>",
     },
-     system: {
-             logger: new Msal.Logger(
-                                loggerCallback ,{
-                                     level: Msal.LogLevel.Verbose,
-                                     piiLoggingEnabled: false,
-                                     correlationId: '1234'
-                                }
-                        )
-     }
+    system: {
+        logger: new Msal.Logger(
+            loggerCallback , {
+                level: Msal.LogLevel.Verbose,
+                piiLoggingEnabled: false,
+                correlationId: '1234'
+            }
+        )
+    }
 }
 
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);

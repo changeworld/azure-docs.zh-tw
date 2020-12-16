@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755404a06d8586968801aa22f2af532da278802
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fbddd2eb52414827561d8896dfc8bc9ff705f41b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742318"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584386"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升級為最新的 Azure Multi-Factor Authentication Server
 
@@ -33,16 +33,16 @@ ms.locfileid: "96742318"
 
 快速瀏覽升級步驟：
 
-* 升級 Azure MFA Server (先升級次級伺服器，再升級主要伺服器)
+* 升級 Azure MFA 伺服器 (從屬的主要) 
 * 升級使用者入口網站執行個體
 * 升級 AD FS 配接器執行個體
 
 ## <a name="upgrade-azure-mfa-server"></a>升級 Azure MFA Server
 
 1. 使用[下載 zure Multi-Factor Authentication Server](howto-mfaserver-deploy.md#download-the-mfa-server) 中的指示，取得最新版的 Azure MFA Server 安裝程式。
-2. 在您的主要 MFA Server 上，針對位於 C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (假設此為預設安裝位置) 的 MFA Server 資料檔案製作備份。
+2. 在您的主要 MFA Server 上，將位於 C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (的 MFA Server 資料檔案備份備份至) 的預設安裝位置。
 3. 如果您執行多部伺服器以取得高可用性，請變更用戶端系統來向 MFA Server 驗證，如此便能讓它們停止將流量傳送到正在升級的伺服器。 如果您使用負載平衡器，請從負載平衡器移除次級 MFA Server、進行升級，然後將伺服器加回到伺服器陣列。
-4. 在每部 MFA Server 上執行新的安裝程式。 先升級次級伺服器，因為它們可以讀取由主要伺服器所複寫的舊資料檔。
+4. 在每部 MFA Server 上執行新的安裝程式。 先升級次級伺服器，因為它們可以讀取主要複本所複寫的舊資料檔。
 
    > [!NOTE]
    > 升級伺服器時，應該將它從任何負載平衡或與其他 MFA 伺服器的流量共用中移除。
@@ -51,7 +51,7 @@ ms.locfileid: "96742318"
   
 5. 如果系統提示您安裝 Microsoft Visual C++ 2015 可轉散發套件的更新套件，請接受提示。 隨即會同時安裝套件的 x86 和 x64 版本。
 6. 如果您使用 Web 服務 SDK，系統會提示您安裝新的 Web 服務 SDK。 當您安裝新的 Web 服務 SDK 時，請確定虛擬目錄名稱符合先前安裝的虛擬目錄 (例如，MultiFactorAuthWebServiceSdk)。
-7. 在所有次級伺服器上重複執行這些步驟。 將其中一部次級伺服器升階為新的主要伺服器，然後升級舊的主要伺服器。
+7. 在所有次級伺服器上重複執行這些步驟。 將其中一個從屬複本升階為新的主伺服器，然後升級舊的主伺服器。
 
 ## <a name="upgrade-the-user-portal"></a>升級使用者入口網站
 

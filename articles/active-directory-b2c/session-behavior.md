@@ -8,15 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: de0f4824cb23a37f37d3834dce67eb0b7edf0b15
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: ad9bd8dec94660d94cf3a106d31dafdad06f47a8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503216"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584505"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中設定會話行為
 
@@ -28,7 +29,7 @@ ms.locfileid: "97503216"
 
 當使用者一開始登入應用程式時，Azure AD B2C 保存以 cookie 為基礎的會話。 在後續的驗證要求中，Azure AD B2C 會讀取並驗證以 cookie 為基礎的會話，並在不提示使用者再次登入的情況下發出存取權杖。 如果以 cookie 為基礎的會話過期或變成無效，系統會提示使用者重新登入。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -96,7 +97,7 @@ ms.locfileid: "97503216"
 1. 開啟您先前建立的使用者流程。
 1. 選取 [屬性] 。
 1. 設定 **web 應用程式會話存留期 (分鐘)**、 **Web 應用程式會話超時**、 **單一登入** 設定，以及視需要 **在登出要求中要求識別碼權杖** 。
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案]  。
 
 ::: zone-end
 

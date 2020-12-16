@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 75073cd2f0dae9cac12175677427671101813a90
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e839b8a22da50ce172043f57a4467219a1771175
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355217"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584196"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -103,7 +103,7 @@ ms.locfileid: "97355217"
 | **Azure Repos 組織** | 您的 Azure Repos 組織名稱。 您可以在 `https://{organization name}.visualstudio.com` 找到您的 Azure Repos 組織名稱。 您可以[登入您的 Azure Repos 組織](https://www.visualstudio.com/team-services/git/)，以存取 Visual Studio 設定檔和查看您的存放庫與專案。 | `<your organization name>` |
 | **ProjectName** | 您的 Azure Repos 專案名稱。 您可以在 `https://{organization name}.visualstudio.com/{project name}` 找到您的 Azure Repos 專案名稱。 | `<your Azure Repos project name>` |
 | **RepositoryName** | 您的 Azure Repos 程式碼存放庫名稱。 Azure Repos 專案包含 Git 存放庫，可隨著您的專案成長管理原始程式碼。 您可以建立新的存放庫，或使用專案中既有的存放庫。 | `<your Azure Repos code repository name>` |
-| **共同作業分支** | 用於進行發佈的 Azure Repos 共同作業分支。 根據預設，其為 `master`。 如果您想要從其他分支發行資源，請變更此設定。 | `<your collaboration branch name>` |
+| **共同作業分支** | 用於進行發佈的 Azure Repos 共同作業分支。 依預設，它是 `main` 。 如果您想要從其他分支發行資源，請變更此設定。 | `<your collaboration branch name>` |
 | **根資料夾** | 在您 Azure Repos 共同作業分支中的根資料夾。 | `<your root folder name>` |
 | **將現有的 Data Factory 資源匯入存放庫** | 指定是否要從 UX **撰寫畫布** 將現有的資料處理站資源匯入到 Azure Repos Git 存放庫。 選取此方塊可將您的資料處理站資源以 JSON 格式匯入到相關聯的 Git 存放庫。 此動作會將每個資源個別匯出 (亦即，已連結的服務和資料集會匯出至個別的 JSON)。 若未選取此方塊，則不會匯入現有資源。 | 已選取 (預設值) |
 | **要匯入資源的分支** | 指定要匯入資料處理站資源 (管線、資料集、連結服務等等) 的分支。 您可以將資源匯入下列其中一個分支：a. 共同作業 b. 新建 c. 使用現有的 |  |
@@ -153,7 +153,7 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 | **GitHub Enterprise URL** | GitHub Enterprise 根 URL (若為本機 GitHub Enterprise 伺服器，則必須是 HTTPS)。 例如： `https://github.mydomain.com` 。 只有在已選取 [使用 GitHub Enterprise] 時才必要 | `<your GitHub enterprise url>` |                                                           
 | **GitHub 帳戶** | 您的 GitHub 帳戶名稱。 您可以從 https:\//github.com/{帳戶名稱}/{存放庫名稱} 找到此名稱。 瀏覽到此頁面時，系統會提示您輸入 GitHub 帳戶的 GitHub OAuth 認證。 | `<your GitHub account name>` |
 | **存放庫名稱**  | 您的 GitHub 程式碼存放庫名稱。 GitHub 帳戶包含 Git 存放庫，可用來管理原始程式碼。 您可以建立新的存放庫，或使用帳戶中既有的存放庫。 | `<your repository name>` |
-| **共同作業分支** | 用於發行的 GitHub 共同作業分支。 根據預設，其為主要分支。 如果您想要從其他分支發行資源，請變更此設定。 | `<your collaboration branch>` |
+| **共同作業分支** | 用於發行的 GitHub 共同作業分支。 依預設，它是主要的。 如果您想要從其他分支發行資源，請變更此設定。 | `<your collaboration branch>` |
 | **根資料夾** | 在您 GitHub 共同作業分支中的根資料夾。 |`<your root folder name>` |
 | **將現有的 Data Factory 資源匯入存放庫** | 指定是否要從 UX 撰寫畫布將現有的資料處理站資源匯入到 GitHub 存放庫。 選取此方塊可將您的資料處理站資源以 JSON 格式匯入到相關聯的 Git 存放庫。 此動作會將每個資源個別匯出 (亦即，已連結的服務和資料集會匯出至個別的 JSON)。 若未選取此方塊，則不會匯入現有資源。 | 已選取 (預設值) |
 | **要匯入資源的分支** | 指定要匯入資料處理站資源 (管線、資料集、連結服務等等) 的分支。 您可以將資源匯入下列其中一個分支：a. 共同作業 b. 新建 c. 使用現有的 |  |
@@ -207,11 +207,11 @@ GitHub 與 Data Factory 的整合支援公用 GitHub (即 [https://github.com](h
 
 ### <a name="creating-feature-branches"></a>建立功能分支
 
-與資料處理站相關聯的每個 Azure Repos Git 存放庫都有共同作業分支。 (`main` 是預設的共同作業分支)。 使用者也可以按一下 [分支] 下拉式清單中的 [+ 新增分支] 來建立功能分支。 [新增分支] 窗格出現之後，請輸入功能分支的名稱。
+與資料處理站相關聯的每個 Azure Repos Git 存放庫都有共同作業分支。  (`main`) 是預設的共同作業分支) 。 使用者也可以按一下 [分支] 下拉式清單中的 [+ 新增分支] 來建立功能分支。 [新增分支] 窗格出現之後，請輸入功能分支的名稱。
 
 ![建立新的分支](media/author-visually/new-branch.png)
 
-當您準備好要將功能分支的變更合併到共同作業分支時，請按一下 [分支] 下拉式清單，然後選取 [建立提取要求]。 此動作會將您帶往 Azure Repos Git，您可以在其中發出提取要求、執行程式碼檢閱，以及將變更合併到您的共同作業分支。 (`master` 是預設值)。 您只被允許從您的共同作業分支發佈到 Data Factory 服務。 
+當您準備好要將功能分支的變更合併到共同作業分支時，請按一下 [分支] 下拉式清單，然後選取 [建立提取要求]。 此動作會將您帶往 Azure Repos Git，您可以在其中發出提取要求、執行程式碼檢閱，以及將變更合併到您的共同作業分支。 (`main` 是預設值)。 您只被允許從您的共同作業分支發佈到 Data Factory 服務。 
 
 ![建立新的提取要求](media/author-visually/create-pull-request.png)
 
@@ -232,7 +232,7 @@ Azure Data Factory 一次只能有一個發佈分支。 當您指定新的發佈
 
 ### <a name="publish-code-changes"></a>發佈程式碼變更
 
-將變更合併到共同作業分支之後 (`master` 是預設值)，請按一下 [發佈] 來手動將主要分支中的程式碼變更發佈到 Data Factory 服務。
+將變更合併到共同作業分支之後 (`main` 是預設) ，請按一下 [ **發佈** ]，以手動方式將主要分支中的程式碼變更發佈至 Data Factory 服務。
 
 ![將變更發佈到 Data Factory 服務](media/author-visually/publish-changes.png)
 
@@ -241,7 +241,7 @@ Azure Data Factory 一次只能有一個發佈分支。 當您指定新的發佈
 ![確認正確的發佈分支](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> 主要分支不代表在 Data Factory 服務中部署的內容。 「必須」以手動方式將主要分支主發佈至 Data Factory 服務。
+> 主要分支不代表 Data Factory 服務中部署的內容。 主要分支 *必須* 手動發佈至 Data Factory 服務。
 
 ## <a name="best-practices-for-git-integration"></a>Git 整合的最佳做法
 
@@ -264,7 +264,7 @@ Azure Data Factory 一次只能有一個發佈分支。 當您指定新的發佈
 
 ### <a name="stale-publish-branch"></a>過時的發佈分支
 
-如果發佈分支與主要分支不同步，而且包含已過時的資源 (即使這已是最近的發佈)，則請嘗試遵循下列步驟：
+如果發佈分支與主要分支不同步並包含過時的資源（儘管最近發行），請嘗試執行下列步驟：
 
 1. 移除目前的 Git 存放庫
 1. 以相同的設定重新設定 Git，但請確定已選取 [將現有的 Data Factory 資源匯入存放庫]，然後選擇 [新增分支]

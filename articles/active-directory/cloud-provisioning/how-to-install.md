@@ -1,6 +1,6 @@
 ---
 title: 安裝 Azure AD Connect 雲端佈建代理程式
-description: 本文說明如何安裝 Azure AD Connect 雲端佈建代理程式。
+description: 瞭解如何安裝 Azure AD Connect 雲端布建代理程式，以及如何在 Azure 入口網站中進行設定。
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9553608fdd72d4dec4c1572e0d38cd460018a469
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348529"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584335"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>安裝 Azure AD Connect 雲端佈建代理程式
 本文件會逐步引導您完成 Azure Active Directory (Azure AD) Connect 佈建代理程式的安裝程序，以及如何在 Azure 入口網站中進行初始設定。
@@ -54,12 +54,12 @@ ms.locfileid: "96348529"
    ![Microsoft Azure AD Connect 佈建代理程式套件畫面](media/how-to-install/install-1.png)</br>
  8. 此作業完成之後，設定精靈就會隨之啟動。 以 Azure AD 全域管理員帳戶登入。
  9. 在 [ **設定服務帳戶] 畫面** 上，選取 [ **建立 gMSA** ] 或 [ **使用自訂 gMSA**]。  如果您允許代理程式建立帳戶，它就會命名為 provAgentgMSA $。 如果您指定 [ **使用自訂 gMSA** ]，系統會提示您提供此帳戶。
- 10. 輸入網域系統管理員認證，以建立將用來執行代理程式服務的群組受管理的服務帳戶。 按 [下一步]  。  
+ 10. 輸入網域系統管理員認證，以建立將用來執行代理程式服務的群組受管理的服務帳戶。 按一下 [下一步] 。  
    ![建立 gMSA](media/how-to-install/install-12.png)</br>
  11. 在 [連線 Active Directory] 畫面上，選取 [新增目錄]。 然後使用您的 Active Directory 系統管理員帳戶登入。 此作業會新增您的內部部署目錄。 
  12. （選擇性）您可以選取 [ **選取網域控制站優先權** ] 和 [排序網域控制站清單]，以管理代理程式將使用之網域控制站的喜好設定。   按一下 [確定]。
   ![訂購網域控制站](media/how-to-install/install-2a.png)</br>
- 13. 選取 [下一步] 。
+ 13. 選取 [下一步]。
   ![連線 Active Directory 畫面](media/how-to-install/install-3a.png)</br>
  14.  在 [ **代理程式安裝** ] 畫面上，確認設定和將建立的帳戶，然後按一下 [ **確認**]。
   ![確認設定](media/how-to-install/install-11.png)</br>

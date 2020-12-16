@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 2c7eea87101a36edb0d77026489ea351b601158b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108547"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584590"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 Arkose Labs 的教學課程
 
 在本教學課程中，您將瞭解如何整合 Azure AD B2C authentication 與 Arkose Labs。 Arkose Labs 可協助組織防範 bot 攻擊、帳戶接管攻擊，以及詐騙帳戶。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用，您需要：
 
@@ -35,7 +35,7 @@ ms.locfileid: "97108547"
 
 ![Arkose Labs 架構圖表](media/partner-arkose-labs/arkose-architecture-diagram.png)
 
-| 步驟  | 說明 |
+| 步驟  | 描述 |
 |---|---|
 |1     | 使用者使用先前建立的帳戶登入。 當使用者選取 [提交] 時，就會出現 Arkose Labs 強制挑戰。 當使用者完成挑戰之後，狀態就會傳送至 Arkose Labs 以產生權杖。        |
 |2     |  Arkose Labs 會將權杖傳回 Azure AD B2C。       |
@@ -120,7 +120,7 @@ ms.locfileid: "97108547"
 
    ``git commit -am "updated output"``
 
-   ``git push azure master``  
+   ``git push azure main``  
 
 ### <a name="part-3---final-setup"></a>第3部分-最終設定
 

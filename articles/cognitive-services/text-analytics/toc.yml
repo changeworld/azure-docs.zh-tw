@@ -31,24 +31,8 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 用戶端程式庫
-      items:
-        - name: 使用用戶端程式庫來分析文字
-          href: quickstarts/text-analytics-sdk.md
-    - name: REST API
-      items:
-        - name: 使用 Java
-          href: quickstarts/java.md
-        - name: 使用 Python
-          href: quickstarts/python.md
-        - name: 使用 Node.js
-          href: quickstarts/nodejs.md
-        - name: 使用 PHP
-          href: quickstarts/php.md
-        - name: 使用 Go
-          href: quickstarts/go.md
-        - name: 使用拼音
-          href: quickstarts/ruby.md
+    - name: 使用用戶端程式庫和 REST API
+      href: quickstarts/client-libraries-rest-api.md
 - name: 教學課程
   items:
     - name: 整合 Power BI 以分析客戶意見反應
