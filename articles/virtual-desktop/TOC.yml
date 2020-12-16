@@ -92,8 +92,18 @@
           href: diagnostics-log-analytics.md
     - name: 發佈內建應用程式
       href: publish-apps.md
-    - name: 設定 MSIX 應用程式附加
-      href: app-attach.md
+    - name: 使用 MSIX 應用程式連結
+      items:
+        - name: 設定 Azure 入口網站設定 MSIX 應用程式連結
+          href: app-attach-azure-portal.md
+        - name: 使用 PowerShell 設定 MSIX 應用程式連結
+          href: app-attach-powershell.md
+        - name: 建立 PowerShell 指令碼
+          href: app-attach.md
+        - name: 準備 MSIX 映像
+          href: app-attach-image-prep.md
+        - name: 設定檔案共用
+          href: app-attach-file-share.md
     - name: 使用 Microsoft Teams
       href: teams-on-wvd.md
     - name: 設定 Azure AD Multi-Factor Authentication
@@ -112,6 +122,8 @@
       href: disaster-recovery.md
 - name: 概念
   items:
+    - name: 內建角色
+      href: rbac.md
     - name: 驗證
       href: authentication.md
     - name: Windows 虛擬桌面環境

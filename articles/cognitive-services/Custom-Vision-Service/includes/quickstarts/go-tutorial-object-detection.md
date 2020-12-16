@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 1f07cda0afa7213ca9c803754950c86a3f246469
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bae0887ca540dd553cc80849d9e134516089d016
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021248"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582502"
 ---
 本指南提供指示和範例程式碼，可協助您開始使用適用於 Go 的自訂視覺用戶端程式庫來建置物件偵測模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -275,6 +275,8 @@ go run sample.go
 
 應用程式的輸出應會顯示在主控台中。 接著，您可以確認測試影像 (位於 **samples/vision/images/Test** 中) 是否已正確加上標記，以及偵測的區域是否正確。
 
+## <a name="clean-up-resources"></a>清除資源
+
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 
 ## <a name="next-steps"></a>後續步驟
@@ -285,5 +287,5 @@ go run sample.go
 > [測試和重新定型模型](../../test-your-model.md)
 
 * 什麼是自訂視覺服務？
-* [SDK 參考文件 (訓練)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training)
+* [SDK 參考文件 (定型)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training)
 * [SDK 參考文件 (預測)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)
