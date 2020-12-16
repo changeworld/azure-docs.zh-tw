@@ -663,6 +663,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: 跨可用性區域部署 Service Fabric 叢集
                   href: service-fabric-cross-availability-zones.md
+                - name: 部署具有無狀態節點類型的 Service Fabric 叢集
+                  href: service-fabric-stateless-node-types.md
                 - name: 設定 Azure Active Directory 驗證
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: 建立自訂叢集範本

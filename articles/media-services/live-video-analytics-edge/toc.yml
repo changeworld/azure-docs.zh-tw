@@ -66,6 +66,7 @@
     - name: 媒體圖表
       href: media-graph-concept.md
     - name: 媒體圖表擴充功能
+      displayName: AI
       href: media-graph-extension-concept.md
     - name: 影片錄製
       href: video-recording-concept.md
@@ -99,6 +100,10 @@
       href: configure-signal-gate-how-to.md
     - name: 疑難排解
       href: troubleshoot-how-to.md
+    - name: 升級中
+      href: upgrading-lva-module.md
+    - name: 開發和部署 gRPC 推斷伺服器
+      href: develop-deploy-grpc-inference-srv-how-to.md
 - name: 參考
   items:
     - name: HTTP 擴充通訊協定

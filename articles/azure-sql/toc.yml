@@ -69,6 +69,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: 弱點評估規則
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: 弱點評估規則變更記錄
+                  href: database/sql-database-vulnerability-assessment-rules-changelog.md
                 - name: 在儲存體中儲存弱點掃描
                   href: database/sql-database-vulnerability-assessment-storage.md
             - name: 登入、使用者帳戶、角色和權限
