@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562832"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617114"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning 中的深度學習與機器學習
 
@@ -57,9 +57,9 @@ ms.locfileid: "97562832"
 |  **執行時間** | 花一點時間來定型，範圍從幾秒鐘到幾個小時。 | 定型通常需要較長的時間，因為深度學習演算法牽涉到許多圖層。 |
 |  **輸出** | 輸出通常是數值，例如分數或分類。 | 輸出可以有多種格式，例如文字、分數或音效。 |
 
-## <a name="transfer-learning"></a>轉移學習
+## <a name="transfer-learning"></a>傳輸學習
 
-定型深度學習模型通常需要大量定型資料、高階計算資源 (GPU、TPU) 和較長的定型時間。 在您沒有上述任何一項可用的案例中，您可以使用稱為「轉移學習」的技術，以快捷方式訓練流程。
+定型深度學習模型通常需要大量定型資料、高階計算資源 (GPU、TPU) 和較長的定型時間。 在您沒有上述任何一項可用的案例中，您可以使用稱為「*轉移學習*」的技術，以快捷方式訓練流程。
 
 轉移學習是一種技術，可從解決一個問題到不同但相關的問題，來運用所獲得的知識。
 

@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905548"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617250"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>使用私人端點進行 Azure 儲存體
 
@@ -45,6 +45,9 @@ VNet 中的應用程式可以順暢地透過私人端點連接到儲存體服務
 > 如果您想要限制只能透過私人端點存取您的儲存體帳戶，請將儲存體防火牆設定為拒絕或控制透過公用端點的存取。
 
 您可以藉由設定 [儲存體防火牆](storage-network-security.md#change-the-default-network-access-rule) 預設拒絕透過其公用端點的存取，來保護您的儲存體帳戶僅接受來自 VNet 的連線。 您不需要防火牆規則來允許來自具有私人端點之 VNet 的流量，因為儲存體防火牆只會控制透過公用端點的存取。 私人端點會改為依賴同意流程，將存取權授與儲存體服務的子網。
+
+> [!NOTE]
+> 在儲存體帳戶之間複製 blob 時，您的用戶端必須具有兩個帳戶的網路存取權。 因此，如果您選擇只針對一個帳戶使用私人連結 (來源或目的地) ，請確定您的用戶端具有其他帳戶的網路存取權。 若要瞭解設定網路存取的其他方式，請參閱 [設定 Azure 儲存體防火牆和虛擬網路](storage-network-security.md?toc=/azure/storage/blobs/toc.json)。 
 
 ### <a name="private-endpoints-for-azure-storage"></a>Azure 儲存體的私人端點
 

@@ -4,15 +4,15 @@ description: 瞭解如何在建立 RabbitMQ 訊息時執行 Azure 函數。
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: e7095c08c385457bddf6d70d345c4f47073b4adb
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505709"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617216"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions 總覽的 RabbitMQ 觸發程式
 
@@ -133,14 +133,12 @@ RabbitMQ 系結是在 [*類型*] 設定為的 *function.js* 中定義 `RabbitMQT
             "name": "myQueueItem",
             "type": "rabbitMQTrigger",
             "direction": "in",
-            "queueName": "",
-            "connectionStringSetting": ""
+            "queueName": "queue",
+            "connectionStringSetting": "rabbitMQConnection"
         }
     ]
 }
 ```
-
-*_\__ \_ .Py* 中的程式碼會將參數宣告為 `func.RabbitMQMessage` ，可讓您讀取函數中的訊息。
 
 ```python
 import logging
@@ -214,11 +212,11 @@ Python 指令碼不支援屬性。
 |**direction** | n/a | 必須設定為 "in"。|
 |**name** | n/a | 代表函式程式碼中佇列的變數名稱。 |
 |**queueName**|**QueueName**| 要接收訊息的佇列名稱。 |
-|**主機 名**|**HostName**|如果使用 ConnectStringSetting)  (選擇性 <br>佇列的主機名稱 (例如： 10.26.45.210) |
-|**userNameSetting**|**UserNameSetting**|如果使用 ConnectionStringSetting)  (選擇性 <br>存取佇列的名稱 |
-|**passwordSetting**|**PasswordSetting**|如果使用 ConnectionStringSetting)  (選擇性 <br>用來存取佇列的密碼|
+|**主機 名**|**HostName**|如果使用 ConnectStringSetting) ，則會忽略 ( <br>佇列的主機名稱 (例如： 10.26.45.210) |
+|**userNameSetting**|**UserNameSetting**|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>應用程式設定的名稱，其中包含要存取佇列的使用者名稱。 例如 UserNameSetting： "% < UserNameFromSettings >%"|
+|**passwordSetting**|**PasswordSetting**|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>應用程式設定的名稱，其中包含用來存取佇列的密碼。 例如 PasswordSetting： "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|包含 RabbitMQ 訊息佇列連接字串之應用程式設定的名稱。 請注意，如果您直接指定連接字串，而不是透過 local.settings.js中的應用程式設定，則觸發程式將無法運作。  (例如： In *function.js*： connectionStringSetting： "rabbitMQConnection" <br> 在 *local.settings.json*： "rabbitMQConnection"： "< ActualConnectionstring >" ) |
-|**port**|**通訊埠**|取得或設定使用的埠。 預設為 0。|
+|**port**|**通訊埠**|如果使用 ConnectionStringSetting) 取得或設定使用的埠， (會忽略。 預設為 0。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -226,31 +224,29 @@ Python 指令碼不支援屬性。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-下列參數類型適用于訊息：
+預設訊息類型為 [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)，而 `Body` RabbitMQ 事件的屬性可以讀取為下列類型：
 
-* [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) -RabbitMQ 訊息的預設格式。
-  * `byte[]`-透過 RabbitMQ 事件的 ' Body ' 屬性。
-* `string` -訊息是文字。
 * `An object serializable as JSON` -訊息會以有效的 JSON 字串傳遞。
+* `string`
+* `byte[]`
 * `POCO` -訊息會格式化為 c # 物件。 如需完整範例，請參閱 c # [範例](#example)。
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-下列參數類型適用于訊息：
+預設訊息類型為 [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)，而 `Body` RabbitMQ 事件的屬性可以讀取為下列類型：
 
-* [RabbitMQ 事件](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) -RabbitMQ 訊息的預設格式。
-  * `byte[]`-透過 RabbitMQ 事件的 ' Body ' 屬性。
-* `string` -訊息是文字。
 * `An object serializable as JSON` -訊息會以有效的 JSON 字串傳遞。
-* `POCO` -訊息會格式化為 c # 物件。
+* `string`
+* `byte[]`
+* `POCO` -訊息會格式化為 c # 物件。 如需完整範例，請參閱 c # 腳本 [範例](#example)。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-RabbitMQ 訊息會以字串或 JSON 物件的形式傳遞至函式。
+佇列訊息可透過內容系結取得。<NAME> 其中 <NAME> 符合 function.js中定義的名稱。 如果承載是 JSON，此值會還原序列化為物件。
 
 # <a name="python"></a>[Python](#tab/python)
 
-RabbitMQ 訊息會以字串或 JSON 物件的形式傳遞至函式。
+請參閱 Python [範例](#example)。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -284,14 +280,14 @@ RabbitMQ 訊息會以字串或 JSON 物件的形式傳遞至函式。
 |prefetchCount|30|取得或設定訊息接收者可以同時要求並快取的訊息數目。|
 |queueName|n/a| 要接收訊息的佇列名稱。 |
 |connectionString|n/a|包含 RabbitMQ 訊息佇列連接字串之應用程式設定的名稱。 請注意，如果您直接指定連接字串，而不是透過 local.settings.js中的應用程式設定，則觸發程式將無法運作。|
-|連接埠|0|每個縮放的實例可以同時處理的最大會話數目。|
+|連接埠|0|如果使用 connectionString) 可在每個縮放的實例上同時處理的最大會話數目，就會忽略 (。|
 
 ## <a name="local-testing"></a>本機測試
 
 > [!NOTE]
 > ConnectionString 會優先于 "hostName"、"userName" 和 "password"。 如果全部都已設定，connectionString 會覆寫另二個。
 
-如果您在本機測試時沒有連接字串，您應該在 *host.js* 的 "rabbitMQ" 區段中設定 "hostName" 設定和 "username" 和 "password" （如果適用）：
+如果您在本機測試時沒有連接字串，您應該在 *host.js* 的 "rabbitMQ" 區段中設定 "hostName" 設定和 "userName" 和 "password" （如果適用）：
 
 ```json
 {
@@ -300,8 +296,8 @@ RabbitMQ 訊息會以字串或 JSON 物件的形式傳遞至函式。
         "rabbitMQ": {
             ...
             "hostName": "localhost",
-            "username": "<your username>",
-            "password": "<your password>"
+            "username": "userNameSetting",
+            "password": "passwordSetting"
         }
     }
 }
@@ -309,9 +305,9 @@ RabbitMQ 訊息會以字串或 JSON 物件的形式傳遞至函式。
 
 |屬性  |預設 | 描述 |
 |---------|---------|---------|
-|hostName|n/a|如果使用 ConnectStringSetting)  (選擇性 <br>佇列的主機名稱 (例如： 10.26.45.210) |
-|userName|n/a|如果使用 ConnectionStringSetting)  (選擇性 <br>存取佇列的名稱 |
-|密碼|n/a|如果使用 ConnectionStringSetting)  (選擇性 <br>用來存取佇列的密碼|
+|hostName|n/a|如果使用 ConnectStringSetting) ，則會忽略 ( <br>佇列的主機名稱 (例如： 10.26.45.210) |
+|userName|n/a|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>存取佇列的名稱 |
+|密碼|n/a|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>用來存取佇列的密碼|
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>監視 RabbitMQ 端點
 若要監視特定 RabbitMQ 端點的佇列和交換：

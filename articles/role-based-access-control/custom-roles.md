@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: rolyon
-ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369118"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617318"
 ---
 # <a name="azure-custom-roles"></a>Azure 自訂角色 (機器翻譯)
 
@@ -195,7 +195,7 @@ Microsoft.CostManagement/*/query/*
 
 就像內建角色一樣，`AssignableScopes` 屬性會指定角色可用於指派的範圍。 自訂角色的 `AssignableScopes` 屬性也會控制誰可以建立、刪除、更新或檢視自訂角色。
 
-| Task | 作業 | 描述 |
+| 工作 | 作業 | 描述 |
 | --- | --- | --- |
 | 建立/刪除自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以建立 (或刪除) 用於這些範圍的自訂角色。 例如，管理群組、訂用帳戶和資源群組的 [擁有](built-in-roles.md#owner) 者和 [使用者存取系統管理員](built-in-roles.md#user-access-administrator) 。 |
 | 更新自訂角色 | `Microsoft.Authorization/ roleDefinitions/write` | 獲得授權可對自訂角色的所有 `AssignableScopes` 執行此作業的使用者，可以在這些範圍中更新自訂角色。 例如，管理群組、訂用帳戶和資源群組的 [擁有](built-in-roles.md#owner) 者和 [使用者存取系統管理員](built-in-roles.md#user-access-administrator) 。 |
@@ -208,6 +208,7 @@ Microsoft.CostManagement/*/query/*
 - 每個目錄最多可有 **5000** 個自訂角色。
 - Azure 德國和 Azure 中國世紀最多可為每個目錄擁有2000個自訂角色。
 - 您無法 `AssignableScopes` () 設定為根範圍 `"/"` 。
+- 在中，您無法使用 (`*`) 的萬用字元 `AssignableScopes` 。 此萬用字元限制有助於確保使用者無法藉由更新角色定義來取得範圍的存取權。
 - 您只能在自訂角色中定義一個管理群組 `AssignableScopes` 。 將管理群組新增至 `AssignableScopes` 的服務目前為預覽狀態。
 - `DataActions`無法在管理群組範圍指派具有的自訂角色。
 - Azure Resource Manager 不會驗證管理群組是否存在角色定義的可指派範圍中。

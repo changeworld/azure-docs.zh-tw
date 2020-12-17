@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360283"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617403"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>使用 AzCopy 和 Azure Active Directory (Azure AD 授與 blob 的存取權) 
 
@@ -183,9 +183,9 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > 請考慮使用如本範例所示的提示。 如此一來，您的密碼就不會出現在主控台的命令歷程記錄中。 
 
-## <a name="authorize-without-a-keyring-linux"></a> (Linux) 不使用 keyring 授權
+## <a name="authorize-without-a-secret-store"></a>沒有秘密存放區的授權
 
-如果您的作業系統沒有秘密存放區（例如 *keyring*），命令將 `azcopy login` 無法運作。 相反地，您可以在執行每項作業之前，先設定記憶體中的環境變數。 當作業完成時，這些值會從記憶體中消失，因此您必須在每次執行 azcopy 命令時設定這些變數。
+如果您的作業系統沒有像是 Linux *keyring* 的秘密存放區，命令將 `azcopy login` 無法運作。 相反地，您可以在執行每項作業之前，先設定記憶體中的環境變數。 
 
 ### <a name="authorize-a-user-identity"></a>授權使用者身分識別
 

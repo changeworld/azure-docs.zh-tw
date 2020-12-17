@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f87ed9b7455bed870cf25a6920cc6295811d94c8
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167690"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617063"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 
@@ -118,8 +118,8 @@ namespace MyNamespace
 
 Azure Functions 應用程式提供與 [ASP.NET 相依性插入](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)相同的服務存留期。 針對 Functions 應用程式，不同服務存留期的行為如下所示：
 
-- **暫時性**：暫時性服務會在每次要求服務時建立。
-- **限域**：限域服務存留期符合函式執行存留期。 限域服務會在每次執行後建立。 稍後在執行期間對該服務提出的要求會重複使用現有服務執行個體。
+- **暫時性**：每次服務解析時，就會建立暫時性服務。
+- **限域**：限域服務存留期符合函式執行存留期。 針對每個函式執行建立一次範圍服務。 稍後在執行期間對該服務提出的要求會重複使用現有服務執行個體。
 - **單一**：單一服務存留期符合主機存留期，並會在該執行個體上跨函式執行重複使用。 建議連線和用戶端使用單一存留期服務，例如 `DocumentClient` 或 `HttpClient` 執行個體。
 
 請前往 GitHub 檢視或下載[不同服務存留期的範本](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes)。
@@ -181,6 +181,8 @@ namespace MyNamespace
     }
 }
 ```
+
+如需有關記錄層級的詳細資訊，請參閱 [設定記錄層級](configure-monitoring.md#configure-log-levels)。
 
 ## <a name="function-app-provided-services"></a>函數應用程式提供的服務
 

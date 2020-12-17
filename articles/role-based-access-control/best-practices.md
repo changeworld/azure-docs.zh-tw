@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595508"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617369"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC 的最佳作法
 
@@ -24,7 +24,7 @@ ms.locfileid: "91595508"
 
 Azure RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。 您可以不授與每個人 Azure 訂用帳戶或資源中無限制的權限，而是只允許在特定範圍執行特定的動作。
 
-在規劃存取控制策略時，最佳做法是授與使用者完成其工作的最低權限。 即便一開始可能較方便操作，仍應避免以較廣泛的範圍指派較廣泛的角色。 藉由限制角色和範圍，如果安全性主體遭到入侵，您可以限制哪些資源有風險。
+在規劃存取控制策略時，最佳做法是授與使用者完成其工作的最低權限。 即便一開始可能較方便操作，仍應避免以較廣泛的範圍指派較廣泛的角色。 建立自訂角色時，只會包含使用者所需的許可權。 藉由限制角色和範圍，如果安全性主體遭盜用，您可以限制哪些資源有風險。
 
 下圖顯示使用 Azure RBAC 的建議模式。
 

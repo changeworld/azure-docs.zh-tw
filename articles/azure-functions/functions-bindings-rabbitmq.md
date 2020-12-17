@@ -4,15 +4,15 @@ description: 瞭解如何在 Azure Functions 中傳送 Azure RabbitMQ 觸發程�
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: cd6c8de0d9290aab273e25403bb1cb2d8fe07e27
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 72c31d0eebc19a926805976ed637168a00fa9495
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505707"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617182"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions 總覽的 RabbitMQ 系結
 
@@ -30,7 +30,7 @@ Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結�
 
 若要開始使用此延伸模組進行開發，請務必先 [設定 RabbitMQ 端點](https://github.com/Azure/azure-functions-rabbitmq-extension/wiki/Setting-up-a-RabbitMQ-Endpoint)。 若要深入瞭解 RabbitMQ，請參閱他們的 [開始使用] [頁面](https://www.rabbitmq.com/getstarted.html)。
 
-### <a name="functions-2x-and-higher"></a>Functions 2.x 和更新版本
+### <a name="functions-3x-and-higher"></a>函數3.x 和更新版本
 
 使用觸發程式和系結會要求您參考適當的封裝。 NuGet 套件適用于 .NET 類別庫，而擴充功能配套則用於所有其他應用程式類型。
 
@@ -46,9 +46,9 @@ Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結�
 [更新您的延伸模組]: ./functions-bindings-register.md
 [Azure Tools 擴充功能]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-### <a name="functions-1x"></a>Functions 1.x
+### <a name="functions-1x-and-2x"></a>函數1.x 和2。x
 
-函數1.x 不支援 RabbitMQ 系結延伸模組。 請使用函數2.x 和更新版本。
+函數1.x 和2.x 不支援 RabbitMQ 系結延伸模組。 請使用函數3.x 和更新版本。
 
 ## <a name="next-steps"></a>後續步驟
 

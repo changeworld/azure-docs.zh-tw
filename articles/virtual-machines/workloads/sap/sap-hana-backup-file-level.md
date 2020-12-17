@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 13bdf4b10ec586bf83a70434f003cc1573aca469
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 70b0f8178a94735a6ef37a225044984508cc2233
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950256"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617131"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>檔案層級的 SAP HANA Azure 備份
 
@@ -28,7 +28,7 @@ ms.locfileid: "94950256"
 
 Azure 中的不同 VM 類型允許連接不同數目的 VHD。 確切的詳細資料記載於 [Azure 中的 Linux 虛擬機器大小](../../sizes.md)。 針對本檔中所參考的測試，我們使用了 GS5 的 Azure VM，以允許64連接的資料磁片。 在較大型的 SAP HANA 系統中，資料和記錄檔可能已佔據大量磁碟，可能還加上用於最佳磁碟 IO 輸送量的軟體等量。 如需 Azure Vm 上 SAP Hana 部署建議磁片設定的詳細資訊，請參閱 [SAP Hana azure 虛擬機器儲存體](./hana-vm-operations-storage.md)設定的文章。 所提供的建議也包括本機備份的磁碟空間建議。
 
-在檔案層級管理備份/還原的標準方式，是透過 SAP HANA Studio 或 SAP HANA SQL 陳述式使用以檔案為基礎的備份。 如需詳細資訊，請參閱 [SQL 和系統檢視參考的 SAP Hana](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf)文章。
+在檔案層級管理備份/還原的標準方式，是透過 SAP HANA Studio 或 SAP HANA SQL 陳述式使用以檔案為基礎的備份。 如需詳細資訊，請參閱 [SQL 和系統檢視參考的 SAP Hana](https://help.sap.com/viewer/4fe29514fd584807ac9f2a04f6754767/2.0.05/en-US/3859e48180bb4cf8a207e15cf25a7e57.html)文章。
 
 ![本圖顯示 SAP HANA Studio 中的備份的功能表對話方塊](media/sap-hana-backup-file-level/backup-menue-dialog.png)
 

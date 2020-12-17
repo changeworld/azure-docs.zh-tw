@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7239c2e3cb42cb17b01904e8fc226ae2408dbb47
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491667"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617420"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 串流分析自訂 Blob 輸出資料分割
 
@@ -25,7 +25,13 @@ Azure 串流分析支援使用自訂欄位或屬性以及自訂日期時間路�
 
 ### <a name="partition-key-options"></a>分割區索引鍵選項
 
-用於分割輸入資料的分割區索引鍵或資料行名稱可能包含帶有連字號、底線和空白字元的英數字元。 除非搭配別名使用，否則無法將巢狀欄位作為分割區索引鍵。 分割區索引鍵必須是 NVARCHAR (MAX) 、BIGINT、FLOAT 或 BIT (1.2 相容性層級或更高的) 。 如需詳細資訊，請參閱 [Azure 串流分析資料類型](/stream-analytics-query/data-types-azure-stream-analytics)。
+用來分割輸入資料的分割區索引鍵或資料行名稱可能包含任何可接受的 [blob 名稱](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)字元。 除非搭配別名使用，否則無法將嵌套欄位當做分割區索引鍵使用，但您可以使用某些字元來建立檔案的階層。 例如，您可以使用下列查詢來建立結合兩個其他資料行資料的資料行，以建立唯一的資料分割索引鍵。
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+分割區索引鍵必須是 NVARCHAR (MAX) 、BIGINT、FLOAT 或 BIT (1.2 相容性層級或更高的) 。 不支援 DateTime、Array 和記錄類型，但如果將它們轉換成字串，就可以用來做為資料分割索引鍵。 如需詳細資訊，請參閱 [Azure 串流分析資料類型](/stream-analytics-query/data-types-azure-stream-analytics)。
 
 ### <a name="example"></a>範例
 

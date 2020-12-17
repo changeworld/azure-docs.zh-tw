@@ -1,7 +1,7 @@
 ---
-title: '分析和監視資料集上的資料漂移 (預覽) '
+title: 偵測資料集 (預覽) 的資料漂移
 titleSuffix: Azure Machine Learning
-description: 建立 Azure Machine Learning 資料集監視器 (預覽) 、監視資料集中的資料漂移，以及設定警示。
+description: 瞭解如何在 Azure Learning 中設定資料漂移偵測。 建立資料集監視器 (預覽) 、監視資料漂移，以及設定警示。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ author: lostmygithubaccount
 ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: 04882c71a2d80e01029dd0a8b476f21a658e632b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 1622f8ce988c5592ac96cec798617ca6ac37aa8d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359590"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617165"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>偵測資料集的資料漂移 (預覽) 
 
 
 > [!IMPORTANT]
-> 偵測資料集上的資料漂移目前處於公開預覽狀態。
+> 資料集的資料漂移偵測目前處於公開預覽狀態。
 > 此預覽版本會在沒有服務等級協定的情況下提供，不建議用於實際執行工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 瞭解如何監視資料漂移，並設定漂移偏高的警示。  
@@ -32,13 +32,13 @@ ms.locfileid: "93359590"
 * **監視模型資料** ，瞭解定型和服務資料集之間的差異。  [從從已部署的模型收集模型資料](how-to-enable-data-collection.md)開始。
 * **監視新的資料** 是否有任何基準和目標資料集之間的差異。
 * **分析資料中的功能** ，以追蹤統計屬性隨時間的變更。
-* 針對潛在問題的早期警告， **設定資料漂移的警示** 。 
+* 針對潛在問題的早期警告，**設定資料漂移的警示**。 
 
 使用 [Azure Machine learning 資料集](how-to-create-register-datasets.md) 來建立監視器。 資料集必須包含時間戳記資料行。
 
 您可以使用 Python SDK 或 Azure Machine Learning studio 來查看資料漂移度量。  您可以透過與 Azure Machine Learning 工作區相關聯的 [Azure 應用程式 insights](../azure-monitor/app/app-insights-overview.md) 資源取得其他計量和見解。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要建立及使用資料集監視器，您需要：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
@@ -77,7 +77,7 @@ Azure Machine Learning 藉由計算單一計量來簡化漂移偵測，以抽象
 
 在概念上，在 Azure Machine Learning 中設定資料集監視器有三個主要案例。
 
-狀況 | 描述
+案例 | 描述
 ---|---
 監視模型的服務資料，以防止來自定型資料的漂移 | 此案例的結果可以針對模型的精確度，將其視為監視 proxy，因為當服務資料從定型資料偏離時，模型精確度會降低。
 監視時間序列資料集，使其與上一段時間的漂移。 | 此案例更為一般，而且可用來監視模型建立之上游或下游相關的資料集。  目標資料集必須有時間戳記資料行。 基準資料集可以是具有與目標資料集共通之功能的任何表格式資料集。
@@ -85,7 +85,7 @@ Azure Machine Learning 藉由計算單一計量來簡化漂移偵測，以抽象
 
 資料集監視器相依于下列 Azure 服務。
 
-|Azure 服務  |Description  |
+|Azure 服務  |描述  |
 |---------|---------|
 | *資料集* | 漂移會使用 Machine Learning 資料集來取得定型資料，並比較資料以進行模型定型。  產生資料的設定檔是用來產生一些回報的度量，例如 min、max、相異值、相異值計數。 |
 | *Azureml 管線和計算* | 漂移計算工作裝載于 azureml 管線中。  作業會視需要觸發，或依排程在漂移監視器建立時所設定的計算上執行。
@@ -208,27 +208,27 @@ monitor = monitor.enable_schedule()
 
 1. 流覽至 [studio 首頁](https://ml.azure.com)。
 1. 選取左側的 [ **資料集** ] 索引標籤。 
-1. 選取 [ **資料集監視器** ]。
+1. 選取 [ **資料集監視器**]。
    ![監看清單](./media/how-to-monitor-datasets/monitor-list.png)
 
-1. 按一下 [ **+ 建立監視** ] 按鈕，然後按 **[下一步** ] 繼續進行嚮導。  
+1. 按一下 [ **+ 建立監視** ] 按鈕，然後按 **[下一步**] 繼續進行嚮導。  
 
 :::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="建立監視器嚮導":::
 
-* **選取 [目標資料集** ]。  目標資料集是具有指定時間戳記資料行的表格式資料集，將會針對資料漂移進行分析。 目標資料集必須具有與基準資料集共通的功能，而且應該是將 `timeseries` 新資料附加至其中的資料集。 您可以分析目標資料集中的歷程記錄資料，也可以監視新的資料。
+* **選取 [目標資料集**]。  目標資料集是具有指定時間戳記資料行的表格式資料集，將會針對資料漂移進行分析。 目標資料集必須具有與基準資料集共通的功能，而且應該是將 `timeseries` 新資料附加至其中的資料集。 您可以分析目標資料集中的歷程記錄資料，也可以監視新的資料。
 
 * **選取 [基準資料集]。**  選取要當做一段時間的目標資料集比較基準使用的表格式資料集。  基準資料集必須具有與目標資料集共通的功能。  選取時間範圍以使用目標資料集的配量，或指定要做為基準的個別資料集。
 
-* **監視設定** 。  這些設定適用于已排程的資料集監視器管線，將會加以建立。 
+* **監視設定**。  這些設定適用于已排程的資料集監視器管線，將會加以建立。 
 
-    | 設定 | Description | 提示 | 可變動 | 
+    | 設定 | 描述 | 提示 | 可變動 | 
     | ------- | ----------- | ---- | ------- |
-    | Name | 資料集監視的名稱。 | | 否 |
+    | 名稱 | 資料集監視的名稱。 | | 否 |
     | 特性 | 將分析一段時間內的資料漂移的功能清單。 | 設定為模型的輸出功能 (s) 來測量概念漂移。 請勿包含在一段時間內自然漂移的功能， (月份、年份、索引等 ) 。 您可以在調整功能的清單之後，回填和現有的資料漂移監視器。 | 是 | 
     | 計算目標 | Azure Machine Learning 計算目標來執行資料集監視作業。 | | 是 | 
     | 啟用 | 啟用或停用資料集監視器管線上的排程 | 停用排程，以使用回填設定來分析歷程記錄資料。 您可以在建立資料集監視之後啟用它。 | 是 | 
     | 頻率 | 當執行回填時，將用來排程管線作業以及分析歷程記錄資料的頻率。 選項包括 [每日]、[每週] 或 [每月]。 | 每次執行都會根據頻率來比較目標資料集中的資料： <li>每日：比較目標資料集中最新的完整日期與基準 <li>每週：比較最新的整周 (目標資料集內的星期一-星期日) 和基準 <li>每月：比較目標資料集中的最新完整月份與基準 | 否 | 
-    | Latency | 資料抵達資料集所需的時間（以小時為單位）。 比方說，如果資料需要三天的時間抵達 SQL DB 中的資料集封裝，請將延遲設定為72。 | 建立資料集監視之後，無法變更 | 否 | 
+    | 延遲 | 資料抵達資料集所需的時間（以小時為單位）。 比方說，如果資料需要三天的時間抵達 SQL DB 中的資料集封裝，請將延遲設定為72。 | 建立資料集監視之後，無法變更 | 否 | 
     | 電子郵件地址 | 根據資料漂移百分比閾值的缺口來發出警示的電子郵件地址。 | 電子郵件會透過 Azure 監視器傳送。 | 是 | 
     | 臨界值 | 電子郵件警示的資料漂移百分比閾值。 | 您可以在工作區相關聯的 Application Insights 資源中，針對許多其他計量設定進一步的警示和事件。 | 是 |
 
@@ -236,7 +236,7 @@ monitor = monitor.enable_schedule()
 
 ## <a name="understand-data-drift-results"></a>瞭解資料漂移結果
 
-本節說明監視資料集的結果，可在 Azure studio 的 [ **資料** 集  /  **監視器** ] 頁面中找到。  您可以在此頁面上更新設定，以及分析現有資料的特定時間週期。  
+本節說明監視資料集的結果，可在 Azure studio 的 [**資料** 集  /  **監視器**] 頁面中找到。  您可以在此頁面上更新設定，以及分析現有資料的特定時間週期。  
 
 從最上層深入解析到資料漂移的程度，以及要進一步調查的特徵醒目提示。
 

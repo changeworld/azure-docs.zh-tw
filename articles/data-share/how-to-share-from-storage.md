@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 08/28/2020
-ms.openlocfilehash: da1683ec48fcae10ff74163a7db089c30ddd7aad
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 12/16/2020
+ms.openlocfilehash: 9dfc8be54fc55842440e376916b2eb9bb04a4610
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219899"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617080"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>從 Azure Blob 儲存體和 Azure Data Lake Storage 共用和接收資料
 
@@ -21,7 +21,7 @@ Azure Data Share 支援來自儲存體帳戶的快照式共用。 本文說明�
 
 Azure Data Share 支援 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔案、資料夾和檔案系統。 它也支援從 Azure Blob 儲存體共用 blob、資料夾和容器。 目前僅支援區塊 blob。 從這些來源共用的資料可以接收 Azure Data Lake Gen2 或 Azure Blob 儲存體。
 
-當檔案系統、容器或資料夾在快照集型共用中共用時，資料取用者可以選擇建立共用資料的完整複本，或利用累加式快照集功能只複製新的或更新的檔案。 增量快照集會以檔案的上次修改時間為基礎。 將會覆寫具有相同名稱的現有檔案。
+當檔案系統、容器或資料夾在快照集型共用中共用時，資料取用者可以選擇建立共用資料的完整複本，或利用累加式快照集功能只複製新的或更新的檔案。 增量快照集會以檔案的上次修改時間為基礎。 快照集期間將會覆寫具有相同名稱的現有檔案。 未在目標上刪除從來源刪除的檔案。 來源的空白子資料夾不會複製到目標。 
 
 ## <a name="share-data"></a>共用資料
 
@@ -136,7 +136,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
 1. 您可以從電子郵件或直接從 Azure 入口網站開啟邀請。 
 
-   若要從電子郵件開啟邀請，請檢查您的收件匣是否有來自您資料提供者的邀請。 邀請會來自 Microsoft Azure，標題為**來自 <yourdataprovider@domain.com> 的 Azure Data Share 邀請**。 按一下 [檢視邀請]  以查看您在 Azure 中的邀請。 
+   若要從電子郵件開啟邀請，請檢查您的收件匣是否有來自您資料提供者的邀請。 邀請會來自 Microsoft Azure，標題為 **來自 <yourdataprovider@domain.com> 的 Azure Data Share 邀請**。 按一下 [檢視邀請]  以查看您在 Azure 中的邀請。 
 
    若要直接從 Azure 入口網站開啟邀請，請在 Azure 入口網站中搜尋 **Data Share 邀請**。 這會帶您前往 Data Share 邀請的清單。
 
@@ -161,12 +161,12 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
    同時會帶您前往資料共用帳戶中所接收的共用。 
 
-   如果您不想要接受邀請，請選取 [拒絕]**。 
+   如果您不想要接受邀請，請選取 [拒絕]。 
 
 ### <a name="configure-received-share"></a>設定已接收的共用
 請遵循下列步驟來設定要接收資料的位置。
 
-1. 選取**資料集**索引標籤。勾選要指派目的地之資料集旁的方塊。 選取 [+ 對應至目標] 以選擇目標資料存放區。 
+1. 選取 **資料集** 索引標籤。勾選要指派目的地之資料集旁的方塊。 選取 [+ 對應至目標] 以選擇目標資料存放區。 
 
    ![對應到目標](./media/dataset-map-target.png "對應到目標") 
 
@@ -185,7 +185,7 @@ Azure Data Share 現已建立完成，而且 Data Share 的收件者現已準備
 
    ![觸發快照集](./media/trigger-snapshot.png "觸發快照集") 
 
-1. 當最後一次執行的狀態為「成功」** 時，請移至目標資料存放區檢視已接收的資料。 選取 [資料集]****，然後按一下 [目標路徑] 中的連結。 
+1. 當最後一次執行的狀態為「成功」時，請移至目標資料存放區檢視已接收的資料。 選取 [資料集]，然後按一下 [目標路徑] 中的連結。 
 
    ![取用者資料集](./media/consumer-datasets.png "取用者資料集對應") 
 

@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f536e163e3d19d91c150506ab44fdd9cbc02c693
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 524e3f70f9588cfae2c739722fc1a44e683f9a7f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907476"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617284"
 ---
 # <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy-v10"></a>使用 AzCopy v10 在 Azure 儲存體帳戶之間複製 blob
 
@@ -28,6 +28,8 @@ AzCopy 會使用 [伺服器對伺服器](/rest/api/storageservices/put-block-fro
 ## <a name="guidelines"></a>指導方針
 
 將下列指導方針套用至您的 AzCopy 命令。 
+
+- 您的用戶端必須具有來源和目的地儲存體帳戶的網路存取權。 若要瞭解如何為每個儲存體帳戶設定網路設定，請參閱 [設定 Azure 儲存體防火牆和虛擬網路](storage-network-security.md?toc=/azure/storage/blobs/toc.json)。
 
 - 將 SAS 權杖附加至每個來源 URL。 
 
@@ -149,7 +151,7 @@ AzCopy 會使用 [伺服器對伺服器](/rest/api/storageservices/put-block-fro
 - [範例：上傳](storage-use-azcopy-blobs-upload.md)
 - [範例：下載](storage-use-azcopy-blobs-download.md)
 - [範例：同步處理](storage-use-azcopy-blobs-synchronize.md)
-- [範例： Amazon S3 bucket](storage-use-azcopy-s3.md)
+- [範例：Amazon S3 Bucket](storage-use-azcopy-s3.md)
 - [範例： Azure 檔案儲存體](storage-use-azcopy-files.md)
 - [教學課程：使用 AzCopy 將內部部署資料移轉至雲端儲存體](storage-use-azcopy-migrate-on-premises-data.md)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
