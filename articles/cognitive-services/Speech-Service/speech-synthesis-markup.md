@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: df6a4053eb70c02e27599bbd9086dfa32b0bcc65
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5d11f343a55d30e5d14d6f4ae0ddb1a74d9c61fa
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508827"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631970"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言 (SSML) 改進合成
 
@@ -32,6 +32,11 @@ SSML 的語音服務執行是以全球資訊網協會的 [語音合成標記語�
 從標準和類神經語音中選擇，或為您的產品或品牌建立專屬的自訂語音。 75以上的標準語音提供45以上的語言和地區設定，而5種類神經語音提供四種語言和地區設定。 如需支援的語言、地區設定和語音 (神經和標準) 的完整清單，請參閱[語言支援](language-support.md)。
 
 若要深入瞭解標準、神經和自訂語音，請參閱 [文字轉換語音總覽](text-to-speech.md)。
+
+
+> [!NOTE]
+> 您可以使用 [文字轉換語音頁面](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)來聽取不同樣式的語音，並簡報閱讀範例文字。
+
 
 ## <a name="special-characters"></a>特殊字元
 
@@ -56,7 +61,7 @@ SSML 的語音服務執行是以全球資訊網協會的 [語音合成標記語�
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `version` | 指出用來解讀檔標記之 SSML 規格的版本。 目前的版本為1.0。 | 必要 |
 | `xml:lang` | 指定根文檔的語言。 此值可能包含小寫、兩個字母的語言代碼 (例如 `en`) ，或語言代碼和大寫國家/地區 (例如 `en-US`) 。 | 必要 |
@@ -76,7 +81,7 @@ SSML 的語音服務執行是以全球資訊網協會的 [語音合成標記語�
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `name` | 識別用於文字到語音轉換輸出的語音。 如需支援的語音的完整清單，請參閱 [語言支援](language-support.md#text-to-speech)。 | 必要 |
 
@@ -99,7 +104,7 @@ SSML 的語音服務執行是以全球資訊網協會的 [語音合成標記語�
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `name` | 識別用於文字到語音轉換輸出的語音。 如需支援的語音的完整清單，請參閱 [語言支援](language-support.md#text-to-speech)。 | 必要 |
 
@@ -198,6 +203,7 @@ speechConfig!.setPropertyTo(
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
@@ -236,7 +242,7 @@ speechConfig!.setPropertyTo(
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `style` | 指定說出的樣式。 目前，說話樣式是語音特定的。 | 如果為類神經語音調整說話樣式，則為必要。 如果使用 `mstts:express-as` ，則必須提供樣式。 如果提供的值無效，則會忽略這個元素。 |
 | `styledegree` | 指定說話樣式的濃度。 **接受的值**：0.01 到2（含）。 預設值為1，表示預先定義的樣式濃度。 最小單位為0.01，這會造成目標樣式稍微傾向。 值為2會導致預設樣式濃度加倍。  | 選擇性 (目前 `styledegree` 僅支援 zh-CN-XiaoxiaoNeural。 ) |
@@ -257,6 +263,7 @@ speechConfig!.setPropertyTo(
 |                         | `style="assistant"`       | 表達數位助理的暖和寬鬆語氣    |
 |                         | `style="newscast"`        | 表示一般新聞傳遞的多功能和休閒語氣   |
 | `en-US-GuyNeural`       | `style="newscast"`        | 表示 narrating 新聞的正式和專業語氣 |
+| `pt-BR-FranciscaNeural` | `style="calm"`            | 在說話時，表示酷炫、收集和組合的態度。 相較于其他類型的語音，音調、音調、韻律的一致性更加一致。                                |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | 表示 narrating 新聞的正式和專業語氣 |
 |                         | `style="customerservice"` | 為客戶支援表達易記且有用的語氣  |
 |                         | `style="assistant"`       | 表達數位助理的暖和寬鬆語氣    |
@@ -386,12 +393,12 @@ speechConfig!.setPropertyTo(
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `strength` | 使用下列其中一個值，指定暫停的相對持續時間：<ul><li>無</li><li>x-弱式</li><li>弱</li><li>中型 (預設) </li><li>強式</li><li>x-強式</li></ul> | 選擇性 |
 | `time` | 指定暫停的絕對持續時間（以秒或毫秒為單位），此值應設為小於5000毫秒。 有效值的範例包括 `2s` 和 `500ms` | 選擇性 |
 
-| 強度                      | 說明 |
+| 強度                      | Description |
 |-------------------------------|-------------|
 | 無，或如果未提供任何值 | 0毫秒        |
 | x-弱式                        | 250 毫秒      |
@@ -425,7 +432,7 @@ speechConfig!.setPropertyTo(
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `type` | 指定要新增無聲的位置： <ul><li>前置-在文字開頭 </li><li>尾端–在文字結尾 </li><li>Sentenceboundary –相鄰句子之間 </li></ul> | 必要 |
 | `Value` | 指定暫停的絕對持續時間（以秒或毫秒為單位），此值應設為小於5000毫秒。 有效值的範例包括 `2s` 和 `500ms` | 必要 |
@@ -490,7 +497,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `alphabet` | 指定當合成屬性中字串的發音時，所要使用的拼音字母 `ph` 。 指定字母的字串必須以小寫字母來指定。 以下是您可以指定的可能字母。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">國際注音字母 <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash;[語音服務拼音字母](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">通用電話組</a></li></ul><br>字母只適用于 `phoneme` 元素中的。 | 選擇性 |
 | `ph` | 字串，包含指定元素中單字發音的電話 `phoneme` 。 如果指定的字串包含無法辨識的電話，則文字轉換語音 (TTS) 服務會拒絕整個 SSML 檔，並且不會產生檔中指定的任何語音輸出。 | 如果使用音素，則為必要。 |
@@ -540,7 +547,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **屬性**
 
-| 屬性 | 說明                               | 必要/選用 |
+| 屬性 | 描述                               | 必要/選用 |
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | 外部另外檔的位址。 | 必要。           |
 
@@ -569,7 +576,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 `lexicon`元素至少包含一個 `lexeme` 元素。 每個 `lexeme` 元素都至少包含一個專案， `grapheme` 以及一個或多個 `grapheme` 、 `alias` 和 `phoneme` 元素。 `grapheme`元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"></span> </a>的文字。 `alias`元素用來表示縮寫或縮寫詞彙的發音。 專案 `phoneme` 會提供描述發音方式的文字 `lexeme` 。
 
-請務必注意，您無法使用自訂字典直接設定片語的發音。 如果您需要設定縮寫或縮寫詞彙的發音，請先提供 `alias` ，然後將 `phoneme` 與關聯 `alias` 。 例如︰
+請務必注意，您無法使用自訂字典直接設定片語的發音。 如果您需要設定縮寫或縮寫詞彙的發音，請先提供 `alias` ，然後將 `phoneme` 與關聯 `alias` 。 例如：
 
 ```xml
   <lexeme>
@@ -582,7 +589,7 @@ A good place to start is by trying out the slew of educational apps that are hel
   </lexeme>
 ```
 
-您也可以直接提供所需的 `alias` 縮寫或縮寫字詞。 例如︰
+您也可以直接提供所需的 `alias` 縮寫或縮寫字詞。 例如：
 ```xml
   <lexeme>
     <grapheme>Scotland MV</grapheme> 
@@ -663,10 +670,10 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `pitch` | 表示文字的基準間距。 您可以將推銷表達為：<ul><li>絕對值，以數位開頭，後面接著 "Hz" (赫茲) 。 例如： `<prosody pitch="600Hz">some text</prosody>` 。</li><li>相對值，以前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st" 的數位表示，以指定要變更音調的數量。 例如：`<prosody pitch="+80Hz">some text</prosody>` 或 `<prosody pitch="-2st">some text</prosody>`。 "St" 表示變更單位是 semitone，也就是標準 diatonic 小數位數的一半步驟) 的一半 (。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>預設</li></ul></li></ul> | 選擇性 |
-| `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如︰ <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選擇性 |
+| `contour` |等高線現在支援類神經和標準語音。 等高線表示音調變化。 這些變更會在語音輸出中指定的時間位置，以目標陣列的形式表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要提高或減少間距的數量，使用相對值的相對值或列舉值 (請參閱 `pitch`) 。 | 選擇性 |
 | `range` | 值，表示文字的音調範圍。 您可以 `range` 使用相同的絕對值、相對值或用來描述的列舉值來表示 `pitch` 。 | 選擇性 |
 | `rate` | 指出文字的說話率。 您可以表達 `rate` ：<ul><li>相對值，以做為預設值乘數的數位來表示。 例如，值為 *1* 會導致費率沒有變更。 值為 *0.5* 時，會產生速率減半。 值為 *3* 時，會產生速率增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>預設</li></ul></li></ul> | 選擇性 |
 | `duration` | 當語音合成 (TTS) 服務讀取文字（以秒或毫秒為單位）時，應該經過的時間長度。 例如，2 *或* *1800ms*。 持續時間僅支援標準語音。| 選擇性 |
@@ -746,7 +753,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `interpret-as` | 指出元素文字的內容類型。 如需類型清單，請參閱下表。 | 必要 |
 | `format` | 針對可能具有不明確格式的內容類型，提供有關專案文字精確格式的其他資訊。 SSML 會定義使用這些內容類型的格式 (請參閱下表) 。 | 選擇性 |
@@ -756,7 +763,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 以下是和屬性支援的內容類型 `interpret-as` `format` 。 `format`只有當 `interpret-as` 設為日期和時間時，才會包含屬性。
 
-| 解讀為 | format | 解譯 |
+| 解讀為 | format | 解讀 |
 |--------------|--------|----------------|
 | `address` | | 文字是以位址的形式讀出。 語音合成引擎 pronounces：<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />「我在150th 法庭華盛頓州 redmond」。 |
 | `cardinal`, `number` | | 文字會以基本數位的形式讀出。 語音合成引擎 pronounces：<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />「有三個替代方案」。 |
@@ -808,7 +815,7 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 
 **屬性**
 
-| 屬性 | 說明                                   | 必要/選用                                        |
+| 屬性 | 描述                                   | 必要/選用                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | 指定音訊檔案的位置/URL。 | 如果在 SSML 檔中使用音訊元素，則為必要專案。 |
 
@@ -844,7 +851,7 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 
 **屬性**
 
-| 屬性 | 說明 | 必要/選用 |
+| 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `src` | 指定背景音訊檔案的位置/URL。 | 如果在 SSML 檔中使用背景音訊，則為必要項。 |
 | `volume` | 指定背景音訊檔案的磁片區。 **接受的值**： `0` 至 `100` 內含。 預設值是 `1`。 | 選擇性 |
@@ -862,6 +869,6 @@ SSML 檔中包含的任何音訊都必須符合下列需求：
 </speak>
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [語言支援：語音、地區設定、語言](language-support.md)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558754"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505217"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>操作說明：情感分析與意見挖掘
 
@@ -51,7 +51,7 @@ API 所使用的 AI 模型由服務所提供，您只需要傳送要分析的內
 
 ## <a name="opinion-mining"></a>意見挖掘
 
-意見挖掘是情感分析的功能，從版本 3.1-preview.1 開始。 這項功能也稱為自然語言處理 (NLP) 中的層面型情感分析，可提供文字中與各層面相關意見的詳細資訊 (例如產品或服務的屬性)。 
+意見挖掘是情感分析的功能，從 3.1 版預覽開始。 這項功能也稱為自然語言處理 (NLP) 中的層面型情感分析，可提供文字中與各層面相關意見的詳細資訊 (例如產品或服務的屬性)。
 
 例如，如果客戶留下關於飯店的意見反應，例如「房間很棒，但員工很不友善」，則意見挖掘將會找出文字中的各個層面，以及相關聯的意見和情緒。 情感分析可能只會報告負面情感。
 
@@ -74,7 +74,7 @@ API 所使用的 AI 模型由服務所提供，您只需要傳送要分析的內
 
 建立 POST 要求。 您可以使用下列參考連結中的 [Postman](text-analytics-how-to-call-api.md) 或 **API 測試主控台**，以快速建構及傳送要求。 
 
-#### <a name="version-31-preview2"></a>[版本 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[版本 3.1-preview.3](#tab/version-3-1)
 
 [情感分析 v3.1 參考](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -91,17 +91,17 @@ API 所使用的 AI 模型由服務所提供，您只需要傳送要分析的內
 > [!NOTE]
 > 您可以在 Azure 入口網站上找到適用於文字分析資源的金鑰和端點。 您可以在 [資源管理] 下的資源 [快速啟動] 頁面中找到。 
 
-#### <a name="version-31-preview2"></a>[版本 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[版本 3.1-preview.3](#tab/version-3-1)
 
 **情感分析**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
 
 **意見挖掘**
 
 若要取得意見挖掘結果，您必須包含 `opinionMining=true` 參數。 例如：
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
 
 根據預設，此參數設定為 `false`。 
 
@@ -144,7 +144,7 @@ API 所使用的 AI 模型由服務所提供，您只需要傳送要分析的內
 
 輸出會立即傳回。 您可以將結果串流至接受 JSON 的應用程式，或將輸出儲存到本機系統上的檔案。 然後，將輸出匯入應用程式，以便用來排序、搜尋和操作資料。 由於多語系和表情符號的支援，回應可能會包含文字位移。 如需詳細資訊，請參閱[如何處理位移](../concepts/text-offsets.md)。
 
-#### <a name="version-31-preview2"></a>[版本 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[版本 3.1-preview.3](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>情感分析和意見挖掘的範例回應
 
@@ -302,5 +302,5 @@ API 所使用的 AI 模型由服務所提供，您只需要傳送要分析的內
 ## <a name="see-also"></a>另請參閱
 
 * [文字分析概觀](../overview.md)
-* [使用文字分析用戶端程式庫](../quickstarts/text-analytics-sdk.md)
+* [使用文字分析用戶端程式庫](../quickstarts/client-libraries-rest-api.md)
 * [新功能](../whats-new.md)

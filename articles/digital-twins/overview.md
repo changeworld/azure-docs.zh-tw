@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099108"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400602"
 ---
 # <a name="what-is-azure-digital-twins"></a>什麼是 Azure Digital Twins？
 
@@ -32,27 +32,27 @@ ms.locfileid: "93099108"
 
 在 Azure Digital Twins 中，您可以使用稱為 [**模型**](concepts-models.md) 的自訂對應項類型，來定義代表實體環境中人員、地點和事物的數位實體。 
 
-您可以將這些模型定義視為專門的詞彙來描述您的業務。 例如，針對建築物管理解決方案，您可以定義模型 (例如「建築物」、「樓層」和「電梯」)。 然後，您可以根據這些模型建立 **數位分身** ，藉此代表您的特定環境。
+您可以將這些模型定義視為專門的詞彙來描述您的業務。 例如，針對建築物管理解決方案，您可以定義模型 (例如「建築物」、「樓層」和「電梯」)。 然後，您可以根據這些模型建立 **數位分身**，藉此代表您的特定環境。
 
 模型是以類似 JSON 的語言定義，稱為 [數位分身定義語言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)，並以其狀態屬性、遙測事件、命令、元件和關聯性來描述對應項。
-* 模型會定義實體之間的語義 **關聯性** ，讓您可以將對應項 連線至反映其互動的知識圖表。 您可以在現實環境的描述中，將模型視為名詞，並將關聯性視為動詞。
+* 模型會定義實體之間的語義 **關聯性**，讓您可以將對應項 連線至反映其互動的知識圖表。 您可以在現實環境的描述中，將模型視為名詞，並將關聯性視為動詞。
 * 您也可以使用模型繼承將對應項加以特殊化。 一個模型可以繼承自另一個。
 
 DTDL 是其他 Azure IoT 服務中全程使用的資料模型，包括 [IoT 隨插即用 (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 和 [時間序列深入解析 (TSI)](../time-series-insights/overview-what-is-tsi.md)。 這可協助您保持 Azure Digital Twins 解決方案的連線，並與 Azure 生態系統的其他部分相容。
 
 ### <a name="live-execution-environment"></a>即時執行環境
 
-Azure Digital Twins 中的數位模型是現實環境即時的最新表示。 您可以使用自訂 DTDL 模型中的關聯性，將對應項連線至代表您環境的 **即時圖表** 。
+Azure Digital Twins 中的數位模型是現實環境即時的最新表示。 您可以使用自訂 DTDL 模型中的關聯性，將對應項連線至代表您環境的 **即時圖表**。
 
-您可以透過範例應用程式 ( [**Azure Digital Twins 總管**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)) 的說明，檢視 Azure Digital Twins 圖表的視覺效果。
+您可以透過範例應用程式 ([**Azure Digital Twins 總管**](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)) 的說明，檢視 Azure Digital Twins 圖表的視覺效果。
 
 範例視覺效果看起來就像這樣：
 
 :::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Azure Digital Twins 總管範例應用程式的螢幕擷取畫面，其中顯示代表 Digital Twins 的節點圖表" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
-Azure Digital Twins 提供豐富的 **事件系統** ，讓圖表保持在最新的資料處理和商務邏輯。 您可以連線外部計算資源 (例如 [Azure Functions](../azure-functions/functions-overview.md))，以彈性的自訂方式來推動此資料處理流程。
+Azure Digital Twins 提供豐富的 **事件系統**，讓圖表保持在最新的資料處理和商務邏輯。 您可以連線外部計算資源 (例如 [Azure Functions](../azure-functions/functions-overview.md))，以彈性的自訂方式來推動此資料處理流程。
 
-您也可以使用 Azure Digital Twins 功能強大的 **查詢 API** ，從即時執行環境中擷取深入解析。 此 API 可讓您藉由豐富的搜尋條件來進行查詢，包括屬性值、關聯性、關聯性屬性、模型資訊等等。 您也可以結合查詢、收集有關您環境的各種深入解析，以及回答對您很重要的自訂問題。
+您也可以使用 Azure Digital Twins 功能強大的 **查詢 API**，從即時執行環境中擷取深入解析。 此 API 可讓您藉由豐富的搜尋條件來進行查詢，包括屬性值、關聯性、關聯性屬性、模型資訊等等。 您也可以結合查詢、收集有關您環境的各種深入解析，以及回答對您很重要的自訂問題。
 
 ### <a name="input-from-iot-and-business-systems"></a>IoT 和商用系統的輸入
 
@@ -64,7 +64,7 @@ Azure Digital Twins 提供豐富的 **事件系統** ，讓圖表保持在最新
 
 ### <a name="output-to-tsi-storage-and-analytics"></a>TSI、儲存體和分析的輸出
 
-您的 Azure Digital Twins 模型中的資料可路由傳送至下游 Azure 服務，進行額外的分析或儲存。 這是透過 **事件路由** ，其使用 [事件中樞](../event-hubs/event-hubs-about.md)、 [事件方格](../event-grid/overview.md) 或 [服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md) 來驅動您想要的資料流程。
+您的 Azure Digital Twins 模型中的資料可路由傳送至下游 Azure 服務，進行額外的分析或儲存。 這是透過 **事件路由**，其使用 [事件中樞](../event-hubs/event-hubs-about.md)、[事件方格](../event-grid/overview.md) 或 [服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md) 來驅動您想要的資料流程。
 
 您可以處理的事件路由執行的事項包括：
 * 將 Azure Digital Twins 資料儲存在 [Azure Data Lake](../storage/blobs/data-lake-storage-introduction.md)
@@ -92,13 +92,10 @@ Azure Digital Twins 通常會與其他 Azure 服務搭配使用，以做為大�
 
 ## <a name="service-limits"></a>服務限制
 
-如需 Azure Digital Twins 限制清單，請參閱 [*參考：服務限制：* ](reference-service-limits.md)。
+如需 Azure Digital Twins 限制清單，請參閱 [*參考：服務限制：*](reference-service-limits.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您使用第一個預覽版本的 Azure Digital Twins (2018 年 10 月)，請了解變更後的內容：
-* [*概觀：與第一版之間的差異*](overview-differences.md)
+如果您使用第一個預覽版本的 Azure Digital Twins (2018 年 10 月)，請了解變更後的內容：[*概觀：與第一版之間的差異*](overview-differences.md)。
 
-或者，藉由第一個教學課程來深入探索 Azure Digital Twins 的使用：
-
-[*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)
+或者，藉由快速入門來深入探索 Azure Digital Twins 的使用：[*快速入門：探索範例案例*](quickstart-adt-explorer.md)。

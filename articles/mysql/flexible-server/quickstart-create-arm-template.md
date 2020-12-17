@@ -242,7 +242,7 @@ echo "Press [ENTER] to continue ..."
 如需逐步教學課程，以引導您完成建立 ARM 範本的流程，請參閱：
 
 > [!div class="nextstepaction"]
-> 建立及部署您的第一個 ARM 範本[
+> [建立及部署您的第一個 ARM 範本](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 如需使用 MySQL 建置具有 App Service 之應用程式的逐步教學課程，請參閱：
 

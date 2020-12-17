@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e357667e650e9feeb8dceeffe71c287cde9fe8a0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401554"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631596"
 ---
 # <a name="virtual-network-service-tags"></a>虛擬網路服務標籤
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ ms.locfileid: "97401554"
 | **AzureActiveDirectory** | Azure Active Directory。 | 輸出 | 否 | 是 |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory Domain Services 專用部署的管理流量。 | 兩者 | 否 | 是 |
 | **AzureAdvancedThreatProtection** | Azure 進階威脅防護。 | 輸出 | 否 | 否 |
+| **AzureArcInfrastructure** | Azure Arc 啟用的伺服器、Azure Arc 啟用的 Kubernetes 和來賓設定流量。<br/><br/>*注意：* 此標記相依于 **AzureActiveDirectory**、**AzureTrafficManager** 和 **AzureResourceManager** 標記。 *此標記目前無法透過 Azure 入口網站進行* 設定。| 輸出 | 否 | 是 |
 | **AzureBackup** |Azure 備份。<br/><br/>*注意：* 此標籤相依於 **Storage** 和 **AzureActiveDirectory** 標籤。 | 輸出 | 否 | 是 |
 | **AzureBotService** | Azure Bot Service。 | 輸出 | 否 | 否 |
 | **AzureCloud** | 所有的[資料中心公用 IP 位址](https://www.microsoft.com/download/details.aspx?id=56519)。 | 輸出 | 是 | 是 |

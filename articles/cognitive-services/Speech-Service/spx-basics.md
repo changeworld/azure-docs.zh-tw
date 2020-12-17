@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546894"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507569"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>了解語音 CLI 的基本概念
 
@@ -87,7 +87,7 @@ spx translate --microphone --source en-US --target ru-RU --output file C:\some\f
 
 ### <a name="configuration-files-in-the-datastore"></a>資料存放區中的組態檔
 
-語音 CLI 的行為可依賴組態檔中的設定，您可以在語音 CLI 呼叫中使用 @ 符號加以參考。
+語音 CLI 的行為可依賴組態檔中的設定，您可以在語音 CLI 呼叫中使用 \@ 符號加以參考。
 語音 CLI 會將新的設定儲存於其在目前工作目錄中建立的新 `./spx/data` 子目錄。
 搜尋設定值時，語音 CLI 會依序在您目前的工作目錄中和 `./spx/data` 路徑中查看，然後再查看其他資料存放區，包括 `spx` 二進位檔案中最終的唯讀資料存放區。
 先前，您已使用資料存放區來儲存 `@key` 和 `@region` 值，因此不需要使用每個命令列呼叫來進行指定。

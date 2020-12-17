@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 6874794dcf33d77d0b03f2a5713bdf42a40d6891
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: fe82b03c4a8c71f84de02245b075ff30da31b45b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560905"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031092"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>快速入門：呼叫受 Azure 身分識別平台保護的 ASP.NET Web API
 
@@ -54,26 +54,24 @@ ms.locfileid: "94560905"
 
 ### <a name="register-the-todolistservice-app"></a>註冊 TodoListService 應用程式
 
-1. 移至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)入口網站。
-1. 選取 [新增註冊]。
-1. 當 [註冊應用程式] 頁面開啟時，輸入您應用程式的註冊資訊：
-
-    1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入 **AppModelv2-NativeClient-DotNet-TodoListService**。
-    1. 針對 [支援的帳戶類型]，選取 [任何組織目錄中的帳戶]。
-    1. 選取 [註冊] 以建立應用程式。
-
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 [管理] 底下，選取 [應用程式註冊] > [新增註冊]。
+1. 輸入應用程式的 [名稱]，例如 `AppModelv2-NativeClient-DotNet-TodoListService`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+1. 針對 [支援的帳戶類型]，選取 [任何組織目錄中的帳戶]。
+1. 選取 [註冊] 以建立應用程式。
 1. 在應用程式 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值，然後將其記下以供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio組態檔 (亦即，*TodoListService\Web.config* 檔案中的 `ClientId`)。
+1. 在 [管理] 底下，選取 [公開 API] > [新增範圍]。 透過選取 [儲存並繼續]，接受建議的應用程式識別碼 URI (`api://{clientId}`)，然後輸入下列資訊：
 
-1. 在 [公開 API] 區段中，選取 [新增範圍]、選取 [儲存並繼續] 來接受建議的應用程式識別碼 URI (`api://{clientId}`)，然後輸入下列資訊：
-
-    1. 針對 [範圍名稱]，請輸入 **access_as_user**。
+    1. 針對 [範圍名稱]，請輸入 access_as_user`access_as_user`。
     1. 針對 [誰可以同意]，確保已選取 [管理員與使用者] 選項。
-    1. 在 [管理員同意顯示名稱] 方塊中，輸入 **Access TodoListService as a user**。
-    1. 在 [管理員同意描述] 方塊中，輸入 **Accesses the TodoListService web API as a user**。
-    1. 在 [使用者同意顯示名稱] 方塊中，輸入 **Access TodoListService as a user**。
-    1. 在 [使用者同意描述] 方塊中，輸入 **Accesses the TodoListService Web API as a user**。
+    1. 在 [管理員同意顯示名稱] 方塊中，輸入 Access TodoListService as a user`Access TodoListService as a user`。
+    1. 在 [管理員同意描述] 方塊中，輸入 Accesses the TodoListService web API as a user`Accesses the TodoListService web API as a user`。
+    1. 在 [使用者同意顯示名稱] 方塊中，輸入 Access TodoListService as a user`Access TodoListService as a user`。
+    1. 在 [使用者同意描述] 方塊中，輸入 Accesses the TodoListService Web API as a user`Accesses the TodoListService web API as a user`。
     1. 針對 [狀態]，保持 [已啟用]。
-    1. 選取 [新增範圍]。
+1. 選取 [新增範圍]。
 
 ### <a name="configure-the-service-project"></a>設定服務專案
 

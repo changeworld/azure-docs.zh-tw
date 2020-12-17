@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 12163419ad779acfa116f1dee66284623e2d45fb
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: a9d20732c3ae08718c400faff44137000e98fffd
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616105"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629413"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 的互動式調試
 
@@ -26,7 +26,7 @@ ms.locfileid: "94616105"
 
 將您的機器學習實驗提交至雲端之前，請先使用 Azure Machine Learning 擴充功能來進行驗證、執行和偵測。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 * Azure Machine Learning VS Code 延伸模組 (預覽) 。 如需詳細資訊，請參閱 [設定 Azure Machine Learning VS Code 擴充](tutorial-setup-vscode-extension.md)功能。
 * [Docker](https://www.docker.com/get-started)
@@ -48,17 +48,17 @@ ms.locfileid: "94616105"
 1. 在 VS Code 中，開啟 Azure Machine Learning 延伸模組視圖。
 1. 展開包含您工作區的訂用帳戶節點。 如果您還沒有帳戶，可以使用擴充功能 [建立 Azure Machine Learning 工作區](how-to-manage-resources-vscode.md#create-a-workspace) 。
 1. 展開您的工作區節點。
-1. 以滑鼠右鍵按一下 [ **實驗** ] 節點，然後選取 [ **建立實驗** ]。 出現提示時，請提供您實驗的名稱。
-1. 展開 [ **實驗** ] 節點，以滑鼠右鍵按一下您想要執行的實驗，然後選取 [ **執行實驗** ]。
-1. 從執行實驗的選項清單中，選取 [ **本機** ]。
-1. **第一次只能在 Windows 上使用** 。 當系統提示您允許檔案共用時，請選取 **[是]** 。 當您啟用檔案共用時，它會允許 Docker 將包含您腳本的目錄掛接至容器。 此外，它也可讓 Docker 將您執行的記錄和輸出儲存在系統上的臨時目錄中。
+1. 以滑鼠右鍵按一下 [ **實驗** ] 節點，然後選取 [ **建立實驗**]。 出現提示時，請提供您實驗的名稱。
+1. 展開 [ **實驗** ] 節點，以滑鼠右鍵按一下您想要執行的實驗，然後選取 [ **執行實驗**]。
+1. 從執行實驗的選項清單中，選取 [ **本機**]。
+1. **第一次只能在 Windows 上使用**。 當系統提示您允許檔案共用時，請選取 **[是]**。 當您啟用檔案共用時，它會允許 Docker 將包含您腳本的目錄掛接至容器。 此外，它也可讓 Docker 將您執行的記錄和輸出儲存在系統上的臨時目錄中。
 1. 選取 **[是]** 以偵測您的實驗。 否則，請選取 [否]  。 選取 [否] 會在本機執行您的實驗，而不會附加至偵錯工具。
 1. 選取 [ **建立新** 的回合設定]，以建立您的執行設定。 回合設定會定義您想要執行的腳本、相依性及所使用的資料集。 或者，如果您已經有一個，請從下拉式清單中選取它。
     1. 選擇您的環境。 您可以從任何 [Azure Machine Learning 策劃](resource-curated-environments.md) 中選擇，或建立您自己的。
     1. 提供您要執行之腳本的名稱。 路徑是相對於 VS Code 中開啟的目錄。
     1. 選擇您是否要使用 Azure Machine Learning 資料集。 您可以使用擴充功能建立 [Azure Machine Learning 資料集](how-to-manage-resources-vscode.md#create-dataset) 。
-    1. 需要 Debugpy，才能將偵錯工具附加至執行實驗的容器。 若要將 debugpy 新增為相依性，請選取 [ **新增 debugpy** ]。 否則，請選取 [ **略過** ]。 請勿將 debugpy 新增為相依性，而不需附加至偵錯工具即可執行實驗。
-    1. 系統會在編輯器中開啟包含回合設定設定的設定檔。 如果您對設定感到滿意，請選取 [ **提交實驗** ]。 或者，您可以從功能表列開啟 [命令選擇區] ( **View > 命令** 選擇區) ，並在文字方塊中輸入 `Azure ML: Submit experiment` 命令。
+    1. 需要 Debugpy，才能將偵錯工具附加至執行實驗的容器。 若要將 debugpy 新增為相依性，請選取 [ **新增 debugpy**]。 否則，請選取 [ **略過**]。 請勿將 debugpy 新增為相依性，而不需附加至偵錯工具即可執行實驗。
+    1. 系統會在編輯器中開啟包含回合設定設定的設定檔。 如果您對設定感到滿意，請選取 [ **提交實驗**]。 或者，您可以從功能表列開啟 [命令選擇區] (**View > 命令** 選擇區) ，並在文字方塊中輸入 `Azure ML: Submit experiment` 命令。
 1. 在您的實驗提交之後，會建立包含您腳本的 Docker 映射，以及執行設定中指定的設定。
 
     當 Docker 映射建立程式開始時， `60_control_log.txt` VS Code 中輸出主控台的檔案資料流程內容。
@@ -73,7 +73,7 @@ ms.locfileid: "94616105"
 
 此時，您應該能夠使用 VS Code 逐步進行和偵錯工具代碼。
 
-如果您想要取消執行，請在執行節點上按一下滑鼠右鍵，然後選取 [ **取消執行** ]。
+如果您想要取消執行，請在執行節點上按一下滑鼠右鍵，然後選取 [ **取消執行**]。
 
 類似于遠端實驗的執行，您可以展開 [執行] 節點來檢查記錄和輸出。
 
@@ -84,12 +84,12 @@ ms.locfileid: "94616105"
 
 在某些情況下，您可能需要以互動方式來偵測 ML 管線中使用的 Python 程式碼。 藉由使用 VS Code 和 debugpy，您可以在定型環境中執行時附加至程式碼。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
-* 設定為使用 __Azure 虛擬網路__ 的 __Azure Machine Learning 工作區__ 。
+* 設定為使用 __Azure 虛擬網路__ 的 __Azure Machine Learning 工作區__。
 * 在管線步驟中使用 Python 腳本的 __Azure Machine Learning 管線__ 。 例如，PythonScriptStep。
-* Azure Machine Learning 的計算叢集，其位於 __虛擬網路中__ ，供 __管線用來進行定型__ 。
-* 位於 __虛擬網路中__ 的 __開發環境__ 。 開發環境可能是下列其中一項：
+* Azure Machine Learning 的計算叢集，其位於 __虛擬網路中__ ，供 __管線用來進行定型__。
+* 位於 __虛擬網路中__ 的 __開發環境__。 開發環境可能是下列其中一項：
 
   * 虛擬網路中的 Azure 虛擬機器
   * 虛擬網路中筆記本 VM 的計算實例
@@ -327,7 +327,7 @@ ip_address: 10.3.0.5
 
 1. 開啟 VS Code 並開啟腳本的本機複本。
 2. 設定您要讓腳本在附加之後停止的中斷點。
-3. 當子進程正在執行腳本，且 `Timeout for debug connection` 顯示在記錄檔中時，請使用 F5 鍵或選取 [ __Debug__ ]。 出現提示時，請選取 [ __計算：遠端偵錯] Azure Machine Learning__ 。 您也可以從提要欄位選取 [偵錯工具] 圖示，從 [偵錯工具] 下拉式功能表選取 [ __Azure Machine Learning：遠端偵錯__ 程式] 專案，然後使用綠色箭號附加偵錯工具。
+3. 當子進程正在執行腳本，且 `Timeout for debug connection` 顯示在記錄檔中時，請使用 F5 鍵或選取 [ __Debug__]。 出現提示時，請選取 [ __計算：遠端偵錯] Azure Machine Learning__ 。 您也可以從提要欄位選取 [偵錯工具] 圖示，從 [偵錯工具] 下拉式功能表選取 [ __Azure Machine Learning：遠端偵錯__ 程式] 專案，然後使用綠色箭號附加偵錯工具。
 
     此時，VS Code 會連接到計算節點上的 debugpy，並在您先前設定的中斷點停止。 您現在可以在程式碼執行時逐步執行、檢視變數等。
 
@@ -355,9 +355,9 @@ ip_address: 10.3.0.5
 
 1. 若要設定 VS Code 以與 Docker 映像通訊，請建立新的偵錯組態：
 
-    1. 從 VS Code 選取 [偵錯] 功能表，然後選取 [開啟組態]。 隨即開啟名為 launch.json 的檔案。
+    1. 從 VS Code 中，選取 [__執行__ 擴充功能] 中的 [__調試__] 功能表，然後選取 [__開啟__ 設定]。 隨即開啟名為 launch.json 的檔案。
 
-    1. 在 launch.json 檔案中，尋找包含 `"configurations": [` 的那一行，並在其後插入下列文字：
+    1. 在檔案的 __launch.js__ 中，尋找 (包含) 的行中的 [設定 __]__ 專案 `"configurations": [` ，然後在其後面插入下列文字。 
 
         ```json
         {
@@ -376,11 +376,44 @@ ip_address: 10.3.0.5
             ]
         }
         ```
+        插入之後，檔案 __上的launch.js__ 應如下所示：
+        ```json
+        {
+        // Use IntelliSense to learn about possible attributes.
+        // Hover to view descriptions of existing attributes.
+        // For more information, visit: https://go.microsoft.com/fwlink/linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": "Python: Current File",
+                "type": "python",
+                "request": "launch",
+                "program": "${file}",
+                "console": "integratedTerminal"
+            },
+            {
+                "name": "Azure Machine Learning Deployment: Docker Debug",
+                "type": "python",
+                "request": "attach",
+                "connect": {
+                    "port": 5678,
+                    "host": "0.0.0.0"
+                    },
+                "pathMappings": [
+                    {
+                        "localRoot": "${workspaceFolder}",
+                        "remoteRoot": "/var/azureml-app"
+                    }
+                ]
+            }
+            ]
+        }
+        ```
 
         > [!IMPORTANT]
-        > 如果組態區段中已經有其他項目，請在您插入的程式碼後面新增逗號 (,)。
+        > 如果 [設定] 區段中已經有其他專案，請在您插入的程式碼之後新增逗號 ( __，__ ) 。
 
-        本節會使用連接埠 5678 附加至 Docker 容器。
+        本節會使用埠 __5678__ 附加至 Docker 容器。
 
     1. 儲存 launch.json檔案。
 
@@ -433,13 +466,13 @@ ip_address: 10.3.0.5
     package.pull()
     ```
 
-    建立並下載映像之後，映像路徑 (在此案例中也會包含存放庫、名稱和標籤，也就是其摘要) 會顯示在類似下列的訊息中：
+    一旦建立並下載映射 (此程式可能需要10分鐘以上的時間，因此請等候耐心) ，映射路徑 (包括存放庫、名稱和標籤，在此案例中，這也是其摘要) 最後會顯示在類似下列的訊息中：
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. 若要更輕鬆地使用映像，請使用下列命令來新增標籤。 使用先前步驟中的位置值取代 `myimagepath`。
+1. 為了讓您更輕鬆地在本機使用映射，您可以使用下列命令來新增此映射的標記。 `myimagepath`使用上一個步驟中的位置值取代下列命令。
 
     ```bash
     docker tag myimagepath debug:1
@@ -457,22 +490,37 @@ ip_address: 10.3.0.5
 1. 若要使用映像啟動 Docker 容器，請使用下列命令：
 
     ```bash
-    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_path_to_score.py>:/var/azureml-apps/score.py debug:1 /bin/bash
+    docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_local_path_to_score.py>:/var/azureml-app/score.py debug:1 /bin/bash
     ```
 
     這會將您的 `score.py` 本機連接到容器中的一個。 因此，在編輯器中所做的任何變更都會自動反映在容器中。
 
-1. 在容器內，于 shell 中執行下列命令
+2. 為了獲得更好的體驗，您可以使用新的 VS code 介面進入容器。 從 VS Code 提要欄位中選取 [ `Docker` 擴充功能]，找出您在本檔中建立的本機容器 `debug:1` 。 以滑鼠右鍵按一下此容器並選取 `"Attach Visual Studio Code"` ，然後會自動開啟新的 VS Code 介面，而此介面會顯示您建立的容器內。
+
+    ![容器 VS Code 介面](./media/how-to-troubleshoot-deployment/container-interface.png)
+
+3. 在容器內，于 shell 中執行下列命令
 
     ```bash
     runsvdir /var/runit
     ```
+    然後，您可以在容器內的 shell 中看到下列輸出：
 
-1. 若要將 VS Code 附加至容器內的 debugpy，請開啟 VS Code 並使用 F5 鍵或選取 [ __Debug__ ]。 出現提示時，請選取 __Azure Machine Learning 部署： Docker Debug__ configuration。 您也可以從側邊列選取 [偵錯工具] 圖示，從 [偵錯工具] 下拉式功能表中選取 [ __Azure Machine Learning 部署： Docker debug__ ] 專案，然後使用綠色箭號附加偵錯工具。
+    ![容器執行主控台輸出](./media/how-to-troubleshoot-deployment/container-run.png)
+
+4. 若要將 VS Code 附加至容器內的 debugpy，請開啟 VS Code 並使用 F5 鍵或選取 [ __Debug__]。 出現提示時，請選取 __Azure Machine Learning 部署： Docker Debug__ configuration。 您也可以從提要欄位選取 [ __執行__ 擴充功能] 圖示，從 [偵錯工具] 下拉式功能表選取 [ __Azure Machine Learning 部署： Docker Debug__ ] 專案，然後使用綠色箭號附加偵錯工具。
 
     ![偵錯圖示、啟動偵錯按鈕和組態選取器](./media/how-to-troubleshoot-deployment/start-debugging.png)
+    
+    按一下綠色箭號並附加偵錯工具之後，在容器 VS Code 介面中，您可以看到一些新的資訊：
+    
+    ![容器偵錯工具附加的資訊](./media/how-to-troubleshoot-deployment/debugger-attached.png)
+    
+    此外，在您的主要 VS Code 介面中，您可以看到的內容如下：
 
-此時，VS Code 會連接到 Docker 容器內的 debugpy，並在您先前設定的中斷點停止。 您現在可以在程式碼執行時逐步執行、檢視變數等。
+    ![Score.py 中的 VS Code 中斷點](./media/how-to-troubleshoot-deployment/local-debugger.png)
+
+現在， `score.py` 附加至容器的本機已在您設定的中斷點停止。 此時，VS Code 會連線至 Docker 容器內的 debugpy，並在您先前設定的中斷點停止 Docker 容器。 您現在可以在程式碼執行時逐步執行、檢視變數等。
 
 如需使用 VS Code 來偵錯 Python 的詳細資訊，請參閱[偵錯您的 Python 程式碼](https://code.visualstudio.com/docs/python/debugging)。
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 3fb4085ba275bda1fe784f368eb5d92ac0c668f0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448509"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937061"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro with GPU 是什麼？
 
@@ -51,7 +51,7 @@ Azure Stack Edge Pro 具有下列功能：
 |資料重新整理     | 能夠以來自雲端的最新檔案對本機檔案進行重新整理。|
 |加密    | 支援使用 BitLocker 在本機加密資料，並透過 *https* 保護對雲端的資料傳輸。|
 |頻寬節流設定| 節流以限制尖峰時間的頻寬使用量。|
-<!--|ExpressRoute | 透過 ExpressRoute 增加安全性。 使用對等互連組態，從本機裝置到雲端儲存體端點的流量會透過 ExpressRoute 傳輸。 如需詳細資訊，請參閱 [ExpressRoute 概觀](../expressroute/expressroute-introduction.md)。-->
+<!--|ExpressRoute | 透過 ExpressRoute 增加安全性。 使用對等互連組態，從本機裝置到雲端儲存體端點的流量會透過 ExpressRoute 傳輸。 如需詳細資訊，請參閱 [ExpressRoute 概觀](../expressroute/expressroute-introduction.md)。|-->
 
 ## <a name="components"></a>元件
 
