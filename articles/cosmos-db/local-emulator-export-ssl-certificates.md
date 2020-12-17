@@ -7,17 +7,17 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
-ms.openlocfilehash: 1c111ca23ce7cf749dc4a7d5ad2ad39756236ab1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6c144f33f32422e27916e1987e0b2e8693f97945
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028201"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656439"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>匯出 Azure Cosmos DB 模擬器憑證以與 JAVA、Python 和 Node.js 應用程式搭配使用
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境做為開發之用。 Azure Cosmos 模擬器僅支援透過 TLS 連接的安全通訊。
+Azure Cosmos DB 模擬器提供一個模擬 Azure Cosmos DB 服務的本機環境做為開發之用。 Azure Cosmos DB 模擬器僅支援透過 TLS 連接的安全通訊。
 
 當您第一次執行模擬器時，會產生 Azure Cosmos DB 本機模擬器中的憑證。 會產生兩個憑證； 其中一個用來連接到本機模擬器，另一個用來管理模擬器內模擬器資料的預設加密。 您要匯出的憑證是有 "DocumentDBEmulatorCertificate" 易記名稱的連線憑證。
 

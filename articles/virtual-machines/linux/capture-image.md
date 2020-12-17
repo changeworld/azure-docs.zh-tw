@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: 376d9d76633060f504454f85841b9c15bafc6685
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503033"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655164"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>如何建立虛擬機器或 VHD 的受控映像
 
@@ -51,7 +51,7 @@ ms.locfileid: "87503033"
    > 只在您要擷取作為映像的 VM 上執行這個命令。 此命令不能保證映像檔中的所有機密資訊都會清除完畢或適合轉散發。 `+user` 參數也會移除最後一個佈建的使用者帳戶。 若要在 VM 中保留使用者帳戶認證，僅使用 `-deprovision`。
  
 3. 輸入 **y** 繼續。 您可以新增 `-force` 參數，便不用進行此確認步驟。
-4. 在命令完成之後，請輸入**exit** 關閉 SSH 用戶端。  此時 VM 仍會在執行中。
+4. 在命令完成之後，請輸入 **exit** 關閉 SSH 用戶端。  此時 VM 仍會在執行中。
 
 ## <a name="step-2-create-vm-image"></a>步驟 2:建立 VM 映像
 使用 Azure CLI 將 VM 標記為一般化，並擷取映像。 在下列範例中，請以您自己的值取代範例參數名稱。 範例參數名稱包含 *myResourceGroup*、*myVnet* 和 *myVM*。
@@ -60,8 +60,8 @@ ms.locfileid: "87503033"
    
     ```azurecli
     az vm deallocate \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
     
     等到 VM 完全解除配置，再繼續進行。 這可能需要幾分鐘才能完成。  VM 會在解除配置期間關閉。
@@ -70,8 +70,8 @@ ms.locfileid: "87503033"
    
     ```azurecli
     az vm generalize \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
 
     已一般化的 VM 無法再重新啟動。
@@ -80,8 +80,8 @@ ms.locfileid: "87503033"
    
     ```azurecli
     az image create \
-      --resource-group myResourceGroup \
-      --name myImage --source myVM
+        --resource-group myResourceGroup \
+        --name myImage --source myVM
     ```
    
    > [!NOTE]

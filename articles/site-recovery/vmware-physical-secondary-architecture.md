@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 7c884ce839523706e67e4278f43e237e1a2b0580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d400e6bcda0a2114d798a3289f01f52b677a6f94
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496962"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656490"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>將 VMware/實體伺服器複寫到次要內部部署站台的架構
 
@@ -44,7 +44,7 @@ ms.locfileid: "87496962"
 
 | **名稱**                  | **商業**                               | **政府**                                 | **說明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
+| 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
 | 複寫               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允許 VM 與 Site Recovery 服務進行通訊。 |
 | 服務匯流排               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
@@ -59,6 +59,6 @@ ms.locfileid: "87496962"
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [設定](vmware-physical-secondary-disaster-recovery.md)將 VMware VM 和實體伺服器災害復原至次要網站的作業。

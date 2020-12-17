@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 3f28c50be73b2b87ed8b25429cfa2dee9a663f1b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5e1f8a099256040e14db1cdab288551a228512cd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452171"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655368"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -44,8 +44,8 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 當您在 Azure 訂用帳戶中建立金鑰保存庫時，它會自動與該訂用帳戶的 Azure AD 租用戶建立關聯。 這兩個平面中的所有呼叫者都必須在此租用戶中註冊，並經過驗證才能存取金鑰保存庫。 在這兩種情況下，應用程式都可以透過三種方式存取 Key Vault：
 
-- **僅限應用程式**：應用程式代表服務主體或受控識別。 對於定期需要從金鑰保存庫存取憑證、金鑰或密碼的應用程式，此身分識別是最常見的案例。 若要讓此案例正常運作， `objectId` 必須在存取原則中指定應用程式的，且 `applicationId` 不得 _not_ 指定或必須是 `null` 。
-- **僅限使用者**：使用者從租使用者中註冊的任何應用程式存取金鑰保存庫。 舉例來說，這類存取包括 Azure PowerShell 和 Azure 入口網站。 若要讓此案例正常運作， `objectId` 必須在存取原則中指定使用者的，且 `applicationId` 不得指定 _not_ 或必須是 `null` 。
+- **僅限應用程式**：應用程式代表服務主體或受控識別。 對於定期需要從金鑰保存庫存取憑證、金鑰或密碼的應用程式，此身分識別是最常見的案例。 若要讓此案例正常運作， `objectId` 必須在存取原則中指定應用程式的，且 `applicationId` 不得指定或必須是 `null` 。
+- **僅限使用者**：使用者從租使用者中註冊的任何應用程式存取金鑰保存庫。 舉例來說，這類存取包括 Azure PowerShell 和 Azure 入口網站。 若要讓此案例正常運作， `objectId` 必須在存取原則中指定使用者的，且 `applicationId` 不得指定或必須是 `null` 。
 - **應用程式 plus-使用者** (有時稱為 _複合身分識別_) ：使用者必須從特定應用程式存取金鑰保存庫 _，而且_ 應用程式必須使用代理者驗證 (OBO) 流程來模擬使用者。 若要讓此案例正常運作 `applicationId` ， `objectId` 必須在存取原則中指定和。 會 `applicationId` 識別所需的應用程式，並 `objectId` 識別使用者。 目前，此選項不適用於資料平面 Azure RBAC (預覽版) 。
 
 在所有類型的存取中，應用程式會使用 Azure AD 進行驗證。 應用程式會根據應用程式類型使用任何[支援的驗證方法](../../active-directory/develop/authentication-vs-authorization.md)。 應用程式會取得平面中資源的權杖以便授與存取權。 視 Azure 環境而定，資源會是管理或資料平面中的端點。 應用程式會使用此權杖，對 Key Vault 傳送 REST API 要求。 若要深入了解，請參閱[整個驗證流程](../../active-directory/develop/v2-oauth2-auth-code-flow.md)。
@@ -186,8 +186,8 @@ Azure 角色型存取控制是一個替代的許可權模型，用來控制可�
 | --- | --- | --- | --- |
 | 安全性小組 | [Key Vault 參與者](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | 憑證：所有作業 <br> 金鑰：所有作業 <br> 祕密：所有作業 | [Key Vault 系統管理員 (預覽) ](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意**：此權限可讓已部署的 VM 從金鑰保存庫擷取祕密。 | None | None |
-| 稽核員 | None | 憑證：清單 <br> 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此權限可讓稽核員檢查未在記錄中顯現的金鑰和密碼所具有的屬性 (標籤、啟用日和到期日)。 | [Key Vault 讀者 (預覽) ]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure 儲存體帳戶 | 無 | 索引鍵： get、list、wrapKey、unwrapKey <br> | [Key Vault 加密服務加密](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
+| 稽核員 | None | 憑證：清單 <br> 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此權限可讓稽核員檢查未在記錄中顯現的金鑰和密碼所具有的屬性 (標籤、啟用日和到期日)。 | [Key Vault 讀者 (預覽) ](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
+| Azure 儲存體帳戶 | 無 | 索引鍵： get、list、wrapKey、unwrapKey <br> | [Key Vault 加密服務加密使用者](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
 | Application | None | 秘密： get、list <br> 憑證： get、list | [Key Vault 讀者 (預覽) ](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview)、 [Key Vault Secret 使用者 (preview) ](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 這三個小組角色需要其他資源的存取權以及 Key Vault 權限。 若要部署 Vm (或 Azure App Service) 的 Web Apps 功能，開發人員和操作員需要部署存取權。 稽核員需要儲存 Key Vault 記錄所在儲存體帳戶的讀取權限。

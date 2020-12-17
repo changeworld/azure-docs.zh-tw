@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 888f8c96e8c1aa596c76cf09cd95a104821740ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74403365fe48584fa5d1db0e349c9dfc3772d874
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320450"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652841"
 ---
 # <a name="system-tables-and-views"></a>系統資料表和視圖
 
@@ -37,8 +37,8 @@ Pg \_ dist \_ 分割區資料表會儲存有關資料庫中哪些資料表所散
 |--------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | logicalrelid | regclass | 此資料列對應的分散式資料表。 此值會參考 pg_class 系統目錄資料表中的 relfilenode 資料行。                                                                                                                   |
 | partmethod   | char     | 用於分割/散發的方法。 此資料行對應至不同散發方法的值為 append： ' a '、hash： ' h '、參考資料表： ' n '                                                                          |
-| partkey      | text     | 散發資料行的詳細資訊，包括資料行編號、類型和其他相關資訊。                                                                                                                                      |
-| colocationid | 整數  | 此資料表所屬的共置群組。 相同群組中的資料表允許共置聯結和分散式匯總與其他優化之間。 這個值會參考 pg_dist_colocation 資料表中的 colocationid 資料行。                      |
+| partkey      | 文字     | 散發資料行的詳細資訊，包括資料行編號、類型和其他相關資訊。                                                                                                                                      |
+| colocationid | integer  | 此資料表所屬的共置群組。 相同群組中的資料表允許共置聯結和分散式匯總與其他優化之間。 這個值會參考 pg_dist_colocation 資料表中的 colocationid 資料行。                      |
 | repmodel     | char     | 用於資料複寫的方法。 此資料行的值對應至不同的複寫方法： Citus 語句型複寫： ' c '、于 postgresql 串流複寫： ' '、兩階段認可 (用於參考資料表) ： t ' |
 
 ```
@@ -59,8 +59,8 @@ Pg \_ dist \_ 分區資料表會儲存有關資料表個別分區的中繼資料
 | logicalrelid  | regclass | 此資料列對應的分散式資料表。 此值會參考 pg_class 系統目錄資料表中的 relfilenode 資料行。                                                          |
 | shardid       | BIGINT   | 指派給此分區的全域唯一識別碼。                                                                                                                                           |
 | shardstorage  | char     | 用於此分區的儲存體類型。 下表將討論不同的儲存體類型。                                                                                               |
-| shardminvalue | text     | 針對附加分散式資料表，此分區中散發資料行的最小值 (包含) 。 針對雜湊分散式資料表，指派給該分區的最小雜湊權杖值 (內含) 。 |
-| shardmaxvalue | text     | 針對附加分散式資料表，此分區中散發資料行的最大值 (內含) 。 針對雜湊分散式資料表，指派給該分區的最大雜湊 token 值 (內含) 。 |
+| shardminvalue | 文字     | 針對附加分散式資料表，此分區中散發資料行的最小值 (包含) 。 針對雜湊分散式資料表，指派給該分區的最小雜湊權杖值 (內含) 。 |
+| shardmaxvalue | 文字     | 針對附加分散式資料表，此分區中散發資料行的最大值 (內含) 。 針對雜湊分散式資料表，指派給該分區的最大雜湊 token 值 (內含) 。 |
 
 ```
 SELECT * from pg_dist_shard;
@@ -126,13 +126,13 @@ Pg \_ dist \_ node 資料表包含叢集中背景工作節點的相關資訊。
 |------------------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | nodeid           | int     | 針對個別節點自動產生的識別碼。                                                                                                                                          |
 | groupid          | int     | 使用「串流複寫」模型時，用來代表一部主伺服器和零或多個次要伺服器群組的識別碼。 依預設，它會與同值相同。         |
-| nodename         | text    | 于 postgresql 背景工作節點的主機名稱或 IP 位址。                                                                                                                                     |
+| nodename         | 文字    | 于 postgresql 背景工作節點的主機名稱或 IP 位址。                                                                                                                                     |
 | nodeport         | int     | 于 postgresql 背景工作節點正在接聽的埠號碼。                                                                                                                              |
-| noderack         | text    |  (背景工作節點的選擇性) 機架放置資訊。                                                                                                                                 |
+| noderack         | 文字    |  (背景工作節點的選擇性) 機架放置資訊。                                                                                                                                 |
 | hasmetadata      | boolean | 保留供內部使用。                                                                                                                                                                 |
 | isactive         | boolean | 節點是否正在接受分區放置。                                                                                                                                     |
-| noderole         | text    | 節點是否為主要或次要                                                                                                                                                 |
-| nodecluster      | text    | 包含此節點的叢集名稱                                                                                                                                               |
+| noderole         | 文字    | 節點是否為主要或次要                                                                                                                                                 |
+| nodecluster      | 文字    | 包含此節點的叢集名稱                                                                                                                                               |
 | shouldhaveshards | boolean | 如果為 false，則分區會在重新平衡時移出節點 (清空) ，也不會從新的分散式資料表分區到節點上，除非它們與分區共置。 |
 
 ```
@@ -153,12 +153,12 @@ Citus.pg \_ dist \_ 物件表包含物件的清單，例如在協調器節點上
 |-----------------------------|---------|------------------------------------------------------|
 | classid                     | oid     | 分散式物件的類別                      |
 | objid                       | oid     | 分散式物件的物件識別碼                  |
-| objsubid                    | 整數 | 分散式物件的物件子識別碼，例如 attnum |
-| type                        | text    | 用於 pg 升級期間的穩定位址部分   |
+| objsubid                    | integer | 分散式物件的物件子識別碼，例如 attnum |
+| 類型                        | 文字    | 用於 pg 升級期間的穩定位址部分   |
 | object_names                | 文字 []  | 用於 pg 升級期間的穩定位址部分   |
 | object_args                 | 文字 []  | 用於 pg 升級期間的穩定位址部分   |
-| distribution_argument_index | 整數 | 僅適用于分散式函數/程式      |
-| colocationid                | 整數 | 僅適用于分散式函數/程式      |
+| distribution_argument_index | integer | 僅適用于分散式函數/程式      |
+| colocationid                | integer | 僅適用于分散式函數/程式      |
 
 \"穩定位址可 \" 唯一識別特定伺服器以外的物件。 超大規模 (Citus) 在於 postgresql 升級期間，使用以 [pg \_ 識別 \_ 物件 \_ 為 \_ address ( # B3 ](https://www.postgresql.org/docs/current/functions-info.html#FUNCTIONS-INFO-OBJECT-TABLE) 函數所建立的穩定位址來追蹤物件。
 
@@ -208,7 +208,7 @@ colocationid                |
 
 ### <a name="colocation-group-table"></a>共置群組資料表
 
-Pg \_ dist \_ 共置資料表包含哪些資料表 \' 分區應放置在一起或共置的相關[colocated](concepts-hyperscale-colocation.md)資訊。
+Pg \_ dist \_ 共置資料表包含哪些資料表 \' 分區應放置在一起或共置的相關[](concepts-hyperscale-colocation.md)資訊。
 當兩個數據表位於相同的共置群組時，超大規模 (Citus) 可確保具有相同資料分割值的分區將放置在相同的背景工作節點上。
 共置可啟用聯結優化、特定分散式匯總和外鍵支援。 當分區計數、複寫因數和資料分割資料行類型全都符合兩個數據表時，便會推斷分區共置;不過，如有需要，您可以在建立分散式資料表時指定自訂共置群組。
 
@@ -334,9 +334,9 @@ minimum_threshold               | 0.01
 | queryid       | BIGINT | 識別碼 (適用于 pg_stat_statements 聯結)                                    |
 | userid        | oid    | 執行查詢的使用者                                                           |
 | dbid          | oid    | 協調器的資料庫實例                                                 |
-| 查詢         | text   | 匿名查詢字串                                                          |
-| 遺囑 執行 人      | text   | 使用的 Citus 執行程式：自我調整、即時、工作追蹤器、路由器或插入-選取 |
-| partition_key | text   | 路由器執行的查詢中的散發資料行值，否則為 Null               |
+| 查詢         | 文字   | 匿名查詢字串                                                          |
+| 遺囑 執行 人      | 文字   | 使用的 Citus 執行程式：自我調整、即時、工作追蹤器、路由器或插入-選取 |
+| partition_key | 文字   | 路由器執行的查詢中的散發資料行值，否則為 Null               |
 | calls         | BIGINT | 查詢的執行次數                                                |
 
 ```sql

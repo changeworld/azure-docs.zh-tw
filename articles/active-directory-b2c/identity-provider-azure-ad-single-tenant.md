@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0b6e8b165dc8663d253ebd2ed2314195341142e0
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 05c4d36f266fb526a1d0232cc32f0408e4322c80
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584990"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654382"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中設定特定 Azure Active Directory 組織的登入
 
@@ -32,21 +32,9 @@ ms.locfileid: "97584990"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-::: zone pivot="b2c-user-flow"
-
-* [建立使用者流程](tutorial-create-user-flows.md)，讓使用者註冊並登入您的應用程式。
-* [將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶](add-web-api-application.md) (如果您尚未這麼做)。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* 完成[在 Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
-* [將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶](add-web-api-application.md) (如果您尚未這麼做)。
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="register-an-azure-ad-app"></a>註冊 Azure AD 應用程式
 
@@ -113,7 +101,7 @@ ms.locfileid: "97584990"
     - **姓氏**：family_name
     - **電子郵件**： *preferred_username*
 
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 ::: zone-end
 
@@ -252,7 +240,7 @@ ms.locfileid: "97584990"
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 按一下您想要 Azure AD 識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **Contoso Azure AD**]。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5ba5c6799db6a32bce64a730f4888f59080300dd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928812"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657170"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
@@ -112,7 +112,7 @@ B16 特性：
 
 **範例**：我針對短暫的時間使用 B1ms 大小及現身資料庫應用程式來部署 VM。 這個大小可讓我的應用程式使用最多 20% 的 vCPU 作為基準，也就是我每分鐘可以使用或累積 0.2 個點數。
 
-我的應用程式從我員工的工作日開始運作到員工下班，時間是上午 7:00-9:00 和下午 4:00 - 6:00 之間。 一天的其他 20 小時內，我的應用程式通常為閒置狀態，只會使用 10% 的 vCPU。 在非尖峰時間，我每分鐘獲得 0.2 個點數，但每分鐘只使用 0.1 個點數，因此我的 VM 每小時會累積 0.1 x 60 = 6 個點數。  在離峰的 20 小時內，我會累積 120 個點數。  
+我的應用程式從我員工的工作日開始運作到員工下班，時間是上午 7:00-9:00 和下午 4:00 - 6:00 之間。 一天的其他 20 小時內，我的應用程式通常為閒置狀態，只會使用 10% 的 vCPU。 在非尖峰時間，我每分鐘獲得0.2 個點數，但每分鐘只取用0.1 個點數，因此我的 VM 每小時會有 0.1 x 60 = 6 個點數。  在離峰的 20 小時內，我會累積 120 個點數。  
 
 在尖峰時間內，我的應用程式平均會有 60% 的 vCPU 使用率，我每分鐘仍可獲得 0.2 個點數，但我每分鐘使用 0.6 個點數，一分鐘的淨成本是 0.4 個點數，也就是每小時 0.4 x 60 = 24 個點數。 我每日有 4 小時的尖峰使用量，因此尖峰使用量的成本是 4 x 24 = 96 個點數。
 

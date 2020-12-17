@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ee5b6784885476c93a93f05c9225dfd11c53a9a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: db99fbdea38dd30401a8aeedb7ebc23c71c5236c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584573"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655181"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 SAML 識別提供者技術設定檔
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) 提供 SAML 2.0 身分識別提供者的支援。 本文會說明技術設定檔的詳細規格，其可和支援此標準化通訊協定的宣告提供者互動。 透過 SAML 技術設定檔，您可以與 SAML 型識別提供者 (例如[ADFS](identity-provider-adfs2016-custom.md) 和 [Salesforce](identity-provider-salesforce.md)) 建立同盟。 此同盟允許使用者使用其現有的社交或企業身分識別登入。
+Azure Active Directory B2C (Azure AD B2C) 提供 SAML 2.0 身分識別提供者的支援。 本文會說明技術設定檔的詳細規格，其可和支援此標準化通訊協定的宣告提供者互動。 透過 SAML 技術設定檔，您可以與 SAML 型識別提供者 (例如[ADFS](identity-provider-adfs2016-custom.md) 和 [Salesforce](identity-provider-salesforce-saml.md)) 建立同盟。 此同盟允許使用者使用其現有的社交或企業身分識別登入。
 
 ## <a name="metadata-exchange"></a>中繼資料交換
 
@@ -217,4 +217,4 @@ SAML 判斷提示：
 請參閱下列文章，以取得在 Azure AD B2C 中使用 SAML 識別提供者的範例：
 
 - [使用自訂原則新增 ADFS 作為 SAML 識別提供者](identity-provider-adfs.md)
-- [使用 Salesforce 帳戶透過 SAML 來登入](identity-provider-salesforce.md)
+- [使用 Salesforce 帳戶透過 SAML 來登入](identity-provider-salesforce-saml.md)

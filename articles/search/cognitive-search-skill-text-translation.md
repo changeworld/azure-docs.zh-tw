@@ -8,16 +8,16 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4889ecd02be1b8f59c30550b7813ed5e5935f20f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0953d750ee8b59e9889512bb64cfd276a0bbeb53
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924689"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654858"
 ---
 #   <a name="text-translation-cognitive-skill"></a>文字翻譯認知技能
 
-**文字翻譯**技能會評估文字，並針對每筆記錄傳回翻譯為指定目的語言的文字。 這項技能會使用認知服務中提供的 [翻譯工具文字 API v3.0](../cognitive-services/translator/reference/v3-0-translate.md) 。
+**文字翻譯** 技能會評估文字，並針對每筆記錄傳回翻譯為指定目的語言的文字。 這項技能會使用認知服務中提供的 [翻譯工具文字 API v3.0](../cognitive-services/translator/reference/v3-0-translate.md) 。
 
 如果您預期您的檔可能並非全部都是使用一種語言，則這項功能會很有用，在這種情況下，您可以藉由轉譯文字，將文字標準化為單一語言。  它也適用于當地語系化使用案例，您可能會想要有多個語言的相同文字副本。
 
@@ -38,7 +38,7 @@ Microsoft.Skills.Text.TranslationSkill
 
 這些參數會區分大小寫。
 
-| 輸入                | 描述 |
+| 輸入 | 描述 |
 |---------------------|-------------|
 | defaultToLanguageCode |  (需要) 語言代碼，將檔轉譯為未明確指定為語言的檔。 <br/> 請參閱[支援語言的完整清單](../cognitive-services/translator/language-support.md)。 |
 | defaultFromLanguageCode |  (選擇性) 用來轉譯檔的語言程式碼，而不是明確指定 from 語言的檔。  如果未指定 defaultFromLanguageCode，則會使用翻譯工具文字 API 所提供的自動語言偵測來判斷來源語言。 <br/> 請參閱[支援語言的完整清單](../cognitive-services/translator/language-support.md)。 |

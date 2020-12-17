@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: abc4529d6076496b34859eec2b931a8dcbd1ce93
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: e28c995a0fb574f2e7319f8ee540f49d1bbed4dd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296585"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656898"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door 的常見問題
 
@@ -147,7 +147,7 @@ Front Door 的前端任意傳播 IP 通常不會變更，而且在 Front Door �
 路由或後端集區等的任何更新都是順暢的，將會導致零停機 (如果新的設定正確) 。 憑證更新也是不可部分完成的，而且不會造成任何中斷，除非從「AFD 受控」切換至「使用您自己的憑證」，反之亦然。
 
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>可以 Azure Front Door 負載平衡或在虛擬網路內路由傳送流量嗎？
 
@@ -254,7 +254,7 @@ Front Door 受控選項會透過 Digicert 布建標準的 TLS/SSL 憑證，並�
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>我可以搭配 Azure Front Door 使用用戶端/相互驗證嗎？
 
-否。 雖然 Azure Front Door 支援在 [RFC 5246](https://tools.ietf.org/html/rfc5246)中引入用戶端/相互驗證的 TLS 1.2，但目前 Azure Front Door 不支援用戶端/相互驗證。
+不會。 雖然 Azure Front Door 支援在 [RFC 5246](https://tools.ietf.org/html/rfc5246)中引入用戶端/相互驗證的 TLS 1.2，但目前 Azure Front Door 不支援用戶端/相互驗證。
 
 ## <a name="diagnostics-and-logging"></a>診斷和記錄
 

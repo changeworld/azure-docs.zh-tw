@@ -8,23 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 3e74098d368b6aef3a9f12d8b1369132b29e7a0f
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: b3a633c1eff6adf2a33b4f3bfc818eb51ff5ee85
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608947"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653090"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文字分析 API v3 語言支援 
 
-[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
-
-
 #### <a name="sentiment-analysis"></a>[情感分析](#tab/sentiment-analysis)
 
-| Language              | 語言代碼 | v2 支援 | v3 支援 | 起始 v3 模型版本： |              備忘錄 |
+| Language              | 語言代碼 | v2 支援 | v3 支援 | 起始 v3 模型版本： |              備註 |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
 | 簡體中文    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | 也接受 `zh` |
 | 繁體中文   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
@@ -50,18 +47,18 @@ ms.locfileid: "97608947"
 
 ### <a name="opinion-mining-v31-preview-only"></a>意見挖掘 (3.1-僅限預覽) 
 
-| Language              | 語言代碼 | 從 v3 模型版本開始： |              備忘錄 |
+| Language              | 語言代碼 | 從 v3 模型版本開始： |              備註 |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
 | 英文               |     `en`      |              2020-04-01              |                    |
 
 
-#### <a name="named-entity-recognition-ner"></a>[具名實體辨識 (NER)](#tab/named-entity-recognition)
+#### <a name="named-entity-recognition-ner"></a>[命名實體辨識 (NER) ](#tab/named-entity-recognition)
 
 > [!NOTE]
 > * NER v3 目前僅支援英文和西班牙文語言。 如果您使用不同的語言來呼叫 NER v3，則 API 會傳回2.1 的結果，前提是版本2.1 中支援該語言。
 > * 2.1 版只會針對英文、簡體中文、法文、德文和西班牙文等語言傳回一組完整的可用實體。  針對其他支援的語言，會傳回「人員」、「位置」和「組織」實體。
 
-| Language               | 語言代碼 | 2.1 版支援 | v3 支援 | 從 v3 模型版本開始： |       備忘錄        |
+| Language               | 語言代碼 | 2.1 版支援 | v3 支援 | 從 v3 模型版本開始： |       備註        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | 阿拉伯文                |     `ar`      |     ✓      |            |                                 |                    |
 | 捷克文                 |     `cs`      |     ✓      |            |                                 |                    |
@@ -92,7 +89,7 @@ ms.locfileid: "97608947"
 > [!NOTE]
 > 2020-07-01 之前關鍵片語擷取的模型版本具有64個字元的限制。 這項限制不會出現在較新的模型版本中。
 
-| Language              | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： |       備忘錄        |
+| Language              | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： |       備註        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
 | 荷蘭文                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 英文               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -112,7 +109,7 @@ ms.locfileid: "97608947"
 
 #### <a name="entity-linking"></a>[實體連結](#tab/entity-linking)
 
-| Language | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： | 備忘錄 |
+| Language | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： | 備註 |
 |:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
 | 英文  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
 | 西班牙文  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |

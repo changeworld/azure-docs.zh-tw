@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562560"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654824"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何呼叫文字分析 REST API
 
@@ -64,9 +64,6 @@ ms.locfileid: "97562560"
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
-
-
 <a name="json-schema"></a>
 
 ## <a name="api-request-formats"></a>API 要求格式
@@ -79,7 +76,7 @@ ms.locfileid: "97562560"
 
 針對所有同步作業，API 要求的格式都相同。 檔會以原始非結構化文字形式提交在 JSON 物件中。 不支援 XML。 JSON 架構包含以下所述的元素。
 
-| 元素 | 有效值 | 必要？ | 使用量 |
+| 元素 | 有效值 | 必要？ | 使用方式 |
 |---------|--------------|-----------|-------|
 |`id` |資料類型是字串，但實際上文件識別碼通常是整數。 | 必要 | 系統會使用您所提供的識別碼作為輸出的結構。 語言代碼、關鍵片語及情感分數會針對要求中的每個識別碼產生。|
 |`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 針對語言偵測，文字可以透過任何語言表示。 針對情感分析、關鍵片語擷取及實體識別，文字必須為[支援的語言](../language-support.md)。 |
@@ -114,18 +111,18 @@ ms.locfileid: "97562560"
 * 關鍵片語擷取 
 * 命名實體辨識 (包括 PII 和 PHI) 
 
-| 元素 | 有效值 | 必要？ | 使用量 |
+| 元素 | 有效值 | 必要？ | 使用方式 |
 |---------|--------------|-----------|-------|
-|`displayName` | 字串 | 選擇性 | 用來當做作業唯一識別碼的顯示名稱。|
+|`displayName` | String | 選擇性 | 用來當做作業唯一識別碼的顯示名稱。|
 |`analysisInput` | 包含 `documents` 下欄欄位 | 必要 | 包含您要傳送之檔的資訊。 |
 |`documents` | 包含 `id` 以下的和 `text` 欄位 | 必要 | 包含所傳送之每份檔的資訊，以及檔的原始文字。 |
-|`id` | 字串 | 必要 | 您提供的識別碼是用來結構輸出。 |
+|`id` | String | 必要 | 您提供的識別碼是用來結構輸出。 |
 |`text` | 非結構化原始文字，最多125000個字元。 | 必要 | 必須是英文語言，這是目前唯一支援的語言。 |
 |`tasks` | 包含下列文字分析功能： `entityRecognitionTasks` `keyPhraseExtractionTasks` 或 `entityRecognitionPiiTasks` 。 | 必要 | 您要使用的一或多個文字分析功能。 請注意， `entityRecognitionPiiTasks` 具有 `domain` 可設定為或的選擇性參數 `pii` `phi` 。 如果未指定，系統會預設為 `pii` 。 |
 |`parameters` | 包含 `model-version` 以下的和 `stringIndexType` 欄位 | 必要 | 此欄位包含在您選擇的上述功能工作中。 它們包含您想要使用之模型版本的相關資訊，以及索引類型。 |
-|`model-version` | 字串 | 必要 | 指定您想要使用的模型版本。  |
-|`stringIndexType` | 字串 | 必要 | 指定符合您程式設計環境的文字解碼器。  支援的類型為 `textElement_v8` (預設) 、 `unicodeCodePoint` 、 `utf16CodeUnit` 。 如需詳細資訊，請參閱 [文字位移文章](../concepts/text-offsets.md#offsets-in-api-version-31-preview) 。  |
-|`domain` | 字串 | 選擇性 | 只適用于做為工作的參數 `entityRecognitionPiiTasks` ，而且可以設定為 `pii` 或 `phi` 。 如果未指定，則預設為 `pii` 。  |
+|`model-version` | String | 必要 | 指定您想要使用的模型版本。  |
+|`stringIndexType` | String | 必要 | 指定符合您程式設計環境的文字解碼器。  支援的類型為 `textElement_v8` (預設) 、 `unicodeCodePoint` 、 `utf16CodeUnit` 。 如需詳細資訊，請參閱 [文字位移文章](../concepts/text-offsets.md#offsets-in-api-version-31-preview) 。  |
+|`domain` | String | 選擇性 | 只適用于做為工作的參數 `entityRecognitionPiiTasks` ，而且可以設定為 `pii` 或 `phi` 。 如果未指定，則預設為 `pii` 。  |
 
 ```json
 {
@@ -170,7 +167,7 @@ ms.locfileid: "97562560"
 
 健康情況託管 API 文字分析的 API 要求格式與其容器的格式相同。 檔會以原始非結構化文字形式提交在 JSON 物件中。 不支援 XML。 JSON 架構包含以下所述的元素。  請填寫並提交 [認知服務要求表單](https://aka.ms/csgate) ，以要求存取文字分析的健康狀態公開預覽。 您將不需支付文字分析的健康情況。 
 
-| 元素 | 有效值 | 必要？ | 使用量 |
+| 元素 | 有效值 | 必要？ | 使用方式 |
 |---------|--------------|-----------|-------|
 |`id` |資料類型是字串，但實際上文件識別碼通常是整數。 | 必要 | 系統會使用您所提供的識別碼作為輸出的結構。 |
 |`text` | 非結構化原始文字，最多5120個字元。 | 必要 | 請注意，目前僅支援英文文字。 |

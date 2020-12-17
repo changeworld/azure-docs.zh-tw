@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088660"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657119"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>針對 Windows 開機管理程式錯誤進行疑難排解 - 0xC0000225「找不到狀態」
  
@@ -126,7 +126,7 @@ ms.locfileid: "87088660"
       `dir <BINARY WITH ".SYS" EXTENSION>  /s`
 
       此命令會列出電腦擁有檔案的所有版本，並提供該元件的路徑歷程記錄。
-      
+
       例如，**dir cng.sys** 會重新命名 **dir cng.sys /s**
 
    1. 選擇清單上檔案的最新版本 (或是您偏好的版本)，並且使用先前的路徑和下列命令，將檔案複製到 **windows\system32** 資料夾：
@@ -150,7 +150,7 @@ ms.locfileid: "87088660"
 
 收集目前的開機設定資訊，並記下作用中磁碟分割上的識別碼。 接著，您將使用這項資訊來新增 **OSDEVICE** 變數，並遵循產生 VM 的指示。
 
-如果此資訊集合出現錯誤，指出沒有 **\boot\bcd** 檔案，請改為使用[修復系統檔案](#repair-the-system-file) 中的指示。 
+如果此資訊集合出現錯誤，指出沒有 **\boot\bcd** 檔案，請改為使用 [修復系統檔案](#repair-the-system-file) 中的指示。 
 
 1. 針對第 1 代 VM，請以系統管理員身分開啟提高權限的命令提示字元，並輸入下列命令：
 
@@ -163,7 +163,7 @@ ms.locfileid: "87088660"
    請記下 Windows 開機載入器的識別碼，其路徑是 **\windows\system32\winload.exe**。
 
 1. 針對第 2 代 VM，請確認作業系統磁碟已上線，且已指派其磁碟分割磁碟代號。 當此驗證完成時，請收集開機設定資訊。
-   1. 在 **Windows 搜尋** 中，輸入**磁碟管理**並且開啟磁碟管理主控台。 使用此主控台來識別您的修復 VM 上連結的磁碟號碼，以及保存 BCD 存放區的可延伸韌體介面 (EFI) 磁碟分割。
+   1. 在 **Windows 搜尋** 中，輸入 **磁碟管理** 並且開啟磁碟管理主控台。 使用此主控台來識別您的修復 VM 上連結的磁碟號碼，以及保存 BCD 存放區的可延伸韌體介面 (EFI) 磁碟分割。
 
    在下圖中，「磁碟 2」是連結到修復 VM 的磁碟號碼。 影像也會顯示「磁碟 2」上的 EFI 系統磁碟分割，其大小為 100MB 且沒有指派的代號。
 
@@ -220,7 +220,7 @@ ms.locfileid: "87088660"
    若為單一磁碟分割作業系統磁碟，請新增 `BOOT`。
 
    > [!NOTE]
-   > 可開機資料夾將位於與 Windows 資料夾 **\windows 資料夾**相同的磁碟分割上。
+   > 可開機資料夾將位於與 Windows 資料夾 **\windows 資料夾** 相同的磁碟分割上。
    > - 第 1 代 VM 的可開機資料夾是 **(\boot\bcd 資料夾)** 。
    > - 第 2 代 VM 的可開機資料夾是 **EFI\Microsoft\boot\bcd**。
 
@@ -235,7 +235,7 @@ ms.locfileid: "87088660"
    若為多個磁碟分割作業系統磁碟，請新增 `PARTITION=<LETTER OF WINDOWS FOLDER>:`。
 
    > [!NOTE]
-   > 可開機資料夾最有可能位於與 Windows 資料夾 **\windows 資料夾**不同的磁碟分割上。
+   > 可開機資料夾最有可能位於與 Windows 資料夾 **\windows 資料夾** 不同的磁碟分割上。
    > - 第 1 代 VM 的可開機資料夾是 **(\boot\bcd 資料夾)** 。
    > - 第 2 代 VM 的可開機資料夾是 **EFI\Microsoft\boot\bcd**。
 
@@ -251,7 +251,7 @@ ms.locfileid: "87088660"
 
 ### <a name="contact-support"></a>請連絡支援人員
 
-**登錄檔案**錯誤有一個解決方案，但是您必須[建立支援票證](https://azure.microsoft.com/support/create-ticket/)以取得進一步的協助。
+**登錄檔案** 錯誤有一個解決方案，但是您必須 [建立支援票證](https://azure.microsoft.com/support/create-ticket/)以取得進一步的協助。
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>啟用序列主控台和記憶體傾印集合
 

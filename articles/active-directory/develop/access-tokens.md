@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518238"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653277"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平台存取權杖
 
@@ -140,8 +140,8 @@ JWT (JSON Web 權杖) 分成三個部分：
        }
      }
   ...
- }
- ```
+}
+```
 
 您可使用[應用程式建立指令碼](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts)資料夾中提供的 `BulkCreateGroups.ps1` 來協助測試超額案例。
 
@@ -186,7 +186,7 @@ Microsoft 身分識別可透過不同的方式來驗證，這些方式可能與�
 
 如果上述狀況都不適用，您的應用程式就無法驗證權杖，而且可能會在根據權杖的有效性進行決策時提供安全性和可靠性風險。  公用用戶端（例如原生應用程式或 Spa）不會受益于驗證權杖-應用程式會直接與 IDP 通訊，因此 SSL 保護可確保權杖有效。
 
- Api 和 web 應用程式只能驗證具有 `aud` 符合其應用程式之宣告的權杖; 其他資源可能會有自訂權杖驗證規則。 例如，Microsoft Graph 的權杖將不會根據這些規則的專屬格式進行驗證。 驗證和接受適用于另一個資源的權杖是一個 [混淆的 deputy](https://cwe.mitre.org/data/definitions/441.html) 問題範例。
+Api 和 web 應用程式只能驗證具有 `aud` 符合其應用程式之宣告的權杖; 其他資源可能會有自訂權杖驗證規則。 例如，Microsoft Graph 的權杖將不會根據這些規則的專屬格式進行驗證。 驗證和接受適用于另一個資源的權杖是一個 [混淆的 deputy](https://cwe.mitre.org/data/definitions/441.html) 問題範例。
 
 如果您的應用程式需要根據上述方式驗證 id_token 或 access_token，您的應用程式應該先驗證權杖的簽章和簽發者是否符合 OpenID 探索檔中的值。 例如，租用戶獨立版的文件位於 [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration)。
 
@@ -288,7 +288,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 - 使用您的臉部搭配 Windows Hello
 - FIDO2 索引鍵
-- sms
+- SMS
 - 語音
 - PIN 碼
 

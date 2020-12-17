@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81721cb52035a51cffa2667568914c780b4c397b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1324afb38560afeb43b5be9191b6e2e7afc5c81d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588653"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654892"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中的 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和共用磁碟上安裝 SAP NetWeaver HA
 
@@ -66,8 +66,6 @@ ms.locfileid: "97588653"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f
 
 [sap-high-availability-infrastructure-wsfc-shared-disk]:sap-high-availability-infrastructure-wsfc-shared-disk.md
-
-
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
 [sap-ha-guide-figure-1001]:./media/virtual-machines-shared-sap-high-availability-guide/1001-wsfc-on-azure-ilb.png
@@ -153,7 +151,7 @@ ms.locfileid: "97588653"
 - [Azure 共用磁碟](../../disks-shared.md)
 - 使用 [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) 建立鏡像儲存體，以模擬叢集共用磁片 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始安裝之前，請檢閱這些文章：
 
@@ -173,7 +171,6 @@ ms.locfileid: "97588653"
 > [!IMPORTANT]
 > 如果您使用 SIOS 來呈現共用磁片，請不要將分頁檔放在 SIOS DataKeeper 鏡像磁碟區上。 您可以將分頁檔留在 Azure 虛擬機器的暫存磁碟機 D 中，此為預設值。 如果還不在此磁碟機中，請將 Windows 分頁檔移至 Azure 虛擬機器的磁碟機 D。  
 
-
 使用高可用性 ASCS/SCS 執行個體安裝 SAP 包含下列工作︰
 
 * 建立叢集 SAP ASCS/SCS 執行個體的虛擬主機名稱。
@@ -189,7 +186,6 @@ ms.locfileid: "97588653"
    > [!IMPORTANT]
    > 您指派給 ASCS/SCS 實例之虛擬主機名稱的 IP 位址必須與指派給 Azure Load Balancer 的 IP 位址相同。  
 
-
    ![圖 1：定義 SAP ASCS/SCS 叢集虛擬名稱和 TCP/IP 位址的 DNS 項目][sap-ha-guide-figure-3046]
 
    _定義 SAP ASCS/SCS 叢集虛擬名稱和 TCP/IP 位址的 DNS 項目_
@@ -199,11 +195,9 @@ ms.locfileid: "97588653"
    > [!IMPORTANT]
    > 您指派給 ERS2 實例之虛擬主機名稱的 IP 位址，必須是您指派給 Azure Load Balancer 的第二個 IP 位址。    
 
-
    ![圖1A：定義 SAP ASCS/SCS 叢集虛擬名稱和 TCP/IP 位址的 DNS 專案][sap-ha-guide-figure-3046-ers2]
 
    _定義 SAP ERS2 叢集虛擬名稱和 TCP/IP 位址的 DNS 專案_
-
 
 3. 若要定義指派給虛擬主機名稱的 IP 位址，請選取 [ **DNS 管理員**  >  **網域**]。
 
@@ -219,7 +213,6 @@ ms.locfileid: "97588653"
    * **Java 系統**：**SCS** 執行個體號碼 **01**
    * **ABAP + Java 系統**：**ASCS** 執行個體號碼 **00** 和 **SCS** 執行個體號碼 **01**
 
-
    > [!IMPORTANT]
    > 請記住，如果使用基本 SKU) 和選取的 SAP 實例號碼必須相符，Azure 內部負載平衡器負載平衡規則中的設定 (。
 
@@ -227,8 +220,6 @@ ms.locfileid: "97588653"
 
 > [!TIP]
 > SAP 安裝文件說明如何安裝第一個 ASCS/SCS 叢集節點。
-
-
 
 ### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> 修改 ASCS/SCS 執行個體的 SAP 設定檔
 
@@ -295,7 +286,6 @@ ms.locfileid: "97588653"
     .PARAMETER IsSAPERSClusteredInstance 
     Optional parameter.Default value is '$False'.
     If set to $True , then handle clsutered new SAP ERS2 instance.
-
 
     .EXAMPLE 
     # Set probe port to 62000, on SAP cluster resource 'SAP AB1 IP', and restart the SAP cluster group 'SAP AB1', to activate the changes.

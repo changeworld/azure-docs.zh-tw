@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 12/17/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1ade28af1094694d2cb6dffaecec4e4131630535
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: bde7c1adefea88ed5b5d86e2c0e17f475be1bc71
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584856"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654365"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 LinkedIn 帳戶登入
 
@@ -30,21 +30,9 @@ ms.locfileid: "97584856"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-::: zone pivot="b2c-user-flow"
-
-* [建立使用者流程](tutorial-create-user-flows.md)，讓使用者註冊並登入您的應用程式。
-* [將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶](add-web-api-application.md) (如果您尚未這麼做)。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* 完成[在 Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
-* [將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶](add-web-api-application.md) (如果您尚未這麼做)。
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-linkedin-application"></a>建立 LinkedIn 應用程式
 
@@ -71,7 +59,7 @@ ms.locfileid: "97584856"
 1. 輸入 [名稱]。 例如， *LinkedIn*。
 1. 針對 [ **用戶端識別碼**]，輸入您稍早建立之 LinkedIn 應用程式的用戶端識別碼。
 1. 針對 **用戶端密碼**，請輸入您所記錄的用戶端密碼。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 ::: zone-end
 
@@ -246,7 +234,7 @@ LinkedIn 技術設定檔需要將 **ExtractGivenNameFromLinkedInResponse** 和 *
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 按一下您要加入 LinkedIn 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **LinkedIn**]。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

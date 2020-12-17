@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 96d6b884e9e2c835316af01140c6fc7208ee5ab9
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 735c92720f4a3f871499ad3a0565446a02b438eb
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746075"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654807"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host.json 參考 (機器翻譯) 
 
@@ -129,7 +129,8 @@ ms.locfileid: "96746075"
       "lockAcquisitionTimeout": "00:01:00",
       "lockAcquisitionPollingInterval": "00:00:03"
     },
-    "watchDirectories": [ "Shared", "Test" ]
+    "watchDirectories": [ "Shared", "Test" ],
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 
@@ -444,6 +445,16 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="watchfiles"></a>watchFiles
+
+針對需要重新開機應用程式的變更所監視的一或多個檔案名稱的陣列。  這可保證當這些檔案中的程式碼變更時，您的函式會挑選更新。
+
+```json
+{
+    "watchFiles": [ "myFile.txt" ]
 }
 ```
 

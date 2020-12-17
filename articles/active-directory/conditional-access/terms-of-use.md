@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6e8731312ee43930e0f2abcf81228c21bebfdb1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509983"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653719"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory 使用規定
 
@@ -117,7 +117,7 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 
    ![用來選取原則範本的 [條件式存取] 下拉式清單](./media/terms-of-use/conditional-access-templates.png)
 
-   | 範本 | 說明 |
+   | 範本 | 描述 |
    | --- | --- |
    | **所有來賓的雲端應用程式存取權** | 系統會為所有來賓和所有雲端應用程式建立條件式存取原則。 此原則會影響 Azure 入口網站。 一旦建立此項，您可能必須登出再登入。 |
    | **所有使用者的雲端應用程式存取權** | 將會針對所有使用者和所有雲端應用程式建立條件式存取原則。 此原則會影響 Azure 入口網站。 一旦建立，您就必須登出再登入。 |
@@ -238,8 +238,8 @@ Azure AD 使用規定使用 PDF 格式來呈現內容。 此 PDF 檔案可以是
 2.  選取您要編輯的使用條款。
 3.  按一下 [編輯使用規定]。
 4.  針對您想要更新新版本的語言，請按一下 [動作] 資料行底下的 [ **更新** ]。
- 
-     ![編輯使用規定窗格，顯示名稱和展開選項](./media/terms-of-use/edit-terms-use.png)
+
+    ![編輯使用規定窗格，顯示名稱和展開選項](./media/terms-of-use/edit-terms-use.png)
 
 5.  在右側窗格中，上傳新版本的 pdf
 6.  如果您想要要求使用者在下次登入時接受這個新版本，也有一個切換選項 **需要重新接受** 。 如果您需要使用者重新接受，下一次嘗試存取您的條件式存取原則中定義的資源時，系統會提示他們接受此新版本。 如果您不需要使用者進行重新接受，其先前的同意將會維持最新狀態，而且只有未事先同意或同意過期的新使用者才會看到新版本。

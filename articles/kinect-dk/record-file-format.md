@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: reference
 keywords: kinect、azure、感應器、sdk、深度、rgb、記錄、播放、matroska、.mkv
-ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4fa14b0841cb76b2ba191310ecbca312d29f805
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87501775"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654586"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>使用 Azure Kinect 感應器 SDK 記錄檔案格式
 
@@ -29,7 +29,7 @@ ms.locfileid: "87501775"
 
 ## <a name="using-third-party-tools"></a>使用協力廠商工具
 
-您 `ffmpeg` 可以使用 MKVToolNix 工具組中的工具（例如或 `mkvinfo` 命令）來查看和解壓縮記錄檔中的資訊。 [MKVToolNix](https://mkvtoolnix.download/)
+您 `ffmpeg` 可以使用 MKVToolNix 工具組中的工具（例如或 `mkvinfo` 命令）來查看和解壓縮記錄檔中的資訊。 [](https://mkvtoolnix.download/)
 
 例如，下列命令會將深度軌解壓縮為相同資料夾的16位 Png 序列：
 
@@ -71,6 +71,6 @@ IMU 資料的結構如下。 所有欄位都是位元組由小到小。
 | K4A_IMU_TRACK        | IMU Track              | Matroska 追蹤 UID    |
 | K4A_CALIBRATION_FILE | 校正附件 | 附件檔案名   |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [錄製和播放](record-playback-api.md)

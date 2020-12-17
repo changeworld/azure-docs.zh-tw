@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 038c1d4c0f0b5ffd7b9aabea2de32e3a44e3b221
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832734"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654127"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中建立對應，以轉換 XML 格式
 
@@ -30,20 +30,20 @@ ms.locfileid: "87832734"
 
 **以下是使用轉換的步驟**：
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 * 建立整合帳戶，並加入對應  
 
 既然您已完成必要元件，就可以建立邏輯應用程式：  
 
 1. 建立邏輯應用程式，並將 [它連結至](./logic-apps-enterprise-integration-create-integration-account.md "瞭解如何將整合帳戶連結至邏輯應用程式") 包含對應的整合帳戶。
-2. 將**要求**觸發程序新增至邏輯應用程式  
+2. 將 **要求** 觸發程序新增至邏輯應用程式  
    ![已選取要求觸發程式的 [顯示 Microsoft 受控 Api] 下拉式清單螢幕擷取畫面。 下拉式清單位於使用 Visual Studio Enterprise Integration SDK 建立的邏輯應用程式中。](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
-3. 先選取 [新增動作]**** 來新增 [轉換 XML]**** 動作   
+3. 先選取 [新增動作] 來新增 [轉換 XML] 動作   
    ![顯示在 [要求觸發程式] 畫面中選取 [新增動作] 按鈕的螢幕擷取畫面。](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
-4. 在搜尋方塊中輸入「轉換」**，篩選所有動作以取得您想要使用的動作  
+4. 在搜尋方塊中輸入「轉換」，篩選所有動作以取得您想要使用的動作  
    ![顯示如何在 [顯示 Microsoft 受控 Api] 下拉式清單中搜尋 [轉換 XML] 動作的螢幕擷取畫面，讓您可以將它新增至要求觸發程式。](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
-5. 選取 [轉換 XML]**** 動作   
+5. 選取 [轉換 XML] 動作   
 6. 新增您將轉換的 XML **內容**。 您可以使用在 HTTP 要求中收到的任何 XML 資料做為 **內容**。 在此範例中，選取觸發邏輯應用程式的 HTTP 要求本文。
 
    > [!NOTE]
@@ -95,17 +95,17 @@ ms.locfileid: "87832734"
     <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
   </msxsl:script>
   <xsl:template match="data">
-     <circles>
-        <xsl:for-each select="circle">
-            <circle>
-                <xsl:copy-of select="node()"/>
-                    <circumference>
-                        <xsl:value-of select="user:circumference(radius)"/>
-                    </circumference>
-            </circle>
-        </xsl:for-each>
-     </circles>
-    </xsl:template>
+   <circles>
+    <xsl:for-each select="circle">
+      <circle>
+        <xsl:copy-of select="node()"/>
+          <circumference>
+            <xsl:value-of select="user:circumference(radius)"/>
+          </circumference>
+      </circle>
+    </xsl:for-each>
+   </circles>
+  </xsl:template>
     </xsl:stylesheet>
   ```
 

@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: chalton
-ms.openlocfilehash: f209be383e445e3b0c011e0bfb4266a191a8d931
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c77da8252fb3dcb2672a50ec75f676e18dd31da
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85080864"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652325"
 ---
 # <a name="document-extraction-cognitive-skill"></a>檔提取認知技能
 
@@ -34,7 +34,7 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 這些參數會區分大小寫。
 
-| 輸入            | 允許的值 | 描述 |
+| 輸入 | 允許的值 | 描述 |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | `default`針對從非純文字或 json 的檔案進行檔解壓縮的設定為。 設定為 `text` 以改善純文字檔的效能。 設定為 `json` 可從 json 檔案解壓縮結構化內容。 如果未 `parsingMode` 明確定義，它會設定為 `default` 。 |
 | `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | 將設定為， `contentAndMetadata` 以從每個檔案中解壓縮所有中繼資料和文字內容。 若設定為， `allMetadata` 則只會將 [內容類型特定的中繼資料](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) 解壓縮 (例如，僅限 .png 檔案的唯一中繼資料) 。 如果未 `dataToExtract` 明確定義，它會設定為 `contentAndMetadata` 。 |

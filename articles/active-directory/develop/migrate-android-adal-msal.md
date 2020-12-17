@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 178d3896fe8d063855a734f3f0fe6c489b0ec1fc
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074663"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97651968"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>適用于 Android 的 ADAL 至 MSAL 遷移指南
 
@@ -89,7 +89,7 @@ MSAL 公用 API 引進重要的變更，包括：
 > [!CAUTION]
 > 不可能同時設定範圍和資源識別碼。嘗試設定兩者都會產生 `IllegalArgumentException` 。
 
- 這會導致您所使用的 v1 行為相同。 在您的應用程式註冊中要求的擁有權限都是在使用者第一次互動時要求的。
+這會導致您所使用的 v1 行為相同。 在您的應用程式註冊中要求的擁有權限都是在使用者第一次互動時要求的。
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>只在必要時驗證和要求許可權
 
@@ -131,13 +131,13 @@ MSAL 沒有啟用或停用授權驗證的旗標。 授權驗證是 ADAL 中的�
 ### <a name="logging"></a>記錄
 您現在可以在設定過程中，以宣告方式設定記錄，如下所示：
 
- ```
- "logging": {
-    "pii_enabled": false,
-    "log_level": "WARNING",
-    "logcat_enabled": true
-  }
-  ```
+```json
+"logging": {
+  "pii_enabled": false,
+  "log_level": "WARNING",
+  "logcat_enabled": true
+}
+```
 
 ## <a name="migrate-from-userinfo-to-account"></a>從使用者帳戶遷移至帳戶
 

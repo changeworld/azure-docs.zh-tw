@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 308cbc1e2a9d6e0fbce91b1fac5748af909cc2c1
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: af840a7becb0fb2c23e01153828458ee1cfa51a1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584624"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654229"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 WeChat 帳戶登入
 
@@ -27,11 +27,9 @@ ms.locfileid: "97584624"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-::: zone pivot="b2c-custom-policy"
+## <a name="prerequisites"></a>Prerequisites
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-wechat-application"></a>建立 WeChat 應用程式
 
@@ -56,7 +54,7 @@ ms.locfileid: "97584624"
 1. 輸入 [名稱]。 例如， *WeChat*。
 1. 針對 [ **用戶端識別碼**]，輸入您稍早建立之 WeChat 應用程式的應用程式識別碼。
 1. 針對 **用戶端密碼**，請輸入您記錄的應用程式金鑰。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 ::: zone-end
 
@@ -187,7 +185,7 @@ ms.locfileid: "97584624"
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 按一下您想要 WeChat 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **WeChat**]。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

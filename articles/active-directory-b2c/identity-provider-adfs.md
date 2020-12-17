@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8e9cf9a7c2556a1f0710b2bf646d83ffbf84ea97
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 767f60cae2f74f7e2a928253d45011bb6ceb5d0e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585049"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653838"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則將 AD FS 新增為 SAML 識別提供者
 
@@ -39,7 +39,7 @@ ms.locfileid: "97585049"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
-- 確定您可以存取具有私密金鑰的憑證 .pfx 檔案。 您可以產生自己簽署的憑證，並將它上傳至 Azure AD B2C。 Azure AD B2C 會使用此憑證簽署傳送給您的 SAML 身分識別提供者的 SAML 要求。 如需有關如何產生憑證的詳細資訊，請參閱 [產生簽署憑證](identity-provider-salesforce.md#generate-a-signing-certificate)。
+- 確定您可以存取具有私密金鑰的憑證 .pfx 檔案。 您可以產生自己簽署的憑證，並將它上傳至 Azure AD B2C。 Azure AD B2C 會使用此憑證簽署傳送給您的 SAML 身分識別提供者的 SAML 要求。 如需有關如何產生憑證的詳細資訊，請參閱 [產生簽署憑證](identity-provider-salesforce-saml.md#generate-a-signing-certificate)。
 - 為了讓 Azure 接受 .pfx 檔案密碼，必須使用 Windows 憑證存放區匯出公用程式中的 TripleDES-SHA1 選項加密密碼，而非 AES256-SHA256。
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰

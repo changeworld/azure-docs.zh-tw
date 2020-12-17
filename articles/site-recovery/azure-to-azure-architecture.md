@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: b3e00c3832f243ec0190023116bbfdeaaad86c94
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370418"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652240"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
 
@@ -96,13 +96,13 @@ Site Recovery 會依照下列方式建立快照集：
 
 ### <a name="crash-consistent"></a>絕對一致
 
-**說明** | **詳細資料** | **建議**
+**描述** | **詳細資料** | **建議**
 --- | --- | ---
 絕對一致的快照集會擷取在快照建立時位於磁碟上的資料。 其中不含記憶體中的任何資料。<br/><br/> 其中所含的資料，相當於設若在建立快照集時發生 VM 當機的狀況，或從伺服器上拔開電源線，所將存在於磁碟上的資料。<br/><br/> 「絕對一致」並不保證資料在作業系統上或 VM 的應用程式間可保有一致性。 | Site Recovery 依預設會每五分鐘建立一次絕對一致復原點。 此設定無法修改。<br/><br/>  | 現在，大部分的應用程式都可以從絕對一致復原點妥善復原。<br/><br/> 對作業系統的複寫，以及 DHCP 伺服器和列印伺服器之類的應用程式而言，使用絕對一致復原點通常就已足夠。
 
 ### <a name="app-consistent"></a>應用程式一致
 
-**說明** | **詳細資料** | **建議**
+**描述** | **詳細資料** | **建議**
 --- | --- | ---
 應用程式一致復原點可從應用程式一致快照集建立。<br/><br/> 應用程式一致的快照集包含絕對一致快照集中的所有資訊，以及記憶體和進行中的交易所包含的所有資料。 | 應用程式一致快照集會使用磁碟區陰影複製服務 (VSS)：<br/><br/>   1) Azure Site Recovery 使用「僅複本備份」 (VSS_BT_COPY) 不會變更 Microsoft SQL 交易記錄備份時間和序號的方法 </br></br> 2) 起始快照集時，VSS 會在磁片區上執行寫入時複製 (牛) 作業。<br/><br/>   3) 執行牛之前，VSS 會通知電腦上的每個應用程式，它需要將其記憶體常駐資料排清到磁片。<br/><br/>   4) VSS 接著會在此情況下允許備份/嚴重損壞修復應用程式 (Site Recovery) 讀取快照集資料並繼續進行。 | 應用程式一致快照集會依據您指定的頻率建立。 此頻率一律應小於您的保留復原點設定。 例如，如果您使用預設設定 24 小時來保留復原點，您所設定的頻率就應該小於 24 小時。<br/><br/>此類快照集比絕對一致快照集更複雜，且需要較長的時間才能完成。<br/><br/> 在 VM 上執行且已啟用複寫的應用程式，效能將會受其影響。 
 
@@ -130,7 +130,7 @@ Site Recovery 會依照下列方式建立快照集：
 
 | **名稱**                  | **商業**                               | **政府**                                 | **說明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
+| 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
 | 複寫               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | 允許 VM 與 Site Recovery 服務進行通訊。 |
 | 服務匯流排               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |

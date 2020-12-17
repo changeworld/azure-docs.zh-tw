@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8ac20378cbae9334cedb59878311f2541b40bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66bec9635af696d0ce1cf9d7dcad8c26a1ef23ad
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020587"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652359"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>如何在 Azure 上使用 SendGrid 傳送電子郵件
 ## <a name="overview"></a>概觀
@@ -50,17 +50,17 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
 
 若要在應用程式中安裝 SendGrid NuGet 封裝，請執行下列動作：
 
-1. 按一下 [新增專案]****，然後選取 [範本]****。
+1. 按一下 [新增專案]，然後選取 [範本]。
 
    ![建立新專案][create-new-project]
-2. 在 [方案總管]**** 中，以滑鼠右鍵按一下 [參考]****，然後按一下 [管理 NuGet 套件]****。
+2. 在 [方案總管] 中，以滑鼠右鍵按一下 [參考]，然後按一下 [管理 NuGet 套件]。
 
    ![SendGrid NuGet 封裝][SendGrid-NuGet-package]
-3. 搜尋 **SendGrid**，然後選取結果清單中的 [SendGrid]**** 項目。
+3. 搜尋 **SendGrid**，然後選取結果清單中的 [SendGrid] 項目。
 4. 從版本下拉式清單中選取 Nuget 套件的最新穩定版本，以搭配本文示範的物件模型和 API 共同使用。
 
    ![SendGrid 套件][sendgrid-package]
-5. 按一下 [安裝] **** 完成安裝，然後關閉此對話方塊。
+5. 按一下 [安裝]  完成安裝，然後關閉此對話方塊。
 
 SendGrid 的 .NET 類別庫稱為 **SendGrid**。 其中包含下列命名空間：
 
@@ -107,7 +107,7 @@ msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
 
 您可以按一下 [應用程式設定]，然後在 [應用程式設定] 下新增索引鍵/值組，以透過 Azure 入口網站儲存這些認證。
 
- ![Azure 應用程式設定][azure_app_settings]
+![Azure 應用程式設定][azure_app_settings]
 
 然後，您可以使用下列方式進行存取：
 
@@ -159,17 +159,17 @@ namespace Example
 
 `appsettings.json` 檔案的內容看起來應該會像下面這樣：
 
-```csharp
+```json
 {
-   "Logging": {
-   "IncludeScopes": false,
-   "LogLevel": {
-   "Default": "Debug",
-   "System": "Information",
-   "Microsoft": "Information"
-     }
-   },
- "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  },
+  "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 }
 ```
 
@@ -208,8 +208,8 @@ namespace SendgridMailApp.Controllers
        public NotificationController(IConfiguration configuration)
        {
          _configuration = configuration;
-       }      
-    
+       }
+
        [Route("SendNotification")]
        public async Task PostMessage()
        {
@@ -222,7 +222,7 @@ namespace SendgridMailApp.Controllers
               new EmailAddress("test3@example.com", "Example User 3"),
               new EmailAddress("test4@example.com","Example User 4")
           };
-        
+
           var subject = "Hello world email from Sendgrid ";
           var htmlContent = "<strong>Hello world with HTML content</strong>";
           var displayRecipients = false; // set this to true if you want recipients to see each others mail id 

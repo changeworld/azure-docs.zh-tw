@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 9b097b561ef6b91ae648a950247d1a88b99e7e64
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 86fd136cdf03c9bdd6bd1f610cccc339512f8fbc
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614807"
+ms.locfileid: "97657102"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>將 ITSM 產品/服務與 IT Service Management Connector 連線
 本文提供如何設定 ITSM 產品/服務與 Log Analytics 中 IT Service Management Connector (ITSMC) 之間的連線，以集中管理工作項目的相關資訊。 如需 ITSMC 的詳細資訊，請參閱[概觀](./itsmc-overview.md)。
@@ -25,7 +25,7 @@ ms.locfileid: "97614807"
 
 > [!NOTE]
 > 
-> 我們建議 Cherwell 和 Provance 客戶使用 [Webhook 動作](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) ，以 Cherwell 和 Provance 端點作為整合的另一種解決方案。
+> 我們建議 Cherwell 和 Provance 客戶使用 [Webhook 動作](./action-groups.md#webhook) ，以 Cherwell 和 Provance 端點作為整合的另一種解決方案。
 
 ## <a name="connect-system-center-service-manager-to-it-service-management-connector-in-azure"></a>將 System Center Service Manager 連線到 Azure 中的 IT Service Management Connector
 
@@ -35,7 +35,7 @@ ms.locfileid: "97614807"
 
 請確保已符合下列必要條件︰
 
-- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview)。
+- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](./itsmc-definition.md)。
 - 已部署及設定 Service Manager Web 應用程式 (Web 應用程式)。 Web 應用程式的相關在[這裡](#create-and-deploy-service-manager-web-app-service)。
 - 已建立及設定的混合式連線。 詳細資訊：[設定混合式連線](#configure-the-hybrid-connection)。
 - Service Manager 的支援版本：2012 R2 或 2016。
@@ -45,7 +45,7 @@ ms.locfileid: "97614807"
 > [!NOTE]
 > 
 > - ITSM Connector 只能連線到雲端式 ServiceNow 執行個體。 目前不支援內部部署 ServiceNow 執行個體。
-> - 為了將自訂 [範本](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview) 作為動作的一部分，SCSM 範本中的參數 "ProjectionType" 應該對應至 "IncidentManagement！ProjectionType "（系統）
+> - 為了將自訂 [範本](./itsmc-definition.md#template-definitions) 作為動作的一部分，SCSM 範本中的參數 "ProjectionType" 應該對應至 "IncidentManagement！ProjectionType "（系統）
 
 ### <a name="connection-procedure"></a>連線程序
 
@@ -85,7 +85,7 @@ ms.locfileid: "97614807"
 - 您可以在這個 Service Manager 執行個體中建立來自 Log Analytics 警示、記錄檔記錄或 Azure 警示的事件。
 
 
-深入了解：[從 Azure 警示建立 ITSM 工作項目](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)。
+深入了解：[從 Azure 警示建立 ITSM 工作項目](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>建立及部署 Service Manager Web 應用程式服務
 
@@ -184,7 +184,7 @@ ms.locfileid: "97614807"
 
 ### <a name="prerequisites"></a>Prerequisites
 請確保已符合下列必要條件︰
-- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#add-it-service-management-connector)。
+- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](./itsmc-definition.md#add-it-service-management-connector)。
 - ServiceNow 支援的版本：奧蘭多、紐約、馬德里、倫敦、Kingston、雅加達、伊斯坦布爾、赫爾辛基、Geneva。
 - 現在，從 Azure 監視器傳送的警示可在 ServiceNow 中建立下列其中一個元素：事件、事件或警示。
 > [!NOTE]
@@ -257,7 +257,7 @@ ms.locfileid: "97614807"
 
 - 您可以在這個 ServiceNow 執行個體中建立來自 Log Analytics 警示、記錄檔記錄或 Azure 警示的事件。
 
-深入了解：[從 Azure 警示建立 ITSM 工作項目](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)。
+深入了解：[從 Azure 警示建立 ITSM 工作項目](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 
 
 > [!NOTE]
@@ -309,14 +309,14 @@ ms.locfileid: "97614807"
 
 > [!NOTE]
 > 
-> 我們建議 Provance 客戶使用 [Webhook 動作](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) ，以 Cherwell 和 Provance 端點作為整合的另一種解決方案。
+> 我們建議 Provance 客戶使用 [Webhook 動作](./action-groups.md#webhook) ，以 Cherwell 和 Provance 端點作為整合的另一種解決方案。
 
 ### <a name="prerequisites"></a>Prerequisites
 
 請確保已符合下列必要條件︰
 
 
-- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#add-it-service-management-connector)。
+- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](./itsmc-definition.md#add-it-service-management-connector)。
 - 應該向 Azure AD 註冊 Provance 應用程式 - 並將用戶端識別碼設為可用。 如需詳細資訊，請參閱[如何設定 Active Directory 驗證](../../app-service/configure-authentication-provider-aad.md)。
 
 - 使用者角色：系統管理員。
@@ -358,7 +358,7 @@ ms.locfileid: "97614807"
 
 - 您可以在這個 Provance 執行個體中建立來自 Log Analytics 警示、記錄檔記錄或 Azure 警示的事件。
 
-深入了解：[從 Azure 警示建立 ITSM 工作項目](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)。
+深入了解：[從 Azure 警示建立 ITSM 工作項目](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>將 Cherwell 連線到 Azure 中的 IT Service Management Connector
 
@@ -366,13 +366,13 @@ ms.locfileid: "97614807"
 
 > [!NOTE]
 > 
-> 我們建議 Cherwell 客戶使用 [Webhook 動作](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) ，以 Cherwell 和 Provance 端點作為整合的另一種解決方案。
+> 我們建議 Cherwell 客戶使用 [Webhook 動作](./action-groups.md#webhook) ，以 Cherwell 和 Provance 端點作為整合的另一種解決方案。
 
 ### <a name="prerequisites"></a>Prerequisites
 
 請確保已符合下列必要條件︰
 
-- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#add-it-service-management-connector)。
+- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](./itsmc-definition.md#add-it-service-management-connector)。
 - 所產生的用戶端識別碼。 詳細資訊：[產生 Cherwell 的用戶端識別碼](#generate-client-id-for-cherwell)。
 - 使用者角色：系統管理員。
 
@@ -414,7 +414,7 @@ ms.locfileid: "97614807"
 
 - 您可以在這個 Cherwell 執行個體中建立來自 Log Analytics 警示、記錄檔記錄或 Azure 警示的事件。
 
-深入了解：[從 Azure 警示建立 ITSM 工作項目](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)。
+深入了解：[從 Azure 警示建立 ITSM 工作項目](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="generate-client-id-for-cherwell"></a>產生 Cherwell 的用戶端識別碼
 
@@ -426,6 +426,7 @@ ms.locfileid: "97614807"
 
     ![Cherwell 使用者識別碼](media/itsmc-connections/itsmc-cherwell-client-id.png)
 
-
 ## <a name="next-steps"></a>後續步驟
- - [建立 Azure 警示的 ITSM 工作項目](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)
+
+[ITSM connector 總覽](itsmc-overview.md)在 ITSM 連接器中[建立 Azure 警示的 ITSM 工作專案](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) 
+ [疑難排解問題](./itsmc-resync-servicenow.md)

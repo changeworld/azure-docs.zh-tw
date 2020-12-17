@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 18a1fc7f42884dcc194256e1f51ddecb62d2708c
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516390"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655470"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure 資料箱：常見問題集
 
@@ -97,11 +97,11 @@ A. 以下是每個訂單處理階段的預估前置時間，可讓您瞭解預�
 **資料箱訂單的預估前置時間：**
 
 1. 訂購資料箱：幾分鐘的時間，從入口網站
-2. 裝置配置和準備：1-2 個工作天
+2. 裝置配置和準備：1-2 個工作天，受限於庫存可用性和其他待履行訂單的訂單
 3. 運送：2-3 個工作天
 4. 客戶網站上的資料複製：取決於資料的本質、大小和檔案數目
 5. 送回運送：2-3 個工作天
-6. 在資料中心處理裝置：1-2 個工作天
+6. 在資料中心處理裝置：1-2 個工作天，受限於其他訂單等待處理
 7. 將資料上傳至 Azure：當處理完成且裝置已連線時，就會開始。 上傳時間取決於資料的本質、大小和檔案數目。
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>Q. 我訂購了一些資料箱裝置。 我無法建立任何額外的訂單。 為什麼？

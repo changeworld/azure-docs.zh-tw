@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ce37ee51e549a2bd6f2747f28af8c038c39d8f1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020597"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656830"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>使用 Team Data Science Process 和 Azure DevOps Services，在 Azure 上進行資料科學程式碼測試
 本文提供在資料科學工作流程中測試程式碼的初步指導方針。 這類測試可提供資料科學家一個系統化且有效率的方式，來檢查其程式碼的品質和預期的結果。 我們會使用 Team Data Science Process (TDSP) [專案 (使用先前發佈的 UCI 成人收入資料集)](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) 來示範如何進行程式碼測試。 
@@ -138,7 +138,7 @@ ms.locfileid: "96020597"
     
     ![PowerShell 詳細資料](./media/code-test/powershell_scripts.PNG)
 
-    g. 選取 [ **儲存 & 佇列** ] 以完成組建管線處理。
+    如 選取 [ **儲存 & 佇列** ] 以完成組建管線處理。
 
     ![[儲存並排入佇列] 按鈕](./media/code-test/save_and_queue_build_definition.PNG)
 

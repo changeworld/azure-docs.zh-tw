@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 6fe42948ee02170fb7718db5395a7e23480184a7
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 30a139ca0569a2ada4a66befbf7c56a9f8edaab9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511751"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656728"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>使用隨選串流匯入 Postman 集合作業
 
@@ -180,7 +180,7 @@ ms.locfileid: "97511751"
                                 ]
                             }
                         }
-                    ],                  
+                    ],
                     "request": {
                         "auth": {
                             "type": "bearer",

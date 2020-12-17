@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ed36948faf6fe12467128a57af634e52ee457180
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 71e3bf429c7b8d3f4f8fe205c05b0701732fdef9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584981"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653804"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定多租用戶 Azure Active Directory 的登入
 
@@ -30,21 +30,9 @@ ms.locfileid: "97584981"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-::: zone pivot="b2c-user-flow"
-
-* [建立使用者流程](tutorial-create-user-flows.md)，讓使用者註冊並登入您的應用程式。
-* [將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶](add-web-api-application.md) (如果您尚未這麼做)。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* 完成[在 Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
-* [將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶](add-web-api-application.md) (如果您尚未這麼做)。
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 本文說明如何使用 Azure Active Directory (Azure AD) 的多租使用者端點，讓使用者能夠登入。 這可讓多個 Azure AD 租使用者中的使用者使用 Azure AD B2C 登入，而不需要為每個租使用者設定身分識別提供者。 不過，所有這些租用戶中的來賓成員並 **不能** 登入。 因此，您必須[個別設定每個租用戶](identity-provider-azure-ad-single-tenant.md)。
 
@@ -113,7 +101,7 @@ ms.locfileid: "97584981"
     - **姓氏**：family_name
     - **電子郵件**： *preferred_username*
 
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 ::: zone-end
 
@@ -265,7 +253,7 @@ ms.locfileid: "97584981"
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 按一下您想要 Azure AD 識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **Contoso Azure AD**]。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

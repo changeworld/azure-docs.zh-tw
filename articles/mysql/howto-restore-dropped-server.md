@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/09/2020
-ms.openlocfilehash: 982747c1a7e093f84daeb63e75cfdf439d3fccf9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 34dddd8e5f3fb418fc7155630bf82a922e418402
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546716"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657085"
 ---
 # <a name="restore-a-dropped-azure-database-for-mysql-server"></a>還原已卸載的適用於 MySQL 的 Azure 資料庫伺服器
 
@@ -45,15 +45,15 @@ ms.locfileid: "92546716"
  6. 在下方的 [要求本文] 區段中，貼上下列內容以取代「捨棄的伺服器位置」、「submissionTimestamp」和「resourceId」。 若為 "restorePointInTime"，請指定 "submissionTimestamp" 的值減去 **15 分鐘** ，以確定命令不會發生錯誤。
  
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
+    {
+        "location": "Dropped Server Location",  
+        "properties": 
+            {
+                "restorePointInTime": "submissionTimestamp - 15 minutes",
+                "createMode": "PointInTimeRestore",
+                "sourceServerId": "resourceId"
             }
-        }
+    }
     ```
 
 7. 如果您看到回應碼201或202，則會成功提交還原要求。 
@@ -63,6 +63,6 @@ ms.locfileid: "92546716"
    - **資源類型** = 適用於 MySQL 的 Azure 資料庫伺服器 (microsoft.dbformysql/伺服器)  
    - **Operation** = 更新 MySQL Server Create
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 如果您嘗試在五天內還原伺服器，而且在正確遵循先前所討論的步驟之後仍會收到錯誤，請開啟支援事件以取得協助。 如果您嘗試在五天后還原已卸載的伺服器，則預期會發生錯誤，因為找不到備份檔案。 請勿在此案例中開啟支援票證。 如果已從系統中刪除備份，支援小組無法提供任何協助。 
 - 為了避免意外刪除伺服器，我們強烈建議使用 [資源鎖定](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/preventing-the-disaster-of-accidental-deletion-for-your-mysql/ba-p/825222)。

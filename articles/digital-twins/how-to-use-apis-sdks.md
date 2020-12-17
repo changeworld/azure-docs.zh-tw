@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187233"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656932"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -26,7 +26,7 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 
 控制平面 Api 是用來管理整個 Azure 數位 Twins 實例的 [ARM](../azure-resource-manager/management/overview.md) api，因此涵蓋建立或刪除整個實例等作業。 您也會使用這些來建立和刪除端點。
 
-最新的控制平面 API 版本為 _**2020-10-31**_。
+最新的控制平面 API 版本為 _**2020-12-01**_。
 
 若要使用控制平面 Api：
 * 您可以參考 [控制平面 Swagger 資料夾](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)中最新的 Swagger，直接呼叫 api。 此存放庫也包含顯示使用方式的範例資料夾。

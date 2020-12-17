@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4784cc2e1b0276caf8326df8fad93b12f0d551d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 61f5a470046ba3ddca157e83737a29ed936a0c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490069"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656320"
 ---
 # <a name="analyze-video-and-audio-files-with-azure-media-services"></a>使用 Azure 媒體服務分析影片和音訊檔案
 
@@ -88,7 +88,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |名稱|描述|
 |---|---|
 |id|行識別碼。|
-|text|文字記錄本身。|
+|文字|文字記錄本身。|
 |語言|文字記錄語言。 用於支援文字記錄，其中每一行可以有不同的語言。|
 |執行個體|這一行曾出現的時間範圍清單。 如果執行個體是文字記錄，它只能有 1 個執行個體。|
 
@@ -126,7 +126,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |名稱|描述|
 |---|---|
 |id|OCR 行識別碼。|
-|text|OCR 文字。|
+|文字|OCR 文字。|
 |信賴度|辨識信賴。|
 |語言|OCR 語言。|
 |執行個體|此 OCR 曾出現的時間範圍清單 (相同的 OCR 可以出現多次)。|
@@ -257,7 +257,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
       ],
       "instances": [
         {
-      "thumbnailId": "00000000-0000-0000-0000-000000000000",
+          "thumbnailId": "00000000-0000-0000-0000-000000000000",
           "start": "00: 00: 05.2670000",
           "end": "00: 00: 10.3000000"
         }
@@ -377,7 +377,7 @@ Azure 媒體服務 v3 可讓您使用影片索引子，從影片和音訊檔案�
 |名稱|描述|
 |---|---|
 |id|關鍵字識別碼。|
-|text|關鍵字。|
+|文字|關鍵字。|
 |信賴度|關鍵字的辨識信賴。|
 |語言|關鍵字語言 (轉譯時)。|
 |執行個體|此關鍵字曾出現的時間範圍清單 (同一個關鍵字可以出現多次)。|

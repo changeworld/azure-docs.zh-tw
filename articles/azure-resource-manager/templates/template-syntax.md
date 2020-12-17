@@ -2,19 +2,19 @@
 title: 範本結構和語法
 description: 使用宣告式 JSON 語法來描述 (ARM) 範本的 Azure Resource Manager 範本的結構和屬性。
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: ce36d725b3844fcd4c8d43a9f044423611d44fbd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/17/2020
+ms.openlocfilehash: 698309c5aa0817c4b758ec81133d4c98061aa355
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497872"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653124"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 範本的結構和語法 \(部分機器翻譯\)
 
 本文描述) 的 Azure Resource Manager 範本 (ARM 範本的結構。 它會呈現範本的不同區段，以及這些區段中可用的屬性。
 
-本文適用于對 ARM 範本有一些熟悉度的使用者。 它會提供範本結構的詳細資訊。 如需可引導您完成建立範本程序的逐步教學課程，請參閱[教學課程：建立及部署您的第一個 ARM 範本](template-tutorial-create-first-template.md)。
+本文適用于對 ARM 範本有一些熟悉度的使用者。 它會提供範本結構的詳細資訊。 如需可引導您完成建立範本程序的逐步教學課程，請參閱[教學課程：建立及部署您的第一個 ARM 範本](template-tutorial-create-first-template.md)。 若要透過 Microsoft Learn 上的一組指引來瞭解 ARM 範本，請參閱 [使用 ARM 範本部署和管理 Azure 中的資源](/learn/paths/deploy-manage-resource-manager-templates/)。
 
 ## <a name="template-format"></a>範本格式
 
@@ -174,7 +174,7 @@ ms.locfileid: "96497872"
 
 如需如何使用變數的範例，請參閱 [ARM 範本中的變數](template-variables.md)。
 
-## <a name="functions"></a>函式
+## <a name="functions"></a>函數
 
 在您的範本內，您可以建立自己的函式。 這些函式可供您在範本中使用。 一般而言，您會定義不想在整個範本中重複的複雜運算式。 您會從範本中支援的運算式和[函式](template-functions.md)建立使用者定義的函式。
 
@@ -321,7 +321,7 @@ ms.locfileid: "96497872"
 | 輸出-名稱 |是 |輸出值的名稱。 必須是有效的 JavaScript 識別碼。 |
 | condition (條件) |否 | 布林值，指出是否傳回此輸出值。 當為 `true` 時，該值會包含在部署的輸出中。 若為 `false`，則會略過此部署的輸出值。 未指定時，預設值為 `true`。 |
 | 類型 |是 |輸出值的類型。 輸出值支援與範本輸入參數相同的類型。 如果您針對輸出類型指定 **securestring** ，此值就不會顯示在部署歷程記錄中，也無法從另一個範本中取出。 若要在多個範本中使用秘密值，請將秘密儲存在 Key Vault 中，並在參數檔中參考密碼。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](key-vault-parameter.md)。 |
-| value |否 |評估並傳回做為輸出值的範本語言運算式。 請指定 **值** 或 **複製**。 |
+| 值 |否 |評估並傳回做為輸出值的範本語言運算式。 請指定 **值** 或 **複製**。 |
 | copy |否 | 用來傳回一個以上的輸出值。 指定 **值** 或 **複製**。 如需詳細資訊，請參閱 [ARM 範本中的輸出反復](copy-outputs.md)專案。 |
 
 如需如何使用輸出的範例，請參閱 [ARM 範本中的輸出](template-outputs.md)。
