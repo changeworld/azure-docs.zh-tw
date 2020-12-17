@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 75f06ae11d308028431202c22338ff4a589acf28
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460063"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592291"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>整合 Key Vault 與 Azure Private Link
 
@@ -53,7 +53,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 1. 在 [網路] 索引標籤中選取 [私人端點] 選項按鈕。
 1. 按一下 [+ 新增] 按鈕以新增私人端點。
 
-    ![映像](../media/private-link-service-1.png)
+    ![此螢幕擷取畫面顯示 [建立金鑰保存庫] 頁面上的 [網路] 索引標籤。](../media/private-link-service-1.png)
  
 1. 在 [建立私人端點] 刀鋒視窗的 [位置] 欄位中，選取您虛擬網路所在的區域。 
 1. 在 [名稱] 欄位中，建立可讓您識別此私人端點的描述性名稱。 
@@ -61,7 +61,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 1. 讓 [與私人區域 DNS 整合] 選項保持不變。  
 1. 選取 [確定]。
 
-    ![映像](../media/private-link-service-8.png)
+    ![此螢幕擷取畫面顯示已選取設定的 [建立私人端點] 頁面。](../media/private-link-service-8.png)
  
 您現在能夠看到已設定的私人端點。 您現在可以選擇刪除和編輯此私人端點。 選取 [檢閱 + 建立] 按鈕並建立金鑰保存庫。 需要 5-10 分鐘的時間才能完成部署。 
 
@@ -76,12 +76,13 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 1. 選取頁面頂端的 [私人端點連線] 索引標籤
 1. 選取頁面頂端的 [+ 私人端點] 按鈕。
 
-    ![影像](../media/private-link-service-3.png) ![影像](../media/private-link-service-4.png)
+    ![此螢幕擷取畫面顯示 [網路] 頁面上的 [+ 私人端點] 按鈕。](../media/private-link-service-3.png)
+    ![此螢幕擷取畫面顯示 [建立私人端點 (預覽)] 頁面上的 [基本] 索引標籤。](../media/private-link-service-4.png)
 
 您可以選擇使用此刀鋒視窗為任何 Azure 資源建立私人端點。 您可以使用下拉式功能表來選取資源類型，並選取您目錄中的資源，或者可以使用資源識別碼來連線到任何 Azure 資源。 讓 [與私人區域 DNS 整合] 選項保持不變。  
 
-![影像](../media/private-link-service-3.png)
-![影像](../media/private-link-service-4.png)
+![此螢幕擷取畫面顯示如何使用目前分頁新增私人端點。](../media/private-link-service-3.png)
+![此螢幕擷取畫面顯示 [建立私人端點 (預覽)] 頁面的範例。](../media/private-link-service-4.png)
 
 當您建立私人端點時，必須核准連線。 如果您要建立私人端點的資源位於您的目錄中，您就能夠核准該連線要求 (前提是您有足夠的權限)。如果您要連線到另一個目錄中的 Azure 資源，則必須等候該資源的擁有者核准您的連線要求。
 

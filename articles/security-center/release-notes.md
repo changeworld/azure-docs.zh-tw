@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922919"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560248"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -39,6 +39,7 @@ ms.locfileid: "96922919"
 - [Azure Synapse Analytics 專用 SQL 集區的「適用於 SQL 的 Azure Defender」支援已正式發行](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
 - [全域系統管理員現在可以自我授與租用戶層級權限](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [兩個新的 Azure Defender 方案：適用於 DNS 的 Azure Defender 和適用於 Resource Manager 的 Azure Defender (預覽)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
+- [Azure 入口網站中的新安全性警示頁面 (預譼)](#new-security-alerts-page-in-the-azure-portal-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>適用於機器上的 SQL 伺服器的 Azure Defender 已正式發行
 
@@ -95,6 +96,24 @@ Azure Synapse Analytics (先前為 SQL DW) 是一項結合企業資料倉儲和�
     - [回應適用於 DNS 的 Azure Defender 警示](defender-for-dns-usage.md)
     - [適用於 DNS 的 Azure Defender 所提供的警示清單](alerts-reference.md#alerts-dns)
 
+
+### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Azure 入口網站中的新安全性警示頁面 (預覽)
+
+Azure 資訊安全中心的安全性警示頁面已經過重新設計，可提供：
+
+- **改善的警示分級體驗** - 協助減少警示疲乏，並更容易專注於最相關的威脅，此清單包含可自訂的篩選條件和群組選項
+- **警示清單中的詳細資訊** - 例如 MITRE ATT & ACK 策略
+- **建立範例警示的按鈕** - 若要評估 Azure Defender 功能並測試您的警示組態 (針對 SIEM 整合、電子郵件通知和工作流程自動化)，您可以從所有 Azure Defender 方案建立範例警示
+- **配合 Azure Sentinel 的事件體驗** - 針對同時使用這兩種產品的客戶，在兩者之間切換目前是比較直接的體驗，而且很容易彼此相互學習
+- **更好的效能**，適用於大型警示清單
+- **鍵盤導覽**，導覽整個警示清單
+- **來自 Azure Resource Graph 的警示** - 您可以在 Azure Resource Graph 中查詢警示，類似於 Kusto 的 API，適用於所有資源。 如果您要建立自己的警示儀表板，這個方法也很有用。 [深入了解 Azure 資源群組](../governance/resource-graph/index.yml)。
+
+若要存取新的體驗，請使用安全性警示頁面頂端橫幅中的 [立即試用] 連結。
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="附有新預覽警示體驗連結的橫幅":::
+
+若要從新的警示體驗建立範例警示，請參閱[產生範例 Azure Defender 警示](security-center-alert-validation.md#generate-sample-azure-defender-alerts)。
 
 ## <a name="november-2020"></a>2020 年 11 月
 

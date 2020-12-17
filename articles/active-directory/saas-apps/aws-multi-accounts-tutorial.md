@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 246eba24f42baacf264c1c6d39ea63a51c62c51f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7e71058e1899cf83e712025b534e51a1be1f6bdb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457430"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591764"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教學課程：Azure Active Directory 與 Amazon Web Services (AWS) 整合 (舊版教學課程)
 
@@ -122,14 +122,14 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
     | 名稱  | 來源屬性  | 命名空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
-    | 角色            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
-    | SessionDuration             | 「提供 900 秒 (15 分鐘) 到 43200 秒 (12 小時) 之間的值」 |  `https://aws.amazon.com/SAML/Attributes` |
+    | 角色 | user.assignedroles | `https://aws.amazon.com/SAML/Attributes`|
+    | SessionDuration | 「提供 900 秒 (15 分鐘) 到 43200 秒 (12 小時) 之間的值」 |  `https://aws.amazon.com/SAML/Attributes` |
 
-    a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
+    1. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![顯示使用者宣告的螢幕擷取畫面，其中已呼叫新增新宣告和儲存。](common/new-save-attribute.png)
+        ![顯示使用者宣告的螢幕擷取畫面，其中已呼叫新增新宣告和儲存。](common/new-save-attribute.png)
 
-    ![顯示管理使用者宣告的螢幕擷取畫面，您可以在其中輸入此步驟中所述的值。](common/new-attribute-details.png)
+        ![顯示管理使用者宣告的螢幕擷取畫面，您可以在其中輸入此步驟中所述的值。](common/new-attribute-details.png)
 
     b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
 
@@ -171,7 +171,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     b. 在 [提供者名稱] 文字方塊中，鍵入提供者名稱 (例如：WAAD)。
 
-    c. 若要上傳從 Azure 入口網站下載的 **中繼資料檔案** ，請按一下 [選擇檔案]。
+    c. 若要上傳從 Azure 入口網站下載的 **中繼資料檔案**，請按一下 [選擇檔案]。
 
     d. 按一下頁面底部的 [新增] 。
 
@@ -192,10 +192,10 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     a. 在 [Select type of trusted entity] \(選取信任的實體類型\) 底下，選取 [SAML 2.0 federation] \(SAML 2.0 同盟\)。
 
-    b. 在 [Choose a SAML 2.0 Provider] \(選擇 SAML 2.0 提供者\) 區段底下，選取您先前建立的 [SAML provider] \(SAML 提供者\) (例如： *WAAD* )
+    b. 在 [Choose a SAML 2.0 Provider] \(選擇 SAML 2.0 提供者\) 區段底下，選取您先前建立的 [SAML provider] \(SAML 提供者\) (例如：*WAAD*)
 
     c. 選取 [Allow programmatic and AWS Management Console access] \(允許透過程式設計方式和 AWS 管理主控台存取\)。
-  
+
     d. 按一下 [Next: Permissions] \(下一步：權限\)。
 
 1. 在搜尋列中搜尋 [系統管理員存取權]，然後選取 [AdministratorAccess] 核取方塊，再按 [下一步：標籤]。
@@ -231,9 +231,9 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
     ![螢幕擷取畫面，顯示帳戶識別碼出現在 AWS 視窗中的位置。](./media/aws-multi-accounts-tutorial/aws-accountid.png)
 
-1. 現在登入 [Azure 入口網站](https://portal.azure.com/)，然後瀏覽至 **群組** 。
+1. 現在登入 [Azure 入口網站](https://portal.azure.com/)，然後瀏覽至 **群組**。
 
-1. 建立新群組，其名稱與稍早建立的 IAM 角色相同，並記下這些新群組的 **物件識別碼** 。
+1. 建立新群組，其名稱與稍早建立的 IAM 角色相同，並記下這些新群組的 **物件識別碼**。
 
     ![選取 [系統管理員存取權 1]](./media/aws-multi-accounts-tutorial/copy-objectids.png)
 
@@ -253,39 +253,35 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
 
 1. 在另一個視窗中開啟 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)。
 
-    a. 使用您租用戶的全域管理員/共同管理員認證來登入 [Microsoft Graph 總管] 網站。
+    1. 使用您租用戶的全域管理員/共同管理員認證來登入 [Microsoft Graph 總管] 網站。
 
-    b. 您必須有足夠的權限才能建立角色。 按一下 [修改權限] 以取得必要的權限。
+    1. 您必須有足夠的權限才能建立角色。 按一下 [修改權限] 以取得必要的權限。
 
-    ![Microsoft Graph 總管對話方塊 1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+        ![Microsoft Graph 總管對話方塊 1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
-    c. 從清單中選取下列權限 (如果您還沒有)，然後按一下 [修改權限] 
+    1. 從清單中選取下列權限 (如果您還沒有)，然後按一下 [修改權限] 
 
-    ![Microsoft Graph 總管對話方塊 2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+        ![Microsoft Graph 總管對話方塊 2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. 此時系統會要求您重新登入並接受此要求。 接受此要求後，您會重新登入 Microsoft Graph 總管。
+    1. 此時系統會要求您重新登入並接受此要求。 接受此要求後，您會重新登入 Microsoft Graph 總管。
 
-    e. 將版本下拉式清單變更為 **Beta** 。 若要從您的租用戶擷取所有服務主體，請使用下列查詢：
+    1. 將版本下拉式清單變更為 **Beta**。 若要從您的租用戶擷取所有服務主體，請使用下列查詢：`https://graph.microsoft.com/beta/servicePrincipals`。 如果您使用多個目錄，則可以使用下列模式，其中包含您的主要網域：`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`。
 
-    `https://graph.microsoft.com/beta/servicePrincipals`
+        ![Microsoft Graph 總管對話方塊 3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    如果您使用多個目錄，則可以使用下列模式，其中包含您的主要網域：`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    1. 從所擷取的服務主體清單中，取得您需要修改的服務主體。 您也可以使用 Ctrl+F，從所有列出的服務主體中搜尋應用程式。 您可以透過您從 Azure AD 的 [屬性] 頁面複製的 **服務主體物件識別碼**，使用下列查詢移至各自的「服務主體」。
 
-    ![Microsoft Graph 總管對話方塊 3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
-  
-    f. 從所擷取的服務主體清單中，取得您需要修改的服務主體。 您也可以使用 Ctrl+F，從所有列出的服務主體中搜尋應用程式。 您可以透過您從 Azure AD 的 [屬性] 頁面複製的 **服務主體物件識別碼** ，使用下列查詢移至各自的「服務主體」。
+        `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+        ![Microsoft Graph 總管對話方塊 4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    ![Microsoft Graph 總管對話方塊 4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    1. 從服務主體物件擷取 appRoles 屬性。
 
-    g. 從服務主體物件擷取 appRoles 屬性。
+        ![Microsoft Graph 總管對話方塊 5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
-    ![Microsoft Graph 總管對話方塊 5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    1. 現在，您必須為您的應用程式產生新角色。 
 
-    h. 現在，您必須為您的應用程式產生新角色。 
-
-    i. 以下 JSON 是 appRoles 物件的範例。 請建立類似的物件，以新增您的應用程式所需的角色。
+    1. 以下 JSON 是 appRoles 物件的範例。 請建立類似的物件，以新增您的應用程式所需的角色。
 
     ```
     {
@@ -327,11 +323,11 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
     ```
 
     > [!Note]
-    > 您只能在修補作業的 **msiam_access** 之後新增角色。 此外，您可以根據組織的需求新增任意數目的角色。 Azure AD 會在 SAML 回應中以宣告值的形式傳送這些角色的 **值** 。
+    > 您只能在修補作業的 **msiam_access** 之後新增角色。 此外，您可以根據組織的需求新增任意數目的角色。 Azure AD 會在 SAML 回應中以宣告值的形式傳送這些角色的 **值**。
 
-    j. 返回 Microsoft Graph 總管，並將方法從 **GET** 變更為 **PATCH** 。 藉由將 appRoles 屬性更新為前述範例中的類似屬性，將服務主體物件修補成具有所需的角色。 按一下 [執行查詢] 以執行修補作業。 此時會出現成功訊息，確認 Amazon Web Services 應用程式的角色已建立。
+    1. 返回 Microsoft Graph 總管，並將方法從 **GET** 變更為 **PATCH**。 藉由將 appRoles 屬性更新為前述範例中的類似屬性，將服務主體物件修補成具有所需的角色。 按一下 [執行查詢] 以執行修補作業。 此時會出現成功訊息，確認 Amazon Web Services 應用程式的角色已建立。
 
-    ![Microsoft Graph 總管對話方塊 6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+        ![Microsoft Graph 總管對話方塊 6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 1. 以更多角色修補服務主體之後，您即可將使用者/群組指派給各自的角色。 移至入口網站，然後瀏覽至 Amazon Web Services 應用程式，即可完成此作業。 按一下頂端的 [使用者和群組] 索引標籤。
 

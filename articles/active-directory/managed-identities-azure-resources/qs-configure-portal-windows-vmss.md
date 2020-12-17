@@ -1,5 +1,5 @@
 ---
-title: 在 VMSS 上設定受控識別 - Azure AD
+title: 在虛擬機器擴展集上設定受控識別 - Azure AD
 description: 使用 Azure 入口網站在虛擬機器擴展集上設定 Azure 資源受控識別的逐步指示。
 services: active-directory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2018
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43b986b6bb25dff1227247b1d249ce565553877a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 73c2f4167d6ce5465a879f6b2ef7e96d91065c4d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997404"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590914"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>使用 Azure 入口網站在虛擬機器擴展集上設定 Azure 資源受控識別
+# <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-vmss-using-the-azure-portal"></a>使用 Azure 入口網站在虛擬機器擴展集 (VMSS) 上設定 Azure 資源受控識別
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
