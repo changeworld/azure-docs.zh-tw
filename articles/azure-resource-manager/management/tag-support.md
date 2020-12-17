@@ -3,12 +3,12 @@ title: 資源的標記支援
 description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure 服務的詳細資料。
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 12a57577241e3b2206aab9c3badb29502e7b0301
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005719"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656966"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
 本文將說明資源類型是否支援[標記](tag-resources.md)。 標示為 [ **支援** 標籤] 的資料行會指出資源類型是否有標記的屬性。 在 [ **成本] 報表中** 標示為 [標籤] 的資料行會指出該資源類型是否要將標記傳遞給成本報告。 您可以依 [成本管理成本分析](../../cost-management-billing/costs/group-filter.md) 和 [Azure 計費發票及每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的標記來查看成本。
@@ -921,7 +921,7 @@ ms.locfileid: "96005719"
 > | 部門 | 否 | 否 |
 > | 維度 | 否 | 否 |
 > | EnrollmentAccounts | 否 | 否 |
-> | 出口 | 否 | 否 |
+> | 匯出 | 否 | 否 |
 > | ExternalBillingAccounts | 否 | 否 |
 > | ExternalBillingAccounts/警示 | 否 | 否 |
 > | ExternalBillingAccounts/維度 | 否 | 否 |
@@ -1395,7 +1395,7 @@ ms.locfileid: "96005719"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
-> | 裝置 | 是 | 是 |
+> | devices | 是 | 是 |
 > | networkFunctions | 是 | 是 |
 > | networkFunctionVendors | 否 | 否 |
 > | registeredSubscriptions | 否 | 否 |
@@ -2253,7 +2253,7 @@ ms.locfileid: "96005719"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | 是 | 是 |
-> | managedInstances/資料庫 | 是 (請參閱 [下面的附注](#sqlnote))  | 是 |
+> | managedInstances/資料庫 | 否 | 否 |
 > | managedInstances/資料庫/backupShortTermRetentionPolicies | 否 | 否 |
 > | managedInstances/資料庫/架構/資料表/資料行/sensitivityLabels | 否 | 否 |
 > | managedInstances/資料庫/vulnerabilityAssessments | 否 | 否 |
@@ -2457,7 +2457,7 @@ ms.locfileid: "96005719"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
-> | 裝置 | 是 | 是 |
+> | devices | 是 | 是 |
 > | registeredSubscriptions | 否 | 否 |
 > | 廠商 | 否 | 否 |
 > | 廠商/sku | 否 | 否 |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: e5d25e71e4700f3f327319e4f444d2060c7ab5f6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 91e10c25d2c3bef9c1ca20e3e5737a326d45997c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561880"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654773"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>範例：如何使用文字分析來將關鍵字組解壓縮
 
@@ -30,8 +30,6 @@ ms.locfileid: "97561880"
 > * 您也可以使用端點， [以非同步方式](text-analytics-how-to-call-api.md) 使用這項功能 `/analyze` 。
 
 ## <a name="preparation"></a>準備
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 關鍵片語擷取在處理較大量文字時的效果最佳。 這與情感分析相反，後者較適合用來處理較少量的文字。 若要從這兩個作業中取得最佳結果，請考慮據以重建輸入。
 
@@ -252,7 +250,7 @@ ms.locfileid: "97561880"
 ```
 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已瞭解使用認知服務中的文字分析來進行關鍵字組解壓縮的概念和工作流程。 摘要說明：
 

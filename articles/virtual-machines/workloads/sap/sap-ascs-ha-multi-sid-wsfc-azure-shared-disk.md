@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43abdd1db2e8e24033332f99c583e30efbf64a00
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 4dfbffcaedb6c544a34e347633d5adc173fab33e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957396"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655980"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>使用 Windows server 容錯移轉叢集和 Azure 共用磁片的 SAP ASCS/SCS 實例多重 SID 高可用性
 
@@ -31,7 +31,7 @@ ms.locfileid: "94957396"
 
 本文著重于如何將單一 ASCS/SCS 安裝移至 SAP 多重 SID 設定，方法是將其他 SAP ASCS/SCS 叢集實例安裝至現有的 Windows Server 容錯移轉叢集， (WSFC) 叢集與 Azure 共用磁片。 完成此程序之後，您將已設定 SAP 多重 SID 叢集。
 
-## <a name="prerequisites-and-limitations"></a>必要條件和限制
+## <a name="prerequisites-and-limitations"></a>先決條件和限制
 
 目前，您可以使用 Azure 進階 SSD 磁片作為 SAP ASCS/SCS 實例的 Azure 共用磁片。 下列限制已就緒：
 
@@ -236,9 +236,9 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
 
 4. 在叢集中註冊磁片。  
    ```powershell
-    # Add the disk to cluster 
+     # Add the disk to cluster 
     Get-ClusterAvailableDisk -All | Add-ClusterDisk
-    # Example output     
+    # Example output 
     # Name           State  OwnerGroup        ResourceType 
     # ----           -----  ----------        ------------ 
     # Cluster Disk 2 Online Available Storage Physical Disk
@@ -346,7 +346,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
     
     .EXAMPLE 
     # Set probe port to 62000, on SAP cluster resource 'SAP AB1 IP'. SAP cluster group 'SAP AB1' IS NOT restarted, therefore changes are NOT active.
-    # To activate the changes you need to manualy restart 'SAP AB1' cluster group.
+    # To activate the changes you need to manually restart 'SAP AB1' cluster group.
     Set-AzureLoadBalancerHealthCheckProbePortOnSAPClusterIPResource -SAPSID AB1 -ProbePort 62000 -RestartSAPClusterGroup $False
     
     .EXAMPLE 
@@ -362,7 +362,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 會使用虛擬主機名稱和虛擬 IP �
             [ValidateNotNullOrEmpty()]  
             [ValidateLength(3,3)]      
             [string]$SAPSID,
-                  
+
             [Parameter(Mandatory=$True)]
             [ValidateNotNullOrEmpty()]        
             [int] $ProbePort,

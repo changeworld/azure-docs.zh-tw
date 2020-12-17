@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 56654f09d3a92eec5b86d8c8e4cd76fec0639394
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499657"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653039"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 儲存體總管版本資訊
 
@@ -129,7 +129,7 @@ ms.locfileid: "96499657"
 * [1.3.0 版](#version-130)
 * [版本 1.2.0](#version-120)
 * [1.1.0 版](#version-110)
-* [1\.0.0 版](#version-100)
+* [1.0.0 版](#version-100)
 * [0.9.6 版](#version-096)
 * [0.9.5 版](#version-095)
 * [0.9.4 和 0.9.3 版](#version-094-and-093)
@@ -567,7 +567,7 @@ ms.locfileid: "96499657"
   * 建立新資料夾
   * 上傳、下載、重新命名及刪除檔案和資料夾
   * 管理檔案和資料夾屬性及權限 (右側)。
-    
+
     目前無法使用其他一般 Blob 功能 (例如虛刪除) 和快照集。 管理權限也僅限於登入後使用。 此外，在 ADLS Gen2 儲存體帳戶中運作時，儲存體總管會使用 AzCopy 進行所有的上傳和下載，且預設為對所有作業使用名稱和金鑰認證 (如果有的話)。
 * 在使用者強烈反應之後，中斷租用可再度用於一次在多個 Blob 上中斷租用。
 

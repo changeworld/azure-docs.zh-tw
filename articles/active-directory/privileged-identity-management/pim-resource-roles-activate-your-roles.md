@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f38ef7db114705392bd1d3dc6f9a4562a809e20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4e3fe72492ef92fe65572c75bf9f88b5f9ffda3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023856"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653413"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中啟用我的 Azure 資源角色
 
@@ -44,15 +44,15 @@ ms.locfileid: "86023856"
 
    ![我的角色-Azure 資源角色頁面](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
 
-1. 在 [Azure 資源角色]**** 清單中，尋找您要啟用的角色。
+1. 在 [Azure 資源角色] 清單中，尋找您要啟用的角色。
 
     ![Azure 資源角色-我的合格角色清單](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
 1. 選取 [ **啟動** ] 以開啟 [啟用] 頁面。
 
-     ![開啟的啟用窗格，包含範圍、開始時間、持續時間和原因](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
+    ![開啟的啟用窗格，包含範圍、開始時間、持續時間和原因](./media/pim-resource-roles-activate-your-roles/azure-role-eligible-activate.png)
 
-1. 如果您的角色需要多重要素驗證，請選取 [先驗證您的身分識別後再繼續]****。 您只需在每個工作階段驗證一次。
+1. 如果您的角色需要多重要素驗證，請選取 [先驗證您的身分識別後再繼續]。 您只需在每個工作階段驗證一次。
 
     ![在啟用角色之前，先以 MFA 驗證我的身分識別](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
@@ -68,11 +68,11 @@ ms.locfileid: "86023856"
 
 1. 如有必要，請指定自訂啟用開始時間。 成員會在選取的時間後啟用。
 
-1. 在 [原因]**** 方塊中輸入此啟用要求的原因。
+1. 在 [原因] 方塊中輸入此啟用要求的原因。
 
     ![完成的啟用窗格，範圍、開始時間、持續時間和原因](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
-1. 選取 [啟用]。
+1. 選取 [啟用]  。
 
     如果[角色需要核准](pim-resource-roles-approval-workflow.md)才能啟用，通知會出現在瀏覽器右上角，通知您要求正在等待核准。
 
@@ -88,7 +88,7 @@ ms.locfileid: "86023856"
 
     ![我的要求-顯示您擱置要求的 Azure 資源頁面](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
-1. 捲動至右側可檢視 [要求狀態]**** 欄。
+1. 捲動至右側可檢視 [要求狀態] 欄。
 
 ## <a name="cancel-a-pending-request"></a>取消擱置要求
 
@@ -113,7 +113,7 @@ ms.locfileid: "86023856"
 1. 登出 Azure 入口網站，然後重新登入。
 1. 在 Privileged Identity Management 中，確認您已列為角色的成員。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Privileged Identity Management 中延長或更新 Azure 資源角色](pim-resource-roles-renew-extend.md)
 - [在 Privileged Identity Management 中啟用我的 Azure AD 角色](pim-how-to-activate-role.md)

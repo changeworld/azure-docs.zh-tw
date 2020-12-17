@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 935ba888352d2454a609a40866ef10ccf13a2dac
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605457"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653566"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>版本資訊-Azure Arc 啟用的資料服務 (預覽) 
 
@@ -29,7 +29,7 @@ Azure Data CLI (`azdata`) 版本號碼：20.2.5。 下載時間 [https://aka.ms/
 使用 Azure Data CLI () 搭配和命令來查看 SQL 受控執行個體和于 postgresql 超大規模的端點 `azdata` `azdata arc sql endpoint list` `azdata arc postgres endpoint list` 。
 
 使用 Azure Data Studio 編輯 SQL 受控執行個體資源 (CPU 核心和記憶體) 要求和限制。
-     
+
 Azure Arc 啟用的于 postgresql 超大規模現在除了于 postgresql 的11和12版本之外，還支援還原時間點。 時間點還原功能可讓您指定要還原至的特定日期和時間。
 
 Azure Arc 啟用的于 postgresql 超大規模之 pod 的命名慣例已變更。 它現在的格式如下： ServergroupName {r，s}-_n_。 例如，具有三個節點的伺服器群組、一個協調器節點和兩個背景工作節點都會表示為：
@@ -127,7 +127,7 @@ Azure Data CLI (`azdata`) 版本號碼：20.2.3。 下載時間 [https://aka.ms/
 如需相關指示，請參閱 [什麼是 Azure Arc 啟用的資料服務？](overview.md)
 
 ## <a name="next-steps"></a>後續步驟
-  
+
 > **只想試試看嗎？**  
 > 在 AKS、AWS 彈性 Kubernetes 服務 (EKS) 、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中快速開始使用 [Azure Arc](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) 快速入門。
 

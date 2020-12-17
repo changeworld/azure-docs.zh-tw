@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 09693a09e35503a2a221f8de1903b4218b8766f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 318095e6cf68ec100dc9ea5221ecd93cba8f7c1e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082438"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656813"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>使用入口網站處理預定的維修通知
 
@@ -32,15 +32,14 @@ ms.locfileid: "87082438"
 
    **維護狀態**：顯示 VM 的維護狀態。 以下是可能值：
       
-      | 值 | 說明 |
-      |-------|-------------|
-      | 立即開始 | VM 處於自助式維護期間，可讓您在這裡自行起始維護。 請參閱下述，以了解如何在您的 VM 上開始維護。 | 
-      | 排程 | 已排定 VM 進行維護，沒有選項供您起始維護。 您可以在此檢視中選取 [維護 - 排程] 期間或按一下虛擬機器，來了解維護維護期間。 | 
-      | 已更新 | 已更新您的 VM，此時不需要採取任何進一步的動作。 | 
-      | 稍後重試 | 您已啟動維護，但是沒有成功。 您可以在稍後使用自助式維護選項。 | 
-      | 立即重試 | 您可以重試先前失敗的自行啟動維護。 | 
-      | - | 您的 VM 不屬於計劃性維護的一部分。 |
-      
+    | 值 | 描述 |
+    |-------|-------------|
+    | 立即開始 | VM 位於自助維護視窗，可讓您自行起始維護。 請參閱下文，以瞭解如何在您的 VM 上開始維護。 | 
+    | 已排程 | VM 已排程進行維護，而且沒有任何選項可供您起始維護。 您可以在此視圖中選取 [維護排程] 視窗或按一下 VM，以瞭解維護期間。 | 
+    | 已更新 | 您的 VM 已更新，此時不需要採取任何進一步的動作。 | 
+    | 稍後重試 | 您已啟動維護，但是沒有成功。 您將能夠在稍後使用自助維護選項。 | 
+    | 立即重試 | 您可以重試先前失敗的自我起始維護。 | 
+    | - | 您的 VM 不屬於計劃性維護的一部分。 |
 
    **維護 - 自助服務期間**：顯示您可以在 VM 上自行開始維護的時間範圍。
    
@@ -60,13 +59,13 @@ Azure 會將電子郵件傳送至訂用帳戶擁有者和共同擁有者群組�
 在 VM 詳細資料檢視的頂端，如果您的 VM 已包含在計劃的一波維護中，則將會新增通知功能區。 此外，還會新增選項以在可能時開始維護。 
 
 
-按一下維護通知，以查看對計劃性維護具有其他詳細資料的維護頁面。 從這裡您將能夠在您的 VM 上**開始維護**。
+按一下維護通知，以查看對計劃性維護具有其他詳細資料的維護頁面。 從這裡您將能夠在您的 VM 上 **開始維護**。
 
 一旦開始維護，將維護您的虛擬機器，而且維護狀態將在幾分鐘內更新以反映結果。
 
 如果您錯過了自助服務期間，仍可以看到 Azure 將維護虛擬機器的期間。 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您也可以使用 [Azure CLI](maintenance-notifications-cli.md) 或 [PowerShell](maintenance-notifications-powershell.md)來處理預定的維護。

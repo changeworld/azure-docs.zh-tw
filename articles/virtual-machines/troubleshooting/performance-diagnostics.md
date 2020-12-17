@@ -1,7 +1,7 @@
 ---
 title: Azure 虛擬機器的效能診斷| Microsoft Docs
 description: 介紹適用於 Windows 的 Azure 效能診斷。
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: anandhms
 manager: cshepard
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: fb0928c75b8fee567e9d0f03489794bd9f65e91e
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 70d1a52ff3326fcd3a628cc7f0f9d91edc9274e7
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109431"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655385"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 虛擬機器的效能診斷
 
@@ -191,7 +191,7 @@ Azure 入口網站提供下列分析案例。 請根據您的效能問題，選�
 當您開啟與 Microsoft 的支援票證時，請務必共用效能診斷報告。 如果您選擇在執行診斷時與 Microsoft 共用這項資訊 (藉由選取 [我同意與 Microsoft 共用診斷資訊] 核取方塊)，Microsoft 將能夠在執行日期起 30 天內，使用輸出 ZIP 檔案的 SAS 連結從您的儲存體帳戶存取報告。 只會提供最近的報告給支援工程師。
 
 **選項 2：** 產生診斷報告壓縮檔的共用存取簽章  
-您可以使用共用存取簽章來分享報告壓縮檔的連結。 若要這樣做，請遵循下列步驟：
+您可以使用共用存取簽章來分享報告壓縮檔的連結。 若要這樣做，請執行下列步驟：
 
 1. 在 Azure 入口網站中，瀏覽至儲存診斷資料的儲存體帳戶。
 1. 在 [Blob 服務] 區段下，選取 [Blob]。

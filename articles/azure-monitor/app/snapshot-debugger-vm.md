@@ -6,19 +6,19 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c1cc9893a309dcdf7ac575494d164052bb0c617c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa6577a6ae7f7ca1d938bbbb062557684076c78d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325673"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656444"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>為 Azure Service Fabric、雲端服務和虛擬機器中的 .NET 應用程式啟用快照偵錯工具
 
-如果您的 ASP.NET 或 ASP.NET core 應用程式在 Azure App Service 中執行，強烈建議您 [透過 Application Insights 入口網站頁面啟用快照偵錯工具](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。 但是，如果您的應用程式需要自訂的快照偵錯工具設定或預覽版本的 .NET core，則除了[透過 Application Insights 入口網站頁面啟用](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)的指示***之外，還***應遵循此指示。
+如果您的 ASP.NET 或 ASP.NET core 應用程式在 Azure App Service 中執行，強烈建議您 [透過 Application Insights 入口網站頁面啟用快照偵錯工具](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。 但是，如果您的應用程式需要自訂的快照偵錯工具設定或預覽版本的 .NET core，則除了 [透過 Application Insights 入口網站頁面啟用](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)的指示 ***之外，還*** 應遵循此指示。
 
 如果您的應用程式在 Azure Service Fabric、雲端服務、虛擬機器或內部部署機器中執行，則應該使用下列指示。 
-    
+
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>設定 ASP.NET 應用程式的快照集集合
 
 1. 如果您尚未這麼做，請[在 Web 應用程式中啟用 Application Insights](./asp-net.md)。
@@ -91,19 +91,19 @@ ms.locfileid: "87325673"
        using Microsoft.ApplicationInsights.AspNetCore;
        using Microsoft.ApplicationInsights.Extensibility;
        ```
-    
+
        將下列 `SnapshotCollectorTelemetryProcessorFactory` 類別新增至 `Startup` 類別。
-    
+
        ```csharp
        class Startup
        {
            private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
            {
                private readonly IServiceProvider _serviceProvider;
-    
+
                public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
                    _serviceProvider = serviceProvider;
-    
+
                public ITelemetryProcessor Create(ITelemetryProcessor next)
                {
                    var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
@@ -113,17 +113,17 @@ ms.locfileid: "87325673"
            ...
         ```
         將 `SnapshotCollectorConfiguration` 和 `SnapshotCollectorTelemetryProcessorFactory` 服務新增至啟動管線：
-    
+
         ```csharp
            // This method gets called by the runtime. Use this method to add services to the container.
            public void ConfigureServices(IServiceCollection services)
            {
                // Configure SnapshotCollector from application settings
                services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
-    
+
                // Add SnapshotCollector telemetry processor.
                services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
-    
+
                // TODO: Add other services your application needs here.
            }
        }
@@ -175,7 +175,7 @@ ms.locfileid: "87325673"
    }
     ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 產生可觸發例外狀況的應用程式流量。 然後，等候10到15分鐘，將快照集傳送至 Application Insights 實例。
 - 請參閱 Azure 入口網站中的 [快照](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) 集。

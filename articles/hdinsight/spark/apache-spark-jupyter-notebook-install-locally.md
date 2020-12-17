@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 16cb8a9c2a951c9f60640248ef74757d1e5ee200
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: de11e6f9fd9acc81f7be6d23bb1019f88f9e1322
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518918"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657204"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在您的電腦上安裝 Jupyter Notebook，並連接到 HDInsight 上的 Apache Spark
 
@@ -42,12 +42,7 @@ ms.locfileid: "96518918"
 
 ## <a name="install-spark-magic"></a>安裝 Spark 魔術
 
-1. 輸入下列其中一個命令來安裝 Spark 魔術。 另請參閱 [sparkmagic 檔](https://github.com/jupyter-incubator/sparkmagic#installation)。
-
-    |叢集版本 | 安裝命令 |
-    |---|---|
-    |3.6 和3.5 版 |`pip install sparkmagic==0.13.1`|
-    |3.4 版|`pip install sparkmagic==0.2.3`|
+1. 輸入命令 `pip install sparkmagic==0.13.1` 以安裝適用于 HDInsight 叢集3.6 和4.0 版的 Spark 魔術。 另請參閱 [sparkmagic 檔](https://github.com/jupyter-incubator/sparkmagic#installation)。
 
 1. 藉 `ipywidgets` 由執行下列命令，確定已正確安裝：
 
@@ -67,7 +62,7 @@ ms.locfileid: "96518918"
 
 1. 在您的新工作目錄中，輸入下列一或多個命令，以安裝所需的核心 (s) ：
 
-    |核心 | 命令 |
+    |核心 | Command |
     |---|---|
     |Spark|`jupyter-kernelspec install sparkmagic/kernels/sparkkernel`|
     |SparkR|`jupyter-kernelspec install sparkmagic/kernels/sparkrkernel`|

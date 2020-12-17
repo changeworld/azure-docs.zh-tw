@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a05c987299a8a4967c81b7eb9cc481f253ac5b09
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 123b36ba854bec8b363d59bbed5e70f18da1e578
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584845"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653702"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Microsoft 帳戶登入
 
@@ -30,21 +30,9 @@ ms.locfileid: "97584845"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-::: zone pivot="b2c-user-flow"
-
-* [建立使用者流程](tutorial-create-user-flows.md)，讓使用者註冊並登入您的應用程式。
-* [將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶](add-web-api-application.md) (如果您尚未這麼做)。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* 完成[在 Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
-* [將 Web API 應用程式新增至您的 Azure Active Directory B2C 租用戶](add-web-api-application.md) (如果您尚未這麼做)。
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-microsoft-account-application"></a>建立 Microsoft 帳戶應用程式
 
@@ -224,7 +212,7 @@ ms.locfileid: "97584845"
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 按一下您想要使用 Microsoft 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **Microsoft 帳戶**]。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

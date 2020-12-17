@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb2a8a7bb14758ab21eb2183a119f456b53c8562
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400633"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654944"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用雲端解決方案提供者 (CSP) 方案在多租用戶環境中設定 VMware 災害復原
 
@@ -22,7 +22,7 @@ ms.locfileid: "91400633"
 
 本文說明身為合作夥伴的您如何針對多租用戶 VMware 複寫案例，透過 CSP 建立和管理租用戶訂用帳戶。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 VMware 複寫，您需要執行下列作業：
 
@@ -33,15 +33,15 @@ ms.locfileid: "91400633"
 ## <a name="create-a-tenant-account"></a>建立租用戶帳戶
 
 1. 透過 [Microsoft 合作夥伴中心](https://partnercenter.microsoft.com/) 登入 CSP 帳戶。
-2. 在 [儀表板]**** 功能表上，選取 [客戶]****。
-3. 在開啟的頁面上，按一下 [新增客戶]**** 按鈕。
-4. 在 [新客戶]**** 頁面中，填入租用戶的帳戶資訊詳細資料。
+2. 在 [儀表板] 功能表上，選取 [客戶]。
+3. 在開啟的頁面上，按一下 [新增客戶] 按鈕。
+4. 在 [新客戶] 頁面中，填入租用戶的帳戶資訊詳細資料。
 
     ![[帳戶資訊] 頁面](./media/vmware-azure-multi-tenant-csp-disaster-recovery/customer-add-filled.png)
 
-5. 然後按 [下一步：訂用帳戶]****。
-6. 在訂用帳戶選取頁面上，選取 [Microsoft Azure]**** 核取方塊。 您可以立即或在其他任何時候新增其他訂用帳戶。
-7. 在 [檢閱]**** 頁面上，確認租用戶詳細資料，然後按一下 [提交]****。
+5. 然後按 [下一步：訂用帳戶]。
+6. 在訂用帳戶選取頁面上，選取 [Microsoft Azure] 核取方塊。 您可以立即或在其他任何時候新增其他訂用帳戶。
+7. 在 [檢閱] 頁面上，確認租用戶詳細資料，然後按一下 [提交]。
 8. 您建立租用戶帳戶後，確認網頁隨即出現，顯示預設帳戶的詳細資料和該訂用帳戶的密碼。 儲存資訊並在稍後視需要透過 Azure 入口網站登入網頁來變更密碼。
 
 您可以與租用戶共用這些既有的資訊，也可以視需要建立和共用不同的帳戶。
@@ -50,9 +50,9 @@ ms.locfileid: "91400633"
 
 您可以透過 Microsoft 夥伴中心儀表板存取租用戶的訂用帳戶。
 
-1. 在 [客戶]**** 頁面上，按一下租用戶帳戶的名稱。
-2. 在租用戶帳戶的 [訂用帳戶]**** 頁面中，您可以監視現有帳戶的訂用帳戶，並且視需要新增更多訂用帳戶。
-3. 若要管理租用戶的災復原作業，請選取 [所有資源 (Azure 入口網站)]****。 這會授與您租用戶的 Azure 訂用帳戶存取權限。
+1. 在 [客戶] 頁面上，按一下租用戶帳戶的名稱。
+2. 在租用戶帳戶的 [訂用帳戶] 頁面中，您可以監視現有帳戶的訂用帳戶，並且視需要新增更多訂用帳戶。
+3. 若要管理租用戶的災復原作業，請選取 [所有資源 (Azure 入口網站)]。 這會授與您租用戶的 Azure 訂用帳戶存取權限。
 
     ![[所有資源] 連結](./media/vmware-azure-multi-tenant-csp-disaster-recovery/all-resources-select.png)  
 
@@ -65,24 +65,24 @@ ms.locfileid: "91400633"
 ## <a name="assign-tenant-access-to-the-subscription"></a>為租用戶指派訂用帳戶的存取權
 
 1. 確定已設定災害復原基礎結構。 無論災害復原類型是受控或自助，合作夥伴都必須透過 CSP 入口網站存取租用戶訂用帳戶。 設定保存庫，並且向租用戶訂用帳戶註冊基礎結構。
-2. 為租 [使用者提供您所建立的帳戶](#create-a-tenant-account)。
-3. 您可以透過 CSP 入口網站將新的使用者新增至租用戶訂用帳戶，方法如下：
+1. 為租 [使用者提供您所建立的帳戶](#create-a-tenant-account)。
+1. 您可以透過 CSP 入口網站將新的使用者新增至租用戶訂用帳戶，方法如下：
 
-    a) 移至租用戶的 CSP 訂用帳戶頁面，然後選取 [使用者與授權]**** 選項。
+    1. 移至租用戶的 CSP 訂用帳戶頁面，然後選取 [使用者與授權] 選項。
 
-      ![租用戶的 CSP 訂用帳戶頁面](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+       ![租用戶的 CSP 訂用帳戶頁面](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    b) 現在藉由輸入相關詳細資料並選取權限，或是使用 CSV 檔案上傳使用者清單，來建立新的使用者。
-    
-    c) 在您建立新的使用者之後，返回 Azure 入口網站。 在 [訂用帳戶]**** 頁面中，選取相關的訂用帳戶。
+    1. 現在，輸入相關詳細資料並選取許可權，或上傳 CSV 檔案中的使用者清單，以建立新的使用者。
 
-    d) 選取 [存取控制 (IAM)]****，然後按一下 [角色指派]****。
+    1. 建立新的使用者之後，請回到 Azure 入口網站。 在 [訂用帳戶] 頁面中，選取相關的訂用帳戶。
 
-    e) 按一下 [新增角色指派]****，以增加具有相關存取層級的使用者。 透過 CSP 入口網站建立的使用者會顯示在 [角色指派] 索引標籤上。
+    1. 選取 [ **存取控制] (IAM)**，然後按一下 [ **角色指派**]。
 
-      ![新增使用者](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+    1. 按一下 [ **新增角色指派** ]，以新增具有相關存取層級的使用者。 透過 CSP 入口網站建立的使用者會顯示在 [角色指派] 索引標籤上。
 
-- *參與者*角色就足以執行大多數的管理作業。 除了變更存取層級 (必須具有「擁有者」** 存取層級) 之外，具有此存取層級的使用者可以在訂用帳戶上執行任何作業。
+        ![新增使用者](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+
+- *參與者* 角色就足以執行大多數的管理作業。 除了變更存取層級 (必須具有「擁有者」存取層級) 之外，具有此存取層級的使用者可以在訂用帳戶上執行任何作業。
 - Site Recovery 也有三個[預先定義的使用者角色](site-recovery-role-based-linked-access-control.md)，可視需要用來進一步限制存取層級。
 
 ## <a name="multi-tenant-environments"></a>多租用戶環境

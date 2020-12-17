@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 4d420bf45cd705f518df0d52929a331d23537184
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395167"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656337"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>在 Azure SQL Edge 中建立資料串流作業 
 
@@ -117,7 +117,7 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
     go
     ```
 
-4. 建立外部資料流物件。 下列範例會建立指向資料表 dbo 的外部資料流物件 *。TemperatureMeasurements* ，在資料庫 *MySQLDatabase* 中。
+4. 建立外部資料流物件。 下列範例會建立指向資料表 dbo 的外部資料流物件 *。TemperatureMeasurements*，在資料庫 *MySQLDatabase* 中。
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements 
@@ -154,7 +154,7 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
         DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
     )
    ```
-    
+
 3. 建立外部資料流物件。 下列範例會建立指向 Kafka 主題的外部資料流物件 `*TemperatureMeasurement*` 。
 
     ```sql
@@ -163,7 +163,7 @@ Azure SQL Edge 目前僅支援使用下列資料來源作為串流的輸入和�
     (  
         DATA_SOURCE = KafkaInput, 
         FILE_FORMAT = JsonGzipped,
-        LOCATION = 'TemperatureMeasurement',     
+        LOCATION = 'TemperatureMeasurement',
         INPUT_OPTIONS = 'PARTITIONS: 10' 
     ); 
     ```
@@ -249,7 +249,7 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 | Processing | 串流作業正在執行，且正在處理輸入。 此狀態表示串流作業處於健全狀態。 |
 | 已降級 | 串流工作正在執行中，但輸入處理期間發生一些非嚴重錯誤。 輸入作業會繼續執行，但會捨棄發生錯誤的輸入。 |
 | 已停止 | 串流作業已停止。 |
-| 失敗 | 串流作業失敗。 這通常表示處理期間發生嚴重錯誤。 |
+| Failed | 串流作業失敗。 這通常表示處理期間發生嚴重錯誤。 |
 
 ## <a name="next-steps"></a>後續步驟
 

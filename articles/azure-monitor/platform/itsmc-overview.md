@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 12/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 93759cf239a2e7ef79c719c83299740ea3722130
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: aaaeb23ef24f0d8a0fa4b38139fed57cda6fa63d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614552"
+ms.locfileid: "97657034"
 ---
 # <a name="it-service-management-connector-overview"></a>IT 服務管理連接器總覽
 
@@ -43,11 +43,13 @@ ITSMC 支援與下列 ITSM 工具連線：
 
 您可以藉由完成下列步驟來開始使用 ITSMC：
 
-1. [將 ITSM 產品/服務與 IT 服務管理連接器連線。](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)
-2. [新增 ITSMC。](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#add-it-service-management-connector)
-3. [建立 ITSM 連接。](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-an-itsm-connection)
-4. [使用連接。](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#use-itsmc)
+1. [將 ITSM 產品/服務與 IT 服務管理連接器連線。](./itsmc-connections.md)
+1. [新增 ITSMC。](/.itsmc-definition.md#add-it-service-management-connector)
+1. [建立 ITSM 連接。](./itsmc-definition.md#create-an-itsm-connection)
+1. [使用連接。](./itsmc-definition.md#use-itsmc)
 
 ## <a name="next-steps"></a>後續步驟
 
-[將 ITSM 產品/服務新增至 IT 服務管理連接器](./itsmc-connections.md)
+[將 ITSM 產品/服務新增至 IT 服務管理連接器](./itsmc-connections.md) 
+[新增 ITSM 連接器](./itsmc-definition.md) 
+針對[ITSM 連接器中的問題進行疑難排解](./itsmc-resync-servicenow.md)

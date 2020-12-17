@@ -4,12 +4,12 @@ description: 描述如何使用服務匯流排來在交換代理訊息時將效�
 ms.topic: article
 ms.date: 11/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12de7edd5dec42b01c46307febbef7d739d0495d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811660"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655623"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服務匯流排傳訊的效能改進最佳作法
 

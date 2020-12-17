@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
-ms.openlocfilehash: 5ec4b9343efab9ae501b2b3dcc606e6e3f5fe826
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d522d305c70214009b8aa2886d07d2d5403dd2b1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399681"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656303"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>使用網路監看員和 Grafana 來管理和分析網路安全性群組流量記錄
 
@@ -27,7 +27,7 @@ ms.locfileid: "91399681"
 
 您可以在已啟用流量記錄的網路中擁有許多個 NSG。 這樣的記錄資料量會讓您在剖析以及從記錄中取得見解時變得很麻煩。 本文提供了可使用 Grafana (開放原始碼的繪圖工具)、ElasticSearch (分散式的搜尋和分析引擎) 以及 Logstash (開放原始碼的伺服器端資料處理管線) 來集中管理這些 NSG 流量記錄的解決方案。  
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 NSG 流量記錄可使用網路監看員來啟用，並且會儲存在 Azure Blob 儲存體中。 Logstash 外掛程式可用來從 Blob 儲存體連線和處理流量記錄，並將記錄傳送到 ElasticSearch。  流量記錄儲存在 ElasticSearch 後，就可供進行分析並於 Grafana 的自訂儀表板中視覺化呈現。
 
@@ -104,11 +104,11 @@ NSG 流量記錄可使用網路監看員來啟用，並且會儲存在 Azure Blo
           "protocol" => "%{[records][properties][flows][flows][flowTuples][5]}"
           "trafficflow" => "%{[records][properties][flows][flows][flowTuples][6]}"
           "traffic" => "%{[records][properties][flows][flows][flowTuples][7]}"
-      "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
-      "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
-      "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
-      "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
-      "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
+    "flowstate" => "%{[records][properties][flows][flows][flowTuples][8]}"
+    "packetsSourceToDest" => "%{[records][properties][flows][flows][flowTuples][9]}"
+    "bytesSentSourceToDest" => "%{[records][properties][flows][flows][flowTuples][10]}"
+    "packetsDestToSource" => "%{[records][properties][flows][flows][flowTuples][11]}"
+    "bytesSentDestToSource" => "%{[records][properties][flows][flows][flowTuples][12]}"
         }
         add_field => {
           "time" => "%{[records][time]}"
@@ -187,13 +187,13 @@ sudo service grafana-server start
 
 #### <a name="add-the-elasticsearch-server-as-a-data-source"></a>將 ElasticSearch 伺服器新增為資料來源
 
-接下來，您必須將包含流量記錄的 ElasticSearch 索引新增為資料來源。 您可以藉由選取 [新增資料來源]**** 並在表單內填妥相關資訊，來新增資料來源。 您可以在下列螢幕擷取畫面找到這項設定的範例：
+接下來，您必須將包含流量記錄的 ElasticSearch 索引新增為資料來源。 您可以藉由選取 [新增資料來源] 並在表單內填妥相關資訊，來新增資料來源。 您可以在下列螢幕擷取畫面找到這項設定的範例：
 
 ![新增資料來源](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>建立儀表板
 
-您已成功地將 Grafana 設定為讀取包含 NSG 流量記錄的 ElasticSearch 索引，接下來您可以建立儀表板並將其個人化。 若要建立新的儀表板，請選取 [建立第一個儀表板]****。 下列圖形設定範例會顯示依 NSG 規則所區分的流量：
+您已成功地將 Grafana 設定為讀取包含 NSG 流量記錄的 ElasticSearch 索引，接下來您可以建立儀表板並將其個人化。 若要建立新的儀表板，請選取 [建立第一個儀表板]。 下列圖形設定範例會顯示依 NSG 規則所區分的流量：
 
 ![儀表板圖形](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig3.png)
 

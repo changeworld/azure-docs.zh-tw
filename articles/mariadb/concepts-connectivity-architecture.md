@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 6e9d0e9d78f58807a05784e1606670e3a97fd600
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 98a75cee88a7d30161fc3166bce0eaec855d347c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97583910"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656711"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的連線架構
 本文說明適用於 MariaDB 的 Azure 資料庫連線架構，以及如何將流量導向至 Azure 內部和外部用戶端的適用於 MariaDB 的 Azure 資料庫實例。
@@ -50,7 +50,7 @@ ms.locfileid: "97583910"
 | 巴西南部 |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | 加拿大中部 |40.85.224.249  | | |
 | 加拿大東部 | 40.86.226.166    | | |
-| 美國中部 | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     | | |
+| 美國中部 | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
 | 中國東部 | 139.219.130.35    | | |
 | 中國東部 2 | 40.73.82.1  | | |
 | 中國北部 | 139.219.15.17    | | |

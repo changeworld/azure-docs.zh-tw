@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 981ac775e7153cfd03dc1760bbbc4e50fd9ecc57
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9fbf6990f789bdb0edb1cf45885003569d4f6a8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169540"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653226"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>在 Microsoft 身分識別平臺中簽署金鑰變換
 本文討論 Microsoft 身分識別平臺用來簽署安全性權杖時，所需瞭解的公開金鑰。 請務必注意，這些金鑰會定期變換，且在緊急狀況下，可能會立即進行匯總。 所有使用 Microsoft 身分識別平臺的應用程式，都應該能夠以程式設計的方式處理金鑰變換流程。 請繼續閱讀以了解金鑰的運作方式、如何評估變換對應用程式的影響，以及必要時如何更新應用程式或建立定期手動變換程序來處理金鑰變換。
@@ -85,7 +85,7 @@ app.UseWsFederationAuthentication(
      });
 ```
 ```
- app.UseWindowsAzureActiveDirectoryBearerAuthentication(
+app.UseWindowsAzureActiveDirectoryBearerAuthentication(
      new WindowsAzureActiveDirectoryBearerAuthenticationOptions
      {
      // ...

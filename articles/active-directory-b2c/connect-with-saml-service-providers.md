@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ad7fe062d30f6858296ad4a2638b62c190862365
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 80e6dbdc02b68c279452127933532106b0f78ab8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936432"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654654"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -39,7 +39,7 @@ Azure AD B2C 利用下列兩種方式的其中一種來達到 SAML 互通性：
 | 狀況 | Azure AD B2C 角色 | 操作方式 |
 | -------- | ----------------- | ------- |
 | 我的應用程式預期使用 SAML 判斷提示來完成驗證。 | **Azure AD B2C 作為識別提供者 (IdP)**<br />Azure AD B2C 會作為應用程式的 SAML IdP。 | 本文。 |
-| 我的使用者必須使用與 SAML 相容的識別提供者 (例如 ADFS、Salesforce 或 Shibboleth) 進行單一登入。  | **Azure AD B2C 作為服務提供者 (SP)**<br />當連線到 SAML 識別提供者時，Azure AD B2C 會作為服務提供者。 這是您應用程式與 SAML 識別提供者之間的同盟 Proxy。  | <ul><li>[使用自訂原則來設定以 ADFS 作為 SAML IdP 進行登入](identity-provider-adfs.md)</li><li>[使用自訂原則來設定以 Salesforce SAML 提供者進行登入](identity-provider-salesforce.md)</li></ul> |
+| 我的使用者必須使用與 SAML 相容的識別提供者 (例如 ADFS、Salesforce 或 Shibboleth) 進行單一登入。  | **Azure AD B2C 作為服務提供者 (SP)**<br />當連線到 SAML 識別提供者時，Azure AD B2C 會作為服務提供者。 這是您應用程式與 SAML 識別提供者之間的同盟 Proxy。  | <ul><li>[使用自訂原則來設定以 ADFS 作為 SAML IdP 進行登入](identity-provider-adfs.md)</li><li>[使用自訂原則來設定以 Salesforce SAML 提供者進行登入](identity-provider-salesforce-saml.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -393,7 +393,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>啟用識別提供者起始的流程 (選擇性) 
 
-在識別提供者起始的流程中，登入程式是由身分識別提供者起始 (Azure AD B2C) ，它會將未經要求的 SAML 回應傳送給服務提供者， (您的信賴憑證者應用程式) 。 我們目前不支援初始身分識別提供者為外部識別提供者（例如 [AD FS](identity-provider-adfs.md)或 [Salesforce](identity-provider-salesforce.md)）的案例。
+在識別提供者起始的流程中，登入程式是由身分識別提供者起始 (Azure AD B2C) ，它會將未經要求的 SAML 回應傳送給服務提供者， (您的信賴憑證者應用程式) 。 我們目前不支援初始身分識別提供者為外部識別提供者（例如 [AD FS](identity-provider-adfs.md)或 [Salesforce](identity-provider-salesforce-saml.md)）的案例。
 
 若要啟用識別提供者 (Azure AD B2C) 起始的流程，請將 **>iDPInitiatedprofileenabled** 中繼資料專案設定為信賴憑證者 `true` [技術設定檔](relyingparty.md#technicalprofile)中的。
 
@@ -443,7 +443,7 @@ https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/generic
 
 SAML 權杖是在成功登入之後 Azure AD B2C 所簽發的安全性權杖。 它包含使用者的相關資訊、權杖所適用的服務提供者、簽章和有效時間。 下表列出 Azure AD B2C 所簽發的 SAML 權杖中，您可以預期的宣告和屬性。
 
-|元素  |屬性  |注意  |
+|元素  |屬性  |備註  |
 |---------|---------|---------|
 |`<Response>`| `ID` | 自動產生之回應的唯一識別碼。 | 
 |`<Response>`| `InResponseTo` | 此訊息所回應的 SAML 要求識別碼。 | 

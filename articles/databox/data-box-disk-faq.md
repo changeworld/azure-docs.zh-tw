@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516442"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654620"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure 資料箱磁碟：常見問題集
 
@@ -100,13 +100,11 @@ A. 以下是每個訂單處理階段的預估前置時間，可讓您瞭解預�
 **資料箱磁碟訂單的預估前置時間：**
 
 1. 從入口網站訂購資料箱磁碟：幾分鐘
-2. 磁片配置和準備：1-2 個工作天
+2. 磁片配置和準備：最多5個工作天，視清查可用性和待處理訂單的數目而定
 3. 運送：2-3 個工作天
-4. 客戶網站上的資料複製：取決於資料的本質、大小和檔案數目
+4. 客戶網站上的資料複製：取決於資料的本質、大小和檔案數目。
 5. 送回運送：2-3 個工作天
-6. 在資料中心處理磁片：1-2 個工作天
-7. 將資料上傳至 Azure：當處理完成且磁片已連線時，就會開始。 上傳時間取決於資料的本質、大小和檔案數目。
-
+6. 在資料中心處理並上傳至 Azure：當操作處理完成且磁片已連線時，資料上傳就會在資料中心開始。 上傳時間取決於資料的本質、大小和檔案數目。
 
 ## <a name="configure-and-connect"></a>設定和連線
  

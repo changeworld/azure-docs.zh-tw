@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10976c91e781763264d73adcc54ba88ec8d07f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68cd107b2606643d712c4de94b6d1a82e8ee614a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256526"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657255"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>使用媒體服務 v2 執行容錯移轉串流
 
@@ -51,9 +51,9 @@ ms.locfileid: "89256526"
 
 * 目前的媒體服務 SDK 版本不支援以程式設計方式產生可讓資產和資產檔案產生關聯的 IAssetFile 資訊。 請改為使用 CreateFileInfos 媒體服務 REST API 來進行此操作。 
 * 儲存體加密資產 (AssetCreationOptions.StorageEncrypted) 不支援複寫 (因為兩個媒體服務帳戶中的加密金鑰不同)。 
-* 如果您想要利用動態封裝，請確定您想要從中串流內容的串流端點是處於 [執行中]**** 狀態。
+* 如果您想要利用動態封裝，請確定您想要從中串流內容的串流端點是處於 [執行中] 狀態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 在新的或現有的 Azure 訂用帳戶中有兩個媒體服務帳戶。 請參閱 [如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 * 作業系統：Windows 7、Windows 2008 R2 或 Windows 8。
@@ -65,10 +65,10 @@ ms.locfileid: "89256526"
 在本節中，您會建立 C# Console Application 專案。
 
 1. 使用 Visual Studio 建立一個包含 C# Console Application 專案的新方案。 輸入 **HandleRedundancyForOnDemandStreaming** 作為名稱，然後按一下 **[確定]**。
-2. 在與**HandleRedundancyForOnDemandStreaming .csproj**專案檔相同的層級上建立**SupportFiles**資料夾。 在 [ **SupportFiles** ] 資料夾底下，建立 **OutputFiles** 和 **MP4Files** 資料夾。 將 .mp4 檔案複製到 **MP4Files** 資料夾   (在此範例中，會使用 **ignite.mp4** 檔案。 )  
-3. 使用 **NuGet** 來新增與媒體服務相關之 dll 的參考。 在**Visual Studio 主功能表**中，選取 [**工具**]  >  **NuGet 封裝管理員**  >  **封裝管理員主控台**。 在主控台視窗中，輸入 **Install-Package windowsazure. windowsazure.mediaservices**，然後按 enter。
+2. 在與 **HandleRedundancyForOnDemandStreaming .csproj** 專案檔相同的層級上建立 **SupportFiles** 資料夾。 在 [ **SupportFiles** ] 資料夾底下，建立 **OutputFiles** 和 **MP4Files** 資料夾。 將 .mp4 檔案複製到 **MP4Files** 資料夾   (在此範例中，會使用 **ignite.mp4** 檔案。 )  
+3. 使用 **NuGet** 來新增與媒體服務相關之 dll 的參考。 在 **Visual Studio 主功能表** 中，選取 [**工具**]  >  **NuGet 封裝管理員**  >  **封裝管理員主控台**。 在主控台視窗中，輸入 **Install-Package windowsazure. windowsazure.mediaservices**，然後按 enter。
 4. 新增此專案所需的其他參考： System.object 和 System.object。
-5. 以下列專案取代預設新增至**Programs.cs**檔案的**using**語句：
+5. 以下列專案取代預設新增至 **Programs.cs** 檔案的 **using** 語句：
 
 ```csharp
 using System;

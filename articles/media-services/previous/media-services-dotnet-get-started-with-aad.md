@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 0d0d92c41ec15f4b4cf2307ac686b299cc5fb1ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cca17aacc914412d34f613adfeba31617c60c455
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262103"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652937"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>使用 Azure AD 驗證搭配 .NET 存取 Azure 媒體服務 API
 
@@ -30,17 +30,17 @@ ms.locfileid: "89262103"
 
 從 windowsazure.mediaservices 4.0.0.4 開始，Azure 媒體服務支援以 Azure Active Directory (Azure AD) 為主的驗證。 本主題說明如何使用 Azure AD 驗證搭配 Microsoft .NET 存取 Azure 媒體服務 API。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-- 一個 Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure 帳戶。 如需詳細資訊，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 - 媒體服務帳戶。 如需詳細資訊，請參閱[使用 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
 - 最新的 [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) 封裝。
 - 熟讀[使用 Azure AD 驗證存取 Azure 媒體服務 API 概觀](media-services-use-aad-auth-to-access-ams-api.md)主題。
 
 使用 Azure AD 驗證搭配 Azure 媒體服務時，您可以下列其中一種方式進行驗證：
 
-- **使用者驗證**可驗證使用應用程式與 Azure 媒體服務資源互動的人員。 互動式應用程式應該會先提示使用者輸入認證。 例如，授權的使用者用來監控編碼工作或即時串流的管理主控台應用程式。
-- **服務主體驗證**會驗證服務。 通常使用這種驗證方法的應用程式有執行精靈服務、中介層服務或排程的工作的應用程式：例如，Web 應用程式、函數應用程式、邏輯應用程式、API 或微服務。
+- **使用者驗證** 可驗證使用應用程式與 Azure 媒體服務資源互動的人員。 互動式應用程式應該會先提示使用者輸入認證。 例如，授權的使用者用來監控編碼工作或即時串流的管理主控台應用程式。
+- **服務主體驗證** 會驗證服務。 通常使用這種驗證方法的應用程式有執行精靈服務、中介層服務或排程的工作的應用程式：例如，Web 應用程式、函數應用程式、邏輯應用程式、API 或微服務。
 
 >[!IMPORTANT]
 >Azure 媒體服務目前支援 Azure 存取控制服務驗證模型。 不過，存取控制授權將在 2018 年 6 月 22 日被取代。 建議您儘速移轉至 Azure Active Directory 驗證模型。
@@ -63,11 +63,11 @@ ms.locfileid: "89262103"
 1. 在 Visual Studio 中，建立新的 C# 主控台應用程式。
 2. 使用 [windowsazure.mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet 封裝來安裝 **Azure 媒體服務 .NET SDK**。
 
-    若要使用 NuGet 加入參考，請採取下列步驟︰在 [方案總管]**** 中，以滑鼠右鍵按一下專案名稱，然後選取 [管理 NuGet 封裝]****。 接著，搜尋 **windowsazure.mediaservices**，然後選取 [安裝]****。
+    若要使用 NuGet 加入參考，請採取下列步驟︰在 [方案總管] 中，以滑鼠右鍵按一下專案名稱，然後選取 [管理 NuGet 封裝]。 接著，搜尋 **windowsazure.mediaservices**，然後選取 [安裝]。
 
     -或-
 
-    在 Visual Studio 的 [封裝管理員主控台]**** 中，執行下列命令。
+    在 Visual Studio 的 [封裝管理員主控台] 中，執行下列命令。
 
     ```console
     Install-Package windowsazure.mediaservices -Version 4.0.0.4
@@ -101,7 +101,7 @@ var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
 若要開始針對媒體服務進行程式設計，您必須建立代表伺服器內容的 **CloudMediaCoNtext** 實例。 **CloudMediaContext** 包含重要集合的參考，包括工作、資產、檔案、存取原則和定位器。
 
-您還需要將**媒體 REST 服務的資源 URI** 傳遞至 **CloudMediaContext** 建構函式。 若要取得媒體 REST 服務的資源 URI，請登入 Azure 入口網站，選取您的 Azure 媒體服務帳戶，選取 [API 存取權]****，然後選取 [使用使用者驗證連線到 Azure 媒體服務]****。
+您還需要將 **媒體 REST 服務的資源 URI** 傳遞至 **CloudMediaContext** 建構函式。 若要取得媒體 REST 服務的資源 URI，請登入 Azure 入口網站，選取您的 Azure 媒體服務帳戶，選取 [API 存取權]，然後選取 [使用使用者驗證連線到 Azure 媒體服務]。
 
 下列程式碼範例會建立 **CloudMediaContext** 執行個體：
 
@@ -147,14 +147,14 @@ namespace AzureADAuthSample
 - 媒體服務資源 URI。
 - Azure AD 的應用程式值： **用戶端識別碼** 和 **用戶端密碼**。
 
-**用戶端識別碼**和**用戶端祕密**參數的值可以在 Azure 入口網站中找到。 如需詳細資訊，請參閱[利用 Azure 入口網站開始使用 Azure AD 驗證](media-services-portal-get-started-with-aad.md)。
+**用戶端識別碼** 和 **用戶端祕密** 參數的值可以在 Azure 入口網站中找到。 如需詳細資訊，請參閱[利用 Azure 入口網站開始使用 Azure AD 驗證](media-services-portal-get-started-with-aad.md)。
 
 下列程式碼範例會使用以 **AzureAdClientSymmetricKey** 做為參數的 **AzureAdTokenCredentials** 建構函式建立權杖：
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 
 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 ```
@@ -165,11 +165,11 @@ var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 ```
 
-若要開始針對媒體服務進行程式設計，您必須建立代表伺服器內容的 **CloudMediaCoNtext** 實例。 您還需要將**媒體 REST 服務的資源 URI** 傳遞至 **CloudMediaContext** 建構函式。 您也可以從 Azure 入口網站取得**媒體 REST 服務的資源 URI** 值。
+若要開始針對媒體服務進行程式設計，您必須建立代表伺服器內容的 **CloudMediaCoNtext** 實例。 您還需要將 **媒體 REST 服務的資源 URI** 傳遞至 **CloudMediaContext** 建構函式。 您也可以從 Azure 入口網站取得 **媒體 REST 服務的資源 URI** 值。
 
 下列程式碼範例會建立 **CloudMediaContext** 執行個體：
 

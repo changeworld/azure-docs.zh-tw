@@ -3,12 +3,12 @@ title: 在 IoT Edge 的即時影片分析中使用直接方法-Azure
 description: IoT Edge 上的即時影片分析會公開數個直接方法。 直接方法是以本主題中所述的慣例為基礎。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091822"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656235"
 ---
 # <a name="direct-methods"></a>直接方法
 
@@ -98,7 +98,7 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 }
 ```
 
-|狀態|    詳細的程式碼   |說明|
+|狀態|    詳細的程式碼   |描述|
 |---|---|---|
 |400|   GraphValidationError|   一般圖形錯誤，例如迴圈或資料分割等等。|
 |400|   ModuleValidationError|  模組特定的驗證錯誤。|
@@ -140,12 +140,12 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 
 #### <a name="status-codes"></a>狀態碼
 
-|條件  |狀態碼    |詳細錯誤碼|
-|---|---|---|
-|找到實體|  200 |N/A
-|一般使用者錯誤    |400 範圍  ||
-|找不到實體   |404        ||
-|一般伺服器錯誤| 500 範圍       ||
+| 條件 | 狀態碼 | 詳細錯誤碼 |
+|--|--|--|
+| 找到實體 | 200 | N/A |
+| 一般使用者錯誤 | 400 範圍 |  |
+| 找不到實體 | 404 |  |
+| 一般伺服器錯誤 | 500 範圍 |  |
 
 ### <a name="graphtopologyset"></a>GraphTopologySet
 
@@ -227,13 +227,13 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 
 #### <a name="status-codes"></a>狀態碼
 
-|條件  |狀態碼    |詳細錯誤碼|
-|---|---|---|
-|已刪除實體|    200|    N/A|
-|找不到實體|  204|    N/A|
-|一般使用者錯誤|   400 範圍   ||
-|一或多個圖形實例正在參考圖形拓撲| 409 |GraphTopologyInUse|
-|一般伺服器錯誤| 500 範圍   ||
+| 條件 | 狀態碼 | 詳細錯誤碼 |
+|--|--|--|
+| 已刪除實體 | 200 | N/A |
+| 找不到實體 | 204 | N/A |
+| 一般使用者錯誤 | 400 範圍 |  |
+| 一或多個圖形實例正在參考圖形拓撲 | 409 | GraphTopologyInUse |
+| 一般伺服器錯誤 | 500 範圍 |  |
 
 ### <a name="graphtopologylist"></a>GraphTopologyList
 
@@ -278,18 +278,18 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 
 #### <a name="filter-support"></a>篩選支援
 
-|作業      |欄位 (s)    |操作員|
+|作業 |欄位 (s)     |運算子|
 |---|---|---|
 |$orderby|NAME  |Asc|
 
 
 #### <a name="status-codes"></a>狀態碼
 
-|條件  |狀態碼    |詳細錯誤碼|
-|---|---|---|
-|Success|   200 |N/A|
-|一般使用者錯誤|   400 範圍   ||
-|一般伺服器錯誤| 500 範圍   ||
+| 條件 | 狀態碼 | 詳細錯誤碼 |
+|--|--|--|
+| Success | 200 | N/A |
+| 一般使用者錯誤 | 400 範圍 |  |
+| 一般伺服器錯誤 | 500 範圍 |  |
 
 ### <a name="graphinstanceget"></a>GraphInstanceGet
 
@@ -323,12 +323,12 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 
 #### <a name="status-codes"></a>狀態碼
 
-|條件  |狀態碼    |詳細錯誤碼|
-|---|---|---|
-|找到實體   |200|   N/A|
-|一般使用者錯誤|   400 範圍   ||
-|找不到實體|  404 ||
-|一般伺服器錯誤| 500 範圍   ||
+| 條件 | 狀態碼 | 詳細錯誤碼 |
+|--|--|--|
+| 找到實體 | 200 | N/A |
+| 一般使用者錯誤 | 400 範圍 |  |
+| 找不到實體 | 404 |  |
+| 一般伺服器錯誤 | 500 範圍 |  |
 
 ### <a name="graphinstanceset"></a>GraphInstanceSet
 
@@ -373,15 +373,15 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 
 #### <a name="status-codes"></a>狀態碼
 
-|條件  |狀態碼    |詳細錯誤碼|
-|---|---|---|
-|已更新現有實體    |200    |N/A|
-|已建立新實體|    201 |N/A|
-|一般使用者錯誤|   400 範圍   ||
-|圖形驗證錯誤    |400|   GraphValidationError|
-|模組驗證錯誤|  400 |ModuleValidationError|
-|資源驗證錯誤 |409    |ResourceValidationError|
-|一般伺服器錯誤  |500 範圍||    
+| 條件 | 狀態碼 | 詳細錯誤碼 |
+|--|--|--|
+| 已更新現有實體 | 200 | N/A |
+| 已建立新實體 | 201 | N/A |
+| 一般使用者錯誤 | 400 範圍 |  |
+| 圖形驗證錯誤 | 400 | GraphValidationError |
+| 模組驗證錯誤 | 400 | ModuleValidationError |
+| 資源驗證錯誤 | 409 | ResourceValidationError |
+| 一般伺服器錯誤 | 500 範圍 |  |  |
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 
@@ -414,13 +414,13 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 
 #### <a name="status-codes"></a>狀態碼
 
-|條件  |狀態碼    |詳細錯誤碼|
-|---|---|---|
-|已成功刪除圖形|    200|    N/A|
-|找不到圖形|   204|    N/A|
-|一般使用者錯誤    |400 範圍  ||
-|圖形未處於「已停止」狀態    |409    |OperationNotAllowedInState|
-|一般伺服器錯誤| 500 範圍   ||
+| 條件 | 狀態碼 | 詳細錯誤碼 |
+|--|--|--|
+| 已成功刪除圖形 | 200 | N/A |
+| 找不到圖形 | 204 | N/A |
+| 一般使用者錯誤 | 400 範圍 |  |
+| 圖形未處於「已停止」狀態 | 409 | OperationNotAllowedInState |
+| 一般伺服器錯誤 | 500 範圍 |  |
 
 ### <a name="graphinstancelist"></a>GraphInstanceList
 
@@ -466,17 +466,17 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 
 #### <a name="filter-support"></a>篩選支援
 
-|作業  |   欄位 (s) |   操作員|
+|作業  |   欄位 (s) |   運算子|
 |---|---|---|
 |$orderby|  NAME|   Asc|
 
 #### <a name="status-codes"></a>狀態碼
 
-|條件  |狀態碼    |詳細錯誤碼|
-|---|---|---|
-|Success    |200    |N/A|
-|一般使用者錯誤|   400 範圍   ||
-|一般伺服器錯誤| 500 範圍   ||
+| 條件 | 狀態碼 | 詳細錯誤碼 |
+|--|--|--|
+| Success | 200 | N/A |
+| 一般使用者錯誤 | 400 範圍 |  |
+| 一般伺服器錯誤 | 500 範圍 |  |
 
 ### <a name="graphinstanceactivate"></a>GraphInstanceActivate
 
@@ -516,15 +516,15 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 
 #### <a name="status-codes"></a>狀態碼
 
-|條件  |狀態碼    |詳細錯誤碼|
-|---|---|---|
-|已成功啟用圖表   |200    |N/A|
-|已建立新實體 |201|   N/A|
-|一般使用者錯誤    |400 範圍  ||
-|模組驗證錯誤   |400|   ModuleValidationError|
-|資源驗證錯誤|    409|    ResourceValidationError|
-|圖形處於停用狀態 |409    |OperationNotAllowedInState|
-|一般伺服器錯誤| 500 範圍   ||
+| 條件 | 狀態碼 | 詳細錯誤碼 |
+|--|--|--|
+| 已成功啟用圖表 | 200 | N/A |
+| 已建立新實體 | 201 | N/A |
+| 一般使用者錯誤 | 400 範圍 |  |
+| 模組驗證錯誤 | 400 | ModuleValidationError |
+| 資源驗證錯誤 | 409 | ResourceValidationError |
+| 圖形處於停用狀態 | 409 | OperationNotAllowedInState |
+| 一般伺服器錯誤 | 500 範圍 |  |
 
 ### <a name="graphinstancedeactivate"></a>GraphInstanceDeactivate
 
@@ -565,13 +565,13 @@ IoT Edge 上的即時影片分析會公開數個可從 IoT 中樞叫用的直接
 }
 ```
 
-|條件  |狀態碼    |詳細錯誤碼|
-|---|---|---|
-|已成功啟用圖表   |200|   N/A|
-|已建立新實體 |201|   N/A|
-|一般使用者錯誤    |400 範圍  ||
-|圖形處於啟用狀態   |409|   OperationNotAllowedInState|
-|一般伺服器錯誤  |500 範圍  ||
+| 條件 | 狀態碼 | 詳細錯誤碼 |
+|--|--|--|
+| 已成功啟用圖表 | 200 | N/A |
+| 已建立新實體 | 201 | N/A |
+| 一般使用者錯誤 | 400 範圍 |  |
+| 圖形處於啟用狀態 | 409 | OperationNotAllowedInState |
+| 一般伺服器錯誤 | 500 範圍 |  |
 
 ## <a name="next-steps"></a>後續步驟
 

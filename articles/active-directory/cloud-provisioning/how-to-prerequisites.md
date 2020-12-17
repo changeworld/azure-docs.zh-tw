@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4956d11ea2a4b011a792827357c3f4627058ead9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355851"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97651985"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 雲端佈建的先決條件
 本文提供如何選擇及使用 Azure Active Directory (Azure AD) Connect 雲端佈建作為身分識別的指引。
@@ -51,33 +51,33 @@ ms.locfileid: "97355851"
 
 ### <a name="in-your-on-premises-environment"></a>在內部部署環境中
 
- 1. 識別已加入網域、執行 Windows Server 2012 R2 或更新版本，且至少有 4 GB RAM 和 .NET 4.7.1+ 執行階段的主機伺服器。
+1. 識別已加入網域、執行 Windows Server 2012 R2 或更新版本，且至少有 4 GB RAM 和 .NET 4.7.1+ 執行階段的主機伺服器。
 
- >[!NOTE]
- > 請注意，定義範圍篩選器會在主機伺服器上產生記憶體成本。  如果沒有使用範圍篩選器，就不會產生額外的記憶體成本。 4 GB 的最小值最多可支援在範圍篩選器中定義的最多12個組織單位進行同步處理。 如果您需要同步處理額外的 Ou，您將需要增加最小的記憶體數量。 使用下表做為指南：
- >
- >  
- >  | 範圍篩選器中的 Ou 數目| 需要的最小記憶體|
- >  | --- | --- |
- >  | 12| 4 GB|
- >  | 18|5.5 GB|
- >  | 28|10 + GB|
- >
- > 
+    >[!NOTE]
+    > 請注意，定義範圍篩選器會在主機伺服器上產生記憶體成本。  如果沒有使用範圍篩選器，就不會產生額外的記憶體成本。 4 GB 的最小值最多可支援在範圍篩選器中定義的最多12個組織單位進行同步處理。 如果您需要同步處理額外的 Ou，您將需要增加最小的記憶體數量。 使用下表做為指南：
+    >
+    >
+    > | 範圍篩選器中的 Ou 數目| 需要的最小記憶體|
+    > | --- | --- |
+    > | 12 | 4 GB |
+    > | 18 | 5.5 GB|
+    > | 28 | 10 + GB|
+    >
+    > 
 
- 2. 本機伺服器上的 PowerShell 執行原則必須設定為 Undefined 或 RemoteSigned。
+2. 本機伺服器上的 PowerShell 執行原則必須設定為 Undefined 或 RemoteSigned。
 
- 3. 如果伺服器與 Azure AD 之間有防火牆，請設定下列項目：
+3. 如果伺服器與 Azure AD 之間有防火牆，請設定下列項目：
+
    - 確定代理程式可透過下列連接埠對 Azure AD 提出 *輸出* 要求：
 
-        | 連接埠號碼 | 使用方式 |
-        | --- | --- |
-        | **80** | 驗證 TLS/SSL 憑證時下載憑證撤銷清單 (CRL)。  |
-        | **443** | 處理服務的所有輸出通訊。 |
-        |**8082**|如果您想要設定其管理 API，則需要安裝此參數。  此埠可在代理程式安裝完成後移除，如果您不打算使用 API。   |
-        | **8080** (選擇性) | 如果無法使用連接埠 443，則代理程式會透過連接埠 8080 每 10 分鐘報告其狀態一次。 此狀態會顯示在 Azure 入口網站中。 |
-   
-     
+      | 連接埠號碼 | 使用方式 |
+      | --- | --- |
+      | **80** | 驗證 TLS/SSL 憑證時下載憑證撤銷清單 (CRL)。  |
+      | **443** | 處理服務的所有輸出通訊。 |
+      |**8082**|如果您想要設定其管理 API，則需要安裝此參數。  此埠可在代理程式安裝完成後移除，如果您不打算使用 API。   |
+      | **8080** (選擇性) | 如果無法使用連接埠 443，則代理程式會透過連接埠 8080 每 10 分鐘報告其狀態一次。 此狀態會顯示在 Azure 入口網站中。 |
+
    - 如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
    - 如果防火牆或 Proxy 允許指定安全尾碼，請將連線新增至 \*.msappproxy.net 和 \*.servicebus.windows.net。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 代理程式必須可存取 login.windows.net 與 login.microsoftonline.com，才能進行初始註冊。 因此也請針對這些 URL 開啟您的防火牆。
@@ -86,10 +86,8 @@ ms.locfileid: "97355851"
 >[!NOTE]
 > 不支援在 Windows Server Core 上安裝雲端佈建代理程式。
 
-
-
-
 ### <a name="additional-requirements"></a>其他需求
+
 - [Microsoft .NET Framework 4.7.1](https://www.microsoft.com/download/details.aspx?id=56116) 
 
 #### <a name="tls-requirements"></a>TLS 需求
@@ -102,7 +100,7 @@ ms.locfileid: "97355851"
 若要啟用 TLS 1.2，請遵循下列步驟。
 
 1. 設定下列登錄機碼：
-    
+
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001

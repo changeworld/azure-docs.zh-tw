@@ -3,42 +3,115 @@ title: 了解 IoT 隨插即用數位分身
 description: 瞭解 IoT 隨插即用如何使用數位 twins
 author: prashmo
 ms.author: prashmo
-ms.date: 07/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f13230c7bd88a9c3cf043fc1881a34f6b7ce6fe7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 99c957e5bf6ffe69c94e109796590f5ab975c3cf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495316"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656881"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>了解 IoT 隨插即用數位分身
 
-IoT 隨插即用裝置會執行 [數位 Twins 定義語言 ](https://github.com/Azure/opendigitaltwins-dtdl) 所描述的模型， (DTDL) 架構。 模型描述特定裝置所能擁有的一組元件、屬性、命令和遙測訊息。 當 IoT 隨插即用裝置第一次連線到 IoT 中樞時，裝置對應項和數位對應項會初始化。
+IoT 隨插即用裝置會執行 [數位 Twins 定義語言 ](https://github.com/Azure/opendigitaltwins-dtdl) 所描述的模型， (DTDL) 架構。 模型描述特定裝置所能擁有的一組元件、屬性、命令和遙測訊息。
 
 IoT 隨插即用使用 DTDL 第2版。 如需此版本的詳細資訊，請參閱 GitHub 上的 [數位 Twins 定義語言 (DTDL) -第2版](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) 規格。
 
-DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數位 Twins](../digital-twins/overview.md)）使用它來代表整個環境，例如建築物和能源網路。 若要深入瞭解，請參閱 [瞭解 Azure 數位 Twins 中的對應項模型](../digital-twins/concepts-models.md)。
+> [!NOTE]
+> DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數位 Twins](../digital-twins/overview.md)）使用它來代表整個環境，例如建築物和能源網路。
 
-本文說明如何在裝置對應項的 *所需* 和 *報告* 區段中表示元件和屬性。 其也會說明這些概念如何對應到相對應的數位分身。
+Azure IoT 服務 Sdk 包含可讓服務與裝置的數位對應項互動的 Api。 例如，服務可以從數位對應項讀取裝置屬性，或使用數位對應項在裝置上呼叫命令。 若要深入瞭解，請參閱 [IoT 中樞數位](concepts-developer-guide-service.md#iot-hub-digital-twin-examples)對應項範例。
 
-本文中的 IoT 隨插即用裝置，可使用[控溫器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)元件來執行[溫度控制器模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)。
+本文 IoT 隨插即用裝置範例會實[控溫器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)元件的[溫度控制器模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)。
 
 ## <a name="device-twins-and-digital-twins"></a>裝置 twins 和數位 twins
 
-裝置 twins 是儲存裝置狀態資訊的 JSON 檔，包括中繼資料、設定和條件。 若要深入瞭解，請參閱 [瞭解及使用 IoT 中樞的裝置 twins](../iot-hub/iot-hub-devguide-device-twins.md)。 裝置和解決方案產生器都可以繼續使用一組相同的裝置對應項 Api 和 Sdk，利用 IoT 隨插即用慣例來實行裝置和解決方案。
+以及數位對應項，Azure IoT 中樞也會為每個連線的裝置維護 *裝置* 對應項。 裝置對應項類似于數位對應項，因為它是裝置屬性的標記法。 Azure IoT 服務 Sdk 包含用來與裝置 twins 互動的 Api。
 
-數位對應項 Api 是以數位 Twins 定義語言中的高階結構運作， (DTDL) 例如元件、屬性和命令。 數位對應項 Api 可讓解決方案產生器更輕鬆地建立 IoT 隨插即用的解決方案。
+當 IoT 隨插即用裝置第一次連接時，IoT 中樞會初始化數位對應項和裝置對應項。
 
-在裝置對應項中，可寫入屬性的狀態會分割成所需和已報告的區段。 所有唯讀屬性都可在報告的區段內使用。
+裝置 twins 是儲存裝置狀態資訊的 JSON 檔，包括中繼資料、設定和條件。 若要深入瞭解，請參閱 [IoT 中樞服務用戶端範例](concepts-developer-guide-service.md#iot-hub-service-client-examples)。 裝置和解決方案產生器都可以繼續使用一組相同的裝置對應項 Api 和 Sdk，利用 IoT 隨插即用慣例來實行裝置和解決方案。
+
+數位對應項 Api 會在高階 DTDL 結構（例如元件、屬性和命令）上運作。 數位對應項 Api 可讓解決方案產生器更輕鬆地建立 IoT 隨插即用的解決方案。
+
+在裝置對應項中，可寫入屬性的狀態會分割成所 *需的屬性* 和 *報告屬性* 區段。 所有唯讀屬性都可以在 [報告屬性] 區段中取得。
 
 在數位對應項中，目前和預期的屬性狀態都有統一的觀點。 給定屬性的同步處理狀態會儲存在對應的 [預設元件] `$metadata` 區段中。
 
-### <a name="digital-twin-json-format"></a>數位對應項 JSON 格式
+### <a name="device-twin-json-example"></a>裝置對應項 JSON 範例
 
-以 JSON 物件表示時，數位對應項會包含下欄欄位：
+下列程式碼片段顯示格式化為 JSON 物件的 IoT 隨插即用裝置對應項：
+
+```json
+{
+  "deviceId": "sample-device",
+  "modelId": "dtmi:com:example:TemperatureController;1",
+  "version": 15,
+  "properties": {
+    "desired": {
+      "thermostat1": {
+        "__t": "c",
+        "targetTemperature": 21.8
+      },
+      "$metadata": {...},
+      "$version": 4
+    },
+    "reported": {
+      "serialNumber": "alwinexlepaho8329",
+      "thermostat1": {
+        "maxTempSinceLastReboot": 25.3,
+        "__t": "c",
+        "targetTemperature": {
+          "value": 21.8,
+          "ac": 200,
+          "ad": "Successfully executed patch",
+        }
+      },
+      "$metadata": {...},
+      "$version": 11
+    }
+  }
+}
+```
+
+### <a name="digital-twin-example"></a>數位對應項範例
+
+下列程式碼片段顯示格式化為 JSON 物件的數位對應項：
+
+```json
+{
+  "$dtId": "sample-device",
+  "serialNumber": "alwinexlepaho8329",
+  "thermostat1": {
+    "maxTempSinceLastReboot": 25.3,
+    "targetTemperature": 21.8,
+    "$metadata": {
+      "targetTemperature": {
+        "desiredValue": 21.8,
+        "desiredVersion": 4,
+        "ackVersion": 4,
+        "ackCode": 200,
+        "ackDescription": "Successfully executed patch",
+        "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+      },
+      "maxTempSinceLastReboot": {
+         "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+      }
+    }
+  },
+  "$metadata": {
+    "$model": "dtmi:com:example:TemperatureController;1",
+    "serialNumber": {
+      "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+    }
+  }
+}
+```
+
+下表描述數位對應項 JSON 物件中的欄位：
 
 | 欄位名稱 | 描述 |
 | --- | --- |
@@ -55,83 +128,13 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 | `{componentName}.{propertyName}` | 元件在 JSON 中的屬性值 |
 | `{componentName}.$metadata` | 元件的中繼資料資訊。 |
 
-#### <a name="device-twin-sample"></a>裝置對應項範例
-
-下列程式碼片段顯示格式化為 JSON 物件的 IoT 隨插即用裝置對應項：
-
-```json
-{
-    "deviceId": "sample-device",
-    "modelId": "dtmi:com:example:TemperatureController;1",
-    "version": 15,
-    "properties": {
-        "desired": {
-            "thermostat1": {
-                "__t": "c",
-                "targetTemperature": 21.8
-            },
-            "$metadata": {...},
-            "$version": 4
-        },
-        "reported": {
-            "serialNumber": "alwinexlepaho8329",
-            "thermostat1": {
-                "maxTempSinceLastReboot": 25.3,
-                "__t": "c",
-                "targetTemperature": {
-                    "value": 21.8,
-                    "ac": 200,
-                    "ad": "Successfully executed patch",
-                }
-            },
-            "$metadata": {...},
-            "$version": 11
-        }
-    }
-}
-```
-
-#### <a name="digital-twin-sample"></a>數位對應項範例
-
-下列程式碼片段顯示格式化為 JSON 物件的數位對應項：
-
-```json
-{
-    "$dtId": "sample-device",
-    "serialNumber": "alwinexlepaho8329",
-    "thermostat1": {
-        "maxTempSinceLastReboot": 25.3,
-        "targetTemperature": 21.8,
-        "$metadata": {
-            "targetTemperature": {
-                "desiredValue": 21.8,
-                "desiredVersion": 4,
-                "ackVersion": 4,
-                "ackCode": 200,
-                "ackDescription": "Successfully executed patch",
-                "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
-            },
-            "maxTempSinceLastReboot": {
-                "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-            }
-        }
-    },
-    "$metadata": {
-        "$model": "dtmi:com:example:TemperatureController;1",
-        "serialNumber": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
-    }
-}
-```
-
 ### <a name="properties"></a>屬性
 
 屬性是代表實體之狀態的資料欄位 (例如許多物件導向程式設計語言中的屬性) 。
 
 #### <a name="read-only-property"></a>唯讀屬性
 
-結構描述：
+DTDL 架構：
 
 ```json
 {
@@ -152,9 +155,9 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 
 ```json
 "properties": {
-    "reported": {
-        "serialNumber": "alwinexlepaho8329"
-    }
+  "reported": {
+    "serialNumber": "alwinexlepaho8329"
+  }
 }
 ```
 
@@ -171,15 +174,17 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 
 #### <a name="writable-property"></a>可寫入屬性
 
-假設裝置在預設元件中也具有下列可寫入的屬性：
+下列範例顯示預設元件中的可寫入屬性。
+
+DTDL
 
 ```json
 {
-    "@type": "Property",
-    "name": "fanSpeed",
-    "displayName": "Fan Speed",
-    "writable": true,
-    "schema": "double"
+  "@type": "Property",
+  "name": "fanSpeed",
+  "displayName": "Fan Speed",
+  "writable": true,
+  "schema": "double"
 }
 ```
 
@@ -189,19 +194,19 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "fanSpeed": 2.0,
-        },
-        "reported": {
-            "fanSpeed": {
-                "value": 3.0,
-                "ac": 200,
-                "av": 1,
-                "ad": "Successfully executed patch version 1"
-            }
-        }
+  "properties": {
+    "desired": {
+      "fanSpeed": 2.0,
     },
+    "reported": {
+      "fanSpeed": {
+        "value": 3.0,
+        "ac": 200,
+        "av": 1,
+        "ad": "Successfully executed patch version 1"
+      }
+    }
+  },
 }
 ```
 
@@ -211,17 +216,17 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 
 ```json
 {
-    "fanSpeed": 3.0,
-    "$metadata": {
-        "fanSpeed": {
-            "desiredValue": 2.0,
-            "desiredVersion": 2,
-            "ackVersion": 1,
-            "ackCode": 200,
-            "ackDescription": "Successfully executed patch version 1",
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
+  "fanSpeed": 3.0,
+  "$metadata": {
+    "fanSpeed": {
+      "desiredValue": 2.0,
+      "desiredVersion": 2,
+      "ackVersion": 1,
+      "ackCode": 200,
+      "ackDescription": "Successfully executed patch version 1",
+      "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
     }
+  }
 }
 ```
 
@@ -233,8 +238,7 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 ### <a name="components"></a>元件
 
 元件可讓您將模型介面建立成其他介面的元件。
-請考慮定義為模型的 [控溫器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) 介面。
-此介面現在可以合併為元件 thermostat1 (，而另一個元件則會在定義 [溫度控制器模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)時 thermostat2) 。
+例如， [控溫器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) 介面可以納入為元件 `thermostat1` 和  `thermostat2` [溫度控制器模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) 模型。
 
 在裝置對應項中，標記會識別元件 `{ "__t": "c"}` 。 在數位對應項中， `$metadata` 有標記元件的存在。
 
@@ -251,30 +255,30 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 
 ```json
 "properties": {
-    "desired": {
-        "thermostat1": {
-            "__t": "c",
-            "targetTemperature": 21.8
-        },
-        "$metadata": {
-        },
-        "$version": 4
+  "desired": {
+    "thermostat1": {
+      "__t": "c",
+      "targetTemperature": 21.8
     },
-    "reported": {
-        "thermostat1": {
-            "maxTempSinceLastReboot": 25.3,
-            "__t": "c",
-            "targetTemperature": {
-                "value": 21.8,
-                "ac": 200,
-                "ad": "Successfully executed patch",
-                "av": 4
-            }
-        },
-        "$metadata": {
-        },
-        "$version": 11
-    }
+    "$metadata": {
+    },
+    "$version": 4
+  },
+  "reported": {
+    "thermostat1": {
+      "maxTempSinceLastReboot": 25.3,
+      "__t": "c",
+      "targetTemperature": {
+        "value": 21.8,
+        "ac": 200,
+        "ad": "Successfully executed patch",
+        "av": 4
+      }
+    },
+    "$metadata": {
+    },
+    "$version": 11
+  }
 }
 ```
 
@@ -284,21 +288,21 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 
 ```json
 "thermostat1": {
-    "maxTempSinceLastReboot": 25.3,
-    "targetTemperature": 21.8,
-    "$metadata": {
-        "targetTemperature": {
-            "desiredValue": 21.8,
-            "desiredVersion": 4,
-            "ackVersion": 4,
-            "ackCode": 200,
-            "ackDescription": "Successfully executed patch",
-            "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
-        },
-        "maxTempSinceLastReboot": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
+  "maxTempSinceLastReboot": 25.3,
+  "targetTemperature": 21.8,
+  "$metadata": {
+    "targetTemperature": {
+      "desiredValue": 21.8,
+      "desiredVersion": 4,
+      "ackVersion": 4,
+      "ackCode": 200,
+      "ackDescription": "Successfully executed patch",
+      "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+    },
+    "maxTempSinceLastReboot": {
+       "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
     }
+  }
 }
 ```
 
@@ -307,7 +311,7 @@ DTDL 不是 IoT 隨插即用專屬的。 其他 IoT 服務（例如 [Azure 數�
 
 ## <a name="digital-twin-apis"></a>數位對應項 Api
 
-Azure 數位 Twins 配備了 **取得數位** 對應項、 **更新數位** 對應項、叫用 **元件命令** ，以及叫用 **命令** 來管理裝置數位對應項。 您可以直接使用 [REST api](/rest/api/iothub/service/digitaltwin) ，或透過 [服務 SDK](../iot-pnp/libraries-sdks.md)來使用。
+數位對應項 Api 包括 **取得數位** 對應項、 **更新數位** 對應項、叫用 **元件命令** ，以及叫用 **命令** 作業更多管理數位對應項。 您可以直接使用 [REST api](/rest/api/iothub/service/digitaltwin) ，或透過 [服務 SDK](../iot-pnp/libraries-sdks.md)來使用。
 
 ## <a name="digital-twin-change-events"></a>數位分身變更事件
 

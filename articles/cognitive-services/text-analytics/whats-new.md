@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: c304c2aad3ba40d7b3a044f0e3222e31bb013648
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 625fe5f53318ebc641d102e679ef7fd0607ef683
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503976"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652836"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
@@ -160,8 +160,6 @@ JSON 回應中的下列屬性名稱已變更，適用于：
     * `confidenceScore` 有兩個小數點的精確度。 
 * `type` 已重新命名為 `category`
 * `subtype` 已重新命名為 `subcategory`
-
-[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
 > [!div class="nextstepaction"]
 > [深入瞭解文字分析 API v3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)

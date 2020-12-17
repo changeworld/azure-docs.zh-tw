@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 251f9a2b075189f19b9e943ff660baaba93ec33b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96176183"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652036"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>針對 Azure Active Directory 傳遞驗證進行疑難排解
 
@@ -44,7 +44,7 @@ ms.locfileid: "96176183"
 
 如果使用者無法登入使用傳遞驗證，他們可能會在 Azure AD 登入畫面中看到下列其中之一的使用者錯誤： 
 
-|錯誤|說明|解決方法
+|錯誤|說明|解決方案
 | --- | --- | ---
 |AADSTS80001|無法連線至 Active Directory|確定代理程式伺服器和必須驗證其密碼的使用者都是相同 AD 樹系的成員，而且都能連線到 Active Directory。  
 |AADSTS8002|連線至 Active Directory 時發生逾時|請檢查以確定 Active Directory 可用，並且會回應來自代理程式的要求。
@@ -61,7 +61,7 @@ ms.locfileid: "96176183"
 
 1. 建立測試帳戶。  
 2. 在代理程式電腦上匯入 PowerShell 模組：
- 
+
  ```powershell
  Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
  ```
@@ -83,16 +83,16 @@ ms.locfileid: "96176183"
 
 ![Azure Active Directory 管理中心 - 登入報告](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-流覽至 **Azure Active Directory**  ->  Azure Active Directory 系統 [管理中心](https://aad.portal.azure.com/)的 Azure Active Directory **登入**，然後按一下特定使用者的登入活動。 尋找 [登入錯誤碼] 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
+流覽至  ->  Azure Active Directory 系統 [管理中心](https://aad.portal.azure.com/)的 Azure Active Directory **登入**，然後按一下特定使用者的登入活動。 尋找 [登入錯誤碼] 欄位。 使用下表，將該欄位的值對應至失敗的原因和解決方式：
 
-|登入錯誤碼|登入失敗原因|解決方法
+|登入錯誤碼|登入失敗原因|解決方案
 | --- | --- | ---
 | 50144 | 使用者的 Active Directory 密碼已到期。 | 在您的內部部署 Active Directory 中重設使用者密碼。
 | 80001 | 沒有可用的驗證代理程式。 | 安裝並註冊驗證代理程式。
 | 80002 | 驗證代理程式的密碼驗證要求已逾時。 | 檢查是否可以從驗證代理程式連線到您的 Active Directory。
 | 80003 | 驗證代理程式收到無效的回應。 | 如果有多位使用者發生一樣的問題，請檢查您的 Active Directory 設定。
 | 80004 | 登入要求中使用的使用者主體名稱 (UPN) 不正確。 | 要求使用者以正確的使用者名稱登入。
-| 80005 | 驗證代理程式：發生錯誤。 | 暫時性錯誤。 請稍後再試。
+| 80005 | 驗證代理程式：發生錯誤。 | 暫時性錯誤。 請稍後再試一次。
 | 80007 | 驗證代理程式無法連線至 Active Directory。 | 檢查是否可以從驗證代理程式連線到您的 Active Directory。
 | 80010 | 驗證代理程式無法連線將密碼解密。 | 如果問題一再出現，請安裝並註冊新的驗證代理程式。 然後解除安裝目前的代理程式。 
 | 80011 | 驗證代理程式無法擷取解密金鑰。 | 如果問題一再出現，請安裝並註冊新的驗證代理程式。 然後解除安裝目前的代理程式。

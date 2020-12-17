@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/23/2017
 ms.custom: devx-track-java
 ms.author: rapatchi
-ms.openlocfilehash: f65194cde25deac8c03d6ddc3a7c0b928aaca171
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3efa51f5632dd5cdc274ea39df5178aa0351a01f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327305"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652291"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>更新先前的 Java Service Fabric 應用程式，以從 Maven 擷取 Java 程式庫
 Service Fabric JAVA 二進位檔已從 Service Fabric JAVA SDK 移至 Maven 裝載。 您可以使用 **>mavencentral** 來提取最新的 Service Fabric JAVA 相依性。 本指南將協助您使用 Yeoman 範本或 Eclipse 來更新針對 Service Fabric JAVA SDK 建立的現有 JAVA 應用程式，使其與 Maven 架構的組建相容。
@@ -165,7 +165,7 @@ task copyDeps <<{
 }
 ```
 
-現在，若要從 Maven 提取相依性，**已更新的 ** ``build.gradle`` 會有對應的組件，如下所示 -
+現在，若要從 Maven 提取相依性，**已更新的** ``build.gradle`` 會有對應的組件，如下所示 -
 
 ```gradle
 repositories {
@@ -244,7 +244,7 @@ dependencies {
 .
 ```
 
-現在，若要從 Maven 提取相依性，**已更新的 ** ``build.gradle`` 會有對應的組件，如下所示 -
+現在，若要從 Maven 提取相依性，**已更新的** ``build.gradle`` 會有對應的組件，如下所示 -
 
 ```gradle
 repositories {
@@ -319,7 +319,7 @@ task copyDeps<< {
 }
 ```
 
-現在，若要從 Maven 提取相依性，**已更新的 ** ``build.gradle`` 會有對應的組件，如下所示 -
+現在，若要從 Maven 提取相依性，**已更新的** ``build.gradle`` 會有對應的組件，如下所示 -
 
 ```gradle
 repositories {
@@ -385,7 +385,7 @@ task copyDeps<< {
 ```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
-      compile project(':MyactorInterface')
+    compile project(':MyactorInterface')
 }
 .
 .
@@ -398,7 +398,7 @@ jar
         "Class-Path": configurations.compile.collect { 'lib/' + it.getName() }.join(' '))
     }
     baseName "myactor-test"
-  destinationDir = file('out/lib')
+    destinationDir = file('out/lib')
 }
 .
 .
@@ -422,7 +422,7 @@ task copyDeps<< {
 }
 ```
 
-現在，若要從 Maven 提取相依性，**已更新的 ** ``build.gradle`` 會有對應的組件，如下所示 -
+現在，若要從 Maven 提取相依性，**已更新的** ``build.gradle`` 會有對應的組件，如下所示 -
 
 ```gradle
 repositories {
@@ -483,7 +483,7 @@ task copyDeps<< {
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Yeoman 在 Linux 上建立和部署第一個 Service Fabric Java 應用程式](service-fabric-create-your-first-linux-application-with-java.md)
 * [在 Linux 上使用適用於 Eclipse 的 Service Fabric 外掛程式建立和部署第一個 Service Fabric Java 應用程式](service-fabric-get-started-eclipse.md)

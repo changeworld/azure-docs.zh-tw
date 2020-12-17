@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aadb75d7257470cf4288c6123263f3d2dfe14d21
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781714"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654025"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -44,7 +44,7 @@ ms.locfileid: "92781714"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| Id | 是 | 要用於宣告類型的識別碼。 其他元素可以在原則中使用這個識別碼。 |
+| 識別碼 | 是 | 要用於宣告類型的識別碼。 其他元素可以在原則中使用這個識別碼。 |
 
 **ClaimType** 元素包含下列元素：
 
@@ -109,7 +109,7 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
 </ClaimType>
 ```
 
-因此，Azure AD B2C 所發出的 JWT 權杖會略過 `family_name`，而不會略過 ClaimType 名稱 **surname** 。
+因此，Azure AD B2C 所發出的 JWT 權杖會略過 `family_name`，而不會略過 ClaimType 名稱 **surname**。
 
 ```json
 {
@@ -223,14 +223,14 @@ PredicateValidationReference| 0:1 | 對 **PredicateValidationsInput** 元素的�
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
   <DefaultPartnerClaimTypes>
-    <Protocol Name="OpenIdConnect" PartnerClaimType="email" />
+  <Protocol Name="OpenIdConnect" PartnerClaimType="email" />
   </DefaultPartnerClaimTypes>
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>TextBox</UserInputType>
   <Restriction>
     <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
-    </Restriction>
- </ClaimType>
+  </Restriction>
+</ClaimType>
 ```
 
 識別體驗架構會使用電子郵件格式輸入驗證來呈現電子郵件地址宣告：

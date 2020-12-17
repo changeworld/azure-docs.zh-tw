@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/18/2020
+ms.date: 12/16/2020
 ms.custom: generated
-ms.openlocfilehash: e18dc7e16eb0b114bd279d53b7dcc895bd62f338
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f22b74b16594419b0eff33f0c73d6e9c3a62ac15
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002726"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655028"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -30,7 +30,7 @@ ms.locfileid: "96002726"
 > | 內建角色 | 描述 | ID |
 > | --- | --- | --- |
 > | **一般** |  |  |
-> | [參與者](#contributor) | 授與管理所有資源的完整存取權，但不允許您在 Azure RBAC 中指派角色。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [參與者](#contributor) | 授與管理所有資源的完整存取權，但不允許您在 Azure RBAC 中指派角色、管理 Azure 藍圖中的指派，或共用映射資源庫。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | [擁有者](#owner) | 授與管理所有資源的完整存取權，包括在 Azure RBAC 中指派角色的能力。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [讀取者](#reader) | 查看所有資源，但不允許您進行任何變更。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [使用者存取系統管理員](#user-access-administrator) | 可讓您管理 Azure 資源的使用者存取。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
@@ -165,7 +165,7 @@ ms.locfileid: "96002726"
 > | [Key Vault 憑證官員 (preview) ](#key-vault-certificates-officer-preview) | 對金鑰保存庫的憑證執行任何動作，但管理許可權除外。 僅適用于使用「Azure 角色型存取控制」許可權模型的金鑰保存庫。 | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Key Vault 參與者](#key-vault-contributor) | 管理金鑰保存庫，但不允許您在 Azure RBAC 中指派角色，也不允許您存取秘密、金鑰或憑證。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | [Key Vault 加密長 (預覽) ](#key-vault-crypto-officer-preview) | 在金鑰保存庫的金鑰上執行任何動作，但管理許可權除外。 僅適用于使用「Azure 角色型存取控制」許可權模型的金鑰保存庫。 | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
-> | [Key Vault 加密服務加密 (預覽) ](#key-vault-crypto-service-encryption-preview) | 讀取金鑰的中繼資料，並執行包裝/解除包裝作業。 僅適用于使用「Azure 角色型存取控制」許可權模型的金鑰保存庫。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault 加密服務加密使用者 (預覽) ](#key-vault-crypto-service-encryption-user-preview) | 讀取金鑰的中繼資料，並執行包裝/解除包裝作業。 僅適用于使用「Azure 角色型存取控制」許可權模型的金鑰保存庫。 | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
 > | [Key Vault 加密使用者 (預覽) ](#key-vault-crypto-user-preview) | 使用金鑰執行密碼編譯作業。 僅適用于使用「Azure 角色型存取控制」許可權模型的金鑰保存庫。 | 12338af0-0e69-4776-bea7-57ae8d297424 |
 > | [Key Vault 讀者 (預覽) ](#key-vault-reader-preview) | 讀取金鑰保存庫的中繼資料及其憑證、金鑰和秘密。 無法讀取敏感性值，例如秘密內容或金鑰內容。 僅適用于使用「Azure 角色型存取控制」許可權模型的金鑰保存庫。 | 21090545-7ca7-4776-b22c-e363652d74d2 |
 > | [Key Vault 秘密長 (預覽) ](#key-vault-secrets-officer-preview) | 對金鑰保存庫的秘密執行任何動作，但管理許可權除外。 僅適用于使用「Azure 角色型存取控制」許可權模型的金鑰保存庫。 | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
@@ -225,7 +225,7 @@ ms.locfileid: "96002726"
 
 ### <a name="contributor"></a>參與者
 
-授與管理所有資源的完整存取權，但不允許您在 Azure RBAC 中指派角色。 [深入了解](rbac-and-directory-admin-roles.md)
+授與管理所有資源的完整存取權，但不允許您在 Azure RBAC 中指派角色、管理 Azure 藍圖中的指派，或共用映射資源庫。 [深入了解](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -248,7 +248,7 @@ ms.locfileid: "96002726"
   "assignableScopes": [
     "/"
   ],
-  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC.",
+  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC, manage assignments in Azure Blueprints, or share image galleries.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
   "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
   "permissions": [
@@ -4265,6 +4265,7 @@ ACR 隔離資料寫入者
 > | [/Servers/azureADOnlyAuthentications/*](resource-provider-operations.md#microsoftsql) |  |
 > | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/managedInstances/read | 傳回受控執行個體的清單，或取得指定受控執行個體的屬性。 |
 > | [/ManagedInstances/azureADOnlyAuthentications/*](resource-provider-operations.md#microsoftsql) |  |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/sqlVulnerabilityAssessments/* |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -4326,7 +4327,8 @@ ACR 隔離資料寫入者
         "Microsoft.Support/*",
         "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
         "Microsoft.Sql/managedInstances/read",
-        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*"
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
+        "Microsoft.Security/sqlVulnerabilityAssessments/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6191,7 +6193,7 @@ ACR 隔離資料寫入者
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | [Microsoft. 邏輯](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/read | 讀取整合服務環境。 |
-> | [Microsoft. 邏輯](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/join/action | 聯結整合服務環境。 |
+> | [/IntegrationServiceEnvironments/*](resource-provider-operations.md#microsoftlogic)/join/action |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -6213,7 +6215,7 @@ ACR 隔離資料寫入者
         "Microsoft.Authorization/*/read",
         "Microsoft.Support/*",
         "Microsoft.Logic/integrationServiceEnvironments/read",
-        "Microsoft.Logic/integrationServiceEnvironments/join/action"
+        "Microsoft.Logic/integrationServiceEnvironments/*/join/action"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6688,6 +6690,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | --- | --- |
 > | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 檢查使用者授權和使用權 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/automationRules/* |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
 > | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | 將標記附加至威脅情報指標 |
@@ -6732,6 +6735,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+        "Microsoft.SecurityInsights/automationRules/*",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
@@ -7004,7 +7008,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-preview"></a>Key Vault 加密服務加密 (預覽) 
+### <a name="key-vault-crypto-service-encryption-user-preview"></a>Key Vault 加密服務加密使用者 (預覽) 
 
 讀取金鑰的中繼資料，並執行包裝/解除包裝作業。 僅適用于使用「Azure 角色型存取控制」許可權模型的金鑰保存庫。
 
@@ -7041,7 +7045,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Service Encryption (preview)",
+  "roleName": "Key Vault Crypto Service Encryption User (preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -8455,6 +8459,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft Advisor](resource-provider-operations.md#microsoftadvisor)/configurations/read | 取得組態 |
 > | [Microsoft Advisor](resource-provider-operations.md#microsoftadvisor)/recommendations/read | 讀取建議 |
 > | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
+> | [Microsoft 帳單](resource-provider-operations.md#microsoftbilling)/billingProperty/read |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -8481,7 +8486,8 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
         "Microsoft.Support/*",
         "Microsoft.Advisor/configurations/read",
         "Microsoft.Advisor/recommendations/read",
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Billing/billingProperty/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -8510,6 +8516,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft Advisor](resource-provider-operations.md#microsoftadvisor)/configurations/read | 取得組態 |
 > | [Microsoft Advisor](resource-provider-operations.md#microsoftadvisor)/recommendations/read | 讀取建議 |
 > | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
+> | [Microsoft 帳單](resource-provider-operations.md#microsoftbilling)/billingProperty/read |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -8536,7 +8543,8 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
         "Microsoft.Support/*",
         "Microsoft.Advisor/configurations/read",
         "Microsoft.Advisor/recommendations/read",
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Billing/billingProperty/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -8603,8 +8611,8 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
 > | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
-> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | 寫入 connectedClusters |
-> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/read | 讀取 connectedClusters |
+> | Kubernetes/connectedClusters/Write |  |
+> | Kubernetes/connectedClusters/read |  |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |

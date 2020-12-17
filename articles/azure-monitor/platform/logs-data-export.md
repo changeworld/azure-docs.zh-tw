@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8fa823620d6d1306260d719cbabaa3d815cc0d09
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3b29245aed1b2c7767c340cbe8cd35dfa38610b9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505438"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656677"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
@@ -58,7 +58,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ## <a name="data-completeness"></a>資料完整性
 當目的地無法使用時，資料匯出會繼續重試傳送資料最多30分鐘。 如果在30分鐘後仍無法使用，則會捨棄資料，直到目的地變成可用為止。
 
-## <a name="cost"></a>成本
+## <a name="cost"></a>Cost
 資料匯出功能目前沒有額外的費用。 未來將會宣佈資料匯出的定價，以及開始計費之前所提供的通知。 如果您選擇在通知期間之後繼續使用資料匯出，將會以適用的費率向您收費。
 
 ## <a name="export-destinations"></a>匯出目的地

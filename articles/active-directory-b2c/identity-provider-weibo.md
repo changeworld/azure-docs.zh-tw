@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f0cb2896d417ec09fdaa1f977b8507eb2ff81789
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 24e267b66d11cb3c5ca2b70ed09b7acb3653da99
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584607"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653600"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以微博帳戶登入
 
@@ -26,11 +26,9 @@ ms.locfileid: "97584607"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-::: zone pivot="b2c-custom-policy"
+## <a name="prerequisites"></a>Prerequisites
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-weibo-application"></a>建立 Weibo 應用程式
 
@@ -267,7 +265,7 @@ GitHub 技術設定檔需要將 **CreateIssuerUserId** 宣告轉換新增至 Cla
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 按一下您想要 Weibo 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **Weibo**]。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

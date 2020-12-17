@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: fefa16a39545c0c4094db8dbd18b46fb94ef5025
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 4babd015b05527cb03d2747b1c9b9a34941634ab
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504027"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657000"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自動化的指令碼建立 Service Manager Web 應用程式
 
@@ -31,7 +31,7 @@ ms.locfileid: "97504027"
 儲存這些值，當您使用 IT 服務管理連接器建立連線時會用到這些值。
 
 > [!NOTE]
-> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+> 本文包含字詞「*允許清單*」的參考 (Microsoft 已不再使用該字詞)。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -141,14 +141,14 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     {
         Write-Host "Failed to Register Microsoft.Web Resource Provider. Please register it in Azure Portal."
         exit
-    }   
+    }
 }
 do
 {
     $rand = Get-Random -Maximum 32000
 
     $siteName = $siteNamePrefix + $rand
-    
+
     $resource = Get-AzResource -Name $siteName -ResourceType Microsoft.Web/sites
 
 }while($resource)
@@ -279,7 +279,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     catch
     {
         Write-Host "Failed to Register Microsoft.Relay Resource Provider. Please register it in Azure Portal."
-    }   
+    }
 }
 
 $resource = Get-AzResource -Name $serviceName -ResourceType Microsoft.Relay/namespaces

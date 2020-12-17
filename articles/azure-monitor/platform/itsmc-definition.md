@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 568243c6fecf26510f6e9988907d1ccad103cdc2
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: c6bac44e6f7212344463665840f180732970c3d4
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618799"
+ms.locfileid: "97657153"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -259,4 +259,6 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 ## <a name="next-steps"></a>後續步驟
 
-[將 ITSM 產品/服務新增至 IT 服務管理連接器](./itsmc-connections.md)
+[ITSM 連接器總覽](./itsmc-overview.md) 
+[將 ITSM 產品/服務新增至 IT 服務管理連接器](./itsmc-connections.md) 
+針對[ITSM 連接器中的問題進行疑難排解](./itsmc-resync-servicenow.md)

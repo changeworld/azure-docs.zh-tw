@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 589f320f0099fdab829e9e707a86e3e77d51c21e
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562526"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656286"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文字分析中使用命名實體辨識
 
@@ -34,8 +34,6 @@ ms.locfileid: "97562526"
 PII 功能是 NER 的一部分，而且可以識別和修訂與個別人員相關聯之文字中的敏感實體，例如電話號碼、電子郵件地址、郵寄地址、passport 號碼。
 
 ## <a name="named-entity-recognition-features-and-versions"></a>命名實體辨識功能和版本
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 | 功能                                                         | NER v3。0 | NER 3.1-preview. 3 |
 |-----------------------------------------------------------------|--------|----------|
@@ -74,7 +72,7 @@ PII 功能是 NER 的一部分，而且可以識別和修訂與個別人員相�
 
 ### <a name="request-endpoints"></a>要求端點
 
-#### <a name="version-31-preview3"></a>[版本 3.1-preview 3](#tab/version-3-preview)
+#### <a name="version-31-preview3"></a>[版本 3.1-preview.3](#tab/version-3-preview)
 
 命名實體辨識 `v3.1-preview.3` 針對 NER、PII 和實體連結要求使用不同的端點。 根據您的要求使用下列 URL 格式。
 
@@ -475,7 +473,7 @@ PII 回應的範例：
 ---
 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已了解在認知服務中使用文字分析的實體連結概念和工作流程。 摘要說明：
 

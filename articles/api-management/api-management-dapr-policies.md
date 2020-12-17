@@ -6,12 +6,12 @@ ms.author: vlvinogr
 ms.date: 10/23/2020
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 16788e3f547c5848893ba3867da4291c45b04408
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 9d1ba226e3ca1276658f7e72e9094918f0379a77
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335480"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653532"
 ---
 # <a name="api-management-dapr-integration-policies"></a>API 管理 Dapr 整合原則
 
@@ -83,13 +83,13 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 項目             | 描述  | 必要 |
+| 元素             | 描述  | 必要 |
 |---------------------|--------------|----------|
 | set-backend-service | 根元素 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 說明                     | 必要 | 預設 |
+| 屬性        | 描述                     | 必要 | 預設 |
 |------------------|---------------------------------|----------|---------|
 | backend-id       | 必須設定為 "dapr"           | 是      | N/A     |
 | dapr-應用程式識別碼      | 目標微服務的名稱。 對應至 Dapr 中的 [appId](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/service_invocation_api.md) 參數。| 是 | N/A |
@@ -151,13 +151,13 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 項目             | 描述  | 必要 |
+| 元素             | 描述  | 必要 |
 |---------------------|--------------|----------|
 | 發行至 dapr     | 根元素 | 是      |
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 說明                     | 必要 | 預設 |
+| 屬性        | 描述                     | 必要 | 預設 |
 |------------------|---------------------------------|----------|---------|
 | pubsub-名稱      | 目標 PubSub 元件的名稱。 對應至 Dapr 中的 [pubsubname](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 參數。 如果不存在， __主題__ 屬性值必須為的形式 `pubsub-name/topic-name` 。    | 否       | None    |
 | 主題            | 主題名稱。 對應至 Dapr 中的 [主題](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/pubsub_api.md) 參數。               | 是      | N/A     |
@@ -234,7 +234,7 @@ template:
 
 ### <a name="elements"></a>元素
 
-| 項目             | 描述  | 必要 |
+| 元素             | 描述  | 必要 |
 |---------------------|--------------|----------|
 | invoke-dapr-binding | 根元素 | 是      |
 | 中繼資料            | 以索引鍵/值組的形式系結特定的中繼資料。 對應至 Dapr 中的 [中繼資料](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 |
@@ -243,7 +243,7 @@ template:
 
 ### <a name="attributes"></a>屬性
 
-| 屬性        | 說明                     | 必要 | 預設 |
+| 屬性        | 描述                     | 必要 | 預設 |
 |------------------|---------------------------------|----------|---------|
 | NAME            | 目標系結名稱。 必須符合 Dapr 中 [定義](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#bindings-structure) 的系結名稱。           | 是      | N/A     |
 | 作業       | 目標操作名稱 (系結特定) 。 對應至 Dapr 中的 [operation](https://github.com/dapr/docs/blob/master/daprdocs/content/en/reference/api/bindings_api.md#invoking-output-bindings) 屬性。 | 否 | None |

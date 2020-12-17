@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 81764294cc29ad74d5a77f2055f10498d69b59e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342994"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652920"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>還原已卸載的適用於 PostgreSQL 的 Azure 資料庫伺服器
 
@@ -24,7 +24,7 @@ ms.locfileid: "93342994"
 
 ## <a name="steps-to-restore"></a>還原的步驟
 
-1. 瀏覽至 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade)。 選取 **Azure 監視器** 服務，然後選取 [ **活動記錄** ]。
+1. 瀏覽至 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade)。 選取 **Azure 監視器** 服務，然後選取 [ **活動記錄**]。
 
 2. 在 [活動記錄] 中，按一下 [ **新增篩選** ] （如所示），並為下列各項設定下列篩選
 
@@ -39,23 +39,26 @@ ms.locfileid: "93342994"
 
  4. 流覽至於 postgresql 的 [ [建立伺服器 REST API] 頁面](/rest/api/PostgreSQL/servers/create) ，然後選取 [ **試用** ] 索引標籤（以綠色反白顯示）。 使用您的 Azure 帳戶進行登入。
 
- 5. 根據在先前步驟3中所捕獲的 resourceId 屬性 JSON 值，提供 **resourceGroupName** 、 **serverName** (已刪除的伺服器名稱) 、 **subscriptionId** 屬性。 [Api 版本] 屬性已預先填入，可保持原樣，如下圖所示。
+ 5. 根據在先前步驟3中所捕獲的 resourceId 屬性 JSON 值，提供 **resourceGroupName**、 **serverName** (已刪除的伺服器名稱) 、 **subscriptionId** 屬性。 [Api 版本] 屬性已預先填入，可保持原樣，如下圖所示。
 
     ![使用 REST API 建立伺服器](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
  6. 在下方的 [要求本文] 區段中，貼上下列內容以取代「捨棄的伺服器位置」、「submissionTimestamp」和「resourceId」。 若為 "restorePointInTime"，請指定 "submissionTimestamp" 的值減去 **15 分鐘** ，以確定命令不會發生錯誤。
+    
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
-            }
-        }
+    {
+      "location": "Dropped Server Location",  
+      "properties": 
+      {
+        "restorePointInTime": "submissionTimestamp - 15 minutes",
+        "createMode": "PointInTimeRestore",
+        "sourceServerId": "resourceId"
+      }
+    }
     ```
+
     例如，如果目前的時間是 2020-11-02T23：59： 59.0000000 Z，建議您至少15分鐘之前的還原點（2020-11-02T23：44： 59.0000000 Z）。
+
     > [!Important]
     > 卸載伺服器之後，有五天的時間限制。 五天后，預期會發生錯誤，因為找不到備份檔案。
     

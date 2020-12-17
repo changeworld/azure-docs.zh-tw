@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: 047da0224cdbdb534ad9080faee4fd48da3840c5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9c855fff9e5791b9c0cf870acfc6de53e7a700b2
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492449"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653991"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 網路監看員中連線疑難排解的簡介
 
@@ -75,7 +75,7 @@ ms.locfileid: "96492449"
 |類型  |說明  |
 |---------|---------|
 |CPU     | 高 CPU 使用率。       |
-|Memory     | 高記憶體使用率。       |
+|記憶體     | 高記憶體使用率。       |
 |GuestFirewall     | 由於虛擬機器防火牆設定，因此封鎖流量。        |
 |DNSResolution     | 目的地位址的 DNS 解析失敗。        |
 |NetworkSecurityRule    | NSG 規則封鎖流量 (傳回規則)        |

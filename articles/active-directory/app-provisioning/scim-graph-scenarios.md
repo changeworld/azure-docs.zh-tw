@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba8dec19443bbafa300144b1aa42b3973cce9e6d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235497"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655147"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>使用 SCIM 和 Microsoft Graph 一起布建使用者，並使用所需的資料豐富您的應用程式
 
@@ -62,7 +62,7 @@ POST /Users
     "roles": []
 }
 ```
-    
+
 ## <a name="scenario-2-automatically-remove-users-from-my-app"></a>案例2：自動從我的應用程式移除使用者
 使用「我的應用程式」的客戶會專注于安全性，並具有治理需求，可在員工不再需要時移除帳戶。 如何自動解除布建我的應用程式？
 

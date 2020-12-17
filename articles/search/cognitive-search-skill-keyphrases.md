@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 145d8265412c4efcaa2afad97feb23528a36191d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fdebffbf9643febc08cba997b3a5a5fc4bb5998
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936056"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652308"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>關鍵片語擷取認知技能
 
-**關鍵片語擷取**技能會評估非結構化的文字，並針對每一筆記錄，傳回關鍵片語的清單。 這項技能會使用認知服務中[文字分析](../cognitive-services/text-analytics/overview.md)所提供的機器學習模型。
+**關鍵片語擷取** 技能會評估非結構化的文字，並針對每一筆記錄，傳回關鍵片語的清單。 這項技能會使用認知服務中[文字分析](../cognitive-services/text-analytics/overview.md)所提供的機器學習模型。
 
 如果您需要快速識別記錄中的主要討論要點，此功能相當有用。 例如，假設輸入文字為「The food was delicious and there were wonderful staff」，服務會傳回「food」和「wonderful staff」。
 
@@ -37,7 +37,7 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 
 這些參數會區分大小寫。
 
-| 輸入                | 描述 |
+| 輸入 | 描述 |
 |---------------------|-------------|
 | `defaultLanguageCode` | (選用) 要套用至未明確指定語言之文件的語言代碼。  如果未指定預設語言代碼，則會使用英文 (en) 做為預設語言代碼。 <br/> 請參閱[支援語言的完整清單](../cognitive-services/text-analytics/language-support.md)。 |
 | `maxKeyPhraseCount`   | (選用) 產生的關鍵片語數量上限。 |

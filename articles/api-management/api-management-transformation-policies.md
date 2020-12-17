@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 3097f7b0b6b69dc470877d4951efbcbd3c7482b1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 212a6b0786b371bfb92f2e193e67d9accd432bf8
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078488"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657238"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理轉換原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](./api-management-policies.md)。
@@ -316,12 +316,12 @@ ms.locfileid: "92078488"
 
 ```xml
 <set-body>
-@{ 
-    string inBody = context.Request.Body.As<string>(preserveContent: true); 
-    if (inBody[0] =='c') { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody; 
+@{ 
+    string inBody = context.Request.Body.As<string>(preserveContent: true); 
+    if (inBody[0] =='c') { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody; 
 }
 </set-body>
 ```
@@ -329,14 +329,14 @@ ms.locfileid: "92078488"
 #### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accessing-it-later-in-the-pipeline-will-result-in-an-exception"></a>以 JObject 存取本文的範例。 請注意，由於我們不會保留原始要求本文，若在稍後於管線中存取它，將會導致例外狀況。
 
 ```xml
-<set-body> 
-@{ 
-    JObject inBody = context.Request.Body.As<JObject>(); 
-    if (inBody.attribute == <tag>) { 
-        inBody[0] = 'm'; 
-    } 
-    return inBody.ToString(); 
-} 
+<set-body> 
+@{ 
+    JObject inBody = context.Request.Body.As<JObject>(); 
+    if (inBody.attribute == <tag>) { 
+        inBody[0] = 'm'; 
+    } 
+    return inBody.ToString(); 
+} 
 </set-body>
 
 ```
@@ -513,7 +513,7 @@ OriginalUrl.
 |名稱|描述|必要|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
-|value|指定要設定之標頭的值。 若多個標頭有相同名稱，請額外加入 `value` 元素。|否|
+|值|指定要設定之標頭的值。 若多個標頭有相同名稱，請額外加入 `value` 元素。|否|
 
 ### <a name="properties"></a>屬性
 
@@ -568,7 +568,7 @@ OriginalUrl.
 |名稱|描述|必要|
 |----------|-----------------|--------------|
 |set-query-parameter|根元素。|是|
-|value|指定要設定之查詢參數的值。 若多個查詢參數有相同名稱，請額外加入 `value` 元素。|是|
+|值|指定要設定之查詢參數的值。 若多個查詢參數有相同名稱，請額外加入 `value` 元素。|是|
 
 ### <a name="properties"></a>屬性
 
@@ -697,7 +697,7 @@ OriginalUrl.
   <outbound>
       <base />
       <xsl-transform>
-        <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+          <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
             <xsl:output omit-xml-declaration="yes" method="xml" indent="yes" />
             <!-- Copy all nodes directly-->
             <xsl:template match="node()| @*|*">
@@ -705,7 +705,7 @@ OriginalUrl.
                     <xsl:apply-templates select="@* | node()|*" />
                 </xsl:copy>
             </xsl:template>
-        </xsl:stylesheet>
+          </xsl:stylesheet>
     </xsl-transform>
   </outbound>
 </policies>
@@ -716,7 +716,7 @@ OriginalUrl.
 |名稱|描述|必要|
 |----------|-----------------|--------------|
 |xsl-transform|根元素。|是|
-|參數|用於定義轉換中使用的變數|否|
+|參數 (parameter)|用於定義轉換中使用的變數|否|
 |xsl:stylesheet|根樣式表元素。 遵循 [XSLT 規格](https://www.w3.org/TR/xslt)標準定義的所有的元素和屬性|是|
 
 ### <a name="usage"></a>使用方式

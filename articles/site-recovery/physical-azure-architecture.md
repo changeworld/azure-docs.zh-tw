@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的實體伺服器嚴重損壞修復架構
 description: 本文概述使用 Azure Site Recovery 服務將內部部署實體伺服器災害復原至 Azure 期間，所使用的元件和架構。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 966636e269043d81912b552711635f34b412f22f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87422652"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654722"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>實體伺服器至 Azure 的災害復原架構
 
@@ -42,7 +42,7 @@ ms.locfileid: "87422652"
 
 | **名稱**                  | **商業**                               | **政府**                                 | **說明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
+| 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
 | 複寫               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允許 VM 與 Site Recovery 服務進行通訊。 |
 | 服務匯流排               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
@@ -92,6 +92,6 @@ ms.locfileid: "87422652"
 
 ![容錯回復](./media/physical-azure-architecture/enhanced-failback.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要設定實體伺服器到 Azure 的嚴重損壞修復，請參閱操作 [指南](physical-azure-disaster-recovery.md)。

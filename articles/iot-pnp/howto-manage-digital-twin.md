@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495264"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654603"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>管理 IoT 隨插即用數位 twins
 
@@ -26,7 +26,7 @@ IoT 隨插即用裝置會執行 [數位 Twins 定義語言 v2 ](https://github.c
 
 本文章中用來作為範例的 IoT 隨插即用裝置，會使用[控溫器](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json)元件來實行[溫度控制器模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)。
 
-下列程式碼片段顯示格式化為 JSON 物件之「 **取得數位** 對應項」要求的回應。 若要深入瞭解數位對應項的格式，請參閱 [瞭解 IoT 隨插即用數位 twins](./concepts-digital-twin.md#digital-twin-json-format)：
+下列程式碼片段顯示格式化為 JSON 物件之「 **取得數位** 對應項」要求的回應。 若要深入瞭解數位對應項的格式，請參閱 [瞭解 IoT 隨插即用數位 twins](./concepts-digital-twin.md#digital-twin-example)：
 
 ```json
 {
@@ -155,7 +155,7 @@ IoT 隨插即用裝置會執行 [數位 Twins 定義語言 v2 ](https://github.c
 
 ### <a name="rules-for-setting-the-desired-value-of-a-digital-twin-property"></a>設定數位對應項屬性所需值的規則
 
-**Name**
+**名稱**
 
 元件或屬性的名稱必須是有效的 DTDL v2 名稱。
 

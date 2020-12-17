@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: e763dbd15ea443ad3c8f6295b37999c748db7e6c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422326"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656031"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>將語言分析器新增至 Azure 認知搜尋索引中的字串欄位
 
@@ -68,68 +68,68 @@ Azure 認知搜尋支援 Lucene 所支援的35語言分析器，以及由 Office
 ## <a name="language-analyzer-list"></a>語言分析器清單 
  以下是支援的語言清單與 Lucene 和 Microsoft 的分析器名稱。  
 
-|語言|Microsoft 分析器名稱|Lucene 分析器名稱|  
-|--------------|-----------------------------|--------------------------|  
-|阿拉伯文|ar.microsoft|ar.lucene|  
-|亞美尼亞文||hy.lucene|  
-|孟加拉文|bn.microsoft||  
-|巴斯克文||eu.lucene|  
-|保加利亞文|bg.microsoft|bg.lucene|  
-|卡達隆尼亞文|ca.microsoft|ca.lucene|  
-|簡體中文|zh-Hans.microsoft|zh-Hans.lucene|  
-|繁體中文|zh-Hant.microsoft|zh-Hant.lucene|  
-|克羅埃西亞文|hr.microsoft||  
-|捷克文|cs.microsoft|cs.lucene|  
-|丹麥文|da.microsoft|da.lucene|  
-|荷蘭文|nl.microsoft|nl.lucene|  
-|英文|en.microsoft|en.lucene|  
-|愛沙尼亞文|et.microsoft||  
-|芬蘭文|fi.microsoft|fi.lucene|  
-|法文|fr.microsoft|fr.lucene|  
-|加利西亞文||gl.lucene|  
-|德文|de.microsoft|de.lucene|  
-|希臘文|el.microsoft|el.lucene|  
-|古吉拉特文|gu.microsoft||  
-|Hebrew|he.microsoft||  
-|Hindi|hi.microsoft|hi.lucene|  
-|匈牙利文|hu.microsoft|hu.lucene|  
-|冰島文|is.microsoft||  
-|印尼文 (Bahasa)|id.microsoft|id.lucene|  
-|愛爾蘭文||ga.lucene|  
-|義大利文|it.microsoft|it.lucene|  
-|日文|ja.microsoft|ja.lucene|  
-|坎那達文|kn。 microsoft||  
-|韓文|ko.microsoft|ko.lucene|  
-|拉脫維亞文|lv.microsoft|lv.lucene|  
-|立陶宛文|lt.microsoft||  
-|馬來亞拉姆文|ml.microsoft||  
-|馬來文 (拉丁)|ms.microsoft||  
-|馬拉地文|mr.microsoft||  
-|挪威文|nb.microsoft|no.lucene|  
-|波斯文||fa.lucene|  
-|波蘭文|pl.microsoft|pl.lucene|  
-|葡萄牙文 (巴西)|pt-Br.microsoft|pt-Br.lucene|  
-|葡萄牙文 (葡萄牙)|pt-Pt.microsoft|pt-Pt.lucene|  
-|旁遮普文|pa.microsoft||  
-|羅馬尼亞文|ro.microsoft|ro.lucene|  
-|俄文|ru.microsoft|ru.lucene|  
-|塞爾維亞文 (斯拉夫)|sr-cyrillic.microsoft||  
-|塞爾維亞文 (拉丁)|sr-latin.microsoft||  
-|斯洛伐克文|sk.microsoft||  
-|斯洛維尼亞文|sl.microsoft||  
-|西班牙文|es.microsoft|es.lucene|  
-|瑞典文|sv.microsoft|sv.lucene|  
-|坦米爾文|ta.microsoft||  
-|泰盧固文|te.microsoft||  
-|泰文|th.microsoft|th.lucene|  
-|土耳其文|tr.microsoft|tr.lucene|  
-|烏克蘭文|uk.microsoft||  
-|烏都文|ur.microsoft||  
-|越南文|vi.microsoft||  
+| 語言 | Microsoft 分析器名稱 | Lucene 分析器名稱 |  |
+|--|--|--|--|
+| 阿拉伯文 | ar.microsoft | ar.lucene |  |
+| 亞美尼亞文 |  | hy.lucene |  |
+| 孟加拉文 | bn.microsoft |  |  |
+| 巴斯克文 |  | eu.lucene |  |
+| 保加利亞文 | bg.microsoft | bg.lucene |  |
+| 卡達隆尼亞文 | ca.microsoft | ca.lucene |  |
+| 簡體中文 | zh-Hans.microsoft | zh-Hans.lucene |  |
+| 繁體中文 | zh-Hant.microsoft | zh-Hant.lucene |  |
+| 克羅埃西亞文 | hr.microsoft |  |  |
+| 捷克文 | cs.microsoft | cs.lucene |  |
+| 丹麥文 | da.microsoft | da.lucene |  |
+| 荷蘭文 | nl.microsoft | nl.lucene |  |
+| 英文 | en.microsoft | en.lucene |  |
+| 愛沙尼亞文 | et.microsoft |  |  |
+| 芬蘭文 | fi.microsoft | fi.lucene |  |
+| 法文 | fr.microsoft | fr.lucene |  |
+| 加里斯亞文 |  | gl.lucene |  |
+| 德文 | de.microsoft | de.lucene |  |
+| 希臘文 | el.microsoft | el.lucene |  |
+| 古吉拉特文 | gu.microsoft |  |  |
+| Hebrew | he.microsoft |  |  |
+| Hindi | hi.microsoft | hi.lucene |  |
+| 匈牙利文 | hu.microsoft | hu.lucene |  |
+| 冰島文 | is.microsoft |  |  |
+| 印尼文 (Bahasa) | id.microsoft | id.lucene |  |
+| 愛爾蘭文 |  | ga.lucene |  |
+| 義大利文 | it.microsoft | it.lucene |  |
+| 日文 | ja.microsoft | ja.lucene |  |
+| 坎那達文 | kn。 microsoft |  |  |
+| 韓文 | ko.microsoft | ko.lucene |  |
+| 拉脫維亞文 | lv.microsoft | lv.lucene |  |
+| 立陶宛文 | lt.microsoft |  |  |
+| 馬來亞拉姆文 | ml.microsoft |  |  |
+| 馬來文 (拉丁) | ms.microsoft |  |  |
+| 馬拉地文 | mr.microsoft |  |  |
+| 挪威文 | nb.microsoft | no.lucene |  |
+| 波斯文 |  | fa.lucene |  |
+| 波蘭文 | pl.microsoft | pl.lucene |  |
+| 葡萄牙文 (巴西) | pt-Br.microsoft | pt-Br.lucene |  |
+| 葡萄牙文 (葡萄牙) | pt-Pt.microsoft | pt-Pt.lucene |  |
+| 旁遮普文 | pa.microsoft |  |  |
+| 羅馬尼亞文 | ro.microsoft | ro.lucene |  |
+| 俄文 | ru.microsoft | ru.lucene |  |
+| 塞爾維亞文 (斯拉夫) | sr-cyrillic.microsoft |  |  |
+| 塞爾維亞文 (拉丁) | sr-latin.microsoft |  |  |
+| 斯洛伐克文 | sk.microsoft |  |  |
+| 斯洛維尼亞文 | sl.microsoft |  |  |
+| 西班牙文 | es.microsoft | es.lucene |  |
+| 瑞典文 | sv.microsoft | sv.lucene |  |
+| 坦米爾文 | ta.microsoft |  |  |
+| 泰盧固文 | te.microsoft |  |  |
+| 泰文 | th.microsoft | th.lucene |  |
+| 土耳其文 | tr.microsoft | tr.lucene |  |
+| 烏克蘭文 | uk.microsoft |  |  |
+| 烏都文 | ur.microsoft |  |  |
+| 越南文 | vi.microsoft |  |  |
 
  所有名稱加上 **Lucene** 註解的分析器都是由 [Apache Lucene 的語言分析器](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ) \(英文\) 所提供。
 
-## <a name="see-also"></a>請參閱  
+## <a name="see-also"></a>另請參閱  
 
 + [建立索引 &#40;Azure 認知搜尋 REST API&#41;](/rest/api/searchservice/create-index)  
 
