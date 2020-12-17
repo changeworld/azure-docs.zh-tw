@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: d9850c83fc949aa3a2b0521dfa0d41d49b7283bd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515617"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>教學課程：Azure Active Directory 與 Peakon 整合
 
@@ -64,7 +64,7 @@ Peakon 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Peakon** ，從結果面板中選取 [Peakon]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Peakon**，從結果面板中選取 [Peakon]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 Peakon](common/search-new-app.png)
 
@@ -179,7 +179,7 @@ Peakon 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱] 欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
@@ -229,17 +229,17 @@ Peakon 需以手動方式佈建。
 
 3. 按一下頁面右上方的 [新增員工]。
 
-      ![新增員工](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
+    ![新增員工](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
 3. 在 [New employee] \(新增員工\) 對話方塊頁面上，執行下列步驟：
 
-     ![新增員工](./media/peakon-tutorial/tutorial_peakon_create.png)
+    ![新增員工](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. 在 [Name] \(名稱\) 文字方塊中，輸入 **Britta** 作為名字，並輸入 **simon** 作為姓氏。
+    1. 在 [Name] \(名稱\) 文字方塊中，輸入 **Britta** 作為名字，並輸入 **simon** 作為姓氏。
 
-    b. 在 [電子郵件] 文字方塊中，輸入電子郵件地址，例如 **Brittasimon\@contoso.com** 。
+    1. 在 [電子郵件] 文字方塊中，輸入電子郵件地址，例如 **Brittasimon\@contoso.com**。
 
-    c. 按一下 [Create employee] \(建立員工\)。
+    1. 按一下 [Create employee] \(建立員工\)。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

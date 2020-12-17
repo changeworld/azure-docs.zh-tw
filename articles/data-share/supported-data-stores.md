@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 12/7/2020
-ms.openlocfilehash: 566fd2c9c31933420769f7200a0434cc53f8c2f3
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.date: 12/16/2020
+ms.openlocfilehash: d45d9a29f671e66c6caba689f49e1748780545e0
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853132"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616740"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share 中支援的資料存放區
 
@@ -50,7 +50,7 @@ Azure Data Share 提供開放式且彈性的資料共用，包括能夠從不同
 | Azure 資料總管 ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>從儲存體帳戶共用
-Azure Data Share 支援 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔案、資料夾和檔案系統。 它也支援從 Azure Blob 儲存體共用 blob、資料夾和容器。 目前僅支援區塊 blob。 當檔案系統、容器或資料夾在快照集型共用中共用時，資料取用者可以選擇建立共用資料的完整複本，或利用累加式快照集功能只複製新的或更新的檔案。 增量快照集會以檔案的上次修改時間為基礎。 將會覆寫具有相同名稱的現有檔案。
+Azure Data Share 支援 Azure Data Lake Gen1 和 Azure Data Lake Gen2 共用檔案、資料夾和檔案系統。 它也支援從 Azure Blob 儲存體共用 blob、資料夾和容器。 目前僅支援區塊 blob。 當檔案系統、容器或資料夾在快照集型共用中共用時，資料取用者可以選擇建立共用資料的完整複本，或利用累加式快照集功能只複製新的或更新的檔案。 增量快照集會以檔案的上次修改時間為基礎。 快照集期間將會覆寫具有相同名稱的現有檔案。 未在目標上刪除從來源刪除的檔案。 
 
 如需詳細資訊，請參閱 [共用和接收 Azure Blob 儲存體的資料，Azure Data Lake Storage](how-to-share-from-storage.md) 。
 

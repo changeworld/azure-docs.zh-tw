@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 35c1ffb370a158acc91e2378119055337e28580d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2af79efa2bd1685d0e7bd621e2ddb8930425dee1
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443087"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614892"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>註冊呼叫 web Api 的行動應用程式
 
@@ -50,19 +50,19 @@ ms.locfileid: "94443087"
 
 應用程式註冊入口網站提供預覽體驗，可協助您計算適用于 iOS 和 Android 應用程式的代理回復 URI：
 
-1. 在應用程式註冊入口網站中，選取 [ **驗證** ] 以  >  **試用新的體驗** 。
+1. 在應用程式註冊入口網站中，選取 [**驗證**] 以  >  **試用新的體驗**。
 
    ![驗證分頁，您可以在其中選擇新的體驗](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
-2. 選取 [ **新增平臺** ]。
+2. 選取 [ **新增平臺**]。
 
    ![新增平臺](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
-3. 當支援平臺清單時，請選取 [ **iOS** ]。
+3. 當支援平臺清單時，請選取 [ **iOS**]。
 
    ![選擇行動應用程式](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
 
-4. 輸入您的套件組合識別碼，然後選取 [ **註冊** ]。
+4. 輸入您的套件組合識別碼，然後選取 [ **註冊**]。
 
    ![輸入您的套件組合識別碼](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
@@ -72,16 +72,21 @@ ms.locfileid: "94443087"
 
 如果您想要手動設定重新導向 URI，您可以透過應用程式資訊清單進行。 以下是資訊清單的建議格式：
 
-- **iOS** ： `msauth.<BUNDLE_ID>://auth`
+- **iOS**： `msauth.<BUNDLE_ID>://auth`
   - 例如，輸入 `msauth.com.yourcompany.appName://auth`
-- **Android** ： `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
+- **Android**： `msauth://<PACKAGE_NAME>/<SIGNATURE_HASH>`
   - 您可以透過 KeyTool 命令使用 release 機碼或 debug 鍵來產生 Android 簽章雜湊。
 
 ### <a name="username-password-authentication"></a>使用者名稱-密碼驗證
 
 如果您的應用程式只使用使用者名稱密碼驗證，則您不需要為應用程式註冊重新導向 URI。 此流程會執行 Microsoft 身分識別平臺2.0 版端點的往返。 您的應用程式不會被回呼任何特定的 URI。
 
-不過，您必須將應用程式識別為公用用戶端應用程式。 若要這樣做，請從應用程式的 [ **驗證** ] 區段開始。 在 [ **Advanced settings** ] 子區段的 [ **預設用戶端類型** ] 段落中，針對 [將 **應用程式視為公用用戶端** ] 問題，選取 [ **是]** 。
+不過，您必須將應用程式識別為公用用戶端應用程式。 操作方法：
+
+1. 仍在 [Azure 入口網站](https://portal.azure.com)中，選取 **應用程式註冊** 中的應用程式，然後選取 [ **驗證**]。
+1. 在 [**高級設定**] 中，  >  **允許公用用戶端流程**  >  **啟用下列行動和桌面流程：**，選取 **[是]**。
+
+   :::image type="content" source="media/scenarios/default-client-type.png" alt-text="在 Azure 入口網站中啟用 [驗證] 窗格上的 [公用用戶端設定]":::
 
 ## <a name="api-permissions"></a>API 權限
 

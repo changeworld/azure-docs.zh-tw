@@ -3,18 +3,20 @@ title: 遷移至 Azure 資源撰寫金鑰
 titleSuffix: Azure Cognitive Services
 description: 本文說明如何從電子郵件帳戶將 Language Understanding (LUIS) 撰寫驗證至 Azure 資源。
 services: cognitive-services
+author: aahill
+ms.author: aahi
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, contperf-fy21q2
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/07/2020
-ms.openlocfilehash: 243c9834aa256e26d620c00ac0fa7a262919aabd
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.date: 12/14/2020
+ms.openlocfilehash: 086bc17938064571e8759ecda633fb5f87d1060f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762629"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616808"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>遷移至 Azure 資源撰寫金鑰
 
@@ -26,41 +28,22 @@ Language Understanding (LUIS) 撰寫驗證已從電子郵件帳戶變更為 Azur
 
 ## <a name="what-is-migration"></a>什麼是遷移？
 
-遷移是從電子郵件帳戶將撰寫驗證變更為 Azure 資源的程式。 遷移之後，您的帳戶將會連結至 Azure 訂用帳戶和 Azure 撰寫資源。 *所有 LUIS 使用者 (應用程式擁有者和共同作業者) 最後都需要遷移。*
+遷移是從電子郵件帳戶將撰寫驗證變更為 Azure 資源的程式。 遷移之後，您的帳戶將會連結至 Azure 訂用帳戶和 Azure 撰寫資源。
 
-您必須從 [LUIS 入口網站](https://www.luis.ai)進行遷移。 例如，如果您使用 LUIS CLI 建立撰寫金鑰，您將需要在 LUIS 入口網站中完成遷移程式。 在遷移後，您仍然可以在應用程式上擁有共同作者，但這些會新增至 Azure 資源層級，而不是在應用層級上。
-
-> [!Note]
-> 在遷移之前，greenfield 在 LUIS 應用層 _級上稱為_ 共同作業者。 遷移之後，會在 Azure 資源層級上使用 _參與者_ 的 azure 角色來取得相同的功能。
-
-## <a name="notes-before-you-migrate"></a>遷移之前的注意事項
-
-* 無法反轉遷移。
-* 如果您已登入多個 [LUIS 區域入口網站](./luis-reference-regions.md#luis-authoring-regions)，系統會要求您在多個區域中一次遷移。
-* 如果您是應用程式的擁有者，應用程式會自動與您一起遷移。
-* 擁有者無法選擇要遷移的應用程式子集，而且程式無法還原。
-* 在擁有者遷移之後，應用程式將會從共同作業者的帳戶中消失。
-* 系統會提示擁有者傳送電子郵件給共同作業者，以通知他們遷移。
-* 如果您是應用程式的共同作業者，應用程式將不會與您一起遷移。 不過，系統會提示共同作業者匯出所需的應用程式。
-* 沒有任何方法可讓擁有者知道共同作業者是否已遷移。
-* 遷移不會自動將共同作業者移至 Azure 撰寫資源或將其新增至 Azure 撰寫資源。 應用程式擁有者是在遷移之後需要完成此步驟的人員。 此步驟需要 [Azure 撰寫資源的許可權](./luis-how-to-collaborate.md)。
-* 將共同作業者指派給 Azure 資源之後，他們必須先遷移，才能存取應用程式。 否則，他們將不會有撰寫應用程式的存取權。
-* 已遷移的使用者無法新增為應用程式的共同作業者。
-
+您必須從 [LUIS 入口網站](https://www.luis.ai)進行遷移。 例如，如果您使用 LUIS CLI 建立撰寫金鑰，您將需要在 LUIS 入口網站中完成遷移程式。 在遷移後，您仍然可以在應用程式上擁有共同作者，但這些會新增至 Azure 資源層級，而不是在應用層級上。 無法反轉遷移您的帳戶。
 
 > [!Note]
-> 如果您需要建立預測執行時間資源，則可以 [使用個別](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) 的程式來建立它。
+> * 如果您需要建立預測執行時間資源，則可以 [使用個別](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) 的程式來建立它。
+> * 請參閱下面的「 [遷移附注](#migration-notes) 」一節，以瞭解您的應用程式和參與者將如何受到影響的相關資訊。 
+> * 撰寫您的 LUIS 應用程式是免費的，如同 F0 層所表示。 深入瞭解 [定價層](luis-limits.md#key-limits)。
 
 ## <a name="migration-prerequisites"></a>移轉必要條件
 
-* 您必須與有效的 Azure 訂用帳戶相關聯。 要求您的租使用者系統管理員將您新增至訂用帳戶，或 [註冊免費](https://azure.microsoft.com/free/cognitive-services)帳戶。
-* 您必須從 LUIS 入口網站或從 [Azure 入口網站](https://portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)建立 LUIS Azure 撰寫資源。 從 LUIS 入口網站建立撰寫資源是下一節所述之遷移程式的一部分。
-* 如果您是應用程式的共同作業者，應用程式將不會自動遷移。 當您進行遷移流程時，系統會提示您匯出這些應用程式。 您也可以使用 [匯出 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)。 您可以在遷移後將應用程式匯入回 LUIS。 匯入程式會使用新的應用程式識別碼建立新的應用程式，您是擁有者。
+* 有效的 Azure 訂用帳戶。 要求您的租使用者系統管理員將您新增至訂用帳戶，或 [註冊免費](https://azure.microsoft.com/free/cognitive-services)帳戶。
+* 從 LUIS 入口網站或 [AZURE 入口網站](https://portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)LUIS Azure 撰寫資源。 
+    * 從 LUIS 入口網站建立撰寫資源是下一節所述之遷移程式的一部分。
+* 如果您是應用程式的共同作業者，應用程式將不會自動遷移。 當您進行遷移流程時，系統會提示您匯出這些應用程式。 您也可以使用 [匯出 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)。 您可以在遷移後將應用程式匯入回 LUIS。 匯入程式會使用新的應用程式識別碼建立新的應用程式，您是擁有者。        
 * 如果您是應用程式的擁有者，則不需要匯出您的應用程式，因為它們會自動遷移。 系統會提供包含每個應用程式之所有共同作業者清單的電子郵件範本，讓他們可以收到遷移程式的通知。
-
-> [!Note]
-> 撰寫您的 LUIS 應用程式是免費的，如同 F0 層所表示。 深入瞭解 [定價層](luis-limits.md#key-limits)。
-
 
 ## <a name="migration-steps"></a>移轉步驟
 
@@ -69,7 +52,7 @@ Language Understanding (LUIS) 撰寫驗證已從電子郵件帳戶變更為 Azur
     > [!div class="mx-imgBorder"]
     > ![遷移視窗簡介](./media/migrate-authoring-key/notify-azure-migration.png)
 
-2. 如果您在任何應用程式上都有共同作業者，則會顯示您所擁有的應用程式名稱清單，以及每個應用程式上的撰寫區域和共同作業者電子郵件。 建議您將電子郵件傳送給您的共同作業者，方法是按一下應用程式名稱左邊的 [ **傳送** 符號] 按鈕，通知他們有關于遷移的電子郵件。
+2. 如果您在任何應用程式上都有共同作業者，則會看到您所擁有的應用程式名稱清單，以及每個應用程式上的撰寫區域和共同作業者電子郵件。 建議您將電子郵件傳送給您的共同作業者，方法是按一下應用程式名稱左邊的 [ **傳送** 符號] 按鈕，通知他們有關于遷移的電子郵件。
 如果共同作業者 `*` 有指派給您應用程式的預測資源，則符號會出現在應用程式名稱的旁邊。 在遷移之後，這些應用程式仍會將這些預測資源指派給它們，即使共同作業者將無法存取來撰寫您的應用程式也一樣。 不過，如果預測資源的擁有者從 Azure 入口網站重新產生 [金鑰](./luis-how-to-azure-subscription.md#regenerate-an-azure-key) ，則此指派會中斷。  
 
    > [!div class="mx-imgBorder"]
@@ -117,6 +100,15 @@ Language Understanding (LUIS) 撰寫驗證已從電子郵件帳戶變更為 Azur
 
 6. 在所有區域中成功遷移之後，請按一下 [完成]。 您現在可以存取您的應用程式。 您可以繼續在入口網站內的所有區域中撰寫和維護所有應用程式。
 
+## <a name="migration-notes"></a>遷移注意事項
+
+* 在遷移之前，greenfield 在 LUIS 應用層 _級上稱為_ 共同作業者。 遷移之後，會在 Azure 資源層級上使用 _參與者_ 的 azure 角色來取得相同的功能。
+* 如果您已登入多個 [LUIS 區域入口網站](./luis-reference-regions.md#luis-authoring-regions)，系統會要求您在多個區域中一次遷移。
+* 如果您是應用程式的擁有者，應用程式會自動與您一起遷移。 如果您是應用程式的共同作業者，應用程式將不會與您一起遷移。 不過，系統會提示共同作業者匯出所需的應用程式。
+* 應用程式擁有者無法選擇要遷移的應用程式子集，且沒有任何方法可讓擁有者知道共同作業者是否已遷移。
+* 遷移不會自動將共同作業者移至 Azure 撰寫資源或將其新增至 Azure 撰寫資源。 應用程式擁有者是在遷移之後需要完成此步驟的人員。 此步驟需要 [Azure 撰寫資源的許可權](./luis-how-to-collaborate.md)。
+* 將參與者指派給 Azure 資源之後，他們必須先遷移，才能存取應用程式。 否則，他們將不會有撰寫應用程式的存取權。
+
 
 ## <a name="using-apps-after-migration"></a>在遷移後使用應用程式
 
@@ -139,7 +131,6 @@ Language Understanding (LUIS) 撰寫驗證已從電子郵件帳戶變更為 Azur
 
 > [!Note]
 > 如果已遷移 LUIS 應用程式的擁有者，並將共同作業者新增為 Azure 資源的參與者，則共同作業者仍無法存取該應用程式，除非他們也遷移。
-
 
 ## <a name="troubleshooting-the-migration-process"></a>針對遷移程式進行疑難排解
 

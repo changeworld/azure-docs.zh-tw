@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 724809dbce3ca1b5a36f4da0ba5c03d0f78897f5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577645"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614637"
 ---
 # <a name="viewing-multiple-resources-in-metrics-explorer"></a>在計量瀏覽器中查看多個資源
 
@@ -71,7 +71,7 @@ ms.locfileid: "97577645"
 
 ![顯示如何使用分割來查看每個 VM 的 CPU 百分比的螢幕擷取畫面](./media/metrics-charts/026.png)
 
-除了分割之外，您還可以使用篩選功能，只顯示您想要查看的資源群組。  比方說，如果您想要查看特定資源群組 Vm 的 CPU 百分比，您可以使用「新增篩選」工具依資源群組進行篩選。 在此範例中，我們會依 TailspinToys 進行篩選，這會移除與 TailspinToysDemo 中資源相關聯的度量。 
+除了分割之外，您還可以使用篩選功能，只顯示您想要查看的資源群組。  比方說，如果您想要查看特定資源群組 Vm 的 CPU 百分比，您可以使用「新增篩選」工具依資源群組進行篩選。 在此範例中，我們會依 TailspinToysDemo 進行篩選，這會移除與 TailspinToys 中資源相關聯的度量。 
 
 ![顯示如何依資源群組進行篩選的螢幕擷取畫面](./media/metrics-charts/027.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "97577645"
 > [!WARNING] 
 > 您必須具有訂用帳戶層級的「監視讀者」許可權，以將多個資源、資源群組或訂用帳戶的計量視覺化。 若要這樣做，請遵循 [本檔](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)中的指示。 
 
-若要釘選多個資源的圖表，請遵循 [此處](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#create-alert-rules)的指示。 
+若要釘選多個資源的圖表，請遵循 [此處](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards)的指示。 
 
 ## <a name="next-steps"></a>後續步驟
 

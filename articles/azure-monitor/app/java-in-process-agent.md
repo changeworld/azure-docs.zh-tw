@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 2011d013cce43eaf471d61936d5c34c318360381
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371878"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616638"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights
 
@@ -139,7 +139,7 @@ Application Insights JAVA 3.0 會自動捕獲透過這些 Api 傳送的遙測資
 
 ### <a name="supported-custom-telemetry"></a>支援的自訂遙測
 
-下表表示目前支援的自訂遙測類型，可讓您用來補充 JAVA 3.0 代理程式。 總而言之，透過 micrometer 支援自訂計量、自訂例外狀況和追蹤可透過記錄架構啟用，而任何類型的自訂遙測都可透過 [Application Insights JAVA 2.X SDK](#send-custom-telemetry-using-application-insights-java-2x-sdk)來支援。
+下表表示目前支援的自訂遙測類型，可讓您用來補充 JAVA 3.0 代理程式。 總而言之，透過 micrometer 支援自訂計量、自訂例外狀況和追蹤可透過記錄架構啟用，而任何類型的自訂遙測都可透過 [Application Insights JAVA 2.X SDK](#send-custom-telemetry-using-the-2x-sdk)來支援。
 
 |                     | Micrometer | Log4j、logback、七月 | 2.x SDK |
 |---------------------|------------|---------------------|---------|
@@ -147,7 +147,7 @@ Application Insights JAVA 3.0 會自動捕獲透過這些 Api 傳送的遙測資
 | **自訂計量**  |  是       |                     |  是    |
 | **Dependencies** (相依性)    |            |                     |  是    |
 | **例外狀況**      |            |  是                |  是    |
-| **頁面流覽**      |            |                     |  是    |
+| **頁面檢視**      |            |                     |  是    |
 | **要求**        |            |                     |  是    |
 | **追蹤**          |            |  是                |  是    |
 
@@ -188,7 +188,7 @@ Log4j、Logback 和 util 會自動檢測記錄，而透過這些記錄架構執�
 
 如果您想要將自訂維度附加至您的記錄，您可以使用 [Log4j 1.2 mdc](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html)、 [Log4j 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)或 [Logback mdc](http://logback.qos.ch/manual/mdc.html)，Application Insights JAVA 3.0 會自動將這些 MDC 屬性作為追蹤和例外狀況遙測的自訂維度來捕捉。
 
-### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>使用 JAVA 2.x SDK Application Insights 傳送自訂遙測
+### <a name="send-custom-telemetry-using-the-2x-sdk"></a>使用 2.x SDK 傳送自訂遙測
 
 新增 `applicationinsights-core-2.6.2.jar` 至您的應用程式 (Application Insights JAVA 3.0 支援所有2.x 版，但如果您有選擇) ，則值得使用最新版本：
 
@@ -251,3 +251,80 @@ try {
     telemetryClient.trackException(e);
 }
 ```
+
+### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>使用 2.x SDK 新增要求自訂維度
+
+> [!NOTE]
+> 這項功能僅適用于 3.0.1-BETA 和更新版本
+
+新增 `applicationinsights-web-2.6.2.jar` 至您的應用程式 (Application Insights JAVA 3.0 支援所有2.x 版，但如果您有選擇) ，則值得使用最新版本：
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+並在您的程式碼中新增自訂維度：
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getProperties().put("mydimension", "myvalue");
+```
+
+### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>使用 2.x SDK 設定要求遙測 user_Id
+
+> [!NOTE]
+> 這項功能僅適用于 3.0.1-BETA 和更新版本
+
+新增 `applicationinsights-web-2.6.2.jar` 至您的應用程式 (Application Insights JAVA 3.0 支援所有2.x 版，但如果您有選擇) ，則值得使用最新版本：
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+並 `user_Id` 在您的程式碼中設定：
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getContext().getUser().setId("myuser");
+```
+
+### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>使用 2.x SDK 覆寫要求遙測名稱
+
+> [!NOTE]
+> 這項功能僅適用于 3.0.1-BETA 和更新版本
+
+新增 `applicationinsights-web-2.6.2.jar` 至您的應用程式 (Application Insights JAVA 3.0 支援所有2.x 版，但如果您有選擇) ，則值得使用最新版本：
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+並在您的程式碼中設定名稱：
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.setName("myname");
+```
+
+> [!NOTE]
+> 除了上述的其他所有作業之外 `RequestTelemetry` `ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry()` ，也會快速失敗並擲回例外狀況，讓您知道在3.0 代理程式下是未定義的行為。
+>
+> 如果您需要其他任何方法的互通性， `RequestTelemetry` 請開啟問題讓我們知道 https://github.com/microsoft/ApplicationInsights-Java/issues 。

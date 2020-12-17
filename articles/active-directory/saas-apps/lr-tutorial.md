@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1376dcb76c22bcd70937f533d337ee9679e9dc59
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 832c08123904b9fb889231faa86c1308704a2581
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455884"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606414"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>教學課程：Azure Active Directory 與 LoginRadius 整合
 
@@ -151,7 +151,7 @@ LoginRadius 與 Azure AD 整合可提供下列優點：
        - 取得 SP 憑證金鑰的命令：`openssl genrsa -out lr.hub.loginradius.com.key 2048`
 
        - 取得 SP 憑證的命令：`openssl req -new -x509 -key lr.hub.loginradius.com.key -out lr.hub.loginradius.com.cert -days 3650 -subj /CN=lr.hub.loginradius.com`
-     
+
        > [!NOTE]
        > 請確實輸入具有頁首和頁尾的憑證和憑證金鑰值：
        > - 憑證值範例格式：`-----BEGIN CERTIFICATE-----<certifciate value>-----END CERTIFICATE-----`

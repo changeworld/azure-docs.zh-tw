@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fd9a04c2324af2ec36d8fa1d43a079e9f2c32dd8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0205617198ec8e57cb891d2415d2b5413a945f1b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520297"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608930"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>教學課程：整合 Way We Do 與 Azure Active Directory
 
@@ -50,7 +50,7 @@ ms.locfileid: "92520297"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Way We Do** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Way We Do**。
 1. 從結果面板選取 [Way We Do]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -105,7 +105,7 @@ ms.locfileid: "92520297"
 
 1. 如果您想要手動設定 Way We Do，請開啟新的網頁瀏覽器視窗，並以系統管理員身分登入 Way We Do 公司網站，然後執行下列步驟：
 
-1. 在 Way We Do 中的任何頁面上，按一下右上角的 **人員圖示** ，然後在下拉式清單中按一下 [Account]  \(帳戶\)。
+1. 在 Way We Do 中的任何頁面上，按一下右上角的 **人員圖示**，然後在下拉式清單中按一下 [Account]  \(帳戶\)。
 
     ![Way We Do [Account] \(帳戶\)](./media/waywedo-tutorial/tutorial_waywedo_account.png)
 
@@ -117,26 +117,26 @@ ms.locfileid: "92520297"
 
     ![Way We Do [Save] \(儲存\)](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
-    a. 按一下 [Turn on single sign-on]  \(開啟單一登入\)，切換為 [Yes]  \(是\) 以啟用單一登入。
+    1. 按一下 [Turn on single sign-on] \(開啟單一登入\)，切換為 [Yes] \(是\) 以啟用單一登入。
 
-    b. 在 [Single sign-on name]  \(單一登入名稱\) 文字方塊中，輸入您的名稱。
+    1. 在 [Single sign-on name] \(單一登入名稱\) 文字方塊中，輸入您的名稱。
 
-    c. 在 [實體識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
+    1. 在 [實體識別碼] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
 
-    d. 在 [SAML SSO URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
+    1. 在 [SAML SSO URL]  文字方塊中，貼上您從 Azure 入口網站複製的 **登入 URL** 值。
 
-    e. 按一下 [Certificate]  \(憑證\) 旁的 [select]  \(選取\) 按鈕來上傳憑證。
+    1. 按一下 [Certificate] \(憑證\) 旁的 [select] \(選取\) 按鈕來上傳憑證。
 
-    f. **選擇性設定** -
-    
-    * 啟用密碼：停用此選項時，會針對 Way We Do 使用一般密碼，讓使用者只能使用單一登入。
+    1. **選擇性設定** -
 
-    * 啟用自動佈建：啟用此選項時，用於登入的電子郵件地址將自動與 Way We Do 中的使用者清單進行比較。 如果電子郵件地址與 Way We Do 中的作用中使用者不符，就會為登入的人員自動新增新的使用者帳戶，並要求該人員提供所有遺失的資訊。
+        * 啟用密碼：停用此選項時，會針對 Way We Do 使用一般密碼，讓使用者只能使用單一登入。
 
-      > [!NOTE]
-      > 透過單一登入新增的使用者會被新增為一般使用者，且不會被指派系統中的角色。 系統管理員後續將能夠將這些人員的安全性角色修改為編輯者或系統管理員，同時也可以指派一或多個組織圖角色。
+        * 啟用自動佈建：啟用此選項時，用於登入的電子郵件地址將自動與 Way We Do 中的使用者清單進行比較。 如果電子郵件地址與 Way We Do 中的作用中使用者不符，就會為登入的人員自動新增新的使用者帳戶，並要求該人員提供所有遺失的資訊。
 
-    g. 按一下 [Save]  \(儲存\) 以保存您的設定。
+          > [!NOTE]
+          > 透過單一登入新增的使用者會被新增為一般使用者，且不會被指派系統中的角色。 系統管理員後續將能夠將這些人員的安全性角色修改為編輯者或系統管理員，同時也可以指派一或多個組織圖角色。
+
+    1. 按一下 [Save] \(儲存\) 以保存您的設定。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -155,7 +155,7 @@ ms.locfileid: "92520297"
 在本節中，您會將 Way We Do 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Way We Do]  。
+1. 在應用程式清單中，選取 [Way We Do]。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
@@ -164,7 +164,7 @@ ms.locfileid: "92520297"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 

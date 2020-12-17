@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 11/19/2020
+ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: dca14781aac9db3cdd47ab4b66506f77f0b78c31
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510646"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616570"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -77,6 +77,11 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 [Azure 成本管理 + 計費](../../cost-management-billing/index.yml)：
 
 - 從管理租使用者，CSP 合作夥伴可以查看、管理及分析預先支付的耗用量成本 (不含購買) 適用于 Azure 方案下的客戶。 成本會以零售費率和 Azure 角色型存取控制為依據， (合作夥伴對客戶訂用帳戶所擁有的 Azure RBAC) 存取權。
+
+[Azure Key Vault](../../key-vault/general/index.yml)：
+
+- 在客戶租使用者中建立金鑰保存庫
+- 使用受控識別在客戶租使用者中建立金鑰保存庫
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml)：
 

@@ -4,15 +4,15 @@ description: 瞭解如何從 Azure Functions 傳送 RabbitMQ 訊息。
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 212bfcee09cd63b6ff09faaba4d99e4b4c583fe8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: febcb3d2b6990d36a686dc4fab57a6bcbc96b080
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505710"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616655"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>Azure Functions 總覽的 RabbitMQ 輸出系結
 
@@ -193,8 +193,6 @@ module.exports = function (context, input) {
 }
 ```
 
-在 *_\__ \_ .py* 中，您可以將值傳遞給方法，以將訊息寫出至佇列 `set` 。
-
 ```python
 import azure.functions as func
 
@@ -271,11 +269,13 @@ Python 指令碼不支援屬性。
 |**direction** | n/a | 必須設定為 "out"。 |
 |**name** | n/a | 代表函式程式碼中佇列的變數名稱。 |
 |**queueName**|**QueueName**| 要傳送訊息的佇列名稱。 |
-|**主機 名**|**HostName**|如果使用 ConnectStringSetting)  (選擇性 <br>佇列的主機名稱 (例如： 10.26.45.210) |
-|**userNameSetting**|**UserNameSetting**|如果使用 ConnectionStringSetting)  (選擇性 <br>存取佇列的名稱 |
-|**passwordSetting**|**PasswordSetting**|如果使用 ConnectionStringSetting)  (選擇性 <br>用來存取佇列的密碼|
+|**主機 名**|**HostName**|如果使用 ConnectStringSetting) ，則會忽略 ( <br>佇列的主機名稱 (例如： 10.26.45.210) |
+|**userName**|**使用者名稱**|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>應用程式設定的名稱，其中包含要存取佇列的使用者名稱。 例如 UserNameSetting： "< UserNameFromSettings >"|
+|**password**|**密碼**|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>應用程式設定的名稱，其中包含用來存取佇列的密碼。 例如 UserNameSetting： "< UserNameFromSettings >"|
 |**connectionStringSetting**|**ConnectionStringSetting**|包含 RabbitMQ 訊息佇列連接字串之應用程式設定的名稱。 請注意，如果您直接指定連接字串，而不是透過 local.settings.js中的應用程式設定，則觸發程式將無法運作。  (例如： In *function.js*： connectionStringSetting： "rabbitMQConnection" <br> 在 *local.settings.json*： "rabbitMQConnection"： "< ActualConnectionstring >" ) |
-|**port**|**通訊埠**|取得或設定使用的埠。 預設為 0。|
+|**port**|**通訊埠**|如果使用 ConnectionStringSetting) 取得或設定使用的埠， (會忽略。 預設為 0。|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>使用量
 
@@ -297,7 +297,7 @@ Python 指令碼不支援屬性。
 
 * `byte[]` - 當函式結束時，如果參數值為 Null，則 Functions 不會建立一則訊息。
 * `string` - 當函式結束時，如果參數值為 Null，則 Functions 不會建立一則訊息。
-* `POCO` -如果參數值未格式化為 c # 物件，則會收到錯誤。
+* `POCO` -如果參數值未格式化為 c # 物件，則會收到錯誤。 如需完整範例，請參閱 c # 腳本 [範例](#example)。
 
 使用 c # 腳本函數時：
 
@@ -305,11 +305,11 @@ Python 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-RabbitMQ 訊息會透過字串來傳送。
+佇列訊息可透過內容系結取得。<NAME> 其中 <NAME> 符合 function.js中定義的名稱。 如果承載是 JSON，此值會還原序列化為物件。
 
 # <a name="python"></a>[Python](#tab/python)
 
-RabbitMQ 訊息會透過字串來傳送。
+請參閱 Python [範例](#example)。
 
 # <a name="java"></a>[Java](#tab/java)
 

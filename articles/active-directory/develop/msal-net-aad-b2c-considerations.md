@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860961"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614909"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 來登入具有社交身分識別的使用者
 
@@ -134,7 +134,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中設定 ROPC 流程
 
-在您的 Azure AD B2C 租使用者中，建立新的使用者流程，然後選取 [ **使用 ROPC 登入** ] 以啟用使用者流程的 ROPC。 如需詳細資訊，請參閱 [設定資源擁有者密碼認證流程](../../active-directory-b2c/configure-ropc.md)。
+在您的 Azure AD B2C 租使用者中，建立新的使用者流程，然後選取 [ **使用 ROPC 登入** ] 以啟用使用者流程的 ROPC。 如需詳細資訊，請參閱 [設定資源擁有者密碼認證流程](../../active-directory-b2c/add-ropc-policy.md)。
 
 `IPublicClientApplication` 包含 `AcquireTokenByUsernamePassword` 方法：
 

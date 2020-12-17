@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 3813d58d894d87051b1bcf8b512c848d527a52bb
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387576"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615843"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>註冊並掃描 Power BI 租使用者 (preview) 
 
@@ -50,6 +50,7 @@ ms.locfileid: "97387576"
 ## <a name="associate-the-security-group-with-the-tenant"></a>將安全性群組與租使用者建立關聯
 
 1. 登入 [Power BI 系統管理員入口網站](https://app.powerbi.com/admin-portal/tenantSettings)。
+1. 選取 [ **租使用者設定** ] 頁面。
 
     > [!Important]
     > 您必須是 Power BI 系統管理員，才能看到 [租使用者設定] 頁面。

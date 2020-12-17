@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: 246da3a35396430bbda86e5a5e927a456618ac05
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619278"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615812"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的虛擬網路設計考慮和設定選項
 
@@ -110,9 +110,8 @@ Azure Active Directory Domain Services (Azure AD DS) 提供驗證和管理服務
 
 | 連接埠號碼 | 通訊協定 | 來源                             | Destination | 動作 | 必要 | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | 任意         | Allow  | 是      | 與您的 Azure AD 租使用者同步處理。 |
-| 3389        | TCP      | CorpNetSaw                         | 任意         | Allow  | 是      | 管理您的網域。 |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | Allow  | 是      | 管理您的網域。 |
+| 3389        | TCP      | CorpNetSaw                         | 任意         | Allow  | 選用      | 支援的偵錯工具。 |
 
 已建立的 Azure 標準負載平衡器需要執行這些規則。 此網路安全性群組會保護 Azure AD DS，而且能讓受控網域正確運作。 請勿刪除此網路安全性群組。 如果沒有它，負載平衡器將無法正常運作。
 
@@ -127,12 +126,17 @@ Azure Active Directory Domain Services (Azure AD DS) 提供驗證和管理服務
 >
 > Azure SLA 不適用於未正確設定的網路安全性群組和/或使用者定義路由表已套用的部署，會封鎖 Azure AD DS 以更新和管理您的網域。
 
-### <a name="port-443---synchronization-with-azure-ad"></a>埠 443-與 Azure AD 同步處理
+### <a name="port-5986---management-using-powershell-remoting"></a>埠 5986-使用 PowerShell 遠端系統管理管理
 
-* 用來同步處理您的 Azure AD 租使用者與您的受控網域。
-* 若未存取此埠，您的受控網域將無法與您的 Azure AD 租使用者同步。 使用者可能無法登入，因為密碼的變更不會同步到您的受控網域。
-* 預設會使用 **AzureActiveDirectoryDomainServices** 服務標籤，將此埠的輸入存取限制為 IP 位址。
-* 請勿限制來自此埠的輸出存取。
+* 用來在受控網域中使用 PowerShell 遠端執行管理工作。
+* 如果沒有此埠的存取權，您的受控網域就無法更新、設定、備份或監視。
+* 針對使用以 Resource Manager 為基礎之虛擬網路的受控網域，您可以將此埠的輸入存取限制為 *AzureActiveDirectoryDomainServices* 服務標記。
+    * 針對使用傳統虛擬網路的舊版受控網域，您可以將此埠的輸入存取限制為下列來源 IP 位址： *52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18* 和 *104.40.87.209*。
+
+    > [!NOTE]
+    > 在2017中，Azure AD Domain Services 可用於 Azure Resource Manager 網路中的主機。 從那時開始，我們可以使用 Azure Resource Manager 的新式功能來建立更安全的服務。 因為 Azure Resource Manager 部署完全取代傳統部署，所以 Azure AD DS 傳統虛擬網路部署將于2023年3月1日淘汰。
+    >
+    > 如需詳細資訊，請參閱 [官方淘汰通知](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ### <a name="port-3389---management-using-remote-desktop"></a>埠 3389-使用遠端桌面管理
 
@@ -148,18 +152,6 @@ Azure Active Directory Domain Services (Azure AD DS) 提供驗證和管理服務
 > 例如，您可以使用下列腳本來建立允許 RDP 的規則： 
 >
 > `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
-
-### <a name="port-5986---management-using-powershell-remoting"></a>埠 5986-使用 PowerShell 遠端系統管理管理
-
-* 用來在受控網域中使用 PowerShell 遠端執行管理工作。
-* 如果沒有此埠的存取權，您的受控網域就無法更新、設定、備份或監視。
-* 針對使用以 Resource Manager 為基礎之虛擬網路的受控網域，您可以將此埠的輸入存取限制為 *AzureActiveDirectoryDomainServices* 服務標記。
-    * 針對使用傳統虛擬網路的舊版受控網域，您可以將此埠的輸入存取限制為下列來源 IP 位址： *52.180.183.8*、 *23.101.0.70*、 *52.225.184.198*、 *52.179.126.223*、 *13.74.249.156*、 *52.187.117.83*、 *52.161.13.95*、 *104.40.156.18* 和 *104.40.87.209*。
-
-    > [!NOTE]
-    > 在2017中，Azure AD Domain Services 可用於 Azure Resource Manager 網路中的主機。 從那時開始，我們可以使用 Azure Resource Manager 的新式功能來建立更安全的服務。 因為 Azure Resource Manager 部署完全取代傳統部署，所以 Azure AD DS 傳統虛擬網路部署將于2023年3月1日淘汰。
-    >
-    > 如需詳細資訊，請參閱 [官方淘汰通知](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ## <a name="user-defined-routes"></a>使用者定義的路由
 

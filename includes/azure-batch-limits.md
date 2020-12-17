@@ -5,15 +5,15 @@ services: batch
 author: JnHs
 ms.service: batch
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 12/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 54a789aba793d9a6b44d5fe9a1e0f42023002b5a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0a94b122f1cdd598eeac553c8cc784d2a0a5369f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026888"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614503"
 ---
 | **Resource** | **預設限制** | **上限** |
 | --- | --- | --- |
@@ -24,9 +24,6 @@ ms.locfileid: "96026888"
 | 每一 Batch 帳戶的集區 | 20-100 | 500<sup>1</sup> |
 
 <sup>1</sup> 若想要要求增加到超過此限制，請連絡 Azure 支援。
-
-> [!IMPORTANT]
-> 我們正在變更您要求和管理專用配額的方式。  專用 vCPU 總計是目前採用的值，但我們很快就會採用以各 VM 系列為依據的專用配額。 系統會根據總限制，繼續強制執行低優先順序配額；VM 系列不會強制執行此程式。
 
 > [!NOTE]
 > 預設限制會根據您用來建立 Batch 帳戶的訂用帳戶類型而有所不同。 所顯示的核心配額是針對 Batch 服務模式中的 Batch 帳戶。 [檢視您 Batch 帳戶中的配額](../articles/batch/batch-quota-limit.md#view-batch-quotas)。

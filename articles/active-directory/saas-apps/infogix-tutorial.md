@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b59a764510b93daf358e00a4d75bcefd31d2980f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7ca566c554c02d20d21bd7eba87dfbcbf1f746da
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460218"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>教學課程：Azure Active Directory 與 Infogix Data3Sixty Govern 整合
 
@@ -62,9 +62,9 @@ Infogix Data3Sixty Govern 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Infogix Data3Sixty Govern** ，從結果面板中選取 [Infogix Data3Sixty Govern]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Infogix Data3Sixty Govern**，從結果面板中選取 [Infogix Data3Sixty Govern]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Infogix Data3Sixty Govern](common/search-new-app.png)
+    ![結果清單中的 Infogix Data3Sixty Govern](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -124,8 +124,8 @@ Infogix Data3Sixty Govern 與 Azure AD 整合提供下列優點：
     | 名稱 | 來源屬性|
     | -----------| -------------- |
     | firstname  | user.givenname |
-    | lastname   | user.surname |
-    | username   | user.mail    |
+    | lastname | user.surname |
+    | username | user.mail |
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
@@ -179,8 +179,8 @@ Infogix Data3Sixty Govern 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

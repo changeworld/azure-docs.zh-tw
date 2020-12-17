@@ -4,12 +4,12 @@ description: 為 Azure Kubernetes Service (AKS) 中的叢集建立及管理 Azur
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607818"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614790"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>服務主體與 Azure Kubernetes Service (AKS)
 
@@ -100,18 +100,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
 
 ### <a name="networking"></a>網路功能
 
-您可以使用進階網路功能，其中虛擬網路和子網路或公用 IP 位址都在另一個資源群組中。 指派下列一組角色權限：
-
-- 建立[自訂角色][rbac-custom-role]，然後定義下列角色權限：
-  - *Microsoft.Network/virtualNetworks/subnets/join/action*
-  - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/publicIPAddresses/join/action*
-  - *Microsoft. Network/publicIPAddresses/read*
-  - *Microsoft.Network/publicIPAddresses/write*
-  - 如果 [在 Kubenet 叢集上使用自訂路由表](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) ，請新增下列額外的許可權：
-    - *Microsoft.Network/routeTables/write*
-    - *Microsoft. Network/routeTables/read*
-- 或是，指派虛擬網路內子網路上的內建[網路參與者][rbac-network-contributor]角色
+您可以使用進階網路功能，其中虛擬網路和子網路或公用 IP 位址都在另一個資源群組中。 在虛擬網路內的子網上，指派 [網路參與者][rbac-network-contributor] 內建角色。 或者，您可以建立具有許可權的 [自訂角色][rbac-custom-role] ，以存取該資源群組中的網路資源。 如需詳細資訊，請參閱 [AKS 服務許可權][aks-permissions] 。
 
 ### <a name="storage"></a>儲存體
 
@@ -122,7 +111,7 @@ az role assignment create --assignee <appId> --scope <resourceScope> --role Cont
   - *Microsoft.Compute/disks/write*
 - 或是，指派資源群組上的內建[儲存體帳戶參與者][rbac-storage-contributor]角色
 
-### <a name="azure-container-instances"></a>Azure 容器執行個體
+### <a name="azure-container-instances"></a>Azure Container Instances
 
 如果您使用 Virtual Kubelet 來與 AKS 整合，並選擇在與 AKS 叢集不同的資源群組中執行「Azure 容器執行個體」(ACI)，就必須將 ACI 資源群組的「參與者」權限授與 AKS 服務主體。
 
@@ -188,3 +177,4 @@ ls -la $HOME/.azure/aksServicePrincipal.json
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
+[aks-permissions]: concepts-identity.md#aks-service-permissions

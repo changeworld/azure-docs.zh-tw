@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ba444a497fa4fccab6b8dec1fadb3383420e4d49
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 558e03e698d184aa9b5914f7d494ea61b5a6b18e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452977"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616927"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -23,7 +23,7 @@ ms.locfileid: "96452977"
 > [!TIP]
 > 所有 SDK 函式都有同步和非同步版本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -140,7 +140,7 @@ foreach (string prop in twin.Contents.Keys)
     ]
 }
 ```
-在月亮型別對應項上呼叫的結果 `object result = await client.GetDigitalTwinAsync("my-moon");` 可能如下所示： *Moon*
+在月亮型別對應項上呼叫的結果 `object result = await client.GetDigitalTwinAsync("my-moon");` 可能如下所示： 
 
 ```json
 {
@@ -171,7 +171,7 @@ foreach (string prop in twin.Contents.Keys)
 數位對應項的已定義屬性會傳回為數字對應項上的最上層屬性。 不是 DTDL 定義一部分的中繼資料或系統資訊會以前置詞傳回 `$` 。 中繼資料屬性包括：
 * 此 Azure 數位 Twins 實例中數位對應項的識別碼，如下所示 `$dtId` 。
 * `$etag`，由 web 伺服器指派的標準 HTTP 欄位。
-* 區段中的其他屬性 `$metadata` 。 它們包括：
+* 區段中的其他屬性 `$metadata` 。 其中包含：
     - 數位對應項之模型的 DTMI。
     - 每個可寫入屬性的同步處理狀態。 這最適用于裝置，在這種情況下，服務和裝置有可能具有發散狀態 (例如，當裝置離線時) 。 此屬性目前僅適用于連線到 IoT 中樞的實體裝置。 有了中繼資料區段中的資料之後，就可以瞭解屬性的完整狀態，以及上次修改的時間戳記。 如需同步處理狀態的詳細資訊，請參閱關於同步處理裝置狀態的 [IoT 中樞教學](../iot-hub/tutorial-device-twins.md) 課程。
     - 服務特定的中繼資料，例如來自 IoT 中樞或 Azure 數位 Twins。 
@@ -218,7 +218,7 @@ Patch 呼叫可以依您想要的方式，在單一對應項上更新多個屬�
   }
 ]
 ```
-您可以使用 SDK 中的來建立修補程式 `JsonPatchDocument` 。 [SDK](how-to-use-apis-sdks.md) 範例如下。
+您可以使用 SDK 中的來建立修補程式 `JsonPatchDocument` 。 [](how-to-use-apis-sdks.md) 範例如下。
 
 ```csharp
 var updateTwinData = new JsonPatchDocument();
@@ -271,12 +271,12 @@ await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
 [
   {
     "op": "replace",
-    "path": "$metadata.$model",
-    "value": "dtmi:example:foo_new"
+    "path": "/$metadata/$model",
+    "value": "dtmi:example:foo_new;1"
   },
   {
     "op": "add",
-    "path": "temperature",
+    "path": "/temperature",
     "value": 60
   }
 ]

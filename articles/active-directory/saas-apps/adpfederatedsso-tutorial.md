@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
-ms.openlocfilehash: cf6973242e81cef53625a3b1eda4f2d92e1d5ffd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d78f2c8da338a92ef88734371647a48ddb190c3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998629"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591186"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ADP 整合
 
@@ -155,55 +155,55 @@ ms.locfileid: "95998629"
 
     ![與單一登入連結的屬性](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-    a.  將 [為使用者啟用登入]  欄位值設定為 [是]  。
+    1. 將 [為使用者啟用登入] 欄位值設定為 [是]。
 
-    b.  將 [需要使用者指派]  欄位值設定為 [是]  。
+    1. 將 [需要使用者指派] 欄位值設定為 [是]。
 
-    c.  將 [是否要向使用者顯示]  欄位值設定為 [是]  。
+    1. 將 [是否要向使用者顯示] 欄位值設定為 [是]。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [ADP]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [ADP] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 
-1. 在 [選取單一登入方法]  對話方塊上，選取 [連結的]  作為 [模式]  ， 以將您的應用程式連結至 **ADP**。
+1. 在 [選取單一登入方法] 對話方塊上，選取 [連結的] 作為 [模式]， 以將您的應用程式連結至 **ADP**。
 
     ![已連結的單一登入](./media/adpfederatedsso-tutorial/tutorial_adp_linked.png)
 
-1. 瀏覽至 [設定登入 URL]  區段，執行下列步驟︰
+1. 瀏覽至 [設定登入 URL] 區段，執行下列步驟︰
 
     ![單一登入屬性](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
 
-    a. 貼上您從上面 [屬性]  索引標籤 (來自主要 ADP 應用程式) 複製的 [使用者存取 URL]  。
-                                                             
-    b. 以下是 5 個支援不同 **轉送狀態 URL** 的應用程式。 您必須手動將特定應用程式的適當 **轉送狀態 URL** 值附加至 [使用者存取 URL]  。
-    
-    * **ADP Workforce Now**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
+    1. 貼上您從上面 [屬性] 索引標籤 (來自主要 ADP 應用程式) 複製的 [使用者存取 URL]。
 
-    * **ADP Workforce Now Enhanced Time**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
-    
-    * **ADP Vantage HCM**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
+    1. 以下是 5 個支援不同 **轉送狀態 URL** 的應用程式。 您必須手動將特定應用程式的適當 **轉送狀態 URL** 值附加至 [使用者存取 URL]。
 
-    * **ADP Enterprise HR**
+        * **ADP Workforce Now**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
 
-    * **MyADP**
+        * **ADP Workforce Now Enhanced Time**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
 
-9. **儲存** 您的變更。
+        * **ADP Vantage HCM**
 
-10. 從您的 ADP 代表收到確認之後，使用一或兩個使用者開始進行測試。
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
 
-    a. 將幾個使用者指派給 ADP 服務應用程式，以測試同盟存取。
+        * **ADP Enterprise HR**
 
-    b. 當使用者存取資源庫上的 ADP 服務應用程式，且能夠存取其 ADP 服務時，即表示測試成功。
- 
-11. 確認測試成功時，將同盟 ADP 服務指派給個別的使用者或使用者群組 (本教學課程稍後會說明)，然後向您的員工首度發行。
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+
+        * **MyADP**
+
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+
+1. [儲存] 變更。
+
+1. 從您的 ADP 代表收到確認之後，使用一或兩個使用者開始進行測試。
+
+    1. 將幾個使用者指派給 ADP 服務應用程式，以測試同盟存取。
+
+    1. 當使用者存取資源庫上的 ADP 服務應用程式，且能夠存取其 ADP 服務時，即表示測試成功。
+
+1. 確認測試成功時，將同盟 ADP 服務指派給個別的使用者或使用者群組 (本教學課程稍後會說明)，然後向您的員工首度發行。
 
 ### <a name="create-adp-test-user"></a>建立 ADP 測試使用者
 
@@ -222,5 +222,3 @@ ms.locfileid: "95998629"
 - [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 - [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
-
-- [嘗試搭配 Azure AD 使用 ADP](https://aad.portal.azure.com)

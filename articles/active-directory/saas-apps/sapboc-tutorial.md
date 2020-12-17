@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 946388fa60e0f6147db2986192392740fa3949f4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 84b0a761b52baca4ae1ab81b3c67f18f6b14db92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671848"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608828"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>教學課程：整合 SAP Analytics Cloud 與 Azure Active Directory
 
@@ -49,7 +49,7 @@ ms.locfileid: "92671848"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **SAP Analytics Cloud** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **SAP Analytics Cloud**。
 1. 從結果面板中選取 [SAP Analytics Cloud]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -183,21 +183,21 @@ ms.locfileid: "92671848"
 
     然後完成下列步驟：
 
-    a. 在 [使用者識別碼]  方塊中，輸入使用者的使用者識別碼，例如 **B** 。
+    1. 在 [使用者識別碼] 方塊中，輸入使用者的使用者識別碼，例如 **B**。
 
-    b. 在 [名字]  方塊中，輸入使用者的名字，例如 **B** 。
+    1. 在 [名字] 方塊中，輸入使用者的名字，例如 **B**。
 
-    c. 在 [姓氏]  方塊中，輸入使用者的姓氏，例如 **Simon** 。
+    1. 在 [姓氏] 方塊中，輸入使用者的姓氏，例如 **Simon**。
 
-    d. 在 [顯示名稱]  方塊中，輸入使用者的全名，例如 **B.Simon** 。
+    1. 在 [顯示名稱] 方塊中，輸入使用者的全名，例如 **B.Simon**。
 
-    e. 在 [電子郵件]  方塊中，輸入使用者的電子郵件地址，例如 `b.simon@contoso.com`。
+    1. 在 [電子郵件] 方塊中，輸入使用者的電子郵件地址，例如 `b.simon@contoso.com`。
 
-    f. 在 [選取角色]  頁面上，選取適當的使用者角色，然後選取 [確定]  。
+    1. 在 [選取角色] 頁面上，選取適當的使用者角色，然後選取 [確定]。
 
-      ![選取角色](./media/sapboc-tutorial/user3.png)
+        ![選取職責](./media/sapboc-tutorial/user3.png)
 
-    g. 選取 [儲存]  圖示。
+    1. 選取 [儲存] 圖示。
 
 ### <a name="test-sso"></a>測試 SSO 
 

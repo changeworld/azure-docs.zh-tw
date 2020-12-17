@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0adb8d62d02325f92c77d2171eaafd6c2de16f0c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516333"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608811"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 TimeOffManager 整合
 
@@ -56,7 +56,7 @@ ms.locfileid: "92516333"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **TimeOffManager** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **TimeOffManager**。
 1. 從結果面板中選取 [TimeOffManager]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
@@ -78,7 +78,7 @@ ms.locfileid: "92516333"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [TimeOffManager]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -168,7 +168,7 @@ ms.locfileid: "92516333"
 
 4. 在 [單一登入設定]  頁面中，複製 [判斷提示取用者服務 URL]  的值，並將其貼在 Azure 入口網站中 [基本 SAML 組態]  區段下的 [回覆 URL]  文字方塊中。 
 
-      ![螢幕擷取畫面：顯示 [判斷提示取用者服務 URL 連結]。](./media/timeoffmanager-tutorial/ic795915.png "單一登入設定")
+    ![螢幕擷取畫面：顯示 [判斷提示取用者服務 URL 連結]。](./media/timeoffmanager-tutorial/ic795915.png "單一登入設定")
 
 ### <a name="create-timeoffmanager-test-user"></a>建立 TimeOffManager 測試使用者
 

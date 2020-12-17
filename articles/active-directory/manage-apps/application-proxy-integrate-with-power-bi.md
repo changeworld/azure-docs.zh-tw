@@ -16,18 +16,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c3188571e9188add7bc8f4f4d07ea5a562a79b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658106"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616893"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 啟用 Power BI 行動版的遠端存取
 
 本文討論如何使用 Azure AD 應用程式 Proxy，讓 Power BI 的行動應用程式連接到 Power BI 報表伺服器 (PBIRS) 和 SQL Server Reporting Services (SSRS) 2016 和更新版本。 透過這項整合，離開公司網路的使用者可以從 Power BI 行動裝置應用程式存取其 Power BI 報表，並受到 Azure AD 驗證的保護。 這種保護包括條件式存取和多重要素驗證等 [安全性優點](application-proxy-security.md#security-benefits) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已部署報表服務和 [已啟用的應用程式 Proxy](application-proxy-add-on-premises-application.md)。
 
@@ -133,7 +133,7 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確認您�
 
    ![Power BI 具有外部 URL 的行動應用程式](media/application-proxy-integrate-with-power-bi/app-proxy-power-bi-mobile-app.png)
 
-2. 選取 [連接]  。 系統會將您導向至 Azure Active Directory 登入頁面。
+2. 選取 [連接]。 系統會將您導向至 Azure Active Directory 登入頁面。
 
 3. 輸入使用者的有效認證，然後選取 [登入]。 您將會看到 Reporting Services server 中的元素。
 
@@ -153,6 +153,8 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確認您�
 ## <a name="troubleshooting"></a>疑難排解
 
 如果應用程式在嘗試載入報表超過幾分鐘之後傳回錯誤頁面，您可能需要變更 timeout 設定。 根據預設，應用程式 Proxy 支援最多需要85秒才能回應要求的應用程式。 若要將這項設定延長為180秒，請在應用程式的 [應用程式 Proxy 設定] 頁面中，選取 [後端]**超時時間。** 如需有關如何建立快速且可靠報表的秘訣，請參閱 [Power BI 報告最佳做法](/power-bi/power-bi-reports-performance)。
+
+使用 Azure AD 應用程式 Proxy 來啟用 Power BI 行動應用程式連線到內部部署 Power BI 報表伺服器，但需要 Microsoft Power BI 應用程式做為核准用戶端應用程式的條件式存取原則並不支援。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperf-fy20q4
 ms.date: 11/09/2020
-ms.openlocfilehash: 010d37baff76a046bef2da877262f6427cb3d5c9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0a14d57db932ef6cfb17df84b3204d3dec9e4d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094432"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616995"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 中的已知問題和疑難排解
 
@@ -429,11 +429,21 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   2. 輸入 `pip freeze` 並尋找， `tensorflow` 如果找到的話，所列出的版本應該是 < 1.13
   3. 如果列出的版本不是支援的版本，請 `pip uninstall tensorflow` 在命令 shell 中輸入 y 確認。
 
+## <a name="model-explanations"></a>模型說明
+
+* **不支援的稀疏資料**：模型說明儀表板會使用大量的功能大幅中斷/變慢，因此我們目前不支援稀疏資料格式。 此外，大型資料集和大量的功能也會發生一般記憶體問題。 
+
+* **預測模型不支援模型說明**：可解譯性、最佳模型說明，不適用於建議下列演算法做為最佳模型的 AutoML 預測實驗： TCNForecaster、AutoArima、ExponentialSmoothing、Average、貝氏、季節性 Average 和季節性貝氏。 AutoML 預測具有支援說明的回歸模型。 不過，在說明 dashbord 中，因為其資料管線中的複雜性，所以不支援「個別特徵重要性」索引標籤進行預測。
+
+* **資料索引的本機說明**：當儀表板隨機 downsamples 資料時5000，說明儀表板不支援將本機重要性值與原始驗證資料集的資料列識別碼相關聯。 不過，儀表板會針對每個傳遞至儀表板中 [個別功能重要性] 索引標籤的點，顯示原始資料集功能值。使用者可以透過比對原始資料集功能值，將本機 importances 對應回原始資料集。 如果驗證資料集大小小於5000個樣本，則 `index` AzureML studio 中的功能將會對應至驗證資料集中的索引。
+
+* **AML studio 中不支援的假設/冰** 圖：在 [說明] 索引標籤底下的 AzureML studio 中，不支援 What-If 和個別條件式預期 (ICE) 繪圖，因為上傳的說明需要使用中的計算，以重新計算預測和 perturbed 功能的機率。 當使用 SDK 以 widget 的形式執行時，Jupyter 筆記本中目前支援此功能。
+
 ## <a name="deploy--serve-models"></a>部署和提供模型
 
 針對下列錯誤採取下列動作：
 
-|[錯誤]  | 解決方案  |
+|錯誤  | 解決方案  |
 |---------|---------|
 |部署 web 服務時映射建立失敗     |  新增 "pynacl = = 1.2.1" 作為映射設定 Conda 檔案的 pip 相依性       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   將部署中所使用 Vm 的 SKU 變更為具有更多記憶體的 Vm。 |

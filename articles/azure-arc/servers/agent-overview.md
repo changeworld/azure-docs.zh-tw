@@ -3,12 +3,12 @@ title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
 ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0532441e1ab0d2676e7800c9d63878f9bf3bb3dc
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563019"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616156"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
@@ -49,7 +49,7 @@ Azure Connected Machine 代理程式套件包含數個邏輯元件，這些元�
 
 Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作業系統版本：
 
-- Windows Server 2012 R2 和更新版本 (包括 Windows Server Core)
+- Windows Server 2008 R2、Windows Server 2012 R2 和更新版本 (包括 Server Core) 
 - Ubuntu 16.04 和 18.04 LTS (x64) 
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)

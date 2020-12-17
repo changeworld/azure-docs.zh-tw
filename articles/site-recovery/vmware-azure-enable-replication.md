@@ -6,18 +6,18 @@ ms.service: site-recovery
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a1f4759bc40c4074f0dd618be8ac66ad088e848c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587739"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616604"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>讓 VMware VM 能夠複寫至 Azure
 
 本文說明如何啟用將內部部署 VMware 虛擬機器 (VM) 複寫至 Azure 的複寫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您的系統符合下列準則：
 
@@ -109,7 +109,7 @@ ms.locfileid: "97587739"
 - 已完成的百分比-指出 VM 的初始複寫已完成的百分比
 - 傳輸的總數據量-從 VM 傳輸到 Azure 的資料量
 
-:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="複寫狀態" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+    :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="複寫狀態" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
 
 - 在磁片層級追蹤詳細資料的同步處理進度 () 
     - 複寫的狀態

@@ -6,35 +6,78 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457171"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615796"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的存取與身分識別選項
 
 有不同的方式可驗證、控制存取/授權和保護 Kubernetes 叢集。 使用 Kubernetes 角色型存取控制 (Kubernetes RBAC) ，您可以授與使用者、群組和服務帳戶只存取所需資源的存取權。 使用 Azure Kubernetes Service (AKS) ，您可以使用 Azure Active Directory 和 Azure RBAC 進一步增強安全性和許可權結構。 這些方法可協助您保護叢集存取，並僅提供開發人員和操作員所需的最低許可權。
 
-本文所介紹的核心概念，可協助您在 AKS 中驗證和指派權限：
+本文介紹可協助您在 AKS 中驗證和指派許可權的核心概念。
 
-- [Kubernetes 以角色為基礎的存取控制 (Kubernetes RBAC) ](#kubernetes-role-based-access-control-kubernetes-rbac)
-  - [Roles 和 ClusterRoles](#roles-and-clusterroles)
-  - [RoleBindings 和 ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
-  - [Kubernetes 服務帳戶](#kubernetes-service-accounts)
-- [Azure Active Directory 整合](#azure-active-directory-integration)
-- [Azure RBAC](#azure-role-based-access-control-azure-rbac)
-  - [Azure RBAC 可授權存取 AKS 資源](#azure-rbac-to-authorize-access-to-the-aks-resource)
-  - [適用于 Kubernetes 授權的 Azure RBAC (預覽版) ](#azure-rbac-for-kubernetes-authorization-preview)
+## <a name="aks-service-permissions"></a>AKS 服務許可權
 
+建立叢集時，AKS 會建立或修改建立和執行叢集所需的資源，例如 Vm 和 Nic，代表建立叢集的使用者。 此身分識別與叢集的身分識別許可權不同，它是在叢集建立期間所建立。
+
+### <a name="identity-creating-and-operating-the-cluster-permissions"></a>建立和操作叢集許可權的身分識別
+
+建立和操作叢集的身分識別需要下列許可權。
+
+| 權限 | 原因 |
+|---|---|
+| Microsoft. Compute/diskEncryptionSets/read | 需要讀取磁片加密集識別碼。 |
+| Microsoft. Compute/proximityPlacementGroups/write | 更新鄰近放置群組所需。 |
+| Microsoft.Network/applicationGateways/read <br/> Microsoft.Network/applicationGateways/write <br/> Microsoft.Network/virtualNetworks/subnets/join/action | 設定應用程式閘道和加入子網所需。 |
+| Microsoft.Network/virtualNetworks/subnets/join/action | 使用自訂 VNET 時，必須設定子網的網路安全性群組。|
+| Microsoft.Network/publicIPAddresses/join/action <br/> Microsoft.Network/publicIPPrefixes/join/action | 在 Standard Load Balancer 上設定輸出公用 Ip 所需。 |
+| OperationalInsights/workspace/sharedkeys/read <br/> Microsoft.OperationalInsights/workspaces/read <br/> Microsoft.OperationsManagement/solutions/write <br/> Microsoft.OperationsManagement/solutions/read <br/> Microsoft.ManagedIdentity/userAssignedIdentities/assign/action | 建立和更新 Log Analytics 工作區和適用于容器的 Azure 監視所需。 |
+
+### <a name="aks-cluster-identity-permissions"></a>AKS 叢集身分識別許可權
+
+AKS 叢集身分識別會使用下列許可權，該身分識別會在建立叢集時建立並與 AKS 叢集建立關聯。 基於下列原因，會使用每個許可權：
+
+| 權限 | 原因 |
+|---|---|
+| Microsoft.Network/loadBalancers/delete <br/> Microsoft.Network/loadBalancers/read <br/> Microsoft.Network/loadBalancers/write | 設定 LoadBalancer 服務的負載平衡器所需。 |
+| Microsoft.Network/publicIPAddresses/delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | 尋找和設定 LoadBalancer 服務的公用 Ip 時需要。 |
+| Microsoft.Network/publicIPAddresses/join/action | 設定 LoadBalancer 服務的公用 Ip 所需。 |
+| Microsoft.Network/networkSecurityGroups/read <br/> Microsoft.Network/networkSecurityGroups/write | 建立或刪除 LoadBalancer 服務的安全性規則所需。 |
+| Microsoft.Compute/disks/delete <br/> Microsoft.Compute/disks/read <br/> Microsoft.Compute/disks/write <br/> Microsoft. 計算/位置/DiskOperations/讀取 | 設定 AzureDisks 時所需。 |
+| Microsoft.Storage/storageAccounts/delete <br/> Microsoft.Storage/storageAccounts/listKeys/action <br/> Microsoft.Storage/storageAccounts/read <br/> Microsoft.Storage/storageAccounts/write <br/> Microsoft.Storage/operations/read | 設定 AzureFile 或 AzureDisk 的儲存體帳戶所需。 |
+| Microsoft.Network/routeTables/read <br/> Microsoft.Network/routeTables/routes/delete <br/> Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write <br/> Microsoft.Network/routeTables/write | 設定節點的路由表和路由所需。 |
+| Microsoft.Compute/virtualMachines/read | 需要在 VMAS 中尋找虛擬機器的資訊，例如區域、容錯網域、大小和資料磁片。 |
+| Microsoft.Compute/virtualMachines/write | 將 AzureDisks 附加至 VMAS 中的虛擬機器所需。 |
+| Microsoft.Compute/virtualMachineScaleSets/read <br/> Microsoft.Compute/virtualMachineScaleSets/virtualMachines/read <br/> Microsoft. Compute/virtualMachineScaleSets/virtualmachines/instanceView/read | 需要尋找虛擬機器擴展集中虛擬機器的資訊，例如區域、容錯網域、大小和資料磁片。 |
+| Microsoft.Network/networkInterfaces/write | 將 VMAS 中的虛擬機器新增至負載平衡器後端位址集區的必要項。 |
+| Microsoft.Compute/virtualMachineScaleSets/write | 必須將虛擬機器擴展集新增至負載平衡器後端位址集區，並將虛擬機器擴展集中的節點相應放大。 |
+| Microsoft. Compute/virtualMachineScaleSets/virtualmachines/write | 需要附加 AzureDisks，並將虛擬機器從虛擬機器擴展集新增至負載平衡器。 |
+| Microsoft.Network/networkInterfaces/read | 針對 VMAS 中的虛擬機器搜尋內部 Ip 和負載平衡器後端位址集區所需。 |
+| Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/read | 針對虛擬機器擴展集中的虛擬機器，搜尋內部 Ip 和負載平衡器後端位址集區所需。 |
+| Microsoft. Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipconfiguration/publicipaddresses/read | 需要在虛擬機器擴展集中尋找虛擬機器的公用 Ip。 |
+| Microsoft.Network/virtualNetworks/read <br/> Microsoft.Network/virtualNetworks/subnets/read | 需要確認是否有另一個資源群組中的內部負載平衡器的子網。 |
+| Microsoft.Compute/snapshots/delete <br/> Microsoft.Compute/snapshots/read <br/> Microsoft.Compute/snapshots/write | 設定 AzureDisk 的快照集所需。 |
+| Microsoft.Compute/locations/vmSizes/read <br/> Microsoft.Compute/locations/operations/read | 尋找用來尋找 AzureDisk 磁片區限制的虛擬機器大小所需。 |
+
+### <a name="additional-cluster-identity-permissions"></a>其他叢集身分識別許可權
+
+使用特定屬性建立叢集時，叢集身分識別需要下列其他許可權。 系統不會自動指派這些許可權，因此您必須在叢集身分識別建立之後，將這些許可權新增至叢集身分識別。
+
+| 權限 | 原因 |
+|---|---|
+| Microsoft.Network/networkSecurityGroups/write <br/> Microsoft.Network/networkSecurityGroups/read | 如果使用另一個資源群組中的網路安全性群組，則為必要項。 設定 LoadBalancer 服務的安全性規則所需。 |
+| Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | 如果在其他資源群組（例如自訂 VNET）中使用子網，則為必要項。 |
+| Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write | 如果使用與另一個資源群組中的路由表相關聯的子網（例如自訂路由表的自訂 VNET），則為必要項。 需要確認子網是否已存在於其他資源群組中的子網。 |
+| Microsoft.Network/virtualNetworks/subnets/read | 如果使用另一個資源群組中的內部負載平衡器，則為必要項。 需要確認資源群組中的內部負載平衡器是否已有子網存在。 |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes 以角色為基礎的存取控制 (Kubernetes RBAC) 
 
 為了提供使用者可執行之動作的細微篩選，Kubernetes 會使用 Kubernetes 角色型存取控制 (Kubernetes RBAC) 。 此控制機制可讓您指派權限給使用者或使用者群組，以執行像是建立或修改資源，或檢視執行中應用程式工作負載的記錄等動作。 這些權限可以只限於單一命名空間，或授與給整個 AKS 叢集。 透過 Kubernetes RBAC，您可以建立「角色」來定義權限，然後藉由「角色繫結」將這些角色指派給使用者。
 
 如需詳細資訊，請參閱 [使用 KUBERNETES RBAC 授權][kubernetes-rbac]。
-
 
 ### <a name="roles-and-clusterroles"></a>Roles 和 ClusterRoles
 
@@ -84,11 +127,11 @@ AKS 叢集的安全性可以透過整合的 Azure Active Directory (AD) 來加�
 1. Kubectl 會使用 Azure AD 用戶端應用程式，透過 [OAuth 2.0 裝置授權授與流程](../active-directory/develop/v2-oauth2-device-code.md)來登入使用者。
 2. Azure AD 提供 access_token、id_token 和 refresh_token。
 3. 使用者使用來自 kubeconfig 的 access_token 提出要求 kubectl。
-4. Kubectl 會將 access_token 傳送至 APIServer。
+4. Kubectl 會將 access_token 傳送至 API 伺服器。
 5. API 伺服器是使用 Auth WebHook 伺服器設定來執行驗證。
 6. 驗證 webhook 伺服器藉由檢查 Azure AD 公開簽署金鑰來確認 JSON Web 權杖簽章是否有效。
 7. 伺服器應用程式會使用使用者提供的認證，從 MS 圖形 API 查詢登入使用者的群組成員資格。
-8. 回應會傳送至 APIServer，其具有使用者資訊，例如使用者主體名稱 (UPN) 存取權杖的宣告，以及使用者的群組成員資格（以物件識別碼為基礎）。
+8. 回應會傳送至 API 伺服器，其具有使用者資訊，例如使用者主體名稱 (UPN) 存取權杖的宣告，以及使用者的群組成員資格（以物件識別碼為基礎）。
 9. API 會根據 Kubernetes 角色/RoleBinding 來執行授權決策。
 10. 授權之後，API 伺服器會將回應傳回給 kubectl。
 11. Kubectl 會將意見反應提供給使用者。
@@ -192,3 +235,4 @@ AKS 提供下列四個內建角色。 它們類似于 Kubernetes 的 [內建角�
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [operator-best-practices-identity]: operator-best-practices-identity.md
+[upgrade-per-cluster]: ../azure-monitor/insights/container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli

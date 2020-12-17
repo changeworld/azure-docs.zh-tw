@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: acd0206f45d714685cc3e01d968491049d3bb36f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 80c4b1998872c749228d7352484fd5af22b6d23d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522337"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608335"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opal"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Opal 整合
 
@@ -39,12 +39,10 @@ ms.locfileid: "92522337"
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-
 * Opal 支援由 **IDP** 起始的 SSO
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
-
 
 ## <a name="adding-opal-from-the-gallery"></a>從資源庫新增 Opal
 
@@ -54,9 +52,8 @@ ms.locfileid: "92522337"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Opal** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Opal**。
 1. 從結果面板中選取 [Opal]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-opal"></a>設定及測試 Opal 的 Azure AD 單一登入
 
@@ -76,19 +73,21 @@ ms.locfileid: "92522337"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Opal]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [以 SAML 設定單一登入]  頁面上，輸入下列欄位的值：
 
-    a. 在 [識別碼]  文字方塊中，鍵入 URL：`Opal`
+    1. 在 [識別碼]  文字方塊中，鍵入 URL：`Opal`
 
-    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.ouropal.com/auth/saml/callback`
+    1. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：
 
-    > [!NOTE]
-    > [回覆 URL] 不是真實的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Opal 用戶端支援小組](mailto:support@workwithopal.com)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
+        `https://<subdomain>.ouropal.com/auth/saml/callback`
+
+        > [!NOTE]
+        > [回覆 URL] 不是真實的值。 請使用實際的「回覆 URL」來更新此值。 請連絡 [Opal 用戶端支援小組](mailto:support@workwithopal.com)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. Opal 應用程式會預期要有特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -98,14 +97,14 @@ ms.locfileid: "92522337"
 
     | 名稱 | 來源屬性|
     | ---------------| --------------- |
-    | firstname           | user.givenname |
-    | lastname        | user.surname |
+    | firstname | user.givenname |
+    | lastname | user.surname |
 
-1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Opal]  區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Opal] 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -116,7 +115,7 @@ ms.locfileid: "92522337"
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]  。
 1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
+   1. 在 [名稱]  欄位中，輸入 `B.Simon`。
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
    1. 按一下頁面底部的 [新增]  。
@@ -126,7 +125,7 @@ ms.locfileid: "92522337"
 在本節中，您會將 Opal 的存取權授與 B.Simon，使其能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Opal]  。
+1. 在應用程式清單中，選取 [Opal]。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
@@ -135,13 +134,13 @@ ms.locfileid: "92522337"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ## <a name="configure-opal-sso"></a>設定 Opal SSO
 
-若要在 **Opal** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Opal 支援小組](mailto:support@workwithopal.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Opal** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML] 和複製的適當 URL 傳送給 [Opal 支援小組](mailto:support@workwithopal.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-opal-test-user"></a>建立 Opal 測試使用者
 

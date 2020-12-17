@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c6b646688fb0c42091182cc7f94e019432b354fa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f1e6cd222c9ee8f40f81d4db3750956e8e698e3e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504587"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607664"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 TextMagic 整合
 
@@ -54,7 +54,7 @@ ms.locfileid: "92504587"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **TextMagic** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **TextMagic**。
 1. 從結果面板選取 [TextMagic]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-textmagic"></a>設定及測試 TextMagic 的 Azure AD 單一登入
@@ -75,7 +75,7 @@ ms.locfileid: "92504587"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [TextMagic]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -93,9 +93,9 @@ ms.locfileid: "92504587"
     | 名稱 |   來源屬性| 命名空間  |
     | --------------- | --------------- | --------------- |
     | company | user.companyname | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | firstName               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | lastName            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | 電話               | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | 電話 | user.telephonenumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -167,7 +167,7 @@ ms.locfileid: "92504587"
 
 ### <a name="create-textmagic-test-user"></a>建立 TextMagic 測試使用者
 
-應用程式支援 **Just in time 使用者佈建** ，而在驗證之後，會在應用程式中自動建立使用者。 第一次登入以啟動子帳戶至系統時，您需要填入資訊一次。
+應用程式支援 **Just in time 使用者佈建**，而在驗證之後，會在應用程式中自動建立使用者。 第一次登入以啟動子帳戶至系統時，您需要填入資訊一次。
 在這一節沒有您需要進行的動作項目。
 
 ## <a name="test-sso"></a>測試 SSO 

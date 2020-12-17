@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 799699662b738804790e3fe18ce9bd579027808d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004330"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616310"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持續部署至 Azure App Service
 
@@ -78,7 +78,7 @@ ms.locfileid: "96004330"
      > [!NOTE]
      > 如果未列出您的 Azure DevOps 組織，請確定其已連結到您的 Azure 訂用帳戶。 如需詳細資訊，請參閱 [設定 Azure DevOps Services 帳戶，使其可以部署至 web 應用程式](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true)。
      
-1. 選取 [繼續]  。
+1. 選取 [繼續]。
    
    ![填入存放庫資訊，然後選取 [繼續]。](media/app-service-continuous-deployment/configure-kudu.png)
    
@@ -96,7 +96,7 @@ ms.locfileid: "96004330"
 
 針對 Azure App Service 使用 Azure Pipelines 來建立持續傳遞，您的 Azure DevOps 組織應該具有下列許可權： 
 
-- 您的 Azure 帳戶必須具有寫入 Azure Active Directory 的許可權，並建立服務。 
+- 您的 Azure 帳戶必須具有寫入 Azure Active Directory 的許可權，並建立應用程式註冊。 
   
 - 您的 Azure 帳戶在您的 Azure 訂用帳戶中必須擁有「 **擁有** 者」角色。
 

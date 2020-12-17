@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590178"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614575"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>開始使用 Azure 計量瀏覽器
 
@@ -29,15 +29,14 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
 若要建立度量圖表，請從您的資源、資源群組、訂用帳戶或 Azure 監視器視圖開啟 [ **計量** ] 索引標籤，然後遵循下列步驟：
 
-1. 使用資源選擇器，選取您要查看其計量的資源。 如果您在特定資源) 的內容中開啟 **計量** ， (資源已預先選取。
-
-    > ![選取資源](./media/metrics-getting-started/resource-picker.png)
+1. 按一下 [選取範圍] 按鈕，以開啟資源範圍選取器。 這可讓您選取您想要查看其計量) 的資源 (。 如果您從資源的功能表開啟計量瀏覽器，則應該已經填入資源。 若要瞭解如何跨多個資源查看計量，請 [閱讀這篇文章](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-dynamic-scope)。
+    > ![選取資源](./media/metrics-getting-started/scope-picker.png)
 
 2. 針對某些資源，您必須挑選命名空間。 命名空間只是組織計量而讓您可以輕鬆找到計量的一種方式。 例如，儲存體帳戶有個別的命名空間，用來儲存檔案、資料表、Blob 和佇列計量。 許多資源類型只有一個命名空間。
 
 3. 從可用計量清單中選取度量。
 
-    > ![選取計量](./media/metrics-getting-started/metric-picker.png)
+    > ![選取計量](./media/metrics-getting-started/metrics-dropdown.png)
 
 4. （選擇性）您可以 [變更計量匯總](metrics-charts.md#changing-aggregation)。 例如，您可能想要讓圖表顯示度量的最小值、最大值或平均值。
 
@@ -51,7 +50,7 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
 根據預設，圖表會顯示最近 24 小時的計量資料。 使用 **時間選擇器** 面板來變更圖表上的時間範圍、放大或縮小。 
 
-![變更時間範圍面板](./media/metrics-getting-started/time-picker.png)
+![變更時間範圍面板](./media/metrics-getting-started/time.png)
 
 > [!TIP]
 > 使用 **時間筆刷** 來調查圖表的有趣區域 (尖峰或 dip) 。 將滑鼠指標放在區域的開頭，然後按住滑鼠左鍵，拖曳至區域的另一端，然後放開按鈕。 圖表將會放大該時間範圍。 
@@ -60,9 +59,9 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
 [篩選](metrics-charts.md#apply-filters-to-charts) 和 [分割](metrics-charts.md#apply-splitting-to-a-chart) 是具有維度之計量的強大診斷工具。 這些功能會顯示不同的度量區段 ( 「維度值」 ) 如何影響度量的整體值，並可讓您找出可能的極端值。
 
-- **篩選**可讓您選擇要包含在圖表中的維度值。 例如，您可能會想要在製作 *伺服器回應時間* 度量圖表時，顯示成功的要求。 您必須在 [要求] 維度 *成功* 時套用篩選。 
+- **篩選** 可讓您選擇要包含在圖表中的維度值。 例如，您可能會想要在製作 *伺服器回應時間* 度量圖表時，顯示成功的要求。 您必須在 [要求] 維度 *成功* 時套用篩選。 
 
-- **分割**可控制圖表是要針對維度的每個值顯示個別的線條，還是將值彙總成單一線條。 例如，您可以在所有伺服器實例上查看平均回應時間的一行，或查看每部伺服器的個別行。 您必須在 *伺服器實例* 維度上套用分割，才能看到個別的行。
+- **分割** 可控制圖表是要針對維度的每個值顯示個別的線條，還是將值彙總成單一線條。 例如，您可以在所有伺服器實例上查看平均回應時間的一行，或查看每部伺服器的個別行。 您必須在 *伺服器實例* 維度上套用分割，才能看到個別的行。
 
 請參閱已套用篩選和分割的[圖表範例](metric-chart-samples.md)。 本文說明用來設定圖表的步驟。
 
@@ -70,9 +69,10 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
 您可以自訂圖表樣式、標題，以及修改進階圖表設定。 完成自訂後，請將其釘選到儀表板，以儲存您的工作。 您也可以設定計量警示。 遵循 [產品檔](metrics-charts.md) ，瞭解 Azure 監視器計量瀏覽器的這些功能和其他先進功能。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [瞭解計量瀏覽器的 advanced 功能](metrics-charts.md)
+* [在計量瀏覽器中查看多個資源](metrics-dynamic-scope.md)
 * [計量瀏覽器的疑難排解](metrics-troubleshoot.md)
 * [查看 Azure 服務的可用計量清單](metrics-supported.md)
 * [查看已設定的圖表範例](metric-chart-samples.md)

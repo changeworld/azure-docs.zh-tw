@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
-ms.openlocfilehash: cb946bc889d37b37f3330b07b18dd3ef3423af28
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 683f765b898d485f74652386025ac7e3556f8477
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515299"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607927"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 PrinterLogic SaaS 整合
 
@@ -39,11 +39,8 @@ ms.locfileid: "92515299"
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-
-
 * PrinterLogic SaaS 支援 **SP 和 IDP** 起始的 SSO
 * PrinterLogic SaaS 支援 **Just In Time** 使用者佈建
-
 
 ## <a name="adding-printerlogic-saas-from-the-gallery"></a>從資源庫新增 PrinterLogic SaaS
 
@@ -53,9 +50,8 @@ ms.locfileid: "92515299"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **PrinterLogic SaaS** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **PrinterLogic SaaS**。
 1. 從結果面板選取 [PrinterLogic SaaS]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-printerlogic-saas"></a>設定及測試 PrinterLogic SaaS 的 Azure AD 單一登入
 
@@ -75,7 +71,7 @@ ms.locfileid: "92515299"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [PrinterLogic SaaS]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -101,7 +97,7 @@ ms.locfileid: "92515299"
 
     | 名稱 | 來源屬性 |
     | ---------| ------------ |
-    | 角色     | user.assignedroles |
+    | 角色 | user.assignedroles |
 
     > [!NOTE]
     > 請按一下[這裡](../develop/active-directory-enterprise-app-role-management.md)，以了解如何在 Azure AD 中設定角色
