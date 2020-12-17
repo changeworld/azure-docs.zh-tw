@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9ca6d91be95bfb1a47f85b20f3775a57518ffcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 036e9e6bf58d837c698a6092770ef581f77bc20c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87922127"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108241"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中自訂使用者介面體驗
 
-針對較常見的使用者體驗，例如註冊、登入和設定檔編輯等，您可以使用 Azure Active Directory B2C (Azure AD B2C) 中的[使用者流程](user-flow-overview.md)。 本教學課程中的資訊可協助您了解如何使用自己的 HTML 和 CSS 檔案，為這些體驗[自訂使用者介面 (UI)](customize-ui-overview.md)。
+針對較常見的使用者體驗，例如註冊、登入和設定檔編輯等，您可以使用 Azure Active Directory B2C (Azure AD B2C) 中的[使用者流程](user-flow-overview.md)。 本教學課程中的資訊可協助您了解如何使用自己的 HTML 和 CSS 檔案，為這些體驗[自訂使用者介面 (UI)](customize-ui-with-html.md)。
 
 在本文中，您將學會如何：
 
@@ -64,7 +64,7 @@ ms.locfileid: "87922127"
 
 1. 在功能表中，選取 [CORS]。
 2. 針對 [允許的來源]，輸入 `https://your-tenant-name.b2clogin.com`。 將 `your-tenant-name` 取代為您的 Azure AD B2C 租用戶名稱。 例如： `https://fabrikam.b2clogin.com` 。 輸入您的租用戶名稱時，必須全部使用小寫字母。
-3. 對於**允許的方法**，請選取 `GET`,`PUT` 和 `OPTIONS`。
+3. 對於 **允許的方法**，請選取 `GET`,`PUT` 和 `OPTIONS`。
 4. 針對 [允許的標頭]，輸入星號 (*)。
 5. 針對 [公開的標頭]，輸入星號 (*)。
 6. 針對 [最大壽命]，輸入 200。
@@ -166,4 +166,4 @@ ms.locfileid: "87922127"
 > * 測試自訂的 UI
 
 > [!div class="nextstepaction"]
-> [設定 Azure Active Directory B2C 中的 UI](customize-ui-overview.md)
+> [設定 Azure Active Directory B2C 中的 UI](customize-ui-with-html.md)

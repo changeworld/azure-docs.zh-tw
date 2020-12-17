@@ -9,12 +9,12 @@ ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 2b8ab701140e3e797fcd7f2e6736d6058aa54886
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: cca0f927c6824642f11254743f3bdf275ca7e5d9
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834926"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006849"
 ---
 # <a name="back-up-an-app-using-cli"></a>使用 CLI 備份應用程式
 
@@ -38,14 +38,14 @@ ms.locfileid: "94834926"
 
 | Command | 注意 |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [`az storage account create`](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) | 建立儲存體帳戶。 |
-| [`az storage container create`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) | 建立 Azure 儲存體容器。 |
-| [`az storage container generate-sas`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-generate-sas) | 產生 Azure 儲存體容器的 SAS 權杖。  |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 建立 App Service 方案。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | 建立 App Service 應用程式。 |
-| [`az webapp config backup create`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-create) | 建立 App Service 應用程式的備份。 |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | 取得 App Service 應用程式的備份清單。 |
+| [`az group create`](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
+| [`az storage account create`](/cli/azure/storage/account#az-storage-account-create) | 建立儲存體帳戶。 |
+| [`az storage container create`](/cli/azure/storage/container#az-storage-container-create) | 建立 Azure 儲存體容器。 |
+| [`az storage container generate-sas`](/cli/azure/storage/container#az-storage-container-generate-sas) | 產生 Azure 儲存體容器的 SAS 權杖。  |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | 建立 App Service 方案。 |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | 建立 App Service 應用程式。 |
+| [`az webapp config backup create`](/cli/azure/webapp/config/backup#az-webapp-config-backup-create) | 建立 App Service 應用程式的備份。 |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | 取得 App Service 應用程式的備份清單。 |
 
 ## <a name="next-steps"></a>後續步驟
 

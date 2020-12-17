@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 9562c9fd590ea1234fb2378f03861141e58432ff
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: bed497dfdc25ec2815f51795a1f40847586ce798
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637525"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510306"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>教學課程：將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體
 
@@ -102,7 +102,7 @@ ms.locfileid: "92637525"
 
 1. 在 [Blob 服務] 視窗中，選取 [容器]。
 
-1. 在 [新容器] 視窗的 [名稱] 方塊中，輸入 **adftutorial** ，然後選取 [確定]。
+1. 在 [新容器] 視窗的 [名稱] 方塊中，輸入 **adftutorial**，然後選取 [確定]。
 
     ![輸入容器名稱](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
@@ -129,7 +129,7 @@ ms.locfileid: "92637525"
     Connect-AzAccount
     ```        
 
-1. 如果您有多個 Azure 訂用帳戶，請執行下列命令來選取您需要使用的訂用帳戶。 以您的 Azure 訂用帳戶識別碼取代 **SubscriptionId** ：
+1. 如果您有多個 Azure 訂用帳戶，請執行下列命令來選取您需要使用的訂用帳戶。 以您的 Azure 訂用帳戶識別碼取代 **SubscriptionId**：
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -201,7 +201,7 @@ ms.locfileid: "92637525"
 
     以下是範例輸出：
 
-    ```json
+    ```console
     Name              : ADFTutorialIR
     Type              : SelfHosted
     ResourceGroupName : <resourceGroupName>
@@ -218,7 +218,7 @@ ms.locfileid: "92637525"
 
     以下是範例輸出：
 
-    ```json
+    ```console
     State                     : NeedRegistration
     Version                   :
     CreateTime                : 9/10/2019 3:24:09 AM
@@ -239,7 +239,7 @@ ms.locfileid: "92637525"
     Id                        : /subscriptions/<subscription ID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<dataFactoryName>/integrationruntimes/<integrationRuntimeName>
     ```
 
-1. 若要擷取 *驗證金鑰* ，用以向雲端中的 Data Factory 服務註冊自我裝載整合執行階段，請執行下列命令。 複製其中一個金鑰 (不含引號)，以註冊您在下一個步驟中安裝於電腦上的自我裝載整合執行階段。
+1. 若要擷取 *驗證金鑰*，用以向雲端中的 Data Factory 服務註冊自我裝載整合執行階段，請執行下列命令。 複製其中一個金鑰 (不含引號)，以註冊您在下一個步驟中安裝於電腦上的自我裝載整合執行階段。
 
     ```powershell
     Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
@@ -345,7 +345,7 @@ ms.locfileid: "92637525"
 
    以下是範例輸出：
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroup name>
     DataFactoryName   : <dataFactory name>
@@ -435,7 +435,7 @@ ms.locfileid: "92637525"
 在此步驟中，您會建立輸入和輸出資料集。 其代表複製作業的輸入與輸出資料，而複製作業會將資料從 SQL Server 資料庫複製到 Azure Blob 儲存體。
 
 ### <a name="create-a-dataset-for-the-source-sql-server-database"></a>建立來源 SQL Server 資料庫的資料集
-在此步驟中，您要定義代表 SQL Server 資料庫執行個體中資料的資料集。 資料集的類型為 SqlServerTable。 它會參考您在前一個步驟中建立的 SQL Server 連結服務。 此連結服務具有連線資訊，可供 Data Factory 服務在執行階段用來連線到您的 SQL Server 執行個體。 此資料集會指定包含資料的資料庫中的 SQL 資料表。 在本教學課程中， **emp** 資料表包含來源資料。
+在此步驟中，您要定義代表 SQL Server 資料庫執行個體中資料的資料集。 資料集的類型為 SqlServerTable。 它會參考您在前一個步驟中建立的 SQL Server 連結服務。 此連結服務具有連線資訊，可供 Data Factory 服務在執行階段用來連線到您的 SQL Server 執行個體。 此資料集會指定包含資料的資料庫中的 SQL 資料表。 在本教學課程中，**emp** 資料表包含來源資料。
 
 1. 使用下列程式碼，在 C:\ADFv2Tutorial 資料夾中建立名為 SqlServerDataset.json 的 JSON 檔案：  
     ```json
@@ -469,7 +469,7 @@ ms.locfileid: "92637525"
 
     以下是範例輸出：
 
-    ```json
+    ```console
     DatasetName       : SqlServerDataset
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -522,7 +522,7 @@ ms.locfileid: "92637525"
 
     以下是範例輸出：
 
-    ```json
+    ```console
     DatasetName       : AzureBlobDataset
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -602,7 +602,7 @@ ms.locfileid: "92637525"
 
     以下是範例輸出：
 
-    ```json
+    ```console
     PipelineName      : SQLServerToBlobPipeline
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -639,7 +639,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 
     執行範例的輸出如下：
 
-    ```JSON
+    ```console
     ResourceGroupName    : <resourceGroupName>
     DataFactoryName      : <dataFactoryName>
     ActivityRunId        : 24af7cf6-efca-4a95-931d-067c5c921c25

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: cb3417cf765cd703d72d4a2db7a649400ab2d4de
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d74057e32b6f16bdb6dae3d96ac46c5cc93571aa
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896760"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-internet-access-administrator"></a>教學課程：Azure Active Directory 與 Zscaler Internet Access Administrator 整合
 
@@ -64,7 +64,7 @@ ms.locfileid: "92896760"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Zscaler Internet Access Administrator** ，從結果面板中選取 [Zscaler Internet Access Administrator]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Zscaler Internet Access Administrator**，從結果面板中選取 [Zscaler Internet Access Administrator]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 Zscaler Internet Access Administrator](common/search-new-app.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "92896760"
 
     | 名稱  | 來源屬性  |
     | ---------| ------------ |
-    | 角色     | user.assignedroles |
+    | 角色 | user.assignedroles |
 
     a. 按一下 [新增宣告] 以開啟 [管理使用者宣告] 對話方塊。
 
@@ -203,7 +203,7 @@ ms.locfileid: "92896760"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

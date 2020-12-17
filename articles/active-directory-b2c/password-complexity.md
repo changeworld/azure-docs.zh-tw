@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0cd9f0d6cf9529439f7b5ce46b1a5807d0a68a7c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111165"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614246"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>設定 Azure Active Directory B2C 中的密碼複雜度需求
 
@@ -56,7 +56,7 @@ Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求�
 
 ### <a name="comparison-chart"></a>比較圖表
 
-| 複雜度 | 說明 |
+| 複雜度 | 描述 |
 | --- | --- |
 | 簡單 | 密碼至少為 8 到 64 個字元。 |
 | 強式 | 密碼至少為 8 到 64 個字元。 它需要小寫字母、大寫字母、數字或符號 4 個之中的 3 個。 |
@@ -218,7 +218,7 @@ Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何[在 Azure Active Directory B2C 中使用自訂原則來設定密碼變更](custom-policy-password-change.md)。
+- 瞭解如何 [在 Azure Active Directory B2C 中設定密碼變更](add-password-change-policy.md)。
 - 深入瞭解 IEF 參考中的述 [詞和](predicates.md) [PredicateValidations](predicates.md#predicatevalidations) 元素。
 
 

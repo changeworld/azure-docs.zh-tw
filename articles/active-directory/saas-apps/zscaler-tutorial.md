@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
-ms.openlocfilehash: a9d16f8cbb3da98a96f97a85d65672cc7ef70f65
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 438537efc9922e681c6dd253c2f41a44c5f2fb92
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893587"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608896"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zscaler 整合
 
@@ -50,7 +50,7 @@ ms.locfileid: "92893587"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zscaler** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zscaler**。
 1. 從結果面板選取 [Zscaler]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zscaler"></a>設定及測試 Zscaler 的 Azure AD 單一登入
@@ -91,7 +91,7 @@ ms.locfileid: "92893587"
 
     | 名稱 | 來源屬性 |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf | user.assignedroles |
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
@@ -148,7 +148,7 @@ ms.locfileid: "92893587"
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊中，從清單中選取使用者 (例如 **Britta Simon** )，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組]  對話方塊中，從清單中選取使用者 (例如 **Britta Simon**)，然後按一下畫面底部的 [選取]  按鈕。
 
     ![螢幕擷取畫面：顯示 [使用者和群組] 對話方塊，您可以在其中選取使用者。](./media/zscaler-tutorial/tutorial_zscaler_users.png)
 
@@ -183,20 +183,20 @@ ms.locfileid: "92893587"
 1. 在 [編輯 SAML]  視窗上執行下列步驟，然後按一下 [儲存]。  
 
     ![管理使用者和驗證](./media/zscaler-tutorial/ic800208.png "管理使用者和驗證")
-    
+
     a. 在 [SAML 入口網站 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
 
-    b. 在 [登入名稱屬性]  文字方塊中，輸入 **NameID** 。
+    b. 在 [登入名稱屬性]  文字方塊中，輸入 **NameID**。
 
     c. 按一下 [上傳]  ，以上傳您從 Azure 入口網站的 [公開 SSL 憑證]  下載的 Azure SAML 簽署憑證。
 
     d. 切換 [啟用 SAML 自動佈建]  。
 
-    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  文字方塊中，輸入 **displayName** 。
+    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  文字方塊中，輸入 **displayName**。
 
-    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  文字方塊中，輸入 **memberOf** 。
+    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  文字方塊中，輸入 **memberOf**。
 
-    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  文字方塊中，輸入 **department** 。
+    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  文字方塊中，輸入 **department**。
 
     h. 按一下 [檔案]  。
 
@@ -212,14 +212,14 @@ ms.locfileid: "92893587"
 
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中進行 Proxy 設定
 
-1. 啟動 **Internet Explorer** 。
+1. 啟動 **Internet Explorer**。
 
 1. 從 [工具]  功能表選取 [網際網路選項]  可開啟 [網際網路選項]  對話方塊。
 
     ![網際網路選項](./media/zscaler-tutorial/ic769492.png "，")
 
 1. 按一下 [連線]  索引標籤。
-  
+
     ![連線](./media/zscaler-tutorial/ic769493.png "連接")
 
 1. 按一下 [區域網路設定]  可開啟 [區域網路設定]  對話方塊。
@@ -230,9 +230,9 @@ ms.locfileid: "92893587"
 
     a. 選取 [在您的區域網路使用 Proxy 伺服器]  。
 
-    b. 在 [位址] 文字方塊中輸入 **gateway.zscaler.net** 。
+    b. 在 [位址] 文字方塊中輸入 **gateway.zscaler.net**。
 
-    c. 在 [連接埠] 文字方塊中輸入 **80** 。
+    c. 在 [連接埠] 文字方塊中輸入 **80**。
 
     d. 選取 [近端網址不使用 Proxy 伺服器]  。
 

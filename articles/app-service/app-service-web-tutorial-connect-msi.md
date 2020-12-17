@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: e5587c4826fea780c1e379ee1599440b2865dd50
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1f6757a9f78e3c400d92fd65a0795ceae7570c99
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862219"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347569"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
@@ -57,7 +57,7 @@ ms.locfileid: "96862219"
 
 如果您的 Azure AD 租用戶還沒有使用者，請依照[使用 Azure Active Directory 新增或刪除使用者](../active-directory/fundamentals/add-users-azure-active-directory.md)中的步驟建立一個。
 
-使用 [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) 尋找 Azure AD 使用者的物件識別碼，並取代 *\<user-principal-name>* 。 結果會儲存到變數中。
+使用 [`az ad user list`](/cli/azure/ad/user#az-ad-user-list) 尋找 Azure AD 使用者的物件識別碼，並取代 *\<user-principal-name>* 。 結果會儲存到變數中。
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
@@ -66,7 +66,7 @@ azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-na
 > 若要在 Azure AD 中查看所有使用者主體名稱的清單，請執行 `az ad user list --query [].userPrincipalName`。
 >
 
-在 Cloud Shell 中使用 [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) 命令，將此 Azure AD 使用者新增為 Active Directory 管理員。 在下列命令中，將 *\<server-name>* 取代為伺服器名稱 (不含 `.database.windows.net` 尾碼)。
+在 Cloud Shell 中使用 [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) 命令，將此 Azure AD 使用者新增為 Active Directory 管理員。 在下列命令中，將 *\<server-name>* 取代為伺服器名稱 (不含 `.database.windows.net` 尾碼)。
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
@@ -176,7 +176,7 @@ connection.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureSe
 
 ### <a name="enable-managed-identity-on-app"></a>啟用應用程式上的受控識別
 
-若要啟用 Azure 應用程式的受控識別，請在 Cloud Shell 中使用 [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) 命令。 在下列命令中，取代 *\<app-name>* 。
+若要啟用 Azure 應用程式的受控識別，請在 Cloud Shell 中使用 [az webapp identity assign](/cli/azure/webapp/identity#az-webapp-identity-assign) 命令。 在下列命令中，取代 *\<app-name>* 。
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app-name>
@@ -251,7 +251,7 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 ```bash
 git commit -am "configure managed identity"
-git push azure main
+git push azure master
 ```
 
 當新的網頁顯示待辦事項清單時，表示應用程式正使用受控識別連線到資料庫。

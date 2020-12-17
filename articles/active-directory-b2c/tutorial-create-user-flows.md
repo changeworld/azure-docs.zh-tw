@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/30/2020
+ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: af0fafe98c3ca48ecced46cef6fb5fe8876c7f50
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ca023af0666899ae94d5bf82fc6f0736d5a8efa5
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215989"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614263"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中建立使用者流程
 
@@ -28,7 +28,7 @@ ms.locfileid: "92215989"
 > * 建立設定檔編輯使用者流程
 > * 建立密碼重設使用者流程
 
-本教學課程會示範如何使用 Azure 入口網站建立一些建議的使用者流程。 如果您正在尋找有關如何在應用程式中設定資源擁有者密碼認證 (ROPC) 流程的資訊，請參閱[在 Azure AD B2C 中設定資源擁有者密碼認證流程](configure-ropc.md)。
+本教學課程會示範如何使用 Azure 入口網站建立一些建議的使用者流程。 如果您正在尋找有關如何在應用程式中設定資源擁有者密碼認證 (ROPC) 流程的資訊，請參閱[在 Azure AD B2C 中設定資源擁有者密碼認證流程](add-ropc-policy.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -61,13 +61,13 @@ ms.locfileid: "92215989"
 
     ![Azure 入口網站中的 [建立使用者流程] 頁面，已醒目提示屬性](./media/tutorial-create-user-flows/select-version.png)
 
-1. 輸入使用者流程的 [名稱]。 例如， *signupsignin1* 。
+1. 輸入使用者流程的 [名稱]。 例如，*signupsignin1*。
 1. 針對 [識別提供者]，選取 [電子郵件註冊]。
 1. 針對 [使用者屬性與宣告]，選擇在註冊期間您要收集和從使用者傳送的宣告和屬性。 例如，選取 [顯示更多]，然後選擇 [國家/地區]、[顯示名稱]，及 [郵遞區號] 的屬性和宣告。 按一下 [確定]。
 
     ![已選取三個宣告的 [屬性和宣告選取] 頁面](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-1. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1* 。
+1. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1*。
 
 ### <a name="test-the-user-flow"></a>測試使用者流程
 
@@ -92,10 +92,10 @@ ms.locfileid: "92215989"
 1. 在 Azure AD B2C 租用戶 [概觀] 頁面的功能表中，選取 [使用者流程]，然後選取 [新增使用者流程]。
 1. 在 [建立使用者流程] 頁面上，選取 [設定檔編輯] 使用者流程。 
 1. 在 [選取版本] 底下，選取 [建議]，然後選取 [建立]。
-1. 輸入使用者流程的 [名稱]。 例如， *profileediting1* 。
+1. 輸入使用者流程的 [名稱]。 例如，*profileediting1*。
 1. 針對 [識別提供者] 選取 [本機帳戶登入]。
 2. 針對 [使用者屬性]，選擇您要客戶能夠在其設定檔中編輯的屬性。 例如，選取 [顯示更多]，然後選擇 [顯示名稱] 和 [職稱] 的屬性和宣告。 按一下 [確定]。
-3. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1* 。
+3. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1*。
 
 ### <a name="test-the-user-flow"></a>測試使用者流程
 
@@ -111,11 +111,11 @@ ms.locfileid: "92215989"
 1. 在 Azure AD B2C 租用戶的 [概觀] 功能表中，選取 [使用者流程]，然後選取 [新增使用者流程]。
 1. 在 [建立使用者流程] 頁面上，選取 [密碼重設] 使用者流程。 
 1. 在 [選取版本] 底下，選取 [建議]，然後選取 [建立]。
-1. 輸入使用者流程的 [名稱]。 例如， *passwordreset1* 。
+1. 輸入使用者流程的 [名稱]。 例如，*passwordreset1*。
 1. 針對 [識別提供者]啟用 [使用電子郵件地址重設密碼]。
 2. 在 [應用程式宣告] 底下，按一下 [顯示更多]，並選擇您要以傳送回應用程式的授權權杖傳回的宣告。 例如，選取 [使用者的物件識別碼]。
 3. 按一下 [確定]。
-4. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1* 。
+4. 按一下 [建立]  新增使用者流程。 名稱前面會自動加上前置詞 *B2C_1*。
 
 ### <a name="test-the-user-flow"></a>測試使用者流程
 

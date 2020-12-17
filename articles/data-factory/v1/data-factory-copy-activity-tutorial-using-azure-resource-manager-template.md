@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 831da4153eebc798265493441ee72c041901904f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a007e64a7bd034397c2030c435a5ad349bd4acc7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87053899"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608743"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>教學課程：使用 Azure Resource Manager 範本建立 Data Factory 管線來複製資料 
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ ms.locfileid: "87053899"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* 請檢閱[教學課程概觀和必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)並完成**必要**步驟。
+* 請檢閱 [教學課程概觀和必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)並完成 **必要** 步驟。
 * 按照 [如何安裝和設定 Azure PowerShell](/powershell/azure/) 一文中的指示，在您的電腦上安裝最新版的 Azure PowerShell。 在本教學課程中，您可以使用 PowerShell 來部署 Data Factory 實體。 
 * (選擇性) 若要了解 Azure Resource Manager 範本，請參閱 [撰寫 Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md) 。
 
@@ -341,46 +341,58 @@ ms.locfileid: "87053899"
 ## <a name="monitor-pipeline"></a>監視管線
 
 1. 使用您的 Azure 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-2. 按一下左功能表上的 [資料處理站]，或按一下 [所有服務]，然後按一下 [智慧 + 分析] 類別下的 [資料處理站]。
+
+1. 按一下左功能表上的 [資料處理站]，或按一下 [所有服務]，然後按一下 [智慧 + 分析] 類別下的 [資料處理站]。
    
     ![Data Factory 功能表](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
-3. 在 [資料處理站] 頁面上，搜尋並尋找您的資料處理站 (AzureBlobToAzureSQLDatabaseDF)。 
+
+1. 在 [資料處理站] 頁面上，搜尋並尋找您的資料處理站 (AzureBlobToAzureSQLDatabaseDF)。 
    
     ![搜尋 Data Factory](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
-4. 按一下您的 Azure Data Factory。 您會看到 Data Factory 的首頁。
+
+1. 按一下您的 Azure Data Factory。 您會看到 Data Factory 的首頁。
    
     ![Data Factory 首頁](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-6. 請遵循[監視資料集和管線](data-factory-monitor-manage-pipelines.md)中的指示，監視您在本教學課程中建立的管線和資料集。 Visual Studio 目前不支援監視 Data Factory 管線。
-7. 當配量處於 [就緒] 狀態時，請確認資料已複製到 Azure SQL Database 中的 **emp** 資料表。
 
+1. 請遵循[監視資料集和管線](data-factory-monitor-manage-pipelines.md)中的指示，監視您在本教學課程中建立的管線和資料集。 Visual Studio 目前不支援監視 Data Factory 管線。
+
+1. 當配量處於 [就緒] 狀態時，請確認資料已複製到 Azure SQL Database 中的 **emp** 資料表。
 
 如需有關如何使用 Azure 入口網站刀鋒視窗來監視您在本教學課程中建立的管線和資料集的詳細資訊，請參閱 [監視資料集和管線](data-factory-monitor-manage-pipelines.md)。
 
 如需有關如何使用監視及管理應用程式來監視資料管線的詳細資訊，請參閱[使用監視應用程式來監視和管理 Azure Data Factory 管線](data-factory-monitor-manage-app.md)。
 
 ## <a name="data-factory-entities-in-the-template"></a>範本中的 Data Factory 實體
+
 ### <a name="define-data-factory"></a>定義資料處理站
-您可以在 Resource Manager 範本中定義資料處理站，如下列範例所示︰  
+
+您可以在 Resource Manager 範本中定義資料處理站，如下列範例所示︰
 
 ```json
-"resources": [
 {
-    "name": "[variables('dataFactoryName')]",
-    "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
-    "location": "West US"
+  "resources": [
+    {
+      "name": "[variables('dataFactoryName')]",
+      "apiVersion": "2015-10-01",
+      "type": "Microsoft.DataFactory/datafactories",
+      "location": "West US"
+    }
+  ]
 }
 ```
 
 dataFactoryName 定義為： 
 
 ```json
-"dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+{
+    "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+}
 ```
 
-根據資源群組識別碼，它是唯一的字串。  
+根據資源群組識別碼，它是唯一的字串。
 
 ### <a name="defining-data-factory-entities"></a>定義 Data Factory 實體
+
 下列的 Data Factory 實體定義於 JSON 範本中︰ 
 
 1. [Azure 儲存體連結服務](#azure-storage-linked-service)
@@ -390,6 +402,7 @@ dataFactoryName 定義為：
 5. [具有複製活動的管線](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Azure 儲存體連結服務
+
 AzureStorageLinkedService 會將 Azure 儲存體帳戶連結至資料處理站。 您已建立容器並將資料上傳到此儲存體帳戶，作為[必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)的一部分。 在此區段中指定您 Azure 儲存體帳戶的名稱和金鑰。 如需用來定義 Azure 儲存體連結服務之 JSON 屬性的詳細資料，請參閱 [Azure 儲存體連結服務](data-factory-azure-blob-connector.md#azure-storage-linked-service)。 
 
 ```json
@@ -413,6 +426,7 @@ AzureStorageLinkedService 會將 Azure 儲存體帳戶連結至資料處理站�
 connectionString 會使用 storageAccountName 和 storageAccountKey 參數。 使用組態檔傳遞這些參數的值。 定義也會使用在範本中定義的變數︰azureStorageLinkedService 和 dataFactoryName。 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL Database 的連結服務
+
 AzureSqlLinkedService 會將 Azure SQL Database 中的資料庫連結至資料處理站。 從 Blob 儲存體複製的資料會儲存在此資料庫中。 您在此資料庫中建立了 emp 資料表，作為[必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)的一部分。 在此區段中指定邏輯 SQL 伺服器名稱、資料庫名稱、使用者名稱與使用者密碼。 如需用來定義 Azure SQL 連結服務之 JSON 屬性的詳細資料，請參閱 [Azure SQL 連結服務](data-factory-azure-sql-connector.md#linked-service-properties)。  
 
 ```json
@@ -424,11 +438,11 @@ AzureSqlLinkedService 會將 Azure SQL Database 中的資料庫連結至資料�
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-          "type": "AzureSqlDatabase",
-          "description": "Azure SQL linked service",
-          "typeProperties": {
-            "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
-          }
+      "type": "AzureSqlDatabase",
+      "description": "Azure SQL linked service",
+      "typeProperties": {
+        "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
+      }
     }
 }
 ```

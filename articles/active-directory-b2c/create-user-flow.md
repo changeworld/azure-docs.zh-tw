@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbb55d71c2ed56bac14380960f9a0777be549566
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754409"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109007"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中建立使用者流程
 
@@ -91,4 +91,4 @@ ms.locfileid: "96754409"
 ## <a name="next-steps"></a>後續步驟
 
 - [將條件式存取新增至 Azure AD B2C 使用者流程](conditional-access-user-flow.md)
-- [在 Azure AD B2C 使用者流程中自訂使用者介面](customize-ui-overview.md)
+- [在 Azure AD B2C 使用者流程中自訂使用者介面](customize-ui-with-html.md)

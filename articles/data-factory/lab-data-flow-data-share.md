@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921025"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006132"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>使用 Azure Data Factory 和 Azure Data Share 進行資料整合
 
@@ -34,7 +34,7 @@ ms.locfileid: "96921025"
 
 * **Azure Data Lake Storage Gen2 儲存體帳戶**：如果您沒有 ADLS Gen2 儲存體帳戶，請了解如何 [建立 ADLS Gen2 儲存體帳戶](../storage/common/storage-account-create.md)。
 
-* **Azure Synapse Analytics**：如果您沒有 Azure Synapse Analytics，請了解如何[建立 Azure Synapse Analytics 執行個體](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
+* **Azure Synapse Analytics**：如果您沒有 Azure Synapse Analytics，請了解如何 [建立 Azure Synapse Analytics 執行個體](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)。
 
 * **Azure Data Factory**：如果您尚未建立資料處理站，請參閱如何 [建立資料處理站](./quickstart-create-data-factory-portal.md)。
 
@@ -72,7 +72,7 @@ ms.locfileid: "96921025"
     ![入口網站設定 3](media/lab-data-flow-data-share/configure3.png)
 1. 您設定的第一個連結服務將是 Azure SQL DB。 您可以使用搜尋列來篩選資料存放區清單。 按一下 [Azure SQL Database] 磚，然後按一下 [繼續]。
 
-    ![入口網站設定 4](media/lab-data-flow-data-share/configure4.png)
+    ![入口網站設定 4](media/lab-data-flow-data-share/configure-4.png)
 1. 在 SQL DB 組態窗格中，輸入 'SQLDB' 作為連結服務名稱。 輸入您的認證，以允許資料處理站連線至您的資料庫。 如果您使用 SQL 驗證，請輸入伺服器名稱、資料庫、您的使用者名稱和密碼。 您可以按一下 [測試連線]，以確認連線資訊正確無誤。 在完成作業後，按一下 [建立]。
 
     ![入口網站設定 5](media/lab-data-flow-data-share/configure5.png)
@@ -81,10 +81,10 @@ ms.locfileid: "96921025"
 
 1. 重複相同的程序，以新增 Azure Synapse Analytics 連結服務。 在 [連線] 索引標籤中，按一下 [新增]。 選取 [Azure Synapse Analytics] 磚，然後按一下 [繼續]。
 
-    ![入口網站設定 6](media/lab-data-flow-data-share/configure6.png)
+    ![入口網站設定 6](media/lab-data-flow-data-share/configure-6.png)
 1. 在連結服務組態窗格中，輸入 'SQLDW' 作為連結服務名稱。 輸入您的認證，以允許資料處理站連線至您的資料庫。 如果您使用 SQL 驗證，請輸入伺服器名稱、資料庫、您的使用者名稱和密碼。 您可以按一下 [測試連線]，以確認連線資訊正確無誤。 在完成作業後，按一下 [建立]。
 
-    ![入口網站設定 7](media/lab-data-flow-data-share/configure7.png)
+    ![入口網站設定 7](media/lab-data-flow-data-share/configure-7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>建立 Azure Data Lake Storage Gen2 連結服務
 
@@ -128,7 +128,7 @@ ms.locfileid: "96921025"
     ![入口網站複製 4](media/lab-data-flow-data-share/copy4.png)
 1. 搜尋 **Azure SQL Database**，然後按一下 [繼續]。
 
-    ![入口網站複製 5](media/lab-data-flow-data-share/copy5.png)
+    ![入口網站複製 5](media/lab-data-flow-data-share/copy-5.png)
 1. 呼叫您的資料集 'TripData'。 選取 'SQLDB' 作為連結服務。 從資料表名稱下拉式清單中選取資料表名稱 'dbo.TripData'。 **從連線/存放區** 匯入結構描述。 在完成作業後，按一下 [確定]。
 
     ![入口網站複製 6](media/lab-data-flow-data-share/copy6.png)
@@ -211,7 +211,7 @@ ms.locfileid: "96921025"
     ![入口網站資料流程 9](media/lab-data-flow-data-share/dataflow9.png)
 1. 選取 [Azure SQL Database] 磚，然後按一下 [繼續]。 *注意：您可能會發現，資料處理站中有許多連接器在對應資料流程中不受支援。若要轉換其中一個來源的資料，請使用複製活動將其內嵌至支援的來源中*。
 
-    ![入口網站資料流程 10](media/lab-data-flow-data-share/dataflow10.png)
+    ![入口網站資料流程 10](media/lab-data-flow-data-share/dataflow-10.png)
 1. 呼叫您的資料集 'TripFares'。 選取 'SQLDB' 作為連結服務。 從資料表名稱下拉式清單中選取資料表名稱 'dbo.TripFares'。 **從連線/存放區** 匯入結構描述。 在完成作業後，按一下 [確定]。
 
     ![入口網站資料流程 11](media/lab-data-flow-data-share/dataflow11.png)
@@ -276,7 +276,7 @@ ms.locfileid: "96921025"
 
 1. 選取 [Azure Synapse Analytics] 磚，然後按一下 [繼續]。
 
-    ![入口網站接收 3](media/lab-data-flow-data-share/sink3.png)
+    ![入口網站接收 3](media/lab-data-flow-data-share/sink-3.png)
 1. 呼叫您的資料集 'AggregatedTaxiData'。 選取 'SQLDW' 作為連結服務。 選取 [建立新的資料表]，並將新的資料表命名為 dbo.AggregateTaxiData。 在完成作業後，按一下 [確定]
 
     ![入口網站接收 4](media/lab-data-flow-data-share/sink4.png)

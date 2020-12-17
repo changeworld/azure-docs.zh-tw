@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 995ca98a21e5ec392182bb48932765cca35acf3a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9881a5f37c32849fc4f10acda8346510977e6b7b
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562452"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005778"
 ---
 # <a name="monitor-an-app-service-app-with-web-server-logs-using-azure-cli"></a>使用 Azure CLI 透過 Web 伺服器記錄監視 App Service 應用程式
 
@@ -38,11 +38,11 @@ ms.locfileid: "94562452"
 
 | Command | 注意 |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 建立 App Service 方案。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | 建立 App Service 應用程式。 |
-| [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) | 設定 App Service 應用程式會保存的記錄。 |
-| [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-download) | 將 App Service 應用程式的記錄下載到本機電腦。 |
+| [`az group create`](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | 建立 App Service 方案。 |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | 建立 App Service 應用程式。 |
+| [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) | 設定 App Service 應用程式會保存的記錄。 |
+| [`az webapp log download`](/cli/azure/webapp/log#az-webapp-log-download) | 將 App Service 應用程式的記錄下載到本機電腦。 |
 
 ## <a name="next-steps"></a>後續步驟
 

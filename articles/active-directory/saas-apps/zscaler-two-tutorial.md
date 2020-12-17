@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: a6bf6c659ff589cf693f56c6c37e7f28daa376f8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a7acbc736fc297a55a97173893cb4873acd02059
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894180"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609066"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>教學課程：Azure Active Directory 與 Zscaler Two 整合
 
@@ -63,7 +63,7 @@ ms.locfileid: "92894180"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **Zscaler Two** ，並從結果面板中選取 [Zscaler Two]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **Zscaler Two**，並從結果面板中選取 [Zscaler Two]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Zscaler Two](common/search-new-app.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "92894180"
     
     | 名稱 | 來源屬性 |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf | user.assignedroles |
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
@@ -177,17 +177,17 @@ ms.locfileid: "92894180"
     
     a. 在 [SAML 入口網站 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
 
-    b. 在 [登入名稱屬性]  文字方塊中，輸入 **NameID** 。
+    b. 在 [登入名稱屬性]  文字方塊中，輸入 **NameID**。
 
     c. 按一下 [上傳]  ，以上傳您從 Azure 入口網站的 [公開 SSL 憑證]  下載的 Azure SAML 簽署憑證。
 
     d. 切換 [啟用 SAML 自動佈建]  。
 
-    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  文字方塊中，輸入 **displayName** 。
+    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  文字方塊中，輸入 **displayName**。
 
-    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  文字方塊中，輸入 **memberOf** 。
+    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  文字方塊中，輸入 **memberOf**。
 
-    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  文字方塊中，輸入 **department** 。
+    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  文字方塊中，輸入 **department**。
 
     h. 按一下 [檔案]  。
 
@@ -202,7 +202,7 @@ ms.locfileid: "92894180"
 ## <a name="configuring-proxy-settings"></a>進行 Proxy 設定
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中進行 Proxy 設定
 
-1. 啟動 **Internet Explorer** 。
+1. 啟動 **Internet Explorer**。
 
 2. 從 [工具] 功能表選取 [網際網路選項] 可開啟 [網際網路選項] 對話方塊。   
     
@@ -220,9 +220,9 @@ ms.locfileid: "92894180"
 
     a. 選取 [在您的區域網路使用 Proxy 伺服器]  。
 
-    b. 在 [位址] 文字方塊中輸入 **gateway.Zscaler Two.net** 。
+    b. 在 [位址] 文字方塊中輸入 **gateway.Zscaler Two.net**。
 
-    c. 在 [連接埠] 文字方塊中輸入 **80** 。
+    c. 在 [連接埠] 文字方塊中輸入 **80**。
 
     d. 選取 [近端網址不使用 Proxy 伺服器]  。
 
@@ -246,7 +246,7 @@ ms.locfileid: "92894180"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
@@ -274,7 +274,7 @@ ms.locfileid: "92894180"
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊中，從清單中選取使用者 (例如 **Britta Simon** )，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組]  對話方塊中，從清單中選取使用者 (例如 **Britta Simon**)，然後按一下畫面底部的 [選取]  按鈕。
 
     ![螢幕擷取畫面：顯示 [使用者和群組] 對話方塊，您可以在其中選取使用者。](./media/zscaler-two-tutorial/tutorial_zscalertwo_users.png)
 

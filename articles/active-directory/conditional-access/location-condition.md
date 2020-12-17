@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: b647b5ee9dbd7a0447bbb69a47db76685daa1102
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 777fc60f76692734ea34ff3cdf8f6bc6e5e8316b
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030190"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615706"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在條件式存取原則中使用位置條件 
 
@@ -195,6 +195,9 @@ Azure Active Directory (Azure AD) 目前不支援使用 IPv6 的直接網路連�
 ### <a name="api-support-and-powershell"></a>API 支援與 PowerShell
 
 已命名位置的圖形 API 預覽版本可供使用。如需詳細資訊，請參閱 [NAMEDLOCATION API](/graph/api/resources/namedlocation?view=graph-rest-beta)。
+
+> [!NOTE]
+> 您使用 PowerShell 建立的命名位置，只會顯示在命名位置 (預覽) 。 您無法在舊的視圖中看到命名的位置。  
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: b7a361319c3fc6c80c6dac80c48fb10155a3ff5b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 1ef6c678110037a4aed24ef40631b73a04ca6a9d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314837"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028082"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 資料探索和模型化
 
@@ -1117,6 +1117,6 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 
 現在已使用 Spark MlLib 建立迴歸和分類模型，您已瞭解如何評分及評估這些模型。 進階資料探索和模型化筆記本深入探討到包括交叉驗證、超參數清除和模型評估。 
 
-**模型取用量** ：若要了解如何評分和評估本主題中所建立的分類和迴歸模型，請參閱 [評分及評估 Spark 建置的機器學習模型](spark-model-consumption.md)。
+**模型取用量**：若要了解如何評分和評估本主題中所建立的分類和迴歸模型，請參閱 [評分及評估 Spark 建置的機器學習模型](spark-model-consumption.md)。
 
-**交叉驗證和超參數掃掠** ：如需如何使用交叉驗證和超參數掃掠來將模型定型的相關資訊，請參閱 [使用 Spark 執行進階資料探索和模型化](spark-advanced-data-exploration-modeling.md)
+**交叉驗證和超參數掃掠**：如需如何使用交叉驗證和超參數掃掠來將模型定型的相關資訊，請參閱 [使用 Spark 執行進階資料探索和模型化](spark-advanced-data-exploration-modeling.md)

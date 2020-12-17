@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 12bc1de62217a598a478d8d7e4d71a4b60e000b9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ad88f2a469fb89145c39990fe55e92abf0f2a4c1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896628"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608879"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zscaler Three 整合
 
@@ -54,7 +54,7 @@ ms.locfileid: "92896628"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zscaler Three** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Zscaler Three**。
 1. 從結果面板選取 [Zscaler Three]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-zscaler-three"></a>設定及測試 Zscaler Three 的 Azure AD 單一登入
@@ -75,7 +75,7 @@ ms.locfileid: "92896628"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Zscaler Three]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -89,10 +89,10 @@ ms.locfileid: "92896628"
     ![顯示使用者屬性的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 6. 除了上述屬性外，Zscaler Three 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
-    
+
     | 名稱 | 來源屬性 |
     | ---------| ------------ |
-    | memberOf     | user.assignedroles |
+    | memberOf | user.assignedroles |
 
     > [!NOTE]
     > 請按一下[這裡](../develop/active-directory-enterprise-app-role-management.md)，以了解如何在 Azure AD 中設定角色
@@ -123,7 +123,7 @@ ms.locfileid: "92896628"
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [Zscaler Three]  。
-1. 在 [使用者和群組]  對話方塊中，從清單中選取使用者 (例如 **Britta Simon** )，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組]  對話方塊中，從清單中選取使用者 (例如 **Britta Simon**)，然後按一下畫面底部的 [選取]  按鈕。
 
     ![螢幕擷取畫面：顯示 [使用者和群組] 對話方塊，您可以在其中選取使用者。](./media/zscaler-three-tutorial/tutorial_zscalerthree_users.png)
 
@@ -148,7 +148,7 @@ ms.locfileid: "92896628"
 3. 如果您想要手動設定 Zscaler Three，請開啟新的網頁瀏覽器視窗，並以系統管理員身分登入 Zscaler Three 公司網站，然後執行下列步驟：
 
 4. 移至 管理 > 驗證 > 驗證設定  並執行下列步驟：
-   
+
     ![螢幕擷取畫面：顯示 Zscaler One 網站，並有所述的步驟。](./media/zscaler-three-tutorial/ic800206.png "系統管理")
 
     a. 在 [驗證類型] 下選擇 [SAML]  。
@@ -156,22 +156,22 @@ ms.locfileid: "92896628"
     b. 按一下 [設定 SAML]  。
 
 5. 在 [編輯 SAML]  視窗上執行下列步驟，然後按一下 [儲存]。  
-            
+
     ![管理使用者和驗證](./media/zscaler-three-tutorial/ic800208.png "管理使用者和驗證")
-    
+
     a. 在 [SAML 入口網站 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
 
-    b. 在 [登入名稱屬性]  文字方塊中，輸入 **NameID** 。
+    b. 在 [登入名稱屬性]  文字方塊中，輸入 **NameID**。
 
     c. 按一下 [上傳]  ，以上傳您從 Azure 入口網站的 [公開 SSL 憑證]  下載的 Azure SAML 簽署憑證。
 
     d. 切換 [啟用 SAML 自動佈建]  。
 
-    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  文字方塊中，輸入 **displayName** 。
+    e. 如果您想要啟用 displayName 屬性的 SAML 自動佈建，請在 [使用者顯示名稱屬性]  文字方塊中，輸入 **displayName**。
 
-    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  文字方塊中，輸入 **memberOf** 。
+    f. 如果您想要啟用 memberOf 屬性的 SAML 自動佈建，請在 [群組名稱屬性]  文字方塊中，輸入 **memberOf**。
 
-    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  文字方塊中，輸入 **department** 。
+    g. 如果您想要啟用 department 屬性的 SAML 自動佈建，請在 [部門名稱屬性]  文字方塊中，輸入 **department**。
 
     h. 按一下 [檔案]  。
 
@@ -186,27 +186,27 @@ ms.locfileid: "92896628"
 ## <a name="configuring-proxy-settings"></a>進行 Proxy 設定
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>在 Internet Explorer 中進行 Proxy 設定
 
-1. 啟動 **Internet Explorer** 。
+1. 啟動 **Internet Explorer**。
 
 2. 從 [工具]  功能表選取 [網際網路選項]  可開啟 [網際網路選項]  對話方塊。   
-    
+
      ![網際網路選項](./media/zscaler-three-tutorial/ic769492.png "，")
 
 3. 按一下 [連線]  索引標籤。   
-  
+
      ![連線](./media/zscaler-three-tutorial/ic769493.png "連接")
 
 4. 按一下 [區域網路設定]  可開啟 [區域網路設定]  對話方塊。
 
 5. 在 [Proxy 伺服器] 區段中，執行下列步驟：   
-   
+
     ![Proxy 伺服器](./media/zscaler-three-tutorial/ic769494.png "Proxy 伺服器")
 
     a. 選取 [在您的區域網路使用 Proxy 伺服器]  。
 
-    b. 在 [位址] 文字方塊中輸入 **gateway.Zscaler Three.net** 。
+    b. 在 [位址] 文字方塊中輸入 **gateway.Zscaler Three.net**。
 
-    c. 在 [連接埠] 文字方塊中輸入 **80** 。
+    c. 在 [連接埠] 文字方塊中輸入 **80**。
 
     d. 選取 [近端網址不使用 Proxy 伺服器]  。
 

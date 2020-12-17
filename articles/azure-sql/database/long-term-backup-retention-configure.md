@@ -10,13 +10,13 @@ ms.topic: how-to
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 04/14/2020
-ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 49dfed7faac1e55a40bc7b7ddd5e9555519350a2
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984425"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617301"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL Database 長期備份保留
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -203,8 +203,9 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 ## <a name="limitations"></a>限制
 - 從 LTR 備份還原時，會停用 [讀取規模] 屬性。 若要啟用、讀取還原的資料庫，請在資料庫建立後加以更新。
+- 從 LTR 備份還原（當資料庫位於彈性集區時所建立）時，您必須指定目標服務等級目標。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要深入了解服務產生的自動備份，請參閱[自動備份](automated-backups-overview.md)
 - 若要深入了解長期備份保留，請參閱[長期備份保留](long-term-retention-overview.md)

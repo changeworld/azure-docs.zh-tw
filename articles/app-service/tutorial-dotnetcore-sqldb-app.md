@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 890f9c3d5c3a250bc13270ac685b93349f18fcff
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e953c3f442d01c023df04c1a8af3c5fe56ea59ed
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862255"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347093"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>教學課程：在 Azure App Service 中建置 ASP.NET Core 和 Azure SQL Database 應用程式
 
@@ -95,7 +95,7 @@ dotnet run
 
 ### <a name="create-a-sql-database-logical-server"></a>連線至 SQL Database 邏輯伺服器
 
-在 Cloud Shell 中，使用 [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) 命令建立 SQL Database 邏輯伺服器。
+在 Cloud Shell 中，使用 [`az sql server create`](/cli/azure/sql/server#az-sql-server-create) 命令建立 SQL Database 邏輯伺服器。
 
 將 *\<server-name>* 預留位置取代為「唯一」的 SQL Database 名稱。 這個名稱會用來做為全域唯一 SQL Database 端點 (`<server-name>.database.windows.net`) 的一部分。 有效字元為 `a`-`z`、`0`-`9`、`-`。 此外，將 *\<db-username>* 與 *\<db-password>* 取代為您選擇的使用者名稱與密碼。 
 
@@ -126,7 +126,7 @@ az sql server create --name <server-name> --resource-group myResourceGroup --loc
 
 ### <a name="configure-a-server-firewall-rule"></a>設定伺服器防火牆規則
 
-使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule?view=azure-cli-latest#az-sql-server-firewall-rule-create) 命令建立 [Azure SQL Database 伺服器層級防火牆規則](../azure-sql/database/firewall-configure.md)。 當起始 IP 和結束 IP 都設為 0.0.0.0 時，防火牆只會為其他 Azure 資源開啟。 
+使用 [`az sql server firewall create`](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) 命令建立 [Azure SQL Database 伺服器層級防火牆規則](../azure-sql/database/firewall-configure.md)。 當起始 IP 和結束 IP 都設為 0.0.0.0 時，防火牆只會為其他 Azure 資源開啟。 
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
@@ -144,7 +144,7 @@ az sql server firewall-rule create --name AllowLocalClient --server <server-name
 
 ### <a name="create-a-database"></a>建立資料庫
 
-使用 [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) 命令在伺服器中建立具有 [S0 效能等級](../azure-sql/database/service-tiers-dtu.md)的資料庫。
+使用 [`az sql db create`](/cli/azure/sql/db#az-sql-db-create) 命令在伺服器中建立具有 [S0 效能等級](../azure-sql/database/service-tiers-dtu.md)的資料庫。
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server-name> --name coreDB --service-objective S0
@@ -152,7 +152,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>建立連接字串
 
-使用 [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) 命令來取得連接字串。
+使用 [`az sql db show-connection-string`](/cli/azure/sql/db#az-sql-db-show-connection-string) 命令來取得連接字串。
 
 ```azurecli-interactive
 az sql db show-connection-string --client ado.net --server <server-name> --name coreDB
@@ -263,7 +263,7 @@ git commit -m "connect to SQLDB in Azure"
 
 ### <a name="configure-connection-string"></a>設定連接字串
 
-若要設定 Azure 應用程式的連接字串，請在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 在下列命令中，將 *\<app-name>* 與 *\<connection-string>* 參數取代為您稍早建立的連接字串。
+若要設定 Azure 應用程式的連接字串，請在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) 命令。 在下列命令中，將 *\<app-name>* 與 *\<connection-string>* 參數取代為您稍早建立的連接字串。
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
@@ -286,7 +286,7 @@ Compressing objects: 100% (171/171), done.
 Writing objects: 100% (268/268), 1.18 MiB | 1.55 MiB/s, done.
 Total 268 (delta 95), reused 251 (delta 87), pack-reused 0
 remote: Resolving deltas: 100% (95/95), done.
-remote: Updating branch 'main'.
+remote: Updating branch 'master'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id '64821c3558'.
 remote: Generating deployment script.
@@ -303,7 +303,7 @@ remote: Running post deployment command(s)...
 remote: Triggering recycle (preview mode disabled).
 remote: App container will begin restart within 10 seconds.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      main -> main
+ * [new branch]      master -> master
 </pre>
 
 ::: zone-end
@@ -321,7 +321,7 @@ Writing objects: 100% (273/273), 1.19 MiB | 1.85 MiB/s, done.
 Total 273 (delta 96), reused 259 (delta 88)
 remote: Resolving deltas: 100% (96/96), done.
 remote: Deploy Async
-remote: Updating branch 'main'.
+remote: Updating branch 'master'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'cccecf86c5'.
 remote: Repository path is /home/site/repository
@@ -337,7 +337,7 @@ remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
 remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/cccecf86c56493ffa594e76ea1deb3abb3702d89/log'
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      main -> main
+ * [new branch]      master -> master
 </pre>
 
 ::: zone-end
@@ -446,7 +446,7 @@ dotnet run
 ```bash
 git add .
 git commit -m "added done field"
-git push azure main
+git push azure master
 ```
 
 `git push` 完成之後，瀏覽至 App Service 應用程式並嘗試新增待辦事項，然後核取 [完成]。
@@ -464,7 +464,7 @@ git push azure main
 - 在 *DotNetCoreSqlDb.csproj* 中包含 `Microsoft.Extensions.Logging.AzureAppServices` 的參考。
 - 在 Program.cs 中呼叫 `loggerFactory.AddAzureWebAppDiagnostics()`。
 
-若要將 App Service 中的 ASP.NET Core [記錄層級](/aspnet/core/fundamentals/logging#log-level)從預設層級 `Error` 設定為 `Information`，請在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) 命令。
+若要將 App Service 中的 ASP.NET Core [記錄層級](/aspnet/core/fundamentals/logging#log-level)從預設層級 `Error` 設定為 `Information`，請在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log#az-webapp-log-config) 命令。
 
 ```azurecli-interactive
 az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
@@ -473,7 +473,7 @@ az webapp log config --name <app-name> --resource-group myResourceGroup --applic
 > [!NOTE]
 > 專案的記錄層級已經在 appsettings.json 中設定為 `Information`。
 
-若要開始記錄資料流，請在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) 命令。
+若要開始記錄資料流，請在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) 命令。
 
 ```azurecli-interactive
 az webapp log tail --name <app-name> --resource-group myResourceGroup

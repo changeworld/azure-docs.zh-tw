@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/06/2020
+ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: d8f2e77b7225306844cec85363a2971eaac4eebd
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 58cdd025587823f7eb702164c965ab622a7325d3
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620251"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615642"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>已知問題： Azure Active Directory Domain Services 中的網路設定警示
 
@@ -40,12 +40,12 @@ ms.locfileid: "96620251"
 
 | 優先順序 | 名稱 | 連接埠 | 通訊協定 | 來源 | Destination | 動作 |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | 任意 | Allow |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | 任意 | Allow |
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | 任意 | Allow |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | 任意 | 拒絕<sup>1</sup> |
 | 65000    | AllVnetInBound | 任意 | 任意 | VirtualNetwork | VirtualNetwork | 允許 |
 | 65001    | AllowAzureLoadBalancerInBound | 任意 | 任意 | AzureLoadBalancer | 任意 | Allow |
 | 65500    | DenyAllInBound | 任意 | 任意 | 任意 | 任意 | 拒絕 |
+<sup>1</sup>用於偵錯工具的選擇性。 在需要進行先進的疑難排解時允許。
 
 > [!NOTE]
 > 如果您 [設定安全的 LDAP][configure-ldaps]，您可能也會有額外的規則，可允許輸入流量。 這是正確 LDAPS 通訊所需的額外規則。

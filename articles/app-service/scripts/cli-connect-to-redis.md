@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b0e9929d851133700e5b0475d5e5aef8b0b4ca18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4d9fc6e597fb51f607a3e2833ae6ddd7d9281fc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88959743"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006328"
 ---
 # <a name="connect-an-app-service-app-to-an-azure-cache-for-redis-using-cli"></a>使用 CLI 將 App Service 應用程式連線至 Azure Cache for Redis
 
@@ -38,12 +38,12 @@ ms.locfileid: "88959743"
 
 | Command | 注意 |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 建立 App Service 方案。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | 建立 App Service 應用程式。 |
-| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | 建立「Azure Redis 快取」執行個體。 |
-| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | 列出「Azure Redis 快取」執行個體的存取金鑰。 |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | 建立或更新 App Service 應用程式的應用程式設定。 應用程式設定會顯示為應用程式的環境變數。 |
+| [`az group create`](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | 建立 App Service 方案。 |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | 建立 App Service 應用程式。 |
+| [`az redis create`](/cli/azure/redis#az-redis-create) | 建立「Azure Redis 快取」執行個體。 |
+| [`az redis list-keys`](/cli/azure/redis#az-redis-list-keys) | 列出「Azure Redis 快取」執行個體的存取金鑰。 |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | 建立或更新 App Service 應用程式的應用程式設定。 應用程式設定會顯示為應用程式的環境變數。 |
 
 ## <a name="next-steps"></a>後續步驟
 

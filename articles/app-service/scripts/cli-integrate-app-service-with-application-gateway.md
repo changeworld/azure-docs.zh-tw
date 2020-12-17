@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3133d5f17643eeb1a0e9f77f7d0af6532c30592d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3820e7bf00f99a846dd2be0edeaf4248e0dfd8ad
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561403"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006072"
 ---
 # <a name="integrate-app-service-with-application-gateway-using-cli"></a>使用 CLI 整合 App Service 與應用程式閘道
 
@@ -45,16 +45,16 @@ ms.locfileid: "94561403"
 
 | Command | 注意 |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | 建立用來存放所有資源的資源群組。 |
-| [`az network vnet create`](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) | 建立虛擬網路。 |
-| [`az network public-ip create`](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) | 建立公用 IP 位址。 |
-| [`az network public-ip show`](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) | 顯示公用 IP 位址的詳細資料。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | 建立 App Service 方案。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | 建立 App Service Web 應用程式。 |
-| [`az webapp show`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-show) | 顯示 App Service Web 應用程式的詳細資料。 |
-| [`az webapp config access-restriction add`](/cli/azure/webapp/config/access-restriction?view=azure-cli-latest#az-webapp-config-access-restriction-add) | 將存取限制新增至 App Service Web 應用程式。 |
-| [`az network application-gateway create`](/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-create) | 建立應用程式閘道。 |
-| [`az network application-gateway http-settings update`](/cli/azure/network/application-gateway/http-settings?view=azure-cli-latest#az-network-application-gateway-http-settings-update) | 更新應用程式閘道 HTTP 設定。 |
+| [`az group create`](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
+| [`az network vnet create`](/cli/azure/network/vnet#az-network-vnet-create) | 建立虛擬網路。 |
+| [`az network public-ip create`](/cli/azure/network/public-ip#az-network-public-ip-create) | 建立公用 IP 位址。 |
+| [`az network public-ip show`](/cli/azure/network/public-ip#az-network-public-ip-show) | 顯示公用 IP 位址的詳細資料。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | 建立 App Service 方案。 |
+| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | 建立 App Service Web 應用程式。 |
+| [`az webapp show`](/cli/azure/webapp#az-webapp-show) | 顯示 App Service Web 應用程式的詳細資料。 |
+| [`az webapp config access-restriction add`](/cli/azure/webapp/config/access-restriction#az-webapp-config-access-restriction-add) | 將存取限制新增至 App Service Web 應用程式。 |
+| [`az network application-gateway create`](/cli/azure/network/application-gateway#az-network-application-gateway-create) | 建立應用程式閘道。 |
+| [`az network application-gateway http-settings update`](/cli/azure/network/application-gateway/http-settings#az-network-application-gateway-http-settings-update) | 更新應用程式閘道 HTTP 設定。 |
 
 ## <a name="next-steps"></a>後續步驟
 

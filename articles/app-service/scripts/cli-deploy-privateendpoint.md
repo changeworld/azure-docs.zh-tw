@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 7246bb3453f6e4863faf15dbcbfdf8534481ddad
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 21f937d95c6cd0dafa27daae50d7a74648af7bdc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561404"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006101"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>使用 Azure CLI 來建立 App Service 應用程式和部署私人端點
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location francecentral
 ## <a name="create-an-app-service-plan"></a>建立 App Service 方案
 
 您需要建立 App Service 方案來裝載 Web 應用程式。
-使用 [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 來建立 App Service 方案。
+使用 [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) 來建立 App Service 方案。
 此範例會在 *francecentral* 位置中建立名為 *myAppServicePlan* 的 App Service 方案，其中含有 *P1V2* Sku 且只有一個背景工作角色： 
 
 ```azurecli-interactive
@@ -78,7 +78,7 @@ az network vnet create \
 
 ## <a name="configure-the-subnet"></a>設定子網路 
 
-您需要更新子網，才能停用私人端點網路原則。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) 來更新名為 mySubnet 的子網路設定：
+您需要更新子網，才能停用私人端點網路原則。 使用 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) 來更新名為 mySubnet 的子網路設定：
 
 ```azurecli-interactive
 az network vnet subnet update \

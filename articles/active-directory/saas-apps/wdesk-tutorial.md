@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 7eac2ed58608ac5814e1f907b863a2977df830d4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 11539e7d6e685703810537cf69e0e7ed3ec0be4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636709"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609083"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Wdesk 整合
 
@@ -50,7 +50,7 @@ ms.locfileid: "92636709"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Wdesk** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Wdesk**。
 1. 從結果面板中選取 [Wdesk]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -102,7 +102,7 @@ ms.locfileid: "92636709"
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的識別碼、回覆 URL 和登入 URL 來更新這些值。 當您設定 SSO 時，您可以從 WDesk 入口網站取得這些值。
 
-4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "92636709"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
 
@@ -170,11 +170,11 @@ ms.locfileid: "92636709"
 
 1. 在不同的網頁瀏覽器視窗中，以安全性系統管理員身分登入 Wdesk。
 
-2. 按一下左下方的 [管理員]  ，選擇 [帳戶管理員]  ：
+1. 按一下左下方的 [管理員]  ，選擇 [帳戶管理員]  ：
  
-     ![螢幕擷取畫面：顯示已從 [管理員] 功能表中選取 [帳戶管理員]。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
+    ![螢幕擷取畫面：顯示已從 [管理員] 功能表中選取 [帳戶管理員]。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig1.png)
 
-3. 在 Wdesk 管理員中，依序巡覽至 [安全性]  、[SAML]   > [SAML 設定]  ：
+1. 在 Wdesk 管理員中，依序巡覽至 [安全性]  、[SAML]   > [SAML 設定]  ：
 
     ![螢幕擷取畫面：顯示已從 [SAML] 索引標籤選取 [SAML 設定]。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
@@ -190,19 +190,19 @@ ms.locfileid: "92636709"
 
     ![螢幕擷取畫面：顯示 [服務提供者詳細資料]，您可以在其中輸入所述的值。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig4.png)
 
-      a. 將 **登入 URL** 複製並貼入 Azure 入口網站的 [登入 URL]  文字方塊。
-   
-      b. 將 **中繼資料 URL** 複製並貼入 Azure 入口網站的 [識別碼]  文字方塊。
-       
-      c. 將 **取用者 URL** 複製並貼入 Azure 入口網站的 [回覆 URL]  文字方塊。
-   
-      d. 按一下 Azure 入口網站的 [儲存]  ，以儲存變更。      
+    1. 將 **登入 URL** 複製並貼入 Azure 入口網站的 [登入 URL]  文字方塊。
 
-6. 按一下 [Configure IdP Settings] \(設定 IdP 設定)  開啟 [Edit IdP Settings] \(編輯 IdP 設定)  對話方塊。 按一下 [選擇檔案]  找出從 Azure 入口網站儲存的 **Metadata.xml** 檔案，然後將它上傳。
+    1. 將 **中繼資料 URL** 複製並貼入 Azure 入口網站的 [識別碼]  文字方塊。
+
+    1. 將 **取用者 URL** 複製並貼入 Azure 入口網站的 [回覆 URL]  文字方塊。
+
+    1. 按一下 Azure 入口網站的 [儲存]  ，以儲存變更。      
+
+1. 按一下 [Configure IdP Settings] \(設定 IdP 設定)  開啟 [Edit IdP Settings] \(編輯 IdP 設定)  對話方塊。 按一下 [選擇檔案]  找出從 Azure 入口網站儲存的 **Metadata.xml** 檔案，然後將它上傳。
     
     ![螢幕擷取畫面：顯示可在其中上傳中繼資料的 [編輯 IdP 設定]。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig5.png)
   
-7. 按一下 [儲存變更]  。
+1. 按一下 [儲存變更]  。
 
     ![螢幕擷取畫面：顯示 [儲存變更] 按鈕。](./media/wdesk-tutorial/tutorial_wdesk_ssoconfigsavebutton.png)
 
@@ -234,9 +234,9 @@ ms.locfileid: "92636709"
  
     a. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件，例如 b.simon@contoso.com。
 
-    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **B** 。
+    b. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **B**。
 
-    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
+    c. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
 7. 按一下 [儲存成員]  按鈕。  
 

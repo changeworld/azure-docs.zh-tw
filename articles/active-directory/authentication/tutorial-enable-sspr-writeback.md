@@ -10,13 +10,13 @@ ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: fc5291544f1cd64caa7e4ab1dd7d541604706920
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 444ca19732921b336cae32a9b1eb5755a08e4bd3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741162"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028048"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教學課程：啟用目的地為內部部署環境的 Azure Active Directory 自助式密碼重設回寫
 

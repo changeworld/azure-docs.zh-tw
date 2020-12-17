@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7b925a25e1e246008f393f7b15160417c3b3d7a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d047a45d678918541eb3c2d2c45e4519a34bdd57
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254849"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608675"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教學課程：使用 .NET API 建立具有複製活動的管線
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ ms.locfileid: "85254849"
 9. 取得應用程式識別碼。
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication
     ```
     記下輸出的應用程式識別碼 (applicationID)。
 
@@ -209,7 +209,7 @@ ms.locfileid: "85254849"
     ```
 
     資料處理站可以有一或多個管線。 其中的管線可以有一或多個活動。 例如，「複製活動」會從來源將資料複製到目的地資料存放區，HDInsight Hive 活動則是執行 Hive 指令碼來轉換輸入資料，以產生輸出資料。 讓我們在這個步驟中開始建立 Data Factory。
-8. 將下列會建立 **Azure 儲存體**的程式碼新增至 **Main** 方法中。
+8. 將下列會建立 **Azure 儲存體** 的程式碼新增至 **Main** 方法中。
 
    > [!IMPORTANT]
    > 以 Azure 儲存體帳戶的名稱和金鑰取代 **storageaccountname** 和 **accountkey**。
@@ -237,7 +237,7 @@ ms.locfileid: "85254849"
     因此，您可以建立名為 AzureStorageLinkedService 和 AzureSqlLinkedService 的兩個連結服務類型︰分別為 AzureStorage 和 AzureSqlDatabase。  
 
     AzureStorageLinkedService 會將 Azure 儲存體帳戶連結至資料處理站。 此儲存體帳戶是您在其中建立容器並將資料上傳為[必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)一部分的帳戶。
-9. 將下列會建立 **Azure SQL 連結服務**的程式碼新增至 **Main** 方法中。
+9. 將下列會建立 **Azure SQL 連結服務** 的程式碼新增至 **Main** 方法中。
 
    > [!IMPORTANT]
    > 以您的伺服器名稱、資料庫名稱、使用者和密碼取代 **servername**、**databasename**、**username** **password**。
@@ -261,7 +261,7 @@ ms.locfileid: "85254849"
     ```
 
     AzureSqlLinkedService 會將 Azure SQL Database 連結至資料處理站。 從 Blob 儲存體複製的資料會儲存在此資料庫中。 您在此資料庫中建立了 emp 資料表，作為[必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)的一部分。
-10. 將下列會建立**輸入和輸出資料集**的程式碼新增至 **Main** 方法中。
+10. 將下列會建立 **輸入和輸出資料集** 的程式碼新增至 **Main** 方法中。
 
     ```csharp
     // create input and output datasets
@@ -345,8 +345,8 @@ ms.locfileid: "85254849"
 
     在此步驟中，您將在 AzureStorageLinkedService 連結服務所代表的 Azure 儲存體中，建立名為 InputDataset 的資料集，該資料集會指向 Blob 容器 (adftutorial) 根資料夾中的 Blob 檔案 (emp.txt)。 如果您未指定 (或跳過) fileName 的值，則輸入資料夾中所有 Blob 資料都會複製到目的地。 在本教學課程中，您可指定 fileName 的值。    
 
-    在此步驟中，您會建立名為 **OutputDataset**的輸出資料集。 此資料集指向資料庫中 **AzureSqlLinkedService** 所代表的 SQL 資料表。
-11. 將下列會**建立並啟用管線**的程式碼新增至 **Main** 方法中。 在此步驟中您會建立管線，其中含有使用 **InputDataset** 作為輸入和使用 **OutputDataset** 作為輸出的**複製活動**。
+    在此步驟中，您會建立名為 **OutputDataset** 的輸出資料集。 此資料集指向資料庫中 **AzureSqlLinkedService** 所代表的 SQL 資料表。
+11. 將下列會 **建立並啟用管線** 的程式碼新增至 **Main** 方法中。 在此步驟中您會建立管線，其中含有使用 **InputDataset** 作為輸入和使用 **OutputDataset** 作為輸出的 **複製活動**。
 
     ```csharp
     // create a pipeline
