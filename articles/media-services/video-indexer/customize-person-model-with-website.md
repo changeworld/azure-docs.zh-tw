@@ -3,19 +3,19 @@ title: 使用影片索引子網站自訂人員模型
 titleSuffix: Azure Media Services
 description: 瞭解如何使用影片索引子網站自訂人員模型。
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/06/2020
-ms.author: kumud
-ms.openlocfilehash: 9f5a18cc51aa92b53a5391404b1e9d3fc800bb47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/16/2020
+ms.author: juliako
+ms.openlocfilehash: 890f8c159c3e8e8d0b4164cf218f320551ea63ec
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91356616"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97628918"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>使用影片索引器網站自訂人員模型
 
@@ -26,34 +26,27 @@ ms.locfileid: "91356616"
 ## <a name="central-management-of-person-models-in-your-account"></a>您帳戶中人員模型的集中管理
 
 1. 若要在您的帳戶中查看、編輯及刪除人員模型，請流覽至影片索引子網站並登入。
+1. 選取頁面左側的 [內容模型自訂] 按鈕。
 
-2. 選取頁面右上角的 [內容模型自訂] 按鈕。
-
-    ![螢幕擷取畫面顯示已選取內容模型自訂按鈕的影片索引子。](./media/customize-face-model/content-model-customization.png)
-
-3. 選取 [人員] 索引標籤。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="自訂內容模型":::
+1. 選取 [人員] 索引標籤。
 
     您將會在帳戶中看到預設的人員模型。 預設人員模型會保留您在建立索引時未指定自訂人員模型的影片深入解析中，您可能已編輯或變更的任何臉部。
 
     如果您已建立其他人員模型，則也會在此頁面上列出。
 
-    ![螢幕擷取畫面：顯示 [內容模型自訂] 對話方塊。](./media/customize-face-model/content-model-customization-people-tab.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-face-model/content-model-customization-people-tab.png" alt-text="自訂人員":::
 
 ## <a name="create-a-new-person-model"></a>建立新的人員模型
 
-1. 選取 [ **+ 新增模型** ] 按鈕。
+1. 選取右側的 [ **+ 新增模型** ] 按鈕。
+1. 輸入模型的名稱。 您現在可以將新的人員和臉部新增至新的人員模型。
+1. 選取 [清單] 功能表按鈕，然後選擇 [ **+ 新增人員**]。
 
-    ![螢幕擷取畫面顯示 [內容模型自訂] 對話方塊，其中已選取 [人員] 索引標籤。](./media/customize-face-model/add-new-person.png)
-
-2. 輸入模型的名稱，然後選取名稱旁邊的核取按鈕。
-
-    ![螢幕擷取畫面顯示 [內容模型自訂] 對話方塊，其中包含為模型輸入的名稱。](./media/customize-face-model/add-new-person2.png)
-
-    您已建立新的人員模型。 您現在可以將臉部新增至新的人員模型。
-
-3. 選取 [清單] 功能表按鈕，然後選擇 [ **+ 新增人員**]。
-
-    ![螢幕擷取畫面顯示 [內容模型自訂] 對話方塊，其中包含可讓您新增人員選項的新模型的內容功能表。](./media/customize-face-model/add-new-person3.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-face-model/add-new-person.png" alt-text="新增 peron":::
 
 ## <a name="add-a-new-person-to-a-person-model"></a>將新人員新增至人員模型
 
@@ -61,14 +54,9 @@ ms.locfileid: "91356616"
 > 影片索引子可讓您在人員模型中加入多個具有相同名稱的人員。 不過，建議您為模型中的每個人提供唯一的名稱，以提供可用性和清晰度。
 
 1. 若要將新臉部新增至人員模型，請選取您要新增臉部的人員模型旁的 [清單] 功能表按鈕。
-
 1. 從功能表選取 [ **+ 新增人員** ]。
 
-    ![螢幕擷取畫面：顯示 [內容模型自訂] 對話方塊，準備好加入具有內容功能表的人員。](./media/customize-face-model/add-new-face.png)
-
     快顯視窗會提示您填寫人員的詳細資料。 輸入人員的名稱，然後選取 [核取] 按鈕。
-
-    ![螢幕擷取畫面會顯示人員的詳細資料。](./media/customize-face-model/add-new-face2.png)
 
     然後，您可以從檔案瀏覽器中選擇，或拖放臉部影像。 影片索引子會採用所有標準圖像檔案類型 (例如： JPG、PNG 和更多的) 。
 
@@ -79,15 +67,9 @@ ms.locfileid: "91356616"
 您可以重新命名帳戶中的任何人員模型，包括預設人員模型。 即使您重新命名您的預設人員模型，它仍會作為您帳戶中的預設人員模型。
 
 1. 選取您要重新命名之人員模型旁的 [清單] 功能表按鈕。
-2. 從功能表中選取 [重新命名]****。
-
-    ![螢幕擷取畫面顯示 [內容模型自訂] 對話方塊，其中包含可重新命名人員模型選項的內容功能表。 ](./media/customize-face-model/rename-person.png)
-
-3. 選取目前的模型名稱，然後輸入新名稱。
-
-    ![螢幕擷取畫面：顯示重新命名的人員模型。](./media/customize-face-model/rename-person2.png)
-
-4. 選取要重新命名之模型的複選按鈕。
+1. 從功能表中選取 [重新命名]。
+1. 選取目前的模型名稱，然後輸入新名稱。
+1. 選取要重新命名之模型的複選按鈕。
 
 ## <a name="delete-a-person-model"></a>刪除人員模型
 
@@ -95,12 +77,7 @@ ms.locfileid: "91356616"
 
 1. 從功能表中選取 [刪除]。
 
-    ![螢幕擷取畫面顯示 [內容模型自訂] 對話方塊，其中具有可刪除人員模型選項的內容功能表。](./media/customize-face-model/delete-person.png)
-
     快顯視窗隨即出現，並通知您此動作將會刪除 Person 模型及其包含的所有人員和檔案。 此動作無法復原。
-
-    ![螢幕擷取畫面顯示用來刪除 person 模型的 [確認] 對話方塊。](./media/customize-face-model/delete-person2.png)
-
 1. 如果您確定，請再次選取 [刪除]。
 
 > [!NOTE]
@@ -129,7 +106,7 @@ ms.locfileid: "91356616"
 如果您選取 [ **管理**]，就會看到 **人員的 [詳細資料** ] 視窗，其中包含此人員模型正在定型的所有臉部。 這些臉部是在影片中，從使用此人員模型或您手動上傳的影像中出現。
 
 > [!TIP]
-> 您可以按一下人員的名稱或按一下 [**管理**]，以移至**人員的 [詳細資料**] 視窗，如上所示。
+> 您可以按一下人員的名稱或按一下 [**管理**]，以移至 **人員的 [詳細資料**] 視窗，如上所示。
 
 #### <a name="add-a-face"></a>新增臉部
 
@@ -149,19 +126,10 @@ ms.locfileid: "91356616"
 
 若要在新的影片上使用您的人員模型，請執行下列步驟：
 
-1. 選取頁面頂端的 [ **上傳** ] 按鈕。
-
-    ![螢幕擷取畫面：顯示 [上傳] 按鈕。](./media/customize-face-model/upload.png)
-
-1. 將您的影片檔案放在圓形中，或流覽您的檔案。
+1. 選取頁面右側的 [ **上傳** ] 按鈕。
+1. 請卸載您的影片檔案，或流覽您的檔案。
 1. 選取 [ **Advanced options** ] 箭號。
-
-    ![螢幕擷取畫面顯示 [上傳您的媒體檔案] 對話方塊。](./media/customize-face-model/upload2.png)
-
 1. 選取下拉式清單，然後選取您所建立的人員模型。
-
-    ![螢幕擷取畫面顯示 [上傳您的媒體檔案] 對話方塊，並在 [Advanced] 選項中選取 [人員模型] 的預設值。](./media/customize-face-model/upload3.png)
-
 1. 選取頁面底部的 [ **上傳** ] 選項，您的新影片將會使用您的人員模型來編制索引。
 
 如果您在上傳期間未指定人員模型，影片索引子會使用您帳戶中的預設人員模型來為影片編制索引。
@@ -178,9 +146,6 @@ ms.locfileid: "91356616"
 
     您現在可以選取要用來重新編制影片索引的人員模型。
 1. 選取下拉式清單，然後選取您要使用的人員模型。
-
-    ![螢幕擷取畫面：顯示影片的選項，包括選取人員模型。](./media/customize-face-model/reindex2.png)
-
 1. 選取 [重新 **索引** ] 按鈕，將會使用您的人員模型重新建立索引您的影片。
 
 您對在您剛剛重新建立索引的影片中偵測到的臉部所做的任何新編輯，將會儲存在用來重新索引影片的人員模型中。
@@ -211,15 +176,11 @@ ms.locfileid: "91356616"
 
 如果您使用影片所使用的「人員」模型中現有人員的名稱來命名臉部，則從該人員的這段影片偵測到的臉部影像將會與模型中已存在的內容合併。 如果您將臉部命名為新名稱，則會在影片所使用的人員模型中建立新的人員專案。
 
-![螢幕擷取畫面顯示已新增名稱的臉部。](./media/customize-face-model/edit-face2.png)
-
 ### <a name="delete-a-face"></a>刪除人臉
 
 若要刪除影片中偵測到的臉部，請移至 [見解] 窗格，然後選取窗格右上角的鉛筆圖示。 選取臉部名稱底下的 [ **刪除** ] 選項。 此動作會從影片中移除偵測到的臉部。 該人的臉部仍會在顯示的其他影片中偵測到，但您也可以在建立索引之後，從這些影片中刪除臉部。
 
 如果使用者已被命名，則也會繼續存在於用來為您刪除臉部的影片編制索引的人員模型中，除非您明確地刪除 Person 模型中的人員。
-
-![刪除影片中的臉部](./media/customize-face-model/delete-face.png)
 
 ## <a name="next-steps"></a>後續步驟
 
