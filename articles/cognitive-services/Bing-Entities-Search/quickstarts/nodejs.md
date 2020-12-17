@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 8634cb009d801c7edbb14682bf9d83c25ba111a5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b9311329ea4115d49f36dd7d39782bbd748a356b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351430"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106099"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>快速入門：使用 Node.js 將搜尋要求傳送至 Bing 實體搜尋 REST API
 
@@ -87,15 +87,15 @@ ms.locfileid: "96351430"
     let json = JSON.stringify(JSON.parse(body), null, '  ');
     console.log (json);
     });
-        ```
+    ```
 
-## Send a request
+## <a name="send-a-request"></a>傳送要求
 
-1. Create a function called `Search()` to send a search request. In it, perform the following steps:
+1. 建立名為 `Search()` 的函式，以傳送搜尋要求。 在其中執行下列步驟：
 
-2. Within this function, create a JSON object containing your request parameters. Use `Get` for the method, and add your host and path information. Add your subscription key to the `Ocp-Apim-Subscription-Key` header. 
+2. 在此函式中，建立包含所要求參數的 JSON 物件。 使用 `Get` 作為方法，並新增主機和路徑資訊。 將訂用帳戶金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭。 
 
-3. Use `https.request()` to send the request with the response handler created previously, and your search parameters.
+3. 使用 `https.request()` 傳送具有之前建立的回應處理常式和搜尋參數的要求。
     
    ```javascript
    let Search = function () {
