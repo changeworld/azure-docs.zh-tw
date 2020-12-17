@@ -3,23 +3,19 @@ title: 使用 Azure IoT Central 建置水質監視解決方案的參考架構 | 
 description: 了解使用 Azure IoT Central 建置水質監視解決方案的相關概念。
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1c4cc7f5440aca27be085c238179cd0ab20b226a
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 229074ad97e6d066a358da19bbbd43158fe1d6fc
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874044"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586715"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>水質監視參考架構 
-
-
-
 您可以使用 **Azure IoT Central 應用程式範本** 作為入門 IoT 應用程式來建立水質監視解決方案。 本文提供建置端對端解決方案的高階參考架構指引。 
-
 
 ![水質監視架構](./media/concepts-waterqualitymonitoring-architecture/concepts-waterqualitymonitoring-architecture1.png)
 
@@ -27,8 +23,8 @@ ms.locfileid: "94874044"
 
 1. 裝置與連線能力  
 1. IoT 中心 
-2. 擴充性與整合
-3. 商務應用程式
+1. 擴充性與整合
+1. 商務應用程式
 
 讓我們看看經常在水質監控解決方案中扮演角色的主要元件。
 

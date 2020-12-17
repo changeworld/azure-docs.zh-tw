@@ -3,20 +3,18 @@ title: 使用 Azure IoT Central 所建置的連線廢棄物管理解決方案參
 description: 了解使用 Azure IoT Central 所建置的連線廢棄物管理解決方案概念。
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 93a5d17ce5ea5ec60c67604efe5081d2b3425a84
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 94098a1a2a9ac1b4889ad165a65c8b9d50d734dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873687"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586800"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>連線廢棄物監視參考架構 
-
-
 
 您可以使用 **Azure IoT Central 應用程式範本** 來建立連線廢棄物管理解決方案，作為入門 IoT 應用程式。 本文提供建置端對端解決方案的高階參考架構指引。 
 
@@ -27,8 +25,8 @@ ms.locfileid: "94873687"
 
 1. 裝置與連線能力  
 1. IoT 中心 
-2. 擴充性與整合
-3. 商務應用程式
+1. 擴充性與整合
+1. 商務應用程式
 
 讓我們看看經常在耗水量監控解決方案中發揮作用的主要元件。
 

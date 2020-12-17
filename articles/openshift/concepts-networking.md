@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 2d9169e836b5819756e716c64ed9d41094f08c5e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512355"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093514"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) 的網路概念
 
@@ -60,7 +60,7 @@ ms.locfileid: "96512355"
 
 * **輸入**：輸入網路原則被視為 [OpenShift SDN](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) 的一部分而受到支援。 依預設會啟用此網路原則，而由使用者強制執行。 雖然輸入網路原則符合 V1 NetworkPolicy 規範，但並不支援輸出和 IPBlock 類型。
 
-* **輸出**：使用 OpenShift 中的[輸出防火牆](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/configuring-egress-firewall.html)功能可支援輸出原則。 每個命名空間/專案只有一個輸出原則。 「預設」命名空間不支援輸出原則，且會依序加以評估 (從第一個到最後一個)。
+* **輸出**：使用 OpenShift 中的 [輸出防火牆](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/configuring-egress-firewall.html)功能可支援輸出原則。 每個命名空間/專案只有一個輸出原則。 「預設」命名空間不支援輸出原則，且會依序加以評估 (從第一個到最後一個)。
 
 ## <a name="networking-basics-in-openshift"></a>OpenShift 中的網路功能基本概念
 
@@ -76,7 +76,7 @@ OpenShift 軟體定義網路 [(SDN)](https://docs.openshift.com/container-platfo
 * Pod CIDR 大小應為最小 /18 (Pod 網路是不可路由傳送的 IP，且只會在 OpenShift SDN 內使用)。
 * 每個節點會為其 Pod 配置 /23 個子網 (512 個 IP)。 這項值不能被改變。
 * 您無法將 Pod 連接到多個網路。
-* 您無法設定輸出靜態 IP。 (這是 OpenShift 功能。 如需詳細資訊，請參閱[設定輸出 IP](https://docs.openshift.com/aro/4/networking/openshift_sdn/assigning-egress-ips.html))。
+* 您無法設定輸出靜態 IP。 (這是 OpenShift 功能。 如需詳細資訊，請參閱[設定輸出 IP](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html))。
 
 ## <a name="network-settings"></a>網路設定
 

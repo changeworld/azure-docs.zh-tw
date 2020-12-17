@@ -1,18 +1,18 @@
 ---
 title: 教學課程：瀏覽 Azure Purview 首頁並搜尋資產
 description: 本教學課程說明如何使用 Azure Purview 首頁上的功能及如何在目錄中搜尋。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 58a899d234488e8075764db9f722ff21e1d0a6f7
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 46c2ee284c33cc8ffb7b0bd3bc536905cf4e2052
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549701"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399871"
 ---
 # <a name="tutorial-navigate-the-azure-purview-preview-home-page-and-search-for-an-asset"></a>教學課程：瀏覽 Azure Purview (預覽) 首頁並搜尋資產
 

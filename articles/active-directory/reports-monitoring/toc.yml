@@ -6,6 +6,8 @@
       href: overview-reports.md
     - name: 什麼是 Azure AD 監視？
       href: overview-monitoring.md
+    - name: 什麼是登入診斷？
+      href: overview-sign-in-diagnostics.md
 - name: 快速入門
   expanded: true
   items:

@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: eb057637ff546356cde6e0ef107fe784fed2e610
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fe452f61d17f0b2014957e3b458ef1ad1b3c539d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099873"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357619"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教學課程：使用 Java 應用程式在 Azure Cosmos DB 中建立 Cassandra API 帳戶，用以儲存索引鍵/值資料
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "93099873"
 
 2. 開啟 [連接字串] 窗格。  
 
-3. 複製 **接觸點** 、 **連接埠** 、 **使用者名稱** 以及 **主要密碼** 的值，以用於後續步驟。
+3. 複製 **接觸點**、**連接埠**、**使用者名稱** 以及 **主要密碼** 的值，以用於後續步驟。
 
 ## <a name="create-the-project-and-the-dependencies"></a>建立專案和相依性 
 
@@ -92,21 +92,21 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
  
 2. 找到 `cassandra-demo` 資料夾。 使用文字編輯器，開啟產生的 `pom.xml` 檔案。 
 
-   新增 Cassandra 相依性，並建置專案所需的外掛程式，如 [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) 檔案中所示。  
+   新增 Cassandra 相依性，並建置專案所需的外掛程式，如 [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/pom.xml) 檔案中所示。  
 
 3. 在 `cassandra-demo\src\main` 資料夾下方，建立名為 `resources` 的新資料夾。  在資源資料夾下方，新增 config.properties 和 log4j.properties 檔案：
 
-   - [Config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/config.properties) 檔案會儲存 Cassandra API 帳戶的連線端點和索引鍵值。 
+   - [Config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/config.properties) 檔案會儲存 Cassandra API 帳戶的連線端點和索引鍵值。 
    
-   - [Log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/log4j.properties) 檔案會定義與 Cassandra API 互動所需的記錄層級。  
+   - [Log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/log4j.properties) 檔案會定義與 Cassandra API 互動所需的記錄層級。  
 
 4. 瀏覽至 `src/main/java/com/azure/cosmosdb/cassandra/` 資料夾。 在 Cassandra 資料夾內，建立名為 `utils` 的另一個資料夾。 新資料夾會儲存連線至 Cassandra API 帳戶時所需的公用程式類別。 
 
-   新增 [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) 類別來建立叢集，以及開啟和關閉 Cassandra 工作階段。 叢集會連線至 Azure Cosmos DB 中的 Cassandra API，並傳回要存取的工作階段。 使用 [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) 類別來讀取 config.properties 檔案中的連接字串資訊。 
+   新增 [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) 類別來建立叢集，以及開啟和關閉 Cassandra 工作階段。 叢集會連線至 Azure Cosmos DB 中的 Cassandra API，並傳回要存取的工作階段。 使用 [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) 類別來讀取 config.properties 檔案中的連接字串資訊。 
 
 5. Java 範例會以使用者的資訊 (例如使用者名稱、使用者識別碼、使用者所在城市) 來建立資料庫。 您需要定義 get 和 set 方法，以在main 函式中存取使用者詳細資料。
  
-   使用 get 和 set 方法，在 `src/main/java/com/azure/cosmosdb/cassandra/` 資料下方建立 [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) 類別。 
+   使用 get 和 set 方法，在 `src/main/java/com/azure/cosmosdb/cassandra/` 資料下方建立 [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) 類別。 
 
 ## <a name="add-a-database-and-a-table"></a>新增資料庫和資料表  
 

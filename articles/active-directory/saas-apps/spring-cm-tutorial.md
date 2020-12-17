@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
-ms.openlocfilehash: f7348cc2559e73c83ea4c65bc67efebcfe2b031d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9cfc48e3fdb96ba5b63b28288a801095f7b36f43
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520518"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589809"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>教學課程：Azure Active Directory 與 SpringCM 整合
 
@@ -61,7 +61,7 @@ SpringCM 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SpringCM** ，從結果面板中選取 [SpringCM]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SpringCM**，從結果面板中選取 [SpringCM]，然後按一下 [新增] 按鈕以新增應用程式。
 
     ![結果清單中的 SpringCM](common/search-new-app.png)
 
@@ -125,19 +125,19 @@ SpringCM 與 Azure AD 整合提供下列優點：
 1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 **SpringCM** 公司網站。
 
 1. 在上方功能表中，依序按一下 [移至]、[喜好設定]，以及 [帳戶喜好設定] 區段中的 [SAML SSO]。
-   
+
     ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
 
 1. 在 [識別提供者組態] 區段執行下列步驟：
-   
+
     ![識別提供者組態](./media/spring-cm-tutorial/ic797052.png "識別提供者組態")
-    
+
     a. 若要上傳已下載的 Azure Active Directory 憑證，請按一下 [選取簽發者憑證] 或 [變更簽發者憑證]。
-    
+
     b. 在 [簽發者] 文字方塊中，貼上您從 Azure 入口網站複製的 **Azure AD 識別碼** 值。
-    
+
     c. 在 [服務提供者 (SP) 起始端點] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
-            
+
     d. 針對 [已啟用 SAML] 選取 [啟用]。
 
     e. 按一下 [檔案] 。
@@ -158,8 +158,8 @@ SpringCM 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱] 欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
     c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
@@ -204,7 +204,7 @@ SpringCM 與 Azure AD 整合提供下列優點：
 1. 以系統管理員身分登入您的 **SpringCM** 公司網站。
 
 1. 按一下 [移至]，然後按一下 [通訊錄]。
-   
+
     ![建立使用者](./media/spring-cm-tutorial/ic797054.png "建立使用者")
 
 1. 按一下 [建立使用者] 。

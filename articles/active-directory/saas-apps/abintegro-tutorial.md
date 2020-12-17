@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: a23cebed18965781f9ce52ae0efeee07128c01d0
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: d8c785295380d3a90fde41f52b002f4686decad6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319054"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587299"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-abintegro"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Abintegro 整合
 
@@ -83,7 +83,7 @@ ms.locfileid: "92319054"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://www.abintegro.com/Shibboleth.sso/Login?entityID=<Issuer>&target=https://www.abintegro.com/secure/`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Abintegro 用戶端支援小組](mailto:support@abintegro.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Abintegro 用戶端支援小組](mailto:support@abintegro.com)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 

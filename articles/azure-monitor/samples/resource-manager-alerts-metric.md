@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: c05f9a326fcbe75a3348e58987d57e106094cf56
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893976"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510561"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>在 Azure 監視器中建立計量警示規則的 Resource Manager 範本範例
 
@@ -343,7 +343,7 @@ ms.locfileid: "92893976"
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -480,7 +480,7 @@ ms.locfileid: "92893976"
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -712,10 +712,10 @@ ms.locfileid: "92893976"
 2. **ApiName** - 只針對 **GetBlob** 和 **PutBlob** 維度值監視不同的時間序列。
 
 例如，此警示規則所監視的幾個可能時間序列為：
-- Metric = *Transactions* ，ResponseType = *Success* ，ApiName = *GetBlob*
-- Metric = *Transactions* ，ResponseType = *Success* ，ApiName = *PutBlob*
-- Metric = *Transactions* ，ResponseType = *Server Timeout* ，ApiName = *GetBlob*
-- Metric = *Transactions* ，ResponseType = *Server Timeout* ，ApiName = *PutBlob*
+- Metric = *Transactions*，ResponseType = *Success*，ApiName = *GetBlob*
+- Metric = *Transactions*，ResponseType = *Success*，ApiName = *PutBlob*
+- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *GetBlob*
+- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *PutBlob*
 
 ### <a name="template-file"></a>範本檔案
 
@@ -875,7 +875,7 @@ ms.locfileid: "92893976"
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }
@@ -903,10 +903,10 @@ ms.locfileid: "92893976"
 2. **ApiName** - 只針對 **GetBlob** 和 **PutBlob** 維度值監視不同的時間序列。
 
 例如，此警示規則所監視的幾個可能時間序列為：
-- Metric = *Transactions* ，ResponseType = *Success* ，ApiName = *GetBlob*
-- Metric = *Transactions* ，ResponseType = *Success* ，ApiName = *PutBlob*
-- Metric = *Transactions* ，ResponseType = *Server Timeout* ，ApiName = *GetBlob*
-- Metric = *Transactions* ，ResponseType = *Server Timeout* ，ApiName = *PutBlob*
+- Metric = *Transactions*，ResponseType = *Success*，ApiName = *GetBlob*
+- Metric = *Transactions*，ResponseType = *Success*，ApiName = *PutBlob*
+- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *GetBlob*
+- Metric = *Transactions*，ResponseType = *Server Timeout*，ApiName = *PutBlob*
 
 >[!NOTE]
 > 使用動態閾值的計量警示規則目前不支援多個準則。

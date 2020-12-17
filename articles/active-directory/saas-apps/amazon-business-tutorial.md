@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f2ad0cb67a41c0a5c59f6428a4912bd91a00e56
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318812"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589888"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>教學課程：整合 Amazon Business 與 Azure Active Directory
 
@@ -95,9 +95,9 @@ ms.locfileid: "92318812"
        | `https://www.amazon.de/bb/feature/sso/action/3p_redirect?idpid={idpid}`| 歐洲 |
 
        > [!NOTE]
-       > [回覆 URL] 不是真實的值。 請使用實際的「回覆 URL」來更新此值。 您將從 Amazon Business SSO 設定一節取得 `<idpid>` 值，本教學課程稍後會加以說明。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+       > [回覆 URL] 不是真實的值。 請使用實際的「回覆 URL」來更新此值。 您將從 Amazon Business SSO 設定一節取得 `<idpid>` 值，本教學課程稍後會加以說明。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-1. 如果您要以 **SP** 起始模式設定應用程式，必須將 Amazon 商務組態中提供的完整 URL 新增至**設定其他 URL** 區段中的 [登入 URL]。
+1. 如果您要以 **SP** 起始模式設定應用程式，必須將 Amazon 商務組態中提供的完整 URL 新增至 **設定其他 URL** 區段中的 [登入 URL]。
 
 1. 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [使用者屬性與宣告] 區段中的 [編輯] 圖示來編輯屬性。
 
@@ -109,19 +109,19 @@ ms.locfileid: "92318812"
 
 1. 除了以上屬性外，Amazon Business 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [群組宣告] 對話方塊的 [使用者屬性與宣告] 區段中，執行下列步驟：
 
-    a. 按一下 [宣告中傳回的群組] 旁的**筆**。
+    1. 按一下 [宣告中傳回的群組] 旁的 **筆**。
 
-    ![顯示使用者屬性和宣告的螢幕擷取畫面，其中具有所選取宣告中傳回的群組圖示。](./media/amazon-business-tutorial/config04.png)
+        ![顯示使用者屬性和宣告的螢幕擷取畫面，其中具有所選取宣告中傳回的群組圖示。](./media/amazon-business-tutorial/config04.png)
 
-    ![顯示群組宣告的螢幕擷取畫面，其中具有此程序中所述的值。](./media/amazon-business-tutorial/config05.png)
+        ![顯示群組宣告的螢幕擷取畫面，其中具有此程序中所述的值。](./media/amazon-business-tutorial/config05.png)
 
-    b. 選取選項按鈕清單中的 [所有群組]。
+    1. 選取選項按鈕清單中的 [所有群組]  。
 
-    c. 選取 [群組識別碼] 作為 [來源屬性]。
+    1. 選取 [群組識別碼] 作為 [來源屬性]。
 
-    d. 勾選 [自訂群組宣告的名稱] 核取方塊，並根據貴組織需求輸入群組名稱。
+    1. 勾選 [自訂群組宣告的名稱] 核取方塊，並根據貴組織需求輸入群組名稱。
 
-    e. 按一下 [檔案] 。
+    1. 按一下 [檔案] 。
 
 1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [中繼資料 XML]，然後選取 [下載] 來下載憑證，並將其儲存在電腦上。
 
@@ -207,11 +207,11 @@ ms.locfileid: "92318812"
 > 管理員需要在其租使用者中建立測試使用者 (如有需要)。 下列步驟說明如何建立測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
-1. 在畫面頂端選取 [新增使用者]。
-1. 在 [使用者] 屬性中，執行下列步驟：
-   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+1. 在畫面頂端選取 [新增使用者]  。
+1. 在 [使用者]  屬性中，執行下列步驟：
+   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
    1. 按一下 [建立]。
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>在 Azure 入口網站中建立 Azure AD 安全性群組
@@ -243,7 +243,7 @@ ms.locfileid: "92318812"
     ![顯示新增使用者按鈕的螢幕擷取畫面。](common/add-assign-user.png)
 
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
     >[!NOTE]

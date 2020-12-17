@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d342f672f4e8a5fdf33afe0feb7c5051956e29f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: e8cb939b48f8cfe311ec10c0850cfb234de04fad
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318767"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589741"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>教學課程：Azure Active Directory 與 Andromeda
 
@@ -126,30 +126,30 @@ Andromeda 與 Azure AD 整合提供下列優點：
 
     | 名稱 | 來源屬性|
     | ------ | -----------|
-    | 角色 (role)        | 應用程式專屬角色 |
-    | type        | 應用程式類型 |
-    | company       | CompanyName |
+    | 角色 (role) | 應用程式專屬角色 |
+    | type | 應用程式類型 |
+    | company | CompanyName |
 
     > [!NOTE]
     > 這些不是真正的值。 這些值僅供示範之用，請使用您的組織角色。
 
-    a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
+    1. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 
-    ![顯示使用者宣告選項以新增新宣告並且儲存的螢幕擷取畫面。](common/new-save-attribute.png)
+        ![顯示使用者宣告選項以新增新宣告並且儲存的螢幕擷取畫面。](common/new-save-attribute.png)
 
-    ![顯示管理使用者宣告的螢幕擷取畫面，您可以在其中輸入此步驟中所述的值。](common/new-attribute-details.png)
+        ![顯示管理使用者宣告的螢幕擷取畫面，您可以在其中輸入此步驟中所述的值。](common/new-attribute-details.png)
 
-    b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
+    1. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
 
-    c. 讓 [命名空間]  保持空白。
+    1. 讓 [命名空間]  保持空白。
 
-    d. 選取 [來源] 作為 [屬性]  。
+    1. 選取 [來源] 作為 [屬性]  。
 
-    e. 在 [來源屬性]  清單中，輸入該資料列所顯示的屬性值。
+    1. 在 [來源屬性]  清單中，輸入該資料列所顯示的屬性值。
 
-    f. 按一下 [確定]  。
+    1. 按一下 [確定]  。
 
-    g. 按一下 [檔案]  。
+    1. 按一下 [檔案]  。
 
 8. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -159,11 +159,11 @@ Andromeda 與 Azure AD 整合提供下列優點：
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
-    a. 登入 URL
+    1. 登入 URL
 
-    b. Azure AD 識別碼
+    1. Azure AD 識別碼
 
-    c. 登出 URL
+    1. 登出 URL
 
 ### <a name="configure-andromeda-single-sign-on"></a>設定 Andromeda 單一登入
 
@@ -181,25 +181,25 @@ Andromeda 與 Azure AD 整合提供下列優點：
 
     ![Andromeda 設定](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a. 勾選 [以 SAML 進行 SSO]  。
+    1. 勾選 [以 SAML 進行 SSO]  。
 
-    b. 在 [Andromeda 資訊] 區段底下，複製 [SP 身分識別] 值並將其貼至 [基本 SAML 設定] 區段的 [識別碼] 文字方塊。
+    1. 在 [Andromeda 資訊] 區段底下，複製 [SP 身分識別] 值並將其貼至 [基本 SAML 設定] 區段的 [識別碼] 文字方塊。
 
-    c. 複製 [取用者 URL] 值並將其貼至 [基本 SAML 設定] 區段的 [回覆 URL] 文字方塊。
+    1. 複製 [取用者 URL] 值並將其貼至 [基本 SAML 設定] 區段的 [回覆 URL] 文字方塊。
 
-    d. 複製 [登入 URL] 值並將其貼至 [基本 SAML 設定] 區段的 [登入 URL] 文字方塊。
+    1. 複製 [登入 URL] 值並將其貼至 [基本 SAML 設定] 區段的 [登入 URL] 文字方塊。
 
-    e. 在 [SAML 識別提供者]  區段底下，輸入您的 IDP 名稱。
+    1. 在 [SAML 識別提供者]  區段底下，輸入您的 IDP 名稱。
 
-    f. 在 [單一登入端點]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
+    1. 在 [單一登入端點]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    g. 從記事本中的 Azure 入口網站開啟已下載的 [Base64 編碼憑證]  ，將它貼至 [X 509 憑證]  文字方塊。
-    
-    h. 以個別值對應下列屬性，以便加速從 Azure AD 的 SSO 登入。 **User ID** 屬性是登入的必要項目。 佈建需要**電子郵件**、**公司**、**使用者類型**和**角色**。 我們會在本節中定義屬性對應 (名稱和值)，此對應會與在 Azure 入口網站中定義的項目相互關聯。
+    1. 從記事本中的 Azure 入口網站開啟已下載的 [Base64 編碼憑證]  ，將它貼至 [X 509 憑證]  文字方塊。
 
-    ![Andromeda 屬性對應](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    1. 以個別值對應下列屬性，以便加速從 Azure AD 的 SSO 登入。 **User ID** 屬性是登入的必要項目。 佈建需要 **電子郵件**、**公司**、**使用者類型** 和 **角色**。 我們會在本節中定義屬性對應 (名稱和值)，此對應會與在 Azure 入口網站中定義的項目相互關聯。
 
-    i. 按一下 [檔案]  。
+        ![Andromeda 屬性對應](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+
+    1. 按一下 [檔案]  。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -218,7 +218,7 @@ Andromeda 與 Azure AD 整合提供下列優點：
     ![[使用者] 對話方塊](common/user-properties.png)
 
     a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
-  
+
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon@yourcompanydomain.extension`。 例如， BrittaSimon@contoso.com
 
     c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。

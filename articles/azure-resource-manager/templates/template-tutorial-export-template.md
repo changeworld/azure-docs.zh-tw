@@ -6,12 +6,12 @@ ms.date: 09/09/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 310637ce099aca7b8b9057a674d6b2094b008a87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba1797da5a78eeebd25f5df1b6e37eb92470f584
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613606"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106915"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>教學課程：從 Azure 入口網站使用匯出的範本
 
@@ -62,12 +62,12 @@ ms.locfileid: "91613606"
 
    匯出範本功能會取得資源的目前狀態，並產生範本來進行部署。 匯出範本是快速取得部署資源所需之 JSON 的實用方式。
 
-1. 在匯出的範本中尋找 **Microsoft.Web/serverfarms** 定義和參數定義。 您不需要複製這些區段。 您可以只使用此匯出的範本作為要如何將此資源新增至範本的範例。
+1. 在匯出的範本中尋找 `Microsoft.Web/serverfarms` 定義和參數定義。 您不需要複製這些區段。 您可以只使用此匯出的範本作為要如何將此資源新增至範本的範例。
 
     ![Resource Manager 範本匯出範本匯出的範本](./media/template-tutorial-export-template/resource-manager-template-exported-template.png)
 
 > [!IMPORTANT]
-> 通常，匯出的範本會比您在建立範本時所需的更詳細。 例如，匯出範本中的 SKU 物件具有五個屬性。 此範本可以運作，但您可以只使用 **name** 屬性。 您可以從匯出的範本開始，然後視需要進行修改以符合您的需求。
+> 通常，匯出的範本會比您在建立範本時所需的更詳細。 例如，匯出範本中的 SKU 物件具有五個屬性。 此範本可以運作，但您可以只使用 `name` 屬性。 您可以從匯出的範本開始，然後視需要進行修改以符合您的需求。
 
 ## <a name="revise-existing-template"></a>修訂現有範本
 
@@ -83,7 +83,7 @@ ms.locfileid: "91613606"
 
 使用 Azure CLI 或 Azure PowerShell 來部署範本。
 
-如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 `templateFile` 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -111,7 +111,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失敗，請使用 **verbose** 參數來取得所建立資源的相關資訊。 使用 **debug** 參數來取得更多資訊以進行偵錯。
+> 如果部署失敗，請使用 `verbose` 參數來取得所建立資源的相關資訊。 使用 `debug` 參數來取得更多資訊以進行偵錯。
 
 ## <a name="verify-deployment"></a>驗證部署
 

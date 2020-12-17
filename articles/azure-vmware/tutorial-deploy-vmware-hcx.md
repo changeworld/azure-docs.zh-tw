@@ -3,12 +3,12 @@ title: 教學課程 - 部署及設定 VMWare HCX
 description: 了解如何為您的 Azure VMware 解決方案私人雲端部署及設定 VMware HCX 解決方案。
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352453"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357886"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>部署及設定 VMWare HCX
 
@@ -163,7 +163,7 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="具有綠色 vCenter 狀態的儀表板螢幕擷取畫面。" lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：啟用 HCX](https://www.youtube.com/embed/jzQZawslF8w) 的影片。
+如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：啟用 HCX](https://www.youtube.com/embed/PnVg6SZkQsY?rel=0&amp;vq=hd720) 的影片。
 
    > [!IMPORTANT]
    > 無論您使用 VMware HCX Advanced 還是 VMware HCX Enterprise，都可能需要從 VMware 的[知識庫文章 81558](https://kb.vmware.com/s/article/81558) 安裝修補程式。 
@@ -192,7 +192,7 @@ VMware HCX Advanced Connector 已預先部署在 Azure VMware 解決方案中。
 
    :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="此螢幕擷取畫面顯示 Azure VMware 解決方案中的 HCX 管理員與 VMware HCX Connector 的配對。":::
 
-如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：HCX 網站配對](https://www.youtube.com/embed/iTJtjbiwvsw)的影片。
+如需此程序的端對端概觀，請檢視 [Azure VMware 解決方案：HCX 網站配對](https://www.youtube.com/embed/jXOmYUnbWZY?rel=0&amp;vq=hd720)的影片。
 
 ### <a name="create-network-profiles"></a>建立網路設定檔
 

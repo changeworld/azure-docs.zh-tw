@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa17a18de8e71b099d6ed717974486203c4379f4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 668d3cb044512220ff7afbc165c77da704a9a5d7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180501"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107510"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教學課程：使用 Windows VM 系統指派的受控識別來存取 Azure Key Vault 
 
@@ -61,6 +61,20 @@ ms.locfileid: "96180501"
 1. 選取 [檢閱 + 建立]
 1. 選取 [建立] 
 
+### <a name="create-a-secret"></a>建立祕密
+
+接下來，將祕密新增至 Key Vault，好讓您稍後可以使用在 VM 中執行的程式碼來擷取祕密。 基於本教學課程的目的，我們使用 PowerShell，但是相同的概念適用於在此虛擬機器中執行的任何程式碼。
+
+1. 瀏覽到您新建立的 Key Vault。
+1. 選取 [密碼]，然後按一下 [新增]。
+1. 選取 [產生/匯入]
+1. 在 [上傳選項] 的 [建立祕密] 畫面中，保持選取 [手動]。
+1. 輸入密碼的名稱和值。  值可以是任何您想要的項目。 
+1. 將啟動日期和到期日期保留空白，並將 [啟用] 設定為 [是]。 
+1. 按一下 [建立] 來建立密碼。
+
+   ![建立祕密](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>授與存取權
 
 虛擬機器所使用的受控識別必須被授與存取權，以讀取我們將儲存在 Key Vault 中的祕密。
@@ -76,19 +90,6 @@ ms.locfileid: "96180501"
 1. 選取 [新增]
 1. 選取 [儲存]。
 
-## <a name="create-a-secret"></a>建立祕密
-
-接下來，將祕密新增至 Key Vault，好讓您稍後可以使用在 VM 中執行的程式碼來擷取祕密。 基於本教學課程的目的，我們使用 PowerShell，但是相同的概念適用於在此虛擬機器中執行的任何程式碼。
-
-1. 瀏覽到您新建立的 Key Vault。
-1. 選取 [密碼]，然後按一下 [新增]。
-1. 選取 [產生/匯入]
-1. 在 [上傳選項] 的 [建立祕密] 畫面中，保持選取 [手動]。
-1. 輸入密碼的名稱和值。  值可以是任何您想要的項目。 
-1. 將啟動日期和到期日期保留空白，並將 [啟用] 設定為 [是]。 
-1. 按一下 [建立] 來建立密碼。
-
-   ![建立祕密](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
 
 ## <a name="access-data"></a>存取資料  
 

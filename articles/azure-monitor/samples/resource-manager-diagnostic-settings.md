@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: f340f2a4318fc187d4a7f28b91ab362e232a263e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 6e1c38a1fc9b681616ac3bf5c0c78fd56d933ce6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95754984"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510544"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Azure 監視器中的診斷設定適用的 Resource Manager 範本範例
 本文說明為 Azure 資源建立診斷設定時適用的範例 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)。 每個範例都包含範本檔案和參數檔案，且附有要提供給範本的範例值。

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097272"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359535"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教學課程：使用 JavaScript SDK 建置 Node.js Web 應用程式來管理 Azure Cosmos DB 中的 SQL API 帳戶 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -382,7 +382,7 @@ ms.locfileid: "93097272"
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
    ```
 
-    此程式碼會指示 **Jade** 引擎轉譯出我們應用程式的部分 HTML，並建立稱為 **content** 的 **區塊** ，讓我們能在其中提供內容頁面的配置。 儲存並關閉 **layout.jade** 檔案。
+    此程式碼會指示 **Jade** 引擎轉譯出我們應用程式的部分 HTML，並建立稱為 **content** 的 **區塊**，讓我們能在其中提供內容頁面的配置。 儲存並關閉 **layout.jade** 檔案。
 
 3. 現在，開啟 **index.jade** 檔案 (應用程式即將使用的檢視)，並將檔案中的內容取代為下列程式碼：
 
@@ -470,7 +470,7 @@ ms.locfileid: "93097272"
 3. 將應用程式推送到遠端加以部署。
    
    ```bash
-   git push azure master
+   git push azure main
    ```
 
 4. 在幾秒鐘之後，您的 Web 應用程式即會發布，並在瀏覽器中啟動。

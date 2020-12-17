@@ -3,17 +3,17 @@ title: 教學課程：使用 Azure IoT Central 建立用水量監視應用程式
 description: 教學課程：了解如何使用 Azure IoT Central 應用程式範本來建立用水量監視應用程式。
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 400585d3e5908268708d93ceeefd26a4a5efdd49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 476a0c2d75dcbee5c1ed4d758e0cbc9d4726ff95
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972400"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587191"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>教學課程：使用 Azure IoT Central 建立用水量監視應用程式
 
@@ -82,7 +82,7 @@ ms.locfileid: "90972400"
 
 ## <a name="explore-and-customize-the-operator-dashboard"></a>探索和自訂操作員儀表板
 
-建立應用程式之後，**Wide World 用水量儀表板**範例便會開啟。
+建立應用程式之後，**Wide World 用水量儀表板** 範例便會開啟。
 
    ![用水量監視儀表板](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboardfull.png)
 
@@ -100,7 +100,7 @@ ms.locfileid: "90972400"
 
     ![用水量監視儀表板地圖](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboard-map.png)
 
-* **平均水流量折線圖**和**環境條件折線圖**：您可以將一或多個裝置遙測視覺化，以折線圖呈現所需時間範圍內的資料。
+* **平均水流量折線圖** 和 **環境條件折線圖**：您可以將一或多個裝置遙測視覺化，以折線圖呈現所需時間範圍內的資料。
 * **平均閥門壓力熱度圖圖表**：您可以針對想了解的裝置遙測資料，選擇熱度圖的視覺效果類型，以藉由色彩索引來查看一段時間範圍中的分佈情況。
 * **重設警示閾值內容圖格**：您可以納入召喚行動內容圖格，並內嵌行動頁面的連結。 在此情況下，重設警示閾值會帶您前往應用程式的 [作業]  ，以供您執行裝置屬性的更新。 我們稍後會在本教學課程的＜設定作業＞一節中探索此選項。
 * **屬性圖格**：儀表板會顯示 [閥門操作資訊]  、[流量警示閾值]  和 [維護資訊]  圖格。
@@ -123,7 +123,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
 若要檢視裝置範本：
 
-1. 在 Azure IoT Central 中應用程式的左邊窗格上，選取 [裝置範本]  。 在 [裝置範本]  清單中，您會看到兩個裝置範本：**智慧型閥門**和**流量計量**。
+1. 在 Azure IoT Central 中應用程式的左邊窗格上，選取 [裝置範本]  。 在 [裝置範本]  清單中，您會看到兩個裝置範本：**智慧型閥門** 和 **流量計量**。
 
    ![裝置範本](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 
@@ -156,7 +156,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
 ### <a name="publish"></a>發佈
 
-如果您執行了任何變更，請務必**發佈**裝置範本。
+如果您執行了任何變更，請務必 **發佈** 裝置範本。
 
 ### <a name="create-a-new-device-template"></a>建立新的裝置範本
 
@@ -165,7 +165,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
 ## <a name="explore-simulated-devices"></a>探索模擬裝置
 
-在 Azure IoT Central 中，您可以建立模擬裝置來測試裝置範本和應用程式。 用水量監視應用程式有兩個與**流量計量**和**智慧型閥門**裝置範本對應的模擬裝置。
+在 Azure IoT Central 中，您可以建立模擬裝置來測試裝置範本和應用程式。 用水量監視應用程式有兩個與 **流量計量** 和 **智慧型閥門** 裝置範本對應的模擬裝置。
 
 ### <a name="view-the-devices"></a>檢視裝置
 
@@ -177,7 +177,7 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 
     ![智慧型閥門 1](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitor-device1.png)
 
-1. 在 [命令]  索引標籤中，您可以看到三個裝置命令 (**關閉閥門**、**開啟閥門**及**設定閥門位置**)，這些功能都定義在 [智慧型閥門]  裝置範本中。
+1. 在 [命令]  索引標籤中，您可以看到三個裝置命令 (**關閉閥門**、**開啟閥門** 及 **設定閥門位置**)，這些功能都定義在 [智慧型閥門]  裝置範本中。
 
 1. 依序瀏覽 [裝置屬性]  索引標籤和 [裝置儀表板]  索引標籤。
 
@@ -238,8 +238,8 @@ Azure IoT Central 中的裝置範本會定義裝置的功能，例如遙測、�
 身為建置者，您可以變更數個設定，以自訂應用程式的使用者體驗。
 
 1. 選取 [系統管理]   > [自訂您的應用程式]  。
-1. 若要選擇要上傳作為**應用程式標誌**的影像，請選取 [變更]  按鈕。
-1. 若要選擇將會出現在瀏覽器索引標籤上的**瀏覽器圖示**影像，請選取 [變更]  按鈕。
+1. 若要選擇要上傳作為 **應用程式標誌** 的影像，請選取 [變更]  按鈕。
+1. 若要選擇將會出現在瀏覽器索引標籤上的 **瀏覽器圖示** 影像，請選取 [變更]  按鈕。
 1. 您也可以藉由新增 HTML 十六進位色彩代碼來取代預設的 [瀏覽器色彩]  。
 
    ![應用程式標誌、瀏覽器圖示和瀏覽器色彩的選取項目](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-customize-your-application.png)

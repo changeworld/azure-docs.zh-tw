@@ -423,6 +423,8 @@
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
+        - name: Azure VM 檔案復原
+          href: backup-azure-vm-file-recovery-troubleshoot.md
         - name: Azure 備份代理程式或 VM 延伸模組已逾時
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Azure 備份代理程式

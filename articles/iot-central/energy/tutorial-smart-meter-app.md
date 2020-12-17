@@ -3,21 +3,19 @@ title: 教學課程：使用 IoT Central 建立智慧型電表分析應用程式
 description: 教學課程：了解如何使用 Azure IoT Central 應用程式範本來建立智慧型電表監視應用程式。
 author: op-ravi
 ms.author: omravi
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: af4940ae6b0dc001667602b8729faaa3a10d19da
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: a95f1befcdc9b59293eb97330ba7ceae3034a74b
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127126"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516776"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>教學課程：建立和逐步執行智慧型電表監視應用程式範本 
-
-
 
 本教學課程會引導您完成建立智慧型電表監視應用程式的過程，而且應用程式會包含具有模擬資料的範例裝置模型。 在本教學課程中，您將了解：
 
@@ -38,14 +36,13 @@ ms.locfileid: "92127126"
 您可以用三個簡單的步驟來建立此應用程式：
 
 1. 開啟 [Azure IoT Central 首頁](https://apps.azureiotcentral.com)，然後按一下 [建置]  來建立新的應用程式。 
-
-2. 選取 [能源]  索引標籤，然後按一下 [智慧型電表監視]  應用程式圖格底下的 [建立應用程式]  。
+1. 選取 [能源]  索引標籤，然後按一下 [智慧型電表監視]  應用程式圖格底下的 [建立應用程式]  。
 
     > [!div class="mx-imgBorder"]
     > ![建置應用程式](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
-3. [建立應用程式]  將會開啟 [新增應用程式]  表單。 填入要求的詳細資料，如下圖所示：
+1. [建立應用程式]  將會開啟 [新增應用程式]  表單。 填入要求的詳細資料，如下圖所示：
     * **應用程式名稱**：為您的 IoT Central 應用程式選擇名稱。 
     * **URL**：選擇 IoT Central URL，平台將會驗證其唯一性。
     * **7 天免費試用期**：如果您已經有 Azure 訂用帳戶，建議您使用預設設定。 如果您沒有 Azure 訂用帳戶，請先從免費試用開始。
@@ -55,7 +52,6 @@ ms.locfileid: "92127126"
         ![新增應用程式表單](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
 
         ![新增應用程式表單計費資訊](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
-
 
 ### <a name="verify-the-application-and-simulated-data"></a>驗證應用程式和模擬的資料
 
@@ -99,7 +95,7 @@ Adatum 是一家虛構的能源公司，負責監控和管理智慧型電表。 
 如果您決定不繼續使用此應用程式，請使用下列步驟來刪除應用程式：
 
 1. 從左側窗格中，開啟 [系統管理] 索引標籤
-2. 選取 [應用程式設定]，然後按一下頁面底部的 [刪除] 按鈕。 
+1. 選取 [應用程式設定]，然後按一下頁面底部的 [刪除] 按鈕。 
 
     > [!div class="mx-imgBorder"]
     > ![刪除應用程式](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)

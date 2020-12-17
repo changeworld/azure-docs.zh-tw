@@ -95,8 +95,6 @@
       href: user-overview.md
     - name: 使用者設定檔屬性
       href: user-profile-attributes.md
-    - name: SSO 工作階段
-      href: session-overview.md
     - name: 身分識別保護和條件式存取
       href: conditional-access-identity-protection-overview.md
 - name: 操作指南
@@ -155,6 +153,8 @@
           href: identity-provider-wechat.md
         - name: 微博
           href: identity-provider-weibo.md
+        - name: 傳遞識別提供者權杖
+          href: idp-pass-through-user-flow.md
     - name: UX 自訂
       items:
         - name: 設定使用者輸入
@@ -174,6 +174,24 @@
         - name: 啟用 MFA
           href: multi-factor-authentication.md
           displayName: multi-factor auth
+        - name: 設定直接登入
+          href: direct-signin.md
+    - name: 權杖和工作階段管理
+      items:
+        - name: 設定工作階段行為
+          href: session-behavior.md
+        - name: 設定權杖
+          href: configure-tokens.md
+    - name: 定義自訂屬性
+      href: user-flow-custom-attributes.md
+    - name: 身分識別保護和條件式存取
+      items:
+        - name: 設定身分識別保護和條件式存取
+          href: conditional-access-identity-protection-setup.md
+        - name: 新增條件式存取
+          href: conditional-access-user-flow.md
+    - name: 設定年齡管制
+      href: basic-age-gating.md
     - name: 使用者流程
       items:
         - name: 建立流程
@@ -184,40 +202,23 @@
               href: configure-ropc.md
             - name: 設定自助密碼重設
               href: user-flow-self-service-password-reset.md
-        - name: 新增條件式存取
-          href: conditional-access-user-flow.md
-        - name: 權杖和工作階段管理
-          items:
-            - name: 設定權杖
-              href: configure-tokens.md
-            - name: 設定工作階段行為
-              href: session-behavior.md
-        - name: 設定年齡管制
-          href: basic-age-gating.md
-        - name: 定義自訂屬性
-          href: user-flow-custom-attributes.md
         - name: API 連接器 (預覽)
           items:
             - name: 總覽
               href: api-connectors-overview.md
             - name: 新增 API 連接器
               href: add-api-connector.md
-        - name: 傳遞外部 IdP 權杖
-          href: idp-pass-through-user-flow.md
-    - name: 身分識別保護和條件式存取
-      href: conditional-access-identity-protection-setup.md
     - name: 自訂原則
       items:
+        - name: 自訂原則概觀
+          href: custom-policy-trust-frameworks.md
+        - name: 開始使用自訂原則
+          href: custom-policy-get-started.md
         - name: 建立原則
           items:
-            - name: 開始使用自訂原則
-              href: custom-policy-get-started.md
             - name: 資源擁有者密碼認證
               href: ropc-custom.md
               displayName: ropc
-            - name: 啟用讓我保持登入
-              href: custom-policy-keep-me-signed-in.md
-              displayName: kmsi
             - name: 密碼變更
               href: custom-policy-password-change.md
             - name: 手機註冊和登入
@@ -230,18 +231,6 @@
             - name: SendGrid
               href: custom-email-sendgrid.md
           displayName: verification
-        - name: 權杖和工作階段管理
-          items:
-            - name: 自訂權杖
-              href: configure-tokens-custom-policy.md
-            - name: 設定工作階段行為
-              href: session-behavior-custom-policy.md
-        - name: 傳遞外部 IdP 權杖
-          href: idp-pass-through-custom.md
-        - name: 調適型體驗
-          items:
-            - name: 設定直接登入
-              href: direct-signin.md
         - name: 新增您自己的商務邏輯
           items:
             - name: 整合 REST API
@@ -254,8 +243,6 @@
               displayName: rest claims exchange
             - name: 保障 REST API 的安全
               href: secure-rest-api.md
-        - name: 定義自訂屬性
-          href: custom-policy-custom-attributes.md
         - name: 疑難排解
           items:
             - name: 使用 Application Insights 收集記錄
@@ -268,8 +255,6 @@
           href: analytics-with-application-insights.md
         - name: 參考
           items:
-            - name: 信任 Framework 定義
-              href: custom-policy-trust-frameworks.md
             - name: TrustFrameworkPolicy
               href: trustframeworkpolicy.md
             - name: BuildingBlocks
@@ -315,11 +300,9 @@
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
-                - name: TechnicalProfiles
+                - name: 技術設定檔
                   href: technicalprofiles.md
                   items:
-                    - name: 關於技術設定檔
-                      href: technical-profiles-overview.md
                     - name: 關於驗證技術設定檔
                       href: validation-technical-profile.md
                     - name: Application Insights
@@ -370,6 +353,8 @@
               href: relyingparty.md
             - name: 宣告解析程式
               href: claim-resolver-overview.md
+    - name: 使用者資訊端點
+      href: userinfo-endpoint.md
     - name: 夥伴整合
       items:
         - name: Azure AD B2C 合作夥伴資源庫

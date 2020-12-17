@@ -16,6 +16,8 @@
       items:
         - name: 將聊天新增至您的應用程式
           href: quickstarts/chat/get-started.md
+        - name: 將您的聊天應用程式加入至小組會議
+          href: quickstarts/chat/meeting-interop.md
     - name: 電話語音和 SMS
       items:
         - name: 取得電話號碼

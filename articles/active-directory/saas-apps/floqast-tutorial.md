@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 162c1341c792844dab27f98e67ebf7a48282bfc5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ed35a0b6e6f2ad620b528283a332507845e4f00d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92452722"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588262"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-floqast"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 FloQast 整合
 
@@ -49,9 +49,8 @@ ms.locfileid: "92452722"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **FloQast** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **FloQast**。
 1. 從結果面板中選取 [FloQast]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-floqast"></a>設定及測試 FloQast 的 Azure AD 單一登入
 
@@ -71,7 +70,7 @@ ms.locfileid: "92452722"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [FloQast]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -92,9 +91,9 @@ ms.locfileid: "92452722"
 
     | 名稱 | 來源屬性|
     | ------------- | -------------- |
-    | 名字           | user.givenname |
-    | 姓氏            | user.surname |
-    | 電子郵件               | user.mail    |
+    | 名字 | user.givenname |
+    | 姓氏 | user.surname |
+    | 電子郵件 | user.mail    |
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -104,13 +103,13 @@ ms.locfileid: "92452722"
 
     ![編輯 SAML 簽署憑證](common/edit-certificate.png)
 
-    a. 從 [簽署選項]  中選取 [簽署 SAML 回應及判斷提示]  。
-    
-    b. 按一下 [儲存] 
+    1. 從 [簽署選項] 中選取 [簽署 SAML 回應及判斷提示]。
 
-    ![Communifire 簽署選項](./media/floqast-tutorial/tutorial-floqast-signing-option.png)
+    1. 按一下 [儲存] 
 
-1. 在 [設定 FloQast]  區段上，根據您的需求複製適當的 URL。
+        ![Communifire 簽署選項](./media/floqast-tutorial/tutorial-floqast-signing-option.png)
+
+1. 在 [設定 FloQast] 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -131,7 +130,7 @@ ms.locfileid: "92452722"
 在本節中，您會將 FloQast 的存取權授與 B.Simon，讓她能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [FloQast]  。
+1. 在應用程式清單中，選取 [FloQast]。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
@@ -140,13 +139,13 @@ ms.locfileid: "92452722"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ## <a name="configure-floqast-sso"></a>設定 FloQast SSO
 
-若要在 **FloQast** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和所複製的適當 URL 傳送給 [FloQast 支援小組](mailto:support@floqast.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **FloQast** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML] 和所複製的適當 URL 傳送給 [FloQast 支援小組](mailto:support@floqast.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-floqast-test-user"></a>建立 FloQast 測試使用者
 

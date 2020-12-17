@@ -126,7 +126,7 @@
           href: troubleshoot-reservation-utilization.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 針對保留建議進行疑難排解
           href: troubleshoot-reservation-recommendation.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: 針對無法使用保留進行疑難排解
+        - name: 針對保留 SKU 停用進行疑難排解
           href: troubleshoot-product-not-available.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 針對下載使用量詳細資料進行疑難排解
           href: troubleshoot-download-usage.md?toc=/azure/cost-management-billing/reservations/toc.json

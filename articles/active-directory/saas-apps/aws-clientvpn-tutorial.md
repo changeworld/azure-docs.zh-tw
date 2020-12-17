@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: 9a2c52674bafeb170efd41afa9c395aeecda9df8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3a53a5b7e60ef214a3db58d9e280e9dee8fec609
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602116"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355829"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 AWS ClientVPN 整合
 
@@ -84,7 +84,7 @@ ms.locfileid: "96602116"
 
     | 回覆 URL |
     |------------|
-    | `https://<LOCALHOST>` |
+    | `http://<LOCALHOST>` |
     | `https://self-service.clientvpn.amazonaws.com/api/auth/sso/saml` |
     |
 
@@ -161,4 +161,6 @@ ms.locfileid: "96602116"
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 AWS ClientVPN 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
+設定 AWS ClientVPN 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+

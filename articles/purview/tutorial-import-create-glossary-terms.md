@@ -1,18 +1,18 @@
 ---
 title: 教學課程：在 Azure Purview (預覽) 中建立和匯入字彙
 description: 本教學課程說明如何建立字彙、將字彙新增至資產，以及匯入字彙。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 3a81d9480dfb07703d5f1ccfb495d069f140dd71
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 4dc8dd84c22d094c87c82f5a920015f886780df2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549586"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399803"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>教學課程：在 Azure Purview (預覽) 中建立和匯入字彙
 
@@ -93,7 +93,7 @@ ms.locfileid: "96549586"
 
 在此程序中，您會透過 .csv 檔案匯入字彙：
 
-1. 記下您儲存檔案 *StarterKitTerms.csv* 的位置，此檔案包含在您於[本教學課程系列的第 1 部分](tutorial-scan-data.md)下載的入門套件中。
+1. 記下您儲存檔案 *StarterKitTerms.csv* 的位置，此檔案包含在您於 [本教學課程系列的第 1 部分](tutorial-scan-data.md)下載的入門套件中。
 
    此檔案包含已預先填入、且與您的資料資產相關的字詞清單。
 

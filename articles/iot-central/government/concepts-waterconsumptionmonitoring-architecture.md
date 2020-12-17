@@ -3,20 +3,18 @@ title: 使用 Azure IoT Central 對於用水量監視解決方案建置的參考
 description: 瞭解以 Azure IoT Central 建立的用水量監視解決方案有關的概念。
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df402064f2aa26e29ef72c0f73f8f5aa761506e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a291a32c8fd635c9124a7e1f997b6c676c8c0bd4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873554"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586783"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>用水量監視參考架構 
-
-
 
 可以使用 **Azure IoT Central 應用程式範本** 建立用水量監視解決方案，作為入門 IoT 應用程式。 本文提供建置端對端解決方案的高階參考架構指引。 
 
@@ -26,8 +24,8 @@ ms.locfileid: "94873554"
 
 1. 裝置與連線能力  
 1. IoT 中心 
-2. 擴充性與整合
-3. 商務應用程式
+1. 擴充性與整合
+1. 商務應用程式
 
 讓我們看看經常在耗水量監控解決方案中發揮作用的主要元件。
 

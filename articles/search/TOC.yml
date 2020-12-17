@@ -306,10 +306,12 @@
       items:
         - name: 選擇階層。
           href: search-sku-tier.md
-        - name: 服務限制
-          href: search-limits-quotas-capacity.md
+        - name: 估計容量和成本
+          href: search-sku-manage-costs.md
         - name: 調整容量
           href: search-capacity-planning.md
+        - name: 服務限制
+          href: search-limits-quotas-capacity.md
         - name: 效能級別
           href: search-performance-optimization.md
         - name: 多租用戶架構
@@ -362,12 +364,6 @@
               href: service-configure-firewall.md
             - name: 建立私人端點
               href: service-create-private-endpoint.md
-        - name: 身分識別型存取
-          items:
-            - name: 安全性篩選條件
-              href: search-security-trimming-for-azure-search.md
-            - name: 使用者身分識別的篩選條件
-              href: search-security-trimming-for-azure-search-with-aad.md
         - name: 輸出安全性 (索引子)
           items:
             - name: 在 IP 範圍內存取
@@ -376,6 +372,12 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: 透過私人端點存取
               href: search-indexer-howto-access-private.md
+        - name: 身分識別型存取
+          items:
+            - name: 安全性篩選條件
+              href: search-security-trimming-for-azure-search.md
+            - name: 使用者身分識別的篩選條件
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: 管理
       items:
         - name: 入口網站

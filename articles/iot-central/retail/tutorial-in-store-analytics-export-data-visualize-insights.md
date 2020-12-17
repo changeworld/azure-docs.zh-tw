@@ -11,15 +11,14 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187267"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346362"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>教學課程：從 Azure IoT Central 匯出資料並以視覺化方式呈現 Power BI 中的見解
-
 
 
 在先前的兩個教學課程中，您使用 **店內分析 - 結帳** 應用程式範本建立和自訂 IoT Central 應用程式。 在本教學課程中，您將設定 IoT Central 應用程式以匯出從裝置收集的遙測資料。 您接著將使用 Power BI 為商店經理建立自訂儀表板，以視覺化方式呈現從遙測得到的見解。

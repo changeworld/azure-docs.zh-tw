@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0abe13c7c6a9f26746278aeede199a0860a54c0d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779539"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562237"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教學課程：將 Azure CDN 新增至 Azure App Service Web 應用程式
 
@@ -91,7 +91,7 @@ Azure 會建立設定檔和端點。 新端點會出現在 [端點] 清單中，
    - 若為 **來自 Akamai 的標準 Azure CDN** 設定檔，通常會在一分鐘內完成傳播。 
    - 若為 **來自 Verizon 的標準 Azure CDN** 和 **來自 Verizon 的進階 Azure CDN** 設定檔，通常會在 90 分鐘內完成傳播。 
 
-範例應用程式有 *index.html* 檔案以及包含其他靜態資產的 *css* 、 *img* 和 *js* 資料夾。 在 CDN 端點上，上述所有檔案的內容路徑都相同。 例如，下列 URL 可存取 css 資料夾中的 bootstrap.css 檔案︰
+範例應用程式有 *index.html* 檔案以及包含其他靜態資產的 *css*、*img* 和 *js* 資料夾。 在 CDN 端點上，上述所有檔案的內容路徑都相同。 例如，下列 URL 可存取 css 資料夾中的 bootstrap.css 檔案︰
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -135,7 +135,7 @@ CDN 會根據存留時間 (TTL) 組態，從原始 web 應用程式定期重新�
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 部署完成後，瀏覽至 Web 應用程式 URL 即可看到變更。
@@ -170,7 +170,7 @@ http://<endpointname>.azureedge.net/index.html
 
 ![選取清除](media/cdn-add-to-web-app/portal-select-purge.png)
 
-輸入您想要清除的內容路徑。 您可以傳遞完整檔案路徑來清除個別檔案，也可以傳遞路徑區段來清除並重新整理資料夾中的所有內容。 因為您變更了 *index.html* ，所以請確認該項目位在其中一個路徑內。
+輸入您想要清除的內容路徑。 您可以傳遞完整檔案路徑來清除個別檔案，也可以傳遞路徑區段來清除並重新整理資料夾中的所有內容。 因為您變更了 *index.html*，所以請確認該項目位在其中一個路徑內。
 
 選取頁面底部的 [清除]。
 
@@ -222,18 +222,18 @@ Azure CDN 提供下列快取行為選項︰
 http://<endpointname>.azureedge.net/index.html?q=1
 ```
 
-Azure CDN 會傳回目前的 Web 應用程式內容，其標題中包含 *V2* 。 
+Azure CDN 會傳回目前的 Web 應用程式內容，其標題中包含 *V2*。 
 
 若要確保此頁面已在 CDN 中快取，請重新整理此頁面。 
 
-開啟 *index.html* 並將 *V2* 變更為 *V3* ，然後部署變更。 
+開啟 *index.html* 並將 *V2* 變更為 *V3*，然後部署變更。 
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
-在瀏覽器中，移至含有新查詢字串 (例如 `q=2`) 的 CDN 端點 URL。 CDN 會取得目前的 *index.html* 檔案並顯示 *V3* 。 但是，如果您瀏覽至含有 `q=1` 查詢字串的 CDN 端點，則會看到 *V2* 。
+在瀏覽器中，移至含有新查詢字串 (例如 `q=2`) 的 CDN 端點 URL。 CDN 會取得目前的 *index.html* 檔案並顯示 *V3*。 但是，如果您瀏覽至含有 `q=1` 查詢字串的 CDN 端點，則會看到 *V2*。
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=2

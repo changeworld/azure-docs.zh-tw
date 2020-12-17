@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 17bf7b3f457ff6046d92012ffd679ed4b9315530
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a2f76df05878151405d56b1bff5e588f426d9d92
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574117"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093548"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>教學課程：訓練您的第一個機器學習模型 (第 3 部分，共 4 個部分)
 
@@ -133,7 +133,7 @@ python src/train.py                             # train model
 :::row-end:::
 
 > [!div class="nextstepaction"]
-> [我已建立控制指令碼](?success=control-script#submit)[我遇到問題](https://www.research.net/r/7CTJQQ?issue=control-script)
+> [我已建立控制指令碼](?success=control-script#submit)[我遇到問題](https://www.research.net/r/7CTJQQN?issue=control-script)
 
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> 將執行提交至 Azure Machine Learning
@@ -186,7 +186,7 @@ Azure Machine Learning 也會維護策展環境的集合。 這些環境涵蓋�
 簡單地說，使用已註冊的環境可以節省您的時間！ 如需詳細資訊，請閱讀[如何使用環境](./how-to-use-environments.md)。
 
 > [!div class="nextstepaction"]
-> [我已提交執行](?success=test-w-environment#log) [我遇到問題](https://www.research.net/r/7CTJQQ?issue=test-w-environment)
+> [我已提交執行](?success=test-w-environment#log) [我遇到問題](https://www.research.net/r/7CTJQQN?issue=test-w-environment)
 
 ## <a name="log-training-metrics"></a><a name="log"></a> 記錄訓練計量
 
@@ -221,7 +221,7 @@ Azure Machine Learning 中的計量有以下特點：
 - 專為擴充而設計，因此您可以在執行數百個實驗後，依然保有這些優點。
 
 > [!div class="nextstepaction"]
-> [我修改了 train.py ](?success=modify-train#log) [我遇到問題](https://www.research.net/r/7CTJQQ?issue=modify-train)
+> [我修改了 train.py ](?success=modify-train#log) [我遇到問題](https://www.research.net/r/7CTJQQN?issue=modify-train)
 
 ### <a name="update-the-conda-environment-file"></a>更新 Conda 環境檔案
 
@@ -230,7 +230,7 @@ Azure Machine Learning 中的計量有以下特點：
 :::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/configuration/pytorch-aml-env.yml":::
 
 > [!div class="nextstepaction"]
-> [我已更新環境檔案](?success=update-environment#submit-again) [我遇到問題](https://www.research.net/r/7CTJQQ?issue=update-environment)
+> [我已更新環境檔案](?success=update-environment#submit-again) [我遇到問題](https://www.research.net/r/7CTJQQN?issue=update-environment)
 
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> 將執行提交至 Azure Machine Learning
 再次提交此指令碼：
@@ -244,7 +244,7 @@ python 04-run-pytorch.py
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="[計量] 索引標籤上的訓練損失圖形。":::
 
 > [!div class="nextstepaction"]
-> [我已重新提交執行](?success=resubmit-with-logging#next-steps) [我遇到問題](https://www.research.net/r/7CTJQQ?issue=resubmit-with-logging)
+> [我已重新提交執行](?success=resubmit-with-logging#next-steps) [我遇到問題](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
 ## <a name="next-steps"></a>後續步驟
 

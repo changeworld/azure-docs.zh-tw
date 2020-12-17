@@ -1,18 +1,18 @@
 ---
 title: 註冊和掃描 Azure SQL Database 受控執行個體
 description: 本教學課程說明如何掃描 Azure SQL Database 受控執行個體
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 09fcaf0fb0c358c1e94d5cd7064c225d7f185ee0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 6eb17537fd64b192f64c36b38bab57e11d751328
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920308"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400772"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>註冊和掃描 Azure SQL Database 受控執行個體
 
