@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 324a2acbf069e8e23246b99a7d79a3195f737a56
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 836cf4600e353da61673ec8ee5df8f30fb4b9562
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492296"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629845"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-超大規模 (Citus) 
 
@@ -582,7 +582,7 @@ ms.locfileid: "96492296"
 
 **指導** 方針：適用於 PostgreSQL 的 Azure 資料庫超大規模 (Citus) 目前不直接支援受控識別。 建立適用於 PostgreSQL 的 Azure 資料庫伺服器時，您必須提供系統管理員使用者的認證。 您可以在 Azure 入口網站介面中建立額外的使用者角色。
 
-- [建立適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus)](./quickstart-create-hyperscale-portal.md#create-an-azure-database-for-postgresql---hyperscale-citus)
+- [建立適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus)](./quickstart-create-hyperscale-portal.md#create-a-hyperscale-citus-server-group)
 
 - [建立額外的使用者角色](./howto-hyperscale-create-users.md#how-to-create-additional-user-roles)
 

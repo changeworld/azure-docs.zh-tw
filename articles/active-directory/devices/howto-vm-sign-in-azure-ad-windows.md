@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c42495ceab7108d20b0f0dedbf0cf94f5f9352d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ef2c9d7e2388d2da7a807fbf6b579360115a8323
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509303"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629794"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (Preview 登入 Azure 中的 Windows 虛擬機器) 
 
@@ -333,6 +333,9 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 ![您的帳戶已設定為防止您使用此裝置。](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
 確認您已為 VM [設定 AZURE RBAC 原則](../../virtual-machines/linux/login-using-aad.md) ，以授與使用者虛擬機器系統管理員登入或虛擬機器使用者登入角色：
+
+> [!NOTE]
+> 如果您遇到 Azure 角色指派的問題，請參閱 [疑難排解 AZURE RBAC](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit)。
  
 #### <a name="unauthorized-client"></a>未經授權的用戶端
 
@@ -368,6 +371,6 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 請分享您對此預覽功能的意見反應，或在 [Azure AD 意見反應論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上使用它來報告問題。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需有關 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](../fundamentals/active-directory-whatis.md)

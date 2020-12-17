@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5bc00ecf5e4c8ae440ce6610e9be8c8f77ed666
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862202"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630610"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>將2.0 版的程式碼遷移至 REST API 的 v3。0
 
@@ -33,12 +33,16 @@ ms.locfileid: "96862202"
 ### <a name="host-name-changes"></a>主機名稱變更
 
 端點主機名稱已從變更 `{region}.cris.ai` 為 `{region}.api.cognitive.microsoft.com` 。 新端點的路徑已不再包含， `api/` 因為它是主機名稱的一部分。 [Swagger 檔](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)會列出有效的區域和路徑。
+>[!IMPORTANT]
+>將主機名稱從變更 `{region}.cris.ai` 為 `{region}.api.cognitive.microsoft.com` 您的語音訂用帳戶區域的區域。 也請 `api/` 從用戶端程式代碼中的任何路徑移除。
 
 ### <a name="identity-of-an-entity"></a>實體的身分識別
 
 屬性 `id` 現在是 `self` 。 在 v2 中，API 使用者必須知道如何建立 API 上的路徑。 這是不具擴充性且需要的使用者不必要的工作。 屬性 `id` (uuid) 會取代 `self` 為 (字串) ，也就是實體 (URL) 的位置。 在您所有的實體之間，該值仍是唯一的。 如果以 `id` 字串的形式儲存在程式碼中，重新命名就足以支援新的架構。 您現在可以使用 `self` 內容做為 `GET` 實體的、 `PATCH` 和 `DELETE` REST 呼叫的 URL。
 
 如果實體具有可透過其他路徑使用的其他功能，則會列在底下 `links` 。 下列轉譯範例會向轉譯的內容顯示不同的方法 `GET` ：
+>[!IMPORTANT]
+>`id` `self` 在您的用戶端程式代碼中，將屬性重新命名為。 視需要將類型從變更 `uuid` 為 `string` 。 
 
 **v2 轉譯：**
 
@@ -91,6 +95,9 @@ ms.locfileid: "96862202"
 
 這項變更需要 `GET` 在傳回所有元素之前，在迴圈中呼叫集合的。
 
+>[!IMPORTANT]
+>當 GET 的回應 `speechtotext/v3.0/{collection}` 包含中的值時 `$.@nextLink` ，繼續發出， `GETs` 直到未 `$.@nextLink` `$.@nextLink` 設定為取得該集合的所有專案為止。
+
 ### <a name="creating-transcriptions"></a>建立轉譯
 
 有關如何建立轉譯批次的詳細說明，可在 [批次](./batch-transcription.md)轉譯操作說明中找到。
@@ -134,6 +141,8 @@ V3 也支援多個輸入檔案，因此它需要 Url 清單，而不是單一 UR
   }
 }
 ```
+>[!IMPORTANT]
+>將屬性重新命名 `recordingsUrl` 為 `contentUrls` ，並傳遞 url 的陣列，而不是單一 url。 傳遞或的設定， `diarizationEnabled` `wordLevelTimestampsEnabled` `bool` 而不是 `string` 。
 
 ### <a name="format-of-v3-transcription-results"></a>V3 轉譯結果的格式
 
@@ -201,6 +210,9 @@ V3 轉譯結果的範例。 這些差異描述于批註中。
   ]
 }
 ```
+>[!IMPORTANT]
+>將轉譯結果還原序列化為新的類型，如上所示。 您可以 `channel` 針對中的每個元素檢查的屬性值，來區別通道，而不是每個音訊通道的單一檔案 `recognizedPhrases` 。 每個輸入檔現在都有一個結果檔。
+
 
 ### <a name="getting-the-content-of-entities-and-the-results"></a>取得實體的內容和結果
 
@@ -269,6 +281,9 @@ V3 轉譯結果的範例。 這些差異描述于批註中。
 
 `kind`屬性會指出檔案內容的格式。 針對轉譯，類型的檔案 `TranscriptionReport` 是作業的摘要，而類型的檔案則 `Transcription` 是作業本身的結果。
 
+>[!IMPORTANT]
+>若要取得作業的結果，請 `GET` 在上使用 `/speechtotext/v3.0/{collection}/{id}/files` ，這些結果不會再包含于或的回應中 `GET` `/speechtotext/v3.0/{collection}/{id}` `/speechtotext/v3.0/{collection}` 。
+
 ### <a name="customizing-models"></a>自訂模型
 
 在 v3 之前，當模型正在定型時， _聲場模型_ 與 _語言模型_ 之間有一些差異。 這項區別會導致在建立端點或轉譯時，必須指定多個模型。 為了簡化呼叫者的這個程式，我們移除了差異，而所有專案都取決於用於模型定型之資料集的內容。 透過這種變更，模型建立現在支援混合的資料集 (語言資料和聲場資料) 。 端點和轉譯現在只需要一個模型。
@@ -277,11 +292,17 @@ V3 轉譯結果的範例。 這些差異描述于批註中。
 
 為了改善定型模型的結果，會在語言定型期間于內部自動使用聲場資料。 一般情況下，透過 v3 API 建立的模型會比使用 v2 API 建立的模型提供更精確的結果。
 
+>[!IMPORTANT]
+>若要自訂聲場和語言模型元件，請將 POST 中所有必要的語言和聲場資料集傳遞 `datasets[]` 至 `/speechtotext/v3.0/models` 。 這將會建立一個已自訂這兩個元件的單一模型。
+
 ### <a name="retrieving-base-and-custom-models"></a>正在抓取基底和自訂模型
 
 為了簡化取得可用的模型，v3 已將「基底模型」的集合與客戶擁有的「自訂模型」分隔開來。 這兩個路由現在是 `GET /speechtotext/v3.0/models/base` 和 `GET /speechtotext/v3.0/models/` 。
 
 在 v2 中，所有模型都是在單一回應中一起傳回。
+
+>[!IMPORTANT]
+>若要取得所提供的自訂基底模型清單，請使用 `GET` `/speechtotext/v3.0/models/base` 。 您可以使用來尋找自己的自訂 `GET` 模型 `/speechtotext/v3.0/models` 。
 
 ### <a name="name-of-an-entity"></a>實體的名稱
 
@@ -302,6 +323,9 @@ V3 轉譯結果的範例。 這些差異描述于批註中。
     "displayName": "Transcription using locale en-US"
 }
 ```
+
+>[!IMPORTANT]
+>`name` `displayName` 在您的用戶端程式代碼中，將屬性重新命名為。
 
 ### <a name="accessing-referenced-entities"></a>存取參考的實體
 
@@ -351,6 +375,10 @@ V3 轉譯結果的範例。 這些差異描述于批註中。
 
 如果您需要取用參考模型的詳細資料（如上述範例所示），請直接發出 GET `$.model.self` 。
 
+>[!IMPORTANT]
+>若要抓取參考實體的中繼資料，請發出 GET `$.{referencedEntity}.self` ，例如取出轉譯的模型 `GET` `$.model.self` 。
+
+
 ### <a name="retrieving-endpoint-logs"></a>正在抓取端點記錄
 
 服務的 v2 版本支援記錄端點結果。 若要使用 v2 取出端點的結果，您可以建立「資料匯出」，以代表時間範圍所定義的結果快照。 匯出資料批次的程式沒有彈性。 V3 API 會提供每個個別檔案的存取權，並允許透過這些檔案進行反復專案。
@@ -392,6 +420,9 @@ V3 轉譯結果的範例。 這些差異描述于批註中。
 
 在 v3 中，每個端點記錄檔都可以藉由在檔案的 `DELETE` 上發出操作 `self` ，或使用 on 來個別刪除 `DELETE` `$.links.logs` 。 若要指定結束日期，可以將查詢參數 `endDate` 加入至要求。
 
+>[!IMPORTANT]
+>而不是使用建立記錄檔匯出 `/api/speechtotext/v2.0/endpoints/{id}/data` `/v3.0/endpoints/{id}/files/logs/` 來個別存取記錄檔。 
+
 ### <a name="using-custom-properties"></a>使用自訂屬性
 
 為了將自訂屬性與選擇性的設定屬性分開，所有明確命名的屬性現在都位於屬性中， `properties` 而呼叫端定義的所有屬性現在都位於 `customProperties` 屬性中。
@@ -424,17 +455,28 @@ V3 轉譯結果的範例。 這些差異描述于批註中。
 
 這項變更也可讓您在 (上明確命名的屬性 `properties` （例如布林值）（而不是字串) ）上使用正確的類型。
 
+>[!IMPORTANT]
+>傳遞所有自訂屬性， `customProperties` 而不是 `properties` 在您的 `POST` 要求中。
+
 ### <a name="response-headers"></a>回應標頭
 
 v3 `Operation-Location` 除了 `Location` 要求上的標頭之外，不會再傳回標頭 `POST` 。 V2 中兩個標頭的值相同。 現在只 `Location` 會傳回。
 
 因為新的 API 版本現在是由 Azure API 管理所管理 (APIM) ，所以不會 `X-RateLimit-Limit` `X-RateLimit-Remaining` `X-RateLimit-Reset` 在回應標頭中包含節流相關的標頭、和。
 
+>[!IMPORTANT]
+>從回應標頭讀取位置， `Location` 而不是 `Operation-Location` 。 如果是429回應碼，請讀取 `Retry-After` 標頭值，而不是 `X-RateLimit-Limit` 、 `X-RateLimit-Remaining` 或 `X-RateLimit-Reset` 。
+
+
 ### <a name="accuracy-tests"></a>精確度測試
 
 精確度測試已重新命名為「評估」，因為新名稱會描述更好的表示。 新路徑為： `https://{region}.api.cognitive.microsoft.com/speechtotext/v3.0/evaluations` 。
 
-## <a name="next-steps"></a>後續步驟
+>[!IMPORTANT]
+>`accuracytests` `evaluations` 在您的用戶端程式代碼中，將路徑區段重新命名為。
+
+
+## <a name="next-steps"></a>下一步
 
 檢查語音服務所提供的這些常用 REST Api 的所有功能：
 

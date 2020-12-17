@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: febcb3d2b6990d36a686dc4fab57a6bcbc96b080
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8ea4b0c7c8df1ff7fe0e3ecb253b23d188681e80
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616655"
+ms.locfileid: "97629675"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>Azure Functions 總覽的 RabbitMQ 輸出系結
 
 > [!NOTE]
-> RabbitMQ 系結只在 **Windows Premium** 方案上受到完整支援。 目前不支援耗用量和 Linux。
+> RabbitMQ 系結只在 **Windows Premium 和專用** 方案上受到完整支援。 目前不支援耗用量和 Linux。
 
 使用 RabbitMQ 輸出系結，將訊息傳送至 RabbitMQ 佇列。
 
@@ -321,6 +321,6 @@ Python 指令碼不支援屬性。
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [ (觸發程式建立 RabbitMQ 訊息時執行函數) ](./functions-bindings-rabbitmq-trigger.md)

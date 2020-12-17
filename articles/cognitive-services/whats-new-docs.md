@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 12/07/2020
-ms.openlocfilehash: d07f01a17c2d784eed61ad7e7ef47c8f7eb5ac30
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 9069a53166b30e206559f0c68c4bcef2ec136ac5
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862185"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631494"
 ---
 # <a name="cognitive-services-docs-whats-new-for-november-1-2020---november-30-2020"></a>認知服務檔：2020年11月1日的新功能-2020 年11月30日
 
@@ -33,35 +33,35 @@ ms.locfileid: "96862185"
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [Azure 認知服務容器映射標記和版本資訊](/azure/cognitive-services/containers/container-image-tags.md)
+- [Azure 認知服務容器映射標記和版本資訊](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>表單辨識器
 
 ### <a name="new-articles"></a>新文章
 
-- [表單辨識器預建發票模型](/azure/cognitive-services/form-recognizer/concept-invoices.md)
-- [表單辨識器版面佈建服務](/azure/cognitive-services/form-recognizer/concept-layout.md)
-- [快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取發票資料](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices.md)
+- [表單辨識器預建發票模型](/azure/cognitive-services/form-recognizer/concept-invoices)
+- [表單辨識器版面佈建服務](/azure/cognitive-services/form-recognizer/concept-layout)
+- [快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取發票資料](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices)
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [回條概念](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [什麼是表單辨識器？](/azure/cognitive-services/form-recognizer/overview.md)
-- [使用範例標記工具，以標籤定型表單辨識器模型](/azure/cognitive-services/form-recognizer/quickstarts/label-tool.md)
-- [快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取名片資料](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards.md)
-- [表單辨識器的新功能](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [回條概念](/azure/cognitive-services/form-recognizer/concept-receipts)
+- [什麼是表單辨識器？](/azure/cognitive-services/form-recognizer/overview)
+- [使用範例標記工具，以標籤定型表單辨識器模型](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [快速入門：搭配使用表單辨識器 REST API 和 Python 來擷取名片資料](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards)
+- [表單辨識器的新功能](/azure/cognitive-services/form-recognizer/whats-new)
 
 ## <a name="metrics-advisor"></a>Metrics Advisor
 
 ### <a name="new-articles"></a>新文章
 
-- [Metrics Advisor：文件中的新功能](/azure/cognitive-services/metrics-advisor/whats-new.md)
+- [Metrics Advisor：文件中的新功能](/azure/cognitive-services/metrics-advisor/whats-new)
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [提供異常意見反應](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback.md)
-- [計量顧問常見問題](/azure/cognitive-services/metrics-advisor/faq.md)
-- [快速入門：使用用戶端程式庫 REST API 自訂解決方案](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library.md)
+- [提供異常意見反應](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback)
+- [計量顧問常見問題](/azure/cognitive-services/metrics-advisor/faq)
+- [快速入門：使用用戶端程式庫 REST API 自訂解決方案](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library)
 
 ## <a name="qna-maker"></a>QnA Maker 
 
@@ -75,12 +75,12 @@ ms.locfileid: "96862185"
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [文字分析 API 的資料和速率限制](/azure/cognitive-services/text-analytics/concepts/data-limits.md)
-- [How to：使用文字分析的健全狀況 (預覽) ](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health.md)
-- [如何呼叫文字分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
-- [如何在文字分析中使用命名實體辨識](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [操作說明：情感分析與意見挖掘](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
-- [文字分析 API 有哪些新功能？](/azure/cognitive-services/text-analytics/whats-new.md)
-- [範例：使用文字分析來偵測語言](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md)
+- [文字分析 API 的資料和速率限制](/azure/cognitive-services/text-analytics/concepts/data-limits)
+- [How to：使用文字分析的健全狀況 (預覽) ](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
+- [如何呼叫文字分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [如何在文字分析中使用命名實體辨識](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [操作說明：情感分析與意見挖掘](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis)
+- [文字分析 API 有哪些新功能？](/azure/cognitive-services/text-analytics/whats-new)
+- [範例：使用文字分析來偵測語言](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

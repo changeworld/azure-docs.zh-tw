@@ -5,14 +5,14 @@ services: application gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 11/16/2019
+ms.date: 12/17/2020
 ms.author: amsriva
-ms.openlocfilehash: 16c6dd28d47573c2ad5b0d5a331b0dc48e7aacef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77239cd8586b8fb07abf6862be436979541bdb99
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85253625"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631685"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>應用程式閘道 TLS 原則總覽
 
@@ -23,6 +23,18 @@ TLS 原則包含 TLS 通訊協定版本的控制以及加密套件，以及在 T
 ## <a name="predefined-tls-policy"></a>預先定義的 TLS 原則
 
 應用程式閘道有三個預先定義的安全性原則。 您可以使用這些原則的任何一項來設定閘道，以取得適當的安全性層級。 原則名稱藉由它們設定時的年和月來標註。 每個原則都提供不同的 TLS 通訊協定版本和加密套件。 建議您使用最新的 TLS 原則，以確保最適合的 TLS 安全性。
+
+## <a name="known-issue"></a>已知問題
+應用程式閘道 v2 不支援下列 DHE 的密碼，而且它們不會用於與用戶端的 TLS 連線，即使它們已在預先定義的原則中提及也一樣。 建議您不要使用 DHE 加密，而是建議使用安全且更快速的 >ECDHE 密碼。
+
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
@@ -39,7 +51,7 @@ TLS 原則包含 TLS 通訊協定版本的控制以及加密套件，以及在 T
 |   ---      |  ---       |
 |名稱     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
-|預設| False |
+|預設| 否 |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
@@ -48,12 +60,16 @@ TLS 原則包含 TLS 通訊協定版本的控制以及加密套件，以及在 T
 |---|---|
 |名稱     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
-|預設| False |
+|預設| 否 |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 <br>    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 <br>    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br> |
 
 ## <a name="custom-tls-policy"></a>自訂 TLS 原則
 
 如果預先定義的 TLS 原則需要針對您的需求進行設定，您必須定義您自己的自訂 TLS 原則。 使用自訂的 TLS 原則，您可以完全掌控要支援的最低 TLS 通訊協定版本，以及支援的加密套件及其優先順序。
+
+> [!IMPORTANT]
+> 如果您在應用程式閘道 v1 SKU 中使用自訂 SSL 原則 (Standard 或 WAF) ，請確定您已將強制密碼 "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256" 新增至清單。 這是在應用程式閘道 v1 SKU 中啟用計量和記錄的必要密碼。
+> 應用程式閘道 v2 SKU (Standard_v2 或 WAF_v2) 並不是必要的。
  
 ### <a name="tlsssl-protocol-versions"></a>TLS/SSL 通訊協定版本
 
@@ -98,17 +114,6 @@ TLS 原則包含 TLS 通訊協定版本的控制以及加密套件，以及在 T
 > [!NOTE]
 > 連接所使用的 TLS 加密套件也會根據所使用的憑證類型而定。 在用戶端對應用程式閘道連線中，使用的加密套件是以應用程式閘道接聽程式上的伺服器憑證類型為基礎。 在應用程式閘道中的後端集區連線中，使用的密碼套件是以後端集區伺服器上的伺服器憑證類型為基礎。
 
-## <a name="known-issue"></a>已知問題
-應用程式閘道 v2 目前不支援下列密碼：
-- DHE-RSA-AES128-GCM-SHA256
-- DHE-RSA-AES128-SHA
-- DHE-RSA-AES256-GCM-SHA384
-- DHE-RSA-AES256-SHA
-- DHE-DSS-AES128-SHA256
-- DHE-DSS-AES128-SHA
-- DHE-DSS-AES256-SHA256
-- DHE-DSS-AES256-SHA
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如果您想要瞭解如何設定 TLS 原則，請參閱 [設定應用程式閘道上的 tls 原則版本和加密套件](application-gateway-configure-ssl-policy-powershell.md)。

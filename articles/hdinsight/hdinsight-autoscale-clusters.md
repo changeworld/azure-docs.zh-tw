@@ -1,30 +1,29 @@
 ---
-title: 自動調整規模 Azure HDInsight 叢集
-description: 使用 Azure HDInsight 自動調整功能來自動調整 Apache Hadoop 叢集。
+title: 自動調整 Azure HDInsight 叢集規模
+description: 使用自動調整功能，根據排程或效能計量自動調整 Azure HDInsight 叢集規模。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperf-fy21q1
-ms.date: 09/14/2020
-ms.openlocfilehash: 09e4412128a3b13abfa91bf0c128372b30b3e686
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.date: 12/14/2020
+ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033131"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629250"
 ---
-# <a name="autoscale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
-Azure HDInsight 的免費自動調整功能可根據先前設定的準則，自動增加或減少叢集中的背景工作節點數目。 您可以在叢集建立期間設定節點數目下限和上限、使用日期時間排程或特定效能計量來建立調整準則，而 HDInsight 平臺會執行其餘工作。
+Azure HDInsight 的免費自動調整功能可根據先前設定的準則，自動增加或減少叢集中的背景工作節點數目。 自動調整功能的運作方式是根據效能度量或相應增加和相應減少作業的排程，在預設限制內調整節點數目。
 
 ## <a name="how-it-works"></a>運作方式
 
-自動調整功能會使用兩種類型的條件來觸發調整事件：各種叢集效能計量的臨界值 (稱為以 *負載為* 基礎的調整) 和以時間為基礎的觸發程式 (稱為以 *排程為基礎的調整*) 。 以負載為基礎的調整會變更您叢集中的節點數目（在您設定的範圍內），以確保最佳的 CPU 使用率，並將執行成本降至最低。 以排程為基礎的調整會根據您與特定日期和時間相關聯的作業，來變更叢集中的節點數目。
+自動調整功能會使用兩種類型的條件來觸發調整事件：各種叢集效能計量的臨界值 (稱為以 *負載為* 基礎的調整) 和以時間為基礎的觸發程式 (稱為以 *排程為基礎的調整*) 。 以負載為基礎的調整會變更您叢集中的節點數目（在您設定的範圍內），以確保最佳的 CPU 使用率，並將執行成本降至最低。 以排程為基礎的規模調整會根據向上延展和相應減少作業的排程，變更叢集中的節點數目。
 
 下列影片概述自動調整所能解決的挑戰，以及它如何協助您使用 HDInsight 來控制成本。
-
 
 > [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
@@ -133,7 +132,7 @@ Azure HDInsight 的免費自動調整功能可根據先前設定的準則，自�
 
 #### <a name="load-based-autoscaling"></a>以負載為基礎的自動調整
 
-您可以 `autoscale` 使用屬性將節點新增至 `computeProfile`  >  `workernode` 區段， `minInstanceCount` 並使用 `maxInstanceCount` 下列 json 程式碼片段，建立具有負載型自動調整 Azure Resource Manager 範本的 HDInsight 叢集。 如需完整的 resource manager 範本，請參閱 [快速入門範本：部署已啟用 Loadbased 自動調整的 Spark](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)叢集。
+您可以 `autoscale` 使用屬性將節點新增至 `computeProfile`  >  `workernode` 區段， `minInstanceCount` 並使用 `maxInstanceCount` 下列 json 程式碼片段，建立具有負載型自動調整 Azure Resource Manager 範本的 HDInsight 叢集。 如需完整的 Resource Manager 範本，請參閱 [快速入門範本：部署 Spark 叢集，並啟用以負載為基礎的自動](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)調整。
 
 ```json
 {
@@ -161,7 +160,7 @@ Azure HDInsight 的免費自動調整功能可根據先前設定的準則，自�
 
 #### <a name="schedule-based-autoscaling"></a>以排程為基礎的自動調整
 
-您可以藉由將節點加入至區段，以排程為基礎的自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集 `autoscale` `computeProfile`  >  `workernode` 。 `autoscale`節點包含， `recurrence` 其中具有 `timezone` 和，可 `schedule` 描述何時會進行變更。 如需完整的 resource manager 範本，請參閱 [使用以排程為基礎的自動調整功能來部署 Spark](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)叢集。
+您可以藉由將節點加入至區段，以排程為基礎的自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集 `autoscale` `computeProfile`  >  `workernode` 。 `autoscale`節點包含， `recurrence` 其中具有 `timezone` 和，可 `schedule` 描述何時會進行變更。 如需完整的 Resource Manager 範本，請參閱 [使用以排程為基礎的自動調整功能來部署 Spark](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)叢集。
 
 ```json
 {
@@ -231,7 +230,7 @@ Azure 入口網站中列出的叢集狀態可協助您監視自動調整活動�
 | 更新  | 正在更新叢集自動調整設定。  |
 | HDInsight 設定  | 叢集擴大或縮小作業正在進行中。  |
 | 更新錯誤  | HDInsight 在自動調整設定更新期間發生問題。 客戶可以選擇重試更新或停用自動調整。  |
-| [錯誤]  | 叢集發生問題，因此無法使用。 刪除此叢集，並建立一個新叢集。  |
+| 錯誤  | 叢集發生問題，因此無法使用。 刪除此叢集，並建立一個新叢集。  |
 
 若要查看叢集中目前的節點數目，請移至叢集的 [**總覽**] 頁面上的 [叢集 **大小**] 圖表。 或選取 [**設定**] 下的 [叢集 **大小**]。
 
@@ -281,6 +280,6 @@ HDInsight 自動調整會使用節點標籤檔案來判斷節點是否已準備�
 
 如果以手動方式重新開機 Interactive Query 服務，您需要以手動方式將設定變更 `num_llap_node` (在 *Advanced hive-Interactive-env* 下執行 Hive Interactive Query 背景工作角色，以符合目前作用中背景工作角色節點計數所需的節點 (數目) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 閱讀[調整指導方針](hdinsight-scaling-best-practices.md)以手動調整叢集的相關指導方針

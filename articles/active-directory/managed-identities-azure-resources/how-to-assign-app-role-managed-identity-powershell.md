@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8890eb76e3f9521aa5070789f969ffeb8f3e4ec6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 409ba7a954830bb2370ce83989b9e8b08b742fe7
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618805"
+ms.locfileid: "97631171"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>使用 PowerShell 將受控識別存取權指派給應用程式角色
 
@@ -35,10 +35,10 @@ ms.locfileid: "97618805"
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱 [系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 - 若要執行範例指令碼，您有兩個選項：
-    - 使用 [Azure Cloud Shell](../../cloud-shell/overview.md)，您可以使用程式碼區塊右上角的 [試用] 按鈕來開啟。
+    - 使用您可以使用程式碼區塊右上角的 [**試試看**] 按鈕開啟的 [Azure Cloud Shell](../../cloud-shell/overview.md)。
     - 安裝最新版的 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)以在本機執行腳本。
 
-## <a name="use-azure-ad-to-assign-a-managed-identity-access-to-another-applications-app-role"></a>使用 Azure AD 將受控識別存取權指派給另一個應用程式的應用程式角色
+## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>將受控識別存取權指派給另一個應用程式的應用程式角色
 
 1. 在 Azure 資源（ [例如 AZURE VM](qs-configure-powershell-windows-vm.md)）上啟用受控識別。
 
@@ -86,16 +86,55 @@ ms.locfileid: "97618805"
 
 1. 將應用程式角色指派給受控識別。 您將需要下列資訊來指派應用程式角色：
     * `managedIdentityObjectId`：受控識別之服務主體的物件識別碼，您可以在步驟2中找到此識別碼。
-    * `serverApplicationObjectId`：伺服器應用程式服務主體的物件識別碼，您可以在步驟4中找到此識別碼。
+    * `serverServicePrincipalObjectId`：伺服器應用程式服務主體的物件識別碼，您可以在步驟4中找到此識別碼。
     * `appRoleId`：由伺服器應用程式公開的應用程式角色識別碼，您在步驟5中所產生的識別碼-在範例中，應用程式角色識別碼為 `0566419e-bb95-4d9d-a4f8-ed9a0f147fa6` 。
    
    執行下列 PowerShell 腳本以新增角色指派：
 
     ```powershell
-    New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentityObjectId -Id $appRoleId -PrincipalId $managedIdentityObjectId -ResourceId $serverApplicationObjectId
+    New-AzureADServiceAppRoleAssignment -ObjectId $managedIdentityObjectId -Id $appRoleId -PrincipalId $managedIdentityObjectId -ResourceId $serverServicePrincipalObjectId
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="complete-script"></a>完整的指令碼
+
+此範例腳本說明如何將 Azure web 應用程式的受控識別指派給應用程式角色。
+
+```powershell
+# Install the module. (You need admin on the machine.)
+# Install-Module AzureAD
+
+# Your tenant ID (in the Azure portal, under Azure Active Directory > Overview).
+$tenantID = '<tenant-id>'
+
+# The name of your web app, which has a managed identity that should be assigned to the server app's app role.
+$webAppName = '<web-app-name>'
+$resourceGroupName = '<resource-group-name-containing-web-app>'
+
+# The name of the server app that exposes the app role.
+$serverApplicationName = '<server-application-name>' # For example, MyApi
+
+# The name of the app role that the managed identity should be assigned to.
+$appRoleName = '<app-role-name>' # For example, MyApi.Read.All
+
+# Look up the web app's managed identity's object ID.
+$managedIdentityObjectId = (Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $webAppName).identity.principalid
+
+Connect-AzureAD -TenantId $tenantID
+
+# Look up the details about the server app's service principal and app role.
+$serverServicePrincipal = (Get-AzureADServicePrincipal -Filter "DisplayName eq '$serverApplicationName'")
+$serverServicePrincipalObjectId = $serverServicePrincipal.ObjectId
+$appRoleId = ($serverServicePrincipal.AppRoles | Where-Object {$_.Value -eq $appRoleName }).Id
+
+# Assign the managed identity access to the app role.
+New-AzureADServiceAppRoleAssignment `
+    -ObjectId $managedIdentityObjectId `
+    -Id $appRoleId `
+    -PrincipalId $managedIdentityObjectId `
+    -ResourceId $serverServicePrincipalObjectId
+```
+
+## <a name="next-steps"></a>下一步
 
 - [適用於 Azure 資源的受控識別概觀](overview.md)
 - 若要在 Azure VM 上啟用受控識別，請參閱[使用 PowerShell 在 Azure VM 上設定 Azure 資源的受控識別](qs-configure-powershell-windows-vm.md)。

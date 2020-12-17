@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ea8300447b9aa596e8678038982771263a4c76f6
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 382adb36712fbf4bee83044c8b2d096223eb6269
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358770"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630032"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>使用 AzCopy v10 從 Azure Blob 儲存體下載 blob
 
@@ -143,7 +143,7 @@ ms.locfileid: "97358770"
 
 #### <a name="download-a-blob-snapshot"></a>下載 Blob 快照集
 
-您可以藉由參考 blob 快照集的 **日期時間** 值來下載 [blob 快照](/azure/storage/blobs/snapshots-overview.md)集。 
+您可以藉由參考 blob 快照集的 **日期時間** 值來下載 [blob 快照](/azure/storage/blobs/snapshots-overview)集。 
 
 |    |     |
 |--------|-----------|
@@ -166,7 +166,7 @@ ms.locfileid: "97358770"
 
 如需完整清單，請參閱 [選項](storage-ref-azcopy-copy.md#options)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在這些文章中尋找更多範例：
 

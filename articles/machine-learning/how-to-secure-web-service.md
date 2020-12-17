@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: f7e16400f6460f7479cdffd1928126cdd70a8f0c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 872958f87e7d75427d5939aed73314920cfaf3ea
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503993"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631086"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 來透過 Azure Machine Learning 保護 Web 服務
 
@@ -75,34 +75,23 @@ TLS 和 SSL 都依賴 *數位憑證*，可協助進行加密和身分識別驗�
 
 若要部署 (或重新部署) 已啟用 TLS 的服務，請將 *ssl_enabled* 參數設定為 "True" （不論其適用的位置）。 將 *ssl_certificate* 參數設定為 *憑證* 檔案的值。 將 *ssl_key* 設定為 *金鑰* 檔的值。
 
-### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>在 AKS 和可現場程式化閘道陣列上部署 (FPGA) 
+### <a name="deploy-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署
 
   > [!NOTE]
   > 當您為設計工具部署安全的 web 服務時，本節中的資訊也適用。 如果您不熟悉如何使用 Python SDK，請參閱 [什麼是適用于 python 的 AZURE MACHINE LEARNING SDK？](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
 
-當您部署至 AKS 時，您可以建立新的 AKS 叢集或附加現有的叢集。 如需有關建立或附加叢集的詳細資訊，請參閱 [將模型部署到 Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)叢集。
-  
--  如果您建立新的叢集，您會使用 **[AksCompute.provisioning_configuration ( # B1](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)**。
-- 如果您附加現有的叢集，您會使用 **[AksCompute.attach_configuration ( # B1](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)**。 這兩個方法都會傳回具有 **enable_ssl** 方法的設定物件。
+**[AksCompute.provisioning_configuration ( # B1](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 和 **[AksCompute.attach_configuration ( # B3](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 會傳回具有 **enable_ssl** 方法的設定物件，而且您可以使用 **enable_ssl** 方法來啟用 TLS。
 
-**Enable_ssl** 方法可以使用由 Microsoft 提供的憑證或您所購買的憑證。
+您可以使用 Microsoft 憑證或從 CA 購買的自訂憑證來啟用 TLS。 
 
-> [!WARNING]
-> 如果您的 AKS 叢集已設定為使用內部負載平衡器，則 __不支援__ 使用 Microsoft 提供的憑證。 使用 Microsoft 提供的憑證需要 Azure 中的公用 IP 資源，在為內部負載平衡器設定時，此資源無法供 AKS 使用。
-
-  * 當您使用來自 Microsoft 的憑證時，您必須使用 *leaf_domain_label* 參數。 此參數會產生服務的 DNS 名稱。 例如，"contoso" 的值會建立功能變數名稱 "contoso \<six-random-characters> . \<azureregion> 。cloudapp.azure.com "，其中 \<azureregion> 是包含服務的區域。 （選擇性）您可以使用 *overwrite_existing_domain* 參數來覆寫現有的 *leaf_domain_label*。
-
-    若要部署 (或重新部署) 已啟用 TLS 的服務，請將 *ssl_enabled* 參數設定為 "True" （不論其適用的位置）。 將 *ssl_certificate* 參數設定為 *憑證* 檔案的值。 將 *ssl_key* 設定為 *金鑰* 檔的值。
-
-    > [!IMPORTANT]
-    > 當您使用來自 Microsoft 的憑證時，您不需要購買自己的憑證或功能變數名稱。
-
-    下列範例示範如何建立可從 Microsoft 啟用 TLS/SSL 憑證的設定：
+* **當您使用來自 Microsoft 的憑證時**，您必須使用 *leaf_domain_label* 參數。 此參數會產生服務的 DNS 名稱。 例如，"contoso" 的值會建立功能變數名稱 "contoso \<six-random-characters> . \<azureregion> 。cloudapp.azure.com "，其中 \<azureregion> 是包含服務的區域。 （選擇性）您可以使用 *overwrite_existing_domain* 參數來覆寫現有的 *leaf_domain_label*。 下列範例示範如何建立可啟用 TLS 與 Microsoft 憑證的設定：
 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
@@ -112,20 +101,28 @@ TLS 和 SSL 都依賴 *數位憑證*，可協助進行加密和身分識別驗�
     # Config used to attach an existing AKS cluster to your workspace and enable TLS
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
+    > [!IMPORTANT]
+    > 當您使用來自 Microsoft 的憑證時，您不需要購買自己的憑證或功能變數名稱。
 
-  * 當您使用 *您所購買的憑證* 時，您會使用 *ssl_cert_pem_file*、 *ssl_key_pem_file* 和 *ssl_cname* 參數。 下列範例示範如何使用 *pem* 檔案來建立使用您所購買 TLS/SSL 憑證的設定：
+    > [!WARNING]
+    > 如果您的 AKS 叢集已設定為使用內部負載平衡器，則 __不支援__ 使用 Microsoft 提供的憑證，而且您必須使用自訂憑證來啟用 TLS。
 
+* **當您使用您所購買的自訂憑證時**，您會使用 *ssl_cert_pem_file*、 *ssl_key_pem_file* 和 *ssl_cname* 參數。 下列範例示範如何使用 pem 檔案來建立使用您所購買 TLS/SSL 憑證的設定：
+ 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
@@ -150,23 +147,17 @@ aci_config = AciWebservice.deploy_configuration(
 
 ## <a name="update-your-dns"></a>更新您的 DNS
 
-接下來，您必須更新 DNS 以指向 Web 服務。
+針對使用自訂憑證或 ACI 部署的 AKS 部署，您必須更新您的 DNS 記錄，以指向評分端點的 IP 位址。
 
-+ **針對容器實例：**
+  > [!IMPORTANT]
+  > 當您使用 Microsoft 的憑證進行 AKS 部署時，您不需要手動更新叢集的 DNS 值。 值應該會自動設定。
 
-  使用您的網域註冊機構中的工具，更新功能變數名稱的 DNS 記錄。 記錄必須指向服務的 IP 位址。
+您可以遵循下列步驟來更新自訂功能變數名稱的 DNS 記錄：
+* 從計分端點 URI 取得計分端點 IP 位址，其格式通常為 *http://104.214.29.152:80/api/v1/service/<service-name>/score* 。 
+* 使用您的網域註冊機構中的工具，更新功能變數名稱的 DNS 記錄。 記錄必須指向計分端點的 IP 位址。
+* 在 DNS 記錄更新之後，您可以使用 *nslookup 自訂網功能變數名稱稱* 命令驗證 dns 解析。 如果 DNS 記錄已正確更新，自訂功能變數名稱會指向評分端點的 IP 位址。
+* 可能會有幾分鐘或幾小時的時間，用戶端可以根據註冊機構和針對功能變數名稱設定的「存留時間」 (TTL) 來解析功能變數名稱。
 
-  可能會有幾分鐘或幾小時的時間，用戶端可以根據註冊機構和針對功能變數名稱設定的「存留時間」 (TTL) 來解析功能變數名稱。
-
-+ **針對 AKS：**
-
-  > [!WARNING]
-  > 如果您使用 *leaf_domain_label* 使用 Microsoft 的憑證來建立服務，請不要手動更新叢集的 DNS 值。 值應該會自動設定。
-  >
-  > 如果您的 AKS 叢集已設定內部負載平衡器，請使用 Microsoft 提供的憑證 (設定 *leaf_domain_label*) 不 __受支援__。 使用 Microsoft 提供的憑證需要 Azure 中的公用 IP 資源，在為內部負載平衡器設定時，此資源無法供 AKS 使用。
-  在左窗格的 [**設定**] 底下的 [設定] 索引標籤 **中，更新** AKS 叢集之公用 IP 位址的 DNS。  (請參閱下圖。 ) 公用 IP 位址是在資源群組下建立的資源類型，其中包含 AKS 代理程式節點和其他網路資源。
-
-  [![Azure Machine Learning：使用 TLS 保護 web 服務](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-tlsssl-certificate"></a>更新 TLS/SSL 憑證
 

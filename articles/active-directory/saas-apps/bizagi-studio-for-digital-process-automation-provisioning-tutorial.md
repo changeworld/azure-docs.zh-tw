@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: 141dd37dff8403825df713de8f7176d4dd9d20f8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008039"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632023"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>教學課程：設定 Bizagi Studio 以進行自動使用者布建的數位流程自動化
 
@@ -58,7 +58,7 @@ ms.locfileid: "97008039"
 
    ![Bizagi 的螢幕擷取畫面，其中已反白顯示 OAuth 2 應用程式。](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/admin.png)
 
-3. 選取 [新增]  。
+3. 選取 [新增]。
 4. 針對 **[授與類型**]，選取 [ **持有人權杖**]。 針對 **允許的範圍**，選取 [ **API** ] 和 [ **使用者同步**]。 接著，選取 [儲存]。
 
    ![醒目提示 [授與] 類型和允許範圍的 [註冊應用程式] 的螢幕擷取畫面。](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/token.png)
@@ -132,7 +132,14 @@ ms.locfileid: "97008039"
    |name.familyName|String|
    |name.formatted|String|
    |phoneNumbers[type eq "mobile"].value|String|
+
+   您可以藉由流覽來 **> 顯示 [Bizagi] 的 [編輯屬性] 清單**，以新增自訂延伸模組屬性。 自訂延伸模組屬性的前面必須加上 **urn： ietf： params： scim：架構： extension： bizagi：2.0： UserProperties：**。 例如，如果自訂延伸模組屬性是 **IdentificationNumber**，則必須將屬性加入為 **urn： ietf： params： scim：架構： extension： bizagi：2.0： UserProperties： IdentificationNumber**。 選取 [儲存] 認可任何變更。
    
+    ![編輯屬性清單。](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/edit.png)  
+
+   有關如何新增自訂屬性的詳細資訊，可以在 [自訂應用程式屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)中找到。
+
+
 10. 若要設定範圍篩選器，請參閱 [範圍篩選器教學](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)課程。
 
 11. 若要啟用適用于 Bizagi Studio 進行數位程式自動化的 Azure AD 布建服務，請在 [ **設定** ] 區段中，將 [布建 **狀態** ] 變更為 [ **開啟**]。

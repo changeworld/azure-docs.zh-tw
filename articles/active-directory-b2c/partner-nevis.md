@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 470dc146d1658b97a707be8cb7ad868d943a8e60
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170886"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629386"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>使用無密碼 authentication 的 Azure Active Directory B2C 設定尼維斯的教學課程
 
 在此範例教學課程中，您將瞭解如何使用  [尼維斯](https://www.nevis.net/solution/authentication-cloud) 擴充 Azure AD B2C，以啟用無密碼 authentication。 尼維斯提供行動優先、功能完整的終端使用者體驗與尼維斯存取應用程式，以提供強式客戶驗證並符合付款服務指示詞 2 (PSD2) 交易需求。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始使用，您需要：
 
@@ -92,7 +92,7 @@ ms.locfileid: "96170886"
 >[!NOTE]
 >您稍後將需要尼維斯存取權杖。
 
-11. 選取 [完成]。
+11. 選取 [完成]  。
 
 ### <a name="install-the-nevis-access-app-on-your-phone"></a>在您的手機上安裝尼維斯存取應用程式
 
@@ -134,9 +134,9 @@ ms.locfileid: "96170886"
 
 4. **將變更儲存** 至檔案。
 
-5. 遵循 [指示](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#2-create-an-azure-blob-storage-account) ，並將 **nevis.html** 檔案上傳至您的 Azure blob 儲存體。
+5. 遵循 [指示](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account) ，並將 **nevis.html** 檔案上傳至您的 Azure blob 儲存體。
 
-6. 依照 [指示](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) 執行，並啟用此檔案的跨原始來源資源分享 (CORS) 。
+6. 依照 [指示](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors) 執行，並啟用此檔案的跨原始來源資源分享 (CORS) 。
 
 7. 上傳完成並啟用 CORS 之後，請選取清單中的 **nevis.html** 檔案。
 
@@ -232,7 +232,7 @@ ms.locfileid: "96170886"
 
 10. 在表單中填入新的密碼和顯示名稱。
 
-11. 選取 [建立]  。
+11. 選取 [建立]。
 
 12. 您將會進入 [QR 代碼掃描] 頁面。
 
@@ -264,7 +264,7 @@ ms.locfileid: "96170886"
 
 8. 您將會自動進入 [jwt.ms](https://jwt.ms) 登陸頁面，以顯示您的權杖。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需詳細資訊，請參閱下列文章
 

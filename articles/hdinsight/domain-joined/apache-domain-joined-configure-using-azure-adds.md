@@ -1,5 +1,5 @@
 ---
-title: 設定 Active Directory 整合的叢集
+title: 設定 Azure Active Directory 整合的叢集
 titleSuffix: Azure HDInsight
 description: 瞭解如何使用 Azure Active Directory Domain Services 和企業安全性套件功能，設定與 Active Directory 整合的 HDInsight 叢集。
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 248d909e633607271aec7c2c9b8a373f111f7d98
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031477"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631545"
 ---
-# <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>設定 HDInsight 叢集以 Active Directory 與企業安全性套件整合
+# <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>設定 HDInsight 叢集以 Azure Active Directory 與企業安全性套件整合
 
-在本文中，您將瞭解如何使用稱為企業安全性套件 (ESP) 、Azure Active Directory Domain Services (Azure AD DS) 和您既有的內部部署 Active Directory 的功能，來建立和設定與 Active Directory 整合的 HDInsight 叢集。
+本文提供建立和設定與 Azure Active Directory 整合之 HDInsight 叢集的程式摘要和總覽。 這項整合依賴稱為企業安全性套件 (ESP) 的 HDInsight 功能，Azure Active Directory Domain Services (Azure AD DS) 和既有的內部部署 Active Directory。
 
-如需在 Azure 中設定網域以及建立已啟用 ESP 的叢集的教學課程，請參閱 [Azure HDInsight 中的建立和設定企業安全性套件](apache-domain-joined-create-configure-enterprise-security-cluster.md)叢集。
+如需詳細的逐步教學課程，說明如何在 Azure 中設定網域並建立啟用 ESP 的叢集，然後同步內部部署使用者，請參閱 [在 Azure HDInsight 中建立和設定企業安全性套件](apache-domain-joined-create-configure-enterprise-security-cluster.md)叢集。
 
 ## <a name="background"></a>背景
 
@@ -33,12 +33,13 @@ ms.locfileid: "97031477"
 
 您必須先完成幾個必要條件，才能建立已啟用 ESP 的 HDInsight 叢集：
 
+- 現有的內部部署 Active Directory 和 Azure Active Directory。
 - 啟用 Azure AD DS。
 - 檢查 Azure AD DS 健全狀況狀態，以確保同步處理已完成。
 - 建立及授權受控識別。
 - 完成 DNS 和相關問題的網路設定。
 
-以下將詳細討論每一個專案。
+以下將詳細討論每一個專案。 如需完成上述所有步驟的逐步解說，請參閱 [建立及設定 Azure HDInsight 中的企業安全性套件](apache-domain-joined-create-configure-enterprise-security-cluster.md)叢集。
 
 ### <a name="enable-azure-ad-ds"></a>啟用 Azure AD DS
 

@@ -4,20 +4,20 @@ description: 瞭解如何在建立 RabbitMQ 訊息時執行 Azure 函數。
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617216"
+ms.locfileid: "97630729"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions 總覽的 RabbitMQ 觸發程式
 
 > [!NOTE]
-> RabbitMQ 系結只在 **Windows Premium** 方案上受到完整支援。 目前不支援耗用量和 Linux。
+> RabbitMQ 系結只在 **Windows Premium 和專用** 方案上受到完整支援。 目前不支援耗用量和 Linux。
 
 使用 RabbitMQ 觸發程式來回應 RabbitMQ 佇列中的訊息。
 
@@ -315,6 +315,6 @@ Python 指令碼不支援屬性。
 * 啟用 [RabbitMQ 管理外掛程式](https://www.rabbitmq.com/management.html)
 * 流覽至 HTTP：//{node-hostname}：15672，並使用您的使用者名稱和密碼登入。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [傳送 RabbitMQ 訊息 Azure Functions (輸出系結) ](./functions-bindings-rabbitmq-output.md)

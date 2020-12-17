@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 1bc108f76ac35b13474de18d473f5728dbad9d23
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a153f832fdfc075cdde03241f7dae19faa2334ce
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560011"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631347"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Linux 虛擬機器的 Azure Hybrid Benefit 套用方式
 
@@ -53,7 +53,7 @@ Azure Hybrid Benefit 適用于 Azure Marketplace 的所有 RHEL 和 SLES PAYG �
 1. 使用 [Red Hat Cloud Access 客戶介面](https://access.redhat.com/management/cloud)啟用一或多個合格的 RHEL 訂用帳戶，以便在 Azure 中使用。
 
    接著，您在 Red Hat Cloud Access 啟用程式中提供的 Azure 訂用帳戶將允許使用 Azure Hybrid Benefit 功能。
-1. 將 Azure Hybrid Benefit 套用至任何現有的 RHEL PAYG Vm，以及您從 Azure Marketplace PAYG 映射部署的任何新 RHEL Vm。
+1. 將 Azure Hybrid Benefit 套用至任何現有的 RHEL PAYG Vm，以及您從 Azure Marketplace PAYG 映射部署的任何新 RHEL Vm。 您可以使用 Azure 入口網站或 Azure CLI 來啟用權益。
 1. 遵循建議的 [後續步驟](https://access.redhat.com/articles/5419341) ，以設定 rhel vm 的更新來源和 rhel 訂用帳戶合規性指導方針。
 
 
@@ -62,8 +62,33 @@ Azure Hybrid Benefit 適用于 Azure Marketplace 的所有 RHEL 和 SLES PAYG �
 若要開始使用 SUSE 的權益：
 
 1. 向 SUSE Public Cloud 方案註冊。
-1. 透過 Azure CLI 將權益套用至您現有的 Vm。
+1. 透過 Azure 入口網站或 Azure CLI，將權益套用至新建立或現有的 Vm。
 1. 使用個別的更新來源來註冊接收權益的 Vm。
+
+## <a name="enable-and-disable-the-benefit-in-the-azure-portal"></a>在 Azure 入口網站中啟用和停用權益
+
+您可以流覽左側的 [設定] 選項，並遵循 **此處的步驟** ，在現有的 vm 上啟用權益。 在 VM 建立體驗期間，您可能會在新的 Vm 上啟用權益。
+
+### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-vm"></a>為現有的 VM 啟用權益的 Azure 入口網站範例：
+1. 造訪 [Microsoft Azure 入口網站](https://portal.azure.com/)
+1. 移至入口網站上的 [建立虛擬機器] 頁面。
+ ![建立 VM 時 AHB](./media/azure-hybrid-benefit/create-vm-ahb.png)
+1. 按一下核取方塊以啟用 AHB 轉換，並使用雲端存取授權。
+ ![建立 VM 時 AHB 核取方塊](./media/azure-hybrid-benefit/create-vm-ahb-checkbox.png)
+1. 遵循下一組指示來建立虛擬機器
+1. 檢查設定 **分頁，您** 將會看到已啟用的選項。 
+![建立之後的 AHB 設定 blade](./media/azure-hybrid-benefit/create-configuration-blade.png)
+
+### <a name="azure-portal-example-to-enable-the-benefit-during-creation-of-vm"></a>在 VM 建立期間啟用權益的 Azure 入口網站範例：
+1. 造訪 [Microsoft Azure 入口網站](https://portal.azure.com/)
+1. 開啟您想要套用轉換的虛擬機器頁面。
+1. 移至左側的 [設定 **] 選項。** 您將會看到 [授權] 區段。 若要啟用 AHB 轉換，請核取 [是] 選項按鈕，然後核取 [確認] 核取方塊。
+![建立之後的 AHB 設定 blade](./media/azure-hybrid-benefit/create-configuration-blade.png)
+
+
+>[!NOTE]
+> 如果您已 (RHEL 或 SLES PAYG Marketplace 映射的 SIG) 建立 **自訂快照** 或 **共用映射** ，則只能使用 Azure CLI 來啟用 Azure Hybrid Benefit。 這是已知的限制，而且目前沒有可在 Azure 入口網站上提供這項功能的時程表。
+
 
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>在 Azure CLI 中啟用和停用權益
@@ -127,7 +152,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 從 VM 本身中，您可以在 Azure Instance Metadata Service 中查詢證明中繼資料，以判斷 VM 的 `licenseType` 值。 `licenseType`或的值 `RHEL_BYOS` `SLES_BYOS` 會指出您的 VM 已啟用權益。 [深入瞭解證明中繼資料](./instance-metadata-service.md#attested-data)。
 
-## <a name="compliance"></a>合規性
+## <a name="compliance"></a>法規遵循
 
 ### <a name="red-hat"></a>Red Hat
 
@@ -184,7 +209,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 *問：是否可以在針對 RHEL 映射部署 SQL Server 的虛擬機器上使用 Azure Hybrid Benefit？*
 
-答：否，您不可以。 沒有任何支援的方案。
+答：否，您不可以。 沒有任何計畫可支援這些虛擬機器。
  
 
 ## <a name="common-problems"></a>常見問題
@@ -194,5 +219,5 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 | ----- | ---------- |
 | 「無法完成動作，因為我們的記錄顯示您尚未成功啟用 Azure 訂用帳戶上的 Red Hat Cloud 存取 ...」。 | 若要使用 RHEL Vm 的優點，您必須先 [向 Red Hat Cloud Access 註冊您的 Azure 訂用](https://access.redhat.com/management/cloud)帳戶。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [瞭解如何使用 Azure Hybrid Benefit 來建立和更新 Vm，以及新增授權類型 (RHEL_BYOS、SLES_BYOS) Azure CLI](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)

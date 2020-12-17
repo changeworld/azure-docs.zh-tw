@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545953"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629352"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 分頁 Blob 的概觀
 
@@ -39,7 +39,7 @@ Azure 分頁 Blob 的主要功能包括其 REST 介面、基礎儲存體的持�
 * 從內部部署到雲端的應用程式和資料即時移轉：複製內部部署資料，並使用 REST Api 直接寫入 Azure 分頁 blob，而內部部署 VM 會繼續執行。 一旦趕上目標之後，您可以使用該資料快速地容錯移轉至 Azure VM。 如此一來，您就可以將 Vm 和虛擬磁片從內部部署遷移至雲端，並將停機時間降到最短，因為資料移轉是在背景中進行，而當您繼續使用 VM，且容錯移轉所需的停機時間將會在幾分鐘內短暫 (的) 。
 * [SAS 型](../common/storage-sas-overview.md)共用存取，可實現如多個讀取器及單一寫入器並支援並行控制的案例。
 
-## <a name="pricing"></a>價格
+## <a name="pricing"></a>定價
 
 分頁 blob 提供的兩種儲存體類型都有自己的定價模型。 高階分頁 blob 會遵循受控磁片的定價模式，而標準分頁 blob 則會依所使用的大小和每筆交易計費。 如需詳細資訊，請參閱 [Azure 分頁 blob 定價頁面](https://azure.microsoft.com/pricing/details/storage/page-blobs/)。
 
@@ -57,7 +57,7 @@ Azure 分頁 Blob 的主要功能包括其 REST 介面、基礎儲存體的持�
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-首先，取得容器的參考。 若要建立分頁 blob，請呼叫 [GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) 方法，然後呼叫 [PageBlobClient. create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) 方法。 傳入要建立之 blob 的大小上限。 該大小必須是512個位元組的倍數。
+首先，取得容器的參考。 若要建立分頁 blob，請呼叫 GetPageBlobClient 方法，然後呼叫 [PageBlobClient. create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) 方法。 傳入要建立之 blob 的大小上限。 該大小必須是512個位元組的倍數。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 

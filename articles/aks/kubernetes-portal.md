@@ -3,13 +3,13 @@ title: 從 Azure 入口網站存取 Kubernetes 資源
 description: 瞭解如何與 Kubernetes 資源互動，以管理 Azure 入口網站中 (AKS) 叢集的 Azure Kubernetes Service。
 services: container-service
 ms.topic: article
-ms.date: 12/09/2020
-ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/16/2020
+ms.openlocfilehash: 4f34535f74de562c0a1b65c31f28476ca02e540f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921577"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631857"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal"></a>從 Azure 入口網站存取 Kubernetes 資源
 
@@ -19,15 +19,17 @@ Azure 入口網站中的 Kubernetes 資源檢視會取代已淘汰的 [AKS 儀�
 
 ## <a name="prerequisites"></a>必要條件
 
-若要查看 Azure 入口網站中的 Kubernetes 資源，您需要 AKS 叢集。 所有叢集都受到支援，但如果使用 Azure Active Directory (Azure AD) 整合，則您的叢集必須使用 [AKS 管理的 Azure AD 整合][aks-managed-aad]。 如果您的叢集使用舊版 Azure AD，您可以在入口網站中或使用 [Azure CLI][cli-aad-upgrade]升級您的叢集。
+若要查看 Azure 入口網站中的 Kubernetes 資源，您需要 AKS 叢集。 所有叢集都受到支援，但如果使用 Azure Active Directory (Azure AD) 整合，則您的叢集必須使用 [AKS 管理的 Azure AD 整合][aks-managed-aad]。 如果您的叢集使用舊版 Azure AD，您可以在入口網站中或使用 [Azure CLI][cli-aad-upgrade]升級您的叢集。 您也可以 [使用 Azure 入口網站][portal-cluster] 來建立新的 AKS 叢集。
 
 ## <a name="view-kubernetes-resources"></a>查看 Kubernetes 資源
 
 若要查看 Kubernetes 資源，請流覽至您在 Azure 入口網站中的 AKS 叢集。 左邊的導覽窗格可用來存取您的資源。 這些資源包括：
 
 - **命名空間** 會顯示叢集的命名空間。 [命名空間] 清單頂端的篩選器可讓您快速篩選和顯示您的命名空間資源。
-- **工作負載** 會顯示部署至您叢集的部署、pod、複本集和 daemon 集合的相關資訊。 下列螢幕擷取畫面顯示範例 AKS 叢集中的預設系統 pod。
+- **工作負載** 會顯示部署至您叢集的部署、pod、複本集、具狀態設定、背景程式集、作業及 cron 作業的相關資訊。 下列螢幕擷取畫面顯示範例 AKS 叢集中的預設系統 pod。
 - **服務和 ingresses** 會顯示您所有叢集的服務和輸入資源。
+- **儲存體** 會顯示您的 Azure 儲存體類別和持續性磁片區資訊。
+- 設定 **會顯示您** 叢集的設定對應和密碼。
 
 :::image type="content" source="media/kubernetes-portal/workloads.png" alt-text="Kubernetes 顯示在 Azure 入口網站中的 pod 資訊。" lightbox="media/kubernetes-portal/workloads.png":::
 
@@ -35,7 +37,7 @@ Azure 入口網站中的 Kubernetes 資源檢視會取代已淘汰的 [AKS 儀�
 
 在此範例中，我們將使用我們的範例 AKS 叢集，從 [AKS 快速入門][portal-quickstart]部署 Azure 投票應用程式。
 
-1. 從 (命名空間、工作負載或服務和 ingresses) 的任何資源查看中選取 [ **新增** ]。
+1. 選取 [從任何資源檢視 **新增** ] (命名空間、工作負載、服務和 Ingresses、儲存體或設定) 。
 1. 從 [AKS 快速入門][portal-quickstart]中貼上 Azure 投票應用程式的 YAML。
 1. 選取 [YAML 編輯器] 底部的 [ **新增** ] 以部署應用程式。 
 
@@ -45,7 +47,7 @@ Azure 入口網站中的 Kubernetes 資源檢視會取代已淘汰的 [AKS 儀�
 
 ### <a name="monitor-deployment-insights"></a>監視部署見解
 
-已啟用 [容器 Azure 監視器的][enable-monitor] AKS 叢集可以快速地查看部署見解。 在 Kubernetes 資源檢視中，使用者可以看到個別部署的即時狀態，包括 CPU 和記憶體使用量，以及轉換至 Azure 監視器，以取得更深入的資訊。 以下是範例 AKS 叢集中的部署見解範例：
+已啟用 [容器 Azure 監視器的][enable-monitor] AKS 叢集可以快速地查看部署和其他見解。 在 Kubernetes 資源檢視中，使用者可以看到個別部署的即時狀態，包括 CPU 和記憶體使用量，以及轉換至 Azure 監視器，以取得有關特定節點和容器的更深入資訊。 以下是範例 AKS 叢集中的部署見解範例：
 
 :::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Azure 入口網站中顯示的部署見解。" lightbox="media/kubernetes-portal/deployment-insights.png":::
 
@@ -75,8 +77,6 @@ Kubernetes 資源檢視也包含 YAML 編輯器。 內建的 YAML 編輯器表�
 
 針對現有的叢集，您可能需要啟用 Kubernetes 資源查看。 若要啟用資源檢視，請依照入口網站中的叢集提示進行。
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure 入口網站訊息，以啟用 Kubernetes 資源查看。" lightbox="media/kubernetes-portal/enable-resource-view.png":::
-
 > [!TIP]
 > 您可以新增 [**api 伺服器授權 IP 範圍**](api-server-authorized-ip-ranges.md) 的 AKS 功能，以將 api 伺服器存取限制為僅限防火牆的公用端點。 這類叢集的另一個選項是更新 `--api-server-authorized-ip-ranges` ，以包含本機用戶端電腦或 IP 位址範圍 (的存取權，) 流覽入口網站。 為了允許此存取，您需要電腦的公用 IPv4 位址。 您可以使用下列命令找到此位址，或在網際網路瀏覽器中搜尋「我的 IP 位址」。
 ```bash
@@ -88,7 +88,7 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 本文說明如何存取 AKS 叢集的 Kubernetes 資源。 請參閱 [部署和 YAML 資訊清單][deployments] ，以深入瞭解叢集資源，以及使用 Kubernetes 資源檢視器存取的 YAML 檔案。
 
@@ -100,3 +100,4 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 [aks-managed-aad]: managed-aad.md
 [cli-aad-upgrade]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration
 [enable-monitor]: ../azure-monitor/insights/container-insights-enable-existing-clusters.md
+[portal-cluster]: kubernetes-walkthrough-portal.md

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
-ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 436e866969d620389818bcebca3c5c37b8805309
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007166"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629029"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由需求
 若要使用 ExpressRoute 連線到 Microsoft 雲端服務，您必須設定和管理路由。 有些連線提供者會以受控服務形式提供路由的設定和管理。 請洽詢您的連線服務提供者，以查看他們是否提供這類服務。 如果沒有，您必須遵循下列需求：
@@ -230,8 +230,11 @@ ExpressRoute 不能設定為傳輸路由器。 您必須依賴連線提供者的
 | 其他 Office 365 線上服務 * * | 12076:5100 |
 
 \* Azure 全球服務目前僅包含 Azure DevOps。
-\*\* Microsoft 需要授權，請參閱 [設定適用于 microsoft 對等互連的路由篩選](how-to-routefilter-portal.md)\
+
+\*\* Microsoft 需要授權，請參閱 [設定適用于 microsoft 對等互連的路由篩選](how-to-routefilter-portal.md)
+
 \*\*\* 此社區也會發佈 Microsoft 小組服務所需的路由。
+
 \*\*\*\* CRM Online 支援 Dynamics 8.2 和以下。 針對較高的版本，請選取您 Dynamics 部署的區域群體。
 
 > [!NOTE]
@@ -261,7 +264,7 @@ ExpressRoute 不能設定為傳輸路由器。 您必須依賴連線提供者的
 | Azure Active Directory |12076:5160 |
 | 其他 Office 365 Online 服務 |12076:5200 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 設定 ExpressRoute 連線。
   
   * [建立及修改電路](expressroute-howto-circuit-arm.md)

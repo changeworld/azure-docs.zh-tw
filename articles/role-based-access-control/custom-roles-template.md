@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Resource Manager 範本建立 Azure 自訂角色-Azure RBAC
-description: 瞭解如何使用 Azure Resource Manager 範本 (ARM 範本來建立 Azure 自訂角色) 以及 (Azure RBAC) 使用 Azure 角色型存取控制。
+title: 使用 Azure Resource Manager 範本建立或更新 Azure 自訂角色-Azure RBAC
+description: 瞭解如何使用 Azure Resource Manager 範本 (ARM 範本建立或更新 Azure 自訂角色) 以及 (Azure RBAC) 使用 Azure 角色型存取控制。
 services: role-based-access-control,azure-resource-manager
 author: rolyon
 manager: mtillman
@@ -8,18 +8,18 @@ ms.service: role-based-access-control
 ms.topic: how-to
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 06/25/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 96dfdc0a1c32237c55d4e65bb25989656e2a4ad2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097017"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631307"
 ---
-# <a name="create-an-azure-custom-role-using-an-arm-template"></a>使用 ARM 範本建立 Azure 自訂角色
+# <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>使用 ARM 範本建立或更新 Azure 自訂角色
 
-如果 [Azure 內建角色](built-in-roles.md) 不符合您組織的特定需求，您可以建立自己的 [自訂角色](custom-roles.md)。 本文說明如何使用 Azure Resource Manager 範本 (ARM 範本) 來建立自訂角色。
+如果 [Azure 內建角色](built-in-roles.md) 不符合您組織的特定需求，您可以建立自己的 [自訂角色](custom-roles.md)。 本文說明如何使用 Azure Resource Manager 範本 (ARM 範本) 來建立或更新自訂角色。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -66,15 +66,13 @@ ms.locfileid: "93097017"
     $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
     [string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
     $actions = $actions.Split(',')
-
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/create-role-def/azuredeploy.json"
-
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. 輸入部署的位置，例如 *centralus* 。
+1. 輸入部署的位置，例如 `centralus` 。
 
-1. 將自訂角色的動作清單輸入為以逗號分隔的清單，例如 Microsoft .resources/ *resources/read、Microsoft .resources/訂閱/resourceGroups/read* 。
+1. 將自訂角色的動作清單輸入為以逗號分隔的清單，例如 `Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read` 。
 
 1. 如有需要，請按 Enter 鍵以執行 `New-AzDeployment` 命令。
 
@@ -143,15 +141,56 @@ ms.locfileid: "93097017"
 
 1. 在 Azure 入口網站中，開啟您的訂用帳戶。
 
-1. 在左側功能表中，選取 [ **存取控制] (IAM)** 。
+1. 在左側功能表中，選取 [ **存取控制] (IAM)**。
 
 1. 選取 [ **角色** ] 索引標籤。
 
-1. 將 [ **類型** ] 清單設定為 [ **CustomRole** ]。
+1. 將 [ **類型** ] 清單設定為 [ **CustomRole**]。
 
 1. 確認已列出 **自訂角色-RG 讀取** 者角色。
 
    ![Azure 入口網站中的新自訂角色](./media/custom-roles-template/custom-role-template-portal.png)
+
+## <a name="update-a-custom-role"></a>更新自訂角色
+
+類似于建立自訂角色，您可以使用範本來更新現有的自訂角色。 若要更新自訂角色，您必須指定想要更新的角色。
+
+以下是您必須對前一個快速入門範本進行的變更，以更新自訂角色。
+
+- 包含角色識別碼作為參數。
+    ```json
+        ...
+        "roleDefName": {
+          "type": "string",
+          "metadata": {
+            "description": "ID of the role definition"
+          }
+        ...
+    ```
+
+- 在角色定義中包含角色識別碼參數。
+
+    ```json
+      ...
+      "resources": [
+        {
+          "type": "Microsoft.Authorization/roleDefinitions",
+          "apiVersion": "2018-07-01",
+          "name": "[parameters('roleDefName')]",
+          "properties": {
+            ...
+    ```
+
+以下是如何部署範本的範例。
+
+```azurepowershell
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+[string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
+$actions = $actions.Split(',')
+$roleDefName = Read-Host -Prompt "Enter the role ID to update"
+$templateFile = "rg-reader-update.json"
+New-AzDeployment -Location $location -TemplateFile $templateFile -actions $actions -roleDefName $roleDefName
+```
 
 ## <a name="clean-up-resources"></a>清除資源
 

@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: d1e6f4e16e3eda8519913a9e2ae14f7cc909bf61
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6cefe543ea8ba992b028448070bf041a77bfec64
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445450"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630270"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure 認知搜尋擴充管線中的 AML 技能
 
@@ -29,11 +29,11 @@ ms.locfileid: "94445450"
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [AML 工作區](../machine-learning/concept-workspace.md)
 * 此工作區中具有已[部署模型](../machine-learning/how-to-deploy-azure-kubernetes-service.md)的[Azure Kubernetes Service AML 計算目標](../machine-learning/concept-compute-target.md)
-  * [計算目標應啟用 SSL](../machine-learning/how-to-secure-web-service.md#deploy-on-aks-and-field-programmable-gate-array-fpga)。 Azure 認知搜尋只允許存取 **HTTPs** 端點
+  * [計算目標應啟用 SSL](../machine-learning/how-to-secure-web-service.md#deploy-on-azure-kubernetes-service)。 Azure 認知搜尋只允許存取 **HTTPs** 端點
   * 可能不會使用自我簽署的憑證。
 
 ## <a name="odatatype"></a>@odata.type  

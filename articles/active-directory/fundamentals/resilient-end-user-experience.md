@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 057599cc92e27e423d25d528d5d84b978ff4a911
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919399"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630287"
 ---
 # <a name="resilient-end-user-experience"></a>復原的終端使用者體驗
 
@@ -58,7 +58,7 @@ ms.locfileid: "95919399"
 
  2. 設定設定檔原則，以允許使用者在登入後將 [其他身分識別連結到其帳戶](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking) 。
 
- 3. 通知並允許使用者在中斷期間 [切換至替代 IDP](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#configure-dynamic-custom-page-content-uri) 。
+ 3. 通知並允許使用者在中斷期間 [切換至替代 IDP](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri) 。
 
 ## <a name="availability-of-multi-factor-authentication"></a>多重要素驗證的可用性
 
@@ -95,7 +95,7 @@ Azure AD B2C 服務使用內建的電話型 MFA 提供者，提供以時間為�
 
 透過端對端案例和負載測試，定期測試您的 CDN 可用性和內容發佈效能。 如果您正在規劃即將推出的激增（因為促銷或假日流量），請修改您的負載測試估計值。
   
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure AD B2C 開發人員的復原能力資源](resilience-b2c.md)
   

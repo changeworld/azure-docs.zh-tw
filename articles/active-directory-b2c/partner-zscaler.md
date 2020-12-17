@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: ff51c2a71dfcaec580733a92e265628ac816e229
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 223f8acd6aad7aaf4c37e0b2eae2df882ed2ad1d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095949"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629369"
 ---
 # <a name="tutorial-to-configure-zscaler-private-access-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>使用安全混合式存取 Azure Active Directory B2C 設定 Zscaler 私人存取的教學課程
 
@@ -125,7 +125,7 @@ IdP 設定的其餘部分將會在設定 Azure AD B2C 之後繼續進行。
 
 其中 `<tenant-name>` 是您 Azure AD B2C 租使用者的名稱，而 `<policy-name>` 是您在上一個步驟中建立的自訂 SAML 原則名稱。
 
-例如， https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata
+例如，" https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata "
 
 開啟網頁瀏覽器並流覽至 SAML 中繼資料 URL。 當頁面載入時，以滑鼠右鍵按一下頁面上的任何位置。 選取 [ **另存** 新檔]，並將檔案儲存在您的電腦上;您將在下一個部分使用此功能。
 
@@ -153,7 +153,7 @@ IdP 設定的其餘部分將會在設定 Azure AD B2C 之後繼續進行。
 
 移至 ZPA 使用者入口網站或瀏覽器存取應用程式，並測試註冊或登入程式。 它應該會導致 SAML 驗證成功。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需詳細資訊，請參閱下列文章：
 

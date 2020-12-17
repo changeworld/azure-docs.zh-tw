@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356700"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631987"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>適用于語音容器的批次處理套件
 
@@ -86,13 +86,13 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs --entrypoint /bin/bash /mn
 若要執行 batch 用戶端：  
 
 ```Docker
-run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 若要在單一命令中執行 batch 用戶端和容器：
 
 ```Docker
-docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 
@@ -156,10 +156,10 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batc
 > [!NOTE]
 > Batch 用戶端可能會定期覆寫 *執行 .log* 檔案（如果它太大）。
 
-用戶端會在 docker 命令的引數所指定的目錄中建立 *執行 .log* 檔案 `-log_folder` `run` 。 依預設，記錄是在偵錯工具層級中捕捉。 相同的記錄會傳送至 `stdout/stderr` ，並根據引數進行篩選 `-log_level` 。 只有在進行偵錯工具時，或您需要傳送追蹤以取得支援時，才需要此記錄檔。 記錄資料夾也包含每個音訊檔案的語音 SDK 記錄檔。
+用戶端會在 docker 命令的引數所指定的目錄中建立 *執行 .log* 檔案 `-log_folder` `run` 。 依預設，記錄是在偵錯工具層級中捕捉。 相同的記錄會傳送至 `stdout/stderr` ，並根據 `-file_log_level` 或引數進行篩選 `console_log_level` 。 只有在進行偵錯工具時，或您需要傳送追蹤以取得支援時，才需要此記錄檔。 記錄資料夾也包含每個音訊檔案的語音 SDK 記錄檔。
 
 指定的輸出目錄 `-output_folder` 會包含檔案 *上的run_summary.js*   ，這會在每隔30秒或每次新轉譯完成時定期重寫。 當批次繼續時，您可以使用這個檔案來檢查進度。 當批次完成時，它也會包含每個檔案的最終執行統計資料和最終狀態。 當進程有乾淨結束時，就會完成批次。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [如何安裝及執行容器](speech-container-howto.md)

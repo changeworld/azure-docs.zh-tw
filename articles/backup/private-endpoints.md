@@ -3,12 +3,12 @@ title: 私人端點
 description: 瞭解建立 Azure 備份私用端點的程式，以及使用私人端點來協助維護資源安全性的案例。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ed71e49ebc550cb7bc2041e25aa6b9bde77b1ef
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184737"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629709"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 備份的私人端點
 
@@ -16,7 +16,7 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 
 本文將協助您瞭解建立 Azure 備份私人端點的程式，以及使用私用端點協助維護資源安全性的案例。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - 只有在沒有任何專案已註冊至保存庫) 的 (，才能為新的復原服務保存庫建立私人端點。 因此，您必須先建立私人端點，才能嘗試保護保存庫中的任何專案。
 - 一個虛擬網路可以包含多個復原服務保存庫的私人端點。 此外，一個復原服務保存庫在多個虛擬網路中可以有私人端點。 不過，可以為保存庫建立的私人端點數目上限是12。
@@ -26,6 +26,7 @@ Azure 備份可讓您使用 [私人端點](../private-link/private-endpoint-over
 - Azure Active Directory 目前不支援私人端點。 因此，當您在 Azure Vm 中執行資料庫的備份，並使用 MARS 代理程式進行備份時，必須允許來自受保護網路的輸出存取，才能讓 Azure Active Directory 在區域中運作所需的 Ip 和 Fqdn。 您也可以使用 NSG 標籤和 Azure 防火牆標籤來允許存取 Azure AD （適用）。
 - 私人端點不支援具有網路原則的虛擬網路。 您必須先停用網路原則，才能繼續進行。
 - 如果您在5月 1 2020 之前註冊了復原服務資源提供者，則必須向該訂用帳戶重新註冊。 若要重新註冊提供者，請移至您在 Azure 入口網站中的訂用帳戶，流覽至左側導覽列上的 [ **資源提供者** ]，然後選取 [ **az.recoveryservices** ]，然後選取 [ **重新註冊**]。
+- 如果保存庫已啟用私人端點，則不支援 SQL 和 SAP Hana 資料庫備份的[跨區域還原](backup-create-rs-vault.md#set-cross-region-restore)。
 
 ## <a name="recommended-and-supported-scenarios"></a>建議和支援的案例
 
@@ -389,7 +390,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 | **區域**                                                     | **服務** |
 | ------------------------------------------------------------ | ----------- |
-| `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
+| `privatelink.<geo>.backup.windowsazure.com`      | 備份      |
 | `privatelink.blob.core.windows.net`                            | Blob        |
 | `privatelink.queue.core.windows.net`                           | 佇列       |
 
@@ -462,6 +463,6 @@ A. 是的，您可以使用自己的 DNS 伺服器。 不過，請確定已新�
 Q. 遵循本文中的程式之後，我是否需要在我的伺服器上執行任何額外的步驟？<br>
 A. 遵循本文中詳述的程式之後，您就不需要執行額外的工作來使用私人端點進行備份和還原。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 閱讀 [Azure 備份中的所有安全性功能](security-overview.md)

@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: a7d55c6e550000d2dd6c2930d95086ec433c246b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c10b2041dec0f4084578de1a72cb59cf1d7a949b
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361092"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631069"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 Keras 模型
 
@@ -31,7 +31,7 @@ Keras 是一種高階神經網路 API，能夠執行其他熱門的 DNN 架構�
 > [!NOTE]
 > 如果您使用內建于 TensorFlow 中的 Keras API **tf. Keras** ，而不是獨立 Keras 套件，請改為參閱 [定型 TensorFlow 模型](how-to-train-tensorflow.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 在下列任一環境中執行此程式碼：
 
@@ -192,7 +192,7 @@ src = ScriptRunConfig(source_directory=script_folder,
 如需使用 ScriptRunConfig 設定作業的詳細資訊，請參閱 [設定和提交定型](how-to-set-up-training-targets.md)回合。
 
 > [!WARNING]
-> 如果您先前使用 TensorFlow 估算器來設定您的 Keras 訓練作業，請注意，在未來的 Azure ML SDK 版本中，估算器將會被取代。 使用 Azure ML SDK >= 1.15.0，ScriptRunConfig 是設定定型作業（包括使用 DL 架構）的建議方式。
+> 如果您先前使用 TensorFlow 估算器來設定 Keras 訓練作業，請注意估算器已在 1.19.0 SDK 版本中被取代。 使用 Azure ML SDK >= 1.15.0，ScriptRunConfig 是設定定型作業的建議方式，包括使用深度學習架構的作業。 如需常見的遷移問題，請參閱 [估算器至 ScriptRunConfig 遷移指南](how-to-migrate-from-estimators-to-scriptrunconfig.md)。
 
 ### <a name="submit-your-run"></a>提交您的執行
 
@@ -206,13 +206,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>執行期間發生的情況
 執行執行時，它會經歷下列階段：
 
-- **準備** ：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
+- **準備**：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
 
-- **調整** ：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
+- **調整**：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
 
 - 執行 **中：腳本** 資料夾中的所有腳本都會上傳至計算目標、裝載或複製資料存放區，並 `script` 執行。 Stdout 和 **./logs** 資料夾的輸出會串流處理至執行歷程記錄，並可用來監視執行。
 
-- **後續處理** ：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
+- **後續處理**：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
 
 ## <a name="register-the-model"></a>註冊模型
 
@@ -238,7 +238,7 @@ for f in run.get_file_names():
         run.download_file(name=f, output_file_path=output_file_path)
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已在 Azure Machine Learning 上訓練並註冊 Keras 模型。 若要瞭解如何部署模型，請繼續進行我們的模型部署文章。
 

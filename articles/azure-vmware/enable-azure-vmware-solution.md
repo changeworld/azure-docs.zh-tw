@@ -3,12 +3,12 @@ title: 如何啟用您的 Azure VMware 解決方案資源
 description: 瞭解如何提交支援要求，以啟用您的 Azure VMware 解決方案資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多主機。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 6d614dffc4ab3127e1e6740b1a8773e5fd7c23ff
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346532"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630882"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>如何啟用 Azure VMware 解決方案資源
 瞭解如何提交支援要求，以啟用您的 [Azure VMware 解決方案](introduction.md) 資源。 您也可以在現有的 Azure VMware 解決方案私人雲端中要求更多主機。
@@ -61,7 +61,7 @@ Azure 訂閱需要 Azure 帳戶。 Azure 訂用帳戶必須符合下列其中一
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>為 CSP 客戶啟用 Azure VMware 解決方案 
 
-Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) 為其客戶啟用 Azure VMware 解決方案。 本文使用 [CSP Azure 方案](/partner-center/azure-plan-lp.md) 作為範例，來說明合作夥伴的購買程式。
+Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) 為其客戶啟用 Azure VMware 解決方案。 本文使用 [CSP Azure 方案](/partner-center/azure-plan-lp) 作為範例，來說明合作夥伴的購買程式。
 
    >[!IMPORTANT] 
    >Azure VMware 解決方案服務不提供必要的多租使用者。 不支援裝載需要它的合作夥伴。 
@@ -76,9 +76,9 @@ Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) �
 
 1. 選取 [ **Azure 方案** ]，然後選取 [ **新增至購物車**]。 
 
-1. 檢查並完成客戶的 Azure 方案訂用帳戶一般設定。 如需詳細資訊，請參閱 [Microsoft 合作夥伴中心檔](/partner-center/azure-plan-manage.md)。
+1. 檢查並完成客戶的 Azure 方案訂用帳戶一般設定。 如需詳細資訊，請參閱 [Microsoft 合作夥伴中心檔](/partner-center/azure-plan-manage)。
 
-在設定 Azure 方案和訂用帳戶所需的 [AZURE RBAC 許可權](/partner-center/azure-plan-manage.md) 之後，您將會參與 Microsoft 來啟用 Azure 方案訂用帳戶的配額。 使用系統 **管理員代表** (AOBO) 程式存取 [Microsoft 合作夥伴中心](https://partner.microsoft.com)的 Azure 入口網站。
+在設定 Azure 方案和訂用帳戶所需的 [AZURE RBAC 許可權](/partner-center/azure-plan-manage) 之後，您將會參與 Microsoft 來啟用 Azure 方案訂用帳戶的配額。 使用系統 **管理員代表** (AOBO) 程式存取 [Microsoft 合作夥伴中心](https://partner.microsoft.com)的 Azure 入口網站。
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com)。
 
@@ -124,6 +124,6 @@ Csp 必須使用 [Microsoft 合作夥伴中心](https://partner.microsoft.com) �
 1. 如果訂用帳戶是由客戶直接管理，則在訂用帳戶中擁有足夠許可權的使用者必須完成 **MICROSOFT AVS** 資源提供者的註冊，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md) ，以取得更多詳細資料，以及註冊資源提供者的方法。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 當您啟用 Azure VMware 解決方案資源，且已備妥適當的網路功能之後，您就可以 [建立私人雲端](tutorial-create-private-cloud.md)。

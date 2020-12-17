@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 03b7941385517fe694f0743194655a1b6a1c0e1e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253553"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629658"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
 
@@ -256,7 +256,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 您可以刪除不再需要保留的快照。 
 
-1. 移至磁片區的 [ **快照** 集] 功能表。 以滑鼠右鍵按一下您要刪除的快照集。 選取 [刪除]。
+1. 移至磁片區的 [ **快照** 集] 功能表。 以滑鼠右鍵按一下您要刪除的快照集。 選取 [刪除]  。
 
     ![描述快照之右鍵功能表的螢幕擷取畫面](../media/azure-netapp-files/snapshot-right-click-menu.png) 
 
@@ -264,8 +264,9 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![確認刪除快照集的螢幕擷取畫面](../media/azure-netapp-files/snapshot-confirm-delete.png)  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [針對快照集原則進行疑難排解](troubleshoot-snapshot-policies.md)
 * [Azure NetApp Files 的資源限制](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files 快照101影片](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)
+* [什麼是 Azure 應用程式一致的快照集工具](azacsnap-introduction.md)
