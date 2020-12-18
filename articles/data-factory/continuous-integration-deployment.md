@@ -10,13 +10,13 @@ ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 12/17/2020
+ms.openlocfilehash: b5b0f6dcef728f0597e7eac8ba57c8fd240d19c9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591890"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680290"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -28,7 +28,7 @@ ms.locfileid: "97591890"
 
 在 Azure Data Factory 中，持續整合和傳遞 (CI/CD) 是指將一個環境 (開發、測試、生產) 中的 Data Factory 管線移至另一個環境。 Azure Data Factory 利用 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)來儲存各種 ADF 實體 (管線、資料集、資料流程等等) 的設定。 有兩個建議方法可將資料處理站提升至另一個環境：
 
--    使用 Data Factory 與 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) 的整合進行自動化部署
+-    使用 Data Factory 與 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) 的整合進行自動化部署
 -    使用 Data Factory UX 與 Azure Resource Manager 的整合，手動上傳 Resource Manager 範本。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -115,7 +115,7 @@ ms.locfileid: "97591890"
 
 1.  儲存發行管線。
 
-1. 若要觸發發行，請選取 [建立發行]。 若要自動建立發行，請參閱 [Azure DevOps 發行觸發程序](/azure/devops/pipelines/release/triggers?view=azure-devops)
+1. 若要觸發發行，請選取 [建立發行]。 若要自動建立發行，請參閱 [Azure DevOps 發行觸發程序](/azure/devops/pipelines/release/triggers)
 
    ![建立建立發行](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -207,6 +207,12 @@ ms.locfileid: "97591890"
 
 * 您使用自動化 CI/CD，而且想要在 Resource Manager 部署期間變更某些屬性，但預設不會將屬性參數化。
 * 您的處理站很大，以致預設 Resource Manager 範本無效，這是因為其具有的參數超過允許的上限 (256)。
+
+    若要處理自訂參數256限制，有3個選項：    
+  
+    * 使用自訂參數檔案，並移除不需要參數化的屬性，也就是可保留預設值，因而減少參數計數的屬性。
+    * 重構資料流程中的邏輯以減少參數，例如，管線參數全都具有相同的值，您可以改為使用全域參數。
+    * 將一個資料處理站分割成多個資料流程。
 
 若要覆寫預設參數化範本，請移至管理中樞，並在 [原始檔控制] 區段中選取 [ **參數化範本** ]。 選取 [ **編輯範本** ] 以開啟 [參數化範本程式碼編輯器]。 
 
@@ -639,7 +645,7 @@ ms.locfileid: "97591890"
 
 ## <a name="exposure-control-and-feature-flags"></a>公開控制和功能旗標
 
-當您在小組中工作時，您可以在某些情況下合併變更，但不希望它們在提高許可權的環境中執行，例如生產和 QA。 為了處理此案例，ADF 團隊建議 [使用功能旗標的 DevOps 概念](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)。 在 ADF 中，您可以結合 [全域參數](author-global-parameters.md) 和 [if 條件活動](control-flow-if-condition-activity.md) ，根據這些環境旗標隱藏邏輯集。
+當您在小組中工作時，您可以在某些情況下合併變更，但不希望它們在提高許可權的環境中執行，例如生產和 QA。 為了處理此案例，ADF 團隊建議 [使用功能旗標的 DevOps 概念](/azure/devops/migrate/phase-features-with-feature-flags)。 在 ADF 中，您可以結合 [全域參數](author-global-parameters.md) 和 [if 條件活動](control-flow-if-condition-activity.md) ，根據這些環境旗標隱藏邏輯集。
 
 若要瞭解如何設定功能旗標，請參閱下列影片教學課程：
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/02/2020
-ms.openlocfilehash: 57b4b6f3f49e9b82ada4b37c8e2de0697781e063
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 12/17/2020
+ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510585"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679111"
 ---
 # <a name="execute-r-script-module"></a>執行 R 腳本模組
 
@@ -50,6 +50,9 @@ azureml_main <- function(dataframe1, dataframe2){
 
 > [!NOTE]
 > 當您安裝套件時，請指定 CRAN 存放庫，例如 `install.packages("zoo",repos = "http://cran.us.r-project.org")` 。
+
+> [!WARNING]
+> Excute R 腳本模組不支援安裝需要原生編譯的封裝，例如 `qdap` 需要需要 c + + 的 JAVA 和 package 的封裝 `drc` 。 這是因為此模組是在預先安裝的環境中以非系統管理員許可權執行。
 
 此範例說明如何安裝 Zoo：
 ```R

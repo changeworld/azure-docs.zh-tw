@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: d1add17c1c84d2a22d76aaa1f96aeca4db645ba7
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 037b9746571678e24e80bd76e7e2ed173ab8eb90
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506275"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97677635"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>建立 Anomaly Detector 資源
 
@@ -26,7 +26,7 @@ ms.locfileid: "97506275"
     |名稱|所需的名稱 (2-64 個字元)|
     |訂用帳戶|選取適當的訂用帳戶|
     |Location|選取任何附近和可用的位置|
-    |定價層|`F0` -每秒100個呼叫，每月20K 筆交易。 <br> 或：<br> `S0` -每秒80個呼叫|
+    |定價層|`F0` -每秒10次呼叫，每月20K 筆交易。 <br> 或：<br> `S0` -每秒80個呼叫|
     |資源群組|選取可用的資源群組|
 
 1. 按一下 [建立]  ，並等待系統建立資源。 建立之後，流覽至資源頁面

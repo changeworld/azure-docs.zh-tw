@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889794"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680029"
 ---
 # <a name="change-the-style-of-the-map"></a>變更地圖樣式
 
@@ -29,9 +29,9 @@ ms.locfileid: "92889794"
 var map = new atlas.Map('map', {
     renderWorldCopies: false,
     showBuildingModels: false,
-    showLogo = true,
-    showFeedbackLink = true,
-    style='road'
+    showLogo: true,
+    showFeedbackLink: true,
+    style: 'road'
 
     //Additional map options.
 };
@@ -40,8 +40,8 @@ var map = new atlas.Map('map', {
 map.setStyle({
     renderWorldCopies: true,
     showBuildingModels: true,
-    showLogo = false,
-    showFeedbackLink = false
+    showLogo: false,
+    showFeedbackLink: false
 });
 ```
 
@@ -101,7 +101,7 @@ map.setStyle({ style: 'satellite' });
 
 下圖顯示在版面配置中顯示的樣式選擇器控制項 `list` 。
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="樣式選擇器圖示版面配置":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="樣式選擇器清單版面配置":::
 
 > [!IMPORTANT]
 > 樣式選擇器控制項預設會列出 Azure 地圖服務的 S0 定價層下可用的所有樣式。 如果您想要減少這份清單中的樣式數目，請將您想要在清單中顯示的樣式陣列傳遞至 `mapStyle` 樣式選擇器的選項。 如果您使用 S1，而且想要顯示所有可用的樣式，請將 `mapStyles` 樣式選擇器的選項設定為 `"all"` 。
@@ -129,10 +129,13 @@ map.setStyle({ style: 'satellite' });
 > [!div class="nextstepaction"]
 > [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
-將控制項新增至對應：
+請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 
 > [!div class="nextstepaction"]
 > [新增地圖控制項](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [新增釘選](map-add-pin.md)
+> [新增符號圖層](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [新增泡泡圖層](map-add-bubble-layer.md)

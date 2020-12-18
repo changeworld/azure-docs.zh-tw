@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96003131"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680787"
 ---
-# <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>教學課程：建立 Azure 資料箱 (Preview 的匯出順序) 
+# <a name="tutorial-create-export-order-for-azure-data-box"></a>教學課程：建立 Azure 資料箱的匯出順序
 
 Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移出您的位置。 本教學課程說明如何建立 Azure 資料箱的匯出順序。 建立匯出順序的主要原因是為了進行嚴重損壞修復，萬一內部部署儲存體遭到入侵，而且需要還原備份。
 
@@ -28,9 +28,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 > * 追蹤匯出順序
 > * 取消匯出順序
 
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 訂購裝置之前，請先完成下列資料箱服務和裝置的設定必要條件。
 
@@ -125,73 +123,73 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
     ![資料箱匯入訂單精靈的安全性畫面](media/data-box-deploy-export-ordered/data-box-export-security-01.png)
 
-10. 如果您想要使用自己的客戶管理金鑰來保護新資源的解除鎖定密碼，請展開 [ **加密類型**]。
+10. 如果您想要使用自己的客戶自控金鑰來保護新資源的解除鎖定通行金鑰，請展開 [加密類型]。
 
-    為您的 Azure 資料箱設定客戶管理的金鑰是選擇性的。 根據預設，資料箱會使用 Microsoft 管理的金鑰來保護解除鎖定密碼。
+    為 Azure 資料箱設定客戶自控金鑰是選擇性作業。 根據預設，資料箱會使用 Microsoft 管理的金鑰來保護解除鎖定通行金鑰。
 
-    客戶管理的金鑰不會影響裝置上的資料加密方式。 金鑰只能用來加密裝置解除鎖定密碼。
+    客戶自控金鑰不會影響資料在裝置上的加密方式。 此金鑰只會用來加密裝置解除鎖定通行金鑰。
 
     如果您不想要使用客戶管理的金鑰，請跳至步驟16。
 
     ![顯示加密類型設定的安全性畫面](./media/data-box-deploy-export-ordered/customer-managed-key-01.png)
 
-11. 選取 [ **客戶管理的金鑰** ] 做為金鑰類型。 然後選取 [ **選取金鑰保存庫與金鑰**]。
+11. 選取 [客戶自控金鑰] 作為金鑰類型。 然後，選取 [選取金鑰保存庫與金鑰]。
    
-    ![安全性畫面，客戶管理的金鑰的設定](./media/data-box-deploy-export-ordered/customer-managed-key-02.png)
+    ![設定客戶自控金鑰的安全性畫面](./media/data-box-deploy-export-ordered/customer-managed-key-02.png)
 
 12. 在 [ **從 Azure Key Vault 選取金鑰** ] 畫面上，會自動填入訂用帳戶。
 
-    - 針對 **金鑰保存庫**，您可以從下拉式清單中選取現有的金鑰保存庫。
+    - 針對 [金鑰保存庫]，您可以從下拉式清單中選取現有的金鑰保存庫。
 
-      ![從 Azure Key Vault 畫面選取金鑰](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
+      ![從 [Azure Key Vault] 畫面中選取 [金鑰]](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
 
-    - 您也可以選取 [ **建立新** 的] 來建立新的金鑰保存庫。 在 [ **建立金鑰保存庫** ] 畫面上，輸入資源群組和金鑰保存庫名稱。 確定已啟用虛 **刪除** 和 **清除保護** 。 接受所有其他預設值，然後選取 [ **審核 + 建立**]。
+    - 您也可以選取 [建立新的]，以建立新的金鑰保存庫。 在 [建立金鑰保存庫] 畫面上，輸入資源群組和金鑰保存庫名稱。 請確定已啟用 [虛刪除] 和 [清除保護]。 接受所有其他預設值，然後選取 [檢閱 + 建立]。
 
       ![建立新的 Azure Key Vault 設定](./media/data-box-deploy-export-ordered/customer-managed-key-04.png)
 
-      檢查金鑰保存庫的資訊，然後選取 [ **建立**]。 等候幾分鐘的時間來完成金鑰保存庫的建立。
+      檢閱金鑰保存庫的資訊，然後選取 [建立]。 等候幾分鐘的時間，讓金鑰保存庫完成建立。
 
-      ![新的 Azure Key Vault 審核畫面](./media/data-box-deploy-export-ordered/customer-managed-key-05.png)
+      ![新的 Azure Key Vault 檢閱畫面](./media/data-box-deploy-export-ordered/customer-managed-key-05.png)
 
 13. 在 [ **從 Azure Key Vault 選取金鑰** ] 畫面上，您可以選取金鑰保存庫中的現有金鑰。
 
-    ![從 Azure Key Vault 選取現有的金鑰](./media/data-box-deploy-export-ordered/customer-managed-key-06.png)
+    ![從 Azure Key Vault 中選取現有的金鑰](./media/data-box-deploy-export-ordered/customer-managed-key-06.png)
 
-    如果您想要建立新的金鑰，請選取 [ **建立新** 的]。 您必須使用 RSA 金鑰。 大小可以是2048或更大。 輸入新金鑰的名稱、接受其他預設值，然後選取 [ **建立**]。
+    如果您想要建立新的金鑰，請選取 [建立新的]。 您必須使用 RSA 金鑰。 大小可以是 2048 或更大。 輸入新金鑰的名稱，接受其他預設值，然後選取 [建立]。
 
       ![建立新的金鑰選項](./media/data-box-deploy-export-ordered/customer-managed-key-07.png)
 
-      在金鑰保存庫中建立金鑰時，系統會通知您。
+      在金鑰保存庫中建立金鑰時，您會收到通知。
 
-14. 選取要使用的金鑰 **版本** ，然後選擇 [ **選取**]。
+14. 選取要使用的金鑰 [版本]，然後選擇 [選取]。
 
-      ![在 key vault 中建立的新金鑰](./media/data-box-deploy-export-ordered/customer-managed-key-08.png)
+      ![在金鑰保存庫中建立的新金鑰](./media/data-box-deploy-export-ordered/customer-managed-key-08.png)
 
-    如果您想要建立新的金鑰版本，請選取 [ **建立新** 的]。
+    如果您想要建立新的金鑰版本，請選取 [建立新的]。
 
-    ![開啟對話方塊來建立新的金鑰版本](./media/data-box-deploy-export-ordered/customer-managed-key-08-a.png)
+    ![開啟用來建立新金鑰版本的對話方塊](./media/data-box-deploy-export-ordered/customer-managed-key-08-a.png)
 
     在 [ **建立新的金鑰** ] 畫面上，選擇新金鑰版本的 [設定]，然後選取 [ **建立**]。
 
     ![建立新的金鑰版本](./media/data-box-deploy-export-ordered/customer-managed-key-08-b.png)
 
-    [**安全性**] 畫面上的 [**加密類型**] 設定會顯示您的金鑰保存庫和金鑰。
+    [安全性] 畫面上的 [加密類型] 設定會顯示您的金鑰保存庫和金鑰。
 
-    ![客戶管理金鑰的金鑰和金鑰保存庫](./media/data-box-deploy-export-ordered/customer-managed-key-09.png)
+    ![客戶自控金鑰的金鑰和金鑰保存庫](./media/data-box-deploy-export-ordered/customer-managed-key-09.png)
 
-15. 選取您將用來管理此資源存取權的使用者身分識別。 選擇 [ **選取使用者識別**]。 在右側面板中，選取要使用的訂用帳戶和受控識別。 然後選擇 [選取]  。
+15. 選取一個使用者身分識別，用來管理對此資源的存取。 選擇 [選取使用者身分識別]。 在右側的面板中，選取要使用的訂用帳戶和受控識別。 然後選擇 [選取]  。
 
-    使用者指派的受控識別是一種獨立的 Azure 資源，可用來管理多個資源。 如需詳細資訊，請參閱 [受控識別類型](/azure/active-directory/managed-identities-azure-resources/overview)。  
+    使用者指派的受控識別是一項獨立的 Azure 資源，可用來管理多個資源。 如需詳細資訊，請參閱[受控識別類型](/azure/active-directory/managed-identities-azure-resources/overview)。  
 
-    如果您需要建立新的受控識別，請依照 [使用 Azure 入口網站建立、列出、刪除或指派角色給使用者指派的受控識別](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指導方針。
+    如果您需要建立新的受控識別，請遵循[使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指引。
     
     ![選取使用者身分識別](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
 
-    使用者身分識別會顯示在 [ **加密類型** 設定] 中。
+    使用者身分識別會顯示在 [加密類型] 設定中。
 
     您現在可以折迭 **加密類型** 設定。
 
-    ![在 [加密類型設定] 中顯示所選的使用者身分識別](./media/data-box-deploy-export-ordered/customer-managed-key-11.png)
+    ![已選取而顯示於 [加密類型] 設定中的使用者身分識別](./media/data-box-deploy-export-ordered/customer-managed-key-11.png)
 
 16. 如果您想要啟用以軟體為基礎的雙重加密，請 **針對高安全性環境) 展開 [雙重加密 (**]，然後選取 **[啟用順序的雙重加密**]。 
 

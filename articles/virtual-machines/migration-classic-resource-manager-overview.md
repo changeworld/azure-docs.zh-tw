@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 219fe2d9d8ac46ba3dbeebe6aaae9dddc0883aa0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e7d013775861f290d532e0d7c132896ebeff8ae8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500405"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680211"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>平臺-支援將 IaaS 資源從傳統遷移至 Linux 中的 Azure Resource Manager
 
@@ -22,7 +22,7 @@ ms.locfileid: "96500405"
 
 
 
-本文會說明如何將 IaaS 資源從傳統部署模型遷移至 Resource Manager 部署模型，並詳述如何使用虛擬網路站對站閘道，從並存於訂用帳戶中的兩個部署模型連線到資源。 您可以閱讀更多有關 [Azure Resource Manager 功能和優點](../azure-resource-manager/management/overview.md)的資訊。 
+本文概述平臺支援的遷移工具、如何從 Azure Service Manager () ASM 將資源遷移至 Resource Manager (ARM) 部署模型，以及詳細說明如何使用虛擬網路站對站閘道，從存在於您訂用帳戶中的兩個部署模型連接資源。 您可以閱讀更多有關 [Azure Resource Manager 功能和優點](../azure-resource-manager/management/overview.md)的資訊。 
 
 ## <a name="goal-for-migration"></a>移轉目標
 Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，還可使用 VM 擴充功能來設定虛擬機器，並且納入了存取管理和標記功能。 Azure Resource Manager 還將虛擬機器的可調整、平行部署納入可用性設定組中。 新部署模型也針對計算、網路及儲存體個別提供生命週期管理功能。 最後，將焦點放在藉由在虛擬網路中強制使用虛擬機器的方式，預設啟用安全性。
@@ -37,7 +37,7 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 * 儲存體帳戶
 * 虛擬網路
 * VPN 閘道
-* Express Route 閘道 _(僅與虛擬網路位於相同的訂用帳戶中)_
+* [Express Route 閘道](https://docs.microsoft.com/azure/expressroute/expressroute-howto-move-arm) _(在與虛擬網路相同的訂用帳戶中)_
 * 網路安全性群組
 * 路由表
 * 保留的 IP
@@ -45,7 +45,7 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 ## <a name="supported-configurations-for-migration"></a>支援遷移的設定
 移轉期間支援這些傳統 IaaS 資源
 
-| 服務 | 組態 |
+| 服務 | 設定 |
 | --- | --- |
 | Azure AD 網域服務 | [包含 Azure AD 網域服務的虛擬網路](../active-directory-domain-services/migrate-from-classic-vnet.md) |
 
@@ -114,7 +114,7 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 ### <a name="unsupported-features"></a>不支援的功能
 目前不支援下列功能。 您可以視需要移除這些設定、移轉 VM，然後再於 Resource Manager 部署模型中重新啟用這些設定。
 
-| 資源提供者 | 特徵 | 建議 |
+| 資源提供者 | 功能 | 建議 |
 | --- | --- | --- |
 | 計算 | 未關聯的虛擬機器磁碟。 | 移轉儲存體帳戶時，將會移轉這些磁碟背後的 VHD blob |
 | 計算 | 虛擬機器映像。 | 移轉儲存體帳戶時，將會移轉這些磁碟背後的 VHD blob |
@@ -125,7 +125,7 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 ### <a name="unsupported-configurations"></a>不支援的組態
 目前不支援下列組態。
 
-| 服務 | 組態 | 建議 |
+| 服務 | 設定 | 建議 |
 | --- | --- | --- |
 | Resource Manager |針對傳統資源 Role-Based 存取控制 (RBAC)  |由於資源的 URI 在移轉後會經過修改，因此建議您規劃需要在移轉後進行的 RBAC 原則更新。 |
 | 計算 |與 VM 關聯的多個子網路 |將子網路組態更新為只參考一個子網路。 這可能要求您從 VM 移除次要 NIC (其參考另一個子網路)，並在移轉完成後重新連結它。 |

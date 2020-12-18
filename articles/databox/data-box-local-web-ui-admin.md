@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e84f39fa5b9245d1874e60d651156e99c0885040
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855000"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678922"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本機 web UI 來管理您的資料箱和 Data Box Heavy
 
 本文說明在 Data Box 和 Data Box Heavy 裝置上執行的一些設定和管理工作。 您可以透過 Azure 入口網站 UI 和裝置的本機 web UI 來管理資料箱和 Data Box Heavy 裝置。 本文著重于使用本機 web UI 執行的工作。
 
 適用于資料箱和 Data Box Heavy 的本機 web UI 可用於裝置的初始設定。 您也可以使用本機 web UI 來關閉或重新開機裝置、執行診斷測試、更新軟體、查看複製記錄檔、清除裝置中的本機資料，以及產生 Microsoft 支援服務的支援封裝。 在具有兩個獨立節點的 Data Box Heavy 裝置上，您可以存取兩個對應至裝置每個節點的不同本機 web Ui。
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>產生支援套件
 
@@ -196,7 +194,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
     ![停用總和檢查碼](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. [停用] 總和檢查碼驗證
-3. 選取 [套用]。
+3. 選取 [套用]  。
 
 > [!NOTE]
 > 只有當 Azure 資料箱已解除鎖定時，才可以使用 [略過總和檢查碼計算] 選項。 當裝置鎖定時，您將不會看到此選項。
@@ -217,7 +215,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
     ![啟用 SMB 簽署](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
 
-3. 選取 [套用]。
+3. 選取 [套用]  。
 4. 在本機 Web UI 中，移至 [關機或重新啟動]。
 5. 選取 [重新啟動]。
 
@@ -260,7 +258,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
      ![啟用 Azure 檔案儲存體的 Acl](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
   
-3. 選取 [套用]。
+3. 選取 [套用]  。
 4. 在本機 Web UI 中，移至 [關機或重新啟動]。
 5. 選取 [重新啟動]。
 
@@ -280,7 +278,7 @@ BOM 或資訊清單檔包含複製到資料箱或 Data Box Heavy 的檔案清單
 
     ![啟用 TLS 1。1](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
 
-3. 選取 [套用]。
+3. 選取 [套用]  。
 4. 在本機 Web UI 中，移至 [關機或重新啟動]。
 5. 選取 [重新啟動]。
 

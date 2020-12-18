@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6271b83749c078b64c168a27f887ed7055e37d96
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638001"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678911"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>規劃和管理 Azure Data Factory 的成本
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory 是針對雲端規模而建立的無伺服器和彈性資料整合服務。  這表示不需要規劃尖峰負載所需的固定大小計算作業，而能視需要指定每項作業需配置多少資源，如此能以更利於擴充的方式設計 ETL 流程。 此外，ADF 是以耗用量為基礎的方案計費，這表示您只需支付使用的部分。
 

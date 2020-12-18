@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fc890dbaf717d3eb9ec87afcb69c87e80c7f14bc
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000448"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680961"
 ---
 # <a name="collect-data-from-models-in-production"></a>從生產環境中的模型收集資料
 
@@ -55,7 +55,7 @@ Blob 中輸出資料的路徑遵循此語法：
 >[!NOTE]
 > 在版本 0.1.0 a16 之前的 Azure Machine Learning SDK for Python 版本中， `designation` 引數命名為 `identifier` 。 如果您使用較早的版本開發程式碼，您必須據以更新。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://aka.ms/AMLFree)。
 
@@ -115,6 +115,12 @@ Blob 中輸出資料的路徑遵循此語法：
     ```
 
 1. 若要建立新的映射並部署機器學習模型，請參閱 [如何部署和位置](how-to-deploy-and-where.md)。
+
+1. 將「Azure 監視」 pip 套件新增至 web 服務環境的 conda 相依性：
+  ```Python
+    env = Environment('webserviceenv')
+    env.python.conda_dependencies = CondaDependencies.create(conda_packages=['numpy'],pip_packages=['azureml-defaults','azureml-monitoring','inference-schema[numpy-support]'])
+  ```
 
 
 ## <a name="disable-data-collection"></a>停用資料收集

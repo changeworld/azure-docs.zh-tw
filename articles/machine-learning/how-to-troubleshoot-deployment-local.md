@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4f70978e7b7c2315aff4c51d8b019933df78e7e8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 01a5f600acf9542c5adabcdf2523a42ca44233af
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028796"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680500"
 ---
 # <a name="troubleshoot-model-deployment-locally"></a>在本機針對模型部署進行疑難排解
 
@@ -28,7 +28,7 @@ ms.locfileid: "97028796"
 * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
 * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
 * [適用於 Azure Machine Learning 的 CLI 擴充功能](reference-azure-machine-learning-cli.md)。
-* 若要在本機偵錯，您必須在本機系統上擁有正常運作的 Docker 安裝。
+* 若要在本機進行偵錯工具，您可以將模型部署到 [Azure Machine Learning 計算實例](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-local-container-notebook-vm) ，或在您的本機系統上具有可運作的 Docker 安裝。
 
     若要驗證您的 Docker 安裝，請從終端或命令提示字元使用命令 `docker run hello-world`。 如需有關安裝 Docker 或針對 Docker 錯誤進行疑難排解的資訊，請參閱 [Docker 文件](https://docs.docker.com/)。
 

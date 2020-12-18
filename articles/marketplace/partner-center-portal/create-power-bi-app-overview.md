@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131423"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679138"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 應用程式建立總覽
 
@@ -33,7 +33,7 @@ ms.locfileid: "93131423"
 
 以下是主要的發佈步驟：
 
-1. 在 Power BI 中建立您的應用程式。 您將會收到 [套件安裝] 連結，這是供應專案的主要技術資產。 在合作夥伴中心中建立供應專案之前，請先將測試套件傳送至生產階段前。 如需詳細資訊，請參閱 [什麼是 Power BI apps？](/power-bi/service-template-apps-overview)。
+1. 在 Power BI 中建立您的應用程式。 您將會收到 [套件安裝] 連結，這是供應專案的主要技術資產。 在合作夥伴中心中建立供應專案之前，請先將測試套件傳送至生產階段前。 如需詳細資訊，請參閱 [什麼是 Power BI 應用程式？](/power-bi/service-template-apps-overview)
 2. 新增行銷材質，例如官方名稱、描述和標誌。
 3. 包含供應專案的法律和支援檔，例如使用條款、隱私權原則、支援原則和使用者說明。
 4. 建立供應專案–使用合作夥伴中心編輯詳細資料，包括供應專案說明、行銷資料、法律資訊、支援資訊，以及資產規格。

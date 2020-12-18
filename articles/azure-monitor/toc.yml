@@ -546,6 +546,8 @@
           items:
             - name: IT 服務管理連接器
               href: platform/itsmc-overview.md
+            - name: IT Service Management Connector 定義
+              href: platform/itsmc-definition.md
             - name: IT 服務管理連線
               href: platform/itsmc-connections.md
             - name: 建立服務管理員 Web 應用程式

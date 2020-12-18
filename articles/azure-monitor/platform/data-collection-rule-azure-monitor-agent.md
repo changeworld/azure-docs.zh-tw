@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 94c926c555a4bc96ac3c6fbe773650e16554bcf2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: d04fa25b9c953d151fc16d11f304c48b7046ab76
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315697"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680406"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>設定 Azure 監視器代理程式 (預覽的資料收集) 
 
@@ -35,6 +35,9 @@ ms.locfileid: "95315697"
 
 您可以使用 Azure 入口網站來建立資料集合規則，並將您訂用帳戶中的虛擬機器與該規則建立關聯。 系統會自動安裝 Azure 監視器代理程式，並針對尚未安裝它的任何虛擬機器建立受控識別。
 
+> [!IMPORTANT]
+> 目前有一個已知問題，就是如果資料收集規則在已有使用者指派受控識別的虛擬機器上建立受控識別，則會停用使用者指派的身分識別。
+
 在 Azure 入口網站的 [ **Azure 監視器**] 功能表中，從 [**設定**] 區段選取 [**資料收集規則**]。 按一下 **[新增]** ，以加入新的資料收集規則和指派。
 
 [![資料收集規則](media/azure-monitor-agent/data-collection-rules.png)](media/azure-monitor-agent/data-collection-rules.png#lightbox)
@@ -52,7 +55,7 @@ ms.locfileid: "95315697"
 [![資料來源基本](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-若要指定其他記錄和效能計數器，請選取 [ **自訂**]。 然後，您可以指定要收集之任何特定值的 [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) 。 如需範例，請參閱 [範例 DCR](data-collection-rule-overview.md#sample-data-collection-rule) 。
+若要從 [目前支援的資料來源](azure-monitor-agent-overview.md#data-sources-and-destinations) 指定其他記錄檔和效能計數器，或使用 XPath 查詢來篩選事件，請選取 [ **自訂**]。 然後，您可以指定要收集之任何特定值的 [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) 。 如需範例，請參閱 [範例 DCR](data-collection-rule-overview.md#sample-data-collection-rule) 。
 
 [![資料來源自訂](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 

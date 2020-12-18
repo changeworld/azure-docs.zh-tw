@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 6a7d29d8487c6be6915ae4171b3759f0980f5448
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 21bdbecdbba31eae112053bf81411781245cc170
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874350"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678689"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>啟用可用性區域之間的 Azure VM 嚴重損壞修復
 
@@ -20,7 +20,7 @@ ms.locfileid: "94874350"
 
 >[!NOTE]
 >
->- 區域對區域嚴重損壞修復的支援目前僅限於兩個區域：東南亞及英國南部。  
+>- 區域對區域嚴重損壞修復的支援目前僅限於五個區域：東南亞、英國南部、日本東部、澳大利亞東部和西歐。  
 >- Site Recovery 不會在客戶使用區域以進列區域容錯移轉時，將客戶資料從其部署所在的區域中移動或儲存。 客戶可以選擇不同區域中的復原服務保存庫（如果有的話）。 復原服務保存庫包含中繼資料，但不包含實際的客戶資料。
 
 Site Recovery 服務會在規劃和未規劃的中斷期間，讓您的商務應用程式保持啟動並執行，來為您的商務持續性和嚴重損壞修復策略帶來貢獻 這是建議的嚴重損壞修復選項，可讓您的應用程式在發生區域性中斷時保持運作。
@@ -69,11 +69,11 @@ Site Recovery 服務會在規劃和未規劃的中斷期間，讓您的商務應
 
 |功能  | 支援聲明  |
 |---------|---------|
-|傳統 VM   |     不受支援    |
+|傳統 VM   |     不支援    |
 |ARM Vm    |    支援    |
 |Azure 磁碟加密 v1 (雙重傳遞，Azure Active Directory (Azure AD) # A3     |     支援   |
 |Azure 磁碟加密 v2 (單一傳遞，但不 Azure AD)     |    支援    |
-|非受控磁碟    |    不受支援    |
+|非受控磁碟    |    不支援    |
 |受控磁碟    |    支援    |
 |客戶管理的金鑰    |    支援    |
 |鄰近位置群組    |    支援    |

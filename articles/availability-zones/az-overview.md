@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 32cd6c23e1fe465a801e56fad5dd3461df860503
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 485042c795fd94ef7daa8e00b9869190e9df61c8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182728"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678547"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 中的區域和可用性區域
 
@@ -93,7 +93,7 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 > | --- | --- | --- |
 > | 帳戶儲存 | API 管理 | 適用於 FHIR 的 Azure API |
 > | 應用程式閘道 | 應用程式設定 | Azure Analysis Services |
-> | Azure 備份 | App Service | Azure 區塊鏈服務 |
+> | Azure 備份 | App Service 方案 | Azure 區塊鏈服務 |
 > | Azure Cosmos DB | 自動化 | Azure 藍圖 |
 > | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | 適用於 MariaDB 的 Azure 資料庫 |
 > | Azure ExpressRoute | Azure Bastion | Azure 專用 HSM |
@@ -116,7 +116,7 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 > | 虛擬機器： Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (傳統) |
 > | 虛擬機器： Bs-Series | Azure Private Link | Microsoft Genomics |
 > | 虛擬機器： DSv2-Series | Azure Red Hat OpenShift | 遠端轉譯 |
-> | 虛擬機器： DSv3-Series | Azure SignalR Service | Spatial Anchors |
+> | 虛擬機器： DSv3-Series | Azure SignalR 服務 | Spatial Anchors |
 > | 虛擬機器： Dv2-Series | Azure Site Recovery | StorSimple |
 > | 虛擬機器： Dv3-Series | Azure Stack Hub | 影片索引器 |
 > | 虛擬機器： ESv3-Series | Azure 串流分析 | 虛擬機器： DASv4-Series |
@@ -142,7 +142,7 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 > |  | 通知中樞 | 虛擬機器： NVv3-Series |
 > |  | Power BI Embedded | 虛擬機器： NVv4-Series |
 > |  | Premium Blob 儲存體 | 虛擬機器： Azure 上的 SAP HANA 大型執行個體 |
-> |  | Premium 檔案儲存體 | Visual Studio App Center |
+> |  | Premium 檔案儲存體 | Visual Studio 應用程式中心 |
 > |  | 儲存體：封存儲存體 |  |
 > |  | Ultra 磁碟儲存體 |  |
 > |  | 虛擬機器： Ddsv4-Series |  |
@@ -181,6 +181,7 @@ Azure 服務分為三種類別：基本、主流和特製化的服務。 將服�
 - [消費者入門 Azure Cache for Redis 可用性區域](https://aka.ms/redis/az/getstarted)
 - [建立 Azure Active Directory Domain Services 執行個體](../active-directory-domain-services/tutorial-create-instance.md)
 - [建立 Azure Kubernetes Service (AKS) 使用可用性區域的叢集](../aks/availability-zones.md)
+- [在 Azure Container Registry 中啟用區域冗余](../container-registry/zone-redundancy.md)
 
 ## <a name="next-steps"></a>後續步驟
 

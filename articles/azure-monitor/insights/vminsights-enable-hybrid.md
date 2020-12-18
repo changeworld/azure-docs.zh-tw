@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d994df4d56f4958784256ff9cd92ce1e6f3b3e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d866729d428e7667cd2225a5d37836b3fd75fa7
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642158"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680324"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>啟用混合式虛擬機器的適用於 VM 的 Azure 監視器
 本文說明如何為 Azure 外部的虛擬機器啟用適用於 VM 的 Azure 監視器，包括內部部署和其他雲端環境。
@@ -19,7 +19,7 @@ ms.locfileid: "88642158"
 > [!IMPORTANT]
 > 啟用混合式 Vm 的建議方法是先啟用 [適用於伺服器的 Azure Arc](../../azure-arc/servers/overview.md) ，讓 vm 可以使用與 Azure vm 類似的進程來適用於 VM 的 Azure 監視器啟用。 本文說明如何在您選擇不使用 Azure Arc 時，將混合式 Vm 上線。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [建立並設定 Log Analytics 工作區](vminsights-configure-workspace.md)。
 - 請參閱 [支援的作業系統](vminsights-enable-overview.md#supported-operating-systems) ，以確保支援您所啟用之虛擬機器或虛擬機器擴展集的作業系統。 
@@ -43,8 +43,8 @@ Log analytics [代理程式總覽](../platform/log-analytics-agent.md#network-re
 
 | 檔案 | OS | 版本 | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.5.10940 | C27A56D0BE9CF162DF73292DFBB2083F5FF749F2B80FCAD2545BC8B14B64A8D7  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.5.10940 | 71B4E1DA5116E61E03317C49C6702B5069F01A0C9A7CB860F6ACFAF5C198740E |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.7.12710 | CA29CC328F991D7301FD0360F4F56DF78275545BB8CDA853679899CA885E96F0  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.7.12710 | 98380DBEB2E2A5848F2202BC22422C68B20B62090C1BFC1DECAB37ED5451ED8C |
 
 
 ## <a name="install-the-dependency-agent-on-windows"></a>在 Windows 上安裝 Dependency Agent
@@ -80,7 +80,7 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 > 必須有 root 權限，以便安裝或設定代理程式。
 >
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |:--|:--|
 | -help | 取得命令列選項的清單。 |
 | -S | 執行無訊息安裝，不會出現任何使用者提示。 |
@@ -92,7 +92,7 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 
 Dependency Agent 的檔案位於下列目錄：
 
-| 檔案儲存體 | Location |
+| 檔案儲存體 | 位置 |
 |:--|:--|
 | 核心檔案 | /opt/microsoft/dependency-agent |
 | 記錄檔 | /var/opt/microsoft/dependency-agent/log |
@@ -175,7 +175,7 @@ configuration VMInsights {
 請檢查 C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file (Windows) 檔案或 /var/opt/microsoft/dependency-agent/log/service.log 檔案 (Linux)。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在已為您的虛擬機器啟用監視，此資訊可透過適用於 VM 的 Azure 監視器進行分析。
 

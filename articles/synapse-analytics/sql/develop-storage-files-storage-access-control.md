@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446621"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400670"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制無伺服器 SQL 集區的儲存體帳戶存取
 
 無伺服器 SQL 集區查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存體上檔案的權限會由兩個層級來控制：
 - **儲存體層級** - 使用者應該具有存取基礎儲存體檔案的權限。 您的儲存體管理員應允許 Azure AD 主體讀取/寫入檔案，或產生將用來存取儲存體的 SAS 金鑰。
-- **SQL 服務層級** - 使用者應該具有從 [外部資料表](develop-tables-external-tables.md)讀取資料的 `SELECT` 權限，或執行 `OPENROWSET` 的 `ADMINISTER BULK ADMIN` 權限，以及使用存取儲存體所需認證的權限。
+- **SQL 服務等級** - 使用者應該已授與使用 [外部資料表](develop-tables-external-tables.md) 或執行 `OPENROWSET` 函式來讀取資料的權限。 深入了解 [本節中的必要權限](develop-storage-files-overview.md#permissions)。
 
 本文將說明您可以使用的認證類型，以及如何為 SQL 和 Azure AD 使用者制訂認證查閱。
 
@@ -83,7 +83,7 @@ ms.locfileid: "96446621"
 
 | 授權類型  | Blob 儲存體   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| SAS    | 支援\*      | 不支援   | 支援\*     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | 支援\*      | 不支援   | 支援\*     |
 | [受控身分識別](?tabs=managed-identity#supported-storage-authorization-types) | 支援      | 支援        | 支援     |
 | [使用者身分識別](?tabs=user-identity#supported-storage-authorization-types)    | 支援\*      | 支援\*        | 支援\*     |
 

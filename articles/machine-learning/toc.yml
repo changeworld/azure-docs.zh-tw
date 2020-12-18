@@ -408,6 +408,9 @@
           href: how-to-configure-auto-train.md
         - name: 使用自動化 ML (介面)
           href: how-to-use-automated-ml-for-ml-models.md
+        - name: 搭配使用自動化 ML 與 Databricks
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: 使用遠端計算目標
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
@@ -463,6 +466,8 @@
               href: how-to-deploy-fpga-web-service.md
         - name: 疑難排解與偵錯
           href: how-to-troubleshoot-deployment.md
+        - name: 疑難排解與偵錯 (本機)
+          href: how-to-troubleshoot-deployment-local.md
         - name: 取用 Web 服務
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 51df9683152d97b899150e240dee98896f8c40ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b15ee7091a68f7fcc79c71877c4af28b511b84de
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896373"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680146"
 ---
 # <a name="add-a-heat-map-layer"></a>新增熱度圖層
 
@@ -24,16 +24,16 @@ ms.locfileid: "92896373"
 
 您可以在許多不同的案例中使用熱度圖，包括：
 
-- **溫度資料** ：為兩個資料點之間的溫度提供近似值。
-- **雜訊感應器的資料** ：不僅顯示感應器所在的雜訊濃度，還可讓您深入瞭解在距離之間的散熱。 任何一個網站的雜訊等級可能不會太高。 如果多個感應器的噪音涵蓋區域重迭，可能是這個重迭的區域可能會遇到較高的雜訊等級。 因此，重迭的區域會顯示在熱度圖中。
-- **GPS 追蹤** ：以加權高度地圖的形式包含速度，其中每個資料點的濃度以速度為基礎。 例如，此功能提供一種方式來查看車輛的進行加速。
+- **溫度資料**：為兩個資料點之間的溫度提供近似值。
+- **雜訊感應器的資料**：不僅顯示感應器所在的雜訊濃度，還可讓您深入瞭解在距離之間的散熱。 任何一個網站的雜訊等級可能不會太高。 如果多個感應器的噪音涵蓋區域重迭，可能是這個重迭的區域可能會遇到較高的雜訊等級。 因此，重迭的區域會顯示在熱度圖中。
+- **GPS 追蹤**：以加權高度地圖的形式包含速度，其中每個資料點的濃度以速度為基礎。 例如，此功能提供一種方式來查看車輛的進行加速。
 
 > [!TIP]
 > 熱度圖圖層預設會轉譯資料來源中所有幾何的座標。 若要限制圖層，使其只轉譯點幾何特徵，請將 `filter` 圖層的屬性設定為 `['==', ['geometry-type'], 'Point']` 。 如果您也想要包含 MultiPoint 功能，請將 `filter` 圖層的屬性設定為 `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` 。
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player?format=ny]
 
 ## <a name="add-a-heat-map-layer"></a>新增熱度圖層
 
@@ -103,7 +103,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="一致的可熱度圖" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
-在 >codepen 上 Azure 地圖服務 () ，查看畫筆<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一致可熱度圖</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+在 >codepen 上 Azure 地圖服務 () ，查看畫筆<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一致可熱度圖</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 > [!TIP]
