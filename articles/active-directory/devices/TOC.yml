@@ -30,8 +30,6 @@
       href: azuread-join-sso.md
     - name: 主要重新整理權杖
       href: concept-primary-refresh-token.md
-    - name: Azure 受控工作站
-      href: concept-azure-managed-workstation.md
 - name: 操作指南
   expanded: false
   items:
@@ -55,8 +53,6 @@
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: 虛擬桌面基礎結構
       href: howto-device-identity-virtual-desktop-infrastructure.md
-    - name: 部署 Azure 受控工作站
-      href: howto-azure-managed-workstation.md
     - name: 裝置身分識別問題疑難排解
       items:
         - name: 針對目前與混合式 Azure AD 聯結的 Windows 裝置進行疑難排解
@@ -95,7 +91,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新
       href: ../fundamentals/whats-new.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

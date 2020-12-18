@@ -110,6 +110,8 @@
       items:
         - name: 容量計量
           href: api-management-capacity.md
+        - name: 規劃和管理成本
+          href: plan-manage-costs.md
         - name: 升級和調整規模
           href: upgrade-and-scale.md
         - name: 設定自動調整
