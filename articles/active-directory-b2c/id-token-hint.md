@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951650"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669154"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義識別碼權杖提示技術設定檔
 
@@ -36,10 +36,10 @@ Id_token_hint 必須是有效的 JWT 權杖。 下表列出必要的宣告。 �
 
 | 名稱 | 宣告 | 範例值 | 描述 |
 | ---- | ----- | ------------- | ----------- |
-| 適用對象 | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | 識別權杖的預定接收者。 這是權杖簽發者所定義的任一字元串。 Azure AD B2C 會驗證此值，並在不相符的情況下拒絕權杖。  |
-| Issuer | `iss` |`https://localhost` | 識別 (權杖簽發者) 的安全性權杖服務。 這是權杖簽發者所定義的任意 URI。 Azure AD B2C 會驗證此值，並在不相符的情況下拒絕權杖。  |
-| 到期時間 | `exp` | `1600087315` | 權杖失效的時間 (以新紀元 (Epoch) 時間表示)。 Azure AD B2C 不會驗證此宣告。 |
-| 生效時間 | `nbf` | `1599482515` | 權杖生效的時間 (以新紀元 (Epoch) 時間表示)。 此時間通常與權杖的簽發時間相同。 Azure AD B2C 不會驗證此宣告。 |
+| 適用對象 | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | 識別權杖的預定接收者。 物件是權杖簽發者所定義的任一字元串。 Azure AD B2C 會驗證此值，並在不符合的情況下拒絕權杖。  |
+| Issuer | `iss` |`https://localhost` | 識別 (權杖簽發者) 的安全性權杖服務。 簽發者是權杖簽發者所定義的任意 URI。 Azure AD B2C 會驗證此值，並在不符合的情況下拒絕權杖。  |
+| 到期時間 | `exp` | `1600087315` | 權杖失效的時間 (以新紀元 (Epoch) 時間表示)。 Azure AD B2C 會驗證此值，如果權杖已過期，則會拒絕權杖。|
+| 生效時間 | `nbf` | `1599482515` | 權杖生效的時間 (以新紀元 (Epoch) 時間表示)。 此時間通常與權杖的簽發時間相同。 Azure AD B2C 會驗證此值，並在權杖存留期無效時拒絕權杖。 |
 
  下列權杖是有效識別碼權杖的範例：
 
@@ -85,7 +85,7 @@ Id_token_hint 必須是有效的 JWT 權杖。 下表列出必要的宣告。 �
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 簽發者 | 是 | 識別 (權杖簽發者) 的安全性權杖服務。 此值必須與 JWT 權杖宣告內的宣告相同 `iss` 。 | 
-| IdTokenAudience | 是 | 識別權杖的預定接收者。 必須與 JWT 權杖宣告的宣告 `aud` 遷移相同。 | 
+| IdTokenAudience | 是 | 識別權杖的預定接收者。 必須與 JWT 權杖宣告內的宣告相同 `aud` 。 | 
 
 以下是使用非對稱金鑰時的相關中繼資料。 
 
@@ -93,7 +93,7 @@ Id_token_hint 必須是有效的 JWT 權杖。 下表列出必要的宣告。 �
 | --------- | -------- | ----------- |
 | METADATA| 是 | 指向權杖簽發者設定檔的 URL，也稱為 OpenID 知名設定端點。   |
 | 簽發者 | 否 | 識別 (權杖簽發者) 的安全性權杖服務。 這個值可以用來覆寫中繼資料中設定的值，而且必須與 JWT 權杖宣告內的宣告相同 `iss` 。 |  
-| IdTokenAudience | 否 | 識別權杖的預定接收者。 必須與 JWT 權杖宣告的宣告 `aud` 遷移相同。 |  
+| IdTokenAudience | 否 | 識別權杖的預定接收者。 必須與 JWT 權杖宣告內的宣告相同 `aud` 。 |  
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
@@ -272,7 +272,7 @@ New-SelfSignedCertificate `
     </RelyingParty>
     ```
 
-視您的商務需求而定，您可能需要新增權杖驗證，例如檢查權杖到期日、電子郵件地址的格式等等。 若要這樣做，請新增可叫用 [宣告轉換技術設定檔](claims-transformation-technical-profile.md)的協調流程步驟。 此外，也請新增自行判斷提示的 [技術設定檔](self-asserted-technical-profile.md) ，以顯示錯誤訊息。 
+視您的商務需求而定，您可能需要新增權杖驗證，例如檢查電子郵件地址的格式。 若要這樣做，請新增可叫用 [宣告轉換技術設定檔](claims-transformation-technical-profile.md)的協調流程步驟。 此外，也請新增自行判斷提示的 [技術設定檔](self-asserted-technical-profile.md) ，以顯示錯誤訊息。 
 
 ### <a name="create-and-sign-a-token"></a>建立和簽署權杖
 

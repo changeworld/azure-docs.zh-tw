@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 6c5badf4760bff559fb050278df84c7ad6e703bd
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.date: 12/18/2020
+ms.openlocfilehash: 3eaabc6c1e7d34bb5d9433d742581f39bdfbf98e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616938"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669528"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>透過使用整合服務環境 (ISE) 從 Azure Logic Apps 連線至 Azure 虛擬網路
 
@@ -67,9 +67,9 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
   * 如果您使用或想要使用 [ExpressRoute](../expressroute/expressroute-introduction.md) 搭配 [強制通道](../firewall/forced-tunneling.md)，您必須建立具有下列特定路由的 [路由表](../virtual-network/manage-route-table.md) ，並將路由表連結至 ISE 所使用的每個子網：
 
-    **名稱** ：< *route-name*><br>
-    **位址首碼** ：0.0.0.0/0<br>
-    **下一個躍點** ：Internet
+    **名稱**：<*route-name*><br>
+    **位址首碼**：0.0.0.0/0<br>
+    **下一個躍點**：Internet
     
     這是必要的路由表，因此 Logic Apps 元件可以與其他相依的 Azure 服務（例如 Azure 儲存體和 Azure SQL DB）進行通訊。 如需此路由的詳細資訊，請參閱 [0.0.0.0/0 位址首碼](../virtual-network/virtual-networks-udr-overview.md#default-route)。 如果您未搭配 ExpressRoute 使用強制通道，則不需要此特定的路由表。
     
@@ -116,8 +116,8 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
 | 目的 | 來源服務標籤或 IP 位址 | 來源連接埠 | 目的地服務標籤或 IP 位址 | 目的地連接埠 | 注意 |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
-| 虛擬網路內的子網路間通訊 | ISE 子網路內虛擬網路的位址空間 | * | ISE 子網路內虛擬網路的位址空間 | * | 對於要在虛擬網路中子網路「之間」流動的流量，這是必要的。 <p><p>**重要** ：如需流量在每個子網路中的「元件」之間流動，請確定您已開啟每個子網路內的所有連接埠。 |
-| Both (兩者)： <p>與您的邏輯應用程式進行通訊 <p><p>邏輯應用程式的執行歷程記錄| 內部 ISE： <br>**VirtualNetwork** <p><p>外部 ISE： **網際網路** 或參閱 **附註** | * | **VirtualNetwork** | 443 | 您可以指定這些項目的來源 IP 位址，而不是使用 **網際網路** 服務標籤： <p><p>- 呼叫邏輯應用程式中任何要求觸發程序或 Webhook 的電腦或服務 <p>- 您想要從中存取邏輯應用程式執行歷程記錄的電腦或服務 <p><p>**重要** ：關閉或封鎖此連接埠可防止呼叫具有要求觸發程序或 Webhook 的邏輯應用程式。 也會防止您在執行歷程記錄中存取每個步驟的輸入和輸出。 不過，不會防止您存取邏輯應用程式執行歷程記錄。|
+| 虛擬網路內的子網路間通訊 | ISE 子網路內虛擬網路的位址空間 | * | ISE 子網路內虛擬網路的位址空間 | * | 對於要在虛擬網路中子網路「之間」流動的流量，這是必要的。 <p><p>**重要**：如需流量在每個子網路中的「元件」之間流動，請確定您已開啟每個子網路內的所有連接埠。 |
+| Both (兩者)： <p>與您的邏輯應用程式進行通訊 <p><p>邏輯應用程式的執行歷程記錄| 內部 ISE： <br>**VirtualNetwork** <p><p>外部 ISE：**網際網路** 或參閱 **附註** | * | **VirtualNetwork** | 443 | 您可以指定這些項目的來源 IP 位址，而不是使用 **網際網路** 服務標籤： <p><p>- 呼叫邏輯應用程式中任何要求觸發程序或 Webhook 的電腦或服務 <p>- 您想要從中存取邏輯應用程式執行歷程記錄的電腦或服務 <p><p>**重要**：關閉或封鎖此連接埠可防止呼叫具有要求觸發程序或 Webhook 的邏輯應用程式。 也會防止您在執行歷程記錄中存取每個步驟的輸入和輸出。 不過，不會防止您存取邏輯應用程式執行歷程記錄。|
 | Logic Apps 設計工具 - 動態屬性 | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | 對於該區域，要求來自於 Logic Apps 存取端點的[輸入 IP 位址](../logic-apps/logic-apps-limits-and-config.md#inbound)。 |
 | 連接器部署 | **AzureConnectors** | * | **VirtualNetwork** | 454 | 需要部署和更新連接器。 關閉或封鎖此連接埠會導致 ISE 部署失敗，並阻止連接器更新和修正。 |
 | 網路健康狀態檢查 | **LogicApps** | * | **VirtualNetwork** | 454 | 對於該區域，要求來自於 Logic Apps 存取端點的[輸入 IP 位址](../logic-apps/logic-apps-limits-and-config.md#inbound)和[輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)。 |
@@ -131,7 +131,7 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
 | 目的 | 來源服務標籤或 IP 位址 | 來源連接埠 | 目的地服務標籤或 IP 位址 | 目的地連接埠 | 注意 |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
-| 虛擬網路內的子網路間通訊 | ISE 子網路內虛擬網路的位址空間 | * | ISE 子網路內虛擬網路的位址空間 | * | 對於要在虛擬網路中子網路「之間」流動的流量，這是必要的。 <p><p>**重要** ：如需流量在每個子網路中的「元件」之間流動，請確定您已開啟每個子網路內的所有連接埠。 |
+| 虛擬網路內的子網路間通訊 | ISE 子網路內虛擬網路的位址空間 | * | ISE 子網路內虛擬網路的位址空間 | * | 對於要在虛擬網路中子網路「之間」流動的流量，這是必要的。 <p><p>**重要**：如需流量在每個子網路中的「元件」之間流動，請確定您已開啟每個子網路內的所有連接埠。 |
 | 來自邏輯應用程式的通訊 | **VirtualNetwork** | * | 根據目的地而有所不同 | 80、443 | 目的地會根據外部服務的端點而有所不同，而您的邏輯應用程式需要與此服務進行通訊。 |
 | Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80、443 ||
 | Azure 儲存體相依性 | **VirtualNetwork** | * | **Storage** | 80、443、445 ||
@@ -156,21 +156,29 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
 如果您透過防火牆設定或使用 [強制通道](../firewall/forced-tunneling.md) ，您必須允許 ISE 的其他外部相依性。 強制通道可讓您將網際網路系結流量重新導向至指定的下一個躍點，例如虛擬私人網路 (VPN) 或虛擬裝置（而不是網際網路），如此您就可以檢查和審核輸出網路流量。
 
-通常，所有 ISE 輸出相依性流量都會透過您 ISE 所布建的虛擬 IP 位址 (VIP) 來傳輸。 但是，如果您將流量路由變更至 ISE 或從 ISE 變更流量路由，則必須將下一個躍點設定為，以允許防火牆上的下列輸出相依性 `Internet` 。 如果您使用 Azure 防火牆，請遵循 [指示來設定您的防火牆，並使用您的 App Service 環境](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)。
+如果您不允許存取這些相依性，您的 ISE 部署將會失敗，且您部署的 ISE 將會停止運作。
 
-如果您不允許存取這些相依性，您的 ISE 部署將會失敗，且您部署的 ISE 會停止運作：
+* 使用者定義的路由
 
-* [App Service Environment 管理位址](../app-service/environment/management-addresses.md)
+  若要防止非對稱式路由，您必須為下列每個 IP 位址定義路由，並以 **網際網路** 作為下一個躍點。
+  
+  * [App Service Environment 管理位址](../app-service/environment/management-addresses.md)
+  * [ISE 區域中連接器的 Azure IP 位址，可在此下載檔案中取得](https://www.microsoft.com/download/details.aspx?id=56519)
+  * [Azure 流量管理員管理位址](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
+  * [ISE 區域 Logic Apps 輸入和輸出位址](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
+  * [ISE 區域中連接器的 Azure IP 位址，位於此下載檔案](https://www.microsoft.com/download/details.aspx?id=56519)
 
-* [Azure API 管理位址](../api-management/api-management-using-with-vnet.md#control-plane-ips)
+* 服務端點
 
-* [Azure 流量管理員管理位址](https://azuretrafficmanagerdata.blob.core.windows.net/probes/azure/probe-ip-ranges.json)
+  您必須啟用 Azure SQL、儲存體、服務匯流排和事件中樞的服務端點，因為您無法透過防火牆將流量傳送至這些服務。
 
-* [ISE 區域 Logic Apps 輸入和輸出位址](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)
+*  其他輸入和輸出相依性
 
-* [ISE 區域中連接器的 Azure IP 位址，位於此下載檔案](https://www.microsoft.com/download/details.aspx?id=56519)
-
-* 您必須啟用 Azure SQL、儲存體、服務匯流排和事件中樞的服務端點，因為您無法透過防火牆將流量傳送至這些服務。
+   您的防火牆 *必須* 允許下列輸入和輸出相依性：
+   
+   * [Azure App Service 相依性](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
+   * [Azure 快取服務相依性](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-vnets)
+   * [Azure API 管理相依性](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 <a name="create-environment"></a>
 
@@ -194,10 +202,10 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
    | **資源群組** | 是 | <*Azure-resource-group-name*> | 新的或現有的 Azure 資源群組，您想要在其中建立您的環境 |
    | **整合服務環境名稱** | 是 | <*environment-name*> | 您的 ISE 名稱，其中只能包含字母、數字、連字號 (`-`)、底線 (`_`) 和 (`.`)。 |
    | **位置** | 是 | <*Azure-datacenter-region*> | 要用來部署環境的 Azure 資料中心區域 |
-   | **SKU** | 是 | **進階** 或 **開發人員 (沒有 SLA)** | 要建立和使用的 ISE SKU。 如需這些 SKU 之間的差異，請參閱 [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要** ：只有在建立 ISE 時才可使用此選項，而且稍後無法變更。 |
+   | **SKU** | 是 | **進階** 或 **開發人員 (沒有 SLA)** | 要建立和使用的 ISE SKU。 如需這些 SKU 之間的差異，請參閱 [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要**：只有在建立 ISE 時才可使用此選項，而且稍後無法變更。 |
    | **額外容量** | 進階： <br>是 <p><p>開發人員： <br>不適用 | 進階： <br>0 到 10 <p><p>開發人員： <br>不適用 | 此 ISE 資源要額外使用的處理單位數。 若要在建立後新增容量，請參閱[新增 ISE 容量](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 |
-   | **存取端點** | 是 | **內部** 或 **外部** | 要用於 ISE 的存取端點類型。 這些端點會判斷 ISE 中邏輯應用程式上的要求或 Webhook 觸發程序是否可以接收來自您虛擬網路外部的呼叫。 <p><p>例如，如果您想要使用下列以 webhook 為基礎的觸發程式，請確定您選取 [ **外部** ]： <p><p>-Azure DevOps <br>-Azure 事件方格 <br>-Common Data Service <br>-Office 365 <br>-SAP (ISE 版本)  <p><p>您的選擇也會影響您可以在邏輯應用程式執行歷程記錄中檢視和存取輸入和輸出的方式。 如需詳細資訊，請參閱 [ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要** ：您只能在 ISE 建立期間選取存取端點，而且稍後無法變更此選項。 |
-   | **虛擬網路** | 是 | <*Azure-virtual-network-name*> | 要插入環境的 Azure 虛擬網路，讓該環境中的邏輯應用程式可以存取虛擬網路。 如果您沒有網路，請[先建立 Azure 虛擬網路](../virtual-network/quick-create-portal.md)。 <p><p>**重要** ：您「只」可以在建立您的 ISE 時執行此插入作業。 |
+   | **存取端點** | 是 | **內部** 或 **外部** | 要用於 ISE 的存取端點類型。 這些端點會判斷 ISE 中邏輯應用程式上的要求或 Webhook 觸發程序是否可以接收來自您虛擬網路外部的呼叫。 <p><p>例如，如果您想要使用下列以 webhook 為基礎的觸發程式，請確定您選取 [ **外部**]： <p><p>-Azure DevOps <br>-Azure 事件方格 <br>-Common Data Service <br>-Office 365 <br>-SAP (ISE 版本)  <p><p>您的選擇也會影響您可以在邏輯應用程式執行歷程記錄中檢視和存取輸入和輸出的方式。 如需詳細資訊，請參閱 [ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要**：您只能在 ISE 建立期間選取存取端點，而且稍後無法變更此選項。 |
+   | **虛擬網路** | 是 | <*Azure-virtual-network-name*> | 要插入環境的 Azure 虛擬網路，讓該環境中的邏輯應用程式可以存取虛擬網路。 如果您沒有網路，請[先建立 Azure 虛擬網路](../virtual-network/quick-create-portal.md)。 <p><p>**重要**：您「只」可以在建立您的 ISE 時執行此插入作業。 |
    | **子網路** | 是 | <*subnet-resource-list*> | ISE 需要四個 *空白* 子網，這是在您的 ISE 中建立和部署資源所需的子網，供內部 Logic Apps 元件使用，例如連接器和快取效能。 <p>**重要** 事項：請務必 [先檢查子網需求，再繼續進行這些步驟來建立您的子網](#create-subnet)。 |
    |||||
 
@@ -227,9 +235,9 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
    * 如果使用 [ExpressRoute](../expressroute/expressroute-introduction.md)，您必須[建立具有下列路由的路由表](../virtual-network/manage-route-table.md)，並將該路由表與 ISE 所使用的每個子網路連結在一起：
 
-     **名稱** ：< *route-name*><br>
-     **位址首碼** ：0.0.0.0/0<br>
-     **下一個躍點** ：Internet
+     **名稱**：<*route-name*><br>
+     **位址首碼**：0.0.0.0/0<br>
+     **下一個躍點**：Internet
 
    1. 在 [子網路] 清單底下，選取 [管理子網路設定]。
 
@@ -241,7 +249,7 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
    1. 在 [新增子網路] 窗格中，提供這項資訊。
 
-      * **Name** ：您的子網路名稱
+      * **Name**：您的子網路名稱
       * **位址範圍 (CIDR 區塊)** ：在您虛擬網路中且使用 CIDR 格式的子網路範圍
 
       ![新增子網路詳細資料](./media/connect-virtual-network-vnet-isolated-environment/provide-subnet-details.png)
@@ -280,9 +288,9 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
 1. 如果 ISE 具有 *外部* 端點存取權，您必須建立網路安全性群組（如果您還沒有的話），並新增輸入安全性規則，以允許來自受控連接器輸出 IP 位址的流量。 若要設定此規則，請遵循下列步驟：
 
-   1. 在 ISE 功能表的 [ **設定** ] 底下，選取 [ **屬性** ]。
+   1. 在 ISE 功能表的 [ **設定**] 底下，選取 [ **屬性**]。
 
-   1. 在 [ **連接器連出 ip 位址** ] 底下，複製 [公用 IP 位址範圍]，這也會出現在本文中， [限制和設定輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)。
+   1. 在 [ **連接器連出 ip 位址**] 底下，複製 [公用 IP 位址範圍]，這也會出現在本文中， [限制和設定輸出 IP 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)。
 
    1. 建立網路安全性群組（如果您還沒有的話）。
    

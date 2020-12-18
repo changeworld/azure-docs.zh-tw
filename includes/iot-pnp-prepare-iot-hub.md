@@ -5,12 +5,12 @@ ms.service: iot-pnp
 ms.topic: include
 ms.date: 03/17/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3ac72360db5fb3d075b4caa3208f372f22441c7b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ea5d4ef26fb14e22b871bb4bfa1054cb749d38e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92756089"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673015"
 ---
 ## <a name="prepare-an-iot-hub"></a>準備 IoT 中樞
 
@@ -34,9 +34,6 @@ az group create --name my-pnp-resourcegroup \
 az iot hub create --name <YourIoTHubName> \
     --resource-group my-pnp-resourcegroup --sku F1
 ```
-
-> [!NOTE]
-> IoT 隨插即用目前只能在美國中部、北歐和日本東部區域中建立的 IoT 中樞上使用。 基本層 IoT 中樞並未包含 IoT 隨插即用支援。
 
 執行下列命令，在 IoT 中樞建立裝置身分識別。 將 `<YourIoTHubName>` 和 `<YourDeviceID>` 預留位置取代為您選擇的「IoT 中樞名稱」和「裝置識別碼」。
 

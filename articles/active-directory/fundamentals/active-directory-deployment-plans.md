@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 069cf348bb6d0432d02a8350bc0847c2b155f90a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498076"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672376"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署方案
 尋找部署 Azure Active Directory (Azure AD) 功能的端對端指引嗎？ Azure AD 部署計畫會逐步引導您完成商務價值、規劃考慮，以及成功部署常見 Azure AD 功能所需的操作程式。
@@ -29,7 +29,7 @@ ms.locfileid: "96498076"
 
 | 功能 | 描述|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) 是 Microsoft 的雙步驟驗證解決方案。 Azure AD MFA 可使用管理員核准的驗證方法，以利保護對資料與應用程式的存取，同時達到對簡單登入程序的需求。 |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) 是 Microsoft 的雙步驟驗證解決方案。 Azure AD MFA 可使用管理員核准的驗證方法，以利保護對資料與應用程式的存取，同時達到對簡單登入程序的需求。 觀看這段影片， [瞭解如何在您的租使用者中設定和強制執行多重要素驗證](https://www.youtube.com/watch?v=qNndxl7gqVM)|
 | [條件式存取](../conditional-access/plan-conditional-access.md)| 使用條件式存取，您可以實作自動化的存取控制決定，以根據條件指出誰可以存取雲端應用程式。 |
 | [自助式密碼重設](../authentication/howto-sspr-deployment.md)| 自助式密碼重設可協助您的使用者在不需要系統管理員介入的情況下，重設其密碼。 |
 | [無密碼](../authentication/howto-authentication-passwordless-deployment.md) | 在您的組織中使用 Microsoft Authenticator 應用程式或 FIDO2 安全性金鑰來執行無密碼 authentication |

@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a0dd00709dbe8a1b0e037fe22750adea7e071162
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 04427a1eb2760e44086003a06ed4eb0d5cb473bf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371997"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673319"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>適用於 Kubernetes 的 Azure Defender 簡介
 
@@ -31,7 +31,7 @@ Azure 資訊安全中心和 AKS 形成了最佳的雲端原生 Kubernetes 安全
 |版本狀態：|正式上市 (GA)|
 |定價：|**適用於 Kubernetes 的 Azure Defender** 的計費方式如 [定價頁面](security-center-pricing.md)所示|
 |必要的角色和權限：|**安全性管理員** 可以關閉警示。<br>**安全性讀取者** 可以查看結果。|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 中國 Gov<br>![否](./media/icons/no-icon.png) 美國 Gov、其他 Gov|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>適用於 Kubernetes 的 Azure Defender 有哪些優點？

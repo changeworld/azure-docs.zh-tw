@@ -3,14 +3,15 @@ title: 針對 Azure 應用程式 Insights 快照偵錯工具進行疑難排解
 description: 本文提供疑難排解步驟和資訊，以協助開發人員啟用和使用 Application Insights 快照偵錯工具。
 ms.topic: conceptual
 author: cweining
+ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1f799634fac223670db5c38effbe7fc29cf6f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560894"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673547"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 針對啟用 Application Insights 快照偵錯工具或查看快照集的問題進行疑難排解
 如果您已為應用程式啟用 Application Insights 快照偵錯工具，但是未看到例外狀況的快照集，您可以使用這些指示來進行疑難排解。

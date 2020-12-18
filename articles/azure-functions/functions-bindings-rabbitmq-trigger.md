@@ -4,15 +4,15 @@ description: 瞭解如何在建立 RabbitMQ 訊息時執行 Azure 函數。
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/16/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630729"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673982"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions 總覽的 RabbitMQ 觸發程式
 
@@ -32,7 +32,7 @@ ms.locfileid: "97630729"
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] BasicDeliverEventArgs args,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] BasicDeliverEventArgs args,
     ILogger logger
     )
 {
@@ -50,7 +50,7 @@ public class TestClass
 
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] TestClass pocObj,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
     ILogger logger
     )
 {
@@ -74,7 +74,7 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -105,7 +105,7 @@ public static void Run(string myQueueItem, ILogger log)
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -134,7 +134,7 @@ RabbitMQ 系結是在 [*類型*] 設定為的 *function.js* 中定義 `RabbitMQT
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -155,7 +155,7 @@ def main(myQueueItem) -> None:
 ```java
 @FunctionName("RabbitMQTriggerExample")
 public void run(
-    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnection", queueName = "queue") String input,
+    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnectionAppSetting", queueName = "queue") String input,
     final ExecutionContext context)
 {
     context.getLogger().info("Java HTTP trigger processed a request." + input);
@@ -180,7 +180,7 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 }
 ```
 
-如需完整範例，請參閱 C# 範例。
+如需完整範例，請參閱 c # [範例](#example)。
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
@@ -278,9 +278,9 @@ Python 指令碼不支援屬性。
 |屬性  |預設 | 描述 |
 |---------|---------|---------|
 |prefetchCount|30|取得或設定訊息接收者可以同時要求並快取的訊息數目。|
-|queueName|n/a| 要接收訊息的佇列名稱。 |
-|connectionString|n/a|包含 RabbitMQ 訊息佇列連接字串之應用程式設定的名稱。 請注意，如果您直接指定連接字串，而不是透過 local.settings.js中的應用程式設定，則觸發程式將無法運作。|
-|連接埠|0|如果使用 connectionString) 可在每個縮放的實例上同時處理的最大會話數目，就會忽略 (。|
+|queueName|n/a| 要接收訊息的佇列名稱。|
+|connectionString|n/a|RabbitMQ 訊息佇列連接字串。 請注意，直接在這裡指定連接字串，而不是透過應用程式設定。|
+|連接埠|0|如果使用 ConnectionStringSetting) 取得或設定使用的埠， (會忽略。 預設為 0。|
 
 ## <a name="local-testing"></a>本機測試
 
@@ -315,6 +315,6 @@ Python 指令碼不支援屬性。
 * 啟用 [RabbitMQ 管理外掛程式](https://www.rabbitmq.com/management.html)
 * 流覽至 HTTP：//{node-hostname}：15672，並使用您的使用者名稱和密碼登入。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [傳送 RabbitMQ 訊息 Azure Functions (輸出系結) ](./functions-bindings-rabbitmq-output.md)

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/21/2019
+ms.date: 12/17/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8633ae0d23650eb12ee2e1fdcd355864dfd8b6c3
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bfff8d450a6506cb37730838e4f70609080ca7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743627"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670786"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>& insights (preview) 的驗證方法使用方式
 
@@ -31,7 +31,7 @@ ms.locfileid: "96743627"
 - 安全性系統管理員
 - 報告讀者
 
-不需要額外的授權即可存取使用量和深入解析。 Azure AD Multi-Factor Authentication 和自助式密碼重設 (SSPR) 授權資訊可于 [Azure Active Directory 定價網站](https://azure.microsoft.com/pricing/details/active-directory/)上找到。
+ 需要 Azure AD Premium P1 或 P2 授權才能存取使用量和深入解析。 Azure AD Multi-Factor Authentication 和自助式密碼重設 (SSPR) 授權資訊可于 [Azure Active Directory 定價網站](https://azure.microsoft.com/pricing/details/active-directory/)上找到。
 
 ## <a name="how-it-works"></a>運作方式
 
@@ -66,7 +66,7 @@ ms.locfileid: "96743627"
 [註冊詳細資料] 報表會顯示每個使用者的下列資訊：
 
 - 名稱
-- [使用者名稱]
+- 使用者名稱
 - 註冊狀態 (全部、已註冊、未註冊) 
 - 啟用狀態 (全部、已啟用、未啟用) 
 - 可 (所有、功能、無法) 的可用狀態
@@ -81,7 +81,7 @@ ms.locfileid: "96743627"
 [重設詳細資料] 報表會顯示過去30天內的註冊和重設事件，包括：
 
 - 名稱
-- [使用者名稱]
+- 使用者名稱
 - 功能 (全部、註冊、重設) 
 - 驗證方法 (代理程式更新、應用程式程式碼、通話、辦公室電話、SMS、電子郵件、安全性問題) 
 - 狀態 ([全部]、[成功]、[失敗]) 

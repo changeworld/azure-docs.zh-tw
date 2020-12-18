@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: f87ed9b7455bed870cf25a6920cc6295811d94c8
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b2bf406dcab626b3ac08caf1a21ffea9332d3ca2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617063"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672639"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 
@@ -29,6 +29,8 @@ Azure Functions 支援相依性插入 (DI) 軟體設計模式，這是在類別�
 - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Microsoft.NET.Sdk.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) 套件 1.0.28 版或更新版本
+
+- [擴充](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) 目前僅支援2.x 版和較早版本的 () 
 
 ## <a name="register-services"></a>註冊伺服器
 

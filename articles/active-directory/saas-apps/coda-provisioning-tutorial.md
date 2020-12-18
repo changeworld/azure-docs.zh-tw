@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: ea2f25d6b03f002448079b16bd261729807d8a03
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8df1588a78829252d55f82349d6889c754c989e6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179687"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673220"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>教學課程：設定 Coda 來自動佈建使用者
 
@@ -87,13 +87,13 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，和/或根據使�
 
     ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
-4. 將 [佈建模式]  設定為 [自動]  。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段底下，輸入您稍早在步驟 2 中擷取的 Coda 租用戶 URL 和祕密權杖。 按一下 [測試連線]，以確保 Azure AD 可以連線至 Coda。 如果連線失敗，請確定您的 Coda 帳戶具有管理員權限並再試一次。
 
-    ![顯示 [管理員認證] 對話方塊的螢幕擷取畫面，您可以在其中輸入您的租用戶 URL 和祕密權杖。](./media/coda-provisioning-tutorial/provisioning.png)
+     ![顯示 [管理員認證] 對話方塊的螢幕擷取畫面，您可以在其中輸入您的租用戶 URL 和祕密權杖。](./media/coda-provisioning-tutorial/provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 
@@ -123,7 +123,7 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，和/或根據使�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-13. 當您準備好要佈建時，按一下 [儲存]  。
+13. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
@@ -134,7 +134,7 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，和/或根據使�
 
 1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md) \(部分機器翻譯\) 深入了解隔離狀態。
 
 ## <a name="additional-resources"></a>其他資源
 

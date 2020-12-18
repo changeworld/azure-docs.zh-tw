@@ -3,12 +3,12 @@ title: 沒有800計數限制的資源
 description: 列出可在資源群組中有超過800個實例的 Azure 資源類型。
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: cec7ea87bbe81d3bfcca37f3133ac650e66f849f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: c2d5797a7ec354f41d510ec6e884968bf9dbdbcd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913495"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672359"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>資源不限於每個資源群組800個實例
 
@@ -81,7 +81,7 @@ ms.locfileid: "92913495"
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
-* labs/virtualMachines-預設限制為800個實例。 您可以聯繫支援人員來增加該限制。
+* labs/virtualMachines-預設限制為800個實例。 
 * schedules
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
@@ -211,6 +211,6 @@ ms.locfileid: "92913495"
 * apiManagementAccounts/apis
 * sites
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需配額和限制的完整清單，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](azure-subscription-service-limits.md)。

@@ -2,13 +2,13 @@
 title: 部署多個資源實例
 description: 使用 Azure Resource Manager 範本中的複製作業和陣列 (ARM 範本) 部署資源類型多次。
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 47f3d693b84347973889a6003360d7113c427f4d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: 7a894ee6a31a43dd8da3d84d88276824c6bbc9f7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905905"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672826"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 範本中的資源反復專案
 
@@ -18,7 +18,7 @@ ms.locfileid: "96905905"
 
 若需要指定是否要部署資源，請參閱[條件元素](conditional-resource-deployment.md)。
 
-## <a name="syntax"></a>語法
+## <a name="syntax"></a>Syntax
 
 `copy`元素具有下列一般格式：
 
@@ -85,7 +85,7 @@ ms.locfileid: "96905905"
 }
 ```
 
-請注意，每個資源的名稱均包含 `copyIndex()` 函式，並會傳回目前的反覆項目迴圈。 `copyIndex()` 以零為起始。 因此，下列範例：
+請注意，每個資源的名稱均包含 `copyIndex()` 函式，並會傳回目前的反覆項目迴圈。 `copyIndex()`是以零為基礎。 因此，下列範例：
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -281,7 +281,7 @@ ms.locfileid: "96905905"
 
 下列範例顯示為資源或屬性建立多個執行個體的常見案例。
 
-|[範本]  |描述  |
+|範本  |描述  |
 |---------|---------|
 |[複製儲存體](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |利用名稱中的索引編號來部署多個儲存體帳戶。 |
 |[序列複製儲存體](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次一個部署數個儲存體帳戶。 名稱包含索引編號。 |
@@ -292,10 +292,9 @@ ms.locfileid: "96905905"
 ## <a name="next-steps"></a>後續步驟
 
 * 若要進行教學課程，請參閱 [教學課程：使用 ARM 範本建立多個資源實例](template-tutorial-create-multiple-instances.md)。
+* 如需涵蓋資源複製的 Microsoft Learn 模組，請參閱 [使用 ADVANCED ARM 範本功能管理複雜的雲端部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 * 如需複製元素的其他用途，請參閱：
   * [ARM 範本中的屬性反復專案](copy-properties.md)
   * [ARM 範本中的變數反復專案](copy-variables.md)
   * [ARM 範本中的輸出反復專案](copy-outputs.md)
 * 如需搭配使用複製與嵌套範本的詳細資訊，請參閱 [使用複製](linked-templates.md#using-copy)。
-* 如果您想要瞭解範本的區段，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
-* 若要瞭解如何部署您的範本，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。

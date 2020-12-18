@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cf8fdfe0c8eb557946baa95d0d8beb2b388baa5
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653327"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674441"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>從 Azure 入口網站管理 IoT Central
 
@@ -41,7 +41,7 @@ ms.locfileid: "91653327"
 
 ![建立 IoT Central 表單](media/howto-manage-iot-central-from-portal/image6a.png)
 
-[位置]  是您要在其中建立應用程式的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 一般而言，您應選擇實際上與您的裝置最接近的位置，以取得最佳效能。 Azure IoT Central 目前適用于**澳大利亞**、**亞太地區**、**歐洲**、**美國**、英國和**日本**地區。 **United Kingdom** 選擇位置後，即無法將應用程式移到不同的位置。
+[位置]  是您要在其中建立應用程式的[地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)。 一般而言，您應選擇實際上與您的裝置最接近的位置，以取得最佳效能。 Azure IoT Central 目前適用于 **澳大利亞**、**亞太地區**、**歐洲**、**美國**、英國和 **日本** 地區。  選擇位置後，即無法將應用程式移到不同的位置。
 
 填寫所有欄位之後，請選取 [ **建立**]。
 
@@ -50,7 +50,7 @@ ms.locfileid: "91653327"
 如果您已有 Azure IoT Central 應用程式，則可以將其刪除，或移至 Azure 入口網站中的其他訂用帳戶或資源群組。
 
 > [!NOTE]
-> 因為未與您的訂用帳戶相關聯，所以您看不到在 Azure 入口網站的免費定價方案上所建立的應用程式。
+> 使用 *免費* 方案建立的應用程式不需要 azure 訂用帳戶，因此您在 Azure 入口網站的 azure 訂用帳戶中不會列出這些應用程式。 您只能從 IoT Central 入口網站查看及管理免費的應用程式。
 
 若要開始使用，請選取入口網站中的 **所有資源** 。 選取 [ **顯示隱藏的類型** ]，然後開始在 [ **依名稱篩選** ] 中輸入您的應用程式名稱來尋找它。 然後選取您想要管理的 IoT Central 應用程式。
 

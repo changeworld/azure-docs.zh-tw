@@ -2,20 +2,20 @@
 title: 在 Azure App Service 中啟用 .NET 應用程式的快照偵錯工具 |Microsoft Docs
 description: 在 Azure App Service 中啟用 .NET 應用程式的快照偵錯工具
 ms.topic: conceptual
-author: brahmnes
-ms.author: bfung
+author: cweining
+ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 35653840c5ddd6f5ae2d5dc078513f0fa35ab34a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0fc46c815906b9aaca7b3ce964e0d23cfdc4e1aa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560928"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673569"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure App Service 中啟用 .NET 應用程式的快照偵錯工具
 
-快照偵錯工具目前適用于在 Windows 服務方案 Azure App Service 上執行的 ASP.NET 和 ASP.NET Core 應用程式。 使用快照偵錯工具時，建議您在基本服務層級或更高版本上執行您的應用程式。 在大部分的應用程式中，免費和共用的服務層級沒有足夠的記憶體來儲存快照集。
+快照偵錯工具目前適用于在 Windows 服務方案 Azure App Service 上執行的 ASP.NET 和 ASP.NET Core 應用程式。 使用快照偵錯工具時，建議您在基本服務層級或更高版本上執行您的應用程式。 在大部分的應用程式中，免費和共用的服務層級沒有足夠的記憶體或磁碟空間來儲存快照集。
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> 啟用快照偵錯工具
 若要為應用程式啟用快照偵錯工具，請遵循下列指示。

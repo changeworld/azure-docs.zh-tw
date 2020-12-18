@@ -4,15 +4,15 @@ description: 您可以使用 Azure Active Directory (Azure AD) ，提供 AzCopy 
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 12/17/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617403"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672486"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>使用 AzCopy 和 Azure Active Directory (Azure AD 授與 blob 的存取權) 
 
@@ -185,7 +185,9 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 
 ## <a name="authorize-without-a-secret-store"></a>沒有秘密存放區的授權
 
-如果您的作業系統沒有像是 Linux *keyring* 的秘密存放區，命令將 `azcopy login` 無法運作。 相反地，您可以在執行每項作業之前，先設定記憶體中的環境變數。 
+此 `azcopy login` 命令會抓取 OAuth 權杖，然後將該權杖放入您系統上的秘密存放區。 如果您的作業系統沒有任何秘密存放區（例如 Linux *keyring*）， `azcopy login` 命令將無法運作，因為沒有地方可放置權杖。 
+
+`azcopy login`您可以設定記憶體中的環境變數，而不是使用命令。 然後執行任何 AzCopy 命令。 AzCopy 將會取得完成作業所需的驗證權杖。 作業完成之後，權杖就會從記憶體中消失。 
 
 ### <a name="authorize-a-user-identity"></a>授權使用者身分識別
 
@@ -248,8 +250,6 @@ export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
 設定這些變數之後，您可以執行任何 azcopy 命令 (例如： `azcopy list https://contoso.blob.core.windows.net`) 。
 
 ### <a name="authorize-a-service-principal"></a>授權服務主體
-
-執行腳本之前，您必須以互動方式至少登入一次，才能提供 AzCopy 給服務主體的認證。  這些認證會儲存在安全和加密的檔案中，因此您的腳本不需要提供該機密資訊。
 
 您可以使用用戶端密碼或使用與服務主體應用程式註冊相關聯之憑證的密碼，來登入您的帳戶。
 

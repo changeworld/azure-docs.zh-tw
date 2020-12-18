@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179688"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673659"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>教學課程：教學課程︰設定 Clarizen One 來自動佈建使用者
 
@@ -78,19 +78,19 @@ ms.locfileid: "96179688"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [企業應用程式]   > [所有應用程式]  。
 
-    ![顯示 [企業應用程式] 窗格的螢幕擷取畫面。](common/enterprise-applications.png)
+      ![顯示 [企業應用程式] 窗格的螢幕擷取畫面。](common/enterprise-applications.png)
 
 1. 在應用程式清單中，選取 [Clarizen One]。
 
-    ![在應用程式清單中顯示 Clarizen One 連結的螢幕擷取畫面。](common/all-applications.png)
+      ![在應用程式清單中顯示 Clarizen One 連結的螢幕擷取畫面。](common/all-applications.png)
 
 1. 選取 [佈建]  索引標籤。
 
-    ![顯示 [佈建] 索引標籤的螢幕擷取畫面。](common/provisioning.png)
+      ![顯示 [佈建] 索引標籤的螢幕擷取畫面。](common/provisioning.png)
 
 1. 將 [佈建模式] 設定為 [自動]。
 
-    ![顯示 [佈建] 索引標籤 [自動] 選項的螢幕擷取畫面。](common/provisioning-automatic.png)
+      ![顯示 [佈建] 索引標籤 [自動] 選項的螢幕擷取畫面。](common/provisioning-automatic.png)
 
 1. 在 [管理員認證] 區段底下，輸入您的 Clarizen One [租用戶 URL] 和 [秘密權杖]。 選取 [測試連線]，以確定 Azure AD 可連線至 Clarizen One。 如果連線失敗，請確定您的 Clarizen One 帳戶具有管理員權限，然後再試一次。
 
@@ -120,7 +120,7 @@ ms.locfileid: "96179688"
    |name.familyName|String|
    |name.formatted|String|
    |name.honorificPrefix|String|
-   |name.honorificSuffix|字串|
+   |name.honorificSuffix|String|
    |addresses[type eq "other"].formatted|String|
    |addresses[type eq "work"].formatted|String|
    |addresses[type eq "work"].country|String|
@@ -162,15 +162,15 @@ ms.locfileid: "96179688"
 
 1. 若要啟用 Clarizen One 的 Azure AD 佈建服務，請在 [設定] 區段中，將 [佈建狀態] 變更為 [開啟]。
 
-    ![顯示將 [佈建狀態] 切換為 [開啟] 的螢幕擷取畫面。](common/provisioning-toggle-on.png)
+      ![顯示將 [佈建狀態] 切換為 [開啟] 的螢幕擷取畫面。](common/provisioning-toggle-on.png)
 
 1. 藉由在 [設定] 區段的 [範圍] 中選取所需的值，定義要佈建至 Clarizen One 的使用者或群組。
 
-    ![顯示佈建範圍的螢幕擷取畫面。](common/provisioning-scope.png)
+      ![顯示佈建範圍的螢幕擷取畫面。](common/provisioning-scope.png)
 
 1. 準備好要佈建時，請選取 [儲存]。
 
-    ![顯示儲存佈建設定的螢幕擷取畫面。](common/provisioning-configuration-save.png)
+      ![顯示儲存佈建設定的螢幕擷取畫面。](common/provisioning-configuration-save.png)
 
 此作業會對在 [設定] 區段的 [範圍] 中所定義所有使用者和群組啟動首次同步處理週期。 初始週期會比後續週期花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。
 

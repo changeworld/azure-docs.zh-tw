@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: a87a08db672c459138fc1efd865332dc0f19944e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586585"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673294"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Adobe Identity Management
 
@@ -35,7 +35,7 @@ ms.locfileid: "97586585"
 > * 在 Adobe 身分識別管理中布建群組和群組成員資格
 > * 單一登入 Adobe Identity Management (建議的) 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -57,15 +57,15 @@ ms.locfileid: "97586585"
 
 2. 按一下 [ **加入同步**]。
 
-      ![新增](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
+    ![加](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
 
 3. **從 Microsoft Azure** 選取 [同步處理使用者]，然後按 **[下一步]**。
 
-      ![顯示選取 [同步使用者自 Microsoft Azure Active Directory] 的螢幕擷取畫面。](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+    ![顯示選取 [同步使用者自 Microsoft Azure Active Directory] 的螢幕擷取畫面。](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. 複製並儲存 **租使用者 URL** 和 **秘密權杖**。 這些值將會在 [ **租使用者 URL** ] 和 [ **秘密權杖** ] 欄位中輸入 Azure 入口網站中 Adobe Identity Management 應用程式的 [布建] 索引標籤中。
 
-      ![同步](media/adobe-identity-management-provisioning-tutorial/token.png)
+    ![同步](media/adobe-identity-management-provisioning-tutorial/token.png)
 
 ## <a name="step-3-add-adobe-identity-management-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增 Adobe 身分識別管理
 
@@ -124,7 +124,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |addresses[type eq "work"].country|String|
    |name.givenName|String|
    |name.familyName|String|
-   |urn： ietf： params： scim：架構： extension： Adobe：2.0： User： emailAliases|字串|
+   |urn： ietf： params： scim：架構： extension： Adobe：2.0： User： emailAliases|String|
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Adobe 身分識別管理**]。
 

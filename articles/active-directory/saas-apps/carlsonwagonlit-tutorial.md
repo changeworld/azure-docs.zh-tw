@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 86c2d9585abd546acb3efb22256d3f3b70bfb972
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302953"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>教學課程：Azure Active Directory 與 Carlson Wagonlit Travel 整合
 
@@ -63,7 +63,7 @@ ms.locfileid: "96302953"
 
 4. 在搜尋方塊中，輸入 **Carlson Wagonlit Travel**，從結果面板中選取 [Carlson Wagonlit Travel]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Carlson Wagonlit Travel](common/search-new-app.png)
+    ![結果清單中的 Carlson Wagonlit Travel](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -138,7 +138,7 @@ ms.locfileid: "96302953"
     ![[使用者] 對話方塊](common/user-properties.png)
 
     a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
-  
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

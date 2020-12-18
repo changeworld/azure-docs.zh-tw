@@ -1,14 +1,14 @@
 ---
 title: 將受控服務供應專案發佈至 Azure Marketplace
 description: 瞭解如何將將上線客戶的受控服務供應專案發佈至 Azure Lighthouse。
-ms.date: 08/18/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a003e671631e9f23654eb524c7c2d937339a9588
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023920"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673149"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>將受控服務供應專案發佈至 Azure Marketplace
 
@@ -18,7 +18,7 @@ ms.locfileid: "96023920"
 
 您必須 [在合作夥伴中心中](../../marketplace/partner-center-portal/create-account.md) 有有效的帳戶，才能建立和發佈供應專案。 如果您還沒有帳戶， [註冊](https://aka.ms/joinmarketplace) 程式會引導您完成在合作夥伴中心中建立帳戶，並在商業 Marketplace 方案中註冊的步驟。
 
-根據 [受管理的服務供應專案認證需求](/legal/marketplace/certification-policies#7004-business-requirements)，您必須擁有 [銀級或金級雲端平臺專長認證等級](/partner-center/learn-about-competencies) 或 [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) ，才能發佈受控服務供應專案。
+根據 [受管理的服務供應專案認證需求](/legal/marketplace/certification-policies#7004-business-requirements)，您必須擁有 [銀級或金級雲端平臺專長認證等級](/partner-center/learn-about-competencies) 或 [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) ，才能發佈受控服務供應專案。 您也必須輸入潛在客戶目的地，在客戶每次部署您的供應專案時 [，將會在 CRM 系統中建立記錄](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#customer-leads) 。
 
 您的 Microsoft 合作夥伴網路 (MPN) 識別碼將會與您發佈的供應項目[自動關聯](../../cost-management-billing/manage/link-partner-id.md) \(部分機器翻譯\)，以追蹤您對客戶參與整體的影響。
 

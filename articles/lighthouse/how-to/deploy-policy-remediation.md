@@ -1,14 +1,14 @@
 ---
 title: 部署可補救的原則
 description: 若要透過 Azure Lighthouse 部署使用補救工作的原則，您必須在客戶租使用者中建立受控識別。
-ms.date: 08/12/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010090"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670486"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>部署可在委派的訂用帳戶內補救的原則
 
@@ -41,7 +41,7 @@ ms.locfileid: "96010090"
 
 ## <a name="deploy-policies-that-can-be-remediated"></a>部署可補救的原則
 
-當您建立具有上述必要許可權的使用者之後，使用者就可以在客戶租使用者中部署使用補救工作的原則。
+一旦您建立具有上述必要許可權的使用者，該使用者就可以在委派的客戶訂用帳戶內部署使用補救工作的原則。
 
 例如，假設您想要啟用客戶租使用者中 Azure Key Vault 資源的診斷，如本 [範例](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)所示。 管理租用戶中具有適當權限的使用者 (如上所述) 會部署 [Azure Resource Manager 範本](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json)以啟用此案例。
 

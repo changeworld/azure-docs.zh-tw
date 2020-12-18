@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956d11ea2a4b011a792827357c3f4627058ead9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1f0c94ba6fb9ee5ab019458043095271123e325e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97651985"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671007"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 雲端佈建的先決條件
 本文提供如何選擇及使用 Azure Active Directory (Azure AD) Connect 雲端佈建作為身分識別的指引。
@@ -62,14 +62,11 @@ ms.locfileid: "97651985"
     > | 12 | 4 GB |
     > | 18 | 5.5 GB|
     > | 28 | 10 + GB|
-    >
-    > 
 
 2. 本機伺服器上的 PowerShell 執行原則必須設定為 Undefined 或 RemoteSigned。
 
 3. 如果伺服器與 Azure AD 之間有防火牆，請設定下列項目：
-
-   - 確定代理程式可透過下列連接埠對 Azure AD 提出 *輸出* 要求：
+    - 確定代理程式可透過下列連接埠對 Azure AD 提出 *輸出* 要求：
 
       | 連接埠號碼 | 使用方式 |
       | --- | --- |
@@ -78,13 +75,13 @@ ms.locfileid: "97651985"
       |**8082**|如果您想要設定其管理 API，則需要安裝此參數。  此埠可在代理程式安裝完成後移除，如果您不打算使用 API。   |
       | **8080** (選擇性) | 如果無法使用連接埠 443，則代理程式會透過連接埠 8080 每 10 分鐘報告其狀態一次。 此狀態會顯示在 Azure 入口網站中。 |
 
-   - 如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
-   - 如果防火牆或 Proxy 允許指定安全尾碼，請將連線新增至 \*.msappproxy.net 和 \*.servicebus.windows.net。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
-   - 代理程式必須可存取 login.windows.net 與 login.microsoftonline.com，才能進行初始註冊。 因此也請針對這些 URL 開啟您的防火牆。
-   - 為了驗證憑證，請解除封鎖下列 URL：mscrl.microsoft.com:80、crl.microsoft.com:80、ocsp.msocsp.com:80 和 www\.microsoft.com:80。 這些 URL 會用於其他 Microsoft 產品的憑證驗證，因此可能已將這些 URL 解除封鎖。
+    - 如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
+    - 如果防火牆或 Proxy 允許指定安全尾碼，請將連線新增至 \*.msappproxy.net 和 \*.servicebus.windows.net。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
+    - 代理程式必須可存取 login.windows.net 與 login.microsoftonline.com，才能進行初始註冊。 因此也請針對這些 URL 開啟您的防火牆。
+    - 為了驗證憑證，請解除封鎖下列 URL：mscrl.microsoft.com:80、crl.microsoft.com:80、ocsp.msocsp.com:80 和 www\.microsoft.com:80。 這些 URL 會用於其他 Microsoft 產品的憑證驗證，因此可能已將這些 URL 解除封鎖。
 
->[!NOTE]
-> 不支援在 Windows Server Core 上安裝雲端佈建代理程式。
+    >[!NOTE]
+    > 不支援在 Windows Server Core 上安裝雲端佈建代理程式。
 
 ### <a name="additional-requirements"></a>其他需求
 
@@ -92,8 +89,8 @@ ms.locfileid: "97651985"
 
 #### <a name="tls-requirements"></a>TLS 需求
 
->[!NOTE]
->傳輸層安全性 (TLS) 是為了安全通訊所提供的通訊協定。 變更 TLS 設定會影響整個樹系。 如需詳細資訊，請參閱[更新為啟用 TLS 1.1 和 TLS 1.2 作為 Windows WinHTTP 中的預設安全通訊協定](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)。
+> [!NOTE]
+> 傳輸層安全性 (TLS) 是為了安全通訊所提供的通訊協定。 變更 TLS 設定會影響整個樹系。 如需詳細資訊，請參閱[更新為啟用 TLS 1.1 和 TLS 1.2 作為 Windows WinHTTP 中的預設安全通訊協定](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi)。
 
 裝載 Azure AD Connect 雲端佈建代理程式的 Windows Server 必須先啟用 TLS 1.2，才能進行安裝。
 
@@ -111,6 +108,7 @@ ms.locfileid: "97651985"
 1. 重新啟動伺服器。
 
 ## <a name="known-limitations"></a>已知限制
+
 以下是已知的限制：
 
 ### <a name="delta-synchronization"></a>差異同步處理

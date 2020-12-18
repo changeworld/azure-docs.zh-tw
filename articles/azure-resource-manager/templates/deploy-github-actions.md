@@ -4,12 +4,12 @@ description: 說明如何使用 GitHub Actions)  (ARM 範本部署 Azure Resourc
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: f8c669393d38d7af2af4f63f251740d8ad72edf7
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 4c1f59e9a18e7359ae543b0311baea0c2a4ab8d6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607298"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674327"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 ARM 範本
 
@@ -158,3 +158,6 @@ https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-st
 
 > [!div class="nextstepaction"]
 > [建立您的第一個 ARM 範本](./template-tutorial-create-first-template.md)
+
+> [!div class="nextstepaction"]
+> [學習模組：使用 GitHub Actions 將 ARM 範本的部署自動化](/learn/modules/deploy-templates-command-line-github-actions/)

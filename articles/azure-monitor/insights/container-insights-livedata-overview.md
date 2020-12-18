@@ -2,23 +2,20 @@
 title: 使用容器的 Azure 監視器來觀看即時資料 (預覽) |Microsoft Docs
 description: 本文說明 Kubernetes 記錄、事件和 pod 計量的即時觀點，而不需要在容器的 Azure 監視器中使用 kubectl。
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346795"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672863"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何即時查看 Kubernetes 記錄、事件和 pod 計量
 
 容器的 Azure 監視器包括即時資料 (預覽) 功能，這是一項先進的診斷功能，可讓您直接存取 Azure Kubernetes Service () stdout/stderror (、事件和 pod 計量) AKS 容器記錄。 它會公開 `kubectl logs -c` 、 `kubectl get` 事件和的直接存取 `kubectl top pods` 。 主控台窗格會顯示容器引擎所產生的記錄、事件和計量，以進一步協助即時疑難排解問題。
 
 本文提供詳細的總覽，並協助您瞭解如何使用這項功能。
-
->[!NOTE]
->這項功能不支援啟用為 [私人](https://azure.microsoft.com/updates/aks-private-cluster/) 叢集的 AKS 叢集。 這項功能依賴從瀏覽器透過 proxy 伺服器直接存取 Kubernetes API。 啟用網路安全性以封鎖此 proxy 的 Kubernetes API 將會封鎖此流量。
 
 如需有關設定或疑難排解即時資料 (預覽) 功能的說明，請參閱我們的 [設定指南](container-insights-livedata-setup.md)。 這項功能可直接存取 Kubernetes API，您可以在 [這裡](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)找到有關驗證模型的其他資訊。
 

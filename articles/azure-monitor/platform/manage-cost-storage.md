@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/22/2020
+ms.date: 12/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 99375abbf8e9749712b878ea35c9bc034bedbc5e
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616139"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671160"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -78,7 +78,7 @@ Log Analytics 費用會新增到您的 Azure 帳單中。 您可以在 Azure 入
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>在 Azure 帳單上檢視 Log Analytics 使用量 
 
-Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)中樞內提供了大量實用功能。 例如，「成本分析」功能可讓您檢視 Azure 資源的花費。 首先，新增依「資源類型」的篩選器 (新增到 microsoft.operationalinsights/workspace for Log Analytics 和 microsoft.operationalinsights/workspace for Log Analytics Clusters) 可讓您追蹤 Log Analytics 的支出。 然後在 [群組依據] 中選取 [計量類別] 或 [計量]。  請注意，Azure 資訊安全中心和 Azure Sentinel 等其他服務也會對 Log Analytics 工作區資源收取使用費用。 若要查看服務名稱的對應，您可以選取 [資料表] 檢視而非圖表。 
+Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)中樞內提供了大量實用功能。 例如，「成本分析」功能可讓您檢視 Azure 資源的花費。 首先，依「資源類型」 (將篩選新增至適用于 Log Analytics 的 operationalinsights/工作區，以及適用于 log analytics 叢集的 operationalinsights/叢集) 可讓您追蹤 Log Analytics 的支出。 然後在 [群組依據] 中選取 [計量類別] 或 [計量]。  請注意，Azure 資訊安全中心和 Azure Sentinel 等其他服務也會對 Log Analytics 工作區資源收取使用費用。 若要查看服務名稱的對應，您可以選取 [資料表] 檢視而非圖表。 
 
 若要更加了解您的使用量，請[從 Azure 入口網站下載使用量](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)。 在下載的試算表中，您可以看到每天每一 Azure 資源 (例如 Log Analytics 工作區) 的使用量。 在此 Excel 試算表中，您可以先在 [計量類別] 資料行進行篩選以顯示「Log Analytics」、「深入解析與分析」(某些舊版定價層會使用) 和「Azure 監視器」(容量保留定價層會使用)，然後在 [執行個體識別碼] 資料行上新增篩選 (「包含工作區」或「包含叢集」，後者可包含 Log Analytics 叢集使用量)，藉此找到 Log Analytics 工作區的使用量。 使用量會顯示在 [已取用的數量] 資料行，每個項目的單位則會顯示在 [測量單位] 資料行。  有更多詳細資料可協助您[了解 Microsoft Azure 帳單](../../cost-management-billing/understand/review-individual-bill.md)。 
 
@@ -150,7 +150,7 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 保留30天的工作區實際上可能保留資料31天。 如果資料一定要保留30天，請使用 Azure Resource Manager 將保留設定為30天，並使用 `immediatePurgeDataOn30Days` 參數。  
 
-根據預設，兩個資料類型（ `Usage` 和 `AzureActivity` -）會保留至少90天，而且此90天保留期不會收費。 如果工作區保留時間增加到超過 90 天，則這些資料類型的保留期也會增加。  這些資料類型也不會有資料擷取費用。 
+`Usage` 和 `AzureActivity` 這兩個資料類型預設會保留至少 90 天，在這 90 天的保留期內不會有任何費用。 如果工作區保留時間增加到超過 90 天，則這些資料類型的保留期也會增加。  這些資料類型也不會有資料擷取費用。 
 
 根據預設，工作區型 Application Insights 資源 (`AppAvailabilityResults`、`AppBrowserTimings`、`AppDependencies`、`AppExceptions`、`AppEvents`、`AppMetrics`、`AppPageViews`、`AppPerformanceCounters`、`AppRequests`、`AppSystemEvents` 和 `AppTraces`) 的資料類型也會保留 90 天，且這 90 天保留期內不會有任何費用。 您可以使用「依資料類型的保留期」功能來調整其保留期。 
 
@@ -216,7 +216,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 > 每日上限無法精確地以指定的端點層級和某些多餘的資料來停止收集資料，尤其是當工作區接收大量資料時。 請參閱 [下](#view-the-effect-of-the-daily-cap) 圖，以瞭解有助於研究每日上限行為的查詢。 
 
 > [!WARNING]
-> 每日上限不會停止收集 Azure 當做或 Azure 資訊安全中心的資料，但在2017年6月19日前安裝 Azure 資訊安全中心的工作區除外。 
+> 每日上限不會停止收集 [Azure 資訊安全中心每個節點的每個節點](#log-analytics-and-security-center) 額度 (Windowsevent 進行篩選、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、Windows 防火牆、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus、UpdateSummary、、、、Update 和) 的資料類型，但在2017年6月19日前安裝 Azure 資訊安全中心的工作區除外。 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>識別要定義的每日資料限制
 
@@ -266,7 +266,7 @@ Usage
 - 警示規則名稱：已達到每日資料限制
 - 嚴重性：警告 (嚴重性 1)
 
-一旦定義警示且達到限制後，警示就會觸發，並執行動作群組中定義的回應。 其可以透過電子郵件和文字簡訊通知您的小組，或使用 Webhook、自動化 Runbook 或[與外部 ITSM 方案整合](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)來自動採取動作。 
+一旦定義警示且達到限制後，警示就會觸發，並執行動作群組中定義的回應。 其可以透過電子郵件和文字簡訊通知您的小組，或使用 Webhook、自動化 Runbook 或[與外部 ITSM 方案整合](itsmc-definition.md#create-itsm-work-items-from-azure-alerts)來自動採取動作。 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>針對使用量高於預期的原因進行疑難排解
 

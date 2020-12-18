@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 7f0eff28533d8cf736d032aff61454a49bcf379e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e3daf89b80daf47049150b05ca392eede360bd3e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449726"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673411"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的容量限制
 
@@ -27,7 +27,7 @@ Azure Synapse Analytics 中專用 SQL 集區的各種元件允許的最大值。
 | 類別 | 描述 | 最大值 |
 |:--- |:--- |:--- |
 | [資料倉儲單位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |單一專用 SQL 集區的 DWU 上限  | Gen1：DW6000<br></br>Gen2：DW30000c |
-| [資料倉儲單位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每一部伺服器的預設 DTU |54,000<br></br>根據預設，每個 SQL server (例如，myserver.database.windows.net) 的 DTU 配額為54000，這允許最高的 DW5000c。 此配額僅是安全限制。 您可以藉由 [建立支援票證](sql-data-warehouse-get-started-create-support-ticket.md) ，並選取 [ *配額* ] 作為要求類型來增加配額。  若要計算 DTU 需求，請將7.5 乘以所需的總 DWU，或將9.5 乘以所需的 cDWU 總數。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW5000c x 9.5 = 47500 Dtu。<br></br>您可以在入口網站的 [SQL Server] 選項中檢視目前的 DTU 耗用量。 已暫停和未暫停的資料庫都會計入 DTU 配額。 |
+| [資料倉儲單位 (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |每一部伺服器的預設 DTU |54,000<br></br>每個 SQL Server (例如 myserver.database.windows.net) 的 DTU 配額為 54,000，最多允許 DW6000c。 此配額僅是安全限制。 您可以藉由 [建立支援票證](sql-data-warehouse-get-started-create-support-ticket.md) ，並選取 [ *配額* ] 作為要求類型來增加配額。  若要計算 DTU 需求，請將7.5 乘以所需的總 DWU，或將9乘以所需的總 cDWU 數。 例如：<br></br>DW6000 x 7.5 = 45,000 DTU<br></br>DW7500c x 9 = 67500 Dtu。<br></br>您可以在入口網站的 [SQL Server] 選項中檢視目前的 DTU 耗用量。 已暫停和未暫停的資料庫都會計入 DTU 配額。 |
 | 資料庫連接 |並行開啟的會話數上限 |1024<br/><br/>並行開啟的會話數目會根據選取的 DWU 而有所不同。 DWU600c 和更新版本最多支援1024個開啟中的會話。 DWU500c 和以下支援最大並行開啟會話限制512。 請注意，可同時執行的查詢數目有所限制。 超過並行存取限制時，要求會進入內部佇列以等待處理。 |
 | 資料庫連接 |準備陳述式的最大記憶體 |20 MB |
 | [工作負載管理](resource-classes-for-workload-management.md) |並行查詢數目上限 |128<br/><br/>  最多會執行128個並行查詢，其餘查詢將會排入佇列。<br/><br/>當使用者指派給較高的資源類別，或當 [資料倉儲單位](memory-concurrency-limits.md) 設定降低時，並行查詢的數目可能會降低。 系統總是會允許某些查詢 (例如 DMV 查詢) 執行，而不影響並行查詢限制。 如需並行查詢執行的詳細資訊，請參閱 [並行](memory-concurrency-limits.md) 存取最大的文章。 |

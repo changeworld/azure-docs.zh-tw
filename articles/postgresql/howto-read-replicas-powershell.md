@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8bacb7a434cfa04dbdfdaf39d9fd3a0baab5f11a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b0a5547928bd7d19343c50e40ab9fcb2c335e893
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489807"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674526"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>如何使用 PowerShell 在適用於 PostgreSQL 的 Azure 資料庫中建立及管理讀取複本
 
@@ -22,7 +22,7 @@ ms.locfileid: "92489807"
 
 您可以使用 PowerShell 來建立及管理讀取複本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作說明指南，您需要：
 
@@ -60,7 +60,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
-  New-AzMariaDServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
+  New-AzPostgreSQLServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
 ```
 
 若要深入瞭解您可以在哪些區域中建立複本，請造訪[參閱複本概念文章](concepts-read-replicas.md)。
@@ -75,15 +75,23 @@ Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
 若要查看指定之主伺服器的所有複本，請執行下列命令：
 
 ```azurepowershell-interactive
-Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
+Get-AzPostgreSQLReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 ```
 
-`Get-AzMariaDReplica` 命令需要下列參數：
+`Get-AzPostgreSQLReplica` 命令需要下列參數：
 
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resourceGroupName |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
 | ServerName | mydemoserver | 主伺服器的名稱或識別碼。 |
+
+### <a name="stop-a-replica-server"></a>停止複本伺服器
+
+停止讀取複本伺服器會將讀取複本升級為獨立的伺服器。 您可以藉由執行 `Update-AzPostgreSqlServer` Cmdlet，並將 ReplicationRole 值設為，來完成此操作 `None` 。
+
+```azurepowershell-interactive
+Update-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -ReplicationRole None
+```
 
 ### <a name="delete-a-replica-server"></a>刪除複本伺服器
 

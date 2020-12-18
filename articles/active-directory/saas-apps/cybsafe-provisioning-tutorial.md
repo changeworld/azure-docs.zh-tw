@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 92329a3fa04d3cc685ba5068e9e5ae9932d1eb4d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178920"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673371"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>教學課程：設定 CybSafe 來自動布建使用者
 
@@ -135,15 +135,15 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 13. 若要啟用 CybSafe Azure AD 的布建服務，請在 [**設定**] 區段中，將 [布建 **狀態**] 變更為 [**開啟**]。
 
-    ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
+      ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
 14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 CybSafe 的使用者和/或群組。
 
-    ![佈建範圍](common/provisioning-scope.png)
+      ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]  。
+15. 當您準備好要佈建時，按一下 [儲存]。
 
-    ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
+      ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
 此作業會對在 [設定] 區段的 [範圍] 中所定義所有使用者和群組啟動首次同步處理週期。 初始週期會比後續週期花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 
 
@@ -152,7 +152,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。  
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2020
-ms.openlocfilehash: 9c453219638b9586d4ad2cc2a89311b1f2bdeefe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8b9a79ee32d7a81fee64e40b85272877b7d87589
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450098"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674193"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
 
@@ -32,7 +32,7 @@ ms.locfileid: "96450098"
 
 ### <a name="windows-agents"></a>Windows 代理程式
 
-| | Azure 監視器代理程式 (預覽)  | 診斷<br>延伸模組 (WAD)  | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
+| | Azure 監視器代理程式 (預覽) | 診斷<br>延伸模組 (WAD)  | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|:---|
 | **支援的環境** | Azure<br>其他雲端 (Azure Arc) <br>內部部署 (Azure Arc)   | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
 | **代理程式需求**  | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
@@ -42,7 +42,7 @@ ms.locfileid: "96450098"
 
 ### <a name="linux-agents"></a>Linux 代理程式
 
-| | Azure 監視器代理程式 (預覽)  | 診斷<br>延伸模組 (LAD)  | Telegraf<br>代理程式 | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
+| | Azure 監視器代理程式 (預覽) | 診斷<br>延伸模組 (LAD)  | Telegraf<br>代理程式 | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|:---|:---|
 | **支援的環境** | Azure<br>其他雲端 (Azure Arc) <br>內部部署 (Arc 弧線)  | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 |
 | **代理程式需求**  | 無 | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
@@ -51,7 +51,7 @@ ms.locfileid: "96450098"
 | **服務和**<br>**特徵**<br>**支援** | Log Analytics<br>計量瀏覽器 | | 計量瀏覽器 | 適用於 VM 的 Azure 監視器<br>Log Analytics<br>Azure 自動化<br>Azure 資訊安全中心<br>Azure Sentinel | 適用於 VM 的 Azure 監視器<br>服務對應 |
 
 
-## <a name="azure-monitor-agent-preview"></a>Azure 監視器代理程式 (預覽) 
+## <a name="azure-monitor-agent-preview"></a>Azure 監視器代理程式 (預覽)
 [Azure 監視器代理程式](azure-monitor-agent-overview.md)目前為預覽狀態，會取代 Windows 和 Linux 虛擬機器的 Log Analytics 代理程式和 Telegraf 代理程式。 它可以將資料傳送至 Azure 監視器記錄和 Azure 監視器計量，並使用 [資料收集規則 (DCR) ](data-collection-rule-overview.md) ，以提供更具擴充性的方法來設定每個代理程式的資料收集和目的地。
 
 如果您需要執行下列動作，請使用 Azure 監視器代理程式：
@@ -169,6 +169,7 @@ Azure 診斷擴充功能的限制包括：
 | Debian 8                                                 |   | X | X | X |
 | Debian 7                                                 |   |   |   | X |
 | OpenSUSE 13.1+                                           |   |   |   | X |
+| Oracle Linux 8                                           |   | X |   |   |
 | Oracle Linux 7                                           | X | X |   | X |
 | Oracle Linux 6                                           |   | X |   |   |
 | Oracle Linux 6.4+                                        |   | X |   | X |

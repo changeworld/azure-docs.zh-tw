@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: fa70d88b046cf38aa74582066d230c15580465b9
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563087"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673965"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM 範本部署 what-if 作業 \(部分機器翻譯\)
 
@@ -396,6 +396,7 @@ Are you sure you want to execute the deployment?
 ## <a name="next-steps"></a>後續步驟
 
 - 如果您注意到「假設」作業有不正確的結果，請在中報告問題 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 。
+- 如需瞭解如何使用 if 的 Microsoft Learn 模組，請參閱 [使用假設和 ARM 範本測試控管組預覽變更和驗證 Azure 資源](/learn/modules/arm-template-test/)。
 - 若要使用 Azure PowerShell 部署範本，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。
 - 若要使用 Azure CLI 部署範本，請參閱 [使用 ARM 範本部署資源和 Azure CLI](deploy-cli.md)。
 - 若要使用 REST 部署範本，請參閱 [使用 ARM 範本部署資源和 Resource Manager REST API](deploy-rest.md)。

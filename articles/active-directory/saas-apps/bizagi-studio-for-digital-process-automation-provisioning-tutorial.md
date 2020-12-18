@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4eaac716d06b102a07872059af28da4986889caa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632023"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673430"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>教學課程：設定 Bizagi Studio 以進行自動使用者布建的數位流程自動化
 
@@ -117,7 +117,7 @@ ms.locfileid: "97632023"
 
     ![通知電子郵件選項的螢幕擷取畫面。](common/provisioning-notification-email.png)
 
-7. 選取 [儲存]。
+7. 選取 [儲存]  。
 
 8. **在 [** 對應] 區段中，選取 [**同步處理 Azure Active Directory 使用者至 Bizagi Studio 進行數位程式自動化**]。
 
@@ -139,6 +139,8 @@ ms.locfileid: "97632023"
 
    有關如何新增自訂屬性的詳細資訊，可以在 [自訂應用程式屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)中找到。
 
+> [!NOTE]
+> 只支援基本類型屬性 (例如，字串、整數、布林值、日期時間等) 。 尚未支援連結至參數化資料表或多個類型的屬性。
 
 10. 若要設定範圍篩選器，請參閱 [範圍篩選器教學](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)課程。
 

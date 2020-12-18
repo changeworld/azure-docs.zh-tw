@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0d8b90e18865afeb5cb0c171d21c89d7c6e932f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654280"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669222"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Salesforce 帳戶登入
 
@@ -39,7 +39,9 @@ ms.locfileid: "97654280"
 
 若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 Salesforce 帳戶，您需要在您的 Salesforce **App Manager** 中建立應用程式。 如需詳細資訊，請參閱 [設定基本連線應用程式設定](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)，以及 [啟用 API 整合的 OAuth 設定](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
-1. 從 **安裝程式** 的 [**快速尋找**] 方塊中，輸入 **應用程式**，然後選取 [**應用程式管理員**]。
+1. [登入 Salesforce](https://login.salesforce.com/)。
+1. 從功能表選取 [ **設定**]。
+1.  展開 [ **應用程式**]，然後選取 [ **應用程式管理員**]。
 1. 選取 [ **新增已連線的應用程式**]。
 1. 在 [ **基本資訊**] 下，輸入：
     1. **已連線的應用程式名稱** -已連線的應用程式名稱會顯示在應用程式管理員和其應用程式啟動器磚上。 名稱在您的組織內必須是唯一的。 

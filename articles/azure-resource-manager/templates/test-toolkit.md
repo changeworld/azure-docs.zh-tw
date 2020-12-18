@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e5ad0b6dca7718166517b52148fbc6dd49f38869
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928183"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674007"
 ---
 # <a name="use-arm-template-test-toolkit"></a>使用 ARM 範本測試控管組
 
@@ -22,7 +22,7 @@ ms.locfileid: "96928183"
 
 此工具組是一組 PowerShell 腳本，可從 PowerShell 或 CLI 中的命令執行。
 
-## <a name="install-on-windows"></a>安裝在 Windows 上
+## <a name="install-on-windows"></a>在 Windows 上安裝
 
 1. 如果您還沒有 PowerShell，請 [在 Windows 上安裝 powershell](/powershell/scripting/install/installing-powershell-core-on-windows)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "96928183"
    Test-AzTemplate -TemplatePath \path\to\template
    ```
 
-## <a name="install-on-linux"></a>安裝在 Linux 上
+## <a name="install-on-linux"></a>在 Linux 上安裝
 
 1. 如果您還沒有 PowerShell，請 [在 Linux 上安裝 powershell](/powershell/scripting/install/installing-powershell-core-on-linux)。
 
@@ -282,4 +282,5 @@ param(
 
 ## <a name="next-steps"></a>後續步驟
 
-若要瞭解預設測試，請參閱 [ARM 範本測試控管組的預設測試案例](test-cases.md)。
+- 若要瞭解預設測試，請參閱 [ARM 範本測試控管組的預設測試案例](test-cases.md)。
+- 如需涵蓋使用測試控管組的 Microsoft Learn 模組，請參閱 [使用假設和 ARM 範本測試控管組預覽變更和驗證 Azure 資源](/learn/modules/arm-template-test/)。

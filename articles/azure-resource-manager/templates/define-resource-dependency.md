@@ -2,13 +2,13 @@
 title: 設定資源的部署順序
 description: 說明如何在部署期間，將某個資源設定為相依於另一個資源，確保以正確的順序部署資源。
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 933764f1930bd6c9e21d4ccffbde1bb93bbc9613
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85255206"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672809"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>定義在 ARM 範本中部署資源的順序
 
@@ -40,7 +40,7 @@ ms.locfileid: "85255206"
 }
 ```
 
-在上述範例中，相依性是包含在透過名為 **storageLoop**複製迴圈所建立的資源上。 例如，請參閱 [在 Azure 資源管理員中建立多個資源的執行個體](copy-resources.md)。
+在上述範例中，相依性是包含在透過名為 **storageLoop** 複製迴圈所建立的資源上。 例如，請參閱 [在 Azure 資源管理員中建立多個資源的執行個體](copy-resources.md)。
 
 當定義相依性時，您可以包含資源提供者命名空間和資源類型，以避免模稜兩可。 比方說，若要釐清可能有和其他資源名稱相同的負載平衡器和虛擬網路，請使用下列格式：
 
@@ -150,6 +150,7 @@ Resource Manager 範本會在驗證期間識別循環相依性。 如果收到�
 ## <a name="next-steps"></a>後續步驟
 
 * 如須逐步瀏覽教學課程，請參閱[教學課程：使用相依資源建立 Azure Resource Manager 範本](template-tutorial-create-templates-with-dependent-resources.md)。
+* 如需涵蓋資源相依性的 Microsoft Learn 模組，請參閱 [使用 ADVANCED ARM 範本功能管理複雜的雲端部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 * 如需設定相依性時的建議，請參閱 [Azure Resource Manager 範本最佳做法](template-best-practices.md)。
 * 若要了解在部署期間如何對相依性進行疑難排解，請參閱[使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解](common-deployment-errors.md)。
 * 若要了解如何建立 Azure 資源管理員範本，請參閱 [撰寫範本](template-syntax.md)。
