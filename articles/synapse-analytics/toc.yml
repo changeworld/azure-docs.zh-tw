@@ -658,6 +658,8 @@
           href: ../data-factory/concepts-pipeline-execution-triggers.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 整合執行階段
           href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: 與 Azure Data Factory 的差異
+          href: ./data-integration/concepts-data-factory-differences.md
         - name: 資料流程
           items:
             - name: 資料流程概觀
@@ -678,8 +680,6 @@
               href: ../data-factory/concepts-data-flow-expression-builder.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 運算式語言
               href: ../data-factory/data-flow-expression-functions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 與 Azure Data Factory 的差異
-              href: ./data-integration/concepts-data-factory-differences.md
     - name: 操作指南
       items:
         - name: 作者

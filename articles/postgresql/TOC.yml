@@ -553,6 +553,12 @@
               displayName: 'portal, create hyperscale'
     - name: 教學課程
       items:
+        - name: 建立伺服器群組
+          href: tutorial-hyperscale-server-group.md
+        - name: 模型和載入資料
+          items:
+            - name: 背景工作角色節點上的分區資料
+              href: tutorial-hyperscale-shard.md
         - name: 設計多租用戶資料庫
           href: tutorial-design-database-hyperscale-multi-tenant.md
           displayName: 'hyperscale, tutorial, multi-tenant'

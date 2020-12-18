@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Data Factory 從 Presto 複製資料 (預覽)
+title: 使用 Azure Data Factory 從 Presto 複製資料
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 Presto 複製到支援的接收資料存放區。
 services: data-factory
 documentationcenter: ''
@@ -9,22 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 15f4133b03c1fe77548425500445937e86ed5a8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af05983432c0f76a88ff82a3638d86a971ef77f5
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372496"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680712"
 ---
-# <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 Presto 複製資料 (預覽)
+# <a name="copy-data-from-presto-using-azure-data-factory"></a>使用 Azure Data Factory 從 Presto 複製資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 Presto 複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
-
-> [!IMPORTANT]
-> 此連接器目前為預覽版。 您可以親身體驗並提供意見反應。 如果您需要依賴解決方案中的預覽連接器，請連絡 [Azure 支援](https://azure.microsoft.com/support/)。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
@@ -47,7 +44,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 以下是針對 Presto 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | Type 屬性必須設定為：**Presto** | 是 |
 | 主機 | Presto 伺服器的 IP 位址或主機名稱。  (例如 192.168.222.160)   | 是 |
@@ -94,7 +91,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 若要從 Presto 複製資料，請將資料集的 type 屬性設定為 **PrestoObject**。 以下是支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為： **PrestoObject** | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
@@ -126,7 +123,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 若要從 Presto 複製資料，請將複製活動中的來源類型設定為 **PrestoSource**。 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設定為：**PrestoSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM MyTable"` 。 | 否 (如果已指定資料集中的 "tableName") |

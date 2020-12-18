@@ -1,361 +1,111 @@
 ---
-title: 使用 Azure 地圖服務 Android SDK 將圖形新增至地圖
-description: 瞭解如何將圖形新增至地圖。 請參閱使用 Microsoft Azure Maps Android SDK 將線條和多邊形新增至地圖的程式碼範例。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 11/18/2020
-ms.topic: how-to
+title: 將多邊形圖層新增至 Android 地圖 |Microsoft Azure 對應
+description: 瞭解如何將多邊形或圓形新增至地圖。 瞭解如何使用 Azure 地圖服務 Android SDK 來自訂幾何圖案，並使其更容易更新和維護。
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/08/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 9ef6e1910803cc18f03347e08abc4f0d836b3c0a
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 1712cedab9cef23108fcc48b8e09bdc3e33065c4
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532766"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679486"
 ---
-# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將圖形新增至地圖
+# <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>將多邊形圖層新增至地圖 (Android SDK) 
 
-本文說明如何使用 Azure 地圖服務 Android SDK 在地圖上呈現圖案。
+本文說明如何使用多邊形圖層，在地圖上呈現 `Polygon` 和 `MultiPolygon` 特徵幾何的區域。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-1. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。
-3. 下載並安裝 [Azure 地圖服務 Android SDK](./how-to-use-android-map-control-library.md)。
+請務必完成 [快速入門：建立 Android 應用程式](quick-android-map.md) 檔中的步驟。 本文中的程式碼區塊可以插入 maps `onReady` 事件處理常式中。
 
-## <a name="add-a-line-to-the-map"></a>在地圖中新增線條
+## <a name="use-a-polygon-layer"></a>使用多邊形圖層
 
-請遵循下列步驟，使用 **線條圖層** 在地圖上新增線條。
+當多邊形圖層連線至資料來源並載入至地圖時，將會呈現具有 `Polygon` 和 `MultiPolygon` 特徵的區域。 若要建立多邊形，請將其新增至資料來源，並使用類別以多邊形圖層呈現 `PolygonLayer` 。
 
-1. 編輯 `res > layout > activity_main.xml` 看起來像下面的程式碼：
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
 
-    ```XML
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="40.743270"
-            app:mapcontrol_centerLng="-74.004420"
-            app:mapcontrol_zoom="12"
-            />
-    </FrameLayout>
-    ```
-
-2. 將下列程式碼片段複製到您類別的 **>oncreate ( # B1** 方法中 `MainActivity.java` 。
-
-    >[!WARNING]
-    >Android Studio 可能尚未匯入必要的類別。  因此，程式碼將會有一些無法解析的參考。 若要匯入所需的類別，只要將滑鼠停留在每個無法解析的參考上，然後按 `Alt + Enter` (選項 + 在 Mac) 上返回。
-
-    ```Java
-    mapControl.onReady(map -> {
-
-        //Create a data source and add it to the map.
-        DataSource dataSource = new DataSource();
-        map.sources.add(dataSource);
-
-        //Create a list of points.
-        List<Point> points = Arrays.asList(
-            Point.fromLngLat(-73.972340, 40.743270),
-            Point.fromLngLat(-74.004420, 40.756800));
-    
-        //Create a LineString feature and add it to the data source.
-        dataSource.add(LineString.fromLngLats(points));
-    
-        //Create a line layer and add it to the map.
-        map.layers.add(new LineLayer(dataSource,
-            strokeColor("blue"),
-            strokeWidth(5f)));
-    });
-
-    ```
-    上述程式碼片段會先取得 **onReady ( # B1** 回呼方法中 Azure 地圖服務的地圖控制項實例。 接著，它會使用 **DataSource** 類別建立資料來源物件，並將它加入至對應。 然後，它會建立 **點** 物件的清單。 從點數清單建立 **LineString** ，並新增至資料來源。 **線條圖層** 會在地圖上呈現包裝在資料來源中的線條物件。 接著會建立線條圖層，並將資料來源加入其中。
-    
-    新增上述程式碼片段之後，您 `MainActivity.java` 應該看起來如下所示：
-
-    ```Java
-    package com.example.myapplication;
-
-    import android.app.Activity;
-    import android.os.Bundle;
-    import com.mapbox.geojson.LineString;
-    import com.mapbox.geojson.Point;
-    import android.support.v7.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.layer.LineLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-    import java.util.Arrays;
-    import java.util.List;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeColor;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeWidth;
-        
-    public class MainActivity extends AppCompatActivity {
-    
-        static{
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-    
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-
-                //Create a data source and add it to the map.
-                DataSource dataSource = new DataSource();
-                map.sources.add(dataSource);
-            
-                //Create a list of points.
-                List<Point> points = Arrays.asList(
-                    Point.fromLngLat(-73.972340, 40.743270),
-                    Point.fromLngLat(-74.004420, 40.756800));
-            
-                //Create a LineString feature and add it to the data source.
-                dataSource.add(LineString.fromLngLats(points));
-            
-                //Create a line layer and add it to the map.
-                map.layers.add(new LineLayer(dataSource,
-                    strokeColor("blue"),
-                    strokeWidth(5f)));
-            });    
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }    
-    }
-    ```
-
-當您執行應用程式時，您應該會在地圖上看到一行，如下所示：
-
-![在 Android 地圖上呈現的線條](./media/how-to-add-shapes-to-android-map/android-map-line.png)</
-
-
-## <a name="add-a-polygon-to-the-map"></a>將多邊形新增至地圖
-
-**多邊形圖層** 可讓您將多邊形的區域呈現到地圖上。 遵循下列步驟在地圖上新增多邊形。
-
-1. 編輯 **res > 配置 > activity_main.xml** 讓它看起來如下所示：
-
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="40.78"
-            app:mapcontrol_centerLng="-73.97"
-            app:mapcontrol_zoom="12"
-            />
-    
-    </FrameLayout>
-    ```
-
-2. 將下列程式碼片段複製到您類別的 **>oncreate ( # B1** 方法中 `MainActivity.java` 。
-
-    ```Java
-    mapControl.onReady(map -> {
-        //Create a data source and add it to the map.
-        DataSource dataSource = new DataSource();
-        map.sources.add(dataSource);
-    
-        //Create a list of point arrays to create polygon rings.
-        List<List<Point>> rings = Arrays.asList(Arrays.asList(
+//Create a rectangular polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
             Point.fromLngLat(-73.98235, 40.76799),
             Point.fromLngLat(-73.95785, 40.80044),
-            Point.fromLngLat(-73.94928, 40.7968),
+            Point.fromLngLat(-73.94928, 40.79680),
             Point.fromLngLat(-73.97317, 40.76437),
-            Point.fromLngLat(-73.98235, 40.76799)));
-    
-        //Create a Polygon feature and add it to the data source.
-        dataSource.add(Feature.fromGeometry(Polygon.fromLngLats(rings)));
-    
-        //Add a polygon layer for rendering the polygon area.
-        map.layers.add(new PolygonLayer(dataSource,
-            fillColor("red")));
-    
-        //Add a line layer for rendering the polygon outline.
-        map.layers.add(new LineLayer(dataSource,
-            strokeColor("blue"),
-            strokeWidth(2f)));
-    });
-    ```
-    
-    新增上述程式碼片段之後，您 `MainActivity.java` 應該看起來如下所示：
+            Point.fromLngLat(-73.98235, 40.76799)
+        )
+    )
+));
 
-    ```Java
-    package com.example.myapplication;
-    
-    import android.app.Activity;
-    import android.os.Bundle;
-    import java.util.Arrays;
-    import android.util.Log;
-    import java.util.Collections;
-    import android.support.v7.app.AppCompatActivity;
-    import com.mapbox.geojson.Point;
-    import com.mapbox.geojson.Polygon;
-    import com.mapbox.geojson.Feature;
-    import com.microsoft.azure.maps.mapcontrol.layer.LineLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions;
-    import com.microsoft.azure.maps.mapcontrol.layer.PolygonLayer;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeColor;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeWidth;
-    import static com.microsoft.azure.maps.mapcontrol.options.PolygonLayerOptions.fillColor;
-    
-    public class MainActivity extends AppCompatActivity {
-    
-        static{
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-    
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-                //Create a data source and add it to the map.
-                DataSource dataSource = new DataSource();
-                map.sources.add(dataSource);
-            
-                //Create a list of point arrays to create polygon rings.
-                List<List<Point>> rings = Arrays.asList(Arrays.asList(
-                    Point.fromLngLat(-73.98235, 40.76799),
-                    Point.fromLngLat(-73.95785, 40.80044),
-                    Point.fromLngLat(-73.94928, 40.7968),
-                    Point.fromLngLat(-73.97317, 40.76437),
-                    Point.fromLngLat(-73.98235, 40.76799)));
-            
-                //Create a Polygon feature and add it to the data source.
-                dataSource.add(Feature.fromGeometry(Polygon.fromLngLats(rings)));
-            
-                //Add a polygon layer for rendering the polygon area.
-                map.layers.add(new PolygonLayer(dataSource,
-                    fillColor("red")));
-            
-                //Add a line layer for rendering the polygon outline.
-                map.layers.add(new LineLayer(dataSource,
-                    strokeColor("blue"),
-                    strokeWidth(2f)));
-            });    
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }    
-    }
-    ```
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source, 
+    fillColor("red"),
+    fillOpacity(0.7f)
+), "labels");
+```
 
-當您執行應用程式時，您應該會在地圖上看到一個多邊形，如下所示：
+下列螢幕擷取畫面顯示上述程式碼如何使用多邊形圖層來呈現多邊形的區域。
 
-![在 Android 地圖上呈現的多邊形](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</
+![呈現其填滿區域的多邊形](media/how-to-add-shapes-to-android-map/android-polygon-layer.png)
+
+## <a name="use-a-polygon-and-line-layer-together"></a>同時使用多邊形和線條圖層
+
+線條圖層可用來呈現多邊形的外框。 下列程式碼範例會呈現如同上述範例的多邊形，但現在會新增線條圖層。 此條線圖層是連線至資料來源的第二個圖層。  
+
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a rectangular polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
+            Point.fromLngLat(-73.98235, 40.76799),
+            Point.fromLngLat(-73.95785, 40.80044),
+            Point.fromLngLat(-73.94928, 40.79680),
+            Point.fromLngLat(-73.97317, 40.76437),
+            Point.fromLngLat(-73.98235, 40.76799)
+        )
+    )
+));
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source,
+    fillColor("rgba(0, 200, 200, 0.5)")
+), "labels");
+
+//Create and add a line layer to render the outline of the polygon.
+map.layers.add(new LineLayer(source,
+    strokeColor("red"),
+    strokeWidth(2f)
+));
+```
+
+下列螢幕擷取畫面顯示上述程式碼如何轉譯多邊形，並使用線條圖層來呈現其輪廓。
+
+![呈現其填滿區域和外框的多邊形](media/how-to-add-shapes-to-android-map/android-polygon-and-line-layer.png)
+
+> [!TIP]
+> 使用線條圖層來大綱多邊形時，請務必關閉多邊形中的所有環形，讓每個點陣列都有相同的起點和終點。 如果未這樣做，線條圖層可能不會將多邊形的最後一點連接到第一個點。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要將更多資料新增至對應：
+請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 
 > [!div class="nextstepaction"]
-> [新增符號圖層](how-to-add-symbol-to-android-map.md)
+> [建立資料來源](create-data-source-android-sdk.md)
 
 > [!div class="nextstepaction"]
-> [新增圖格圖層](how-to-add-tile-layer-android-map.md)
+> [使用資料驅動樣式運算式](data-driven-style-expressions-android-sdk.md)
 
 > [!div class="nextstepaction"]
-> [顯示功能資訊](display-feature-information-android.md)
+> [新增線條圖層](android-map-add-line-layer.md)

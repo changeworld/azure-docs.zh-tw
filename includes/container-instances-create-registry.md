@@ -17,7 +17,7 @@ ms.locfileid: "92746948"
 ---
 ## <a name="create-azure-container-registry"></a>建立 Azure Container Registry
 
-建立容器登錄之前，您需要「資源群組」  才能部署它。 資源群組是在其中部署及管理所有 Azure 資源的邏輯集合。
+建立容器登錄之前，您需要「資源群組」才能部署它。 資源群組是在其中部署及管理所有 Azure 資源的邏輯集合。
 
 使用 [az group create][az-group-create] 命令來建立資源群組。 在下列範例中，會在 eastus 區域中建立名為 myResourceGroup 的資源群組：
 
