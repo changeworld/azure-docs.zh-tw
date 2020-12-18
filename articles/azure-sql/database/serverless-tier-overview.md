@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 12/8/2020
-ms.openlocfilehash: bd8f5a28b709a45e99e846fb4e242f774aca80c5
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b0d599b7d52d8a0e93f16761d1983ad25fa45c61
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902505"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97687410"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database 無伺服器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Azure SQL Database 中單一資料庫的無伺服器計算層是由計算自動�
 - **最小虛擬核心** 和 **最大虛擬核心** 是可設定的參數，這些參數會定義資料庫可用的計算容量範圍。 記憶體和 IO 限制會與指定的虛擬核心範圍成比例。  
 - **自動暫停延遲** 是可設定的參數，其定義資料庫必須處於非使用狀態一段時間後，才會自動暫停。 當下次登入或其他活動發生時，資料庫就會自動繼續。  或者，您也可以停用 autopausing。
 
-### <a name="cost"></a>成本
+### <a name="cost"></a>Cost
 
 - 無伺服器資料庫的成本是計算成本和儲存體成本的總和。
 - 當計算使用量介於設定的最小和最大限制之間時，計算成本會以 vCore 和使用的記憶體為基礎。
@@ -128,9 +128,9 @@ SQL 快取會隨著資料以相同方式從磁片提取，且速度與布建的�
 
 當下列任何條件成立時，就會觸發 Autoresuming：
 
-|特徵|自動繼續觸發程序|
+|功能|自動繼續觸發程序|
 |---|---|
-|驗證和授權|登入|
+|驗證與授權|登入|
 |威脅偵測|啟用/停用資料庫或伺服器層級的威脅偵測設定。<br>修改資料庫或伺服器層級的威脅偵測設定。|
 |資料探索與分類|新增、修改、刪除或檢視敏感度標籤|
 |稽核|檢視稽核記錄。<br>正在更新或查看稽核原則。|
@@ -153,7 +153,7 @@ SQL 快取會隨著資料以相同方式從磁片提取，且速度與布建的�
 
 如果無伺服器資料庫已暫停，則第一次登入將會繼續執行資料庫，並傳回錯誤訊息，指出資料庫無法使用，錯誤碼為40613。 資料庫一旦繼續，則必須重試登入來建立連線。 具有連線重試邏輯的資料庫用戶端應該不需要修改。
 
-### <a name="latency"></a>Latency
+### <a name="latency"></a>延遲
 
 自動繼續和自動暫停無伺服器資料庫的延遲通常是從1分鐘到自動繼續，以及1-10 分鐘到自動暫停的順序。
 
@@ -196,7 +196,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
-  -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
+  -e GeneralPurpose -f Gen5 --min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
 
@@ -251,11 +251,11 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 ### <a name="use-powershell"></a>使用 PowerShell
 
-使用[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) `MaxVcore` 、 `MinVcore` 和引數，在 PowerShell 中使用 >set-azsqldatabase 命令來修改最大或最小虛擬核心，以及自動暫停延遲 `AutoPauseDelayInMinutes` 。
+使用[](/powershell/module/az.sql/set-azsqldatabase) `MaxVcore` 、 `MinVcore` 和引數，在 PowerShell 中使用 >set-azsqldatabase 命令來修改最大或最小虛擬核心，以及自動暫停延遲 `AutoPauseDelayInMinutes` 。
 
 ### <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-使用[az sql db update](/cli/azure/sql/db#az-sql-db-update) `capacity` 、 `min-capacity` 和引數，即可在 Azure CLI 中使用 az sql db update 命令來修改最大或最小虛擬核心，以及自動暫停延遲 `auto-pause-delay` 。
+使用[](/cli/azure/sql/db#az-sql-db-update) `capacity` 、 `min-capacity` 和引數，即可在 Azure CLI 中使用 az sql db update 命令來修改最大或最小虛擬核心，以及自動暫停延遲 `auto-pause-delay` 。
 
 
 ## <a name="monitoring"></a>監視
@@ -276,7 +276,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 下表列出用來監視無伺服器資料庫之應用程式封裝和使用者集區之資源使用量的計量：
 
-|實體|計量|描述|單位|
+|實體|Metric|描述|單位|
 |---|---|---|---|
 |應用程式套件|app_cpu_percent|應用程式所使用的虛擬核心百分比，相對於應用程式所允許的最大虛擬核心數。|百分比|
 |應用程式套件|app_cpu_billed|在報告期間內針對應用程式計費的計算數量。 在這段期間所支付的金額為此計量與虛擬核心單價的乘積。 <br><br>彙總一段時間內每秒使用的最大 CPU 與記憶體，即可判斷此計量的值。 如果使用的數量小於依照最小虛擬核心數與最小記憶體所設定的最小佈建數量，就會收取最小佈建數量的費用。為了比較 CPU 與記憶體以供計費用途，記憶體會依每個虛擬核心 3 GB 重新調整記憶體量，藉此規範成虛擬核心單位。|虛擬核心秒數|

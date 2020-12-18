@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 27af0ffdeb254dbb671a0618d0e9973336a7f529
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 8159010486371d619aa14a845050a0eb38aaeda8
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559009"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683523"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>How to：使用文字分析的健全狀況 (預覽) 
 
@@ -31,7 +31,7 @@ ms.locfileid: "96559009"
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 健康情況的文字分析會執行名為實體辨識的 (NER) 、關聯性解壓縮、實體否定和英文文字上的實體連結，以發掘非結構化臨床和生物醫學文字的見解。
 
@@ -68,7 +68,7 @@ ms.locfileid: "96559009"
 
 ---
 
-如需完整的支援實體清單，請參閱文字分析所傳回的 [實體類別](../named-entity-types.md?tabs=health) 以取得健全狀況。
+如需完整的支援實體清單，請參閱文字分析所傳回的 [實體類別](../named-entity-types.md?tabs=health) 以取得健全狀況。 如需信賴分數的詳細資訊，請參閱 [文字分析透明度注意事項](/legal/cognitive-services/text-analytics/transparency-note#general-guidelines-to-understand-and-improve-performance?context=/azure/cognitive-services/text-analytics/context/context)。 
 
 ### <a name="supported-languages-and-regions"></a>支援的語言和區域
 

@@ -3,15 +3,15 @@ title: 管理 Azure 自動化中的 Python 2 封裝
 description: 本文說明如何管理 Azure 自動化中的 Python 2 套件。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/25/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ab0b2def1a22470c1d0b6339e1525cd683b4a0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd830afd5628591019902ca583f9cbc8e2a7ecad
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987557"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683391"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>管理 Azure 自動化中的 Python 2 封裝
 
@@ -25,11 +25,11 @@ Azure 自動化可讓您在 Azure 和 Linux 混合式 Runbook 背景工作角色
 
 在 [新增 Python 2 套件] 頁面上，選取要上載的本機套件。 此套件可以是 **.whl** 或 **.tar.gz** 檔案。 選取套件後，按一下 [確定] 將其上傳。
 
-:::image type="content" source="media/python-packages/upload-package.png" alt-text="[Python 2 套件] 頁面的螢幕擷取畫面顯示左側功能表中的 Python 2 套件，並醒目提示 Python 2 套件。":::
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="螢幕擷取畫面顯示 [新增 Python 2 封裝] 頁面，其中已選取上傳的 tar. gz 檔案。":::
 
 套件匯入後，會列在您自動化帳戶中的 [Python 2 套件] 頁面上。 如果您需要移除套件，請選取套件，然後按一下 [刪除]。
 
-:::image type="content" source="media/python-packages/package-list.png" alt-text="[Python 2 套件] 頁面的螢幕擷取畫面顯示左側功能表中的 Python 2 套件，並醒目提示 Python 2 套件。":::
+:::image type="content" source="media/python-packages/package-list.png" alt-text="螢幕擷取畫面顯示匯入套件之後的 [Python 2 封裝] 頁面。":::
 
 ## <a name="import-packages-with-dependencies"></a>匯入具有相依性的套件
 
@@ -47,14 +47,14 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 
 ### <a name="runbook"></a>Runbook
 
- 若要取得 Runbook，請從資源庫[將 Python 2 套件從 pypi 匯入至您的 Azure 自動化自動化帳戶](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509)。 請確定 [回合設定] 已設定為 **Azure**，並使用參數啟動 Runbook。 使用 Runbook 時，必須要有執行身分帳戶，自動化帳戶才能運作。 對於每個參數，請確實使用參數加以啟動，如下列清單和影像所示：
+ 若要取得 runbook，請將 [Python 2 套件從 pypi 匯入](https://github.com/azureautomation/import-python-2-packages-from-pypi-into-azure-automation-account) 到您的自動化帳戶中 Azure 自動化 GitHub 組織 Azure 自動化帳戶。 請確定 [回合設定] 已設定為 **Azure**，並使用參數啟動 Runbook。 使用 Runbook 時，必須要有執行身分帳戶，自動化帳戶才能運作。 對於每個參數，請確實使用參數加以啟動，如下列清單和影像所示：
 
 * -s \<subscriptionId\>
 * -g \<resourceGroup\>
 * -a \<automationAccount\>
 * -m \<modulePackage\>
 
-:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="[Python 2 套件] 頁面的螢幕擷取畫面顯示左側功能表中的 Python 2 套件，並醒目提示 Python 2 套件。":::
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="螢幕擷取畫面顯示 import_py2package_from_pypi 的 [總覽] 頁面，其位於右側的 [啟動 Runbook] 窗格。":::
 
 Runbook 可讓您指定要下載的套件。 例如，使用 `Azure` 參數會下載所有的 Azure 模組和所有相依性 (大約 105 個)。
 

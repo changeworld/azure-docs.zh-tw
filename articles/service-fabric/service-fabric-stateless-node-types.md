@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 6259de345b534bfb51ef6ba1a9c3895800546caf
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605491"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683192"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>部署具有無狀態節點類型的 Azure Service Fabric 叢集 (Preview) 
 Service Fabric 節點類型隨附固有的假設，在某個時間點，可設定狀態的服務可能會放在節點上。 無狀態節點類型可放寬此假設的節點類型，因此可讓節點類型使用其他功能（例如更快速的 scale out 作業）、支援以銅級持久性進行自動 OS 升級，以及在單一虛擬機器擴展集中相應放大至100個以上的節點。
@@ -44,7 +44,7 @@ Service Fabric 節點類型隨附固有的假設，在某個時間點，可設�
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateles": false,
+        "isStateless": false,
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -71,9 +71,9 @@ Service Fabric 節點類型隨附固有的假設，在某個時間點，可設�
 ## <a name="configuring-virtual-machine-scale-set-for-stateless-node-types"></a>設定無狀態節點類型的虛擬機器擴展集
 若要啟用無狀態節點類型，您應以下列方式設定基礎虛擬機器擴展集資源：
 
-* 值  **singlePlacementGroup** 屬性（property），視需要調整為 100 vm 的需求而定，應該設定為 true/false。
-* 應設定為輪流的擴展集 **upgradeMode** 。
-* 輪流升級模式需要設定應用程式健康情況延伸模組或健康情況探查。 設定健康情況探查與無狀態節點類型的預設設定，如下所建議。 一旦將應用程式部署至 nodetype 之後，就可以變更健康情況探查/健全狀況擴充埠來監視應用程式健康情況。
+* 值  **singlePlacementGroup** 屬性，如果您需要調整為100個以上的 vm，則應設為 **false** 。
+* 擴展集的 **upgradePolicy** 應該設定為輪流的 **模式**。 
+* 輪流升級模式需要設定應用程式健康情況延伸模組或健康情況探查。 設定健康情況探查與無狀態節點類型的預設設定，如下所建議。 一旦將應用程式部署至節點類型，您就可以變更健康情況探查/健全狀況擴充埠來監視應用程式健全狀況。
 
 ```json
 {

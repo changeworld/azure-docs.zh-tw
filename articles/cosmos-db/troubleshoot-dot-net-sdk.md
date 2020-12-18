@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 68d9a64e388d24f2067f47282945b9561d807535
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545922"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683099"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>診斷在使用 Azure Cosmos DB .NET SDK 時的問題並進行疑難排解
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,9 +54,16 @@ ms.locfileid: "96545922"
 ### <a name="check-the-portal-metrics"></a>檢查入口網站計量
 檢查 [入口網站度量](./monitor-cosmos-db.md) 將有助於判斷它是否為用戶端問題，或是服務是否有問題。 例如，如果計量包含高比率的速率限制要求 (HTTP 狀態碼 429) 這表示要求正在進行節流處理，然後檢查 [要求率太大](troubleshoot-request-rate-too-large.md) 的區段。 
 
+## <a name="retry-logic"></a>重試邏輯 <a id="retry-logics"></a>
+如果 SDK 中的重試是可行的，則任何 IO 失敗的 Cosmos DB SDK 都會嘗試重試失敗的操作。 針對任何失敗進行重試是不錯的做法，但特別是處理/重試寫入失敗是必須的。 建議使用最新的 SDK，因為會持續改善重試邏輯。
+
+1. SDK 會重試讀取和查詢 IO 失敗，而不會將它們呈現給終端使用者。
+2. 寫入 (建立、Upsert、取代、刪除) 「不是」等冪性，因此 SDK 無法一律盲目地重試失敗的寫入作業。 需要使用者的應用程式邏輯來處理失敗，然後再試一次。
+3. 疑難排解[sdk 可用性](troubleshoot-sdk-availability.md)會說明多區域 Cosmos DB 帳戶的重試。
+
 ## <a name="common-error-status-codes"></a>常見的錯誤狀態碼 <a id="error-codes"></a>
 
-| 狀態碼 | 說明 | 
+| 狀態碼 | 描述 | 
 |----------|-------------|
 | 400 | 錯誤的要求 (取決於錯誤訊息) | 
 | 401 | [未授權](troubleshoot-unauthorized.md) | 
@@ -64,7 +71,7 @@ ms.locfileid: "96545922"
 | 408 | [要求超時](troubleshoot-dot-net-sdk-request-timeout.md) |
 | 409 | 當現有資源採用寫入作業的資源識別碼時，就會發生衝突失敗。 使用資源的另一個識別碼來解決此問題，因為識別碼在具有相同資料分割索引鍵值的所有檔中必須是唯一的。 |
 | 410 |  (暫時性失敗而不應違反 SLA 的例外狀況)  |
-| 412 | 前置條件失敗是指作業指定了與伺服器上可用版本不同的 eTag。 它是開放式平行存取錯誤。 讀取最新版的資源及更新要求上的 eTag 之後，重試要求。
+| 412 | 前置條件失敗是指作業指定了與伺服器上可用版本不同的 eTag。 這是開放式平行存取錯誤。 讀取最新版的資源及更新要求上的 eTag 之後，重試要求。
 | 413 | [要求實體太大](concepts-limits.md#per-item-limits) |
 | 429 | [要求太多](troubleshoot-request-rate-too-large.md) |
 | 449 | 只有寫入作業才會發生的暫時性錯誤，而且可以安全地重試 |

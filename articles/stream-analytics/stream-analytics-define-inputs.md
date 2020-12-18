@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 649abf6d07a95c7f20f6416f7d3155f8d115782b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d2fb2ac40dfbe6e48fef5c98e21896575b298a94
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127564"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683459"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>將資料作為輸入串流處理至串流分析中
 
@@ -31,7 +31,7 @@ ms.locfileid: "93127564"
 
 ## <a name="create-edit-or-test-inputs"></a>建立、編輯或測試輸入
 
-您可使用 [Azure 入口網站](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md) 和 [Visual Studio Code](quick-create-visual-studio-code.md) 來新增及檢視或編輯串流作業上的現有輸入。 您也可以從 Azure 入口網站、[Visual Studio](stream-analytics-vs-tools-local-run.md) 和 [Visual Studio Code](visual-studio-code-local-run.md) 以透過範例資料來測試輸入連線並[測試查詢](stream-analytics-manage-job.md#test-your-query)。 當撰寫查詢時，您會在 FROM 子句中列出輸入。 您可以從入口網站的 [查詢] 頁面取得可用輸入的清單。 如果您想要使用多個輸入，則可 `JOIN` 它們或撰寫多個 `SELECT` 查詢。
+您可使用 [Azure 入口網站](stream-analytics-quick-create-portal.md)、[Visual Studio](stream-analytics-quick-create-vs.md) 和 [Visual Studio Code](quick-create-visual-studio-code.md) 來新增及檢視或編輯串流作業上的現有輸入。 您也可以從 Azure 入口網站、Visual Studio 和 [Visual Studio Code](visual-studio-code-local-run.md) 以透過範例資料來測試輸入連線並[測試查詢](stream-analytics-vs-tools-local-run.md)。 當撰寫查詢時，您會在 FROM 子句中列出輸入。 您可以從入口網站的 [查詢] 頁面取得可用輸入的清單。 如果您想要使用多個輸入，則可 `JOIN` 它們或撰寫多個 `SELECT` 查詢。
 
 
 ## <a name="stream-data-from-event-hubs"></a>來自事件中樞的串流資料
@@ -135,7 +135,7 @@ Azure IoT 中樞是可高度調整的發佈/訂閱事件擷取器，已針對 Io
 
 如果在 13:00 將 blob 上傳至儲存體帳戶容器，然後在 13:00 (含) 以前使用 [自訂時間] 啟動 Azure 串流分析作業，則會選取該 blob，因為其修改時間落在作業執行期間以內。
 
-如果在 13:00 使用 [現在] 來啟動 Azure 串流分析作業，然後在 13:01 將 blob 上傳至儲存體帳戶容器，則 Azure 串流分析會選取該 blob。 指派給每個 blob 的時間戳記只會依據 `BlobLastModifiedTime`。 blob 所在的資料夾與指派的時間戳記無關。 例如，如果有一個 blob *2019/10-01/00/b1.txt* ，其 `BlobLastModifiedTime` 為 2019-11-11，則指派給此 blob 的時間戳記為 2019-11-11。
+如果在 13:00 使用 [現在] 來啟動 Azure 串流分析作業，然後在 13:01 將 blob 上傳至儲存體帳戶容器，則 Azure 串流分析會選取該 blob。 指派給每個 blob 的時間戳記只會依據 `BlobLastModifiedTime`。 blob 所在的資料夾與指派的時間戳記無關。 例如，如果有一個 blob *2019/10-01/00/b1.txt*，其 `BlobLastModifiedTime` 為 2019-11-11，則指派給此 blob 的時間戳記為 2019-11-11。
 
 若要使用事件裝載中的時間戳記，將資料當作資料流處理，您必須使用 [TIMESTAMP BY](/stream-analytics-query/stream-analytics-query-language-reference) 關鍵字。 如果 Blob 檔案可供使用，串流分析作業會從 Azure Blob 儲存體提取資料，或每秒 ADLS Gen2 輸入。 如果 Blob 檔案無法使用，則會執行時間延遲上限為 90 秒的指數輪詢。
 

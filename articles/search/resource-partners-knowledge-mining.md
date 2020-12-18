@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: 78e705812609fc6feef3d162b7716871f579a5cd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: bb1c29f292cc099eaa7a84094f6f4a2674ae02aa
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675827"
+ms.locfileid: "97682732"
 ---
 # <a name="partner-solutions"></a>合作夥伴解決方案
 
@@ -23,4 +23,4 @@ ms.locfileid: "97675827"
 |---------|-------------|----------------------|
 | ![OrangeNXT](media/resource-partners/orangenxt-beldmerk-boven-160px.png "公司標誌") | [**OrangeNXT**](https://orangenxt.com/) 提供資料匯總、資料模型化和建築物技能集的專業知識，包括針對特定使用案例開發的自訂邏輯。<br/><br/>[**DigitalNXT 搜尋**](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/) 是一種 OrangeNXT 解決方案，結合了 AI、光學字元辨識 (OCR) ，以及 Azure 認知搜尋管線中的自然語言處理，以協助您從多個結構化和非結構化資料來源中提取搜尋結果。 **DigitalNXT 搜尋** 的整數是用來解讀和關聯所選資料的先進自訂認知技能。<br/><br/>| [產品頁面](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/) \(英文\)|
 
-請參閱 [ **digitalNXT** 案例研究](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/problems-causes-solutions/)，以深入瞭解特定的解決方案。
+<!-- Review [**digitalNXT** case studies](https://orangenxt.com/solutions/digitalnxt/digitalnxt-search/problems-causes-solutions/) for a closer look at specific solutions. -->

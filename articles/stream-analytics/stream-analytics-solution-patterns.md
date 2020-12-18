@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: b82dd4ea8a74c51606b7a388b8d6ede07b1057c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02276ebf8e8a2289db2a1f6eac506443cea61c31
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461539"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682714"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 串流分析解決方案模式
 
@@ -20,7 +20,7 @@ ms.locfileid: "89461539"
 
 ## <a name="create-a-stream-analytics-job-to-power-real-time-dashboarding-experience"></a>建立串流分析作業以提供即時儀表板體驗
 
-使用 Azure 串流分析時，您可以快速地建立即時儀表板和警示。 簡單的解決方案會從事件中樞或 IoT 中樞內嵌事件，然後 [使用串流資料集將 Power BI 儀表板送入](/power-bi/service-real-time-streaming)。 如需詳細資訊，請參閱詳細教學課程 [使用串流分析來分析通話資料，並在 Power BI 儀表板中將結果視覺化](stream-analytics-manage-job.md)。
+使用 Azure 串流分析時，您可以快速地建立即時儀表板和警示。 簡單的解決方案會從事件中樞或 IoT 中樞內嵌事件，然後 [使用串流資料集將 Power BI 儀表板送入](/power-bi/service-real-time-streaming)。 如需詳細資訊，請參閱 [使用串流分析分析詐騙電話資料的詳細教學課程，並在 Power BI 儀表板中將結果視覺化](stream-analytics-real-time-fraud-detection.md)。
 
 ![ASA Power BI 儀表板](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 

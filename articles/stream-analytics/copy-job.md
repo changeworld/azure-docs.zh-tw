@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: ba63358347cf9722d2cafa35598b9b3b37f49dc3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 67e28e8c5092f2b52a3a34053f81d8a00afb24ed
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129451"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683230"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>複製或備份 Azure 串流分析作業
 
@@ -37,8 +37,6 @@ ms.locfileid: "93129451"
 
     專案會匯出至您選取的資料夾，並新增至您目前的工作區。
 
-    ![Visual Studio Code 中的匯出 ASA 作業](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
-
 3. 若要使用另一個名稱將作業發佈到另一個區域或備份，請在 [查詢編輯器] 中選取 [ **從您** 的訂用帳戶發行] (\* >script.asaql) 並依照指示進行。
 
     ![在 Visual Studio Code 中發佈至 Azure](./media/quick-create-visual-studio-code/submit-job.png)
@@ -53,4 +51,3 @@ ms.locfileid: "93129451"
 
 * [快速入門：使用 Visual Studio Code 建立串流分析作業](quick-create-visual-studio-code.md)
 * [快速入門：使用 Visual Studio 建立串流分析作業](stream-analytics-quick-create-vs.md)
-* [使用 Azure Pipelines 來部署具有 CI/CD 的 Azure 串流分析作業](stream-analytics-tools-visual-studio-cicd-vsts.md)
