@@ -2,13 +2,13 @@
 title: 使用範本 Key Vault 秘密
 description: 示範如何在部署期間從金鑰保存庫中傳遞密碼做為參數。
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 8983d51d90e07e21ac4c9489c7ed553530278d3c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677860"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672700"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>在部署期間使用 Azure Key Vault 以傳遞安全的參數值
 
@@ -149,7 +149,7 @@ Set-AzKeyVaultAccessPolicy `
 
     這些範例會將自訂角色指派給資源群組層級上的使用者。
 
-將金鑰保存庫與[受控應用程式](../managed-applications/overview.md)的範本搭配使用時，您必須授與**設備資源提供者**服務主體的存取權。 如需詳細資訊，請參閱[在部署 Azure 受控應用程式時存取金鑰保存庫密碼](../managed-applications/key-vault-access.md) (英文)。
+將金鑰保存庫與 [受控應用程式](../managed-applications/overview.md)的範本搭配使用時，您必須授與 **設備資源提供者** 服務主體的存取權。 如需詳細資訊，請參閱[在部署 Azure 受控應用程式時存取金鑰保存庫密碼](../managed-applications/key-vault-access.md) (英文)。
 
 ## <a name="reference-secrets-with-static-id"></a>使用靜態識別碼參考祕密
 
@@ -373,7 +373,8 @@ New-AzResourceGroupDeployment `
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 如需有關金鑰保存庫的一般資訊，請參閱[什麼是 Azure Key Vault？](../../key-vault/general/overview.md)。
 - 如需參考金鑰密碼的完整範例，請參閱 [金鑰保存庫範例](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)。
+- 如需涵蓋從 key vault 傳遞安全值的 Microsoft Learn 模組，請參閱 [使用 ADVANCED ARM 範本功能管理複雜的雲端部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。

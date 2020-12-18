@@ -4,12 +4,12 @@ description: 了解如何在 Azure Functions 的 Durable Functions 擴充中處�
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 023f9dfcc421935c3f7515e847108925d5e5521e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081690"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673642"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>在 Durable Functions (Azure Functions) 中處理錯誤
 
@@ -196,11 +196,15 @@ main = df.Orchestrator.create(orchestrator_function)
 * **輪詢係數**：用來決定輪詢增加速率的係數。 預設值為 1。
 * **最大重試間隔**：重試嘗試之間等候的最大時間量。
 * **重試逾時**：花費在重試的最大時間量。 預設行為是無限期地重試。
-* **控制碼**：可以指定使用者定義的回呼，以決定是否應該重試函數。
+* **控制碼**：可以指定使用者定義的回呼，以決定是否應該重試函數。 
+
+> [!NOTE]
+> JavaScript () 中的 Durable Functions 目前不支援使用者定義的回呼 `context.df.RetryOptions` 。
+
 
 ## <a name="function-timeouts"></a>函式逾時
 
-如果執行時間太長而無法完成，您可能會想要放棄協調器函式內的函式呼叫。 目前，您可以使用[durable timer](durable-functions-timers.md) `context.CreateTimer` ( .net) 、 `context.df.createTimer` (javascript) ，或 `context.create_timer` (python) 搭配 `Task.WhenAny` ( .net) 、 `context.df.Task.any` (javascript) 或 (python) 來建立持久計時器 `context.task_any` ，如下列範例所示：
+如果執行時間太長而無法完成，您可能會想要放棄協調器函式內的函式呼叫。 目前，您可以使用[](durable-functions-timers.md) `context.CreateTimer` ( .net) 、 `context.df.createTimer` (javascript) ，或 `context.create_timer` (python) 搭配 `Task.WhenAny` ( .net) 、 `context.df.Task.any` (javascript) 或 (python) 來建立持久計時器 `context.task_any` ，如下列範例所示：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -290,7 +294,7 @@ main = df.Orchestrator.create(orchestrator_function)
 
 如果協調器函式失敗並傳回未處理的例外狀況，例外狀況的詳細資料會記錄下來，而在執行個體會以 `Failed` 狀態結束。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [瞭解永久性協調流程](durable-functions-eternal-orchestrations.md)

@@ -1,6 +1,6 @@
 ---
 title: 定價 & 計費模型
-description: 概述 Azure Logic Apps 的定價和計費模型的運作方式
+description: 概述 Azure Logic Apps 的定價和計費方式
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 520b4a0e87f27a90a604947ae0b558066b4ab82f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9243d089b4a000066ec03dbeeccd046db374f558
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937588"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673105"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps 的定價模式
 
@@ -65,11 +65,11 @@ ms.locfileid: "96937588"
 
   * **開發人員** ISE SKU：單一 [免費層](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) 整合帳戶
 
-  不論 SKU 為何，每個 ISE 都可以有 [有限數量的整合帳戶](logic-apps-limits-and-config.md#integration-account-limits)。 您可以提高此限制，以產生額外成本：
+  針對額外成本，您可以為 ISE 建立更多的整合帳戶， [直到總限制為止](logic-apps-limits-and-config.md#integration-account-limits)。 
 
-  * **Premium** ISE SKU：最多四個標準帳戶。 沒有免費或基本帳戶。
+  * **Premium** ISE SKU：最多19個標準帳戶。 不允許免費或基本帳戶。
 
-  * **開發人員** ISE SKU：最多4個標準帳戶，或最多5個標準帳戶。 沒有基本帳戶。
+  * **開發人員** ISE SKU：如果您已經有免費帳戶，最多可達19個標準帳戶，如果您沒有免費帳戶，則為20個標準帳戶。 不允許基本帳戶。
 
   如需有關整合帳戶限制的詳細資訊，請參閱 [Azure Logic Apps 的限制和](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)設定。 您可以稍後在本主題中深入瞭解 [整合帳戶層及其定價模型](#integration-accounts) 。
 
@@ -118,7 +118,7 @@ Azure Logic Apps 將所有成功和失敗的動作都計量為執行。 不過�
 
 Azure Logic Apps 提供免費、基本和標準的整合帳戶。 Logic Apps 的服務等級協定 (SLA) 支援基本和標準層，但 SLA 不支援免費層，且有區域可用性、輸送量和使用量的限制。 除了免費層整合帳戶之外，每個 Azure 區域中可以有一個以上的整合帳戶。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps/)。
 
-如果您的 [*整合服務環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)（不論 [SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)為何），您的 ise 可以有 [有限數量的整合帳戶](logic-apps-limits-and-config.md#integration-account-limits)，但您可以 [提高額外成本的限制](#fixed-pricing)。 若要瞭解如何針對 ISE 使用固定的定價模式，請參閱本主題的先前 [固定定價模型](#fixed-pricing) 一節。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
+如果您的 [*整合服務環境* (ise)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，您的 ise 可以免費使用單一整合帳戶，雖然包含的帳戶類型會因 [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)而異。 針對 [額外成本](#fixed-pricing)，您可以為 ISE 建立更多整合帳戶，直到 [整合帳戶的總限制](logic-apps-limits-and-config.md#integration-account-limits)為止。 若要瞭解如何針對 ISE 使用固定的定價模式，請參閱本主題的先前 [固定定價模型](#fixed-pricing) 一節。 如需定價費率，請參閱 [Logic Apps 定價](https://azure.microsoft.com/pricing/details/logic-apps)。
 
 若要在免費、基本或標準整合帳戶之間做選擇，請參閱這些使用案例描述：
 

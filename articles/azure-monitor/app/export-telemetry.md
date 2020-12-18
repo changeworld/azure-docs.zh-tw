@@ -3,12 +3,12 @@ title: 從 Application Insights 連續匯出遙測 | Microsoft Docs
 description: 匯出診斷和使用量資料至 Microsoft Azure 中的儲存體，並從那裡下載。
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324330"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674132"
 ---
 # <a name="export-telemetry-from-application-insights"></a>從 Application Insights 匯出遙測
 想要讓遙測保留比標準保留期限還久的時間？ 或以某些特殊方式處理它？ 連續匯出很適合此用途。 在 Application Insights 入口網站中看見的事件，可以使用 JSON 格式匯出到 Microsoft Azure 中的儲存體。 從那裡，您可以下載資料並編寫處理所需的任何程式碼。  
@@ -30,13 +30,16 @@ ms.locfileid: "87324330"
 
 ## <a name="continuous-export-advanced-storage-configuration"></a>連續匯出進階儲存體設定
 
-連續匯出**不支援**下列 Azure 儲存體功能/設定：
+連續匯出 **不支援** 下列 Azure 儲存體功能/設定：
 
 * 使用 [VNET/Azure 儲存體防火牆](../../storage/common/storage-network-security.md)搭配 Azure Blob 儲存體。
 
 * [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md)。
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> 建立連續匯出
+
+> [!NOTE]
+> 應用程式無法每天匯出超過3TB 的資料。 如果匯出的每日超過3TB，將會停用匯出。 若要在沒有限制的情況下匯出，請使用 [診斷設定型匯出](#diagnostic-settings-based-export)。
 
 1. 在您應用程式的 Application Insights 資源中，於左側 [設定] 下開啟 [連續匯出]，然後選擇 [新增]：
 
@@ -207,6 +210,19 @@ private IEnumerable<T> DeserializeMany<T>(string folderName)
 * [串流分析範例](export-stream-analytics.md)
 * [使用串流分析匯出至 SQL][exportasa]
 * [屬性類型和值的詳細資料模型參考。](export-data-model.md)
+
+## <a name="diagnostic-settings-based-export"></a>以診斷設定為基礎的匯出
+
+以診斷設定為基礎的匯出會使用與連續匯出不同的架構。 它也支援連續匯出不喜歡的功能：
+
+* 具有 vnet、防火牆和私用連結的 Azure 儲存體帳戶。
+* 匯出至事件中樞。
+
+若要遷移至以診斷設定為基礎的匯出：
+
+1. 停用目前的連續匯出。
+2. [將應用程式遷移到以工作區為基礎](convert-classic-resource.md)。
+3. [啟用診斷設定匯出](create-workspace-resource.md#export-telemetry)。 選取 [診斷設定] > 從您的 Application Insights 資源內 **新增診斷設定** 。
 
 <!--Link references-->
 

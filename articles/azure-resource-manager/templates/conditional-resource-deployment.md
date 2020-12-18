@@ -2,13 +2,13 @@
 title: 使用範本的條件式部署
 description: 說明如何在 Azure Resource Manager 範本中，有條件地將資源部署 (ARM 範本) 。
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 0a31bd1fbf755046f331542b4d5952b27a793360
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: 1492e9f9f45f23628f9933628fd2740e08ad9eb0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905990"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672843"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM 範本中的條件式部署
 
@@ -90,5 +90,6 @@ ms.locfileid: "96905990"
 
 ## <a name="next-steps"></a>後續步驟
 
+* 如需涵蓋條件式部署的 Microsoft Learn 模組，請參閱 [使用 ADVANCED ARM 範本功能管理複雜的雲端部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 * 如需建立範本的建議，請參閱 [ARM 範本的最佳做法](template-best-practices.md)。
 * 若要建立資源的多個實例，請參閱 [ARM 範本中的資源反復](copy-resources.md)專案。

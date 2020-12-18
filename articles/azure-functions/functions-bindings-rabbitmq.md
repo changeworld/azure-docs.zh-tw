@@ -4,22 +4,22 @@ description: 瞭解如何在 Azure Functions 中傳送 Azure RabbitMQ 觸發程�
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: ebf094ddfec19dac98238adf7d55af785b3df122
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: a38015d9f7560930d77d5d50ac70dca5bcdde6a6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629624"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672503"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions 總覽的 RabbitMQ 系結
 
 > [!NOTE]
 > RabbitMQ 系結只在 **Windows Premium 和專用** 方案上受到完整支援。 目前不支援耗用量和 Linux。
 
-Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結與[RabbitMQ](https://www.rabbitmq.com/)整合。 Azure Functions RabbitMQ 系結延伸模組可讓您使用 RabbitMQ API 搭配函式來傳送和接收訊息。
+Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結與[RabbitMQ](https://www.rabbitmq.com/)整合。 Azure Functions RabbitMQ 擴充功能可讓您使用 RabbitMQ API 搭配函式來傳送和接收訊息。
 
 | 動作 | 類型 |
 |---------|---------|
@@ -50,7 +50,7 @@ Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結�
 
 函數1.x 和2.x 不支援 RabbitMQ 系結延伸模組。 請使用函數3.x 和更新版本。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [ (觸發程式建立 RabbitMQ 訊息時執行函數) ](./functions-bindings-rabbitmq-trigger.md)
 - [傳送 RabbitMQ 訊息 Azure Functions (輸出系結) ](./functions-bindings-rabbitmq-output.md)
