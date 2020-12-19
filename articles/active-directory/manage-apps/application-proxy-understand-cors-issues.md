@@ -18,7 +18,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 11/17/2020
 ms.locfileid: "94651850"
 ---
-# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>瞭解並解決 Azure Active Directory 應用程式 Proxy CORS 問題
+# <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>了解和解決 Azure Active Directory 應用程式 Proxy CORS 問題
 
 [跨原始資源分享 (CORS) ](https://www.w3.org/TR/cors/) 有時可能會對您透過 Azure Active Directory 應用程式 Proxy 發佈的應用程式和 api 帶來挑戰。 本文討論 Azure AD 的應用程式 Proxy CORS 問題和解決方案。
 
@@ -42,9 +42,9 @@ ms.locfileid: "94651850"
 
 您可以使用瀏覽器偵錯工具來識別 CORS 問題：
 
-1. 啟動瀏覽器並流覽至 web 應用程式。
-1. 按 **F12** 以顯示 debug 主控台。
-1. 嘗試重現交易，並檢查主控台訊息。 CORS 違規會產生關於來源的主控台錯誤。
+1. 啟動瀏覽器並瀏覽至 Web 應用程式。
+1. 按 **F12** 以顯示偵錯主控台。
+1. 請嘗試重現異動，並檢閱主控台訊息。 CORS 違規會產生關於來源的主控台錯誤。
 
 在下列螢幕擷取畫面中，選取 [ **試試看** ] 按鈕會導致 CORS 錯誤訊息，指出 \/ 在存取控制-允許來源標頭中找不到 HTTPs：/corswebclient-contoso.msappproxy.net。
 
@@ -112,7 +112,7 @@ X-支援： ASP.NET \
 
 ### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>選項5：延長存取權杖的存留期
 
-無法解決某些 CORS 問題，例如，當您的應用程式重新導向至 *login.microsoftonline.com* 進行驗證，且存取權杖到期時。 CORS 呼叫會失敗。 此案例的因應措施是延長存取權杖的存留期，以防止它在使用者會話期間過期。 如需如何進行這項操作的詳細資訊，請參閱 [Azure AD 中的可設定權杖存留期](../develop/active-directory-configurable-token-lifetimes.md)。
+無法解決某些 CORS 問題，例如，當您的應用程式重新導向至 *login.microsoftonline.com* 進行驗證，且存取權杖到期時。 然後，CORS 呼叫會失敗。 此案例的因應措施是延長存取權杖的存留期，以避免在使用者的工作階段期間過期。 如需如何進行這項操作的詳細資訊，請參閱 [Azure AD 中的可設定權杖存留期](../develop/active-directory-configurable-token-lifetimes.md)。
 
 ## <a name="see-also"></a>另請參閱
 - [教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取](application-proxy-add-on-premises-application.md) 
