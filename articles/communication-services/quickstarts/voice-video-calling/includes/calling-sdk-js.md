@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: ff9eca855269597477bc42a319c99c886576d92c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: d50ce842a1b2bca26ef14dfbc81aab90d4ac2d8c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94482711"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97691958"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -53,7 +53,7 @@ npm install @azure/communication-calling --save
 const userToken = '<user token>';
 callClient = new CallClient(options);
 const tokenCredential = new AzureCommunicationUserCredential(userToken);
-const callAgent = await callClient.createCallAgent(tokenCredential);
+const callAgent = await callClient.createCallAgent(tokenCredential, { displayName: 'optional ACS user name' });
 const deviceManager = await callClient.getDeviceManager()
 ```
 
@@ -89,7 +89,9 @@ const groupCall = callAgent.call([userCallee, pstnCallee], placeCallOptions);
 > 目前不能有一個以上的傳出本機影片串流。
 若要撥打影片，您必須使用 deviceManager API 來列舉本機相機 `getCameraList` 。
 選取所需的相機之後，請使用它來建立 `LocalVideoStream` 實例，並將它以 `videoOptions` 陣列中的專案形式傳遞 `localVideoStream` 給 `call` 方法。
-一旦您的電話連線，它會自動開始將影片串流從選取的相機傳送到其他參與者 (s) 
+一旦您的電話連線，它會自動開始將影片串流從選取的相機傳送到其他參與者 (s) 。
+
+這也適用于呼叫。請接受 ( # A1 video 選項和 CallAgent。加入 ( # A3 影片選項。
 ```js
 const deviceManager = await callClient.getDeviceManager();
 const videoDeviceInfo = deviceManager.getCameraList()[0];
@@ -99,13 +101,41 @@ const call = callAgent.call(['acsUserId'], placeCallOptions);
 
 ```
 
+### <a name="receiving-an-incoming-call"></a>接收來電
+```js
+callAgent.on('callsUpdated', e => {
+    e.added.forEach(addedCall => {
+        if(addedCall.isIncoming) {
+        addedCall.accept();
+    }
+    });
+})
+```
+
 ### <a name="join-a-group-call"></a>加入群組通話
 若要啟動新的群組呼叫或加入進行中的群組呼叫，請使用 ' join ' 方法並傳遞具有屬性的物件 `groupId` 。 值必須是 GUID。
 ```js
 
-const context = { groupId: <GUID>}
-const call = callAgent.join(context);
+const locator = { groupId: <GUID>}
+const call = callAgent.join(locator);
 
+```
+
+### <a name="join-a-teams-meeting"></a>加入團隊會議
+若要加入小組會議，請使用「加入」方法，並傳遞會議連結或會議的座標
+```js
+// Join using meeting link
+const locator = { meetingLink: <meeting link>}
+const call = callAgent.join(locator);
+
+// Join using meeting coordinates
+const locator = {
+    threadId: <thread id>,
+    organizerId: <organizer id>,
+    tenantId: <tenant id>,
+    messageId: <message id>
+}
+const call = callAgent.join(locator);
 ```
 
 ## <a name="call-management"></a>通話管理
@@ -162,6 +192,11 @@ const callEndReason = call.callEndReason;
 * 若要瞭解目前的呼叫是否為撥入電話，請檢查 `isIncoming` 屬性，它會傳回 `Boolean` 。
 ```js
 const isIncoming = call.isIncoming;
+```
+
+* 若要檢查是否正在記錄呼叫，請檢查 `isRecordingActive` 屬性，它會傳回 `Boolean` 。
+```js
+const isResordingActive = call.isRecordingActive;
 ```
 
 *  若要檢查目前的麥克風是否已靜音，請檢查 `muted` 屬性，它會傳回 `Boolean` 。
