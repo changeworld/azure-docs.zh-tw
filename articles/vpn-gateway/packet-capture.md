@@ -5,14 +5,14 @@ services: vpn-gateway
 author: radwiv
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 12/2/2020
 ms.author: radwiv
-ms.openlocfilehash: c6aa2b63344ef629d55f5a4efb66e4ee0e55975e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: caa9a0869d7d4bca58b91a0c682177e1408f8300
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661030"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733785"
 ---
 # <a name="configure-packet-capture-for-vpn-gateways"></a>設定 VPN 閘道的封包捕獲
 
@@ -31,6 +31,7 @@ ms.locfileid: "94661030"
 - 您無法同時執行多個全閘道的封包捕捉。
 - 您無法同時在單一連接上執行多個封包捕獲。 您可以同時在不同的連接上執行多個封包捕獲。
 - 每個閘道最多可以平行執行五個封包捕獲。 這些封包捕捉可以是全閘道的封包捕獲和每個連線封包捕獲的組合。
+- MaxPacketBufferSize 的單位是 bytes，MaxFileSize 是 mb
 
 ### <a name="example-json"></a>範例 JSON
 ```JSON-interactive

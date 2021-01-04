@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96842696"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724218"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 [Azure 檔案儲存體](storage-files-introduction.md) 可以用兩種主要方式進行部署：直接裝載無伺服器的 azure 檔案共用，或使用 Azure 檔案同步快取內部部署的 azure 檔案共用。您所選擇的部署選項會變更您規劃部署時需要考慮的事項。 
@@ -114,56 +114,6 @@ Azure 檔案儲存體具有多層式的方法，可確保您的資料已備份�
 
 ## <a name="storage-tiers"></a>儲存層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="understanding-provisioning-for-premium-file-shares"></a>瞭解 premium 檔案共用的布建
-進階檔案共用會以固定的 GiB/IOPS/輸送量比例為基礎佈建。 所有共用大小都提供最小基準/輸送量，並允許高載。 針對每個已布建的 GiB，將會發出最小 IOPS/輸送量，以及一次 IOPS 和 0.1 MiB/秒輸送量，直到每個共用的上限為止。 最小允許的布建為 100 GiB，最少 IOPS/輸送量。 
-
-所有 premium 共用都是以最大的努力提供免費的高載。 所有的共用大小最多可高達 4000 IOPS，或每個布建的 GiB 最多三個 IOPS，以提供更高的共用 IOPS IOPS。 所有共用都支援尖峰高載限制的最長持續時間（60分鐘）。 新的共用一開始有以佈建容量為基礎的完整高載額度。
-
-共用必須以 1 GiB 增量布建。 大小下限為 100 GiB、下一個大小為 101 GiB 等等。
-
-> [!TIP]
-> 基準 IOPS = 400 + 1 * 布建 GiB。  (最高 100000 IOPS) 。
->
-> 高載限制 = 最大 (4000，3 * 基準 IOPS) 。  (上限，最高可達 100000 IOPS) 。
->
-> 輸出速率 = 60 MiB/秒 + 0.06 * 布建的 GiB
->
-> 輸入速率 = 40 MiB/秒 + 0.04 * 布建的 GiB
-
-布建的共用大小是由共用配額所指定。 您可以隨時增加共用配額，但可以在上一次增加之後24小時後減少。 等候24小時之後，如果沒有增加配額，您可以依需要減少共用配額的次數，直到再次增加為止。 IOPS/輸送量調整變更將在大小變更後的幾分鐘內生效。
-
-您可以將布建的共用大小減少到您使用的 GiB 下。 如果您這樣做，將不會遺失資料，但您仍需支付所使用的大小，並可獲得所布建共用的效能 (基準 IOPS、輸送量和高載 IOPS) ，而不是使用的大小。
-
-下表說明這些 homebrew 公式針對布建的共用大小的一些範例：
-
-|容量 (GiB)  | 基準 IOPS | 高載 IOPS | 輸出 (MiB/秒)  | 輸入 (MiB/秒)  |
-|---------|---------|---------|---------|---------|
-|100         | 500     | 最高 4,000     | 66   | 44   |
-|500         | 900     | 最高 4,000  | 90   | 60   |
-|1,024       | 1424   | 最高 4,000   | 122   | 81   |
-|5,120       | 5520   | 最高15360  | 368   | 245   |
-|10240      | 10640  | 最高30720  | 675   | 450   |
-|33792      | 34192  | 最高100000 | 2088 | 1392   |
-|51200      | 51600  | 最高100000 | 3,132 | 2088   |
-|102400     | 100,000 | 最高100000 | 6204 | 4136   |
-
-要注意的是，有效的檔案共用效能受限於電腦網路限制、可用的網路頻寬、IO 大小、平行處理，還有許多其他因素。 例如，根據具有8個 KiB 讀取/寫入 IO 大小的內部測試，不啟用 SMB 多重通道的單一 Windows 虛擬機器（ *標準 F16s_v2*）會透過 smb 連線至 premium 檔案共用，以達到20K 的讀取 IOPS 和15K 寫入 iops。 使用 512 MiB 讀取/寫入 IO 大小時，相同的 VM 可以達到 1.1 GiB/s 輸出和 370 MiB/s 輸入輸送量。 如果 premium 共用上已啟用 SMB 多重通道，則相同的用戶端最多可達到 \~ 3 倍的效能。 若要達到最大效能調整，請 [啟用 SMB 多重](storage-files-enable-smb-multichannel.md) 通道，並將負載分散到多個 vm。 請參閱 [SMB 多重通道效能](storage-files-smb-multichannel-performance.md) 和 [疑難排解指南](storage-troubleshooting-files-performance.md) ，以瞭解一些常見的效能問題和因應措施。
-
-#### <a name="bursting"></a>爆破
-如果您的工作負載需要額外的效能來滿足尖峰需求，則您的共用可以使用高載點數來進行以上的共用基準 IOPS 限制，以提供符合需求所需的共用效能。 Premium 檔案共用可將其 IOPS 高載至4000或最多三個因數（以較高的值為准）。 高載是自動化的，而且會根據信用系統來運作。 高載會以最佳的方式運作，而高載限制不保證，檔案共用 *最多可以高達* 60 分鐘的最大持續時間上限。
-
-當檔案共用的流量低於基準 IOPS 時，會在高載 bucket 中累積點數。 例如，100 GiB 共用具有500基準 IOPS。 如果共用上的實際流量是特定1秒間隔的 100 IOPS，則400未使用的 IOPS 會被計入高載值區。 同樣地，閒置的 1 TiB 共用，會在 1424 IOPS 上累算高載點數。 之後將會在作業超過基準 IOPS 時使用這些點數。
-
-每當共用超過基準 IOPS，且在高載值區中有點數時，它會以允許的尖峰高載速率來高載。 只要剩餘信用額度（最多可達60分鐘的持續時間），共用可以持續高載，但這是以累積的高載點數數量為基礎。 除了基準 IOPS 以外的每個 IO 都會耗用一項點數，一旦取用所有信用額度之後，該共用會回到基準 IOPS。
-
-共用信用額度有三種狀態：
-
-- 當檔案共用使用小於基準 IOPS 時產生。
-- 當檔案共用使用超過基準 IOPS，且處於高載模式時拒絕。
-- 常數，抽檔案共用會使用完全相同的基準 IOPS，而不會有任何已累積或未使用的點數。
-
-新檔案共用的開頭為其高載值區中的完整點數。 如果共用 IOPS 低於基準 IOPS （因為伺服器進行節流），將不會產生高載信用額度。
 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>啟用標準檔案共用可跨越最多 100 TiB
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]

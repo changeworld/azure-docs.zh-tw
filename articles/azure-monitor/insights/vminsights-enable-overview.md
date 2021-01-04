@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/27/2020
+ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: f5e774e9b7327d4b403f6a09187e97082a77aa78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186794"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740584"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>啟用適用於 VM 的 Azure 監視器概觀
 
@@ -26,68 +26,27 @@ ms.locfileid: "96186794"
 
 若要設定適用於 VM 的 Azure 監視器：
 
-* 從 Azure 入口網站中的功能表直接選取 **見解** ，以啟用單一 azure VM、Azure VMSS 或 Azure Arc 機。
-* 使用 Azure 原則來啟用多個 Azure Vm、Azure VMSS 或 Azure Arc 機。 此方法可確保在現有和新的 Vm 和擴展集上，已安裝並正確設定必要的相依性。 系統會報告不符合規範的 Vm 和擴展集，讓您可以決定是否要加以啟用，並加以修復。
-* 使用 PowerShell，在指定的訂用帳戶或資源群組中啟用多部 Azure Vm、Azure Arc Vm、Azure VMSS 或 Azure Arc 機。
+* 從 Azure 入口網站中的功能表直接選取 **見解** ，以啟用單一 azure 虛擬機器、azure 虛擬機器擴展集或 Azure Arc 機。
+* 使用 Azure 原則啟用多部 Azure 虛擬機器、Azure 虛擬機器或 Azure Arc 機。 此方法可確保在現有和新的 Vm 和擴展集上，已安裝並正確設定必要的相依性。 系統會報告不符合規範的虛擬機器和擴展集，讓您可以決定是否要加以啟用和修復。
+* 使用 PowerShell 來啟用多部 Azure 虛擬機器、Azure Arc 虛擬機器、Azure 虛擬機器擴展集，或在指定的訂用帳戶或資源群組中 Azure Arc 的機器。
 * 啟用適用於 VM 的 Azure 監視器以監視公司網路或其他雲端環境中裝載的 Vm 或實體電腦。
 
-## <a name="prerequisites"></a>Prerequisites
-
-開始之前，請確定您了解下列各節中的資訊。 
-
->[!NOTE]
->本節所述的下列資訊也適用于 [服務對應的解決方案](service-map.md)。  
-
-### <a name="log-analytics-workspace"></a>Log Analytics 工作區
-
-適用於 VM 的 Azure 監視器支援下欄區域中的 Log Analytics 工作區：
-
-- 非洲
-  - 南非北部
-- 亞太地區
-  - 東亞
-  - 東南亞
-- 澳大利亞
-  - 澳大利亞東部
-  - 澳大利亞東南部
-- Azure Government
-  - US Gov Az
-  - US Gov Va
-- Canada
-  - 加拿大中部
-- 歐洲
-  - 北歐
-  - 西歐
-- 印度
-  - 印度中部
-- 日本
-  - 日本東部
-- 英國
-  - 英國南部
-- 美國
-  - 美國中部
-  - 美國東部
-  - 美國東部 2
-  - 美國中北部
-  - 美國中南部
-  - 美國中西部
-  - 美國西部
-  - 美國西部 2
-
-
->[!NOTE]
->您可以監視任何區域中的 Azure Vm。 Vm 本身不限於 Log Analytics 工作區支援的區域。
->
-
-如果您沒有 Log Analytics 工作區，您可以使用下列其中一項資源建立一個：
-* [Azure CLI](../learn/quick-create-workspace-cli.md)
-* [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure 入口網站](../learn/quick-create-workspace.md)
-* [Azure Resource Manager](../samples/resource-manager-workspace.md)
+## <a name="supported-machines"></a>支援的機器
+適用於 VM 的 Azure 監視器支援下列電腦：
 
 - Azure 虛擬機器
 - Azure 虛擬機器擴展集
 - 與 Azure Arc 連線的混合式虛擬機器
+
+
+## <a name="supported-azure-arc-machines"></a>支援的 Azure Arc 電腦
+適用於 VM 的 Azure 監視器適用于可以使用 Arc 擴充服務之區域中 Azure Arc 已啟用的伺服器。 您必須執行 Arc 代理程式的0.9 版或更新版本。
+
+| 連線的來源 | 支援 | 描述 |
+|:--|:--|:--|
+| Windows 代理程式 | 是 | 除了 [適用于 windows 的 Log Analytics 代理程式](../platform/log-analytics-agent.md)，windows 代理程式還需要相依性代理程式。 如需詳細資訊，請參閱 [支援的作業系統](../platform/agents-overview.md#supported-operating-systems)。 |
+| Linux 代理程式 | 是 | Linux 代理 [程式除了適用于 linux 的 Log Analytics 代理程式](../platform/log-analytics-agent.md)之外，還需要相依性代理程式。 如需詳細資訊，請參閱 [支援的作業系統](#supported-operating-systems)。 |
+| System Center Operations Manager 管理群組 | 否 | |
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
@@ -101,18 +60,8 @@ ms.locfileid: "96186794"
 - 若為9.4 版以外的 Debian 散發版本，則不支援對應功能，而且只能從 [Azure 監視器] 功能表使用 [效能] 功能。 它無法直接從 Azure VM 的左窗格中使用。
 - 支援 CentOSPlus 核心。
 - 必須針對 Spectre 弱點修補 Linux 核心。 如需詳細資料，請洽詢您的 Linux 散發廠商。
-
-
-
-## <a name="supported-azure-arc-machines"></a>支援的 Azure Arc 電腦
-適用於 VM 的 Azure 監視器適用于可以使用 Arc 擴充服務之區域中 Azure Arc 已啟用的伺服器。 您必須執行 Arc 代理程式的0.9 版或更新版本。
-
-| 連線的來源 | 支援 | 描述 |
-|:--|:--|:--|
-| Windows 代理程式 | 是 | 除了 [適用于 windows 的 Log Analytics 代理程式](../platform/log-analytics-agent.md)，windows 代理程式還需要相依性代理程式。 如需詳細資訊，請參閱 [支援的作業系統](../platform/agents-overview.md#supported-operating-systems)。 |
-| Linux 代理程式 | 是 | Linux 代理 [程式除了適用于 linux 的 Log Analytics 代理程式](../platform/log-analytics-agent.md)之外，還需要相依性代理程式。 如需詳細資訊，請參閱 [支援的作業系統](#supported-operating-systems)。 |
-| System Center Operations Manager 管理群組 | 否 | |
-
+## <a name="log-analytics-workspace"></a>Log Analytics 工作區
+適用於 VM 的 Azure 監視器需要 Log Analytics 工作區。 如需此工作區的詳細資訊和需求，請參閱 [設定適用於 VM 的 Azure 監視器的 Log Analytics 工作區](vminsights-configure-workspace.md) 。
 ## <a name="agents"></a>代理程式
 適用於 VM 的 Azure 監視器需要在要監視的每部虛擬機器或虛擬機器擴展集上安裝下列兩個代理程式。 安裝這些代理程式並將它們連線至工作區，是將資源上架的唯一需求。
 
@@ -135,7 +84,7 @@ ms.locfileid: "96186794"
 
 
 ## <a name="management-packs"></a>管理組件
-針對適用於 VM 的 Azure 監視器設定 Log Analytics 工作區時，會將兩個管理元件轉送至所有連線到該工作區的 Windows 電腦。 管理元件的名稱是 *Microsoft.intelligencepacks.updateassessment microsoft.intelligencepacks.applicationdependencymonitor* 和 *microsoft.intelligencepacks.updateassessment VMInsights* ，並會寫入 *%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management pack \* 中。 
+針對適用於 VM 的 Azure 監視器設定 Log Analytics 工作區時，會將兩個管理元件轉送至所有連線到該工作區的 Windows 電腦。 管理元件的名稱是 *Microsoft.intelligencepacks.updateassessment microsoft.intelligencepacks.applicationdependencymonitor* 和 *microsoft.intelligencepacks.updateassessment VMInsights* ，並會寫入 *%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management pack* 中。 
 
 *Microsoft.intelligencepacks.applicationdependencymonitor* 管理元件所使用的資料來源為 **% Program Files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll*。 *VMInsights* 管理元件所使用的資料來源為 *% Program Files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources \<AutoGeneratedID> \ Microsoft.VirtualMachineMonitoringModule.dll*。
 

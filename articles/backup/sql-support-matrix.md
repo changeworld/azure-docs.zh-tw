@@ -4,12 +4,12 @@ description: 提供使用 Azure 備份服務在 Azure Vm 中備份 SQL Server �
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174058"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734788"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure Vm 中 SQL Server 備份的支援矩陣
 
@@ -39,11 +39,11 @@ ms.locfileid: "92174058"
 * 您可以透過 Azure 入口網站或 **PowerShell** 來設定 SQL Server 備份。 不支援 CLI。
 * 有兩種[部署](../azure-resource-manager/management/deployment-models.md)支援此解決方案 - Azure Resource Manager VM 和傳統 VM。
 * 所有備份類型 (完整/差異/記錄) 和復原模式，都支援 (簡單/完整/大量記錄) 。
-* **唯讀**資料庫支援完整和僅複製完整備份類型。
+* 針對 **唯讀** 資料庫：僅支援完整和複製完整備份的備份類型。
 * 如果使用者在備份原則中明確啟用，則支援 SQL 原生壓縮。 Azure 備份會使用壓縮/NO_COMPRESSION 子句來覆寫實例層級的預設值，這取決於使用者設定的這個控制項值。
 * 支援啟用 TDE 的資料庫備份。 若要將 TDE 加密的資料庫還原到另一個 SQL Server，您必須先將 [憑證還原至目的地伺服器](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。 SQL Server 2016 和更新版本之已啟用 TDE 資料庫的備份壓縮可供使用，但以較低的傳輸大小為限[，如下所述。](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)
 * 不支援鏡像資料庫和資料庫快照集的備份和還原作業。
-* 不支援 SQL Server **容錯移轉叢集實例 (FCI) ** 。
+* 不支援 SQL Server **容錯移轉叢集實例 (FCI)** 。
 * 使用多個備份解決方案來備份獨立 SQL Server 實例或 SQL Always on 可用性群組可能會導致備份失敗。 避免這樣做。 使用相同或不同的解決方案來備份可用性群組的兩個節點，也可能導致備份失敗。
 * 設定可用性群組時，會根據幾個因素從不同的節點取得備份。 可用性群組的備份行為摘述於下方。
 
@@ -64,7 +64,7 @@ ms.locfileid: "92174058"
 --- | ---
 完整 | 主要
 差異 | 主要
-Log |  主要
+記錄 |  主要
 只複製完整 |  主要
 
 #### <a name="backup-preference-secondary-only"></a>備份喜好設定：僅限次要
@@ -73,7 +73,7 @@ Log |  主要
 --- | ---
 完整 | 主要
 差異 | 主要
-Log |  次要
+記錄 |  次要
 只複製完整 |  次要
 
 #### <a name="backup-preference-secondary"></a>備份喜好設定：次要
@@ -82,7 +82,7 @@ Log |  次要
 --- | ---
 完整 | 主要
 差異 | 主要
-Log |  次要
+記錄 |  次要
 只複製完整 |  次要
 
 #### <a name="no-backup-preference"></a>沒有備份喜好設定
@@ -91,7 +91,7 @@ Log |  次要
 --- | ---
 完整 | 主要
 差異 | 主要
-Log |  次要
+記錄 |  次要
 只複製完整 |  次要
 
 ## <a name="next-steps"></a>後續步驟

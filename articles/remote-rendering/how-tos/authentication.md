@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
-ms.openlocfilehash: dc325fdf68c5afbb122f9e77c5509a6a8053a12e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 35fd78a9d55dc684045fdb4b83691c1613801421
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427454"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724866"
 ---
 # <a name="configure-authentication"></a>設定驗證
 
@@ -19,14 +19,17 @@ Azure 遠端轉譯使用與 [Azure 空間錨點 ](../../spatial-anchors/concepts
 * **AccountKey**：可以在 Azure 入口網站上遠端轉譯帳戶的 [金鑰] 索引標籤中取得。 帳戶金鑰只建議用於開發/原型設計。
     ![帳戶識別碼](./media/azure-account-primary-key.png)
 
+* **AccountDomain**：可以在 Azure 入口網站上遠端轉譯帳戶的 [總覽] 索引標籤中取得。
+    ![帳戶網域](./media/azure-account-domain.png)
+
 * **AuthenticationToken**：是 Azure AD token，可以使用 [MSAL 程式庫](../../active-directory/develop/msal-overview.md)取得。 有多個不同的流程可接受使用者認證，並使用這些認證來取得存取權杖。
 
-* **MRAccessToken**：是一項 MR token，可從 Azure Mixed Reality Security token SERVICE (STS) 取得。 `https://sts.mixedreality.azure.com`使用 REST 呼叫從端點抓取，類似下面的呼叫：
+* **MRAccessToken**：是一項 MR token，可從 Azure Mixed Reality Security token SERVICE (STS) 取得。 `https://sts.<accountDomain>`使用與下列類似的 REST 呼叫從端點取出：
 
     ```rest
-    GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+    GET https://sts.southcentralus.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-    Host: sts.mixedreality.azure.com
+    Host: sts.southcentralus.mixedreality.azure.com
     Connection: Keep-Alive
 
     HTTP/1.1 200 OK

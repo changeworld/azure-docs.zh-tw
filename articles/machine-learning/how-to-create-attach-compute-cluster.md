@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832682"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739180"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>建立 Azure Machine Learning 計算叢集
 
@@ -211,6 +211,14 @@ az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_N
 ### <a name="managed-identity-usage"></a>受控識別使用方式
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
+
+## <a name="troubleshooting"></a>疑難排解
+
+有些使用者在 GA 發行版本之前，從 Azure 入口網站建立其 Azure Machine Learning 工作區的機會可能無法在該工作區中建立 AmlCompute。 您可以對服務提出支援要求，或透過入口網站或 SDK 建立新的工作區，以立即解除封鎖。
+
+如果您的 Azure Machine Learning 計算叢集出現在調整大小 (0-> 0) 節點狀態時，可能是因為 Azure 資源鎖定所造成。
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

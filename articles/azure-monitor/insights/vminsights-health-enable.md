@@ -1,50 +1,71 @@
 ---
-title: '啟用適用於 VM 的 Azure 監視器來賓健全狀況 (preview) '
+title: 啟用適用於 VM 的 Azure 監視器來賓健康情況 (預覽)
 description: 說明如何在您的訂用帳戶中啟用適用於 VM 的 Azure 監視器來賓健康狀態，以及如何將 Vm 上架。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: references_regions
+ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444781"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740465"
 ---
-# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>啟用適用於 VM 的 Azure 監視器來賓健全狀況 (preview) 
+# <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>啟用適用於 VM 的 Azure 監視器來賓健康情況 (預覽)
 適用於 VM 的 Azure 監視器來賓健康狀態可讓您依定期取樣的一組效能測量所定義，來查看虛擬機器的健康情況。 本文說明如何在您的訂用帳戶中啟用這項功能，以及如何啟用每部虛擬機器的來賓監視。
 
 ## <a name="current-limitations"></a>目前的限制
 適用於 VM 的 Azure 監視器來賓健康情況在公開預覽中有下列限制：
 
 - 目前僅支援 Azure 虛擬機器。 目前不支援適用於伺服器的 Azure Arc。
-- 虛擬機器必須執行下列其中一個作業系統： 
+
+
+## <a name="supported-operating-systems"></a>支援的作業系統
+虛擬機器必須執行下列其中一個作業系統： 
+
   - Ubuntu 16.04 LTS、Ubuntu 18.04 LTS
   - Windows Server 2012 或更新版本
-- 虛擬機器必須位於下列其中一個區域：
-  - 澳大利亞東部
-  - 澳大利亞東南部
-  - 印度中部
-  - 美國中部
-  - 美國東部
-  - 美國東部 2
-  - 美國東部 2 EUAP
-  - 德國中西部
-  - 日本東部
-  - 美國中北部
-  - 歐洲北部
-  - 美國中南部
-  - 東南亞
-  - 英國南部
-  - 西歐
-  - 美國西部
-  - 美國西部 2
-- Log Analytics 工作區必須位於下列其中一個區域：
-  - 美國東部
-  - 美國東部 2 EUAP
-  - 西歐區域
+
+## <a name="supported-regions"></a>支援區域
+
+虛擬機器必須位於下列其中一個區域：
+
+- 澳大利亞中部
+- 澳大利亞東部
+- 澳大利亞東南部
+- 印度中部
+- 美國中部
+- 東亞
+- 美國東部
+- 美國東部 2
+- 美國東部 2 EUAP
+- 德國中西部
+- 日本東部
+- 美國中北部
+- 歐洲北部
+- 美國中南部
+- 東南亞
+- 英國南部
+- 美國中西部
+- 西歐
+- 美國西部
+- 美國西部 2
+
+
+Log Analytics 工作區必須位於下列其中一個區域：
+
+- 美國中部
+- 美國東部
+- 美國東部 2
+- 美國東部 2 EUAP
+- 北歐
+- 東南亞
+- 英國南部
+- 西歐區域
+- 美國西部 2
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -52,9 +73,8 @@ ms.locfileid: "96444781"
 - 執行上線步驟的使用者必須擁有虛擬機器和資料收集規則所在訂用帳戶的最小參與者層級存取權。
 - 必須註冊必要的 Azure 資源提供者，如下一節所述。
 
-
 ## <a name="register-required-azure-resource-providers"></a>註冊所需的 Azure 資源提供者
-下列 Azure 資源提供者必須為您的訂用帳戶註冊，才能啟用適用於 VM 的 Azure 監視器來賓健康情況。 
+下列 Azure 資源提供者會為您的訂用帳戶註冊，以啟用適用於 VM 的 Azure 監視器來賓健康情況。 
 
 - Microsoft.WorkloadMonitor
 - Microsoft.Insights

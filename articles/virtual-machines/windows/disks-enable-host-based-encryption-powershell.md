@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 626246f34cbd037db60bd13fd120f0ba133f8924
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 87b032b3a8382f632c1db56d2724b267c2db6727
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488267"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734414"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure PowerShell 模組，在主機上使用加密來啟用端對端加密
 
@@ -33,9 +33,9 @@ ms.locfileid: "96488267"
 
 您也可以透過程式設計的方式找到 VM 大小。 若要瞭解如何以程式設計方式取得它們，請參閱 [尋找支援的 VM 大小](#finding-supported-vm-sizes) 一節。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-若要能夠針對您的 Vm 或虛擬機器擴展集使用主機加密，您必須在訂用帳戶上啟用此功能。 使用您的訂用帳戶識別碼，將電子郵件傳送至 encryptionAtHost@microsoft，以啟用訂用帳戶的功能。
+若要能夠針對您的 Vm 或虛擬機器擴展集使用主機加密，您必須在訂用帳戶上啟用此功能。 傳送電子郵件給 encryptionAtHost@microsoft.com 您的訂用帳戶識別碼，以取得訂用帳戶啟用的功能。
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>建立 Azure Key Vault 和 DiskEncryptionSet
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380891"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708935"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知識庫的限制和界限
 
@@ -39,7 +39,7 @@ ms.locfileid: "94380891"
 
 ### <a name="maximum-file-size"></a>檔案大小上限
 
-|格式|檔案大小上限 (MB) |
+|[格式]|檔案大小上限 (MB) |
 |--|--|
 |`.docx`|10|
 |`.pdf`|25|
@@ -56,7 +56,7 @@ ms.locfileid: "94380891"
 
 ### <a name="maximum-number-of-deep-links-from-url"></a>來自 URL 的深層連結數目上限
 
-可從 URL 頁面解壓縮以進行 Qna 的最大深層連結數目為 **20** 。
+可從 URL 頁面解壓縮以進行 Qna 的最大深層連結數目為 **20**。
 
 ## <a name="metadata-limits"></a>中繼資料限制
 
@@ -82,10 +82,10 @@ ms.locfileid: "94380891"
 
 ## <a name="knowledge-base-content-limits"></a>知識庫的內容限制
 知識庫內容的整體限制：
-* 解答文字的長度：25,000
-* 問題文字的長度：1,000
-* 中繼資料索引鍵文字的長度：100
-* 中繼資料值文字的長度：500
+* 解答文字的長度：25000個字元
+* 問題文字的長度：1000個字元
+* 中繼資料索引鍵文字的長度：100個字元
+* 中繼資料值文字的長度：500個字元
 * 中繼資料名稱的支援字元：字母、數位和 `_`
 * 中繼資料值的支援字元：和以外的所有字元 `:``|`
 * 檔案名稱的長度：200

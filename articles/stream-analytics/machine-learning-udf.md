@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 01c85311c9ea49be3543edee405cdd66a0659797
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130675"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733000"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>整合 Azure 串流分析與 Azure Machine Learning (預覽)
 
@@ -37,7 +37,7 @@ ms.locfileid: "93130675"
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-1. 在 Azure 入口網站中瀏覽至您的串流分析作業，然後選取 [作業拓撲] 底下的 [函式]。 然後，從 [ **+ 新增** ] 下拉式功能表選取 [ **Azure Machine Learning 服務** ]。
+1. 在 Azure 入口網站中瀏覽至您的串流分析作業，然後選取 [作業拓撲] 底下的 [函式]。 然後，從 [ **+ 新增**] 下拉式功能表選取 [ **Azure Machine Learning 服務**]。
 
    ![新增 Azure Machine Learning UDF](./media/machine-learning-udf/add-azure-machine-learning-udf.png)
 
@@ -51,13 +51,13 @@ ms.locfileid: "93130675"
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="在 VS Code 中新增 UDF":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="在 VS Code 中新增 UDF":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="在 VS Code 中新增 Azure Machine Learning UDF":::
 
 2. 輸入函式名稱，並在 CodeLens 的訂用帳戶中使用 [ **選取** ] 填入設定檔中的設定。
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="在 VS Code 中新增 UDF":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="選取 VS Code 中的 Azure Machine Learning UDF":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="在 VS Code 中新增 UDF":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="在 VS Code 中設定 Azure Machine Learning UDF":::
 
 下表說明串流分析中 Azure Machine Learning 服務函式的每個屬性。
 
@@ -83,7 +83,7 @@ INTO output
 FROM input
 ```
 
-串流分析只支援針對 Azure Machine Learning 函式傳遞一個參數。 您可能需要先準備您的資料，然後再將其當做機器學習 UDF 的輸入來傳遞。
+串流分析只支援針對 Azure Machine Learning 函式傳遞一個參數。 您可能需要先準備您的資料，然後再將其當做機器學習 UDF 的輸入來傳遞。 您必須確定 ML UDF 的輸入不是 null，因為 null 輸入會導致作業失敗。
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>將多個輸入參數傳遞至 UDF
 
@@ -104,11 +104,18 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 將 JavaScript UDF 新增至作業之後，您可以使用下列查詢來叫用您的 Azure Machine Learning UDF：
 
 ```SQL
-SELECT udf.score(
-udf.createArray(vendorid, weekday, pickuphour, passenger, distance)
-)
-INTO output
+WITH 
+ModelInput AS (
+#use JavaScript UDF to construct array that will be used as input to ML UDF
+SELECT udf.createArray(vendorid, weekday, pickuphour, passenger, distance) as inputArray
 FROM input
+)
+
+SELECT udf.score(inputArray)
+INTO output
+FROM ModelInput
+#validate inputArray is not null before passing it to ML UDF to prevent job from failing
+WHERE inputArray is not null
 ```
 
 下列 JSON 是範例要求：

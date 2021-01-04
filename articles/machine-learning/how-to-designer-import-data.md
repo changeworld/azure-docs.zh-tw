@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591983"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739853"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>將資料匯入 Azure Machine Learning 設計工具
 
@@ -38,21 +38,20 @@ ms.locfileid: "94591983"
 
 1. 選取用來輸出所要註冊資料的模組。
 
-1. 在 [屬性] 窗格中，選取 [ **輸出 + 記錄**  >  **註冊資料集** ]。
+1. 在 [屬性] 窗格中，選取 [**輸出 + 記錄**  >  **註冊資料集**]。
 
     ![顯示如何巡覽至 [註冊資料集] 選項的螢幕擷取畫面](media/how-to-designer-import-data/register-dataset-designer.png)
 
-如果模組輸出資料採用表格格式，您必須選擇將輸出註冊為檔案 **資料集** 或 **表格式資料集** 。
+如果模組輸出資料採用表格格式，您必須選擇將輸出註冊為檔案 **資料集** 或 **表格式資料集**。
 
  - 檔案 **資料集會** 將模組的輸出檔案夾註冊為檔案資料集。 輸出檔案夾包含設計工具在內部使用的資料檔案和中繼檔案。 如果您想要繼續在設計工具中使用已註冊的資料集，請選取此選項。 
 
  - **表格式資料集** 只會將模組的輸出資料檔案註冊為表格式資料集。 這種格式可供其他工具使用，例如自動化 Machine Learning 或 Python SDK。 如果您打算在設計工具之外使用已註冊的資料集，請選取此選項。  
-
-
+ 
 
 ### <a name="use-a-dataset"></a>使用資料集
 
-您已註冊的資料集可以在模組選擇區的 [ **資料集** ] 底下找到。 若要使用資料集，請將其拖放到管線畫布上。 然後，將資料集的輸出埠連接至畫布中的其他模組。 
+您已註冊的資料集可以在模組選擇區的 [ **資料集**] 底下找到。 若要使用資料集，請將其拖放到管線畫布上。 然後，將資料集的輸出埠連接至畫布中的其他模組。 
 
 如果您註冊檔案資料集，則會 **AnyDirectory** 資料集的輸出埠類型。 如果您註冊表格式資料集，則為資料集的輸出埠類型（如果 **DataFrameDirectory** 的話）。 請注意，如果您將資料集的輸出埠連接到設計工具中的其他模組，則必須對齊資料集和模組的埠類型。
 
@@ -62,6 +61,14 @@ ms.locfileid: "94591983"
 > [!NOTE]
 > 設計工具支援 [資料集版本控制](how-to-version-track-datasets.md)。 在資料集模組的屬性面板中，指定資料集版本。
 
+### <a name="limitations"></a>限制 
+
+- 目前，您只能在設計工具中將表格式資料集視覺化。 如果您在設計工具外註冊檔案資料集，則無法在設計工具畫布中將它視覺化。
+- 您的資料集會儲存在虛擬網路中 (VNet) 。 如果您想要視覺化，您需要啟用資料存放區的工作區受控識別。
+    1. 移至相關的資料存放區，然後按一下 [**更新認證** 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="更新認證":::]
+    1. 選取 **[是]** 可啟用工作區受控識別。
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="啟用工作區受控識別":::
 
 ## <a name="import-data-using-the-import-data-module"></a>使用匯入資料模組匯入資料
 

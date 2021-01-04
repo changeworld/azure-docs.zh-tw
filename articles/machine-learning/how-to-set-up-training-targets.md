@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 2197d5be91af4c93e9691e1dc2b953198669deaf
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d8918181024715a57c6029d3ad0a36ea75140fcb
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027402"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739938"
 ---
 # <a name="configure-and-submit-training-runs"></a>設定和提交定型執行
 
@@ -172,6 +172,38 @@ run.wait_for_completion(show_output=True)
 * [tutorials/img-classification-part1-training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/image-classification-mnist-data/img-classification-part1-training.ipynb)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
+
+## <a name="troubleshooting"></a>疑難排解
+
+ * **ModuleErrors (沒有名稱為) 的模組**：如果您在 Azure ML 中提交實驗時遇到 ModuleErrors，定型腳本預期會安裝套件，但不會新增套件。 提供套件名稱之後，Azure ML 會在用於定型回合的環境中安裝套件。
+
+    如果您使用估算器來提交實驗，您可以 `pip_packages` `conda_packages` 根據您要安裝套件的來源，在估算器中透過或參數指定封裝名稱。 您也可以使用來指定具有所有相依性的 yml 檔案， `conda_dependencies_file` 或使用參數列出 txt 檔案中的所有 pip 需求 `pip_requirements_file` 。 如果您有自己的 Azure ML 環境物件，而您想要覆寫估算器所使用的預設映射，您可以透過估算器函式的參數來指定該環境 `environment` 。
+    
+    您可以在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中看到 Azure ML 維護的 docker 映射及其內容。
+    架構特有的相依性會列在個別的架構檔中：
+    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    *  [SKLearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    
+    > [!Note]
+    > 如果您認為特定套件在 Azure ML 維護的映射和環境中有很大的不足，請在 [AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 問題。 
+ 
+* **未定義 NameError (名稱) ，AttributeError (物件沒有屬性)**：此例外狀況應來自您的定型腳本。 您可以從 Azure 入口網站查看記錄檔，以取得有關未定義特定名稱或屬性錯誤的詳細資訊。 您可以從 SDK 使用 `run.get_details()` 來查看錯誤訊息。 這也會列出針對您的執行所產生的所有記錄檔。 重新提交您的執行之前，請務必先查看您的訓練腳本並修正錯誤。 
+
+
+* **執行或實驗刪除**：您可以使用 [實驗.](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) 封存方法來封存實驗，或從 Azure Machine Learning Studio 用戶端的實驗索引標籤中，透過 [封存實驗] 按鈕來封存實驗。 此動作會從清單查詢和 views 中隱藏實驗，但不會將其刪除。
+
+    目前不支援永久刪除個別實驗或執行。 如需有關刪除工作區資產的詳細資訊，請參閱 [匯出或刪除您的 Machine Learning 服務工作區資料](how-to-export-delete-data.md)。
+
+* 計量 **檔太大**： Azure Machine Learning 具有可從定型執行一次記錄的計量物件大小的內部限制。 如果在記錄清單值計量時發生「計量文件太大」錯誤，請嘗試將清單分割為較小的區塊，例如：
+
+    ```python
+    run.log_list("my metric name", my_metric[:N])
+    run.log_list("my metric name", my_metric[N:])
+    ```
+
+    在內部，Azure ML 會將具有相同計量名稱的區塊串連為連續清單。
 
 ## <a name="next-steps"></a>後續步驟
 

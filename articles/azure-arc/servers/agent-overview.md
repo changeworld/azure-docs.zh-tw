@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
-ms.date: 12/15/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0532441e1ab0d2676e7800c9d63878f9bf3bb3dc
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616156"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723264"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
@@ -57,7 +57,7 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 - Amazon Linux 2 (x64)
 
 > [!WARNING]
-> Linux 主機名稱或 Windows 電腦名稱稱不能使用名稱中的其中一個保留字或商標，否則嘗試向 Azure 註冊已連線的電腦將會失敗。 如需保留字清單，請參閱 [解決保留的資源名稱錯誤](../../azure-resource-manager/templates/error-reserved-resource-name.md) 。
+> Linux 主機名稱或 Windows 電腦名稱不能在名稱中使用其中一個保留字或商標，否則嘗試向 Azure 註冊連線的機器將會失敗。 如需保留字的清單，請參閱[解決保留資源名稱的錯誤](../../azure-resource-manager/templates/error-reserved-resource-name.md)。
 
 ### <a name="required-permissions"></a>所需的權限
 
@@ -82,6 +82,10 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 適用於 Linux 和 Windows 的 Connected Machine 代理程式會透過 TCP 連接埠 443，安全地將訊息輸出到 Azure Arc。 如果電腦透過防火牆或 proxy 伺服器連線到網際網路，請參閱下列各項以瞭解網路設定需求。
 
+> [!NOTE]
+> 啟用 Arc 的伺服器不支援使用 [Log Analytics 閘道](../../azure-monitor/platform/gateway.md) 作為連線電腦代理程式的 proxy。
+>
+
 如果您的防火牆或 Proxy 伺服器已限制輸出連線，請確定下面所列 URL 並未遭到封鎖。 當您只允許代理程式用來與服務進行通訊所需的 IP 範圍或功能變數名稱時，您需要允許存取下列服務標籤和 Url。
 
 服務標籤：
@@ -97,9 +101,11 @@ URL：
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
+|`login.microsoftonline.com`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
 |`*.guestconfiguration.azure.com` |來賓組態|
 |`*.his.arc.azure.com`|混合式識別服務|
+|`www.office.com`|Office 365|
 
  (0.11 版和更) 低版本的預覽代理程式也需要存取下列 Url：
 
@@ -110,7 +116,7 @@ URL：
 
 如需每個服務標籤/區域的 IP 位址清單，請參閱 JSON 檔案 - [Azure IP 範圍和服務標籤 – 公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。 Microsoft 會發佈每週更新，其中包含每個 Azure 服務和其使用的 IP 範圍。 如需詳細資訊，請參閱[服務標籤](../../virtual-network/network-security-groups-overview.md#service-tags)。
 
-除了服務標籤 IP 位址範圍資訊之外，上述表格中的 URL 也是必要的，因為大部分的服務目前都沒有服務標籤註冊。 因此，IP 位址可能會變更。 如果您的防火牆設定需要 IP 位址範圍，則應該使用 **AzureCloud** 服務標籤來允許存取所有 Azure 服務。 請勿停用這些 URL 的安全性監視或檢查，但允許這些 URL，如同其他網際網路流量。
+除了服務標籤 IP 位址範圍資訊之外，還需要上表中的 Url，因為大部分的服務目前都沒有服務標記註冊。 因此，IP 位址可能會變更。 如果您的防火牆設定需要 IP 位址範圍，則應該使用 **AzureCloud** 服務標籤來允許存取所有 Azure 服務。 請勿停用這些 URL 的安全性監視或檢查，但允許這些 URL，如同其他網際網路流量。
 
 ### <a name="register-azure-resource-providers"></a>註冊 Azure 資源提供者
 
@@ -163,7 +169,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 * 從命令殼層執行 Windows Installer 套件 `AzureConnectedMachineAgent.msi` 來手動執行。
 * 從 PowerShell 工作階段使用已編寫指令碼的方法。
 
-安裝適用於 Windows 的 Connected Machine 代理程式之後，會套用下列額外的全系統組態變更。
+安裝適用于 Windows 的 Connected Machine 代理程式之後，會套用下列全系統設定變更。
 
 * 在安裝期間會建立下列安裝資料夾。
 
@@ -215,7 +221,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 適用於 Linux 的 Connected Machine 代理程式會以發行版本慣用的套件格式來提供 (.RPM 或 .DEB)，其裝載位置在 Microsoft 的[套件存放庫](https://packages.microsoft.com/)。 代理程式已安裝並使用殼層指令碼套件組合 [Install_linux_azcmagent.sh](https://aka.ms/azcmagent)進行設定。
 
-安裝適用於 Linux 的 Connected Machine 代理程式之後，會套用下列額外的全系統組態變更。
+安裝適用于 Linux 的 Connected Machine 代理程式之後，會套用下列全系統設定變更。
 
 * 在安裝期間會建立下列安裝資料夾。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 1773e1345e9410f54a0364b586c3afca5b648b4c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ab173f47ed09dbe77c12cad844d8a1f3654f4a9b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341527"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734754"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心中的檔案完整性監視
 瞭解如何使用本逐步解說，在 Azure 資訊安全中心中設定檔案完整性監視 (FIM) 。
@@ -31,7 +31,7 @@ ms.locfileid: "92341527"
 |版本狀態：|正式上市 (GA)|
 |定價：|需要 [適用于伺服器的 Azure Defender](defender-for-servers-introduction.md)。<br>FIM 會將資料上傳到 Log Analytics 工作區。 根據您上傳的資料量，需要支付資料費用。 請參閱 [Log Analytics 定價](https://azure.microsoft.com/pricing/details/log-analytics/)以深入了解。|
 |必要的角色和權限：|**工作區擁有** 者可以啟用/停用 FIM (如需詳細資訊，請參閱 [適用于 Log Analytics 的 Azure 角色](/services-hub/health/azure-roles#azure-roles)) 。<br>**讀者** 可以看到結果。|
-|雲端：|![是 ](./media/icons/yes-icon.png) 商用雲端<br>![是 ](./media/icons/yes-icon.png) US Gov<br>![沒有 ](./media/icons/no-icon.png) 中國 Gov，其他 Gov<br>只有在 Azure 自動化的變更追蹤解決方案可用的區域中才支援。<br>請參閱 [連結的 Log Analytics 工作區支援的區域](../automation/how-to/region-mappings.md)。<br>[深入瞭解變更追蹤](../automation/change-tracking/overview.md)。|
+|雲端：|![是](./media/icons/yes-icon.png) 商用雲端<br>![是 ](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov) <br>只有在 Azure 自動化的變更追蹤解決方案可用的區域中才支援。<br>請參閱 [連結的 Log Analytics 工作區支援的區域](../automation/how-to/region-mappings.md)。<br>[深入瞭解變更追蹤](../automation/change-tracking/overview.md)。|
 |||
 
 ## <a name="what-is-fim-in-security-center"></a>何謂資訊安全中心的 FIM？
@@ -56,7 +56,7 @@ ms.locfileid: "92341527"
 
 藉由比較這些專案目前的狀態與前一次掃描期間的狀態，FIM 會在發生可疑的修改時發出警示。
 
-FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更。 啟用檔案完整性監視時，您會有一個**方案**類型的**變更追蹤**資源。 如需資料收集頻率的詳細資料，請參閱 [變更追蹤資料收集詳細資料](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection)。
+FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更。 啟用檔案完整性監視時，您會有一個 **方案** 類型的 **變更追蹤** 資源。 如需資料收集頻率的詳細資料，請參閱 [變更追蹤資料收集詳細資料](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection)。
 
 > [!NOTE]
 > 如果您移除 **變更追蹤** 資源，也會停用 [安全性中心] 中的 [檔案完整性監視] 功能。
@@ -124,7 +124,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
     - ![啟用圖示][3] 在工作區下的所有機器上啟用 FIM，並設定 FIM 選項。 此圖示表示工作區未啟用 FIM。
 
-        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="啟動 FIM":::
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="針對特定工作區啟用 FIM":::
 
 
     > [!TIP]
@@ -133,13 +133,13 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
 1. 選取 [ **啟用**]。 將會顯示工作區的詳細資料，包括工作區下的 Windows 和 Linux 電腦數目。
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="啟動 FIM":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="FIM 工作區詳細資料頁面":::
 
-   也會列出 Windows 和 Linux 的建議設定。  展開 [Windows 檔案]****、[登錄]**** 和 [Linux 檔案]****，以查看完整的建議項目清單。
+   也會列出 Windows 和 Linux 的建議設定。  展開 [Windows 檔案]、[登錄] 和 [Linux 檔案]，以查看完整的建議項目清單。
 
 1. 清除任何您不想要由 FIM 監視之建議實體的核取方塊。
 
-1. 選取 [Apply file integrity monitoring] \(套用檔案完整性監視\)**** 以啟用 FIM。
+1. 選取 [Apply file integrity monitoring] \(套用檔案完整性監視\) 以啟用 FIM。
 
 > [!NOTE]
 > 您可以隨時變更設定。 請參閱下面的[編輯受監視的實體](#edit-monitored-entities)以深入了解。
@@ -148,9 +148,9 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
 ## <a name="audit-monitored-workspaces"></a>Audit 受監視的工作區 
 
-啟用 FIM 的工作區會顯示 [檔案完整性監視]**** 儀表板。 當您在工作區上啟用 FIM，或在 [檔案 **完整性監視** ] 視窗中選取已啟用 fim 的工作區之後，就會開啟 fim 儀表板。
+啟用 FIM 的工作區會顯示 [檔案完整性監視] 儀表板。 當您在工作區上啟用 FIM，或在 [檔案 **完整性監視** ] 視窗中選取已啟用 fim 的工作區之後，就會開啟 fim 儀表板。
 
-:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="啟動 FIM":::
+:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="FIM 儀表板及其各種資訊面板":::
 
 工作區的 FIM 儀表板會顯示下列詳細資料：
 
@@ -161,18 +161,18 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
 選取儀表板頂端的 [ **篩選** ]，以變更顯示變更的時間週期。
 
-:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="啟動 FIM":::
+:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="FIM 儀表板的時間週期篩選":::
 
 [ **伺服器** ] 索引標籤會列出向此工作區報告的機器。 針對每部電腦，儀表板會列出：
 
 - 所選時段內發生的變更總計
 - 檔案變更或登錄變更時的變更總計細目
 
-當您在 [搜尋] 欄位中輸入電腦名稱稱，或選取 [電腦] 索引標籤下所列的電腦時，**記錄搜尋**就會開啟。記錄搜尋會顯示在所選時段內針對電腦所做的所有變更。 您可以展開某項變更，以取得詳細資訊。
+當您在 [搜尋] 欄位中輸入電腦名稱稱，或選取 [電腦] 索引標籤下所列的電腦時，**記錄搜尋** 就會開啟。記錄搜尋會顯示在所選時段內針對電腦所做的所有變更。 您可以展開某項變更，以取得詳細資訊。
 
 ![記錄搜尋][8]
 
-[變更]**** 索引標籤 (如下所示) 會列出工作區在所選時段內的所有變更。 針對已變更的每個實體，儀表板會列出：
+[變更] 索引標籤 (如下所示) 會列出工作區在所選時段內的所有變更。 針對已變更的每個實體，儀表板會列出：
 
 - 發生變更的電腦
 - 變更的類型 (登錄或檔案)
@@ -181,7 +181,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
 ![工作區的變更][9]
 
-當您在搜尋欄位中輸入變更，或選取 [變更]**** 索引標籤下所列的實體時，[變更詳細資料]**** 會隨即開啟。
+當您在搜尋欄位中輸入變更，或選取 [變更] 索引標籤下所列的實體時，[變更詳細資料] 會隨即開啟。
 
 ![變更詳細資料][10]
 
@@ -191,15 +191,15 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
    ![設定][11]
 
-   [工作區設定]**** 會隨即開啟並顯示三個索引標籤：[Windows 登錄]****、[Windows 檔案]**** 和 [Linux 檔案]****。 每個索引標籤會列出您可以在該類別中編輯的實體。 針對每個列出的實體，資訊安全中心會識別 FIM 已啟用 (True) 或未啟用 (False)。  編輯實體可讓您啟用或停用 FIM。
+   [工作區設定] 會隨即開啟並顯示三個索引標籤：[Windows 登錄]、[Windows 檔案] 和 [Linux 檔案]。 每個索引標籤會列出您可以在該類別中編輯的實體。 針對每個列出的實體，資訊安全中心會識別 FIM 已啟用 (True) 或未啟用 (False)。  編輯實體可讓您啟用或停用 FIM。
 
    ![工作區設定][12]
 
-2. 選取身分識別保護。 在此範例中，已選取 [Windows 登錄] 下的項目。 [Edit for Change Tracking] \(編輯變更追蹤項目\)**** 會隨即開啟。
+2. 選取身分識別保護。 在此範例中，已選取 [Windows 登錄] 下的項目。 [Edit for Change Tracking] \(編輯變更追蹤項目\) 會隨即開啟。
 
    ![編輯或變更追蹤][13]
 
-在 [Edit for Change Tracking] \(編輯變更追蹤項目\)**** 下，您可以：
+在 [Edit for Change Tracking] \(編輯變更追蹤項目\) 下，您可以：
 
 - 啟用 (True) 或停用 (False) 的檔案完整性監視
 - 提供或變更實體名稱
@@ -207,16 +207,16 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 - 刪除實體、捨棄變更或儲存變更
 
 ## <a name="add-a-new-entity-to-monitor"></a>新增要監視的實體
-1. 返回 [檔案完整性監視]**** 儀表板，然後選取頂端的 [設定]****。 [工作區設定]**** 會隨即開啟。
-2. 在 [工作區設定]**** 下，選取您要新增之實體類型的索引標籤：[Windows 登錄]、[Windows 檔案] 或 [Linux 檔案]。 在此範例中，已選取 [Linux 檔案]****。
+1. 返回 [檔案完整性監視] 儀表板，然後選取頂端的 [設定]。 [工作區設定] 會隨即開啟。
+2. 在 [工作區設定] 下，選取您要新增之實體類型的索引標籤：[Windows 登錄]、[Windows 檔案] 或 [Linux 檔案]。 在此範例中，已選取 [Linux 檔案]。
 
    ![新增要監視的項目][14]
 
-3. 選取 [新增]  。 [Add for Change Tracking] \(新增變更追蹤項目\)**** 會隨即開啟。
+3. 選取 [新增]。 [Add for Change Tracking] \(新增變更追蹤項目\) 會隨即開啟。
 
    ![輸入所要求的資訊][15]
 
-4. 在 [新增]**** 頁面上，鍵入所要求的資訊，然後選取 [儲存]****。
+4. 在 [新增] 頁面上，鍵入所要求的資訊，然後選取 [儲存]。
 
 ## <a name="disable-monitored-entities"></a>停用受監視的實體
 1. 返回 [檔案 **完整性監視** ] 儀表板。
@@ -228,11 +228,11 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
    ![選取 [設定]][17]
 
-4. 在 [工作區設定]**** 下，選取 [已啟用]**** 設定為 True 的群組。
+4. 在 [工作區設定] 下，選取 [已啟用] 設定為 True 的群組。
 
    ![工作區設定][18]
 
-5. 在 [Edit for Change Tracking] \(編輯變更追蹤項目\)**** 視窗下，將 [已啟用]**** 設定為 False。
+5. 在 [Edit for Change Tracking] \(編輯變更追蹤項目\) 視窗下，將 [已啟用] 設定為 False。
 
    ![將 [已啟用] 設定為 False][19]
 
@@ -251,11 +251,11 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 
 1. 若要停用 FIM，請返回 [檔案 **完整性監視** ] 儀表板。
 2. 選取工作區。
-3. 在 [檔案 **完整性監視**] 底下，選取 [ **停**用]。
+3. 在 [檔案 **完整性監視**] 底下，選取 [ **停** 用]。
 
    ![停用 FIM][20]
 
-4. 選取 [移除]**** 以停用。
+4. 選取 [移除] 以停用。
 
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已瞭解如何在安全中心 (FIM) 中使用檔案完整性監視。 若要深入了解資訊安全中心，請參閱下列頁面：

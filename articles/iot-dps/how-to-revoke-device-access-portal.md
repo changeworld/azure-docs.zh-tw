@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c75fcd1fd20e41df5018fcaa07fe83051d7e5f1a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010923"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740363"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>如何從 Azure IoT 中樞裝置佈建服務中取消註冊裝置
 
@@ -26,7 +26,7 @@ ms.locfileid: "96010923"
 
 ## <a name="disallow-devices-by-using-an-individual-enrollment-entry"></a>使用個別註冊專案不允許裝置
 
-個別註冊適用於單一裝置，而且可以使用 X.509 憑證或 SAS 權杖 (適用於實際或虛擬 TPM) 作為證明機制  (使用 SAS 權杖作為證明機制的裝置，只能透過個別註冊布建。 ) 若不允許具有個別註冊的裝置，您可以停用或刪除其註冊專案。 
+個別註冊適用于單一裝置，而且可以使用 x.509 憑證、TPM 簽署金鑰 (于實際或虛擬 TPM) 中，或使用 SAS 權杖作為證明機制。 若不允許具有個別註冊的裝置，您可以停用或刪除其註冊專案。 
 
 停用裝置的註冊專案以暫時禁止裝置： 
 

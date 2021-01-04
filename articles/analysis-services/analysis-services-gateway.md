@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6ca96f76287482a445d8a9a1cdc441333b36efbd
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107601"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739598"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用內部部署資料閘道連接至內部部署資料來源
 
@@ -26,9 +26,9 @@ ms.locfileid: "92107601"
 
 - **註冊您的閘道** - 在此步驟中，您會為您的閘道指定名稱和復原金鑰，然後選取區域，並且向閘道雲端服務註冊您的閘道。 您的閘道資源可以在任何區域中註冊，但建議與您的 Analysis Services 伺服器位於相同的區域。 
 
-- 在**azure 中建立閘道資源**-在此步驟中，您會在 azure 中建立閘道資源。
+- 在 **azure 中建立閘道資源**-在此步驟中，您會在 azure 中建立閘道資源。
 
-- 將**閘道資源連接到伺服器**-一旦擁有閘道資源之後，您就可以開始將伺服器連接到該資源。 您可以將多部伺服器和其他資源連接在相同的區域中。
+- 將 **閘道資源連接到伺服器**-一旦擁有閘道資源之後，您就可以開始將伺服器連接到該資源。 您可以將多部伺服器和其他資源連接在相同的區域中。
 
 ## <a name="installing"></a>安裝
 
@@ -57,7 +57,7 @@ ms.locfileid: "92107601"
 | *.frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |如果 Power BI 服務無法連接至閘道，則用來測試網際網路連線能力。 |
+| *.msftncsi.com |80 |如果 Power BI 服務無法連接至閘道，則用來測試網際網路連線能力。 |
 | *.microsoftonline-p.com |443 |用於驗證 (視設定而定)。 |
 | dc.services.visualstudio.com    |443 |供 AppInsights 用來收集遙測。 |
 

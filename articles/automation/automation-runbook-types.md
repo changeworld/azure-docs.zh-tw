@@ -3,14 +3,14 @@ title: Azure 自動化 Runbook 類型
 description: 本文描述您在 Azure 自動化中可使用的 Runbook 類型，以及決定使用何種類型的考量。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/05/2019
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0c12297f19d30bf13ffbe594e0433c83914a8e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185920"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733955"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自動化 Runbook 類型
 
@@ -20,9 +20,9 @@ Azure 自動化流程的自動化功能支援數種類型的 Runbook，如下表
 |:--- |:--- |
 | [圖形化](#graphical-runbooks)|圖形化 Runbook 是以 Windows PowerShell 為基礎，而且完全在 Azure 入口網站的圖形化編輯器中建立和編輯。 |
 | [圖形化 PowerShell 工作流程](#graphical-runbooks)|圖形化 Runbook 是以 Windows PowerShell 工作流程為基礎，而且完全在 Azure 入口網站的圖形化編輯器中建立和編輯。 |
-| [PowerShell](#powershell-runbooks) |以 Windows PowerShell 指令碼為基礎的文字 Runbook。 |
-| [PowerShell 工作流程](#powershell-workflow-runbooks)|以 Windows PowerShell 工作流程指令碼為基礎的文字 Runbook。 |
-| [Python](#python-runbooks) |以 Python 指令碼為基礎的文字 Runbook。 |
+| [PowerShell](#powershell-runbooks) |以 Windows PowerShell 腳本為基礎的文字 runbook。 |
+| [PowerShell 工作流程](#powershell-workflow-runbooks)|以 Windows PowerShell 工作流程腳本為基礎的文字 runbook。 |
+| [Python](#python-runbooks) |以 Python 腳本為基礎的文字 runbook。 |
 
 在決定要針對特定 Runbook 使用何種類型時，請考慮下列考量。
 
@@ -33,9 +33,9 @@ Azure 自動化流程的自動化功能支援數種類型的 Runbook，如下表
 
 您可以使用 Azure 入口網站中的圖形化編輯器，建立和編輯圖形化和圖形化 PowerShell 工作流程 Runbook。 不過，您無法使用另一個工具來建立或編輯這種類型的 Runbook。 圖形化 Runbook 的主要功能：
 
-* 可以匯出至您自動化帳戶中的檔案，然後匯入至另一個自動化帳戶。 
-* 產生 PowerShell 程式碼。 
-* 可以在匯入期間轉換為圖形化 PowerShell 工作流程 Runbook，或從該 Runbook 進行轉換。 
+* 匯出至自動化帳戶中的檔案，然後匯入到另一個自動化帳戶。
+* 產生 PowerShell 程式碼。
+* 在匯入期間轉換為圖形化 PowerShell 工作流程 runbook 或從中轉換。
 
 ### <a name="advantages"></a>優點
 
@@ -59,7 +59,7 @@ PowerShell Runbook 以 Windows PowerShell 為基礎。 您可以直接使用 Azu
 
 ### <a name="advantages"></a>優點
 
-* 使用 PowerShell 程式碼實作所有複雜的邏輯，不必處理 PowerShell 工作流程的其他複雜性。
+* 使用 PowerShell 程式碼來執行所有複雜邏輯，而不需要 PowerShell 工作流程的其他複雜性。
 * 啟動速度會比 PowerShell 工作流程 Runbook 更快，因為其在執行之前不需要編譯。
 * 在 Azure 中以及 Windows 和 Linux 的混合式 Runbook 背景工作角色上執行。
 
@@ -68,7 +68,7 @@ PowerShell Runbook 以 Windows PowerShell 為基礎。 您可以直接使用 Azu
 * 必須熟悉 PowerShell 指令碼。
 * Runbook 無法使用[平行處理](automation-powershell-workflow.md#use-parallel-processing)來平行執行多個動作。
 * 發生錯誤時，Runbook 無法使用[檢查點](automation-powershell-workflow.md#use-checkpoints-in-a-workflow)來繼續執行 Runbook。
-* 您可以使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) Cmdlet (其會建立新的工作)，只將 PowerShell 工作流程 Runbook 和圖形化 Runbook 包含為子 Runbook。
+* 您可以使用 [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) Cmdlet (其會建立新的工作)，只將 PowerShell 工作流程 Runbook 和圖形化 Runbook 包含為子 Runbook。
 
 ### <a name="known-issues"></a>已知問題
 
@@ -76,7 +76,7 @@ PowerShell Runbook 以 Windows PowerShell 為基礎。 您可以直接使用 Azu
 
 * PowerShell Runbook 無法擷取具有 Null 值的未加密[變數資產](./shared-resources/variables.md)。
 * PowerShell Runbook 無法擷取名稱中含有 `*~*` 的變數資產。
-* PowerShell Runbook 中落入迴圈的 [Get-Process](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) 作業大約在 80 次反覆運算之後就會損毀。
+* PowerShell Runbook 中落入迴圈的 [Get-Process](/powershell/module/microsoft.powershell.management/get-process) 作業大約在 80 次反覆運算之後就會損毀。
 * 如果 PowerShell Runbook 嘗試同時將大量資料寫入輸出資料流，則可能會失敗。 在處理大型物件時，讓 Runbook 只輸出所需的資訊，通常就可以解決這個問題。 例如，不是使用沒有限制的 `Get-Process`，而是讓 Cmdlet 只輸出必要參數，如 `Get-Process | Select ProcessName, CPU` 中所示。
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell 工作流程 Runbook
@@ -100,18 +100,29 @@ PowerShell Workflow Runbook 是以 [Windows PowerShell 工作流程](automation-
 
 ## <a name="python-runbooks"></a>Python Runbook
 
-Python 2 下的 Python Runbook 編譯。 您可以直接使用 Azure 入口網站的文字編輯器來編輯 Runbook 的程式碼。 您也可以使用離線文字編輯器，並[匯入 Runbook](manage-runbooks.md) 到 Azure 自動化。
+Python 2 和 Python 3 下的 python runbook 編譯。 Python 3 runbook 目前為預覽狀態。 您可以直接使用 Azure 入口網站的文字編輯器來編輯 Runbook 的程式碼。 您也可以使用離線文字編輯器，並[匯入 Runbook](manage-runbooks.md) 到 Azure 自動化。
 
 ### <a name="advantages"></a>優點
 
 * 使用強固的 Python 程式庫。
-* 可以在 Azure 中或在 Linux 混合式 Runbook 背景工作角色上執行。 安裝 [python 2.7](https://www.python.org/downloads/release/latest/python2) 後，支援 Windows 混合式 Runbook 背景工作角色。
+* 可在 Azure 中或混合式 Runbook 背景工作角色上執行。
+* 針對 Python 2，已安裝 [python 2.7](https://www.python.org/downloads/release/latest/python2) 支援 Windows 混合式 Runbook 背景工作角色。
+* 針對 Python 3 雲端作業，支援 Python 3.8 版本。 如果程式碼在不同版本之間相容，則任何3.x 版本的腳本和封裝都可能適用。  
+* 針對 Windows 電腦上的 Python 3 混合式作業，您可以選擇安裝任何您可能想要使用的3.x 版。  
+* 針對 Linux 機器上的 Python 3 混合式作業，我們取決於電腦上安裝的 Python 3 版本，以執行 DSC OMSConfig 和 Linux 混合式背景工作角色。 建議您在 Linux 機器上安裝3.6。 不過，如果方法簽章或 Python 3 版本之間的合約沒有任何重大變更，則不同的版本也應可運作。
 
 ### <a name="limitations"></a>限制
 
 * 必須熟悉 Python 指令碼。
-* 目前僅支援 Python 2。 任何 Python 3 特定功能都會失敗。
 * 若要使用第三方程式庫，您必須[匯入套件](python-packages.md)至自動化帳戶。
+* 使用   Powershell/powershell 工作流程中的 AutomationRunbook Cmdlet 啟動 Python 3 runbook (預覽) 無法運作。 您可以使用 **AzAutomationRunbook** Cmdlet 從 Az. automation 模組或 **>start-azurermautomationrunbook** Cmdlet，在 AzureRm. automation 模組中解決這項限制。  
+* Python 3 runbook (預覽版) 和套件無法搭配 PowerShell 使用。
+* 不支援使用 Webhook 來啟動 Python Runbook。
+* Azure 自動化不支援 **sys. stderr**。
+
+### <a name="known-issues"></a>已知問題
+
+Python 3 作業有時候會失敗，並出現例外狀況訊息 *不正確解譯器可執行檔路徑*。 如果工作延遲、啟動超過10分鐘，或使用 **AutomationRunbook** 啟動 Python 3 runbook，您可能會看到此例外狀況。 如果工作延遲，則重新開機 runbook 應該就已足夠。
 
 ## <a name="next-steps"></a>後續步驟
 

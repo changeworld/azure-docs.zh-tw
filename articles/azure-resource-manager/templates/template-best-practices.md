@@ -1,18 +1,18 @@
 ---
 title: 範本的最佳做法
-description: 說明用於製作 Azure Resource Manager 範本的建議方法。 提供建議來避免使用範本時的常見問題。
+description: 描述 (ARM 範本撰寫 Azure Resource Manager 範本的建議方法) 。 提供建議來避免使用範本時的常見問題。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497974"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724981"
 ---
 # <a name="arm-template-best-practices"></a>ARM 範本的最佳作法
 
-本文說明如何在建立 ARM 範本時使用建議的作法。 這些建議可協助您避免在使用 ARM 範本部署解決方案時遇到的常見問題。
+本文說明如何在 (ARM 範本) 建立 Azure Resource Manager 範本時，使用建議的作法。 這些建議可協助您避免在使用 ARM 範本部署解決方案時遇到的常見問題。
 
 ## <a name="template-limits"></a>範本限制
 
@@ -26,7 +26,7 @@ ms.locfileid: "96497974"
 * 64 個輸出值
 * 範本運算式中的 24,576 個字元
 
-使用巢狀範本，即可超出一些範本限制。 如需詳細資訊，請參閱[在部署 Azure 資源時使用連結的範本](linked-templates.md)。 若要減少參數、變數或輸出數目，您可以將數個值合併成一個物件。 如需詳細資訊，請參閱[物件作為參數](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)。
+使用巢狀範本，即可超出一些範本限制。 如需詳細資訊，請參閱 [在部署 Azure 資源時使用連結和嵌套範本](linked-templates.md)。 若要減少參數、變數或輸出數目，您可以將數個值合併成一個物件。 如需詳細資訊，請參閱[物件作為參數](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)。
 
 ## <a name="resource-group"></a>資源群組
 
@@ -48,32 +48,32 @@ ms.locfileid: "96497974"
 
 * 針對希望能方便識別而指定的資源名稱使用參數。
 
-* 在中繼資料中提供每個參數的描述：
+* 提供中繼資料中每個參數的描述。
 
-   ```json
-   "parameters": {
-       "storageAccountType": {
-           "type": "string",
-           "metadata": {
-               "description": "The type of the new storage account created to store the VM disks."
-           }
-       }
-   }
-   ```
-
-* 針對不敏感的參數定義預設值。 藉由指定預設值，您可以更輕鬆地部署範本，且範本的使用者可以看到適當值的範例。 參數的預設值皆必須對預設部署組態中的所有使用者有效。 
-   
-   ```json
-   "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_GRS",
-            "metadata": {
-                "description": "The type of the new storage account created to store the VM disks."
-            }
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
         }
-   }
-   ```
+      }
+    }
+    ```
+
+* 針對不敏感的參數定義預設值。 藉由指定預設值，您可以更輕鬆地部署範本，且範本的使用者可以看到適當值的範例。 參數的預設值皆必須對預設部署組態中的所有使用者有效。
+
+    ```json
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "defaultValue": "Standard_GRS",
+        "metadata": {
+          "description": "The type of the new storage account created to store the VM disks."
+        }
+      }
+    }
+    ```
 
 * 若要指定選擇性參數，請不要使用空字串作為預設值。 相反地，請使用常值或語言運算式來建構值。
 
@@ -84,7 +84,7 @@ ms.locfileid: "96497974"
      "metadata": {
        "description": "Name of the storage account"
      }
-   },
+   }
    ```
 
 * 請謹慎使用 `allowedValues`。 只有當您必須確保允許的選項中不會包含某些值時才可使用。 如果您 `allowedValues` 太廣泛地使用，可能會因為不讓清單保持在最新狀態而封鎖有效的部署。
@@ -95,18 +95,18 @@ ms.locfileid: "96497974"
 
 * 使用者名稱和密碼 (或祕密) 請一律使用參數。
 
-* 所有密碼和祕密都要使用 `securestring`。 如果您在 JSON 物件中傳遞敏感資料，請使用 `secureObject` 類型。 部署資源後，便無法讀取具有安全字串或安全物件類型的範本參數。 
-   
-   ```json
-   "parameters": {
-       "secretValue": {
-           "type": "securestring",
-           "metadata": {
-               "description": "The value of the secret to store in the vault."
-           }
-       }
-   }
-   ```
+* 所有密碼和祕密都要使用 `securestring`。 如果您在 JSON 物件中傳遞敏感資料，請使用 `secureObject` 類型。 部署資源後，便無法讀取具有安全字串或安全物件類型的範本參數。
+
+    ```json
+    "parameters": {
+      "secretValue": {
+        "type": "securestring",
+        "metadata": {
+          "description": "The value of the secret to store in the vault."
+        }
+      }
+    }
+    ```
 
 * 針對需要 `secureString` 類型的使用者名稱、密碼或任何值，請勿提供預設值。
 
@@ -114,7 +114,7 @@ ms.locfileid: "96497974"
 
 ### <a name="location-recommendations-for-parameters"></a>參數的位置建議
 
-* 請使用參數來指定資源的位置，並將預設值設定為 `resourceGroup().location`。 提供位置參數可讓範本的使用者指定其有權作為部署目的地的位置。
+* 請使用參數來指定資源的位置，並將預設值設定為 `resourceGroup().location`。 提供位置參數可讓範本的使用者指定有權部署資源的位置。
 
    ```json
    "parameters": {
@@ -125,7 +125,7 @@ ms.locfileid: "96497974"
          "description": "The location in which the resources should be deployed."
        }
      }
-   },
+   }
    ```
 
 * 請勿針對位置參數指定 `allowedValues`。 您指定的位置可能無法在所有雲端中使用。
@@ -142,9 +142,9 @@ ms.locfileid: "96497974"
 
 * 您需要在範本中使用一次以上的值，才使用變數。 如果值只會使用一次，硬式編碼值會讓您的範本較容易看懂。
 
-* 針對用複雜方式排列範本函式所建構的值，請使用變數。 當複雜的運算式只以變數形式顯示時，範本會較容易看懂。
+* 針對用複雜方式排列範本函式所建構的值，請使用變數。 當複雜運算式只出現在變數中時，您的範本比較容易閱讀。
 
-* 您不能在範本的 **variables** 區段使用 [reference](template-functions-resource.md#reference) 函式。 **reference** 函式的值是從資源的執行階段狀態所衍生。 不過，將範本初始剖析時，會將變數加以解析。 請直接在範本的 **resources** 或 **outputs** 區段中，建構需要 **reference** 函式的值。
+* 您無法在範本的區段中使用 [reference](template-functions-resource.md#reference) 函式 `variables` 。 `reference`函數會從資源的執行時間狀態衍生其值。 不過，將範本初始剖析時，會將變數加以解析。 `reference`在範本的或區段中，直接建立需要函式的值 `resources` `outputs` 。
 
 * 包含變數以用於必須是唯一的資源名稱。
 
@@ -166,7 +166,7 @@ ms.locfileid: "96497974"
 
 決定 [要設定的相依](define-resource-dependency.md) 性時，請使用下列指導方針：
 
-* 使用 **reference** 函式並傳入資源名稱，以便在必須共用屬性的資源之間設定隱含相依性。 當您已經定義隱含的相依性時，請勿新增明確的 `dependsOn` 元素。 這種方法可減少產生不必要相依性的風險。 如需設定隱含相依性的範例，請參閱 [隱含](define-resource-dependency.md#reference-and-list-functions)相依性。
+* 使用函 `reference` 式並傳入資源名稱，以設定需要共用屬性之資源之間的隱含相依性。 當您已經定義隱含的相依性時，請勿新增明確的 `dependsOn` 元素。 這種方法可減少產生不必要相依性的風險。 如需設定隱含相依性的範例，請參閱 [參考和清單函數](define-resource-dependency.md#reference-and-list-functions)。
 
 * 設定子資源為相依於其父資源。
 
@@ -180,109 +180,108 @@ ms.locfileid: "96497974"
 
 當您使用[資源](template-syntax.md#resources)時，下列資訊可能會很有幫助︰
 
-* 針對範本中的每個資源指定 **comments**，協助其他參與者了解資源的用途：
-   
-   ```json
-   "resources": [
-     {
-         "name": "[variables('storageAccountName')]",
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2019-06-01",
-         "location": "[resourceGroup().location]",
-         "comments": "This storage account is used to store the VM disks.",
-         ...
-     }
-   ]
-   ```
+* 為協助其他參與者瞭解資源的用途，請 `comments` 針對範本中的每個資源指定。
 
-* 如果您使用範本中的公用端點 (例如 Azure Blob 儲存體公用端點)，請勿將命名空間硬式編碼。 使用 **reference** 函式，動態擷取命名空間。 您可以使用此方法可將範本部署到不同的公用命名空間環境中，而不需要將範本中的端點手動變更。 將 API 版本設定成與您在範本中用於儲存體帳戶相同的版本：
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
-   
-   如果儲存體帳戶部署在您要建立的相同範本中，而儲存體帳戶的名稱未與範本中的另一個資源分享，則當您參考資源時，不需要指定提供者命名空間或 apiVersion。 下列範例顯示簡化的語法：
-   
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-       }
-   }
-   ```
-     
-   您也可以參考不同資源群組中現有的儲存體帳戶：
+    ```json
+    "resources": [
+      {
+        "name": "[variables('storageAccountName')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "location": "[resourceGroup().location]",
+        "comments": "This storage account is used to store the VM disks.",
+          ...
+      }
+    ]
+    ```
 
-   ```json
-   "diagnosticsProfile": {
-       "bootDiagnostics": {
-           "enabled": "true",
-           "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
-       }
-   }
-   ```
+* 如果您使用範本中的公用端點 (例如 Azure Blob 儲存體公用端點)，請勿將命名空間硬式編碼。 使用函式 `reference` 動態取出命名空間。 您可以使用此方法可將範本部署到不同的公用命名空間環境中，而不需要將範本中的端點手動變更。 將 API 版本設定為範本中儲存體帳戶所使用的相同版本。
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   如果儲存體帳戶部署在您要建立的相同範本中，而儲存體帳戶的名稱未與範本中的另一個資源分享，則您不需要在參考資源時指定提供者命名空間或 `apiVersion` 。 下列範例顯示簡化的語法。
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
+      }
+    }
+    ```
+
+   您也可以參考位於不同資源群組中的現有儲存體帳戶。
+
+    ```json
+    "diagnosticsProfile": {
+      "bootDiagnostics": {
+        "enabled": "true",
+        "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
+      }
+    }
+    ```
 
 * 只有在應用程式要求時，才將公用 IP 位址指派給虛擬機器。 若要連線至虛擬機器 (VM) 進行偵錯，或要進行管理或系統管理，請使用輸入 NAT 規則、虛擬網路閘道或 Jumpbox。
-   
+
      如需有關如何連線至虛擬機器的詳細資訊，請參閱︰
-   
+
    * [在 Azure 中執行多層式架構的 VM](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [在 Azure Resource Manager 中設定 VM 的 WinRM 存取](../../virtual-machines/windows/winrm.md)
    * [允許使用 Azure 入口網站從外部存取您的 VM](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [允許使用 PowerShell 從外部存取您的 VM](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [允許使用 Azure CLI 從外部存取您的 Linux VM](../../virtual-machines/linux/nsg-quickstart.md)
 
-* 公用 IP 位址的 **domainNameLabel** 屬性必須是唯一的。 **domainNameLabel** 值的長度必須介於 3 到 63 個字元之間，還要遵循這個規則運算式指定的規則：`^[a-z][a-z0-9-]{1,61}[a-z0-9]$`。 **uniqueString** 函式會產生長度為 13 個字元的字串，因此 **dnsPrefixString** 參數會限制為 50 個字元：
+* `domainNameLabel`公用 IP 位址的屬性必須是唯一的。 `domainNameLabel`值的長度必須介於3到63個字元之間，並遵循此正則運算式所指定的規則： `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` 。 因為此函式 `uniqueString` 會產生長度為13個字元的字串，所以 `dnsPrefixString` 參數的限制為50個字元。
 
-   ```json
-   "parameters": {
-       "dnsPrefixString": {
-           "type": "string",
-           "maxLength": 50,
-           "metadata": {
-               "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
-           }
-       }
-   },
-   "variables": {
-       "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
-   }
-   ```
+    ```json
+    "parameters": {
+      "dnsPrefixString": {
+        "type": "string",
+        "maxLength": 50,
+        "metadata": {
+          "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$"
+        }
+      }
+    },
+    "variables": {
+      "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
+    }
+    ```
 
-* 將密碼新增至自訂指令碼擴充功能時，使用 **protectedSettings** 屬性中的 **commandToExecute** 屬性。
-   
-   ```json
-   "properties": {
-       "publisher": "Microsoft.Azure.Extensions",
-       "type": "CustomScript",
-       "typeHandlerVersion": "2.0",
-       "autoUpgradeMinorVersion": true,
-       "settings": {
-           "fileUris": [
-               "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
-           ]
-       },
-       "protectedSettings": {
-           "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
-       }
-   }
-   ```
-   
+* 當您將密碼新增至自訂腳本擴充功能時，請使用屬性（property） `commandToExecute` 中的屬性（property） `protectedSettings` 。
+
+    ```json
+    "properties": {
+      "publisher": "Microsoft.Azure.Extensions",
+      "type": "CustomScript",
+      "typeHandlerVersion": "2.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "fileUris": [
+          "[concat(variables('template').assets, '/lamp-app/install_lamp.sh')]"
+        ]
+      },
+      "protectedSettings": {
+        "commandToExecute": "[concat('sh install_lamp.sh ', parameters('mySqlPassword'))]"
+      }
+    }
+    ```
+
    > [!NOTE]
-   > 為了確保作為參數傳遞至 VM 和擴充功能的祕密會經過加密，請使用相關擴充功能的 **protectedSettings** 屬性。
-   > 
+   > 若要在將秘密作為參數傳遞至 Vm 和延伸模組時，確保密碼已加密，請使用 `protectedSettings` 相關擴充功能的屬性。
 
 ## <a name="use-test-toolkit"></a>使用測試控管組
 
 ARM 範本測試控管組是一種腳本，可檢查您的範本是否使用建議的做法。 當您的範本不符合建議的做法時，它會傳回警告清單以及建議的變更。 測試控管組可協助您瞭解如何在您的範本中執行最佳作法。
 
-當您完成範本之後，請執行測試控管組，以查看是否有方法可以改善 it 的執行。 如需詳細資訊，請參閱 [ARM 範本測試控管](test-toolkit.md)組。
+當您完成範本之後，請執行測試控管組，以查看是否有方法可以改善其執行。 如需詳細資訊，請參閱 [使用 ARM 範本測試控管](test-toolkit.md)組。
 
 ## <a name="next-steps"></a>後續步驟
 

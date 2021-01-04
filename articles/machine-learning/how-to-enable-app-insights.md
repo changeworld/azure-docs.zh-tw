@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 13b99fe129191b89b5bb2d7f5473e910fa619ce7
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536586"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739836"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>從 ML Web 服務端點監視及收集資料
 
@@ -144,12 +144,12 @@ ms.locfileid: "94536586"
 
 1. 登入 studio https://ml.azure.com 。
 1. 移至 [ **模型** ]，然後選取您想要部署的模型。
-1. 選取 [  **+ 部署** ]。
+1. 選取 [  **+ 部署**]。
 1. 填入「 **部署模型** 」表單。
 1. 展開 [ **Advanced** ] 功能表。
 
     ![部署表單](./media/how-to-enable-app-insights/deploy-form.png)
-1. 選取 [ **啟用 Application Insights 診斷和資料收集** ]。
+1. 選取 [ **啟用 Application Insights 診斷和資料收集**]。
 
     ![啟用 App Insights](./media/how-to-enable-app-insights/enable-app-insights.png)
 
@@ -157,14 +157,24 @@ ms.locfileid: "94536586"
 
 ### <a name="query-logs-for-deployed-models"></a>已部署模型的查詢記錄
 
-您可以使用函式 `get_logs()` 來取出先前部署之 web 服務的記錄。 記錄可能包含部署期間發生之任何錯誤的相關詳細資訊。
+即時端點的記錄是客戶資料。 您可以使用函式 `get_logs()` 來取出先前部署之 web 服務的記錄。 記錄可能包含部署期間發生之任何錯誤的相關詳細資訊。
 
 ```python
+from azureml.core import Workspace
 from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
 
 # load existing web service
 service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
+```
+
+如果您有多個租使用者，您可能需要在之前新增下列驗證程式代碼： `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ### <a name="view-logs-in-the-studio"></a>查看 studio 中的記錄
@@ -178,7 +188,7 @@ Azure 應用程式 Insights 會將您的服務記錄儲存在與 Azure Machine L
 
     [![找出 Application Insights url](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. 在 Application Insights 中，從 [ **總覽** ] 索引標籤或 [ __監視__ ] 區段中，選取 [ __記錄__ ]。
+1. 在 Application Insights 中，從 [ **總覽** ] 索引標籤或 [ __監視__ ] 區段中，選取 [ __記錄__]。
 
     [![監視的 [總覽] 索引標籤](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 

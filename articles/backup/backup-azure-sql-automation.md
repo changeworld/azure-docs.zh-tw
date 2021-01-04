@@ -4,12 +4,12 @@ description: 使用 Azure 備份和 PowerShell 來備份和還原 Azure Vm 中�
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 0b3b943a53c1da0f6f1e938b5b234dc82541b46d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a3467ffa3a67ac9ad593748948cea8da59e3e6b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901677"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734533"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm 中的 SQL 資料庫
 
@@ -59,7 +59,7 @@ ms.locfileid: "92901677"
 4. 使用連線 **disconnect-azaccount** 來登入您的 Azure 帳戶。
 5. 在出現的網頁中，系統會提示您輸入您的帳號憑證。
 
-    * 或者，您可以將您的帳號憑證納入 **disconnect-azaccount** 指令程式中的參數，並搭配 **-Credential** 。
+    * 或者，您可以將您的帳號憑證納入 **disconnect-azaccount** 指令程式中的參數，並搭配 **-Credential**。
     * 如果您是為租使用者工作的 CSP 合作夥伴，請使用其 tenantID 或租使用者主功能變數名稱稱將客戶指定為租使用者。 例如 **Connect-AzAccount -Tenant** fabrikam.com。
 
 6. 將您想要使用的訂用帳戶與帳戶建立關聯，因為帳戶可以有數個訂用帳戶。
@@ -80,7 +80,7 @@ ms.locfileid: "92901677"
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. 在命令輸出中，確認 [ **>registrationstate** ] 變更為 [ **已註冊** ]。 如果沒有，請再次執行 **>register-azresourceprovider** Cmdlet。
+9. 在命令輸出中，確認 [ **>registrationstate** ] 變更為 [ **已註冊**]。 如果沒有，請再次執行 **>register-azresourceprovider** Cmdlet。
 
 ## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
@@ -172,7 +172,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > 您只需要在30分鐘的倍數內提供開始時間。 在上述範例中，它只能是 "01:00:00" 或 "02:30:00"。 開始時間不能是 "01:15:00"。
 
-下列範例會將排程原則和保留原則儲存在變數中。 然後，它會使用這些變數作為新原則 ( **NewSQLPolicy** ) 的參數。 **NewSQLPolicy** 會採用每日「完整」備份，保留180天，並每隔2小時進行一次記錄備份
+下列範例會將排程原則和保留原則儲存在變數中。 然後，它會使用這些變數作為新原則 (**NewSQLPolicy**) 的參數。 **NewSQLPolicy** 會採用每日「完整」備份，保留180天，並每隔2小時進行一次記錄備份
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
@@ -268,7 +268,7 @@ Azure 備份可以還原在 Azure Vm 上執行的 SQL Server 資料庫，如下�
 * 使用交易記錄備份還原至特定日期或時間 (到第二個) 。 Azure 備份會根據選取的時間，自動決定還原所需的適當完整差異備份和記錄備份鏈。
 * 還原特定的完整或差異備份，以還原至特定復原點。
 
-請先檢查 [此處](restore-sql-database-azure-vm.md#prerequisites) 所述的必要條件，再還原 SQL db。
+請先檢查 [此處](restore-sql-database-azure-vm.md#restore-prerequisites) 所述的必要條件，再還原 SQL db。
 
 首先，使用 [>backup-azrecoveryservicesbackupitem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) PowerShell Cmdlet 來提取相關的已備份 SQL DB。
 
@@ -499,7 +499,7 @@ MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM 
 
 ### <a name="change-policy-for-backup-items"></a>變更備份專案的原則
 
-您可以將備份專案的原則從 *Policy1* 變更為 *Policy2* 。 若要切換已備份專案的原則，請提取相關的原則和備份專案，並使用 [AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 命令搭配備份專案作為參數。
+您可以將備份專案的原則從 *Policy1* 變更為 *Policy2*。 若要切換已備份專案的原則，請提取相關的原則和備份專案，並使用 [AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) 命令搭配備份專案作為參數。
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>

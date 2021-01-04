@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 86a6c1a15d804a6c758e90dbd4bdd7057a7a2716
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e01a4418681e0f78864eacbf70016cfb33fa6f53
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295259"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739632"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure 串流分析的事件中樞輸出
 
@@ -33,7 +33,7 @@ ms.locfileid: "91295259"
 | 事件序列化格式 | 輸出資料的序列化格式。 支援 JSON、CSV 和 Avro。 |
 | 編碼 | 對於 CSV 和 JSON 而言，UTF-8 是目前唯一支援的編碼格式。 |
 | 分隔符號 | 僅適用於 CSV 序列化。 串流分析可支援多種以 CSV 格式序列化資料常用的分隔符號。 支援的值是逗號、分號、空格、索引標籤和分隔號。 |
-| [格式] | 僅適用於 JSON 序列化。 **分隔的行**會指定輸出的格式化方式為利用新行分隔每個 JSON 物件。 如果您選取**分隔的行**，JSON 會一次讀取一個物件。 整個內容本身不是有效的 JSON。 **陣列**會指定輸出將會格式化為 JSON 物件的陣列。  |
+| [格式] | 僅適用於 JSON 序列化。 **分隔的行** 會指定輸出的格式化方式為利用新行分隔每個 JSON 物件。 如果您選取 **分隔的行**，JSON 會一次讀取一個物件。 整個內容本身不是有效的 JSON。 **陣列** 會指定輸出將會格式化為 JSON 物件的陣列。  |
 | 屬性資料行 | 選擇性。 以逗號分隔的資料行，必須附加為外寄郵件的使用者屬性，而不是承載。 如需這項功能的詳細資訊，請參閱[輸出的自訂中繼資料屬性](#custom-metadata-properties-for-output)一節。 |
 
 ## <a name="partitioning"></a>資料分割
@@ -62,13 +62,9 @@ ms.locfileid: "91295259"
 
 下圖是使用 [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)在 EventHub 中檢查的預期輸出訊息屬性。
 
-:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="屬性資料行":::
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="事件自訂屬性":::
 
 ## <a name="next-steps"></a>後續步驟
 
+* [使用受控識別從 Azure 串流分析作業存取事件中樞 (預覽版) ](event-hubs-managed-identity.md)
 * [快速入門：使用 Azure 入口網站建立串流分析作業](stream-analytics-quick-create-portal.md)
-* [快速入門：使用 Azure CLI 建立 Azure 串流分析作業](quick-create-azure-cli.md)
-* [快速入門：使用 ARM 範本建立 Azure 串流分析作業](quick-create-azure-resource-manager.md)
-* [快速入門：使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)
-* [快速入門：使用 Visual Studio 建立 Azure 串流分析作業](stream-analytics-quick-create-vs.md)
-* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-visual-studio-code.md)

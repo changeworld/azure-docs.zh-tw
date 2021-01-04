@@ -3,14 +3,14 @@ title: 管理 Azure 自動化中的認證
 description: 本文說明如何建立認證資產及在 Runbook 或 DSC 設定中加以使用。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/03/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558825"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734822"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>管理 Azure 自動化中的認證
 
@@ -51,9 +51,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > 您應該避免在 `Get-AutomationPSCredential` 的 `Name` 參數中使用變數。 其使用可能會在設計階段將 Runbook 或 DSC 組態與認證資產之間的相依性探索變得複雜。
 
-## <a name="python-2-functions-that-access-credentials"></a>存取認證的 Python 2 函式
+## <a name="python-functions-that-access-credentials"></a>存取認證的 Python 函式
 
-下表中的函式用於存取 Pytho 2 Runbook 中的認證。
+下表中的函式是用來存取 Python 2 和 3 runbook 中的認證。 Python 3 runbook 目前為預覽狀態。
 
 | 函式 | 描述 |
 |:---|:---|
@@ -104,6 +104,8 @@ Runbook 或 DSC 組態會使用內部 `Get-AutomationPSCredential` Cmdlet 來擷
 
 ### <a name="textual-runbook-example"></a>文字式 Runbook 範例
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 下列範例示範如何在 Runbook 中使用 PowerShell 認證。 其會擷取認證，並將其使用者名稱和密碼指派給變數。
 
 ```powershell
@@ -126,6 +128,36 @@ $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$sec
 Connect-AzAccount -Credential $myPsCred
 ```
 
+# <a name="python-2"></a>[Python 2](#tab/python2)
+
+下列範例示範存取 Python 2 Runbook 中認證的範例。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print cred["username"]
+print cred["password"]
+```
+
+# <a name="python-3"></a>[Python 3](#tab/python3) \(英文\)
+
+下列範例顯示在 Python 3 runbook (preview) 中存取認證的範例。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print (cred["username"])
+print (cred["password"])
+```
+
+---
+
 ### <a name="graphical-runbook-example"></a>圖形化 Runbook 範例
 
 透過在圖形化編輯器 [文件庫] 窗格的認證上按一下滑鼠右鍵，然後選取 [新增至畫布]，即可將內部 `Get-AutomationPSCredential` Cmdlet 的活動新增至圖形化 Runbook。
@@ -140,22 +172,8 @@ Connect-AzAccount -Credential $myPsCred
 
 雖然 Azure 自動化中的 DSC 組態可以使用 `Get-AutomationPSCredential` 來處理認證資產，但也可以透過參數傳遞認證資產。 如需詳細資訊，請參閱 [編譯 Azure Automation DSC 中的設定](../automation-dsc-compile.md#credential-assets)。
 
-## <a name="use-credentials-in-a-python-2-runbook"></a>在 Python 2 Runbook 中使用認證
-
-下列範例示範存取 Python 2 Runbook 中認證的範例。
-
-```python
-import automationassets
-from automationassets import AutomationAssetNotFound
-
-# get a credential
-cred = automationassets.get_automation_credential("credtest")
-print cred["username"]
-print cred["password"]
-```
-
 ## <a name="next-steps"></a>後續步驟
 
 * 若要深入了解用來存取憑證的 Cmdlet，請參閱[管理 Azure 自動化中的模組](modules.md)。
 * 如需 Runbook 的一般資訊，請參閱 [Azure 自動化中的 Runbook 執行](../automation-runbook-execution.md)。
-* 如需 DSC 組態的詳細資訊，請參閱 [Azure 自動化狀態設定總覽](../automation-dsc-overview.md)。
+* 如需 DSC 設定的詳細資料，請參閱 [Azure 自動化狀態設定概觀](../automation-dsc-overview.md)。

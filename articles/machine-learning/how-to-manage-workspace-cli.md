@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 66a9c9d605911a9d3b30a55d47e16026e26e502a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4c457ef2c4957308735c222488ad04dac80235df
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447258"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740380"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 
@@ -79,6 +79,8 @@ Azure Machine Learning 工作區依賴下列 Azure 服務或實體：
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure 金鑰保存庫** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
+
+Azure Container Registry (ACR) 目前不支援資源組名中的 unicode 字元。 若要緩解此問題，請使用不包含這些字元的資源群組。
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
@@ -154,7 +156,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 * `--pe-auto-approval`：是否應自動核准工作區的私人端點連接。
 * `--pe-resource-group`：要在其中建立私人端點的資源群組。 必須是包含虛擬網路的相同群組。
 * `--pe-vnet-name`：要在其中建立私人端點的現有虛擬網路。
-* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值為 `default`。
+* `--pe-subnet-name`：要在其中建立私人端點的子網名稱。 預設值是 `default`。
 
 如需有關搭配您的工作區使用私人端點和虛擬網路的詳細資訊，請參閱 [虛擬網路隔離和隱私權總覽](how-to-network-security-overview.md)。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8cf440a517c1a3496b3df438fdd0d2534609908f
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445319"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733093"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>針對 Azure Synapse Analytics Synapse Studio 與儲存體之間的連線進行疑難排解
 
@@ -24,7 +24,11 @@ ms.locfileid: "96445319"
 
 詳細的錯誤訊息可能會有所不同，但錯誤訊息的一般意義是：「此要求未獲授權執行此作業」。
 
-![儲存體連接問題1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.1.png)
+在連結的儲存體節點中：  
+![儲存體連接問題1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1.png)
+
+在儲存體容器節點中：  
+![儲存體連接問題1a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
 **解決方案**：若要將您的帳戶指派給適當的角色，請參閱 [使用 Azure 入口網站指派 Azure 角色以存取 blob 和佇列資料](../../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -33,7 +37,11 @@ ms.locfileid: "96445319"
 
 在 Synapse Studio 中選取箭號以展開「> 資料」中的儲存體結構時，您可能會在左側面板中看到「REQUEST_SEND_ERROR」問題。 請參閱下列問題徵兆螢幕擷取畫面：
 
-![儲存體連接問題2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.2.png)
+在連結的儲存體節點中：  
+![儲存體連接問題2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2.png)
+
+在儲存體容器節點中：  
+![儲存體連接問題2a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2a.png)
 
 此問題背後可能有幾個可能的原因：
 
@@ -51,6 +59,7 @@ ms.locfileid: "96445319"
 
 * 您正在存取的儲存體資源是 Azure Data Lake Storage Gen2，且位於防火牆和 vNet (，同時設定了) 的儲存體私人端點。
 * 您要存取的容器資源已刪除或不存在。
+* 跨租使用者：使用者用來登入的工作區租使用者與儲存體帳戶的租使用者不相同。 
 
 
 ## <a name="next-steps"></a>後續步驟

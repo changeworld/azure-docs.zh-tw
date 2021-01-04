@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 17fc2db8c51c06601852037c38b9cfc2096c811f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ba64f5972d77637ec830fe6b872af66363d6c1bd
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109750"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740040"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Azure 串流分析的 Blob 儲存體和 Azure Data Lake Gen2 輸出
 
@@ -63,9 +63,5 @@ Data Lake Storage Gen2 讓 Azure 儲存體成為在 Azure 上打造企業 Data L
 
 ## <a name="next-steps"></a>後續步驟
 
+* [使用受控識別 (預覽版) 來驗證您的 Azure 串流分析作業，以 Azure Blob 儲存體](blob-output-managed-identity.md)
 * [快速入門：使用 Azure 入口網站建立串流分析作業](stream-analytics-quick-create-portal.md)
-* [快速入門：使用 Azure CLI 建立 Azure 串流分析作業](quick-create-azure-cli.md)
-* [快速入門：使用 ARM 範本建立 Azure 串流分析作業](quick-create-azure-resource-manager.md)
-* [快速入門：使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)
-* [快速入門：使用 Visual Studio 建立 Azure 串流分析作業](stream-analytics-quick-create-vs.md)
-* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-visual-studio-code.md)

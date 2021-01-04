@@ -7,18 +7,18 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503551"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734176"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>針對範本中的部署腳本設定開發環境
 
 瞭解如何使用部署腳本映射來建立開發和測試部署腳本的開發環境。 您可以建立 [Azure 容器實例](../../container-instances/container-instances-overview.md) 或使用 [Docker](https://docs.docker.com/get-docker/)。 這兩篇文章皆涵蓋在內。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有部署腳本，您可以使用下列內容建立 **hello.ps1** 檔案：
 
@@ -155,7 +155,10 @@ $DeploymentScriptOutputs['text'] = $output
 ```
 掛接路徑的預設值為 **deploymentScript**。  這是在容器實例中掛接至檔案共用的路徑。
 
-範本中指定的預設容器映射是 **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3**」。  如需支援的 Azure PowerShell 版本和 Azure CLI 版本清單，請參閱 [Azure PowerShell 或 Azure CLI](./deployment-script-template.md#prerequisites)。
+範本中指定的預設容器映射是 **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3**」。   請參閱支援的 [Azure PowerShell 版本](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)清單。 請參閱支援的 [Azure CLI 版本](https://mcr.microsoft.com/v2/azure-cli/tags/list)清單。
+
+  >[!IMPORTANT]
+  > 部署指令碼會使用 Microsoft Container Registry (MCR) 中的可用 CLI 映像。 需要約一個月的時間來認證適用於部署指令碼的 CLI 映像。 請勿使用在 30 天內發行的 CLI 版本。 若要尋找映像的發行日期，請參閱 [Azure CLI 版本資訊](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)。 如果使用不支援的版本，則錯誤訊息會列出支援的版本。
 
 範本會暫停容器實例1800秒。 您有30分鐘的時間，您的容器實例進入終端狀態，且會話結束。
 
@@ -200,7 +203,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 1. 選取 **[連接]**，然後選取 **[連接]**。 如果您無法連接到容器實例，請重新開機容器群組，然後再試一次。
 1. 在主控台窗格中，執行下列命令：
 
-    ```
+    ```console
     cd deploymentScript
     ls
     pwsh ./hello.ps1 "John Dole"
@@ -209,6 +212,14 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
     輸出為 **Hello John Dole**。
 
     ![部署腳本容器實例測試](./media/deployment-script-template-configure-dev/deployment-script-container-instance-test.png)
+
+1. 如果您使用 AZ CLI 容器映射，請執行下列程式碼：
+
+   ```console
+   cd /mnt/azscripts/azscriptinput
+   ls
+   ./userscript.sh
+   ```
 
 ## <a name="use-docker"></a>使用 Docker
 

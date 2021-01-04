@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92544761"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734618"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何設定 Azure Redis 快取
 本主題說明您「Azure Redis 快取」執行個體可用的設定。 本主題也涵蓋適用於「Azure Redis 快取」執行個體的預設 Redis 伺服器設定。
@@ -31,7 +31,7 @@ ms.locfileid: "92544761"
 您可以使用 [資源功能表] 檢視及設定下列設定。
 
 * [概觀](#overview)
-* [活動記錄](#activity-log)
+* [活動記錄檔](#activity-log)
 * [ (IAM) 的存取控制 ](#access-control-iam)
 * [Tags](#tags) (標籤)
 * [診斷和解決問題](#diagnose-and-solve-problems)
@@ -39,7 +39,7 @@ ms.locfileid: "92544761"
     * [便捷鍵](#access-keys)
     * [進階設定](#advanced-settings)
     * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
-    * [縮放比例](#scale)
+    * [縮放](#scale)
     * [叢集大小](#cluster-size)
     * [資料持續性](#redis-data-persistence)
     * [更新排程](#schedule-updates)
@@ -62,7 +62,7 @@ ms.locfileid: "92544761"
     * [新增支援要求](#new-support-request)
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 **概觀** 提供您快取的基本資訊，例如名稱、連接埠、定價層，以及選取的快取度量。
 
@@ -74,7 +74,7 @@ ms.locfileid: "92544761"
 
 **(IAM)** 一節的存取控制提供了 azure 角色型存取控制 (azure RBAC) 在 Azure 入口網站中的支援。 此設定可協助組織簡單而精準地符合其存取管理需求。 如需詳細資訊，請參閱 [Azure 入口網站中的 Azure 角色型存取控制](../role-based-access-control/role-assignments-portal.md)。
 
-### <a name="tags"></a>Tags
+### <a name="tags"></a>標籤
 
 [標記]  區段有助於您組織資源。 如需詳細資訊，請參閱 [使用標記組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)。
 
@@ -91,7 +91,7 @@ ms.locfileid: "92544761"
 * [便捷鍵](#access-keys)
 * [進階設定](#advanced-settings)
 * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
-* [縮放比例](#scale)
+* [縮放](#scale)
 * [叢集大小](#cluster-size)
 * [資料持續性](#redis-data-persistence)
 * [更新排程](#schedule-updates)
@@ -117,7 +117,7 @@ ms.locfileid: "92544761"
 * [Keyspace 通知 (進階設定)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>存取連接埠
-預設會停用新快取的非 TLS/SSL 存取。 若要啟用非 TLS 埠，請在 [ **Advanced settings** ] 分頁上按一下 [ **否** ]， **只允許透過 SSL 存取** ，然後按一下 [ **儲存** ]。
+預設會停用新快取的非 TLS/SSL 存取。 若要啟用非 TLS 埠，請在 [ **Advanced settings** ] 分頁上按一下 [**否**]，**只允許透過 SSL 存取**，然後按一下 [**儲存**]。
 
 > [!NOTE]
 > Azure Cache for Redis 的 TLS 存取目前支援 TLS 1.0、1.1 和1.2，但即將淘汰1.0 和1.1 版。  如需詳細資料，請參閱我們的 [移除 TLS 1.0 和1.1 頁面](cache-remove-tls-10-11.md) 。
@@ -145,7 +145,7 @@ ms.locfileid: "92544761"
 
 **Maxfragmentationmemory-reserved 保留** 設定會設定叢集內每個實例的記憶體數量（以 MB 為單位），並保留以容納記憶體片段。 設定此值可讓您在快取已滿或接近全滿，且片段比率很高時，擁有更為一致的 Redis 伺服器體驗。 當記憶體保留給這類作業時，無法用於儲存快取的資料。
 
-選擇新的記憶體保留值 ( **maxmemory-reserved** 或 **maxfragmentationmemory-reserved** ) 時，需要考慮的一件事是，這項變更對已有大量資料在執行的快取會有怎麼樣的影響。 例如，如果您有容量為 53 GB 的快取，而其中有 49 GB 的資料，則將保留值變更為 8 GB，此變更會將系統的最大可用記憶體降至 45 GB。 如果目前的 `used_memory` 或 `used_memory_rss` 值高於 45 GB 的新限制，則等 `used_memory` 和 `used_memory_rss` 都低於 45 GB 後，系統必須收回資料。 收回會增加伺服器負載並讓記憶體過於分散。 如需快取計量的詳細資訊，例如 `used_memory` 和 `used_memory_rss`，請參閱[可用計量和報告間隔](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)。
+選擇新的記憶體保留值 (**maxmemory-reserved** 或 **maxfragmentationmemory-reserved**) 時，需要考慮的一件事是，這項變更對已有大量資料在執行的快取會有怎麼樣的影響。 例如，如果您有容量為 53 GB 的快取，而其中有 49 GB 的資料，則將保留值變更為 8 GB，此變更會將系統的最大可用記憶體降至 45 GB。 如果目前的 `used_memory` 或 `used_memory_rss` 值高於 45 GB 的新限制，則等 `used_memory` 和 `used_memory_rss` 都低於 45 GB 後，系統必須收回資料。 收回會增加伺服器負載並讓記憶體過於分散。 如需快取計量的詳細資訊，例如 `used_memory` 和 `used_memory_rss`，請參閱[可用計量和報告間隔](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)。
 
 > [!IMPORTANT]
 > 只有標準和高階快取提供 **maxmemory-reserved** 和 **maxfragmentationmemory-reserved** 設定。
@@ -363,7 +363,7 @@ Redis Keyspace 通知是在 [進階設定]  刀鋒視窗上進行設定。 Keysp
 **資源健康狀態** 會監看您的資源，並告知您資源是否正如預期般執行。 如需 Azure 資源健康狀態服務的詳細資訊，請參閱 [Azure 資源健康狀態概觀](../service-health/resource-health-overview.md)。
 
 > [!NOTE]
-> 資源健康狀態目前無法針對虛擬網路中所裝載「Azure Redis 快取」執行個體的健康狀態提出報告。 如需詳細資訊，請參閱 [將快取裝載於 VNET 時，所有快取功能都可以正常運作嗎？](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+> 資源健康狀態目前無法針對虛擬網路中所裝載「Azure Redis 快取」執行個體的健康狀態提出報告。 如需詳細資訊，請參閱 [將快取裝載於 VNET 時，所有快取功能都可以正常運作嗎？](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network)
 >
 >
 
@@ -382,7 +382,7 @@ Redis Keyspace 通知是在 [進階設定]  刀鋒視窗上進行設定。 Keysp
 >
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 >
-> 任何可設定的值 (例如 **max-memory-policy** ) 都可以透過 Azure 入口網站或命令列管理工具 (例如 Azure CLI 或 PowerShell) 加以設定。
+> 任何可設定的值 (例如 **max-memory-policy**) 都可以透過 Azure 入口網站或命令列管理工具 (例如 Azure CLI 或 PowerShell) 加以設定。
 >
 >
 
@@ -394,7 +394,7 @@ Redis Keyspace 通知是在 [進階設定]  刀鋒視窗上進行設定。 Keysp
 | `maxmemory-samples` |3 |為了節省記憶體，LRU 和最小 TTL 演算法是近似的演算法而不是精確的演算法。 依預設 Redis 將檢查三個金鑰，並挑選最近較少使用的金鑰。 |
 | `lua-time-limit` |5,000 |Lua 指令碼的最大執行時間 (以毫秒為單位)。 如果已到達最大執行時間，Redis 會記錄指令碼在最大允許的時間之後仍在執行中，並開始回覆查詢發生錯誤。 |
 | `lua-event-limit` |500 |指令碼事件佇列的大小上限。 |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |用戶端輸出緩衝區限制可用來強制中斷基於某些原因而無法足夠快地從伺服器讀取資料之用戶端的連線 (常見的原因是 Pub/Sub 用戶端使用訊息的速度無法與發佈者產生這些訊息的速度一樣快)。 如需詳細資訊，請參閱 [https://redis.io/topics/clients](https://redis.io/topics/clients)。 |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |用戶端輸出緩衝區限制可用來強制中斷基於某些原因而無法足夠快地從伺服器讀取資料之用戶端的連線 (常見的原因是 Pub/Sub 用戶端使用訊息的速度無法與發佈者產生這些訊息的速度一樣快)。 如需詳細資訊，請參閱 [https://redis.io/topics/clients](https://redis.io/topics/clients) \(英文\)。 |
 
 <a name="databases"></a>
 <sup>1</sup>每個「Azure Redis 快取」定價層的 `databases` 限制皆不相同，在建立快取建立時即可設定此限制。 如果快取建立期間未指定 `databases` 設定，則預設值為 16。

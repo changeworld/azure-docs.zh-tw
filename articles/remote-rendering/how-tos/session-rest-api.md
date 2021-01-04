@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d957c5d6521010c7393e2297be16cd7bef41c35f
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023749"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724063"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用工作階段管理 REST API
 
 若要使用 Azure 遠端轉譯的功能，您必須建立一個 *會話*。 每個會話都對應至虛擬機器， (VM) 在 Azure 中配置並等候用戶端裝置連線。 當裝置連線時，VM 會轉譯要求的資料，並以影片串流的形式提供結果。 在會話建立期間，您會選擇要執行的伺服器類型，以決定定價。 一旦不再需要會話，應停止。 如果未手動停止，則會在會話的 *租用時間* 到期時自動關閉。
 
-我們在*腳本*資料夾中的[ARR 範例存放庫](https://github.com/Azure/azure-remote-rendering)中提供 PowerShell 腳本，稱為*RenderingSession.ps1*，其示範如何使用我們的服務。 腳本及其設定如下所述： [範例 PowerShell 腳本](../samples/powershell-example-scripts.md)
+我們在 *腳本* 資料夾中的 [ARR 範例存放庫](https://github.com/Azure/azure-remote-rendering)中提供 PowerShell 腳本，稱為 *RenderingSession.ps1*，其示範如何使用我們的服務。 腳本及其設定如下所述： [範例 PowerShell 腳本](../samples/powershell-example-scripts.md)
 
 > [!TIP]
 > 此頁面上所列的 PowerShell 命令是為了彼此互補。 如果您在相同的 PowerShell 命令提示字元中依序執行所有腳本，它們會在彼此之上建立。
@@ -37,22 +37,25 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 如果您沒有遠端轉譯帳戶，請 [建立一個](create-an-account.md)。 每個資源都是由 *accountId*（在整個會話 api 中使用）來識別。
 
-### <a name="example-script-set-accountid-and-accountkey"></a>範例腳本：設定 accountId 和 accountKey
+### <a name="example-script-set-accountid-accountkey-and-account-domain"></a>範例腳本：設定 accountId、accountKey 和帳戶網域
+
+帳戶網域是遠端轉譯帳戶的位置。 在此範例中，帳戶的位置為區域 *eastus*。
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
 $accountKey = "*******************************************="
+$accountDomain = "eastus.mixedreality.azure.com"
 ```
 
 ## <a name="common-request-headers"></a>常見的要求標頭
 
-* *授權*標頭的值必須為 " `Bearer TOKEN` "，其中 " `TOKEN` " 是[安全權杖服務所傳回](tokens.md)的驗證權杖。
+* *授權* 標頭的值必須為 " `Bearer TOKEN` "，其中 " `TOKEN` " 是 [安全權杖服務所傳回](tokens.md)的驗證權杖。
 
 ### <a name="example-script-request-a-token"></a>範例腳本：要求權杖
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 $token = $response.AccessToken;
 ```
@@ -79,7 +82,7 @@ $token = $response.AccessToken;
 
 | 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
-| 202 | -sessionId： GUID | 成功 |
+| 202 | -sessionId： GUID | Success |
 
 ### <a name="example-script-create-a-session"></a>範例腳本：建立會話
 
@@ -122,7 +125,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 有幾個命令可查詢或修改現有會話的參數。
 
 > [!CAUTION]
-> 針對所有 REST 呼叫，太頻繁傳送這些命令會導致伺服器節流並最後傳回失敗。 此案例中的狀態碼是 429 ( 「太多要求」 ) 。 根據經驗法則，**後續的呼叫之間應該會有 5-10 秒**的延遲。
+> 針對所有 REST 呼叫，太頻繁傳送這些命令會導致伺服器節流並最後傳回失敗。 此案例中的狀態碼是 429 ( 「太多要求」 ) 。 根據經驗法則，**後續的呼叫之間應該會有 5-10 秒** 的延遲。
 
 ### <a name="update-session-parameters"></a>更新會話參數
 
@@ -259,13 +262,13 @@ RawContentLength  : 60
 
 | URI | 方法 |
 |-----------|:-----------|
-| /v1/accounts/*accountId*/sessions/*sessionId* | 刪除 |
+| /v1/accounts/*accountId*/sessions/*sessionId* | DELETE |
 
 **反應：**
 
 | 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
-| 204 | | 成功 |
+| 204 | | Success |
 
 ### <a name="example-script-stop-a-session"></a>範例腳本：停止會話
 

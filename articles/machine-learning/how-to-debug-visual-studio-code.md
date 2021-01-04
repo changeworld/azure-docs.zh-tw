@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: a9d20732c3ae08718c400faff44137000e98fffd
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: e572f1f6a9452ccab9deddb62a5e219a81df5d47
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629413"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739989"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>使用 Visual Studio Code 的互動式調試
 
@@ -536,4 +536,10 @@ docker stop debug
 
 現在您已設定 VS Code 遠端，您可以使用計算實例作為 VS Code 的遠端計算，以互動方式進行程式碼的偵錯工具。 
 
-[教學課程：進行第一個 ML 模型的定型](tutorial-1st-experiment-sdk-train.md)會示範如何搭配使用計算執行個體與整合式筆記本。
+深入瞭解疑難排解：
+
+* [本機模型部署](how-to-troubleshoot-deployment-local.md)
+* [遠端模型部署](how-to-troubleshoot-deployment.md)
+* [機器學習管線](how-to-debug-pipelines.md)
+* [ParallelRunStep](how-to-debug-parallel-run-step.md)
+

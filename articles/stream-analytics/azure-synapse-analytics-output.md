@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 63d03559b2a30020ed2e8bd1cd030855b8fb20b7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 65752321f94bfa1403839889ead284d46b5f7191
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445097"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740057"
 ---
 # <a name="azure-synapse-analytics-output-from-azure-stream-analytics"></a>Azure 串流分析的 Azure Synapse Analytics 輸出
 
@@ -39,9 +39,5 @@ Azure 串流分析作業可以輸出至 Azure Synapse Analytics 中的專用 SQL
 
 ## <a name="next-steps"></a>後續步驟
 
+* [使用受控識別來存取 Azure 串流分析作業的 Azure SQL Database 或 Azure Synapse Analytics (預覽) ](sql-database-output-managed-identity.md)
 * [快速入門：使用 Azure 入口網站建立串流分析作業](stream-analytics-quick-create-portal.md)
-* [快速入門：使用 Azure CLI 建立 Azure 串流分析作業](quick-create-azure-cli.md)
-* [快速入門：使用 ARM 範本建立 Azure 串流分析作業](quick-create-azure-resource-manager.md)
-* [快速入門：使用 Azure PowerShell 建立串流分析作業](stream-analytics-quick-create-powershell.md)
-* [快速入門：使用 Visual Studio 建立 Azure 串流分析作業](stream-analytics-quick-create-vs.md)
-* [快速入門：在 Visual Studio Code 中建立 Azure 串流分析作業](quick-create-visual-studio-code.md)

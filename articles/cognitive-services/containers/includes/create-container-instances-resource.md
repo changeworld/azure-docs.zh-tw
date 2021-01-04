@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 09957461fd92114d1181a570550ee1a189edd8ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 874d44e3900b1edf24c2f6bee95d787c5fc3988d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009847"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704826"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>建立 Azure 容器實例資源
+## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>使用 Azure 入口網站建立 Azure 容器實例資源
 
 1. 移至容器實例的 [ [建立](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) ] 頁面。
 
@@ -41,11 +41,11 @@ ms.locfileid: "96009847"
 
 4. 在 [ **Advanced （Advanced** ）] 索引標籤上，為 Azure 容器實例資源的容器帳單設定輸入必要的 **環境變數** ：
 
-    | 機碼 | 值 |
+    | Key | 值 |
     |--|--|
-    |`apikey`|從資源的 [ **金鑰** ] 頁面複製。 它是32英數位元字串，沒有空格或連字號 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` 。|
-    |`billing`|從資源的 [ **總覽** ] 頁面複製。|
-    |`eula`|`accept`|
+    |`ApiKey`|從資源的 [ **金鑰和端點** ] 頁面複製。 它是32英數位元字串，沒有空格或連字號 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` 。|
+    |`Billing`| 從資源的 [ **金鑰和端點** ] 頁面複製的端點 URL。|
+    |`Eula`|`accept`|
 
 5. 按一下 [ **審核] 並建立**
 6. 通過驗證之後，按一下 [ **建立** ] 以完成建立程式

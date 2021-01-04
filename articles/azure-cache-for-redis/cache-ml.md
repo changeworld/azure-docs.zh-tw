@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: d9731455edf0afbe4c0768ae40a51316ac71ad94
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537570"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734227"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>使用 Azure Cache for Redis 將機器學習模型部署到 Azure Functions 
 
@@ -41,7 +41,7 @@ Azure Cache for Redis 的效能和可調整性，與 Azure Machine Learning 模�
 ## <a name="create-an-azure-cache-for-redis-instance"></a>建立 Azure Cache for Redis 執行個體 
 您將能夠使用任何基本、標準或高階快取實例，將機器學習模型部署至 Azure Functions。 若要建立快取實例，請遵循下列步驟。  
 
-1. 移至 Azure 入口網站首頁，或開啟側邊欄功能表，然後選取 [ **建立資源** ]。 
+1. 移至 Azure 入口網站首頁，或開啟側邊欄功能表，然後選取 [ **建立資源**]。 
    
 1. 在 [新增]  頁面上選取 [資料庫]  ，然後選取 [Azure Cache for Redis]  。
 
@@ -51,7 +51,7 @@ Azure Cache for Redis 的效能和可調整性，與 Azure Machine Learning 模�
    
    | 設定      | 建議的值  | 描述 |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **DNS 名稱** | 輸入全域唯一名稱。 | 快取名稱必須是 1 到 63 個字元的字串，且只能包含數字、字母或連字號。 名稱的開頭和結尾必須是數字或字母，且不可包含連續的連字號。 您的快取執行個體 *主機名稱* 將是 *\<DNS name>.redis.cache.windows.net* 。 | 
+   | **DNS 名稱** | 輸入全域唯一名稱。 | 快取名稱必須是 1 到 63 個字元的字串，且只能包含數字、字母或連字號。 名稱的開頭和結尾必須是數字或字母，且不可包含連續的連字號。 您的快取執行個體 *主機名稱* 將是 *\<DNS name>.redis.cache.windows.net*。 | 
    | **訂用帳戶** | 下拉並選取您的訂用帳戶。 | 這個新的 Azure Cache for Redis 執行個體建立所在的訂用帳戶。 | 
    | **資源群組** | 下拉並選取資源群組，或選取 [新建]  並輸入新的資源群組名稱。 | 用來建立快取和其他資源的資源群組名稱。 將所有的應用程式資源放在一個資源群組中，您將可輕鬆地一併管理或刪除這些資源。 | 
    | **位置** | 下拉並選取位置。 | 選取其他將使用快取的服務附近的[區域](https://azure.microsoft.com/regions/)。 |
@@ -81,7 +81,7 @@ Azure Cache for Redis 的效能和可調整性，與 Azure Machine Learning 模�
 
 在部署之前，您必須定義以 web 服務的形式執行模型所需的內容。 下列清單描述部署所需的核心專案：
 
-* __輸入腳本__ 。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
+* __輸入腳本__。 此腳本會接受要求、使用模型來評分要求，並傳回結果。
 
     > [!IMPORTANT]
     > 專案腳本為您的模型所特有;它必須瞭解傳入要求資料的格式、您的模型所預期的資料格式，以及傳回給用戶端的資料格式。
@@ -283,14 +283,14 @@ print(model_package.location)
 > [!IMPORTANT]
 > 可能需要幾分鐘的時間才會載入映射。 您可以使用 Azure 入口網站來監視進度。
 
-## <a name="test-azure-function-http-trigger"></a>測試 Azure Function HTTP 觸發程式 
+## <a name="test-azure-functions-http-trigger"></a>測試 Azure Functions HTTP 觸發程式 
 
-我們現在會執行並測試 Azure 函數 HTTP 觸發程式。
+我們現在會執行並測試 Azure Functions 的 HTTP 觸發程式。
 
-1. 在 Azure 入口網站中，移至您的 Azure 函數應用程式。
-1. 在 [開發人員] 底下，選取 [程式 **代碼 + 測試** ]。 
+1. 在 Azure 入口網站中，移至您的函數應用程式。
+1. 在 [開發人員] 底下，選取 [程式 **代碼 + 測試**]。 
 1. 選取右側的 [ **輸入** ] 索引標籤。 
-1. 按一下 [ **執行** ] 按鈕以測試 AZURE 函數 HTTP 觸發程式。 
+1. 按一下 [ **執行** ] 按鈕，測試 AZURE FUNCTIONS 的 HTTP 觸發程式。 
 
 您現在已使用 Azure Cache for Redis 實例，成功地將模型從 Azure Machine Learning 部署為函數應用程式。 若要深入瞭解 Azure Cache for Redis，請流覽至下一節中的連結。
 
@@ -305,11 +305,11 @@ print(model_package.location)
 
 ### <a name="to-delete-a-resource-group"></a>刪除資源群組
 
-1. 登入  。
+1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [資源群組]。
 
-2. 在 [依名稱篩選...]  方塊中，並輸入您的資源群組名稱。 在資源群組的結果清單中，選取  。
+2. 在 [依名稱篩選...] 方塊中，並輸入您的資源群組名稱。 在資源群組的結果清單中，選取 **...**，然後選取 [刪除資源群組]。
 
-系統將會要求您確認是否刪除資源群組。 輸入您的資源群組名稱以進行確認，然後選取 [刪除]  。
+系統將會要求您確認是否刪除資源群組。 輸入您的資源群組名稱以進行確認，然後選取 [刪除]。
 
 不久後，系統便會刪除該資源群組及其所有的資源。
 

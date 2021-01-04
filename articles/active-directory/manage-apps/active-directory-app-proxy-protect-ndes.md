@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0793547c4eafcad256664546240a07c1bcb0e628
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656746"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709005"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>在網路裝置註冊服務 (NDES) 伺服器上與 Azure AD 應用程式 Proxy 整合
 
@@ -81,7 +81,7 @@ Azure AD 的應用程式 Proxy 建置於 Azure 上。 它提供大量的網路�
 
 1. 選取 [ **+ 新增** ] 以儲存您的應用程式。
 
-1. 將您在步驟10中複製的連結貼入瀏覽器，以測試您是否可以透過 Azure AD 應用程式 proxy 存取 NDES 伺服器。 您應該會看到預設的 IIS 歡迎使用頁面。
+1. 將您在步驟15中複製的連結貼入瀏覽器，以測試您是否可以透過 Azure AD 應用程式 proxy 存取 NDES 伺服器。 您應該會看到預設的 IIS 歡迎使用頁面。
 
 1. 在最後一個步驟中，將 *mscep.dll* 路徑新增至您在上一個步驟中貼上的現有 URL：
 

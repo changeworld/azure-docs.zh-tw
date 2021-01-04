@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: f85df2e16554b4830d3e5f1bc82c5c8cdf22e28b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4f4cd8189c9166ee08c1e4ccd800a1202d3b5893
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586625"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724811"
 ---
 # <a name="smb-multichannel-performance"></a>SMB 多重通道效能
 
@@ -40,7 +40,7 @@ Azure 檔案儲存體 SMB 多重通道可讓用戶端使用多個網路連線，
 
 [!INCLUDE [storage-files-smb-multi-channel-regions](../../../includes/storage-files-smb-multi-channel-regions.md)]
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 只有在用戶端 (您的用戶端) 和服務端 (您的 Azure 儲存體帳戶) 時，SMB 多重通道才能運作。
 
@@ -63,7 +63,7 @@ Azure 檔案儲存體 SMB 多重通道可讓用戶端使用多個網路連線，
 1. 以系統管理員身分開啟 PowerShell，並使用下列命令： `Get-SmbMultichannelConnection |fl`
 1. 尋找 **MaxChannels** 和 **CurrentChannels** 屬性
 
-:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Smbmultichannelconnection 結果的螢幕擷取畫面。" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
+:::image type="content" source="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG" alt-text="Get-SMBMultichannelConnection 結果的螢幕擷取畫面。" lightbox="media/storage-files-smb-multichannel-performance/files-smb-multi-channel-connection.PNG":::
 
 ## <a name="performance-comparison"></a>表現比較
 
@@ -119,7 +119,7 @@ Azure 檔案儲存體 SMB 多重通道可讓用戶端使用多個網路連線，
 - 確定您的儲存體帳戶和用戶端都在相同的 Azure 區域中，以降低網路延遲。
 - 使用多執行緒應用程式，並將負載分散到多個檔案。
 - SMB 多重通道的效能優點會隨著散發載入的檔案數目而增加。
-- Premium 共用效能會依布建的共用大小（ (IOPS/輸出/輸入) 和單一檔案限制）進行系結。 如需詳細資訊，請參閱 [瞭解 premium 檔案共用的](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)布建。
+- Premium 共用效能會依布建的共用大小（ (IOPS/輸出/輸入) 和單一檔案限制）進行系結。 如需詳細資訊，請參閱 [瞭解 premium 檔案共用的](understanding-billing.md#provisioned-billing)布建。
 - 單一 VM 用戶端的最大效能仍系結至 VM 限制。 例如， [Standard_D32s_v3](../../virtual-machines/dv3-dsv3-series.md) 可支援 16000 MBps 的最大頻寬 (或 2GBps) ，從 VM 到儲存體) 的輸出 (寫入儲存體 (會進行計量，而輸入) 儲存體讀取則否。 檔案共用效能受制于電腦網路限制、Cpu、內部儲存體可用的網路頻寬、IO 大小、平行處理原則，以及其他因素。
 - 初始測試通常是準備工作，捨棄其結果並重複測試。
 - 如果效能受限於單一用戶端，而且工作負載仍低於布建的共用限制，則可透過將負載分散到多個用戶端來達到更高的效能。

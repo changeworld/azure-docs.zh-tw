@@ -4,12 +4,12 @@ description: 尋找有關使用 Azure 備份備份 Azure Vm 上的 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 89316770dc137bff031e6268db5ece156edd4f25
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172377"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734108"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有關在 Azure VM 備份上執行的 SQL Server 資料庫的常見問題
 
@@ -37,7 +37,7 @@ ms.locfileid: "92172377"
 - 儲存變更並關閉該檔案。
 - 在 SQL Server 實例上，開啟 [ **任務管理** ]，然後重新開機 **AzureWLBackupCoordinatorSvc** 服務。
 
-## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>我可以控制要在 SQL server 上執行多少並行備份？
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>我是否可控制在 SQL 伺服器上能夠執行多少並行備份？
 
 是。 您可以限制備份原則的執行速率，以儘量降低對 SQL Server 執行個體的影響。 變更設定：
 
@@ -48,7 +48,7 @@ ms.locfileid: "92172377"
 >defaultbackuptasksthreshold 的預設值為 **20**。
 
 3. 儲存變更並關閉該檔案。
-4. 在 SQL Server 執行個體上，開啟 [工作管理員]****。 重新啟動 **AzureWLBackupCoordinatorSvc** 服務。<br/> <br/>
+4. 在 SQL Server 執行個體上，開啟 [工作管理員]。 重新啟動 **AzureWLBackupCoordinatorSvc** 服務。<br/> <br/>
  雖然此方法可協助備份應用程式耗用大量資源，但 SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 是指定傳入應用程式要求可使用的 CPU、實體 IO 和記憶體數量限制的一般方式。
 
 > [!NOTE]
@@ -78,7 +78,7 @@ Azure 備份復原服務保存庫可以偵測和保護與保存庫位於相同�
 
 是的，您可以使用 [自動保護](backup-sql-server-database-azure-vms.md#enable-auto-protection)來達成這項功能。  
 
-## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>如果我從 autoprotected 實例中刪除資料庫，備份會發生什麼事？
+## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>如果我從自動受到保護的執行個體中刪除資料庫，備份將有何情況？
 
 如果從 autoprotected 實例卸載資料庫，仍會嘗試資料庫備份。 這表示已刪除的資料庫會開始在 [備份項目] 下方顯示為狀況不良，且仍受到保護。
 
@@ -86,7 +86,7 @@ Azure 備份復原服務保存庫可以偵測和保護與保存庫位於相同�
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>如果我停止 autoprotected 資料庫的備份作業，會有什麼行為？
 
-如果您 **停止備份並保留資料**，則不會進行未來的備份，而且現有的復原點會保持不變。 資料庫仍然會被視為受保護，而且會顯示在 **備份專案**底下。
+如果您 **停止備份並保留資料**，則不會進行未來的備份，而且現有的復原點會保持不變。 資料庫仍然會被視為受保護，而且會顯示在 **備份專案** 底下。
 
 如果您 **停止備份並刪除資料**，將不會進行未來的備份，而且也會刪除現有的復原點。 資料庫將被視為未受保護，並顯示在 [設定備份] 的實例底下。 不過，與其他可以手動選取或可取得 autoprotected 的受保護資料庫不同，此資料庫會呈現灰色且無法選取。 重新保護此資料庫的唯一方法是在實例上停用自動保護。 您現在可以選取此資料庫並設定其保護，或重新啟用實例的自動保護。
 
@@ -104,7 +104,12 @@ Azure 備份復原服務保存庫可以偵測和保護與保存庫位於相同�
   
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>我是否可以保護 TDE (透明資料加密的資料庫) 開啟，資料庫是否會透過整個備份程式保持加密狀態？
 
-是的，Azure 備份支援啟用 TDE 的 SQL Server 資料庫或伺服器的備份。 備份支援使用 Azure 所管理的金鑰進行 [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) ，或使用客戶管理的金鑰 (BYOK) 。  備份不會在備份過程中執行任何 SQL 加密，因此資料庫會在備份時保持加密狀態。
+是的，Azure 備份支援啟用 TDE 的 SQL Server 資料庫或伺服器的備份。 備份支援使用 Azure 所管理的金鑰進行 [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) ，或使用客戶管理的金鑰 (BYOK) 。  備份不會在備份過程中執行任何 SQL 加密，因此資料庫會在備份時保持加密狀態。
+
+## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Azure 備份是否在資料流程上執行總和檢查碼運算？
+
+我們會在資料流程上執行總和檢查碼運算。 不過，這不會與 SQL 總和 [檢查](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)碼混淆。
+Azure 工作負載備份會計算資料流程上的總和檢查碼，並且在備份作業期間明確地儲存總和檢查碼。 然後，在還原作業期間，會將此總和檢查碼串流視為參考，並交叉驗證資料流程的總和檢查碼，以確保資料一致。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 14d15f54befba162b071b40e06e589f980708fd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862338"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740482"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解譯性套件以 Python (preview & 預測來說明 ML 模型) 
 
@@ -296,41 +296,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>視覺效果
 
-在您的本機 Jupyter Notebook 下載說明之後，您可以使用 [視覺效果] 儀表板來瞭解和解讀您的模型。
-
-### <a name="understand-entire-model-behavior-global-explanation"></a>瞭解完整的模型行為 (全域說明)  
-
-下圖提供定型模型的整體觀點，以及其預測和說明。
-
-|圖|描述|
-|----|-----------|
-|資料探索| 顯示資料集和預測值的總覽。|
-|全域重要性|匯總個別資料點的特徵重要性值，以顯示模型的整體 top K (可設定的 K) 重要功能。 有助於瞭解基礎模型的整體行為。|
-|說明探索|示範功能如何影響模型預測值的變更，或預測值的機率。 顯示功能互動的影響。|
-|摘要重要性|在所有資料點上使用個別的特徵重要性值，以顯示每項特徵對預測值的影響分佈。 您可以使用此圖表來調查功能值影響預測值的方向。
-|
-
-[![視覺效果儀表板全域](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
-
-### <a name="understand-individual-predictions-local-explanation"></a>瞭解個別預測 (當地說明)  
-
-您可以按一下任何一個整體繪圖中的任何個別資料點，為任何資料點載入個別的特徵重要性繪圖。
-
-|圖|描述|
-|----|-----------|
-|本機重要性|針對個別預測，顯示可設定的前 K (K) 重要功能。 有助於說明特定資料點上基礎模型的本機行為。|
-|更動探索 (假設分析) |允許變更所選資料點的功能值，並觀察預測值的結果變更。|
-|個別條件式期望 (ICE) | 允許從最小值到最大值的功能值變更。 協助說明當功能變更時資料點的預測如何變更。|
-
-[![視覺效果儀表板區域功能重要性](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
-
-
-[![視覺效果儀表板功能更動](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
-
-
-[![視覺效果儀表板 ICE 繪圖](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
-
-若要載入視覺效果儀表板，請使用下列程式碼。
+在您的本機 Jupyter Notebook 下載說明之後，您可以使用 [視覺效果] 儀表板來瞭解和解讀您的模型。 若要在您的 Jupyter Notebook 中載入視覺效果儀表板 widget，請使用下列程式碼：
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -338,11 +304,58 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
+視覺效果支援設計和原始功能的說明。 原始的說明是以原始資料集的功能為基礎，而設計的說明則是根據已套用特徵設計的資料集功能。
+
+當您嘗試解讀相對於原始資料集的模型時，建議使用未經處理的說明，因為每項功能重要性都會對應至原始資料集中的資料行。 設計說明的其中一個案例可能很有用，就是檢查個別類別與類別功能的影響時。 如果將一項經常性編碼套用至類別功能，則所產生的設計說明將會針對每個類別包含不同的重要性值，每個類別都有一個最受歡迎的設計功能。 當您縮小資料集的哪一部分最適合模型時，這會很有用。
+
+> [!NOTE]
+> 設計和原始的說明會依序計算。 首先，會根據模型和特徵化管線來建立設計的說明。 然後，根據設計的說明，藉由匯總來自相同原始功能的設計功能，來建立原始的說明。
+
+### <a name="create-edit-and-view-dataset-cohorts"></a>建立、編輯和查看資料集世代
+
+上方的功能區會顯示您的模型和資料的整體統計資料。 您可以將資料分割成資料集世代或子群組，以便在這些定義的子群組之間調查或比較模型的效能和說明。 藉由比較您在這些子群組之間的資料集統計資料和說明，您可以瞭解在一個群組中可能發生錯誤的原因，而不是另一個群組。
+
+[![建立、編輯和觀看資料集世代](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif#lightbox)
+
+### <a name="understand-entire-model-behavior-global-explanation"></a>瞭解完整的模型行為 (全域說明)  
+
+[說明] 儀表板的前三個索引標籤會提供定型模型的整體分析，以及其預測和說明。
+
+#### <a name="model-performance"></a>模型效能
+探索您的預測值分佈和模型效能度量的值，以評估模型的效能。 您可以在資料集的不同世代或子群組之間查看其效能的比較分析，進一步調查您的模型。 選取要在不同維度之間剪下的 y 值和 x 值篩選。 查看精確度、有效位數、召回、誤報 (FPR) 的度量，以及 (FNR) 的 false 負數率。
+
+[![說明視覺效果中的 [模型效能] 索引標籤](./media/how-to-machine-learning-interpretability-aml/model-performance.gif)](./media/how-to-machine-learning-interpretability-aml/model-performance.gif#lightbox)
+
+#### <a name="dataset-explorer"></a>Dataset explorer
+藉由選取 X、Y 和色軸的不同篩選器來流覽您的資料集統計資料，以依不同維度分割您的資料。 建立世代的資料集，以使用篩選準則（例如預測結果、資料集功能和錯誤群組）分析資料集統計資料。 使用圖表右上角的齒輪圖示來變更圖表類型。
+
+[![說明視覺效果中的 [資料集瀏覽器] 索引標籤](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif#lightbox)
+
+#### <a name="aggregate-feature-importance"></a>匯總功能重要性
+探索影響整體模型預測的最高 k 項重要功能 (也稱為全域說明) 。 使用滑杆來顯示遞減的特徵重要性值。 選取最多三個世代，以並排查看其功能重要性值。 按一下圖形中的任何功能列，以查看所選功能的值如何影響下列相依性圖中的模型預測值。
+
+[![說明視覺效果中的匯總功能重要性索引標籤](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif)](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif#lightbox)
+
+### <a name="understand-individual-predictions-local-explanation"></a>瞭解個別預測 (當地說明)  
+
+[說明] 索引標籤的第四個索引標籤可讓您深入瞭解個別的點，以及其個別的功能 importances。 您可以針對任何資料點載入個別的特徵重要性繪圖，方法是按一下主要散佈圖中的任何個別資料點，或在右邊的面板嚮導中選取特定的點。
+
+|圖|描述|
+|----|-----------|
+|個別功能重要性|顯示個別預測的最高 k 項重要功能。 有助於說明特定資料點上基礎模型的本機行為。|
+|What-If 分析|允許變更所選實際資料點的功能值，並藉由產生具有新功能值的假想點來觀察預測值的結果變更。|
+|個別條件式期望 (ICE) |允許從最小值到最大值的功能值變更。 協助說明當功能變更時資料點的預測如何變更。|
+
+[![說明儀表板中的個別功能重要性和假設索引標籤](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif)](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif#lightbox)
+
+> [!NOTE]
+> 這些是根據許多近似值的說明，而不是預測的「原因」。 如果沒有算術推斷的嚴格數學強大功能，我們就不建議使用者根據 What-If 工具的功能 perturbations 做出實際的決策。 這項工具主要是用來瞭解您的模型和偵錯工具。
+
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning studio 中的視覺效果
 
-如果您完成了 [遠端可解譯性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) 步驟 (將產生的說明上傳至 Azure Machine Learning 執行歷程記錄) ，您可以在 [Azure Machine Learning studio](https://ml.azure.com)中查看視覺效果儀表板。 此儀表板是更簡單的視覺效果儀表板版本 (說明探索和冰繪圖已停用，因為 studio 中沒有任何使用中的計算可執行其即時計算) 。
+如果您完成了 [遠端可解譯性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) 步驟 (將產生的說明上傳至 Azure Machine Learning 執行歷程記錄) ，您可以在 [Azure Machine Learning studio](https://ml.azure.com)中查看視覺效果儀表板。 此儀表板是更簡單的視覺效果儀表板版本，如上所述。 What-If 的時間點產生和冰繪圖已停用，因為 Azure Machine Learning studio 中沒有任何使用中的計算可執行其即時計算。
 
-如果有資料集、全域和本機說明，則資料會填入所有索引標籤 (除了更動探索和 ICE) 之外。 如果只提供全域說明，則會停用 [摘要重要性] 索引標籤和 [所有本機說明] 索引標籤。
+如果有資料集、全域和本機說明，資料就會填入所有的索引標籤。 如果只提供全域說明，則會停用 [個別功能重要性] 索引標籤。
 
 遵循下列其中一個路徑，以存取 Azure Machine Learning studio 中的視覺效果儀表板：
 
@@ -351,7 +364,7 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
   1. 選取特定實驗來查看該實驗中的所有執行。
   1. 選取 [執行]，然後選取 [說明視覺效果] 儀表板的 [ **說明** ] 索引標籤。
 
-   [![實驗中 AzureML studio 的視覺效果儀表板區域功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![測試中 AzureML studio 中具有匯總特徵重要性的視覺效果儀表板](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png)](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png#lightbox)
 
 * **模型** 窗格
   1. 如果您遵循 [使用 Azure Machine Learning 部署模型](./how-to-deploy-and-where.md)中的步驟來註冊原始模型，您可以在左窗格中選取 **模型** 來加以查看。
@@ -359,7 +372,7 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 
 ## <a name="interpretability-at-inference-time"></a>在推斷階段可解譯性
 
-您可以將說明與原始模型一起部署，並在推斷階段使用它來提供個別特徵重要性值 (本機說明) 新的時間點。 我們也提供較輕量的評分 explainers 來改善推斷階段的可解譯性效能。 部署較輕量評分說明的程式類似于部署模型，並且包含下列步驟：
+您可以將說明與原始模型一起部署，並在推斷階段使用它來提供個別特徵重要性值 (針對任何新資料點) 的本機說明。 我們也提供較輕量的評分 explainers 來改善推斷階段的可解譯性效能，這項功能目前只在 Azure Machine Learning SDK 中提供支援。 部署較輕量評分說明的程式類似于部署模型，並且包含下列步驟：
 
 1. 建立說明物件。 例如，您可以使用 `TabularExplainer` ：
 
@@ -547,6 +560,17 @@ ExplanationDashboard(global_explanation, model, datasetX=x_test)
 1. 清除。
 
    若要刪除已部署的 Web 服務，請使用 `service.delete()`。
+
+## <a name="troubleshooting"></a>疑難排解
+
+* **不支援的稀疏資料**：模型說明儀表板會使用大量的功能大幅中斷/變慢，因此我們目前不支援稀疏資料格式。 此外，大型資料集和大量的功能也會發生一般記憶體問題。 
+
+* **模型說明不支援預測模型**：可解譯性、最佳模型說明無法用於建議下列演算法做為最佳模型的 AutoML 預測實驗： TCNForecaster、AutoArima、先知、ExponentialSmoothing、Average、貝氏、季節性 Average 和季節性貝氏。 AutoML 預測具有支援說明的回歸模型。 不過，在 [說明] 儀表板中，因為其資料管線中的複雜性，所以不支援「個別功能重要性」索引標籤進行預測。
+
+* **資料索引的本機說明**：當儀表板隨機 downsamples 資料時5000，說明儀表板不支援將本機重要性值與原始驗證資料集的資料列識別碼相關聯。 不過，儀表板會針對每個傳遞至儀表板中 [個別功能重要性] 索引標籤的點，顯示原始資料集功能值。使用者可以透過比對原始資料集功能值，將本機 importances 對應回原始資料集。 如果驗證資料集大小小於5000個樣本，則 `index` AzureML studio 中的功能將會對應至驗證資料集中的索引。
+
+* **Studio 中不支援的假設/冰** 圖： Azure Machine Learning studio 中的 [說明] 索引標籤下，不支援 What-If 和個別條件式預期 (ICE) 繪圖，因為上傳的說明需要使用中的計算，以重新計算預測和 perturbed 功能的機率。 當使用 SDK 以 widget 的形式執行時，Jupyter 筆記本中目前支援此功能。
+
 
 ## <a name="next-steps"></a>後續步驟
 

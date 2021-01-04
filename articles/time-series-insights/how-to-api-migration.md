@@ -10,16 +10,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 3aedbef079ba62f42ea79afdcd9995d7ee23d9fa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020720"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740550"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>遷移至新的 Azure 時間序列深入解析 Gen2 API 版本
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 如果您在) 2020 年7月16日之前，建立了 Azure 時間序列深入解析 Gen2 環境 (，請更新 TSI 環境，以使用新正式推出的 Api 版本，方法是遵循本文中所述的步驟。 這項變更不會影響任何使用 Gen1 版 Azure 時間序列深入解析的使用者。
 
@@ -76,7 +76,7 @@ ms.locfileid: "95020720"
 若要將查詢更新為使用新的 API 版本和新的時間序列運算式語法，則必須從 [Explorer] 重新產生查詢。 深入瞭解如何 [使用 Power BI 連接器來建立查詢](./how-to-connect-power-bi.md)。
 
 > [!NOTE]
-> 您必須使用 Power BI Desktop 的2020年7月版本。 如果不是，您可能會看到 [不正確查詢裝載版本錯誤](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect)。
+> 您至少必須使用 Power BI Desktop 的2020年7月版本。 如果沒有，您可能會看到「不正確查詢承載版本」錯誤。
 
 ## <a name="migrate-custom-applications"></a>遷移自訂應用程式
 

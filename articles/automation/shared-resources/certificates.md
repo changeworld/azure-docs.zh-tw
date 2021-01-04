@@ -3,21 +3,21 @@ title: 管理 Azure 自動化中的憑證
 description: 本文說明如何處理憑證以供 Runbook 和 DSC 設定存取。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1c79b7c239c41e8d195230423b17fa3c5a7f51a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cbf9eb6c97dcceeca5e86e8bef47a39fb685792f
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825820"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734805"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>管理 Azure 自動化中的憑證
 
 Azure 自動化使用 Azure Resource Manager 資源的 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) Cmdlet，安全地儲存憑證以供 Runbook 和 DSC 設定存取。 安全憑證存放區可供建立使用憑證進行驗證的 Runbook 和 DSC 設定，或將其新增至 Azure 或協力廠商資源。
 
 >[!NOTE]
->Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會使用為每個自動化帳戶產生的唯一金鑰來進行加密並儲存在自動化中。 自動化會將金鑰儲存在系統管理的 Key Vault 服務中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。 
+>Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會使用為每個自動化帳戶產生的唯一金鑰來進行加密並儲存在自動化中。 自動化會將金鑰儲存在系統管理的 Key Vault 服務中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。
 
 ## <a name="powershell-cmdlets-to-access-certificates"></a>用來存取憑證的 PowerShell Cmdlet
 
@@ -40,12 +40,12 @@ Azure 自動化使用 Azure Resource Manager 資源的 [Get-AzAutomationCertific
 |:---|:---|
 |`Get-AutomationCertificate`|取得要在 Runbook 或 DSC 組態中使用的憑證。 傳回 [System.Security.Cryptography.X509Certificates.X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) 物件。|
 
-> [!NOTE] 
+> [!NOTE]
 > 您應該避免在 Runbook 或 DSC 設定中 `Get-AutomationCertificate` 的 `Name` 參數內使用變數。 這類變數可能會在設計階段將 Runbook 或 DSC 設定與自動化變數之間的相依性探索複雜化。
 
-## <a name="python-2-functions-to-access-certificates"></a>用來存取憑證的 Python 2 函式
+## <a name="python-functions-to-access-certificates"></a>用來存取憑證的 Python 函式
 
-使用下表中函式來存取 Python 2 Runbook 中的憑證。
+使用下表中的功能來存取 Python 2 和 3 runbook 中的憑證。 Python 3 runbook 目前為預覽狀態。
 
 | 函式 | 描述 |
 |:---|:---|
@@ -126,7 +126,9 @@ New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName $ResourceGroupNam
 
 若要擷取憑證，請使用內部 `Get-AutomationCertificate` Cmdlet。 您無法使用 [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) Cmdlet，因為這會傳回憑證資產的資訊，而不是憑證本身。
 
-### <a name="textual-runbook-example"></a>文字式 Runbook 範例
+### <a name="textual-runbook-examples"></a>文字式 Runbook 範例
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 下列範例示範如何將憑證新增至 Runbook 中的雲端服務。 在此範例中，密碼是擷取自加密的自動化變數。
 
@@ -138,17 +140,7 @@ $certPwd = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```
 
-### <a name="graphical-runbook-example"></a>圖形化 Runbook 範例
-
-將一個代表內部 `Get-AutomationCertificate` Cmdlet 的活動新增至圖形化 Runbook，方法是以滑鼠右鍵按一下 [程式庫] 窗格中的 [憑證]，然後選取 [新增至畫布]。
-
-![將憑證新增至畫布的螢幕擷取畫面](../media/certificates/automation-certificate-add-to-canvas.png)
-
-下圖顯示在圖形化 Runbook 中使用憑證的範例。
-
-![圖形化編寫範例的螢幕擷取畫面](../media/certificates/graphical-runbook-add-certificate.png)
-
-### <a name="python-2-example"></a>Python 2 範例
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 下列範例示範如何存取 Python 2 Runbook 中的憑證。
 
@@ -159,6 +151,30 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 # returns the binary cert content  
 print cert
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3) \(英文\)
+
+下列範例示範如何存取 Python 3 runbook (preview) 中的憑證。
+
+```python
+# get a reference to the Azure Automation certificate
+cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+
+# returns the binary cert content  
+print (cert)
+```
+
+---
+
+### <a name="graphical-runbook-example"></a>圖形化 Runbook 範例
+
+將一個代表內部 `Get-AutomationCertificate` Cmdlet 的活動新增至圖形化 Runbook，方法是以滑鼠右鍵按一下 [程式庫] 窗格中的 [憑證]，然後選取 [新增至畫布]。
+
+![將憑證新增至畫布的螢幕擷取畫面](../media/certificates/automation-certificate-add-to-canvas.png)
+
+下圖顯示在圖形化 Runbook 中使用憑證的範例。
+
+![圖形化編寫範例的螢幕擷取畫面](../media/certificates/graphical-runbook-add-certificate.png)
 
 ## <a name="next-steps"></a>後續步驟
 

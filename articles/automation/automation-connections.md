@@ -3,15 +3,15 @@ title: 管理 Azure 自動化中的連線
 description: 本文說明如何管理 Azure 自動化與外部服務或應用程式的連線，以及如何在 Runbook 中加以使用。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/13/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0a3cff616f814b8e5209b15f9d3f7439533452ca
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8deb249dc042701ec02c3e5e30f3603be132d0ec
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071756"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733989"
 ---
 # <a name="manage-connections-in-azure-automation"></a>管理 Azure 自動化中的連線
 
@@ -43,10 +43,10 @@ Azure 自動化可提供下列內建連線類型：
 
 |Cmdlet|描述|
 |---|---|
-|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|擷取連線的相關資訊。|
-|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|建立新連接。|
-|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|移除現有的連線。|
-|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|設定現有連接的特定欄位的值。|
+|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection)|擷取連線的相關資訊。|
+|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection)|建立新連接。|
+|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection)|移除現有的連線。|
+|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue)|設定現有連接的特定欄位的值。|
 
 ## <a name="internal-cmdlets-to-access-connections"></a>存取連線的內部 Cmdlet
 
@@ -59,9 +59,9 @@ Azure 自動化可提供下列內建連線類型：
 >[!NOTE]
 >您應該避免搭配 `Get-AutomationConnection` 的 `Name` 參數使用變數。 在此情況下使用變數，可能會在設計階段將 Runbook 或 DSC 組態與連線資產之間的相依性探索變得複雜。
 
-## <a name="python-2-functions-to-access-connections"></a>用來存取連線的 Python 2 函式
+## <a name="python-functions-to-access-connections"></a>用來存取連接的 Python 函數
 
-下表中的函式用於存取 Python 2 Runbook 中的連線。
+下表中的函式是用來存取 Python 2 和 3 runbook 中的連接。 Python 3 runbook 目前為預覽狀態。
 
 | 函式 | 描述 |
 |:---|:---|
@@ -124,9 +124,9 @@ New-AzAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountN
 
 ## <a name="get-a-connection-in-a-runbook-or-dsc-configuration"></a>在 Runbook 或 DSC 組態中取得連線
 
-使用 `Get-AutomationConnection` Cmdlet 擷取 Runbook 或 DSC 組態中的連線。 此 Cmdlet 優先於 `Get-AzAutomationConnection` Cmdlet，因為其會擷取連線值，而不是連線的相關資訊。 
+使用 `Get-AutomationConnection` Cmdlet 擷取 Runbook 或 DSC 組態中的連線。 此 Cmdlet 優先於 `Get-AzAutomationConnection` Cmdlet，因為其會擷取連線值，而不是連線的相關資訊。
 
-### <a name="textual-runbook-example"></a>文字式 Runbook 範例
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 下列範例示範如何使用執行身分帳戶，搭配您 Runbook 中的 Azure Resource Manager 資源進行驗證。 其會使用代表執行身分帳戶的連接資產，亦即會參考憑證型服務主體。
 
@@ -135,19 +135,9 @@ $Conn = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 ```
 
-### <a name="graphical-runbook-examples"></a>圖形化 Runbook 範例
+# <a name="python"></a>[Python](#tab/python2)
 
-您可以將內部 Cmdlet `Get-AutomationConnection` 的活動新增至圖形化 Runbook。 在圖形化編輯器的 [程式庫] 窗格中，以滑鼠右鍵按一下連線，然後選取 [加入至畫布]。
-
-![加入至畫布](media/automation-connections/connection-add-canvas.png)
-
-下圖顯示在圖形化 Runbook 中使用連線物件的範例。 這個範例會對使用連接物件進行驗證的 `Get RunAs Connection` 活動使用 `Constant value` 資料集。 這裡會使用[管道連結](automation-graphical-authoring-intro.md#use-links-for-workflow)，因為 `ServicePrincipalCertificate` 參數集需要單一物件。
-
-![取得連線](media/automation-connections/automation-get-connection-object.png)
-
-### <a name="python-2-runbook-example"></a>Python 2 Runbook 範例
-
-下列範例會示範如何使用 Python 2 Runbook 中的執行身分連線進行驗證。
+下列範例示範如何使用 Python 2 和 3 runbook 中的「執行身分」連接來進行驗證。
 
 ```python
 """ Tutorial to show how to authenticate against Azure resource manager resources """
@@ -155,7 +145,7 @@ import azure.mgmt.resource
 import automationassets
 
 def get_automation_runas_credential(runas_connection):
-    """ Returns credentials to authenticate against Azure resoruce manager """
+    """ Returns credentials to authenticate against Azure resource manager """
     from OpenSSL import crypto
     from msrestazure import azure_active_directory
     import adal
@@ -189,6 +179,18 @@ runas_connection = automationassets.get_automation_connection(
     "AzureRunAsConnection")
 azure_credential = get_automation_runas_credential(runas_connection)
 ```
+
+---
+
+### <a name="graphical-runbook-examples"></a>圖形化 Runbook 範例
+
+您可以將內部 Cmdlet `Get-AutomationConnection` 的活動新增至圖形化 Runbook。 在圖形化編輯器的 [程式庫] 窗格中，以滑鼠右鍵按一下連線，然後選取 [加入至畫布]。
+
+![加入至畫布](media/automation-connections/connection-add-canvas.png)
+
+下圖顯示在圖形化 Runbook 中使用連線物件的範例。 這個範例會對使用連接物件進行驗證的 `Get RunAs Connection` 活動使用 `Constant value` 資料集。 這裡會使用[管道連結](automation-graphical-authoring-intro.md#use-links-for-workflow)，因為 `ServicePrincipalCertificate` 參數集需要單一物件。
+
+![取得連線](media/automation-connections/automation-get-connection-object.png)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461448"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734771"
 ---
 # <a name="manage-variables-in-azure-automation"></a>管理 Azure 自動化中的變數
 
@@ -26,7 +26,7 @@ ms.locfileid: "96461448"
 
 Azure 自動化會保存變數，並使其可供使用，即使 Runbook 或 DSC 組態失敗也一樣。 此行為可讓一個 Runbook 或 DSC 組態設定另一個 Runbook 所使用的值，或下一次其執行時的相同 Runbook 或 DSC 組態。
 
-Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，您可以 Azure 自動化為安全資產來指定其加密和儲存。 建立變數之後，您就無法變更其加密狀態，而不需要重新建立變數。 如果您的自動化帳戶變數儲存了尚未加密的機密資料，您必須將其刪除，並將其重新建立為加密變數。 Azure 資訊安全中心建議將所有 Azure 自動化變數加密，如 [自動化帳戶變數](../../security-center/recommendations-reference.md#recs-computeapp)中所述。 如果您有想要從此安全性建議排除的未加密變數，請參閱 [豁免資源的建議和安全分數](../../security-center/exempt-resource.md) 以建立豁免規則。
+Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，您可以 Azure 自動化為安全資產來指定其加密和儲存。 建立變數之後，您就無法在未重新建立變數的情況下變更其加密狀態。 如果您有自動化帳戶變數儲存了尚未加密的敏感資料，您必須加以刪除，並將其重新建立為加密變數。 Azure 資訊安全中心的建議是將所有 Azure 自動化變數加密，如[應加密自動化帳戶變數](../../security-center/recommendations-reference.md#recs-computeapp)所說明。 如果您有要從此安全性建議中排除的未加密變數，請參閱[從建議與安全分數中豁免資源](../../security-center/exempt-resource.md)，以建立豁免規則。
 
 >[!NOTE]
 >Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會經過加密，並使用為每個自動化帳戶產生的唯一金鑰，儲存在 Azure 自動化中。 Azure 自動化會將金鑰儲存在系統管理的 Key Vault 中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。
@@ -80,11 +80,11 @@ $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
 ```
 
-## <a name="python-2-functions-to-access-variables"></a>用來存取變數的 Python 2 函式
+## <a name="python-functions-to-access-variables"></a>用來存取變數的 Python 函式
 
-下表中的函式可用來存取 Python 2 Runbook 中的變數。
+下表中的函式可用來存取 Python 2 和 3 runbook 中的變數。 Python 3 runbook 目前為預覽狀態。
 
-|Python 2 函式|描述|
+|Python 函式|描述|
 |:---|:---|
 |`automationassets.get_automation_variable`|擷取現有變數的值。 |
 |`automationassets.set_automation_variable`|設定現有的變數的值。 |
@@ -135,9 +135,10 @@ $vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 $vmName = $vmValue.Name
 $vmExtensions = $vmValue.Extensions
 ```
+
 ## <a name="textual-runbook-examples"></a>文字式 Runbook 範例
 
-### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>從變數擷取及設定簡單值
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 下列範例說明示範設定及擷取文字式 Runbook 中的變數。 這個範例假設建立名為 `NumberOfIterations` 和 `NumberOfRunnings` 的整數變數，以及名為 `SampleMessage` 的字串變數。
 
@@ -154,7 +155,7 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
 Set-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 ```
 
-### <a name="retrieve-and-set-a-variable-in-a-python-2-runbook"></a>在 Python 2 Runbook 中擷取並設定變數
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 以下範例示範如何在 Python 2 Runbook 中取得變數、設定變數，以及處理不存在變數的例外狀況。
 
@@ -177,6 +178,32 @@ try:
 except AutomationAssetNotFound:
     print "variable not found"
 ```
+
+# <a name="python-3"></a>[Python 3](#tab/python3) \(英文\)
+
+下列範例示範如何取得變數、設定變數，以及處理 Python 3 runbook (preview) 中不存在之變數的例外狀況。
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a variable
+value = automationassets.get_automation_variable("test-variable")
+print value
+
+# set a variable (value can be int/bool/string)
+automationassets.set_automation_variable("test-variable", True)
+automationassets.set_automation_variable("test-variable", 4)
+automationassets.set_automation_variable("test-variable", "test-string")
+
+# handle a non-existent variable exception
+try:
+    value = automationassets.get_automation_variable("nonexisting variable")
+except AutomationAssetNotFound:
+    print ("variable not found")
+```
+
+---
 
 ## <a name="graphical-runbook-examples"></a>圖形化 Runbook 範例
 

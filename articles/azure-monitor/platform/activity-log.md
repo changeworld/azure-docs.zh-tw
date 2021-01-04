@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 00e264cea34c7c3e7223b47217ecf5a59b76ba41
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6eae805b6edce4c414d26f1b79d52ac33f8f2d9d
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592461"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709107"
 ---
 # <a name="azure-activity-log"></a>Azure 活動記錄
 活動記錄是 Azure 中的[平台記錄](platform-logs-overview.md)，可提供訂用帳戶層級事件的深入解析。 這包括修改資源或啟動虛擬機器時的資訊。 您可以在 Azure 入口網站中檢視活動記錄，或使用 PowerShell 和 CLI 來取出項目。 如需其他功能，您應該建立診斷設定，以將活動記錄傳送至 [Azure 監視器記錄](data-platform-logs.md)檔、Azure 事件中樞轉送至 Azure 外部，或用於封存的 Azure 儲存體。 本文提供有關查看活動記錄，並將其傳送至不同目的地的詳細資料。
@@ -67,14 +67,14 @@ Log Analytics 工作區中的活動記錄資料會儲存在名為 *AzureActivity
 
 ```kusto
 AzureActivity
-| summarize count() by Category
+| summarize count() by CategoryValue
 ```
 
 若要取出系統管理分類中的所有記錄，請使用下列查詢。
 
 ```kusto
 AzureActivity
-| where Category == "Administrative"
+| where CategoryValue == "Administrative"
 ```
 
 
@@ -278,6 +278,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 |:---|:---|
 | ActivityStatus    | ActivityStatusValue    |
 | ActivitySubstatus | ActivitySubstatusValue |
+| 類別          | CategoryValue          |
 | OperationName     | OperationNameValue     |
 | ResourceProvider  | ResourceProviderValue  |
 

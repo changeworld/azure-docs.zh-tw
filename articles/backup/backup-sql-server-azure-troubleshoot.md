@@ -3,12 +3,12 @@ title: 針對 SQL Server 資料庫備份進行疑難排解
 description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份之 SQL Server 資料庫的疑難排解資訊。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332775"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733910"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份針對 SQL Server 資料庫備份進行疑難排解
 
@@ -46,7 +46,7 @@ ms.locfileid: "91332775"
 
     `C:\Program Files\Azure Workload Backup` `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.WorkloadBackup.AzureBackupWindowsWorkload`
 
-    `C:\`以您*SystemDrive*的字母取代。
+    `C:\`以您 *SystemDrive* 的字母取代。
 
 1. 從防毒軟體掃描中排除下列三個在 VM 內執行的進程：
 
@@ -56,13 +56,47 @@ ms.locfileid: "91332775"
 
 1. SQL 也提供一些有關使用防毒程式的指導方針。 如需詳細資訊，請參閱 [這篇文章](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) 。
 
+## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>VM 中有多個 SQL Server 實例的錯誤實例
+
+只有在 VM 內執行的所有 SQL 實例都回報狀況良好時，您才能還原至 SQL VM。 如果有一或多個實例「故障」，VM 將不會顯示為還原目標。 這可能是因為在還原作業期間，多重實例 VM 可能不會出現在 [伺服器] 下拉式清單中的可能原因。
+
+您可以在 [ **設定備份**：] 下，驗證 VM 中所有 SQL 實例的「備份準備就緒」。
+
+![驗證備份準備就緒](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
+
+如果您想要在狀況良好的 SQL 實例上觸發還原，請執行下列步驟：
+
+1. 登入 SQL VM，然後移至 `C:\Program Files\Azure Workload Backup\bin` 。
+1. 建立名為 (的 JSON 檔案（ `ExtensionSettingsOverrides.json` 如果它還不存在) ）。 如果此檔案已存在於 VM 上，請繼續使用。
+1. 在 JSON 檔案中新增下列內容，並儲存檔案：
+
+    ```json
+    {
+                  "<ExistingKey1>":"<ExistingValue1>",
+                    …………………………………………………… ,
+              "whitelistedInstancesForInquiry": "FaultyInstance_1,FaultyInstance_2"
+            }
+            
+            Sample content:        
+            { 
+              "whitelistedInstancesForInquiry": "CRPPA,CRPPB "
+            }
+
+    ```
+
+1. 從 Azure 入口網站在受影響的伺服器上觸發重新探索資料庫 **作業， (** 可在) 查看備份準備就緒的相同位置。 VM 將會開始顯示為還原作業的目標。
+
+    ![重新探索 Db](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
+
+1. 當還原作業完成時，請從檔案 ExtensionSettingsOverrides.js移除 *whitelistedInstancesForInquiry* 專案。
+
 ## <a name="error-messages"></a>錯誤訊息
 
 ### <a name="backup-type-unsupported"></a>不支援的備份類型
 
 | 嚴重性 | 描述 | 可能的原因 | 建議的動作 |
 |---|---|---|---|
-| 警告 | 此資料庫目前的設定不支援在相關聯的原則中存在特定的備份類型。 | <li>只有完整的資料庫備份作業可以在 master 資料庫上執行。 無法進行差異備份和交易記錄備份。 </li> <li>簡單復原模式中的任何資料庫都不允許備份交易記錄。</li> | 修改資料庫設定 sp 支援原則中的所有備份類型。 或變更目前的原則，以僅包含支援的備份類型。 否則，在排定備份期間將略過不支援的備份類型，否則備份工作將會失敗以進行隨選備份。
+| 警告 | 此資料庫目前的設定不支援在相關聯的原則中存在特定的備份類型。 | <li>只有完整的資料庫備份作業可以在 master 資料庫上執行。 無法進行差異備份和交易記錄備份。 </li> <li>簡單復原模式中的任何資料庫都不允許備份交易記錄。</li> | 修改資料庫設定，以支援原則中的所有備份類型。 或變更目前的原則，以僅包含支援的備份類型。 否則，在排定備份期間將略過不支援的備份類型，否則備份工作將會失敗以進行隨選備份。
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -154,7 +188,7 @@ ms.locfileid: "91332775"
 
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
-| 自動保護用途可能已移除或不再有效。 | 當您在 SQL Server 實例上啟用自動保護時，請設定該實例中所有資料庫的 **備份** 作業執行。 如果您停用自動保護，而工作正在執行，則**進行中**工作會取消，並出現此錯誤碼。 | 再次啟用自動保護，以協助保護所有剩餘的資料庫。 |
+| 自動保護用途可能已移除或不再有效。 | 當您在 SQL Server 實例上啟用自動保護時，請設定該實例中所有資料庫的 **備份** 作業執行。 如果您停用自動保護，而工作正在執行，則 **進行中** 工作會取消，並出現此錯誤碼。 | 再次啟用自動保護，以協助保護所有剩餘的資料庫。 |
 
 ### <a name="clouddosabsolutelimitreached"></a>CloudDosAbsoluteLimitReached
 
@@ -192,7 +226,7 @@ ms.locfileid: "91332775"
 這些徵兆可能是因下列一個或多個原因而發生：
 
 - 已從入口網站刪除或卸載擴充。
-- 在 [**卸載或變更程式**] 下，從 VM 上的**主控台**卸載擴充功能。
+- 在 [**卸載或變更程式**] 下，從 VM 上的 **主控台** 卸載擴充功能。
 - VM 已透過就地磁碟還原來還原到原本狀態。
 - VM 已關閉一段較長的時間，因此其中的擴充設定已過期。
 - VM 已刪除，已建立另一個相同名稱的 VM，並且與已刪除的 VM 位於相同資源群組中。

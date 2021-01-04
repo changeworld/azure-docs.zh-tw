@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 3eaabc6c1e7d34bb5d9433d742581f39bdfbf98e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 315de18539bf083515658b40fa70f3c214d7c909
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669528"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739734"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>透過使用整合服務環境 (ISE) 從 Azure Logic Apps 連線至 Azure 虛擬網路
 
@@ -44,24 +44,14 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
   > [!IMPORTANT]
   > Logic Apps、內建動作，以及在您 ISE 中執行的連接器，其使用的定價方案不同於耗用量式定價方案。 若要了解適用於 ISE 的定價和計費方式，請參閱 [Logic Apps 定價模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱 [Logic Apps 定價](../logic-apps/logic-apps-pricing.md)。
 
-* [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)。 您的虛擬網路必須有四個 *空* 的子網，這是在 ISE 中建立和部署資源所需的子網，並且由這些內部和隱藏元件使用：
+* 具有四個 *空白* 子網的 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)，在 ISE 中建立和部署資源時需要這些子網，並且由這些內部和隱藏元件使用：
 
   * Logic Apps 計算
   * 內部 App Service 環境 (連接器) 
   * 內部 API 管理 (連接器) 
   * 快取和效能的內部 Redis
   
-  您可以事先建立子網，也可以等到您建立 ISE 之後，才能同時建立子網。 不過，在您建立子網之前，請先檢查 [子網需求](#create-subnet)。
-
-  > [!IMPORTANT]
-  >
-  > 請勿將下列 IP 位址空間用於您的虛擬網路或子網，因為 Azure Logic Apps 無法解析這些 IP 位址空間：<p>
-  > 
-  > * 0.0.0.0/8
-  > * 100.64.0.0/10
-  > * 127.0.0.0/8
-  > * 168.63.129.16/32
-  > * 169.254.169.254/32
+  您可以事先建立子網，或在您建立 ISE 時，讓您可以同時建立子網。 不過，在您建立子網之前，請確定您已檢查 [子網需求](#create-subnet)。
 
   * 確定您的虛擬網路[啟用 ISE 的存取](#enable-access)，讓您的 ISE 能夠正常運作並保持可存取狀態。
 
@@ -170,14 +160,14 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
 * 服務端點
 
-  您必須啟用 Azure SQL、儲存體、服務匯流排和事件中樞的服務端點，因為您無法透過防火牆將流量傳送至這些服務。
+  您必須啟用 Azure SQL、儲存體、服務匯流排、KeyVault 和事件中樞的服務端點，因為您無法透過防火牆將流量傳送至這些服務。
 
 *  其他輸入和輸出相依性
 
    您的防火牆 *必須* 允許下列輸入和輸出相依性：
    
    * [Azure App Service 相依性](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
-   * [Azure 快取服務相依性](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-vnets)
+   * [Azure 快取服務相依性](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
    * [Azure API 管理相依性](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 <a name="create-environment"></a>
@@ -219,7 +209,7 @@ ISE 已增加執行期間、儲存體保留期、輸送量、HTTP 要求和回�
 
    * 使用以字母字元或底線 (開頭的名稱，不) 數位，且不會使用這些字元： `<` 、 `>` 、 `%` 、 `&` 、 `\\` 、 `?` 、 `/` 。
 
-   * 使用[無類別網域間路由選擇 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)及類別 B 位址空間。
+   * 使用無 [類別 Inter-Domain 路由 (CIDR) 格式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)。
    
      > [!IMPORTANT]
      >
