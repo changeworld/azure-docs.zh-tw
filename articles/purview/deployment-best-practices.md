@@ -1,18 +1,18 @@
 ---
 title: 部署最佳做法
-description: 本文提供部署 Azure 範疇的最佳做法。 Azure 範疇可讓任何使用者註冊、探索、瞭解及取用資料來源。
-author: hophanms
-ms.author: hophan
+description: 本文提供部署 Azure 範疇的最佳做法。 Azure Purview 可讓任何使用者註冊、探索、了解及取用資料來源。
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 48966e481f9cf8796c866b5c15a4e2a8616eade7
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400687"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695864"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure 範疇部署最佳做法
 
@@ -24,7 +24,7 @@ ms.locfileid: "97400687"
 - 改進分析協同作業
 - 投資報酬率最大化。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 使用開發或生產訂用帳戶存取 Microsoft Azure
 * 能夠建立 Azure 資源，包括範疇
@@ -110,7 +110,7 @@ ms.locfileid: "97400687"
 
 這些案例必須是特定、可採取動作的，且可執行檔具有可測量的結果。 您可以使用的一些範例案例：
 
-|案例|詳細資料|角色|
+|狀況|詳細資料|角色|
 |---------|---------|---------|
 |目錄商務關鍵資產|我需要取得每個資料集的相關資訊，以充分瞭解其功能。 此案例包含有關目錄中資料集的商務和技術中繼資料資料。 資料來源包含 Azure Data Lake Storage Gen2、Azure Synapse DW 和/或 Power BI。 此案例也包含內部部署資源（例如 SQL Server）。|商務分析師、資料科學家、資料工程師|
 |探索商務關鍵資產|我需要有搜尋引擎，才能搜尋目錄中的所有中繼資料。 我應該可以使用萬用字元，以簡單或複雜的搜尋來搜尋技術詞彙與商務詞彙。|商務分析師、資料科學家、資料工程師、資料管理員|
@@ -165,7 +165,7 @@ ms.locfileid: "97400687"
 
 ### <a name="tasks-to-complete"></a>要完成的工作
 
-|Task|詳細資料|持續時間|
+|工作|詳細資料|持續時間|
 |---------|---------|---------|
 |收集 & 同意需求|討論所有專案關係人，以收集一組完整的需求。 不同的角色必須參與專案的每個階段，才能達成需求的子集。|1周|
 |設定入門套件|前往 [範疇快速入門](create-catalog-portal.md) ，並設定 [範疇入門套件](tutorial-scan-data.md) 以示範範疇給所有專案關係人。|1 天|
@@ -192,7 +192,7 @@ ms.locfileid: "97400687"
 
 ### <a name="tasks-to-complete"></a>要完成的工作
 
-|Task|詳細資料|持續時間|
+|工作|詳細資料|持續時間|
 |---------|---------|---------|
 |[掃描 Azure Synapse Analytics](register-scan-azure-synapse-analytics.md)|開始將您的資料庫來源上線，並加以掃描以填入重要資產|2天|
 |[建立自訂分類和規則](create-a-custom-classification-and-classification-rule.md)|掃描資產之後，您的使用者可能會發現在範疇的預設分類旁邊有更多分類的使用案例。|2-4 周|
@@ -217,7 +217,7 @@ ms.locfileid: "97400687"
 
 ### <a name="tasks-to-complete"></a>要完成的工作
 
-|Task|詳細資料|持續時間|
+|工作|詳細資料|持續時間|
 |---------|---------|---------|
 |使用掃描規則集來精簡掃描|您的組織將會有許多資料來源可用於生產階段前。 請務必預先定義掃描的按鍵準則，如此一來，就可以一致地在面板上套用分類和副檔名。|1-2 天|
 |評估區域可用性以進行掃描|視資料來源的區域和合規性和安全性的組織需求而定，您可能會想要考慮哪些區域必須可用於掃描。|1 天|
@@ -243,7 +243,7 @@ ms.locfileid: "97400687"
 
 ### <a name="tasks-to-complete"></a>要完成的工作
 
-|Task|詳細資料|持續時間|
+|工作|詳細資料|持續時間|
 |---------|---------|---------|
 |在啟用防火牆的情況下掃描生產資料來源|如果在有防火牆時，這是選擇性的，但請務必探索強化基礎結構的選項。|1-5 天|
 |啟用 Private Link|如果使用 Private Link 時，則為選擇性。 否則，您可以略過這一點，因為啟用私用時，它是必須有的條件。|1-5 天|

@@ -1,18 +1,18 @@
 ---
 title: 註冊並掃描 Azure Data Lake Storage (ADLS) Gen2
 description: 本教學課程說明如何掃描 Azure Data Lake Storage Gen2。
-author: prmujumd
-ms.author: prmujumd
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: ec708009e3f3f258c1c40aa6a06a35452d5988f4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552241"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694803"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>註冊並掃描 Azure Data Lake Storage Gen2
 
@@ -26,11 +26,11 @@ Azure Data Lake Storage Gen2 的資料來源支援下列功能：
 
 - ADF 複製/資料流程活動的資料 **資產之間的** 歷程
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 註冊資料來源之前，請先建立 Azure 範疇帳戶。 如需有關建立範疇帳戶的詳細資訊，請參閱 [快速入門：建立 Azure 範疇帳戶](create-catalog-portal.md)。
 
-### <a name="setting-up-authentication-for-a-scan"></a>設定掃描的驗證
+### <a name="setting-up-authentication-for-a-scan"></a>設定掃描驗證
 
 以下是支援 Azure Data Lake Storage Gen2 的驗證方法：
 
@@ -43,9 +43,9 @@ Azure Data Lake Storage Gen2 的資料來源支援下列功能：
 當您選擇 [ **受控識別**] 時，若要設定連線，您必須先授與範疇帳戶掃描資料來源的許可權：
 
 1. 流覽至您的 ADLS Gen2 儲存體帳戶。
-1. 從左側導覽功能表中選取 [ **存取控制] (IAM)** 。 
+1. 從左側導覽功能表中選取 [存取控制 (IAM)]。 
 1. 選取 [+ 新增]。
-1. 將 **角色** 設定為 **儲存體 Blob 資料讀取器** ，並在 [ **選取** 輸入] 方塊底下輸入您的 Azure 範疇帳戶名稱。 然後選取 [ **儲存** ]，將此角色指派給您的範疇帳戶。
+1. 將 **角色** 設定為 **儲存體 Blob 資料讀取器** ，並在 [ **選取** 輸入] 方塊底下輸入您的 Azure 範疇帳戶名稱。 然後，選取 [儲存]，將此角色指派提供給您的 Purview 帳戶。
 
 > [!Note]
 > 如需詳細資訊，請參閱[使用 Azure Active Directory 授權存取 blob 和佇列](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)的步驟
@@ -58,42 +58,42 @@ Azure Data Lake Storage Gen2 的資料來源支援下列功能：
 1. 選取 **> 存取金鑰的設定**
 1. 複製您的 *金鑰* ，並將其儲存在某處以進行後續步驟
 1. 瀏覽至您的金鑰保存庫
-1. 選取 **設定 > 秘密**
+1. 選取 [設定] > [秘密]
 1. 選取 [ **+ 產生/匯入**]，並輸入 **名稱** 和 **值** 作為儲存體帳戶的 *金鑰*
-1. 選取 [ **建立** ] 以完成
-1. 如果您的金鑰保存庫尚未連線到範疇，您將需要 [建立新的金鑰保存庫連接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
+1. 選取 [建立] 以完成作業
+1. 如果您的金鑰保存庫尚未連線至 Purview，您將需要[建立新的金鑰保存庫連線](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
 1. 最後，使用金鑰 [建立新的認證](manage-credentials.md#create-a-new-credential) 來設定您的掃描
 
 #### <a name="service-principal"></a>服務主體
 
-若要使用服務主體，您可以使用現有的服務主體，或建立一個新的主體。 
+若要使用服務主體，您可以使用現有的主題或建立新的。 
 
 > [!Note]
-> 如果您必須建立新的服務主體，請遵循下列步驟：
+> 如果需要建立新的服務主體，請依照下列步驟操作：
 > 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。
-> 1. 從左側功能表中選取 [ **Azure Active Directory** ]。
+> 1. 從左側功能表中，選取 [Azure Active Directory]。
 > 1. 選取 **應用程式註冊**。
 > 1. 選取 [+新增應用程式註冊]。
-> 1. 輸入 **應用程式** 的名稱， (服務主體名稱) 。
-> 1. **只選取此組織目錄中的帳戶**。
-> 1. 針對 [重新導向 URI] 選取 [ **Web** ]，然後輸入您想要的任何 URL;它不一定是真正的或工作。
+> 1. 輸入 **應用程式** 的名稱 (服務主體名稱)。
+> 1. 選取 [僅此組織目錄中的帳戶]。
+> 1. 在 [重新導向 URI] 中選取 [Web]，並輸入您想要的任何 URL；不一定要實際或工作。
 > 1. 然後，選取 [註冊]。
 
 需要取得服務主體的應用程式識別碼和密碼：
 
-1. 在[Azure 入口網站](https://portal.azure.com)中流覽至您的服務主體
-1. 將 **應用程式 (用戶端) 識別碼** 的值複製到 **憑證 & 密碼** 的 **總覽** 和 **用戶端密碼**。
+1. 在 [Azure 入口網站](https://portal.azure.com)中瀏覽至您的服務主體
+1. 從 [概觀] 複製 [應用程式 (用戶端) 識別碼] 的值，並從 [憑證和秘密] 複製 [用戶端密碼]。
 1. 瀏覽至您的金鑰保存庫
-1. 選取 **設定 > 秘密**
-1. 選取 [ **+ 產生/匯入**]，並輸入您選擇的 **名稱**，並輸入您的服務主體的 **用戶端密碼** 作為 **值**
-1. 選取 [ **建立** ] 以完成
-1. 如果您的金鑰保存庫尚未連線到範疇，您將需要 [建立新的金鑰保存庫連接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
-1. 最後，使用服務主體 [建立新的認證](manage-credentials.md#create-a-new-credential) ，以設定您的掃描
+1. 選取 [設定] > [秘密]
+1. 選取 [+ 產生/匯入]，然後輸入您選擇的 [名稱]，以及與服務主體的 [用戶端密碼] 相同的 [值]
+1. 選取 [建立] 以完成作業
+1. 如果您的金鑰保存庫尚未連線至 Purview，您將需要[建立新的金鑰保存庫連線](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
+1. 最後，使用服務主體[建立新的認證](manage-credentials.md#create-a-new-credential)，以設定您的掃描
 
 ##### <a name="granting-the-service-principal-access-to-your-adls-gen2-account"></a>將 ADLS gen2 帳戶的存取權授與服務主體
 
 1. 瀏覽至儲存體帳戶。
-1. 從左側導覽功能表中選取 [ **存取控制] (IAM)** 。 
+1. 從左側導覽功能表中選取 [存取控制 (IAM)]。 
 1. 選取 [+ 新增]。
 1. 將 **角色** 設定為 **儲存體 Blob 資料讀取器** ，並在 [ **選取** 輸入] 方塊下輸入您的服務主體名稱或物件識別碼。 然後選取 [ **儲存** ]，將此角色指派給您的服務主體。
 ### <a name="firewall-settings"></a>防火牆設定
@@ -112,18 +112,18 @@ Azure Data Lake Storage Gen2 的資料來源支援下列功能：
 
 若要在您的資料目錄中註冊新的 ADLS Gen2 帳戶，請執行下列動作：
 
-1. 流覽至您的範疇帳戶
-2. 選取左側導覽列上的 **來源**
+1. 瀏覽至您的 Purview 帳戶
+2. 在左側導覽列中選取 [來源]
 3. 選取 [註冊]
 4. 在 [ **註冊來源**] 上，選取 **Azure Data Lake Storage Gen2**
 5. 選取 [繼續]
 
 在 [ **註冊來源 (] Azure Data Lake Storage Gen2)** 畫面上，執行下列動作：
 
-1. 輸入將在目錄中列出資料來源的 **名稱** 。
+1. 輸入會在目錄中列出的資料來源 **名稱**。
 2. 選擇您的訂用帳戶以篩選出儲存體帳戶
 3. 選取儲存體帳戶
-4. 選取集合，或建立一個新的集合 (選用) 
+4. 選取集合或建立新的集合 (選擇性)
 5. **完成** 以註冊資料來源。
 
 :::image type="content" source="media/register-scan-adls-gen2/register-sources.png" alt-text="註冊來源選項" border="true":::
@@ -132,5 +132,5 @@ Azure Data Lake Storage Gen2 的資料來源支援下列功能：
 
 ## <a name="next-steps"></a>後續步驟
 
-- [流覽 Azure 範疇資料目錄](how-to-browse-catalog.md)
-- [搜尋 Azure 範疇資料目錄](how-to-search-catalog.md)
+- [瀏覽 Azure Purview 資料目錄](how-to-browse-catalog.md)
+- [搜尋 Azure Purview 資料目錄](how-to-search-catalog.md)

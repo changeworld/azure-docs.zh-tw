@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: a5457dc94082f089d3adf02c9614d05d2c5db244
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: af5ed0296ce99a4450fffec6b047285307ed0ff2
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484000"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709294"
 ---
 # <a name="prepare-data-for-custom-speech"></a>準備自訂語音的資料
 
@@ -47,8 +47,10 @@ ms.locfileid: "96484000"
 | 資料類型 | 用於測試 | 建議數量 | 用於定型 | 建議數量 |
 |-----------|-----------------|----------|-------------------|----------|
 | [音訊](#audio-data-for-testing) | 是<br>用於視覺化檢查 | 5 + 音訊檔案 | 否 | N/A |
-| [音訊 + 人類標記的文字記錄](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用來評估精確度 | 0.5-5 小時的音訊 | 是 | 1-1000 小時的音訊 |
+| [音訊 + 人類標記的文字記錄](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用來評估精確度 | 0.5-5 小時的音訊 | 是 | 1-20 小時的音訊 |
 | [相關文字](#related-text-data-for-training) | 否 | N/a | 是 | 1-200 MB 的相關文字 |
+
+當您將新模型定型時，請從 [相關文字](#related-text-data-for-training)開始。 這項資料將已改善特殊條款和片語的辨識。
 
 檔案應該依類型分組至資料集，並以 .zip 檔案的形式上傳。 每一個資料集只能包含單一資料類型。
 
@@ -117,7 +119,7 @@ ms.locfileid: "96484000"
 > [!NOTE]
 > 上傳定型和測試資料時，.zip 檔案的大小不能超過 2 GB。 您只能從 *單一* 資料集進行測試，請務必將其保留在適當的檔案大小內。 此外，每個定型檔案都不能超過60秒，否則會發生錯誤。
 
-若要解決文字刪除或替代等問題，需要大量的資料以改善辨識。 一般來說，建議您針對大約10到1000小時的音訊提供單字轉譯。 所有 WAV 檔案的文字記錄應包含在單一純文字檔案中。 文字記錄檔案的每一行都應包含其中一個音訊檔案的名稱，然後後面接著相對應的文字記錄。 檔案名稱和文字記錄應該以定位字元 (\t) 分隔。
+若要解決文字刪除或替代等問題，需要大量的資料以改善辨識。 一般來說，建議您針對大約10到20小時的音訊提供單字轉譯。 所有 WAV 檔案的文字記錄應包含在單一純文字檔案中。 文字記錄檔案的每一行都應包含其中一個音訊檔案的名稱，然後後面接著相對應的文字記錄。 檔案名稱和文字記錄應該以定位字元 (\t) 分隔。
 
   例如：
 ```
@@ -135,6 +137,8 @@ ms.locfileid: "96484000"
 
 > [!div class="mx-imgBorder"]
 > ![從語音入口網站選取音訊](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+
+請參閱 [設定您的 Azure 帳戶](custom-speech-overview.md#set-up-your-azure-account) ，以取得語音服務訂用帳戶的建議區域清單。 在其中一個區域中設定語音訂用帳戶，將可縮短定型模型所花費的時間。
 
 ## <a name="related-text-data-for-training"></a>定型的相關文字資料
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347790"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724301"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>平行文件中的句子配對與對齊
 
@@ -22,7 +22,7 @@ ms.locfileid: "97347790"
 
 ## <a name="pairing-and-alignment-process"></a>配對和對齊程序
 
-自訂翻譯工具會一次一個句子地學習句子翻譯。 它會從來源中讀取句子，然後從目標中讀取這個句子的翻譯。 接著將這兩個句子中的字組和片語彼此對齊。 此程序可讓自訂翻譯工具為一個句子中的字組和片語，以及此句子翻譯中的同等字組和片語建立對應。 對齊功能會嘗試確保系統是在彼此的翻譯句子上進行訓練。
+自訂翻譯工具會一次一個句子地學習句子翻譯。 它會讀取來源文字中的句子，然後從目標文字轉譯這個句子。 接著將這兩個句子中的字組和片語彼此對齊。 此程式可讓它在一個句子中建立單字和片語的對應，以轉譯句子中的對等單字和片語。 對齊功能會嘗試確保系統是在彼此的翻譯句子上進行訓練。
 
 ## <a name="pre-aligned-documents"></a>預先對齊的文件
 
@@ -39,7 +39,7 @@ ms.locfileid: "97347790"
 | 訓練   | 10,000                                     | 沒有上限                 |
 | 調整     | 500                                      | 2,500       |
 | 測試    | 500                                      | 2,500  |
-| 字典 | 0                                          | 沒有上限                 |
+| Dictionary | 0                                          | 沒有上限                 |
 
 > [!NOTE]
 > - 如果未符合定型的10000最小句子計數，定型將不會啟動，而且將會失敗。 

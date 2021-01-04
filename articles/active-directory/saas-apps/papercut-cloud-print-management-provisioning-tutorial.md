@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 860b880faae9c5fe37a2c7eab2ef3a068ed4da3e
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.openlocfilehash: 127a9568d4f129763bee26210efedeaee8fe4aa1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299085"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709364"
 ---
 # <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 PaperCut 雲端列印管理
 
@@ -33,13 +33,13 @@ ms.locfileid: "96299085"
 > * 當使用者不再需要存取權時，請移除 PaperCut 雲端列印管理中的使用者
 > * 在 Azure AD 與 PaperCut 雲端列印管理之間保持使用者屬性同步
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)。 
 * Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
-* PaperCut 雲端列印管理中具有系統管理員許可權的使用者帳戶
+* PaperCut 雲端列印管理系統管理員帳戶。
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
@@ -76,7 +76,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management"></a>步驟 5。 設定自動使用者布建以 PaperCut 雲端列印管理
 
-此節將引導您逐步設定 Azure AD 佈建服務，以根據 Azure AD 中的使用者和/或群組指派，在 TestApp 中建立、更新和停用使用者和/或群組。
+本節將引導您完成設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在 PaperCut 雲端列印管理中建立、更新及停用使用者和/或群組的步驟。
 
 ### <a name="to-configure-automatic-user-provisioning-for-papercut-cloud-print-management-in-azure-ad"></a>若要在 Azure AD 中設定 PaperCut 雲端列印管理的自動使用者布建：
 
@@ -106,7 +106,8 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 7. 選取 [儲存]。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者 PaperCut 雲端列印管理**]。
+8. 在 [對應] 區段底下，選取 [佈建 Azure Active Directory 使用者]。
+   ![AAD 對應](media/papercut-cloud-print-management-provisioning-tutorial/mapping.png)
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理至 PaperCut 雲端列印管理的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對 PaperCut 雲端列印管理中的使用者帳戶，以進行更新作業。 如果您選擇變更相符的 [目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，您將必須確定 PaperCut Cloud Print 管理 API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
@@ -126,7 +127,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-13. 當您準備好要佈建時，按一下 [儲存]  。
+13. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 

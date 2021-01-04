@@ -5,21 +5,21 @@ description: 對 Azure Blob 儲存體提出要求的用戶端，可以選擇以�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: abdc83019205fc39e1e85a53da7e49f8a7d4f11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcc5c02c4a37e205622470260d3c620ad76d07d8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618721"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694701"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>針對 Blob 儲存體的要求提供加密金鑰
 
-對 Azure Blob 儲存體提出要求的用戶端，可以選擇以每個要求為基礎提供加密金鑰。 在要求中包含加密金鑰可讓您更精確地控制 Blob 儲存體作業的加密設定。 客戶提供的金鑰可以儲存在 Azure Key Vault 或另一個金鑰存放區中。
+對 Azure Blob 儲存體提出要求的用戶端，可以選擇以每個要求為基礎提供 AES-256 的加密金鑰。 在要求中包含加密金鑰可讓您更精確地控制 Blob 儲存體作業的加密設定。 客戶提供的金鑰可以儲存在 Azure Key Vault 或另一個金鑰存放區中。
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -45,7 +45,7 @@ Azure 儲存體不會儲存或管理用戶端隨要求傳送的加密金鑰。 �
 |---------------|-------------|
 |`x-ms-encryption-key` |寫入和讀取要求都需要。 Base64 編碼的 AES-256 加密金鑰值。 |
 |`x-ms-encryption-key-sha256`| 寫入和讀取要求都需要。 加密金鑰的 Base64 編碼 SHA256。 |
-|`x-ms-encryption-algorithm` | 寫入要求的必要參數，對讀取要求而言為選擇性。 指定使用指定的索引鍵加密資料時所要使用的演算法。 必須是 AES256。 |
+|`x-ms-encryption-algorithm` | 寫入要求的必要參數，對讀取要求而言為選擇性。 指定使用指定的索引鍵加密資料時所要使用的演算法。  此標頭的值必須是 `AES256` 。 |
 
 在要求上指定加密金鑰是選擇性的。 但是，如果您指定以上列出的其中一個標頭來進行寫入作業，則必須指定所有的標頭。
 

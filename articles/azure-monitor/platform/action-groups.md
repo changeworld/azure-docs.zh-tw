@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: b5b6a697e6a5cae064a6a48419246dc12e8d048c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095163"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695805"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 
@@ -132,6 +132,18 @@ ms.locfileid: "97095163"
 傳送電子郵件給訂用帳戶角色的成員。 只會將電子郵件傳送給 **Azure AD 使用者** 角色成員。 不會將電子郵件傳送給 Azure AD 群組或服務主體。
 
 通知電子郵件只會傳送到 *主要電子郵件* 位址。
+
+如果您未在 *主要電子郵件* 上收到通知，您可以嘗試下列步驟：
+
+1. 在 Azure 入口網站移至 *Active Directory*。
+2. 按一下左窗格中的 [所有使用者] () ，您將會在右窗格中看到使用者清單 () 。
+3. 選取您要檢查其 *主要電子郵件* 資訊的使用者。
+
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="如何檢查使用者設定檔的範例。"border="true":::
+
+4. 在 [連絡人資訊] 下的 [使用者設定檔] 中，如果 [電子郵件] 索引標籤是空白的，請按一下頂端的 [*編輯* *] 按鈕，* 然後新增您的 *主要電子郵件*，然後按頂端
+
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="如何新增主要電子郵件的範例。"border="true":::
 
 您在動作群組中可以有有限數量的電子郵件動作。 請參閱[速率限制資訊](./alerts-rate-limiting.md)一文。
 

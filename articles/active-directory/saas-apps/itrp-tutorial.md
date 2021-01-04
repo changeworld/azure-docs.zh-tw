@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 12/18/2020
 ms.locfileid: "92459674"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>教學課程：Azure Active Directory 與 ITRP 整合
@@ -60,7 +60,7 @@ ms.locfileid: "92459674"
 
     ![選取 [新增應用程式]](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ITRP** 。 在搜尋結果中，選取 [ITRP]  ，然後選取 [新增]  。
+4. 在搜尋方塊中，輸入 **ITRP**。 在搜尋結果中，選取 [ITRP]  ，然後選取 [新增]  。
 
      ![搜尋結果](common/search-new-app.png)
 
@@ -123,11 +123,11 @@ ms.locfileid: "92459674"
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
-    1. **登入 URL** 。
+    1. **登入 URL**。
 
-    1. **Azure AD 識別碼** 。
+    1. **Azure AD 識別碼**。
 
-    1. **登出 URL** 。
+    1. **登出 URL**。
 
 ### <a name="configure-itrp-single-sign-on"></a>設定 ITRP 單一登入
 
@@ -173,7 +173,7 @@ ms.locfileid: "92459674"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
+    1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
   
     1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
 

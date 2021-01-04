@@ -3,12 +3,12 @@ title: Azure 服務匯流排中的 AMQP 1.0 總覽
 description: 瞭解 Azure 服務匯流排如何 (AMQP) （開放式標準通訊協定）支援先進訊息佇列通訊協定。
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: e585fcc905d1651d49008b623b01a6c2f8a04fcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 241a6b7fb9f9055ce610e44e5cd37dba87c77554
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498773"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709277"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服務匯流排中的 AMQP 1.0 支援
 Azure 服務匯流排的雲端服務會使用 [Advanced Message 佇列通訊協定 (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) 作為其主要的通訊方式。 Microsoft 已與產業、客戶和競爭訊息代理人的廠商合作，在過去十年來開發及發展 AMQP，並在 [OASIS AMQP 技術委員會](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)中開發新的延伸模組。 AMQP 1.0 是 ISO 和 IEC 標準 ([iso 19464:20149](https://www.iso.org/standard/64955.html)) 。 
@@ -42,7 +42,7 @@ AMQP 1.0 是由 ISO 與 IEC 核定為 ISO/IEC 19464:2014 的國際標準。
 * **技術廠商**：Axway Software、Huawei Technologies、IIT Software、INETCO Systems、Kaazing、Microsoft、Mitre Corporation、Primeton Technologies、Progress Software、Red Hat、SITA、Software AG、Solace Systems、VMware、WSO2、Zenika。
 * **使用者公司**：Bank of America、Credit Suisse、Deutsche Boerse、Goldman Sachs、JPMorgan Chase。
 
-[OASIS AMQP 技術委員會] ( # B1 的目前椅子 https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) 代表 Red Hat 和 Microsoft。
+[OASIS AMQP 技術委員會](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)目前的椅子代表 Red Hat 和 Microsoft。
 
 以下是一些關於開放標準之最常引用的優點：
 
@@ -64,11 +64,11 @@ Azure 服務匯流排中的 AMQP 1.0 支援表示您可以使用有效率的二�
 
 所有透過 Azure SDK 提供的支援服務匯流排用戶端程式庫都會使用 AMQP 1.0。
 
-- [適用于 .NET 的 Azure 服務匯流排](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [適用于 JAVA 的 Azure 服務匯流排程式庫](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
-- [JAVA JMS 2.0 Azure 服務匯流排提供者](how-to-use-java-message-service-20.md)
-- [適用于 JavaScript 和 TypeScript 的 Azure 服務匯流排模組](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [適用于 Python 的 Azure 服務匯流排程式庫](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [適用於 .NET 的 Azure 服務匯流排](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
+- [適用於 Java 的 Azure 服務匯流排程式庫](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [Java JMS 2.0 的 Azure 服務匯流排提供者](how-to-use-java-message-service-20.md)
+- [適用於 JavaScript 和 TypeScript 的 Azure 服務匯流排模組](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
+- [適用於 Python 的 Azure 服務匯流排程式庫](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
@@ -76,7 +76,7 @@ Azure 服務匯流排中的 AMQP 1.0 支援表示您可以使用有效率的二�
 
 [!INCLUDE [messaging-oss-amqp-stacks.md](../../includes/messaging-oss-amqp-stacks.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 * AMQP 1.0 是一個既開放又可靠的訊息通訊協定，可以用來建置跨平台的混合應用程式。 AMQP 1.0 是一項 OASIS 標準。
 
 ## <a name="next-steps"></a>後續步驟

@@ -3,17 +3,17 @@ title: 索引子錯誤和警告
 titleSuffix: Azure Cognitive Search
 description: 本文提供在 Azure 認知搜尋的 AI 擴充期間，您可能會遇到的常見錯誤和警告的資訊和解決方案。
 manager: nitinme
-author: amotley
-ms.author: abmotley
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: dcdc05ae696a207546eb62160fe89ea38d307058
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c65c9265d8eb4a06ea354c6d753cc6ed847eb6db
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492262"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724284"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中常見的索引子錯誤和警告進行疑難排解
 
@@ -21,7 +21,7 @@ ms.locfileid: "96492262"
 
 當錯誤計數超過 [' maxFailedItems '](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures)時，就會停止索引。 
 
-如果您想要讓索引子忽略這些錯誤 (並略過「失敗的檔」 ) ，請考慮更新 `maxFailedItems` 和， `maxFailedItemsPerBatch` 如下[here](/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)所述。
+如果您想要讓索引子忽略這些錯誤 (並略過「失敗的檔」 ) ，請考慮更新 `maxFailedItems` 和， `maxFailedItemsPerBatch` 如下[](/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)所述。
 
 > [!NOTE]
 > 每個失敗的檔以及其檔索引鍵 (當可用) 將會在索引子執行狀態中顯示為錯誤。 如果您已將索引子設定為容許失敗，您可以利用 [索引 api](/rest/api/searchservice/addupdate-or-delete-documents) ，稍後再手動上傳檔。
@@ -46,7 +46,7 @@ ms.locfileid: "96492262"
 
 索引子無法從資料來源讀取檔。 發生這種情況的原因可能是：
 
-| 原因 | 詳細資料/範例 | 解決方法 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 跨不同檔的欄位類型不一致 | 「值的類型與資料行類型不相符。 無法儲存 `'{47.6,-122.1}'` 在作者資料行中。  預期的類型為 JArray。」  「將資料類型 Nvarchar 轉換成 float 時發生錯誤」。  「將 Nvarchar 值 ' 12 months ' 轉換成資料類型 int 時，轉換失敗。」  「轉換運算式到資料類型 int 時發生算術溢位錯誤。」 | 確定每個欄位的類型在不同的檔之間都相同。 例如，如果第一個檔 `'startTime'` 欄位是日期時間，而第二份檔是一個字串，就會發生此錯誤。 |
 | 來自資料來源基礎服務的錯誤 | 從 Cosmos DB)  (`{"Errors":["Request rate is large"]}` | 檢查您的儲存體實例，以確定其狀況良好。 您可能需要調整您的調整/分割。 |
@@ -57,7 +57,7 @@ ms.locfileid: "96492262"
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>錯誤：無法從您的檔中解壓縮內容或中繼資料
 具有 Blob 資料來源的索引子無法從檔中解壓縮內容或中繼資料 (例如，) 的 PDF 檔案。 發生這種情況的原因可能是：
 
-| 原因 | 詳細資料/範例 | 解決方法 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | blob 超過大小限制 | 檔是 `'150441598'` 位元組，超過 `'134217728'` 目前服務層級的檔解壓縮大小上限位元組。 | [blob 索引錯誤](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
 | blob 具有不支援的內容類型 | 檔有不支援的內容類型 `'image/png'` | [blob 索引錯誤](search-howto-indexing-azure-blob-storage.md#DealingWithErrors) |
@@ -69,7 +69,7 @@ ms.locfileid: "96492262"
 ## <a name="error-could-not-parse-document"></a>錯誤：無法剖析檔
 索引子從資料來源讀取檔，但是將檔內容轉換成指定的欄位對應架構時發生問題。 發生這種情況的原因可能是：
 
-| 原因 | 詳細資料/範例 | 解決方法 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 檔索引鍵遺失 | 檔索引鍵不能遺失或空白 | 確定所有檔都有有效的檔索引鍵。 檔索引鍵的決定方式是將 ' key ' 屬性設定為 [索引定義](/rest/api/searchservice/create-index#request-body)的一部分。 在特定檔上找不到標示為 ' key ' 的屬性時，索引子會發出此錯誤。 |
 | 檔索引鍵無效 | 檔索引鍵不能超過1024個字元 | 修改檔金鑰以符合驗證需求。 |
@@ -86,7 +86,7 @@ ms.locfileid: "96492262"
 ## <a name="error-could-not-execute-skill"></a>錯誤：無法執行技能
 索引子無法在技能集中執行技能。
 
-| 原因 | 詳細資料/範例 | 解決方法 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 暫時性連接問題 | 發生暫時性錯誤。 請稍後再試一次。 | 有時會發生未預期的連線問題。 稍後再試一次使用您的索引子執行檔。 |
 | 潛在的產品 bug | 發生意外錯誤。 | 這表示不明類別的失敗，可能表示有產品錯誤。 請提出 [支援票證](https://ms.portal.azure.com/#create/Microsoft.Support) 以取得協助。 |
@@ -147,7 +147,7 @@ ms.locfileid: "96492262"
 
 檔已讀取和處理，但索引子無法將它加入至搜尋索引。 發生這種情況的原因可能是：
 
-| 原因 | 詳細資料/範例 | 解決方法 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 欄位包含太大的詞彙 | 檔中的詞彙大於 [32 KB 的限制](search-limits-quotas-capacity.md#api-request-limits) | 您可以確保欄位未設定為可篩選、可 facet 或可排序，藉以避免這項限制。
 | 檔太大，無法編制索引 | 檔大於 [api 要求大小上限](search-limits-quotas-capacity.md#api-request-limits) | [如何為大型資料集編制索引](search-howto-large-index.md)
@@ -189,7 +189,7 @@ ms.locfileid: "96492262"
 
 當索引子嘗試將 [資料投射到知識存放區](knowledge-store-projection-overview.md) ，而且嘗試進行這項操作時，就會發生這個錯誤。  此失敗可能是一致且可修復的，或可能是因為投射輸出接收的暫時性失敗，而您可能需要等待再重試，才能解決問題。  以下是一組已知的失敗狀態和可能的解決方式。
 
-| 原因 | 詳細資料/範例 | 解決方法 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 無法更新 `'blobUri'` 容器中的投射 blob `'containerName'` |指定的容器不存在。 | 索引子會檢查先前是否已建立指定的容器，並在必要時加以建立，但它只會針對每個索引子執行執行一次檢查。 此錯誤表示在此步驟之後刪除容器的內容。  若要解決此錯誤，請嘗試下列動作：單獨保留您的儲存體帳戶資訊，等候索引子完成，然後重新執行索引子。 |
 | 無法更新 `'blobUri'` 容器中的投射 blob `'containerName'` |無法將資料寫入傳輸連接：遠端主機已強制關閉現有的連接。 | 這應該是暫時性的 Azure 儲存體失敗，因此應該透過重新執行索引子來解決。 如果您一致地遇到此錯誤，請提出 [支援票證](https://ms.portal.azure.com/#create/Microsoft.Support) ，讓它可以進一步調查。  |
@@ -226,7 +226,7 @@ ms.locfileid: "96492262"
 }
 ```
 
-| 原因 | 詳細資料/範例 | 解決方法 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 技能輸入錯誤的類型 | 「所需的技能輸入不是預期的類型 `String` 。 Name： `text` ，Source： `/document/merged_content` . "  「所需的技能輸入不是預期的格式。 Name： `text` ，Source： `/document/merged_content` . "  「無法反復查看非陣列」 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` 。  「無法 `0` 在非陣列中選取」 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` | 某些技能預期會有特定類型的輸入，例如 [情感技能](cognitive-search-skill-sentiment.md) 預期 `text` 會是字串。 如果輸入指定非字串值，則技能不會執行，也不會產生任何輸出。 確定您的資料集在類型中具有統一的輸入值，或使用 [自訂 WEB API 技能](cognitive-search-custom-skill-web-api.md) 來預先處理輸入。 如果您要逐一查看陣列的技能，請檢查技能內容，並輸入 `*` 正確的位置。 通常內容和輸入來源的結尾都應該是 `*` 陣列。 |
 | 缺少技能輸入 | 「缺少必要的技能輸入。 名稱： `text` ，來源：「 `/document/merged_content` 遺漏值」 `/document/normalized_images/0/imageTags` 。  「無法選取 `0` 長度為數組 `/document/pages` 的陣列」 `0` 。 | 如果您的所有檔都收到這項警告，則輸入路徑中可能會出現打字錯誤，您應該在路徑中重複檢查屬性名稱大小寫、額外或遺漏 `*` ，並確定資料來源中的檔提供必要的輸入。 |
@@ -318,7 +318,7 @@ ms.locfileid: "96492262"
 ## <a name="warning-could-not-map-output-field-x-to-search-index"></a>警告：無法將輸出欄位 ' X ' 對應到搜尋索引
 參考不存在/null 資料的輸出欄位對應會產生每份檔的警告，並產生空的索引欄位。 若要解決此問題，請仔細檢查輸出欄位對應來源路徑是否有可能的錯誤，或使用 [條件式技能](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)來設定預設值。 如需詳細資料，請參閱 [輸出欄位對應](cognitive-search-output-field-mapping.md) 。
 
-| 原因 | 詳細資料/範例 | 解決方法 |
+| 原因 | 詳細資料/範例 | 解決方案 |
 | --- | --- | --- |
 | 無法反復查看非陣列 | 「無法反復查看非陣列」 `/document/normalized_images/0/imageCelebrities/0/detail/celebrities` 。 | 當輸出不是陣列時，就會發生此錯誤。 如果您認為輸出應該是陣列，請檢查指定的輸出來源欄位路徑是否有錯誤。 例如，您可能會 `*` 在來源功能變數名稱中遺失或額外的資源。 這項技能的輸入也可能為 null，因此會產生空的陣列。 在 [技能輸入](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid) 中尋找類似的詳細資料不正確區段。    |
 | 無法 `0` 在非陣列中選取 | 「無法 `0` 在非陣列中選取」 `/document/pages` 。 | 如果技能輸出未產生陣列，且輸出來源功能變數名稱具有陣列索引或其路徑，就可能發生這種情況 `*` 。 請再次檢查輸出來源功能變數名稱中提供的路徑，以及所指定功能變數名稱的域值。 在 [技能輸入](cognitive-search-common-errors-warnings.md#warning-skill-input-was-invalid) 中尋找類似的詳細資料不正確區段。  |

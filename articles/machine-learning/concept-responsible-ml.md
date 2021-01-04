@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: ff85ed669fb7c3ac43e322eb747c537a30801920
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/21/2020
+ms.openlocfilehash: 83bca8a2a81823cd0a8bda1633599292460ddd30
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701427"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724322"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>什麼是負責機器學習服務？ (預覽)
 
@@ -62,10 +62,7 @@ AI 系統中的不公平性可能會導致下列非預期的結果：
 
 在傳統的案例中，未經處理資料會儲存在檔案和資料庫中。 當使用者分析資料時，通常會使用未經處理資料。 如此可能會因為侵害個人的隱私權而產生問題。 差異隱私權會嘗試處理此問題，方法是在資料中新增「雜訊」或隨機性，讓使用者無法識別任何個別的資料點。
 
-實作差異隱私系統十分困難。 [WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-core) 是開放原始碼專案，其中包含用來建立全域差異隱私系統的不同元件。 若要深入了解差異隱私權和 WhiteNoise 專案，請參閱 [使用差異隱私權和 WhiteNoise 來保留資料隱私權](./concept-differential-privacy.md)一文。
-
-> [!NOTE]
-> 請注意，我們會重新命名此工具組，並將在未來幾周推出新的名稱。 
+實作差異隱私系統十分困難。 [SmartNoise](https://github.com/opendifferentialprivacy/smartnoise-core) 是一個開放原始碼專案，其中包含用來建立全球微分私用系統的不同元件。 若要深入瞭解差異隱私權和 SmartNoise 專案，請參閱 [使用差異隱私權和 SmartNoise 來保留資料隱私權](./concept-differential-privacy.md) 文章。
 
 ## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>使用同態加密處理加密的資料
 

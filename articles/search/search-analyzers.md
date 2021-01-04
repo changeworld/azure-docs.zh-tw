@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/20/2020
+ms.date: 12/18/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbda4268ca00d1c12f851517e2b35add7fba7f9b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013814"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694290"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure 認知搜尋中的文字處理分析器
 
@@ -47,7 +47,7 @@ ms.locfileid: "96013814"
 
 | 類別 | 描述 |
 |----------|-------------|
-| [標準 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 預設值： 不需要任何規格或設定。 這種一般用途的分析器適用于許多語言和案例。|
+| [標準 Lucene 分析器](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 預設值。 不需要任何規格或設定。 這種一般用途的分析器適用于許多語言和案例。|
 | 預先定義的分析器 | 作為預計要依現狀使用的成品提供。 <br/>共有兩種類型：特製化和語言。 使它們成為「預先定義」的條件是依名稱參考，無須設定或自訂。 <br/><br/>[特製化 (語言無從驗證) 分析器](index-add-custom-analyzers.md#AnalyzerTable)適用於文字輸入需要特殊處理或最少處理時。 非語言預先定義的分析器包含 **Asciifolding**、**金鑰**、**模式**、**簡單**、**停止**、**空白**。<br/><br/>[語言分析器](index-add-language-analyzers.md)適用於當您需要為個別語言提供豐富的語言支援時。 Azure 認知搜尋支援 35 Lucene 語言分析器和 50 Microsoft 自然語言處理分析器。 |
 |[自訂分析器](/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 意指結合現有元素的使用者定義組態，包括一個權杖化工具 (必要) 和選擇性篩選條件 (Char 或權杖)。|
 
@@ -315,55 +315,61 @@ API 包含其他的索引屬性，可針對索引和搜尋指定不同的分析�
 
 依原樣使用的任何分析器（沒有設定）都會在欄位定義上指定。 不需要在索引的 **[分析器]** 區段中建立專案。 
 
-此範例會將 Microsoft 英文和法文分析器指派給描述欄位。 它是取自旅館索引較大定義的程式碼片段，在 [>dotnethowto](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 範例的 hotels.cs 檔中使用飯店類別建立。
+語言分析器是以現況使用。 若要使用這些類別，請呼叫 [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer)，指定提供 Azure 認知搜尋中支援之文字分析器的 [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) 類型。
 
-呼叫 [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer)，指定提供 Azure 認知搜尋所支援之文字分析器的 [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) 類型。
+在欄位定義上同樣指定了自訂分析器，但是若要這樣做，您必須在索引定義中指定分析器，如下一節中所述。
 
 ```csharp
     public partial class Hotel
     {
        . . . 
-
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
-        [JsonProperty("description")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
         public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrLucene)]
-        [JsonProperty("description_fr")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrLucene)]
+        [JsonPropertyName("Description_fr")]
         public string DescriptionFr { get; set; }
 
+        [SearchableField(AnalyzerName = "url-analyze")]
+        public string Url { get; set; }
       . . .
     }
 ```
+
 <a name="Define-a-custom-analyzer"></a>
 
 ### <a name="define-a-custom-analyzer"></a>定義自訂分析器
 
-需要自訂或設定時，您必須將分析器結構新增至索引。 一旦定義之後，您就可以將其加入至先前範例中所示範的欄位定義。
+當需要自訂或設定時，請將分析器結構新增至索引。 一旦定義之後，您就可以將其加入至先前範例中所示範的欄位定義。
 
-建立 [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) 物件。 如需更多範例，請參閱 [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)。
+建立 [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) 物件。 自訂分析器是使用者定義的已知 tokenizer、零或多個標記篩選準則的組合，以及零或多個字元篩選器名稱：
+
++ [CustomAnalyzer. Tokenizer](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer)
++ [CustomAnalyzer.TokenFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenfilters)
++ [CustomAnalyzer.CharFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.charfilters)
+
+下列範例會建立名為 "url-分析" 的自訂分析器，其使用 [uax_url_email tokenizer](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer) 和 [小寫標記篩選](/dotnet/api/microsoft.azure.search.models.tokenfiltername.lowercase)。
 
 ```csharp
+private static void CreateIndex(string indexName, SearchIndexClient adminClient)
 {
-   var definition = new Index()
+   FieldBuilder fieldBuilder = new FieldBuilder();
+   var searchFields = fieldBuilder.Build(typeof(Hotel));
+
+   var analyzer = new CustomAnalyzer("url-analyze", "uax_url_email")
    {
-         Name = "hotels",
-         Fields = FieldBuilder.BuildForType<Hotel>(),
-         Analyzers = new[]
-            {
-               new CustomAnalyzer()
-               {
-                     Name = "url-analyze",
-                     Tokenizer = TokenizerName.UaxUrlEmail,
-                     TokenFilters = new[] { TokenFilterName.Lowercase }
-               }
-            },
+         TokenFilters = { TokenFilterName.Lowercase }
    };
 
-   serviceClient.Indexes.Create(definition);
+   var definition = new SearchIndex(indexName, searchFields);
+
+   definition.Analyzers.Add(analyzer);
+
+   adminClient.CreateOrUpdateIndex(definition);
+}
 ```
+
+如需更多範例，請參閱 [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -375,9 +381,9 @@ API 包含其他的索引屬性，可針對索引和搜尋指定不同的分析�
 
 + [設定自訂分析器](index-add-custom-analyzers.md)以進行最少的處理，或是在個別欄位上進行特殊的處理。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
- [搜尋檔 REST API](/rest/api/searchservice/search-documents) 
+ [搜尋文件 REST API](/rest/api/searchservice/search-documents) 
 
  [簡單查詢語法](query-simple-syntax.md) 
 

@@ -2,19 +2,21 @@
 title: 範本中的子資源
 description: 描述如何在 Azure Resource Manager 範本中設定子資源的名稱和類型。
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/21/2020
+ms.openlocfilehash: c594096fd95f663db2120b29c575b341924dcc36
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80743844"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97721938"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>設定子資源的名稱和類型
 
-子資源是只存在於另一個資源內容中的資源。 例如， [虛擬機器延伸](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) 模組無法在沒有 [虛擬機器](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)的情況下存在。 擴充功能資源是虛擬機器的子系。
+子資源是只存在於另一個資源內容中的資源。 例如， [虛擬機器延伸](/azure/templates/microsoft.compute/virtualmachines/extensions) 模組無法在沒有 [虛擬機器](/azure/templates/microsoft.compute/virtualmachines)的情況下存在。 擴充功能資源是虛擬機器的子系。
 
-在 Resource Manager 範本中，您可以在父資源或父資源外部指定子資源。 下列範例顯示父資源的 resources 屬性中所包含的子資源。
+每個父資源只接受特定的資源類型做為子資源。 子資源的資源類型包含父資源的資源類型。 例如， **microsoft web/sites/config** 和 microsoft web/sites/ **Extensions** 都是 **microsoft web/sites** 的子資源。 可接受的資源類型是在父資源的 [範本結構描述](https://github.com/Azure/azure-resource-manager-schemas) 中指定。
+
+在 (ARM 範本) 的 Azure Resource Manager 範本中，您可以在父資源或父資源外部指定子資源。 下列範例顯示父資源的 resources 屬性中所包含的子資源。
 
 ```json
 "resources": [
@@ -26,6 +28,8 @@ ms.locfileid: "80743844"
   }
 ]
 ```
+
+定義子資源時，深度只能有 5 層。
 
 下一個範例會顯示父資源外部的子資源。 如果父資源不是部署在相同的範本中，或者想要使用 [複製](copy-resources.md) 來建立多個子資源，您可以使用此方法。
 
@@ -132,6 +136,6 @@ ms.locfileid: "80743844"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要了解如何建立 Azure 資源管理員範本，請參閱 [撰寫範本](template-syntax.md)。
+* 若要瞭解如何建立 ARM 範本，請參閱 [撰寫範本](template-syntax.md)。
 
 * 若要瞭解參考資源時資源名稱的格式，請參閱 [reference](template-functions-resource.md#reference)函式。

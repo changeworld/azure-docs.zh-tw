@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 76218003a40c02def3dc62ea8480022d9647938d
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576485"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723332"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 串流分析中的資料保護 
 
@@ -60,7 +60,7 @@ Azure 串流分析會儲存客戶資料和以上所述的其他中繼資料。 �
 
 1. 選取 Azure 入口網站左上角的 [建立資源]  。 
 
-1.  **Analytics**   > 從結果清單中選取分析 **串流分析作業**   。 
+1.  ****   > 從結果清單中選取分析 **串流分析作業**   。 
 
 1. 在 [串流分析作業] 頁面中填寫必要的詳細資料，例如名稱、區域和調整。 
 
@@ -72,7 +72,7 @@ Azure 串流分析會儲存客戶資料和以上所述的其他中繼資料。 �
 
    ![私用資料儲存體帳戶設定](./media/data-protection/storage-account-create.png)
 
-1. 若要使用受控識別進行驗證 (預覽) ，請從 [驗證模式] 下拉式清單中選取 [ **受控識別** ]。 如果您選擇受控識別，您需要將串流分析作業新增至儲存體帳戶的存取控制清單。 如果您未提供作業存取權，則工作將無法執行任何作業。 如需如何授與存取權的詳細資訊，請參閱 [使用 AZURE RBAC 將受控識別存取權指派給另一個資源](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource)。
+1. 若要使用受控識別進行驗證 (預覽) ，請從 [驗證模式] 下拉式清單中選取 [ **受控識別** ]。 如果您選擇受控識別，您需要將串流分析作業新增至儲存體帳戶的存取控制清單，並提供 *儲存體 Blob 資料參與者* 角色。 如果您未提供作業存取權，則工作將無法執行任何作業。 如需如何授與存取權的詳細資訊，請參閱 [使用 AZURE RBAC 將受控識別存取權指派給另一個資源](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource)。
 
    :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="使用受控識別驗證的私用資料儲存體帳戶設定":::
 

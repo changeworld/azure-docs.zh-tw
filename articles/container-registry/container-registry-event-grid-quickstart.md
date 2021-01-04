@@ -4,12 +4,12 @@ description: 在本快速入門中，您可以針對容器登錄啟用事件方�
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074211"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694397"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入門：將事件從私用容器登錄傳送至事件方格
 
@@ -35,7 +35,7 @@ RESOURCE_GROUP_NAME=myResourceGroup
 az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
-## <a name="create-a-container-registry"></a>建立容器登錄庫
+## <a name="create-a-container-registry"></a>建立容器登錄
 
 接下來，使用下列命令來將容器登錄部署到資源群組。 執行 [az acr create][az-acr-create] 命令之前，先將 `ACR_NAME` 設定為您的登錄名稱。 此名稱在 Azure 內必須是唯一的，且長度限制為 5-50 個英數字元。
 
@@ -78,7 +78,7 @@ az acr create --resource-group $RESOURCE_GROUP_NAME --name $ACR_NAME --sku Basic
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
@@ -96,7 +96,7 @@ az group deployment create \
 
 ## <a name="subscribe-to-registry-events"></a>訂閱登錄事件
 
-在事件方格中，您可以訂閱「主題」  ，以告知它您想要追蹤的事件，以及要將它們傳送至何處。 下列 [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] 命令會訂閱您所建立的容器登錄，並指定您的 Web 應用程式 URL 作為應將事件傳送至其中的端點。 您在先前小節中所填入的環境變數會在此處重複使用，因此不需進行任何編輯。
+在事件方格中，您可以訂閱「主題」，以告知它您想要追蹤的事件，以及要將它們傳送至何處。 下列 [az eventgrid event-subscription create][az-eventgrid-event-subscription-create] 命令會訂閱您所建立的容器登錄，並指定您的 Web 應用程式 URL 作為應將事件傳送至其中的端點。 您在先前小節中所填入的環境變數會在此處重複使用，因此不需進行任何編輯。
 
 ```azurecli-interactive
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
@@ -206,7 +206,7 @@ Are you sure you want to continue? (y/n):
 
 一旦您完成使用在本快速入門中建立的資源之後，您可以使用下列 Azure CLI 命令來將它們全部刪除。 當您刪除資源群組時，即會永久刪除所有包含在內的資源。
 
-**警告** ：此作業無法復原。 執行此命令之前，請確定您不再需要群組中的任何資源。
+**警告**：此作業無法復原。 執行此命令之前，請確定您不再需要群組中的任何資源。
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME
@@ -218,7 +218,7 @@ az group delete --name $RESOURCE_GROUP_NAME
 
 [Container Registry 的 Azure Event Grid 事件結構描述](../event-grid/event-schema-container-registry.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本快速入門中，您已部署容器登錄、使用 ACR 工作來建置映像、刪除它，並已使用範例應用程式從事件方格中取用您的登錄事件。 接下來，前往 ACR 工作教學課程，以深入了解如何在雲端中建置容器映像，包括基底映像更新上的自動化組建：
 

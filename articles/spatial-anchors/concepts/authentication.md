@@ -9,18 +9,18 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95484605"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722958"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空間錨點的驗證和授權
 
 在本文中，您將瞭解可從應用程式或 web 服務向 Azure 空間錨點進行驗證的各種方式。 您也會瞭解如何使用 Azure 角色型存取控制 (Azure RBAC) Azure Active Directory (Azure AD) 來控制空間錨點帳戶的存取權。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 ![此圖顯示 Azure 空間錨點驗證的總覽。](./media/spatial-anchors-authentication-overview.png)
 
@@ -101,7 +101,7 @@ configuration.AccountKey(LR"(MyAccountKey)");
     1.  在 [**我的組織使用的 api** ] 索引標籤上選取 [**混合現實資源提供者**]
     2.  選取 [委派的權限]。
     3.  選取 [ **mixedreality**] 下的 [ **mixedreality** ]。
-    4.  選取 [新增權限]  。
+    4.  選取 [新增權限]。
 3.  選取 **[授與系統管理員同意**]。
 
 2. 對您的應用程式或使用者授與資源的存取權：
@@ -193,7 +193,7 @@ Azure AD 存取權杖是透過 [MSAL](../../active-directory/develop/msal-overvi
 **在您的程式碼中**
 
 >[!NOTE]
-> 您可以使用 GitHub 上提供的服務範例。
+> 您可以使用[空間錨點範例應用程式](https://github.com/Azure/azure-spatial-anchors-samples)中所提供的[服務範例](https://github.com/Azure/azure-spatial-anchors-samples/tree/master/Sharing/SharingServiceSample)。
 
 1.    請務必使用您自己的 Azure AD 應用程式的應用程式識別碼、應用程式秘密和重新導向 URI，作為 MSAL 中的 **用戶端識別碼**、 **秘密** 和 **RedirectUri** 參數。
 2.    在 MSAL 的 **授權** 參數中，將租使用者識別碼設定為您自己的 Azure AD 租使用者識別碼。

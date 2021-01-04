@@ -1,107 +1,89 @@
 ---
 title: 設定資源的部署順序
-description: 說明如何在部署期間，將某個資源設定為相依於另一個資源，確保以正確的順序部署資源。
+description: 描述如何在部署期間將一個資源設定為相依于另一個資源。 相依性可確保以正確的順序部署資源。
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 933764f1930bd6c9e21d4ccffbde1bb93bbc9613
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 12/21/2020
+ms.openlocfilehash: a96dca0ab30d0baee2688427d78867ea128e673a
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672809"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722006"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>定義在 ARM 範本中部署資源的順序
 
-部署資源時，您可能需要先確定其他資源存在，再進行部署。 例如，在部署資料庫之前，您需要邏輯 SQL server。 您可以將一個資源標示為相依於其他資源，來定義此關聯性。 您可以使用 **dependsOn** 元素或使用 **reference** 函式定義相依性。
+部署資源時，您可能需要確保某些資源存在於其他資源之前。 例如，在部署資料庫之前，您需要邏輯 SQL server。 您可以藉由將一個資源標記為相依于其他資源，來建立此關聯性。 使用 **dependsOn** 元素來定義明確的相依性。 使用 **參考** 或 **清單** 函數來定義隱含相依性。
 
 資源管理員會評估資源之間的相依性，並依其相依順序進行部署。 如果資源並未彼此相依，Resource Manager 就會平行部署資源。 您只需要針對部署在相同範本中的資源定義相依性。
 
 ## <a name="dependson"></a>dependsOn
 
-在您的範本內，dependsOn 元素可讓您定義一個資源作為一或多個資源的相依項目。 它的值是字串的 JSON 陣列，其中每個都是資源名稱。 陣列可包含有 [條件地部署](conditional-resource-deployment.md)的資源。 當條件式資源未部署時，Azure Resource Manager 會自動將它從必要的相依性中移除。
+在您的範本內，dependsOn 元素可讓您定義一個資源作為一或多個資源的相依項目。 它的值是字串的 JSON 陣列，其中每一個都是資源名稱或識別碼。 陣列可包含有 [條件地部署](conditional-resource-deployment.md)的資源。 當條件式資源未部署時，Azure Resource Manager 會自動將它從必要的相依性中移除。
 
-下列範例示範一個虛擬機器擴展集，此擴展集依存於負載平衡器、虛擬網路，以及會建立多個儲存體帳戶的迴圈。 這些其他資源不會顯示在下列範例中，但是必須存在於範本中其他的位置。
+下列範例顯示相依于虛擬網路、網路安全性群組和公用 IP 位址的網路介面。 如需完整的範本，請參閱 [LINUX VM 的快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json)。
 
 ```json
 {
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "apiVersion": "2016-03-30",
-  "name": "[variables('namingInfix')]",
-  "location": "[variables('location')]",
-  "tags": {
-    "displayName": "VMScaleSet"
-  },
-  "dependsOn": [
-    "[variables('loadBalancerName')]",
-    "[variables('virtualNetworkName')]",
-    "storageLoop",
-  ],
-  ...
+    "type": "Microsoft.Network/networkInterfaces",
+    "apiVersion": "2020-06-01",
+    "name": "[variables('networkInterfaceName')]",
+    "location": "[parameters('location')]",
+    "dependsOn": [
+      "[resourceId('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
+      "[resourceId('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
+      "[resourceId('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]"
+    ],
+    ...
 }
 ```
 
-在上述範例中，相依性是包含在透過名為 **storageLoop** 複製迴圈所建立的資源上。 例如，請參閱 [在 Azure 資源管理員中建立多個資源的執行個體](copy-resources.md)。
-
-當定義相依性時，您可以包含資源提供者命名空間和資源類型，以避免模稜兩可。 比方說，若要釐清可能有和其他資源名稱相同的負載平衡器和虛擬網路，請使用下列格式：
-
-```json
-"dependsOn": [
-  "[resourceId('Microsoft.Network/loadBalancers', variables('loadBalancerName'))]",
-  "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
-]
-```
-
-雖然您可能比較傾向於使用 dependsOn 來對應資源之間的關聯性，但是請務必了解為什麼您要這麼做。 例如，若要記載資源互連的方式，dependsOn 並不是適當的方法。 在部署之後，您便無法查詢 dependsOn 元素中定義了哪些資源。 使用 dependsOn 可能會影響部署時間，因為 Resource Manager 不會平行部署兩個具有相依性的資源。
+雖然您可能比較傾向於使用 dependsOn 來對應資源之間的關聯性，但是請務必了解為什麼您要這麼做。 例如，若要記載資源互連的方式，dependsOn 並不是適當的方法。 在部署之後，您便無法查詢 dependsOn 元素中定義了哪些資源。 設定不必要的相依性會減緩部署時間，因為 Resource Manager 無法以平行方式部署這些資源。
 
 ## <a name="child-resources"></a>子資源
 
-resources 屬性可讓您指定與所定義的資源相關的子資源。 定義子資源時，深度只能有 5 層。 請務必注意，在子資源與父資源之間並不會建立隱含的部署相依性。 如果您需要在父資源之後部署子資源，您必須使用 dependsOn 屬性明確地敘述該相依性。
-
-每個父資源只接受特定的資源類型做為子資源。 可接受的資源類型是在父資源的 [範本結構描述](https://github.com/Azure/azure-resource-manager-schemas) 中指定。 子資源類型的名稱包含父資源類型的名稱，例如 **Microsoft.Web/sites/config** 和 **Microsoft.Web/sites/extensions** 兩者皆為 **Microsoft.Web/sites** 的子資源。
+[子資源](child-resource-name-type.md)與父資源之間不會自動建立隱含的部署相依性。 如果您需要在父資源之後部署子資源，請設定 dependsOn 屬性。
 
 下列範例顯示邏輯 SQL 伺服器和資料庫。 請注意，即使資料庫是伺服器的子系，還是會在資料庫和伺服器之間定義明確的相依性。
 
 ```json
 "resources": [
   {
-    "name": "[variables('sqlserverName')]",
-    "apiVersion": "2014-04-01-preview",
     "type": "Microsoft.Sql/servers",
-    "location": "[resourceGroup().location]",
-    "tags": {
-      "displayName": "SqlServer"
-    },
+    "apiVersion": "2020-02-02-preview",
+    "name": "[parameters('serverName')]",
+    "location": "[parameters('location')]",
     "properties": {
       "administratorLogin": "[parameters('administratorLogin')]",
       "administratorLoginPassword": "[parameters('administratorLoginPassword')]"
     },
     "resources": [
       {
-        "name": "[parameters('databaseName')]",
-        "apiVersion": "2014-04-01-preview",
         "type": "databases",
-        "location": "[resourceGroup().location]",
+        "apiVersion": "2020-08-01-preview",
+        "name": "[parameters('sqlDBName')]",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+          },
         "dependsOn": [
-          "[variables('sqlserverName')]"
-        ],
-        "tags": {
-          "displayName": "Database"
-        },
-        "properties": {
-          "edition": "[parameters('edition')]",
-          "collation": "[parameters('collation')]",
-          "maxSizeBytes": "[parameters('maxSizeBytes')]",
-          "requestedServiceObjectiveName": "[parameters('requestedServiceObjectiveName')]"
-        }
+          "[resourceId('Microsoft.Sql/servers', concat(parameters('serverName')))]"
+        ]
       }
     ]
   }
 ]
 ```
 
+如需完整的範本，請參閱 [Azure SQL Database 的快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-sql-database/azuredeploy.json)。
+
 ## <a name="reference-and-list-functions"></a>reference 和 list 函式
 
-[reference 函式](template-functions-resource.md#reference) 可讓運算式從其他 JSON 名稱和值組或執行階段資源衍生其值。 [list* 函式](template-functions-resource.md#list)會從清單作業傳回資源的值。  當所參考的資源部署於同一個範本且依其名稱 (而非資源識別碼) 加以參考時，reference 和 list 運算式都會隱含地宣告某一個資源相依於另一個資源。 如果您將資源識別碼傳遞到 reference 或 list 函式，就不會建立隱含參考。
+[reference 函式](template-functions-resource.md#reference) 可讓運算式從其他 JSON 名稱和值組或執行階段資源衍生其值。 [list* 函式](template-functions-resource.md#list)會從清單作業傳回資源的值。
+
+參考和清單運算式會隱含地宣告某一個資源相依于另一個資源。 請盡可能使用隱含的參考，以避免新增不必要的相依性。
+
+若要強制執行隱含相依性，請依名稱（而非資源識別碼）參考資源。 如果您將資源識別碼傳遞到 reference 或 list 函式，就不會建立隱含參考。
 
 reference 函式的一般格式為：
 
@@ -132,13 +114,95 @@ listKeys('resourceName', 'yyyy-mm-dd')
     }
 ```
 
-您可以使用此元素或 dependsOn 元素來指定相依性，但不需針對相同的相依資源使用這兩者。 請盡可能使用隱含的參考，以避免新增不必要的相依性。
-
 若要深入了解，請參閱 [reference 函數](template-functions-resource.md#reference)。
+
+## <a name="depend-on-resources-in-a-loop"></a>依迴圈中的資源而定
+
+若要部署相依于 [複製迴圈](copy-resources.md)中資源的資源，您有兩個選項。 您可以在迴圈或整個迴圈中設定個別資源的相依性。
+
+> [!NOTE]
+> 在大部分的情況下，您應該在複製迴圈內設定個別資源的相依性。 只有當您需要迴圈中的所有資源都存在，才能建立下一個資源時，才會相依于整個迴圈。 設定整個迴圈的相依性會大幅展開相依性圖形，特別是當那些迴圈的資源相依于其他資源時。 擴充的相依性讓部署變得很難有效率地完成。
+
+下列範例顯示如何部署多個虛擬機器。 範本會建立相同數目的網路介面。 每部虛擬機器都相依于一個網路介面，而不是整個迴圈。
+
+```json
+{
+  "type": "Microsoft.Network/networkInterfaces",
+  "apiVersion": "2020-05-01",
+  "name": "[concat(variables('nicPrefix'),'-',copyIndex())]",
+  "location": "[parameters('location')]",
+  "copy": {
+    "name": "nicCopy",
+    "count": "[parameters('vmCount')]"
+  },
+  ...
+},
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2020-06-01",
+  "name": "[concat(variables('vmPrefix'),copyIndex())]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('nicPrefix'),'-',copyIndex()))]"
+  ],
+  "copy": {
+    "name": "vmCopy",
+    "count": "[parameters('vmCount')]"
+  },
+  "properties": {
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('nicPrefix'),'-',copyIndex()))]",
+          "properties": {
+            "primary": "true"
+          }
+        }
+      ]
+    },
+    ...
+  }
+}
+```
+
+下列範例顯示如何在部署虛擬機器之前部署三個儲存體帳戶。 請注意，copy 元素的名稱是設定為 `storagecopy` ，而虛擬機器的 dependsOn 元素也會設定為 `storagecopy` 。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-04-01",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "copy": {
+        "name": "storagecopy",
+        "count": 3
+      },
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2015-06-15",
+      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
+      "dependsOn": ["storagecopy"],
+      ...
+    }
+  ],
+  "outputs": {}
+}
+```
 
 ## <a name="circular-dependencies"></a>循環相依性
 
-Resource Manager 範本會在驗證期間識別循環相依性。 如果收到錯誤表示循環相依性存在，請評估您的範本，以查看是否有任何不需要的相依性可以移除。 如果移除相依性沒有用，您可以將某些部署作業移到在有循環相依性的資源之後部署的子資源中，以避免循環相依性。 例如，假設您要部署兩部虛擬機器，但是您必須分別在上面設定互相參考的屬性。 您可以採取下列順序部署︰
+Resource Manager 範本會在驗證期間識別循環相依性。 如果您收到迴圈相依性的錯誤，請評估您的範本，以查看是否可以移除任何相依性。 如果移除相依性沒有作用，您可以藉由將某些部署作業移至子資源，以避免迴圈相依性。 在具有迴圈相依性的資源之後部署子資源。 例如，假設您要部署兩部虛擬機器，但是您必須分別在上面設定互相參考的屬性。 您可以採取下列順序部署︰
 
 1. vm1
 2. vm2

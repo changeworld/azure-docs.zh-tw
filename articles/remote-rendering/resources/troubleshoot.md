@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203665"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722227"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -18,12 +18,12 @@ ms.locfileid: "92203665"
 
 ## <a name="cant-link-storage-account-to-arr-account"></a>無法將儲存體帳戶連結至 ARR 帳戶
 
-有時候在[連結儲存體帳戶期間](../how-tos/create-an-account.md#link-storage-accounts)，不會列出遠端轉譯帳戶。 若要修正此問題，請移至 Azure 入口網站中的 ARR 帳戶，然後在左側的 [設定] 群組下選取 [身分識別]。 請確定**狀態**設定為 [開啟]。
+有時候在[連結儲存體帳戶期間](../how-tos/create-an-account.md#link-storage-accounts)，不會列出遠端轉譯帳戶。 若要修正此問題，請移至 Azure 入口網站中的 ARR 帳戶，然後在左側的 [設定] 群組下選取 [身分識別]。 請確定 **狀態** 設定為 [開啟]。
 ![Unity 畫面偵錯工具](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>無法連線到伺服器
 
-請確定您的防火牆 (在裝置上、在路由器內等等，) 不會封鎖 [系統需求](../overview/system-requirements.md#network-ports)中所述的埠。
+請確定您的防火牆 (在裝置上、在路由器內等等，) 不會封鎖 [系統需求](../overview/system-requirements.md#network-firewall)中所述的埠。
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>錯誤 ' `Disconnected: VideoFormatNotAvailable` '
 
@@ -33,7 +33,7 @@ ms.locfileid: "92203665"
 
 ## <a name="retrieve-sessionconversion-status-fails"></a>取得會話/轉換狀態失敗
 
-傳送 REST API 命令太頻繁，最後會導致伺服器節流並傳回失敗。 節流案例中的 HTTP 狀態碼為 429 ( 「太多要求」 ) 。 根據經驗法則，**後續的呼叫之間應該會有 5-10 秒**的延遲。
+傳送 REST API 命令太頻繁，最後會導致伺服器節流並傳回失敗。 節流案例中的 HTTP 狀態碼為 429 ( 「太多要求」 ) 。 根據經驗法則，**後續的呼叫之間應該會有 5-10 秒** 的延遲。
 
 請注意，這項限制不只會影響直接呼叫的 REST API 呼叫，同時也會影響其 c #/C + + 對應專案，例如 `Session.GetPropertiesAsync` 、 `Session.RenewAsync` 或 `Frontend.GetAssetConversionStatusAsync` 。
 
@@ -45,7 +45,7 @@ ms.locfileid: "92203665"
 
 **未安裝 H265 轉碼器：**
 
-首先，請務必安裝 **HEVC 視訊延伸模組**，如系統需求的[軟體](../overview/system-requirements.md#software)一節中所述。
+首先，請務必安裝 **HEVC 視訊延伸模組**，如系統需求的 [軟體](../overview/system-requirements.md#software)一節中所述。
 
 如果仍然遇到問題，請確定您的圖形卡支援 H265，而且已安裝最新的圖形驅動程式。 如需特定廠商的系統需求資訊，請參閱[開發電腦](../overview/system-requirements.md#development-pc)一節。
 
@@ -69,7 +69,7 @@ ms.locfileid: "92203665"
 1. 您應該會看到 **x86** 和 **x64** 子資料夾。 以滑鼠右鍵按一下其中一個資料夾，然後選擇 [屬性]
     1. 選取 [安全性] 索引標籤，並按一下 [進階] 設定按鈕
     1. 針對 [擁有者] 按一下 [變更]
-    1. 在文字欄位中輸入**管理員**
+    1. 在文字欄位中輸入 **管理員**
     1. 按一下 [檢查名稱] 及 [確定]
 1. 對其他資料夾重複上述步驟
 1. 同時對兩個資料夾中的每個 DLL 檔案重複上述步驟。 總共應該有四個 DLL。
@@ -77,7 +77,7 @@ ms.locfileid: "92203665"
 若要確認目前設定是否正確，請針對這四個 DLL 執行此動作：
 
 1. 選取 **屬性 > 安全性 > 編輯**
-1. 瀏覽所有**群組/使用者**清單，並確定每個群組/使用者都有正確的**讀取和執行**集合 (必須已勾選**允許**資料行中的核取記號)
+1. 瀏覽所有 **群組/使用者** 清單，並確定每個群組/使用者都有正確的 **讀取和執行** 集合 (必須已勾選 **允許** 資料行中的核取記號)
 
 ## <a name="low-video-quality"></a>影片畫質不佳
 
@@ -165,7 +165,7 @@ Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫�
 
 ### <a name="use-debug-when-compiling-for-unity-editor"></a>針對 Unity 編輯器進行編譯時使用偵錯
 
-將 Unity 解決方案的「組建類型」 切換為**偵錯**。 在 Unity 編輯器中測試 ARR 時，定義 `UNITY_EDITOR` 僅適用於「偵錯」組建。 請注意，這與用於 [部署應用程式](../quickstarts/deploy-to-hololens.md)的組建類型無關，您應該使用「發行」組建。
+將 Unity 解決方案的「組建類型」 切換為 **偵錯**。 在 Unity 編輯器中測試 ARR 時，定義 `UNITY_EDITOR` 僅適用於「偵錯」組建。 請注意，這與用於 [部署應用程式](../quickstarts/deploy-to-hololens.md)的組建類型無關，您應該使用「發行」組建。
 
 ### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>編譯 HoloLens 2 的 Unity 範例時失敗
 
@@ -179,7 +179,7 @@ Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫�
     
 ### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Unity 專案的 Arm64 組建失敗，因為遺漏 AudioPluginMsHRTF.dll
 
-`AudioPluginMsHRTF.dll`Arm64 已新增至3.0.1 版中的*Windows Mixed Reality*套件* (xr. windowsmr. metro) * 。 確定您已透過 Unity 封裝管理員安裝3.0.1 版或更新版本。 從 Unity 功能表列，流覽至 [ *Window >] 封裝管理員* ，然後尋找 *Windows Mixed Reality* 套件。
+`AudioPluginMsHRTF.dll`Arm64 已新增至3.0.1 版中的 *Windows Mixed Reality* 套件 *(xr. windowsmr. metro)* 。 確定您已透過 Unity 封裝管理員安裝3.0.1 版或更新版本。 從 Unity 功能表列，流覽至 [ *Window >] 封裝管理員* ，然後尋找 *Windows Mixed Reality* 套件。
 
 ## <a name="native-c-based-application-does-not-compile"></a>以原生 c + + 為基礎的應用程式不會編譯
 
@@ -189,7 +189,7 @@ Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫�
 
 ## <a name="unstable-holograms"></a>不穩定的全像投影
 
-如果轉譯的物件看起來與前端同時移動，您可能遇到了*延遲階段重新投影* (LSR) 的問題。 如需有關如何處理這類情況的指引，請參閱[延遲階段重新投影](../overview/features/late-stage-reprojection.md)一節。
+如果轉譯的物件看起來與前端同時移動，您可能遇到了 *延遲階段重新投影* (LSR) 的問題。 如需有關如何處理這類情況的指引，請參閱[延遲階段重新投影](../overview/features/late-stage-reprojection.md)一節。
 
 全像投影不穩定 (晃動、變形、抖動 或全像投影跳動) 的另一個原因可能是網路連線不佳，特別是網路頻寬不足，或延遲過高。 網路連線品質良好的指標是 [效能統計資料](../overview/features/performance-queries.md) 值 `ARRServiceStats.VideoFramesReused`。 重複使用的畫面表示需要在用戶端重複使用舊影片畫面的情況 (因為沒有新的影片畫面可用)，例如因為封包遺失或網路延遲等的差異。 如果 `ARRServiceStats.VideoFramesReused` 經常大於零，這就表示網路有問題。
 

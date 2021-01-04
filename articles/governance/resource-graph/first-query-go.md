@@ -3,12 +3,12 @@ title: 快速入門：您的第一個 Go 查詢
 description: 在本快速入門中，您將遵循步驟以啟用 Go 的 Resource Graph 套件，並執行第一個查詢。
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 748f6bfa673a2e9fabdcba0c91dc314931df268a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e09bbb63b56fd30eb3aa9e7e527acdd8691d3ee6
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057445"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655793"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>快速入門：使用 Go 執行您的第一個 Resource Graph 查詢
 
@@ -49,7 +49,7 @@ ms.locfileid: "92057445"
 
 ## <a name="run-your-first-resource-graph-query"></a>執行第一個 Resource Graph 查詢
 
-在 Go 套件新增至您選擇的環境後，現在可以試試看簡單的 Resource Graph 查詢。 查詢會傳回前五個 Azure 資源，以及每個資源的**名稱**與**資源類型**。
+在 Go 套件新增至您選擇的環境後，現在可以試試看簡單的 Resource Graph 查詢。 查詢會傳回前五個 Azure 資源，以及每個資源的 **名稱** 與 **資源類型**。
 
 1. 建立 Go 應用程式，並將下列來源儲存為 `argQuery.go`：
 
@@ -57,48 +57,48 @@ ms.locfileid: "92057445"
    package main
    
    import (
-       "fmt"
-       "os"
-       "context"
-       "strconv"
-       arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
-       "github.com/Azure/go-autorest/autorest/azure/auth"
+      "fmt"
+      "os"
+      "context"
+      "strconv"
+      arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
+      "github.com/Azure/go-autorest/autorest/azure/auth"
    )
    
    func main() {
-      // Get variables from command line arguments
-      var query = os.Args[1]
-      var subList = os.Args[2:]
+       // Get variables from command line arguments
+       var query = os.Args[1]
+       var subList = os.Args[2:]
    
-      // Create and authorize a ResourceGraph client
-      argClient := arg.New()
-      authorizer, err := auth.NewAuthorizerFromCLI()
-      if err == nil {
-          argClient.Authorizer = authorizer
-      } else {
-          fmt.Printf(err.Error())
-      }
-   
-      // Set options
-      RequestOptions := arg.QueryRequestOptions {
-          ResultFormat: "objectArray",
-      }
-   
-      // Create the query request
-      Request := arg.QueryRequest {
-          Subscriptions: &subList,
-          Query: &query,
-          Options: &RequestOptions,
-      }
-   
-      // Run the query and get the results
-      var results, queryErr = argClient.Resources(context.Background(), Request)
-      if queryErr == nil {
-          fmt.Printf("Resources found: " + strconv.FormatInt(*results.TotalRecords, 10) + "\n")
-          fmt.Printf("Results: " + fmt.Sprint(results.Data) + "\n")
-      } else {
-          fmt.Printf(queryErr.Error())
-      }
+       // Create and authorize a ResourceGraph client
+       argClient := arg.New()
+       authorizer, err := auth.NewAuthorizerFromCLI()
+       if err == nil {
+           argClient.Authorizer = authorizer
+       } else {
+           fmt.Printf(err.Error())
+       }
+     
+       // Set options
+       RequestOptions := arg.QueryRequestOptions {
+           ResultFormat: "objectArray",
+       }
+     
+       // Create the query request
+       Request := arg.QueryRequest {
+           Subscriptions: &subList,
+           Query: &query,
+           Options: &RequestOptions,
+       }
+     
+       // Run the query and get the results
+       var results, queryErr = argClient.Resources(context.Background(), Request)
+       if queryErr == nil {
+           fmt.Printf("Resources found: " + strconv.FormatInt(*results.TotalRecords, 10) + "\n")
+           fmt.Printf("Results: " + fmt.Sprint(results.Data) + "\n")
+       } else {
+           fmt.Printf(queryErr.Error())
+       }
    }
    ```
 
@@ -117,7 +117,7 @@ ms.locfileid: "92057445"
    > [!NOTE]
    > 當此查詢範例未提供排序修飾詞，例如 `order by`，多次執行此查詢可能會為每個要求產生不同的資源集。
 
-1. 將第一個參數變更為 `argQuery`，並變更查詢，以 `order by` **名稱**屬性。 將 `<SubID>` 取代為您的訂用帳戶識別碼：
+1. 將第一個參數變更為 `argQuery`，並變更查詢，以 `order by` **名稱** 屬性。 將 `<SubID>` 取代為您的訂用帳戶識別碼：
 
    ```bash
    argQuery "Resources | project name, type | limit 5 | order by name asc" "<SubID>"
@@ -126,13 +126,13 @@ ms.locfileid: "92057445"
    > [!NOTE]
    > 如同第一個查詢一樣，多次執行此查詢可能會為每個要求產生不同的資源集。 查詢命令的順序很重要。 在此範例中，`order by` 會出現在 `limit` 之後。 此命令順序會先限制查詢結果，然後再加以排序。
 
-1. 將第一個參數變更為 `argQuery`，並變更查詢，以先 `order by` **名稱**屬性，然後 `limit` 為只顯示前五個結果。 將 `<SubID>` 取代為您的訂用帳戶識別碼：
+1. 將第一個參數變更為 `argQuery`，並變更查詢，以先 `order by` **名稱** 屬性，然後 `limit` 為只顯示前五個結果。 將 `<SubID>` 取代為您的訂用帳戶識別碼：
 
    ```bash
    argQuery "Resources | project name, type | order by name asc | limit 5" "<SubID>"
    ```
 
-執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依**名稱**屬性排序，但仍限制為只顯示前五個結果。
+執行最終查詢數次後，假設您的環境中未變更任何內容，傳回的結果將會一致，且依 **名稱** 屬性排序，但仍限制為只顯示前五個結果。
 
 ## <a name="clean-up-resources"></a>清除資源
 

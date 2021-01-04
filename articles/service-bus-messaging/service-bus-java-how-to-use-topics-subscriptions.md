@@ -4,12 +4,12 @@ description: 在本快速入門中，您會使用 azure-messaging-servicebus 套
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 011dbfef1155b82daca216e9519db07188260130
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cd95b84c4b55279b40f95eef65cb2490a55d1780
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489542"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630236"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>將訊息傳送到 Azure 服務匯流排主題，並從訂用帳戶接收來自主題的訊息 (Java)
 在本快速入門中，您會使用 azure-messaging-servicebus 套件撰寫 Java 程式碼，以將訊息傳送至 Azure 服務匯流排主題，然後從該主題的訂用帳戶接收訊息。
@@ -225,8 +225,8 @@ Stopping and closing the processor
 請參閱下列文件和範例：
 
 - [適用於 Java 的 Azure 服務匯流排用戶端程式庫 - 讀我檔案](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
-- [GitHub 範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
-- [Java API 參考](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-preview)
+- [GitHub 範例](https://docs.microsoft.com/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Java API 參考](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 
 
 [Azure SDK for Java]: /java/api/overview/azure/

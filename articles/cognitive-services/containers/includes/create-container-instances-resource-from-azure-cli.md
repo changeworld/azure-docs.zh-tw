@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 30e5d1802b93553be1b9437bea9aa0952b026f85
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 903c36bc228faaac4cbf13fd00ca1b398e2f8add
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997186"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704827"
 ---
 ## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>從 Azure CLI 建立 Azure 容器實例資源
 
@@ -25,7 +25,7 @@ apiVersion: 2018-10-01
 location: # < Valid location >
 name: # < Container Group name >
 properties:
-  imageRegistryCredentials: # This is only required if you are pulling a non-public image that requires authentication to access.
+  imageRegistryCredentials: # This is only required if you are pulling a non-public image that requires authentication to access. For example Text Analytics for health.
   - server: containerpreview.azurecr.io
     username: # < The username for the preview container registry >
     password: # < The password for the preview container registry >
@@ -77,7 +77,7 @@ az container create -g <resource-group> -f my-aci.yaml
 > [!TIP]
 > 請密切注意公開預覽 Azure 認知服務供應專案的位置，因為 YAML 需要據以調整以符合地點。
 
-[azure-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
+[azure-container-create]: /cli/azure/container#az-container-create
 [template-format]: /azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format
 [aci-yaml-ref]: ../../../container-instances/container-instances-reference-yaml.md
 [repositories-and-images]: ../../cognitive-services-container-support.md#container-repositories-and-images
