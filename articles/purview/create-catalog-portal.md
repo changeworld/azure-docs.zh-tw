@@ -1,18 +1,18 @@
 ---
 title: 快速入門：在 Azure 入口網站中建立 Azure Purview 帳戶 (預覽)
 description: 本快速入門說明如何建立 Azure Purview 帳戶，並設定權限以開始使用。
-author: hophanms
-ms.author: hophan
+author: nayenama
+ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fe83425230a157be245e3aa1ad088c32596ea5ed
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400381"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693367"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure Purview 帳戶
 
@@ -155,7 +155,7 @@ ms.locfileid: "97400381"
 
 1. 選取 [新增角色指派]。
 
-1. 針對 **Purview 資料保存者角色** 或 **Purview 資料來源管理員角色** 中的角色類型，請依服務主體的用途而定 (如需詳細資訊，請參閱[目錄權限](catalog-permissions.md)和[ Azure Active Directory 中的應用程式和服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals))。
+1. 針對 **Purview 資料保存者角色** 或 **Purview 資料來源管理員角色** 中的角色類型，請依服務主體的用途而定 (如需詳細資訊，請參閱 [目錄權限](catalog-permissions.md)和 [ Azure Active Directory 中的應用程式和服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals))。
 
 1. 保留 [存取權指派對象] 中的預設值 **使用者、群組或服務主體**。
 

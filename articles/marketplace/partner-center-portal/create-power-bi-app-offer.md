@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131491"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693609"
 ---
 # <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應項目
 
@@ -39,7 +39,7 @@ ms.locfileid: "93131491"
 輸入 [供應項目識別碼]。 這是您帳戶中每個供應項目的唯一識別碼。
 
 - 客戶可以在市集供應項目和 Azure Resource Manager 範本 (如果適用) 的網址中看到此識別碼。
-- 請一律使用小寫字母和數字。 識別碼可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您在此輸入 **test-offer-1** ，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
+- 請一律使用小寫字母和數字。 識別碼可以包含連字號和底線，但不能有空格，且限制為 50 個字元。 例如，如果您在此輸入 **test-offer-1**，供應項目網址將為 `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`。
 - 選取 [建立] 之後，即無法變更 [供應項目識別碼]。
 
 輸入 [供應項目別名]。 這是用於合作夥伴中心內供應項目的名稱。
@@ -97,7 +97,7 @@ ms.locfileid: "93131491"
 選取類別和子類別，以將您的供應專案放在適當的 marketplace 搜尋區域中。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
 - 至少一個和多個類別，包括主要和次要類別 (選擇性) 。
-- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用** ]。
+- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用**]。
 
 請參閱 [供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
 
@@ -109,9 +109,7 @@ ms.locfileid: "93131491"
 
 #### <a name="terms-and-conditions"></a>條款及條件
 
-若要提供您自己的自訂條款及條件，請在 [條款及條件] 方塊中輸入最多 10,000 個字元。 如果您的條款及條件需要更長的描述，請輸入可以找到該描述的單一 Web 連結。 這將會向客戶顯示為作用中連結。
-
-客戶必須先接受這些條款，才能試用您的供應項目。
+若要提供您自己的自訂條款及條件，請在 [條款及條件] 方塊中輸入最多 10,000 個字元。 客戶必須先接受這些條款，才能試用您的供應項目。
 
 選取 [儲存草稿]，再繼續進行下一節，＜供應項目清單＞。
 
@@ -142,7 +140,7 @@ ms.locfileid: "93131491"
 6. 使用規定
 7. 隱私權原則
 8. 供應項目名稱
-9. 摘要
+9. 總結
 10. 描述
 11. 螢幕擷取畫面/影片
 
@@ -260,4 +258,4 @@ ms.locfileid: "93131491"
 
 若要提交供應項目進行發佈，請選取 [發佈]。
 
-我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應專案發佈至公用，請移至合作夥伴中心並選取 [ **上線** ]。
+我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應專案發佈至公用，請移至合作夥伴中心並選取 [ **上線**]。

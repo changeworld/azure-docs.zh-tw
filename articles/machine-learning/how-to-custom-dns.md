@@ -11,21 +11,21 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 07ff656c5eacbbcdc16c6c7cf098478ca6baf745
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8d3145639d2d4fb64bdb374f1dea0a7b70e4151c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509286"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724709"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>如何搭配自訂 DNS 伺服器來使用工作區
 
-使用具有私人端點的 Azure Machine Learning 工作區時，有 [數種方式可處理 DNS 名稱解析](../private-link/private-endpoint-dns.md)。 根據預設，Azure 會自動為您的工作區和私人端點處理名稱解析。 如果您改為 _使用自己的自訂 DNS 伺服器_ _，則必須手動建立工作區的 dns 專案。
+使用具有私人端點的 Azure Machine Learning 工作區時，有 [數種方式可處理 DNS 名稱解析](../private-link/private-endpoint-dns.md)。 根據預設，Azure 會自動為您的工作區和私人端點處理名稱解析。 如果您改為 _使用您自己的自訂 dns 伺服器_ _，則必須手動建立 DNS 專案或使用工作區的條件轉寄站。
 
 > [!IMPORTANT]
 > 本文僅說明如何尋找 (FQDN 的完整功能變數名稱) 以及這些專案的 IP 位址，而不會提供設定這些專案之 DNS 記錄的相關資訊。 如需有關如何新增記錄的詳細資訊，請參閱您的 DNS 軟體檔。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 使用 [您自己的 DNS 伺服器](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)的 Azure 虛擬網路。
 
@@ -37,9 +37,9 @@ ms.locfileid: "97509286"
 
 - （選擇性） [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
-## <a name="find-the-ip-addresses"></a>尋找 IP 位址
-
-下列清單包含您的工作區和私人端點所使用 (FQDN) 的完整功能變數名稱：
+## <a name="fqdns-in-use"></a>使用中的 Fqdn
+### <a name="these-fqdns-are-in-use-in-the-following-regions-eastus-southcentralus-and-westus2"></a>這些 Fqdn 正在下欄區域中使用： eastus、southcentralus 和 westus2。
+下列清單包含您的工作區所使用 (FQDN) 的完整功能變數名稱：
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
@@ -51,6 +51,19 @@ ms.locfileid: "97509286"
 
     > [!NOTE]
     > 您只能從虛擬網路記憶體取計算實例。
+    
+### <a name="these-fqdns-are-in-use-in-all-other-regions"></a>這些 Fqdn 正在所有其他區域中使用
+下列清單包含您的工作區所使用 (FQDN) 的完整功能變數名稱：
+
+* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
+* `<workspace-GUID>.workspace.<region>.api.azureml.ms`
+* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
+* `<instance-name>.<region>.instances.azureml.ms`
+
+    > [!NOTE]
+    > 您只能從虛擬網路記憶體取計算實例。
+
+## <a name="find-the-ip-addresses"></a>尋找 IP 位址
 
 若要尋找 VNet 中 Fqdn 的內部 IP 位址，請使用下列其中一種方法：
 
@@ -89,7 +102,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 | `ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net` | `10.1.0.6` |
 
 > [!IMPORTANT]
-> 私人端點未列出某些 Fqdn，但工作區需要這些 Fqdn。 下表列出這些 Fqdn，而且也必須新增至您的 DNS 伺服器：
+> 私人端點未列出某些 Fqdn，但 eastus、southcentralus 和 westus2 中的工作區需要這些 Fqdn。 下表列出這些 Fqdn，也必須新增至您的 DNS 伺服器和/或 Azure 私人 DNS 區域：
 >
 > * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 > * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
@@ -102,3 +115,5 @@ $workspaceDns.CustomDnsConfigs | format-table
 ## <a name="next-steps"></a>後續步驟
 
 如需搭配虛擬網路使用 Azure Machine Learning 的詳細資訊，請參閱 [虛擬網路總覽](how-to-network-security-overview.md)。
+
+如需將私人端點整合至 DNS 設定的詳細資訊，請參閱 [Azure 私人端點 DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)設定。

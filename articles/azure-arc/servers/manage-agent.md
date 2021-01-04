@@ -1,14 +1,14 @@
 ---
 title: 管理已啟用 Azure Arc 的伺服器代理程式
 description: 本文說明在啟用 Azure Arc 的伺服器連線的機器代理程式生命週期期間，您通常會執行的不同管理工作。
-ms.date: 10/30/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107187"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724369"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和維護 Connected Machine 代理程式
 
@@ -61,7 +61,7 @@ Azure Connected Machine 代理程式會定期更新，以解決錯誤修正、�
 
 * 您可以從 Microsoft 下載中心取得 [Windows 代理程式的 Windows Installer 套件](https://aka.ms/AzureConnectedMachineAgent)。
 
-代理程式可以遵循各種不同的方法來進行升級，以支援您的軟體更新管理程序。 除了從 Microsoft Update 取得以外，您可以從命令提示字元、指令碼或其他自動化解決方案，或透過執行 `AzureConnectedMachine.msi` 從 UI 精靈手動下載並執行。
+您可以遵循各種方法來升級代理程式，以支援您的軟體更新管理流程。 除了從 Microsoft Update 取得以外，您可以從命令提示字元、指令碼或其他自動化解決方案，或透過執行 `AzureConnectedMachine.msi` 從 UI 精靈手動下載並執行。
 
 > [!NOTE]
 > * 若要升級此代理程式，您必須具有「系統管理員」權限。
@@ -189,7 +189,7 @@ Azcmagent 工具 ( # A0) 用來在安裝期間設定已連線到 Azure Arc 的�
 
 ### <a name="disconnect"></a>中斷連接
 
-此參數會指定 Azure Resource Manager 中的資源，代表已在 Azure 中刪除機器。 不會從機器刪除代理程式，必須以個別步驟來完成。 電腦中斷連線之後，如果您想要使用已啟用 Azure Arc 的伺服器重新登錄它，請使用， `azcmagent connect` 以在 Azure 中建立新資源。
+此參數會指定 Azure Resource Manager 中的資源，代表已在 Azure 中刪除機器。 它不會從電腦移除代理程式，您可以分別卸載代理程式。 電腦中斷連線之後，如果您想要使用已啟用 Azure Arc 的伺服器重新登錄它，請使用， `azcmagent connect` 以在 Azure 中建立新資源。
 
 > [!NOTE]
 > 如果您已將一或多個 Azure VM 擴充功能部署到已啟用 Arc 的伺服器，並在 Azure 中刪除其註冊，仍會安裝延伸模組。 請務必瞭解，這取決於所安裝的擴充功能，它會主動執行其功能。 打算淘汰或不再由已啟用 Arc 之伺服器管理的電腦，應該先移除這些延伸模組，再從 Azure 移除註冊。
@@ -208,7 +208,7 @@ Azcmagent 工具 ( # A0) 用來在安裝期間設定已連線到 Azure Arc 的�
 
 ## <a name="remove-the-agent"></a>移除代理程式
 
-執行下列其中一種方法，從機器解除安裝 Windows 或 Linux Connected Machine 代理程式。 移除代理程式並不會將已啟用 Arc 之伺服器的電腦取消註冊，或移除已安裝的 Azure VM 擴充功能。 當您不再需要在 Azure 中管理電腦時，您需要個別執行這些步驟，而且應該在卸載代理程式之前先完成這些步驟。
+執行下列其中一種方法，從機器解除安裝 Windows 或 Linux Connected Machine 代理程式。 移除代理程式並不會將已啟用 Arc 之伺服器的電腦取消註冊，或移除已安裝的 Azure VM 擴充功能。 當您不再需要在 Azure 中管理電腦時，請取消註冊電腦並移除已安裝的 VM 擴充功能，這些步驟應該在卸載代理程式之前完成。
 
 ### <a name="windows-agent"></a>Windows 代理程式
 
@@ -286,6 +286,10 @@ Azcmagent 工具 ( # A0) 用來在安裝期間設定已連線到 Azure Arc 的�
 ## <a name="update-or-remove-proxy-settings"></a>更新或移除 Proxy 設定
 
 若要在部署之後將代理程式設定為透過 Proxy 伺服器來與服務通訊，或移除此設定，可使用下列其中一種方法來完成這項工作。
+
+> [!NOTE]
+> 啟用 Arc 的伺服器不支援使用 [Log Analytics 閘道](../../azure-monitor/platform/gateway.md) 作為連線電腦代理程式的 proxy。
+>
 
 ### <a name="windows"></a>Windows
 

@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ef16a4c0b6ea40fb4934307916f1fe79ccea72f9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316975"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609134"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>什麼是已啟用 Azure Arc 的資料服務 (預覽)？
 
@@ -50,7 +50,7 @@ Azure Arc 也提供其他雲端優勢，例如大規模的快速部署和自動�
 ## <a name="next-steps"></a>後續步驟
 
 > **只想試試看嗎？**  
-> 在 Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中快速開始使用 [Azure Arc 快速入門](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)。
+> 在 Azure Kubernetes Service (AKS)、AWS Elastic Kubernetes Service (EKS)、Google Cloud Kubernetes Engine (GKE) 或 Azure VM 中快速開始使用 [Azure Arc 快速入門](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)。
 
 [安裝用戶端工具](install-client-tools.md)
 

@@ -1,18 +1,18 @@
 ---
 title: '建立自訂分類和分類規則 (預覽) '
 description: 本文說明如何建立自訂分類，以定義您的組織唯一的資料資產中的資料類型。 它也會說明如何建立自訂分類規則，讓您可以在整個資料資產中尋找指定的資料。
-author: chandrakavya
-ms.author: kchandra
+author: animukherjee
+ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/1/2020
-ms.openlocfilehash: 16a714cff506117c5d6f7fd4921fbd5346bfda39
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552008"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693465"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure 範疇中的自訂分類 
 
@@ -87,7 +87,7 @@ Contoso 可以藉由建立自訂分類規則，將掃描系統設定為尋找這
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classificationrules.png" alt-text="分類規則磚" border="true":::
 
-4. 選取 [新增]。
+4. 選取 [ **新增**]。
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="新增分類規則" border="true":::
 
@@ -95,7 +95,7 @@ Contoso 可以藉由建立自訂分類規則，將掃描系統設定為尋找這
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/createclassificationrule.png" alt-text="建立新的分類規則" border="true":::
 
-|欄位     |說明  |
+|欄位     |描述  |
 |---------|---------|
 |名稱   |    必要。 最大值為100個字元。    |
 |描述      |選擇性。 最大值為256個字元。    |

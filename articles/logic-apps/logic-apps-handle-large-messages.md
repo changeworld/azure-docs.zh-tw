@@ -3,16 +3,14 @@ title: 使用區塊化處理大型訊息
 description: 了解如何在以 Azure Logic Apps 建立的自動化工作和工作流程中，使用區塊化來處理大型訊息大小
 services: logic-apps
 ms.suite: integration
-author: DavidCBerry13
-ms.author: daberry
 ms.topic: article
-ms.date: 12/03/2019
-ms.openlocfilehash: 1b23c92ec70b80a6cd08fc42a05ffec1e5b43b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 12/18/2020
+ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656762"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695866"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>在 Azure Logic Apps 中利用區塊化處理大型訊息
 
@@ -40,8 +38,57 @@ Logic Apps 無法直接使用超過訊息大小上限的分塊訊息輸出。 �
 
 這些支援區塊化的連接器終端使用者，並無法查看基礎區塊化通訊協定。 而因為並非所有連接器均支援區塊化，所以這些連接器會在傳入的訊息超過連接器的大小限制時，產生執行階段錯誤。
 
-> [!NOTE]
-> 針對使用區塊化的動作，您無法在這些動作中傳遞觸發程序主體或使用 `@triggerBody()?['Content']` 之類的運算式。 相反地，針對文字或 JSON 檔案內容，您可嘗試使用 [**撰寫** 動作](../logic-apps/logic-apps-perform-data-operations.md#compose-action)或 [建立變數](../logic-apps/logic-apps-create-variables-store-values.md)來處理該內容。 如果觸發程序主體包含其他內容類型 (例如媒體檔案)，則必須執行其他步驟來處理該內容。
+
+針對支援和已啟用區塊化的動作，您無法使用觸發程式主體、變數和運算式，例如， `@triggerBody()?['Content']` 因為使用其中任何一個輸入，可避免發生區塊化作業。 請改用 [**撰寫** 動作](../logic-apps/logic-apps-perform-data-operations.md#compose-action)。 具體而言，您必須 `body` 使用 **撰寫** 動作來儲存觸發程式主體、變數、運算式等等的資料輸出，以建立欄位，例如：
+
+```json
+"Compose": {
+    "inputs": {
+        "body": "@variables('myVar1')"
+    },
+    "runAfter": {
+        "Until": [
+            "Succeeded"
+        ]
+    },
+    "type": "Compose"
+},
+```
+然後，若要參考資料，請使用中的區塊化動作 `@body('Compose')` 。
+
+```json
+"Create_file": {
+    "inputs": {
+        "body": "@body('Compose')",
+        "headers": {
+            "ReadFileMetadataFromServer": true
+        },
+        "host": {
+            "connection": {
+                "name": "@parameters('$connections')['sftpwithssh_1']['connectionId']"
+            }
+        },
+        "method": "post",
+        "path": "/datasets/default/files",
+        "queries": {
+            "folderPath": "/c:/test1/test1sub",
+            "name": "tt.txt",
+            "queryParametersSingleEncoded": true
+        }
+    },
+    "runAfter": {
+        "Compose": [
+            "Succeeded"
+        ]
+    },
+    "runtimeConfiguration": {
+        "contentTransfer": {
+            "transferMode": "Chunked"
+        }
+    },
+    "type": "ApiConnection"
+},
+```
 
 <a name="set-up-chunking"></a>
 

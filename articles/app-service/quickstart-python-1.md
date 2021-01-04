@@ -1,21 +1,23 @@
 ---
-title: 快速入門：建立適用於 Linux 的 Python 應用程式
+title: 快速入門：在 Linux 上建立 Python 應用程式
 description: 藉由將 Python 應用程式部署至 App Service 中的 Linux 容器，開始使用 Azure App Service。
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: e068de77760752070117644c269e80a52c8c1707
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9f9805c25955384e7ca5b3f1d560581a7ca4a638
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561540"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614654"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>快速入門：在 Linux 的 Azure App Service 中建立 Python 應用程式
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Python 應用程式
 
 在本快速入門中，您會將 Python 應用程式部署到 [Linux 上的 App Service](overview.md#app-service-on-linux)，這是 Azure 可高度擴充、自我修復的 Web 裝載服務。 您會在 Mac、Linux 或 Windows 電腦上使用本機 [Azure 命令列介面 (CLI)](/cli/azure/install-azure-cli)，以部署具有 Flask 或 Django 架構的範例。 您設定的 Web 應用程式會使用免費的 App Service 層，因此在本文過程中不會產生任何費用。
+
+如需 **一般字詞的定義**，請參閱 [Azure 術語概述](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json)。
 
 > [!TIP]
 > 如果您想要透過 IDE 部署應用程式，請參閱 **[從 Visual Studio Code 將 Python 應用程式部署至 App Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** 。

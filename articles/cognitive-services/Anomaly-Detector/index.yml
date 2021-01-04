@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/10/2019
   ms.author: aahi
-  ms.openlocfilehash: 67424b05a9368876c6721d7f454ea632f77f2d24
-  ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+  ms.openlocfilehash: 7e0fe85007aae69bf79557e0f094e275f538d280
+  ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 11/08/2020
-  ms.locfileid: "94363573"
+  ms.lasthandoff: 12/18/2020
+  ms.locfileid: "97683421"
 landingContent:
 - title: 關於異常偵測器 API
   linkLists:
@@ -86,6 +86,8 @@ landingContent:
       url: anomaly-detector-container-configuration.md
     - text: 在 Azure 中部署容器執行個體
       url: how-to/deploy-anomaly-detection-on-container-instances.md
+    - text: 部署到 IoT Edge
+      url: how-to/deploy-anomaly-detection-on-iot-edge.md
   - linkListType: video
     links:
     - text: 使用容器對異常偵測器進行內部部署的支援

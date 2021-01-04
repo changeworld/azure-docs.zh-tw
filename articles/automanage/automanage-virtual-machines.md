@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182847"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695789"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>適用于虛擬機器的 Azure Automanage
 
@@ -37,7 +37,7 @@ ms.locfileid: "96182847"
 最後，經驗很簡單。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在您嘗試啟用虛擬機器上的 Azure Automanage 之前，必須考慮幾個必要條件。
 
@@ -52,7 +52,7 @@ ms.locfileid: "96182847"
 > [!NOTE]
 > 如果您想要在連線至不同訂用帳戶中工作區的 VM 上使用 Automanage，您必須擁有上述每個訂用帳戶的許可權。
 
-也請務必注意，Automanage 僅支援位於下欄區域的 Windows Vm：西歐、美國東部、美國西部2、加拿大中部美國中西部。
+也請務必注意，Automanage 僅支援位於下欄區域的 Windows Vm：西歐、美國東部、美國西部2、加拿大中部、美國中西部、日本東部。
 
 ## <a name="participating-services"></a>參與的服務
 

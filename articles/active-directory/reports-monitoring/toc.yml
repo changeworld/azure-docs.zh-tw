@@ -98,9 +98,9 @@
     - name: 適用於報表的 Azure AD PowerShell Cmdlet
       href: reference-powershell-reporting.md
     - name: 稽核記錄 API 參考
-      href: /graph/api/resources/directoryaudit?view=graph-rest-beta
+      href: /graph/api/resources/directoryaudit?view=graph-rest-1.0
     - name: 登入記錄 API 參考
-      href: /graph/api/resources/signin?view=graph-rest-beta
+      href: /graph/api/resources/signin?view=graph-rest-1.0
     - name: 稽核活動
       href: reference-audit-activities.md
     - name: 資料保留期原則
