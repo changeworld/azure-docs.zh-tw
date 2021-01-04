@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d53cfc874bca6529fdee821ce3173607d5f06b3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7a4e3a4a6049b48fa70e5352680bdc7342676c0b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456049"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670225"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Cisco Webex Meetings 整合
 
@@ -54,7 +54,7 @@ ms.locfileid: "92456049"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
-1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Cisco Webex Meetings** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Cisco Webex Meetings**。
 1. 從結果面板中選取 [Cisco Webex Meetings]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-webex-meetings"></a>設定和測試 Cisco Webex Meetings 的 Azure AD 單一登入
@@ -75,7 +75,7 @@ ms.locfileid: "92456049"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Cisco Webex Meetings] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，您可以藉由上傳 **服務提供者中繼資料** 檔案，在 **IDP** 起始模式中設定應用程式，如下所示：
 
     a. 按一下 [上傳中繼資料檔案]。
@@ -92,8 +92,8 @@ ms.locfileid: "92456049"
     a. 在 [基本 SAML 設定] 區段內，按一下編輯/鉛筆圖示。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
-    
-    b. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL：` https://<customername>.my.webex.com`
+
+    b. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL：`https://<customername>.my.webex.com`
 
 5. Cisco Webex Meetings 應用程式會預期要有特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯]  圖示以開啟 [使用者屬性] 對話方塊。
 
@@ -163,7 +163,7 @@ ms.locfileid: "92456049"
 1. 使用您的系統管理認證移至 `https://<customername>.webex.com/admin` URL。
 
 2. 移至 [一般網站設定]，然後瀏覽至 [SSO 設定]。
- 
+
     ![顯示 Cisco Webex 管理的螢幕擷取畫面，其中已選取 [一般網站設定] 和 [SSO 設定]。](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. 在 [Webex 系統管理] 頁面上，執行下列步驟：

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 53db139a3c53e9b2d9a4454bfa17a025c21636b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 4e9bca98280b27ff6ac3facee5c00513fc57862c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457831"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aravo"></a>教學課程：Azure Active Directory 與 Aravo 整合
 
@@ -61,9 +61,9 @@ ms.locfileid: "92457831"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Aravo** ，從結果面板中選取 [Aravo]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Aravo**，從結果面板中選取 [Aravo]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Aravo](common/search-new-app.png)
+    ![結果清單中的 Aravo](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -142,8 +142,8 @@ ms.locfileid: "92457831"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

@@ -4,12 +4,12 @@ description: 本文提供的逐步解說說明如何建立 Java 應用程式，�
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e77ff762de11a9c8a723b162993db11efe715b66
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591543"
+ms.locfileid: "97607978"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>使用 Java 將事件傳送至 Azure 事件中樞或從中接收事件 (azure-eventhubs)
 
@@ -17,7 +17,6 @@ ms.locfileid: "97591543"
 
 > [!WARNING]
 > 本快速入門使用舊版的 **azure-eventhubs** 和 **azure-eventhubs-eph** 套件。 如需使用最新 **azure-messaging-eventhubs** 套件的快速入門，請參閱 [使用 azure-messaging-eventhubs 傳送和接收事件](event-hubs-java-get-started-send.md)。 若要將應用程式從使用舊套件改為使用新套件，請參閱[從 azure-eventhubs 遷移至 azure-messaging-eventhubs 的指南](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)。 
-
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -75,7 +74,6 @@ public class SimpleSend {
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
 
-
     }
  }
 ```
@@ -109,7 +107,6 @@ public class SimpleSend {
         // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-
 
         try {
             for (int i = 0; i < 10; i++) {
@@ -418,7 +415,6 @@ eventHubClient.sendSync(sendEvent, partitionKey);
 您可以使用環境中可用的任何資料存放區。
 
 com.microsoft.azure.eventprocessorhost.EventProcessorHost 類別可為您提供兩個建構函式，讓您能夠覆寫 EventProcessorHost 的檢查點管理程式。
-
 
 ## <a name="next-steps"></a>後續步驟
 請閱讀下列文章： 

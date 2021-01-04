@@ -7,18 +7,18 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6e3dbb968d0dff8d8227518fe53d257bfc1fae4b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357564"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607961"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>快速入門：使用 GitHub Actions 連線到 Azure MySQL
 
 **適用於**：:::image type="icon" source="./media/applies-to/yes.png" border="false":::適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器 :::image type="icon" source="./media/applies-to/yes.png" border="false":::適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器
 
-藉由使用工作流程將資料庫更新部署至[適用於 MySQL 的 Azure 資料庫](https://azure.microsoft.com/services/mysql/)，來開始使用 [GitHub Actions](https://docs.github.com/en/actions)。
+藉由使用工作流程將資料庫更新部署至[適用於 MySQL 的 Azure 資料庫](https://azure.microsoft.com/services/mysql/)，來開始使用 [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions)。
 
 
 ## <a name="prerequisites"></a>先決條件

@@ -3,12 +3,12 @@ title: Azure 事件中樞 - 即時事件中的資料異常視覺化
 description: 教學課程：在傳送至 Microsoft Azure 事件中樞的即時事件中視覺化資料異常
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b72b82f3959565e6bd0598fef8e21bb64fedb053
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934050"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655674"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>教學課程：將傳送給 Azure 事件中樞之即時事件中的資料異常視覺化
 
@@ -26,14 +26,12 @@ ms.locfileid: "88934050"
 
 若要完成此教學課程，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶][]。
 
-## <a name="prerequisites"></a>Prerequisites
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - 安裝 [Visual Studio](https://www.visualstudio.com/)。 
 - 您需要 Power BI 帳戶來分析串流分析作業的輸出。 您可以[免費試用 Power BI](https://app.powerbi.com/signupredirect?pbi_source=web)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="set-up-resources"></a>設定資源
 
@@ -157,8 +155,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 3. 切換至 **Azure.Messaging.EventHubs\AnomalyDetector\\** 資料夾，並按兩下 **AnomalyDetector.sln**，以在 Visual Studio 中開啟解決方案。 
 
     若要使用採用舊版 Microsoft.Azure.EventHubs 套件的舊版範例，請從 **Microsoft.Azure.EventHubs\AnomalyDetector** 資料夾中開啟解決方案。 
-3. 開啟 Program.cs，並以執行指令碼時儲存的連接字串取代**事件中樞連接字串**。 
-4. 以您的事件中樞名稱取代**事件中樞名稱**。 按 F5 鍵執行應用程式。 它會開始將事件傳送至事件中樞，並持續到傳送 1000 個事件為止。 有幾個執行個體中必須執行該應用程式，以便您擷取資料。 若有需要，這些情況將在下列指示中指出。
+3. 開啟 Program.cs，並以執行指令碼時儲存的連接字串取代 **事件中樞連接字串**。 
+4. 以您的事件中樞名稱取代 **事件中樞名稱**。 按 F5 鍵執行應用程式。 它會開始將事件傳送至事件中樞，並持續到傳送 1000 個事件為止。 有幾個執行個體中必須執行該應用程式，以便您擷取資料。 若有需要，這些情況將在下列指示中指出。
 
 ## <a name="set-up-azure-stream-analytics"></a>設定 Azure 串流分析
 
@@ -166,7 +164,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ### <a name="create-the-stream-analytics-job"></a>建立串流分析作業
 
-1. 在 Azure 入口網站中，按一下 [建立資源]  。 在搜尋方塊中輸入**串流分析**，然後按 [Enter]  。 選取 [串流分析作業]  。 按一下串流分析作業窗格上的 [建立]  。 
+1. 在 Azure 入口網站中，按一下 [建立資源]  。 在搜尋方塊中輸入 **串流分析**，然後按 [Enter]  。 選取 [串流分析作業]  。 按一下串流分析作業窗格上的 [建立]  。 
 
 2. 輸入作業的以下資訊：
 
@@ -308,7 +306,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
    ![指定資料集的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. 選取 [卡片]  作為視覺效果類型。 在**欄位**下按一下 [新增值]，然後選取 `fraudulentuses`。
+9. 選取 [卡片]  作為視覺效果類型。 在 **欄位** 下按一下 [新增值]，然後選取 `fraudulentuses`。
 
    ![指定視覺效果類型和欄位的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -319,7 +317,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
     ![指定儀表板磚標題和副標題的螢幕擷取畫面。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
     > [!IMPORTANT]
-    > 當您執行範例應用程式並將資料串流至事件中樞時，此圖格上的數字會迅速 (每秒) 變更。 這是因為串流分析查詢會**每秒**實際更新此值。 將查詢更新為 3 分鐘輪轉視窗，以查看在過去幾分鐘內的總和。 
+    > 當您執行範例應用程式並將資料串流至事件中樞時，此圖格上的數字會迅速 (每秒) 變更。 這是因為串流分析查詢會 **每秒** 實際更新此值。 將查詢更新為 3 分鐘輪轉視窗，以查看在過去幾分鐘內的總和。 
 11. 新增另一個視覺效果。 再次重複前幾個步驟：
 
     * 按一下 [新增磚]  。
@@ -329,9 +327,9 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 12. 在 [視覺效果類型]  下選取 [折線圖]  。
 
-13. 在**軸**下方按一下 [新增值]，然後選取 `windowend`。 
+13. 在 **軸** 下方按一下 [新增值]，然後選取 `windowend`。 
 
-14. 在**值**下方按一下 [新增值]，然後選取 `fraudulentuses`。
+14. 在 **值** 下方按一下 [新增值]，然後選取 `fraudulentuses`。
 
 15. 在 [要顯示的時間範圍]  下，選取過去 5 分鐘。 按 [下一步]  。
 

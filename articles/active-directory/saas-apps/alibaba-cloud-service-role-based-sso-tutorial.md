@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: ef057b64fa04387d0ebec5a6e5c38f0e06c55a7d
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: c9db5ab471f743ffbf3ae4e140ad4cb32d0a3d6c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368965"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670184"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Alibaba Cloud Service (角色型 SSO) 整合
 
@@ -76,7 +76,7 @@ ms.locfileid: "97368965"
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
-   ![編輯基本 SAML 組態](common/edit-urls.png)
+    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 4. 如果您有 **服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
 
@@ -84,7 +84,7 @@ ms.locfileid: "97368965"
 
     b. 按一下 **資料夾圖示** 以選取中繼資料檔案，然後按一下 [上傳]  。
 
-    
+
     >[!NOTE]
     >1. 針對 Alibaba Cloud 國際網站，請從[這個](https://signin.alibabacloud.com/saml-role/sp-metadata.xml)連結下載服務提供者中繼資料。
     > 1. 針對 Alibaba Cloud Service (CN) 網站，請從[這個](https://signin.aliyun.com/saml-role/sp-metadata.xml)連結下載服務提供者中繼資料。
@@ -184,17 +184,17 @@ ms.locfileid: "97368965"
     f. 返回 [Graph 總管]，將方法從 **GET** 變更為 **PATCH**，將下列內容貼到 [要求本文]  區段，然後按一下 [執行查詢]  ：
     ```
     { 
-    "appRoles": [
+      "appRoles": [
         { 
-        "allowedMemberTypes":[
+          "allowedMemberTypes":[
             "User"
-        ],
-        "description": "msiam_access",
-        "displayName": "msiam_access",
-        "id": "41be2db8-48d9-4277-8e86-f6d22d35****",
-        "isEnabled": true,
-        "origin": "Application",
-        "value": null
+          ],
+          "description": "msiam_access",
+          "displayName": "msiam_access",
+          "id": "41be2db8-48d9-4277-8e86-f6d22d35****",
+          "isEnabled": true,
+          "origin": "Application",
+          "value": null
         },
         { "allowedMemberTypes": [
             "User"
@@ -206,7 +206,7 @@ ms.locfileid: "97368965"
         "origin": "ServicePrincipal",
         "value": "acs:ram::187125022722****:role/aadrole,acs:ram::187125022722****:saml-provider/AAD"
         }
-    ]
+      ]
     }
     ```
     > [!NOTE]

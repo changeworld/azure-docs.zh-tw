@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 99ee85c569340d8f1d3cff27112436465238c05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 753256adddf8b28518bac45011d582bc7a079629
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455862"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>教學課程：Azure Active Directory 與 ClickUp Productivity Platform 整合
 
@@ -61,9 +61,9 @@ ms.locfileid: "92455862"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ClickUp Productivity Platform** ，從結果面板中選取 [ClickUp Productivity Platform]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ClickUp Productivity Platform**，從結果面板中選取 [ClickUp Productivity Platform]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 ClickUp Productivity Platform](common/search-new-app.png)
+    ![結果清單中的 ClickUp Productivity Platform](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -131,7 +131,7 @@ ms.locfileid: "92455862"
     ![顯示 [設定 Microsoft 單一登入] 頁面的螢幕擷取畫面，您可以在其中複製實體識別碼，並儲存 Azure 同盟中繼資料 URL。](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. 按一下 [複製]  以複製實體識別碼值，並將其貼至 Azure 入口網站中 [基本 SAML 組態]  區段上的 [識別碼 (實體識別碼)]  文字方塊中。
-    
+
     b. 在 [Azure 同盟中繼資料 URL]  文字方塊中，貼上您從 Azure 入口網站複製的應用程式同盟中繼資料 URL 值，然後按一下 [儲存]  。
 
 5. 若要完成設定，請按一下 [向 Microsoft 驗證以完成設定]  ，然後使用 Microsoft 帳戶進行驗證。
@@ -154,8 +154,8 @@ ms.locfileid: "92455862"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -194,7 +194,7 @@ ms.locfileid: "92455862"
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 ClickUp Productivity Platform 租用戶。
 
 2. 按一下 [使用者設定檔]  ，然後選取 [人員]  。
-   
+
     ![顯示 ClickUp Productivity 租用戶的螢幕擷取畫面。](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![顯示已選取 [人員] 連結的螢幕擷取畫面。](./media/clickup-productivity-platform-tutorial/user1.png)

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: 54cc31cdb0ddc7694568d60b1446f1cf99663e95
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 26289f6bdfa086708548d17125a6dfdf50b02a8f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616621"
+ms.locfileid: "97665100"
 ---
-## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>建立適用於 PostgreSQL 的 Azure 資料庫 – Hyperscale (Citus)
+## <a name="create-a-hyperscale-citus-server-group"></a>建立 Hyperscale (Citus) 伺服器群組
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 

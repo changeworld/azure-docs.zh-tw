@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 7713b7596b21e02e941a19f64d3658ab0f5f51f5
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a02cb30b0f00f732fa0c4ac9319a652ef5cb6fc1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359008"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657051"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>教學課程：使用「適用於 MySQL 的 Azure 資料庫 - 彈性伺服器」在 AKS 上部署 WordPress
 
@@ -128,7 +128,7 @@ az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
         . . . . . . .
         ├───wp-content
         │   ├───plugins
-          . . . . . . .
+        . . . . . . .
         └───wp-includes
         . . . . . . .
         ├───wp-config-sample.php

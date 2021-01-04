@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 6fc222d5721d486a0a0472077e754560e8d5ecda
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 2ce7ed1efad6f0d71c6e082c50b4783fb96b822c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456228"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670481"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cimpl"></a>教學課程：Azure Active Directory 與 Cimpl 整合
 
@@ -61,9 +61,9 @@ ms.locfileid: "92456228"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Cimpl** ，從結果面板中選取 [Cimpl]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Cimpl**，從結果面板中選取 [Cimpl]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Cimpl](common/search-new-app.png)
+    ![結果清單中的 Cimpl](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -124,7 +124,7 @@ ms.locfileid: "92456228"
 
 ### <a name="configure-cimpl-single-sign-on"></a>設定 Cimpl 單一登入
 
-若要設定 **Cimpl** 端的單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)]  和複製的適當 URL 傳送給 Cimpl 支援服務 ( **+1 866-982-8250** )。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要設定 **Cimpl** 端的單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)]  和複製的適當 URL 傳送給 Cimpl 支援服務 ( **+1 866-982-8250**)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -142,8 +142,8 @@ ms.locfileid: "92456228"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -179,7 +179,7 @@ ms.locfileid: "92456228"
 
 ### <a name="create-cimpl-test-user"></a>建立 Cimpl 測試使用者
 
-本節的目標是要在 Cimpl 中建立一個名為 Britta Simon 的使用者。 請與 Cimpl 支援小組合作，電話是： **+1 866-982-8250** ，以在 Cimpl 帳戶中新增使用者。
+本節的目標是要在 Cimpl 中建立一個名為 Britta Simon 的使用者。 請與 Cimpl 支援小組合作，電話是： **+1 866-982-8250**，以在 Cimpl 帳戶中新增使用者。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 

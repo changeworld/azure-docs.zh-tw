@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 356c1eea170b712e5cf7034e0c2652857e8bad3f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: de558c73f1ca1721dfa3380e296617661ff4e859
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456276"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670024"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certify"></a>教學課程：Azure Active Directory 與 Certify 整合
 
@@ -62,9 +62,9 @@ ms.locfileid: "92456276"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Certify** ，從結果面板中選取 [Certify]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Certify**，從結果面板中選取 [Certify]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Certify](common/search-new-app.png)
+    ![結果清單中的 Certify](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -138,8 +138,8 @@ ms.locfileid: "92456276"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
