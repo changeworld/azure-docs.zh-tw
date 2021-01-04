@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f4b0642ce54b862b4d4c7b9663cf10e74b206281
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187063"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680490"
 ---
-# <a name="tutorial---migrate-an-android-app-from-google-maps"></a>教學課程 - 從 Google 地圖遷移 Android 應用程式
+# <a name="tutorial-migrate-an-android-app-from-google-maps"></a>教學課程：從 Google 地圖遷移 Android 應用程式
 
 Azure 地圖服務 Android SDK 具有與 Web SDK 類似的 API 介面。 如果您已使用其中一個 SDK 進行開發，則可套用許多相同的概念、最佳做法和架構。 在本教學課程中，您將學會如何：
 
@@ -33,9 +33,9 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 
 如需搭配 Azure 地圖服務使用 Android SDK 進行開發的詳細資訊，請參閱 [Azure 地圖服務 Android SDK 的操作指南](how-to-use-android-map-control-library.md)。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>必要條件
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+1. 藉由登入 [Azure 入口網站](https://portal.azure.com) 來建立 Azure 地圖服務帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 2. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
@@ -46,14 +46,14 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 * 取得 API 或訂用帳戶金鑰，以存取任一平台。
 * 將 XML 新增至活動，以指定應呈現地圖的位置，及其版面配置方式。
 * 將包含地圖檢視的活動中所有生命週期方法，覆寫為地圖類別中的對應方法。 特別是，您必須覆寫下列方法：
-    * `onCreate(Bundle)`
-    * `onStart()`
-    * `onResume()`
-    * `onPause()`
-    * `onStop()`
-    * `onDestroy()`
-    * `onSaveInstanceState(Bundle)`
-    * `onLowMemory()`
+  * `onCreate(Bundle)`
+  * `onStart()`
+  * `onResume()`
+  * `onPause()`
+  * `onStop()`
+  * `onDestroy()`
+  * `onSaveInstanceState(Bundle)`
+  * `onLowMemory()`
 * 等到地圖準備就緒後，再嘗試存取及進行程式設計。
 
 ### <a name="before-google-maps"></a>之前：Google 地圖
@@ -165,9 +165,9 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 
 1. 開啟頂層 **build.gradle** 檔案，並將下列程式碼新增至 [所有專案]區塊區段：
 
-    ```JAVA
+    ```java
     maven {
-            url "https://atlas.microsoft.com/sdk/android"
+        url "https://atlas.microsoft.com/sdk/android"
     }
     ```
 
@@ -186,12 +186,12 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 
     3. 更新您的相依性區塊。 為最新的 Azure 地圖服務 Android SDK 新增實作相依性程式行：
 
-        ```java
-        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
+        ```Java
+        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
         ```
 
         > [!Note]
-        > Azure 地圖服務 Android SDK 會定期進行升級和強化。 您可以參閱[開始使用 Android 地圖控制項](how-to-use-android-map-control-library.md)，以取得最新的 Azure 地圖服務版本號碼。 此外，您也可以將版本號碼從 "0.2" 設定為 "0+"，使您的程式碼一律指向最新版本。
+        > 您也可以將版本號碼設定為 "0+"，使您的程式碼一律指向最新版本。
 
     4. 移至工具列中 [檔案]，然後按一下 [同步處理專案與 Gradle 檔案]。
 
@@ -224,98 +224,99 @@ Azure 地圖服務 Android SDK 支援的最低 Android 版本為 API 21：Androi
 
     地圖控制項包含其本身用來管理 Android OpenGL 生命週期的生命週期方法。 這些方法必須直接從包含的活動中呼叫。 若要正確地呼叫地圖控制項的生命週期方法，您必須在包含地圖控制項的活動中覆寫下列生命週期方法。 呼叫各自的地圖控制方法。
 
-    * `onCreate(Bundle)` 
-    * `onStart()` 
-    * `onResume()` 
-    * `onPause()` 
-    * `onStop()` 
-    * `onDestroy()` 
-    * `onSaveInstanceState(Bundle)` 
+    * `onCreate(Bundle)`
+    * `onStart()`
+    * `onResume()`
+    * `onPause()`
+    * `onStop()`
+    * `onDestroy()`
+    * `onSaveInstanceState(Bundle)`
     * `onLowMemory()`
 
     編輯 **MainActivity.java** 檔案，如下所示：
 
-    ```java
+    ```Java
     package com.example.myapplication;
-
-    import android.support.v7.app.AppCompatActivity;
-    import android.os.Bundle;
+    
+    //For older versions use: import android.support.v7.app.AppCompatActivity; 
+    import androidx.appcompat.app.AppCompatActivity;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
     import com.microsoft.azure.maps.mapcontrol.options.MapStyle;
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-
+    
     public class MainActivity extends AppCompatActivity {
-     
-        static {
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-
-        MapControl mapControl;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
-            mapControl = findViewById(R.id.mapcontrol);
-
-            mapControl.onCreate(savedInstanceState);
     
-            //Wait until the map resources are ready.
-            mapControl.onReady(map -> {
-                //Add your post map load code here.
-    
-            });
-        }
+    static {
+        AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
 
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-
-        @Override
-        protected void onStart(){
-            super.onStart();
-            mapControl.onStart();
-        }
-
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }
+        //Alternatively use Azure Active Directory authenticate.
+        //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
     }
+
+    MapControl mapControl;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mapControl = findViewById(R.id.mapcontrol);
+
+        mapControl.onCreate(savedInstanceState);
+
+        //Wait until the map resources are ready.
+        mapControl.onReady(map -> {
+            //Add your post map load code here.
+
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapControl.onResume();
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        mapControl.onStart();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapControl.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mapControl.onStop();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapControl.onLowMemory();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapControl.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapControl.onSaveInstanceState(outState);
+    }}
     ```
 
 執行應用程式時，地圖控制項會以下列影像的形式載入。
-
 
 ![簡單的 Azure 地圖服務](media/migrate-google-maps-android-app/simple-azure-maps.png)
 
@@ -359,7 +360,7 @@ static {
     AzureMaps.setLanguage("fr-FR");
 
     //Set the regional view to be used by Azure Maps.
-    AzureMaps.setView("auto");
+    AzureMaps.setView("Auto");
 }
 ```
 
@@ -371,7 +372,7 @@ static {
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="auto"
+    app:mapcontrol_view="Auto"
     />
 ```
 
@@ -379,8 +380,10 @@ static {
 
 ```java
 mapControl.onReady(map -> {
-    map.setStyle(StyleOptions.language("fr-FR"));
-    map.setStyle(StyleOptions.view("auto"));
+    map.setStyle(
+        language("fr-FR"),
+        view("Auto")
+    );
 });
 ```
 
@@ -436,7 +439,7 @@ public void onMapReady(GoogleMap googleMap) {
 ```java
 mapControl.onReady(map -> {
     //Set the camera of the map.
-    map.setCamera(center(35.0272, -111.0225), zoom(14));
+    map.setCamera(center(Point.fromLngLat(-111.0225, 35.0272)), zoom(14));
 
     //Set the style of the map.
     map.setStyle(style(MapStyle.SATELLITE));
@@ -492,10 +495,8 @@ mapControl.onReady(map -> {
 
 自訂影像可用來代表地圖上的位置點。 下列範例中的地圖會使用自訂影像在地圖上顯示位置點。 位置點在緯度：51.5 及經度：-0.2。 錨點會位移標記位置，讓圖釘圖示的尖端對準地圖上的正確位置。
 
-<center>
-
 ![黃色圖釘影像](media/migrate-google-maps-web-app/yellow-pushpin.png)<br/>
-yellow-pushpin.png</center>
+yellow-pushpin.png
 
 在這兩個範例中，上述影像均新增至應用程式資源的可繪製資料夾。
 
@@ -666,6 +667,7 @@ mapControl.onReady(map -> {
         strokeWidth(2f)));
 });
 ```
+
 ![Azure 地圖服務的多邊形](media/migrate-google-maps-android-app/azure-maps-polygon.png)
 
 ## <a name="overlay-a-tile-layer"></a>覆蓋地圖底圖圖層
@@ -758,18 +760,13 @@ mapControl.onReady(map -> {
 
 ![Azure 地圖服務的交通](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
+## <a name="clean-up-resources"></a>清除資源
+
+沒有要清除的資源。
+
 ## <a name="next-steps"></a>後續步驟
 
-深入了解 Azure 地圖服務 Android SDK：
+深入了解遷移至 Azure 地圖服務：
 
 > [!div class="nextstepaction"]
-> [如何使用 Android 的地圖控制項](how-to-use-android-map-control-library.md)
-
-> [!div class="nextstepaction"]
-> [在 Android 地圖中新增符號圖層](how-to-add-symbol-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [在 Android 地圖中新增圖形](./how-to-add-shapes-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [變更 Android 地圖中的地圖樣式](./set-android-map-styles.md)
+> [遷移 Android 應用程式](migrate-from-google-maps-android-app.md)

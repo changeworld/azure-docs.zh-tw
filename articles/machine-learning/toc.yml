@@ -165,6 +165,8 @@
       href: concept-model-management-and-deployment.md
     - name: 模型可攜性 (ONNX)
       href: concept-onnx.md
+    - name: 開放原始碼整合
+      href: concept-open-source.md
     - name: ML 管線
       href: concept-ml-pipelines.md
     - name: 安全性
@@ -370,6 +372,8 @@
           href: how-to-train-pytorch.md
         - name: 使用自訂 Docker 映像加以定型
           href: how-to-train-with-custom-image.md
+        - name: 從估算器遷移至 ScriptRunConfig
+          href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: 追蹤和監視訓練
           items:
             - name: 啟動、監視或取消執行
@@ -513,8 +517,6 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: 部署 ML 管線 (Python)
           href: how-to-deploy-pipelines.md
-        - name: 排程管線 (Python)
-          href: how-to-schedule-pipelines.md
         - name: 觸發管線
           href: how-to-trigger-published-pipeline.md
         - name: 設計工具 (拖放)

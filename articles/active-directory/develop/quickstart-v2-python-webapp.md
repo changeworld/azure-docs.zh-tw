@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 1a8d851d2e70850155950786c6aa67c1d5086eb2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 383f7f37e93b4705419ba1f93f509c86eaab192b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993868"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030632"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式
 
@@ -50,31 +50,25 @@ ms.locfileid: "95993868"
 >
 > 若要手動註冊您的應用程式，並將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
-> 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-> 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-> 1. 選取 [新增註冊]。
-> 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
->      - 在 [名稱]  區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `python-webapp`。
->      - 在 [支援的帳戶類型]  底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]  。
->      - 選取 [註冊]。
->      - 在應用程式 [概觀]  頁面上，記下 [應用程式 (用戶端) 識別碼]  值以供稍後使用。
-> 1. 從功能表中選取 [驗證]  ，然後新增下列資訊：
->    - 新增 **Web** 平台組態。 將 `http://localhost:5000/getAToken` 新增為 **重新導向 URI**。
->    - 選取 [儲存]  。
-> 1. 在左側功能表上，選擇 [憑證與祕密]  ，然後在 [用戶端密碼]  區段中，按一下 [新增用戶端密碼]  ：
->
->      - 輸入 (執行個體應用程式祕密的) 金鑰描述。
->      - 選取 [1 年]  作為 [金鑰持續時間]。
->      - 當您按一下 [新增]  時，金鑰值會隨即顯示。
->      - 複製金鑰的值。 稍後您將會用到此資訊。
-> 1. 選取 [API 權限]  區段
->
->      - 按一下 [新增權限]  按鈕，然後
->      - 確定已選取 [Microsoft API]  索引標籤
->      - 在 [常用的 Microsoft API]  區段中，按一下 [Microsoft Graph] 
->      - 在 [委派的權限]  區段中，請確定已選取正確的權限：**User.ReadBasic.All**。 如有需要請使用搜尋方塊。
->      - 選取 [新增權限]  按鈕
+> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+> 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+> 1. 輸入應用程式的 [名稱]，例如 `python-webapp`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+> 1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]。
+> 1. 選取 [註冊]。
+> 1. 在應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
+> 1. 在 [管理] 底下，選取 [驗證]。
+> 1. 選取 [新增平台] > [Web]。
+> 1. 將 `http://localhost:5000/getAToken` 新增為 **重新導向 URI**。
+> 1. 選取 [設定] 。
+> 1. 在 [管理] 底下選取 [憑證和祕密]，然後從 [用戶端密碼] 區段中，選取 [新增用戶端密碼]。
+> 1. 輸入金鑰描述 (用於執行個體應用程式祕密)、保留預設到期日，然後選取 [新增]。
+> 1. 請注意 **用戶端密碼** 的 **值**，以供稍後使用。
+> 1. 在 [管理] 底下，選取 [API 權限] > [新增權限]。
+>1.  確定已選取 [Microsoft API] 索引標籤。
+> 1. 在 [常用的 Microsoft API] 區段中，選取 [Microsoft Graph]。
+> 1. 在 [委派的權限] 區段中，請確定已選取正確的權限：**User.ReadBasic.All**。 如有需要請使用搜尋方塊。
+> 1. 選取 [新增權限] 按鈕。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >

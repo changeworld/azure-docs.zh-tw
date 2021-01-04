@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa04247aca777612c05a7531dc5b36e7af40e60e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba8c88f040bbd527b0d9f219a81fa090f53c84ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255812"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590540"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>教學課程：使用 Windows VM 系統指派的受控識別，透過 SAS 認證來存取 Azure 儲存體
 
@@ -37,7 +37,11 @@ ms.locfileid: "89255812"
 
 ## <a name="prerequisites"></a>必要條件
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- 了解受控識別。 如果您不熟悉適用於 Azure 資源的受控識別功能，請參閱此[概觀](overview.md)。 
+- Azure 帳戶，[註冊免費帳戶](https://azure.microsoft.com/free/)。
+- 若要執行所需的資源建立和角色管理步驟，需要在適當的範圍 (您的訂用帳戶或資源群組) 上具備「擁有者」權限。 如果您需要角色指派的協助，請參閱[使用角色型存取控制來管理 Azure 訂用帳戶資源的存取權](../../role-based-access-control/role-assignments-portal.md)。
+- 您也需要已啟用系統指派受控識別的 Windows 虛擬機器。
+  - 如果您需要為本教學課程建立虛擬機器，您可以遵循標題為[建立已啟用系統指派身分識別的虛擬機器](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity)的文章
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
@@ -49,8 +53,8 @@ ms.locfileid: "89255812"
 2. 按一下 [儲存體]，然後按一下 [儲存體帳戶]，就會顯示新的 [建立儲存體帳戶] 面板。
 3. 輸入儲存體帳戶的名稱，您稍後將會使用它。  
 4. [部署模型] 和 [帳戶類型] 應該分別設定為「資源管理員」和「一般用途」。 
-5. 確定 [訂用帳戶] 和 [資源群組] 符合您在上一個步驟中建立 VM 時指定的值。
-6. 按一下 [建立]。
+5. 確定 [訂用帳戶]  和 [資源群組]  符合您在上一個步驟中建立 VM 時指定的值。
+6. 按一下頁面底部的 [新增]  。
 
     ![建立新的儲存體帳戶](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -61,7 +65,7 @@ ms.locfileid: "89255812"
 1. 巡覽回到您新建立的儲存體帳戶。
 2. 按一下左側面板 [Blob 服務] 下的 [容器] 連結。
 3. 按一下頁面上方的 [+ 容器]，[新的容器] 面板隨即會滑出。
-4. 指定容器的名稱，選取存取層級，然後按一下 [確定]。 稍後在教學課程中將會用到您指定的名稱。 
+4. 指定容器的名稱，選取存取層級，然後按一下 [確定]  。 稍後在教學課程中將會用到您指定的名稱。 
 
     ![建立儲存體容器](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
@@ -70,7 +74,7 @@ ms.locfileid: "89255812"
 Azure 儲存體原生並不支援 Azure AD 驗證。  不過，您可以使用受控識別從 Resource Manager 擷取儲存體 SAS，然後使用該 SAS 存取儲存體。  在此步驟中，您會將存取儲存體帳戶 SAS 的權利，授予 VM 系統指派的受控識別。   
 
 1. 巡覽回到您新建立的儲存體帳戶。   
-2. 按一下左側面板中的 [存取控制 (IAM)] 連結。  
+2. 按一下左側面板中的 [存取控制 (IAM)]  連結。  
 3. 按一下頁面頂端的 [+ 新增角色指派]，以新增虛擬機器的新角色指派。
 4. 在頁面右側中，將 [角色] 設定為 [儲存體帳戶參與者]。  
 5. 在下一個下拉式清單中，將 [存取權指派對象為] 設定為資源 [虛擬機器]。  
@@ -79,16 +83,16 @@ Azure 儲存體原生並不支援 Azure AD 驗證。  不過，您可以使用�
 
     ![替代映像文字](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 的身分識別取得存取權杖，並使用它來呼叫 Azure Resource Manager 
+## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 的身分識別取得存取權杖，並使用它來呼叫 Azure Resource Manager 
 
-其餘課程要從稍早建立的 VM 繼續進行。
+其餘課程會從 VM 繼續進行。
 
 在這部分的課程中，需要用到 Azure Resource Manager PowerShell Cmdlet。  如果您沒有安裝它，請[下載最新版本](/powershell/azure/)之後再繼續。
 
 1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]，移至您的 Windows 虛擬機器，然後在 [概觀] 頁面中，按一下頂端的 [連線]。
-2. 輸入您建立 Windows VM 時新增的**使用者名稱**和**密碼**。 
-3. 現在您已經建立虛擬機器的**遠端桌面連線**，請在遠端工作階段中開啟 PowerShell。 
-4. 使用 Powershell 的 Invoke-WebRequest，向 Azure 資源端點的本機受控識別提出要求，以取得 Azure Resource Manager 的存取權杖。
+2. 輸入您建立 Windows VM 時新增的 **使用者名稱** 和 **密碼**。 
+3. 現在您已經建立虛擬機器的 **遠端桌面連線**。
+4. 在遠端工作階段中開啟 PowerShell 並使用 Invoke-WebRequest，向 Azure 資源端點的本機受控識別提出要求，以取得 Azure Resource Manager 的權杖。
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Method GET -Headers @{Metadata="true"}

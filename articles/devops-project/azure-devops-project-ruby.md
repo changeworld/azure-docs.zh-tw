@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b7ab2fb13be10d5992f1b26973e9735ac238090a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e2f7115560148a1d3b9d2671be54c1ba4d61946
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856053"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588908"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用於 Ruby on Rails 的 CI/CD 管線
 
@@ -42,7 +42,7 @@ Azure DevOps Starter 會在 Azure Repos 中建立 CI/CD 管線。 您可以建�
 
 1. 選取 [Ruby on Rails]  應用程式架構。 完成時，選取 [下一步]  。
 
-1. **Linux 上的 Web 應用程式**是預設的部署目標。  您可以選擇性地選取 [用於容器的 Web App]  。 您先前選擇的應用程式架構，會指出這裡可用的 Azure 服務部署目標類型。 
+1. **Linux 上的 Web 應用程式** 是預設的部署目標。  您可以選擇性地選取 [用於容器的 Web App]  。 您先前選擇的應用程式架構，會指出這裡可用的 Azure 服務部署目標類型。 
     
 1. 選取您選擇的目標服務，然後選取 [下一步]  。
 
@@ -63,9 +63,9 @@ Azure DevOps Starter 會在 Azure Repos 中建立 CI/CD 管線。 您可以建�
 
 Azure DevOps Starter 會在 Azure Pipelines 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業：
 
-1. 在 DevOps Starter 儀表板的左側，選取您主要分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
+1. 在 DevOps Starter 儀表板的左側，選取您主分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
 
-1. 若要檢視存放庫的複製 URL，請選取右上方的 [複製]  。 您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可主要分支的程式碼變更。
+1. 若要檢視存放庫的複製 URL，請選取右上方的 [複製]  。 您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可主分支的程式碼變更。
 
 1. 從左側移至 app/views/pages/home.html.erb  檔案，然後選取 [編輯]  。
 
@@ -107,7 +107,7 @@ Azure DevOps Starter 會在 Azure DevOps 組織中自動設定完整的 CI/CD �
 
 1. 在 [置放] 圖示的右側，選取 [持續部署觸發程序]。 這個發行管線已啟用 CD 觸發程序，每次有新的建置成品可用時，它就會執行部署。 您可以選擇性地停用觸發程序，因此需要手動執行部署。 
 
-1. 從左側選取 [工作]****。 工作是您部署程序所執行的活動。 在此範例中，會建立一個工作來部署到 Azure App Service。
+1. 從左側選取 [工作]。 工作是您部署程序所執行的活動。 在此範例中，會建立一個工作來部署到 Azure App Service。
 
 1. 從右側選取 [檢視版本]，以顯示版本的歷程記錄。
 

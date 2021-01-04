@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448284"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092154"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的機器學習功能
 
@@ -62,9 +62,9 @@ Azure Synapse Analytics 提供各種機器學習功能。 本文概述如何在 
 
 除了 MLlib 之外，也可以使用 [Scikit Learn](https://scikit-learn.org/stable/) 等熱門程式庫來開發模型。 如需如何在 Synapse Spark 集區上安裝程式庫的詳細資訊，請參閱[在 Azure Synapse Analytics 中管理 Apache Spark 的程式庫](../spark/apache-spark-azure-portal-add-libraries.md)。
 
-#### <a name="train-models-with-azure-machine-learning-automl"></a>使用 Azure Machine Learning AutoML 將模型定型
+#### <a name="train-models-with-azure-machine-learning-automated-ml"></a>使用 Azure Machine Learning 自動化 ML 來訓練模型
 
-另一種不需要事先熟悉機器學習即可將機器學習模型定型的方法，是使用 AutoML。 [AutoML](/azure/machine-learning/concept-automated-ml) 是一項功能，可自動定型一組機器學習模型，並可讓使用者根據特定計量來選取最佳模型。 由於與 Azure Synapse Notebooks 的 Azure Machine Learning 緊密整合，使用者可以利用傳遞 Azure Active Directory 驗證，輕鬆地在 Synapse 中運用 AutoML。  這表示您只需要指向您的 Azure Machine Learning 工作區，而不需要輸入任何認證。 以下是 [AutoML 教學課程](../spark/apache-spark-azure-machine-learning-tutorial.md)，會說明如何使用 Synapse Spark 集區上的 Azure Machine Learning AutoML 來定型模型。
+另一種不需要事先熟悉機器學習即可訓練機器學習模型的方法是使用自動化 ML。 [自動化 ML](/azure/machine-learning/concept-automated-ml) 是一項功能，可自動訓練一組機器學習模型，並可讓使用者根據特定計量來選取最佳模型。 由於與 Azure Synapse Notebooks 的 Azure Machine Learning 緊密整合，使用者可以利用傳遞 Azure Active Directory 驗證，輕鬆地在 Synapse 中運用自動化 ML。  這表示您只需要指向您的 Azure Machine Learning 工作區，而不需要輸入任何認證。 以下是[自動化 ML 教學課程](../spark/apache-spark-azure-machine-learning-tutorial.md)，會說明如何使用 Synapse Spark 集區上的 Azure Machine Learning 自動化 ML 來訓練模型。
 
 ### <a name="model-deployment-and-scoring"></a>模型部署和評分
 

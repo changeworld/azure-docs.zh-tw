@@ -14,18 +14,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: 21410f7137a76b43f57ca7a1e037908410eae365
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e4c87d8579b06cdfb37c1635a25db5ce67aa3545
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844517"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094789"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用後端應用程式讀取遙測 (.NET)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用服務應用程式讀取遙測 (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
-IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷取到雲端進行儲存或處理。 在此快速入門中，您透過 IoT 中樞，將遙測從模擬裝置應用程式傳送到後端應用程式以進行處理。
+IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷取到雲端進行儲存或處理。 在此快速入門中，您透過 IoT 中樞，將遙測從模擬裝置應用程式傳送到服務應用程式以進行處理。
 
 本快速入門會使用兩個預先撰寫的 C# 應用程式，一個用來傳送遙測，而另一個用來從中樞讀取遙測。 在執行下列兩個應用程式之前，您需要建立一個 IoT 中樞，並向中樞註冊一個裝置。
 
@@ -33,7 +33,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 ## <a name="prerequisites"></a>必要條件
 
-* 您在此快速入門中執行的兩個範例應用程式是使用 C# 所撰寫的。 您的開發電腦上必須有 .NET Core SDK 3.0 或以上版本。
+* 您在此快速入門中執行的兩個範例應用程式是使用 C# 所撰寫的。 您的開發機器上必須有 .NET Core SDK 3.1 或以上版本。
 
     您可以從 [.NET](https://www.microsoft.com/net/download/all) 下載適用於多種平台的 .NET Core SDK。
 
@@ -44,7 +44,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
     ```
 
     > [!NOTE]
-    > 建議使用 .NET Core SDK 3.0 或以上版本來編譯在本快速入門中用來讀取遙測的事件中樞服務程式碼。 若您將服務程式碼的語言版本設定為預覽，如[從中樞讀取遙測](#read-the-telemetry-from-your-hub)一節中所述，就可以使用 .NET Core SDK 2.1。
+    > 建議使用 .NET Core SDK 3.1 或以上版本來編譯在本快速入門中用來讀取遙測的事件中樞服務程式碼。
 
 
 * 從 [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) 下載 Azure IoT C# 範例，然後將 ZIP 封存檔解壓縮。
@@ -87,7 +87,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
     您稍後將會在快速入門中使用此值。
 
-3. 您還需要 IoT 中樞的「事件中樞相容端點」、「事件中樞相容路徑」和「服務主要金鑰」，以便讓後端應用程式連線到 IoT 中樞並擷取訊息。 下列命令會針對您的 IoT 中樞擷取這些值：
+3. 您還需要 IoT 中樞的「事件中樞相容端點」、「事件中樞相容路徑」和「服務主要金鑰」，以便讓服務應用程式連線到 IoT 中樞並擷取訊息。 下列命令會針對您的 IoT 中樞擷取這些值：
 
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
@@ -105,22 +105,18 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 模擬裝置應用程式會連線到 IoT 中樞上的裝置特定端點，並且傳送模擬的溫度和溼度遙測。
 
-1. 在本機終端機視窗中，瀏覽至範例 C# 專案的根資料夾。 然後瀏覽至 **iot-hub\Quickstarts\simulated-device** 資料夾。
+1. 在本機終端機視窗中，瀏覽至範例 C# 專案的根資料夾。 然後瀏覽至 **iot-hub\Quickstarts\SimulatedDevice** 資料夾。
 
-2. 在您選擇的文字編輯器中開啟 **SimulatedDevice.cs** 檔案。
-
-    使用您稍早所記錄的裝置連接字串來取代 `s_connectionString` 變數的值。 然後將變更儲存到 **SimulatedDevice.cs**。
-
-3. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的套件：
+2. 在本機終端機視窗中，執行下列命令以安裝模擬裝置應用程式所需的套件：
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. 在本機終端機視窗中，執行下列命令以建置並執行模擬裝置應用程式：
+3. 在本機終端機視窗中，使用稍早記下的裝置連接字串執行下列命令，以建置並執行模擬裝置應用程式：
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {DeviceConnectionString}
     ```
 
     下列螢幕擷取畫面顯示模擬裝置應用程式將遙測傳送到 IoT 中樞時的輸出：
@@ -129,36 +125,37 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 ## <a name="read-the-telemetry-from-your-hub"></a>從您的中樞讀取遙測
 
-後端應用程式會連線到 IoT 中樞上的服務端 **事件** 端點。 應用程式會接收模擬裝置所傳送的「裝置到雲端」訊息。 IoT 中樞後端應用程式通常在雲端中執行，以接收和處理「裝置到雲端」訊息。
+服務應用程式會連線到 IoT 中樞上的服務端 **事件** 端點。 應用程式會接收模擬裝置所傳送的「裝置到雲端」訊息。 IoT 中樞服務應用程式通常在雲端中執行，以接收和處理「裝置到雲端」訊息。
 
-1. 在另一個終端機視窗中，瀏覽至範例 C# 專案的根資料夾。 然後瀏覽至 **iot-hub\Quickstarts\read-d2c-messages** 資料夾。
+1. 在另一個終端機視窗中，瀏覽至範例 C# 專案的根資料夾。 然後瀏覽至 **iot-hub\Quickstarts\ReadD2cMessages** 資料夾。
 
-2. 在您選擇的文字編輯器中開啟 **ReadDeviceToCloudMessages.cs** 檔案。 更新下列變數，並將您的變更儲存至檔案。
-
-    | 變數 | 值 |
-    | -------- | ----------- |
-    | `EventHubsCompatibleEndpoint` | 使用您稍早所記錄的事件中樞相容端點來取代變數的值。 |
-    | `EventHubName`                | 使用您稍早所記錄的事件中樞相容路徑來取代變數的值。 |
-    | `IotHubSasKey`                | 使用您稍早所記錄的服務主要金鑰來取代變數的值。 |
-
-    > [!NOTE]
-    > 若您使用 .NET Core SDK 2.1，必須將語言版本設定為預覽，才能編譯程式碼。 若要這麼做，請開啟 **read-d2c-messages .csproj** 檔案，並將 `<LangVersion>` 元素的值設定為 `preview`。
-
-3. 在本機終端機視窗中，執行下列命令以安裝後端應用程式所需的程式庫：
+2. 在本機終端機視窗中，執行下列命令以安裝應用程式所需的程式庫：
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. 在本機終端機視窗中，執行下列命令以建置並執行後端應用程式：
+3. 在本機終端機視窗中，執行下列命令以查看參數選項。
 
     ```cmd/sh
     dotnet run
     ```
 
-    下列螢幕擷取畫面顯示由模擬裝置傳送遙測至中樞時，後端應用程式接收遙測的輸出：
+4. 在本機終端機視窗中，執行下列其中一個命令以建置並執行應用程式：
 
-    ![執行後端應用程式](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
+    ```cmd/sh
+    dotnet run -- -c {EventHubConnectionString}
+    ```
+
+    或
+
+    ```cmd/sh
+    dotnet run -- -e {EventHubCompatibleEndpoint} -n {EventHubName} -s {SharedAccessKey}
+    ```
+
+    下列螢幕擷取畫面顯示由模擬裝置傳送遙測至中樞時，服務應用程式接收遙測的輸出：
+
+    ![執行服務應用程式](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -166,9 +163,9 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中，您會設定 IoT 中樞、註冊裝置、使用 C# 應用程式將模擬的遙測傳送到中樞，並使用簡單的後端應用程式從中樞讀取遙測。
+在此快速入門中，您會設定 IoT 中樞、註冊裝置、使用 C# 應用程式將模擬的遙測傳送到中樞，並使用簡單的服務應用程式從中樞讀取遙測。
 
-若要了解如何從後端應用程式控制您的模擬裝置，請繼續下一個快速入門。
+若要了解如何從服務應用程式控制模擬裝置，請繼續下一個快速入門。
 
 > [!div class="nextstepaction"]
 > [快速入門：控制連線到 IoT 中樞的裝置](quickstart-control-device-dotnet.md)

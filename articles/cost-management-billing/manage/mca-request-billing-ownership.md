@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.author: banders
-ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348974"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938472"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>從其他帳戶接管 Azure 訂用帳戶的帳單擁有權
 
@@ -22,6 +22,14 @@ ms.locfileid: "96348974"
 本文適用於 Microsoft 客戶合約的計費帳戶。 請[確認您是否有 Microsoft 客戶合約的存取權](#check-for-access)。
 
 若要要求帳單擁有權，您必須是 **發票區段擁有者** 或 **發票區段參與者**。 若要深入了解，請參閱[發票區段角色工作](understand-mca-roles.md#invoice-section-roles-and-tasks)。
+
+您向其要求帳單擁有權的人員必須具有下列其中一個角色：
+
+- 若為企業 Microsoft 客戶合約，則使用者為帳單擁有者。
+- 若為 Enterprise 合約，則使用者必須是帳戶擁有者。
+- 若為 Microsoft Online Service 方案計費帳戶，則使用者必須是帳戶管理員。
+
+如需詳細資訊，請參閱[在 Azure 入口網站中檢視計費帳戶](view-all-accounts.md)。
 
 ## <a name="request-billing-ownership"></a>要求帳單擁有權
 
@@ -42,7 +50,7 @@ ms.locfileid: "96348974"
 1. 從清單中選取發票區段。 在您接管訂用帳戶的擁有權後，其使用量就會指派給帳單設定檔發票的這個區段。
 1. 從左下方選取 [轉移要求]，然後選取 [新增要求]。  
     [![顯示選取轉移要求的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. 輸入您要對其要求帳單擁有權之使用者的電子郵件地址。 這個使用者必須是 Microsoft 線上服務方案計費帳戶的帳戶管理員，或是Enterprise 合約的帳戶擁有者。 如需詳細資訊，請參閱[在 Azure 入口網站中檢視計費帳戶](view-all-accounts.md)。 選取 [傳送轉移要求]。  
+1. 輸入您要對其要求帳單擁有權之使用者的電子郵件地址。 選取 [傳送轉移要求]。  
     [![顯示傳送轉移要求的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
 1. 使用者會收到一封電子郵件，內含用來檢閱轉移要求的指示。  
     ![顯示檢閱轉移要求電子郵件的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
@@ -68,6 +76,7 @@ ms.locfileid: "96348974"
 1. 從清單中選取已為其傳送移轉要求的發票區段。
 1. 從左下方選取 [轉移要求]。 [轉移要求] 頁面會顯示下列資訊：  
     [![顯示轉移要求清單的螢幕擷取畫面](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
+
    |資料行|定義|
    |---------|---------|
    |要求日期|轉移要求的傳送日期|

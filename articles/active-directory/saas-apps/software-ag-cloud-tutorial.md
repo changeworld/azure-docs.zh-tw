@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/20/2020
+ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f6f56958fb63e73e254a45e7cf8ad457be8269ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602014"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607638"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Software AG Cloud 整合 | Microsoft Docs
 
@@ -77,12 +77,16 @@ ms.locfileid: "96602014"
 
 1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：
 
-    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+    1. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：
 
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://*.softwareag.cloud/auth/realms/TENANT-NAME`
+        `https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
 
-    > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Software AG Cloud 用戶端支援小組](mailto:support@softwareag.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
+    1. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：
+
+        `https://*.softwareag.cloud/auth/realms/TENANT-NAME`
+
+        > [!NOTE]
+        > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Software AG Cloud 用戶端支援小組](mailto:support@softwareag.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -101,7 +105,7 @@ ms.locfileid: "96602014"
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下 [建立]。
+   1. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -145,15 +149,12 @@ ms.locfileid: "96602014"
 
 ## <a name="test-sso"></a>測試 SSO 
 
-在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
+I在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
 
-* 假設 Microsoft Azure 已設定為 Software AG Cloud 中的提供者，請瀏覽至 `www.softwareag.cloud` 然後按一下 [登入] 按鈕，並輸入環境名稱。 在下一個畫面中，按一下 [使用 <IDP NAME> 登入] 連結，然後輸入認證。 驗證之後，您將會登入並移至 Software AG Cloud 首頁。
-
-* 直接移至 Software AG Cloud 登入 URL，然後從該處起始登入流程。
-
-* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 Software AG Cloud 圖格時，將會重新導向至 Software AG Cloud登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
-
+假設 Microsoft Azure 已設定為 Software AG Cloud 中的提供者，請瀏覽至 `www.softwareag.cloud` 然後按一下 [登入] 按鈕，並輸入環境名稱。 在下一個畫面中，按一下 [使用 <IDP NAME> 登入] 連結，然後輸入認證。 驗證之後，您將會登入並移至 Software AG Cloud 首頁。
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Software AG Cloud 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
+設定 Software AG Cloud 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+
+

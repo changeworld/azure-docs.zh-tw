@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/25/2020
-ms.openlocfilehash: 3668d4e5164ad731058f944feaef66029c2ed2a9
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: f4536beae18a50d3e1d42fc1593cf826c94418f8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126070"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033823"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -27,7 +27,7 @@ ms.locfileid: "96126070"
 
 在 Program.cs 中，`main` 方法會呼叫 `SetupDeviceClientAsync` 來執行下列動作：
 
-* 在透過 DPS 佈建裝置時，使用模型識別碼 `dtmi:com:example:Thermostat;1`。
+* 在透過 DPS 佈建裝置時，使用模型識別碼 `dtmi:com:example:Thermostat;1`。 IoT Central 會使用型號識別碼來識別或產生此裝置的裝置範本。 若要深入了解，請參閱[將裝置與裝置範本相關聯](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)。
 * 建立 **DeviceClient** 執行個體以連線到 IoT Central。
 
 ```csharp

@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: f04a8aa96b51ac9330e4302c3afcc48f7d305b39
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95746722"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507705"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>教學課程：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph
 
@@ -71,16 +71,17 @@ ms.locfileid: "95746722"
 
 ## <a name="register-your-application"></a>註冊您的應用程式
 
-1. 移至 [Azure 入口網站](https://aka.ms/MobileAppReg)
-2. 開啟應用程式註冊刀鋒視窗，然後選取 [+新增註冊]。
-3. 輸入應用程式的 **名稱**，無需設定重新導向 URI。
-4. 在 [支援的帳戶類型] 下，選取 **任何組織目錄中的帳戶 (任何 Azure AD 目錄 - 多租用戶) 和個人 Microsoft 帳戶 (例如 Skype、Xbox)**
-5. 選取 [註冊]
-6. 在顯示的窗格中，從 [管理] 區段選取 [驗證]。
-
-7. 在靠近畫面頂端的地方，選取 [試用新體驗] 來開啟新的應用程式註冊體驗，然後選取 [+ 新增註冊] > [+ 新增平台] > [iOS/macOS]。
-    - 輸入您專案的組合識別碼。 如果您已下載程式碼，這會是 `com.microsoft.identitysample.MSALiOS`。 如果您要建立自己的專案，請在 Xcode 中選取您的專案，然後開啟 [一般] 索引標籤。[身分識別] 區段中會出現組合識別碼。
-8. 選取 `Configure` 並儲存出現在 [MSAL 組態] 頁面中的 [MSAL 組態]，以便稍後在設定應用程式時可加以輸入。 選取 [完成]。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+1. 輸入應用程式的 **名稱**。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+1. 在 [支援的帳戶類型] 下，選取 **任何組織目錄中的帳戶 (任何 Azure AD 目錄 - 多租用戶) 和個人 Microsoft 帳戶 (例如 Skype、Xbox)** 。
+1. 選取 [註冊]。
+1. 在 [管理] 底下，選取 [驗證] > [新增平台] > [iOS/macOS]。
+1. 輸入您專案的組合識別碼。 如果您已下載程式碼，這會是 `com.microsoft.identitysample.MSALiOS`。 如果您要建立自己的專案，請在 Xcode 中選取您的專案，然後開啟 [一般] 索引標籤。[身分識別] 區段中會出現組合識別碼。
+1. 選取 [設定] 並儲存出現在 [MSAL 組態] 頁面中的 [MSAL 組態]，以便稍後在設定應用程式時可加以輸入。 
+1. 選取 [完成]。
 
 ## <a name="add-msal"></a>新增 MSAL
 
@@ -520,7 +521,7 @@ MSAL 會公開兩個主要方法來取得權杖：`acquireTokenSilently()` 和 `
 
 1. 以範圍建立 `MSALInteractiveTokenParameters`。
 2. 使用已建立的參數呼叫 `acquireToken()`。
-3. 處理錯誤。 如需詳細資訊，請參閱[適用於 iOS 和 macOS 的 MSAL 錯誤處理指南](msal-handling-exceptions.md)。
+3. 處理錯誤。 如需詳細資訊，請參閱[適用於 iOS 和 macOS 的 MSAL 錯誤處理指南](msal-error-handling-ios.md)。
 4. 處理成功的情況。
 
 將下列程式碼新增至 `ViewController` 類別。

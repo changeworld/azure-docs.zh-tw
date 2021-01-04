@@ -1,22 +1,22 @@
 ---
 title: 教學課程 - 部署本機 Azure Resource Manager 範本
-description: 了解如何從您的本機電腦部署 Azure Resource Manager 範本
+description: 了解如何從您的本機電腦部署 Azure Resource Manager (ARM 範本) 範本
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: fe13376ced428713703f2bd5cf33941129dec1d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 640d314711e34119dac5e1c5bf9fa245685b6f38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611617"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368131"
 ---
-# <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>教學課程：部署本機 Azure Resource Manager 範本
+# <a name="tutorial-deploy-a-local-arm-template"></a>教學課程：部署本機 ARM 範本
 
-了解如何從您的本機電腦部署 Azure Resource Manager 範本。 完成此教學課程大約需要 **8 分鐘**。
+了解如何從您的本機電腦部署 Azure Resource Manager (ARM 範本) 範本。 完成此教學課程大約需要 **8 分鐘**。
 
-此教學課程是系列中的第一個。 當您完成此課程系列時，您會藉由建立連結的範本將範本模組化、將連結的範本儲存在儲存體帳戶中，並使用 SAS 權杖保護連結的範本，並了解如何建立 DevOp 管線以部署範本。 此系列著重於範本部署。  如果您想要了解範本開發，請參閱[初學者教學課程](./template-tutorial-create-first-template.md)。
+此教學課程是系列中的第一個。 當您完成此課程系列時，您會藉由建立連結的範本將範本模組化、將連結的範本儲存在儲存體帳戶中，並使用 SAS 權杖保護連結的範本，並了解如何建立 DevOps 管線以部署範本。 此系列著重於範本部署。 如果您想要了解範本開發，請參閱[初學者教學課程](./template-tutorial-create-first-template.md)。
 
 ## <a name="get-tools"></a>取得工具
 
@@ -29,12 +29,13 @@ ms.locfileid: "91611617"
 - [安裝 Azure PowerShell](/powershell/azure/install-az-ps)
 - [在 Windows 上安裝 Azure CLI](/cli/azure/install-azure-cli-windows)
 - [在 Linux 上安裝 Azure CLI](/cli/azure/install-azure-cli-linux)
+- [在 macOS 上安裝 Azure CLI](/cli/azure/install-azure-cli-macos)
 
 安裝 Azure PowerShell 或 Azure CLI 之後，請確定您是第一次登入。 如需說明，請參閱[登入 - PowerShell](/powershell/azure/install-az-ps#sign-in) 或[登入 - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in)。
 
 ### <a name="editor-optional"></a>編輯器 (選擇性)
 
-範本是 JSON 檔案。 若要檢閱/編輯範本，您需要良好的 JSON 編輯器。 我們建議使用含 Resource Manager 工具擴充功能的 Visual Studio Code。 如果您需要安裝這些工具，請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
+範本是 JSON 檔案。 若要檢閱/編輯範本，您需要良好的 JSON 編輯器。 我們建議使用含 Resource Manager 工具擴充功能的 Visual Studio Code。 如果您需要安裝這些工具，請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="review-template"></a>檢閱範本
 
@@ -43,7 +44,7 @@ ms.locfileid: "91611617"
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
 > [!IMPORTANT]
-> 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能使用數字和小寫字母。 名稱必須是唯一的。 在範本中，儲存體帳戶名稱是附加了 "store" 的專案名稱，且專案名稱的長度必須介於 3 到 11 個字元之間。 因此，專案名稱必須符合儲存體帳戶名稱需求，且少於 11 個字元。
+> 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能使用數字和小寫字母。 名稱必須是唯一的。 在範本中，儲存體帳戶名稱是附加了 **store** 的專案名稱，且專案名稱的長度必須介於 3 到 11 個字元之間。 因此，專案名稱必須符合儲存體帳戶名稱需求，且少於 11 個字元。
 
 以副檔名. json 將範本的複本儲存到您的本機電腦，例如 azuredeploy.json。 您稍後會在本教學課程中部署此範本。
 
@@ -65,7 +66,7 @@ az login
 
 ---
 
-如果您有多個 Azure 訂用帳戶，請選取您要使用的訂用帳戶：
+如果您有多個 Azure 訂用帳戶，請選取您要使用的訂用帳戶。 以您的訂用帳戶資訊取代 `[SubscriptionID/SubscriptionName]` 和方括弧 `[]`：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -129,7 +130,7 @@ New-AzResourceGroupDeployment `
   -verbose
 ```
 
-若要深入了解如何使用 Azure PowerShell 來部署範本，請參閱[使用 Resource Manager 範本與 Azure PowerShell 部署資源](./deploy-powershell.md)。
+若要深入了解如何使用 Azure PowerShell 來部署範本，請參閱[使用 ARM 範本與 Azure PowerShell 部署資源](./deploy-powershell.md)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -148,7 +149,7 @@ az deployment group create \
   --verbose
 ```
 
-若要深入了解如何使用 Azure CLI 來部署範本，請參閱[使用 Resource Manager 範本和 Azure CLI 部署資源](./deploy-cli.md)。
+若要深入了解如何使用 Azure CLI 來部署範本，請參閱[使用 ARM 範本與 Azure CLI 部署資源](./deploy-cli.md)。
 
 ---
 
@@ -156,10 +157,10 @@ az deployment group create \
 
 您可以藉由刪除資源群組來清除您所部署的資源。
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
-2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
+2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
 3. 選取資源群組名稱。
-4. 從頂端功能表中選取 [刪除資源群組]。
+4. 從頂端功能表中選取 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟
 

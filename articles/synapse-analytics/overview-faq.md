@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576021"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563257"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics 的常見問題
 
@@ -59,7 +59,7 @@ A：首先，您可以將 Azure Synapse 與 Azure 訂用帳戶層級適用的內
 
 A：Synapse 工作區支援使用者定義的資料夾。
 
-### <a name="q-can-i-link-more-than-one-power-bi-workspaces-to-a-single-azure-synapse-workspace"></a>問：我是否可將多個 Power BI 的工作區連結至單一 Azure Synapse 工作區？
+### <a name="q-can-i-link-more-than-one-power-bi-workspace-to-a-single-azure-synapse-workspace"></a>問：我是否可將多個 Power BI 工作區連結至單一 Azure Synapse 工作區？
     
 A：目前，您只能將單一 Power BI 工作區連結至一個 Azure Synapse 工作區。 
 
@@ -69,7 +69,7 @@ A：Apache Spark 的 Synapse Link 已正式發行。 無伺服器 SQL 集區的 
 
 ### <a name="q-does-azure-synapse-workspace-support-cicd"></a>問：Azure Synapse 工作區是否支援 CI/CD？ 
 
-A：是的！ 所有的管線成品、筆記本、SQL 指令碼和 Spark 作業定義都會提供於 GIT 中。 所有集區定義都會以 ARM 範本的形式儲存在 GIT 中。 專用 SQL 集區物件 (結構描述、資料表、檢視等) 將會以具有 CI/CD 支援的資料庫專案進行管理。
+A：是的！ 所有的管線成品、筆記本、SQL 指令碼和 Spark 作業定義都會提供於 Git 中。 所有集區定義都會以 ARM 範本的形式儲存在 Git 中。 專用 SQL 集區物件 (結構描述、資料表、檢視等) 將會以具有 CI/CD 支援的資料庫專案進行管理。
 
 ## <a name="pipelines"></a>Pipelines
 
@@ -91,7 +91,7 @@ A：目前，您必須手動重新建立 Azure Data Factory 管線和相關成�
 
 A：適用於 Synapse 的 Apache Spark 本質上就是 Apache Spark，但新增了與其他服務 (AAD、AzureML 等等) 進行整合的支援，以及額外的程式庫 (mssparktuils、Hummingbird) 和預先調整的效能設定。
 
-目前在 Apache Spark 上執行的任何工作負載都無須變更，即可在 MSFT Spark 上執行。 
+目前在 Apache Spark 上執行的任何工作負載都無須變更，即可在適用於 Azure Synapse 的 Apache Spark 上執行。 
 
 ### <a name="q-what-versions-of-spark-are-available"></a>問：Spark 有哪些可用版本？
 
@@ -121,13 +121,13 @@ A：Azure Synapse 針對特定使用案例提供了特殊用途引擎。 適用�
  
 為達到此案例的需求，您應為每個開發人員提供一個無伺服器 Spark 集區，並將其設定為使用少量的 Spark 資源。 由於無伺服器 Spark 集區在受到主動使用之前不會產生任何費用，因此在有多個開發人員的情況下，可將成本降到最低。 集區會共用中繼資料 (Spark 資料表)，而能夠輕易搭配運作使用。
 
-### <a name="q-how-do-i-include-manage-and-install-libraries"></a>問：如何包含、管理和安裝程式庫 
+### <a name="q-how-do-i-include-manage-and-install-libraries"></a>問：如何包含、管理和安裝程式庫？
 
 A：您可以在建立 Spark 集區時，從 Synapse 工作區或 Azure 入口網站透過 requirements.txt 檔案安裝外部套件。 請參閱[管理 Azure Synapse Analytics 中的 Apache Spark 程式庫](./spark/apache-spark-azure-portal-add-libraries.md)。
 
 ## <a name="dedicated-sql-pools"></a>專用 SQL 集區
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>問：專用 SQL 集區與無伺服器集區的功能有何差異
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-pools"></a>問：專用 SQL 集區與無伺服器集區的功能有何差異？
 
 A：您可以在 [Synapse SQL 中的 T-SQL 功能差異](./sql/overview-features.md)中找到差異的完整清單。
 
@@ -140,7 +140,7 @@ A：並沒有「移動」或「移轉」功能。 您可以選擇在現有的集
 A：根據預設，所有新的專用 SQL 集區都會部署至工作區；但若您有需要，仍可建立獨立形式的專用 SQL 集區 (先前稱為 SQL DW)。 
 
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pool"></a>問：專用 SQL 集區與無伺服器 SQL 集區的功能有何差異 
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>問：專用 SQL 集區與無伺服器 SQL 集區的功能有何差異？
 
 A：您可以在 [Synapse SQL 中的 T-SQL 功能差異](./sql/overview-features.md)中找到差異的完整清單。
 

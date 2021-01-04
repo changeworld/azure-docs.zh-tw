@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 61b6f4a530ab1861c67b0bd4983167546e268957
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: decf289614179718d5c3424f6d4482a5ce2c43e1
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896322"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680714"
 ---
-# <a name="tutorial---migrate-from-google-maps-to-azure-maps"></a>教學課程 - 從 Google 地圖遷移至 Azure 地圖服務
+# <a name="tutorial-migrate-from-google-maps-to-azure-maps"></a>教學課程：從 Google 地圖遷移至 Azure 地圖服務
 
 本文將深入解析如何將 Web、行動裝置和伺服器應用程式從 Google Maps 遷移至 Microsoft Azure 地圖服務平台。 本教學課程包含比較程式碼範例、移轉建議，以及遷移至 Azure 地圖服務的最佳做法。 在本教學課程中，您將了解：
 
 > [!div class="checklist"]
-> * Azure 地圖服務中可用的對等 Google Maps 功能的高階比較
-> * 需要納入考慮的授權差異
-> * 如何規劃移轉
+> * Azure 地圖服務中可用的對等 Google Maps 功能的高階比較。
+> * 需要納入考慮的授權差異。
+> * 如何規劃移轉。
 > * 可以找到技術資源和支援的位置。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>必要條件
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 2. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -70,16 +70,16 @@ Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基
 
 從 Google Maps 遷移至 Azure 地圖服務時，請考量下列關於授權的要點。
 
-- 使用互動式地圖的 Azure 地圖服務費用 (根據已載入的地圖底圖數目)。 另一方面，用於載入地圖控制項的Google Maps 費用。 在互動式 Azure 地圖服務 SDK 中會自動快取地圖底圖，以降低開發人員的成本。 每載入 15 個地圖底圖，就會產生一筆 Azure 地圖服務交易。 互動式 Azure 地圖服務 SDK 使用 512 像素的底圖，平均每個頁面檢視會產生一筆或更少的交易。
-- 將 Google Maps Web 服務的靜態地圖影像取代為 Azure 地圖服務 Web SDK，通常更符合成本效益。 Azure 地圖服務 Web SDK 會使用地圖底圖。 除非使用者移動瀏覽及縮放地圖，否則服務通常只會根據地圖載入量產生少量交易。 如有需要，Azure 地圖服務 Web SDK 有停用移動瀏覽和縮放的選項。 此外，Azure 地圖服務 Web SDK 所提供的視覺效果選項遠比靜態地圖 Web 服務來得多。
-- Azure 地圖服務允許將其平台中的資料儲存在 Azure 中。 此外，也可以根據[使用規定](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)，在別處快取長達六個月的資料。
+* 使用互動式地圖的 Azure 地圖服務費用 (根據已載入的地圖底圖數目)。 另一方面，用於載入地圖控制項的Google Maps 費用。 在互動式 Azure 地圖服務 SDK 中會自動快取地圖底圖，以降低開發人員的成本。 每載入 15 個地圖底圖，就會產生一筆 Azure 地圖服務交易。 互動式 Azure 地圖服務 SDK 使用 512 像素的底圖，平均每個頁面檢視會產生一筆或更少的交易。
+* 將 Google Maps Web 服務的靜態地圖影像取代為 Azure 地圖服務 Web SDK，通常更符合成本效益。 Azure 地圖服務 Web SDK 會使用地圖底圖。 除非使用者移動瀏覽及縮放地圖，否則服務通常只會根據地圖載入量產生少量交易。 如有需要，Azure 地圖服務 Web SDK 有停用移動瀏覽和縮放的選項。 此外，Azure 地圖服務 Web SDK 所提供的視覺效果選項遠比靜態地圖 Web 服務來得多。
+* Azure 地圖服務允許將其平台中的資料儲存在 Azure 中。 此外，也可以根據[使用規定](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46)，在別處快取長達六個月的資料。
 
 以下是 Azure 地圖服務的一些相關資源：
 
-- [Azure 地圖服務定價頁面](https://azure.microsoft.com/pricing/details/azure-maps/)
-- [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
-- [Azure 地圖服務使用規定](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (包含在 Microsoft Online Services 條款中)
-- [在 Azure 地圖服務中選擇正確的定價層](./choose-pricing-tier.md)
+* [Azure 地圖服務定價頁面](https://azure.microsoft.com/pricing/details/azure-maps/)
+* [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=azure-maps)
+* [Azure 地圖服務使用規定](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=46) (包含在 Microsoft Online Services 條款中)
+* [在 Azure 地圖服務中選擇正確的定價層](./choose-pricing-tier.md)
 
 ## <a name="suggested-migration-plan"></a>建議的移轉計劃
 
@@ -119,15 +119,13 @@ Google 地圖提供基本的金鑰型驗證。 Azure 地圖服務同時提供基
 
 開發人員可透過[論壇](/answers/topics/azure-maps.html)或透過眾多 Azure 支援選項之一尋求移轉支援：[https://azure.microsoft.com/support/options](https://azure.microsoft.com/support/options)
 
+## <a name="clean-up-resources"></a>清除資源
+
+沒有要清除的資源。
+
 ## <a name="next-steps"></a>後續步驟
 
 參考下列文章以詳細了解如何遷移您的 Google Maps 應用程式：
 
 > [!div class="nextstepaction"]
 > [遷移 Web 應用程式](migrate-from-google-maps-web-app.md)
-
-> [!div class="nextstepaction"]
-> [遷移 Web 服務](migrate-from-google-maps-web-services.md) 
-
-> [!div class="nextstepaction"]
-> [遷移 Android 應用程式](migrate-from-google-maps-android-app.md) 

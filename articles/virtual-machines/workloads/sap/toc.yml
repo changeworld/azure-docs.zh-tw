@@ -72,6 +72,8 @@
       items:
         - name: 透過 Azure 入口網站控制 Azure HANA Large Instances
           href: hana-li-portal.md
+        - name: 透過 Azure 入口網站管理 BareMetal 執行個體
+          href: baremetal-infrastructure-portal.md
         - name: 使用 STONITH 進行 HA 設定
           href: ha-setup-with-stonith.md
         - name: 類型 II SKU 的 OS 備份

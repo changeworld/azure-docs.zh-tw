@@ -8,13 +8,13 @@ ms.subservice: cost-management
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: b2340e5b220936c1333cf842251b669b3e034042
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f6df8c6ff0db74798b71d57feae91e5245f2a6c2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151212"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028713"
 ---
 # <a name="analyze-unexpected-charges"></a>分析非預期的費用
 
@@ -31,7 +31,7 @@ ms.locfileid: "92151212"
 - [Microsoft 客戶合約檢閱流程](review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
 - [Microsoft 合作夥伴合約檢閱流程](review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
 
-您的 Azure 帳單會根據每個_計量_來匯總當月費用。 計量是用來追蹤一段時間的資源使用量，並用來計算您的帳單。 當您建立單一 Azure 資源 (例如虛擬機器) 時，會針對該資源建立一或多個計量執行個體。
+您的 Azure 帳單會根據每個 _計量_ 來匯總當月費用。 計量是用來追蹤一段時間的資源使用量，並用來計算您的帳單。 當您建立單一 Azure 資源 (例如虛擬機器) 時，會針對該資源建立一或多個計量執行個體。
 
 根據您所要分析帳單上顯示的 _MeterName_ 篩選使用量 CSV 檔案，以查看適用於計量表的所有明細項目。 明細項目的 _InstanceID_ 會對應到產生費用的實際 Azure 資源。
 
@@ -43,7 +43,7 @@ ms.locfileid: "92151212"
 
 [![顯示發票詳細資料的範例](./media/analyze-unexpected-charges/invoice-details.png)](./media/analyze-unexpected-charges/invoice-details.png#lightbox)
 
-若要檢視發票詳細資料，您可以識別具有非預期成本的服務，並在成本分析中判斷哪些資源會直接與資源相關聯。 例如，如果想分析虛擬機器服務的費用，請瀏覽至**累計成本**檢視。 然後，將細微性設定為**每日**，並篩選**服務名稱：虛擬機器**的費用，並依**資源**將費用分組。
+若要檢視發票詳細資料，您可以識別具有非預期成本的服務，並在成本分析中判斷哪些資源會直接與資源相關聯。 例如，如果想分析虛擬機器服務的費用，請瀏覽至 **累計成本** 檢視。 然後，將細微性設定為 **每日**，並篩選 **服務名稱：虛擬機器** 的費用，並依 **資源** 將費用分組。
 
 [![顯示虛擬機器累計成本的範例](./media/analyze-unexpected-charges/virtual-machines.png)](./media/analyze-unexpected-charges/virtual-machines.png#lightbox)
 
@@ -80,7 +80,7 @@ ms.locfileid: "92151212"
 
 ### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>分析使用者對資源父範圍的許可權
 
-具有訂用帳戶或資源群組寫入存取權的人員，通常會有建立資源的相關資訊。 他們應該能夠說明資源的用途，或將您指引至知道的人員。 若要識別擁有訂用帳戶範圍許可權的人員，請參閱[檢視角色指派](../../role-based-access-control/check-access.md#view-role-assignments)。 您可以使用類似流程來處理資源群組。
+具有訂用帳戶或資源群組寫入存取權的人員，通常會有建立資源的相關資訊。 他們應該能夠說明資源的用途，或將您指引至知道的人員。 若要識別擁有訂用帳戶範圍權限的人員，請參閱[檢查使用者的 Azure 資源存取權](../../role-based-access-control/check-access.md)。 您可以使用類似流程來處理資源群組。
 
 ## <a name="get-help-to-identify-charges"></a>取得識別費用的協助
 

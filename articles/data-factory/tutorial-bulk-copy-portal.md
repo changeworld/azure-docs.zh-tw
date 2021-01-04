@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 8594250d72754e6b7d2a6d8c27d3d5bcd0e9c8e4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920866"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508878"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure Data Factory 大量複製多份資料表
 
@@ -25,7 +25,7 @@ ms.locfileid: "96920866"
 本教學課程示範如何 **從 Azure SQL Database 將多個資料表複製到 Azure Synapse Analytics**。 您也可以在其他複製案例中套用相同模式。 例如，將資料表從 SQL Server/Oracle 複製到 Azure SQL Database/Azure Synapse Analytics/Azure Blob，將不同的路徑從 Blob 複製到 Azure SQL Database 資料表。
 
 > [!NOTE]
-> - 如果您不熟悉 Azure Data Factory，請參閱 [Azure Data Factory 簡介](introduction.md)。
+> 如果您不熟悉 Azure Data Factory，請參閱 [Azure Data Factory 簡介](introduction.md)。
 
 概括而言，本教學課程包含下列步驟：
 
@@ -99,9 +99,7 @@ ms.locfileid: "96920866"
 1. 在建立完成後，選取 [前往資源]，以瀏覽至 [資料處理站] 頁面。 
    
 1. 按一下 [編寫與監視] 圖格，以在另一個索引標籤中啟動 Data Factory 使用者介面應用程式。
-1. 在 [現在就開始吧] 頁面上，切換至左面板中的 [編寫] 索引標籤，如下圖所示：
 
-     ![開始使用頁面](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-linked-services"></a>建立連結的服務
 您建立的連結服務會將您的資料存放區和計算連結到資料處理站。 連結服務具有連線資訊，可供 Data Factory 服務在執行階段中用來連線至資料存放區。 
@@ -177,7 +175,9 @@ ms.locfileid: "96920866"
 
 ### <a name="create-a-dataset-for-source-sql-database"></a>建立來源 SQL Database 的資料集
 
-1. 按一下左窗格中的 [+] (加號)，然後按一下 [資料集]。 
+1. 從左側窗格中選取 [建立者] 索引標籤。
+
+1. 選取左窗格中的 **+** (加號) 按鈕，然後選取 [資料集]。 
 
     ![新增資料集功能表](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
 1. 在 [新增資料集] 視窗中選取 [Azure SQL Database]，然後按一下 [繼續]。 
@@ -277,7 +277,7 @@ ms.locfileid: "96920866"
     1. 選取 [啟用暫存] 的核取方塊。
     1. 選取 [AzureStorageLinkedService] 作為 [存放區帳戶連結服務]。
 
-1. 若要驗證管線設定，請按一下頂層管線工具列上的 [驗證]。 確定沒有任何驗證錯誤。 若要關閉 [管線驗證報告]，按一下 **>>** 。
+1. 若要驗證管線設定，請按一下頂層管線工具列上的 [驗證]。 確定沒有任何驗證錯誤。 若要關閉 [管線驗證報告]，按一下雙角括號 **>>** 。
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>建立 GetTableListAndTriggerCopyData 管線
 
@@ -285,6 +285,8 @@ ms.locfileid: "96920866"
 
 * 請查閱 Azure SQL Database 系統資料表，以取得要複製的資料表清單。
 * 觸發管線 "IterateAndCopySQLTables" 以進行實際的資料複製。
+
+以下是建立管線的步驟：
 
 1. 按一下左窗格中的 [+] (加號)，然後按一下 [管線]。
 1. 在 [一般] 面板中的 [屬性] 底下，將管線的名稱變更為 **GetTableListAndTriggerCopyData**。 

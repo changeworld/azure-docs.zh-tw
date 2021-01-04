@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1035f7fb34ed5b2b11e3ef472ccda7cccc30f652
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88142106"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359025"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>教學課程：送回 Azure 資料箱 (預覽)
 
@@ -53,12 +53,12 @@ ms.locfileid: "88142106"
 
 1. 確定裝置的電源已關閉，然後移除纜線。 
 2. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
-3. 請確定出貨標籤已顯示在電子筆墨顯示器上，並安排貨運業者取貨。 如果標籤損毀、遺失或未顯示在電子筆墨顯示器上，請與 Microsoft 支援服務連絡。 若支援人員提出建議，則您可以前往 Azure 入口網站中的 [概觀] > [下載出貨標籤]。 下載出貨標籤並貼在裝置上。 
+3. 請確定出貨標籤已顯示在電子筆墨顯示器上，並安排貨運業者取貨。 如果標籤損毀、遺失或未顯示在電子筆墨顯示器上，請與 Microsoft 支援服務連絡。 若支援人員提出建議，則移至 Azure 入口網站中的 [概觀] > [下載出貨標籤]。 下載出貨標籤並貼在裝置上。 
 4. 如果要送回裝置，請安排由 UPS 取貨。 若要排定取貨時間：
 
-    - 致電給當地的 UPS (國家/地區特定的免付費電話號碼)。
-    - 在您的電話中提供反向出貨追蹤號碼，如 E-ink 顯示或您列印出的標籤中所示。
-    - 若未提供追蹤號碼，UPS 將在取貨期間要求您支付額外的費用。
+   - 致電給當地的 UPS (國家/地區特定的免付費電話號碼)。
+   - 在您的電話中提供反向出貨追蹤號碼，如 E-ink 顯示或您列印出的標籤中所示。 若未提供追蹤號碼，UPS 將在取貨時要求您支付額外的費用。
+   - 如果您在取貨時遇到任何問題，或 UPS 要求您支付額外費用，請連絡 Azure 資料箱營運中心。 傳送電子郵件至 [adbops@microsoft.com](mailto:adbops@microsoft.com)。
 
     除了排定取貨時間，您也可以在最接近的托運地點托運該資料箱。
 4. 一旦貨運業者收取資料箱並進行掃描，入口網站的訂單狀態會更新為 [已取貨]。 此外，也會顯示追蹤識別碼。
@@ -194,7 +194,7 @@ ms.locfileid: "88142106"
 ---
 
 ## <a name="erasure-of-data-from-data-box"></a>清除資料箱的資料
- 
+
 當裝置到達 Azure 資料中心後，資料箱會根據 [NIST SP 800-88 修訂 1 指導方針](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)清除磁碟中的資料。
 
 ## <a name="next-steps"></a>後續步驟

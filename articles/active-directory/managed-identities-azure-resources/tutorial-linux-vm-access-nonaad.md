@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cfcaec38a939291090da7d2229c4a95f984bf28
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 5151f97386ebb6b06be2320505771dc8f47d59a0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360429"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107527"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>教學課程：使用 VM 系統指派的受控識別來存取 Azure Key Vault 
 
@@ -36,7 +36,7 @@ ms.locfileid: "93360429"
  
 ## <a name="prerequisites"></a>Prerequisites
 
-- 了解受控識別。 如果您不熟悉適用於 Azure 資源的受控識別功能，請參閱此[概觀](overview.md)。 
+- 受控識別的基本了解。 如果您不熟悉適用於 Azure 資源的受控識別功能，請參閱此[概觀](overview.md)。 
 - Azure 帳戶，[註冊免費帳戶](https://azure.microsoft.com/free/)。
 - 若要執行所需的資源建立和角色管理步驟，需要在適當的範圍 (您的訂用帳戶或資源群組) 上具備「擁有者」權限。 如果您需要角色指派的協助，請參閱[使用角色型存取控制來管理 Azure 訂用帳戶資源的存取權](../../role-based-access-control/role-assignments-portal.md)。
 - 您也需要已啟用系統指派受控識別的 Linux 虛擬機器。
@@ -62,6 +62,20 @@ ms.locfileid: "93360429"
 1. 選取 [檢閱 + 建立]
 1. 選取 [建立] 
 
+### <a name="create-a-secret"></a>建立祕密
+
+接下來，將祕密新增至 Key Vault，好讓您稍後可以使用在 VM 中執行的程式碼來擷取祕密。 基於本教學課程的目的，我們使用 PowerShell，但是相同的概念適用於在此虛擬機器中執行的任何程式碼。
+
+1. 瀏覽到您新建立的 Key Vault。
+1. 選取 [密碼]，然後按一下 [新增]。
+1. 選取 [產生/匯入]
+1. 在 [上傳選項] 的 [建立祕密] 畫面中，保持選取 [手動]。
+1. 輸入密碼的名稱和值。  值可以是任何您想要的項目。 
+1. 將啟動日期和到期日期保留空白，並將 [啟用] 設定為 [是]。 
+1. 按一下 [建立] 來建立密碼。
+
+   ![建立祕密](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>授與存取權
 
 虛擬機器所使用的受控識別必須被授與存取權，以讀取我們將儲存在 Key Vault 中的祕密。
@@ -77,20 +91,6 @@ ms.locfileid: "93360429"
 1. 選取 [新增]
 1. 選取 [儲存]。
 
-## <a name="create-a-secret"></a>建立祕密
-
-接下來，將祕密新增至 Key Vault，好讓您稍後可以使用在 VM 中執行的程式碼來擷取祕密。 基於本教學課程的目的，我們使用 PowerShell，但是相同的概念適用於在此虛擬機器中執行的任何程式碼。
-
-1. 瀏覽到您新建立的 Key Vault。
-1. 選取 [密碼]，然後按一下 [新增]。
-1. 選取 [產生/匯入]
-1. 在 [上傳選項] 的 [建立祕密] 畫面中，保持選取 [手動]。
-1. 輸入密碼的名稱和值。  值可以是任何您想要的項目。 
-1. 將啟動日期和到期日期保留空白，並將 [啟用] 設定為 [是]。 
-1. 按一下 [建立] 來建立密碼。
-
-   ![建立祕密](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
- 
 ## <a name="access-data"></a>存取資料
 
 若要完成這些步驟，您需要 SSH 用戶端。  如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](/windows/wsl/about)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](../../virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](../../virtual-machines/linux/mac-create-ssh-keys.md)。
@@ -121,7 +121,7 @@ ms.locfileid: "93360429"
     您可以使用此存取權杖來向 Azure Key Vault 進行驗證。  下一個 CURL 要求會說明如何使用 CURL 和 Key Vault REST API 從 Key Vault 讀取密碼。  您會需要 Key Vault 的 URL，其位於 Key Vault [概觀] 頁面的 [基本資訊] 區段。  您也需要在前一次呼叫取得的存取權杖。 
         
     ```bash
-    curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl 'https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
     回應如下所示： 

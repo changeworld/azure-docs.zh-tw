@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 31c4e6383b5eaea2bb66dc1baafa0fbff4918a7c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928523"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589112"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>教學課程：對 ARM 範本部署進行疑難排解
 
@@ -43,7 +43,7 @@ ms.locfileid: "96928523"
 
 從 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)開啟名為[建立標準儲存體帳戶](https://azure.microsoft.com/resources/templates/101-storage-account-create/)的範本，並設定兩個範本問題。
 
-1. 在 Visual Studio Code 中，選取 [檔案]>[開啟檔案]。
+1. 在 Visual Studio Code 中，選取 [檔案] > [開啟檔案]。
 2. 在 [檔案名稱] 中，貼上下列 URL：
 
     ```url
@@ -51,16 +51,16 @@ ms.locfileid: "96928523"
     ```
 
 3. 選取 [開啟] 以開啟檔案。
-4. 將 **apiVersion** 行變更為以下這一行：
+4. 將 `apiVersion` 行變更為以下這一行：
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
 
-    - **apiVersion1** 是無效的元素名稱。 這是驗證錯誤。
-    - API 版本應為 "2018-07-01"。  這是部署錯誤。
+    - `apiVersion1` 是不正確的元素名稱。 這是驗證錯誤。
+    - API 版本應為 `"2018-07-01"`。  這是部署錯誤。
 
-5. 選取 [檔案]>[另存新檔]，在您的本機電腦上將檔案另存為 **azuredeploy.json**。
+5. 選取 [檔案] > [另存新檔]，在您的本機電腦上將檔案另存為 _azuredeploy.json_。
 
 ## <a name="troubleshoot-the-validation-error"></a>對驗證錯誤進行疑難排解
 
@@ -68,13 +68,13 @@ ms.locfileid: "96928523"
 
 殼層應該會出現如下的錯誤：
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-此錯誤訊息表示問題與 **apiVersion1** 有關。
+此錯誤訊息表示問題與 `apiVersion1` 有關。
 
-請使用 Visual Studio Code 將 **apiVersion1** 變更為 **apiVersion** 以更正問題，然後儲存範本。
+請使用 Visual Studio Code 將 `apiVersion1` 變更為 `apiVersion` 以更正問題，然後儲存範本。
 
 ## <a name="troubleshoot-the-deployment-error"></a>對部署錯誤進行疑難排解
 
@@ -82,7 +82,7 @@ New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; 
 
 殼層應該會出現如下的錯誤：
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageAccounts 'storeqii7x2rce77dc' failed with message '{
   "error": {
     "code": "NoRegisteredProviderFound",

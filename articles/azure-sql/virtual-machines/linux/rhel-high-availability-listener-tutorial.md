@@ -2,24 +2,23 @@
 title: 為 Azure 中 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式 - Linux 虛擬機器 | Microsoft Docs
 description: 了解在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式的相關資訊
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83fde9e957cb2011ce585603e51d331be171bc08
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485783"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586206"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教學課程：為 Azure 中 RHEL 虛擬機器上的 SQL Server 設定可用性群組接聽程式
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
-> 本教學課程將以**公開預覽**講解。 
+> 本教學課程將以 **公開預覽** 講解。 
 >
 > 我們在本教學課程中，使用含 RHEL 7.6 的 SQL Server 2017 來設定高可用性，但使用 RHEL 7 或 RHEL 8 的 SQL Server 2019 也可行。 用以設定可用性群組資源的命令，在 RHEL 8 中已有所變更。如需正確命令的詳細資訊，請參閱[建立可用性群組資源](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource)一文與 RHEL 8 資源。
 
@@ -49,7 +48,7 @@ ms.locfileid: "89485783"
 
 2. 在資源群組中，按一下 [新增] 。
 
-3. 搜尋**負載平衡器**，然後在搜尋結果中，選取由 **Microsoft** 發佈的 [負載平衡器]。
+3. 搜尋 **負載平衡器**，然後在搜尋結果中，選取由 **Microsoft** 發佈的 [負載平衡器]。
 
 4. 在 [負載平衡器] 刀鋒視窗上，按一下 [建立]。
 
@@ -136,7 +135,7 @@ Azure 會建立探查，然後使用它來測試那一個 SQL Server 執行個�
    | **閒置逾時 (分鐘)** |*4* |
    | **浮動 IP (伺服器直接回傳)** |**已啟用** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="新增後端集區":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="新增負載平衡規則":::
 
 4. 按一下 [確定]。 
 5. Azure 會設定負載平衡規則。 負載平衡器現已設定成將流量路由傳送到裝載可用性群組接聽程式的 SQL Server 執行個體。 
@@ -263,6 +262,10 @@ Azure 會建立探查，然後使用它來測試那一個 SQL Server 執行個�
     ```
 
 1. 使用命令 `sudo pcs resource` 檢查您的叢集資源，您應該會看到此時的主要執行個體為 `<VM2>`。
+
+    > [!NOTE]
+    > 本文包含「從屬」一詞的參考，Microsoft 已不再使用該字詞。 從軟體中移除該字詞時，我們也會將其從本文中移除。
+
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource

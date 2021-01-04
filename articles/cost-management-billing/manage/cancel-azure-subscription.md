@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444453"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503789"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 訂用帳戶
 
@@ -30,6 +30,17 @@ ms.locfileid: "96444453"
 
 如果您取消付費 Azure 支援方案，剩餘的訂閱期間仍會計費。 如需詳細資訊，請參閱 [Azure 支援方案](https://azure.microsoft.com/support/plans/)。
 
+## <a name="who-can-cancel-a-subscription"></a>誰可以取消訂用帳戶？
+
+下表描述取消訂用帳戶所需的權限。
+
+|訂用帳戶類型     |誰可以取消  |
+|---------|---------|
+|當您透過 Azure 網站註冊 Azure 時所建立的訂用帳戶。 例如，當您註冊 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)、[採用隨用隨付費率的帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)，或以 [Visual studio 訂閱者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)身分註冊時。 |  帳戶管理員和訂用帳戶的擁有者  |
+|[Microsoft Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/)與 [Enterprise 開發/測試](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  帳戶擁有者和訂用帳戶的擁有者       |
+|[Azure 方案](https://azure.microsoft.com/offers/ms-azr-0017g/)和 [適用於 DevTest 的 Azure 方案](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  訂用帳戶的擁有者      |
+
+
 ## <a name="cancel-subscription-in-the-azure-portal"></a>在 Azure 入口網站中取消訂用帳戶
 
 1. 在 [Azure 入口網站的 [訂用帳戶] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中選取您的訂用帳戶。
@@ -41,15 +52,13 @@ ms.locfileid: "96444453"
 > [!NOTE]
 > 如果客戶要求，或發生未付款或詐騙的狀況，合作夥伴可以暫停或取消訂用帳戶。 如需詳細資訊，請參閱[暫停或取消訂用帳戶](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription)。
 
-## <a name="who-can-cancel-a-subscription"></a>誰可以取消訂用帳戶？
+## <a name="cancel-a-support-plan"></a>取消支援方案
 
-下表描述取消訂用帳戶所需的權限。
+如果您已透過 Azure 網站、Azure 入口網站購買支援方案，或如果您的 Microsoft 客戶合約下有支援方案，您可以將支援方案取消。 如果您是透過 Microsoft 業務代表或合作夥伴購買支援方案，請向他們尋求協助。 
 
-|訂用帳戶類型     |誰可以取消  |
-|---------|---------|
-|當您透過 Azure 網站註冊 Azure 時所建立的訂用帳戶。 例如，當您註冊 [Azure 免費帳戶](https://azure.microsoft.com/offers/ms-azr-0044p/)、[採用隨用隨付費率的帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)，或以 [Visual studio 訂閱者](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)身分註冊時。 |  帳戶管理員和訂用帳戶的擁有者  |
-|[Microsoft Enterprise 合約](https://azure.microsoft.com/pricing/enterprise-agreement/)與 [Enterprise 開發/測試](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  帳戶擁有者和訂用帳戶的擁有者       |
-|[Azure 方案](https://azure.microsoft.com/offers/ms-azr-0017g/)和 [適用於 DevTest 的 Azure 方案](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  訂用帳戶的擁有者      |
+1. 在 Azure 入口網站中，瀏覽至 [成本管理 + 計費]。
+1. 在 [帳單] 底下，選取 [週期性費用]。
+1. 在支援方案明細的右側，選取省略符號 ()，然後選取 [關閉自動續約]。
 
 ## <a name="what-happens-after-subscription-cancellation"></a>取消訂用帳戶後會發生什麼情況？
 

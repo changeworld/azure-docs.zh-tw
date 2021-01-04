@@ -1,22 +1,25 @@
 ---
 title: Azure Migrate 中的新功能
 description: 了解 Azure Migrate 服務中的新功能和最新更新。
-author: bsiva
-ms.author: bsiva
-ms.manager: abhemraj
 ms.topic: overview
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: e39b8f7ee7b76a1955e02a7140524f812be086b5
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 7ff9d9c6624016d4b1ea94072d52de1c42d73913
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752442"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400466"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate 中的新功能
 
 [Azure Migrate](migrate-services-overview.md) 可協助您探索及評定內部部署伺服器、應用程式與資料，並將其移轉至 Microsoft Azure 雲端。 此文章摘要說明 Azure Migrate 中的新版本及新功能。
+## <a name="update-december-2020"></a>更新 (2020 年 12 月)
+- Azure Migrate 現在會在 VMware VM 上自動安裝 Azure VM 代理程式，同時使用 VMware 移轉的無代理程式方法將其遷移至 Azure。
+- 您現在可以透過 Azure 入口網站，使用 Azure Migrate 伺服器移轉 (無代理程式複寫) 將 VMware VM 遷移至 Azure 虛擬機器，並使用伺服器端加密 (SSE) 搭配客戶自控金鑰 (CMK) 來加密磁碟。
 
 ## <a name="update-september-2020"></a>更新 (2020 年 9 月)
 - 現在支援將伺服器移轉至可用性區域。
@@ -25,7 +28,7 @@ ms.locfileid: "96752442"
 - 相依性分析 (無代理程式) 現在可以同時在 1000 個 VM 上執行。
 - 現在可以使用 PowerShell 指令碼，大規模地啟用或停用相依性分析 (無代理程式)。 [深入了解。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 - 使用利用相依性分析 (無代理程式) 收集的資料，將 Power BI 中的網路連線視覺化 [深入了解。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
-- 現在使用 Azure Migrate 可支援移轉資料磁碟達 32 TB 的 VMware VM：伺服器移轉無代理程式 VMware 移轉方法。 
+- 現在使用 Azure Migrate 可支援移轉資料磁碟達 32 TB 的 VMware VM：伺服器移轉無代理程式 VMware 移轉方法。
 
 ## <a name="update-august-2020"></a>更新 (2020 年 8 月)
 

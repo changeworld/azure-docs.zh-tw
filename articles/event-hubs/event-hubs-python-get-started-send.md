@@ -1,19 +1,19 @@
 ---
 title: 使用 Python 從 Azure 事件中樞傳送或接收事件 (最新版)
-description: 本文將逐步解說如何建立 Python 應用程式，以使用最新的 azure-eventhub 第 5 版套件對 Azure 事件中樞傳送事件或從中接收事件。
+description: 本文將逐步解說如何建立 Python 應用程式，以使用最新的 azure-eventhub 套件對 Azure 事件中樞傳送事件或從中接收事件。
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: bdcd85786afdf307fdc7043db7ed7651d41820a4
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 4850dc9119f6ef43e687f476f66928f13713f051
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729078"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97105946"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>使用 Python (azure-eventhub 第 5 版) 將事件傳送至事件中樞或從中接收事件
-本快速入門說明如何使用 **azure-eventhub 第 5 版** Python 套件，來傳送事件至事件中樞和從事件中樞接收事件。
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub"></a>使用 Python (azure-eventhub) 將事件傳送至事件中樞或從中接收事件
+本快速入門說明如何使用 **azure-eventhub** Python 套件，來傳送事件至事件中樞和從事件中樞接收事件。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 如果您對 Azure 事件中樞並不熟悉，在進行此快速入門之前，請先參閱[事件中樞概述](event-hubs-about.md)。 
 
 若要完成本快速入門，您必須符合下列必要條件：
@@ -33,7 +33,7 @@ ms.locfileid: "91729078"
     ```cmd
     pip install azure-eventhub-checkpointstoreblob-aio
     ```
-- **建立事件中樞命名空間和事件中樞**。 第一個步驟是使用 [Azure 入口網站](https://portal.azure.com)來建立「事件中樞」類型的命名空間，然後取得您應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 然後，依照下列文章中的指示，取得**事件中樞命名空間的連接字串**：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 您稍後會在本快速入門中使用連接字串。
+- **建立事件中樞命名空間和事件中樞**。 第一個步驟是使用 [Azure 入口網站](https://portal.azure.com)來建立「事件中樞」類型的命名空間，然後取得您應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 然後，依照下列文章中的指示，取得 **事件中樞命名空間的連接字串**：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 您稍後會在本快速入門中使用連接字串。
 
 ## <a name="send-events"></a>傳送事件
 在本節中，您會建立 Python 指令碼來將事件傳送至您稍早建立的事件中樞。

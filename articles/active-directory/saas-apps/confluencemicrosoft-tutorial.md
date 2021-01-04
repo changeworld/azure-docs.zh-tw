@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 73f5968f02e0f348c82d83b5b82d67748b4c3586
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b0cdfd76ed5e7ae20800b52e6074809de12a8b5f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455335"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031465"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Confluence SAML SSO by Microsoft 整合
 
@@ -63,7 +63,7 @@ ms.locfileid: "92455335"
 
 - Confluence：5.0 到 5.10
 - Confluence：6.0.1 到 6.15.9
-- Confluence：7.0.1 到 7.7.2
+- Confluence：7.0.1 到 7.9.3
 
 > [!NOTE]
 > 請注意，我們的 Confluence 外掛程式也適用於 Ubuntu 16.04 版
@@ -103,7 +103,7 @@ ms.locfileid: "92455335"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Confluence SAML SSO by Microsoft] 應用程式整合分頁上，尋找 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -176,7 +176,7 @@ ms.locfileid: "92455335"
 
     ![顯示 "server.xml" 檔案的螢幕擷取畫面，其中將屬性新增至 "connector" 連接埠。](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
-    b. 根據 Proxy/負載平衡器，變更 **系統設定** 中的 **基底 URL** 。
+    b. 根據 Proxy/負載平衡器，變更 **系統設定** 中的 **基底 URL**。
 
     ![顯示 [系統管理 - 設定] 頁面的螢幕擷取畫面，其中醒目提示 [基底 URL]。](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 

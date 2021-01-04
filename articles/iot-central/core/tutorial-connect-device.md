@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 9eeb8174c900b0f548144231e65643c9559f75e3
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 2757d696f5922263abf87399d6491e46b5e5513c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126066"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033825"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>教學課程：建立用戶端應用程式並將其連線至您的 Azure IoT Central 應用程式
 
@@ -84,3 +84,4 @@ ms.locfileid: "96126066"
 * 閱讀[什麼是裝置範本？](./concepts-device-templates.md)，以深入了解在您實作裝置程式碼時裝置範本的角色。
 * 如需深入了解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線，請參閱[連線至 Azure IoT Central](./concepts-get-connected.md)。
 * 參閱[遙測、屬性和命令承載](concepts-telemetry-properties-commands.md)，以深入了解裝置與 IoT Central 交換的資料。
+* 參閱 [IoT 隨插即用裝置開發人員指南](../../iot-pnp/concepts-developer-guide-device.md)。

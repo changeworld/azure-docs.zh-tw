@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 11/11/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34eb34a86948a2b4c043d5d9b58b50958855e449
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005124"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508709"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料從 Azure Blob 儲存體複製到 Azure SQL Database 中的資料庫
 
@@ -26,7 +26,7 @@ ms.locfileid: "96005124"
 在本教學課程中，您會使用 Azure Data Factory 使用者介面 (UI) 建立資料處理站。 此資料處理站中的管線會將資料從 Azure Blob 儲存體複製到 Azure SQL Database 中的資料庫。 本教學課程中的設定模式從以檔案為基礎的資料存放區複製到關聯式資料存放區。 如需支援作為來源和接收的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
 > [!NOTE]
-> - 如果您不熟悉 Data Factory，請參閱 [Data Factory 簡介](introduction.md)。
+> 如果您不熟悉 Data Factory，請參閱 [Data Factory 簡介](introduction.md)。
 
 在本教學課程中，您會執行下列步驟：
 
@@ -82,24 +82,26 @@ ms.locfileid: "96005124"
 
 1. 開啟 **Microsoft Edge** 或 **Google Chrome**。 目前，只有 Microsoft Edge 和 Google Chrome 網頁瀏覽器支援 Data Factory UI。
 2. 在左側功能表上，選取 [建立資源] > [整合] > [Data Factory]。
-3. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory**。
+3. 在 [建立 Data Factory] 頁面的 [基本資料] 索引標籤下，選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
+4. 針對 [資源群組]，採取下列其中一個步驟︰
 
-   Azure Data Factory 的名稱必須是「全域唯一的」。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱。 (例如，使用 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
+    a. 從下拉式清單中選取現有的資源群組。
+
+    b. 選取 [建立新的] ，然後輸入新資源群組的名稱。
+    
+    若要了解資源群組，請參閱[使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。 
+5. 在 [區域] 下，選取資料處理站的位置。 只有受到支援的位置會顯示在下拉式清單中。 資料處理站所使用的資料存放區 (例如 Azure 儲存體和 SQL Database) 和計算 (例如 Azure HDInsight) 可位於其他區域。
+6. 在 [名稱] 下，輸入 **ADFTutorialDataFactory**。
+
+   Azure Data Factory 的名稱必須是 *全域唯一的*。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱。 (例如，使用 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](naming-rules.md)。
 
      ![新增 Data Factory](./media/doc-common-process/name-not-available-error.png)
-4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
-5. 針對 [資源群組]，採取下列其中一個步驟︰
 
-    a. 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。
-
-    b. 選取 [建立新的] ，然後輸入資源群組的名稱。 
-         
-    若要了解資源群組，請參閱[使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。 
-6. 在 [版本] 下，選取 [V2]。
-7. 在 [位置] 下，選取資料處理站的位置。 只有受到支援的位置會顯示在下拉式清單中。 資料處理站所使用的資料存放區 (例如 Azure 儲存體和 SQL Database) 和計算 (例如 Azure HDInsight) 可位於其他區域。
-8. 選取 [建立]。
-9. 建立完成後，您會在 [通知中心] 看到通知。 選取 [移至資源]，以瀏覽至 Data Factory 頁面。
-10. 選取 [編寫與監視]，以在個別索引標籤中啟動 Data Factory 使用者介面。
+7. 在 [版本] 下，選取 [V2]。
+8. 選取頂端的 **Git 組態** 索引標籤，然後選取 [稍後設定 Git] 核取方塊。
+9. 選取 [檢閱 +建立]，然後在通過驗證後選取 [建立]。
+10. 建立完成後，您會在 [通知中心] 看到通知。 選取 [移至資源]，以瀏覽至 Data Factory 頁面。
+11. 選取 [編寫與監視]，以在個別索引標籤中啟動 Azure Data Factory 使用者介面。
 
 
 ## <a name="create-a-pipeline"></a>建立管線
@@ -115,7 +117,7 @@ ms.locfileid: "96005124"
 
    ![建立管線](./media/doc-common-process/get-started-page.png)
 
-1. 1. 在 [一般] 面板中的 [屬性] 下，針對 [名稱] 指定 **CopyPipeline**。 然後按一下右上角的 [屬性] 圖示來摺疊面板。
+1. 在 [一般] 面板中的 [屬性] 下，針對 [名稱] 指定 **CopyPipeline**。 然後按一下右上角的 [屬性] 圖示來摺疊面板。
 
 1. 在 [活動] 工具箱中展開 [移動和轉換] 類別，並將 [複製資料] 活動從工具箱中拖放至管線設計工具介面。 指定 **CopyFromBlobToSql** 作為 [名稱]。
 

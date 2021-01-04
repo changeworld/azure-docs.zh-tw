@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: 86af1ba59d156f19a3d115bfe00400cfda2af0da
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 224f406bd858c732d5471402f77904580b2662ba
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605037"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653957"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全性警示 - 參考指南
 
@@ -126,10 +126,6 @@ ms.locfileid: "97605037"
 
 |警示 (警示類型)|描述|MITRE 策略<br>([深入了解](#intentions))|Severity|
 |----|----|:----:|--|
-|**已載入核心模組**|已使用使用者 %{user} 所用的命令 %{Command used}，在主機 %{compromised host} 中載入核心模組。|-|低|
-|**已移除核心模組**|已使用使用者 %{user} 所用的命令 %{Command used}，在主機 %{compromised host} 中移除核心模組。|-|中|
-|**已將新使用者新增至 Sudoers 群組**|主機資料分析偵測到已將使用者新增至 Sudoers 群組，這可讓其成員以較高權限執行命令。|PrivilegeEscalation|低|
-|**異常終止**<br>(VM_AbnormalDaemonTermination )|在 %{Compromised Host} 上分析主機資料時，偵測到精靈程序異常終止。|惡意探索|低|
 |**偵測到 Htaccess 檔案的存取**|在 %{Compromised Host} 上分析主機資料時，偵測到可能有人操控 Htaccess 檔案。 Htaccess 是功能強大的組態檔，可讓您對執行 Apache Web 軟體的 Web 伺服器進行多項變更，包括基本的重新導向功能，或用於更進階的功能 (例如基本密碼保護)。 攻擊者通常會修改遭到入侵的電腦上的 Htaccess 檔案，以便持續攻擊。|-|中|
 |**已清除歷程記錄檔案**|主機資料分析指出已清除命令歷程記錄檔。 攻擊者可能會這麼做，以掩護其行蹤。 作業已由使用者 '%{user name}' 執行。|-|中|
 |**偵測到嘗試停止 apt-daily-upgrade.timer 服務 [發現多次]**|在 %{Compromised Host} 上分析主機資料時，偵測到嘗試停止 apt-daily-upgrade.timer 服務。 在最近幾次攻擊中，發現攻擊者停止了這項服務，以便下載惡意檔案，並授與攻擊的執行權限。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|低|
@@ -139,8 +135,6 @@ ms.locfileid: "97605037"
 |**偵測到與 Fairware 勒索軟體類似的行為 [發現多次]**|分析 %{Compromised Host} 上的主機資料時，偵測到已在可疑位置執行 rm -rf 命令。 rm-rf 會以遞迴方式刪除檔案，通常會用於個別的資料夾。 在此情況下，其已用於可能會移除大量資料的位置。 Fairware 勒索軟體已知會在此資料夾中執行 rm-rf 命令。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|中|
 |**偵測到與 Fairware 勒索軟體類似的行為**|分析 %{Compromised Host} 上的主機資料時，偵測到已在可疑位置執行 rm -rf 命令。 rm-rf 會以遞迴方式刪除檔案，通常會用於個別的資料夾。 在此情況下，其已用於可能會移除大量資料的位置。 Fairware 勒索軟體已知會在此資料夾中執行 rm-rf 命令。|-|中|
 |**偵測到與勒索軟體類似的行為 [發現多次]**|分析 %{Compromised Host} 上的主機資料時，偵測到執行的檔案與已知的勒索軟體非常相似，而這些檔案可能會阻止使用者存取其系統或個人檔案，並要求贖金以重新取得存取權。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|高|
-|**突發的記錄刪除可能是攻擊者的動作 [多次出現]**|在 [機器] 上分析主機資料時，偵測到大量的系統記錄檔已遭移除。 攻擊者通常會執行此動作來避開防禦。今天在下列機器上看到此行為超過 100 次：[機器名稱]|DefenseEvasion|低|
-|**突發的記錄刪除可能是攻擊者的動作**|在 [機器] 上分析主機資料時，偵測到大量的系統記錄檔已遭移除。 攻擊者通常會執行此動作來避開防禦。|DefenseEvasion|低|
 |**偵測到具有挖礦映像的容器**|電腦記錄指出執行的 Docker 容器執行與數位貨幣挖礦相關聯的映像。 這種行為可能表示您的資源遭到攻擊者濫用。|-|高|
 |**偵測到命令列中異常混用大小寫字元**|在 %{Compromised Host} 上分析主機資料時，偵測到具有大寫和小寫字元異常混用的命令列。 這種模式 (可能是良性的) 也是當攻擊者在遭入侵的主機上執行系統管理工作時，想要規避區分大小寫或雜湊型規則比對時的常見情況。|-|中|
 |**偵測到從已知惡意來源下載的檔案 [發現多次]**|主機資料的分析偵測到從 %{Compromised Host} 上的已知惡意程式碼來源下載檔案。 今日此行為在下列電腦中出現超過 [x] 次：[Machine names]|-|中|
@@ -150,8 +144,6 @@ ms.locfileid: "97605037"
 |**偵測到可疑的檔案下載 [發現多次]**|主機資料的分析偵測到 %{Compromised Host} 上發生可疑的遠端檔案下載。 今日此行為在下列電腦中出現 10 次：[Machine name]|-|低|
 |**偵測到可疑的檔案下載**|主機資料的分析偵測到 %{Compromised Host} 上發生可疑的遠端檔案下載。|-|低|
 |**偵測到可疑的網路活動**|來自 %{Compromised Host} 的網路流量分析偵測到可疑網路活動。 攻擊者通常會使用這類流量來與惡意伺服器通訊，以下載工具、命令和控制項並將資料外流。 通常相關的攻擊者活動包括將遠端管理工具複製到遭入侵的主機，並將使用者資料外流。|-|低|
-|**偵測到使用可疑的 nohup 命令 [發現多次]**|主機資料的分析偵測到可能在 %{Compromised Host} 上使用可疑的 nohup 命令。 已發現攻擊者從臨時目錄執行命令 nohup，以允許其可執行檔在背景中執行。 在臨時目錄中的檔案執行此命令並不正常。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|中|
-|**偵測到使用可疑的 nohup 命令**|主機資料的分析偵測到可能在 %{Compromised Host} 上使用可疑的 nohup 命令。 已發現攻擊者從臨時目錄執行命令 nohup，以允許其可執行檔在背景中執行。 在臨時目錄中的檔案執行此命令並不正常。|-|中|
 |**偵測到使用可疑的 useradd 命令 [發現多次]**|主機資料的分析偵測到可能在 %{Compromised Host} 上使用可疑的 useradd 命令。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|中|
 |**偵測到使用可疑的 useradd 命令**|主機資料的分析偵測到可能在 %{Compromised Host} 上使用可疑的 useradd 命令。|-|中|
 |**偵測到與數位貨幣挖礦的相關行為**|在 %{Compromised Host} 上分析主機資料時，偵測到通常與數位貨幣挖礦相關聯的處理序或命令執行。|-|高|
@@ -197,22 +189,17 @@ ms.locfileid: "97605037"
 |**偵測到具有使用權限的容器**|電腦記錄表示具有使用權限的 Docker 容器正在執行。 具有使用權限的容器具有主機資源的完整存取權。 如果遭到入侵，攻擊者可以使用具使用權限的容器來取得主機電腦的存取權。|-|低|
 |**偵測到與數位貨幣挖礦相關聯的處理序 [發現多次]**|在 %{Compromised Host} 上分析主機資料時，偵測到通常與數位貨幣挖礦相關聯的處理序執行。 今日此行為在下列電腦中出現超過 100 次：[Machine names]|-|中|
 |**偵測到與數位貨幣挖礦相關聯的處理序**|分析主機資料時，偵測到通常與數位貨幣挖礦相關聯的處理序執行。|惡意探索/執行|中|
-|**服務帳戶中執行的程序意外變成根程序。**<br>(VM_SuspectProcessAccountPrivilegeCombo)|在服務帳戶 %{User Name} 中執行的程序 '%{Suspicious Process}' 意外變成根程序。|PrivilegeEscalation|中|
 |**發現以不尋常的方式存取 SSH 授權金鑰檔的處理序**|已透過與已知惡意程式碼活動類似的方法存取 SSH 授權金鑰檔案。 此存取可能表示攻擊者正在嘗試取得電腦存取權以進行持續攻擊。|-||
 |**偵測到以 Python 編碼的下載程式 [發現多次]**|在 %{Compromised Host} 上分析主機資料時，偵測到從遠端位置執行 Python 編碼以下載並執行程式碼。 這可能表示惡意活動。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|低|
 |**在主機上拍攝螢幕擷取畫面 [發現多次]**|在 %{Compromised Host} 上分析主機資料時，偵測到使用者使用螢幕擷取工具。 攻擊者可以使用這些工具來存取私人資料。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|低|
 |**偵測到指令碼副檔名不相符 [發現多次]**|在 %{Compromised Host} 上分析主機資料時，偵測到指令碼解譯器與提供作為輸入之指令檔的副檔名不相符。 這通常與攻擊者指令碼執行相關聯。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|中|
 |**偵測到指令碼副檔名不相符**|在 %{Compromised Host} 上分析主機資料時，偵測到指令碼解譯器與提供作為輸入之指令檔的副檔名不相符。 這通常與攻擊者指令碼執行相關聯。|-|中|
-|**偵測到與安全性相關的程序終止**<br>(VM_SuspectProcessTermination)|分析 %{Compromised Host} 上的主機資料時，偵測到嘗試在主機上終止安全性監視相關程序的動作。 攻擊者通常會嘗試使用預先定義的指令碼，在入侵後終止這類程序。|持續性、防禦迴避|中|
 |**偵測到 Shellcode [發現多次]**|在 %{Compromised Host} 上分析主機資料時，偵測到從命令列產生的 Shellcode。 此程式可能是合法的活動，或表示您的其中一部電腦已遭到入侵。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|中|
 |**SSH 伺服器正在容器內執行** | 電腦記錄指出 SSH 伺服器正在 Docker 容器內執行。 雖然這種行為是刻意的，但通常表示容器的設定不正確或遭到入侵。|-|中|
 |**成功的 SSH 暴力密碼破解攻擊**|主機資料的分析偵測到成功的暴力密碼破解攻擊。 已發現 IP %{Attacker source IP} 進行多次登入嘗試。 成功的登入來自下列使用者，IP 為：%{Accounts used to successfully sign in to host}。 這表示主機可能遭到入侵，並受到惡意執行者的控制。|-|高|
 |**偵測到可疑的帳戶建立**|在 %{Compromised Host} 上分析主機資料時，偵測到建立或使用了本機帳戶 %{Suspicious account name}：此帳戶名稱與標準 Windows 帳戶或群組名稱 '%{Similar To Account Name}' 非常類似。 這可能是攻擊者所建立的 Rogue 帳戶，並如此命名以避免引起人類管理員注意。|-|中|
 |**偵測到可疑的編譯 [發現多次]**|在 %{Compromised Host} 上分析主機資料時，偵測到可疑的編譯。 攻擊者通常會在遭入侵的電腦上編譯惡意探索，以提升權限。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|中|
 |**偵測到可疑的編譯**|在 %{Compromised Host} 上分析主機資料時，偵測到可疑的編譯。 攻擊者通常會在遭入侵的電腦上編譯惡意探索，以提升權限。|-|中|
-|**主機設定的可疑列舉**|在 [機器] 上分析主機資料時偵測到可能的惡意主機列舉。 這可能是惡意執行者一開始入侵機器時執行的命令。|-|中|
-|**可疑的檔案時間戳記修改**|主機資料分析偵測到可疑的時間戳記修改。 攻擊者通常會從現有的合法檔案將時間戳記複製到新工具，以避免他人偵測到這些新放置的檔案。|Persistence/DefenseEvasion|低|
-|**殼層中可疑的第一個命令**<br>(VM_SuspectInitialShellCommand )|在 %{Compromised Host} 上分析主機資料時，偵測到在殼層中有可疑的第一個命令在執行。 這可能表示惡意活動。|惡意探索|低|
 |**偵測到可疑的核心模組編譯 [發現多次]**|在 %{Compromised Host} 上分析主機資料時，偵測到將共用的物件檔案載入為核心模組。 這可能是合法的活動，或表示您的其中一部電腦已遭到入侵。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|中|
 |**可疑的密碼存取 [發現多次]**|分析主機資料時，偵測到 %{Compromised Host} 上出一現可疑的加密使用者密碼存取。 今日此行為在下列電腦中出現 [x] 次：[Machine names]|-|資訊|
 |**可疑的密碼存取**|分析主機資料時，偵測到 %{Compromised Host} 上出一現可疑的加密使用者密碼存取。|-|資訊|
@@ -341,7 +328,7 @@ ms.locfileid: "97605037"
 | **排除虛擬機器中反常的反惡意程式碼軟體檔案 (預覽)**<br>(ARM_UnusualAmFileExclusion)                                                                     | 藉由分析訂用帳戶中的 Azure Resource Manager 作業，在虛擬機器中偵測到反惡意程式碼軟體延伸模組排除了反常的檔案。<br>攻擊者可能會從虛擬機器上的反惡意程式碼軟體掃描中排除檔案，以避免在執行任意程式碼或透過惡意軟體感染電腦時受到偵測。                                                                                              |                                       | 中型   |
 | **虛擬機器中含有可疑命令的自訂指令碼延伸模組 (預覽)**<br>(ARM_CustomScriptExtensionSuspiciousCmd)                                            | 藉由分析訂用帳戶中的 Azure Resource Manager 作業，在虛擬機器中偵測到具有可疑命令的自訂指令碼延伸模組。<br>攻擊者可以使用自訂指令碼延伸模組，透過 Azure Resource Manager 在您的虛擬機器上執行惡意程式碼。                                                                                                                                           | 執行                             | 中   |
 | **虛擬機器中具有可疑進入點的自訂指令碼延伸模組 (預覽)**<br>(ARM_CustomScriptExtensionSuspiciousEntryPoint)                                 | 藉由分析訂用帳戶中的 Azure Resource Manager 作業，在虛擬機器中偵測到具有可疑進入點的自訂指令碼延伸模組。 進入點指的是可疑的 GitHub 存放庫。<br>攻擊者可以使用自訂指令碼延伸模組，透過 Azure Resource Manager 在您的虛擬機器上執行惡意程式碼。                                                                           | 執行                             | 中   |
-| **虛擬機器中具有可疑承載的自訂指令碼延伸模組 (預覽)**<br>(ARM_CustomScriptExtensionSuspiciousPayload)                                        | 藉由分析訂用帳戶中的 Azure Resource Manager 作業，在虛擬機器中偵測到來自可疑 GitHub 存放庫的自訂指令碼延伸模組承載。<br>攻擊者可以使用自訂指令碼延伸模組，透過 Azure Resource Manager 在您的虛擬機器上執行惡意程式碼。                                                                                                                | 執行                             | 中   |
+| **虛擬機器中具有可疑承載的自訂指令碼延伸模組 (預覽)**<br>(ARM_CustomScriptExtensionSuspiciousPayload)                                        | 藉由分析訂用帳戶中的 Azure Resource Manager 作業，在虛擬機器中偵測到來自可疑 GitHub 存放庫的自訂指令碼延伸模組承載。<br>攻擊者可以使用自訂指令碼延伸模組，透過 Azure Resource Manager 在您的虛擬機器上執行惡意程式碼。                                                                                                                | 執行                             | 中型   |
 | **用來列舉訂用帳戶中資源的 MicroBurst 惡意探索工具組 (預覽)**<br>(ARM_MicroBurst.AzDomainInfo)                                             | MicroBurst 的資訊收集模組已在您的訂用帳戶上執行。 此工具可用於探索資源、權限和網路結構。 系統藉由分析訂用帳戶中的 Azure 活動記錄和資源管理作業偵測到此結果                                                                                                                                                                  |                                       | 高     |
 | **用來列舉訂用帳戶中資源的 MicroBurst 惡意探索工具組 (預覽)**<br>(ARM_MicroBurst.AzureDomainInfo)                                          | MicroBurst 的資訊收集模組已在您的訂用帳戶上執行。 此工具可用於探索資源、權限和網路結構。 系統藉由分析訂用帳戶中的 Azure 活動記錄和資源管理作業偵測到此結果                                                                                                                                                                  |                                       | 高     |
 | **用來在您的虛擬機器上執行程式碼的 MicroBurst 惡意探索工具組 (預覽)**<br>(ARM_MicroBurst.AzVMBulkCMD)                                                   | MicroBurst 的利用工具組用來在您的虛擬機器上執行程式碼。 系統藉由分析訂用帳戶中的 Azure Resource Manager 作業偵測到此結果。                                                                                                                                                                                                                                                              |                                       | 高     |

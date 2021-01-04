@@ -1,6 +1,6 @@
 ---
-title: Azure 資訊安全中心提供的支援功能 | Microsoft Docs
-description: 本文件提供 Azure 資訊安全中心所支援的服務清單。
+title: 根據 OS、機器類型和雲端來分類的 Azure 資訊安全中心功能
+description: 了解根據其 OS、類型和雲端部署可使用哪些 Azure 資訊安全中心功能。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2020
+ms.date: 12/17/2020
 ms.author: memildin
-ms.openlocfilehash: 40d70c7bd740d8c72ddb72047a3bae3586e1aa1f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b3671a57b8371c47b1690b4bf6be008d695d1ca0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445246"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654739"
 ---
 # <a name="feature-coverage-for-machines"></a>機器適用的功能涵蓋範圍
 
@@ -99,10 +99,45 @@ ms.locfileid: "94445246"
 | McAfee v10+ | Linux 伺服器系列  | 否 | 是 * *\** _ |
 | Sophos V9+| Linux 伺服器系列  | 否 | 是 _*\**_  |
 
- _ *\** * 目前僅限與受保護訂用帳戶相關聯的 Log Analytics 工作區可提供涵蓋範圍狀態和支援資料。 其不會反映在 Azure 資訊安全中心入口網站中。
+ _*\**_ 目前僅限與受保護訂用帳戶相關聯的 Log Analytics 工作區可提供涵蓋範圍狀態和支援資料。 其不會反映在 Azure 資訊安全中心入口網站中。
 
 > [!NOTE]
 > 在 Windows Server 2008 R2 虛擬機器上偵測 System Center Endpoint Protection (SCEP) 需要在 PowerShell (v3.0 或更新的版本) 之後安裝 SCEP。
+
+
+
+## <a name="feature-support-in-government-clouds"></a>政府雲端中的功能支援
+
+| 服務/功能 | US Gov | 中國 Gov |
+|------|:----:|:----:|
+|[Just-In-Time 虛擬機器存取](security-center-just-in-time.md) (1)|✔|✔|
+|[檔案完整性監視](security-center-file-integrity-monitoring.md) (1)|✔|-|
+|[自適性應用程式控制](security-center-adaptive-application.md) (1)|✔|✔|
+|[自適性網路強化](security-center-adaptive-network-hardening.md) (1)|-|-|
+|[Docker 主機強化](harden-docker-hosts.md) (1)|✔|✔|
+|[機器的整合式弱點評估](deploy-vulnerability-assessment-vm.md) (1)|-|-|
+|[適用於端點的 Microsoft Defender](harden-docker-hosts.md) (1)|✔|-|
+|[連接 AWS 帳戶](quickstart-onboard-aws.md) (1)|-|-|
+|[連接 GCP 帳戶](quickstart-onboard-gcp.md) (1)|-|-|
+|[連續匯出](continuous-export.md)|✔|✔|
+|[工作流程自動化](workflow-automation.md)|✔|✔|
+|[建議豁免規則](exempt-resource.md)|-|-|
+|[重複警示歸併規則](alerts-suppression-rules.md)|✔|✔|
+|[安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)|✔|✔|
+|[資產詳細目錄](asset-inventory.md)|-|-|
+|[適用於 App Service 的 Azure Defender](defender-for-app-service-introduction.md)|-|-|
+|[適用於儲存體的 Azure Defender](defender-for-storage-introduction.md)|✔|-|
+|[適用於 SQL 的 Azure Defender](defender-for-sql-introduction.md)|✔|✔ (2)|
+|[適用於 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)|-|-|
+|[適用於 Resource Manager 的 Azure Defender](defender-for-resource-manager-introduction.md)|-|-|
+|[適用於 DNS 的 Azure Defender](defender-for-dns-introduction.md)|-|-|
+|[適用於 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)|✔|✔|
+|[適用於容器登錄的 Azure Defender](defender-for-container-registries-introduction.md)|✔ (2)|-|
+|||
+
+(1) 需要 *適用於伺服器的 Azure Defender**
+
+(2) 部份
 
 
 ## <a name="next-steps"></a>後續步驟

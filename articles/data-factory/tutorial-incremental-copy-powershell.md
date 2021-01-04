@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 267c82981ca91dc8fd437222c80368b5ab6f4a46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65a2d06acc3461d881ad6f100f3720b217ef7634
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320858"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510204"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以累加方式將資料從 Azure SQL Database 載入到 Azure Blob 儲存體
 
@@ -141,8 +141,8 @@ AS
 
 BEGIN
 
-    UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime
+UPDATE watermarktable
+SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
 
 END
@@ -222,7 +222,7 @@ END
 
     以下是範例輸出：
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -253,7 +253,7 @@ END
 
     以下是範例輸出：
 
-    ```json
+    ```console
     LinkedServiceName : AzureSQLDatabaseLinkedService
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -327,7 +327,7 @@ END
     ```
 
     > [!IMPORTANT]
-    > 此程式碼片段假設您在 Blob 儲存體中有一個名為 adftutorial 的 Blob 容器。 建立容器 (若不存在)，或設為現有容器的名稱。 如果容器中沒有輸出資料夾 `incrementalcopy`，則會自動建立。 在本教學課程中，您會使用運算式 `@CONCAT('Incremental-', pipeline().RunId, '.txt')` 來動態產生檔案名稱。
+    > 此程式碼片段假設您在 Blob 儲存體中有一個名為 `adftutorial` 的 Blob 容器。 建立容器 (若不存在)，或設為現有容器的名稱。 如果容器中沒有輸出資料夾 `incrementalcopy`，則會自動建立。 在本教學課程中，您會使用運算式 `@CONCAT('Incremental-', pipeline().RunId, '.txt')` 來動態產生檔案名稱。
 
 2. 執行 **Set-AzDataFactoryV2Dataset** Cmdlet 來建立資料集 SinkDataset。
 
@@ -505,7 +505,7 @@ END
 
    以下是範例輸出：
 
-   ```json
+   ```console
     PipelineName      : IncrementalCopyPipeline
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -528,7 +528,7 @@ END
 
     以下是範例輸出：
 
-    ```json
+    ```console
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupNewWaterMarkActivity
@@ -608,7 +608,7 @@ END
 
     TableName | WatermarkValue
     --------- | --------------
-    data_source_table | 2017-09-05  8:06:00.000
+    data_source_table | 2017-09-05 8:06:00.000
 
 ### <a name="insert-data-into-the-data-source-store-to-verify-delta-data-loading"></a>將資料插入資料來源存放區以確認差異資料載入
 
@@ -648,7 +648,7 @@ END
 
     以下是範例輸出：
 
-    ```json
+    ```console
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupNewWaterMarkActivity

@@ -59,6 +59,8 @@
               href: solutions-windows-virtual-desktop.md
     - name: 關於 Azure NetApp 檔案的常見問題集
       href: azure-netapp-files-faqs.md
+    - name: 什麼是 Azure 應用程式一致快照集工具
+      href: azacsnap-introduction.md
 - name: 操作指南
   items:
     - name: 註冊 Azure NetApp Files
@@ -131,6 +133,32 @@
       href: /rest/api/netapp/
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Azure 應用程式一致快照集工具 (AzAcSnap)
+      items:
+        - name: 開始使用 AzAcSnap
+          href: azacsnap-get-started.md
+        - name: 安裝 AzAcSnap
+          href: azacsnap-installation.md
+        - name: 使用 AzAcSnap 進行災害復原
+          href: azacsnap-disaster-recovery.md
+        - name: 使用 AzAcSnap 的秘訣與訣竅
+          href: azacsnap-tips.md
+        - name: 針對 AzAcSnap 進行疑難排解
+          href: azacsnap-troubleshoot.md
+        - name: AzAcSnap 命令參考
+          items:
+            - name: 設定 AzAcSnap
+              href: azacsnap-cmd-ref-configure.md
+            - name: 測試 AzAcSnap
+              href: azacsnap-cmd-ref-test.md
+            - name: 使用 AzAcSnap 進行備份
+              href: azacsnap-cmd-ref-backup.md
+            - name: 使用 AzAcSnap 取得詳細資料
+              href: azacsnap-cmd-ref-details.md
+            - name: 使用 AzAcSnap 進行刪除
+              href: azacsnap-cmd-ref-delete.md
+            - name: 使用 AzAcSnap 進行還原
+              href: azacsnap-cmd-ref-restore.md
 - name: 資源
   items:
     - name: 定價

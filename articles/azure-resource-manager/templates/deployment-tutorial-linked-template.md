@@ -5,12 +5,12 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: a90bb90c90206ffe00f8b4f2d035c0ea844b5c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a8b6cd5044b31ee80f50448d6610ba6a57281e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611668"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585644"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>教學課程：部署連結的範本
 
@@ -32,11 +32,11 @@ ms.locfileid: "91611668"
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-下列範本是主要範本。  醒目提示的 **Microsoft.Resources/deployments** 物件會顯示如何呼叫連結的範本。 連結的範本無法儲存為本機檔案，也無法儲存為只能在區域網路上使用的檔案。 您可以只提供 URI 值，其中包含 *http* 或 *https*。 Resource Manager 必須能夠存取範本。 有一個選項是將連結的範本放在儲存體帳戶中，並將 URI 用於該項目。 URI 會透過參數傳遞至範本。 請參閱醒目提示的參數定義。
+下列範本是主要範本。 醒目提示的 `Microsoft.Resources/deployments` 物件會顯示如何呼叫連結的範本。 連結的範本無法儲存為本機檔案，也無法儲存為只能在區域網路上使用的檔案。 您可以只提供 URI 值，其中包含 HTTP 或 HTTPS。 Resource Manager 必須能夠存取範本。 有一個選項是將連結的範本放在儲存體帳戶中，並將 URI 用於該項目。 URI 會透過參數傳遞至範本。 請參閱醒目提示的參數定義。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-以副檔名. json 將主要範本的複本儲存到本機電腦，例如 azuredeploy.json。 您不需要儲存連結範本的複本。  連結的範本會從 GitHub 存放庫複製到儲存體帳戶。
+以副檔名 .json 將主要範本的複本儲存到本機電腦，例如 azuredeploy.json。 您不需要儲存連結範本的複本。 連結的範本會從 GitHub 存放庫複製到儲存體帳戶。
 
 ## <a name="store-the-linked-template"></a>儲存連結的範本
 
@@ -45,7 +45,7 @@ ms.locfileid: "91611668"
 選取 [試試看]  以開啟 Cloud Shell，選取 [複製]  以複製 PowerShell 指令碼，然後以滑鼠右鍵按一下殼層窗格以貼上指令碼：
 
 > [!IMPORTANT]
-> 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能使用數字和小寫字母。 名稱必須是唯一的。 在範本中，儲存體帳戶名稱是附加了 "store" 的專案名稱，且專案名稱的長度必須介於 3 到 11 個字元之間。 因此，專案名稱必須符合儲存體帳戶名稱需求，且少於 11 個字元。
+> 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能使用數字和小寫字母。 名稱必須是唯一的。 在範本中，儲存體帳戶名稱是附加了 **store** 的專案名稱，且專案名稱的長度必須介於 3 到 11 個字元之間。 因此，專案名稱必須符合儲存體帳戶名稱需求，且少於 11 個字元。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -93,7 +93,7 @@ Write-Host "Press [ENTER] to continue ..."
 如果您尚未建立資源群組，請參閱[建立資源群組](./deployment-tutorial-local-template.md#create-resource-group)。
 
 > [!NOTE]
-> 在下列 Azure CLI 程式碼中，資料參數 -d 會是 macOS 中無效的引數。 因此若 macOS 的使用者，要在 macOS 上的終端機新增 2 小時到目前的時間，應該使用 -v+2H。
+> 在下列 Azure CLI 程式碼中，`date` 參數 `-d` 會是 macOS 中無效的引數。 因此若 macOS 的使用者，要在 macOS 上的終端機新增 2 小時到目前的時間，應該使用 `-v+2H`。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -176,7 +176,7 @@ az deployment group create \
 
 ## <a name="next-steps"></a>後續步驟
 
-您已了解如何部署連結的範本。 在下一個教學課程中，您將了解如何建立 DevOp 管線來部署範本。
+您已了解如何部署連結的範本。 在下一個教學課程中，您將了解如何建立 DevOps 管線來部署範本。
 
 > [!div class="nextstepaction"]
 > [建立管線](./deployment-tutorial-pipeline.md)

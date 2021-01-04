@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 444e7c9ad06c6f2ad584c0701fa652b901a4c3e7
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904885"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680770"
 ---
-# <a name="tutorial---migrate-web-service-from-google-maps"></a>教學課程 - 從 Google Maps 遷移 Web 服務
+# <a name="tutorial-migrate-web-service-from-google-maps"></a>教學課程：從 Google Maps 遷移 Web 服務
 
 Azure 地圖服務和 Google Maps 都提供透過 REST Web 服務來存取空間 API 的功能。 這些平台的 API 介面會執行類似的功能。 但是，其各自使用不同的命名慣例和回應物件。
 
@@ -29,7 +29,7 @@ Azure 地圖服務和 Google Maps 都提供透過 REST Web 服務來存取空間
 > * 計算距離矩陣
 > * 取得時區詳細資料
 
-您也會了解： 
+您也會了解：
 
 > [!div class="checklist"]
 > * 從 Google Maps Web 服務遷移時應使用的 Azure 地圖服務 REST 服務
@@ -56,8 +56,7 @@ Azure 地圖服務目前無法使用下列服務 API：
 - 地理位置
 - 地點詳細資料和相片 - 電話號碼和網站 URL 可於 Azure 地圖服務的搜尋 API 中取得。
 - 地圖 URL
-- 最接近的道路 - 這可使用 Web SDK 達到 (如[這裡](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
-)所示)，但目前並未以服務的形式提供。
+- 最接近的道路 - 這可使用 Web SDK 達到 (如[這裡](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic)所示)，但目前並未以服務的形式提供。
 - 靜態街道檢視
 
 Azure 地圖服務有一些可能讓您感興趣的額外 REST Web 服務：
@@ -65,7 +64,7 @@ Azure 地圖服務有一些可能讓您感興趣的額外 REST Web 服務：
 - [空間作業](/rest/api/maps/spatial)：將複雜的空間計算和作業 (例如地理柵欄) 卸載至某個服務。
 - [交通](/rest/api/maps/traffic)：存取即時交通流量和事件資料。
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>必要條件
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 2. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -123,17 +122,17 @@ Azure 地圖服務提供數種反向地理編碼方法：
 
 Azure 地圖服務反向地理編碼 API 有一些無法在 Google Maps 中取得的額外功能。 當您遷移應用程式時，這些功能可能有助於與您的應用程式整合：
 
-- 擷取速限資料
-- 擷取道路使用資訊：支線、幹線、限制進入、斜坡等等
-- 擷取座標位於街道哪一側
+* 擷取速限資料
+* 擷取道路使用資訊：支線、幹線、限制進入、斜坡等等
+* 擷取座標位於街道哪一側
 
 ## <a name="search-for-points-of-interest"></a>搜尋景點
 
 您可以使用地點搜尋 API，在 Google Maps 中搜尋景點資料。 此 API 提供了三種不同的方式供您搜尋景點：
 
-- **從文字尋找地點：** 根據景點名稱、地址或電話號碼來搜尋景點。
-- **鄰近搜尋**：搜尋位於某位置一定距離內的景點。
-- **文字搜尋：** 使用包含景點和位置資訊的自由格式文字來搜尋地點。 例如，「紐約的披薩」或「主街附近的餐廳」。
+* **從文字尋找地點：** 根據景點名稱、地址或電話號碼來搜尋景點。
+* **鄰近搜尋**：搜尋位於某位置一定距離內的景點。
+* **文字搜尋：** 使用包含景點和位置資訊的自由格式文字來搜尋地點。 例如，「紐約的披薩」或「主街附近的餐廳」。
 
 Azure 地圖服務會提供數個景點搜尋 API：
 
@@ -192,9 +191,9 @@ Azure 地圖服務目前沒有與 Google Maps 中的文字搜尋 API 類似的 A
 
 使用 Azure 地圖服務來計算路線和方向。 Azure 地圖服務有許多與 Google Maps 路線服務相同的功能，例如：
 
-- 抵達時間和出發時間。
-- 即時型和預測型交通路線。
-- 不同運輸模式。 例如，開車、走路、騎腳踏車。
+* 抵達時間和出發時間。
+* 即時型和預測型交通路線。
+* 不同運輸模式。 例如，開車、走路、騎腳踏車。
 
 > [!NOTE]
 > Azure 地圖服務要求所有導航點都必須是座標。 地址必須先進行地理編碼。
@@ -231,16 +230,16 @@ Azure 地圖服務路線服務會提供下列 API 來計算路線：
 
 Azure 地圖服務的路線規劃 API 有其他無法在 Google Maps 中取得的功能。 在遷移應用程式時，請考慮使用這些功能，您會發現這些功能很有用。
 
-- 支援路線類型：最短、最快、trilling，以及最省油。
-- 支援額外的行進模式：巴士、摩托車、計程車、卡車和貨車。
-- 支援 150 個導航點。
-- 在單一要求中計算多個行進時間；過往交通情況、即時交通情況、無交通情況。
-- 避免額外的道路類型：共乘道路、沒有鋪柏油的道路、已使用的道路。
-- 指定要避開的自訂區域。
-- 限制路線可能會攀升的海拔高度。
-- 根據引擎規格來規劃路線。 根據引擎規格和剩餘的燃料或電量，計算油車或電動車的路線。
-- 支援商用車路線參數。 例如，車輛尺寸、重量、車軸數目和貨物類型。
-- 指定最大車速。
+* 支援路線類型：最短、最快、trilling，以及最省油。
+* 支援額外的行進模式：巴士、摩托車、計程車、卡車和貨車。
+* 支援 150 個導航點。
+* 在單一要求中計算多個行進時間；過往交通情況、即時交通情況、無交通情況。
+* 避免額外的道路類型：共乘道路、沒有鋪柏油的道路、已使用的道路。
+* 指定要避開的自訂區域。
+* 限制路線可能會攀升的海拔高度。
+* 根據引擎規格來規劃路線。 根據引擎規格和剩餘的燃料或電量，計算油車或電動車的路線。
+* 支援商用車路線參數。 例如，車輛尺寸、重量、車軸數目和貨物類型。
+* 指定最大車速。
 
 除此之外，Azure 地圖服務中的路線規劃服務也支援[計算可規劃路線的範圍](/rest/api/maps/route/getrouterange)。 計算可規劃路線的範圍也稱為等時線。 其需要產生一個多邊形，以涵蓋可從原點以任何方向行進到達的區域。 這些區域全都在指定的時間長度或是燃料量或電量之下。
 
@@ -290,7 +289,7 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 在 URL 中使用 `markers` 參數來新增標記。 `markers` 參數會取得樣式，以及要在地圖上以該樣式呈現的位置清單，如下所示：
 
-```
+```text
 &markers=markerStyles|markerLocation1|markerLocation2|...
 ```
 
@@ -300,21 +299,20 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 使用 `optionName:value` 格式來新增標記樣式，如有多個樣式，則以縱線字元 (\|) 來分隔，例如 "optionName1:value1\|optionName2:value2"。 請注意，選項名稱和值則以冒號 (:) 分隔。 在 Google Maps 中使用下列樣式選項名稱來設定標記樣式：
 
-- `color` – 預設標記圖示的色彩。 可以是 24 位元的十六進位色彩 (`0xrrggbb`) 或下列其中一個值；`black`、`brown`、`green`、`purple`、`yellow`、`blue`、`gray`、`orange`、`red`、`white`。
-- `label` – 要顯示在圖示頂端的單一大寫英數位元。
-- `size` - 標記的大小。 可以是 `tiny`、`mid` 或 `small`。
+* `color` – 預設標記圖示的色彩。 可以是 24 位元的十六進位色彩 (`0xrrggbb`) 或下列其中一個值；`black`、`brown`、`green`、`purple`、`yellow`、`blue`、`gray`、`orange`、`red`、`white`。
+* `label` – 要顯示在圖示頂端的單一大寫英數位元。
+* `size` - 標記的大小。 可以是 `tiny`、`mid` 或 `small`。
 
 針對 Google Maps 中的自訂圖示，請使用下列樣式選項名稱：
 
-- `anchor` – 指定如何將圖示影像對齊座標。 可以是像素 (x,y) 值或下列其中一個值；`top`、`bottom`、`left`、`right`、`center`、`topleft`、`topright`、`bottomleft` 或 `bottomright`。
-- `icon` – 指向圖示影像的 URL。
+* `anchor` – 指定如何將圖示影像對齊座標。 可以是像素 (x,y) 值或下列其中一個值；`top`、`bottom`、`left`、`right`、`center`、`topleft`、`topright`、`bottomleft` 或 `bottomright`。
+* `icon` – 指向圖示影像的 URL。
 
 例如，讓我們將中等大小的紅色標記新增至地圖，座標為「經度：-110，緯度：45」：
 
-```
+```text
 &markers=color:red|size:mid|45,-110
 ```
-
 
 ![Google 地圖標記](media/migrate-google-maps-web-services/google-maps-marker.png)
 
@@ -322,7 +320,7 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 藉由在 URL 中指定 `pins` 參數，將標記新增至靜態地圖影像。 如同 Google Maps，請在參數中指定樣式和位置清單。 您可以指定 `pins` 參數多次，以支援具有不同樣式的標記。
 
-```
+```text
 &pins=iconType|pinStyles||pinLocation1|pinLocation2|...
 ```
 
@@ -332,27 +330,27 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 `iconType` 會指定要建立的圖釘類型。 它具有下列值：
 
-- `default` – 預設的圖釘圖示。
-- `none` – 不會顯示任何圖示，只會呈現標籤。
-- `custom` - 指定要使用自訂圖示。 指向圖示影像的 URL 可在圖釘位置資訊後面新增至 `pins` 參數的結尾。
-- `{udid}` – 儲存在 Azure 地圖服務資料儲存體平台中的圖示所具有的唯一資料識別碼 (UDID)。
+* `default` – 預設的圖釘圖示。
+* `none` – 不會顯示任何圖示，只會呈現標籤。
+* `custom` - 指定要使用自訂圖示。 指向圖示影像的 URL 可在圖釘位置資訊後面新增至 `pins` 參數的結尾。
+* `{udid}` – 儲存在 Azure 地圖服務資料儲存體平台中的圖示所具有的唯一資料識別碼 (UDID)。
 
 新增採用 `optionNameValue` 格式的圖釘樣式。 以縱線 (\|) 字元分隔多個樣式。 例如： `iconType|optionName1Value1|optionName2Value2` 。 選項名稱和值未隔開。 使用下列樣式選項名稱來設定標記樣式：
 
-- `al` – 指定標記的不透明度 (Alpha)。 選取 0 到 1 之間的數字。
-- `an` – 指定圖釘錨點。 使用 "x y" 格式指定 X 和 y 像素值。
-- `co` – 圖釘的色彩。 指定 24 位元的十六進位色彩：`000000` 到 `FFFFFF`。
-- `la` – 指定標籤錨點。 使用 "x y" 格式指定 X 和 y 像素值。
-- `lc` – 標籤的色彩。 指定 24 位元的十六進位色彩：`000000` 到 `FFFFFF`。
-- `ls` – 標籤的大小 (以像素為單位)。 選擇大於 0 的數字。
-- `ro` – 用來旋轉圖示的值 (以度為單位)。 選取 -360 到 360 之間的數字。
-- `sc` – 圖釘圖示的縮放值。 選擇大於 0 的數字。
+* `al` – 指定標記的不透明度 (Alpha)。 選取 0 到 1 之間的數字。
+* `an` – 指定圖釘錨點。 使用 "x y" 格式指定 X 和 y 像素值。
+* `co` – 圖釘的色彩。 指定 24 位元的十六進位色彩：`000000` 到 `FFFFFF`。
+* `la` – 指定標籤錨點。 使用 "x y" 格式指定 X 和 y 像素值。
+* `lc` – 標籤的色彩。 指定 24 位元的十六進位色彩：`000000` 到 `FFFFFF`。
+* `ls` – 標籤的大小 (以像素為單位)。 選擇大於 0 的數字。
+* `ro` – 用來旋轉圖示的值 (以度為單位)。 選取 -360 到 360 之間的數字。
+* `sc` – 圖釘圖示的縮放值。 選擇大於 0 的數字。
 
 為每個圖釘位置指定標籤值。 這個方法比將單一標籤值套用至位置清單中的所有標記更有效率。 標籤值可以是有多個字元的字串。 請使用單引號括住字串，以確保系統不會將其誤認為樣式或位置值。
 
 讓我們新增紅色 (`FF0000`) 預設圖示，使其具有「太空針塔」標籤，並位於下列位置 (15 50)。 該圖示位於「經度：-122.349300，緯度：47.620180」：
 
-```
+```text
 &pins=default|coFF0000|la15 50||'Space Needle' -122.349300 47.620180
 ```
 
@@ -360,7 +358,7 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 新增具有標籤值 '1'、'2' 和 '3' 的三個圖釘：
 
-```
+```text
 &pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12
 ```
 
@@ -372,7 +370,7 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 在 URL 中使用 `path` 參數，將線條和多邊形新增至靜態地圖影像。 `path` 參數會取得樣式，以及要在地圖上呈現的位置清單，如下所示：
 
-```
+```text
 &path=pathStyles|pathLocation1|pathLocation2|...
 ```
 
@@ -382,14 +380,14 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 使用 `optionName:value` 格式新增路徑樣式，並以縱線 (\|) 字元分隔多個樣式。 然後，使用冒號 (:) 來分隔選項名稱和值。 如下所示：`optionName1:value1|optionName2:value2`。 在 Google Maps 中，下列樣式選項名稱可用來設定路徑樣式：
 
-- `color` – 路徑或多邊形外框的色彩。 可以是 24 位元的十六進位色彩 (`0xrrggbb`)、32 位元的十六進位色彩 (`0xrrggbbbaa`) 或下列其中一個值：黑色、棕色、綠色、紫色、黃色、藍色、灰色、橘色、紅色、白色。
-- `fillColor` – 用來填滿路徑區域的色彩 (多邊形)。 可以是 24 位元的十六進位色彩 (`0xrrggbb`)、32 位元的十六進位色彩 (`0xrrggbbbaa`) 或下列其中一個值：黑色、棕色、綠色、紫色、黃色、藍色、灰色、橘色、紅色、白色。
-- `geodesic` – 指出路徑是否應該是遵循地球曲率的線條。
-- `weight` – 路徑線條的粗細 (以像素為單位)。
+* `color` – 路徑或多邊形外框的色彩。 可以是 24 位元的十六進位色彩 (`0xrrggbb`)、32 位元的十六進位色彩 (`0xrrggbbbaa`) 或下列其中一個值：黑色、棕色、綠色、紫色、黃色、藍色、灰色、橘色、紅色、白色。
+* `fillColor` – 用來填滿路徑區域的色彩 (多邊形)。 可以是 24 位元的十六進位色彩 (`0xrrggbb`)、32 位元的十六進位色彩 (`0xrrggbbbaa`) 或下列其中一個值：黑色、棕色、綠色、紫色、黃色、藍色、灰色、橘色、紅色、白色。
+* `geodesic` – 指出路徑是否應該是遵循地球曲率的線條。
+* `weight` – 路徑線條的粗細 (以像素為單位)。
 
 在 URL 參數中，將紅線不透明度和像素粗細新增至地圖的座標之間。 在以下範例中，線條具有 50% 不透明度和四個像素的粗細。 座標為「經度：-110，緯度：45) 和 (經度：-100, 緯度：第 50 號的 IP 通訊協定。
 
-```
+```text
 &path=color:0xFF000088|weight:4|45,-110|50,-100
 ```
 
@@ -399,7 +397,7 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 藉由在 URL 中指定 `path` 參數，將線條和多邊形新增至靜態地圖影像。 如同 Google Maps，請在此參數中指定樣式和位置清單。 指定 `path` 參數多次以呈現多個具有不同樣式的圓形、線條和多邊形。
 
-```
+```text
 &path=pathStyles||pathLocation1|pathLocation2|...
 ```
 
@@ -407,16 +405,16 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 新增採用 `optionNameValue` 格式的路徑樣式。 使用縱線 (\|) 字元分隔多個樣式，如下所示：`optionName1Value1|optionName2Value2`。 選項名稱和值未隔開。 在 Azure 地圖服務中使用下列樣式選項名稱來設定路徑樣式：
 
-- `fa` - 在呈現多邊形時所使用的填滿色彩不透明度 (Alpha)。 選取 0 到 1 之間的數字。
-- `fc` - 用來呈現多邊形區域的填滿色彩。
-- `la` – 在繪製線條和多邊形外框時所使用的線條色彩不透明度 (Alpha)。 選取 0 到 1 之間的數字。
-- `lc` – 用來呈現線條和多邊形外框的線條色彩。
-- `lw` – 線條的寬度 (以像素為單位)。
-- `ra` – 指定圓形半徑 (以公尺為單位)。
+* `fa` - 在呈現多邊形時所使用的填滿色彩不透明度 (Alpha)。 選取 0 到 1 之間的數字。
+* `fc` - 用來呈現多邊形區域的填滿色彩。
+* `la` – 在繪製線條和多邊形外框時所使用的線條色彩不透明度 (Alpha)。 選取 0 到 1 之間的數字。
+* `lc` – 用來呈現線條和多邊形外框的線條色彩。
+* `lw` – 線條的寬度 (以像素為單位)。
+* `ra` – 指定圓形半徑 (以公尺為單位)。
 
 在 URL 參數中，於座標之間新增紅線不透明度和像素粗細。 在以下範例中，線條具有 50% 不透明度和四個像素的粗細。 座標具有下列值：「經度：-110，緯度：45) 和 (經度：-100, 緯度：第 50 號的 IP 通訊協定。
 
-```
+```text
 &path=lcFF0000|la.5|lw4||-110 45|-100 50
 ```
 
@@ -481,11 +479,15 @@ Azure 地圖服務提供了 API 供您擷取座標的時區。 Azure 地圖服�
 
 Azure 地圖服務針對下列程式設計語言提供了用戶端程式庫：
 
-- JavaScript、TypeScript、Node.js – [文件](how-to-use-services-module.md) \| [NPM 套件](https://www.npmjs.com/package/azure-maps-rest)
+* JavaScript、TypeScript、Node.js – [文件](how-to-use-services-module.md) \| [NPM 套件](https://www.npmjs.com/package/azure-maps-rest)
 
 這些開放原始碼用戶端程式庫適用於其他程式設計語言：
 
-- .NET Standard 2.0 – [GitHub 專案](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet 套件](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .NET Standard 2.0 – [GitHub 專案](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet 套件](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有要清除的資源。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -493,18 +495,3 @@ Azure 地圖服務針對下列程式設計語言提供了用戶端程式庫：
 
 > [!div class="nextstepaction"]
 > [搜尋的最佳做法](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [搜尋地址](how-to-search-for-address.md)
-
-> [!div class="nextstepaction"]
-> [路由的最佳做法](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure 地圖服務 REST 服務 API 參考文件](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [程式碼範例](/samples/browse/?products=azure-maps)
-
-> [!div class="nextstepaction"]
-> [如何使用服務模組 (Web SDK)](how-to-use-best-practices-for-routing.md)

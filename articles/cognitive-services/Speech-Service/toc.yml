@@ -363,25 +363,13 @@
               href: custom-commands.md
             - name: 快速入門
               items:
-                - name: 建置自訂命令應用程式
+                - name: 建立自訂命令應用程式
                   href: quickstart-custom-commands-application.md
             - name: 操作指南
               items:
-                - name: 開發
-                  items:
-                    - name: 使用簡單的命令建立應用程式
-                      href: how-to-custom-commands-create-application-with-simple-commands.md
-                    - name: 將參數新增至命令
-                      href: how-to-custom-commands-add-parameters-to-commands.md
-                    - name: 將設定新增至命令參數
-                      href: how-to-custom-commands-add-parameter-configuration.md
-                    - name: 新增互動規則
-                      href: how-to-custom-commands-add-interaction-rules.md
-                    - name: 新增語音回應的語言產生範本
-                      href: how-to-custom-commands-add-language-generation-templates.md
-                    - name: 使用自訂語音
-                      href: how-to-custom-commands-use-custom-voice.md
-                - name: 整合
+                - name: 開發與自訂自訂命令應用程式
+                  href: how-to-develop-custom-commands-application.md
+                - name: 與用戶端應用程式整合
                   items:
                     - name: 使用語音 SDK 與用戶端應用程式整合
                       href: how-to-custom-commands-setup-speech-sdk.md
@@ -395,26 +383,18 @@
                       href: how-to-custom-commands-update-command-from-client.md
                     - name: 從 Web 端點更新命令
                       href: how-to-custom-commands-update-command-from-web-endpoint.md
-                - name: 部署
-                  items:
-                    - name: 使用 Azure DevOps 進行持續部署
-                      href: how-to-custom-commands-deploy-cicd.md
-                - name: 測試
-                  items:
-                    - name: 測試自訂命令應用程式
-                      href: how-to-custom-commands-developer-flow-test.md
-                - name: 偵錯
-                  items:
-                    - name: 撰寫應用程式時進行錯誤偵測
-                      href: how-to-custom-commands-debug-build-time.md
-                    - name: 執行應用程式時進行錯誤偵測
-                      href: how-to-custom-commands-debug-runtime.md
-                - name: 參考
-                  items:
-                    - name: 自訂命令概念
-                      href: custom-commands-references.md
+                - name: 使用 Azure DevOps 進行持續部署
+                  href: how-to-custom-commands-deploy-cicd.md
+                - name: 測試自訂命令應用程式
+                  href: how-to-custom-commands-developer-flow-test.md
+                - name: 撰寫應用程式時進行錯誤偵測
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: 執行應用程式時進行錯誤偵測
+                  href: how-to-custom-commands-debug-runtime.md
             - name: 資源
               items:
+                - name: 自訂命令概念
+                  href: custom-commands-references.md
                 - name: 自訂命令範例 (GitHub)
                   href: 'https://aka.ms/speech/cc-samples'
                 - name: 語音助理範例 (GitHub)

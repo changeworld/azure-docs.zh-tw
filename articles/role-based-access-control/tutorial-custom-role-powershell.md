@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735584"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369237"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立 Azure 自訂角色
 
@@ -51,7 +51,7 @@ ms.locfileid: "82735584"
 
 建立自訂角色的最簡單方法就是從內建角色著手，加以編輯，然後建立新的角色。
 
-1. 在 PowerShell 中，使用 [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) 命令，取得 Microsoft.Support 資源提供者的作業清單。 最好先了解可用來建立權限的作業。 您可以在 [Azure Resource Manager 資源提供者作業](resource-provider-operations.md#microsoftsupport)看見所有作業的清單。
+1. 在 PowerShell 中，使用 [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) 命令，取得 Microsoft.Support 資源提供者的作業清單。 最好先了解可用來建立權限的作業。 您可以在 [Azure 資源提供者作業](resource-provider-operations.md#microsoftsupport)看見所有作業的清單。
 
     ```azurepowershell
     Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize

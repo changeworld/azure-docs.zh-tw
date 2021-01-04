@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 12/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28637f35294e9c70cbf0e96fb2cdcb1853d2ba39
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 9b40ff3a5c9ce2103cde00b26543711d4c05efb0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992721"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028371"
 ---
 ::: zone target="docs"
 
@@ -47,7 +47,7 @@ ms.locfileid: "94992721"
 在您開始前，請確定：
 
 * 您已完成[教學課程：將資料複製到 Azure 資料箱並確認](data-box-deploy-copy-data.md)。
-* 複製作業已完成，且 [連線並複製] 頁面上沒有任何錯誤。 如果複製作業正在進行中，或 [連線並複製] 頁面中有錯誤，則寄送準備將無法執行。
+* 複製作業已完成，且 [連線並複製] 頁面上沒有任何錯誤。 如果複製作業正在進行中，或 [連線並複製] 頁面中有錯誤，則 **寄送準備** 將無法執行。
 
 ## <a name="prepare-to-ship"></a>準備寄送
 
@@ -63,8 +63,8 @@ ms.locfileid: "94992721"
 
 在您準備寄送之前，請確定複製作業已完成。
 
-1. 前往本機 Web UI 中的 [準備寄送] 頁面，並開始準備寄送。 
-2. 從本機 Web UI 關閉裝置。 從裝置移除纜線。 
+1. 前往本機 Web UI 中的 [準備寄送] 頁面，並開始準備寄送。
+2. 從本機 Web UI 關閉裝置。 從裝置移除纜線。
 
 後續步驟則取決於您退回裝置的地點。
 
@@ -74,7 +74,7 @@ ms.locfileid: "94992721"
 
 ## <a name="ship-data-box-back"></a>寄回資料箱
 
-確保裝置的資料副本完整且 [準備寄送] 執行成功。 根據您寄送裝置的區域，程序會有所不同。
+請確定已完成將資料複製到裝置的作業，且 **寄送準備** 執行成功。 根據您寄送裝置的區域，程序會有所不同。
 
 ::: zone-end
 
@@ -82,14 +82,14 @@ ms.locfileid: "94992721"
 
 如果在美國、加拿大或歐洲退回裝置，請執行下列步驟。
 
-1. 確定裝置的電源已關閉，然後移除纜線。 
+1. 確定裝置的電源已關閉，然後移除纜線。
 2. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
 3. 請確定出貨標籤已顯示在電子筆墨顯示器上，並安排貨運業者取貨。 如果標籤損毀、遺失或未顯示在電子筆墨顯示器上，請與 Microsoft 支援服務連絡。 若支援人員提出建議，則您可以前往 Azure 入口網站中的 [概觀] > [下載出貨標籤]。 下載出貨標籤並貼在裝置上。 
 4. 如果要送回裝置，請安排由 UPS 取貨。 若要排定取貨時間：
 
     * 致電給當地的 UPS (國家/地區特定的免付費電話號碼)。
-    * 在您的電話中提供反向出貨追蹤號碼，如 E-ink 顯示或您列印出的標籤中所示。
-    * 若未提供追蹤號碼，UPS 將在取貨期間要求您支付額外的費用。
+    * 在您的電話中提供反向出貨追蹤號碼，如 E-ink 顯示或您列印出的標籤中所示。 若未提供追蹤號碼，UPS 將在取貨時要求您支付額外的費用。
+    * 如果您在取貨時遇到任何問題，或 UPS 要求您支付額外費用，請連絡 Azure 資料箱營運中心。 傳送電子郵件至 [adbops@microsoft.com](mailto:adbops@microsoft.com)。
 
     除了排定取貨時間，您也可以在最接近的托運地點托運該資料箱。
 4. 一旦貨運業者收取資料箱並進行掃描，入口網站的訂單狀態會更新為 [已取貨]。 此外，也會顯示追蹤識別碼。
@@ -110,7 +110,7 @@ ms.locfileid: "94992721"
 
 澳洲的 Azure 資料中心有額外的安全性通知。 所有送達的貨物都必須有預先通知。 在澳洲寄送可採取下列步驟。
 
-1. 保留用來寄送裝置以供退貨的原始外盒。
+1. 保留用來寄送裝置的原始外盒，以在寄回時使用。
 2. 確保裝置的資料副本完整且 [準備寄送] 執行成功。
 3. 關閉裝置電源並移除纜線。
 4. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
@@ -130,7 +130,7 @@ ms.locfileid: "94992721"
 
 ## <a name="japan"></a>[日本](#tab/in-japan)
 
-1. 保留用來寄送裝置以供退貨的原始外盒。
+1. 保留用來寄送裝置的原始外盒，以在寄回時使用。
 2. 關閉裝置電源並移除纜線。
 3. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
 4. 在理貨單上寫下貴公司名稱和地址資訊，作為您的寄件者資訊。
@@ -153,7 +153,7 @@ ms.locfileid: "94992721"
 
 6. 在預約取貨時間後，接收來自 Quantium Solutions 的電子郵件確認。 電子郵件確認也會包含運費到付理貨單的資訊。
 
-如有需要，您可以透過下列資訊連絡 Quantium Solutions 支援人員 (日文)： 
+如有需要，您可以透過下列資訊連絡 Quantium Solutions 支援人員 (日文)：
 
 * 電子郵件：Customerservice.JP@quantiumsolutions.com 
 * 電話：03-5755-0150 
@@ -172,8 +172,8 @@ ms.locfileid: "94992721"
 
 ## <a name="singapore"></a>[新加坡](#tab/in-singapore)
 
-1. 保留用來寄送裝置以供退貨的原始外盒。
-2. 記下追蹤號碼 (您可以在資料箱本機 Web UI 的 [準備寄送] 頁面上看到參考編號)。 準備出貨步驟成功完成之後，即會顯示此號碼。 從此頁面下載出貨標籤，並貼到包裝盒上。
+1. 保留用來寄送裝置的原始外盒，以在寄回時使用。
+2. 記下追蹤號碼 (您可以在資料箱本機 Web UI 的 [準備寄送] 頁面上看到參考編號)。 **準備寄送** 步驟成功完成之後，即會顯示追蹤號碼。 從此頁面下載出貨標籤，並貼到包裝盒上。
 3. 關閉裝置電源並移除纜線。
 4. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。 
 5. 使用下列包含追蹤號碼的電子郵件範本，傳送電子郵件給 SingPost 客戶服務。
@@ -209,8 +209,8 @@ ms.locfileid: "94992721"
 
 1. 將要送回的裝置包裝到原始外盒內。
 2. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
-3. 記下追蹤號碼 (您可以在資料箱本機 Web UI 的 **準備寄送** 頁面上看到參考編號)。 「準備寄送」步驟成功完成之後，即會顯示此號碼。 從此頁面下載出貨標籤，並貼到包裝盒上。
-4. 要求來自 Azure 資料箱作業的傳回碼。 將套件傳遞回資料中心需要傳回碼。 傳送電子郵件至 [adbops@microsoft.com](mailto:adbops@microsoft.com)。 請注意，此傳回碼會顯示在出貨標籤旁的寄信人地址，以便清楚可見。
+3. 記下追蹤號碼 (您可以在資料箱本機 Web UI 的 **準備寄送** 頁面上看到參考編號)。 「準備寄送」步驟成功完成之後，即會顯示追蹤號碼。 從此頁面下載出貨標籤，並貼到包裝盒上。
+4. 要求來自 Azure 資料箱作業的傳回碼。 將套件傳遞回資料中心需要傳回碼。 傳送電子郵件至 [adbops@microsoft.com](mailto:adbops@microsoft.com)。 將此代碼記在出貨標籤上的寄返地址旁，使其能清楚地被看見。
 5. 若要預約 DHL 取貨，請使用下列其中一個方式：
  
    * 移至 [DHL Express South Africa **排程取貨**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference)，以預訂線上取貨。
@@ -231,7 +231,7 @@ ms.locfileid: "94992721"
 
     * 或者，您也可以將包裹拿到最近的 DHL 服務據點。
 
-6. 如果您遇到任何問題，請寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)，並於其中詳述您遇到的問題，然後在 [主旨:] 行放入運貨單號碼。 您也可以致電 +27(0)119213902。
+6. 如果您遇到任何問題，請寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)，並於其中詳述問題，然後在 [主旨:] 行放入運貨單號碼。 您也可以致電 +27(0)119213902。
 
 ::: zone target="chromeless"
 
@@ -252,13 +252,13 @@ ms.locfileid: "94992721"
 3. 在上班時間 (星期一到星期五上午 9 點到下午 6 點) 撥打 **Quantium Solutions** 熱線，號碼是 **(852) 2318 1213**。  
 4. 報上送回出貨標籤上的 Microsoft Azure Pickup 和參考編號與追蹤號碼 (位於條碼上方) 以便安排收貨。
 5. 您會獲得排定取貨時間的口頭確認。 如果快遞人員未到府收貨，請撥打 Quantium Solutions 熱線以便尋求替代安排。
-6. 在向 Quantium 預約取貨後，請使用下列範本向 [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) 進行確認：
+6. 在向 Quantium Solutions 預約取貨後，請使用下列範本向 [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) 進行確認：
 
     ```output
     To: adbo@microsoft.com
     Subject: Microsoft Data Box Job: [order name] has completed copy
     Body:
-    We have confirmed the pickup details with Quantium.
+    We have confirmed the pickup details with Quantium Solutions.
 
        * Requestor name:
        * Requestor contact number:
@@ -266,7 +266,7 @@ ms.locfileid: "94992721"
        * Pickup time:
     ```
 
-如果您遇到任何問題，請寄送電子郵件給 Data Box Operations Asia [adbo@microsoft.com](mailto:adbo@microsoft.com) 並於主旨標頭中提供工作名稱和所遇到的問題。
+如果您遇到任何問題，請寄送電子郵件至 Data Box Operations Asia [adbo@microsoft.com](mailto:adbo@microsoft.com)，並於其中詳述問題，然後在 [主旨:] 行放入作業名稱。
 
 ::: zone target="chromeless"
 
@@ -283,7 +283,7 @@ ms.locfileid: "94992721"
 <!--## [In Korea](#tab/in-korea) 
 
 1. Retain the original box used to ship the device for return shipment.
-2. Note down the tracking number (shown as reference number on the Prepare to Ship page of the Data Box local web UI). This is available after the prepare to ship step successfully completes. Download the shipping label from this page and paste on the packing box. 
+2. Note down the tracking number (shown as reference number on the **Prepare to Ship** page of the Data Box local web UI). The tracking number is available after the **Prepare to ship** step successfully completes. Download the shipping label from this page and paste on the packing box. 
 3. Power off the device and remove the cables.
 4. Spool and securely place the power cord that was provided with the device in the back of the device. 
 
@@ -322,11 +322,11 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ## <a name="self-managed"></a>[自我管理](#tab/in-selfmanaged)
 
-如果您在美國政府日本、新加坡、韓國、印度、南非或西歐使用資料箱，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。 
+如果您在美國政府日本、新加坡、韓國、印度、南非或西歐使用資料箱，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。
 
-1. 在此步驟成功完成之後，請記下資料箱本機 Web UI [準備寄送] 頁面上所顯示的授權碼。
+1. 在步驟順利完成之後，記下資料箱本機 Web UI [準備寄送] 頁面上顯示的授權碼。
 2. 關閉裝置電源並移除纜線。 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
-3. 當您準備好傳回裝置時，請使用下列範本將電子郵件傳送給 Azure 資料箱作業小組。
+3. 當您準備好寄回裝置時，請使用下列範本傳送電子郵件給 Azure 資料箱作業小組。
 
     ```
     To: adbops@microsoft.com

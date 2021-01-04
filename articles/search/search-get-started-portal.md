@@ -7,27 +7,27 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: b783366958380f391dc76583c42988badc9915c8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 12/12/2020
+ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056475"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368625"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋索引
 
-[匯入資料] 精靈是一種 Azure 入口網站工具，可引導您建立搜尋索引，讓您在幾分鐘內撰寫有趣的查詢。 
+使用 [匯入資料] 精靈及包含虛構飯店資料的內建範例資料來源，建立您的第一個索引。 精靈會引導您建立搜尋索引 (hotels-sample-index)，讓您在幾分鐘內撰寫有趣的查詢。 
 
-此精靈也有進行 AI 擴充的頁面，可讓您從影像檔案與非結構化文字中擷取文字與結構。 使用 AI 的內容處理包括光學字元辨識 (OCR)、關鍵片語與實體擷取，以及影像分析。
+雖然您不會在此快速入門中使用這些選項，但精靈也包含 AI 擴充頁面，因此可以影像檔案與非結構化文字中擷取文字與結構。 如需包含 AI 擴充的類似逐步解說，請參閱[快速入門：建立認知技能](cognitive-search-quickstart-blob.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，您必須具備下列條件：
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/)。
 
-+ Azure 認知搜尋服務。 在目前的訂用帳戶下，[建立服務](search-create-service-portal.md)或[尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
++ Azure 認知搜尋服務。 在目前的訂閱下，[建立服務](search-create-service-portal.md) 或 [尋找現有的服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 您可以使用本快速入門的免費服務。 
 
 ### <a name="check-for-space"></a>檢查空間
 
@@ -41,7 +41,7 @@ ms.locfileid: "92056475"
 
 搜尋查詢會逐一查看[索引](search-what-is-an-index.md)，其中包含會將特定搜尋行為最佳化的可搜尋資料、中繼資料及其他建構。
 
-在此教學課程中，我們使用可以透過[**匯入資料精靈**](search-import-data-portal.md)使用[索引子](search-indexer-overview.md)搜耙的內建範例資料集。 索引子是來源特定的編目程式，可以從支援的 Azure 資料來源讀取中繼資料和內容。 使用索引子時通常會採用程式設計方式，但在入口網站中，您也可以存取透過**匯入資料**精靈存取索引子。 
+在此教學課程中，我們使用可以透過 [**匯入資料精靈**](search-import-data-portal.md)使用 [索引子](search-indexer-overview.md)搜耙的內建範例資料集。 索引子是來源特定的編目程式，可以從支援的 Azure 資料來源讀取中繼資料和內容。 使用索引子時通常會採用程式設計方式，但在入口網站中，您也可以存取透過 **匯入資料** 精靈存取索引子。 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>步驟 1 - 啟動匯入資料精靈並建立資料來源
 
@@ -49,11 +49,11 @@ ms.locfileid: "92056475"
 
 1. [尋找您的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)，然後在 [概觀] 頁面上，按一下命令列上的 [匯入資料]，以建立及填入搜尋索引。
 
-   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="索引、索引子和資料來源的清單":::
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="匯入資料命令":::
 
 1. 在精靈中，按一下 [連線到您的資料] > [範例] > [hotels-sample]。 此資料來源是內建的。 如果您建立自己的資料來源，則必須指定名稱、類型和連線資訊。 一旦建立，就會變成可在其他匯入作業中重複使用的「現有資料來源」。
 
-   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="索引、索引子和資料來源的清單":::
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="選取範例資料集":::
 
 1. 繼續進行下一頁。
 
@@ -61,9 +61,9 @@ ms.locfileid: "92056475"
 
 此精靈支援建立可將認知服務 AI 演算法併入索引編製中的 [AI 擴充管線](cognitive-search-concept-intro.md)。 
 
-我們將暫時略過此步驟，而直接進行**自訂目標索引**。
+我們將暫時略過此步驟，而直接進行 **自訂目標索引**。
 
-   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="索引、索引子和資料來源的清單":::
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="跳過認知技術步驟":::
 
 > [!TIP]
 > 您可以透過[快速入門](cognitive-search-quickstart-blob.md)或[教學課程](cognitive-search-tutorial-blob.md)，逐步執行 AI 索引編製範例。
@@ -75,19 +75,19 @@ ms.locfileid: "92056475"
 欄位具有資料類型和屬性。 上方的核取方塊為「索引屬性」，可控制欄位的使用方式。
 
 *  表示它會出現在搜尋結果清單中。 您可以清除此核取方塊，將個別欄位標示為關閉搜尋結果的限制，例如，僅使用於篩選運算式的欄位。
-* **索引鍵**是唯一的文件識別碼。 它一律是字串，而且是必要的。
+* **索引鍵** 是唯一的文件識別碼。 它一律是字串，而且是必要的。
 * [可篩選]、[可排序] 和 [可面向化] 可決定欄位是要用於篩選、排序還是多面向導覽結構。
 *  表示欄位包含在全文檢索搜尋中。 字串可以搜尋。 數字欄位和布林值欄位通常會標示為不可搜尋。
 
 儲存體需求不會因您的選擇而改變。 例如，如果您對多個欄位設定 [可擷取] 屬性，儲存體需求也不會因此而增加。
 
-根據預設，精靈會掃描資料來源中的唯一識別碼做為索引鍵欄位的基礎。 「字串」具有**可擷取**和**可搜尋**的特性。 「整數」具有**可擷取**、**可篩選**、**可排序**和**可 Fact 處理**的特性。
+根據預設，精靈會掃描資料來源中的唯一識別碼做為索引鍵欄位的基礎。 「字串」具有 **可擷取** 和 **可搜尋** 的特性。 「整數」具有 **可擷取**、**可篩選**、**可排序** 和 **可 Fact 處理** 的特性。
 
-1. 接受預設值。 
+1. 接受預設值。
 
    如果您使用現有的旅館資料來源再次執行精靈，系統將不會使用預設屬性來設定索引。 您必須以手動方式對未來的匯入選取屬性。 
 
-   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="索引、索引子和資料來源的清單":::
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="產生的旅館索引":::
 
 2. 繼續進行下一頁。
 
@@ -100,7 +100,7 @@ ms.locfileid: "92056475"
 
 按一下 [提交] 以建立並同時執行索引子。
 
-  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="索引、索引子和資料來源的清單":::
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="旅館索引子":::
 
 ## <a name="monitor-progress"></a>監視進度
 
@@ -108,7 +108,7 @@ ms.locfileid: "92056475"
 
 入口網站更新頁面可能需要幾分鐘的時間，但您應該會在清單中看到新建立的索引子 (其狀態顯示為「進行中」或成功)，以及已編製索引的文件數目。
 
-   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="索引、索引子和資料來源的清單":::
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="索引子進度訊息":::
 
 ## <a name="view-the-index"></a>檢視索引
 
@@ -116,13 +116,13 @@ ms.locfileid: "92056475"
 
 等候入口網站頁面重新整理。 幾分鐘後，您應該會看到具有文件計數和儲存體大小的索引。
 
-   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="索引、索引子和資料來源的清單":::
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="服務儀表板上的索引清單":::
 
 在此清單中，您可以按一下剛剛建立的 *hotels-sample* 索引、檢視索引結構描述， 以及選擇性地新增欄位。 
 
 [欄位] 索引標籤會顯示索引結構描述。 捲動至清單底部可輸入新欄位。 在大部分情況下，您無法變更現有的欄位。 現有的欄位在 Azure 認知搜尋中具有實體表示法，因此不可修改，甚至是在程式碼中也不可修改。 若要對現有欄位進行重大變更，請建立新索引並，捨棄原始欄位。
 
-   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="索引、索引子和資料來源的清單":::
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="範例索引定義":::
 
 您可以隨時新增其他建構，例如評分設定檔和 CORS 選項。
 
@@ -132,7 +132,7 @@ ms.locfileid: "92056475"
 
 接下來，您現在應該有搜尋索引，準備好要使用內建的 [[搜尋總管]](search-explorer.md) 查詢頁面進行查詢。 它會提供搜尋方塊，讓您能夠測試任意的查詢字串。
 
-**搜尋總管**只能用來處理 [REST API 要求](/rest/api/searchservice/search-documents)，但可接受[簡單查詢語法](/rest/api/searchservice/simple-query-syntax-in-azure-search)和[完整 Lucene 查詢剖析器](/rest/api/searchservice/lucene-query-syntax-in-azure-search)的語法，以及[搜尋文件 REST API](/rest/api/searchservice/search-documents#bkmk_examples) 作業中可用的所有搜尋參數。
+**搜尋總管** 只能用來處理 [REST API 要求](/rest/api/searchservice/search-documents)，但可接受 [簡單查詢語法](/rest/api/searchservice/simple-query-syntax-in-azure-search)和 [完整 Lucene 查詢剖析器](/rest/api/searchservice/lucene-query-syntax-in-azure-search)的語法，以及 [搜尋文件 REST API](/rest/api/searchservice/search-documents#bkmk_examples) 作業中可用的所有搜尋參數。
 
 > [!TIP]
 > 下列步驟會在 [Azure 認知搜尋概觀影片](https://channel9.msdn.com/Events/Connect/2016/138)的 6 分 08 秒處示範。
@@ -140,15 +140,15 @@ ms.locfileid: "92056475"
 
 1. 按一下命令列上的 [搜尋總管]  。
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="索引、索引子和資料來源的清單":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="搜尋總管命令":::
 
 2. 從 [索引] 下拉式清單中，選擇 [hotels-sample-index]。 按一下[API 版本] 下拉式清單，以查看可用的 REST API。 針對下面的查詢，請使用公開推出版本 (2020-06-30)。
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="索引、索引子和資料來源的清單":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="索引和 API 命令":::
 
 3. 在搜尋列中貼入下列查詢字串，然後按一下 [搜尋]。
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="索引、索引子和資料來源的清單":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="查詢字串和搜尋按鈕":::
 
 ## <a name="example-queries"></a>查詢範例
 
@@ -160,7 +160,7 @@ ms.locfileid: "92056475"
 
 * **search** 參數可用來輸入全文檢索搜尋的關鍵字搜尋，在此案例中，會傳回在文件的任何可搜尋欄位中包含 spa 的旅館資料。
 
-* **搜尋總管**會以 JSON 傳回結果，這是詳細資訊，而如果文件的結構很密集則難以閱讀。 這是刻意設計的；整份文件的可見性對開發目的而言很重要，特別是在測試期間。 為了獲得更好的使用者體驗，您必須撰寫程式碼，以[處理搜尋結果](search-pagination-page-layout.md)來找出重要的元素。
+* **搜尋總管** 會以 JSON 傳回結果，這是詳細資訊，而如果文件的結構很密集則難以閱讀。 這是刻意設計的；整份文件的可見性對開發目的而言很重要，特別是在測試期間。 為了獲得更好的使用者體驗，您必須撰寫程式碼，以[處理搜尋結果](search-pagination-page-layout.md)來找出重要的元素。
 
 * 文件是由索引中標記為「可擷取」的所有欄位組成。 若要在入口網站中檢視索引屬性，請按一下 [索引] 清單中的 hotels-sample。
 
@@ -188,8 +188,8 @@ Facet 篩選器會包含在搜尋要求中。 您可以使用 facet 參數，傳
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>範例 (多面向且範圍已縮減)：`search=*&facet=Category&$top=2`
 
-* **search=** * 是空的搜尋。 空的搜尋會搜尋所有一切。 提交空查詢的其中一個原因是為了篩選一組完整的文件或使其面向化。 例如，您希望多面向導覽結構包含索引中的所有旅館。
-* **facet** 會傳回您可傳遞至 UI 控制項的導覽結構。 它會傳回一些類別和一個計數。 在此案例中，類別以直接命名為 *Category* 的欄位為基礎。 Azure 認知搜尋中沒有彙總功能，但您可以透過 `facet` 模擬彙總，以提供各類別中的文件計數。
+* **search=** _ 是空的搜尋。 空的搜尋會搜尋所有一切。 提交空查詢的其中一個原因是為了篩選一組完整的文件或使其面向化。 例如，您希望多面向導覽結構包含索引中的所有旅館。
+**facet** 會傳回您可傳遞至 UI 控制項的導覽結構。 它會傳回一些類別和一個計數。 在此案例中，類別以直接命名為 *Category* 的欄位為基礎。 Azure 認知搜尋中沒有彙總功能，但您可以透過 `facet` 模擬彙總，以提供各類別中的文件計數。
 
 * **$top=2** 會傳回兩份文件，這表示您可以使用 `top` 來減少或增加結果。
 
@@ -248,17 +248,17 @@ Facet 篩選器會包含在搜尋要求中。 您可以使用 facet 參數，傳
 
 本教學課程提供了使用 Azure 入口網站執行 Azure 認知搜尋的快速簡介。
 
-您已了解如何使用**匯入資料**精靈建立搜尋索引。 您已了解[索引子](search-indexer-overview.md)，以及索引設計的基本工作流程，包括[對已發佈索引支援的修改](/rest/api/searchservice/update-index)。
+您已了解如何使用 **匯入資料** 精靈建立搜尋索引。 您已了解[索引子](search-indexer-overview.md)，以及索引設計的基本工作流程，包括[對已發佈索引支援的修改](/rest/api/searchservice/update-index)。
 
-藉由在 Azure 入口網站中使用**搜尋總管**，您已透過實際操作的範例了解某些基本查詢語法，這些範例示範了篩選、搜尋結果醒目提示、模糊搜尋和地理搜尋等主要功能。
+藉由在 Azure 入口網站中使用 **搜尋總管**，您已透過實際操作的範例了解某些基本查詢語法，這些範例示範了篩選、搜尋結果醒目提示、模糊搜尋和地理搜尋等主要功能。
 
 您也已了解如何在入口網站中尋找索引、索引子和資料來源。 日後若有任何新的資料來源，您就可以使用入口網站以最省力的方式快速檢查其定義或欄位集合。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
+使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 資源若繼續執行，您將必須付費。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
 
-您可以使用左導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找和管理資源。
+您可以使用左導覽窗格中的 [所有資源]  或 [資源群組]  連結，在入口網站中尋找和管理資源。
 
 如果您使用免費服務，請記住您會有三個索引、索引子和資料來源的限制。 您可以在入口網站中刪除個別項目，以避免超出限制。 
 

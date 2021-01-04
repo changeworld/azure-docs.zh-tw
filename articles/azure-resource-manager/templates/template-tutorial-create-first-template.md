@@ -1,17 +1,17 @@
 ---
 title: 教學課程 - 建立及部署範本
-description: 建立第一個 Azure Resource Manager 範本。 在本教學課程中，您將了解範本檔案語法及部署儲存體帳戶的方式。
+description: 建立第一個 Azure Resource Manager 範本 (ARM 範本)。 在本教學課程中，您將了解範本檔案語法及部署儲存體帳戶的方式。
 author: mumian
 ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 25ddcc2c3a890b407b2116f64ebab577e30c9457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 191eacbc9cc66ccfb9b378cb5e8a90b4e0fb20e6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613181"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107018"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教學課程：建立及部署您的第一個 ARM 範本
 
@@ -19,7 +19,7 @@ ms.locfileid: "91613181"
 
 此教學課程是系列中的第一個。 當您進行本課程系列時，將會逐步修改起始範本，直到您已探索 ARM 範本的所有核心部分為止。 這些元素都是適用於更複雜範本的建置組塊。 我們希望在本系列結束時，您能夠有信心地建立自己的範本，並準備好使用範本來將部署自動化。
 
-如果您想要了解使用範本的優點，以及為何要使用範本來將部署自動化，請參閱 [Azure Resource Manager 範本](overview.md)。
+如果您想要了解使用範本的優點，以及為何要使用範本將部署自動化，請參閱 [ARM 範本概觀](overview.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "91613181"
 
 ### <a name="editor"></a>編輯器
 
-範本是 JSON 檔案。 若要建立範本，您需要良好的 JSON 編輯器。 我們建議使用含 Resource Manager 工具擴充功能的 Visual Studio Code。 如果您需要安裝這些工具，請參閱[快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](quickstart-create-templates-use-visual-studio-code.md)。
+範本是 JSON 檔案。 若要建立範本，您需要良好的 JSON 編輯器。 我們建議使用含 Resource Manager 工具擴充功能的 Visual Studio Code。 如果您需要安裝這些工具，請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
 ### <a name="command-line-deployment"></a>命令列部署
 
@@ -52,7 +52,7 @@ ms.locfileid: "91613181"
 1. 開啟已安裝 Resource Manager 工具擴充功能的 Visual Studio Code。
 1. 從 [檔案] 功能表中，選取 [新增檔案] 以建立新檔案。
 1. 從 [檔案] 功能表中，選取 [另存新檔]。
-1. 將檔案命名為 **azuredeploy**，然後選取 [JSON] 副檔名。 檔案的完整名稱是 **azuredeploy.json**。
+1. 將檔案命名為 _azuredeploy_，然後選取 [json] 副檔名。 檔案的完整名稱是 _azuredeploy.json_。
 1. 將檔案儲存到您的工作站。 選取容易記住的路徑，因為您稍後將在部署範本時提供該路徑。
 1. 將下列 JSON 複製並貼到檔案中：
 
@@ -64,17 +64,17 @@ ms.locfileid: "91613181"
     }
     ```
 
-    您的 VS Code 環境看起來像這樣：
+    您的 Visual Studio Code 環境看起來會像這樣：
 
-    ![Resource Manager 範本 Visual Studio Code 第一個範本](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![ARM 範本 Visual Studio Code 第一個範本](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
     此範本不會部署任何資源。 我們會從空白範本開始，讓您能夠熟悉部署範本的步驟，同時將發生錯誤的機會降到最低。
 
     JSON 檔案具有下列元素：
 
-    - **$schema**：指定 JSON 結構描述檔案的位置。 結構描述檔案會描述範本中可用的屬性。 例如，結構描述會將**資源**定義為範本的其中一個有效屬性。 不必擔心結構描述的日期是 2019-04-01。 此結構描述版本是最新的，而且包含所有最新功能。 結構描述日期尚未變更，因為在引進它之後就沒有任何重大變更。
-    - **contentVersion**：指定範本版本 (例如 1.0.0.0)。 您可以為此元素提供任何值。 使用此值在範本中記載重大變更。 使用範本部署資源時，這個值可用來確定使用的是正確的範本。
-    - **resources**：包含您想要部署或更新的資源。 它目前是空的，但您稍後將會新增資源。
+    - `$schema`：指定 JSON 結構描述檔案的位置。 結構描述檔案會描述範本中可用的屬性。 例如，結構描述會將`resources`定義為範本的其中一個有效屬性。 不必擔心結構描述的日期是 2019-04-01。 此結構描述版本是最新的，而且包含所有最新功能。 結構描述日期尚未變更，因為在引進它之後就沒有任何重大變更。
+    - `contentVersion`：指定範本版本 (例如 1.0.0.0)。 您可以為此元素提供任何值。 使用此值在範本中記載重大變更。 使用範本部署資源時，這個值可用來確定使用的是正確的範本。
+    - `resources`：包含您想要部署或更新的資源。 它目前是空的，但您稍後將會新增資源。
 
 1. 儲存檔案。
 
@@ -83,6 +83,8 @@ ms.locfileid: "91613181"
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
 若要開始使用 Azure PowerShell/Azure CLI，請使用您的 Azure 認證登入。
+
+選取下列程式碼區段中的索引標籤，以在 Azure PowerShell 和 Azure CLI 之間進行選擇。 本文中的 CLI 範例是針對 Bash Shell 所撰寫。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +100,7 @@ az login
 
 ---
 
-如果您有多個 Azure 訂用帳戶，請選取您要使用的訂用帳戶：
+如果您有多個 Azure 訂用帳戶，請選取您要使用的訂用帳戶。 以您的訂用帳戶資訊取代 `[SubscriptionID/SubscriptionName]` 和方括弧 `[]`：
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -114,10 +116,9 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 ---
 
-
 ## <a name="create-resource-group"></a>建立資源群組
 
-部署範本時，您必須指定將包含資源的資源群組。 執行部署命令之前，使用 Azure CLI 或 Azure PowerShell 來建立資源群組。 選取下列程式碼區段中的索引標籤，以在 Azure PowerShell 和 Azure CLI 之間進行選擇。 本文中的 CLI 範例是針對 Bash Shell 所撰寫。
+部署範本時，您必須指定將包含資源的資源群組。 執行部署命令之前，使用 Azure CLI 或 Azure PowerShell 來建立資源群組。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -139,7 +140,7 @@ az group create \
 
 ## <a name="deploy-template"></a>部署範本
 
-若要部署範本，請使用 Azure CLI 或 Azure PowerShell。 使用您所建立的資源群組。 為部署提供名稱，讓您可以輕鬆地在部署記錄中識別它。 為了方便起見，也要建立變數來儲存範本檔案的路徑。 此變數可讓您更輕鬆地執行部署命令，因為您不需要在每次部署時重新輸入路徑。
+若要部署範本，請使用 Azure CLI 或 Azure PowerShell。 使用您所建立的資源群組。 為部署提供名稱，讓您可以輕鬆地在部署記錄中識別它。 為了方便起見，也要建立變數來儲存範本檔案的路徑。 此變數可讓您更輕鬆地執行部署命令，因為您不需要在每次部署時重新輸入路徑。 以您範本檔案的路徑取代 `{provide-the-path-to-the-template-file}` 和大括弧 `{}`。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -178,7 +179,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失敗，請使用 **verbose** 參數來取得所建立資源的相關資訊。 使用 **debug** 參數來取得更多資訊以進行偵錯。
+> 如果部署失敗，請使用 `verbose` 參數來取得所建立資源的相關資訊。 使用 `debug` 參數來取得更多資訊以進行偵錯。
 
 ## <a name="verify-deployment"></a>驗證部署
 

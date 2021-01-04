@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c9738d25fdcb1c0ccda70ec116eb369f8b50e980
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027470"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584488"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -1170,7 +1170,7 @@ Azure AD 可設定為將已指派的使用者和群組自動佈建至實作 [SCI
 ### <a name="gallery-onboarding-checklist"></a>資源庫上線檢查清單
 請依照下列檢查清單操作，以確保您的應用程式可快速上線，且客戶會有順暢的部署體驗。 當您上線至資源庫時，系統將會向您收集資訊。 
 > [!div class="checklist"]
-> * 支援 [SCIM 2.0 ](#step-2-understand-the-azure-ad-scim-implementation) 使用者和群組端點 (只需要一個，但建議兩者都使用)
+> * 支援 [SCIM 2.0](#step-2-understand-the-azure-ad-scim-implementation) 使用者和群組端點 (只需要一個，但建議兩者都使用)
 > * 每個租用戶每秒支援至少 25 個要求，以確保在沒有延遲的情況下佈建和取消佈建使用者和群組 (必要)
 > * 建立工程和支援連絡人，以便在資源庫上線後引導客戶 (必要)
 > * 應用程式有 3 個未過期的測試認證可使用 (必要)

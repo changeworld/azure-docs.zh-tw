@@ -1,20 +1,20 @@
 ---
 title: 快速入門：透過 Azure 入口網站使用 Azure Static Web Apps 建置您的第一個靜態 Web 應用程式
-description: 了解如何使用 Azure 入口網站來建立 Azure Static Web Apps 執行個體。
+description: 了解如何使用 Azure 入口網站將靜態網站部署至 Azure Static Web Apps。
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91280552"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030360"
 ---
-# <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立您的第一個靜態 Web 應用程式
+# <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立您的第一個靜態網站
 
 Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站發佈至實際執行環境。 在本快速入門中，您會使用 Azure 入口網站將 Web 應用程式部署到 Azure 靜態 Web 應用程式。
 
@@ -33,7 +33,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)
 1. 選取 [建立資源]
-1. 搜尋**靜態 Web 應用程式**
+1. 搜尋 **靜態 Web 應用程式**
 1. 選取 [Static Web Apps (預覽)]
 1. 選取 [建立] 
 
@@ -51,7 +51,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 當您使用 GitHub 登入後，請輸入存放庫資訊。
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="基本區段":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="存放庫詳細資料":::
 
 1. 選取您慣用的 [組織]
 1. 從 [存放庫] 下拉式清單中選取 **my-first-web-static-app**
@@ -94,18 +94,18 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 1. 選取 [檢閱 + 建立]。
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="基本區段":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="檢閱建立按鈕":::
 
     > [!NOTE]
     > 若要在建立應用程式之後變更這些值，您可以編輯[工作流程檔案](github-actions-workflow.md)。
 
 1. 選取 [建立]  。
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="基本區段":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="建立按鈕":::
 
 1. 選取 [前往資源]  。
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="基本區段":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="移至資源按鈕":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

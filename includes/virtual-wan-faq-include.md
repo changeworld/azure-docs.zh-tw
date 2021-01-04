@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187388"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612655"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虛擬 WAN 是否正式發行？
 
@@ -254,7 +254,7 @@ ER 對 ER 之間的傳輸一律透過全域範圍進行。 虛擬中樞閘道會
 目前的行為是偏好透過中樞對中樞的 ExpressRoute 線路路徑來進行 VNet 對 VNet 連線。 不過，在虛擬 WAN 設定中不鼓勵這麼做。 虛擬 WAN 小組正致力於修正，啟用透過 ExpressRoute 路徑的中樞對中樞喜好設定。 建議適用於多個 ExpressRoute 線路 (不同的提供者) 來連線到一個中樞，並且針對區域間流量使用虛擬 WAN 提供的中樞對中樞連線。
 
 ### <a name="can-hubs-be-created-in-different-resource-group-in-virtual-wan"></a>可以在虛擬 WAN 的不同資源群組中建立中樞嗎？
-是。 此選項目前僅可透過 Powershell 取得。 虛擬 WAN 入口網站會在與虛擬 WAN 資源本身相同的資源群組中託管中樞。
+是。 此選項目前僅可透過 PowerShell 取得。 虛擬 WAN 入口網站會在與虛擬 WAN 資源本身相同的資源群組中託管中樞。
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虛擬 WAN 中是否支援 IPv6？
 
@@ -277,3 +277,7 @@ ER 對 ER 之間的傳輸一律透過全域範圍進行。 虛擬中樞閘道會
 ### <a name="does-virtual-wan-store-customer-data"></a>虛擬 WAN 是否會儲存客戶資料？ 
 
 否。 虛擬 WAN 不會儲存任何客戶資料。
+
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>是否有任何受控服務提供者可以管理使用者即服務的虛擬 WAN？ 
+
+是。 如需透過 Azure Marketplace 啟用的受控服務提供 (MSP) 解決方案清單，請參閱 [Azure 網路功能 MSP 合作夥伴的 Azure Marketplace 供應項目](../articles/networking/networking-partners-msp.md#msp)。

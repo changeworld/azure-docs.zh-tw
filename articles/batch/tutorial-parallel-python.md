@@ -1,16 +1,16 @@
 ---
-title: 使用 Python API 執行平行工作負載
+title: 教學課程 - 使用 Python API 執行平行工作負載
 description: 教學課程 - 使用 Batch Python 用戶端程式庫透過 Azure Batch 中的 ffmpeg 平行處理媒體檔案
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 34cea5e0b60c0a7ee8c3d31dd02a6f7e975de738
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7013ef1e9b6dda4554b665fa8199edb86a8a9adb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87853325"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106507"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教學課程：使用 Python API 透過 Azure Batch 執行平行工作負載
 
@@ -108,7 +108,7 @@ Elapsed time: 00:09:14.3418742
 
 ![集區熱度圖](./media/tutorial-parallel-python/pool.png)
 
-以預設設定執行應用程式時，一般的執行時間**大約 5 分鐘**。 建立集區佔用大部分的時間。 
+以預設設定執行應用程式時，一般的執行時間 **大約 5 分鐘**。 建立集區佔用大部分的時間。 
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 9053246ef747236d9efbc9239ced46b0c421f5bb
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 767617833789c71bfc2ecfc2d518166f8bcee6c6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753088"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109516"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>教學課程：使用伺服器評估來探索 Google Cloud Platform (GCP) 執行個體
 
@@ -238,7 +238,15 @@ Azure Migrate 設備是輕量型設備，可供 Azure Migrate 伺服器評量用
 
 現在，從設備連線至要探索的 GCP 伺服器，然後開始探索。
 
-1. 在 [步驟 1：選取復原點]**提供認證以探索 Windows 和 Linux 實體或虛擬伺服器** 中，按一下 [新增認證] 來指定認證的自訂名稱、為 Windows 或 Linux 伺服器新增 **使用者名稱** 和 **密碼**。 按一下 [ **儲存**]。
+1. 在 [步驟 1：選取復原點]**提供認證，以探索 Windows 和 Linux 實體或虛擬伺服器**，按一下 [新增認證]。
+1. 若為 Windows server，請選取 **Windows Server** 作為來源類型、指定認證的自訂名稱並新增使用者名稱和密碼。按一下 [儲存]。
+1. 如果您針對 Linux 伺服器使用密碼型驗證，請選取 **Linux Server (密碼型)** 作為來源類型、指定認證的自訂名稱並新增使用者名稱和密碼。按一下 [儲存]。
+1. 如果您針對 Linux 伺服器使用 SSH 金鑰型驗證，可以選取 **Linux Server (密碼型)** 作為來源類型、指定認證的自訂名稱並新增使用者名稱、瀏覽並選取 SSH 私密金鑰檔案。 按一下 [ **儲存**]。
+
+    - Azure Migrate 支援使用 RSA、DSA、ECDSA 和 ed25519 演算法的 ssh-keygen 命令所產生的 SSH 私密金鑰。
+    - 目前 Azure Migrate 不支援複雜密碼型的 SSH 金鑰。 若沒有複雜密碼，請使用 SSH 金鑰。
+    - 目前 Azure Migrate 不支援 PuTTY 所產生的 SSH 私密金鑰檔案。
+
 2. 如果想要一次新增多個認證，請按一下 [新增更多] 以儲存並新增更多認證。 
 3. 在 **步驟 2：提供實體或虛擬伺服器詳細資料** 中，按一下 [新增探索來源] 來指定伺服器 **IP 位址/FQDN** 和認證的自訂名稱，以連線到伺服器。
 4. 您可以一次 **新增單一項目**，或 **新增多個項目**。 另外也可透過 **匯入 CSV** 提供伺服器詳細資料。

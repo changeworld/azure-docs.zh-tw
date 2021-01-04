@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: e93c0c6bb689980cab1b41e529c491cdf3920260
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e188c00840a4d043e94f94f9db565e2d4e06aaba
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591711"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031057"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式
 
@@ -38,7 +38,7 @@ ms.locfileid: "94591711"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例
 >
 > 1. 移至 [Azure 入口網站 - 應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs)快速入門體驗。
-> 1. 輸入應用程式的名稱，並選取 [註冊]。
+> 1. 輸入應用程式的名稱，並選取 [註冊]  。
 > 1. 遵循入口網站快速入門體驗中的指示，下載自動設定的應用程式程式碼。
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>選項 2：註冊並手動設定您的應用程式和程式碼範例
@@ -47,25 +47,22 @@ ms.locfileid: "94591711"
 >
 > 若要註冊您的應用程式，並手動將應用程式註冊資訊新增到您的應用程式，請執行下列步驟：
 >
-> 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
->
-> 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-> 1. 選取 [新增註冊]。
-> 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
->    - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱，例如 `java-webapp`。
->    - 選取 [註冊]。
-> 1. 在 [概觀] 頁面上，尋找應用程式的 [應用程式 (用戶端) 識別碼] 和 [目錄 (租用戶) 識別碼] 值。 請複製這些值以供後續使用。
-> 1. 從功能表中選取 [驗證]，然後新增下列資訊：
->    - 新增 **Web** 平台組態。  將這些 `https://localhost:8443/msal4jsample/secure/aad` 和 `https://localhost:8443/msal4jsample/graph/me` 新增為 **重新導向 URI**。
->    - 選取 [儲存]。
-> 1. 從功能表中選取 [憑證和秘密]，然後在 [用戶端密碼] 區段中，按一下 [新增用戶端密碼]：
->
->    - 輸入 (執行個體應用程式祕密的) 金鑰描述。
->    - 選取 [1 年] 作為金鑰持續時間。
->    - 當您選取 [新增] 時，將會顯示金鑰值。
->    - 複製金鑰的值以供後續使用。 此金鑰值不會再次顯示，也無法透過任何其他方式來擷取，因此，請於此值出現在 Azure 入口網站後就立即記錄下來。
->
+> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+> 1. 搜尋並選取 [Azure Active Directory]  。
+> 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+> 1. 輸入應用程式的 [名稱]，例如 `java-webapp`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+> 1. 選取 [註冊]。
+> 1. 在 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 和 [目錄 (租用戶) 識別碼]，以便稍後使用。
+> 1. 在 [管理] 底下，選取 [驗證]。
+> 1. 選取 [新增平台] > [Web]。
+> 1. 從 [重新導向 URI] 區段中，新增 `https://localhost:8443/msal4jsample/secure/aad`。
+> 1. 選取 [設定] 。
+> 1. 從 [Web] 區段中，將 `https://localhost:8443/msal4jsample/graph/me` 新增為第二個 **重新導向 URI**。
+> 1. 在 [管理] 底下，選取 [憑證和祕密]。 在 [用戶端密碼] 區段中，選取 [新增用戶端密碼]。
+> 1. 輸入金鑰描述 (用於執行個體應用程式祕密)、保留預設到期日，然後選取 [新增]。
+> 1. 請注意 **用戶端密碼** 的 **值**，以供稍後使用。
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
 >
@@ -124,7 +121,7 @@ ms.locfileid: "94591711"
 >
 > - `Enter_the_Application_Id_here` - 是您註冊的應用程式所具備的應用程式識別碼。
 > - `Enter_the_Client_Secret_Here` - 是您在 [憑證與祕密] 中為您所註冊的應用程式建立的 [用戶端密碼]。
-> - `Enter_the_Tenant_Info_Here` - 是您所註冊之應用程式的 [目錄 (租用戶) 識別碼] 值。
+> - `Enter_the_Tenant_Info_Here` - 是您所註冊之應用程式的 [目錄 (租用戶) 識別碼]  值。
 > 1. 若要搭配使用 https 與 localhost，請填入 server.ssl.key 屬性。 若要產生自我簽署憑證，請使用 keytool 公用程式 (隨附於 JRE)。
 >
 >  ```
@@ -150,9 +147,9 @@ ms.locfileid: "94591711"
 
 ##### <a name="running-from-ide"></a>從 IDE 執行
 
-如果您從 IDE 執行 Web 應用程式，請按一下 [執行]，然後瀏覽至專案的首頁。 在此範例中，標準首頁 URL 為 https://localhost:8443
+如果您從 IDE 執行 Web 應用程式，請選取 [執行]，然後瀏覽至專案的首頁。 在此範例中，標準首頁 URL 為 https://localhost:8443 。
 
-1. 在首頁上選取 [登入] 按鈕，以重新導向至 Azure Active Directory，並提示使用者輸入其認證。
+1. 在首頁上選取 [登入]  按鈕，以重新導向至 Azure Active Directory，並提示使用者輸入其認證。
 
 1. 使用者通過驗證後，會重新導向至 *https://localhost:8443/msal4jsample/secure/aad* 。 他們現在已登入，且頁面將會顯示登入帳戶的相關資訊。 範例 UI 有下列按鈕：
     - 登出：從應用程式登出目前的使用者，並將他們重新導向至首頁。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 919688a05081c6f0b717fa4a524da769f2a281fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8f21f5fa8ee9035fe594cecff37a63b1ef2115cc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351617"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563461"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>在 Azure 靜態 Web Apps 預覽版上部署伺服器轉譯的 Nuxt.js 網站
 
@@ -109,7 +109,7 @@ Azure 靜態 Web Apps 會從 GitHub 存放庫部署您的應用程式，並針�
 1. 將您的變更推送至 GitHub。
 
     ```bash
-    git push origin master
+    git push origin main
     ```
 
 ## <a name="deploy-your-static-website"></a>部署您的靜態網站
@@ -172,7 +172,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nuxtjs-starter/actions
 
 當您建立應用程式時，Azure 靜態 Web Apps 會在您的存放庫中建立 GitHub 動作工作流程檔案。 您必須將此檔案移至本機存放庫，以同步您的 Git 歷程記錄。
 
-返回終端機，然後執行下列命令 `git pull origin master`。
+返回終端機，然後執行下列命令 `git pull origin main`。
 
 ## <a name="configure-dynamic-routes"></a>設定動態路由
 

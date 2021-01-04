@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 426cf59c9fb9d88039231ed441b2ffc7246716c7
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 93e605cb20d593750100ec8e340a7ad74c4dd385
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844432"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587888"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>教學課程：在 Azure App Service 中建置 PHP (Laravel) 和 MySQL 彈性伺服器 (預覽) 應用程式
 
@@ -219,7 +219,7 @@ MYSQL_SSL=true
 
 ### <a name="configure-tlsssl-certificate"></a>設定 TLS/SSL 憑證
 
-根據預設，MySQL 彈性伺服器會強制用戶端使用 TLS 連線。 若要連線至 Azure 中的 MySQL 資料庫，您必須使用適用於 MySQL 的 Azure 資料庫彈性伺服器所提供的 [.pem 憑證](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)。 下載 [此憑證](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)) 並放在範例應用程式存放庫本機複本的 **ssl** 資料夾中。
+根據預設，MySQL 彈性伺服器會強制用戶端使用 TLS 連線。 若要連線至 Azure 中的 MySQL 資料庫，您必須使用適用於 MySQL 的 Azure 資料庫彈性伺服器所提供的 [.pem 憑證](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)。 下載 [此憑證](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)) 並放在範例應用程式存放庫本機複本的 **SSL** 資料夾中。
 
 開啟 _config/database.php_，在 `connections.mysql` 中新增 `sslmode` 和 `options` 參數，如下列程式碼所示。
 
@@ -390,7 +390,7 @@ git remote add azure <deploymentLocalGitUrl-from-create-step>
 推送到 Azure 遠端，使用下列命令來部署您的應用程式。 當 Git 認證管理員提示輸入認證時，請務必輸入您在 **設定部署使用者** 中建立的認證，而不是您用來登入 Azure 入口網站的認證。
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 此命令可能會花數分鐘執行。 執行上述命令時，會顯示類似下列範例的資訊：
@@ -401,7 +401,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -551,7 +551,7 @@ php artisan migrate --env=production --force
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 完成 `git push` 之後，巡覽至 Azure 應用程式，然後測試新功能。

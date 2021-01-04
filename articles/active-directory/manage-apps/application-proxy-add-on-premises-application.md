@@ -8,19 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/04/2020
+ms.date: 12/10/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928461"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587548"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
 Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使用者使用其 Azure AD 帳戶登入來存取內部部署應用程式。 本教學課程會準備環境以便與應用程式 Proxy 搭配使用。 環境準備就緒後，您會使用 Azure 入口網站將內部部署應用程式新增至 Azure AD 租用戶。
+
+連接器是應用程式 Proxy 的重要部分。 若要深入了解連接器的相關資訊，請參閱[了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)。
 
 本教學課程會：
 
@@ -74,7 +77,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 啟用 TLS 1.2：
 
 1. 設定下列登錄機碼：
-    
+
    ```
    Windows Registry Editor Version 5.00
 
@@ -191,7 +194,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，以系統管理員身分登入。
 2. 在左瀏覽窗格中，選取 [Azure Active Directory]  。
 3. 選取 [企業應用程式]  ，然後選取 [新增應用程式]  。
-4. 在 [建立您自己的應用程式] 區段中，選取 [設定應用程式 Proxy 以安全地從遠端存取內部部署應用程式]。
+4. 選取會出現在 **內部部署應用程式** 區段頁面中段的 [新增內部部署應用程式] 按鈕。 您也可以選取頁面頂端的 [建立您自己的應用程式]，再選取 [設定應用程式 Proxy 以安全地從遠端存取內部部署應用程式]。
 5. 在 [新增自己的內部部署應用程式]  區段中，提供您應用程式的下列資訊：
 
     | 欄位 | 描述 |

@@ -11,17 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 47edaec54a2470e9b657b2f214be923439e1e8a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5165f7d6e16e0d136dbf8d4507090c78372185cb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80999588"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348045"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>教學課程：在 Azure IoT Central 中自訂操作員儀表板及管理裝置
 
 
-在此教學課程中，建置者必須了解如何在 Azure IoT Central 店內分析應用程式中自訂操作員儀表板。 應用程式操作員可以使用自訂儀表板來執行應用程式及管理已連結的裝置。
+在此教學課程中，您了解如何在 Azure IoT Central 店內分析應用程式中自訂操作員儀表板。 應用程式操作員可以使用自訂儀表板來執行應用程式及管理已連結的裝置。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -99,9 +99,9 @@ Azure IoT Central 應用程式儀表板是由一或多個圖格組成的。 圖�
 1. 選取 [儲存]  。 
 
 ## <a name="arrange-tiles-to-modify-the-layout"></a>排列圖格以修改版面配置
-自訂儀表板的關鍵步驟是重新排列圖格，以建立實用的檢視。 應用程式操作員會使用儀表板來視覺化裝置遙測、管理裝置，以及監視商店中的狀況。 Azure IoT Central 可簡化應用程式建置人員建立儀表板的工作。 儀表板編輯模式可讓您快速新增、移動、調整大小及刪除圖格。 **店內分析 - 結帳**應用程式範本也簡化建立儀表板的工作。 它提供可運作的儀表板版面配置 (已連接感應器)，以及顯示結帳隊伍計數與環境狀況的圖格。
+自訂儀表板的關鍵步驟是重新排列圖格，以建立實用的檢視。 應用程式操作員會使用儀表板來視覺化裝置遙測、管理裝置，以及監視商店中的狀況。 Azure IoT Central 可簡化應用程式建置人員建立儀表板的工作。 儀表板編輯模式可讓您快速新增、移動、調整大小及刪除圖格。 **店內分析 - 結帳** 應用程式範本也簡化建立儀表板的工作。 它提供可運作的儀表板版面配置 (已連接感應器)，以及顯示結帳隊伍計數與環境狀況的圖格。
 
-在此節中，您會重新排列**店內分析 - 結帳**應用程式範本中的儀表板，以建立自訂版面配置。
+在此節中，您會重新排列 **店內分析 - 結帳** 應用程式範本中的儀表板，以建立自訂版面配置。
 
 移除您不打算在應用程式中使用的圖格：
 
@@ -140,7 +140,7 @@ Azure IoT Central 應用程式儀表板是由一或多個圖格組成的。 圖�
     ![Azure IoT Central 韌體電池圖格](./media/tutorial-in-store-analytics-customize-dashboard/firmware-battery-tiles.png)
 
 ## <a name="add-telemetry-tiles-to-display-conditions"></a>新增遙測圖格以顯示狀況
-自訂儀表板版面配置之後，您就可以新增圖格以顯示遙測。 若要建立遙測圖格，請選取裝置範本與裝置執行個體，然後選取要在圖格中顯示的裝置特定遙測。 **店內分析 - 結帳**應用程式範本在儀表板中包含數個遙測圖格。 兩個結帳區中的四個圖格顯示來自模擬占用率感應器的遙測。 [人員流量]  圖格顯示兩個結帳區中的計數。 
+自訂儀表板版面配置之後，您就可以新增圖格以顯示遙測。 若要建立遙測圖格，請選取裝置範本與裝置執行個體，然後選取要在圖格中顯示的裝置特定遙測。 **店內分析 - 結帳** 應用程式範本在儀表板中包含數個遙測圖格。 兩個結帳區中的四個圖格顯示來自模擬占用率感應器的遙測。 [人員流量]  圖格顯示兩個結帳區中的計數。 
 
 在此節中，您會新增兩個遙測圖格，以顯示您於[在 Azure IoT Central 中建立店內分析應用程式](./tutorial-in-store-analytics-create-app.md)教學課程中所新增 RuuviTag 感應器的環境遙測。 
 

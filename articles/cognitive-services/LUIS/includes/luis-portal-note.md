@@ -1,5 +1,5 @@
 ---
-title: Luis 入口網站匯總
+title: Luis 入口網站合併
 services: cognitive-services
 ms.author: aahi
 author: aahill
@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
 ms.date: 10/16/2020
-ms.openlocfilehash: 5f35547162d5a2fe49320f27e61ad48f3e19d94a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
-ms.translationtype: MT
+ms.openlocfilehash: 8463b0cd76bec683acb4942d01034616e312cd7b
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368169"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616366"
 ---
 > [!NOTE]
-> 從1月4日開始，luis.au 和 luis.eu 入口網站將會合並為單一入口網站和 URL。 如果您使用其中一個入口網站，系統會自動將您重新導向至 [luis.ai](https://luis.ai/)。 您將會繼續使用您所建立的相同區域資源，而您的應用程式將會繼續在您原本選取的相同區域中進行撰寫。
+> 從 1 月 4 日開始，區域入口網站 (au.luis.ai 和 eu.luis.ai) 將會合併為單一入口網站和 URL。 如果您使用其中一個入口網站，系統會自動將您重新導向至 [luis.ai](https://luis.ai/)。 您將繼續使用所建立的相同地區資源，而且您的資料會繼續在與資源相同的區域中儲存和處理。

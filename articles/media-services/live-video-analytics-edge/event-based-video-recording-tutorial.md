@@ -3,12 +3,12 @@ title: 將以事件為基礎的影片錄製到雲端並從雲端播放的教學�
 description: 在本教學課程中，您將了解如何在 Azure IoT Edge 上使用 Azure Live Video Analytics，將以事件為基礎的影片錄製到雲端並從雲端播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498297"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401659"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教學課程：將以事件為基礎的影片錄製到雲端並從雲端播放
 
@@ -68,13 +68,13 @@ ms.locfileid: "96498297"
 此圖是以圖片呈現的[媒體圖](media-graph-concept.md)，以及完成所需案例的其他模組。 其中涉及到四個 IoT Edge 模組：
 
 * IoT Edge 模組上的 Live Video Analytics。
-* 在 HTTP 端點後方執行 AI 模型的邊緣模組。 此 AI 模組會使用 [YOLO v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) 模型，其可以偵測許多類型的物件。
+* 在 HTTP 端點後方執行 AI 模型的邊緣模組。 此 AI 模組會使用 [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) 模型，其可以偵測許多類型的物件。
 * 用來計算和篩選物件的自訂模組，在圖表中稱為物件計數器。 您將建立物件計數器，並在本教學課程中加以部署。
 * 模擬 RTSP 攝影機的 [RTSP 模擬器模組](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)。
     
 如圖所示，您將使用媒體圖中的 [RTSP 來源](media-graph-concept.md#rtsp-source) 節點來擷取模擬的即時影片 (在高速公路上的車流)，並將該影片傳送至兩條路徑：
 
-* 第一條路徑的目的地是[畫面播放速率篩選處理器](media-graph-concept.md#frame-rate-filter-processor)節點，以指定的 (降低的) 畫面播放速率輸出影片畫面。 這些影片畫面會傳送至 HTTP 擴充節點。 節點接著會將畫面 (以影像形式) 轉送至 AI 模組 YOLO v3，也就是物件偵測器。 節點會接收結果，而這些結果就是模型偵測到的物件 (流量中的車輛)。 然後，HTTP 擴充節點會透過 IoT 中樞的訊息接收節點，將結果發佈至 IoT Edge 中樞。
+* 第一個路徑是 HTTP 擴充節點。 節點會使用 `samplingOptions` 欄位將影片畫面取樣成您所設定的值，然後將影格 (影像) 轉送至 AI 模組 YOLOv3，這是物件偵測器。 節點會接收結果，而這些結果就是模型偵測到的物件 (流量中的車輛)。 然後，HTTP 擴充節點會透過 IoT 中樞的訊息接收節點，將結果發佈至 IoT Edge 中樞。
 * 物件計數器模組已設定為接收來自 IoT Edge 中樞的訊息，其中包括物件偵測結果 (流量中的車輛)。 此模組會檢查這些訊息，並尋找特定類型的物件 (其已透過設定進行設定)。 找到這類物件時，此模組會將訊息傳送至 IoT Edge 中樞。 接著，這些「找到物件」的訊息會路由傳送至媒體圖的 IoT 中樞來源節點。 收到這類訊息時，媒體圖中的 IoT 中樞來源節點會觸發[訊號閘道處理器](media-graph-concept.md#signal-gate-processor)節點。 訊號閘道處理器節點接著在一段設定的時間內保持開啟。 在該持續時間內，影片會透過閘道進入資產接收節點。 接著，該部分的即時串流會透過[資產接收](media-graph-concept.md#asset-sink)節點錄製到 Azure 媒體服務帳戶中的[資產](terminology.md#asset)。
 
 ## <a name="set-up-your-development-environment"></a>設定開發環境

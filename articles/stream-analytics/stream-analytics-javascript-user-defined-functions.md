@@ -7,13 +7,13 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
-ms.date: 06/16/2020
-ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 12/15/2020
+ms.openlocfilehash: 085ac8c2ca7cfafcf0e40152458acf68dd847937
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780836"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605525"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 串流分析中的 JavaScript 使用者定義函式
  
@@ -215,6 +215,14 @@ FROM
 Samstag, 28. Dezember 2019
 ```
 
+## <a name="user-logging"></a>使用者記錄
+當作業正在執行時，記錄機制可讓您擷取自訂資訊。 您可以使用記錄資料來即時偵錯或評估自訂程式碼的正確性。 此機制可透過 Console.Log() 方法取得。
+
+```javascript
+console.log('my error message');
+```
+
+您可以透過 [診斷記錄](data-errors.md)存取記錄訊息。
 ## <a name="next-steps"></a>後續步驟
 
 * [Machine Learning UDF](./machine-learning-udf.md)

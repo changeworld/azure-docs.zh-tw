@@ -3,15 +3,15 @@ title: Windows 虛擬桌面主機集區服務更新 - Azure
 description: 將更新推展到生產環境之前，如何建立驗證主機集區來監視服務更新。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/13/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526505"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563240"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教學課程：建立主機集區以驗證服務更新
 
@@ -66,6 +66,20 @@ Cmdlet 的結果應該類似以下輸出：
     LoadBalancerType    : BreadthFirst
     ValidationEnvironment : True
 ```
+
+## <a name="enable-your-validation-environment-with-the-azure-portal"></a>使用 Azure 入口網站啟用您的驗證環境
+
+您也可以使用 Azure 入口網站來啟用驗證環境。
+
+若要使用 Azure 入口網站來設定您的驗證主機集區：
+
+1. 在 <https://portal.azure.com> 登入 Azure 入口網站。
+2. 搜尋並選取 **Windows 虛擬桌面**。
+3. 在 Windows 虛擬桌面頁面中，選取 [主機集區]。
+4. 選取想要編輯的主機集區。
+5. 選取 [屬性] 。
+6. 在驗證環境欄位中，選取 [是] 以啟用驗證環境。
+7. 選取 [儲存]。 如此會套用新設定。
 
 ## <a name="update-schedule"></a>更新排程
 

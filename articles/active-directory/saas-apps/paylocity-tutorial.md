@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: fcaaea387cab24772b9e6f31f4e7d93ff643b983
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 59c01d5d8589b61ff0aaacb81d12fed8fba4f842
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515588"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505506"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Paylocity 整合
 
@@ -51,7 +51,7 @@ ms.locfileid: "92515588"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Paylocity** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Paylocity**。
 1. 從結果面板選取 [Paylocity]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-paylocity"></a>設定及測試 Paylocity 的 Azure AD 單一登入
@@ -72,7 +72,7 @@ ms.locfileid: "92515588"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Paylocity]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -104,7 +104,7 @@ ms.locfileid: "92515588"
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，按一下 **編輯圖示** 。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，按一下 **編輯圖示**。
 
     ![顯示 [S A M L 簽署憑證] 的螢幕擷取畫面，其中已針對 [同盟中繼資料 X M L] 選取 [下載] 動作。](./media/paylocity-tutorial/edit-samlassertion.png)
 
@@ -148,7 +148,15 @@ ms.locfileid: "92515588"
 
 ## <a name="configure-paylocity-sso"></a>設定 Paylocity SSO
 
-若要在 **Paylocity** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Paylocity支援小組](mailto:service@paylocity.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Paylocity** 端設定單一登入，
+
+1. 請下載 **同盟中繼資料 XML**。
+1. 在 Paylocity 中，瀏覽至 **人力資源與薪資** > **使用者存取** > **SSO 組態**。
+1. 選取 **SSO 整合** 底下的 [新增 SSO 整合]。 隨即開啟新的選單。
+1. 從下拉式清單中選取 **Microsoft Azure** 作為 SSO 提供者。
+1. 從下拉式清單中選取 **狀態**。
+1. 將中繼資料檔案拖放到放置區中。 Paylocity 會嘗試剖析簽發者、張貼重新導向並繫結 URL 和安全性憑證。
+1. 選取 [儲存] 以確認變更。 整合應該會顯示在 **SSO 整合** 之下。
 
 ### <a name="create-paylocity-test-user"></a>建立 Paylocity 測試使用者
 

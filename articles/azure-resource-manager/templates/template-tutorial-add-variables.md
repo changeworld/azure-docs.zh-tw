@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 46ed1fc55a108bf80089d249abc58bc5d1a6479a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930723"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106949"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>教學課程：將變數新增至 ARM 範本
 
@@ -37,17 +37,17 @@ ms.locfileid: "96930723"
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-請注意，它包含名為 **uniqueStorageName** 的變數。 此變數會使用四個函式來建構字串值。
+請注意，它包含名為 `uniqueStorageName` 的變數。 此變數會使用四個函式來建構字串值。
 
 您已經熟悉 [parameters](template-functions-deployment.md#parameters) 函式，因此我們將不會進行檢查。
 
-您也很熟悉 [resourceGroup](template-functions-resource.md#resourcegroup) 函式。 在此情況下，您會取得 **id** 屬性，而不是 **location** 屬性，如先前的教學課程所示。 **id** 屬性會傳回資源群組的完整識別碼，包括訂用帳戶識別碼和資源群組名稱。
+您也很熟悉 [resourceGroup](template-functions-resource.md#resourcegroup) 函式。 在此情況下，您會取得 `id` 屬性，而不是 `location` 屬性，如先前的教學課程所示。 `id` 屬性會傳回資源群組的完整識別碼，包括訂用帳戶識別碼和資源群組名稱。
 
 [uniqueString](template-functions-string.md#uniquestring) 函式會建立 13 個字元的雜湊值。 傳回的值取決於您傳入的參數。 在此教學課程中，您會使用資源群組識別碼作為雜湊值的輸入。 這表示您可以將此範本部署到不同的資源群組，並取得不同的唯一字串值。 不過，如果您部署至相同的資源群組，則會取得相同的值。
 
-[concat](template-functions-string.md#concat) 函式會取得值，並將它們合併。 針對此變數，它會取得來自參數的字串和來自 uniqueString 函式的字串，並將它們合併成一個字串。
+[concat](template-functions-string.md#concat) 函式會取得值，並將它們合併。 針對此變數，它會取得來自參數的字串和來自 `uniqueString` 函式的字串，並將它們合併成一個字串。
 
-**storagePrefix** 參數可讓您傳入前置詞，以協助您識別儲存體帳戶。 您可以建立自己的命名慣例，以便在部署之後，更輕鬆地從一長串資源中識別儲存體帳戶。
+`storagePrefix` 參數可讓您傳入前置詞，以協助您識別儲存體帳戶。 您可以建立自己的命名慣例，以便在部署之後，更輕鬆地從一長串資源中識別儲存體帳戶。
 
 最後，請注意，儲存體名稱現在會設定為變數，而不是參數。
 
@@ -55,7 +55,7 @@ ms.locfileid: "96930723"
 
 讓我們來部署範本。 部署此範本會比先前的範本更容易，因為您只需提供儲存體名稱的前置詞。
 
-如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如 [第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 `templateFile` 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -83,7 +83,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失敗，請使用 **verbose** 參數來取得所建立資源的相關資訊。 使用 **debug** 參數來取得更多資訊以進行偵錯。
+> 如果部署失敗，請使用 `verbose` 參數來取得所建立資源的相關資訊。 使用 `debug` 參數來取得更多資訊以進行偵錯。
 
 ## <a name="verify-deployment"></a>驗證部署
 

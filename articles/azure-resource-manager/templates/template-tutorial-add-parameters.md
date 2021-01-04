@@ -6,12 +6,12 @@ ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7d0743d316b9d879017f3b0fbe08ee4dc2b3e1c2
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e983f8499cbeaf400a8da6f48d7f6c8b75c4795a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931056"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107057"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>教學課程：將參數新增至 ARM 範本
 
@@ -33,7 +33,7 @@ ms.locfileid: "96931056"
 
 ## <a name="make-template-reusable"></a>讓範本可重複使用
 
-為了讓範本可重複使用，我們會新增可用來傳入儲存體帳戶名稱的參數。 下列範例中反白顯示的 JSON 會顯示範本中已變更的內容。 **storageName** 參數會識別為字串。 最大長度會設為 24 個字元，以避免任何名稱太長。
+為了讓範本可重複使用，我們會新增可用來傳入儲存體帳戶名稱的參數。 下列範例中反白顯示的 JSON 會顯示範本中已變更的內容。 `storageName` 參數會識別為字串。 最大長度會設為 24 個字元，以避免任何名稱太長。
 
 複製整個檔案，並以其內容取代您的範本。
 
@@ -43,7 +43,7 @@ ms.locfileid: "96931056"
 
 讓我們來部署範本。 下列範例會使用 Azure CLI 或 PowerShell 來部署範本。 請注意，您會提供儲存體帳戶名稱作為部署命令中的其中一個值。 針對儲存體帳戶名稱，提供您在上一個教學課程中使用的相同名稱。
 
-如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如 [第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 `templateFile` 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -81,11 +81,11 @@ az deployment group create \
 
 參數可提供針對特定環境量身訂做的值，讓您自訂部署。 例如，您可以根據是否要部署到可用來開發、測試和生產的環境，來傳遞不同的值。
 
-先前的範本一律會部署 Standard_LRS 儲存體帳戶。 您可能想要彈性地根據環境來部署不同的 SKU。 下列範例顯示為 SKU 新增參數所做的變更。 複製整個檔案，並貼到您的範本上。
+先前的範本一律會部署 **Standard_LRS** 儲存體帳戶。 您可能想要彈性地根據環境來部署不同的 SKU。 下列範例顯示為 SKU 新增參數所做的變更。 複製整個檔案，並貼到您的範本上。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
-**storageSKU** 參數有預設值。 當部署期間未指定值時，就會使用此值。 它也有一份允許的值清單。 這些值符合建立儲存體帳戶所需的值。 您不希望範本的使用者傳入無法使用的 SKU。
+`storageSKU` 參數有預設值。 當部署期間未指定值時，就會使用此值。 它也有一份允許的值清單。 這些值符合建立儲存體帳戶所需的值。 您不希望範本的使用者傳入無法使用的 SKU。
 
 ## <a name="redeploy-template"></a>重新部署範本
 
@@ -114,7 +114,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失敗，請使用 **verbose** 參數來取得所建立資源的相關資訊。 使用 **debug** 參數來取得更多資訊以進行偵錯。
+> 如果部署失敗，請使用 `verbose` 參數來取得所建立資源的相關資訊。 使用 `debug` 參數來取得更多資訊以進行偵錯。
 
 若要查看範本的彈性，讓我們再次進行部署。 這次將 SKU 參數設為 **Standard_GRS**。 您可以傳入新名稱來建立不同的儲存體帳戶，或使用相同名稱來更新現有的儲存體帳戶。 這兩個選項都可運作。
 

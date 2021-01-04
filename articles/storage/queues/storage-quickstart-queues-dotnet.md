@@ -1,19 +1,19 @@
 ---
-title: 快速入門：Azure 佇列儲存體程式庫 v12 - .NET
-description: 了解如何使用 Azure 佇列 .NET v12 程式庫來建立佇列，並將訊息新增至該佇列。 接下來，您會了解如何讀取和刪除佇列中的訊息。 您也將了解如何刪除佇列。
+title: 快速入門：Azure 佇列儲存體用戶端程式庫 v12 - .NET
+description: 了解如何使用適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12，建立佇列及在佇列中新增訊息。 接下來，您會了解如何讀取和刪除佇列中的訊息。 您也將了解如何刪除佇列。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8900db8ed43b8c255915bf5429e1211f04e7338
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 22038e4145acabc067083177fcf297464972ad58
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491956"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589520"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>快速入門：適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -48,15 +48,15 @@ ms.locfileid: "96491956"
 
 ### <a name="create-the-project"></a>建立專案
 
-建立一個名為 QueuesQuickstartV12 的 .NET Core 應用程式。
+建立名為 `QueuesQuickstartV12` 的 .NET Core 應用程式。
 
-1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 QueuesQuickstartV12 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*Program.cs*。
+1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `QueuesQuickstartV12` 的新主控台應用程式。 此命令會建立簡單的 "hello world" C# 專案，內含名為 `Program.cs` 的單一來源檔案。
 
    ```console
    dotnet new console -n QueuesQuickstartV12
    ```
 
-1. 切換至新建立的 QueuesQuickstartV12 目錄。
+1. 切換至新建立的 `QueuesQuickstartV12` 目錄。
 
    ```console
    cd QueuesQuickstartV12
@@ -74,8 +74,8 @@ dotnet add package Azure.Storage.Queues
 
 從專案目錄：
 
-1. 在編輯器中開啟 Program.cs 檔案
-1. 移除 `Console.WriteLine("Hello World!");` 陳述式
+1. 在您的編輯器中開啟 `Program.cs` 檔案
+1. 移除 `Console.WriteLine("Hello, World");` 陳述式
 1. 新增 `using` 指示詞
 1. 更新 `Main` 方法宣告以[支援非同步程式碼](/dotnet/csharp/whats-new/csharp-7#async-main)
 
@@ -115,9 +115,9 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 使用下列 .NET 類別與這些資源互動：
 
-- [QueueServiceClient](/dotnet/api/azure.storage.queues.queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
-- [QueueClient](/dotnet/api/azure.storage.queues.queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
-- [QueueMessage](/dotnet/api/azure.storage.queues.models.queuemessage)：`QueueMessage` 類別代表在佇列上呼叫 [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) 時所傳回的個別物件。
+- [`QueueServiceClient`](/dotnet/api/azure.storage.queues.queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
+- [`QueueClient`](/dotnet/api/azure.storage.queues.queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
+- [`QueueMessage`](/dotnet/api/azure.storage.queues.models.queuemessage)：`QueueMessage` 類別代表在佇列上呼叫 [`ReceiveMessages`](/dotnet/api/azure.storage.queues.queueclient.receivemessages) 時所傳回的個別物件。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -139,7 +139,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 在 `Main` 方法內新增此程式碼：
 
 ```csharp
-Console.WriteLine("Azure Queue storage v12 - .NET quickstart sample\n");
+Console.WriteLine("Azure Queue Storage client library v12 - .NET quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable called
@@ -155,9 +155,9 @@ string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONN
 決定新佇列的名稱。 下列程式碼會將 GUID 值附加到佇列名稱，以確保它是唯一的。
 
 > [!IMPORTANT]
-> 佇列名稱只能包含小寫字母、數字和連字號，且必須以字母或數字開頭。 每個連字號前後都必須緊接非連字號的字元。 名稱長度也必須為 3 到 63 個字元。 如需為佇列命名的詳細資訊，請參閱[為佇列和中繼資料命名](/rest/api/storageservices/naming-queues-and-metadata)。
+> 佇列名稱只能包含小寫字母、數字和連字號，且必須以字母或數字開頭。 每個連字號前後都必須緊接非連字號的字元。 名稱長度也必須為 3 到 63 個字元。 如需詳細資訊，請參閱[為佇列和中繼資料命名](/rest/api/storageservices/naming-queues-and-metadata)。
 
-建立 [QueueClient](/dotnet/api/azure.storage.queues.queueclient) 類別的執行個體。 然後，呼叫 [CreateAsync](/dotnet/api/azure.storage.queues.queueclient.createasync) 方法，以在您的儲存體帳戶中建立佇列。
+建立 [`QueueClient`](/dotnet/api/azure.storage.queues.queueclient) 類別的執行個體。 然後，呼叫 [`CreateAsync`](/dotnet/api/azure.storage.queues.queueclient.createasync) 方法，以在您的儲存體帳戶中建立佇列。
 
 將此程式碼加入到 `Main` 方法的結尾處：
 
@@ -177,7 +177,7 @@ await queueClient.CreateAsync();
 
 ### <a name="add-messages-to-a-queue"></a>將訊息新增至佇列
 
-下列程式碼片段會藉由呼叫 [SendMessageAsync](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) 方法，以非同步方式將訊息新增至佇列。 其也會儲存從 `SendMessageAsync` 呼叫傳回的 [SendReceipt](/dotnet/api/azure.storage.queues.models.sendreceipt)。 回條可用來在稍後的程式中更新訊息。
+下列程式碼片段會藉由呼叫 [`SendMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync) 方法，以非同步方式將訊息新增至佇列。 其也會儲存從 `SendMessageAsync` 呼叫傳回的 [`SendReceipt`](/dotnet/api/azure.storage.queues.models.sendreceipt)。 回條可用來在稍後的程式中更新訊息。
 
 將此程式碼加入到 `Main` 方法的結尾處：
 
@@ -194,7 +194,7 @@ SendReceipt receipt = await queueClient.SendMessageAsync("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>窺視佇列中的訊息
 
-藉由呼叫 [PeekMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) 方法來窺視佇列中的訊息。 `PeekMessagesAsync` 方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
+藉由呼叫 [`PeekMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.peekmessagesasync) 方法來窺視佇列中的訊息。 此方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
 
 將此程式碼加入到 `Main` 方法的結尾處：
 
@@ -213,7 +213,7 @@ foreach (PeekedMessage peekedMessage in peekedMessages)
 
 ### <a name="update-a-message-in-a-queue"></a>更新佇列中的訊息
 
-藉由呼叫 [UpdateMessageAsync](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) 方法來更新訊息的內容。 `UpdateMessageAsync` 方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同訊息的新內容，傳入先前程式碼所儲存 `SendReceipt` 中的值。 `SendReceipt` 值會識別要更新的訊息。
+藉由呼叫 [`UpdateMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.updatemessageasync) 方法來更新訊息的內容。 此方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同訊息的新內容，傳入先前程式碼所儲存 `SendReceipt` 中的值。 `SendReceipt` 值會識別要更新的訊息。
 
 ```csharp
 Console.WriteLine("\nUpdating the third message in the queue...");
@@ -224,7 +224,7 @@ await queueClient.UpdateMessageAsync(receipt.MessageId, receipt.PopReceipt, "Thi
 
 ### <a name="receive-messages-from-a-queue"></a>從佇列接收訊息
 
-藉由呼叫 [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) 方法來下載先前新增的訊息。
+藉由呼叫 [`ReceiveMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync) 方法來下載先前新增的訊息。
 
 將此程式碼加入到 `Main` 方法的結尾處：
 
@@ -261,7 +261,7 @@ foreach (QueueMessage message in messages)
 
 ### <a name="delete-a-queue"></a>刪除佇列
 
-下列程式碼會使用 [DeleteAsync](/dotnet/api/azure.storage.queues.queueclient.deleteasync) 方法刪除佇列，以清除應用程式所建立的資源。
+下列程式碼會使用 [`DeleteAsync`](/dotnet/api/azure.storage.queues.queueclient.deleteasync) 方法刪除佇列，以清除應用程式所建立的資源。
 
 將此程式碼加入到 `Main` 方法的結尾處：
 
@@ -293,7 +293,7 @@ dotnet run
 應用程式的輸出類似下列範例：
 
 ```output
-Azure Queue storage v12 - .NET quickstart sample
+Azure Queue Storage client library v12 - .NET quickstart sample
 
 Creating queue: quickstartqueues-5c72da2c-30cc-4f09-b05c-a95d9da52af2
 
@@ -322,7 +322,7 @@ Done
 
 當應用程式在接收訊息之前暫停，請在 [Azure 入口網站](https://portal.azure.com)中檢查您的儲存體帳戶。 確認訊息在佇列中。
 
-按下 **Enter** 鍵來接收和刪除訊息。 出現提示時，請再次按下 **Enter** 鍵，以刪除佇列並完成示範。
+按下 `Enter` 鍵來接收和刪除訊息。 出現提示時，請再次按下 `Enter` 鍵，以刪除佇列並完成示範。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -334,5 +334,5 @@ Done
 > [適用於 .NET 和 .NET Core 開發人員的 Azure](/dotnet/azure/)
 
 - 若要深入了解，請參閱[適用於 .NET 的 Azure 儲存體程式庫](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage)。
-- 若要查看更多 Azure 佇列儲存體範例應用程式，請繼續 [Azure 佇列儲存體 v12 .NET 用戶端程式庫範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)。
+- 如需更多 Azure 佇列儲存體範例應用程式，請參閱[適用於 .NET 的 Azure 佇列儲存體用戶端程式庫範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)。
 - 若要深入了解 .NET Core，請參閱[在 10 分鐘內開始使用 .NET](https://www.microsoft.com/net/learn/get-started/)。

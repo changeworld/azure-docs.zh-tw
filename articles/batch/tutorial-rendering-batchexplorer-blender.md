@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure Batch 和 Batch Explorer 轉譯 Blender 場景
+title: 教學課程 - 使用 Azure Batch 和 Batch Explorer 轉譯 Blender 場景
 description: 教學課程 - 如何使用 Azure Batch 和 Batch Explorer 用戶端應用程式從 Blender 場景轉譯多個畫面格
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c015e4e83b0505a45690e92c1d732f74b6f6b0e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964799"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106456"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>教學課程：使用 Batch Explorer 轉譯 Blender 場景
 
@@ -93,6 +93,7 @@ ms.locfileid: "85964799"
 ## <a name="create-a-rendering-job"></a>建立轉譯作業
 
 建立會使用已建立的集區來轉譯部分畫面格的轉譯作業：
+
 * 從左側的主功能表中選取 [資源庫] 功能表項目。
 * 針對應用程式項目清單，選取 'Blender' 項目。
 * 選取要在 Windows Server 上轉譯畫面格的項目。
@@ -137,6 +138,18 @@ ms.locfileid: "85964799"
 * 按一下滑鼠右鍵再按一下 [刪除]，或選取集區上方的垃圾桶圖示
 
 ## <a name="next-steps"></a>後續步驟
-* 在 [資源庫] 區段中，透過 Batch Explorer 瀏覽可用的轉譯應用程式。
-* 每個應用程式會有數個可用的範本，且數量會隨著時間而增加。  例如，其中會有 Blender 範本，可將單一影像分割為圖格，因而能夠以平行方式轉譯影像的某些部分。
-* 如需轉譯功能的完整說明，請參閱[此處](./batch-rendering-service.md)的系列文章。
+
+在本教學課程中，您已了解如何：
+
+> [!div class="checklist"]
+> * 將 Blend 場景上傳至 Azure 儲存體
+> * 建立含有多個節點的 Batch 集區以執行轉譯
+> * 轉譯多個畫面格
+> * 檢視和下載轉譯的畫面格檔案
+
+若要繼續進行，請探索 **資源庫** 一節中的透過 Batch Explorer 提供的轉譯應用程式。 每個應用程式會有數個可用的範本，且數量會隨著時間而增加。 例如，其中會有 Blender 範本，可將單一影像分割為圖格，因而能夠以平行方式轉譯影像的某些部分。
+
+若要深入了解雲端規模轉譯，請參閱 Batch 轉譯服務的選項。
+
+> [!div class="nextstepaction"]
+> [Batch 轉譯服務](batch-rendering-service.md)

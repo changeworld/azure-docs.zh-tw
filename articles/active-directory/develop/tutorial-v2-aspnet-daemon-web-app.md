@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95406594"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509422"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教學課程：建置會使用 Microsoft 身分識別平台的多租用戶精靈
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 此範例有一個專案。 若要向您的 Azure AD 租用戶註冊應用程式，您可以：
 
-- 遵循[向 Azure Active Directory 租用戶註冊範例](#register-your-application)和[設定範例以使用 Azure AD 租用戶](#choose-the-azure-ad-tenant)中的步驟。
+- 遵循[向 Azure Active Directory 租用戶註冊範例](#register-the-client-app-dotnet-web-daemon-v2)和[設定範例以使用 Azure AD 租用戶](#choose-the-azure-ad-tenant)中的步驟。
 - 使用 PowerShell 指令碼來：
   - 「自動」為您建立 Azure AD 應用程式和相關物件 (密碼、權限、相依性)。
   - 修改 Visual Studio 專案的組態檔。
@@ -93,40 +93,34 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="choose-the-azure-ad-tenant"></a>選擇 Azure AD 租用戶
 
-1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 如果您的帳戶位於多個 Azure AD 租用戶，請選取頁面頂端功能表上的設定檔，然後選取 [切換目錄]。
-1. 將入口網站工作階段變更為所需的 Azure AD 租用戶。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>註冊用戶端應用程式 (dotnet-web-daemon-v2)
 
-1. 移至開發人員所適用 Microsoft 身分識別平台中的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-1. 選取 [新增註冊]。
-1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
-   - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱。 例如，輸入 **dotnet-web-daemon-v2**。
-   - 在 [支援的帳戶類型] 區段中，選取 [任何組織目錄中的帳戶]。
-   - 在 [重新導向 URI (選用)] 區段中，選取下拉式方塊中的 [Web]，然後輸入下列重新導向 URI：
-       - **https://localhost:44316/**
-       - **https://localhost:44316/Account/GrantPermissions**
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+1. 輸入應用程式的 [名稱]，例如 `dotnet-web-daemon-v2`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+1. 在 [支援的帳戶類型] 區段中，選取 [任何組織目錄中的帳戶]。
+1. 在 [重新導向 URI (選用)] 區段中，選取下拉式方塊中的 [Web]，然後輸入 `https://localhost:44316/` 和 `https://localhost:44316/Account/GrantPermissions` 作為重新導向 URI。
 
-     如果有超過兩個的重新導向 URI，您稍後必須在應用程式建立成功之後，從 [驗證] 索引標籤新增這些 URI。
+    如果有超過兩個的重新導向 URI，您稍後必須在應用程式建立成功之後，從 [驗證] 索引標籤新增這些 URI。
 1. 選取 [註冊] 以建立應用程式。
-1. 在應用程式的 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並將它記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 組態檔。
-1. 在應用程式頁面清單中，選取 [驗證]。 然後：
-   - 在 [進階設定] 區段中，將 [登出 URL] 設定為 **https://localhost:44316/Account/EndSession** 。
-   - 在 [進階設定] > [隱含授與] 區段中，選取 [存取權杖] 和 [識別碼權杖]。 此範例需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)才能讓使用者登入並呼叫 API。
+1. 在應用程式的 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並記下供稍後使用。 您必須用此識別碼來設定此專案的 Visual Studio 組態檔。
+1. 在 [管理] 底下，選取 [驗證]。
+1. 將 **登出 URL** 設為為 `https://localhost:44316/Account/EndSession`。
+1. 在 [隱含授與] 區段中，選取 [存取權杖]，然後選取 [識別碼權杖]。 此範例需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)才能讓使用者登入並呼叫 API。
 1. 選取 [儲存]。
-1. 從 [憑證和祕密] 頁面的 [用戶端密碼] 區段中，選取 [新增用戶端密碼]。 然後：
-
-   1. 輸入金鑰描述 (例如，**應用程式祕密**)。
-   1. 選取金鑰持續時間，此值可為 [1 年]、[2 年] 或 [永不過期]。
-   1. 選取 [新增] 按鈕。
-   1. 金鑰值出現時，將其複製並儲存到安全的位置。 稍後您將需要用此金鑰在 Visual Studio 中設定專案。 金鑰值不會再次顯示，也無法透過任何其他方式來取得。
-1. 在應用程式頁面清單中，選取 [API 權限]。 然後：
-   1. 選取 [新增權限] 按鈕。
-   1. 確定已選取 [Microsoft API] 索引標籤。
-   1. 在 [常用的 Microsoft API] 區段中，選取 [Microsoft Graph]。
-   1. 在 [應用程式權限] 區段中，確定已選取正確的權限：**User.Read.All**。
-   1. 選取 [新增權限] 按鈕。
+1. 在 [管理]  下，選取 [憑證和密碼]  。
+1. 在 [用戶端密碼] 區段中，選取 [新增用戶端密碼]。 
+1. 輸入金鑰描述 (例如，**應用程式祕密**)。
+1. 選取金鑰持續時間，此值可為 [1 年]、[2 年] 或 [永不過期]。
+1. 選取 [新增]。 記錄金鑰值並儲存到安全的位置。 稍後您將需要用此金鑰在 Visual Studio 中設定專案。
+1. 在 [管理] 底下，選取 [API 權限] > [新增權限]。
+1. 在 [常用的 Microsoft API] 區段中，選取 [Microsoft Graph]。
+1. 在 [應用程式權限] 區段中，確定已選取正確的權限：**User.Read.All**。
+1. 選取 [新增權限]。
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>設定範例以使用您的 Azure AD 租用戶
 
