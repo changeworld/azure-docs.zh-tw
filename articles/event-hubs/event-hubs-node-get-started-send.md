@@ -1,21 +1,21 @@
 ---
 title: 使用 JavaScript 從 Azure 事件中樞傳送或接收事件 (最新)
-description: 本文將逐步解說如何建立 JavaScript 應用程式，以使用最新的 azure/event-hubs 第 5 版套件對 Azure 事件中樞傳送事件或接收事件。
+description: 本文將逐步解說如何建立 JavaScript 應用程式，以使用最新的 azure/event-hubs 套件對 Azure 事件中樞傳送事件或接收事件。
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 01516f29e727b5be2a81d3d8dd473808b6ea60f7
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 2e5f297d5edb9a271843db060f948209dd076074
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728942"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106082"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript (azure/event-hubs 第 5 版) 將事件傳送至事件中樞或從中接收事件
-本快速入門說明如何使用 **azure/event-hubs 第 5 版** JavaScript 套件，來傳送事件至事件中樞和從事件中樞接收事件。 
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs"></a>使用 JavaScript (azure/event-hubs) 將事件傳送至事件中樞或從中接收事件
+本快速入門說明如何使用 **azure/event-hubs** JavaScript 套件，來傳送事件至事件中樞和從事件中樞接收事件。 
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 如果您對 Azure 事件中樞並不熟悉，在進行此快速入門之前，請先參閱[事件中樞概述](event-hubs-about.md)。 
 
 若要完成本快速入門，您必須符合下列必要條件：
@@ -29,7 +29,7 @@ ms.locfileid: "91728942"
    1. 若要建立命名空間和事件中樞，請遵循[快速入門：使用 Azure 入口網站建立事件中樞](event-hubs-create.md)。
    1. 遵循本快速入門中的指示以繼續。 
    1. 若要取得事件中樞命名空間的連接字串，請依照[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)中的指示進行。 記下連接字串，以便稍後於本快速入門中使用。
-- **建立事件中樞命名空間和事件中樞**。 第一個步驟是使用 [Azure 入口網站](https://portal.azure.com)來建立「事件中樞」類型的命名空間，然後取得您應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 然後，依照下列文章中的指示，取得**事件中樞命名空間的連接字串**：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 您稍後會在本快速入門中使用連接字串。
+- **建立事件中樞命名空間和事件中樞**。 第一個步驟是使用 [Azure 入口網站](https://portal.azure.com)來建立「事件中樞」類型的命名空間，然後取得您應用程式與「事件中樞」進行通訊所需的管理認證。 若要建立命名空間和事件中樞，請依照[這篇文章](event-hubs-create.md)中的程序操作。 然後，依照下列文章中的指示，取得 **事件中樞命名空間的連接字串**：[取得連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 您稍後會在本快速入門中使用連接字串。
 
 ### <a name="install-the-npm-package"></a>安裝 npm 套件
 若要安裝[適用於事件中樞的 Node Package Manager (npm) 套件](https://www.npmjs.com/package/@azure/event-hubs)，請開啟在路徑中有 npm  的命令提示字元，並將目錄切換至您要用來存放範例的資料夾，然後執行下列命令：

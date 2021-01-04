@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86ef610af605c657868824eefe2e6e706f6963ac
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484644"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360168"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>快速入門：使用 Synapse SQL 進行大量載入
 
@@ -39,26 +39,25 @@ ms.locfileid: "96484644"
 
 ### <a name="steps"></a>步驟
 
-1. 在 [來源儲存位置] 面板中，選取儲存體帳戶和您要載入的檔案或資料夾。 精靈會自動嘗試偵測 Parquet 檔案。 如果無法確認 Parquet 檔案類型，則依預設會使用分隔符號文字 (CSV)。
+1. 在 [來源儲存位置] 面板中，選取儲存體帳戶和您要載入的檔案或資料夾。 精靈會自動嘗試偵測 Parquet 檔案及分隔的文字 (CSV) 檔案，包括將檔案中的來源欄位對應到適當的目標 SQL 資料類型。 
 
    ![選取來源位置](./sql/media/bulk-load/bulk-load-source-location.png)
 
-2. 選取檔案格式設定，包括想要在其中寫入遭拒絕資料列 (錯誤檔案) 的儲存體帳戶。 目前僅支援 CSV 和 Parquet 檔案。
+2. 選取檔案格式設定，包括當大量載入期間有拒絕的資料列時所用的錯誤設定。 您也可以選取 [預覽資料] 來查看 COPY 陳述式會如何剖析檔案，以協助您設定檔案格式設定。 每當您變更檔案格式設定時，請選取 [預覽資料] 以查看 COPY 陳述式會如何使用更新後的設定來剖析檔案：
 
-    ![選取檔案格式設定](./sql/media/bulk-load/bulk-load-file-format-settings.png)
-
-3. 您可以選取 [預覽資料] 來查看 COPY 陳述式會如何剖析檔案，以協助您設定檔案格式設定。 每當您變更檔案格式設定時，請選取 [預覽資料] 以查看 COPY 陳述式會如何使用更新後的設定來剖析檔案：![預覽資料](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+   ![預覽資料](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
 > [!NOTE]  
 >
 > - 大量載入精靈不支援預覽具有多字元欄位結束字元的資料。 指定了多字元欄位結束字元時，大量載入精靈將會在單一資料行中預覽資料。 
+> - 選取 [推斷資料行名稱] 時，大量載入精靈會從 [第一個資料列] 欄位所指定第一個資料列中剖析資料行名稱。 大量載入精靈會自動將 COPY 陳述式中的 FIRSTROW 值加上 1，以忽略此標題資料列。 
 > - COPY 陳述式支援指定多字元資料列結束字元；不過，在擲回錯誤的大量載入精靈中不提供此支援。
 
-4. 選取您要用來載入的專用 SQL 集區，包括載入的適用對象是現有資料表還是新資料表：![選取目標位置](./sql/media/bulk-load/bulk-load-target-location.png)
+3. 選取您要用來載入的專用 SQL 集區，包括載入的適用對象是現有資料表還是新資料表：![選取目標位置](./sql/media/bulk-load/bulk-load-target-location.png)
+4. 選取 [設定資料行對應]，以確定您具有適當的資料行對應。 請注意，如果已啟用「推斷資料行名稱」，則會自動偵測資料行名稱。 在新的資料表中，設定資料行對應對於更新目標資料行資料類型很重要：
 
-5. 選取 [設定資料行對應]，以確定您具有適當的資料行對應。 請注意，如果已啟用「推斷資料行名稱」，則會自動偵測資料行名稱。 在新的資料表中，設定資料行對應對於更新目標資料行資料類型很重要：![設定資料行對應](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
-
-6. 選取 [開啟指令碼] 就會產生 T-SQL 指令碼，其中包含要從資料湖載入的 COPY 陳述式：![開啟 SQL 指令碼](./sql/media/bulk-load/bulk-load-target-final-script.png)
+   ![設定資料行對應](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. 選取 [開啟指令碼] 就會產生 T-SQL 指令碼，其中包含要從資料湖載入的 COPY 陳述式：![開啟 SQL 指令碼](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>後續步驟
 

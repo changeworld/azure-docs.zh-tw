@@ -1,15 +1,15 @@
 ---
 title: Azure 快速入門 - 建立 Batch 帳戶 - Azure Resource Manager 範本
-description: 快速了解如何使用 Azure CLI 執行 Batch 作業。 從命令列或在指令碼中建立和管理 Azure 資源。
+description: 本快速入門說明如何使用 ARM 範本建立 Batch 帳戶。
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 606862b31ba4921e39e693735507fca39282091c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fc6f1537b32c8ced2cfc2bf09f16106f791001fc
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88642396"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106575"
 ---
 # <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>快速入門：使用 ARM 範本建立 Batch 帳戶
 

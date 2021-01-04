@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: dfd6311fab8d9c65fa7c82d2f707ac96549a32a9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a44852fb2f491dd949b58217eca3e4f3e392cf17
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931413"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584131"
 ---
 # <a name="tutorial-utilize-the-arm-template-reference"></a>教學課程：利用 ARM 範本參考
 
@@ -42,7 +42,7 @@ ms.locfileid: "96931413"
 
 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)是 ARM 範本的存放庫。 您可以尋找範例範本並加以自訂，而不要從頭建立範本。 本快速入門中使用的範本名為[建立標準儲存體帳戶](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 此範本會定義 Azure 儲存體帳戶資源。
 
-1. 在 Visual Studio Code 中，選取 [檔案]>[開啟檔案]。
+1. 在 Visual Studio Code 中，選取 [檔案] > [開啟檔案]。
 1. 在 [檔案名稱] 中，貼上下列 URL：
 
     ```url
@@ -50,26 +50,26 @@ ms.locfileid: "96931413"
     ```
 
 1. 選取 [開啟] 以開啟檔案。
-1. 選取 [檔案]>[另存新檔]，在您的本機電腦上將檔案另存為 **azuredeploy.json**。
+1. 選取 [檔案] > [另存新檔]，在您的本機電腦上將檔案另存為 _azuredeploy.json_。
 
 ## <a name="understand-the-schema"></a>了解結構描述
 
-1. 在 VS Code 中，將範本摺疊至根層級。 此時會有最簡單的結構，內含下列元素：
+1. 在 Visual Studio Code 中，將範本摺疊至根層級。 此時會有最簡單的結構，內含下列元素：
 
     ![最簡單的 Resource Manager 範本結構](./media/template-tutorial-use-template-reference/resource-manager-template-simplest-structure.png)
 
-    * **$schema**：指定說明範本語言版本的 JSON 結構描述檔案所在的位置。
-    * **contentVersion**：為此元素指定任何值，用以記錄範本中的重大變更。
-    * **parameters**：指定執行部署以自訂資源部署時所提供的值。
-    * **variables**：指定範本中作為 JSON 片段以簡化範本語言運算式的值。
-    * **resources**：指定在資源群組中部署或更新的資源類型。
-    * **outputs**：指定部署後傳回的值。
+    * `$schema`：指定說明範本語言版本的 JSON 結構描述檔案所在的位置。
+    * `contentVersion`：為此元素指定任何值，用以記錄範本中的重大變更。
+    * `parameters`：指定執行部署以自訂資源部署時所提供的值。
+    * `variables`：指定範本中作為 JSON 片段以簡化範本語言運算式的值。
+    * `resources`：指定在資源群組中部署或更新的資源類型。
+    * `outputs`：指定部署後傳回的值。
 
-1. 擴充 **資源**。 已定義 `Microsoft.Storage/storageAccounts` 資源。 SKU 名稱會使用參數值。  參數名為 **storageAccountType**。
+1. 展開 `resources`。 出現已定義的 `Microsoft.Storage/storageAccounts` 資源。 SKU 名稱會使用參數值。 參數名為 `storageAccountType`。
 
     ![Resource Manager 範本儲存體帳戶定義](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
 
-1. 展開 **參數** 以查看如何定義 **storageAccountType**。 參數有四個允許的值。 您會找到其他允許的值，然後修改參數定義。
+1. 展開`parameters` 以查看如何定義 `storageAccountType`。 參數有四個允許的值。 您會找到其他允許的值，然後修改參數定義。
 
     ![Resource Manager 範本儲存體帳戶資源 SKU](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
@@ -88,9 +88,9 @@ ms.locfileid: "96931413"
 
     ![Resource Manager 範本參考儲存體帳戶類型版本](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. 選取 **storageAccount** 資源類型的最新版本。 撰寫本文時的最新版本是 **2019-06-01**。 請確定此版本符合在範本中用於儲存體帳戶資源的版本。 如果您更新 API 版本，請確認資源定義符合範本參考。
+1. 選取 `storageAccount` 資源類型的最新版本。 撰寫本文時的最新版本是 **2019-06-01**。 請確定此版本符合在範本中用於儲存體帳戶資源的版本。 如果您更新 API 版本，請確認資源定義符合範本參考。
 
-1. 此頁面會列出 storageAccount 資源類型的詳細資料。  例如，其會列出 **Sku** 物件的允許值。 SKU 數量比您稍早開啟的快速入門範本中所列的 SKU 還要多。 您可以自訂快速入門範本，以包含所有可用的儲存體類型。
+1. 此頁面會列出 storageAccount 資源類型的詳細資料。 例如，其會列出 **Sku** 物件的允許值。 SKU 數量比您稍早開啟的快速入門範本中所列的 SKU 還要多。 您可以自訂快速入門範本，以包含所有可用的儲存體類型。
 
     ![Resource Manager 範本參考儲存體帳戶 SKU](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-skus.png)
 
@@ -108,9 +108,11 @@ ms.locfileid: "96931413"
 
     ![Azure 入口網站的 Cloud Shell 上傳檔案](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. 選取 [上傳/下載檔案]，然後選取 [上傳]。 請參閱上一個螢幕擷取畫面。 選取您在前一節中儲存的檔案。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
+1. 選取 [上傳/下載檔案]，然後選取 [上傳]。 請參閱上一個螢幕擷取畫面。 選取您在前一節中儲存的檔案。 上傳檔案之後，您可以使用 `ls` 命令和 `cat` 命令來確認檔案是否已成功上傳。
 
 1. 從 Cloud Shell 執行下列命令。 選取要顯示 PowerShell 程式碼或 CLI 程式碼的索引標籤。
+
+   當您部署範本時，請使用新增的值來指定 `storageAccountType` 參數，例如 **Standard_RAGRS**。 如果您使用原始快速入門範本，部署將會失敗，因為 **Standard_RAGRS** 不是允許的值。
 
     # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -137,16 +139,14 @@ ms.locfileid: "96931413"
 
     ---
 
- 當您部署範本時，請使用新增的值來指定 **storageAccountType** 參數，例如 **Standard_RAGRS**。 如果您使用原始快速入門範本，部署將會失敗，因為 **Standard_RAGRS** 不是允許的值。
-
 ## <a name="clean-up-resources"></a>清除資源
 
 不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。
 
 1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
-2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
-3. 選取資源群組名稱。  您在資源群組中應該會看到共計六個資源。
-4. 從頂端功能表中選取 [刪除資源群組]。
+1. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
+1. 選取資源群組名稱。  您在資源群組中應該會看到共計六個資源。
+1. 從頂端功能表中選取 [刪除資源群組]。
 
 ## <a name="next-steps"></a>後續步驟
 

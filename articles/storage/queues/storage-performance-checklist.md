@@ -1,21 +1,23 @@
 ---
 title: 佇列儲存體的效能和延展性檢查清單 - Azure 儲存體
 description: 在開發高效能應用程式中使用佇列儲存體的實證做法檢查清單。
-services: storage
 author: tamram
-ms.service: storage
-ms.topic: overview
-ms.date: 10/10/2019
+services: storage
 ms.author: tamram
+ms.date: 10/10/2019
+ms.topic: overview
+ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e86950581255bd4e3a78b0b4a3f599a24a3cad0
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4040a81d5b509ddbdd355953e28721a7c9fccfb8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345749"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585661"
 ---
+<!-- docutune:casing "Timeout and Server Busy errors" -->
+
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>佇列儲存體的效能和延展性檢查清單
 
 Microsoft 開發了一些實證做法，以便使用佇列儲存體開發高效能應用程式。 此檢查清單會識別可供開發人員遵循以將效能最佳化的重要做法。 在設計應用程式時和整個過程中，請記住這些做法。
@@ -27,32 +29,32 @@ Azure 儲存體具有容量、交易速率和頻寬的延展性和效能目標�
 本文會將效能實證做法整理為您在開發佇列儲存體應用程式時所能遵循的檢查清單。
 
 | 完成 | 類別 | 設計考量 |
-| --- | --- | --- |
-| &nbsp; |延展性目標 |[您是否可以將應用程式設計成使用的儲存體帳戶數目不超過上限？](#maximum-number-of-storage-accounts) |
-| &nbsp; |延展性目標 |[您是否要避免接近容量和交易限制？](#capacity-and-transaction-targets) |
-| &nbsp; |網路功能 |[用戶端裝置是否有足夠高的頻寬和足夠低的延遲，以達到所需的效能？](#throughput) |
-| &nbsp; |網路功能 |[用戶端裝置是否有高品質網路連結？](#link-quality) |
-| &nbsp; |網路功能 |[用戶端應用程式是否位於與儲存體帳戶相同的區域中？](#location) |
-| &nbsp; |直接用戶端存取 |[您是否使用共用存取簽章 (SAS) 和跨原始資源共用 (CORS) 來啟用 Azure 儲存體的直接存取？](#sas-and-cors) |
-| &nbsp; |.NET 組態 |[您使用 .NET Core 2.1 或更新版本來獲得最佳效能嗎？](#use-net-core) |
-| &nbsp; |.NET 組態 |[您是否已設定用戶端使用足夠數量的並行連線？](#increase-default-connection-limit) |
-| &nbsp; |.NET 組態 |[針對 .NET 應用程式，您是否已設定 .NET 使用足夠數量的執行緒？](#increase-minimum-number-of-threads) |
-| &nbsp; |平行處理原則 |[您是否已確保平行處理原則已適當地受到限制，因此您不會讓用戶端功能超載或接近延展性目標？](#unbounded-parallelism) |
-| &nbsp; |工具 |[您是否使用 Microsoft 所提供的最新用戶端程式庫和工具版本？](#client-libraries-and-tools) |
-| &nbsp; |重試 |[您是否針對節流錯誤和逾時使用重試原則搭配指數輪詢？](#timeout-and-server-busy-errors) |
-| &nbsp; |重試 |[您的應用程式是否避免重試不能再嘗試的錯誤？](#non-retryable-errors) |
-| &nbsp; |設定 |[您是否已關閉 Nagle 演算法以提高小型要求的效能？](#disable-nagle) |
-| &nbsp; |訊息大小 |[您的訊息是否精簡以提高佇列效能？](#message-size) |
-| &nbsp; |大量擷取 |[您是否在單一 Get 作業中擷取多則訊息？](#batch-retrieval) |
-| &nbsp; |輪詢頻率 |[您是否夠常輪詢以降低可察覺的應用程式延遲？](#queue-polling-interval) |
-| &nbsp; |更新訊息 |[您是否使用「更新訊息」來儲存處理訊息時的進度，讓您避免在發生錯誤時必須重新處理整個訊息？](#use-update-message) |
-| &nbsp; |架構 |[您是否透過將長時間執行的工作負載排除在重要路徑外，然後再個別進行調整的方式，使用佇列來讓您的整個應用程式更有彈性？](#application-architecture) |
+|--|--|--|
+| &nbsp; | 延展性目標 | [您是否可以將應用程式設計成使用的儲存體帳戶數目不超過上限？](#maximum-number-of-storage-accounts) |
+| &nbsp; | 延展性目標 | [您是否要避免接近容量和交易限制？](#capacity-and-transaction-targets) |
+| &nbsp; | 網路功能 | [用戶端裝置是否有足夠高的頻寬和足夠低的延遲，以達到所需的效能？](#throughput) |
+| &nbsp; | 網路功能 | [用戶端裝置是否有高品質網路連結？](#link-quality) |
+| &nbsp; | 網路功能 | [用戶端應用程式是否位於與儲存體帳戶相同的區域中？](#location) |
+| &nbsp; | 直接用戶端存取 | [您是否使用共用存取簽章 (SAS) 和跨原始資源共用 (CORS) 來啟用 Azure 儲存體的直接存取？](#sas-and-cors) |
+| &nbsp; | .NET 組態 | [您使用 .NET Core 2.1 或更新版本來獲得最佳效能嗎？](#use-net-core) |
+| &nbsp; | .NET 組態 | [您是否已設定用戶端使用足夠數量的並行連線？](#increase-default-connection-limit) |
+| &nbsp; | .NET 組態 | [針對 .NET 應用程式，您是否已設定 .NET 使用足夠數量的執行緒？](#increase-the-minimum-number-of-threads) |
+| &nbsp; | 平行處理原則 | [您是否已確保平行處理原則已適當地受到限制，因此您不會讓用戶端功能超載或接近延展性目標？](#unbounded-parallelism) |
+| &nbsp; | 工具 | [您是否使用 Microsoft 所提供的最新用戶端程式庫和工具版本？](#client-libraries-and-tools) |
+| &nbsp; | 重試 | [您是否針對節流錯誤和逾時使用重試原則搭配指數輪詢？](#timeout-and-server-busy-errors) |
+| &nbsp; | 重試 | [您的應用程式是否避免重試不能再嘗試的錯誤？](#non-retryable-errors) |
+| &nbsp; | 設定 | [您是否已關閉 Nagle 演算法以提高小型要求的效能？](#disable-nagles-algorithm) |
+| &nbsp; | 訊息大小 | [您的訊息是否精簡以提高佇列效能？](#message-size) |
+| &nbsp; | 大量擷取 | [您是否在單一取得作業中擷取多則訊息？](#batch-retrieval) |
+| &nbsp; | 輪詢頻率 | [您是否夠常輪詢以降低可察覺的應用程式延遲？](#queue-polling-interval) |
+| &nbsp; | 更新訊息 | [您是否執行更新訊息作業來儲存處理訊息時的進度，讓您避免在發生錯誤時必須重新處理整個訊息？](#perform-an-update-message-operation) |
+| &nbsp; | 架構 | [您是否透過將長時間執行的工作負載排除在重要路徑外，然後再個別進行調整的方式，使用佇列來讓您的整個應用程式更有彈性？](#application-architecture) |
 
 ## <a name="scalability-targets"></a>延展性目標
 
-如果您的應用程式達到或超過任何延展性目標，它可能會遇到增加的交易延遲或節流。 當 Azure 儲存體對您的應用程式進行節流時，該服務會開始傳回 503 (伺服器忙碌) 或 500 (作業逾時) 錯誤碼。 保持在延展性目標的限制範圍內以避免這些錯誤，對於提升應用程式效能很重要。
+如果您的應用程式達到或超過任何延展性目標，它可能會遇到增加的交易延遲或節流。 當 Azure 儲存體對您的應用程式進行節流時，該服務會開始傳回 503 (`Server Busy`) 或 500 (`Operation Timeout`) 錯誤碼。 保持在延展性目標的限制範圍內以避免這些錯誤，對於提升應用程式效能很重要。
 
-如需佇列服務的延展性目標詳細資訊，請參閱 [Azure 儲存體延展性和效能目標](./scalability-targets.md#scale-targets-for-queue-storage)。
+如需佇列儲存體的延展性目標詳細資訊，請參閱 [Azure 儲存體延展性和效能目標](./scalability-targets.md#scale-targets-for-queue-storage)。
 
 ### <a name="maximum-number-of-storage-accounts"></a>儲存體帳戶的數目上限
 
@@ -82,7 +84,7 @@ Azure 儲存體具有容量、交易速率和頻寬的延展性和效能目標�
 
 #### <a name="link-quality"></a>連結品質
 
-與任何網路使用方式一樣，請記住導致錯誤和封包遺失的網路狀況將會減慢有效的輸送量。 使用 WireShark 或 NetMon 可能有助於診斷此問題。
+與任何網路使用方式一樣，請記住導致錯誤和封包遺失的網路狀況將會減慢有效的輸送量。 使用 WireShark 或網路監視器可能有助於診斷此問題。
 
 ### <a name="location"></a>位置
 
@@ -129,7 +131,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 如需詳細資訊，請參閱部落格文章 [Web 服務：並行連線](/archive/blogs/darrenj/web-services-concurrent-connections)。
 
-### <a name="increase-minimum-number-of-threads"></a>提高執行緒數目上限
+### <a name="increase-the-minimum-number-of-threads"></a>提高執行緒數目上限
 
 如果您同時使用同步呼叫與非同步工作，則可增加執行緒集區中的執行緒數目：
 
@@ -137,7 +139,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-如需詳細資訊，請參閱 [ThreadPool.SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) 方法。
+如需詳細資訊，請參閱 [`ThreadPool.SetMinThreads`](/dotnet/api/system.threading.threadpool.setminthreads) 方法。
 
 ## <a name="unbounded-parallelism"></a>無限制的平行處理原則
 
@@ -153,19 +155,19 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 ### <a name="timeout-and-server-busy-errors"></a>逾時和伺服器忙碌錯誤
 
-如果您的應用程式很接近延展性限制，Azure 儲存體可能進行節流處理。 在某些情況下，Azure 儲存體可能因某些暫時性狀況而無法處理要求。 在這兩種情況下，服務可能會傳回 503 (伺服器忙碌) 或500 (逾時) 錯誤。 如果服務正在重新平衡資料分割，以允許更高的輸送量，也可能會發生這些錯誤。 用戶端應用程式通常應該重試導致其中一個錯誤的作業。 不過，如果 Azure 儲存體因為您的應用程式超出延展性目標而進行節流，或即使服務因為一些其他原因而無法服務要求，則積極重試的結果可能會使問題雪上加霜。 建議使用指數輪詢重試原則，且用戶端程式庫會預設為此行為。 例如，您的應用程式可能會在 2 秒後進行重試、然後 4 秒、然後 10 秒、然後 30 秒，最後會完全放棄。 如此一來，您的應用程式會大幅降低其在服務上的負荷，而不會使導致節流的行為惡化。
+如果您的應用程式很接近延展性限制，Azure 儲存體可能進行節流處理。 在某些情況下，Azure 儲存體可能因某些暫時性狀況而無法處理要求。 在這兩種情況下，服務可能會傳回 503 (`Server Busy`) 或500 (`Timeout`) 錯誤。 如果服務正在重新平衡資料分割，以允許更高的輸送量，也可能會發生這些錯誤。 用戶端應用程式通常應該重試導致其中一個錯誤的作業。 不過，如果 Azure 儲存體因為您的應用程式超出延展性目標而進行節流，或即使服務因為一些其他原因而無法服務要求，則積極重試的結果可能會使問題雪上加霜。 建議使用指數輪詢重試原則，且用戶端程式庫會預設為此行為。 例如，您的應用程式可能會在 2 秒後進行重試、然後 4 秒、然後 10 秒、然後 30 秒，最後會完全放棄。 如此一來，您的應用程式會大幅降低其在服務上的負荷，而不會使導致節流的行為惡化。
 
 因為連線能力錯誤不是節流的結果，且被認為是暫時性的，因此可以立即重試連線能力錯誤。
 
 ### <a name="non-retryable-errors"></a>無法重試的錯誤
 
-用戶端程式庫會在認知哪些錯誤可以重試和哪些錯誤不能重試的情況下，處理重試。 不過，如果您直接呼叫 Azure 儲存體 REST API，就會發生一些您不得重試的錯誤。 例如，400 (不正確的要求) 錯誤表示用戶端應用程式傳送了無法處理的要求，因為該要求不是預期的格式。 每次重新傳送此要求都會產生相同的回應，所以重試並沒有用。 如果您直接呼叫 Azure 儲存體 REST API，請注意可能發生的錯誤，以及是否應該重試。
+用戶端程式庫會在認知哪些錯誤可以重試和哪些錯誤不能重試的情況下，處理重試。 不過，如果您直接呼叫 Azure 儲存體 REST API，就會發生一些您不得重試的錯誤。 例如，400 (`Bad Request`) 錯誤表示用戶端應用程式傳送了無法處理的要求，因為該要求不是預期的格式。 每次重新傳送此要求都會產生相同的回應，所以重試並沒有用。 如果您直接呼叫 Azure 儲存體 REST API，請注意可能發生的錯誤，以及是否應該重試。
 
 如需 Azure 儲存體錯誤碼的詳細資訊，請參閱[狀態和錯誤碼](/rest/api/storageservices/status-and-error-codes2)。
 
-## <a name="disable-nagle"></a>停用 Nagle
+## <a name="disable-nagles-algorithm"></a>停用 Nagle 的演算法
 
-在不同的 TCP/IP 網路中已廣泛採用 Nagle 的演算法，來作為提高網路效能的方法。 不過，它並非是所有情況下的最佳作法 (例如高互動式環境)。 Nagle 的演算法對於 Azure 資料表服務要求的效能有負面的影響，可以的話您應將它停用。
+在不同的 TCP/IP 網路中已廣泛採用 Nagle 的演算法，來作為提高網路效能的方法。 不過，它並非是所有情況下的最佳作法 (例如高互動式環境)。 Nagle 的演算法對於 Azure 表格儲存體要求的效能有負面的影響，可以的話您應將其停用。
 
 ## <a name="message-size"></a>訊息大小
 
@@ -179,11 +181,11 @@ ThreadPool.SetMinThreads(100,100); //(Determine the right number for your applic
 
 大部分的應用程式會輪詢佇列中的訊息，而佇列可以是該應用程式的最大交易來源之一。 明智地選取輪詢間隔：輪詢太過頻繁可能會導致您的應用程式接近佇列的延展性目標。 不過，如果以 200,000 筆交易 0.01 美元計算 (寫入時)，則單一處理器每秒輪詢一次的一個月成本不到 15 分，所以成本通常不是影響您選擇輪詢間隔的因素。
 
-如需最新成本資訊，請參閱 [Azure 儲存體價格](https://azure.microsoft.com/pricing/details/storage/)。
+如需最新成本資訊，請參閱 [Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。
 
-## <a name="use-update-message"></a>使用更新訊息
+## <a name="perform-an-update-message-operation"></a>執行更新訊息作業
 
-您可以使用 [更新訊息] 作業來增加隱藏逾時，或更新訊息的狀態資訊。 相較於在作業的每個步驟完成時，將作業從一個佇列傳遞到下一個佇列的工作流程，使用 [更新訊息] 更有效率。 您的應用程式可以將作業狀態儲存到訊息，然後繼續工作，而不是每次步驟完成時，便重新佇列訊息以進行作業的下一個步驟。 請記住，每個 [更新訊息] 作業都會算在延展性目標內。
+您可以執行更新訊息作業來增加隱藏逾時，或更新訊息的狀態資訊。 相較於在作業的每個步驟完成時，將作業從一個佇列傳遞到下一個佇列的工作流程，此方法更有效率。 您的應用程式可以將作業狀態儲存到訊息，然後繼續工作，而不是每次步驟完成時，便重新佇列訊息以進行作業的下一個步驟。 請記住，每個更新訊息作業都會算在延展性目標內。
 
 ## <a name="application-architecture"></a>應用程式架構
 

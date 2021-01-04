@@ -5,17 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfac3b80e772e7b359b1e926d5fb84e447a8fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: d6d5ab13c8997dffee42a053ba498376ccbcb6d8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89270678"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585253"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>將條件式存取新增至 Azure Active Directory B2C 中的使用者流程
 
@@ -35,10 +37,26 @@ ms.locfileid: "89270678"
 
 深入了解 Azure AD B2C 中的 [Identity Protection 和條件式存取](conditional-access-identity-protection-overview.md)，或參閱[其設定方式](conditional-access-identity-protection-setup.md)。
 
+## <a name="prerequisites"></a>先決條件
+
+- 需要有 Azure AD B2C Premium 2，才能建立風險性登入原則。 Premium P1 租用戶可以建立位置、應用程式或以群組為基礎的原則。
+- 基於測試目的，您可以[註冊測試 Web 應用程式](tutorial-register-applications.md)`https://jwt.ms`，這是 Microsoft 擁有的 Web 應用程式，可顯示已解碼的權杖內容 (權杖內容永遠不會離開您的瀏覽器)。 
+- 若要模擬有風險性登入，請下載 TOR 瀏覽器並嘗試登入使用者流程端點。
+- 使用下列設定，[建立條件式存取原則](conditional-access-identity-protection-setup.md)：
+   
+  - 針對 [使用者和群組]，選取測試使用者 (請勿選取 [所有使用者]，否則您可能封鎖自己而無法登入)。
+  - 針對 [雲端應用程式或動作]，選擇 [選取應用程式]，然後選擇您的信賴憑證者應用程式。
+  - 針對 [條件]，選取 [登入風險] 及 [高]、[中] 和 [低] 風險層級。
+  - 針對 [授與]，選擇 [封鎖存取]。
+
+      ![風險偵測](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
+
+::: zone pivot="b2c-user-flow"
+
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>將條件式存取新增至新的使用者流程
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+1. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 1. 在 [原則] 底下，選取 [使用者流程]，然後選取 [新使用者流程]。
 1. 在 [建立使用者流程] 頁面上，選取使用者流程類型。
@@ -69,7 +87,7 @@ ms.locfileid: "89270678"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在入口網站工具列中選取**目錄 + 訂用帳戶**圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
+1. 在入口網站工具列中選取 **目錄 + 訂用帳戶** 圖示，然後選取包含 Azure AD B2C 租用戶的目錄。
 
 1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 
@@ -89,19 +107,6 @@ ms.locfileid: "89270678"
 
 若要測試使用者流程中的條件式存取，請[建立條件式存取原則](conditional-access-identity-protection-setup.md)並在使用者流程中啟用條件式存取 (如上所述)。 
 
-### <a name="prerequisites"></a>先決條件
-
-- 需要有 Azure AD B2C Premium 2，才能建立風險性登入原則。 Premium P1 租用戶可以建立位置、應用程式或以群組為基礎的原則。
-- 基於測試目的，您可以[註冊測試 Web 應用程式](tutorial-register-applications.md)`https://jwt.ms`，這是 Microsoft 擁有的 Web 應用程式，可顯示已解碼的權杖內容 (權杖內容永遠不會離開您的瀏覽器)。 
-- 若要模擬有風險性登入，請下載 TOR 瀏覽器並嘗試登入使用者流程端點。
-- 使用下列設定，[建立條件式存取原則](conditional-access-identity-protection-setup.md)：
-   
-   - 針對 [使用者和群組]，選取測試使用者 (請勿選取 [所有使用者]，否則您可能封鎖自己而無法登入)。
-   - 針對 [雲端應用程式或動作]，選擇 [選取應用程式]，然後選擇您的信賴憑證者應用程式。
-   - 針對 [條件]，選取 [登入風險] 及 [高]、[中] 和 [低] 風險層級。
-   - 針對 [授與]，選擇 [封鎖存取]。
-
-      ![風險偵測](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>執行使用者流程
 
@@ -117,6 +122,16 @@ ms.locfileid: "89270678"
 
    ![測試封鎖的登入](media/conditional-access-identity-protection-setup/test-blocked-sign-in.png)
 
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="add-conditional-access-to-your-policy"></a>將條件式存取新增至原則
+
+您可以在 [GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access) 上找到條件式存取原則的範例。
+
+::: zone-end
+
 ## <a name="next-steps"></a>後續步驟
 
-[在 Azure AD B2C 使用者流程中自訂使用者介面](customize-ui-overview.md)
+[在 Azure AD B2C 使用者流程中自訂使用者介面](customize-ui-with-html.md)

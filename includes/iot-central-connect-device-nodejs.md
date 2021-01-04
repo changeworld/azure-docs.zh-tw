@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 4b19ae1b584a2d300e4144e79ef76245c71035cf
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 6a6baa14d7521f4a85350af7b08b5fcbe82ddf6b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126081"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033821"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -27,7 +27,7 @@ ms.locfileid: "96126081"
 
 `main` 方法：
 
-* 建立 `client` 物件，並在開啟連線之前設定 `dtmi:com:example:Thermostat;1` 模型識別碼。
+* 建立 `client` 物件，並在開啟連線之前設定 `dtmi:com:example:Thermostat;1` 模型識別碼。 IoT Central 會使用模型識別碼來識別或產生此裝置的裝置範本。 若要深入了解，請參閱[將裝置與裝置範本相關聯](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)。
 * 建立命令處理常式。
 * 啟動迴圈，每 10 秒傳送一次溫度遙測。
 * 將 `maxTempSinceLastReboot` 屬性傳送至 IoT Central。 IoT Central 會忽略 `serialNumber` 屬性，因為這不是裝置模型的一部分。
@@ -83,7 +83,7 @@ async function main() {
 }
 ```
 
-`provisionDevice` 函式會顯示裝置如何使用 DPS 來註冊及連線到 IoT Central。 承載包括模型識別碼︰
+`provisionDevice` 函式會顯示裝置如何使用 DPS 來註冊及連線到 IoT Central。 承載包含模型識別碼，IoT Central 會用來[將裝置與裝置範本產生關聯](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)：
 
 ```javascript
 async function provisionDevice(payload) {

@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: b6aa0a1bd14072e6ea4ea42004209f332f46a2d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dec41f1b9de6920338360edeb18b9878a8c86432
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856070"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588925"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>使用 Azure DevOps 入門版建立適用於 Python 的 CI/CD 管線
 
@@ -67,9 +67,9 @@ DevOps 入門版會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立
 
 DevOps 入門版會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業： 
 
-1. 在 DevOps 入門版儀表板的左側，選取您主要分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
+1. 在 DevOps 入門版儀表板的左側，選取主分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
 
-1. 若要檢視存放庫複製 URL，請從瀏覽器右上方選取 [複製]。 您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可主要分支的程式碼變更。
+1. 若要檢視存放庫複製 URL，請從瀏覽器右上方選取 [複製]。 您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可主分支的程式碼變更。
 
 1. 在左側，移至 **app/templates/app/index.html** 檔案。
 
@@ -85,7 +85,7 @@ DevOps 入門版會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要�
 
 1. 在 DevOps 入門版儀表板頂端選取 [建置管線]。 瀏覽器索引標籤會顯示新專案的建置管線。
 
-1. 指向 [狀態] 欄位，然後選取**省略符號** (...)。功能表會顯示數個選項，例如將新建置排入佇列、暫停建置和編輯建置管線。
+1. 指向 [狀態] 欄位，然後選取 **省略符號** (...)。功能表會顯示數個選項，例如將新建置排入佇列、暫停建置和編輯建置管線。
 
 1. 選取 [編輯]。
 

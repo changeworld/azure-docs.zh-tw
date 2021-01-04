@@ -57,8 +57,6 @@
   items:
     - name: 安裝和使用 IoT 總管
       href: howto-use-iot-explorer.md
-    - name: 安裝和使用 IoT 隨插即用橋接器
-      href: howto-use-iot-pnp-bridge.md
     - name: 安裝和使用 DTDL 製作工具
       href: howto-use-dtdl-authoring-tools.md
     - name: 使用內嵌的 C
@@ -67,6 +65,10 @@
       href: howto-manage-digital-twin.md
     - name: 認證裝置
       href: howto-certify-device.md
+    - name: 安裝和使用 IoT 隨插即用橋接器
+      href: howto-use-iot-pnp-bridge.md
+    - name: 建立、部署、擴充 IoT 隨插即用橋接器
+      href: howto-build-deploy-extend-pnp-bridge.md
 - name: 參考
   items:
     - name: 程式庫和 SDK

@@ -7,20 +7,30 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dee9e7596c0a30301d9e0453ef22a6dfe9541522
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96020937"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937214"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>快速入門：使用 Azure CLI 設定 Azure 證明
 
 使用 Azure CLI 設定證明，以開始使用 Azure 證明。
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
 ## <a name="get-started"></a>開始使用
+
+1. 使用下列 CLI 命令安裝此擴充功能
+
+   ```azurecli
+   az extension add --name attestation
+   ```
+   
+1. 檢查版本
+
+   ```azurecli
+   az extension show --name attestation --query version
+   ```
 
 1. 使用下列命令以登入 Azure：
 
@@ -55,19 +65,16 @@ ms.locfileid: "96020937"
 
 以下是可用來建立和管理證明提供者的命令：
 
-1. 執行 [az attestation create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) 命令，以建立證明提供者：
+1. 執行 [az attestation create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) 命令，以建立證明提供者：
 
    ```azurecli
-   az attestation create --resource-group attestationrg --name attestationProvider --location uksouth \
-      --attestation-policy SgxDisableDebugMode --certs-input-path C:\test\policySignersCertificates.pem
+   az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
-
-   **--certs-input-path** 參數會指定一組受信任的簽署金鑰。 如果您為此參數指定檔案名稱，則必須使用已簽署 JWT 格式的原則來設定證明提供者。 若未指定，則可以使用文字或未簽署的 JWT 格式來設定原則。 如需 JWT 的相關資訊，請參閱[基本概念](basic-concepts.md)。 如需憑證範例，請參閱[證明原則簽署者憑證的範例](policy-signer-examples.md)。
-
-1. 執行 [az attestation show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) 命令以擷取證明提供者屬性，例如 status 和 AttestURI：
+   
+1. 執行 [az attestation show](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) 命令以擷取證明提供者屬性，例如 status 和 AttestURI：
 
    ```azurecli
-   az attestation show --resource-group attestationrg --name attestationProvider
+   az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
    ```
 
    此命令會顯示類似於下列輸出的值：
@@ -84,34 +91,20 @@ ms.locfileid: "96020937"
    TagsTable:
    ```
 
-您可以使用 [az attestation delete](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) 命令來刪除證明提供者：
+您可以使用 [az attestation delete](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) 命令來刪除證明提供者：
 
 ```azurecli
-az attestation delete --resource-group attestationrg --name attestationProvider
+az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
 ```
 
 ## <a name="policy-management"></a>原則管理
 
-若要管理原則，Azure AD 使用者必須具有 `Actions` 的下列權限：
+使用此處說明的命令，為證明提供者提供原則管理 (一次一個證明類型)。
 
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-- `Microsoft.Attestation/attestationProviders/attestation/write`
-- `Microsoft.Attestation/attestationProviders/attestation/delete`
-
-您可以透過適當角色將這些權限指派給 Azure AD 使用者，例如 `Owner` (萬用字元權限)、`Contributor` (萬用字元權限) 或 `Attestation Contributor` (僅限 Azure 證明的特定權限) 角色。  
-
-若要讀取原則，Azure AD 使用者必須具有 `Actions` 的下列權限：
-
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-
-您可以透過適當角色將此權限指派給 Azure AD 使用者，例如 `Reader` (萬用字元權限) 或 `Attestation Reader` (僅限 Azure 證明的特定權限) 角色。
-
-使用此處說明的命令，為證明提供者提供原則管理 (一次一個 TEE)。
-
-[az attestation policy show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) 命令會針對指定的 TEE 傳回目前的原則：
+[az attestation policy show](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) 命令會針對指定的 TEE 傳回目前的原則：
 
 ```azurecli
-az attestation policy show --resource-group attestationrg --name attestationProvider --tee SgxEnclave
+az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
 ```
 
 > [!NOTE]
@@ -119,48 +112,24 @@ az attestation policy show --resource-group attestationrg --name attestationProv
 
 以下是支援的 TEE 類型：
 
-- `CyResComponent`
-- `OpenEnclave`
-- `SgxEnclave`
-- `VSMEnclave`
+- `SGX-IntelSDK`
+- `SGX-OpenEnclaveSDK`
+- `TPM`
 
-使用 [az attestation policy set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) 命令，為指定的 TEE 設定新的原則。
+使用 [az attestation policy set](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) 命令，為指定的證明類型設定新原則。
 
-```azurecli
-az attestation policy set --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --new-attestation-policy newAttestationPolicyname
-```
-
-JWT 格式的證明原則必須包含名為 `AttestationPolicy` 的宣告。 對於已簽署的原則，必須使用與任何現有的原則簽署者憑證相對應的金鑰進行簽署。
-
-如需原則範例，請參閱[證明原則的範例](policy-examples.md)。
-
-[az attestation policy reset](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_reset) 命令會為指定的 TEE 設定新的原則。
+若要使用檔案路徑為指定證明類型設定文字格式的原則：
 
 ```azurecli
-az attestation policy reset --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --policy-jws "eyJhbGciOiJub25lIn0.."
+az attestation policy set --name testatt1 --resource-group testrg --attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}"
 ```
 
-## <a name="policy-signer-certificates-management"></a>原則簽署者憑證管理
-
-使用下列命令，管理證明提供者的原則簽署者憑證：
+若要使用檔案路徑為指定證明類型設定 JWT 格式的原則：
 
 ```azurecli
-az attestation signer list --resource-group attestationrg --name attestationProvider
-
-az attestation signer add --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
-
-az attestation signer remove --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
+az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
+--attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
 ```
-
-原則簽署者憑證是已簽署的 JWT，具有名為 `maa-policyCertificate` 的宣告。 宣告的值是 JWK，其中包含要新增的受信任簽署金鑰。 對於 JWT，必須使用與任何現有的原則簽署者憑證相對應的私密金鑰進行簽署。 如需 JWT 和 JWK 的相關資訊，請參閱[基本概念](basic-concepts.md)。
-
-原則簽署者憑證的所有語意操作都必須在 Azure CLI 外部完成。 就 Azure CLI 而言，這是一個簡單的字串。
-
-如需憑證範例，請參閱[證明原則簽署者憑證的範例](policy-signer-examples.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

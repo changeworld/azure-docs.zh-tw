@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: fc8928c9f64e323aafb29c9b1e717cc5c2ab6691
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165667"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346702"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>教學課程：在 Azure IoT Central 中建立店內分析應用程式
 
@@ -71,7 +71,7 @@ ms.locfileid: "92165667"
 1. (選擇性) 選擇易記的 [應用程式名稱]  。 此應用程式的建置基礎是名為 Contoso 的虛構零售商店。 本教學課程會使用「Contoso 結帳」  作為 [應用程式名稱]  。 應用程式範本的製作基礎則是虛構公司 Northwind。 在本教學課程中，您會使用 Contoso 來了解如何自訂應用程式。
 
     > [!NOTE]
-    > 如果您使用易記的 **應用程式名稱** ，您仍然必須針對應用程式的 **URL** 使用唯一值。
+    > 如果您使用易記的 **應用程式名稱**，您仍然必須針對應用程式的 **URL** 使用唯一值。
 
 1. 如果您有 Azure 訂用帳戶，請輸入您的 [目錄]、[Azure 訂用帳戶] 和 [區域]  。 如果您沒有訂用帳戶，則可以啟用 [7 天免費試用]  並填妥必要的連絡人資訊。  
 

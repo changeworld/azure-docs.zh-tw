@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 25d084b8af148707685b2cbb4368394a12d99db2
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780088"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005302"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>教學課程：使用註冊群組佈建多個 x.509 裝置
 
@@ -195,7 +195,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 3. 執行下列命令建立完整的憑證鏈結 .pem 檔案，其中包含新的裝置憑證。
 
     ```Bash
-    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem
+    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem && cd ..
     ```
 
     使用文字編輯器並開啟憑證鏈結檔案，./certs/new-device-full-chain.cert.pem。 憑證鏈結文字包含全部三個憑證的完整鏈結。 在本教學課程的後續內容中，您將使用此文字作為憑證鏈結與自訂 HSM 程式碼。
@@ -241,48 +241,85 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
     static const char* const COMMON_NAME = "custom-hsm-device-01";
     ```
 
-4. 在相同的檔案產生憑證之後中，使用您在 *./certs/new-device-full-chain.cert.pem* 中儲存的憑證鏈結文字更新 `CERTIFICATE` 常數位串的字串。
+4. 在相同的檔案產生憑證之後中，您必須使用在 *./certs/new-device-full-chain.cert.pem* 中儲存的憑證鏈結文字更新 `CERTIFICATE` 常數位串的字串。
 
-    > [!IMPORTANT]
-    > 將文字複製到 Visual Studio 時，您可能會發現文字是以程式碼間距等標準進行剖析和更新。若是如此，您必須按下 **Ctrl + Z** 一次，以移除此間距和剖析。
-
-    更新憑證文字使其遵循下列模式，而不會有額外的空格，且 Visual Studio 也不會剖析：
+    憑證文字語法必須遵循下列模式，才不會有額外的空格，且 Visual Studio 也不會剖析。
 
     ```c
     // <Device/leaf cert>
     // <intermediates>
     // <root>
     static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----\n"
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy"
+    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
         ...
-    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh"
-    "\n-----END CERTIFICATE-----\n"
+    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
+    "-----END CERTIFICATE-----\n"
     "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
         ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB"
-    "\n-----END CERTIFICATE-----";        
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----";        
     ```
 
-5. 在相同的檔案中，使用您裝置憑證的私密金鑰來更新 `PRIVATE_KEY` 常數位串的字串值。
+    在此步驟中正確地更新此字串值的步驟非常繁瑣，且可能會發生錯誤。 若要在您的 Git Bash 提示字元中產生適當的語法，請將下列 Bash 殼層命令複製並貼到您的 Git Bash 命令提示字元中，然後按 **ENTER**。 這些命令將會產生 `CERTIFICATE` 字串常數值的語法。
 
-    > [!IMPORTANT]
-    > 將文字複製到 Visual Studio 時，您可能會發現文字是以程式碼間距等標準進行剖析和更新。若是如此，您必須按下 **Ctrl + Z** 一次，以移除此間距和剖析。
+    ```Bash
+    input="./certs/new-device-full-chain.cert.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
 
-    更新私密金鑰文字使其遵循下列模式，而不會有額外的空格，Visual Studio 也不會加以剖析：
+    複製並貼上新常數值的輸出憑證文字。 
+
+
+5. 在相同的檔案中，必須使用您裝置憑證的私密金鑰來更新 `PRIVATE_KEY` 常數的字串值。
+
+    私密金鑰文字的語法必須遵循下列模式，才不會有額外的空格，且 Visual Studio 也不會剖析。
 
     ```c
     static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
-    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U"
+    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
         ...
-    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij"
-    "\n-----END RSA PRIVATE KEY-----";
+    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
+    "-----END RSA PRIVATE KEY-----";
     ```
+
+    在此步驟中正確地更新此字串值的步驟非常繁瑣，且可能會發生錯誤。 若要在您的 Git Bash 提示字元中產生適當的語法，請將下列 Bash 殼層命令複製並貼上，然後按 **ENTER**。 這些命令將會產生 `PRIVATE_KEY` 字串常數值的語法。
+
+    ```Bash
+    input="./private/new-device.key.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    複製並貼上新常數值的輸出私密金鑰。 
 
 6. 儲存 custom_hsm_example.c。
 

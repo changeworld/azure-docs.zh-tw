@@ -1,24 +1,24 @@
 ---
-title: 了解 Azure 中的企業管理員角色
+title: 了解 Azure 中的 Enterprise 合約 (EA) 系統管理員角色
 description: 了解 Azure 中的企業系統管理員角色。 您可以指派五個不同的系統管理角色。
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/10/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: e8420f68fba40ddb61d06770f9f5bc2fafe5616a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409192"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560520"
 ---
-# <a name="managing-azure-enterprise-roles"></a>管理 Azure 企業角色
+# <a name="managing-azure-enterprise-agreement-roles"></a>管理 Azure Enterprise 合約角色
 
-為了協助您管理組織的使用方式及費用，具有 Enterprise 合約 (EA) 的 Azure 客戶可以指派五個不同的系統管理角色：
+為了協助您管理組織的使用方式及費用，具有 Enterprise 合約的 Azure 客戶可以指派五個不同的系統管理角色：
 
 - 企業系統管理員
 - 企業系統管理員 (唯讀)<sup>1</sup>
@@ -82,6 +82,8 @@ Azure 企業版入口網站階層包含：
 - 管理通知連絡人。
 - 檢視所有帳戶上的使用量。
 - 檢視所有帳戶上未開立帳單的費用。
+- 檢視並管理適用於 Enterprise 合約的所有保留訂單和保留。
+  - 企業系統管理員 (唯讀) 可以檢視保留訂單和保留。 但他們無法進行管理。
 
 一個企業註冊中可以有多個企業系統管理員。 您可以將唯讀存取權授與企業系統管理員。 他們都會繼承部門系統管理員角色。
 

@@ -3,17 +3,17 @@ title: 快速入門：在入口網站中建立 Azure 儲存體佇列
 description: 使用 Azure 入口網站建立佇列。 然後，您可以使用 Azure 入口網站新增訊息、檢視訊息的屬性，以及清除佇列中的訊息。
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/13/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
-ms.openlocfilehash: 0ee3d9c26d6972da9e528660d034432ce696aa45
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 24b1d16ab5f13a9aef1faa5bc7a3579ad1a5aa5e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347194"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585542"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>快速入門：透過 Azure 入口網站建立佇列並新增訊息
 
@@ -28,7 +28,7 @@ ms.locfileid: "93347194"
 若要在 Azure 入口網站中建立佇列，請遵循下列步驟：
 
 1. 在 Azure 入口網站中瀏覽至新的儲存體帳戶。
-2. 在儲存體帳戶的左窗格中，捲動到 [佇列服務]  區段，然後選取 [佇列]  。
+2. 在儲存體帳戶的左窗格中，捲動到 [佇列儲存體] 區段，然後選取 [佇列]。
 3. 選取 [+ 佇列]  按鈕。
 4. 輸入新佇列的名稱。 佇列名稱必須是小寫，以字母或數字開頭，並且只能包含字母、數字和虛線 (-) 字元。
 6. 選取 [確定]  以建立佇列。
@@ -66,4 +66,4 @@ ms.locfileid: "93347194"
 在本快速入門中，您已了解如何在 Azure 入口網站中建立佇列、新增訊息、檢視訊息屬性，以及清除佇列中的訊息。
 
 > [!div class="nextstepaction"]
-> [什麼是 Azure 佇列？](storage-queues-introduction.md)
+> [什麼是 Azure 佇列儲存體？](storage-queues-introduction.md)

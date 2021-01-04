@@ -6,19 +6,19 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 012df825f38d292d0b0549701ad90334e3e30bb0
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 2dd60d1962734f7a4264587fd1b5b0d2a03c9ff0
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637008"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359739"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>歡迎使用 Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 現今的應用程式需要具有快速回應能力，且一律保持線上狀態。 為了達到低延遲和高可用性，這些應用程式的執行個體必須部署在接近使用者的資料中心內。 應用程式需要即時回應尖峰時間內使用量的巨變、儲存不斷增加的資料量，並在毫秒內將這些資料提供給使用者。
 
-Azure Cosmos DB 是適用於新式應用程式開發的完全受控 NoSQL 資料庫。 一位數毫秒的回應時間，以及自動和立即的擴充性，可保證在任何規模中的執行速度。 [SLA 支援](https://azure.microsoft.com/support/legal/sla/cosmos-db)的可用性和企業級安全性可確保提供商務持續性。 因為全球各地的多宿主資料散發功能、開放原始碼 API 和適用於多種熱門語言的 SDK，讓應用程式開發的速度更快且更具生產力。 作為完全受控的服務，Azure Cosmos DB 利用自動管理、更新和修補，將資料庫管理權交到您手上。 Azure Cosmos DB 也會使用符合成本效益的無伺服器和自動調整選項來處理容量管理，以回應應用程式必須符合所需容量的訴求。
+Azure Cosmos DB 是適用於新式應用程式開發的完全受控 NoSQL 資料庫。 一位數毫秒的回應時間，以及自動和立即的擴充性，可保證在任何規模中的執行速度。 [SLA 支援](https://azure.microsoft.com/support/legal/sla/cosmos-db)的可用性和企業級安全性可確保提供商務持續性。 因為全球各地的多區域資料散發功能、開放原始碼 API 和適用於多種熱門語言的 SDK，讓應用程式開發的速度更快且更具生產力。 作為完全受控的服務，Azure Cosmos DB 利用自動管理、更新和修補，將資料庫管理權交到您手上。 Azure Cosmos DB 也會使用符合成本效益的無伺服器和自動調整選項來處理容量管理，以回應應用程式必須符合所需容量的訴求。
 
 您可以[免費試用 Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)，而不需要 Azure 訂用帳戶 (免費且無需承諾用量)，或是使用 [Azure Cosmos DB 免費層](optimize-dev-test.md#azure-cosmos-db-free-tier)來取得帳戶，其中前 400 RU/秒和 5 GB 的儲存體免費。
 

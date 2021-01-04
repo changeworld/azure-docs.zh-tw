@@ -3,22 +3,22 @@ title: 快速入門：使用適用於 .NET 的 Azure 儲存體 v11 來管理佇�
 description: 在此快速入門中，您將了解如何使用適用於 .NET 的 Azure 儲存體用戶端程式庫，建立佇列及在其中新增訊息。 接下來，您會了解如何讀取和處理佇列中的訊息。
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f7368025993c91490d808ef0ae5f5f66233fe666
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 23703dc507aa909aea4711289a4d7d5c5e6a170e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345613"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588194"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入門：使用適用於 .NET 的 Azure 儲存體 SDK v11 來管理佇列
 
-在此快速入門中，您將了解如何使用適用於 .NET 的 Azure 儲存體用戶端程式庫第 11 版，來建立佇列及在其中新增訊息。 接下來，您會了解如何讀取和處理佇列中的訊息。
+在此快速入門中，您將了解如何使用適用於 .NET 的 Azure 儲存體用戶端程式庫 v11，建立佇列及在其中新增訊息。 接下來，您會了解如何讀取和處理佇列中的訊息。
 
 > [!NOTE]
 > 本快速入門會使用舊版的 Azure 佇列儲存體用戶端程式庫。 若要開始使用最新版本，請參閱[快速入門：適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12](storage-quickstart-queues-dotnet.md)。
@@ -50,13 +50,13 @@ ms.locfileid: "93345613"
 
 本快速入門使用的範例應用程式是基本的主控台應用程式。 您可探索 [GitHub](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart) 上的範例應用程式。
 
-使用 [git](https://git-scm.com/) 將應用程式的複本下載至您的開發環境。
+使用 [Git](https://git-scm.com/) 將應用程式的複本下載至您的開發環境。
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-此命令會將存放庫複製到本機的 git 資料夾。 若要開啟 Visual Studio 解決方案，請尋找 *storage-queues-dotnet-quickstart* 資料夾並加以開啟，然後按兩下 *storage-queues-dotnet-quickstart.sln* 。
+此命令會將存放庫複製到本機的 Git 資料夾。 若要開啟 Visual Studio 解決方案，請尋找 `storage-queues-dotnet-quickstart` 資料夾並加以開啟，然後按兩下 `storage-queues-dotnet-quickstart.sln`。
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -98,7 +98,7 @@ export STORAGE_CONNECTION_STRING=<yourconnectionstring>
 
 ### <a name="windows"></a>Windows
 
-如果您使用 Visual Studio 作為編輯器，請按 **F5** 來執行。
+如果您使用 Visual Studio 作為編輯器，請按 `F5` 來執行。
 
 否則，瀏覽至您的應用程式目錄，並使用 `dotnet run` 命令執行應用程式。
 
@@ -148,7 +148,7 @@ Press any key to delete the sample queue.
 
 ### <a name="try-parsing-the-connection-string"></a>嘗試剖析連接字串
 
-此範例會先檢查環境變數是否包含可剖析的連接字串，以建立指向儲存體帳戶的 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 物件。 為了檢查連接字串是否有效，此範例會使用 [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) 方法。 如果 **TryParse** 成功，它會初始化 storageAccount 變數並傳回 **true** 。
+此範例會先檢查環境變數是否包含可剖析的連接字串，以建立指向儲存體帳戶的 [`CloudStorageAccount`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 物件。 為了檢查連接字串是否有效，此範例會使用 [`TryParse`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) 方法。 如果 `TryParse` 成功，它會初始化 `storageAccount` 變數並傳回 `true`。
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -204,7 +204,7 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-若要新增不會過期的訊息，請在 [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) 的呼叫中使用 `Timespan.FromSeconds(-1)`。
+若要新增不會過期的訊息，請在 [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) 的呼叫中使用 `Timespan.FromSeconds(-1)`。
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -262,18 +262,18 @@ if (queue != null)
 
 ## <a name="resources-for-developing-net-applications-with-queues"></a>可供使用佇列開發 .NET 應用程式的資源
 
-請參閱以下可供使用 Azure 佇列進行 .NET 開發的額外資源：
+請參閱以下可供使用 Azure 佇列儲存體進行 .NET 開發的額外資源：
 
 ### <a name="binaries-and-source-code"></a>二進位檔和原始程式碼
 
 - 針對 Azure 儲存體最新版的 [.NET 用戶端程式庫](/dotnet/api/overview/azure/storage)下載 NuGet 套件
-  - [通用](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  - [通用](https://www.nuget.org/packages/microsoft.azure.storage.common/)
   - [佇列](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - 在 GitHub 上檢視 [.NET 用戶端程式庫原始程式碼](https://github.com/Azure/azure-storage-net)。
 
-### <a name="client-library-reference-and-samples"></a>用戶端程式庫參考和範例
+### <a name="azure-storage-client-library-reference-and-samples"></a>Azure 儲存體用戶端程式庫參考及範例
 
-- 如需 .NET 用戶端程式庫的詳細資訊，請參閱 [.NET API 參考](/dotnet/api/overview/azure/storage)。
+- 如需 .NET 用戶端程式庫的詳細資訊，請參閱[適用於 .NET 的 Azure 儲存體用戶端程式庫參考](/dotnet/api/overview/azure/storage)。
 - 探索使用 .NET 用戶端程式庫所撰寫的[佇列儲存體範例](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues)。
 
 ## <a name="next-steps"></a>後續步驟

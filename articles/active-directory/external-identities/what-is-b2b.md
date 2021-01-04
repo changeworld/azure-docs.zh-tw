@@ -12,19 +12,20 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d10eb3334154f4915aa0bddd488ddc78bde06805
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 029157f5f651e150fa89ea22173c08bbf21682df
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897257"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355081"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>什麼是 Azure Active Directory B2B 中的來賓使用者存取權？
 
 Azure Active Directory (Azure AD) 企業對企業 (B2B) 共同作業是外部身分識別中的一項功能，可讓您邀請來賓使用者與您的組織共同作業。 透過企業對企業 (B2B) 共同作業，您可以與來自任何其他組織的來賓使用者安全地共用公司的應用程式與服務，同時持續控制您公司的資料。 即使沒有 Azure AD 或 IT 部門，也可以安全地與外部合作夥伴 (無論大型或小型) 合作。 透過簡單的邀請和兌換程序，夥伴可以使用自己的認證來存取您的公司資源。 開發人員可以使用 Azure AD 企業對企業 API 來自訂邀請程序，或撰寫自助式註冊入口網站等應用程式。 如需來賓使用者的相關授權和定價資訊，請參閱 [Azure Active Directory 定價](https://azure.microsoft.com/pricing/details/active-directory/)。  
 
-   > [!IMPORTANT]
-   > **自 2021 年 3 月 31 日起** ，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
+> [!IMPORTANT]
+> - **從 2021 年 1 月 4 日開始**，Google [淘汰了 WebView 登入支援](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果您使用 Google 同盟或 Gmail 的自助式註冊，建議您[測試您企業營運原生應用程式的相容性](google-federation.md#deprecation-of-webview-sign-in-support)。
+> - **自 2021 年 3 月 31 日起**，Microsoft 將不再支援兌換邀請，而是建立適用於 B2B 共同作業案例的非受控 Azure AD 帳戶和租用戶。 在準備過程中，我們鼓勵客戶選擇使用[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且期待能建立更多共同作業的方式。
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>使用他們的身分識別與任何夥伴共同作業
 

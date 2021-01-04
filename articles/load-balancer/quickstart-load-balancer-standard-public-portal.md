@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5f19b55a955b8e3e1500cf14fa221b46808ac857
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8827171788bd83a202b3607537204c71c34f29e0
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698286"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511836"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立公用負載平衡器以平衡 VM 的負載
 
@@ -40,6 +40,10 @@ ms.locfileid: "94698286"
 
 >[!NOTE]
 >建議對生產環境工作負載使用標準 SKU 負載平衡器。  如需 SKU 的詳細資訊，請參閱 **[Azure Load Balancer 的標準 SKU](skus.md)** 。
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram.png" alt-text="針對快速入門所建立的標準負載平衡器資源。" border="false":::
+
+*圖：快速入門中建立的資源。*
 
 在本節中，您會建立負載平衡器以平衡虛擬機器的負載。 
 
@@ -140,7 +144,7 @@ ms.locfileid: "94698286"
     | 健全狀況探查 | 選取 [myHealthProbe]。 |
     | 閒置逾時 (分鐘) | 將滑桿移至 **15 分鐘**。 |
     | TCP 重設 | 選取 [啟用]  。 |
-    | 輸出來源網路位址轉譯 (SNAT) | **使用輸出規則，提供對網際網路的後端集區成員存取權**。 |
+    | 輸出來源網路位址轉譯 (SNAT) | 選取 [(建議) 使用輸出規則，對後端集區成員提供網際網路的存取權]。 |
 
 4. 保留其餘的預設值，然後選取 [確定]。
 
@@ -160,7 +164,7 @@ ms.locfileid: "94698286"
 
 2. 在 [建立虛擬網路] 中，在 [基本] 索引標籤中輸入或選取這項資訊：
 
-    | **設定**          | **ReplTest1**                                                           |
+    | **設定**          | **值**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **專案詳細資料**  |                                                                 |
     | 訂用帳戶     | 選取您的 Azure 訂用帳戶                                  |
@@ -169,7 +173,7 @@ ms.locfileid: "94698286"
     | 名稱             | 輸入 **myVNet**                                    |
     | 區域           | 選取 [西歐] |
 
-3. 選取 [IP 位址] 索引標籤，或選取頁面底部的 [下一步：IP 位置] 按鈕。
+3. 選取 [IP 位址]  索引標籤，或選取頁面底部的 [下一步：  IP 位置] 按鈕。
 
 4. 在 [IP 位址] 索引標籤中，輸入這項資訊：
 
@@ -322,6 +326,10 @@ ms.locfileid: "94698286"
 >[!NOTE]
 >建議對生產環境工作負載使用標準 SKU 負載平衡器。  如需 SKU 的詳細資訊，請參閱 **[Azure Load Balancer 的標準 SKU](skus.md)** 。
 
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram-basic.png" alt-text="快速入門中建立的基本負載平衡器資源。" border="false":::
+
+*圖：快速入門中建立的資源。*
+
 在本節中，您會建立負載平衡器以平衡虛擬機器的負載。 
 
 建立公用負載平衡器時，也必須建立新的公用 IP 位址，而該 IP 位址會設定為負載平衡器的前端 (預設的名稱為 LoadBalancerFrontend)。
@@ -366,7 +374,7 @@ ms.locfileid: "94698286"
 
 2. 在 [建立虛擬網路] 中，在 [基本] 索引標籤中輸入或選取這項資訊：
 
-    | **設定**          | **ReplTest1**                                                           |
+    | **設定**          | **值**                                                           |
     |------------------|-----------------------------------------------------------------|
     | **專案詳細資料**  |                                                                 |
     | 訂用帳戶     | 選取您的 Azure 訂用帳戶                                  |
@@ -375,7 +383,7 @@ ms.locfileid: "94698286"
     | 名稱             | 輸入 **myVNet**                                    |
     | 區域           | 選取 [西歐] |
 
-3. 選取 [IP 位址] 索引標籤，或選取頁面底部的 [下一步：IP 位置] 按鈕。
+3. 選取 [IP 位址]  索引標籤，或選取頁面底部的 [下一步：  IP 位置] 按鈕。
 
 4. 在 [IP 位址] 索引標籤中，輸入這項資訊：
 
@@ -576,7 +584,7 @@ ms.locfileid: "94698286"
 
 ## <a name="install-iis"></a>安裝 IIS
 
-1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單選取 **CreateStdLBQS-rg** 資源群組中的 [myVM1]。
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單選取 **CreatePubLBQS-rg** 資源群組中的 [myVM1]。
 
 2. 在 [概觀] 頁面上，選取 [連線]，然後選 [Bastion]。
 

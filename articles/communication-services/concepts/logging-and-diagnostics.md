@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8afa769c90c5cf9450343cda1a65809062468fb
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888686"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033114"
 ---
 # <a name="communication-services-logs"></a>通訊服務記錄
 
@@ -39,6 +39,7 @@ Azure 通訊服務會提供記錄功能，以供您監視通訊服務解決方�
 * **使用量記錄** - 提供與每個計費服務供應項目相關聯的使用量資料
 * **聊天作業記錄** - 提供與聊天服務相關的基本資訊
 * **簡訊作業記錄** - 提供與簡訊服務相關的基本資訊
+* **驗證作業記錄** - 提供與驗證服務相關的基本資訊
 
 ### <a name="usage-logs-schema"></a>使用量記錄結構描述
 
@@ -100,3 +101,23 @@ Azure 通訊服務會提供記錄功能，以供您監視通訊服務解決方�
 | SdkType | 在要求中使用的 SDK 類型。 |
 | PlatformType | 在要求中使用的平台類型。 |
 | 方法 | 在要求中使用的方法。 |
+
+### <a name="authentication-operational-logs"></a>驗證作業記錄
+
+| 屬性 | 描述 |
+| -------- | ---------------|
+| TimeGenerated | 產生記錄時的時間戳記 (UTC)。 |
+| OperationName | 與記錄相關聯的作業。 |
+| CorrelationID | 相互關聯事件的識別碼。 可用來識別多個資料表之間的相互關聯事件。 |
+| OperationVersion | 與作業相關聯的 `api-version` (如果使用 API 執行 `operationName` 的話)。 如果沒有對應至此作業的 API，則版本代表該作業的版本，以防與作業建立關聯的屬性在未來變更。 |
+| 類別 | 事件的記錄類別。 類別是您可在特定資源上啟用或停用記錄的資料粒度。 事件之屬性 Blob 內顯示的屬性，會與特定記錄類別和資源類型內的屬性相同。 |
+| ResultType | 作業的狀態。 |
+| ResultSignature | 作業的子狀態。 如果此作業對應至 REST API 呼叫，則此欄位是對應 REST 呼叫的 HTTP 狀態碼。 |
+| DurationMs | 作業的持續時間 (以毫秒為單位)。 |
+| CallerIpAddress | 呼叫端 IP 位址，如果作業對應至來自具有公開可用 IP 位址之實體的 API 呼叫。 |
+| 層級 | 事件的嚴重性層級。 |
+| URI | 要求的 URI。 |
+| SdkType | 在要求中使用的 SDK 類型。 |
+| PlatformType | 在要求中使用的平台類型。 |
+| 身分識別 | 與作業相關的通訊服務身分識別。 |
+| 範圍 | 通訊服務範圍會出現在存取權杖中。 |

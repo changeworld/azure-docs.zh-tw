@@ -3,12 +3,12 @@ title: 使用適用於空間分析的電腦視覺來分析即時影片 - Azure
 description: 本教學課程說明如何使用即時影片分析搭配 Azure 認知服務的電腦視覺空間分析 AI 功能，分析來自 (模擬) IP 攝影機的即時影片摘要。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015680"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400502"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>使用適用於空間分析 (預覽) 的電腦視覺來分析即時影片
 
@@ -44,16 +44,16 @@ ms.locfileid: "92015680"
 * 具有 GPU 加速的 [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/)。  
     建議您使用具有 GPU 加速的 Azure Stack Edge，不過，容器可在任何其他具有 [NVIDIA Tesla T4 GPU](https://www.nvidia.com/en-us/data-center/tesla-t4/) 的裝置上執行。 
 * [Azure 認知服務電腦視覺容器](https://azure.microsoft.com/services/cognitive-services/computer-vision/)，用來進行空間分析。  
-    若要使用此容器，您必須擁有電腦視覺資源，才能取得相關聯的 **API 金鑰**及**端點 URI**。 在 Azure 入口網站的 [電腦視覺概觀] 和 [金鑰] 頁面上可取得此 API 金鑰。 需要有金鑰和端點才能啟動容器。
+    若要使用此容器，您必須擁有電腦視覺資源，才能取得相關聯的 **API 金鑰** 及 **端點 URI**。 在 Azure 入口網站的 [電腦視覺概觀] 和 [金鑰] 頁面上可取得此 API 金鑰。 需要有金鑰和端點才能啟動容器。
 
 ## <a name="overview"></a>概觀
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/spatial-analysis-tutorial/overview.png" alt-text="空間分析概觀":::
  
-上圖顯示本教學課程中的信號流動方式。 [邊緣模組](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)會模擬裝載了即時串流通訊協定 (RTSP) 伺服器的 IP 攝影機。 [RTSP 來源](media-graph-concept.md#rtsp-source)節點會從這部伺服器提取影片摘要，並將影片畫面傳送到[畫面播放速率篩選處理器](media-graph-concept.md#frame-rate-filter-processor)節點。 此處理器會限制到達 MediaGraphCognitiveServicesVisionExtension 處理器節點的影片串流畫面播放速率。
+上圖顯示本教學課程中的信號流動方式。 [邊緣模組](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)會模擬裝載了即時串流通訊協定 (RTSP) 伺服器的 IP 攝影機。 [RTSP 來源](media-graph-concept.md#rtsp-source) 節點會從這部伺服器提取影片摘要，然後將影片畫面傳送至 `MediaGraphCognitiveServicesVisionExtension` 處理器節點。
 
-MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其會將影片畫面轉換成指定的影像類型。 然後會透過**共用記憶體**將影像轉送至另一個邊緣模組，以在 gRPC 端點後方執行 AI 作業。 在此範例中，該邊緣模組是空間分析模組。 MediaGraphCognitiveServicesVisionExtension 處理器節點會做兩件事：
+MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其會將影片畫面轉換成指定的影像類型。 然後會透過 **共用記憶體** 將影像轉送至另一個邊緣模組，以在 gRPC 端點後方執行 AI 作業。 在此範例中，該邊緣模組是空間分析模組。 MediaGraphCognitiveServicesVisionExtension 處理器節點會做兩件事：
 
 * 其會收集結果，並將事件發佈至 [IoT 中樞接收](media-graph-concept.md#iot-hub-message-sink)節點。 節點接著會將這些事件傳送至 [IoT Edge 中樞](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)。 
 * 其也會使用[信號閘道處理器](media-graph-concept.md#signal-gate-processor)從 RTSP 來源中擷取 30 秒的影片剪輯，並將其儲存為媒體服務資產。
@@ -71,7 +71,7 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 此金鑰可用來啟動空間分析容器，並可在相對應認知服務資源的 Azure 入口網站 [`Keys and Endpoint`] 頁面上取得。 瀏覽至該頁面，然後尋找金鑰和端點 URI。
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="空間分析概觀":::
+> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="端點 URI":::
 
 ## <a name="set-up-azure-stack-edge"></a>設定 Azure Stack Edge
 
@@ -169,17 +169,17 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 1. 在 [Azure IoT 中樞] 窗格旁，選取 [其他動作] 圖示，以設定 IoT 中樞的連接字串。 您可以從 src/cloud-to-device-console-app/appsettings.json 檔案複製字串。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空間分析概觀":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空間分析：連接字串":::
 1. 以滑鼠右鍵按一下 `src/edge/deployment.spatialAnalysis.template.json`，然後選取 [產生 IoT Edge 部署資訊清單]。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="空間分析概觀":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="空間分析：部署 amd64 json":::
     
     此動作應該會在 src/edge/config 資料夾中，建立名為 deployment.amd64.json 的資訊清單檔。
 1. 以滑鼠右鍵按一下 `src/edge/config/deployment.spatialAnalysis.amd64.json`，選取 [建立單一裝置的部署]，然後選取邊緣裝置的名稱。
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="空間分析概觀":::   
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="空間分析：部署範本 json":::   
 1. 當系統提示您選取 IoT 中樞裝置時，請從下拉式功能表中選擇 [Azure Stack Edge]。
 1. 大約 30 秒之後，請在視窗左下角重新整理 Azure IoT 中樞。 邊緣裝置現在會顯示下列已部署的模組：
     
@@ -204,17 +204,17 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 1. 按一下滑鼠右鍵，然後選取 [延伸模組設定]。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="空間分析概觀":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="延伸模組設定":::
 1. 搜尋並啟用「顯示詳細資訊訊息」。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="空間分析概觀":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="顯示詳細資訊訊息":::
 1. 開啟 [檔案總管] 窗格，然後在左下角尋找 Azure IoT 中樞。
 1. 展開 [裝置] 節點。
 1. 以滑鼠右鍵按一下您的 Azure Stack Edge，然後選取 [開始監視內建事件端點]。
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="空間分析概觀":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="空間分析：開始監視":::
      
 ## <a name="run-the-program"></a>執行程式
 

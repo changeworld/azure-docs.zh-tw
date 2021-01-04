@@ -1,17 +1,17 @@
 ---
 title: 教學課程 - 使用參數檔案來部署範本
-description: 使用包含用來部署 Azure Resource Manager 範本之值的參數檔。
+description: 使用包含用來部署 Azure Resource Manager 範本 (ARM 範本) 之值的參數檔。
 author: mumian
 ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6257161017afc9dab692c43fcc64e5d961a90ba
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069504"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368421"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>教學課程：使用參數檔案部署您的 ARM 範本
 
@@ -41,23 +41,25 @@ ms.locfileid: "90069504"
 
 您不能在參數檔案中指定與範本中參數名稱不相符的參數名稱。 當提供未知的參數時，您會收到錯誤。
 
-在 VS Code 中，建立含有下列內容的新檔案。 以 **azuredeploy.parameters.dev.json** 名稱來儲存檔案。
+在 Visual Studio Code 中，建立含有下列內容的新檔案。 以 _azuredeploy.parameters.dev.json_ 名稱來儲存檔案。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
-此檔案是適用於開發環境的參數檔案。 請注意，它會針對儲存體帳戶使用 Standard_LRS、使用 **dev** 前置詞來為資源命名，並將 **Environment** 標記設定為 **Dev**。
+此檔案是適用於開發環境的參數檔案。 請注意，該檔案會針對儲存體帳戶使用 **Standard_LRS**、使用 **dev** 前置詞來為資源命名，並將 `Environment` 標記設定為 **Dev**。
 
-同樣地，建立含有下列內容的新檔案。 以 **azuredeploy.parameters.prod.json** 名稱來儲存檔案。
+同樣地，建立含有下列內容的新檔案。 以 _azuredeploy.parameters.prod.json_ 名稱來儲存檔案。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-此檔案是適用於實際執行環境的參數檔案。 請注意，它會針對儲存體帳戶使用 Standard_GRS、使用 **contoso** 前置詞來為資源命名，並將 **Environment** 標記設定為 **Production**。 在真正的實際執行環境中，您也想要將應用程式服務與免費的 SKU 搭配使用，但我們將繼續使用該 SKU 來進行此教學課程。
+此檔案是適用於實際執行環境的參數檔案。 請注意，該檔案會針對儲存體帳戶使用 **Standard_GRS**、使用 **contoso** 前置詞來為資源命名，並將 `Environment` 標記設定為 **Production**。 在真正的實際執行環境中，您也想要將應用程式服務與免費的 SKU 搭配使用，但我們將繼續使用該 SKU 來進行此教學課程。
 
 ## <a name="deploy-template"></a>部署範本
 
 使用 Azure CLI 或 Azure PowerShell 來部署範本。
 
 作為範本的最終測試，讓我們建立兩個新的資源群組。 一個用於開發環境，另一個用於實際執行環境。
+
+針對範本和參數變數，將 `{path-to-the-template-file}`、`{path-to-azuredeploy.parameters.dev.json}`、`{path-to-azuredeploy.parameters.prod.json}` 和大括弧 `{}` 取代為您的範本和參數檔案路徑。
 
 首先，我們將部署至開發環境。
 
@@ -128,7 +130,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失敗，請使用 **verbose** 參數來取得所建立資源的相關資訊。 使用 **debug** 參數來取得更多資訊以進行偵錯。
+> 如果部署失敗，請使用 `verbose` 參數來取得所建立資源的相關資訊。 使用 `debug` 參數來取得更多資訊以進行偵錯。
 
 ## <a name="verify-deployment"></a>驗證部署
 
@@ -142,7 +144,7 @@ az deployment group create \
 ## <a name="clean-up-resources"></a>清除資源
 
 1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
-2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。 如果您已完成本系列，您會有三個要刪除的資源群組：myResourceGroup、myResourceGroupDev 和 myResourceGroupProd。
+2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。 如果您已完成本系列，您會有三個要刪除的資源群組：**myResourceGroup**、**myResourceGroupDev** 和 **myResourceGroupProd**。
 3. 選取資源群組名稱。
 4. 從頂端功能表中選取 [刪除資源群組]  。
 

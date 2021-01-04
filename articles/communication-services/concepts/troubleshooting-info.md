@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886782"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937537"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure 通訊服務中的疑難排解
 
@@ -165,6 +165,25 @@ callClient = new CallClient({logger: AzureLogger});
    
 
 ---
+
+
+## <a name="calling-client-library-error-codes"></a>通話用戶端程式庫錯誤碼
+
+Azure 通訊服務的通話用戶端程式庫會使用下列錯誤碼，協助您對通話問題進行疑難排解。 通話結束之後，這些錯誤碼會透過 `call.callEndReason` 屬性來公開。
+
+| 錯誤碼 | 描述 | 要採取的動作 |
+| -------- | ---------------| ---------------|
+| 403 | 禁止/驗證失敗。 | 請確定您的通訊服務權杖有效且未過期。 |
+| 404 | 找不到通話。 | 確定您要通話的號碼 (或您要加入的通話號碼) 存在。 |
+| 408 | 通話控制器逾時。 | 通話控制器因等候使用者端點的通訊協定訊息而逾時。 請確定用戶端已連線且可供使用。 |
+| 410 | 本機媒體堆疊或媒體基礎結構錯誤。 | 請確定您是在支援的環境中使用最新的用戶端程式庫。 |
+| 430 | 無法將訊息傳遞至用戶端應用程式。 | 請確定用戶端應用程式正在執行且可供使用。 |
+| 480 | 遠端用戶端端點未註冊。 | 請確定遠端端點可供使用。 |
+| 481 | 無法處理傳入的通話。 | 透過 Azure 入口網站提出支援要求。 |
+| 487 | 通話已取消、在本機遭到拒絕或已結束，因為端點不符或無法產生媒體供應項目。 | 預期的行為。 |
+| 490、491、496、487、498 | 本機端點網路問題。 | 檢查您的網路。 |
+| 500、503、504 | 通訊服務基礎結構錯誤。 | 透過 Azure 入口網站提出支援要求。 |
+| 603 | 遠端通訊服務參與者的全域通話遭到拒絕 | 預期的行為。 |
 
 
 ## <a name="related-information"></a>相關資訊

@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7752bc3f768aec7a3e98fb1813c4194f81fb9dfb
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6cc6e6a9739b8b06ab3c48dd3fd75f19de8d0787
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917625"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106269"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教學課程：使用 Azure Batch 透過 Azure Data Factory 執行 Python 指令碼
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 驗證 Batch 和儲存體帳戶
@@ -148,12 +148,23 @@ python main.py
 1. 按一下有失敗結束代碼的工作。
 1. 檢視 `stdout.txt` 和 `stderr.txt` 來調查及診斷您的問題。
 
+## <a name="clean-up-resources"></a>清除資源
+
+雖然您不需支付作業和工作本身的費用，但您需支付計算節點的費用。 因此，我們建議您只在必要時配置集區。 當您刪除集區時，節點上的所有工作輸出也會跟著刪除。 不過，輸入和輸出檔案會保留在儲存體帳戶中。 若不再需要，也可刪除 Batch 帳戶和儲存體帳戶。
+
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已探索一個範例並了解如何使用 Azure Batch 透過 Azure Data Factory，將 Python 指令碼當作管線的一部分執行。
+在本教學課程中，您已了解如何：
+
+> [!div class="checklist"]
+> * 驗證 Batch 和儲存體帳戶
+> * 在 Python 中開發和執行指令碼
+> * 建立計算節點的集區來執行應用程式
+> * 排程您的 Python 工作負載
+> * 監視您的分析管線
+> * 存取您的記錄檔
 
 若要深入了解 Azure Data Factory，請參閱：
 
 > [!div class="nextstepaction"]
 > [Azure Data Factory 概觀](../data-factory/introduction.md)
-

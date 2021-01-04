@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: d732d2fd8b97ca61222accc21c9930ed8c5c5d3a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7c0efbae3576a5b57433fe70885fd97aae5e87e3
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993885"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107935"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入門：使用主控台應用程式的身分識別來取得權杖並呼叫 Microsoft Graph API
 
@@ -49,17 +49,17 @@ ms.locfileid: "95993885"
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 > 若要手動註冊您的應用程式，並將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
-> 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-> 1. 藉由在 Azure 入口網站搜尋列中搜尋 **應用程式註冊**，瀏覽至開發人員 [應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面的 Microsoft 身分識別平台。
-> 1. 選取 [新增註冊]。
-> 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊。
-> 1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱 (例如，`Daemon-console`)，然後選取 [註冊] 以建立應用程式。
-> 1. 註冊之後，請選取 [憑證和祕密] 功能表。
-> 1. 在 [用戶端密碼] 底下，選取 [+ 新增用戶端密碼]。 為其提供名稱，然後選取 [新增]。 將祕密複製到安全的位置。 您需要將其用於程式碼中，而且其不會再次顯示在入口網站中。
-> 1. 現在，選取 [API 權限] 功能表，選取 [+ 新增權限] 按鈕，選取 [Microsoft Graph]。
+> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+> 1. 搜尋並選取 [Azure Active Directory]  。
+> 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+> 1. 輸入應用程式的 [名稱]，例如 `Daemon-console`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+> 1. 選取 [註冊] 以建立應用程式。
+> 1. 在 [管理]  下，選取 [憑證和密碼]  。
+> 1. 在 [用戶端密碼] 底下，選取 [新增用戶端密碼] 並輸入名稱，然後選取 [新增]。 將祕密值記錄在安全的位置，以便在稍後的步驟中使用。
+> 1. 在 [管理] 底下，選取 [API 權限] > [新增權限]。 選取 [Microsoft Graph]。
 > 1. 選取 [應用程式權限]。
-> 1. 在 [使用者] 節點底下，選取 [User.Read.All]，然後選取 [新增權限]
+> 1. 在 [使用者] 節點底下，選取 [User.Read.All]，然後選取 [新增權限]。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>下載並設定您的快速入門應用程式
@@ -121,7 +121,7 @@ ms.locfileid: "95993885"
 ##### <a name="global-tenant-administrator"></a>全域租用戶管理員
 
 > [!div renderon="docs"]
-> 如果您是全域租用戶系統管理員，請在 Azure 入口網站中瀏覽至 [企業應用程式] > 按一下您的應用程式註冊 > 從左側瀏覽窗格的 [安全性] 區段中選擇 [權限]。 按一下標示為 [代表 {Tenant Name} 授與管理員同意] (其中 {Tenant Name} 是您目錄的名稱) 的大按鈕。
+> 如果您是全域租用戶系統管理員，請在 Azure 入口網站中瀏覽至 [企業應用程式] > 選取您的應用程式註冊 > 從左側瀏覽窗格的 [安全性] 區段中選擇 [權限]。 選取標示為 [代表 {Tenant Name} 授與管理員同意] (其中 {Tenant Name} 是您目錄的名稱) 的大按鈕。
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 如果您是全域管理員，請移至 [API 權限] 頁面，選取 [代表 Enter_the_Tenant_Name_Here 授與管理員同意]

@@ -89,6 +89,22 @@
       href: event-hubs-availability-and-consistency.md
     - name: 延展性
       href: event-hubs-scalability.md
+    - name: 同盟
+      items:
+        - name: 多網站和多區域同盟
+          href: event-hubs-federation-overview.md
+        - name: 事件複寫工作和應用程式
+          href: event-hubs-federation-replicator-functions.md
+        - name: 事件複寫工作模式
+          href: event-hubs-federation-patterns.md
+        - name: 設定複寫工作
+          href: event-hubs-federation-configuration.md
+        - name: 在事件中樞之間複寫事件
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy'
+        - name: 將事件傳送到 Azure 服務匯流排
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
+        - name: 從 Azure 服務匯流排取得事件
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
     - name: 異地災害復原
       items:
         - name: 異地災害復原和異地複寫

@@ -1,16 +1,16 @@
 ---
-title: 使用 .NET API 執行平行工作負載
+title: 教學課程 - 使用 .NET API 執行平行工作負載
 description: 教學課程 - 使用 Batch .NET 用戶端程式庫透過 Azure Batch 中的 ffmpeg 平行進行媒體檔案轉碼
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 396d0f6a2ef9a8c24fc92b641c889ef9e1a7df49
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578292"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106524"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教學課程：使用 .NET API 透過 Azure Batch 執行平行工作負載
 
@@ -332,6 +332,3 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 > [!div class="nextstepaction"]
 > [Batch C# 範例](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
-
-
-設定執行個體變數 LowPriorityNodeCount=0 和 DedicatedNodeCount=5 修正了此問題，並讓作業得以完成。

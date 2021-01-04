@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: d116e4775d39d3b78c1250714250d64318f9d457
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 3d4d671fed675de4cb2684d205f8e8b62d3b95cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95995126"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107901"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入門：使用應用程式的身分識別取得權杖，並從 Python 主控台應用程式呼叫 Microsoft Graph API
 
@@ -52,17 +52,17 @@ ms.locfileid: "95995126"
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 > 若要手動註冊您的應用程式，並將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
-> 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您的帳戶可讓您存取多個租用戶，請在右上角選取帳戶，然後將您的入口網站工作階段設定為想要的 Azure AD 租用戶。
-> 1. 瀏覽至 Microsoft 身分識別平台，以取得開發人員的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面。
-> 1. 選取 [新增註冊]。
-> 1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊。
-> 1. 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的應用程式名稱 (例如，`Daemon-console`)，然後選取 [註冊] 以建立應用程式。
-> 1. 註冊之後，請選取 [憑證和祕密] 功能表。
-> 1. 在 [用戶端密碼] 底下，選取 [+ 新增用戶端密碼]。 為其提供名稱，然後選取 [新增]。 將祕密複製到安全的位置。 程式碼會需要用到它。
-> 1. 現在，選取 [API 權限] 功能表，選取 [+ 新增權限] 按鈕，選取 [Microsoft Graph]。
+> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+> 1. 搜尋並選取 [Azure Active Directory]  。
+> 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+> 1. 輸入應用程式的 [名稱]，例如 `Daemon-console`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+> 1. 選取 [註冊]。
+> 1. 在 [管理]  下，選取 [憑證和密碼]  。
+> 1. 在 [用戶端密碼] 底下，選取 [新增用戶端密碼] 並輸入名稱，然後選取 [新增]。 將祕密值記錄在安全的位置，以便在稍後的步驟中使用。
+> 1. 在 [管理] 底下，選取 [API 權限] > [新增權限]。 選取 [Microsoft Graph]。
 > 1. 選取 [應用程式權限]。
-> 1. 在 [使用者] 節點底下，選取 [User.Read.All]，然後選取 [新增權限]
+> 1. 在 [使用者] 節點底下，選取 [User.Read.All]，然後選取 [新增權限]。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>下載並設定您的快速入門應用程式

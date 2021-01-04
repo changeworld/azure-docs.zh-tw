@@ -1,57 +1,83 @@
 ---
-title: 快速入門 - 檢視使用者擁有的 Azure 資源存取權 - Azure RBAC
-description: 在本快速入門中，您將了解如何使用 Azure 入口網站和 Azure 角色型存取控制 (Azure RBAC)，來檢視使用者或其他安全性主體所擁有的 Azure 資源存取權。
+title: 快速入門 - 檢查使用者的 Azure 資源存取權 - Azure RBAC
+description: 在本快速入門中，您將了解如何使用 Azure 入口網站和 Azure 角色型存取控制 (Azure RBAC)，來檢查本身或其他使用者所擁有的 Azure 資源存取權。
 services: role-based-access-control
-documentationCenter: ''
 author: rolyon
 manager: mtillman
-editor: ''
 ms.service: role-based-access-control
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 12/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 7cf4020ad38224b25ea8bb7dc7f0fdea7dd6f3b1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82734156"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033998"
 ---
-# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>快速入門：檢視使用者擁有的 Azure 資源存取權
+# <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>快速入門：檢查使用者的 Azure 資源存取權
 
-您可以使用 [Azure 角色型存取控制 (Azure RBAC)](overview.md) 中的 [存取控制 (IAM)]  刀鋒視窗，來檢視使用者或另一個安全性主體所擁有的 Azure 資源存取權。 不過，有時候您只是要快速檢視單一使用者或另一個安全性主體的存取權。 這麼做的最簡單方式是使用 Azure 入口網站中的 [檢查存取]  功能。
+有時候，您需要檢查使用者在一組 Azure 資源上的存取權為何。 您可以藉由列出其指派來檢查其存取權。 若要快速檢查單一使用者的存取權，請使用 **存取控制 (IAM)** 頁面上的 [檢查存取權] 功能。
 
-## <a name="view-role-assignments"></a>檢視角色指派
+## <a name="step-1-open-the-azure-resources"></a>步驟 1：開啟 Azure 資源
 
- 您用來檢視使用者存取權的方式，是列出其角色指派。 依照這些步驟來檢視訂用帳戶範圍內單一使用者、群組、服務主體或受控識別的角色指派。
+若要檢查使用者的存取權，必須先開啟要檢查其存取權的 Azure 資源。 Azure 資源會組織成層級，這些層級通常稱為「範圍」。 在 Azure 中，您可以在四個層級上指定範圍 (從寬到窄)：管理群組、訂用帳戶、資源群組或資源。
 
-1. 在 Azure 入口網站中，按一下 [所有服務]  ，然後按一下 [訂用帳戶]  。
+![Azure RBAC 的範圍層級](../../includes/role-based-access-control/media/scope-levels.png)
 
-1. 按一下您的訂用帳戶。
+請遵循下列步驟來開啟您想要檢查其存取權的一組 Azure 資源。
 
-1. 按一下 [存取控制 (IAM)]  。
+1. 開啟 [Azure 入口網站](https://portal.azure.com)。
 
-1. 按一下 [檢查存取權]  索引標籤。
+1. 開啟一組 Azure 資源，例如 **管理群組**、**訂用帳戶**、**資源群組** 或特定資源。
 
-    ![存取控制 - [檢查存取權] 索引標籤](./media/check-access/access-control-check-access.png)
+1. 按一下該範圍中的特定資源。
 
-1. 在 [尋找]  清單中，選取您要檢查其存取權的安全性主體類型。
+    以下顯示資源群組範例。
+
+    ![資源群組概觀](./media/check-access/rg-overview.png)
+
+## <a name="step-2-check-access-for-a-user"></a>步驟 2:檢查使用者存取權
+
+請遵循下列步驟，檢查單一使用者、群組、服務主體或受控識別在先前所選 Azure 資源上的存取權。
+
+1. 按一下 [存取控制 (IAM)]。
+
+    下面顯示某資源群組的 [存取控制 (IAM)] 頁面範例。
+
+    ![資源群組存取控制 - [檢查存取權] 索引標籤](./media/check-access/rg-access-control.png)
+
+1. 在 [檢查存取權] 索引標籤的 [尋找] 清單中，選取想要檢查其存取權的使用者、群組、服務主體或受控識別。
 
 1. 在搜尋方塊中，輸入字串以在目錄中搜尋顯示名稱、電子郵件地址或物件識別碼。
 
-    ![檢查存取權選取清單](./media/check-access/check-access-select.png)
+    ![檢查存取權選取清單](./media/shared/rg-check-access-select.png)
 
 1. 按一下安全性主體以開啟 [指派]  窗格。
 
-    ![[指派] 窗格](./media/check-access/check-access-assignments.png)
+    在此窗格中，您可以看到此範圍內或繼承至此範圍的所選安全性主體有何存取權。 子系範圍上的指派不會列出。 您會看到下列指派：
 
-    在此窗格上，您可以看到已指派所選安全性主體的角色與範圍。 若此範圍中有任何拒絕指派，或有任何拒絕指派繼承到此範圍，它們將會被列出。
+    - 使用 Azure RBAC 新增的角色指派。
+    - 使用 Azure 藍圖或 Azure 受控應用程式新增的否定性指派。
+    - 傳統部署的傳統服務管理員或共同管理員指派。 
+
+    ![使用者的角色和否定性指派窗格](./media/shared/rg-check-access-assignments-user.png)
+
+## <a name="step-3-check-your-access"></a>步驟 3：檢查您的存取權
+
+請遵循下列步驟來檢查您在先前所選 Azure 資源上的存取權。
+
+1. 按一下 [存取控制 (IAM)]。
+
+1. 在 [檢查存取權] 索引標籤上，按一下 [檢視我的存取權] 按鈕。
+
+    [指派] 窗格會隨即出現，並列出此範圍內和繼承至此範圍的存取權。 子系範圍上的指派不會列出。
+
+    ![角色和否定性指派窗格](./media/check-access/rg-check-access-assignments.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：使用 Azure 入口網站為使用者授與 Azure 資源的存取權](quickstart-assign-role-user-portal.md)
+> [使用 Azure 入口網站列出 Azure 角色指派](role-assignments-list-portal.md)

@@ -1,19 +1,19 @@
 ---
-title: 快速入門：Azure 佇列儲存體程式庫 v12 - JavaScript
-description: 了解如何使用 Azure 佇列 JavaScript v12 程式庫來建立佇列，並將訊息新增至該佇列。 接下來，您會了解如何讀取和刪除佇列中的訊息。 您也將了解如何刪除佇列。
+title: 快速入門：Azure 佇列儲存體用戶端程式庫 v12 - JavaScript
+description: 了解如何使用適用於 JavaScript 的 Azure 佇列儲存體用戶端程式庫 v12，建立佇列及在其中新增訊息。 接著了解如何讀取和刪除佇列中的訊息。 您也將了解如何刪除佇列。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/13/2019
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 5f50e42bc33adb8f40520f3f98bf1dcfba190a41
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 23c58526ba481a56b371bd077661d8d0bc7d45c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491905"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586528"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入門：適用於 JavaScript 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -33,7 +33,7 @@ ms.locfileid: "96491905"
 
 - [API 參考文件](/javascript/api/@azure/storage-queue/)
 - [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
-- [套件 (節點套件管理員)](https://www.npmjs.com/package/@azure/storage-queue)
+- [套件 (npm)](https://www.npmjs.com/package/@azure/storage-queue)
 - [範例](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>必要條件
@@ -48,7 +48,7 @@ ms.locfileid: "96491905"
 
 ### <a name="create-the-project"></a>建立專案
 
-建立名為 *queues-quickstart-v12* 的 Node.js 應用程式。
+建立名為 `queues-quickstart-v12` 的 Node.js 應用程式
 
 1. 在主控台視窗 (例如 cmd、PowerShell 或 Bash) 中，為專案建立一個新目錄。
 
@@ -56,13 +56,13 @@ ms.locfileid: "96491905"
     mkdir queues-quickstart-v12
     ```
 
-1. 切換至新建立的 *queues-quickstart-v12* 目錄。
+1. 切換至新建立的 `queues-quickstart-v12` 目錄。
 
     ```console
     cd queues-quickstart-v12
     ```
 
-1. 建立一個名為 *package.json* 的新文字檔。 此檔案會定義 Node.js 專案。 將此檔案儲存在 *queues-quickstart-v12* 目錄中。 以下是此檔案的內容：
+1. 建立一個名為 `package.json` 的新文字檔。 此檔案會定義 Node.js 專案。 將此檔案儲存在 `queues-quickstart-v12` 目錄中。 以下是檔案的內容：
 
     ```json
     {
@@ -87,13 +87,13 @@ ms.locfileid: "96491905"
 
 ### <a name="install-the-package"></a>安裝套件
 
-若您仍在 *queues-quickstart-v12* 目錄中，請使用 `npm install` 命令安裝適用於 JavaScript 套件的 Azure 佇列儲存體用戶端程式庫。
+若您仍在 `queues-quickstart-v12` 目錄中，請使用 `npm install` 命令安裝適用於 JavaScript 套件的 Azure 佇列儲存體用戶端程式庫。
 
 ```console
 npm install
 ```
 
- 此命令會讀取 *package.json* 檔案，並安裝適用於 JavaScript 套件的 Azure 佇列儲存體用戶端程式庫 v12，以及它所相依的所有程式庫。
+此命令會讀取 `package.json` 檔案，並安裝適用於 JavaScript 套件的 Azure 佇列儲存體用戶端程式庫 v12，以及其所相依的所有程式庫。
 
 ### <a name="set-up-the-app-framework"></a>設定應用程式架構
 
@@ -110,7 +110,7 @@ npm install
     const uuidv1 = require("uuid/v1");
 
     async function main() {
-        console.log("Azure Queue storage v12 - JavaScript quickstart sample");
+        console.log("Azure Queue Storage client library v12 - JavaScript quickstart sample");
         // Quick start code goes here
     }
 
@@ -118,7 +118,7 @@ npm install
 
     ```
 
-1. 將新檔案以 *queues-quickstart-v12.js* 儲存在 *queues-quickstart-v12* 目錄中。
+1. 將新檔案以 `queues-quickstart-v12.js` 儲存在 `queues-quickstart-v12` 目錄中。
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -136,9 +136,9 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 使用下列 JavaScript 類別與這些資源互動：
 
-- [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
-- [QueueClient](/javascript/api/@azure/storage-queue/queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
-- [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage)：`QueueMessage` 類別代表在佇列上呼叫 [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 時所傳回的個別物件。
+- [`QueueServiceClient`](/javascript/api/@azure/storage-queue/queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
+- [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
+- [`QueueMessage`](/javascript/api/@azure/storage-queue/queuemessage)：`QueueMessage` 類別代表在佇列上呼叫 [`ReceiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 時所傳回的個別物件。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -171,12 +171,12 @@ const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STR
 
 ### <a name="create-a-queue"></a>建立佇列
 
-決定新佇列的名稱。 下列程式碼會將 UUID 值附加到佇列名稱，以確保它是唯一的。
+決定新佇列的名稱。 下列程式碼會將 UUID 值附加到佇列名稱，以確保其是唯一的。
 
 > [!IMPORTANT]
-> 佇列名稱只能包含小寫字母、數字和連字號，且必須以字母或數字開頭。 每個連字號前後都必須緊接非連字號的字元。 名稱長度也必須為 3 到 63 個字元。 如需為佇列命名的詳細資訊，請參閱[為佇列和中繼資料命名](/rest/api/storageservices/naming-queues-and-metadata)。
+> 佇列名稱只能包含小寫字母、數字和連字號，且必須以字母或數字開頭。 每個連字號前後都必須緊接非連字號的字元。 名稱長度也必須為 3 到 63 個字元。 如需詳細資訊，請參閱[為佇列和中繼資料命名](/rest/api/storageservices/naming-queues-and-metadata)。
 
-建立 [QueueClient](/javascript/api/@azure/storage-queue/queueclient) 類別的執行個體。 然後，呼叫 [create](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) 方法，以在您的儲存體帳戶中建立佇列。
+建立 [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient) 類別的執行個體。 然後，呼叫 [`create`](/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) 方法，以在您的儲存體帳戶中建立佇列。
 
 將此程式碼加入到 `main` 函式的結尾處：
 
@@ -197,7 +197,7 @@ console.log("Queue created, requestId:", createQueueResponse.requestId);
 
 ### <a name="add-messages-to-a-queue"></a>將訊息新增至佇列
 
-下列程式碼片段會藉由呼叫 [sendMessage](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) 方法，將訊息新增至佇列。 其也會儲存第三次 `sendMessage` 呼叫所傳回的 [QueueMessage](/javascript/api/@azure/storage-queue/queuemessage)。 傳回的 `sendMessageResponse` 用來在稍後的程式中更新訊息內容。
+下列程式碼片段會藉由呼叫 [`sendMessage`](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) 方法，將訊息新增至佇列。 其也會儲存第三次 `sendMessage` 呼叫所傳回的 [`QueueMessage`](/javascript/api/@azure/storage-queue/queuemessage)。 傳回的 `sendMessageResponse` 用來在稍後的程式中更新訊息內容。
 
 將此程式碼加入到 `main` 函式的結尾處：
 
@@ -214,7 +214,7 @@ console.log("Messages added, requestId:", sendMessageResponse.requestId);
 
 ### <a name="peek-at-messages-in-a-queue"></a>窺視佇列中的訊息
 
-藉由呼叫 [peekMessages](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) 方法來窺視佇列中的訊息。 `peekMessages` 方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
+藉由呼叫 [`peekMessages`](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) 方法來窺視佇列中的訊息。 此方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
 
 將此程式碼加入到 `main` 函式的結尾處：
 
@@ -232,7 +232,7 @@ for (i = 0; i < peekedMessages.peekedMessageItems.length; i++) {
 
 ### <a name="update-a-message-in-a-queue"></a>更新佇列中的訊息
 
-藉由呼叫 [updateMessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) 方法來更新訊息的內容。 `updateMessage` 方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同新內容，傳入先前在程式碼中儲存的回應中的 `messageId`和 `popReceipt`。 `sendMessageResponse` 屬性會識別要更新的訊息。
+藉由呼叫 [`updateMessage`](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) 方法來更新訊息的內容。 此方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同新內容，傳入先前在程式碼中儲存的回應中的 `messageId`和 `popReceipt`。 `sendMessageResponse` 屬性會識別要更新的訊息。
 
 ```javascript
 console.log("\nUpdating the third message in the queue...");
@@ -249,7 +249,7 @@ console.log("Message updated, requestId:", updateMessageResponse.requestId);
 
 ### <a name="receive-messages-from-a-queue"></a>從佇列接收訊息
 
-藉由呼叫 [receiveMessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 方法來下載先前新增的訊息。 在 `numberOfMessages` 欄位中，傳入要針對此呼叫接收的訊息數目上限。
+藉由呼叫 [`receiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) 方法來下載先前新增的訊息。 在 `numberOfMessages` 欄位中，傳入要針對此呼叫接收的訊息數目上限。
 
 將此程式碼加入到 `main` 函式的結尾處：
 
@@ -266,7 +266,7 @@ console.log("Messages received, requestId:", receivedMessagesResponse.requestId)
 
 在接收和處理訊息後，從佇列中刪除訊息。 在此情況下，處理只會在主控台上顯示訊息。
 
-藉由呼叫 [deleteMessage](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) 方法來刪除訊息。 任何未明確刪除的訊息最後都會再次顯示在佇列中，以提供另一次進行處理的機會。
+藉由呼叫 [`deleteMessage`](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) 方法來刪除訊息。 任何未明確刪除的訊息最後都會再次顯示在佇列中，以提供另一次進行處理的機會。
 
 將此程式碼加入到 `main` 函式的結尾處：
 
@@ -289,7 +289,7 @@ for (i = 0; i < receivedMessagesResponse.receivedMessageItems.length; i++) {
 
 ### <a name="delete-a-queue"></a>刪除佇列
 
-下列程式碼會使用 [delete](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) 方法刪除佇列，以清除應用程式所建立的資源。
+下列程式碼會使用 [`delete`](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) 方法刪除佇列，以清除應用程式所建立的資源。
 
 將此程式碼新增到 `main` 函式的結尾並儲存檔案：
 
@@ -304,7 +304,7 @@ console.log("Queue deleted, requestId:", deleteQueueResponse.requestId);
 
 此應用程式會建立三則訊息，並將其新增至 Azure 佇列。 程式碼會列出佇列中的訊息，然後在最後刪除佇列之前，先擷取並刪除訊息。
 
-在主控台視窗中，瀏覽至包含 *queues-quickstart-v12.js* 檔案的目錄，然後執行下列 `node` 命令來執行應用程式。
+在主控台視窗中，瀏覽至包含 `queues-quickstart-v12.js` 檔案的目錄，然後執行下列 `node` 命令來執行應用程式。
 
 ```console
 node queues-quickstart-v12.js
@@ -313,7 +313,7 @@ node queues-quickstart-v12.js
 應用程式的輸出類似下列範例：
 
 ```output
-Azure Queue storage v12 - JavaScript quickstart sample
+Azure Queue Storage client library v12 - JavaScript quickstart sample
 
 Creating queue...
          quickstartc095d120-1d04-11ea-af30-090ee231305f
@@ -356,5 +356,5 @@ Done
 > [!div class="nextstepaction"]
 > [Azure for JavaScript 文件](/azure/developer/javascript/)
 
-- 若要深入了解，請參閱[適用於 JavaScript 的 Azure 儲存體佇列用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)。
-- 若要查看更多 Azure 佇列儲存體範例應用程式，請繼續 [Azure 佇列儲存體用戶端程式庫 v12 JavaScript 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)。
+- 若要深入了解，請參閱[適用於 JavaScript 的 Azure 佇列儲存體用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)。
+- 如需更多 Azure 佇列儲存體範例應用程式，請參閱[適用於 JavaScript 的 Azure 佇列儲存體用戶端程式庫 v12 - 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)。

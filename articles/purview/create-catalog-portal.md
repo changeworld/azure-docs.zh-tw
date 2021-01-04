@@ -1,18 +1,18 @@
 ---
 title: 快速入門：在 Azure 入口網站中建立 Azure Purview 帳戶 (預覽)
 description: 本快速入門說明如何建立 Azure Purview 帳戶，並設定權限以開始使用。
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602345"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400381"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure Purview 帳戶
 
@@ -30,6 +30,10 @@ ms.locfileid: "96602345"
 * 您的帳戶必須擁有在訂用帳戶中建立資源的權限
 
 * 如果您有封鎖所有應用程式建立 **儲存體帳戶** 和 **EventHub 命名空間** 的 **Azure 原則**，則需要使用標籤來建立原則例外狀況，您可在建立 Purview 帳戶的過程中輸入。 主要的原因是每個建立的 Purview 帳戶都必須建立受控資源群組；且此資源群組中必須擁有儲存體帳戶和 EventHub 命名空間。
+
+    > [!important]
+    > 如果您沒有 Azure 原則或現有的 Azure 原則不會封鎖 **儲存體帳戶** 和 **EventHub 命名空間** 的建立，則不需要遵循此步驟。
+
     1. 瀏覽至 Azure 入口網站並搜尋 **原則**
     1. 遵循[建立自訂原則定義](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition)或修改現有的原則，以新增兩個具有 `not` 運算子和 `resourceBypass` 標籤的例外狀況：
 
@@ -151,7 +155,7 @@ ms.locfileid: "96602345"
 
 1. 選取 [新增角色指派]。
 
-1. 針對 **Purview 資料保存者角色** 或 **範疇資料來源管理員角色** 中的角色類型，請依服務主體的用途而定 (如需詳細資訊，請參閱[目錄權限](catalog-permissions.md))。
+1. 針對 **Purview 資料保存者角色** 或 **Purview 資料來源管理員角色** 中的角色類型，請依服務主體的用途而定 (如需詳細資訊，請參閱[目錄權限](catalog-permissions.md)和[ Azure Active Directory 中的應用程式和服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals))。
 
 1. 保留 [存取權指派對象] 中的預設值 **使用者、群組或服務主體**。
 

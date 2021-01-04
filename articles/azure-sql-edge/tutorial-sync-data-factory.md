@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 672c9f0d5403ae27a26d58617dca44f0f1121411
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b83201ae864d1f1eb9124af5268360bb1748f6c8
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904171"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507603"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>教學課程：使用 Azure Data Factory 將 SQL Edge 中的資料同步至 Azure Blob 儲存體
 
@@ -59,8 +59,11 @@ ms.locfileid: "90904171"
     CREATE PROCEDURE usp_write_watermark @timestamp datetime, @TableName varchar(50)  
     AS  
     BEGIN
+    
     UPDATE [dbo].[watermarktable]
-    SET [WatermarkValue] = @timestamp WHERE [TableName] = @TableName
+    SET [WatermarkValue] = @timestamp
+    WHERE [TableName] = @TableName
+
     END
     Go
 ```
@@ -85,7 +88,7 @@ ms.locfileid: "90904171"
 
     ![新增舊浮水印查閱](media/tutorial-sync-data-factory/create-old-watermark-lookup.png)
 
-4. 切換至 [設定] 索引標籤，然後選取 [新增] 以新增**來源資料集**。 您現在將建立資料集來代表浮水印資料表中的資料。 此資料表包含先前複製作業中所使用的舊浮水印。
+4. 切換至 [設定] 索引標籤，然後選取 [新增] 以新增 **來源資料集**。 您現在將建立資料集來代表浮水印資料表中的資料。 此資料表包含先前複製作業中所使用的舊浮水印。
 
 5. 在 [新增資料集] 視窗中選取 [Azure SQL Server]，然後選取 [繼續]。  
 
@@ -97,7 +100,7 @@ ms.locfileid: "90904171"
 
     2. 在 [伺服器名稱] 底下，輸入您的 SQL Edge 伺服器詳細資料。
 
-    3. 從清單中選取您的**資料庫名稱**。
+    3. 從清單中選取您的 **資料庫名稱**。
 
     4. 輸入您的 [使用者名稱] 和 [密碼]。
 
@@ -177,7 +180,7 @@ ms.locfileid: "90904171"
 
 27. 移至 [SinkDataset] 的 [連線] 索引標籤，然後完成下列步驟：
 
-    1. 在 [檔案路徑] 底下，輸入 asdedatasync/incrementalcopy，其中 asdedatasync 是 Blob 容器名稱，*incrementalcopy* 是資料夾名稱。 建立容器 (若不存在)，或使用現有容器的名稱。 如果輸出資料夾 incrementalcopy 不存在，Azure Data Factory 將會自動建立。 您也可以對**檔案路徑**使用 [瀏覽] 按鈕來瀏覽至 blob 容器中的資料夾。
+    1. 在 [檔案路徑] 底下，輸入 asdedatasync/incrementalcopy，其中 asdedatasync 是 Blob 容器名稱，*incrementalcopy* 是資料夾名稱。 建立容器 (若不存在)，或使用現有容器的名稱。 如果輸出資料夾 incrementalcopy 不存在，Azure Data Factory 將會自動建立。 您也可以對 **檔案路徑** 使用 [瀏覽] 按鈕來瀏覽至 blob 容器中的資料夾。
 
     2. 為 [檔案路徑] 欄位的 [檔案] 部分選取 [新增動態內容 [Alt+P]]，然後在開啟的視窗中輸入 **@CONCAT('Incremental-', pipeline().RunId, '.txt')** 。 選取 [完成]。 運算式會以動態方式產生此檔案名稱。 每個管線執行都有唯一的識別碼。 複製活動會使用執行識別碼來產生檔案名稱。
 
@@ -187,7 +190,7 @@ ms.locfileid: "90904171"
 
 30. 選取管線設計工具中的 [預存程序活動]，並將其名稱變更為 **SPtoUpdateWatermarkActivity**。
 
-31. 切換至 [SQL 帳戶] 索引標籤，然後在 [已連結的服務] 底下選取 [*SQLDBEdgeLinkedService]。
+31. 切換至 [SQL 帳戶] 索引標籤，然後在 [已連結的服務] 下選取* [QLDBEdgeLinkedService]。
 
 32. 切換至 [預存程序] 索引標籤，然後完成下列步驟：
 

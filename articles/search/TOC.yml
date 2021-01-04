@@ -372,7 +372,7 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: 透過私人端點存取
               href: search-indexer-howto-access-private.md
-        - name: 身分識別型存取
+        - name: 文件層級安全性
           items:
             - name: 安全性篩選條件
               href: search-security-trimming-for-azure-search.md
@@ -550,6 +550,8 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: 開發人員課程 (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: 合作夥伴解決方案
+      href: resource-partners-knowledge-mining.md
     - name: 常見問題集
       href: search-faq-frequently-asked-questions.md
     - name: 定價

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c545fa7d58d925dfcb9fa98b301c3bb0a20833e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540399"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358566"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>教學課程：使用影片索引器與邏輯應用程式和 Power Automate
 
@@ -56,7 +56,7 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 > [!TIP]
 > 如果您先前已將 Azure 儲存體帳戶或影片索引子帳戶連線至邏輯應用程式，則您的連線詳細資料已儲存，因此會自動連線。 <br/>您可以按一下 Azure 儲存體 ([儲存體] 視窗) 或影片索引子 ([播放程式] 視窗) 動作底部的 [變更連線]，來編輯連線。
 
-一旦可以連線到您的 Azure 儲存體和影片索引器帳戶，請在 **Logic Apps 設計工具**中尋找並選擇「當新增或修改 Blob 時」觸發程序。
+一旦可以連線到您的 Azure 儲存體和影片索引器帳戶，請在 **Logic Apps 設計工具** 中尋找並選擇「當新增或修改 Blob 時」觸發程序。
 
 選取您將放置影片檔案的容器。 
 
@@ -136,3 +136,5 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 > [!div class="nextstepaction"]
 > [使用影片索引器 API](video-indexer-use-apis.md)
+
+如需其他資源，請參閱[影片索引器](https://docs.microsoft.com/connectors/videoindexer-v2/)上的這份文件。

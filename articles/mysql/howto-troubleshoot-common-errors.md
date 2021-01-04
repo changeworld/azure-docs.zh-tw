@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: f64d4d2b9acbe0e6585ca546c915b82d2d1dbbc4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737192"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510957"
 ---
 # <a name="common-errors"></a>常見錯誤
 
@@ -36,13 +36,13 @@ BEGIN
 END;
 ```
 
-**解決方法** ：若要解決此錯誤，請從入口網站的 [ [伺服器參數](howto-server-parameters.md)] 分頁中，將 llog_bin_trust_function_creators 設定為 1，執行 DDL 陳述式或匯入結構描述以建立所需的物件，並在建立之後將 log_bin_trust_function_creators 參數還原為先前的值。
+**解決方法**：若要解決此錯誤，請從入口網站的 [[伺服器參數](howto-server-parameters.md)] 分頁中，將 llog_bin_trust_function_creators 設定為 1，執行 DDL 陳述式或匯入結構描述以建立所需的物件，並在建立之後將 log_bin_trust_function_creators 參數還原為先前的值。
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>第 101 行上發生 ERROR 1227 (42000)：拒絕存取；您需要此作業的 (至少其中一個) SUPER 權限。 作業失敗，結束代碼為 1
 
 匯入傾印檔案或建立包含[定義者 (definer)](https://dev.mysql.com/doc/refman/5.7/en/create-procedure.html) 的程式時，可能會發生上述錯誤。 
 
-**解決方法** ：若要解決此錯誤，管理使用者可以藉由執行 GRANT 命令來對建立或執行程序授與權限，如下列範例所示：
+**解決方法**：若要解決此錯誤，管理使用者可以藉由執行 GRANT 命令來對建立或執行程序授與權限，如下列範例所示：
 
 ```sql
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
@@ -61,9 +61,40 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`AdminUserName`@`ServerName`*/ /*!50003
 DELIMITER ;
 ```
+#### <a name="error-1227-42000-at-line-295-access-denied-you-need-at-least-one-of-the-super-or-set_user_id-privileges-for-this-operation"></a>第 295 行上發生 ERROR 1227 (42000)：拒絕存取；您需要此作業的 (至少其中一個) SUPER 或 SET_USER_ID 權限
+
+在匯入傾印檔案或執行指令碼的過程中，使用 DEFINER 陳述式執行 CREATE VIEW 時，就可能會發生上述錯誤。 適用於 MySQL 的 Azure 資料庫不允許任何使用者具有 SUPER 權限或 SET_USER_ID 權限。 
+
+**解決方案**： 
+* 如果可能的話，請使用 definer 使用者來執行 CREATE VIEW。 很多使用不同 definer 的檢視很可能會有不同的權限，因此這可能不適合。  OR
+* 編輯傾印檔案或 CREATE VIEW 指令碼，並從傾印檔案中移除 DEFINER= 陳述式，或 
+* 編輯傾印檔案或 CREATE VIEW 指令碼，並將 definer 值取代為執行匯入或執行指令碼檔案且具有管理員權限的使用者。
+
+> [!Tip] 
+> 使用 sed 或 perl 修改傾印檔案或 SQL 指令碼，以取代 DEFINER= 陳述式
+
+## <a name="common-connection-errors-for-server-admin-login"></a>伺服器管理員登入的常見連線錯誤
+
+建立適用於 MySQL 的 Azure 資料庫伺服器時，使用者會在伺服器建立期間提供伺服器管理員登入。 伺服器管理員登入可讓您建立新的資料庫、加入新的使用者，以及授與權限。 如果刪除伺服器管理員登入、撤銷其權限或變更其密碼，則可能會在連線時在應用程式中看到連線錯誤。 以下是一些常見的錯誤
+
+#### <a name="error-1045-28000-access-denied-for-user-usernameip-address-using-password-yes"></a>錯誤 1045 (28000)：拒絕使用者 'username'@'IP 位址' 的存取 (使用密碼：是)
+
+如果是以下狀況，就會發生上述錯誤：
+
+* 使用者名稱不存在
+* 使用者的使用者名稱已刪除
+* 其密碼已變更或重設。
+
+**解決方案**： 
+* 確認 "username" 是否以有效的使用者身分存在於伺服器中，或是否不小心遭到刪除。 您可以藉由登入適用於 MySQL 的 Azure 資料庫使用者來執行下列查詢：
+  ```sql
+  select user from mysql.user;
+  ```
+* 如果無法登入 MySQL 來執行上述查詢，建議您 [使用 Azure 入口網站重設管理員密碼](howto-create-manage-server-portal.md)。 Azure 入口網站的重設密碼選項有助於重新建立使用者、重設密碼及還原系統管理員權限，您可以使用伺服器管理員登入並執行進一步的作業。
 
 ## <a name="next-steps"></a>後續步驟
-如果您找不到所要尋找的答案，請考慮下列事項：
+如果找不到所要尋找的答案，請考慮下列事項：
+
 - 將問題張貼到 [Microsoft 問與答頁面](/answers/topics/azure-database-mysql.html)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)。
 - 將電子郵件傳送給適用於 MySQL 的 Azure 資料庫小組 [@Ask 適用於 MySQL 的 Azure DB](mailto:AskAzureDBforMySQL@service.microsoft.com)。 此電子郵件地址不是技術支援的別名。
 - 連絡 Azure 支援，[請從 Azure 入口網站提出票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。 若要修正您的帳戶問題，請在 Azure 入口網站中提出[支援要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。

@@ -96,6 +96,22 @@
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: 效能最佳化
       href: service-bus-performance-improvements.md
+    - name: 同盟
+      items:
+        - name: 訊息複寫和跨區域同盟
+          href: service-bus-federation-overview.md
+        - name: 訊息複寫工作和應用程式
+          href: service-bus-federation-replicator-functions.md
+        - name: 訊息複寫工作模式
+          href: service-bus-federation-patterns.md
+        - name: 設定複寫工作
+          href: service-bus-federation-configuration.md
+        - name: 在服務匯流排實體之間複寫事件
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy'
+        - name: 將訊息複寫至事件中樞
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
+        - name: 從事件中樞取得訊息
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
     - name: 異地災害復原和異地複寫
       href: service-bus-geo-dr.md
     - name: 非同步傳訊模式與高可用性

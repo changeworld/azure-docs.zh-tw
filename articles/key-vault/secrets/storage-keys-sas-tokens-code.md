@@ -48,5 +48,5 @@ ms.locfileid: "94444923"
 
 ## <a name="next-steps"></a>後續步驟
 - 了解如何[使用 SAS 授與 Azure 儲存體資源的存取權](../../storage/common/storage-sas-overview.md)。
-- 瞭解如何[使用 Key Vault 和 Azure CLI 或 [Azure PowerShell](overview-storage-keys-powershell.md) 來管理儲存體帳戶金鑰](overview-storage-keys.md)。
+- 瞭解如何[使用 Key Vault 和 Azure CLI](overview-storage-keys.md) 或 [Azure PowerShell](overview-storage-keys-powershell.md) 來管理儲存體帳戶金鑰。
 - 請參閱[受控儲存體帳戶金鑰範例](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)

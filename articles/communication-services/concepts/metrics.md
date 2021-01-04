@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 25c7016f6639df46a9279ef9a9aab2736efd4f95
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888652"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97105998"
 ---
 # <a name="metrics-overview"></a>計量概觀
 
@@ -76,6 +76,17 @@ Azure 通訊服務中的聊天和簡訊服務會發出 API 要求的計量。 �
 
 
 :::image type="content" source="./media/sms-metric.png" alt-text="簡訊 API 要求計量。":::
+
+### <a name="authentication-api-requests"></a>驗證 API 要求
+
+下列作業適用於驗證 API 要求計量：
+
+| 作業/路由    | 說明                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| CreateIdentity       | 建立代表單一使用者的身分識別。 |
+| DeleteIdentity       | 刪除身分識別。 |
+| CreateToken          | 建立存取權杖。 |
+| RevokeToken          | 撤銷在指定時間之前為身分識別建立的所有存取權杖。 |
 
 ## <a name="next-steps"></a>後續步驟
 

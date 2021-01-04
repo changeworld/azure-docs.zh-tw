@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 52b5bd0650b3a069adc3ef7f101c48a4674deaab
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931039"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107102"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>教學課程：將範本函式新增至 ARM 範本
 
@@ -33,11 +33,11 @@ ms.locfileid: "96931039"
 
 ## <a name="use-function"></a>使用函式
 
-如果您已完成本系列中的上一個教學課程，則您已經使用了函式。 當您新增 `"[parameters('storageName')]"` 時，使用了 [parameters](template-functions-deployment.md#parameters) 函式。 方括弧表示括弧內的語法是[範本運算式](template-expressions.md)。 Resource Manager 會解析語法，而不是將它視為常值。
+如果您已完成本系列中的上一個教學課程，則您已經使用了函式。 當您新增 `"[parameters('storageName')]"`"[parameters('storageName')]"，使用了[參數](template-functions-deployment.md#parameters)函式。 方括弧表示括弧內的語法是[範本運算式](template-expressions.md)。 Resource Manager 會解析語法，而不是將它視為常值。
 
 函式可藉由在部署期間以動態方式取得值，來為範本增加彈性。 在此教學課程中，您會使用函式來取得要用於部署之資源群組的位置。
 
-下列範例會反白顯示對新增名為 **location** 的參數所做的變更。  參數預設值會呼叫 [resourceGroup](template-functions-resource.md#resourcegroup) 函式。 此函式會傳回物件，其中包含用於部署之資源群組的相關資訊。 物件上的其中一個屬性是 location 屬性。 當您使用預設值時，儲存體帳戶位置會與資源群組的位置相同。 資源群組內的資源不需共用相同的位置。 您也可以視需要提供不同的位置。
+下列範例會反白顯示對新增名為 `location` 的參數所做的變更。 參數預設值會呼叫 [resourceGroup](template-functions-resource.md#resourcegroup) 函式。 此函式會傳回物件，其中包含用於部署之資源群組的相關資訊。 物件上的其中一個屬性是 location 屬性。 當您使用預設值時，儲存體帳戶位置會與資源群組的位置相同。 資源群組內的資源不需共用相同的位置。 您也可以視需要提供不同的位置。
 
 複製整個檔案，並以其內容取代您的範本。
 
@@ -47,7 +47,7 @@ ms.locfileid: "96931039"
 
 在先前的教學課程中，您已在美國東部建立儲存體帳戶，但您的資源群組是在美國中部建立的。 在此教學課程中，您的儲存體帳戶會建立於與資源群組相同的區域中。 使用 location 的預設值，如此就不需提供該參數值。 您必須為儲存體帳戶提供新名稱，因為您是在不同的位置建立儲存體帳戶。 例如，使用 **store2** 作為前置詞，而不是 **store1**。
 
-如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如 [第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 `templateFile` 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -74,7 +74,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失敗，請使用 **verbose** 參數來取得所建立資源的相關資訊。 使用 **debug** 參數來取得更多資訊以進行偵錯。
+> 如果部署失敗，請使用 `verbose` 參數來取得所建立資源的相關資訊。 使用 `debug` 參數來取得更多資訊以進行偵錯。
 
 ## <a name="verify-deployment"></a>驗證部署
 

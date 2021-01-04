@@ -3,16 +3,18 @@ title: HTTP 擴充通訊協定 - Azure
 description: 在本文中，您將了解如何使用 HTTP 擴充通訊協定在即時影片分析模組與 AI 或 CV 模組之間傳送訊息。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f1e1fb0e8fe63b3a83c59a4ec48abdac7f22096a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 52c98231780a2776f4ff67992f29b247eccb8bc2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016649"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399140"
 ---
 # <a name="http-extension-protocol"></a>HTTP 擴充通訊協定
 
-在本文中，您將了解如何使用 HTTP 擴充通訊協定在即時影片分析模組與 AI 或 CV 模組之間傳送訊息。
+IoT Edge 上的即時影片分析可讓您透過 [圖表擴充節點](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update) 來擴充媒體圖表處理功能。 如果使用 HTTP 擴充處理器作為擴充節點，則即時影片分析模組與 AI 或 CV 模組之間的通訊會透過 HTTP
+
+在本文中，您將了解如何使用 HTTP 擴充通訊協定在即時影片分析模組與 AI 或 CV 模組之間傳送訊息。 
 
 HTTP 合約定義於下列兩個元件之間：
 
@@ -85,19 +87,16 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 }
 ```
 
-強烈建議您在下列定義的預建結構描述之後，使用有效的 JSON 文件來傳回回應。 這可讓您更確定新增至即時影片分析模組的其他元件及未來功能具有互通性。
+強烈建議根據[推斷中繼資料結構描述物件模型](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)定義的預先建立結構描述，以有效的 JSON 文件傳回回應。 這可讓您更確定新增至即時影片分析模組的其他元件及未來功能具有互通性。
 
 如果您模組傳回內容類型不是 "application/json" 的回應，即時影片分析會將訊息編碼為 base 64 內容，並將其序列化為不透明的 JSON 承載。
 
-如果您的模組傳回內容類型為 "application/json" 的回應，但 JSON 結構描述並未遵循下面所述的推斷中繼資料結構描述，則訊息承載會透過管線轉送，但這會降低互通性。
+如果您的模組傳回內容類型為 "application/json" 的回應，但 JSON 結構描述並未遵循下面所述的推斷中繼資料結構描述，則訊息承載會透過管線轉送，但這會降低互通性。 如需有關推斷中繼資料結構描述的詳細資訊和最新資訊，請參閱[這裡](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)。
 
 > [!NOTE]
 > 如果您的模組不會產生任何結果，則應該傳回 HTTP 204 狀態碼 (沒有內容) 與空白的回應主體。 即時影片分析將了解這是空白結果，而不會在整個管線中轉送事件。
 
-## <a name="data-contracts---class-hierarchy"></a>資料合約 - 類別階層
-
-![類別階層](./media/http-extension-protocol/class-hierarchy.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-[gRPC 資料合約](./grpc-extension-protocol.md)
+[gRPC 擴充通訊協定](./grpc-extension-protocol.md)

@@ -2,13 +2,13 @@
 title: 將混合式機器與已啟用 Azure Arc 的伺服器連線
 description: 了解如何使用已啟用 Azure Arc 的伺服器連線和註冊您的混合式機器。
 ms.topic: quickstart
-ms.date: 11/12/2020
-ms.openlocfilehash: 3779d95ac138e83b1d953f744e07ae553890a5d7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/15/2020
+ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576748"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516790"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>快速入門：將混合式機器與已啟用 Azure Arc 的伺服器連線
 
@@ -29,6 +29,9 @@ ms.locfileid: "94576748"
     * 如果電腦透過防火牆或 Proxy 伺服器連線到網際網路進行通訊，請確定[列出的 URL](../agent-overview.md#networking-configuration) 不會遭到封鎖。
 
     * 已啟用 Azure Arc 的伺服器僅支援[這裡](../overview.md#supported-regions)所指定的區域。
+
+> [!WARNING]
+> Linux 主機名稱或 Windows 電腦名稱不能在名稱中使用其中一個保留字或商標，否則嘗試向 Azure 註冊連線的機器將會失敗。 如需保留字的清單，請參閱[解決保留資源名稱的錯誤](../../../azure-resource-manager/templates/error-reserved-resource-name.md)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 

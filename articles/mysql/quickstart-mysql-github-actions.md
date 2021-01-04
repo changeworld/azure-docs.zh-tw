@@ -7,16 +7,19 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 57e740e6c47d9518c12a49473e103d0abe772618
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337008"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357564"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>快速入門：使用 GitHub Actions 連線到 Azure MySQL
 
-藉由使用工作流程將資料庫更新部署至[適用於 MySQL 的 Azure 資料庫](https://azure.microsoft.com/services/mysql/)，來開始使用 [GitHub Actions](https://docs.github.com/en/actions)。 
+**適用於**：:::image type="icon" source="./media/applies-to/yes.png" border="false":::適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器 :::image type="icon" source="./media/applies-to/yes.png" border="false":::適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器
+
+藉由使用工作流程將資料庫更新部署至[適用於 MySQL 的 Azure 資料庫](https://azure.microsoft.com/services/mysql/)，來開始使用 [GitHub Actions](https://docs.github.com/en/actions)。
+
 
 ## <a name="prerequisites"></a>先決條件
 
@@ -67,6 +70,11 @@ GitHub Actions 工作流程是由您存放庫內 `/.github/workflows/` 路徑中
 ## <a name="copy-the-mysql-connection-string"></a>複製 MySQL 連接字串 
 
 在 Azure 入口網站中，移至適用於 MySQL 的 Azure 資料庫伺服器，然後開啟 [設定] > [連接字串]。 複製 **ADO.NET** 連接字串。 取代 `your_database` 和 `your_password` 的預留位置值。 連接字串看起來會像這樣。 
+
+> [!IMPORTANT]
+> - 若為單一伺服器，請使用 **Uid=adminusername@servername** 。 請注意， **@servername** 是必要項目。
+> - 若為彈性伺服器，請使用 **Uid= adminusername**，不包含 @servername。 請注意，MySQL 彈性伺服器目前為預覽狀態。 
+
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: d5e191107366c6932d3ba66234776ffaaf6cf98c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 237ed71f058ae099f19924481eb4dbeb2e2aba05
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180569"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589418"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Amazon Web Services (AWS) 整合
 
@@ -25,8 +25,6 @@ ms.locfileid: "96180569"
 * 在 Azure AD 中控制可存取 Amazon Web Services (AWS) 的人員。
 * 讓使用者使用其 Azure AD 帳戶自動登入 Amazon Web Services (AWS)。
 * 在 Azure 入口網站集中管理您的帳戶。
-
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
 > [!Note]
 > Azure AD 不支援整合單一登入與 AWS SSO，這是與 AWS 不同的產品。 雖然 AWS 在[這裡](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html)有其論述，但 Azure AD 建議客戶改為使用 AWS IAM 整合，以便您可利用個別帳戶的條件式存取原則達成更理想的安全性控制，並更有效地控管這些應用程式。
@@ -72,7 +70,7 @@ ms.locfileid: "96180569"
 
 若要設定 Amazon Web Services (AWS) 與 Azure AD 整合，您需要從資源庫將 Amazon Web Services (AWS) 新增到受控 SaaS App 清單。
 
-1. 使用公司帳戶、學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 使用公司帳戶、學校帳戶或個人 Microsoft 帳戶登入 Azure 入口網站。
 1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]。
 1. 在 Azure Active Directory 概觀功能表中，選擇 [企業應用程式] > [所有應用程式]。
 1. 選取 [新增應用程式] 以新增應用程式。
@@ -83,7 +81,7 @@ ms.locfileid: "96180569"
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Amazon Web Services (AWS) 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Amazon Web Services (AWS) 中相關使用者之間的連結關聯性。
 
-若要使用 Amazon Web Services (AWS) 來設定並測試 Azure AD SSO，請完成下列建置組塊：
+若要設定和測試與 Amazon Web Services (AWS) 搭配運作的 Azure AD SSO，請執行下列步驟：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
     1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 B.Simon 測試 Azure AD 單一登入。
@@ -97,7 +95,7 @@ ms.locfileid: "96180569"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Amazon Web Services (AWS)] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
+1. 在 Azure 入口網站的 **Amazon Web Services (AWS)** 應用程式整合頁面上，尋找 **管理** 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
@@ -118,8 +116,11 @@ ms.locfileid: "96180569"
     | 名稱  | 來源屬性  | 命名空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
-    | 角色            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
-    | SessionDuration             | 「提供 900 秒 (15 分鐘) 到 43200 秒 (12 小時) 之間的值」 |  `https://aws.amazon.com/SAML/Attributes` |
+    | 角色 | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
+    | SessionDuration | 「提供 900 秒 (15 分鐘) 到 43200 秒 (12 小時) 之間的值」 |  `https://aws.amazon.com/SAML/Attributes` |
+
+    > [!NOTE]
+    > AWS 需要將使用者的角色指派給應用程式。 請在 Azure AD 中設定這些角色，以便為使用者指派適當的角色。 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)
 
 1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] (步驟 3) 對話方塊中，選取 [新增憑證]。
 
@@ -148,25 +149,18 @@ ms.locfileid: "96180569"
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下 [建立]。
+   1. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Amazon Web Services (AWS) 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]。
-1. 在 Azure Active Directory 概觀功能表中，選擇 [企業應用程式] > [所有應用程式]。
-1. 在應用程式清單中，選取 [Amazon Web Services (AWS)]。
+1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 在應用程式清單中，選取 [Amazon Web Services (AWS)] 。
 1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
-
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
-
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
-
-    ![[新增使用者] 連結](common/add-assign-user.png)
-
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-amazon-web-services-aws-sso"></a>設定 Amazon Web Services (AWS) SSO

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: af8d75120950e43a28e5ce5449928a55ca4ed943
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f4a0e40e342eecbd55cf8397a487e6adf1d22a2d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456597"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359688"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>教學課程：整合 Bynder 與 Azure Active Directory
 
@@ -26,9 +26,7 @@ ms.locfileid: "92456597"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Bynder。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -46,32 +44,32 @@ ms.locfileid: "92456597"
 
 若要設定將 Bynder 整合到 Azure AD 中，您需要從資源庫將 Bynder 新增到受控 SaaS 應用程式清單中。
 
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 Azure 入口網站。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Bynder** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Bynder**。
 1. 從結果面板選取 [Bynder]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Bynder 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Bynder 中相關使用者之間的連結關聯性。
 
 若要設定及測試與 Bynder 搭配運作的 Azure AD SSO，請完成下列建置組塊：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
+   1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
+   1. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
 2. **[設定 Bynder SSO](#configure-bynder-sso)** - 在應用程式端設定單一登入設定。
-3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
-4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
-5. **[建立 Bynder 測試使用者](#create-bynder-test-user)** - 在 Bynder 中建立 Britta Simon 的對應項目，且該項目必須與 Azure AD 中代表使用者的項目連結。
-6. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
+   1. **[建立 Bynder 測試使用者](#create-bynder-test-user)** - 在 Bynder 中建立 Britta Simon 的對應項目，且該項目必須與 Azure AD 中代表使用者的項目連結。
+1. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Bynder]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
+1. 在 Azure 入口網站的 **Bynder** 應用程式整合頁面上，尋找 **管理** 區段並選取 [單一登入]。
 1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
@@ -102,22 +100,6 @@ ms.locfileid: "92456597"
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Bynder 用戶端支援小組](https://www.bynder.com/en/support/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-1. Bynder 應用程式需要特定格式的 SAML 判斷提示。 設定此應用程式的下列宣告。 您可以在應用程式整合頁面的 [使用者屬性]  區段中，管理這些屬性的值。 在 [以 SAML 設定單一登入]  頁面上，按一下 [編輯]  按鈕以開啟 [使用者屬性]  對話方塊。
-
-    ![顯示使用者屬性和宣告的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
-
-1. 在 [使用者屬性]  對話方塊的 [使用者宣告]  區段中，使用 [編輯]  圖示來編輯宣告或使用 [新增宣告]  來新增宣告，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
-
-    1. 按一下 [宣告中傳回的群組]  旁的 **筆** 。
-
-    1. 選取選項按鈕清單中的 [安全性群組]  。
-
-    1. 選取 [群組識別碼]  的 [來源屬性]  。
-
-    1. 按一下 [檔案]  。
-
-        ![顯示 [群組宣告] 區段的螢幕擷取畫面，其中已選取安全性群組和群組識別碼。](./media/bynder-tutorial/config08.png)
-
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
@@ -125,10 +107,6 @@ ms.locfileid: "92456597"
 1. 在 [設定 Bynder]  區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
-
-### <a name="configure-bynder-sso"></a>設定 Bynder SSO
-
-若要在 **Bynder** 端設定單一登入，您必須將從 Azure 入口網站下載的 [中繼資料 XML]  和所複製的適當 URL 傳送給 [Bynder 支援小組](https://www.bynder.com/en/support/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -149,16 +127,15 @@ ms.locfileid: "92456597"
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [Bynder]  。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
-
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
-
-    ![[新增使用者] 連結](common/add-assign-user.png)
-
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+
+## <a name="configure-bynder-sso"></a>設定 Bynder SSO
+
+若要在 **Bynder** 端設定單一登入，您必須將從 Azure 入口網站下載的 [中繼資料 XML]  和所複製的適當 URL 傳送給 [Bynder 支援小組](https://www.bynder.com/en/support/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+
 
 ### <a name="create-bynder-test-user"></a>建立 Bynder 測試使用者
 
@@ -169,14 +146,21 @@ ms.locfileid: "92456597"
 
 ### <a name="test-sso"></a>測試 SSO
 
-在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
 
-當您在存取面板中按一下 [Bynder] 圖格時，應該會自動登入您已設定 SSO 的 Bynder。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
+#### <a name="sp-initiated"></a>SP 起始：
 
-## <a name="additional-resources"></a>其他資源
+* 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向至您可以在其中起始登入流程的 Bynder 登入 URL。  
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
+* 直接移至 Bynder 登入 URL，然後從該處起始登入流程。
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP 起始：
 
-- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
+* 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入已設定 SSO 的 Bynder 
+
+您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [Bynder] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Bynder。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+
+
+## <a name="next-steps"></a>後續步驟
+
+設定 Bynder 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: cd7d4d3653dc775a949da229e4005d297f7810aa
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 2eff30333362d461f196972fbaedbeac8f2ae7c9
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96126074"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033824"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -27,7 +27,7 @@ ms.locfileid: "96126074"
 
 `main` 函式：
 
-* 使用 DPS 來佈建裝置。 佈建資訊包括模型識別碼。
+* 使用 DPS 來佈建裝置。 佈建資訊包括模型識別碼。 IoT Central 會使用型號識別碼來識別或產生此裝置的裝置範本。 若要深入了解，請參閱[將裝置與裝置範本相關聯](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)。
 * 建立 `Device_client` 物件，並在開啟連線之前設定 `dtmi:com:example:Thermostat;1` 模型識別碼。
 * 將 `maxTempSinceLastReboot` 屬性傳送至 IoT Central。
 * 建立 `getMaxMinReport` 命令的接聽程式。
@@ -113,7 +113,7 @@ async def main():
     # ...
 ```
 
-`provision_device` 函式會使用 DPS 來佈建裝置，並向 IoT Central 註冊。 此函式會在佈建承載中包含裝置型號識別碼：
+`provision_device` 函式會使用 DPS 來佈建裝置，並向 IoT Central 註冊。 函式包含裝置型號識別碼，IoT Central 會用來[將裝置與佈建承載的裝置範本產生關聯](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)：
 
 ```python
 async def provision_device(provisioning_host, id_scope, registration_id, symmetric_key, model_id):

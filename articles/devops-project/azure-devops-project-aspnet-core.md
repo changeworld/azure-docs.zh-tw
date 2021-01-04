@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 99be6dc42a9b644166054d61e88a1e0ac329d2ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854718"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589152"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用於 .NET 的 CI/CD 管線
 
@@ -50,13 +50,13 @@ DevOps 入門版會在 Azure DevOps 中建立 CI/CD 管線。 您可以建立新
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>設定 Azure DevOps 與 Azure 訂用帳戶 
 
-1. 輸入**專案名稱**。
+1. 輸入 **專案名稱**。
 
-2. 免費建立新的 **Azure DevOps 組織**或從下拉式清單中選擇現有組織。
+2. 免費建立新的 **Azure DevOps 組織** 或從下拉式清單中選擇現有組織。
 
-3. 選取 **Azure 訂用帳戶**，輸入 **Web 應用程式**名稱或採用預設值，然後選取 [完成]  。 在幾分鐘後，Azure 入口網站中便會顯示 DevOps 入門版部署概觀。 
+3. 選取 **Azure 訂用帳戶**，輸入 **Web 應用程式** 名稱或採用預設值，然後選取 [完成]  。 在幾分鐘後，Azure 入口網站中便會顯示 DevOps 入門版部署概觀。 
 
-4. 選取 [移至資源] 以檢視 DevOps 入門版儀表板。 在右上角將 [專案]  釘選至儀表板以供快速存取。 範例應用程式已在 **Azure DevOps 組織**的存放庫中進行設定。 組建會執行，且您的應用程式會部署至 Azure。
+4. 選取 [移至資源] 以檢視 DevOps 入門版儀表板。 在右上角將 [專案]  釘選至儀表板以供快速存取。 範例應用程式已在 **Azure DevOps 組織** 的存放庫中進行設定。 組建會執行，且您的應用程式會部署至 Azure。
 
 5. 儀表板可顯示您的程式碼存放庫、您的 CI/CD 管線，和您在 Azure 中的應用程式。 從右側 Azure 資源下方選取 [瀏覽]  以檢視執行中應用程式。
 
@@ -66,13 +66,13 @@ DevOps 入門版會在 Azure DevOps 中建立 CI/CD 管線。 您可以建立新
 
 DevOps 入門版會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業：
 
-1. 在 DevOps Starter 儀表板的左側，選取您**主要**分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
+1. 在 DevOps Starter 儀表板的左側，選取您 **主** 分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
 
-2. 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可**主要**分支的程式碼變更。 您也可以從存放庫頁面的右上方選取 [複製]  ，以複製最愛 IDE 中的 Git 存放庫。 
+2. 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可 **主** 分支的程式碼變更。 您也可以從存放庫頁面的右上方選取 [複製]  ，以複製最愛 IDE 中的 Git 存放庫。 
 
 3. 在左側瀏覽應用程式檔案結構至 **Application/aspnet-core-dotnet-core/Pages/Index.cshtml**。
 
-4. 選取 [編輯]  ，並進行 h2 標題的變更。 例如，鍵入**立即開始使用 Azure DevOps Starter** 或進行其他變更。
+4. 選取 [編輯]  ，並進行 h2 標題的變更。 例如，鍵入 **立即開始使用 Azure DevOps Starter** 或進行其他變更。
 
       ![程式碼編輯](_img/azure-devops-project-aspnet-core/codechange.png)
 

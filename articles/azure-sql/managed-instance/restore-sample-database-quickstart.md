@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790741"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928795"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>快速入門：使用 SSMS 將資料庫還原至 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,6 +51,9 @@ ms.locfileid: "92790741"
 1. 開啟 SSMS 並連線到您的受控執行個體。
 2. 在 [物件總管] 中，以滑鼠右鍵按一下您的受控執行個體，並選取 [新增查詢] 以開啟新的查詢視窗。
 3. 執行下列 SQL 指令碼，其會使用預先設定的儲存體帳戶和 SAS 金鑰，在您的受控執行個體中[建立認證](/sql/t-sql/statements/create-credential-transact-sql)。
+ 
+   > [!IMPORTANT]
+   > `CREDENTIAL` 必須符合容器路徑、以 `https` 開頭，而且不能在結尾包含正斜線。 `IDENTITY` 必須是 `SHARED ACCESS SIGNATURE`。 `SECRET` 必須是共用存取簽章權杖，而且最前面不能包含 `?`。
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f0e69e3f62d3b9e4debb5761d877dcdfdd246f60
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 077500e0188d1cc20864d436a2e2fd711b180702
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886017"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560231"
 ---
 # <a name="chat-concepts"></a>聊天概念
 
@@ -46,8 +46,9 @@ ms.locfileid: "94886017"
 
 通訊服務聊天會共用使用者及系統產生的訊息，這稱為 **對話活動**。 當聊天對話更新時，就會產生對話活動。 當您在聊天對話上呼叫 `List Messages` 或 `Get Messages` 時，結果會包含使用者產生的文字訊息及系統訊息 (依時間順序排列)。 這可協助您識別何時新增或移除成員，或何時更新了聊天對話主題。 支援的訊息類型為：  
 
- - `Text`:使用者在聊天對話中撰寫及傳送的實際訊息。 
- - `ThreadActivity/AddMember`:指出已將一個或多個成員新增至聊天對話的系統訊息。 例如：
+ - `Text`：使用者在聊天對話中撰寫及傳送的純文字訊息。 
+ - `RichText/HTML`：格式化的文字訊息。 請注意，通訊服務使用者目前無法傳送 RichText 訊息。 在 Teams 互通性案例中，Teams 使用者傳送至通訊服務使用者的訊息可支援此訊息類型。
+ - `ThreadActivity/AddMember`：指出已將一個或多個成員新增至聊天對話的系統訊息。 例如：
 
 ```xml
 
@@ -92,6 +93,30 @@ ms.locfileid: "94886017"
 
 ```
 
+- `ThreadActivity/MemberJoined`：當來賓使用者加入 Teams 會議交談時產生的系統訊息。 通訊服務使用者可以以來賓身分加入 Teams 會議交談。 例如：  
+```xml
+{ 
+  "id": "1606351443605", 
+  "type": "ThreadActivity/MemberJoined", 
+  "version": "1606347753409", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606351443080,\"initiator\":\"8:orgid:8a53fd2b5ef150bau8442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665d83-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": " 19:meeting_curGQFTQ8tifs3EK9aTusiszGpkZULzNTTy2dbfI4dCJEaik@thread.v2", 
+  "createdOn": "2020-11-29T00:44:03.6950000Z" 
+} 
+```
+- `ThreadActivity/MemberLeft`：來賓使用者離開會議交談時所產生的系統訊息。 通訊服務使用者可以以來賓身分加入 Teams 會議交談。 例如： 
+```xml
+{ 
+  "id": "1606347703429", 
+  "type": "ThreadActivity/MemberLeft", 
+  "version": "1606340753429", 
+  "priority": "normal", 
+  "content": "{\"eventtime\":1606340755385,\"initiator\":\"8:orgid:8a53fd2b5u8150ba81442ad732a6ac6b_0e8deebe7527544aa2e7bdf3ce1b8733\",\"members\":[{\"id\":\"8:acs:9b665753-8164-4923-ad5d-5e983b07d2d7_00000006-7ef9-3bbe-b274-5a3a0d0002b1\",\"friendlyname\":\"\"}]}", 
+  "senderId": "19:meeting_9u7hBcYiADudn41Djm0n9DTVyAHuMZuh7p0bDsx1rLVGpnMk@thread.v2", 
+  "createdOn": "2020-11-29T23:42:33.4290000Z" 
+} 
+```
 - `ThreadActivity/TopicUpdate`:指出主題已更新的系統訊息。 例如：
 
 ```xml

@@ -3,12 +3,12 @@ title: 登入 Azure Notebooks 預覽
 description: 快速登入 Azure Notebooks 預覽並設定使用者識別碼，如此可讓您存取己儲存的專案並與他人共用 Notebook。
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 168da5d4d36cd4cfadb4ef120ddfabbd261cafaf
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830412"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109448"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>快速入門：登入 Azure Notebooks 預覽並設定使用者識別碼
 
@@ -59,4 +59,4 @@ ms.locfileid: "85830412"
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [快速入門：建立及共用 Notebook](quickstart-create-share-jupyter-notebook.md)
+> [快速入門：匯出 Jupyter Notebook 專案](quickstart-export-jupyter-notebook-project.md)

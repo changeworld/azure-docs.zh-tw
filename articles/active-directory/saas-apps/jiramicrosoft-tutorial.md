@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2d4c8675d8f03d19a63b7564b05e2de1a809e763
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 621bbac6bc9ff3cb147110942060c8268fd86989
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459470"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511173"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 JIRA SAML SSO by Microsoft 整合
 
@@ -37,7 +37,7 @@ ms.locfileid: "92459470"
 若要設定 Azure AD 與 JIRA SAML SSO by Microsoft 整合，您需要下列項目：
 
 - Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
-- 應該在 Windows 64 位元版本上安裝及設定 JIRA Core 和 JIRA Software 6.4 到 8.11.0 或 JIRA Service Desk 3.0 到 4.11.1
+- 應該在 Windows 64 位元版本上安裝及設定 JIRA Core 和 JIRA Software 6.4 到 8.14.0 或 JIRA Service Desk 3.0 到 4.11.1
 - JIRA 伺服器已啟用 HTTPS
 - 請注意下一節提及支援的 JIRA 外掛程式版本。
 - JIRA 伺服器可從網際網路連上，特別是連線至 Azure AD 登入頁面來進行驗證，且應該能夠接收來自 Azure AD 的權杖
@@ -58,7 +58,7 @@ ms.locfileid: "92459470"
 
 ## <a name="supported-versions-of-jira"></a>支援的 JIRA 版本
 
-* JIRA 核心和軟體：6.4 到 8.11.0 版本
+* JIRA 核心和軟體：6.4 到 8.14.0
 * JIRA Service Desk 3.0.0 到 4.11.1
 * JIRA 也支援 5.2。 如需詳細資訊，請按一下[適用於 JIRA 5.2 的 Microsoft Azure Active Directory 單一登入](jira52microsoft-tutorial.md)
 
@@ -100,7 +100,7 @@ ms.locfileid: "92459470"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [JIRA SAML SSO by Microsoft]  應用程式整合分頁上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -173,7 +173,7 @@ ms.locfileid: "92459470"
 
     ![此螢幕擷取畫面顯示編輯器中已加入新行的 server.xml 檔案。](./media/jiramicrosoft-tutorial/reverseproxy1.png)
 
-    b. 根據 Proxy/負載平衡器，變更 **系統設定** 中的 **基底 URL** 。
+    b. 根據 Proxy/負載平衡器，變更 **系統設定** 中的 **基底 URL**。
 
     ![此螢幕擷取畫面顯示您可以用來變更基底 URL 的系統管理設定。](./media/jiramicrosoft-tutorial/reverseproxy2.png)
 
@@ -232,7 +232,7 @@ ms.locfileid: "92459470"
 
     ![顯示已從 [設定] 功能表選取 [使用者管理] 的螢幕擷取畫面。](./media/jiramicrosoft-tutorial/user1.png)
 
-3. 系統會將您重新導向至 [系統管理員存取] 頁面，以輸入 **密碼** ，然後按一下 [確認]  按鈕。
+3. 系統會將您重新導向至 [系統管理員存取] 頁面，以輸入 **密碼**，然後按一下 [確認]  按鈕。
 
     ![此螢幕擷取畫面顯示您在其中輸入認證的 [系統管理員] 存取頁面。](./media/jiramicrosoft-tutorial/user2.png)
 

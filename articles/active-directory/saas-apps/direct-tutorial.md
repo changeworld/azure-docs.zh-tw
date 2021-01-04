@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 8226a1e445c6f7f6360d715d17bbe5229e4172b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a3b9ae91118f714ce15f56cde0f79faa4fb4d640
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454774"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586562"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>教學課程：Azure Active Directory 與 direct 整合
 
@@ -61,9 +61,9 @@ direct 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **direct** ，從結果面板中選取 [direct]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **direct**，從結果面板中選取 [direct]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 direct](common/search-new-app.png)
+    ![結果清單中的 direct](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -109,7 +109,7 @@ direct 與 Azure AD 整合提供下列優點：
 
     在 [登入 URL]  文字方塊中，輸入 URL：`https://direct4b.com/sso`
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -143,8 +143,8 @@ direct 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 brittasimon@yourcompanydomain.extension。 例如， BrittaSimon@contoso.com
 
     c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
@@ -193,7 +193,7 @@ direct 與 Azure AD 整合提供下列優點：
 
     a. 按一下存取面板中的 [direct]  圖格，系統就會將您重新導向至應用程式登入頁面。
 
-    b. 在顯示的文字方塊中輸入您的 `subdomain`，然後按 '次へ (下一步)'，您應該就會自動登入您的 **direct** 應用程式。
+    b. 在顯示的文字方塊中輸入您的 `subdomain`，然後選取 [下一步]，您應該就會自動登入您的 **direct** 應用程式。
 
 當您在存取面板中按一下 [direct] 圖格時，應該會自動登入您已設定 SSO 的 direct。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
 

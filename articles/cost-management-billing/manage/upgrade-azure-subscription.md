@@ -8,15 +8,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/04/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e758a886e32c5a3f7cd3c744ac451b948a74802
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8d348c6a26404f7adbf89cd107a1f0ad0a1cacd5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308855"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590829"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>將您的 Azure 免費帳戶或 Azure 學生入門版帳戶升級
 
@@ -28,46 +28,36 @@ ms.locfileid: "91308855"
 
 ## <a name="upgrade-your-azure-free-account"></a>將您的 Azure 免費帳戶升級
 
-當您將 Azure 免費帳戶升級時，您可剩餘的點數保留整整 30 天 (從註冊時算起)。 例如：如果您在 11 月 1 日註冊，並在 11 月 5 日升級，則任何未使用的信用額度將可使用到 11 月 30 日為止。 您也可以在升級後的 12 個月內存取免費服務。
+當您將 Azure 免費帳戶升級時，您可剩餘的點數保留整整 30 天 (從註冊時算起)。 例如，如果您在 11 月 1 日註冊，並在 11 月 5 日升級，則任何未使用的點數將可使用到 11 月 30 日為止。 您也可以在升級後的 12 個月內存取免費服務。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)
-1. 尋找**訂用帳戶**。
-
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 尋找 **訂用帳戶**。  
     ![顯示搜尋的螢幕擷取畫面](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
-
 1. 選取您註冊 Azure 免費帳戶時建立的訂用帳戶。
-1. 在訂用帳戶概觀中，按一下命令列中的 [升級訂用帳戶] 按鈕。 如果您沒有看到 [升級訂用帳戶] 按鈕，請按一下頁面頂端的 [升級] 橫幅。
-
+1. 在訂用帳戶概觀中，選取命令列中的 [升級訂用帳戶]。 如果您沒有看到 [升級訂用帳戶] 按鈕，請選取頁面頂端的 [升級] 橫幅。  
     ![顯示升級按鈕的螢幕擷取畫面](./media/upgrade-azure-subscription/free-upgrade-button.png)
-
 1. 如果您的帳戶沒有任何付款方式，系統會提示您新增一個。
-
 1. 您可能需要輸入電話號碼來驗證您的身分識別。
-
-1. 輸入您訂用帳戶的名稱。
-
+1. 輸入您訂用帳戶的名稱。  
      ![顯示名稱的螢幕擷取畫面](./media/upgrade-azure-subscription/free-upgrade-name.png)
-
 1. 為您的訂用帳戶選擇支援方案。 若要深入了解支援方案，請參閱 [Azure 支援方案](https://azure.microsoft.com/us/support/plans/)。
-
-1. 按一下 [升級]。
+1. 選取 [升級]。
 
 <a id="student"></a>
 
 ## <a name="upgrade-your-azure-for-students-starter-account"></a>將您的 Azure 學生入門版帳戶升級
 
+使用下列資訊來升級您的 Azure 學生入門版帳戶。
+
 ### <a name="upgrade-to-an-azure-free-account"></a>升級為 Azure 免費帳戶
 
 如果您符合資格，請使用下列步驟升級為 Azure 免費帳戶。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)
-1. 尋找**訂用帳戶**。
-
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 尋找 **訂用帳戶**。  
     ![顯示搜尋的螢幕擷取畫面](./media/upgrade-azure-subscription/search-subscriptions-ibiza.png)
-
 1. 選取當您註冊 Azure 學生入門版帳戶時所建立的訂用帳戶。
-1. 在訂用帳戶概觀中，按一下命令列中的 [升級訂用帳戶]。
-
+1. 在訂用帳戶概觀中，選取命令列中的 [升級訂用帳戶]。  
     ![顯示學生版升級按鈕的螢幕擷取畫面](./media/upgrade-azure-subscription/student-upgrade-ibiza.png)
 
 ### <a name="upgrade-to-pay-as-you-go-rates"></a>升級為隨用隨付費率
@@ -76,7 +66,7 @@ ms.locfileid: "91308855"
 1. 您可能需要輸入電話號碼來驗證您的身分識別。
 1. 輸入您訂用帳戶的名稱。
 1. 為您的訂用帳戶選擇支援方案。 若要深入了解支援方案，請參閱 [Azure 支援方案](https://azure.microsoft.com/us/support/plans/)。
-1. 按一下 [升級]。
+1. 選取 [升級]。
 
 ## <a name="next-steps"></a>後續步驟
 

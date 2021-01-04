@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2d50903f464c03157ee393787af6ddfdad975aed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931396"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588024"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>教學課程：使用 ARM 範本匯入 SQL BACPAC 檔案
 
-了解如何使用 Azure SQL Database 擴充功能透過 Azure Resource Manager 範本 (ARM 範本) 匯入 BACPAC 檔案。 除了完成部署所需的主要範本檔案以外，部署成品可以是任何檔案。 BACPAC 檔案是成品。
+了解如何使用 Azure SQL Database 擴充功能透過 Azure Resource Manager 範本 (ARM 範本) 匯入 [BACPAC](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) 檔案。 除了完成部署所需的主要範本檔案以外，部署成品可以是任何檔案。 BACPAC 檔案是成品。
 
 在本教學課程中，您將建立一個範本來部署[邏輯 SQL 伺服器](../../azure-sql/database/logical-servers.md)和單一資料庫並匯入 BACPAC 檔案。 如需如何使用 ARM 範本部署 Azure 虛擬機器擴充功能的相關資訊，請參閱[教學課程：使用 ARM 範本部署虛擬機器擴充功能](./template-tutorial-deploy-vm-extensions.md)。
 
@@ -55,7 +55,7 @@ BACPAC 檔案必須先儲存在 Azure 儲存體帳戶中，才能使用 ARM 範�
 * 將 BACPAC 檔案上傳至容器。
 * 顯示儲存體帳戶金鑰和 Blob URL。
 
-1. 選取 [試試看] 以開啟 Cloud Shell。 然後將以下 PowerShell 指令碼貼到 Shell 視窗中。
+1. 選取 [試試看] 以開啟殼層。 然後將以下 PowerShell 指令碼貼到 Shell 視窗中。
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -120,7 +120,7 @@ BACPAC 檔案必須先儲存在 Azure 儲存體帳戶中，才能使用 ARM 範�
 
 ## <a name="edit-the-template"></a>編輯範本
 
-1. 在 **parameters** 區段的結尾新增兩個參數，以設定儲存體帳戶金鑰和 BACPAC URL。
+1. 在 `parameters` 區段的結尾新增兩個參數，以設定儲存體帳戶金鑰和 BACPAC URL。
 
     ```json
         "storageAccountKey": {
@@ -137,7 +137,7 @@ BACPAC 檔案必須先儲存在 Azure 儲存體帳戶中，才能使用 ARM 範�
         }
     ```
 
-    在 **adminPassword** 之後新增逗號。 若要從 Visual Studio Code 將 JSON 檔案格式化，請選取 Shift + Alt + F。
+    在 `adminPassword` 屬性的右大括弧 (`}`) 後面加上逗號。 若要從 Visual Studio Code 將 JSON 檔案格式化，請選取 Shift + Alt + F。
 
     若要取得這兩個值，請參閱[準備 BACPAC 檔案](#prepare-a-bacpac-file)。
 
@@ -196,11 +196,11 @@ BACPAC 檔案必須先儲存在 Azure 儲存體帳戶中，才能使用 ARM 範�
 
         若要了解資源定義，請參閱 [SQL Database 擴充功能參考](/azure/templates/microsoft.sql/servers/databases/extensions)。 以下是部分重要元素：
 
-        * **dependsOn**：在資料庫建立後，才可建立擴充功能資源。
-        * **storageKeyType**：指定要使用的儲存體金鑰類型。 這個值可以是 `StorageAccessKey` 或 `SharedAccessKey`。 在本教學課程中使用 `StorageAccessKey`。
-        * **storageKey**：為 BACPAC 檔案儲存所在的儲存體帳戶指定金鑰。 如果儲存體金鑰類型為 `SharedAccessKey`，則前面必須加上 "?"。
-        * **storageUri**：指定儲存體帳戶中所儲存 BACPAC 檔案的 URL。
-        * **administratorLoginPassword**：SQL 系統管理員的密碼。 使用所產生的密碼。 請參閱[必要條件](#prerequisites)。
+        * `dependsOn`：在資料庫建立後，才可建立擴充功能資源。
+        * `storageKeyType`：指定要使用的儲存體金鑰類型。 這個值可以是 `StorageAccessKey` 或 `SharedAccessKey`。 在本教學課程中使用 `StorageAccessKey`。
+        * `storageKey`：為 BACPAC 檔案儲存所在的儲存體帳戶指定金鑰。 如果儲存體金鑰類型為 `SharedAccessKey`，則前面必須加上 "?"。
+        * `storageUri`：指定儲存體帳戶中所儲存 BACPAC 檔案的 URL。
+        * `administratorLoginPassword`：SQL 系統管理員的密碼。 使用所產生的密碼。 請參閱[必要條件](#prerequisites)。
 
 完成的範本看起來像這樣：
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f694a46fddbc84968b3267842aa19108d051590
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0876478d638963e7157f7a16a263000eec634db0
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499232"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005114"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory 中角色型存取控制概觀
 
@@ -30,10 +30,13 @@ ms.locfileid: "96499232"
 這兩個系統都包含類似角色定義和角色指派的概念。 不過，Azure AD 角色權限無法在 Azure 自訂角色中使用，反之亦然。
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>了解 Azure AD 角色型存取控制
+Azure AD 支援 2 種類型的角色定義 - 
+* [內建角色](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference)
+* [自訂角色](https://docs.microsoft.com/azure/active-directory/roles/custom-create)
 
-使用自訂 Azure AD 角色授與權限是包含兩個步驟的程序，其中牽涉到建立自訂角色定義，然後使用角色指派來指派定義。 自訂角色定義是您從預設清單新增的權限集合。 這些權限是內建角色所使用的相同權限。  
+內建角色是現成的角色，具有一組固定的權限。 這些角色定義無法修改。 Azure AD 支援許多[內建角色](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference)，而且該清單仍持續成長。 為了處理邊緣案例並滿足您複雜的需求，Azure AD 也支援[自訂角色](https://docs.microsoft.com/azure/active-directory/roles/custom-create)。 使用自訂 Azure AD 角色授與權限是包含兩個步驟的程序，其中牽涉到建立自訂角色定義，然後使用角色指派來指派定義。 自訂角色定義是您從預設清單新增的權限集合。 這些權限是內建角色所使用的相同權限。  
 
-建立角色定義後，您可以藉由建立角色指派將其指派給使用者。 角色指派會為使用者授與角色定義中的權限 (限於指定範圍)。 兩個步驟的程序可讓您建立單一角色定義，並分為多次指派於不同範圍。 範圍會定義角色成員可存取的一組 Azure AD 資源。 最常見的範圍是整個組織 (全組織) 範圍。 自訂角色可指派於全組織範圍，這表示角色成員具有組織中所有資源的角色權限。 自訂角色也可指派於物件範圍。 舉例來說，單一應用程式即為物件範圍。 同一個角色可先後指派給範圍涵蓋組織中所有應用程式的一個使用者，以及另一個範圍僅限於 Contoso Expense Reports 應用程式的使用者。  
+建立自訂角色定義 (或使用內建角色) 之後，您可以藉由建立角色指派來將其指派給使用者。 角色指派會為使用者授與角色定義中的權限 (限於指定範圍)。 兩個步驟的程序可讓您建立單一角色定義，並分為多次指派於不同範圍。 範圍會定義角色成員可存取的一組 Azure AD 資源。 最常見的範圍是整個組織 (全組織) 範圍。 自訂角色可指派於全組織範圍，這表示角色成員具有組織中所有資源的角色權限。 自訂角色也可指派於物件範圍。 舉例來說，單一應用程式即為物件範圍。 同一個角色可先後指派給範圍涵蓋組織中所有應用程式的一個使用者，以及另一個範圍僅限於 Contoso Expense Reports 應用程式的使用者。  
 
 Azure AD 內建和自訂角色的運作概念與 [Azure 角色型存取控制 (Azure RBAC)](../../active-directory-b2c/overview.md) 類似。 [這兩種角色型存取控制系統的差異](../../role-based-access-control/rbac-and-directory-admin-roles.md)在於，Azure RBAC 會使用 Azure 資源管理來控制對 Azure 資源 (例如虛擬機器或儲存體) 的存取，而 Azure AD 自訂角色則會使用圖形 API 來控制對 Azure AD 資源的存取。 這兩個系統都運用了角色定義和角色指派的概念。 Azure AD RBAC 權限不可包含在 Azure 角色中，反之亦然。
 
@@ -80,7 +83,7 @@ Azure AD 內建和自訂角色的運作概念與 [Azure 角色型存取控制 (A
 
 ## <a name="required-license-plan"></a>必要授權方案
 
-[!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
+在 Azure AD 中使用內建角色是免費的，而自訂角色則需要 Azure AD Premium P1 授權。 若要尋找適用於您需求的正確授權，請參閱[比較 Free、Basic 及 Premium 版本的正式運作功能](https://azure.microsoft.com/pricing/details/active-directory)。
 
 ## <a name="next-steps"></a>後續步驟
 

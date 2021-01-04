@@ -5,22 +5,22 @@ description: 本快速入門說明如何使用 Azure Resource Manager 範本建�
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: KumudD
 Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 66d702846bac5825239e891ce47f8cca5bb857f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 378ab88f4dee0c725e89f77cc6b2ffe049ff877a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90984423"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008430"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立公用負載平衡器以平衡 VM 的負載
 
@@ -51,12 +51,13 @@ ms.locfileid: "90984423"
 範本中已定義多個 Azure 資源：
 
 - [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
-- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)：適用於負載平衡器，以及三部虛擬機器的每一部。
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)：適用於負載平衡器、堡壘主機，以及三部虛擬機器的每一部。
+- [**Microsoft.Network/bastionHosts**](/azure/templates/microsoft.network/bastionhosts)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (其中 3 個)。
-- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (其中 3 個)。
-- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (其中 3 個)：用來設定 Internet Information Server (IIS) 和網頁。
+- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3)。
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3)。
+- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3)：用來設定 Internet Information Server (IIS) 和網頁。
 
 若要尋找更多有關 Azure Load Balancer 的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)。
 
@@ -131,6 +132,8 @@ Azure PowerShell 用於部署範本。 您也可以使用 Azure 入口網站、A
 
 在本快速入門中，您已：
 
+* 建立適用於負載平衡器和虛擬機器的虛擬網路。
+* 建立用於管理的 Azure Bastion 主機。
 * 建立標準負載平衡器，並且與 VM 連結。
 * 設定了負載平衡器流量規則和健全狀態探查。
 * 測試了負載平衡器。

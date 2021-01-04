@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 36c4ce34d6b0c4df119d5531cda725605cfd0bc1
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523712"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109601"
 ---
 # <a name="synapse-access-control"></a>Synapse 存取控制 
 
@@ -34,14 +34,14 @@ Synapse 角色會提供可在不同範圍套用的權限集合。 這種細微�
 
 ## <a name="access-control-elements"></a>存取控制元素
 
-### <a name="creating-and-managing-synapse-resources"></a>建立和管理 Synapse 資源
+### <a name="creating-and-managing-synapse-compute-resources"></a>建立和管理 Synapse 計算資源
 
 Azure 角色可用來控制管理： 
 - 專用 SQL 集區、 
 - Apache Spark 集區和 
 - 整合執行階段。 
 
-若要建立這些資源，您必須是資源群組的 Azure 擁有者或參與者。  若要管理這些資源，您必須是資源群組或個別資源的 Azure 擁有者或參與者。 
+若要「建立」這些資源，您必須是資源群組的 Azure 擁有者或參與者。  若要「管理」這些已建立的資源，您必須是資源群組或個別資源的 Azure 擁有者或參與者。 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>在 Synapse 中開發和執行程式碼 
 
@@ -82,7 +82,7 @@ Synapse 角色用來控制 Synapse 服務的存取權，讓您能夠：
 
  ### <a name="accessing-system-managed-data-in-storage"></a>存取儲存體中的受控資料
 
-無伺服器 SQL 集區和 Apache Spark 資料表會將其資料儲存在與工作區相關聯的 ADLS Gen2 容器中。  系統必須授與使用者和工作區 MSI 此 ADLS Gen2 儲存體容器之儲存體 Blob 資料參與者存取權。  
+無伺服器 SQL 集區和 Apache Spark 資料表會將其資料儲存在與工作區相關聯的 ADLS Gen2 容器中，使用者安裝的 Apache Spark 程式庫也會在相同的儲存體帳戶中受到管理。  若要啟用這些使用案例，系統必須授與使用者和工作區 MSI 此工作區 ADLS Gen2 儲存體容器的 **儲存體 Blob 資料參與者** 存取權。  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>使用安全性群組作為最佳做法
 

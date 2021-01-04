@@ -1,20 +1,20 @@
 ---
-title: 快速入門：透過 Azure CLI 使用 Azure Static Web Apps 建置您的第一個靜態 Web 應用程式
-description: 了解如何使用 Azure Static Web Apps CLI 來建立 Azure Static Web Apps 執行個體。
+title: 快速入門：透過 CLI 使用 Azure Static Web Apps 建置您的第一個靜態網站
+description: 了解如何使用 Azure CLI 將靜態網站部署至 Azure Static Web Apps。
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: ed49892284b53844c5c578b752a598cdbdd9b946
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ca05194c0d8e63290a9cab8d9f7903daa192069b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320336"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030343"
 ---
-# <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立您的第一個靜態 Web 應用程式
+# <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立您的第一個靜態網站
 
 Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站發佈至實際執行環境。 在本快速入門中，您會使用 Azure CLI 將 Web 應用程式部署到 Azure 靜態 Web 應用程式。
 

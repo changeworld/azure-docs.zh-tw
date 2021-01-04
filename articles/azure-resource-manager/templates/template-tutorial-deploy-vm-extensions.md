@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9e04006a0908832c623230d89caa62b0985f32e4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931447"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587939"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>教學課程：使用 ARM 範本部署虛擬機器擴充功能
 
@@ -42,7 +42,7 @@ ms.locfileid: "96931447"
 
 ## <a name="prepare-a-powershell-script"></a>準備 PowerShell 指令碼
 
-您可以使用內嵌 PowerShell 指令碼或指令檔。  本教學課程說明如何使用指令檔。 已在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 中分享含下列內容的 PowerShell 指令碼：
+您可以使用內嵌 PowerShell 指令碼或指令檔。 本教學課程說明如何使用指令檔。 已在 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) 中分享含下列內容的 PowerShell 指令碼：
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -105,12 +105,12 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
 如需此資源定義的詳細資訊，請參閱[擴充功能參考](/azure/templates/microsoft.compute/virtualmachines/extensions)。 以下是部分重要元素：
 
-* **名稱**：由於擴充功能資源是虛擬機器物件的子資源，因此名稱必須有虛擬機器名稱前置詞。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。
-* **dependsOn**：會在建立了虛擬機器後建立擴充功能資源。
-* **fileUris**：指令碼檔案儲存所在的位置。 如果您選擇不使用提供的位置，則必須更新值。
-* **commandToExecute**：此命令會叫用指令碼。
+* `name`：由於擴充功能資源是虛擬機器物件的子資源，因此名稱必須有虛擬機器名稱前置詞。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。
+* `dependsOn`：會在建立了虛擬機器後建立擴充功能資源。
+* `fileUris`：指令碼檔案儲存所在的位置。 如果您選擇不使用提供的位置，則必須更新值。
+* `commandToExecute`：此命令會叫用指令碼。
 
-若要使用內嵌指令碼，請移除 **fileUris**，並將 **commandToExecute** 更新為：
+若要使用內嵌指令碼，請移除 `fileUris`，並將 `commandToExecute` 更新為：
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
@@ -118,9 +118,9 @@ powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools &
 
 此內嵌指令碼也會更新 iisstart.htm 內容。
 
-您也必須開啟 HTTP 連接埠，讓您能夠存取網頁伺服器。
+您也必須開啟 HTTP 連接埠，才能夠存取網頁伺服器。
 
-1. 在範本中尋找 **securityRules**。
+1. 在範本中尋找 `securityRules`。
 1. 在 **default-allow-3389** 旁新增下列規則。
 
     ```json
@@ -141,7 +141,7 @@ powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools &
 
 ## <a name="deploy-the-template"></a>部署範本
 
-如需部署程序，請參閱＜部署範本＞一節，其位於[教學課程：建立具有相依資源的 ARM 範本](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)。 建議您對虛擬機器系統管理員帳戶使用所產生的密碼。 請參閱本文的[必要條件](#prerequisites)一節。
+如需部署程序，請參 **部署範** 一節，其位於[教學課程:建立具有相依資源的 ARM 範本](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)。 建議您對虛擬機器系統管理員帳戶使用所產生的密碼。 請參閱本文的[必要條件](#prerequisites)一節。
 
 從 Cloud Shell，執行下列命令來擷取 VM 的 IP 位址：
 

@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576463"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505540"
 ---
 # <a name="calling-client-library-overview"></a>通話用戶端程式庫概觀
 
@@ -69,7 +69,7 @@ ms.locfileid: "96576463"
 
 *請注意，除了先前的兩個版本之外，也支援最新版本的 Chrome。<br/>
 
-**請注意，支援 Safari 版本 13.1+。 尚不支援 Safari macOS 的傳出視訊，但是在 iOS 上支援。 只有桌面 iOS 才支援傳出螢幕畫面分享。
+**請注意，支援 Safari 版本 13.1+。 尚不支援 Safari macOS 的傳出視訊，但是在 iOS 上支援。 只有桌面 iOS 才支援傳出螢幕畫面分享。 目前無法在 Safari 上使用 1:1 和群組通話。
 
 ## <a name="calling-client---browser-security-model"></a>呼叫用戶端 - 瀏覽器安全性模型
 
@@ -90,6 +90,15 @@ WebRTC API (例如 `getUserMedia` ) 需要透過 HTTPS 提供呼叫這些 API �
 ```html
 <iframe allow="camera *; microphone *">
 ```
+
+## <a name="calling-client-library-streaming-support"></a>通話用戶端程式庫串流支援
+通訊服務的通話用戶端程式庫支援下列串流設定：
+
+|           |Web | Android/iOS|
+|-----------|----|------------|
+|可以同時傳送的傳出串流數目 |1 段影片 + 1 個螢幕共用 | 1 段影片 + 1 個螢幕共用|
+|可以同時轉譯的傳入串流數目 |1 段影片 + 1 個螢幕共用| 6 段影片 + 1 個螢幕共用 |
+
 
 ## <a name="next-steps"></a>下一步
 

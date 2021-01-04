@@ -7,12 +7,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 08/25/2020
 author: ninallam
-ms.openlocfilehash: 9a2abf7e714b75f2551a35a220e30c2465d86a49
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 4caac943df33177728997c74c9ec812105efd62c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332538"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588772"
 ---
 # <a name="tutorial-deploy-nodejs-app-to-azure-web-app-using-devops-starter-for-github-actions"></a>教學課程：使用適用於 GitHub Actions 的 DevOps 入門版將 Node.js 應用程式部署至 Azure Web 應用程式
 
@@ -34,7 +34,7 @@ DevOps 入門版也能夠：
 > * 設定 Azure Application Insights 監視
 > * 清除資源
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/)。
 
@@ -44,11 +44,11 @@ DevOps 入門版會在 GitHub 中建立工作流程。 您可以使用現有的 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在搜尋方塊中，鍵入並選取 **DevOps 入門版** 。 按一下 [新增] 以建立新項目。
+1. 在搜尋方塊中，鍵入並選取 **DevOps 入門版**。 按一下 [新增] 以建立新項目。
 
     ![DevOps 入門版儀表板](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. 請確定已選取 CI/CD 提供者作為 **GitHub Actions** 。
+1. 請確定已選取 CI/CD 提供者作為 **GitHub Actions**。
 
     ![CICD_provider](_img/azure-devops-project-nodejs/provider-selection.png)
 
@@ -84,7 +84,7 @@ DevOps 入門版會自動設定觸發程序，而將程式碼變更部署至存�
 
 1. 在 DevOps 入門版儀表板的左側，選取 [GitHub 工作流程]。 此連結會開啟瀏覽器索引標籤和新專案的 GitHub 工作流程。
     > [!NOTE]
-    > 請勿將工作流程檔案重新命名。 工作流程檔案的名稱應是 **devops-starter-workflow.yml** ，才能讓儀表板反映變更
+    > 請勿將工作流程檔案重新命名。 工作流程檔案的名稱應是 **devops-starter-workflow.yml**，才能讓儀表板反映變更
 
 1. 工作流程 yaml 檔包含建置及部署應用程式所需的所有 GitHub Actions。 按一下 [編輯檔案] 選項，以自訂您的工作流程檔案。
 
@@ -102,9 +102,9 @@ DevOps 入門版會自動設定觸發程序，而將程式碼變更部署至存�
 
 DevOps 入門版會在 GitHub 中建立存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業：
 
-1. 在 DevOps Starter 儀表板的左側，選取您主要分支的連結。 此連結會開啟新建立 GitHub 存放庫的檢視。
+1. 在 DevOps Starter 儀表板的左側，選取您主分支的連結。 此連結會開啟新建立 GitHub 存放庫的檢視。
 
-1. 若要檢視存放庫複製 URL，請在瀏覽器右上方選取 [複製]。 您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可主要分支的程式碼變更。
+1. 若要檢視存放庫複製 URL，請在瀏覽器右上方選取 [複製]。 您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可主分支的程式碼變更。
 
 1. 在瀏覽器的左側，移至 **/Application/views/index.pug** 檔案。
 

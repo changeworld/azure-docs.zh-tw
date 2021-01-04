@@ -8,18 +8,18 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.custom: mqtt
-ms.openlocfilehash: 8925b98269b67bfb8a96cb057982ee4e396f17ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41232ba3899d098c019674e4ca4a0a8f2f7d465f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81686216"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97345954"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central 聯網物流應用程式範本的架構
 
 
 
-夥伴與客戶可以使用應用程式範本及下列指引，來開發端對端**聯網物流解決方案**。
+夥伴與客戶可以使用應用程式範本及下列指引，來開發端對端 **聯網物流解決方案**。
 
 > [!div class="mx-imgBorder"]
 > ![聯網物流儀表板](./media/concept-connected-logistics-architecture/connected-logistics-architecture.png)
@@ -27,7 +27,7 @@ ms.locfileid: "81686216"
 1. 將遙測資料傳送至閘道裝置的一組 IoT 標籤
 2. 將遙測資料和彙總的見解傳送至 IoT Central 的閘道裝置
 3. 資料會路由傳送至所需的 Azure 服務以進行操作
-4. 您可以使用 Azure 服務 (例如 ASA 或 Azure Functions) 來將資料流重新格式化，並將其傳送至所需的儲存體帳戶 
+4. 您可以使用 Azure 服務 (例如 ASA 或 Azure Functions) 來將資料流重新格式化，並將其傳送至所需的儲存體帳戶
 5. 終端使用者的商務應用程式可以增強各種商務工作流程
 
 ## <a name="details"></a>詳細資料

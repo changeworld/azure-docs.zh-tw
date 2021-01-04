@@ -1,6 +1,6 @@
 ---
-title: 快速入門：透過 Azure 入口網站暫停和繼續專用 SQL 集區 (先前為 SQL DW) 中的計算
-description: 使用 Azure 入口網站暫停 SQL 集區的計算以節省成本。 在您準備好使用資料倉儲時繼續計算。
+title: 快速入門：透過 Azure 入口網站暫停和繼續專用 SQL 集區中的計算
+description: 使用 Azure 入口網站暫停專用 SQL 集區的計算以節省成本。 在您準備好使用資料倉儲時繼續計算。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 88f6782a0f81b94977b37bd8f87bf26a0d4c8a72
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457688"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109647"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-via-the-azure-portal"></a>快速入門：透過 Azure 入口網站暫停和繼續專用 SQL 集區 (先前為 SQL DW) 中的計算
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>快速入門：透過 Azure 入口網站暫停和繼續專用 SQL 集區中的計算
 
-您可以使用 Azure 入口網站來暫停和繼續 專用 SQL 集區 (先前稱為 SQL DW) 計算資源。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+您可以使用 Azure 入口網站來暫停和繼續專用 SQL 集區計算資源。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -40,9 +40,8 @@ ms.locfileid: "96457688"
 請依照下列步驟將專用 SQL 集區暫停：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 按一下 Azure 入口網站左側導覽頁面中的 [專用 SQL 集區 (先前稱為 SQL DW)]。
-2. 從 [專用 SQL 集區 (先前稱為 SQL DW)] 頁面中選取 [mySampleDataWarehouse]，以開啟 SQL 集區。 
-3. 在 [mySampleDataWarehouse]  頁面上，留意到 [狀態]  目前為 [上線]  。
+2. 瀏覽至 [專用 SQL 集區] 頁面，以開啟 SQL 集區。 
+3. 您會看到 [狀態] 為 [線上]。
 
     ![計算上線](././media/pause-and-resume-compute-portal/compute-online.png)
 
@@ -62,8 +61,7 @@ ms.locfileid: "96457688"
 
 請依照下列步驟將專用 SQL 集區繼續。
 
-1. 按一下 Azure 入口網站左側頁面中的 [專用 SQL 集區 (先前稱為 SQL DW)]。
-2. 從 [專用 SQL 集區 (先前稱為 SQL DW)] 頁面中選取 [mySampleDataWarehouse]，以開啟 SQL 集區頁面。 
+1. 瀏覽至 [專用 SQL 集區] 頁面，以開啟 SQL 集區。
 3. 在 [mySampleDataWarehouse]  頁面上，留意到 [狀態]  目前為 [已暫停]  。
 
     ![計算離線](././media/pause-and-resume-compute-portal/compute-offline.png)

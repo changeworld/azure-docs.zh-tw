@@ -1,19 +1,19 @@
 ---
-title: 快速入門：Azure 佇列儲存體程式庫 v12 - Java
-description: 了解如何使用 Azure 佇列 Java v12 程式庫來建立佇列，並將訊息新增至該佇列。 接下來，您會了解如何讀取和刪除佇列中的訊息。 您也將了解如何刪除佇列。
+title: 快速入門：Azure 佇列儲存體用戶端程式庫 v12 - Java
+description: 了解如何使用適用於 Java 的 Azure 佇列儲存體用戶端程式庫 v12，建立佇列及在其中新增訊息。 接著了解如何讀取和刪除佇列中的訊息。 您也將了解如何刪除佇列。
 author: mhopkins-msft
-ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/01/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.openlocfilehash: 4c96b84aa53d2a9f4d6e44ac84cf0ce9e0ecac04
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.custom: devx-track-java
+ms.openlocfilehash: 814531adc9dafa524797d0c2674a1e600e407bed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491922"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588210"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入門：適用於 Java 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -48,9 +48,9 @@ ms.locfileid: "96491922"
 
 ### <a name="create-the-project"></a>建立專案
 
-建立名為 *queues-quickstart-v12* 的 Java 應用程式。
+建立名為 `queues-quickstart-v12` 的 Java 應用程式。
 
-1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 Maven 建立名為 *queues-quickstart-v12* 的新主控台應用程式。 鍵入下列 **mvn** 命令，以建立 "Hello world!" Java 專案。
+1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 Maven 建立名為 `queues-quickstart-v12` 的新主控台應用程式。 輸入下列 `mvn` 命令，以建立 "hello world" Java 專案。
 
     # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -113,7 +113,7 @@ ms.locfileid: "96491922"
     [INFO] ------------------------------------------------------------------------
     ```
 
-1. 切換至新建立的 *queues-quickstart-v12* 目錄。
+1. 切換至新建立的 `queues-quickstart-v12` 目錄。
 
    ```console
    cd queues-quickstart-v12
@@ -121,7 +121,7 @@ ms.locfileid: "96491922"
 
 ### <a name="install-the-package"></a>安裝套件
 
-在文字編輯器中開啟 *pom.xml* 檔案。 將下列相依性元素加入至相依性群組。
+在文字編輯器中開啟 `pom.xml` 檔案。 將下列相依性元素加入至相依性群組。
 
 ```xml
 <dependency>
@@ -135,9 +135,9 @@ ms.locfileid: "96491922"
 
 從專案目錄：
 
-1. 瀏覽至 */src/main/java/com/queues/quickstart* 目錄
-1. 在編輯器中開啟 *App.java* 檔案
-1. 刪除 `System.out.println("Hello world!");` 陳述式
+1. 瀏覽到 `/src/main/java/com/queues/quickstart` 目錄
+1. 在您的編輯器中開啟 `App.java` 檔案
+1. 刪除 `System.out.println("Hello, world");` 陳述式
 1. 新增 `import` 指示詞
 
 此程式碼如下：
@@ -146,7 +146,7 @@ ms.locfileid: "96491922"
 package com.queues.quickstart;
 
 /**
- * Azure queue storage v12 SDK quickstart
+ * Azure Queue Storage client library v12 quickstart
  */
 import com.azure.storage.queue.*;
 import com.azure.storage.queue.models.*;
@@ -177,10 +177,10 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 使用下列 Java 類別與這些資源互動：
 
-- [QueueClientBuilder](/java/api/com.azure.storage.queue.queueclientbuilder)：`QueueClientBuilder` 類別會設定並具現化 `QueueClient` 物件。
-- [QueueServiceClient](/java/api/com.azure.storage.queue.queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
-- [QueueClient](/java/api/com.azure.storage.queue.queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
-- [QueueMessageItem](/java/api/com.azure.storage.queue.models.queuemessageitem)：`QueueMessageItem` 類別代表在佇列上呼叫 [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) 時所傳回的個別物件。
+- [`QueueClientBuilder`](/java/api/com.azure.storage.queue.queueclientbuilder)：`QueueClientBuilder` 類別會設定並具現化 `QueueClient` 物件。
+- [`QueueServiceClient`](/java/api/com.azure.storage.queue.queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
+- [`QueueClient`](/java/api/com.azure.storage.queue.queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
+- [`QueueMessageItem`](/java/api/com.azure.storage.queue.models.queuemessageitem)：`QueueMessageItem` 類別代表在佇列上呼叫 [`ReceiveMessages`](/java/api/com.azure.storage.queue.queueclient.receivemessages) 時所傳回的個別物件。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -201,7 +201,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 在 `main` 方法內新增此程式碼：
 
 ```java
-System.out.println("Azure Queues storage v12 - Java quickstart sample\n");
+System.out.println("Azure Queue Storage client library v12 - Java quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
@@ -219,7 +219,7 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 > [!IMPORTANT]
 > 佇列名稱只能包含小寫字母、數字和連字號，且必須以字母或數字開頭。 每個連字號前後都必須緊接非連字號的字元。 名稱長度也必須為 3 到 63 個字元。 如需為佇列命名的詳細資訊，請參閱[為佇列和中繼資料命名](/rest/api/storageservices/naming-queues-and-metadata)。
 
-建立 [QueueClient](/java/api/com.azure.storage.queue.queueclient) 類別的執行個體。 然後，呼叫 [create](/java/api/com.azure.storage.queue.queueclient.create) 方法，以在您的儲存體帳戶中建立佇列。
+建立 [`QueueClient`](/java/api/com.azure.storage.queue.queueclient) 類別的執行個體。 然後，呼叫 [`Create`](/java/api/com.azure.storage.queue.queueclient.create) 方法，以在您的儲存體帳戶中建立佇列。
 
 將此程式碼加入到 `main` 方法的結尾處：
 
@@ -242,7 +242,7 @@ queueClient.create();
 
 ### <a name="add-messages-to-a-queue"></a>將訊息新增至佇列
 
-下列程式碼片段會藉由呼叫 [sendMessage](/java/api/com.azure.storage.queue.queueclient.sendmessage) 方法，將訊息新增至佇列。 其也會儲存 `sendMessage` 呼叫所傳回的 [SendMessageResult](/java/api/com.azure.storage.queue.models.sendmessageresult)。 結果用於在稍後的程式中更新訊息。
+下列程式碼片段會藉由呼叫 [`sendMessage`](/java/api/com.azure.storage.queue.queueclient.sendmessage) 方法，將訊息新增至佇列。 其也會儲存從 `sendMessage` 呼叫傳回的 [`SendMessageResult`](/java/api/com.azure.storage.queue.models.sendmessageresult)。 結果用於在稍後的程式中更新訊息。
 
 將此程式碼加入到 `main` 方法的結尾處：
 
@@ -259,7 +259,7 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>窺視佇列中的訊息
 
-藉由呼叫 [peekMessages](/java/api/com.azure.storage.queue.queueclient.peekmessages) 方法來窺視佇列中的訊息。 `peelkMessages` 方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
+藉由呼叫 [`peekMessages`](/java/api/com.azure.storage.queue.queueclient.peekmessages) 方法來窺視佇列中的訊息。 此方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
 
 將此程式碼加入到 `main` 方法的結尾處：
 
@@ -273,7 +273,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>更新佇列中的訊息
 
-藉由呼叫 [updateMessage](/java/api/com.azure.storage.queue.queueclient.updatemessage) 方法來更新訊息的內容。 `updateMessage` 方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同訊息的新內容，使用先前在程式碼中儲存的 `SendMessageResult`，傳入訊息識別碼和 pop 回條。 訊息識別碼和 pop 回條可識別要更新的訊息。
+藉由呼叫 [`updateMessage`](/java/api/com.azure.storage.queue.queueclient.updatemessage) 方法來更新訊息的內容。 此方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同訊息的新內容，使用先前在程式碼中儲存的 `SendMessageResult`，傳入訊息識別碼和 pop 回條。 訊息識別碼和 pop 回條可識別要更新的訊息。
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -288,7 +288,7 @@ queueClient.updateMessage(result.getMessageId(),
 
 ### <a name="receive-and-delete-messages-from-a-queue"></a>接收和刪除佇列中的訊息
 
-藉由呼叫 [receiveMessages](/java/api/com.azure.storage.queue.queueclient.receivemessages) 方法來下載先前新增的訊息。 範例程式碼也會在接收和處理訊息後，從佇列中刪除訊息。 在此情況下，處理只會在主控台上顯示訊息。
+藉由呼叫 [`receiveMessages`](/java/api/com.azure.storage.queue.queueclient.receivemessages) 方法來下載先前新增的訊息。 範例程式碼也會在接收和處理訊息後，從佇列中刪除訊息。 在此情況下，處理只會在主控台上顯示訊息。
 
 應用程式會在接收和刪除訊息之前呼叫 `System.console().readLine();`，藉以暫停使用者輸入。 在 [Azure 入口網站](https://portal.azure.com)中確認已正確建立資源，然後才予以刪除。 任何未明確刪除的訊息最後都會再次顯示在佇列中，以提供另一次進行處理的機會。
 
@@ -313,7 +313,7 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>刪除佇列
 
-下列程式碼會使用 [delete](/java/api/com.azure.storage.queue.queueclient.delete) 方法刪除佇列，以清除應用程式所建立的資源。
+下列程式碼會使用 [`Delete`](/java/api/com.azure.storage.queue.queueclient.delete) 方法刪除佇列，以清除應用程式所建立的資源。
 
 將此程式碼加入到 `main` 方法的結尾處：
 
@@ -344,7 +344,7 @@ mvn compile
 mvn package
 ```
 
-執行下列 `mvn` 命令以執行應用程式。
+執行下列 `mvn` 命令來執行應用程式。
 
 ```console
 mvn exec:java -Dexec.mainClass="com.queues.quickstart.App" -Dexec.cleanupDaemonThreads=false
@@ -353,7 +353,7 @@ mvn exec:java -Dexec.mainClass="com.queues.quickstart.App" -Dexec.cleanupDaemonT
 應用程式的輸出類似下列範例：
 
 ```output
-Azure Queues storage v12 - Java quickstart sample
+Azure Queue Storage client library v12 - Java quickstart sample
 
 Adding messages to the queue...
 
@@ -378,7 +378,7 @@ Done
 
 當應用程式在接收訊息之前暫停，請在 [Azure 入口網站](https://portal.azure.com)中檢查您的儲存體帳戶。 確認訊息在佇列中。
 
-按下 **Enter** 鍵來接收和刪除訊息。 出現提示時，請再次按下 **Enter** 鍵，以刪除佇列並完成示範。
+按下 `Enter` 鍵來接收和刪除訊息。 出現提示時，請再次按下 `Enter` 鍵，以刪除佇列並完成示範。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -389,4 +389,4 @@ Done
 > [!div class="nextstepaction"]
 > [適用於 Java 雲端開發人員的 Azure](/azure/developer/java/)
 
-- 若要查看更多 Azure 佇列儲存體範例應用程式，請繼續 [Azure 佇列儲存體 SDK v12 Java 用戶端程式庫範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)。
+- 如需更多 Azure 佇列儲存體範例應用程式，請參閱[適用於 Java 的 Azure 佇列儲存體用戶端程式庫 v12 - 範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)。

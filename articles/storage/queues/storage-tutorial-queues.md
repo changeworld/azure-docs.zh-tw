@@ -1,24 +1,24 @@
 ---
-title: 教學課程 - 在 .NET 中使用 Azure 儲存體佇列
-description: 本教學課程說明如何使用 Azure 佇列服務來建立佇列，以及如何使用 .NET 程式碼插入、取得和刪除訊息。
+title: 教學課程：在 .NET 中使用 Azure 佇列儲存體佇列
+description: 本教學課程說明使用 Azure 佇列儲存體來建立佇列，以及如何使用 .NET 程式碼插入、取得和刪除訊息。
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 06/09/2020
+ms.topic: tutorial
 ms.service: storage
 ms.subservice: queues
-ms.topic: tutorial
-ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d661800c53cc0795efde1f411675d17661fb968
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 3c41b218ac0d347b2e58931421493755346b13d7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345528"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591968"
 ---
-# <a name="tutorial-work-with-azure-storage-queues-in-net"></a>教學課程：在 .NET 中使用 Azure 儲存體佇列
+# <a name="tutorial-work-with-azure-queue-storage-queues-in-net"></a>教學課程：在 .NET 中使用 Azure 佇列儲存體佇列
 
-Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元件之間可進行通訊。 每個佇列都會維護一份可由傳送端元件新增、且可由接收端元件處理的訊息清單。 透過佇列，您的應用程式將可立即進行調整以因應需求。 本文說明使用 Azure 儲存體佇列的基本步驟。
+Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元件之間可進行通訊。 每個佇列都會維護一份可由傳送端元件新增、且可由接收端元件處理的訊息清單。 透過佇列，您的應用程式將可立即進行調整以因應需求。 本文說明使用 Azure 佇列儲存體佇列的基本步驟。
 
 在本教學課程中，您會了解如何：
 
@@ -43,19 +43,19 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 ## <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
-首先，請建立 Azure 儲存體帳戶。 如需建立儲存體帳戶的逐步指南，請參閱[建立儲存體帳戶](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)快速入門。 這是您在必要條件中建立免費的 Azure 帳戶之後所執行的個別步驟。
+首先，請建立 Azure 儲存體帳戶。 如需建立儲存體帳戶的逐步指南，請參閱[建立儲存體帳戶](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json)。 這是您在必要條件中建立免費的 Azure 帳戶之後所執行的個別步驟。
 
 ## <a name="create-the-app"></a>建立應用程式
 
-建立名為 **QueueApp** 的 .NET Core 應用程式。 為了方便說明，此應用程式將可透過佇列傳送和接收訊息。
+建立名為 `QueueApp` 的 .NET Core 應用程式。 為了方便說明，此應用程式將可透過佇列傳送和接收訊息。
 
-1. 在主控台視窗中 (例如 CMD、PowerShell 或 Azure CLI)，使用 `dotnet new` 命令建立名為 **QueueApp** 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：**Program.cs**。
+1. 在主控台視窗中 (例如 CMD、PowerShell 或 Azure CLI)，使用 `dotnet new` 命令建立名為 `QueueApp` 的新主控台應用程式。 此命令會建立簡單的 "hello world" C# 專案，內含名為 `Program.cs` 的單一來源檔案。
 
    ```console
    dotnet new console -n QueueApp
    ```
 
-2. 切換至新建的 **QueueApp** 資料夾，然後建置應用程式以確認一切都正常運作。
+2. 切換至新建立的 `QueueApp` 資料夾，然後建置應用程式來確認一切正常。
 
    ```console
    cd QueueApp
@@ -101,7 +101,7 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 1. 使用 `dotnet add package` 命令，將 Azure 儲存體用戶端程式庫新增至專案。
 
-   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
    從主控台視窗中的專案資料夾執行下列命令。
 
@@ -109,7 +109,7 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
    dotnet add package Azure.Storage.Queues
    ```
 
-   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
 
    從主控台視窗中的專案資料夾執行下列命令。
 
@@ -124,31 +124,31 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 ### <a name="add-using-statements"></a>新增 using 陳述式
 
-1. 從專案目錄中的命令列輸入 `code .`，以在目前的目錄中開啟 Visual Studio Code。 將命令列視窗保持開啟。 稍後將會執行其他命令。 如果系統提示您新增建置和偵錯所需的 C# 資產，請按一下 [是] 按鈕。
+1. 從專案目錄中的命令列輸入 `code .`，以在目前的目錄中開啟 Visual Studio Code。 將命令列視窗保持開啟。 稍後將會執行更多命令。 如果系統提示您新增建置和偵錯所需的 C# 資產，請按一下 [是] 按鈕。
 
-1. 開啟 **Program.cs** 來源檔案，並緊接在 `using System;` 陳述式後面新增下列命名空間。 此應用程式會使用這些命名空間中的類型連線至 Azure 儲存體，並使用佇列。
+1. 開啟 `Program.cs` 來源檔案，並緊接在 `using System;` 陳述式後面新增下列命名空間。 此應用程式會使用這些命名空間中的類型連線至 Azure 儲存體，並使用佇列。
 
-   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
-   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_UsingStatements":::
 
-1. 儲存 **Program.cs** 檔案。
+1. 儲存 `Program.cs` 檔案。
 
 ## <a name="add-support-for-asynchronous-code"></a>新增非同步程式碼的支援
 
 由於應用程式使用雲端資源，因此程式碼會以非同步方式執行。
 
-1. 更新 **Main** 方法，以非同步方式執行。 將 **void** 取代為 **非同步工作** 傳回值。
+1. 更新 `Main` 方法，以非同步方式執行。 將 `void` 取代為`async Task`傳回值。
 
    ```csharp
    static async Task Main(string[] args)
    ```
 
-1. 儲存 **Program.cs** 檔案。
+1. 儲存 `Program.cs` 檔案。
 
 ## <a name="create-a-queue"></a>建立佇列
 
@@ -162,23 +162,23 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 1. 切換回 Visual Studio Code。
 
-1. 在 **Main** 方法中，將 `Console.WriteLine("Hello World!");` 程式碼取代為下列行，以從環境變數取得連接字串。
+1. 在 `Main` 方法中，將 `Console.WriteLine("Hello, World");` 程式碼取代為下列行，以從環境變數取得連接字串。
 
-   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
-   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_DeclareConnectionString":::
 
-1. 將下列程式碼新增至 **Main** 以建立佇列物件，此物件稍後會傳入 send 和 receive 方法中。
+1. 將下列程式碼新增至 `Main` 以建立佇列物件，此物件稍後會傳入 send 和 receive 方法中。
 
-   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
 
-   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_CreateQueueClient":::
 
@@ -188,31 +188,31 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 建立將訊息傳送至佇列中的新方法。
 
-1. 將下列 **InsertMessageAsync** 方法新增至您的 **Program** 類別。
+1. 將下列 `InsertMessageAsync` 方法新增至您的 `Program` 類別。
 
-   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-   已傳遞佇列參考給這個方法。 藉由呼叫 [CreateIfNotExistsAsync](/dotnet/api/azure.storage.queues.queueclient.createifnotexistsasync)，建立新的佇列 (如果尚未存在)。 接著，藉由呼叫 [SendMessageAsync](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync)，將 *newMessage* 新增至佇列。
+   已傳遞佇列參考給這個方法。 藉由呼叫 [`CreateIfNotExistsAsync`](/dotnet/api/azure.storage.queues.queueclient.createifnotexistsasync)，建立新的佇列 (如果尚未存在)。 然後該佇列會呼叫 [`SendMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.sendmessageasync)，將 `newMessage` 新增至佇列。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_InsertMessage":::
 
-   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
 
-   已傳遞佇列參考給這個方法。 藉由呼叫 [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync)，建立新的佇列 (如果尚未存在)。 接著，藉由呼叫 [AddMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)，將 *newMessage* 新增至佇列。
+   已傳遞佇列參考給這個方法。 藉由呼叫 [`CreateIfNotExistsAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync)，建立新的佇列 (如果尚未存在)。 然後該佇列會呼叫 [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)，將 `newMessage` 新增至佇列。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_InsertMessage":::
 
-1. **選擇性** 根據預設，訊息的存留時間上限會設為 7 天。 您可以指定任何正數的訊息存留時間。 下列程式碼片段會新增「永不」過期的訊息。
+1. **選擇性：** 根據預設，訊息的存留時間上限會設為 7 天。 您可以指定任何正數的訊息存留時間。 下列程式碼片段會新增「永不」過期的訊息。
 
-   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-    若要新增不會過期的訊息，請在 **SendMessageAsync** 的呼叫中使用 `Timespan.FromSeconds(-1)`。
+    若要新增不會過期的訊息，請在 `SendMessageAsync` 的呼叫中使用 `Timespan.FromSeconds(-1)`。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
 
-   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
 
-    若要新增不會過期的訊息，請在 **AddMessageAsync** 的呼叫中使用 `Timespan.FromSeconds(-1)`。
+    若要新增不會過期的訊息，請在 `AddMessageAsync` 的呼叫中使用 `Timespan.FromSeconds(-1)`。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_SendNonExpiringMessage":::
 
@@ -224,19 +224,19 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 建立新方法已從佇列中擷取訊息。 在成功接收訊息後，務必要從佇列中刪除該訊息，以免受到多次處理。
 
-1. 將名為 **RetrieveNextMessageAsync** 的新方法新增至您的 **Program** 類別。
+1. 將名為 `RetrieveNextMessageAsync` 的新方法新增至您的 `Program` 類別。
 
-   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-   此方法會藉由呼叫 [ReceiveMessagesAsync](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync)，在第一個參數中傳遞 1 僅擷取佇列中的下一則訊息，以接收佇列中的訊息。 收到訊息後，請呼叫 [DeleteMessageAsync](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) 以從佇列中刪除該訊息。
+   此方法會藉由呼叫 [`ReceiveMessagesAsync`](/dotnet/api/azure.storage.queues.queueclient.receivemessagesasync)，在第一個參數中傳遞 `1` 僅擷取佇列中的下一則訊息，以接收佇列中的訊息。 收到訊息後，請呼叫 [`DeleteMessageAsync`](/dotnet/api/azure.storage.queues.queueclient.deletemessageasync) 以從佇列中刪除該訊息。
 
    當使用 v12 之前的 SDK 版本將訊息傳送至佇列時，會自動以 Base64 編碼。 從 v12 開始，已移除該功能。 使用 v12 SDK 來擷取訊息時，不會自動進行 Base64 解碼。 您必須自行明確地對內容進行 [Base64 解碼](/dotnet/api/system.convert.frombase64string)。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 
-   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
 
-   此方法會藉由呼叫 [GetMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) 接收來自佇列的訊息。 收到訊息後，請呼叫 [DeleteMessageAsync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) 以從佇列中刪除該訊息。
+   此方法會藉由呼叫 [`GetMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync) 接收來自佇列的訊息。 收到訊息後，請呼叫 [`DeleteMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync) 以從佇列中刪除該訊息。
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Initial.cs" id="snippet_InitialRetrieveMessage":::
 
@@ -246,13 +246,13 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 在專案結束後確認您是否還需要您建立的資源，是最佳做法。 讓資源繼續執行可能會產生費用。 如果佇列存在，但是空的，請詢問使用者是否要加以刪除。
 
-1. 展開 **RetrieveNextMessageAsync** 方法，以納入刪除空佇列的提示。
+1. 展開 `RetrieveNextMessageAsync` 方法，以納入刪除空佇列的提示。
 
-   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
-   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_RetrieveMessage":::
 
@@ -260,19 +260,19 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 ## <a name="check-for-command-line-arguments"></a>檢查命令列引數
 
-如果在應用程式中傳入了任何命令列引數，請假設它們是要新增至佇列的訊息。 引數聯結在一起，組成字串。 藉由呼叫我們先前新增的 **InsertMessageAsync** 方法，將此字串新增至訊息佇列。
+如果在應用程式中傳入了任何命令列引數，請假設它們是要新增至佇列的訊息。 引數聯結在一起，組成字串。 藉由呼叫我們先前新增的 `InsertMessageAsync` 方法，將此字串新增至訊息佇列。
 
-如果沒有任何命令列引數，請嘗試擷取作業。 呼叫 **RetrieveNextMessageAsync** 方法，以擷取佇列中的下一則訊息。
+如果沒有任何命令列引數，請嘗試擷取作業。 呼叫 `RetrieveNextMessageAsync` 方法，以擷取佇列中的下一則訊息。
 
-最後，等到使用者輸入後，再呼叫 **Console.ReadLine** 結束作業。
+最後，等到使用者輸入後，再呼叫 `Console.ReadLine` 結束作業。
 
-1. 展開 **Main** 方法以檢查命令列引數，並等候使用者輸入。
+1. 展開 `Main` 方法以檢查命令列引數，並等候使用者輸入。
 
-   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_Main":::
 
-   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_Main":::
 
@@ -282,11 +282,11 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 以下列出此專案的完整程式碼。
 
-   # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+   # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v12/QueueApp/Program.cs" id="snippet_AllCode":::
 
-   # <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+   # <a name="net-v11"></a>[.NET v11](#tab/dotnetv11)
 
    :::code language="csharp" source="~/azure-storage-snippets/queues/tutorial/dotnet/dotnet-v11/QueueApp/Program.cs" id="snippet_AllCode":::
    ---
@@ -362,9 +362,9 @@ Azure 佇列儲存體可實作雲端式佇列，使分散式應用程式的元�
 
 1. 建立佇列
 1. 從佇列新增和移除訊息
-1. 刪除 Azure 儲存體佇列
+1. 刪除 Azure 佇列儲存體佇列
 
-如需詳細資訊，請參閱 Azure 佇列快速入門。
+如需詳細資訊，請參閱 Azure 佇列儲存體快速入門。
 
 > [!div class="nextstepaction"]
 > [入口網站的佇列快速入門](storage-quickstart-queues-portal.md)

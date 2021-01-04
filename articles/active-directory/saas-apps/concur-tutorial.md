@@ -51,7 +51,7 @@ ms.locfileid: "92455364"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Concur** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Concur**。
 1. 從結果面板選取 [Concur]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso-for-concur"></a>設定和測試 Concur 的 Azure AD SSO

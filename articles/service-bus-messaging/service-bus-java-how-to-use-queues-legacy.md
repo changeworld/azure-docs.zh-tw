@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 774f9e485c58712ea8648a148c92b6f9ef6a58c0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d24645ada2ef4ac12101aa747aacc1bbf90f123e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452619"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509252"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>快速入門：透過 Java 使用 Azure 服務匯流排佇列來傳送和接收訊息
 
@@ -18,7 +18,7 @@ ms.locfileid: "96452619"
 在本教學課程中，您將了解如何建立 Java 應用程式以對 Azure 服務匯流排佇列傳送和接收訊息。 
 
 > [!WARNING]
->  本快速入門使用舊的 azure-servicebus 套件。 如果快速入門使用最新的 azure-messaging-servicebus 套件，請參閱[使用 azure-messaging-servicebus 傳送和接收訊息](service-bus-java-how-to-use-queues.md)。 
+>  本快速入門會使用舊的 `azure-servicebus` 套件。 如需使用最新 `azure-messaging-servicebus` 套件的快速入門，請參閱[使用 `azure-messaging-servicebus` 傳送和接收訊息](service-bus-java-how-to-use-queues.md)。 
 
 
 ## <a name="prerequisites"></a>先決條件
@@ -136,7 +136,7 @@ public void run() throws Exception {
     void registerReceiver(QueueClient queueClient) throws Exception {
         // register the RegisterMessageHandler callback
         queueClient.registerMessageHandler(new IMessageHandler() {
-        // callback invoked when the message handler loop has obtained a message
+            // callback invoked when the message handler loop has obtained a message
             public CompletableFuture<Void> onMessageAsync(IMessage message) {
             // receives message is passed to callback
                 if (message.getLabel() != null &&
@@ -183,8 +183,7 @@ public void run() throws Exception {
 > 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
 
 ## <a name="next-steps"></a>後續步驟
-您可以在 GitHub 的 [azure-service-bus repository](https://github.com/Azure/azure-service-bus/tree/master/samples/Java) 中找到 Java 範例。
-
+您可以在 GitHub 上的 [`azure-service-bus` 存放庫](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)中找到 Java 範例。
 
 [Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation

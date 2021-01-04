@@ -1,21 +1,21 @@
 ---
 title: 教學課程 - 將資源新增至範本
-description: 描述建立第一個 Azure Resource Manager 範本的步驟。 您將了解範本檔案語法及部署儲存體帳戶的方式。
+description: 描述建立第一個 Azure Resource Manager 範本 (ARM 範本) 的步驟。 您將了解範本檔案語法及部署儲存體帳戶的方式。
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 58a6423944abca703a42b68044e58d86187457bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49cee5c98c4099e214a732371269e935db353152
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614371"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106966"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>教學課程：將資源新增至 ARM 範本
 
-在[上一個教學課程](template-tutorial-create-first-template.md)中，您已了解如何建立空白範本並加以部署。 您現在已準備好要部署實際的資源。 在此教學課程中，您會新增儲存體帳戶。 完成此教學課程大約需要 **9 分鐘**。
+在[上一個教學課程](template-tutorial-create-first-template.md)中，您已了解如何建立空白 Azure Resource Manager 範本 (ARM 範本) 並加以部署。 您現在已準備好要部署實際的資源。 在此教學課程中，您會新增儲存體帳戶。 完成此教學課程大約需要 **9 分鐘**。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -27,7 +27,7 @@ ms.locfileid: "91614371"
 
 若要將儲存體帳戶定義新增至現有範本，查看下列範例中反白顯示的 JSON。 請複製整個檔案，並以其內容取代您的範本，而不要嘗試複製範本的區段。
 
-以唯一的儲存體帳戶名稱取代 **{provide-unique-name}** (包括大括弧)。
+以唯一的儲存體帳戶名稱取代 `{provide-unique-name}` 和大括弧 `{}`。
 
 > [!IMPORTANT]
 > 儲存體帳戶名稱必須是 Azure 中是獨一無二的。 名稱必須只有小寫字母或數字。 名稱長度不得超過 24 個字元。 您可以嘗試使用 **store1** 作為前置詞，然後加上您的姓名縮寫和今天日期之類的命名模式。 例如，您使用的名稱看起來可能像 **store1abc09092019**。
@@ -42,15 +42,15 @@ ms.locfileid: "91614371"
 
 您部署的每個資源至少都有下列三個屬性：
 
-- **類型**：資源類型。 此值是資源提供者的命名空間與資源類型的組合 (例如 Microsoft.Storage/storageAccounts)。
-- **apiVersion**：要用來建立資源的 REST API 版本。 每個資源提供者都發佈了自己的 API 版本，所以此值是類型特有的。
-- **名稱**：資源名稱。
+- `type`：資源類型。 此值是資源提供者的命名空間與資源類型的組合 (例如 `Microsoft.Storage/storageAccounts`)。
+- `apiVersion`：要用來建立資源的 REST API 版本。 每個資源提供者都發佈了自己的 API 版本，所以此值是類型特有的。
+- `name`：資源名稱。
 
-大部分的資源也都有 **location** 屬性，此屬性會設定部署資源的區域。
+大部分的資源也都有 `location` 屬性，此屬性會設定部署資源的區域。
 
 其他屬性會因為資源類型和 API 版本而有所不同。 了解 API 版本與可用屬性之間的連線非常重要，因此，讓我們深入了解詳細資料。
 
-在此教學課程中，您已將儲存體帳戶新增至範本。 您可以在 [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts) 上查看該 API 版本。 請注意，您並未將所有屬性新增至範本。 其中有許多選擇性的屬性。 Microsoft 儲存體資源提供者可以發行新的 API 版本，但您要部署的版本不需要變更。 您可以繼續使用該版本，並且知道部署的結果將會一致。
+在此教學課程中，您已將儲存體帳戶新增至範本。 您可以在 [storageAccounts 2019-04-01](/azure/templates/microsoft.storage/2019-04-01/storageaccounts) 上查看該 API 版本。 請注意，您並未將所有屬性新增至範本。 其中有許多選擇性的屬性。 `Microsoft.Storage` 儲存體資源提供者可以發行新的 API 版本，但您要部署的版本不需要變更。 您可以繼續使用該版本，並且知道部署的結果將會一致。
 
 如果您檢視較舊的 API 版本 (例如 [storageAccounts 2016-05-01](/azure/templates/microsoft.storage/2016-05-01/storageaccounts))，您將會看到有較小的屬性集可供使用。
 
@@ -60,7 +60,7 @@ ms.locfileid: "91614371"
 
 您可以部署範本來建立儲存體帳戶。 為您的部署提供不同的名稱，讓您可以輕鬆地在記錄中找到它。
 
-如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 **templateFile** 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
+如果您尚未建立資源群組，請參閱[建立資源群組](template-tutorial-create-first-template.md#create-resource-group)。 此範例假設您已將 `templateFile` 變數設為範本檔案的路徑，如[第一個教學課程](template-tutorial-create-first-template.md#deploy-template)所示。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -85,15 +85,15 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> 如果部署失敗，請使用 **verbose** 參數來取得所建立資源的相關資訊。 使用 **debug** 參數來取得更多資訊以進行偵錯。
+> 如果部署失敗，請使用 `verbose` 參數來取得所建立資源的相關資訊。 使用 `debug` 參數來取得更多資訊以進行偵錯。
 
 您可能遇到的兩個可能部署失敗：
 
-- 錯誤：Code=AccountNameInvalid; Message={provide-unique-name} 不是有效的儲存體帳戶名稱。 儲存體帳戶名稱長度必須介於 3 到 24 個字元，而且只能使用數字和小寫字母。
+- `Error: Code=AccountNameInvalid; Message={provide-unique-name}` 不是有效的儲存體帳戶名稱。 儲存體帳戶名稱長度必須介於 3 到 24 個字元，而且只能使用數字和小寫字母。
 
-    在範本中，以唯一的儲存體帳戶名稱取代 **{provide-unique-name}** 。  請參閱[新增資源](#add-resource)。
+    在範本中，以唯一的儲存體帳戶名稱取代 `{provide-unique-name}` 。 請參閱[新增資源](#add-resource)。
 
-- 錯誤：Code=StorageAccountAlreadyTaken; Message=名稱為 store1abc09092019 的儲存體帳戶已在使用。
+- `Error: Code=StorageAccountAlreadyTaken; Message=The storage account named store1abc09092019` 已在使用中。
 
     在範本中，嘗試使用不同的儲存體帳戶名稱。
 
@@ -122,7 +122,7 @@ az deployment group create \
 
 ## <a name="next-steps"></a>後續步驟
 
-您已建立簡單的範本來部署 Azure 儲存體帳戶。  在後續的教學課程中，您會了解如何將參數、變數、資源和輸出新增至範本。 這些功能都是適用於更複雜範本的建置組塊。
+您已建立簡單的範本來部署 Azure 儲存體帳戶。 在後續的教學課程中，您會了解如何將參數、變數、資源和輸出新增至範本。 這些功能都是適用於更複雜範本的建置組塊。
 
 > [!div class="nextstepaction"]
 > [新增參數](template-tutorial-add-parameters.md)

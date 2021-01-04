@@ -5,24 +5,28 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
-ms.date: 07/23/2020
-author: sakash279
-ms.author: akshanka
+ms.date: 12/10/2020
+author: ThomasWeiss
+ms.author: thweiss
 ms.custom: devx-track-java
-ms.openlocfilehash: 1f3f5a35beeac6c683aeb6db16a417b897755666
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a5da5e1717f897d2236fd73f0fff525e157f7a0e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079762"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093684"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>如何從 Java 使用 Azure 資料表儲存體或 Azure Cosmos DB 資料表 API
+
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-此文章說明如何建立資料表、儲存您的資料，以及對資料執行 CRUD 作業。 選擇 Azure 表格服務或 Azure Cosmos DB 資料表 API。 相關範例是以 Java 撰寫並使用 [Azure Storage SDK for Java][Azure Storage SDK for Java]。 所涵蓋的案例包括「建立」  、「列出」  和「刪除」  資料表，以及在資料表中「插入」  、「查詢」  、「修改」  和「刪除」  實體。 如需資料表的詳細資訊，請參閱 [後續步驟](#next-steps) 一節。
+此文章說明如何建立資料表、儲存您的資料，以及對資料執行 CRUD 作業。 選擇 Azure 表格服務或 Azure Cosmos DB 資料表 API。 相關範例是以 Java 撰寫並使用 [Azure Storage SDK v8 for Java][Azure Storage SDK for Java]。 所涵蓋的案例包括「建立」  、「列出」  和「刪除」  資料表，以及在資料表中「插入」  、「查詢」  、「修改」  和「刪除」  實體。 如需資料表的詳細資訊，請參閱 [後續步驟](#next-steps) 一節。
+
+> [!IMPORTANT]
+> 支援表格儲存體的 Azure 儲存體 SDK 最後一個版本為 [v8][Azure Storage SDK for Java]。 即將推出新版且適用於 Java 的表格儲存體 SDK。
 
 > [!NOTE]
 > 有一套 SDK 可供在 Android 裝置上使用 Azure 儲存體的開發人員使用。 如需詳細資訊，請參閱 [Azure Storage SDK for Android][Azure Storage SDK for Android]。
@@ -435,7 +439,7 @@ catch (Exception e)
 
 ## <a name="modify-an-entity"></a>修改實體
 
-若要修改實體，請從資料表服務擷取它，對實體物件進行變更，然後以取代或合併操作將變更儲存回資料表服務。 下列程式碼會變更現有客戶的電話號碼。 不像我們為了執行插入而呼叫 **TableOperation.insert** ，這個程式碼會呼叫 **TableOperation.replace** 。 **CloudTable.execute** 方法會呼叫資料表服務，然後實體就會被取代，除非有另一個應用程式在此應用程式擷取它後的這段時間變更了這個實體。 發生此情況時，系統會擲回例外狀況，且必須重新擷取、修改及儲存實體。 這種開放式並行存取重試模式在分散式儲存體系統中相當常見。
+若要修改實體，請從資料表服務擷取它，對實體物件進行變更，然後以取代或合併操作將變更儲存回資料表服務。 下列程式碼會變更現有客戶的電話號碼。 不像我們為了執行插入而呼叫 **TableOperation.insert**，這個程式碼會呼叫 **TableOperation.replace**。 **CloudTable.execute** 方法會呼叫資料表服務，然後實體就會被取代，除非有另一個應用程式在此應用程式擷取它後的這段時間變更了這個實體。 發生此情況時，系統會擲回例外狀況，且必須重新擷取、修改及儲存實體。 這種開放式並行存取重試模式在分散式儲存體系統中相當常見。
 
 ```java
 try
@@ -519,7 +523,7 @@ catch (Exception e)
 
 ## <a name="insert-or-replace-an-entity"></a>插入或取代實體
 
-您經常會想要新增實體至資料表，但不知道它是否已在資料表中。 插入或取代作業可讓您提出單一要求，其會在實體不存在時加以插入，或是在實體存在時取代現有實體。 以先前的範例為基礎，下列程式碼會插入或取代 "Walter Harp" 的實體。 建立新實體之後，此程式碼會呼叫 **TableOperation.insertOrReplace** 方法。 此程式碼接著會使用資料表以及插入或取代資料表作業當作參數，在 **Cloud Table** 物件上呼叫 **execute** 。 若只要更新實體的某一部分，可以改用 **TableOperation.insertOrMerge** 方法。 不支援在本機儲存體模擬器上進行插入或取代，因此，此程式碼唯有在使用表格服務上的帳戶時才會執行。 您可以進一步了解插入或取代和插入或合併：[Azure 資料表：插入和查詢投影簡介][Azure 資料表：插入和查詢投影簡介]。
+您經常會想要新增實體至資料表，但不知道它是否已在資料表中。 插入或取代作業可讓您提出單一要求，其會在實體不存在時加以插入，或是在實體存在時取代現有實體。 以先前的範例為基礎，下列程式碼會插入或取代 "Walter Harp" 的實體。 建立新實體之後，此程式碼會呼叫 **TableOperation.insertOrReplace** 方法。 此程式碼接著會使用資料表以及插入或取代資料表作業當作參數，在 **Cloud Table** 物件上呼叫 **execute**。 若只要更新實體的某一部分，可以改用 **TableOperation.insertOrMerge** 方法。 不支援在本機儲存體模擬器上進行插入或取代，因此，此程式碼唯有在使用表格服務上的帳戶時才會執行。 您可以進一步了解插入或取代和插入或合併：[Azure 資料表：插入和查詢投影簡介][Azure 資料表：插入和查詢投影簡介]。
 
 ```java
 try
@@ -628,7 +632,7 @@ catch (Exception e)
 如需詳細資訊，請瀏覽[適用於 Java 開發人員的 Azure](/java/azure)。
 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
+[Azure Storage SDK for Java]: https://github.com/Azure/azure-storage-java/tree/v8.6.5
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure 儲存體用戶端 SDK 參考]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: /rest/api/storageservices/

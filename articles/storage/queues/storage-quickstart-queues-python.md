@@ -1,19 +1,19 @@
 ---
-title: 快速入門：Azure 佇列儲存體程式庫 v12 - Python
-description: 了解如何使用 Azure 佇列 Python v12 程式庫來建立佇列，並將訊息新增至該佇列。 接下來，您會了解如何讀取和刪除佇列中的訊息。 您也將了解如何刪除佇列。
+title: 快速入門：Azure 佇列儲存體用戶端程式庫 v12 - Python
+description: 了解如何使用適用於 Python 的 Azure 佇列儲存體用戶端程式庫 v12，建立佇列及在其中新增訊息。 接著了解如何讀取和刪除佇列中的訊息。 您也將了解如何刪除佇列。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/10/2019
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: a19b7bc448e9a03afd122dab749352dfa21eaa5b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0eeb1333952533cdf392b93a926f256097557151
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491888"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585491"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>快速入門：適用於 Python 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -48,7 +48,7 @@ ms.locfileid: "96491888"
 
 ### <a name="create-the-project"></a>建立專案
 
-建立一個名為 *queues-quickstart-v12* 的 Python 應用程式。
+建立一個名為 `queues-quickstart-v12` 的 Python 應用程式。
 
 1. 在主控台視窗 (例如 cmd、PowerShell 或 Bash) 中，為專案建立一個新目錄。
 
@@ -56,7 +56,7 @@ ms.locfileid: "96491888"
     mkdir queues-quickstart-v12
     ```
 
-1. 切換至新建立的 *queues-quickstart-v12* 目錄。
+1. 切換至新建立的 `queues-quickstart-v12` 目錄。
 
     ```console
     cd queues-quickstart-v12
@@ -70,7 +70,7 @@ ms.locfileid: "96491888"
 pip install azure-storage-queue
 ```
 
-此命令會安裝適用於 Python 套件的 Azure 佇列儲存體用戶端程式庫，以及它所相依的所有程式庫。 在此案例中，這只是適用於 Python 的 Azure 核心程式庫。
+此命令會安裝適用於 Python 套件的 Azure 佇列儲存體用戶端程式庫，以及其所相依的所有程式庫。 在此案例中，這只是適用於 Python 的 Azure 核心程式庫。
 
 ### <a name="set-up-the-app-framework"></a>設定應用程式架構
 
@@ -93,7 +93,7 @@ pip install azure-storage-queue
 
     ```
 
-1. 將新檔案以 *queues-quickstart-v12.py* 儲存在 *queues-quickstart-v12* 目錄中。
+1. 將新檔案以 `queues-quickstart-v12.py` 儲存在 `queues-quickstart-v12` 目錄中。
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -111,9 +111,9 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 使用下列 Python 類別與這些資源互動：
 
-- [QueueServiceClient](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
-- [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
-- [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage)：`QueueMessage` 類別代表在佇列上呼叫 [receive_Messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 時所傳回的個別物件。
+- [`QueueServiceClient`](/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient)：`QueueServiceClient` 可讓您管理儲存體帳戶中的所有佇列。
+- [`QueueClient`](/python/api/azure-storage-queue/azure.storage.queue.queueclient)：`QueueClient` 類別可讓您管理和操作個別佇列及其訊息。
+- [`QueueMessage`](/python/api/azure-storage-queue/azure.storage.queue.queuemessage)：`QueueMessage` 類別代表在佇列上呼叫 [`receive_messages`](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 時所傳回的個別物件。
 
 ## <a name="code-examples"></a>程式碼範例
 
@@ -146,12 +146,12 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 ### <a name="create-a-queue"></a>建立佇列
 
-決定新佇列的名稱。 下列程式碼會將 UUID 值附加到佇列名稱，以確保它是唯一的。
+決定新佇列的名稱。 下列程式碼會將 UUID 值附加到佇列名稱，以確保其是唯一的。
 
 > [!IMPORTANT]
-> 佇列名稱只能包含小寫字母、數字和連字號，且必須以字母或數字開頭。 每個連字號前後都必須緊接非連字號的字元。 名稱長度也必須為 3 到 63 個字元。 如需為佇列命名的詳細資訊，請參閱[為佇列和中繼資料命名](/rest/api/storageservices/naming-queues-and-metadata)。
+> 佇列名稱只能包含小寫字母、數字和連字號，且必須以字母或數字開頭。 每個連字號前後都必須緊接非連字號的字元。 名稱長度也必須為 3 到 63 個字元。 如需詳細資訊，請參閱[為佇列和中繼資料命名](/rest/api/storageservices/naming-queues-and-metadata)。
 
-建立 [QueueClient](/python/api/azure-storage-queue/azure.storage.queue.queueclient) 類別的執行個體。 然後，呼叫 [create_queue](/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) 方法，以在您的儲存體帳戶中建立佇列。
+建立 [`QueueClient`](/python/api/azure-storage-queue/azure.storage.queue.queueclient) 類別的執行個體。 然後，呼叫 [`create_queue`](/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) 方法，以在您的儲存體帳戶中建立佇列。
 
 將此程式碼加入到 `try` 區塊的結尾處：
 
@@ -171,7 +171,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 ### <a name="add-messages-to-a-queue"></a>將訊息新增至佇列
 
-下列程式碼片段會藉由呼叫 [send_message](/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) 方法，將訊息新增至佇列。 其也會儲存第三次 `send_message` 呼叫所傳回的 [QueueMessage](/python/api/azure-storage-queue/azure.storage.queue.queuemessage)。 `saved_message` 用來在稍後的程式中更新訊息內容。
+下列程式碼片段會藉由呼叫 [`send_message`](/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) 方法，將訊息新增至佇列。 其也會儲存第三次 `send_message` 呼叫所傳回的 [`QueueMessage`](/python/api/azure-storage-queue/azure.storage.queue.queuemessage)。 `saved_message` 用來在稍後的程式中更新訊息內容。
 
 將此程式碼加入到 `try` 區塊的結尾處：
 
@@ -186,7 +186,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 ### <a name="peek-at-messages-in-a-queue"></a>窺視佇列中的訊息
 
-藉由呼叫 [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) 方法來窺視佇列中的訊息。 `peek_messages` 方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
+藉由呼叫 [`peek_messages`](/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) 方法來窺視佇列中的訊息。 此方法會從佇列前面擷取一或多則訊息，但不會更改訊息的可見性。
 
 將此程式碼加入到 `try` 區塊的結尾處：
 
@@ -203,7 +203,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 ### <a name="update-a-message-in-a-queue"></a>更新佇列中的訊息
 
-藉由呼叫 [update_message](/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) 方法來更新訊息的內容。 `update_message` 方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同新內容，傳入先前在程式碼中儲存的訊息中的值。 `saved_message` 值會識別要更新的訊息。
+藉由呼叫 [`update_message`](/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) 方法來更新訊息的內容。 此方法可以變更訊息的可見度逾時和內容。 訊息內容必須是大小上限為 64 KB 的 UTF-8 編碼字串。 連同新內容，傳入先前在程式碼中儲存的訊息中的值。 `saved_message` 值會識別要更新的訊息。
 
 ```python
     print("\nUpdating the third message in the queue...")
@@ -215,7 +215,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 ### <a name="receive-messages-from-a-queue"></a>從佇列接收訊息
 
-藉由呼叫 [receive_messages](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 方法來下載先前新增的訊息。
+藉由呼叫 [`receive_messages`](/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) 方法來下載先前新增的訊息。
 
 將此程式碼加入到 `try` 區塊的結尾處：
 
@@ -249,7 +249,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 ### <a name="delete-a-queue"></a>刪除佇列
 
-下列程式碼會使用 [delete_queue](/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) 方法刪除佇列，以清除應用程式所建立的資源。
+下列程式碼會使用 [`delete_queue`](/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) 方法刪除佇列，以清除應用程式所建立的資源。
 
 將此程式碼新增到 `try` 區塊的結尾並儲存檔案：
 
@@ -268,7 +268,7 @@ Azure 佇列儲存體是用來儲存大量訊息的服務。 一則佇列訊息�
 
 此應用程式會建立三則訊息，並將其新增至 Azure 佇列。 程式碼會列出佇列中的訊息，然後在最後刪除佇列之前，先擷取並刪除訊息。
 
-在主控台視窗中，瀏覽至包含 *queues-quickstart-v12.py* 檔案的目錄，然後執行下列 `python` 命令來執行應用程式。
+在主控台視窗中，瀏覽至包含 `queues-quickstart-v12.py` 檔案的目錄，然後執行下列 `python` 命令來執行應用程式。
 
 ```console
 python queues-quickstart-v12.py
@@ -277,7 +277,7 @@ python queues-quickstart-v12.py
 應用程式的輸出類似下列範例：
 
 ```output
-Azure Queue storage v12 - Python quickstart sample
+Azure Queue Storage client library v12 - Python quickstart sample
 Creating queue: quickstartqueues-cac365be-7ce6-4065-bd65-3756ea052cb8
 
 Adding messages to the queue...
@@ -305,7 +305,7 @@ Done
 
 當應用程式在接收訊息之前暫停，請在 [Azure 入口網站](https://portal.azure.com)中檢查您的儲存體帳戶。 確認訊息在佇列中。
 
-按下 **Enter** 鍵來接收和刪除訊息。 出現提示時，請再次按下 **Enter** 鍵，以刪除佇列並完成示範。
+按下 `Enter` 鍵來接收和刪除訊息。 出現提示時，請再次按下 `Enter` 鍵，以刪除佇列並完成示範。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -317,4 +317,4 @@ Done
 > [適用於 Python 開發人員的 Azure](/azure/python/)
 
 - 若要深入了解，請參閱[適用於 Python 的 Azure 儲存體程式庫](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)。
-- 若要查看更多 Azure 佇列儲存體範例應用程式，請繼續 [Azure 佇列儲存體 v12 Python 用戶端程式庫範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)。
+- 如需更多 Azure 佇列儲存體範例應用程式，請參閱[適用於 Python 的 Azure 佇列儲存體用戶端程式庫 v12 - 範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples)。

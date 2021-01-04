@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 11/09/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96013389"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509014"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>快速入門：使用 Azure Data Factory UI 建立資料處理站 
 
@@ -45,42 +45,42 @@ ms.locfileid: "96013389"
 1. 選取 [整合]，然後選取 [Data Factory]。 
    
    ![在 [新增] 窗格中選取資料處理站](./media/doc-common-process/new-azure-data-factory-menu.png)
-1. 在 [新增資料處理站] 頁面上，輸入 **ADFTutorialDataFactory** 作為 [名稱]。 
+1. 在 [建立 Data Factory] 頁面的 [基本資料] 索引標籤下，選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
+1. 針對 [資源群組]，採取下列其中一個步驟︰
+
+    a. 從下拉式清單中選取現有的資源群組。
+
+    b. 選取 [建立新的] ，然後輸入新資源群組的名稱。
+    
+    若要了解資源群組，請參閱[使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。 
+
+1. 針對 [區域]，選取資料處理站的位置。
+
+   清單只會顯示 Data Factory 支援的位置，以及儲存您 Azure Data Factory 中繼資料的位置。 Data Factory 所使用的相關聯資料存放區 (如 Azure 儲存體和 Azure SQL Database) 和計算 (如 Azure HDInsight) 可在其他區域中執行。
  
+1. 針對 [名稱]，輸入 **ADFTutorialDataFactory**。
    Azure Data Factory 的名稱必須是 *全域唯一的*。 如果您看到下列錯誤，請變更資料處理站的名稱 (例如 **&lt;yourname&gt;ADFTutorialDataFactory**)，然後試著重新建立。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory - 命名規則](naming-rules.md)一文。
   
    ![名稱無法使用時的錯誤](./media/doc-common-process/name-not-available-error.png)
-1. 針對 [訂用帳戶]，選取您要用來建立資料處理站的 Azure 訂用帳戶。 
-1. 針對 [資源群組]，使用下列其中一個步驟︰
-     
-   - 選取 [使用現有的]，然後從清單中選取現有的資源群組。 
-   - 選取 [建立新的] ，然後輸入資源群組的名稱。   
-         
-   若要了解資源群組，請參閱 [使用資源群組管理您的 Azure 資源](../azure-resource-manager/management/overview.md)。  
-1. 針對 [版本]，選取 [V2]。
-1. 針對 [位置]，選取資料處理站的位置。
 
-   清單只會顯示 Data Factory 支援的位置，以及儲存您 Azure Data Factory 中繼資料的位置。 Data Factory 所使用的相關聯資料存放區 (如 Azure 儲存體和 Azure SQL Database) 和計算 (如 Azure HDInsight) 可在其他區域中執行。
+1. 針對 [版本]  ，選取 [V2]  。
 
-1. 完成時，選取 [下一步:Git 組態]，接著選取 [稍後設定 Git]。
+1. 完成時，選取 [下一步:Git 組態]，接著選取 [稍後設定 Git] 核取方塊。
 
-1. 選取 [建立]。 在建立完成後，選取 [前往資源]，以瀏覽至 [資料處理站] 頁面。 
+1. 選取 [檢閱 +建立]，然後在通過驗證後選取 [建立]。 在建立完成後，選取 [前往資源]，以瀏覽至 [資料處理站] 頁面。 
 
-1. 選取 [編寫與監視] 圖格，以在個別的索引標籤上啟動 Azure Data Factory 使用者介面 (UI) 應用程式。
+1. 選取 [編寫與監視] 圖格，以在個別的瀏覽器索引標籤上啟動 Azure Data Factory 使用者介面 (UI) 應用程式。
    
    ![資料處理站的首頁，具有 [編寫與監視] 圖格](./media/doc-common-process/data-factory-home-page.png)
    
    > [!NOTE]
    > 如果您看到網頁瀏覽器停滯在「授權中」，請清除 [封鎖第三方 Cookie 和網站資料] 核取方塊。 或讓其保持在選取狀態，但為 **login.microsoftonline.com** 建立例外，然後再次嘗試開啟應用程式。
    
-1. 在 [現在就開始吧] 頁面上，切換至左面板中的 [編寫] 索引標籤。 
-
-    ![[現在就開始吧] 頁面](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-a-linked-service"></a>建立連結的服務
 在此程序中，您會建立連結服務，將 Azure 儲存體帳戶連結至資料處理站。 連結的服務具有連線資訊，可供 Data Factory 服務在執行階段中用來連線。
 
-1. 從左窗格中開啟 [[管理] 索引標籤](./author-management-hub.md)。
+1. 在 Azure Data Factory UI 頁面的左側窗格中，開啟 [[管理]](./author-management-hub.md)。
 
 1. 在 [連結的服務] 頁面上，選取 [+ 新增] 以建立新的連結服務。
 
@@ -109,10 +109,13 @@ ms.locfileid: "96013389"
 此輸出資料集代表已複製到目的地的資料。 在輸出資料集定義中，您可以指定要將資料複製過去的 Blob 容器 (**adftutorial**)、資料夾 (**output**) 和檔案。 每個管線執行都有其相關聯的唯一識別碼。 您可以使用系統變數 **RunId** 來存取此識別碼。 輸出檔案的名稱會根據管線的執行識別碼進行動態評估。   
 
 在連結服務設定中，您已指定包含來源資料的 Azure 儲存體帳戶。 在來源資料集設定中，您可以指定來源資料確切的所在位置 (Blob 容器、資料夾和檔案)。 在接收資料集設定中，您可以指定要將資料複製過去的位置 (Blob 容器、資料夾和檔案)。 
- 
+
+1. 從左側窗格中選取 [編寫] 索引標籤。
+
 1. 選取 **+** (加號) 按鈕，然後選取 [資料集]。
 
    ![用於建立資料集的功能表](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+
 1. 在 [新增資料集] 頁面上，選取 [Azure Blob 儲存體]，然後選取 [繼續]。 
 
 1. 在 [選取格式] 頁面上，選擇您資料的格式類型，然後選取 [繼續]。 在此情況下，如果您不剖析內容而原封不動地複製檔案，請選取 [二進位]。
@@ -163,7 +166,7 @@ ms.locfileid: "96013389"
 
 1. 在複製活動設定中切換至 [接收] 索引標籤，然後選取 **OutputDataset** 作為 [接收資料集]。
 
-1. 在畫布上方的管線設定上按一下 [驗證]，以驗證管線設定。 確認管線已驗證成功。 若要關閉驗證輸出，請選取 **>>** (向右箭號) 按鈕。 
+1. 在畫布上方的管線設定上按一下 [驗證]，以驗證管線設定。 確認管線已驗證成功。 若要關閉驗證輸出，請選取右上角的 [驗證] 按鈕。 
 
    ![驗證管線](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
@@ -185,7 +188,7 @@ ms.locfileid: "96013389"
 
     ![全部發佈](./media/quickstart-create-data-factory-portal/publish-all.png)
 
-1. 若要手動觸發管線，請選取管線工具列上的 [新增觸發程序]，然後選取 [立即觸發]。 在 [管線執行] 頁面上，選取 [完成]。
+1. 若要手動觸發管線，請選取管線工具列上的 [新增觸發程序]，然後選取 [立即觸發]。 在 [管線執行] 頁面上，選取 [確定]。
 
 ## <a name="monitor-the-pipeline"></a>監視管線
 

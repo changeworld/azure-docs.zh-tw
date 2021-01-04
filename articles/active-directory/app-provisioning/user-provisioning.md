@@ -11,16 +11,18 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 5b593add9c9d7be446798eecdd03b396c3fe513a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 486add54a6d41493c54bd7b0b0339804f6c31847
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174725"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399990"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>什麼是在 Azure AD 中自動佈建 SaaS 應用程式使用者？
 
 在 Azure Active Directory (Azure AD) 中，**應用程式佈建** 一詞是指在使用者需要存取的雲端 ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) 應用程式中，自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)等應用程式。
+
+若要深入了解 SCIM 和如何加入技術社群的交談，請參閱[透過 SCIM 技術社群進行佈建](https://aka.ms/scimoverview)。
 
 ![佈建概觀圖](./media/user-provisioning/provisioning-overview.png)
 

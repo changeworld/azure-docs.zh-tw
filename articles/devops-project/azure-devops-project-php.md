@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 99c8bc00beb7b189b200e0b02435262ae34835d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856087"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588959"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>使用 Azure DevOps Starter 建立適用於 PHP 的 CI/CD 管線
 
@@ -64,9 +64,9 @@ Azure DevOps Starter 提供簡化的體驗，可建立 Azure 資源，並在 Azu
 
  DevOps 入門版會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請遵循下列步驟：
 
-1. 在 DevOps Starter 儀表板的左側，選取您主要分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
+1. 在 DevOps 入門版儀表板的左側，選取主分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
 
-1. 若要檢視存放庫複製 URL，請從瀏覽器右上方選取 [複製]。 您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，請使用網頁瀏覽器，直接進行和認可主要分支的程式碼變更。
+1. 若要檢視存放庫複製 URL，請從瀏覽器右上方選取 [複製]。 您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，請使用網頁瀏覽器，直接進行和認可主分支的程式碼變更。
 
 1. 從左側移至 **resources/views/welcome.blade.php** 檔案。
 
@@ -82,7 +82,7 @@ Azure DevOps Starter 提供簡化的體驗，可建立 Azure 資源，並在 Azu
 
 1. 在 DevOps 入門版儀表板頂端選取 [建置管線]。 此連結會開啟瀏覽器索引標籤和新專案的建置管線。
 
-1. 指向 [狀態] 欄位，然後選取**省略符號** (...)。功能表會顯示數個選項，例如將新建置排入佇列、暫停建置和編輯建置管線。
+1. 指向 [狀態] 欄位，然後選取 **省略符號** (...)。功能表會顯示數個選項，例如將新建置排入佇列、暫停建置和編輯建置管線。
 
 1. 選取 [編輯]  。
 
@@ -92,11 +92,11 @@ Azure DevOps Starter 提供簡化的體驗，可建立 Azure 資源，並在 Azu
 
 1. 將建置管線的名稱變更成較具描述性的名稱，並選取 [儲存並排入佇列]，然後選取 [儲存]。
 
-1. 在建置管線名稱下，選取 [記錄]。  [記錄]**** 窗格會顯示建置上近期建置變更的稽核線索。 Azure Pipelines 會追蹤對建置管線進行的任何變更，且可讓您比較版本。
+1. 在建置管線名稱下，選取 [記錄]。  [記錄] 窗格會顯示建置上近期建置變更的稽核線索。 Azure Pipelines 會追蹤對建置管線進行的任何變更，且可讓您比較版本。
 
 1. 選取 [觸發程序]  。 DevOps Starter 已自動建立 CI 觸發程序，且每次對存放庫的認可都會啟動新的組建。 您可以選擇性地選擇要在 CI 程序中包含還是排除分支。
 
-1. 選取 [保留期]  。 根據案例，您可以指定原則來保留或移除特定數目的組建。
+1. 選取 [保留期]。 根據案例，您可以指定原則來保留或移除特定數目的組建。
 
 1. 選取 [建置及發行]  ，然後選取 [版本]  。  DevOps 入門版會建立發行管線來管理對 Azure 的部署。
 
