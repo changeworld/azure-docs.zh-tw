@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 0725896c1357700cc0e05abfdaaa8acfa588f729
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5a4b2af8626f69b6947950f87b99ed5a60692d8b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456546"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>教學課程：Azure Active Directory 與 Canvas 整合
 
@@ -61,9 +61,9 @@ ms.locfileid: "92456546"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Canvas** ，從結果面板中選取 [Canvas]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Canvas**，從結果面板中選取 [Canvas]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Canvas](common/search-new-app.png)
+    ![結果清單中的 Canvas](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -174,8 +174,8 @@ ms.locfileid: "92456546"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -233,11 +233,11 @@ ms.locfileid: "92456546"
 
    ![加入使用者](./media/canvas-lms-tutorial/ic775997.png "新增使用者")
 
-   a. 在 [全名]  文字方塊中，輸入使用者的名稱，例如 **BrittaSimon** 。
+   a. 在 [全名]  文字方塊中，輸入使用者的名稱，例如 **BrittaSimon**。
 
-   b. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com** 。
+   b. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
 
-   c. 在 [登入]  文字方塊中，輸入使用者的 Azure AD 電子郵件地址，例如 **brittasimon\@contoso.com** 。
+   c. 在 [登入]  文字方塊中，輸入使用者的 Azure AD 電子郵件地址，例如 **brittasimon\@contoso.com**。
 
    d. 選取 [以電子郵件通知使用者有關這個帳戶的建立]  。
 

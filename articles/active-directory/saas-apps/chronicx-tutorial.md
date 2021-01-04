@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fb1d6ceca6321eabac11cf16d3a2c424f5d9619e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0603e04424acfe979f44110b973b79f6c07e0b81
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456176"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>教學課程：Azure Active Directory 與 ChronicX® 整合
 
@@ -62,9 +62,9 @@ ChronicX® 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ChronicX®** ，從結果面板中選取 [ChronicX®]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ChronicX®**，從結果面板中選取 [ChronicX®]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 ChronicX®](common/search-new-app.png)
+    ![結果清單中的 ChronicX®](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -109,7 +109,7 @@ ChronicX® 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     >[登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [ChronicX® 用戶端支援小組](https://www.casebank.com/contact-us/)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -143,8 +143,8 @@ ChronicX® 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

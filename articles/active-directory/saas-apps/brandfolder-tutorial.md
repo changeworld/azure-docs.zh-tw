@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 56d2a3355fac565fac65ac1ba3c7d0c4c2fd8429
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5004b433189700bc2fbaf5efe65e4556d40521cb
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456797"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671966"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>教學課程：Azure Active Directory 與 Brandfolder 整合
 
@@ -63,13 +63,13 @@ Brandfolder 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Brandfolder** ，從結果面板中選取 [Brandfolder]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Brandfolder**，從結果面板中選取 [Brandfolder]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Brandfolder](common/search-new-app.png)
+    ![結果清單中的 Brandfolder](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
-在本節中，您會以名為 **Britta Simon** . 的測試使用者為基礎，設定及測試與 Brandfolder 搭配運作的 Azure AD 單一登入。
+在本節中，您會以名為 **Britta Simon**. 的測試使用者為基礎，設定及測試與 Brandfolder 搭配運作的 Azure AD 單一登入。
 若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Brandfolder 中相關使用者之間的連結關聯性。
 
 若要使用 Brandfolder 來設定並測試 Azure AD 單一登入，您需要完成下列建置組塊：
@@ -134,8 +134,8 @@ Brandfolder 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -171,7 +171,7 @@ Brandfolder 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-brandfolder-test-user"></a>建立 Brandfolder 測試使用者
 
-本節會在 Brandfolder 中建立名為 Britta Simon 的使用者。 Brandfolder 支援依預設啟用的 **Just-In-Time 使用者佈建** 。 在這一節沒有您需要進行的動作項目。 如果 Brandfolder 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
+本節會在 Brandfolder 中建立名為 Britta Simon 的使用者。 Brandfolder 支援依預設啟用的 **Just-In-Time 使用者佈建**。 在這一節沒有您需要進行的動作項目。 如果 Brandfolder 中還沒有任何使用者存在，在驗證之後就會建立新的使用者。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

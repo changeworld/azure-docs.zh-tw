@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: ffd93016a2cbde3aa2a5844cfdb72e4c0cc8b623
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5e0b1d8d2cb80886131a88c01a6c24102ad7c77c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457107"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673533"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>教學課程：Azure Active Directory 與 SAML SSO for Bitbucket by resolution GmbH 整合
 
@@ -63,9 +63,9 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **SAML SSO for Bitbucket by resolution GmbH** 、從結果面板中選取 [SAML SSO for Bitbucket by resolution GmbH]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **SAML SSO for Bitbucket by resolution GmbH**、從結果面板中選取 [SAML SSO for Bitbucket by resolution GmbH]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 SAML SSO for Bitbucket by resolution GmbH](common/search-new-app.png)
+    ![結果清單中的 SAML SSO for Bitbucket by resolution GmbH](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -116,7 +116,7 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [SAML SSO for Bitbucket by resolution GmbH 用戶端支援小組](https://marketplace.atlassian.com/apps/1217045/saml-single-sign-on-sso-bitbucket?hosting=server&tab=support)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -153,7 +153,7 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 7.  在 [匯入 SAML Idp 中繼資料]  頁面上，按一下 [載入檔案]  ，以上傳您已從 Azure 入口網站下載的 **中繼資料 XML** 檔案。
 
     ![Idpmetadata](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
-    
+
 8. 按 [下一步]  。
 
 9. 按一下 [儲存設定]  。
@@ -176,8 +176,8 @@ SAML SSO for Bitbucket by resolution GmbH 與 Azure AD 整合提供下列優點�
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

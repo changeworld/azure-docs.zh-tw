@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e760ffa0dfc3bf080852da2fc401abd83fe4101
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd8faece0d737e97f1c5809f27840f1d9192548
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457736"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673396"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>教學課程：Azure Active Directory 與 ARES for Enterprise 整合
 
@@ -63,9 +63,9 @@ ARES for Enterprise 與 Azure AD 整合可提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **ARES for Enterprise** ，並從結果面板中選取 [ARES for Enterprise]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **ARES for Enterprise**，並從結果面板中選取 [ARES for Enterprise]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 ARES for Enterprise](common/search-new-app.png)
+    ![結果清單中的 ARES for Enterprise](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -129,8 +129,8 @@ ARES for Enterprise 與 Azure AD 整合可提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -166,7 +166,7 @@ ARES for Enterprise 與 Azure AD 整合可提供下列優點：
 
 ### <a name="create-ares-for-enterprise-test-user"></a>建立 ARES for Enterprise 測試使用者
 
-本節會在 ARES for Enterprise 中建立名為 Britta Simon 的使用者。 ARES for Enterprise 支援依預設啟用的 **Just-In-Time 佈建** 。 在這一節沒有您需要進行的動作項目。 如果 ARES for Enterprise 中還沒有使用者，當您嘗試存取 ARES for Enterprise 時，就會建立新的使用者。
+本節會在 ARES for Enterprise 中建立名為 Britta Simon 的使用者。 ARES for Enterprise 支援依預設啟用的 **Just-In-Time 佈建**。 在這一節沒有您需要進行的動作項目。 如果 ARES for Enterprise 中還沒有使用者，當您嘗試存取 ARES for Enterprise 時，就會建立新的使用者。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

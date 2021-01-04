@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ef09ef7d2ca6dd68def732831f9341dcd3aa6d62
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 284ec65955de60f41d7bb0f97bf608faba3d4b79
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458042"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>教學課程：Azure Active Directory 與 AnswerHub 整合
 
@@ -61,9 +61,9 @@ ms.locfileid: "92458042"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **AnswerHub** 。 在結果清單中選取 [AnswerHub]  ，然後選取 [新增]  。
+4. 在搜尋方塊中，輸入 **AnswerHub**。 在結果清單中選取 [AnswerHub]  ，然後選取 [新增]  。
 
-     ![結果清單中的 AnswerHub](common/search-new-app.png)
+    ![結果清單中的 AnswerHub](common/search-new-app.png)
 
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -141,13 +141,13 @@ ms.locfileid: "92458042"
 4. 在 [IDP 設定]  索引標籤上，完成下列步驟：
 
     ![顯示已選取 [使用者和群組] 索引標籤的 AnswerHub 頁面螢幕擷取畫面。](./media/answerhub-tutorial/ic785172.png "SAML 設定")  
-  
+
     a. 在 [IDP 登入 URL]  方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
-  
+
     b. 在 [IDP 登出 URL]  方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  。
 
     c. 在 [IDP 名稱識別碼格式] 方塊中，輸入在 Azure 入口網站的 [使用者屬性] 區段中選取的 [識別碼] 值。
-  
+
     d. 選取 [金鑰和憑證]  。
 
 5. 在 [金鑰和憑證]  區段中，完成下列步驟：
@@ -155,7 +155,7 @@ ms.locfileid: "92458042"
     [金鑰和憑證] 區段![](./media/answerhub-tutorial/ic785173.png "金鑰和憑證")  
 
     a. 在「記事本」中開啟從 Azure 入口網站下載的 Base-64 編碼憑證，複製其內容，然後將內容貼到 [IDP 公開金鑰 (x509 格式)]  方塊中。
-  
+
     b. 選取 [儲存]  。
 
 6. 在 [IDP 組態]  索引標籤上，再次選取 [儲存]  。
@@ -178,8 +178,8 @@ ms.locfileid: "92458042"
 
     ![使用者屬性](common/user-properties.png)
 
-    a. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  方塊中，輸入 **brittasimon\@<yourcompanydomain.extension>** 。  
     例如： BrittaSimon@contoso.com 。
 
@@ -231,7 +231,7 @@ ms.locfileid: "92458042"
 
 4. 在左側窗格的 [管理使用者]  區段中，選取 [建立或匯入使用者]  ，然後選取 [使用者和群組]  。
 
-   ![顯示 AnswerHub 頁面的螢幕擷取畫面，其中已選取 [使用者和群組] 索引標籤以及呼叫建立或匯入使用者連結。](./media/answerhub-tutorial/ic785175.png "使用者與群組")
+    ![顯示 AnswerHub 頁面的螢幕擷取畫面，其中已選取 [使用者和群組] 索引標籤以及呼叫建立或匯入使用者連結。](./media/answerhub-tutorial/ic785175.png "使用者與群組")
 
 5. 在適當的方塊中，輸入您要新增之有效 Azure AD 帳戶的 [電子郵件地址]  、[使用者名稱]  和 [密碼]  ，然後選取 [儲存]  。
 

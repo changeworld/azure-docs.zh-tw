@@ -3,12 +3,12 @@ title: 查看並使用虛擬機器的 Azure Resource Manager 範本
 description: 了解如何從虛擬機器使用 Azure Resource Manager 範本來建立其他 VM
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb7cb38dfb2c1664017f0e342fefecdd464df45f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282488"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696006"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立虛擬機器 
 
@@ -25,7 +25,7 @@ ms.locfileid: "91282488"
 
    ![顯示虛擬機器清單作為 DevTest Labs 虛擬機器清單中單一專案的螢幕擷取畫面。](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   這種類型的 Resource Manager 範本可透過 Azure PowerShell 命令 **>new-azresourcegroupdeployment** 或透過 Azure CLI 命令 **az group deployment create**來布建。 它需要系統管理員權限，所以獲得 DevTest Labs 使用者角色指派的使用者無法執行部署。 
+   這種類型的 Resource Manager 範本可透過 Azure PowerShell 命令 **>new-azresourcegroupdeployment** 或透過 Azure CLI 命令 **az deployment group create** 來布建。 它需要系統管理員權限，所以獲得 DevTest Labs 使用者角色指派的使用者無法執行部署。 
 
 - 使用 Microsoft.Compute/virtualmachines 資源類型的 Resource Manager 範本可以將多個 VM 佈建為 DevTest Labs 虛擬機器清單中的單一環境：
 
@@ -41,7 +41,7 @@ ms.locfileid: "91282488"
 1. 請依照[在實驗室中建立您的第一個 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) 中的步驟，開始建立虛擬機器。
 1. 輸入虛擬機器的必要資訊，並且新增您想要用於此 VM 的任何成品。
 1. 切換至 [ **Advanced Settings** ] 索引標籤。 
-1. 在 [設定] 設定視窗底部，選擇 [檢視 ARM 範本]****。
+1. 在 [設定] 設定視窗底部，選擇 [檢視 ARM 範本]。
 1. 複製及儲存 Resource Manager 範本，以便稍後用來建立另一個虛擬機器。
 
    ![儲存以供稍後使用的 Resource Manager 範本](./media/devtest-lab-use-arm-template/devtestlab-lab-copy-rm-template.png)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 835ee5f1c9da081618ed314c694f578a6e9f4aee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8181718d6524c78e036f6953ebff73217acab890
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455386"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>教學課程：Azure Active Directory 與 Condeco 整合
 
@@ -63,9 +63,9 @@ ms.locfileid: "92455386"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Condeco** ，從結果面板中選取 [Condeco]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Condeco**，從結果面板中選取 [Condeco]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Condeco](common/search-new-app.png)
+    ![結果清單中的 Condeco](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -108,7 +108,7 @@ ms.locfileid: "92455386"
     > [!NOTE]
     > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Condeco 用戶端支援小組](mailto:supportna@condecosoftware.com)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -142,8 +142,8 @@ ms.locfileid: "92455386"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -179,7 +179,7 @@ ms.locfileid: "92455386"
 
 ### <a name="create-condeco-test-user"></a>建立 Condeco 測試使用者
 
-本節的目標是要在 Condeco 中建立一個名為 Britta Simon 的使用者。 Condeco 支援預設啟用的 **Just-In-Time 佈建** 。
+本節的目標是要在 Condeco 中建立一個名為 Britta Simon 的使用者。 Condeco 支援預設啟用的 **Just-In-Time 佈建**。
 
 在這一節沒有您需要進行的動作項目。 嘗試存取 Condeco 期間會建立新使用者 (如果尚不存在)。
 

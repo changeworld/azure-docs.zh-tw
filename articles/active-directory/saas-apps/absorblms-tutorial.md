@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 31b0a4fd8d97371eb4e127a2a473893a0487f220
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3d90d35e113b5f9757faf59681bb2532b66f2b09
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319083"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>教學課程：Azure Active Directory 與 Absorb LMS
 
@@ -64,9 +64,9 @@ ms.locfileid: "92319083"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Absorb LMS**，從結果面板中選取 [Absorb LMS]****，然後按一下 [新增]**** 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Absorb LMS**，從結果面板中選取 [Absorb LMS]，然後按一下 [新增] 按鈕以新增應用程式。
 
-     ![結果清單中的 Absorb LMS](common/search-new-app.png)
+    ![結果清單中的 Absorb LMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -88,7 +88,7 @@ ms.locfileid: "92319083"
 
 若要設定與 Absorb LMS 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/) 的 [Absorb LMS]**** 應用程式整合頁面上，選取 [單一登入]****。
+1. 在 [Azure 入口網站](https://portal.azure.com/) 的 [Absorb LMS] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -117,17 +117,17 @@ ms.locfileid: "92319083"
     b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://company.myabsorb.com/api/rest/v2/authentication/saml`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Absorb LMS 用戶端支援小組](https://support.absorblms.com/hc/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Absorb LMS 用戶端支援小組](https://support.absorblms.com/hc/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。
 
     ![image](common/edit-attribute.png)
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-7. 在 [設定 Absorb LMS]**** 區段上，依據您的需求複製適當的 URL。
+7. 在 [設定 Absorb LMS] 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -141,39 +141,39 @@ ms.locfileid: "92319083"
 
 1. 在新的網頁瀏覽器視窗中，以系統管理員身分登入您的 Absorb LMS 公司網站。
 
-2. 選取右上方的 [帳戶]**** 按鈕。
+2. 選取右上方的 [帳戶] 按鈕。
 
     ![[帳戶] 按鈕](./media/absorblms-tutorial/1.png)
 
-3. 在 [帳戶] 窗格中，選取 [入口網站設定]****。
+3. 在 [帳戶] 窗格中，選取 [入口網站設定]。
 
     ![[入口網站設定] 連結](./media/absorblms-tutorial/2.png)
 
-4. 選取 [管理 SSO 設定]**** 索引標籤。
+4. 選取 [管理 SSO 設定] 索引標籤。
 
     ![[使用者] 索引標籤](./media/absorblms-tutorial/managesso.png)
 
-5. 在 [管理單一登入設定]**** 頁面上，執行下列操作：
+5. 在 [管理單一登入設定] 頁面上，執行下列操作：
 
     ![[單一登入設定] 頁面](./media/absorblms-tutorial/settings.png)
 
-    a. 在 [名稱]**** 文字方塊中，輸入 Azure AD Marketplace SSO 之類的名稱。
+    a. 在 [名稱] 文字方塊中，輸入 Azure AD Marketplace SSO 之類的名稱。
 
-    b. 選取 [SAML]**** 作為 [方法]****。
+    b. 選取 [SAML] 作為 [方法]。
 
-    c. 在 [記事本] 中，開啟您從 Azure 入口網站下載的憑證。 移除 **---BEGIN CERTIFICATE---** 和 **---END CERTIFICATE---** 標記。 接著，在 [金鑰]**** 方塊中，貼上其餘的內容。
+    c. 在 [記事本] 中，開啟您從 Azure 入口網站下載的憑證。 移除 **---BEGIN CERTIFICATE---** 和 **---END CERTIFICATE---** 標記。 接著，在 [金鑰] 方塊中，貼上其餘的內容。
 
-    d. 在 [模式]**** 方塊中，選取 [識別提供者起始]****。
+    d. 在 [模式] 方塊中，選取 [識別提供者起始]。
 
-    e. 在 [ID 屬性]**** 方塊中，選取您在 Azure AD 中設定為使用者識別碼的屬性。 例如，如果已在 Azure AD 中選取 nameidentifier**，請選取 [使用者名稱]****。
+    e. 在 [ID 屬性] 方塊中，選取您在 Azure AD 中設定為使用者識別碼的屬性。 例如，如果已在 Azure AD 中選取 nameidentifier，請選取 [使用者名稱]。
 
-    f. 選取 [Sha256]**** 作為 [簽章類型]****。
+    f. 選取 [Sha256] 作為 [簽章類型]。
 
-    g. 在 [登入 URL]**** 方塊中，從應用程式的 Azure 入口網站 [屬性]**** 頁面貼上**使用者存取 URL**。
+    g. 在 [登入 URL] 方塊中，從應用程式的 Azure 入口網站 [屬性] 頁面貼上 **使用者存取 URL**。
 
-    h. 在 [登出 URL]**** 中，貼上您從 Azure 入口網站的 [設定登入]**** 視窗所複製的**登出 URL** 值。
+    h. 在 [登出 URL] 中，貼上您從 Azure 入口網站的 [設定登入] 視窗所複製的 **登出 URL** 值。
 
-    i. 將 [自動重新導向]**** 切換為 [開啟]****。
+    i. 將 [自動重新導向] 切換為 [開啟]。
 
 6. 選取 [儲存]。
 
@@ -196,7 +196,7 @@ ms.locfileid: "92319083"
     ![[使用者] 對話方塊](common/user-properties.png)
 
     a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
-  
+
     b. 在 [使用者名稱]  欄位中，輸入 `brittasimon\@yourcompanydomain.extension`  
     例如， BrittaSimon@contoso.com
 
@@ -208,11 +208,11 @@ ms.locfileid: "92319083"
 
 在本節中，您會將 Absorb LMS 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [Absorb LMS]****。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [Absorb LMS]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，輸入並選取 [Absorb LMS]****。
+2. 在應用程式清單中，輸入並選取 [Absorb LMS]。
 
     ![應用程式清單中的 Absorb LMS 連結](common/all-applications.png)
 
@@ -238,29 +238,29 @@ ms.locfileid: "92319083"
 
 1. 以系統管理員身分登入您的 Absorb LMS 公司網站。
 
-2. 在 [使用者]**** 窗格中，選取 [使用者]****。
+2. 在 [使用者] 窗格中，選取 [使用者]。
 
     ![[使用者] 連結](./media/absorblms-tutorial/absorblms_userssub.png)
 
-3. 選取 [使用者]**** 索引標籤。
+3. 選取 [使用者] 索引標籤。
 
     ![[新增] 下拉式清單](./media/absorblms-tutorial/absorblms_createuser.png)
 
-4. 在 [新增使用者]**** 頁面上，執行下列操作：
+4. 在 [新增使用者] 頁面上，執行下列操作：
 
     ![[新增使用者] 頁面](./media/absorblms-tutorial/user.png)
 
-    a. 在 [名字]**** 方塊中，輸入名字，例如 **Britta**。
+    a. 在 [名字] 方塊中，輸入名字，例如 **Britta**。
 
-    b. 在 [姓氏]**** 方塊中，輸入姓氏，例如 **Simon**。
+    b. 在 [姓氏] 方塊中，輸入姓氏，例如 **Simon**。
 
-    c. 在 [使用者名稱]**** 方塊中，輸入全名，例如 **Britta Simon**。
+    c. 在 [使用者名稱] 方塊中，輸入全名，例如 **Britta Simon**。
 
-    d. 在 [密碼]**** 方塊中，輸入使用者密碼。
+    d. 在 [密碼] 方塊中，輸入使用者密碼。
 
     e. 在 [確認密碼] 方塊中，重新輸入密碼。
 
-    f. 將 [為使用中]**** 切換設定為 [使用中]****。
+    f. 將 [為使用中] 切換設定為 [使用中]。
 
 5. 選取 [儲存]。
 

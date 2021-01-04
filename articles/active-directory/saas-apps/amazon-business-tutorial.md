@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1424669af9fe28257e66c8c5438f6e1d171954e0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589888"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672894"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>教學課程：整合 Amazon Business 與 Azure Active Directory
 
@@ -74,12 +74,12 @@ ms.locfileid: "97589888"
 1. 在 [選取單一登入方法] 頁面上，選取 [SAML]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
-   ![編輯基本 SAML 組態](common/edit-urls.png)
+    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [基本 SAML 組態] 區段上，若您想要以 **IDP** 起始模式進行設定，請執行下列步驟：
 
     1. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列其中一個模式輸入 URL：
-    
+
        | URL | 區域 |
        |-|-|
        | `https://www.amazon.com`| 北美洲 |
@@ -87,7 +87,7 @@ ms.locfileid: "97589888"
        | `https://www.amazon.de`| 歐洲 |
 
     1. 在 [回覆 URL] 文字方塊中，以下列其中一個模式輸入 URL：
-    
+
        | URL | 區域 |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| 北美洲 |
@@ -146,7 +146,7 @@ ms.locfileid: "97589888"
 1. 在 [設定 SSO] 精靈上，根據貴組織的需求選取提供者，然後按 [下一步]。
 
     ![顯示設定 SSO 的螢幕擷取畫面，其中具有 Microsoft Azure AD 和已選取下一步。](media/amazon-business-tutorial/default-group1.png)
-    
+
     > [!NOTE]
     > 雖然已列出 Microsoft ADFS 選項，但其無法與 Azure AD SSO 搭配使用。
 
@@ -193,12 +193,12 @@ ms.locfileid: "97589888"
 1. 最後在 [SSO 連線詳細資料] 區段中，[狀態] 會顯示為 [使用中]。
 
     ![顯示 SSO 連線詳細資料的螢幕擷取畫面，具有 [使用中] 狀態。](media/amazon-business-tutorial/sso-connection5.png)
-    
+
     > [!NOTE]
     > 如果您要以 **SP** 起始模式設定應用程式，請完成下列步驟，並將上述螢幕擷取畫面中的登入 URL 貼入 Azure 入口網站中 [設定其他 URL] 區段的 [登入 URL] 文字方塊中。 請使用下列格式：
     >
     > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
-    
+
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
@@ -236,7 +236,7 @@ ms.locfileid: "97589888"
 1. 在應用程式清單中，選取 [Amazon Business]。
 1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
+    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
 1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 

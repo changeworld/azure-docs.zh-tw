@@ -3,12 +3,12 @@ title: 設定 Azure Red Hat OpenShift v3. x 與容器的 Azure 監視器 |Micros
 description: 本文說明如何使用 Azure Red Hat OpenShift 第3版和更高版本上託管的 Azure 監視器來設定 Kubernetes 叢集的監視。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 2cd39c13ce7d67b2bfcfaca0a6f627e19d289783
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5141ef3a96d39f16a2a9f005dd580b952046e7bf
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186910"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695669"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用容器 Azure 監視器設定 Azure Red Hat OpenShift v3
 
@@ -39,7 +39,7 @@ ms.locfileid: "96186910"
 - 即時資料 (預覽) 
 - 從叢集節點和 pod[收集計量](container-insights-update-metrics.md)，並將其儲存在 Azure 監視器計量資料庫中
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - [Log Analytics 工作區](../platform/design-logs-deployment.md)。
 
@@ -153,7 +153,7 @@ ms.locfileid: "96186910"
 5. 下列步驟會使用 Azure CLI，在啟用監視的情況下部署叢集。
 
     ```azurecli
-    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json
+    az deployment group create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json
     ```
 
     輸出結果類似下面：
@@ -235,7 +235,7 @@ ms.locfileid: "96186910"
 6. 若要使用 Azure CLI 部署，請執行下列命令：
 
     ```azurecli
-    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json
+    az deployment group create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json
     ```
 
     輸出結果類似下面：

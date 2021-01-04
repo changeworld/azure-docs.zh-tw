@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 20f66621368840b5d496000186e6be0e36aff19a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 79c6a5959d000217dcb69370b0e0ac4ccc18ccdd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319203"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673897"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>教學課程：Azure Active Directory 與 15Five 整合
 
@@ -63,7 +63,7 @@ ms.locfileid: "92319203"
 
 4. 在搜尋方塊中，輸入 **15Five**，從結果面板中選取 [15Five]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 15Five](common/search-new-app.png)
+    ![結果清單中的 15Five](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -106,9 +106,9 @@ ms.locfileid: "92319203"
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<companyname>.15five.com/saml2/metadata/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [15Five 用戶端支援小組](https://www.15five.com/contact/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [15Five 用戶端支援小組](https://www.15five.com/contact/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "92319203"
     ![[使用者] 對話方塊](common/user-properties.png)
 
     a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
-  
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

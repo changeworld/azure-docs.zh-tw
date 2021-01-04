@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b6bf0736c2887ee19551e2719ec2418bbacdbd1d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bf1b46a42b0b8b68e1ab95a3345bb3b5435a576b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313672"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673803"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>教學課程：Azure Active Directory 與 Acadia 整合
 
@@ -64,7 +64,7 @@ Acadia 與 Azure AD 整合可提供下列優點：
 
 4. 在搜尋方塊中輸入 **Acadia**，並從結果面板中選取 [Acadia]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Acadia](common/search-new-app.png)
+    ![結果清單中的 Acadia](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -115,7 +115,7 @@ Acadia 與 Azure AD 整合可提供下列優點：
     > [!NOTE]
     > Acadia 小組會在中繼資料檔案中提供步驟 4 和 5 的值，您可以在 [基本 SAML 設定]  區段中，按一下 [上傳中繼資料檔案]  來匯入資料。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 您也可以參考 Azure 入口網站 [基本 SAML 設定]  區段中所顯示的模式，以確認中繼資料的格式是正確的。 若提供的值有誤，請連絡 [Acadia 客戶支援小組](mailto:support@systemsalliance.com)。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -150,7 +150,7 @@ Acadia 與 Azure AD 整合可提供下列優點：
     ![[使用者] 對話方塊](common/user-properties.png)
 
     a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
-  
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

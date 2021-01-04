@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 7330f4229d056d80802572f0cff8b3fcb6d054f1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: c3221063469315b2324c5039a46db622109826aa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456767"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673598"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>教學課程：Azure Active Directory 與 Bridge 整合
 
@@ -61,9 +61,9 @@ ms.locfileid: "92456767"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **Bridge** ，並從結果面板中選取 [Bridge]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **Bridge**，並從結果面板中選取 [Bridge]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Bridge](common/search-new-app.png)
+    ![結果清單中的 Bridge](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -142,8 +142,8 @@ ms.locfileid: "92456767"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

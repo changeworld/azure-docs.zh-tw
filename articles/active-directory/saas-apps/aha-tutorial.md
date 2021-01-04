@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 0e5b9b9ba71412244d42204f6cad712b939d7c15
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 82f3a2dc7f43bd484d6a81efaa8d07f13b746d9e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319003"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671058"
 ---
 # <a name="tutorial-integrate-aha-with-azure-active-directory"></a>教學課程：整合 Aha! 與 Azure Active Directory
 
@@ -77,7 +77,7 @@ ms.locfileid: "92319003"
 1. 在 [選取單一登入方法] 頁面上，選取 [SAML]。
 1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
-   ![編輯基本 SAML 組態](common/edit-urls.png)
+    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [基本 SAML 組態] 區段上，執行下列步驟：
 
@@ -86,7 +86,7 @@ ms.locfileid: "92319003"
     b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://<companyname>.aha.io`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Aha!用戶端支援小組](https://www.aha.io/company/contact)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Aha!用戶端支援小組](https://www.aha.io/company/contact)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 4. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  來下載憑證，並將其儲存在電腦上。
 
@@ -143,7 +143,7 @@ ms.locfileid: "92319003"
     ![設定](./media/aha-tutorial/IC798950.png "設定")
 
 5. 按一下 [帳戶] 。
-  
+
     ![設定檔](./media/aha-tutorial/IC798951.png "設定檔")
 
 6. 按一下 [安全性和單一登入] 。

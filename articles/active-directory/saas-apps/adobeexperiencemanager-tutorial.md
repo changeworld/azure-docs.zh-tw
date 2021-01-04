@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: d82fa5b44d4797d4254a91b4caa72b7c6b5e02ab
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9a98a77b9cc89b7a1a05e676048775aa38c83733
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309233"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>教學課程：Azure Active Directory 與 Adobe Experience Manager 整合
 
@@ -65,7 +65,7 @@ Adobe Experience Manager 與 Azure AD 整合提供下列優點：
 
 4. 在搜尋方塊中，輸入 **Adobe Experience Manager**，從結果面板中選取 [Adobe Experience Manager]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Adobe Experience Manager](common/search-new-app.png)
+    ![結果清單中的 Adobe Experience Manager](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -108,7 +108,7 @@ Adobe Experience Manager 與 Azure AD 整合提供下列優點：
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<AEM Server Url>/saml_login`
 
     > [!NOTE]
-    > [回覆 URL] 不是真實的值。 請使用實際的回覆 URL 來更新 [回覆 URL] 值。 若要取得此值，請連絡 [Adobe Experience Manager 用戶端支援小組](https://helpx.adobe.com/support/experience-manager.html)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > [回覆 URL] 不是真實的值。 請使用實際的回覆 URL 來更新 [回覆 URL] 值。 若要取得此值，請連絡 [Adobe Experience Manager 用戶端支援小組](https://helpx.adobe.com/support/experience-manager.html)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
@@ -182,15 +182,15 @@ Adobe Experience Manager 與 Azure AD 整合提供下列優點：
 
     b. 在 [IDP URL]  方塊中，輸入您從 Azure 入口網站複製的 [登入 URL]  值。
 
-    c. 在 [IDP Certificate Alias] \(IDP 憑證別名\)  方塊中，輸入您已在 TrustStore 中新增的**憑證別名**值。
+    c. 在 [IDP Certificate Alias] \(IDP 憑證別名\)  方塊中，輸入您已在 TrustStore 中新增的 **憑證別名** 值。
 
     d. 在 [服務提供者實體識別碼]  方塊中，輸入您在 Azure 入口網站中設定的唯一 [Azure AD 識別碼]  值。
 
-    e. 在 [Assertion Consumer Service URL] \(判斷提示取用者服務 URL\)  方塊中，輸入您已在 Azure 入口網站中設定的**回覆 URL** 值。
+    e. 在 [Assertion Consumer Service URL] \(判斷提示取用者服務 URL\)  方塊中，輸入您已在 Azure 入口網站中設定的 **回覆 URL** 值。
 
-    f. 在 [Password of Key Store] \(金鑰存放區的密碼\)  方塊中，輸入您已在 KeyStore 中設定的**密碼**。
+    f. 在 [Password of Key Store] \(金鑰存放區的密碼\)  方塊中，輸入您已在 KeyStore 中設定的 **密碼**。
 
-    g. 在 [User Attribute ID] \(使用者屬性識別碼\)  方塊中，輸入**名稱識別碼**或您案例中相關的其他使用者識別碼。
+    g. 在 [User Attribute ID] \(使用者屬性識別碼\)  方塊中，輸入 **名稱識別碼** 或您案例中相關的其他使用者識別碼。
 
     h. 選取 [Autocreate CRX Users] \(自動建立 CRX 使用者\)  。
 
@@ -215,7 +215,7 @@ Adobe Experience Manager 與 Azure AD 整合提供下列優點：
     ![[使用者] 對話方塊](common/user-properties.png)
 
     a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
-  
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -253,7 +253,7 @@ Adobe Experience Manager 與 Azure AD 整合提供下列優點：
 
 在本節中，您會在 Adobe Experience Manager 中建立名為 Britta Simon 的使用者。 如果您已選取 [Autocreate CRX Users] \(自動建立 CRX 使用者\)  選項，系統就會在成功驗證之後，自動建立使用者。
 
-如果您想要手動建立使用者，請與 [Adobe Experience Manager 支援小組](https://helpx.adobe.com/support/experience-manager.html) 合作，在 Adobe Experience Manager 平台中新增使用者。
+如果您想要手動建立使用者，請與 [Adobe Experience Manager 支援小組](https://helpx.adobe.com/support/experience-manager.html) \(英文\) 合作，以在 Adobe Experience Manager 平台中新增使用者。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

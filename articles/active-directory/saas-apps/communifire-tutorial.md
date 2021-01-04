@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 6c2d89c20294446da63889e53e807db7919eb2e1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 48d09a5ef43e267550dd584a9f6356493887d6d7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455522"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673779"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>教學課程：Azure Active Directory 與 Communifire 整合
 
@@ -63,9 +63,9 @@ Communifire 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Communifire** ，從結果面板中選取 [Communifire]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Communifire**，從結果面板中選取 [Communifire]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Communifire](common/search-new-app.png)
+    ![結果清單中的 Communifire](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -116,7 +116,7 @@ Communifire 與 Azure AD 整合提供下列優點：
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Communifire 用戶端支援小組](mailto:support@axerosolutions.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -125,11 +125,11 @@ Communifire 與 Azure AD 整合提供下列優點：
     ![編輯 SAML 簽署憑證](common/edit-certificate.png)
 
     a. 從 [簽署選項] 中選取 [簽署 SAML 回應及判斷提示]。
-    
+
     b. 按一下 [儲存] 
 
     ![Communifire 簽署選項](./media/communifire-tutorial/tutorial-communifire-signing-option.png)
- 
+
 8. 在 [設定 Communifire]  區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
@@ -160,8 +160,8 @@ Communifire 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -197,7 +197,7 @@ Communifire 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-communifire-test-user"></a>建立 Communifire 測試使用者
 
-本節的目標是要在 Communifire 中建立名為 Britta Simon 的使用者。 Communifire 支援依預設啟用的 **Just-In-Time 佈建** 。 嘗試存取 Communifire 期間，會在儲存設定檔詳細資料後建立新的使用者 (如果尚不存在)。
+本節的目標是要在 Communifire 中建立名為 Britta Simon 的使用者。 Communifire 支援依預設啟用的 **Just-In-Time 佈建**。 嘗試存取 Communifire 期間，會在儲存設定檔詳細資料後建立新的使用者 (如果尚不存在)。
 
 >[!Note]
 >如果您需要手動建立使用者，請連絡 [Communifire 支援小組](mailto:support@axerosolutions.com)。

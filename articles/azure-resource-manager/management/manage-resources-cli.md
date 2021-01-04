@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6672fd41dbd199940d663c4f7e1cb7f3b1936ce9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 077ebdb4dd33249923064a4f5ed20c5641a82e26
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185771"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695894"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>使用 Azure CLI 來管理 Azure 資源
 
@@ -43,14 +43,14 @@ az storage account show --resource-group $resourceGroupName --name $storageAccou
 
 ### <a name="deploy-a-template"></a>部署範本
 
-下列腳本會建立部署快速入門範本來建立儲存體帳戶。 如需詳細資訊，請參閱 [快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell)。
+下列腳本會建立部署快速入門範本來建立儲存體帳戶。 如需詳細資訊，請參閱 [快速入門：使用 Visual Studio Code 建立 ARM 範本](../templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell)。
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 echo "Enter the location (i.e. centralus):" &&
 read location &&
-az group deployment create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+az deployment group create --resource-group $resourceGroupName --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure CLI 來部署資源](../templates/deploy-cli.md)。

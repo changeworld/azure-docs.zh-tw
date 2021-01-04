@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 684f37ba3186a719aa9ce730ac07ca4ad42f113d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cc79edf50c4f056f413292d2d43aa8cf8e65136
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458054"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683477"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Azure 監視器中 Log Analytics 工作區的 Resource Manager 範本範例
 本文包含 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)範例，可用來在 Azure 監視器中建立和設定 Log Analytics 工作區。 每個範例都包含範本檔案和參數檔案，且附有要提供給範本的範例值。
@@ -30,7 +30,7 @@ ms.locfileid: "89458054"
 
 ### <a name="notes"></a>注意
 
-- 如果您指定**免費**定價層，請移除 **retentionInDays** 元素。
+- 如果您指定 **免費** 定價層，請移除 **retentionInDays** 元素。
 
 ### <a name="template-file"></a>範本檔案
 
@@ -698,7 +698,6 @@ ms.locfileid: "89458054"
           "properties": {
               "customLogName": "armlog_newline",
               "description": "this is a description",
-              "extractions": [],
               "inputs": [
                 {
                     "location": {

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 29163bf30807b6deac397217475d76e29695f1eb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b73131285c7436e2108a64a136f241724a29b5c6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456886"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672435"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>教學課程：Azure Active Directory 與 BorrowBox 整合
 
@@ -62,9 +62,9 @@ BorrowBox 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **BorrowBox** ，從結果面板中選取 [BorrowBox]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **BorrowBox**，從結果面板中選取 [BorrowBox]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 BorrowBox](common/search-new-app.png)
+    ![結果清單中的 BorrowBox](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -115,7 +115,7 @@ BorrowBox 與 Azure AD 整合提供下列優點：
 
     ![image](common/edit-attribute.png)
 
-7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -149,8 +149,8 @@ BorrowBox 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

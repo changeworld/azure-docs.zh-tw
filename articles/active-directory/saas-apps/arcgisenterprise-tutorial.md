@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 61920b7c5356b6e1fa5683ac0553060c85e256d3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f7578972b054747c75cdbbc2371fc0bf35c6039a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457804"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672554"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>教學課程：Azure Active Directory 與 ArcGIS Enterprise 整合
 
@@ -66,9 +66,9 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ArcGIS Enterprise** ，從結果面板中選取 [ArcGIS Enterprise]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ArcGIS Enterprise**，從結果面板中選取 [ArcGIS Enterprise]，然後按一下 [新增] 按鈕以新增應用程式。
 
-     ![結果清單中的 ArcGIS Enterprise](common/search-new-app.png)
+    ![結果清單中的 ArcGIS Enterprise](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -152,12 +152,12 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![顯示設定識別提供者的螢幕擷取畫面，您會在其中執行這裡所述的步驟。](./media/arcgisenterprise-tutorial/configure4.png)
 
-    a. 在 [名稱] 文字方塊中提供名稱，例如 **Azure Active Directory 測試** 。
+    a. 在 [名稱] 文字方塊中提供名稱，例如 **Azure Active Directory 測試**。
 
     b. 在 [URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [應用程式同盟中繼資料 Url] 值。
 
     c. 按一下 [顯示進階設定] 並複製 [實體識別碼] 值，然後將它貼至 Azure 入口網站中 [ArcGIS Enterprise 網域和 URL] 區段的 [識別碼] 文字方塊。
-    
+
     ![顯示取得實體識別碼和更新識別提供者所在位置的螢幕擷取畫面。](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. 按一下 [更新識別提供者]。
@@ -178,8 +178,8 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

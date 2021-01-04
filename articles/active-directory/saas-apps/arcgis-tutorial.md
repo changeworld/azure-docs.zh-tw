@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 08644c8b3c7967a2ba604cbddb58df2b29c6fc3e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b004394d3f0cc1c4d285c9eba9952a43e8cf65f2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457770"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674004"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>教學課程：Azure Active Directory 與 ArcGIS Online 整合
 
@@ -64,9 +64,9 @@ ms.locfileid: "92457770"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ArcGIS Online** ，從結果面板中選取 [ArcGIS Online]，然後按一下 [新增] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ArcGIS Online**，從結果面板中選取 [ArcGIS Online]，然後按一下 [新增] 按鈕以新增應用程式。
 
-     ![結果清單中的 ArcGIS Online](common/search-new-app.png)
+    ![結果清單中的 ArcGIS Online](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -111,7 +111,7 @@ ms.locfileid: "92457770"
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [ArcGIS Online 用戶端支援小組](https://support.esri.com/en/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -165,8 +165,8 @@ ms.locfileid: "92457770"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱] 欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -210,24 +210,24 @@ ms.locfileid: "92457770"
 1. 登入您的 **ArcGIS** 租用戶。
 
 2. 按一下 [邀請成員]。
-   
+
     ![邀請成員](./media/arcgis-tutorial/ic784747.png "邀請成員")
 
 3. 選取 [自動新增成員而不傳送電子郵件]，然後按 [下一步]。
-   
+
     ![自動加入成員](./media/arcgis-tutorial/ic784748.png "自動加入成員")
 
 4. 在 [成員]  對話頁面上，執行下列步驟：
-   
-     ![加入並檢閱](./media/arcgis-tutorial/ic784749.png "加入並檢閱")
-    
-     a. 輸入您想要佈建的有效 Azure AD 帳戶的 **電子郵件** 、 **名字** 和 **姓氏** 。
-  
+
+    ![加入並檢閱](./media/arcgis-tutorial/ic784749.png "加入並檢閱")
+
+     a. 輸入您想要佈建的有效 Azure AD 帳戶的 **電子郵件**、**名字** 和 **姓氏**。
+
      b. 按一下 [新增並檢閱]。
 5. 檢閱您已輸入的資料，然後按一下 [新增成員]。
-   
+
     ![新增成員](./media/arcgis-tutorial/ic784750.png "加入成員")
-        
+
     > [!NOTE]
     > Azure Active Directory 帳戶的持有者會收到一封電子郵件，並依照連結在啟用其帳戶前進行確認。
 

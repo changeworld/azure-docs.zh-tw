@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: ff5c3d09adaba34672a4c934411a6e12b7b65be2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ac77203d395a76079fcf2a44b2081193d0e7fd72
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455352"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-consent2go"></a>教學課程：Azure Active Directory 與 Consent2Go 整合
 
@@ -61,9 +61,9 @@ Consent2Go 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Consent2Go** ，從結果面板中選取 [Consent2Go]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Consent2Go**，從結果面板中選取 [Consent2Go]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Consent2Go](common/search-new-app.png)
+    ![結果清單中的 Consent2Go](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -127,8 +127,8 @@ Consent2Go 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

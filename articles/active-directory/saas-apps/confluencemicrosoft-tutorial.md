@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: b0cdfd76ed5e7ae20800b52e6074809de12a8b5f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: adee491625cec3b4a22cc7b3d1f3ba17595d9e87
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031465"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673244"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Confluence SAML SSO by Microsoft 整合
 
@@ -196,7 +196,7 @@ ms.locfileid: "97031465"
     1. 複製 [識別碼]、[回覆 URL] 和 [登入 URL] 值，然後在 Azure 入口網站的 [基本 SAML 組態] 區段中，分別貼到 [識別碼]、[回覆 URL] 和 [登入 URL] 文字方塊中。
 
     1. 在 [登入按鈕名稱] 中，輸入您的組織要讓使用者在登入畫面上看到的按鈕名稱。
-    
+
     1. 在 [登入按鈕描述] 中，輸入組織要讓使用者在登入畫面上看到的按鈕描述。
 
     1. 在 [SAML 使用者識別碼位置] 中，選取 [使用者識別碼在 Subject 陳述式的 NameIdentifier 元素中] 或 [使用者識別碼在 Attribute 元素中]。  此識別碼必須為 Confluence 使用者識別碼。 如果使用者識別碼不相符，系統就不會允許使用者登入。 

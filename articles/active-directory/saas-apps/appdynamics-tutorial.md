@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ba4d245329c8edad411fcca0398fc3810b833178
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ac85fc0478f4e775b92de21cf931358d63aa95b4
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458004"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672571"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>教學課程：Azure Active Directory 與 AppDynamics 整合
 
@@ -63,9 +63,9 @@ ms.locfileid: "92458004"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中輸入 **AppDynamics** ，並從結果面板中選取 [AppDynamics]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中輸入 **AppDynamics**，並從結果面板中選取 [AppDynamics]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 AppDynamics](common/search-new-app.png)
+    ![結果清單中的 AppDynamics](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -138,7 +138,7 @@ ms.locfileid: "92458004"
 
 1. 在 [驗證提供者]  區段中，執行下列步驟：
 
-   ![SAML 設定](./media/appdynamics-tutorial/ic790225.png "SAML 設定")
+    ![SAML 設定](./media/appdynamics-tutorial/ic790225.png "SAML 設定")
 
    a. 針對 [驗證提供者]  ，選取 [SAML]  。
 
@@ -166,8 +166,8 @@ ms.locfileid: "92458004"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

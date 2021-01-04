@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: d2a94b1503a6c7cd4a5790cc3ba4693103e70bfb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3bbd18bc7851d4ccffca4f721f6e2aef45ff3c3d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457192"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673705"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>教學課程：Azure Active Directory 與 Bime 整合
 
@@ -61,9 +61,9 @@ Bime 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Bime** ，從結果面板中選取 [Bime]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Bime**，從結果面板中選取 [Bime]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Bime](common/search-new-app.png)
+    ![結果清單中的 Bime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -131,11 +131,11 @@ Bime 與 Azure AD 整合提供下列優點：
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Bime 公司網站。
 
 2. 在工具列中，按一下 [管理]  ，然後按一下 [帳戶]  。
-  
+
     ![顯示已選取 [管理] 項目和 [帳戶] 的螢幕擷取畫面。](./media/bime-tutorial/ic775558.png "管理")
 
 3. 在 [帳戶組態] 頁面上，執行下列步驟：
-  
+
     ![設定單一登入](./media/bime-tutorial/ic775559.png "設定單一登入")
 
     a. 選取 [啟用 SAML 驗證]  。
@@ -162,8 +162,8 @@ Bime 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -217,11 +217,11 @@ Bime 與 Azure AD 整合提供下列優點：
 
     ![使用者詳細資料](./media/bime-tutorial/ic775563.png "使用者詳細資料")
 
-    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta** 。
+    a. 在 [名字]  文字方塊中，輸入使用者的名字，例如 **Britta**。
 
-    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon** 。
+    b. 在 [姓氏]  文字方塊中，輸入使用者的姓氏，例如 **Simon**。
 
-    c. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com** 。
+    c. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
 
     d. 按一下 [檔案]  。
 

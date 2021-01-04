@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07cdb6c3c4a0eb97b4b98b5854c481c4cee16a20
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 124485819bf7fab02e2d62bec46ad50468589773
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457175"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674322"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>教學課程：Azure Active Directory 與 Birst Agile Business Analytics 整合
 
@@ -61,9 +61,9 @@ ms.locfileid: "92457175"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Birst Agile Business Analytics** ，從結果面板中選取 [Birst Agile Business Analytics]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Birst Agile Business Analytics**，從結果面板中選取 [Birst Agile Business Analytics]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Birst Agile Business Analytics](common/search-new-app.png)
+    ![結果清單中的 Birst Agile Business Analytics](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -149,8 +149,8 @@ ms.locfileid: "92457175"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

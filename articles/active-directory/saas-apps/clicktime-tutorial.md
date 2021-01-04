@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: c184d4758d6435659d737c11904357711f4f0a36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3337d66934c1fe317296cffaa9a663e212cce12d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455866"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>教學課程：Azure Active Directory 與 ClickTime 整合
 
@@ -61,9 +61,9 @@ ClickTime 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ClickTime** ，從結果面板中選取 [ClickTime]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ClickTime**，從結果面板中選取 [ClickTime]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 ClickTime](common/search-new-app.png)
+    ![結果清單中的 ClickTime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -104,7 +104,7 @@ ClickTime 與 Azure AD 整合提供下列優點：
     a. 在 [識別碼]  文字方塊中，鍵入 URL：`https://app.clicktime.com/sp/`
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：
-    
+
     ```http
     https://app.clicktime.com/Login/
     https://app.clicktime.com/App/Login/Consume.aspx
@@ -131,15 +131,15 @@ ClickTime 與 Azure AD 整合提供下列優點：
 1. 在頂端工具列中，按一下 [喜好設定]  ，然後按一下 [安全性設定]  。
 
 1. 在 [單一登入喜好設定]  組態區段中，執行下列步驟：
-   
+
     ![安全性設定](./media/clicktime-tutorial/tic777280.png "安全性設定")
-   
+
     a.  選取 [允許]  ，以搭配 **Azure AD** 使用單一登入 (SSO) 進行登入。
-   
+
     b. 在 [識別提供者端點]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  。
-   
+
     c.  在 [記事本] 中開啟從 Azure 入口網站下載的 Base-64 編碼憑證，複製其內容，然後貼到 [X.509 憑證] 文字方塊中。
-   
+
     d.  按一下 [檔案]  。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
@@ -158,8 +158,8 @@ ClickTime 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -206,24 +206,24 @@ ClickTime 需以手動方式佈建。
 1. 登入您的 **ClickTime** 租用戶。
 
 1. 在頂端工具列中，按一下 [公司]  ，然後按一下 [人員]  。
-   
+
     ![顯示 ClickTime 租用戶的螢幕擷取畫面，其中已選取 [公司] 和 [人員]。](./media/clicktime-tutorial/tic777282.png "人員")
 
 1. 按一下 [新增人員]  。
-   
+
     ![新增人員](./media/clicktime-tutorial/tic777283.png "新增人員")
 
 1. 在 [新人員] 區段中，執行下列步驟：
-   
+
     ![顯示 [新增人員] 區段的螢幕擷取畫面，您可以在其中新增此步驟中的資訊。](./media/clicktime-tutorial/tic777284.png "人員")
-   
-    a.  在 [全名]  文字方塊中，輸入使用者 (例如 **Britta Simon** ) 的全名。 
-  
-    b.  在 [Email Address] \(電子郵件地址\)  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com** 。
-       
+
+    a.  在 [全名]  文字方塊中，輸入使用者 (例如 **Britta Simon**) 的全名。 
+
+    b.  在 [Email Address] \(電子郵件地址\)  文字方塊中，輸入使用者的電子郵件地址，例如 **brittasimon\@contoso.com**。
+
     > [!NOTE]
     > 您可以視需要設定新人員物件的其他屬性。
-   
+
     c.  按一下 [檔案]  。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 

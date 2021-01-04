@@ -9,16 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904953"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679070"
 ---
-# <a name="tutorial---migrate-web-service-from-bing-maps"></a>教學課程 - 從 Bing 地圖服務遷移 Web 服務
+# <a name="tutorial-migrate-web-service-from-bing-maps"></a>教學課程：從 Bing 地圖服務遷移 Web 服務
 
-Azure 地圖服務和 Bing 地圖服務都提供透過 REST Web 服務來存取空間 API 的功能。 這些平台的 API 介面所執行的功能很類似，但所使用的命名慣例和回應物件則不同。
+Azure 地圖服務和 Bing 地圖服務都提供透過 REST Web 服務來存取空間 API 的功能。 這些平台的 API 介面所執行的功能很類似，但所使用的命名慣例和回應物件則不同。 在本教學課程中，您將學會如何：
+
+> * 正向和反向地理編碼
+> * 搜尋景點
+> * 計算路線和方線
+> * 擷取地圖影像
+> * 計算距離矩陣
+> * 取得時區詳細資料
 
 下表所提供 Azure 地圖服務的服務 API，會提供與所列 Bing 地圖服務的服務 API 類似的功能。
 
@@ -59,6 +66,12 @@ Azure 地圖服務有一些可能讓您感興趣的額外 REST Web 服務；
 -   [搜尋的最佳做法](./how-to-use-best-practices-for-search.md)
 -   [路由的最佳做法](./how-to-use-best-practices-for-routing.md)
 
+## <a name="prerequisites"></a>必要條件
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+2. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
+
 ## <a name="geocoding-addresses"></a>地理編碼地址
 
 地理編碼程序可將地址 (例如 `"1 Microsoft way, Redmond, WA"`) 轉換成座標 (例如「經度：-122.1298、緯度：47.64005」)。 然後，座標通常會用來在地圖上定位圖釘或置中地圖。
@@ -91,9 +104,9 @@ Azure 地圖服務提供數種用來地理編碼地址的方法；
 
 Azure 地圖服務也支援；
 
--   `countrySecondarySubdivision` – 國家/地區，區域
--   `countryTertiarySubdivision` - 命名區域；自治鎮、村鎮、地方行政區
--   `ofs` - 使用 `maxResults` 參數結合結果的頁面。
+* `countrySecondarySubdivision` – 國家/地區，區域
+* `countryTertiarySubdivision` - 命名區域；自治鎮、村鎮、地方行政區
+* `ofs` - 使用 `maxResults` 參數結合結果的頁面。
 
 **依查詢的位置 (自由格式地址字串)**
 
@@ -109,10 +122,10 @@ Azure 地圖服務也支援；
 
 Azure 地圖服務也支援；
 
--   `typeahead` - 如果查詢將會解讀為部分輸入，且搜尋將會進入預測模式 (自動建議/自動完成)，則為物種。
--   `countrySet` - 用來限制搜尋的 ISO2 國家/地區代碼清單 (以逗號分隔)。
--   `lat`/`lon``topLeft`/`btmRight`，`radius` –指定使用者位置和區域，讓結果的本機相關性更高。
--   `ofs` - 使用 `maxResults` 參數結合結果的頁面。
+* `typeahead` - 如果查詢將會解讀為部分輸入，且搜尋將會進入預測模式 (自動建議/自動完成)，則為物種。
+* `countrySet` - 用來限制搜尋的 ISO2 國家/地區代碼清單 (以逗號分隔)。
+* `lat`/`lon``topLeft`/`btmRight`，`radius` –指定使用者位置和區域，讓結果的本機相關性更高。
+* `ofs` - 使用 `maxResults` 參數結合結果的頁面。
 
 如需如何使用搜尋服務的範例，請參閱[這裡](./how-to-search-for-address.md)。 請務必檢閱[搜尋的最佳做法](./how-to-use-best-practices-for-search.md)文件。
 
@@ -142,9 +155,9 @@ Azure 地圖服務提供數種反向地理編碼方法；
 
 Azure 地圖服務反向地理編碼 API 會有一些 Bing 地圖服務並未提供的額外功能，可能有助於遷移應用程式時的整合：
 
--   擷取速限資料。
--   擷取道路使用資訊；支線、幹線、限制進入、斜坡等等。
--   座標落在街道哪一側。
+* 擷取速限資料。
+* 擷取道路使用資訊；支線、幹線、限制進入、斜坡等等。
+* 座標落在街道哪一側。
 
 **實體類型比較表**
 
@@ -174,10 +187,10 @@ Azure 地圖服務反向地理編碼 API 會有一些 Bing 地圖服務並未提
 
 Azure 地圖服務可用來計算路線和方向。 Azure 地圖服務有許多與 Bing 地圖服務路線規劃服務相同的功能，例如；
 
--   抵達時間和出發時間
--   即時型和預測型交通路線
--   不同運輸模式；開車、走路、卡車
--   導航點順序最佳化 (旅行推銷員)
+* 抵達時間和出發時間
+* 即時型和預測型交通路線
+* 不同運輸模式；開車、走路、卡車
+* 導航點順序最佳化 (旅行推銷員)
 
 > [!NOTE]
 > Azure 地圖服務要求所有導航點都必須是座標。 地址必須先進行地理編碼。
@@ -237,21 +250,21 @@ Azure 地圖服務路線規劃 API 也支援相同 API 內的卡車路線規劃�
 
 Azure 地圖服務路線規劃 API 會有許多 Bing 地圖服務並未提供的額外功能，可能有助於遷移應用程式時的整合：
 
--   支援路線類型：最短、最快、trilling，以及最省油。
--   支援額外的行進模式：自行車、巴士、摩托車、計程車、卡車和貨車。
--   支援 150 個導航點。
--   在單一要求中計算多個行進時間；過往交通情況、即時交通情況、無交通情況。
--   避免額外的道路類型：共乘道路、沒有鋪柏油的道路、已使用的道路。
--   以引擎規格為基礎的路線。 根據剩餘的燃料/電量和引擎規格，計算油車或電動車的路線。
--   指定最大車速。
+* 支援路線類型：最短、最快、trilling，以及最省油。
+* 支援額外的行進模式：自行車、巴士、摩托車、計程車、卡車和貨車。
+* 支援 150 個導航點。
+* 在單一要求中計算多個行進時間；過往交通情況、即時交通情況、無交通情況。
+* 避免額外的道路類型：共乘道路、沒有鋪柏油的道路、已使用的道路。
+* 以引擎規格為基礎的路線。 根據剩餘的燃料/電量和引擎規格，計算油車或電動車的路線。
+* 指定最大車速。
 
 ## <a name="snap-coordinates-to-road"></a>將座標貼齊道路
 
 有數種方式可在 Azure 地圖服務中將座標貼齊道路。
 
--   使用路線指示 API 將座標貼齊道路網路上的邏輯路線。
--   使用 Azure 地圖服務 Web SDK，將個別座標貼齊向量地圖底圖中的最接近道路。
--   直接使用 Azure 地圖服務向量地圖底圖來貼齊個別座標。
+* 使用路線指示 API 將座標貼齊道路網路上的邏輯路線。
+* 使用 Azure 地圖服務 Web SDK，將個別座標貼齊向量地圖底圖中的最接近道路。
+* 直接使用 Azure 地圖服務向量地圖底圖來貼齊個別座標。
 
 **使用路線指示 API 來貼齊座標**
 
@@ -259,8 +272,8 @@ Azure 地圖服務可以使用[路線指示](/rest/api/maps/route/postroutedirec
 
 有兩種不同的方式可以使用路線指示 API 將座標貼齊至道路。
 
--   如果座標低於 150 個，則可以在取得路線指示 API 中以導航點的方式傳遞。 使用這種方法可以抓取兩種不同類型的已貼齊資料；路線指示會包含個別的已對齊導航點，而路線路徑則會包含一組插入的座標，以填滿座標之間的完整路徑。
--   如果座標超過 150 個，則可以使用張貼路線指示 API。 座標開始和結束座標必須傳入查詢參數，但所有座標都可以傳遞至 POST 要求主體中的 `supportingPoints` 參數，並將點的 GeoJSON 幾何集合格式化。 使用此方法時，唯一可用的貼齊資料就是路線路徑，這是一組插入的座標，用來填滿座標之間的完整路徑。 以下是使用 Azure 地圖服務 Web SDK 中的服務模組時，此方法的[範例](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path)。
+* 如果座標低於 150 個，則可以在取得路線指示 API 中以導航點的方式傳遞。 使用這種方法可以抓取兩種不同類型的已貼齊資料；路線指示會包含個別的已對齊導航點，而路線路徑則會包含一組插入的座標，以填滿座標之間的完整路徑。
+* 如果座標超過 150 個，則可以使用張貼路線指示 API。 座標開始和結束座標必須傳入查詢參數，但所有座標都可以傳遞至 POST 要求主體中的 `supportingPoints` 參數，並將點的 GeoJSON 幾何集合格式化。 使用此方法時，唯一可用的貼齊資料就是路線路徑，這是一組插入的座標，用來填滿座標之間的完整路徑。 以下是使用 Azure 地圖服務 Web SDK 中的服務模組時，此方法的[範例](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path)。
 
 下表會交互參照 Bing 地圖服務 API 參數與 Azure 地圖服務中類似的 API 參數。
 
@@ -368,9 +381,7 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 > `&pushpin=45,-110;7;AB`
 
-<center>
-
-![Bing 地圖服務靜態地圖釘選](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)</center>
+![Bing 地圖服務靜態地圖釘選](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -384,21 +395,21 @@ Azure 地圖服務會提供 API 來呈現已覆蓋資料的靜態地圖影像。
 
 `iconType` 值會指定所要建立的圖釘類型，並可具有下列值：
 
--   `default` – 預設的圖釘圖示。
--   `none` – 不會顯示任何圖示，只會呈現標籤。
--   `custom` - 指定要使用自訂圖示。 指向圖示影像的 URL 可在圖釘位置資訊後面新增至 `pins` 參數的結尾。
--   `{udid}` – 儲存在 Azure 地圖服務資料儲存體平台中的圖示所具有的唯一資料識別碼 (UDID)。
+* `default` – 預設的圖釘圖示。
+* `none` – 不會顯示任何圖示，只會呈現標籤。
+* `custom` - 指定要使用自訂圖示。 指向圖示影像的 URL 可在圖釘位置資訊後面新增至 `pins` 參數的結尾。
+* `{udid}` – 儲存在 Azure 地圖服務資料儲存體平台中的圖示所具有的唯一資料識別碼 (UDID)。
 
 Azure 地圖服務中的圖釘樣式會以 `optionNameValue` 格式來新增，如有多個樣式，則以縱線字元 (`|`) 來分隔，例如 `iconType|optionName1Value1|optionName2Value2`。 請注意，選項名稱和值不會分隔。 在 Azure 地圖服務中，下列樣式選項名稱可用來設定圖釘樣式：
 
--   `al` – 指定圖釘的不透明度 (Alpha)。 可以是 0 到 1 之間的數字。
--   `an` – 指定圖釘錨點。 以 `x y` 格式指定的 x 和 y 像素值。
--   `co` – 圖釘的色彩。 必須是 24 位元的十六進位色彩：`000000` 到 `FFFFFF`。
--   `la` – 指定標籤錨點。 以 `x y` 格式指定的 x 和 y 像素值。
--   `lc` – 標籤的色彩。 必須是 24 位元的十六進位色彩：`000000` 到 `FFFFFF`。
--   `ls` – 標籤的大小 (以像素為單位)。 可以是大於 0 的數字。
--   `ro` – 用來旋轉圖示的值 (以度為單位)。 可以是 -360 到 360 之間的數字。
--   `sc` – 圖釘圖示的縮放值。 可以是大於 0 的數字。
+* `al` – 指定圖釘的不透明度 (Alpha)。 可以是 0 到 1 之間的數字。
+* `an` – 指定圖釘錨點。 以 `x y` 格式指定的 x 和 y 像素值。
+* `co` – 圖釘的色彩。 必須是 24 位元的十六進位色彩：`000000` 到 `FFFFFF`。
+* `la` – 指定標籤錨點。 以 `x y` 格式指定的 x 和 y 像素值。
+* `lc` – 標籤的色彩。 必須是 24 位元的十六進位色彩：`000000` 到 `FFFFFF`。
+* `ls` – 標籤的大小 (以像素為單位)。 可以是大於 0 的數字。
+* `ro` – 用來旋轉圖示的值 (以度為單位)。 可以是 -360 到 360 之間的數字。
+* `sc` – 圖釘圖示的縮放值。 可以是大於 0 的數字。
 
 系統會為每個圖釘位置都指定標籤值，而不是將單一標籤值套用至位置清單中的所有圖釘。 標籤值可以是有多個字元的字串，並以單引號括住，以確保系統不會將其誤認為樣式或位置值。
 
@@ -406,17 +417,13 @@ Azure 地圖服務中的圖釘樣式會以 `optionNameValue` 格式來新增，�
 
 > `&pins=default|coFF0000|la15 50||'Space Needle'-122.349300 47.620180`
 
-<center>
-
-![Azure 地圖服務靜態地圖釘選](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)</center>
+![Azure 地圖服務靜態地圖釘選](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)
 
 下列範例會使用標籤值 '1'、'2' 和 '3' 來新增三個圖釘：
 
 > `&pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12`
 
-<center>
-
-![Azure 地圖服務靜態地圖多個釘選](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)</center>
+![Azure 地圖服務靜態地圖多個釘選](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)
 
 ### <a name="draw-curve-url-parameter-format-comparison"></a>繪製曲線 URL 參數格式比較
 
@@ -436,9 +443,7 @@ Bing 地圖服務中的形狀類型包括線條、多邊形、圓形和曲線。
 
 `&drawCurve=l,FF000088,4;45,-110_50,-100`
 
-<center>
-
-![Bing 地圖服務靜態地圖線條](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)</center>
+![Bing 地圖服務靜態地圖線條](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -450,20 +455,18 @@ Bing 地圖服務中的形狀類型包括線條、多邊形、圓形和曲線。
 
 Azure 地圖服務中的路徑樣式會以 `optionNameValue` 格式來新增，如有多個樣式，則以縱線字元 (`|`) 來分隔，例如 `optionName1Value1|optionName2Value2`。 請注意，選項名稱和值不會分隔。 在 Azure 地圖服務中，下列樣式選項名稱可用來設定路徑樣式：
 
--   `fa` – 在呈現多邊形時所使用的填滿色彩不透明度 (Alpha)。 可以是 0 到 1 之間的數字。
--   `fc` – 用來呈現多邊形區域的填滿色彩。
--   `la` – 在繪製線條和多邊形外框時所使用的線條色彩不透明度 (Alpha)。 可以是 0 到 1 之間的數字。
--   `lc` – 用來呈現線條和多邊形外框的線條色彩。
--   `lw` – 線條的寬度 (以像素為單位)。
--   `ra` – 指定圓形半徑 (以公尺為單位)。
+* `fa` – 在呈現多邊形時所使用的填滿色彩不透明度 (Alpha)。 可以是 0 到 1 之間的數字。
+* `fc` – 用來呈現多邊形區域的填滿色彩。
+* `la` – 在繪製線條和多邊形外框時所使用的線條色彩不透明度 (Alpha)。 可以是 0 到 1 之間的數字。
+* `lc` – 用來呈現線條和多邊形外框的線條色彩。
+* `lw` – 線條的寬度 (以像素為單位)。
+* `ra` – 指定圓形半徑 (以公尺為單位)。
 
 例如，在 Azure 地圖服務中，不透明度為 50% 且粗細為 4 個像素的藍色線條可使用下列 URL 參數新增至地圖上的座標 (經度：-110、緯度：45) 和 (經度：-100, 緯度：50) 之間：
 
 > `&path=lc0000FF|la.5|lw4||-110 45|-100 50`
 
-<center>
-
-![Azure 地圖服務靜態地圖線條](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)</center>
+![Azure 地圖服務靜態地圖線條](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)
 
 ## <a name="calculate-a-distance-matrix"></a>計算距離矩陣
 
@@ -547,8 +550,8 @@ Azure 地圖服務會提供數個景點搜尋 API：
 
 Azure 地圖服務提供數個 API 來擷取交通資料。 可用的路況資料類型有兩種；
 
--   **車流資料** – 提供有關道路路況車流的計量。 這通常用來為道路標色碼。 此資料會每 2 分鐘更新一次。
--   **事故資料** – 提供可能影響車流的施工、道路封閉、事故和其他事故的資料。 此資料每分鐘更新一次。
+* **車流資料** – 提供有關道路路況車流的計量。 這通常用來為道路標色碼。 此資料會每 2 分鐘更新一次。
+* **事故資料** – 提供可能影響車流的施工、道路封閉、事故和其他事故的資料。 此資料每分鐘更新一次。
 
 Bing 地圖服務會在其互動式地圖控制項中提供交通車流和事故資料，同時也會將事故資料當做服務提供。
 
@@ -602,9 +605,9 @@ Azure 地圖服務提供了 API 供您擷取座標所在的時區。 Azure 地�
 
 Bing 地圖服務中的空間資料服務提供三個主要功能：
 
--   批次地理編碼 – 使用單一要求處理大量的地址地理編碼批次。
--   擷取系統管理界限資料 – 使用座標並取得指定實體類型的交集界限。
--   裝載及查詢空間商務資料 – 上傳簡單的 2D 資料表，並使用幾個簡單的空間查詢來存取資料。
+* 批次地理編碼 – 使用單一要求處理大量的地址地理編碼批次。
+* 擷取系統管理界限資料 – 使用座標並取得指定實體類型的交集界限。
+* 裝載及查詢空間商務資料 – 上傳簡單的 2D 資料表，並使用幾個簡單的空間查詢來存取資料。
 
 ### <a name="batch-geocode-data"></a>批次地理編碼資料
 
@@ -660,7 +663,11 @@ Azure 地圖服務針對下列程式設計語言提供了用戶端程式庫；
 
 適用於其他程式設計語言的開放原始碼用戶端程式庫；
 
--   .NET Standard 2.0 – [GitHub 專案](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet 套件](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .NET Standard 2.0 – [GitHub 專案](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet 套件](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有要清除的資源。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -668,15 +675,3 @@ Azure 地圖服務針對下列程式設計語言提供了用戶端程式庫；
 
 > [!div class="nextstepaction"]
 > [使用搜尋服務的最佳做法](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [使用路由服務的最佳做法](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [如何使用服務模組 (Web SDK)](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure 地圖服務 REST 服務 API 參考文件](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [程式碼範例](/samples/browse/?products=azure-maps)

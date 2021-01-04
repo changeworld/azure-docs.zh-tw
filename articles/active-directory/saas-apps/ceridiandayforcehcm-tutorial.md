@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bd7213f31eb737bedd64d627141c2576fdadb79a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b2241ff6841a5b3f536419336dc4f4fd888663d9
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456368"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673064"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>教學課程：Azure Active Directory 與 Ceridian Dayforce HCM 整合
 
@@ -61,9 +61,9 @@ Ceridian Dayforce HCM 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Ceridian Dayforce HCM** ，從結果面板選取 [Ceridian Dayforce HCM]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Ceridian Dayforce HCM**，從結果面板選取 [Ceridian Dayforce HCM]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Ceridian Dayforce HCM](common/search-new-app.png)
+    ![結果清單中的 Ceridian Dayforce HCM](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -130,7 +130,7 @@ Ceridian Dayforce HCM 與 Azure AD 整合提供下列優點：
     ![顯示使用者屬性的螢幕擷取畫面，其中已選取 [編輯] 圖示。](common/edit-attribute.png)
 
 6. 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
-    
+
     | 名稱 | 來源屬性|
     | ---------| --------- |
     | NAME  | user.extensionattribute2 |
@@ -187,8 +187,8 @@ Ceridian Dayforce HCM 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

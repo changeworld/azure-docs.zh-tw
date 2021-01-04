@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 24b7eabbf992672d308881bf684896befea252ff
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7dc9bbe4b4f2d5de2a79dbdeabb4b61ecb02f2d7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457279"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673489"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>教學課程：Azure Active Directory 與 Bersin 整合
 
@@ -61,9 +61,9 @@ ms.locfileid: "92457279"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Bersin** ，從結果面板中選取 [Bersin]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Bersin**，從結果面板中選取 [Bersin]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Bersin](common/search-new-app.png)
+    ![結果清單中的 Bersin](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -112,7 +112,7 @@ ms.locfileid: "92457279"
 
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://www.bersin.com/Login.aspx`
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -146,8 +146,8 @@ ms.locfileid: "92457279"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

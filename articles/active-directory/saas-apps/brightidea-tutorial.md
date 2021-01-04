@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 659118039464a4f99e4f8df211318a7f639dbde9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9967f349011b52a2218681956885c33456ba1d46
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456716"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>教學課程：Azure Active Directory 與 Brightidea 整合
 
@@ -64,9 +64,9 @@ ms.locfileid: "92456716"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Brightidea** ，從結果面板中選取 [Brightidea]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Brightidea**，從結果面板中選取 [Brightidea]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Brightidea](common/search-new-app.png)
+    ![結果清單中的 Brightidea](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -100,7 +100,7 @@ ms.locfileid: "92456716"
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 設定]  區段上，如果您有 **服務提供者中繼資料檔案** ，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
+4. 在 [基本 SAML 設定]  區段上，如果您有 **服務提供者中繼資料檔案**，而想要以 **IDP** 起始模式進行設定，請執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
@@ -156,20 +156,20 @@ ms.locfileid: "92456716"
     a. 按一下 [Download Metadata] \(下載中繼資料\)  ，然後在 Azure 入口網站中的 [基本 SAML 設定]  區段上傳該中繼資料。
 
     b. 按一下 [Identity Provider Setting] \(身分識別提供者設定\)  底下的 [Add New] \(新增\)  按鈕，然後執行下列步驟：
-    
+
     ![顯示 Brightidea 識別提供者設定的螢幕擷取畫面，您可以在其中輸入資訊。](./media/brightidea-tutorial/configure4.png)
-    
+
    * 輸入 [SAML Profile Name] \(SAML 設定檔名稱\)  ，例如 `Azure Ad SSO`
-    
+
    * 針對 [Upload Metadata] \(上傳中繼資料\)  ，按一下 [Choose File] \(選擇檔案\)，然後上傳從 Azure 入口網站下載的中繼資料檔案。
 
      > [!NOTE]
      > 上傳中繼資料檔案之後，剩餘的欄位 [Single Sign-on Service] \(單一登入服務\)、[Identity Provider Issuer] \(身分識別提供者簽發者\)、[Upload Public Key] \(上傳公開金鑰\)  中將會自動填入資料。
 
    * 在 [Email] \(電子郵件\)  文字方塊中，將值輸入為 `mail`。
-     
+
    * 在 [Screen Name] \(畫面名稱\)  文字方塊中，將值輸入為 `givenName`。
-     
+
    * 按一下 **[儲存變更]** 。  
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
@@ -188,8 +188,8 @@ ms.locfileid: "92456716"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 

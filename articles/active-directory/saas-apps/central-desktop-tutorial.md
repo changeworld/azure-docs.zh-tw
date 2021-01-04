@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 321c6bf52f4dac636f6bebb3a79d3a206c2ea11b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 36ba61c86082e191831c2c890de4466181f1a4db
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456427"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>教學課程：Azure Active Directory 與 Central Desktop 整合
 
@@ -61,9 +61,9 @@ ms.locfileid: "92456427"
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Central Desktop** ，從結果面板中選取 [Central Desktop]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Central Desktop**，從結果面板中選取 [Central Desktop]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Central Desktop](common/search-new-app.png)
+    ![結果清單中的 Central Desktop](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -104,7 +104,7 @@ ms.locfileid: "92456427"
     a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<companyname>.centraldesktop.com`
 
     b. 在 [識別碼]  方塊中，使用下列模式輸入 URL：
-    
+
     ```http
     https://<companyname>.centraldesktop.com/saml2-metadata.php
     https://<companyname>.imeetcentral.com/saml2-metadata.php
@@ -152,7 +152,7 @@ ms.locfileid: "92456427"
 4. 在 [Message Signature Verification Method] \(訊息簽章驗證方法\)  區段中，執行下列步驟：
 
     ![訊息簽章驗證方法](./media/central-desktop-tutorial/ic769565.png "訊息簽章驗證方法")
-    
+
     a. 選取 [憑證]  。
 
     b. 在 [SSO Certificate] \(SSO 憑證\)  清單中，選取 [RSH SHA256]  。
@@ -179,8 +179,8 @@ ms.locfileid: "92456427"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -236,7 +236,7 @@ ms.locfileid: "92456427"
 4. 選取 [Add Internal member(s)] \(新增內部成員\)  。
 
     ![新增內部成員](./media/central-desktop-tutorial/ic781053.png "新增內部成員")
-  
+
    > [!NOTE]
    > 您新增的使用者會收到一封電子郵件，其中包含用來啟用其帳戶的確認連結。
 

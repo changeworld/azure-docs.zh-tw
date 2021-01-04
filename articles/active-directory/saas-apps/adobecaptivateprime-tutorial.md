@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 89f59bba856d662aea0c3ed249d5a1462297ec60
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 63bbec6de8f122178289cc313e5d938e3b926af2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309054"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673219"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>教學課程：Azure Active Directory 與 Adobe Captivate Prime 整合
 
@@ -63,7 +63,7 @@ Adobe Captivate Prime 與 Azure AD 整合提供下列優點：
 
 4. 在搜尋方塊中，輸入 **Adobe Captivate Prime**，從結果面板選取 [Adobe Captivate Prime]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 Adobe Captivate Prime](common/search-new-app.png)
+    ![結果清單中的 Adobe Captivate Prime](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -105,7 +105,7 @@ Adobe Captivate Prime 與 Azure AD 整合提供下列優點：
 
     b. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://captivateprime.adobe.com/saml/SSO`
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -119,13 +119,13 @@ Adobe Captivate Prime 與 Azure AD 整合提供下列優點：
 
     c. 登出 URL
 
-7. 移至 [屬性]  索引標籤、複製**使用者存取 URL**，然後將它貼至 [記事本]。
+7. 移至 [屬性]  索引標籤、複製 **使用者存取 URL**，然後將它貼至 [記事本]。
 
     ![使用者存取連結](./media/adobecaptivateprime-tutorial/tutorial_adobecaptivateprime_appprop.png)
 
 ### <a name="configure-adobe-captivate-prime-single-sign-on"></a>設定 Adobe Captivate Prime 單一登入
 
-若要在 **Adobe Captivate Prime** 端設定單一登入，您需要將下載的**同盟中繼資料 XML**、複製的**使用者存取 URL** 以及從 Azure 入口網站適當複製的 URL 傳送給 [Adobe Captivate Prime 支援小組](mailto:captivateprimesupport@adobe.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Adobe Captivate Prime** 端設定單一登入，您需要將下載的 **同盟中繼資料 XML**、複製的 **使用者存取 URL** 以及從 Azure 入口網站適當複製的 URL 傳送給 [Adobe Captivate Prime 支援小組](mailto:captivateprimesupport@adobe.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -144,7 +144,7 @@ Adobe Captivate Prime 與 Azure AD 整合提供下列優點：
     ![[使用者] 對話方塊](common/user-properties.png)
 
     a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
-  
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -180,7 +180,7 @@ Adobe Captivate Prime 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-adobe-captivate-prime-test-user"></a>建立 Adobe Captivate Prime 測試使用者
 
-在本節中，您會在 Adobe Captivate Prime 中建立名為 Britta Simon 的使用者。 與 [Adobe Captivate Prime 支援小組](mailto:captivateprimesupport@adobe.com)合作，在 Adobe Captivate Prime 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 Adobe Captivate Prime 中建立名為 Britta Simon 的使用者。 與 [Adobe Captivate Prime 支援小組](mailto:captivateprimesupport@adobe.com)合作，在 Adobe Captivate Prime 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 

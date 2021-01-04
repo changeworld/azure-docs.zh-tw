@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: 0612445d0a1bfa10182eb8ce827001d0856f4d9b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b215dfff3bf62b67b89aa260b0134381de6edeae
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92777918"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695722"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>快速入門：建立 Azure CDN 設定檔和端點 - ARM 範本
 
@@ -61,7 +61,7 @@ az group create \
 --name $resourceGroupName \
 --location $location
 
-az group deployment create \
+az deployment group create \
 --resource-group $resourceGroupName \
 --template-uri  $templateUri
 ```
@@ -115,7 +115,7 @@ Remove-AzResourceGroup -Name myResourceGroupCDN
 
 ### <a name="portal"></a>入口網站
 
-如果不再需要，請刪除資源群組、CDN 設定檔和所有相關資源。 選取資源群組 **myResourceGroupCDN** ，其中包含 CDN 設定檔和端點，然後選取 [刪除]。
+如果不再需要，請刪除資源群組、CDN 設定檔和所有相關資源。 選取資源群組 **myResourceGroupCDN**，其中包含 CDN 設定檔和端點，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

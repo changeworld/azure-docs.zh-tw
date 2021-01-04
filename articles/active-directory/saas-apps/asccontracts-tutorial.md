@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b0e0703105094507a9f6a16bf30775354f67b950
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d1f45244d09ce55b61b04d88ce2eb4a16289b1ab
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457685"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>教學課程：Azure Active Directory 與 ASC Contracts
 
@@ -61,9 +61,9 @@ ASC Contracts 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ASC Contracts** ，從結果面板中選取 [ASC Contracts]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ASC Contracts**，從結果面板中選取 [ASC Contracts]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 ASC Contracts](common/search-new-app.png)
+    ![結果清單中的 ASC Contracts](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -106,9 +106,9 @@ ASC Contracts 與 Azure AD 整合提供下列優點：
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.asccontracts.com/shibboleth.sso/login`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 ASC Networks Inc.(ASC) 小組 (電話是 **613.599.6178** ) 以取得這些值。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 ASC Networks Inc.(ASC) 小組 (電話是 **613.599.6178**) 以取得這些值。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML** ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ ASC Contracts 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-asc-contracts-single-sign-on"></a>設定 ASC Contracts 單一登入
 
-若要在 **ASC Contracts** 端設定單一登入，請致電 ASC Networks Inc.(ASC) 支援小組 (電話是 **613.599.6178** )，並向他們提供所下載的 **同盟中繼資料 XML** 。 他們將會此應用程式設定妥當，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **ASC Contracts** 端設定單一登入，請致電 ASC Networks Inc.(ASC) 支援小組 (電話是 **613.599.6178**)，並向他們提供所下載的 **同盟中繼資料 XML**。 他們將會此應用程式設定妥當，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -142,8 +142,8 @@ ASC Contracts 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
-  
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -179,7 +179,7 @@ ASC Contracts 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-asc-contracts-test-user"></a>建立 ASC Contracts 測試使用者
 
-請與 ASC Networks Inc.(ASC) 支援小組 (電話是 **613.599.6178** ) 合作，在 ASC Contracts 平台新增使用者。
+請與 ASC Networks Inc.(ASC) 支援小組 (電話是 **613.599.6178**) 合作，在 ASC Contracts 平台新增使用者。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 
