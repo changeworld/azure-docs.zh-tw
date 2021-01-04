@@ -8,18 +8,18 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 55a49c5f8d066cd6893c46ef9942462bb7911307
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7fabf5afa60590e92f7c0ca10197c436c1c0b8a0
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360610"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702254"
 ---
 # <a name="use-the-azure-cli-to-enable-double-encryption-at-rest-for-managed-disks"></a>使用 Azure CLI 啟用受控磁片的雙重靜態加密
 
 Azure 磁碟儲存體支援受控磁片的雙重靜態加密。 如需有關靜態加密和其他受控磁片加密類型的概念資訊，請參閱磁片加密文章中的 [雙重加密靜態](../disk-encryption.md#double-encryption-at-rest) 一節。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 安裝最新的 [Azure CLI](/cli/azure/install-az-cli2) ，並使用 [az Login](/cli/azure/reference-index)登入 Azure 帳戶。
 
@@ -49,7 +49,7 @@ Azure 磁碟儲存體支援受控磁片的雙重靜態加密。 如需有關靜�
 1.    建立 DiskEncryptionSet，並將 encryptionType 設定為 EncryptionAtRestWithPlatformAndCustomerKeys。 使用 Azure Resource Manager (ARM) 範本中的 API 版本 **2020-05-01** 。 
     
         ```azurecli
-        az group deployment create -g $rgName \
+        az deployment group create -g $rgName \
        --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/DoubleEncryption/CreateDiskEncryptionSetForDoubleEncryption.json" \
         --parameters "diskEncryptionSetName=$diskEncryptionSetName" "encryptionType=EncryptionAtRestWithPlatformAndCustomerKeys" "keyVaultId=$keyVaultId" "keyVaultKeyUrl=$keyVaultKeyUrl" "region=$location"
         ```

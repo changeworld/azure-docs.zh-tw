@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: 7f92b4327b53b38cc83493c65ad573523546ee58
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 12/18/2020
+ms.openlocfilehash: 68f536e06ec5a40083d96745f5b72e511e423f64
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095112"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695178"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Synapse Analytics 中複製和轉換資料
 
@@ -274,6 +274,10 @@ ms.locfileid: "97095112"
 | partitionColumnName | *以整數或日期/日期時間類型** (`int` 、、、、、、 `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` 或 `datetimeoffset`) ，指定將用於平行複製的範圍資料分割之來源資料行 _ 的名稱。 如果未指定，則會自動偵測資料表的索引或主鍵，並將其當做資料分割資料行使用。<br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請  `?AdfDynamicRangePartitionCondition ` 在 WHERE 子句中掛上。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-azure-synapse-analytics) 一節。 | 否 |
 | partitionUpperBound | 分割區範圍分割之分割區資料行的最大值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。  <br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-azure-synapse-analytics) 一節。 | 否 |
 | partitionLowerBound | 分割區範圍分割之分割區資料行的最小值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。<br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-azure-synapse-analytics) 一節。 | 否 |
+
+**請注意下列重點：**
+
+- 在來源中使用預存程式取出資料時，請注意，如果您的預存程式是設計為在傳入不同的參數值時傳回不同的架構，您可能會在從 UI 匯入架構時，或在將資料複製到具有自動資料表建立的 SQL database 時，看到非預期的結果。
 
 **範例：使用 SQL 查詢**
 

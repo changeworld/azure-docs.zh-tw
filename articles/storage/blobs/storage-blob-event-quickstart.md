@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37dc6d234d243c79fe9bac206caaaa28bb29aa2d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f629ec5ccc1895b83cf7f1e831de8d128c49836d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659942"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702424"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>快速入門：使用 Azure CLI 將儲存體事件路由至 web 端點
 
@@ -30,7 +30,7 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您可使用 Azur
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- 本文需要 Azure CLI 的版本2.0.70 或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
+- 本文需要 2.0.70 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -69,7 +69,7 @@ az storage account create \
 ```azurecli-interactive
 sitename=<your-site-name>
 
-az group deployment create \
+az deployment group create \
   --resource-group <resource_group_name> \
   --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
   --parameters siteName=$sitename hostingPlanName=viewerhost

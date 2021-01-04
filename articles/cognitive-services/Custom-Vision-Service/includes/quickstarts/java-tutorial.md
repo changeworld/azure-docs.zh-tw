@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: f7c9981b4d26314965dd86994c6edaa50f355dc2
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 0a0ae0659e13035bfb29a0628330339ede349b8a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625368"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582523"
 ---
 開始使用適用於 Java 的自訂視覺用戶端程式庫來建置影像分類模型。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -99,7 +99,7 @@ mkdir -p src/main/java
 
 
 > [!IMPORTANT]
-> 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的 [產品名稱] 資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 
+> 前往 Azure 入口網站。 如果您在 [必要條件] 區段中建立的自訂視覺資源成功部署，請按一下 [後續步驟] 底下的 [前往資源] 按鈕。 您可以在 [資源管理] 底下的 [金鑰和端點] 頁面中找到金鑰和端點。 您必須同時取得訓練和預測金鑰，以及訓練資源的端點。
 >
 > 完成時，請記得從程式碼中移除金鑰，且不要公開張貼金鑰。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../../../cognitive-services-security.md)一文。
 
@@ -178,9 +178,6 @@ mkdir -p src/main/java
 此方法會載入測試影像、查詢模型端點，並將預測資料輸出至主控台。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_predict)]
-
-
-## <a name="run-the-application"></a>執行應用程式
 
 ## <a name="run-the-application"></a>執行應用程式
 

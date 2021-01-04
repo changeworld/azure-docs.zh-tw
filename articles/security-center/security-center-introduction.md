@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 0a1cac0fe61ea13a18224ea5992b5c7c1ba69d8a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b52fbd820c4b4603481f585ea0b0983720cabb22
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510330"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709075"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
+
+[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure 資訊安全中心是統一基礎結構安全性管理系統，可強化資料中心的安全性狀態，並在雲端 (無論在 Azure 中與否) 及內部部署的混合式工作負載全面提供進階威脅防護。
 

@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 4e9b5326f8ce28e94c829f9aed56d035c256be52
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 27eb4383084e9a782e0c2cb8ff734fba8496c9f1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625452"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582614"
 ---
 本指南提供指示和範例程式碼，可協助您開始使用適用於 Go 的自訂視覺用戶端程式庫來建置影像分類模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -189,6 +189,8 @@ Done!
 
 接著，您可以確認測試影像 (位於 **<base_image_url>/Images/Test/**) 的標記是否適當。 您也可以返回[自訂視覺網站](https://customvision.ai)，然後查看新建立專案的目前狀態。
 
+## <a name="clean-up-resources"></a>清除資源
+
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 
 ## <a name="next-steps"></a>後續步驟
@@ -199,5 +201,5 @@ Done!
 > [測試和重新定型模型](../../test-your-model.md)
 
 * 什麼是自訂視覺服務？
-* [SDK 參考文件 (訓練)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training)
+* [SDK 參考文件 (定型)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training)
 * [SDK 參考文件 (預測)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction)

@@ -4,12 +4,12 @@ description: 使用 Azure 事件方格和 Azure CLI 發佈自訂主題，以及�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e83c9193ef3beaed2a5a65afe964a1687a2d2505
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 0a3d8f5a1614704cea4242ce64ecc6c4504da754
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566328"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97701999"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>快速入門：使用 Azure CLI 和事件方格將自訂事件路由傳送至 Web 端點
 
@@ -33,7 +33,7 @@ Event Grid 為 Azure 資源，必須放入 Azure 資源群組中。 資源群組
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 
 
-下列範例會在 westus2 位置建立名為 gridResourceGroup 的資源群組。
+下列範例會在 westus2  位置建立名為 gridResourceGroup  的資源群組。
 
 ```azurecli-interactive
 az group create --name gridResourceGroup --location westus2
@@ -60,7 +60,7 @@ az eventgrid topic create --name $topicname -l westus2 -g gridResourceGroup
 ```azurecli-interactive
 sitename=<your-site-name>
 
-az group deployment create \
+az deployment group create \
   --resource-group gridResourceGroup \
   --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
   --parameters siteName=$sitename hostingPlanName=viewerhost

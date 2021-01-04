@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0fc46c815906b9aaca7b3ce964e0d23cfdc4e1aa
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 421f80493a9cb88e8bbbddc06aa9a24042b64b17
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673569"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695465"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>在 Azure App Service 中啟用 .NET 應用程式的快照偵錯工具
 
@@ -21,6 +21,7 @@ ms.locfileid: "97673569"
 若要為應用程式啟用快照偵錯工具，請遵循下列指示。
 
 如果您正在執行不同類型的 Azure 服務，則以下是在其他支援的平臺上啟用快照偵錯工具的指示：
+* [Azure 函式](snapshot-debugger-function-app.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 雲端服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric 服務](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虛擬機器和虛擬機器擴展集](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)

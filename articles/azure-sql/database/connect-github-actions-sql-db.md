@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 9203cebbd721b918f2514f7615712c035a0460ed
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 216658b5f5443409e7bd44cbd29bff40cd56c75f
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669749"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606975"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>使用 GitHub Actions 連線到 Azure SQL Database
 
-藉由使用工作流程將資料庫更新部署至 [Azure SQL Database](../azure-sql-iaas-vs-paas-what-is-overview.md)，來開始使用 [GitHub Actions](https://docs.github.com/en/actions)。 
+藉由使用工作流程將資料庫更新部署至 [Azure SQL Database](../azure-sql-iaas-vs-paas-what-is-overview.md)，來開始使用 [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions)。 
 
 ## <a name="prerequisites"></a>先決條件
 

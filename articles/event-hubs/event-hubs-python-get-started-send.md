@@ -3,12 +3,12 @@ title: 使用 Python 從 Azure 事件中樞傳送或接收事件 (最新版)
 description: 本文將逐步解說如何建立 Python 應用程式，以使用最新的 azure-eventhub 套件對 Azure 事件中樞傳送事件或從中接收事件。
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: 4850dc9119f6ef43e687f476f66928f13713f051
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f05f546f19a7944c049b97ba18065159db6fab67
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105946"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605559"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub"></a>使用 Python (azure-eventhub) 將事件傳送至事件中樞或從中接收事件
 本快速入門說明如何使用 **azure-eventhub** Python 套件，來傳送事件至事件中樞和從事件中樞接收事件。
@@ -50,7 +50,7 @@ ms.locfileid: "97105946"
     async def run():
         # Create a producer client to send messages to the event hub.
         # Specify a connection string to your event hubs namespace and
-            # the event hub name.
+        # the event hub name.
         producer = EventHubProducerClient.from_connection_string(conn_str="EVENT HUBS NAMESPACE - CONNECTION STRING", eventhub_name="EVENT HUB NAME")
         async with producer:
             # Create a batch.
