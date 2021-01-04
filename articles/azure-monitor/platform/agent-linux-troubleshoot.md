@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011892"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704889"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何針對 Log Analytics Linux 代理程式的問題進行疑難排解 
 
@@ -191,7 +191,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * 上架期間指定的 Proxy 不正確
 * Azure 監視器和 Azure 自動化的服務端點不會包含在資料中心的核准清單中 
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 1. Azure 監視器重新上架使用適用于 Linux 的 Log Analytics 代理程式，方法是在啟用選項的情況下使用下列命令 `-v` 。 它允許透過 proxy 連線到 Azure 監視器的代理程式詳細資訊輸出。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
@@ -205,7 +205,7 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 * Linux 伺服器上的日期與時間不正確 
 * 使用的工作區識別碼和工作區金鑰不正確
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 1. 使用命令日期檢查 Linux 伺服器上的時間。 如果時間為自目前時間起的 + /-15 分鐘，則上架失敗。 若要修正此問題，請更新 Linux 伺服器的日期和/或時區。 
 2. 確認您已安裝最新版的 Log Analytics Linux 代理程式。  最新版本現在會通知您時間差異是否造成上架失敗。
@@ -241,23 +241,6 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 3. 重新開機 OMI： <br/>
 `sudo scxadmin -restart`
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>問題︰您在 Azure 入口網站中看不到任何資料
-
-### <a name="probable-causes"></a>可能的原因
-
-- 上架至 Azure 監視器失敗
-- 已封鎖與 Azure 監視器的連接
-- Log Analytics Linux 代理程式資料已備份
-
-### <a name="resolution"></a>解決方法
-1. 檢查下列檔案是否存在，以檢查登入 Azure 監視器是否成功： `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
-2. 使用 `omsadmin.sh` 命令列指示重新上架
-3. 如果使用 Proxy，請參閱稍早所提供的 Proxy 解決步驟。
-4. 在某些情況下，當 Log Analytics Linux 代理程式無法與服務通訊時，系統會將整個緩衝區大小 (亦即 50 MB) 的資料加入佇列。 應該執行下列命令重新啟動代理程式：`/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`。 
-
-    >[!NOTE]
-    >此問題已在代理程式 1.1.0-28 版和更新版本中修正。
-
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>問題：沒看到轉送的 Syslog 訊息 
 
@@ -266,7 +249,7 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 * Syslog 並未正確地轉送到 Linux 伺服器
 * 每秒所轉送的訊息數目太大，以致無法處理 Log Analytics Linux 代理程式的基本組態
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 * 確認 Log Analytics 工作區 (適用於 Syslog) 中的組態具有所有設備和正確的記錄檔層級。 檢閱[在 Azure 入口網站中設定 Syslog 集合](./data-sources-syslog.md#configure-syslog-in-the-azure-portal)
 * 確認原生 syslog 傳訊精靈 (`rsyslog`、`syslog-ng`) 能夠接收轉送的訊息
 * 檢查 Syslog 伺服器上的防火牆設定，確定不會封鎖訊息
@@ -279,7 +262,7 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 ### <a name="probable-causes"></a>可能的原因
 此錯誤指出 Linux 診斷擴充功能 (LAD) 已隨 Log Analytics Linux VM 擴充功能一起安裝，且它會使用和 omsagent 一樣的連接埠來收集 syslog 資料。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 1. 以 root 身分執行下列命令 (請注意，25224 只是範例，您在環境中可能會看到 LAD 使用不同的連接埠號碼)：
 
     ```
@@ -301,7 +284,7 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 * 已安裝 Linux 診斷擴充功能
 * 安裝了 Linux 診斷擴充功能後又解除安裝，但您仍看到 omsagent 正由 mdsd 使用所以無法移除的錯誤。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 1. 解除安裝 Linux 診斷擴充功能 (LAD)。
 2. 從機器中移除出現在下列位置的 Linux 診斷擴充功能檔案：`/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` 和 `/var/opt/microsoft/omsagent/LAD/`。
 
@@ -311,7 +294,7 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 * omsagent 使用者沒有從 Nagios 記錄檔讀取資料的權限
 * 未在 omsagent.conf 檔案中將 Nagios 來源和篩選取消註解
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 1. 遵循這些[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#nagios-alerts)，新增 omsagent 使用者以讀取 Nagios 檔案。
 2. 在位於 `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 的 Log Analytics Linux 代理程式一般組態檔中，確定 Nagios 來源和篩選 **都** 已取消註解。
 
@@ -335,16 +318,18 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 * 已封鎖與 Azure 監視器的連接
 * 虛擬機器已重新啟動
 * OMI 套件已手動升級為比 Log Analytics Linux 代理程式套件所安裝版本還新的版本
+* OMI 已凍結，正在封鎖 OMS 代理程式
 * DSC 資源在 `omsconfig.log` 記錄中記錄了「找不到類別」錯誤
 * Log Analytics 的資料代理程式已備份
 * DSC 記錄 *目前的設定不存在。執行 Start-DscConfiguration 命令搭配-Path 參數來指定設定檔，並先建立目前的設定。* 在 `omsconfig.log` 記錄檔中，但沒有關於 `PerformRequiredConfigurationChecks` 作業的記錄訊息存在。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 1. 安裝所有相依性，例如 auditd 套件。
 2. 檢查下列檔案是否存在，以確認上架至 Azure 監視器是否成功： `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` 。  如果不成功，請使用 omsadmin.sh 命令列[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新上架。
 4. 如果使用 Proxy，請查看上述的 Proxy 疑難排解步驟。
 5. 在某些 Azure 發佈系統中，omid OMI 伺服器精靈未在虛擬機器重新啟動後隨之啟動。 這會導致您看不到 Audit、ChangeTracking 或 UpdateManagement 解決方案相關資料。 因應措施是執行 `sudo /opt/omi/bin/service_control restart` 來手動啟動 omi 伺服器。
 6. OMI 套件手動升級為較新版本後，必須手動加以重新啟動，Log Analytics 代理程式才能繼續運作。 在 OMI 伺服器未於升級後自動啟動的某些散發套件中，此為必要步驟。 請執行 `sudo /opt/omi/bin/service_control restart` 來重新啟動 OMI。
+* 在某些情況下，OMI 可能會被凍結。 OMS 代理程式可能會進入封鎖狀態，等候 OMI，封鎖所有資料收集。 OMS 代理程式進程將會執行，但不會有任何新的記錄行所證明的活動， (例如) 存在的傳送的心跳 `omsagent.log` 。 重新開機 OMI， `sudo /opt/omi/bin/service_control restart` 以復原代理程式。
 7. 如果您在 omsconfig.log 中看到 DSC 資源「找不到類別」錯誤，請執行 `sudo /opt/omi/bin/service_control restart`。
 8. 在某些情況下，當 Log Analytics Linux 代理程式無法與 Azure 監視器交談時，代理程式上的資料會備份到完整的緩衝區大小： 50 MB。 應該執行下列命令重新啟動代理程式：`/opt/microsoft/omsagent/bin/service_control restart`。
 
@@ -404,7 +389,7 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 * Log Analytics Linux 代理程式未挑選最新的組態
 * 未套用入口網站中經過變更的設定
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 **背景：** `omsconfig` 是 Log Analytics Linux 代理程式組態代理程式，會每隔五分鐘尋找一次新的入口網站端組態。 此組態接著會套用到位於 /etc/opt/microsoft/omsagent/conf/omsagent.conf 的 Log Analytics Linux 代理程式組態檔。
 
 * 在某些情況下，Log Analytics Linux 代理程式組態代理程式可能無法與入口網站組態服務進行通訊，以致未套用最新的組態。
@@ -423,7 +408,7 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
  * `[DATETIME] [error]: file not accessible by omsagent.`
 * 已在 Log Analytics Linux 代理程式 1.1.0-217 版中修正的已知競爭條件問題
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 1. 檢查下列檔案是否存在，確認上架至 Azure 監視器成功： `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf` 。 如果不成功，則：  
 
   1. 使用 omsadmin.sh 命令列[指示](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line)重新上架。
@@ -444,7 +429,7 @@ Nss 套件 [v 1.0.3-5](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.e
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge
 ```
-或
+Or
 
 ```
 sudo sh ./onboard_agent.sh --purge
@@ -458,7 +443,7 @@ sudo sh ./onboard_agent.sh --purge
 * Log Analytics 代理程式已從作業系統中移除
 * Log Analytics 代理程式服務已關閉、停用或未設定
 
-### <a name="resolution"></a>解決方法 
+### <a name="resolution"></a>解決方案 
 請執行下列步驟來解決此問題。
 1. 從 Azure 入口網站移除擴充功能。
 2. 遵循[指示](../learn/quick-collect-linux-computer.md)來安裝代理程式。
@@ -472,7 +457,7 @@ sudo sh ./onboard_agent.sh --purge
 
 主機上的 Log Analytics 代理程式套件已過時。
 
-### <a name="resolution"></a>解決方法 
+### <a name="resolution"></a>解決方案 
 請執行下列步驟來解決此問題。
 
 1. 請至[網頁](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/)查看最新版。

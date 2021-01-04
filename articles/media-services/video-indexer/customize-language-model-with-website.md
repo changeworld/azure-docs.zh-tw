@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 08/10/2020
 ms.author: kumud
-ms.openlocfilehash: f9eedba6c8aee5c8aab73e2ed598a4511b4c5982
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd8b36340deb6c785989107461dd420e7fc0d985
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020451"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722567"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>使用影片索引器網站自訂語言模型
 
@@ -28,34 +28,27 @@ ms.locfileid: "89020451"
 ## <a name="create-a-language-model"></a>建立語言模型
 
 1. 移至 [影片索引子](https://www.videoindexer.ai/) 網站並登入。
-2. 若要在您的帳戶中自訂模型，請選取頁面右上角的 [ **內容模型自訂** ] 按鈕。
+1. 若要在您的帳戶中自訂模型，請選取頁面左側的 [ **內容模型自訂** ] 按鈕。
 
-   ![在影片索引子中自訂內容模型](./media/content-model-customization/content-model-customization.png)
-
-3. 選取 [語言]**** 索引標籤。
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-language-model/model-customization.png" alt-text="在影片索引子中自訂內容模型":::
+1. 選取 [語言] 索引標籤。
 
     您會看到支援的語言清單。
-
-    ![影片索引子中的語言模型清單](./media/customize-language-model/customize-language-model.png)
-
-4. 在您想要的語言底下，選取 [ **加入模型**]。
-5. 輸入語言模型的名稱，然後按 Enter 鍵。
+1. 在您想要的語言底下，選取 [ **加入模型**]。
+1. 輸入語言模型的名稱，然後按 Enter 鍵。
 
     此步驟會建立模型，並提供將文字檔上傳至模型的選項。
+1. 若要加入文字檔，請選取 [ **新增** 檔案]。 檔案瀏覽器隨即開啟。
+1. 瀏覽至文字檔案並加以選取。 您可以將多個文字檔案新增至語言模型。
 
-6. 若要加入文字檔，請選取 [ **新增**檔案]。 檔案瀏覽器隨即開啟。
+    您也可以選取語言模型右側的 [ **...** ] 按鈕，然後選取 [ **新增** 檔案]，以加入文字檔。
+1. 當您完成上傳文字檔之後，請選取綠色的 **定型** 選項。
 
-7. 瀏覽至文字檔案並加以選取。 您可以將多個文字檔案新增至語言模型。
+定型程序需要數分鐘的時間。 定型完成後，您會在模型旁邊看到 [已定型]。 您可以從模型預覽、下載和刪除檔案。
 
-    您也可以選取語言模型右側的 [ **...** ] 按鈕，然後選取 [ **新增**檔案]，以加入文字檔。
-
-8. 當您完成上傳文字檔之後，請選取綠色的 **定型** 選項。
-
-    ![在影片索引子中將語言模型定型](./media/customize-language-model/train-model.png)
-
-定型程序需要數分鐘的時間。 定型完成後，您會在模型旁邊看到 [已定型]****。 您可以從模型預覽、下載和刪除檔案。
-
-![影片索引子中的定型語言模型](./media/customize-language-model/preview-model.png)
+> [!div class="mx-imgBorder"]
+> :::image type="content" source="./media/customize-language-model/customize-language-model.png" alt-text="訓練模型":::
 
 ### <a name="using-a-language-model-on-a-new-video"></a>在新的影片上使用語言模型
 
@@ -64,28 +57,22 @@ ms.locfileid: "89020451"
 * 選取頁面頂端的 [ **上傳** ] 按鈕。
 
     ![上傳按鈕影片索引子](./media/customize-language-model/upload.png)
+* 捨棄您的音訊或影片檔案，或流覽您的檔案。
 
-* 將音訊或影片檔案放置在圓形中，或流覽至您的檔案。
+系統會提供您選取 **影片來源語言** 的選項。 選取下拉式清單，並從清單中選取您建立的語言模型。 它應該是語言模型的語言，並在括號中提供您賦予的名稱。 例如：
 
-    ![上傳媒體檔案影片索引子](./media/customize-language-model/upload2.png)
-
-系統會提供您選取 **影片來源語言**的選項。 選取下拉式清單，並從清單中選取您建立的語言模型。 它應該是語言模型的語言，並在括號中提供您賦予的名稱。
+![選擇影片來源語言：使用影片索引子重新索引影片](./media/customize-language-model/reindex.png)
 
 選取頁面底部的 [ **上傳** ] 選項，您的新影片將會使用您的語言模型來編制索引。
 
 ### <a name="using-a-language-model-to-reindex"></a>使用語言模型重新編製索引
 
-若要使用您的語言模型為您收藏的視訊重新編製索引，請移至 [[影片索引器](https://www.videoindexer.ai/)] 首頁上的 [帳戶視訊]****，然後將滑鼠停駐在您想要重新編製索引之視訊的名稱上。
+若要使用您的語言模型來重新索引集合中的影片，請遵循下列步驟：
 
-您會看到編輯影片、刪除您的影片，以及重新索引影片的選項。 選取用來重新索引您的影片的選項。
-
-![使用影片索引子重新索引](./media/customize-language-model/reindex1.png)
-
-您可以選擇選取 **影片來源語言** 來重新編制影片的索引。 選取下拉式清單，並從清單中選取您建立的語言模型。 它應該是語言模型的語言，並在括號中提供您賦予的名稱。
-
-![選擇影片來源語言：使用影片索引子重新索引影片](./media/customize-language-model/reindex.png)
-
-選取 [ **重新索引** ] 按鈕，將會使用您的語言模型重新建立索引您的影片。
+1. 登入 [影片索引子](https://www.videoindexer.ai/) 的首頁。
+1. 按一下影片上的 [ **...** ] 按鈕，然後選取 [ **重新編制索引**]。
+1. 您可以選擇選取 **影片來源語言** 來重新編制影片的索引。 選取下拉式清單，並從清單中選取您建立的語言模型。 它應該是語言模型的語言，並在括號中提供您賦予的名稱。
+1. 選取 [ **重新索引** ] 按鈕，將會使用您的語言模型重新建立索引您的影片。
 
 ## <a name="edit-a-language-model"></a>編輯語言模型
 
@@ -101,11 +88,11 @@ ms.locfileid: "89020451"
 
 ### <a name="add-files"></a>新增檔案
 
-若要加入文字檔，請選取 [ **新增**檔案]。 檔案瀏覽器隨即開啟。
+若要加入文字檔，請選取 [ **新增** 檔案]。 檔案瀏覽器隨即開啟。
 
 瀏覽至文字檔案並加以選取。 您可以將多個文字檔案新增至語言模型。
 
-您也可以選取語言模型右側的省略號 (**...**) 按鈕，然後選取 [ **新增**檔案]，以加入文字檔。
+您也可以選取語言模型右側的省略號 (**...**) 按鈕，然後選取 [ **新增** 檔案]，以加入文字檔。
 
 ### <a name="delete-files"></a>刪除檔案
 
@@ -145,8 +132,6 @@ ms.locfileid: "89020451"
     > 自訂只會使用文字更正。 未包含實際單字的更正 (例如，標點符號或空格) 不包含在內。
     
 1. 您會在內容模型自訂頁面的 [語言] 索引標籤中看到文字記錄校正。
-
-    ![自訂語言模型—影片索引子](./media/customize-language-model/customize.png)
 
    若要查看每個語言模型的「從文字記錄編輯」檔案，請選取它來開啟它。
 

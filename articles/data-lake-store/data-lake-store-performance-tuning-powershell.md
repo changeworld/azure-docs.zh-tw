@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 效能調整-PowerShell
 description: 使用 Azure PowerShell 搭配 Azure Data Lake Storage Gen1 時如何改善效能的秘訣。
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/09/2018
-ms.author: stewu
-ms.openlocfilehash: f5e6f6601a563a387476e4e2eaf353c8bef384ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: twooley
+ms.openlocfilehash: 4ac2bbb21fd1a987d544a536d0f52628824e0bf4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85504690"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723791"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>使用 PowerShell 搭配 Azure Data Lake Storage Gen1 的效能微調指導方針
 
@@ -96,7 +96,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
 * **節流錯誤**︰如果並行處理量太高，您可能會看到節流錯誤。 如果您看到節流錯誤，則應該減少並行處理量或與我們連絡。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure Data Lake Storage Gen1 處理巨量資料需求](data-lake-store-data-scenarios.md) 
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: 16002d7acf97832f743410a203e2f76e99646c0c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 7122c960dc7921e833329d528f96f0efe0347bda
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673353"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707464"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -412,7 +412,9 @@ Azure Logic Apps 用於輸入和輸出呼叫的 IP 位址取決於邏輯應用�
 
 > [!TIP]
 > 為了協助降低建立安全性規則時的複雜度，您可以選擇性地使用 [服務標籤](../virtual-network/service-tags-overview.md) (**LogicAppsManagement**)，而不是指定每個區域的輸入 Logic Apps IP 位址首碼。
-> 此標籤適用於提供 Logic Apps 服務的區域。
+> 針對受管理的連接器，您可以選擇性地使用 **AzureConnectors** 服務標籤，而不是為每個區域指定輸入管理的連接器 IP 位址首碼。
+> 這些標記可在 Logic Apps 服務可用的區域間運作。
+
 
 <a name="multi-tenant-inbound"></a>
 
@@ -476,7 +478,7 @@ Azure Logic Apps 用於輸入和輸出呼叫的 IP 位址取決於邏輯應用�
 
 > [!TIP]
 > 為了協助降低建立安全性規則時的複雜度，您可以選擇性地使用 [服務標籤](../virtual-network/service-tags-overview.md) (**LogicApps**)，而不是指定每個區域的輸出 Logic Apps IP 位址首碼。
-> 針對受管理的連接器，您可以選擇性地使用 **AzureConnectors** 服務標籤，而不是為每個區域指定輸出受控連接器 IP 位址首碼。 這些標記可在 Logic Apps 服務可用的區域間運作。 
+> 此標籤適用於提供 Logic Apps 服務的區域。 
 
 <a name="multi-tenant-outbound"></a>
 

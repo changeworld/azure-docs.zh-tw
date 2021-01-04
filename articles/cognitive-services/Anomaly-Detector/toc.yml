@@ -12,14 +12,6 @@
       items:
         - name: Anomaly Detector 用戶端程式庫
           href: ./quickstarts/client-libraries.md
-    - name: REST API
-      items:
-        - name: 使用 C#
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: 使用 Java
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: 使用 Python
-          href: quickstarts/detect-data-anomalies-python.md
 - name: 教學課程
   items:
     - name: 使用 Power BI 將異常情況以批次方式加以視覺化

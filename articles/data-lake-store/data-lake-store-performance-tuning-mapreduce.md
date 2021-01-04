@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 效能微調-MapReduce
 description: 瞭解 Azure Data Lake Storage Gen1 中 MapReduce 的效能調整，包括參數、指引、範例計算和限制。
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 2653e0b557f7c5c04184628b3266e8f2909130f6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.author: twooley
+ms.openlocfilehash: 2549413241e422fb1e0e5e1f079c287e0b7cf005
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108281"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723723"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight 和 Azure Data Lake Storage Gen1 上的 MapReduce 效能微調方針
 

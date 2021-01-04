@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5f7f494c9d0969fbf9431d0b552dafa21a5eace
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512040"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705399"
 ---
 # <a name="azure-resources-for-qna-maker"></a>適用于 QnA Maker 的 Azure 資源
 
@@ -62,7 +62,7 @@ QnA Maker 會使用數個 Azure 來源，各有不同的用途。 瞭解如何�
 
 下表為您提供某些高階指導方針。
 
-|                            | QnA Maker 管理 | App Service 方案 | Azue 認知搜尋 | 限制                      |
+|                            | QnA Maker 管理 | App Service | Azue 認知搜尋 | 限制                      |
 | -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | **測試**        | 免費 SKU             | 免費層   | 免費層    | 最多發佈 2 個 KB，大小為 50 MB  |
 | **開發/測試環境**   | 標準 SKU         | 共用      | 基本        | 最多發佈 14 KB，大小為 2 GB    |
@@ -102,7 +102,7 @@ QnA Maker 會使用數個 Azure 來源，各有不同的用途。 瞭解如何�
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
-|目標 QPS | App Service 方案 | Azue 認知搜尋 |
+|目標 QPS | App Service | Azue 認知搜尋 |
 | -------------------- | ----------- | ------------ |
 | 3             | S1，1個複本   | S1，1個複本    |
 | 50         | S3、10個複本       | S1、12個複本         |
@@ -162,7 +162,7 @@ Azure 入口網站的 [建立] 視窗可讓您建立 QnA Maker 資源，然後�
 
 * QnA Maker 資源
 * 認知搜尋資源
-* App Service 方案
+* App Service
 * App 方案服務
 * Application Insights 服務
 
@@ -268,8 +268,10 @@ Azure 入口網站建立視窗可讓您建立 QnA Maker 受控 (預覽) 資源�
 
 > [!div class="mx-imgBorder"]
 > ![Azure 入口網站資源清單的螢幕擷取畫面，QnA Maker 受控 (預覽) ](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
+
 > [!TIP]
 > 當您建立 QnA Maker 資源時，請建立新的資源群組。 這可讓您在依資源群組搜尋時，查看與 QnA Maker 受控 (預覽版) 資源相關聯的所有資源。
+
 > [!TIP]
 > 使用命名慣例來指出資源名稱或資源群組內的定價層。 當您從建立新的知識庫或新增檔時收到錯誤時，認知搜尋定價層限制是常見的問題。
 

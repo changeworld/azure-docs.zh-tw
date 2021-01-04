@@ -4,21 +4,22 @@ description: 活動記錄中發生特定事件時，透過 SMS、Webhook 及電�
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536076"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708427"
 ---
 # <a name="alerts-on-activity-log"></a>活動記錄警示
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 活動記錄警示是發生符合警示中指定條件的新 [活動記錄事件](activity-log-schema.md) 時所啟動的警示。 根據 [Azure 活動記錄](platform-logs-overview.md)中記錄的事件順序和數量，將會引發警示規則。 活動記錄警示規則是 Azure 資源，因此可以使用 Azure Resource Manager 範本來建立。 也可以在 Azure 入口網站中將它們建立、更新或刪除。 本文介紹活動記錄警示背後的概念。 如需建立或使用活動記錄警示規則的詳細資訊，請參閱 [建立和管理活動記錄警示](alerts-activity-log.md)。
 
 > [!NOTE]
-> **無法** 為活動記錄警示類別中的事件建立警示。
+> * **無法** 為活動記錄警示類別中的事件建立警示。
+> * 具有安全性類別的活動記錄警示，也可以在新的已 [升級流程](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal) 中定義為 [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem)
 
 通常，您在下列情況要建立活動記錄警示來接收通知：
 

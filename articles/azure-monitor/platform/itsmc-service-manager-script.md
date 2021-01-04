@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 4babd015b05527cb03d2747b1c9b9a34941634ab
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d620df0b55b024cd5d7c25ea17d9b09c5c5da8ff
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657000"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722873"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自動化的指令碼建立 Service Manager Web 應用程式
 
-使用下列指令碼來建立您 Service Manager 執行個體的 Web 應用程式。 可在這裡找到 Service Manager 連線的相關詳細資訊：[Service Manager Web 應用程式](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+使用下列指令碼來建立您 Service Manager 執行個體的 Web 應用程式。 可在這裡找到 Service Manager 連線的相關詳細資訊：[Service Manager Web 應用程式](./itsmc-connections-scsm.md)
 
 提供下列必要的詳細資料來執行指令碼︰
 
@@ -30,12 +30,9 @@ ms.locfileid: "97657000"
 
 儲存這些值，當您使用 IT 服務管理連接器建立連線時會用到這些值。
 
-> [!NOTE]
-> 本文包含字詞「*允許清單*」的參考 (Microsoft 已不再使用該字詞)。 從軟體中移除該字詞時，我們也會將其從本文中移除。
-
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
  Windows Management Framework 5.0 或更新版本。
 Windows 10 依預設包含 5.1。 您可以從[這裡](https://www.microsoft.com/download/details.aspx?id=50395)下載架構：
@@ -321,5 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>後續步驟
-[設定混合式連接](./itsmc-connections.md#configure-the-hybrid-connection)。
+[設定混合式連接](./itsmc-connections-scsm.md#configure-the-hybrid-connection)。
 

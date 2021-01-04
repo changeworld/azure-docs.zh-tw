@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ce79fe88b33659241a226af7bbb7a966ede41abb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95496880"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696161"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>錨點關聯性和方式-在 Azure 空間錨點中尋找
 
@@ -64,7 +64,7 @@ ms.locfileid: "95496880"
 
 若要在多個會話之間連接錨點：
 
-1. 應用程式會在一個 >cloudspatialanchorsession 中建立一些錨點。
+1. 應用程式會在一個 >cloudspatialanchorsession 中建立一些錨點， (錨點 A 和 B) 。
 2. 應用程式會在不同的時間找到其中一個錨點 (例如，使用新的 >cloudspatialanchorsession 錨定) 。
 3. 流覽至新的位置。 基礎混合現實或增強式現實平臺會追蹤移動。
 4. 使用相同的 >cloudspatialanchorsession 來建立錨點 C。 錨點 A、B 和 C 現在已連接。 空間錨點服務會維護此關聯性。

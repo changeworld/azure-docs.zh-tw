@@ -10,17 +10,19 @@ author: likebupt
 ms.reviewer: peterlu
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.custom: how-to, deploy, studio
-ms.openlocfilehash: 23c6417741d0753fcdaaf30c89c8f51348cc5dc5
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.custom: how-to, deploy, studio, designer
+ms.openlocfilehash: 35acfc51ae76fdacef11f03b1fbd91ad58650ae6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554677"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722618"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>使用 studio 部署在設計工具中定型的模型
 
-在本文中，您將瞭解如何在 Azure Machine Learning studio 中，從設計工具將定型的模型部署為即時端點。
+在本文中，您將瞭解如何在 Azure Machine Learning studio 中將設計工具模型部署為即時端點。
+
+註冊或下載之後，您就可以使用設計工具定型的模型，就像任何其他模型一樣。 匯出的模型可以部署在使用案例中，例如物聯網 (IoT) 和本機部署。
 
 Studio 中的部署是由下列步驟所組成：
 
@@ -33,7 +35,7 @@ Studio 中的部署是由下列步驟所組成：
 
 在設計工具中定型的模型也可以透過 SDK 或命令列介面 (CLI) 來部署。 如需詳細資訊，請參閱 [使用 Azure Machine Learning 部署現有的模型](how-to-deploy-existing-model.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
 
@@ -56,20 +58,19 @@ Studio 中的部署是由下列步驟所組成：
 
     ![定型模型模組右窗格的螢幕擷取畫面](./media/how-to-deploy-model-designer/train-model-right-pane.png)
 
-1. 輸入模型的名稱，然後選取 [ **儲存** ]。
+1. 輸入模型的名稱，然後選取 [ **儲存**]。
 
 註冊您的模型之後，您可以在 studio 的 [ **模型** 資產] 頁面中找到它。
     
 ![[模型資產] 頁面中已註冊模型的螢幕擷取畫面](./media/how-to-deploy-model-designer/models-asset-page.png)
 
-
 ## <a name="download-the-entry-script-file-and-conda-dependencies-file"></a>下載輸入腳本檔案和 conda 相依性檔案
 
 您需要下列檔案，才能在 Azure Machine Learning studio 中部署模型：
 
-- **進入腳本** 檔-載入定型的模型、處理來自要求的輸入資料、執行即時推斷，然後傳回結果。 `score.py`當「 **定型模型** 」模組完成時，設計工具會自動產生輸入腳本檔案。
+- **進入腳本** 檔-載入定型的模型、處理來自要求的輸入資料、執行即時推斷，然後傳回結果。 `score.py`當「**定型模型**」模組完成時，設計工具會自動產生輸入腳本檔案。
 
-- **Conda** 相依性檔案-指定您的 webservice 依存的 pip 和 Conda 套件。 `conda_env.yaml`當「 **定型模型** 」模組完成時，設計工具會自動建立檔案。
+- **Conda** 相依性檔案-指定您的 webservice 依存的 pip 和 Conda 套件。 `conda_env.yaml`當「**定型模型**」模組完成時，設計工具會自動建立檔案。
 
 您可以在 [ **訓練模型** ] 模組的右窗格中下載這兩個檔案：
 
@@ -105,7 +106,7 @@ Studio 中的部署是由下列步驟所組成：
     - 輸入端點的名稱。
     - 選取即可將模型部署到 [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md) 或 [Azure 容器實例](how-to-deploy-azure-container-instance.md)。
     - 上傳 `score.py` **輸入腳本** 檔案的。
-    - 上傳 Conda 相依性檔案的 `conda_env.yml` 。 **Conda dependencies file** 
+    - 上傳 Conda 相依性檔案的 `conda_env.yml` 。  
 
     >[!TIP]
     > 在 [ **Advanced** ] 設定中，您可以設定 CPU/記憶體容量和其他用於部署的參數。 這些設定對於某些模型很重要，例如 PyTorch 模型，這會耗用相當大量的 memery (大約 4 GB 的) 。

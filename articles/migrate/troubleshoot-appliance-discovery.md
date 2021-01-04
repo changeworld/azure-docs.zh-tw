@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 647e07fe32beedbd54ca6c5bb95c1de9564df2fd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 810ea58c5d88dec53463b9a2b04750169c70e137
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654008"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704022"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>針對 Azure Migrate 設備和探索進行疑難排解
 
@@ -42,12 +42,6 @@ ms.locfileid: "97654008"
 - 如果您要使用以 URL 為基礎的防火牆 proxy 來控制輸出連線能力，請將 [這些 url](migrate-appliance.md#url-access) 新增至允許清單。
 - 如果您使用攔截 proxy 來連線至網際網路，請使用 [這些步驟](./migrate-appliance.md)將 proxy 憑證匯入設備 VM 上。
 
-
-## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>按一下 [Login '] 按鈕會開啟新的索引標籤，而不含裝置程式碼
-
-如果您在 [設備設定管理員] 上按一下 [Login ']，就會開啟新的索引標籤，但不含任何程式碼，請返回 [設備設定管理員] 索引標籤，您可以在 [Login '] 按鈕下找到以粗體字型顯示的裝置程式碼，如下列螢幕擷取畫面所示。 複製程式碼並貼到 [登入] 索引標籤上，以向 Azure 進行驗證。
-
-![裝置碼](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>無法從設備 web 應用程式登入 Azure
 
@@ -105,7 +99,7 @@ ms.locfileid: "97654008"
 - 如果發生驗證錯誤，請參閱補救指導方針以修正錯誤，然後再試一次 [ **儲存並開始探索** ] 選項。
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>錯誤60025： Azure AD 操作失敗 
-錯誤60025：「Azure AD 操作失敗。 當用來起始探索的 Azure 使用者帳戶不同于用來註冊設備的帳戶時，建立或更新 Azure AD 應用程式時發生錯誤。 請執行下列其中一項：
+錯誤60025：「Azure AD 操作失敗。 當用來起始探索的 Azure 使用者帳戶不同于用來註冊設備的帳戶時，建立或更新 Azure AD 應用程式時發生錯誤。 執行下列其中一個動作：
 
 - 請確定起始探索的使用者帳戶與用來註冊設備的使用者帳戶相同。
 - 為探索作業失敗的使用者帳戶提供 Azure Active Directory 的應用程式存取權限。

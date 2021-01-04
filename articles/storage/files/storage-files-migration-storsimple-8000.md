@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512166"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723973"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>將 StorSimple 8100 和8600遷移至 Azure 檔案同步
 
@@ -56,7 +56,7 @@ Azure 檔案共用會在儲存的檔案（如屬性、許可權和時間戳記�
 
 本文著重于遷移步驟。 如果您想要在遷移之前深入瞭解 Azure 檔案同步，請參閱下列文章：
 
-* [Azure 檔案同步總覽](./storage-sync-files-planning.md "概觀")
+* [Azure 檔案同步總覽](./storage-sync-files-planning.md "總覽")
 * [Azure 檔案同步部署指南](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple 服務資料加密金鑰
@@ -145,7 +145,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 您的儲存體帳戶名稱將會成為 URL 的一部分，並具有某些字元限制。 在您的命名慣例中，請考慮儲存體帳戶名稱在世界中必須是唯一的，只允許小寫字母和數位，且必須介於3到24個字元之間，而且不允許使用連字號或底線等特殊字元。 如需詳細資訊，請參閱 [Azure 儲存體資源命名規則](../../azure-resource-manager/management/resource-name-rules.md#microsoftstorage)。
 
-#### <a name="location"></a>位置
+#### <a name="location"></a>Location
 
 儲存體帳戶的位置或 Azure 區域非常重要。 如果您使用 Azure 檔案同步，則所有的儲存體帳戶都必須位於與儲存體同步服務資源相同的區域中。 您挑選的 Azure 區域應接近或集中于您的本機伺服器和使用者。 部署資源之後，您就無法變更其區域。
 
@@ -160,7 +160,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 仍不確定嗎？
 
-* 如果您需要 [Premium Azure 檔案共用的效能](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)，請選擇 premium 儲存體。
+* 如果您需要 [Premium Azure 檔案共用的效能](understanding-billing.md#provisioned-billing)，請選擇 premium 儲存體。
 * 針對一般用途的檔案伺服器工作負載選擇標準儲存體，包括經常性存取資料和封存資料。 如果雲端中的共用上唯一的工作負載將會 Azure 檔案同步，也請選擇標準儲存體。
 
 #### <a name="account-kind"></a>帳戶種類
@@ -430,7 +430,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 1. 尋找最新的 **事件 9102**，這會對應到已完成的同步會話。
 1. 選取 [ **詳細資料**]，並確認您正在查看 **SyncDirection** 值 **下載** 的事件。
 1. 當您的命名空間已完成下載至伺服器時，將會有單一事件和 **案例**、值 **FullGhostedSync** 和 **HResult**  =  **0**。
-1. 如果您錯過該事件，也可以使用 **SyncDirection** **9102 events**  =  **下載** 和 **案例**  =  **"RegularSync"** 尋找其他9102事件。 尋找其中一個事件也表示命名空間已完成下載，並同步處理至一般同步會話，不論目前是否有任何要同步處理的作業。
+1. 如果您錯過該事件，也可以使用 **SyncDirection**   =  **下載** 和 **案例**  =  **"RegularSync"** 尋找其他9102事件。 尋找其中一個事件也表示命名空間已完成下載，並同步處理至一般同步會話，不論目前是否有任何要同步處理的作業。
 
 ### <a name="a-final-robocopy"></a>最終 RoboCopy
 

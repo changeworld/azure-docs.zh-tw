@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: 5ee9d39db130c76f683ca1f4d1ff64f9ed86d97e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204736"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723820"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector 檢查工具
 
@@ -25,7 +25,7 @@ ArrInspector 是一種 web 工具，可用來檢查執行中的 Azure 遠端轉�
 如果呼叫的應用程式 `ConnectToArrInspectorAsync` 已在電腦上執行：
 
 * 如果您使用 Unity 整合，則可能會自動為您啟動。
-* 否則，您會在 *[使用者資料夾 \\ \\ ] LocalAppData [your_app] \\ AC \\ Temp*中找到檔案。
+* 否則，您會在 *[使用者資料夾 \\ \\ ] LocalAppData [your_app] \\ AC \\ Temp* 中找到檔案。
 
 如果應用程式是在 HoloLens 上執行：
 
@@ -41,7 +41,7 @@ ArrInspector 是一種 web 工具，可用來檢查執行中的 Azure 遠端轉�
 
 此面板會顯示伺服器所公開的所有每個畫面格效能值的圖表。 這些值目前包含框架時間、FPS、CPU 和記憶體使用量、記憶體統計資料，例如整體 RAM 使用量、物件計數等等。
 
-若要將其中一個參數視覺化，請按一下 [ **加入新** 的] 按鈕，然後選取對話方塊中顯示的其中一個可用值。 此動作會將新的滾動圖加入至面板，即時追蹤這些值。 您可以在右側看到最 *小*值、 *最大* 值和 *目前* 值。
+若要將其中一個參數視覺化，請按一下 [ **加入新** 的] 按鈕，然後選取對話方塊中顯示的其中一個可用值。 此動作會將新的滾動圖加入至面板，即時追蹤這些值。 您可以在右側看到最 *小* 值、 *最大* 值和 *目前* 值。
 
 您可以使用滑鼠拖曳圖形內容來移動圖形，不過，只有當 ArrInspector 處於暫停狀態時，才可以水準移動。
 
@@ -108,17 +108,3 @@ ArrInspector 是一種 web 工具，可用來檢查執行中的 Azure 遠端轉�
 ![暫停模式](./media/pause-mode.png)
 
 重新啟用即時更新時，所有面板都會重設。
-
-## <a name="host-configuration"></a>主機組態
-
-根據預設，此工具會連接到在服務 ArrInspector 的相同主機上執行的 ARR 伺服器。 不過，您可以將它設定為檢查另一部伺服器，但前提是它正在執行已開啟工具埠的 ARR 實例。
-
-若要這樣做，請存取標題列左邊的主功能表，然後選取 [ *主機*設定]。 按一下 [ **新增主機**]，然後輸入名稱和主機名稱。 針對 *主機名稱* ，請使用結尾為的主機名稱 `.mixedreality.azure.com` ，不要包含 `http://` 或埠。
-
-![主機設定](./media/host-configuration.png)
-
-若要快速地從一部主機切換到另一部主機，請使用右上方的下拉式清單。
-
-![主機下拉式方塊](./media/host-switch-combo.png)
-
-主機清單會儲存在瀏覽器本機儲存體中，因此在重新開啟相同的瀏覽器時，將會保留該清單。

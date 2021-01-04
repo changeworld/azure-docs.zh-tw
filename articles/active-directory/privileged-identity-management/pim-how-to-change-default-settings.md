@@ -14,12 +14,12 @@ ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fadcf3f5aefa76ab03d6313643fc18df71f6c3b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 06eb7e8d1be2e58fd6cf87167a585a2ffeee0d7f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004648"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708478"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 角色設定
 
@@ -43,7 +43,7 @@ ms.locfileid: "96004648"
 請依照下列步驟開啟 Azure AD 角色的設定。
 
 1. 使用具有特殊[許可權角色管理員](../roles/permissions-reference.md#privileged-role-administrator)角色的使用者登入[Azure 入口網站](https://portal.azure.com/)。
-gt
+
 1. 開啟 **Azure AD Privileged Identity Management** &gt; **Azure AD 角色**] &gt; **角色設定**。
 
     ![列出 Azure AD 角色的角色設定頁面](./media/pim-how-to-change-default-settings/role-settings.png)

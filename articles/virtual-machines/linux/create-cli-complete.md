@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 17d36acfa2de699ff2b22ac16d327ea738519f4a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5992fb20fc8b86d4a0094a8fe5ed6cb6eb03754d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975377"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704464"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 來建立完整的 Linux 虛擬機器
 若要在 Azure 中快速建立虛擬機器 (VM)，您可以使用單一的 Azure CLI 命令，此命令會使用預設值來建立任何必要的支援資源。 系統會自動建立虛擬網路、公用 IP 位址及網路安全性群組規則等資源。 若要在生產環境使用案例中對您的環境進行更多控制，您可以預先建立這些資源，然後再將 VM 新增到這些資源中。 本文將引導您了解如何建立 VM 及逐一建立每個支援資源。
@@ -141,7 +141,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-您需定義允許或拒絕特定流量的規則。 若要允許連接埠 22 上的輸入連線 (以支援 SSH 存取)，請使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 建立輸入規則。 下列範例會建立名為 myNetworkSecurityGroupRuleSSH** 的規則：
+您需定義允許或拒絕特定流量的規則。 若要允許連接埠 22 上的輸入連線 (以支援 SSH 存取)，請使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 建立輸入規則。 下列範例會建立名為 myNetworkSecurityGroupRuleSSH 的規則：
 
 ```azurecli
 az network nsg rule create \
@@ -558,10 +558,10 @@ az group export --name myResourceGroup > myResourceGroup.json
 
 此命令會在您目前的工作目錄中建立 `myResourceGroup.json` 檔案。 當您從這個範本建立環境時，系統會提示您輸入所有資源名稱。 您可以藉由將 `--include-parameter-default-value` 參數新增到 `az group export` 命令中，在您的範本檔案中填入這些名稱。 編輯您的 JSON 範本以指定資源名稱，或在指定資源名稱的檔案 [上建立 parameters.js](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) 。
 
-若要從您的範本建立環境，請使用 [az group deployment create](/cli/azure/group/deployment)，如下所示︰
+若要從您的範本建立環境，請使用 [az deployment group create](/cli/azure/deployment/group) ，如下所示：
 
 ```azurecli
-az group deployment create \
+az deployment group create \
     --resource-group myNewResourceGroup \
     --template-file myResourceGroup.json
 ```

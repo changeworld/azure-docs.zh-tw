@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: e67376e2ef79f9711f54ce54d0d91623593ca8ea
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9a35c0dc8a3b994b015d7a8d64f76f7e10d95a00
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853283"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722397"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL 受控執行個體的連線架構
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -311,12 +311,13 @@ Azure 會使用管理端點來管理 SQL 受控執行個體。 此端點位於�
 
 **輸出連線強制執行 tls 1.2**：在年 1 2020 月，Microsoft 對所有 Azure 服務中的服務內流量強制使用 tls 1.2。 針對 Azure SQL 受控執行個體，這會導致在用於複寫的輸出連線和連結的伺服器連接到 SQL Server 上，強制執行 TLS 1.2。 如果您使用的 SQL Server 版本早于2016的 SQL 受控執行個體，請確定已套用 [TLS 1.2 特定的更新](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) 。
 
-SQL 受控執行個體目前不支援下列虛擬網路功能：
+SQL 受控執行個體目前 *不支援* 下列虛擬網路功能：
 
 - **Microsoft 對等互連**：在 ExpressRoute 線路上啟用 [microsoft 對等互連](../../expressroute/expressroute-faqs.md#microsoft-peering) 對等互連直接或透過 sql 受控執行個體所在的虛擬網路，對虛擬網路內的 sql 受控執行個體元件與其相依的服務之間的流量產生影響，進而造成可用性問題。 已啟用 Microsoft 對等互連之虛擬網路的 SQL 受控執行個體部署預期會失敗。
 - **全域虛擬網路對等互連**：跨 Azure 區域的 [虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md) 連線不適用於在9/22/2020 之前建立的子網中的 SQL 受控實例。
 - **AzurePlatformDNS**：使用 AzurePlatformDNS [服務標記](../../virtual-network/service-tags-overview.md) 來封鎖平臺 DNS 解析會導致 SQL 受控執行個體無法使用。 雖然 SQL 受控執行個體支援客戶定義的 DNS 解析引擎內的 DNS，但平臺作業的平臺 DNS 有相依性。
 - **NAT 閘道**：使用 [AZURE 虛擬網路 NAT](../../virtual-network/nat-overview.md) 來控制特定公用 IP 位址的輸出連線能力，會導致 SQL 受控執行個體無法使用。 SQL 受控執行個體服務目前僅限使用基本負載平衡器，不會提供使用虛擬網路 NAT 的輸入和輸出流量共存。
+- **適用于 Azure 虛擬網路的 IPv6**：將 SQL 受控執行個體部署到 [雙 Stack IPv4/IPv6 虛擬網路](../../virtual-network/ipv6-overview.md) 預期會失敗。 將網路安全性群組 (NSG) 或路由表的關聯 (UDR) 包含 IPv6 位址首碼至 SQL 受控執行個體子網，或將 IPv6 位址首碼新增至已與受控實例子網建立關聯的 NSG 或 UDR，將會導致 SQL 受控執行個體無法使用。 SQL 受控執行個體部署至已具有 IPv6 首碼的 NSG 和 UDR 子網，預期會失敗。
 
 ## <a name="next-steps"></a>後續步驟
 

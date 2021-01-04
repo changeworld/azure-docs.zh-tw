@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure Machine Learning 設計工具重新定型模型
+title: 使用管線參數在設計工具中重新定型模型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 表設計工具中，使用已發佈的管線重新定型機器學習模型。
+description: 在 Azure Machine Learning 表設計工具中，使用已發行的管線和管線參數重新定型模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437111"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708461"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>使用 Azure Machine Learning 設計工具重新定型模型
+# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>使用管線參數在設計工具中重新定型模型
 
 
-在此操作說明文章中，您將了解如何使用 Azure Machine Learning 設計工具來重新定型機器學習模型。 您將會使用已發佈的管線將工作流程自動化，並設定以新資料定型模型的參數。 
+在此操作說明文章中，您將瞭解如何使用 Azure Machine Learning 設計工具，利用管線參數重新定型機器學習模型。 您將會使用已發佈的管線將工作流程自動化，並設定以新資料定型模型的參數。 管線參數可讓您針對不同的作業重複使用現有的管線。  
 
 在本文中，您將學會如何：
 

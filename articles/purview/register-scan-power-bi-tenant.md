@@ -1,18 +1,18 @@
 ---
 title: '註冊並掃描 Power BI 租使用者 (preview) '
 description: 瞭解如何使用 Azure 範疇入口網站來註冊和掃描 Power BI 租使用者。
-author: viseshag
-ms.author: viseshag
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3813d58d894d87051b1bcf8b512c848d527a52bb
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615843"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696239"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>註冊並掃描 Power BI 租使用者 (preview) 
 
@@ -72,8 +72,6 @@ ms.locfileid: "97615843"
 
 首先，將特殊功能旗標新增至您的範疇 URL 
 
-1. 在範疇實例 uri 的結尾新增下列字串： `?feature.ext.catalog={"pbi":"true"}` 。 這會在您的目錄中啟用 Power BI 的註冊選項。
-
 1. 選取 [ **管理中心** ] 圖示。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="管理中心圖示。":::
@@ -112,6 +110,5 @@ ms.locfileid: "97615843"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要瞭解如何使用 PowerShell Cmdlet 來註冊和掃描 Power BI 租使用者，請參閱：
-  
-- [使用 PowerShell 來註冊和掃描 Power BI](powershell-register-scan-power-bi.md)
+- [瀏覽 Azure Purview 資料目錄](how-to-browse-catalog.md)
+- [搜尋 Azure Purview 資料目錄](how-to-search-catalog.md)

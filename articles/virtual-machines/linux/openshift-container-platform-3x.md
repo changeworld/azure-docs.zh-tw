@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fab8f88a39730411503af273902a53f169e3fe57
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368144"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703730"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺3.11
 
@@ -32,13 +32,13 @@ ms.locfileid: "87368144"
 
 ### <a name="private-clusters"></a>私人叢集
 
-部署私用 OpenShift 叢集所需的不只是 (web 主控台) 的公用 IP 或基礎負載平衡器 (路由器) 。  私人叢集通常會使用自訂的 DNS 伺服器， (不是預設的 Azure DNS) 、自訂功能變數名稱 (例如 contoso.com) ，以及預先定義的虛擬網路 (s。  針對私人叢集，您需要事先設定所有適當的子網和 DNS 伺服器設定的虛擬網路。  然後使用 **existingMasterSubnetReference**、 **existingInfraSubnetReference**、 **existingCnsSubnetReference**和 **existingNodeSubnetReference** 來指定要供叢集使用的現有子網。
+部署私用 OpenShift 叢集所需的不只是 (web 主控台) 的公用 IP 或基礎負載平衡器 (路由器) 。  私人叢集通常會使用自訂的 DNS 伺服器， (不是預設的 Azure DNS) 、自訂功能變數名稱 (例如 contoso.com) ，以及預先定義的虛擬網路 (s。  針對私人叢集，您需要事先設定所有適當的子網和 DNS 伺服器設定的虛擬網路。  然後使用 **existingMasterSubnetReference**、 **existingInfraSubnetReference**、 **existingCnsSubnetReference** 和 **existingNodeSubnetReference** 來指定要供叢集使用的現有子網。
 
-如果選取了私人主要， (**masterClusterType**= 私用) ，就必須為 **masterPrivateClusterIp**指定靜態私人 IP。  此 IP 將指派給主要負載平衡器的前端。  IP 必須在用於主要子網且不在使用中的 CIDR 內。  **masterClusterDnsType** 必須設為 "custom"，且必須為 **MASTERCLUSTERDNS**提供主要 DNS 名稱。  DNS 名稱必須對應到靜態私人 IP，而且將用來存取主要節點上的主控台。
+如果選取了私人主要， (**masterClusterType**= 私用) ，就必須為 **masterPrivateClusterIp** 指定靜態私人 IP。  此 IP 將指派給主要負載平衡器的前端。  IP 必須在用於主要子網且不在使用中的 CIDR 內。  **masterClusterDnsType** 必須設為 "custom"，且必須為 **MASTERCLUSTERDNS** 提供主要 DNS 名稱。  DNS 名稱必須對應到靜態私人 IP，而且將用來存取主要節點上的主控台。
 
-如果選取了專用路由器 (**routerClusterType**= 私用) ，就必須為 **routerPrivateClusterIp**指定靜態私人 IP。  此 IP 將指派給基礎負載平衡器的前端。  IP 必須在基礎網的 CIDR 內，而不是使用中。  **routingSubDomainType** 必須設為 "custom"，且必須為 **routingSubDomain**提供路由的萬用字元 DNS 名稱。  
+如果選取了專用路由器 (**routerClusterType**= 私用) ，就必須為 **routerPrivateClusterIp** 指定靜態私人 IP。  此 IP 將指派給基礎負載平衡器的前端。  IP 必須在基礎網的 CIDR 內，而不是使用中。  **routingSubDomainType** 必須設為 "custom"，且必須為 **routingSubDomain** 提供路由的萬用字元 DNS 名稱。  
 
-如果選取了私人主機和私人路由器，也必須輸入**domainName**的自訂功能變數名稱
+如果選取了私人主機和私人路由器，也必須輸入 **domainName** 的自訂功能變數名稱
 
 成功部署之後，防禦節點是唯一具有公用 IP 的節點，您可以透過 ssh 連線到該節點。  即使主要節點設定為公開存取，也不會公開給 ssh 存取。
 
@@ -243,7 +243,7 @@ ms.locfileid: "87368144"
 
 ### <a name="azuredeployparametersjson-file-explained"></a>檔上的 azuredeploy.Parameters.js說明
 
-| 屬性 | 說明 | 有效選項 | 預設值 |
+| 屬性 | 描述 | 有效選項 | 預設值 |
 |----------|-------------|---------------|---------------|
 | `_artifactsLocation`  | 成品的 URL (json、腳本等 )  |  |  HTTPs： \/ /raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | 要部署資源的 Azure 區域 |  |  |
@@ -277,7 +277,7 @@ ms.locfileid: "87368144"
 | `enableAzure` | 啟用 Azure 雲端提供者 | true <br> false | true |
 | `aadClientId` | Azure Active Directory 用戶端識別碼也稱為服務主體的應用程式識別碼 |  |  |
 | `domainName` | 要使用 (的自訂功能變數名稱名稱（如果適用) ）。 如果未部署完整私人叢集，則設定為 "none" |  | 無 |
-| `masterClusterDnsType` | OpenShift web 主控台的網欄位型別。 「預設」會使用主要基礎公用 IP 的 DNS 標籤。 「自訂」可讓您定義自己的名稱 | default <br> 自訂 | default |
+| `masterClusterDnsType` | OpenShift web 主控台的網欄位型別。 「預設」會使用主要基礎公用 IP 的 DNS 標籤。 「自訂」可讓您定義自己的名稱 | 預設 <br> 自訂 | 預設 |
 | `masterClusterDns` | 如果您選取了 [自訂]，用來存取 OpenShift web 主控台的自訂 DNS 名稱 `masterClusterDnsType` |  | console.contoso.com |
 | `routingSubDomainType` | 如果設定為 ' nipio '， `routingSubDomain` 將會使用 nip.io。  如果您有想要用於路由的專屬網域，請使用 [自訂] | nipio <br> 自訂 | nipio |
 | `routingSubDomain` | 如果您選取了 [自訂]，您想要用於路由傳送的萬用字元 DNS 名稱 `routingSubDomainType` |  | apps.contoso.com |
@@ -312,7 +312,7 @@ ms.locfileid: "87368144"
 下列範例會使用 myOpenShiftCluster 的部署名稱，將 OpenShift 叢集和所有相關的資源部署到名為 openshiftrg 的資源群組。 範本直接參考自 GitHub 儲存機制，而且會使用名為 azuredeploy.parameters.json 檔案的本機參數檔案。
 
 ```azurecli 
-az group deployment create -g openshiftrg --name myOpenShiftCluster \
+az deployment group create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```
@@ -344,7 +344,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [部署後工作](./openshift-container-platform-3x-post-deployment.md)
 - [針對 Azure 中的 OpenShift 部署進行疑難排解](./openshift-container-platform-3x-troubleshooting.md)

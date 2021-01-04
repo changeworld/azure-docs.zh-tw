@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1858e06567a0ab0907e6d2cb60358ff4ac00f9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6dd67e9e0cd9dcd4afb8f1ae2cc32ccf30617fd
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086342"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704940"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>使用自訂 Ambari DB 設定 HDInsight 叢集
 
@@ -59,12 +59,12 @@ Apache Ambari 簡化了 Apache Hadoop 叢集的管理和監視。 Ambari 提供�
 您可以使用 Azure CLI 開始部署。 取代 `<RESOURCEGROUPNAME>` 為您要在其中部署叢集的資源群組。
 
 ```azurecli
-az group deployment create --name HDInsightAmbariDBDeployment \
+az deployment group create --name HDInsightAmbariDBDeployment \
     --resource-group <RESOURCEGROUPNAME> \
     --template-file azuredeploy.json \
     --parameters azuredeploy.parameters.json
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Azure HDInsight 中使用外部中繼資料存放區](hdinsight-use-external-metadata-stores.md)

@@ -1,29 +1,26 @@
 ---
-title: '使用 WhiteNoise 套件 (預覽版來實施差異隱私權) '
+title: '使用 SmartNoise 套件 (預覽版來實施差異隱私權) '
 titleSuffix: Azure Machine Learning
-description: 了解什麼是差異隱私權，以及 WhiteNoise 套件如何協助您實作可保留資料隱私權的差異隱私系統。
+description: 瞭解何謂差異隱私權，以及 SmartNoise 套件如何協助您實行可保存資料隱私權的差異私用系統。
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/09/2020
+ms.date: 12/21/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 307786c0df744751122487b8c931d0e9572d5f22
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86199803"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723485"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>使用差異隱私權和 WhiteNoise 套件 (預覽版來保留資料隱私權) 
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>使用差異隱私權和 SmartNoise 套件 (預覽版來保留資料隱私權) 
 
-了解什麼是差異隱私權，以及 WhiteNoise 套件如何協助您實作差異隱私系統。
+瞭解何謂差異隱私權，以及 SmartNoise 套件如何協助您執行微分私用系統。
 
 由於組織收集並用於分析的資料量增加，隱私權和安全性也會受到重視。 分析必要資料。 一般來說，用來定型模型的資料越多，結果就越精確。 當使用個人資訊進行這些分析時，資料在整個使用過程中都必須保持隱私。
-
-> [!NOTE]
-> 請注意，我們會重新命名此工具組，並將在未來幾周推出新的名稱。 
 
 ## <a name="how-differential-privacy-works"></a>差異隱私如何運作
 
@@ -34,7 +31,7 @@ ms.locfileid: "86199803"
 
 在傳統的案例中，未經處理資料會儲存在檔案和資料庫中。 當使用者分析資料時，通常會使用未經處理資料。 如此可能會因為侵害個人的隱私權而產生問題。 差異隱私權會嘗試處理此問題，方法是在資料中新增「雜訊」或隨機性，讓使用者無法識別任何個別的資料點。 至少，這類系統會提供合理推諉。
 
-在差異隱私系統中，資料是透過稱為**查詢**的要求來共用。 當使用者提交資料查詢時，稱為**隱私權機制**的作業會將雜訊新增至要求的資料。 隱私權機制會傳回「資料的近似值」，而不是原始資料。 此隱私權保留結果會出現在**報告**中。 報告是由兩個部分所組成：實際計算的資料，以及資料建立方式的描述。
+在差異隱私系統中，資料是透過稱為 **查詢** 的要求來共用。 當使用者提交資料查詢時，稱為 **隱私權機制** 的作業會將雜訊新增至要求的資料。 隱私權機制會傳回「資料的近似值」，而不是原始資料。 此隱私權保留結果會出現在 **報告** 中。 報告是由兩個部分所組成：實際計算的資料，以及資料建立方式的描述。
 
 ## <a name="differential-privacy-metrics"></a>差異隱私權計量
 
@@ -46,18 +43,18 @@ Epsilon 值為非負值。 低於 1 的值會提供完整的合理推諉。 大�
 
 ## <a name="privacy-budget"></a>隱私權預算
 
-為確保允許多項查詢的系統隱私權，差異隱私權會定義速率限制。 此限制稱為**隱私權預算**。 隱私權預算會配置一個 epsilon 額度，通常介於 1 到 3 之間，以限制重新識別的風險。 產生報告時，隱私權預算會追蹤個別報告的 epsilon 值，以及所有報告的彙總。 在隱私權預算用完或耗盡之後，使用者就無法再存取資料。  
+為確保允許多項查詢的系統隱私權，差異隱私權會定義速率限制。 此限制稱為 **隱私權預算**。 隱私權預算會配置一個 epsilon 額度，通常介於 1 到 3 之間，以限制重新識別的風險。 產生報告時，隱私權預算會追蹤個別報告的 epsilon 值，以及所有報告的彙總。 在隱私權預算用完或耗盡之後，使用者就無法再存取資料。  
 
 ## <a name="reliability-of-data"></a>資料可靠性
 
-雖然我們的目標是保留隱私權，但在資料的可用性和可靠性方面也會有所取捨。 在資料分析中，可以將精確度視為取樣錯誤造成之不確定性的量值。 這種不確定性傾向於落在特定界限內。 差異隱私權觀點的**精確度**會改為測量資料的可靠性，這會受到隱私權機制帶來的不確定性所影響。 簡言之，較高層級的雜訊或隱私權會轉譯成具有較低的 epsilon、準確度和可靠性的資料。 雖然資料隱私較高，但因為並不可靠，所以使用的可能性較低。
+雖然我們的目標是保留隱私權，但在資料的可用性和可靠性方面也會有所取捨。 在資料分析中，可以將精確度視為取樣錯誤造成之不確定性的量值。 這種不確定性傾向於落在特定界限內。 差異隱私權觀點的 **精確度** 會改為測量資料的可靠性，這會受到隱私權機制帶來的不確定性所影響。 簡言之，較高層級的雜訊或隱私權會轉譯成具有較低的 epsilon、準確度和可靠性的資料。 雖然資料隱私較高，但因為並不可靠，所以使用的可能性較低。
 
 ## <a name="implementing-differentially-private-systems"></a>實作差異隱私系統
 
-實作差異隱私系統十分困難。 WhiteNoise 是開放原始碼專案，其中包含用來建立全域差異隱私系統的不同元件。 WhiteNoise 是由下列最上層元件所組成：
+實作差異隱私系統十分困難。 SmartNoise 是一個開放原始碼專案，其中包含用來建立全球微分私用系統的不同元件。 SmartNoise 是由下列最上層元件所組成：
 
 - 核心
-- 系統
+- SDK
 
 ### <a name="core"></a>核心
 
@@ -68,9 +65,9 @@ Epsilon 值為非負值。 低於 1 的值會提供完整的合理推諉。 大�
 |分析     | 任意計算的圖表描述。 |
 |驗證程式     | Rust 程式庫包含一組工具，可用來檢查及衍生要進行差異隱私之分析的必要條件。          |
 |執行階段     | 執行分析的媒體。 參考執行階段是以 Rust 撰寫，但執行階段可以根據您的資料需求，使用任何計算架構 (例如 SQL 和 Spark) 來撰寫。        |
-|繫結     | 用來建置分析的語言繫結和協助程式程式庫。 目前 WhiteNoise 提供 Python 繫結。 |
+|繫結     | 用來建置分析的語言繫結和協助程式程式庫。 目前 SmartNoise 會提供 Python 系結。 |
 
-### <a name="system"></a>系統
+### <a name="sdk"></a>SDK
 
 系統程式庫提供下列工具和服務，以使用表格式和關聯式資料：
 
@@ -84,4 +81,4 @@ Epsilon 值為非負值。 低於 1 的值會提供完整的合理推諉。 大�
 
 保留 Azure Machine Learning 中的[資料隱私權](how-to-differential-privacy.md)。
 
-若要深入瞭解 WhiteNoise 的元件，請參閱適用于 [WhiteNoise Core 套件](https://github.com/opendifferentialprivacy/whitenoise-core)、 [WhiteNoise 系統套件](https://github.com/opendifferentialprivacy/whitenoise-system) 和 [WhiteNoise 範例](https://github.com/opendifferentialprivacy/whitenoise-samples)的 GitHub 存放庫。
+若要深入瞭解 SmartNoise 的元件，請參閱適用于 [SmartNoise Core 套件](https://github.com/opendifferentialprivacy/smartnoise-core)、 [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)和 [SmartNoise 範例](https://github.com/opendifferentialprivacy/smartnoise-samples)的 GitHub 存放庫。

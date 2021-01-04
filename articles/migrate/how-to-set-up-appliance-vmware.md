@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: cc479f8e4dc87155721b25fab2ba522880b0ac4f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 749dd17c6f9b09db1841459da951b44470d8bb92
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751052"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704702"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>為 VMware Vm 設定設備
 
@@ -115,11 +115,16 @@ ms.locfileid: "96751052"
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
 1. 貼上從入口網站複製的 **Azure Migrate 專案金鑰**。 如果沒有金鑰，請移至 **伺服器評估 > 探索 > 管理現有的設備**，選取在金鑰產生時提供的設備名稱，並複製對應的金鑰。
-1. 按一下 [登入]。 系統會在新的瀏覽器索引標籤中開啟 Azure 登入提示。如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
-1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
+1. 您將需要裝置程式碼來向 Azure 進行驗證。 按一下 **[登** 入] 將會開啟具有裝置程式碼的模式，如下所示。
+
+    ![顯示裝置程式碼的強制回應](./media/tutorial-discover-vmware/device-code.png)
+
+1. 按一下 **[複製程式碼] & 登** 入，以複製裝置程式碼，並在新的瀏覽器索引標籤中開啟 Azure 登入提示。如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
+1. 在 [新增] 索引標籤上，貼上裝置程式碼，並使用您的 Azure 使用者名稱和密碼登入。
    
    不支援使用 PIN 登入。
-3. 成功登入後，返回 Web 應用程式。 
+3. 如果您不小心關閉 [登入] 索引標籤而未登入，則必須重新整理設備設定管理員的 [瀏覽器] 索引標籤，才能再次啟用 [登入] 按鈕。
+1. 成功登入之後，請回到 [設備設定管理員] 的先前索引標籤。
 4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](./tutorial-discover-vmware.md#prepare-an-azure-user-account)，就會起始設備註冊。
 1. 成功註冊設備之後，您可以按一下 [檢視詳細資料]查看註冊詳細資料。
 

@@ -1,17 +1,17 @@
 ---
 title: 效能微調-Azure Data Lake Storage Gen1 上的 Hive
 description: 瞭解 HdInsight 上的 Hive 和 Azure Data Lake Storage Gen1 的效能微調。 針對 i/o 密集的查詢，請調整 Hive 以取得較佳的效能。
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 7b1bbe7f632d8101dbff02a31092f06c7b644ece
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.author: twooley
+ms.openlocfilehash: 082d684ed0a29cb6bf2de9c506886b6d98cf174a
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108315"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723776"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight 和 Azure Data Lake Storage Gen1 上的 Hive 效能微調指導方針
 

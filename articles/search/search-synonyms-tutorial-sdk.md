@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/05/2020
+ms.date: 12/18/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4b97b223ac180df7f8eb07ad8eaab66847f50776
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 50d5d73e71b8129f061ec49b363a0ebb13d22bdf
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422989"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704651"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>範例：在 C 中新增 Azure 認知搜尋的同義字#
 
@@ -94,6 +94,8 @@ static void Main(string[] args)
 
 在 `RunQueriesWithNonExistentTermsInIndex` 中，使用 "five star"、"internet" 和 "economy AND hotel" 發出搜尋查詢。
 
+片語查詢（例如「五顆星」）必須以引號括住，而且可能也需要根據您的用戶端來換用字元。
+
 ```csharp
 Console.WriteLine("Search the entire index for the phrase \"five star\":\n");
 results = searchClient.Search<Hotel>("\"five star\"", searchOptions);
@@ -108,7 +110,7 @@ results = searchClient.Search<Hotel>("economy AND hotel", searchOptions);
 WriteDocuments(results);
 ```
 
-這兩個已編制索引的檔都不包含詞彙，所以我們會從第一個取得下列輸出 `RunQueriesWithNonExistentTermsInIndex` ：  **沒有符合的檔** 。
+這兩個已編制索引的檔都不包含詞彙，所以我們會從第一個取得下列輸出 `RunQueriesWithNonExistentTermsInIndex` ：  **沒有符合的檔**。
 
 ## <a name="enable-synonyms"></a>啟用同義字
 
@@ -146,7 +148,7 @@ WriteDocuments(results);
 
 上傳同義字對應並將索引更新為使用同義字對應之後，第二個 `RunQueriesWithNonExistentTermsInIndex` 就會呼叫下列輸出︰
 
-```
+```dos
 Search the entire index for the phrase "five star":
 
 Name: Fancy Stay        Category: Luxury        Tags: [pool, view, wifi, concierge]

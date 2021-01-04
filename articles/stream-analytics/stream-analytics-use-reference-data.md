@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/2/2020
-ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.date: 12/18/2020
+ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533600"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722125"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用參考資料在串流分析中進行查閱
 
@@ -82,7 +82,7 @@ Azure 串流分析會每隔一分鐘自動掃描已重新整理的參考資料 b
 3. 參考資料 blob **不** 會依 blob 的「上次修改時間」時間來排序，而是只依 blob 名稱中使用 {date} 和 {time} 替代來指定的時間和日期來排序。
 3. 若要避免必須列出大量 Blob，請考慮刪除再也不會進行處理且非常舊的 Blob。 請注意，ASA 在某些案例 (例如重新啟動) 中可能需要重新處理很少數舊的 Blob。
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Azure SQL 資料庫
 
 您的串流分析作業將擷取 Azure SQL Database 參考資料，並將其作為快照集儲存在記憶體中以進行處理。 參考資料的快照集也會儲存在組態設定中所指定的儲存體帳戶的容器中。 作業開始時自動建立容器。 如果作業已停止或進入失敗狀態，則在重新啟動作業時將刪除自動建立的容器。  
 
@@ -137,6 +137,18 @@ INTO    output
 FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
+
+## <a name="iot-edge-jobs"></a>IoT Edge 作業
+
+串流分析 edge 作業僅支援本機參考資料。 當作業部署到 IoT Edge 裝置時，它會從使用者定義的檔案路徑載入參考資料。 在裝置上備妥參考資料檔案。 針對 Windows 容器，請將參考資料檔案放在本機磁碟機上，並將本機磁碟機與 Docker 容器共用。 針對 Linux 容器，請建立 Docker 磁碟區，並在磁碟區上填入資料檔案。
+
+部署會觸發 IoT Edge 更新上的參考資料。 一旦觸發之後，串流分析模組會挑選更新的資料，而不會停止執行中的作業。
+
+有兩種方式可更新參考資料：
+
+* 從 Azure 入口網站更新串流分析作業中的參考資料路徑。
+
+* 更新 IoT Edge 部署。
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

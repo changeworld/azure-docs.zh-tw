@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: db24fa4721e2e502c5098b415c4cf06da80f697d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 504d3a834760605149c93c0beea84bbe1b59e263
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175673"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707549"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>快速入門：從命令列在 Azure 中建立 Java 函式
 
@@ -146,7 +146,7 @@ Function.java 包含 `run` 方法，會接收 `request` 變數中的要求資料
     </pre>
     
     > [!NOTE]  
-    > 如果 HttpExample 未如下顯示，表示您可能不是從專案的根資料夾啟動主機。 在此情況下，請使用 **Ctrl**+**C** 停止主機，瀏覽至專案的根資料夾，然後再次執行先前的命令。
+    > 如果 HttpExample 未如上顯示，表示您可能不是從專案的根資料夾啟動主機。 在此情況下，請使用 **Ctrl**+**C** 停止主機，瀏覽至專案的根資料夾，然後再次執行先前的命令。
 
 1. 從這個輸出中將 `HttpExample` 函式的 URL 複製到瀏覽器，並附加查詢字串 `?name=<YOUR_NAME>`，使其成為完整的 URL (如 `http://localhost:7071/api/HttpExample?name=Functions`)。 瀏覽器應該會顯示類似於 `Hello Functions` 的訊息：
 

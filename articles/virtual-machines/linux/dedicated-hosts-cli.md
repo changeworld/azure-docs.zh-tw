@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: ef0c8d53d885f11acdcf578db155de3d7848887e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: dcb5a3c664386e65e676f5559c47236126fefe87
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360062"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704923"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>使用 Azure CLI 部署至專用主機
  
@@ -263,10 +263,10 @@ az group export --name myDHResourceGroup > myDHResourceGroup.json
 
 此命令會在您目前的工作目錄中建立 `myDHResourceGroup.json` 檔案。 當您從這個範本建立環境時，系統會提示您輸入所有資源名稱。 您可以藉由將 `--include-parameter-default-value` 參數新增到 `az group export` 命令中，在您的範本檔案中填入這些名稱。 請編輯您的 JSON 範本以指定資源名稱，或 建立 parameters.json 檔案 來指定資源名稱。
  
-若要從您的範本建立環境，請使用 [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create)。
+若要從您的範本建立環境，請使用 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)。
 
 ```azurecli-interactive
-az group deployment create \ 
+az deployment group create \ 
     --resource-group myNewResourceGroup \ 
     --template-file myDHResourceGroup.json 
 ```

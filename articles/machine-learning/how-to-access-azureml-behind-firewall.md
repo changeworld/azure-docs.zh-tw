@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8560acd9c5a11004c5144441d395863c8b85edba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461410"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705059"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>使用防火牆後方的工作區進行 Azure Machine Learning
 
-在本文中，您將瞭解如何設定 Azure 防火牆，以控制對您 Azure Machine Learning 工作區和公用網際網路的存取。 若要深入瞭解如何保護 Azure Machine Learning，請參閱 [Azure Machine Learning 的企業安全性](concept-enterprise-security.md)
+在本文中，您將瞭解如何設定 Azure 防火牆，以控制對您 Azure Machine Learning 工作區和公用網際網路的存取。 若要深入瞭解如何保護 Azure Machine Learning，請參閱 [Azure Machine Learning 的企業安全性](concept-enterprise-security.md)。
+
+> [!WARNING]
+> 只有在 code first 體驗中才支援存取防火牆後方的資料儲存體。 不支援使用 [Azure Machine Learning studio](overview-what-is-machine-learning-studio.md) 存取防火牆背後的資料。 若要在具有 studio 的私人網路上使用資料存放區，您必須先 [設定虛擬網路](../virtual-network/quick-create-portal.md) ，並 [讓 studio 存取儲存在虛擬網路內的資料](how-to-enable-studio-virtual-network.md)。
 
 ## <a name="azure-firewall"></a>Azure 防火牆
 
@@ -143,7 +146,7 @@ ms.locfileid: "96461410"
 | **必須用於** | **Azure 公用** | **Azure Government** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | Azure 儲存體帳戶 | core.windows.net | core.usgovcloudapi.net | core.chinacloudapi.cn |
-| Azure 金鑰保存庫 | vault.azure.net | vault.usgovcloudapi.net | vault.azure.cn |
+| Azure Key Vault | vault.azure.net | vault.usgovcloudapi.net | vault.azure.cn |
 | Azure Container Registry | azurecr.io | azurecr.us | azurecr.cn |
 | Microsoft 容器登錄 | mcr.microsoft.com | mcr.microsoft.com | mcr.microsoft.com |
 

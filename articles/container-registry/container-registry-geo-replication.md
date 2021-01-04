@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810055"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705161"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure 容器登錄中的異地複寫
 
@@ -59,6 +59,8 @@ docker push contosowesteu.azurecr.io/public/products/web:1.2
 * 管理映射部署的單一設定，因為所有區域都使用相同的映射 URL： `contoso.azurecr.io/public/products/web:1.2`
 * 推送至單一登錄，同時 ACR 會管理異地複寫。 ACR 只會複寫唯一層，減少跨區域的資料傳輸。 
 * 設定區域 [webhook](container-registry-webhook.md) 以通知您特定複本中的事件。
+
+Azure Container Registry 也支援 [可用性區域](zone-redundancy.md) ，可在 azure 區域內建立彈性且高可用性的 azure Container Registry。 區域內的冗余和跨多個區域的異地複寫的可用性區域組合，可增強登錄的可靠性和效能。
 
 ## <a name="configure-geo-replication"></a>設定異地複寫
 

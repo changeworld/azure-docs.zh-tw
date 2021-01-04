@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 8fabf8169270c3162604b6535a6cf2fb07cd9a9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: dc19b95e891235ac35c703adef50a23a9f70fbdb
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422139"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706791"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>讀取適用於 PostgreSQL 的 Azure 資料庫中的複本-單一伺服器
 
@@ -72,12 +72,14 @@ ms.locfileid: "93422139"
 
 了解如何[在 Azure 入口網站中建立讀取複本](howto-read-replicas-portal.md)。
 
+如果您的來源於 postgresql 伺服器已使用客戶管理的金鑰進行加密，請參閱 [檔](concepts-data-encryption-postgresql.md) 以瞭解其他考慮。
+
 ## <a name="connect-to-a-replica"></a>連線到複本
 當您建立複本時，它不會繼承主伺服器的防火牆規則或 VNet 服務端點。 您必須個別針對複本設定這些規則。
 
 複本會從主伺服器繼承系統管理員帳戶。 主伺服器上的所有使用者帳戶都會複寫到讀取複本。 您只能使用主伺服器上可用的使用者帳戶來連接到讀取複本。
 
-您可以使用複本的主機名稱和有效的使用者帳戶來連線到該複本，如同連線到一般適用於 PostgreSQL 的 Azure 資料庫伺服器一樣。 對於名為「 **我的複本** 」和「系統管理員使用者名稱 **myadmin** 」的伺服器，您可以使用 psql 連接到該複本：
+您可以使用複本的主機名稱和有效的使用者帳戶來連線到該複本，如同連線到一般適用於 PostgreSQL 的 Azure 資料庫伺服器一樣。 對於名為「 **我的複本** 」和「系統管理員使用者名稱 **myadmin**」的伺服器，您可以使用 psql 連接到該複本：
 
 ```bash
 psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
@@ -86,7 +88,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 在出現提示時，請輸入使用者帳戶的密碼。
 
 ## <a name="monitor-replication"></a>監視複寫
-適用於 PostgreSQL 的 Azure 資料庫提供兩個計量來監視複寫。 這兩個計量是複本和 **複本延遲****之間的最大延隔** 時間。 若要瞭解如何查看這些計量，請參閱「 [讀取複本操作說明](howto-read-replicas-portal.md)」一文中的「 **監視複本** 」一節。
+適用於 PostgreSQL 的 Azure 資料庫提供兩個計量來監視複寫。 這兩個計量是複本和 **複本延遲****之間的最大延隔** 時間。 若要瞭解如何查看這些計量，請參閱「[讀取複本操作說明](howto-read-replicas-portal.md)」一文中的「**監視複本**」一節。
 
 [ **複本之間的最大延隔** 時間] 計量會顯示主要與最延遲複本之間的延遲（以位元組為單位）。 此計量僅適用于主伺服器，而且只有當至少有一個讀取複本連接至主要複本，而且主要是串流複寫模式時，才可使用此度量。 當複本正在使用「檔案傳送」複寫模式中的主資料庫封存記錄來趕上主要複本時，延遲資訊不會顯示詳細資料。
 
@@ -150,7 +152,7 @@ SELECT EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 若要設定正確的記錄層級，請使用 Azure 複寫支援參數。 Azure 複寫支援有三個設定選項：
 
 * **Off** -將最少的資訊放在 WAL 中。 這項設定無法在大部分的適用於 PostgreSQL 的 Azure 資料庫伺服器上使用。  
-* **複本** -更 **詳細的資訊。** 這是 [讀取複本](concepts-read-replicas.md) 正常運作所需的最小記錄層級。 這項設定在大部分伺服器上是預設值。
+* **複本**-更 **詳細的資訊。** 這是 [讀取複本](concepts-read-replicas.md) 正常運作所需的最小記錄層級。 這項設定在大部分伺服器上是預設值。
 * **邏輯** 更詳細的資訊比 **複本** 更詳細。 這是要讓邏輯解碼正常運作的最小記錄層級。 讀取複本也可在此設定中運作。
 
 
@@ -162,12 +164,12 @@ SELECT EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
 
 建立或之後建立複本時，防火牆規則、虛擬網路規則和參數設定都不會從主伺服器繼承至複本。
 
-### <a name="scaling"></a>調整大小
+### <a name="scaling"></a>擴縮
 調整虛擬核心或一般目的與記憶體優化：
 * 于 postgresql 需要 `max_connections` 次要伺服器上的設定 [大於或等於主伺服器上的設定](https://www.postgresql.org/docs/current/hot-standby.html)，否則次要伺服器將不會啟動。
 * 在適用於 PostgreSQL 的 Azure 資料庫中，每個伺服器允許的連線數上限會固定到計算 sku，因為連接會佔用記憶體。 您可以深入瞭解 [max_connections 與計算 sku 之間的對應](concepts-limits.md)。
-* 相應 **增加** ：先擴大複本的計算，然後擴大主要複本。 此順序可防止錯誤違反 `max_connections` 需求。
-* 相應 **減少** ：先縮小主要的計算範圍，然後縮小複本的範圍。 如果您嘗試調整複本的範圍低於主要複本，將會發生錯誤，因為這違反了 `max_connections` 需求。
+* 相應 **增加**：先擴大複本的計算，然後擴大主要複本。 此順序可防止錯誤違反 `max_connections` 需求。
+* 相應 **減少**：先縮小主要的計算範圍，然後縮小複本的範圍。 如果您嘗試調整複本的範圍低於主要複本，將會發生錯誤，因為這違反了 `max_connections` 需求。
 
 調整儲存體：
 * 所有複本都會啟用儲存體自動成長，以防止來自儲存體完整複本的複寫問題。 您無法停用此設定。

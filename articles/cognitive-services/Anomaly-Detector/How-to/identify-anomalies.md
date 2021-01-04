@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: b2cd5e32503953de874ab470ca3f9413d2b37d59
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014642"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703427"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>如何：在時間序列資料上使用異常偵測器 API  
 
@@ -26,7 +26,7 @@ ms.locfileid: "92014642"
 異常偵測器 API 會提供偵測模式：批次和串流處理。
 
 > [!NOTE]
-> 下列要求 Url 必須與您的訂用帳戶的適當端點結合。 例如： `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> 下列要求 Url 必須與您的訂用帳戶的適當端點結合。 例如：`https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
 ### <a name="batch-detection"></a>批次偵測
@@ -71,4 +71,4 @@ ms.locfileid: "92014642"
 ## <a name="next-steps"></a>後續步驟
 
 * [什麼是異常偵測器 API？](../overview.md)
-* [快速入門：使用 Anomaly Detector REST API 偵測時間序列資料中的異常狀況](../quickstarts/detect-data-anomalies-csharp.md)
+* [快速入門：使用異常偵測器偵測時間序列資料中的異常狀況](../quickstarts/client-libraries.md)

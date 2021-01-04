@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 79ac8e7868b04a63637e24d6dde651b218ce6a46
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86822c5a9cef84ff4b51bc94b6b2dd3dbdee91bf
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489185"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702004"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric Mesh 應用程式中裝載以 Service Fabric 可靠磁碟為基礎的高可用性磁碟區 
 保存容器應用程式狀態的常見方法是使用遠端儲存體 (例如 Azure 檔案儲存體) 或資料庫 (例如 Azure Cosmos DB)。 這會對遠端存放區產生大量的讀取和寫入網路延遲。
@@ -23,7 +23,7 @@ Service Fabric 可靠磁碟會提供磁碟區來用於本機讀取，並在 Serv
 
 `counterService` 會定期從檔案讀取計數器的值、增加該值並將其寫回檔案。 儲存檔案的資料夾會裝載在由 Service Fabric 可靠磁碟支援的磁碟區中。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您可以使用 Azure Cloud Shell 或安裝在本機的 Azure CLI 來完成此工作。 若要依照本文的指示使用 Azure CLI，請確認 `az --version` 至少傳回 `azure-cli (2.0.43)`。  請依照下列[指示](service-fabric-mesh-howto-setup-cli.md)安裝 (或更新) Azure Service Fabric Mesh CLI 擴充功能模組。
 
@@ -60,7 +60,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
 您也可以使用命令查看部署的狀態
 
 ```azurecli-interactive
-az group deployment show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
+az deployment group show --name counter.sfreliablevolume.linux --resource-group myResourceGroup
 ```
 
 請記下資源類型為 `Microsoft.ServiceFabricMesh/gateways` 的閘道資源名稱。 這將用於取得應用程式的公用 IP 位址。

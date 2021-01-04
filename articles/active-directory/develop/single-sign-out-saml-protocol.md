@@ -12,16 +12,18 @@ ms.date: 07/19/2017
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2064ab7e759798d8934facb8d293e8ac60ec6c82
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88118258"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703410"
 ---
 # <a name="single-sign-out-saml-protocol"></a>單一登出 SAML 通訊協定
 
 Azure Active Directory (Azure AD) 支援 SAML 2.0 Web 瀏覽器單一登出設定檔。 若要讓單一登出正常運作，在應用程式註冊期間必須明確向 Azure AD 註冊應用程式的 **LogoutURL**。 使用者登出之後，Azure AD 使用此 LogoutURL 將他們重新導向。
+
+Azure AD 支援 (HTTP GET) 的重新導向系結，而不支援 HTTP POST 系結。
 
 下圖顯示 Azure AD 單一登出程序的工作流程。
 

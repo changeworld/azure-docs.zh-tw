@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493095"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702601"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>建立連線到 Azure 的影片索引器帳戶
 
@@ -25,7 +25,7 @@ ms.locfileid: "96493095"
 
 如果您要從 *試用版* 移至 *付費* 影片索引子帳戶，您可以選擇將所有的影片和模型自訂複製到新的帳戶，如 [從試用帳戶匯入內容](#import-your-content-from-the-trial-account) 一節中所述。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。
 
@@ -107,9 +107,14 @@ ms.locfileid: "96493095"
 
 1. 使用 [Azure 入口網站](https://portal.azure.com/)來建立 Azure 媒體服務帳戶，如[建立帳戶](../previous/media-services-portal-create-account.md)所示。
 
+     確定媒體服務帳戶是使用傳統 Api 所建立。 
+ 
+    ![媒體服務傳統 API](./media/create-account/enable-classic-api.png)
+
+
     為您的媒體服務帳戶建立儲存體帳戶時，請針對 [複寫] 欄位選取 [ **StorageV2** ] 做為 [帳戶類型] 和 [ **異地** 複寫 (GRS) 。
 
-    ![新的 AMS 帳戶](./media/create-account/create-ams-account1.png)
+    ![新的 AMS 帳戶](./media/create-account/create-new-ams-account.png)
 
     > [!NOTE]
     > 請務必記下媒體服務資源和帳戶名稱。 在下一節中，您將需要這些步驟。
@@ -120,7 +125,7 @@ ms.locfileid: "96493095"
 
     在新的媒體服務帳戶中，選取 [ **串流端點**]。 然後選取串流端點，再按 [開始]。
 
-    ![串流端點](./media/create-account/create-ams-account2.png)
+    ![串流端點](./media/create-account/create-ams-account-se.png)
 4. 若要讓影片索引子使用媒體服務 API 進行驗證，則必須建立 AD 應用程式。 下列步驟會引導您完成[利用 Azure 入口網站開始使用 Azure AD 驗證](../previous/media-services-portal-get-started-with-aad.md)中所述的 Azure AD 驗證程序：
 
     1. 在新的媒體服務帳戶中，選取 [API 存取]。
@@ -163,7 +168,7 @@ ms.locfileid: "96493095"
 
 如果您稍後想要刪除該帳戶，您可以從影片索引子網站刪除該帳戶。 若要刪除帳戶，您必須是擁有者。
 
-選取帳戶 > 設定 [ **Settings**  ->  **刪除這個帳戶**]。 
+選取帳戶 > 設定 [   ->  **刪除這個帳戶**]。 
 
 帳戶將在90天內永久刪除。
 
@@ -171,7 +176,9 @@ ms.locfileid: "96493095"
 
 以下是 Azure 媒體服務的相關考量：
 
-* 如果您自動連接，您會在 Azure 訂用帳戶中看到新的資源群組、媒體服務帳戶和儲存體帳戶。
+* 如果您打算連線到現有的媒體服務帳戶，請確定媒體服務帳戶是使用傳統 Api 所建立。 
+ 
+    ![媒體服務傳統 API](./media/create-account/enable-classic-api.png)
 * 如果您連接到現有的媒體服務帳戶，影片索引子不會變更現有的媒體 **保留單元** 設定。
 
    您可能需要根據所規劃的負載，調整媒體保留單元的類型和數目。 請記住，如果您的負載很高，卻沒有足夠的單元或速度，則影片處理會導致逾時錯誤。

@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: f79b03884109ffbd856ff4f60909565daeb0e792
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 08f033cbe121135e281379a013e11a33ae962dfb
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549103"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703801"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中樞利用 Private Link 和受控識別支援虛擬網路
 
@@ -89,9 +89,15 @@ IoT 中樞可連線到 Azure Blob 儲存體、事件中樞、服務匯流排資�
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="顯示如何為 IoT 中樞開啟受控識別的螢幕擷取畫面":::
 
+使用 Azure CLI 來開啟受控識別：
+
+```azurecli-interactive
+az iot hub update --name <iot-hub-resource-name> --set identity.type="SystemAssigned"
+```
+
 ### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>使用 ARM 範本在建立時將受控識別指派給您的 IoT 中樞
 
-若要在資源布建時將受控識別指派給您的 IoT 中樞，請使用下列 ARM 範本：
+若要在資源布建時將受控識別指派給您的 IoT 中樞，請使用下方的 ARM 範本。 此 ARM 範本有兩個必要的資源，必須先部署這些資源，才能建立其他資源（例如） `Microsoft.Devices/IotHubs/eventHubEndpoints/ConsumerGroups` 。 
 
 ```json
 {
@@ -115,9 +121,9 @@ IoT 中樞可連線到 Azure Blob 儲存體、事件中樞、服務匯流排資�
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-02-01",
-      "name": "updateIotHubWithKeyEncryptionKey",
+      "name": "createIotHub",
       "dependsOn": [
-        "<provide-a-valid-resource-name>"
+        "[resourceId('Microsoft.Devices/IotHubs', '<provide-a-valid-resource-name>')]"
       ],
       "properties": {
         "mode": "Incremental",

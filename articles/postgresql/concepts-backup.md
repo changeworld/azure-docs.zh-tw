@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b267a97b640c9d069f83223206200fc4814c86b9
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c712af41fdc191cab4fd08c9d8175a849d4f286a
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488005"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706765"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的備份與還原-單一伺服器
 
@@ -59,17 +59,20 @@ ms.locfileid: "92488005"
 
 ## <a name="restore"></a>還原
 
-在適用於 PostgreSQL 的 Azure 資料庫中，還原執行作業會從原始伺服器的備份中建立新的伺服器。
+在適用於 PostgreSQL 的 Azure 資料庫中，還原執行作業會從原始伺服器的備份中建立新的伺服器。 
 
 有兩種類型的還原可使用：
 
 - **時間點還原** 適用于 [備份冗余] 選項，並在與源伺服器相同的區域中建立新的伺服器。
-- 只有當您將伺服器設定為異地多餘的儲存體，並可讓您將伺服器還原到不同的區域時，才可使用**異地還原**。
+- 只有當您將伺服器設定為異地多餘的儲存體，並可讓您將伺服器還原到不同的區域時，才可使用 **異地還原**。
 
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 
-> [!IMPORTANT]
-> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 若要在部署後避免伺服器資源遭到意外刪除或非預期的變更，系統管理員可以利用[管理鎖定](../azure-resource-manager/management/lock-resources.md)。
+> [!NOTE] 
+> 如果您的來源於 postgresql 伺服器已使用客戶管理的金鑰進行加密，請參閱 [檔](concepts-data-encryption-postgresql.md) 以瞭解其他考慮。 
+
+> [!NOTE]
+> 如果您想要還原已刪除的于 postgresql 伺服器，請依照 [此處](howto-restore-dropped-server.md)所述的程式進行操作。
 
 ### <a name="point-in-time-restore"></a>時間點還原
 
@@ -81,11 +84,14 @@ ms.locfileid: "92488005"
 
 ### <a name="geo-restore"></a>異地復原
 
-如果您已將伺服器設定為使用異地備援備份，您可以將伺服器還原到另一個可使用服務的 Azure 區域中。 最多可支援 4 TB 儲存體的伺服器可以還原至異地配對區域，或最多支援 16 TB 儲存體的任何區域。 對於支援高達 16 TB 儲存體的伺服器，您也可以在支援 16 TB 伺服器的任何區域中還原異地備份。 如需支援的區域清單，請參閱 [Azure Database For PostgeSQL 定價層](concepts-pricing-tiers.md) 。
+如果您已將伺服器設定為使用異地備援備份，您可以將伺服器還原到另一個可使用服務的 Azure 區域中。 最多可支援 4 TB 儲存體的伺服器可以還原至異地配對區域，或最多支援 16 TB 儲存體的任何區域。 對於支援高達 16 TB 儲存體的伺服器，您也可以在支援 16 TB 伺服器的任何區域中還原異地備份。 如需支援的區域清單，請參閱 [適用於 PostgreSQL 的 Azure 資料庫定價層](concepts-pricing-tiers.md) 。
 
 當您的伺服器因為裝載伺服器區域中的事件而無法使用時，異地還原就是預設的復原選項。 如果區域中的大規模意外導致您無法使用資料庫應用程式，則您可以從異地備援備份，將伺服器還原到任何其他區域中的伺服器。 在建立備份及將它複寫至不同區域之間會有延遲。 此延遲可能最長達一小時，因此當發生災害時，最多可能會遺失最長達一小時的資料。
 
 在異地還原期間，可以進行變更的伺服器設定包括計算世代、vCore、備份保留期間及備份備援選項。 不支援變更定價層 (基本、一般用途或記憶體最佳化) 或儲存體大小。
+
+> [!NOTE]
+> 如果來源伺服器使用基礎結構雙重加密，則在還原伺服器時，有一些限制，包括可用的區域。 如需詳細資料，請參閱 [基礎結構雙重加密](concepts-infrastructure-double-encryption.md) 。
 
 ### <a name="perform-post-restore-tasks"></a>執行還原之後的工作
 

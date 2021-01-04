@@ -3,12 +3,12 @@ title: 基底映射更新-工作
 description: 瞭解應用程式容器映射的基底映射，以及基底映射更新如何觸發 Azure Container Registry 工作。
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009818"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707481"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>關於 ACR 工作的基底映射更新
 
@@ -57,7 +57,7 @@ ACR 工作會在建立容器映射時，動態地探索基底映射的相依性�
 * **預設為啟用** -當您使用 [az ACR task CREATE][az-acr-task-create] 命令建立 ACR 工作時，根據預設，基底映射更新會 *啟用* 此工作的觸發程式。 也就是 `base-image-trigger-enabled` 屬性設定為 True。 如果您想要在工作中停用此行為，請將屬性更新為 False。 例如，執行以下 [az acr task update][az-acr-task-update] 命令：
 
   ```azurecli
-  az acr task update --myregistry --name mytask --base-image-trigger-enabled False
+  az acr task update --registry myregistry --name mytask --base-image-trigger-enabled False
   ```
 
 * 用 **來追蹤** 相依性的觸發程式-若要讓 ACR 工作能夠判斷和追蹤容器映射的相依性（包括其基底映射），您必須先觸發工作至少建立映射 **一次**。 例如，使用 [az acr task run][az-acr-task-run] 命令以手動觸發工作。

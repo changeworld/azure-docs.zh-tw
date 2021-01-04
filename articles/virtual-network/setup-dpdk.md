@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387552"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704413"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虛擬機器中設定 DPDK
 
@@ -50,7 +50,7 @@ DPDK 可以在 Azure 虛擬機器中執行，並支援多個作業系統散發�
 
 **自訂核心支援**
 
-針對未列出的任何 Linux 核心版本，請參閱[用於建置經 Azure 調整之 Linux 核心的補充程式](https://github.com/microsoft/azure-linux-kernel)。 如需詳細資訊，您也可以連絡 [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com)。 
+針對未列出的任何 Linux 核心版本，請參閱[用於建置經 Azure 調整之 Linux 核心的補充程式](https://github.com/microsoft/azure-linux-kernel)。 如需詳細資訊，您也可以連絡 [aznetdpdk@microsoft.com](mailto:aznetdpdk@microsoft.com)。 
 
 ## <a name="region-support"></a>區域支援
 
@@ -143,7 +143,7 @@ zypper \
 
 ## <a name="failsafe-pmd"></a>保全 PMD
 
-DPDK 應用程式必須透過在 Azure 中公開的保全 PMD 執行。 如果應用程式直接透過 *VF* PMD 執行，則不會收到**所有**傳送到 VM 的封包，因為某些封包會透過綜合介面顯示。 
+DPDK 應用程式必須透過在 Azure 中公開的保全 PMD 執行。 如果應用程式直接透過 *VF* PMD 執行，則不會收到 **所有** 傳送到 VM 的封包，因為某些封包會透過綜合介面顯示。 
 
 若透過具備故障保險功能的 PMD 執行 DPDK 應用程式，它可以保證應用程式會接受傳送給它的所有封包。 它也會確定應用程式持續在 DPDK 模式中執行，即使 VF 已在系統為主機提供服務時被叫用也一樣。 如需有關故障保險 PMD 的詳細資訊，請參閱[故障保險輪詢模式驅動程式庫](https://doc.dpdk.org/guides/nics/fail_safe.html)。
 

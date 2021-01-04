@@ -3,25 +3,37 @@ title: Azure Key Vault 復原總覽 |Microsoft Docs
 description: Key Vault 復原功能的設計目的，是為了避免意外或惡意刪除金鑰保存庫中儲存的金鑰保存庫和秘密、金鑰和憑證。
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
-author: ShaneBala-keyvault
-ms.author: sudbalas
-manager: ravijan
-ms.date: 12/15/2020
-ms.openlocfilehash: 485da2230de80150c9a5d13b262d1857c8c172fc
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.topic: how-to
+ms.author: mbaldwin
+author: msmbaldwin
+manager: rkarlin
+ms.date: 09/30/2020
+ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587106"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704209"
 ---
-# <a name="how-to-enable-soft-delete-and-purge-protection"></a>如何啟用虛刪除和清除保護
+# <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>使用虛刪除和清除保護 Azure Key Vault 復原管理
 
 本文涵蓋 Azure Key Vault、虛刪除和清除保護的兩項復原功能。 本檔概要說明這些功能，並說明如何透過 Azure 入口網站、Azure CLI 和 Azure PowerShell 來管理它們。
 
+如需 Key Vault 的詳細資訊，請參閱
+- [Key Vault 總覽](overview.md)
+- [Azure Key Vault 金鑰、秘密和憑證總覽](about-keys-secrets-certificates.md)
+
+## <a name="prerequisites"></a>必要條件
+
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/dotnet)
+* [PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+* [Azure CLI](/cli/azure/install-azure-cli)
+* Key Vault - 您可以使用 [Azure 入口網站](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md) 或 [Azure PowerShell](../general/quick-create-powershell.md) 建立
+
 ## <a name="what-are-soft-delete-and-purge-protection"></a>什麼是虛刪除和清除保護
 
-虛刪除和清除保護有兩種不同的金鑰保存庫修復功能。
+虛[刪除](soft-delete-overview.md)和清除保護有兩種不同的金鑰保存庫修復功能。
+
 > [!IMPORTANT]
 > 開啟虛刪除很重要，可確保您的金鑰保存庫和認證受到保護，不會遭到意外刪除。 不過，開啟虛刪除會被視為重大變更，因為它可能會要求您變更應用程式邏輯，或為您的服務主體提供額外的許可權。 使用下列指示開啟虛刪除之前，請先確定您的應用程式與使用此檔的變更相容 [ ****。](soft-delete-change.md)
 
@@ -33,6 +45,8 @@ ms.locfileid: "97587106"
 
 > [!NOTE]
 > 清除保護的設計目的是讓沒有系統管理員角色或許可權可以覆寫、停用或規避清除保護。 **一旦啟用清除保護，任何人（包括 Microsoft）都無法停用或覆寫它。** 這表示在重複使用金鑰保存庫名稱之前，您必須先復原已刪除的金鑰保存庫，或等候保留期限經過。
+
+如需虛刪除的詳細資訊，請參閱 [Azure Key Vault 虛刪除總覽](soft-delete-overview.md)
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/azure-portal)
 
@@ -370,3 +384,14 @@ ms.locfileid: "97587106"
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
+---
+
+## <a name="next-steps"></a>後續步驟
+
+- [Azure Key Vault PowerShell Cmdlet](https://docs.microsoft.com/powershell/module/az.keyvault)
+- [Key Vault Azure CLI 命令](https://docs.microsoft.com/cli/azure/keyvault)
+- [Azure Key Vault 備份](backup.md)
+- [如何啟用 Key Vault 記錄](howto-logging.md)
+- [針對金鑰保存庫的存取進行保護](secure-your-key-vault.md)
+- [Azure Key Vault 開發人員指南](developers-guide.md)
+- [使用金鑰保存庫的最佳作法](best-practices.md)

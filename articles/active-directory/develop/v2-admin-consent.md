@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/3/2019
+ms.date: 12/18/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7de97fd775853f64803ab62ac397e754d065e4df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 353c349ebe348addac60c5f9f7b1bf0fbb1fc425
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509320"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703308"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft 身分識別平臺上的系統管理員同意
 
@@ -44,16 +44,15 @@ https://graph.microsoft.com/calendars.read
 https://graph.microsoft.com/mail.send
 ```
 
-| 參數 | 條件 | 說明 |
+| 參數 | 條件 | 描述 |
 | ---: | ---: | :---: |
 | `tenant` | 必要 | 您想要要求權限的目錄租用戶。 可以提供 GUID 或易記的名稱格式，或是一般會參考使用 `organizations` (如範例所示)。 請勿使用「一般」，因為個人帳戶無法在租使用者的內容中提供系統管理員同意。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
 | `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的 **應用程式 (用戶端) 識別碼**。 |
 | `redirect_uri` | 必要 |您想要傳送回應以供應用程式處理的重新導向 URI。 它必須與您在應用程式註冊入口網站中註冊的其中一個重新導向 URI 完全相符。 |
 | `state` | 建議 | 包含在要求中的值，也會在權杖回應中傳回。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
-|`scope` | 必要 | 定義應用程式所要求的許可權集合。 這可以是使用/.default) 或動態範圍的靜態 (。 這可以包括 OIDC 範圍 (`openid` 、 `profile` `email`) 。 |
+|`scope` | 必要 | 定義應用程式所要求的許可權集合。 這可以是使用 `/.default`) 或動態範圍的靜態 (。 這可以包括 OIDC 範圍 (`openid` 、 `profile` `email`) 。 |
 
-
-此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 系統會要求系統管理員核准您在參數中要求的擁有權限 `scope` 。  如果您已使用靜態 (`/.default`) 值，其運作方式就像 v1.0 系統管理員同意端點，而且會要求應用程式所需許可權中的所有範圍要求同意。
+此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 系統會要求系統管理員核准您在參數中要求的擁有權限 `scope` 。  如果您已使用靜態 (`/.default`) 值，它的運作方式就像 v1.0 系統管理員同意端點，而且會要求在使用者和應用程式)  (所需許可權中找到的所有範圍。 您必須使用此值，才能要求應用程式許可權 `/.default` 。 如果您不想讓系統管理員在您使用時隨時看到系統管理員同意畫面中的指定許可權 `/.default` ，最好的做法是不要將許可權放在 [必要許可權] 區段中。 相反地，您可以使用動態同意，在執行時間將您想要的許可權新增至同意畫面，而不是使用 `/.default` 。
 
 ### <a name="successful-response"></a>成功的回應
 
@@ -63,7 +62,7 @@ https://graph.microsoft.com/mail.send
 http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | ---: | :---: |
 | `tenant`| 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。|
 | `state` | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。|

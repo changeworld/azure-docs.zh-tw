@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: e8b8c89b94b2fbb191eee0ea57e957802a54204e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 35231eda43e766b5febd8ba90c4d92a44537e0ef
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126969"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703750"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure 串流分析輸出至 Azure Cosmos DB  
 Azure 串流分析可以將 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) 設定為 JSON 輸出的目標，讓您能夠針對非結構化的 JSON 資料進行資料封存和低延遲查詢。 本文件涵蓋實作這種組態的一些最佳作法。 當您使用 Azure Cosmos DB 作為輸出時，建議您將作業設定為相容性層級1.2。
@@ -44,7 +44,7 @@ Azure 串流分析可以將 [Azure Cosmos DB](https://azure.microsoft.com/servic
 如需詳細資訊，請檢閱[變更資料庫及查詢的一致性層級](../cosmos-db/consistency-levels.md)一文。
 
 ## <a name="upserts-from-stream-analytics"></a>來自串流分析的 Upsert
-串流分析與 Azure Cosmos DB 的整合可讓您根據指定的 [文件識別碼] 資料行，在容器中插入或更新記錄。 這也稱為 *upsert* 。
+串流分析與 Azure Cosmos DB 的整合可讓您根據指定的 [文件識別碼] 資料行，在容器中插入或更新記錄。 這也稱為 *upsert*。
 
 串流分析會使用開放式的 upsert 方法。 更新只會在因文件識別碼衝突而導致插入失敗時發生。 
 
@@ -97,7 +97,7 @@ Azure Cosmos DB 會根據您的工作負載自動調整分割區。 因此我們
 
 ![Azure Cosmos DB 計量比較](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-使用 1.2 時，串流分析能以更加聰明的方式利用 Azure Cosmos DB 中 100% 的可用輸送量，且只有非常少因節流或速率限制所導致的重新提交。 這能為其他工作負載提供更好的體驗，例如同時在容器上執行的查詢。 如果您想要了解串流分析如何以 Azure Cosmos DB 作為接收，從每秒 1,000 個訊息擴增到每秒 10,000 個訊息，請嘗試[這個 Azure 範例專案](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) \(英文\)。
+使用 1.2 時，串流分析能以更加聰明的方式利用 Azure Cosmos DB 中 100% 的可用輸送量，且只有非常少因節流或速率限制所導致的重新提交。 這能為其他工作負載提供更好的體驗，例如同時在容器上執行的查詢。 如果您想要了解串流分析如何以 Azure Cosmos DB 作為接收，從每秒 1,000 個訊息擴增到每秒 10,000 個訊息，請嘗試[這個 Azure 範例專案](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb) \(英文\)。
 
 Azure Cosmos DB 輸出的輸送量與 1.0 和 1.1 相同。 我們「強烈建議」您在搭配 Azure Cosmos DB 使用串流分析時，使用相容性層級 1.2。
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: a7524ea80906f9df5f63af9e7d672bbef500b0d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed74d0829a8372ea8391fcd331eef2ef3af3dae0
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373329"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704906"
 ---
 # <a name="deploy-okd-in-azure"></a>在 Azure 中部署 OKD
 
@@ -124,7 +124,7 @@ ms.locfileid: "87373329"
 下列範例會使用 myOpenShiftCluster 的部署名稱，將 OKD 叢集和所有相關的資源部署到名為 openshiftrg 的資源群組。 此範本可直接參考自 Github 存放庫，同時使用名為 azuredeploy.parameters.json 的本機參數檔案。
 
 ```azurecli 
-az group deployment create -g openshiftrg --name myOpenShiftCluster \
+az deployment group create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```
@@ -156,7 +156,7 @@ $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [部署後工作](./openshift-container-platform-3x-post-deployment.md)
 - [針對 OpenShift 部署進行疑難排解](./openshift-container-platform-3x-troubleshooting.md)

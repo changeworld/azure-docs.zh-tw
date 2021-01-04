@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0f0324d1f7308eb1392c4f7a98a6a5d226026be
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253672"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705501"
 ---
 # <a name="infrastructure-as-code"></a>基礎結構即程式碼
 
@@ -27,7 +27,7 @@ ResourceGroupName="sfclustergroup"
 Location="westus"
 
 az group create --name $ResourceGroupName --location $Location 
-az group deployment create --name $ResourceGroupName  --template-file azuredeploy.json --parameters @azuredeploy.parameters.json
+az deployment group create --name $ResourceGroupName  --template-file azuredeploy.json --parameters @azuredeploy.parameters.json
 ```
 
 使用 PowerShell 建立資源
@@ -131,7 +131,7 @@ Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
 Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 在執行 Windows Server 的 VM 或電腦上建立叢集： [建立適用於 Windows Server 的 Service Fabric 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * 在 VM 或執行 Linux 的電腦上建立叢集：[建立 Linux 叢集](service-fabric-tutorial-create-vnet-and-linux-cluster.md)

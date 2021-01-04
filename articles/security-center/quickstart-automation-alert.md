@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: 12b7c86e528af6c174f456add4d29a92239cd01e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e53a5c4840cee0651090bec0b68cc53e13102299
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678012"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705484"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-arm-template"></a>快速入門：使用 ARM 範本建立特定安全性警示的自動回應
 
@@ -46,21 +46,21 @@ ms.locfileid: "92678012"
 
 ## <a name="deploy-the-template"></a>部署範本
 
-- **PowerShell** :
+- **PowerShell**:
 
   ```azurepowershell-interactive
   New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new resource group for your deployment
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-securitycenter-create-automation-for-alertnamecontains/azuredeploy.json
   ```
 
-- **CLI** ：
+- **CLI**：
 
   ```azurecli-interactive
   az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new resource group for your deployment
-  az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-securitycenter-create-automation-for-alertnamecontains/azuredeploy.json
+  az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-securitycenter-create-automation-for-alertnamecontains/azuredeploy.json
   ```
 
-- **入口網站** ：
+- **入口網站**：
 
   [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-securitycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
@@ -70,9 +70,9 @@ ms.locfileid: "92678012"
 
 使用 Azure 入口網站來檢查是否已部署工作流程自動化。
 
-1. 從 [Azure 入口網站](https://portal.azure.com)中開啟 **資訊安全中心** 。
+1. 從 [Azure 入口網站](https://portal.azure.com)中開啟 **資訊安全中心**。
 1. 從頂端功能表列選取 [篩選] 圖示，然後選取您在其上部署新工作流程自動化的特定訂用帳戶。
-1. 從資訊安全中心的提要欄位中開啟 **工作流程自動化** ，並檢查您的新自動化。
+1. 從資訊安全中心的提要欄位中開啟 **工作流程自動化**，並檢查您的新自動化。
     :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="已設定的自動化項目清單" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
     > 如果您的訂用帳戶有許多工作流程自動化，請使用 [依名稱篩選] 選項。
@@ -81,9 +81,9 @@ ms.locfileid: "92678012"
 
 不再需要時，請使用 Azure 入口網站刪除工作流程自動化。
 
-1. 從 [Azure 入口網站](https://portal.azure.com)中開啟 **資訊安全中心** 。
+1. 從 [Azure 入口網站](https://portal.azure.com)中開啟 **資訊安全中心**。
 1. 從頂端功能表列選取 [篩選] 圖示，然後選取您在其上部署新工作流程自動化的特定訂用帳戶。
-1. 從資訊安全中心的提要欄位中開啟 **工作流程自動化** ，並尋找要刪除的自動化。
+1. 從資訊安全中心的提要欄位中開啟 **工作流程自動化**，並尋找要刪除的自動化。
     :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="移除工作流程自動化的步驟" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. 選取所要刪除項目的核取方塊。
 1. 從工具列中選取 [刪除]。

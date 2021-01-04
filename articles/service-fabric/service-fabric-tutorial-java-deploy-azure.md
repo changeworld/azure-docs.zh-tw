@@ -4,12 +4,12 @@ description: 在本教學課程中，了解如何將 Java Service Fabric 應用�
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 89c49ae530b7a4716bc6e8bf0ea6ccb011847eb8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738907"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702152"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>教學課程：將 Java 應用程式部署到 Azure 中的 Service Fabric 叢集
 
@@ -114,10 +114,10 @@ ms.locfileid: "92738907"
 10. 使用下列命令建立事件中樞資源。 依照提示輸入 namespaceName、eventHubName、consumerGroupName、sendAuthorizationRule 和 receiveAuthorizationRule 的詳細資料。
 
     ```azurecli
-    az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
+    az deployment group create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
-    az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
+    az deployment group create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
     Please provide string value for 'consumerGroupName' (? for help): testeventhubconsumergroup
@@ -148,7 +148,7 @@ ms.locfileid: "92738907"
     }
     ```
 
-11. 執行 eventhubssastoken.py 指令碼，為您建立的 EventHubs 資源產生 SAS url。 Service Fabric 叢集會使用 SAS URL 將記錄傳送至事件中樞。 因此， **寄件者** 原則用來產生 URL。 指令碼會針對下一個步驟中使用的事件中樞資源傳回 SAS URL：
+11. 執行 eventhubssastoken.py 指令碼，為您建立的 EventHubs 資源產生 SAS url。 Service Fabric 叢集會使用 SAS URL 將記錄傳送至事件中樞。 因此，**寄件者** 原則用來產生 URL。 指令碼會針對下一個步驟中使用的事件中樞資源傳回 SAS URL：
 
     ```python
     python3 eventhubssastoken.py 'testeventhubs' 'testeventhubs' 'sender' '[PRIMARY-KEY]'
@@ -176,8 +176,8 @@ ms.locfileid: "92738907"
     }
     ```
 
-13. 開啟 **sfdeploy.parameters.json** 。 變更下列參數，然後儲存檔案。
-    - **clusterName** 。 請一律使用小寫字母和數字。
+13. 開啟 **sfdeploy.parameters.json**。 變更下列參數，然後儲存檔案。
+    - **clusterName**。 請一律使用小寫字母和數字。
     - **adminUserName** (設為非空白的值)
     - **adminPassword** (設為非空白的值)
 

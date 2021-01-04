@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/12/2020
+ms.date: 12/18/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0b48b8d954b132caab96e5978c90687899ea04c2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 59acbc545e6bb37ebd090ec458d98586de882133
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549220"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696281"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Java SDK：版本資訊和資源
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,6 +53,12 @@ ms.locfileid: "96549220"
 |**最低支援執行階段**|[Java 開發套件 (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
 
 ## <a name="release-notes"></a>版本資訊
+
+### <a name="261"></a><a name="2.6.1"></a>2.6.1
+* 修正透過服務 interop 處理查詢的錯誤。
+
+### <a name="260"></a><a name="2.6.0"></a>2.6.0
+* 已新增從時間點查詢變更摘要的支援。
 
 ### <a name="251"></a><a name="2.5.1"></a>版
 * 修正 documentCollection 查詢的主要分割區快取問題。
@@ -271,6 +277,8 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |
+| [2.6.1](#2.6.1) |2020年12月17日 |--- |
+| [2.6.0](#2.6.0) |2020 年 7 月 16 日 |--- |
 | [版](#2.5.1) |2020年6月3日 |--- |
 | [2.5.0](#2.5.0) |2020 年 5 月 12 日 |--- |
 | [2.4.7](#2.4.7) |2020 年 2 月 20 日 |--- |

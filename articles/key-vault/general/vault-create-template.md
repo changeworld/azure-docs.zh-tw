@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285139"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704515"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>如何使用 Resource Manager 範本建立 Azure key vault 和保存庫存取原則
 
@@ -23,7 +23,7 @@ ms.locfileid: "93285139"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文中的步驟：
 
@@ -176,14 +176,14 @@ ms.locfileid: "93285139"
 
 您可以使用 Azure 入口網站來部署上述範本，方法是使用 [ **在編輯器中建立您自己的範本** ] 選項，如下所述： [從自訂範本部署資源](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
-您也可以將上述範本儲存至檔案，並使用下列命令：  [>new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create)：
+您也可以將上述範本儲存至檔案，並使用下列命令：  [>new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) 和 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)：
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file key-vault-template.json
+az deployment group create --resource-group ExampleGroup --template-file key-vault-template.json
 ```
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -219,4 +219,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - [針對金鑰保存庫的存取進行保護](secure-your-key-vault.md)
 - [對金鑰保存庫進行驗證](authentication.md)
-- [Azure 金鑰保存庫開發人員指南](developers-guide.md)
+- [Azure Key Vault 開發人員指南](developers-guide.md)

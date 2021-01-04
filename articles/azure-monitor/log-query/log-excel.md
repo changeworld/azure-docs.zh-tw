@@ -6,25 +6,25 @@ ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: d903d1bb16ba3576d0092979f1cc6b82fac1c0be
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 6fa181a35c46ed16e4e8c1884e66c54984c418ca
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507474"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703444"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>整合 Log Analytics 和 Excel
 
-您可以使用 M 查詢與 Log Analytics API 來整合 Azure 監視器 Log Analytics 和 Microsoft Excel。  這種整合可讓您將500000記錄傳送至 Excel。
+您可以使用 M 查詢與 Log Analytics API 來整合 Azure 監視器 Log Analytics 和 Microsoft Excel。 這項整合可讓您將最多500000記錄傳送到 Excel，只要結果的總數量不超過61MiB。
 
 > [!NOTE]
 > 由於 Excel 是本機用戶端應用程式，因此本機硬體和軟體限制會影響其效能以及處理大型資料集的能力。
 
 ## <a name="create-your-m-query-in-log-analytics"></a>在 Log Analytics 中建立您的 M 查詢 
 
-1. 以平常的方式在 Log analytics 中 **建立並執行您的查詢** 。 如果您在使用者介面中遇到10000記錄的限制，請不要擔心。  建議您使用相對日期（例如 ' 前 ' 函式或 UI 時間選擇器），讓 Excel 重新整理正確的資料集。
+1. 以平常的方式在 Log analytics 中 **建立並執行您的查詢**。 如果您在使用者介面中遇到10000記錄的限制，請不要擔心。  建議您使用相對日期（例如 ' 前 ' 函式或 UI 時間選擇器），讓 Excel 重新整理正確的資料集。
   
-2. **匯出查詢** -對查詢及其結果感到滿意之後，請使用 [ *匯出* ] 功能表下的 [Log Analytics 匯出] 將查詢匯出至 M， **以 Power BI (M 查詢)** 功能表選項：
+2. **匯出查詢**-對查詢及其結果感到滿意之後，請使用 [*匯出*] 功能表下的 [Log Analytics 匯出] 將查詢匯出至 M，**以 Power BI (M 查詢)** 功能表選項：
 
 :::image type="content" source="media/log-excel/export-query.png" alt-text="具有資料和匯出選項的 Log Analytics 查詢" border="true":::
 
@@ -80,11 +80,11 @@ in AnalyticsQuery
 匯入查詢。 
 
 1. 開啟 Microsoft Excel。 
-1. 在功能區中，移至 [ **資料** ] 功能表。 選取 [ **取得資料** ]。 從 **其他來源** 選取 [ **空白查詢** ]：
+1. 在功能區中，移至 [ **資料** ] 功能表。 選取 [ **取得資料**]。 從 **其他來源** 選取 [ **空白查詢**]：
  
    :::image type="content" source="media/log-excel/excel-import-blank-query.png" alt-text="在 Excel 中從空白匯入選項" border="true":::
 
-1. 在 [Power query] 視窗中，選取 [ **Advanced editor** ]：
+1. 在 [Power query] 視窗中，選取 [ **Advanced editor**]：
 
    :::image type="content" source="media/log-excel/advanced-editor.png" alt-text="Excel Advanced query 編輯器" border="true":::
 
@@ -93,14 +93,17 @@ in AnalyticsQuery
 
    :::image type="content" source="media/log-excel/advanced-editor-2.png" alt-text="建立空白查詢" border="true":::
  
-1. 選取 [ **完成** ]，然後 **載入和關閉** 。 Excel 會使用 Log analytics API 來執行查詢，然後顯示結果集。
+1. 選取 [ **完成**]，然後 **載入和關閉**。 Excel 會使用 Log analytics API 來執行查詢，然後顯示結果集。
  
 
    :::image type="content" source="media/log-excel/excel-query-result.png" alt-text="Excel 中的查詢結果" border="true":::
 
+> [!Note]
+> 如果記錄數目小於預期，則結果的數量可能會超過61MiB 限制。 請嘗試 `project` `project-away` 在您的查詢中使用或，將資料行限制為您需要的資料行。
+
 ##  <a name="refreshing--data"></a>重新整理資料
 
-您可以直接從 Excel 重新整理資料。 在 Excel 功能區的 [ **資料** ] 功能表群組中，選取 [重新整理 **] 按鈕。**
+您可以直接從 Excel 重新整理資料。 在 Excel 功能區的 [**資料**] 功能表群組中，選取 [重新整理 **] 按鈕。**
  
 ## <a name="next-steps"></a>後續步驟
 

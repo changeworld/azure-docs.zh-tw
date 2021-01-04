@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 62651e9ea4e1b02b276e7870163453bfa55c3909
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2e55b1f18648ce6970b81b943cd8a6a0fc3e7e81
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587565"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705127"
 ---
 # <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>使用受控識別 (預覽版) 來驗證您的 Azure 串流分析作業，以 Azure Blob 儲存體
 
@@ -98,7 +98,7 @@ ms.locfileid: "97587565"
     您可以使用下列 Azure CLI 命令，將上述作業部署至資源群組 **ExampleGroup** ：
 
     ```azurecli
-    az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
+    az deployment group create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
 2. 建立作業之後，您可以使用 Azure Resource Manager 來取出作業的完整定義。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533633"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696135"
 ---
 # <a name="register-for-azure-netapp-files"></a>註冊 Azure NetApp Files
 
@@ -30,7 +30,8 @@ ms.locfileid: "91533633"
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>提交用來存取服務的等候清單要求
 
-1. 透過 [Azure Netapp files 等候清單提交頁面](https://aka.ms/azurenetappfiles)提交等候清單要求，以存取 Azure netapp files 服務。 
+1. 移至下列頁面，並提交存取 Azure NetApp Files 服務的等候清單要求：  
+    [**Azure NetApp Files 等候清單提交頁面**](https://aka.ms/azurenetappfiles) 
 
     等候清單註冊無法保證立即存取服務。 
 
@@ -99,9 +100,9 @@ ms.locfileid: "91533633"
 
    `<SubID>` 是您的訂用帳戶識別碼。  `state` 參數值會指出 `Registered`。
 
-6. 從 Azure 入口網站中，按一下 [訂用帳戶]**** 刀鋒視窗。
+6. 從 Azure 入口網站中，按一下 [訂用帳戶] 刀鋒視窗。
 7. 在 [訂用帳戶] 刀鋒視窗中，按一下您的訂用帳戶識別碼。 
-8. 在訂用帳戶設定中按一下 [資源提供者]****，以驗證 Microsoft.NetApp 提供者顯示為 [已註冊] 狀態： 
+8. 在訂用帳戶設定中按一下 [資源提供者]，以驗證 Microsoft.NetApp 提供者顯示為 [已註冊] 狀態： 
 
       ![已註冊的 Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 

@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何在 Azure 中相應放大
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7f92ca28afd9d1894867aaa2c18df3a02ee0bd79
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842680"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702169"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中調整 Service Fabric 叢集
 
@@ -94,7 +94,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 或是下列 Azure CLI 命令：
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="add-a-node-type-to-the-cluster"></a>將節點類型新增至叢集
@@ -800,7 +800,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 或是下列 Azure CLI 命令：
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="remove-a-node-type-from-the-cluster"></a>從叢集移除節點類型
@@ -856,7 +856,7 @@ New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -Templat
 ```
 或是下列 Azure CLI 命令：
 ```azurecli
-az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
+az deployment group create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
 ## <a name="next-steps"></a>後續步驟

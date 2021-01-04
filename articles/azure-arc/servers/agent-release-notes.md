@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 已啟用伺服器代理程式的新功能
-description: 本文提供 Azure Arc 啟用的伺服器代理程式的版本資訊。 針對許多摘要問題，有其他詳細資料的連結。
+description: 本文提供 Azure Arc 啟用的伺服器代理程式的版本資訊。 針對許多摘要問題，有更多詳細資料的連結。
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 12/21/2020
+ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505642"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722516"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的新功能
 
@@ -20,6 +20,8 @@ ms.locfileid: "97505642"
 
 ## <a name="december-2020"></a>2020 年 12 月
 
+版本：1。3
+
 ### <a name="new-feature"></a>新功能
 
 已新增 Windows Server 2008 R2 的支援
@@ -30,11 +32,15 @@ ms.locfileid: "97505642"
 
 ## <a name="november-2020"></a>2020 年 11 月
 
+版本：1。2
+
 ### <a name="fixed"></a>固定式
 
 已解決在以 RPM 為基礎的發行版本升級之後，proxy 設定可能會遺失的問題。
 
 ## <a name="october-2020"></a>2020 年 10 月
+
+版本︰1.1
 
 ### <a name="fixed"></a>固定式
 

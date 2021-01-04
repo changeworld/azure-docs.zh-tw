@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: d040215968b0ebb433edba03e4839ffe7add0e5c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 52e0e50d3c0c68b57181645c3eb695308fdac65a
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745860"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703818"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>快速入門：使用 ARM 範本建立 Linux 虛擬機器擴展集
 
@@ -92,7 +92,7 @@ fileUris 中定義的兩個指令碼  -  installserver.sh 和 workserver.py。 �
 az group create --name myResourceGroup --location EastUS
 
 # Deploy template into resource group
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/azuredeploy.json
 ```

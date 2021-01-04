@@ -507,7 +507,8 @@
           href: speech-container-howto-on-premises.md
         - name: Azure 容器執行個體上的語音容器
           displayName: 'ACI,azure container instances,container instances,containers'
-          href: deploy-speech-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: 容器常見問題集
           href: speech-container-faq.md
         - name: 認知服務容器文件

@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a9b0090fa13a6d2f7a837a4f5ffee37d70893318
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5a5242cb9448b3d11e0921b2272cf00bef8f6c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116898"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722261"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>如何：將 Azure AD 應用程式限制為 Azure AD 租使用者中的一組使用者
 
@@ -47,44 +47,44 @@ ms.locfileid: "88116898"
 
 ### <a name="enterprise-applications-requires-the-global-administrator-role"></a>企業應用程式 (需要全域管理員角色) 
 
-1. 移至 [**Azure 入口網站**](https://portal.azure.com/) 並以 **全域系統管理員**身分登入。
+1. 移至 [**Azure 入口網站**](https://portal.azure.com/) 並以 **全域系統管理員** 身分登入。
 1. 在頂端列中，選取已登入的帳戶。 
-1. 在 [目錄]**** 底下，選取要在其中註冊應用程式的 Azure AD 租用戶。
-1. 在左側的導覽中，選取 [Azure Active Directory]****。 如果 [流覽] 窗格中無法使用 Azure Active Directory，請遵循下列步驟：
+1. 在 [目錄] 底下，選取要在其中註冊應用程式的 Azure AD 租用戶。
+1. 在左側的導覽中，選取 [Azure Active Directory]。 如果 [流覽] 窗格中無法使用 Azure Active Directory，請遵循下列步驟：
 
-    1. 在左側主導覽功能表的頂端選取 [所有服務]****。
+    1. 在左側主導覽功能表的頂端選取 [所有服務]。
     1. 在篩選搜尋方塊中輸入 **Azure Active Directory** ，然後從結果中選取 **Azure Active Directory** 專案。
 
-1. 在 [ **Azure Active Directory** ] 窗格中，從**Azure Active Directory**左側導覽功能表中選取 [**企業應用程式**]。
-1. 選取 [ **所有應用程式** ] 以查看您所有應用程式的清單。
+1. 在 [ **Azure Active Directory** ] 窗格中，從 **Azure Active Directory** 左側導覽功能表中選取 [**企業應用程式**]。
+1. 選取 [所有應用程式]，以檢視所有應用程式的清單。
 
      如果看不到您希望在此顯示的應用程式，請使用 [所有應用程式] 清單頂端的各種篩選條件來限制清單，或向下捲動清單以找出應用程式。
 
 1. 從清單中選取想要作為使用者或安全性群組指派目標的應用程式。
 1. 在應用程式的 **[總覽** ] 頁面上，從應用程式的左側導覽功能表中選取 [ **屬性** ]。
-1. 找出 [需要使用者指派嗎？]**** 設定，並將它設定為 [是]****。 當此選項設定為 **[是]** 時，租使用者中的使用者必須先指派給此應用程式，否則他們將無法登入此應用程式。
-1. 選取 [儲存]**** 以儲存此設定變更。
+1. 找出 [需要使用者指派嗎？] 設定，並將它設定為 [是]。 當此選項設定為 **[是]** 時，租使用者中的使用者必須先指派給此應用程式，否則他們將無法登入此應用程式。
+1. 選取 [儲存] 以儲存此設定變更。
 
 ### <a name="app-registration"></a>應用程式註冊
 
 1. 移至 [**Azure 入口網站**](https://portal.azure.com/)。
 1. 在頂端列中，選取已登入的帳戶。 
-1. 在 [目錄]**** 底下，選取要在其中註冊應用程式的 Azure AD 租用戶。
-1. 在左側的導覽中，選取 [Azure Active Directory]****。
-1. 在 [ **Azure Active Directory** ] 窗格中，從**Azure Active Directory**左側導覽功能表中選取 [**應用程式註冊**]。
+1. 在 [目錄] 底下，選取要在其中註冊應用程式的 Azure AD 租用戶。
+1. 在左側的導覽中，選取 [Azure Active Directory]。
+1. 在 [ **Azure Active Directory** ] 窗格中，從 **Azure Active Directory** 左側導覽功能表中選取 [**應用程式註冊**]。
 1. 建立或選取您想要管理的應用程式。 您必須是此應用程式註冊的 **擁有** 者。
 1. 在應用程式的 **[總覽** ] 頁面上，依照頁面頂端的基本資訊，在 [ **本機目錄中的受控應用程式** ] 連結。 這會將您帶到應用程式註冊的 _受控企業應用程式_ 。
 1. 從左側導覽視窗中，選取 [ **屬性**]。
-1. 找出 [需要使用者指派嗎？]**** 設定，並將它設定為 [是]****。 當此選項設定為 **[是]** 時，租使用者中的使用者必須先指派給此應用程式，否則他們將無法登入此應用程式。
-1. 選取 [儲存]**** 以儲存此設定變更。
+1. 找出 [需要使用者指派嗎？] 設定，並將它設定為 [是]。 當此選項設定為 **[是]** 時，租使用者中的使用者必須先指派給此應用程式，否則他們將無法登入此應用程式。
+1. 選取 [儲存] 以儲存此設定變更。
 
 ## <a name="assign-users-and-groups-to-the-app"></a>將使用者和群組指派給應用程式
 
 在設定完應用程式以啟用使用者指派後，您便可繼續作業並將使用者和群組指派給應用程式。
 
-1. 在應用程式的左側導覽功能表中，選取 [ **使用者和群組** ] 窗格。
+1. 在企業應用程式的左側導覽功能表中，選取 [ **使用者和群組** ] 窗格。
 1. 在 [使用者和群組] 清單頂端，選取 [新增使用者] 按鈕，以開啟 [新增指派] 窗格。
-1. 選取 [新增指派]**** 窗格中的 [使用者]**** 選取器。 
+1. 選取 [新增指派] 窗格中的 [使用者] 選取器。 
 
      隨即會顯示使用者和安全性群組清單，以及用來搜尋並找出特定使用者或群組的文字方塊。 此畫面可讓您一次選取多個使用者和群組。
 
