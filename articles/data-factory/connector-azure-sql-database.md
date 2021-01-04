@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: 2e5c04087a9874a01498c70eb3834606069cef13
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: 9b0445a9ca92f05a11f5a97895039a55f9d64d71
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021889"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693901"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure SQL Database 中複製和轉換資料
 
@@ -277,10 +277,10 @@ ms.locfileid: "96021889"
 | partitionUpperBound | 分割區範圍分割之分割區資料行的最大值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。  <br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-database) 一節。 | 否 |
 | partitionLowerBound | 分割區範圍分割之分割區資料行的最小值。 這個值是用來決定資料分割 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測該值。<br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱 [SQL database 的平行複製](#parallel-copy-from-sql-database) 一節。 | 否 |
 
-**注意事項：**
+**請注意下列幾點：**
 
 - 如果針對 **AzureSqlSource** 指定了 **sqlReaderQuery** ，複製活動就會針對 Azure SQL Database 來源執行此查詢以取得資料。 如果預存程序接受參數，您也可以藉由指定 **sqlReaderStoredProcedureName** 和 **storedProcedureParameters** 來指定預存程序。
-- 如果您未指定 **sqlReaderQuery** 或 **>sqlreaderstoredprocedurename**，則會使用資料集 JSON 的 "structure" 區段中定義的資料行來建立查詢。 `select column1, column2 from mytable`針對 Azure SQL Database 執行查詢。 如果資料集定義沒有 "structure"，則會從資料表中選取所有資料行。
+- 在來源中使用預存程式取出資料時，請注意，如果您的預存程式是設計為在傳入不同的參數值時傳回不同的架構，您可能會在從 UI 匯入架構時，或在將資料複製到具有自動資料表建立的 SQL database 時，看到非預期的結果。
 
 #### <a name="sql-query-example"></a>SQL 查詢範例
 
@@ -745,7 +745,7 @@ ADF 將會在後續的 update、upsert、delete 中使用您選擇做為金鑰�
 | UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |String |
+| Xml |String |
 
 >[!NOTE]
 > 針對對應至 Decimal 過渡型別的資料類型，目前的複製活動最多可支援28個精確度。 如果您有有效位數大於28的資料，請考慮在 SQL 查詢中轉換成字串。

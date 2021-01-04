@@ -1,20 +1,20 @@
 ---
 title: 如何：流覽資料目錄
 description: 本文概述如何根據資產類型流覽 Azure 範疇資料目錄。
-author: hrasheed-msft
-ms.author: hrasheed
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: b8cdbbc29472ae10920c347dde308c352bf0b68a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: dd2fd4fbc9d8aecd9821d668dd02bd4b68659cf6
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96551933"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695059"
 ---
-# <a name="browse-the-azure-purview-data-catalog"></a>流覽 Azure 範疇資料目錄
+# <a name="browse-the-azure-purview-data-catalog"></a>瀏覽 Azure Purview 資料目錄
 
 本文說明如何使用資料來源階層命名空間，探索 Azure 範疇資料目錄中的資料。
 

@@ -5,56 +5,65 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 12/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 50d592d0020ae1b5a704296ef68f5153f0207714
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c3096da8b3c83dbfe8cfdd6a5fa4d177241334de
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427570"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693510"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>使用 .NET 在對 Blob 儲存體的要求上指定客戶提供的金鑰
 
-對 Azure Blob 儲存體提出要求的用戶端，可以選擇在個別要求上提供加密金鑰。 在要求中包含加密金鑰可讓您更精確地控制 Blob 儲存體作業的加密設定。 客戶提供的金鑰可以儲存在 Azure Key Vault 或另一個金鑰存放區中。
+對 Azure Blob 儲存體提出要求的用戶端，可以選擇在個別要求上提供 AES-256 加密金鑰。 在要求中包含加密金鑰可讓您更精確地控制 Blob 儲存體作業的加密設定。 客戶提供的金鑰可以儲存在 Azure Key Vault 或另一個金鑰存放區中。
 
 本文說明如何在使用 .NET 的要求上指定客戶提供的金鑰。
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-若要深入瞭解如何向 Azure 儲存體驗證 Azure 身分識別用戶端程式庫，請參閱標題為使用 **Azure 身分識別程式庫進行驗證** 的一節， [其中包含 azure 資源的 Azure Active Directory 和受控識別授權存取 blob 和佇列](../common/storage-auth-aad-msi.md?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json#authenticate-with-the-azure-identity-library)。
+若要深入瞭解如何使用 Azure 身分識別用戶端程式庫進行驗證，請參閱 [適用于 .net 的 azure 身分識別用戶端程式庫](/dotnet/api/overview/azure/identity-readme)。
 
-## <a name="example-use-a-customer-provided-key-to-upload-a-blob"></a>範例：使用客戶提供的金鑰上傳 blob
+## <a name="use-a-customer-provided-key-to-write-to-a-blob"></a>使用客戶提供的金鑰來寫入 blob
 
-下列範例會建立客戶提供的金鑰，並使用該金鑰來上傳 blob。 程式碼會上傳區塊，然後認可封鎖清單以將 blob 寫入 Azure 儲存體。
+下列範例會在使用適用于 Blob 儲存體的 v12 用戶端程式庫上傳 blob 時，提供 AES-256 金鑰。 此範例會使用 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) 物件來授權 Azure AD 的寫入要求，但您也可以使用共用金鑰認證來授權要求。
 
 ```csharp
-async static Task UploadBlobWithClientKey(string accountName, string containerName,
-    string blobName, Stream data, byte[] key)
+async static Task UploadBlobWithClientKey(Uri blobUri,
+                                          Stream data,
+                                          byte[] key,
+                                          string keySha256)
 {
-    const string blobServiceEndpointSuffix = ".blob.core.windows.net";
-    Uri accountUri = new Uri("https://" + accountName + blobServiceEndpointSuffix);
+    // Create a new customer-provided key.
+    // Key must be AES-256.
+    var cpk = new CustomerProvidedKey(key);
+
+    // Check the key's encryption hash.
+    if (cpk.EncryptionKeyHash != keySha256)
+    {
+        throw new InvalidOperationException("The encryption key is corrupted.");
+    }
 
     // Specify the customer-provided key on the options for the client.
     BlobClientOptions options = new BlobClientOptions()
     {
-        CustomerProvidedKey = new CustomerProvidedKey(key)
+        CustomerProvidedKey = cpk
     };
 
-    // Create a client object for the Blob service, including options.
-    BlobServiceClient serviceClient = new BlobServiceClient(accountUri, 
-        new DefaultAzureCredential(), options);
+    // Create the client object with options specified.
+    BlobClient blobClient = new BlobClient(
+        blobUri,
+        new DefaultAzureCredential(),
+        options);
 
-    // Create a client object for the container.
+    // If the container may not exist yet,
+    // create a client object for the container.
     // The container client retains the credential and client options.
-    BlobContainerClient containerClient = serviceClient.GetBlobContainerClient(containerName);
-
-    // Create a new block blob client object.
-    // The blob client retains the credential and client options.
-    BlobClient blobClient = containerClient.GetBlobClient(blobName);
+    BlobContainerClient containerClient =
+        blobClient.GetParentBlobContainerClient();
 
     try
     {

@@ -1,18 +1,21 @@
 ---
 title: 最佳作法
 description: 瞭解開發 Azure Batch 解決方案的最佳作法和實用秘訣。
-ms.date: 11/18/2020
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f19fceca0212bd0a05d7caa311403b173c19de5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5c3521a3b5fe0dd9c2d1534f6e2a6864647f5da3
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563172"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694180"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
 本文將討論最佳做法的集合，以及有效使用 Azure Batch 服務的實用秘訣（以 Batch 的真實生活體驗為基礎）。 這些秘訣可協助您提升效能，並避免 Azure Batch 解決方案中的設計陷阱。
+
+> [!TIP]
+> 如需 Azure Batch 中安全性的指引，請參閱 [批次安全性與合規性的最佳做法](security-best-practices.md)。
 
 ## <a name="pools"></a>集區
 

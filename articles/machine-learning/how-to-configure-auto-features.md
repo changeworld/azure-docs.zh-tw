@@ -1,7 +1,7 @@
 ---
-title: AutoML 實驗中的特徵化
+title: 使用自動化機器學習服務特徵化
 titleSuffix: Azure Machine Learning
-description: 瞭解 Azure Machine Learning 提供的特徵化設定，以及自動化 ML 實驗中支援特徵工程的方式。
+description: 瞭解 Azure Machine Learning 中的資料特徵化設定，以及如何針對自動化 ML 實驗自訂這些功能。
 author: nibaccam
 ms.author: nibaccam
 ms.reviewer: nibaccam
@@ -9,27 +9,26 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, automl
-ms.date: 05/28/2020
-ms.openlocfilehash: 658db1604895515525e5a4826a43c0b21d9698b1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to,automl,contperf-fy21q2
+ms.date: 12/18/2020
+ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359624"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694004"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>自動化機器學習中的特徵工程
+# <a name="data-featurization-in-automated-machine-learning"></a>自動化機器學習中的資料特徵化
 
 
 
-在本指南中，您將瞭解：
+瞭解 Azure Machine Learning 中的資料特徵化設定，以及如何針對 [自動化 ML 實驗](concept-automated-ml.md)自訂這些功能。
 
-- Azure Machine Learning 提供的特徵化設定。
-- 如何為您的 [自動化機器學習實驗](concept-automated-ml.md)自訂這些功能。
+## <a name="feature-engineering-and-featurization"></a>功能工程和特徵化
 
-*特徵工程* 是使用資料的領域知識來建立功能的程式，以協助機器學習服務 (ML) 演算法來學習更好的學習。 在 Azure Machine Learning 中，會套用資料調整和正規化技術，讓特徵設計更容易。 這些技術和此功能工程統稱統稱在自動化機器學習或 *AutoML* 實驗中 *特徵化* 。
+*特徵工程* 是使用資料的領域知識來建立功能的程式，以協助機器學習服務 (ML) 演算法來學習更好的學習。 在 Azure Machine Learning 中，會套用資料調整和正規化技術，讓特徵設計更容易。 這些技術和此功能工程統稱統稱在自動化機器學習或 *autoML* 實驗中 *特徵化*。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已經知道如何設定 AutoML 實驗。 如需設定的相關資訊，請參閱下列文章：
 
@@ -38,7 +37,7 @@ ms.locfileid: "93359624"
 
 ## <a name="configure-featurization"></a>設定特徵化
 
-在每個自動化機器學習實驗中，預設會將 [自動調整和正規化技術](#featurization) 套用至您的資料。 這些技術是特徵化的類型，可協助 *特定* 的演算法，而這些演算法對不同規模的功能很敏感。 不過，您也可以啟用其他特徵化，例如 *遺漏值插補* 、 *編碼* 和 *轉換* 。
+在每個自動化機器學習實驗中，預設會將 [自動調整和正規化技術](#featurization) 套用至您的資料。 這些技術是特徵化的類型，可協助 *特定* 的演算法，而這些演算法對不同規模的功能很敏感。 您可以啟用更多特徵化，例如 *遺漏值插補*、 *編碼* 和 *轉換*。
 
 > [!NOTE]
 > 自動化機器學習特徵化的步驟 (例如功能正規化、處理遺漏的資料，或將文字轉換成數值) 成為基礎模型的一部分。 當您使用模型進行預測時，定型期間所套用的相同特徵化步驟會自動套用至您的輸入資料。
@@ -47,9 +46,9 @@ ms.locfileid: "93359624"
 
 下表顯示 `featurization` [AutoMLConfig 類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中的已接受設定：
 
-|特徵化設定 | Description|
+|特徵化設定 | 描述|
 ------------- | ------------- |
-|`"featurization": 'auto'`| 指定在前置處理過程中，會自動執行 [資料護欄和特徵化步驟](#featurization) 。 這是預設設定。|
+|`"featurization": 'auto'`| 指定在前置處理過程中，會自動執行 [資料護欄](#data-guardrails) 和 [特徵化步驟](#featurization) 。 這項設定是預設值。|
 |`"featurization": 'off'`| 指定不會自動執行特徵化步驟。|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| 指定要使用的自訂特徵化步驟。 [了解如何自訂特徵化](#customize-featurization)。|
 
@@ -62,11 +61,11 @@ ms.locfileid: "93359624"
 > [!NOTE]
 > 如果您打算將 AutoML 建立的模型匯出至 [ONNX 模型](concept-onnx.md)，則 ONNX 格式僅支援以星號表示的特徵化選項 ( "*" ) 。 深入了解[將模型轉換為 ONNX](concept-automated-ml.md#use-with-onnx)。
 
-|特徵化 &nbsp; 步驟| Description |
+|特徵化 &nbsp; 步驟| 描述 |
 | ------------- | ------------- |
 |卸載 **高基數或沒有** 變異數功能 _ |從定型和驗證集卸載這些功能。 適用于所有遺漏值的功能，在所有資料列中都具有相同的值，或是具有高基數 (例如，雜湊、識別碼或 Guid) 。|
 |_*插補遺漏值**_ |若為數值特徵，則會以資料行中的平均值來插補。<br/><br/>針對類別功能，以最頻繁的值插補。|
-|_*產生額外的功能**_ |針對 DateTime 特徵：年、月、日、星期幾、幾月幾日、季、第幾週、小時、分鐘、秒。<br><br> _For 的預測工作，則會建立這些額外的日期時間功能： ISO 年、半半年、日曆月份，以字串、周、周中的日、日、年中的日、上午/下午、中日、中度、AM/PM (0 （如果小時是在中午 () 下午12：00）) <br/><br/>針對文字功能：根據 unigrams、雙字母組和 trigrams 的詞彙頻率。 深入瞭解[如何使用 BERT 完成這](#bert-integration)項工作。|
+|_*產生更多功能**_ |針對 DateTime 特徵：年、月、日、星期幾、幾月幾日、季、第幾週、小時、分鐘、秒。<br><br> _For 的預測工作，則會建立這些額外的日期時間功能： ISO 年、半半年、日曆月份，以字串、周、周中的日、日、年、日、年、中的日、AM/PM (0 （如果小時是在中午 () 下午12點之前）) <br/><br/>針對文字功能：根據 unigrams、雙字母組和 trigrams 的詞彙頻率。 深入瞭解[如何使用 BERT 完成這](#bert-integration)項工作。|
 |**轉換和編碼** _|將有幾個唯一值的數值特徵轉換成類別特徵。<br/><br/>一種經常性編碼用於低基數類別功能。 一種熱雜湊編碼用於高基數類別功能。|
 |_ *Word 內嵌**|文字 featurizer 使用預先定型的模型，將文字標記的向量轉換成句子向量。 檔中每個單字的內嵌向量都會使用 rest 來匯總，以產生檔功能向量。|
 |**目標編碼**|針對類別功能，此步驟會將每個類別對應至回歸問題的平均目標值，並對應至每個類別的類別機率，以解決分類問題。 會套用以頻率為基礎的加權和 k 折迭交叉驗證，以減少由稀疏資料類別造成的對應和雜訊過度學習。|
@@ -80,8 +79,8 @@ ms.locfileid: "93359624"
 
 適用資料護欄：
 
-- **針對 SDK 實驗** ：當您在 `"featurization": 'auto'` `validation=auto` 物件中指定參數時 `AutoMLConfig` 。
-- **針對 studio 實驗** ：啟用自動特徵化時。
+- **針對 SDK 實驗**：當您在 `"featurization": 'auto'` `validation=auto` 物件中指定參數時 `AutoMLConfig` 。
+- **針對 studio 實驗**：啟用自動特徵化時。
 
 您可以檢查實驗的資料護欄：
 
@@ -93,7 +92,7 @@ ms.locfileid: "93359624"
 
 資料護欄會顯示三種狀態之一：
 
-|State| 描述 |
+|州| 描述 |
 |----|---- |
 |**通過**| 未偵測到任何資料問題，您不需要採取任何動作。 |
 |**完成**| 已成功將變更套用到資料。 建議您複習 AutoML 所採取的更正動作，以確保變更與預期的結果相符。 |
@@ -107,7 +106,7 @@ ms.locfileid: "93359624"
 ---|---|---
 **遺漏特徵值插補** |已通過 <br><br><br> 完成| 在訓練資料中沒有偵測到任何遺漏特徵值。 深入瞭解 [遺漏值插補。](./how-to-use-automated-ml-for-ml-models.md#customize-featurization) <br><br> 在定型資料中偵測到遺漏的功能值，而且已插補。
 **高基數特徵處理** |已通過 <br><br><br> 完成| 已分析您的輸入，但未偵測到高基數功能。 <br><br> 在您的輸入中偵測到高基數功能，並已處理。
-**驗證分割處理** |完成| 驗證設定已設定為 `'auto'` ，且定型資料包含 *少於20000個數據列* 。 <br> 定型模型的每個反復專案都是使用交叉驗證進行驗證。 深入瞭解 [驗證資料](./how-to-configure-auto-train.md#training-validation-and-test-data)。 <br><br> 驗證設定已設定為 `'auto'` ，且定型資料包含 *20000 個以上* 的資料列。 <br> 輸入資料已分割成訓練資料集和驗證資料集，以用於模型驗證。
+**驗證分割處理** |完成| 驗證設定已設定為 `'auto'` ，且定型資料包含 *少於20000個數據列*。 <br> 定型模型的每個反復專案都是使用交叉驗證進行驗證。 深入瞭解 [驗證資料](./how-to-configure-auto-train.md#training-validation-and-test-data)。 <br><br> 驗證設定已設定為 `'auto'` ，且定型資料包含 *20000 個以上* 的資料列。 <br> 輸入資料已分割成訓練資料集和驗證資料集，以用於模型驗證。
 **類別平衡偵測** |已通過 <br><br><br><br>警示 <br><br><br>完成 | 已分析輸入，且訓練資料中所有類別都是平衡的。 如果每個類別在資料集中都有良好的標記法（以樣本的數目和比率測量），則會將資料集視為對稱。 <br><br> 在輸入中偵測到不平衡的類別。 若要修正模型偏差，請修正平衡問題。 深入瞭解 [不平衡資料](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data)。<br><br> 在您的輸入中偵測到不平衡類別，而且清除的邏輯已判定要套用平衡。
 **記憶體問題偵測** |已通過 <br><br><br><br> 完成 |<br> 選取的值 (範圍、延遲、滾動時間範圍) 已分析，且未偵測到潛在的記憶體不足問題。 深入瞭解時間序列 [預測](./how-to-auto-train-forecast.md#configuration-settings)設定。 <br><br><br>選取的值 (範圍、延遲、滾動時間範圍) 已分析，而且可能會導致您的實驗用盡記憶體。 延遲或滾動視窗設定已關閉。
 **頻率偵測** |已通過 <br><br><br><br> 完成 |<br> 系統會分析時間序列，並將所有資料點與偵測到的頻率對齊。 <br> <br> 分析時間序列，並偵測到未與偵測到的頻率一致的資料點。 這些資料點已從資料集移除。 深入瞭解 [時間序列預測的資料準備](./how-to-auto-train-forecast.md#preparing-data)。
@@ -123,7 +122,7 @@ ms.locfileid: "93359624"
 |自訂|定義|
 |--|--|
 |**資料行用途更新**|覆寫指定之資料行的 autodetected 功能類型。|
-|**轉換器參數更新** |更新指定轉換器的參數。 目前支援 *Imputer* (mean、最頻繁和中位數) 和 *HashOneHotEncoder* 。|
+|**轉換器參數更新** |更新指定轉換器的參數。 目前支援 *Imputer* (mean、最頻繁和中位數) 和 *HashOneHotEncoder*。|
 |**卸除資料行** |指定要從特徵化中捨棄的資料行。|
 |**區塊轉換器**| 指定要在特徵化進程中使用的區塊轉換器。|
 
@@ -303,22 +302,24 @@ class_prob = fitted_model.predict_proba(X_test)
 
 如果基礎模型不支援 `predict_proba()` 函式，或格式不正確，則會擲回模型類別特定的例外狀況。 如需如何對不同的模型類型實作此函式的範例，請參閱 [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) 和 [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) 參考文件。
 
-## <a name="bert-integration"></a>BERT 整合
+<a name="bert-integration"></a>
+
+## <a name="bert-integration-in-automated-ml"></a>自動化 ML 中的 BERT 整合
 
 [BERT](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) 用於 AutoML 的特徵化層。 在這一層中，如果資料行包含任意文字或其他類型的資料（例如時間戳記或簡單數位），則會據以套用特徵化。
 
 針對 BERT，模型會經過微調，並利用使用者提供的標籤進行定型。 從這裡開始，檔內嵌會以功能和其他的形式輸出，例如以時間戳記為基礎的功能、周中的日。 
 
 
-### <a name="bert-steps"></a>BERT 步驟
+### <a name="steps-to-invoke-bert"></a>叫用 BERT 的步驟
 
-若要叫用 BERT，您必須  `enable_dnn: True` 在 automl_settings 中設定，並使用 gpu 計算 (例如 `vm_size = "STANDARD_NC6"` ，或較高的 gpu) 。 如果使用 CPU 計算，而不是 BERT，AutoML 就會啟用 BiLSTM DNN featurizer。
+若要叫用 BERT，請  `enable_dnn: True` 在 automl_settings 中設定，並使用 gpu 計算 (`vm_size = "STANDARD_NC6"` 或更高的 gpu) 。 如果使用 CPU 計算，而不是 BERT，AutoML 就會啟用 BiLSTM DNN featurizer。
 
 AutoML 會採取下列步驟來進行 BERT。 
 
 1. **所有文字資料行的** 前置處理和 token 化。 例如，"StringCast" 轉換器可以在最終模型的特徵化摘要中找到。 您可以在 [此筆記本](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)中找到如何產生模型特徵化摘要的範例。
 
-2. 將 **所有文字資料行串連成單一文字資料行** ，因此 `StringConcatTransformer` 在最終模型中。 
+2. 將 **所有文字資料行串連成單一文字資料行**，因此 `StringConcatTransformer` 在最終模型中。 
 
     我們的 BERT 會將定型範例的文字長度總計限制為128個權杖。 也就是說，串連所有的文字資料行時，最理想的長度應該是最多128的權杖。 如果有多個資料行存在，則應該將每個資料行剪除，如此就能滿足這種狀況。 否則，針對長度 >128 token 的串連資料行，BERT 的 tokenizer 層會將此輸入截斷為 128 token。
 
@@ -327,9 +328,10 @@ AutoML 會採取下列步驟來進行 BERT。
 BERT 的執行時間通常比其他有長。 為了獲得更好的效能，建議使用「STANDARD_NC24r」或「STANDARD_NC24rs_V3」作為其 RDMA 功能。 
 
 AutoML 會在多個節點之間散發 BERT 定型， (最多可有八個節點) 。 將 `AutoMLConfig` `max_concurrent_iterations` 參數設定為大於1，即可在您的物件中完成這項操作。 
-### <a name="supported-languages"></a>支援的語言
 
-AutoML 目前支援100種語言，而且根據資料集的語言而定，AutoML 會選擇適當的 BERT 模型。 針對德文資料，我們會使用德文 BERT 模型。 針對英文，我們使用英文 BERT 模型。 針對其他所有語言，我們會使用多語系 BERT 模型。
+## <a name="supported-languages-for-bert-in-automl"></a>AutoML 中的 BERT 支援語言 
+
+AutoML 目前支援100種語言，而且根據資料集的語言而定，autoML 會選擇適當的 BERT 模型。 針對德文資料，我們會使用德文 BERT 模型。 針對英文，我們使用英文 BERT 模型。 針對其他所有語言，我們會使用多語系 BERT 模型。
 
 在下列程式碼中，會觸發德文 BERT 模型，因為資料集語言已指定為 `deu` ，因此根據 [ISO 分類](https://iso639-3.sil.org/code/deu)，德文的三個字母語言代碼：
 

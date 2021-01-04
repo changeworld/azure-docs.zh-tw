@@ -4,12 +4,12 @@ description: 了解如何在 Azure 中調整您的資源 Web 應用程式、雲�
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: bf0194e82acde0406cfeb57af027831f92a90c92
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ee36db3f657365036bb68f641be53fd434f1b64b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938302"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694928"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>開始在 Azure 中自動調整規模
 本文說明如何在 Microsoft Azure 入口網站中為您的資源設定自動調整規模。
@@ -57,7 +57,7 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
    您現在應該會有一個調整規模設定，其會根據 CPU 使用量進行相應放大/相應縮小。
    ![根據 CPU 調整規模][8]
-1. 按一下 [儲存]。
+1. 按一下 [檔案]  。
 
 恭喜！ 您現在已成功建立第一個調整規模設定，可根據 CPU 使用量自動調整 Web 應用程式的規模。
 
@@ -115,13 +115,13 @@ Azure 監視器自動調整僅適用於[虛擬機器擴展集](https://azure.mic
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>將流量路由傳送至狀況良好的實例 (App Service) 
 
-當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [**監視**] 底下的 [**健康情況檢查**]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 [儲存]。
+當您相應放大至多個實例時，App Service 可以對實例執行健康情況檢查，只將流量路由傳送至狀況良好的實例。 若要這樣做，請開啟入口網站 App Service，然後選取 [**監視**] 底下的 [**健康情況檢查**]。 選取 [ **啟用** ]，並在您的應用程式上提供有效的 URL 路徑，例如 `/health` 或 `/api/health` 。 按一下 [檔案]  。
 
 若要啟用 ARM 範本的功能，請將 `healthcheckpath` 資源的屬性設定 `Microsoft.Web/sites` 為您網站上的健康情況檢查路徑，例如： `"/api/health/"` 。 若要停用此功能，請將屬性設定回空字串 `""` 。
 
 ### <a name="health-check-path"></a>健康情況檢查路徑
 
-路徑必須在一分鐘內回應，狀態碼介於200到299之間， (包含) 。 如果路徑未在一分鐘內回應，或傳回範圍外的狀態碼，則會將實例視為「狀況不良」。 App Service 不會遵循健康情況檢查路徑上的302重新導向。 健康情況檢查會與 App Service 的驗證和授權功能整合，即使啟用了這些安全性功能，系統還是會到達端點。 如果您使用自己的驗證系統，健康情況檢查路徑必須允許匿名存取。 如果網站已啟用僅限 HTTP **s**，則會透過 HTTP **s** 傳送 healthcheck 要求。
+路徑必須在一分鐘內回應，狀態碼介於200到299之間， (包含) 。 如果路徑未在一分鐘內回應，或傳回範圍外的狀態碼，則會將實例視為「狀況不良」。 App Service 不會遵循 (301、302、307等30倍的 ) 重新導向健康情況檢查路徑，這些狀態碼會視為狀況 **不良**。 健康情況檢查會與 App Service 的驗證和授權功能整合，即使啟用了這些安全性功能，系統還是會到達端點。 如果您使用自己的驗證系統，健康情況檢查路徑必須允許匿名存取。 如果網站已啟用僅限 HTTP **s**，則會透過 HTTP **s** 傳送 healthcheck 要求。
 
 健康情況檢查路徑應該會檢查應用程式的重要元件。 例如，如果您的應用程式相依于資料庫和訊息系統，則健康情況檢查端點應該會連接到這些元件。 如果應用程式無法連接至重要元件，則路徑應該會傳回500層級的回應碼，表示應用程式狀況不良。
 

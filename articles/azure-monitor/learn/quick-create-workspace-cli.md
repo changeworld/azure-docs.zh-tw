@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 54d1d8a29c87f8d129c0ea5b29973c4fef0e6f7a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 2d9d511098613ddc5bf3579a42b7abe91f51e1a4
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888992"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694304"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>使用 Azure CLI 2.0 建立 Log Analytics 工作區
 
@@ -32,10 +32,10 @@ Azure CLI 2.0 用於從命令列或在指令碼中建立和管理 Azure 資源�
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- 本文需要 Azure CLI 的版本2.0.30 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
+- 本文需要 2.0.30 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-workspace"></a>建立工作區
-使用 [az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) 建立工作區。 下列範例會從您的本機電腦使用 Resource Manager 範本，在 eastus 位置建立工作區。 JSON 範本會設定為只提示您輸入工作區的名稱，並針對您環境中可能作為標準組態使用的其他參數，指定預設值。 或者，您可以將範本儲存在 Azure 儲存體帳戶中，以在組織內共用存取。 如需使用範本的詳細資訊，請參閱 [使用 Resource Manager 範本和 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
+使用 [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create)來建立工作區。 下列範例會從您的本機電腦使用 Resource Manager 範本，在 eastus 位置建立工作區。 JSON 範本會設定為只提示您輸入工作區的名稱，並針對您環境中可能作為標準組態使用的其他參數，指定預設值。 或者，您可以將範本儲存在 Azure 儲存體帳戶中，以在組織內共用存取。 如需使用範本的詳細資訊，請參閱 [使用 Resource Manager 範本和 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
 如需支援區域的詳細資訊，請參閱[可以使用 Log Analytics 的區域](https://azure.microsoft.com/regions/services/)，並從 [搜尋產品] 欄位搜尋 Azure 監視器。
 
@@ -111,7 +111,7 @@ Azure CLI 2.0 用於從命令列或在指令碼中建立和管理 Azure 資源�
 4. 您已準備好部署此範本。 從包含範本的資料夾使用下列命令。 當系統提示您輸入工作區名稱時，請提供在所有 Azure 訂用帳戶全域中都是唯一的名稱。
 
     ```azurecli
-    az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
+    az deployment group create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
     ```
 
 部署需要幾分鐘的時間才能完成。 完成後，您會看到類似下列包含結果的訊息：

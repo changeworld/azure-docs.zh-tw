@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse 和 Azure 受控應用程式
-description: 瞭解 Azure Lighthouse 和 Azure 受控應用程式如何協助啟用不同的案例，以及如何搭配使用它們。
-ms.date: 08/12/2020
+description: 瞭解 Azure Lighthouse 和 Azure 受控應用程式如何一起使用。
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436516"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693969"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 受控應用程式
 
@@ -18,6 +18,16 @@ Azure 受控應用程式和 Azure Lighthouse 的運作方式是讓服務提供�
 > 雖然我們會在本主題中參考服務提供者和客戶，但 [管理多個](enterprise.md) 租使用者的企業可以使用相同的程式和工具。
 
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>比較 Azure Lighthouse 和 Azure 受控應用程式
+
+下表說明可能會影響您是否可能選擇使用 Azure Lighthouse 或 Azure 受控應用程式的一些高階差異。 如下所示，您也可以設計一種一起使用它們的解決方案。
+
+|考量  |Azure Lighthouse  |Azure 受控應用程式  |
+|---------|---------|---------|
+|一般使用者     |管理多個租使用者的服務提供者或企業         |獨立軟體廠商 (Isv)          |
+|跨租使用者存取範圍     |訂用帳戶 (s) 或資源群組 (s)          |資源群組 (範圍設定為單一應用程式)          |
+|Azure Marketplace 中的可購買     |沒有任何 (供應專案可以發佈至 Azure Marketplace，但客戶會另外計費)         |是         |
+|IP 保護     |是 (IP 可以保留在服務提供者的租使用者中)         |是 (根據設計，資源群組會鎖定給客戶)          |
+|拒絕指派     |否         |是        |
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
@@ -51,3 +61,4 @@ Azure 受控應用程式通常用於特定客戶的需求，可透過完全由�
 
 - 深入瞭解 [Azure 受控應用程式](../../azure-resource-manager/managed-applications/overview.md)。
 - 瞭解如何將 [訂用帳戶上架至 Azure Lighthouse](../how-to/onboard-customer.md)。
+- 瞭解 [Azure Lighthouse 的 ISV 案例](isv-scenarios.md)。

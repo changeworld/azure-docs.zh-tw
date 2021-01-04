@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: 58cdd025587823f7eb702164c965ab622a7325d3
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 5b48d326efad889adbcf25d487ee27b8200f558f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615642"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693923"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>已知問題： Azure Active Directory Domain Services 中的網路設定警示
 
@@ -45,6 +45,8 @@ ms.locfileid: "97615642"
 | 65000    | AllVnetInBound | 任意 | 任意 | VirtualNetwork | VirtualNetwork | 允許 |
 | 65001    | AllowAzureLoadBalancerInBound | 任意 | 任意 | AzureLoadBalancer | 任意 | Allow |
 | 65500    | DenyAllInBound | 任意 | 任意 | 任意 | 任意 | 拒絕 |
+
+
 <sup>1</sup>用於偵錯工具的選擇性。 在需要進行先進的疑難排解時允許。
 
 > [!NOTE]

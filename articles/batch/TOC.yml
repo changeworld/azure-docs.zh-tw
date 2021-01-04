@@ -65,6 +65,8 @@
           href: ./security-controls-policy.md
         - name: 安全性基準
           href: security-baseline.md
+        - name: 安全性最佳做法
+          href: security-best-practices.md
     - name: Batch 服務工作流程和資源
       displayName: developer features
       href: batch-service-workflow-features.md

@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d89f9330947d1c5d0146b8531f265d86d0fd5160
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.custom: references_regions
+ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329146"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694195"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>使用自訂命令建立語音助理
 
@@ -27,14 +28,14 @@ ms.locfileid: "92329146"
 * 美國西部 2
 * 美國東部
 * 美國東部 2
+* 美國中西部
 * 北歐
 * 西歐
-* 美國中西部
-* 印度中部
 * 東亞
 * 東南亞
+* 印度中部
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">在支援自訂命令的區域中建立 Azure 語音資源。<span class="docon docon-navigate-external x-hidden-focus"></span></a> 請參閱上方的 **區域可用性** 一節，以取得支援的區域清單。
@@ -60,7 +61,7 @@ ms.locfileid: "92329146"
 1. 選取 [ **新增專案** ] 以建立專案。
 
 1. 在 [ **名稱** ] 方塊中，輸入 [專案名稱] 做為 `Smart-Room-Lite` (，或輸入您選擇的其他內容) 。
-1. 在 [ **語言** ] 清單中，選取 [ **英文 (美國) **。
+1. 在 [ **語言** ] 清單中，選取 [ **英文 (美國)**。
 1. 選取 [ **流覽** 檔案]，然後在 [流覽] 視窗中選取 [檔案 **SmartRoomLite.js** 。
 
     > [!div class="mx-imgBorder"]
@@ -121,7 +122,7 @@ ms.locfileid: "92329146"
 
 在本文的範圍內，我們將使用您在必要條件中下載的 Windows 語音助理用戶端。 將資料夾解壓縮。
 1. 啟動 **VoiceAssistantClient.exe**。
-1. 建立新的發行設定檔，並輸入 **連接設定檔**的值。 在 [ **一般設定** ] 區段中，輸入值訂用帳戶 **金鑰** (這與您發佈應用程式時所儲存的 **語音資源金鑰** 值相同) 、訂用帳戶 **金鑰區域** 和 **自訂命令應用程式識別碼**。
+1. 建立新的發行設定檔，並輸入 **連接設定檔** 的值。 在 [ **一般設定** ] 區段中，輸入值訂用帳戶 **金鑰** (這與您發佈應用程式時所儲存的 **語音資源金鑰** 值相同) 、訂用帳戶 **金鑰區域** 和 **自訂命令應用程式識別碼**。
     > [!div class="mx-imgBorder"]
     > ![醒目顯示建立 WVAC 設定檔的 [一般設定] 區段的螢幕擷取畫面。](media/custom-commands/create-profile.png)
 1. 選取 [ **儲存並套用設定檔**]。

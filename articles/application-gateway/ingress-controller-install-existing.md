@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018693"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693728"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>使用現有的應用程式閘道 (AGIC) 安裝應用程式閘道輸入控制器
 
@@ -27,7 +27,7 @@ AGIC 會 [監視 Kubernetes 輸入](https://kubernetes.io/docs/concepts/services
 - [使用 Helm 安裝輸入控制器](#install-ingress-controller-as-a-helm-chart)
 - [多叢集/共用應用程式閘道](#multi-cluster--shared-application-gateway)：在環境中安裝 AGIC，其中的應用程式閘道會在一或多個 AKS 叢集和/或其他 Azure 元件之間共用。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 本檔假設您已安裝下列工具和基礎結構：
 - 已啟用[Advanced 網路](../aks/configure-azure-cni.md)的[AKS](https://azure.microsoft.com/services/kubernetes-service/)
 - 與 AKS 位於相同虛擬網路中的[應用程式閘道 v2](./tutorial-autoscale-ps.md)
@@ -323,7 +323,7 @@ Helm install with `appgw.shared=true` 將會部署 AGIC，但不會對應用程�
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>針對現有的 AGIC 安裝啟用
-假設我們已在叢集中有一個可運作的 AKS、應用程式閘道和已設定的 AGIC。 我們有的輸入 `prod.contosor.com` ，且已成功從 AKS 為其提供流量。 我們想要新增 `staging.contoso.com` 至現有的應用程式閘道，但需要將它裝載在 [VM](https://azure.microsoft.com/services/virtual-machines/)上。 我們將重複使用現有的應用程式閘道，並手動設定的接聽程式和後端集區 `staging.contoso.com` 。 但透過 [入口網站](https://portal.azure.com)、 [ARM api](/rest/api/resources/) 或 [Terraform](https://www.terraform.io/)) 手動調整應用程式閘道設定 (會與 AGIC 的完整擁有權假設有衝突。 在套用變更之後，AGIC 將會覆寫或刪除變更。
+假設我們已在叢集中有一個可運作的 AKS、應用程式閘道和已設定的 AGIC。 我們有的輸入 `prod.contoso.com` ，且已成功從 AKS 為其提供流量。 我們想要新增 `staging.contoso.com` 至現有的應用程式閘道，但需要將它裝載在 [VM](https://azure.microsoft.com/services/virtual-machines/)上。 我們將重複使用現有的應用程式閘道，並手動設定的接聽程式和後端集區 `staging.contoso.com` 。 但透過 [入口網站](https://portal.azure.com)、 [ARM api](/rest/api/resources/) 或 [Terraform](https://www.terraform.io/)) 手動調整應用程式閘道設定 (會與 AGIC 的完整擁有權假設有衝突。 在套用變更之後，AGIC 將會覆寫或刪除變更。
 
 我們可以禁止 AGIC 變更設定的子集。
 

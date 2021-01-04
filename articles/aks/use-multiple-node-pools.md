@@ -4,12 +4,12 @@ description: '瞭解如何在 Azure Kubernetes Service (AKS 中建立及管理�
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 39c2fe177d0a6d913d7bf2b2baf44af3c69c0868
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: db153123622a59bbdde71afca4ea30e03a6fbf98
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006928"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694234"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立和管理叢集的多個節點集區 \(部分機器翻譯\)
 
@@ -577,7 +577,7 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> 在叢集建立期間，您也可以使用此 `--tags` 參數。 [az aks nodepool update][az-aks-nodepool-update] 在叢集建立期間， `--tags` 參數會將標記套用至使用叢集建立的初始節點集區。 所有標記名稱都必須遵守 [使用標記來組織 Azure 資源][tag-limitation]的限制。 使用參數更新節點集區會 `--tags` 更新任何現有的標記值，並附加任何新的標記。 例如，如果您的節點集區具有「 *部門 =* 」和「 *costcenter = 9999* 」的標籤，而且您已使用 *team = dev* 和 *costcenter = 111* 對標記進行更新，您的 nodepool 會有 *部門 = IT*、 *costcenter = 111* 和 *team = dev* for 標記。
+> 在叢集建立期間，您也可以使用此 `--tags` 參數。 [][az-aks-nodepool-update] 在叢集建立期間， `--tags` 參數會將標記套用至使用叢集建立的初始節點集區。 所有標記名稱都必須遵守 [使用標記來組織 Azure 資源][tag-limitation]的限制。 使用參數更新節點集區會 `--tags` 更新任何現有的標記值，並附加任何新的標記。 例如，如果您的節點集區具有「 *部門 =* 」和「 *costcenter = 9999* 」的標籤，而且您已使用 *team = dev* 和 *costcenter = 111* 對標記進行更新，您的 nodepool 會有 *部門 = IT*、 *costcenter = 111* 和 *team = dev* for 標記。
 
 下列來自 [az aks nodepool list][az-aks-nodepool-list] 命令的範例輸出顯示 *tagnodepool* 正在 *建立* 具有指定 *標記* 的節點：
 
@@ -685,10 +685,10 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 }
 ```
 
-使用 [az group deployment create][az-group-deployment-create] 命令來部署此範本，如下列範例所示。 系統會提示您輸入現有的 AKS 叢集名稱和位置：
+使用 [az deployment group create][az-deployment-group-create] 命令來部署此範本，如下列範例所示。 系統會提示您輸入現有的 AKS 叢集名稱和位置：
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
     --resource-group myResourceGroup \
     --template-file aks-agentpools.json
 ```
@@ -829,7 +829,7 @@ az group delete --name myResourceGroup2 --yes --no-wait
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
 [gpu-cluster]: gpu-cluster.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md

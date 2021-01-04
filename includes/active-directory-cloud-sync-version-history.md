@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 3fc2475569765116d46a175629f25d9d49634942
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 77866fcb72515d5167d9f06b7d9ad91c59bc7945
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993939"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97700597"
 ---
 本文列出已發行 Azure Active Directory Connect 布建代理程式的版本和功能。 Azure AD 團隊會定期以新的特性和功能更新布建代理程式。 發行新版本時，會自動更新布建代理程式。 
 
@@ -28,6 +28,8 @@ Microsoft 提供最新代理程式版本的直接支援，以及之前的一個�
 * 只有範圍 (中的物件才支援 PHS 篩選，我們會同步處理所有物件的密碼雜湊) 
 * 已修正代理程式中的記憶體流失問題
 * 改進的布建記錄
+* 支援 [設定 LDAP 連接逾時](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-ldap-connection-timeout) 
+* 支援設定 [參考追蹤](../articles/active-directory/cloud-provisioning/how-to-manage-registry-options.md#configure-referral-chasing) 
 
 
 ## <a name="11960"></a>1.1.96.0
