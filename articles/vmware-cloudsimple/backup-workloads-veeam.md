@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-使用 Veeam 備份私人雲端上的工作負載虛擬機器
 description: 說明如何使用 Veeam B&R 9.5 來備份在以 Azure 為基礎的 CloudSimple 私人雲端中執行的虛擬機器。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7be606b3e23a594e67acf3f169d88353403d8577
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92419938"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899332"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>使用 Veeam B&R 備份 CloudSimple 私人雲端上的工作負載 Vm
 
@@ -240,7 +240,7 @@ Veeam 解決方案會要求您執行下列作業：
     * 將掛接伺服器位置設定為備份伺服器。
     * 將 Veeam 伺服器的設定備份位置變更為遠端存放庫。
 
-3. 使用 **Home> 設定備份設定**來啟用設定備份的加密。
+3. 使用 **Home> 設定備份設定** 來啟用設定備份的加密。
 
 4. 新增 Windows server VM 作為 VMware 環境的 proxy 伺服器。 針對 proxy 使用「流量規則」，透過網路加密備份資料。
 

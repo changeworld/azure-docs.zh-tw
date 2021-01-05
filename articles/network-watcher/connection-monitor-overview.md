@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2020
+ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: c5c3f8dedad47a819ce3648a0b81ffa3e65a1a1e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 57228c6b7da04b139c7075c83e313b207907e214
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544882"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898006"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>使用連線監視器進行網路連線監視
 
@@ -273,9 +273,9 @@ Azure 監視器計量也提供監視資料。 您可以使用 Log Analytics 來�
 
 | 計量 | 顯示名稱 | 單位 | 彙總類型 | 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent | 失敗的探查百分比 | 百分比 | Average | 連線能力監視探查的百分比失敗。 | 無維度 |
+| ProbesFailedPercent | 失敗的探查百分比 | 百分比 | 平均 | 連線能力監視探查的百分比失敗。 | 無維度 |
 | AverageRoundtripMs | Avg.來回時間 (毫秒) | 毫秒 | Average | 在來源與目的地之間傳送之連線能力監視探查的平均網路 RTT。 |             無維度 |
-| ChecksFailedPercent (Preview)  | % 檢查失敗 (預覽)  | 百分比 | Average | 測試失敗檢查的百分比。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>通訊協定 <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>區域 |
+| ChecksFailedPercent (Preview)  | % 檢查失敗 (預覽)  | 百分比 | 平均 | 測試失敗檢查的百分比。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>通訊協定 <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>區域 |
 | RoundTripTimeMs (Preview)  | 來回時間 (ms)  (Preview)  | 毫秒 | Average | 在來源與目的地之間傳送檢查的 RTT。 此值不是平均值。 | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>通訊協定 <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>區域 |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>連接監視的計量型警示

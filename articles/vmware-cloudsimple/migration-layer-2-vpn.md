@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 將第 2 層網路內部部署延展到私人雲端
 description: 說明如何在 CloudSimple 私人雲端上的 NSX-T 與內部部署獨立 NSX Edge 用戶端之間設定第 2 層 VPN
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f524bf6af66d44bc13b7c0957de7977968cbef28
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 06446b6c36e36466fe891d7327d8151603cdecd2
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427265"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899366"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>使用第 2 層延伸網路遷移工作負載
 

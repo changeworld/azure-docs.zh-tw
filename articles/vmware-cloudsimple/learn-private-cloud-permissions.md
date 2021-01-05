@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-私用雲端許可權模型
 description: 描述 CloudSimple 私用雲端許可權模型、群組及類別
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 28c4dc7831f97d66eb4d47f08e640344d5cca0d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c8cfeda008955006f2fbad1df58c8047bd36541
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77014941"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898040"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter 的 CloudSimple 私用雲端許可權模型
 
@@ -43,7 +43,7 @@ CloudSimple 會保留私用雲端環境的完整系統管理存取權。 每個 
 若要授與個別使用者管理私用雲端的許可權，請建立使用者帳戶，並新增至適當的群組。
 
 > [!CAUTION]
-> 新使用者只能新增至 *雲端擁有者群組*、 *雲端全域*叢集-系統管理群組、雲端-全域 *存放裝置-* 管理群組、 *雲端全域-網路-系統管理* 群組或 *雲端全域 VM-管理群組*。  新增至系統 *管理員* 群組的使用者將會自動移除。  只有服務帳戶必須加入至系統 *管理員* 群組，而且服務帳戶不能用來登入 VSPHERE web UI。
+> 新使用者只能新增至 *雲端擁有者群組*、 *雲端全域* 叢集-系統管理群組、雲端-全域 *存放裝置-* 管理群組、 *雲端全域-網路-系統管理* 群組或 *雲端全域 VM-管理群組*。  新增至系統 *管理員* 群組的使用者將會自動移除。  只有服務帳戶必須加入至系統 *管理員* 群組，而且服務帳戶不能用來登入 VSPHERE web UI。
 
 ## <a name="list-of-vcenter-privileges-for-default-roles"></a>預設角色的 vCenter 許可權清單
 

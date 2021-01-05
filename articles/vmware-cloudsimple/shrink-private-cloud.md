@@ -1,19 +1,19 @@
 ---
 title: 藉由 CloudSimple 私用雲端來縮減 Azure VMware 解決方案
 description: 瞭解如何藉由從現有的 vSphere 叢集中移除節點，或移除整個叢集，以在 CloudSimple 中動態壓縮私用雲端。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 07/01/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2759b35c9ba521a63eaf54c4c696598d545120b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a99b9b56f17b78a98f37d47dcefab26dd9c859de
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141732"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899128"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>縮減 CloudSimple 私人雲端
 
@@ -47,7 +47,7 @@ CloudSimple 提供動態壓縮私用雲端的彈性。  私人雲端包含一或
 
     ![壓縮私用雲端-選取叢集](media/shrink-private-cloud-select-cluster.png)
 
-6. 選取 [ **移除一個節點** ] 或 **[刪除整個**叢集]。 
+6. 選取 [ **移除一個節點** ] 或 **[刪除整個** 叢集]。 
 
 7. 確認叢集容量
 

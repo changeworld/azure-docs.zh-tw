@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 01/03/2021
 ms.author: guybo
-ms.openlocfilehash: b27b7344d84ce1361d8294fa4f3490c50afbb4c3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9d278582840404702bfef3e5fc9af395f659d844
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489653"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898074"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 上經背書的 Linux 發行版本
 
@@ -36,7 +36,7 @@ Azure Linux 代理程式已預先安裝在 Azure Marketplace 映射上，而且�
 | --- | --- | --- | --- |
 | 由 Rogue Wave 軟體 CentOS |CentOS 6.x、7.x、8。x |CentOS 6.3： [.lis 版下載](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +：在核心中 |封裝 [：在 "WALinuxAgent" 下的](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) 存放庫中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS 的存留 [期即將結束](https://coreos.com/os/eol/) ，從2020月26日開始。 |無法再使用 | | |
-| Credativ 的 Debian |8.x、9.x |在核心中 |套件：在「waagent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| Credativ 的 Debian |8.x、6.x、8。x |在核心中 |套件：在「waagent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 |依 Kinvolk Flatcar 容器 Linux| Pro、穩定、搶鮮版（Beta）| 在核心中 | wa-linux-代理程式已安裝在/usr/share/oem/bin/waagent 中 |
 | 由 Oracle Oracle Linux |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | [Red Hat Red Hat Enterprise Linux](../workloads/redhat/overview.md) |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |

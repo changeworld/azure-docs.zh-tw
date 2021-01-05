@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-設定 VPN 閘道
 description: 說明如何設定點對站 VPN 閘道和站對站 VPN 閘道，以及建立您的內部部署網路與 CloudSimple 私人雲端之間的連線
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78f78bfbf885cbae7708a75cb54ce2d41e7b526c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871995"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899094"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>設定 CloudSimple 網路上的 VPN 閘道
 
@@ -44,7 +44,7 @@ CloudSimple VPN 閘道提供將 VLAN/子網新增至 VPN 閘道的原則。  原
 
     ![建立 VPN 閘道](media/create-vpn-gateway.png)
 
-4. 在 [ **閘道**設定] 中，指定下列設定，然後按 **[下一步]**。
+4. 在 [ **閘道** 設定] 中，指定下列設定，然後按 **[下一步]**。
 
     * 選取 [ **站對站 VPN** ] 作為閘道類型。
     * 輸入用來識別閘道的名稱。
@@ -87,7 +87,7 @@ CloudSimple VPN 閘道提供將 VLAN/子網新增至 VPN 閘道的原則。  原
 
     ![建立 VPN 閘道](media/create-vpn-gateway.png)
 
-4. 在 [ **閘道**設定] 中，指定下列設定，然後按 **[下一步]**。
+4. 在 [ **閘道** 設定] 中，指定下列設定，然後按 **[下一步]**。
 
     * 選取 **點對站 VPN** 作為閘道類型。
     * 輸入用來識別閘道的名稱。
@@ -101,7 +101,7 @@ CloudSimple VPN 閘道提供將 VLAN/子網新增至 VPN 閘道的原則。  原
 
 6. [Vlan/子網] 區段可讓您指定閘道和連線的管理和使用者 Vlan/子網。
 
-    * **自動新增選項會**設定閘道的全域原則。 這些設定適用于目前的閘道。 您可以在 **選取** 區域中覆寫這些設定。
+    * **自動新增選項會** 設定閘道的全域原則。 這些設定適用于目前的閘道。 您可以在 **選取** 區域中覆寫這些設定。
     * 選取 [ **新增私人雲端的管理 vlan/子網**]。 
     * 若要新增所有使用者定義的 Vlan/子網，請按一下 [  **新增使用者定義的 vlan/子網**]。
     * [ **選取** 設定] 會覆寫 [ **自動新增**] 下的 [全域設定]。

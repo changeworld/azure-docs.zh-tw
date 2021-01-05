@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: a2d26689a3036f05d7c8e7f417fbbb447402aedc
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: f140384ee2c78b38982c99dab5912bc451584a42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762855"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898142"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>將串流分析作業連線至 Azure 虛擬網路中的資源 (VNet) 
 
@@ -41,7 +41,7 @@ ms.locfileid: "97762855"
 1. [Blob 儲存體或 Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/stream-analytics/blob-output-managed-identity) -可以是您作業的儲存體帳戶、串流輸入或輸出。
 2. [Azure 事件中樞](https://docs.microsoft.com/azure/stream-analytics/event-hubs-managed-identity) -可以是您作業的串流輸入或輸出。
 
-如果您的作業需要連線至其他輸入或輸出類型，則唯一的選項是使用串流分析叢集中的私人端點。
+如果您的作業需要連線至其他輸入或輸出類型，您可以先從串流分析寫入至事件中樞輸出，然後再使用 Azure Functions 寫入至您選擇的任何目的地。 如果您想要直接從串流分析寫入至 VNet 或防火牆中保護的其他輸出類型，則唯一的選項是使用串流分析叢集中的私人端點。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-選擇適用于 CloudSimple 私用雲端的負載平衡解決方案
 description: 描述在私用雲端中部署應用程式的負載平衡選項
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2fec54c19b9040e7cb44f1a5d2b7909510ab7313
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d2305c209011e4fb1b8ee05a016d2e15a49833
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82734598"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898023"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>選擇適用于 CloudSimple 私人雲端的負載平衡解決方案
 

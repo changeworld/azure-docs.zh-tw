@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-使用 Azure AD 作為私用雲端上的身分識別來源
 description: 說明如何將 Azure AD 新增為 CloudSimple 私人雲端上的身分識別提供者，以驗證從 Azure 存取 CloudSimple 的使用者
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 93922986dfe0b2b4e8ba0923931df601cc12428b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f55a0f52f5e028f9cbf7a9fabbb3c24ad43c3800
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532523"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898601"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>使用 Azure AD 作為 CloudSimple 私人雲端上的 vCenter 身分識別提供者
 
@@ -83,16 +83,16 @@ Azure AD 是 Microsoft 多租使用者雲端式目錄和身分識別管理服務
 1. [提升](escalate-private-cloud-privileges.md) 私用雲端 vCenter 的許可權。
 2. 收集設定身分識別來源所需的設定參數。
 
-    | **選項** | **說明** |
+    | **選項** | **描述** |
     |------------|-----------------|
-    | **名稱** | 身分識別來源的名稱。 |
+    | **Name** | 身分識別來源的名稱。 |
     | **使用者的基底 DN** | 使用者的基底分辨名稱。  如 Azure AD，請使用： `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  範例： `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` 。|
     | **網域名稱** | 網域的 FQDN，例如，example.com。 請勿在此文字方塊中提供 IP 位址。 |
-    | **網域別名** | * (選擇性) * 網域 NetBIOS 名稱。 如果您使用 SSPI 驗證，請將 Active Directory 網域的 NetBIOS 名稱新增為身分識別來源的別名。 |
+    | **網域別名** | *(選擇性)* 網域 NetBIOS 名稱。 如果您使用 SSPI 驗證，請將 Active Directory 網域的 NetBIOS 名稱新增為身分識別來源的別名。 |
     | **群組的基底 DN** | 群組的基底分辨名稱。 針對 Azure AD，請使用： `OU=AADDC Users,DC=<domain>,DC=<domain suffix>`  範例： `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **主伺服器 URL** | 網域的網域主控站 LDAP 伺服器。<br><br>使用此格式： `ldaps://hostname:port`。 針對 LDAPS 連線，埠通常是636。 <br><br>當您  `ldaps://`   在主要或次要 LDAP URL 中使用時，需要為 Active Directory 伺服器的 LDAPS 端點建立信任的憑證。 |
+    | **主伺服器 URL** | 網域的網域主控站 LDAP 伺服器。<br><br>請使用 `ldaps://hostname:port` 格式。 針對 LDAPS 連線，埠通常是636。 <br><br>當您 `ldaps://` 在主要或次要 LDAP URL 中使用時，需要為 Active Directory 伺服器的 LDAPS 端點建立信任的憑證。 |
     | **次要伺服器 URL** | 用於容錯移轉的次要網域控制站 LDAP 伺服器位址。 |
-    | **選擇憑證** | 如果您想要搭配 Active Directory LDAP 伺服器或 OpenLDAP 伺服器身分識別來源使用 LDAPS，在  `ldaps://` [URL] 文字方塊中輸入之後，會出現 [選擇憑證] 按鈕   。 不需要次要 URL。 |
+    | **選擇憑證** | 如果您想要搭配 Active Directory LDAP 伺服器或 OpenLDAP 伺服器身分識別來源使用 LDAPS，在 [URL] 文字方塊中輸入之後，會出現 [選擇憑證] 按鈕 `ldaps://` 。 不需要次要 URL。 |
     | **使用者名稱** | 網域中使用者的識別碼，其具有使用者和群組的基本 DN 的最小唯讀存取權。 |
     | **密碼** | 使用者名稱所指定之使用者的密碼。 |
 
@@ -101,7 +101,7 @@ Azure AD 是 Microsoft 多租使用者雲端式目錄和身分識別管理服務
 5. 將使用者/群組從 Azure AD 新增至 vCenter 群組（如 VMware 主題 [將成員新增至 Vcenter 單一 Sign-On 群組](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)中所述）。
 
 > [!CAUTION]
-> 新使用者只能新增至 *雲端擁有者群組*、 *雲端全域*叢集-系統管理群組、雲端-全域 *存放裝置-* 管理群組、 *雲端全域-網路-系統管理* 群組或 *雲端全域 VM-管理群組*。  新增至系統 *管理員* 群組的使用者將會自動移除。  只有服務帳戶必須加入至系統 *管理員* 群組。
+> 新使用者只能新增至 *雲端擁有者群組*、 *雲端全域* 叢集-系統管理群組、雲端-全域 *存放裝置-* 管理群組、 *雲端全域-網路-系統管理* 群組或 *雲端全域 VM-管理群組*。  新增至系統 *管理員* 群組的使用者將會自動移除。  只有服務帳戶必須加入至系統 *管理員* 群組。
 
 ## <a name="next-steps"></a>後續步驟
 

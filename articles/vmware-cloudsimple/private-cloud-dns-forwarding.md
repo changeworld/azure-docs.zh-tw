@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解決方案-從私用雲端轉送至內部部署的 DNS
 description: 說明如何讓您的 CloudSimple 私人雲端 DNS 伺服器能夠向前查閱內部部署資源
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 02/29/2020
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3571455db6ecc600bf0948087b40c281d72512ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3481e21a93fbf5f658c5ca00513ea179c8f95400
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091244"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899196"
 ---
 # <a name="enable-cloudsimple-private-cloud-dns-servers-to-forward-dns-lookup-of-on-premises-resources-to-your-dns-servers"></a>啟用 CloudSimple 私人雲端 DNS 伺服器，以將內部部署資源的 DNS 查閱轉送至您的 DNS 伺服器
 
@@ -44,14 +44,14 @@ ms.locfileid: "87091244"
 若要啟用從私人雲端轉送至內部部署的 DNS，請提交 [支援要求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並提供下列資訊。
 
 * 問題類型： **技術**
-* 訂用帳戶： **CloudSimple 服務部署所在的訂**用帳戶
+* 訂用帳戶： **CloudSimple 服務部署所在的訂** 用帳戶
 * 服務： **VMware Solution By CloudSimple**
 * 問題類型： **諮詢或如何? ...**
 * 問題子類型： **需要 NW 的協助**
 * 在詳細資料窗格中提供您內部部署網域的功能變數名稱。
 * 提供您的內部部署 DNS 伺服器清單，在詳細資料窗格中，將從您的私人雲端轉送查閱。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [深入瞭解內部部署防火牆設定](on-premises-firewall-configuration.md)
 * [內部部署 DNS 伺服器設定](on-premises-dns-setup.md)

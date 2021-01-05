@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-為私用雲端設定 vSAN 加密
 description: 說明如何設定 vSAN 軟體加密功能，讓您的 CloudSimple 私人雲端可以與在 Azure 虛擬網路中執行的金鑰管理伺服器搭配運作。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5da05c7f3c6878b0804799360e512676b9002d3
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77020636"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899043"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>設定 CloudSimple 私人雲端的 vSAN 加密
 

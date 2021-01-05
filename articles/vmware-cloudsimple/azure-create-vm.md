@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-使用 VM 範本在 Azure 中建立虛擬機器
 description: 說明如何使用 CloudSimple 私用雲端的 VMware 基礎結構上的 VM 範本，在 Azure 中建立虛擬機器
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014496"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898754"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>使用 VMware 基礎結構上的 VM 範本，在 Azure 中建立虛擬機器
 
@@ -25,7 +25,7 @@ ms.locfileid: "96014496"
 
 ## <a name="create-cloudsimple-virtual-machine"></a>建立 CloudSimple 虛擬機器
 
-1. 選取 [所有服務]。
+1. 選取 [所有服務]  。
 
 2. 搜尋 **CloudSimple 虛擬機器**。
 
@@ -45,7 +45,7 @@ ms.locfileid: "96014496"
     | 訂用帳戶 | 與您私人雲端相關聯的 Azure 訂用帳戶。  |
     | 資源群組 | 將指派 VM 的資源群組。 您可以選取現有的群組或建立新的群組。 |
     | 名稱 | 用來識別 VM 的名稱。  |
-    | Location | 託管此 VM 的 Azure 區域。  |
+    | 位置 | 託管此 VM 的 Azure 區域。  |
     | 私人雲端 | 您要在其中建立虛擬機器的 CloudSimple 私人雲端。 |
     | 資源集區 | VM 的對應資源集區。 請從可用的資源集區中選取。 |
     | vSphere 範本 | VM 的 vSphere 範本。  |
@@ -71,7 +71,7 @@ ms.locfileid: "96014496"
 
     若為磁片，請按一下 [ **新增磁片** ] 並設定下列設定。
 
-    | 項目 | 描述 |
+    | Item | 描述 |
     | ------------ | ------------- |
     | 名稱 | 輸入識別磁碟的名稱。  |
     | 大小 | 選取其中一個可用的大小。  |
@@ -84,7 +84,7 @@ ms.locfileid: "96014496"
 
 ## <a name="view-list-of-cloudsimple-virtual-machines"></a>檢視 CloudSimple 虛擬機器的清單
 
-1. 選取 [所有服務]。
+1. 選取 [所有服務]  。
 
 2. 搜尋 **CloudSimple 虛擬機器**。
 

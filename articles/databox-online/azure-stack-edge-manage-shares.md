@@ -1,27 +1,27 @@
 ---
-title: Azure Stack Edge Pro 共用管理 |Microsoft Docs
-description: 說明如何使用 Azure 入口網站來管理 Azure Stack Edge Pro 上的共用。
+title: Azure Stack Edge Pro FPGA 共用管理 |Microsoft Docs
+description: 說明如何使用 Azure 入口網站來管理 Azure Stack Edge Pro FPGA 上的共用。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2019
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d43b70c8f958ad37b6ac2d0ee043d5f07d11da9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444582"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898207"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro 上的共用
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro FPGA 上的共用 
 
-本文說明如何管理 Azure Stack Edge Pro 上的共用。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge Pro。 使用 Azure 入口網站來新增、刪除、重新整理共用，或針對與共用相關聯的儲存體帳戶同步儲存體金鑰。
+本文說明如何管理 Azure Stack Edge Pro FPGA 裝置上的共用。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge Pro FPGA 裝置。 使用 Azure 入口網站來新增、刪除、重新整理共用，或針對與共用相關聯的儲存體帳戶同步儲存體金鑰。
 
 ## <a name="about-shares"></a>關於共用
 
-若要將資料傳輸至 Azure，您必須在 Azure Stack Edge Pro 上建立共用。 您在 Azure Stack Edge Pro 裝置上新增的共用可以是本機共用，也可以是將資料推送至雲端的共用。
+若要將資料傳輸至 Azure，您必須在 Azure Stack Edge Pro FPGA 上建立共用。 您在 Azure Stack Edge Pro 裝置上新增的共用可以是本機共用，也可以是將資料推送至雲端的共用。
 
  - **本機共用**：當您想要在本機裝置上處理資料時，請使用這些共用。
  - **共用**：當您希望裝置資料自動推送到雲端中的儲存體帳戶時，請使用這些共用。 所有雲端 **功能，例如** 重新整理和 **同步儲存體金鑰** 都適用于共用。
@@ -39,7 +39,7 @@ ms.locfileid: "96444582"
 
 請在 Azure 入口網站中執行下列步驟來建立共用。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 選取命令列上的 [+ 新增共用]。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道**。 移至 [ **共用** ]，然後選取命令列上的 [ **+ 新增共用** ]。
 
     ![選取 [新增共用]](media/azure-stack-edge-manage-shares/add-share-1.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "96444582"
 
 ## <a name="add-a-local-share"></a>新增本機共用
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 選取命令列上的 [+ 新增共用]。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道 > 共用**。 選取命令列上的 [+ 新增共用]。
 
    ![選取 [新增共用 2]](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "96444582"
 
 6. 在 [完整權限本機使用者] 欄位中，從 [新建] 或 [使用現有的] 中擇一。
 
-7. 選取 [建立]。 
+7. 選取 [建立]  。 
 
    ![建立本機共用](media/azure-stack-edge-manage-shares/add-local-share-2.png)
 
@@ -96,15 +96,13 @@ ms.locfileid: "96444582"
 
    ![檢視更新共用刀鋒視窗](media/azure-stack-edge-manage-shares/add-local-share-3.png)
     
-    選取共用以檢視此共用的 Edge 計算模組的本機掛接點。
 
-   ![檢視本機共用詳細資料](media/azure-stack-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>掛接共用
 
 如果您在 Azure Stack Edge Pro 裝置上設定計算之前已建立共用，您將需要掛接共用。 請採取下列步驟來掛接共用。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 從共用清單中，選取您想要掛接的共用。 [用於計算] 資料行會將所選共用的狀態顯示為 [已停用]。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道 > 共用**。 從共用清單中，選取您想要掛接的共用。 [用於計算] 資料行會將所選共用的狀態顯示為 [已停用]。
 
    ![選取共用3](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
@@ -122,13 +120,13 @@ ms.locfileid: "96444582"
 
 5. 再次選取共用以檢視此共用的本機掛接點。 Edge 計算模組會對此共用使用這個本機掛接點。
 
-   ![共用的本機掛接點](media/azure-stack-edge-manage-shares/share-mountpoint.png)
+   ![共用的本機掛接點](media/azure-stack-edge-manage-shares/share-mountpoint.png) 
 
 ## <a name="unmount-a-share"></a>取消掛接共用
 
 請在 Azure 入口網站中執行下列步驟以取消掛接共用。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道 > 共用**。
 
    ![選取共用4](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
@@ -148,13 +146,13 @@ ms.locfileid: "96444582"
 
 在 Azure 入口網站中執行下列步驟，以刪除共用。
 
-1. 從共用清單中，選取並按一下您想要刪除的共用。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道 > 共用**。 從共用清單中，選取並按一下您想要刪除的共用。
 
    ![選取共用5](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
-2. 按一下 **[刪除]** 。
+2. 選取 [刪除]。
 
-   ![按一下刪除](media/azure-stack-edge-manage-shares/delete-share-2.png)
+   ![選取 [刪除]](media/azure-stack-edge-manage-shares/delete-share-2.png)
 
 3. 當提示確認時，請按一下 [是]。
 
@@ -173,15 +171,15 @@ ms.locfileid: "96444582"
 
 在 Azure 入口網站中執行下列步驟，以重新整理共用。
 
-1. 在 Azure 入口網站中，移至 [共用]。 選取並按一下您想要重新整理的共用。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道 > 共用**。 選取並按一下您想要重新整理的共用。
 
    ![選取共用6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
-2. 按一下 [重新整理]。
+2. 選取 [重新整理 **資料**]。
 
-   ![按一下 [重新整理]](media/azure-stack-edge-manage-shares/refresh-share-2.png)
+   ![選取 [重新整理]](media/azure-stack-edge-manage-shares/refresh-share-2.png)
  
-3. 當提示確認時，請按一下 [是]。 系統會開始一項作業，以重新整理內部部署共用的內容。
+3. 系統提示您確認時，請選取 [是]。 系統會開始一項作業，以重新整理內部部署共用的內容。
 
    ![確認重新整理](media/azure-stack-edge-manage-shares/refresh-share-3.png)
 
@@ -199,7 +197,7 @@ ms.locfileid: "96444582"
 
 在 Azure 入口網站中執行下列步驟，以同步儲存體存取金鑰。
 
-1. 移至您資源的 [概觀]。 從共用清單中，選擇並按一下與您需要同步的儲存體帳戶相關聯的共用。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道 > 共用**。 從共用清單中，選擇並按一下與您需要同步的儲存體帳戶相關聯的共用。
 
     ![選取相關儲存體帳戶的共用](media/azure-stack-edge-manage-shares/sync-storage-key-1.png)
 

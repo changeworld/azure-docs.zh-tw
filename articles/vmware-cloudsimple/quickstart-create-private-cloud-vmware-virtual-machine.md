@@ -1,19 +1,19 @@
 ---
 title: 快速入門-在私人雲端上建立 Azure VMware VM-Azure VMware Solution by CloudSimple
 description: 瞭解如何在 CloudSimple 私用雲端上建立 VMware 虛擬機器。 從 Azure 入口網站存取 CloudSimple 入口網站。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c741f01ccc3e34ec991aa77fc850fd9f60c4d8aa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427764"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899281"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在您的私人雲端上建立 VMware 虛擬機器
 
@@ -36,7 +36,7 @@ ms.locfileid: "92427764"
 
 您現在可以啟動 vCenter 來設定虛擬機器和原則。
 
-若要存取 vCenter，請從 CloudSimple 入口網站開始。 在首頁的 [ **一般**工作] 底下，按一下 [ **啟動 vSphere 用戶端**]。  選取私人雲端，然後按一下 [在私人雲端上 **啟動 VSphere 用戶端** ]。
+若要存取 vCenter，請從 CloudSimple 入口網站開始。 在首頁的 [ **一般** 工作] 底下，按一下 [ **啟動 vSphere 用戶端**]。  選取私人雲端，然後按一下 [在私人雲端上 **啟動 VSphere 用戶端** ]。
 
    ![啟動 vSphere 用戶端](media/launch-vcenter-from-cloudsimple-portal.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "92427764"
 
 3. 建立標題為「Iso 和範本」的資料夾。
 
-4. 流覽至 [Iso 和範本] 中的 [Iso] 資料夾，然後按一下 **[上傳**檔案]。 依照畫面上的指示上傳 ISO。
+4. 流覽至 [Iso 和範本] 中的 [Iso] 資料夾，然後按一下 **[上傳** 檔案]。 依照畫面上的指示上傳 ISO。
 
 ## <a name="create-a-virtual-machine-in-vcenter"></a>在 vCenter 中建立虛擬機器
 
@@ -78,7 +78,7 @@ ms.locfileid: "92427764"
 8. 針對您要建立的 VM 選取 ISO 的來賓 OS，然後按 **[下一步]**。
     ![顯示如何為 VM 選取 ISO guese OS 的螢幕擷取畫面。](media/vcvm07.png)
 
-9. 選取 [硬碟] 和 [網路選項]。 若為新的 CD/DVD 磁片磁碟機，請選取 [資料存放區 **ISO**檔案]。  如果您想要允許從公用 IP 位址到此 VM 的流量，請選取網路作為 **vm-1**。
+9. 選取 [硬碟] 和 [網路選項]。 若為新的 CD/DVD 磁片磁碟機，請選取 [資料存放區 **ISO** 檔案]。  如果您想要允許從公用 IP 位址到此 VM 的流量，請選取網路作為 **vm-1**。
     ![醒目顯示您選取資料存放區 ISO 檔案之位置的螢幕擷取畫面。](media/vcvm08.png)
 
 10. [選取範圍] 視窗隨即開啟。 選取您先前上傳至 Iso 和 Templates 資料夾的檔案，然後按一下 **[確定]**。
@@ -102,7 +102,7 @@ CloudSimple 會指派具有使用者名稱的預設 vCenter 使用者帳戶 `clo
 
 在私用雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，以便進行查閱和 IP 位址指派。 必須要有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。 您可以在 vCenter 中設定虛擬機器，以在您的私人雲端環境中提供這些服務。
 
-先決條件
+必要條件
 
 * 已設定 VLAN 的分散式埠群組
 
@@ -139,7 +139,7 @@ CloudSimple 入口網站中的 [網路] 頁面可讓您指定防火牆資料表�
 5. 如有需要，請使用滑杆來變更閒置的超時時間。
 6. 輸入您想要為其指派公用 IP 位址的本機 IP 位址。
 7. 如有需要，請輸入相關聯的 DNS 名稱。
-8. 按一下 [完成]  。
+8. 按一下 [完成]。
 
     ![公用 IP](media/quick-create-pc-public-ip.png)
 

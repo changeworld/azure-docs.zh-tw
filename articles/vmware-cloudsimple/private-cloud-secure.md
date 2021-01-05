@@ -1,19 +1,19 @@
 ---
 title: Azure VMware 解決方案（依 CloudSimple）-安全的私用雲端
 description: 說明如何透過 CloudSimple 私用雲端來保護 Azure VMware 解決方案
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 000e43a7861bd155ebbd7175db96dd323731464b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5e70745cd6e2f6a2a13581052f65e014bd0d0481
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518206"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899162"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>如何保護您的私用雲端環境
 
@@ -38,7 +38,7 @@ ms.locfileid: "92518206"
 ### <a name="add-new-users-to-vcenter"></a>將新使用者新增至 vCenter
 
 1. [提升](escalate-private-cloud-privileges.md) **CloudOwner \@ Cloudsimple** 的許可權。私用雲端上的本機使用者。
-2. 使用**CloudOwner \@ cloudsimple**登入 vCenter
+2. 使用 **CloudOwner \@ cloudsimple** 登入 vCenter
 3. [新增 VCenter 單一 Sign-On 使用者](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-72BFF98C-C530-4C50-BF31-B5779D2A4BBB.html)。
 4. 將使用者新增至 [vCenter 單一登入群組](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)。
 
@@ -52,7 +52,7 @@ ms.locfileid: "92518206"
 * [使用 Azure AD 作為](azure-ad.md) 私人雲端 vCenter 上的身分識別提供者
 
 1. [提升](escalate-private-cloud-privileges.md) **CloudOwner \@ Cloudsimple** 的許可權。私用雲端上的本機使用者。
-2. 使用**CloudOwner \@ cloudsimple**登入 vCenter
+2. 使用 **CloudOwner \@ cloudsimple** 登入 vCenter
 3. 從身分識別提供者將使用者新增至 [vCenter 單一登入群組](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)。
 
 ## <a name="secure-network-on-your-private-cloud-environment"></a>在私用雲端環境中保護網路安全

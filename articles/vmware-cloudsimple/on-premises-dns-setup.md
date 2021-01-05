@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-設定 CloudSimple 私用雲端的 DNS
 description: 說明如何設定 DNS 名稱解析，以從內部部署工作站存取 CloudSimple 私人雲端上的 vCenter server
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7a2b2344bbb110cd4b35cc1f6428f61e48552b01
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 63822050512421895b0cfed08fb141f77da20b03
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563002"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899247"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>針對從內部部署工作站私人雲端 vCenter 存取設定 DNS 進行名稱解析
 
@@ -46,7 +46,7 @@ ms.locfileid: "97563002"
 例如，針對預設系結伺服器設定，請在您的 DNS 伺服器上編輯/etc/named.conf 檔案，並新增下欄區域資訊。
 
 > [!NOTE]
->本文包含詞彙從屬的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+>本文包含「從屬」一詞的參考，Microsoft 已不再使用該字詞。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ```
 zone "az.cloudsimple.io"

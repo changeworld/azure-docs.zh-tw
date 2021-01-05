@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-在內部部署與私人雲端之間設定 VPN
 description: 說明如何設定內部部署網路與 CloudSimple 私人雲端之間的站對站或點對站 VPN 連線
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424681"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899213"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>設定 CloudSimple 私人雲端的 VPN 連線
 
@@ -38,7 +38,7 @@ VPN 閘道可讓您從內部部署網路和用戶端電腦遠端連線到 CloudS
 2. 選取 [ **VPN 閘道**]。
 3. 從 VPN 閘道清單中，按一下點對站 VPN 閘道。
 4. 選取 [使用者]。
-5. 按一下 [**下載我的 VPN**設定]
+5. 按一下 [**下載我的 VPN** 設定]
 
     ![下載 VPN 組態](media/download-p2s-vpn-configuration.png)
 
@@ -49,7 +49,7 @@ VPN 閘道可讓您從內部部署網路和用戶端電腦遠端連線到 CloudS
 
 7. 連接至 CloudSimple VPN 閘道。
 
-下列範例顯示如何使用 **Viscosity 用戶端**匯入連線。
+下列範例顯示如何使用 **Viscosity 用戶端** 匯入連線。
 
 #### <a name="import-connection-on-viscosity-client"></a>在 Viscosity 用戶端上匯入連接
 
@@ -57,7 +57,7 @@ VPN 閘道可讓您從內部部署網路和用戶端電腦遠端連線到 CloudS
 
 2. 在您的電腦上開啟 Viscosity。
 
-3. 按一下 **+** 圖示，然後選取 [從檔案匯**入連接**]  >  ** **。
+3. 按一下 **+** 圖示，然後選取 [從檔案匯 **入連接**]  >  ****。
 
     ![從檔案匯入 VPN 設定](media/import-p2s-vpn-config.png)
 
@@ -79,13 +79,13 @@ VPN 閘道可讓您從內部部署網路和用戶端電腦遠端連線到 CloudS
 
 1. 啟動 [CloudSimple 入口網站](access-cloudsimple-portal.md)。
 
-2. 流覽至**資源**  >  **私**用雲端，然後選取您想要連線的私人雲端。
+2. 流覽至 **資源**  >  **私** 用雲端，然後選取您想要連線的私人雲端。
 
 3. 在私人雲端的 [ **摘要** ] 頁面上，複製 [ **基本資訊**] 下的 [私人雲端 DNS 伺服器] IP 位址。
 
     ![私人雲端 DNS 伺服器](media/private-cloud-dns-server.png)
 
-4. 以滑鼠右鍵按一下電腦系統匣中的 Viscosity 圖示，然後選取 [ **喜好**設定]。
+4. 以滑鼠右鍵按一下電腦系統匣中的 Viscosity 圖示，然後選取 [ **喜好** 設定]。
 
     ![VPN](media/vis00.png)
 

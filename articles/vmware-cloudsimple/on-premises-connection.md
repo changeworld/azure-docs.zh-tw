@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-使用 ExpressRoute 的內部部署連線
 description: 說明如何使用 ExpressRoute 從 CloudSimple 區域網路要求內部部署連線
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019616"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899230"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>使用 ExpressRoute 從內部部署連接到 CloudSimple
 
@@ -49,7 +49,7 @@ ms.locfileid: "77019616"
 
 1. 登入 Azure 入口網站。
 
-2. 在頂端搜尋列中，搜尋**expressroute 線路**，然後按一下 [**服務**] 下的 [ **expressroute 線路**]。
+2. 在頂端搜尋列中，搜尋 **expressroute 線路**，然後按一下 [**服務**] 下的 [ **expressroute 線路**]。
     [![ExpressRoute 線路](media/azure-expressroute-transit-search.png)](media/azure-expressroute-transit-search.png)
 
 3. 選取您要連接到 CloudSimple 網路的 ExpressRoute 線路。
@@ -65,10 +65,10 @@ ms.locfileid: "77019616"
 
 6. 提出 <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">支援</a> 建立連線的票證。
     * 問題類型： **技術**
-    * 訂用帳戶： **CloudSimple 服務部署所在的訂**用帳戶
+    * 訂用帳戶： **CloudSimple 服務部署所在的訂** 用帳戶
     * 服務： **VMware Solution By CloudSimple**
     * 問題類型： **服務要求**
-    * 問題子類型：**建立與內部部署的 ExpressRoute**連線
+    * 問題子類型：**建立與內部部署的 ExpressRoute** 連線
     * 提供您在 [詳細資料] 窗格中複製並儲存的資源識別碼和授權金鑰。
     * 為傳輸網路提供/29 網路位址空間。
     * 您是否透過 ExpressRoute 傳送預設路由？

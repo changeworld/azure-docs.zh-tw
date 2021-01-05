@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-使用私用雲端作為內部部署工作負載的災難網站
 description: 說明如何將 CloudSimple 私人雲端設定為內部部署 VMware 工作負載的災難復原網站
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dd1f157984cdb300cc3b375d71654e5da54d1ae
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77083143"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898125"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>將 CloudSimple 私人雲端設定為內部部署 VMware 工作負載的災難復原網站
 
@@ -93,6 +93,6 @@ CloudSimple 解決方案：
 6. 視需要自訂個別 Vm 的網路設定，並建立 VPG。
 7. 複寫完成之後，測試容錯移轉。
 
-## <a name="reference"></a>參考資料
+## <a name="reference"></a>參考
 
 [Zerto 檔](https://www.zerto.com/myzerto/technical-documentation/)

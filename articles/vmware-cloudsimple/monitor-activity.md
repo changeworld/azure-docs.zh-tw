@@ -2,19 +2,19 @@
 title: 監視私用雲端活動
 titleSuffix: Azure VMware Solution by CloudSimple
 description: 描述 Azure VMware Solution by CloudSimple 環境中活動可用的資訊，包括警示、事件、工作和審核。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019667"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899298"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>依 CloudSimple 活動監視 VMware 解決方案
 
@@ -46,10 +46,10 @@ CloudSimple 活動記錄可讓您深入瞭解在 CloudSimple 入口網站上完�
 
 下列資訊資料行適用于警示。 按一下 [ **編輯資料行** ]，然後選取您想要查看的資料行。
 
-| 資料行 | 描述 |
+| Column | 描述 |
 ------------ | ------------- |
 | 警示類型 | 警示的類別。|
-| 時間 | 警示發生的時間。 |
+| Time | 警示發生的時間。 |
 | 嚴重性 | 警示的重要性。|
 | 資源名稱 | 指派給資源的名稱，例如私用雲端名稱。 |
 | 資源類型 | 資源類別：私用雲端、雲端機架。 |
@@ -63,7 +63,7 @@ CloudSimple 活動記錄可讓您深入瞭解在 CloudSimple 入口網站上完�
 
 下列資訊資料行適用于警示。 按一下 [ **編輯資料行** ]，然後選取您想要查看的資料行。
 
-| 資料行 | 描述 |
+| Column | 描述 |
 ------------ | ------------- |
 | Time | 事件發生的日期和時間。 |
 | 事件類型 | 識別事件的數值代碼。 |
@@ -78,7 +78,7 @@ CloudSimple 活動記錄可讓您深入瞭解在 CloudSimple 入口網站上完�
 
 下列資訊資料行適用于警示。 按一下 [ **編輯資料行** ]，然後選取您想要查看的資料行。
 
-| 資料行 | 描述 |
+| Column | 描述 |
 ------------ | ------------- |
 | 工作識別碼 | 工作的唯一識別碼。 |
 | 作業 | 工作執行的動作。 |
@@ -86,7 +86,7 @@ CloudSimple 活動記錄可讓您深入瞭解在 CloudSimple 入口網站上完�
 | 資源名稱 | 指派給資源的名稱。 |
 | 資源類型 | 資源類別：私用雲端、雲端機架。 |
 | 資源識別碼 | 資源的識別碼。 |
-| Start | 工作的開始時間。 |
+| 開始 | 工作的開始時間。 |
 | 結束 | 工作的結束時間。 |
 | 狀態 | 目前的工作狀態。 |
 | 經過時間 | 完成工作所需的時間 (（如果已完成）) 或正在進行中) 時正在進行 (。 |
@@ -98,7 +98,7 @@ Audit 記錄檔會追蹤使用者活動。 您可以使用 audit 記錄來監視
 
 下列資訊資料行適用于警示。 按一下 [ **編輯資料行** ]，然後選取您想要查看的資料行。
 
-| 資料行 | 描述 |
+| Column | 描述 |
 ------------ | ------------- |
 | Time | Audit 專案的時間。 |
 | 作業 | 工作執行的動作。 |
