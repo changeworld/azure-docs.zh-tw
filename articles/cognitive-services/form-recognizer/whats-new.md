@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 7539e896d810a2f0fbf3c07f389f25e2d3c31fe1
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563155"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844994"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -209,7 +209,7 @@ ms.locfileid: "97563155"
 
 ## <a name="next-steps"></a>後續步驟
 
-完成[用戶端程式庫快速入門](quickstarts/client-library.md)，開始以您選擇的語言搭配表單辨識器，來撰寫表單處理應用程式。
+完成 [快速入門](quickstarts/client-library.md) ，開始以您選擇的語言撰寫表單辨識器的表單處理應用程式。
 
 ## <a name="see-also"></a>請參閱
 

@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: b4acd431656eb008702f62dc1ecf12bda62dae17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176060700f50a6ce6e8cb5cf622ee4c922e5a952
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051078"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845353"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>筆跡辨識器 API 的語言和區域支援
 
@@ -41,12 +41,12 @@ ms.locfileid: "89051078"
 | 荷蘭文 (荷蘭)                        |     `nl-NL`     |
 | 英文 (澳大利亞)                        |     `en-AU`     |
 | 英文 (加拿大)                           |     `en-CA`     |
-| 英文 (英國)                   |     `en-GB`     |
 | 英文 (印度)                            |     `en-IN`     |
+| 英文 (英國)                   |     `en-GB`     |
 | 英文 (美國)                    |     `en-US`     |
 | 芬蘭文                                    |     `fi-FI`     |
 | 法文 (法國)                            |     `fr-FR`     |
-| 加利西亞文                                   |     `gl-ES`     |
+| 加里斯亞文                                   |     `gl-ES`     |
 | 德文 (瑞士)                       |     `de-CH`     |
 | 德文 (德國)                           |     `de-DE`     |
 | 希臘文                                      |     `el-GR`     |
@@ -67,23 +67,23 @@ ms.locfileid: "89051078"
 | 波蘭文                                     |     `pl-PL`     |
 | 葡萄牙文 (巴西)                        |     `pt-BR`     |
 | 葡萄牙文 (葡萄牙)                      |     `pt-PT`     |
-| 羅曼斯文                                    |     `rm-CH`     |
 | 羅馬尼亞文                                   |     `ro-RO`     |
+| 羅曼斯文                                    |     `rm-CH`     |
 | 俄文                                    |     `ru-RU`     |
 | 蘇格蘭蓋爾文                            |     `gd-GB`     |
-| 北索托文                           |    `nso-ZA`     |
 | 塞爾維亞文 (斯拉夫、波士尼亞與赫塞哥維納) |  `sr-Cyrl-BA`   |
 | 塞爾維亞文 (斯拉夫文，黑山)              |  `sr-Cyrl-ME`   |
 | 塞爾維亞文 (斯拉夫，塞爾維亞)                 |  `sr-Cyrl-RS`   |
 | 塞爾維亞文 (拉丁、波士尼亞和黑塞哥維那)     |  `sr-Latn-BA`   |
 | 塞爾維亞文 (拉丁、黑山)                 |  `sr-Latn-ME`   |
 | 塞爾維亞文 (拉丁，塞爾維亞)                    |  `sr-Latn-RS`   |
+| 北索托文                           |    `nso-ZA`     |
 | 塞茲瓦納文 (南非)                    |     `tn-ZA`     |
 | 斯洛伐克文                                     |     `sk-SK`     |
 | 斯洛維尼亞文                                  |     `sl-SI`     |
 | 西班牙文 (阿根廷)                        |     `es-AR`     |
-| 西班牙文 (西班牙)                            |     `es-ES`     |
 | 西班牙文 (墨西哥)                           |     `es-MX`     |
+| 西班牙文 (西班牙)                            |     `es-ES`     |
 | 瑞典文 (瑞典)                           |     `sv-SE`     |
 | 土耳其文                                    |     `tr-TR`     |
 | 威爾斯文                                      |     `cy-GB`     |
@@ -91,7 +91,7 @@ ms.locfileid: "89051078"
 | 科薩文                                      |     `xh-ZA`     |
 | 祖魯文                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [什麼是筆跡辨識器 API？](overview.md)
 * [將數位筆跡筆觸傳送至筆墨辨識器 API](concepts/send-ink-data.md)

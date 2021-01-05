@@ -3,14 +3,14 @@
 - name: 概觀
   expanded: true
   items:
-    - name: 關於資訊安全中心
+    - name: 什麼是 Azure 資訊安全中心？
+      href: security-center-introduction.md
+    - name: 可用性
       items:
-        - name: 什麼是 Azure 資訊安全中心？
-          href: security-center-introduction.md
         - name: 支援的平台
           displayName: coverage
           href: security-center-os-coverage.md
-        - name: VM 的功能涵蓋範圍
+        - name: OS、電腦類型和雲端的涵蓋範圍
           href: security-center-services.md
         - name: Azure PaaS 資源的功能涵蓋範圍
           href: features-paas.md
@@ -110,6 +110,8 @@
       href: tutorial-security-incident.md
     - name: 改善法規合規性
       href: security-center-compliance-dashboard.md
+    - name: 管理安全性原則
+      href: tutorial-security-policy.md
 - name: 概念
   items:
     - name: 雲端安全性態勢管理
@@ -120,11 +122,6 @@
           href: secure-score-security-controls.md
         - name: 安全性建議概觀
           href: security-center-recommendations.md
-        - name: 安全性原則概觀
-          href: tutorial-security-policy.md
-        - name: 內建安全性原則
-          displayName: 'samples, policy'
-          href: ./policy-reference.md
         - name: 使用增強安全性的建議
           href: security-center-using-recommendations.md
         - name: 安全性基準
@@ -224,14 +221,9 @@
         - name: 強化 Docker 主機
           displayName: containers
           href: harden-docker-hosts.md
-    - name: 使用適用於 SQL 的 Azure Defender
-      items:
-        - name: 在 Azure VM 上設定適用於 SQL 的 Azure Defender
+        - name: 使用適用於 SQL 的 Azure Defender
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: 自訂 SQL 資訊保護原則
-          displayName: 'sql, database, data discovery'
-          href: security-center-info-protection-policy.md
     - name: 使用適用於容器登錄的 Azure Defender
       items:
         - name: 掃描您的登錄映像是否有弱點
@@ -281,6 +273,9 @@
       href: security-center-investigation-user-data.md
     - name: 取得全租用戶的可見度
       href: security-center-management-groups.md
+    - name: 自訂 SQL 資訊保護原則
+      displayName: 'sql, database, data discovery'
+      href: security-center-info-protection-policy.md
 - name: 參考
   items:
     - name: REST API
@@ -297,6 +292,9 @@
           href: faq-vms.md
         - name: Azure Log Analytics 的現有使用者
           href: faq-azure-monitor-logs.md
+    - name: 內建安全性原則
+      displayName: 'samples, policy'
+      href: policy-reference.md
     - name: Azure 藍圖部落格
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: 端點保護評量和建議

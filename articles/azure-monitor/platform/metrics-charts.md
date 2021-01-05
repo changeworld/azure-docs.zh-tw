@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a80eaecc02fa3c8c6618341c02e22241f0dc7faf
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562798"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845051"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 計量瀏覽器的進階功能
 
@@ -22,6 +22,35 @@ ms.locfileid: "97562798"
 ## <a name="metrics-in-azure"></a>Azure 中的計量
 
 [Azure 監視器](data-platform-metrics.md)中的計量是隨時間收集並儲存的一系列度量與計數值。 計量包括標準 (或稱為「平台」) 計量與自訂計量。 標準計量是由 Azure 平台本身提供給您使用。 標準計量反映您 Azure 資源的健康情況與使用情形統計資料。 自訂計量會由您的應用程式使用 [APPLICATION INSIGHTS API，針對自訂事件和計量](../app/api-custom-events-metrics.md)、  [WINDOWS Azure 診斷 (WAD) 延伸](./diagnostics-extension-overview.md)模組或 [Azure 監視器 REST API](./metrics-store-custom-rest-api.md)，傳送至 Azure。
+
+## <a name="resource-scope-picker"></a>資源範圍選取器
+資源範圍選取器可讓您跨單一和多個資源來查看計量。 以下是如何使用資源範圍選取器的指示。 
+
+### <a name="selecting-a-single-resource"></a>選取單一資源
+從 [Azure 監視器]  功能表或從資源功能表的 [監視]  區段中，選取 [計量]  。 按一下 [選取範圍] 按鈕以開啟範圍選取器，這可讓您選取您想要查看其計量) 的資源 (。 如果您從資源的功能表開啟計量瀏覽器，則應該已經填入此值。 
+
+![資源範圍選取器的螢幕擷取畫面](./media/metrics-charts/scope-picker.png)
+
+針對某些資源，您一次只能查看單一資源的度量。 這些資源位於 [資源類型] 下拉式清單中的 [所有資源類型] 區段下方。
+
+![單一資源的螢幕擷取畫面](./media/metrics-charts/single-resource-scope.png)
+
+按一下您想要的資源之後，您會看到包含該資源的所有訂用帳戶和資源群組。
+
+![可用資源的螢幕擷取畫面](./media/metrics-charts/available-single-resource.png)
+
+> [!TIP]
+> 如果您想要同時查看多個資源的計量，或整個訂用帳戶或資源群組的計量，請按一下 [附議] 按鈕。
+
+當您滿意選取專案時，請按一下 [套用]。
+
+### <a name="viewing-metrics-across-multiple-resources"></a>跨多個資源查看計量
+某些資源類型已啟用查詢多個資源的計量的能力，只要它們位於相同的訂用帳戶和位置中即可。 您可以在 [資源類型] 下拉式清單頂端找到這些資源類型。 若要取得有關如何跨多個資源查看度量的詳細資訊，請參閱 [這份檔](metrics-dynamic-scope.md#selecting-multiple-resources)。
+
+![跨資源類型的螢幕擷取畫面](./media/metrics-charts/multi-resource-scope.png)
+
+針對多重資源相容的類型，您也可以查詢訂用帳戶或多個資源群組中的計量。 若要瞭解如何進行，請參閱 [這篇文章](metrics-dynamic-scope.md#selecting-a-resource-group-or-subscription)
+
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>建立具有多個計量和圖表的視圖
 
@@ -61,11 +90,25 @@ ms.locfileid: "97562798"
 
 計量瀏覽器中有五種可用的基本統計資料匯總類型： **Sum**、 **Count**、 **Min**、 **Max** 和 **Average**。 **Sum** 匯總有時也稱為 **總計匯總**。 針對許多計量，計量瀏覽器會隱藏完全不相關的匯總，而且無法使用。
 
-- **Sum** –在匯總間隔中捕捉的所有值的總和
-- **Count** –匯總間隔所捕捉的度量數目。 請注意，[ **計數** ] 會等於 [ **總和** ]，在此情況下，一律會以1的值來捕捉度量。 當計量追蹤相異事件的計數，且每個度量都代表一個事件 (亦即，每當新的要求進入時，程式碼就會引發計量記錄，這是很常見的情況) 
-- **平均** –透過匯總間隔所捕捉的度量值平均值
-- **最** 小值–透過匯總間隔所捕捉的最小值
-- **Max** -透過匯總間隔所捕獲的最大值
+**Sum** –在匯總間隔中捕捉的所有值的總和
+
+![要求總和的螢幕擷取畫面](./media/metrics-charts/request-sum.png)
+
+**Count** –匯總間隔所捕捉的度量數目。 請注意，[ **計數** ] 會等於 [ **總和** ]，在此情況下，一律會以1的值來捕捉度量。 當計量追蹤相異事件的計數，且每個度量都代表一個事件 (亦即，每當新的要求進入時，程式碼就會引發計量記錄，這是很常見的情況) 
+
+![要求計數的螢幕擷取畫面](./media/metrics-charts/request-count.png)
+
+**平均** –透過匯總間隔所捕捉的度量值平均值
+
+![平均要求的螢幕擷取畫面](./media/metrics-charts/request-avg.png)
+
+**最** 小值–透過匯總間隔所捕捉的最小值
+
+![最小要求的螢幕擷取畫面](./media/metrics-charts/request-min.png)
+
+**Max** -透過匯總間隔所捕獲的最大值
+
+![最大要求的螢幕擷取畫面](./media/metrics-charts/request-max.png)
 
 ## <a name="apply-filters-to-charts"></a>將篩選條件套用至圖表
 

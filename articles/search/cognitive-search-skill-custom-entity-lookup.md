@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936107"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844923"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>自訂實體查閱認知技能 (預覽) 
 
 > [!IMPORTANT] 
 > 此技能目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前沒有入口網站或 .NET SDK 支援。
 
-**自訂實體查閱**技能會從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，其會以任何相符的實體標記所有文件。 此技能也支援某種程度的模糊比對，可加以套用以尋找類似但不完全精確的相符項目。  
+**自訂實體查閱** 技能會從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，其會以任何相符的實體標記所有文件。 此技能也支援某種程度的模糊比對，可加以套用以尋找類似但不完全精確的相符項目。  
 
 這項技能未系結至認知服務 API，在預覽期間可免費使用。 不過，您仍然應該 [附加認知服務資源](./cognitive-search-attach-cognitive-services.md)，以覆寫每日擴充限制。 每日限制適用于透過 Azure 認知搜尋存取認知服務的免費存取。
 
@@ -41,20 +41,22 @@ CustomEntityLookupSkill。
 | `entitiesDefinitionUri`    | JSON 或 CSV 檔案的路徑，其中包含要符合的所有目標文字。 此實體定義會在索引子執行的開頭讀取;在後續執行之前，將不會實現此檔案的任何更新。 此設定必須可透過 HTTPS 存取。 請參閱下方的 [自訂實體定義](#custom-entity-definition-format) 格式 "，以瞭解預期的 CSV 或 JSON 架構。|
 |`inlineEntitiesDefinition` | 內嵌 JSON 實體定義。 此參數會取代 entitiesDefinitionUri 參數（如果有的話）。 內嵌最多可提供 10 KB 的設定。 請參閱下方的 [自訂實體定義](#custom-entity-definition-format) ，以取得預期的 JSON 架構。 |
 |`defaultLanguageCode` |     (用來 token 化和描繪輸入文字之輸入文字的選擇性) 語言代碼。 支援下列語言： `da, de, en, es, fi, fr, it, ko, pt` 。 預設值是英文 (`en`) 。 如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。  |
-
+|`globalDefaultCaseSensitive` |  (選擇性) 技能的預設區分大小寫值。 如果 `defaultCaseSensitive` 未指定實體的值，此值就會成為 `defaultCaseSensitive` 該實體的值。 |
+|`globalDefaultAccentSensitive` |  (選擇性) 技能的預設區分重音值。 如果 `defaultAccentSensitive` 未指定實體的值，此值就會成為 `defaultAccentSensitive` 該實體的值。 |
+|`globalDefaultFuzzyEditDistance` |  (選擇性) 技能的預設模糊編輯距離值。 如果 `defaultFuzzyEditDistance` 未指定實體的值，此值就會成為 `defaultFuzzyEditDistance` 該實體的值。 |
 
 ## <a name="skill-inputs"></a>技能輸入
 
-| 輸入名稱      | 說明                   |
+| 輸入名稱      | 描述                   |
 |---------------|-------------------------------|
 | `text`          | 要分析的文字。          |
-| `languageCode`    | 選擇性。 預設值為 `"en"`。  |
+| `languageCode`    | 選擇性。 預設為 `"en"`。  |
 
 
 ## <a name="skill-outputs"></a>技能輸出
 
 
-| 輸出名稱      | 說明                   |
+| 輸出名稱      | 描述                   |
 |---------------|-------------------------------|
 | `entities` | 物件的陣列，其中包含找到之相符專案的相關資訊，以及相關的中繼資料。 每個識別的實體可能包含下欄欄位：  <ul> <li> *名稱*：已識別的最上層實體。 實體代表「正規化」表單。 </li> <li> *識別碼*：實體的唯一識別碼，由使用者以「自訂實體定義格式」定義。</li> <li> *描述*：使用者以「自訂實體定義格式」定義的實體描述。 </li> <li> *輸入：* 由使用者以「自訂實體定義格式」定義的實體類型。</li> <li> *子類型：* 由使用者以「自訂實體定義格式」定義的實體子類型。</li>  <li> *符合*：描述來源文字上該實體之每個相符專案的集合。 每個相符項都會有下列成員： </li> <ul> <li> *text*：來源文件中的原始文字相符。 </li> <li> *offset*：在文字中找到相符項的位置。 </li> <li> *長度*：相符文字的長度。 </li> <li> *matchDistance*：這個相符的字元數與原始機構名稱或別名不同。  </li> </ul> </ul>
   |
@@ -151,15 +153,18 @@ Satya Nadella
 | `subtype` |  (選擇性) 此欄位可用來作為相符文字 () 的自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中的每個實體相符項。 |
 | `id` |  (選擇性) 此欄位可用來作為相符文字 () 的自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中的每個實體相符項。 |
 | `caseSensitive` |  (選擇性) 預設為 false。 布林值，表示與機構名稱的比較是否應區分字元大小寫。 "Microsoft" 的不區分大小寫範例可能是： microsoft、microsoft、MICROSOFT |
+| `accentSensitive` |  (選擇性) 預設為 false。 布林值，表示重音和非重音字母（例如 ' 日 ' 和 ' e '）是否應該相同。 |
 | `fuzzyEditDistance` |  (選擇性) 預設為0。 最大值為5。 表示仍會構成符合機構名稱之相符字元的可接受數目。 傳回任何指定之相符的最小可能的顏色。  比方說，如果編輯距離設定為3，"Windows 10" 仍會符合 "Windows"、"Windows10" 和 "windows 7"。 <br/> 當區分大小寫設定為 false 時，大小寫差異不會計入調整大小容限，但也不會計。 |
-| `defaultCaseSensitive` |  (選擇性) 變更此實體的預設區分大小寫值。 它是用來變更所有別名 caseSensitive 值的預設值。 |
+| `defaultCaseSensitive` |  (選擇性) 變更此實體的預設區分大小寫值。 可以用來變更所有別名 caseSensitive 值的預設值。 |
+| `defaultAccentSensitive` |  (選擇性) 變更此實體的預設強調符號敏感度值。 可以用來變更所有別名 accentSensitive 值的預設值。|
 | `defaultFuzzyEditDistance` |  (選擇性) 變更此實體的預設模糊編輯距離值。 可以用來變更所有別名 fuzzyEditDistance 值的預設值。 |
 | `aliases` |  (選擇性) 可以用來指定根機構名稱之替代拼寫或同義字的複雜物件陣列。 |
 
-| 別名屬性 | 說明 |
+| 別名屬性 | 描述 |
 |------------------|-------------|
 | `text`  | 某些目標機構名稱的替代拼寫或標記法。  |
 | `caseSensitive` |  (選擇性的) 與上述的根實體 "caseSensitive" 參數相同，但只適用于此一個別名。 |
+| `accentSensitive` |  (選擇性的) 與上述的根實體 "accentSensitive" 參數相同，但只適用于此一個別名。 |
 | `fuzzyEditDistance` |  (選擇性的) 與上述的根實體 "fuzzyEditDistance" 參數相同，但只適用于此一個別名。 |
 
 

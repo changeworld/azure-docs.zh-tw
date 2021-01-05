@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 64d90b4d9dc3efbe877230bbc20780b1c4f2d213
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5773f7af3bb065976e8f05d7b54c58b90da2d3d2
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934562"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835120"
 ---
 # <a name="security-agent-reference-architecture"></a>安全性代理程式參考架構
 
@@ -45,11 +45,11 @@ ms.locfileid: "90934562"
 
 Defender for IoT 針對32位和64位的 Windows 提供不同的安裝程式代理程式，對於32位和64位的 Linux 則是相同的。 請根據下表，確定您的每個裝置都有正確的代理程式安裝程式：
 
-| 架構 | Linux | Windows |    詳細資料|
-|----------|----------------------------------------------|-------------|-------------------------------------------|
-| 32 位元  | C  | C#  ||
-| 64 位元  | C # 或 C           | C#      | 針對具有更多限制或最少量裝置資源的裝置，我們建議使用 C 代理程式。|
-|
+| 架構 | Linux | Windows | 詳細資料 |
+|--|--|--|--|
+| 32 位元 | C | C# |  |
+| 64 位元 | C # 或 C | C# | 針對具有更多限制或最少量裝置資源的裝置，我們建議使用 C 代理程式。 |
+
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -59,6 +59,6 @@ Defender for IoT 針對32位和64位的 Windows 提供不同的安裝程式代�
 
 - 瞭解 [安全性代理程式驗證方法](concept-security-agent-authentication-methods.md)
 - 選取和部署 [安全性代理程式](how-to-deploy-agent.md)
-- 查看 Defender for IoT [服務必要條件](service-prerequisites.md)
+- 查看 Defender for IoT [系統必要條件](quickstart-system-prerequisites.md)
 - 瞭解如何 [在 Iot 中樞啟用 Defender For iot 服務](quickstart-onboard-iot-hub.md)
 - 深入瞭解[Defender For IoT](resources-frequently-asked-questions.md)的服務常見問題
