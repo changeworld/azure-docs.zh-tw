@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673982"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760396"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions 總覽的 RabbitMQ 觸發程式
 
 > [!NOTE]
-> RabbitMQ 系結只在 **Windows Premium 和專用** 方案上受到完整支援。 目前不支援耗用量和 Linux。
+> RabbitMQ 系結僅在 **Premium 和專用** 方案上受到完整支援。 不支援耗用量。
 
 使用 RabbitMQ 觸發程式來回應 RabbitMQ 佇列中的訊息。
 
@@ -43,18 +43,23 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
 下列範例顯示如何將訊息讀取為 POCO。
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
 
-[FunctionName("RabbitMQTriggerCSharp")]
-public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
-    ILogger logger
-    )
-{
-    logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {Encoding.UTF8.GetString(pocObj)}");
+    public class RabbitMQTriggerCSharp{
+        [FunctionName("RabbitMQTriggerCSharp")]
+        public static void RabbitMQTrigger_BasicDeliverEventArgs(
+            [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
+            ILogger logger
+            )
+        {
+            logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {pocObj}");
+        }
+    }
 }
 ```
 
@@ -82,7 +87,7 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
 
 以下是 C# 指令碼程式碼：
 
-```csx
+```C#
 using System;
 
 public static void Run(string myQueueItem, ILogger log)
@@ -216,7 +221,7 @@ Python 指令碼不支援屬性。
 |**userNameSetting**|**UserNameSetting**|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>應用程式設定的名稱，其中包含要存取佇列的使用者名稱。 例如 UserNameSetting： "% < UserNameFromSettings >%"|
 |**passwordSetting**|**PasswordSetting**|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>應用程式設定的名稱，其中包含用來存取佇列的密碼。 例如 PasswordSetting： "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|包含 RabbitMQ 訊息佇列連接字串之應用程式設定的名稱。 請注意，如果您直接指定連接字串，而不是透過 local.settings.js中的應用程式設定，則觸發程式將無法運作。  (例如： In *function.js*： connectionStringSetting： "rabbitMQConnection" <br> 在 *local.settings.json*： "rabbitMQConnection"： "< ActualConnectionstring >" ) |
-|**port**|**通訊埠**|如果使用 ConnectionStringSetting) 取得或設定使用的埠， (會忽略。 預設為 0。|
+|**port**|**通訊埠**|如果使用 ConnectionStringSetting) 取得或設定使用的埠， (會忽略。 預設值為0，指向 rabbitmq 用戶端的預設通訊埠設定：5672。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -280,7 +285,7 @@ Python 指令碼不支援屬性。
 |prefetchCount|30|取得或設定訊息接收者可以同時要求並快取的訊息數目。|
 |queueName|n/a| 要接收訊息的佇列名稱。|
 |connectionString|n/a|RabbitMQ 訊息佇列連接字串。 請注意，直接在這裡指定連接字串，而不是透過應用程式設定。|
-|連接埠|0|如果使用 ConnectionStringSetting) 取得或設定使用的埠， (會忽略。 預設為 0。|
+|連接埠|0|如果使用 connectionString) 取得或設定使用的埠， (會忽略。 預設值為0，指向 rabbitmq 用戶端的預設通訊埠設定：5672。|
 
 ## <a name="local-testing"></a>本機測試
 
@@ -305,9 +310,24 @@ Python 指令碼不支援屬性。
 
 |屬性  |預設 | 描述 |
 |---------|---------|---------|
-|hostName|n/a|如果使用 ConnectStringSetting) ，則會忽略 ( <br>佇列的主機名稱 (例如： 10.26.45.210) |
-|userName|n/a|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>存取佇列的名稱 |
-|密碼|n/a|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>用來存取佇列的密碼|
+|hostName|n/a|如果使用 connectionString) ，則會忽略 ( <br>佇列的主機名稱 (例如： 10.26.45.210) |
+|userName|n/a|如果使用 connectionString) ，則會忽略 ( <br>存取佇列的名稱 |
+|密碼|n/a|如果使用 connectionString) ，則會忽略 ( <br>用來存取佇列的密碼|
+
+
+## <a name="enable-runtime-scaling"></a>啟用執行時間調整
+
+為了讓 RabbitMQ 觸發程式可以擴充至多個實例，必須啟用 **執行時間調整監視** 設定。 
+
+在入口網站中，您可以在函式  >  應用程式的 [**設定函數執行時間設定**] 下找到此設定。
+
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
+
+在 CLI 中，您可以使用下列命令來啟用 **執行時間調整監視** ：
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
+```
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>監視 RabbitMQ 端點
 若要監視特定 RabbitMQ 端點的佇列和交換：

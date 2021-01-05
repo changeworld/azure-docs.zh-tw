@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何使用 Azure CLI 將執�
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41869ac4dfc0d3964fb48463e5f142b8391e2d94
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: f146bed9ee607fe1b1b6062f9fe372fbb9b9ba6a
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579247"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746740"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教學課程：使用 Azure CLI 在 Azure VM 中備份 SAP Hana 資料庫
 
@@ -126,8 +126,8 @@ saphanadatabase;hxe;hxe        SAPHanaDatabase          HXE           hxehost   
 ```azurecli-interactive
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
     --policy-name saphanaPolicy \
-    --protectable-item-name saphanadatabase;hxe;hxe  \
-    --protectable-item-type SAPHANADatabse \
+    --protectable-item-name "saphanadatabase;hxe;hxe"  \
+    --protectable-item-type SAPHANADatabase \
     --server-name hxehost \
     --workload-type SAPHANA \
     --output table

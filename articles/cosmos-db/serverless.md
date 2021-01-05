@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: cabc243c6ba74217873b5b0a5fa51a7cb410512e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170822"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760353"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB 無伺服器 (預覽) 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,7 +19,7 @@ ms.locfileid: "96170822"
 > [!IMPORTANT]
 > Azure Cosmos DB 無伺服器目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Azure Cosmos DB 無伺服器，可讓您以耗用量方式使用您的 Azure Cosmos 帳戶，您只需支付資料庫作業所耗用的要求單位，以及資料所耗用的儲存體。 在無伺服器模式中使用 Azure Cosmos DB 時，不會產生最低費用。
+Azure Cosmos DB 無伺服器，可讓您以耗用量方式使用您的 Azure Cosmos 帳戶，您只需支付資料庫作業所耗用的要求單位，以及資料所耗用的儲存體。 無伺服器容器每秒可提供數千個要求，且不需要最低費用，也不需要任何容量規劃。
 
 > [!IMPORTANT] 
 > 您對無伺服器有任何意見嗎？ 我們想要聽聽看！ 您可以隨意將訊息放到 Azure Cosmos DB 無伺服器團隊： [azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com) 。
@@ -36,13 +36,12 @@ Azure Cosmos DB 無伺服器最適合您預期的案例：
 - **低、間歇和無法預測的流量**：由於在這種情況下不需要布建容量，而且可能是成本高昂的
 - **適中效能**：由於無伺服器容器具有 [特定的效能特性](#performance)
 
-基於這些理由，Azure Cosmos DB 無伺服器應考慮下列類型的工作負載：
+基於這些理由，在下列情況下應考慮 Azure Cosmos DB 無伺服器：
 
-- 部署
-- 測試
-- 原型設計
-- 概念證明
-- 具有輕量流量的非關鍵性應用程式
+- 開始使用 Azure Cosmos DB
+- 新應用程式的開發、測試和原型設計
+- 使用很難預測的間歇性流量來執行小型到中型應用程式
+- 與無伺服器計算服務（例如[Azure Functions](../azure-functions/functions-overview.md) ）整合
 
 請參閱 [如何選擇布建的輸送量和無伺服器](throughput-serverless.md) 文章，以取得如何選擇最適合您使用案例的供應專案的詳細指引。
 

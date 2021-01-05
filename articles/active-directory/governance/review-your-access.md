@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 959837ff540fd95d186497858d7b9de1f8b1124d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3fef2f85ca7e7b4034c8582477796d49446ea44
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91274005"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746774"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>查看 Azure AD 存取權評論中群組或應用程式的存取權
 
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) 簡化了企業如何使用稱為 Azure AD 存
 3. 在 [**執行存取權檢查**] 區段中繼續進行
 
 >[!NOTE]
->如果按一下 [開始檢查] 會將您帶到 **我的應用程式** 遵循前面的 **我的應用程式入口網站**中所列的步驟。
+>如果按一下 [開始檢查] 會將您帶到 **我的應用程式** 遵循前面的 **我的應用程式入口網站** 中所列的步驟。
 
 ### <a name="directly-at-my-access"></a>直接在我的存取權
 

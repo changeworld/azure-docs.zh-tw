@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 4979902853602073e6230ef7387d6c6596fe77da
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: d08cb2761a8d8010c455ff959d6c247e8b64ef20
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325908"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746570"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>遷移總覽： SQL Server Azure Vm 上的 SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "96325908"
 
 如需其他案例，請參閱 [資料庫移轉指南](https://datamigration.microsoft.com/)。 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 當您想要使用熟悉的 SQL Server 環境搭配作業系統控制，並想要利用雲端提供的功能（例如內建的 VM 高可用性、[自動備份](../../virtual-machines/windows/automated-backup.md)和[自動修補](../../virtual-machines/windows/automated-patching.md)）時，請將[Azure 虛擬機器上的 SQL Server 移至 (vm) ](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) 。 
 
@@ -62,7 +62,7 @@ Azure 虛擬機器在 Azure 的許多不同區域中執行，也提供各種不�
 下表說明兩個遷移策略的差異：
 <br />
 
-| **移轉策略** | **描述** | **使用時機** |
+| **移轉策略** | **說明** | **使用時機** |
 | --- | --- | --- |
 | **增益 & shift** | 使用隨即轉移策略，將整個實體或虛擬 SQL Server 從其目前的位置移至 Azure VM 上的 SQL Server 實例，而不需要變更作業系統或 SQL Server 版本。 若要完成隨即轉移，請參閱 [Azure Migrate](../../../migrate/migrate-services-overview.md)。 <br /><br /> 來源伺服器會維持線上和服務要求，而來源和目的地伺服器則會同步處理資料，讓您幾乎順暢地進行遷移。 | 用於單一到大規模的遷移，甚至適用于資料中心結束之類的案例。 <br /><br /> 不需要變更使用者 SQL 資料庫或應用程式的程式碼，可讓整體遷移速度更快。 <br /><br />不需要額外的步驟就能遷移商務智慧服務，例如  [SSIS](/sql/integration-services/sql-server-integration-services)、 [SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports)和 [SSAS](/analysis-services/analysis-services-overview)。 |
 |**移轉** | 當您想要升級目標 SQL Server 和/或作業系統版本時，請使用遷移策略。 <br /> <br /> 從 Azure Marketplace 或符合來源 SQL Server 版本的備妥 SQL Server 映射中選取 Azure VM。 | 當需求或想要使用較新版本 SQL Server 中可用的功能，或需要升級不再支援的舊版 SQL Server 和/或作業系統版本時，請使用。  <br /> <br /> 可能需要一些應用程式或使用者資料庫變更，以支援 SQL Server 升級。 <br /><br />在遷移的範圍內，如果有遷移 [商業智慧](#business-intelligence) 服務，可能會有其他考慮。 |
@@ -73,11 +73,11 @@ Azure 虛擬機器在 Azure 的許多不同區域中執行，也提供各種不�
 下表詳細說明隨即 **轉移** 策略的可用方法，以將您的 SQL Server 資料庫移轉至 Azure vm 上的 SQL Server：
 <br />
 
-|**方法** | **最低來源版本** | **最小目標版本** | **來源備份大小條件約束** |  **注意事項** |
+|**方法** | **最低來源版本** | **最小目標版本** | **來源備份大小條件約束** |  **備註** |
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM 儲存體限制](../../../index.yml) |  現有 SQL Server 要依原樣移至 Azure VM 上的 SQL Server 實例。 可以調整最多35000個 Vm 的遷移工作負載。 <br /><br /> 來源伺服器 (的) 在同步處理伺服器資料期間維持連線並提供服務要求，將停機時間降到最低。 <br /><br /> **自動化 & 腳本**： [Azure Site Recovery 腳本](../../../migrate/how-to-migrate-at-scale.md) ，以及 [適用于 Azure 的調整遷移和規劃範例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
-## <a name="migrate"></a>移轉  
+## <a name="migrate"></a>遷移  
 
 由於容易設定，建議的遷移方法是在本機進行原生 SQL Server [備份](/sql/t-sql/statements/backup-transact-sql) ，然後將檔案複製到 Azure。 此方法支援較大的資料庫 ( # B0 1 TB) 適用于從2008開始的所有 SQL Server 版本，以及較大的資料庫備份 ( # B1 1 TB) 。 但是，如果資料庫是從 SQL Server 2014 開始、小於 1 TB，且對 Azure 有良好的連線能力，則 [SQL Server 備份至 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) 是較佳的方法。 
 
@@ -86,7 +86,7 @@ Azure 虛擬機器在 Azure 的許多不同區域中執行，也提供各種不�
 下表詳細說明將 SQL Server 資料庫移轉至 Azure Vm 上 SQL Server 的所有可用方法：
 <br />
 
-|**方法** | **最低來源版本** | **最小目標版本** | **來源備份大小條件約束** | **注意事項** |
+|**方法** | **最低來源版本** | **最小目標版本** | **來源備份大小條件約束** | **備註** |
 | --- | --- | --- | --- | --- |
 | **[備份至檔案](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM 儲存體限制](../../../index.yml) |  這是一種簡單且經過妥善測試的技術，可在電腦之間移動資料庫。 使用壓縮來將傳輸的備份大小降至最低。 <br /><br /> **Automation & 腳本**： [transact-sql (T-sql)](/sql/t-sql/statements/backup-transact-sql) 並 [AzCopy 至 Blob 儲存體](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[備份至 URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| SQL Server 2016 為 12.8 TB，否則為 1 TB | 使用 Azure 儲存體將備份檔案移至 VM 的替代方式。 使用壓縮來將傳輸的備份大小降至最低。 <br /><br /> **Automation & 腳本**：  [t-sql 或維護計畫](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |
@@ -127,6 +127,20 @@ Azure 虛擬機器在 Azure 的許多不同區域中執行，也提供各種不�
 
 當您準備將 SQL Server 資料庫移轉至 Azure Vm 上的 SQL Server 時，請務必考慮支援的 SQL Server 版本。 如需 Azure Vm 上目前支援的 SQL Server 版本清單，請參閱 [Azure vm 上的 SQL Server](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms)。
 
+## <a name="migration-assets"></a>移轉資產 
+
+如需其他協助，請參閱下列針對真實世界遷移專案所開發的資源。
+
+|資產  |說明  |
+|---------|---------|
+|[資料工作負載評定模型及工具](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| 此工具會針對指定的工作負載，提供建議的「最適合」目標平台、雲端整備，以及應用程式/資料庫補救等級。 此工具提供簡單的按一下即計算與報告產生功能，其可透過提供和自動化的統一目標平台決策程序來協助加速大型資產評估。|
+|[使用 Logman 進行 Perfmon 資料收集自動化](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|此工具會收集執行資料以瞭解有助於遷移目標建議的基準效能。 此工具會使用 logman.exe 建立命令，該命令會建立、啟動、停止及刪除遠端 SQL Server 上設定的效能計數器。|
+|[Azure 中的 SQL Server 部署](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/SQL%20Server%20Deployment%20in%20Azure%20.pdf)|本指引白皮書可協助您查看各種選項，將您的 SQL Server 工作負載移至 Azure，包括功能比較、高可用性和備份/儲存體考慮。 |
+|[內部部署 SQL Server 至 Azure 虛擬機器](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/OnPremise%20SQL%20Server%20to%20Azure%20VM.pdf)|本白皮書概述使用範例腳本，從內部部署 SQL Server 備份和還原資料庫至 Azure 虛擬機器上 SQL Server 的步驟。|
+|[多個-SQL-VM-VNet-ILB](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|本白皮書概述在 SQL Server Always On 可用性群組設定中設定多部 Azure 虛擬機器的步驟。|
+|[支援每個區域 Ultra SSD 的 Azure 虛擬機器](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|這些 PowerShell 腳本提供的程式設計選項，可讓您取得支援支援 Ultra Ssd 之 Azure 虛擬機器的區域清單。|
+
+這些資源是在資料 SQL Ninja 計畫中開發，由 Azure 資料群組工程小組贊助。 資料 SQL Ninja 計畫其核心宗旨是要為複雜的現代化步驟除去障礙並加速其過程，並將資料平台移轉機會與 Microsoft 的 Azure 資料平台相比較。 如果您認為組織想參與資料 SQL Ninja 計畫，請連絡帳戶小組並要求其提交提名。
 
 ## <a name="next-steps"></a>後續步驟
 

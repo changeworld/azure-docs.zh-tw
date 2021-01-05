@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: a38015d9f7560930d77d5d50ac70dca5bcdde6a6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 2a480f25821f5022295b18ca24abfd2c0fb8a50c
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672503"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746519"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Functions 總覽的 RabbitMQ 系結
 
 > [!NOTE]
-> RabbitMQ 系結只在 **Windows Premium 和專用** 方案上受到完整支援。 目前不支援耗用量和 Linux。
+> RabbitMQ 系結僅在 **Premium 和專用** 方案上受到完整支援。 不支援耗用量。
 
 Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結與[RabbitMQ](https://www.rabbitmq.com/)整合。 Azure Functions RabbitMQ 擴充功能可讓您使用 RabbitMQ API 搭配函式來傳送和接收訊息。
 
@@ -34,7 +34,7 @@ Azure Functions 透過[觸發程式和](./functions-triggers-bindings.md)系結�
 
 使用觸發程式和系結會要求您參考適當的封裝。 NuGet 套件適用于 .NET 類別庫，而擴充功能配套則用於所有其他應用程式類型。
 
-| 語言                                        | 加入者 .。。                                   | 備註 
+| Language                                        | 加入者 .。。                                   | 備註
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安裝 [NuGet 套件]4.x 版 | |
 | C # 腳本、JAVA、JavaScript、Python、PowerShell | 註冊[延伸]模組套件組合          | 建議搭配使用 [Azure Tools 擴充] 功能與 Visual Studio Code。 |

@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 12/23/2020
 ms.author: manayar
-ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e22e8b81382614c2930c72a8150606f859be501d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744722"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762974"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>預覽：Azure 中 Windows VM 的自動 VM 客體修補
 
@@ -34,11 +34,11 @@ ms.locfileid: "92744722"
 
 如果 VM 上已啟用自動 VM 來賓修補，則會在 VM 上自動下載並套用可用的 *重大* 和 *安全性* 修補程式。 當透過 Windows Update 發行新的修補程式時，此程式會每個月自動啟動。 修補程式評定和安裝都是自動的，而且此套裝程式含視需要重新開機 VM。
 
-VM 會定期評估，以判斷該 VM 適用的修補程式。 您可以在 vm 的離峰時段于 vm 上安裝任何一天的修補程式。 這種自動評量可確保任何遺失的修補程式都會以最早的可能機會探索。
+VM 會在每隔幾天定期進行評估，並在30天期間內進行多次評估，以判斷該 VM 適用的修補程式。 您可以在 vm 的離峰時段于 vm 上安裝任何一天的修補程式。 這種自動評量可確保任何遺失的修補程式都會以最早的可能機會探索。
 
-修補程式會安裝在每月 Windows Update 版的30天內，並遵循如下所述的可用性優先協調流程。 修補程式只會在 VM 的離峰時段安裝，視 VM 的時區而定。 VM 必須在離峰時間執行，才能自動安裝修補程式。 如果 VM 在定期評量期間關閉電源，系統將會自動評估 VM，並在下一次進行 VM 開機時自動安裝適當的修補程式。
+修補程式會安裝在每月 Windows Update 版的30天內，並遵循如下所述的可用性優先協調流程。 修補程式只會在 VM 的離峰時段安裝，視 VM 的時區而定。 VM 必須在離峰時間執行，才能自動安裝修補程式。 如果 VM 在定期評估期間關閉電源，將會自動評估 VM，並在下次定期評估時自動安裝適用的修補程式， (通常會在幾天內啟動 VM 電源) 。
 
-若要在您自己的自訂維護期間安裝其他修補程式分類或排程修補程式安裝的修補程式，您可以使用 [更新管理](tutorial-config-management.md#manage-windows-updates)。
+未分類為 *重要* 或 *安全性* 的定義更新和其他修補程式，將不會透過自動 VM 來賓修補進行安裝。 若要在您自己的自訂維護期間安裝其他修補程式分類或排程修補程式安裝的修補程式，您可以使用 [更新管理](tutorial-config-management.md#manage-windows-updates)。
 
 ### <a name="availability-first-patching"></a>可用性-優先修補
 
@@ -69,11 +69,11 @@ VM 會定期評估，以判斷該 VM 適用的修補程式。 您可以在 vm �
 
 | 發行者               | OS 供應項目      |  SKU               |
 |-------------------------|---------------|--------------------|
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-Server-Core |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-伺服器-核心 |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Server-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core |
 
 ## <a name="patch-orchestration-modes"></a>修補協調流程模式
 Azure 上的 Windows Vm 現在支援下列修補程式協調流程模式：
@@ -83,7 +83,7 @@ Azure 上的 Windows Vm 現在支援下列修補程式協調流程模式：
 - 這是可用性優先修補的必要模式。
 - 設定此模式也會停用 Windows 虛擬機器上的原生自動更新，以避免重複。
 - 只有使用上述支援的作業系統平臺映射建立的 Vm 才支援此模式。
-- 若要使用此模式，請設定屬性 `osProfile.windowsConfiguration.enableAutomaticUpdates=true` ，並設定  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` VM 範本中的屬性。
+- 若要使用此模式，請設定屬性 `osProfile.windowsConfiguration.enableAutomaticUpdates=true` ，並設定  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform` VM 範本中的屬性。
 
 **AutomaticByOS:**
 - 此模式會啟用 Windows 虛擬機器上的自動更新，並透過自動更新在 VM 上安裝修補程式。
@@ -107,7 +107,7 @@ Azure 上的 Windows Vm 現在支援下列修補程式協調流程模式：
 - 虛擬機器必須能夠存取 Windows Update 端點。 如果您的虛擬機器設定為使用 Windows Server Update Services (WSUS) ，則必須可存取相關的 WSUS 伺服器端點。
 - 使用計算 API 版本2020-06-01 或更高版本。
 
-啟用預覽功能需要針對每個訂用帳戶 *InGuestAutoPatchVMPreview* 功能的一次性選擇，如下所述。
+啟用預覽功能需要針對每個訂用帳戶 **InGuestAutoPatchVMPreview** 功能的一次性選擇，如下所述。
 
 ### <a name="rest-api"></a>REST API
 下列範例說明如何啟用訂用帳戶的預覽：
@@ -254,10 +254,10 @@ az vm get-instance-view --resource-group myResourceGroup --name myVM
 ## <a name="on-demand-patch-assessment"></a>隨選修補程式評估
 如果您的 VM 已啟用自動 VM 來賓修補，則會在 VM 的離峰時段于 VM 上執行定期修補程式評估。 此程式會自動執行，而最新評量的結果可以透過 VM 的實例視圖來檢查，如本檔稍早所述。 您也可以隨時針對您的 VM 觸發隨選修補程式評定。 修補程式評估可能需要幾分鐘的時間才能完成，而且最新評量的狀態會在 VM 的實例視圖上更新。
 
-啟用預覽功能時，必須針對每個訂用帳戶 *InGuestPatchVMPreview* 的功能進行一次性選擇。 您可以遵循先前針對自動 VM 來賓修補所述的 [預覽啟用](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) 程式，啟用隨選修補程式評估的功能預覽。
+啟用預覽功能時，必須針對每個訂用帳戶 **InGuestPatchVMPreview** 的功能進行一次性選擇。 這項功能預覽不同于稍早針對 **InGuestAutoPatchVMPreview** 進行的自動 VM 來賓修補功能註冊。 啟用其他功能預覽是個別的額外需求。 您可以遵循先前針對自動 VM 來賓修補所述的 [預覽啟用](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) 程式，啟用隨選修補程式評估的功能預覽。
 
 > [!NOTE]
->隨選修補程式評估不會自動觸發修補程式安裝。 在 VM 的離峰時段內，評估及適用的 VM 修補程式將只會安裝在 VM 的離峰時段，遵循本檔稍早所述的可用性優先修補程式。
+>隨選修補程式評估不會自動觸發修補程式安裝。 如果您已啟用自動 VM 來賓修補，則會在 VM 的離峰時段安裝 VM 的評定及適用修補程式，並遵循本檔稍早所述的可用性優先修補程式。
 
 ### <a name="rest-api"></a>REST API
 ```

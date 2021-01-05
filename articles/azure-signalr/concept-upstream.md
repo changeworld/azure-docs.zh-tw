@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 1d51f5e8d2fac1e2b180a608c840d0a322e76271
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143248"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763110"
 ---
 # <a name="upstream-settings"></a>上游設定
 
@@ -53,16 +53,29 @@ http://host.com/chat/api/connections/connected
 http://host.com/chat/api/messages/broadcast
 ```
 
+### <a name="key-vault-secret-reference-in-url-template-settings"></a>URL 範本設定中的 Key Vault 秘密參考
+
+上游的 URL 不是待用加密。 如果您有任何機密資訊，建議使用 Key Vault 將其儲存在存取控制具有更佳保險的位置。 基本上，您可以啟用 Azure SignalR Service 的受控識別，然後授與 Key Vault 實例的「讀取」許可權，並使用 Key Vault 參考，而不是上游 URL 模式中的純文字。
+
+1. 新增系統指派的身分識別或使用者指派的身分識別。 瞭解 [如何在 Azure 入口網站中新增受控識別](./howto-use-managed-identity.md#add-a-system-assigned-identity)
+
+2. 在 Key Vault 的存取原則中，授與受控識別的密碼讀取權限。 請參閱 [使用 Azure 入口網站指派 Key Vault 存取原則](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+
+3. 以上游 URL 模式中的語法取代您的機密文字 `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` 。
+
+> [!NOTE]
+> 只有當您變更上游設定或變更受控識別時，秘密內容才會讀取。 使用 Key Vault 秘密參考之前，請確定您已授與受控識別的秘密讀取權限。
+
 ### <a name="rule-settings"></a>規則設定
 
-您可以分別設定 *中樞規則*、 *類別規則*和 *事件規則* 的規則。 比對規則支援三種格式。 以事件規則做為範例：
+您可以分別設定 *中樞規則*、 *類別規則* 和 *事件規則* 的規則。 比對規則支援三種格式。 以事件規則做為範例：
 - 使用星號 ( * ) 來比對任何事件。
 - 使用逗號 (，) 來聯結多個事件。 例如，會比 `connected, disconnected` 對已連線和已中斷連線的事件。
 - 使用完整的事件名稱來與事件相符。 例如， `connected` 符合連接的事件。
 
 > [!NOTE]
-> 如果您正在使用 Azure Functions 和 [SignalR 觸發](../azure-functions/functions-bindings-signalr-service-trigger.md)程式，SignalR 觸發程式將會以下列格式公開單一端點： `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>` 。
-> 您可以直接將 url 範本設定為此 url。
+> 如果您正在使用 Azure Functions 和 [SignalR 觸發](../azure-functions/functions-bindings-signalr-service-trigger.md)程式，SignalR 觸發程式將會以下列格式公開單一端點： `<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>` 。
+> 您可以只設定此 url 的 **url 範本設定** ，並保留 **規則設定** 的預設值。 如需如何尋找和的詳細資訊，請參閱 [SignalR Service 整合](../azure-functions/functions-bindings-signalr-service-trigger.md#signalr-service-integration) `<Function_App_URL>` `<API_KEY>` 。
 
 ### <a name="authentication-settings"></a>驗證設定
 
@@ -79,10 +92,10 @@ http://host.com/chat/api/messages/broadcast
 
     :::image type="content" source="media/concept-upstream/upstream-portal.png" alt-text="上游設定":::
 
-3. 在 **上游 URL 模式**下新增 url。 然後， **中樞規則** 之類的設定會顯示預設值。
-4. 若要設定 **中樞規則**、 **事件規則**、 **類別規則**和 **上游驗證**的設定，請選取 [ **中樞規則**] 的值。 可讓您編輯設定的頁面隨即出現：
+3. 在 **上游 URL 模式** 下新增 url。 然後， **中樞規則** 之類的設定會顯示預設值。
+4. 若要設定 **中樞規則**、 **事件規則**、 **類別規則** 和 **上游驗證** 的設定，請選取 [ **中樞規則**] 的值。 可讓您編輯設定的頁面隨即出現：
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="上游設定":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="上游設定詳細資料":::
 
 5. 若要設定 **上游驗證**，請先確定您已啟用受控識別。 然後選取 [ **使用受控識別**]。 根據您的需求，您可以選擇 [ **驗證資源識別碼**] 下的任何選項。 如需詳細資訊，請參閱 [Azure SignalR Service 的受控](howto-use-managed-identity.md) 識別。
 
@@ -115,7 +128,7 @@ http://host.com/chat/api/messages/broadcast
 
 ## <a name="serverless-protocols"></a>無伺服器通訊協定
 
-Azure SignalR Service 會將訊息傳送至遵循下列通訊協定的端點。
+Azure SignalR Service 會將訊息傳送至遵循下列通訊協定的端點。 您可以搭配函式應用程式使用 [SignalR Service 觸發](../azure-functions/functions-bindings-signalr-service-trigger.md) 程式系結，這會為您處理這些通訊協定。
 
 ### <a name="method"></a>方法
 
@@ -123,7 +136,7 @@ POST
 
 ### <a name="request-header"></a>要求標頭
 
-|Name |描述|
+|名稱 |描述|
 |---------|---------|
 |X-ASRS-連接識別碼 |用戶端連接的連接識別碼。|
 |X-ASRS-中樞 |用戶端連接所屬的中樞。|
@@ -135,7 +148,7 @@ POST
 |X-ASRS-用戶端查詢 |用戶端連接到服務時的要求查詢。|
 |驗證 |當您使用時的選擇性標記 `ManagedIdentity` 。 |
 
-### <a name="request-body"></a>Request body
+### <a name="request-body"></a>要求本文
 
 #### <a name="connected"></a>已連線
 
@@ -147,7 +160,7 @@ Content-type： `application/json`
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|錯誤 |字串 |關閉連接的錯誤訊息。 當連接關閉但沒有錯誤時為空白。|
+|[錯誤] |字串 |關閉連接的錯誤訊息。 當連接關閉但沒有錯誤時為空白。|
 
 #### <a name="invocation-message"></a>調用訊息
 
@@ -170,3 +183,5 @@ Hex_encoded(HMAC_SHA256(accessKey, connection-id))
 
 - [Azure SignalR Service 的受控識別](howto-use-managed-identity.md)
 - [使用 Azure SignalR Service 來開發與設定 Azure Functions](signalr-concept-serverless-development-config.md)
+- [處理來自 SignalR Service (觸發程式系結的訊息) ](../azure-functions/functions-bindings-signalr-service-trigger.md)
+- [SignalR Service 觸發程式系結範例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

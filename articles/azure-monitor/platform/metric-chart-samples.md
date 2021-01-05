@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 9b2ab664f319de07fd70bd1a22b1ba6d64ac208f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05dadfe88ed64aea8066b02298ba158a44a03c6f
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320250"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760164"
 ---
 # <a name="metric-chart-examples"></a>計量圖表範例 
 
@@ -24,7 +24,7 @@ Azure 平台提供[超過一千個計量](./metrics-supported.md)，且許多都
 
 此圖表顯示 App Service 的 CPU 是否在可接受的範圍內，並依執行個體細分，以判斷負載是否適當分散。 在圖表中您可以看到，應用程式在上午 6 點之前執行於單一伺服器執行個體上，然後藉由新增另一個執行個體進行相應增加。
 
-![依伺服器執行個體顯示的平均 CPU 百分比折線圖](./media/metric-chart-samples/cpu-by-instance.png)
+![依伺服器執行個體顯示的平均 CPU 百分比折線圖](./media/metrics-charts/cpu-by-instance.png)
 
 ### <a name="how-to-configure-this-chart"></a>如何設定此圖表？
 
@@ -34,17 +34,17 @@ Azure 平台提供[超過一千個計量](./metrics-supported.md)，且許多都
 
 依區域檢視應用程式的可用性，可識別哪個地理位置發生問題。 此圖表顯示 Application Insights 可用性計量。 您可以看到，受監視的應用程式沒有來自美國東部資料中心的可用性問題，但是遇到來自美國西部和東亞的局部可用性問題。
 
-![依位置顯示的平均可用性圖表](./media/metric-chart-samples/availability-run-location.png)
+![依位置顯示的平均可用性圖表](./media/metrics-charts/availability-by-location.png)
 
 ### <a name="how-to-configure-this-chart"></a>如何設定此圖表？
 
 您必須先為網站開啟 [Application Insights 可用性](../app/monitor-web-app-availability.md)監視。 接著，選擇您的 Application Insights 資源，並選取 [可用性] 計量。 在 [執行位置] 維度上套用分割。
 
-## <a name="volume-of-storage-account-transactions-by-api-name"></a>依 API 名稱顯示的儲存體帳戶交易量
+## <a name="volume-of-failed-storage-account-transactions-by-api-name"></a>依 API 名稱的失敗儲存體帳戶交易數量
 
-您的儲存體帳戶資源發生過多的交易量。 您可以使用交易計量來識別哪些 API 是負載過量的成因。 請注意，下列圖表在篩選和分割中設定了相同的維度 (API 名稱)，以將檢視縮小到僅顯示相關 API 呼叫的範圍：
+您的儲存體帳戶資源發生超過大量的失敗交易。 您可以使用交易計量來識別哪些 API 負責過度的失敗。 請注意，下列圖表是使用相同的維度 (API 名稱來設定) 在分割和篩選失敗的回應類型中：
 
-![API 交易的長條圖](./media/metric-chart-samples/transactions-by-api.png)
+![API 交易的長條圖](./media/metrics-charts/split-and-filter-example.png)
 
 ### <a name="how-to-configure-this-chart"></a>如何設定此圖表？
 

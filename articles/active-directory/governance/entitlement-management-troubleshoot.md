@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bca78195d4fb7bb265c4a7fd8d78ea49a35335b6
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446997"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746706"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>針對 Azure AD 權利管理進行疑難排解
 
@@ -85,7 +85,7 @@ ms.locfileid: "91446997"
 
 1. 選取您要查看的要求。
 
-    如果要求有任何傳遞錯誤，則要求狀態**將會是未傳遞或****部分傳遞**。
+    如果要求有任何傳遞錯誤，則要求狀態 **將會是未傳遞或****部分傳遞**。
 
     如果有任何傳遞錯誤，則會在要求的詳細資料窗格中顯示傳遞錯誤的計數。
 

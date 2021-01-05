@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 602bb98f2cdc8a96874eba8dadfa33f3267d19ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937316"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746553"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Azure DDoS 保護標準功能
 
@@ -24,23 +24,23 @@ ms.locfileid: "96937316"
 
 ## <a name="always-on-traffic-monitoring"></a>Always on 流量監視
 
-DDoS 保護標準層會監視實際流量使用率，且時常將它與 DDoS 原則中定義的閾值比較。 當超過該流量閾值時，就會自動起始 DDoS 安全防護功能。 當傳回流量低於閾值時，就會移除安全防護功能。
+DDoS 保護標準層會監視實際流量使用率，且時常將它與 DDoS 原則中定義的閾值比較。 當超過該流量閾值時，就會自動起始 DDoS 安全防護功能。 當流量回到低於閾值時，就會停止緩和措施。
 
 ![Azure DDoS 保護標準緩和措施](./media/ddos-protection-overview/mitigation.png)
 
-在安全防護期間，DDoS 保護服務會重新導向傳送至受保護資源的流量，而且會執行數個檢查，例如下列檢查：
+在風險降低期間，DDoS 保護服務會重新導向傳送至受保護資源的流量，並執行數個檢查，例如：
 
 - 確定封包符合網際網路規格，且格式正確無誤。
 - 與用戶端互動，判斷流量是否可能是詐騙封包 (例如： SYN Auth 或 SYN Cookie 或置放封包以供來源將它重新傳輸)。
 - 速率限制封包 (如果沒有其他強制方法可以執行)。
 
-DDoS 保護會封鎖攻擊流量並將剩餘流量轉送至其預定目的地。 在偵測到攻擊的幾分鐘內，系統會使用 Azure 監視器計量通知您。 藉由設定登入 DDoS Protection Standard 遙測，您可以將記錄寫入至可用的選項，以供日後分析。 適用於 DDoS 保護標準層的 Azure 監視器中的計量資料會保留 30 天。
+DDoS 保護會卸載攻擊流量，並將剩餘的流量轉送至其預定目的地。 在偵測到攻擊的幾分鐘內，系統會使用 Azure 監視器計量通知您。 藉由設定登入 DDoS Protection Standard 遙測，您可以將記錄寫入至可用的選項，以供日後分析。 適用於 DDoS 保護標準層的 Azure 監視器中的計量資料會保留 30 天。
 
 ## <a name="adaptive-real-time-tuning"></a>適應性即時微調
 
-Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶產生影響。 例如，如果合法連入流量的正常流量小於涵蓋整個基礎結構範圍的 DDoS 保護原則 *觸發率*，而且服務是針對該流量所佈建，則可能不會注意到對於該客戶資源的 DDoS 攻擊。 更普遍的說法是，最新攻擊 (例如多向量 DDoS) 的複雜本質，以及租用戶的應用程式專屬行為，會呼叫針對每位客戶自訂的保護原則。 服務會使用兩種見解來完成這項自訂：
+Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶產生影響。 例如，如果合法連入流量的正常流量小於涵蓋整個基礎結構範圍的 DDoS 保護原則 *觸發率*，而且服務是針對該流量所佈建，則可能不會注意到對於該客戶資源的 DDoS 攻擊。 一般來說，最新攻擊的複雜度 (例如，多重向量 DDoS) ，以及租使用者的應用程式特定行為會針對每個客戶量身打造的保護原則進行呼叫。 這項服務會使用兩個深入解析來完成這項工作：
 
-- 自動學習每位客戶 (每個 IP) 的第 3 層與第 4 層流量模式。
+- 自動學習每位客戶 (每個公用 IP) 第3層和第4層的流量模式。
 
 - 考慮到 Azure 的規模會使之吸收大量的流量，進而降低誤判。
 
@@ -48,7 +48,7 @@ Azure 基本 DDoS 保護服務可協助保護客戶，並防止對其他客戶�
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS 保護遙測、監視及警示
 
-標準 DDoS 保護在遭受 DDoS 攻擊持續期間，透過 [Azure 監視器](../azure-monitor/overview.md)公開豐富的遙測。 可設定 DDoS 保護所用的任何 Azure 監視器度計量的警示。 您可以整合記錄與 Splunk (Azure 事件中樞) 、Azure 監視器記錄和 Azure 儲存體，以透過 Azure 監視器診斷介面進行先進的分析。
+DDoS 保護標準會透過 [Azure 監視器](../azure-monitor/overview.md)公開豐富的遙測。 可設定 DDoS 保護所用的任何 Azure 監視器度計量的警示。 您可以整合記錄與 Splunk (Azure 事件中樞) 、Azure 監視器記錄和 Azure 儲存體，以透過 Azure 監視器診斷介面進行先進的分析。
 
 ### <a name="ddos-mitigation-policies"></a>DDoS 防護原則
 

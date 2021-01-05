@@ -8,17 +8,17 @@ ms.author: shipatel
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.date: 09/08/2020
+ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 33ee8944aec043bf2b103ac3958a923b9876b749
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a093fe330ccbecc33cd8dac03d6425655e90366d
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660129"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760464"
 ---
-# <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning (preview 來追蹤實驗執行及部署 ML 模型) 
+# <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning (preview 來定型和追蹤 ML 模型) 
 
 在本文中，您將瞭解如何啟用 MLflow 的追蹤 URI 和記錄 API，統稱為 [MLflow 追蹤](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)，以將 Azure Machine Learning 連接為 MLflow 實驗的後端。 
 
@@ -26,11 +26,9 @@ ms.locfileid: "94660129"
 
 + 在您的 [Azure Machine Learning 工作區](./concept-azure-machine-learning-architecture.md#workspace)中追蹤並記錄實驗計量和構件。 如果您已針對實驗使用 MLflow 追蹤，工作區會提供集中、安全且可擴充的位置來儲存訓練計量和模型。
 
-+ 使用 Azure Machine Learning 後端支援 (preview) 的 MLflow 專案提交定型作業。 您可以使用 Azure Machine Learning 追蹤在本機提交作業，或透過 [Azure Machine Learning 計算](./how-to-create-attach-compute-cluster.md)將執行遷移至雲端。
++ 使用 Azure Machine Learning 後端支援 (preview) 的 [MLflow 專案](https://www.mlflow.org/docs/latest/projects.html) 提交定型作業。 您可以使用 Azure Machine Learning 追蹤在本機提交作業，或透過 [Azure Machine Learning 計算](./how-to-create-attach-compute-cluster.md)將執行遷移至雲端。
 
 + 在 MLflow 和 Azure Machine Learning 模型登錄中追蹤和管理模型。
-
-+ 將您的 MLflow 實驗部署為 Azure Machine Learning web 服務。 藉由部署為 web 服務，您可以將 Azure Machine Learning 監視和資料漂移偵測功能套用至您的生產模型。 
 
 [MLflow](https://www.mlflow.org) 是一個開放原始碼程式庫，可用於管理機器學習實驗的生命週期。 MLFlow 追蹤是 MLflow 的元件，無論您的實驗環境是在本機電腦上、遠端計算目標、虛擬機器或 [Azure Databricks](how-to-use-mlflow-azure-databricks.md)叢集，都可記錄和追蹤您的定型回合計量和模型成品。 
 
@@ -140,7 +138,7 @@ run = exp.submit(src)
 
 此範例示範如何使用 Azure Machine Learning 追蹤在本機提交 MLflow 專案。
 
-安裝 `azureml-mlflow` 套件，以在本機實驗上搭配 Azure Machine Learning 使用 MLflow 追蹤。 您可以透過 Jupyter 筆記本或程式碼編輯器來執行您的實驗。
+安裝 `azureml-mlflow` 套件，以在本機實驗上搭配 Azure Machine Learning 使用 MLflow 追蹤。 您可以透過 Jupyter Notebook 或程式碼編輯器來執行您的實驗。
 
 ```shell
 pip install azureml-mlflow
@@ -212,7 +210,7 @@ run.get_metrics()
 
 使用支援 MLflow 模型登錄的 [Azure Machine Learning 模型](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere) 登錄來註冊及追蹤您的模型。 Azure Machine Learning 模型會與 MLflow 模型架構一致，讓您輕鬆地在不同的工作流程中匯出和匯入這些模型。 MLflow 相關的中繼資料（例如，執行識別碼）也會標記已註冊的模型以供追蹤之用。 使用者可以提交定型回合、註冊及部署從 MLflow 執行所產生的模型。 
 
-如果您想要在一個步驟中部署和註冊您的生產環境就緒模型，請參閱 [部署和註冊 MLflow 模型](#deploy-and-register-mlflow-models)。
+如果您想要在一個步驟中部署和註冊您的生產環境就緒模型，請參閱 [部署和註冊 MLflow 模型](how-to-deploy-models-with-mlflow.md)。
 
 若要從執行註冊並查看模型，請使用下列步驟：
 
@@ -238,110 +236,6 @@ run.get_metrics()
     ![MLmodel-架構](./media/how-to-use-mlflow/mlmodel-view.png)
 
 
-
-## <a name="deploy-and-register-mlflow-models"></a>部署和註冊 MLflow 模型 
-
-將您的 MLflow 實驗部署為 Azure Machine Learning web 服務，可讓您運用 Azure Machine Learning 模型管理和資料漂移偵測功能，並將其套用至您的生產模型。
-
-若要這樣做，您必須
-
-1. 註冊您的模組。
-1. 判斷您想要在案例中使用的部署設定。
-
-    1. [Azure 容器實例 (ACI) ](#deploy-to-aci) 適用于快速開發/測試部署的理想選擇。
-    1. [Azure Kubernetes Service (AKS) ](#deploy-to-aks) 適用于可擴充的生產部署。
-
-下圖說明使用 MLflow 部署 API 時，您可以將現有的 MLflow 模型部署為 Azure Machine Learning web 服務（儘管其架構）--PyTorch、Tensorflow、scikit-learn-學習、ONNX 等，以及管理工作區中的生產模型。
-
-![ 使用 azure machine learning 部署 mlflow 模型](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
-
-
-### <a name="deploy-to-aci"></a>部署到 ACI
-
-使用 [deploy_configuration ( # B1 ](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法設定您的部署設定。 您也可以新增標記和描述，以協助追蹤您的 web 服務。
-
-```python
-from azureml.core.webservice import AciWebservice, Webservice
-
-# Set the model path to the model folder created by your run
-model_path = "model"
-
-# Configure 
-aci_config = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                                memory_gb=1, 
-                                                tags={'method' : 'sklearn'}, 
-                                                description='Diabetes model',
-                                                location='eastus2')
-```
-
-然後，使用 Azure Machine Learning SDK [部署](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 方法的一個步驟來註冊和部署模型。 
-
-```python
-(webservice,model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
-                      workspace=ws,
-                      model_name='sklearn-model', 
-                      service_name='diabetes-model-1', 
-                      deployment_config=aci_config, 
-                      tags=None, mlflow_home=None, synchronous=True)
-
-webservice.wait_for_deployment(show_output=True)
-```
-
-### <a name="deploy-to-aks"></a>部署到 AKS
-
-若要部署至 AKS，請先建立 AKS 叢集。 使用 ComputeTarget 建立 AKS 叢集 [。建立 ( # B1 ](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) 方法。 建立新的叢集可能需要20-25 分鐘的時間。
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-
-# Use the default configuration (can also provide parameters to customize)
-prov_config = AksCompute.provisioning_configuration()
-
-aks_name = 'aks-mlflow'
-
-# Create the cluster
-aks_target = ComputeTarget.create(workspace=ws, 
-                                  name=aks_name, 
-                                  provisioning_configuration=prov_config)
-
-aks_target.wait_for_completion(show_output = True)
-
-print(aks_target.provisioning_state)
-print(aks_target.provisioning_errors)
-```
-使用 [deploy_configuration ( # B1 ](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) 方法設定您的部署設定。 您也可以新增標記和描述，以協助追蹤您的 web 服務。
-
-```python
-from azureml.core.webservice import Webservice, AksWebservice
-
-# Set the web service configuration (using default here with app insights)
-aks_config = AksWebservice.deploy_configuration(enable_app_insights=True, compute_target_name='aks-mlflow')
-
-```
-
-然後，使用 Azure Machine Learning SDK [部署 ( # A1] 的一個步驟來註冊和部署模型 (然後使用 Azure Machine Learning SDK [部署](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 方法來註冊和部署模型。 
-
-```python
-
-# Webservice creation using single command
-from azureml.core.webservice import AksWebservice, Webservice
-
-# set the model path 
-model_path = "model"
-
-(webservice, model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
-                      workspace=ws,
-                      model_name='sklearn-model', 
-                      service_name='my-aks', 
-                      deployment_config=aks_config, 
-                      tags=None, mlflow_home=None, synchronous=True)
-
-
-webservice.wait_for_deployment()
-```
-
-服務部署可能需要幾分鐘的時間。
-
 ## <a name="clean-up-resources"></a>清除資源
 
 如果您不打算在您的工作區中使用記錄的計量和構件，則無法個別刪除它們。 相反地，請刪除包含儲存體帳戶和工作區的資源群組，以免產生任何費用：
@@ -365,6 +259,7 @@ webservice.wait_for_deployment()
 
 ## <a name="next-steps"></a>後續步驟
 
-* [管理您的模型](concept-model-management-and-deployment.md)。
+* [使用 MLflow 部署模型](how-to-deploy-models-with-mlflow.md)。
 * 監視生產模型是否有[資料漂移](./how-to-enable-data-collection.md)。
 * [使用 MLflow 追蹤 Azure Databricks 執行](how-to-use-mlflow-azure-databricks.md)。
+* [管理您的模型](concept-model-management-and-deployment.md)。

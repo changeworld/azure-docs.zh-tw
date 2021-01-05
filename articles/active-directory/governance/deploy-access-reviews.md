@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/14/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f3e825f908ffe475b05a5e6748d9505e7283b50
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362694"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746298"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>規劃 Azure Active Directory 存取審查部署
 
@@ -55,7 +55,7 @@ ms.locfileid: "92362694"
 
 啟用存取權評論的主要優點包括：
 
-* **控制協同**作業。 存取評論可讓組織管理其使用者所需之所有資源的存取權。 當他們的使用者共用及共同作業時，組織可以確保資訊只在授權的使用者中。
+* **控制協同** 作業。 存取評論可讓組織管理其使用者所需之所有資源的存取權。 當他們的使用者共用及共同作業時，組織可以確保資訊只在授權的使用者中。
 
 * **管理風險**。 存取審查可提供組織一種方式來審查對資料和應用程式的存取，降低資料洩漏和資料溢出的風險。 這包括可定期審核外部夥伴存取公司資源的功能。 
 
@@ -310,7 +310,7 @@ ms.locfileid: "92362694"
 
 群組成員資格可透過下列方式進行審核： 
 
-* Administrators
+* 系統管理員
 
 * 群組擁有者
 
@@ -399,7 +399,7 @@ ms.locfileid: "92362694"
 
 * 特殊權限驗證管理員
 
-* 條件式存取系統管理員
+* 條件式存取管理員
 
 * 安全性系統管理員
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0dd5f6a48175bad35b37155c8ff881e352922ca7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674460"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756053"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>監視和查看 ML 執行記錄和計量
 
@@ -121,7 +121,7 @@ RunDetails(run).show()
 下表顯示您將在本節中看到的資料夾中的記錄檔內容。
 
 > [!NOTE]
-> 即使 skimmingYou 不一定會在每次執行時看到每個檔案，使用者也應注意的資訊。 例如，20_image_build_log * .txt 只會在建立新映射時出現 (例如，當您變更環境) 時。
+> 每次執行時，不一定會看到每個檔案。 例如，20_image_build_log * .txt 只會在建立新映射時出現 (例如，當您變更環境) 時。
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` 資料夾
 

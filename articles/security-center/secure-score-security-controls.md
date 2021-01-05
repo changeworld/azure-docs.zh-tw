@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2020
 ms.author: memildin
-ms.openlocfilehash: 3cd536d051f3e227ba86429ae3f1633bf6c2e82f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 283dbf152778b5ef58e298444058f619356ef241
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490528"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756104"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
 
@@ -80,7 +80,7 @@ Azure 資訊安全中心有兩個主要目標：
 
 ### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>從 Azure Resource Graph (ARG 取得您的安全分數) 
 
-Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，立即存取整個雲端環境中的資源資訊。 這是一種快速且有效率的方式，可透過程式設計方式或從 Azure 入口網站中查詢 Azure 訂用帳戶的資訊。 [深入瞭解 Azure Resource Graph](../governance/resource-graph/index.yml)。
+Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，立即存取整個雲端環境中的資源資訊。 這是一種快速且有效率的方式，可透過程式設計方式或從 Azure 入口網站中查詢 Azure 訂用帳戶的資訊。 [深入了解 Azure 資源群組](../governance/resource-graph/index.yml)。
 
 若要使用 ARG 來存取多個訂用帳戶的安全分數：
 
@@ -224,7 +224,7 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">管理存取權與權限 (最高分數 4)</p></strong>安全性計畫的核心部分，是要確保您的使用者擁有執行其作業所需的存取權，但不能超過：<a href="/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最低權限存取模型</a>。<br>使用 <a href="/azure/role-based-access-control/overview">azure 角色型存取控制 (AZURE RBAC) </a>來建立角色指派，以控制資源的存取權。 角色指派是由三個元素組成：<br>- <strong>安全性主體</strong>：使用者要求存取的物件<br>- <strong>角色定義</strong>：其許可權<br>- <strong>範圍</strong>：套用權限的一組資源</td>
-    <td class="tg-lboi"; width=55%>- 應從您的訂用帳戶中移除已淘汰的帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的已淘汰帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的外部帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備寫入權限的外部帳戶 (預覽)<br>- 應指派一個以上的擁有者給您的訂用帳戶<br>- Azure 角色型存取控制 (Azure RBAC) 應該用於 Kubernetes Services (Preview) <br>- Service Fabric 叢集應只能使用 Azure Active Directory 進行用戶端驗證<br>- 應使用服務主體來保護您的訂用帳戶，而不是管理憑證<br>- (預覽的容器應強制執行最低許可權 Linux 功能) <br>- 不可變的 (唯讀) 根目錄檔案系統應針對容器強制執行 (預覽) <br>- 應避免 (預覽版的容器具有許可權擴大) <br>- 以根使用者的形式執行容器應避免 (預覽) <br>- 共用機密主機命名空間的容器應避免 (預覽) <br>- Pod HostPath 磁片區掛接的使用應限制為已知清單 (預覽) <br>- 應避免 (預覽的特殊許可權容器) <br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) <br>- Web apps 應要求所有連入要求的 SSL 憑證<br>- 您的 API 應用程式應使用受控識別<br>- 您的函數應用程式應使用受控識別<br>- 您的 web 應用程式應使用受控識別</td>
+    <td class="tg-lboi"; width=55%>- 應從您的訂用帳戶中移除已淘汰的帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的已淘汰帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備擁有者權限的外部帳戶 (預覽)<br>- 應從您的訂用帳戶中移除具備寫入權限的外部帳戶 (預覽)<br>- 應指派一個以上的擁有者給您的訂用帳戶<br>- Azure 角色型存取控制 (Azure RBAC) 應該用於 Kubernetes Services (Preview) <br>- Service Fabric 叢集應只能使用 Azure Active Directory 進行用戶端驗證<br>- 應使用服務主體來保護您的訂用帳戶，而不是管理憑證<br>- (預覽的容器應強制執行最低許可權 Linux 功能) <br>- 不可變的 (唯讀) 根目錄檔案系統應針對容器強制執行 (預覽) <br>- 應避免 (預覽版的容器具有許可權擴大) <br>- 以根使用者的形式執行容器應避免 (預覽) <br>- 共用機密主機命名空間的容器應避免 (預覽) <br>- Pod HostPath 磁片區掛接的使用應限制為已知清單 (預覽) <br>- 應避免 (預覽的特殊許可權容器) <br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) <br>- 您的 API 應用程式應使用受控識別<br>- 您的函數應用程式應使用受控識別<br>- 您的 web 應用程式應使用受控識別</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">補救安全性設定 (最高分數 4)</p></strong>設定錯誤的 IT 資產被攻擊的風險較高。 在期限壓力下部署資產時，常會忘記基本的強化動作。 安全性設定錯誤可能發生在基礎結構的任何層級：從作業系統、網路設備到雲端資源。<br>Azure 資訊安全中心會持續比較您的資源設定與業界標準、法規和效能評定的需求。 當您設定好組織重視的相關「合規性套件」(標準和基準) 後，任何差距都會引發安全性建議，包含 CCEID 和潛在安全性影響的說明。<br>常用的套件是 <a href="/azure/security/benchmarks/introduction">Azure 安全性基準測試</a>和 <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure 基礎基準測試版本1.1.0</a>。</td>
@@ -232,7 +232,7 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">限制未經授權的網路存取 (最高分數 4)</p></strong>組織內的端點可讓您從虛擬網路直接連線到支援的 Azure 服務。 子網路中的所有虛擬機器可以與所有資源通訊。 若要限制與子網內資源之間的通訊，請建立網路安全性群組，並將其與子網建立關聯。 組織可以藉由建立輸入和輸出規則來限制及防範未經授權的流量。</td>
-    <td class="tg-lboi"; width=55%>- 應停用虛擬機器上的 IP 轉送<br>- Kubernetes Service 上應定義授權 IP 範圍 (預覽)<br>- (已淘汰) 應限制對 App Service 的存取 (預覽)<br>- (已淘汰) 應強化 IaaS NSG 上 Web 應用程式的規則<br>-虛擬機器應與網路安全性群組建立關聯<br>- CORS 不應允許每項資源存取您的 API 應用程式<br>- CORS 不應允許每項資源存取您的函式應用程式<br>- CORS 不應允許每項資源存取您的 Web 應用程式<br>- 應關閉 API 應用程式的遠端偵錯<br>- 應關閉函式應用程式的遠端偵錯<br>- 應關閉 Web 應用程式的遠端偵錯<br>- 應限制具有網際網路對應 VM 之寬鬆網路安全性群組的存取<br>- 應強化網際網路對應虛擬機器的網路安全性群組規則<br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) <br>- 容器應該只在允許的埠上接聽 (預覽) <br>- 服務應該只在允許的埠上接聽 (預覽) <br>- 使用主機網路和埠應受限於 (預覽版) <br>- 虛擬網路應受 Azure 防火牆 (預覽) <br>- 適用于 mariadb 伺服器應啟用私人端點<br>- MySQL 伺服器應啟用私人端點<br>- 于 postgresql 伺服器應啟用私人端點</td>
+    <td class="tg-lboi"; width=55%>- 應停用虛擬機器上的 IP 轉送<br>- Kubernetes Service 上應定義授權 IP 範圍 (預覽)<br>- (已淘汰) 應限制對 App Service 的存取 (預覽)<br>- (已淘汰) 應強化 IaaS NSG 上 Web 應用程式的規則<br>-虛擬機器應與網路安全性群組建立關聯<br>- CORS 不應允許每項資源存取您的 API 應用程式<br>- CORS 不應允許每項資源存取您的函式應用程式<br>- CORS 不應允許每項資源存取您的 Web 應用程式<br>- 應關閉 API 應用程式的遠端偵錯<br>- 應關閉函式應用程式的遠端偵錯<br>- 應關閉 Web 應用程式的遠端偵錯<br>- 應限制具有網際網路對應 VM 之寬鬆網路安全性群組的存取<br>- 應在網際網路對應的虛擬機器上套用適應性網路強化建議<br>- 您應在您的叢集上安裝並啟用 Kubernetes Azure 原則附加元件 (preview) <br>- 容器應該只在允許的埠上接聽 (預覽) <br>- 服務應該只在允許的埠上接聽 (預覽) <br>- 使用主機網路和埠應受限於 (預覽版) <br>- 虛擬網路應受 Azure 防火牆 (預覽) <br>- 適用于 mariadb 伺服器應啟用私人端點<br>- MySQL 伺服器應啟用私人端點<br>- 于 postgresql 伺服器應啟用私人端點</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">套用自適性應用程式控制 (最高分數 3)</p></strong>自適性應用程式控制 (AAC) 是一種智慧型、自動化的端對端解決方案，可讓您控制哪些應用程式可以在您的 Azure 和非 Azure 機器上執行。 它也有助於強化機器，防範惡意程式碼的攻擊。<br>「安全性中心」會使用機器學習來建立一組機器的已知安全應用程式清單。<br>這套經過核准的應用程式清單可提供安全性優點，而不需要管理複雜性。<br>AAC 特別適合需要執行一組特定應用程式的特殊用途伺服器。</td>
@@ -260,7 +260,7 @@ Azure Resource Graph 可讓您透過強大的篩選、分組和排序功能，�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">實作安全性最佳做法 (最高分數 0)</p></strong>現代的安全性最佳做法「假定」網路周邊有缺口。 基於這個理由，此控制項中的許多最佳做法都著重於管理身分識別。<br>遺失金鑰和認證是相當常見的問題。 <a href="/azure/key-vault/key-vault-overview">Azure Key Vault</a> 藉由加密金鑰、.pfx 檔案、密碼來保護金鑰和秘密。<br>虛擬私人網路 (VPN) 是存取虛擬機器的安全方式。 如果 Vpn 無法使用，請使用複雜的複雜密碼和雙因素驗證，例如 <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Azure AD Multi-Factor Authentication</a>。 雙重要素驗證可避免只依賴使用者名稱和密碼而固有的弱點。<br>使用增強式驗證和授權平台是另一個最佳做法。 使用同盟身分識別可讓組織將已授權身分的管理委派他人。 當員工離職，而必須撤銷他們的存取權時，這很重要。</td>
-    <td class="tg-lboi"; width=55%>- 應為您的訂用帳戶指定最多 3 位擁有者<br>- 應從您的訂用帳戶中移除具備讀取權限的外部帳戶<br>- 應為您的訂用帳戶中具有讀取權限的帳戶啟用 MFA<br>- 應限制存取具防火牆與虛擬網路設定的儲存體帳戶<br>- 除了 RootManageSharedAccessKey 外，應從事件中樞命名空間移除所有授權規則<br>- 應針為 SQL 伺服器佈建 Azure Active Directory 管理員<br>- 應啟用受控執行個體的進階資料安全性<br>- 應定義事件中樞執行個體的授權規則<br>- 儲存體帳戶應移轉至新的 Azure Resource Manager 資源<br>- 虛擬機器應移轉至新的 Azure Resource Manager 資源<br>- 子網路應該與網路安全性群組建立關聯<br>- [預覽] 應啟用 Windows 惡意探索防護 <br>- [預覽] 應安裝來賓設定代理程式<br>- 應使用網路安全性群組保護非網際網路面向的虛擬機器<br>- 應針對虛擬機器啟用 Azure 備份<br>- 應針對適用於 MariaDB 的 Azure 資料庫啟用地理位置冗余備份<br>- 應針對適用於 MySQL 的 Azure 資料庫啟用地理位置冗余備份<br>- 應針對適用於 PostgreSQL 的 Azure 資料庫啟用地理位置冗余備份<br>- PHP 應更新為您的 API 應用程式的最新版本<br>- PHP 應更新為您 web 應用程式的最新版本<br>- 您的 API 應用程式應更新為最新版本的 JAVA<br>- JAVA 應更新為您函數應用程式的最新版本<br>- JAVA 應更新為您 web 應用程式的最新版本<br>- Python 應更新為您的 API 應用程式的最新版本<br>- Python 應更新為您函數應用程式的最新版本<br>- Python 應更新為您 web 應用程式的最新版本<br>- SQL server 的審核保留期應設定為至少90天</td>
+    <td class="tg-lboi"; width=55%>- 應為您的訂用帳戶指定最多 3 位擁有者<br>- 應從您的訂用帳戶中移除具備讀取權限的外部帳戶<br>- 應為您的訂用帳戶中具有讀取權限的帳戶啟用 MFA<br>- 應限制存取具防火牆與虛擬網路設定的儲存體帳戶<br>- 除了 RootManageSharedAccessKey 外，應從事件中樞命名空間移除所有授權規則<br>- 應針為 SQL 伺服器佈建 Azure Active Directory 管理員<br>- 應啟用受控執行個體的進階資料安全性<br>- 應定義事件中樞執行個體的授權規則<br>- 儲存體帳戶應移轉至新的 Azure Resource Manager 資源<br>- 虛擬機器應移轉至新的 Azure Resource Manager 資源<br>- 子網路應該與網路安全性群組建立關聯<br>- [預覽] 應啟用 Windows 惡意探索防護 <br>- [預覽] 應安裝來賓設定代理程式<br>- 應使用網路安全性群組保護非網際網路面向的虛擬機器<br>- 應針對虛擬機器啟用 Azure 備份<br>- 應針對適用於 MariaDB 的 Azure 資料庫啟用地理位置冗余備份<br>- 應針對適用於 MySQL 的 Azure 資料庫啟用地理位置冗余備份<br>- 應針對適用於 PostgreSQL 的 Azure 資料庫啟用地理位置冗余備份<br>- PHP 應更新為您的 API 應用程式的最新版本<br>- PHP 應更新為您 web 應用程式的最新版本<br>- 您的 API 應用程式應更新為最新版本的 JAVA<br>- JAVA 應更新為您函數應用程式的最新版本<br>- JAVA 應更新為您 web 應用程式的最新版本<br>- Python 應更新為您的 API 應用程式的最新版本<br>- Python 應更新為您函數應用程式的最新版本<br>- Python 應更新為您 web 應用程式的最新版本<br>- SQL server 的審核保留期應設定為至少90天<br>- Web apps 應要求所有連入要求的 SSL 憑證</td>
   </tr>
 </tbody>
 </table>

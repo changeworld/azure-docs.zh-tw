@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 12/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 68cac756a3c84d0360d475a4bf88a392e3961f1d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447571"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740907"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>教學課程：以 Azure Stack Edge Pro GPU 透過共用傳輸資料
 
@@ -72,8 +72,7 @@ ms.locfileid: "96447571"
    
     f. 根據您已建立的是 SMB 共用還是 NFS 共用，執行下列其中一個步驟： 
      
-    - **SMB 共用**：在 [完整權限本機使用者]  下方，選取 [新建]  或 [使用現有的]  。 如果您建立新的本機使用者，請輸入使用者名稱和密碼，然後確認密碼。 此動作會將權限指派給本機使用者。 在此指派權限之後，您可以使用 [檔案總管] 加以修改。
-    如果您針對此共用資料選取 [僅允許讀取作業]  核取方塊，則可以指定唯讀使用者。
+    - **SMB 共用**：在 [完整權限本機使用者]  下方，選取 [新建]  或 [使用現有的]  。 如果您建立新的本機使用者，請輸入使用者名稱和密碼，然後確認密碼。 此動作會將權限指派給本機使用者。 目前不支援修改共用層級權限。 如果您針對此共用資料選取 [僅允許讀取作業]  核取方塊，則可以指定唯讀使用者。
     
         ![新增 SMB 共用](./media/azure-stack-edge-j-series-deploy-add-shares/add-share-smb-1.png)
    

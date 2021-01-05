@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906289"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746179"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 中的 Advanced 多階段攻擊偵測
 
 
 > [!IMPORTANT]
-> Azure Sentinel 中的一些融合功能目前處於 **公開預覽**狀態。
+> Azure Sentinel 中的一些融合功能目前處於 **公開預覽** 狀態。
 > 這些功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 藉由使用以機器學習為基礎的融合技術，Azure Sentinel 可以藉由識別在終止鏈的不同階段觀察到的異常行為和可疑活動的組合，來自動偵測多階段攻擊。 在這些探索的基礎上，Azure Sentinel 會產生不容易攔截的事件。 這些事件包含兩個或多個警示或活動。 根據設計，這些事件具有低量、高精確度且高嚴重性。
@@ -36,9 +36,9 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 
 1. 如果您尚未這麼做，請登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 流覽至**Azure Sentinel**設定  >  **Configuration**  >  **分析**
+1. 流覽至 **Azure Sentinel** 設定  >    >  **分析**
 
-1. 選取 [作用中**規則**]，然後藉由篩選**融合**規則類型的清單，在 [**名稱**] 資料行中找出**Advanced 多階段攻擊偵測**。 請檢查 [ **狀態** ] 資料行，確認是否已啟用或停用此偵測。
+1. 選取 [作用中 **規則**]，然後藉由篩選 **融合** 規則類型的清單，在 [**名稱**] 資料行中找出 **Advanced 多階段攻擊偵測**。 請檢查 [ **狀態** ] 資料行，確認是否已啟用或停用此偵測。
 
     :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{替代文字}":::
 
@@ -49,23 +49,23 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
  由於 **融合** 規則類型只包含一個無法修改的規則，因此規則範本不適用此規則類型。
 
 > [!NOTE]
-> Azure Sentinel 目前使用30天的歷程記錄資料來定型機器學習系統。 這項資料一律會使用 Microsoft 的金鑰進行加密，因為它通過機器學習管線。 但是，如果您在 Azure Sentinel 工作區中啟用 CMK，則不會使用客戶管理的金鑰來加密定型資料 [ (CMK) ](customer-managed-keys.md) 。 若要退出融合，請流覽至**Azure Sentinel**設定分析使用中   \>  **Configuration**   \>  ** \> 規則 \> Advanced 多階段攻擊偵測**，並在 [**狀態**] 欄位中選取 [停用] **。**
+> Azure Sentinel 目前使用30天的歷程記錄資料來定型機器學習系統。 這項資料一律會使用 Microsoft 的金鑰進行加密，因為它通過機器學習管線。 但是，如果您在 Azure Sentinel 工作區中啟用 CMK，則不會使用客戶管理的金鑰來加密定型資料 [ (CMK) ](customer-managed-keys.md) 。 若要退出融合，請流覽至 **Azure Sentinel** 設定分析使用中 \>  \> **\> 規則 \> Advanced 多階段攻擊偵測**，並在 [**狀態**] 欄位中選取 [停用] **。**
 
 ## <a name="attack-detection-scenarios"></a>攻擊偵測案例
 
 下節列出依威脅分類分組的相互關聯案例類型，Azure Sentinel 尋找使用融合技術。
 
-如先前所述，因為融合會將多個安全性警示與不同的產品相互關聯，以偵測 advanced 多階段攻擊，成功的融合偵測會在 [Azure Sentinel**事件**] 頁面上顯示為**融合事件**，而不會在**記錄**中顯示為**安全性警示**資料表中的**警示**。
+如先前所述，因為融合會將多個安全性警示與不同的產品相互關聯，以偵測 advanced 多階段攻擊，成功的融合偵測會在 [Azure Sentinel **事件**] 頁面上顯示為 **融合事件**，而不會在 **記錄** 中顯示為 **安全性警示** 資料表中的 **警示**。
 
 若要啟用這些融合式攻擊偵測案例，所有列出的資料來源都必須使用相關聯的 Azure Sentinel 資料連線器來內嵌。
 
 > [!NOTE]
-> 其中有些案例處於 **公開預覽**狀態。 這些將會指出。
+> 其中有些案例處於 **公開預覽** 狀態。 這些將會指出。
 
 ## <a name="compute-resource-abuse"></a>計算資源濫用
 
 ### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>在可疑的 Azure Active Directory 登入之後執行多個 VM 建立活動
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 初始存取權，影響 
 
@@ -84,6 +84,70 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 - **來自匿名 IP 位址的登入事件，會導致多個 VM 建立活動**
 
 - **使用者的登入事件，而洩漏的認證會導致多個 VM 建立活動**
+
+## <a name="credential-harvesting-new-threat-classification"></a> (新威脅分類的認證搜集) 
+
+### <a name="malicious-credential-theft-tool-execution-following-suspicious-sign-in"></a>在可疑登入之後執行惡意認證竊取工具
+
+**MITRE ATT&CK 策略：** 初始存取，認證存取
+
+**MITRE ATT&CK 技術：** 有效的帳戶 (T1078) 、OS 認證傾印 (T1003) 
+
+**資料連線器來源：** Azure Active Directory Identity Protection，Microsoft Defender for Endpoint
+
+**描述：** 此類型的融合事件指出已知的認證遭竊工具是在可疑的 Azure AD 登入之後執行。 這會提供高度信賴的指示，指出警示描述中所記下的使用者帳戶已遭入侵，而且可能已成功使用 **Mimikatz** 之類的工具來搜集來自系統的認證，例如金鑰、純文字密碼及/或密碼雜湊。 搜集到認證可能可讓攻擊者存取敏感性資料、提高許可權，以及/或在網路中橫向移動。 可疑 Azure AD 登入警示與惡意認證竊取工具警示的相片順序如下：
+
+- **不可能移動至不尋常的位置，而導致惡意認證遭竊工具執行**
+
+- **從不熟悉的位置登入事件，導致惡意認證遭竊工具執行**
+
+- **來自受感染裝置的登入事件，導致惡意認證遭竊工具執行**
+
+- **從匿名 IP 位址登入事件，導致惡意認證遭竊工具執行**
+
+- **從使用者登入事件，而洩漏的認證導致惡意認證遭竊工具執行**
+
+### <a name="suspected-credential-theft-activity-following-suspicious-sign-in"></a>可疑登入後的可疑認證遭竊活動
+
+**MITRE ATT&CK 策略：** 初始存取，認證存取
+
+**MITRE ATT&CK 技術：** 有效帳戶 (T1078) 、密碼存放區中的認證 (T1555) 、OS 認證傾印 (T1003) 
+
+**資料連線器來源：** Azure Active Directory Identity Protection，Microsoft Defender for Endpoint
+
+**描述：** 此類型的融合事件表示在可疑的 Azure AD 登入之後，與認證遭竊的模式相關聯的活動。 這可提供高度信賴的指示，指出警示描述中所述的使用者帳戶已遭入侵，並可用來竊取認證，例如金鑰、純文字密碼、密碼雜湊等等。 遭竊的認證可能會讓攻擊者存取敏感性資料、提高許可權，以及/或在網路中橫向移動。 可疑 Azure AD 登入警示與認證遭竊活動警示的相片順序如下：
+
+- **不可能移動至不尋常的位置，而導致疑似的認證遭竊活動**
+
+- **從不熟悉的位置登入事件，導致可疑的認證遭竊活動**
+
+- **來自受感染裝置的登入事件，導致可疑的認證遭竊活動**
+
+- **從匿名 IP 位址登入事件，導致可疑的認證遭竊活動**
+
+- **來自使用者的登入事件，而洩漏的認證導致可疑的認證遭竊活動**
+
+## <a name="crypto-mining-new-threat-classification"></a> (新威脅分類) 的密碼編譯-挖掘
+
+### <a name="crypto-mining-activity-following-suspicious-sign-in"></a>在可疑登入後進行的密碼編譯-挖掘活動
+
+**MITRE ATT&CK 策略：** 初始存取，認證存取
+
+**MITRE ATT&CK 技術：** 有效的帳戶 (T1078) 、資源劫持 (T1496) 
+
+**資料連線器來源：** Azure Active Directory Identity Protection，Azure Defender (Azure 資訊安全中心) 
+
+**描述：** 此類型的融合事件表示與 Azure AD 帳戶可疑登入相關聯的密碼編譯和活動。 這可提供高度信賴的指示，指出警示描述中所記下的使用者帳戶已遭入侵，並用來劫持您環境中的資源以採用加密貨幣。 這可以使您的運算能力資源及/或產生明顯高於預期的雲端使用量帳單。 使用「加密-挖掘」活動警示的可疑 Azure AD 登入警示的相片順序如下：  
+
+- **不可能移動至不尋常的位置，而導致加密-發掘活動**
+
+- **從不熟悉的位置登入事件，導致密碼編譯-挖掘活動**
+
+- **來自受感染裝置的登入事件，導致進行密碼編譯-進行加密的活動**
+
+- **來自匿名 IP 位址的登入事件，此 IP 位址會導致加密-發掘活動**
+
+- **來自使用者的登入事件，而洩漏的認證會導致密碼編譯-挖掘活動**
 
 ## <a name="data-exfiltration"></a>資料外洩
 
@@ -150,7 +214,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>可疑的收件匣操作規則設定下列可疑 Azure AD 登入
 此案例屬於這份清單中的兩個威脅分類： **資料遭到外泄** 和 **橫向移動**。 為了清楚起見，它會出現在這兩個區段中。
 
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 初始存取，橫向移動，遭到外泄
 
@@ -171,7 +235,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 - **使用者的登入事件，而洩漏的認證導致可疑的收件匣操作規則**
 
 ### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>在可疑 Azure AD 登入之後，多個 Power BI 報告共用活動 
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 初始存取權，遭到外泄 
 
@@ -192,7 +256,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 - **具有洩漏認證的使用者登入事件，會導致多個 Power BI 報告共用活動**
 
 ### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>可疑 Azure AD 登入之後，共用可疑的 Power BI 報告
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 初始存取權，遭到外泄 
 
@@ -235,7 +299,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 - **使用者登入事件，而洩漏的認證導致大量檔案刪除**
 
 ### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>可疑的 Azure AD 登入後，可疑的電子郵件刪除活動
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 初始存取權，影響 
 
@@ -258,7 +322,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 ## <a name="denial-of-service"></a>拒絕服務
 
 ### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>在可疑的 Azure AD 登入之後，多個 VM 刪除活動
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 初始存取權，影響
 
@@ -303,7 +367,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>可疑的收件匣操作規則設定下列可疑 Azure AD 登入
 此案例屬於這份清單中的兩個威脅分類： **橫向移動** 和 **資料遭到外泄**。 為了清楚起見，它會出現在這兩個區段中。
 
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 初始存取，橫向移動，遭到外泄
 
@@ -348,7 +412,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 ## <a name="malicious-execution-with-legitimate-process"></a>使用合法程式進行惡意執行
 
 ### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell 進行了可疑的網路連線，後面接著 Palo Alto Networks 防火牆旗標的異常流量。
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 執行
 
@@ -359,7 +423,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 **描述：** 此類型的融合事件表示已透過 PowerShell 命令提出輸出連線要求，並遵循該 Palo Alto Networks 防火牆偵測到的異常輸入活動。 這會指出攻擊者可能取得您網路的存取權，並嘗試執行惡意動作。 遵循此模式的 PowerShell 連接嘗試可能會指出惡意程式碼命令和控制活動、下載其他惡意程式碼的要求，或攻擊者建立遠端互動式訪問。 如同所有「離 land」攻擊，此活動可能是合法的 PowerShell 用途。 不過，PowerShell 命令執行後面接著可疑的輸入防火牆活動，可提高 PowerShell 以惡意方式使用的信心，並應進一步調查。 在 Palo Alto 記錄中，Azure Sentinel 著重于 [威脅記錄](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，並在允許威脅時，將流量視為可疑 (可疑的資料、檔案、氾濫、封包、掃描、間諜軟體、url、病毒、弱點、wildfire 病毒、野火) 。 另請參考對應到融合事件描述中所列 [威脅/內容類型](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) 的 Palo Alto 威脅記錄檔，以取得其他警示詳細資料。
 
 ### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>可疑的遠端 WMI 執行，後面接著 Palo Alto Networks 防火牆標示的異常流量
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 執行，探索
 
@@ -369,10 +433,30 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 
 **描述：** 此類型的融合事件表示 Windows 管理介面 (WMI) 命令已從遠端在系統上執行，並遵循該 Palo Alto Networks 防火牆偵測到的可疑輸入活動。 這會指出攻擊者可能已取得您網路的存取權，而且正在嘗試橫向移動、提升許可權，以及/或執行惡意承載。 如同所有「離 land」攻擊，此活動可能是合法的 WMI 使用。 但是，執行遠端 WMI 命令之後，如果出現可疑的輸入防火牆活動，就會讓 WMI 以惡意方式來使用，並進一步調查。 在 Palo Alto 記錄中，Azure Sentinel 著重于 [威脅記錄](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，並在允許威脅時，將流量視為可疑 (可疑的資料、檔案、氾濫、封包、掃描、間諜軟體、url、病毒、弱點、wildfire 病毒、野火) 。 另請參考對應到融合事件描述中所列 [威脅/內容類型](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) 的 Palo Alto 威脅記錄檔，以取得其他警示詳細資料。
 
+### <a name="suspicious-powershell-command-line-following-suspicious-sign-in"></a>可疑登入後的可疑 PowerShell 命令列
+
+**MITRE ATT&CK 策略：** 初始存取，執行
+
+**MITRE ATT&CK 技術：** 有效的帳戶 (T1078) 、命令和腳本解譯器 (T1059) 
+
+**資料連線器來源：** Azure Active Directory Identity Protection，適用于端點 (的 Microsoft Defender 先前為 MDATP) 
+
+**描述：** 此類型的融合事件表示使用者在可疑的 Azure AD 帳戶登入之後，執行了可能的惡意 PowerShell 命令。 這可提供高信賴度的指示，指出警示描述中所記下的帳戶已遭到入侵，並採取進一步的惡意動作。 攻擊者通常會利用 PowerShell 來執行記憶體中的惡意承載，而不需要在磁片上保留構件，以避免以磁片為基礎的安全性機制（例如病毒掃描程式）偵測。 可疑的 PowerShell 命令警示的可疑 Azure AD 登入警示排列如下：
+
+- **不可能移動至不尋常的位置，而導致可疑的 PowerShell 命令列**
+
+- **從不熟悉的位置登入事件，導致可疑的 PowerShell 命令列**
+
+- **來自受感染裝置的登入事件，導致可疑的 PowerShell 命令列**
+
+- **來自匿名 IP 位址的登入事件，導致可疑的 PowerShell 命令列**
+
+- **從使用者登入事件，而洩漏的認證導致可疑的 PowerShell 命令列**
+
 ## <a name="malware-c2-or-download"></a>惡意程式碼 C2 或下載
 
 ### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>TOR 匿名化服務的網路要求，後面接著 Palo Alto Networks 防火牆標示的異常流量。
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 命令與控制
 
@@ -383,7 +467,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 **描述：** 此類型的融合事件表示已對 TOR 匿名化服務發出輸出連線要求，並在之後，Palo Alto Networks 防火牆偵測到異常的輸入活動。 這會指出攻擊者可能取得您網路的存取權，並嘗試隱藏其動作和意圖。 遵循此模式的 TOR 網路連線可能會指出惡意程式碼命令和控制活動、下載其他惡意程式碼的要求，或建立遠端互動式訪問的攻擊者。 在 Palo Alto 記錄中，Azure Sentinel 著重于 [威脅記錄](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)，並在允許威脅時，將流量視為可疑 (可疑的資料、檔案、氾濫、封包、掃描、間諜軟體、url、病毒、弱點、wildfire 病毒、野火) 。 另請參考對應到融合事件描述中所列 [威脅/內容類型](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) 的 Palo Alto 威脅記錄檔，以取得其他警示詳細資料。
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>具有未授權存取歷程記錄的 IP 輸出連線，後面接著 Palo Alto Networks 防火牆標示的異常流量
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 命令與控制
 
@@ -418,7 +502,7 @@ Azure Sentinel 預設會啟用此偵測。 若要檢查狀態，或在您使用�
 ## <a name="remote-exploitation"></a>遠端攻擊
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>可疑的攻擊架構使用，後面接著 Palo Alto Networks 防火牆標示的異常流量
-此案例目前處於 **公開預覽**狀態。
+此案例目前處於 **公開預覽** 狀態。
 
 **MITRE ATT&CK 策略：** 初始存取、執行、橫向移動、許可權提升
 

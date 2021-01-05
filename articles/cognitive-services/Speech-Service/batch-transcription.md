@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621090"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755764"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
-批次轉譯是一組 REST API 作業，可讓您在儲存體中轉譯大量音訊。 您可以使用一般 URI 或共用存取簽章 (SAS) URI 來指向音訊檔案，並以非同步方式接收轉譯結果。 使用 v3.0 API，您可以轉譯一或多個音訊檔案，或處理整個儲存體容器。
+批次轉譯是一組 REST API 作業，可讓您在儲存體中轉譯大量音訊。 您可以使用一般 URI 或 [共用存取簽章 (SAS) ](../../storage/common/storage-sas-overview.md) URI 來指向音訊檔案，並以非同步方式接收轉譯結果。 使用 v3.0 API，您可以轉譯一或多個音訊檔案，或處理整個儲存體容器。
 
 您可以使用批次轉譯 REST Api 來呼叫下列方法：
 
@@ -39,7 +39,7 @@ ms.locfileid: "96621090"
 批次轉譯作業會以最大量的方式進行排程。
 您無法預估工作何時會變更為「執行中」狀態，但它應該會在正常系統載入的幾分鐘內發生。 一旦處於執行中狀態，轉譯的速度會比音訊執行時間的播放速度快。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 如同語音服務的所有功能，您可以依照我們的[快速入門指南](overview.md#try-the-speech-service-for-free)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
 
@@ -55,7 +55,7 @@ ms.locfileid: "96621090"
 
 批次轉譯 API 支援下列格式：
 
-| 格式 | 轉碼器 | 每個樣本的位數 | 採樣速率             |
+| [格式] | 轉碼器 | 每個樣本的位數 | 採樣速率             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16 位元  | 8 kHz 或 16 kHz （mono 或身歷聲） |
 | MP3    | PCM   | 16 位元  | 8 kHz 或 16 kHz （mono 或身歷聲） |
@@ -66,7 +66,7 @@ ms.locfileid: "96621090"
 
 ### <a name="configuration"></a>設定
 
-設定參數會以 JSON 形式提供。
+設定參數會以 JSON 形式提供。 
 
 **轉譯一或多個個別檔案。** 如果您有一個以上的檔案要轉譯，建議您在一個要求中傳送多個檔案。 下列範例會使用三個檔案：
 
@@ -85,7 +85,7 @@ ms.locfileid: "96621090"
 }
 ```
 
-**處理整個儲存體容器：**
+**處理整個儲存體容器。** 容器 [SAS](../../storage/common/storage-sas-overview.md) 應包含 `r` (讀取) 和 `l` (清單) 許可權：
 
 ```json
 {
@@ -177,7 +177,7 @@ ms.locfileid: "96621090"
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      具有服務特定 [SAS](../../storage/common/storage-sas-overview.md) 的選擇性 URL，指向 Azure 中可寫入的容器。 結果會儲存在此容器中。 **不** 支援具有預存存取原則的 SAS。 如果未指定，Microsoft 會將結果儲存在 Microsoft 所管理的儲存體容器中。 藉由呼叫 [刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)轉譯來刪除轉譯時，也會一併刪除結果資料。
+      具有 [特定 SAS](../../storage/common/storage-sas-overview.md) 的選擇性 URL，可供 Azure 中的可寫入容器使用。 結果會儲存在此容器中。 **不** 支援具有預存存取原則的 SAS。 如果未指定，Microsoft 會將結果儲存在 Microsoft 所管理的儲存體容器中。 藉由呼叫 [刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)轉譯來刪除轉譯時，也會一併刪除結果資料。
 :::row-end:::
 
 ### <a name="storage"></a>儲存體

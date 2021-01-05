@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85078132"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746621"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中查看報表和記錄
 
@@ -85,11 +85,11 @@ Azure AD 權利管理報告和 Azure AD audit 記錄檔提供使用者可存取�
 
 1. 在頂端，根據您要尋找的審核記錄，將 **類別** 變更為 `EntitlementManagement` 或 `UserManagement` 。  
 
-1. 按一下 [套用]。
+1. 按一下 [套用]  。
 
 1. 若要下載記錄，請按一下 [ **下載**]。
 
-當 Azure AD 收到新的要求時，它會寫入審核記錄，其中 **類別** 是， `EntitlementManagement` 而 **活動** 通常是 `User requests access package assignment` 。  在 Azure 入口網站中建立直接指派的案例中，audit 記錄的 **活動** 欄位是 `Administrator directly assigns user to access package` ，而執行指派的使用者是由 **ActorUserPrincipalName**所識別。
+當 Azure AD 收到新的要求時，它會寫入審核記錄，其中 **類別** 是， `EntitlementManagement` 而 **活動** 通常是 `User requests access package assignment` 。  在 Azure 入口網站中建立直接指派的案例中，audit 記錄的 **活動** 欄位是 `Administrator directly assigns user to access package` ，而執行指派的使用者是由 **ActorUserPrincipalName** 所識別。
 
 Azure AD 會在要求進行時寫入額外的審核記錄，包括：
 
@@ -101,7 +101,7 @@ Azure AD 會在要求進行時寫入額外的審核記錄，包括：
 | `EntitlementManagement` | `Approve access package assignment request` | 要求已核准 |
 | `EntitlementManagement` | `Ready to fulfill access package assignment request` |要求已核准，或不需要核准 |
 
-當使用者獲指派存取權時，Azure AD 會針對具有活動的分類寫入審核記錄 `EntitlementManagement` **Activity** `Fulfill access package assignment` 。  接收存取權的使用者是由 **ActorUserPrincipalName** 欄位所識別。
+當使用者獲指派存取權時，Azure AD 會針對具有活動的分類寫入審核記錄 `EntitlementManagement`  `Fulfill access package assignment` 。  接收存取權的使用者是由 **ActorUserPrincipalName** 欄位所識別。
 
 如果未指派存取權，則 Azure AD 會 `EntitlementManagement` 使用 **活動** 寫入類別目錄的審核記錄 `Deny access package assignment request` （如果核准者拒絕要求），或者 `Access package assignment request timed out (no approver action taken)` ，如果要求在核准者核准之前就已超時。
 

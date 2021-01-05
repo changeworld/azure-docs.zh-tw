@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf6e02ebad2ac5150be4775ad0ff6069fe3db89f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980052"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745958"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中建立和管理資原始目錄
 
@@ -69,7 +69,7 @@ ms.locfileid: "90980052"
 
 1. 按一下 [ **新增資源**]。
 
-1. 按一下資源類型： **群組和小組**、 **應用程式**或 **SharePoint 網站**。
+1. 按一下資源類型： **群組和小組**、 **應用程式** 或 **SharePoint 網站**。
 
     如果您沒有看到想要新增的資源，或無法新增資源，請確定您擁有必要的 Azure AD 目錄角色和權利管理角色。 您可能需要讓具有必要角色的使用者將資源新增至您的目錄。 如需詳細資訊，請參閱[將資源新增至目錄的必要角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
 
@@ -138,7 +138,7 @@ ms.locfileid: "90980052"
 
     ![編輯類別目錄設定](./media/entitlement-management-shared/catalog-edit.png)
 
-1. 按一下 **[儲存]** 。
+1. 按一下 [檔案]  。
 
 ## <a name="delete-a-catalog"></a>刪除目錄
 
@@ -150,9 +150,9 @@ ms.locfileid: "90980052"
 
 1. 在左側功能表中，按一下 [ **目錄** ]，然後開啟您想要刪除的目錄。
 
-1. 在目錄的 **總覽**中，按一下 [ **刪除**]。
+1. 在目錄的 **總覽** 中，按一下 [ **刪除**]。
 
-1. 在出現的訊息方塊中，按一下 [確定]****。
+1. 在出現的訊息方塊中，按一下 [確定]。
 
 ### <a name="deleting-a-catalog-programmatically"></a>以程式設計方式刪除目錄
 

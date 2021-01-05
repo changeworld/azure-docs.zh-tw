@@ -4,14 +4,14 @@ description: 說明如何設定快取的其他設定，例如 MTU 和無根目�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 12/21/2020
 ms.author: v-erkel
-ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497194"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760498"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>設定其他 Azure HPC Cache 設定
 
@@ -43,9 +43,9 @@ Azure 入口網站中的 [設定] 頁面有自訂數個 **設定的選項** 。 
 藉由讀取 [Azure vm 的 tcp/ip 效能微調](../virtual-network/virtual-network-tcpip-performance-tuning.md)，深入瞭解 azure 虛擬網路中的 MTU 設定。
 
 ## <a name="configure-root-squash"></a>設定根 squash
-<!-- linked from troubleshoot -->
+<!-- linked from troubleshoot and from access policies -->
 
-**啟用根 squash**設定可控制 Azure HPC Cache 如何在用戶端電腦上處理來自根使用者的要求。
+**啟用根 squash** 設定可控制 Azure HPC Cache 如何在用戶端電腦上處理來自根使用者的要求。
 
 當根 squash 啟用時，用戶端的根使用者會在透過 Azure HPC Cache 傳送要求時，自動對應至使用者「沒有人」。 它也會防止用戶端要求使用設定 UID 許可權位。
 
@@ -54,6 +54,9 @@ Azure 入口網站中的 [設定] 頁面有自訂數個 **設定的選項** 。 
 在快取上設定根 squash 有助於彌補 ``no_root_squash`` 用作為儲存體目標的 NAS 系統上的必要設定。  (深入瞭解 [NFS 儲存體目標必要條件](hpc-cache-prerequisites.md#nfs-storage-requirements)。在搭配 Azure Blob 儲存體目標使用時，) 它也可以改善安全性。
 
 預設值為 [是]。 在2020年4月之前建立的 (快取可能預設設定為 [ **否**]。 ) 
+
+> [!TIP]
+> 您也可以藉由自訂 [用戶端存取](access-policies.md#root-squash)原則，來設定特定儲存體匯出的根 squash。
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>查看 blob 儲存體目標的快照集
 

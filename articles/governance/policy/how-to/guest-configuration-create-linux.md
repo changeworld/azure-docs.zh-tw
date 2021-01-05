@@ -4,12 +4,12 @@ description: 了解如何建立 Linux 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f6308250717d35dc725b097575bf3921646c6a0
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 705c12cff5f4377249674ef9db155d1ed321ce42
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302715"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755866"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何建立 Linux 的客體設定原則
 
@@ -329,10 +329,15 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>原則生命週期
 
-若要釋放原則定義的更新，有三個需要注意的欄位。
+如果您想要釋放原則的更新，請變更來賓設定套件和 Azure 原則定義詳細資料。
 
 > [!NOTE]
 > `version`來賓設定指派的屬性只會影響 Microsoft 所裝載的封裝。 版本控制自訂內容的最佳作法是在檔案名中包含版本。
+
+首先，在 `New-GuestConfigurationPackage` 執行時，指定封裝的名稱，使其在舊版中是唯一的。 您可以在名稱中包含版本號碼，例如 `PackageName_1.0.0` 。
+此範例中的數位只會用來讓封裝成為唯一的，而不是指定套件應視為比其他封裝更新或更舊的套件。
+
+其次，依照下列每個說明，更新與 Cmdlet 搭配使用的參數 `New-GuestConfigurationPolicy` 。
 
 - **版本**：當執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定大於目前發佈的版本號碼。
 - **contentUri**：當您執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定封裝位置的 URI。 在檔案名中包含套件版本，可確保每個版本中的這個屬性值都有變更。

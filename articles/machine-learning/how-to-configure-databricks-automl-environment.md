@@ -1,7 +1,7 @@
 ---
-title: 使用 autoML & Azure Databricks 進行開發
+title: 使用 AutoML & Azure Databricks 進行開發
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning 和 Azure Databricks 中設定開發環境。 使用適用于 Databricks 的 Azure ML Sdk 和搭配 autoML 的 Databricks。
+description: 瞭解如何在 Azure Machine Learning 和 Azure Databricks 中設定開發環境。 使用適用于 Databricks 的 Azure ML Sdk 和搭配 AutoML 的 Databricks。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,14 +11,14 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ef8ee7718aabb443fda6cd7b276ee53472261913
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 878e6f11645a6478c0d536e9d6d6dac4518c5349
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424105"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740958"
 ---
-# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>在 Azure Machine Learning 中設定具有 Azure Databricks 和 autoML 的開發環境 
+# <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>在 Azure Machine Learning 中設定具有 Azure Databricks 和 AutoML 的開發環境 
 
 瞭解如何在使用 Azure Databricks 和自動化 ML 的 Azure Machine Learning 中設定開發環境。
 
@@ -32,9 +32,9 @@ Azure Databricks 適合在 Azure 雲端中可調整的 Apache Spark 平臺上執
 Azure Machine Learning 工作區。 如果您沒有帳戶，可以透過 [Azure 入口網站](how-to-manage-workspace.md)、 [Azure CLI](how-to-manage-workspace-cli.md#create-a-workspace)和 [Azure Resource Manager 範本](how-to-create-workspace-template.md)建立 Azure Machine Learning 工作區。
 
 
-## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>使用 Azure Machine Learning 和 autoML Azure Databricks
+## <a name="azure-databricks-with-azure-machine-learning-and-automl"></a>使用 Azure Machine Learning 和 AutoML Azure Databricks
 
-Azure Databricks 與 Azure Machine Learning 及其 autoML 功能整合。 
+Azure Databricks 與 Azure Machine Learning 及其 AutoML 功能整合。 
 
 您可以使用 Azure Databricks：
 
@@ -68,7 +68,7 @@ Azure Databricks 與 Azure Machine Learning 及其 autoML 功能整合。
 若要使用自動化 ML，請跳至使用 [AutoML 新增 AZURE ML SDK](#add-the-azure-ml-sdk-with-automl-to-databricks)。
 
 
-1. 以滑鼠右鍵按一下您要儲存程式庫的目前工作區資料夾。 選取 [ **建立** 連結  >  **庫** ]。
+1. 以滑鼠右鍵按一下您要儲存程式庫的目前工作區資料夾。 選取 [**建立** 連結  >  **庫**]。
     
     > [!TIP]
     > 如果您有舊的 SDK 版本，請從叢集的已安裝程式庫中取消選取它，並移至垃圾桶。 安裝新版 SDK，並重新啟動叢集。 如果重新開機後發生問題，請卸離並重新連接您的叢集。
@@ -97,7 +97,7 @@ Azure Databricks 與 Azure Machine Learning 及其 autoML 功能整合。
   ![適用于 Databricks 的 Azure Machine Learning SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg) 
 
 ## <a name="add-the-azure-ml-sdk-with-automl-to-databricks"></a>將具有 AutoML 的 Azure ML SDK 新增至 Databricks
-如果叢集是使用 Databricks Runtime 7.1 或更新版本 ( *不* 是 ML) 所建立，請在筆記本的第一個資料格中執行下列命令，以安裝 AML SDK。
+如果叢集是使用 Databricks Runtime 7.1 或更新版本 (*不* 是 ML) 所建立，請在筆記本的第一個資料格中執行下列命令，以安裝 AML SDK。
 
 ```
 %pip install --upgrade --force-reinstall -r https://aka.ms/automl_linux_requirements.txt
@@ -120,6 +120,44 @@ Azure Databricks 與 Azure Machine Learning 及其 autoML 功能整合。
  ![ 入面板](./media/how-to-configure-environment/azure-db-import.png)
 
 + 瞭解如何 [使用 Databricks 建立管線作為定型計算](how-to-create-your-first-pipeline.md)。
+
+## <a name="troubleshooting"></a>疑難排解
+
+* **安裝套件時失敗**
+
+    安裝更多套件時，Azure Databricks Azure Machine Learning SDK 安裝會失敗。 有些套件 (例如 `psutil`) 會導致發生衝突。 若要避免安裝錯誤，請凍結程式庫版本來安裝套件。 此問題與 Databricks 相關，而不是 Azure Machine Learning SDK。 您也可能會遇到其他程式庫的這個問題。 範例：
+    
+    ```python
+    psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+    ```
+
+    或者，如果您持續遇到 Python 程式庫的安裝問題，您可以使用 init 腳本。 未正式支援此方法。 如需詳細資訊，請參閱叢集 [範圍的初始化腳本](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
+
+* 匯 **入錯誤：無法匯入名稱 `Timedelta` `pandas._libs.tslibs`**：若您在使用自動化機器學習時看到此錯誤，請在您的筆記本中執行下列兩行：
+    ```
+    %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
+    %sh /databricks/python/bin/pip install pandas==0.23.4
+    ```
+
+* 匯 **入錯誤：沒有名為 ' pandas ' 的模組**：如果您在使用自動化機器學習時看到此錯誤：
+
+    1. 執行此命令，在您的 Azure Databricks 叢集中安裝兩個套件：
+    
+       ```bash
+       scikit-learn==0.19.1
+       pandas==0.22.0
+       ```
+    
+    1. 中斷連結，然後將叢集重新附加至您的筆記本。
+    
+    如果這些步驟無法解決問題，請嘗試重新開機叢集。
+
+* **FailToSendFeather**：如果您在 `FailToSendFeather` Azure Databricks 叢集上讀取資料時看到錯誤，請參閱下列解決方案：
+    
+    * 將 `azureml-sdk[automl]` 套件升級為最新版本。
+    * 新增 `azureml-dataprep` 1.1.8 版或更新版本。
+    * 新增 `pyarrow` 0.11 版或更新版本。
+  
 
 ## <a name="next-steps"></a>後續步驟
 

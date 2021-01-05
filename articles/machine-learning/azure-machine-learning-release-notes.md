@@ -9,18 +9,16 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 4998469fa353fef9e8a91d078349150d9f739ac2
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779408"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760107"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
 在本文中，您將瞭解 Azure Machine Learning 版本。  如需完整的 SDK 參考內容，請造訪 Azure Machine Learning 的 [**適用于 Python 的主要 SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 參考頁面。
-
-若要了解已知的 Bug 和因應措施，請參閱[已知問題的清單](resource-known-issues.md)。
 
 ## <a name="2020-12-07"></a>2020-12-07
 
@@ -496,7 +494,7 @@ ms.locfileid: "96779408"
     + 當「azureml-預設值」未包含為 pip 相依性的一部分時，即登出警告
     + 改善便箋轉譯。
     + 已新增將分隔的檔案剖析為 PipelineOutputFileDataset 時，對引號換行的支援。
-    + PipelineDataset 類別已被取代。 如需詳細資訊，請參閱https://aka.ms/dataset-deprecation。 瞭解如何使用具有管線的資料集，請參閱 https://aka.ms/pipeline-with-dataset 。
+    + PipelineDataset 類別已被取代。 如需詳細資訊，請參閱 https://aka.ms/dataset-deprecation 。 瞭解如何使用具有管線的資料集，請參閱 https://aka.ms/pipeline-with-dataset 。
   + **azureml-pipeline-steps**
     + Azureml-管線-步驟的更新。
     +  已新增 ParallelRunConfig 的支援， `load_yaml()` 可讓使用者定義以 rest 設定或個別檔案內嵌的環境

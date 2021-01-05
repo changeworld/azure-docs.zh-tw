@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 72079cc399eea249bce4d285e2c3c4fbf9304708
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319029"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760600"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning (preview 來追蹤 Azure Databricks ML 實驗) 
 
@@ -70,9 +70,9 @@ ms.locfileid: "93319029"
 
 設定 ADB 叢集之後， 
 1. 在左側流覽窗格中選取 [ **工作區** ]。 
-1. 展開 [工作區] 下拉式功能表，然後選取 [匯 **入** ]
+1. 展開 [工作區] 下拉式功能表，然後選取 [匯 **入**]
 1. 拖放或流覽以尋找您的實驗筆記本，以匯入您的 ADB 工作區。
-1. 選取 [匯入]  。 您的實驗筆記本會自動開啟。
+1. 選取 [匯入]。 您的實驗筆記本會自動開啟。
 1. 在左上方的筆記本標題底下，選取要附加至實驗筆記本的叢集。 
 
 ## <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>連結您的 Azure Databricks 和 Azure Machine Learning 工作區
@@ -156,9 +156,9 @@ mlflow.log_metric('epoch_loss', loss.item())
 
 後端追蹤伺服器預設為 Azure Databricks 工作區;除非您選擇 [將 MLflow 追蹤設定為只在 Azure Machine Learning 工作區中追蹤](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace)，否則後端追蹤伺服器就是 Azure Machine Learning 工作區。   
 
-* **如果已註冊的模型名稱不存在** ，此方法會註冊新的模型、建立第1版，並傳回 ModelVersion MLflow 物件。 
+* **如果已註冊的模型名稱不存在**，此方法會註冊新的模型、建立第1版，並傳回 ModelVersion MLflow 物件。 
 
-* **如果已有同名的已註冊模型存在** ，此方法會建立新的模型版本，並傳回版本物件。 
+* **如果已有同名的已註冊模型存在**，此方法會建立新的模型版本，並傳回版本物件。 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -180,8 +180,8 @@ mlflow.sklearn.log_model(model, artifact_path = "model",
 您可以利用 [mlflow](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) API，將模型部署到您的 Azure Machine Learning 工作區。 如果您只將模型註冊到 Azure Databricks 工作區（如 [使用 MLflow 註冊模型](#register-models-with-mlflow) 一節中所述），請指定 `model_name` 要將模型註冊到 Azure Machine Learning 工作區的參數。 
 
 Azure Databricks 執行可部署至下列端點： 
-* [Azure 容器執行個體](how-to-use-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-use-mlflow.md#deploy-to-aks)
+* [Azure 容器實例](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
+* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>將模型部署至 ADB 端點以進行批次評分 
 

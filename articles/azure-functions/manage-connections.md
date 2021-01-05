@@ -4,12 +4,12 @@ description: 了解如何使用靜態連線用戶端來避免 Azure Functions �
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 6a426aff1721ac3565b53cf2eef7c5aa094dd7e2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 53848e6273cf59439d44b431652981b18bdd5ba6
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168302"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755951"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的連接
 
@@ -31,7 +31,7 @@ ms.locfileid: "92168302"
 
 - *請勿* 使用每個函式呼叫來建立新的用戶端。
 - *請* 建立單一的靜態用戶端，讓每個函式呼叫都可以使用。
-- 如果不同的函式使用相同的服務，*請考慮*在共用 helper 類別中建立單一靜態用戶端。
+- 如果不同的函式使用相同的服務，*請考慮* 在共用 helper 類別中建立單一靜態用戶端。
 
 ## <a name="client-code-examples"></a>用戶端程式碼範例
 
@@ -103,7 +103,7 @@ public static async Task Run(string input)
     // Rest of function
 }
 ```
-如果您使用的是 v3. x，您需要參考來 Microsoft.Azure.DocumentDB。 在程式碼中新增參考：
+如果您使用的是 v3. x，則需要 Microsoft.Azure.DocumentDB 的參考。 在程式碼中新增參考：
 
 ```cs
 #r "Microsoft.Azure.DocumentDB.Core"
@@ -146,7 +146,7 @@ module.exports = async function (context) {
 您的函式程式碼可以使用 .NET Framework Data Provider SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient)) ，以連接到 SQL 關係資料庫。 這也是依賴 ADO.NET 的資料架構的基礎提供者，例如 [Entity Framework](/ef/ef6/)。 不同於 [HttpClient](/dotnet/api/system.net.http.httpclient) \(英文\) 和 [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) \(英文\) 連線，ADO.NET 預設會實作連線共用。 但因為您仍然可以用完連接，所以您應該將資料庫的連接優化。 如需詳細資訊，請參閱 [SQL Server 連線共用 (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling) \(機器翻譯\)。
 
 > [!TIP]
-> 某些資料框架（例如 Entity Framework）通常會從設定檔的 **ConnectionStrings** 區段取得連接字串。 在此情況下，您必須明確地將 SQL 資料庫連接字串新增至函數應用程式設定的**連接字串**集合，以及您本機專案的 [local.settings.json 檔案](functions-run-local.md#local-settings-file)中。 如果您要在函式程式碼中建立 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) 的實例，您應該在 **應用程式設定** 中將連接字串值與其他連接一起儲存。
+> 某些資料框架（例如 Entity Framework）通常會從設定檔的 **ConnectionStrings** 區段取得連接字串。 在此情況下，您必須明確地將 SQL 資料庫連接字串新增至函數應用程式設定的 **連接字串** 集合，以及您本機專案的 [local.settings.json 檔案](functions-run-local.md#local-settings-file)中。 如果您要在函式程式碼中建立 [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection) 的實例，您應該在 **應用程式設定** 中將連接字串值與其他連接一起儲存。
 
 ## <a name="next-steps"></a>後續步驟
 

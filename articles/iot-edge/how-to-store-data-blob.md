@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22cef5919e597d4cd83ad80f5758a0427c52e2bb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e1031df9f305015048de7f708123a51875776e1b
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219729"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760583"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>在 IoT Edge 使用 Azure Blob 儲存體，以便在邊緣儲存資料
 
@@ -53,7 +53,7 @@ IoT Edge 上的 Azure Blob 儲存體會在邊緣提供 [區塊 blob](/rest/api/s
 * 以分鐘為單位指定將會自動刪除 blob (deleteAfterMinutes) 時間。
 * 如果 deleteAfterMinutes 值過期，請選擇在上傳 blob 時保留 blob 的功能。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 Azure IoT Edge 裝置：
 
@@ -81,7 +81,7 @@ Azure 中的標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)�
 | ----- | ----- | ---- |
 | uploadOn | true、false | 預設會設定為 `false` 。 如果您想要開啟此功能，請將此欄位設定為 `true` 。 <br><br> 環境變數：`deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst、OldestFirst | 可讓您選擇將資料複製到 Azure 的順序。 預設會設定為 `OldestFirst` 。 順序取決於上次修改 Blob 的時間。 <br><br> 環境變數：`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` 是連接字串，可讓您指定您想要上傳資料的儲存體帳戶。 指定 `Azure Storage Account Name` 、 `Azure Storage Account Key` 、 `End point suffix` 。 新增適當的 Azure EndpointSuffix，以將資料上傳到其中，全域 Azure、政府 Azure 和 Microsoft Azure Stack 會有所不同。 <br><br> 您可以選擇在這裡指定 Azure 儲存體 SAS 連接字串。 但是，當這個屬性過期時，您必須更新它。 <br><br> 環境變數：`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` 是連接字串，可讓您指定您想要上傳資料的儲存體帳戶。 指定 `Azure Storage Account Name` 、 `Azure Storage Account Key` 、 `End point suffix` 。 新增適當的 Azure EndpointSuffix，以將資料上傳到其中，全域 Azure、政府 Azure 和 Microsoft Azure Stack 會有所不同。 <br><br> 您可以選擇在這裡指定 Azure 儲存體 SAS 連接字串。 但是，當這個屬性過期時，您必須更新它。 SAS 許可權可能包括建立容器的存取權，以及建立、寫入和新增 blob 的存取權。  <br><br> 環境變數：`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 可讓您指定想要上傳至 Azure 的容器名稱。 此模組可讓您指定來源和目標容器名稱。 如果您未指定目標容器名稱，它會自動將容器名稱指派為 `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` 。 您可以建立目標容器名稱的範本字串，查看可能的值資料行。 <br>*% h-> IoT 中樞名稱 (3-50 個字元) 。 <br>*% d-> IoT Edge 裝置識別碼 (1 到129個字元) 。 <br>*% m-> 模組名稱 (1 到64個字元) 。 <br>*% c-> 來源容器名稱 (3 到63個字元) 。 <br><br>容器名稱的大小上限為63個字元，當容器的大小超過63個字元時，會自動指派目標容器名稱，它會 (IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName) 為15個字元來修剪每個區段。 <br><br> 環境變數：`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | true、false | 預設會設定為 `false` 。 當其設定為時 `true` ，會在上傳至雲端儲存體完成時自動刪除資料。 <br><br> **注意**：如果您使用附加 blob，此設定將會在成功上傳之後，從本機儲存體刪除附加 blob，而且這些 blob 的任何未來附加區塊作業都會失敗。 請小心使用此設定，如果您的應用程式不常附加作業或不支援連續附加作業，請不要啟用此功能<br><br> 環境變數： `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` 。 |
 
@@ -143,7 +143,7 @@ sudo chown -R 11000:11000 /srv/containerdata
 sudo chmod -R 700 /srv/containerdata
 ```
 
-如果您需要以非 **absie**的使用者來執行服務，您可以在部署資訊清單中的 "user" 屬性下，于 createOptions 中指定您的自訂使用者識別碼。 在這種情況下，您需要使用預設或根群組識別碼 `0` 。
+如果您需要以非 **absie** 的使用者來執行服務，您可以在部署資訊清單中的 "user" 屬性下，于 createOptions 中指定您的自訂使用者識別碼。 在這種情況下，您需要使用預設或根群組識別碼 `0` 。
 
 ```json
 "createOptions": {
@@ -187,7 +187,7 @@ Azure Blob 儲存體檔包含數種語言的快速入門範例程式碼。 您�
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * Python SDK 2.1 之前的版本有已知問題，模組不會傳回 blob 建立時間。 基於這個問題，某些方法（例如清單 blob）無法運作。 解決方法是將 blob 用戶端上的 API 版本明確設定為 ' 2017-04-17 '。 範例：`block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [附加 Blob 範例](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
-* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md)
+* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md) \(英文\)
 * [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy.md)
 * [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
 * [Go](../storage/blobs/storage-quickstart-blobs-go.md)

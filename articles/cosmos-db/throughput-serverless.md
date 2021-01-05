@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: 1943aae3a2b01490dca687bcdea99d76da238d51
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187250"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760243"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>如何在布建的輸送量和無伺服器之間進行選擇
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,7 +25,7 @@ Azure Cosmos DB 有兩種不同的容量模式：布 [建的輸送量](set-throu
 | 準則 | 佈建的輸送量 | 無伺服器 |
 | --- | --- | --- |
 | 狀態 | 正式推出 | 預覽狀態 |
-| 最適用於 | 需要可預測效能的任務關鍵性工作負載 | 使用輕量和間歇流量的小型到中型非關鍵性工作負載 |
+| 最適用於 | 需要可預測效能的任務關鍵性工作負載 | 使用很難預測的輕量和間歇流量的小型至中型工作負載 |
 | 運作方式 | 針對每個容器，您可以布建以每秒 [要求單位](request-units.md) 數表示的輸送量量。 每秒，此數量的要求單位適用于您的資料庫作業。 您可以手動更新布建的 [輸送量，或使用自動](provision-throughput-autoscale.md)調整自動調整。 | 您可以對容器執行資料庫作業，而不需要布建任何容量。 |
 | 地理分散 | 可用 (不限數量的 Azure 區域)  | 無法使用 (無伺服器帳戶只能在1個 Azure 區域中執行)  |
 | 每個容器的儲存體上限 | 無限制 | 50 GB |

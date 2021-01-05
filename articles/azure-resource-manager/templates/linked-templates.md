@@ -1,22 +1,22 @@
 ---
 title: 連結範本以進行部署
-description: 描述如何在「Azure 資源管理員」範本中使用連結的範本，以建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
+description: 描述如何在 Azure Resource Manager 範本中使用連結的範本 (ARM 範本) 來建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 1e2ccc57b42f8072c9aa28612d534507b9a674ed
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: cac63ccdd13e245baf97695e9b138c29d3db4958
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852093"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760617"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
-若要部署複雜的解決方案，您可以將範本分成許多相關的範本，然後透過主要範本將它們部署在一起。 相關的範本可以是內嵌于主要範本內的個別檔案或範本語法。 本文使用「連結的 **範本** 」一詞來參考另一個範本檔案，該檔案是透過主要範本中的連結所參考。 它使用「 **嵌套** 」一詞來參考主要範本內的內嵌範本語法。
+若要部署複雜的解決方案，您可以將 Azure Resource Manager 範本 (ARM 範本) 分成許多相關的範本，然後透過主要範本將它們部署在一起。 相關的範本可以是內嵌于主要範本內的個別檔案或範本語法。 本文使用「連結的 **範本** 」一詞來參考另一個範本檔案，該檔案是透過主要範本中的連結所參考。 它使用「 **嵌套** 」一詞來參考主要範本內的內嵌範本語法。
 
 若為小型至中型的解決方案，單一範本會比較容易了解和維護。 您可以在單一檔案中看到所有的資源和值。 針對進階案例，連結範本可供將解決方案拆解為目標元件。 您可在其他案例中，輕鬆地重複使用這些範本。
 
-如需教學課程，請參閱[建立連結的 Azure Resource Manager 範本](./deployment-tutorial-linked-template.md)。
+如需教學課程，請參閱 [教學課程：部署連結的範本](./deployment-tutorial-linked-template.md)。
 
 > [!NOTE]
 > 針對連結或嵌套的範本，您只能將部署模式設定為累加 [式](deployment-modes.md)。 不過，您可以在完整模式中部署主要範本。 如果您以完整模式部署主要範本，而連結或嵌套的範本以相同的資源群組為目標，則部署在連結或嵌套範本中的資源會包含在完整模式部署的評估中。 在主要範本中部署的資源集合和連結或嵌套範本會與資源群組中現有的資源進行比較。 此組合集合中未包含的任何資源都會遭到刪除。
@@ -26,7 +26,7 @@ ms.locfileid: "96852093"
 
 ## <a name="nested-template"></a>巢狀範本
 
-若要嵌套範本，請將 [部署資源](/azure/templates/microsoft.resources/deployments) 新增至您的主要範本。 在 [ **範本** ] 屬性中，指定範本語法。
+若要嵌套範本，請將 [部署資源](/azure/templates/microsoft.resources/deployments) 新增至您的主要範本。 在 `template` 屬性中，指定範本語法。
 
 ```json
 {
@@ -283,7 +283,7 @@ ms.locfileid: "96852093"
 
 ## <a name="linked-template"></a>連結的範本
 
-若要連結範本，請將 [部署資源](/azure/templates/microsoft.resources/deployments) 新增至您的主要範本。 在 [ **templateLink** ] 屬性中，指定要包含之範本的 URI。 下列範例會連結至儲存體帳戶中的範本。
+若要連結範本，請將 [部署資源](/azure/templates/microsoft.resources/deployments) 新增至您的主要範本。 在 `templateLink` 屬性中，指定要包含之範本的 URI。 下列範例會連結至儲存體帳戶中的範本。
 
 ```json
 {
@@ -310,9 +310,9 @@ ms.locfileid: "96852093"
 }
 ```
 
-參考連結的範本時，的值不能是 `uri` 本機檔案或只能在區域網路上使用的檔案。 Azure Resource Manager 必須能夠存取範本。 提供可下載為 **HTTP** 或 **HTTPs** 的 URI 值。 
+參考連結的範本時，的值不能是 `uri` 本機檔案或只能在區域網路上使用的檔案。 Azure Resource Manager 必須能夠存取範本。 提供可下載為 HTTP 或 HTTPS 的 URI 值。
 
-您可以使用包含 **HTTP** 或 **HTTPs** 的參數參考範本。 例如，常見的模式是使用 `_artifactsLocation` 參數。 您可以使用類似下列的運算式來設定連結的範本：
+您可以使用包含 HTTP 或 HTTPS 的參數參考範本。 例如，常見的模式是使用 `_artifactsLocation` 參數。 您可以使用類似下列的運算式來設定連結的範本：
 
 ```json
 "uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
@@ -324,47 +324,49 @@ ms.locfileid: "96852093"
 
 ### <a name="parameters-for-linked-template"></a>連結範本的參數
 
-您可以在外部檔案或內嵌中提供連結範本的參數。 提供外部參數檔案時，請使用 **parametersLink** 屬性：
+您可以在外部檔案或內嵌中提供連結範本的參數。 提供外部參數檔案時，請使用 `parametersLink` 屬性：
 
 ```json
 "resources": [
   {
-  "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
-  "name": "linkedTemplate",
-  "properties": {
-    "mode": "Incremental",
-    "templateLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-      "contentVersion":"1.0.0.0"
-    },
-    "parametersLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
-      "contentVersion":"1.0.0.0"
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
+      "templateLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "parametersLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+        "contentVersion": "1.0.0.0"
+      }
     }
-  }
   }
 ]
 ```
 
-若要以內嵌方式傳遞參數值，請使用 **parameters** 屬性。
+若要以內嵌方式傳遞參數值，請使用 `parameters` 屬性。
 
 ```json
 "resources": [
   {
-   "type": "Microsoft.Resources/deployments",
-   "apiVersion": "2019-10-01",
-   "name": "linkedTemplate",
-   "properties": {
-     "mode": "Incremental",
-     "templateLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-      "contentVersion":"1.0.0.0"
-     },
-     "parameters": {
-      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
+      "templateLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "parameters": {
+        "storageAccountName": {
+          "value": "[parameters('storageAccountName')]"
+        }
+      }
     }
-   }
   }
 ]
 ```
@@ -375,7 +377,7 @@ ms.locfileid: "96852093"
 
 您可以建立 [範本規格](template-specs.md) ，將主要範本和其連結的範本封裝到您可以部署的單一實體，而不是在可存取的端點上維護連結的範本。 範本規格是您 Azure 訂用帳戶中的資源。 這可讓您輕鬆安全地與組織中的使用者共用範本。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來授與範本規格的存取權。這項功能目前為預覽狀態。
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 - [教學課程：使用連結的範本建立範本規格](./template-specs-create-linked.md)。
 - [教學課程：將範本規格部署為連結的範本](./template-specs-deploy-linked-template.md)。
@@ -394,7 +396,7 @@ ms.locfileid: "96852093"
 
 先前的範例示範了範本連結的硬式編碼 URL 值。 這種方法可能適用于簡單的範本，但不適用於一組大型的模組化範本。 不過，您可以建立一個儲存主要範本之基底 URL 的靜態變數，然後再從該基底 URL 連結動態建立連結的範本之 URL。 這種方法的優點是您可以輕鬆地移動或派生範本，因為您只需要變更主要範本中的靜態變數。 主要範本會於整個分解的範本傳遞正確的 URI。
 
-下列範例示範如何使用基底 URL 來為連結的範本 (**sharedTemplateUrl** 和 **vmTemplate**) 建立兩個 URL。
+下列範例示範如何使用基底 URL 來建立 (和) 連結之範本的兩個 Url `sharedTemplateUrl` `vmTemplateUrl` 。
 
 ```json
 "variables": {
@@ -404,7 +406,7 @@ ms.locfileid: "96852093"
 }
 ```
 
-您也可以使用 [deployment()](template-functions-deployment.md#deployment) 取得目前範本的基底 URL，用來取得相同位置中其他範本的 URL。 如果您的範本位置變更，或您想要避免在範本檔案中使用硬式編碼 URL，這十分實用。 只有在透過 URL 連結至遠端範本時，才會傳回 templateLink 屬性。 如果您使用本機範本，就無法使用該屬性。
+您也可以使用 [deployment()](template-functions-deployment.md#deployment) 取得目前範本的基底 URL，用來取得相同位置中其他範本的 URL。 如果您的範本位置變更，或您想要避免在範本檔案中使用硬式編碼 URL，這十分實用。 `templateLink`只有在連結至具有 URL 的遠端範本時，才會傳回此屬性。 如果您使用本機範本，就無法使用該屬性。
 
 ```json
 "variables": {
@@ -423,49 +425,49 @@ ms.locfileid: "96852093"
 
 ## <a name="using-copy"></a>使用複製
 
-若要以嵌套的範本建立資源的多個實例，請在 **Microsoft .resources/部署** 資源的層級新增 copy 元素。 或者，如果範圍是內部，您可以在嵌套的範本內新增複本。
+若要使用嵌套的範本來建立資源的多個實例，請 `copy` 在資源層級新增元素 `Microsoft.Resources/deployments` 。 或者，如果範圍為 `inner` ，您可以在嵌套的範本內加入複本。
 
-下列範例範本顯示如何搭配使用複製與嵌套的範本。
+下列範例範本會示範如何搭配使用 `copy` 與嵌套的範本。
 
 ```json
 "resources": [
   {
-  "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
-  "name": "[concat('nestedTemplate', copyIndex())]",
-  // yes, copy works here
-  "copy":{
-    "name": "storagecopy",
-    "count": 2
-  },
-  "properties": {
-    "mode": "Incremental",
-    "expressionEvaluationOptions": {
-    "scope": "inner"
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "[concat('nestedTemplate', copyIndex())]",
+    // yes, copy works here
+    "copy": {
+      "name": "storagecopy",
+      "count": 2
     },
-    "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-      {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(variables('storageName'), copyIndex())]",
-      "location": "West US",
-      "sku": {
-        "name": "Standard_LRS"
+    "properties": {
+      "mode": "Incremental",
+      "expressionEvaluationOptions": {
+        "scope": "inner"
       },
-      "kind": "StorageV2"
-      // Copy works here when scope is inner
-      // But, when scope is default or outer, you get an error
-      //"copy":{
-      //  "name": "storagecopy",
-      //  "count": 2
-      //}
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "resources": [
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[concat(variables('storageName'), copyIndex())]",
+            "location": "West US",
+            "sku": {
+              "name": "Standard_LRS"
+            },
+            "kind": "StorageV2"
+            // Copy works here when scope is inner
+            // But, when scope is default or outer, you get an error
+            //"copy":{
+            //  "name": "storagecopy",
+            //  "count": 2
+            //}
+          }
+        ]
       }
-    ]
     }
-  }
   }
 ]
 ```
@@ -476,7 +478,7 @@ ms.locfileid: "96852093"
 
 從連結的範本取得輸出屬性時，屬性名稱不能包含虛線。
 
-下列範例會示範如何參考連結的範本，並擷取輸出值。 連結的範本會傳回簡單的訊息。  首先，連結的範本：
+下列範例會示範如何參考連結的範本，並擷取輸出值。 連結的範本會傳回簡單的訊息。 首先，連結的範本：
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworld.json":::
 
@@ -613,28 +615,28 @@ done
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-  "containerSasToken": { "type": "securestring" }
+    "containerSasToken": { "type": "securestring" }
   },
   "resources": [
-  {
-    "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
-    "name": "linkedTemplate",
-    "properties": {
-    "mode": "Incremental",
-    "templateLink": {
-      "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
-      "contentVersion": "1.0.0.0"
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "linkedTemplate",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
     }
-    }
-  }
   ],
   "outputs": {
   }
 }
 ```
 
-在 PowerShell 中，您會取得容器的 Token 並使用下列命令部署範本。 請注意，**containerSasToken** 參數會定義於範本中。 它不是 **New-AzResourceGroupDeployment** 命令中的參數。
+在 PowerShell 中，您會取得容器的 Token 並使用下列命令部署範本。 請注意， `containerSasToken` 參數是在範本中定義。 它不是命令中的參數 `New-AzResourceGroupDeployment` 。
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -680,7 +682,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要完成教學課程，請參閱[建立連結的 Azure Resource Manager 範本](./deployment-tutorial-linked-template.md)。
-* 若要了解如何定義您資源的部署順序，請參閱 [定義 Azure Resource Manager 範本中的相依性](define-resource-dependency.md)。
-* 若要了解如何定義一個資源，但建立它的多個執行個體，請參閱 [在 Azure Resource Manager 中建立資源的多個執行個體](copy-resources.md)。
-* 如需在儲存體帳戶中設定範本並產生 SAS Token 的步驟，請參閱[使用 Resource Manager 範本與 Azure PowerShell 部署資源](deploy-powershell.md)或 [Deploy resources with Resource Manager templates and Azure CLI (使用 Resource Manager 範本和 Azure CLI 部署資源)](deploy-cli.md)。
+* 若要進行教學課程，請參閱 [教學課程：部署連結的範本](./deployment-tutorial-linked-template.md)。
+* 若要瞭解如何定義您資源的部署順序，請參閱 [定義在 ARM 範本中部署資源的順序](define-resource-dependency.md)。
+* 若要瞭解如何定義一個資源，但建立它的多個實例，請參閱 [ARM 範本中的資源反復](copy-resources.md)專案。
+* 如需在儲存體帳戶中設定範本以及產生 SAS 權杖的步驟，請參閱 [使用 arm 範本部署資源和 Azure PowerShell](deploy-powershell.md) 或 [使用 arm 範本部署資源和 Azure CLI](deploy-cli.md)。

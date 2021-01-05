@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 8715fd3d71a5f65695b045f8a32a1b88bcfdd308
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d9e575d68fe4fef607bdf443ece1ddd04f085533
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672537"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746451"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>Azure Functions 總覽的 RabbitMQ 輸出系結
 
 > [!NOTE]
-> RabbitMQ 系結只在 **Windows Premium 和專用** 方案上受到完整支援。 目前不支援耗用量和 Linux。
+> RabbitMQ 系結僅在 **Premium 和專用** 方案上受到完整支援。 不支援耗用量。
 
 使用 RabbitMQ 輸出系結，將訊息傳送至 RabbitMQ 佇列。
 
@@ -31,7 +31,7 @@ ms.locfileid: "97672537"
 
 ```cs
 [FunctionName("RabbitMQOutput")]
-[return: RabbitMQ("outputQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]
+[return: RabbitMQ(QueueName = "outputQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]
 public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
 {
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
@@ -44,34 +44,35 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 ```cs
 [FunctionName("RabbitMQOutput")]
 public static async Task Run(
-[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "TriggerConnectionString")] string rabbitMQEvent,
-[RabbitMQ("destinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<string> outputEvents,
+[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] string rabbitMQEvent,
+[RabbitMQ(QueueName = "destinationQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]IAsyncCollector<string> outputEvents,
 ILogger log)
 {
-    // processing:
-    var myProcessedEvent = DoSomething(rabbitMQEvent);
-    
      // send the message
-    await outputEvents.AddAsync(JsonConvert.SerializeObject(myProcessedEvent));
+    await outputEvents.AddAsync(JsonConvert.SerializeObject(rabbitMQEvent));
 }
 ```
 
 下列範例示範如何以 Poco 的形式傳送訊息。
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
-
-[FunctionName("RabbitMQOutput")]
-public static async Task Run(
-[RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "TriggerConnectionString")] TestClass rabbitMQEvent,
-[RabbitMQ("destinationQueue", ConnectionStringSetting = "OutputConnectionString")]IAsyncCollector<TestClass> outputPocObj,
-ILogger log)
-{
-    // send the message
-    await outputPocObj.Add(rabbitMQEvent);
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
+    public static class RabbitMQOutput{
+        [FunctionName("RabbitMQOutput")]
+        public static async Task Run(
+        [RabbitMQTrigger("sourceQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass rabbitMQEvent,
+        [RabbitMQ(QueueName = "destinationQueue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")]IAsyncCollector<TestClass> outputPocObj,
+        ILogger log)
+        {
+            // send the message
+            await outputPocObj.AddAsync(rabbitMQEvent);
+        }
+    }
 }
 ```
 
@@ -107,7 +108,7 @@ ILogger log)
 
 以下是 C# 指令碼程式碼：
 
-```csx
+```C#
 using System;
 using Microsoft.Extensions.Logging;
 
@@ -193,12 +194,14 @@ module.exports = function (context, input) {
 }
 ```
 
+在 *_\_ init_ \_ . .py*：
+
 ```python
 import azure.functions as func
 
-def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpResponse:
     input_msg = req.params.get('message')
-    msg.set(input_msg)
+    outputMessage.set(input_msg)
     return 'OK'
 ```
 
@@ -273,7 +276,7 @@ Python 指令碼不支援屬性。
 |**userName**|**使用者名稱**|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>應用程式設定的名稱，其中包含要存取佇列的使用者名稱。 例如 UserNameSetting： "< UserNameFromSettings >"|
 |**password**|**密碼**|如果使用 ConnectionStringSetting) ，則會忽略 ( <br>應用程式設定的名稱，其中包含用來存取佇列的密碼。 例如 UserNameSetting： "< UserNameFromSettings >"|
 |**connectionStringSetting**|**ConnectionStringSetting**|包含 RabbitMQ 訊息佇列連接字串之應用程式設定的名稱。 請注意，如果您直接指定連接字串，而不是透過 local.settings.js中的應用程式設定，則觸發程式將無法運作。  (例如： In *function.js*： connectionStringSetting： "rabbitMQConnection" <br> 在 *local.settings.json*： "rabbitMQConnection"： "< ActualConnectionstring >" ) |
-|**port**|**通訊埠**|如果使用 ConnectionStringSetting) 取得或設定使用的埠， (會忽略。 預設為 0。|
+|**port**|**通訊埠**|如果使用 ConnectionStringSetting) 取得或設定使用的埠， (會忽略。 預設值為0，指向 rabbitmq 用戶端的預設通訊埠設定：5672。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

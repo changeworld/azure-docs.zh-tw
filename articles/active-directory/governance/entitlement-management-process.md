@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 03/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4ff270977449bb80f97073342dc0c726a3f2316
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb84eae2db01180865db54250598f45c7b2ddca0
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80128529"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746230"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中要求進程和電子郵件通知
 
@@ -33,7 +33,7 @@ ms.locfileid: "80128529"
 
 ![核准流程圖表](./media/entitlement-management-process/request-process.png)
 
-| State | 描述 |
+| 州 | 描述 |
 | --- | --- |
 | 已提交 | 使用者提交要求。 |
 | 等待核准 | 如果存取套件的原則需要核准，則會將要求移至待核准。 |

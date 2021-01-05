@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5cd7a5737b2d13e63eabbbddd076cfc7aff83ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265676"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746791"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取權評論中審查群組和應用程式的存取權
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) 簡化了企業如何使用稱為 Azure AD 存
 1. 檢查使用者清單，並決定是否要核准或拒絕他們的持續存取權。
 
     - 若要核准或拒絕單一使用者的存取權，請按一下資料列以開啟視窗，以指定要採取的動作。 
-    - 若要核准或拒絕多位使用者的存取權，請在 [使用者] 旁新增核取記號，然後按一下 [ **評論 X 使用者 (s]) ** 按鈕來開啟視窗，以指定要採取的動作。
+    - 若要核准或拒絕多位使用者的存取權，請在 [使用者] 旁新增核取記號，然後按一下 [ **評論 X 使用者 (s])** 按鈕來開啟視窗，以指定要採取的動作。
 
 1. 按一下 [ **核准** ] 或 [ **拒絕**]。 
 
@@ -138,7 +138,7 @@ Azure Active Directory (Azure AD) 簡化了企業如何使用稱為 Azure AD 存
    2. 按一下 [ **開始審核** ] 連結以開啟存取權審核。
 
 >[!NOTE]
->如果按一下 [開始檢查] 會將您帶到 **我的應用程式** 遵循前面的 **我的應用程式入口網站**中所列的步驟。
+>如果按一下 [開始檢查] 會將您帶到 **我的應用程式** 遵循前面的 **我的應用程式入口網站** 中所列的步驟。
 
 ### <a name="navigate-to-my-access-directly"></a>直接流覽至我的存取權
 

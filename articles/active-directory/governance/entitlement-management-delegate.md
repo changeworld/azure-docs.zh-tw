@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2cf3784cc5f6014b04b4668517faf3f319ce55d5
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362547"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746672"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的委派和角色
 
@@ -92,7 +92,7 @@ ms.locfileid: "92362547"
 
 下表列出權利管理角色可執行檔工作。
 
-| Task | 管理 | 目錄建立者 | 目錄擁有者 | 存取套件管理員 | 存取套件指派管理員 |
+| 工作 | Admin | 目錄建立者 | 目錄擁有者 | 存取套件管理員 | 存取套件指派管理員 |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [委派給目錄建立者](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |  |
 | [新增已連線的組織](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |  |

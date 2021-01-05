@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77a8321ba8bac0ecaf577bce6c3c05d10508128e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: references_regions
+ms.openlocfilehash: bfdea5f2e2bd20a35ee948e99b3be9bf55038b13
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020155"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760651"
 ---
 # <a name="text-to-speech-rest-api"></a>文字轉換語音 REST API
 
@@ -34,7 +35,7 @@ ms.locfileid: "96020155"
 * 文字轉語音 REST API 需要授權標頭。 這表示需要完成權杖交換，才能存取服務。 如需詳細資訊，請參閱[驗證](#authentication)。
 
 > [!TIP]
-> 請參閱政府雲端的 Azure 政府 [檔](../../azure-government/compare-azure-government-global-azure.md) (FairFax) 端點。
+> 請參閱政府雲端的 [Azure 政府檔](/azure/azure-government/compare-azure-government-global-azure) (FairFax) 端點。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -66,6 +67,9 @@ ms.locfileid: "96020155"
 | 美國西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
+> [!TIP]
+> [預覽版](language-support.md#neural-voices-in-preview) 中的語音僅適用于下列3個區域：美國東部、西歐和東南亞。
+
 ### <a name="request-headers"></a>要求標頭
 
 下表列出文字轉換語音要求的必要和選擇性標頭。
@@ -74,7 +78,7 @@ ms.locfileid: "96020155"
 |--------|-------------|---------------------|
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必要 |
 
-### <a name="request-body"></a>Request body
+### <a name="request-body"></a>要求本文
 
 `GET`對此端點的要求不需要主體。
 
@@ -98,46 +102,78 @@ Authorization: Bearer [Base64 access_token]
 
 ```json
 [
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+    "DisplayName": "Hoda",
+    "LocalName": "هدى",
+    "ShortName": "ar-EG-Hoda",
+    "Gender": "Female",
+    "Locale": "ar-EG",
+    "SampleRateHertz": "16000",
+    "VoiceType": "Standard",
+    "Status": "GA"
+  },
+
+...
+      
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
-        "ShortName": "ar-EG-Hoda",
-        "Gender": "Female",
-        "Locale": "ar-EG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
-        "ShortName": "ar-SA-Naayf",
-        "Gender": "Male",
-        "Locale": "ar-SA",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
-        "ShortName": "bg-BG-Ivan",
-        "Gender": "Male",
-        "Locale": "bg-BG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
-        "ShortName": "ca-ES-HerenaRUS",
-        "Gender": "Female",
-        "Locale": "ca-ES",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
-        "ShortName": "zh-CN-XiaoxiaoNeural",
-        "Gender": "Female",
-        "Locale": "zh-CN",
-        "SampleRateHertz": "24000",
-        "VoiceType": "Neural"
-    },
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+    "DisplayName": "Aria",
+    "LocalName": "Aria",
+    "ShortName": "en-US-AriaNeural",
+    "Gender": "Female",
+    "Locale": "en-US",
+    "StyleList": [
+      "chat",
+      "customerservice",
+      "newscast-casual",
+      "newscast-formal",
+      "cheerful",
+      "empathetic"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "GA"
+  },
+  
+  ...
+    
+     {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ga-IE, OrlaNeural)",
+    "DisplayName": "Orla",
+    "LocalName": "Orla",
+    "ShortName": "ga-IE-OrlaNeural",
+    "Gender": "Female",
+    "Locale": "ga-IE",
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
+  
+  ...
+    
+   {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
+    "DisplayName": "Yunxi",
+    "LocalName": "云希",
+    "ShortName": "zh-CN-YunxiNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "StyleList": [
+      "Calm",
+      "Fearful",
+      "Cheerful",
+      "Disgruntled",
+      "Serious",
+      "Angry",
+      "Sad",
+      "Depressed",
+      "Embarrassed"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
 
     ...
 ]
@@ -194,7 +230,7 @@ audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
 > [!NOTE]
 > 如果您選取的語音和輸出格式具有不同的位元速率，則會視需要重新進行音訊取樣。 ogg-24khz-16bit-mono-opus 可以使用[opus 編解碼器](https://opus-codec.org/downloads/)解碼
 
-### <a name="request-body"></a>Request body
+### <a name="request-body"></a>要求本文
 
 每個 `POST` 要求的本文都會以[語音合成標記語言 (SSML)](speech-synthesis-markup.md) 形式傳送。 SSML 可讓您選擇文字轉換語音服務所傳回合成語音的語音和語言。 如需支援的完整語音清單，請參閱[語言支援](language-support.md#text-to-speech)。
 
@@ -208,23 +244,17 @@ audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
 
-X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+X-Microsoft-OutputFormat: raw-24khz-16bit-mono-pcm
 Content-Type: application/ssml+xml
 Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-AriaRUS'>
+    name='en-US-AriaNeural'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
-
-請參閱我們的語言特定範例快速入門：
-
-* [.NET Core，C#](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](./get-started-text-to-speech.md?pivots=programming-language-python)
-* [Node.js](./get-started-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP 狀態碼
 
@@ -235,7 +265,6 @@ Authorization: Bearer [Base64 access_token]
 | 200 | [確定] | 要求成功；回應主體是音訊檔案。 |
 | 400 | 不正確的要求 | 必要的參數遺失、為空白或 Null。 或者，傳遞至必要或選用參數的值無效。 常見的問題是標頭太長。 |
 | 401 | 未經授權 | 要求未經授權。 請檢查以確定您的訂用帳戶金鑰或權杖有效，並且位於正確的區域。 |
-| 413 | 要求實體太大 | SSML 輸入的長度大於 1024 個字元。 |
 | 415 | 不支援的媒體類型 | 提供錯誤的可能原因 `Content-Type` 。 `Content-Type` 應設定為 `application/ssml+xml` 。 |
 | 429 | 太多要求 | 您已超出訂用帳戶允許的配額或要求率。 |
 | 502 | 錯誤的閘道    | 網路或伺服器端問題。 也可能表示標頭無效。 |
@@ -245,5 +274,5 @@ Authorization: Bearer [Base64 access_token]
 ## <a name="next-steps"></a>後續步驟
 
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
-- [適用于長格式音訊的非同步合成](./long-audio-api.md)
+- [適用于長格式音訊的非同步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [開始使用自訂語音](how-to-custom-voice.md)

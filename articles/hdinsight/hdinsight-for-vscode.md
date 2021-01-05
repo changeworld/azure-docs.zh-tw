@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 302f1a081ca44cf6436f2c318b03e227f6640489
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001961"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746604"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用 Spark & Hive Tools for Visual Studio Code
 
@@ -211,29 +211,31 @@ ms.locfileid: "96001961"
 
    ![已成功安裝 pyspark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. 從功能表列中瀏覽至 [檢視] > [命令選擇區...]，或使用 **Shift + Ctrl + P** 鍵盤快速鍵，然後輸入 **Python:Select Interpreter to start Jupyter Server**。
+7. 請使用命令提示字元來執行 **pip install numpy = = 1.19.3**，然後再次重載 VSCode 視窗。
+
+8. 從功能表列中瀏覽至 [檢視] > [命令選擇區...]，或使用 **Shift + Ctrl + P** 鍵盤快速鍵，然後輸入 **Python:Select Interpreter to start Jupyter Server**。
 
    ![選取解譯器以啟動 Jupyter 伺服器](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-8. 選取下列 Python 選項。
+9. 選取下列 Python 選項。
 
    ![選擇下列選項](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-9. 從功能表列中瀏覽至 [檢視] > [命令選擇區...]，或使用 **Shift + Ctrl + P** 鍵盤快速鍵，然後輸入 [Developer:重新載入視窗]。
+10. 從功能表列中瀏覽至 [檢視] > [命令選擇區...]，或使用 **Shift + Ctrl + P** 鍵盤快速鍵，然後輸入 [Developer:重新載入視窗]。
 
-   ![重新載入視窗](./media/hdinsight-for-vscode/reload-window.png)
+    ![重新載入視窗](./media/hdinsight-for-vscode/reload-window.png)
 
-10. [連接](#connect-to-an-azure-account) 到您的 Azure 帳戶，或連結叢集（如果您尚未這樣做）。
+11. [連接](#connect-to-an-azure-account) 到您的 Azure 帳戶，或連結叢集（如果您尚未這樣做）。
 
-11. 選取所有程式碼，以滑鼠右鍵按一下腳本編輯器，然後選取 [ **Spark： PySpark interactive/Synapse： PySpark interactive** ] 提交查詢。 
+12. 選取所有程式碼，以滑鼠右鍵按一下腳本編輯器，然後選取 [ **Spark： PySpark interactive/Synapse： PySpark interactive** ] 提交查詢。 
 
     ![[PySpark 互動式] 內容功能表](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-12. 如果您尚未指定預設叢集，請選取叢集。 經過幾分鐘之後， **Python 互動式** 結果會出現在新的索引標籤中。按一下 [PySpark] 將核心切換到 **PySpark/Synapse PySpark**，程式碼將會成功執行。 如果您想要切換到 Synapse Pyspark 核心，建議您在 Azure 入口網站中停用自動設定。 否則，喚醒叢集並設定 Synapse 核心以供首次使用，可能需要很長的時間。 如果工具也可讓您使用內容功能表來提交程式碼區塊，而非整個腳本檔案：
+13. 如果您尚未指定預設叢集，請選取叢集。 經過幾分鐘之後， **Python 互動式** 結果會出現在新的索引標籤中。按一下 [PySpark] 將核心切換到 **PySpark/Synapse PySpark**，程式碼將會成功執行。 如果您想要切換到 Synapse Pyspark 核心，建議您在 Azure 入口網站中停用自動設定。 否則，喚醒叢集並設定 Synapse 核心以供首次使用，可能需要很長的時間。 如果工具也可讓您使用內容功能表來提交程式碼區塊，而非整個腳本檔案：
 
     ![PySpark 互動式 Python 互動式視窗](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-13. 輸入 **%% info**，然後按 Shift + Enter 以查看作業資訊 (選擇性) ：
+14. 輸入 **%% info**，然後按 Shift + Enter 以查看作業資訊 (選擇性) ：
 
     ![pyspark 互動視圖作業資訊](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -266,7 +268,8 @@ ms.locfileid: "96001961"
 
 
 > [!NOTE]
-> 此延伸模組不支援 2020.5.78807 版或更新版本的 ms-python，這是[已知問題](#known-issues)。
+>
+> 已解決「 [Ms-python >= 此擴充功能不支援2020.5.78807 版本](#issues-changed)」。 目前可使用最新的 ms python 版本。
 
 ## <a name="submit-pyspark-batch-job"></a>提交 PySpark 批次工作
 
@@ -350,7 +353,7 @@ ms.locfileid: "96001961"
   
   **要求本文**
 
-  | 名稱 | description | 類型 |
+  | 名稱 | description | type |
   | --- | --- | --- |
   | 檔案 | 包含要執行之應用程式的檔案 | 需要 (路徑)  |
   | proxyUser | 執行作業時要模擬的使用者 | String |
@@ -371,7 +374,7 @@ ms.locfileid: "96001961"
 
   **回應主體** 建立的批次物件。
 
-  | 名稱 | description | 類型 |
+  | 名稱 | description | type |
   | --- | ---| --- |
   | 識別碼 | 工作階段識別碼 | Int |
   | appId | 此會話的應用程式識別碼 | String |
@@ -486,13 +489,10 @@ ms.locfileid: "96001961"
 
 從功能表列，移至 [ **View**]  >  **命令** 選擇區，然後輸入 **Azure：登出**。
 
-## <a name="known-issues"></a>已知問題
+## <a name="issues-changed"></a>問題已變更
 
-### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>此延伸模組不支援 2020.5.78807 版或更新版本的 ms-python 
+針對這個問題，「ms-python >= 2020.5.78807 版本在此擴充功能上不受支援」已解決，現在可使用 **最新的 ms python 版本** 。
 
-「無法連線至 Jupyter Notebook。」 是 2020.5.78807 或更新 Python 版本的已知問題。 建議使用者使用 **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** 版的 ms-python，以避免發生此問題。
-
-![已知問題](./media/hdinsight-for-vscode/known-issue.png)
 
 ## <a name="next-steps"></a>後續步驟
 

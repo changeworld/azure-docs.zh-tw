@@ -5,20 +5,20 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 12/22/2020
 ms.author: tyao
-ms.openlocfilehash: f260bfc7b097931cc1a978e790c1d9dd966703ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 60a4ef47bc30955c918983d54f613cbdb5cbed73
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563506"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746757"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>使用 Azure Front Door 的 Web 應用程式防火牆設定 IP 限制規則
 
 本文說明如何使用 Azure 入口網站、Azure CLI、Azure PowerShell 或 Azure Resource Manager 範本，在 Web 應用程式防火牆中設定 (WAF) for Azure Front Door 的 IP 限制規則。
 
-以 IP 位址為基礎的存取控制規則是自訂的 WAF 規則，可讓您控制對您 web 應用程式的存取。 方法是指定無類別 Inter-Domain 路由 (CIDR) 格式的 IP 位址或 IP 位址範圍清單。
+以 IP 位址為基礎的存取控制規則是自訂的 WAF 規則，可讓您控制對您 web 應用程式的存取。 方法是指定無類別 Inter-Domain 路由 (CIDR) 格式的 IP 位址或 IP 位址範圍清單。 IP 位址符合、 **RemoteAddr** 和 **SocketAddr** 中有兩種相符的變數。 RemoteAddr 是通常透過 X 轉送的要求標頭所傳送的原始用戶端 IP。 SocketAddr 是 WAF 所見的來源 IP 位址。 如果您的使用者位於 proxy 後方，SocketAddr 通常是 proxy 伺服器位址。
 
 根據預設，您的 web 應用程式可從網際網路存取。 如果您想要限制從已知 IP 位址或 IP 位址範圍的清單存取用戶端，您可以建立 IP 比對規則，其中包含作為相符值的 IP 位址清單，並將 operator 設為 "Not" (否定是 true) 和要 **封鎖** 的動作。 套用 IP 限制規則之後，源自此允許清單外部地址的要求會收到403禁止的回應。
 
@@ -30,7 +30,7 @@ ms.locfileid: "94563506"
 
 ### <a name="create-a-waf-policy"></a>建立 WAF 原則
 
-1. 在 Azure 入口網站上，選取 [ **建立資源** ]，在 [搜尋] 方塊中輸入  **web 應用程式防火牆** ，然後選取 [ **web 應用程式防火牆] ([WAF])** 。
+1. 在 Azure 入口網站上，選取 [ **建立資源**]，在 [搜尋] 方塊中輸入  **web 應用程式防火牆** ，然後選取 [ **web 應用程式防火牆] ([WAF])**。
 2. 選取 [建立]。
 3. 在 [ **建立 WAF 原則** ] 頁面上，使用下列值完成 [ **基本** ] 索引標籤：
    
@@ -44,10 +44,10 @@ ms.locfileid: "94563506"
 
    選取 **下一個：原則設定**
 
-1. 在 [ **原則設定** ] 索引標籤上，選取 [ **防止** ]。 針對 [ **封鎖回應** 本文]，輸入 *您已被封鎖！* 您可以看到您的自訂規則作用中。
-2. 選取 **[下一步：受控規則]** 。
-3. 選取 **[下一步：自訂規則]** 。
-4. 選取 [ **新增自訂規則** ]。
+1. 在 [ **原則設定** ] 索引標籤上，選取 [ **防止**]。 針對 [ **封鎖回應** 本文]，輸入 *您已被封鎖！* 您可以看到您的自訂規則作用中。
+2. 選取 **[下一步：受控規則]**。
+3. 選取 **[下一步：自訂規則]**。
+4. 選取 [ **新增自訂規則**]。
 5. 在 [ **新增自訂規則** ] 頁面上，使用下列測試值來建立自訂規則：
 
    |設定  |值  |
@@ -64,12 +64,12 @@ ms.locfileid: "94563506"
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="自訂規則":::
 
-   選取 [新增]  。
-6. 選取 **[下一步：關聯]** 。
-7. 選取 [ **新增前端主機** ]。
-8. 針對 [ **前端主機** ]，選取您的前端主機，然後選取 [ **新增** ]。
+   選取 [新增]。
+6. 選取 **[下一步：關聯]**。
+7. 選取 [ **新增前端主機**]。
+8. 針對 [ **前端主機**]，選取您的前端主機，然後選取 [ **新增**]。
 9. 選取 [檢閱 + 建立]。
-10. 原則驗證通過後，選取 [ **建立** ]。
+10. 原則驗證通過後，選取 [ **建立**]。
 
 ### <a name="test-your-waf-policy"></a>測試您的 WAF 原則
 
@@ -109,7 +109,7 @@ az network front-door waf-policy create \
 
 在下列範例中：
 -  將 *IPAllowPolicyExampleCLI* 取代為您稍早建立的唯一原則。
--  以您自己的範圍取代 *ip 位址-範圍-1* ， *ip 位址範圍 2* 。
+-  以您自己的範圍取代 *ip 位址-範圍-1*， *ip 位址範圍 2* 。
 
 首先，為上一個步驟所建立的原則建立 IP 允許規則。 
 > [!NOTE]
@@ -156,7 +156,7 @@ az network front-door waf-policy rule match-condition add \
      --name <frontdoor-name>
      --resource-group <resource-group-name>
    ```
-在此範例中，WAF 原則會套用至 **FrontendEndpoints [0]** 。 您可以將 WAF 原則連結至您的任何前端。
+在此範例中，WAF 原則會套用至 **FrontendEndpoints [0]**。 您可以將 WAF 原則連結至您的任何前端。
 > [!Note]
 > 您只需將 **WebApplicationFirewallPolicyLink** 屬性設定為一次，即可將 WAF 原則連結至 Azure Front Door 前端。 後續的原則更新會自動套用至前端。
 
@@ -190,7 +190,7 @@ Azure PowerShell 提供一組 Cmdlet，可使用 [Azure Resource Manager](../../
 
 ### <a name="define-an-ip-match-condition"></a>定義 IP 比對條件
 使用 [AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) 命令來定義 IP 比對條件。
-在下列範例中，以您自己的範圍取代 *ip 位址範圍-1* 、 *ip 位址範圍 2* 。    
+在下列範例中，以您自己的範圍取代 *ip 位址範圍-1*、 *ip 位址範圍 2* 。    
 ```powershell
 $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchVariable  RemoteAddr `
@@ -236,7 +236,7 @@ $IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 ```
 
 > [!NOTE]
-> 在此範例中，WAF 原則會套用至 **FrontendEndpoints [0]** 。 您可以將 WAF 原則連結至您的任何前端。 您只需將 **WebApplicationFirewallPolicyLink** 屬性設定為一次，即可將 WAF 原則連結至 Azure Front Door 前端。 後續的原則更新會自動套用至前端。
+> 在此範例中，WAF 原則會套用至 **FrontendEndpoints [0]**。 您可以將 WAF 原則連結至您的任何前端。 您只需將 **WebApplicationFirewallPolicyLink** 屬性設定為一次，即可將 WAF 原則連結至 Azure Front Door 前端。 後續的原則更新會自動套用至前端。
 
 
 ## <a name="configure-a-waf-policy-with-a-resource-manager-template"></a>使用 Resource Manager 範本設定 WAF 原則
