@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656932"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824651"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -81,15 +81,9 @@ Azure 數位 Twins .NET (c # ) SDK 是 Azure SDK for .NET 的一部分。 它是
 > [!NOTE]
 > 如需 SDK 設計的詳細資訊，請參閱 [Azure sdk 的一般設計原則](https://azure.github.io/azure-sdk/general_introduction.html) 和特定的 [.net 設計指導方針](https://azure.github.io/azure-sdk/dotnet_introduction.html)。
 
-若要使用 SDK，請在您的專案中包含 NuGet 套件 **DigitalTwins** 。 您也需要最新版的 **Azure 身分識別** 套件。
-
-* 在 Visual Studio 中，您可以透過 [ *工具] > nuget 封裝管理員 > 管理方案) 的 Nuget 套件* ，利用 nuget 封裝管理員來新增套件 (。 
-* 使用 .NET 命令列工具，您可以執行：
-
-    ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
-    ```
+若要使用 SDK，請在您的專案中包含 NuGet 套件 **DigitalTwins** 。 您也需要最新版的 **Azure 身分識別** 套件。 在 Visual Studio 中，您可以使用 NuGet 封裝管理員來新增這些套件 (*> nuget 封裝管理員 > 管理方案) 的 Nuget 套件* 。 或者，您可以使用 .NET 命令列工具搭配下列 NuGet 套件連結中所找到的命令，將這些專案新增至您的專案：
+* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 這是適用於[適用於 .NET 的 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的套件。 
+* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 此程式庫會提供協助驗證 Azure 的工具。
 
 如需在實務中使用 Api 的詳細逐步解說，請參閱 [*教學課程：撰寫用戶端應用程式程式碼*](tutorial-code.md)。 
 

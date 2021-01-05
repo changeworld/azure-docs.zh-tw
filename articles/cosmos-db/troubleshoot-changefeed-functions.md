@@ -4,16 +4,16 @@ description: 使用 Cosmos DB 的 Azure Functions 觸發程式時的常見問題
 author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 03/13/2020
+ms.date: 12/29/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9fc5da214a50cb000d2154d08bb9b6f6f98ac5ec
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1b7b82ea07b7e00d281739011c9c9f83ab4dff73
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340521"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825619"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>針對 Cosmos DB 使用 Azure Functions 觸發程式時，診斷和疑難排解問題
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -33,7 +33,7 @@ Cosmos DB 的 Azure Functions 觸發程式和系結取決於基底 Azure Functio
 
 擴充功能套件的主要功能是為 Cosmos DB 提供 Azure Functions 觸發程式和系結的支援。 它也包含 [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet-core.md)，如果您想要以程式設計方式與 Azure Cosmos DB 互動，而不使用觸發程式和系結，這會很有説明。
 
-如果您想要使用 Azure Cosmos DB SDK，請確定您未將其他 NuGet 套件參考新增至您的專案。 相反地，請 **讓 SDK 參考解析 Azure Functions 的延伸模組套件** 。 與觸發程式和系結分開使用 Azure Cosmos DB SDK
+如果您想要使用 Azure Cosmos DB SDK，請確定您未將其他 NuGet 套件參考新增至您的專案。 相反地，請 **讓 SDK 參考解析 Azure Functions 的延伸模組套件**。 與觸發程式和系結分開使用 Azure Cosmos DB SDK
 
 此外，如果您要以手動方式建立自己的 [AZURE COSMOS DB SDK 用戶端](./sql-api-sdk-dotnet-core.md)實例，則應該遵循 [使用單一模式方法](../azure-functions/manage-connections.md#documentclient-code-example-c)來執行只有一個用戶端實例的模式。 此程式可避免您作業中的潛在通訊端問題。
 
@@ -45,7 +45,7 @@ Azure 函式失敗，並出現錯誤訊息：「資料庫 ' 資料庫名稱 ' �
 
 這表示觸發程式所需的一或兩個 Azure Cosmos 容器都不存在或無法連線到 Azure 函式。 **錯誤本身會告訴您哪個 Azure Cosmos 資料庫和容器是** 根據您的設定而尋找的觸發程式。
 
-1. 確認 `ConnectionStringSetting` 屬性，並 **參考存在於 Azure 函數應用程式中的設定** 。 這個屬性的值不應該是連接字串本身，而是設定設定的名稱。
+1. 確認 `ConnectionStringSetting` 屬性，並 **參考存在於 Azure 函數應用程式中的設定**。 這個屬性的值不應該是連接字串本身，而是設定設定的名稱。
 2. 確認 `databaseName` 和 `collectionName` 存在於您的 Azure Cosmos 帳戶中。 如果您使用自動值取代 (使用 `%settingName%` 模式) ，請確定您的 Azure 函數應用程式中有該設定的名稱。
 3. 如果您未指定 `LeaseCollectionName/leaseCollectionName` ，則預設值為「租用」。 確認這類容器是否存在。 您可以選擇性地將 `CreateLeaseCollectionIfNotExists` 觸發程式中的屬性設定為，以 `true` 自動建立。
 4. 確認您的 [Azure Cosmos 帳戶的防火牆](how-to-configure-firewall.md) 設定，以查看其不會封鎖 azure Function。
@@ -85,16 +85,18 @@ Azure 函式失敗，並出現錯誤訊息：「資料庫 ' 資料庫名稱 ' �
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>我的觸發程式中缺少某些變更
 
-如果您發現 Azure 函式未收取 Azure Cosmos 容器中發生的部分變更，則需要進行初始調查步驟，才能執行。
+如果您發現 Azure 函式未收取 Azure Cosmos 容器中發生的部分變更，或複製它們時目的地中缺少某些變更，請遵循下列步驟。
 
 當您的 Azure 函式收到變更時，通常會進行處理，並可選擇性地將結果傳送至另一個目的地。 當您調查遺失的變更時，請務必 **測量在內嵌點收到哪些變更** (當 Azure 函式啟動) ，而不是目的地時。
 
 如果目的地缺少某些變更，這可能表示在收到變更之後，Azure 函數執行期間發生一些錯誤。
 
-在這種情況下，最佳的作法是在 `try/catch` 您的程式碼中，以及可能正在處理變更的迴圈內新增區塊，以偵測特定專案子集的任何失敗，並據以進行處理， (將它們傳送到另一個儲存體，以供進一步分析或重試) 。 
+在這種情況下，最佳的作法是在 `try/catch` 您的程式碼中，以及可能正在處理變更的迴圈內新增區塊，以偵測特定專案子集的任何失敗，並據以進行處理， (將它們傳送到另一個儲存體，以供進一步分析或重試) 。
 
 > [!NOTE]
 > 根據預設，如果在程式碼執行期間發生未處理的例外狀況，Azure Functions 的 Cosmos DB 觸發程序將不會重試一批變更。 這表示，變更未抵達目的地的原因是因為您無法處理這些變更。
+
+如果目的地為另一個 Cosmos 容器，而您正在執行 Upsert 作業來複製專案，請 **確認受監視的和目的地容器上的分割區索引鍵定義相同**。 由於此設定的差異，Upsert 作業可能會將多個來源專案儲存為目的地中的一個。
 
 如果您發現觸發程式完全不會收到某些變更，最常見的案例是有 **另一個 Azure** 函式正在執行。 它可能是部署在 Azure 中的另一個 Azure 函式，或是在開發人員電腦本機上執行的 Azure 函式，該電腦上的相同設定 (相同 **的** 受監視和租用容器) ，而此 azure 函式會竊取您預期 Azure 函式所要處理的變更子集。
 

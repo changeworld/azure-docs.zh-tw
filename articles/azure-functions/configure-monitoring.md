@@ -3,13 +3,13 @@ title: 設定 Azure Functions 的監視
 description: 瞭解如何將您的函數應用程式連接至 Application Insights 進行監視，以及如何設定資料收集。
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperf-fy21q2, devx-track-azurecli
-ms.openlocfilehash: 5c4e9795109a9b4b5a6e9ceeec6b22e0168eb28f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 77cc87e44990f471ef38871c0225835660779a3c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027623"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825747"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何設定 Azure Functions 的監視
 
@@ -28,7 +28,7 @@ Azure Functions 記錄器包括每個記錄的「類別」。 類別指出寫入
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
-| 類別 | 資料表 | 描述 |
+| 類別 | Table | 描述 |
 | ----- | ----- | ----- |
 | **`Function.<YOUR_FUNCTION_NAME>`** | **依賴**| 某些服務會自動收集相依性資料。 針對成功的執行，這些記錄位於 `Information` 層級。 若要深入瞭解， [請參閱相依](functions-monitoring.md#dependencies)性。 例外狀況會記錄在 `Error` 層級。 運行 `Warning` 時間也會建立層級記錄，例如將佇列訊息傳送至 [有害佇列](functions-bindings-storage-queue-trigger.md#poison-messages)的時間。 | 
 | **`Function.<YOUR_FUNCTION_NAME>`** | **customMetrics**<br/>**customEvents** | C # 和 JavaScript Sdk 可讓您收集自訂計量和記錄自訂事件。 若要深入瞭解，請參閱 [自訂遙測資料](functions-monitoring.md#custom-telemetry-data)。|
@@ -44,7 +44,7 @@ Azure Functions 記錄器包括每個記錄的「類別」。 類別指出寫入
 
 # <a name="v1x"></a>[v1.x](#tab/v1)
 
-| 類別 | 資料表 | 描述 |
+| 類別 | Table | 描述 |
 | ----- | ----- | ----- |
 | **`Function`** | **traces**| 使用者產生的記錄檔，可能是任何記錄層級。 若要深入瞭解如何寫入您函式中的記錄，請參閱 [寫入記錄](functions-monitoring.md#writing-to-logs)檔。 | 
 | **`Host.Aggregator`** | **customMetrics** | 這些執行時間產生的記錄 [可在可](#configure-the-aggregator) 設定的時間內，提供函式呼叫的計數和平均值。 預設期間為 30 秒或 1,000 個結果，視何者較早達到而定。 範例包括執行次數、成功率和持續時間。 所有這些記錄都會在 `Information` 層級寫入。 如果您在 `Warning` 或以上層級進行篩選，就不會看到此資料。 |

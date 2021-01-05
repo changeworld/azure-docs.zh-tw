@@ -3,12 +3,12 @@ title: 概念-私用雲端和叢集
 description: 深入瞭解 Azure VMware 解決方案軟體定義的資料中心和 vSphere 叢集的主要功能。
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967375"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825084"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware 解決方案私用雲端和叢集概念
 
@@ -48,18 +48,8 @@ Azure VMware 解決方案私用雲端叢集使用超融合式的裸機基礎結�
 
 ## <a name="vmware-software-versions"></a>VMware 軟體版本
 
-Azure VMware 解決方案私人雲端叢集中所使用 VMware 軟體的目前軟體版本如下：
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
-| 軟體              |    版本   |
-| :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6.7 U3    | 
-| ESXi                  |    6.7 U3    | 
-| vSAN                  |    6.7 U3    |
-| NSX-T                 |      2.5     |
-
-針對私人雲端中的任何新叢集，軟體版本會符合目前正在執行的專案。 針對訂用帳戶中的任何新私人雲端，會安裝軟體堆疊的最新版本。
-
-您可以針對 [私人雲端更新和升級](concepts-upgrades.md)中所述的 Azure VMware 解決方案平臺軟體，找到一般升級原則和流程。
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>主機維護和生命週期管理
 

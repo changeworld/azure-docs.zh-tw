@@ -7,13 +7,13 @@ ms.date: 12/6/2020
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 1d842a4eaf0ff4afbc61ca58847747c3da57b1da
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.custom: devx-track-js
+ms.openlocfilehash: 1b23fa9f9cbf7b385a04835149b5d53cc42351eb
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841617"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825883"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>快速入門：適用於 JavaScript (版本 4) 的 Azure Key Vault 金鑰用戶端程式庫
 
@@ -113,7 +113,7 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --key-per
 
 ### <a name="set-up-the-app-framework"></a>設定應用程式架構
 
-1. 建立新的文字檔，並將其儲存為 'index.js'
+1. 建立新的文字檔，並將儲存為 'index.js'
 
 1. 新增必要呼叫以載入 Azure 和 Node.js 模組
 

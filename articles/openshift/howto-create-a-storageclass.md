@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: aro、openshift、az aro、red hat、cli、azure 檔案
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: db87e61166da87300a5e1fb8433a42f3f47cf832
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fe80698b71ae0ba808991d79b423d49abfacdf7c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493819"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825928"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>在 Azure Red Hat OpenShift 4 上建立 Azure 檔案儲存體 StorageClass
 
@@ -52,14 +52,14 @@ az storage account create \
 ## <a name="set-permissions"></a>設定權限
 ### <a name="set-resource-group-permissions"></a>設定資源群組許可權
 
-ARO 服務主體需要新 Azure 儲存體帳戶資源群組的 ' listKeys ' 許可權。 指派「參與者」角色以達成此目的。 
+ARO 服務主體需要新 Azure 儲存體帳戶資源群組的 ' listKeys ' 許可權。 指派「參與者」角色以達成此目的。
 
 ```bash
 ARO_RESOURCE_GROUP=aro-rg
 CLUSTER=cluster
-ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER –-query servicePrincipalProfile.clientId -o tsv)
+ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER --query servicePrincipalProfile.clientId -o tsv)
 
-az role assignment create –-role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
+az role assignment create --role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
 ```
 
 ### <a name="set-aro-cluster-permissions"></a>設定 ARO 叢集許可權
@@ -90,7 +90,7 @@ metadata:
 provisioner: kubernetes.io/azure-file
 parameters:
   location: $LOCATION
-  skuName: Standard_LRS 
+  skuName: Standard_LRS
   storageAccount: $AZURE_STORAGE_ACCOUNT_NAME
   resourceGroup: $AZURE_FILES_RESOURCE_GROUP
 reclaimPolicy: Delete
@@ -131,7 +131,7 @@ oc exec $POD -- bash -c "echo 'azure file storage' >> /data/test.txt"
 oc exec $POD -- bash -c "cat /data/test.txt"
 azure file storage
 ```
-您也可以透過 Azure 入口網站中的儲存體總管來顯示 test.txt 檔案。 
+您也可以透過 Azure 入口網站中的儲存體總管來顯示 test.txt 檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

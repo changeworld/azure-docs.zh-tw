@@ -3,15 +3,15 @@ title: 運算式中的函式參考指南
 description: 運算式中的函式參考指南，適用於 Azure Logic Apps 和 Power Automate
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: a4646263eeb93a33a03e32107b46bb6dc104ce06
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5c03d9b64f957f6ef8450197477f185dc8d15b2d
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326296"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825853"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在運算式中使用函式的參考指南，適用於 Azure Logic Apps 和 Power Automate
 
@@ -1678,7 +1678,7 @@ decodeUriComponent('<value>')
 此範例會以已解碼的版本取代此字串中的逸出字元：
 
 ```
-decodeUriComponent('http%3A%2F%2Fcontoso.com')
+decodeUriComponent('https%3A%2F%2Fcontoso.com')
 ```
 
 並傳回此結果：`"https://contoso.com"`
@@ -1753,7 +1753,7 @@ encodeUriComponent('<value>')
 encodeUriComponent('https://contoso.com')
 ```
 
-並傳回此結果：`"http%3A%2F%2Fcontoso.com"`
+並傳回此結果：`"https%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
@@ -4174,7 +4174,7 @@ triggerFormDataMultiValues('<key>')
 triggerFormDataMultiValues('feedUrl')
 ```
 
-並傳回此陣列作為範例結果：`["http://feeds.reuters.com/reuters/topNews"]`
+並傳回此陣列作為範例結果：`["https://feeds.a.dj.com/rss/RSSMarketsMain.xml"]`
 
 <a name="triggerFormDataValue"></a>
 
@@ -4205,7 +4205,7 @@ triggerFormDataValue('<key>')
 triggerFormDataValue('feedUrl')
 ```
 
-並傳回此字串作為範例結果：`"http://feeds.reuters.com/reuters/topNews"`
+並傳回此字串作為範例結果：`"https://feeds.a.dj.com/rss/RSSMarketsMain.xml"`
 
 <a name="triggerMultipartBody"></a>
 
@@ -4336,7 +4336,7 @@ uriComponent('<value>')
 uriComponent('https://contoso.com')
 ```
 
-並傳回此結果：`"http%3A%2F%2Fcontoso.com"`
+並傳回此結果：`"https%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
@@ -4363,7 +4363,7 @@ uriComponentToBinary('<value>')
 此範例會建立此 URI 編碼字串的二進位版本：
 
 ```
-uriComponentToBinary('http%3A%2F%2Fcontoso.com')
+uriComponentToBinary('https%3A%2F%2Fcontoso.com')
 ```
 
 並傳回此結果：
@@ -4398,7 +4398,7 @@ uriComponentToString('<value>')
 此範例會建立此 URI 編碼字串的已解碼字串版本：
 
 ```
-uriComponentToString('http%3A%2F%2Fcontoso.com')
+uriComponentToString('https%3A%2F%2Fcontoso.com')
 ```
 
 並傳回此結果：`"https://contoso.com"`
@@ -4458,7 +4458,7 @@ uriPath('<uri>')
 此範例會尋找此 URI 的 `path` 值：
 
 ```
-uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPath('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 並傳回此結果：`"/catalog/shownew.htm"`
@@ -4488,7 +4488,7 @@ uriPathAndQuery('<uri>')
 此範例會尋找此 URI 的 `path` 和 `query` 值：
 
 ```
-uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPathAndQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 並傳回此結果：`"/catalog/shownew.htm?date=today"`
@@ -4518,7 +4518,7 @@ uriPort('<uri>')
 此範例會傳回此 URI 的 `port` 值：
 
 ```
-uriPort('http://www.localhost:8080')
+uriPort('https://www.localhost:8080')
 ```
 
 並傳回此結果：`8080`
@@ -4548,7 +4548,7 @@ uriQuery('<uri>')
 此範例會傳回此 URI 的 `query` 值：
 
 ```
-uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 並傳回此結果：`"?date=today"`
@@ -4578,7 +4578,7 @@ uriScheme('<uri>')
 此範例會傳回此 URI 的 `scheme` 值：
 
 ```
-uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriScheme('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 並傳回此結果：`"http"`
@@ -4918,16 +4918,16 @@ xpath('<xml>', '<xpath>')
 
 *範例 8*
 
-在此範例中，假設您有此 XML 字串，其中包含 XML 檔命名空間， `xmlns="http://contoso.com"` 如下所示：
+在此範例中，假設您有此 XML 字串，其中包含 XML 檔命名空間， `xmlns="https://contoso.com"` 如下所示：
 
 ```xml
-<?xml version="1.0"?><file xmlns="http://contoso.com"><location>Paris</location></file>
+<?xml version="1.0"?><file xmlns="https://contoso.com"><location>Paris</location></file>
 ```
 
-這些運算式使用 XPath 運算式 `/*[name()="file"]/*[name()="location"]` 或 `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` ，來尋找符合節點的節點 `<location></location>` 。 這些範例顯示您在邏輯應用程式設計工具或運算式編輯器中使用的語法：
+這些運算式使用 XPath 運算式 `/*[name()="file"]/*[name()="location"]` 或 `/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]` ，來尋找符合節點的節點 `<location></location>` 。 這些範例顯示您在邏輯應用程式設計工具或運算式編輯器中使用的語法：
 
 * `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
-* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
+* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]')`
 
 以下是符合 `<location></location>` 節點的結果節點： 
 

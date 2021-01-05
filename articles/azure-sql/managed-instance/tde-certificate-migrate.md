@@ -4,19 +4,19 @@ description: 遷移憑證，以透明資料加密至 Azure SQL 受控執行個�
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: 80ff16156348db9c3a209757b48b7d54615d9104
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c465da3d5d812ea7e811cbe59318122700c6e786
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790690"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824670"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>將受 TDE 保護之資料庫的憑證遷移至 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -125,7 +125,7 @@ Update-Module -Name Az.Sql
 
 2. 在 [憑證] MMC 嵌入式管理單元中，展開 [個人 > 憑證的路徑] 以查看憑證清單。
 
-3. 以滑鼠右鍵按一下憑證，然後按一下 [ **匯出** ]。
+3. 以滑鼠右鍵按一下憑證，然後按一下 [ **匯出**]。
 
 4. 遵循嚮導，將憑證和私密金鑰匯出至 .pfx 格式。
 
