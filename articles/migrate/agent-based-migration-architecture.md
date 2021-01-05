@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753887"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861954"
 ---
 # <a name="agent-based-migration-architecture"></a>代理程式移轉架構
 
@@ -92,14 +92,14 @@ ms.locfileid: "96753887"
 
 您可以使用此表中的值來判斷您的部署中是否需要額外的進程伺服器。
 
-- 如果您的每日變更率 (流失率) 超過 2 TB，請部署額外的進程伺服器。
+- 如果 (變換率) 的每日變更率超過 2 TB，請部署額外的進程伺服器。
 - 如果您要複寫200部以上的機器，請部署額外的複寫設備。
 
 **CPU** | **記憶體** | **可用空間-資料快取** | **流失率** | **複寫限制**
 --- | --- | --- | --- | ---
 8 個 vCPU (2 個插槽 * 4 核心 \@ 2.5GHz) | 16 GB | 300 GB | 500 GB 或更少 | < 100 部機器 
 12 個 vCPU (2 個插槽 * 6 核心 \@ 2.5GHz) | 18 GB | 600 GB | 501 GB 至 1 TB | 100-150 機器。
-16 個 vCPU (2 個插槽 * 8 核心 \@ 2.5GHz) | 32 G1 |  1 TB | 1 TB 至 2 TB | 151-200 機器。
+16 個 vCPU (2 個插槽 * 8 核心 \@ 2.5GHz) | 32 GB |  1 TB | 1 TB 至 2 TB | 151-200 機器。
 
 ### <a name="sizing-scale-out-process-servers"></a>調整相應放大進程伺服器的大小
 
@@ -108,7 +108,7 @@ ms.locfileid: "96753887"
 **進程伺服器** | **資料快取的可用空間** | **流失率** | **複寫限制**
 --- | --- | --- | --- 
 4 個 vCPU (2 個插槽 * 2 核心 \@ 2.5 GHz)，8 GB 記憶體 | 300 GB | 250 GB 或更少 | 最多85電腦 
-8 個 vCPU (2 個插槽 * 4 核心 \@ 2.5 GHz)，12 GB 記憶體 | 600 GB | 251 GB 至 1 TB    | 86-150 機器。
+8 個 vCPU (2 個插槽 * 4 核心 \@ 2.5 GHz)，12 GB 記憶體 | 600 GB | 251 GB 至 1 TB | 86-150 機器。
 12個 vcpu (2 個通訊端 * 6 核心 \@ 2.5 GHz) ，24 GB 記憶體 | 1 TB | 1-2 TB | 151-225 機器。
 
 ## <a name="throttle-upload-bandwidth"></a>節流上傳頻寬。

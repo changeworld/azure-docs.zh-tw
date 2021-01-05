@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 71b57eae1a66e6966f61123e638c4790410ef445
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960745"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862526"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure 認知服務容器的常見問題 (常見問題) 
 
@@ -22,7 +22,7 @@ ms.locfileid: "94960745"
 
 **問：什麼是可用的？**
 
-**答：** Azure 認知服務容器可讓開發人員使用 Azure 中可用的相同智慧型 Api，但有容器化的 [優點](../cognitive-services-container-support.md#features-and-benefits) 。 某些容器是以閘道預覽形式提供，可能需要應用程式才能存取。 其他容器可公開作為 ungated 預覽，或已正式推出。 您可以在 [Azure 認知服務中的容器支援](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) 文章中找到完整的容器清單及其可用性。 您也可以查看 [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)中的容器。
+**答：** Azure 認知服務容器可讓開發人員使用 Azure 中可用的相同智慧型 Api，但有容器化的 [優點](../cognitive-services-container-support.md#features-and-benefits) 。 某些容器是以閘道預覽形式提供，可能需要應用程式才能存取。 其他容器可公開作為 ungated 預覽，或已正式推出。 您可以在 [Azure 認知服務中的容器支援](../cognitive-services-container-support.md) 文章中找到完整的容器清單及其可用性。 您也可以查看 [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)中的容器。
 
 **問：認知服務雲端與容器之間是否有任何差異？**
 
@@ -164,7 +164,7 @@ ms.locfileid: "94960745"
  
 **問：如何? 探索容器嗎？**
 
-**答：** 認知服務容器可在各種不同的位置中使用，例如 Azure 入口網站、Docker hub 和 Azure container registry。 如需最新的容器位置，請參閱 [容器存放庫和映射](../cognitive-services-container-support.md#container-repositories-and-images)。
+**答：** 認知服務容器可在各種不同的位置中使用，例如 Azure 入口網站、Docker hub 和 Azure container registry。 如需最新的容器位置，請參閱 [容器映射](container-image-tags.md)。
 
 **問：認知服務容器與 AWS 和 Google 供應專案有何不同？**
 

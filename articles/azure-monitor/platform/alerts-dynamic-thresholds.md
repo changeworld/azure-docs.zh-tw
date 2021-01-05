@@ -4,13 +4,13 @@ description: 建立警示，內含以機器學習為基礎的動態閾值
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 02/16/2020
-ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/04/2021
+ms.openlocfilehash: 92fafc9357ca08cd31c9ba7badbf7f6433f44f86
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012334"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862580"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure 監視器中有動態閾值的計量警示
 
@@ -39,7 +39,7 @@ ms.locfileid: "96012334"
 選取閾值的方式，是偏離這些閾值的程度必須表示計量行為出現異常。
 
 > [!NOTE]
-> 季節性模式偵測設定為小時、天或周間隔。 這表示可能不會偵測到 bihourly 模式或 semiweekly 之類的其他模式。
+> 動態閾值可以偵測每小時、每日或每週模式的季節性。 可能不會偵測到諸如雙小時或半周季節性等其他模式。 若要偵測每週的季節性，至少需要三周的歷程記錄資料。 
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>動態閾值中的「敏感度」設定有何意義？
 

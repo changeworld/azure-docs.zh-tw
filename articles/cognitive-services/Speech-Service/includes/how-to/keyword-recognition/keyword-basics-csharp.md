@@ -2,14 +2,14 @@
 author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/03/2020
+ms.date: 01/04/2021
 ms.author: trbye
-ms.openlocfilehash: d71a7f6451cda5e2e50b5410140ac88361bf1735
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 786f9587ab223cf87a48cd791f366049b94af59b
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509153"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97866111"
 ---
 首先，使用靜態函式載入關鍵字模型檔案，此函式會傳回 `FromFile()` `KeywordRecognitionModel` 。 使用 `.table` 您從 Speech Studio 下載之檔案的路徑。 此外，您可以 `AudioConfig` 使用預設的麥克風建立，然後使用音訊設定來具現化新的 `KeywordRecognizer` 。
 
@@ -29,4 +29,12 @@ KeywordRecognitionResult result = await keywordRecognizer.RecognizeOnceAsync(key
 ```
 
 > [!NOTE]
-> 此處所示的範例會使用本機關鍵詞辨識，因為它不需要 `SpeechConfig` 驗證內容的物件，也不會與後端連線。 不過，您可以 [使用連續的後端連接](../../../tutorial-voice-enable-your-bot-speech-sdk.md#view-the-source-code-that-enables-keyword)來執行關鍵字辨識和驗證。
+> 此處所示的範例會使用本機關鍵詞辨識，因為它不需要 `SpeechConfig` 驗證內容的物件，也不會與後端連線。 不過，您可以 [使用直接後端連接](../../../tutorial-voice-enable-your-bot-speech-sdk.md#view-the-source-code-that-enables-keyword)來執行關鍵字辨識和驗證。
+
+### <a name="continuous-recognition"></a>連續辨識
+
+語音 SDK 中的其他類別可針對語音和意圖辨識) 使用關鍵字辨識來支援持續辨識 (。 這可讓您使用通常用於連續辨識的相同程式碼，且能夠參考 `.table` 關鍵字模型的檔案。
+
+針對語音轉換文字，請依照 [快速入門](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started-speech-to-text?tabs=script%2Cbrowser%2Cwindowsinstall&pivots=programming-language-csharp#continuous-recognition) 中所示的相同設計模式來設定連續辨識。 然後，將的呼叫取代 `recognizer.StartContinuousRecognitionAsync()` 為 `recognizer.StartKeywordRecognitionAsync(KeywordRecognitionModel)` ，並傳遞您的 `KeywordRecognitionModel` 物件。 若要使用關鍵字找出停止持續辨識，請使用 `recognizer.StopKeywordRecognitionAsync()` 而不是 `recognizer.StopContinuousRecognitionAsync()` 。
+
+意圖辨識搭配和函式使用相同的模式 [`StartKeywordRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.startkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StartKeywordRecognitionAsync_Microsoft_CognitiveServices_Speech_KeywordRecognitionModel_) [`StopKeywordRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.intent.intentrecognizer.stopkeywordrecognitionasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Intent_IntentRecognizer_StopKeywordRecognitionAsync) 。

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: a9735e355244d51464c66c10e02f97f03d2e67cd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d0c26255e6d9d35d51390ed2b432b9c5dc9ab2be
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673458"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862459"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 數位 Twins 的已知問題
 
@@ -37,13 +37,21 @@ ms.locfileid: "97673458"
 | --- | --- | --- |
 | 若要判斷在執行腳本之後是否已成功設定您的角色指派，請依照安裝程式文章的 [*驗證使用者角色指派*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) 一節中的指示進行。 如果您的使用者未以此角色顯示，此問題會影響您。 | 針對使用個人 [Microsoft 帳戶 (MSA) ](https://account.microsoft.com/account)登入的使用者，您的使用者在這類命令中識別您的使用者主體識別碼可能與使用者的登入電子郵件不同，因此腳本難以探索及使用以正確指派角色。 | 若要解決此問題，您可以使用 [CLI 指示](how-to-set-up-instance-cli.md#set-up-user-access-permissions) 或 [Azure 入口網站指示](how-to-set-up-instance-portal.md#set-up-user-access-permissions)，手動設定您的角色指派。 |
 
-## <a name="issue-with-interactive-browser-authentication"></a>互動式瀏覽器驗證的問題
+## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Azure 上的互動式瀏覽器驗證問題。身分識別1.2。0
 
 **問題描述：** 當您在 Azure 數位 Twins 應用程式中使用 **[Azure 身分識別](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)程式庫** 的版本 **1.2.0** 來撰寫驗證碼時，您可能會遇到 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true)方法的問題。 在瀏覽器視窗中嘗試進行驗證時，這會顯示為 "AuthenticationFailedException" 的錯誤回應。 瀏覽器視窗可能無法完全啟動，也可能會顯示為成功驗證使用者，而用戶端應用程式仍失敗，並出現錯誤。
 
 | 這對我有何影響？ | 原因 | 解決方案 |
 | --- | --- | --- |
-| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 下列文章中使用受影響的方法：<br><br>[*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)<br><br>[*How to：撰寫應用程式驗證碼*](how-to-authenticate-client.md)<br><br>[*How to：使用 Azure 數位 Twins Api 和 Sdk*](how-to-use-apis-sdks.md) | 有些使用者在程式庫的版本 **1.2.0** 中發生此問題 `Azure.Identity` 。 | 若要解決此問題，請將您的應用程式更新為使用 [最新版本](https://www.nuget.org/packages/Azure.Identity) 的 `Azure.Identity` 。 更新程式庫版本之後，瀏覽器應該會如預期般載入和驗證。 |
+| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 下列文章中使用受影響的方法：<br><br>[*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)<br><br>[*How to：撰寫應用程式驗證碼*](how-to-authenticate-client.md)<br><br>[*How to：使用 Azure 數位 Twins Api 和 Sdk*](how-to-use-apis-sdks.md) | 有些使用者在程式庫的版本 **1.2.0** 中發生此問題 `Azure.Identity` 。 | 若要解決此問題，請更新您的應用程式以使用較 [新版本](https://www.nuget.org/packages/Azure.Identity) 的 `Azure.Identity` 。 更新程式庫版本之後，瀏覽器應該會如預期般載入和驗證。 |
+
+## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Azure 上的預設 Azure 認證驗證問題。身分識別1.3。0
+
+**問題描述：** 當您在 Azure 數位 Twins 應用程式中使用 **[Azure 身分識別](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)程式庫** 的版本 **1.3.0** 來撰寫驗證碼時，您可能會遇到這些檔中許多範例所使用的 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true)方法問題。當程式碼嘗試進行驗證時，這會顯示為「Azure AuthenticationFailedException： SharedTokenCacheCredential authentication 失敗」的錯誤回應。
+
+| 這對我有何影響？ | 原因 | 解決方案 |
+| --- | --- | --- |
+| DefaultAzureCredential 用於大部分包含驗證的檔範例中。 如果您使用 DefaultAzureCredential 撰寫驗證程式代碼，並使用程式庫的版本 1.3.0 `Azure.Identity` ，這可能會影響您。 | 使用 DefaultAzureCredential 搭配程式庫的版本 **1.3.0** 時，會出現此問題 `Azure.Identity` 。 | 若要解決此問題，請將您的應用程式切換為使用的 [版本 1.2.2](https://www.nuget.org/packages/Azure.Identity/1.2.2) `Azure.Identity` 。 變更程式庫版本之後，驗證應該會如預期般成功。 |
 
 ## <a name="next-steps"></a>後續步驟
 

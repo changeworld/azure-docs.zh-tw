@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9e1ae369560fcf8357e6016e1f7e2e438edd8c9
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803216"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862436"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
 
@@ -141,7 +141,7 @@ Azure AD 布建服務目前以迴圈的方式運作。 服務每隔40分鐘執�
 **服務類別：** 其他  
 **產品功能：** 權利管理
  
-新的委派許可權 EntitlementManagement，現在已可搭配 Microsoft Graph Beta 版中的權利管理 API 使用。 若要瞭解可用 Api 的詳細資訊，請參閱 [使用 Azure AD 權利管理 api](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta)。
+新的委派許可權 EntitlementManagement，現在已可搭配 Microsoft Graph Beta 版中的權利管理 API 使用。 若要瞭解可用 Api 的詳細資訊，請參閱 [使用 Azure AD 權利管理 api](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta&preserve-view=true)。
 
 ---
 
@@ -339,7 +339,7 @@ IT 系統管理員可以開始使用新的「混合式系統管理員」角色�
 **服務類別：** 條件式存取  
 **產品功能：** 身分識別安全性 & 保護
 
-[Azure AD 條件式存取的僅限報表模式](../conditional-access/concept-conditional-access-report-only.md) ，可讓您評估原則的結果，而不需要強制執行存取控制。 您可以在您的組織中測試僅限報告的原則，並在啟用之前瞭解其影響，讓部署更安全且更容易。 在過去幾個月中，我們已發現強式採用僅限報表模式，而不是26M 使用者已在僅限報表原則的範圍內。 今天宣佈推出新的 Azure AD 條件式存取原則時，預設會在報告模式中建立。 這表示您可以在建立原則時監視其影響。 針對使用 MS Graph Api 的使用者，您也可以透過程式設計的 [方式來管理僅限報表的原則](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta) 。 
+[Azure AD 條件式存取的僅限報表模式](../conditional-access/concept-conditional-access-report-only.md) ，可讓您評估原則的結果，而不需要強制執行存取控制。 您可以在您的組織中測試僅限報告的原則，並在啟用之前瞭解其影響，讓部署更安全且更容易。 在過去幾個月中，我們已發現強式採用僅限報表模式，而不是26M 使用者已在僅限報表原則的範圍內。 今天宣佈推出新的 Azure AD 條件式存取原則時，預設會在報告模式中建立。 這表示您可以在建立原則時監視其影響。 針對使用 MS Graph Api 的使用者，您也可以透過程式設計的 [方式來管理僅限報表的原則](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta&preserve-view=true) 。 
 
 ---
 
@@ -406,7 +406,7 @@ Microsoft Graph Directory 物件 Api、啟用計數、搜尋、篩選和排序�
 * [Juno Journey](../saas-apps/juno-journey-provisioning-tutorial.md)
 * [MediusFlow](../saas-apps/mediusflow-provisioning-tutorial.md)
 * [依組織列出 New Relic](../saas-apps/new-relic-by-organization-provisioning-tutorial.md)
-* [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-infratstructure-console-provisioning-tutorial.md)
+* [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-infrastructure-console-provisioning-tutorial.md)
 
 如需如何使用自動化使用者帳戶佈建來加強組織安全性的詳細資訊，請參閱[使用 Azure AD 自動將使用者佈建至 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
@@ -546,7 +546,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **產品功能：** 身分識別安全性 & 保護
 
-[Azure AD 條件式存取的僅限報表模式](../conditional-access/concept-conditional-access-report-only.md) ，可讓您評估原則的結果，而不需要強制執行存取控制。 您可以在您的組織中測試僅限報告的原則，並在啟用之前瞭解其影響，讓部署更安全且更容易。 在過去幾個月中，我們已瞭解採用僅限報表模式的強式採用，而26M 使用者已在僅限報表原則的範圍內。 在此公告中，預設會在僅限報表模式下建立新的 Azure AD 條件式存取原則。 這表示您可以在建立原則時監視其影響。 此外，對於使用 MS Graph Api 的使用者，您也可以透過程式設計的 [方式來管理僅限報表的原則](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta)。 
+[Azure AD 條件式存取的僅限報表模式](../conditional-access/concept-conditional-access-report-only.md) ，可讓您評估原則的結果，而不需要強制執行存取控制。 您可以在您的組織中測試僅限報告的原則，並在啟用之前瞭解其影響，讓部署更安全且更容易。 在過去幾個月中，我們已瞭解採用僅限報表模式的強式採用，而26M 使用者已在僅限報表原則的範圍內。 在此公告中，預設會在僅限報表模式下建立新的 Azure AD 條件式存取原則。 這表示您可以在建立原則時監視其影響。 此外，對於使用 MS Graph Api 的使用者，您也可以透過程式設計的 [方式來管理僅限報表的原則](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta&preserve-view=true)。 
 
 ---
 
@@ -598,7 +598,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **產品功能：** 開發人員體驗
 
-適用于 oAuth2PermissionGrant 的 Delta 查詢提供公開預覽！ 您現在可以追蹤變更，而不需要持續輪詢 Microsoft Graph。 [深入了解。](/graph/api/oAuth2PermissionGrant-delta?tabs=http&view=graph-rest-beta)
+適用于 oAuth2PermissionGrant 的 Delta 查詢提供公開預覽！ 您現在可以追蹤變更，而不需要持續輪詢 Microsoft Graph。 [深入了解。](/graph/api/oAuth2PermissionGrant-delta?tabs=http&view=graph-rest-beta&preserve-view=true)
 
 ---
 
@@ -632,7 +632,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 
 **服務類別：** MS 圖形
 
-**產品功能：** 適用于管理單位的開發人員體驗差異查詢已提供公開預覽！ 您現在可以追蹤變更，而不需要持續輪詢 Microsoft Graph。 [深入了解。](/graph/api/administrativeunit-delta?tabs=http&view=graph-rest-beta)
+**產品功能：** 適用于管理單位的開發人員體驗差異查詢已提供公開預覽！ 您現在可以追蹤變更，而不需要持續輪詢 Microsoft Graph。 [深入了解。](/graph/api/administrativeunit-delta?tabs=http&view=graph-rest-beta&preserve-view=true)
 
 ---
 
@@ -650,7 +650,7 @@ Office 正在啟動一系列行動優先的商務應用程式，這些應用程�
 - 重設使用者的密碼
 - 開啟和關閉 SMS 登入
 
-如需詳細資訊，請參閱 [Azure AD 驗證方法 API 總覽](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)。
+如需詳細資訊，請參閱 [Azure AD 驗證方法 API 總覽](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true)。
 
 ---
 
@@ -1424,7 +1424,7 @@ Azure AD 權利管理是新的身分識別治理功能，可協助組織大規�
 
 **類型：** 規劃變更 **服務類別：** 身分識別保護 **產品功能：** 身分識別安全性與保護
 
-為回應開發人員的意見反應，Azure AD Premium P2 訂閱者現在可以使用 Microsoft Graph 新的 riskDetection API，對 Azure AD Identity Protection 的風險偵測資料執行複雜的查詢。 現有的 [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta) API 搶鮮版 (Beta) 在 **2020 年 1 月 10 日** 左右停止傳回資料。 如果您的組織使用 identityRiskEvent API，您應該轉換至新的 riskDetection API。
+為回應開發人員的意見反應，Azure AD Premium P2 訂閱者現在可以使用 Microsoft Graph 新的 riskDetection API，對 Azure AD Identity Protection 的風險偵測資料執行複雜的查詢。 現有的 [identityRiskEvent](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true) API 搶鮮版 (Beta) 在 **2020 年 1 月 10 日** 左右停止傳回資料。 如果您的組織使用 identityRiskEvent API，您應該轉換至新的 riskDetection API。
 
 如需新的 riskDetection API 的詳細資訊，請參閱[風險偵測 API 參考文件](/graph/api/resources/riskdetection)。
 
@@ -2144,7 +2144,7 @@ Azure AD 的應用程式現在可以註冊並使用含有靜態查詢參數的�
 
 我們很高興宣布，Microsoft Graph 有新的 riskDetections API 現在公開預覽。 您可以使用這個新的 API，以檢視組織 Identity Protection 相關的使用者和登入風險偵測清單。 您也可以使用此 API 更有效率地查詢風險偵測，包括偵測類型、狀態、層級等詳細資料。
 
-如需詳細資訊，請參閱[風險偵測 API 參考文件](/graph/api/resources/riskdetection?view=graph-rest-beta)。
+如需詳細資訊，請參閱[風險偵測 API 參考文件](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)。
 
 ---
 
@@ -2292,7 +2292,7 @@ Azure AD 的應用程式現在可以註冊並使用含有靜態查詢參數的�
 
 我們很高興宣布，您現在可以使用風險性使用者 API 來取出使用者的風險記錄、解除風險性使用者，以及確認使用者遭盜用。 這項變更協助您更有效率地更新使用者的風險狀態，並了解其風險記錄。
 
-如需詳細資訊，請參閱[風險性使用者 API 參考文件](/graph/api/resources/riskyuser?view=graph-rest-beta)。
+如需詳細資訊，請參閱[風險性使用者 API 參考文件](/graph/api/resources/riskyuser?view=graph-rest-beta&preserve-view=true)。
 
 ---
 

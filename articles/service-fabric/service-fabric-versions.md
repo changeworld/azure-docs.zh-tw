@@ -3,12 +3,12 @@ title: Azure Service Fabric 中支援的叢集版本
 description: 瞭解 Azure Service Fabric 中的叢集版本，包括 Service Fabric team blog 中最新版本的連結。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 4407ddb80b00c847e14643be816bc681718dcb8b
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 5770aa072666f89a574da9d1f2584ab33b612330
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652206"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862164"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
@@ -21,8 +21,31 @@ ms.locfileid: "97652206"
 - [升級 Azure Service Fabric 叢集](service-fabric-cluster-upgrade.md)
 - [升級在獨立 Windows Server 叢集上執行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)
 
-## <a name="supported-versions"></a>支援的版本
 
+## <a name="unsupported-versions"></a>不支援的版本
+
+### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>5.7 和以下6.3.63 之間版本的升級警示。 *
+
+***從5.7 到6.3.63 的所有 Service Fabric 叢集都不受支援的版本。* 將會受到安全性重大變更的影響，此變更將于 2021 * * * 的 Azure 中于1月7日推出。
+ 
+ 若要避免嚴重的服務中斷 (包括未) 的叢集，您必須儘快將叢集升級為下列其中一個支援的 Service Fabric 執行階段版本，其中包含安全性問題的修正。 我們已透過指導方針與受影響的客戶聯繫。 如果您有支援方案，且需要技術協助，請開啟支援要求，並在支援票證中提及此內容，以透過 [Azure 支援通道](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) 與我們聯繫。 
+ 
+  #### <a name="supported-service-fabric-runtime-versions-including-the-fix-for-the-security-breaking-change"></a>支援的 Service Fabric 執行階段版本，包括安全性重大變更的修正 
+   將在較舊不受支援版本上執行的 Service Fabric 叢集升級為下列其中一個支援版本的安全中斷變更。
+
+  | OS | 叢集中目前的 Service Fabric 執行時間 | CU/Patch 版本  | 
+  | --- | --- |--- | 
+  | Windows | 7.0. * | 7.0.478.9590 |
+  | Windows | 7.1. * | 7.1.503.9590 |
+  | Windows | 7.2. * | 7.2.445.9590 |
+  | Ubuntu 16 | 7.0. * | 7.0.472.1  |
+  | Ubuntu 16 | 7.1. * | 7.1.455.1  |
+  | Ubuntu 1804 | 7.1. * | 7.1.455.1804 |
+  | Ubuntu 16 | 7.2. * | 7.2.447.1 |
+  | Ubuntu 1804 | 7.2. * | 7.2.447.1804 |
+ 
+
+## <a name="supported-versions"></a>支援的版本
 下表列出 Service Fabric 的版本及其支援結束日期。
 
 | 叢集中的 Service Fabric 執行階段 | 可直接自叢集版本升級 |相容的 SDK 或 NuGet 套件版本 | 結束支援 |

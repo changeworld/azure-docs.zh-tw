@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 874d44e3900b1edf24c2f6bee95d787c5fc3988d
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 24f6052c436b73d0075371fa74160d21826e2209
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704826"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97865986"
 ---
 ## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>使用 Azure 入口網站建立 Azure 容器實例資源
 
@@ -28,8 +28,8 @@ ms.locfileid: "97704826"
     |資源群組|選取可用的資源群組，或建立一個新的資源群組（例如） `cognitive-services` 。|
     |容器名稱|輸入名稱，例如 `cognitive-container-instance` 。 名稱必須在較低的 cap 中。|
     |Location|選取要部署的區域。|
-    |映像類型|如果您的容器映射儲存在不需要認證的容器登錄中，請選擇 `Public` 。 如果存取容器映射需要認證，請選擇 `Private` 。 請參閱 [容器存放庫和映射](../../cognitive-services-container-support.md#container-repositories-and-images) ，以取得容器映射是否為 `Public` 或 ( 「 `Private` 公開預覽」 ) 的詳細資料。 |
-    |映像名稱|輸入認知服務容器位置。 位置是用來做為命令引數的位置 `docker pull` 。 請參閱 [容器存放庫和映射](../../cognitive-services-container-support.md#container-repositories-and-images) 以取得可用的映射名稱及其對應的存放庫。<br><br>映射名稱必須是指定三個部分的完整限定名稱。 首先，容器登錄，接著是存放庫，最後是映射名稱： `<container-registry>/<repository>/<image-name>` 。<br><br>以下範例 `mcr.microsoft.com/azure-cognitive-services/keyphrase` 表示 Azure 認知服務存放庫下 Microsoft Container Registry 中的關鍵片語擷取映射。 另一個範例是， `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` 代表容器預覽容器登錄的 Microsoft 存放庫中的語音轉換文字映射。 |
+    |映像類型|如果您的容器映射儲存在不需要認證的容器登錄中，請選擇 `Public` 。 如果存取容器映射需要認證，請選擇 `Private` 。 請參閱 [容器存放庫和映射](../container-image-tags.md) ，以取得容器映射是否為 `Public` 或 ( 「 `Private` 公開預覽」 ) 的詳細資料。 |
+    |映像名稱|輸入認知服務容器位置。 位置是用來做為命令引數的位置 `docker pull` 。 請參閱 [容器存放庫和映射](../container-image-tags.md) 以取得可用的映射名稱及其對應的存放庫。<br><br>映射名稱必須是指定三個部分的完整限定名稱。 首先，容器登錄，接著是存放庫，最後是映射名稱： `<container-registry>/<repository>/<image-name>` 。<br><br>以下範例 `mcr.microsoft.com/azure-cognitive-services/keyphrase` 表示 Azure 認知服務存放庫下 Microsoft Container Registry 中的關鍵片語擷取映射。 另一個範例是， `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` 代表容器預覽容器登錄的 Microsoft 存放庫中的語音轉換文字映射。 |
     |OS 類型|`Linux`|
     |大小|變更您特定認知服務容器的建議建議大小：<br>2個 CPU 核心<br>4 GB
 

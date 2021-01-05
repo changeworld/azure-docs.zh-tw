@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: 內部部署、Docker、容器、情感分析、自然語言處理
-ms.openlocfilehash: 088cf407320dcf8ef6705c57d86836531d9bdfe6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f785a5e6749e46b34723af11b4d61a98b5d94384
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965137"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862487"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安裝並執行文字分析容器
 
@@ -34,7 +34,7 @@ ms.locfileid: "94965137"
 > [!IMPORTANT]
 > 免費帳戶的限制為每月5000筆交易，而只有 **免費** 和 **標準**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定價層 <span class="docon docon-navigate-external x-hidden-focus"></span></a>適用于容器。 如需交易要求速率的詳細資訊，請參閱 [資料限制](../overview.md#data-limits)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要執行任何文字分析容器，您必須擁有主機電腦和容器環境。
 
@@ -85,7 +85,7 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，這些設定
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
-# <a name="text-analytics-for-health-preview"></a>[適用于 health (preview 的文字分析) ](#tab/healthcare)
+# <a name="text-analytics-for-health-preview"></a>[健康情況的文字分析 (預覽)](#tab/healthcare)
 
 [!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
 
@@ -119,7 +119,7 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，這些設定
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
 
-# <a name="text-analytics-for-health-preview"></a>[適用于 health (preview 的文字分析) ](#tab/healthcare)
+# <a name="text-analytics-for-health-preview"></a>[健康情況的文字分析 (預覽)](#tab/healthcare)
 
 [!INCLUDE [docker-run-health-container](../includes/docker-run-health-container.md)]
 
@@ -155,10 +155,6 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，這些設定
 
 如需這些選項的詳細資訊，請參閱[設定容器](../text-analytics-resource-container-config.md)。
 
-<!--blogs/samples/video course -->
-
-[!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
-
 ## <a name="summary"></a>總結
 
 在本文中，您已了解下載、安裝及執行文字分析容器的概念和工作流程。 摘要說明：
@@ -167,7 +163,7 @@ CPU 核心和記憶體會對應至 `--cpus` 和 `--memory` 設定，這些設定
    * *情感分析*
    * *關鍵片語擷取 (preview)* 
    * *語言偵測 (preview)*
-   * *適用于 health (preview 的文字分析)*
+   * *健康情況的文字分析 (預覽)*
 * 您可以從 Microsoft Container Registry 下載容器映射 (MCR) 或預覽容器存放庫。
 * 容器映像是在 Docker 中執行。
 * 您可以指定容器的主機 URI，來使用 REST API 或 SDK 呼叫文字分析容器中的作業。
