@@ -277,6 +277,9 @@
     - name: Azure Stack 使用者
       tocHref: /azure/azure-stack/user/
       topicHref: /azure/azure-stack/user/
+    - name: BareMetal 基礎結構
+      tocHref: /azure/baremetal-infrastructure/
+      topicHref: /azure/baremetal-infrastructure/
     - name: Backup
       tocHref: /azure/backup/
       topicHref: /azure/backup/

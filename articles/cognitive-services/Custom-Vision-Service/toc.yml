@@ -13,7 +13,7 @@
       items:
         - name: 使用 Web 入口網站
           href: getting-started-build-a-classifier.md
-        - name: 使用自訂視覺 SDK
+        - name: 使用自訂視覺 SDK 或 REST API
           href: quickstarts/image-classification.md
     - name: 建置物件偵測器
       items:

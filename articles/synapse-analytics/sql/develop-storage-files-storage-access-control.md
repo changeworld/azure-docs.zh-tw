@@ -83,7 +83,7 @@ ms.locfileid: "97400670"
 
 | 授權類型  | Blob 儲存體   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | 支援\*      | 不支援   | 支援\*     |
+| SAS    | 支援\*      | 不支援   | 支援\*     |
 | [受控身分識別](?tabs=managed-identity#supported-storage-authorization-types) | 支援      | 支援        | 支援     |
 | [使用者身分識別](?tabs=user-identity#supported-storage-authorization-types)    | 支援\*      | 支援\*        | 支援\*     |
 
