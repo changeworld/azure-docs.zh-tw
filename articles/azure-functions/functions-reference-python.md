@@ -4,12 +4,12 @@ description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf1d8f89de61a548f6c542d6d8a73fde93675e95
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167840"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895405"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -299,87 +299,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ## <a name="scaling-and-performance"></a>調整和效能
 
-請務必瞭解函式的執行方式，以及該效能如何影響函數應用程式的調整方式。 在設計高效能應用程式時，這一點特別重要。 以下是設計、撰寫及設定函數應用程式時要考慮的幾個因素。
-
-### <a name="horizontal-scaling"></a>水平調整規模
-根據預設，Azure Functions 會自動監視應用程式上的負載，並視需要為 Python 建立其他主機執行個體。 函數會針對不同的觸發程式類型使用內建閾值，以決定何時要加入實例，例如訊息的存留期和 QueueTrigger 的佇列大小。 這些閾值不是使用者可設定的。 如需詳細資訊，請參閱[耗用量和進階方案的運作方式](functions-scale.md#how-the-consumption-and-premium-plans-work)。
-
-### <a name="improving-throughput-performance"></a>改善輸送量效能
-
-改善效能的關鍵是瞭解您的應用程式如何使用資源，並據以設定您的函數應用程式。
-
-#### <a name="understanding-your-workload"></a>瞭解您的工作負載
-
-預設設定適用于大部分的 Azure Functions 應用程式。 不過，您可以根據您的工作負載設定檔來採用設定，以改善應用程式輸送量的效能。 第一個步驟是瞭解您正在執行的工作負載類型。
-
-| | I/o 系結工作負載 | CPU 系結的工作負載 |
-|--| -- | -- |
-|**函數應用程式特性**| <ul><li>應用程式需要處理許多並行調用。</li> <li> 應用程式會處理大量 i/o 事件，例如網路呼叫和磁片讀取/寫入。</li> </ul>| <ul><li>應用程式會執行長時間執行的計算，例如調整大小的影像。</li> <li>應用程式會進行資料轉換。</li> </ul> |
-|**範例**| <ul><li>Web API</li><ul> | <ul><li>資料處理</li><li> 機器學習推斷</li><ul>|
-
-
-> [!NOTE]
->  因為真實世界的函式工作負載通常會混合使用 i/o 和 CPU，所以建議您在實際的生產負載下分析工作負載。
-
-
-#### <a name="performance-specific-configurations"></a>效能特定設定
-
-瞭解函數應用程式的工作負載設定檔之後，您可以使用下列設定來改善函式的輸送量效能。
-
-##### <a name="async"></a>Async
-
-因為 [python 是單一執行緒的運行](https://wiki.python.org/moin/GlobalInterpreterLock)時間，所以 python 的主控制項實例一次只能處理一個函式呼叫。 針對處理大量 i/o 事件和/或 i/o 系結的應用程式，您可以透過非同步方式執行函式來大幅改善效能。
-
-若要以非同步方式執行函式，請使用 `async def` 陳述式，這會搭配 [asyncio](https://docs.python.org/3/library/asyncio.html) 直接執行函式：
-
-```python
-async def main():
-    await some_nonblocking_socket_io_op()
-```
-以下是使用 HTTP 觸發程式（使用 [>aioHTTP](https://pypi.org/project/aiohttp/) HTTP 用戶端）的函式範例：
-
-```python
-import aiohttp
-
-import azure.functions as func
-
-async def main(req: func.HttpRequest) -> func.HttpResponse:
-    async with aiohttp.ClientSession() as client:
-        async with client.get("PUT_YOUR_URL_HERE") as response:
-            return func.HttpResponse(await response.text())
-
-    return func.HttpResponse(body='NotFound', status_code=404)
-```
-
-
-沒有 `async` 關鍵字的函式會在 asyncio 執行緒集區中自動執行：
-
-```python
-# Runs in an asyncio thread-pool
-
-def main():
-    some_blocking_socket_io()
-```
-
-為了達到以非同步方式執行函式的完整優點，程式碼中使用的 i/o 作業/程式庫也需要非同步實作為。 在定義為非同步函式中使用同步 i/o 作業， **可能會** 影響整體效能。
-
-以下是一些已實作為非同步模式的用戶端程式庫範例：
-- [>aioHTTP](https://pypi.org/project/aiohttp/) -asyncio 的 Http 用戶端/伺服器 
-- [串流 API](https://docs.python.org/3/library/asyncio-stream.html) -高階非同步/等候就緒的基本專案，以搭配網路連接使用
-- [Janus 佇列](https://pypi.org/project/janus/) -適用于 Python 的安全線程 asyncio 感知佇列
-- [pyzmq](https://pypi.org/project/pyzmq/) -適用于 ZeroMQ 的 Python 系結
- 
-
-##### <a name="use-multiple-language-worker-processes"></a>使用多個語言背景工作處理序
-
-根據預設，每個 Functions 主機執行個體都有單一語言背景工作處理序。 您可以使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 應用程式設定，來增加每個主機的背景工作處理序數目 (最多10個)。 Azure Functions 接著會嘗試在這些背景工作中平均散發同時函式叫用。
-
-針對受 CPU 限制的應用程式，您應該將語言背景工作角色的數目設定為與每個函數應用程式可用的核心數目相同或更高。 若要深入瞭解，請參閱 [可用的實例 sku](functions-premium-plan.md#available-instance-skus)。 
-
-I/o 系結應用程式可能也會因為增加的工作者進程數目超過可用的核心數目而受益。 請記住，將工作者數目設定過高可能會影響整體效能，因為所需的內容切換數目已增加。 
-
-FUNCTIONS_WORKER_PROCESS_COUNT 適用於 Functions 在擴增應用程式以符合需求時所建立的每個主機。
-
+如需 Python 函式應用程式的調整和效能最佳做法，請參閱 [python 規模和效能文章](python-scale-performance-reference.md)。
 
 ## <a name="context"></a>Context
 
@@ -694,8 +614,8 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 
 |  Functions 執行階段  | Debian 版本 | Python 版本 |
 |------------|------------|------------|
-| 2.x 版 | 延展  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| 3.x 版 | 剋星 | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| 2.x 版 | 延展  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| 3.x 版 | 剋星 | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>跨原始資源共用
 

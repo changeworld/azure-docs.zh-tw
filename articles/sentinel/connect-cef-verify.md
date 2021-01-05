@@ -9,23 +9,23 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 974418a1b3c1e7fe93b2f6839c16169e5bd5abc5
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 557f53e39781406674b9903dcf0bb3cb536cd804
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696994"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897479"
 ---
 # <a name="step-3-validate-connectivity"></a>步驟3：驗證連線能力
 
 當您在步驟1中部署記錄轉寄站 () 並設定您的安全性解決方案，以在步驟 2)  (傳送 CEF 訊息，請遵循下列指示來確認安全性解決方案與 Azure Sentinel 之間的連線能力。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須在記錄轉寄站電腦上擁有較高的許可權 (sudo) 。
 
@@ -44,7 +44,7 @@ ms.locfileid: "94696994"
 1. 在記錄轉寄站上執行下列腳本 (套用工作區識別碼來取代預留位置) ，以檢查安全性解決方案、記錄轉寄站和 Azure Sentinel 之間的連線能力。 此腳本會檢查守護程式是否正在接聽正確的埠、是否已正確設定轉送，而且沒有任何專案會封鎖 daemon 與 Log Analytics 代理程式之間的通訊。 它也會傳送 mock 訊息 ' TestCommonEventFormat ' 來檢查端對端連線能力。 <br>
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]` 
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
     ```
 
    - 您可能會收到一則訊息，引導您執行命令以更正 ***電腦* 欄位對應** 的問題。 如需詳細資訊，請參閱 [驗證腳本中的說明](#mapping-command) 。
@@ -207,8 +207,7 @@ ms.locfileid: "94696994"
     - 設定檔： `/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
         ```bash
-        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};destination oms_destination {tcp(\"127.0.0.1\" port(25226));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 

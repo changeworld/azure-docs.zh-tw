@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 57b350c7772d42e5dbd89c1d03c89f905a26398b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315578"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895524"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure 監視器代理程式總覽 (預覽) 
 Azure 監視器代理程式 (AMA) 會從虛擬機器的客體作業系統收集監視資料，並將其傳遞至 Azure 監視器。 本文概述 Azure 監視器代理程式，包括如何安裝，以及如何設定資料收集。
@@ -54,7 +54,7 @@ Azure 監視器代理程式的公開預覽期間，適用下列限制：
 
 - Azure 監視器代理程式不支援解決方案和見解，例如適用於 VM 的 Azure 監視器和 Azure 資訊安全中心。 目前唯一支援的案例是使用您所設定的資料收集規則來收集資料。 
 - 資料收集規則必須建立在與做為目的地的任何 Log Analytics 工作區相同的區域中。
-- 目前支援 Azure 虛擬機器和已啟用 Azure Arc 的伺服器。目前不支援虛擬機器擴展集、Azure Kubernetes Service 和其他計算資源類型。
+- 目前支援 Azure 虛擬機器、虛擬機器擴展集和已啟用 Azure Arc 的伺服器。 目前不支援 Azure Kubernetes Service 和其他計算資源類型。
 - 虛擬機器必須具有下列 HTTPS 端點的存取權：
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com
@@ -76,7 +76,7 @@ Azure 監視器代理程式不會產生任何費用，但您可能會產生資�
 
 Azure 監視器代理程式會將資料傳送至 Azure 監視器計量或支援 Azure 監視器記錄的 Log Analytics 工作區。
 
-| 資料來源 | 目的地 | 說明 |
+| 資料來源 | 目的地 | 描述 |
 |:---|:---|:---|
 | 效能        | Azure 監視器計量<br>Log Analytics 工作區 | 測量作業系統和工作負載不同層面效能的數值。 |
 | Windows 事件記錄檔 | Log Analytics 工作區 | 傳送至 Windows 事件記錄系統的資訊。 |

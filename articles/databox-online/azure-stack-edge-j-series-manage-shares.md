@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 413a93a145ae063a3aab4066ed62365e154d744a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b1ff10290e0059295f14b55e90ed05e9690c9f5c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454111"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896599"
 ---
 # <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro 上的共用
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-本文說明如何管理 Azure Stack Edge Pro 上的共用。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge Pro。 使用 Azure 入口網站來新增、刪除、重新整理共用，或針對與共用相關聯的儲存體帳戶同步儲存體金鑰。
+本文說明如何管理 Azure Stack Edge Pro 上的共用。 您可以透過 Azure 入口網站或透過本機 web UI 來管理 Azure Stack Edge Pro。 使用 Azure 入口網站來新增、刪除、重新整理共用，或針對與共用相關聯的儲存體帳戶同步儲存體金鑰。 本文適用于 Azure Stack Edge Pro GPU、Azure Stack Edge Pro R 和 Azure Stack Edge 迷你 R 裝置。
 
 ## <a name="about-shares"></a>關於共用
 
@@ -33,7 +33,7 @@ ms.locfileid: "96454111"
 
 請在 Azure 入口網站中執行下列步驟來建立共用。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 選取命令列上的 [+ 新增共用]。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道 > 共用**。 選取命令列上的 [+ 新增共用]。
 
     ![選取 [新增共用]](media/azure-stack-edge-j-series-manage-shares/add-share-1.png)
 
@@ -63,7 +63,7 @@ ms.locfileid: "96454111"
 
 ## <a name="add-a-local-share"></a>新增本機共用
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 選取命令列上的 [+ 新增共用]。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道 > 共用**。 選取命令列上的 [+ 新增共用]。
 
     ![選取 [新增共用 2]](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
 
@@ -82,7 +82,7 @@ ms.locfileid: "96454111"
 
 6. 在 [完整權限本機使用者] 欄位中，從 [新建] 或 [使用現有的] 中擇一。
 
-7. 選取 [建立]。 
+7. 選取 [建立]  。 
 
     ![建立本機共用](media/azure-stack-edge-j-series-manage-shares/add-local-share-2.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "96454111"
 如果您在 Azure Stack Edge Pro 裝置上設定計算之前已建立共用，您將需要掛接共用。 請採取下列步驟來掛接共用。
 
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。 從共用清單中，選取您想要掛接的共用。 [用於計算] 資料行會將所選共用的狀態顯示為 [已停用]。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道 > 共用**。 從共用清單中，選取您想要掛接的共用。 [用於計算] 資料行會將所選共用的狀態顯示為 [已停用]。
 
     ![選取共用](media/azure-stack-edge-j-series-manage-shares/mount-share-1.png)
 
@@ -123,11 +123,11 @@ ms.locfileid: "96454111"
 
 請在 Azure 入口網站中執行下列步驟以取消掛接共用。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **閘道 > 共用**]。
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 **雲端儲存體閘道 > 共用**。 從共用清單中，選取您想要取消掛接的共用。 請確定沒有任何模組使用您取消掛接的共用。 如果有模組使用該共用，則您會看到對應模組發生問題。
 
     ![選取共用2](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
 
-2. 從共用清單中，選取您想要取消掛接的共用。 請確定沒有任何模組使用您取消掛接的共用。 如果有模組使用該共用，則您會看到對應模組發生問題。 選取 [ **卸載**]。
+2.  選取 [ **卸載**]。
 
     ![選取取消掛接](media/azure-stack-edge-j-series-manage-shares/unmount-share-2.png)
 

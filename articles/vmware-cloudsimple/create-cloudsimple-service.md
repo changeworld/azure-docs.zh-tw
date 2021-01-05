@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-建立 CloudSimple 服務
 description: 瞭解如何在 Azure 入口網站中建立 CloudSimple 服務。 開始之前，請先檢查所需的設定。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53f2d0fc9f73985bd70792c8c3b7607eb4c560fa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140542"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896289"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>建立 Azure VMware Solution by CloudSimple 服務
 
@@ -29,14 +29,14 @@ ms.locfileid: "88140542"
 
 ## <a name="create-the-service"></a>建立服務
 
-1. 選取 [所有服務]。
+1. 選取 [所有服務]  。
 2. 搜尋 **CloudSimple 服務**。
     ![搜尋 CloudSimple 服務](media/create-cloudsimple-service-search.png)
 3. 選取 [ **CloudSimple 服務**]。
 4. 按一下 **[新增]** 以建立新的服務。
     ![新增 CloudSimple 服務](media/create-cloudsimple-service-add.png)
 5. 選取您要在其中建立 CloudSimple 服務的訂用帳戶。
-6. 選取服務的資源群組。 若要加入新的資源群組，請按一下 [ **建立新**的]。
+6. 選取服務的資源群組。 若要加入新的資源群組，請按一下 [ **建立新** 的]。
 7. 輸入名稱以識別服務。
 8. 輸入服務閘道的 CIDR。 指定/28 子網，而此子網不會與任何內部部署子網、Azure 子網或計畫的 CloudSimple 子網重迭。 建立服務之後，您就無法變更 CIDR。
 

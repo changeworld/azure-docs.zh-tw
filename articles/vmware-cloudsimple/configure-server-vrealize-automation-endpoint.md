@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-在私人雲端上設定 vCenter 以進行 vRealize 自動化
 description: 說明如何將 CloudSimple 私人雲端上的 VMware vCenter server 設定為 VMware vRealize Automation 的端點
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b6c6a320e6299808a91214476c8c0460f9f53d9
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024835"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895048"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>在您的私人雲端上設定 vCenter 以進行 VMware vRealize 自動化
 
@@ -48,7 +48,7 @@ ms.locfileid: "77024835"
 2. 部署 vRealize 自動化端點的 vSphere 代理程式。
     1. 移至 HTTPs://*vra-url*： 5480/installer，其中 *vra-url* 是用來存取 VREALIZE Automation 系統管理 UI 的 url。
     2. 按一下 **IaaS 安裝程式** 以下載安裝程式。<br>
-    安裝程式檔案的命名慣例是 setup_*vra-url* @5480.exe 。
+    安裝程式檔案的命名慣例是 setup_ *vra-url* @5480.exe 。
     3. 執行安裝程式。 在 [歡迎畫面上，按 **[下一步]**。
     4. 接受 EULA，然後按 **[下一步]**。
     5. 提供登入資訊，按一下 [ **接受憑證**]，然後按 **[下一步]**。
@@ -57,19 +57,19 @@ ms.locfileid: "77024835"
     ![vRA 安裝類型](media/configure-vra-endpoint-install-type.png)
     7. 輸入 IaaS 伺服器登入資訊，然後按 **[下一步]**。 如果您使用 Active Directory，請輸入 domain\user 格式的 **使用者** 名稱。 否則，請使用 **user@domain** format。
     ![vRA 登入資訊](media/configure-vra-endpoint-account.png)
-    8. 針對 [proxy 設定]，輸入**代理程式類型**的**vSphere** 。 輸入代理程式的名稱。
+    8. 針對 [proxy 設定]，輸入 **代理程式類型** 的 **vSphere** 。 輸入代理程式的名稱。
     9. 在 **管理員服務主機** 和 [ **模型管理員 Web 服務主機** ] 欄位中輸入 IaaS 伺服器 FQDN。 按一下 [ **測試** ] 以測試每個 FQDN 值的連接。 如果測試失敗，請修改您的 DNS 設定，以便解析 IaaS 伺服器主機名稱。
     10. 輸入私人雲端的 vCenter 伺服器端點名稱。 記錄名稱，以便稍後在設定程式中使用。
 
         ![vRA 安裝 proxy](media/configure-vra-endpoint-proxy.png)
 
-    11. 按一下 [下一步]。
-    12. 按一下 [Install]  。
+    11. 按一下 [下一步] 。
+    12. 按一下 [安裝]  。
 
 ## <a name="configure-the-vsphere-agent"></a>設定 vSphere 代理程式
 
-1. 移至 HTTPs://*vra-url*/vcac，並以 **ConfigurationAdmin**的形式登入。
-2. 選取**基礎結構**  >  **端點**  >  **端點**。
+1. 移至 HTTPs://*vra-url*/vcac，並以 **ConfigurationAdmin** 的形式登入。
+2. 選取 **基礎結構**  >  **端點**  >  **端點**。
 3. 選取 [**新增**  >  **虛擬**  >  **vSphere**]。
 4. 輸入您在上一個程式中指定的 vSphere 端點名稱。
 5. 在 [ **位址**] 中，以 HTTPs://*vcenter-fqdn*/Sdk 格式輸入私人雲端 vCenter Server URL，其中 *vcenter-fqdn* 是 vcenter Server 的名稱。

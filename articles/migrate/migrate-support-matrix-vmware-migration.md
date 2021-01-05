@@ -6,14 +6,14 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: fa8f9ad2d15730d2a0a2c1a722aa3970bbc8f173
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6e80b1446142786cbd77245a2b6696cac1bb9272
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033981"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897088"
 ---
-# <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
+# <a name="support-matrix-for-vmware-migration"></a>VMware 移轉的支援矩陣
 
 本文摘要說明使用 [Azure Migrate：伺服器遷移](migrate-services-overview.md#azure-migrate-server-migration-tool) 來遷移 VMware vm 的支援設定和限制。 如果您要尋找有關評估 VMware Vm 以遷移至 Azure 的資訊，請參閱 [評量支援矩陣](migrate-support-matrix-vmware.md)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "97033981"
 **Azure 中的 Linux Vm** | 有些 VM 可能需要變更，才能在 Azure 中執行。<br/><br/> 針對 Linux，Azure Migrate 會自動為這些作業系統進行變更：<br/> -Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6。x<br/> -分幣 OS 7.7、7.6、7.5、7.4、6。x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19.04、19.10、14.04 LTS、16.04 LTS、18.04 LTS<br/> -Debian 7、8 <br/> Oracle Linux 7.7、7.7-CI<br/> 針對其他作業系統，您必須手動進行 [必要的變更](prepare-for-migration.md#verify-required-changes-before-migrating) 。
 **Linux 開機** | 如果/boot 是在專用磁碟分割上，它應該位於 OS 磁片上，而不會分散到多個磁片。<br/> 如果/boot 是根 (/) 磁碟分割的一部分，則 '/' 磁碟分割應位於 OS 磁片上，而不是跨越其他磁片。
 **UEFI 開機** | 支援。 以 UEFI 為基礎的 Vm 將會遷移至 Azure 第2代 Vm。 
-**磁碟大小** | 2 TB 的 OS 磁片 (BIOS 開機) ;4 TB 的 OS 磁片 (UEFI 開機) ;適用于資料磁片的 32 TB。
+**磁碟大小** | 2 TB 的 OS 磁片; 適用于資料磁片的 32 TB。
 **磁片限制** |  每個 VM 最多60個磁片。
 **加密的磁片/磁片區** | 具有加密磁片/磁片區的 Vm 不支援遷移。
 **共用磁碟叢集** | 不支援。
@@ -122,7 +122,7 @@ vSphere/ESXI 主機 | TCP 埠902上的輸入，可讓設備從快照集複寫資
 **UEFI 開機** | 支援。 以 UEFI 為基礎的 Vm 將會遷移至 Azure 第2代 Vm。 
 **UEFI-安全開機**         | 不支援遷移。
 **目標磁片** | Vm 只能遷移至受控磁片， (標準 HDD、標準 SSD、Azure 中的 premium SSD) 。
-**磁碟大小** | 2 TB 的 OS 磁片 (BIOS 開機) ;4 TB 的 OS 磁片 (UEFI 開機) ;適用于資料磁片的 8 TB。
+**磁碟大小** | 2 TB 的 OS 磁片;適用于資料磁片的 32 TB。
 **磁片限制** |  每個 VM 最多63個磁片。
 **加密的磁片/磁片區** | 具有加密磁片/磁片區的 Vm 不支援遷移。
 **共用磁碟叢集** | 不支援。

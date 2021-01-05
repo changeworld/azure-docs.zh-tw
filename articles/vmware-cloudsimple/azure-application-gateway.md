@@ -1,19 +1,19 @@
 ---
 title: 搭配使用 Azure 應用程式閘道與 VMware 虛擬機器
 description: 說明如何使用 Azure 應用程式閘道來管理在 VMware 虛擬機器中執行之 web 伺服器的連入網路流量，並贏得 CloudSimple 的私用雲端環境。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14fdc4e2b2b1dfca8194077acc0453808611946
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82185688"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897938"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>使用 Azure 應用程式閘道搭配 CloudSimple 私人雲端環境中的 VMware 虛擬機器
 

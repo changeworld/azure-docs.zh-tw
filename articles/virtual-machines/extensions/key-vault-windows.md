@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0b2346ae4777b31ce2e5c396fb03084d38b2008f
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7926f4023b64feff33ae55fc6c8726a605773fef
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678968"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895031"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>適用於 Windows 的金鑰保存庫虛擬機器擴充功能
 
@@ -37,9 +37,23 @@ Key Vault VM 擴充功能支援下列 Windows 版本：
 
 ## <a name="prerequisities"></a>必要條件
   - 具有憑證的 Key Vault 實例。 請參閱 [建立 Key Vault](../../key-vault/general/quick-create-portal.md)
-  - VM/VMSS 必須已指派 [受控識別](../../active-directory/managed-identities-azure-resources/overview.md)
+  - VM 必須已指派 [受控識別](../../active-directory/managed-identities-azure-resources/overview.md)
   - Key Vault 存取原則必須設定為 `get` `list` VM/VMSS 受控識別的秘密和許可權，才能抓取秘密的憑證部分。 瞭解 [如何驗證 Key Vault](../../key-vault/general/authentication.md) 並 [指派 Key Vault 存取原則](../../key-vault/general/assign-access-policy-cli.md)。
-
+  -  VMSS 應該具有下列身分識別設定： ` 
+  "identity": {
+  "type": "UserAssigned",
+  "userAssignedIdentities": {
+  "[parameters('userAssignedIdentityResourceId')]": {}
+  }
+  }
+  `
+  
+- AKV 延伸模組應該具有此設定： `
+                  "authenticationSettings": {
+                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+                  }
+   `
 ## <a name="extension-schema"></a>擴充功能結構描述
 
 下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 延伸模組不需要受保護的設定，所有的設定都會被視為公用資訊。 延伸模組需要受監視的憑證、輪詢頻率和目的地憑證存放區的清單。 具體來說：  
@@ -140,6 +154,17 @@ Key Vault VM 擴充功能支援下列 Windows 版本：
     }
 ```
 
+### <a name="extension-dependency-ordering"></a>擴充功能相依性順序
+如果已設定，Key Vault VM 擴充功能支援延伸模組排序。 根據預設，擴充功能會報告它已在開始輪詢後立即成功開始。 不過，您可以將它設定為等到成功下載完整的憑證清單之後，才能回報成功開始。 如果其他延伸模組相依于在啟動前安裝一組完整的憑證，則啟用此設定可讓這些擴充功能宣告 Key Vault 擴充功能的相依性。 這會讓這些擴充功能無法啟動，直到所有相依的憑證都已安裝為止。 延伸模組將會無限期地重試初始下載並保持 `Transitioning` 狀態。
+
+若要開啟此功能，請設定下列各項：
+```
+"secretsManagementSettings": {
+    "requireInitialSync": true,
+    ...
+}
+```
+> 記使用這項功能與建立系統指派的身分識別並以該身分識別更新 Key Vault 存取原則的 ARM 範本不相容。 這麼做會導致鎖死，因為保存庫存取原則必須等到所有延伸模組都啟動之後才會更新。 您應改為使用 *單一使用者指派的 MSI 身分識別* ，並在部署之前先使用該身分識別來預先 ACL 您的保存庫。
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell 部署
 > [!WARNING]

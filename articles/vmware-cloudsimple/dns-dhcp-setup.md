@@ -1,25 +1,25 @@
 ---
 title: Azure VMware Solution by CloudSimple-設定私用雲端的工作負載 DNS 和 DHCP
 description: 說明如何針對在 CloudSimple 私用雲端環境中執行的應用程式和工作負載設定 DNS 和 DHCP
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d7531a22d5b0f44fdaae837a75d17ea18852acf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdcb3cd7afa660909fad416ca455c041dc50321e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077291"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896987"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>設定 CloudSimple 私人雲端中的 DNS 和 DHCP 應用程式和工作負載
 
 在私用雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，以便進行查閱和 IP 位址指派。  必須要有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。  您可以設定虛擬機器，以在您的私人雲端環境中提供這些服務。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 已設定 VLAN 的分散式埠群組
 * 將設定路由傳送至內部部署或以網際網路為基礎的 DNS 伺服器

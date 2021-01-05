@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: a54c77844498beb4fd052153cbcf8cbe498cdb75
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132205"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897853"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>對 AzCopy 進行設定、最佳化及疑難排解
 
@@ -28,13 +28,13 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 ## <a name="configure-proxy-settings"></a>進行 Proxy 設定
 
-若要設定 AzCopy 的 proxy 設定，請設定 `https_proxy` 環境變數。 如果您在 Windows 上執行 AzCopy，AzCopy 會自動偵測 Proxy 設定，因此您不需要在 Windows 中使用此設定。 如果您選擇在 Windows 中使用此設定，其將會覆寫自動偵測。
+若要設定 AzCopy 的 proxy 設定，請設定 `HTTPS_PROXY` 環境變數。 如果您在 Windows 上執行 AzCopy，AzCopy 會自動偵測 Proxy 設定，因此您不需要在 Windows 中使用此設定。 如果您選擇在 Windows 中使用此設定，其將會覆寫自動偵測。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
-| **Windows** | 在命令提示字元中，請使用：`set https_proxy=<proxy IP>:<proxy port>`<br> 在 PowerShell 中，請使用：`$env:https_proxy="<proxy IP>:<proxy port>"`|
-| **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | 在命令提示字元中，請使用：`set HTTPS_PROXY=<proxy IP>:<proxy port>`<br> 在 PowerShell 中，請使用：`$env:HTTPS_PROXY="<proxy IP>:<proxy port>"`|
+| **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
+| **macOS** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
 
 目前，AzCopy 不支援需要使用 NTLM 或 Kerberos 進行驗證的 proxy。
 
@@ -91,7 +91,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 如果您的電腦有少於5個 Cpu，此變數的值會設為 `32` 。 否則，預設值會等於 16 乘以 CPU 數目。 這個變數的最大預設值為 `3000` ，但您可以手動將這個值設定為較高或較低。 
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
@@ -106,7 +106,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 設定 `AZCOPY_BUFFER_GB` 環境變數，以指定您想要 AzCopy 在下載和上傳檔案時使用的系統記憶體數量上限。
 以 gb (GB) 表示此值。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
@@ -137,7 +137,7 @@ AzCopy 會建立為每個作業記錄和方案檔案。 您可以使用記錄來
 
 下列命令會從記錄檔中取得所有狀態的錯誤 `UPLOADFAILED` `04dc9ca9-158f-7945-5933-564021086c79` ：
 
-**Windows (PowerShell) **
+**Windows (PowerShell)**
 
 ```
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -189,7 +189,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用這些命令的任何一個。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | PowerShell`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> 在命令提示字元中，使用：： `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -201,7 +201,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用這些命令的任何一個。
 
-| 作業系統 | Command  |
+| 作業系統 | 命令  |
 |--------|-----------|
 | **Windows** | PowerShell`$env:AZCOPY_LOG_LOCATION="<value>"` <br> 在命令提示字元中，使用：： `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |

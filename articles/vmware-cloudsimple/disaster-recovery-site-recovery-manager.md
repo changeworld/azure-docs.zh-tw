@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-使用 VMware Site Recovery Manager 將私人雲端設定為災難復原網站
 description: 說明如何使用 VMware Site Recovery Manager 將 CloudSimple 私人雲端設定為災難復原網站。
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6714b2c5d87141fd94d0f96d9cf07913442d18d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d71f8aec1f35514ac6c10b17b6f7b69b79b05bd
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267052"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897904"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>使用 VMware Site Recovery Manager 將私人雲端設定為災難復原目標
 
@@ -219,7 +219,7 @@ CloudSimple 要求您不要使用預設的 ' cloudowner ' 使用者來安裝 vRA
 
  以陣列為基礎的複寫[和 vSphere 複寫技術都可以同時與 SRM 一起使用](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication)。 不過，它們必須套用至個別的 Vm 集合 (指定的 VM 可以透過以陣列為基礎的複寫或 vSphere 複寫來進行保護，但不能同時為這兩個) 。 此外，您可以將 CloudSimple 網站設定為多個受保護網站的復原網站。 如需多網站設定的詳細資訊，請參閱 [SRM 多網站選項](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) 。
 
-## <a name="references"></a>參考
+## <a name="references"></a>參考資料
 
 * [VMware Site Recovery Manager 檔](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [Site Recovery Manager 6.5 的操作限制](https://kb.vmware.com/s/article/2147110)

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-使用私用雲端網站來裝載使用 VMware 的虛擬桌面基礎結構
 description: 說明如何使用 CloudSimple 私用雲端網站來裝載使用 VMware 的虛擬桌面基礎結構
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 723821a78ecae308443c93567402e3b232c036f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 513af1ba2e354412278fb88af4ee6527c236fae3
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025243"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895592"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>使用 CloudSimple 私用雲端網站來裝載使用 VMware 的虛擬桌面基礎結構
 
@@ -40,7 +40,7 @@ CloudSimple 解決方案會要求您執行下列作業：
 ### <a name="verify-that-vmware-product-versions-are-compatible"></a>確認 VMware 產品版本相容
 
 * 確認您目前和已規劃的範圍、應用程式磁片區、統一存取閘道和使用者環境管理員，都與私人雲端中的 vCenter 和 PSC 相容。 如需相容性資訊，請參閱 [適用于範圍7.5 的 VMware 相容性比較表](https://www.vmware.com/resources/compatibility/sim/interop_matrix.php#interop&260=2877&0=)。
-* 若要在您的私人雲端中找出 vCenter 和 PSC 的目前版本，請移至[CloudSimple 入口網站](access-cloudsimple-portal.md)中的 [**資源**]，選取您的私人雲端，然後按一下 [ **vSphere 管理網路**] 索引標籤。
+* 若要在您的私人雲端中找出 vCenter 和 PSC 的目前版本，請移至 [CloudSimple 入口網站](access-cloudsimple-portal.md)中的 [**資源**]，選取您的私人雲端，然後按一下 [ **vSphere 管理網路**] 索引標籤。
 
 ![vCenter 和 PSC 版本](media/private-cloud-vsphere-versions.png)
 

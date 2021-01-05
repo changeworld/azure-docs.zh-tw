@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 9f7bf41bd864f6780eee00938f35bb34d2336eb5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7ce0807fa4cd068cfdd09ac9f78c5415da7e6437
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145747"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895337"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務影片索引子版本資訊
 
@@ -29,6 +29,12 @@ ms.locfileid: "93145747"
 * 已知問題
 * 錯誤修正
 * 已被取代的功能
+
+##  <a name="december-2020"></a>2020年12月？ 
+
+### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>瑞士西部和瑞士北部中部署的影片索引子
+
+您現在可以在瑞士西部和瑞士北部區域中建立影片索引子付費帳戶。
 
 ## <a name="october-2020"></a>2020 年 10 月
 
@@ -138,7 +144,7 @@ ms.locfileid: "93145747"
     * 使用指向影片索引子小工具 Api 的 URL 來取代 URL (例如，深入解析 [小工具](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)) 
     * 使用影片索引子網站來產生新的內嵌 URL：
          
-         按下 [ **播放** ] 以進入您的影片頁面-> 按一下 [ **&lt; / &gt; 內嵌** ] 按鈕-> 將 URL 複製到您的應用程式中：
+         按下 [**播放**] 以進入您的影片頁面-> 按一下 [ **&lt; / &gt; 內嵌**] 按鈕-> 將 URL 複製到您的應用程式中：
    
     區域 Url 不受支援，將在未來幾周內封鎖。
 

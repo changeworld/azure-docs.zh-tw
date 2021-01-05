@@ -5,15 +5,15 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/19/2020
+ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 51cb1a1a8151748fc9c6cd4c81da967424b52868
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: fac4f3029d783e9257d00466ddb9fc9741b0f5a2
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505149"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895643"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>針對 Azure Data Factory 安全性和存取控制問題進行疑難排解
 
@@ -151,6 +151,16 @@ ms.locfileid: "97505149"
 嘗試在使用者介面上啟用公用網路存取，如下列螢幕擷取畫面所示：
 
 ![[網路] 窗格上 [允許公用網路存取] 的 [已啟用] 控制項的螢幕擷取畫面。](media/self-hosted-integration-runtime-troubleshoot-guide/enable-public-network-access.png)
+
+### <a name="pipeline-runtime-varies-when-basing-on-different-ir"></a>以不同 IR 為基礎時，管線執行時間會有所不同
+
+#### <a name="symptoms"></a>徵兆
+
+只要切換資料集中的 [連結服務] 下拉式清單，就會執行相同的管線活動，但會有截然不同的執行時間。 當資料集是根據受管理的虛擬網路 Integration Runtime 時，平均需要2分鐘以上的時間才能完成執行，但根據預設 Integration Runtime，大約需要20秒的時間才能完成。
+
+#### <a name="cause"></a>原因
+
+檢查管線執行的詳細資料，您可以看到緩慢的管線是在受管理的 VNet (虛擬網路) IR，而在 Azure IR 上執行正常的虛擬網路。 根據設計，受控 VNet IR 的佇列時間會比 Azure IR 更長，因為我們不會為每個資料處理站保留一個計算節點，因此每個複製活動都有大約2分鐘的時間來啟動，而這主要是發生在 VNet 聯結而非 Azure IR。
 
 ## <a name="next-steps"></a>後續步驟
 

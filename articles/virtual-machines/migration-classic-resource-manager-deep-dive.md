@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: c17ade2af751b80e612aa104a9af1a22c4325413
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: ff3e8916a6634c564aa98b21b7e8d7c89fa1b17e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695734"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897173"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討
 
@@ -150,7 +150,7 @@ ms.locfileid: "97695734"
 
 | 傳統表示法 | Resource Manager 表示法 | 注意 |
 | --- | --- | --- |
-| 雲端服務名稱 |DNS 名稱 |在移轉期間，會以命名樣式 `<cloudservicename>-migrated`為每個雲端服務建立新的資源群組。 此資源群組包含您的所有資源。 雲端服務名稱會成為與公用 IP 位址關聯的 DNS 名稱。 |
+| 雲端服務名稱 (託管服務名稱)  |DNS 名稱 |在移轉期間，會以命名樣式 `<cloudservicename>-migrated`為每個雲端服務建立新的資源群組。 此資源群組包含您的所有資源。 雲端服務名稱會成為與公用 IP 位址關聯的 DNS 名稱。 |
 | 虛擬機器 |虛擬機器 |VM 特定屬性會原封不動地移轉過去。 有些 osProfile 資訊 (例如電腦名稱) 不會儲存在傳統部署模型中，因此移轉後會保留空白。 |
 | 連接至 VM 的磁碟資源 |連接至 VM 的隱含磁碟 |在 Resource Manager 部署模型中，並未將磁碟塑造成最上層資源。 這些磁碟是被當作 VM 底下的隱含磁碟來移轉。 目前只支援連接至 VM 的磁碟。 Resource Manager VM 現在可以使用傳統部署模型中的儲存體帳戶，這可讓您不須進行任何更新，即可輕鬆移轉磁碟。 |
 | VM 擴充功能 |VM 擴充功能 |所有資源擴充功能 (XML 擴充功能除外) 都會從傳統部署模型移轉出來。 |

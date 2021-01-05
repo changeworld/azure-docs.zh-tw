@@ -1,19 +1,19 @@
 ---
 title: 帳戶管理-Azure VMware Solution by CloudSimple 入口網站
 description: 說明如何透過 CloudSimple 入口網站管理 Azure VMware 解決方案上的帳戶
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c26d5accce77ce6fd8c9b6c2b519b93f95013ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025362"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895167"
 ---
 # <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>使用 CloudSimple 入口網站管理 Azure VMware 解決方案上的帳戶
 
@@ -27,7 +27,7 @@ ms.locfileid: "77025362"
 
 您可以針對私人雲端設定的變更，新增任何您想要通知之人員的電子郵件地址。
 
-1. 在 [ **其他電子郵件警示** ] 區域中，按一下 [ **加入新**的]。
+1. 在 [ **其他電子郵件警示** ] 區域中，按一下 [ **加入新** 的]。
 2. 輸入電子郵件地址。
 3. 按下 Return。  
 
@@ -35,6 +35,6 @@ ms.locfileid: "77025362"
 
 ## <a name="cloudsimple-operator-access"></a>CloudSimple 操作員存取
 
-操作員存取設定可讓支援工程師登入 CloudSimple 入口網站，讓 CloudSimple 協助您進行疑難排解。  預設會啟用此設定。 當您登入客戶帳戶時，支援工程師所執行的所有動作都會記錄下來並可供您在**活動**  >  **審核**頁面上查看。
+操作員存取設定可讓支援工程師登入 CloudSimple 入口網站，讓 CloudSimple 協助您進行疑難排解。  預設會啟用此設定。 當您登入客戶帳戶時，支援工程師所執行的所有動作都會記錄下來並可供您在 **活動**  >  **審核** 頁面上查看。
 
 按一下 [ **啟用 CloudSimple 操作員存取** ] 開關以開啟或關閉存取。

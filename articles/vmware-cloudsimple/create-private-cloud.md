@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-建立 CloudSimple 私用雲端
 description: 說明如何建立 CloudSimple 私用雲端，以利用操作彈性和持續性將 VMware 工作負載延伸至雲端
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f4af4a36e719cbf15b3f0af77db81a32f2f2e42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024784"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896272"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>建立 CloudSimple 私人雲端
 
@@ -47,10 +47,10 @@ ms.locfileid: "77024784"
 
 ## <a name="create-a-new-private-cloud"></a>建立新的私人雲端
 
-1. 選取 [所有服務]。
+1. 選取 [所有服務]  。
 2. 搜尋 **CloudSimple 服務**。
 3. 選取您要在其上建立私人雲端的 CloudSimple 服務。
-4. 從 **總覽**中，按一下 [ **建立私人雲端** ] 以開啟 CloudSimple 入口網站的新瀏覽器索引標籤。 如果出現提示，請使用您的 Azure 登入認證登入。
+4. 從 **總覽** 中，按一下 [ **建立私人雲端** ] 以開啟 CloudSimple 入口網站的新瀏覽器索引標籤。 如果出現提示，請使用您的 Azure 登入認證登入。
 
     ![從 Azure 建立私人雲端](media/create-private-cloud-from-azure.png)
 

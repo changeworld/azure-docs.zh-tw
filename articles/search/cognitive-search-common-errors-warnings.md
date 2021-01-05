@@ -3,17 +3,17 @@ title: 索引子錯誤和警告
 titleSuffix: Azure Cognitive Search
 description: 本文提供在 Azure 認知搜尋的 AI 擴充期間，您可能會遇到的常見錯誤和警告的資訊和解決方案。
 manager: nitinme
-author: nitinme
-ms.author: nitinme
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: c65c9265d8eb4a06ea354c6d753cc6ed847eb6db
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 6625cd5ad91826ac5cdf8ec63382e9f94d8a2c08
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724284"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895934"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>針對 Azure 認知搜尋中常見的索引子錯誤和警告進行疑難排解
 

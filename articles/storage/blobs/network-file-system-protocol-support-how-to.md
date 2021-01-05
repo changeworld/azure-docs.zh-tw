@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 97b52159684eca9be59ccc711f6d2f19b5eb8d49
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b61ce696c28a2c72a2cd3d0eb2d2fde0022dbb01
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906109"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897734"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用網路檔案系統 (NFS) 3.0 通訊協定 (預覽來掛接 Blob 儲存體) 
 
@@ -134,7 +134,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 
    ![網路檔案系統功能的用戶端](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
 
-2. 使用 [mount](/windows-server/administration/windows-commands/mount) 命令掛接容器。
+2. 開啟 **命令提示** 字元視窗 ( # A0) 。 然後，使用 [mount](/windows-server/administration/windows-commands/mount) 命令掛接容器。
 
    ```
    mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
@@ -157,11 +157,11 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 
 ## <a name="resolve-common-issues"></a>解決常見的問題
 
-|問題/錯誤 | 解決方法|
+|問題/錯誤 | 解決方案|
 |---|---|
 |`Access denied by server while mounting`|確定您的用戶端是在支援的子網路內執行。 請參閱 [支援的網路位置](network-file-system-protocol-support.md#supported-network-connections)。|
 |`No such file or directory`| 確認您要掛接的容器是在確認該功能已註冊之後所建立。 請參閱 [步驟2：確認已註冊此功能](#step-2-verify-that-the-feature-is-registered)。此外，請務必直接在終端機中輸入 mount 命令和參數。 如果您將此命令的任何部分複製並貼到另一個應用程式的終端機中，則貼上資訊中的隱藏字元可能會導致此錯誤出現。|
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [Azure Blob 儲存體中的網路檔案系統 (NFS) 3.0 通訊協定支援 (預覽) ](network-file-system-protocol-support.md)

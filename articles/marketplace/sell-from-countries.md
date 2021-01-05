@@ -8,17 +8,17 @@ ms.custom: references_regions
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 09/02/2020
-ms.openlocfilehash: fd33ebebf35e0407f7ce39c609ee372a7d1d4a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/04/2021
+ms.openlocfilehash: 48a0c3484b6cbeac4d71d3fbf383bb1c14466a9d
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250499"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897326"
 ---
 # <a name="supported-publisher-countries-and-regions"></a>支援的發行者國家和地區
 
-若要將供應專案發佈至 Microsoft 商業市市集中，您必須在下列其中一個國家或地區內居住。
+若要將供應專案發佈至 Microsoft 商業市市集中，您的公司必須合法地位於下列其中一個國家或地區：
 
 - 阿富汗
 - 奧蘭島
@@ -134,7 +134,6 @@ ms.locfileid: "91250499"
 - 哈薩克
 - 肯亞
 - 吉里巴斯
-- 南韓
 - 科索沃
 - 科威特
 - 吉爾吉斯
@@ -224,6 +223,7 @@ ms.locfileid: "91250499"
 - 索馬利亞
 - 南非
 - 南喬治亞與南三明治群島
+- 韓國的韓國 (共和國) 
 - 南蘇丹
 - 西班牙
 - 斯里蘭卡

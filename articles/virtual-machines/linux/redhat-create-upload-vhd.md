@@ -1,26 +1,28 @@
 ---
 title: 建立及上傳 Red Hat Enterprise Linux VHD 以在 Azure 中使用
 description: 了解如何建立及上傳包含 Red Hat Linux 作業系統的 Azure 虛擬硬碟 (VHD)。
-author: gbowerman
+author: danielsollondon
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
-ms.date: 05/17/2019
-ms.author: guybo
-ms.openlocfilehash: 8c352b9e6b067724fbfc00bf5b0338baf8514421
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/01/2020
+ms.author: danis
+ms.openlocfilehash: 065b4348675fcd48088fd26db0e0293eb2d7a387
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500490"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896459"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>準備適用於 Azure 的 Red Hat 型虛擬機器
 在本文中，您將學習如何準備 Red Hat Enterprise Linux (RHEL) 虛擬機器以在 Azure 中使用。 本文涵蓋的 RHEL 版本為 6.7 和 7.1。 本文章所述之準備作業使用 Hyper-V、核心為基礎之虛擬機器 (KVM) 及 VMware 等 Hypervisor。 如需參加 Red Hat 雲端存取方案之資格需求的詳細資訊，請參閱 [Red Hat 雲端存取網站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)與[在 Azure 上執行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 如需自動建立 RHEL 映射的方式，請參閱 [Azure 映射](./image-builder-overview.md)產生器。
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 Red Hat 型虛擬機器
+## <a name="hyper-v-manager"></a>Hyper-V 管理員
 
-### <a name="prerequisites"></a>先決條件
+本節說明如何使用 Hyper-v 管理員準備 [rhel 6](#rhel-6-using-hyper-v-manager) 或 [rhel 7](#rhel-7-using-hyper-v-manager) 虛擬機器。
+
+### <a name="prerequisites"></a>必要條件
 本節假設您已經從 Red Hat 網站取得 ISO 檔案並將 RHEL 映像安裝至虛擬硬碟 (VHD)。 如需有關如何使用 Hyper-V 管理員來安裝作業系統映像的詳細資訊，請參閱[安裝 Hyper-V 角色和設定虛擬機器](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 
 **RHEL 安裝注意事項**
@@ -28,12 +30,13 @@ ms.locfileid: "96500490"
 * Azure 不支援 VHDX 格式。 Azure 只支援固定 VHD。 您可以使用 Hyper-V 管理員將磁碟轉換為 VHD 格式，或者使用 convert-vhd Cmdlet。 如果您使用 VirtualBox，請選取 [固定大小]  ，而不是預設在建立磁碟時動態配置的選項。
 * Azure 支援 Gen1 (BIOS 開機) & Gen2 (UEFI 開機) 虛擬機器。
 * 允許的 VHD 大小上限為 1,023 GB。
-* 邏輯磁碟區管理員 (LVM) 受到支援，而且可能會在 OS 磁碟或 Azure 虛擬機器中的資料磁碟上使用。 不過，通常建議在 OS 磁碟上使用標準磁碟分割，而不是 LVM。 此練習可避免 LVM 名稱與複製的虛擬機器發生衝突，特別是為了疑難排解而需要將作業系統磁碟連結至另一部相同虛擬機器時。 另請參閱 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 和 [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文件。
-* 需要掛接通用磁碟格式 (UDF) 檔案系統的核心支援。 在 Azure 上第一次開機時，連結至客體的 UDF 格式媒體會將佈建組態傳遞至 Linux 虛擬機器。 Azure Linux 代理程式必須能夠掛接 UDF 檔案系統，才能讀取其組態並佈建虛擬機器。
-* 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Linux 代理程式在暫存資源磁碟上建立交換檔。  在下列步驟中可以找到與此有關的詳細資訊。
+* 邏輯磁碟區管理員 (LVM) 受到支援，而且可能會在 OS 磁碟或 Azure 虛擬機器中的資料磁碟上使用。 不過，通常建議在 OS 磁碟上使用標準磁碟分割，而不是 LVM。 此練習可避免 LVM 名稱與複製的虛擬機器發生衝突，特別是為了疑難排解而需要將作業系統磁碟連結至另一部相同虛擬機器時。 另請參閱 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 和 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文件。
+* **需要 (UDF) 檔案系統裝載國際磁碟格式的核心支援**。 在 Azure 上第一次開機時，連結至客體的 UDF 格式媒體會將佈建組態傳遞至 Linux 虛擬機器。 Azure Linux 代理程式必須能夠掛接 UDF 檔案系統，才能讀取其設定並布建虛擬機器，否則布建將會失敗！
+* 請勿在作業系統磁碟上設定交換磁碟分割。 在下列步驟中可以找到與此有關的詳細資訊。
+
 * Azure 上的所有 VHD 必須具有與 1 MB 對應的虛擬大小。 從未經處理的磁碟轉換成 VHD 時，您必須確定未經處理的磁碟大小在轉換前是 1 MB 的倍數。 如需更多詳細資料，請參閱以下步驟。 另請參閱 [Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)以取得詳細資訊。
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 RHEL 6 虛擬機器
+### <a name="rhel-6-using-hyper-v-manager"></a>使用 Hyper-v 管理員的 RHEL 6
 
 1. 在 Hyper-V 管理員中，選取虛擬機器。
 
@@ -156,7 +159,7 @@ ms.locfileid: "96500490"
 1. 按一下 [hyper-v 管理員] 中的 [**動作**  >  **關機**]。 您現在可以將 Linux VHD 上傳至 Azure。
 
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>從 Hyper-V 管理員準備 RHEL 7 虛擬機器
+### <a name="rhel-7-using-hyper-v-manager"></a>使用 Hyper-v 管理員的 RHEL 7
 
 1. 在 Hyper-V 管理員中，選取虛擬機器。
 
@@ -195,7 +198,7 @@ ms.locfileid: "96500490"
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行此修改，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如：
+1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要執行此修改，請在文字編輯器中開啟 `/etc/default/grub`，然後編輯 `GRUB_CMDLINE_LINUX` 參數。 例如︰
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -235,25 +238,89 @@ ms.locfileid: "96500490"
     # sudo systemctl enable waagent.service
     ```
 
-1. 請勿在作業系統磁碟上建立交換空間。
-
-    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
+1. 安裝雲端初始化以處理布建
 
     ```console
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # Configure waagent for cloud-init
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+
+    echo "Allow only Azure datasource, disable fetching network setting via IMDS"
+    cat > /etc/cloud/cloud.cfg.d/91-azure_datasource.cfg <<EOF
+    datasource_list: [ Azure ]
+    datasource:
+    Azure:
+        apply_network_config: False
+    EOF
+
+    if [[ -f /mnt/resource/swapfile ]]; then
+    echo Removing swapfile - RHEL uses a swapfile by default
+    swapoff /mnt/resource/swapfile
+    rm /mnt/resource/swapfile -f
+    fi
+
+    echo "Add console log file"
+    cat >> /etc/cloud/cloud.cfg.d/05_logging.cfg <<EOF
+
+    # This tells cloud-init to redirect its stdout and stderr to
+    # 'tee -a /var/log/cloud-init-output.log' so the user can see output
+    # there without needing to look on the console.
+    output: {all: '| tee -a /var/log/cloud-init-output.log'}
+    EOF
+
     ```
 
+1. 交換設定不會在作業系統磁片上建立交換空間。
+
+    先前，Azure Linux 代理程式已在 Azure 上布建虛擬機器後，使用連接至虛擬機器的本機資源磁片自動設定交換空間。 不過，這現在由雲端初始處理，您 **不** 能使用 Linux 代理程式來格式化資源磁片建立分頁檔，適當地修改下列參數 `/etc/waagent.conf` ：
+
+    ```console
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+    ```
+
+    如果您想要掛接、格式化和建立交換，您可以：
+    * 每次建立 VM 時，以雲端初始設定的形式傳遞此設定
+    * 在每次建立 VM 時，使用內建至映射的雲端初始指示詞：
+
+        ```console
+        cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+        #cloud-config
+        # Generated by Azure cloud image build
+        disk_setup:
+          ephemeral0:
+            table_type: mbr
+            layout: [66, [33, 82]]
+            overwrite: True
+        fs_setup:
+          - device: ephemeral0.1
+            filesystem: ext4
+          - device: ephemeral0.2
+            filesystem: swap
+        mounts:
+          - ["ephemeral0.1", "/mnt"]
+          - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+        EOF
+        ```
 1. 如果您要取消註冊訂用帳戶，請執行下列命令：
 
     ```console
     # sudo subscription-manager unregister
     ```
 
-1. 執行下列命令，以取消佈建虛擬機器，並準備將它佈建於 Azure 上：
+1. 取消佈建
+
+    執行下列命令，以取消佈建虛擬機器，並準備將它佈建於 Azure 上：
 
     ```console
     # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
@@ -268,8 +335,11 @@ ms.locfileid: "96500490"
 1. 按一下 [hyper-v 管理員] 中的 [**動作**  >  **關機**]。 您現在可以將 Linux VHD 上傳至 Azure。
 
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>從 KVM 準備 Red Hat 型虛擬機器
-### <a name="prepare-a-rhel-6-virtual-machine-from-kvm"></a>從 KVM 準備 RHEL 6 虛擬機器
+## <a name="kvm"></a>KVM
+
+本節說明如何使用 KVM 來準備 [RHEL 6](#rhel-6-using-kvm) 或 [rhel 7](#rhel-7-using-kvm) 發行版本以上傳至 Azure。 
+
+### <a name="rhel-6-using-kvm"></a>使用 KVM 的 RHEL 6
 
 1. 從 Red Hat 網站下載 RHEL 6 的 KVM 映像。
 
@@ -420,7 +490,12 @@ ms.locfileid: "96500490"
     ```console
     # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
     # skip the deprovision step
-    # waagent -force -deprovision
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    
 
     # export HISTSIZE=0
 
@@ -465,7 +540,7 @@ ms.locfileid: "96500490"
     ```
 
         
-### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a>從 KVM 準備 RHEL 7 虛擬機器
+### <a name="rhel-7-using-kvm"></a>使用 KVM 的 RHEL 7
 
 1. 從 Red Hat 網站下載 RHEL 7 的 KVM 映像。 此程序會使用 RHEL 7 做為範例。
 
@@ -596,17 +671,13 @@ ms.locfileid: "96500490"
     # systemctl enable waagent.service
     ```
 
-1. 請勿在作業系統磁碟上建立交換空間。
+1. 安裝 cloud-init 請遵循「從 Hyper-v 管理員準備 RHEL 7 虛擬機器」中的步驟，步驟12：「安裝雲端初始化以處理布建」。
 
-    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
+1. 交換設定 
 
-    ```config-conf
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-    ```
+    請勿在作業系統磁碟上建立交換空間。
+    遵循「從 Hyper-v 管理員準備 RHEL 7 虛擬機器」、步驟13、「交換設定」中的步驟
+
 
 1. 執行下列命令以取消註冊訂用帳戶 (如有必要)：
 
@@ -614,17 +685,10 @@ ms.locfileid: "96500490"
     # subscription-manager unregister
     ```
 
-1. 執行下列命令，以取消佈建虛擬機器，並準備將它佈建於 Azure 上：
 
-    ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
-    # sudo waagent -force -deprovision
+1. 取消佈建
 
-    # export HISTSIZE=0
-
-    # logout
-    ```
+    請依照「從 Hyper-v 管理員準備 RHEL 7 虛擬機器」、步驟15、「取消布建」中的步驟執行
 
 1. 在 KVM 中關閉虛擬機器。
 
@@ -663,15 +727,18 @@ ms.locfileid: "96500490"
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>從 VMware 準備 Red Hat 型虛擬機器
-### <a name="prerequisites"></a>先決條件
+## <a name="vmware"></a>VMware
+
+本節說明如何從 VMware 準備 [rhel 6](#rhel-6-using-vmware) 或 [rhel 7](#rhel-6-using-vmware)  發行版本。
+
+### <a name="prerequisites"></a>必要條件
 本節假設您已在 VMware 中安裝 RHEL 虛擬機器。 如需有關如何在 VMware 中安裝作業系統的詳細資訊，請參閱 [VMware 客體作業系統安裝指南](https://partnerweb.vmware.com/GOSIG/home.html)。
 
 * 安裝 Linux 作業系統時，我們建議您使用標準磁碟分割而不是 LVM (這通常是許多安裝的預設設定)。 這可避免 LVM 名稱與複製的虛擬機器發生衝突，特別是為了疑難排解而需要將作業系統磁碟連結至另一部虛擬機器時。 如果願意，您可以在資料磁碟上使用 LVM 或 RAID。
 * 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Linux 代理程式以在暫存資源磁碟上建立交換檔。 您可以在以下步驟中找到與此相關的詳細資訊。
 * 建立虛擬硬碟時，請選取 [將虛擬磁碟儲存為單一檔案]  。
 
-### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>從 VMWare 準備 RHEL 6 虛擬機器
+### <a name="rhel-6-using-vmware"></a>使用 VMware 的 RHEL 6
 1. 在 RHEL 6 中，NetworkManager 可能會對 Azure Linux 代理程式造成干擾。 執行下列命令以將此套件解除安裝：
 
     ```console
@@ -723,7 +790,7 @@ ms.locfileid: "96500490"
     # subscription-manager repos --enable=rhel-6-server-extras-rpms
     ```
 
-1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要這樣做，請在文字編輯器中開啟 `/etc/default/grub` 並編輯 `GRUB_CMDLINE_LINUX` 參數。 例如：
+1. 修改 grub 組態中的核心開機那一行，使其額外包含用於 Azure 的核心參數。 若要這樣做，請在文字編輯器中開啟 `/etc/default/grub` 並編輯 `GRUB_CMDLINE_LINUX` 參數。 例如︰
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
@@ -788,7 +855,12 @@ ms.locfileid: "96500490"
     ```console
     # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
     # skip the deprovision step
-    # sudo waagent -force -deprovision
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+
+    # waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    
 
     # export HISTSIZE=0
 
@@ -830,7 +902,7 @@ ms.locfileid: "96500490"
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
     ```
 
-### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>從 VMWare 準備 RHEL 7 虛擬機器
+### <a name="rhel-7-using-vmware"></a>使用 VMware 的 RHEL 7
 1. 建立或編輯 `/etc/sysconfig/network` 檔案，然後新增下列文字：
 
     ```config
@@ -918,17 +990,14 @@ ms.locfileid: "96500490"
     # sudo systemctl enable waagent.service
     ```
 
-1. 請勿在作業系統磁碟上建立交換空間。
+1. 安裝雲端初始化
 
-    Azure Linux 代理程式可在虛擬機器佈建於 Azure 後，使用連結至虛擬機器的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是暫存磁片，如果虛擬機器已取消布建，則可能會清空。 在上一個步驟安裝 Azure Linux 代理程式後，請在 `/etc/waagent.conf` 中適當修改下列參數：
+    請依照「從 Hyper-v 管理員準備 RHEL 7 虛擬機器」中的步驟，步驟12，「安裝 cloud-init 來處理布建」。
 
-    ```config-conf
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.EnableSwap=y
-    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-    ```
+1. 交換設定
+
+    請勿在作業系統磁碟上建立交換空間。
+    遵循「從 Hyper-v 管理員準備 RHEL 7 虛擬機器」、步驟13、「交換設定」中的步驟
 
 1. 如果您要取消註冊訂用帳戶，請執行下列命令：
 
@@ -936,17 +1005,10 @@ ms.locfileid: "96500490"
     # sudo subscription-manager unregister
     ```
 
-1. 執行下列命令，以取消佈建虛擬機器，並準備將它佈建於 Azure 上：
+1. 取消佈建
 
-    ```console
-    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-    # skip the deprovision step
-    # sudo waagent -force -deprovision
+    請依照「從 Hyper-v 管理員準備 RHEL 7 虛擬機器」、步驟15、「取消布建」中的步驟執行
 
-    # export HISTSIZE=0
-
-    # logout
-    ```
 
 1. 關閉虛擬機器，然後將 VMDK 檔案轉換成 VHD 格式。
 
@@ -983,8 +1045,11 @@ ms.locfileid: "96500490"
     # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>使用 kickstart 檔案自動從 ISO 準備 Red Hat 型虛擬機器
-### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>從 kickstart 檔案準備 RHEL 7 虛擬機器
+## <a name="kickstart-file"></a>Kickstart 檔案
+
+本節說明如何使用 kickstart 檔案，從 ISO 準備 RHEL 7 發行版本。
+
+### <a name="rhel-7-from-a-kickstart-file"></a>Kickstart 檔案中的 RHEL 7
 
 1.  建立包含以下內容的 kickstart 檔案，然後儲存此檔案。 如需有關 kickstart 安裝的詳細資訊，請參閱 [Kickstart 安裝指南](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html)。
 
@@ -1075,12 +1140,46 @@ ms.locfileid: "96500490"
     # Enable waaagent at boot-up
     systemctl enable waagent
 
+    # Install cloud-init
+    yum install -y cloud-init cloud-utils-growpart gdisk hyperv-daemons
+
+    # Configure waagent for cloud-init
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+
+    echo "Adding mounts and disk_setup to init stage"
+    sed -i '/ - mounts/d' /etc/cloud/cloud.cfg
+    sed -i '/ - disk_setup/d' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - mounts' /etc/cloud/cloud.cfg
+    sed -i '/cloud_init_modules/a\\ - disk_setup' /etc/cloud/cloud.cfg
+
     # Disable the root account
     usermod root -p '!!'
 
-    # Configure swap in WALinuxAgent
-    sed -i 's/^\(ResourceDisk\.EnableSwap\)=[Nn]$/\1=y/g' /etc/waagent.conf
-    sed -i 's/^\(ResourceDisk\.SwapSizeMB\)=[0-9]*$/\1=2048/g' /etc/waagent.conf
+    # Disabke swap in WALinuxAgent
+    ResourceDisk.Format=n
+    ResourceDisk.EnableSwap=n
+
+    # Configure swap using cloud-init
+    cat > /etc/cloud/cloud.cfg.d/00-azure-swap.cfg << EOF
+    #cloud-config
+    # Generated by Azure cloud image build
+    disk_setup:
+    ephemeral0:
+        table_type: mbr
+        layout: [66, [33, 82]]
+        overwrite: True
+    fs_setup:
+    - device: ephemeral0.1
+        filesystem: ext4
+    - device: ephemeral0.2
+        filesystem: swap
+    mounts:
+    - ["ephemeral0.1", "/mnt"]
+    - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
+    EOF
 
     # Set the cmdline
     sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"/g' /etc/default/grub
@@ -1105,7 +1204,14 @@ ms.locfileid: "96500490"
     EOF
 
     # Deprovision and prepare for Azure if you are creating a generalized image
-    waagent -force -deprovision
+    sudo cloud-init clean --logs --seed
+    sudo rm -rf /var/lib/cloud/
+    sudo rm -rf /var/lib/waagent/
+    sudo rm -f /var/log/waagent.log
+
+    sudo waagent -force -deprovision+user
+    rm -f ~/.bash_history
+    export HISTSIZE=0
 
     %end
     ```

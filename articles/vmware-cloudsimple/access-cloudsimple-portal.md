@@ -1,19 +1,19 @@
 ---
 title: 存取 Azure VMware Solution by CloudSimple-入口網站
 description: 說明如何從 Azure 入口網站經由 CloudSimple 入口網站存取 VMware 解決方案
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/04/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0ea178655646f7f130476acaffc35c60181968ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0aa7a9a1f19a9d4fb2c555b08753e0b57c657974
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87058711"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895150"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>從 Azure 入口網站存取 VMware Solution by CloudSimple portal
 
@@ -38,7 +38,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="access-the-cloudsimple-portal"></a>存取 CloudSimple 入口網站
 
-1. 選取 [所有服務]。
+1. 選取 [所有服務]  。
 
 2. 搜尋 **CloudSimple 服務**。
 
@@ -69,7 +69,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ![同意 CloudSimple 服務授權-需要系統管理員](media/cloudsimple-azure-consent-requires-administrator.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何 [建立私用雲端](./create-private-cloud.md)
 * 瞭解如何 [設定私人雲端環境](quickstart-create-private-cloud.md)

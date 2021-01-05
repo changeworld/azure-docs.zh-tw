@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple-設定從內部部署到 CloudSimple VPN 閘道的高可用性
 description: 說明如何設定從內部部署環境到已啟用高可用性的 CloudSimple VPN 閘道的高可用性連接
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80805aaa172518c40c7ad123ca24361ee0f15e69
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025260"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895694"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>設定從內部部署至 CloudSimple VPN 閘道的高可用性連接
 
@@ -147,7 +147,7 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 ### <a name="1-create-primary-and-secondary-tunnel-interfaces"></a>1. 建立主要和次要通道介面
 
-登入 Palo Alto 防火牆，選取 [**網路**  >  **介面**通道  >  **Tunnel**  >  **新增**]，設定下欄欄位，然後按一下 **[確定]**。
+登入 Palo Alto 防火牆，選取 [**網路**  >  **介面** 通道  >    >  **新增**]，設定下欄欄位，然後按一下 **[確定]**。
 
 * 介面名稱。 第一個欄位是以關鍵字 ' 通道 ' 自動填入。 在連續的欄位中，輸入介於1到9999之間的任一數字。 此介面將用作主要通道介面，以在內部部署資料中心與私人雲端之間攜帶站對站流量。
 * 評論。 輸入批註，以方便識別通道的用途

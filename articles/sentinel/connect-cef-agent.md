@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: ead878daaab977c77b3ab36f42ccfe4d01d7bc03
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548625"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897496"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>步驟1：部署記錄轉寄站
 
@@ -34,7 +34,7 @@ ms.locfileid: "96548625"
     - 在 TCP 埠514上接聽來自安全性解決方案的 Syslog 訊息
     - 使用 TCP 通訊埠25226，只將它識別為 CEF 的訊息轉送到 localhost 上的 Log Analytics 代理程式
  
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須在指定的 Linux 電腦上擁有較高的許可權 (sudo) 。
 
@@ -51,13 +51,13 @@ ms.locfileid: "96548625"
 1. 在 **1.2 的 Linux 機器上安裝 CEF 收集器**，複製下執行下列腳本下提供的連結， **以安裝並套用 CEF 收集器**，或從下面的文字 (套用工作區識別碼和主要金鑰來取代預留位置) ：
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. 當腳本正在執行時，請檢查以確定您沒有收到任何錯誤或警告訊息。
     - 您可能會收到一則訊息，引導您執行命令以更正 *電腦* 欄位對應的問題。 如需詳細資訊，請參閱 [部署腳本中的說明](#mapping-command) 。
 
-1. 繼續進行 [步驟2：設定您的安全性解決方案以轉寄 CEF 訊息](connect-cef-solution-config.md) 。
+1. 繼續進行 [步驟2：設定您的安全性解決方案以轉寄 CEF 訊息](connect-cef-solution-config.md)。
 
 
 > [!NOTE]
@@ -189,8 +189,7 @@ ms.locfileid: "96548625"
         檔案的內容 `security-config-omsagent.conf` ：
 
         ```bash
-        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};
-        destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
+        filter f_oms_filter {match(\"CEF\|ASA\" ) ;};destination oms_destination {tcp(\"127.0.0.1\" port(25226));};
         log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
         ```
 
