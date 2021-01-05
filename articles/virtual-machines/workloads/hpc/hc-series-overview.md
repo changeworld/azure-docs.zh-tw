@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 672175d5bb92c8ab6dc347ece5ad6b14d8232ef4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b9fe978da9accd28ea0e538f458325f10c9c5d8d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024073"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831885"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC 系列虛擬機器總覽
 
@@ -40,7 +40,7 @@ Intel 以上的白金級、金級和銀級 Cpu 也引進了一個在 CPU 通訊�
 | 核心                            | 44 (HT 已停用)                  |
 | CPU                              | Intel 的頂級白金8168         |
 | CPU 頻率 (非 AVX)           | 3.7 GHz (單一核心) ，2.7-3.4 GHz (所有核心)  |
-| Memory                           | 8 GB/核心 (352 總計)             |
+| 記憶體                           | 8 GB/核心 (352 總計)             |
 | 本機磁碟                       | 700 GB SSD                       |
 | Infiniband                       | 100 Gb EDR Mellanox ConnectX-5   |
 | 網路                          | 50 Gb 乙太網路 (40 Gb 可用) Azure 第二代 SmartNIC    |
@@ -58,6 +58,6 @@ Intel 以上的白金級、金級和銀級 Cpu 也引進了一個在 CPU 通訊�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 Intel 以上的 [SP 架構](https://bit.ly/2RCYkiE)。
+- 深入瞭解 Intel 以上的 [SP 架構](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html)。
 - 請參閱 [Azure 運算技術社群部落格](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 範例和結果。
 - 如需執行中 HPC 工作負載較高階的架構檢視，請參閱 [Azure 上的高效能運算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

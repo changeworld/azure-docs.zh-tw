@@ -4,21 +4,21 @@ description: 瞭解與 Defender for IoT 相關聯的成本，以及如何控制�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/04/2020
-ms.author: mlottner
-ms.openlocfilehash: 24ae6c4014948639aa737a0d2d88ec15f98a7cb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/08/2020
+ms.author: shhazam
+ms.openlocfilehash: a97bcbf5ba47289a2e68b0eaa587ea39d7fb705a
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934486"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832347"
 ---
 # <a name="pricing-and-associated-costs"></a>定價和相關成本
 
@@ -52,7 +52,7 @@ ms.locfileid: "90934486"
 
 下表提供每個選項相關成本和含意的摘要。
 
-| 選項 | 使用量 | 註解 |
+| 選項 | 使用方式 | 註解 |
 | --- | --- | --- |
 | **Log Analytics 儲存體** |  |
 | 裝置建議和警示| 服務所產生的安全性建議和警示 | 非選擇性 |
@@ -71,7 +71,7 @@ ms.locfileid: "90934486"
 | | [警示](concept-security-alerts.md)和[建議](concept-recommendations.md)調查的詳細資料無法使用 |
 |
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - 存取您的 [原始安全性資料](how-to-security-data-access.md)
 - [調查裝置](how-to-investigate-device.md)

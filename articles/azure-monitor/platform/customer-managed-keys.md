@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 17648b9bc973285764bb0bd6242506122a043780
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6037b372f73bcf3554120e305f4b3031b26e97d4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454266"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831647"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
-本文提供背景資訊和步驟，為您的 Log Analytics 工作區設定客戶管理的金鑰。 設定後，任何傳送至工作區的資料都會以 Azure Key Vault 金鑰加密。
+Azure 監視器中的資料會使用 Microsoft 管理的金鑰進行加密。 您可以使用自己的加密金鑰來保護工作區中的資料和儲存的查詢。 當您指定客戶管理的金鑰時，該金鑰是用來保護和控制資料的存取權，一旦設定之後，傳送至工作區的任何資料都會使用您的 Azure Key Vault 金鑰進行加密。 客戶自控金鑰可提供更大的彈性來管理存取控制。
 
 建議先檢閱以下[限制和條件約束](#limitationsandconstraints)，再進行設定。
 
@@ -23,23 +23,25 @@ ms.locfileid: "96454266"
 
 [靜態加密](../../security/fundamentals/encryption-atrest.md) 是組織中常見的隱私權和安全性需求。 您可以讓 Azure 完全管理待用加密，而您可以使用各種選項來更緊密地管理加密和加密金鑰。
 
-Azure 監視器使用 Microsoft 管理的金鑰 (MMK) ，確保所有資料和儲存的查詢都會加密。 Azure 監視器也提供使用您自己的金鑰進行加密的選項，該金鑰儲存在您的 [Azure Key Vault](../../key-vault/general/overview.md) 中，並可讓您隨時撤銷對您資料的存取權。 Azure 監視器使用加密等同于 [Azure 儲存體加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) 的運作方式。
+Azure 監視器使用 Microsoft 管理的金鑰 (MMK) ，確保所有資料和儲存的查詢都會加密。 Azure 監視器也會提供使用您自己的金鑰（儲存在 [Azure Key Vault](../../key-vault/general/overview.md)中）進行加密的選項，讓您可以隨時撤銷對資料的存取權。 Azure 監視器使用加密等同于 [Azure 儲存體加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) 的運作方式。
 
-Customer-Managed 金鑰會在專用的 Log Analytics 叢集上傳遞，以提供更高的保護層級和控制。 使用 Microsoft 管理的金鑰或客戶管理的金鑰，在服務層級進行資料內嵌的資料加密兩次，而在基礎結構層級使用兩個不同的加密演算法和兩個不同的金鑰。 [雙精確度加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) 可防止其中一個加密演算法或金鑰可能會遭到入侵的案例。 在此情況下，額外的加密層級會繼續保護您的資料。 專用叢集也可讓您使用加密 [箱](#customer-lockbox-preview) 控制來保護您的資料。
+在提供更高保護層級和控制權的 [專用](../log-query/logs-dedicated-clusters.md) 叢集上，會提供 Customer-Managed 金鑰。 使用 Microsoft 管理的金鑰或客戶管理的金鑰，在服務層級進行資料內嵌的資料加密兩次，而在基礎結構層級使用兩個不同的加密演算法和兩個不同的金鑰。 [雙精確度加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) 可防止其中一個加密演算法或金鑰可能會遭到入侵的案例。 在此情況下，額外的加密層級會繼續保護您的資料。 專用叢集也可讓您使用加密 [箱](#customer-lockbox-preview) 控制來保護您的資料。
 
 過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 無論客戶管理的金鑰設定為何，此資料仍會以 Microsoft 金鑰加密，但您對 SSD 資料的控制會遵守 [金鑰撤銷](#key-revocation)。 我們正在努力將 SSD 資料加密，並在2021的上半年 Customer-Managed 金鑰。
 
-[Log Analytics 叢集定價模型](./manage-cost-storage.md#log-analytics-dedicated-clusters)會使用每日層級的容量保留，起價為 1000 GB。
+Log Analytics 專用叢集會使用每日 1000 GB 起的容量保留 [定價模型](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) 。
 
 > [!IMPORTANT]
 > 由於有暫時性的容量限制，我們要求您在建立叢集之前預先註冊。 使用您的連絡人進入 Microsoft，或開啟支援要求以註冊您的訂用帳戶識別碼。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Customer-Managed 金鑰在 Azure 監視器中的運作方式
 
-Azure 監視器利用系統所指派受控識別來授與 Azure Key Vault 的存取權。 系統指派的受控識別只能與單一 Azure 資源相關聯，而叢集層級支援 Log Analytics 叢集的身分識別，這表示該功能是在專用的 Log Analytics 叢集上傳遞。 為了在多個工作區上支援 Customer-Managed 金鑰，新的 Log Analytics *叢集資源會* 以您的 Key Vault 與 Log Analytics 工作區之間的中繼身分識別連線來執行。 Log Analytics 叢集儲存體使用與「叢集」資源建立關聯的受控識別，以透過 Azure Active Directory 向 Azure Key Vault 進行驗證。 
+Azure 監視器會使用系統指派的受控識別，來授與您 Azure Key Vault 的存取權。 叢集層級支援 Log Analytics 叢集的身分識別，並允許在多個工作區上 Customer-Managed 金鑰，新的 Log Analytics *叢集資源會* 作為您 Key Vault 與 Log analytics 工作區之間的中繼身分識別連線來執行。 Log Analytics 叢集儲存體使用與「叢集」資源建立關聯的受控識別，以透過 Azure Active Directory 向 Azure Key Vault 進行驗證。 
 
-設定之後，內嵌至連結至您專用叢集之工作區的任何資料都會以您在 Key Vault 中的金鑰進行加密。 您可以隨時從叢集取消連結工作區。 然後，新的資料會內嵌至 Log Analytics 儲存體，並使用 Microsoft 金鑰進行加密，而您可以順暢地查詢新的和舊的資料。
+在客戶管理的金鑰設定之後，連結至您專用叢集之工作區的新內嵌資料會以您的金鑰加密。 您可以隨時從叢集取消連結工作區。 然後，新的資料會內嵌至 Log Analytics 儲存體，並使用 Microsoft 金鑰進行加密，而您可以順暢地查詢新的和舊的資料。
 
+> [!IMPORTANT]
+> Customer-Managed 的主要功能是區域性的。 您的 Azure Key Vault、叢集和連結的 Log Analytics 工作區必須位於相同的區域中，但它們可以在不同的訂用帳戶中。
 
 ![Customer-Managed 金鑰總覽](media/customer-managed-keys/cmk-overview.png)
 
@@ -48,7 +50,7 @@ Azure 監視器利用系統所指派受控識別來授與 Azure Key Vault 的存
 3. 專用的 Log Analytics 叢集
 4. 連結 *至叢集* 資源的工作區 
 
-## <a name="encryption-keys-operation"></a>加密金鑰作業
+### <a name="encryption-keys-operation"></a>加密金鑰作業
 
 儲存體資料加密牽涉到 3 種金鑰類型：
 
@@ -64,19 +66,20 @@ Azure 監視器利用系統所指派受控識別來授與 Azure Key Vault 的存
 - 您的 KEK 永遠不會離開 Key Vault，在 HSM 金鑰的情況下，它永遠不會離開硬體。
 - Azure 儲存體使用與 *叢集資源相關* 聯的受控識別，透過 Azure Active Directory 驗證和存取 Azure Key Vault。
 
-## <a name="customer-managed-key-provisioning-procedure"></a>Customer-Managed 金鑰布建程式
+### <a name="customer-managed-key-provisioning-steps"></a>Customer-Managed 金鑰布建步驟
 
 1. 註冊您的訂用帳戶以允許叢集建立
 1. 建立 Azure Key Vault 並儲存金鑰
 1. 正在建立叢集
 1. 授與 Key Vault 的權限
+1. 使用金鑰識別碼詳細資料更新叢集
 1. 連結 Log Analytics 工作區
 
-Azure 入口網站中不支援 Customer-Managed 金鑰設定，而布建是透過 [PowerShell](/powershell/module/az.operationalinsights/)、 [CLI](/cli/azure/monitor/log-analytics) 或 [REST](/rest/api/loganalytics/) 要求來執行。
+目前的 Azure 入口網站不支援 Customer-Managed 金鑰設定，且可透過 [PowerShell](/powershell/module/az.operationalinsights/)、 [CLI](/cli/azure/monitor/log-analytics) 或 [REST](/rest/api/loganalytics/) 要求執行布建。
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同步作業和狀態檢查
 
-部分設定步驟會以非同步方式執行，因為它們無法快速完成。 `status`In 回應 contains 可以是下列其中之一： ' InProgress '、' 更新 '、' 刪除 '、' Succeeded '、' Failed '，包括錯誤碼。
+部分設定步驟會以非同步方式執行，因為它們無法快速完成。 `status`In 回應可以是下列其中一項： ' InProgress '、' 更新 '、' 刪除 '、' Succeeded ' 或 ' Failed '，錯誤碼為。
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
@@ -97,7 +100,7 @@ N/A
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
 
-您可將 GET 要求傳送至 *Azure-AsyncOperation* 標頭值來檢查非同步作業的狀態：
+您可以藉由將 GET 要求傳送至 *Azure AsyncOperation* 標頭中的端點，來檢查非同步作業的狀態：
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-08-01
 Authorization: Bearer <token>
@@ -107,10 +110,9 @@ Authorization: Bearer <token>
 
 ### <a name="allowing-subscription"></a>允許訂用帳戶
 
-> [!IMPORTANT]
-> Customer-Managed 的主要功能是區域性的。 您的 Azure Key Vault、叢集和連結的 Log Analytics 工作區必須位於相同的區域中，但它們可以在不同的訂用帳戶中。
+使用您的連絡人進入 Microsoft，或在 Log Analytics 中開啟支援要求，以提供您的訂用帳戶識別碼。
 
-### <a name="storing-encryption-key-kek"></a>儲存加密金鑰 (KEK)
+## <a name="storing-encryption-key-kek"></a>儲存加密金鑰 (KEK)
 
 建立 Azure Key Vault 或使用現有 Azure Key Vault 來產生或匯入將用於資料加密的金鑰。 必須將 Azure Key Vault 設定為可復原，才能保護金鑰和 Azure 監視器中資料的存取權。 您可在 Key Vault 的 [屬性] 下確認此設定，其中應該已啟用 [虛刪除] 和 [清除保護]。
 
@@ -121,27 +123,24 @@ Authorization: Bearer <token>
 - [虛刪除](../../key-vault/general/soft-delete-overview.md)
 - [清除保護](../../key-vault/general/soft-delete-overview.md#purge-protection)可防止強制刪除祕密/保存庫，即使在虛刪除之後也一樣
 
-### <a name="create-cluster"></a>建立叢集
+## <a name="create-cluster"></a>建立叢集
 
 請依照 [專用叢集文章](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中所述的程式進行操作。 
 
-> [!IMPORTANT]
-> 複製並儲存回應，因為接下來的步驟將需要詳細資料。
+## <a name="grant-key-vault-permissions"></a>授與 Key Vault 權限
 
-### <a name="grant-key-vault-permissions"></a>授與 Key Vault 權限
+在 Key Vault 中建立存取原則，以將許可權授與您的叢集。 基礎 Azure 監視器儲存體會使用這些許可權。 在 Azure 入口網站中開啟您的 Key Vault，然後按一下 *[存取原則]* ，然後按一下 *[+ 新增存取原則]* ，以使用這些設定來建立原則：
 
-在 Key Vault 中建立存取原則，以將許可權授與您的叢集。 基礎 Azure 監視器儲存體會使用這些權限來進行資料加密。 在 Azure 入口網站中開啟 Key Vault 並按一下 [存取原則]，然後按一下 [+ 新增存取原則] 以使用下列設定來建立原則：
-
-- 金鑰權限：選取 [取得]、[包裝金鑰] 和 [將金鑰解除包裝] 權限。
-- 選取主體：輸入在上一個步驟的回應中傳回的叢集名稱或主體識別碼值。
+- 金鑰許可權：選取 [ *取得*]、[ *包裝金鑰* ] 和 [解除包裝 *金鑰*]。
+- 選取主體：輸入叢集名稱或主體識別碼。
 
 ![授與 Key Vault 權限](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
 需要 [取得] 權限，才能確認 Key Vault 已設定為可復原來保護金鑰和 Azure 監視器資料的存取權。
 
-### <a name="update-cluster-with-key-identifier-details"></a>使用金鑰識別碼詳細資料更新叢集
+## <a name="update-cluster-with-key-identifier-details"></a>使用金鑰識別碼詳細資料更新叢集
 
-叢集上的所有作業都需要 OperationalInsights/cluster/write action 許可權。 您可以透過包含/write 動作的擁有者或參與者， *或透過包含 OperationalInsights/動作的 Log Analytics 參與者角色* ，授與此許可權。
+叢集中的所有作業都需要 `Microsoft.OperationalInsights/clusters/write` 採取動作許可權。 您可以透過包含動作的擁有者或參與者，或透過 `*/write` 包含動作的 Log Analytics 參與者角色，授與此許可權 `Microsoft.OperationalInsights/*` 。
 
 此步驟會使用要用於資料加密的金鑰和版本來更新 Azure 監視器儲存體。 更新時，您的新金鑰會用來包裝和解除包裝儲存體金鑰 (AEK) 。
 
@@ -191,11 +190,11 @@ Content-type: application/json
 
 **回應**
 
-傳播金鑰識別碼需要幾分鐘的時間才能完成。 您可透過兩種方式來檢查更新狀態：
+它會將金鑰傳播幾分鐘才能完成。 您可透過兩種方式來檢查更新狀態：
 1. 從回應複製 Azure-AsyncOperation URL 值，並遵循[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
-2. 在叢集中傳送 GET 要求，並查看 *KeyVaultProperties* 屬性。 您最近更新的金鑰識別碼詳細資料應該會在回應中傳回。
+2. 在叢集中傳送 GET 要求，並查看 *KeyVaultProperties* 屬性。 您最近更新的金鑰應該會在回應中傳回。
 
-當金鑰識別碼更新完成時，GET 要求的回應應如下所示：200確定和標頭
+當金鑰更新完成時，GET 要求的回應應該如下所示：200確定和標頭
 ```json
 {
   "identity": {
@@ -227,19 +226,14 @@ Content-type: application/json
 
 ---
 
-### <a name="link-workspace-to-cluster"></a>將工作區連結至叢集
-
-您必須擁有工作區和叢集的「寫入」許可權，才能執行這項作業，包括下列動作：
-
-- 在工作區中：Microsoft.OperationalInsights/workspaces/write
-- 在叢集中： Microsoft. OperationalInsights/cluster/write
+## <a name="link-workspace-to-cluster"></a>將工作區連結至叢集
 
 > [!IMPORTANT]
 > 只有在完成 Log Analytics 叢集佈建之後，才能執行此步驟。 如果您在布建之前連結工作區和內嵌資料，將會捨棄內嵌資料且無法復原。
 
-這項作業是非同步，而且可能需要一段時間才能完成。
+您必須擁有工作區和叢集的「寫入」許可權，才能執行這項作業，包括 `Microsoft.OperationalInsights/workspaces/write` 和 `Microsoft.OperationalInsights/clusters/write` 。
 
-請依照 [專用叢集文章](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-the-cluster)中所述的程式進行操作。
+請依照 [專用叢集文章](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-cluster)中所述的程式進行操作。
 
 ## <a name="key-revocation"></a>金鑰撤銷
 
@@ -251,7 +245,7 @@ Content-type: application/json
 
 ## <a name="key-rotation"></a>金鑰輪替
 
-Customer-Managed 金鑰輪替需要在 Azure Key Vault 中使用新的金鑰版本來明確更新叢集。 遵循「使用金鑰識別碼詳細資料更新叢集」步驟中的指示。 如果您未更新叢集中的新金鑰識別碼詳細資料，Log Analytics 叢集儲存體將繼續使用您先前的金鑰進行加密。 如果您在更新叢集中的新金鑰之前，停用或刪除舊金鑰，將會進入 [金鑰撤銷](#key-revocation) 狀態。
+Customer-Managed 金鑰輪替需要在 Azure Key Vault 中使用新的金鑰版本來明確更新叢集。 [更新具有金鑰識別碼詳細資料的](#update-cluster-with-key-identifier-details)叢集。 如果您未更新叢集中的新金鑰版本，Log Analytics 叢集儲存體將繼續使用您先前的金鑰進行加密。 如果您在更新叢集中的新金鑰之前，停用或刪除舊金鑰，將會進入 [金鑰撤銷](#key-revocation) 狀態。
 
 您所有的資料在金鑰輪替作業之後仍可供存取，因為資料一律會以帳戶加密金鑰 (AEK) 加密，而 AEK 現在會以 Key Vault 中的新金鑰加密金鑰 (KEK) 版本來加密。
 
@@ -371,266 +365,14 @@ Content-type: application/json
 
 ## <a name="customer-managed-key-operations"></a>Customer-Managed 金鑰作業
 
-- **取得資源群組中的所有叢集**
-  
-  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
-
-  N/A
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics cluster list --resource-group "resource-group-name"
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
-
-  **回應**
-  
-  ```json
-  {
-    "value": [
-      {
-        "identity": {
-          "type": "SystemAssigned",
-          "tenantId": "tenant-id",
-          "principalId": "principal-Id"
-        },
-        "sku": {
-          "name": "capacityReservation",
-          "capacity": 1000,
-          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
-          },
-        "properties": {
-           "keyVaultProperties": {
-              "keyVaultUri": "https://key-vault-name.vault.azure.net",
-              "keyName": "key-name",
-              "keyVersion": "current-version"
-              },
-          "provisioningState": "Succeeded",
-          "billingType": "cluster",
-          "clusterId": "cluster-id"
-        },
-        "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.operationalinsights/workspaces/workspace-name",
-        "name": "cluster-name",
-        "type": "Microsoft.OperationalInsights/clusters",
-        "location": "region-name"
-      }
-    ]
-  }
-  ```
-
-  ---
-
-- **取得訂用帳戶中的所有叢集**
-
-  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
-
-  N/A
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics cluster list
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Get-AzOperationalInsightsCluster
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
-    
-  **回應**
-    
-  與「資源群組」中的「叢集」相同的回應，但在訂用帳戶範圍中。
-
-  ---
-
-- **更新叢集中的 *容量保留***
-
-  當連結的工作區的資料量隨著時間變更，而且您想要適當地更新容量保留層級時。 遵循 [更新](#update-cluster-with-key-identifier-details) 叢集，並提供新的容量值。 它的範圍可以是每日1000到 3000 GB 的範圍，以及100的步驟。 如果是每天超過 3000 GB 的等級，則會觸及您的 Microsoft 連絡人來啟用它。 請注意，您不需要提供完整的 REST 要求主體，但應該包含 sku：
-
-  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
-
-  N/A
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity daily-ingestion-gigabyte
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity daily-ingestion-gigabyte
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  Content-type: application/json
-
-  {
-    "sku": {
-      "name": "capacityReservation",
-      "Capacity": daily-ingestion-gigabyte
-    }
-  }
-  ```
-
-  ---
-
-- **更新叢集中的 *billingType***
-
-  *BillingType* 屬性會決定叢集和其資料的計費屬性：
-  - 叢集 (預設) -- 計費會歸類到裝載叢集資源的訂用帳戶
-  - 工作區 -- 計費會按比例歸類到裝載工作區的訂用帳戶
-  
-  遵循 [更新](#update-cluster-with-key-identifier-details) 叢集，並提供新的 billingType 值。 請注意，您不需要提供完整的 REST 要求本文，但應該包含 *billingType*：
-
-  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
-
-  N/A
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  N/A
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  N/A
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rst
-  PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  Content-type: application/json
-
-  {
-    "properties": {
-      "billingType": "cluster",
-      }  
-  }
-  ``` 
-
-  ---
-
-- **取消連結工作區**
-
-  您需要工作區和叢集的「寫入」許可權，才能執行此操作。 您可以隨時從叢集取消連結工作區。 取消連結作業之後，會將新的內嵌資料儲存在 Log Analytics 儲存體中，並使用 Microsoft 金鑰進行加密。 只要以有效的 Key Vault 金鑰布建和設定叢集，您就可以查詢在取消連結前後內嵌至工作區的資料。
-
-  這項作業是非同步，而且可能需要一段時間才能完成。
-
-  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
-
-  N/A
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --name "cluster-name" --workspace-name "workspace-name"
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rest
-  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
-
-  ---
-
-- **檢查工作區連結狀態**
-  
-  在工作區上執行取得作業，並觀察 [ *clusterResourceId* ] 屬性是否存在於 [ *功能*] 下的 [回應] 中。 連結的工作區會有 *clusterResourceId* 屬性。
-
-  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
-
-  N/A
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-   ```rest
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
-
-  ---
-
-- **刪除叢集**
-
-  您需要叢集的「寫入」許可權，才能執行此作業。 執行虛刪除作業，以允許在14天內復原您的叢集（包括其資料），不論是意外或故意刪除。 在虛刪除期間，叢集名稱仍保持保留，且您無法使用該名稱建立新的叢集。 在虛刪除期間之後，叢集名稱就會釋出，而您的叢集和其資料會永久刪除且無法復原。 在刪除作業上，任何連結的工作區都會從叢集取消連結。 新擷取的資料會儲存在 Log Analytics 儲存體中，並以 Microsoft 金鑰加密。 
-  
-  取消連結作業是非同步，最多可能需要90分鐘的時間才能完成。
-
-  # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
-
-  N/A
-
-  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-  ```azurecli
-  az monitor log-analytics cluster delete --resource-group "resource-group-name" --name "cluster-name"
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-  ```powershell
-  Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
-  ```
-
-  # <a name="rest"></a>[REST](#tab/rest)
-
-  ```rst
-  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-  Authorization: Bearer <token>
-  ```
-
-  ---
-  
-- **復原您的叢集和資料** 
-  
-  在過去14天內刪除的叢集會處於虛刪除狀態，而且可以使用其資料來復原。 因為所有工作區都已從叢集刪除取消連結，所以您需要在叢集的復原之後重新連結您的工作區。 復原操作目前是由產品群組手動執行。 使用您的 Microsoft 通道，或開啟支援要求以復原已刪除的叢集。
+專用叢集上提供 Customer-Managed 金鑰，而這些作業是在[專用](../log-query/logs-dedicated-clusters.md#change-cluster-properties)叢集發行項中參考
+
+- 取得資源群組中的所有叢集  
+- 取得訂用帳戶中的所有叢集
+- 更新叢集中的 *容量保留*
+- 更新叢集中的 *billingType*
+- 從叢集取消連結工作區
+- 刪除叢集
 
 ## <a name="limitations-and-constraints"></a>限制和條件約束
 
@@ -662,6 +404,44 @@ Content-type: application/json
   - 如果您建立叢集並收到錯誤「<的區功能變數名稱稱> 不支援叢集的雙重加密」，您仍然可以建立不含雙重加密的叢集。 將 `"properties": {"isDoubleEncryptionEnabled": false}` 屬性新增至 REST 要求主體。
   - 建立叢集之後，就無法變更雙重加密設定。
 
+- 錯誤訊息
+  
+  **叢集建立**
+  -  400--叢集名稱無效。 叢集名稱可包含字元 a-z、a-z、0-9 和長度3-63。
+  -  400--要求的主體為 null 或格式不正確。
+  -  400--SKU 名稱無效。 將 SKU 名稱設定為 capacityReservation。
+  -  400--已提供容量，但未 capacityReservation SKU。 將 SKU 名稱設定為 capacityReservation。
+  -  400--SKU 缺少容量。 在 100 (GB) 的步驟中，將容量值設定為1000或更高。
+  -  400--SKU 中的容量不在範圍內。 最小值應為1000，最高可達您工作區中 [使用量和估計成本] 下可用的最大容量。
+  -  400--容量已鎖定30天。 更新後的30天內允許減少容量。
+  -  400--未設定 SKU。 在 100 (GB) 的步驟中，將 SKU 名稱設為 capacityReservation，並將容量值設定為1000或更高。
+  -  400--Identity 為 null 或空白。 設定具有 systemAssigned 類型的身分識別。
+  -  400--KeyVaultProperties 是在建立時設定。 在叢集建立之後更新 KeyVaultProperties。
+  -  400--目前無法執行作業。 非同步作業處於 [成功] 以外的狀態。 叢集必須在執行任何更新操作之前完成其作業。
+
+  **叢集更新**
+  -  400--叢集處於刪除中狀態。 非同步作業正在進行中。 叢集必須在執行任何更新操作之前完成其作業。
+  -  400--KeyVaultProperties 不是空的，但格式不正確。 請參閱 [金鑰識別碼更新](../platform/customer-managed-keys.md#update-cluster-with-key-identifier-details)。
+  -  400--無法驗證 Key Vault 中的金鑰。 可能是因為許可權不足或索引鍵不存在。 確認您已在 Key Vault 中 [設定金鑰和存取原則](../platform/customer-managed-keys.md#grant-key-vault-permissions) 。
+  -  400--金鑰無法復原。 Key Vault 必須設定為虛刪除和清除保護。 請參閱 [Key Vault 檔](../../key-vault/general/soft-delete-overview.md)
+  -  400--目前無法執行作業。 等候非同步作業完成，然後再試一次。
+  -  400--叢集處於刪除中狀態。 等候非同步作業完成，然後再試一次。
+
+  **叢集 Get**
+    -  404--找不到叢集，可能已刪除叢集。 如果您嘗試建立具有該名稱的叢集，併發生衝突，則叢集會處於虛刪除14天。 您可以聯絡支援人員加以復原，或使用另一個名稱來建立新的叢集。 
+
+  **叢集刪除**
+    -  409--無法在布建狀態下刪除叢集。 等候非同步作業完成，然後再試一次。
+
+  **工作區連結**
+  -  404--找不到工作區。 您指定的工作區不存在或已刪除。
+  -  409--進程中的工作區連結或取消連結作業。
+  -  400--找不到叢集，您指定的叢集不存在或已刪除。 如果您嘗試建立具有該名稱的叢集，併發生衝突，則叢集會處於虛刪除14天。 您可以聯絡支援人員來復原。
+
+  **工作區取消連結**
+  -  404--找不到工作區。 您指定的工作區不存在或已刪除。
+  -  409--進程中的工作區連結或取消連結作業。
+
 ## <a name="troubleshooting"></a>疑難排解
 
 - Key Vault 可用性的行為
@@ -689,40 +469,7 @@ Content-type: application/json
   1. 使用 REST 時，請從回應中複製 Azure-AsyncOperation URL 值，並遵循 [非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
   2. 將 GET 要求傳送至叢集或工作區，並觀察回應。 例如，未連結的工作區不會有 [*功能*] 下的 *clusterResourceId* 。
 
-- 錯誤訊息
-  
-  叢集建立：
-  -  400--叢集名稱無效。 叢集名稱可包含字元 a-z、a-z、0-9 和長度3-63。
-  -  400--要求的主體為 null 或格式不正確。
-  -  400--SKU 名稱無效。 將 SKU 名稱設定為 capacityReservation。
-  -  400--已提供容量，但未 capacityReservation SKU。 將 SKU 名稱設定為 capacityReservation。
-  -  400--SKU 缺少容量。 在 100 (GB) 的步驟中，將容量值設定為1000或更高。
-  -  400--SKU 中的容量不在範圍內。 最小值應為1000，最高可達您工作區中 [使用量和估計成本] 下可用的最大容量。
-  -  400--容量已鎖定30天。 更新後的30天內允許減少容量。
-  -  400--未設定 SKU。 在 100 (GB) 的步驟中，將 SKU 名稱設為 capacityReservation，並將容量值設定為1000或更高。
-  -  400--Identity 為 null 或空白。 設定具有 systemAssigned 類型的身分識別。
-  -  400--KeyVaultProperties 是在建立時設定。 在叢集建立之後更新 KeyVaultProperties。
-  -  400--目前無法執行作業。 非同步作業處於 [成功] 以外的狀態。 叢集必須在執行任何更新操作之前完成其作業。
+## <a name="next-steps"></a>後續步驟
 
-  叢集更新
-  -  400--叢集處於刪除中狀態。 非同步作業正在進行中。 叢集必須在執行任何更新操作之前完成其作業。
-  -  400--KeyVaultProperties 不是空的，但格式不正確。 請參閱 [金鑰識別碼更新](#update-cluster-with-key-identifier-details)。
-  -  400--無法驗證 Key Vault 中的金鑰。 可能是因為許可權不足或索引鍵不存在。 確認您已在 Key Vault 中 [設定金鑰和存取原則](#grant-key-vault-permissions) 。
-  -  400--金鑰無法復原。 Key Vault 必須設定為虛刪除和清除保護。 請參閱 [Key Vault 檔](../../key-vault/general/soft-delete-overview.md)
-  -  400--目前無法執行作業。 等候非同步作業完成，然後再試一次。
-  -  400--叢集處於刪除中狀態。 等候非同步作業完成，然後再試一次。
-
-  Cluster Get：
-    -  404--找不到叢集，可能已刪除叢集。 如果您嘗試建立具有該名稱的叢集，併發生衝突，則叢集會處於虛刪除14天。 您可以聯絡支援人員加以復原，或使用另一個名稱來建立新的叢集。 
-
-  叢集刪除
-    -  409--無法在布建狀態下刪除叢集。 等候非同步作業完成，然後再試一次。
-
-  工作區連結：
-  -  404--找不到工作區。 您指定的工作區不存在或已刪除。
-  -  409--進程中的工作區連結或取消連結作業。
-  -  400--找不到叢集，您指定的叢集不存在或已刪除。 如果您嘗試建立具有該名稱的叢集，併發生衝突，則叢集會處於虛刪除14天。 您可以聯絡支援人員來復原。
-
-  工作區取消連結：
-  -  404--找不到工作區。 您指定的工作區不存在或已刪除。
-  -  409--進程中的工作區連結或取消連結作業。
+- 深入瞭解 [Log Analytics 專用叢集計費](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)
+- 深入瞭解 [Log Analytics 工作區的正確設計](../platform/design-logs-deployment.md)

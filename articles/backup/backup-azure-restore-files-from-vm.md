@@ -4,12 +4,12 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4d34fc48e5d16275d0225a1cef4b5fa63f0b66d6
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b4bd64fb00c2f341e474ecb96738fab47d717474
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511649"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831664"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -118,6 +118,7 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 | --------------- | ---- |
 | Bash | 4 和更新版本 |
 | Python | 2.6.6 和更新版本  |
+| .NET | 4.6.2 和更新版本 |
 | TLS | 應支援 1.2  |
 
 ## <a name="step-4-access-requirements-to-successfully-run-the-script"></a>步驟4：成功執行腳本的存取需求

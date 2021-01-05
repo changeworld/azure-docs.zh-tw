@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy, devx-track-azurecli
+ms.custom: how-to, contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: d7540066ccc0d3a62dbd4012eee100d8e8aea98f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505081"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831717"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
 
@@ -24,7 +24,7 @@ ms.locfileid: "97505081"
 
 - __快速回應時間__
 - 已部署 __服務的自動__ 調整
-- __Logging__
+- __記錄__
 - __模型資料收集__
 - __驗證__
 - __TLS 終止__
@@ -91,6 +91,55 @@ Kubernetes 和 Azure Machine Learning 中都會使用 "deployment" 這個字。 
 Azureml-fe 會向上延展 (垂直) 以使用更多核心，並 (水準) 以使用更多的 pod。 進行擴大決策時，會使用路由傳入推斷要求所花的時間。 如果這段時間超過臨界值，就會進行相應放大。 如果路由連入要求的時間持續超過閾值，則會發生相應放大。
 
 相應減少和縮小時，會使用 CPU 使用量。 如果符合 CPU 使用量閾值，前端將會先向下調整。 如果 CPU 使用量下降到相應縮小臨界值，就會發生相應縮小作業。 只有當有足夠的可用叢集資源時，才會進行相應增加和相應放大。
+
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>瞭解 AKS 推斷叢集的連線能力需求
+
+當 Azure Machine Learning 建立或附加 AKS 叢集時，會使用下列兩種網路模型的其中一種來部署 AKS 叢集：
+* Kubenet 網路 - 在部署 AKS 叢集時通常會建立並設定網路資源。
+* Azure 容器網路介面 (CNI) 網路 - AKS 叢集會連線至現有的虛擬網路資源和組態。
+
+針對第一個網路模式，會為 Azure Machine Learning 服務建立並正確設定網路功能。 針對第二個網路模式，由於叢集已連線到現有的虛擬網路，特別是當自訂 DNS 用於現有的虛擬網路時，客戶需要特別注意 AKS 推斷叢集的連線需求，並確保 AKS 推斷的 DNS 解析和輸出連線能力。
+
+下圖會針對 AKS 推斷取得所有連線需求。 黑色箭號代表實際的通訊，而藍色箭號表示客戶控制的 DNS 應解析的功能變數名稱。
+
+ ![AKS 推斷的連線能力需求](./media/how-to-deploy-aks/aks-network.png)
+
+### <a name="overall-dns-resolution-requirements"></a>整體 DNS 解析需求
+現有 VNET 內的 DNS 解析是由客戶控制。 以下是可解析的 DNS 專案：
+* 以 hcp 形式 AKS API 伺服器。 \<cluster\> \<region\>azmk8s.io
+* Microsoft Container Registry (MCR) ： mcr.microsoft.com
+* 客戶的 Azure Container Registry (弧線) 的格式為 \<ACR name\> azurecr.io。
+* 格式為 \<account\> table.core.windows.net 和. blob.core.windows.net 的 Azure 儲存體帳戶 \<account\>
+*  (AAD 驗證的選擇性) ： api.azureml.ms
+* 計分端點功能變數名稱，可由 Azure ML 或自訂功能變數名稱自動產生。 自動產生的功能變數名稱看起來會像這樣： \<leaf-domain-label \+ auto-generated suffix\> ... \<region\>cloudapp.azure.com
+
+### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>以時間順序排列的連線需求：從叢集建立到模型部署
+
+在 AKS 建立或附加的過程中，會將 Azure ML 路由器 (azureml-fe) 部署至 AKS 叢集中。 為了部署 Azure ML 路由器，AKS 節點應能夠：
+* 解析 AKS API 伺服器的 DNS
+* 解析 DNS 以進行 MCR，以便下載 Azure ML 路由器的 docker 映射
+* 從 MCR 下載映射，其中需要輸出連線能力
+
+在部署 azureml-fe 之後，它會嘗試啟動，而這需要：
+* 解析 AKS API 伺服器的 DNS
+* 查詢 AKS API 伺服器以探索本身的其他實例 (它是多 pod 服務) 
+* 連接至本身的其他實例
+
+一旦啟動 azureml-fe 之後，需要額外的連線才能正常運作：
+* 連接到 Azure 儲存體以下載動態設定
+* 解析 DNS 以進行 AAD 驗證服務器 api.azureml.ms，並在部署的服務使用 AAD 驗證時與其通訊。
+* 查詢 AKS API 伺服器以探索部署的模型
+* 與已部署的模型 pod 通訊
+
+在模型部署時間，成功的模型部署 AKS 節點應該能夠： 
+* 解析客戶的 ACR DNS
+* 從客戶的 ACR 下載影像
+* 針對儲存模型的 Azure Blob 解析 DNS
+* 從 Azure Blob 下載模型
+
+部署模型並開始服務之後，azureml-fe 會使用 AKS API 自動探索，並準備好將要求路由傳送至該模型。 它必須能夠與模型 pod 通訊。
+>[!Note]
+>如果已部署的模型需要任何連線 (例如查詢外部資料庫或其他 REST 服務、下載 BLOG 等) ，則應該啟用這些服務的 DNS 解析和輸出通訊。
 
 ## <a name="deploy-to-aks"></a>部署到 AKS
 

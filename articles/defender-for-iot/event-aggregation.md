@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c823f0034db7d5fbe1f6b46f6af74e9fa374a6de
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548846"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832364"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>Defender for IoT 事件匯總
 
@@ -97,6 +97,6 @@ Defender for IoT 安全性代理程式會從您的本機裝置收集資料和系
 
 - 瞭解 [安全性代理程式驗證方法](concept-security-agent-authentication-methods.md)
 - 選取和部署 [安全性代理程式](how-to-deploy-agent.md)
-- 審核 Defender 的 IoT [服務必要條件](service-prerequisites.md)
+- 審核 Defender 的 IoT [系統必要條件](quickstart-system-prerequisites.md)
 - 瞭解如何 [在 Iot 中樞啟用 Defender For iot 服務](quickstart-onboard-iot-hub.md)
 - 深入瞭解[Defender For IoT](resources-frequently-asked-questions.md)的服務常見問題

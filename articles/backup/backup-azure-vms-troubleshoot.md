@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: cb25d9263648fbd92bc075751c1a8e627d03bd44
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2cda13ea089ac08dff7c1ba5ca93ba56ab3c23cf
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325208"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831545"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -74,6 +74,16 @@ ms.locfileid: "96325208"
 * 使用 **fsck** 命令對這些裝置執行檔案系統一致性檢查。
 * 重新裝載裝置並重試備份作業。</ol>
 
+如果您無法取消掛接裝置，您可以更新 VM 備份設定，以忽略某些掛接點。 例如，如果無法取消掛接 '/mnt/resource ' 掛接點，並導致 VM 備份失敗，您可以使用下列屬性來更新 VM 備份設定檔的內容 ```MountsToSkip``` 。
+
+```bash
+cat /var/lib/waagent/Microsoft.Azure.RecoveryServices.VMSnapshotLinux-1.0.9170.0/main/tempPlugin/vmbackup.conf[SnapshotThread]
+fsfreeze: True
+MountsToSkip = /mnt/resource
+SafeFreezeWaitInSeconds=600
+```
+
+
 ### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC - 擴充功能安裝/作業由於 COM+ 錯誤而失敗
 
 錯誤碼：ExtensionSnapshotFailedCOM <br/>
@@ -104,11 +114,11 @@ ms.locfileid: "96325208"
 
 發生此錯誤是因為 VSS 寫入器處於不良狀態。 Azure 備份擴充功能會與 VSS 寫入器互動，以取得磁片的快照集。 若要解決此問題，請遵循下列步驟：
 
-步驟1：重新開機處於不良狀態的 VSS 寫入器。
+步驟 1：請重新啟動處於不良狀態的 VSS 寫入器。
 
 * 從提升權限的命令提示字元，執行 ```vssadmin list writers```。
-* 輸出會包含所有 VSS 寫入器和其狀態。 針對狀態不是 **[1]** 的每個 vss 寫入器，重新開機各自的 vss 寫入器服務。
-* 若要重新開機服務，請從提高許可權的命令提示字元執行下列命令：
+* 輸出會包含所有 VSS 寫入器和其狀態。 對於狀態不是 **[1] 穩定** 的每個 VSS 寫入器，請重新啟動各自的 VSS 寫入器服務。
+* 若要重新啟動服務，請從提升權限的命令提示字元執行下列命令：
 
  ```net stop serviceName``` <br>
  ```net start serviceName```
@@ -140,16 +150,16 @@ _The 陰影複製提供者在保存要陰影複製的磁片區寫入時超時。
 
 發生此錯誤的原因是 VSS 服務處於不良狀態。 Azure 備份擴充功能會與 VSS 服務互動，以取得磁片的快照集。 若要解決此問題，請遵循下列步驟：
 
-重新開機 VSS (磁片區陰影複製) 服務。
+重新啟動 VSS (磁碟區陰影複製) 服務。
 
-* 流覽至 services.msc，然後重新開機「磁片區陰影複製服務」。<br>
+* 瀏覽至 Services.msc 並重新啟動「磁碟區陰影複製服務」。<br>
 (或)<br>
 * 從提升權限的命令提示字元執行下列命令：
 
  ```net stop VSS``` <br>
  ```net start VSS```
 
-如果問題仍持續發生，請在排定的停機時間重新開機 VM。
+如果問題持續發生，請在排定的停機時間重新啟動 VM。
 
 ### <a name="usererrorskunotavailable---vm-creation-failed-as-vm-size-selected-is-not-available"></a>UserErrorSkuNotAvailable-VM 建立失敗，因為選取的 VM 大小無法使用
 
@@ -283,7 +293,7 @@ VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Az
 * 如果 VM 處於 [正在執行] 和 [關機] 之間的暫時性狀態，請等候狀態變更。 然後再觸發備份作業。
 * 如果 VM 是 Linux VM 並使用安全性強化的 Linux 核心模組，請從安全性原則中排除 Azure Linux 代理程式路徑 **/var/lib/waagent**，並確定已安裝備份延伸模組。
 
-* 虛擬機器上沒有 VM 代理程式： <br>請安裝所有必要條件和 VM 代理程式。 接著請重新啟動作業。 | 深入瞭解 [Vm 代理程式安裝，以及如何驗證 Vm 代理程式安裝](#vm-agent)。
+* 虛擬機器上沒有 VM 代理程式： <br>請安裝所有必要條件和 VM 代理程式。 接著請重新啟動作業。 |深入瞭解 [Vm 代理程式安裝，以及如何驗證 Vm 代理程式安裝](#vm-agent)。
 
 ### <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork-快照集作業失敗，因為無法建立安全的網路通道
 

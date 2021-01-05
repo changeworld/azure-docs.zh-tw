@@ -1,5 +1,5 @@
 ---
-title: '為適用于 Defender 的 Defender (preview 設定 Azure Sentinel) '
+title: 設定適用于 IoT 的 Defender Azure Sentinel
 description: 說明如何設定 Azure Sentinel，以接收來自您的 Defender for IoT 解決方案的資料。
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -10,19 +10,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/16/2020
+ms.date: 12/28/2020
 ms.author: shhazam
-ms.openlocfilehash: c033f6fc6f3fc40005d98bd48832c15792d6f484
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: d4686f1d7192d1469e52e653185f1fc9389764de
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629080"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832313"
 ---
-# <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>將您的資料從 Defender for IoT 連接至 Azure Sentinel (preview) 
-
-> [!IMPORTANT]
-> 適用于 IoT 的 Defender data connector 目前處於公開預覽狀態。 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+# <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>將您的資料從 Defender for IoT 連接到 Azure Sentinel 
 
 使用 Defender for IoT connector 將您所有的 Defender for IoT 事件串流至 Azure Sentinel。 
 
@@ -64,7 +61,7 @@ SecurityAlert | where ProductName == "Azure Security Center for IoT"
 
 連接 **訂** 用帳戶之後，中樞資料會在大約15分鐘後 Azure Sentinel 提供。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本檔中，您已瞭解如何將 Defender for IoT 連線至 Azure Sentinel。 若要深入瞭解威脅偵測和安全性資料存取，請參閱下列文章：
 

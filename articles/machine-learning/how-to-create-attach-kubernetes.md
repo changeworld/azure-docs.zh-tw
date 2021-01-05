@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e773c2db9c7849dd9680f8ae0c600405f422d7e1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463180"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831919"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>建立並附加 Azure Kubernetes Service 叢集
 
@@ -281,6 +281,78 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 
 ---
 
+## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>建立或附加具有 TLS 終止的 AKS 叢集
+當您 [建立或附加 AKS](how-to-create-attach-kubernetes.md)叢集時，您可以使用 **[AksCompute.provisioning_configuration ( # B1](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** 和 **[AksCompute.attach_configuration ( # B3](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** 設定物件來啟用 TLS 終止。 這兩種方法都會傳回具有 **enable_ssl** 方法的設定物件，您可以使用 **enable_ssl** 方法來啟用 TLS。
+
+下列範例示範如何在幕後使用 Microsoft 憑證，透過自動 TLS 憑證產生和設定啟用 TLS 終止。
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # Enable TLS termination when you create an AKS cluster by using provisioning_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+   
+   # Enable TLS termination when you attach an AKS cluster by using attach_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   attach_config.enable_ssl(leaf_domain_label = "contoso")
+
+
+```
+下列範例顯示如何使用自訂憑證和自訂功能變數名稱來啟用 TLS 終止。 使用自訂網域和憑證時，您必須更新您的 DNS 記錄以指向評分端點的 IP 位址，請參閱 [更新您的 dns](how-to-secure-web-service.md#update-your-dns)
+
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+
+   # Enable TLS termination with custom certificate and custom domain when creating an AKS cluster
+   
+   provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+    
+   # Enable TLS termination with custom certificate and custom domain when attaching an AKS cluster
+
+   attach_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
+
+```
+>[!NOTE]
+> 如需如何在 AKS 叢集上保護模型部署的詳細資訊，請參閱[使用 TLS 透過 Azure Machine Learning 保護 web 服務的安全](how-to-secure-web-service.md)。
+
+## <a name="create-or-attach-an-aks-cluster-to-use-internal-load-balancer-with-private-ip"></a>建立或附加 AKS 叢集以搭配私人 IP 使用內部 Load Balancer
+當您建立或附加 AKS 叢集時，您可以將叢集設定為使用內部 Load Balancer。 使用內部 Load Balancer 時，您部署至 AKS 的計分端點將會使用虛擬網路內的私人 IP。 下列程式碼片段示範如何設定 AKS 叢集的內部 Load Balancer。
+```python
+   
+   from azureml.core.compute.aks import AksUpdateConfiguration
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # When you create an AKS cluster, you can specify Internal Load Balancer to be created with provisioning_config object
+   provisioning_config = AksCompute.provisioning_configuration(load_balancer_type = 'InternalLoadBalancer')
+
+   # when you attach an AKS cluster, you can update the cluster to use internal load balancer after attach
+   aks_target = AksCompute(ws,"myaks")
+
+   # Change to the name of the subnet that contains AKS
+   subnet_name = "default"
+   # Update AKS configuration to use an internal load balancer
+   update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
+   aks_target.update(update_config)
+   # Wait for the operation to complete
+   aks_target.wait_for_completion(show_output = True)
+   
+   
+```
+>[!IMPORTANT]
+> Azure Machine Learning 不支援使用內部 Load Balancer 的 TLS 終止。 內部 Load Balancer 具有私人 IP，且私人 IP 可能位於另一個網路上，而且憑證可以 recused。 
+
+>[!NOTE]
+> 如需有關如何保護推斷環境的詳細資訊，請參閱 [保護 Azure Machine Learning 推斷環境](how-to-secure-inferencing-vnet.md)
+
 ## <a name="detach-an-aks-cluster"></a>卸離 AKS 叢集
 
 若要從您的工作區卸離叢集，請使用下列其中一種方法：
@@ -305,6 +377,52 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 在 Azure Machine Learning studio 中，選取 [ __計算__]、[ __推斷__ 叢集] 以及您想要移除的叢集。 使用卸 __離__ 連結來卸離叢集。
+
+---
+
+## <a name="troubleshooting"></a>疑難排解
+
+### <a name="update-the-cluster"></a>更新叢集
+
+您必須手動套用 Azure Kubernetes Service 叢集中所安裝 Azure Machine Learning 元件的更新。 
+
+您可以從 Azure Machine Learning 工作區卸離叢集，然後將叢集重新附加到工作區，以套用這些更新。 如果叢集中已啟用 TLS，則在重新附加叢集時，您將需要提供 TLS/SSL 憑證和私密金鑰。 
+
+```python
+compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
+compute_target.detach()
+compute_target.wait_for_completion(show_output=True)
+
+attach_config = AksCompute.attach_configuration(resource_group=resourceGroup, cluster_name=kubernetesClusterName)
+
+## If SSL is enabled.
+attach_config.enable_ssl(
+    ssl_cert_pem_file="cert.pem",
+    ssl_key_pem_file="key.pem",
+    ssl_cname=sslCname)
+
+attach_config.validate_configuration()
+
+compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceName, attach_configuration=attach_config)
+compute_target.wait_for_completion(show_output=True)
+```
+
+如果您不再有 TLS/SSL 憑證和私密金鑰，或您使用 Azure Machine Learning 所產生的憑證，您可以使用和取得密碼來連接到叢集，以便在卸離叢集之前取出檔案 `kubectl` `azuremlfessl` 。
+
+```bash
+kubectl get secret/azuremlfessl -o yaml
+```
+
+>[!Note]
+>Kubernetes 會以 base-64 編碼格式儲存秘密。 您將需要以64為基礎來解碼 `cert.pem` 和 `key.pem` 元件，再提供這些秘密 `attach_config.enable_ssl` 。 
+
+### <a name="webservice-failures"></a>Webservice 失敗
+
+您可以使用連接到叢集，以調試 AKS 中的許多 webservice 失敗 `kubectl` 。 您可以藉由執行來取得 AKS 叢集的 `kubeconfig.json`
+
+```azurecli-interactive
+az aks get-credentials -g <rg> -n <aks cluster name>
+```
 
 ## <a name="next-steps"></a>後續步驟
 

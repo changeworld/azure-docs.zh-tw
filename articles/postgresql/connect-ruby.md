@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: bb2ff066089e3348c40f5a22bd73ea376ecef6de
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 20e45454284af230da74896d5b3f5e9da676dbb4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341394"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831698"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Ruby 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
@@ -32,7 +32,7 @@ ms.locfileid: "93341394"
 取得連線到 Azure Database for PostgreSQL 所需的連線資訊。 您需要完整的伺服器名稱和登入認證。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver** )。
+2. 從 Azure 入口網站的左側功能表中，按一下 [所有資源]，然後搜尋您所建立的伺服器 (例如 **mydemoserver**)。
 3. 按一下伺服器名稱。
 4. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [伺服器管理員登入名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
  :::image type="content" source="./media/connect-ruby/1-connection-string.png" alt-text="適用於 PostgreSQL 的 Azure 資料庫伺服器名稱":::
@@ -43,7 +43,7 @@ ms.locfileid: "93341394"
 ## <a name="connect-and-create-a-table"></a>連線及建立資料表
 使用下列程式碼搭配 **CREATE TABLE** SQL 陳述式 (後面接著 **INSERT INTO** SQL 陳述式) 來連線和建立資料表，進而將資料列新增至資料表中。
 
-程式碼會使用 ```PG::Connection``` 物件搭配建構函式 ```new```，以連線至適用於 PostgreSQL 的 Azure 資料庫。 然後它會呼叫 ```exec()``` 方法來執行 DROP、CREATE TABLE 和 INSERT INTO 命令。 程式碼會使用 ```PG::Error``` 類別檢查錯誤。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。 如需這些類別和方法的詳細資訊，請參閱 [Ruby Pg 參考文件](https://www.rubydoc.info/gems/pg/PG)。
+程式碼會使用 ```PG::Connection``` 物件搭配建構函式 ```new```，以連線至適用於 PostgreSQL 的 Azure 資料庫。 然後它會呼叫 ```exec()``` 方法來執行 DROP、CREATE TABLE 和 INSERT INTO 命令。 程式碼會使用 ```PG::Error``` 類別檢查錯誤。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。 如需這些類別和方法的詳細資訊，請參閱 Ruby Pg 參考文件。
 
 以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。
 
@@ -87,7 +87,7 @@ end
 ## <a name="read-data"></a>讀取資料
 使用下列程式碼搭配 **SELECT** SQL 陳述式來連線和讀取資料。
 
-程式碼會使用 ```PG::Connection``` 物件搭配建構函式 ```new```，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 ```exec()``` 方法來執行 SELECT 命令，並將結果保留在結果集中。 結果集的集合會使用 `resultSet.each do` 迴圈反覆運算，並將目前的資料列值保留在 `row` 變數中。 程式碼會使用 ```PG::Error``` 類別檢查錯誤。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。 如需這些類別和方法的詳細資訊，請參閱 [Ruby Pg 參考文件](https://www.rubydoc.info/gems/pg/PG)。
+程式碼會使用 ```PG::Connection``` 物件搭配建構函式 ```new```，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 ```exec()``` 方法來執行 SELECT 命令，並將結果保留在結果集中。 結果集的集合會使用 `resultSet.each do` 迴圈反覆運算，並將目前的資料列值保留在 `row` 變數中。 程式碼會使用 ```PG::Error``` 類別檢查錯誤。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。 如需這些類別和方法的詳細資訊，請參閱 Ruby Pg 參考文件。
 
 以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。
 
@@ -121,7 +121,7 @@ end
 ## <a name="update-data"></a>更新資料
 使用下列程式碼搭配 **UPDATE** SQL 陳述式來連線和更新資料。
 
-程式碼會使用 ```PG::Connection``` 物件搭配建構函式 ```new```，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 ```exec()``` 方法來執行 UPDATE 命令。 程式碼會使用 ```PG::Error``` 類別檢查錯誤。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。 如需這些類別和方法的詳細資訊，請參閱 [Ruby Pg 參考文件](https://www.rubydoc.info/gems/pg/PG)。
+程式碼會使用 ```PG::Connection``` 物件搭配建構函式 ```new```，以連線至 Azure Database for PostgreSQL。 然後它會呼叫 ```exec()``` 方法來執行 UPDATE 命令。 程式碼會使用 ```PG::Error``` 類別檢查錯誤。 然後它會呼叫 ```close()``` 方法，在終止前關閉連線。 如需這些類別和方法的詳細資訊，請參閱 [Ruby Pg 參考文件](https://rubygems.org/gems/pg)。
 
 以您自己的值取代 `host`、`database`、`user` 和 `password` 字串。
 
@@ -200,4 +200,4 @@ az group delete \
 > [!div class="nextstepaction"]
 > [使用匯出和匯入來移轉資料庫](./howto-migrate-using-export-and-import.md) <br/>
 > [!div class="nextstepaction"]
-> [Ruby Pg 參考文件](https://www.rubydoc.info/gems/pg/PG)
+> [Ruby Pg 參考文件](https://rubygems.org/gems/pg)

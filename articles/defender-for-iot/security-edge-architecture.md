@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 4f6d9f670a1b85e55ccc8f6cb18645b92927221a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 132c21588df2f2180ddd973d208eb95ea6657e7d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351634"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832449"
 ---
 # <a name="azure-defender-for-iot-edge-security-module"></a>適用于 IoT Edge 安全性的 Azure Defender 模組
 
@@ -60,6 +60,6 @@ Defender for IoT security 模組為您的 IoT Edge 裝置提供了全方位的�
 
 - 部署 [IoT Edge 的安全性模組](how-to-deploy-edge.md)
 - 瞭解如何 [設定您的安全性模組](how-to-agent-configuration.md)
-- 查看 Defender for IoT [服務必要條件](service-prerequisites.md)
+- 審視[適用于 iot](resources-manage-proprietary-protocols.md)的 iot Defender defender 範圍
 - 瞭解如何 [在 Iot 中樞啟用 Defender For iot 服務](quickstart-onboard-iot-hub.md)
 - 深入瞭解[Defender For IoT](resources-frequently-asked-questions.md)的服務常見問題

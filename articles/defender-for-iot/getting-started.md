@@ -1,72 +1,134 @@
 ---
-title: 部署選項
-description: 開始瞭解 Defender for IoT 功能和服務的基本工作流程。
+title: 開始使用
+description: 開始瞭解 Defender for IoT 部署的基本工作流程。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 6aa525fd7f2d82194baa2e2a0c910cb71509c2d5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 12/26/2020
+ms.author: shhazam
+ms.openlocfilehash: ed6c88826b41df0bdfef8cbbcb2569b3cea8f868
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340011"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832381"
 ---
-# <a name="getting-started-with-azure-defender-for-iot"></a>開始使用適用于 IoT 的 Azure Defender
+# <a name="getting-started-with-defender-for-iot"></a>開始使用 Defender for IoT
 
-本文說明讓 Azure Defender for IoT 執行所需的部署和上架程式。 此外也需要額外的步驟。 建議您瞭解這些步驟，並熟悉隨附檔中的資訊。
+本文概述設定適用于 IoT 的 Azure Defender 所需的步驟。 處理常式需要您：
 
-完成所有步驟之後，適用于 IoT 的 Azure Defender 感應器將會監視您的網路。 根據您設定解決方案的方式而定，偵測也可以傳送至內部部署管理主控台或 IoT 中樞。
+- 在適用于 IoT 的 Azure Defender 入口網站上註冊您的訂用帳戶和感應器。
+- 安裝感應器和內部部署管理主控台軟體。
+- 執行感應器和管理主控台的初始啟用。
 
-完成下列步驟，以讓適用于 IoT 的 Azure Defender 正常運作。
+## <a name="permission-requirements"></a>權限需求
 
-## <a name="1-set-up-azure"></a>1. 設定 Azure
+部分設定步驟需要特定的使用者權限。
 
-- 設定 Azure 帳戶。 如需詳細資訊，請參閱 [建立 Azure 帳戶](/learn/modules/create-an-azure-account/)。
+需要系統管理使用者權限，才能啟動感應器和管理主控台、上傳 SSL/TLS 憑證，以及產生新的密碼。
 
-- 防火牆或 proxy：如果您有設定為允許特定連線的防火牆或類似的中間網路裝置，請確認已開啟防火牆或 proxy 的 *. azure-devices.net:443。 如果不支援萬用字元，或您想要更多控制，則應在您的 FW 或 proxy 中開啟特定的 IoT 中樞 FQDN。 如需詳細資訊，請參閱 [參考-IoT 中樞端點](../iot-hub/iot-hub-devguide-endpoints.md)。
+下表說明 Azure Defender for IoT 入口網站工具的使用者存取權限：
 
-## <a name="2-deploy-hardware-software-and-onboard-to-sensor"></a>2. 部署硬體、軟體和上架至感應器
+| 權限 | 安全性讀取者 | 安全性系統管理員 | 訂用帳戶參與者 | 訂用帳戶擁有者 |
+|--|--|--|--|--|
+| 查看 IoT 畫面和資料的所有 Defender | ✓ | ✓ | ✓ | ✓ |
+| 將感應器上線  |  |  ✓ | ✓ | ✓ |
+| 更新定價  |  |  ✓ | ✓ | ✓ |
+| 復原密碼  | ✓  |  ✓ | ✓ | ✓ |
 
-- 購買感應器硬體和安裝軟體。 遵循此處所述的步驟，如需詳細資訊，請參閱這篇文章和適用于 [IoT 的 Defender 硬體指南](https://aka.ms/AzureDefenderforIoTBareMetalAppliance) 及 [安裝指南](https://aka.ms/AzureDefenderforIoTInstallSensorISO)。
+## <a name="1-identify-the-solution-infrastructure"></a>1. 找出解決方案基礎結構
 
-  - 在您安裝感應器之後，請安全地記錄感應器登入認證。 您將需要用來將啟用檔案上傳至感應器的認證。
+**明確說明您的網路設定需求**
 
-  - 如果您正在使用本機管理的感應器，請安全地記錄感應器的 IP 位址或安裝中定義的感應器名稱。 在 IoT 入口網站的 Defender 註冊期間建立感應器名稱時，您可能會想要使用它。 您可以稍後使用它們，以確保在適用于 IoT 的 Azure Defender 入口網站中的註冊名稱與感應器主控台中顯示的已部署感應器 IP 位址之間進行更輕鬆的追蹤和一致的命名。
+研究您的網路架構、受監視的頻寬和其他網路詳細資料。 如需詳細資訊，請參閱 [關於適用于 IoT 的 Azure Defender 網路設定](how-to-set-up-your-network.md)。
 
-- 向適用于 IoT 的 Defender 註冊入口網站，並下載感應器啟用檔案。
+**澄清需要哪些感應器和管理主控台設備來處理網路負載**
 
-- 將啟用檔案上傳至您的感應器。
+適用于 IoT 的 Azure Defender 支援實體和虛擬部署。 針對實體部署，您可以購買各種認證的裝置。 如需詳細資訊，請參閱 [識別需要的設備](how-to-identify-required-appliances.md)。
 
-## <a name="3-perform-network-setup-for-sensor-monitoring-and-management"></a>3. 執行網路設定以進行感應器監視和管理
+建議您計算將要監視的大約裝置數目。 稍後，當您向入口網站註冊您的 Azure 訂用帳戶時，系統會要求您輸入此號碼。 您可以在1000秒的間隔中新增數位。 受監視裝置的數目稱為「 *認可的裝置*」。
 
-- 將您的感應器連線到網路。 請參閱 [網路設定指南](https://aka.ms/AzureDefenderForIoTNetworkSetup)中的。
+## <a name="2-register-with-azure-defender-for-iot"></a>2. 向適用于 IoT 的 Azure Defender 註冊
 
-## <a name="4-start-discovering-your-network"></a>4. 開始探索您的網路
+註冊包括：
 
-- 調整感應器主控台中的系統設定。
+- 將您的 Azure 訂用帳戶上架到適用于 IoT 的 Defender。
+- 定義認可的裝置。
+- 下載內部部署管理主控台的啟用檔。
 
-- 將感應器連接至內部部署管理主控台。
+註冊：
 
-如需詳細資訊，請參閱適用于 iot 的 [Azure Defender 感應器使用者指南](https://aka.ms/AzureDefenderforIoTUserGuide) 和 [適用于 iot 的 defender 內部部署管理主控台的使用者指南](https://aka.ms/DefenderForIoTManagementConsole)。
+1. 移至適用于 IoT 的 Azure Defender 入口網站。
+1. 選取 [上 **架訂閱**]。
+1. 在 [ **定價** ] 頁面上，選取訂用帳戶或建立一個新的訂用帳戶，並新增已認可的裝置數目。
+1. 選取 [ **下載內部部署管理主控台** ] 索引標籤，然後儲存下載的啟用檔案。 此檔案包含您定義的匯總認可裝置。 在初始登入之後，檔案將會上傳到管理主控台。
 
-## <a name="5-populate-azure-sentinel-with-alert-information"></a>5. 使用警示資訊填入 Azure Sentinel
+## <a name="3-install-and-set-up-the-on-premises-management-console"></a>3. 安裝和設定內部部署管理主控台
 
-- 若要將警示資訊傳送至 Azure Sentinel，請設定 Azure Sentinel： [將您的資料從 Defender For IoT 連接到 Azure Sentinel](how-to-configure-with-sentinel.md)。
- 
+取得您的內部部署管理主控台設備之後：
 
-## <a name="next-steps"></a>後續步驟
+- 從適用于 IoT 的 Azure Defender 入口網站下載 ISO 套件。
+- 安裝軟體。
+- 啟動並執行初始管理主控台設定。
 
-- [為 IoT 啟用 Defender](quickstart-onboard-iot-hub.md)
-- 設定您的 [解決方案](quickstart-configure-your-solution.md)
-- [建立安全性模組](quickstart-create-security-twin.md)
-- 設定 [自訂警示](quickstart-create-custom-alerts.md)
-- [部署安全性代理程式](how-to-deploy-agent.md)
+若要安裝和設定：
+
+1. 從適用于 IoT 的 Defender 入口網站選取 [ **消費者入門** ]。
+1. 選取 [內部 **部署管理主控台** ] 索引標籤。
+1. 選擇版本，然後選取 [ **下載**]。
+1. 安裝內部部署管理主控台軟體。 如需詳細資訊，請參閱 [Defender For IoT 安裝](how-to-install-software.md)。
+1. 啟用並設定管理主控台。 如需詳細資訊，請參閱 [啟用和設定您的內部部署管理主控台](how-to-activate-and-set-up-your-on-premises-management-console.md)。
+
+## <a name="4-onboard-a-sensor"></a>4. 將感應器上架
+
+向適用于 IoT 的 Azure Defender 註冊感應器，並下載感應器啟用檔案，以將感應器上線：
+
+1. 定義感應器名稱，並將它與訂用帳戶產生關聯。
+1. 選擇感應器管理模式：
+
+   - **雲端連線感應器**：感應器所偵測到的資訊會顯示在感應器主控台中。 此外，警示資訊會透過 IoT 中樞傳遞，並可與其他 Azure 服務共用，例如 Azure Sentinel。
+
+   - **本機管理的感應器**：感應器所偵測到的資訊會顯示在感應器主控台中。 如果您是在有空調的網路中工作，而且想要統一查看多個本機受控感應器偵測到的所有資訊，請使用內部部署管理主控台。 
+
+1. 下載感應器啟用檔。
+
+如需詳細資訊，請參閱在 [Defender For IoT 入口網站中上架和管理感應器](how-to-manage-sensors-on-the-cloud.md)。
+
+## <a name="5-install-and-set-up-the-sensor"></a>5. 安裝和設定感應器
+
+從適用于 IoT 的 Azure Defender 入口網站下載 ISO 套件、安裝軟體，以及設定感應器。
+
+1. 從適用于 IoT 的 Defender 入口網站選取 [ **消費者入門** ]。
+1. 選取 [ **設定感應器**]。
+1. 選擇版本，然後選取 [ **下載**]。
+1. 安裝感應器軟體。 如需詳細資訊，請參閱 [Defender For IoT 安裝](how-to-install-software.md)。
+1. 啟用並設定您的感應器。 如需詳細資訊，請參閱登 [入並啟動感應器](how-to-activate-and-set-up-your-sensor.md)。
+
+## <a name="6-connect-sensors-to-an-on-premises-management-console"></a>6. 將感應器連線至內部部署管理主控台
+
+將感應器連線到管理主控台，以確定：
+
+- 感應器會將警示和裝置清查資訊傳送至內部部署管理主控台。
+
+- 內部部署管理主控台可以執行感應器備份、管理感應器偵測到的警示、調查感應器中斷連線，以及在連線的感應器上執行其他活動。
+
+建議您將監視相同網路的多個感應器群組在一個區域中。 這麼做會合並多個感應器所收集的資訊。
+
+如需詳細資訊，請參閱將 [感應器連接至內部部署管理主控台](how-to-activate-and-set-up-your-on-premises-management-console.md#connect-sensors-to-the-on-premises-management-console)。
+
+## <a name="7-populate-azure-sentinel-with-alert-information-optional"></a>7. 使用警示資訊填入 Azure Sentinel (選擇性) 
+
+藉由設定 Azure Sentinel，將警示資訊傳送至 Azure Sentinel。 請參閱 [將您的資料從 Defender For IoT 連接到 Azure Sentinel](how-to-configure-with-sentinel.md)。
+
+## <a name="see-also"></a>請參閱
+
+- [歡迎使用適用于 IoT 的 Azure Defender](overview.md)
+
+- [適用于 IoT 的 Azure Defender 架構](architecture.md)
