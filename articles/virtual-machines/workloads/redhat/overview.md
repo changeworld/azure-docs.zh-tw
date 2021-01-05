@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 3e4a770a33f5cdb3c3b2de09cbcb8431b2fc3fbb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 09612ff3d86c669801f9e824d367a2b9a5bb10ac
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968650"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830644"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上的 Red Hat 工作負載
 
@@ -36,7 +36,7 @@ Azure 會提供各種不同的 RHEL 隨用隨付映像。 這些映像在推出�
 ### <a name="red-hat-gold-images"></a>Red Hat Gold 映像
 
 Azure 也提供 Red Hat Gold 映像 (`rhel-byos`)。 對於已有 Red Hat 訂用帳戶且想要在 Azure 中使用這些訂用帳戶的客戶而言，這些映像可能會很有用。 您必須先為 Red Hat 雲端存取啟用現有的 Red Hat 訂用帳戶，才能在 Azure 中使用這些訂用帳戶。 當您為雲端存取啟用 Red Hat 訂用帳戶，並且符合資格需求時，系統就會自動授與這些映像的存取權。 使用這些映像可讓客戶避免因使用隨用隨付映像而可能產生的重複計費情形。
-* 了解如何[透過 Azure 為雲端存取啟用您的 Red Hat 訂用帳戶](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs)。
+* 了解如何[透過 Azure 為雲端存取啟用您的 Red Hat 訂用帳戶](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)。
 * 了解如何[在 Azure 入口網站、Azure CLI 或 PowerShell Cmdlet 中尋找 Red Hat Gold 映像](./byos.md)。
 
 > [!NOTE]

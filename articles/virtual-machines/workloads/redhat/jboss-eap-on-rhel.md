@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bd6ff46807c22309679ba7e8518685bb05cc77e2
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500184"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830712"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>使用 Red Hat Enterprise Linux 上的 JBoss EAP 將企業 Java 應用程式部署至 Azure
 
@@ -152,7 +152,7 @@ JBoss EAP 也可以在叢集模式中運作。 JBoss EAP 叢集傳訊可讓 JBos
 若要使用適用於 RHEL OS 的 BYOS，您必須有具備權利的有效 Red Hat 訂用帳戶，才能在 Azure 中使用 RHEL OS。 在使用 BYOS 模型部署 RHEL OS 之前，請先完成下列必要條件：
 
 1. 確定您已將 RHEL OS 和 JBoss EAP 權利連結至您的 Red Hat 訂用帳戶。
-2. 授權您的 Azure 訂用帳戶識別碼使用 RHEL BYOS 映像。 請依照 [Red Hat 訂用帳戶管理文件](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs)的指示完成此程序，其中包括下列步驟：
+2. 授權您的 Azure 訂用帳戶識別碼使用 RHEL BYOS 映像。 請依照 [Red Hat 訂用帳戶管理文件](https://access.redhat.com/documentation/red_hat_subscription_management/1/)的指示完成此程序，其中包括下列步驟：
 
    1. 在 Red Hat Cloud Access 儀表板中啟用 Microsoft Azure 作為提供者。
 
@@ -160,7 +160,7 @@ JBoss EAP 也可以在叢集模式中運作。 JBoss EAP 叢集傳訊可讓 JBos
 
    1. 在 Microsoft Azure 上為 Cloud Access 啟用新產品。
     
-   1. 為您的 Azure 訂用帳戶啟用 Red Hat Gold 映像。 如需詳細資訊，請參閱 [Microsoft Azure 上的 Red Hat Gold 映像](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)。
+   1. 為您的 Azure 訂用帳戶啟用 Red Hat Gold 映像。 如需詳細資訊，請參閱 [Microsoft Azure 上的 Red Hat Gold 映像](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access)。
 
    1. 等候 Red Hat Gold 映像在您的 Azure 訂用帳戶中可供使用。 這些映像通常會在提交後的三小時內可供使用。
     
@@ -212,7 +212,7 @@ JBoss EAP 僅透過 BYOS 模型在 Azure 上提供。 部署此範本時，您�
   ```
 
   ```
-  az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
+  az deployment group create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
   如需關於安裝和設定 Azure CLI 的詳細資訊，請參閱[安裝 CLI](/cli/azure/install-azure-cli)。

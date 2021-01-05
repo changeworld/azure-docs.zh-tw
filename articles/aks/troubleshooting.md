@@ -4,12 +4,12 @@ description: 了解在使用 Azure Kubernetes Service (AKS) 時，如何針對�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02ff1581bafe62a092be87d16df51c7ca8c020b4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751473"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830933"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -197,7 +197,7 @@ AKS 中支援的最低 TLS 版本是 TLS 1.2。
 Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The server rejected the request because too many requests have been received for this subscription.\" Details=[{\"code\":\"TooManyRequests\",\"message\":\"{\\\"operationGroup\\\":\\\"HighCostGetVMScaleSet30Min\\\",\\\"startTime\\\":\\\"2020-09-20T07:13:55.2177346+00:00\\\",\\\"endTime\\\":\\\"2020-09-20T07:28:55.2177346+00:00\\\",\\\"allowedRequestCount\\\":1800,\\\"measuredRequestCount\\\":2208}\",\"target\":\"HighCostGetVMScaleSet30Min\"}] InnerError={\"internalErrorCode\":\"TooManyRequestsReceived\"}"}
 ```
 
-[這裡](../azure-resource-manager/management/request-limits-and-throttling.md)會詳細說明這些節流錯誤[here](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md)
+[這裡](../azure-resource-manager/management/request-limits-and-throttling.md)會詳細說明這些節流錯誤[](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md)
 
 AKS 工程團隊的建議是確保您執行的版本至少為 1.18. x，其中包含許多改進。 您可以在 [這裡](https://github.com/Azure/AKS/issues/1413) 和 [這裡](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)找到更多詳細資料。
 
@@ -439,7 +439,7 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>使用具有 kubernetes.io 前置詞的節點標籤時，Kubernetes 1.16 升級失敗的原因
 
-從 Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/)開始，kubelet 至節點 [只能套用 kubernetes.io 前置詞所定義的標籤子集](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) 。 AKS 無法在未同意的情況下代表您移除使用中標籤，因為這可能會造成受影響工作負載的停機時間。
+從 Kubernetes [1.16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/)開始，kubelet 至節點 [只能套用 kubernetes.io 前置詞所定義的標籤子集](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/) 。 AKS 無法在未同意的情況下代表您移除使用中標籤，因為這可能會造成受影響工作負載的停機時間。
 
 因此，若要減輕這個問題，您可以：
 

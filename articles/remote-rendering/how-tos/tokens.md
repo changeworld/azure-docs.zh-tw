@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7e8e2f3f9dd49693faa26eaaab309fcad58f6f9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9721685fc3ccd2c1c80b55e9118d6d347cc97a9c
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076152"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830695"
 ---
 # <a name="get-service-access-tokens"></a>取得服務存取權杖
 
@@ -25,7 +25,7 @@ ms.locfileid: "89076152"
 
 ## <a name="token-service-rest-api"></a>權杖服務 REST API
 
-為了建立存取權杖， *安全權杖服務* 會提供單一 REST API。 ARR STS 服務的 URL 為 HTTPs： \/ /sts.mixedreality.azure.com。
+為了建立存取權杖， *安全權杖服務* 會提供單一 REST API。 STS 服務的 URL 取決於遠端轉譯帳戶的帳戶網域。 其格式為 https://sts [帳戶網域]，例如 `https://sts.southcentralus.mixedreality.azure.com`
 
 ### <a name="get-token-request"></a>' 取得權杖 ' 要求
 
@@ -43,7 +43,7 @@ ms.locfileid: "89076152"
 
 | 狀態碼 | JSON 承載 | 註解 |
 |-----------|:-----------|:-----------|
-| 200 | AccessToken：字串 | 成功 |
+| 200 | AccessToken：字串 | Success |
 
 | 標頭 | 目的 |
 |--------|:------|
@@ -56,9 +56,10 @@ ms.locfileid: "89076152"
 ```PowerShell
 $accountId = "<account_id_from_portal>"
 $accountKey = "<account_key_from_portal>"
+$accountDomain = "<account_domain_from_portal>
 
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 
 Write-Output "Token: $($response.AccessToken)"

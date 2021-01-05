@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/05/2020
-ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 12/29/2020
+ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741094"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827473"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用 Logic Apps REST API 建立整合服務環境 (ISE)
 
@@ -25,7 +25,7 @@ ms.locfileid: "96741094"
 * [使用範例 Azure Resource Manager 快速入門範本建立 ISE](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)
 * [建立支援使用客戶管理金鑰來加密待用資料的 ISE](customer-managed-keys-integration-service-environment.md)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 與您在 Azure 入口網站中建立 ISE 時相同的[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和[存取需求](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)
 
@@ -65,13 +65,11 @@ ms.locfileid: "96741094"
 
 <a name="request-body"></a>
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
 在要求主體中，提供用來建立 ISE 的資源定義，包括您想要在 ISE 上啟用之其他功能的資訊，例如：
 
-* 若要建立 ISE 以允許使用在該位置安裝的自我簽署憑證 `TrustedRoot` ，請在 `certificates` ise 定義的區段內包含該物件 `properties` ，如本文稍後所述。
-
-  若要在現有 ISE 上啟用這項功能，您可以只傳送物件的 PATCH 要求 `certificates` 。 如需有關使用自我簽署憑證的詳細資訊，請參閱 [安全存取和資料存取，以存取其他服務和系統的輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。
+* 若要建立 ISE 以允許使用在位置安裝的企業憑證授權單位單位所發出的自我簽署憑證和憑證 `TrustedRoot` ，請在 `certificates` ISE 定義的區段內包含該物件 `properties` ，如本文稍後所述。
 
 * 若要建立使用系統指派或使用者指派的受控識別的 ISE，請 `identity` 在 ise 定義中包含具有受控識別類型和其他必要資訊的物件，如本文稍後所述。
 
@@ -123,7 +121,7 @@ ms.locfileid: "96741094"
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certificate support
+      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -183,6 +181,45 @@ ms.locfileid: "96741094"
             "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
             "kind": "TrustedRoot"
          }
+      }
+   }
+}
+```
+## <a name="add-custom-root-certificates"></a>新增自訂根憑證
+
+您通常會使用 ISE 連接到您虛擬網路或內部部署的自訂服務。 這些自訂服務通常受到自訂根憑證授權單位發行的憑證所保護，例如企業憑證授權單位單位或自我簽署憑證。 如需有關使用自我簽署憑證的詳細資訊，請參閱 [安全存取和資料存取，以存取其他服務和系統的輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。 為了讓 ISE 透過傳輸層安全性 (TLS) 來成功連接到這些服務，您的 ISE 需要存取這些根憑證。 若要使用自訂的受信任根憑證更新 ISE，請提出此 HTTPS `PATCH` 要求：
+
+`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+
+執行這項作業之前，請先參閱下列考慮：
+
+* 請確定您上傳根憑證 *和* 所有中繼憑證。 憑證數目上限為20。
+
+* 上傳根憑證是取代作業，其中最新的上傳會覆寫先前的上傳。 例如，如果您傳送的要求會上傳一個憑證，然後傳送另一個要求來上傳另一個憑證，則 ISE 只會使用第二個憑證。 如果您需要使用這兩個憑證，請在相同的要求中將它們一起新增。  
+
+* 上傳根憑證是非同步作業，可能需要一些時間。 若要檢查狀態或結果，您可以 `GET` 使用相同的 URI 傳送要求。 回應訊息的欄位會在 `provisioningState` `InProgress` 上傳作業仍在運作時傳回值。 `provisioningState`當值為時 `Succeeded` ，上傳作業會完成。
+
+#### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>新增自訂根憑證的要求本文語法
+
+以下是要求本文語法，其中描述當您新增根憑證時要使用的屬性：
+
+```json
+{
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "name": "{ISE-name}",
+   "type": "Microsoft.Logic/integrationServiceEnvironments",
+   "location": "{Azure-region}",
+   "properties": {
+      "certificates": {
+         "testCertificate1": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         },
+         "testCertificate2": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
+      }
    }
 }
 ```

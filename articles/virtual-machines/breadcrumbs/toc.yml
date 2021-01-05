@@ -1,0 +1,11 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: 虛擬機器
+      tocHref: /azure/
+      topicHref: /azure/virtual-machines/index
+      items:
+        - name: 概觀
+          tocHref: /azure/virtual-machines/index
+          topicHref: /azure/baremetal-infrastructure/workloads/sap/

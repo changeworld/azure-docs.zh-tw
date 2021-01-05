@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a657f43ef2d889cad1608d34e9235b1d5e7cb576
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 85534d1f64b273e42a2ea063e67286ee7bb4a90a
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894145"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827150"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>語音服務容器的常見問題 (常見問題) 
 
@@ -169,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**回答2：** 您必須在要求中提供正確的語音名稱，此名稱會區分大小寫。 請參閱完整的服務名稱對應。 您必須使用 `en-US-JessaRUS` ，因為目前 `en-US-JessaNeural` 無法在文字轉換語音的容器版本中使用。
+**回答2：** 您必須在要求中提供正確的語音名稱，此名稱會區分大小寫。 請參閱完整的服務名稱對應。
 
 **錯誤3：**
 
@@ -310,6 +310,8 @@ WebSocket
 
 如需各種模式，請參閱語音模式-請參閱以下內容：
 
+## <a name="speech-modes---interactive-conversation-dictation"></a>語音模式-互動式、對話、聽寫
+
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
 適當的修正會隨附于 SDK 1.8，其具有內部部署支援 (將挑選正確的端點，因此我們將不會比線上服務) 更糟。 在此同時，還有連續辨識的範例，為什麼我們不會指向它？
@@ -395,7 +397,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 **答：** 使用我們的最新版本時，即時8， `en-US` 因此建議使用超過6個並行要求的多個 docker 容器。 它會 crazier 超過16個核心，並變成 (NUMA) 節點敏感性的非統一記憶體存取。 下表說明每個語音容器的資源配置下限和建議。
 
-# <a name="speech-to-text"></a>[語音轉換文字](#tab/stt)
+# <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
 | 容器      | 最小值             | 建議         |
 |----------------|---------------------|---------------------|
@@ -558,6 +560,8 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 </summary>
 
 **答：** 語音容器上有三個端點適用于不同的使用方式，它們是定義為語音模式-請參閱以下內容：
+
+## <a name="speech-modes"></a>語音模式
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 16de95e177f6be1b5bb2517b5ae3ca595cfb5766
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5841af4225f88b36fe727b60a597af208ac830f5
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96939112"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827167"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>使用 SAML 和 OIDC/OAuth 的 Microsoft 身分識別平臺權杖交換案例
 
@@ -33,4 +33,4 @@ SAML 和 OpenID Connect (OIDC) /OAuth 是一種常用的通訊協定，可用來
 > 新增 OIDC/OAuth 行為的建議程式庫是 Microsoft Authentication Library (MSAL) 。 若要深入瞭解 MSAL，請參閱 [Microsoft 驗證程式庫的總覽 (MSAL) ](msal-overview.md)。 先前的程式庫 Active Directory 驗證程式庫 (ADAL) 中呼叫，不過不建議 MSAL 取代它。
 
 ## <a name="next-steps"></a>後續步驟
-- [驗證流程和應用程式案例](authentication-flows-app-scenarios.md)
+- [驗證流程和應用程式情節](authentication-flows-app-scenarios.md)

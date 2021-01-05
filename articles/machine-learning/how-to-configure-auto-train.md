@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 6aa54f65b504e61a5e74ed584c5dad51e49eb087
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031448"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827422"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
@@ -151,7 +151,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
    ```
 
 
-1. 預測工作需要額外的設定，如需詳細資料，請參閱 [自動定型時間序列預測模型](how-to-auto-train-forecast.md) 文章。 
+1. 預測工作需要額外的設定，如需詳細資料，請參閱 [自動定型 a time series 預測模型](how-to-auto-train-forecast.md) 文章。 
 
     ```python
     time_series_settings = {
@@ -321,7 +321,7 @@ from azureml.core.experiment import Experiment
 ws = Workspace.from_config()
 
 # Choose a name for the experiment and specify the project folder.
-experiment_name = 'automl-classification'
+experiment_name = 'Tutorial-automl'
 project_folder = './sample_projects/automl-classification'
 
 experiment = Experiment(ws, experiment_name)
@@ -374,6 +374,109 @@ run = experiment.submit(automl_config, show_output=True)
 
 > [!NOTE]
 > 說明用戶端目前不支援 ForecastTCN 模型。 如果傳回的是最佳模型，此模型將不會傳回說明儀表板，而且不支援隨選說明執行。
+
+## <a name="troubleshooting"></a>疑難排解
+
+* 將相依 **性升級為 `AutoML` 較新版本的最新版本將會中斷相容性**：從 SDK 的版本1.13.0 開始，由於我們在先前套件中釘選的舊版本與較新版本的版本不相容，因此不會在舊版 sdk 中載入模型。 您將會看到如下的錯誤：
+  * 找不到模組：例如 `No module named 'sklearn.decomposition._truncated_svd` ，
+  * 匯入錯誤：例如 `ImportError: cannot import name 'RollingOriginValidator'` ，
+  * 屬性錯誤：例如 `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+  
+  若要解決這個問題，請根據您的 SDK 定型版本，執行下列兩個步驟之一 `AutoML` ：
+    * 如果您的 `AutoML` SDK 定型版本大於1.13.0，您需要 `pandas == 0.25.1` 和 `sckit-learn==0.22.1` 。 如果版本不符，請將 scikit-learn-學習及/或 pandas 升級為正確的版本，如下所示：
+      
+      ```bash
+         pip install --upgrade pandas==0.25.1
+         pip install --upgrade scikit-learn==0.22.1
+      ```
+      
+    * 如果您的 `AutoML` SDK 定型版本小於或等於1.12.0，您就需要 `pandas == 0.23.4` 和 `sckit-learn==0.20.3` 。 如果版本不符，請將 scikit-learn-學習和/或 pandas 降級為正確的版本，如下所示：
+  
+      ```bash
+        pip install --upgrade pandas==0.23.4
+        pip install --upgrade scikit-learn==0.20.3
+      ```
+
+* **部署失敗**：針對 SDK 的版本 <= 1.18.0，為部署所建立的基底映射可能會失敗，並出現下列錯誤：「ImportError：無法從匯入名稱」 `cached_property` `werkzeug` 。 
+
+  下列步驟可以解決此問題：
+  1. 下載模型套件
+  2. 將套件解壓縮
+  3. 使用解壓縮的資產進行部署
+
+* **預測 R2 分數一律為零**：如果所提供的定型資料具有的時間序列包含與最後一個 `n_cv_splits`  +  資料點相同的值，就會發生此問題 `forecasting_horizon` 。 如果您的時間序列中必須要有這種模式，您可以將主要計量切換為正規化的根本平方誤差。
+ 
+* **TensorFlow**：從 SDK 版本1.5.0 版來，自動化機器學習預設不會安裝 TensorFlow 模型。 若要安裝 TensorFlow 並搭配自動化 ML 實驗使用，請透過 CondaDependecies 安裝 TensorFlow = = 1.12.0。 
+ 
+   ```python
+   from azureml.core.runconfig import RunConfiguration
+   from azureml.core.conda_dependencies import CondaDependencies
+   run_config = RunConfiguration()
+   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
+  ```
+
+* **實驗圖表**：二元分類圖表 (精確度-召回、ROC、增益曲線等。在4/12 之後，自動 ML 實驗反復專案中顯示的 ) 不會在使用者介面中正確呈現。 圖表繪圖目前顯示反向結果，其中以較低的結果顯示較佳的執行模型。 解決方案正在進行調查。
+
+* **Databricks 取消自動化機器學習執行**：當您在 Azure Databricks 上使用自動化機器學習功能時，若要取消執行並開始新的實驗回合，請重新開機您的 Azure Databricks 叢集。
+
+* **自動化機器學習的 Databricks >10 次反覆運算**：在自動化機器學習設定中，如果您有10個以上的反復專案，請在 `show_output` `False` 提交執行時將設定為。
+
+* **適用于 AZURE MACHINE LEARNING SDK 和自動化機器學習服務的 Databricks 小工具**： Databricks 筆記本中不支援 Azure Machine Learning SDK widget，因為筆記本無法剖析 HTML 小工具。 您可以使用 Azure Databricks 筆記本儲存格中的此 Python 程式碼，在入口網站中查看 widget：
+
+    ```
+    displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
+    ```
+* **automl_setup 失敗**： 
+    * 在 Windows 上，從 Anaconda 提示字元執行 automl_setup。 使用此連結來 [安裝 Miniconda](https://docs.conda.io/en/latest/miniconda.html)。
+    * 執行命令，確定已安裝 conda 64 位，而不是32位 `conda info` 。 `platform` `win-64` 適用于 Windows 或 `osx-64` Mac。
+    * 確定已安裝 conda 4.4.10 或更新版本。 您可以使用命令來檢查版本 `conda -V` 。 如果您已安裝先前的版本，您可以使用下列命令來更新它： `conda update conda` 。
+    * 轉銷商 `gcc: error trying to exec 'cc1plus'`
+      *  如果 `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` 發生錯誤，請使用命令來安裝 build essentials `sudo apt-get install build-essential` 。
+      * 傳遞新名稱做為 automl_setup 的第一個參數，以建立新的 conda 環境。 使用來查看現有的 conda 環境 `conda env list` ，並將其移除 `conda env remove -n <environmentname>` 。
+      
+* **automl_setup_linux. sh 失敗**：如果 Ubuntu linux 上的 automl_setup_linus sh 失敗，並出現下列錯誤： `unable to execute 'gcc': No such file or directory`-
+  1. 請確定已啟用輸出埠53和80。 在 Azure VM 上，您可以從 Azure 入口網站選取 VM，然後按一下 [網路]，來進行這項作業。
+  2. 執行命令：`sudo apt-get update`
+  3. 執行命令：`sudo apt-get install build-essential --fix-missing`
+  4. `automl_setup_linux.sh`重新執行
+
+* **.ipynb 失敗**：
+  * 若為本機 conda，請先確定 automl_setup 已成功執行。
+  * 請確定 subscription_id 正確。 選取 [所有服務]，然後選取 [訂用帳戶]，以找出 Azure 入口網站中的 subscription_id。 字元 "<" 和 ">" 不應包含在 subscription_id 值中。 例如， `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` 具有有效的格式。
+  * 確定訂用帳戶的參與者或擁有者存取權。
+  * 檢查區域是否為其中一個支援的區域： `eastus2` 、 `eastus` 、 `westcentralus` 、 `southeastasia` 、 `westeurope` 、、、 `australiaeast` `westus2` `southcentralus` 。
+  * 使用 Azure 入口網站確定存取區域。
+  
+* **`import AutoMLConfig` 失敗**：自動化機器學習版1.0.76 中有套件變更，需要先卸載舊版本，然後再更新為新版本。 如果在 `ImportError: cannot import name AutoMLConfig` v 1.0.76 至 v 1.0.76 或更新版本之前從 SDK 版本升級之後遇到，請執行下列程式來解決錯誤： `pip uninstall azureml-train automl` `pip install azureml-train-auotml` Automl_setup .cmd 腳本會自動執行此工作。 
+
+* **workspace.from_config 失敗**：如果呼叫 ws = Workspace.from_config ( # A1 ' 失敗-
+  1. 確定已成功執行 .ipynb 筆記本。
+  2. 如果正在從執行所在資料夾下的資料夾中執行筆記本 `configuration.ipynb` ，請將資料夾 aml_config，並將其包含的檔案 config.js複製到新資料夾。 Workspace.from_config 讀取筆記本資料夾或其父資料夾的 config.js。
+  3. 如果使用新的訂用帳戶、資源群組、工作區或區域，請確定您 `configuration.ipynb` 再次執行筆記本。 如果工作區已存在於指定的訂用帳戶下的指定資源群組中，則直接變更 config.js將會運作。
+  4. 如果您想要變更區域，請變更工作區、資源群組或訂用帳戶。 `Workspace.create` 將不會建立或更新工作區（如果已存在），即使指定的區域不同也是一樣。
+  
+* **範例筆記本失敗**：如果範例筆記本失敗，並出現屬性、方法或程式庫不存在的錯誤：
+  * 確定已在 Jupyter Notebook 中選取正確的核心。 核心會顯示在 [筆記本] 頁面的右上方。 預設值為 azure_automl。 核心會儲存為筆記本的一部分。 因此，如果您切換至新的 conda 環境，就必須在筆記本中選取新的核心。
+      * 針對 Azure Notebooks，它應該是 Python 3.6。 
+      * 在本機 conda 環境中，它應該是您在 automl_setup 中指定的 conda 環境名稱。
+  * 確定筆記本適用于您所使用的 SDK 版本。 您可以在 Jupyter Notebook 資料格中執行，以檢查 SDK 版本 `azureml.core.VERSION` 。 您可以從 GitHub 下載舊版範例筆記本，方法是按一下按鈕、選取索引標籤， `Branch` `Tags` 然後選取版本。
+
+* **`import numpy` 在 windows 中失敗**：有些 windows 環境在使用最新的 Python 版本3.6.8 載入 numpy 時，會看到錯誤。 如果您看到此問題，請嘗試使用 Python 版本3.6.7。
+
+* **`import numpy` 失敗**：檢查自動化 ml conda 環境中的 TensorFlow 版本。 支援的版本為 1.13 <。 如果 >= 1.13 的版本，請從環境卸載 TensorFlow。 您可以檢查 TensorFlow 的版本，並將其卸載，如下所示：
+  1. 啟動命令 shell，並啟用自動 ml 封裝的安裝 conda 環境。
+  2. 輸入 `pip freeze` 並尋找， `tensorflow` 如果找到的話，所列出的版本應該是 < 1.13
+  3. 如果列出的版本不是支援的版本，請 `pip uninstall tensorflow` 在命令 shell 中輸入 y 確認。
+  
+ * **執行失敗， `jwt.exceptions.DecodeError` 並** 出現：確切的錯誤訊息： `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` 。 
+ 
+    請考慮升級至 AutoML SDK 的最新版本： `pip install -U azureml-sdk[automl]` 。 
+    
+    如果這不可行，請檢查 PyJWT 的版本。 支援的版本 < 2.0.0。 如果版本是 >= 2.0.0，請從環境卸載 PyJWT。 您可以檢查 PyJWT 版本、卸載並安裝正確的版本，如下所示：
+    1. 啟動命令 shell，並啟用自動 ml 封裝的安裝 conda 環境。
+    2. 輸入 `pip freeze` 並尋找， `PyJWT` 如果找到，則應 < 列出的版本2.0。0
+    3. 如果列出的版本不是支援的版本，請 `pip uninstall PyJWT` 在命令 shell 中輸入 y 確認。
+    4. 使用進行安裝 `pip install 'PyJWT<2.0.0'` 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: fbf8c1987a66cad6d9d9bc9dab829af4b42a224e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 236390529ddaf84416448138d7b5bdf31caf681b
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971552"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827490"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>如何使用開機診斷對 Azure 中的虛擬機器進行疑難排解
 
@@ -23,7 +23,7 @@ ms.locfileid: "91971552"
 
 若為 Linux 虛擬機器，您可以在入口網站檢視主控台記錄的輸出。 若為 Windows 和 Linux 虛擬機器，Azure 可讓您從 Hypervisor 查看 VM 的螢幕擷取畫面。 所有區域中的 Azure 虛擬機器都支援這兩項功能。 注意：螢幕擷取畫面和輸出最多可能需要10分鐘的時間才會出現在您的儲存體帳戶中。
 
-您可以選取 [開機診斷]**** 選項來檢視記錄和螢幕擷取畫面。
+您可以選取 [開機診斷] 選項來檢視記錄和螢幕擷取畫面。
 
 ![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
@@ -47,12 +47,12 @@ ms.locfileid: "91971552"
 
 下列程序適用於使用 Resource Manager 部署模型所建立的虛擬機器。
 
-在 [管理]**** 索引標籤上的 [監視]**** 區段中，確定 [開機診斷]**** 已開啟。 從 [診斷儲存體帳戶]**** 下拉式清單中，選取要用來放置診斷檔案的儲存體帳戶。
+在 [管理] 索引標籤上的 [監視] 區段中，確定 [開機診斷] 已開啟。 從 [診斷儲存體帳戶] 下拉式清單中，選取要用來放置診斷檔案的儲存體帳戶。
  
 ![建立 VM](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> 開機診斷功能不支援 premium 儲存體帳戶或區域 Redundent 儲存體帳戶類型。 如果您使用進階儲存體帳戶來進行開機診斷，可能會在啟動虛擬機器時收到 StorageAccountTypeNotSupported 錯誤。
+> 開機診斷功能不支援 premium 儲存體帳戶或區域多餘的儲存體帳戶類型。 如果您使用進階儲存體帳戶來進行開機診斷，可能會在啟動虛擬機器時收到 StorageAccountTypeNotSupported 錯誤。
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>從 Azure Resource Manager 範本部署
@@ -86,8 +86,8 @@ ms.locfileid: "91971552"
 若要在現有的虛擬機器上啟用開機診斷功能，請遵循下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取虛擬機器。
-2. 在 [支援 + 疑難排解]**** 區段中，選取 [開機診斷]****，然後選取 [設定]**** 索引標籤。
-3. 在 [開機診斷]**** 設定中，將狀態變更為 [開啟]****，然後從 [儲存體帳戶]**** 下拉式清單選取儲存體帳戶。 
+2. 在 [支援 + 疑難排解] 區段中，選取 [開機診斷]，然後選取 [設定] 索引標籤。
+3. 在 [開機診斷] 設定中，將狀態變更為 [開啟]，然後從 [儲存體帳戶] 下拉式清單選取儲存體帳戶。 
 4. 儲存變更。
 
     ![更新現有的 VM](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)

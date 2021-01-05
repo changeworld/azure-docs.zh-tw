@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 3e93b5c4fd2a169da5cdcc42aaabdd29a2c22bb7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 2a7d191af78da417d0ee2ade12b1576912643b6c
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522453"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827439"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic-by-account"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 New Relic (依帳戶) 整合
 
@@ -72,7 +72,7 @@ ms.locfileid: "92522453"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [New Relic (依帳戶)]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -80,7 +80,7 @@ ms.locfileid: "92522453"
 
     a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：
 
-    `https://rpm.newrelic.com/accounts/{acc_id}/sso/saml/login` - 請務必以您自己的 New Relic (依帳戶) 帳戶識別碼取代 `acc_id`。
+    `https://rpm.newrelic.com:443/accounts/{acc_id}/sso/saml/finalize` - 請務必以您自己的 New Relic (依帳戶) 帳戶識別碼取代 `acc_id`。
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，輸入 URL：`rpm.newrelic.com`
 

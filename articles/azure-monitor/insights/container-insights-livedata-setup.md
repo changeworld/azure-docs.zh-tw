@@ -4,12 +4,12 @@ description: 本文說明如何在不使用 kubectl 搭配容器 Azure 監視器
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 45ed931f734e874e81af837fff5c4a326349cb21
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530177"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830780"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何設定即時資料 (預覽) 功能
 
@@ -19,7 +19,7 @@ ms.locfileid: "95530177"
 
 - 已啟用不具 Kubernetes RBAC 授權的 AKS
 - 已使用 Kubernetes RBAC 授權啟用的 AKS
-    - 使用叢集角色系結 ClusterMonitoringUser 設定的 AKS **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0&preserve-view=true)**
+    - 使用叢集角色系結 ClusterMonitoringUser 設定的 AKS **[](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0&preserve-view=true)**
 - 使用 Azure Active Directory (AD) 以 SAML 為基礎的單一登入啟用 AKS
 
 這些指示都需要 Kubernetes 叢集的系統管理存取權，而且如果設定為使用 Azure Active Directory (AD) 進行使用者驗證，則 Azure AD 的系統管理存取權。
@@ -48,7 +48,7 @@ Azure 入口網站會提示您驗證 Azure Active Directory 叢集的登入認�
 
 為了避免在 [啟用 KUBERNETES RBAC](#configure-kubernetes-rbac-authorization)授權之後，將額外的設定變更套用至允許 Kubernetes 使用者角色系結 **ClusterUser** 存取即時資料 (預覽) 功能，AKS 已新增新的 Kubernetes 叢集角色系結，稱為 **clusterMonitoringUser**。 此叢集角色系結具有現成的所有必要許可權，可存取 Kubernetes API 和端點，以利用即時資料 (預覽) 功能。
 
-您必須是 AKS 叢集資源上的「 [參與者](../../role-based-access-control/built-in-roles.md#contributor) 」角色的成員，才能利用此新使用者的即時資料 (預覽) 功能。 容器的 Azure 監視器（啟用時）預設會設定為使用此使用者進行驗證。 如果叢集上沒有 clusterMonitoringUser 角色系結，則會使用 **clusterUser** 來進行驗證。
+若要利用這項新使用者的即時資料 (預覽) 功能，您必須是 AKS 叢集資源上 Azure Kubernetes Service 叢集 [使用者](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) 或 [參與者](../../role-based-access-control/built-in-roles.md#contributor) 角色的成員。 容器的 Azure 監視器（啟用時）預設會設定為使用 clusterMonitoringUser 進行驗證。 如果叢集上沒有 clusterMonitoringUser 角色系結，則會使用 **clusterUser** 來進行驗證。 參與者可讓您存取 clusterMonitoringUser (（如果) 有的話），而 Azure Kuberenetes Service 叢集使用者可讓您存取 clusterUser。 這兩個角色中的任一個都可提供足夠的存取權來使用這項功能。
 
 AKS 在2020年1月發行這個新的角色系結，因此在2020年1月之前建立的叢集都沒有該系結。 如果您有在2020年1月之前建立的叢集，您可以在叢集上執行 PUT 作業，或在叢集上執行任何其他作業（例如更新叢集版本），以將新的 **clusterMonitoringUser** 新增至現有的叢集。
 

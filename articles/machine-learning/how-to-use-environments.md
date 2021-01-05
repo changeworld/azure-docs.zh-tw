@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 67b2dacb9debae1990d51be8ca47c76b7342cf67
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: f464664737ab56b43ca0c0a159837487494a1eaa
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660112"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826043"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure Machine Learning 中建立 & 使用軟體環境
 
@@ -34,7 +34,7 @@ ms.locfileid: "94660112"
 
 如需有關環境如何在 Azure Machine Learning 中運作的概要資訊，請參閱 [什麼是 ML 環境？](concept-environments.md) 如需設定開發環境的詳細資訊，請參閱 [這裡](how-to-configure-environment.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [適用于 Python 的 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) ( # B0 = 1.13.0) 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
