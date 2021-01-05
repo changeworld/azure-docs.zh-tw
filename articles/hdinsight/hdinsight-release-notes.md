@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032553"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883345"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 版本資訊
 
@@ -41,7 +41,7 @@ HDInsight 現在會使用 Azure 虛擬機器來佈建叢集。 從這個版本�
 
 ## <a name="deprecation"></a>淘汰
 ### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>淘汰 HDInsight 3.6 ML 服務叢集
-HDInsight 3.6 ML 服務叢集類型將于 31 2020 年12月結束支援。 客戶將不會在 31 2020 年12月之後建立新的 3.6 ML 服務叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請在 [此](./hdinsight-component-versioning.md#available-versions)檢查 HDInsight 版本和叢集類型的支援期限。
+HDInsight 3.6 ML 服務叢集類型將于 31 2020 年12月結束支援。 客戶將無法在 31 2020 年12月之後建立新的 3.6 ML 服務叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請在 [此](./hdinsight-component-versioning.md#available-versions)檢查 HDInsight 版本和叢集類型的支援期限。
 
 ### <a name="disabled-vm-sizes"></a>停用的 VM 大小
 從 16 2020 年11月開始，HDInsight 將會封鎖新客戶使用 standand_A8、standand_A9、standand_A10 和 standand_A11 VM 大小來建立叢集。 過去三個月內使用這些 VM 大小的現有客戶將不會受到影響。 從 9 2021 年1月開始，HDInsight 將會封鎖所有使用 standand_A8、standand_A9 standand_A10 和 standand_A11 VM 大小來建立叢集的客戶。 現有的叢集將會依原樣執行。 請考慮移至 HDInsight 4.0，以避免潛在的系統/支援中斷。
@@ -53,8 +53,14 @@ HDInsight 將網路安全性群組新增 (Nsg) 和使用者定義的路由 (Udr)
 ## <a name="upcoming-changes"></a>即將推出的變更
 即將發行的版本中將會發生下列變更。
 
+### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>預設叢集 VM 大小將會變更為 Ev3 系列
+從下一版開始 (于) 年1月底，預設叢集 VM 大小將從 D 系列變更為 Ev3 系列。 這種變更適用于前端節點和背景工作節點。 若要避免這項變更，請指定您要在 ARM 範本中使用的 VM 大小。
+
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>預設叢集版本將會變更為4。0
 自2021年2月起，HDInsight 叢集的預設版本將自3.6 變更為4.0。 如需可用版本的詳細資訊，請參閱 [可用的版本](./hdinsight-component-versioning.md#available-versions)。 深入瞭解[HDInsight 4.0](./hdinsight-version-release.md)的新功能
+
+### <a name="os-version-upgrade"></a>作業系統版本升級
+HDInsight 正在將作業系統版本從16.04 升級為18.04。 升級將在2021年4月之前完成。
 
 ### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3.6 年 6 30 2021 月終止支援
 HDInsight 3.6 即將結束支援。 自 30 2021 年6月起，客戶無法建立新的 HDInsight 3.6 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮移至 HDInsight 4.0，以避免潛在的系統/支援中斷。

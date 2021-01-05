@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 10/15/2020
-ms.openlocfilehash: fb4746972f78dc40a3ec264d2e1964e8d4e99b3d
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: e706f64a7caab6873a3eec86505eaee11374ae2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097587"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882286"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>使用 vCore 購買模型的彈性集區資源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -126,7 +126,7 @@ ms.locfileid: "92097587"
 |並行工作階段數上限|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |每個資料庫最小/最大彈性集區虛擬核心選項|0, 0.25, 0.5, 1, 2|0, 0.25, 0.5, 1...4|0, 0.25, 0.5, 1...6|0, 0.25, 0.5, 1...8|0, 0.25, 0.5, 1...10|0, 0.25, 0.5, 1...12|0, 0.25, 0.5, 1...14|
 |複本數目|1|1|1|1|1|1|1|
-|多重 AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|多重 AZ|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |讀取向外延展|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |內含備份儲存體|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|
 
@@ -158,7 +158,7 @@ ms.locfileid: "92097587"
 |並行工作階段數上限|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |每個資料庫最小/最大彈性集區虛擬核心選項|0, 0.25, 0.5, 1...16|0, 0.25, 0.5, 1...18|0, 0.25, 0.5, 1...20|0, 0.25, 0.5, 1...20, 24|0, 0.25, 0.5, 1...20, 24, 32|0, 0.25, 0.5, 1...16, 24, 32, 40|0, 0.25, 0.5, 1...16, 24, 32, 40, 80|
 |複本數目|1|1|1|1|1|1|1|
-|多重 AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|多重 AZ|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |讀取向外延展|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |內含備份儲存體|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|
 

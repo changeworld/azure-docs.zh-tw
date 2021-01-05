@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a093fe330ccbecc33cd8dac03d6425655e90366d
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 085ba4d9d4e78acec4505ddb0e9e89d4e0b5c4a3
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760464"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881475"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning (preview 來定型和追蹤 ML 模型) 
 
@@ -65,6 +65,7 @@ ms.locfileid: "97760464"
 * 安裝 `azureml-mlflow` 套件。 
     * 此套件會自動帶入 `azureml-core` [AZURE MACHINE LEARNING Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)，以提供 MLflow 的連線能力以存取您的工作區。
 * [建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
+    * 查看 [您在工作區中執行 MLflow 作業所需的存取權限](how-to-assign-roles.md#mlflow-operations)。
 
 ## <a name="track-local-runs"></a>追蹤本機執行
 

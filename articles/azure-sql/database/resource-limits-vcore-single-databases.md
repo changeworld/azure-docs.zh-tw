@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/15/2020
-ms.openlocfilehash: d6936d6c72855bc22e3fc9323028fd0b8cd0fb29
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 4ffe663c1a1651891af5f6e65ee231cbe3e8d650
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097570"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882287"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>使用虛擬核心購買模型的單一資料庫資源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -225,7 +225,7 @@ ms.locfileid: "92097570"
 
 \* 除了本機 SSD IO，工作負載會使用遠端 [頁面伺服器](service-tier-hyperscale.md#page-server) io。 有效的 IOPS 將視工作負載而定。 如需詳細資訊，請參閱 [資料 Io 治理](resource-limits-logical-server.md#resource-governance)和 [資源使用量統計資料中的資料 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
 
-#### <a name="notes"></a>備註
+#### <a name="notes"></a>注意
 
 **附注 1**：超大規模是具有個別計算和儲存元件的多層式架構： [超大規模服務層架構](service-tier-hyperscale.md#distributed-functions-architecture)
 
@@ -307,7 +307,7 @@ ms.locfileid: "92097570"
 |並行背景工作 (要求) 數上限|200|400|600|800|1000|1200|1400|
 |並行工作階段數上限|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |複本數目|1|1|1|1|1|1|1|
-|多重 AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|多重 AZ|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |讀取向外延展|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |內含備份儲存體|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|
 
@@ -332,7 +332,7 @@ ms.locfileid: "92097570"
 |並行背景工作 (要求) 數上限|1600|1800|2000|2400|3200|4000|8000|
 |並行工作階段數上限|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |複本數目|1|1|1|1|1|1|1|
-|多重 AZ|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
+|多重 AZ|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[提供預覽](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |讀取向外延展|N/A|N/A|N/A|N/A|N/A|N/A|N/A|
 |內含備份儲存體|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|
 

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14a65b83195bff48934668ff029f925e13884bad
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743693"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881237"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>優化重新驗證提示，並瞭解 Azure AD Multi-Factor Authentication 的會話存留期
 
@@ -108,7 +108,7 @@ Azure Active Directory (Azure AD) 有多個設定，可決定使用者需要重�
 1. 選取 [ **公司商標**]，然後針對每個地區設定選擇 [ **顯示選項] 以保持登入** 狀態。
 1. 選擇 [ *是]*，然後選取 [ **儲存**]。
 
-若要記住多重要素驗證設定，請完成下列步驟：
+若要記住受信任裝置上的多重要素驗證設定，請完成下列步驟：
 
 1. 在 Azure AD 入口網站中，搜尋並選取 [ *Azure Active Directory*]。
 1. 選取 [ **安全性**]，然後選取 [ **MFA**]。

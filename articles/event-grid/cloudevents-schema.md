@@ -4,12 +4,12 @@ description: 說明如何在 Azure 事件方格中將 CloudEvents 結構描述�
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e13c3635da7e7a86f4fa2d31215303152167741c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 823c1aa89d38a240af819a68706a02222dd93b9f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109244"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881577"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>搭配使用 CloudEvents v1.0 結構描述與事件方格
 除了[預設事件結構描述](event-schema.md)以外，Azure 事件方格在本質上也支援 [CloudEvents v1.0 的 JSON 實作](https://github.com/cloudevents/spec/blob/v1.0/json-format.md)和 [HTTP 通訊協定繫結](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)中的事件。 [CloudEvents](https://cloudevents.io/) 是用來說明事件資料的[開放式規格](https://github.com/cloudevents/spec/blob/v1.0/spec.md)。
@@ -180,8 +180,12 @@ module.exports = function (context, req) {
         // If the request is for subscription validation, send back the validation code
         
         context.log('Validate request received');
-        context.res = { status: 200 };
-        context.res.headers.append('Webhook-Allowed-Origin', 'eventgrid.azure.net');
+        context.res = {
+            status: 200,
+            headers: {
+                'Webhook-Allowed-Origin': 'eventgrid.azure.net',
+            },
+         };
     }
     else
     {

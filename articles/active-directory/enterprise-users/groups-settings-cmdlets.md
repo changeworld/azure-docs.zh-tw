@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70387717c15dade349a323e663ac0fd31935a15f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c48e23de6832999b262283c0bf6664b4dfe88ee7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859873"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881560"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>設定群組設定的 Azure Active Directory Cmdlet
 
@@ -84,10 +84,11 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
    ```powershell
    $Setting = $Template.CreateDirectorySetting()
    ```  
-4. 然後更新使用方針值：
+4. 然後以新的值更新設定物件。 下列兩個範例會變更使用指導方針值和啟用敏感度標籤。 視需要在範本中設定這些或任何其他設定：
   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = "https://guideline.example.com"
+   $Setting["EnableMIPLabels"] = "True"
    ```  
 5. 然後套用設定：
   
@@ -118,7 +119,7 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
    ```powershell
     Name                          Value
     ----                          -----
-    EnableMIPLabels               false
+    EnableMIPLabels               True
     CustomBlockedWordsList
     EnableMSStandardBlockedWords  False
     ClassificationDescriptions

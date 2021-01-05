@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/04/2021
 ms.author: victorh
-ms.openlocfilehash: 197d48a2f5368111ec194a18f86aedf5ad78e1b2
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 855c06b610fb8166f6f2dfcf37af34efb3713ffe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565614"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883211"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure 防火牆 DNS 設定
 
@@ -27,9 +27,9 @@ DNS 伺服器會維護並將功能變數名稱解析為 IP 位址。 根據預�
 
 ### <a name="configure-custom-dns-servers---azure-portal"></a>設定自訂 DNS 伺服器-Azure 入口網站
 
-1. 在 [Azure 防火牆 **設定** ] 下，選取 [ **DNS 設定** ]。
-2. 在 [ **DNS 伺服器** ] 下，您可以輸入或新增先前在虛擬網路中指定的現有 DNS 伺服器。
-3. 選取 [儲存]。
+1. 在 [Azure 防火牆 **設定**] 下，選取 [ **DNS 設定**]。
+2. 在 [ **DNS 伺服器**] 下，您可以輸入或新增先前在虛擬網路中指定的現有 DNS 伺服器。
+3. 選取 [儲存]  。
 
 防火牆現在會將 DNS 流量導向至指定的 DNS 伺服器，以進行名稱解析。
 
@@ -65,13 +65,16 @@ $azFw | Set-AzFirewall
 
 您可以設定 Azure 防火牆作為 DNS proxy。 DNS proxy 是從用戶端虛擬機器到 DNS 伺服器的 DNS 要求媒介。 如果您設定自訂 DNS 伺服器，請啟用 DNS proxy 以避免 DNS 解析不相符，並在網路規則中啟用 FQDN (完整功能變數名稱) 篩選。
 
+:::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="使用自訂的 D N S 伺服器的 d N S proxy 設定。":::
+
+
 如果您未啟用 DNS proxy，來自用戶端的 DNS 要求可能會在不同時間移動到 DNS 伺服器，或傳回與防火牆不同的回應。 DNS proxy 會將 Azure 防火牆放在用戶端要求的路徑中，以避免不一致。
 
 當 Azure 防火牆是 DNS proxy 時，可能會有兩種快取功能類型：
 
 - **正** 快取： DNS 解析成功。 防火牆會使用 TTL (存留時間) 封包或物件。 
 
-- **負數快取** ： DNS 解析會導致沒有回應或沒有解決方法。 防火牆會在一小時內快取此資訊。
+- **負數快取**： DNS 解析會導致沒有回應或沒有解決方法。 防火牆會在一小時內快取此資訊。
 
 DNS proxy 會將所有已解析的 IP 位址從 Fqdn 儲存在網路規則中。 最佳做法是使用可解析為一個 IP 位址的 Fqdn。  
 
@@ -92,16 +95,16 @@ DNS proxy 設定需要三個步驟：
 2. 選取 [設定] 底下的 [DNS 伺服器]。
 3. 選取 [DNS 伺服器] 底下的 [自訂]。
 4. 輸入防火牆的私人 IP 位址。
-5. 選取 [儲存]。
+5. 選取 [儲存]  。
 6. 重新開機連線到虛擬網路的 Vm，以將新的 DNS 伺服器設定指派給它們。 Vm 會繼續使用其目前的 DNS 設定，直到重新開機為止。
 
 ##### <a name="enable-dns-proxy"></a>啟用 DNS proxy
 
 1. 選取您的 Azure 防火牆實例。
-2. 在 [ **設定** ] 底下，選取 [ **DNS 設定** ]。
+2. 在 [ **設定**] 底下，選取 [ **DNS 設定**]。
 3. 預設會停用 **DNS Proxy** 。 啟用此設定時，防火牆會接聽埠53，並將 DNS 要求轉送至設定的 DNS 伺服器。
 4. 請檢查 **DNS 伺服器** 設定，以確定設定適用于您的環境。
-5. 選取 [儲存]。
+5. 選取 [儲存]  。
 
 :::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="顯示 D N S proxy 設定的螢幕擷取畫面。":::
 

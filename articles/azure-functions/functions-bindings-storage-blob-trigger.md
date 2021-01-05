@@ -6,18 +6,18 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3213df378bc3b8403ebd11f899d722106de67a65
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094840"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882019"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體觸發程式
 
 偵測到新的或已更新的 Blob 時，Blob 儲存體觸發程序會啟動函式。 Blob 內容會提供給函式的 [輸入](./functions-bindings-storage-blob-input.md)。
 
-Azure Blob 儲存體觸發程式需要一般用途的儲存體帳戶。 也支援具有階層 [命名空間](../storage/blobs/data-lake-storage-namespace.md) 的儲存體 V2 帳戶。 若要使用僅限 blob 的帳戶，或如果您的應用程式有特殊需求，請參閱使用此觸發程式的替代方案。
+Azure Blob 儲存體觸發程式需要一般用途的儲存體帳戶。 也支援具有 [階層命名空間](../storage/blobs/data-lake-storage-namespace.md) 的儲存體 V2 帳戶。 若要使用僅限 blob 的帳戶，或如果您的應用程式有特殊需求，請參閱使用此觸發程式的替代方案。
 
 如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-storage-blob.md)。
 
@@ -114,6 +114,24 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+在容器中新增或更新 blob 時，此函式會寫入記錄檔 `myblob` 。
+
+```java
+@FunctionName("blobprocessor")
+public void run(
+  @BlobTrigger(name = "file",
+               dataType = "binary",
+               path = "myblob/{name}",
+               connection = "MyStorageAccountAppSetting") byte[] content,
+  @BindingName("name") String filename,
+  final ExecutionContext context
+) {
+  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例所示範的是使用繫結之 *function.json* 檔案和 [JavaScript 程式碼](functions-reference-node.md)中的 Blob 觸發程序繫結。 在 `samples-workitems` 容器中新增或更新 Blob 時，函數會寫入記錄。
@@ -146,6 +164,34 @@ module.exports = function(context) {
     context.log('Node.js Blob trigger function processed', context.bindings.myBlob);
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下列範例示範如何建立在將檔案新增至 blob 儲存體容器時執行的函式 `source` 。
+
+) 的函式設定檔 (_function.js_ 包含與的系結 `type` ， `blobTrigger` 並 `direction` 將設定為 `in` 。
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "source/{name}",
+      "connection": "MyStorageAccountConnectionString"
+    }
+  ]
+}
+```
+
+以下是 _run.ps1_ 檔案的相關程式碼。
+
+```powershell
+param([byte[]] $InputBlob, $TriggerMetadata)
+
+Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($InputBlob.Length) bytes"
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -185,24 +231,6 @@ def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-在容器中新增或更新 blob 時，此函式會寫入記錄檔 `myblob` 。
-
-```java
-@FunctionName("blobprocessor")
-public void run(
-  @BlobTrigger(name = "file",
-               dataType = "binary",
-               path = "myblob/{name}",
-               connection = "MyStorageAccountAppSetting") byte[] content,
-  @BindingName("name") String filename,
-  final ExecutionContext context
-) {
-  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
-}
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>屬性和註釋
@@ -213,7 +241,7 @@ public void run(
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  該屬性的建構函式採用路徑字串，指示要監看的容器以及可選的 [Blob 名稱模式](#blob-name-patterns)。 以下是範例：
+  該屬性的建構函式採用路徑字串，指示要監看的容器以及可選的 [Blob 名稱模式](#blob-name-patterns)。 以下為範例：
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -267,17 +295,21 @@ public void run(
 
 C# 指令碼不支援屬性。
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobTrigger`屬性可用來讓您存取觸發函數的 blob。 如需詳細資訊，請參閱 [觸發程式範例](#example) 。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支援屬性。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 指令碼不支援屬性。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobTrigger`屬性可用來讓您存取觸發函數的 blob。 如需詳細資訊，請參閱 [觸發程式範例](#example) 。
 
 ---
 
@@ -305,17 +337,21 @@ Python 指令碼不支援屬性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobTrigger`屬性可用來讓您存取觸發函數的 blob。 如需詳細資訊，請參閱 [觸發程式範例](#example) 。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用存取 blob 資料的 `context.bindings.<NAME>` 位置 `<NAME>` 符合 *function.json* 中定義的值。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+透過符合 _function.json_ 檔案中系結名稱參數所指定之名稱的參數存取 blob 資料。
+
 # <a name="python"></a>[Python](#tab/python)
 
-透過輸入為 [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的參數存取 blob 資料。 如需詳細資訊，請參閱 [觸發程式範例](#example) 。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobTrigger`屬性可用來讓您存取觸發函數的 blob。 如需詳細資訊，請參閱 [觸發程式範例](#example) 。
+透過輸入為 [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true)的參數存取 blob 資料。 如需詳細資訊，請參閱 [觸發程式範例](#example) 。
 
 ---
 
@@ -374,6 +410,10 @@ Python 指令碼不支援屬性。
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+中繼資料在 JAVA 中無法使用。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
@@ -383,13 +423,13 @@ module.exports = function (context, myBlob) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+中繼資料可透過 `$TriggerMetadata` 參數取得。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 中無法使用中繼資料。
-
-# <a name="java"></a>[Java](#tab/java)
-
-中繼資料在 JAVA 中無法使用。
 
 ---
 
@@ -399,11 +439,11 @@ Azure Functions 執行階段可確保不會針對一樣新或更新的 blob 多�
 
 Azure Functions 會將 blob 回條儲存在您函數應用程式 (`AzureWebJobsStorage` 應用程式設定所定義) 的 Azure 儲存體帳戶中名為 *azure-webjobs-hosts* 的容器中。 Blob 回條具有下列資訊：
 
-* 觸發的函式 ( "*&lt; 函數應用程式名稱>*。功能。*&lt; 函數名稱>*"，例如：" MyFunctionApp. CopyBlob ") 
+* 觸發的函式 (`<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>` ，例如： `MyFunctionApp.Functions.CopyBlob`) 
 * 容器名稱
-* Blob 類型 ("BlockBlob" 或 "PageBlob")
+* Blob 類型 (`BlockBlob` 或 `PageBlob`) 
 * Blob 名稱
-* ETag (Blob 版本識別碼，例如："0x8D1DC6E70A277EF")
+* ETag (blob 版本識別碼，例如： `0x8D1DC6E70A277EF`) 
 
 要強制重新處理某個 Blob，可以從 *azure-webjobs-hosts* 容器中手動刪除該 Blob 的 Blob 回條。 雖然重新處理可能不會立即發生，但保證會在稍後的時間點發生。 若要立即重新處理，可以更新 azure 中的 *scaninfo* blob *-webjob-hosts/blobscaninfo* 。 在屬性之後，任何具有上次修改時間戳記的 blob `LatestScan` 都會再次掃描。
 
@@ -413,11 +453,11 @@ Azure Functions 會將 blob 回條儲存在您函數應用程式 (`AzureWebJobsS
 
 如果 5 次嘗試全都失敗，Azure Functions 會將訊息新增至名為 *webjobs-blobtrigger-poison* 的儲存體佇列。 您可以設定重試次數上限。 相同的 MaxDequeueCount 設定可用於處理有害的 Blob 和處理有害的佇列訊息。 適用於有害 Blob 的佇列訊息是一個 JSON 物件，其中包含下列屬性：
 
-* FunctionId (格式 *&lt; 函數應用程式名稱>*。功能。*&lt; 函數名稱>*) 
-* BlobType ("BlockBlob" 或 "PageBlob")
+* FunctionId (格式 `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>`) 
+* BlobType (`BlockBlob` 或 `PageBlob`) 
 * ContainerName
 * BlobName
-* ETag (Blob 版本識別碼，例如："0x8D1DC6E70A277EF")
+* ETag (blob 版本識別碼，例如： `0x8D1DC6E70A277EF`) 
 
 ## <a name="concurrency-and-memory-usage"></a>平行存取和記憶體使用量
 

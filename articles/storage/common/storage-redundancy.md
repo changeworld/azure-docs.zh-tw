@@ -10,12 +10,12 @@ ms.date: 12/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 57cde2c5c0a1caf7ad5182cad8db72ab8aa7c908
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 04b0b20452264493a0045c5adb6a1c32df5c6191
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531778"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883124"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 儲存體備援
 
@@ -64,8 +64,8 @@ ZRS 可為資料提供優秀的效能、低延遲以及復原，即使其暫時�
 | 儲存體帳戶類型 | 支援區域 | 支援的服務 |
 |--|--|--|
 | 一般用途 V2<sup>1</sup> | 東南亞<br /> 澳大利亞東部<br /> 北歐<br />  西歐<br /> 法國中部<br /> 日本東部<br /> 南非北部<br /> 英國南部<br /> 美國中部<br /> 美國東部<br /> 美國東部 2<br /> 美國西部 2 | 區塊 Blob<br /> 分頁 blob<sup>2</sup><br /> 檔案共用 (標準)<br /> 資料表<br /> 佇列<br /> |
-| BlockBlobStorage<sup>1</sup> | 東南亞<br /> 澳大利亞東部<br /> 北歐<br /> 西歐<br /> 美國東部 <br /> 美國東部 2 <br /> 美國西部 2| 僅限 Premium 區塊 blob |
-| FileStorage | 東南亞<br /> 澳大利亞東部<br /> 北歐<br /> 西歐<br /> 美國東部 <br /> 美國東部 2 <br /> 美國西部 2 | 僅限 Premium 檔案共用 |
+| BlockBlobStorage<sup>1</sup> | 東南亞<br /> 澳大利亞東部<br /> 北歐<br /> 西歐<br /> 日本東部<br /> 美國東部 <br /> 美國東部 2 <br /> 美國西部 2| 僅限 Premium 區塊 blob |
+| FileStorage | 東南亞<br /> 澳大利亞東部<br /> 北歐<br /> 西歐<br /> 日本東部<br /> 美國東部 <br /> 美國東部 2 <br /> 美國西部 2 | 僅限 Premium 檔案共用 |
 
 <sup>1</sup> ZRS 帳戶目前不支援封存層。<br />
 <sup>2</sup> 包含虛擬機器 Azure 受控磁碟的儲存體帳戶一律會使用 LRS。 Azure 非受控磁碟也應使用 LRS。 您可為使用 GRS 的 Azure 非受控磁碟建立儲存體帳戶，但不建議這種做法，因為可能會有非同步異地複寫所引發的潛在一致性問題。 受控或非受控磁碟都不支援 ZRS 或 GZRS。 如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks/)。

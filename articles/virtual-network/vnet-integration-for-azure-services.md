@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 814158ad68e63760c1f2a1bce3eeff812de3c13e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938727"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882359"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>整合 Azure 服務與虛擬網路以進行網路隔離
 
 Azure 服務的虛擬網路 (VNet) 整合，可讓您將服務的存取權鎖定至您的虛擬網路基礎結構。 VNet 基礎結構也包含對等互連的虛擬網路和內部部署網路。
 
 VNet 整合可為 Azure 服務提供網路隔離的優點，並可透過下列一或多種方法來完成：
-- [將服務的專用實例部署至虛擬網路](virtual-network-service-endpoints-overview.md)。 然後，在虛擬網路和內部部署網路中，可以私下存取這些服務。
+- [將服務的專用實例部署至虛擬網路](virtual-network-for-azure-services.md)。 然後，在虛擬網路和內部部署網路中，可以私下存取這些服務。
 - 使用 [私人端點](../private-link/private-endpoint-overview.md) ，以私人且安全的方式將您連接到 [Azure Private Link](../private-link/private-link-overview.md)的服務。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的虛擬網路。
 - 透過 [服務端點](virtual-network-service-endpoints-overview.md)將虛擬網路擴充至服務，以使用公用端點來存取服務。 服務端點可保障虛擬網路一定可以使用服務資源。
 - 使用 [服務](service-tags-overview.md) 標籤來允許或拒絕從公用 IP 端點流向 Azure 資源的流量。

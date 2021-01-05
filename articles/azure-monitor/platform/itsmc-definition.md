@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 1f7a493c071e86114afd7d4a9e08e204bbab509d
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 20c59e5ecc24dfe5c9eadb05899bf37d39ce09e7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809474"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882278"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -129,7 +129,22 @@ ms.locfileid: "97809474"
 
 9. 如果您 **針對每個設定專案選取 [建立個別的工作專案**]，則每個設定專案都會有自己的工作專案。 也就是說，每個設定專案都會有一個工作專案。
 
-    * 如果您在工作專案下拉式清單中選取 [事件] 或 [警示]：如果您清除 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，則每個警示都會建立新的工作專案。 每個設定專案可能會有一個以上的警示。
+    * 如果您在工作專案下拉式清單中選取 [事件] 或 [警示]： 
+        * 如果您勾選 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，則每個警示都會建立新的工作專案。 ITSM 系統中的每個設定專案都可以有一個以上的工作專案。
+
+            例如：
+            1) 具有3個設定專案的警示1： A、B、C 會建立3個工作專案。
+            2) 具有1個設定專案的警示2： D 將會建立1個工作專案。
+
+                **此流程結束時，會有4個警示**
+        * 如果您清除 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，則會出現警示，將不會建立新的工作專案。 工作專案將會根據警示規則合併。
+
+            例如：
+            1) 具有3個設定專案的警示1： A、B、C 會建立1個工作專案。
+            2) 相同警示規則的警示2與1個設定專案的階段1相同： D 將會合並到階段1中的工作專案。
+            3) 具有1個設定專案之不同警示規則的警示3： E 將會建立1個工作專案。
+
+                **此流程結束時，會有2個警示**
 
        ![顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration.png)
 

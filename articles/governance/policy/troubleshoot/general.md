@@ -3,12 +3,12 @@ title: 常見問題疑難排解
 description: 瞭解如何針對建立原則定義、各種 SDK 和 Kubernetes 的附加元件的問題進行疑難排解。
 ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b88d00575adb571c59b562d25067c4a1716fb50f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510993"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882971"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>使用 Azure 原則針對錯誤進行疑難排解
 
@@ -34,9 +34,9 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 原則定義中使用了不正確或不存在的別名。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
-首先，請驗證 Resource Manager 屬性具有別名。 使用 Visual Studio Code、 [Azure Resource Graph](../../resource-graph/samples/starter.md#distinct-alias-values)或 SDK [Azure 原則擴充](../how-to/extension-for-vscode.md)功能來查閱可用的別名。 如果 Resource Manager 屬性的別名不存在，請建立支援票證。
+首先，請驗證 Resource Manager 屬性具有別名。 使用 [Visual Studio Code 或 SDK Azure 原則擴充](../how-to/extension-for-vscode.md) 功能來查閱可用的別名。 如果 Resource Manager 屬性的別名不存在，請建立支援票證。
 
 ### <a name="scenario-evaluation-details-not-up-to-date"></a>案例：評估詳細資料不是最新狀態
 
@@ -48,7 +48,7 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 套用新的原則或計畫指派大約需要30分鐘。 現有指派範圍內新的或更新的資源將于稍後15分鐘內變成可用。 標準合規性掃描每24小時會進行一次。 如需詳細資訊，請參閱 [評估觸發](../how-to/get-compliance-data.md#evaluation-triggers)程式。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 首先，請等候一段適當的時間讓評估完成，並將相容性結果提供給 Azure 入口網站或 SDK。 若要使用 Azure PowerShell 或 REST API 開始新的評估掃描，請參閱隨 [選評估掃描](../how-to/get-compliance-data.md#on-demand-evaluation-scan)。
 
@@ -62,7 +62,7 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 資源不在原則指派的正確範圍內，或原則定義未如預期運作。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 遵循下列步驟來針對您的原則定義進行疑難排解：
 
@@ -90,7 +90,7 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 原則指派已設定為 _停用_ [enforcementMode](../concepts/assignment-structure.md#enforcement-mode) 。 強制模式停用時，不會強制執行原則效果，而且活動記錄中不會有任何專案。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 遵循下列步驟來針對您的原則指派強制進行疑難排解：
 
@@ -115,7 +115,7 @@ Azure 原則會使用 [別名](../concepts/definition-structure.md#aliases) 來�
 
 新資源或已更新資源所在範圍的原則指派，符合具有 [拒絕](../concepts/effects.md#deny) 效果的原則定義準則。 資源會議無法建立或更新這些定義。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 拒絕原則指派中的錯誤訊息包含原則定義和原則指派識別碼。 如果訊息中的錯誤資訊遺失，也可以在 [活動記錄](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)中取得。 您可以使用這項資訊來取得更多詳細資料，以瞭解資源限制並調整要求中的資源屬性，以符合允許的值。
 
@@ -131,7 +131,7 @@ Azure 原則支援多個 Azure Resource Manager 範本 (ARM 範本) 只能在原
 
 使用支援的函式（例如 `parameter()` 或 `resourceGroup()` ），會在部署期間產生函數的已處理結果，而不是離開原則定義和 Azure 原則引擎的函式來處理。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 若要將函式傳遞至作為原則定義的一部分，請將整個字串與屬性類似的屬性（property）進行換用 `[` `[[resourceGroup().tags.myTag]` 。 在處理範本時，escape 字元會使 Resource Manager 將值視為字串。 Azure 原則接著將函式放入原則定義中，讓它能夠如預期般動態。 如需詳細資訊，請參閱 [Azure Resource Manager 範本中的語法和運算式](../../../azure-resource-manager/templates/template-expressions.md)。
 
@@ -150,7 +150,7 @@ Azure 原則支援多個 Azure Resource Manager 範本 (ARM 範本) 只能在原
 
 產生的密碼包含 `,` Helm 圖表正在進行分割的逗號 () 。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 在以 `,` `helm install azure-policy-addon` 反斜線 () 執行時， () 密碼值中的逗號 `\` 。
 
@@ -166,7 +166,7 @@ Azure 原則支援多個 Azure Resource Manager 範本 (ARM 範本) 只能在原
 
 已 `azure-policy-addon` 安裝或部分安裝名稱的 Helm 圖表。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 遵循指示來 [移除 Kubernetes 附加元件的 Azure 原則](../concepts/policy-for-kubernetes.md#remove-the-add-on)，然後重新執行 `helm install azure-policy-addon` 命令。
 
@@ -180,7 +180,7 @@ Azure 原則支援多個 Azure Resource Manager 範本 (ARM 範本) 只能在原
 
 先前用於來賓設定 DeployIfNotExists 定義中的原則定義可確保系統指派的身分識別會指派給電腦，但也會移除使用者指派的身分識別指派。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 先前造成此問題的定義會顯示為 \[ \] 已淘汰，並由管理必要條件的原則定義所取代，而不會移除使用者指派的受控識別。 需要手動步驟。 刪除標示為已淘汰的任何現有原則指派， \[ \] 並將其取代為與原始的相同名稱的更新必要條件原則計畫和原則定義。
 
@@ -203,7 +203,7 @@ Azure 原則支援多個 Azure Resource Manager 範本 (ARM 範本) 只能在原
 
 當叢集輸出鎖定時，就會發生此問題。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 確定已開啟下列文章中的網域和埠：
 
@@ -226,7 +226,7 @@ Azure 原則支援多個 Azure Resource Manager 範本 (ARM 範本) 只能在原
 _Aad-pod-身分識別_ 元件節點受控身分識別 (NMI) pod 會修改節點的 iptables 來攔截對 Azure 實例中繼資料端點的呼叫。 這項設定表示，對中繼資料端點發出的任何要求都會被 NMI 攔截，即使 pod 未使用 _aad_-身分識別。
 **AzurePodIdentityException** 您可以設定 .CRD，以通知 _aad-pod-_ 對於源自于 .crd 中所定義標籤之任何中繼資料端點的任何要求，都應該在無 NMI 處理的情況下進行 proxy 處理。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 藉 `kubernetes.azure.com/managedby: aks` 由設定 **AzurePodIdentityException** .crd，在 _aad-pod_ 中將具有標籤的系統 pod 排除在 _kube 系統_ 命名空間中。
 
@@ -278,7 +278,7 @@ Code="InternalServerError" Message="Encountered an internal server error."
 
 `Microsoft.PolicyInsights`資源提供者未註冊，且必須針對附加元件註冊，才能取得原則定義並傳回合規性資料。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 在叢集 `Microsoft.PolicyInsights` 訂用帳戶中註冊資源提供者。 如需指示，請參閱 [註冊資源提供者](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
 
@@ -296,7 +296,7 @@ The subscription '{subId}' has been disabled for azure data-plane policy. Please
 
 此錯誤表示訂用帳戶已判定為有問題，且已新增功能旗標 `Microsoft.PolicyInsights/DataPlaneBlocked` 來封鎖訂用帳戶。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 請聯絡功能小組 `azuredg@microsoft.com` 調查並解決此問題。
 

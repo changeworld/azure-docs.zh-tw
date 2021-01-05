@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 25e6854491f35dd0aa46b5de218d312f57854760
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018914"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882206"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上的 Service Fabric 叢集概觀
 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 隸屬於叢集的機器或 VM 稱為叢集模式。 叢集可擴充至數千個節點。 若您新增節點至叢集，則 Service Fabric 會重新平衡全體增加節點數的服務資料分割複本和執行個體。 整體應用程式效能會有所改善，改善，並減少爭用記憶體的存取權。 若未有效率地使用叢集中的節點，您可減少叢集中的節點數目。 Service Fabric 會再次重新平衡全體減少節點數的資料分割複本和執行個體，以善加使用每個節點上的硬體。
@@ -80,7 +80,7 @@ Service Fabric 也支援存取控制來限制不同使用者群組對特定叢�
 
 如需詳細資訊，請參閱[安全性群組](../virtual-network/network-security-groups-overview.md)
 
-## <a name="scaling"></a>調整大小
+## <a name="scaling"></a>擴縮
 
 應用程式需求會隨著時間而變更。 您可能需要增加叢集資源以因應增加的應用程式工作負載或網路流量，或是在需要下降時減少叢集資源。 在建立 Service Fabric 叢集之後，您可以水平調整叢集 (變更節點數目)，或以垂直方式調整 (變更節點的資源)。 您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。 在叢集進行調整時，您的應用程式也會自動調整。
 
@@ -94,16 +94,17 @@ Azure Service Fabric 叢集是您所擁有，但部分由 Microsoft 管理的資
 ## <a name="supported-operating-systems"></a>支援的作業系統
 您可以在執行下列作業系統的虛擬機器上建立叢集：
 
-| 作業系統 | 最早支援的 Service Fabric 版本 |
-| --- | --- |
-| Windows Server 2012 R2 | 所有版本 |
-| Windows Server 2016 | 所有版本 |
-| Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16.04 | 6.0 |
-| Linux Ubuntu 18.04 | 7.1 |
+| 作業系統 | 最早支援的 Service Fabric 版本 | 上次支援的 Service Fabric 版本 |
+| --- | --- | --- | 
+| Windows Server 2019 | 6.4.654.9590 | N/A |
+| Windows Server 2016 | 所有版本 | N/A |
+| Windows Server 20H2 | 7.2.445.9590 | N/A |
+| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
+| Windows Server 1803 | 6.4 | 7.2.445.9590 |
+| Windows Server 1709 | 6.0 | 7.2.445.9590 |
+| Windows Server 2012 | 所有版本 | N/A | 
+| Linux Ubuntu 16.04 | 6.0 | N/A |
+| Linux Ubuntu 18.04 | 7.1 | N/A |
 
 如需其他資訊，請參閱[Azure 中支援](./service-fabric-versions.md#supported-operating-systems)的叢集版本
 

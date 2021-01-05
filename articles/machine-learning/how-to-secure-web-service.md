@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 11/18/2020
+ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 14e4fda6ef36dd8fc57529046473d8afa916ef2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830865"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880965"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>使用 TLS 來透過 Azure Machine Learning 保護 Web 服務
 
@@ -168,7 +168,7 @@ TLS/SSL 憑證過期，必須更新。 這通常會在每年發生。 使用下�
 
 ### <a name="update-a-microsoft-generated-certificate"></a>更新 Microsoft 產生的憑證
 
-如果憑證最初是由 Microsoft (在使用 *leaf_domain_label* 建立服務) 時，請使用下列其中一個範例來更新憑證：
+如果憑證原本是由 Microsoft (在使用 *leaf_domain_label* 建立服務) 時，就會在需要時 **自動更新** 。 如果您想要以手動方式進行更新，請使用下列其中一個範例來更新憑證：
 
 > [!IMPORTANT]
 > * 如果現有的憑證仍然有效，請使用 `renew=True` (SDK) 或 `--ssl-renew` (CLI) 來強制進行更新。 例如，如果現有的憑證仍有效10天，而您未使用 `renew=True` ，則憑證可能不會更新。

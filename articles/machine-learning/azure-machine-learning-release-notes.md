@@ -9,17 +9,29 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760107"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881815"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
 在本文中，您將瞭解 Azure Machine Learning 版本。  如需完整的 SDK 參考內容，請造訪 Azure Machine Learning 的 [**適用于 Python 的主要 SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 參考頁面。
 
+## <a name="2020-12-31"></a>2020-12-31
+### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio 筆記本體驗 (12 月更新) 
++ **新功能**
+  + 使用者名稱搜尋。 使用者現在可以搜尋儲存在工作區中的所有檔案。
+  + Markdown 每個筆記本的並列支援資料格。 在筆記本資料格中，使用者現在可以選擇並排查看轉譯的 markdown 和 markdown 語法。
+  + 儲存格狀態列。 狀態列會指出程式碼資料格的狀態、資料格執行是否成功，以及執行所花的時間。 
+   
++ **Bug 修正和改善**
+  + 改善的頁面載入時間
+  + 提升效能 
+  + 提升速度和核心可靠性
+  
 ## <a name="2020-12-07"></a>2020-12-07
 
 ### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Azure Machine Learning SDK for Python v 1.19。0
@@ -83,7 +95,19 @@ ms.locfileid: "97760107"
     + 已淘汰使用 Nccl 和 Gloo 做為估算器類別的有效輸入類型，以配合使用 PyTorchConfiguration 與 ScriptRunConfig。 
     + 已淘汰使用 Mpi 作為估算器類別的有效輸入類型，以配合搭配使用 MpiConfiguration 與 ScriptRunConfig。
 
+## <a name="2020-11-30"></a>2020-11-30
+### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio 筆記本體驗 (11 月更新) 
++ **新功能**
+   + 原生終端機。 使用者現在可以透過[整合式終端](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)機存取整合式終端機，以及 Git 操作。
+  + 複製資料夾 
+  + 計算下拉式清單的成本 
+  + 離線計算 Pylance 
 
++ **Bug 修正和改善**
+  + 改善的頁面載入時間
+  + 提升效能 
+  + 提升速度和核心可靠性
+  + 大型檔案上傳。 您現在可以上傳檔案 >95mb
 
 ## <a name="2020-11-09"></a>2020-11-09
 

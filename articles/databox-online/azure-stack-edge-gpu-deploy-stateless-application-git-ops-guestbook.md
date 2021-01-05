@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 82b786f3c90a7ef482ccbcd6e66fb9abfc4eea5f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561931"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882954"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>在 Azure Stack Edge Pro GPU 上，使用啟用 Redis on Arc 的 Kubernetes 叢集來部署 PHP 意見簿無狀態應用程式
 
@@ -27,13 +27,15 @@ ms.locfileid: "97561931"
 
 此程式適用于已 [在 Azure Stack Edge Pro 裝置上審核 Kubernetes 工作負載](azure-stack-edge-gpu-kubernetes-workload-management.md) ，並熟悉 [Azure Arc 啟用的概念 (預覽) ](../azure-arc/kubernetes/overview.md)的概念。
 
+> [!NOTE]
+> 本文包含「從屬」一詞的參考，Microsoft 已不再使用該字詞。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ## <a name="prerequisites"></a>必要條件
 
 在您可以部署無狀態應用程式之前，請確定您已在裝置上完成下列必要條件，以及用來存取裝置的用戶端：
 
 > [!NOTE]
-> 本文包含詞彙從屬的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+> 本文包含「從屬」一詞的參考，Microsoft 已不再使用該字詞。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ### <a name="for-device"></a>針對裝置
 
@@ -86,7 +88,7 @@ ms.locfileid: "97561931"
 
 1. 在 [ **新增** 設定] 中，為欄位輸入適當的值， **然後選取 [** 套用]。
 
-    |參數  |說明 |
+    |參數  |描述 |
     |---------|---------|
     |組態名稱     | 設定資源的名稱。        |
     |運算子實例名稱     |用來識別特定設定之操作員的實例名稱。 Name 是最多253個字元的字串，必須是小寫、英數位元、連字號和句點。         |
@@ -108,7 +110,6 @@ ms.locfileid: "97561931"
 1. 部署需要幾分鐘的時間。 當部署完成時， **操作員狀態** 會顯示為 **已安裝**。
 
     ![螢幕擷取畫面顯示已安裝狀態的 Azure Arc 啟用 Kubernetes 叢集。](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
-
 
 ## <a name="verify-deployment"></a>驗證部署
 

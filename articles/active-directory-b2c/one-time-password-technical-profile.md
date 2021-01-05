@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172670"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881186"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自訂原則中定義一次性密碼技術設定檔
 
@@ -28,7 +28,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供管理單次密碼之產生和�
 
 ## <a name="protocol"></a>通訊協定
 
-**Protocol** 元素的 **Name** 屬性必須設定為 `Proprietary`。 **處理常式**屬性必須包含 Azure AD B2C 所使用之通訊協定處理常式元件的完整名稱：
+**Protocol** 元素的 **Name** 屬性必須設定為 `Proprietary`。 **處理常式** 屬性必須包含 Azure AD B2C 所使用之通訊協定處理常式元件的完整名稱：
 
 ```xml
 Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -45,21 +45,21 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 ## <a name="generate-code"></a>產生程式碼
 
-此技術設定檔的第一種模式是產生程式碼。 以下是可在此模式中設定的選項。
+此技術設定檔的第一種模式是產生程式碼。 以下是可在此模式中設定的選項。 系統會在會話中追蹤產生的代碼和嘗試。 
 
 ### <a name="input-claims"></a>輸入宣告
 
-**InputClaims**元素包含一份要傳送給單次密碼通訊協定提供者所需的宣告清單。 您也可以將您的宣告名稱對應至以下定義的名稱。
+**InputClaims** 元素包含一份要傳送給單次密碼通訊協定提供者所需的宣告清單。 您也可以將您的宣告名稱對應至以下定義的名稱。
 
 | ClaimReferenceId | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 識別碼 (identifier) | 是 | 識別稍後需要驗證程式代碼之使用者的識別碼。 它通常用來作為程式碼傳遞目的地的識別碼，例如電子郵件地址或電話號碼。 |
 
-**InputClaimsTransformations**元素可以包含**InputClaimsTransformation**專案的集合，這些專案可用來修改輸入宣告或產生新的輸入宣告，再傳送給單次密碼通訊協定提供者。
+**InputClaimsTransformations** 元素可以包含 **InputClaimsTransformation** 專案的集合，這些專案可用來修改輸入宣告或產生新的輸入宣告，再傳送給單次密碼通訊協定提供者。
 
 ### <a name="output-claims"></a>輸出宣告
 
-**OutputClaims**元素包含一次性密碼通訊協定提供者所產生的宣告清單。 您也可以將您的宣告名稱對應至以下定義的名稱。
+**OutputClaims** 元素包含一次性密碼通訊協定提供者所產生的宣告清單。 您也可以將您的宣告名稱對應至以下定義的名稱。
 
 | ClaimReferenceId | 必要 | 描述 |
 | --------- | -------- | ----------- |
@@ -73,13 +73,13 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | 否 | 程式碼到期前的時間（以秒為單位）。 最小值： `60` ;最大值： `1200` ;預設值： `600` 。 每次提供程式碼 (使用相同的程式碼或) 新的程式碼時 `ReuseSameCode` ，就會延長程式碼到期時間。  |
-| CodeLength | 否 | 程式碼的長度。 預設值為 `6`。 |
+| CodeExpirationInSeconds | 否 | 程式碼到期前的時間（以秒為單位）。 最小值： `60` ;最大值： `1200` ;預設值： `600` 。 每次提供程式碼 (使用相同的程式碼或) 新的程式碼時 `ReuseSameCode` ，就會延長程式碼到期時間。 這段時間也用來設定重試超時 (一旦達到最大嘗試次數，使用者會被鎖定而無法嘗試取得新的代碼，直到這段時間到期為止)  |
+| CodeLength | 否 | 程式碼的長度。 預設值是 `6`。 |
 | CharacterSet | 否 | 針對正則運算式中使用的程式碼字元集。 例如，`a-z0-9A-Z`。 預設值為 `0-9`。 字元集必須在指定的集合中包含至少10個不同的字元。 |
-| NumRetryAttempts | 否 | 在程式碼被視為無效之前的驗證嘗試次數。 預設值為 `5`。 |
+| NumRetryAttempts | 否 | 在程式碼被視為無效之前的驗證嘗試次數。 預設值是 `5`。 |
 | NumCodeGenerationAttempts | 否 | 每個識別碼的程式碼產生嘗試次數上限。 如果未指定，預設值為10。 |
 | 作業 | 是 | 要執行的作業。 可能的值： `GenerateCode` 。 |
-| ReuseSameCode | 否 | 是否應該提供相同的程式碼，而不是在指定的程式碼尚未過期時產生新的程式碼，而且仍然有效。 預設值為 `false`。  |
+| ReuseSameCode | 否 | 是否應該提供相同的程式碼，而不是在指定的程式碼尚未過期時產生新的程式碼，而且仍然有效。 預設值是 `false`。  |
 
 
 
@@ -115,14 +115,14 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 
 ### <a name="input-claims"></a>輸入宣告
 
-**InputClaims**元素包含一份要傳送給單次密碼通訊協定提供者所需的宣告清單。 您也可以將您的宣告名稱對應至以下定義的名稱。
+**InputClaims** 元素包含一份要傳送給單次密碼通訊協定提供者所需的宣告清單。 您也可以將您的宣告名稱對應至以下定義的名稱。
 
 | ClaimReferenceId | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 識別碼 (identifier) | 是 | 識別先前產生程式碼之使用者的識別碼。 它通常用來作為程式碼傳遞目的地的識別碼，例如電子郵件地址或電話號碼。 |
 | otpToVerify | 是 | 使用者所提供的驗證碼。 |
 
-**InputClaimsTransformations**元素可以包含**InputClaimsTransformation**專案的集合，這些專案可用來修改輸入宣告或產生新的輸入宣告，再傳送給單次密碼通訊協定提供者。
+**InputClaimsTransformations** 元素可以包含 **InputClaimsTransformation** 專案的集合，這些專案可用來修改輸入宣告或產生新的輸入宣告，再傳送給單次密碼通訊協定提供者。
 
 ### <a name="output-claims"></a>輸出宣告
 

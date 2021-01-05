@@ -3,12 +3,12 @@ title: 了解效果的運作方式
 description: 「Azure 原則」定義有各種效果，可決定合規性的管理和回報方式。
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873943"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883073"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure 原則效果
 
@@ -24,7 +24,7 @@ ms.locfileid: "91873943"
 - [Disabled](#disabled)
 - [修改](#modify)
 
-以下是已被 _取代_的效果：
+以下是已被 _取代_ 的效果：
 
 - [EnforceOPAConstraint](#enforceopaconstraint)
 - [EnforceRegoPolicy](#enforceregopolicy)
@@ -39,9 +39,11 @@ ms.locfileid: "91873943"
 - 首先會檢查 **Disabled**，以決定是否應評估原則規則。
 - 接著會評估 **Append** 和 **Modify**。 由於兩者均可改變要求，因此所進行的變更可能會導致無法觸發 Audit 或 Deny 效果。 這些效果僅適用于 Resource Manager 模式。
 - 接著評估的是 **Deny**。 在 Audit 前先評估 Deny 可防止重複記錄不想要的資源。
-- 最後會評估**Audit** 。
+- 最後會評估 **Audit** 。
 
 在資源提供者傳回 Resource Manager 模式要求的成功碼之後， **AuditIfNotExists** 和 **DeployIfNotExists** 會評估，以判斷是否需要額外的合規性記錄或動作。
+
+此外， `PATCH` 只會修改相關欄位的要求會 `tags` 將原則評估限制為包含檢查相關欄位之條件的原則 `tags` 。
 
 ## <a name="append"></a>附加
 
@@ -104,7 +106,7 @@ Audit 是建立或更新資源期間，「Azure 原則」所檢查的最後一�
 
 若為 Resource Manager 模式，則 audit 效果沒有任何額外的屬性可供在原則定義的 **then** 條件中使用。
 
-若為的資源提供者模式 `Microsoft.Kubernetes.Data` ，則審核效果會有下列額外的 **詳細資料**子屬性。
+若為的資源提供者模式 `Microsoft.Kubernetes.Data` ，則審核效果會有下列額外的 **詳細資料** 子屬性。
 
 - **constraintTemplate** (必要) 
   - 可定義新限制式的限制式範本 CustomResourceDefinition (CRD)。 此範本會定義從「Azure 原則」透過 **values** 傳遞的 Rego 邏輯、限制式結構描述及限制式參數。
@@ -123,7 +125,7 @@ Audit 是建立或更新資源期間，「Azure 原則」所檢查的最後一�
 }
 ```
 
-範例2：使用的資源提供者模式的 audit 效果 `Microsoft.Kubernetes.Data` 。 **詳細資料**中的其他資訊會定義要在 Kubernetes 中使用的條件約束範本和 .crd，以限制允許的容器映射。
+範例2：使用的資源提供者模式的 audit 效果 `Microsoft.Kubernetes.Data` 。 **詳細資料** 中的其他資訊會定義要在 Kubernetes 中使用的條件約束範本和 .crd，以限制允許的容器映射。
 
 ```json
 "then": {
@@ -141,7 +143,7 @@ Audit 是建立或更新資源期間，「Azure 原則」所檢查的最後一�
 
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-AuditIfNotExists 可讓_您對符合_ **if**條件之資源的資源進行審核，但沒有在**then**條件的**詳細資料**中指定的屬性。
+AuditIfNotExists 可讓 _您對符合_ **if** 條件之資源的資源進行審核，但沒有在 **then** 條件的 **詳細資料** 中指定的屬性。
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists 評估
 
@@ -151,7 +153,7 @@ AuditIfNotExists 的執行順序是在「資源提供者」已處理建立或更
 
 AuditIfNotExists 效果的 **details** 屬性含有定義所要比對相關資源的所有子屬性。
 
-- 需要**輸入** () 
+- 需要 **輸入** () 
   - 指定要比對之相關資源的類型。
   - 如果 **details.type** 是在 **if** 條件資源之下的資源類型，則此原則會在受評估資源範圍內查詢此 **type** 的資源。 否則，原則會在與受評估資源相同的資源群組內進行查詢。
 - **Name** (選擇性)
@@ -220,7 +222,7 @@ Deny 可用來透過原則定義防止不符合所定義標準的資源要求，
 
 在 Resource Manager 模式中，拒絕效果沒有任何額外的屬性可供在原則定義的 **then** 條件中使用。
 
-若為的資源提供者模式 `Microsoft.Kubernetes.Data` ，拒絕效果會有下列額外的 **詳細資料**子屬性。
+若為的資源提供者模式 `Microsoft.Kubernetes.Data` ，拒絕效果會有下列額外的 **詳細資料** 子屬性。
 
 - **constraintTemplate** (必要) 
   - 可定義新限制式的限制式範本 CustomResourceDefinition (CRD)。 此範本會定義從「Azure 原則」透過 **values** 傳遞的 Rego 邏輯、限制式結構描述及限制式參數。
@@ -239,7 +241,7 @@ Deny 可用來透過原則定義防止不符合所定義標準的資源要求，
 }
 ```
 
-範例2：使用的資源提供者模式拒絕效果 `Microsoft.Kubernetes.Data` 。 **詳細資料**中的其他資訊會定義要在 Kubernetes 中使用的條件約束範本和 .crd，以限制允許的容器映射。
+範例2：使用的資源提供者模式拒絕效果 `Microsoft.Kubernetes.Data` 。 **詳細資料** 中的其他資訊會定義要在 Kubernetes 中使用的條件約束範本和 .crd，以限制允許的容器映射。
 
 ```json
 "then": {
@@ -260,7 +262,7 @@ Deny 可用來透過原則定義防止不符合所定義標準的資源要求，
 DeployIfNotExists 原則定義與 AuditIfNotExists 類似，也會在符合條件時執行範本部署。
 
 > [!NOTE]
-> 使用 **deployIfNotExists** 時，支援[巢狀範本](../../../azure-resource-manager/templates/linked-templates.md#nested-template)，但目前不支援[連結的範本](../../../azure-resource-manager/templates/linked-templates.md#linked-template)。
+> 使用 **deployIfNotExists** 時，支援 [巢狀範本](../../../azure-resource-manager/templates/linked-templates.md#nested-template)，但目前不支援 [連結的範本](../../../azure-resource-manager/templates/linked-templates.md#linked-template)。
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists 評估
 
@@ -273,7 +275,7 @@ DeployIfNotExists 會在「資源提供者」已處理建立或更新資源要�
 
 DeployIfNotExists 效果的 **details** 屬性，含有用於定義所要比對的相關資源、所要執行的範本部署的所有子屬性。
 
-- 需要**輸入** () 
+- 需要 **輸入** () 
   - 指定要比對之相關資源的類型。
   - 從嘗試在 **if** 條件資源下擷取資源開始著手，然後在與 **if** 條件資源相同的資源群組內進行查詢。
 - **Name** (選擇性)
@@ -301,10 +303,10 @@ DeployIfNotExists 效果的 **details** 屬性，含有用於定義所要比對�
   - 此屬性必須包含與訂用帳戶可存取之角色型存取控制角色識別碼相符的字串陣列。 如需詳細資訊，請參閱[補救 - 設定原則定義](../how-to/remediate-resources.md#configure-policy-definition)。
 - **DeploymentScope** (選擇性)
   - 允許的值為 _Subscription_ 和 _ResourceGroup_。
-  - 設定要觸發的部署類型。 _Subscription_ 表示[在訂用帳戶層級進行部署](../../../azure-resource-manager/templates/deploy-to-subscription.md)、_ResourceGroup_ 表示部署至某個資源群組。
+  - 設定要觸發的部署類型。 _Subscription_ 表示 [在訂用帳戶層級進行部署](../../../azure-resource-manager/templates/deploy-to-subscription.md)、_ResourceGroup_ 表示部署至某個資源群組。
   - 使用訂用帳戶層級部署時，必須在 _Deployment_ 中指定 _location_ 屬性。
   - 預設值為 _ResourceGroup_。
-- 需要**部署** () 
+- 需要 **部署** () 
   - 此屬性應該包含完整範本部署，因為它將傳遞給 `Microsoft.Resources/deployments` PUT API。 如需詳細資訊，請參閱[部署 REST API](/rest/api/resources/deployments)。
 
   > [!NOTE]
@@ -431,7 +433,7 @@ EnforceOPAConstraint 效果的 **details** 屬性有子屬性可描述 Gatekeepe
 此效果是搭配 `Microsoft.ContainerService.Data` 的原則定義「模式」使用， 用於將 [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) 定義的 Gatekeeper v2 許可控制規則傳遞到 [Azure Kubernetes 服務](../../../aks/intro-kubernetes.md)上的[開放式原則代理程式](https://www.openpolicyagent.org/) (OPA)。
 
 > [!IMPORTANT]
-> 具有 **EnforceRegoPolicy** 效果及相關 **Kubernetes 服務**類別的有限預覽原則定義將會遭到_取代_。 相反地，請使用對資源提供者模式進行 _audit_ 和 _deny_ 的效果 `Microsoft.Kubernetes.Data` 。
+> 具有 **EnforceRegoPolicy** 效果及相關 **Kubernetes 服務** 類別的有限預覽原則定義將會遭到 _取代_。 相反地，請使用對資源提供者模式進行 _audit_ 和 _deny_ 的效果 `Microsoft.Kubernetes.Data` 。
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy 評估
 
@@ -520,13 +522,13 @@ Modify 效果的 **details** 屬性，含有用於定義修補所需權限的所
 - **conflictEffect** (選用) 
   - 決定當有一個以上的原則定義修改相同的屬性，或修改作業在指定的別名上無法運作時，哪個原則定義「獲勝」。
     - 針對新的或更新的資源，具有 _拒絕_ 的原則定義優先。 具有 _audit_ 的原則定義會略過所有 **作業**。 如果有一個以上的原則定義 _拒絕_，要求就會被視為衝突。 如果所有原則定義都有 _audit_，則不會處理衝突原則定義的任何 **作業** 。
-    - 針對現有的資源，如果有一個以上的原則定義有 _拒絕_，合規性狀態會是 [ _衝突_]。 如果有一或多個原則定義 _拒絕_，則每個指派會傳回 _不符合規範_的合規性狀態。
+    - 針對現有的資源，如果有一個以上的原則定義有 _拒絕_，合規性狀態會是 [ _衝突_]。 如果有一或多個原則定義 _拒絕_，則每個指派會傳回 _不符合規範_ 的合規性狀態。
   - 可用的值： _audit_、 _deny_、 _disabled_。
   - 預設值為 _deny_。
 - **作業** (必要的) 
   - 在比對資源上所有待完成標記作業的陣列。
   - 屬性：
-    - 作業** (必要**) 
+    - 作業 **(必要**) 
       - 定義要對相符資源採取的動作。 選項包括：_addOrReplace_、_Add_、_Remove_。 _Add_ 的行為類似 [Append](#append) 效果。
     - 需要 (**欄位**) 
       - 要新增、取代或移除的標記。 標記名稱必須遵守其他[欄位](./definition-structure.md#fields)的相同命名慣例。
@@ -671,7 +673,7 @@ Modify 效果的 **details** 屬性，含有用於定義修補所需權限的所
 - 任何在訂用帳戶 A 但不在 'westus' 中的新資源都會被原則 1 拒絕
 - 任何在訂用帳戶 A 之資源群組 B 中的新資源都會被拒絕
 
-針對每個指派都會以獨立方式進行評估。 因此，不可能讓資源從範圍差異的間隙中逃脫。 分層原則定義的淨結果會被視為**累計限制最嚴格的**結果。 舉例來說，如果原則 1 和原則 2 都具有 Deny 效果，則資源會遭到重疊和衝突的原則定義封鎖。 如果您仍然需要在目標範圍中建立該資源，請檢閱每項指派的相關排除項目，以驗證是由正確的原則指派在影響正確的範圍。
+針對每個指派都會以獨立方式進行評估。 因此，不可能讓資源從範圍差異的間隙中逃脫。 分層原則定義的淨結果會被視為 **累計限制最嚴格的** 結果。 舉例來說，如果原則 1 和原則 2 都具有 Deny 效果，則資源會遭到重疊和衝突的原則定義封鎖。 如果您仍然需要在目標範圍中建立該資源，請檢閱每項指派的相關排除項目，以驗證是由正確的原則指派在影響正確的範圍。
 
 ## <a name="next-steps"></a>後續步驟
 

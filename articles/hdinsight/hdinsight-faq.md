@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 0240510a2232bd12a94d5cdd59672270289e5e8f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 120a73c7bf2ea9ee61d1fe1aef9ffa39a3cb3f76
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011824"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882393"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常見問題集
 
@@ -178,7 +178,7 @@ ktutil: q
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>我可以在 AAD DS 安全 LDAP 安裝程式中使用自我簽署憑證，並布建 ESP 叢集嗎？
 
-建議使用由憑證授權單位單位所發行的憑證。 但 ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱
+建議使用由憑證授權單位單位所發行的憑證。 但 ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱：
 
 - [啟用 Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -198,7 +198,7 @@ ktutil: q
 
 1. 使用下列命令停用自動執行：
    
-   `/usr/local/vbin/azsecd config -s clamav -d Disabled`
+  sudo `usr/local/bin/azsecd config -s clamav -d Disabled` sudo service azsecd 重新開機 
    
 1. 新增以根目錄執行下列命令的 Cron 作業：
    
@@ -229,7 +229,7 @@ LLAP 是基於安全性理由而啟用， (Apache Ranger) ，而不是效能。 
 
 - [使用 PowerShell](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 
-- 尋找/user/hive/. 的大小 */user/hive/.Trash/* HDInsight 叢集上的回收站/資料夾，使用下列命令列：
+- 尋找/user/hive/. 的大小HDInsight 叢集上的回收站/資料夾，使用下列命令列：
   
   `hdfs dfs -du -h /user/hive/.Trash/`
 
@@ -255,7 +255,7 @@ done
 
 目前沒有任何 Ranger 外掛程式存在於 blob 儲存體和 Azure Data Lake Storage Gen1 或 Gen2。 針對 ESP 叢集，您應該使用 Azure Data Lake Storage。 您至少可以使用 HDFS 工具在檔案系統層級手動設定細微許可權。 此外，使用 Azure Data Lake Storage 時，ESP 叢集將會使用叢集層級的 Azure Active Directory 來進行某些檔案系統存取控制。 
 
-您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱
+您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱：
 
 - [如何? 將 Azure AD 使用者的許可權設定為使用 Hive 或其他服務查詢 Data Lake Storage Gen2 中的資料？](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [搭配 Azure Data Lake Storage Gen2 使用 Azure 儲存體總管設定檔案和目錄等級使用權限](../storage/blobs/data-lake-storage-explorer.md)

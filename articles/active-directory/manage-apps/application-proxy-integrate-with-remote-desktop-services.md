@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 666b3c609224c1665c150718b2b89c4bac72577e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488063"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882223"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 發佈遠端桌面
 
@@ -39,21 +39,16 @@ ms.locfileid: "96488063"
 >[!TIP]
 >如果您之前從未部署過 RDS，或在您開始前需要更多資訊，請了解如何[使用 Azure Resource Manager 和 Azure Marketplace 順暢地部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure)。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 - RD Web 和 RD 閘道端點必須位於相同的電腦上，並具有一般的根。 將 RD Web 和 RD 閘道發佈為單一應用程式並搭配應用程式 Proxy，如此便能在這兩個應用程式之間擁有單一登入的體驗。
-
-- 您應該已經[部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure) 並[啟用應用程式 Proxy](application-proxy-add-on-premises-application.md)。
-
+- 您應該已經[部署 RDS](/windows-server/remote/remote-desktop-services/rds-in-azure) 並[啟用應用程式 Proxy](application-proxy-add-on-premises-application.md)。 確定您已滿足啟用應用程式 Proxy 的必要條件，例如安裝連接器、開啟必要的埠和 URL，以及在伺服器上啟用 TLS 1.2。
 - 您的終端使用者必須使用相容的瀏覽器來連線到 RD Web 或 RD Web 用戶端。 如需詳細資料，請參閱 [支援用戶端](#support-for-other-client-configurations)設定。
-
 - 發行 RD Web 時，建議您使用相同的內部和外部 FQDN。 如果內部和外部 FQDN 不同，則應停用要求標頭轉譯，以避免用戶端接收無效的連結。
-
 - 如果您在 Internet Explorer 上使用 RD Web，則必須啟用 RDS ActiveX 附加元件。
-
 - 如果您使用 RD Web 用戶端，您將需要使用「應用程式 Proxy [連接器」版本1.5.1975 或更新版本](./application-proxy-release-version-history.md)。
-
 - 針對 Azure AD 預先驗證流程，使用者只能連線到 [ **RemoteApp 和桌面** ] 窗格中發佈的資源。 使用者無法使用 [ **連接到遠端電腦** ] 窗格連線到桌面。
+- 如果您使用的是 Windows Server 2019，您可能需要停用 HTTP2 通訊協定。 如需詳細資訊，請參閱 [教學課程：新增內部部署應用程式，以透過應用程式 Proxy 在 Azure Active Directory 中進行遠端存取](application-proxy-add-on-premises-application.md)。
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>部署聯合 RDS 和應用程式 Proxy 案例
 

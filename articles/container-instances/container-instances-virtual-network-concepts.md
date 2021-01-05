@@ -3,12 +3,12 @@ title: 使用虛擬網路的案例
 description: 將容器群組部署至 Azure 虛擬網路的案例、資源和限制。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5e9c1d1606a9ad491ba7a7e623f1606717aa5b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569164"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882427"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>虛擬網路案例和資源
 
@@ -41,6 +41,7 @@ ms.locfileid: "89569164"
 * 您無法在部署至虛擬網路的容器群組中使用 [受控識別](container-instances-managed-identity.md) 。
 * 您無法在部署至虛擬網路的容器群組中啟用 [活動探查](container-instances-liveness-probe.md) 或 [就緒探查](container-instances-readiness-probe.md) 。
 * 由於涉及額外的網路資源，部署至虛擬網路的速度通常會比部署標準容器實例慢。
+* 如果您要將容器群組連接到 Azure 儲存體帳戶，您必須將 [服務端點](../virtual-network/virtual-network-service-endpoints-overview.md) 新增至該資源。
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 

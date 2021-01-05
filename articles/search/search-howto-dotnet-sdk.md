@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ceead297ea726e256d806c08c22810b39296793
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 15a878eb863b71a4519e75def2598f013152dfb7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917166"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881628"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>如何在 c # .NET 應用程式中使用 Azure.Search.Documents
 
@@ -31,7 +31,7 @@ Azure SDK for .NET 會從 Azure SDK 小組新增新的 [**Azure.Search.Documents
 + 載入和管理索引中的搜尋檔
 + 執行查詢，而不需要處理 HTTP 和 JSON 的詳細資料
 
-程式庫是以單一 [Azure.Search.Doc>ument NuGet 套件](https://www.nuget.org/packages/Azure.Search.Documents/)的形式散發，其中包含用來以程式設計方式存取搜尋服務的所有 api。
+程式庫是以單一 [Azure.Search.DocUments NuGet 套件](https://www.nuget.org/packages/Azure.Search.Documents/)的形式散發，其中包含用來以程式設計方式存取搜尋服務的所有 api。
 
 用戶端程式庫會定義類別，例如 `SearchIndex`、`SearchField` 及 `SearchDocument`，以及定義作業，例如 `SearchIndexClient` 和 `SearchClient` 類別上的 `SearchIndexClient.CreateIndex` 和 `SearchClient.Search`。 這些類別可編成以下命名空間：
 
@@ -54,13 +54,13 @@ Azure.Search.Documents (第11版) 目標版本[ `2020-06-30` 的 Azure 認知搜
 
 + 您自己的 Azure 認知搜尋服務。 為了使用 SDK，您需要為服務命名，還需要一或多個 API 金鑰。 [在入口網站中建立服務](search-create-service-portal.md) （如果沒有的話）。
 
-+ 使用 **工具** NuGet 封裝管理員管理 Visual Studio 中 [Azure.Search.Documents package](https://www.nuget.org/packages/Azure.Search.Documents)  >  **NuGet Package Manager**  >  **解決方案的 nuget 套件**，以下載Azure.Search.Documents 套件。 搜尋套件名稱 `Azure.Search.Documents` 。
++ 使用 **工具** NuGet 封裝管理員管理 Visual Studio 中 [](https://www.nuget.org/packages/Azure.Search.Documents)  >    >  **解決方案的 nuget 套件**，以下載Azure.Search.Documents 套件。 搜尋套件名稱 `Azure.Search.Documents` 。
 
-適用于 .NET 的 Azure SDK 符合 [.NET Standard 2.0](/dotnet/standard/net-standard#net-implementation-support)，這表示 .NET Framework 4.6.1 和 .net Core 2.0 作為最低需求。
+適用於 .NET 的 Azure SDK 符合 [.NET Standard 2.0](/dotnet/standard/net-standard#net-implementation-support)，這表示最低需求為 .NET Framework 4.6.1 和 .NET Core 2.0。
 
 ## <a name="example-application"></a>範例應用程式
 
-本文是以 GitHub 上的 >dotnethowto 程式碼範例為例，它會以 GitHub 上的[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)程式碼範例為例，說明如何建立、載入和查詢搜尋索引的基本 Azure 認知搜尋概念。
+本文是以 GitHub 上的 >dotnethowto 程式碼範例為例，它會以 GitHub 上的[](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)程式碼範例為例，說明如何建立、載入和查詢搜尋索引的基本 Azure 認知搜尋概念。
 
 針對本文的其餘部分，假設有一個名為「飯店」的新索引，並填入幾份檔，其中有數個符合結果的查詢。
 

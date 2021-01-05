@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483622"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881900"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -38,16 +38,23 @@ ms.locfileid: "96483622"
 >
 > 如需詳細資訊，請參閱： [媒體服務 v3 的 Azure 入口網站限制](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3)。
 
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="regional-availability"></a>區域可用性
+
+Azure 媒體服務現在可在 Azure 入口網站的挪威東部區域中使用。  此區域中沒有任何 restV2。
+
 ## <a name="october-2020"></a>2020 年 10 月
 
 ### <a name="basic-audio-analysis"></a>基本音訊分析
+
 音訊分析預設值包含基本模式定價層。 新的基本音訊分析器模式提供低成本的選項，可將語音轉譯解壓縮，並格式化輸出字幕和子字幕。 此模式會執行語音轉換文字轉譯和產生 VTT 副標題/字幕檔案。 此模式的輸出包含深入解析 JSON 檔案，其中只包含關鍵字、轉譯和計時資訊。 自動語言偵測和說話者 diarization 不會包含在此模式中。 請參閱支援的 [語言清單。](analyzing-video-audio-files-concept.md#built-in-presets)
 
 使用索引子 v1 和索引子 v2 的客戶應該遷移至基本音訊分析預設值。
 
 如需基本音訊分析器模式的詳細資訊，請參閱 [分析影片和音訊](analyzing-video-audio-files-concept.md)檔案。  若要瞭解如何使用基本的音訊分析器模式搭配 REST API，請參閱 [如何建立基本音訊轉換](how-to-create-basic-audio-transform.md)。
 
-## <a name="live-events"></a>即時活動
+### <a name="live-events"></a>即時活動
 
 當即時事件停止時，現在允許大部分屬性的更新。 此外，使用者也可以為實況活動的輸入和預覽 Url 指定靜態主機名稱的前置詞。 現在已呼叫 VanityUrl `useStaticHostName` 來更清楚地反映屬性的用途。
 
@@ -57,7 +64,7 @@ ms.locfileid: "96483622"
 
 即時編碼現在新增了將固定的主要畫面格間隔片段輸出到20秒0.5 之間的功能。
 
-## <a name="accounts"></a>帳戶
+### <a name="accounts"></a>帳戶
 
 > [!WARNING]
 > 如果您使用 2020-05-01 API 版本建立媒體服務帳戶，則無法使用 RESTv2 

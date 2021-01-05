@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 1a46c272ee2f7aa2d6621e3dc2db81605ba0363f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ac3a492c5544a4a782871ff50cda9a248fe50f4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833107"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882376"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體輸入系結
 
@@ -85,117 +85,6 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-<!--Same example for input and output. -->
-
-下列範例所示範的是 *function.json* 檔案中的 blob 輸入和輸出繫結，以及使用該繫結的 [JavaScript 程式碼](functions-reference-node.md)。 此函式會建立 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
-
-在 *function.json* 檔案中，`queueTrigger` 中繼資料屬性用於指定 `path` 屬性中的 Blob 名稱：
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "myInputBlob",
-      "type": "blob",
-      "path": "samples-workitems/{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    },
-    {
-      "name": "myOutputBlob",
-      "type": "blob",
-      "path": "samples-workitems/{queueTrigger}-Copy",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-[設定](#configuration)章節會說明這些屬性。
-
-以下是 JavaScript 程式碼：
-
-```javascript
-module.exports = function(context) {
-    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
-    context.bindings.myOutputBlob = context.bindings.myInputBlob;
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-<!--Same example for input and output. -->
-
-下列範例所示範的是使用繫結之 function.json 檔案，以及 [Python 指令碼](functions-reference-python.md)程式碼中的 Blob 輸入和輸出繫結。 此函式會建立 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
-
-在 *function.json* 檔案中，`queueTrigger` 中繼資料屬性用於指定 `path` 屬性中的 Blob 名稱：
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "queuemsg",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "inputblob",
-      "type": "blob",
-      "dataType": "binary",
-      "path": "samples-workitems/{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    },
-    {
-      "name": "$return",
-      "type": "blob",
-      "path": "samples-workitems/{queueTrigger}-Copy",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "out"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-[設定](#configuration)章節會說明這些屬性。
-
-`dataType`屬性會決定要使用的系結。 以下是可用來支援不同系結策略的值：
-
-| 系結值 | 預設 | 描述 | 範例 |
-| --- | --- | --- | --- |
-| `undefined` | Y | 使用豐富的系結 | `def main(input: func.InputStream)` |
-| `string` | N | 使用泛型系結，並將輸入類型轉換為 `string` | `def main(input: str)` |
-| `binary` | N | 使用泛型系結，並將輸入 blob 轉換為 `bytes` Python 物件 | `def main(input: bytes)` |
-
-
-以下是 Python 程式碼：
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
-    logging.info('Python Queue trigger function processed %s', inputblob.name)
-    return inputblob
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 本區段包含下列範例：
@@ -252,6 +141,145 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
 
 在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值來自 Blob 的參數使用 `@BlobInput` 註釋。  此註釋可以搭配原生 Java 類型、POJO 或使用 `Optional<T>` 的可為 Null 值使用。
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+<!--Same example for input and output. -->
+
+下列範例所示範的是 *function.json* 檔案中的 blob 輸入和輸出繫結，以及使用該繫結的 [JavaScript 程式碼](functions-reference-node.md)。 此函式會建立 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
+
+在 *function.json* 檔案中，`queueTrigger` 中繼資料屬性用於指定 `path` 屬性中的 Blob 名稱：
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myInputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "myOutputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+[設定](#configuration)章節會說明這些屬性。
+
+以下是 JavaScript 程式碼：
+
+```javascript
+module.exports = function(context) {
+    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
+    context.bindings.myOutputBlob = context.bindings.myInputBlob;
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下列範例顯示 blob 輸入系結，該系結是在 _function.json_ 檔案所定義，可將內送 blob 資料提供給 [PowerShell](functions-reference-powershell.md) 函式使用。
+
+以下是 json 設定：
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "source/{name}",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
+```
+
+以下是函式程式碼：
+
+```powershell
+# Input bindings are passed in via param block.
+param([byte[]] $InputBlob, $TriggerMetadata)
+
+Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($InputBlob.Length) bytes"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+<!--Same example for input and output. -->
+
+下列範例所示範的是使用繫結之 function.json 檔案，以及 [Python 指令碼](functions-reference-python.md)程式碼中的 Blob 輸入和輸出繫結。 此函式會建立 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
+
+在 *function.json* 檔案中，`queueTrigger` 中繼資料屬性用於指定 `path` 屬性中的 Blob 名稱：
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "queuemsg",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "inputblob",
+      "type": "blob",
+      "dataType": "binary",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "$return",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+[設定](#configuration)章節會說明這些屬性。
+
+`dataType`屬性會決定要使用的系結。 以下是可用來支援不同系結策略的值：
+
+| 系結值 | 預設 | 描述 | 範例 |
+| --- | --- | --- | --- |
+| `undefined` | Y | 使用豐富的系結 | `def main(input: func.InputStream)` |
+| `string` | N | 使用泛型系結，並將輸入類型轉換為 `string` | `def main(input: str)` |
+| `binary` | N | 使用泛型系結，並將輸入 blob 轉換為 `bytes` Python 物件 | `def main(input: bytes)` |
+
+以下是 Python 程式碼：
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
+    logging.info('Python Queue trigger function processed %s', inputblob.name)
+    return inputblob
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>屬性和註釋
@@ -293,17 +321,21 @@ public static void Run(
 
 C# 指令碼不支援屬性。
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobInput`屬性可讓您存取觸發函數的 blob。 如果您搭配屬性使用位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱 [輸入範例](#example) 。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支援屬性。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python 指令碼不支援屬性。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobInput`屬性可讓您存取觸發函數的 blob。 如果您搭配屬性使用位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱 [輸入範例](#example) 。
 
 ---
 
@@ -333,17 +365,21 @@ Python 指令碼不支援屬性。
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobInput`屬性可讓您存取觸發函數的 blob。 如果您搭配屬性使用位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱 [輸入範例](#example) 。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用存取 blob 資料的 `context.bindings.<NAME>` 位置 `<NAME>` 符合 *function.json* 中定義的值。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+透過符合 _function.json_ 檔案中系結名稱參數所指定之名稱的參數存取 blob 資料。
+
 # <a name="python"></a>[Python](#tab/python)
 
-透過輸入為 [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的參數存取 blob 資料。 如需詳細資訊，請參閱 [輸入範例](#example) 。
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobInput`屬性可讓您存取觸發函數的 blob。 如果您搭配屬性使用位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱 [輸入範例](#example) 。
+透過輸入為 [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true)的參數存取 blob 資料。 如需詳細資訊，請參閱 [輸入範例](#example) 。
 
 ---
 

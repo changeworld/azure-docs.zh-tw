@@ -12,21 +12,21 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7307b95912a982bb36efbf2ce18668bd88e1195
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297190"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882869"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中 (原始) 的串流端點
 
 在 Microsoft Azure 媒體服務中， [串流端點](/rest/api/media/streamingendpoints) 代表動態 (即時) 封裝和原始服務，可以使用其中一種常見的串流媒體通訊協定 (HLS 或虛線) ，將即時和隨選內容直接傳遞至用戶端播放機應用程式。 此外， **串流端點** 也提供動態的 (即時) 加密至領先業界的 drm。 
 
-當您建立媒體服務帳戶時，系統會為您建立**預設**串流端點 (處於已停止狀態)。 您無法刪除 **預設** 的串流端點。 您可以在帳戶下建立更多串流端點 (請參閱) 的 [配額和限制](limits-quotas-constraints.md) 。
+當您建立媒體服務帳戶時，系統會為您建立 **預設** 串流端點 (處於已停止狀態)。 您可以在帳戶下建立更多串流端點 (請參閱) 的 [配額和限制](limits-quotas-constraints.md) 。
 
 > [!NOTE]
-> 若要開始串流處理視訊，您必須啟動要作為視訊串流處理來源的**串流端點**。
+> 若要開始串流處理視訊，您必須啟動要作為視訊串流處理來源的 **串流端點**。
 >
 > 只有當串流端點處於執行中狀態時，才會向您收費。
 
@@ -43,7 +43,7 @@ ms.locfileid: "89297190"
 * 串流端點名稱的最大值為24個字元。
 * 此名稱應遵循此 [RegEx](/dotnet/standard/base-types/regular-expression-language-quick-reference) 模式： `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` 。
 
-## <a name="types"></a>型別
+## <a name="types"></a>類型
 
 有兩種 **串流端點** 類型： **Standard** (preview) 和 **Premium**。 類型會根據您為串流端點配置的縮放單位數 (`scaleUnits`) 來定義。
 
@@ -53,8 +53,8 @@ ms.locfileid: "89297190"
 
 |類型|縮放單位|描述|
 |--------|--------|--------|  
-|**Standard**|0|預設串流端點是 **標準** 型別，可以藉由調整來變更為 Premium 類型 `scaleUnits` 。|
-|**高級**|>0|**Premium** 串流端點適用于先進的工作負載，並提供專用且可調整的頻寬容量。 您可以藉由**Premium**調整 `scaleUnits` (串流單位) 來移至 Premium 類型。 `scaleUnits` 提供您專用的輸出容量，您可以透過每次增量 200 Mbps 的方式來購買。 使用 **Premium** 類型時，每個啟用的單位都會提供額外的頻寬容量給應用程式。 |
+|**標準**|0|預設串流端點是 **標準** 型別，可以藉由調整來變更為 Premium 類型 `scaleUnits` 。|
+|**高級**|>0|**Premium** 串流端點適用于先進的工作負載，並提供專用且可調整的頻寬容量。 您可以藉由調整 `scaleUnits` (串流單位) 來移至 Premium 類型。 `scaleUnits` 提供您專用的輸出容量，您可以透過每次增量 200 Mbps 的方式來購買。 使用 **Premium** 類型時，每個啟用的單位都會提供額外的頻寬容量給應用程式。 |
 
 > [!NOTE]
 > 如果客戶想要將內容傳遞給大型網際網路觀眾，建議您在串流端點上啟用 CDN。
@@ -111,7 +111,7 @@ IP 篩選/G20/自訂主機 <sup>1</sup>|是|是
     - `mediaservices.chinacloudapi.cn`
     - `verifydns.mediaservices.chinacloudapi.cn`
 
-    例如，將 `CName` "945a4c4e-28ea-45cd-8ccb-a519f6b700ad.contoso.com" 對應至 "verifydns.media.azure.net" 的記錄證明，媒體服務識別碼945a4c4e-28ea-45cd-8ccb-a519f6b700ad 具有 contoso.com 網域的擁有權，因此在 contoso.com 下啟用任何名稱作為該帳戶下串流端點的自訂主機名稱。 若要尋找媒體服務識別碼的值，請前往 [Azure 入口網站](https://portal.azure.com/)，然後選取您的媒體服務帳戶。 **帳戶識別碼**會出現在頁面的右上方。
+    例如，將 `CName` "945a4c4e-28ea-45cd-8ccb-a519f6b700ad.contoso.com" 對應至 "verifydns.media.azure.net" 的記錄證明，媒體服務識別碼945a4c4e-28ea-45cd-8ccb-a519f6b700ad 具有 contoso.com 網域的擁有權，因此在 contoso.com 下啟用任何名稱作為該帳戶下串流端點的自訂主機名稱。 若要尋找媒體服務識別碼的值，請前往 [Azure 入口網站](https://portal.azure.com/)，然後選取您的媒體服務帳戶。 **帳戶識別碼** 會出現在頁面的右上方。
 
     如果嘗試設定自訂主機名稱，但沒有適當的 `CName` 記錄驗證，則 DNS 回應會失敗，然後快取一段時間。 當適當的記錄就緒後，可能需要等待一段時間，才會重新驗證快取的回應。 根據自訂網域的 DNS 提供者而定，需要幾分鐘到一小時的時間來重新驗證記錄。
 
@@ -132,7 +132,7 @@ IP 篩選/G20/自訂主機 <sup>1</sup>|是|是
     - 正在停止：正在轉換為已停止狀態
     - 正在刪除：正在刪除
 
-- `scaleUnits`：提供您專用的輸出容量，並以 200 Mbps 為增量單位來購買。 如果您需要移至**進階**類型，請調整 `scaleUnits`。
+- `scaleUnits`：提供您專用的輸出容量，並以 200 Mbps 為增量單位來購買。 如果您需要移至 **進階** 類型，請調整 `scaleUnits`。
 
 ## <a name="why-use-multiple-streaming-endpoints"></a>為何要使用多個串流端點？
 
@@ -156,7 +156,7 @@ IP 篩選/G20/自訂主機 <sup>1</sup>|是|是
     
 ## <a name="scaling-streaming-with-cdn"></a>使用 CDN 調整串流作業的規模
 
-請參閱下列文章：
+查看下列文章：
 
 - [CDN 總覽](../../cdn/cdn-overview.md)
 - [使用 CDN 調整串流作業的規模](scale-streaming-cdn.md)

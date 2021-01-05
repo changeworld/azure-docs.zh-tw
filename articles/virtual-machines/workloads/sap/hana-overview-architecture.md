@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0144c57549e374404d3dde0fe997ba41adc8606b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967579"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880982"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>什麼是 SAP HANA on Azure (大型執行個體)？
 
@@ -35,12 +35,14 @@ SAP HANA on Azure (大型執行個體) 是 Azure 獨有的解決方案。 除了
 
 這些裸機伺服器單位只支援用來執行 SAP HANA。 SAP 應用程式層或工作負載中介軟體層會在虛擬機器中執行。 執行 SAP HANA on Azure (大型執行個體) 單位的基礎結構戳記會連線至 Azure 網路服務骨幹。 如此，即可提供 SAP HANA on Azure (大型執行個體) 單位與虛擬機器之間的低延遲連線。
 
-從2019年7月起，我們會區分兩個不同的 HANA 大型實例戳記和部署位置的修訂：
+從2021年1月起，我們會區分兩個不同的 HANA 大型實例戳記和部署位置的修訂：
 
 - "修訂 3" (Rev 3) ：在2019年7月之前，可供客戶部署的戳記
 - 「修訂4」 (Rev 4) ：新的戳記設計會在接近 Azure VM 主機的最接近區域中進行部署，而到目前為止，會在的 Azure 區域中發行：
     -  美國西部 2 
-    -  美國東部 
+    -  美國東部
+    -  在兩個可用性區域) 中 (的東部美國2
+    -  美國中南部 (在兩個可用性區域) 
     -  西歐
     -  北歐
 

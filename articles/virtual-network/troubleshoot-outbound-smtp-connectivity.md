@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2018
+ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 0a69df8a20c4e1502de151c38c60b54667c2d4dc
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814477"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883107"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>針對 Azure 中的輸出 SMTP 連線能力問題進行疑難排解
 
@@ -76,10 +76,6 @@ ms.locfileid: "97814477"
 如果您想要能夠將電子郵件從 Azure vm 直接傳送給外部電子郵件提供者 (而不是使用已驗證的 SMTP 轉送) ，您可以使用下列問題類型開啟支援案例來提出要求：**技術**  >  **虛擬網路** 連線  >    >  **無法傳送電子郵件 (SMTP/埠 25)**。 請務必新增您的部署為何必須將郵件直接傳送到郵件提供者，而不是使用已驗證轉送的詳細資料。 要求將會依 Microsoft 的決定進行審核和核准。 只有在完成額外的 antifraud 檢查之後，才會授與要求。 
 
 在豁免訂用帳戶，且已停止並重新啟動 Azure 入口網站中的 Vm 之後，該訂用帳戶中的所有 Vm 都將會被免除。 豁免只適用于所要求的訂用帳戶，且僅適用于直接路由傳送至網際網路的 VM 流量。
-
-## <a name="restrictions-and-limitations"></a>限制事項
-
-不支援透過 Azure PaaS 服務（例如 [Azure 防火牆](https://azure.microsoft.com/services/azure-firewall/) ）路由埠25流量。
 
 ## <a name="need-help-contact-support"></a>需要協助嗎？ 請連絡支援人員
 

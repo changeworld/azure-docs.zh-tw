@@ -4,12 +4,12 @@ description: 了解如何掛接 Azure 檔案磁碟區來保存 Azure 容器執�
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: afebdcdc9d9c5852d7fe66ed06ac457c1dbb0afb
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746861"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881798"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接 Azure 檔案共用
 
@@ -20,6 +20,9 @@ ms.locfileid: "92746861"
 >
 > 將 Azure 檔案儲存體共用掛接至容器實例類似于 Docker [bind 裝載](https://docs.docker.com/storage/bind-mounts/)。 請注意，如果您將共用掛接到檔案或目錄所在的容器目錄，這些檔案或目錄將會被掛接遮蔽，而且在容器執行時無法存取。
 >
+
+> [!IMPORTANT]
+> 如果您要將容器群組部署至 Azure 虛擬網路，您必須將 [服務端點](../virtual-network/virtual-network-service-endpoints-overview.md) 新增至您的 Azure 儲存體帳戶。
 
 ## <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
 
@@ -256,7 +259,7 @@ az deployment group create --resource-group myResourceGroup --template-file depl
 }]
 ```
 
-接下來，針對您想要掛接磁碟區所在容器群組中的每個容器，填入容器定義之 `properties` 區段中的 `volumeMounts` 陣列。 例如，這會掛接兩個先前定義的磁碟區： *myvolume1* 和 *myvolume2* ：
+接下來，針對您想要掛接磁碟區所在容器群組中的每個容器，填入容器定義之 `properties` 區段中的 `volumeMounts` 陣列。 例如，這會掛接兩個先前定義的磁碟區：*myvolume1* 和 *myvolume2*：
 
 ```JSON
 "volumeMounts": [{

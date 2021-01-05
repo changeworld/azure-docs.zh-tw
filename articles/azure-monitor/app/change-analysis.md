@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979958"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881504"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure 監視器中使用應用程式變更分析 (preview) 
 
@@ -183,7 +183,6 @@ foreach ($webapp in $webapp_list)
     ```
 
 - **無法註冊 ChangeAnalysis 資源提供者**。 這則訊息表示 UI 傳送要求以註冊資源提供者時，會立即失敗，而且與許可權問題無關。 可能是暫時性的網際網路連線問題。 請嘗試重新整理頁面，並檢查您的網際網路連線。 如果錯誤持續發生，請聯絡 changeanalysishelp@microsoft.com
-- 無法使用 message Azure lighthouse 訂用帳戶 **查詢 ChangeAnalysis 資源提供者** *，只可在訂用帳戶的主要租使用者中使用這些變更*。 現在對不在 home 租使用者中的使用者，透過 Azure Lighthouse 訂用帳戶註冊變更分析資源提供者是一項限制。 我們預計在不久的將來會解決這項限制。 如果這是您封鎖的問題，有一個因應措施，包括建立服務主體並明確指派角色以允許存取。  changeanalysishelp@microsoft.com若要深入瞭解，請聯絡。
 
 - **這所花費的時間超出預期**。 這則訊息表示註冊所花費的時間超過2分鐘。 這是不尋常的，但不一定表示發生錯誤。 您可以前往 [ **訂閱] |** 要檢查 **Microsoft ChangeAnalysis** 資源提供者註冊狀態的資源提供者。 您可以嘗試使用 UI 來取消註冊、重新註冊或重新整理，以查看是否有説明。 如果問題持續發生，請洽詢 changeanalysishelp@microsoft.com 支援人員。
     ![針對 RP 註冊花費太長時間進行疑難排解](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
@@ -191,6 +190,10 @@ foreach ($webapp in $webapp_list)
 ![診斷和解決問題工具的螢幕擷取畫面，其中已選取疑難排解工具的虛擬機器。](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
 ![針對虛擬機器 [分析最近的變更疑難排解] 工具的磚螢幕擷取畫面。](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="azure-lighthouse-subscription-is-not-supported"></a>不支援 Azure Lighthouse 訂用帳戶
+
+- 無法使用 message Azure lighthouse 訂用帳戶 **查詢 ChangeAnalysis 資源提供者** *，只可在訂用帳戶的主要租使用者中使用這些變更*。 現在對不在 home 租使用者中的使用者，透過 Azure Lighthouse 訂用帳戶註冊變更分析資源提供者是一項限制。 我們預計在不久的將來會解決這項限制。 如果這是您封鎖的問題，有一個因應措施，包括建立服務主體並明確指派角色以允許存取。  changeanalysishelp@microsoft.com若要深入瞭解，請聯絡。
 
 ## <a name="next-steps"></a>後續步驟
 

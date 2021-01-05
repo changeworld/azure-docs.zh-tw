@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a78cf9b7d78078030ac0db8bd2f0fddb93a8dda4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859958"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881391"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>將敏感度標籤指派給 Azure Active Directory 中的 Microsoft 365 群組
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) 支援將 [Microsoft 365 合規性中心](http
     ```
 
     > [!NOTE]
-    > 如果未針對此 Azure AD 組織建立任何群組設定，您必須先建立設定。 遵循 Azure Active Directory Cmdlet 中的步驟來 [設定群組設定](../enterprise-users/groups-settings-cmdlets.md) ，以建立這個 Azure AD 組織的群組設定。
+    > 如果未針對此 Azure AD 組織建立任何群組設定，則會在上述 Cmdlet 中收到錯誤，指出「無法將引數系結至參數 ' Id '，因為它是 null」。 在此情況下，您必須先建立設定。 遵循 Azure Active Directory Cmdlet 中的步驟來 [設定群組設定](../enterprise-users/groups-settings-cmdlets.md) ，以建立這個 Azure AD 組織的群組設定。
 
 1. 接下來，顯示目前的群組設定。
 
@@ -136,7 +136,7 @@ Azure Active Directory (Azure AD) 支援將 [Microsoft 365 合規性中心](http
 1. 選取 [群組]。
 1. 在 [ **所有群組** ] 頁面上，選取您要加上標籤的群組。
 1. 在所選群組的頁面上，選取 [ **屬性** ]，然後從清單中選取新的敏感度標籤。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>群組的設定變更已發行的標籤不會更新
 

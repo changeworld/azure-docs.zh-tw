@@ -3,12 +3,12 @@ title: 在 IoT Edge 裝置上部署即時影片分析-Azure
 description: 本文列出可協助您在 IoT Edge 裝置上部署即時影片分析的步驟。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就可以這麼做。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 38d138b43441016e06fca5003bc09c940cb23efe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498314"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883311"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 裝置上部署即時影片分析
 
@@ -18,7 +18,7 @@ ms.locfileid: "96498314"
 > ARM64 裝置的支援可在 IoT Edge 組建和更新版本的即時影片分析中取得 `1.0.4` 。
 > 在 ARM64 裝置上執行 Azure IoT Edge 執行階段的支援處於[公開預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)狀態。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 執行其中一種[支援的 Linux 作業系統](../../iot-edge/support.md#operating-systems)的 x86-64 或 ARM64 裝置
 * 您具有擁有者[許可權](../../role-based-access-control/built-in-roles.md#owner)的 Azure 訂用帳戶
@@ -108,7 +108,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
     範例：
     
     * **IoT Edge 模組名稱**： lvaEdge
-    * **映射 URI**： mcr.microsoft.com/media/live-video-analytics:1。0    
+    * **映射 URI**： mcr.microsoft.com/media/live-video-analytics:2。0    
     
     ![螢幕擷取畫面顯示 [模組設定] 索引標籤。](./media/deploy-iot-edge-device/add.png)
     

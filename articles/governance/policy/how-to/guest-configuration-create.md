@@ -3,12 +3,12 @@ title: 如何建立 Windows 的客體設定原則
 description: 了解如何建立 Windows 的 Azure 原則客體設定原則。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 85ffda54d58db0544858ca8ab61335b61f18299e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755968"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881781"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 的客體設定原則
 
@@ -138,9 +138,32 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
+如果資源有必要的屬性，這些屬性也必須 `Get-TargetResource` 與類別平行傳回 `reasons` 。 如果 `reasons` 未包含，服務會包含「全部攔截」行為，以比較輸入的值 `Get-TargetResource` 和傳回的值 `Get-TargetResource` ，並提供詳細的比較 `reasons` 。
+
 ### <a name="configuration-requirements"></a>組態需求
 
 自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本 (ARM 範本) 的來賓指派名稱必須相同。
+
+### <a name="policy-requirements"></a>原則需求
+
+原則定義 `metadata` 區段必須包含來賓設定服務的兩個屬性，才能自動布建和報告來賓設定指派。 `category`屬性必須設定為「來賓設定」，且名為的區段 `Guest Configuration` 必須包含「來賓設定」指派的相關資訊。 此 `New-GuestConfigurationPolicy` Cmdlet 會自動建立此文字。
+請參閱這個頁面上的逐步指示。
+
+下列範例將示範 `metadata` 區段。
+
+```json
+    "metadata": {
+      "category": "Guest Configuration",
+      "guestConfiguration": {
+        "name": "test",
+        "version": "1.0.0",
+        "contentType": "Custom",
+        "contentUri": "CUSTOM-URI-HERE",
+        "contentHash": "CUSTOM-HASH-VALUE-HERE",
+        "configurationParameter": {}
+      }
+    },
+```
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>為客體設定專案建立結構
 

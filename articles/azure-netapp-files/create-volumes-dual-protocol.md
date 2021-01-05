@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 01/04/2020
 ms.author: b-juche
-ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591817"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881084"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的雙重通訊協定 (NFSv3 和 SMB) 磁片區
 
@@ -39,7 +39,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙協定
 * 在 DNS 伺服器上建立反向對應區域，然後在該反向對應區域中新增 AD 主機電腦的指標 (PTR) 記錄。 否則，建立雙重通訊協定磁片區將會失敗。
 * 請確定 NFS 用戶端為最新狀態，並執行作業系統的最新更新。
 * 確定 ad) 的 Active Directory (AD LDAP 伺服器已啟動且正在執行。 您可以在 AD 電腦上安裝並設定 [Active Directory 輕量型目錄服務 (AD LDS) ](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) 角色來這麼做。
-* 請確定使用 [Active Directory 憑證服務 (AD CS) ](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色來產生和匯出自我簽署的根 CA 憑證，以在 AD 上建立 (CA) 的憑證授權單位單位。   
+* 使用 [Active Directory 憑證服務 (AD CS) ](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色來產生和匯出自我簽署的根 CA 憑證，以確定為 AD 建立的憑證授權單位單位 (CA) 。   
 * 雙通訊協定磁片區目前不支援 Azure Active Directory Domain Services (AADDS) 。  
 * 雙通訊協定磁片區所使用的 NFS 版本是 NFSv3。 因此，適用下列考慮：
     * 雙重通訊協定不支援 NFS 用戶端的 Windows ACL 延伸屬性 `set/get` 。
@@ -132,7 +132,8 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙協定
     * 以 Windows 為基礎的用戶端，已加入網域並已安裝根憑證 
     * 網域中包含根憑證的另一部電腦  
 
-3. 匯出根憑證。  
+3. 匯出根 CA 憑證。  
+    根 CA 憑證可以從個人或受信任的根憑證授權單位匯出。   
     確定憑證已在64編碼的 x.509 ( 中匯出。CER) 格式： 
 
     ![憑證匯出精靈](../media/azure-netapp-files/certificate-export-wizard.png)

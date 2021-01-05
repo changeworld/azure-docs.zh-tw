@@ -3,12 +3,12 @@ title: 透過 Azure 資源健康狀態支援的資源類型 | Microsoft Docs
 description: 透過 Azure 資源健康狀態支援的資源類型
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f979b55366d29ca8cf22a1e65ebdcc557ef594
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899489"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883362"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 資源健康狀態中的資源類型和健康情況檢查
 以下是依資源類型透過資源健康狀態執行之所有檢查的完整清單。
@@ -168,6 +168,11 @@ ms.locfileid: "92899489"
 |執行的檢查|
 |---|
 |<ul><li>應用程式閘道的效能是否降低？</li><li>應用程式閘道是否可用？</li></ul>|
+
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft. network/bastionhosts
+|執行的檢查|
+|---|
+|<ul><li>防禦主機是否正常運作？</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |執行的檢查|

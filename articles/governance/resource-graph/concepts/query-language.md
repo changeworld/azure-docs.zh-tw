@@ -3,12 +3,12 @@ title: 了解查詢語言
 description: 描述 Resource Graph 資料表，以及可與 Azure Resource Graph 搭配使用的可用 Kusto 資料類型、運算子和函式。
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 34aaaa60ed9d757cc1a63ffaebb2225900cff61f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3023991c76d94dc8aa87cfe950c18ab5d6a07ba9
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966678"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883056"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查詢語言
 
@@ -123,7 +123,7 @@ Resource Graph 支援 KQL [資料類型](/azure/kusto/query/scalar-data-types/)�
 |KQL |Resource Graph 範例查詢 |注意 |
 |---|---|---|
 |[計數](/azure/kusto/query/countoperator) |[計算金鑰保存庫數目](../samples/starter.md#count-keyvaults) | |
-|[distinct](/azure/kusto/query/distinctoperator) |[顯示特定別名的相異值](../samples/starter.md#distinct-alias-values) | |
+|[distinct](/azure/kusto/query/distinctoperator) |[顯示包含儲存體的資源](../samples/starter.md#show-storage) | |
 |[extend](/azure/kusto/query/extendoperator) |[依作業系統類型計算的虛擬機器計數](../samples/starter.md#count-os) | |
 |[join](/azure/kusto/query/joinoperator) |[金鑰保存庫與訂用帳戶名稱](../samples/advanced.md#join) |支援的聯結類別：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 單一查詢中限制 3 個`join`。 不允許自訂聯結策略 (例如廣播聯結)。 如需可使用的資料表 `join` ，請參閱 [Resource Graph 資料表](#resource-graph-tables)。 |
 |[limit](/azure/kusto/query/limitoperator) |[列出所有公用 IP 位址](../samples/starter.md#list-publicip) |的同義字 `take` 。 無法使用 [Skip](./work-with-data.md#skipping-records)。 |

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/24/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 45f02850797582f97220e91d1582b04b3be711c0
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97671160"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882478"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -132,9 +132,9 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 ## <a name="change-the-data-retention-period"></a>變更資料保留期
 
-下列步驟說明如何設定您工作區中的記錄資料保留時間。 除非所有工作區都使用舊版的免費定價層，否則可為其設定 30 天到 730 天 (2年) 的資料保留期。[深入了解](https://azure.microsoft.com/pricing/details/monitor/)較長資料保留期的定價。 
+下列步驟說明如何設定您工作區中的記錄資料保留時間。 除非使用舊版的免費定價層，否則工作區層級的資料保留期可以設定為30至730天 (2 年) 適用于所有工作區。[深入瞭解](https://azure.microsoft.com/pricing/details/monitor/) 資料保留較長的定價。 個別資料類型的保留期最少可設定為4天。 
 
-### <a name="default-retention"></a>預設保留期
+### <a name="workspace-level-default-retention"></a>工作區層級預設保留期
 
 若要設定工作區的預設保留期， 
  
@@ -158,7 +158,7 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 ### <a name="retention-by-data-type"></a>依資料類型的保留期
 
-您也可以為個別資料類型指定 30 天到 730 天不等的保留期設定 (舊版免費定價層中的工作區除外)。 每種資料類型都是工作區的子資源。 例如，SecurityEvent 資料表在 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 中可以稱為：
+您也可以針對個別資料類型指定不同的保留設定（從4到730天） (除了舊版免費定價層中的工作區，) 覆寫工作區層級的預設保留期。 每種資料類型都是工作區的子資源。 例如，SecurityEvent 資料表在 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 中可以稱為：
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -350,7 +350,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution 
+| render columnchart
 ```
 
 具有 `TimeGenerated` 的子句只是為了確保 Azure 入口網站中的查詢體驗會回顧超過預設的 24 小時。 在使用 Usage 資料類型時，`StartTime` 和 `EndTime` 代表所顯示結果所屬的時段。 
@@ -364,7 +365,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType 
+| render columnchart
 ```
 
 或者，若要查看上個月的資料表 (依解決方案和類型)，
@@ -661,4 +663,5 @@ Log Analytics 還有一些限制，其中的某些限制取決於 Log Analytics 
 - 若要設定有效的事件收集原則，請檢閱 [Azure 資訊安全中心篩選原則](../../security-center/security-center-enable-data-collection.md)。
 - 變更[效能計數器組態](data-sources-performance-counters.md)。
 - 若要修改事件收集設定，請檢閱[事件記錄組態](data-sources-windows-events.md)。
+- 若要修改 syslog 收集設定，請檢閱 [Syslog 組態](data-sources-syslog.md)。
 - 若要修改 syslog 收集設定，請檢閱 [Syslog 組態](data-sources-syslog.md)。
