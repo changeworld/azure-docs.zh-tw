@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: f74307cc7f074788ac12712b3722dc0ad7fa71b6
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504928"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821140"
 ---
 # <a name="configure-apache-spark-settings"></a>設定 Apache Spark 設定
 
@@ -130,7 +130,7 @@ YARN 會控制每個 Spark 節點上所有容器所使用的記憶體最大總�
 |Spark 核心|Spark Core、Spark SQL、Spark 串流 Api、GraphX 和 Apache Spark MLlib。|
 |Anaconda|Python 套件管理員。|
 |Apache Livy|Apache Spark REST API，用來將遠端作業提交至 HDInsight Spark 叢集。|
-|Jupyter 和 Apache Zeppelin 筆記本|互動式瀏覽器型 UI，可與您的 Spark 叢集互動。|
+|Jupyter 筆記本和 Apache Zeppelin 筆記本|互動式瀏覽器型 UI，可與您的 Spark 叢集互動。|
 |ODBC 驅動程式|將 HDInsight 中的 Spark 叢集連線至商業智慧 (BI) 工具，例如 Microsoft Power BI 和 Tableau。|
 
 針對在 Jupyter Notebook 中執行的應用程式，請使用 `%%configure` 命令從筆記本本身進行設定變更。 這些設定變更將會套用至從您 Notebook 執行個體執行的 Spark 作業。 在您執行第一個程式碼儲存格之前，在應用程式的開頭進行這類變更。 變更的設定會在 Livy 工作階段建立時套用至其中。

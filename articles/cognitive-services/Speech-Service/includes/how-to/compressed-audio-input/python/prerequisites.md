@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: a715d0ece88cf2caf1cb3d20d703f550353094c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8dda0347e5713ef35705425b54f29a110803488
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282720"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821514"
 ---
-處理壓縮的音訊是使用來執行 [`GStreamer`](https://gstreamer.freedesktop.org) 。 基於授權原因， `GStreamer` 二進位檔不會與語音 SDK 進行編譯和連結。 開發人員必須安裝數個相依性和外掛程式，請參閱 [在 Windows 上安裝](https://gstreamer.freedesktop.org/documentation/installing/on-windows.html?gi-language=c)。 `GStreamer` 二進位檔必須位於系統路徑中，才能讓語音 SDK 在執行時間載入二進位檔。 如果語音 SDK 在執行時間可以找到 `libgstreamer-1.0-0.dll` ，這表示二進位檔位於系統路徑中。
+處理壓縮的音訊是使用 [GStreamer](https://gstreamer.freedesktop.org)來執行。 基於授權理由，GStreamer 二進位檔不會與語音 SDK 進行編譯和連結。 開發人員必須安裝數個相依性和外掛程式，請參閱 [在 Windows 上安裝](https://gstreamer.freedesktop.org/documentation/installing/on-windows.html?gi-language=c) 或 [在 Linux 上安裝](https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c)。 GStreamer 二進位檔必須位於系統路徑中，才能讓語音 SDK 在執行時間載入二進位檔。 例如，在 Windows 上，如果語音 SDK 可在 `libgstreamer-1.0-0.dll` 執行時間期間找到，則表示 gstreamer 二進位檔位於系統路徑中。
 

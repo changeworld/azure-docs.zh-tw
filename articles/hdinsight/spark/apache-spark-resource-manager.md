@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f7cac8ef41ff49f2d623e2b86dff271adcd71ff1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017027"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821412"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上管理 Apache Spark 叢集的資源
 
@@ -34,7 +34,7 @@ ms.locfileid: "96017027"
     ![啟動 YARN UI](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > 或者，您也可以從 Ambari UI 啟動 YARN UI。 從 Ambari ui 中，流覽至 **YARN**[  >  **Quick Links**  >  **Active**  >  **Resource Manager UI** 的 YARN 快速連結。
+   > 或者，您也可以從 Ambari UI 啟動 YARN UI。 從 Ambari ui 中，流覽至[  >    >  **Active**  >  **Resource Manager UI** 的 YARN 快速連結。
 
 ## <a name="optimize-clusters-for-spark-applications"></a>針對 Spark 應用程式進行叢集最佳化
 
@@ -44,7 +44,7 @@ ms.locfileid: "96017027"
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>使用 Ambari UI 變更參數
 
-1. 從 Ambari UI 中，流覽至 **Spark2**  >  **Configs**  >  **的 [自訂 Spark2-預設值**]。
+1. 從 Ambari UI 中，流覽至 **Spark2**  >    >  **的 [自訂 Spark2-預設值**]。
 
     ![使用 Ambari 自訂設定參數](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "使用 Ambari 自訂設定參數")
 
@@ -56,9 +56,9 @@ ms.locfileid: "96017027"
 
     ![重新啟動服務](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
-### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>變更在 Jupyter Notebook 中執行的應用程式的參數
+### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>變更在 Jupyter Notebook 中執行之應用程式的參數
 
-對於在 Jupyter Notebook 中執行的應用程式，您可以使用 `%%configure` magic 進行組態變更。 在理想情況下，您必須在應用程式開頭進行此類變更，才能執行您的第一個程式碼儲存格。 這樣可確保組態會在 Livy 工作階段建立時套用至其中。 如果您想要變更應用程式中稍後的階段的組態，您必須使用 `-f` 參數。 不過，這麼做會讓應用程式中的所有進度遺失。
+針對在 Jupyter Notebook 中執行的應用程式，您可以使用 `%%configure` 魔術來進行設定變更。 在理想情況下，您必須在應用程式開頭進行此類變更，才能執行您的第一個程式碼儲存格。 這樣可確保組態會在 Livy 工作階段建立時套用至其中。 如果您想要變更應用程式中稍後的階段的組態，您必須使用 `-f` 參數。 不過，這麼做會讓應用程式中的所有進度遺失。
 
 下列程式碼片段說明如何變更在 Jupyter 中執行之應用程式的設定。
 
@@ -103,7 +103,7 @@ Spark Thrift 伺服器會使用 Spark 動態執行程式配置，因此 `spark.e
 
 「Spark Thrift 伺服器」驅動程式記憶體是設定為前端節點 RAM 大小的 25%，其中假設前端節點的 RAM 大小總計大於 14 GB。 您可以使用 Ambari UI 來變更驅動程式記憶體設定，如以下螢幕擷取畫面所示：
 
-從 Ambari UI 中，流覽至 **Spark2**  >  **Configs**  >  **Advanced Advanced Spark2-env**。 然後提供 **spark_thrift_cmd_opts** 的值。
+從 Ambari UI 中，流覽至 **Spark2**  >    >  **Advanced Advanced Spark2-env**。 然後提供 **spark_thrift_cmd_opts** 的值。
 
 ## <a name="reclaim-spark-cluster-resources"></a>回收 Spark 叢集資源
 
@@ -146,7 +146,7 @@ Spark Thrift 伺服器會使用 Spark 動態執行程式配置，因此 `spark.e
 
     ![終止 App2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "終止 App2")
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [追蹤和偵錯在 HDInsight 中的 Apache Spark 叢集上執行的作業](apache-spark-job-debugging.md)
 
@@ -164,6 +164,6 @@ Spark Thrift 伺服器會使用 Spark 動態執行程式配置，因此 `spark.e
 * [使用 IntelliJ IDEA 的 HDInsight Tools 外掛程式來建立和提交 Spark Scala 應用程式](apache-spark-intellij-tool-plugin.md)
 * [使用適用於 IntelliJ IDEA 的 HDInsight 工具外掛程式遠端偵錯 Apache Spark 應用程式](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集](apache-spark-zeppelin-notebook.md)
-* [HDInsight Apache Spark 叢集中 Jupyter Notebook 的可用核心](apache-spark-jupyter-notebook-kernels.md)
-* [搭配 Jupyter Notebook 使用外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
+* [適用于 HDInsight Apache Spark 叢集中 Jupyter Notebook 的核心](apache-spark-jupyter-notebook-kernels.md)
+* [使用 Jupyter 筆記本的外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
 * [在電腦上安裝 Jupyter 並連接到 HDInsight Spark 叢集](apache-spark-jupyter-notebook-install-locally.md)

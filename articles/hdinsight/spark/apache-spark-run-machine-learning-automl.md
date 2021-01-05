@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3397c57f793c6994847786ff8247e5ccfa453ec0
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087464"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821242"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>使用 HDInsight 中 Apache Spark 的自動化機器學習來執行 Azure Machine Learning 工作負載
 
@@ -35,7 +35,7 @@ Azure Machine Learning 可簡化並加速機器學習模型的建立、定型和
 
 建立工作區和提交實驗都需要驗證權杖。 您可以使用 [Azure AD 應用程式](../../active-directory/develop/app-objects-and-service-principals.md)來產生此權杖。 如果帳戶未啟用多重要素驗證，則 [Azure AD 使用者](/azure/python/python-sdk-azure-authenticate)也可用來產生必要的驗證權杖。  
 
-下列程式碼片段會使用 **Azure AD 應用程式**來建立驗證權杖。
+下列程式碼片段會使用 **Azure AD 應用程式** 來建立驗證權杖。
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -46,7 +46,7 @@ auth_sp = ServicePrincipalAuthentication(
 )
 ```
 
-下列程式碼片段會使用 **Azure AD 使用者**來建立驗證權杖。
+下列程式碼片段會使用 **Azure AD 使用者** 來建立驗證權杖。
 
 ```python
 from azure.common.credentials import UserPassCredentials
@@ -55,7 +55,7 @@ credentials = UserPassCredentials('user@domain.com', 'my_smart_password')
 
 ## <a name="loading-dataset"></a>載入資料集
 
-Spark 上的自動化機器學習會使用**資料流程**，這是延遲評估且不可變動的資料作業。  資料流程可以透過公用讀取從 Blob 載入資料集，或透過 SAS 權杖從 Blob URL 載入資料。
+Spark 上的自動化機器學習會使用 **資料流程**，這是延遲評估且不可變動的資料作業。  資料流程可以透過公用讀取從 Blob 載入資料集，或透過 SAS 權杖從 Blob URL 載入資料。
 
 ```python
 import azureml.dataprep as dprep
@@ -73,7 +73,7 @@ dataflow_with_token = dprep.read_csv(
 
 在 [自動化機器學習](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)設定中， `spark_context` 應該設定屬性，讓封裝在分散式模式上執行。 `concurrent_iterations` 屬性會決定可平行執行的反覆項目數量上限，其值應設為小於 Spark 應用程式的執行程式核心數目。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需自動化機器學習背後動機的詳細資訊，請參閱 [使用 Microsoft 自動化機器學習的步調發行模型！](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)
 * 如需有關使用 Azure ML 自動化 ML 功能的詳細資訊，請參閱 [Azure Machine Learning 中的新自動化機器學習功能](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)

@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 中 Spark 叢集上的 Jupyter Notebook 核心
-description: 了解可透過 Azure HDInsight 上 Spark 叢集提供 Jupyter Notebook 的 PySpark、PySpark3 和 Spark 核心。
+title: Azure HDInsight 中 Spark 叢集上 Jupyter Notebook 的核心
+description: 瞭解 Azure HDInsight 上 Spark 叢集可用 Jupyter Notebook 的 PySpark、PySpark3 和 Spark 核心。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084710"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822228"
 ---
-# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 叢集上的 Jupyter Notebook 核心
+# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 叢集上 Jupyter Notebook 的核心
 
-HDInsight Spark 叢集提供的核心，可讓您用於 [Apache Spark](./apache-spark-overview.md) 上的 Jupyter Notebook 以測試應用程式。 核心是一個可執行並解譯程式碼的程式。 三個核心為︰
+HDInsight Spark 叢集提供的核心，可讓您與 [Apache Spark](./apache-spark-overview.md) 上的 Jupyter Notebook 搭配使用，以測試您的應用程式。 核心是一個可執行並解譯程式碼的程式。 三個核心為︰
 
 - **PySpark** - 適用於以 Python2 撰寫的應用程式。
 - **PySpark3** - 適用於以 Python3 撰寫的應用程式。
@@ -25,34 +25,34 @@ HDInsight Spark 叢集提供的核心，可讓您用於 [Apache Spark](./apache-
 
 在本文中，您將了解使用這些核心的方式及優點。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 HDInsight 中的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
 
 ## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>在 Spark HDInsight 上建立 Jupyter Notebook
 
-1. 從 [Azure 入口網站](https://portal.azure.com/)選取您的 Spark 叢集。  請參閱[列出和顯示叢集](../hdinsight-administer-use-portal-linux.md#showClusters)以取得指示。 **總覽**視圖隨即開啟。
+1. 從 [Azure 入口網站](https://portal.azure.com/)選取您的 Spark 叢集。  請參閱[列出和顯示叢集](../hdinsight-administer-use-portal-linux.md#showClusters)以取得指示。 **總覽** 視圖隨即開啟。
 
-2. 從 **總覽** 視圖的 [叢集 **儀表板** ] 方塊中，選取 [ **Jupyter 筆記本**]。 出現提示時，輸入叢集的系統管理員認證。
+2. 從 **總覽** 視圖的 [叢集 **儀表板** ] 方塊中，選取 [ **Jupyter Notebook**]。 出現提示時，輸入叢集的系統管理員認證。
 
-    ![Apache Spark 上的 Jupyter 筆記本](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上的 Jupyter 筆記本")
+    ![Apache Spark 上的 Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上的 Jupyter Notebook")
   
    > [!NOTE]  
-   > 您也可以在瀏覽器中開啟下列 URL，來觸達 Spark 叢集上的 Jupyter Notebook。 使用您叢集的名稱取代 **CLUSTERNAME** ：
+   > 您也可以在瀏覽器中開啟下列 URL，以連接到 Spark 叢集上的 Jupyter Notebook。 使用您叢集的名稱取代 **CLUSTERNAME** ：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
 3. 選取 [ **新增**]，然後選取 [ **Pyspark**]、[ **PySpark3**] 或 [ **Spark** ] 以建立筆記本。 使用適用於 Scala 應用程式的 Spark 核心、適用於 Python2 應用程式的 PySpark 核心，以及適用於 Python3 應用程式的 PySpark3 核心。
 
-    ![Spark 上 Jupyter 筆記本的核心](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上 Jupyter 筆記本的核心")
+    ![Spark 上 Jupyter Notebook 的核心](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上 Jupyter Notebook 的核心")
 
 4. 將以您選取的核心開啟 Notebook。
 
 ## <a name="benefits-of-using-the-kernels"></a>使用這些核心的優點
 
-以下是在 Spark HDInsight 叢集上使用新的核心搭配 Jupyter Notebook 的幾個優點。
+以下是在 Spark HDInsight 叢集上搭配 Jupyter Notebook 使用新核心的一些優點。
 
-- **預設內容**。 使用  **PySpark**、 **PySpark3**或 **Spark** 核心時，您不需要明確地設定 spark 或 Hive 內容，即可開始使用您的應用程式。 這些內容預設為可用。 這些內容包括：
+- **預設內容**。 使用  **PySpark**、 **PySpark3** 或 **Spark** 核心時，您不需要明確地設定 spark 或 Hive 內容，即可開始使用您的應用程式。 這些內容預設為可用。 這些內容包括：
 
   - **sc** - 代表 Spark 內容
   - **sqlContext** - 代表 Hive 內容
@@ -78,7 +78,7 @@ HDInsight 中的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |針對 sqlContext 執行 Hive 查詢。 如果傳遞 `-o` 參數，則查詢的結果會當做 [Pandas](https://pandas.pydata.org/) 資料框架，保存在 %%local Python 內容中。 |
    | 本機 |`%%local`<br>`a=1` |稍後行中的所有程式碼都會在本機執行。 無論您使用哪一個核心，程式碼都必須是有效的 Python2 程式碼。 因此，即使您在建立筆記本時選取了 **PySpark3** 或 **Spark** 核心，如果您在資料 `%%local` 格中使用魔術，則該資料格必須只有有效的 Python2 程式碼。 |
    | 記錄 |`%%logs` |輸出目前 Livy 工作階段的記錄。 |
-   | [刪除] |`%%delete -f -s <session number>` |刪除目前 Livy 端點的特定工作階段。 您無法刪除針對核心本身啟動的會話。 |
+   | delete |`%%delete -f -s <session number>` |刪除目前 Livy 端點的特定工作階段。 您無法刪除針對核心本身啟動的會話。 |
    | cleanup |`%%cleanup -f` |刪除目前 Livy 端點的所有工作階段，包括此 Notebook 的工作階段。 force 旗標 -f 是必要的。 |
 
    > [!NOTE]  
@@ -107,25 +107,25 @@ SELECT * FROM hivesampletable
 
 上述語句會執行下列動作：
 
-- 從 **hivesampletable**選取所有記錄。
+- 從 **hivesampletable** 選取所有記錄。
 - 因為我們使用-q，所以會關閉 autovisualization。
 - 因為我們使用 `-m sample -r 0.1 -n 500` ，所以它會在 hivesampletable 中隨機取樣10% 的資料列，並將結果集的大小限制為500個數據列。
-- 最後，因為我們使用 `-o query2` ，所以它也會將輸出儲存成名為 **query2**的資料框架。
+- 最後，因為我們使用 `-o query2` ，所以它也會將輸出儲存成名為 **query2** 的資料框架。
 
 ## <a name="considerations-while-using-the-new-kernels"></a>使用新核心的考量
 
-無論您使用何種核心，讓 Notebook 持續執行會耗用叢集資源。  使用這些核心，因為內容是預設值，所以只要離開筆記本就不會終止內容。 因此，叢集資源仍可繼續使用。 使用筆記本的 [檔案 **] 功能表中**的 [**關閉] 和 [暫停**] 選項是不錯的作法。 關閉會刪除內容，然後結束筆記本。
+無論您使用何種核心，讓 Notebook 持續執行會耗用叢集資源。  使用這些核心，因為內容是預設值，所以只要離開筆記本就不會終止內容。 因此，叢集資源仍可繼續使用。 使用筆記本的 [檔案 **] 功能表中** 的 [**關閉] 和 [暫停**] 選項是不錯的作法。 關閉會刪除內容，然後結束筆記本。
 
 ## <a name="where-are-the-notebooks-stored"></a>Notebook 會儲存在哪裡？
 
-如果您的叢集使用 Azure 儲存體作為預設的儲存體帳戶，Jupyter 筆記本會儲存在儲存體帳戶的 **/HdiNotebooks** 資料夾底下。  您從 Jupyter 內建立的 Notebook、文字檔案和資料夾，都可從儲存體帳戶存取。  例如，如果您使用 Jupyter 建立資料夾 **`myfolder`** 和筆記本 **myfolder/mynotebook .ipynb**，您可以在 `/HdiNotebooks/myfolder/mynotebook.ipynb` 儲存體帳戶記憶體取該筆記本。  反之亦然，也就是說，如果您直接將 Notebook 上傳至儲存體帳戶的 `/HdiNotebooks/mynotebook1.ipynb`，則從 Jupyter 也能看到該 Notebook。  即使在刪除叢集之後，Notebook 仍會保留在儲存體帳戶中。
+如果您的叢集使用 Azure 儲存體作為預設儲存體帳戶，則 Jupyter 筆記本會儲存至 **/HdiNotebooks** 資料夾下的儲存體帳戶。  您從 Jupyter 內建立的 Notebook、文字檔案和資料夾，都可從儲存體帳戶存取。  例如，如果您使用 Jupyter 建立資料夾 **`myfolder`** 和筆記本 **myfolder/mynotebook .ipynb**，您可以在 `/HdiNotebooks/myfolder/mynotebook.ipynb` 儲存體帳戶記憶體取該筆記本。  反之亦然，也就是說，如果您直接將 Notebook 上傳至儲存體帳戶的 `/HdiNotebooks/mynotebook1.ipynb`，則從 Jupyter 也能看到該 Notebook。  即使在刪除叢集之後，Notebook 仍會保留在儲存體帳戶中。
 
 > [!NOTE]  
 > 使用 Azure Data Lake Store 作為預設儲存體帳戶的 HDInsight 叢集，不會在相關聯的儲存體中儲存筆記本。
 
 將 Notebook 儲存到儲存體帳戶的方式與 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) 相容。 如果您透過 SSH 連線到叢集，您可以使用檔案管理命令：
 
-| Command | 說明 |
+| Command | 描述 |
 |---------|-------------|
 | `hdfs dfs -ls /HdiNotebooks` | # 列出根目錄中的所有專案-從首頁 Jupyter 可看到此目錄中的所有專案 |
 | `hdfs dfs –copyToLocal /HdiNotebooks` | # 下載 HdiNotebooks 資料夾的內容|
@@ -135,7 +135,7 @@ SELECT * FROM hivesampletable
 
 ## <a name="supported-browser"></a>支援的瀏覽器
 
-Google Chrome 上只支援 Spark HDInsight 叢集上的 Jupyter Notebook。
+只有 Google Chrome 才支援 Spark HDInsight 叢集上的 Jupyter 筆記本。
 
 ## <a name="suggestions"></a>建議
 
@@ -145,5 +145,5 @@ Google Chrome 上只支援 Spark HDInsight 叢集上的 Jupyter Notebook。
 
 - [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 - [在 HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集](apache-spark-zeppelin-notebook.md)
-- [搭配 Jupyter Notebook 使用外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
+- [使用 Jupyter 筆記本的外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
 - [在電腦上安裝 Jupyter 並連接到 HDInsight Spark 叢集](apache-spark-jupyter-notebook-install-locally.md)

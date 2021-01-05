@@ -1,6 +1,6 @@
 ---
 title: 使用 Apache Kafka 的 Apache Spark 串流 - Azure HDInsight
-description: 了解如何使用 DStreams 以 Apache Spark 串流方式將資料送入或送出 Apache Kafka。 在此範例中，您使用 Jupyter Notebook 從 HDInsight 上的 Spark 串流資料。
+description: 了解如何使用 DStreams 以 Apache Spark 串流方式將資料送入或送出 Apache Kafka。 在此範例中，您會在 HDInsight 上使用 Spark 的 Jupyter Notebook 來串流資料。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: e2f4bbe6157e1affa4975f6dcee2ad0f1d98a71b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88a62b2d1ebee3bf933729ab82bc9e37a3db066b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086087"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821174"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>在 HDInsight 上使用 Apache Kafka 的 Apache Spark 串流 (DStream) 範例
 
@@ -49,7 +49,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     此範本會為 Kafka 和 Spark 建立 HDInsight 3.6 叢集。
 
-1. 使用下列資訊來填入 [自訂部署]**** 區段上的項目︰
+1. 使用下列資訊來填入 [自訂部署] 區段上的項目︰
 
     |屬性 |值 |
     |---|---|
@@ -63,9 +63,9 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     ![HDInsight 自訂部署參數](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-1. 讀取**條款及條件**，然後選取 [我同意上方所述的條款及條件]。
+1. 讀取 **條款及條件**，然後選取 [我同意上方所述的條款及條件]。
 
-1. 最後，選取 [購買]****。 大約需要 20 分鐘的時間來建立叢集。
+1. 最後，選取 [購買]。 大約需要 20 分鐘的時間來建立叢集。
 
 資源建立後，摘要頁面會隨即出現。
 
@@ -84,7 +84,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
 因為本文件中的步驟會在相同的 Azure 資源群組中建立兩個叢集，您可以在 Azure 入口網站中刪除資源群組。 刪除群組，即可移除依循本文件建立的所有資源、Azure 虛擬網路，以及叢集所使用的儲存體帳戶。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在此範例中，您已了解如何使用 Spark 來讀取和寫入至 Kafka。 使用下列連結來探索使用 Kafka 的其他方式︰
 

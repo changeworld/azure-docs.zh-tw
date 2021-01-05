@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e60903aaa61cae63d406d459937d33317eee394
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4cfcc860e40415403952efeda13bac513a2c6347
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022246"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822143"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 為 Apache Spark 進行疑難排解
 
@@ -75,9 +75,9 @@ ms.locfileid: "96022246"
 
 這些變更為全叢集的，但可在提交 Spark 作業時予以覆寫。
 
-## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>如何使用 Jupyter Notebook 在叢集上設定 Apache Spark 應用程式？
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>如何? 使用叢集上的 Jupyter Notebook 來設定 Apache Spark 應用程式？
 
-在 Jupyter 筆記本第一個資料格中的 **%%configure** 指示詞後面，以有效的 JSON 格式指定 Spark 設定。 請視需要變更實際值：
+在 Jupyter Notebook 的第一個資料格中，于 **%% configure** 指示詞之後，以有效的 JSON 格式指定 Spark 設定。 請視需要變更實際值：
 
 ![新增設定](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 

@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6407f7c3b1e8570cdc6b36dceec79fba58689c7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230410"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822177"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 建置機器學習應用程式及分析資料集
 
-瞭解如何使用 Apache Spark MLlib 來建立機器學習應用程式。 應用程式會對開啟的資料集進行預測性分析。 從 Spark 的內建機器學習程式庫，此範例會透過羅吉斯迴歸使用「分類」**。
+瞭解如何使用 Apache Spark MLlib 來建立機器學習應用程式。 應用程式會對開啟的資料集進行預測性分析。 從 Spark 的內建機器學習程式庫，此範例會透過羅吉斯迴歸使用「分類」。
 
 MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公用程式，例如：
 
@@ -32,7 +32,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
 
 分類是常見的機器學習工作，是指將輸入資料依類別排序的程序。 分類演算法的工作是要找出如何指派「標籤」給您所提供的輸入資料。 例如，您可以將機器學習演算法想像成可接受股票資訊做為輸入。 然後將股票分成兩個類別：您應該銷售的股票和應該保留的股票。
 
-羅吉斯迴歸是您用於分類的演算法。 Spark 的羅吉斯迴歸 API 可用於*二元分類*，或用來將輸入資料歸類到兩個群組之一。 如需羅吉斯迴歸的詳細資訊，請參閱 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)。
+羅吉斯迴歸是您用於分類的演算法。 Spark 的羅吉斯迴歸 API 可用於 *二元分類*，或用來將輸入資料歸類到兩個群組之一。 如需羅吉斯迴歸的詳細資訊，請參閱 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)。
 
 總而言之，羅吉斯回歸的程式會產生 *羅吉斯函數*。 您可以使用函數來預測輸入向量屬於某個群組或另一個群組的機率。  
 
@@ -108,7 +108,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
 
     輸出可讓您了解輸入檔案的結構描述。 它包含每個建立的名稱，以及建立的類型。 此外，位址、檢查的資料和位置等等。
 
-3. 執行下列程式碼來建立資料框架 (df**) 和暫存資料表 (CountResults**)，其中具有一些可用於預測分析的資料行。 `sqlContext` 用來對結構化資料進行轉換。
+3. 執行下列程式碼來建立資料框架 (df) 和暫存資料表 (CountResults)，其中具有一些可用於預測分析的資料行。 `sqlContext` 用來對結構化資料進行轉換。
 
     ```PySpark
     schema = StructType([
@@ -121,7 +121,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
     df.registerTempTable('CountResults')
     ```
 
-    資料框架中的四個數據行是 **識別碼**、 **名稱**、 **結果**和 **違規**。
+    資料框架中的四個數據行是 **識別碼**、 **名稱**、 **結果** 和 **違規**。
 
 4. 執行下列程式碼，可取得一小部分的資料範例：
 
@@ -147,7 +147,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
 
 我們要著手了解資料集的內容為何。 
 
-1. 執行下列程式碼，可顯示**結果 (results)** 資料行中的相異值：
+1. 執行下列程式碼，可顯示 **結果 (results)** 資料行中的相異值：
 
     ```PySpark
     df.select('results').distinct().show()
@@ -174,7 +174,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    `%%sql` magic 後面緊接著 `-o countResultsdf` 可確保查詢的輸出會保存在 Jupyter 伺服器的本機上 (通常是叢集的前端節點)。 輸出會使用指定的名稱 [countResultsdf](https://pandas.pydata.org/) ，當做 **Pandas**資料框架保存。 如需 `%%sql` magic 及 PySpark 核心提供之其他 magic 的詳細資訊，請參閱 [使用 Apache Spark HDInsight 叢集之 Jupyter Notebook 上可用的核心](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)。
+    `%%sql` magic 後面緊接著 `-o countResultsdf` 可確保查詢的輸出會保存在 Jupyter 伺服器的本機上 (通常是叢集的前端節點)。 輸出會使用指定的名稱 [countResultsdf](https://pandas.pydata.org/) ，當做 **Pandas** 資料框架保存。 如需有關 `%%sql` 魔術以及 PySpark 核心可用之其他 magic 的詳細資訊，請參閱 [搭配 Apache Spark HDInsight 叢集的 Jupyter 筆記本上可用](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)的核心。
 
     輸出如下：
 
@@ -194,7 +194,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
     plt.axis('equal')
     ```
 
-    若要預測食物檢查結果，您需要根據違規事項來開發模型。 由於羅吉斯迴歸是一種二元分類方法，因此將結果資料分成兩個類別，是很合理的：**不合格**和**通過**：
+    若要預測食物檢查結果，您需要根據違規事項來開發模型。 由於羅吉斯迴歸是一種二元分類方法，因此將結果資料分成兩個類別，是很合理的：**不合格** 和 **通過**：
 
    - 通過
        - 通過
@@ -252,7 +252,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>使用另一個資料集來評估模型
 
-您可以使用稍早建立的模型來 *預測* 新檢查的結果。 預測是根據觀察到的違規。 您已在資料集 **Food_Inspections1.csv** 上訓練此模型。 您可以使用第二個資料集 **Food_Inspections2.csv**，評估** 此模型對於新資料的強度。 第二個資料集 (**Food_Inspections2.csv**) 在與叢集相關聯的預設儲存體容器中。
+您可以使用稍早建立的模型來 *預測* 新檢查的結果。 預測是根據觀察到的違規。 您已在資料集 **Food_Inspections1.csv** 上訓練此模型。 您可以使用第二個資料集 **Food_Inspections2.csv**，評估此模型對於新資料的強度。 第二個資料集 (**Food_Inspections2.csv**) 在與叢集相關聯的預設儲存體容器中。
 
 1. 執行下列程式碼，可建立新的資料框架 **predictionsDf**，其中包含模型所產生的預測。 該程式碼片段也會根據資料框架，建立暫存資料表 **Predictions**。
 
@@ -335,7 +335,7 @@ model = pipeline.fit(labeledData)
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```
 
-1. 最後，使用 **Matplotlib**用下列程式碼片段產生繪圖。
+1. 最後，使用 **Matplotlib** 用下列程式碼片段產生繪圖。
 
     ```PySpark
     %%local

@@ -1,6 +1,6 @@
 ---
 title: 在 Spark 中搭配 Jupyter 使用自訂 Maven 套件-Azure HDInsight
-description: 說明如何設定讓 HDInsight Spark 叢集隨附之 Jupyter Notebook 使用自訂 Maven 套件的逐步指示。
+description: 如何設定 HDInsight Spark 叢集可用的 Jupyter 筆記本，以使用自訂 Maven 套件的逐步指示。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 772b136c00dc9c20f8bc35d7ebb324175a56e885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82c61fe77e7bffea6a20e47c71561ab6dc86d12b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061711"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822245"
 ---
-# <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>在 HDInsight 上的 Apache Spark 叢集中搭配 Jupyter Notebook 使用外部封裝
+# <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>在 HDInsight 上 Apache Spark 叢集中搭配使用外部套件與 Jupyter 筆記本
 
 瞭解如何在 HDInsight 上的 Apache Spark 叢集中設定 [Jupyter Notebook](https://jupyter.org/) ，以使用不是叢集中現成提供的外部、由社區提供的 Apache **maven** 套件。
 
 您可以搜尋 [Maven 儲存機制](https://search.maven.org/) 來取得可用套件的完整清單。 您也可以從其他來源取得可用套件清單。 例如，從 [Spark 套件](https://spark-packages.org/)可以取得社群提供套件的完整清單。
 
-在本文中，您將瞭解如何搭配使用 [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 套件與 Jupyter 筆記本。
+在本文中，您將瞭解如何搭配 Jupyter Notebook 使用 [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 套件。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -31,13 +31,13 @@ ms.locfileid: "90061711"
 
 * 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 `wasb://` 適用於 Azure 儲存體，`abfs://` 適用於 Azure Data Lake Storage Gen2 或 `adl://` 適用於 Azure Data Lake Storage Gen1。 如果針對 Azure 儲存體或 Data Lake Storage Gen2 已啟用安全傳輸，則 URI 分別會是 `wasbs://` 或 `abfss://`。另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
-## <a name="use-external-packages-with-jupyter-notebooks"></a>搭配 Jupyter Notebook 使用外部套件
+## <a name="use-external-packages-with-jupyter-notebooks"></a>使用 Jupyter 筆記本的外部套件
 
 1. 流覽至 `https://CLUSTERNAME.azurehdinsight.net/jupyter` 您的 Spark 叢集名稱，其中 `CLUSTERNAME` 是。
 
 1. 建立新的 Notebook。 選取 [ **新增**]，然後選取 [ **Spark**]。
 
-    ![建立新的 Spark Jupyter 筆記本](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "建立新的 Jupyter Notebook")
+    ![建立新的 Spark Jupyter Notebook](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "建立新的 Jupyter Notebook")
 
 1. 系統隨即會建立新 Notebook，並以 Untitled.pynb 的名稱開啟。 在頂端選取筆記本名稱，然後輸入易記名稱。
 
@@ -57,7 +57,7 @@ ms.locfileid: "90061711"
 
     a. 在「Maven 儲存機制」中找出套件。 在本文中，我們會使用 [spark csv](https://mvnrepository.com/artifact/com.databricks/spark-csv)。
 
-    b. 從儲存機制收集 [GroupId]****、[ArtifactId]**** 及 [版本]**** 的值。 確定您收集的值符合您的叢集。 在此情況下，我們會使用 Scala 2.11 和 Spark 1.5.0 套件，但您可能需要針對叢集中的適當 Scala 或 Spark 版本選取不同的版本。 您可以透過在 Spark Jupyter 核心或 Spark 提交上執行 `scala.util.Properties.versionString` 以查看您叢集上的 Scala 版本。 您可以透過在 Jupyter 筆記本上執行 `sc.version` 以查看您叢集上的 Spark 版本。
+    b. 從儲存機制收集 [GroupId]、[ArtifactId] 及 [版本] 的值。 確定您收集的值符合您的叢集。 在此情況下，我們會使用 Scala 2.11 和 Spark 1.5.0 套件，但您可能需要針對叢集中的適當 Scala 或 Spark 版本選取不同的版本。 您可以透過在 Spark Jupyter 核心或 Spark 提交上執行 `scala.util.Properties.versionString` 以查看您叢集上的 Scala 版本。 您可以在 Jupyter 筆記本上執行，以找出叢集上的 Spark 版本 `sc.version` 。
 
     ![搭配 Jupyter Notebook 使用外部套件](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "搭配 Jupyter Notebook 使用外部套件")
 
@@ -93,7 +93,7 @@ ms.locfileid: "90061711"
     df.select("Time").count()
     ```
 
-## <a name="see-also"></a><a name="seealso"></a>另請參閱
+## <a name="see-also"></a><a name="seealso"></a>請參閱
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
@@ -109,13 +109,13 @@ ms.locfileid: "90061711"
 * [使用 Scala 建立獨立應用程式](apache-spark-create-standalone-application.md)
 * [利用 Apache Livy 在 Apache Spark 叢集上遠端執行作業](apache-spark-livy-rest-interface.md)
 
-### <a name="tools-and-extensions"></a>工具和擴充功能
+### <a name="tools-and-extensions"></a>工具和延伸模組
 
-* [在 HDInsight Linux 上的 Apache Spark 叢集中搭配 Jupyter Notebook 使用外部 Python 套件](apache-spark-python-package-installation.md)
+* [在 HDInsight Linux 上 Apache Spark 叢集中搭配 Jupyter 筆記本使用外部 python 套件](apache-spark-python-package-installation.md)
 * [使用 IntelliJ IDEA 的 HDInsight Tools 外掛程式來建立和提交 Spark Scala 應用程式](apache-spark-intellij-tool-plugin.md)
 * [使用適用於 IntelliJ IDEA 的 HDInsight 工具外掛程式遠端偵錯 Apache Spark 應用程式](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集](apache-spark-zeppelin-notebook.md)
-* [HDInsight Apache Spark 叢集中 Jupyter Notebook 的可用核心](apache-spark-jupyter-notebook-kernels.md)
+* [適用于 HDInsight Apache Spark 叢集中 Jupyter Notebook 的核心](apache-spark-jupyter-notebook-kernels.md)
 * [在電腦上安裝 Jupyter 並連接到 HDInsight Spark 叢集](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理資源

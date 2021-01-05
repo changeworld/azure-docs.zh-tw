@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65163225853037ac4cb97a02c0bdaf554b509fb1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084637"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822194"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 叢集已知問題
 
@@ -75,13 +75,13 @@ HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 
 您必須改用 Spark-HBase 連接器。 如需指示，請參閱[如何使用 Spark-HBase 連接器](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
 
-## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter Notebook 的相關問題
+## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter 筆記本的相關問題
 
-以下是 Jupyter Notebook 的已知問題。
+以下是一些與 Jupyter 筆記本相關的已知問題。
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Notebook 在檔名中有非 ASCII 字元
 
-請勿在 Jupyter Notebook 檔名中使用非 ASCII 字元。 如果您嘗試透過 Jupyter UI 上傳具有非 ASCII 檔名的檔案，則會上傳失敗，但沒有任何錯誤訊息。 Jupyter 不會讓您上傳檔案，但也不會擲回可見的錯誤。
+請勿在 Jupyter Notebook 檔案名中使用非 ASCII 字元。 如果您嘗試透過 Jupyter UI 上傳具有非 ASCII 檔名的檔案，則會上傳失敗，但沒有任何錯誤訊息。 Jupyter 不會讓您上傳檔案，但也不會擲回可見的錯誤。
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>載入大型 Notebook 時發生錯誤
 
@@ -100,15 +100,15 @@ HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Notebook 的初始啟動比預期耗時
 
-在使用 Spark magic 的 Jupyter Notebook 中，第一個程式碼陳述式可能需耗時一分鐘以上才能執行完畢。  
+使用 Spark 魔術 Jupyter Notebook 中的第一個程式碼語句可能需要一分鐘以上的時間。  
 
 **解釋：**
 
 這會在執行第一個程式碼儲存格時發生。 它會在背景中起始設定工作階段組態，以及設定 SQL、Spark 和 Hive 內容。 設定這些內容後，第一個陳述式才會執行，因此會有陳述式會花很長時間完成的印象。
 
-### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter Notebook 建立工作階段逾時
+### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>建立會話的 Jupyter Notebook 超時
 
-當 Spark 叢集的資源不足時，Jupyter Notebook 中的 Spark 和 PySpark 核心在嘗試建立工作階段時將會逾時。
+當 Spark 叢集的資源不足時，Jupyter Notebook 中的 Spark 和 PySpark 核心將會發生嘗試建立會話的時間。
 
 **措施**
 
@@ -119,7 +119,7 @@ HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 
 2. 重新啟動您先前嘗試啟動的 Notebook。 此時您應有足夠的資源可建立工作階段。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
 
@@ -135,13 +135,13 @@ HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 * [使用 Scala 建立獨立應用程式](apache-spark-create-standalone-application.md)
 * [利用 Apache Livy 在 Apache Spark 叢集上遠端執行作業](apache-spark-livy-rest-interface.md)
 
-### <a name="tools-and-extensions"></a>工具和擴充功能
+### <a name="tools-and-extensions"></a>工具和延伸模組
 
 * [使用 IntelliJ IDEA 的 HDInsight Tools 外掛程式來建立和提交 Spark Scala 應用程式](apache-spark-intellij-tool-plugin.md)
 * [使用適用於 IntelliJ IDEA 的 HDInsight 工具外掛程式遠端偵錯 Apache Spark 應用程式](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [在 HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集](apache-spark-zeppelin-notebook.md)
-* [HDInsight Apache Spark 叢集中 Jupyter Notebook 的可用核心](apache-spark-jupyter-notebook-kernels.md)
-* [搭配 Jupyter Notebook 使用外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
+* [適用于 HDInsight Apache Spark 叢集中 Jupyter Notebook 的核心](apache-spark-jupyter-notebook-kernels.md)
+* [使用 Jupyter 筆記本的外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
 * [在電腦上安裝 Jupyter 並連接到 HDInsight Spark 叢集](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理資源

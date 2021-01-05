@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: afe92351fe82a4e07665789c2ed4d4631be8731f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2e6da1783c3bec4958783494cb6928f5a6a69a58
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547447"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822347"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>使用 Azure Toolkit for IntelliJ 來在 HDInsight 中透過 VPN 遠端偵錯 Apache Spark 應用程式
 
@@ -29,13 +29,13 @@ ms.locfileid: "92547447"
 
 ## <a name="prerequisites"></a>必要條件
 
-* **Azure 訂用帳戶** 。 如需詳細資訊，請參閱[取得 Azure 的免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* **HDInsight 中的 Apache Spark 叢集** 。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
-* **Oracle JAVA 開發工具組** 。 您可以從 [Oracle 網站](/azure/developer/java/fundamentals/java-jdk-long-term-support) \(英文\) 安裝它。
-* **INTELLIJ 構想** 。 本文章使用 2017.1 版。 您可以從 [JetBrains 網站](https://www.jetbrains.com/idea/download/) \(英文\) 安裝它。
-* **適用於 IntelliJ 的 Azure 工具組中的 HDInsight 工具** 。 適用於 IntelliJ 的 HDInsight 工具是適用於 IntelliJ 的 Azure 工具組的一部分。 如需有關如何安裝 Azure 工具組的指示，請參閱[安裝適用於 IntelliJ 的 Azure 工具組](/java/azure/intellij/azure-toolkit-for-intellij-installation)。
-* **從 IntelliJ IDEA 登入您的 Azure 訂用帳戶** 。 請依照[使用 Azure Toolkit for IntelliJ 為 HDInsight 叢集建立 Apache Spark 應用程式](apache-spark-intellij-tool-plugin.md)中的指示進行。
-* **例外狀況的因應措施** 。 在 Windows 電腦上執行 Spark Scala 應用程式以進行遠端偵錯時，可能會發生例外狀況。 這個例外狀況會在 [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356) 中說明，並會因 Windows 中的 WinUtils.exe 檔案遺失而發生。 若要解決此錯誤，您必須將 [Winutils.exe](https://github.com/steveloughran/winutils) 下載至 **C:\WinUtils\bin** 之類的位置。 新增環境變數 **HADOOP_HOME** ，然後將變數的值設為 **C\WinUtils** 。
+* **Azure 訂用帳戶**。 如需詳細資訊，請參閱[取得 Azure 的免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+* **HDInsight 中的 Apache Spark 叢集**。 如需指示，請參閱[在 Azure HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)。
+* **Oracle JAVA 開發工具組**。 您可以從 [Oracle 網站](/azure/developer/java/fundamentals/java-jdk-long-term-support) \(英文\) 安裝它。
+* **INTELLIJ 構想**。 本文章使用 2017.1 版。 您可以從 [JetBrains 網站](https://www.jetbrains.com/idea/download/) \(英文\) 安裝它。
+* **適用於 IntelliJ 的 Azure 工具組中的 HDInsight 工具**。 適用於 IntelliJ 的 HDInsight 工具是適用於 IntelliJ 的 Azure 工具組的一部分。 如需有關如何安裝 Azure 工具組的指示，請參閱[安裝適用於 IntelliJ 的 Azure 工具組](/java/azure/intellij/azure-toolkit-for-intellij-installation)。
+* **從 IntelliJ IDEA 登入您的 Azure 訂用帳戶**。 請依照[使用 Azure Toolkit for IntelliJ 為 HDInsight 叢集建立 Apache Spark 應用程式](apache-spark-intellij-tool-plugin.md)中的指示進行。
+* **例外狀況的因應措施**。 在 Windows 電腦上執行 Spark Scala 應用程式以進行遠端偵錯時，可能會發生例外狀況。 這個例外狀況會在 [SPARK 2356](https://issues.apache.org/jira/browse/SPARK-2356) 中說明，並會因 Windows 中的 WinUtils.exe 檔案遺失而發生。 若要解決此錯誤，您必須將 [Winutils.exe](https://github.com/steveloughran/winutils) 下載至 **C:\WinUtils\bin** 之類的位置。 新增環境變數 **HADOOP_HOME**，然後將變數的值設為 **C\WinUtils**。
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>步驟 1：建立 Azure 虛擬網路
 
@@ -63,13 +63,13 @@ ms.locfileid: "92547447"
 
     ![在 Apache Ambari 中尋找前端節點](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
-1. 從開啟頁面底部的 [_ *摘要* ] 窗格中，複製前端節點的 **IP 位址** 和 **主機名稱** 。
+1. 從開啟頁面底部的 [_ *摘要*] 窗格中，複製前端節點的 **IP 位址** 和 **主機名稱**。
 
     ![在 Apache Ambari 中尋找 IP 位址](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 
 1. 將前端節點的 IP 位址和主機名稱新增到電腦 (您需要從中執行和遠端偵錯 Spark 作業) 上的 **主機** 檔案。 這可讓您使用 IP 位址和主機名稱，與前端節點進行通訊。
 
-   a. 以提高的權限開啟 [記事本] 檔案。 從 [檔案] 功能表中，選取 [開啟]，然後尋找主機檔案的位置。 在 Windows 電腦上的位置是 **C:\Windows\System32\Drivers\etc\hosts** 。
+   a. 以提高的權限開啟 [記事本] 檔案。 從 [檔案] 功能表中，選取 [開啟]，然後尋找主機檔案的位置。 在 Windows 電腦上的位置是 **C:\Windows\System32\Drivers\etc\hosts**。
 
    b. 將下列資訊新增至 **主機** 檔案：
 
@@ -113,7 +113,7 @@ ms.locfileid: "92547447"
   
 1. Spark 專案會自動為您建立成品。 若要檢視構件，請執行下列動作：
 
-    a. **在 [檔案** ] 功能表中選取 [ **專案結構** ]。
+    a. **在 [檔案**] 功能表中選取 [**專案結構**]。
 
     b. 在 [Project Structure]  \(專案結構\) 對話方塊中，選取 [Artifacts]  \(成品\) 以檢視所建立的預設成品。 您也可以選取加號 ( **+** ) 來建立自己的成品。
 
@@ -123,7 +123,7 @@ ms.locfileid: "92547447"
 
     a. 以滑鼠右鍵按一下專案樹狀結構中的專案名稱，然後選取 [開啟模組設定]。
 
-    b. 在 [專案結構] 對話方塊中，依序選取 [文件庫] **、** ([+]) 符號，然後選取 [從 Maven]。
+    b. 在 [專案結構] 對話方塊中，依序選取 [文件庫]**、**([+]) 符號，然後選取 [從 Maven]。
 
     ![IntelliJ 構想下載程式庫](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
 
@@ -179,7 +179,7 @@ ms.locfileid: "92547447"
 
    c. 儲存檔案。
 
-1. 新增您應用程式的主要類別。 從 **專案總管** ，以滑鼠右鍵按一下 [src]、指向 [新增]，然後選取 [Scala 類別]。
+1. 新增您應用程式的主要類別。 從 **專案總管**，以滑鼠右鍵按一下 [src]、指向 [新增]，然後選取 [Scala 類別]。
 
     ![IntelliJ 構想選取主要類別](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
 
@@ -269,7 +269,7 @@ ms.locfileid: "92547447"
 
 ## <a name="step-5-run-the-application-in-debug-mode"></a>步驟 5：在偵錯模式中執行應用程式
 
-1. 在您的 IntelliJ IDEA 專案中，開啟 `SparkSample.scala`，並在 `val rdd1` 旁邊建立中斷點。 在快顯功能表的 [建立中斷點] 中，選取 **executeJob 函式中的一行** 。
+1. 在您的 IntelliJ IDEA 專案中，開啟 `SparkSample.scala`，並在 `val rdd1` 旁邊建立中斷點。 在快顯功能表的 [建立中斷點] 中，選取 **executeJob 函式中的一行**。
 
     ![IntelliJ 構想新增中斷點](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
 
@@ -281,11 +281,11 @@ ms.locfileid: "92547447"
 
     ![IntelliJ 構想視圖 [偵錯工具] 索引標籤](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-debugger-tab.png)
 
-1. 若要新增監看式，請選取 ( **+** ) 圖示。
+1. 若要新增監看式，請選取 (**+**) 圖示。
 
     ![IntelliJ debug-add-watch-variable](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable.png)
 
-    在此範例中，會在 `rdd1` 變數建立之前中斷應用程式。 使用此監看式，我們可以看到變數 `rdd` 中的前五個資料列。 選取 **Enter** 。
+    在此範例中，會在 `rdd1` 變數建立之前中斷應用程式。 使用此監看式，我們可以看到變數 `rdd` 中的前五個資料列。 選取 **Enter**。
 
     ![IntelliJ 在偵測模式中執行程式](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/debug-add-watch-variable-value.png)
 
@@ -320,14 +320,14 @@ ms.locfileid: "92547447"
 * [使用 Scala 建立獨立應用程式](./apache-spark-create-standalone-application.md)
 * [利用 Apache Livy 在 Apache Spark 叢集上遠端執行作業](apache-spark-livy-rest-interface.md)
 
-### <a name="tools-and-extensions"></a>工具和擴充功能
+### <a name="tools-and-extensions"></a>工具和延伸模組
 
 * [使用 Azure Toolkit for IntelliJ 為 HDInsight 叢集建立 Apache Spark 應用程式](apache-spark-intellij-tool-plugin.md)
 * [使用 Azure Toolkit for IntelliJ 透過 SSH 遠端偵錯 Apache Spark 應用程式](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具建立 Apache Spark 應用程式](./apache-spark-eclipse-tool-plugin.md)
 * [在 HDInsight 中搭配 Apache Spark 叢集使用 Apache Zeppelin Notebook](apache-spark-zeppelin-notebook.md)
-* [HDInsight Apache Spark 叢集中 Jupyter Notebook 的可用核心](apache-spark-jupyter-notebook-kernels.md)
-* [搭配 Jupyter Notebook 使用外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
+* [適用于 HDInsight 的 Apache Spark 叢集中 Jupyter Notebook 的核心](apache-spark-jupyter-notebook-kernels.md)
+* [使用 Jupyter 筆記本的外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
 * [在電腦上安裝 Jupyter 並連接到 HDInsight Spark 叢集](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理資源

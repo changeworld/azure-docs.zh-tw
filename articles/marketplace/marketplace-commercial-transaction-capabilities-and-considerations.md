@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 898c106fb961373889fbae87db6c755fe2495ff8
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621258"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822381"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商業市集交易功能
 
@@ -90,7 +90,7 @@ Microsoft 讓客戶能訂購、授權和使用您的軟體，客戶必須遵守 
 
 當客戶從商業 marketplace 購買您的交易供應專案時，我們會收取20% 標準商店服務費用。 如需這項費用的詳細資訊，請參閱 [Microsoft Publisher 合約](https://go.microsoft.com/fwlink/?LinkID=699560)的第5c 節。
 
-針對您發佈到商用市集中的特定可交易供應專案，您可能會有10% 的商店服務費用降低資格。 若要讓供應專案符合資格，必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個行事曆月份結束前至少必須符合五個工作天的資格，才能獲得每月減少的 Marketplace 服務費用。 如需 IP 共同銷售資格的詳細資訊，請參閱 [共同銷售狀態的需求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
+針對您發佈到商用市集中的特定可交易供應專案，您可能會有10% 的商店服務費用降低資格。 若要讓供應專案符合資格，必須由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個行事曆月份結束前至少必須符合五個工作天的資格，才能獲得減少的 Marketplace 服務費用。 一旦符合資格，就會向下個月的第一天生效的所有交易收取較低的服務費用，直到 Azure IP 共同銷售受到激勵狀態遺失為止。 如需 IP 共同銷售資格的詳細資訊，請參閱 [共同銷售狀態的需求](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)。
 
 降低的 Marketplace 服務費用適用于 Azure IP 共同銷售受到激勵 SaaS、Vm、受控應用程式，以及透過商業 Marketplace 提供的任何其他合格可交易 IaaS 解決方案。 與一個 Microsoft 小組應用程式相關聯的付費 SaaS 供應專案，或至少兩個 Microsoft 365 增益集 (Excel、PowerPoint、Word、Outlook 和 SharePoint) ，併發布至 Microsoft AppSource 也會收到這項折扣。
 

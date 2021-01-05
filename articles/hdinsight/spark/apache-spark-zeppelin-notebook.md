@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b9568d03260a9d1ac0b6916e09f3d9ef4da34d
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084523"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822160"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集
 
@@ -89,7 +89,7 @@ HDInsight Spark 叢集包含 [Apache Zeppelin](https://zeppelin.apache.org/) 筆
 
     開頭的 **%Sql** 陳述式會告訴 Notebook 使用 Livy Scala 解譯器。
 
-6. 選取 **橫條圖** 圖示來變更顯示。  **設定**：在您選取 **橫條圖**之後出現，可讓您選擇索引 **鍵**和 **值**。  以下螢幕擷取畫面顯示輸出。
+6. 選取 **橫條圖** 圖示來變更顯示。  **設定**：在您選取 **橫條圖** 之後出現，可讓您選擇索引 **鍵** 和 **值**。  以下螢幕擷取畫面顯示輸出。
 
     ![使用 notebook1 執行 Spark SQL 語句](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "使用 notebook1 執行 Spark SQL 語句")
 
@@ -115,9 +115,9 @@ HDInsight Spark 叢集包含 [Apache Zeppelin](https://zeppelin.apache.org/) 筆
 
 HDInsight 上 Apache Spark 叢集中的 Zeppelin 筆記本可以使用未包含在叢集中的外部、未提供貢獻的套件。 搜尋 [Maven 儲存](https://search.maven.org/) 機制，以取得可用套件的完整清單。 您也可以從其他來源取得可用套件清單。 例如，從 [Spark 套件](https://spark-packages.org/)可以取得社群提供套件的完整清單。
 
-在本文中，您將瞭解如何搭配使用 [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 套件與 Jupyter 筆記本。
+在本文中，您將瞭解如何搭配 Jupyter Notebook 使用 [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) 套件。
 
-1. 開啟解譯器設定。 在右上角，選取已登入的使用者名稱，然後選取 [ **解釋**器]。
+1. 開啟解譯器設定。 在右上角，選取已登入的使用者名稱，然後選取 [ **解釋** 器]。
 
     ![啟動解譯器](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive 輸出")
 
@@ -135,7 +135,7 @@ HDInsight 上 Apache Spark 叢集中的 Zeppelin 筆記本可以使用未包含�
 
     a. 在「Maven 儲存機制」中找出套件。 在本文中，我們使用了 [spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)。
 
-    b. 從儲存機制收集 [GroupId]****、[ArtifactId]**** 及 [版本]**** 的值。
+    b. 從儲存機制收集 [GroupId]、[ArtifactId] 及 [版本] 的值。
 
     ![搭配 Jupyter Notebook 使用外部套件](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "搭配 Jupyter Notebook 使用外部套件")
 
@@ -179,7 +179,7 @@ Zeppelin 筆記本中的第一個程式碼片段會在您的叢集中建立新�
 
 在這種情況下，您必須執行下列步驟，才能開始從 Zeppelin 筆記本執行作業。  
 
-1. 從 Zeppelin Notebook 重新啟動 Livy 解譯器。 若要這樣做，請從右上角選取登入的使用者名稱，然後選取 [ **解釋**器]，以開啟解譯器設定。
+1. 從 Zeppelin Notebook 重新啟動 Livy 解譯器。 若要這樣做，請從右上角選取登入的使用者名稱，然後選取 [ **解釋** 器]，以開啟解譯器設定。
 
     ![啟動解譯器](./media/apache-spark-zeppelin-notebook/zeppelin-launch-interpreter.png "Hive 輸出")
 
@@ -197,7 +197,7 @@ Zeppelin 筆記本中的第一個程式碼片段會在您的叢集中建立新�
 
 若要從命令列驗證服務，請透過 SSH 連線到前端節點。 使用命令將使用者切換至 zeppelin `sudo su zeppelin` 。 狀態命令：
 
-|Command |說明 |
+|Command |描述 |
 |---|---|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|服務狀態。|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|服務版本。|
@@ -205,7 +205,7 @@ Zeppelin 筆記本中的第一個程式碼片段會在您的叢集中建立新�
 
 ### <a name="log-locations"></a>記錄檔位置
 
-|服務 |Path |
+|服務 |路徑 |
 |---|---|
 |zeppelin-伺服器|/usr/hdp/current/zeppelin-server/|
 |伺服器記錄|/var/log/zeppelin|
@@ -227,5 +227,5 @@ Zeppelin 筆記本中的第一個程式碼片段會在您的叢集中建立新�
 ## <a name="next-steps"></a>後續步驟
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-* [HDInsight Apache Spark 叢集中 Jupyter Notebook 的可用核心](apache-spark-jupyter-notebook-kernels.md)
+* [適用于 HDInsight Apache Spark 叢集中 Jupyter Notebook 的核心](apache-spark-jupyter-notebook-kernels.md)
 * [在電腦上安裝 Jupyter 並連接到 HDInsight Spark 叢集](apache-spark-jupyter-notebook-install-locally.md)

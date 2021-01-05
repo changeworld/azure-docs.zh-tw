@@ -5,17 +5,18 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/16/2020
+ms.date: 12/30/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654587"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822279"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>針對 Azure Data Factory 進行疑難排解
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文將探討 Azure Data Factory 中外部控制活動的常見疑難排解方法。
@@ -498,7 +499,7 @@ ms.locfileid: "94654587"
 
 - **訊息**：`There are duplicate files in the resource folder.`
 
-- **原因**︰資料夾路徑的不同子資料夾中有多個名稱相同的檔案。
+- **原因**：相同名稱的多個檔案位於 folderPath 的不同子資料夾中。
 
 - **建議**：自訂活動會將 folderPath 下的資料夾結構壓平合併。 如果您需要保留資料夾結構，請壓縮檔案，並使用解壓縮命令在 Azure Batch 中將檔案解壓縮。
    
@@ -545,7 +546,6 @@ ms.locfileid: "94654587"
 - **原因**︰嘗試讀取服務主體或具現化 MSI 驗證時發生內部錯誤。
 
 - **建議**：請考慮提供有權在所提供訂用帳戶中建立 HDInsight 叢集的服務主體，然後再試一次。 確認[已正確設定「管理身分識別」](../hdinsight/hdinsight-managed-identities.md)。
-
 
 ### <a name="error-code-2300"></a>錯誤碼：2300
 
@@ -952,6 +952,16 @@ ms.locfileid: "94654587"
 
 - **建議**：提供 Azure Blob 儲存體帳戶作為 HDInsight 隨選連結服務的額外儲存體。
 
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>使用 HDInsight ESP 叢集的 ADF 連結服務時發生 SSL 錯誤
+
+- **訊息**：`Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **原因**：此問題最可能與系統信任存放區相關。
+
+- **解決** 方式：您可以流覽至 Path **Microsoft Integration RUNTIME\4.0\SHARED\ODBC Drivers\Microsoft Hive ODBC Driver\lib** 並開啟 DriverConfiguration64.exe 來變更設定。
+
+    ![取消核取 [使用系統信任存放區]](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 ## <a name="web-activity"></a>網路活動
 
 ### <a name="error-code-2128"></a>錯誤碼：2128
@@ -1015,9 +1025,9 @@ ms.locfileid: "94654587"
 
 **錯誤訊息：**`The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**原因：** 每個活動執行的承載包括活動設定、相關聯的資料集 (s) 和連結的服務 (s) 設定（如果有的話），以及每個活動類型所產生的一小部分系統屬性。 這類承載大小的限制896KB 如 [Data Factory 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) 一節中所述。
+**原因：** 每個活動執行的承載包括活動設定、相關聯的資料集 (s) 和連結的服務 (s) 設定（如果有的話），以及每個活動類型所產生的一小部分系統屬性。 這類承載大小的限制為 896 KB，如 [Data Factory 限制](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) 一節中所述。
 
-**建議：** 您達到此限制的原因很可能是因為您傳入了上游活動輸出或外部的一或多個大型參數值，特別是當您在控制流程的活動之間傳遞實際資料時。 請檢查您是否可以減少大型參數值的大小，或調整管線邏輯以避免跨活動傳遞這類值，並改為在活動內部處理。
+**建議：** 您達到此限制的原因很可能是因為您傳入了上游活動輸出或外部的一或多個大型參數值，特別是當您在控制流程的活動之間傳遞實際資料時。 檢查您是否可以減少大型參數值的大小，或調整管線邏輯以避免跨活動傳遞這類值，並改為在活動內部處理。
 
 ## <a name="next-steps"></a>後續步驟
 

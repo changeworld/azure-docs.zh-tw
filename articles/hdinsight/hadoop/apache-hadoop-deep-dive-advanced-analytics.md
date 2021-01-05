@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13dd960cc7c900882acbcb9b17a5b8a1f32f956c
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504344"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821497"
 ---
 # <a name="deep-dive---advanced-analytics"></a>深入探討 - 進階分析
 
 ## <a name="what-is-advanced-analytics-for-hdinsight"></a>什麼是 HDInsight 的進階分析？
 
-HDInsight 提供可從大量結構化、非結構化及快速移動之資料取得寶貴深入解析的功能。 進階分析會使用高擴充性架構、統計和機器學習服務模型，以及智慧型儀表板，為您提供有意義的深入解析。 機器學習服務 (或「預測性分析」**) 會使用可從您資料中的關聯性進行識別並學習的演算法來進行預測，然後引導您做出決策。
+HDInsight 提供可從大量結構化、非結構化及快速移動之資料取得寶貴深入解析的功能。 進階分析會使用高擴充性架構、統計和機器學習服務模型，以及智慧型儀表板，為您提供有意義的深入解析。 機器學習服務 (或「預測性分析」) 會使用可從您資料中的關聯性進行識別並學習的演算法來進行預測，然後引導您做出決策。
 
 ## <a name="advanced-analytics-process"></a>進階分析程序
 
@@ -79,7 +79,7 @@ ML 服務為 HDInsight 的一部分，您可以使用現成可與大量資料集
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark 和深度學習
 
-[深度學習](https://www.microsoft.com/research/group/dltc/)是機器學習服務的一個分支，使用以人類大腦的生物學程序為靈感來源的*深度類神經網路* (DNN)。 許多研究人員都將深度學習視為一個有前景的人工智慧方法。 深度學習的一些範例包括口語語言翻譯工具、影像辨識系統，以及機器推理。 為了協助推展自己在深度學習方面的工作，Microsoft 開發了免費、容易使用的開放原始碼 [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)。 各種 Microsoft 產品、世界各地需要大規模部署深度學習的公司，以及對最新演算法和技術感興趣的學生，都廣泛使用此工具組。
+[深度學習](https://www.microsoft.com/research/group/dltc/)是機器學習服務的一個分支，使用以人類大腦的生物學程序為靈感來源的 *深度類神經網路* (DNN)。 許多研究人員都將深度學習視為一個有前景的人工智慧方法。 深度學習的一些範例包括口語語言翻譯工具、影像辨識系統，以及機器推理。 為了協助推展自己在深度學習方面的工作，Microsoft 開發了免費、容易使用的開放原始碼 [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)。 各種 Microsoft 產品、世界各地需要大規模部署深度學習的公司，以及對最新演算法和技術感興趣的學生，都廣泛使用此工具組。
 
 ## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>案例 - 進行影像評分來識別都市發展模式
 
@@ -91,7 +91,7 @@ ML 服務為 HDInsight 的一部分，您可以使用現成可與大量資料集
 
 1. 使用 Apache Spark 2.1.0 散發套件來建立 Azure HDInsight Hadoop 叢集。
 2. 執行自訂指令碼，以在 Azure HDInsight Spark 叢集的所有節點上安裝 Microsoft Cognitive Toolkit。
-3. 將預先建置的 Jupyter Notebook 上傳至 HDInsight Spark 叢集，以使用 Spark Python API (PySpark) 將定型的 Microsoft Cognitive Toolkit 深度學習模型套用至「Azure Blob 儲存體帳戶」中的檔案。
+3. 將預先建立的 Jupyter Notebook 上傳至 HDInsight Spark 叢集，以使用 Spark Python API (PySpark) ，將定型的 Microsoft Cognitive Toolkit 深度學習模型套用至 Azure Blob 儲存體帳戶中的檔案。
 
 此範例會使用 Alex Krizhevsky、Vinod Nair 及 Geoffrey Hinton 所編譯並散發的 CIFAR-10 影像集。 CIFAR-10 資料集包含 60,000 個分屬 10 個互斥類別的 32×32 彩色影像：
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 6482b2ec07a0473ddbea2098d37c5d67c8b68704
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 770c73cb6f1309e64cd44c5a1b1570899108e4e7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539695"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821038"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>從 Windows 電腦在 HDInsight 上的 Apache Hadoop 生態系統中作業
 
@@ -75,9 +75,9 @@ Azure PowerShell 是一種指令碼環境，可讓您從 Windows 在 HDInsight �
 
 ## <a name="notebooks-on-spark-for-data-scientists"></a>適用於資料科學家的 Spark Notebook
 
-HDInsight 中的 Apache Spark 叢集包含可與 Jupyter Notebook 搭配使用的 Apache Zeppelin Notebook 和核心。
+HDInsight 中的 Apache Spark 叢集包含可與 Jupyter 筆記本搭配使用的 Apache Zeppelin 筆記本和核心。
 
-* [了解如何使用 Apache Spark 叢集上的核心搭配 Jupyter Notebook 來測試 Spark 應用程式](spark/apache-spark-zeppelin-notebook.md)
+* [瞭解如何在 Apache Spark 叢集上搭配使用 Jupyter 筆記本的核心來測試 Spark 應用程式](spark/apache-spark-zeppelin-notebook.md)
 * [了解如何使用 Apache Spark 叢集上的 Apache Zeppelin Notebook 來執行 Spark 作業](spark/apache-spark-jupyter-notebook-kernels.md)
 
 ## <a name="run-linux-based-tools-and-technologies-on-windows"></a>在 Windows 上執行以 Linux 為基礎的工具和技術
@@ -92,7 +92,7 @@ HDInsight 中的 Apache Spark 叢集包含可與 Jupyter Notebook 搭配使用�
 
 Azure 命令列介面 (CLI) 是用來管理 Azure 資源的 Microsoft 跨平台命令列體驗。  如需詳細資訊，請參閱 [ (CLI) 的 Azure Command-Line 介面 ](/cli/azure/)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如果您不熟悉使用以 Linux 為基礎的叢集，請參閱下列文章︰
 * [設定 Apache Hadoop、Apache Kafka、Apache Spark 或其他叢集](hdinsight-hadoop-provision-linux-clusters.md)

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: ebed7d87ba538b2f886155527bb89c1ffd2bcf58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c8ce1a66d6dbf215c3d49740f2aec47ab01f7591
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545696"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822313"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>使用 Azure Toolkit for IntelliJ (preview) 的 spark 作業無法進行調試
 
@@ -52,9 +52,9 @@ ms.locfileid: "92545696"
 
    a. 輸入專案名稱和專案位置。
 
-   b. 在 [ **專案 SDK** ] 下拉式清單中，選取 [適用于 **Spark 2.3.2** 叢集的 **JAVA 1.8** ]。
+   b. 在 [**專案 SDK** ] 下拉式清單中，選取 [適用于 **Spark 2.3.2** 叢集的 **JAVA 1.8** ]。
 
-   c. 在 [ **Spark 版本** ] 下拉式清單中，選取 [ **Spark 2.3.2 (Scala 2.11.8)** 。
+   c. 在 [ **Spark 版本** ] 下拉式清單中，選取 [ **Spark 2.3.2 (Scala 2.11.8)**。
 
    d. 選取 [完成]。
 
@@ -68,11 +68,11 @@ ms.locfileid: "92545696"
 
    ![HDI Intellij 新增設定](./media/apache-spark-intellij-tool-failure-debug/hdinsight-add-new-configuration.png)
 
-2. 在 [Run/Debug Configurations] \(執行/偵錯設定) 對話方塊中，選取加號 ( **+** )。 然後選取 [ **HDInsight 上的 Apache Spark** ] 選項。
+2. 在 [Run/Debug Configurations] \(執行/偵錯設定) 對話方塊中，選取加號 (**+**)。 然後選取 [ **HDInsight 上的 Apache Spark** ] 選項。
 
    ![Intellij 新增設定](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. 在 [叢集] 索引標籤中切換至 [ **遠端執行** ]。輸入 **名稱** 、 **Spark** 叢集和 **主要類別名稱** 的資訊。 我們的工具支援使用 **執行程式** 進行偵錯。 **NumExectors** ，預設值為5，而您最好不要設定高於3。 若要減少執行時間，您可以將 **yarn** 新增至 **工作** 設定，並將值設定為1。 按一下 **[確定]** 按鈕以儲存設定。
+3. 在 [叢集] 索引標籤中切換至 [ **遠端執行** ]。輸入 **名稱**、 **Spark** 叢集和 **主要類別名稱** 的資訊。 我們的工具支援使用 **執行程式** 進行偵錯。 **NumExectors**，預設值為5，而您最好不要設定高於3。 若要減少執行時間，您可以將 **yarn** 新增至 **工作** 設定，並將值設定為1。 按一下 **[確定]** 按鈕以儲存設定。
 
    ![Intellij 執行調試的設定新](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "92545696"
 
 如果作業提交失敗，您可以將失敗的作業設定檔下載到本機電腦，以進行進一步的偵錯工具。
 
-1. 開啟 **Microsoft Azure 儲存體總管** 、找出失敗作業之叢集的 HDInsight 帳戶、將失敗的工作資源從對應的位置下載： **\hdp\spark2-events \\ \\ \<application ID> 至** 本機資料夾。 [ **活動** ] 視窗會顯示下載進度。
+1. 開啟 **Microsoft Azure 儲存體總管**、找出失敗作業之叢集的 HDInsight 帳戶、將失敗的工作資源從對應的位置下載： **\hdp\spark2-events \\ \\ \<application ID> 至** 本機資料夾。 [ **活動** ] 視窗會顯示下載進度。
 
    ![Azure 儲存體總管下載失敗](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
@@ -135,15 +135,15 @@ ms.locfileid: "92545696"
 * [使用 Scala 建立獨立應用程式](./apache-spark-create-standalone-application.md)
 * [利用 Apache Livy 在 Apache Spark 叢集上遠端執行作業](apache-spark-livy-rest-interface.md)
 
-### <a name="tools-and-extensions"></a>工具和擴充功能
+### <a name="tools-and-extensions"></a>工具和延伸模組
 
 * [使用 Azure Toolkit for IntelliJ 為 HDInsight 叢集建立 Apache Spark 應用程式](apache-spark-intellij-tool-plugin.md)
 * [使用 Azure Toolkit for IntelliJ 透過 VPN 遠端偵錯 Apache Spark 應用程式](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [透過 Hortonworks 沙箱使用 HDInsight Tools for IntelliJ](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
 * [使用 Azure Toolkit for Eclipse 中的 HDInsight 工具建立 Apache Spark 應用程式](./apache-spark-eclipse-tool-plugin.md)
 * [在 HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集](apache-spark-zeppelin-notebook.md)
-* [HDInsight 的 Apache Spark 叢集中 Jupyter Notebook 可用的核心](apache-spark-jupyter-notebook-kernels.md)
-* [搭配 Jupyter Notebook 使用外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
+* [適用于 HDInsight 的 Apache Spark 叢集中 Jupyter Notebook 的核心](apache-spark-jupyter-notebook-kernels.md)
+* [使用 Jupyter 筆記本的外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
 * [在電腦上安裝 Jupyter 並連接到 HDInsight Spark 叢集](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>管理資源

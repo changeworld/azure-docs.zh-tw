@@ -2,14 +2,14 @@
 title: 服務配額和限制
 description: 了解預設的 Azure Batch 配額、限制和條件約束，以及如何要求增加配額
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f529d388cb883f635b6225801af5ce41b8c997a
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614504"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814630"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服務配額和限制
 
@@ -33,7 +33,7 @@ ms.locfileid: "97614504"
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Batch 服務模式的核心配額
 
-系統會改善專用核心配額的強制執行，並在2020年12月底將所有 Batch 帳戶的變更提供給這些變更，並已完成。
+將會改善專用核心配額的強制，並在每個階段提供變更，並在2021年1月底完成所有 Batch 帳戶的變更。
 
 Batch 所支援的每個 VM 系列都有核心配額，而且會顯示在入口網站的 [ **配額** ] 頁面上。 您可以使用支援要求來更新 VM 系列配額限制，如下所述。
 
@@ -70,7 +70,7 @@ Batch 所支援的每個 VM 系列都有核心配額，而且會顯示在入口�
 
 ## <a name="other-limits"></a>其他限制
 
-Batch 服務所設定的其他限制。 不同於[資源配額](#resource-quotas)，無法變更這些值。
+這些額外的限制是由 Batch 服務所設定。 不同於[資源配額](#resource-quotas)，無法變更這些值。
 
 | **Resource** | **上限** |
 | --- | --- |
@@ -80,6 +80,7 @@ Batch 服務所設定的其他限制。 不同於[資源配額](#resource-quotas
 | 每個集區的應用程式封裝 | 10 |
 | 工作存留期上限 | 180 天<sup>1</sup> |
 | 每個計算節點的[掛接](virtual-file-mount.md) | 10 |
+| 每個集區的憑證 | 12 |
 
 <sup>1</sup> 工作的最長存留期 (從它新增至作業到完成時) 為 180 天。 已完成的工作會保存七天；如果工作未於最長存留期內完成，則無法存取其資料。
 
@@ -91,7 +92,7 @@ Batch 服務所設定的其他限制。 不同於[資源配額](#resource-quotas
 1. 在 Batch 帳戶的功能表上選取 [配額]。
 1. 檢視目前套用至 Batch 帳戶的配額。
 
-:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch 帳戶配額":::
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="顯示 Azure 入口網站中 Batch 帳戶配額的螢幕擷取畫面。":::
 
 ## <a name="increase-a-quota"></a>增加配額
 
@@ -100,26 +101,26 @@ Batch 服務所設定的其他限制。 不同於[資源配額](#resource-quotas
 1. 選取入口網站儀表板上的 [說明 + 支援] 圖格或入口網站右上角的問號 ( **？** )。
 1. 選取 [新增支援要求] > [基本]。
 1. 在 [基本] 中：
-   
+
     1. [問題類型] > [服務與訂用帳戶限制 (配額)]
-   
+
     1. 選取您的訂用帳戶。
-   
+
     1. **配額類型** > **批次**
-      
+
        選取 [下一步] 。
-    
+
 1. 在 [詳細資料] 中：
-      
+
     1. 在 [提供詳細資料] 中，指定位置、配額類型和 Batch 帳戶。
-    
-       ![Batch 增加配額][quota_increase]
+
+       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="要求增加配額時，[配額詳細資料] 畫面的螢幕擷取畫面。":::
 
        配額類型包括：
 
        * **每個 Batch 帳戶**  
          單一 Batch 帳戶的特定值，包括專用和低優先順序的核心，以及作業和集區的數目。
-        
+
        * **每個區域**  
          適用於區域中所有 Batch 帳戶的值，包括每個訂用帳戶每個區域的 Batch 帳戶數目。
 
@@ -130,11 +131,11 @@ Batch 服務所設定的其他限制。 不同於[資源配額](#resource-quotas
        選取 [下一步] 。
 
 1. 在 [合約資訊] 中：
-   
+
     1. 選取 [偏好的連絡方式]。
-   
+
     1. 確認並輸入必要的連絡人詳細資料。
-   
+
        選取 [建立] 以提交支援要求。
 
 一旦您上傳支援要求，Azure 支援會與您連絡。 配額要求可能在幾分鐘內完成，最多兩個工作天。

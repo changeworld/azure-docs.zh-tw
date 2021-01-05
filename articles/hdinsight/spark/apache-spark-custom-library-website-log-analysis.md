@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ec2db1799919eb395996b56d08b77e3be7ff5a
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083792"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822364"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>使用自訂 Python 程式庫搭配 HDInsight 上的 Apache Spark 叢集來分析網站記錄
 
-此 Notebook 示範如何使用自訂程式庫搭配 HDInsight 上的 Apache Spark 來分析記錄資料。 我們使用的自訂程式庫是名為 **iislogparser.py**的 Python 程式庫。
+此 Notebook 示範如何使用自訂程式庫搭配 HDInsight 上的 Apache Spark 來分析記錄資料。 我們使用的自訂程式庫是名為 **iislogparser.py** 的 Python 程式庫。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -25,7 +25,7 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
 
 ## <a name="save-raw-data-as-an-rdd"></a>將原始資料儲存為 RDD
 
-在本節中，我們會使用與 HDInsight 中的 Apache Spark 叢集相關聯的 [Jupyter](https://jupyter.org) Notebook，來執行會處理原始範例資料，並將這些資料儲存成 Hive 資料表的作業。 範例資料是所有叢集在預設情況下均有的 .csv 檔案 (hvac.csv)。
+在本節中，我們會使用與 HDInsight 中 Apache Spark 叢集相關聯的 [Jupyter](https://jupyter.org) 筆記本，來執行處理原始範例資料的作業，並將其儲存為 Hive 資料表。 範例資料是所有叢集在預設情況下均有的 .csv 檔案 (hvac.csv)。
 
 當您的資料儲存為 Apache Hive 資料表之後，在下一節中，我們將使用 BI 工具（例如 Power BI 和 Tableau）連接至 Hive 資料表。
 
@@ -33,7 +33,7 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
 
 1. 建立新的 Notebook。 選取 [ **新增**]，然後 **PySpark**。
 
-    ![建立新的 Apache Jupyter 筆記本](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "建立新的 Jupyter Notebook")
+    ![建立新的 Apache Jupyter Notebook](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "建立新的 Jupyter Notebook")
 
 1. 系統隨即會建立新 Notebook，並以 Untitled.pynb 的名稱開啟。 在頂端選取筆記本名稱，然後輸入易記名稱。
 
@@ -172,7 +172,7 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
     SELECT * FROM AverageTime
     ```
 
-   `%%sql` magic 後面緊接著 `-o averagetime` 可確保查詢的輸出會保存在 Jupyter 伺服器的本機上 (通常是叢集的前端節點)。 輸出內容會以具有指定名稱 [averagetime](https://pandas.pydata.org/) 的 **Pandas**資料框架保存。
+   `%%sql` magic 後面緊接著 `-o averagetime` 可確保查詢的輸出會保存在 Jupyter 伺服器的本機上 (通常是叢集的前端節點)。 輸出內容會以具有指定名稱 [averagetime](https://pandas.pydata.org/) 的 **Pandas** 資料框架保存。
 
    您應該會看到如下圖所示的輸出：
 
@@ -198,10 +198,10 @@ HDInsight 上的 Apache Spark 叢集。 如需指示，請參閱[在 Azure HDIns
 
 1. 應用程式執行完畢之後，您應該關閉 Notebook 以釋放資源。 若要這麼做，請從 Notebook 的 [檔案]  功能表中，選取 [關閉並終止]  。 此動作將會關閉並關閉筆記本。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 探索下列文章：
 
 * [概觀：Azure HDInsight 上的 Apache Spark](apache-spark-overview.md)
-* [搭配 Jupyter Notebook 使用外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
+* [使用 Jupyter 筆記本的外部套件](apache-spark-jupyter-notebook-use-external-packages.md)
 * [在電腦上安裝 Jupyter 並連接到 HDInsight Spark 叢集](apache-spark-jupyter-notebook-install-locally.md)

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97c326bd1d2f61ba3fb9d6e381f5a8711bd0ca1d
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023971"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821191"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>使用 HDInsight Spark 叢集來讀取資料，並將其寫入 Azure SQL Database
 
 瞭解如何使用 Azure SQL Database 連接 Azure HDInsight 中的 Apache Spark 叢集。 然後，將資料讀取、寫入和串流至 SQL database。 本文中的指示會使用 Jupyter Notebook 來執行 Scala 程式碼片段。 不過，您可以使用 Scala 或 Python 來建立獨立應用程式，並進行相同的工作。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure HDInsight Spark 叢集。  請依照[在 HDInsight 中建立 Apache Spark 叢集](apache-spark-jupyter-spark-sql.md)中的指示操作。
 
@@ -36,20 +36,20 @@ ms.locfileid: "96023971"
 首先，建立與 Spark 叢集相關聯的 Jupyter Notebook。 您可以使用此 Notebook 執行本文中使用的程式碼片段。
 
 1. 從 [Azure 入口網站](https://portal.azure.com/)，開啟您的叢集。
-1. 在右側選取 [叢集儀表板] 下方的 **Jupyter Notebook**。  如果您沒有看到 [叢集 **儀表板**]，請從左側功能表中選取 **[總覽** ]。 出現提示時，輸入叢集的系統管理員認證。
+1. 選取右邊叢集 **儀表板** 底下的 **Jupyter Notebook** 。  如果您沒有看到 [叢集 **儀表板**]，請從左側功能表中選取 **[總覽** ]。 出現提示時，輸入叢集的系統管理員認證。
 
-    ![Apache Spark 上的 Jupyter 筆記本](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上的 Jupyter 筆記本")
+    ![Apache Spark 上的 Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark 上的 Jupyter Notebook")
 
    > [!NOTE]  
    > 您也可以在瀏覽器中開啟下列 URL，以存取 Spark 叢集上的 Jupyter Notebook。 使用您叢集的名稱取代 **CLUSTERNAME** ：
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. 在 Jupyter Notebook 中，按一下右上角的 [新增]，然後按一下 [Spark] 以建立 Scala Notebook。 HDInsight Spark 叢集上的 Jupyter Notebook 也會提供適用於 Python2 應用程式的 **PySpark** 核心，以及適用於 Python3 應用程式的 **PySpark3** 核心。 在本文中，我們會建立 Scala Notebook。
+1. 在 [Jupyter Notebook 中，按一下右上角的 [ **新增**]，然後按一下 [ **Spark** ] 以建立 Scala 筆記本。 HDInsight Spark 叢集上的 Jupyter 筆記本也會為 Python2 應用程式提供 **PySpark** 核心，並為 Python3 應用程式提供 **PySpark3** 核心。 在本文中，我們會建立 Scala Notebook。
 
-    ![Spark 上 Jupyter 筆記本的核心](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark 上 Jupyter 筆記本的核心")
+    ![Spark 上 Jupyter Notebook 的核心](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark 上 Jupyter Notebook 的核心")
 
-    如需核心的詳細資訊，請參閱[在 HDInsight 中搭配使用 Jupyter Notebook 核心與 Apache Spark 叢集](apache-spark-jupyter-notebook-kernels.md)。
+    如需核心的詳細資訊，請參閱 [在 HDInsight 中搭配使用 Jupyter Notebook 核心與 Apache Spark](apache-spark-jupyter-notebook-kernels.md)叢集。
 
    > [!NOTE]  
    > 在本文中，我們會使用 Spark (Scala) 核心，因為 Scala 和 JAVA 目前僅支援將 Spark 中的資料串流至 SQL Database。 即使對 SQL 的讀取和寫入可使用 Python 來執行，但為了本文的一致性，我們對三項作業都會使用 Scala。
@@ -64,7 +64,7 @@ ms.locfileid: "96023971"
 
 在本節中，您會從位於 AdventureWorks 資料庫的資料表 (例如 **SalesLT.Address**) 中讀取資料。
 
-1. 在新的 Jupyter 筆記本的程式碼資料格中，貼上下列程式碼片段，並將預留位置值取代為您資料庫的值。
+1. 在新的 Jupyter Notebook 的程式碼資料格中，貼上下列程式碼片段，並將預留位置值取代為您資料庫的值。
 
     ```scala
     // Declare the values for your database
@@ -121,7 +121,7 @@ ms.locfileid: "96023971"
 
 在本節中，我們會使用叢集中可用的範例 CSV 檔案，在您的資料庫中建立資料表，並填入資料。 範例 CSV 檔案 (**HVAC.csv**) 可從所有 HDInsight 叢集取得，位置是 `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv`。
 
-1. 在新的 Jupyter 筆記本的程式碼資料格中，貼上下列程式碼片段，並將預留位置值取代為您資料庫的值。
+1. 在新的 Jupyter Notebook 的程式碼資料格中，貼上下列程式碼片段，並將預留位置值取代為您資料庫的值。
 
     ```scala
     // Declare the values for your database
