@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 7bbac0d8593d47c3162a8ea43e928343a88f2de4
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 34efef4a01b58cc26fd1567336184837a703ade2
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861439"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97838751"
 ---
 # <a name="manage-the-on-premises-management-console"></a>管理內部部署管理主控台
 
@@ -298,26 +298,6 @@ ms.locfileid: "97861439"
 
 > [!NOTE]
 > 感應器會連結到其原先連接的訂用帳戶。 您只能使用其所連接的相同訂用帳戶來復原密碼。
-
-## <a name="update-the-software-version"></a>更新軟體版本
-
-下列程式說明如何更新內部部署管理主控台軟體版本。 更新程式大約需要30分鐘的時間。
-
-1. 移至 [Azure 入口網站](https://portal.azure.com/)。
-
-1. 前往 Defender for IoT。
-
-1. 移至 [ **更新** ] 頁面。
-
-1. 從內部部署管理主控台區段中選取版本。
-
-1. 選取 [下載] 並儲存檔案。
-
-1. 登入內部部署管理主控台，並從側邊功能表選取 [ **系統設定** ]。
-
-1. 在 [ **版本更新** ] 窗格中，選取 [ **更新**]。
-
-1. 選取您從 [Defender for IoT **更新** ] 頁面下載的檔案。
 
 ## <a name="see-also"></a>請參閱
 
