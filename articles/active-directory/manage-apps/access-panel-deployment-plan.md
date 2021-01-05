@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 209760b51e0f3ab931fa43ef88406f15c75ac079
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835657"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832534"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>規劃 Azure Active Directory 我的應用程式部署
 
@@ -72,10 +72,10 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 下表概述我的應用程式部署的主要使用案例：
 
-| 區域| 說明 |
+| 區域| 描述 |
 | - | - |
-| Access| 您可以從公司網路內的公司和個人裝置存取我的應用程式入口網站。 |
-|Access | 您可以從公司網路外部的公司裝置存取我的應用程式入口網站。 |
+| 存取| 您可以從公司網路內的公司和個人裝置存取我的應用程式入口網站。 |
+|存取 | 您可以從公司網路外部的公司裝置存取我的應用程式入口網站。 |
 | 稽核| 使用量資料會每隔29天下載到公司系統。 |
 | 控管| 定義和監視使用者指派給 Azure AD 連線應用程式和群組的生命週期。 |
 | 安全性| 資源的存取權是透過使用者和群組指派來控制。 只有經過授權的使用者可以管理資源存取權。 |
@@ -117,7 +117,7 @@ Azure AD 我的應用程式利用下列方式來受益于企業：
 
 下表列出幾個重要的我的應用程式設定，以及您可能使用的一般值：
 
-| 組態| 一般值 |
+| 設定| 一般值 |
 | - | - |
 | 判斷試驗群組| 識別要使用的 Azure AD 安全性群組，並確定所有試驗成員都是群組的一部分。 |
 | 判斷要為生產環境啟用的群組或群組。| 識別要使用的 Azure AD 安全性群組或已同步處理至 Azure AD 的 Active Directory 群組。 確定所有試驗成員都是群組的一部分。 |
@@ -172,7 +172,7 @@ Microsoft 會為 [電子郵件提供可自訂的範本，以及我的應用程�
 
 當使用者登入密碼型 SSO 應用程式時，他們必須安裝並使用我的應用程式安全登入延伸模組。 延伸模組會執行腳本，將密碼傳輸至應用程式的登入表單。 當使用者第一次啟動密碼型 SSO 應用程式時，系統會提示他們安裝此延伸模組。 有關延伸模組的詳細資訊，請參閱本檔中有關 [安裝我的應用程式瀏覽器延伸]()模組的資訊。
 
-如果您必須整合密碼型 SSO 應用程式，您應該定義一種機制，以 [支援的瀏覽器](../user-help/my-apps-portal-end-user-access.md)大規模部署擴充功能。 這些選項包括：
+如果您必須整合密碼型 SSO 應用程式，您應該定義一種機制，以 [支援的瀏覽器](../user-help/my-apps-portal-end-user-access.md)大規模部署擴充功能。 選項包括：
 
 * [Internet Explorer 的群組原則]()
 * [Internet Explorer 的 Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)

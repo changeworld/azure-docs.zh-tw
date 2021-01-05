@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 75a9d1267a8824801e3c24fc25c687f29a808187
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c2b440413599ce07112231af17daa0bc14817b76
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339926"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832772"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在您的 IoT Edge 裝置上部署安全性模組
 
@@ -53,7 +53,7 @@ ms.locfileid: "96339926"
 
 1. 選取 **物聯網**，然後搜尋適用 **于 IoT 的 Defender** ，然後選取它。
 
-   ![為 IoT 選取 Defender](media/howto/edge-onboarding-8.png)
+   :::image type="content" source="media/howto/edge-onboarding-8.png" alt-text="為 IoT 選取 Defender":::
 
 1. 按一下 [ **建立** ] 以設定部署。
 
@@ -141,7 +141,7 @@ ms.locfileid: "96339926"
 
 1. 選取 [儲存]。
 
-1. 選取 [下一步] 。
+1. 選取 [下一步]  。
 
 #### <a name="step-3-specify-routes"></a>步驟3：指定路由
 
@@ -157,7 +157,7 @@ ms.locfileid: "96339926"
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ```
 
-1. 選取 [下一步] 。
+1. 選取 [下一步]  。
 
 #### <a name="step-4-review-deployment"></a>步驟4：審查部署
 

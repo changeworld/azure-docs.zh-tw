@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862457"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832704"
 ---
 # <a name="continuously-export-security-center-data"></a>持續匯出資訊安全中心資料
 
@@ -24,6 +24,7 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 - 所有高嚴重性警示都會傳送至 Azure 事件中樞
 - 從 SQL 伺服器的弱點評定掃描中，所有的中度或更高嚴重性結果都會傳送至特定的 Log Analytics 工作區
 - 特定建議會在每次產生時傳遞至事件中樞或 Log Analytics 工作區 
+- 當控制項的分數變更0.01 或更多時，就會將訂用帳戶的安全分數傳送至 Log Analytics 工作區 
 
 本文說明如何設定對 Log Analytics 工作區或 Azure 事件中樞的連續匯出。
 
@@ -41,12 +42,22 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 |版本狀態：|正式上市 (GA)|
 |定價：|免費|
 |必要的角色和權限：|<ul><li>資源群組的 **安全性系統管理員** 或 **擁有** 者</li><li>目標資源的寫入權限</li><li>如果您使用下面所述的 Azure 原則 ' DeployIfNotExist ' 原則，您也需要指派原則的許可權</li></ul>|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov，其他 Gov<br>![是](./media/icons/yes-icon.png) Gov 至事件中樞) 的中國 (|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 美國 Gov、其他 Gov<br>![是](./media/icons/yes-icon.png) Gov 至事件中樞) 的中國 (|
 |||
 
 
+## <a name="what-data-types-can-be-exported"></a>可以匯出哪些資料類型？
 
+連續匯出可以在每次變更時匯出下列資料類型：
 
+- 安全性警示
+- 安全性建議 
+- 安全性結果，可以視為「子」建議，例如弱點評定掃描器或特定系統更新的結果。 您可以選擇包含它們的「父系」建議，例如「應該在您的電腦上安裝系統更新」。
+- 每個訂用帳戶或每個控制項) 的安全分數 (
+- 法規合規性資料
+
+> [!NOTE]
+> 安全分數和法規合規性資料的匯出是預覽功能，無法在政府雲端上使用。 
 
 ## <a name="set-up-a-continuous-export"></a>設定連續匯出 
 
@@ -67,7 +78,7 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
     您會在這裡看到匯出選項。 每個可用的匯出目標都有一個索引標籤。 
 
 1. 選取您要匯出的資料類型，然後從每種類型的篩選中選擇 (例如，[僅匯出高嚴重性警示]) 。
-1. （選擇性）如果您的選擇包含這四個建議的其中一個，您可以將弱點評定結果與它們一起包含：
+1. （選擇性）如果您的選擇包含其中一個建議，您可以將弱點評定結果與它們一起包含：
     - 應補救 SQL 資料庫的弱點評定結果
     - 您應補救電腦上 SQL server 的弱點評定結果 (預覽版) 
     - Azure Container Registry 映像中應予補救的弱點 (Qualys 技術提供)
@@ -212,10 +223,13 @@ Azure 監視器針對各種不同的 Azure 警示（包括診斷記錄、計量�
 
 ### <a name="does-the-export-include-data-about-the-current-state-of-all-resources"></a>匯出是否包含所有資源目前狀態的相關資料？
 
-不會。 為 **事件** 串流建立連續匯出：
+否。 為 **事件** 串流建立連續匯出：
 
 - 啟用匯出之前所收到的 **警示** 將不會匯出。
 - 每當資源的合規性狀態變更時，就會傳送 **建議**。 例如，當資源變成狀況不良時。 因此，與警示相同，將不會匯出因為您啟用匯出而未變更狀態之資源的建議。
+- 安全 **分數 (預覽)** 每個安全性控制或訂用帳戶會在安全性控制項的分數變更0.01 或更多時傳送。 
+- 當資源的合規性狀態變更時，會傳送 **法規合規性狀態 (預覽)** 。
+
 
 
 ### <a name="why-are-recommendations-sent-at-different-intervals"></a>為何會以不同的間隔傳送建議？

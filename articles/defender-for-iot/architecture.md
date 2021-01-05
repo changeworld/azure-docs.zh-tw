@@ -4,21 +4,21 @@ description: 瞭解適用于 IoT 的 Azure Defender 架構和資訊流程。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: rkarlin
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/08/2020
-ms.author: rkarlin
-ms.openlocfilehash: a8697094a3366e3b82ca65f1b962101243b22f84
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 12/02/2020
+ms.author: shhazam
+ms.openlocfilehash: 3b5a586b5db4fb15a32090e601bac5610ece1427
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548914"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832557"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>適用于 IoT 的 Azure Defender 架構
 
@@ -42,8 +42,7 @@ ms.locfileid: "96548914"
 - 適用于 IoT 的 Azure Defender 感應器 VM 或設備
 - 本機網站管理的內部部署管理主控台
 
-
-![適用于 IoT 的 Defender 架構](./media/architecture/defender-iot-security-architecture.png)
+:::image type="content" source="./media/architecture/defender-iot-security-architecture-v3.png" alt-text="適用于 IoT 的 Defender 架構。":::
 
 ### <a name="azure-defender-for-iot-sensors"></a>適用于 IoT 的 Azure Defender 感應器
 
@@ -53,7 +52,7 @@ Defender for IoT 感應器會探索和持續監視網路裝置。 感應器會�
  
 利用專利、IoT 及可感知的行為分析和第7層的深層封包檢查 (DPI) ，它可讓您分析超越傳統的簽章式解決方案，以立即偵測出 advanced IoT 和威脅 (例如根據異常或未經授權的活動無檔案惡意程式碼) 。 
   
-Defender for IoT 感應器會連線至 SPAN 埠或網路點，並立即開始執行 IoT 和網路流量的 DPI。 
+適用于 IoT 的 Defender 感應器會連接到 SPAN 埠或網路點，並立即開始在 IoT 和網路流量上執行 DPI。 
  
 資料收集、處理、分析和警示會直接在感應器上進行。 這最適合用於頻寬較低或高延遲連線的位置，因為只會將中繼資料傳送到管理主控台。
 
@@ -72,8 +71,7 @@ Defender for IoT 感應器會連線至 SPAN 埠或網路點，並立即開始執
 異常偵測引擎會偵測到不尋常的機器對機器 (M2M) 通訊和行為。 藉由以具決定性的狀態和轉換順序將 ICS 網路模型化，平臺需要比原本為其開發的一般數學方法或分析更短的學習期間，而不是。 它也會以較短的誤報來更快偵測異常狀況。 異常偵測引擎警示包括過多的 SMB 登入嘗試，以及 PLC 掃描偵測到的警示。
 
 #### <a name="operational-incident-detection"></a>操作事件偵測
-作業事件偵測會偵測操作問題，例如間歇性連線能力，這可能表示設備故障的早期徵兆。 例如，裝置被懷疑中斷連線 (沒有回應) ，而且 Siemens S7 stop PLC 命令已傳送警示。
-
+作業事件偵測會偵測操作問題，例如間歇性連線能力，這可能表示設備故障的早期徵兆。 例如，裝置會被視為已中斷連線 (沒有回應) ，而 Siemens S7 stop PLC 命令已傳送警示。
 
 ### <a name="management-consoles"></a>管理主控台
 透過兩個管理入口網站來管理跨混合式環境的 Azure Defender for IoT： 
@@ -82,9 +80,9 @@ Defender for IoT 感應器會連線至 SPAN 埠或網路點，並立即開始執
 - Azure 入口網站
 
 #### <a name="sensor-console"></a>感應器主控台
-感應器偵測會顯示在感應器主控台中，可供您在網路地圖、資產清查和廣泛的報表中進行查看、調查及分析，例如風險評量報告、資料採礦查詢和攻擊媒介。 您也可以使用主控台來查看和處理感應器引擎偵測到的威脅、將資訊轉送至協力廠商系統、管理使用者等等。
+感應器偵測會顯示在感應器主控台中，可供您在網路地圖、資產清查和廣泛的報表中進行查看、調查及分析，例如風險評量報告、資料採礦查詢和攻擊媒介。 您也可以使用主控台來查看和處理感應器引擎偵測到的威脅、將資訊轉送至夥伴系統、管理使用者等等。
 
-![適用于 IoT 的 Defender 感應器主控台](./media/architecture/sensor-console.png)
+:::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="適用于 IoT 的 Defender 感應器主控台":::
 
 #### <a name="on-premises-management-console"></a>內部部署管理主控台
 內部部署管理主控台可讓安全性作業中心 (SOC) 操作員管理及分析從多個感應器匯總到單一儀表板的警示，並提供對 OT 網路健康情況的整體觀點。
@@ -95,9 +93,24 @@ Defender for IoT 感應器會連線至 SPAN 埠或網路點，並立即開始執
 
 您可以針對高可用性設定部署管理主控台，以提供備份主控台，定期接收復原所需的所有設定檔案的備份。 如果主要主控台失敗，本機網站管理設備將會自動容錯移轉，以與備份主控台同步處理，以維持可用性而不會中斷。
 
+與 SOC 工作流程和執行手冊緊密整合，可讓您輕鬆地排定風險降低的風險和跨網站的相互關聯。
+
+- 透過單一整合的平臺進行資產管理、風險和弱點管理，以及使用事件回應進行威脅監視，來全面降低複雜度。
+
+- 匯總和相互關聯–顯示、匯總及分析從所有網站收集的資料和警示。
+
+- 控制所有感應器–設定和監視單一位置的所有感應器。
+
+   :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="管理您所有的警示和資訊。":::
+
 #### <a name="azure-portal"></a>Azure 入口網站
 
-Azure 中的 Defender for IoT 入口網站可用來協助您：·  購買解決方案設備·  安裝和更新軟體·  將感應器上架到 Azure ·  更新威脅情報套件
+Azure 中的 Defender for IoT 入口網站可用來協助您：
+
+- 購買解決方案設備
+- 安裝和更新軟體
+- 將感應器上架到 Azure
+- 更新威脅情報套件
 
 ## <a name="embedded-security-agent-built-in-mode"></a>Embedded security agent：內建模式
 
@@ -107,7 +120,7 @@ Azure 中的 Defender for IoT 入口網站可用來協助您：·  購買解決�
 
 在 **增強** 模式中，開啟 iot 中樞的 [ **安全性** ] 選項，並在裝置上安裝適用于 IoT 裝置代理程式的 Defender 之後，代理程式會從您的裝置收集、匯總及分析原始安全性事件。 原始安全性事件可以包含 IP 連線、進程建立、使用者登入，以及其他安全性相關資訊。 適用于 IoT 的 Defender 裝置代理程式也會處理事件匯總，以協助避免高的網路輸送量。 代理程式具有高度自訂性，可讓您將它們用於特定的工作，例如只傳送最快速 SLA 的重要資訊，或是將大量的安全性資訊和內容匯總到較大的區段，以避免產生更高的服務成本。
 
-裝置代理程式和其他應用程式會使用 **Azure 傳送安全性訊息 SDK** 將安全性資訊傳送至 Azure IoT 中樞。 IoT 中樞會取得此資訊，並將其轉送至適用于 IoT 的 Defender 服務。
+裝置代理程式和其他應用程式會使用 **azure 傳送安全性訊息 SDK** 將安全性資訊傳送至 azure IoT 中樞。 IoT 中樞會取得此資訊，並將其轉送至適用于 IoT 的 Defender 服務。
 
 一旦啟用 Defender for IoT 服務，除了轉送的資料之外，IoT 中樞也會傳送其內部資料，以供 Defender 針對 IoT 進行分析。 此資料包含裝置雲端作業記錄、裝置身分識別和中樞設定。 所有這些資訊都有助於建立適用于 IoT 分析管線的 Defender。
 
@@ -117,13 +130,8 @@ Azure 中的 Defender for IoT 入口網站可用來協助您：·  購買解決�
 
 適用于 IoT 的 Defender 建議和警示 (分析管線輸出) 會寫入至每個客戶的 Log Analytics 工作區。 在工作區中包含未經處理的事件以及警示和建議，可讓您使用所偵測到的可疑活動的確切詳細資料，深入探討調查和查詢。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="see-also"></a>請參閱
 
-在本文中，您已瞭解 Defender for IoT 解決方案的基本架構和工作流程。 若要深入瞭解必要條件、如何在 IoT 中樞開始使用並啟用您的安全性解決方案，請參閱下列文章：
+[適用于 IoT 的 Defender 常見問題](resources-frequently-asked-questions.md)
 
-- [服務必要條件](service-prerequisites.md)
-- [快速入門](getting-started.md)
-- [設定您的解決方案](quickstart-configure-your-solution.md)
-- [啟用 IoT 中樞的安全性](quickstart-onboard-iot-hub.md)
-- [適用于 IoT 的 Defender 常見問題](resources-frequently-asked-questions.md)
-- [適用于 IoT 的 Defender 安全性警示](concept-security-alerts.md)
+[系統必要條件](quickstart-system-prerequisites.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 5e7eabd44ea8c56fbb102f9e48812745a31de62a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089191"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835018"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>適用于 IoT 的 Azure Defender 常見問題
 
@@ -79,15 +79,11 @@ ms.locfileid: "92089191"
 
 只要裝置正在執行，感應器和代理程式就會繼續執行和儲存資料。 資料會根據大小設定儲存在安全性訊息快取中。 當裝置重新取得連線後，安全性訊息便會繼續傳送。
 
-
-
-
-
 ## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解如何開始使用 Defender for IoT，請參閱下列文章：
 
 - 閱讀適用于 IoT 的 Defender [總覽](overview.md)
-- 確認[服務先決條件](service-prerequisites.md)
-- 深入了解如何[開始使用](getting-started.md)
+- 確認 [系統必要條件](quickstart-system-prerequisites.md)
+- 深入瞭解如何 [開始使用 Defender For IoT](getting-started.md)
 - 瞭解 [適用于 IoT 的 Defender 安全性警示](concept-security-alerts.md)

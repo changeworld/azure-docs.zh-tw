@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 9862519a2003eb373c43fef1b660986a8d830327
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f584f11603e41b63f3c96749ed6c720eb5ce07a8
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094334"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835052"
 ---
 # <a name="azure-defender-for-iot-agent-frequently-asked-questions"></a>適用于 IoT 的 Azure Defender 代理程式常見問題
 
 本文提供 Defender for IoT 代理程式的常見問題和解答清單。
-
 
 ## <a name="do-i-have-to-install-an-embedded-security-agent"></a>我是否需要安裝內嵌的安全性代理程式？
 
@@ -41,7 +40,6 @@ ms.locfileid: "92094334"
 適用于 IoT 的 Defender 代理程式會藉由掃描設定) 、處理 & 連線，為裝置設定、行為和存取 (提供裝置層級威脅涵蓋範圍。 適用于 IoT 的 Defender 安全性代理程式不會掃描商務相關資料或活動。
 
 適用于 IoT 的 Defender 安全性代理程式是開放原始碼，並可在32位和64位 Windows 和 Linux 版本的 GitHub 上取得： https://github.com/Azure/Azure-IoT-Security 。
-
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>代理程式的相依性和先決條件為何？
 
@@ -65,7 +63,7 @@ ms.locfileid: "92094334"
 
 1. 確認[代理程式正在裝置上執行](how-to-agent-configuration.md)。
 
-1. 檢查是否已在 IoT 中樞針對**安全性**[成功啟用服務](quickstart-onboard-iot-hub.md)。
+1. 檢查是否已在 IoT 中樞針對 **安全性**[成功啟用服務](quickstart-onboard-iot-hub.md)。
 
 1. 檢查是否已 [在 Iot 中樞中使用 Defender For IoT 模組設定](quickstart-create-security-twin.md)裝置。
 
@@ -85,15 +83,13 @@ ms.locfileid: "92094334"
 
 ## <a name="is-there-a-way-to-test-if-the-agent-is-working-correctly"></a>有方法可測試代理程式是否正常運作嗎？
 
-如果代理程式停止通訊或無法傳送安全性訊息，則會產生**裝置無訊息**警示。
-
-
+如果代理程式停止通訊或無法傳送安全性訊息，則會產生 **裝置無訊息** 警示。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解如何開始使用 Defender for IoT，請參閱下列文章：
 
 - 閱讀適用于 IoT 的 Defender [總覽](overview.md)
-- 確認[服務先決條件](service-prerequisites.md)
-- 深入了解如何[開始使用](getting-started.md)
+- 確認 [系統必要條件](quickstart-system-prerequisites.md)
+- 深入瞭解如何 [開始使用 Defender For IoT](getting-started.md)
 - 瞭解 [適用于 IoT 的 Defender 安全性警示](concept-security-alerts.md)

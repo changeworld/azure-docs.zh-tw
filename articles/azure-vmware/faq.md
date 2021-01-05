@@ -2,24 +2,23 @@
 title: 常見問題集
 description: 提供有關 Azure VMware 解決方案的一些常見問題解答。
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.author: dikamath
-ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/22/2020
+ms.openlocfilehash: 941708003558dda601aa43459bc83133788687fd
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861403"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835188"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
-本文將回答有關 Azure VMware 解決方案的常見問題。
+在本文中，我們將回答有關 Azure VMware 解決方案的常見問題。
 
 ## <a name="general"></a>一般
 
 #### <a name="what-is-azure-vmware-solution"></a>什麼是 Azure VMware 解決方案？
 
-隨著企業採用 IT 現代化策略來提升業務靈活性、降低成本，以及加速創新，混合式雲端平臺已經成為客戶數位轉型的關鍵實現力。 Azure VMware 解決方案結合 VMware 的 Software-Defined 資料中心 (SDDC) 軟體與 Microsoft Azure 的全球雲端服務生態系統。 Azure VMware 解決方案的管理是為了符合效能、可用性、安全性和合規性需求。
+隨著企業採用 IT 現代化策略來提升業務靈活性、降低成本，以及加速創新，混合式雲端平臺已經成為客戶數位轉型的關鍵實現力。 Azure VMware 解決方案結合 VMware 的 Software-Defined 資料中心 (SDDC) 軟體與 Microsoft 的 Azure 全球雲端服務生態系統。 Azure VMware 解決方案的管理是為了符合效能、可用性、安全性和合規性需求。
 
 ## <a name="azure-vmware-solution-service"></a>Azure VMware 解決方案服務
 
@@ -59,13 +58,11 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 
 透過新的 Azure VMware 解決方案，Microsoft 和 VMware 具有直接的雲端提供者合作關係。 新的解決方案完全是由 Microsoft 設計、建立及支援，並由 VMware 背書。 在架構上，解決方案是一致的，且 VMware 技術堆疊在專用的 Azure 基礎結構上執行。
 
-
-
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware 解決方案 Vm 是否可由 VMRC 管理？
-是的，前提是它安裝所在的系統可以存取私用雲端 vCenter，並且使用公用 DNS 來解析 ESXi 主機名稱。
+是。 如果已安裝的系統可以存取私用雲端 vCenter，並且使用公用 DNS 來解析 ESXi 主機名稱。
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>是否有針對 Azure VMware 解決方案 Vm 安裝和使用 VMRC 的特殊指示？
-不會。 使用 [VMware 提供的指示](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) ，以符合這些指示中指定的 VM 必要條件。 
+否。 若要符合 VM 必要條件，請遵循 [VMware 提供的指示](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)。 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Vpn 支援 VMware HCX 嗎？
 否，因為頻寬和延遲需求。
@@ -74,10 +71,10 @@ Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務�
 Azure 防禦服務建議連線到跳躍方塊，以防止將 Azure VMware 解決方案公開到網際網路。 您無法使用 Azure 防禦來連接至 Azure VMware 解決方案 Vm，因為它們不是 Azure IaaS 物件。
 
 #### <a name="can-azure-load-balancer-internal-be-used-for-azure-vmware-solution-vms"></a>Azure VMware 解決方案 Vm 可以 Azure Load Balancer 內部使用嗎？
-不會。 Azure Load Balancer 內部-僅支援 Azure IaaS Vm。 Azure Load Balancer 不支援以 IP 為基礎的後端集區;僅 azure VMware 解決方案 Vm 不是 Azure 物件的 Azure Vm 或虛擬機器擴展集物件。
+否。 Azure Load Balancer 內部-僅支援 Azure IaaS Vm。 Azure Load Balancer 不支援以 IP 為基礎的後端集區;僅 azure VMware 解決方案 Vm 不是 Azure 物件的 Azure Vm 或虛擬機器擴展集物件。
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>是否可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案？
-是，您可以使用現有的 ExpressRoute 閘道來連接到 Azure VMware 解決方案，只要它不超過每個虛擬網路的四個 ExpressRoute 線路限制。  不過，若要透過 ExpressRoute 從內部部署存取 Azure VMware 解決方案，則必須要有 ExpressRoute Global Reach，因為 ExpressRoute 閘道不會在其連線的線路之間提供可轉移的路由。
+是。 您可以使用現有的 ExpressRoute 閘道來連線至 Azure VMware 解決方案，只要它不超過每個虛擬網路的四個 ExpressRoute 線路限制。 若要透過 ExpressRoute 從內部部署存取 Azure VMware 解決方案，您必須擁有 ExpressRoute Global，因為 ExpressRoute 閘道不會在其連線線路之間提供可轉移的路由。
 
 ## <a name="compute-network-storage-and-backup"></a>計算、網路、儲存體和備份
 
@@ -105,9 +102,9 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 是，所有 vSAN 資料預設都會使用儲存在 Azure Key Vault 中的金鑰進行加密。
 
-#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendors-isvs-backup-solutions"></a>您記載了 Commvault、Veritas 和 Veeam 已擴充其備份解決方案，以使用 Azure VMware 解決方案。 其他獨立軟體廠商 (Isv) 備份解決方案呢？
+####  <a name="what-independent-software-vendors-isvs-backup-solutions-work-with-azure-vmware-solution"></a>哪些獨立軟體廠商 (Isv) 備份解決方案可與 Azure VMware 解決方案搭配運作？
 
-在我們知道的情況下，使用 VMware VADP 搭配 HotAdd 傳輸模式的任何備份解決方案，都應該可以立即在 Azure VMware 解決方案中使用。
+Commvault、Veritas 和 Veeam 已擴充其備份解決方案，以使用 Azure VMware 解決方案。  不過，使用 VMware VADP 搭配 HotAdd 傳輸模式的任何備份解決方案，都可以立即在 Azure VMware 解決方案上運作。
 
 #### <a name="what-about-support-for-isv-backup-solutions"></a>ISV 備份解決方案的支援？
 
@@ -119,7 +116,7 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 #### <a name="are-the-snmp-infrastructure-logs-shared"></a>SNMP 基礎結構記錄檔是共用的嗎？
 
-不會。
+否。
 
 ## <a name="hosts-clusters-and-private-clouds"></a>主機、叢集和私人雲端
 
@@ -127,7 +124,7 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 否，私人雲端主機和叢集是專用的，而且會在使用前後安全地清除。
 
-#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>每個叢集的最小和最大主機數目為何？
+#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>每個叢集的主機數目下限和上限為何？
 
 叢集可以在 3 到 16 個 ESXi 主機之間調整。 試用叢集限制為 3 部主機。
 
@@ -147,7 +144,8 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 #### <a name="what-versions-of-vmware-software-is-used-in-private-clouds"></a>哪些版本的 VMware 軟體用於私人雲端？
 
-私用雲端使用 vSphere 6.7 U3、vSAN 6.7 U3、VMware HCX 和 NSX-T 2.5。  如需詳細資訊，請參閱 [VMware 軟體版本需求](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)。
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
+
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>私人雲端是否使用 VMware NSX？
 
@@ -188,7 +186,7 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>我是否需要對於私人雲端之中邏輯網路上的 VM 限制從網際網路存取的存取權？
 
-不會。 依預設，不允許從網際網路將網路流量直接輸入私人雲端。  不過，您可以透過 Azure VMware Solution 私用雲端 Azure 入口網站中的 [公用 IP](public-ip-usage.md) 選項，將 Azure Vmware 解決方案 vm 公開至網際網路。
+否。 依預設，不允許從網際網路將網路流量直接輸入私人雲端。  不過，您可以透過 Azure VMware 解決方案私人雲端的 Azure 入口網站中的 [公用 IP](public-ip-usage.md) 選項，將 Azure Vmware 解決方案 vm 公開至網際網路。
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>我是否需限制從邏輯網路上的 VM 存取網際網路線的存取權？
 
@@ -201,6 +199,9 @@ Azure VMware 解決方案中的每個 ESXi 主機都會設定 4 25-Gbps 的 Nic�
 #### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>在內部部署與 Azure VMware 解決方案之間，透過 ExpressRoute 全球各地的 Azure 虛擬 WAN 來建立傳輸連線能力嗎？
 Azure 虛擬 WAN 不會在兩個連接的 ExpressRoute 線路和非虛擬 WAN ExpressRoute 閘道之間提供可轉移的路由。 使用 ExpressRoute Global 觸及可允許內部部署與 Azure VMware 解決方案之間的連線，但會透過 Microsoft 的全球網路（而不是虛擬 WAN 中樞）進行連線。
 
+#### <a name="could-i-use-hcx-through-public-internet-communications-as-a-workaround-for-the-non-supportability-of-hcx-when-using-vpn-s2s-with-vwan-for-on-premises-communications"></a>當搭配 vWAN 使用 VPN S2S 與進行內部部署通訊時，是否可以透過公用網際網路通訊使用 HCX 作為 HCX 不可支援性的因應措施？
+
+目前，唯一支援的 HCX 方法是透過 ExpressRoute。
 
 ## <a name="accounts-and-privileges"></a>帳戶和權限
 
@@ -245,7 +246,7 @@ Azure 訂閱需要 Azure 帳戶。
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>Azure VMware 解決方案支援 Red Hat 解決方案嗎？
 
-Microsoft 和 Red Hat 共用一組整合式共置的支援小組，可針對在 Azure 平臺上執行的 Red Hat 生態系統提供統一的聯繫點。  如同可搭配 Red Hat Enterprise Linux 使用的其他 Azure 平臺服務，Azure VMware 解決方案也受到雲端存取和整合支援範圍的支援。 支援在 Azure 中的 Azure VMware 解決方案上執行的 Red Hat Enterprise Linux。
+Microsoft 和 Red Hat 共用整合式共置的支援小組，為在 Azure 平臺上執行的 Red Hat 生態系統提供統一的連絡人點。  如同可搭配 Red Hat Enterprise Linux 使用的其他 Azure 平臺服務，Azure VMware 解決方案也受到雲端存取和整合支援範圍的支援。 支援在 Azure 中的 Azure VMware 解決方案上執行的 Red Hat Enterprise Linux。
 
 #### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>VMware HCX Enterprise 是否可供使用，如果有的話，它需要多少費用？
 
@@ -294,15 +295,15 @@ VMware HCX Enterprise 提供作為 *預覽* 功能/服務的 Azure vmware 解決
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
    ```
 
-   如需註冊資源提供者的其他方式，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。 
+   如需更多註冊資源提供者的方法，請參閱 [Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。 
 
 #### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>保留實例是否可透過雲端解決方案提供者 (CSP) 方案購買？
 
-是。 CSP 可以為客戶購買保留實例。 如需詳細資訊，請參閱 [使用保留實例節省成本一](reserved-instance.md) 文。 
+是。 CSP 可以為客戶購買保留實例。 如需詳細資訊，請參閱 [使用保留實例節省成本](reserved-instance.md)。 
 
 #### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Azure VMware 解決方案是否為裝載 CSP 合作夥伴提供多租使用者？
 
-不會。 Azure VMware 解決方案目前不提供多租使用者。
+否。 Azure VMware 解決方案目前不提供多租使用者。
 
 #### <a name="will-traffic-between-on-premises-and-azure-vmware-solution-over-expressroute-incur-any-outbound-data-transfer-charge-in-the-metered-data-plan"></a>內部部署和 Azure VMware 解決方案之間的流量會在計量付費資料方案中產生任何輸出資料傳輸費用嗎？
 

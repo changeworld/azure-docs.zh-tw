@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 74e0e8daa662f4dd49f1886972236b5b0a3b100a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3e48ed870bf405a82441678b5e8c01d199e7ebff
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348852"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835001"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>快速入門：建立 azureiotsecurity 模組對應項
 
@@ -65,10 +65,10 @@ _azureiotsecurity_ 模組對應項可透過兩種方式來建立：
 
 1. 在 Azure IoT 中樞內，從 [總管]  功能表選取 [IoT 裝置]  。
 1. 輸入裝置識別碼，或選取 [查詢裝置欄位]  中的選項，然後按一下 [查詢裝置]  。
-    ![查詢裝置](./media/quickstart/verify-security-module-twin.png)
+    :::image type="content" source="./media/quickstart/verify-security-module-twin.png" alt-text="查詢裝置":::
 1. 選取該裝置，或對其按兩下以開啟 [裝置詳細資料] 頁面。
 1. 選取 [模組身分識別]  功能表，然後確認與裝置相關聯的模組身分識別清單中是否存在 **azureiotsecurity** 模組。
-    ![與裝置相關聯的模組](./media/quickstart/verify-security-module-twin-3.png)
+    :::image type="content" source="./media/quickstart/verify-security-module-twin-3.png" alt-text="與裝置相關聯的模組":::
 
 若要深入了解如何自訂適用於 IoT 的 Defender 模組對應項的屬性，請參閱[代理程式設定](how-to-agent-configuration.md)。
 

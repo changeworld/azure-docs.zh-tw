@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/17/2019
+ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: e741bd6c87ea32b0d92b1dd53112a1bed3e4cd38
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 689276d44a175f3c314b0fcf681fd6a995b8dde2
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174912"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832619"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>規劃自動使用者佈建部署
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 自動使用者布建可簡化此程式，方�
 
 請參閱 [使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md) 布建和解除布建，以進一步瞭解其功能。
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>學習
 
 使用者布建會建立進行中身分識別治理的基礎，並增強依賴授權身分識別資料的商務程式品質。
 

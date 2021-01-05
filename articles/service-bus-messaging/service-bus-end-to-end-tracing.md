@@ -4,12 +4,12 @@ description: '概述服務匯流排用戶端診斷和端對端追蹤 (用戶端�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc7dab21fc01b624e8ab122fe883be89ea8633f6
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021624"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832687"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>透過服務匯流排傳訊進行分散式追蹤與相互關聯
 
@@ -193,7 +193,7 @@ TaskStatus status = (TaskStatus)evnt.Value.GetProperty("Status");
 var tagsList = new StringBuilder();
 foreach (var tags in currentActivity.Tags)
 {
-    tagsList.Append($", "{tags.Key}={tags.Value}");
+    tagsList.Append($", {tags.Key}={tags.Value}");
 }
 
 serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, Duration={currentActivity.Duration}, Status={status}, Id={currentActivity.Id}, StartTime={currentActivity.StartTimeUtc}{tagsList}");
