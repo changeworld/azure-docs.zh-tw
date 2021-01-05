@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025645"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857353"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>評估和改善自訂語音精確度
 
@@ -23,7 +23,7 @@ ms.locfileid: "95025645"
 
 ## <a name="evaluate-custom-speech-accuracy"></a>評估自訂語音精確度
 
-測量模型精確度的產業標準是 (WER) 的 *文字* 錯誤率。 WER 會計算辨識期間所識別的錯誤單字數目，然後除以人為標記的文字記錄中提供的單字總數， (如下所示為 N) 。 最後，該數位會乘以100% 來計算 WER。
+測量模型精確度的產業標準是 (WER) 的 [文字](https://en.wikipedia.org/wiki/Word_error_rate) 錯誤率。 WER 會計算辨識期間所識別的錯誤單字數目，然後除以人為標記的文字記錄中提供的單字總數， (如下所示為 N) 。 最後，該數位會乘以100% 來計算 WER。
 
 ![WER 公式](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -33,9 +33,11 @@ ms.locfileid: "95025645"
 * 刪除 (D) ：在假設文字記錄中未偵測到的字詞
 * 替代 (S) ：在參考和假設之間替代的單字
 
-以下是範例：
+以下為範例：
 
 ![錯誤識別的單字範例](./media/custom-speech/custom-speech-dis-words.png)
+
+如果您想要在本機複寫 WER 量值，可以使用 [SCTK](https://github.com/usnistgov/SCTK)中的 sclite。
 
 ## <a name="resolve-errors-and-improve-wer"></a>解決錯誤並改善 WER
 
@@ -96,7 +98,7 @@ ms.locfileid: "95025645"
 
 ### <a name="add-related-text-sentences"></a>新增相關的文字句子
 
-其他相關的文字句子主要可以藉由在內容中顯示，來減少與通用單字和網域特定單字 misrecognition 相關的替代錯誤。 特定領域的單字可能不尋常或組成單字，但其發音必須很容易辨識。
+當您將新的自訂模型定型時，請先加入相關的文字，以改善定義域特定單字和片語的辨識。 相關的文字句子主要可以藉由在內容中顯示，來減少與通用單字和網域特定單字 misrecognition 相關的替代錯誤。 特定領域的單字可能不尋常或組成單字，但其發音必須很容易辨識。
 
 > [!NOTE]
 > 避免包含雜訊的相關文字句子，例如無法辨識的字元或文字。
@@ -111,6 +113,12 @@ ms.locfileid: "95025645"
 * 避免包含轉譯錯誤的範例，但包含各種音效品質。
 * 請避免與您問題網域無關的句子。 不相關的句子可能會危害您的模型。
 * 當文字記錄品質有所差異時，您可以複製非常好的句子 (像是包含關鍵字組的絕佳轉譯，) 來提高其權數。
+* 語音服務會自動使用文字記錄來改善定義域特定單字和片語的辨識，如同將它們新增為相關文字一樣。
+* 如果音訊也難以理解，則使用音訊定型將會帶來最大的好處。 在大部分的情況下，您應該只使用相關的文字來開始定型。
+* 定型作業可能需要數天的時間才能完成。 若要改善定型速度，請務必在 [具有專用硬體的區域](custom-speech-overview.md#set-up-your-azure-account) 中建立您的語音服務訂用帳戶來進行訓練。
+
+> [!NOTE]
+> 並非所有的基底模型都支援使用音訊定型。 如果基底模型不支援它，語音服務將只會使用文字記錄中的文字並忽略音訊。
 
 ### <a name="add-new-words-with-pronunciation"></a>使用發音新增單字
 
@@ -130,7 +138,7 @@ ms.locfileid: "95025645"
 | 聽寫               | 寫入的輸入，例如立即訊息或電子郵件 | 類似于上面 | 類似于上面 |
 | 影片隱藏式輔助字幕 | 電視節目腳本、電影、行銷內容、影片摘要 | 影片的確切文字記錄 | 類似于上面 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [定型和部署模型](how-to-custom-speech-train-model.md)
 

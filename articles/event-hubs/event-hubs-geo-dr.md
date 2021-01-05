@@ -3,18 +3,27 @@ title: 異地災害復原 - Azure 事件中樞 | Microsoft Docs
 description: 如何使用地理區域，在 Azure 事件中樞中進行容錯移轉並執行災害復原
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6dd2385a6f6e61136a1284171532aedd70a9cc96
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e10ac5847a38190c8feaae5e51f9b55bee4c4fbc
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608345"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861478"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中樞 - 異地災害復原 
-當整個 Azure 區域或資料中心 (如果未使用[可用性區域](../availability-zones/az-overview.md)) 遇到停機時，最重要的是資料處理作業能夠繼續在不同的區域或資料中心運作。 因此，「地理災害復原」和「異地複寫」對於任何企業而言都是重要的功能。 Azure 事件中樞支援命名空間層級的地理災害復原和異地複寫。 
 
-> [!NOTE]
-> 異地災害復原功能僅適用於[標準和專用 SKU](https://azure.microsoft.com/pricing/details/event-hubs/)。  
+針對許多企業，以及在某些情況下，即使產業法規需要，仍有彈性地因應資料處理資源的災難中斷。 
+
+Azure 事件中樞已針對橫跨資料中心內多個失敗網域的叢集中的個別機器或甚至是整個機架的風險，將其分散到不同的風險，並且能實行透明的失敗偵測和容錯移轉機制，讓服務能夠繼續在保證的服務層級內運作，而且通常不會在發生這類失敗時明顯中斷。 如果已使用 [可用性區域](../availability-zones/az-overview.md)的啟用選項來建立事件中樞命名空間，則風險是中斷風險會進一步分散到三個實體分隔的設備，而服務會有足夠的容量保留，以立即應付整個設施的完整、重大損失。 
+
+具備可用性區域支援的全主動 Azure 事件中樞叢集模型可提供復原能力，以因應硬體故障，甚至是整個資料中心設施的災難性損失。 同樣地，可能會有以大範圍實體終結的抑音符號情況，甚至這些量值無法充分抵禦。 
+
+事件中樞地理災難復原功能的設計目的，是為了讓您更輕鬆地從這種程度的嚴重損壞中復原，並放棄失敗的 Azure 區域，而不需要變更您的應用程式設定。 放棄 Azure 區域通常會牽涉到數個服務，而這項功能主要是為了協助保留複合應用程式設定的完整性。  
+
+Geo-Disaster 復原功能可確保將命名空間 (事件中樞、取用者群組和設定的完整) 設定，會在配對時持續從主要命名空間複寫至次要命名空間，並可讓您在任何時間起始僅限一次的容錯移轉從主要命名空間移至次要命名空間。 容錯移轉移動會將命名空間的所選擇別名重新指向次要命名空間，然後中斷配對。 啟動時，容錯移轉幾乎是瞬間的。 
+
+> [!IMPORTANT]
+> 這項功能可讓您以相同的設定進行作業的即時持續性，但不 **會複寫事件資料**。 除非嚴重損壞導致遺失所有區域，否則在容錯移轉之後，事件資料會保留在主要事件中樞，而在還原存取之後，就可以從該處取得歷程記錄事件。 若要在主動/主動設定中複寫事件資料和操作對應的命名空間，以應付中斷和嚴重損壞狀況，請勿在此地理損毀修復功能集上取得，但請遵循複寫 [指引](event-hubs-federation-overview.md)。  
 
 ## <a name="outages-and-disasters"></a>中斷與災害
 

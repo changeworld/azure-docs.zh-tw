@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492041"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858683"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>針對 Windows (SMB) 中的 Azure 檔案儲存體問題進行疑難排解
 
@@ -145,7 +145,7 @@ Azure 檔案同步可以將您的內部部署 Windows Server 轉換成 Azure 檔
 
 當您達到 Azure 檔案共用上的檔案或目錄允許的並行開啟控制碼上限時，就會發生錯誤1816。 如需詳細資訊，請參閱 [Azure 檔案服務擴展目標](./storage-files-scale-targets.md#azure-files-scale-targets)。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 關閉一些控制代碼以減少同時開啟的控制代碼數，然後再試一次。 如需詳細資訊，請參閱 [Microsoft Azure 儲存體效能和擴充性檢查清單](../blobs/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
@@ -289,7 +289,7 @@ $leaseClient.Break() | Out-Null
 
 根據預設，Windows 檔案總管不會以系統管理員身分執行。 如果您從系統管理命令提示字元執行 net use，就是以系統管理員身分對應網路磁碟機。 因為對應的磁碟機是以使用者為中心，如果磁碟機掛接在不同的使用者帳戶下，登入的使用者帳戶不會顯示此磁碟機。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 從非系統管理員命令掛接共用。 或者，您也可以遵循 [本 TechNet 主題](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee844140(v=ws.10)) 來設定 **EnableLinkedConnections** 登錄值。
 
 <a id="netuse"></a>
@@ -299,7 +299,7 @@ $leaseClient.Break() | Out-Null
 
 Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者帳戶名稱開頭為斜線，磁碟機對應將會失敗。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 您可以使用下列其中一種方式來解決這個問題：
 
@@ -320,7 +320,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 磁碟機是按每個使用者掛接。 如果您的應用程式或服務正在與掛接磁碟機之帳戶不同的使用者帳戶下執行，應用程式將不會看到該磁碟機。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 使用下列其中一個解決方案：
 
@@ -361,7 +361,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 如果用戶端機器上沒有足夠的快取可供大型目錄使用時，就會發生此問題。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 若要解決此問題，請調整 **DirectoryCacheEntrySizeMax** 登錄值，以允許在用戶端機器快取較大型的目錄清單：
 
@@ -378,7 +378,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 當您嘗試在未于相關聯訂用帳戶的 Azure 檔案儲存體租使用者上建立[Azure AD 網域服務 (AZURE AD ds) ](../../active-directory-domain-services/overview.md)的儲存體帳戶上，于[Azure AD 上啟用 AZURE ACTIVE DIRECTORY DOMAIN SERVICES (Azure AD ds) 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)時，就會發生錯誤 AadDsTenantNotFound。  
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 在您的儲存體帳戶部署所在訂用帳戶的 Azure AD 租使用者上，啟用 Azure AD DS。 您需要 Azure AD 租使用者的系統管理員許可權，才能建立受控網域。 如果您不是 Azure AD 租使用者的系統管理員，請洽詢系統管理員，並遵循逐步指引來 [建立和設定 Azure Active Directory Domain Services 受控網域](../../active-directory-domain-services/tutorial-create-instance.md)。
 
@@ -406,6 +406,8 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 5. CheckSidHasAadUser：檢查登入的 AD 使用者是否已同步處理至 Azure AD。 如果您想要查閱特定 AD 使用者是否同步處理至 Azure AD，您可以在輸入參數中指定-UserName 和-Domain。 
 6. CheckGetKerberosTicket：嘗試取得 Kerberos 票證以連接至儲存體帳戶。 如果沒有有效的 Kerberos 權杖，請執行 klist 取得 cifs/儲存體---------net.tcp Cmdlet，並檢查錯誤碼的根本原因，使票證抓取失敗。
 7. CheckStorageAccountDomainJoined：檢查是否已啟用 AD 驗證，並已填入帳戶的 AD 屬性。 如果沒有，請參閱 [此處](./storage-files-identity-ad-ds-enable.md) 的指示，在 Azure 檔案儲存體上啟用 AD DS 驗證。 
+8. CheckUserRbacAssignment：檢查 AD 使用者是否具有適當的 RBAC 角色指派，以提供共用層級許可權來存取 Azure 檔案儲存體。 如果沒有，請參閱 [此處](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) 的指示來設定共用層級許可權。 AzFilesHybrid v 0.2.3 + version) 支援 (
+9. CheckUserFileAccess：檢查 AD 使用者是否具有適當的目錄/檔案許可權 (Windows Acl) 存取 Azure 檔案儲存體。 如果沒有，請參閱 [此處](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) 的指示，以設定目錄/檔案層級許可權。 AzFilesHybrid v 0.2.3 + version) 支援 (
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>無法設定目錄/檔案層級許可權 (windows Acl) Windows 檔案總管
 
@@ -415,7 +417,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 - 按一下 [安全性] 索引標籤下的 [編輯] 許可權之後，就不會載入許可權嚮導。 
 - 當您嘗試選取新的使用者或群組時，網域位置不會顯示正確的 AD DS 網域。 
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 
 建議您使用 [icacls 工具](/windows-server/administration/windows-commands/icacls) 來設定目錄/檔案層級許可權，以作為因應措施。 
 

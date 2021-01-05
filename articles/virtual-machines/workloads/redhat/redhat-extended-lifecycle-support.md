@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f31cc982e5e7f92cfe7e8adf588dd96628f2c6f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: fd36d365eb02819352bc14caf9d8e258a8663c70
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744036"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861391"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) 延伸生命週期支援
 本文提供 Red Hat Enterprise 映射的延伸生命週期支援相關資訊：
@@ -38,6 +38,12 @@ ms.locfileid: "95744036"
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>使用 Red Hat Enterprise Linux 延長生命週期支援 (ELS) 附加元件的額外費用為何？
 您可以使用[ELS 表單](https://aka.ms/els-form)來找到與延長生命週期支援相關的成本
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-how-can-i-add-extended-lifecycle-support-to-this-vm"></a>我已使用自訂映射來部署 VM。 如何將延伸生命週期支援新增至此 VM？
+您必須直接與 Red Hat 聯繫，並直接取得支援。
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-can-i-convert-this-vm-to-a-payg-vm"></a>我已使用自訂映射來部署 VM。 我可以將此 VM 轉換成 PAYG VM 嗎？
+不可以。 Azure 目前不支援轉換。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353692"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845552"
 ---
 # <a name="form-recognizer-layout-service"></a>表單辨識器版面佈建服務
 
@@ -72,7 +72,7 @@ JSON 輸出有兩個部分：
 
 ## <a name="example-output"></a>範例輸出
 
-### <a name="text"></a>文字
+### <a name="text"></a>Text
 
 版面配置會將檔中的文字解壓縮 (PDF、TIFF) 和影像 (jpg、png、bmp) 具有不同的文字角度、色彩、角度、檔的相片、傳真、印刷、手寫 (僅限英文) 和混合模式。 文字會以線條、文字、周框方塊、信賴分數和樣式 (手寫或其他) 的資訊進行解壓縮。 所有文字資訊都包含在 `"readResults"` JSON 輸出的區段中。 
 
@@ -89,8 +89,7 @@ JSON 輸出有兩個部分：
 ## <a name="next-steps"></a>後續步驟
 
 - 使用[表單辨識器範例 UI](https://fott-preview.azurewebsites.net/)來嘗試您自己的版面配置解壓縮
-- 完成 [表單辨識器用戶端程式庫快速入門](quickstarts/client-library.md) ，開始以您選擇的語言來解壓縮版面配置。
-- 或者，遵循「 [解壓縮版面配置資料](./QuickStarts/python-layout.md) 」快速入門，使用 Python 和 REST API 來執行版面配置資料解壓縮。
+- 完成 [表單辨識器快速入門](quickstarts/client-library.md) ，開始以您選擇的語言來解壓縮版面配置。
 
 ## <a name="see-also"></a>請參閱
 

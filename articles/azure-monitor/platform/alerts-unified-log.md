@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317549"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857421"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure 監視器中的記錄警示
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 記錄警示是 [Azure 警示](./alerts-overview.md)中支援的其中一種警示類型。 記錄警示可讓使用者使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。
 
@@ -64,7 +64,7 @@ ms.locfileid: "96317549"
 
 例如，查詢會掃描60分鐘，如果時間範圍是60分鐘，即使文字包含 **前 (1d)**。 時間範圍和查詢時間篩選需要相符。 在範例案例中，將 **週期** 覆  /  **寫查詢時間範圍** 變更為一天，會如預期般運作。
 
-### <a name="measure"></a>Measure
+### <a name="measure"></a>量值
 
 記錄警示會將記錄轉換成可評估的數值。 您可以測量兩個不同的專案：
 
@@ -120,6 +120,8 @@ requests
 ### <a name="split-by-alert-dimensions"></a>依警示維度分割
 
 藉由群組為唯一的組合，將警示依數位或字串資料行分割成個別的警示。 在大規模建立以資源為中心的警示時 (訂用帳戶或資源群組範圍) ，您可以依 Azure 資源識別碼資料行分割。 在 Azure 資源識別碼資料行上進行分割，會將警示的目標變更為指定的資源。
+
+當您想要在多個 Azure 資源上監視相同的條件時，建議依 Azure 資源識別碼資料行進行分割。 例如，監視所有虛擬機器的 CPU 使用率超過80%。 如果您想要在範圍內的多個資源上進行條件，例如監視資源群組範圍中至少有五部機器的 CPU 使用率超過80%，您也可以決定不要分割。
 
 在工作區和 Application Insights 中，只有計量 **測量** 量數值型別才支援。 此欄位在上稱為「 **匯總**」。 其限制為三個數據行。 查詢中有三個以上的分組依據資料行可能會導致非預期的結果。 在所有其他資源類型中，它會在條件的 [ **依維度分割** ] 區段中設定 (限制為六個分割) 。
 
@@ -184,10 +186,10 @@ requests
 
 | Time    | 記錄條件評估 | 結果 
 | ------- | ----------| ----------| ------- 
-| 00:05 | false | 不會引發警示。 未呼叫任何動作。
+| 00:05 | FALSE | 不會引發警示。 未呼叫任何動作。
 | 00:10 | TRUE  | 引發警示，並呼叫動作群組。 新的警示狀態為 [作用中]。
 | 00:15 | TRUE  | 引發警示，並呼叫動作群組。 新的警示狀態為 [作用中]。
-| 00:20 | false | 不會引發警示。 未呼叫任何動作。 舊警示狀態維持使用中狀態。
+| 00:20 | FALSE | 不會引發警示。 未呼叫任何動作。 舊警示狀態維持使用中狀態。
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>記錄警示的定價和計費
 

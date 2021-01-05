@@ -2,20 +2,22 @@
 title: Azure 中的 BareMetal 實例單位
 description: 瞭解如何透過 Azure 入口網站識別 BareMetal 實例單位並與其互動。
 ms.topic: how-to
-ms.date: 12/31/2020
-ms.openlocfilehash: 927baa79519781ef74920b17bc9fcd858f0f6c6f
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829138"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861025"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>透過 Azure 入口網站管理 BareMetal 執行個體
  
 本文說明 [Azure 入口網站](https://portal.azure.com/) 如何顯示 [BareMetal 實例](baremetal-overview-architecture.md)。 本文也會說明您可以在 Azure 入口網站中使用已部署的 BareMetal 實例單位進行的活動。 
  
 ## <a name="register-the-resource-provider"></a>註冊資源提供者
-BareMetal 實例的 Azure 資源提供者可讓您在目前處於公開預覽狀態的 Azure 入口網站中，提供實例的可見度。 根據預設，您用於 BareMetal 實例部署的 Azure 訂用帳戶會註冊 *BareMetalInfrastructure* 資源提供者。 如果您沒有看到已部署的 BareMetal 實例單位，則必須向您的訂用帳戶註冊資源提供者。 有兩種方式可以註冊 BareMetal 實例資源提供者：
+BareMetal 實例的 Azure 資源提供者可讓您在目前處於公開預覽狀態的 Azure 入口網站中，提供實例的可見度。 根據預設，您用於 BareMetal 實例部署的 Azure 訂用帳戶會註冊 *BareMetalInfrastructure* 資源提供者。 如果您沒有看到已部署的 BareMetal 實例單位，則必須向您的訂用帳戶註冊資源提供者。 
+
+有兩種方式可以註冊 BareMetal 實例資源提供者：
  
 * [Azure CLI](#azure-cli)
  
@@ -85,15 +87,15 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
 在右側，您會看到單位的名稱、作業系統 (OS) 、IP 位址，以及顯示 CPU 執行緒和記憶體數目的 SKU。 您也會看到 BareMetal 實例戳記) 的電源狀態和硬體版本 (修訂。 電源狀態指出硬體單位是否開啟電源或關閉電源。 但是，作業系統詳細資料並不會指出它是否已啟動並執行。
  
 可能的硬體修訂如下：
+
+* 修訂 3 (Rev 3) 
+
+* 修訂 4 (Rev 4) 
  
-* 修訂3
- 
-* 修訂4
- 
-* 修訂4。2
+* 修訂 4.2 (Rev 4.2) 
  
 >[!NOTE]
->修訂4.2 是使用修訂4架構的最新更名 BareMetal 基礎結構。 這項功能在 Azure Vm 和 BareMetal 實例單位之間的網路延遲有顯著的改善，並以修訂版4戳記或資料列部署。 如需不同修訂的詳細資訊，請參閱 [Azure 上的 BareMetal 基礎結構](baremetal-overview-architecture.md)。
+>Rev 4.2 是最新的更名 BareMetal 基礎結構，使用現有的 Rev 4 架構。 Rev 4 可 (VM) 主機，更接近 Azure 虛擬機器。 它大幅改善了 Azure Vm 和 BareMetal 實例單位（部署于 Rev 4 戳記或資料列）之間的網路延遲。 您可以透過 Azure 入口網站存取和管理您的 BareMetal 實例。 如需詳細資訊，請參閱 [Azure 上的 BareMetal 基礎結構](baremetal-overview-architecture.md)。
  
 此外，您可以在右側找到 [Azure 鄰近放置群組的](../../../virtual-machines/linux/co-location.md) 名稱，此名稱會針對每個已部署的 BareMetal 實例單位自動建立。 當您部署裝載應用層的 Azure Vm 時，請參考鄰近位置群組。 當您使用與 BareMetal 實例單位相關聯的鄰近位置群組時，請確定 Azure Vm 會部署到接近 BareMetal 實例單位。
  

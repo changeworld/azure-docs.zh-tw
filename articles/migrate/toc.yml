@@ -172,12 +172,12 @@
           href: how-to-migrate.md
         - name: 準備機器以進行移轉
           href: prepare-for-migration.md
+        - name: 準備 Windows 2003 伺服器以進行移轉
+          href: prepare-windows-server-2003-migration.md
         - name: 遷移 VMware VM
           items:
             - name: 將 VMware VM 遷移至已加密的 Azure VM
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
-            - name: 準備 Windows 2003 伺服器以進行移轉
-              href: prepare-windows-server-2003-migration.md
         - name: 調整移轉規模
           items:
             - name: 自動移轉大量的 VM

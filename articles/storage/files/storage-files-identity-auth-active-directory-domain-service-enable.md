@@ -4,16 +4,16 @@ description: 瞭解如何透過伺服器訊息區啟用以身分識別為基礎�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: deed7c3dce2d7da1940a8a4871efac7453e2cf60
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 340455450cd6a18adfd8d0843fee423f82f10a45
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033675"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858394"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>在 Azure 檔案儲存體上啟用 Azure Active Directory Domain Services authentication
 
@@ -22,8 +22,7 @@ ms.locfileid: "97033675"
 如果您不熟悉 Azure 檔案共用，建議您閱讀我們的 [規劃指南](storage-files-planning.md) ，再閱讀下列系列文章。
 
 > [!NOTE]
-> Azure 檔案儲存體支援搭配 RC4-HMAC 加密的 Azure AD DS 進行 Kerberos 驗證。 尚不支援 AES Kerberos 加密。
-> Azure 檔案儲存體支援 Azure AD DS 驗證與 Azure AD 的完整同步處理。 如果您已啟用 Azure AD DS 中的限域同步處理，只會從 Azure AD 同步處理一組有限的身分識別，就不支援驗證和授權。
+> Azure 檔案儲存體支援搭配 RC4-HMAC 和 AES 256 加密的 Azure AD DS 進行 Kerberos 驗證。 Azure 檔案儲存體支援 Azure AD DS 驗證與 Azure AD 的完整同步處理。 如果您已啟用 Azure AD DS 中的限域同步處理，只會從 Azure AD 同步處理一組有限的身分識別，就不支援驗證和授權。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -59,7 +58,7 @@ ms.locfileid: "97033675"
 
 ## <a name="regional-availability"></a>區域可用性
 
-在 [所有 Azure 公用和 Gov 區域](https://azure.microsoft.com/global-infrastructure/locations/)中都有提供 Azure AD DS 的 Azure 檔案儲存體驗證。
+您可以在 [所有 Azure 公用、Gov 和中國區域](https://azure.microsoft.com/global-infrastructure/locations/)中使用 Azure AD DS 的 Azure 檔案儲存體驗證。
 
 ## <a name="overview-of-the-workflow"></a>工作流程概觀
 

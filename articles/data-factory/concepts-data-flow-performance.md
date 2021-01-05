@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022355"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858567"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流的效能和調整指南
 
@@ -80,7 +80,7 @@ Azure Data Factory 會產生資料行的雜湊以產生統一的資料分割，�
 
 針對分割資料行內的值，建立可提供固定範圍的運算式。 若要避免資料分割扭曲，在使用此選項之前，您應該先對資料有充分的瞭解。 您為運算式輸入的值會當做資料分割函數的一部分使用。 您可以設定實體分割區的數目。
 
-### <a name="key"></a>答案
+### <a name="key"></a>Key
 
 如果您對資料的基數有充分的瞭解，索引鍵分割可能是不錯的策略。 索引鍵分割會為數據行中的每個唯一值建立資料分割。 您無法設定分割區數目，因為此數目是根據資料中的唯一值。
 
@@ -169,7 +169,7 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics 來源
 
-使用 Azure Synapse Analytics 時，來源選項中會有一個稱為「 **啟用暫存** 」的設定。 這可讓 ADF 使用 Synapse 讀取 ```Polybase``` ，這可大幅提升讀取效能。 啟用 ```Polybase``` 時，您需要在 [資料流程] 活動設定中指定 Azure Blob 儲存體或 Azure Data Lake Storage gen2 預備位置。
+使用 Azure Synapse Analytics 時，來源選項中會有一個稱為「 **啟用暫存** 」的設定。 這可讓 ADF 使用 Synapse 讀取 ```Staging``` ，這可大幅提升讀取效能。 啟用 ```Staging``` 時，您需要在 [資料流程] 活動設定中指定 Azure Blob 儲存體或 Azure Data Lake Storage gen2 預備位置。
 
 ![啟用暫存](media/data-flow/enable-staging.png "啟用暫存")
 
@@ -216,9 +216,9 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics 接收
 
-寫入至 Azure Synapse Analytics 時，請確定 [ **啟用預備** 環境] 設定為 [true]。 這可讓 ADF 使用 [PolyBase](/sql/relational-databases/polybase/polybase-guide) 進行寫入，以大量地大量載入資料。 使用 PolyBase 時，您必須參考 Azure Data Lake Storage gen2 或 Azure Blob 儲存體帳戶來暫存資料。
+寫入至 Azure Synapse Analytics 時，請確定 [ **啟用預備** 環境] 設定為 [true]。 這可讓 ADF 使用 [SQL Copy 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) 進行寫入，以有效地大量載入資料。 使用暫存時，您將需要參考 Azure Data Lake Storage gen2 或 Azure Blob 儲存體帳戶來暫存資料。
 
-除了 PolyBase 以外，相同的最佳作法也適用于 Azure Synapse Analytics 為 Azure SQL Database。
+除了預備環境以外，相同的最佳作法也適用于 Azure Synapse Analytics 為 Azure SQL Database。
 
 ### <a name="file-based-sinks"></a>以檔案為基礎的接收 
 
@@ -309,6 +309,14 @@ Azure SQL Database 有一個稱為「來源」資料分割的唯一資料分割�
 ### <a name="overloading-a-single-data-flow"></a>多載單一資料流程
 
 如果您將所有邏輯都放在單一資料流程中，ADF 將會在單一 Spark 實例上執行整個作業。 雖然這似乎是降低成本的一種方法，但它會將不同的邏輯流程混合在一起，而且可能很難監視和偵測。 如果某個元件失敗，則工作的其他所有部分也會失敗。 Azure Data Factory 團隊建議將資料流程組織成獨立的商務邏輯流程。 如果您的資料流程變得太大，將其分割成分開的元件將可簡化監視和偵錯工具。 雖然對資料流程中的轉換數目沒有硬性限制，但是有太多的作業會使工作變得複雜。
+
+### <a name="execute-sinks-in-parallel"></a>平行執行接收器
+
+資料流程接收的預設行為是依序執行每個接收，並以序列方式執行，並在接收中發生錯誤時使資料流程失敗。 此外，所有接收都會預設為相同的群組，除非您進入資料流程屬性，並為接收設定不同的優先順序。
+
+資料流程可讓您從 UI 設計工具的 [資料流程屬性] 索引標籤，將接收器分組為群組。 您可以使用相同的群組編號，設定接收的執行順序，以及將接收器群組在一起。 若要協助管理群組，您可以要求 ADF 在相同群組中執行接收器，以平行方式執行。
+
+在 [接收屬性] 區段下的 [管線執行資料流程] 活動中，是開啟平行接收載入的選項。 當您啟用「以平行方式執行」時，您會指示資料流程在相同時間（而不是以連續方式）寫入連接的接收。 為了利用 parallel 選項，必須將接收群組在一起，並透過新的分支或條件式分割來連接到相同的資料流程。
 
 ## <a name="next-steps"></a>後續步驟
 

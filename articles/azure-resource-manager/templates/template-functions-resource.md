@@ -2,13 +2,13 @@
 title: 範本函式 - 資源
 description: 描述在 Azure Resource Manager 範本中使用的函式 (ARM 範本) 取得資源的值。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: 166e9104a9d791ac6d82ed0e8e2d3659efd2ae0d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/04/2021
+ms.openlocfilehash: f16e8e06bf5deb2b66af7758f2944fe256cfa268
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919988"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861416"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 範本的資源函式
 
@@ -175,7 +175,7 @@ resource myAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
 
 `list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
 
-此函式的語法因清單作業的名稱而異。 每項實作會對支援 list 作業的資源類型傳回值。 此作業必須以 `list` 開頭。 一些常見的用法是 `listKeys` 、 `listKeyValue` 和 `listSecrets` 。
+此函式的語法因清單作業的名稱而異。 每項實作會對支援 list 作業的資源類型傳回值。 作業名稱的開頭必須 `list` 是，而且可能有尾碼。 常見的用法包括 `list` 、 `listKeys` 、 `listKeyValue` 和 `listSecrets` 。
 
 ### <a name="parameters"></a>參數
 

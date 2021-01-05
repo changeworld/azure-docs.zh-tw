@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 513d98ae274c668197b066c742119055248f37f9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911710"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845593"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>建立自訂模型的訓練資料集
 
@@ -68,15 +68,12 @@ ms.locfileid: "92911710"
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何建立訓練資料集，接下來請遵循快速入門來訓練自訂表單辨識器模型，並開始在您的表單上使用它。
 
-* [使用用戶端程式庫將模型定型並將表單資料解壓縮](./quickstarts/client-library.md)
-* [使用捲曲將模型定型並將表單資料解壓縮](./quickstarts/curl-train-extract.md)
-* [使用 REST API 和 Python 將模型定型並將表單資料解壓縮](./quickstarts/python-train-extract.md)
+* [使用用戶端程式庫或 REST API，將模型定型並將表單資料解壓縮](./quickstarts/client-library.md)
 * [使用範例標籤工具以標籤定型](./quickstarts/label-tool.md)
-* [使用 REST API 和 Python 以標籤進行定型](./quickstarts/python-labeled-data.md)
 
 ## <a name="see-also"></a>請參閱
 

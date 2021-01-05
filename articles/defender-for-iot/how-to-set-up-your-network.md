@@ -4,15 +4,15 @@ description: 瞭解解決方案架構、網路準備、必要條件和其他所�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/06/2020
+ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839227"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861976"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>關於適用于 IoT 的 Azure Defender 網路設定
 
@@ -54,7 +54,7 @@ ms.locfileid: "97839227"
 
 - 設定工作站。
 
-- SSL 憑證 (選擇性) 。
+- SSL 憑證 (選擇性，但建議使用) 。
 
 - SMTP 驗證 (選擇性) 。 若要使用具有驗證的 SMTP 伺服器，請準備您的伺服器所需的認證。
 
@@ -569,7 +569,7 @@ Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
     > [!NOTE]
     > 適用于 IoT 的 Defender 設備應連接到較低層級的交換器，以查看交換器上端口之間的流量。  
 
-2. 在網路中提供大約數量的裝置 (選擇性) 。
+2. 提供將受監視的大約網路裝置數目。 將訂用帳戶上線至適用于 IoT 的 Azure Defender 入口網站時，您將需要此資訊。 在上線過程中，系統會提示您輸入裝置數目（以1000為增量單位）。
 
 3. 提供生產網路的子網清單和描述 (選擇性) 。 
 

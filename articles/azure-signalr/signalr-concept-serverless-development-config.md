@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: acb85a04b8a1ca491058702510079a36b93fc657
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3d69b72012819e3d9099e447b9048fe07aea86d3
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151036"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858700"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR Service 來開發與設定 Azure Functions
 
@@ -43,17 +43,17 @@ Azure SignalR Service 可以在不同的模式中設定。 搭配 Azure Function
 
 使用 c # 中以 [類別為基礎的模型](#class-based-model) 時，您不需要 *>signalrconnectioninfo* 輸入系結，而且可以更輕鬆地新增自訂宣告。 查看 [以類別為基礎的模型中的協商體驗](#negotiate-experience-in-class-based-model)
 
-如需有關如何建立 negotiate 函數的詳細資訊，請參閱[ *>signalrconnectioninfo*輸入](../azure-functions/functions-bindings-signalr-service-input.md)系結參考。
+如需有關如何建立 negotiate 函數的詳細資訊，請參閱 [ *>signalrconnectioninfo* 輸入](../azure-functions/functions-bindings-signalr-service-input.md)系結參考。
 
 若要瞭解如何建立已驗證的權杖，請參閱 [使用 App Service 驗證](#using-app-service-authentication)。
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>處理從 SignalR Service 傳送的訊息
 
-使用 *SignalR 觸發* 程式系結來處理從 SignalR Service 傳送的訊息。 當用戶端傳送訊息或用戶端連線或中斷連線時，您可以觸發。
+使用 *SignalR 觸發* 程式系結來處理從 SignalR Service 傳送的訊息。 當用戶端傳送訊息或用戶端連線或中斷連線時，您可以收到通知。
 
-如需詳細資訊，請參閱[ *SignalR 觸發*](../azure-functions/functions-bindings-signalr-service-trigger.md)程式系結參考。
+如需詳細資訊，請參閱 [ *SignalR 觸發*](../azure-functions/functions-bindings-signalr-service-trigger.md)程式系結參考。
 
-您也需要將您的函式端點設定為上游，讓服務會觸發函式，其中有來自用戶端的訊息。 如需有關如何設定上游的詳細資訊，請 [參閱此檔](concept-upstream.md)。
+您也需要將您的函式端點設定為上游，如此一來，當用戶端有訊息時，服務就會觸發函式。 如需有關如何設定上游的詳細資訊，請 [參閱此檔](concept-upstream.md)。
 
 ### <a name="sending-messages-and-managing-group-membership"></a>傳送訊息及管理群組成員資格
 
@@ -61,7 +61,7 @@ Azure SignalR Service 可以在不同的模式中設定。 搭配 Azure Function
 
 您可以將使用者新增至一或多個群組。 您也可以使用 *SignalR* 輸出系結，在群組中新增或移除使用者。
 
-如需詳細資訊，請參閱[ *SignalR*輸出](../azure-functions/functions-bindings-signalr-service-output.md)系結參考。
+如需詳細資訊，請參閱 [ *SignalR* 輸出](../azure-functions/functions-bindings-signalr-service-output.md)系結參考。
 
 ### <a name="signalr-hubs"></a>SignalR 中樞
 
@@ -107,7 +107,7 @@ public class SignalRTestHub : ServerlessHub
 }
 ```
 
-所有想要運用類別型模型的函式，都必須是繼承自 **ServerlessHub**之類別的方法。 範例中的類別名稱 `SignalRTestHub` 是中樞名稱。
+所有想要運用類別型模型的函式，都必須是繼承自 **ServerlessHub** 之類別的方法。 範例中的類別名稱 `SignalRTestHub` 是中樞名稱。
 
 ### <a name="define-hub-method"></a>定義中樞方法
 

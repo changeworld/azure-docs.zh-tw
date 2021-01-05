@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: seodec18,references_regions
+ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972637"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854854"
 ---
 # <a name="speech-service-supported-regions"></a>語音服務支援的區域
 
@@ -44,6 +44,8 @@ ms.locfileid: "95972637"
 
 如果您使用 [語音 SDK](speech-sdk.md)，區域會由 **區域識別碼** 指定 (例如，作為) 的參數 `SpeechConfig.FromSubscription` 。 請確定區域符合您訂用帳戶的區域。
 
+如果您打算使用音訊資料來定型自訂模型，請使用其中一個 [區域搭配專用硬體](custom-speech-overview.md#set-up-your-azure-account) ，以加快定型速度。 您可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) ，稍後再將完整定型的模型複製到另一個區域。
+
 ### <a name="intent-recognition"></a>意圖辨識
 
 透過語音 SDK 進行 **意圖辨識** 的可用區域如下所示：
@@ -67,17 +69,21 @@ ms.locfileid: "95972637"
 
 ### <a name="voice-assistants"></a>語音助理
 
-[語音 SDK](speech-sdk.md)支援這些區域中的 **語音助理** 功能：
+[語音 SDK](speech-sdk.md)支援透過下欄區域中的語音 **助理** 功能 [Direct Line 語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech)：
 
-| 區域         | 區域識別碼 |
-| -------------- | -------------------- |
-| 美國西部        | `westus`             |
-| 美國西部 2      | `westus2`            |
-| 美國東部        | `eastus`             |
-| 美國東部 2      | `eastus2`            |
-| 西歐    | `westeurope`         |
-| 北歐   | `northeurope`        |
-| 東南亞 | `southeastasia`      |
+| 全球區域 | 區域           | 區域識別碼    |
+| ------------- | ---------------- | -------------------- |
+| 北美洲 | 美國西部          | `westus`             |
+| 北美洲 | 美國西部 2        | `westus2`            |
+| 北美洲 | 美國東部          | `eastus`             |
+| 北美洲 | 美國東部 2        | `eastus2`            |
+| 北美洲 | 美國中西部  | `westcentralus`      |
+| 北美洲 | 美國中南部 | `southcentralus`     |
+| 歐洲        | 西歐      | `westeurope`         |
+| 歐洲        | 北歐     | `northeurope`        |
+| Asia          | 東亞        | `eastasia`           |
+| Asia          | 東南亞   | `southeastasia`      |
+| 印度         | 印度中部    | `centralindia`       |
 
 ### <a name="speaker-recognition"></a>說話者辨識
 

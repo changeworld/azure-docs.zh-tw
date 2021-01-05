@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960966"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861777"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows 的自訂指令碼延伸模組
 
@@ -61,7 +61,7 @@ ms.locfileid: "94960966"
 * 指令碼可執行的時間為 90 分鐘。若超過這個時間，將會導致擴充功能佈建失敗。
 * 不要在指令碼中放置重新開機，此動作會導致正在安裝的其他擴充功能發生問題。 若發佈重新開機，擴充功能將不會在重新啟動之後繼續執行。
 * 如果您的指令碼會造成重新開機，則請安裝應用程式並執行指令碼，您可以使用 Windows 排程工作來排程重新開機，也可以使用 DSC、Chef 或 Puppet 擴充功能等工具來進行。
-* 建議您不要執行會導致 VM 代理程式停止或更新的腳本。 這可以讓延伸處於轉換狀態，進而導致超時。
+* 建議您不要執行會導致 VM 代理程式停止或更新的腳本。 這可能會讓擴充處於轉換狀態，因而導致超時。
 * 擴充功能只會執行指令碼一次。如果您想要在每次開機時執行指令碼，則必須使用擴充功能建立 Windows 排程工作。
 * 如果您想要排程指令碼的執行時間，則應該使用擴充功能來建立 Windows 排程工作。
 * 當指令碼正在執行時，只能從 Azure 入口網站或 CLI 看到「正在轉換」擴充功能狀態。 如果您需要執行中指令碼更頻繁的狀態更新，便必須建立自己的解決方案。

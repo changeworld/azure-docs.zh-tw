@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296806"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854837"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>使用安全中心的整合式 EDR 解決方案來保護您的端點： Microsoft Defender for Endpoint
 
@@ -42,10 +42,10 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 版本狀態：                  | 正式上市 (GA)                                                                                                                                                                                                                                                                                      |
 | 定價：                        | 需要[適用於伺服器的 Azure Defender](security-center-pricing.md)                                                                                                                                                                                                                                             |
-| 支援的平台：            | ![Yes](./media/icons/yes-icon.png) 執行 Windows 的 Azure 機器<br>![Yes](./media/icons/yes-icon.png) 執行 Windows 的 Azure Arc 電腦|
-| 支援的 Windows 版本：  | Defender for Endpoint 內建于 Windows 10 1703 (與較新的) 和 Windows Server 2019。<br>資訊安全中心支援 Windows Server 2016、2012 R2 和 2008 R2 SP1 的偵測。<br>Office 365 GCC 客戶已停用使用此整合的伺服器端點監視。 |
-| 必要的角色和權限： | 若要啟用/停用整合：**安全性系統管理員** 或 **擁有** 者<br>若要在安全性中心內查看 MDATP 警示： **安全性讀取者**、 **讀者**、 **資源群組參與者**、 **資源群組擁有** 者、 **安全性系統管理員**、訂用帳戶 **擁有** 者或訂用帳戶 **參與者**                         |
-| 雲端：                         | ![是](./media/icons/yes-icon.png) 商業雲端。<br>![No](./media/icons/no-icon.png) 在全域 Azure 雲端中執行工作負載的 GCC 客戶<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov                                                        |
+| 支援的平台：            | 執行 Windows 的 Azure 機器<br>執行 Windows 的 Azure Arc 電腦|
+| 支援的 Windows 版本：  |  •資訊安全中心支援 Windows Server 2016、2012 R2 和 2008 R2 SP1 的偵測<br> • Office 365 GCC 客戶已停用使用此整合的伺服器端點監視<br> •不支援 Windows Server 2019、Windows 10 1703 (與較新的) 或 Linux|
+| 必要的角色和權限： | 若要啟用/停用整合：**安全性系統管理員** 或 **擁有** 者<br>若要在安全性中心內查看 MDATP 警示： **安全性讀取者**、 **讀者**、 **資源群組參與者**、 **資源群組擁有** 者、 **安全性系統管理員**、訂用帳戶 **擁有** 者或訂用帳戶 **參與者**|
+| 雲端：                         | ![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov<br>![否](./media/icons/no-icon.png) 在全域 Azure 雲端中執行工作負載的 GCC 客戶                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -132,7 +132,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
   
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 資訊安全中心所支援的功能和平台](security-center-os-coverage.md)
 - [管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)：了解建議如何協助保護您的 Azure 資源。

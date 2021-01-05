@@ -2,17 +2,17 @@
 title: 使用 Apache Kafka MirrorMaker - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何使用 Kafka MirrorMaker 為「Azure 事件中樞」中的 Kafka 叢集建立鏡像的資訊。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: f2e7ac6951c84adfd8fc313995724021640ee0ab
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 01/04/2021
+ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503194"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861005"
 ---
-# <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>使用 Kafka MirrorMaker 搭配適用於 Apache Kafka 的事件中樞
+# <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>使用 Apache Kafka MirrorMaker 搭配事件中樞
 
-本教學課程說明如何使用 Kafka MirrorMaker，在事件中樞內鏡像 Kafka 訊息代理程式。
+本教學課程說明如何使用 Kafka MirrorMaker，將 Kafka 訊息代理程式鏡像至 Azure 事件中樞。 如果您使用 CNCF Strimzi 運算子在 Kubernetes 上裝載 Apache Kafka，您可以參考 [此 blog 文章](https://strimzi.io/blog/2020/06/09/mirror-maker-2-eventhub/) 中的教學課程，以瞭解如何使用 Kafka 和鏡像 Maker 2 來設定 Strimzi。 
 
    ![具有事件中樞的 Kafka MirrorMaker](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -20,7 +20,7 @@ ms.locfileid: "97503194"
 > 您可在 [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) 上取得此範例
 
 > [!NOTE]
-> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+> 本文包含字詞「*允許清單*」的參考 (Microsoft 已不再使用該字詞)。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -31,11 +31,13 @@ ms.locfileid: "97503194"
 > * 執行 Kafka MirrorMaker
 
 ## <a name="introduction"></a>簡介
-新式雲端規模應用程式的一個主要考量在於能夠更新、改善，以及變更基礎結構，而不會中斷服務。 本教學課程說明事件中樞和 Kafka MirrorMaker 如何在事件中樞服務中「鏡像」 Kafka 輸入資料流程，以將現有的 Kafka 管線整合到 Azure。 
+本教學課程說明事件中樞和 Kafka MirrorMaker 如何藉由「鏡像」事件中樞服務中的 Kafka 輸入資料流程，將現有的 Kafka 管線整合到 Azure 中，這可讓您使用數個 [同盟模式](event-hubs-federation-overview.md)來整合 Apache Kafka 串流。 
 
-Azure 事件中樞 Kafka 端點可讓您使用 Kafka 通訊協定 (亦即 Kafka 用戶端) 連線到 Azure 事件中樞。 幾乎不需要變更 Kafka 應用程式，您就可以連線到 Azure 事件中樞，並享受 Azure 生態系統的優點。 事件中樞目前支援 Kafka 1.0 版和更新版本。
+Azure 事件中樞 Kafka 端點可讓您使用 Kafka 通訊協定 (亦即 Kafka 用戶端) 連線到 Azure 事件中樞。 幾乎不需要變更 Kafka 應用程式，您就可以連線到 Azure 事件中樞，並享受 Azure 生態系統的優點。 事件中樞目前支援 Apache Kafka 1.0 版和更新版本的通訊協定。
 
-## <a name="prerequisites"></a>Prerequisites
+您可以使用 Apache Kafka 至事件中樞的 Apache Kafka MirrorMaker 1 unidirectionally。 MirrorMaker 2 可以雙向使用，但可[ `MirrorCheckpointConnector` `MirrorHeartbeatConnector` 在 MirrorMaker 2 中](https://cwiki.apache.org/confluence/display/KAFKA/KIP-382%3A+MirrorMaker+2.0)設定的和都必須設定為指向 Apache Kafka 訊息代理程式，而不是事件中樞。 本教學課程會示範如何設定 MirrorMaker 1。
+
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，請確定您具有下列項目︰
 

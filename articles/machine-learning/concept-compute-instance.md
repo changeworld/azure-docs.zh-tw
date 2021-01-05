@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 7d07dda7741aa075b8d853a8d06d3d3218ca901a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: fafa4c1e8c12ce26a90cfdf9df940823abf5ff25
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563812"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857438"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -130,9 +130,14 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 * *MachineLearningServices/workspace/計算/停止/動作*
 * *MachineLearningServices/workspace/計算/重新開機/動作*
 
+請注意，若要建立計算實例，使用者必須具有下列動作的許可權：
+* *Microsoft.MachineLearningServices/workspaces/computes/write*
+* *MachineLearningServices/workspace/checkComputeNameAvailability/action*
+
+
 ### <a name="create-a-compute-instance"></a><a name="create"></a>建立計算執行個體
 
-在 Azure Machine Learning studio 的工作區中，從 [ **計算** ] 區段或 [ **筆記本** ] 區段中 [建立新的計算實例](how-to-create-attach-compute-studio.md#compute-instance)（當您準備好要執行其中一個筆記本時）。 
+在 Azure Machine Learning studio 的工作區中，從 [**計算**] 區段或 [**筆記本**] 區段中 [建立新的計算實例](how-to-create-attach-compute-studio.md#compute-instance)（當您準備好要執行其中一個筆記本時）。 
 
 您也可以透過下列方式建立執行個體：
 * 直接從 [整合式筆記本體驗](tutorial-1st-experiment-sdk-setup.md#azure)

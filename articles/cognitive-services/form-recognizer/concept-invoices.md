@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7acfa9c2ffdd4cdd62e965041cdc42dc44d469c5
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602439"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845579"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>表單辨識器預建發票模型
 
@@ -34,7 +34,7 @@ Azure 表單辨識器可以使用其預先建立的發票模型，分析和解�
 > [!div class="nextstepaction"]
 > [試用預建模型](https://fott-preview.azurewebsites.net/)
 
-您將需要 Azure 訂用帳戶 ([建立免費](https://azure.microsoft.com/free/cognitive-services)) 的 [表單，以及 Recognzier 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) 端點和金鑰的表單，以試用表單辨識器發票服務。 
+您將需要 Azure 訂用帳戶 ([建立一個免費的](https://azure.microsoft.com/free/cognitive-services)) ，以及一個 [表單辨識器資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) 端點和金鑰來試用表單辨識器發票服務。 
 
 ![已分析發票範例](./media/analyze-invoice.png)
 
@@ -74,14 +74,14 @@ JSON 輸出有3個部分：
 
 發票服務將會將文字、資料表和26張發票欄位解壓縮。 以下是從 JSON 輸出回應中的發票解壓縮的欄位 (下列輸出使用此 [範例發票](./media/sample-invoice.jpg))   
 
-|名稱| 類型 | 描述 | 文字 | 值 (標準化輸出)  |
+|名稱| 類型 | 描述 | Text | 值 (標準化輸出)  |
 |:-----|:----|:----|:----| :----|
 | CustomerName | 字串 | 客戶的發票 | Microsoft Corp |  |
 | CustomerId | 字串 | 客戶的參考識別碼 | CID-12345 |  |
 | PurchaseOrder | 字串 | 採購單參考編號 | PO-3333 | |  |
 | InvoiceId | 字串 | 此特定發票的識別碼 (通常是「發票號碼」 )  | 庫存-100 | |  |
-| InvoiceDate | 日期 | 發票的發行日期 | 11/15/2019 | 
-| DueDate | 日期 | 此發票的付款日期為逾期 | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | date | 發票的發行日期 | 11/15/2019 | 
+| DueDate | date | 此發票的付款日期為逾期 | 12/15/2019 | 2019-12-15 | 2019-11-15 |
 | VendorName | 字串 | 已建立此發票的廠商 | CONTOSO 公司。 | |
 | VendorAddress | 字串 | 廠商的郵寄地址 | 123 456th 聖紐約，紐約州10001 | |
 | VendorAddressRecipient | 字串 | 與 VendorAddress 相關聯的名稱 | Contoso 總部 | |
@@ -91,24 +91,24 @@ JSON 輸出有3個部分：
 | BillingAddressRecipient | 字串 | 與 BillingAddress 相關聯的名稱 | Microsoft 服務 | |
 | ShippingAddress | 字串 | 客戶的明確交貨位址 | 123出貨 St、Redmond WA、98052 | |
 | ShippingAddressRecipient | 字串 | 與 ShippingAddress 相關聯的名稱 | Microsoft 傳遞 | |
-| SubTotal | 數目 | 此發票上識別的小計欄位 | $100.00 | 100 | 
-| TotalTax | 數目 | 此發票上識別的稅額欄位總計 | $10.00 | 10 |
-| InvoiceTotal | 數目 | 與此發票相關聯的新費用總計 | $110.00 | 110 |
-| AmountDue |  數目 | 由廠商所應付的總金額 | $610.00 | 610 |
+| SubTotal | number | 此發票上識別的小計欄位 | $100.00 | 100 | 
+| TotalTax | number | 此發票上識別的稅額欄位總計 | $10.00 | 10 |
+| InvoiceTotal | number | 與此發票相關聯的新費用總計 | $110.00 | 110 |
+| AmountDue |  number | 由廠商所應付的總金額 | $610.00 | 610 |
 | Serviceaddress.uri | 字串 | 客戶的明確服務位址或屬性位址 | 123服務 St、Redmond WA、98052 | |
 | ServiceAddressRecipient | 字串 | 與 Serviceaddress.uri 相關聯的名稱 | Microsoft 服務 | |
 | RemittanceAddress | 字串 | 客戶的明確匯款或付款位址 | 123匯款聖紐約、紐約州、10001 |  |
 | RemittanceAddressRecipient | 字串 | 與 RemittanceAddress 相關聯的名稱 | Contoso 帳單 |  |
-| ServiceStartDate | 日期 | 服務期間的第一個日期 (例如，公用程式帳單服務期間)  | 2019/10/14 | 2019-10-14 |
-| ServiceEndDate | 日期 | 服務期間的結束日期 (例如，公用程式帳單服務期間)  | 11/14/2019 | 2019-11-14 |
-| PreviousUnpaidBalance | 數目 | 明確的先前未付款餘額 | $500.00 | 500 |
+| ServiceStartDate | date | 服務期間的第一個日期 (例如，公用程式帳單服務期間)  | 2019/10/14 | 2019-10-14 |
+| ServiceEndDate | date | 服務期間的結束日期 (例如，公用程式帳單服務期間)  | 11/14/2019 | 2019-11-14 |
+| PreviousUnpaidBalance | number | 明確的先前未付款餘額 | $500.00 | 500 |
 
 
 ## <a name="next-steps"></a>後續步驟
 
 - 在 [表單辨識器範例 UI](https://fott-preview.azurewebsites.net/)中，試用您自己的發票和範例。
-- 完成 [表單辨識器用戶端程式庫快速入門](quickstarts/client-library.md) ，以使用您所選語言的表單辨識器來開始撰寫發票處理應用程式。
-- 或者，遵循「 [解壓縮發票資料](./quickstarts/python-invoices.md) 」快速入門，使用 Python 和 REST API 來執行發票資料解壓縮。
+- 完成 [表單辨識器快速入門](quickstarts/client-library.md) ，開始使用您選擇的語言來撰寫表單辨識器的發票處理應用程式。
+
 ## <a name="see-also"></a>請參閱
 
 * [什麼是表單辨識器？](./overview.md)

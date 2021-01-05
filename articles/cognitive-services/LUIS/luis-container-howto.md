@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: 內部部署、Docker、容器
-ms.openlocfilehash: 778fe388ae3db68d836384299a8a1c7c06e31f41
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2bef6aa4e624386750a4c989d7e56cc1b22aaa5e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96001793"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862009"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>安裝和執行適用于 LUIS 的 Docker 容器
 
@@ -33,7 +33,7 @@ Language Understanding (LUIS) 容器會載入您已定型或已發佈的 Languag
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要執行 LUIS 容器，請注意下列必要條件：
 
@@ -113,7 +113,7 @@ LUIS 容器需要以已定型或發佈的 LUIS 應用程式來回應使用者語
 |套件類型|查詢端點 API|查詢可用性|套件檔案名稱格式|
 |--|--|--|--|
 |版本|GET、POST|僅限容器|`{APP_ID}_v{APP_VERSION}.gz`|
-|預備|GET、POST|Azure 和容器|`{APP_ID}_STAGING.gz`|
+|執行|GET、POST|Azure 和容器|`{APP_ID}_STAGING.gz`|
 |生產|GET、POST|Azure 和容器|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
@@ -203,7 +203,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得和值的詳細資訊，請參閱 [收集必要參數](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` 。
 
-[Examples](luis-container-configuration.md#example-docker-run-commands)命令的範例 `docker run` 可供使用。
+[](luis-container-configuration.md#example-docker-run-commands)命令的範例 `docker run` 可供使用。
 
 ```console
 docker run --rm -it -p 5000:5000 ^
@@ -276,7 +276,7 @@ API 的 V2 和 [V3](luis-migration-api-v3.md) 版本都可供容器使用。
 |查詢參數|類型|目的|
 |--|--|--|
 |`q`|字串|使用者的語句。|
-|`timezoneOffset`|數目|TimezoneOffset 可讓您[變更時區](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) (預先建置的實體 datetimeV2 所使用的時區)。|
+|`timezoneOffset`|number|TimezoneOffset 可讓您[變更時區](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) (預先建置的實體 datetimeV2 所使用的時區)。|
 |`verbose`|boolean|設為 true 時，會傳回所有意圖及其分數。 預設值為 false，只會傳回最高分意圖。|
 |`staging`|boolean|設為 true 時，會從預備環境的結果中傳回查詢。 |
 |`log`|boolean|記錄查詢，可供後續的[主動式學習](luis-how-to-review-endpoint-utterances.md)使用。 預設值為 true。|
@@ -374,10 +374,7 @@ LUIS 容器會使用您 Azure 帳戶上的 _認知服務_ 資源，將計費資�
 
 如需這些選項的詳細資訊，請參閱[設定容器](luis-container-configuration.md)。
 
-<!--blogs/samples/video courses -->
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
-
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已了解下載、安裝及執行 Language Understanding (LUIS) 容器的概念和工作流程。 摘要說明：
 

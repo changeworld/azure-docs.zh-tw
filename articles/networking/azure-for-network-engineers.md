@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515913"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861399"
 ---
 # <a name="azure-for-network-engineers"></a>適用於網路工程師的 Azure
 傳統的網路工程師是您處理的實體資產，例如路由器、交換器、纜線、防火牆，以建立基礎結構。 在邏輯層中，您已設定虛擬 LAN (VLAN) 、跨樹狀結構通訊協定 (STP) 、路由通訊協定 (RIP、OSPF、BGP) 。 您已使用管理工具和 CLI 來管理您的網路。 雲端中的網路功能不同，因為網路端點是邏輯的，且最少使用路由通訊協定。 您將使用 Azure Resource Manager API、Azure CLI 和 PowerShell 來設定和管理 Azure 中的資產。 您將瞭解 Azure 網路功能的基本租使用者，以開始使用雲端中的網路旅程。 
@@ -67,7 +67,7 @@ ms.locfileid: "85515913"
 
 ## <a name="security"></a>安全性
 
-您可以使用網路安全性群組來篩選虛擬網路中進出資源的網路流量。 您也棒棒糖使用網路虛擬裝置 (NVA) ，例如 Azure 防火牆或其他廠商的防火牆。 您可以控制 Azure 路由傳送來自子網路流量的方法。 您也可以限制組織中能使用虛擬網路中資源的人員。
+您可以使用網路安全性群組來篩選虛擬網路中進出資源的網路流量。 您也可以使用網路虛擬裝置 (NVA) 例如 Azure 防火牆或其他廠商的防火牆。 您可以控制 Azure 路由傳送來自子網路流量的方法。 您也可以限制組織中能使用虛擬網路中資源的人員。
 
 網路安全性群組 (NSG) 包含存取控制清單 (ACL) 規則的清單，可允許或拒絕子網路、NIC 或兩者的網路流量。 NSG 可與子網路或連接到子網路的個別 VM 相關聯。 當 NSG 與子網路相關聯時，ACL 規則便會套用至該子網路中的所有 VM。 此外，將 NSG 直接關聯至 NIC，即可限制個別 NIC 的流量。
 
@@ -79,7 +79,7 @@ NSG 包含兩組規則：輸入和輸出。 規則的優先順序在每一個集
 ### <a name="network-security-groups"></a>網路安全性群組
 套用至網路介面的有效安全性規則，乃是針對網路介面及該網路介面所在子網路關聯的 NSG，存在其中的規則彙總。 您可以透過入口網站、PowerShell 或 CLI 流覽至 NIC，來查看 VM 網路介面上套用的 Nsg 中的所有有效安全性規則。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 [虛擬網路][VNet]。
 

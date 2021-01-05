@@ -6,18 +6,18 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 01/02/2021
 ms.author: victorh
-ms.openlocfilehash: a72f0106088d26eb2ff53456840c598c3d9619a7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: aadd4904ff218613c0dd24daff784ad5b8b90fbb
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397547"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854905"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>透過應用程式閘道設定 App Service
 
-由於 app service 是多租使用者服務，而不是專用的部署，因此它會在連入要求中使用主機標頭，以將要求解析至正確的 app service 端點。 通常，應用程式的 DNS 名稱（又是與 app service 面向的應用程式閘道相關聯的 DNS 名稱）與後端應用程式服務的功能變數名稱不同。 因此，應用程式閘道接收的原始要求中的主機標頭與後端服務的主機名稱不同。 基於這個原因，除非從應用程式閘道到後端的要求中的主機標頭變更為後端服務的主機名稱，否則多租使用者後端無法將要求解析為正確的端點。
+由於應用程式服務是多租用戶服務，而不是專用部署，因此會使用連入要求中的主機標頭來將要求解析為正確的應用程式服務端點。 通常，應用程式的 DNS 名稱（又是與 app service 面向的應用程式閘道相關聯的 DNS 名稱）與後端應用程式服務的功能變數名稱不同。 因此，應用程式閘道接收的原始要求中的主機標頭與後端服務的主機名稱不同。 基於這個原因，除非從應用程式閘道到後端的要求中的主機標頭變更為後端服務的主機名稱，否則多租使用者後端無法將要求解析為正確的端點。
 
 應用程式閘道會提供一個參數， `Pick host name from backend target` 其會在要求從應用程式閘道路由至後端時，以後端的主機名稱覆寫要求中的主機標頭。 這項功能可支援多租使用者後端，例如 Azure app service 和 API 管理。 
 
@@ -38,22 +38,22 @@ ms.locfileid: "93397547"
 
 2. 在 [ **後端** 集區] 下，選取後端集區。
 
-4. 在 [ **目標型別** ] 下，選取 [ **應用程式服務** ]。
+4. 在 [ **目標型別**] 下，選取 [ **應用程式服務**]。
 
 5. 在 [ **目標** ] 底下，選取您的 App Service。
 
    :::image type="content" source="./media/configure-web-app-portal/backend-pool.png" alt-text="App service 後端":::
    
    > [!NOTE]
-   > 下拉式清單只會填入與您應用程式閘道位於相同訂用帳戶中的應用程式服務。 如果您想要使用與應用程式閘道不同的訂用帳戶中的 app service，請 **選擇 [** **IP 位址] 或 [主機名稱** ] 選項，並輸入主機名稱 (範例。 **App Services** app service 的 azurewebsites.net) 。
+   > 下拉式清單只會填入與您應用程式閘道位於相同訂用帳戶中的應用程式服務。 如果您想要使用與應用程式閘道不同的訂用帳戶中的 app service，請 **選擇 [** **IP 位址] 或 [主機名稱**] 選項，並輸入主機名稱 (範例。  app service 的 azurewebsites.net) 。
 1. 選取 [儲存]。
 
 ## <a name="edit-http-settings-for-app-service"></a>編輯 App Service 的 HTTP 設定
 
-1. 在 [ **Http 設定** ] 底下，選取現有的 HTTP 設定。
+1. 在 [ **Http 設定**] 底下，選取現有的 HTTP 設定。
 
-2. 在 [ **以新的主機名稱覆寫** ] 下，選取 **[是]** 。
-3. 在 [ **主機名稱覆寫** ] 下，選取 [ **從後端目標挑選主機名稱** ]。
+2. 在 [ **以新的主機名稱覆寫**] 下，選取 **[是]**。
+3. 在 [ **主機名稱覆寫**] 下，選取 [ **從後端目標挑選主機名稱**]。
 4. 選取 [儲存]。
 
    :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="從後端 HTTP 設定挑選主機名稱":::

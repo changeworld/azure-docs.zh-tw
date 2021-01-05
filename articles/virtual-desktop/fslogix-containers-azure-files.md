@@ -3,15 +3,15 @@ title: Windows 虛擬桌面 FSLogix 設定檔容器檔案-Azure
 description: 本文說明 Windows 虛擬桌面和 Azure 檔案中的 FSLogix 設定檔容器。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 01/04/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: ef7f19d835f4fef1a911da01015321b2dda67682
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797191"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861875"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 設定檔容器和 Azure 檔案
 
@@ -70,7 +70,7 @@ S2D 叢集需要以安全狀態修補、更新和維護的作業系統。 這些
 Microsoft 在2018年11月19日 [獲得 FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/)。 FSLogix 解決許多設定檔容器的挑戰。 其中的關鍵是：
 
 - **效能：**[FSLogix 設定檔容器](/fslogix/configure-profile-container-tutorial/)具有高效能，可解決過去封鎖快取 exchange 模式的效能問題。
-- **OneDrive：** 如果沒有 FSLogix 設定檔容器，則不會在非持續性的 RDSH 或 VDI 環境中支援商務用 OneDrive。 [商務用 OneDrive 和 FSLogix 最佳作法](/fslogix/overview/) 說明它們的互動方式。 如需詳細資訊，請參閱 [在虛擬桌面電腦上使用同步處理用戶端](/deployoffice/rds-onedrive-business-vdi/)。
+- **OneDrive：** 如果沒有 FSLogix 設定檔容器，則不會在非持續性的 RDSH 或 VDI 環境中支援商務用 OneDrive。 [ONEDRIVE VDI 支援頁面](/onedrive/sync-vdi-support)將告訴您它們的互動方式。 如需詳細資訊，請參閱 [在虛擬桌面電腦上使用同步處理用戶端](/deployoffice/rds-onedrive-business-vdi/)。
 - **其他資料夾：** FSLogix 提供擴充使用者設定檔的功能，以包含其他資料夾。
 
 自從收購之後，Microsoft 開始以 FSLogix 設定檔容器取代現有的使用者設定檔解決方案，例如 UPD。

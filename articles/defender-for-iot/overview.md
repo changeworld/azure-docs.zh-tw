@@ -1,63 +1,86 @@
 ---
 title: 服務概觀
-description: 深入瞭解適用于 IoT 的 Defender 功能和服務，並瞭解適用于 IoT 的 Azure Defender 如何提供全方位的 IoT 安全性。
+description: 深入瞭解適用于 IoT 功能和服務的 Defender，並瞭解適用于 IoT 的 Defender 如何提供全方位的 IoT 安全性。
 services: defender-for-iot
-ms.service: defender-for-iot
+ms.service: azure
 documentationcenter: na
-author: rkarlin
+author: shhazam-ms
 manager: rkarlin
-editor: ''
+ms.author: shhazam
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
-ms.author: rkarlin
-ms.openlocfilehash: 1d039208ba99ba11cb562f82301a5bb3c02c6603
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.date: 12/09/2020
+ms.openlocfilehash: 13f9e2271dd18121ba740c843e99fae86c76821d
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089990"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845408"
 ---
-# <a name="introducing-azure-defender-for-iot-preview"></a>Azure Defender for IoT 預覽版簡介
+# <a name="welcome-to-azure-defender-for-iot"></a>歡迎使用適用于 IoT 的 Azure Defender
 
-> [!IMPORTANT]
-> 適用于 IoT 的 Azure Defender 目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+營運技術 (的) 網路可為社會的許多最重要層面提供許多功能。 但是這些技術中有許多都不是以安全性為考慮而設計，而且無法使用傳統的 IT 安全性控制來保護。 同時，物聯網 (IoT) 會透過數十億個連接的裝置來啟用新的創新浪潮，進而增加受攻擊面和風險。  
 
-隨著企業執行數位轉型以達到更高的效率和生產力，主機板和管理團隊逐漸在意大量非受控物聯網的責任和財務風險， (IoT) 和營運技術 () 裝置。
-以這個擴充的受攻擊面為目標的威脅執行者可能會造成重大的公司影響，包括安全和環境事件、昂貴的生產停機時間，以及敏感性智慧財產的遭竊。
+適用于 IoT 的 Azure Defender 是統一的安全性解決方案，用來識別 IoT/OT 資產、弱點和威脅。 無論您是否需要保護現有的 IoT/OT 裝置，或建立新 IoT 創新的安全性，都可讓您保護整個 IoT/OT 環境。  
 
-舊版 IoT 和 OT 裝置不支援代理程式，且通常未修補、設定不正確，且不會對 IT 小組造成任何問題，使其成為想要將資料透視至公司網路的威脅執行者的軟目標。 
+適用于 IoT 的 Azure Defender 提供兩組功能，以符合您的環境需求。
 
-針對公司 IT 網路開發的傳統網路安全性監視工具無法解決這些環境，因為他們缺乏深入瞭解在 IoT 和 OT 環境中找到的特殊通訊協定、裝置和機器對機器 (M2M) 行為。
+針對具有 IoT/OT 環境的終端使用者組織，適用于 IoT 的 Azure Defender 會提供無代理程式、網路層監視，以：
 
-適用于 IoT 的 Azure Defender 是全方位的解決方案，可連續探索、監視及管理 IoT 以及所有 IoT 和 OT 裝置上的威脅、風險和弱點，無論是透過 Azure IoT 中樞或舊版未受管理裝置管理的較新裝置。 適用于 IoT 的 Azure Defender 有助於加速事件回應、提供營運挑戰的深入解析，並藉由提供統一的 IoT 和可見度和控制來簡化混合式工作負載保護。
+- 可以快速部署。
+- 利用各式各樣的產業設備和 SOC 工具輕鬆整合。
+- 對 IoT/OT 網路效能或穩定性沒有任何影響。 
 
-此整體解決方案可解決主要的使用案例，包括：
-- 適用于所有 IoT 和 OT 裝置的自動資產探索
-- 持續 IoT 和管理風險和弱點管理
-- IoT 和 OT 威脅搜尋和事件回應
-- 營運效率 
+平臺可以完全在內部部署或在 Azure 連線和混合式環境中部署。  
 
-適用于 IoT 的 Azure Defender 是適用于 IoT 的統一解決方案，以及所有裝置上的安全性。 它提供您工具來建立新 IoT 的安全性，以及透過 Azure IoT 中樞管理的裝置，以及保護非受控 IoT 和資產所需的無代理程式網路層監視功能。
+針對 IoT 裝置產生器，適用于 IoT 的 Azure Defender 也提供輕量的微代理程式，可支援標準的 IoT 作業系統，例如 Linux 和 RTO。 此輕量代理程式可協助確保從邊緣到雲端的 IoT/OT 計畫內建安全性。 它包含適用于彈性、可自訂部署的原始程式碼。 
 
-## <a name="unified-visibility-and-control"></a>統一的可見性和控制
+## <a name="agentless-solution-for-organizations"></a>適用于組織的無代理程式解決方案 
 
-取得所有內部部署和雲端工作負載（包括您的 Azure IoT 解決方案）之間的安全性統一觀點。 將新裝置上線，並在您的工作負載 (分葉裝置、Microsoft Edge 裝置、IoT 中樞) 間套用安全性原則，以確保能符合安全性標準以及改善安全性態勢。
+較舊的 IoT 和 OT 裝置不支援代理程式，且通常未修補、設定不正確，且不會對 IT 小組隱藏。 這些品質讓想要深入瞭解公司網路的威脅執行者成為其目標。 
 
-## <a name="adaptive-threat-prevention"></a>調適性威脅防護
+針對公司 IT 網路開發的傳統網路安全性監視工具無法解決這些環境，因為他們缺乏深入瞭解 IoT 和 OT 環境中的特殊通訊協定、裝置和機器對機器 (M2M) 行為。 
 
-使用 Defender for IoT 持續監視機器、網路和 Azure 服務的安全性。 從數百種內建安全性評定中選擇，或在適用于 IoT 中樞的中央 Defender 儀表板中建立您自己的安全性評定。 透過虛擬機器、網路、應用程式和資料之間可採取動作的建議，將您的安全性設定優化並改善您的安全性分數。 您現在可以使用新加入的 IoT 功能，減少 Azure IoT 解決方案的受攻擊面，並在問題遭到入侵之前補救問題。
+適用于 IoT 的 Azure Defender 中的無代理程式監視功能提供這些網路的可見度和安全性。 然後，您可以解決這些環境的重要考慮。 
 
-## <a name="intelligent-threat-detection-and-response"></a>智慧型威脅偵測和回應
+### <a name="automatic-device-discovery"></a>自動裝置探索  
 
-使用先進的分析和 Microsoft Intelligent Security Graph 來獲得不斷演進的網路攻擊。 內建的行為分析和機器學習服務會識別攻擊和零時差攻擊。 監視您的 IoT 解決方案是否有傳入攻擊和入侵後活動。 使用互動式工具和內容相關威脅情報來簡化裝置調查和補救。
+使用被動、無代理程式網路監視，以完整清查所有的 IoT/OT 資產、其詳細資料，以及它們的通訊方式，對 IoT/OT 網路的影響不會產生任何影響。  
 
-## <a name="next-steps"></a>後續步驟
+### <a name="proactive-visibility-into-risk-and-vulnerabilities"></a>主動查看風險和弱點
+ 
+識別 IoT/OT 環境中的風險和弱點。 例如，識別未修補的裝置、開啟的埠、未經授權的應用程式，以及未授權的連接。 您也可以識別裝置設定、PLC 程式碼和固件的變更。 
 
-在此總覽中，您已瞭解適用于 IoT 的 Defender 功能和服務。 若要深入瞭解適用于 IoT 的 Defender 架構、必要條件，並瞭解如何開始使用，請參閱下列文章：
+### <a name="iotot-threat-detection"></a>IoT/OT 威脅偵測  
 
-- [架構](architecture.md)
-- [快速入門](getting-started.md)
+使用特製化 IoT/OT 感知威脅情報和行為分析，偵測異常或未經授權的活動。 您甚至可以偵測靜態 IOCs 錯過的 advanced 威脅，像是零天的惡意程式碼、無檔案惡意程式碼，以及客廳的策略。 
+
+### <a name="unified-security-management-across-iotot"></a>跨 IoT/OT 的統一安全性管理
+
+整合至 Azure Sentinel，以取得整個組織的鳥觀點。 透過整合到您現有的工作流程（包括 Splunk、IBM QRadar 和 ServiceNow 等協力廠商工具），來實行整合的 IoT/OT 安全性治理。 
+
+## <a name="agent-based-solution-for-device-builders"></a>以代理程式為基礎的裝置產生器解決方案 
+
+安全性是 IoT 實施者近乎普遍的考慮。 IoT 裝置具有端點監視、安全性狀態管理和威脅偵測的獨特需求，這些都具有高度特定的效能需求。 
+
+適用于 IoT 的 Azure Defender 安全性代理程式可讓您直接在新的 IoT 裝置和 Azure IoT 專案中建立安全性。 微代理程式有彈性的部署選項，包括部署為二進位封裝或修改原始程式碼的能力。 而微型代理程式適用于標準 IoT 作業系統，例如 Linux 和 Azure RTO。  
+
+適用于 IoT 的 Azure Defender 微型代理程式可讓您看到安全性狀態管理、威脅偵測，以及整合至 Microsoft 其他安全性工具以進行整合安全性管理的端點。 
+
+### <a name="security-posture-management"></a>安全性狀態管理
+
+主動監視 IoT 裝置的安全性狀態。 適用于 IoT 的 Azure Defender 會根據 CIS 基準來提供安全性狀態建議，以及裝置特定的建議。 取得作業系統安全性的可見度，包括作業系統設定、防火牆設定和許可權。 
+
+### <a name="endpoint-iotot-threat-detection"></a>端點 IoT/OT 威脅偵測
+
+偵測殭屍網路、暴力密碼破解嘗試、加密採礦人員和可疑網路活動等威脅。 建立自訂警示，以獨特組織中最重要的威脅為目標。 
+
+### <a name="flexible-distribution-and-deployment-models"></a>彈性的散發和部署模型 
+
+適用于 IoT 的 Azure Defender 微型代理套裝程式含原始程式碼，因此您可以將微代理程式併入至固件或自訂它，使其只包含您需要的內容。 它也可作為二進位封裝，或直接整合至其他 Azure IoT 解決方案。 
+
+## <a name="see-also"></a>請參閱
+
+[適用于 IoT 的 Azure Defender 架構](architecture.md)

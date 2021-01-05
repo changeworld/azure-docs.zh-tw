@@ -3,12 +3,12 @@ title: 從 Apache Kafka 應用程式使用事件中樞 - Azure 事件中樞 | Mi
 description: 本文提供與 Azure 事件中樞所支援的 Apache Kafka 有關的資訊。
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: d9aa8af30d5ef5e1a985e4d73a9d4a8921ac7d45
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369585"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861332"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>從 Apache Kafka 應用程式使用 Azure 事件中樞
 事件中樞提供與 Apache Kafka 相容的端點，®生產者和取用者 Api，可供大部分現有的 Apache Kafka 用戶端應用程式用來作為執行您自己的 Apache Kafka 叢集的替代方案。 事件中樞支援在1.0 和更新版本的 Apache Kafka 生產者和取用者 Api 用戶端。
@@ -60,7 +60,7 @@ Azure 事件中樞提供多個選項來授權存取您的安全資源。
 - 共用存取簽章 (SAS)
 
 #### <a name="oauth-20"></a>OAuth 2.0
-事件中樞與 Azure Active Directory (Azure AD) 整合，其提供符合 **OAuth 2.0** 規範的集中式授權伺服器。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將更細緻的許可權授與您的用戶端身分識別。 您可以將此功能與 Kafka 用戶端搭配使用，方法是指定該機制的通訊協定和**OAUTHBEARER**的**SASL_SSL** 。 如需有關設定存取範圍之 Azure 角色和層級的詳細資訊，請參閱 [使用 Azure AD 授權存取權](authorize-access-azure-active-directory.md)。
+事件中樞與 Azure Active Directory (Azure AD) 整合，其提供符合 **OAuth 2.0** 規範的集中式授權伺服器。 使用 Azure AD 時，您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將更細緻的許可權授與您的用戶端身分識別。 您可以將此功能與 Kafka 用戶端搭配使用，方法是指定該機制的通訊協定和 **OAUTHBEARER** 的 **SASL_SSL** 。 如需有關設定存取範圍之 Azure 角色和層級的詳細資訊，請參閱 [使用 Azure AD 授權存取權](authorize-access-azure-active-directory.md)。
 
 ```properties
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -71,7 +71,7 @@ sasl.login.callback.handler.class=CustomAuthenticateCallbackHandler;
 ```
 
 #### <a name="shared-access-signature-sas"></a>共用存取簽章 (SAS)
-事件中樞也會提供 ** (SAS) 的共用存取 ** 簽章，以供委派存取 Kafka 資源的事件中樞。 使用 OAuth 2.0 權杖型機制來授與存取權，可提供更高的安全性，並讓您更輕鬆地使用 SAS。 內建角色也可以免除以 ACL 為基礎的授權需求，這必須由使用者維護及管理。 您可以將這項功能與 Kafka 用戶端搭配使用，方法是指定通訊協定的 **SASL_SSL** ，並使用 **純** 的機制。 
+事件中樞也會提供 **(SAS) 的共用存取** 簽章，以供委派存取 Kafka 資源的事件中樞。 使用 OAuth 2.0 權杖型機制來授與存取權，可提供更高的安全性，並讓您更輕鬆地使用 SAS。 內建角色也可以免除以 ACL 為基礎的授權需求，這必須由使用者維護及管理。 您可以將這項功能與 Kafka 用戶端搭配使用，方法是指定通訊協定的 **SASL_SSL** ，並使用 **純** 的機制。 
 
 ```properties
 bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -81,7 +81,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ```
 
 > [!IMPORTANT]
-> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需取得連接字串的指示，請參閱 [取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例設定： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需有關取得連接字串的指示，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例組態：`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
 
 > [!NOTE]
 > 使用 SAS 驗證搭配 Kafka 用戶端時，重新產生 SAS 金鑰時，已建立的連線不會中斷連線。 
@@ -104,7 +104,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 
 如先前所述，Azure 訊息提供者可為許多訊息案例提供豐富且穩固的涵蓋 [範圍，但](#is-apache-kafka-the-right-solution-for-your-workload)目前不支援透過 APACHE Kafka API 的「事件中樞」支援下列功能，我們指出所需功能的出現位置和方式。
 
-### <a name="transactions"></a>交易
+### <a name="transactions"></a>異動
 
 [Azure 服務匯流排](../service-bus-messaging/service-bus-transactions.md) 具有健全的交易支援，可在交易的一致性保護下傳送訊息處理至多個目標實體時，允許接收和輸出訊息和會話。 功能集不只允許在一系列的每個訊息中進行一次的處理，也可避免其他取用者不慎重新處理與 Apache Kafka 相同之訊息的風險。 服務匯流排是交易式訊息工作負載的建議服務。
 
@@ -118,9 +118,7 @@ Apache Kafka 的用戶端 [壓縮](https://cwiki.apache.org/confluence/display/K
 
 ### <a name="log-compaction"></a>記錄檔壓縮
 
-Apache Kafka 記錄壓縮功能可讓您從磁碟分割收回所有索引鍵的最後一筆記錄，如此一來，就能有效地將 Apache Kafka 主題轉換成索引鍵/值存放區，其中最後一個新增的值會覆寫前一個值。 索引鍵/值存放區模式（即使是經常更新）在資料庫服務（例如 [Azure Cosmos DB](../cosmos-db/introduction.md)）中的支援程度較佳。
-
-Kafka Connect 和 Kafka 串流用戶端架構會使用記錄檔壓縮功能。
+Apache Kafka 記錄壓縮功能可讓您從磁碟分割收回所有索引鍵的最後一筆記錄，如此一來，就能有效地將 Apache Kafka 主題轉換成索引鍵/值存放區，其中最後一個新增的值會覆寫前一個值。 這項功能目前不是由 Azure 事件中樞所執行。 索引鍵/值存放區模式（即使是經常更新）在資料庫服務（例如 [Azure Cosmos DB](../cosmos-db/introduction.md)）中的支援程度較佳。 如需詳細資料，請參閱事件中樞同盟指導方針中的 [記錄投影](event-hubs-federation-overview.md#log-projections) 主題。 
 
 ### <a name="kafka-streams"></a>Kafka Streams
 

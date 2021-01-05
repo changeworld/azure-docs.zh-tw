@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: be01309fee3454fbd4be78130f9826b493e7bf7a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 51f9ad4fea1c139cee5974ecd81645c9a904feb4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033760"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854888"
 ---
 # <a name="what-is-custom-speech"></a>什麼是自訂語音？
 
@@ -43,6 +43,23 @@ ms.locfileid: "97033760"
 ## <a name="set-up-your-azure-account"></a>設定您的 Azure 帳戶
 
 您必須擁有 Azure 帳戶和語音服務訂用帳戶，才能使用 [自訂語音入口網站](https://speech.microsoft.com/customspeech) 來建立自訂模型。 如果您沒有該帳戶和訂用帳戶，請[免費試用語音服務](overview.md#try-the-speech-service-for-free)。
+
+如果您打算使用音訊資料來定型自訂模型，請選取下列其中一個具有專用硬體可供定型的區域。 這會減少訓練模型所需的時間。
+
+* 澳大利亞東部
+* 加拿大中部
+* 印度中部
+* 美國東部
+* 美國東部 2
+* 美國中北部
+* 歐洲北部
+* 美國中南部
+* 東南亞
+* 英國南部
+* US Gov 亞利桑那州
+* US Gov 維吉尼亞州
+* 西歐
+* 美國西部 2
 
 > [!NOTE]
 > 請務必建立標準 (S0) 訂用帳戶。 不支援免費的 (F0) 訂閱。

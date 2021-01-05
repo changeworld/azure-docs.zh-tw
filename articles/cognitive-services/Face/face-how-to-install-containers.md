@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
 keywords: 內部部署、Docker、容器、識別
-ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 64169069bc0a1ccd126d1b79ee89a5666e1caeb1
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000536"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861057"
 ---
 # <a name="install-and-run-face-containers-preview"></a>安裝並執行臉部容器 (預覽) 
 
@@ -28,7 +28,7 @@ Azure 認知服務臉部 API 提供 Linux Docker 容器，可偵測並分析影�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 使用臉部服務容器之前，您必須符合下列必要條件。
 
@@ -84,7 +84,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得和值的詳細資訊，請參閱 [收集必要參數](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` 。
 
-[Examples](face-resource-container-config.md#example-docker-run-commands)命令的範例 `docker run` 可供使用。
+[](face-resource-container-config.md#example-docker-run-commands)命令的範例 `docker run` 可供使用。
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -138,11 +138,7 @@ ApiKey={API_KEY}
 
 如需這些選項的詳細資訊，請參閱[設定容器](./face-resource-container-config.md)。
 
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
-
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已瞭解如何下載、安裝及執行臉部服務容器的概念和工作流程。 摘要說明：
 

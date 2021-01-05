@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 11/24/2020
-ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 01/03/2021
+ms.openlocfilehash: 3eff23a42a6ac5f5360bdebfcc692e13acb3e8b0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095078"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858770"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 中的資料流程活動
 
@@ -38,6 +38,8 @@ ms.locfileid: "97095078"
          "computeType": "General"
       },
       "traceLevel": "Fine",
+      "runConcurrently": true,
+      "continueOnError": true,      
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -62,7 +64,7 @@ integrationRuntime | 執行資料流程的計算環境。 如果未指定，將�
 compute. coreCount | Spark 叢集中使用的核心數目。 只有在使用自動解析 Azure Integration runtime 時才能指定 | 8、16、32、48、80、144、272 | 否
 compute. computeType | Spark 叢集中使用的計算類型。 只有在使用自動解析 Azure Integration runtime 時才能指定 | "General"、"ComputeOptimized"、"MemoryOptimized" | 否
 暫存. linkedService | 如果您使用 Azure Synapse Analytics 來源或接收，請指定用於 PolyBase 暫存的儲存體帳戶。<br/><br/>如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用在儲存體帳戶上啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)。 此外，也會分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。<br/> | LinkedServiceReference | 只有當資料流程讀取或寫入 Azure Synapse Analytics
-暫存. folderPath | 如果您使用 Azure Synapse Analytics 來源或接收器，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | 字串 | 只有當資料流程讀取或寫入 Azure Synapse Analytics
+暫存. folderPath | 如果您使用 Azure Synapse Analytics 來源或接收器，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | String | 只有當資料流程讀取或寫入 Azure Synapse Analytics
 traceLevel | 設定資料流程活動執行的記錄層級 | 精細、粗略、無 | 否
 
 ![執行資料流程](media/data-flow/activity-data-flow.png "執行資料流程")
@@ -95,6 +97,14 @@ traceLevel | 設定資料流程活動執行的記錄層級 | 精細、粗略、�
 如果您不需要每次執行資料流程活動的管線來完整記錄所有詳細資訊遙測記錄檔，您可以選擇性地將記錄層級設定為「基本」或「無」。 在 [詳細資訊] 模式中執行您的資料流程時 (預設) ，您會要求 ADF 在資料轉換期間，在每個個別的資料分割層級上完整記錄活動。 這可能是相當昂貴的作業，所以在進行疑難排解時只啟用詳細資訊，可以改善整體的資料流程和管線效能。 「基本」模式只會記錄轉換持續時間，而「無」只會提供持續時間的摘要。
 
 ![記錄層級](media/data-flow/logging.png "設定記錄層級")
+
+## <a name="sink-properties"></a>接收屬性
+
+資料流程中的群組功能可讓您設定接收的執行順序，以及使用相同的群組編號將接收器群組在一起。 若要協助管理群組，您可以要求 ADF 平行執行相同群組中的接收器。 您也可以設定接收群組，即使在其中一個接收發生錯誤時仍繼續。
+
+資料流程接收的預設行為是依序執行每個接收，並以序列方式執行，並在接收中發生錯誤時使資料流程失敗。 此外，所有接收都會預設為相同的群組，除非您進入資料流程屬性，並為接收設定不同的優先順序。
+
+![接收屬性](media/data-flow/sink-properties.png "設定接收屬性")
 
 ## <a name="parameterizing-data-flows"></a>參數化資料流程
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 99ed7d3ad81202ab6fe67bf52888bbdbf0b28d2a
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387083"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861873"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -52,7 +52,7 @@ ms.locfileid: "97387083"
 ![說明技術設定檔流程的圖表](./media/technical-profiles/technical-profile-flow.png)
 
 1. **單一登入 (sso) 會話管理** -使用 [sso 會話管理](custom-policy-reference-sso.md)來還原技術設定檔的會話狀態。
-1. **輸入宣告轉換** -在啟動技術設定檔之前，Azure AD B2C 執行輸入 [宣告轉換]。 (claimstransformations.md) 。
+1. **輸入宣告轉換** -在啟動技術設定檔之前，Azure AD B2C 執行輸入 [宣告轉換](claimstransformations.md)。
 1. **輸入宣告** -宣告會從用於技術設定檔的宣告包中挑選。
 1. **技術設定檔執行** - 技術設定檔會與已設定的對象交換宣告。 例如：
     - 將使用者重新導向到識別提供者來完成登入。 成功登入之後，使用者會返回，而技術設定檔則會繼續執行。
@@ -185,7 +185,7 @@ Azure AD B2C 會以 [原則金鑰](policy-keys-overview.md) 的形式儲存秘�
 | ------- | ----------- | ----------- |
 | Key | 1:n | 此技術設定檔中使用的密碼編譯金鑰。 |
 
-### <a name="key"></a>答案
+### <a name="key"></a>Key
 
 **Key** 元素包含下列屬性：
 

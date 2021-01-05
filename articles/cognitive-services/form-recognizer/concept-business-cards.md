@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 76e19c36f0fa4096966c5dd23d2384b6b30f2271
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498855"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845605"
 ---
 # <a name="business-card-concepts"></a>名片概念
 
@@ -374,7 +374,7 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，分析和�
 }
 ```
 
-遵循「 [解壓縮名片資料](./QuickStarts/python-business-cards.md) 」快速入門，使用 Python 和 REST API 來執行名片資料解壓縮。
+遵循 [快速](./QuickStarts/client-library.md) 入門快速入門，使用 Python 和 REST API 來執行名片資料解壓縮。
 
 ## <a name="customer-scenarios"></a>客戶案例  
 
@@ -385,11 +385,11 @@ Azure 表單辨識器可以使用其中一個預先建立的模型，分析和�
 * 追蹤銷售潛在客戶。  
 * 從現有的名片影像大量解壓縮連絡人資訊。 
 
-名片 API 也會為 [>aibuilder 名片處理功能](/ai-builder/prebuilt-business-card)供電。
+名片 API 也可 [AI Builder 名片處理功能](/ai-builder/prebuilt-business-card)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 遵循 [名片 API Python 快速入門](./quickstarts/python-business-cards.md) ，開始辨識名片。
+- 遵循 [快速入門](./quickstarts/client-library.md) 以開始辨識名片。
 
 ## <a name="see-also"></a>請參閱
 

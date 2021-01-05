@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a153f832fdfc075cdde03241f7dae19faa2334ce
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ba7081c877f3c3adae6e678280592c9445a95d1b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631347"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858802"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Linux 虛擬機器的 Azure Hybrid Benefit 套用方式
 
@@ -172,7 +172,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="suse"></a>SUSE
 
-若要將 Azure Hybrid Benefit 用於 SLES Vm，您必須先向 [SUSE Public Cloud 方案](https://www.suse.com/media/guide/suse_public_cloud_service_provider_program_overview.pdf)註冊。 購買 SUSE 訂用帳戶之後，您必須將使用這些訂用帳戶的 Vm 註冊到您自己的更新來源。 使用 SUSE 客戶中心、訂用帳戶管理工具伺服器或 SUSE Manager 進行此註冊。
+若要針對 SLES Vm 使用 Azure Hybrid Benefit，以及從 SLES PAYG 移至 BYOS 或從 SLES BYOS 移至 PAYG 的相關資訊，請參閱 [SUSE Linux Enterprise 和 Azure Hybrid Benefit](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)。 
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 *問：我是否可以使用 `RHEL_BYOS` 具有 SLES 映射的授權類型，反之亦然？*
@@ -210,14 +210,18 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 *問：是否可以在針對 RHEL 映射部署 SQL Server 的虛擬機器上使用 Azure Hybrid Benefit？*
 
 答：否，您不可以。 沒有任何計畫可支援這些虛擬機器。
+
+*問：我可以在 RHEL 虛擬資料中心訂用帳戶上使用 Azure Hybrid Benefit 嗎？*
+
+答：否，您無法。 Azure 上不支援 VDC （包括 AHB）。  
  
 
 ## <a name="common-problems"></a>常見問題
 此區段會列出您可能會遇到的常見問題以及緩和措施的步驟。
 
-| 錯誤 | 降低 |
+| [錯誤] | 降低 |
 | ----- | ---------- |
 | 「無法完成動作，因為我們的記錄顯示您尚未成功啟用 Azure 訂用帳戶上的 Red Hat Cloud 存取 ...」。 | 若要使用 RHEL Vm 的優點，您必須先 [向 Red Hat Cloud Access 註冊您的 Azure 訂用](https://access.redhat.com/management/cloud)帳戶。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 * [瞭解如何使用 Azure Hybrid Benefit 來建立和更新 Vm，以及新增授權類型 (RHEL_BYOS、SLES_BYOS) Azure CLI](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)

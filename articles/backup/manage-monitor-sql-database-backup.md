@@ -3,12 +3,12 @@ title: 管理及監視 Azure VM 上的 SQL Server Db
 description: 本文說明如何管理和監視在 Azure VM 上執行的 SQL Server 資料庫。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021498"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858721"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和監視備份的 SQL Server 資料庫
 
@@ -20,7 +20,7 @@ ms.locfileid: "96021498"
 
 Azure 備份會在入口網站中顯示 **備份作業** 下的所有已排程和隨選作業（排程的記錄備份除外），因為它們可能非常頻繁。 您在此入口網站中看到的工作包括資料庫探索和註冊、設定備份，以及備份和還原作業。
 
-![備份作業入口網站](./media/backup-azure-sql-database/jobs-list.png)
+![備份作業入口網站](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
 
 如需監視案例的詳細資訊，請移至 [Azure 入口網站中的 [監視](backup-azure-monitoring-built-in-monitor.md) ]，然後 [使用 Azure 監視器進行監視](backup-azure-monitoring-use-azuremonitor.md)。  
 
@@ -36,13 +36,9 @@ Azure 備份會在入口網站中顯示 **備份作業** 下的所有已排程�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 在保存庫儀表板上，選取 [警示與事件]。
+2. 在保存庫儀表板上，選取 [備份警示]。
 
-   ![選取 [警示和事件]](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
-
-3. 在 [警示和事件] 中，選取 [備份警示]。
-
-   ![選取 [備份警示]](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
+   ![選取 [備份警示]](./media/backup-azure-sql-database/sql-backup-alerts-list.png)
 
 ## <a name="stop-protection-for-a-sql-server-database"></a>停止保護 SQL Server 資料庫
 
@@ -83,7 +79,7 @@ Azure 備份會在入口網站中顯示 **備份作業** 下的所有已排程�
 >
 >如需 [刪除資料] 選項的詳細資訊，請參閱下列常見問題：
 >
->- [如果我從 autoprotected 實例中刪除資料庫，備份會發生什麼事？](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>- [如果我從自動受到保護的執行個體中刪除資料庫，備份將有何情況？](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
 >- [如果我停止 autoprotected 資料庫的備份作業，會有什麼行為？](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >

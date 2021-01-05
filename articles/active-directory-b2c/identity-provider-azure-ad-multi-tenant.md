@@ -8,34 +8,35 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/04/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 71e3bf429c7b8d3f4f8fe205c05b0701732fdef9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c9ac92f836e1d0c1210bb16b5c1d6e232fd5c22e
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653804"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858462"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定多租用戶 Azure Active Directory 的登入
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-::: zone pivot="b2c-custom-policy"
+::: zone pivot="b2c-user-flow"
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Prerequisites
-
-[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+::: zone pivot="b2c-custom-policy"
 
 本文說明如何使用 Azure Active Directory (Azure AD) 的多租使用者端點，讓使用者能夠登入。 這可讓多個 Azure AD 租使用者中的使用者使用 Azure AD B2C 登入，而不需要為每個租使用者設定身分識別提供者。 不過，所有這些租用戶中的來賓成員並 **不能** 登入。 因此，您必須[個別設定每個租用戶](identity-provider-azure-ad-single-tenant.md)。
 
+## <a name="prerequisites"></a>必要條件
+
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="register-an-application"></a>註冊應用程式
 
@@ -71,41 +72,6 @@ ms.locfileid: "97653804"
 1. 針對 **Token 類型**，選取 [ **識別碼**]。
 1. 選取要新增的選擇性宣告， `family_name` 以及 `given_name` 。
 1. 按一下 [新增] 。
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="configure-azure-ad-as-an-identity-provider"></a>將 Azure AD 設定成識別提供者
-
-1. 確定您使用的目錄包含 Azure AD B2C 租用戶。 在頂端功能表中選取 [目錄 + 訂閱] 篩選，並選擇包含您 Azure AD B2C 租用戶的目錄。
-1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
-1. 選取 [識別提供者]，然後選取 [新增 OpenID Connect 提供者]。
-1. 輸入 [名稱]。 例如，輸入 *Contoso Azure AD*。
-1. 針對 [中繼資料 URL] 輸入以下 URL，並將 `{tenant}` 取代為您的 Azure AD 租用戶網域名稱：
-
-    ```
-    https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
-    ```
-
-    例如： `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration` 。
-    例如： `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration` 。
-
-1. 在 [用戶端識別碼]中，輸入您先前記錄的應用程式識別碼。
-1. 在 [用戶端密碼] 中，輸入您先前記錄的用戶端密碼。
-1. 在 [範圍] 中，輸入 `openid profile`。
-1. 保留 **回應類型**、 **回應模式** 和 **網域提示** 的預設值。
-1. 在 [識別提供者宣告對應] 底下，選取下列宣告：
-
-    - **使用者識別碼**：oid
-    - **顯示名稱**：name
-    - **指定的名稱**：given_name
-    - **姓氏**：family_name
-    - **電子郵件**： *preferred_username*
-
-1. 選取 [儲存]  。
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
@@ -243,24 +209,6 @@ ms.locfileid: "97653804"
     將 **>technicalprofilereferenceid** 的值更新為您稍早建立之技術設定檔的 **識別碼** 。 例如： `Common-AAD` 。
 
 3. 儲存 TrustFrameworkExtensions.xml 檔案，並再次上傳它以供驗證。
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>將 Azure AD 身分識別提供者新增至使用者流程 
-
-1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
-1. 按一下您想要 Azure AD 識別提供者的使用者流程。
-1. 在 **社交識別提供者** 底下，選取 [ **Contoso Azure AD**]。
-1. 選取 [儲存]  。
-1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
-1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
-1. 按一下 [**執行使用者流程**]
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新並測試信賴憑證者檔案
 

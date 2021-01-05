@@ -4,14 +4,14 @@ description: Azure 監視器計量警示和可能解決方案的常見問題。
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 01/03/2021
 ms.subservice: alerts
-ms.openlocfilehash: fc54d2ba3ca4e7a150a1602c671b99f58197bc44
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657289"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857336"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -265,6 +265,23 @@ ms.locfileid: "97657289"
 -   監視多個維度的度量警示規則-新增維度值組合時
 -   監視多個資源的計量警示規則-將新資源新增至範圍時
 -   計量警示規則，可監視未持續發出 (稀疏計量) 的計量–當計量在一段時間超過24小時未發出時發出時
+
+## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>動態臨界值框線似乎不符合資料
+
+如果最近變更計量的行為，則變更不一定會反映在動態閾值邊界內 (的上限和下限) ，因為這些變更是根據過去10天的度量資料來計算。 當您針對指定的計量查看動態閾值框線時，請務必查看上周的計量趨勢，而不只是最近的時數或天數。
+
+## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>為什麼動態閾值未偵測到每週季節性？
+
+若要識別每週季節性，動態閾值模型至少需要三周的歷程記錄資料。 一旦有足夠的歷程記錄資料可供使用之後，就會識別出任何存在於度量資料中的每週季節性，並據此調整模型。 
+
+## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>即使計量永遠有正值，動態閾值仍會顯示計量的負下限
+
+當計量出現大量波動時，動態閾值將會建立更廣泛的計量值周圍模型，這可能會導致下方的框線小於零。 具體而言，在下列情況下可能會發生這種情況：
+1. 敏感度設定為 low 
+2. 中間值接近零
+3. 度量表現出具有高變異數的異常行為 (資料中有尖峰或下降) 
+
+當下限的值為負值時，這表示它的合理是根據度量的異常行為，達到零值。 您可以考慮選擇較高的敏感度或較大的 *匯總細微性 (期間)* 來使模型較不敏感，或使用 [ *略過資料* ] 選項，從用來建立模型的歷程記錄資料中排除最近的 irregulaity。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -4,12 +4,12 @@ description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0588a3eac4ced6cec1e7aea431c6555bbe8bff0a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559874"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858547"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -107,7 +107,7 @@ IE 8 (或較少的) 不支援報告 SDK 載入失敗。 這有助於減少程式
 
 可用的設定選項為
 
-| 名稱 | 類型 | 說明
+| 名稱 | 類型 | 描述
 |------|------|----------------
 | src | 字串 **[必要]** | 要從何處載入 SDK 的完整 URL。 此值可用於動態新增之腳本/標記的 "src" 屬性 &lt; &gt; 。 您可以使用公用 CDN 位置或您自己的私人託管位置。
 | NAME | 字串 *[選用]* | 已初始化之 SDK 的全域名稱，預設為 `appInsights` 。 因此 ```window.appInsights``` 將會是已初始化之實例的參考。 注意：如果您提供名稱值或先前的實例透過全域名稱 appInsightsSDK 指派 () 則此名稱值也會定義在全域命名空間中 ```window.appInsightsSDK=<name value>``` ，這是 SDK 初始化程式碼所需的值，以確保其初始化和更新正確的程式碼片段基本架構和 proxy 方法。
@@ -167,7 +167,7 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 大部分的設定欄位都命名為，因此可以預設為 false。 除了以外，所有欄位都是選擇性的 `instrumentationKey` 。
 
 | 名稱 | 預設 | 描述 |
@@ -339,7 +339,7 @@ SDK V2 版本的重大變更：
 - 為了讓 API 簽章更好，某些 API 呼叫（例如 trackPageView 和 trackException）已更新。 不支援在 Internet Explorer 8 和更早版本的瀏覽器中執行。
 - 因為資料架構更新，所以遙測信封具有欄位名稱和結構變更。
 - 已移 `context.operation` 至 `context.telemetryTrace` 。 某些欄位也會 (`operation.id`  -->  `telemetryTrace.traceID`) 變更。
-  - 若要手動重新整理目前的 pageview 識別碼 (例如，在 SPA 應用程式) 中，請使用 `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` 。
+  - 若要手動重新整理目前的 pageview 識別碼 (例如，在 SPA 應用程式) 中，請使用 `appInsights.properties.context.telemetryTrace.traceID = Microsoft.ApplicationInsights.Telemetry.Util.generateW3CId()` 。
     > [!NOTE]
     > 若要讓追蹤識別碼成為唯一的，您先前使用的是 `Util.newId()` ，現在請使用 `Util.generateW3CId()` 。 最後最後是作業識別碼。
 

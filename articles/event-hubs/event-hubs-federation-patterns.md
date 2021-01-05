@@ -3,12 +3,12 @@ title: 事件複寫工作模式-Azure 事件中樞 |Microsoft Docs
 description: 本文提供執行特定事件複寫工作模式的詳細指引
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 494de442b636d535fa1ed6fdeeeda28db9783952
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803981"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861378"
 ---
 # <a name="event-replication-tasks-patterns"></a>事件複寫工作模式
 
@@ -20,7 +20,7 @@ ms.locfileid: "97803981"
 
 複寫模式會將事件從某個事件中樞複製到下一個事件中樞，或從事件中樞複製到其他目的地，例如服務匯流排佇列。 這些事件會轉送，而不會對事件承載進行任何修改。
 
-事件 [中樞之間的事件](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) 複寫以及 [事件中樞與服務匯流排範例之間的事件](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) 複寫涵蓋了此模式的實作為。
+事件 [中樞](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) 與事件中樞之間的事件複寫以及 [事件中樞和服務匯流排](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) 範例之間的事件複寫，以及 [使用 Apache Kafka MirrorMaker 與事件中樞](event-hubs-kafka-mirror-maker-tutorial.md) 教學課程，以瞭解將 apache Kafka Broker 中的資料複寫到事件中樞的特定案例，這會涵蓋此模式的執行。
 
 ### <a name="streams-and-order-preservation"></a>資料流程和順序保留
 
