@@ -2,7 +2,7 @@
   href: index.yml
 - name: 切換至專用 SQL 集區 (先前稱為 SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
-- name: 概觀
+- name: 總覽
   items:
     - name: 什麼是 Azure Synapse？
       href: overview-what-is.md
@@ -263,7 +263,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 概觀
+            - name: 總覽
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
@@ -502,7 +502,7 @@
               items:
                 - name: 新增 Azure 串流分析作業
                   href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: 用來連線至 Synapse 工作區的工具
+        - name: 與工具和應用程式連線
           items:
             - name: 概觀
               href: sql/connect-overview.md
@@ -510,14 +510,20 @@
               href: sql/get-started-azure-data-studio.md
             - name: 連接字串
               href: sql/connection-strings.md
-            - name: 使用 sqlcmd 進行查詢
-              href: sql/get-started-connect-sqlcmd.md
             - name: 使用 SSMS 查詢
               href: sql/get-started-ssms.md
-            - name: 使用 Visual Studio 查詢
-              href: sql/get-started-visual-studio.md
             - name: 連線至 Power BI Desktop
               href: sql/get-started-power-bi-professional.md
+            - name: 使用 Visual Studio SSDT 查詢
+              href: sql/get-started-visual-studio.md
+            - name: 使用 .NET Core 進行查詢
+              href: ../azure-sql/database/connect-query-dotnet-core.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 使用 Visual Studio .NET 進行查詢
+              href: ../azure-sql/database/connect-query-dotnet-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 使用 Python 進行查詢
+              href: ../azure-sql/database/connect-query-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 使用 sqlcmd 進行查詢
+              href: sql/get-started-connect-sqlcmd.md
 - name: Apache Spark
   items:
     - name: 概觀
@@ -1107,6 +1113,10 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: 設定 Azure Synapse 的認知服務
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: 操作方式
+  items:
+    - name: 規劃和管理成本
+      href: plan-manage-costs.md
 - name: 參考
   items:
     - name: Azure CLI

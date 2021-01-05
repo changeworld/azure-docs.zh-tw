@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure SignalR Service 文件
-summary: Azure SignalR 服務是 Azure 受控服務，可以協助開發人員使用即時功能輕鬆地建置 Web 應用程式。
+summary: Azure SignalR Service 是 Azure 受控服務，可以協助開發人員使用即時功能輕鬆地建置 Web 應用程式。
 metadata:
   title: Azure SignalR Service 文件
   description: 以無伺服器或伺服器模式輕鬆地建置及調整即時 Web 應用程式。 以支援各種語言和架構的 WebSocket 為基礎。
@@ -9,12 +9,12 @@ metadata:
   author: v-chmccl
   ms.author: wesmc
   ms.date: 03/11/2020
-  ms.openlocfilehash: d60587516fe021085e39227d45865ed10f81990e
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 377d0c8daa864b6ee936fbb487ef8a7235ee638e
+  ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "91855413"
+  ms.lasthandoff: 12/28/2020
+  ms.locfileid: "97796732"
 landingContent:
 - title: 關於 Azure SignalR 服務
   linkLists:

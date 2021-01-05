@@ -27,6 +27,8 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: 建立 Python Runbook
       href: learn/automation-tutorial-runbook-textual-python2.md
+    - name: 建立 Python 3 Runbook
+      href: learn/automation-tutorial-runbook-textual-python-3.md
 - name: 概念
   items:
     - name: 自動化帳戶驗證總覽
@@ -96,6 +98,8 @@
           href: shared-resources/variables.md
         - name: 管理 Python 2 套件
           href: python-packages.md
+        - name: 管理 Python 3 套件
+          href: python-3-packages.md
         - name: 針對共用資源進行疑難排解
           href: troubleshoot/shared-resources.md
     - name: 程序自動化
@@ -343,7 +347,7 @@
       href: 'https://azure.microsoft.com/updates/?product=automation'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=automation'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-automation'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=automation'

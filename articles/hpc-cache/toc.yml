@@ -42,8 +42,14 @@
       href: hpc-cache-mount.md
     - name: 管理快取
       href: hpc-cache-manage.md
-    - name: 設定選擇性設定
-      href: configuration.md
+    - name: 使用選擇性設定
+      items:
+        - name: 設定選擇性設定
+          href: configuration.md
+        - name: 自訂存取原則
+          href: access-policies.md
+        - name: 設定目錄服務
+          href: directory-services.md
 - name: 參考
   items:
     - name: Azure CLI

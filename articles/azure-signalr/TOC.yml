@@ -54,6 +54,22 @@
           href: ../azure-functions/functions-bindings-signalr-service.md
         - name: 上游設定
           href: concept-upstream.md
+    - name: 可用性
+      items:
+        - name: 正常關閉應用程式伺服器。
+          href: server-graceful-shutdown.md
+    - name: 安全性
+      items:
+        - name: 授權
+          items:
+            - name: 透過 Azure Active Directory 授與存取權
+              href: authorize-access-azure-active-directory.md
+        - name: 驗證
+          items:
+            - name: 從應用程式進行驗證
+              href: authenticate-application.md
+            - name: 使用受控識別進行驗證
+              href: authenticate-managed-identity.md
     - name: 高可用性
       items:
         - name: 復原和災害復原

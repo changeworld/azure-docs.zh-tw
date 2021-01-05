@@ -9,6 +9,8 @@
   items:
     - name: 建立 Web 應用程式
       href: quick-demo-map-app.md
+    - name: 建立 Android 應用程式
+      href: quick-android-map.md
 - name: 教學課程
   items:
     - name: Web SDK 教學課程
@@ -21,6 +23,10 @@
           href: tutorial-prioritized-routes.md
         - name: 建立存放區定位器
           href: tutorial-create-store-locator.md
+    - name: Android SDK 教學課程
+      items:
+        - name: 將 GeoJSON 資料載入地圖
+          href: tutorial-load-geojson-file-android.md
     - name: REST API 教學課程
       items:
         - name: 建立室內地圖
@@ -238,16 +244,28 @@
           href: how-to-use-android-map-control-library.md
         - name: 變更地圖樣式
           href: set-android-map-styles.md
+        - name: 建立資料來源
+          href: create-data-source-android-sdk.md
         - name: 新增符號圖層
           href: how-to-add-symbol-to-android-map.md
+        - name: 新增泡泡圖層
+          href: map-add-bubble-layer-android.md
         - name: 新增圖形
           href: how-to-add-shapes-to-android-map.md
+        - name: 新增熱度圖圖層
+          href: map-add-heat-map-layer-android.md
+        - name: 新增線條圖層
+          href: android-map-add-line-layer.md
         - name: 顯示功能資訊
           href: display-feature-information-android.md
         - name: 新增圖格圖層
           href: how-to-add-tile-layer-android-map.md
         - name: 顯示流量資料
           href: how-to-show-traffic-android.md
+        - name: 使用資料驅動運算式
+          href: data-driven-style-expressions-android-sdk.md
+        - name: 回應事件
+          href: android-map-events.md
     - name: 在 Power BI 中使用 Azure 地圖服務
       items:
         - name: 開始使用

@@ -95,6 +95,10 @@
           href: diagnostic-services.md
         - name: 即時串流記錄
           href: spring-cloud-howto-log-streaming.md
+        - name: 使用 Java 同處理序代理程式的 Application Insights
+          href: spring-cloud-howto-application-insights.md
+        - name: Resilience4J 斷路器計量
+          href: spring-cloud-howto-circuit-breaker-metrics.md
     - name: 安全
       items:
         - name: 啟用系統指派的受控識別

@@ -3,7 +3,7 @@
 - name: HDInsight 服務
   expanded: true
   items:
-    - name: 概觀
+    - name: 總覽
       items:
         - name: 什麼是 Azure HDInsight？
           href: ./hdinsight-overview.md

@@ -129,7 +129,7 @@
           href: app/data-retention-privacy.md
     - name: 警示
       items:
-        - name: 概觀
+        - name: 總覽
           href: platform/alerts-overview.md
         - name: 度量警示
           href: platform/alerts-metric-overview.md
@@ -420,7 +420,7 @@
             - name: Linux
               displayname: diagnostics extension
               items:
-                - name: 概觀
+                - name: 總覽
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: 使用 Telegraf 收集計量
                   href: platform/collect-custom-metrics-linux-telegraf.md
@@ -544,18 +544,40 @@
           href: platform/alerts-resource-move.md
         - name: IT 服務管理
           items:
-            - name: IT 服務管理連接器
+            - name: ITSM 連接器概觀
               href: platform/itsmc-overview.md
-            - name: IT 服務管理連線
-              href: platform/itsmc-connections.md
-            - name: IT Service Management Connector 定義
+            - name: ITSM 連接器合作夥伴設定
+              items:
+                - name: 總覽
+                  href: platform/itsmc-connections.md
+                - name: ServiceNow
+                  href: platform/itsmc-connections-servicenow.md
+                - name: System Center Service Manager
+                  items:
+                    - name: 安裝程式
+                      href: platform/itsmc-connections-scsm.md
+                    - name: 建立服務管理員 Web 應用程式
+                      href: platform/itsmc-service-manager-script.md
+                - name: Cherwell
+                  href: platform/itsmc-connections-cherwell.md
+                - name: Provance
+                  href: platform/itsmc-connections-provance.md
+            - name: ITSM 連接器 Azure 設定
               href: platform/itsmc-definition.md
-            - name: 建立服務管理員 Web 應用程式
-              href: platform/itsmc-service-manager-script.md
+            - name: 從 ITSM 產品同步的資料
+              href: platform/itsmc-synced-data.md
             - name: 針對 ITSM 連接器中的問題進行疑難排解
               href: platform/itsmc-resync-servicenow.md
             - name: 與安全匯出整合
-              href: platform/it-service-management-connector-secure-webhook-connections.md
+              items:
+                - name: 總覽
+                  href: platform/it-service-management-connector-secure-webhook-connections.md
+                - name: 安全匯出 Azure 設定
+                  href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
+                - name: BMC
+                  href: platform/itsmc-secure-webhook-connections-bmc.md
+                - name: ServiceNow
+                  href: platform/itsmc-secure-webhook-connections-servicenow.md
         - name: 遷移傳統警示規則
           items:
             - name: 關於傳統警示
@@ -653,7 +675,7 @@
               href: app/remove-application-insights.md
         - name: 無程式碼監視
           items:
-            - name: 概觀
+            - name: 總覽
               href: app/codeless-overview.md
             - name: Azure 虛擬機器和虛擬機器擴展集
               href: app/azure-vm-vmss-apps.md
@@ -790,6 +812,8 @@
               href: app/snapshot-debugger.md
             - name: 啟用 App Service 的快照偵錯工具
               href: app/snapshot-debugger-appservice.md
+            - name: 啟用函式應用程式的快照偵錯工具
+              href: app/snapshot-debugger-function-app.md
             - name: 啟用其他環境的快照偵錯工具
               href: app/snapshot-debugger-vm.md
             - name: 升級快照偵錯工具
@@ -986,7 +1010,7 @@
           href: insights/vminsights-optout.md
     - name: 適用於容器的 Azure 監視器
       items:
-        - name: 概觀
+        - name: 總覽
           href: insights/container-insights-overview.md
         - name: 常見問題集
           href: faq.md#azure-monitor-for-containers
@@ -1079,7 +1103,7 @@
           href: insights/troubleshoot-workbooks.md
         - name: 方案
           items:
-            - name: 概觀
+            - name: 總覽
               href: insights/solutions.md
               displayName: 'Azure CLI, az monitor log-analytics'
             - name: 目標解決方案
@@ -1279,7 +1303,7 @@
               href: app/snapshot-collector-release-notes.md
         - name: 資料模型
           items:
-            - name: 概觀
+            - name: 總覽
               href: app/data-model.md
             - name: 要求
               href: app/data-model-request-telemetry.md

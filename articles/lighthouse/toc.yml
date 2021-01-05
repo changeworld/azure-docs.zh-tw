@@ -24,12 +24,15 @@
     - name: Azure Marketplace 中的受控服務供應項目
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: 雲端解決方案提供者方案考量
+    - name: 雲端解決方案提供者計畫
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
-    - name: Azure Lighthouse 在企業案例中的運用
+    - name: 企業案例
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: ISV 案例
+      displayName: 'independent, software, vendor, saas'
+      href: ./concepts/isv-scenarios.md
     - name: Azure Lighthouse 和 Azure 受控應用程式
       displayName: 'managed apps, ama'
       href: ./concepts/managed-applications.md

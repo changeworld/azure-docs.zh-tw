@@ -86,7 +86,7 @@
       href: overview-vnet-service-endpoints.md
 - name: 操作指南
   items:
-    - name: Authenticate
+    - name: 驗證和授權
       items:
         - name: 驗證 Key Vault
           href: authentication.md
@@ -104,10 +104,6 @@
           href: rbac-migration.md
         - name: 針對存取問題進行疑難排解
           href: troubleshooting-access-issues.md
-    - name: 啟用虛刪除和清除保護
-      href: key-vault-recovery.md
-    - name: 啟用記錄
-      href: howto-logging.md
     - name: 開發
       items:
         - name: Azure 金鑰保存庫開發人員指南
@@ -118,21 +114,31 @@
           href: vs-key-vault-add-connected-service.md
     - name: 監視及管理
       items:
-        - name: 設定 Azure Key Vault 的監視和警示
+        - name: 事件方格通知
+          items:
+            - name: 透過Logic Apps 接收通知
+              href: event-grid-logicapps.md
+            - name: 透過 Azure 自動化接收通知
+              href: event-grid-tutorial.md
+        - name: 啟用記錄
+          href: howto-logging.md
+        - name: 使用 Azure 監視器設定 Azure Key Vault 的監視和警示
           href: alert.md
+        - name: 具有虛刪除和清除保護的復原管理
+          href: key-vault-recovery.md
         - name: 整合 Azure Key Vault 與 Azure 原則
           href: azure-policy.md
-        - name: 透過 Azure 事件方格和 Logic Apps 接收通知
-          href: event-grid-logicapps.md
-        - name: 透過 Azure 事件方格和 Azure 自動化接收通知
-          href: event-grid-tutorial.md
         - name: 備份個別 Key Vault 物件
           href: backup.md
     - name: 安全
       items:
-        - name: 與 Azure Private Link 服務整合
-          href: private-link-service.md
-        - name: 在防火牆後面存取金鑰保存庫 - Azure Key Vault
+        - name: Azure Private Link
+          items:
+            - name: 與 Azure Private Link 服務整合
+              href: private-link-service.md
+            - name: 診斷私人連結設定問題
+              href: private-link-diagnostics.md
+        - name: 存取防火牆後方的 Key Vault
           href: access-behind-firewall.md
     - name: 移動金鑰保存庫
       items:
@@ -142,10 +148,6 @@
           href: move-subscription.md
         - name: 將金鑰保存庫移至另一個區域
           href: move-region.md
-    - name: 網路功能
-      items:
-        - name: 診斷私人連結設定問題
-          href: private-link-diagnostics.md
 - name: 參考
   items:
     - name: 新功能

@@ -51,7 +51,7 @@
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
 - name: Azure Stack Edge Pro R
   items:
-    - name: 概觀
+    - name: 總覽
       items:
         - name: Azure Stack Edge Pro R 是什麼？
           href: azure-stack-edge-j-series-overview.md
@@ -213,14 +213,20 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
             - name: 部署 VM - 範本
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: 部署 VM - GPU
+              href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
             - name: 部署 VM - Azure PowerShell Cmdlet
-              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
             - name: 部署 VM - Azure PowerShell 指令碼
-              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell-script.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
             - name: 部署 VM - Azure CLI/Python
               href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+            - name: 部署 VM 上的自訂指令碼延伸模組
+              href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: 建立 VM 映像
-              href: azure-stack-edge-j-series-create-virtual-machine-image.md
+              href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: 支援的 VM 大小、類型
+              href: azure-stack-edge-gpu-virtual-machine-sizes.md
         - name: 管理憑證
           items:
             - name: 規格需求
@@ -293,8 +299,6 @@
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: 共用的參考資料
       items:
-        - name: 透過 API、SDK、PowerShell 的 IoT Edge 角色
-          href: azure-stack-edge-gpu-iot-edge-api-update.md
         - name: Azure PowerShell
           href: /powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge
         - name: REST API
@@ -389,6 +393,10 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet
+- name: 安全性
+  items:
+    - name: 安全性基準
+      href: security-baseline.md
 - name: 資源
   items:
     - name: Azure Stack Edge Pro C# 模組範例 (.NET)

@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 08/24/2020
+ms.date: 12/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0300dab1fa7d0ef0d20c4236cc452135b3ade20e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305749"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725015"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning 主權雲端同位
 
@@ -24,8 +24,8 @@ ms.locfileid: "93305749"
 
 在全球 Azure 區域清單中，有數個「主權」區域可提供特定市場。 例如，Azure Government 和 Azure 中國的世紀地區。 目前 Azure Machine Learning 會部署至下列主權雲端區域：
 
-* Azure Government 區域 **美國-亞利桑那州** 和 **美國-弗吉尼亞州** 。
-* Azure 中國世紀地區 **中國-中東-2** 。
+* Azure Government 區域 **美國-亞利桑那州** 和 **美國-弗吉尼亞州**。
+* Azure 中國世紀地區 **中國-中東-2**。
 
 > [!TIP]
 > 為了區分主權與非主權區域，本文將使用「 __公用雲端__ 」一詞來參考非主權區域。
@@ -92,7 +92,7 @@ ms.locfileid: "93305749"
 | ML 輔助標記 (影像分類和物件偵測)            | 公開預覽       | YES                | YES         |
 | **負責任的 ML** |   | | |
 | UI 中的可解釋性                                                       | 公開預覽       | 否                 | 否          |
-| 差異隱私權 WhiteNoise 工具組                                    | Oss                  | 否                 | 否          |
+| 差異隱私權 SmartNoise 工具組                                    | Oss                  | 否                 | 否          |
 | Azure Machine Learning 中用來執行資料表的自訂標記              | GA                   | 否                 | 否          |
 | 公平 AzureML 整合                                               | 公開預覽       | 否                 | 否          |
 | 可解譯性 SDK                                                      | GA                   | YES                | YES         |
@@ -205,7 +205,7 @@ ms.locfileid: "93305749"
 | ML 輔助標記 (影像分類和物件偵測)            | 公開預覽   | YES       | N/A        |
 | **負責任的 ML** |    | | |
 | UI 中的可解釋性                                                       | 公開預覽   | 否        | N/A        |
-| 差異隱私權 WhiteNoise 工具組                                    | Oss              | 否        | N/A        |
+| 差異隱私權 SmartNoise 工具組                                    | Oss              | 否        | N/A        |
 | Azure Machine Learning 中用來執行資料表的自訂標記              | GA               | 否        | N/A        |
 | 公平 AzureML 整合                                               | 公開預覽   | 否        | N/A        |
 | 可解譯性 SDK                                                      | GA               | YES       | N/A        |
@@ -239,6 +239,6 @@ ms.locfileid: "93305749"
 * IP 位址範圍： [VNet 強制通道](how-to-secure-training-vnet.md#forced-tunneling) 指示中使用的 CLI 命令不會傳回 IP 範圍。 請改用 [AZURE IP 範圍和服務標籤來進行 Azure 中國](https://www.microsoft.com//download/details.aspx?id=57062) 。
 * 目前已啟用 Private Link 的工作區不支援 Azure Machine Learning 計算實例預覽，但在下一次部署中，將會支援 CI，以便將服務擴充至所有 AML 區域。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解 Azure Machine learning 的可用區域，請參閱 [依區域](https://azure.microsoft.com/global-infrastructure/services/)提供的產品。

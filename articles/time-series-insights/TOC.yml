@@ -85,6 +85,8 @@
       href: ./how-to-ingest-data-event-hub.md
     - name: 連線至 IoT 中樞
       href: ./how-to-ingest-data-iot-hub.md
+    - name: 監視 Azure 時間序列深入解析
+      href: ./how-to-monitor-tsi.md
     - name: 使用範本管理資源
       href: time-series-insights-manage-resources-using-azure-resource-manager-template.md
     - name: Azure 時間序列深入解析 Gen2
@@ -171,6 +173,8 @@
       items:
         - name: JavaScript 用戶端 SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
+    - name: 監視資料參考
+      href: how-to-monitor-tsi-reference.md
     - name: Azure CLI
       href: /cli/azure/ext/timeseriesinsights/timeseriesinsights?view=azure-cli-latest
 - name: 資源

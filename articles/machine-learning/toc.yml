@@ -297,6 +297,9 @@
         - name: Git 整合
           displayName: github gitlab
           href: concept-train-model-git-integration.md
+        - name: 如何針對環境進行疑難排解
+          displayName: 'troubleshoot, envrionment, debug, image'
+          href: how-to-troubleshoot-environments.md
     - name: 使用資料
       items:
         - name: 標籤資料
@@ -354,14 +357,6 @@
         - name: 微調超參數
           displayName: 'parameter, hyperparameter, hyperdrive'
           href: how-to-tune-hyperparameters.md
-        - name: 搭配使用 MLflow
-          items:
-            - name: 使用 MLflow 追蹤實驗
-              displayName: 'log, monitor, deploy, metrics,  model registry, register'
-              href: how-to-use-mlflow.md
-            - name: 使用 MLflow 追蹤 Azure Databricks 執行
-              displayName: 'log, monitor, deploy, metrics, databricks'
-              href: how-to-use-mlflow-azure-databricks.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -404,6 +399,17 @@
           href: how-to-use-secrets-in-runs.md
         - name: 增強式學習
           href: how-to-use-reinforcement-learning.md
+    - name: 搭配使用 MLflow
+      items:
+        - name: 使用 MLflow 追蹤實驗
+          displayName: 'log, monitor, metrics, model registry, register'
+          href: how-to-use-mlflow.md
+        - name: 使用 MLflow 追蹤 Azure Databricks 執行
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-use-mlflow-azure-databricks.md
+        - name: 部署 MLflow 模型
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-deploy-models-with-mlflow.md
     - name: 自動化機器學習
       displayName: 'automl, auto ml'
       items:
@@ -468,9 +474,9 @@
               href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA 推斷
               href: how-to-deploy-fpga-web-service.md
-        - name: 疑難排解與偵錯
+        - name: 疑難排解部署問題
           href: how-to-troubleshoot-deployment.md
-        - name: 疑難排解與偵錯 (本機)
+        - name: 針對部署進行疑難排解 (本機)
           href: how-to-troubleshoot-deployment-local.md
         - name: 取用 Web 服務
           displayName: create client consume request response synchronous
@@ -536,12 +542,12 @@
             - name: 執行 Python 程式碼
               displayName: 'feature extraction, feature engineering'
               href: how-to-designer-python.md
-        - name: 管線偵錯與疑難排解
+        - name: 針對管線進行疑難排解
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: 將管線資料記錄至 Application Insights
           href: how-to-log-pipelines-application-insights.md
-        - name: 針對平行執行步驟進行偵錯和疑難排解
+        - name: 針對 ParallelRunStep 進行疑難排解
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
     - name: 適用於 CI/CD 的 Azure Pipelines
@@ -601,11 +607,10 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: 服務限制
+      href: resource-limits-quotas-capacity.md
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: 已知問題
-      displayName: 'bugs, errors, troubleshoot'
-      href: resource-known-issues.md
     - name: 使用者論壇
       href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow

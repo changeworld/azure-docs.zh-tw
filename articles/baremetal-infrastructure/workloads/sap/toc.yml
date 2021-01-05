@@ -1,0 +1,16 @@
+- name: Azure BareMetal 基礎結構
+  href: ../../index.yml
+- name: 概觀
+  items:
+    - name: 關於 BareMetal 基礎結構
+      href: baremetal-overview-architecture.md
+    - name: 認識詞彙
+      href: ../../know-baremetal-terms.md
+- name: 操作指南
+  items:
+    - name: 在 Azure 中管理 BareMetal 執行個體單位
+      href: baremetal-infrastructure-portal.md
+- name: 參考
+  items:
+    - name: BareMetal 工作負載類型
+      href: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/context/context

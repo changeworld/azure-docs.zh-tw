@@ -30,16 +30,17 @@
           href: create-cluster.md
 - name: 教學課程
   items:
-    - name: 1 - 建立/管理作業
-      href: stream-analytics-manage-job.md
-    - name: 2 - 執行 Azure Functions
+    - name: 在 Power BI 中將詐騙電話視覺化
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: 執行 Azure Functions
       href: stream-analytics-with-azure-functions.md
-    - name: 3 - 在 Aure Pipelines 中使用 CI/CD 部署
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: 4 - 執行 C# UDF
+    - name: 執行 C# UDF
       href: stream-analytics-edge-csharp-udf.md
-    - name: 5 - 建立自訂 .NET 還原序列化程式
+    - name: 建立自訂 .NET 還原序列化程式
       href: custom-deserializer.md
+    - name: 建立 IoT Edge 工作
+      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      maintainContext: true
 - name: 範例
   items:
     - name: 程式碼範例
@@ -56,6 +57,8 @@
       href: develop-locally.md
     - name: 安全性
       items:
+        - name: 將工作連線至 Azure 虛擬網路 (VNet)
+          href: connect-job-to-vnet.md
         - name: Azure 原則的安全性控制
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -92,7 +95,7 @@
           href: event-hubs-output.md
         - name: Power BI
           href: power-bi-output.md
-        - name: 資料表儲存體
+        - name: 表格儲存體
           href: table-storage-output.md
         - name: 服務匯流排佇列
           href: service-bus-queues-output.md
@@ -129,6 +132,8 @@
           href: repartition.md
         - name: 增加作業輸送量
           href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: 作業狀態
       href: job-states.md
     - name: 視窗函式
@@ -181,35 +186,31 @@
           href: stream-analytics-job-reliability.md
         - name: 使用 SQL 參考資料
           href: sql-reference-data.md
-        - name: 使用受控識別進行驗證
-          items:
-            - name: ADLS Gen 1
-              href: stream-analytics-managed-identities-adls.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Blob 儲存體
-              href: blob-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: 事件中樞
-              href: event-hubs-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Power BI
-              href: powerbi-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL 和 Azure Synapse
-              href: sql-database-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
         - name: 將資料進行加密
           href: data-protection.md
         - name: 異地備援
           href: geo-redundancy.md
+    - name: 使用受控識別進行驗證
+      items:
+        - name: ADLS Gen 1
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Blob 儲存體
+          href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: 事件中樞
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL 和 Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: 建置解決方案
       items:
         - name: Twitter 情緒分析
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: 即時詐欺偵測
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: 在 IoT Edge 上執行作業
-          href: stream-analytics-edge.md
         - name: 在 Azure Stack 上執行作業
           href: on-azure-stack.md
         - name: 收費亭感應器資料分析
@@ -287,6 +288,8 @@
           href: debug-locally-using-job-diagram-vs-code.md
         - name: 探索作業
           href: visual-studio-code-explore-jobs.md
+        - name: 建立 .NET 自訂還原序列化程式並進行偵錯
+          href: visual-studio-code-custom-deserializer.md
         - name: JobConfig.json 欄位
           href: job-config-json.md
     - name: 疑難排解

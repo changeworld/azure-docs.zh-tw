@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: fa4db97e2aefe48e792f7d43dbb782e7a0967716
-  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+  ms.openlocfilehash: 17113e3a2564ed56ecbcf8e34de27c4fe398ce03
+  ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96905259"
+  ms.lasthandoff: 12/18/2020
+  ms.locfileid: "97680678"
 landingContent:
 - title: 關於 Azure 地圖服務
   linkLists:
@@ -40,6 +40,8 @@ landingContent:
     links:
     - text: 使用 Azure 地圖服務建立 Web 應用程式
       url: quick-demo-map-app.md
+    - text: 使用 Azure 地圖服務建立 Android 應用程式
+      url: quick-android-map.md
   - linkListType: concept
     links:
     - text: 為地圖服務帳戶選擇正確的定價層
@@ -130,12 +132,26 @@ landingContent:
       url: /javascript/api/azure-maps-spatial-io/
 - title: 使用 Android SDK 進行開發
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 將 GeoJSON 資料載入地圖
+      url: tutorial-load-geojson-file-android.md
   - linkListType: how-to-guide
     links:
     - text: 開始使用 Android 地圖控制項
       url: how-to-use-android-map-control-library.md
-    - text: 顯示功能的中繼資料資訊
-      url: display-feature-information-android.md
+    - text: 建立資料來源
+      url: create-data-source-android-sdk.md
+    - text: 新增泡泡圖層
+      url: map-add-bubble-layer-android.md
+    - text: 新增符號圖層
+      url: how-to-add-symbol-to-android-map.md
+    - text: 新增線條圖層
+      url: android-map-add-line-layer.md
+    - text: 新增多邊形圖層
+      url: how-to-add-shapes-to-android-map.md
+    - text: 使用資料驅動樣式運算式
+      url: data-driven-style-expressions-android-sdk.md
     - text: 將圖格圖層新增至地圖
       url: how-to-add-tile-layer-android-map.md
     - text: 在地圖中新增圖形

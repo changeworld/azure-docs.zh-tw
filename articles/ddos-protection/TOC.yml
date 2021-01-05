@@ -15,9 +15,11 @@
 - name: 教學課程
   items:
     - name: 檢視和設定 DDoS 保護遙測
-      href: telemetry-monitoring-alerting.md
-    - name: 設定 DDoS 攻擊風險降低報告和流量記錄
-      href: reports-and-flow-logs.md
+      href: telemetry.md
+    - name: 檢視和設定 DDoS 診斷記錄
+      href: diagnostic-logging.md
+    - name: 檢視和設定 DDoS 保護警示
+      href: alerts.md
 - name: 概念
   items:
     - name: 攻擊類型

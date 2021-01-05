@@ -12,7 +12,7 @@
       href: az-overview.md
     - name: 可用性區域文件
       items:
-        - name: 支援可用性區域的地區
+        - name: 支援可用性區域的 Azure 服務
           href: az-region.md
         - name: 虛擬機器
           items:

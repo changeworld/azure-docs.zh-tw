@@ -25,6 +25,28 @@
   items:
     - name: 安全性
       items:
+        - name: 保護資源的外部存取
+          items:
+            - name: 保護外部存取概觀
+              href: secure-external-access-resources.md
+            - name: 1 判斷安全性狀態
+              href: 1-secure-access-posture.md
+            - name: 2 判斷目前的狀態
+              href: 2-secure-access-current-state.md
+            - name: 3 建立安全性方案
+              href: 3-secure-access-plan.md
+            - name: 4 使用群組的安全存取
+              href: 4-secure-access-groups.md
+            - name: 5 使用 B2B 共同作業的安全存取
+              href: 5-secure-access-b2b.md
+            - name: 6 使用權利管理的安全存取
+              href: 6-secure-access-entitlement-managment.md
+            - name: 7 使用條件式存取的安全存取
+              href: 7-secure-access-conditional-access.md
+            - name: 8 使用敏感度標籤的安全存取
+              href: 8-secure-access-sensitivity-labels.md
+            - name: 9 安全存取小組、SharePoint 和 OneDrive
+              href: 9-secure-access-teams-sharepoint.md
         - name: 啟用 MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: 安全性預設值
