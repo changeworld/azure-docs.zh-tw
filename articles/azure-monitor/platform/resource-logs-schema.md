@@ -4,12 +4,12 @@ description: 瞭解 Azure 資源記錄的支援服務和事件架構。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: c1c5ed715527add4218378c05602ed3352e55461
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f5ea6d3f28fe85cf1453f3cf2b9eb0132bda0013
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586936"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808295"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>適用于 Azure 資源記錄的常見和服務專屬架構
 
@@ -29,18 +29,18 @@ ms.locfileid: "97586936"
 | resourceId | 必要 | 發出事件之資源的資源識別碼。 對於租用戶服務，這是 /tenants/tenant-id/providers/provider-name 的格式。 |
 | tenantId | 租用戶記錄所需的 | 此事件所繫結 Active Directory 租用戶的租用戶識別碼。 這個屬性只能用於租用戶層級記錄，並不會出現在資源層級記錄中。 |
 | operationName | 必要 | 此事件所代表的作業名稱。 如果事件代表 Azure RBAC 作業，這就是 Azure RBAC 作業名稱 (例如，Microsoft. Storage/storageAccounts/blobServices/blob/Read) 。 通常以 Resource Manager 作業形式建模，即使它們不是實際記載的 Resource Manager 作業也是一樣 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
-| operationVersion | 選用 | 如果 operationName 是使用 API 執行，則為與作業相關聯的 api 版本 (例如 `http://myservice.windowsazure.net/object?api-version=2016-06-01`) 。 如果沒有對應至此作業的 API，則版本代表該作業的版本，以防與作業建立關聯的屬性在未來變更。 |
+| operationVersion | 選擇性 | 如果 operationName 是使用 API 執行，則為與作業相關聯的 api 版本 (例如 `http://myservice.windowsazure.net/object?api-version=2016-06-01`) 。 如果沒有對應至此作業的 API，則版本代表該作業的版本，以防與作業建立關聯的屬性在未來變更。 |
 | category | 必要 | 事件的記錄類別。 類別是您可在特定資源上啟用或停用記錄的資料粒度。 事件之屬性 Blob 內顯示的屬性，會與特定記錄類別和資源類型內的屬性相同。 一般記錄類別是「Audit」「運作中」「執行」和「要求」。 |
-| resultType | 選用 | 事件的狀態。 一般值包括︰「已啟動」、「進行中」、「成功」、「失敗」、「作用中」和「已解決」。 |
-| resultSignature | 選用 | 事件的子狀態。 如果此作業對應至 REST API 呼叫，則此欄位是對應 REST 呼叫的 HTTP 狀態碼。 |
-| resultDescription | 選用 | 這項作業的靜態文字描述，例如「取得儲存體檔案」。 |
-| durationMs | 選用 | 作業的持續時間 (以毫秒為單位)。 |
-| callerIpAddress | 選用 | 呼叫端 IP 位址，如果作業對應至來自具有公開可用 IP 位址之實體的 API 呼叫。 |
-| correlationId | 選用 | 用來將一組相關事件群組在一起的 GUID。 一般而言，如果兩個事件具有相同的 operationName，但是有兩個不同的狀態 (例如「已啟動」和「成功」 ) ，它們就會共用相同的相互關聯識別碼。 這也可能代表事件之間的其他關聯性。 |
-| 身分識別 | 選用 | JSON Blob，描述已執行作業之使用者或應用程式的身分識別。 此欄位通常包含來自 active directory 的授權和宣告/JWT 權杖。 |
-| 層級 | 選用 | 事件的嚴重性層級。 必須是「資訊」、「警告」、「錯誤」或「嚴重」中的其中一個。 |
-| location | 選用 | 發出事件之資源的區域，例如「美國東部」或「法國南部」 |
-| properties | 選用 | 任何與此特定事件類別相關的擴充屬性。 所有自訂/唯一屬性都必須放在架構的這個 "Part B" 內。 |
+| resultType | 選擇性 | 事件的狀態。 一般值包括︰「已啟動」、「進行中」、「成功」、「失敗」、「作用中」和「已解決」。 |
+| resultSignature | 選擇性 | 事件的子狀態。 如果此作業對應至 REST API 呼叫，則此欄位是對應 REST 呼叫的 HTTP 狀態碼。 |
+| resultDescription | 選擇性 | 這項作業的靜態文字描述，例如「取得儲存體檔案」。 |
+| durationMs | 選擇性 | 作業的持續時間 (以毫秒為單位)。 |
+| callerIpAddress | 選擇性 | 呼叫端 IP 位址，如果作業對應至來自具有公開可用 IP 位址之實體的 API 呼叫。 |
+| correlationId | 選擇性 | 用來將一組相關事件群組在一起的 GUID。 一般而言，如果兩個事件具有相同的 operationName，但是有兩個不同的狀態 (例如「已啟動」和「成功」 ) ，它們就會共用相同的相互關聯識別碼。 這也可能代表事件之間的其他關聯性。 |
+| 身分識別 | 選擇性 | JSON Blob，描述已執行作業之使用者或應用程式的身分識別。 此欄位通常包含來自 active directory 的授權和宣告/JWT 權杖。 |
+| 層級 | 選擇性 | 事件的嚴重性層級。 必須是「資訊」、「警告」、「錯誤」或「嚴重」中的其中一個。 |
+| location | 選擇性 | 發出事件之資源的區域，例如「美國東部」或「法國南部」 |
+| properties | 選擇性 | 任何與此特定事件類別相關的擴充屬性。 所有自訂/唯一屬性都必須放在架構的這個 "Part B" 內。 |
 
 ## <a name="service-specific-schemas"></a>服務特定的架構
 
@@ -51,7 +51,7 @@ ms.locfileid: "97586936"
 | Azure Active Directory | [總覽](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、 [Audit log schema 和登](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)[入架構](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | [Azure Analysis Services-設定診斷記錄](../../analysis-services/analysis-services-logging.md) |
 | API 管理 | [API 管理資源記錄](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
-| App Service 方案 | [App Service 記錄](../../app-service/troubleshoot-diagnostic-logs.md)
+| App Service | [App Service 記錄](../../app-service/troubleshoot-diagnostic-logs.md)
 | 應用程式閘道 |[應用程式閘道的記錄](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure 自動化 |[Azure 自動化的 Log analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 記錄](../../batch/batch-diagnostics.md) |
@@ -77,7 +77,7 @@ ms.locfileid: "97586936"
 | Load Balancer |[Azure 負載平衡器的記錄檔分析](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B 自訂追蹤結構描述](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 網路安全性群組 |[網路安全性群組 (NSG) 的記錄檔分析](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDOS 保護 | [管理 Azure DDoS Protection Standard](../../ddos-protection/reports-and-flow-logs.md#sample-log-outputs) |
+| DDOS 保護 | [管理 Azure DDoS Protection Standard](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Power BI 專用 | [Azure 中的 Power BI Embedded 記錄](/power-bi/developer/azure-pbie-diag-logs) |
 | [復原服務] | [Azure 備份的資料模型](../../backup/backup-azure-reports-data-model.md)|
 | 搜尋 |[啟用和使用搜尋流量分析](../../search/search-traffic-analytics.md) |

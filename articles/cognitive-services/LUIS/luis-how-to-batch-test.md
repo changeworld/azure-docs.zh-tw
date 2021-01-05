@@ -8,68 +8,141 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.openlocfilehash: 8b34005f2796403e32b41a93e4163c7da16d40bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/29/2020
+ms.openlocfilehash: 2668f969076fd2b9960995fec44350d61b405740
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540943"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809409"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一組範例語句的批次測試
 
- 批次測試是針對您目前已定型模型的完整測試，以測量其於 LUIS 中的效能。 用於批次測試的資料集不應包含意圖中的範例語句，或從預測執行階段端點收到的語句。
+批次測試會驗證您使用中的定型版本，以測量其預測精確度。 批次測試可協助您在使用中版本中，查看每個意圖和實體的精確度。 請參閱批次測試結果，以採取適當的動作來改善精確度，例如，如果您的應用程式經常無法識別正確意圖或標記語句中的實體，請將更多範例語句新增至意圖。
+
+## <a name="group-data-for-batch-test"></a>批次測試的群組資料
+
+重點是用於批次測試的語句，必須是 LUIS 中所沒有的。 如果您有一組語句資料，請將語句分割成三個集合：範例語句新增至意圖、從已發行的端點收到語句，以及語句在定型之後用來進行批次測試 LUIS。
+
+您所使用的批次 JSON 檔案應該包含語句，其中包含標示為開始和結束位置的最上層機器學習實體。 語句不應為應用程式中既有範例的一部分。 其應為您想要正向預測意圖和實體的語句。
+
+您可以依意圖和 (或) 實體來區分測試，或將所有測試 (最多 1000 個語句) 放在相同的檔案中。 
+
+### <a name="common-errors-importing-a-batch"></a>匯入批次的常見錯誤
+
+如果您在將批次檔上傳至 LUIS 時發生錯誤，請檢查下列常見的問題：
+
+* 批次檔中的語句超過1000
+* 沒有實體屬性的語句 JSON 物件。 屬性可以是空陣列。
+* 在多個實體中標示的文字
+* 實體標籤會在某個空間開始或結束。
+
+## <a name="fixing-batch-errors"></a>修正批次錯誤
+
+如果批次測試有錯誤，您可以將更多語句加入到意圖，及/或對於更多語句標示實體，幫助 LUIS 區別不同的意圖。 如果您加入並標示語句，但是測試批次仍然出現預測錯誤，請考慮加入具有特定領域詞彙的[片語清單](luis-concept-feature.md)功能，幫助 LUIS 加速學習。
+
 
 <a name="batch-testing"></a>
 
-## <a name="import-a-dataset-file-for-batch-testing"></a>針對批次測試匯入資料集檔案
+## <a name="batch-testing-using-the-luis-portal"></a>使用 LUIS 入口網站進行批次測試 
 
-1. 選取頂端列中的 [測試]****，然後選取 [批次測試面板]****。
+### <a name="import-and-train-an-example-app"></a>匯入範例應用程式並加以定型
+
+匯入接收比薩訂單 (例如 `1 pepperoni pizza on thin crust`) 的應用程式。
+
+1.  下載並儲存[應用程式的 JSON 檔案](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true)。
+
+1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
+1. 選取 [ **新增應用程式** ] 旁邊的箭號，然後按一下 [匯 **入為 json** ]，將 JSON 匯入至新的應用程式。 為應用程式命名 `Pizza app` 。
+
+
+1. 選取導覽區右上角的 [定型]，為應用程式定型。
+
+
+[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
+
+### <a name="batch-test-file"></a>批次測試檔案
+
+範例 JSON 包含一個語句，且具有加上標籤的實體，用以說明測試檔案的結構。 在您自己的測試中，您應該會有許多標示了正確意圖和機器學習實體的語句。
+
+1. 在文字編輯器中建立 `pizza-with-machine-learned-entity-test.json`，或[下載此項目](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true)。
+
+2. 在 JSON 格式的批次檔中，新增具有您想要在測試中預測之 **意圖** 的語句。
+
+   [!code-json[Add the intents to the batch test file](~/samples-cognitive-services-data-files/luis/batch-tests/pizza-with-machine-learned-entity-test.json "Add the intent to the batch test file")]
+
+## <a name="run-the-batch"></a>執行批次
+
+1. 選取頂端導覽列中的 [Test] \(測試\)。
+
+2. 選取右側面板中的 [Batch testing panel] \(批次測試面板\)
 
     ![批次測試連結](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. 選取 [Import dataset] \(匯入資料集\)。 [匯入新資料集]**** 對話方塊隨即出現。 選取 [選擇檔案]****，並找出具備正確 [JSON 格式](luis-concept-batch-test.md#batch-file-format)且包含*不超過 1,000 個*要測試語句的 JSON 檔案。
+3. 選取 [匯入]。 在出現的對話方塊中，選取 **[選擇** 檔案]，並找出 json 格式正確的 json 檔案，其中包含 *不超過 1000* 語句來進行測試。
 
-    若有匯入錯誤，系統會在瀏覽器頂端的紅色通知列中回報。 當匯入發生錯誤時，將不會建立任何資料集。 如需詳細資訊，請參閱[常見錯誤](luis-concept-batch-test.md#common-errors-importing-a-batch)。
+    若有匯入錯誤，系統會在瀏覽器頂端的紅色通知列中回報。 當匯入發生錯誤時，將不會建立任何資料集。 如需詳細資訊，請參閱[常見錯誤](#common-errors-importing-a-batch)。
 
-3. 在 [ 資料集名稱]**** 欄位中，為資料集檔案輸入一個名稱。 資料集檔案包含**語句的陣列**，其中包括標記的意圖** 和實體**。 針對語法，請檢閱[範例批次檔](luis-concept-batch-test.md#batch-file-format)。
+4. 選擇 `pizza-with-machine-learned-entity-test.json` 檔案的檔案位置。
 
-4. 選取 [完成]。 系統會新增資料集檔案。
+5. 將資料集命名為 `pizza test`，然後選取 [完成]。
 
-## <a name="run-rename-export-or-delete-dataset"></a>執行、重新命名、匯出或刪除資料集
+6. 選取 [執行] 按鈕。 批次測試執行之後，請選取 [ **查看結果**]。 
 
-若要執行、重新命名、匯出或刪除資料集，請使用位於資料集列尾端的省略符號 (***...***) 按鈕。
-
-> [!div class="mx-imgBorder"]
-> ![選項的批次測試清單螢幕擷取畫面](./media/luis-how-to-batch-test/batch-testing-options.png)
-
-## <a name="run-a-batch-test-on-your-trained-app"></a>對已定型的應用程式執行批次測試
-
-若要執行測試，請選取資料集名稱，然後從內容工具列中選取 [ **執行** ]。 當測試完成時，此列會顯示該資料集的測試結果。
-
-可下載的資料集和針對批次測試所上傳的檔案相同。
-
-|State|意義|
-|--|--|
-|![測試成功的綠色圓圈圖示](./media/luis-how-to-batch-test/batch-test-result-green.png)|所有語句皆成功。|
-|![測試失敗紅色 x 圖示](./media/luis-how-to-batch-test/batch-test-result-red.png)|至少有一個語句意圖不符合預測。|
-|![已準備就緒進行測試圖示](./media/luis-how-to-batch-test/batch-test-result-blue.png)|測試已準備好開始執行。|
+    > [!TIP]
+    > * 選取 [ **下載** ] 將會下載您上傳的相同檔案。
+    > * 如果您看到批次測試失敗，則至少有一個語句意圖不符合預測。
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
 
-## <a name="view-batch-test-results"></a>檢視批次測試結果
+### <a name="review-batch-results-for-intents"></a>檢閱意圖的批次結果
 
-若要檢閱批次測試結果，請選取 [查看結果]****。
+若要檢閱批次測試結果，請選取 [查看結果]。 測試結果會以圖形顯示對使用中的版本預測測試語句的結果。
+
+批次圖表會顯示四個象限的結果。 圖表的右邊是一個篩選條件。 篩選包含意圖和實體。 當您選取某個[圖表區段](luis-concept-batch-test.md#batch-test-results)或圖表內的某一點時，相關聯的語句即會顯示於圖表下方。
+
+將滑鼠停留在圖表上方時，滑鼠滾輪可以放大或縮小圖表中的顯示。 當圖表上有許多點緊密聚集在一起時，這非常有用。
+
+此圖表分成四個象限，其中兩個區段會以紅色顯示。
+
+1. 在篩選清單中選取 **ModifyOrder** 意圖。 語句預測為 **確判為真**，這表示語句成功符合其列於批次檔中的正向預測。
+
+    > [!div class="mx-imgBorder"]
+    > ![語句成功符合其正向預測](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
+
+    篩選器清單中出現綠色核取記號時，也表示各項意圖測試成功。 所有其他意圖都會以 1/1 的正值分數列出，因為已對每個意圖測試語句，而任何意圖的反向測試都不會列於批次測試中。
+
+1. 選取 [確認] 意圖。 此意圖未列在批次測試中，因此這是批次測試中所列語句的反向測試。
+
+    > [!div class="mx-imgBorder"]
+    > ![針對批次檔中未列出的意圖成功將語句預測為負面](./media/luis-tutorial-batch-testing/true-negative-intent.png)
+
+    反向測試成功，這可以從篩選器和格線中的綠色文字看出。
+
+### <a name="review-batch-test-results-for-entities"></a>檢閱實體的批次測試結果
+
+ModifyOrder 實體是具有子實體的機器實體，會顯示最上層實體是否相符，以及如何預測子實體。
+
+1. 選取篩選清單中的 **ModifyOrder** 實體，然後選取格線中的圓形。
+
+1. 實體預測會顯示在圖表下方。 在顯示畫面中，符合預期的預測會顯示為實線，不符合預期的預測則顯示為虛線。
+
+    > [!div class="mx-imgBorder"]
+    > ![在批次檔中成功預測的實體父代](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
 
 <a name="filter-chart-results-by-intent-or-entity"></a>
 
-## <a name="filter-chart-results"></a>篩選圖表結果
+#### <a name="filter-chart-results"></a>篩選圖表結果
 
 若要依特定意圖或實體篩選圖表，請於右側的篩選面板中選取意圖或實體。 資料點及其分佈會根據您的選取範圍在圖表中更新。
 
 ![視覺化的批次測試結果](./media/luis-how-to-batch-test/filter-by-entity.png)
 
-## <a name="view-single-point-utterance-data"></a>檢視單一點語句資料
+### <a name="chart-result-examples"></a>圖表結果範例
+
+LUIS 入口網站中的圖表，您可以執行下列動作：
+ 
+#### <a name="view-single-point-utterance-data"></a>檢視單一點語句資料
 
 在圖表中，將滑鼠暫留於資料點上，以查看其預測的確定性分數。 選取資料點以擷取它在頁面底部語句清單中的相對應語句。
 
@@ -79,7 +152,7 @@ ms.locfileid: "91540943"
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
 
-## <a name="view-section-data"></a>檢視區段資料
+#### <a name="view-section-data"></a>檢視區段資料
 
 在四個區段的圖表中，選取圖表右上角的區段名稱 (例如 **False Positive**)。 該區段中的所有語句會以清單的形式顯示在圖表下方。
 
@@ -91,7 +164,100 @@ ms.locfileid: "91540943"
 
 圖表中另外兩個以綠色顯示的區段則有符合預期的預測。
 
-[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
+## <a name="batch-testing-using-the-rest-api"></a>使用 REST API 的批次測試 
+
+LUIS 可讓您使用 LUIS 入口網站和 REST API 來進行批次測試。 以下列出 REST API 的端點。 如需使用 LUIS 入口網站進行批次測試的詳細資訊，請參閱 [教學課程：批次測試資料集](luis-tutorial-batch-testing.md)。 使用下列完整的 Url，將預留位置值取代為您自己的 LUIS 預測金鑰和端點。 
+
+請記得將您的 LUIS 金鑰新增至 `Apim-Subscription-Id` 標頭中，並設定 `Content-Type` 為 `application/json` 。
+
+### <a name="start-a-batch-test"></a>啟動批次測試
+
+使用應用程式版本識別碼或發佈位置來啟動批次測試。 將 **POST** 要求傳送至下列其中一個端點格式。 將您的批次檔包含在要求的主體中。
+
+發佈位置
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-NAME>/evaluations`
+
+應用程式版本識別碼
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations`
+
+這些端點將會傳回您將用來檢查狀態並取得結果的作業識別碼。 
+
+
+### <a name="get-the-status-of-an-ongoing-batch-test"></a>取得進行中批次測試的狀態
+
+從您開始的批次測試中使用作業識別碼，以從下列端點格式取得其狀態： 
+
+發佈位置
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/status`
+
+應用程式版本識別碼
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/status`
+
+### <a name="get-the-results-from-a-batch-test"></a>取得批次測試的結果
+
+從您開始的批次測試中使用作業識別碼，以從下列端點格式取得其結果： 
+
+發佈位置
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/result`
+
+應用程式版本識別碼
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/result`
+
+
+### <a name="batch-file-of-utterances"></a>語句的批次檔
+
+針對批次測試提交語句的批次檔（稱為 *資料集*）。 資料集是 JSON 格式的檔案，最多可包含1000標籤的語句。 您可以在應用程式中測試最多10個資料集。 如果您需要測試更多，請刪除資料集，然後再新增一個。 即使批次檔資料中沒有對應的實體，模型中的所有自訂實體還是都會出現在批次測試實體篩選條件中。
+
+批次檔由語句組成。 每個語句都必須有預期的意圖預測，以及您預期會偵測到的任何 [機器學習實體](luis-concept-entity-types.md#types-of-entities) 。
+
+### <a name="batch-syntax-template-for-intents-with-entities"></a>使用實體的意圖批次語法範本
+
+使用下列範本來啟動您的批次檔：
+
+```JSON
+{
+    "LabeledTestSetUtterances": [
+        {
+            "text": "play a song",
+            "intent": "play_music",
+            "entities": [
+                {
+                    "entity": "song_parent",
+                    "startPos": 0,
+                    "endPos": 15,
+                    "children": [
+                        {
+                            "entity": "pre_song",
+                            "startPos": 0,
+                            "endPos": 3
+                        },
+                        {
+                            "entity": "song_info",
+                            "startPos": 5,
+                            "endPos": 15
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+```
+
+批次檔會使用 **startPos** 和 **endPos** 屬性，來記錄實體的開頭與結尾。 值是以零為起始的，而且不應以空格作為開頭或結尾。 這與查詢記錄不同，後者使用 startIndex 與 endIndex 屬性。
+
+如果您不想要測試實體，則可包括 `entities` 屬性並將該值設為空陣列：`[]`。
+
+### <a name="rest-api-batch-test-results"></a>REST API 批次測試結果
+
+API 會傳回數個物件：
+
+* 意圖和實體模型的相關資訊，例如精確度、召回率和 F 分數。
+* 實體模型的相關資訊，例如每個實體的精確度、召回和 F 分數)  
+  * `verbose`您可以使用旗標來取得實體的詳細資訊，例如 `entityTextFScore` 和 `entityTypeFScore` 。
+* 以預測和標示的意圖名稱提供語句
+* 錯誤的正值實體清單，以及錯誤負的實體清單。
 
 ## <a name="next-steps"></a>後續步驟
 

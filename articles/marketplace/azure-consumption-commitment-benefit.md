@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aeee13152364c31d82f674df784a27114035a041
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028541"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814426"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure 使用量承諾權益
 
@@ -31,7 +31,7 @@ ms.locfileid: "97028541"
 
 ## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>判斷您的組織是否有 Azure 耗用量承諾 (MACC/.Ctc) 
 
-如果您不確定您的組織是否有合格的合約，請在與您組織相關聯的租使用者下，登入 [Azure 入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) 內的 Marketplace 體驗。 如果您在定價篩選準則中看到 [ **azure 權益符合資格** ] 選項，就會有合格的 azure 耗用量承諾。 如果直接透過 Azure Marketplace 購買，合格的 Azure Marketplace 購買專案將會對貴組織的 Azure 耗用量承諾有所貢獻。
+如果您不確定您的組織是否有合格的合約，請在與您組織相關聯的租使用者下，登入 [Azure 入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) 內的 Marketplace 體驗。 如果您看到選取 [ **僅符合篩選準則的 azure 權益** ] 選項，就會有合格的 azure 耗用量承諾。 如果直接透過 Azure Marketplace 購買，合格的 Azure Marketplace 購買專案將會對貴組織的 Azure 耗用量承諾有所貢獻。
 
 [![Azure 權益符合資格的功能表選項。](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
 

@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a08fc25083ecd6917f658f27cb954391228adf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 063ef6b76e031277d93297512e16d30a86aae45c
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188695"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808516"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支援的系統
 
@@ -95,7 +95,7 @@ Azure IoT Edge 可以在能夠執行容器的大部分作業系統上執行，�
 <sup>1</sup> Debian 10 個系統（包括 RASPBERRY Pi OS Buster）使用 IoT Edge 不支援的 OpenSSL 版本。 在安裝 IoT Edge 之前，請使用下列命令安裝舊版：
 
 ```bash
-sudo apt-get install libssl1.0.2
+sudo apt-get install libssl1.1
 ```
 
 <sup>2</sup> [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases) 存放庫中的 Debian 9 套件應可在 Ubuntu 20.04 中使用。

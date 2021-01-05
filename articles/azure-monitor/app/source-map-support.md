@@ -2,16 +2,16 @@
 title: JavaScript 應用程式的來源對應支援-Azure 監視器 Application Insights
 description: 瞭解如何使用 Application Insights 將來源對應上傳至您自己的儲存體帳戶 Blob 容器。
 ms.topic: conceptual
-author: markwolff
-ms.author: marwolff
+author: DavidCBerry13
+ms.author: daberry
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6403ecd534d17298a10ffcf8f089a2b010fa3a51
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9326531d9071305ad804e9c60f8ac90bcb5eaee6
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536450"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809627"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>JavaScript 應用程式的來源對應支援
 

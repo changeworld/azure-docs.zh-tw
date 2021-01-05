@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 76695d4d8dbc3e3a6b04b89b8f34e41b83a92963
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 88af554faab9479a402dd393b0a7eed0835ce59e
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965182"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814341"
 ---
-# <a name="working-with-security-policies"></a>使用安全性原則
+# <a name="manage-security-policies"></a>管理安全性原則
 
 這篇文章說明如何設定安全性原則，以及如何在資訊安全中心中檢視它們。 
 

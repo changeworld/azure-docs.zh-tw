@@ -36,8 +36,6 @@
       items:
         - name: 修正不確定的預測
           href: luis-tutorial-review-endpoint-utterances.md
-        - name: 批次測試資料集
-          href: luis-tutorial-batch-testing.md
         - name: 新增模式來改善預測
           href: luis-tutorial-pattern.md
     - name: 與 Bot 搭配使用
@@ -93,8 +91,6 @@
       items:
         - name: 互動式測試
           href: luis-concept-test.md
-        - name: 批次測試
-          href: luis-concept-batch-test.md
     - name: 資料管理
       items:
         - name: 更改資料
@@ -229,7 +225,7 @@
         - name: 設定容器
           href: luis-container-configuration.md
         - name: 使用容器執行個體
-          href: deploy-luis-on-container-instances.md
+          href: ../containers/azure-container-instance-recipe.md
         - name: 容器限制
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'

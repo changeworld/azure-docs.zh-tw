@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f4d9cc4c02ab062c73e9dbd977d9ea9e6ccdb60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cd03e8f4a66d18adc33c943481002ff7b326d3
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532625"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813202"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>整合 Azure 儲存體以取得通知和備份
 
@@ -23,7 +23,7 @@ ms.locfileid: "90532625"
 本指南說明如何透過捲曲使用這些 REST Api。 您也可以使用 HTTP 要求服務（例如 Postman）發出要求。
 
 > [!NOTE]
-> 推播通知取決於**CreateProject** API 中的選擇性_notificationQueueUri_參數，而模型備份則需要您也必須使用選擇性的_exportModelContainerUri_參數。 本指南將針對完整的功能集使用這兩者。
+> 推播通知取決於 **CreateProject** API 中的選擇性 _notificationQueueUri_ 參數，而模型備份則需要您也必須使用選擇性的 _exportModelContainerUri_ 參數。 本指南將針對完整的功能集使用這兩者。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -34,7 +34,7 @@ ms.locfileid: "90532625"
 
 移至 Azure 入口網站的自訂視覺訓練資源、選取 [身分 **識別** ] 頁面，然後啟用系統指派的受控識別。
 
-接下來，移至 Azure 入口網站中的儲存體資源。 移至 [ **存取控制] (IAM) ** ] 頁面，並為每個整合功能新增角色指派：
+接下來，移至 Azure 入口網站中的儲存體資源。 移至 [ **存取控制] (IAM)** ] 頁面，並為每個整合功能新增角色指派：
 * 如果您打算使用模型備份功能，請選取您的自訂視覺定型資源，並指派 **儲存體 Blob 資料參與者** 角色。 
 * 然後，選取您的自訂視覺定型資源，並在您打算使用通知佇列功能時，指派 **儲存體佇列資料參與者** 。
 
@@ -110,7 +110,7 @@ curl -v -X PATCH "{endpoint}/customvision/v3.3/Training/projects/{projectId}"
 --data-ascii "{body}" 
 ```
 
-將要求主體 (`body`) 設定為下列 JSON 格式，並填入適當的 _ExportModelContainerUri_ 和 _notificationQueueUri_值：
+將要求主體 (`body`) 設定為下列 JSON 格式，並填入適當的 _ExportModelContainerUri_ 和 _notificationQueueUri_ 值：
 
 ```json
 {
@@ -206,4 +206,5 @@ curl -v -X PATCH "{endpoint}/customvision/v3.3/Training/projects/{projectId}"
 ## <a name="next-steps"></a>後續步驟
 
 在本指南中，您已瞭解如何在自訂視覺資源之間複製和移動專案。 接下來，探索 API 參考檔，以瞭解您可以使用自訂視覺的其他功能。
-* [REST API 參考文件](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API 參考檔 (訓練) ](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API 參考檔 (預測) ](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.1/operations/5eb37d24548b571998fde5f3)

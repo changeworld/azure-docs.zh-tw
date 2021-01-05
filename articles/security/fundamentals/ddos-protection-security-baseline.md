@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492245"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814494"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>適用于 Azure DDoS 保護 Standard 的 Azure 安全性基準
 
@@ -38,7 +38,7 @@ ms.locfileid: "96492245"
 
 啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在控制平面層級的 Azure Cache for Redis 實例上所執行的作業。 您可以使用 Azure 活動記錄資料來判斷任何寫入作業的「內容、物件和時間」 (PUT、POST、DELETE) 在 Azure DDoS 保護實例的控制平面層級執行。
 
-- [如何設定 DDoS 保護計量的警示](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [查看及設定 DDoS 診斷記錄](../../ddos-protection/diagnostic-logging.md)
 
 - [如何啟用 Azure 活動記錄的診斷設定](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ ms.locfileid: "96492245"
 
 **指導** 方針：啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區。 在 Log Analytics 中執行查詢，以搜尋詞彙、識別趨勢、分析模式，以及根據可能已針對復原服務保存庫收集的活動記錄資料，提供許多其他見解。
 
-- [如何存取 DDoS 保護標準服務的遙測、記錄和攻擊分析的相關資訊](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [如何存取 DDoS 保護標準服務的遙測、記錄和攻擊分析的相關資訊](../../ddos-protection/telemetry.md)
 
 - [如何啟用 Azure 活動記錄的診斷設定](../../azure-monitor/platform/activity-log.md)
 
@@ -76,7 +76,7 @@ ms.locfileid: "96492245"
 
 將 Log Analytics 工作區上架到 Azure Sentinel，因為它提供安全性協調流程自動化回應 (SOAR) 解決方案。 如此可建立劇本 (自動化解決方案)，並用於修復安全性問題。 此外，您可以在 Log Analytics 工作區中使用 Azure 監視器建立自訂記錄警示。
 
-- [如何設定 DDoS 計量的警示](https://azure.microsoft.com/blog/holiday-season-is-ddos-season/)
+- [如何設定 DDoS 計量的警示](../../ddos-protection/alerts.md)
 
 - [如何使 Azure Sentinel 上線](../../sentinel/quickstart-onboard.md)
 
@@ -142,7 +142,7 @@ ms.locfileid: "96492245"
 
 - [如何使用 Azure AD 向 (服務主體) 註冊用戶端應用程式](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-- [Azure DDos 保護 API 資訊](/rest/api/virtual-network/)
+- [Azure DDoS 保護 API 資訊](/rest/api/virtual-network/)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -166,7 +166,7 @@ ms.locfileid: "96492245"
 
 - [部署安全的 Azure 管理工作站](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-- [規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../../active-directory/authentication/howto-mfa-getstarted.md) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -384,7 +384,7 @@ ms.locfileid: "96492245"
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指導** 方針：使用 Azure 原則定義和執行 Azure DDos 保護的標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對復原服務保存庫的設定進行審核或強制執行。
+**指導** 方針：使用 Azure 原則定義和實行 Azure DDoS 保護的標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對復原服務保存庫的設定進行審核或強制執行。
 
 - [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
@@ -524,7 +524,7 @@ ms.locfileid: "96492245"
 
 選取任何可用的 DDoS 保護計量，以在攻擊期間有作用中的風險降低時發出警示，使用 Azure 監視器警示設定。 符合條件時，指定的位址會收到警示電子郵件
 
-- [設定 DDoS 保護計量的警示](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [設定 DDoS 保護計量的警示](../../ddos-protection/alerts.md)
 
 - [如何設定連續匯出](../../security-center/continuous-export.md)
 

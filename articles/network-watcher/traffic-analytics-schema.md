@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b8e400e9d386fff8f35756a77139e61bbaff1
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74666370"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809287"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架構和資料匯總
 
@@ -39,11 +39,11 @@ ms.locfileid: "74666370"
 5. FlowStartTime_t 欄位表示在「FlowIntervalStartTime_t」和「FlowIntervalEndTime_t」之間的流程記錄處理間隔中， (相同四個元) 組的第一次出現。
 6. 針對 TA 中的任何資源，UI 中指出的流程是 NSG 看到的流程總數，但在 Log Analytics 中，使用者只會看到單一、減少的記錄。 若要查看所有流程，請使用可從儲存體參考的 blob_id 欄位。 該記錄的總流程計數將符合在 blob 中看到的個別流程。
 
-下列查詢可協助您查看過去30天內來自內部部署的所有流量記錄。
+下列查詢可協助您查看過去30天內與非 Azure 公用 Ip 互動的所有子網。
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
-| project Subnet_s  
+| project Subnet1_s, Subnet2_s  
 ```
 若要查看上述查詢中流程的 blob 路徑，請使用下列查詢：
 

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 3655b117b641a6179bd6539aaf3f75af07f21a1a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 8de95a56f3da928997a97ff216b13d522c82afca
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992364"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814188"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS 快速回應
 
-在主動存取期間，Azure DDoS 保護標準客戶可以存取 DDoS 快速回應 (DRR) 小組，以協助在攻擊期間進行攻擊調查，以及進行攻擊後的分析。
+在主動存取期間，Azure DDoS 保護標準客戶可以存取 DDoS 快速回應 (DRR) 小組，以協助在攻擊和攻擊後分析期間進行攻擊調查。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -53,8 +53,8 @@ DRR 遵循 Azure Rapid Response 支援模型。 如需快速回應的詳細資�
 
 若要深入瞭解，請閱讀「 [DDoS 保護標準」檔](./ddos-protection-overview.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [透過模擬進行測試](test-through-simulations.md)。
-- 瞭解如何 [查看和設定 DDoS 保護遙測](telemetry-monitoring-alerting.md)。
-- 瞭解如何 [設定 DDoS 攻擊風險降低報告和流量記錄](reports-and-flow-logs.md)。
+- 瞭解如何 [查看和設定 DDoS 保護遙測](telemetry.md)。
+- 瞭解如何 [查看和設定 DDoS 診斷記錄](diagnostic-logging.md)。

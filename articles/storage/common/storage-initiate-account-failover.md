@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 12/29/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095886"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814324"
 ---
 # <a name="initiate-a-storage-account-failover"></a>起始儲存體帳戶容錯移轉
 
@@ -38,6 +38,13 @@ ms.locfileid: "92095886"
 
 如需 Azure 儲存體冗余的詳細資訊，請參閱 [Azure 儲存體冗余](storage-redundancy.md)。
 
+請記住，帳戶容錯移轉不支援下列功能和服務：
+
+- Azure 檔案同步不支援儲存體帳戶容錯移轉。 不應該容錯移轉包含在 Azure 檔案同步中作為雲端端點使用之 Azure 檔案共用的儲存體帳戶。 這麼做將導致同步停止運作，且可能會在新分層的檔案中產生未預期的資料遺失。
+- 目前不支援 ADLS Gen2 儲存體帳戶 (已啟用階層命名空間) 的帳戶。
+- 無法容錯移轉包含進階區塊 Blob 的儲存體帳戶。 支援進階區塊 Blob 的儲存體帳戶目前不支援異地備援。
+- 無法容錯移轉包含任何 [WORM 永久性原則](../blobs/storage-blob-immutable-storage.md) 啟用容器的儲存體帳戶。 解除鎖定/鎖定以時間為基礎的保留或合法保存原則會防止容錯移轉，以維持合規性。
+
 ## <a name="initiate-the-failover"></a>起始容錯移轉
 
 ## <a name="portal"></a>[入口網站](#tab/azure-portal)
@@ -45,16 +52,16 @@ ms.locfileid: "92095886"
 若要從 Azure 入口網站起始帳戶容錯移轉，請遵循下列步驟：
 
 1. 瀏覽至儲存體帳戶。
-1. 在 [設定]**** 下方，選取 [異地複寫]****。 下圖顯示儲存體帳戶的異地複寫和容錯移轉狀態。
+1. 在 [設定] 下方，選取 [異地複寫]。 下圖顯示儲存體帳戶的異地複寫和容錯移轉狀態。
 
     :::image type="content" source="media/storage-initiate-account-failover/portal-failover-prepare.png" alt-text="顯示異地複寫和容錯移轉狀態的螢幕擷取畫面":::
 
-1. 確認您的儲存體帳戶已進行異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS) 的設定。 若未設定，請選取 [設定]**** 下方的 [組態]****，將您的帳戶更新為異地備援。
-1. [上次同步時間]**** 屬性會指出次要複本與主要複本相差了多久的時間。 [上次同步時間]**** 可讓您預估在容錯移轉完成後發生資料遺失的程度。 如需有關檢查 [ **上次同步處理時間** ] 屬性的詳細資訊，請參閱 [檢查儲存體帳戶的上次同步時間屬性](last-sync-time-get.md)。
+1. 確認您的儲存體帳戶已進行異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS) 的設定。 若未設定，請選取 [設定] 下方的 [組態]，將您的帳戶更新為異地備援。
+1. [上次同步時間] 屬性會指出次要複本與主要複本相差了多久的時間。 [上次同步時間] 可讓您預估在容錯移轉完成後發生資料遺失的程度。 如需有關檢查 [ **上次同步處理時間** ] 屬性的詳細資訊，請參閱 [檢查儲存體帳戶的上次同步時間屬性](last-sync-time-get.md)。
 1. 選取 [準備容錯移轉]。
-1. 檢閱確認對話方塊。 在您準備就緒後，輸入**是**加以確認，並起始容錯移轉。
+1. 檢閱確認對話方塊。 在您準備就緒後，輸入 **是** 加以確認，並起始容錯移轉。
 
-    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="顯示異地複寫和容錯移轉狀態的螢幕擷取畫面":::
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="顯示帳戶容錯移轉的確認對話方塊的螢幕擷取畫面":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -62,7 +69,7 @@ ms.locfileid: "92095886"
 
 1. 解除安裝任何先前安裝的 Azure PowerShell：
 
-    - 使用 [設定]**** 底下的 [應用程式與功能]****，從 Windows 移除任何先前安裝的 Azure PowerShell。
+    - 使用 [設定] 底下的 [應用程式與功能]，從 Windows 移除任何先前安裝的 Azure PowerShell。
     - 從移除所有的 **Azure** 模組 `%Program Files%\WindowsPowerShell\Modules` 。
 
 1. 確定您已安裝最新版的 PowerShellGet。 開啟 Windows PowerShell 視窗，然後執行下列命令來安裝最新版本：

@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 4cc0fd970f9adc26f5fdb024f501dcb0edf77bde
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 962f6bcf7747a82749e7ccab95de34f7834a8372
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992415"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814205"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>與 Azure DDoS 保護 Standard 合作
 本文說明 Azure DDoS 保護標準所啟用的合作機會。 本文旨在協助產品經理和商務開發角色瞭解投資途徑，並提供合作價值主張的見解。
@@ -40,8 +40,8 @@ Azure DDoS 保護 Standard 針對第3層和第4層 DDoS 攻擊提供增強的 DD
 Azure DDoS 保護識別並減少 DDoS 攻擊，而不需要使用者介入。
 
 - 如果受保護的資源位於 Azure 資訊安全中心所涵蓋的訂用帳戶中，則當偵測到 DDoS 攻擊並針對受保護的應用程式緩解時，DDoS 保護標準會自動將警示傳送至「安全性中心」。
-- 或者，若要在受保護的公用 IP 有作用中的緩和措施時收到通知，您可以在 [DDoS 攻擊] 下設定計量的 [警示](telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics) 。
-- 此外，您還可以選擇建立其他 DDoS 計量的警示，並 [設定攻擊分析](telemetry-monitoring-alerting.md) ，以瞭解攻擊的規模、要卸載的流量、攻擊媒介、熱門參與者和其他詳細資料。
+- 或者，若要在受保護的公用 IP 有作用中的緩和措施時收到通知，您可以在 [DDoS 攻擊] 下設定計量的 [警示](alerts.md) 。
+- 此外，您還可以選擇建立其他 DDoS 計量的警示，並 [設定攻擊遙測](telemetry.md) ，以瞭解攻擊的規模、要卸載的流量、攻擊媒介、熱門參與者和其他詳細資料。
 
 ![DDoS 計量](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
 
@@ -71,7 +71,7 @@ Azure DDoS 保護標準合作機會可透過 Azure 入口網站、Api 和 CLI/PS
 3. 使用第一個步驟中建立的 DDoS 保護計劃，在具有公用端點的服務的虛擬網路上啟用 Azure DDoS 保護標準。 如需 stpe 逐步指示，請參閱 [啟用 DDoS 標準保護計劃](manage-ddos-protection.md#enable-ddos-protection-for-an-existing-virtual-network)
    > [!IMPORTANT] 
    > 在虛擬網路上啟用 Azure DDoS 保護 Standard 之後，該虛擬網路內的所有公用 Ip 都會自動受到保護。 這些公用 Ip 的來源可以是 Azure (用戶端訂用帳戶) 或 Azure 外部。 
-4. （選擇性）將 Azure DDoS 保護標準遙測和攻擊分析整合至應用程式特定的客戶面向儀表板。 如需使用遙測的詳細資訊，請參閱 [查看和設定 DDoS 保護遙測](telemetry-monitoring-alerting.md)。 
+4. （選擇性）將 Azure DDoS 保護標準遙測和攻擊分析整合至應用程式特定的客戶面向儀表板。 如需使用遙測的詳細資訊，請參閱 [查看和設定 DDoS 保護遙測](telemetry.md)。 
 
 ### <a name="onboarding-guides-and-technical-documentation"></a>上架指南和技術檔
 
@@ -80,7 +80,7 @@ Azure DDoS 保護標準合作機會可透過 Azure 入口網站、Api 和 CLI/PS
 - [Azure DDoS 保護 API 參考](/rest/api/virtualnetwork/ddosprotectionplans)
 - [Azure 虛擬網路 API 參考](/rest/api/virtualnetwork/virtualnetworks)
 
-### <a name="get-help"></a>取得協助
+### <a name="get-help"></a>取得說明
 
 - 如果您有關于使用 Azure DDoS 保護 Standard 的應用程式、服務或產品整合的問題，請與 [Azure 安全性社區](https://techcommunity.microsoft.com/t5/security-identity/bd-p/Azure-Security)聯繫。
 - 遵循 [Stack Overflow](https://stackoverflow.com/tags/azure-ddos/)的討論。
@@ -90,7 +90,7 @@ Azure DDoS 保護標準合作機會可透過 Azure 入口網站、Api 和 CLI/PS
 - 與 Microsoft 合作的主要程式是 [Microsoft 合作夥伴網路](https://partner.microsoft.com/)。 – Microsoft Graph 的安全性整合融入 [MPN 獨立軟體廠商 (ISV) ](https://partner.microsoft.com/saas-solution-guide) 的追蹤。
 - [Microsoft 智慧型安全性關聯](https://www.microsoft.com/security/business/intelligent-security-association?rtc=1) 是專為 Microsoft 安全性合作夥伴提供的計畫，可協助豐富您的安全性產品，並改善您與 Microsoft 安全性產品整合的客戶探索能力。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 查看現有的合作夥伴整合：
 
 - [Barracuda WAF 即服務](https://www.barracuda.com/waf-as-a-service)

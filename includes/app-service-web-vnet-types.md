@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: 93b92da999c15255f543abca346fc2bf8840006c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0b93111357cf0d6e57eeb5495d50bd18a15dca77
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999418"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97812798"
 ---
 * 多組織使用者共用系統，可支援隔離以外的完整定價方案範圍。
 * App Service 環境，其會部署至您的 VNet，並支援隔離的定價方案應用程式。
@@ -33,7 +33,7 @@ VNet 整合不支援某些專案，例如：
 * Active Directory 整合。
 * NetBIOS.
 
-閘道-必要的 VNet 整合可讓您只存取目標 VNet 中的資源，或使用對等互連或 Vpn 連線至目標 VNet 的網路。 閘道-必要的 VNet 整合無法存取可透過 Azure ExpressRoute 連線使用的資源，或可與服務端點搭配使用。
+閘道-必要的 VNet 整合可讓您只存取目標 VNet 中的資源，或使用對等互連或 Vpn 連線至目標 VNet 的網路。 閘道-必要的 VNet 整合無法存取可透過 Azure ExpressRoute 連線使用的資源，或使用服務端點。
 
 無論使用的版本為何，VNet 整合可讓您的應用程式存取 VNet 中的資源，但不會將來自 VNet 的輸入私人存取權授與您的應用程式。 私人網站存取是指讓您的應用程式只能從私人網路（例如從 Azure VNet 內）存取。 VNet 整合僅適用于從您的應用程式對 VNet 進行的輸出呼叫。
 

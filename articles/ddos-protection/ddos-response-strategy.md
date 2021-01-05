@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 0a80f03ee82e8d1216353482dc867402adcf7d09
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 2b31a8aa8b126c228ac7e9c3ca182300c710b098
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992228"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814052"
 ---
 # <a name="components-of-a-ddos-response-strategy"></a>DDoS 回應策略的元件
 
@@ -56,7 +56,7 @@ Microsoft 身為重要的基礎結構提供者，會最先收到威脅的警告�
 
 ## <a name="alerts-during-an-attack"></a>攻擊時的警示
 
-Azure 標準 DDoS 保護會識別 DDoS 攻擊並降低風險，無須使用者介入。 若要在受保護的公用 IP 有作用中的緩和措施時收到通知，您可以在 [ **DDoS 攻擊] 下** 設定計量的 [警示](telemetry-monitoring-alerting.md)。 可以選擇為其他 DDoS 計量建立警示，以了解攻擊的範圍、要卸除的流量及其他詳細資料。
+Azure 標準 DDoS 保護會識別 DDoS 攻擊並降低風險，無須使用者介入。 若要在受保護的公用 IP 有作用中的緩和措施時收到通知，您可以 [設定警示](alerts.md)。
 
 ### <a name="when-to-contact-microsoft-support"></a>連絡 Microsoft 支援服務的時機
 
@@ -74,6 +74,6 @@ Azure DDoS 保護標準客戶可以存取 DDoS 快速回應 (DRR) 小組，以�
 
 如果您懷疑遭到 DDoS 攻擊，請透過一般的 Azure 支援管道呈報。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [建立 DDoS 保護計劃](manage-ddos-protection.md)。

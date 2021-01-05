@@ -3,16 +3,14 @@ title: 概念-私用雲端更新和升級
 description: 深入瞭解 Azure VMware 解決方案中的重要升級程式和功能。
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 380e97eae559145a9ef5ed7b6e7bf14f18039eed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fb65a0e192fbf1f054857223b3fdaf58fc6a903
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316795"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809644"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware 解決方案私用雲端更新和升級
-
-## <a name="overview"></a>概觀
 
 Azure VMware 解決方案私用雲端的主要優點之一，就是為您維護平臺。 平臺維護包括自動更新 VMware 驗證軟體套件組合，協助確保您使用的是最新版的已驗證 Azure VMware 解決方案私用雲端軟體。
 

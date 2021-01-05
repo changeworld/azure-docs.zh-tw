@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 49fa0c849a6b2eab0647922a711c50b4fe762584
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 69f9b5a74566879ecf8f15f23e689ebb731da45a
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095657"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814137"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立及設定 Azure DDoS 保護 Standard
 
@@ -26,7 +26,7 @@ DDoS 保護計劃會定義一組跨訂用帳戶且已啟用標準 DDoS 保護的
 
 在本快速入門中，您將建立 DDoS 保護計劃，並將它連結至虛擬網路。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 已在本機安裝 Azure PowerShell 或 Azure Cloud Shell
@@ -55,7 +55,7 @@ New-AzDdosProtectionPlan -ResourceGroupName MyResourceGroup -Name MyDdosProtecti
 
 ### <a name="enable-ddos-for-a-new-virtual-network"></a>為新虛擬網路啟用 DDoS
 
-您可以在建立虛擬網路時啟用 DDoS 保護。 在此範例中，我們會將虛擬網路命名為 _MyVnet_ ： 
+您可以在建立虛擬網路時啟用 DDoS 保護。 在此範例中，我們會將虛擬網路命名為 _MyVnet_： 
 
 ```azurepowershell-interactive
 New-AzVirtualNetwork -Name MyVnet -ResourceGroupName MyResourceGroup -Location "East US" -AddressPrefix 10.0.0.0/16
@@ -114,4 +114,4 @@ $vnet | Set-AzVirtualNetwork
 若要瞭解如何為您的 DDoS 保護計劃查看及設定遙測，請繼續進行教學課程。
 
 > [!div class="nextstepaction"]
-> [檢視和設定 DDoS 保護遙測](telemetry-monitoring-alerting.md)
+> [檢視和設定 DDoS 保護遙測](telemetry.md)

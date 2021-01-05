@@ -2,13 +2,13 @@
 title: 資源命名限制
 description: 顯示命名 Azure 資源的規則和限制。
 ms.topic: conceptual
-ms.date: 12/04/2020
-ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.date: 12/29/2020
+ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608311"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814375"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 資源的命名規則和限制
 
@@ -170,7 +170,7 @@ ms.locfileid: "96608311"
 > | galleries | 資源群組 | 1-80 | 英數字元和句號。<br><br>以英數字元開頭及結尾。 |
 > | galleries / applications | gallery | 1-80 | 英數字元、連字號和句號。<br><br>以英數字元開頭及結尾。 |
 > | galleries / applications / versions | 應用程式 | 32 位元整數 | 數字和句號。 |
-> | galleries / images | gallery | 1-80 | 英數字元、連字號和句號。<br><br>以英數字元開頭及結尾。 |
+> | galleries / images | gallery | 1-80 | 英數位元、底線、連字號和句點。<br><br>以英數字元開頭及結尾。 |
 > | galleries / images / versions | image | 32 位元整數 | 數字和句號。 |
 > | images | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
 > | snapshots | 資源群組 | 1-80 | 英數字元、底線、句號和連字號。<br><br>以英數字元開頭。 以英數字元或底線結尾。 |
@@ -537,7 +537,7 @@ ms.locfileid: "96608311"
 > | 單位 | 影響範圍 | 長度 | 有效字元 |
 > | --- | --- | --- | --- |
 > | clusters | 資源群組 | 4-63 | 英數字元和連字號。<br><br>以英數字元開頭及結尾。 |
-> | workspaces | 資源群組 | 4-63 | 英數字元和連字號。<br><br>以英數字元開頭及結尾。 |
+> | workspaces | 全域 | 4-63 | 英數字元和連字號。<br><br>以英數字元開頭及結尾。 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 834672274ade1f8551e86e7c636c4625368d997c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652189"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814460"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>優化效能的 Azure Data Lake Storage Gen2
 
@@ -21,11 +21,11 @@ Azure Data Lake Storage Gen2 支援 I/O 密集分析和資料移動的高輸送�
 
 ![Data Lake Storage Gen2 效能](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量。 根據預設，Data Lake Storage Gen2 帳戶會自動提供足夠產能，以符合廣泛類別使用案例的需求。 客戶遇到預設限制的情況下，可以將 Data Lake Storage Gen2 帳戶設定為連絡 [Azure 支援服務](https://azure.microsoft.com/support/faq/)來提供更多輸送量。
+Data Lake Storage Gen2 可以調整以提供所有分析案例的必要輸送量。 根據預設，Data Lake Storage Gen2 帳戶會在其預設設定中提供足夠的輸送量，以符合廣泛類別的使用案例需求。 客戶遇到預設限制的情況下，可以將 Data Lake Storage Gen2 帳戶設定為連絡 [Azure 支援服務](https://azure.microsoft.com/support/faq/)來提供更多輸送量。
 
 ## <a name="data-ingestion"></a>資料擷取
 
-將資料從來源擷取至 Data Lake Storage Gen2 時，請務必考慮來源硬體、來源網路硬體和與 Data Lake Storage Gen2 的網路連線可能會是瓶頸。  
+從來源系統擷取資料到 Data Lake Storage Gen2 時，請務必考慮來源硬體、來源網路硬體或 Data Lake Storage Gen2 的網路連線能力可能是瓶頸。  
 
 ![此圖顯示從來源系統擷取資料到 Data Lake Storage Gen2 時要考慮的因素。](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
@@ -37,7 +37,7 @@ Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量
 
 ### <a name="network-connectivity-to-data-lake-storage-gen2"></a>與 Data Lake Storage Gen2 的網路連線
 
-您的來源資料與 Data Lake Storage Gen2 之間的網路連線有時可能是瓶頸。 當您的來源資料是內部部署時，請考慮使用與 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 的專用連結。 如果您的來源資料是在 Azure 中，當資料位於與 Data Lake Storage Gen2 帳戶相同的 Azure 區域時，效能最佳。
+您的來源資料與 Data Lake Storage Gen2 之間的網路連線有時可能是瓶頸。 當您的來源資料是內部部署時，請考慮使用 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)的專用連結。 如果您的來源資料是在 Azure 中，當資料位於與 Data Lake Storage Gen2 帳戶相同的 Azure 區域時，效能最佳。
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>設定最大平行處理的資料擷取工具
 
@@ -138,5 +138,5 @@ HDInsight 叢集內有三個層級可以微調，以增加容器數目並且使�
 | [MapReduce on HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>背景工作處理序數目</li><li>Spout 執行程式執行個體數目</li><li>Bolt 執行程式執行個體數目 </li><li>Spout 工作數目</li><li>Bolt 工作數目</li></ul>|
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [Azure Data Lake Storage Gen2 概觀](data-lake-storage-introduction.md)
