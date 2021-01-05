@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 55692122461ef1b22b43b0def43e826ac7aeae30
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e3a665e3615c9ff3a68cf13eeaef5e8f41632f6a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813780"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900355"
 ---
 # <a name="test-through-simulations"></a>透過模擬測試
 
@@ -29,7 +29,7 @@ ms.locfileid: "97813780"
 - 記載 DDoS 合規性。
 - 訓練網路安全性小組。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 在您可以完成本教學課程中的步驟之前，您必須先使用受保護的公用 IP 位址建立 [Azure DDoS 標準保護方案](manage-ddos-protection.md) 。
 - 您必須先建立具有 [>breakingpoint Cloud](http://breakingpoint.cloud/)的帳戶。 
@@ -42,9 +42,9 @@ ms.locfileid: "97813780"
     |---------      |---------                                          |
     |目標 IP 位址           | 輸入您想要測試的其中一個公用 IP 位址。                     |
     |連接埠號碼   | 輸入 443。                       |
-    |DDoS 設定檔 | 選取 [ **TCP SYN 洪水**]。|
-    |測試大小       | 選取 **200K pps、100 Mbps 和8個來源 ip。**                                  |
-    |測試持續時間 | 選取 [ **10 分鐘**]。|
+    |DDoS 設定檔 | 可能的值 **包括 DNS 洪水**、 **NTPv2 洪水**、 **SSDP 洪水**、 **TCP SYN 洪水**、 **Udp 64B 洪水**、 **udp 128B 洪水**、 **Udp 256B 洪水**、 **Udp 512B 洪水**、 **udp 1024B 洪水**、 **udp 1514B 洪水**、 **udp** 分散 **udp Memcached**。|
+    |測試大小       | 可能的值包括 **100k pps、50 Mbps 和4來源 ip**、 **200K Pps、100 Mbps 和8來源 ip**、 **400K pps、200Mbps 和16來源 ip**、 **800K Pps、400 Mbps 和32來源 ip**。                                  |
+    |測試持續時間 | 可能的值包括 **10 分鐘**、 **15 分鐘**、 **20 分鐘**、 **25 分鐘**、 **30 分鐘**。|
 
 它現在看起來應該像這樣：
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95494772"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900887"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>在 Azure Sentinel 中找出使用者和實體行為分析 (UEBA) 的 advanced 威脅
 
@@ -92,7 +92,7 @@ Azure Sentinel 提供成品，可協助您的安全性分析師清楚瞭解內�
 - IP 位址 (IP) 
 - 惡意程式碼
 - 檔案
-- Process
+- 處理序
 - 雲端應用程式 (CloudApplication) 
 - DNS)  (的功能變數名稱
 - Azure 資源
@@ -163,7 +163,7 @@ Entity insights 是 Microsoft 安全性研究人員所定義的查詢，可協�
 | TimeProcessed             | 由 EBA 引擎處理的啟用時間戳            |
 | ActivityType              | 活動的高層級類別                                 |
 | ActionType                | 活動的標準化名稱                                     |
-| UserName                  | 起始活動之使用者的使用者名稱                    |
+| 使用者名稱                  | 起始活動之使用者的使用者名稱                    |
 | UserPrincipalName         | 起始活動之使用者的完整使用者名稱               |
 | EventSource               | 提供原始事件的資料來源                        |
 | SourceIPAddress           | 起始活動的 IP 位址                        |
@@ -177,6 +177,8 @@ Entity insights 是 Microsoft 安全性研究人員所定義的查詢，可協�
 | **ActivityInsights**      | 以我們的分析為基礎的活動相關內容分析              |
 | **InvestigationPriority** | 異常分數，介於 0-10 (0 = 良性，10 = 高度異常)          |
 |
+
+您可以在 [UEBA 擴充參考檔](ueba-enrichments.md)的 **UsersInsights**、 **DevicesInsights** 和 **ActivityInsights** 中看到一組完整的內容擴充參考。
 
 ### <a name="querying-behavior-analytics-data"></a>查詢行為分析資料
 

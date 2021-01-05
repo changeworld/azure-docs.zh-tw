@@ -2,13 +2,13 @@
 title: 從容器的 Azure 監視器記錄警示 |Microsoft Docs
 description: 本文說明如何從容器 Azure 監視器建立自訂記錄警示，以取得記憶體和 CPU 使用率。
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: e9b0e01ca4c0ccb24d0d1b04a4d17ec06db253b6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.date: 01/05/2021
+ms.openlocfilehash: 131f5ebc0f72afce381b4b82d6fe50a5d5e37123
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966246"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901499"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>如何從容器的 Azure 監視器建立記錄警示
 
@@ -207,7 +207,7 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-下列查詢會根據所有階段（*失敗*、*暫* 止、*不明*、執行中或成功 *）來* 傳回 *Succeeded* pod 階段計數。  
+下列查詢會根據所有階段（*失敗*、*暫* 止、*不明*、執行中或成功 *）來* 傳回pod 階段計數。  
 
 ```kusto
 let endDateTime = now(); 
@@ -224,7 +224,7 @@ KubePodInventory
         KubePodInventory
         | where TimeGenerated < endDateTime
         | where TimeGenerated >= startDateTime
-        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterId
+        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterName
         | summarize TotalCount = count(),
                     PendingCount = sumif(1, PodStatus =~ 'Pending'),
                     RunningCount = sumif(1, PodStatus =~ 'Running'),

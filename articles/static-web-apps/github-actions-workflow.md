@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 3518935991409d87917582558a34ad7c54841e23
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5e6188ca2e8e0972e86bed578144a29a96570876
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173670"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901193"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>適用於 Azure 靜態 Web Apps 預覽版的 GitHub Actions 工作流程
 
@@ -63,7 +63,7 @@ jobs:
         ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
         app_location: '/' # App source code path
         api_location: 'api' # Api source code path - optional
-        app_artifact_location: 'dist' # Built app content directory - optional
+        output_location: 'dist' # Built app content directory - optional
         ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
@@ -96,7 +96,7 @@ on:
 
 您可以透過與 `on` 屬性相關聯的設定，定義哪些分支會觸發作業，並將觸發程序設定為針對不同的提取要求狀態進行引發。
 
-在此範例中，工作流程會在_主要_分支變更時啟動。 啟動工作流程的變更包括推送認可，以及針對所選分支開啟提取要求。
+在此範例中，工作流程會在 _主要_ 分支變更時啟動。 啟動工作流程的變更包括推送認可，以及針對所選分支開啟提取要求。
 
 ## <a name="jobs"></a>工作
 
@@ -132,7 +132,7 @@ with:
     ###### Repository/Build Configurations - These values can be configured to match you app requirements. ######
     app_location: '/' # App source code path
     api_location: 'api' # Api source code path - optional
-    app_artifact_location: 'dist' # Built app content directory - optional
+    output_location: 'dist' # Built app content directory - optional
     ###### End of Repository/Build Configurations ######
 ```
 
@@ -140,7 +140,7 @@ with:
 |---|---|---|
 | `app_location` | 應用程式的程式碼位置。<br><br>例如，如果您的應用程式原始程式碼位於存放庫的根目錄，則輸入 `/`，或如果您的應用程式程式碼位於名為 `app` 的目錄中，則輸入 `/app`。 | 是 |
 | `api_location` | Azure Functions 程式碼的位置。<br><br>例如，如果您的應用程式程式碼位於名為 `api` 的資料夾中，請輸入 `/api`。 如果在資料夾中偵測不到任何 Azure Functions 的應用程式，則組建不會失敗，工作流程會假設您不想要 API。 | 否 |
-| `app_artifact_location` | 組建輸出目錄相對於 `app_location` 的位置。<br><br>例如，如果您的應用程式原始程式碼位於 `/app`，而組建指令碼將檔案輸出到 `/app/build` 資料夾，則將 `build` 設定為 `app_artifact_location` 值。 | 否 |
+| `output_location` | 組建輸出目錄相對於 `app_location` 的位置。<br><br>例如，如果您的應用程式原始程式碼位於 `/app`，而組建指令碼將檔案輸出到 `/app/build` 資料夾，則將 `build` 設定為 `output_location` 值。 | 否 |
 
 Azure 靜態 Web Apps 為您設定的 `repo_token`、`action` 和 `azure_static_web_apps_api_token` 值不應手動變更。
 
@@ -163,7 +163,7 @@ Azure 靜態 Web Apps 為您設定的 `repo_token`、`action` 和 `azure_static_
 |---------------------|-------------|
 | `routes_location` | 定義 _routes.json_ 檔案所在的目錄位置。 此位置相對於存放庫的根目錄。 |
 
- 如果您的前端架構建置步驟依預設不會將此檔案移至 `app_artifact_location`，則明確了解 _routes.json_ 檔案的位置特別重要。
+ 如果您的前端架構建置步驟依預設不會將此檔案移至 `output_location`，則明確了解 _routes.json_ 檔案的位置特別重要。
 
 ## <a name="environment-variables"></a>環境變數
 
@@ -189,7 +189,7 @@ jobs:
           ###### Repository/Build Configurations
           app_location: "/"
           api_location: "api"
-          app_artifact_location: "public"
+          output_location: "public"
           ###### End of Repository/Build Configurations ######
         env: # Add environment variables here
           HUGO_VERSION: 0.58.0

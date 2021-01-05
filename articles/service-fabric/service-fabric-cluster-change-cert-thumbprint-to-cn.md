@@ -3,12 +3,12 @@ title: 將叢集更新為使用憑證一般名稱
 description: 瞭解如何將 Azure Service Fabric 叢集憑證從以指紋為基礎的宣告轉換成一般名稱。
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 013b8190390a4b05791b0a56072487f249956ec5
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: f719b1eb39da776827c6babec61e9e6701bb4602
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495211"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900783"
 ---
 # <a name="convert-cluster-certificates-from-thumbprint-based-declarations-to-common-names"></a>將叢集憑證從以指紋為基礎的宣告轉換為一般名稱
 
@@ -63,8 +63,11 @@ Service Fabric 支援以兩種方式透過 CN 宣告憑證：
 #### <a name="valid-starting-states"></a>有效的啟動狀態
 
 - `Thumbprint: GoalCert, ThumbprintSecondary: None`
-- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`，其中的 `GoalCert` 日期晚 `NotAfter` 于 `OldCert1`
-- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`，其中的 `GoalCert` 日期晚 `NotAfter` 于 `OldCert1`
+- `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`，其中的 `GoalCert` 日期晚 `NotBefore` 于 `OldCert1`
+- `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`，其中的 `GoalCert` 日期晚 `NotBefore` 于 `OldCert1`
+
+> [!NOTE]
+> 在版本 7.2.445 (7.2 CU4) 之前，Service Fabric 選取最新的到期憑證 (最遠為 ' NotAfter ' 屬性) 的憑證，因此 7.2 CU4 之前的啟動狀態需要 GoalCert 的 `NotAfter` 日期晚于 `OldCert1`
 
 如果您的叢集不是先前所述的其中一個有效狀態，請參閱本文結尾一節中有關達到該狀態的資訊。
 
@@ -152,7 +155,7 @@ Service Fabric 支援以兩種方式透過 CN 宣告憑證：
 
 ### <a name="update-the-cluster-resource"></a>更新叢集資源
 
-在**ServiceFabric/** 叢集資源中，新增具有**CommonNames**設定的 **>certificatecommonnames**屬性，並) 所有的設定中 (完全移除**憑證**屬性。
+在 **ServiceFabric/** 叢集資源中，新增具有 **CommonNames** 設定的 **>certificatecommonnames** 屬性，並) 所有的設定中 (完全移除 **憑證** 屬性。
 
 寄件者: 
 ```json
@@ -217,11 +220,14 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
 
 | 開始狀態 | 升級 1 | 升級 2 |
 | :--- | :--- | :--- |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` 而且 `GoalCert` 的日期晚 `NotAfter` 于 `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
-| `Thumbprint: OldCert1, ThumbprintSecondary: None` 而且 `OldCert1` 的日期晚 `NotAfter` 于 `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
-| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`，其中的 `OldCert1` 日期晚 `NotAfter` 于 `GoalCert` | 升級至 `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
-| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`，其中的 `OldCert1` 日期晚 `NotAfter` 于 `GoalCert` | 升級至 `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` 而且 `GoalCert` 的日期晚 `NotBefore` 于 `OldCert1` | `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert` | - |
+| `Thumbprint: OldCert1, ThumbprintSecondary: None` 而且 `OldCert1` 的日期晚 `NotBefore` 于 `GoalCert` | `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1` | `Thumbprint: GoalCert, ThumbprintSecondary: None` |
+| `Thumbprint: OldCert1, ThumbprintSecondary: GoalCert`，其中的 `OldCert1` 日期晚 `NotBefore` 于 `GoalCert` | 升級至 `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
+| `Thumbprint: GoalCert, ThumbprintSecondary: OldCert1`，其中的 `OldCert1` 日期晚 `NotBefore` 于 `GoalCert` | 升級至 `Thumbprint: GoalCert, ThumbprintSecondary: None` | - |
 | `Thumbprint: OldCert1, ThumbprintSecondary: OldCert2` | 移除其中一個 `OldCert1` 或 `OldCert2` 以進入狀態 `Thumbprint: OldCertx, ThumbprintSecondary: None` | 從新的啟動狀態繼續 |
+
+> [!NOTE]
+> 若為7.2.445 版之前版本的叢集 (7.2 CU4) ，請將取代 `NotBefore` 為 `NotAfter` 上述狀態中的。
 
 如需如何執行任何這些升級的指示，請參閱 [管理 Azure Service Fabric](service-fabric-cluster-security-update-certs-azure.md)叢集中的憑證。
 

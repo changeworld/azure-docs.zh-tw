@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: aro、openshift、az aro、red hat、cli、azure 檔案
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: fe80698b71ae0ba808991d79b423d49abfacdf7c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 201ec3293943f53179bcabde45259d15ce6208a6
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825928"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901278"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>在 Azure Red Hat OpenShift 4 上建立 Azure 檔案儲存體 StorageClass
 
@@ -59,7 +59,7 @@ ARO_RESOURCE_GROUP=aro-rg
 CLUSTER=cluster
 ARO_SERVICE_PRINCIPAL_ID=$(az aro show -g $ARO_RESOURCE_GROUP -n $CLUSTER --query servicePrincipalProfile.clientId -o tsv)
 
-az role assignment create --role Contributor -–assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
+az role assignment create --role Contributor --assignee $ARO_SERVICE_PRINCIPAL_ID -g $AZURE_FILES_RESOURCE_GROUP
 ```
 
 ### <a name="set-aro-cluster-permissions"></a>設定 ARO 叢集許可權
@@ -81,6 +81,8 @@ oc adm policy add-cluster-role-to-user azure-secret-reader system:serviceaccount
 
 此步驟會建立具有 Azure 檔案儲存體布建程式的 StorageClass。 在 StorageClass 資訊清單中，需要儲存體帳戶的詳細資料，讓 ARO 叢集知道要查看目前資源群組以外的儲存體帳戶。
 
+在儲存體布建期間，會為掛接認證建立以 secretName 命名的秘密。 在多租使用者內容中，強烈建議您明確地設定 secretNamespace 的值，否則其他使用者可能會讀取儲存體帳號憑證。
+
 ```bash
 cat << EOF >> azure-storageclass-azure-file.yaml
 kind: StorageClass
@@ -90,6 +92,7 @@ metadata:
 provisioner: kubernetes.io/azure-file
 parameters:
   location: $LOCATION
+  secretNamespace: kube-system
   skuName: Standard_LRS
   storageAccount: $AZURE_STORAGE_ACCOUNT_NAME
   resourceGroup: $AZURE_FILES_RESOURCE_GROUP
@@ -116,7 +119,7 @@ oc patch storageclass azure-file -p '{"metadata": {"annotations":{"storageclass.
 
 ```bash
 oc new-project azfiletest
-oc new-app –template httpd-example
+oc new-app -template httpd-example
 
 #Wait for the pod to become Ready
 curl $(oc get route httpd-example -n azfiletest -o jsonpath={.spec.host})

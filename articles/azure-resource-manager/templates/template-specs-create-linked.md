@@ -2,13 +2,13 @@
 title: 使用連結的範本建立範本規格
 description: 瞭解如何使用連結的範本建立範本規格。
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 038fb3e6bbb6086535b83a69de7a3fe49a8e60bb
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.date: 01/05/2021
+ms.openlocfilehash: e5725ece165f5716480afbcb4ef9098274c09993
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518884"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900632"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教學課程：使用連結的範本建立範本規格 (預覽) 
 
@@ -19,7 +19,7 @@ ms.locfileid: "96518884"
 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 範本規格目前為預覽狀態。 若要搭配 Azure PowerShell 使用它，您必須安裝第 [5.0.0 版或更新](/powershell/azure/install-az-ps)版本。 若要搭配 Azure CLI 使用，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
+> 範本規格目前為預覽狀態。 若要與 Azure PowerShell 搭配使用，您必須安裝 [5.0.0 版或更新版本](/powershell/azure/install-az-ps)。 若要與 Azure CLI 搭配使用，請使用 [2.14.2 版或更新版本](/cli/azure/install-azure-cli)。
 
 ## <a name="create-linked-templates"></a>建立連結的範本
 
@@ -191,7 +191,7 @@ az ts create \
   --version "1.0.0.0" \
   --resource-group templateSpecRG \
   --location "westus2" \
-  --template-file "c:\Templates\linkedTS\azuredeploy.json"
+  --template-file "<path-to-main-template>"
 ```
 
 ---
@@ -237,7 +237,7 @@ az group create \
   --name webRG \
   --location westus2
 
-id = $(az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
+id = $(az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
 
 az deployment group create \
   --resource-group webRG \

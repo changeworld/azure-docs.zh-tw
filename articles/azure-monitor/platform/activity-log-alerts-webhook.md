@@ -4,12 +4,12 @@ description: 深入了解活動記錄警示啟動時，張貼至 Webhook URL 的
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: 026613c3f5710137fb110153b34f9ed74bbf8a7b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522782"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901431"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活動記錄警示的 Webhook
 在定義動作群組的過程中，您可以設定 Webhook 端點以接收活動記錄警示通知。 您可以使用 Webhook 將這些通知路由到其他系統，以進行後置處理或自訂動作。 本文會說明 HTTP POST 至 Webhook 的承載資料樣貌。
@@ -27,6 +27,19 @@ Webhook 可以選擇使用以權杖作為基礎的授權來進行驗證。 Webho
 
 ## <a name="payload-schema"></a>承載結構描述
 POST 作業中所包含的 JSON 承載，會根據承載的 data.context.activityLog.eventSource 欄位而有所不同。
+
+> [!NOTE]
+> 目前，屬於活動記錄事件一部分的描述會複製到引發的「 **警示描述** 」屬性。
+>
+> 為了使活動記錄承載與其他警示類型保持一致，自2021年4月1日起，引發的警示屬性 **"Description"** 將會改為包含警示規則描述。
+>
+> 為此變更做準備，我們為活動記錄引發的警示建立了新的「 **活動記錄事件描述** 」屬性。 這個新的屬性將會填入已可供使用的 **"Description"** 屬性。 這表示新的欄位「 **活動記錄事件描述** 」將包含屬於活動記錄事件一部分的描述。
+>
+> 請參閱您的警示規則、動作規則、webhook、邏輯應用程式或任何其他設定，也就是您可能會在引發的警示中使用 [ **描述]** 屬性，並將它取代為「 **活動記錄事件描述** 」屬性。
+>
+> 如果您的條件 (在動作規則、webhook、邏輯應用程式或任何其他設定) 目前是以活動記錄警示的 [ **Description]** 屬性為基礎，您可能需要改為根據 [ **活動記錄檔事件描述]** 屬性加以修改。
+>
+> 為了填滿新的 **[Description]** 屬性，您可以在警示規則定義中加入描述。
 
 ### <a name="common"></a>通用
 

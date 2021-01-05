@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 8bffe0c3871eae12f3b875a96301136d11dfc516
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783788"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900649"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 儲存體總管疑難排解指南
 
@@ -23,7 +23,7 @@ Microsoft Azure 儲存體總管是一個獨立應用程式，可讓您在 Window
 
 ## <a name="azure-rbac-permissions-issues"></a>Azure RBAC 許可權問題
 
-Azure 角色型存取控制 [AZURE RBAC](../../role-based-access-control/overview.md) 藉由將許可權集合合併為 _角色_ ，啟用對 Azure 資源的高度細微存取管理。 以下是讓 Azure RBAC 在儲存體總管中以最佳方式運作的一些策略。
+Azure 角色型存取控制 [AZURE RBAC](../../role-based-access-control/overview.md) 藉由將許可權集合合併為 _角色_，啟用對 Azure 資源的高度細微存取管理。 以下是讓 Azure RBAC 在儲存體總管中以最佳方式運作的一些策略。
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>如何? 在儲存體總管中存取我的資源？
 
@@ -46,7 +46,7 @@ Azure 角色型存取控制 [AZURE RBAC](../../role-based-access-control/overvie
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>為什麼我需要管理層角色才能查看儲存體總管中的資源？
 
-Azure 儲存體有兩層存取權： _管理_ 和 _資料_ 。 訂用帳戶和儲存體帳戶是透過管理層來存取。 您可以透過資料層存取容器、blob 和其他資料資源。 例如，如果您想要從 Azure 取得儲存體帳戶的清單，請將要求傳送至管理端點。 如果您想要帳戶中的 blob 容器清單，請將要求傳送至適當的服務端點。
+Azure 儲存體有兩層存取權： _管理_ 和 _資料_。 訂用帳戶和儲存體帳戶是透過管理層來存取。 您可以透過資料層存取容器、blob 和其他資料資源。 例如，如果您想要從 Azure 取得儲存體帳戶的清單，請將要求傳送至管理端點。 如果您想要帳戶中的 blob 容器清單，請將要求傳送至適當的服務端點。
 
 Azure 角色可授與您管理或資料層存取權的許可權。 例如，讀取者角色會授與管理層資源的唯讀存取權。
 
@@ -61,22 +61,25 @@ Azure 角色可授與您管理或資料層存取權的許可權。 例如，讀�
 如果您想要存取 blob 容器或佇列，您可以使用您的 Azure 認證來附加至這些資源。
 
 1. 開啟 [連線] 對話方塊。
-2. 選取 [透過 Azure Active Directory (新增資源] Azure AD) 。 按一下 [下一步]。
-3. 選取與您要附加之資源相關聯的使用者帳戶和租使用者。 按一下 [下一步]。
-4. 選取資源類型、輸入資源的 URL，然後輸入唯一的連接顯示名稱。 按一下 [下一步]。 按一下 [連線]。
+2. 選取 [透過 Azure Active Directory (新增資源 Azure AD) ]。 選取 [下一步]。
+3. 選取與您要附加之資源相關聯的使用者帳戶和租使用者。 選取 [下一步]。
+4. 選取資源類型、輸入資源的 URL，然後輸入唯一的連接顯示名稱。 選取 [下一步]，然後連接。
 
 針對其他資源類型，我們目前沒有 Azure RBAC 相關的解決方案。 因應措施是，您可以要求 SAS URI 以 [附加至您的資源](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#use-a-shared-access-signature-uri)。
 
 ### <a name="recommended-azure-built-in-roles"></a>建議的 Azure 內建角色
 
 有數個 Azure 內建角色可提供使用儲存體總管所需的許可權。 其中一些角色包括：
-- [擁有](../../role-based-access-control/built-in-roles.md#owner)者：管理所有專案，包括對資源的存取權。 **注意** ：此角色可讓您存取金鑰。
-- [參與者](../../role-based-access-control/built-in-roles.md#contributor)：管理所有專案，但不包括對資源的存取權。 **注意** ：此角色可讓您存取金鑰。
-- [讀取器](../../role-based-access-control/built-in-roles.md#reader)：讀取和列出資源。
-- [儲存體帳戶參與者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)：儲存體帳戶的完整管理。 **注意** ：此角色可讓您存取金鑰。
-- [儲存體 Blob 資料擁有](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)者： Azure 儲存體 Blob 容器和資料的完整存取權。
-- [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)：讀取、寫入和刪除 Azure 儲存體的容器和 blob。
-- [儲存體 Blob 資料讀取器](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)：讀取和列出 Azure 儲存體的容器和 blob。
+- [擁有](/azure/role-based-access-control/built-in-roles#owner)者：管理所有專案，包括對資源的存取權。
+- [參與者](/azure/role-based-access-control/built-in-roles#contributor)：管理所有專案，但不包括對資源的存取權。
+- [讀取器](/azure/role-based-access-control/built-in-roles#reader)：讀取和列出資源。
+- [儲存體帳戶參與者](/azure/role-based-access-control/built-in-roles#storage-account-contributor)：儲存體帳戶的完整管理。
+- [儲存體 Blob 資料擁有](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)者： Azure 儲存體 Blob 容器和資料的完整存取權。
+- [儲存體 Blob 資料參與者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)：讀取、寫入和刪除 Azure 儲存體的容器和 blob。
+- [儲存體 Blob 資料讀取器](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)：讀取和列出 Azure 儲存體的容器和 blob。
+
+> [!NOTE]
+> 擁有者、參與者和儲存體帳戶參與者角色會授與帳戶金鑰存取權。
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>錯誤：憑證鏈中的自我簽署憑證 (和類似的錯誤) 
 
@@ -88,7 +91,7 @@ Azure 角色可授與您管理或資料層存取權的許可權。 例如，讀�
 當儲存體總管看到自我簽署或未受信任的憑證時，就不再知道是否已變更接收的 HTTPS 訊息。 如果您有一份自我簽署憑證，您可以依照下列步驟來指示儲存體總管信任它：
 
 1. 取得憑證的64編碼 x.509 ( .cer) 複本。
-2. 移至 [ **編輯**  >  **SSL 憑證** 匯  >  **入憑證** ]，然後使用檔案選擇器來尋找、選取及開啟 .cer 檔案。
+2. 移至 [**編輯**  >  **SSL 憑證** 匯  >  **入憑證**]，然後使用檔案選擇器來尋找、選取及開啟 .cer 檔案。
 
 如果有多個憑證 (根和中繼) ，也可能會發生此問題。 若要修正這個錯誤，必須加入這兩個憑證。
 
@@ -98,12 +101,12 @@ Azure 角色可授與您管理或資料層存取權的許可權。 例如，讀�
     * [Windows](https://slproweb.com/products/Win32OpenSSL.html)：任何燈光版本都必須足夠。
     * Mac 和 Linux：應該包含在您的作業系統中。
 2. 執行 OpenSSL。
-    * Windows：開啟安裝目錄，選取 [ **/bin/** ]，然後按兩下 [ **openssl.exe** ]。
+    * Windows：開啟安裝目錄，選取 [ **/bin/**]，然後按兩下 [ **openssl.exe**]。
     * Mac 和 Linux： `openssl` 從終端機執行。
 3. 執行 `s_client -showcerts -connect microsoft.com:443`。
 4. 尋找自我簽署憑證。 如果您不確定哪些憑證是自我簽署的憑證，請記下主體 `("s:")` 和簽發者的任何位置 `("i:")` 。
 5. 當您找到自我簽署的憑證時，請將所有內容從 (複製並貼上，並將) 加入至 `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` 新的 .cer 檔案。
-6. 開啟儲存體總管並移至 [ **編輯**  >  **SSL 憑證** 匯  >  **入憑證** ]。 然後使用檔案選擇器來尋找、選取及開啟您所建立的 .cer 檔案。
+6. 開啟儲存體總管並移至 [**編輯**  >  **SSL 憑證** 匯  >  **入憑證**]。 然後使用檔案選擇器來尋找、選取及開啟您所建立的 .cer 檔案。
 
 如果您無法依照下列步驟找到任何自我簽署的憑證，請透過意見反應工具來聯繫我們。 您也可以使用旗標，從命令列開啟儲存體總管 `--ignore-certificate-errors` 。 以這個旗標開啟時，儲存體總管會忽略憑證錯誤。
 
@@ -113,7 +116,7 @@ Azure 角色可授與您管理或資料層存取權的許可權。 例如，讀�
 
 當 Active Directory 同盟服務 (AD FS) 提示儲存體總管執行重新導向（Electron 不支援）時，通常會發生空白登入對話方塊。 若要解決此問題，您可以嘗試使用裝置程式碼流程進行登入。 若要這樣做，請依照下列步驟執行：
 
-1. 在左垂直工具列上，開啟 [ **設定** ]。 在 [設定] 面板中，移至 [ **應用程式** 登  >  **入** ]。 啟用 [ **使用裝置程式碼流程登入** ]。
+1. 在左垂直工具列上，開啟 [ **設定**]。 在 [設定] 面板中，移至 [**應用程式** 登  >  **入**]。 啟用 [ **使用裝置程式碼流程登入**]。
 2. 開啟 [ **連接** ] 對話方塊 (透過左側垂直列上的插頭圖示，或選取 [帳戶] 面板上的 [ **新增帳戶** ]) 。
 3. 選擇您要登入的環境。
 4. 選取 [登入]。
@@ -130,7 +133,7 @@ Azure 角色可授與您管理或資料層存取權的許可權。 例如，讀�
 
 1. 移除所有帳戶，然後關閉儲存體總管。
 2. 從您的機器中刪除 .IdentityService 資料夾。 在 Windows 中，該資料夾位於 `C:\users\<username>\AppData\Local`。 對於 Mac 和 Linux，您可以在使用者目錄的根目錄中找到此資料夾。
-3. 如果您執行的是 Mac 或 Linux，也需要從作業系統的金鑰儲存區中刪除 IdentityService 專案。 在 Mac 上，金鑰儲存區是 *Gnome Keychain* 應用程式。 在 Linux 中，應用程式通常稱為 _Keyring_ ，但名稱可能會隨著您的散發而有所不同。
+3. 如果您執行的是 Mac 或 Linux，也需要從作業系統的金鑰儲存區中刪除 IdentityService 專案。 在 Mac 上，金鑰儲存區是 *Gnome Keychain* 應用程式。 在 Linux 中，應用程式通常稱為 _Keyring_，但名稱可能會隨著您的散發而有所不同。
 
 ### <a name="conditional-access"></a>條件式存取
 
@@ -141,7 +144,7 @@ Azure 角色可授與您管理或資料層存取權的許可權。 例如，讀�
 MacOS Keychain 有時會輸入導致儲存體總管 authentication library 發生問題的狀態。 若要取得此狀態的 Keychain，請遵循下列步驟：
 
 1. 關閉 [儲存體總管]。
-2. 開啟 Keychain (按下命令 + 空格鍵，輸入 **Keychain** ，然後按 enter 鍵) 。
+2. 開啟 Keychain (按下命令 + 空格鍵，輸入 **Keychain**，然後按 enter 鍵) 。
 3. 選取 [登入] Keychain。
 4. 選取掛鎖圖示來鎖定 Keychain。  (當程式完成時，會鎖定掛鎖。 這可能需要幾秒鐘的時間，視您) 開啟的應用程式而定。
 
@@ -187,50 +190,66 @@ MacOS Keychain 有時會輸入導致儲存體總管 authentication library 發�
 
 ## <a name="proxy-issues"></a>Proxy 問題
 
-首先，請確定您輸入的下列資訊是正確的：
+儲存體總管支援透過 proxy 伺服器連接到 Azure 儲存體資源。 如果您在透過 proxy 連接到 Azure 時遇到任何問題，以下是一些建議。
 
-* Proxy URL 和連接埠號碼
-* 使用者名稱和密碼（如果 proxy 需要）
+> [!NOTE]
+> 儲存體總管僅支援使用 proxy 伺服器的基本驗證。 其他驗證方法（例如 NTLM）則不受支援。
 
 > [!NOTE]
 > 儲存體總管不支援 proxy 自動設定檔案來設定 proxy 設定。
 
-### <a name="common-solutions"></a>常見的解決方案
+### <a name="verify-storage-explorer-proxy-settings"></a>確認儲存體總管 proxy 設定
+
+**應用程式→ proxy → proxy** 設定會決定哪個來源儲存體總管從中取得 Proxy 設定。
+
+如果您選取 [使用環境變數]，請務必設定 `HTTPS_PROXY` 或環境變數 `HTTP_PROXY` (環境變數會區分大小寫，因此請務必設定) 的正確變數。 如果這些變數未定義或無效，儲存體總管將不會使用 proxy。 修改任何環境變數之後，重新開機儲存體總管。
+
+如果您選取 [使用應用程式 proxy 設定]，請確定應用程式內 proxy 設定是否正確。
+
+### <a name="steps-for-diagnosing-issues"></a>診斷問題的步驟
 
 如果您仍然遇到問題，請嘗試下列疑難排解方法：
 
-* 如果您可以連線到網際網路而不使用 proxy，請確認儲存體總管在未啟用 proxy 設定的情況下運作。 如果是這種情況，可能是 proxy 設定發生問題。 請與您的系統管理員合作以找出問題。
-* 確認其他使用 proxy 伺服器的應用程式如預期般運作。
-* 確認您可以連線到您想要使用的 Azure 環境入口網站。
-* 確認您可以收到服務端點的回應。 在瀏覽器中輸入其中一個端點 URL。 如果您可以連接，您應該會收到 InvalidQueryParameterValue 或類似的 XML 回應。
-* 如果有其他人也用您的 proxy 伺服器使用儲存體總管，請確認他們可以連線。 如果可以，您可能必須聯絡 proxy 伺服器系統管理員。
+1. 如果您可以連線到網際網路而不使用 proxy，請確認儲存體總管在未啟用 proxy 設定的情況下運作。 如果儲存體總管成功連接，您的 proxy 伺服器可能會發生問題。 請與您的系統管理員合作以找出問題。
+2. 確認其他使用 proxy 伺服器的應用程式如預期般運作。
+3. 確認您可以連線到您想要使用的 Azure 環境入口網站。
+4. 確認您可以收到服務端點的回應。 在瀏覽器中輸入其中一個端點 URL。 如果您可以連接，您應該會收到 `InvalidQueryParameterValue` 或類似的 XML 回應。
+5. 檢查與相同 proxy 伺服器搭配使用儲存體總管的其他人是否可以連接。 如果可以，您可能必須聯絡 proxy 伺服器系統管理員。
 
 ### <a name="tools-for-diagnosing-issues"></a>診斷問題的工具
 
-如果您有網路工具，例如 Windows 的 Fiddler，您可以如下所示診斷問題：
+網路工具（例如 Fiddler）可協助您診斷問題。
 
-* 如果必須透過 proxy 工作，您可能必須設定網路工具透過 proxy 連線。
-* 檢查網路工具使用的連接埠號碼。
-* 輸入本機主機 URL 和網路工具的連接埠號碼，當做儲存體總管的 proxy 設定。 當您這樣做時，您的網路工具就會開始記錄儲存體總管到管理和服務端點所提出的網路要求。 例如， `https://cawablobgrs.blob.core.windows.net/` 在瀏覽器中輸入您的 blob 端點，您會收到類似下列的回應：
+1. 將您的網路工具設定為在本機主機上執行的 proxy 伺服器。 如果您必須繼續使用實際的 proxy，您可能必須設定您的網路工具以透過 proxy 連接。
+2. 檢查網路工具使用的連接埠號碼。
+3. 設定儲存體總管 proxy 設定，以使用本機主機和網路工具的埠號碼 (例如 "localhost： 8888" ) 。
+ 
+當正確設定時，您的網路工具會記錄儲存體總管到管理和服務端點所提出的網路要求。
+ 
+如果您的網路工具似乎未記錄儲存體總管流量，請嘗試使用不同的應用程式來測試您的工具。 例如，輸入其中一個儲存體資源的端點 URL (例如 `https://contoso.blob.core.windows.net/` 網頁瀏覽器中的) ，您會收到類似下列的回應：
 
   ![程式碼範例](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
-  此回應會建議資源存在，即使您無法存取也一樣。
+  回應會建議資源存在，即使您無法存取也一樣。
+
+如果您的網路工具只顯示來自其他應用程式的流量，您可能需要調整儲存體總管中的 proxy 設定。 否則，您必須調整工具的設定。
 
 ### <a name="contact-proxy-server-admin"></a>連絡 proxy 伺服器管理員
 
 如果您的 proxy 設定正確，您可能必須洽詢 proxy 伺服器管理員，才能：
 
 * 請確定您的 proxy 不會封鎖 Azure 管理或資源端點的流量。
-* 確認 proxy 伺服器使用的驗證通訊協定。 儲存體總管目前不支援 NTLM proxy。
+* 確認 proxy 伺服器使用的驗證通訊協定。 儲存體總管僅支援基本驗證通訊協定。 儲存體總管不支援 NTLM proxy。
 
 ## <a name="unable-to-retrieve-children-error-message"></a>「無法擷取子系」錯誤訊息
 
-如果您是透過 proxy 連接到 Azure，請確認您的 proxy 設定是否正確。 如果您被授與訂用帳戶或帳戶擁有者的資源存取權，請確認您擁有該資源的讀取或列出許可權。
+如果您是透過 proxy 連接到 Azure，請確認您的 proxy 設定是否正確。
+
+如果訂用帳戶或帳戶的擁有者已授與您資源的存取權，請確認您擁有該資源的讀取或列出許可權。
 
 ## <a name="connection-string-doesnt-have-complete-configuration-settings"></a>連接字串沒有完整的設定
 
-如果您收到此錯誤訊息，可能是您沒有取得儲存體帳戶金鑰的必要許可權。 若要確認這是這種情況，請移至入口網站，並找出您的儲存體帳戶。 若要這麼做，您可以在儲存體帳戶的節點上按一下滑鼠右鍵，然後選取 [ **在入口網站中開啟** ]。 然後，移至 [ **存取金鑰** ] 分頁。 如果您沒有查看金鑰的許可權，您會看到「您沒有存取權」訊息。 若要解決此問題，您可以從其他人取得帳戶金鑰，並透過名稱和金鑰附加，或者您可以要求使用者提供儲存體帳戶的 SAS，並用它來附加儲存體帳戶。
+如果您收到此錯誤訊息，可能是您沒有取得儲存體帳戶金鑰的必要許可權。 若要確認這是這種情況，請移至入口網站，並找出您的儲存體帳戶。 若要這麼做，您可以在儲存體帳戶的節點上按一下滑鼠右鍵，然後選取 [ **在入口網站中開啟**]。 然後，移至 [ **存取金鑰** ] 分頁。 如果您沒有查看金鑰的許可權，您會看到「您沒有存取權」訊息。 若要解決此問題，您可以從其他人取得帳戶金鑰，並透過名稱和金鑰附加，或者您可以要求使用者提供儲存體帳戶的 SAS，並用它來附加儲存體帳戶。
 
 如果您確實看到帳戶金鑰，請在 GitHub 中提出問題，讓我們可以協助您解決問題。
 
@@ -238,8 +257,8 @@ MacOS Keychain 有時會輸入導致儲存體總管 authentication library 發�
 
 如果您在嘗試新增自訂連接時收到這個錯誤訊息，儲存在本機認證管理員中的連接資料可能已損毀。 若要解決此問題，請嘗試刪除您損毀的本機連線，然後重新新增這些連接：
 
-1. 啟動儲存體總管。 從功能表中， **移至 [** 說明]  >  **切換開發人員工具** 。
-2. 在開啟的視窗中，于 [ **應用程式** ] 索引標籤上，移至 [ **本機儲存體** ] (左側) > **file://** ]。
+1. 啟動儲存體總管。 從功能表中，**移至 [** 說明]  >  **切換開發人員工具**。
+2. 在開啟的視窗中，于 [ **應用程式** ] 索引標籤上，移至 [ **本機儲存體** ] (左側) > **file://**]。
 3. 根據您遇到問題的連線類型，尋找其索引鍵，然後將其值複製到文字編輯器中。 值是您自訂連接名稱的陣列，如下所示：
     * 儲存體帳戶
         * `StorageExplorer_CustomConnections_Accounts_v1`
@@ -265,13 +284,13 @@ MacOS Keychain 有時會輸入導致儲存體總管 authentication library 發�
 # <a name="windows"></a>[Windows](#tab/Windows)
 
 1. 在 [ **開始** ] 功能表上，搜尋 **認證管理員** 並加以開啟。
-2. 移至 [ **Windows 認證** ]。
-3. 在 [ **一般認證** ] 底下，尋找具有 `<connection_type_key>/<corrupted_connection_name>` 金鑰 (的專案，例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`) 。
+2. 移至 [ **Windows 認證**]。
+3. 在 [ **一般認證**] 底下，尋找具有 `<connection_type_key>/<corrupted_connection_name>` 金鑰 (的專案，例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`) 。
 4. 刪除這些專案，然後重新加入連接。
 
 # <a name="macos"></a>[macOS](#tab/macOS)
 
-1. 開啟焦點 (命令 + 空格鍵) 並搜尋 **Keychain 存取** 。
+1. 開啟焦點 (命令 + 空格鍵) 並搜尋 **Keychain 存取**。
 2. 尋找具有 `<connection_type_key>/<corrupted_connection_name>` 金鑰 (的專案，例如 `StorageExplorer_CustomConnections_Accounts_v1/account1`) 。
 3. 刪除這些專案，然後重新加入連接。
 
@@ -297,7 +316,7 @@ MacOS Keychain 有時會輸入導致儲存體總管 authentication library 發�
 如果您不小心使用不正確 SAS URL 附加，且現在無法中斷連結，請遵循下列步驟：
 
 1. 當您執行儲存體總管時，請按 F12 開啟 [開發人員工具] 視窗。
-2. 在 [ **應用程式** ] 索引標籤上，選取左側樹狀結構中的 [ **本機儲存體**  >  **file://** ]。
+2. 在 [**應用程式**] 索引標籤上，選取左側樹狀結構中的 [**本機儲存體**  >  **file://** ]。
 3. 尋找與有問題的 SAS URI 服務類型相關聯的索引鍵。 例如，如果是 Blob 容器的 SAS URI 不正確，請尋找名為 `StorageExplorer_AddStorageServiceSAS_v1_blob` 的索引鍵。
 4. 索引鍵的值應該是 JSON 陣列。 找出與錯誤 URI 相關聯的物件，然後將其刪除。
 5. 按下 Ctrl+R，重新載入儲存體總管。

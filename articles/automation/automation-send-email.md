@@ -3,14 +3,14 @@ title: 從 Azure 自動化 Runbook傳送電子郵件
 description: 本文章帶您了解如何從 Runbook 內傳送電子郵件。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/15/2019
+ms.date: 01/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: a81ae680a5f04eca0a6cc01ee24b474cc5daabea
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 65fa226b368baa3b1d4f376600e610a518c48c02
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005200"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900316"
 ---
 # <a name="send-an-email-from-a-runbook"></a>從 Runbook 傳送電子郵件
 
@@ -67,7 +67,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
 若要在 Runbook 中使用 Azure Key Vault，您必須將下列模組匯入自動化帳戶：
 
-* [Az.Profile](https://www.powershellgallery.com/packages/Az.Profile)
+* [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts)
 * [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
 
 如需指示，請參閱[匯入 Az 模組](shared-resources/modules.md#import-az-modules)。
@@ -142,7 +142,7 @@ Set-AzKeyVaultAccessPolicy -VaultName $VaultName -ServicePrincipalName $appID -P
 
 1. 當不再需要 Runbook 時，請在 Runbook 清單中加以選取，然後按一下 [刪除]。
 
-2. 使用 [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault?view=azps-3.7.0) Cmdlet 刪除 Key Vault。
+2. 使用 [Remove-AzKeyVault](/powershell/module/az.keyvault/remove-azkeyvault) Cmdlet 刪除 Key Vault。
 
 ```azurepowershell-interactive
 $VaultName = "<your KeyVault name>"

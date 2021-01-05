@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669222"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900394"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Salesforce 帳戶登入
 
@@ -30,7 +30,7 @@ ms.locfileid: "97669222"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -48,11 +48,13 @@ ms.locfileid: "97669222"
     1. **API 名稱** 
     1. **連絡人電子郵件** -Salesforce 的連絡人電子郵件
 1. 在 [ **API (啟用 Oauth 設定])** 上，選取 [**啟用 oauth 設定**]。
-1. 在 [ **回呼 URL**] 中，輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` 。 以您的租用戶名稱取代 `your-tenant-name`。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。
-1. 在 **選取的 OAuth 範圍** 中，選取 [ **存取您的基本資訊] (識別碼、設定檔、電子郵件、位址、電話)**，並 **允許 (openid) 存取您的唯一識別碼**。
-1. 選取 [ **Web 服務器流程需要秘密**]。
-1. 選取 [ **設定識別碼權杖**]，然後選取 [ **包含標準宣告**]。
-1. 按一下 [檔案]  。
+    1. 在 [ **回呼 URL**] 中，輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` 。 以您的租用戶名稱取代 `your-tenant-name`。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。
+    1. 在 **選取的 OAuth 範圍** 中，選取 [ **存取您的基本資訊] (識別碼、設定檔、電子郵件、位址、電話)**，並 **允許 (openid) 存取您的唯一識別碼**。
+    1. 選取 [ **Web 服務器流程需要秘密**]。
+1. 選取 [**設定識別碼權杖**] 
+    1. 設定5分鐘 **有效的權杖** 。
+    1. 選取 [ **包含標準宣告**]。
+1. 按一下 [儲存]。
 1. 複製 [取用 **者金鑰** ] 和 [取用 **者密碼**] 的值。 您將需要這兩個設定，以將 Salesforce 設定為租使用者中的身分識別提供者。 **用戶端密碼** 是重要的安全性認證。
 
 ::: zone pivot="b2c-user-flow"
@@ -63,10 +65,10 @@ ms.locfileid: "97669222"
 1. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
 1. 選取 [識別提供者]，然後選取 [新增 OpenID Connect 提供者]。
 1. 輸入 [名稱]。 例如，輸入 *Salesforce*。
-1. 在 [ **中繼資料 url**] 中，輸入下列 `{org}` 以您的 Salesforce 組織取代的 url：
+1. 在 [ **中繼資料 url**] 中，輸入 [Salesforce OpenID Connect 設定檔](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm)的 url。 針對沙箱，login.salesforce.com 會取代為 test.salesforce.com。 針對社區，login.salesforce.com 會取代為 [社區 URL]，例如 username.force.com/.well-known/openid-configuration。 URL 必須是 HTTPS。
 
     ```
-    https://{org}.my.salesforce.com/.well-known/openid-configuration
+    https://login.salesforce.com/.well-known/openid-configuration
     ```
 
 1. 在 [用戶端識別碼]中，輸入您先前記錄的應用程式識別碼。
@@ -80,9 +82,9 @@ ms.locfileid: "97669222"
     - **顯示名稱**：name
     - **指定的名稱**：given_name
     - **姓氏**：family_name
-    - **電子郵件**： *preferred_username*
+    - **電子** 郵件： *電子郵件*
 
-1. 選取 [儲存]  。
+1. 選取 [Save] \(儲存\)。
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -121,8 +123,7 @@ ms.locfileid: "97669222"
           <DisplayName>Salesforce</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
-            <!-- Update the {org} below to your Salesforce organization -->
-            <Item Key="METADATA">https://{org}.my.salesforce.com/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.salesforce.com/.well-known/openid-configuration</Item>
             <Item Key="response_types">code</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid id profile email</Item>
@@ -154,7 +155,7 @@ ms.locfileid: "97669222"
     </ClaimsProvider>
     ```
 
-4. 設定 `{org}` 您的 Salesforce 組織的中繼資料 URI。
+4. **中繼資料** 會設定為 [Salesforce OpenID Connect 設定檔](https://help.salesforce.com/articleView?id=remoteaccess_using_openid_discovery_endpoint.htm)的 URL。 針對沙箱，login.salesforce.com 會取代為 test.salesforce.com。 針對社區，login.salesforce.com 會取代為 [社區 URL]，例如 username.force.com/.well-known/openid-configuration。 URL 必須是 HTTPS。
 5. 將 **client_id** 設定為來自應用程式註冊的應用程式識別碼。
 6. 儲存檔案。
 
@@ -211,7 +212,7 @@ ms.locfileid: "97669222"
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 按一下您想要加入 Salesforce 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **Salesforce**]。
-1. 選取 [儲存]  。
+1. 選取 [Save] \(儲存\)。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

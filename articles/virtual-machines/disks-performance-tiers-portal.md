@@ -4,16 +4,16 @@ description: 瞭解如何使用 Azure 入口網站來變更新的和現有受控
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 11/19/2020
+ms.date: 01/05/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: a868d5d236cf4c5a8d29f15490909c2f1a53546f
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 625fb1e3dd0b433da6b60f995aa6b380c23ec9ce
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96016560"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901010"
 ---
 # <a name="change-your-performance-tier-using-the-azure-portal"></a>使用 Azure 入口網站變更效能層級
 
@@ -47,7 +47,7 @@ ms.locfileid: "96016560"
 1. 請解除配置 VM 或卸離磁片。
 1. 選取您的磁片
 1. 選取 [ **大小 + 效能**]。
-1. 在 [ **效能層** ] 下拉式清單中，選取與磁片目前基準不同的層級。
+1. 在 [ **效能層** ] 下拉式清單中，選取磁片的目前效能層以外的層級。
 1. 選取 [調整大小]。
 
 :::image type="content" source="media/disks-performance-tiers-portal/change-tier-existing-disk.png" alt-text="[大小 + 效能] 分頁的螢幕擷取畫面，其中會反白顯示效能層級。" lightbox="media/disks-performance-tiers-portal/performance-tier-settings.png":::

@@ -3,12 +3,12 @@ title: X.509 Service Fabric 叢集中以憑證為基礎的驗證
 description: 瞭解 Service Fabric 叢集中以憑證為基礎的驗證，以及如何偵測、緩和和修正憑證相關問題。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 4d81cb9d224bdc2e3002c621c86729df235e0d81
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8af0246e0e576f9877c4c5e3b1f1a4314ae29827
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574763"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901244"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X.509 Service Fabric 叢集中以憑證為基礎的驗證
 
@@ -170,7 +170,10 @@ Service Fabric 叢集的安全性設定會描述下列層面：
   </NodeTypes>
 ```
 
-針對其中一種類型的宣告，Service Fabric 節點會在啟動時讀取設定、找出並載入指定的憑證，並以其 NotAfter 屬性的遞減順序排序：系統會忽略過期的憑證，並選取清單中的第一個元素作為此節點嘗試之任何 Service Fabric 連接的用戶端認證。  (實際上，Service Fabric 優先于最接近的到期憑證。 ) 
+針對其中一種類型的宣告，Service Fabric 節點會在啟動時讀取設定、找出並載入指定的憑證，並以其 NotBefore 屬性的遞減順序排序：系統會忽略過期的憑證，並選取清單中的第一個元素作為此節點嘗試之任何 Service Fabric 連接的用戶端認證。  (實際上，Service Fabric 優先于最新發行的憑證。 ) 
+
+> [!NOTE]
+> 在版本 7.2.445 (7.2 CU4) 之前，Service Fabric 選取最遠過期的憑證 (具有最遠 ' NotAfter ' 屬性的憑證) 
 
 請注意，對於以一般名稱為基礎的呈現宣告，如果其主體一般名稱等於宣告的 X509FindValue (或 X509FindValueSecondary) 欄位，就會將憑證視為相符，精確的字串比較。 這與驗證規則相較之下，其支援萬用字元比對，以及不區分大小寫的字串比較。  
 

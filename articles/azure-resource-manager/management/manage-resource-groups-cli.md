@@ -3,15 +3,15 @@ title: 管理資源群組-Azure CLI
 description: 使用 Azure CLI 透過 Azure Resource Manager 管理您的資源群組。 說明如何建立、列出和刪除資源群組。
 author: mumian
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 01/05/2021
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4a9a4ed4ebba7f6f2470bb9e7000a899ebc26323
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: db4a938d2f773ed24d4c7a48d747dd5cc22c0bd2
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185805"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900275"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>使用 Azure CLI 管理 Azure Resource Manager 資源群組
 
@@ -84,14 +84,14 @@ az group delete --name $resourceGroupName
 
 ## <a name="lock-resource-groups"></a>鎖定資源群組
 
-鎖定可防止您組織中的其他使用者不小心刪除或修改重要資源，例如 Azure 訂用帳戶、資源群組或資源。 
+鎖定可防止您組織中的其他使用者不小心刪除或修改重要資源，例如 Azure 訂用帳戶、資源群組或資源。
 
 下列腳本會鎖定資源群組，因此無法刪除資源群組。
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName  
+az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resourceGroupName
 ```
 
 下列腳本會取得資源群組的所有鎖定：
@@ -99,7 +99,7 @@ az lock create --name LockGroup --lock-type CanNotDelete --resource-group $resou
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az lock list --resource-group $resourceGroupName  
+az lock list --resource-group $resourceGroupName
 ```
 
 下列腳本會刪除鎖定：
@@ -125,13 +125,88 @@ az lock delete --name $lockName --resource-group $resourceGroupName
 - 將解決方案的未來部署自動化，因為範本包含所有完整的基礎結構。
 - 藉由查看代表您解決方案的 JavaScript 物件標記法 (JSON) 來學習範本語法。
 
+若要匯出資源群組中的所有資源，請使用 [az group export](/cli/azure/group?view=azure-cli-latest#az_group_export&preserve-view=true) 並提供資源組名。
+
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
-az group export --name $resourceGroupName  
+az group export --name $resourceGroupName
 ```
 
-腳本會在主控台上顯示範本。  複製 JSON，並儲存為檔案。
+腳本會在主控台上顯示範本。 複製 JSON，並儲存為檔案。
+
+您可以選取要匯出的資源，而不是匯出資源群組中的所有資源。
+
+若要匯出一個資源，請傳遞該資源識別碼。
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the storage account name:" &&
+read storageAccountName &&
+storageAccount=$(az resource show --resource-group $resourceGroupName --name $storageAccountName --resource-type Microsoft.Storage/storageAccounts --query id --output tsv) &&
+az group export --resource-group $resourceGroupName --resource-ids $storageAccount
+```
+
+若要匯出一個以上的資源，請傳遞以空格分隔的資源識別碼。 若要匯出所有資源，請不要指定此引數或提供 "*"。
+
+```azurecli-interactive
+az group export --resource-group <resource-group-name> --resource-ids $storageAccount1 $storageAccount2
+```
+
+匯出範本時，您可以指定是否要在範本中使用參數。 預設會包含資源名稱的參數，但它們沒有預設值。 您必須在部署期間傳遞該參數值。
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "type": "String"
+  }
+}
+```
+
+在資源中，參數是用來做為名稱。
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "[parameters('serverfarms_demoHostPlan_name')]",
+    ...
+  }
+]
+```
+
+如果您在 `--include-parameter-default-value` 匯出範本時使用參數，則範本參數會包含預設值，此值會設定為目前的值。 您可以使用該預設值，或藉由傳入不同的值來覆寫預設值。
+
+```json
+"parameters": {
+  "serverfarms_demoHostPlan_name": {
+    "defaultValue": "demoHostPlan",
+    "type": "String"
+  },
+  "sites_webSite3bwt23ktvdo36_name": {
+    "defaultValue": "webSite3bwt23ktvdo36",
+    "type": "String"
+  }
+}
+```
+
+如果您在 `--skip-resource-name-params` 匯出範本時使用參數，則範本中不會包含資源名稱的參數。 相反地，資源名稱會直接在資源上設定為其目前的值。 您無法在部署期間自訂名稱。
+
+```json
+"resources": [
+  {
+    "type": "Microsoft.Web/serverfarms",
+    "apiVersion": "2016-09-01",
+    "name": "demoHostPlan",
+    ...
+  }
+]
+```
 
 匯出範本功能不支援匯出 Azure Data Factory 資源。 若要瞭解如何匯出 Data Factory 資源，請參閱 [Azure Data Factory 中的複製或複製 Data Factory](../../data-factory/copy-clone-data-factory.md)。
 

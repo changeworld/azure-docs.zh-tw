@@ -3,12 +3,12 @@ title: 概念-將 Azure VMware 解決方案部署整合到中樞和輪輻架構�
 description: 瞭解如何將 Azure VMware 解決方案部署整合到 Azure 上的中樞和輪輻架構。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 788ef9886e0d102a549e84cd01c658e9e4131c63
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967443"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901380"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>整合中樞和輪輻架構中的 Azure VMware 解決方案
 
@@ -128,7 +128,7 @@ Azure 應用程式閘道 V1 和 V2 已透過在 Azure VMware 解決方案 Vm 上
 
 針對 Azure DNS 解析度，有兩個可用的選項：
 
--   使用 Azure Active Directory (Azure AD) 部署于中樞的網域控制站 (作為名稱伺服器的身分 [識別考慮](#identity-considerations)) 中所述。
+-   使用部署在中樞上的網域控制站 (身分 [識別考慮](#identity-considerations)) 中所述的名稱伺服器。
 
 -   部署及設定 Azure DNS 私用區域。
 
@@ -136,7 +136,7 @@ Azure 應用程式閘道 V1 和 V2 已透過在 Azure VMware 解決方案 Vm 上
 
 作為一般設計建議，請使用現有的 Azure DNS 基礎結構 (在此案例中，Active Directory 整合的 DNS) 部署至中樞虛擬網路中至少部署的兩個 Azure Vm，並設定在輪輻虛擬網路中，以在 DNS 設定中使用這些 Azure DNS 伺服器。
 
-您可以使用 Azure 私人 DNS，其中 Azure 私人 DNS 區域會連結至虛擬網路。  DNS 伺服器可作為混合式解析程式使用，以將條件式轉送至內部部署或 Azure VMware 解決方案，以利用客戶的 Azure 私人 DNS 基礎結構來執行 DNS。 
+您可以使用 Azure 私人 DNS，其中 Azure 私人 DNS 區域會連結至虛擬網路。  DNS 伺服器是用來做為混合式解析程式，並使用客戶的 Azure 私人 DNS 基礎結構，將條件式轉送至執行 DNS 的內部部署或 Azure VMware 解決方案。 
 
 若要為輪輻虛擬網路內部署的 Vm 自動管理 DNS 記錄的生命週期，請啟用自動註冊。 啟用時，私人 DNS 區域的最大數目只是一個。 如果停用，則最大值為1000。
 
@@ -144,7 +144,7 @@ Azure 應用程式閘道 V1 和 V2 已透過在 Azure VMware 解決方案 Vm 上
 
 ## <a name="identity-considerations"></a>身分識別考量
 
-基於身分識別用途，最佳方法是在中樞上至少部署一個 AD 網域控制站。 使用區域分散方式或 VM 可用性設定組中的兩個共用服務子網。 請參閱將內部部署 AD 網域擴充至 Azure 的 [Azure 架構中心](/azure/architecture/reference-architectures/identity/adds-extend-domain) 。
+基於身分識別用途，最佳方法是在中樞上至少部署一個網域控制站。 使用區域分散方式或 VM 可用性設定組中的兩個共用服務子網。 如需將內部部署 Active Directory (AD) 網域擴充至 Azure 的詳細資訊，請參閱 [Azure 架構中心](/azure/architecture/reference-architectures/identity/adds-extend-domain)。
 
 此外，在 Azure VMware 解決方案端部署另一個網域控制站，以作為 vSphere 環境內的身分識別和 DNS 來源。
 

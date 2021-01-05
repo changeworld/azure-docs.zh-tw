@@ -17,18 +17,18 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b680c275b92340cc7efba187769cb17602b08b45
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 365c9a990f16e9077450ae15f6677ab716fc45ba
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973281"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900445"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
 
 在本文中，您將瞭解如何安裝及設定 Azure Active Directory (Azure AD) Connect Health 代理程式。 若要下載代理程式，請參閱 [這些指示](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 下表列出使用 Azure AD Connect Health 的需求。
 
@@ -64,7 +64,7 @@ ms.locfileid: "95973281"
 | 網域環境 | 必要 Azure 服務端點 |
 | --- | --- |
 | 一般公用 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>在最新版的代理程式中不需要此端點 &#42; servicebus.windows.net-埠： 5671 (。 ) </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>HTTPs： \/ /www.office.com (此端點僅用於註冊期間的探索用途。 ) </li> |
-| Azure 德國 | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>HTTPs： \/ /www.office.de (此端點僅用於註冊期間的探索用途。 ) </li> |
+| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>HTTPs： \/ /www.office.de (此端點僅用於註冊期間的探索用途。 ) </li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>HTTPs： \/ /www.office.com (此端點僅用於註冊期間的探索用途。 ) </li> |
 
 
@@ -130,7 +130,7 @@ PowerShell 視窗隨即開啟，以啟動代理程式註冊程式。 當系統�
 
 1. 在 [開始畫面上，開啟 **伺服器管理員**，然後開啟 [ **本機安全性原則**]。 在工作列上，開啟 **伺服器管理員**]，然後選取 [ **工具/本機安全性原則**]。
 2. 移至 [安全性設為本機的原則 *\ 許可權指派* ] 資料夾。 然後按兩下 [ **產生安全性審核**]。
-3. 在 [本機安全性設定]索引標籤上，確認 AD FS 服務帳戶已列出。 如果未列出，請選取 [ **新增使用者或群組**]，並將它新增至清單。 然後選取 [確定]  。
+3. 在 [本機安全性設定]索引標籤上，確認 AD FS 服務帳戶已列出。 如果未列出，請選取 [ **新增使用者或群組**]，並將它新增至清單。 然後選取 [確定]。
 4. 若要啟用審核，請以較高的許可權開啟 [命令提示字元] 視窗。 然後，執行下列命令： 
     
     `auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable`
@@ -149,7 +149,7 @@ PowerShell 視窗隨即開啟，以啟動代理程式註冊程式。 當系統�
 
 1. 在 [開始畫面上，開啟 **伺服器管理員**，然後開啟 [ **本機安全性原則**]。 在工作列上，開啟 **伺服器管理員**]，然後選取 [ **工具/本機安全性原則**]。
 2. 移至 [安全性設為本機的原則 *\ 許可權指派* ] 資料夾，然後按兩下 [ **產生安全性審核**]。
-3. 在 [本機安全性設定]索引標籤上，確認 AD FS 服務帳戶已列出。 如果未列出，請選取 [ **新增使用者或群組**]，然後將 AD FS 服務帳戶新增至清單。 然後選取 [確定]  。
+3. 在 [本機安全性設定]索引標籤上，確認 AD FS 服務帳戶已列出。 如果未列出，請選取 [ **新增使用者或群組**]，然後將 AD FS 服務帳戶新增至清單。 然後選取 [確定]。
 4. 若要啟用審核，請以較高的許可權開啟 [命令提示字元] 視窗。 然後，執行下列命令： 
 
     `auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable`
@@ -284,6 +284,17 @@ PowerShell 視窗隨即開啟，以啟動代理程式註冊程式。 當系統�
 
 ```
 
+> [!NOTE]
+> 若要對主權雲端進行註冊，請使用下列命令列：
+>
+> ```powershell
+> Register-AzureADConnectHealthADFSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthADDSAgent -UserPrincipalName upn-of-the-user
+> Register-AzureADConnectHealthSyncAgent -UserPrincipalName upn-of-the-user
+> ```
+>
+
+
 這些命令接受 `Credential` 做為參數來完成註冊 noninteractively，或在執行 Server Core 的電腦上完成註冊。 請注意下列事項：
 * 您可以 `Credential` 在以參數形式傳遞的 PowerShell 變數中捕捉。
 * 您可以提供有權註冊代理程式，且 *未* 啟用多重要素驗證的任何 Azure AD 身分識別。
@@ -340,7 +351,7 @@ Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
 Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 ```
 
-以下是範例： 
+以下為範例： 
 
 `Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443`
 

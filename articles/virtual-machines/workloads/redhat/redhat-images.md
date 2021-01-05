@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 5cac21046b6b4afdefc4213f6a1fab438d62cca3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957532"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900496"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映射總覽
 
@@ -22,7 +22,7 @@ ms.locfileid: "94957532"
 如需所有 RHEL 版本的 Red Hat 支援原則的相關資訊，請參閱 [Red Hat Enterprise Linux 生命週期](https://access.redhat.com/support/policy/updates/errata)。 如需定價詳細資料，請參閱 [Azure 定價計算機](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。
 
 >[!IMPORTANT]
-> Azure Marketplace 支援自備訂用帳戶 (BYOS) 或隨用隨付授權模型，目前提供的 RHEL 映射可供使用。 不支援 BYOS 與隨用隨付授權之間的 [Azure 混合式使用權益](../../windows/hybrid-use-benefit-licensing.md) 和動態切換。 若要切換授權模式，您必須從對應的映射重新部署 VM。
+> Azure Marketplace 支援自備訂用帳戶 (BYOS) 或隨用隨付授權模型，目前提供的 RHEL 映射可供使用。 BYOS 和隨用隨付授權之間的動態切換可透過 [Azure 混合式使用權益](../../linux/azure-hybrid-benefit-linux.md)來完成。
 
 >[!NOTE]
 > 針對 Azure Marketplace 中 RHEL 映射的任何相關問題，請向 Microsoft 提出支援票證。
@@ -146,7 +146,7 @@ RedHat:RHEL:7.6:7.6.2019102813
 RHEL 7.4      |RedHat： RHEL：7.4：7.4.2019041718 | 預設會 EUS 2019 年4月和之後發行的映射。|
 RHEL 7.5      |RedHat： RHEL：7.5：7.5.2019060305 | 預設會 EUS 在2019年6月和之後發佈的映射。 |
 RHEL 7.6      |RedHat： RHEL：7.6：7.6.2019052206 | 預設會 EUS 發佈的映射（2019和更新版本）。 |
-RHEL 8。0      |N/A                            | Red Hat 沒有任何可用的 EUS。                               |
+RHEL 8。0      |不適用                            | Red Hat 沒有任何可用的 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>適用于 SAP 的更新服務
 

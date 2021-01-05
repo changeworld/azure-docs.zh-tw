@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 4b1bc58b6b4a87cd6e5e09e83020a38261b8746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14564b0591ef0146131b3f9324556b613e25daac
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90905370"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901227"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>使用 Azure 靜態 Web Apps 預覽版設定前端架構和程式庫
 
@@ -24,7 +24,7 @@ Azure 靜態 Web Apps 要求您在前端架構或程式庫的 [組建設定檔](
 
 下列專案會說明資料表資料行的意圖：
 
-- **應用**程式成品位置：列出的值 `app_artifact_location` ，也就是 [應用程式檔的建立版本資料夾](github-actions-workflow.md#build-and-deploy)。
+- **輸出位置**：列出的值 `output_location` ，這是 [應用程式檔的內建版本資料夾](github-actions-workflow.md#build-and-deploy)。
 
 - **自訂群組建命令**：當 framework 需要與或不同的命令時 `npm run build` `npm run azure:build` ，您可以定義 [自訂群組建命令](github-actions-workflow.md#custom-build-commands)。
 

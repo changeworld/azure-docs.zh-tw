@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 6fa8705221e1f1f9a9143f274a53db21b657988f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0a7f54d991d31594a6ab522dbf9e73958cde3023
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763778"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900139"
 ---
 # <a name="gpu-vms-for-your-azure-stack-edge-pro-device"></a>適用于您 Azure Stack Edge Pro 裝置的 GPU Vm
 
@@ -338,7 +338,7 @@ PS C:\Program Files\NVIDIA Corporation\NVSMI>
 
 ### <a name="gpu-extension-for-linux"></a>適用于 Linux 的 GPU 擴充功能
 
-若要為現有的 VM 部署 Nvidia GPU 驅動程式，請編輯參數檔案， `addGPUExtLinuxVM.parameters.json` 然後再部署範本 `addGPUextensiontoVM.json` 。
+若要為現有的 VM 部署 Nvidia GPU 驅動程式，請編輯參數檔案，然後再部署範本 `addGPUextensiontoVM.json` 。 Ubuntu 和 Red Hat Enterprise Linux (RHEL) 有特定參數檔案，如以下各節所述。
 
 #### <a name="edit-parameters-file"></a>編輯參數檔案
 
@@ -371,8 +371,7 @@ PS C:\Program Files\NVIDIA Corporation\NVSMI>
     }
     }
 ```
-如果使用 Red Hat Enterprise Linux (RHEL) ，file 會採用下列參數：
-
+如果使用 Red Hat Enterprise Linux (RHEL) ，檔案 `addGPUExtensionRHELVM.parameters.json` 會採用下列參數：
 
 ```powershell
 {

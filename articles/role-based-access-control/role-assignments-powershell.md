@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 11/25/2020
 ms.author: rolyon
-ms.openlocfilehash: c4082f7fc535807ec996034ba695549a51969a99
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eadba7d778a632896529f3c7c53886619d96444
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182405"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901465"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 新增或移除 Azure 角色指派
 
@@ -22,12 +22,13 @@ ms.locfileid: "96182405"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要新增或移除角色指派，您必須具有：
 
 - `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](built-in-roles.md#user-access-administrator)或[擁有者](built-in-roles.md#owner)
 - Azure Cloud Shell 或[Azure PowerShell](/powershell/azure/install-az-ps) [的 PowerShell](../cloud-shell/overview.md)
+- 您用來執行 PowerShell 命令的帳戶必須具有 Microsoft Graph `Directory.Read.All` 許可權。
 
 ## <a name="steps-to-add-a-role-assignment"></a>新增角色指派的步驟
 

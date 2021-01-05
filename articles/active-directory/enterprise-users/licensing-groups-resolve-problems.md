@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc3dce8bb51299eb78bd2958eebf7a69594318a4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3bba64f8c07545107d57f79ae94dab96e517815f
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546466"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900700"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>識別及解決 Azure Active Directory 中群組的授權指派問題
 
@@ -68,7 +68,6 @@ Azure Active Directory (Azure AD) 中以群組為基礎的授權會介紹使用�
 
 請思考一下下列範例。 使用者擁有直接指派的 Office 365 企業版 *E1* 授權，所有方案皆啟用。 使用者已新增至獲得 Office 365 企業版 *E3* 產品指派的群組。 E3 產品包含的服務方案不能與 E1 包含的方案重疊，因此，群組授權指派會失敗，而發生「衝突的服務方案」錯誤。 在此範例中，衝突的服務方案是︰
 
-- SharePoint Online (方案 2) 與 SharePoint Online (方案 1) 衝突。
 - Exchange Online (方案 2) 與 Exchange Online (方案 1) 衝突。
 
 若要解決此衝突，您必須停用兩個方案。 您可以停用直接指派給使用者的 E1 授權。 就是，必須在 E3 授權中修改整個群組授權指派並停用方案。 或者，如果在 E3 授權內容中是多餘的，您可能會決定從使用者移除 E1 授權。

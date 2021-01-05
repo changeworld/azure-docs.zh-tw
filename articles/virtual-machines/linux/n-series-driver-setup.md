@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 716a8853a2e2e0988cc50f5289f448d7a4adc9be
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e3c9c101779c5404be7eb8ebfa54f98bd3112117
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608702"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900547"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在執行 Linux 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式
 
@@ -24,7 +24,7 @@ ms.locfileid: "96608702"
 如需 N 系列 VM 規格、儲存體容量與磁碟的詳細資料，請參閱 [GPU Linux VM 大小](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json)。 
 
 > [!NOTE]
-> 本文包含「詞彙封鎖項」的參考，這是 Microsoft 不再使用 *的詞彙。* 從軟體移除字詞時，我們會將它從本文中移除。
+> 本文包含「詞彙封鎖項」的參考，這是 Microsoft 不再使用 *的詞彙。* 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
@@ -52,7 +52,7 @@ lspci | grep -i NVIDIA
    ```bash
    CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
-   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
+   wget -O /tmp/${CUDA_REPO_PKG} https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
    sudo dpkg -i /tmp/${CUDA_REPO_PKG}
 
@@ -126,7 +126,7 @@ Skip this step if you plan to use CentOS 7.8(or higher) as LIS is no longer requ
 
    CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
-   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+   wget https://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
    sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
 
