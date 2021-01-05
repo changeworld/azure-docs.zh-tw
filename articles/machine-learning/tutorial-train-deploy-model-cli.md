@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 119f1eaa838b404a3dbdc22f692f559816810dde
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 55221fa529688fbae1698a094ea31f6a3f765100
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578683"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796239"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教學課程：透過 CLI 訓練和部署模型
 
@@ -307,10 +307,10 @@ runconfig 檔案也包含用來設定執行訓練時所用環境的資訊。 若
 若要在 `cpu-cluster` 計算目標上開始執行訓練，請使用下列命令：
 
 ```azurecli-interactive
-az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
+az ml run submit-script -c mnist -e tutorial-cli --source-directory scripts -t runoutput.json
 ```
 
-此命令會指定實驗的名稱 (`myexperiment`)。 實驗會在工作區中儲存此執行的相關資訊。
+此命令會指定實驗的名稱 (`tutorial-cli`)。 實驗會在工作區中儲存此執行的相關資訊。
 
 `-c mnist` 參數會指定 `.azureml/mnist.runconfig` 檔案。
 
@@ -327,7 +327,7 @@ Accuracy is 0.9185
 
 若您檢查訓練指令碼，您會發現其會在將訓練後的模型儲存到 `outputs/sklearn_mnist_model.pkl` 時，使用 Alpha 值。
 
-模型已儲存到用來訓練該模型之計算目標上的 `./outputs` 目錄。 在此案例中，為 Azure 雲端中的 Azure Machine Learning Compute 執行個體。 訓練流程會自動將用來執行訓練之計算目標中 `./outputs` 目錄的內容上傳到您的 Azure Machine Learning 工作區。 其會儲存為實驗 (在此範例中為 `myexperiment`) 的一部分。
+模型已儲存到用來訓練該模型之計算目標上的 `./outputs` 目錄。 在此案例中，為 Azure 雲端中的 Azure Machine Learning Compute 執行個體。 訓練流程會自動將用來執行訓練之計算目標中 `./outputs` 目錄的內容上傳到您的 Azure Machine Learning 工作區。 其會儲存為實驗 (在此範例中為 `tutorial-cli`) 的一部分。
 
 ## <a name="register-the-model"></a>註冊模型
 
@@ -345,13 +345,13 @@ az ml model register -n mymodel -f runoutput.json --asset-path "outputs/sklearn_
 {
   "createdTime": "2019-09-19T15:25:32.411572+00:00",
   "description": "",
-  "experimentName": "myexperiment",
+  "experimentName": "tutorial-cli",
   "framework": "Custom",
   "frameworkVersion": null,
   "id": "mymodel:1",
   "name": "mymodel",
   "properties": "",
-  "runId": "myexperiment_1568906070_5874522d",
+  "runId": "tutorial-cli_1568906070_5874522d",
   "tags": "",
   "version": 1
 }

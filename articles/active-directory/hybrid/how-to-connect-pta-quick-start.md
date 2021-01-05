@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507671"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792427"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 傳遞驗證：快速入門
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 
 ### <a name="in-your-on-premises-environment"></a>在內部部署環境中
 
-1. 識別一部執行 Windows Server 2012 R2 或更新版本的伺服器來執行 Azure AD Connect。 若尚未啟用，請[在伺服器上啟用 TLS 1.2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)。 根據需要驗證密碼之使用者所在的 Active Directory 樹系，將伺服器新增至同一個樹系。
+1. 識別一部執行 Windows Server 2012 R2 或更新版本的伺服器來執行 Azure AD Connect。 若尚未啟用，請[在伺服器上啟用 TLS 1.2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)。 根據需要驗證密碼之使用者所在的 Active Directory 樹系，將伺服器新增至同一個樹系。 請注意，不支援在 Windows Server Core 版本上安裝 Pass-Through Authentication 代理程式。 
 2. 在上一個步驟中識別的伺服器上，安裝[最新版本的 Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)。 如果您已執行 Azure AD Connect，請確定版本是 1.1.750.0 或更新版本。
 
     >[!NOTE]

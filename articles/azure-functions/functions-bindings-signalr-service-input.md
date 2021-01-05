@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 326115a2a6cf29fcf211cdbd918edd0994fe45ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f3a99c83d4a18f3085419b91be947dd67f8eec4
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212118"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763314"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>SignalR Service Azure Functions 的輸入系結
 
-在用戶端可以連線到 Azure SignalR Service 之前，它必須擷取服務端點 URL 和有效的存取權杖。 SignalRConnectionInfo** 輸入繫結會產生 SignalR Service 端點 URL 和有效的存取權杖，可用來連線到服務。 因為權杖是限時的，且可用來驗證連線的特定使用者，所以您不應該快取權杖或者在用戶端之間共用權杖。 使用此繫結的 HTTP 觸發程序可以供用戶端用來擷取連線資訊。
+在用戶端可以連線到 Azure SignalR Service 之前，它必須擷取服務端點 URL 和有效的存取權杖。 SignalRConnectionInfo 輸入繫結會產生 SignalR Service 端點 URL 和有效的存取權杖，可用來連線到服務。 因為權杖是限時的，且可用來驗證連線的特定使用者，所以您不應該快取權杖或者在用戶端之間共用權杖。 使用此繫結的 HTTP 觸發程序可以供用戶端用來擷取連線資訊。
 
 如需如何使用此系結來建立可供 SignalR 用戶端 SDK 取用的 "negotiate" 函式的詳細資訊，請參閱 SignalR Service 概念檔中的 [Azure Functions 開發和設定文章](../azure-signalr/signalr-concept-serverless-development-config.md) 。
 
@@ -69,7 +69,7 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例示範 function.json** 檔案中的 SignalR 連線資訊輸入繫結，以及使用繫結來傳回連線資訊的 [JavaScript 函式](functions-reference-node.md)。
+下列範例示範 function.json 檔案中的 SignalR 連線資訊輸入繫結，以及使用繫結來傳回連線資訊的 [JavaScript 函式](functions-reference-node.md)。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -152,7 +152,7 @@ App Service 驗證會設定名為 `x-ms-client-principal-id` 和 `x-ms-client-pr
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-您可以使用系結運算式，將系結的 `UserId` 屬性設定為任一標[binding expression](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
+您可以使用系結運算式，將系結的 `UserId` 屬性設定為任一標[](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 ```cs
 [FunctionName("negotiate")]
@@ -169,7 +169,7 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[binding expression](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
+您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 function.json 範例：
 
@@ -200,7 +200,7 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[binding expression](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
+您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 function.json 範例：
 
@@ -227,7 +227,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[binding expression](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
+您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 function.json 範例：
 
@@ -245,11 +245,11 @@ function.json 範例：
 以下是 Python 程式碼：
 
 ```python
-def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
+def main(req: func.HttpRequest, connectionInfo: str) -> func.HttpResponse:
     # connectionInfo contains an access key token with a name identifier
     # claim set to the authenticated user
     return func.HttpResponse(
-        connectionInfoJson,
+        connectionInfo,
         status_code=200,
         headers={
             'Content-type': 'application/json'
@@ -259,7 +259,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[binding expression](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
+您可以使用系結運算式，將系結的 `userId` 屬性設定為任一標[](./functions-bindings-expressions-patterns.md)頭的值： `{headers.x-ms-client-principal-id}` 或 `{headers.x-ms-client-principal-name}` 。
 
 ```java
 @FunctionName("negotiate")
@@ -280,4 +280,5 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="next-steps"></a>後續步驟
 
+- [處理來自 SignalR Service (觸發程式系結的訊息) ](./functions-bindings-signalr-service-trigger.md)
 - [傳送 SignalR Service 訊息 (輸出系結) ](./functions-bindings-signalr-service-output.md) 

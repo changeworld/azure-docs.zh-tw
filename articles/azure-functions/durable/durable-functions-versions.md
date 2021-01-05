@@ -3,14 +3,14 @@ title: Durable Functions 版本總覽-Azure Functions
 description: 瞭解 Durable Functions 版本。
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/23/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4d10bab06428295bbc8c5319bd47787d7b1fb34
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88719405"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763365"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions 版本總覽
 
@@ -24,7 +24,7 @@ ms.locfileid: "88719405"
 
 在 Durable Functions 2.x 中，我們引進了新的 [實體函數](durable-functions-entities.md) 概念。
 
-實體函式會定義用於讀取和更新一小段狀態 (稱為「持久性實體」) 的作業。 和協調器函式一樣，實體函式也是具有特殊觸發程序類型 (「實體觸發程序」**) 的函式。 不同于協調器函式，實體函數沒有任何特定的程式碼條件約束。 實體函式也會明確管理狀態，而不是透過控制流程來隱含表示狀態。
+實體函式會定義用於讀取和更新一小段狀態 (稱為「持久性實體」) 的作業。 和協調器函式一樣，實體函式也是具有特殊觸發程序類型 (「實體觸發程序」) 的函式。 不同于協調器函式，實體函數沒有任何特定的程式碼條件約束。 實體函式也會明確管理狀態，而不是透過控制流程來隱含表示狀態。
 
 若要深入瞭解，請參閱長期 [實體](durable-functions-entities.md) 文章。
 
@@ -50,6 +50,8 @@ ms.locfileid: "88719405"
 
 Durable Functions 2.x 適用于 [Azure Functions 擴充](../functions-bindings-register.md#extension-bundles)功能套件組合的2.x 版。
 
+Durable Functions 中的 Python 支援需要 Durable Functions 2.x。
+
 若要更新專案中的延伸套件組合版本，請開啟 host.js，並更新 `extensionBundle` 區段以使用2.x 版 (`[2.*, 3.0.0)`) 。
 
 ```json
@@ -61,6 +63,9 @@ Durable Functions 2.x 適用于 [Azure Functions 擴充](../functions-bindings-r
     }
 }
 ```
+
+> [!NOTE]
+> 如果 Visual Studio Code 在變更延伸模組套件組合版本後未顯示正確的範本，請在 Windows 和 Linux 上 *執行開發人員：重載視窗* 命令 (<kbd>Ctrl + r</kbd> 、MacOS) 上的 <kbd>命令 + r</kbd> 來重載視窗。
 
 #### <a name="net"></a>.NET
 

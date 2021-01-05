@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: c18ee43eefe9c6cf9cba7f4e8f6c3fd3f55bba5a
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368693"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796290"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ SQL 受控執行個體提供與 SQL Server database engine 的高度相容性，
 
 ## <a name="availability"></a>可用性
 
-### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>Always On 可用性群組
+### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>AlwaysOn 可用性群組
 
 SQL 受控執行個體內建[高可用性](../database/high-availability-sla.md)，而且無法由使用者控制。 不支援下列語句：
 
@@ -52,7 +52,7 @@ SQL 受控執行個體內建[高可用性](../database/high-availability-sla.md)
 - [DROP AVAILABILITY GROUP](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)語句的[SET HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr)子句
 
-### <a name="backup"></a>備份
+### <a name="backup"></a>Backup
 
 SQL 受控執行個體具有自動備份，因此使用者可以建立完整的資料庫 `COPY_ONLY` 備份。 不支援差異、記錄和檔案快照集備份。
 
@@ -69,6 +69,7 @@ SQL 受控執行個體具有自動備份，因此使用者可以建立完整的�
 
 - 有了 SQL 受控執行個體，您就可以將實例資料庫備份至最多有32個等量的備份，而如果使用備份壓縮的話，就足以容納最多 4 TB 的資料庫。
 - 您無法 `BACKUP DATABASE ... WITH COPY_ONLY` 在以服務管理的透明資料加密 (TDE) 加密的資料庫上執行。 服務管理的 TDE 會強制使用內部 TDE 金鑰來加密備份。 無法匯出金鑰，因此您無法還原備份。 使用自動備份和時間點還原，或改用 [客戶管理的 (BYOK) TDE](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key) 。 您也可以停用資料庫的加密。
+- 受控執行個體上所建立的原生備份無法還原至 SQL Server。 這是因為相較于任何版本的 SQL Server，受控執行個體會有較高的內部資料庫版本。
 - 在 SQL 受控執行個體中使用命令的最大備份等量大小 `BACKUP` 是 195 GB，這是最大的 blob 大小。 在備份命令中增加等量磁碟區的數目，以減少個別的等量磁碟區大小並維持在這項限制內。
 
     > [!TIP]
@@ -99,7 +100,7 @@ SQL 受控執行個體中的 XEvent 審核支援 Azure Blob 儲存體目標。 �
 - `TO URL`您可以使用新的語法，來指定放置檔案的 Azure Blob 儲存體容器的 URL `.xel` 。
 - `TO FILE`因為 SQL 受控執行個體無法存取 Windows 檔案共用，所以不支援語法。
 
-如需詳細資訊，請參閱 
+如需詳細資訊，請參閱： 
 
 - [CREATE SERVER AUDIT](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -190,7 +191,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - SQL Database 服務) 所管理的 (不支援[服務主要金鑰備份](/sql/t-sql/statements/backup-service-master-key-transact-sql)。
 - SQL Database 服務) 管理的 (不支援[服務主要金鑰還原](/sql/t-sql/statements/restore-service-master-key-transact-sql)。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="buffer-pool-extension"></a>緩衝集區延伸
 

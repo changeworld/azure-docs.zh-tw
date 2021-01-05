@@ -3,16 +3,16 @@ title: Azure IoT Central 的常見問題 |Microsoft Docs
 description: Azure IoT Central 常見問題) 和解答的常見問題 (
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/23/2020
+ms.date: 12/20/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: cbe0dbe55f903c25556698a5d510bf9e67b408be
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: acabaf843f8acfe7bc0b5e9456dee09bde74bef7
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126715"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796035"
 ---
 # <a name="frequently-asked-questions-for-iot-central"></a>IoT Central 的常見問題
 
@@ -28,7 +28,7 @@ ms.locfileid: "92126715"
 
 **如何? 將裝置解除封鎖？**
 
-當裝置被封鎖時，就無法將資料傳送到您的 IoT Central 應用程式。 封鎖的裝置在應用程式的 [**裝置**] 頁面上具有 [已**封鎖**] 狀態。 操作員必須解除封鎖裝置，才能繼續傳送資料：
+當裝置被封鎖時，就無法將資料傳送到您的 IoT Central 應用程式。 封鎖的裝置在應用程式的 [**裝置**] 頁面上具有 [已 **封鎖**] 狀態。 操作員必須解除封鎖裝置，才能繼續傳送資料：
 
 :::image type="content" source="media/howto-faq/blocked.png" alt-text="顯示已封鎖裝置的螢幕擷取畫面":::
 
@@ -38,17 +38,17 @@ ms.locfileid: "92126715"
 
 如果裝置狀態為 [**裝置**] 頁面上的 [**等待核准**]，表示已停用 [**自動核准**] 選項：
 
-:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="顯示已封鎖裝置的螢幕擷取畫面":::
+:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="顯示已停用自動核准選項的應用程式螢幕擷取畫面。":::
 
 操作員必須先明確核准裝置，才能開始傳送資料。 未在 [ **裝置** ] 頁面上手動註冊的裝置，但使用有效的認證連線時，會有裝置狀態 **等候核准**。 操作員可以使用 [**核准**] 按鈕，從 [**裝置**] 頁面核准這些裝置：
 
-:::image type="content" source="media/howto-faq/approve-device.png" alt-text="顯示已封鎖裝置的螢幕擷取畫面":::
+:::image type="content" source="media/howto-faq/approve-device.png" alt-text="顯示如何核准裝置的螢幕擷取畫面":::
 
 **如何? 將裝置與裝置範本產生關聯？**
 
 如果裝置狀態為 [無 **關聯**]，表示連接到 IoT Central 的裝置沒有相關聯的裝置範本。 這種情況通常會發生在下列情況：
 
-- 您可以使用 [**裝置**] 頁面上的 [匯**入**] 來新增一組裝置，而不需要指定裝置範本。
+- 您可以使用 [**裝置**] 頁面上的 [匯 **入**] 來新增一組裝置，而不需要指定裝置範本。
 - 裝置已在 [ **裝置** ] 頁面上手動註冊，但未指定裝置範本。 裝置接著會使用有效的認證來連線。  
 
 操作員可以使用 [**遷移**] 按鈕，從 [**裝置**] 頁面將裝置與裝置範本建立關聯。 若要深入瞭解，請參閱 [在 Azure IoT Central 應用程式中管理裝置 > 將裝置遷移至範本](howto-manage-devices.md)。

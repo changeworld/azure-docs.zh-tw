@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f8b555c4022fcf2532a7350839d2357c96562f4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791846"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763263"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>監視、診斷與疑難排解 Microsoft Azure 儲存體
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -120,11 +120,10 @@ ms.locfileid: "92791846"
 
 [Azure 入口網站](https://portal.azure.com)也可以針對會影響各種 Azure 服務的事件提供通知。
 注意:此項資訊之前會隨著歷程資料一起顯示在 [Azure 服務儀表板](https://status.azure.com)上。
-
-雖然 [Azure 入口網站](https://portal.azure.com)會從 Azure 資料中心內收集健康情況資訊 (從內到外的監視)，但是您也可以考慮採用從外到內的監視方式，從多個位置定期存取 Azure 裝載的 Web 應用程式，來產生綜合性的處理。 [Dynatrace](https://www.dynatrace.com/en/synthetic-monitoring) 與 Application Insights for Azure DevOps 所提供的各項服務，都是此方法的範例。 如需 Application Insights for Azure DevOps 的詳細資訊，請參閱「[附錄 5：使用 Application Insights for Azure DevOps 監視](#appendix-5)」。
+如需 Application Insights for Azure DevOps 的詳細資訊，請參閱「[附錄 5：使用 Application Insights for Azure DevOps 監視](#appendix-5)」。
 
 ### <a name="monitoring-capacity"></a><a name="monitoring-capacity"></a>監視容量
-儲存體度量只會儲存 Blob 服務的容量度量，這是因為 Blob 通常佔已儲存的資料最大宗 (寫入期間無法使用儲存體度量來監視資料表與佇列的容量)。 如果您為 Blob 服務啟用監視功能的話，可以在 **$MetricsCapacityBlob** 資料表中找到這項資料。 儲存體度量每天會記錄這項資料一次，而您可以使用 **RowKey** 的值來判斷資料列是否包含與使用者資料 (值 **data** ) 或分析資料 (值 **analytics** ) 相關聯的實體。 每一個儲存的實體都含有使用的儲存體容量相關資訊 (以位元組數測量的 **Capacity** )，以及儲存體帳戶中使用的目前容器編號 ( **ContainerCount** ) 及 Blob ( **ObjectCount** )。 如需 **$MetricsCapacityBlob** 資料表中儲存的容量度量詳細資訊，請參閱 [儲存體分析度量資料表結構描述](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)。
+儲存體度量只會儲存 Blob 服務的容量度量，這是因為 Blob 通常佔已儲存的資料最大宗 (寫入期間無法使用儲存體度量來監視資料表與佇列的容量)。 如果您為 Blob 服務啟用監視功能的話，可以在 **$MetricsCapacityBlob** 資料表中找到這項資料。 儲存體度量每天會記錄這項資料一次，而您可以使用 **RowKey** 的值來判斷資料列是否包含與使用者資料 (值 **data**) 或分析資料 (值 **analytics**) 相關聯的實體。 每一個儲存的實體都含有使用的儲存體容量相關資訊 (以位元組數測量的 **Capacity**)，以及儲存體帳戶中使用的目前容器編號 (**ContainerCount**) 及 Blob (**ObjectCount**)。 如需 **$MetricsCapacityBlob** 資料表中儲存的容量度量詳細資訊，請參閱 [儲存體分析度量資料表結構描述](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)。
 
 > [!NOTE]
 > 建議您監視這些數值，以便在儲存體帳戶接近容量限制時提早收到警告。 在 Azure 入口網站中，您可以新增警示規則，讓系統在彙總儲存體使用量超出或低於指定的臨界值時通知您。
@@ -134,9 +133,9 @@ ms.locfileid: "92791846"
 如需估計 Blob 等各種儲存體物件大小的說明，請參閱部落格文章 [了解 Winidows Azure 儲存體計費 - 頻寬、交易與容量](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity)。
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>監視可用性
-您應該監視儲存體帳戶中的儲存體服務可用性，方法是監視每小時或每分鐘度量表內的 [可用性] 資料欄，亦即 — **$MetricsHourPrimaryTransactionsBlob** 、 **$MetricsHourPrimaryTransactionsTable** 、 **$MetricsHourPrimaryTransactionsQueue** 、 **$MetricsMinutePrimaryTransactionsBlob** 、 **$MetricsMinutePrimaryTransactionsTable** 、 **$MetricsMinutePrimaryTransactionsQueue** 、 **$MetricsCapacityBlob** 。 [可用性] 資料欄內含的百分比值代表服務的可用性，或是由資料列所代表的 API 操作 (如果資料列內含整體服務度量或是特定 API 操作度量，則會顯示 **RowKey** )。
+您應該監視儲存體帳戶中的儲存體服務可用性，方法是監視每小時或每分鐘度量表內的 [可用性] 資料欄，亦即 — **$MetricsHourPrimaryTransactionsBlob**、 **$MetricsHourPrimaryTransactionsTable**、 **$MetricsHourPrimaryTransactionsQueue**、 **$MetricsMinutePrimaryTransactionsBlob**、 **$MetricsMinutePrimaryTransactionsTable**、 **$MetricsMinutePrimaryTransactionsQueue**、 **$MetricsCapacityBlob**。 [可用性] 資料欄內含的百分比值代表服務的可用性，或是由資料列所代表的 API 操作 (如果資料列內含整體服務度量或是特定 API 操作度量，則會顯示 **RowKey**)。
 
-任何小於 100% 的值，皆表示某些儲存體要求已經失敗。 您可以檢視度量資料裡的其他資料欄，查看裡面帶有各種錯誤類型 (例如 **ServerTimeoutError** ) 的要求數量，以了解這些要求失敗的原因。 當暫時性伺服器逾時狀態出現，以致於服務移動資料分割以便提供更佳的負載平衡要求時，您應該會看到 [可用性]  百分比暫時低於 100%；用戶端應用程式裡的重試邏輯應該會處理此類間歇性狀況。 [儲存體分析記錄作業和狀態訊息](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages)一文列出儲存體度量納入其 [可用性] 計算中的交易類型。
+任何小於 100% 的值，皆表示某些儲存體要求已經失敗。 您可以檢視度量資料裡的其他資料欄，查看裡面帶有各種錯誤類型 (例如 **ServerTimeoutError**) 的要求數量，以了解這些要求失敗的原因。 當暫時性伺服器逾時狀態出現，以致於服務移動資料分割以便提供更佳的負載平衡要求時，您應該會看到 [可用性]  百分比暫時低於 100%；用戶端應用程式裡的重試邏輯應該會處理此類間歇性狀況。 [儲存體分析記錄作業和狀態訊息](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages)一文列出儲存體度量納入其 [可用性] 計算中的交易類型。
 
 在 [Azure 入口網站](https://portal.azure.com)中，您可以新增警示規則，讓系統在某項服務的 [可用性] 低於指定的臨界值時通知您。
 
@@ -145,7 +144,7 @@ ms.locfileid: "92791846"
 ### <a name="monitoring-performance"></a><a name="monitoring-performance"></a>監視效能
 若要監視儲存體服務效能，您可以使用下列來自每小時與每分鐘度量表的度量。
 
-* **AverageE2ELatency** 與 **AverageServerLatency** 資料行中的值顯示儲存體服務或是 API 操作類型用來處理要求所需的平均時間。 **AverageE2ELatency** 是一項端對端延遲量值，內含讀取要求及傳送回應所花的時間，以及處理要求所花的時間 (因此，內含一旦要求抵達儲存體服務時的網路延遲)； **AverageServerLatency** 指示一項處理時間量值，因此會將任何與用戶端通訊相關的網路延遲排除在外。 請參閱本指南稍後出現的「[度量顯示高 AverageE2ELatency 與低 AverageServerLatency]」一節，針對這兩個值之間為何會有明顯的差異進行討論。
+* **AverageE2ELatency** 與 **AverageServerLatency** 資料行中的值顯示儲存體服務或是 API 操作類型用來處理要求所需的平均時間。 **AverageE2ELatency** 是一項端對端延遲量值，內含讀取要求及傳送回應所花的時間，以及處理要求所花的時間 (因此，內含一旦要求抵達儲存體服務時的網路延遲)；**AverageServerLatency** 指示一項處理時間量值，因此會將任何與用戶端通訊相關的網路延遲排除在外。 請參閱本指南稍後出現的「[度量顯示高 AverageE2ELatency 與低 AverageServerLatency]」一節，針對這兩個值之間為何會有明顯的差異進行討論。
 * **TotalIngress** 與 **TotalEgress** 資料欄內的值以位元組為單位，顯示進出儲存體服務或是透過特定 API 操作類型的資料總量。
 * **TotalRequests** 資料欄內的值顯示 API 操作所收到的儲存體服務要求總數。 **TotalRequests** 代表儲存體服務所收到的要求總數。
 
@@ -183,7 +182,7 @@ ms.locfileid: "92791846"
 本指南稍後的「[疑難排解指引]」一節深入說明您可能會碰到的一些常見效能相關問題。
 
 ### <a name="diagnosing-errors"></a><a name="diagnosing-errors"></a>診斷錯誤
-您的應用程式使用者可能會通知您用戶端應用程式所回報的一些錯誤。 儲存體度量還會記錄來自儲存體服務的不同錯誤類型計數，例如 **NetworkError** 、 **ClientTimeoutError** 或 **AuthorizationError** 。 雖然儲存體度量只會記錄不同的錯誤類型計數，不過您還是可以藉由檢視伺服器端、用戶端與網路記錄來取得個別要求的詳細資料。 一般來說，儲存體服務所傳回的 HTTP 狀態碼會指示要求失敗的原因。
+您的應用程式使用者可能會通知您用戶端應用程式所回報的一些錯誤。 儲存體度量還會記錄來自儲存體服務的不同錯誤類型計數，例如 **NetworkError**、**ClientTimeoutError** 或 **AuthorizationError**。 雖然儲存體度量只會記錄不同的錯誤類型計數，不過您還是可以藉由檢視伺服器端、用戶端與網路記錄來取得個別要求的詳細資料。 一般來說，儲存體服務所傳回的 HTTP 狀態碼會指示要求失敗的原因。
 
 > [!NOTE]
 > 請記住，您應該會看到一些間歇性錯誤：例如，因為暫時性的網路狀況而導致的錯誤或應用程式錯誤。
@@ -260,7 +259,7 @@ Storage Client Library for .NET 能讓您針對應用程式所執行的儲存體
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-如果儲存體用戶端程式庫在用戶端擲回 **StorageException** ，則 **RequestInformation** 屬性所包含的 **RequestResult** 物件裡會出現 **ServiceRequestID** 屬性。 您可以從 **OperationContext** 執行個體存取 **RequestResult** 物件。
+如果儲存體用戶端程式庫在用戶端擲回 **StorageException**，則 **RequestInformation** 屬性所包含的 **RequestResult** 物件裡會出現 **ServiceRequestID** 屬性。 您可以從 **OperationContext** 執行個體存取 **RequestResult** 物件。
 
 下列程式碼範例示範如何藉由附加 **OperationContext** 物件要求至儲存體服務來設定自訂的 **ClientRequestId** 值。 此範例同時示範如何從回應訊息擷取 **ServerRequestId** 值。
 
@@ -352,17 +351,17 @@ catch (StorageException storageException)
 
 ![Azure 入口網站中的圖例，顯示 AverageE2ELatency 明顯高於 AverageServerLatency 的範例。][4]
 
-儲存體服務只會計算成功要求的計量 **AverageE2ELatency** ，而不像 **AverageServerLatency** ，包括用戶端傳送資料和接收儲存體服務認可所需的時間。 因此， **AverageE2ELatency** 與 **AverageServerLatency** 之間的差異可能是因為用戶端應用程式回應速度太慢，或是其他網路狀況所引起。
+儲存體服務只會計算成功要求的計量 **AverageE2ELatency** ，而不像 **AverageServerLatency**，包括用戶端傳送資料和接收儲存體服務認可所需的時間。 因此，**AverageE2ELatency** 與 **AverageServerLatency** 之間的差異可能是因為用戶端應用程式回應速度太慢，或是其他網路狀況所引起。
 
 > [!NOTE]
-> 您也可以在儲存體記錄資料中，檢視個別儲存體作業的 **E2ELatency** 與 **ServerLatency** 。
+> 您也可以在儲存體記錄資料中，檢視個別儲存體作業的 **E2ELatency** 與 **ServerLatency**。
 >
 >
 
 #### <a name="investigating-client-performance-issues"></a>調查用戶端效能問題
 用戶端回應速度較慢的可能原因包括可用的連線或執行緒數量有限或資源 (例如 CPU、記憶體或網路頻寬) 不足。 您可以試著將用戶端程式碼修改得更有效率 (例如對儲存體服務使用非同步呼叫) 或是使用較大型的虛擬機器 (核心數量增加，記憶體容量加大) 來解決這個問題。
 
-對於資料表和佇列服務，Nagle 演算法也可能導致相較於 **AverageServerLatency** 的高 **AverageE2ELatency** 。如需詳細資訊，請參閱 [Nagle 演算法不適用於小型要求](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)一文。 您可以在 **System.Net** 命名空間中使用 **ServicePointManager** 類別，來停用程式碼中的 Nagle 演算法。 由於這麼做會影響已經開啟的連線，因此在對應用程式裡的資料表或佇列服務進行任何呼叫之前，請先完成這個動作。 以下範例來自背景工作角色裡的 **Application_Start** 方法。
+對於資料表和佇列服務，Nagle 演算法也可能導致相較於 **AverageServerLatency** 的高 **AverageE2ELatency**。如需詳細資訊，請參閱 [Nagle 演算法不適用於小型要求](/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests)一文。 您可以在 **System.Net** 命名空間中使用 **ServicePointManager** 類別，來停用程式碼中的 Nagle 演算法。 由於這麼做會影響已經開啟的連線，因此在對應用程式裡的資料表或佇列服務進行任何呼叫之前，請先完成這個動作。 以下範例來自背景工作角色裡的 **Application_Start** 方法。
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
@@ -459,14 +458,14 @@ queueServicePoint.UseNagleAlgorithm = false;
 >
 >
 
-**PercentTimeoutError** 度量是下列度量的彙總： **ClientTimeoutError** 、 **AnonymousClientTimeoutError** 、 **SASClientTimeoutError** 、 **ServerTimeoutError** 、 **AnonymousServerTimeoutError** 及 **SASServerTimeoutError** 。
+**PercentTimeoutError** 度量是下列度量的彙總：**ClientTimeoutError**、**AnonymousClientTimeoutError**、**SASClientTimeoutError**、**ServerTimeoutError**、**AnonymousServerTimeoutError** 及 **SASServerTimeoutError**。
 
 伺服器逾時是因為伺服器上的錯誤引起。 用戶端發生逾時的情況，原因出在於伺服器上的某項作業超出用戶端指定的逾時設定；舉例來說，使用儲存體用戶端程式庫的用戶端可以使用 **QueueRequestOptions** 類別的 **ServerTimeout** 屬性來設定作業逾時。
 
 伺服器逾時情況代表儲存體服務發生問題，需要進一步調查原因。 您可以使用度量，查看是否到達服務的延展性限制，並找出可能引起此問題的任何流量暴增情況。 如果此問題是間歇性發生，可能是因為服務中的負載平衡活動所引起。 如果此問題持續發生，而且不是因為應用程式到達服務的延展性限制引起，則請提出支援問題。 有關用戶端逾時，您必須判斷用戶端裡是否為逾時設定了適當的值，然後變更用戶端裡設定的逾時值或是調查如何改善儲存體服務裡的作業效能，例如，您可以最佳化資料表查詢或是縮減訊息大小。
 
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>度量顯示 PercentNetworkError 增加
-您的度量顯示其中一個儲存體服務的 **PercentNetworkError** 有增加情況。 **PercentNetworkError** 度量是下列度量的彙總： **NetworkError** 、 **AnonymousNetworkError** 及 **SASNetworkError** 。 當儲存體服務在用戶端進行儲存體要求時偵測到網路錯誤，就會發生這類情況。
+您的度量顯示其中一個儲存體服務的 **PercentNetworkError** 有增加情況。 **PercentNetworkError** 度量是下列度量的彙總：**NetworkError**、**AnonymousNetworkError** 及 **SASNetworkError**。 當儲存體服務在用戶端進行儲存體要求時偵測到網路錯誤，就會發生這類情況。
 
 此錯誤最常見的原因，就是用戶端在儲存體服務逾時之前就中斷連線。 請調查用戶端裡的程式碼，了解用戶端何時及為何與儲存體服務中斷連線。 您也可以使用 Wireshark 或 Tcping 來調查用戶端的網路連線問題。 這些工具如 [附錄]所述。
 
@@ -489,7 +488,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 * 一般來說，當您為用戶端建立要使用的 SAS，不應該立即設定開始時間。 如果使用目前時間來產生 SAS 的主機，以及儲存體服務之間出現些微的時鐘誤差，則儲存體服務有可能收到尚未生效的 SAS。
 * 請勿設定極短暫的 SAS 到期時間。 再說一次，產生 SAS 的主機，以及儲存體服務之間出現些微的時鐘誤差時，會導致 SAS 明顯比預期時間早到期。
-* SAS 金鑰中的版本參數 (例如 **sv=2015-04-05** ) 是否與您所使用的儲存體用戶端程式庫版本相符。 建議您一律使用最新版的 [儲存體用戶端程式庫](https://www.nuget.org/packages/WindowsAzure.Storage/)。
+* SAS 金鑰中的版本參數 (例如 **sv=2015-04-05**) 是否與您所使用的儲存體用戶端程式庫版本相符。 建議您一律使用最新版的 [儲存體用戶端程式庫](https://www.nuget.org/packages/WindowsAzure.Storage/)。
 * 如果您重新產生儲存體存取金鑰，則所有現有的 SAS 權杖都會失效。 如果您產生的 SAS 權杖內含很長的到期時間，以便用戶端應用程式快取處理，則可能會發生此問題。
 
 如果您是使用儲存體用戶端程式庫來產生 SAS 權杖，則您可以輕易地建立有效的權杖。 不過，如果是使用儲存體 REST API 並手動建構 SAS 權杖，請參閱[使用共用存取簽章委派存取](/rest/api/storageservices/delegate-access-with-shared-access-signature)。
@@ -633,12 +632,12 @@ client.SetServiceProperties(sp);
 
 伺服器端記錄還包含帶有相同 **client-request-id** 值的另一個項目 (813ea74f…)，這個值是來自同一個實體與同一個用戶端順利完成的刪除作業所產生。 此順利完成的刪除作業會在刪除要求失敗之前很快地發生。
 
-此案例最有可能的原因是用戶端將實體的刪除要求傳送到資料表服務，該服務已成功，但未收到來自伺服器的通知 (可能是因為) 發生暫時性的網路問題。 這時用戶端又自動重試作業 (使用相同的 **client-request-id** )，但因為該實體已經刪除，因此這次重試失敗。
+此案例最有可能的原因是用戶端將實體的刪除要求傳送到資料表服務，該服務已成功，但未收到來自伺服器的通知 (可能是因為) 發生暫時性的網路問題。 這時用戶端又自動重試作業 (使用相同的 **client-request-id**)，但因為該實體已經刪除，因此這次重試失敗。
 
 如果經常發生此問題，您應該調查用戶端無法從表格服務接收通知的原因。 如果此問題是間歇性發生，您應該捕捉「HTTP (404) 找不到」錯誤並記錄在用戶端裡，但同時允許用戶端繼續作業。
 
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>用戶端收到 HTTP 409 (衝突) 訊息
-下表顯示來自伺服器端記錄檔的兩項用戶端作業摘要： **DeleteIfExists** 隨後緊接使用相同 Blob 容器名稱的 **CreateIfNotExists** 。 每個用戶端作業都會導致兩個要求傳送至伺服器，首先傳送的 **GetContainerProperties** 要求會檢查該容器是否存在，緊接著會傳送 **DeleteContainer** 或 **CreateContainer** 要求。
+下表顯示來自伺服器端記錄檔的兩項用戶端作業摘要：**DeleteIfExists** 隨後緊接使用相同 Blob 容器名稱的 **CreateIfNotExists**。 每個用戶端作業都會導致兩個要求傳送至伺服器，首先傳送的 **GetContainerProperties** 要求會檢查該容器是否存在，緊接著會傳送 **DeleteContainer** 或 **CreateContainer** 要求。
 
 | 時間戳記 | 作業 | 結果 | 容器名稱 | 用戶端要求 ID |
 | --- | --- | --- | --- | --- |
@@ -647,7 +646,7 @@ client.SetServiceProperties(sp);
 | 05:10:13.8987407 |GetContainerProperties |404 |mmcont |bc881924-… |
 | 05:10:14.2147723 |CreateContainer |409 |mmcont |bc881924-… |
 
-用戶端應用程式中的程式碼會刪除 Blob 容器，接著使用相同名稱立即重新建立一個 Blob 容器： **CreateIfNotExists** 方法 (用戶端要求 ID bc881924-…) 最終會失敗，並出現 HTTP 409 (衝突) 錯誤。 當用戶端刪除 Blob 容器、資料表或佇列時，需要等候簡短時間，才能使該名稱再度生效。
+用戶端應用程式中的程式碼會刪除 Blob 容器，接著使用相同名稱立即重新建立一個 Blob 容器：**CreateIfNotExists** 方法 (用戶端要求 ID bc881924-…) 最終會失敗，並出現 HTTP 409 (衝突) 錯誤。 當用戶端刪除 Blob 容器、資料表或佇列時，需要等候簡短時間，才能使該名稱再度生效。
 
 每當用戶端應用程式建立新的容器時，應該使用唯一的容器名稱 (如果經常出現「刪除」重新建立作業模式的話)。
 
@@ -747,7 +746,7 @@ Fiddler 一經啟動後，就會開始擷取本機電腦上的 HTTP 與 HTTPS �
 1. 在本機電腦上啟動 Wireshark。
 2. 在 [開始]  區段中，選取本機網路介面或是連線至網際網路的介面。
 3. 按一下 [擷取選項] 。
-4. 在 [擷取篩選器] 文字方塊中，新增一項篩選器。 舉例來說， **host contosoemaildist.table.core.windows.net** 會將 Wireshark 設定為僅擷取 **contosoemaildist** 儲存體帳戶中資料表服務端點所流入與流出的封包。 請參閱[擷取篩選器的完整清單](https://wiki.wireshark.org/CaptureFilters)。
+4. 在 [擷取篩選器] 文字方塊中，新增一項篩選器。 舉例來說，**host contosoemaildist.table.core.windows.net** 會將 Wireshark 設定為僅擷取 **contosoemaildist** 儲存體帳戶中資料表服務端點所流入與流出的封包。 請參閱[擷取篩選器的完整清單](https://wiki.wireshark.org/CaptureFilters)。
 
    ![顯示如何將篩選新增至 [捕捉篩選] 文字方塊的螢幕擷取畫面。][6]
 5. 按一下 [啟動] 。 現在當您於本機電腦上使用用戶端應用程式時，Wireshark 會開始擷取流入/流出資料表服務端點的所有封包。
@@ -776,7 +775,7 @@ WireShark 會反白顯示任何存在 **packetlist** 視窗的錯誤。 您也�
 * 瀏覽至您想要檢視的記錄檔，然後按一下 [匯入] 。
 * 在 [Text Import Wizard] 的步驟 1 中，選取 [Delimited]。
 
-在 [Text Import Wizard] 的步驟 1 中，選取 [Semicolon] 作為唯一的分隔字元，並選擇雙引號作為 **文字辨識符號** 。 接著按一下 [完成]  ，並選擇要將資料放在工作簿的哪個位置。
+在 [Text Import Wizard] 的步驟 1 中，選取 [Semicolon] 作為唯一的分隔字元，並選擇雙引號作為 **文字辨識符號**。 接著按一下 [完成]  ，並選擇要將資料放在工作簿的哪個位置。
 
 ### <a name="appendix-5-monitoring-with-application-insights-for-azure-devops"></a><a name="appendix-5"></a>附錄 5：使用 Application Insights for Azure DevOps 監視
 您也可以在效能與可用性監視作業中，使用 Azure DevOps 的 Application Insights 功能。 這項工具可以：

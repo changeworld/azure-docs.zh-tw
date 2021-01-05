@@ -3,21 +3,19 @@ title: Azure IoT 中心的架構概念 | Microsoft Docs
 description: 本文介紹 Azure IoT 中心架構的重要相關概念
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/27/2019
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 7b048581b29fa4244c42261810f382b229a627dd
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c2d5310d1a664aa2e22d4241d8066e41d9c82bd1
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985957"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796715"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT 中心架構
-
-
 
 本文提供 Microsoft Azure IoT 中心架構的概觀。
 
@@ -170,6 +168,6 @@ UI Shell 是現代化、回應式、HTML5 瀏覽器型應用程式。
 
 操作員可以建立個人化的應用程式儀表板。 您可以具有多個顯示不同資料的儀表板，並在它們之間進行切換。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 既然您已瞭解 Azure IoT Central 的架構，建議的下一個步驟是瞭解 Azure IoT Central 中的 [裝置連線能力](concepts-get-connected.md) 。

@@ -3,17 +3,17 @@ title: Azure IoT Central 中的遙測、屬性和命令承載 |Microsoft Docs
 description: Azure IoT Central 裝置範本可讓您指定裝置的遙測、屬性和命令必須執行。 瞭解裝置可與 IoT Central 交換的資料格式。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/05/2020
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121754"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795338"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遙測、屬性和命令承載
 
@@ -721,8 +721,8 @@ IoT Central 預期會有裝置的回應可寫入屬性更新。 回應訊息應�
 | ----- | ----- | ----------- |
 | `'ac': 200` | Completed | 屬性變更作業已順利完成。 |
 | `'ac': 202`  或 `'ac': 201` | Pending | 屬性變更作業暫止或進行中 |
-| `'ac': 4xx` | 錯誤 | 要求的屬性變更無效或發生錯誤 |
-| `'ac': 5xx` | 錯誤 | 裝置處理要求的變更時，發生未預期的錯誤。 |
+| `'ac': 4xx` | [錯誤] | 要求的屬性變更無效或發生錯誤 |
+| `'ac': 5xx` | [錯誤] | 裝置處理要求的變更時，發生未預期的錯誤。 |
 
 `av` 是傳送給裝置的版本號碼。
 

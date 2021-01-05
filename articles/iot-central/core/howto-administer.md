@@ -3,17 +3,17 @@ title: 變更 Azure IoT Central 的應用程式設定 |Microsoft Docs
 description: 以系統管理員身分，藉由變更應用程式名稱、URL、上傳影像和刪除應用程式，來管理您的 Azure IoT Central 應用程式
 author: viv-liu
 ms.author: viviali
-ms.date: 11/27/2019
+ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 2ed2756bc11a159bf860c5001af1ecaa942e7e1c
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ece77c2091e7c7c2aa09516bd4d3022bb6fcdfcc
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122631"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796953"
 ---
 # <a name="change-iot-central-application-settings"></a>變更 IoT Central 的應用程式設定
 
@@ -21,11 +21,11 @@ ms.locfileid: "92122631"
 
 本文描述如何以系統管理員的身分，藉由變更應用程式名稱和 URL、上傳影像，以及刪除 Azure IoT Central 應用程式中的應用程式，來管理應用程式。
 
-若要存取並使用 [管理]**** 區段，您必須屬於 Azure IoT Central 應用程式的**管理員**角色。 如果您建立 Azure IoT Central 應用程式，就會自動將您指派給該應用程式的**管理員**角色。
+若要存取並使用 [管理] 區段，您必須屬於 Azure IoT Central 應用程式的 **管理員** 角色。 如果您建立 Azure IoT Central 應用程式，就會自動將您指派給該應用程式的 **管理員** 角色。
 
 ## <a name="change-application-name-and-url"></a>變更應用程式名稱和 URL
 
-在 [應用程式設定]**** 頁面上，您可以變更應用程式的名稱和 URL，然後選擇 [儲存]****。
+在 [應用程式設定] 頁面上，您可以變更應用程式的名稱和 URL，然後選擇 [儲存]。
 
 ![[應用程式設定] 頁面](media/howto-administer/image0-a.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "92122631"
 
 ## <a name="delete-an-application"></a>刪除應用程式
 
-使用 [刪除]**** 按鈕可永久刪除您的 IoT Central 應用程式。 此動作會永久刪除所有與應用程式相關聯的資料。
+使用 [刪除] 按鈕可永久刪除您的 IoT Central 應用程式。 此動作會永久刪除所有與應用程式相關聯的資料。
 
 > [!Note]
 > 若要刪除應用程式，您必須在建立應用程式時所選擇的 Azure 訂用帳戶中具有刪除資源的權限。 若要深入了解，請參閱[使用角色型存取控制來管理 Azure 訂用帳戶資源的存取](../../role-based-access-control/role-assignments-portal.md)。
@@ -49,7 +49,7 @@ IoT Central 的 Azure Resource Manager SDK 套件適用於 Node、Python、C#、
 
 若要深入瞭解，請參閱下列 GitHub 存放庫和套件：
 
-| 語言 | Repository | 套件 |
+| Language | Repository | Package |
 | ---------| ---------- | ------- |
 | 節點 | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
 | Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)
@@ -58,6 +58,6 @@ IoT Central 的 Azure Resource Manager SDK 套件適用於 Node、Python、C#、
 | Java | [https://github.com/Azure/azure-sdk-for-java](https://github.com/Azure/azure-sdk-for-java) | [https://search.maven.org/search?q=a:azure-mgmt-iotcentral](https://search.maven.org/search?q=a:azure-mgmt-iotcentral)
 | Go | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何管理您的 Azure IoT Central 應用程式，建議的下一個步驟是瞭解如何在 Azure IoT Central 中 [管理使用者和角色](howto-manage-users-roles.md) 。

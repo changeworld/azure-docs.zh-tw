@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
+ms.sourcegitcommit: e8bd58dbcfe0eae45979d86e071778b9aec40b6c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400568"
+ms.lasthandoff: 12/25/2020
+ms.locfileid: "97770956"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 受控執行個體資源限制概觀
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -84,7 +84,7 @@ SQL 受控執行個體有兩個服務層級： [一般用途](../database/servic
 | 會話數上限 | 30000 | 30000 |
 | 並行背景工作 (要求) 數上限 | 第 4 代：210 * 虛擬核心數目 + 800<br>第 5 代：105 * 虛擬核心數目 + 800 | 第 4 代：210 * 虛擬核心計數 + 800<br>第 5 代：105 * 虛擬核心計數 + 800 |
 | [唯讀複本](../database/read-scale-out.md) | 0 | 價格) 包含 1 ( |
-| 計算隔離 | 第 5 代：<br/>-支援80虛擬核心<br/>-不支援其他大小<br/><br/>因為已淘汰，所以不支援第4代|第 5 代：<br/>-支援60、64、80虛擬核心<br/>-不支援其他大小<br/><br/>因為已淘汰，所以不支援第4代|
+| 計算隔離 | 因為一般目的實例可能與其他實例共用實體硬體，所以不支援第5代<br/>因為已淘汰，所以不支援第4代|第 5 代：<br/>-支援40、64、80虛擬核心<br/>-不支援其他大小<br/><br/>因為已淘汰，所以不支援第4代|
 
 
 另外還有幾個考慮： 
@@ -150,7 +150,7 @@ SQL 受控執行個體目前僅支援在下列類型的訂閱上進行部署：
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional 和 MSDN 平臺|2|32|
 
-\* 在規劃部署中，請考慮到商務關鍵性 (BC) 服務層級所需的 vCore 容量比一般用途 (GP) 服務層級的四 (4) 倍多。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 單位。 若要針對預設限制簡化耗用量分析，請在部署 SQL 受控執行個體的區域中匯總所有子網的 vCore 單位，並將結果與訂用帳戶類型的實例單位限制進行比較。 **VCore 單位限制的最大數目** 會套用至區域中的每個訂用帳戶。 每個個別子網都沒有限制，不同之處在于跨多個子網部署的所有虛擬核心總和必須小於或等於 **vCore 單位的最大數目**。
+\* 在規劃部署中，請考慮到商務關鍵性 (BC) 服務層級所需的 vCore 容量比一般用途 (GP) 服務層級的四 (4) 倍多。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore。 若要針對預設限制簡化耗用量分析，請在部署 SQL 受控執行個體的區域中匯總所有子網的 vCore 單位，並將結果與訂用帳戶類型的實例單位限制進行比較。 **VCore 單位限制的最大數目** 會套用至區域中的每個訂用帳戶。 每個個別子網都沒有限制，不同之處在于跨多個子網部署的所有虛擬核心總和必須小於或等於 **vCore 單位的最大數目**。
 
 \*\* 較大的子網和 vCore 限制可在下欄區域使用：澳大利亞東部、美國東部、美國東部2、北歐、美國中南部、東南亞、英國南部、西歐、美國西部2。
 

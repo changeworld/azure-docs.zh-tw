@@ -4,12 +4,12 @@ description: 了解如何設定及使用 Durable Functions 的自訂協調流程
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: azfuncdf
-ms.openlocfilehash: bb5c6ee15a5a445b4b762bd9eaf8919e1396f8ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a95e7c74fac7043d0adb5f31d2bdcdd73b9577a
+ms.sourcegitcommit: 489ce69c0ff3f5188889ecfef5ffa76f7121e0d3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081826"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97766323"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions 中的自訂協調流程狀態 (Azure Functions)
 
@@ -125,7 +125,7 @@ public static async Task<HttpResponseMessage> Run(
 {
     // Function input comes from the request content.
     dynamic eventData = await req.Content.ReadAsAsync<object>();
-    string instanceId = await starter.StartNewAsync(functionName, eventData);
+    string instanceId = await starter.StartNewAsync(functionName, (string)eventData);
 
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
 
@@ -477,7 +477,7 @@ GET /runtime/webhooks/durabletask/instances/instance123
 > [!WARNING]
 > 自訂狀態承載僅限為 16 KB 的 UTF-16 JSON 文字，因為它必須符合 Azure 資料表儲存體資料行的大小。 如果您需要較大的承載，建議您使用外部儲存體。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [瞭解持久計時器](durable-functions-timers.md)

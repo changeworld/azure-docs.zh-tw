@@ -3,17 +3,17 @@ title: 什麼是 Azure IoT Central 中的裝置範本 |Microsoft Docs
 description: Azure IoT Central 裝置範本可讓您指定連接至應用程式之裝置的行為。 裝置範本會指定裝置必須執行的遙測、屬性和命令。 裝置範本也會在 IoT Central 中定義裝置的 UI，例如操作員所使用的表單和儀表板。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/05/2020
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 1a352849cb5bb8563a7e09500f081139a24e97ea
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 04c2330ffee396f5fc30b85640e992df77c08263
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750691"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795423"
 ---
 # <a name="what-are-device-templates"></a>什麼是裝置範本？
 

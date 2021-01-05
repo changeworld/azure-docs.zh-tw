@@ -4,12 +4,12 @@ description: 說明如何使用多個訊息代理程式分割服務匯流排佇�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8fd845ba24fd96ad6de566a7f55b25bd7129074d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930427"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796630"
 ---
 # <a name="partitioned-queues-and-topics"></a>分割的佇列和主題
 
@@ -29,8 +29,9 @@ Azure 服務匯流排會採用多個訊息代理人來處理訊息，並採用�
 非資料分割實體上的查看作業一律會傳回最舊的訊息，但不會傳回資料分割實體上的。 相反地，它會在訊息代理程式第一次回應的其中一個分割區中傳回最舊的訊息。 不保證傳回的訊息是所有資料分割中最舊的訊息。 
 
 傳送訊息給分割的佇列或主題，或從該處接收訊息時，不需要額外成本。
->[!NOTE]
-> 查看作業會根據其 SequenceNumber 從分割傳回最舊的訊息。 針對分割實體，會發出相對於分割區的序號。 如需詳細資訊，請參閱 [訊息排序和時間戳記](../service-bus-messaging/message-sequencing.md)。
+
+> [!NOTE]
+> 查看作業會根據序號從資料分割傳回最舊的訊息。 對於分割的實體，發行的序號與分割區相關。 如需詳細資訊，請參閱 [訊息排序和時間戳記](../service-bus-messaging/message-sequencing.md)。
 
 ## <a name="enable-partitioning"></a>啟用分割
 
@@ -40,7 +41,7 @@ Azure 服務匯流排會採用多個訊息代理人來處理訊息，並採用�
 
 在標準傳訊層中，您可以建立 1、2、3、4 或 5 GB 大小的服務匯流排佇列和主題 (預設值為 1 GB)。 啟用分割時，服務匯流排會在實體 (16 個分割區) 建立16個複本，每個都指定相同的大小。 因此，如果您建立 5 GB 大小的佇列，每 GB 有 16 個資料分割，則佇列大小上限會變成 (5 \* 16) = 80 GB。 如果要查看分割佇列或主題的大小上限，您可以在 [Azure 入口網站][Azure portal]上，在該實體的 [概觀] 刀鋒視窗中檢視其項目。
 
-### <a name="premium"></a>進階
+### <a name="premium"></a>Premium
 
 在進階層命名空間中，不支援分割實體。 然而，您仍然可以建立 1、2、3、4、5、10、20、40 或 80 GB 大小的服務匯流排佇列與主題 (預設值為 1 GB)。 如果要查看佇列或主題的大小，您可以至 [Azure 入口網站][Azure portal]，在該實體的 [概觀] 刀鋒視窗中檢視其項目。
 

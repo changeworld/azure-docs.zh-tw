@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 11/16/2020
-ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/26/2020
+ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988539"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792495"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -229,7 +229,7 @@ ms.locfileid: "94988539"
 
 ### <a name="creating-the-secondary-instance"></a>建立次要實例
 
-為了確保在容錯移轉之後，主要 SQL 受控執行個體的非中斷連線，主要和次要實例都必須位於相同的 DNS 區域中。 它會保證相同的多網域 (SAN) 憑證可以用來驗證用戶端與容錯移轉群組中兩個實例的連接。 當您的應用程式準備好進行生產環境部署時，請在不同區域中建立次要 SQL 受控執行個體，並確定它會與主要 SQL 受控執行個體共用 DNS 區域。 您可以 `DNS Zone Partner` 使用 Azure 入口網站、PowerShell 或 REST API 指定選擇性參數來完成此動作。
+為了確保在容錯移轉之後，主要 SQL 受控執行個體的非中斷連線，主要和次要實例都必須位於相同的 DNS 區域中。 它會保證相同的多網域 (SAN) 憑證可以用來驗證用戶端與容錯移轉群組中兩個實例的連接。 當您的應用程式準備好進行生產環境部署時，請在不同區域中建立次要 SQL 受控執行個體，並確定它會與主要 SQL 受控執行個體共用 DNS 區域。 您可以在建立期間指定選擇性參數來執行此動作。 如果您使用 PowerShell 或 REST API，則選擇性參數的名稱是 `DNS Zone Partner` ，而 Azure 入口網站中對應的選擇性欄位名稱是主要受控執行個體。
 
 > [!IMPORTANT]
 > 在子網中建立的第一個受控實例會針對相同子網中的所有後續實例，決定 DNS 區域。 這表示來自相同子網的兩個實例不能屬於不同的 DNS 區域。
@@ -426,7 +426,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| 命令 | 說明 |
+| Command | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -436,7 +436,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [建立或更新容錯移轉群組](/rest/api/sql/failovergroups/createorupdate) | 建立或更新容錯移轉群組 |
 | [刪除容錯移轉群組](/rest/api/sql/failovergroups/delete) | 從伺服器移除容錯移轉群組 |
@@ -464,7 +464,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| 命令 | 說明 |
+| Command | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -474,7 +474,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [建立或更新容錯移轉群組](/rest/api/sql/instancefailovergroups/createorupdate) | 建立或更新容錯移轉群組的設定 |
 | [刪除容錯移轉群組](/rest/api/sql/instancefailovergroups/delete) | 從實例移除容錯移轉群組 |
@@ -485,7 +485,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需詳細的教學課程，請參閱
   - [將 SQL Database 新增至容錯移轉群組](failover-group-add-single-database-tutorial.md)

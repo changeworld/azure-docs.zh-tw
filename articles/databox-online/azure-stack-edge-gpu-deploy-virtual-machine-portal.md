@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 89ef196cb5a124b8b1100871c408400f3fceef5c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466230"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763450"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>透過 Azure 入口網站將 Vm 部署到您的 Azure Stack Edge Pro GPU 裝置
 
@@ -79,7 +79,7 @@ ms.locfileid: "96466230"
 
     ![新增 VM 映射3](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-3.png)
 
-1. 在 [ **新增映射** ] 分頁中，輸入下列參數。 選取 [新增]  。
+1. 在 [ **新增映射** ] 分頁中，輸入下列參數。 選取 [新增]。
 
 
     |參數  |描述  |
@@ -122,8 +122,8 @@ ms.locfileid: "96466230"
     |參數 |描述  |
     |---------|---------|
     |虛擬機器名稱     |         |
-    |映像     | 從裝置上可用的 VM 映射進行選取。        |
-    |大小     | 從支援的 [VM 大小](azure-stack-edge-gpu-deploy-virtual-machine-templates.md#supported-vm-sizes)中選擇。        |
+    |影像     | 從裝置上可用的 VM 映射進行選取。        |
+    |大小     | 從支援的 [VM 大小](azure-stack-edge-gpu-virtual-machine-sizes.md)中選擇。        |
     |使用者名稱     | 使用預設的使用者名稱 *>azureuser*。        |
     |驗證類型    | 從 SSH 公開金鑰或使用者定義密碼進行選擇。       |
     |密碼     | 輸入密碼以登入虛擬機器。 密碼長度必須至少為12個字元，且符合定義的 [複雜度需求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。        |
@@ -184,7 +184,7 @@ ms.locfileid: "96466230"
 
     ![新增 VM 11](media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-details-1.png)
 
-## <a name="connect-to-a-vm"></a>連接到 VM
+## <a name="connect-to-a-vm"></a>連線至 VM
 
 根據您建立的是 Windows 或 Linux VM，連接的步驟可能會不同。 您無法透過 Azure 入口網站連接到您裝置上部署的 Vm。 您必須採取下列步驟來連線到您的 Linux 或 Windows VM。
 

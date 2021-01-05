@@ -3,12 +3,12 @@ title: 依資源類型區分的移動作業支援
 description: 列出可移至新資源群組或訂用帳戶的 Azure 資源類型。
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 0b1304b273523d42ad62f4e392fb803e1c174b69
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 72cc2bd1b391acd2065cc4b775c50af94510a840
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937520"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795896"
 ---
 # <a name="move-operation-support-for-resources"></a>資源的移動作業支援
 
@@ -1912,9 +1912,9 @@ ms.locfileid: "96937520"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
-> | workspaces | 是 | 是 |
-> | workspaces / bigdatapools | 是 | 是 |
-> | workspaces / sqlpools | 是 | 是 |
+> | workspaces | 否 | 否 |
+> | workspaces / bigdatapools | 否 | 否 |
+> | workspaces / sqlpools | 否 | 否 |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 

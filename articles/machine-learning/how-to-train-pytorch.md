@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: eec53570c542ceb60c937072135fcb70b59e80a6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631035"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795932"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 PyTorch 模型
 
@@ -206,7 +206,7 @@ src = ScriptRunConfig(source_directory=project_folder,
 當作業正在執行時， [執行物件](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) 會提供介面給執行歷程記錄，並在完成後提供。
 
 ```Python
-run = Experiment(ws, name='pytorch-birds').submit(src)
+run = Experiment(ws, name='Tutorial-pytorch-birds').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
@@ -315,11 +315,15 @@ src = ScriptRunConfig(source_directory=project_folder,
 
 如需在 Azure ML 上執行分散式 PyTorch 的完整教學課程，請參閱 [使用 DistributedDataParallel 的分散式 PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-nccl-gloo)。
 
+### <a name="troubleshooting"></a>疑難排解
+
+* **Horovod 已關閉**：在大部分情況下，如果您遇到「AbortedError： Horovod 已關機」，則會導致 Horovod 關閉的其中一個處理常式發生基礎例外狀況。 MPI 作業中的每個排名在 Azure ML 中都會有其本身的專用記錄檔。 這些記錄檔的名稱為 `70_driver_logs`。 在分散式定型的情況下，記錄檔名稱的結尾會加上 `_rank`，以便區分記錄檔。 若要找出造成 Horovod 關機的確切錯誤，請流覽所有記錄檔，然後 `Traceback` 在 driver_log 檔案的結尾尋找。 其中一個檔案將提供實際的根本例外狀況。 
+
 ## <a name="export-to-onnx"></a>匯出至 ONNX
 
 若要將 [ONNX 運行](concept-onnx.md)時間的推斷優化，請將您定型的 PyTorch 模型轉換成 ONNX 格式。 推斷或模型計分是部署的模型用於預測的階段，最常見的是生產資料。 如需範例，請參閱 [教學](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) 課程。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已使用 PyTorch 在 Azure Machine Learning 上定型和註冊深度學習和類神經網路。 若要瞭解如何部署模型，請繼續進行我們的模型部署文章。
 

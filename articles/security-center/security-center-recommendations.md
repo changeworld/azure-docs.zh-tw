@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/25/2020
 ms.author: memildin
-ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791880"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795971"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的安全性建議 
 本主題說明如何查看並瞭解 Azure 資訊安全中心中的建議，以協助保護您的 Azure 資源。
@@ -42,7 +42,11 @@ ms.locfileid: "92791880"
 
 1. 在 [安全性中心] 功能表中，開啟 [ **建議** ] 頁面以查看適用于您環境的建議。 建議會分組為安全性控制項。
 
-      ![依安全性控制分組的建議](./media/security-center-recommendations/view-recommendations.png)
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="依安全性控制分組的建議" lightbox="./media/security-center-recommendations/view-recommendations.png":::
+
+1. 若要尋找對您而言很重要的資源類型、嚴重性、環境或其他準則所特有的建議，請使用建議清單上方的選擇性篩選。
+
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="縮小 Azure 資訊安全中心建議清單的篩選":::
 
 1. 展開控制項，然後選取特定的建議以查看 [建議詳細資料] 頁面。
 
@@ -60,7 +64,7 @@ ms.locfileid: "92791880"
         - **狀況不良的資源** –仍受識別問題影響的資源。
         - **不適用的資源** –建議無法提供明確答案的資源。 [不適用] 索引標籤也包含每個資源的原因。 
 
-            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="建議詳細資料頁面。":::
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="不適用資源，原因如下。":::
     1. 可補救建議或觸發邏輯應用程式的動作按鈕。
 
 ## <a name="preview-recommendations"></a>預覽建議
@@ -71,7 +75,7 @@ ms.locfileid: "92791880"
 
 預覽建議的範例：
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="建議詳細資料頁面。":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="使用預覽旗標的建議":::
  
 ## <a name="next-steps"></a>後續步驟
 

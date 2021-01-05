@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: cfbbc1d218f590241fab804e389acd689c009dac
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 2be77a47c4b111dd2f25a8fc9ca35690d1b2d80c
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754006"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796749"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>實體伺服器評量的支援矩陣 
 
@@ -67,7 +67,7 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 **裝置** | **[連接]**
 --- | ---
 **設備** | TCP 埠3389上的輸入連線，以允許設備的遠端桌面連線。<br/><br/> 埠44368上的輸入連線，用來從遠端存取使用 URL 的設備管理應用程式： ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> 埠443上的輸出連線 (HTTPS) ，以將探索和效能中繼資料傳送至 Azure Migrate。
-**實體伺服器** | **Windows：** WinRM 埠5985上的輸入連線 (HTTP) ，從 Windows 伺服器提取設定和效能中繼資料。 <br/><br/> **Linux：**  埠22上的輸入連線 (TCP) ，以從 Linux 伺服器提取設定和效能中繼資料。 |
+**實體伺服器** | **Windows：** WinRM 埠5985上的輸入連接 (HTTP) 或 5986 (HTTPS) 從 Windows 伺服器提取設定和效能中繼資料。 <br/><br/> **Linux：**  埠22上的輸入連線 (TCP) ，以從 Linux 伺服器提取設定和效能中繼資料。 |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>代理程式型相依性分析需求
 

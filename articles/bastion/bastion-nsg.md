@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: afb751e08faea6dabde72b192d246b48735cff53
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938679"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795359"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>使用 NSG 存取和 Azure 防禦
 
@@ -40,7 +40,8 @@ _ 輸入 **流量：**
 
    * 輸入 **來自公用網際網路的流量：** Azure 防禦將會建立一個公用 IP，其需要在公用 IP 上啟用埠443來輸入流量。 不需要在 AzureBastionSubnet 上開啟埠3389/22。
    * **從 Azure 防禦控制平面輸入流量：** 針對控制平面連線能力，請從 **GatewayManager** 服務標記啟用埠443輸入。 這可讓控制平面（也就是閘道管理員）能夠與 Azure 防禦對話。
-   * **Azure Load Balancer 的輸入流量：** 針對健康情況探查，請從 **AzureLoadBalancer** 服務標記啟用埠443輸入。 這可讓 Azure Load Balancer 偵測連線能力 
+   * **從 Azure 防禦資料平面輸入流量：** 針對 Azure 防禦基礎元件之間的資料平面通訊，請啟用埠8080、5701從 **VirtualNetwork** 服務標記輸入至 **VirtualNetwork** 服務標記。 這可讓 Azure 防禦的元件彼此交談。
+   * **Azure Load Balancer 的輸入流量：** 針對健康情況探查，請從 **AzureLoadBalancer** 服務標記啟用埠443輸入。 這可讓 Azure Load Balancer 偵測連線能力
 
 
    :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="螢幕擷取畫面顯示 Azure 防禦連接的輸入安全性規則。":::
@@ -48,7 +49,9 @@ _ 輸入 **流量：**
 * **輸出流量：**
 
    * 流向 **目標 vm 的輸出流量：** Azure 防禦會透過私人 IP 達到目標 Vm。 Nsg 需要允許埠3389和22的其他目標 VM 子網的輸出流量。
+   * 流向 **Azure 防禦資料平面的輸出流量：** 針對 Azure 防禦基礎元件之間的資料平面通訊，請啟用埠8080、5701從 **VirtualNetwork** 服務標記輸出到 **VirtualNetwork** 服務標記。 這可讓 Azure 防禦的元件彼此交談。
    * **Azure 中其他公用端點的輸出流量：** Azure 防禦必須能夠連線到 Azure (中的各種公用端點，例如，用來儲存診斷記錄和計量記錄) 。 基於這個理由，Azure 防禦需要輸出至443至 **AzureCloud** 服務標記。
+   * 流向 **網際網路的輸出流量：** Azure 防禦必須能夠與網際網路通訊，以進行會話和憑證驗證。 基於這個理由，我們建議您啟用埠80輸出至 **網際網路。**
 
 
    :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="螢幕擷取畫面顯示 Azure 防禦連線的輸出安全性規則。":::

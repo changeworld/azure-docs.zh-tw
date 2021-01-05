@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 4758e937a0ed105bf136acf7e78f2d44c84e74fb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e80f33e6c36e1525eff954376d17c8a8b76204cb
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536049"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796018"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>訓練 scikit-learn-利用 Azure Machine Learning 瞭解大規模模型
 
@@ -56,9 +56,9 @@ ws = Workspace.from_config()
 
 ### <a name="prepare-scripts"></a>準備腳本
 
-在本教學課程中， [我們](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/train-hyperparameter-tune-deploy-with-sklearn/train_iris.py)已在此為您提供 **train_iris .py** 的訓練腳本。 在實務上，您應該能夠採用任何自訂定型腳本，並使用 Azure ML 執行它，而不需要修改您的程式碼。
+在本教學課程中，[我們](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/train-hyperparameter-tune-deploy-with-sklearn/train_iris.py)已在此為您提供 **train_iris .py** 的訓練腳本。 在實務上，您應該能夠採用任何自訂定型腳本，並使用 Azure ML 執行它，而不需要修改您的程式碼。
 
-注意：
+附註：
 - 提供的定型腳本會示範如何使用腳本中的物件，將某些計量記錄到您的 Azure ML 執行 `Run` 。
 - 提供的定型腳本會使用來自函數的範例資料  `iris = datasets.load_iris()` 。  若要使用及存取您自己的資料，請參閱 [如何使用資料集進行定型](how-to-train-with-datasets.md) ，以在定型期間提供資料。
 
@@ -132,7 +132,7 @@ src = ScriptRunConfig(source_directory='.',
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'train-iris').submit(src)
+run = Experiment(ws,'Tutorial-TrainIRIS').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
@@ -142,13 +142,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>執行期間發生的情況
 執行執行時，它會經歷下列階段：
 
-- **準備** ：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
+- **準備**：根據定義的環境建立 docker 映射。 映射上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流至執行歷程記錄，並可加以查看以監視進度。 如果改為指定策劃環境，則會使用支援該策劃環境的快取映射。
 
-- **調整** ：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
+- **調整**：如果 Batch AI 叢集需要更多節點來執行執行比目前可用的節點，則叢集會嘗試擴大規模。
 
 - 執行 **中：腳本** 資料夾中的所有腳本都會上傳至計算目標、裝載或複製資料存放區，並 `script` 執行。 Stdout 和 **./logs** 資料夾的輸出會串流處理至執行歷程記錄，並可用來監視執行。
 
-- **後續處理** ：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
+- **後續處理**：執行的 **./outputs** 資料夾會複製到執行歷程記錄。
 
 ## <a name="save-and-register-the-model"></a>儲存並註冊模型
 

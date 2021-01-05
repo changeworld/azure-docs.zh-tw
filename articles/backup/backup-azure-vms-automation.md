@@ -3,12 +3,12 @@ title: 使用 PowerShell 備份和復原 Azure Vm
 description: 說明如何使用 Azure 備份搭配 PowerShell 來備份和復原 Azure Vm
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978364"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797055"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 備份及還原 Azure Vm
 
@@ -149,7 +149,7 @@ $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" 
 $targetVault.ID
 ```
 
-或
+Or
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -259,6 +259,8 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > 如果您是使用 Azure Government 雲端，則 `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` 在 [>set-azkeyvaultaccesspolicy 指令程式](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy)中使用參數 **ServicePrincipalName** 的值。
 >
 
+如果您想要選擇性地備份幾個磁片，並將其他磁片排除在 [這些案例](selective-disk-backup-restore.md#scenarios)中，您可以設定保護並只備份 [此處](selective-disk-backup-restore.md#enable-backup-with-powershell)所述的相關磁片。
+
 ## <a name="monitoring-a-backup-job"></a>監視備份工作
 
 您不必透過 Azure 入口網站就可以監視長時間執行的作業，例如備份作業。 若要取得進行中作業的狀態，請使用 [AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) Cmdlet。 此 Cmdlet 會取得特定保存庫 (在保存庫內容中指定) 的備份作業。 下列範例會以陣列形式取得進行中作業的狀態，並將狀態儲存在 $joblist 變數中。
@@ -338,6 +340,10 @@ $bkpPol.AzureBackupRGName="Contosto_"
 $bkpPol.AzureBackupRGNameSuffix="ForVMs"
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
+
+### <a name="exclude-disks-for-a-protected-vm"></a>排除受保護 VM 的磁片
+
+Azure VM 備份提供一項功能，可選擇性地排除或包含在 [這些案例](selective-disk-backup-restore.md#scenarios)中很有説明的磁片。 如果虛擬機器已受到 Azure VM 備份的保護，且所有磁片都已備份，您可以修改保護以選擇性地包含或排除磁片，如 [這裡](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell)所述。
 
 ### <a name="trigger-a-backup"></a>觸發備份
 
@@ -511,6 +517,13 @@ Wait-AzRecoveryServicesBackupJob -Job $restorejob -Timeout 43200
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="restore-selective-disks"></a>還原選擇性磁片
+
+使用者可以選擇性地還原數個磁片，而不是整個備份組。 提供所需的磁片 Lun 作為參數，只還原它們，而不是整個集合[，如下所述。](selective-disk-backup-restore.md#restore-selective-disks-with-powershell)
+
+> [!IMPORTANT]
+> 其中一個必須選擇性地備份磁片，以選擇性地復原磁碟。 [這裡](selective-disk-backup-restore.md#selective-disk-restore)提供更多詳細資料。
 
 還原磁碟之後，請繼續下一節來建立 VM。
 

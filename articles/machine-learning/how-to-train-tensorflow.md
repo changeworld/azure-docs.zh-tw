@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c82b1ffbb005542822016a55346d9067e23050b2
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 41231e19960edfe1a4f0521b8738fa62a463c927
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630865"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796460"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 TensorFlow 模型
 
@@ -223,7 +223,7 @@ src = ScriptRunConfig(source_directory=script_folder,
 當作業正在執行時， [執行物件](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) 會提供介面給執行歷程記錄，並在完成後提供。
 
 ```Python
-run = Experiment(workspace=ws, name='tf-mnist').submit(src)
+run = Experiment(workspace=ws, name='Tutorial-TF-Mnist').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 ### <a name="what-happens-during-run-execution"></a>執行期間發生的情況
@@ -357,7 +357,7 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 [完整的作法涵蓋了 Azure Machine Learning](how-to-deploy-and-where.md)更深入的部署。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已訓練並註冊 TensorFlow 模型，並瞭解部署的選項。 若要深入瞭解 Azure Machine Learning，請參閱這些其他文章。
 

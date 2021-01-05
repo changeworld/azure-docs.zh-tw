@@ -6,16 +6,18 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2482a26987ec142880acc51bf470d844655b6e3f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212593"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763503"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions 的 SignalR Service 觸發程式系結
 
 使用 *SignalR* 觸發程式系結來回應從 Azure SignalR Service 傳送的訊息。 觸發函式時，傳遞至函式的訊息會剖析為 json 物件。
+
+在 SignalR Service 無伺服器模式中，SignalR Service 使用 [上游](../azure-signalr/concept-upstream.md) 功能將訊息從用戶端傳送至函數應用程式。 函數應用程式會使用 SignalR Service 觸發程式系結來處理這些訊息。 一般架構如下所示： :::image type="content" source="media/functions-bindings-signalr-service/signalr-trigger.png" alt-text="SignalR 觸發程式架構":::
 
 如需安裝和設定詳細資料的相關資訊，請參閱[概觀](functions-bindings-signalr-service.md)。
 
@@ -163,7 +165,7 @@ def main(invocation) -> None:
 
 ---
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="signalrtrigger"></a>SignalRTrigger
 
@@ -175,8 +177,8 @@ def main(invocation) -> None:
 |**direction**| n/a | 必須設為 `in`。|
 |**name**| n/a | 函數程式碼中用於觸發程式調用內容物件的變數名稱。 |
 |**hubName**|**HubName**| 此值必須設定為要觸發之函式的 SignalR 中樞名稱。|
-|**類別**|**類別**| 此值必須設定為要觸發之函式的訊息類別。 類別可以是下列其中一個值： <ul><li>**連接**：包括*已連線和已**中斷*連線的事件</li><li>**訊息**：包括 *連接* 類別中的其他所有事件（這些事件除外）</li></ul> |
-|**event**|**事件**| 必須將此值設定為要觸發之函式的訊息事件。 針對*訊息*類別目錄，事件是用戶端傳送之[調用訊息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的*目標*。 針對 *連接* 類別，則只會使用 *已連線* 和已 *中斷* 連線。 |
+|**類別**|**類別**| 此值必須設定為要觸發之函式的訊息類別。 類別可以是下列其中一個值： <ul><li>**連接**：包括 *已連線和已**中斷* 連線的事件</li><li>**訊息**：包括 *連接* 類別中的其他所有事件（這些事件除外）</li></ul> |
+|**event**|**事件**| 必須將此值設定為要觸發之函式的訊息事件。 針對 *訊息* 類別目錄，事件是用戶端傳送之 [調用訊息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的 *目標*。 針對 *連接* 類別，則只會使用 *已連線* 和已 *中斷* 連線。 |
 |**parameterNames**|**ParameterNames**|  (選擇性) 系結至參數的名稱清單。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| 包含 SignalR Service 連接字串 (預設值為 "AzureSignalRConnectionString") 的應用程式設定名稱 |
 
@@ -190,28 +192,35 @@ InvocationCoNtext 包含從 SignalR Service 傳送訊息的所有內容。
 
 |InvocationCoNtext 中的屬性 | 描述|
 |------------------------------|------------|
-|引數| 適用于 *訊息* 類別。 包含[調用訊息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的*引數*|
-|錯誤| 適用于已 *中斷* 連線的事件。 如果連接已關閉而沒有錯誤，或包含錯誤訊息，則可以是空的。|
+|引數| 適用于 *訊息* 類別。 包含 [調用訊息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的 *引數*|
+|[錯誤]| 適用于已 *中斷* 連線的事件。 如果連接已關閉而沒有錯誤，或包含錯誤訊息，則可以是空的。|
 |集線器| 訊息所屬的中樞名稱。|
 |類別| 訊息的分類。|
 |事件| 訊息的事件。|
 |ConnectionId| 傳送訊息之用戶端的連接識別碼。|
 |UserId| 傳送訊息之用戶端的使用者身分識別。|
-|headers| 要求的標頭。|
+|標題| 要求的標頭。|
 |查詢| 用戶端連接到服務時的要求查詢。|
 |宣告| 用戶端的宣告。|
 
 ## <a name="using-parameternames"></a>使用 `ParameterNames`
 
-中的屬性可 `ParameterNames` `SignalRTrigger` 讓您將調用訊息的引數系結至函數的參數。 這可提供您更方便的方法來存取的引數 `InvocationContext` 。
+中的屬性可 `ParameterNames` `SignalRTrigger` 讓您將調用訊息的引數系結至函數的參數。 您所定義的名稱可以當做其他系結中系結 [運算式](../azure-functions/functions-bindings-expressions-patterns.md) 的一部分，或當做程式碼中的參數使用。 這可提供您更方便的方法來存取的引數 `InvocationContext` 。
 
-假設您有一個 JavaScript SignalR 用戶端嘗試以 `broadcast` 兩個引數叫用 Azure Function 中的方法。
+假設您有一個 JavaScript SignalR 用戶端嘗試 `broadcast` 在 Azure 函式中叫用具有兩個引數的方法 `message1` `message2` 。
 
 ```javascript
 await connection.invoke("broadcast", message1, message2);
 ```
 
-您可以從參數存取這兩個引數，也可以使用為它們指派參數的型別 `ParameterNames` 。
+設定之後 `parameterNames` ，您定義的名稱會分別對應至用戶端上傳送的引數。 
+
+```cs
+[SignalRTrigger(parameterNames: new string[] {"arg1, arg2"})]
+```
+
+然後， `arg1` 將包含的內容 `message1` ，而且 `arg2` 將包含的內容 `message2` 。
+
 
 ### <a name="remarks"></a>備註
 
@@ -219,20 +228,28 @@ await connection.invoke("broadcast", message1, message2);
 
 `ParameterNames` 和屬性 `[SignalRParameter]` **不能** 同時使用，否則您將會收到例外狀況。
 
-## <a name="send-messages-to-signalr-service-trigger-binding"></a>將訊息傳送至 SignalR Service 觸發程式系結
+## <a name="signalr-service-integration"></a>SignalR Service 整合
 
-Azure 函式會產生 SignalR Service 觸發程式系結的 URL，其格式如下：
+當您使用 SignalR Service 觸發程式系結時，SignalR Service 需要 URL 來存取函數應用程式。 URL 應該在 SignalR Service 端的 **上游設定** 中設定。 
+
+:::image type="content" source="../azure-signalr/media/concept-upstream/upstream-portal.png" alt-text="上游入口網站":::
+
+使用 SignalR Service 觸發程式時，URL 可以簡單且格式化，如下所示：
 
 ```http
-https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>
 ```
 
-`API_KEY`由 Azure Function 產生。 `API_KEY`當您使用 SignalR Service 觸發程式系結時，可以從 Azure 入口網站取得。
+您 `Function_App_URL` 可以在函式應用程式的 [總覽] 頁面上找到，並 `API_KEY` 由 Azure Function 產生。 您可以從函 `API_KEY` 式 `signalr_extension` 應用程式的 [ **應用程式金鑰** ] 分頁中取得。
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="API 金鑰":::
 
-您應該在 `UrlTemplate` SignalR Service 的上游設定中設定此 URL。
+如果您想要同時使用一個以上的函式應用程式與一個 SignalR Service，上游也可以支援複雜的路由規則。 在 [上游設定](../azure-signalr/concept-upstream.md)中尋找更多詳細資料。
+
+## <a name="step-by-step-sample"></a>逐步執行範例
+
+您可以遵循 GitHub 中的範例，使用 SignalR Service 觸發程式系結和上游功能，在函數應用程式上部署聊天室： [雙向聊天室範例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure SignalR Service 來開發與設定 Azure Functions](../azure-signalr/signalr-concept-serverless-development-config.md)
-* [SignalR Service 觸發程式系結範例](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples/bidirectional-chat)
+* [SignalR Service 觸發程式系結範例](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

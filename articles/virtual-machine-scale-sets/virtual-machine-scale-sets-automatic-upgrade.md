@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 334e0c745257354d9548a6f9c8cee4d43fa8da6d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744738"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763535"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虛擬機器擴展集的 OS 映像自動升級
 
@@ -45,6 +45,9 @@ ms.locfileid: "92744738"
 
 擴展集的 OS 升級協調器在升級每個批次之前，都會先檢查整體的擴展集健康情況。 在升級某個批次時，可能會有其他計劃性或非計劃性維護活動也在並行執行，而影響到擴展集執行個體的健康情況。 在此情況下，如果擴展集的執行個體有超過 20% 變得狀況不良，則擴展集升級程序會在當前的批次結束時停止。
 
+> [!NOTE]
+>自動 OS 升級不會升級擴展集上的參考映射 Sku。 若要將 Sku (例如 Ubuntu 16.04-LTS 變更為 18.04 LTS) ，您必須使用所需的映射 Sku 直接更新 [擴展集模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) 。 無法變更現有擴展集的映射發行者和供應專案。  
+
 ## <a name="supported-os-images"></a>支援的作業系統映像
 目前僅支援特定的作業系統平台映像。 如果擴展集使用來自[共用映射庫](shared-image-galleries.md)的自訂映射，則[支援](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)自訂映射。
 
@@ -54,21 +57,20 @@ ms.locfileid: "92744738"
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
-| Rogue Wave (OpenLogic)  | CentOS        | 7.5                |
-| CoreOS                  | CoreOS        | 穩定             |
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter    |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-with-Containers |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-with-Containers |
-| Microsoft Corporation   | WindowsServer | Datacenter-核心-1903-含容器-smalldisk |
+| OpenLogic               | CentOS        | 7.5                |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter    |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-with-Containers |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-with-Containers |
+| MicrosoftWindowsServer  | WindowsServer | Datacenter-核心-1903-含容器-smalldisk |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>設定 OS 映像自動升級的需求
 
-- 映射的 [ *版本* ] 屬性必須設定為 [ *最新* ]。
+- 映射的 [ *版本* ] 屬性必須設定為 [ *最新*]。
 - 非 Service Fabric 的擴展集必須使用應用程式健康情況探查或[應用程式健康情況擴充功能](virtual-machine-scale-sets-health-extension.md)。
 - 使用計算 API 版本2018-10-01 或更高版本。
 - 請確定擴展集模型中指定的外部資源可供使用且已更新。 範例包括在 VM 擴充功能屬性中用於啟動承載的 SAS URI、儲存體帳戶中的承載，以及模型中祕密的參照等等。
@@ -99,7 +101,7 @@ ms.locfileid: "92744738"
 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>設定 OS 映像自動升級
-若要設定 OS 映像自動升級，請確定擴展集模型定義中的 *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* 屬性是設為 *true* 。
+若要設定 OS 映像自動升級，請確定擴展集模型定義中的 *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* 屬性是設為 *true*。
 
 ### <a name="rest-api"></a>REST API
 下列範例說明如何設定擴展集模型上的 OS 自動升級：

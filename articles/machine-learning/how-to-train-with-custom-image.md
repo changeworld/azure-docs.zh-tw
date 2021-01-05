@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: a441d1d22f938e1d1e05aea547929fa3b315d406
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cb8e71d9f94441f79dd7ce2fd5ee6458987563c3
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012901"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795915"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>使用自訂 Docker 映射將模型定型
 
@@ -43,7 +43,7 @@ Azure Machine Learning 提供預設的 Docker 基底映射。 您也可以使用
 
 [Azure Machine Learning 工作區](concept-workspace.md)是服務的最上層資源。 它提供集中的位置來處理您建立的所有成品。 在 Python SDK 中，您可以藉由建立物件來存取工作區成品 [`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) 。
 
-`Workspace`從您建立為必要條件的檔案 config.js建立物件。 [prerequisite](#prerequisites)
+`Workspace`從您建立為必要條件的檔案 config.js建立物件。 [](#prerequisites)
 
 ```Python
 from azureml.core import Workspace
@@ -158,14 +158,14 @@ src = ScriptRunConfig(source_directory='fastai-example',
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'fastai-custom-image').submit(src)
+run = Experiment(ws,'Tutorial-fastai').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
 > Azure Machine Learning 藉由複製整個來原始目錄來執行定型腳本。 如果您有不想要上傳的機密資料，請使用 [. ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) 檔案，或不要將它包含在來原始目錄中。 相反地， [使用資料存放](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)區存取您的資料。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本文中，您已使用自訂 Docker 映射來定型模型。 若要深入瞭解 Azure Machine Learning，請參閱下列文章：
 * 訓練期間[追蹤執行計量](how-to-track-experiments.md)。
 * 使用自訂 Docker 映射[部署模型](how-to-deploy-custom-docker-image.md)。

@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: ef0e3a451a5687278acaf1e857012027a5e657a3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bf38291e26c46d26bbf8cb110d18e9526fb3f777
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186757"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797174"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>使用 Azure 監視器來監視 Azure 虛擬機器。
 [Azure 監視器](../overview.md)會在 Azure 虛擬機器建立時便開始從中收集資料。 在本快速入門中，我們會簡單扼要地逐步對您說明針對 Azure VM 所自動收集的資料，以及如何在 Azure 入口網站中加以檢視。 接著，您會為 VM 啟用[適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)，讓 VM 上的代理程式能夠收集和分析來自客體作業系統的資料，包括流程及其相依性。
@@ -73,7 +73,7 @@ ms.locfileid: "96186757"
 
 ### <a name="data-collection-from-linux-vm"></a>從 Linux VM 收集資料
 
-1. 選取 [Syslog]。  
+1. 選取 [資料]，然後選取 [Syslog]。
 
 2. 輸入記錄的名稱來新增事件記錄。  輸入 **Syslog**，然後選取加號 **+**。  
 

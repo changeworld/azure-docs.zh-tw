@@ -1,18 +1,18 @@
 ---
 title: 範本語法和運算式
-description: 描述 Azure Resource Manager 範本的宣告式 JSON 語法。
+description: 描述)  (ARM 範本 Azure Resource Manager 範本的宣告式 JSON 語法。
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a386ed849771dfba717c8d1414e64422d0c7bd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82203823"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797038"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Resource Manager 範本中的語法和運算式 \(部分機器翻譯\)
+# <a name="syntax-and-expressions-in-arm-templates"></a>ARM 範本中的語法和運算式
 
-範本的基本語法是 JSON。 不過，您可以使用運算式來擴充範本內可用的 JSON 值。  運算式開頭和結尾括號分別是 `[` 和 `]`。 部署範本時，會評估運算式的值。 運算式可以傳回字串、整數、布林值、陣列或物件。
+Azure Resource Manager 範本 (ARM 範本的基本語法) 是 JavaScript 物件標記法 (JSON) 。 不過，您可以使用運算式來擴充範本內可用的 JSON 值。  運算式開頭和結尾括號分別是 `[` 和 `]`。 部署範本時，會評估運算式的值。 運算式可以傳回字串、整數、布林值、陣列或物件。
 
 範本運算式不能超過24576個字元。
 
@@ -31,7 +31,7 @@ Azure Resource Manager 提供您可以在範本中使用的 [函數](template-fu
 
 在運算式中，語法 `resourceGroup()` 會呼叫 Resource Manager 提供的其中一個函式，以便在範本內使用。 在此情況下，它是 [resourceGroup](template-functions-resource.md#resourcegroup) 函數。 和在 JavaScript 中相同，函式呼叫的格式為 `functionName(arg1,arg2,arg3)`。 此語法 `.location` 會從該函式所傳回的物件中抓取一個屬性。
 
-範本函數和其參數不區分大小寫。 例如，Resource Manager 在解析 **variables('var1')** 和 **VARIABLES('VAR1')** 時，會將它們視為相同。 評估時，除非函式明確修改大小寫 (例如 toUpper 或 toLower)，否則函式將會保留大小寫。 某些資源類型可能會有與函式的評估方式不同的案例需求。
+範本函數和其參數不區分大小寫。 例如，Resource Manager 會解析 `variables('var1')` 和 `VARIABLES('VAR1')` 相同。 進行評估時，除非函式明確地修改 case (例如 `toUpper` 或 `toLower`) ，否則函數會保留大小寫。 某些資源類型可能會有與函式的評估方式不同的案例需求。
 
 若要將字串值作為參數傳遞至函式，請使用單引號。
 
@@ -123,14 +123,14 @@ New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azurede
 
 ## <a name="null-values"></a>Null 值
 
-若要將屬性設定為 null，您可以使用 **null** 或 **[json ( ' null ' ) ]**。 當您提供做為參數時， [json 函數](template-functions-object.md#json) 會傳回空的物件 `null` 。 在這兩種情況下，Resource Manager 範本都會將它視為屬性不存在。
+若要將屬性設定為 null，您可以使用 `null` 或 `[json('null')]`。 當您提供做為參數時， [json 函數](template-functions-object.md#json) 會傳回空的物件 `null` 。 在這兩種情況下，Resource Manager 範本都會將它視為屬性不存在。
 
 ```json
 "stringValue": null,
 "objectValue": "[json('null')]"
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* 如需範本函數的完整清單，請參閱 [Azure 資源管理員範本函數](template-functions.md)。
-* 如需範本檔案的詳細資訊，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
+* 如需範本函式的完整清單，請參閱 [ARM 範本函數](template-functions.md)。
+* 如需範本檔案的詳細資訊，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。

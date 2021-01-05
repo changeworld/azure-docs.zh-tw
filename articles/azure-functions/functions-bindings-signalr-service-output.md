@@ -6,12 +6,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 159df4c228f74bb605c745e899d99bfff2aa511b
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998901"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763280"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>SignalR Service Azure Functions 的輸出系結
 
@@ -722,7 +722,7 @@ public SignalRGroupAction removeFromGroup(
 
 ---
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="signalrconnectioninfo"></a>SignalRConnectionInfo
 
@@ -753,4 +753,5 @@ public SignalRGroupAction removeFromGroup(
 
 ## <a name="next-steps"></a>後續步驟
 
+- [處理來自 SignalR Service (觸發程式系結的訊息) ](./functions-bindings-signalr-service-trigger.md)
 - [傳回 (輸入系結的服務端點 URL 和存取權杖) ](./functions-bindings-signalr-service-input.md)

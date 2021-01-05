@@ -3,17 +3,17 @@ title: 在 Azure IoT Central 中設定規則和動作 | Microsoft Docs
 description: 本操作說明文章將為建置者說明如何在 Azure IoT Central 應用程式中設定以遙測為基礎的規則和動作。
 author: vavilla
 ms.author: vavilla
-ms.date: 11/27/2019
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8391202e991c240b03bd79b947c1c3c6dcc9afd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 378a1dbcfbc89cdf9b24dc2490db583f1135b9a2
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362532"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796783"
 ---
 # <a name="configure-rules"></a>設定規則
 
@@ -23,7 +23,7 @@ IoT Central 中的規則是可自訂的回應工具，會觸發來自已連線�
 
 ## <a name="select-target-devices"></a>選取目標裝置
 
-使用目標裝置區段，即可選取要套用此規則的裝置種類。 篩選可讓您進一步精簡應包含的裝置。 篩選會使用裝置範本上的屬性來篩選一組裝置。 篩選本身不會觸發動作。 在下列螢幕擷取畫面中，目標裝置的裝置範本類型是**冰箱**。 此篩選會指出規則應該只包含**冰箱**，其中**製造州/省**屬性等於**華盛頓州**。
+使用目標裝置區段，即可選取要套用此規則的裝置種類。 篩選可讓您進一步精簡應包含的裝置。 篩選會使用裝置範本上的屬性來篩選一組裝置。 篩選本身不會觸發動作。 在下列螢幕擷取畫面中，目標裝置的裝置範本類型是 **冰箱**。 此篩選會指出規則應該只包含 **冰箱**，其中 **製造州/省** 屬性等於 **華盛頓州**。
 
 ![條件](media/howto-configure-rules/filters.png)
 
@@ -37,7 +37,7 @@ IoT Central 中的規則是可自訂的回應工具，會觸發來自已連線�
 
 ### <a name="use-a-cloud-property-in-a-value-field"></a>在值欄位中使用雲端屬性
 
-您可以在條件的 [值] 欄位中，從裝置範本參考雲端屬性。 雲端屬性和遙測值必須具有類似的類型。 例如，如果**溫度**為雙精度浮點數，則只有雙精度浮點數類型的雲端屬性會顯示為 [值] 下拉式清單中的選項。
+您可以在條件的 [值] 欄位中，從裝置範本參考雲端屬性。 雲端屬性和遙測值必須具有類似的類型。 例如，如果 **溫度** 為雙精度浮點數，則只有雙精度浮點數類型的雲端屬性會顯示為 [值] 下拉式清單中的選項。
 
 如果您選擇事件類型遙測值，[值] 下拉式清單會包含 [任何] 選項。 [任何] 選項表示當您的應用程式收到該類型的事件時，就會引發規則，無論承載為何。
 

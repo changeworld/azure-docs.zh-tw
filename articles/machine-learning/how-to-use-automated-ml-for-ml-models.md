@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: nibaccam
 author: aniththa
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 7cd704dad3d0ede55e4df4d9e222ff83fd7ae350
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4539936007de0b45ab33dbd391baacc8f7d2ce2a
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919636"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796052"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
 
@@ -91,7 +91,7 @@ ms.locfileid: "94919636"
         選取 [下一步] 。
 1. 在新建立的資料集出現後選取該資料集。 您也可以檢視資料集的預覽和範例統計資料。 
 
-1. 在 [設定執行] 表單上，輸入唯一的實驗名稱。
+1. 在 [ **設定執行** ] 表單上，選取 [ **建立新** 的]，然後輸入 **教學課程-automl-部署** 作為實驗名稱。
 
 1. 選取目標資料行；這是將要進行預測的資料行。
 
@@ -172,7 +172,7 @@ ms.locfileid: "94919636"
 
 [模型] 索引標籤包含依計量分數所建立的模型清單。 依預設，根據所選計量評分最高的模型會出現在清單頂端。 如果訓練作業嘗試多個模型，系統會將所有結果新增到清單中。 使用此方式快速比較到目前為止所產生的各個模型計量。
 
-[![執行詳細資料儀表板](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
+![執行詳細資料](./media/how-to-use-automated-ml-for-ml-models/explore-models.gif)
 
 ### <a name="view-training-run-details"></a>檢視訓練執行的詳細資料
 
@@ -216,10 +216,10 @@ ms.locfileid: "94919636"
 1. 選取 [部署]。 部署需要約 20 分鐘才能完成。
     開始部署後，會出現 [模型摘要] 索引標籤。 請參閱 **部署狀態** 一節底下的部署進度。 
 
-現在您已擁有可運作的 Web 服務，可用來產生預測！ 您可從 [Power BI 內建的 Azure Machine Learning 支援](how-to-consume-web-service.md#consume-the-service-from-power-bi)以透過查詢服務來測試預測。
+現在您已擁有可運作的 Web 服務，可用來產生預測！ 您可從 [Power BI 內建的 Azure Machine Learning 支援](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)以透過查詢服務來測試預測。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [了解如何取用 Web 服務](./how-to-consume-web-service.md)。
+* [了解如何取用 Web 服務](how-to-consume-web-service.md)。
 * [了解自動化機器學習結果](how-to-understand-automated-ml.md)。
 * [深入了解自動化機器學習](concept-automated-ml.md)和 Azure Machine Learning。

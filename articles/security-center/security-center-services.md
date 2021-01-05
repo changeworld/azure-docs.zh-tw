@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/17/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: b3671a57b8371c47b1690b4bf6be008d695d1ca0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f5d6d6255b48192a5943159599531fac18ebeb26
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654739"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796987"
 ---
 # <a name="feature-coverage-for-machines"></a>機器適用的功能涵蓋範圍
 
@@ -111,7 +111,7 @@ ms.locfileid: "97654739"
 | 服務/功能 | US Gov | 中國 Gov |
 |------|:----:|:----:|
 |[Just-In-Time 虛擬機器存取](security-center-just-in-time.md) (1)|✔|✔|
-|[檔案完整性監視](security-center-file-integrity-monitoring.md) (1)|✔|-|
+|[檔案完整性監視](security-center-file-integrity-monitoring.md) (1)|✔|✔|
 |[自適性應用程式控制](security-center-adaptive-application.md) (1)|✔|✔|
 |[自適性網路強化](security-center-adaptive-network-hardening.md) (1)|-|-|
 |[Docker 主機強化](harden-docker-hosts.md) (1)|✔|✔|
@@ -119,19 +119,19 @@ ms.locfileid: "97654739"
 |[適用於端點的 Microsoft Defender](harden-docker-hosts.md) (1)|✔|-|
 |[連接 AWS 帳戶](quickstart-onboard-aws.md) (1)|-|-|
 |[連接 GCP 帳戶](quickstart-onboard-gcp.md) (1)|-|-|
-|[連續匯出](continuous-export.md)|✔|✔|
+|[連續匯出](continuous-export.md)|✔|✔ (2)|
 |[工作流程自動化](workflow-automation.md)|✔|✔|
 |[建議豁免規則](exempt-resource.md)|-|-|
 |[重複警示歸併規則](alerts-suppression-rules.md)|✔|✔|
 |[安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)|✔|✔|
-|[資產詳細目錄](asset-inventory.md)|-|-|
+|[資產詳細目錄](asset-inventory.md)|✔|✔|
 |[適用於 App Service 的 Azure Defender](defender-for-app-service-introduction.md)|-|-|
-|[適用於儲存體的 Azure Defender](defender-for-storage-introduction.md)|✔|-|
+|[適用於儲存體的 Azure Defender](defender-for-storage-introduction.md)|✔ (2)|-|
 |[適用於 SQL 的 Azure Defender](defender-for-sql-introduction.md)|✔|✔ (2)|
 |[適用於 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)|-|-|
 |[適用於 Resource Manager 的 Azure Defender](defender-for-resource-manager-introduction.md)|-|-|
 |[適用於 DNS 的 Azure Defender](defender-for-dns-introduction.md)|-|-|
-|[適用於 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)|✔|✔|
+|[適用於 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)|✔ (2)|✔|
 |[適用於容器登錄的 Azure Defender](defender-for-container-registries-introduction.md)|✔ (2)|-|
 |||
 

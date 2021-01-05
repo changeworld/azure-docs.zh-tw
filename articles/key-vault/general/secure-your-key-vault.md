@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 5e1f8a099256040e14db1cdab288551a228512cd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ee1c59c71834ab9d80f1ed66a002e211bdcacbbf
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655368"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796494"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -94,7 +94,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 您可以在這裡看到保存庫和秘密作業的完整清單： [Key Vault 操作參考](/rest/api/keyvault/#vault-operations)
 
-<a id="key-vault-access-policies"></a>Key Vault 存取原則可分別授與金鑰、祕密和憑證的權限。  金鑰、祕密和憑證的存取權限位於保存庫層級。 
+<a id="key-vault-access-policies"></a> Key Vault 存取原則可分別授與金鑰、秘密和憑證的許可權。  金鑰、祕密和憑證的存取權限位於保存庫層級。 
 
 如需使用 key vault 存取原則的詳細資訊，請參閱 [指派 Key Vault 存取原則](assign-access-policy-portal.md)
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 1446808b77e5eea78a9912db4c7a8e2dd783f33a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104371"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763484"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>適用於 Azure Functions 的 SignalR Service 繫結
 
@@ -18,6 +18,7 @@ ms.locfileid: "92104371"
 
 | 動作 | 類型 |
 |---------|---------|
+| 處理來自 SignalR Service 的訊息 | [觸發程式系結](./functions-bindings-signalr-service-trigger.md) |
 | 傳回服務端點 URL 和存取權杖 | [輸入系結](./functions-bindings-signalr-service-input.md) |
 | 傳送 SignalR Service 訊息 |[輸出系結](./functions-bindings-signalr-service-output.md) |
 
@@ -27,13 +28,13 @@ ms.locfileid: "92104371"
 
 使用觸發程式和系結會要求您參考適當的封裝。 NuGet 套件適用于 .NET 類別庫，而擴充功能配套則用於所有其他應用程式類型。
 
-| 語言                                        | 加入者 .。。                                   | 備註 
+| Language                                        | 加入者 .。。                                   | 備註 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | 安裝 [NuGet 套件]3.x 版 | |
 | C # 腳本、JAVA、JavaScript、Python、PowerShell | 註冊[延伸]模組套件組合          | 建議搭配使用 [Azure Tools 擴充] 功能與 Visual Studio Code。 |
 | C # 腳本 (online-僅適用于 Azure 入口網站)          | 新增系結                            | 若要更新現有的系結延伸模組，而不需要重新發佈函數應用程式，請參閱 [更新您的延伸]模組。 |
 
-[NuGet 套件]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService
+[Nuget 套件]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService
 [core tools]: ./functions-run-local.md
 [延伸模組套件組合]: ./functions-bindings-register.md#extension-bundles
 [更新您的延伸模組]: ./functions-bindings-register.md
@@ -43,7 +44,7 @@ ms.locfileid: "92104371"
 
 ### <a name="annotations-library-java-only"></a>批註程式庫 (僅限 JAVA) 
 
-若要在 JAVA 函式中使用 SignalR Service 注釋，您必須將相依性新增至*pom.xml*檔案 (1.0 版或更) 高版本的 azure 函式 *-SignalR*成品。
+若要在 JAVA 函式中使用 SignalR Service 注釋，您必須將相依性新增至 *pom.xml* 檔案 (1.0 版或更) 高版本的 azure 函式 *-SignalR* 成品。
 
 ```xml
 <dependency>
@@ -55,5 +56,6 @@ ms.locfileid: "92104371"
 
 ## <a name="next-steps"></a>後續步驟
 
+- [處理來自 SignalR Service (觸發程式系結的訊息) ](./functions-bindings-signalr-service-trigger.md)
 - [傳回 (輸入系結的服務端點 URL 和存取權杖) ](./functions-bindings-signalr-service-input.md)
 - [傳送 SignalR Service 訊息 (輸出系結) ](./functions-bindings-signalr-service-output.md)

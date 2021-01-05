@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 93df80cd6fcd6f5553ea509a4778a155299bb057
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449062"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763419"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>透過範本在您的 Azure Stack Edge Pro GPU 裝置上部署 Vm
 
@@ -52,7 +52,7 @@ ms.locfileid: "96449062"
 
 2. **從範本建立 VM**
 
-    1. 使用 `CreateImageAndVnet.parameters.json` 參數檔案和部署範本來建立 VM 映射和 VNet `CreateImageAndVnet.json` 。
+    1. 使用 `CreateImage.parameters.json` 參數檔案和部署範本建立 VM 映射 `CreateImage.json` 。
     1. 使用 `CreateVM.parameters.json` 參數檔案和部署範本建立先前建立資源的 VM  `CreateVM.json` 。
 
 ## <a name="device-prerequisites"></a>裝置必要條件
@@ -153,9 +153,9 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
 ### <a name="create-and-upload-a-vhd"></a>建立和上傳 VHD
 
-請確定您有可在稍後的步驟中用來上傳的虛擬磁片映射。 遵循 [建立 VM 映射](azure-stack-edge-j-series-create-virtual-machine-image.md)中的步驟。 
+請確定您有可在稍後的步驟中用來上傳的虛擬磁片映射。 遵循 [建立 VM 映射](azure-stack-edge-gpu-create-virtual-machine-image.md)中的步驟。 
 
-複製您在先前步驟中建立之本機儲存體帳戶中的分頁 blob 所使用的任何磁片映射。 您可以使用 [儲存體總管](https://azure.microsoft.com/features/storage-explorer/) 或 AzCopy 之類的工具，將 [VHD 上傳至](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md#upload-a-vhd) 您在先前步驟中建立的儲存體帳戶。 
+複製您在先前步驟中建立之本機儲存體帳戶中的分頁 blob 所使用的任何磁片映射。 您可以使用 [儲存體總管](https://azure.microsoft.com/features/storage-explorer/) 或 AzCopy 之類的工具，將 [VHD 上傳至](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd) 您在先前步驟中建立的儲存體帳戶。 
 
 ### <a name="use-storage-explorer-for-upload"></a>使用儲存體總管進行上傳
 
@@ -185,11 +185,11 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![連接到 Azure 儲存體1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. 選取 [使用儲存體帳戶名稱和金鑰]。 選取 [下一步] 。
+5. 選取 [使用儲存體帳戶名稱和金鑰]。 選取 [下一步]  。
 
     ![連接到 Azure 儲存體2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. 在 [ **使用名稱和金鑰連接]** 中，提供 **顯示名稱**、 **儲存體帳戶名稱** Azure 儲存體 **帳戶金鑰**。 選取 **其他** 儲存體網域，然後提供 `<device name>.<DNS domain>` 連接字串。 如果您未在儲存體總管中安裝憑證，請核取 [ **使用 HTTP** ] 選項。 選取 [下一步] 。
+6. 在 [ **使用名稱和金鑰連接]** 中，提供 **顯示名稱**、 **儲存體帳戶名稱** Azure 儲存體 **帳戶金鑰**。 選取 **其他** 儲存體網域，然後提供 `<device name>.<DNS domain>` 連接字串。 如果您未在儲存體總管中安裝憑證，請核取 [ **使用 HTTP** ] 選項。 選取 [下一步]  。
 
     ![使用名稱和金鑰連接](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
@@ -213,35 +213,15 @@ key2 7vnVMJUwJXlxkXXOyVO4NfqbW5e/5hZ+VOs+C/h/ReeoszeV+qoyuBitgnWjiDPNdH4+lSm1/Zj
 
     ![複製 URI](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
-<!--### Use AzCopy for upload
 
-Before you use AzCopy, make sure that the [AzCopy is configured correctly](#configure-azcopy) for use with the blob storage REST API version that you are using with your Azure Stack Edge Pro device.
+## <a name="create-image-for-your-vm"></a>為您的 VM 建立映射
 
-
-```powershell
-AzCopy /Source:<sourceDirectoryForVHD> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Y /S /V /NC:32  /BlobType:page /destType:blob 
-```
-
-> ![NOTE]
-> Set `BlobType` to page for creating a managed disk out of VHD. Set `BlobType` to block when writing to tiered storage accounts using AzCopy.
-
-You can download the disk images from the marketplace. For detailed steps, go to [Get the virtual disk image from Azure marketplace](azure-stack-edge-j-series-create-virtual-machine-image.md).
-
-A sample output using AzCopy 7.3 is shown below. For more information on this command, go to [Upload VHD file to storage account using AzCopy](../devtest-labs/devtest-lab-upload-vhd-using-azcopy.md).
-
-
-```powershell
-AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.dbe-1dcmhq2.microsoftdatabox.com/vmimages /DestKey:gJKoyX2Amg0Zytd1ogA1kQ2xqudMHn7ljcDtkJRHwMZbMK== /Y /S /V /NC:32 /BlobType:page /destType:blob /z:2e7d7d27-c983-410c-b4aa-b0aa668af0c6
-```-->
-
-## <a name="create-image-and-vnet-for-your-vm"></a>為您的 VM 建立映射和 VNet
-
-若要為您的 VM 建立映射和虛擬網路，您必須編輯參數檔案 `CreateImageAndVnet.parameters.json` ，然後部署 `CreateImageAndVnet.json` 使用此參數檔案的範本。
+若要為您的 VM 建立映射，請編輯參數檔案， `CreateImage.parameters.json` 然後部署 `CreateImage.json` 使用此參數檔的範本。
 
 
 ### <a name="edit-parameters-file"></a>編輯參數檔案
 
-檔案 `CreateImageAndVnet.parameters.json` 會使用下列參數： 
+檔案 `CreateImage.parameters.json` 會使用下列參數： 
 
 ```json
 "parameters": {
@@ -254,22 +234,10 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
         "imageUri": {
               "value": "<Path to the VHD that you uploaded in the Storage account>"
         },
-        "vnetName": {
-            "value": "<Name for the virtual network where you will deploy the VM>"
-        },
-        "subnetName": {
-            "value": "<Name for the subnet for the VNet>"
-        },
-        "addressPrefix": {
-            "value": "<Address prefix for the virtual network>"
-        },
-        "subnetPrefix": {
-            "value": "<Subnet prefix for the subnet for the Vnet>"
-        }
     }
 ```
 
-編輯檔案 `CreateImageAndVnet.parameters.json` ，以針對您的 Azure Stack Edge Pro 裝置包含下列內容：
+編輯檔案 `CreateImage.parameters.json` ，以針對您的 Azure Stack Edge Pro 裝置包含下列內容：
 
 1. 提供與您將上傳的 VHD 對應的作業系統類型。 OS 類型可以是 Windows 或 Linux。
 
@@ -287,20 +255,9 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
         "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
         },
     ```
-    如果您使用 *HTTP* 搭配儲存體總管，請將此變更為 *HTTPs* URI。
+    如果您使用 *HTTP* 搭配儲存體總管，請將此變更為 *HTTP* URI。
 
-3. 變更 `addressPrefix` 和 `subnetPrefix` 。 在裝置的本機 UI 中，移至 [ **網路** ] 頁面。 尋找您為計算啟用的埠。 取得基本網路的 IP 位址，並新增子網路遮罩以建立 CIDR 標記法。 如果您有標準255.255.255.0 子網，請將 IP 位址的最後一個數位取代為0，並在結尾加上/24。 因此，具有255.255.255.0 子網路遮罩的10.126.68.0 會變成 10.126.68.0/24。 
-    
-    ```json
-    "addressPrefix": {
-                "value": "10.126.68.0/24"
-            },
-            "subnetPrefix": {
-                "value": "10.126.68.0/24"
-            }
-    ```  
-
-4. 為參數提供唯一的映射名稱、VNet 名稱和子網名稱。
+3. 提供唯一的映射名稱。 此映射可用來在稍後的步驟中建立 VM。 
 
     以下是本文中使用的範例 json。
 
@@ -310,25 +267,13 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
         "contentVersion": "1.0.0.0",
       "parameters": {
         "osType": {
-          "value": "Windows"
+          "value": "Linux"
         },
         "imageName": {
-          "value": "image1"
+          "value": "myaselinuximg"
         },
         "imageUri": {
-          "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-        "vnetName": {
-          "value": "vnet1"
-        },
-        "subnetName": {
-          "value": "subnet1"
-        },
-        "addressPrefix": {
-          "value": "10.126.68.0/24"
-        },
-        "subnetPrefix": {
-          "value": "10.126.68.0/24"
+          "value": "https://sa2.blob.myasegpuvm.wdshcsso.com/con1/ubuntu18.04waagent.vhd"
         }
       }
     }
@@ -338,7 +283,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 
 ### <a name="deploy-template"></a>部署範本 
 
-部署範本 `CreateImageAndVnet.json` 。 此範本會部署將在稍後步驟中用來建立 Vm 的 VNet 和映射資源。
+部署範本 `CreateImage.json` 。 此範本會部署將在稍後的步驟中用來建立 Vm 的映射資源。
 
 > [!NOTE]
 > 當您在收到驗證錯誤時部署範本時，此會話的 Azure 認證可能已過期。 重新執行 `login-AzureRM` 命令，以再次連接到 Azure Stack Edge Pro 裝置上的 Azure Resource Manager。
@@ -346,8 +291,8 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 1. 執行以下命令： 
     
     ```powershell
-    $templateFile = "Path to CreateImageAndVnet.json"
-    $templateParameterFile = "Path to CreateImageAndVnet.parameters.json"
+    $templateFile = "Path to CreateImage.json"
+    $templateParameterFile = "Path to CreateImage.parameters.json"
     $RGName = "<Name of your resource group>"
     New-AzureRmResourceGroupDeployment `
         -ResourceGroupName $RGName `
@@ -355,47 +300,42 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
         -TemplateParameterFile $templateParameterFile `
         -Name "<Name for your deployment>"
     ```
+    此命令會部署映射資源。 若要查詢資源，請執行下列命令：
 
-2. 檢查是否已成功布建映射和 VNet 資源。 以下是已成功建立的映射和 VNet 的範例輸出。
+    ```powershell
+    Get-AzureRmImage -ResourceGroupName <Resource Group Name> -name <Image Name>
+    ``` 
+    以下是已成功建立之映射的範例輸出。
     
     ```powershell
-    PS C:\07-30-2020> login-AzureRMAccount -EnvironmentName aztest1 -TenantId c0257de7-538f-415c-993a-1b87a031879d
+    PS C:\WINDOWS\system32> login-AzureRMAccount -EnvironmentName aztest -TenantId c0257de7-538f-415c-993a-1b87a031879d
     
     Account               SubscriptionName              TenantId                             Environment
     -------               ----------------              --------                             -----------
-    EdgeArmUser@localhost Default Provider Subscription c0257de7-538f-415c-993a-1b87a031879d aztest1
+    EdgeArmUser@localhost Default Provider Subscription c0257de7-538f-415c-993a-1b87a031879d aztest
     
-    PS C:\07-30-2020> $templateFile = "C:\07-30-2020\CreateImageAndVnet.json"
-    PS C:\07-30-2020> $templateParameterFile = "C:\07-30-2020\CreateImageAndVnet.parameters.json"
-    PS C:\07-30-2020> $RGName = "myasegpurgvm"
-    PS C:\07-30-2020> New-AzureRmResourceGroupDeployment `
-    >>     -ResourceGroupName $RGName `
-    >>     -TemplateFile $templateFile `
-    >>     -TemplateParameterFile $templateParameterFile `
-    >>     -Name "Deployment1"
-    
-    DeploymentName          : Deployment1
-    ResourceGroupName       : myasegpurgvm
+   PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\CreateImage\CreateImage.json"
+    PS C:\WINDOWS\system32> $templateParameterFile = "C:\12-09-2020\CreateImage\CreateImage.parameters.json"
+    PS C:\WINDOWS\system32> $RGName = "rg2"
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "deployment4"
+        
+    DeploymentName          : deployment4
+    ResourceGroupName       : rg2
     ProvisioningState       : Succeeded
-    Timestamp               : 7/30/2020 5:53:32 PM
+    Timestamp               : 12/10/2020 7:06:57 PM
     Mode                    : Incremental
     TemplateLink            :
     Parameters              :
                               Name             Type                       Value
                               ===============  =========================  ==========
-                              osType           String                     Windows
-                              imageName        String                     image1
+                              osType           String                     Linux
+                              imageName        String                     myaselinuximg
                               imageUri         String
-                              https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd
-                              vnetName         String                     vnet1
-                              subnetName       String                     subnet1
-                              addressPrefix    String                     10.126.68.0/24
-                              subnetPrefix     String                     10.126.68.0/24
+                              https://sa2.blob.myasegpuvm.wdshcsso.com/con1/ubuntu18.04waagent.vhd
     
     Outputs                 :
-    DeploymentDebugLogLevel :
-    
-    PS C:\07-30-2020>
+    DeploymentDebugLogLevel :    
+    PS C:\WINDOWS\system32>
     ```
     
 ## <a name="create-vm"></a>建立 VM
@@ -421,10 +361,13 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
             "value": "<A supported size for your VM>"
         },
         "vnetName": {
-            "value": "<Name for the virtual network you created earlier>"
+            "value": "<Name for the virtual network, use ASEVNET>"
         },
         "subnetName": {
-            "value": "<Name for the subnet you created earlier>"
+            "value": "<Name for the subnet, use ASEVNETsubNet>"
+        },
+        "vnetRG": {
+            "value": "<Resource group for Vnet, use ASERG>"
         },
         "nicName": {
             "value": "<Name for the network interface>"
@@ -441,7 +384,56 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 
 1. 提供唯一的名稱、網路介面名稱和 ipconfig 名稱。 
 1. 輸入使用者名稱、密碼和支援的 VM 大小。
-1. 為 **VnetName**、 **subnetName** 和 **ImageName** 提供相同的名稱，如同的參數中所指定 `CreateImageAndVnet.parameters.json` 。 例如，如果您將 VnetName、subnetName 和 ImageName 指定為 **vnet1**、 **subnet1** 和 **image1**，也請將這些值與此範本中的參數保持相同。
+1. 當您啟用網路介面以進行計算時，系統會自動在該網路介面上建立虛擬交換器和虛擬網路。 您可以查詢現有的虛擬網路，以取得 Vnet 名稱、子網名稱和 Vnet 資源組名。
+
+    執行以下命令：
+
+    ```powershell
+    Get-AzureRmVirtualNetwork
+    ```
+    以下是範例輸出：
+    
+    ```powershell
+    
+    PS C:\WINDOWS\system32> Get-AzureRmVirtualNetwork
+    
+    Name                   : ASEVNET
+    ResourceGroupName      : ASERG
+    Location               : dbelocal
+    Id                     : /subscriptions/947b3cfd-7a1b-4a90-7cc5-e52caf221332/resourceGroups/ASERG/providers/Microsoft
+                             .Network/virtualNetworks/ASEVNET
+    Etag                   : W/"990b306d-18b6-41ea-a456-b275efe21105"
+    ResourceGuid           : f8309d81-19e9-42fc-b4ed-d573f00e61ed
+    ProvisioningState      : Succeeded
+    Tags                   :
+    AddressSpace           : {
+                               "AddressPrefixes": [
+                                 "10.57.48.0/21"
+                               ]
+                             }
+    DhcpOptions            : null
+    Subnets                : [
+                               {
+                                 "Name": "ASEVNETsubNet",
+                                 "Etag": "W/\"990b306d-18b6-41ea-a456-b275efe21105\"",
+                                 "Id": "/subscriptions/947b3cfd-7a1b-4a90-7cc5-e52caf221332/resourceGroups/ASERG/provider
+                             s/Microsoft.Network/virtualNetworks/ASEVNET/subnets/ASEVNETsubNet",
+                                 "AddressPrefix": "10.57.48.0/21",
+                                 "IpConfigurations": [],
+                                 "ResourceNavigationLinks": [],
+                                 "ServiceEndpoints": [],
+                                 "ProvisioningState": "Succeeded"
+                               }
+                             ]
+    VirtualNetworkPeerings : []
+    EnableDDoSProtection   : false
+    EnableVmProtection     : false
+    
+    PS C:\WINDOWS\system32>
+    ```
+
+    使用 ASEVNET 作為 Vnet 名稱、ASEVNETsubNet 作為子網名稱，以及 ASERG Vnet 資源組名。
+    
 1. 現在您將需要一個靜態 IP 位址，以指派給上面定義之子網網路中的 VM。 將 **PrivateIPAddress** 取代為參數檔案中的這個位址。 若要讓 VM 從您的本機 DCHP 伺服器取得 IP 位址，請將此 `privateIPAddress` 值保留空白。  
     
     ```json
@@ -456,40 +448,43 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
     
     ```json
     {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "vmName": {
-                "value": "mywindowsvm"
-            },
-            "adminUsername": {
-                "value": "Administrator"
-            },
-            "Password": {
-                "value": "Password1"
-            },
-            "imageName": {
-                "value": "image1"
-            },
-            "vmSize": {
-                "value": "Standard_D1_v2"
-            },
-            "vnetName": {
-                "value": "vnet1"
-            },
-            "subnetName": {
-                "value": "subnet1"
-            },
-            "nicName": {
-                "value": "nic1"
-            },
-            "privateIPAddress": {
-                "value": "10.126.68.186"
-            },
-            "IPConfigName": {
-                "value": "ipconfig1"
-            }
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+          "vmName": {
+              "value": "VM1"
+          },
+          "adminUsername": {
+              "value": "Administrator"
+          },
+          "Password": {
+              "value": "Password1"
+          },
+        "imageName": {
+          "value": "myaselinuximg"
+        },
+        "vmSize": {
+          "value": "Standard_NC4as_T4_v3"
+        },
+        "vnetName": {
+          "value": "ASEVNET"
+        },
+        "subnetName": {
+          "value": "ASEVNETsubNet"
+        },
+        "vnetRG": {
+          "value": "aserg"
+        },
+        "nicName": {
+          "value": "nic5"
+        },
+        "privateIPAddress": {
+          "value": ""
+        },
+        "IPConfigName": {
+          "value": "ipconfig5"
         }
+      }
     }
     ```      
 
@@ -516,39 +511,36 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
     建立 VM 將需要15-20 分鐘的時間。 以下是已成功建立 VM 的範例輸出。
     
     ```powershell
-    PS C:\07-30-2020> $templateFile = "C:\07-30-2020\CreateWindowsVM.json"
-        PS C:\07-30-2020> $templateParameterFile = "C:\07-30-2020\CreateWindowsVM.parameters.json"
-        PS C:\07-30-2020> $RGName = "myasegpurgvm"
-        PS C:\07-30-2020> New-AzureRmResourceGroupDeployment `
-        >>     -ResourceGroupName $RGName `
-        >>     -TemplateFile $templateFile `
-        >>     -TemplateParameterFile $templateParameterFile `
-        >>     -Name "Deployment2"    
-        
-        DeploymentName          : Deployment2
-        ResourceGroupName       : myasegpurgvm
-        ProvisioningState       : Succeeded
-        Timestamp               : 7/30/2020 6:21:09 PM
-        Mode                    : Incremental
-        TemplateLink            :
-        Parameters              :
-                                  Name             Type                       Value
-                                  ===============  =========================  ==========
-                                  vmName           String                     MyWindowsVM
-                                  adminUsername    String                     Administrator
-                                  password         String                     Password1
-                                  imageName        String                     image1
-                                  vmSize           String                     Standard_D1_v2
-                                  vnetName         String                     vnet1
-                                  subnetName       String                     subnet1
-                                  nicName          String                     Nic1
-                                  ipConfigName     String                     ipconfig1
-                                  privateIPAddress  String                    10.126.68.186
-        
-        Outputs                 :
-        DeploymentDebugLogLevel :    
-        
-        PS C:\07-30-2020>
+    PS C:\WINDOWS\system32> $templateFile = "C:\12-09-2020\CreateVM\CreateVM.json"
+    PS C:\WINDOWS\system32> $templateParameterFile = "C:\12-09-2020\CreateVM\CreateVM.parameters.json"
+    PS C:\WINDOWS\system32> $RGName = "rg2"
+    PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment -ResourceGroupName $RGName -TemplateFile $templateFile -TemplateParameterFile $templateParameterFile -Name "Deployment6"
+       
+    DeploymentName          : Deployment6
+    ResourceGroupName       : rg2
+    ProvisioningState       : Succeeded
+    Timestamp               : 12/10/2020 7:51:28 PM
+    Mode                    : Incremental
+    TemplateLink            :
+    Parameters              :
+                              Name             Type                       Value
+                              ===============  =========================  ==========
+                              vmName           String                     VM1
+                              adminUsername    String                     Administrator
+                              password         String                     Password1
+                              imageName        String                     myaselinuximg
+                              vmSize           String                     Standard_NC4as_T4_v3
+                              vnetName         String                     ASEVNET
+                              vnetRG           String                     aserg
+                              subnetName       String                     ASEVNETsubNet
+                              nicName          String                     nic5
+                              ipConfigName     String                     ipconfig5
+                              privateIPAddress  String
+    
+    Outputs                 :
+    DeploymentDebugLogLevel :
+    
+    PS C:\WINDOWS\system32
     ```   
 
     您也可以 `New-AzureRmResourceGroupDeployment` 使用參數以非同步方式執行命令 `–AsJob` 。 以下是當 Cmdlet 在背景中執行時的範例輸出。 然後，您可以查詢使用指令程式所建立之作業的狀態 `Get-Job` 。
@@ -576,7 +568,7 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
     `Get-AzureRmVm`
 
 
-## <a name="connect-to-a-vm"></a>連接到 VM
+## <a name="connect-to-a-vm"></a>連線至 VM
 
 根據您建立的是 Windows 或 Linux VM，連接的步驟可能會不同。
 
@@ -592,39 +584,6 @@ AzCopy /Source:\\hcsfs\scratch\vm_vhds\linux\ /Dest:http://sa191113014333.blob.d
 
 [!INCLUDE [azure-stack-edge-gateway-connect-vm](../../includes/azure-stack-edge-gateway-connect-virtual-machine-linux.md)]
 
-<!--## Manage VM
-
-The following section describes some of the common operations around the VM that you will create on your Azure Stack Edge Pro device.
-
-[!INCLUDE [azure-stack-edge-gateway-manage-vm](../../includes/azure-stack-edge-gateway-manage-vm.md)]-->
-
-
-## <a name="supported-vm-sizes"></a>支援的 VM 大小
-
-[!INCLUDE [azure-stack-edge-gateway-supported-vm-sizes](../../includes/azure-stack-edge-gateway-supported-vm-sizes.md)]
-
-## <a name="unsupported-vm-operations-and-cmdlets"></a>不支援的 VM 作業和 Cmdlet
-
-不支援延伸模組、擴展集、可用性設定組、快照集。
-
-<!--## Configure AzCopy
-
-When you install the latest version of AzCopy, you will need to configure AzCopy to ensure that it matches the blob storage REST API version of your Azure Stack Edge Pro device.
-
-On the client used to access your Azure Stack Edge Pro device, set up a global variable to match the blob storage REST API version.
-
-### On Windows client 
-
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
-
-### On Linux client
-
-`export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09`
-
-To verify if the environment variable for AzCopy was set correctly, take the following steps:
-
-1. Run "azcopy env".
-2. Find `AZCOPY_DEFAULT_SERVICE_API_VERSION` parameter. This should have the value you set in the preceding steps.-->
 
 
 ## <a name="next-steps"></a>後續步驟
