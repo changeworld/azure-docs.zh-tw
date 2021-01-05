@@ -2,13 +2,13 @@
 title: 部署多個資源實例
 description: 使用 Azure Resource Manager 範本中的複製作業和陣列 (ARM 範本) 部署資源類型多次。
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 7a894ee6a31a43dd8da3d84d88276824c6bbc9f7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 12/21/2020
+ms.openlocfilehash: c9bcb22ec53129520fd9574d0eb58b1e5777531e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672826"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724488"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 範本中的資源反復專案
 
@@ -18,7 +18,7 @@ ms.locfileid: "97672826"
 
 若需要指定是否要部署資源，請參閱[條件元素](conditional-resource-deployment.md)。
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>語法
 
 `copy`元素具有下列一般格式：
 
@@ -97,7 +97,7 @@ ms.locfileid: "97672826"
 * storage1
 * storage2.
 
-若要位移索引值，您可以在函數中傳遞值 `copyIndex()` 。 在 copy 元素中仍指定反覆運算次數，但的值是以指定的 `copyIndex` 值位移。 因此，下列範例：
+若要位移索引值，您可以傳遞 `copyIndex()` 函式中的值。 在 copy 元素中仍指定反覆運算次數，但的值是以指定的 `copyIndex` 值位移。 因此，下列範例：
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -189,43 +189,6 @@ ms.locfileid: "97672826"
 
 `mode`屬性也會接受 **parallel**，這是預設值。
 
-## <a name="depend-on-resources-in-a-loop"></a>依迴圈中的資源而定
-
-您可以透過使用 `dependsOn` 元素，讓某個資源在另一個資源之後才部署。 若要部署相依於迴圈中資源集合的資源時，請在 dependsOn 元素中提供複製迴圈的名稱。 下列範例顯示如何在部署虛擬機器之前部署三個儲存體帳戶。 不會顯示完整的虛擬機器定義。 請注意，copy 元素的名稱是設定為 `storagecopy` ，而虛擬機器的 dependsOn 元素也會設定為 `storagecopy` 。
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "copy": {
-        "name": "storagecopy",
-        "count": 3
-      },
-      "properties": {}
-    },
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2015-06-15",
-      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
-      "dependsOn": ["storagecopy"],
-      ...
-    }
-  ],
-  "outputs": {}
-}
-```
-
 ## <a name="iteration-for-a-child-resource"></a>子系資源反覆項目
 
 您無法為子資源使用複製迴圈。 若要為通常會在另一個資源內定義為巢狀的資源建立多個執行個體，您必須改為將該資源建立為最上層資源。 您可以透過類型和名稱屬性，定義和父資源之間的關聯性。
@@ -281,16 +244,15 @@ ms.locfileid: "97672826"
 
 下列範例顯示為資源或屬性建立多個執行個體的常見案例。
 
-|範本  |描述  |
+|[範本]  |描述  |
 |---------|---------|
 |[複製儲存體](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |利用名稱中的索引編號來部署多個儲存體帳戶。 |
 |[序列複製儲存體](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次一個部署數個儲存體帳戶。 名稱包含索引編號。 |
 |[以陣列複製儲存體](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |部署數個儲存體帳戶。 名稱包含陣列中的值。 |
-|[以可變的資料磁碟數目部署 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |利用虛擬機器部署數個資料磁碟。 |
-|[多個安全性規則](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |將數個安全性規則部署至網路安全性群組。 從參數建構安全性規則。 如需參數，請參閱[多個 NSG 參數檔案](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
 
 ## <a name="next-steps"></a>後續步驟
 
+* 若要設定在複製迴圈中建立之資源的相依性，請參閱 [定義在 ARM 範本中部署資源的順序](define-resource-dependency.md)。
 * 若要進行教學課程，請參閱 [教學課程：使用 ARM 範本建立多個資源實例](template-tutorial-create-multiple-instances.md)。
 * 如需涵蓋資源複製的 Microsoft Learn 模組，請參閱 [使用 ADVANCED ARM 範本功能管理複雜的雲端部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 * 如需複製元素的其他用途，請參閱：

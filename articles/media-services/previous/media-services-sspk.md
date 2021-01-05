@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: c82fb9764b29119092bf313b2c10f00c983e8c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdb575d7b3884370e1a53f79f1184d40cd15d270
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710765"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732388"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>授權 Microsoft &reg; Smooth Streaming 用戶端移植套件
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
  
-## <a name="overview"></a>概觀
-Microsoft Smooth Streaming Client Porting Kit (簡稱**SSPK** ) 是最佳化的 Smooth Streaming 用戶端實作，可協助內嵌裝置製造商、有線電視和行動業者、內容服務提供者、手持式裝置製造商、獨立軟體廠商 (ISV) 和解決方案提供者打造產品和服務，以供串流 Smooth Streaming 格式的彈性內容。 SSPK 是 Smooth Streaming 用戶端的裝置和平台獨立實作，可由被授權者移植到任何裝置和平台。 
+## <a name="overview"></a>總覽
+Microsoft Smooth Streaming Client Porting Kit (簡稱 **SSPK** ) 是最佳化的 Smooth Streaming 用戶端實作，可協助內嵌裝置製造商、有線電視和行動業者、內容服務提供者、手持式裝置製造商、獨立軟體廠商 (ISV) 和解決方案提供者打造產品和服務，以供串流 Smooth Streaming 格式的彈性內容。 SSPK 是 Smooth Streaming 用戶端的裝置和平台獨立實作，可由被授權者移植到任何裝置和平台。 
 
 以下是一個高層級架構，而 IIS Smooth Streaming Porting Kit 方塊是 Microsoft 所提供的 Smooth Streaming 用戶端實作並包含播放 Smooth Streaming 內容的所有核心邏輯。 然而，特定裝置或平台的合作夥伴可藉由實作適當的介面來移植此內容。 
 
@@ -133,6 +133,7 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * KDDI Corporation
 * 成名的電子電器共受限制
 * MIRC 的電子產品受限
+* MOKA 國際限制
 * Nintendo Co., Ltd.
 * ONEPLUS 電子 (SHENZHEN) CO
 * Panasonic Corporation
@@ -153,6 +154,7 @@ Smooth Streaming 用戶端最終產品乃根據權利金模型提供，細節如
 * Technicolor Delivery Technologies, SAS
 * Top Victory Investments, Ltd.
 * UMC 波蘭 sp。 z. o.o。
+* Vizio，Inc。
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑

@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853915"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732099"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -215,9 +215,9 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 ## <a name="use-apis-and-command-line"></a>使用 API 和命令列
 
-您可以使用 Azure Resource Manager 範本和命令列介面，將先前所述的程序自動化。
+您可以使用 Azure Resource Manager 範本、REST 和命令列介面，將稍早所述的程式自動化。
 
-若要建立及管理私人連結範圍，請使用 [az monitor private-link-scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。 使用此命令，您可以建立範圍、將 Log Analytics 工作區和 Application Insights 元件建立關聯、新增/移除/核准私人端點。
+若要建立及管理私人連結範圍，請使用 [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) 或 [Azure CLI (az 監視器私用連結範圍) ](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。
 
 若要管理網路存取，請在 [Log Analytics 工作區](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 元件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 旗標。
 

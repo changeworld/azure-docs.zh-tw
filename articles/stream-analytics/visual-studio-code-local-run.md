@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: 0122e67714efb201584a52f1cb763528dbb0b925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd83fb3ef3225fc19c48bb4c5962d6559cf32f8
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903798"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708444"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>使用 Visual Studio Code 和範例資料在本機測試串流分析查詢
 
@@ -45,11 +45,11 @@ ms.locfileid: "90903798"
 
 2. 選取 [ **本機輸入**]。
 
-    ![在 Visual Studio 程式碼中新增 ASA 本機輸入](./media/vscode-local-run/add-local-input.png)
+    ![在 Visual Studio Code 中新增 ASA 本機輸入](./media/vscode-local-run/add-local-input.png)
 
 3. 選取 [ **+ 新增本機輸入**]。
 
-    ![在 Visual Studio 程式碼中新增 ASA 本機輸入](./media/vscode-local-run/add-new-local-input.png)
+    ![在 Visual Studio Code 中新增 ASA 本機輸入](./media/vscode-local-run/add-new-local-input.png)
 
 4. 輸入您在查詢中使用的相同輸入別名。
 
@@ -59,11 +59,11 @@ ms.locfileid: "90903798"
 
     ![在 Visual Studio 中輸入本機檔案路徑](./media/vscode-local-run/local-file-path.png)
 
-6. 選取 [ **預覽資料** ] 來預覽輸入資料。 如果資料的 JSON 或 CSV，則會自動偵測資料的序列化類型。 使用選取器來查看 **資料表** 或 **原始** 格式的資料。 下表是 **資料表格式**的資料範例：
+6. 選取 [ **預覽資料** ] 來預覽輸入資料。 如果資料的 JSON 或 CSV，則會自動偵測資料的序列化類型。 使用選取器來查看 **資料表** 或 **原始** 格式的資料。 下表是 **資料表格式** 的資料範例：
 
      ![預覽資料表格式的本機資料](./media/vscode-local-run/local-file-preview-table.png)
 
-    下表是 **原始格式**的資料範例：
+    下表是 **原始格式** 的資料範例：
 
     ![以原始格式預覽本機資料](./media/vscode-local-run/local-file-preview-raw.png)
 

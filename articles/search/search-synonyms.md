@@ -3,181 +3,151 @@ title: 搜尋索引的查詢擴充同義字
 titleSuffix: Azure Cognitive Search
 description: 建立同義字地圖，以展開 Azure 認知搜尋索引上搜尋查詢的範圍。 範圍會擴大納入您清單所提供的對等詞彙。
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/26/2020
-ms.openlocfilehash: a8f1fa07b94072d37cf83320b6c8956d3b412f12
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: b62621a77f383b5c6413e7c187e7ba3d60beabad
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993579"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732082"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure 認知搜尋中的同義字
 
-搜尋引擎中與對等詞彙相關聯的同義字，讓使用者不必實際提供詞彙，就能以隱含方式擴充查詢範圍。 例如，給定詞彙「狗」與關聯的同義字「犬科動物」和「小狗」，任何包含「狗」、「犬科動物」和「小狗」的文件都會包含在查詢範圍內。
-
-在 Azure 認知搜尋中，同義字展開是在查詢時完成的。 您可以在不中斷現有作業的情況下，新增同義字地圖至服務中。 您無需重建索引，就可以將 synonymMaps 屬性新增至欄位定義。
+使用同義字地圖時，您可以將對等詞彙建立關聯，而不需要使用者實際提供字詞，就能展開查詢的範圍。 例如，假設 "dog"、"canine" 和 "小狗" 是同義字，則對 "canine" 的查詢會比對包含 "dog" 的檔。
 
 ## <a name="create-synonyms"></a>建立同義字
 
-沒有建立同義字的入口網站支援，但是您可以使用 REST API 或 .NET SDK。 若要開始使用 REST，我們建議使用此 API 來 [Postman 或 Visual Studio Code](search-get-started-rest.md) 及編寫要求： [建立同義字對應](/rest/api/searchservice/create-synonym-map)。 針對 c # 開發人員，您可以 [使用 c # 在 Azure 認知搜尋中開始新增同義字](search-synonyms-tutorial-sdk.md)。
+同義字地圖是可建立一次並供許多索引使用的資產。 [服務層級](search-limits-quotas-capacity.md#synonym-limits)會決定您可以建立多少個同義字對應（範圍從3個同義字地圖適用于免費和基本層），最多20個適用于標準層。 
 
-（選擇性）如果您使用 [客戶管理的金鑰](search-security-manage-encryption-keys.md) 進行服務端加密，您可以將該保護套用至同義字對應的內容。
+如果您的內容包含技術或隱匿的術語，您可能會針對不同的語言（例如英文和法文版本）或詞典建立多個同義字對應。 雖然您可以建立多個同義字地圖，但目前欄位只能使用其中一個。
 
-## <a name="use-synonyms"></a>使用同義字
+同義字地圖包含可作為同義字對應專案的名稱、格式和規則。 唯一支援的格式為 `solr` ，而且 `solr` 格式會決定規則結構。
 
-在 Azure 認知搜尋中，同義字支援是以您定義並上傳至服務的同義字地圖為基礎。 這些地圖由獨立資源構成 (例如索引或資料資源)，且可以在您搜尋服務索引中的任何可搜尋欄位使用。
-
-同義字地圖和索引會分開維護。 一旦您定義同義字地圖，並上傳至服務後，您可以透過在欄位定義中新增 **synonymMaps** 屬性，啟用同義字功能。 建立、 更新及刪除同義字地圖永遠是全文件的作業，這表示您無法以累加方式建立、 更新或刪除同義字地圖中的部分內容。 即便只是更新一個項目也需要重新載入。
-
-將同義字整合至您的搜尋應用程式需要兩個步驟：
-
-1.  透過下列的 API 將同義字地圖新增至您的搜尋服務。  
-
-2.  在索引定義中設定要使用同義字地圖的可搜尋欄位。
-
-您可以為您的搜尋應用程式建立多個同義字地圖 (例如，如果您的應用程式支援多語言的客戶群，您可以建立不同語言的同義字地圖)。 目前，一個欄位只能使用一個同義字地圖。 您可以隨時更新欄位的 synonymMaps 屬性。
-
-### <a name="synonymmaps-resource-apis"></a>SynonymMaps 資源 API
-
-#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>使用 POST 或 PUT 在您的服務中新增或更新同義字地圖。
-
-同義地圖會透過 POST 或 PUT 上傳至服務。 每個規則都必須以新行字元 ('\n') 分隔。 您最多可以為每個同義字地圖在免費服務中定義5000個規則，並在所有其他 Sku 中定義每個對應的20000個規則。 每條規則最多可以有 20 個擴充詞彙。
-
-同義字地圖必須使用 Apache Solr 格式，以下會加以說明。 如果您有現有的同義字字典使用的是不同格式，而您想直接使用此字典，請透過 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 讓我們知道。
-
-您可以使用 HTTP POST 建立新的同義字地圖，如下列範例所示︰
-
-```synonym-map
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
-    api-key: [admin key]
-
-    {
-       "name":"mysynonymmap",
-       "format":"solr",
-       "synonyms": "
-          USA, United States, United States of America\n
-          Washington, Wash., WA => WA\n"
-    }
+```http
+POST /synonymmaps?api-version=2020-06-30
+{
+    "name": "geo-synonyms",
+    "format": "solr",
+    "synonyms": "
+        USA, United States, United States of America\n
+        Washington, Wash., WA => WA\n"
+}
 ```
 
-或者，您也可以使用 PUT，並在 URI 中指定同義字地圖名稱。 如果同義字地圖不存在，系統就會加以建立。
+若要建立同義字地圖，請使用「 [建立同義字對應 (REST API) ](/rest/api/searchservice/create-synonym-map) 或 Azure SDK。 針對 c # 開發人員，我們建議您從 [使用 c # 的 Azure 認知搜尋中新增同義字](search-synonyms-tutorial-sdk.md)開始。
 
-```synonym-map
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
-    api-key: [admin key]
+## <a name="define-rules"></a>定義規則
 
-    {
-       "format":"solr",
-       "synonyms": "
-          USA, United States, United States of America\n
-          Washington, Wash., WA => WA\n"
-    }
-```
+對應規則遵循此檔中所述之 Apache Solr 的開放原始碼同義字篩選準則規格： [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。此 `solr` 格式支援兩種類型的規則：
 
-##### <a name="apache-solr-synonym-format"></a>Apache Solr 同義字格式
++ 相等 (，其中詞彙在查詢中是相等的替代項) 
 
-Solr 格式支援對等且明確的對應同義字。 對應規則遵循此檔中所述之 Apache Solr 的開放原始碼同義字篩選準則規格： [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter)。 以下是對等同義字的樣本規則。
++ 明確對應 (在查詢之前，詞彙會對應至一個明確詞彙 ) 
 
-```
-USA, United States, United States of America
-```
+每個規則都必須以新的行字元分隔 (`\n`) 。 您最多可以為每個同義字地圖在免費服務中定義5000個規則，並在其他階層中針對每個地圖定義20000個規則。 每個規則在規則) 中最多可以有20個展開 (或專案。 如需詳細資訊，請參閱 [同義字限制](search-limits-quotas-capacity.md#synonym-limits)。
 
-根據上述規則，搜尋「USA」時，會擴充搜尋「USA」或「United States」以及「United States of America」。
+查詢剖析器將會降低任何大寫或混合的大小寫詞彙，但如果您想要保留字元串中的特殊字元（例如逗號或虛線），請在建立同義字對應時加入適當的 escape 字元。 
 
-明確的對應由箭號「=>」表示。 若有指定，則會將符合 "=>" 左邊的搜尋查詢詞彙順序取代為右邊的替代專案。 根據下列規則，搜尋查詢「Washington」、「Wash.」 或「WA」，都會重寫為「WA」。 明確對應只會套用在指定的方向，而且在此案例中，不會在查詢「WA」時重寫為「Washington」。
+### <a name="equivalency-rules"></a>等的規則
 
-```
-Washington, Wash., WA => WA
-```
+相同規則中的對等詞彙規則會以逗號分隔。 在第一個範例中，的查詢 `USA` 會擴充至 `USA` 或 `"United States"` 或 `"United States of America"` 。 請注意，如果您想要讓片語相符，查詢本身必須是以引號括住的片語查詢。
 
-如果您需要定義包含逗號的同義字，您可以使用反斜線來進行轉義，例如在此範例中：
-
-```
-WA\, USA, WA, Washington
-```
-
-因為反斜線本身是其他語言（例如 JSON 和 c #）中的特殊字元，所以您可能需要將它重複。 例如，針對上述同義字對應傳送至 REST API 的 JSON 如下所示：
+在等價的情況下，的查詢 `dog` 會展開查詢，以同時包含 `puppy` 和 `canine` 。
 
 ```json
-    {
-       "format":"solr",
-       "synonyms": "WA\\, USA, WA, Washington"
-    }
+{
+"format": "solr",
+"synonyms": "
+    USA, United States, United States of America\n
+    dog, puppy, canine\n
+    coffee, latte, cup of joe, java\n"
+}
 ```
 
-#### <a name="list-synonym-maps-under-your-service"></a>您服務中的同義字地圖清單。
+### <a name="explicit-mapping"></a>明確對應
 
-```synonym-map
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
-    api-key: [admin key]
+明確對應的規則是以箭號表示 `=>` 。 當指定時，符合左邊的搜尋查詢詞彙順序 `=>` 將會取代為在查詢時右邊的替代專案。
+
+在明確的情況下，會將 `Washington` 或的查詢 `Wash.` `WA` 重寫為 `WA` ，而且查詢引擎只會尋找該詞彙的相符專案 `WA` 。 明確對應只適用于指定的方向，而且 `WA` `Washington` 在此情況下不會將查詢重寫為。
+
+```json
+{
+"format": "solr",
+"synonyms": "
+    Washington, Wash., WA => WA\n
+    California, Calif., CA => CA\n"
+}
 ```
 
-#### <a name="get-a-synonym-map-under-your-service"></a>在您的服務中取得同義字地圖。
+### <a name="escaping-special-characters"></a>逸出特殊字元
 
-```synonym-map
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
-    api-key: [admin key]
+如果您需要定義包含逗號或其他特殊字元的同義字，您可以使用反斜線來將其取消，如下列範例所示：
+
+```json
+{
+"format": "solr",
+"synonyms": "WA\, USA, WA, Washington\n"
+}
 ```
 
-#### <a name="delete-a-synonyms-map-under-your-service"></a>刪除您服務中的同義字地圖。
+由於反斜線本身是另一種語言（例如 JSON 和 c #）中的特殊字元，因此您可能需要將它再次進行換用。 例如，針對上述同義字對應傳送至 REST API 的 JSON 如下所示：
 
-```synonym-map
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
-    api-key: [admin key]
+```json
+{
+"format":"solr",
+"synonyms": "WA\\, USA, WA, Washington"
+}
 ```
 
-### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>在索引定義中設定要使用同義字地圖的可搜尋欄位。
+## <a name="upload-and-manage-synonym-maps"></a>上傳及管理同義字地圖
 
-您可以使用新的欄位屬性 **synonymMaps**，來指定要在可搜尋欄位中使用的同義字地圖。 同義字地圖屬於服務層級的資源，且服務中的任何索引欄位均可參考。
+如先前所述，您可以建立或更新同義字地圖，而不會中斷查詢和編制索引工作負載。 同義字地圖是獨立物件 (例如索引或資料來源) ，而且只要沒有任何欄位使用，更新就不會導致索引編制或查詢失敗。 不過，一旦您將同義字地圖新增至欄位定義之後，如果您接著刪除同義字地圖，任何包含問題欄位的查詢都會失敗，並出現404錯誤。
 
-```synonym-map
-    POST https://[servicename].search.windows.net/indexes?api-version=2020-06-30
-    api-key: [admin key]
+建立、更新和刪除同義字地圖永遠是整份檔的作業，這表示您無法以累加方式更新或刪除同義字地圖的部分。 即使只更新單一規則，也需要重載。
 
-    {
-       "name":"myindex",
-       "fields":[
-          {
-             "name":"id",
-             "type":"Edm.String",
-             "key":true
-          },
-          {
-             "name":"name",
-             "type":"Edm.String",
-             "searchable":true,
-             "analyzer":"en.lucene",
-             "synonymMaps":[
-                "mysynonymmap"
-             ]
-          },
-          {
-             "name":"name_jp",
-             "type":"Edm.String",
-             "searchable":true,
-             "analyzer":"ja.microsoft",
-             "synonymMaps":[
-                "japanesesynonymmap"
-             ]
-          }
-       ]
-    }
+## <a name="assign-synonyms-to-fields"></a>將同義字指派給欄位
+
+上傳同義字對應之後，您可以在 `Edm.String` `Collection(Edm.String)` 具有的欄位上啟用同義字 `"searchable":true` 。 如所述，欄位定義只能使用一個同義字地圖。
+
+```http
+POST /indexes?api-version=2020-06-30
+{
+    "name":"hotels-sample-index",
+    "fields":[
+        {
+            "name":"description",
+            "type":"Edm.String",
+            "searchable":true,
+            "synonymMaps":[
+            "en-synonyms"
+            ]
+        },
+        {
+            "name":"description_fr",
+            "type":"Edm.String",
+            "searchable":true,
+            "analyzer":"fr.microsoft",
+            "synonymMaps":[
+            "fr-synonyms"
+            ]
+        }
+    ]
+}
 ```
 
-可以為「Edm.String」或「Collection(Edm.String)」類型的可搜尋欄位指定 **synonymMaps**。
+## <a name="query-on-equivalent-or-mapped-fields"></a>對等或對應欄位進行查詢
 
-> [!NOTE]
-> 每一個欄位僅能有一個同義字地圖。 如果您想要使用多個同義字地圖，請透過 [UserVoice](https://feedback.azure.com/forums/263029-azure-search) 讓我們知道。
+加入同義字並不會對查詢結構強加新的要求。 您可以像在加入同義字之前一樣，發出詞彙和片語查詢。 唯一的差異在於，如果同義字對應中有查詢詞彙，則查詢引擎會根據規則來展開或重寫詞彙或片語。
 
-## <a name="impact-of-synonyms-on-other-search-features"></a>同義字對其他搜尋功能的影響
+## <a name="how-synonyms-interact-with-other-features"></a>同義字與其他功能的互動方式
 
 同義字功能會在 OR 運算子中，使用同義字改寫原始的查詢。 基於這個原因，點閱數醒目提示與評分檔案，會將原始詞彙與同義字視為對等。
 
-同義字功能適用於搜尋查詢，並不適用於篩選條件或面向。 同樣地，搜尋建議僅根據原始詞彙提供，同義字比對結果不會出現在回應中。
+同義字僅適用于搜尋查詢，不支援篩選、facet、自動完成或建議。 自動完成和建議僅以原始詞彙為基礎;同義字相符專案不會出現在回應中。
 
 同義字擴充不適用於萬用字元搜尋詞彙；也不會擴充前置詞、模糊與 Regex 詞彙。
 
@@ -188,4 +158,4 @@ WA\, USA, WA, Washington
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [建立同義字地圖](/rest/api/searchservice/create-synonym-map)
+> [建立同義字地圖 (REST API) ](/rest/api/searchservice/create-synonym-map)

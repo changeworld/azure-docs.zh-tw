@@ -5,15 +5,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/22/2020
 ms.author: trbye
-ms.openlocfilehash: d97a1bf00d722414bedda4be79adc0c26d02c751
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc569050b78a5797808f2e2e000019ba516ba22e
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81422044"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739226"
 ---
-## <a name="speech-modes"></a>語音模式
-
 **互動式**
 - 適用于命令和控制案例。
 - 有 X 的分割超時值。
@@ -34,4 +32,4 @@ ms.locfileid: "81422044"
 **聽寫**
 - 允許使用者透過說話來指定標點符號。
 - 藉由在 `EnableDictation` 物件上指定， `SpeechConfig` 而不論開始辨識的 API 呼叫為何。
-- 1個<sup>st</sup>合作物件叢集會傳回 `speech.fragment` 中繼結果的訊息，<sup>rd</sup>而協力廠商會傳回 `speech.hypothesis` 訊息。
+- 1個<sup>st</sup>合作物件叢集會傳回 `speech.fragment` 中繼結果的訊息，<sup></sup>而協力廠商會傳回 `speech.hypothesis` 訊息。

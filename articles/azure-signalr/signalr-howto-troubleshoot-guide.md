@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR Service 的疑難排解指南
 description: 瞭解如何針對常見的問題進行疑難排解
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 55ad9c90129a5d732f377ac1b6c905c14de319dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607418"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707668"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR Service 常見問題的疑難排解指南
 
@@ -63,6 +63,8 @@ services.MapAzureSignalR(GetType().FullName, options =>
             });
 ```
 
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="tls-12-required"></a>需要 TLS 1。2
 
 ### <a name="possible-errors"></a>可能的錯誤：
@@ -104,11 +106,15 @@ GlobalHost.TraceManager.Switch.Level = SourceLevels.Information;
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="400-bad-request-returned-for-client-requests"></a>400針對用戶端要求傳回的要求錯誤
 
 ### <a name="root-cause"></a>根本原因
 
 檢查您的用戶端要求是否有多個 `hub` 查詢字串。 `hub` 是保留的查詢參數，如果服務在查詢中偵測到多個，則會擲回 400 `hub` 。
+
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="401-unauthorized-returned-for-client-requests"></a>針對用戶端要求傳回 401 未經授權
 
@@ -128,6 +134,8 @@ JWT 權杖存留期目前的預設值為1小時。
 
 請 [在這裡](#restart_connection) 查看如何重新開機用戶端連接。
 
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-client-requests"></a>針對用戶端要求傳回 404
 
 針對 SignalR 持續連線，它會先連接 `/negotiate` 到 Azure SignalR 服務，然後建立與 Azure SignalR 服務的實際連線。
@@ -138,9 +146,13 @@ JWT 權杖存留期目前的預設值為1小時。
 * 在404發生時檢查要求的 URL。 如果 URL 的目標是您的 web 應用程式，而且類似于 `{your_web_app}/hubs/{hubName}` ，請檢查用戶端 `SkipNegotiation` 是否為 `true` 。 使用 Azure SignalR 時，用戶端會在第一次與應用程式伺服器協商時接收重新導向 URL。 使用 Azure SignalR 時，用戶端 **不** 應該略過協商。
 * 當呼叫的連接要求超過 **5** 秒時，可能會發生另一個 404 `/negotiate` 。 檢查用戶端要求的時間戳記，如果對服務的要求回應緩慢，請向我們提出問題。
 
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-aspnet-signalrs-reconnect-request"></a>針對 ASP.NET SignalR 的 reconnect 要求傳回404
 
 針對 ASP.NET SignalR，當 [用戶端](#client_connection_drop)連線中斷時，它會使用相同 `connectionId` 的進行重新連接，再停止連接。 `/reconnect` 可以協助您是否因為網路間歇性問題而中斷連線，而這些問題 `/reconnect` 可能會成功重新建立持續連線。 例如，在其他情況下，用戶端連接會因為路由伺服器連接中斷而中斷，或 SignalR Service 有一些內部錯誤，例如實例重新開機/容錯移轉/部署，連接已不存在，因此會傳回 `/reconnect` `404` 。 這是預期的行為 `/reconnect` ，以及在三次重試連接之後的預期行為。 當連接停止時，我們建議有 [連接重新開機](#restart_connection) 邏輯。
+
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>429 (針對用戶端要求傳回的要求太多) 
 
@@ -155,6 +167,8 @@ JWT 權杖存留期目前的預設值為1小時。
 ### <a name="too-many-negotiate-requests-at-the-same-time"></a>同時有太多的協商要求。
 
 在重新連線之前，建議您先有隨機的延遲，請參閱 [這裡](#restart_connection) 以取得重試範例。
+
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500當 negotiate： Azure SignalR Service 尚未連線時發生錯誤，請稍後再試一次。
 
@@ -215,6 +229,8 @@ Azure SignalR 的記錄器類別一律以開始 `Microsoft.Azure.SignalR` 。 �
 
 <a name="client_connection_drop"></a>
 
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="client-connection-drops"></a>用戶端連接中斷
 
 當用戶端連線到 Azure SignalR 時，用戶端與 Azure SignalR 之間的持續連線有時可能會因不同的原因而下降。 本節說明造成這類連線中斷的幾種可能性，並提供有關如何識別根本原因的一些指引。
@@ -240,6 +256,7 @@ Azure SignalR 的記錄器類別一律以開始 `Microsoft.Azure.SignalR` 。 �
 2. 檢查應用程式伺服器端事件記錄檔，以查看應用程式伺服器是否已重新開機
 3. 為我們提供時間範圍的問題建立問題，並以電子郵件將資源名稱寄給我們
 
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="client-connection-increases-constantly"></a>用戶端連接不斷增加
 
@@ -295,6 +312,8 @@ finally
 
 <a name="server_connection_drop"></a>
 
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="server-connection-drops"></a>伺服器連接中斷
 
 當應用程式伺服器在背景中啟動時，Azure SDK 會開始起始與遠端 Azure SignalR 的伺服器連接。 如 [Azure SignalR Service 內部](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md)所述，Azure SignalR 會將傳入用戶端流量路由傳送到這些伺服器連線。 一旦伺服器連線中斷，它所提供的所有用戶端連接也會關閉。
@@ -320,6 +339,8 @@ Azure SignalR Service 會定期發行新的版本，而且有時會修補或升�
 1. 開啟應用程式伺服器端記錄檔，以查看是否有任何異常發生
 2. 檢查應用程式伺服器端事件記錄檔，以查看應用程式伺服器是否已重新開機
 3. 為我們提供時間範圍的問題建立問題，並以電子郵件將資源名稱寄給我們
+
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="tips"></a>提示
 
@@ -352,6 +373,8 @@ Azure SignalR Service 會定期發行新的版本，而且有時會修補或升�
     * [ASP.NET c # 用戶端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
     * [ASP.NET JavaScript 用戶端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
+
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>後續步驟
 

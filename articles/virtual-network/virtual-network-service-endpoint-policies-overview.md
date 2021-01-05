@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 14ecb30af11bf750c90e45c3fb6b443d861a1445
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400750"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739292"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure 儲存體的虛擬網路服務端點原則
 
@@ -24,7 +24,7 @@ ms.locfileid: "89400750"
 
 ![保護 Azure 儲存體帳戶的虛擬網路輸出流量](./media/virtual-network-service-endpoint-policies-overview/vnet-service-endpoint-policies-overview.png)
 
-這項功能已在__全球所有 Azure 區域__中正式推出__Azure 儲存體__。
+這項功能已在 __全球所有 Azure 區域__ 中正式推出 __Azure 儲存體__。
 
 ## <a name="key-benefits"></a>主要權益
 
@@ -58,7 +58,7 @@ ms.locfileid: "89400750"
 ]
 ```
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 -   您可以設定端點原則來限制特定 Azure 儲存體帳戶的虛擬網路流量。
 -   您可在虛擬網路的子網路上設定端點原則。 您應在子網上啟用 Azure 儲存體的服務端點，以套用原則。
@@ -108,7 +108,7 @@ ms.locfileid: "89400750"
   - 驗證 Azure 儲存體是否設定為允許透過端點從虛擬網路存取，或資源的預設原則是否設定為 [ *全部允許*]。
   - 確定帳戶不是 **傳統的儲存體帳戶** ，且子網上具有服務端點原則。
 - 在子網上套用服務端點原則之後，受控 Azure 服務已停止運作
-  - 目前服務端點原則不支援受控服務。 請*觀賞此空間以取得更新*。
+  - 目前服務端點原則不支援受控服務。 請 *觀賞此空間以取得更新*。
 
 ## <a name="provisioning"></a>佈建
 
@@ -122,7 +122,7 @@ ms.locfileid: "89400750"
 - 虛擬網路必須位於與服務端點原則相同的區域中。
 - 如果原則中列出的 Azure 服務已設定服務端點，您就只能將服務端點原則套用至子網路。
 - 如果流量是從內部部署網路流向 Azure 服務，您就無法對其使用服務端點原則。
-- Azure 受控服務目前不支援端點原則。 這包括部署到共用子網的受控服務 (例如 *Azure HDInsight、Azure Batch、AZURE 新增、Azure 應用程式閘道、AZURE VPN 閘道、Azure 防火牆*) 或專用子網 (例如 *Azure App Service 環境、azure Redis 快取、azure API 管理、azure SQL MI、傳統受控服務*) 。
+- Azure 受控服務目前不支援端點原則。 這包括部署到共用子網的受控服務 (例如 *Azure Batch、AZURE 新增、Azure 應用程式閘道、AZURE VPN 閘道、Azure 防火牆*) 或專用子網 (例如 *Azure App Service 環境、azure Redis 快取、azure API 管理、azure SQL MI、傳統受控服務*) 。
 
  > [!WARNING]
  > 針對基礎結構需求，部署到虛擬網路中的 Azure 服務 (例如 Azure HDInsight) 可存取其他 Azure 服務 (例如 Azure 儲存體)。 如果您將端點原則限制給特定資源，可能會中斷存取虛擬網路中已部署 Azure 服務的這些基礎結構資源。

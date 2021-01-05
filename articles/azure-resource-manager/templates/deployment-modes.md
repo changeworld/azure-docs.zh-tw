@@ -3,12 +3,12 @@ title: 部署模式
 description: 說明如何指定是否要透過 Azure Resource Manager 使用完整或累加部署模式。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: bc499be4185905af7eaf71b3515895de9bee46d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 45eee255cec06925095ed0696c669b5c205f8b56
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184037"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724403"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager 部署模式
 
@@ -33,7 +33,7 @@ ms.locfileid: "96184037"
 
 資源類型處理完整模式刪除的方式有一些差異。 當不在以完整模式部署的範本中時，將自動刪除父代資源。 當不在範本中時，不會自動刪除某些子系資源。 但是，如果刪除父資源，則會刪除這些子資源。
 
-例如，如果您的資源群組包含 DNS 區域 (Microsoft.Network/dnsZones 資源類型) 和 CNAME 記錄 (Microsoft.Network/dnsZones/CNAME 資源類型)，則 DNS 區域是 CNAME 記錄的父代資源。 如果您使用完整模式部署，且範本中不包含 DNS 區域，則 DNS 區域和 CNAME 記錄都將同時刪除。 如果您在範本中包含 DNS 區域，但未包含 CNAME 記錄，則不會刪除 CNAME。
+例如，如果您的資源群組包含 DNS 區域 (`Microsoft.Network/dnsZones` 資源類型) 和 cname 記錄 (`Microsoft.Network/dnsZones/CNAME` 資源類型) ，則 DNS 區域是 cname 記錄的父資源。 如果您使用完整模式部署，且範本中不包含 DNS 區域，則 DNS 區域和 CNAME 記錄都將同時刪除。 如果您在範本中包含 DNS 區域，但未包含 CNAME 記錄，則不會刪除 CNAME。
 
 如需資源類型如何處理刪除的清單，請參閱[刪除完整模式部署的 Azure 資源](complete-mode-deletion.md)。
 
@@ -113,19 +113,19 @@ az deployment group create \
 ```json
 "resources": [
   {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "properties": {
-          "mode": "Incremental",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2017-05-10",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
           <nested-template-or-external-template>
-      }
+    }
   }
 ]
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要瞭解如何建立 Resource Manager 範本，請參閱 [撰寫 Azure Resource Manager 範本](template-syntax.md)。
-* 若要了解如何部署資源，請參閱 [使用 Azure 資源管理員範本部署應用程式](deploy-powershell.md)。
+* 若要瞭解如何建立 Resource Manager 範本，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 若要瞭解如何部署資源，請參閱 [使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。
 * 若要檢視資源提供者的作業，請參閱 [Azure REST API](/rest/api/)。

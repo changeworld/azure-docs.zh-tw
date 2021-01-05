@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR Service 的疑難排解作法
 description: 瞭解如何針對連線能力和訊息傳遞問題進行疑難排解
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183952"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707651"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>如何針對連線能力和訊息傳遞問題進行疑難排解
 
@@ -28,6 +28,8 @@ ms.locfileid: "96183952"
 * 針對 `Classic` 模式，請參閱 [傳統模式疑難排解](#classic_mode_tsg)
 
 <a name="default_mode_tsg"></a>
+
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="default-mode-troubleshooting"></a>預設模式疑難排解
 
@@ -73,6 +75,7 @@ SignalR *伺服器* 會維護 *伺服器* 與 *服務* 之間的 *伺服器連�
 
 查看伺服器端網路追蹤，以找出 *伺服器連接* 卸載或被 *服務* 拒絕的狀態碼和錯誤詳細資料，並尋找 [疑難排解指南](./signalr-howto-troubleshoot-guide.md)內的根本原因。
 
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ### <a name="how-to-add-logs"></a>如何新增記錄
 
@@ -166,19 +169,25 @@ Azure SignalR 的記錄器類別一律以開始 `Microsoft.Azure.SignalR` 。 �
 
 <a name="serverless_mode_tsg"></a>
 
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="serverless-mode-troubleshooting"></a>無伺服器模式疑難排解
 
-當 **ASRS** 處於 *無伺服器* 模式時，只有 **ASP.NET Core SignalR** 支援 `Serverless` 模式，而 **ASP.NET SignalR** 不支援此模式。 **NOT**
+當 **ASRS** 處於 *無伺服器* 模式時，只有 **ASP.NET Core SignalR** 支援 `Serverless` 模式，而 **ASP.NET SignalR** 不支援此模式。 
 
 若要在模式中診斷連線問題 `Serverless` ，最直接的方式就是 [查看用戶端流量](#view_traffic_client)。 啟用 [用戶端記錄](#add_logs_client) 和 [服務端記錄](#add_logs_server) 也很有説明。
 
 <a name="classic_mode_tsg"></a>
+
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="classic-mode-troubleshooting"></a>傳統模式疑難排解
 
 `Classic` 模式已過時，不建議使用。 在此模式中，Azure SignalR service 會使用連接的 *伺服器連接* ，判斷目前的服務是否處於 `default` 模式或 `serverless` 模式。 這可能會導致某些中繼用戶端連線問題，因為當所有連線的 *伺服器* 連線突然中斷時（例如因為網路不穩定），Azure SignalR 相信它現在已切換至 `serverless` 模式，而在這段期間內連線的用戶端永遠不會路由傳送到託管的應用程式伺服器。 啟用 [服務端記錄](#add_logs_server) ，並檢查是否有任何用戶端記錄為裝載的 `ServerlessModeEntered` 應用程式伺服器，但有些用戶端永遠不會到達應用程式伺服器端。 如果有的話，請 [中止這些用戶端](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md#API) 連線，讓用戶端重新開機可提供協助。
 
 疑難排解 `classic` 模式連接和訊息傳遞問題類似于 [疑難排解預設模式問題](#default_mode_tsg)。
+
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="service-health"></a>服務健康情況
 
@@ -195,6 +204,8 @@ Azure SignalR 的記錄器類別一律以開始 `Microsoft.Azure.SignalR` 。 �
     * 如果上述所有選項都無法運作，請在 Azure 入口網站中加入新的支援要求，以聯繫我們。
 
 有關嚴重損壞 [修復](./signalr-concept-disaster-recovery.md)的詳細資訊。
+
+[有關于疑難排解的問題或意見反應？請讓我們知道。](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>後續步驟
 

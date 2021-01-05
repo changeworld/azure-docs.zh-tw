@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018115"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724692"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的監視和警示
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 當您開始使用 key vault 來儲存您的生產環境密碼時，請務必監視金鑰保存庫的健康情況，以確定您的服務會如預期般運作。 當您開始調整服務時，傳送至金鑰保存庫的要求數將會增加。 這可能會增加要求的延遲，而且在極端情況下，會導致您的要求受到節流處理，進而影響服務效能。 如果您的金鑰保存庫傳送異常數目的錯誤碼，您也需要收到警示，讓您可以快速收到任何存取原則或防火牆設定問題的通知。 本檔將討論下列主題：
 
@@ -40,7 +40,7 @@ ms.locfileid: "96018115"
 
 保存 **庫飽和度**–金鑰保存庫每秒可以提供的要求數目，取決於所執行的作業類型。 某些保存庫作業具有較低的每秒要求數閾值。 此計量會將金鑰保存庫的總使用量匯總到所有作業類型，以顯示指出您目前金鑰保存庫使用量的百分比值。 如需金鑰保存庫服務限制的完整清單，請參閱下列檔。 [Azure 金鑰保存庫服務限制](service-limits.md)
 
-**服務 API 延遲** -此計量會顯示呼叫 key vault 的平均延遲。 雖然您的金鑰保存庫可能會在服務限制內，但金鑰保存庫的高使用率可能會導致應用程式下游失敗的延遲。 
+**服務 API 延遲** -此計量會顯示呼叫金鑰保存庫的平均延遲（以服務測量）。 它不包含用戶端或用戶端與服務之間的網路所耗用的時間。
 
 **API 點擊總數** -此計量會顯示對您的金鑰保存庫發出的所有呼叫。 這可協助您識別哪些應用程式正在呼叫您的金鑰保存庫。 
 

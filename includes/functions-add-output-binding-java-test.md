@@ -4,15 +4,13 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/18/2020
 ms.author: glenga
-ms.openlocfilehash: eb54439f89cc2443eeed2d3b63dfbe7fedb4bf17
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 179ae760f146a5ac3041a54065ae12147f3f9bf0
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80673460"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739804"
 ---
-## <a name="update-the-tests"></a>更新測試
-
 因為原型也會建立一組測試，所以您需要更新這些測試，以處理 `run` 方法簽章中的新 `msg` 參數。  
 
 瀏覽至 _src/test/java_  底下的測試程式碼位置，開啟 *Function.java* 專案檔案，並以下列程式碼取代 `//Invoke` 下的程式碼行。

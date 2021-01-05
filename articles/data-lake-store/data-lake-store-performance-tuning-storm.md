@@ -1,17 +1,17 @@
 ---
 title: 效能微調-使用 Azure Data Lake Storage Gen1 的風暴
 description: 瞭解當您微調 Azure 風暴拓撲的效能時應考慮的因素，包括針對常見問題進行疑難排解。
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 68f30079d85e2064b92718c65b38dbb5069d810b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.author: twooley
+ms.openlocfilehash: 95619c75d332ec1bf68af97fc3dddbc67b6706ed
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101642"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725032"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight 和 Azure Data Lake Storage Gen1 上的 Storm 效能微調方針
 
@@ -126,7 +126,7 @@ ms.locfileid: "92101642"
 
 若要檢查您是否遭到節流，請在用戶端啟用偵錯記錄：
 
-1. 在**Ambari**  >  **風暴**設定  >  **Config**  >  **Advanced 風暴-log4j**中，將** &lt; 根層級 = "info" &gt; **變更為** &lt; 根層級 = " &gt; debug"**。 重新啟動所有節點/服務，以便讓設定生效。
+1. 在 **Ambari**  >  **風暴** 設定  >    >  **Advanced 風暴-log4j** 中，將 **&lt; 根層級 = "info" &gt;** 變更為 **&lt; 根層級 = " &gt; debug"**。 重新啟動所有節點/服務，以便讓設定生效。
 2. 監視背景工作節點上的 Storm 拓撲記錄 (在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下)，注意是否有 Data Lake Storage Gen1 節流例外狀況。
 
 ## <a name="next-steps"></a>後續步驟

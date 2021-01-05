@@ -5,17 +5,17 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/22/2020
+ms.date: 12/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: d15d73b0f2b87b8e6f66c7bd4e7fb34f6b06e1a0
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: d5820af1efd91efd79fb2a860d6aad8d2eeed80d
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341918"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740873"
 ---
-# <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>使用資產清查和管理工具探索及管理資源
+# <a name="explore-and-manage-your-resources-with-asset-inventory"></a>使用資產清查探索及管理您的資源
 
 Azure 資訊安全中心的資產清查頁面會提供單一頁面，讓您檢視已連線至資訊安全中心的資源有何安全性狀態。 
 
@@ -43,7 +43,7 @@ Azure 資訊安全中心的資產清查頁面會提供單一頁面，讓您檢�
 |版本狀態：|正式上市 (GA)|
 |定價：|免費|
 |必要的角色和權限：|所有使用者|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|
 |||
 
 
@@ -53,9 +53,9 @@ Azure 資訊安全中心的資產清查頁面會提供單一頁面，讓您檢�
 
 - **摘要** -在您定義任何篩選器之前，清查視圖頂端有一個明顯的值帶，顯示：
 
-    - **總資源**數：連線至「安全性中心」的資源總數。
+    - **總資源** 數：連線至「安全性中心」的資源總數。
     - **狀況不良的資源**：具有有效安全性建議的資源。 [深入瞭解安全性建議](security-center-recommendations.md)。
-    - 未受**監視的資源**：有代理程式監視問題的資源-已部署 Log Analytics 代理程式，但代理程式未傳送資料或有其他健康情況問題。
+    - 未受 **監視的資源**：有代理程式監視問題的資源-已部署 Log Analytics 代理程式，但代理程式未傳送資料或有其他健康情況問題。
 
 - **篩選** -頁面頂端的多個篩選器可讓您根據您嘗試回答的問題，快速地調整資源清單。 例如，如果您想要回答 *具有「生產」標籤之電腦的問題，Log Analytics 代理程式會遺失嗎？* 您可以將 **代理程式監視** 篩選器與 **標記** 篩選器結合，如下列剪輯所示：
 
@@ -63,9 +63,9 @@ Azure 資訊安全中心的資產清查頁面會提供單一頁面，讓您檢�
 
     套用篩選之後，就會更新摘要值以與查詢結果相關聯。 
 
-- **匯出選項** -清查提供將您所選篩選選項的結果匯出至 CSV 檔案的選項。 此外，您可以將查詢本身匯出到 Azure Resource Graph Explorer，以進一步精簡、儲存或修改 KQL 查詢。
+- **匯出選項** -清查提供將您所選篩選選項的結果匯出至 CSV 檔案的選項。 此外，您可以將查詢本身匯出到 Azure Resource Graph Explorer，以進一步精簡、儲存或修改 Kusto 查詢語言 (KQL) 查詢。
 
-    ![清查的匯出選項](./media/asset-inventory/inventory-export-options.png)
+    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="清查的匯出選項":::
 
     > [!TIP]
     > KQL 檔提供具有一些範例資料的資料庫，以及一些簡單的查詢，以取得語言的「操作」。 [在本 KQL 教學課程中深入瞭解](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)。
@@ -94,7 +94,7 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 
 1. 在篩選中選取相關選項，以建立您想要執行的特定查詢。
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="篩選未受監視的生產資源" lightbox="./media/asset-inventory/inventory-filters.png":::
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="清查的篩選選項" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     依預設，資源會依使用中的安全性建議數目來排序。
 
@@ -108,22 +108,22 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
     ![「安全性結果包含」篩選](./media/asset-inventory/security-findings-contain-elements.png)
 
     > [!TIP]
-    > **安全性結果包含**和**標記**篩選器只接受單一值。 若要依一個以上篩選，請使用 [ **加入篩選**]。
+    > **安全性結果包含** 和 **標記** 篩選器只接受單一值。 若要依一個以上篩選，請使用 [ **加入篩選**]。
 
 1. 若要使用 **Azure Defender** 篩選器，請選取 [關閉]、[開啟] 或 [部分])  (的一或多個選項：
 
     - **Off** -不受 Azure Defender 方案保護的資源。 您可以用滑鼠右鍵按一下這些專案，然後升級這些專案：
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="篩選未受監視的生產資源" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="以滑鼠右鍵按一下 Azure Defender 以將資源升級為 Azure Defender" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
-    - 受 Azure Defender 方案**保護的資源**
+    - 受 Azure Defender 方案 **保護的資源**
     - **部分** -這 **適用于已** 停用部分但並非所有 Azure Defender 方案的訂用帳戶。 例如，下列訂用帳戶已停用五個 Azure Defender 方案。 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="篩選未受監視的生產資源":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="部分在 Azure Defender 上的訂用帳戶":::
 
 1. 若要進一步檢查查詢結果，請選取您感興趣的資源。
 
-1. 若要在 Resource Graph Explorer 中以查詢形式來查看目前選取的篩選選項，請 **在 [Resource Graph Explorer] 中選取 [view]**。
+1. 若要在 Resource Graph Explorer 中以查詢形式來查看目前選取的篩選選項，請選取 [ **開啟查詢**]。
 
     ![ARG 中的清查查詢](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
@@ -140,7 +140,7 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 
 例如，下列螢幕擷取畫面顯示具有38訂閱存取權的使用者，但目前只有10個建議。 因此，當使用者依 **資源類型 =** 訂用帳戶篩選時，清查中只會顯示具有作用中建議的10個訂用帳戶：
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="篩選未受監視的生產資源":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="未在沒有作用中建議時傳回所有的子活動":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>為什麼某些資源在 Azure Defender 或代理程式監視資料行中顯示空白值？
 
@@ -148,7 +148,7 @@ ARG 是設計用來提供有效率的資源探索，並能夠大規模查詢。
 
 當定價或代理程式監視與資源無關時，這些資料行中將不會顯示任何資料行。
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="篩選未受監視的生產資源":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="某些資源會在代理程式監視或 Azure Defender 資料行中顯示空白資訊":::
 
 ## <a name="next-steps"></a>後續步驟
 

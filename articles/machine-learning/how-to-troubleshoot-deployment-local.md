@@ -1,7 +1,7 @@
 ---
-title: 在本機針對 web 服務部署進行疑難排解
+title: 疑難排解本機模型部署
 titleSuffix: Azure Machine Learning
-description: 瞭解如何解決常見的 Azure Machine Learning Docker 部署錯誤，並對其進行疑難排解。
+description: 在對模型部署錯誤進行疑難排解的第一個步驟中，請嘗試本機模型部署。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 01a5f600acf9542c5adabcdf2523a42ca44233af
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: a879a81ae2bcb4e659c69a801f7c299c10ab3d77
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680500"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740635"
 ---
-# <a name="troubleshoot-model-deployment-locally"></a>在本機針對模型部署進行疑難排解
+# <a name="troubleshooting-with-a-local-model-deployment"></a>使用本機模型部署進行疑難排解
 
-瞭解如何針對常見的 Azure Machine Learning Docker web 服務部署錯誤進行疑難排解，或解決這些問題。
+嘗試本機模型部署，作為針對 Azure 容器實例的部署進行疑難排解的第一個步驟， (ACI) 或 Azure Kubernetes Service (AKS) 。  使用本機 web 服務可讓您更輕鬆地找出並修正常見的 Azure Machine Learning Docker web 服務部署錯誤。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -33,8 +33,6 @@ ms.locfileid: "97680500"
     若要驗證您的 Docker 安裝，請從終端或命令提示字元使用命令 `docker run hello-world`。 如需有關安裝 Docker 或針對 Docker 錯誤進行疑難排解的資訊，請參閱 [Docker 文件](https://docs.docker.com/)。
 
 ## <a name="debug-locally"></a>在本機執行偵錯
-
-如果您在將模型部署到 ACI 或 AKS 時遇到問題，請將它部署為本機 web 服務。 使用本機 Web 服務可讓您更輕鬆地針對問題進行疑難排解。
 
 您可以在[MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks)存放庫中找到範例[本機部署筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb)，以探索可執行檔範例。
 

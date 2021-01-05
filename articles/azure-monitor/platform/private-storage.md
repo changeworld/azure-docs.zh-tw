@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0a2439f0ed18cf93691a1d0389e049b1b7993d93
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095299"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732050"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure 監視器 Log Analytics 中使用客戶管理的儲存體帳戶
 
@@ -32,11 +32,11 @@ Azure 診斷擴充代理程式 (分別稱為 WAD 和 LAD，適用于 Windows 和
 * IIS 記錄
 
 ## <a name="using-private-links"></a>使用私用連結
-當使用私用連結來連接 Azure 監視器資源時，某些使用案例中需要客戶管理的儲存體帳戶。 其中一種情況是內嵌自訂記錄檔或 IIS 記錄檔。 這些資料類型會先以 blob 的形式上傳到中繼 Azure 儲存體帳戶，然後才內嵌至工作區。 同樣地，某些 Azure 監視器的解決方案可能會使用儲存體帳戶來儲存大型檔案，例如 Azure 資訊安全中心解決方案所使用的 Watson 傾印檔案。 
+當使用私用連結來連接 Azure 監視器資源時，某些使用案例中需要客戶管理的儲存體帳戶。 其中一種情況是內嵌自訂記錄檔或 IIS 記錄檔。 這些資料類型會先以 blob 的形式上傳到中繼 Azure 儲存體帳戶，然後才內嵌至工作區。 同樣地，某些 Azure 監視器的解決方案可能會使用儲存體帳戶來儲存大型檔案，例如 Azure 資訊安全中心 (ASC) 可能需要上傳檔案。 
 
 ##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>需要客戶管理的儲存體 Private Link 案例
 * 內嵌自訂記錄檔和 IIS 記錄檔
-* 允許 ASC 解決方案收集 Watson 傾印檔案
+* 允許 ASC 解決方案上傳檔案
 
 ### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>如何透過 Private Link 使用客戶管理的儲存體帳戶
 ##### <a name="workspace-requirements"></a>工作區需求
@@ -45,13 +45,14 @@ Azure 診斷擴充代理程式 (分別稱為 WAD 和 LAD，適用于 Windows 和
 若要讓儲存體帳戶成功連接到您的私人連結，必須：
 * 位於您的 VNet 或對等互連網路上，並透過私人連結連接到您的 VNet。 這可讓 VNet 上的代理程式將記錄傳送至儲存體帳戶。
 * 位於與其連結的工作區相同的區域。
-* 允許 Azure 監視器存取儲存體帳戶。 如果您選擇只允許選取的網路來存取儲存體帳戶，您也應該允許此例外狀況：「允許信任的 Microsoft 服務存取此儲存體帳戶」。 這可讓 Log Analytics 讀取此儲存體帳戶的內嵌記錄。
+* 允許 Azure 監視器存取儲存體帳戶。 如果您選擇只允許選取的網路來存取儲存體帳戶，您應該選取例外狀況：「允許信任的 Microsoft 服務存取此儲存體帳戶」。
+![儲存體帳戶信任 MS 服務映射](./media/private-storage/storage-trust.png)
 * 如果您的工作區也會處理來自其他網路的流量，您應該將儲存體帳戶設定為允許來自相關網路/網際網路的連入流量。
 
 ##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>將您的儲存體帳戶連結至 Log Analytics 工作區
 您可以透過 [Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) 或 [REST API](/rest/api/loganalytics/linkedstorageaccounts)，將儲存體帳戶連結至工作區。 適用的 dataSourceType 值：
 * CustomLogs –在內嵌期間使用自訂記錄檔和 IIS 記錄檔的儲存體。
-* AzureWatson –使用 ASC (Azure 資訊安全中心) 解決方案所上傳之 Watson 傾印檔案的儲存體。 如需管理保留、取代連結的儲存體帳戶，以及監視您的儲存體帳戶活動的詳細資訊，請參閱 [管理連結的儲存體](#managing-linked-storage-accounts)帳戶。 
+* AzureWatson –使用 ASC (Azure 資訊安全中心) 解決方案所上傳檔案的儲存體。 如需管理保留、取代連結的儲存體帳戶，以及監視您的儲存體帳戶活動的詳細資訊，請參閱 [管理連結的儲存體](#managing-linked-storage-accounts)帳戶。 
 
 ## <a name="encrypting-data-with-cmk"></a>使用 CMK 加密資料
 Azure 儲存體會加密儲存體帳戶中的所有待用資料。 根據預設，它會使用 Microsoft 管理的金鑰來加密資料 (MMK) 。 不過，Azure 儲存體會改為讓您使用客戶管理的金鑰 (從 Azure Key vault) CMK，以加密儲存體資料。 您可以將自己的金鑰匯入 Azure Key Vault，也可以使用 Azure Key Vault Api 來產生金鑰。

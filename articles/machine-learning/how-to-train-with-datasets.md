@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b6ec9d7035194efc471fc06befad9822c8684a5d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685574"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740669"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure Machine Learning 中的資料集定型
 
@@ -26,7 +26,7 @@ ms.locfileid: "94685574"
 
 Azure Machine Learning 資料集可讓您與 Azure Machine Learning 訓練功能（例如 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、 [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) 和 [Azure Machine Learning 管線](how-to-create-your-first-pipeline.md)）緊密整合。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要建立和訓練資料集，您需要：
 
@@ -220,6 +220,7 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+
 ## <a name="directly-access-datasets-in-your-script"></a>直接存取腳本中的資料集
 
 註冊的資料集可在本機和遠端的計算叢集上存取，例如 Azure Machine Learning 計算。 若要跨實驗存取您已註冊的資料集，請使用下列程式碼依名稱存取您的工作區和已註冊的資料集。 根據預設， [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) 類別上的方法 `Dataset` 會傳回已向工作區註冊之資料集的最新版本。
@@ -255,7 +256,34 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="notebook-examples"></a>筆記本範例
 
 + [資料集筆記本](https://aka.ms/dataset-tutorial)會根據本文的概念進行示範和擴充。
-+ 瞭解如何 [PARAMETIZE ML 管線中的資料集](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)。
++ 瞭解如何 [參數化 ML 管線中的資料集](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)。
+
+## <a name="troubleshooting"></a>疑難排解
+
+* **資料集初始化失敗：等候掛接點就緒已超時**： 
+  * 如果您沒有任何輸出 [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) 規則，而且正在使用 `azureml-sdk>=1.12.0` 、更新及其相依性為 `azureml-dataset-runtime` 特定次要版本的最新版本，或如果您在執行中使用它，請重新建立環境，讓它可以有最新的修補程式來進行修正。 
+  * 如果您使用 `azureml-sdk<1.12.0` ，請升級至最新版本。
+  * 如果您有輸出 NSG 規則，請確定有允許服務標籤之所有流量的輸出規則 `AzureResourceMonitor` 。
+
+### <a name="overloaded-azurefile-storage"></a>多載的 AzureFile 儲存體
+
+如果您收到錯誤，請套用下列因應措施 `Unable to upload project files to working directory in AzureFile because the storage is overloaded` 。
+
+如果您針對其他工作負載（例如資料傳輸）使用檔案共用，建議使用 blob，讓檔案共用可用於提交執行。 您也可以在兩個不同的工作區之間分割工作負載。
+
+### <a name="passing-data-as-input"></a>以輸入的形式傳遞資料
+
+*  **TypeError： FileNotFound：沒有這類檔案或目錄**：如果您提供的檔案路徑不是檔案所在的位置，就會發生此錯誤。 您必須確定您參考該檔案的方式，與您在計算目標上裝載資料集的位置一致。 若要確保具決定性狀態，建議您在將資料集裝載至計算目標時使用抽象路徑。 例如，在下列程式碼中，我們會將資料集裝載在計算目標的檔案系統根目錄下 `/tmp` 。 
+    
+    ```python
+    # Note the leading / in '/tmp/dataset'
+    script_params = {
+        '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+    } 
+    ```
+
+    如果您未包含前置正斜線 '/'，則必須在工作目錄前面加上前置詞，例如 `/mnt/batch/.../tmp/dataset` 在計算目標上，以指出您要裝載資料集的位置。
+
 
 ## <a name="next-steps"></a>後續步驟
 

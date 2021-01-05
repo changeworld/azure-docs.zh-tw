@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447329"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739581"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>建立和管理 Azure Machine Learning 工作區 
 
@@ -31,6 +31,8 @@ ms.locfileid: "96447329"
 ## <a name="limitations"></a>限制
 
 [!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
+
+建立工作區預設也會建立 Azure Container Registry (ACR) 。  由於 ACR 目前不支援資源組名中的 unicode 字元，請使用不包含這些字元的資源群組。
 
 ## <a name="create-a-workspace"></a>建立工作區
 
@@ -155,6 +157,8 @@ ms.locfileid: "96447329"
  
 ---
 
+
+
 ### <a name="networking"></a>網路功能  
 
 > [!IMPORTANT]  
@@ -189,7 +193,7 @@ Azure Machine Learning Python SDK 提供可搭配工作區使用的 [PrivateEndp
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取包含工作區的資源群組。 然後選取名為 __privatelink.api.azureml.ms__ 的私人 DNS 區域資源
 2. 在 [ __設定__] 中，選取 [ __虛擬網路連結__]。
-3. 選取 [新增]  。 從 [ __新增虛擬網路連結__ ] 頁面中，提供唯一的 __連結名稱__，然後選取要新增的 __虛擬網路__ 。 選取 __[確定]__ 以新增網路連結。
+3. 選取 [新增]。 從 [ __新增虛擬網路連結__ ] 頁面中，提供唯一的 __連結名稱__，然後選取要新增的 __虛擬網路__ 。 選取 __[確定]__ 以新增網路連結。
 
 如需詳細資訊，請參閱 [Azure 私人端點 DNS](../private-link/private-endpoint-dns.md)設定。
 
@@ -368,6 +372,16 @@ ws.delete(delete_dependent_resources=False, no_wait=False)
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 ## <a name="troubleshooting"></a>疑難排解
+
+* **Azure Machine Learning studio 中支援的瀏覽器**：建議您使用與您的作業系統相容的最新瀏覽器。 支援下列瀏覽器：
+  * Microsoft Edge (新的 Microsoft Edge 最新版本。 不 Microsoft Edge 舊版) 
+  * Safari (最新版本，僅限 Mac)
+  * Chrome (最新版本)
+  * Firefox (最新版本)
+
+* **Azure 入口網站**： 
+  * 如果您直接從 SDK 或 Azure 入口網站的共用連結移至您的工作區，就無法在延伸模組中查看具有訂用帳戶資訊的標準 **總覽** 頁面。 在此案例中，您也無法切換至另一個工作區。 若要查看另一個工作區，請直接移至 [Azure Machine Learning studio](https://ml.azure.com) 並搜尋工作區名稱。
+  * 所有資產 (資料集、實驗、計算等等) 僅適用于 [Azure Machine Learning studio](https://ml.azure.com)。 Azure 入口網站 *不* 提供這些功能。
 
 ### <a name="resource-provider-errors"></a>資源提供者錯誤
 
