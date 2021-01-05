@@ -2,13 +2,13 @@
 title: Azure Batch 集區調整大小開始事件
 description: Batch 集區調整大小開始事件的參考。 範例顯示以手動調整大小的方式將集區大小從 0 調整為 2 個節點的集區調整大小開始事件內文。
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: 63576b04b06aad024211d0a50225907c88c138ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/28/2020
+ms.openlocfilehash: be64a2ef30cbe3c404633b29202a4adf1e49ea9e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83723726"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803607"
 ---
 # <a name="pool-resize-start-event"></a>集區調整大小開始事件
 
@@ -18,14 +18,14 @@ ms.locfileid: "83723726"
 
 ```
 {
-    "id": "myPool1",
-    "nodeDeallocationOption": "Invalid",
-    "currentDedicatedNodes": 0,
-    "targetDedicatedNodes": 2,
-    "currentLowPriorityNodes": 0,
-    "targetLowPriorityNodes": 2,
-    "enableAutoScale": false,
-    "isAutoPool": false
+   "id": "myPool1",
+   "nodeDeallocationOption": "Invalid",
+   "currentDedicatedNodes": 0,
+   "targetDedicatedNodes": 2,
+   "currentLowPriorityNodes": 0,
+   "targetLowPriorityNodes": 2,
+   "enableAutoScale": false,
+   "isAutoPool": false
 }
 ```
 

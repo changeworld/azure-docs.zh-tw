@@ -4,23 +4,23 @@ description: 瞭解如何使用 Azure 佇列儲存體來建立和刪除佇列。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.date: 08/31/2020
+ms.date: 12/21/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: ebae3c8850947f3b6cbde6f2ebd8bfbd45b2fbb4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 12ae05e10cdf0fa9a5f0725acaa1784eedc3612c
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592172"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803675"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>如何使用 Node.js 的 Azure 佇列儲存體
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本指南說明如何使用 Azure 佇列儲存體來完成常見案例。 這些範例使用 Node.js API 撰寫。 涵蓋的案例包括插入、查看、取得和刪除佇列訊息。 此外，也將瞭解如何建立和刪除佇列。
 
@@ -350,4 +350,4 @@ queueSvc.deleteQueue(queueName, function(error, response){
 既然您已瞭解佇列儲存體的基本概念，請遵循下列連結以瞭解更複雜的儲存體工作。
 
 - 造訪 [Azure 儲存體 team blog](https://techcommunity.Microsoft.com/t5/Azure-storage/bg-p/azurestorageblog) 以瞭解最新功能
-- 造訪 GitHub 上的[適用于 JavaScript 的 Azure 儲存體用戶端程式庫](https://github.com/Azure/Azure-SDK-for-js/tree/master/SDK/storage#Azure-storage-client-library-for-JavaScript)
+- 造訪 GitHub 上的[適用于 JavaScript 的 Azure 儲存體用戶端程式庫](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#Azure-storage-client-library-for-JavaScript)

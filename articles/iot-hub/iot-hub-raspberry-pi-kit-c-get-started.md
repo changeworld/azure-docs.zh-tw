@@ -10,12 +10,12 @@ ms.date: 02/14/2019
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: b21b161a03be7a37fe1d3e872e10d4de437670db
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 52da3c28faa375f8b308e3fe78329fec4f996af9
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145866"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804049"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>將 Raspberry Pi 連接至 Azure IoT Hub (C)
 
@@ -53,7 +53,7 @@ ms.locfileid: "92145866"
 
 * Raspberry Pi 2 或 Raspberry Pi 3 電路板。
 
-* 有效的 Azure 訂用帳戶。 如果您沒有 Azure 帳戶，只需要幾分鐘的時間就能 [建立免費的 azure 試用帳戶](https://azure.microsoft.com/free/) 。
+* 使用中的 Azure 訂用帳戶。 如果您沒有 Azure 帳戶，只需要幾分鐘的時間就能 [建立免費的 azure 試用帳戶](https://azure.microsoft.com/free/) 。
 
 * 連接至 Pi 的監視器、 USB 鍵盤和滑鼠。
 
@@ -99,7 +99,7 @@ ms.locfileid: "92145866"
 
 1. 下載 Raspbian。
 
-   1. [下載 Raspbian Stretch With Desktop](https://www.raspberrypi.org/downloads/raspbian/) (.zip 檔案) 。
+   1. [下載 Raspbian Stretch With Desktop](https://www.raspberrypi.org/software/) (.zip 檔案) 。
 
    2. 將 Raspbian 映像解壓縮到您電腦上的資料夾。
 
@@ -121,11 +121,11 @@ ms.locfileid: "92145866"
 
 1. 將 Pi 連接至監視器、鍵盤和滑鼠、啟動 Pi，然後使用 `pi` 做為使用者名稱和密碼來登入 Raspbian `raspberry` 。
  
-2. 按一下 [Raspberry] 圖示 >**喜好**設定  >  **Raspberry Pi**設定。
+2. 按一下 [Raspberry] 圖示 >**喜好** 設定  >  **Raspberry Pi** 設定。
 
    ![[Raspbian 偏好設定] 功能表](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-3. 在 [介面]**** 索引標籤上，將 [SPI]**** 和 [SSH]**** 設定為 [啟用]****，然後按一下 [確定]****。 如果您沒有實體感應器，而且想要使用模擬的感應器資料，這便是選擇性步驟。
+3. 在 [介面]索引標籤上，將 [SPI] 和 [SSH] 設定為 [啟用]，然後按一下 [確定]。 如果您沒有實體感應器，而且想要使用模擬的感應器資料，這便是選擇性步驟。
 
    ![在 Raspberry Pi 上啟用 SPI 和 SSH](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
@@ -203,7 +203,7 @@ BME280 感應器可以收集溫度和溼度資料。 而如果裝置與雲端之
    ```
 
    > [!NOTE] 
-   > 如果您**沒有實體 BME280**，則可以使用 '--simulated-data' 做為命令列參數，以模擬溫度和溼度資料。 `sudo ./setup.sh --simulated-data`
+   > 如果您 **沒有實體 BME280**，則可以使用 '--simulated-data' 做為命令列參數，以模擬溫度和溼度資料。 `sudo ./setup.sh --simulated-data`
    >
 
 ### <a name="build-and-run-the-sample-application"></a>建置並執行範例應用程式

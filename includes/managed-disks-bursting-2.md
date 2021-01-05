@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a51cd242eb26709464aa502938cd04807aea721
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87102516"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805641"
 ---
 ## <a name="common-scenarios"></a>常見的案例
 下列案例可以從高載大幅獲益：
@@ -33,7 +33,7 @@ ms.locfileid: "87102516"
 ## <a name="bursting-states"></a>高載狀態
 在啟用高載的情況下，您的資源可以有三種狀態：
 - **累積** –資源的 IO 流量使用的效能低於效能目標。 IOPS 和 MB/s 的累積高載點數是彼此分開的。 您的資源可能會累積 IOPS 點數和消費 MB/s 的信用額度，反之亦然。
-- 高**載–資源**的流量使用的效能高於效能目標。 高載流量將會獨立使用 IOPS 或頻寬的點數。
+- 高 **載–資源** 的流量使用的效能高於效能目標。 高載流量將會獨立使用 IOPS 或頻寬的點數。
 - **常數** –資源的流量完全位於效能目標。
 
 ## <a name="examples-of-bursting"></a>高載範例
@@ -47,7 +47,7 @@ ms.locfileid: "87102516"
     - 布建的 MB/秒：25
     - 最大高載 MB/秒：170 
 - 2 P10 資料磁片 
-    - 布建的 MB/秒：25
+    - 布建的 MB/秒：100
     - 最大高載 MB/秒：170
 
  當 VM 開機時，它會從 OS 磁片取出資料。 因為 OS 磁片是開始使用的 VM 的一部分，所以 OS 磁片將會填滿高載點數。 這些點數可讓 OS 磁片高載啟動的時間為 170 MB/秒，如下所示：

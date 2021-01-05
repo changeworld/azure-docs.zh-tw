@@ -9,12 +9,12 @@ ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: f559c87a5c3285bf966f9389d623b2262e93cbca
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bf357dcc9c4790632a1131278edc41c13ac810b1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425808"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802604"
 ---
 # <a name="client-application-registration"></a>用戶端應用程式註冊
 在上一個教學課程中，您已部署並設定您的 Azure API for FHIR。 既然您已設定 Azure API for FHIR，我們將註冊公用用戶端應用程式。 如需更多詳細資料或進行疑難排解，您可以閱讀完整的[註冊公用用戶端應用程式](register-public-azure-ad-client-app.md)操作指南，但我們已針對此教學課程擷取了下列主要步驟。
@@ -22,7 +22,7 @@ ms.locfileid: "94425808"
 1. 瀏覽至 Azure Active Directory
 1. 選取 [應用程式註冊]  -->  [新增註冊]。
 1. 為您的應用程式命名
-1. 選取 [公用用戶端/原生 (行動和桌面)]，並將重新導向 URL 設定為 https://www.getpostman.com/oauth2/callback 。
+1. 選取 [公用用戶端/原生 (行動和桌面)]，並將重新導向 URL 設定為 `https://www.getpostman.com/oauth2/callback` 。
 
    :::image type="content" source="media/tutorial-web-app/register-public-app.png" alt-text="[註冊應用程式] 窗格的螢幕擷取畫面，以及範例應用程式名稱和重新導向 URL。":::
 
@@ -52,7 +52,7 @@ ms.locfileid: "94425808"
 
 1. 選取 [API 權限]，然後按一下 [新增權限]。
 1. 在 [我的組織使用的 API] 底下，搜尋 Azure 醫療保健 API。
-1. 選取 **user_impersonation** ，然後按一下 [新增權限]。
+1. 選取 **user_impersonation**，然後按一下 [新增權限]。
 
 :::image type="content" source="media/tutorial-web-app/api-permissions.png" alt-text="[新增 API 權限] 刀鋒視窗的螢幕擷取畫面，其中已醒目提示新增 API 權限的步驟。":::
 

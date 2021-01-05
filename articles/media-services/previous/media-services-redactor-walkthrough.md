@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 048635a33c3d84416dae00b731b386572aa3f89d
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040719"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802570"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>使用 Azure 媒體分析修訂臉部逐步解說
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 **Azure 媒體修訂器** 是 [Azure 媒體分析](./legacy-components.md) 媒體處理器 (MP)，可在雲端提供可調整的臉部修訂。 臉部修訂可讓您修改視訊，以模糊所選人物的臉部。 在公共安全和新聞媒體案例中，您可能會想要使用臉部修訂服務。 若要手動修訂包含多個臉部的幾分鐘影片，可能要花上數小時的時間，若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂程序。 如需詳細資訊，請參閱 [這](https://azure.microsoft.com/blog/azure-media-redactor/) 篇 blog。
 
@@ -38,7 +38,7 @@ ms.locfileid: "93040719"
 
 ## <a name="azure-media-services-explorer-workflow"></a>Azure 媒體服務總管工作流程
 
-開始使用修訂器最簡單的方法，是使用 GitHub 上的開放原始碼 AMSE 工具。 如果您不需要註解 json 或臉部 jpg 影像的存取權，您可以透過 [Combined] \(合併)  模式執行簡單的工作流程。
+開始使用修訂器最簡單的方法，是使用 GitHub 上的開放原始碼 AMSE 工具。 如果您不需要註解 json 或臉部 jpg 影像的存取權，您可以透過 [Combined] \(合併) 模式執行簡單的工作流程。
 
 ### <a name="download-and-setup"></a>下載及安裝
 
@@ -74,7 +74,7 @@ ms.locfileid: "93040719"
     ![螢幕擷取畫面顯示上傳文字檔的選項。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
 3. (選擇性) 編輯 annotations.json 檔案，例如增加周框方塊界限。 
-4. 以滑鼠右鍵按一下第一階段中的輸出資產，選取修訂器，並以 [Redact] \(修訂)  模式執行。 
+4. 以滑鼠右鍵按一下第一階段中的輸出資產，選取修訂器，並以 [Redact] \(修訂) 模式執行。 
 
     ![螢幕擷取畫面顯示 Azure 媒體修訂器第二個階段：選取了修訂模式。](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
@@ -133,6 +133,6 @@ ms.locfileid: "93040719"
 ## <a name="related-links"></a>相關連結
 [Azure 媒體服務分析概觀](./legacy-components.md)
 
-[Azure 媒體分析示範](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure 媒體分析示範](http://amslabs.azurewebsites.net/demos/Analytics.html)
 
 [宣布推出適用於 Azure 媒體分析的臉部修訂功能](https://azure.microsoft.com/blog/azure-media-redactor/)

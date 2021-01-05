@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b17729437b238b98f60e2cd97664fa6aafcccd4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462463"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803964"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>如何認證 IoT 隨插即用裝置
 
@@ -41,7 +41,7 @@ IoT 隨插即用裝置認證方案所包含的工具，可檢查裝置是否符�
 - 使用 [DPS](../iot-dps/about-iot-dps.md)連接到 Azure IoT 中樞。
 - 遵循 IoT 隨插即用慣例來執行遙測、屬性或命令。
 - 描述與 [DTDL v2](https://aka.ms/dtdl) 模型的裝置互動。
-- 發佈[Azure IoT 公用模型存放庫](https://devicemodels.azureiotsolutions.com/)中的模型和所有必要的介面
+- 發佈 Azure IoT 公用模型存放庫中的模型和所有必要的介面
 - 在 dps 布建承載的 [dps 註冊](./concepts-developer-guide-device.md#dps-payload) 期間傳送模型識別碼。
 - 宣告 [MQTT 連接](./concepts-developer-guide-device.md#model-id-announcement)期間的模型識別碼。
 - 所有裝置型號都必須與 [Azure IoT Central](../iot-central/core/overview-iot-central-developer.md)相容。
@@ -174,7 +174,7 @@ az iot product test task create --type QueueTestRun --test-id d45d53d9-656d-4be7
 
 若要使用 [認證入口網站](https://aka.ms/acdp)，您必須使用工作或學校租使用者中的 Azure Active Directory。
 
-若要將模型發佈至 Azure IoT 公用模型儲存機制，您的帳戶必須是 [Microsoft 合作夥伴網路](https://partner.microsoft.com)的成員。 系統會檢查 Microsoft 合作夥伴網路識別碼是否存在，並在發佈至裝置目錄之前完全通過該帳戶。
+若要將模型發佈至 [Azure IoT 公用模型儲存](https://github.com/Azure/iot-plugandplay-models)機制，您的帳戶必須是 [Microsoft 合作夥伴網路](https://partner.microsoft.com)的成員。 系統會檢查 Microsoft 合作夥伴網路識別碼是否存在，並在發佈至裝置目錄之前完全通過該帳戶。
 
 ### <a name="company-profile"></a>公司設定檔
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/07/2020
+ms.date: 12/28/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181198"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803522"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報表 (預覽) 
 
@@ -39,11 +39,12 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 本主題提供布建報告的總覽。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
 * 應用程式擁有者可以查看他們所擁有之應用程式的記錄
 * 安全性系統管理員、安全性讀取者、報告讀取者、應用程式系統管理員和雲端應用程式系統管理員角色中的使用者
+* 具有[provisioningLogs 許可權](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)的自訂角色使用者
 * 全域系統管理員
 
 
@@ -56,12 +57,12 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 布建記錄提供下列問題的答案：
 
 * ServiceNow 中成功建立了哪些群組？
-* 從 Amazon Web Services 匯入了哪些角色？
+* 哪些使用者已成功從 Adobe 移除？
 * 哪些使用者在 DropBox 中建立失敗？
 
 您可以在 [Azure 入口網站](https://portal.azure.com)的 **Azure Active Directory** 分頁的 [**監視**] 區段中選取 [布建 **記錄**]，以存取布建記錄。 某些布建記錄最多可能需要兩個小時才會顯示在入口網站中。
 
-![布建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
+![佈建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
 
 
 布建記錄有一個預設的清單視圖，顯示：
@@ -86,7 +87,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 選取清單檢視中的項目，即可取得更詳細的資訊。
 
-![詳細資訊](./media/concept-provisioning-logs/steps.png "篩選")
+![詳細資訊](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ## <a name="filter-provisioning-activities"></a>篩選布建活動
@@ -95,12 +96,12 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 在預設視圖中，您可以選取下列篩選準則：
 
 - 身分識別
-- 日期
+- Date
 - 狀態
 - 動作
 
 
-![新增篩選條件](./media/concept-provisioning-logs/default-filter.png "篩選")
+![新增篩選條件](./media/concept-provisioning-logs/default-filter.png "Filter")
 
 身分 **識別** 篩選器可讓您指定您關心的名稱或身分識別。 此身分識別可以是使用者、群組、角色或其他物件。 您可以依物件的名稱或識別碼進行搜尋。 此識別碼會因案例而異。 例如，從 Azure AD 將物件布建到 SalesForce 時，來源識別碼是 Azure AD 中使用者的物件識別碼，而 TargetID 是 Salesforce 中使用者的識別碼。 從 Workday 布建至 Active Directory 時，來源識別碼是 Workday 背景工作員工識別碼。 請注意，使用者的名稱不一定會出現在識別欄位中。 一律會有一個識別碼。 
 
@@ -173,7 +174,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 修改的屬性
 
-- 摘要
+- 總結
 
 
 ![布建詳細資料](./media/concept-provisioning-logs/provisioning-tabs.png "索引標籤")
@@ -191,7 +192,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 
 
-![螢幕擷取畫面顯示 [步驟] 索引標籤，其中顯示布建步驟。](./media/concept-provisioning-logs/steps.png "篩選")
+![螢幕擷取畫面顯示 [步驟] 索引標籤，其中顯示布建步驟。](./media/concept-provisioning-logs/steps.png "Filter")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>疑難排解和建議
@@ -205,7 +206,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 **修改過的屬性** 會顯示舊值和新值。 在沒有舊值的情況下，舊的值資料行是空白的。 
 
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>總結
 
 [ **摘要** ] 索引標籤提供來源和目標系統中物件的發生狀況和識別碼的總覽。 
 
@@ -219,7 +220,9 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 您可能會看到不在範圍中的使用者略過的事件。 這是預期的情況，特別是當同步處理範圍設定為 [所有使用者和群組] 時。 我們的服務會評估租使用者中的所有物件，甚至是超出範圍的物件。 
 
-- 布建記錄目前無法在政府雲端中使用。 如果您無法存取布建記錄，請使用「審核記錄」作為暫時的因應措施。  
+- 布建記錄目前無法在政府雲端中使用。 如果您無法存取布建記錄，請使用「審核記錄」作為暫時的因應措施。 
+
+- 布建記錄不會顯示角色匯入 (適用于 AWS、SalesForce 和 ZenDesk) 。 角色匯入的記錄可在 audit 記錄檔中找到。 
 
 ## <a name="error-codes"></a>錯誤碼
 

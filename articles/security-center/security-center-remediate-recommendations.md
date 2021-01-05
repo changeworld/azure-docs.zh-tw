@@ -1,6 +1,6 @@
 ---
 title: 補救 Azure 資訊安全中心中的建議 |Microsoft Docs
-description: 本文說明如何修復 Azure 資訊安全中心中的建議，以保護您的資源及遵守安全性原則。
+description: 本文說明如何回應 Azure 資訊安全中心中的建議，以保護您的資源並滿足安全性原則。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: dabd7e9e2c3c74225efc4611c7ad3523a6c76ba5
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637078"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807985"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的補救建議
 
@@ -26,44 +26,44 @@ ms.locfileid: "94637078"
 
 ## <a name="remediation-steps"></a>補救步驟 <a name="remediation-steps"></a>
 
-在查看所有建議之後，請先決定要補救哪一個建議。 我們建議您使用 [安全分數的影響](security-center-recommendations.md#monitor-recommendations) ，以協助優先處理要先執行的動作。
+在查看所有建議之後，請先決定要補救哪一個建議。 建議您將安全性控制的優先順序設為最高的潛能，以提高您的安全分數。
 
-1. 從清單中，按一下 [建議]。
+1. 從清單中選取建議。
 
 1. 遵循 **補救步驟** 一節中的指示。 每個建議都有自己的一組指示。 下列螢幕擷取畫面顯示將應用程式設定為只允許透過 HTTPS 流量的補救步驟。
 
-    ![建議的詳細資料](./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png)
+    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png" alt-text="建議的手動補救步驟" lightbox="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png":::
 
-1. 完成之後，會出現通知，通知您是否已成功補救。
+1. 完成之後，就會出現通知，告知您問題是否已解決。
 
-## <a name="quick-fix-remediation"></a>快速修正補救<a name="one-click"></a>
+## <a name="quick-fix-remediation"></a>快速修正補救
 
-快速修正可簡化補救，並可讓您快速增加安全分數，進而提升環境的安全性。
+為了簡化補救並提高環境的安全性 (並提高您的安全分數) ，許多建議都包含一個快速修正選項。
 
-快速修正可讓您快速補救多個資源上的建議。 
+快速修正可協助您在多個資源上快速補救建議。
 
 > [!TIP]
-> 快速修正僅適用于特定的建議。 若要尋找具有快速修正選項的建議，請使用建議清單頂端的專用篩選：
+> 快速修正解決方案只適用于特定的建議。 若要尋找具有可用快速修正的建議，請使用 **回應動作** 篩選以取得建議清單：
 > 
 > :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="使用建議清單上方的篩選準則來尋找具有快速修正選項的建議":::
 
-若要執行快速修正修復：
+若要執行快速修正解決方案：
 
-1. 從有 **快速修正** 的建議清單中！ 標籤上，按一下建議。
+1. 從有 **快速修正** 的建議清單中！ 標籤，選取建議。
 
-    [![選取 [快速修正]！](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
+    [![選取 [快速修正]！](media/security-center-remediate-recommendations/security-center-quick-fix-select.png)](media/security-center-remediate-recommendations/security-center-quick-fix-select.png#lightbox)
 
-1. 從 [ **狀況不良的資源** ] 索引標籤中，選取您要執行建議的資源，然後按一下 [ **修復** ]。
+1. 從 [ **狀況不良的資源** ] 索引標籤中，選取您要執行建議的資源，然後選取 [ **修復**]。
 
     > [!NOTE]
     > 某些列出的資源可能已停用，因為您沒有適當的許可權可以修改它們。
 
 1. 在確認方塊中，閱讀補救詳細資料和含意。
 
-    ![快速修正](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
+    ![快速修正](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
 
     > [!NOTE]
-    > 在按一下 [ **補救** ] 之後開啟的 [ **補救資源** ] 視窗的灰色方塊中會列出這些含意。 它們會列出繼續進行快速修正補救時所發生的變更。
+    > 在按一下 [**補救**] 之後開啟的 [**補救資源**] 視窗的灰色方塊中會列出這些含意。 它們會列出繼續進行快速修正補救時所發生的變更。
 
 1. 如有必要，請插入相關的參數，並核准補救。
 
@@ -79,7 +79,7 @@ ms.locfileid: "94637078"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本檔中，您已瞭解如何修復安全中心的建議。 若要深入瞭解資訊安全中心，請參閱下列主題：
+在本檔中，您已瞭解如何修復安全中心的建議。 若要深入了解資訊安全中心，請參閱下列頁面：
 
 * [在 Azure 資訊安全中心中設定安全性原則](tutorial-security-policy.md) -瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md) - 了解如何監視 Azure 資源的健全狀況。

@@ -2,13 +2,13 @@
 title: Azure Batch 集區調整大小完成事件
 description: Batch 集區調整大小完成事件的參考。 查看大小已增加且已成功完成的集區範例。
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: 94301f29fb6e7968dbe0389754fcf2a3b105d7ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/28/2020
+ms.openlocfilehash: 9d3342587b5f6e0e134f4295a8c79deeb23df94b
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83723811"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803641"
 ---
 # <a name="pool-resize-complete-event"></a>集區調整大小完成事件
 
@@ -18,18 +18,18 @@ ms.locfileid: "83723811"
 
 ```
 {
-    "id": "myPool",
-    "nodeDeallocationOption": "invalid",
-        "currentDedicatedNodes": 10,
-        "targetDedicatedNodes": 10,
-    "currentLowPriorityNodes": 5,
-        "targetLowPriorityNodes": 5,
-    "enableAutoScale": false,
-    "isAutoPool": false,
-    "startTime": "2016-09-09T22:13:06.573Z",
-    "endTime": "2016-09-09T22:14:01.727Z",
-    "resultCode": "Success",
-    "resultMessage": "The operation succeeded"
+   "id": "myPool",
+   "nodeDeallocationOption": "invalid",
+      "currentDedicatedNodes": 10,
+      "targetDedicatedNodes": 10,
+   "currentLowPriorityNodes": 5,
+     "targetLowPriorityNodes": 5,
+   "enableAutoScale": false,
+   "isAutoPool": false,
+   "startTime": "2016-09-09T22:13:06.573Z",
+   "endTime": "2016-09-09T22:14:01.727Z",
+   "resultCode": "Success",
+   "resultMessage": "The operation succeeded"
 }
 ```
 

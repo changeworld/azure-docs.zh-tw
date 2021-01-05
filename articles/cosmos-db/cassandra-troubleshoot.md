@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: thvankra
-ms.openlocfilehash: f5f2cb5ac8c354df38310cdcb47b98e1da5b6cfa
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c969e4fac3ae30088cfe47a7b0edff22c578cb8b
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97521815"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802349"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>針對 Azure Cosmos DB Cassandra API 中的常見問題進行疑難排解
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ Azure Cosmos DB 中的 Cassandra API 是相容性層級，可提供受歡迎開�
 | OverloadedException (JAVA)  | 取用的要求單位總數超過 keyspace 或資料表上布建的要求單位數。 因此會對要求進行節流。 | 請考慮調整指派給 Azure 入口網站的 keyspace 或資料表的輸送量， (請參閱 [這裡](manage-scale-cassandra.md) 以 Cassandra API) 的調整作業，或者您可以執行重試原則。 針對 JAVA，請參閱 [v3. x 驅動](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) 程式和 [v4. x 驅動程式](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4)的重試範例。 另請參閱[適用于 JAVA 的 Azure Cosmos Cassandra 延伸](https://github.com/Azure/azure-cosmos-cassandra-extensions)模組 |
 | OverloadedException (JAVA) ，甚至有足夠的輸送量 | 雖然針對要求數量及/或取用的要求單位成本布建了足夠的輸送量，但系統似乎是節流要求  | Cassandra API 會針對架構層級的作業 (CREATE TABLE、ALTER TABLE、DROP TABLE) 來實行系統輸送量預算。 這項預算應該足以滿足生產系統中的架構作業。 但是，如果您有大量的架構層級作業，您可能會超過此限制。 因為此預算並非由使用者控制，所以您必須考慮減少執行中的架構作業數目。 如果採取此動作無法解決問題，或是您的工作負載不可行，請 [建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)。|
 | ClosedConnectionException (JAVA)  | 在成功連線之後的一段閒置時間後，應用程式就無法連接| 此錯誤可能是因為 Azure LoadBalancers 的閒置 timeout （4分鐘）。 在驅動程式中設定 [保持運作] 設定 (查看以下) 並增加作業系統中的持續連線設定，或 [調整 Azure Load Balancer 中的閒置 timeout](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal)。 |
-|  (JAVA) 的其他間歇性連線錯誤 | 連接意外中斷或非預期的時間 | 適用于 JAVA 的 Apache Cassandra 驅動程式提供兩個原生重新連接原則： `ExponentialReconnectionPolicy` 和 `ConstantReconnectionPolicy` 。 預設值為 `ExponentialReconnectionPolicy`。 不過，針對 Azure Cosmos DB Cassandra API，我們建議 `ConstantReconnectionPolicy` 延遲為2秒。 請參閱 JAVA v4. x 驅動程式的 [驅動程式檔](https://docs.datastax.com/developer/java-driver/4.9/manual/core/reconnection/)  集， [此處](https://docs.datastax.com/developer/java-driver/3.7/manual/reconnection/) 提供的 java 3.x 指引 (另請參閱) 的範例。|
+|  (JAVA) 的其他間歇性連線錯誤 | 連接意外中斷或非預期的時間 | 適用于 JAVA 的 Apache Cassandra 驅動程式提供兩個原生重新連接原則： `ExponentialReconnectionPolicy` 和 `ConstantReconnectionPolicy` 。 預設為 `ExponentialReconnectionPolicy`。 不過，針對 Azure Cosmos DB Cassandra API，我們建議 `ConstantReconnectionPolicy` 延遲為2秒。 請參閱 JAVA v4. x 驅動程式的 [驅動程式檔](https://docs.datastax.com/en/developer/java-driver/4.9/manual/core/reconnection/)  集， [此處](https://docs.datastax.com/en/developer/java-driver/3.7/manual/reconnection/) 提供的 java 3.x 指引 (另請參閱) 的範例。|
 
 如果未列出您的錯誤，而且您 [在 Cassandra API](cassandra-support.md)中執行支援的作業時遇到錯誤，則 *使用原生 Apache Cassandra 時，不會出現* 錯誤，請 [建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md)
 

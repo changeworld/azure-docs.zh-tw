@@ -10,12 +10,13 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aa3329c3d9e241fb8224ecc69199779d53027474
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+adobe-target: true
+ms.openlocfilehash: 0334e259f75440cae25f1e165c0621c85f7c7705
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183136"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803998"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>為 Azure App Service 設定 Java 應用程式
 
@@ -25,7 +26,7 @@ Azure App Service 可讓 JAVA 開發人員在完全受控的服務上快速建�
 
 ## <a name="deploying-your-app"></a>部署應用程式
 
-您可以使用 [適用于 Maven 的 Azure Web 應用程式外掛程式](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) 來部署 war 或 .jar 檔案。 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/)或[Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse)也支援使用熱門 ide 部署。
+您可以使用 [適用于 Maven 的 Azure Web 應用程式外掛程式](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) 來部署 war 或 .jar 檔案。 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/)或[Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse)也支援使用熱門 ide 部署。
 
 否則部署方法將會取決於您的封存類型：
 

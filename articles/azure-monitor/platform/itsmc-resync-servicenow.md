@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 3e836873219bde3836f2863e328b0b6f5b89addc
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507280"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803794"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>針對 ITSM 連接器中的問題進行疑難排解
 
@@ -23,7 +23,7 @@ ITSM 可讓您選擇將警示傳送至外部票證系統，例如 ServiceNow。
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>將事件和變更要求資料視覺化並加以分析
 
-視您設定連線時的設定而定，ITSMC 最多可以同步處理120天的事件和變更要求資料。 本文的 [ [其他資訊] 區段](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#additional-information) 中會提供此資料的記錄檔記錄架構。
+視您設定連線時的設定而定，ITSMC 最多可以同步處理120天的事件和變更要求資料。 本文的 [ [其他資訊] 區段](./itsmc-overview.md) 中會提供此資料的記錄檔記錄架構。
 
 您可以使用 ITSMC 儀表板，將事件視覺化並變更要求資料：
 
@@ -39,7 +39,27 @@ ITSM 可讓您選擇將警示傳送至外部票證系統，例如 ServiceNow。
 
 ![顯示 Log Analytics 畫面的螢幕擷取畫面。](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="how-to-manually-fix-servicenow-sync-problems"></a>如何手動修正 ServiceNow 同步問題
+## <a name="troubleshoot-itsm-connections"></a>針對 ITSM 連線進行疑難排解
+
+- 如果連接無法連線到 ITSM 系統，而且您 **在儲存連接訊息時發生錯誤** ，請執行下列步驟：
+   - 針對 ServiceNow、Cherwell 和 Provance 連線：  
+     - 確定您已正確輸入每個連線的使用者名稱、密碼、用戶端識別碼和用戶端密碼。  
+     - 請確定您在對應的 ITSM 產品中有足夠的許可權，才能建立連接。  
+   - 針對 Service Manager 連接：  
+     - 確定已成功部署 web 應用程式，且已建立混合式連接。 若要確認是否已成功建立與內部部署 Service Manager 電腦的連線，請移至 web 應用程式 URL，如建立 [混合](./itsmc-connections-scsm.md#configure-the-hybrid-connection)式連線的檔中所述。  
+
+- 如果 ServiceNow 的資料未同步處理至 Log Analytics，請確定 ServiceNow 實例未進入睡眠狀態。 當 ServiceNow 開發人員實例閒置很長一段時間時，有時會進入睡眠狀態。 如果發生這種情況，請回報問題。
+- 如果記錄分析警示引發但未在 ITSM 產品中建立工作專案，如果設定專案未建立/連結至工作專案，或其他資訊，請參閱下列資源：
+   -  ITSMC：解決方案會顯示連線、工作專案、電腦等的摘要。 選取具有 **連接器狀態** 標籤的磚。 這樣做會讓您使用相關查詢來 **記錄搜尋** 。 查看記錄檔記錄，以 `LogType_S` `ERROR` 取得詳細資訊。
+   - **記錄搜尋** 頁面：使用查詢直接查看錯誤和相關資訊 `*ServiceDeskLog_CL*` 。
+
+### <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager web 應用程式部署進行疑難排解
+
+-   如果您有 web 應用程式部署的問題，請確定您有權在訂用帳戶中建立/部署資源。
+-   如果您在執行 [腳本](itsmc-service-manager-script.md)時取得 **未設定為物件錯誤實例的物件參考**，請確定您已在 [**使用者** 設定] 區段中輸入有效的值。
+-   如果您無法建立服務匯流排轉送命名空間，請確定已在訂用帳戶中註冊必要的資源提供者。 如果未註冊，請從 Azure 入口網站手動建立服務匯流排轉送命名空間。 您也可以在 Azure 入口網站中 [建立混合](./itsmc-connections-scsm.md#configure-the-hybrid-connection) 式連線時建立它。
+
+### <a name="how-to-manually-fix-sync-problems"></a>如何手動修正同步問題
 
 Azure 監視器可以連接至協力廠商 IT 服務管理 (ITSM) 提供者。 ServiceNow 是其中一個提供者。
 
@@ -74,28 +94,4 @@ Azure 監視器可以連接至協力廠商 IT 服務管理 (ITSM) 提供者。 S
 
         ![新增連線](media/itsmc-resync-servicenow/save-8bit.png)
 
-f.    檢查通知以查看程式是否已順利完成
-
-## <a name="troubleshoot-itsm-connections"></a>針對 ITSM 連線進行疑難排解
-
-- 如果連接的來源 UI 連線失敗，而您 **在儲存連接訊息時發生錯誤** ，請執行下列步驟：
-   - 針對 ServiceNow、Cherwell 和 Provance 連線：  
-     - 確定您已正確輸入每個連線的使用者名稱、密碼、用戶端識別碼和用戶端密碼。  
-     - 請確定您在對應的 ITSM 產品中有足夠的許可權，才能建立連接。  
-   - 針對 Service Manager 連接：  
-     - 確定已成功部署 web 應用程式，且已建立混合式連接。 若要確認是否已成功建立與內部部署 Service Manager 電腦的連線，請移至 web 應用程式 URL，如建立 [混合](./itsmc-connections.md#configure-the-hybrid-connection)式連線的檔中所述。  
-
-- 如果 ServiceNow 的資料未同步處理至 Log Analytics，請確定 ServiceNow 實例未進入睡眠狀態。 當 ServiceNow 開發人員實例閒置很長一段時間時，有時會進入睡眠狀態。 如果發生這種情況，請回報問題。
-- 如果記錄分析警示引發但未在 ITSM 產品中建立工作專案，如果設定專案未建立/連結至工作專案，或其他資訊，請參閱下列資源：
-   -  ITSMC：解決方案會顯示連線、工作專案、電腦等的摘要。 選取具有 **連接器狀態** 標籤的磚。 這樣做會讓您使用相關查詢來 **記錄搜尋** 。 查看記錄檔記錄，以 `LogType_S` `ERROR` 取得詳細資訊。
-   - **記錄搜尋** 頁面：使用查詢直接查看錯誤和相關資訊 `*ServiceDeskLog_CL*` 。
-
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager web 應用程式部署進行疑難排解
-
--   如果您有 web 應用程式部署的問題，請確定您有權在訂用帳戶中建立/部署資源。
--   如果您在執行 [腳本](itsmc-service-manager-script.md)時取得 **未設定為物件錯誤實例的物件參考**，請確定您已在 [**使用者** 設定] 區段中輸入有效的值。
--   如果您無法建立服務匯流排轉送命名空間，請確定已在訂用帳戶中註冊必要的資源提供者。 如果未註冊，請從 Azure 入口網站手動建立服務匯流排轉送命名空間。 您也可以在 Azure 入口網站中 [建立混合](./itsmc-connections.md#configure-the-hybrid-connection) 式連線時建立它。
-
-## <a name="next-steps"></a>後續步驟
-
-深入瞭解 [IT 服務管理連接](itsmc-connections.md)
+f.    檢查通知，查看進程是否已啟動。

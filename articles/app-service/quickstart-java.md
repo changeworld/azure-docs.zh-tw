@@ -10,12 +10,13 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3c5a04bd14bdcbf250908db78c622b963f191d91
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+adobe-target: true
+ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333064"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802468"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入門：在 Azure App Service 上建立 Java 應用程式
 
@@ -80,9 +81,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 1. 出現 [訂用帳戶] 選項的提示時，請輸入行首列出的號碼，以選取適當的 `Subscription`。
 1. 出現 [Web 應用程式] 選項的提示時，請按 Enter 鍵以接受預設選項 `<create>`，或選取現有應用程式。
-1. 出現 [作業系統] 選項的提示時，請輸入 `3` 以選取 **Windows** 。
-1. 當系統提示 **定價層** 選項時，請輸入 `2` 以選取 **B2** 。
-1. 按 Enter 鍵，使用預設 Java 版本 **Java 8** 。
+1. 出現 [作業系統] 選項的提示時，請輸入 `3` 以選取 **Windows**。
+1. 當系統提示 **定價層** 選項時，請輸入 `2` 以選取 **B2**。
+1. 按 Enter 鍵，使用預設 Java 版本 **Java 8**。
 1. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
 
     您的摘要輸出看起來類似如下所示的程式碼片段。
@@ -112,10 +113,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 1. 出現 [訂用帳戶] 選項的提示時，請輸入行首列出的號碼，以選取適當的 `Subscription`。
 1. 出現 [Web 應用程式] 選項的提示時，請按 Enter 鍵以接受預設選項 `<create>`，或選取現有應用程式。
-1. 出現 [作業系統] 選項的提示時，請輸入 `3` 以選取 **Windows** 。
-1. 當系統提示 **定價層** 選項時，請輸入 `2` 以選取 **B2** 。
-1. 按 Enter 鍵，使用預設 Java 版本 **Java 8** 。
-1. 按 Enter 鍵，使用預設 Web 容器 **Tomcat 8.5** 。
+1. 出現 [作業系統] 選項的提示時，請輸入 `3` 以選取 **Windows**。
+1. 當系統提示 **定價層** 選項時，請輸入 `2` 以選取 **B2**。
+1. 按 Enter 鍵，使用預設 Java 版本 **Java 8**。
+1. 按 Enter 鍵，使用預設 Web 容器 **Tomcat 8.5**。
 1. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
 
     您的摘要輸出看起來類似如下所示的程式碼片段。
@@ -150,9 +151,9 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 1. 出現 [訂用帳戶] 選項的提示時，請輸入行首列出的號碼，以選取適當的 `Subscription`。
 1. 出現 [Web 應用程式] 選項的提示時，請按 Enter 鍵以接受預設選項 `<create>`，或選取現有應用程式。
-1. 出現 [作業系統] 選項的提示時，請按 Enter 鍵以選取 **Linux** 。
-1. 當系統提示 **定價層** 選項時，請輸入 `2` 以選取 **B2** 。
-1. 按 Enter 鍵，使用預設 Java 版本 **Java 8** 。
+1. 出現 [作業系統] 選項的提示時，請按 Enter 鍵以選取 **Linux**。
+1. 當系統提示 **定價層** 選項時，請輸入 `2` 以選取 **B2**。
+1. 按 Enter 鍵，使用預設 Java 版本 **Java 8**。
 1. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
 
     ```
@@ -179,10 +180,10 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 1. 出現 [訂用帳戶] 選項的提示時，請輸入行首列出的號碼，以選取適當的 `Subscription`。
 1. 出現 [Web 應用程式] 選項的提示時，請按 Enter 鍵以接受預設選項 `<create>`，或選取現有應用程式。
-1. 出現 [作業系統] 選項的提示時，請按 Enter 鍵以選取 **Linux** 。
-1. 當系統提示 **定價層** 選項時，請輸入 `2` 以選取 **B2** 。
-1. 按 Enter 鍵，使用預設 Java 版本 **Java 8** 。
-1. 按 Enter 鍵，使用預設 Web 容器 **Tomcat 8.5** 。
+1. 出現 [作業系統] 選項的提示時，請按 Enter 鍵以選取 **Linux**。
+1. 當系統提示 **定價層** 選項時，請輸入 `2` 以選取 **B2**。
+1. 按 Enter 鍵，使用預設 Java 版本 **Java 8**。
+1. 按 Enter 鍵，使用預設 Web 容器 **Tomcat 8.5**。
 1. 最後，在最後一個提示時按 Enter 鍵以確認您的選擇。
 
     ```
@@ -217,8 +218,8 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 `<subscriptionId>` | false | 指定訂用帳戶識別碼。 | 0.1.0+
 `<resourceGroup>` | true | Web 應用程式的 Azure 資源群組。 | 0.1.0+
 `<appName>` | true | 您的 Web 應用程式名稱。 | 0.1.0+
-`<region>` | true | 指定將裝載 Web 應用程式的區域；預設值為 **westeurope** 。 所有有效的區域皆列於[支援的區域](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)一節。 | 0.1.0+
-`<pricingTier>` | false | 您 Web 應用程式的定價層。 生產工作負載預設值為 **P1V2** ，而 Java 開發/測試建議最少使用 **B2** 。 [深入了解](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
+`<region>` | true | 指定將裝載 Web 應用程式的區域；預設值為 **westeurope**。 所有有效的區域皆列於[支援的區域](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)一節。 | 0.1.0+
+`<pricingTier>` | false | 您 Web 應用程式的定價層。 生產工作負載預設值為 **P1V2**，而 Java 開發/測試建議最少使用 **B2**。 [深入了解](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
 `<runtime>` | true | 執行階段環境組態，您可以在[此處](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看詳細資料。 | 0.1.0+
 `<deployment>` | true | 部署組態，您可以在[此處](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看詳細資料。 | 0.1.0+
 

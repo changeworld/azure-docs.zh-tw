@@ -3,12 +3,12 @@ title: 適用于高可用性的區域冗余登錄
 description: 瞭解如何在 Azure 可用性區域中建立容器登錄或複寫，以在 Azure Container Registry 中啟用區域冗余。 區域冗余是 Premium 服務層的功能。
 ms.topic: article
 ms.date: 12/11/2020
-ms.openlocfilehash: f94d5a8d61c42e8833e21f035303be173c81764d
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 1553beef47a3d493f066e47cd39751093d83fc24
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681514"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803505"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>在 Azure Container Registry 中啟用區域冗余以復原及高可用性
 
@@ -25,7 +25,6 @@ ms.locfileid: "97681514"
 * 區域中的區域冗余無法停用。
 * [ACR 工作](container-registry-tasks-overview.md) 尚不支援可用性區域。
 * 目前透過 Azure Resource Manager 範本或 Azure 入口網站支援。 未來版本將會啟用 Azure CLI 支援。
-* 目前，當您將區域重複的容器登錄移至另一個資源群組時，區域冗余設定會顯示為 `Disabled` 。
 
 ## <a name="about-zone-redundancy"></a>關於區域冗余
 
@@ -58,7 +57,7 @@ Azure Container Registry 也支援 [異地](container-registry-geo-replication.m
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-如有需要，請執行 [az group create](/cli/az/group#az_group_create) 命令，在 [支援可用性區域](../availability-zones/az-region.md) 的區域中為登錄建立資源群組，以進行 Azure Container Registry，例如 *eastus*。
+如有需要，請執行 [az group create](/cli/azure/group) 命令，在 [支援可用性區域](../availability-zones/az-region.md) 的區域中為登錄建立資源群組，以進行 Azure Container Registry，例如 *eastus*。
 
 ```azurecli
 az group create --name <resource-group-name> --location <location>
@@ -164,7 +163,7 @@ az group create --name <resource-group-name> --location <location>
   }
 ```
 
-執行下列 [az deployment group create](/cli/az/deployment#az_group_deployment_create) 命令，使用上述範本檔案來建立登錄。 指出時，請提供：
+執行下列 [az deployment group create](/cli/azure/deployment?view=azure-cli-latest) 命令，使用上述範本檔案來建立登錄。 指出時，請提供：
 
 * 唯一的登錄名稱，或部署不含參數的範本，它會為您建立唯一的名稱。
 * 支援可用性區域之複本的位置，例如 *westus2*

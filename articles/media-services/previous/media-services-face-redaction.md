@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: df2962c8d428694a663acddf5922829f8b913b92
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 1a7bd36a6e3f3cc5b785745fc51f0aede3b47b74
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737468"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803301"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒體分析修訂臉部
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 **Azure 媒體修訂器** 是 [Azure 媒體分析](./legacy-components.md) 媒體處理器 (MP)，可在雲端提供可調整的臉部修訂。 臉部修訂可讓您修改視訊，以模糊所選人物的臉部。 在公共安全和新聞媒體案例中，您可能會想要使用臉部修訂服務。 若要手動修訂包含多個臉部的幾分鐘影片，可能要花上數小時的時間，若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂程序。
 
@@ -385,4 +385,4 @@ namespace FaceRedaction
 
 [Azure 媒體服務分析概觀](./legacy-components.md)
 
-[Azure 媒體分析示範](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure 媒體分析示範](http://amslabs.azurewebsites.net/demos/Analytics.html)

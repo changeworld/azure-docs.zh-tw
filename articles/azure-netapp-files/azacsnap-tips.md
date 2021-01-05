@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: d73bfd19a4135d09e9e19fcbcfedd50dbc1f7067
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 86d7b1a6d361ebbc0d8419d184f9a11d390a37f1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632606"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803182"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>使用 Azure 應用程式一致的快照集工具 (preview) 的秘訣和訣竅
 
@@ -132,7 +132,7 @@ MAILTO=""
 
 您可以將快照集複製回 SAP Hana 資料區域，但是在 () 進行複製時，SAP Hana 不能正在執行 `cp /hana/data/H80/mnt00001/.snapshot/hana_hourly.2020-06-17T113043.1586971Z/*` 。
 
-針對 Azure 大型實例，您可以藉由開啟服務要求，從現有可用的快照集還原所需的快照集，以聯繫 Microsoft 營運團隊。 您可以從 Azure 入口網站開啟服務要求： <https://portal.azure.com.>
+針對 Azure 大型實例，您可以藉由開啟服務要求，從現有可用的快照集還原所需的快照集，以聯繫 Microsoft 營運團隊。 您可以從 Azure 入口網站開啟服務要求： <https://portal.azure.com>
 
 如果您決定執行嚴重損壞修復容錯移轉， `azacsnap -c restore --restore revertvolume` DR 網站上的命令會自動提供最新的 (`/hana/data` 和 `/hana/logbackups`) 磁片區快照集，以允許 SAP Hana 復原。 請小心使用此命令，因為它會中斷生產和 DR 網站之間的複寫。
 
@@ -249,7 +249,7 @@ MAILTO=""
 
 1. 客戶必須將伺服器關機。
 1. 關閉伺服器之後，客戶必須開啟包含要還原之電腦識別碼和快照集的服務要求。
-    > 客戶可以從 Azure 入口網站開啟服務要求： <https://portal.azure.com.>
+    > 客戶可以從 Azure 入口網站開啟服務要求： <https://portal.azure.com>
 1. Microsoft 會使用指定的電腦識別碼和快照來還原作業系統 LUN，然後將伺服器開機。
 1. 接著，客戶必須確認伺服器已開機且狀況良好。
 
@@ -273,6 +273,6 @@ MAILTO=""
 - **快照集的大小：** 取決於資料庫層級的大小/變更。
 - **記錄檔位置：** 命令所產生的記錄檔會輸出到 JSON 設定檔中定義的資料夾中，預設為執行命令的子資料夾 (例如 `./logs`) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [疑難排解](azacsnap-troubleshoot.md)

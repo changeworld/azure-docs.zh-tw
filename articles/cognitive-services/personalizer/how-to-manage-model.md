@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: f82adad5273f1c5559cbeb1924f59e57c863f6b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e954eab9da5dfc638f93a7c4e55c675c4f2ac9
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303449"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797242"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>如何管理模型和學習設定
 
@@ -18,7 +18,7 @@ ms.locfileid: "91303449"
 
 ## <a name="export-the-personalizer-model"></a>匯出個人化工具模型
 
-從資源管理的 **模型和學習設定**區段中，檢查模型建立和上次更新日期，然後匯出目前的模型。 您可以使用 Azure 入口網站或個人化工具 API 來匯出要加以封存的模型檔案。
+從資源管理的 **模型和學習設定** 區段中，檢查模型建立和上次更新日期，然後匯出目前的模型。 您可以使用 Azure 入口網站或個人化工具 API 來匯出要加以封存的模型檔案。
 
 ![匯出目前的個人化工具模型](media/settings/export-current-personalizer-model.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "91303449"
 
 ## <a name="import-a-new-learning-policy"></a>匯入新的學習原則
 
-[學習原則](concept-active-learning.md#understand-learning-policy-settings)設定會決定模型定型的_超參數_。 執行 [離線評估](how-to-offline-evaluation.md) 以找出新的學習原則。
+[學習原則](concept-active-learning.md#understand-learning-policy-settings)設定會決定模型定型的 _超參數_。 執行 [離線評估](how-to-offline-evaluation.md) 以找出新的學習原則。
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)，然後選取您的個人化工具資源。
 1. 選取 [**資源管理**] 區段中的 [**模型和學習設定**]。
@@ -55,4 +55,4 @@ ms.locfileid: "91303449"
 
 ## <a name="next-steps"></a>後續步驟
 
-[瞭解如何管理學習原則](how-to-manage-model.md)
+[使用離線評估來分析您的學習迴圈](how-to-offline-evaluation.md)

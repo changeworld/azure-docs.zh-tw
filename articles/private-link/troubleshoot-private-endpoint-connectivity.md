@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522323"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807547"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>針對 Azure 私人端點連線問題進行疑難排解
 
@@ -100,8 +100,24 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全的方式�
     
        ![NSG 輸出規則](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
+1. 來源虛擬機器應該要有私人端點 IP 下一個躍點的路由，以在 NIC 有效路由中 InterfaceEndpoints。 
+
+    a. 如果您無法在來源 VM 中看到私人端點路由，請檢查是否 
+     - 來源 VM 和私人端點屬於相同的 VNET。 如果是，則您需要與支援人員聯繫。 
+     - 來源 VM 和私人端點是不同 Vnet 的一部分，然後檢查 VNET 之間的 IP 連線能力。 如果有 IP 連線能力，但仍無法查看路由，請與支援人員聯繫。 
+
 1. 如果連線已驗證結果，連線問題可能與其他層面相關，例如應用層的秘密、權杖和密碼。
-   - 在此情況下，請檢查與私人端點相關聯之私用連結資源的設定。 如需詳細資訊，請參閱 [Azure Private Link 疑難排解指南](troubleshoot-private-link-connectivity.md)。
+   - 在此情況下，請檢查與私人端點相關聯之私用連結資源的設定。 如需詳細資訊，請參閱 [Azure Private Link 疑難排解指南](troubleshoot-private-link-connectivity.md)
+   
+1. 在提出支援票證之前，一定要先縮小。 
+
+    a. 如果來源是在 Azure 中連線至私人端點的內部部署，但有問題，請嘗試連接 
+      - 從內部部署到另一部虛擬機器，並檢查您是否有從內部部署到虛擬網路的 IP 連線能力。 
+      - 從虛擬網路中的虛擬機器到私人端點。
+      
+    b. 如果來源是 Azure 且私人端點位於不同的虛擬網路，請嘗試連線 
+      - 從不同來源到私人端點。 如此一來，您就可以找出任何虛擬機器的特定問題。 
+      - 屬於私人端點的相同虛擬網路中的任何虛擬機器。  
 
 1. 如果您的問題仍未解決，但仍有連線問題，請洽詢 [Azure 支援](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) 小組。
 

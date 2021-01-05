@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895718"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803913"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>在區塊 blob 資料上執行時間點還原
 
@@ -23,7 +23,7 @@ ms.locfileid: "95895718"
 若要深入瞭解時間點還原，請參閱 [區塊 blob 的時間點還原](point-in-time-restore-overview.md)。
 
 > [!CAUTION]
-> 時間點還原只支援在區塊 blob 上還原作業。 無法還原容器上的作業。 如果您藉由呼叫「 [刪除容器](/rest/api/storageservices/delete-container) 」作業來刪除儲存體帳戶中的容器，則無法使用還原作業來還原該容器。 如果您想要還原，請刪除個別的 blob，而不是刪除容器。
+> 時間點還原只支援在區塊 blob 上還原作業。 無法還原容器上的作業。 如果您藉由呼叫「 [刪除容器](/rest/api/storageservices/delete-container) 」作業來刪除儲存體帳戶中的容器，則無法使用還原作業來還原該容器。 如果您稍後想要還原，請刪除個別的 blob，而不是刪除整個容器。
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>啟用和設定時間點還原
 
@@ -107,6 +107,8 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 > 當您執行還原作業時，Azure 儲存體會封鎖作業期間正在還原之範圍中 blob 的資料作業。 主要位置會封鎖讀取、寫入和刪除作業。 基於這個理由，在進行還原作業時，在 Azure 入口網站中列出容器的作業可能不會如預期般執行。
 >
 > 如果儲存體帳戶是異地複寫的，則在還原作業期間，次要位置的讀取作業可能會繼續進行。
+>
+> 還原一組資料所需的時間，取決於還原期間所做的寫入和刪除作業數目。 例如，每日新增3000個物件且每天刪除1000個物件的1000000帳戶，大約需要兩個小時才能還原至過去30天的時間點。 具有此變更率的帳戶不建議在過去的保留期間和還原超過90天。
 
 ### <a name="restore-all-containers-in-the-account"></a>還原帳戶中的所有容器
 

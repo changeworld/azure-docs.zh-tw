@@ -4,12 +4,12 @@ description: 本文提供多網站和多區域同盟與 Azure 事件中樞的總
 ms.topic: article
 ms.date: 12/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 02057d505308902d780e20e095bc248d1eaa1a74
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7deb6fe04241225f1f97a204cc62b4aefad9f440
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657354"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804032"
 ---
 # <a name="multi-site-and-multi-region-federation"></a>多網站和多區域同盟
 
@@ -148,9 +148,9 @@ Azure 事件中樞偶爾會用於「發佈-訂閱」樣式案例中，內嵌事�
 
 對於需要考慮事件之間的關聯性、建立複合事件、擴充事件或減少事件、建立資料匯總以及轉換事件裝載的具狀態複寫應用程式， [Azure 串流分析](../stream-analytics/stream-analytics-introduction.md) 是最佳的執行選項。
 
-在 Azure 串流分析中，您可以[建立工作](../stream-analytics/stream-analytics-quick-create-portal.md)來整合[輸入](../stream-analytics/stream-analytics-add-inputs.md)和輸出，並透過[查詢](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md)產生可在輸出中提供的結果來整合輸入和[輸出](../stream-analytics/stream-analytics-define-outputs.md)資料。
+在 Azure 串流分析中，您可以[建立工作](../stream-analytics/stream-analytics-quick-create-portal.md)來整合[輸入](../stream-analytics/stream-analytics-add-inputs.md)和輸出，並透過[查詢](/stream-analytics-query/stream-analytics-query-language-reference)產生可在輸出中提供的結果來整合輸入和[輸出](../stream-analytics/stream-analytics-define-outputs.md)資料。
 
-查詢是以 [SQL 查詢語言](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md) 為基礎，而且可以用來在一段時間內輕鬆地篩選、排序、匯總和聯結串流資料。 您也可以使用 [JavaScript](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) 和 [c # 使用者定義函式 ](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md)來擴充此 SQL 語言， (udf) 。 透過簡單的語言建構和/或設定執行彙總作業時，您可以輕鬆調整事件排序選項和時間範圍的持續長度。
+查詢是以 [SQL 查詢語言](/stream-analytics-query/stream-analytics-query-language-reference) 為基礎，而且可以用來在一段時間內輕鬆地篩選、排序、匯總和聯結串流資料。 您也可以使用 [JavaScript](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) 和 [c # 使用者定義函式 ](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md)來擴充此 SQL 語言， (udf) 。 透過簡單的語言建構和/或設定執行彙總作業時，您可以輕鬆調整事件排序選項和時間範圍的持續長度。
 
 每個作業都具有所轉換資料的一或多個輸出，並可控制所要採取的動作以回應您所分析的資訊。 例如，您可以：
 

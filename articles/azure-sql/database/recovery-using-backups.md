@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 138cd03989008aa4fbd7d6ca3e06aff94fa76e33
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989440"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797208"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自動資料庫備份復原-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -95,7 +95,7 @@ ms.locfileid: "94989440"
   ![SQL 受控實例的資料庫還原選項螢幕擷取畫面。](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
-> 若要以程式設計方式從備份還原資料庫，請參閱 [使用自動備份以程式設計方式執行](recovery-using-backups.md)復原。
+> 若要以程式設計方式從備份還原資料庫，請參閱 [使用自動備份](recovery-using-backups.md)進行程式設計復原。
 
 ## <a name="deleted-database-restore"></a>還原已刪除的資料庫
 
@@ -238,7 +238,7 @@ ms.locfileid: "94989440"
 
 若要使用 REST API 來還原資料庫：
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [REST (createMode=Recovery)](/rest/api/sql/databases) |還原資料庫。 |
 | [取得建立或更新資料庫狀態](/rest/api/sql/operations) |在還原作業期間傳回狀態。 |
@@ -253,11 +253,11 @@ ms.locfileid: "94989440"
 
 若要使用 Azure CLI 來還原受控實例資料庫，請參閱 [az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 自動備份可在發生使用者和應用程式錯誤、意外刪除資料庫和長時間中斷時保護您的資料庫。 所有服務層級和計算大小都可以取得此內建功能。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)
 - [SQL Database 自動備份](automated-backups-overview.md)

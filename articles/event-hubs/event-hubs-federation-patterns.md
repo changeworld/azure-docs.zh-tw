@@ -3,12 +3,12 @@ title: 事件複寫工作模式-Azure 事件中樞 |Microsoft Docs
 description: 本文提供執行特定事件複寫工作模式的詳細指引
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 370c0f2d5c5c591668aa2dadf0512760a4a9b2f5
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663603"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803981"
 ---
 # <a name="event-replication-tasks-patterns"></a>事件複寫工作模式
 
@@ -136,7 +136,7 @@ static string GetEventHubName(string aliasName)
 
 前兩個模式的變化很簡單，而且不會與一般複寫工作不同。
 
-最後一個案例需要排除已複寫的事件，而不會再次複寫。 [EventHubToEventHubMerge](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/main/code/EventHubToEventHubMerge)範例會示範並說明這項技術。
+最後一個案例需要排除已複寫的事件，而不會再次複寫。 [EventHubToEventHubMerge](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/code/EventHubMerge)範例會示範並說明這項技術。
 
 ## <a name="editor"></a>編輯器
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528222"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797263"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>跨區域 (資源群組) 移動資源
 
@@ -58,13 +58,16 @@ ms.locfileid: "95528222"
 
 選取您要移動的資源。 您將資源移至來源區域訂用帳戶中的目的地區域。 如果要變更訂用帳戶，可以在移動資源後執行此動作。
 
+> [!NOTE]
+>  請勿選取相關聯的磁片，否則作業將會失敗。 相關聯的磁片會自動包含在 VM 移動中。
+
 1. 在 Azure 入口網站中，開啟相關的資源群組。
 2. 在 [資源群組] 頁面中，選取您要移動的資源。
 3. 選取 [**移**  >  **至另一個區域**]。
 
     ![將資源移至不同區域的選取範圍](./media/move-region-within-resource-group/select-move-region.png)
     
-4. 在 [ **來源 + 目的地**] 中，選取您要移動資源的目的地區域。 然後選取 [下一步]  。
+4. 在 [ **來源 + 目的地**] 中，選取您要移動資源的目的地區域。 然後選取 [下一步]。
 
 
     ![選取目的地區域的 [來源] 和 [目的地] 頁面](./media/move-region-within-resource-group/source-target.png)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a1b178450a1aa06db07d7b1ef525f7f781db9ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e116c590e07ffcdb1b7c8ae2e30b2e76bb909bff
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602813"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802706"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虛擬桌面合作夥伴整合
 
@@ -62,7 +62,7 @@ VMware 是 Windows 虛擬桌面核准的提供者，可協助客戶想要使用 
 Automai 可讓您將相同的腳本用於效能測試、功能測試、效能監視，甚至是機器人程式自動化，全都在一個平臺上執行。
 
 - [請參閱聯合解決方案簡介](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N)。
-- [前往合作夥伴網站](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580)。
+- [前往合作夥伴網站](https://www.automai.com/windows-virtual-desktop-performance-testing/)。
 
 ## <a name="cloudhouse"></a>Cloudhouse
 

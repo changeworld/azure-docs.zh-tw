@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 8812ab091037bcb3144a7fed53a449c3f5de353a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936534"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802502"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用 (SAS) 的共用存取簽章來授與 Azure 儲存體資源的有限存取權
 
@@ -112,7 +112,7 @@ SAS 權杖是您在用戶端產生的字串，例如，使用其中一個 Azure 
 
 用戶端應用程式會提供 SAS URI，以 Azure 儲存體為要求的一部分。 然後，服務會檢查 SAS 參數和簽章，以確認它是否有效。 如果服務確認簽章有效，則要求會獲得授權。 否則要求會遭到拒絕，並產生錯誤碼 403 (禁止)。
 
-以下是服務 SAS URI 的範例，其中顯示資源 URI 與 SAS 權杖：
+以下是服務 SAS URI 的範例，其中顯示資源 URI 和 SAS 權杖。 因為 SAS 權杖包含 URI 查詢字串，所以必須先將資源 URI 的後面加上問號，然後再接 SAS 權杖：
 
 ![服務 SAS URI 的元件](./media/storage-sas-overview/sas-storage-uri.png)
 

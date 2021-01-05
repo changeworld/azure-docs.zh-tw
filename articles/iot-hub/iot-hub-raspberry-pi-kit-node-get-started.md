@@ -13,12 +13,12 @@ ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
-ms.openlocfilehash: 1d6a51e2e9c052be0c59435b287c5fdde459f55d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334186"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802519"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>將 Raspberry Pi 連接至 Azure IoT Hub (Node.js)
 
@@ -97,7 +97,7 @@ ms.locfileid: "91334186"
 
 1. 下載 Raspbian。
 
-   a. [Raspbian Buster 與 desktop](https://www.raspberrypi.org/downloads/raspbian/) (.zip 檔案) 。
+   a. [Raspbian Buster 與 desktop](https://www.raspberrypi.org/software/) (.zip 檔案) 。
 
    b. 將 Raspbian 映像解壓縮到您電腦上的資料夾。
 
@@ -121,11 +121,11 @@ ms.locfileid: "91334186"
 
 2. 啟動 Pi，然後使用 `pi` 做為使用者名稱和密碼來登入 Raspbian `raspberry` 。
 
-3. 按一下 [Raspberry] 圖示 >**喜好**設定  >  **Raspberry Pi**設定。
+3. 按一下 [Raspberry] 圖示 >**喜好** 設定  >  **Raspberry Pi** 設定。
 
    ![[Raspbian 偏好設定] 功能表](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
-4. 在 [介面]**** 索引標籤上，將 [I2C]**** 和 [SSH]**** 設定為 [啟用]****，然後按一下 [確定]****。 如果您沒有實體感應器，而且想要使用模擬的感應器資料，這便是選擇性步驟。
+4. 在 [介面]索引標籤上，將 [I2C] 和 [SSH] 設定為 [啟用]，然後按一下 [確定]。 如果您沒有實體感應器，而且想要使用模擬的感應器資料，這便是選擇性步驟。
 
    ![在 Raspberry Pi 上啟用 I2C 和 SSH](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -230,7 +230,7 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 
    此檔案中有兩個您可以設定的項目。 第一個是 `interval`，這定義傳送至雲端之訊息間的時間間隔 (以毫秒為單位)。 第二個是 `simulatedData`，這是指出是否要使用模擬感應器資料的布林值。
 
-   如果**沒有感應器**，請將 `simulatedData` 值設定為 `true`，使範例應用程式建立和使用模擬感應器資料。
+   如果 **沒有感應器**，請將 `simulatedData` 值設定為 `true`，使範例應用程式建立和使用模擬感應器資料。
 
    *注意：本教學課程中使用的 i2c 位址預設為0x77。視您的設定而定，可能也會0x76：如果您遇到 i2c 錯誤，請嘗試將此值變更為118，並查看是否能更好。若要查看您的感應器所使用的位址，請在 `sudo i2cdetect -y 1` raspberry pi 上的 shell 中執行*
 
