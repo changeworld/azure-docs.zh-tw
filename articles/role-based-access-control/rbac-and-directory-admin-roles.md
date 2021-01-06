@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/07/2020
+ms.date: 01/04/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: cc4f775c3cf4c016173c485d57f203b4665c6393
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3c320b8faf5ccb0b1aec521909b152dff171cbd7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370639"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862592"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色
 
@@ -44,7 +44,7 @@ ms.locfileid: "92370639"
 
 | 傳統訂用帳戶管理員 | 限制 | 權限 | 注意 |
 | --- | --- | --- | --- |
-| 帳戶管理員 | 每個 Azure 帳戶 1 名 | <ul><li>在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中管理計費</li><li>管理帳戶中的所有訂用帳戶</li><li>建立新的訂用帳戶</li><li>取消訂用帳戶</li><li>變更訂用帳戶的計費</li><li>變更服務管理員</li></ul> | 在概念上，就是訂用帳戶的計費擁有者。<br>帳戶管理員無法存取 Azure 入口網站。 |
+| 帳戶管理員 | 每個 Azure 帳戶 1 名 | <ul><li>在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中管理計費</li><li>管理帳戶中的所有訂用帳戶</li><li>建立新的訂用帳戶</li><li>取消訂用帳戶</li><li>變更訂用帳戶的計費</li><li>變更服務管理員</li></ul> | 在概念上，就是訂用帳戶的計費擁有者。 |
 | 服務管理員 | 每個 Azure 訂用帳戶 1 名 | <ul><li>在 [Azure 入口網站](https://portal.azure.com)中管理服務</li><li>取消訂用帳戶</li><li>將使用者指派給共同管理員角色</li></ul> | 根據預設，新訂用帳戶的帳戶管理員也是服務管理員。<br>服務管理員與在訂用帳戶範圍獲派擁有者角色的使用者具有同等的存取權。<br>服務管理員可完整存取 Azure 入口網站。 |
 | 共同管理員 | 每個訂用帳戶 200 名 | <ul><li>具有與服務管理員相同的存取權限，但無法變更訂用帳戶與 Azure 目錄的關聯</li><li>將使用者指派給共同管理員角色，但無法變更服務管理員</li></ul> | 共同管理員與在訂用帳戶範圍獲派擁有者角色的使用者具有同等的存取權。 |
 

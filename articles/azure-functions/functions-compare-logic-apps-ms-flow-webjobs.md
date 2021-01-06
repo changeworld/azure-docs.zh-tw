@@ -4,12 +4,12 @@ description: 比較已針對整合工作最佳化的 Microsoft 雲端服務：Po
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403070"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934861"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中選擇正確的整合和自動化服務
 
@@ -78,9 +78,9 @@ Azure Functions 是以 WebJobs SDK 為基礎，因此其共用許多相同的事
 
 |  | 函式 | 搭配 WebJobs SDK 的 WebJobs |
 | --- | --- | --- |
-|**[無伺服器應用程式模型](https://azure.microsoft.com/solutions/serverless/)與[自動調整](functions-scale.md#how-the-consumption-and-premium-plans-work)**|✔||
+|**[無伺服器應用程式模型](https://azure.microsoft.com/solutions/serverless/)與 [自動調整](event-driven-scaling.md)**|✔||
 |**[在瀏覽器中開發與測試](functions-create-first-azure-function.md)** |✔||
-|**[按使用次數付費的定價方式](functions-scale.md#consumption-plan)**|✔||
+|**[按使用次數付費的定價方式](consumption-plan.md)**|✔||
 |**[與 Logic Apps 整合](functions-twitter-email.md)**|✔||
 | **觸發程序事件** |[計時器](functions-bindings-timer.md)<br>[Azure 儲存體佇列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服務匯流排佇列和主題](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中樞](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[事件格線](functions-bindings-event-grid.md)|[計時器](functions-bindings-timer.md)<br>[Azure 儲存體佇列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服務匯流排佇列和主題](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中樞](functions-bindings-event-hubs.md)<br>[檔案系統](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
 | **支援的語言**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |C#<sup>1</sup>|

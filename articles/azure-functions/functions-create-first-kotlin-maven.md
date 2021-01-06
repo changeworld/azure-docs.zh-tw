@@ -7,16 +7,16 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: acb4290a90532b38f44a957e33c69f7d2b3f11f8
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 167e7c447fe43851255677a44043c508cbdc4239
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104813"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934827"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>快速入門：使用 Kotlin 和 Maven 建立您的第一個函式
 
-本文會引導您使用 Maven 命令列工具來建置 Kotlin 函式專案並發佈至 Azure Functions。 當您完成時，您的函式程式碼會在 Azure 中的[取用方案](functions-scale.md#consumption-plan)上執行，並且可使用 HTTP 要求來觸發。
+本文會引導您使用 Maven 命令列工具來建置 Kotlin 函式專案並發佈至 Azure Functions。 當您完成時，您的函式程式碼會在 Azure 中的[取用方案](consumption-plan.md)上執行，並且可使用 HTTP 要求來觸發。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

@@ -5,18 +5,18 @@ author: cgillum
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2ec1b080c195a47caafd0120240b5fb61ede062b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "74233002"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932277"
 ---
 # <a name="durable-functions-billing"></a>Durable Functions 計費
 
 [Durable Functions](durable-functions-overview.md) 的計費方式與 Azure Functions 相同。 如需詳細資訊，請參閱 [Azure Functions 價格](https://azure.microsoft.com/pricing/details/functions/)。
 
-在 Azure Functions [取用方案](../functions-scale.md#consumption-plan)中執行協調器函式時，您必須注意一些計費行為。 下列各節會更詳細地說明這些行為及其影響。
+在 Azure Functions [取用方案](../consumption-plan.md)中執行協調器函式時，您必須注意一些計費行為。 下列各節會更詳細地說明這些行為及其影響。
 
 ## <a name="orchestrator-function-replay-billing"></a>協調器函式重新執行計費
 
@@ -33,7 +33,7 @@ ms.locfileid: "74233002"
 
 ## <a name="durable-http-polling"></a>長期 HTTP 輪詢
 
-協調器函式可以對外部端點進行長時間執行的 HTTP 呼叫，如 [HTTP 功能](durable-functions-http-features.md)一文所述。 **CallHttpAsync** 方法 (C#) 和 **callHttp** 方法 (JavaScript) 可能會在依循[非同步 202 模式](durable-functions-http-features.md#http-202-handling)時於內部輪詢 HTTP 端點。
+協調器函式可以對外部端點進行長時間執行的 HTTP 呼叫，如 [HTTP 功能](durable-functions-http-features.md)一文所述。 **CallHttpAsync** 方法 (C#) 和 **callHttp** 方法 (JavaScript) 可能會在依循 [非同步 202 模式](durable-functions-http-features.md#http-202-handling)時於內部輪詢 HTTP 端點。
 
 內部 HTTP 輪詢作業目前不會直接計費。 不過，內部輪詢可能會導致協調器函式定期重新執行。 您的這些內部函式重新執行將以標準費用計費。
 
@@ -45,7 +45,7 @@ Durable Functions 依預設會使用 Azure 儲存體來保持狀態的一致性�
 
 * 單一函式應用程式會與單一工作中樞相關聯，它會共用一組 Azure 儲存體資源。 函式應用程式中的所有 Durable Functions 都會使用這些資源。 函式應用程式中的實際函式數目不會影響 Azure 儲存體交易成本。
 * 每個函式應用程式執行個體都會使用指數輪詢演算法，在內部輪詢儲存體帳戶中的多個佇列。 閒置應用程式執行個體輪詢佇列的頻率會低於作用中的應用程式，因此所產生的交易成本較少。 如需有關 Durable Functions 佇列輪詢行為的詳細資訊，請參閱[效能與級別的佇列輪詢區段](durable-functions-perf-and-scale.md#queue-polling)一文。
-* 在 Azure Functions 取用或進階方案中執行時，[Azure Functions 級別控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)會在背景定期輪詢所有工作中樞佇列。 如果函式應用程式在輕量到中度級別之下，只有單一級別控制器執行個體會輪詢這些佇列。 如果函式應用程式相應放大為大量執行個體，則可能會新增更多級別控制器執行個體。 這些額外的級別控制器執行個體可能會增加佇列交易總成本。
+* 在 Azure Functions 取用或進階方案中執行時，[Azure Functions 級別控制器](../event-driven-scaling.md)會在背景定期輪詢所有工作中樞佇列。 如果函式應用程式在輕量到中度級別之下，只有單一級別控制器執行個體會輪詢這些佇列。 如果函式應用程式相應放大為大量執行個體，則可能會新增更多級別控制器執行個體。 這些額外的級別控制器執行個體可能會增加佇列交易總成本。
 * 每個函式應用程式執行個體都會競爭取得一組 Blob 租用。 這些執行個體會定期對 Azure Blob 服務進行呼叫，以更新保留的租用，或嘗試取得新的租用。 工作中樞設定的分割區計數將決定 Blob 租用的數目。 相應放大為較大量的函式應用程式執行個體，可能會增加與這些租用作業相關聯的 Azure 儲存體交易成本。
 
 您可在 [Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/)文件中找到 Azure 儲存體定價的詳細資訊。 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
-ms.openlocfilehash: b87408669dbb9268d6e3cd47b410b888ef1a19c2
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 19d38bb5933a6acf82c61f0a739bf2adb7f34eaf
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637144"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937258"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>快速入門：從命令列在 Azure 中建立 C# 函式
 
@@ -129,7 +129,7 @@ ms.locfileid: "94637144"
     
     在上一個範例中，將 `<STORAGE_NAME>` 取代為您在上一個步驟中使用的帳戶名稱，並將 `<APP_NAME>` 取代為適合您的全域唯一名稱。 `<APP_NAME>` 也是函式應用程式的預設 DNS 網域。 
     
-    此命令會依據 [Azure Functions 使用方案](functions-scale.md#consumption-plan)，建立在您指定的語言執行階段中執行的函式應用程式，而此應用程式在此處產生的使用量是免費的。 此命令也會在相同的資源群組中佈建相關聯的 Azure Application Insights 執行個體，您可將其用於監視函式應用程式和檢視記錄。 如需詳細資訊，請參閱[監視 Azure Functions](functions-monitoring.md)。 在您啟用此執行個體之前，並不會產生任何成本。
+    此命令會依據 [Azure Functions 使用方案](consumption-plan.md)，建立在您指定的語言執行階段中執行的函式應用程式，而此應用程式在此處產生的使用量是免費的。 此命令也會在相同的資源群組中佈建相關聯的 Azure Application Insights 執行個體，您可將其用於監視函式應用程式和檢視記錄。 如需詳細資訊，請參閱[監視 Azure Functions](functions-monitoring.md)。 在您啟用此執行個體之前，並不會產生任何成本。
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 
