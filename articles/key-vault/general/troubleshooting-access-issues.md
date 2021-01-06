@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616383"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901210"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>針對 Azure Key Vault 存取原則問題進行疑難排解
 
@@ -32,7 +32,7 @@ ms.locfileid: "97616383"
 ### <a name="i-am-not-able-to-modify-access-policy-how-can-it-be-enabled"></a>我無法修改存取原則，請問如何啟用？
 使用者必須有足夠的 AAD 權限才能修改存取原則。 在此情況下，使用者必須擁有較高的參與者角色。
 
-### <a name="i-am-seeing-unkwown-policy-error-what-does-that-mean"></a>我看到「未知的原則」錯誤。 這代表什麼？
+### <a name="i-am-seeing-unknown-policy-error-what-does-that-mean"></a>我看到「未知的原則」錯誤。 這代表什麼？
 您有兩種不同的可能性會看到未知的存取原則：
 * 可能是先前有存取權的使用者，現在因為某些原因而不存在了。
 * 是否透過 powershell 新增存取原則，而且是為了應用程式 objectid (而不是服務主體) 新增存取原則

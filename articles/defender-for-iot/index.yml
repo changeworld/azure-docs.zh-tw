@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: 適用於 IoT 的 Azure Defender 文件
-summary: 適用於 IoT 的 Azure Defender 是 Azure 型的雲端安全性服務，可提供完整的 IoT 裝置威脅保護。
+summary: 適用於 IoT 的 Azure Defender 為 IoT/OT 環境提供了全面威脅偵測，其具有多個部署選項，包括完整的內部部署、雲端連線或混合式部署。
 metadata:
   title: 適用於 IoT 的 Azure Defender 文件
   description: 了解適用於 IoT 的 Azure Defender (Azure 型的雲端安全性服務) 如何提供完整的 IoT 裝置威脅保護。
@@ -11,12 +11,12 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/07/2020
-  ms.openlocfilehash: 00cef8a146a84c4261dde46785f2ea9bb1c03173
-  ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+  ms.openlocfilehash: 65bdc8c54e8cee2ee1b63d21a172ba870162d070
+  ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 12/31/2020
-  ms.locfileid: "97832330"
+  ms.lasthandoff: 01/04/2021
+  ms.locfileid: "97860829"
 landingContent:
 - title: 開始使用適用於 IoT 的 Azure Defender
   linkLists:

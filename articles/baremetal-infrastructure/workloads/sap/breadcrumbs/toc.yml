@@ -1,0 +1,11 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: BareMetal 基礎結構
+      tocHref: /azure/
+      topicHref: /azure/baremetal-infrastructure/index
+      items:
+        - name: 參考
+          tocHref: /azure/virtual-machines/workloads/sap/
+          topicHref: /azure/baremetal-infrastructure/index

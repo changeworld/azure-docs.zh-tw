@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5894a57e6495ca02002c8f32b893e696c7f5679b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350699"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897265"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教學課程：設定 ServiceNow 來自動佈建使用者
 
@@ -50,7 +50,7 @@ ms.locfileid: "96350699"
 
 1. 識別您的 ServiceNow 執行個體名稱。 您可在用來存取 ServiceNow 的 URL 中找到執行個體名稱。 在下面的範例中，執行個體名稱是 dev35214。
 
-   ![ServiceNow 執行個體](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow 執行個體](media/servicenow-provisioning-tutorial/servicenow-instance.png)
 
 2. 取得 ServiceNow 中管理員的認證。 瀏覽至 ServiceNow 中的使用者設定檔，並確認使用者具有管理員角色。 
 
@@ -63,9 +63,9 @@ ms.locfileid: "96350699"
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
-Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的範圍篩選條件。 
+Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)所述的範圍篩選條件。 
 
-* 將使用者和群組指派給 ServiceNow 時，您必須選取 [預設存取] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md) \(部分機器翻譯\) 以新增其他角色。 
+* 將使用者和群組指派給 ServiceNow 時，您必須選取 [預設存取] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是預設存取角色，您可[更新應用程式資訊清單](../develop/howto-add-app-roles-in-azure-ad-apps.md)以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)。 
 
@@ -94,7 +94,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 5. 在 [管理員認證] 區段下，輸入您的 ServiceNow 管理員認證和使用者名稱。 按一下 [測試連線]，以確保 Azure AD 可以連線至 ServiceNow。 如果連線失敗，請確定您的 ServiceNow 帳戶具有管理員權限，然後再試一次。
 
-    ![螢幕擷取畫面：顯示 [服務佈建] 頁面，您可以在其中輸入管理員認證。](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![螢幕擷取畫面：顯示 [服務佈建] 頁面，您可以在其中輸入管理員認證。](./media/servicenow-provisioning-tutorial/servicenow-provisioning.png)
 
 6. 在 [通知電子郵件] 欄位中，輸入應該收到佈建錯誤通知的個人或群組電子郵件地址，然後選取 [發生失敗時傳送電子郵件通知] 核取方塊。
 
@@ -120,17 +120,17 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]  。
+15. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定] 區段的 [範圍] 中所定義所有使用者和群組啟動首次同步處理週期。 初始週期會比後續週期花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 
+此作業會對在 [設定] 區段的 [範圍] 中定義的所有使用者和群組，啟動首次同步處理週期。 初始週期會比後續週期花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 
 
 ## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
 設定佈建後，請使用下列資源來監視您的部署：
 
-1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md)來判斷哪些使用者已佈建成功或失敗
+2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)來查看佈建週期的狀態，以及其接近完成的程度
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。  
 
 ## <a name="troubleshooting-tips"></a>疑難排解秘訣
@@ -142,11 +142,16 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   此錯誤表示與 ServiceNow 執行個體通訊時發生問題。 請再次檢查以確定 ServiceNow 中 *已停用* 下列設定：
+   此錯誤表示與 ServiceNow 執行個體通訊時發生問題。 
+   
+   如果發生測試連線問題，請嘗試在 ServiceNow 中將下列設定設定為「停用」：
    
    1. 選取 [系統安全性] > [高安全性設定] > [要求傳入的 SCHEMA 要求進行基本驗證]。
    2. 選取 [系統屬性] > [Web 服務] > [要求傳入的 SOAP 要求進行基本授權]。
 
+   ![授權 SOAP 要求](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
+
+   如果這解決了您的問題，請洽詢 ServiceNow 支援，並要求他們開啟 SOAP 偵錯工具以協助進行疑難排解。 
 ## <a name="additional-resources"></a>其他資源
 
 * [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)

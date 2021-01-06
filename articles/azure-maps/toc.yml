@@ -306,6 +306,8 @@
       items:
         - name: 資料服務
           href: /rest/api/maps/data
+        - name: 海拔服務
+          href: /rest/api/maps/elevation
         - name: 地理位置服務
           href: /rest/api/maps/geolocation
         - name: 行動服務

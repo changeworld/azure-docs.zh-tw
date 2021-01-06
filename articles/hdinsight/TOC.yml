@@ -3,7 +3,7 @@
 - name: HDInsight 服務
   expanded: true
   items:
-    - name: 總覽
+    - name: 概觀
       items:
         - name: 什麼是 Azure HDInsight？
           href: ./hdinsight-overview.md
@@ -688,6 +688,10 @@
       items:
         - name: 使用 HDInsight 中的 Apache HBase
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - name: 概念
+      items:
+        - name: 最佳化建議程式的建議
+          href: ./hbase/apache-hbase-advisor.md
     - name: 操作指南
       items:
         - name: 開發

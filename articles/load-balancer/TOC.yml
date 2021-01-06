@@ -93,6 +93,8 @@
       href: manage.md
     - name: 虛擬機器擴展集
       items:
+        - name: 更新或刪除虛擬機器擴展集所使用的現有 Azure Load Balancer
+          href: update-load-balancer-with-vm-scale-set.md
         - name: 與現有的 Azure Load Balancer 搭配使用 - 入口網站
           href: configure-vm-scale-set-portal.md
         - name: 與現有的 Azure Load Balancer 搭配使用 - PowerShell

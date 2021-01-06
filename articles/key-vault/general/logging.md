@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 08/12/2019
+ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: eef4f6b8ee5821e54b5b7709eee7f8dad8749e63
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488531"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883379"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
@@ -23,7 +23,7 @@ ms.locfileid: "94488531"
 
 在金鑰保存庫作業 10 分鐘 (最多) 後，您就可以存取記錄資訊。 但大多不用這麼久。  儲存體帳戶中的記錄由您全權管理：
 
-* 請使用標準的 Azure 存取控制方法限制可存取記錄的人員，藉此來保護記錄。
+* 在儲存體帳戶中使用標準的 Azure 存取控制方法，透過限制可存取記錄的人員來保護記錄。
 * 刪除不想繼續保留在儲存體帳戶中的記錄。
 
 如 Key Vault 的概觀資訊，請參閱[什麼是 Azure Key Vault？](overview.md) 如需 Key Vault 適用地區的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/key-vault/)。 如需使用[適用於 Key Vault 的 Azure 監視器](../../azure-monitor/insights/key-vault-insights-overview.md)相關資訊。
@@ -73,9 +73,9 @@ ms.locfileid: "94488531"
 | **callerIpAddress** |提出要求用戶端的 IP 位址。 |
 | **correlationId** |選擇性的 GUID，用戶端可傳遞此 GUID 來讓用戶端記錄與服務端 (金鑰保存庫) 記錄相互關聯。 |
 | **身分識別** |權杖中的身分識別，會在 REST API 要求中提供。 就像從 Azure PowerShell Cmdlet 產生的要求一樣，這通常是「使用者」、「服務主體」或「使用者+appId」的組合。 |
-| **properties** |根據作業 ( **operationName** ) 而有所不同的資訊。 在大部分情況下，此欄位會包含用戶端資訊 (用戶端傳遞的使用者代理程式字串)、完全符合的 REST API 要求 URI 和 HTTP 狀態碼。 此外，在因為提出要求 (例如， **KeyCreate** 或 **VaultGet** ) 而傳回物件時，此欄位也會包含金鑰 URI (形式為 `id`)、保存庫 URI 或祕密 URI。 |
+| **properties** |根據作業 (**operationName**) 而有所不同的資訊。 在大部分情況下，此欄位會包含用戶端資訊 (用戶端傳遞的使用者代理程式字串)、完全符合的 REST API 要求 URI 和 HTTP 狀態碼。 此外，在因為提出要求 (例如，**KeyCreate** 或 **VaultGet**) 而傳回物件時，此欄位也會包含金鑰 URI (形式為 `id`)、保存庫 URI 或祕密 URI。 |
 
-**operationName** 欄位值的格式為 *ObjectVerb* 。 例如：
+**operationName** 欄位值的格式為 *ObjectVerb*。 例如：
 
 * 所有金鑰保存庫作業都有 `Vault<action>` 格式，例如 `VaultGet` 和 `VaultCreate`。
 * 所有金鑰作業都有 `Key<action>` 格式，例如 `KeySign` 和 `KeyList`。
@@ -84,6 +84,8 @@ ms.locfileid: "94488531"
 下表列出 **operationName** 值和相對應的 REST API 命令：
 
 ### <a name="operation-names-table"></a>作業名稱資料表
+
+# <a name="vault"></a>[保存庫](#tab/Vault)
 
 | operationName | REST API 命令 |
 | --- | --- |
@@ -97,6 +99,12 @@ ms.locfileid: "94488531"
 | **VaultRecover** |復原已刪除的保存庫|
 | **VaultGetDeleted** |[取得已刪除的保存庫](/rest/api/keyvault/vaults/getdeleted) |
 | **VaultListDeleted** |[列出已刪除的保存庫](/rest/api/keyvault/vaults/listdeleted) |
+| **VaultAccessPolicyChangedEventGridNotification** | 已發佈保存庫存取原則已變更事件 |
+
+# <a name="keys"></a>[[索引鍵]](#tab/Keys)
+
+| operationName | REST API 命令 |
+| --- | --- |
 | **KeyCreate** |[建立金鑰](/rest/api/keyvault/createkey) |
 | **KeyGet** |[取得金鑰的相關資訊](/rest/api/keyvault/getkey) |
 | **KeyImport** |[將金鑰匯入保存庫](/rest/api/keyvault/vaults) |
@@ -116,6 +124,32 @@ ms.locfileid: "94488531"
 | **KeyRecover** |[復原金鑰](/rest/api/keyvault/recoverdeletedkey) |
 | **KeyGetDeleted** |[取得已刪除的金鑰](/rest/api/keyvault/getdeletedkey) |
 | **KeyListDeleted** |[列出保存庫中已刪除的金鑰](/rest/api/keyvault/getdeletedkeys) |
+| **KeyNearExpiryEventGridNotification** |已發佈金鑰即將過期事件 |
+| **KeyExpiredEventGridNotification** |已發佈金鑰已過期事件 |
+
+# <a name="secrets"></a>[密碼](#tab/Secrets)
+
+| operationName | REST API 命令 |
+| --- | --- |
+| **SecretSet** |[建立密碼](/rest/api/keyvault/updatecertificate) |
+| **SecretGet** |[取得祕密](/rest/api/keyvault/getsecret) |
+| **SecretUpdate** |[更新密碼](/rest/api/keyvault/updatesecret) |
+| **SecretDelete** |[刪除秘密](/rest/api/keyvault/deletesecret) |
+| **SecretList** |[列出保存庫中的密碼](/rest/api/keyvault/getsecrets) |
+| **SecretListVersions** |[列出密碼的版本](/rest/api/keyvault/getsecretversions) |
+| **SecretPurge** |[清除秘密](/rest/api/keyvault/purgedeletedsecret) |
+| **SecretBackup** |[備份秘密](/rest/api/keyvault/backupsecret) |
+| **SecretRestore** |[還原秘密](/rest/api/keyvault/restoresecret) |
+| **SecretRecover** |[復原秘密](/rest/api/keyvault/recoverdeletedsecret) |
+| **SecretGetDeleted** |[取得已刪除的秘密](/rest/api/keyvault/getdeletedsecret) |
+| **SecretListDeleted** |[列出保存庫中已刪除的秘密](/rest/api/keyvault/getdeletedsecrets) |
+| **SecretNearExpiryEventGridNotification** |已發佈祕密即將過期事件 |
+| **SecretExpiredEventGridNotification** |已發佈祕密已過期事件 |
+
+# <a name="certificates"></a>[憑證](#tab/Cerificates)
+
+| operationName | REST API 命令 |
+| --- | --- |
 | **CertificateGet** |[取得憑證的相關資訊](/rest/api/keyvault/getcertificate) |
 | **CertificateCreate** |[建立憑證](/rest/api/keyvault/createcertificate) |
 | **CertificateImport** |[將憑證匯入保存庫](/rest/api/keyvault/importcertificate) |
@@ -146,25 +180,9 @@ ms.locfileid: "94488531"
 | **CertificatePendingMerge** |擱置憑證合併 |
 | **CertificatePendingUpdate** |擱置憑證更新 |
 | **CertificatePendingDelete** |刪除擱置中的憑證 |
-| **SecretSet** |[建立密碼](/rest/api/keyvault/updatecertificate) |
-| **SecretGet** |[取得祕密](/rest/api/keyvault/getsecret) |
-| **SecretUpdate** |[更新密碼](/rest/api/keyvault/updatesecret) |
-| **SecretDelete** |[刪除秘密](/rest/api/keyvault/deletesecret) |
-| **SecretList** |[列出保存庫中的密碼](/rest/api/keyvault/getsecrets) |
-| **SecretListVersions** |[列出密碼的版本](/rest/api/keyvault/getsecretversions) |
-| **SecretPurge** |[清除秘密](/rest/api/keyvault/purgedeletedsecret) |
-| **SecretBackup** |[備份秘密](/rest/api/keyvault/backupsecret) |
-| **SecretRestore** |[還原秘密](/rest/api/keyvault/restoresecret) |
-| **SecretRecover** |[復原秘密](/rest/api/keyvault/recoverdeletedsecret) |
-| **SecretGetDeleted** |[取得已刪除的秘密](/rest/api/keyvault/getdeletedsecret) |
-| **SecretListDeleted** |[列出保存庫中已刪除的秘密](/rest/api/keyvault/getdeletedsecrets) |
-| **VaultAccessPolicyChangedEventGridNotification** | 已發佈保存庫存取原則已變更事件 |
-| **SecretNearExpiryEventGridNotification** |已發佈祕密即將過期事件 |
-| **SecretExpiredEventGridNotification** |已發佈祕密已過期事件 |
-| **KeyNearExpiryEventGridNotification** |已發佈金鑰即將過期事件 |
-| **KeyExpiredEventGridNotification** |已發佈金鑰已過期事件 |
 | **CertificateNearExpiryEventGridNotification** |已發佈憑證即將過期事件 |
 | **CertificateExpiredEventGridNotification** |已發佈憑證已過期事件 |
+---
 
 ## <a name="use-azure-monitor-logs"></a>使用 Azure 監視器記錄
 
@@ -175,6 +193,7 @@ ms.locfileid: "94488531"
 ## <a name="next-steps"></a>後續步驟
 
 - [如何啟用 Key Vault 記錄](howto-logging.md)
+- [Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)
 - 如需在 .NET Web 應用程式中使用 Azure Key Vault 的教學課程，請參閱[從 Web 應用程式使用 Azure Key Vault](tutorial-net-create-vault-azure-web-app.md)。
 - 如需程式設計參考，請參閱 [Azure 金鑰保存庫開發人員指南](developers-guide.md)。
 - 如需 Azure 金鑰保存庫的 Azure PowerShell 1.0 Cmdlet 清單，請參閱 [Azure 金鑰保存庫 Cmdlet](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)。

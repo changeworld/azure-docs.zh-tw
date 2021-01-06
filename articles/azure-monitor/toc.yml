@@ -129,7 +129,7 @@
           href: app/data-retention-privacy.md
     - name: 警示
       items:
-        - name: 總覽
+        - name: 概觀
           href: platform/alerts-overview.md
         - name: 度量警示
           href: platform/alerts-metric-overview.md
@@ -420,7 +420,7 @@
             - name: Linux
               displayname: diagnostics extension
               items:
-                - name: 總覽
+                - name: 概觀
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: 使用 Telegraf 收集計量
                   href: platform/collect-custom-metrics-linux-telegraf.md
@@ -675,7 +675,7 @@
               href: app/remove-application-insights.md
         - name: 無程式碼監視
           items:
-            - name: 總覽
+            - name: 概觀
               href: app/codeless-overview.md
             - name: Azure 虛擬機器和虛擬機器擴展集
               href: app/azure-vm-vmss-apps.md
@@ -1010,7 +1010,7 @@
           href: insights/vminsights-optout.md
     - name: 適用於容器的 Azure 監視器
       items:
-        - name: 總覽
+        - name: 概觀
           href: insights/container-insights-overview.md
         - name: 常見問題集
           href: faq.md#azure-monitor-for-containers
@@ -1090,6 +1090,8 @@
           href: insights/redis-cache-insights-overview.md
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
+        - name: Azure 資料總管 (預覽)
+          href: insights/data-explorer.md
         - name: 網路
           href: insights/network-insights-overview.md
         - name: Key Vault
@@ -1103,7 +1105,7 @@
           href: insights/troubleshoot-workbooks.md
         - name: 方案
           items:
-            - name: 總覽
+            - name: 概觀
               href: insights/solutions.md
               displayName: 'Azure CLI, az monitor log-analytics'
             - name: 目標解決方案
@@ -1303,7 +1305,7 @@
               href: app/snapshot-collector-release-notes.md
         - name: 資料模型
           items:
-            - name: 總覽
+            - name: 概觀
               href: app/data-model.md
             - name: 要求
               href: app/data-model-request-telemetry.md
