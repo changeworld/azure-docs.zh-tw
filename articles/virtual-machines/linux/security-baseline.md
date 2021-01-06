@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 45a33981c51f5a2590843fafc1e54f54d2e567cf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d8893daaf73a15cdc0baf8eeb339e794f6f1da64
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498467"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913442"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>適用于 Linux 虛擬機器的 Azure 安全性基準
 
@@ -602,7 +602,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [如何建立 Azure 活動記錄事件的警示](../../azure-monitor/platform/alerts-activity-log.md)
 
-* [Azure 儲存體分析記錄](../../storage/common/storage-analytics-logging.md) (部分機器翻譯)
+* [Azure 儲存體分析記錄](../../storage/common/storage-analytics-logging.md)
 
 **Azure 資訊安全中心監視**：無法使用
 
@@ -900,7 +900,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [建立 ARM 範本的資訊](../windows/ps-template.md)
 
-* [如何將自訂 VM VHD 上傳至 Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [如何將自訂 VM VHD 上傳至 Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910&preserve-view=true)
 
 **Azure 資訊安全中心監視**：是
 

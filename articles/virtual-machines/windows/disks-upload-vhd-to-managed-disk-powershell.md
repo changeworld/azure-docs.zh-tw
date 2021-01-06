@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 25d8c36cc42c3f1d1cc2a8477a7361ba45bec706
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 17b99a9d3fa6b2934705d913170f2f617c856998
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977913"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915754"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>將 VHD 上傳至 Azure，或將受控磁碟複製到另一個區域-Azure PowerShell
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 下載 [AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)的最新版本。
 - [安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
@@ -44,7 +44,7 @@ ms.locfileid: "91977913"
 
 您需要上傳的 VHD 檔案大小（以位元組為單位），才能建立空白的標準 HDD 以進行上傳。 範例程式碼會為您取得，但您可以自行使用： `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` 。 指定 **-UploadSizeInBytes** 參數時，會使用這個值。
 
-現在，在您的本機 shell 上，藉由在 **-CreateOption**參數中指定**上傳**設定，以及[New-azdiskconfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) Cmdlet 中的 **-UploadSizeInBytes**參數，來建立要上傳的空白標準 HDD。 然後呼叫 [>get-azdisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) 來建立磁片。
+現在，在您的本機 shell 上，藉由在 **-CreateOption** 參數中指定 **上傳** 設定，以及 [New-azdiskconfig](/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0&preserve-view=true) Cmdlet 中的 **-UploadSizeInBytes** 參數，來建立要上傳的空白標準 HDD。 然後呼叫 [>get-azdisk](/powershell/module/az.compute/new-azdisk?view=azps-1.8.0&preserve-view=true) 來建立磁片。
 
 取代 `<yourdiskname>` 、 `<yourresourcegroupname>` ， `<yourregion>` 然後執行下列命令：
 
@@ -59,7 +59,7 @@ $diskconfig = New-AzDiskConfig -SkuName 'Standard_LRS' -OsType 'Windows' -Upload
 New-AzDisk -ResourceGroupName '<yourresourcegroupname' -DiskName '<yourdiskname>' -Disk $diskconfig
 ```
 
-如果您想要上傳 premium SSD 或標準 SSD，請以**Premium_LRS**或**StandardSSD_LRS**取代**Standard_LRS** 。 目前尚不支援 Ultra 磁片。
+如果您想要上傳 premium SSD 或標準 SSD，請以 **Premium_LRS** 或 **StandardSSD_LRS** 取代 **Standard_LRS** 。 目前尚不支援 Ultra 磁片。
 
 現在您已建立為上傳程式設定的空受控磁片，您可以將 VHD 上傳至該磁片。 若要將 VHD 上傳到磁片，您需要可寫入的 SAS，以便您可以將它參考為您上傳的目的地。
 

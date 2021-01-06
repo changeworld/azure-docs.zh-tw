@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: f3c142491363f30513877ae4368f291430aa3675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4f5d4b7fed8f14f048794616ee272342d1e8343
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831925"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915550"
 ---
 # <a name="troubleshoot-azure-bastion"></a>對 Azure Bastion 進行疑難排解
 
@@ -81,10 +81,10 @@ The key's randomart image is:
 
 ## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Azure 入口網站中的黑色畫面
 
-**問：** 當我嘗試使用「Azure 防禦」進行連線時，會在 Azure 入口網站中取得黑色畫面。
+**問：** 當我嘗試使用 Azure 防禦進行連線時，我無法 connnect 至目標 VM，而是在 Azure 入口網站中取得黑色畫面。
 
 **答：** 當您的網頁瀏覽器和 Azure 防禦之間有網路連線問題時，會發生這種情況 (您的用戶端網際網路防火牆可能會封鎖 Websocket 流量或類似) ，或在 Azure 防禦和您的目標 VM 之間。 大部分的情況包括將 NSG 套用至 AzureBastionSubnet，或在您的目標 VM 子網上封鎖您虛擬網路中的 RDP/SSH 流量。 允許用戶端網際網路防火牆上的 Websocket 流量，並檢查目標 VM 子網上的 Nsg。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱防禦 [常見問題](bastion-faq.md)。

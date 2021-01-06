@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: a0d596c7c1046ea26ac389a48c17fa5abccbfd12
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 3182258245701903e7b3d6d6163cf3e2bd55c1fc
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951599"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915428"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge-pro-gpu"></a>使用 Azure 入口網站管理 Azure Stack Edge Pro GPU 上的頻寬排程 
 
@@ -36,16 +36,16 @@ ms.locfileid: "91951599"
 在 Azure 入口網站中執行下列步驟，以新增排程。
 
 1. 在 Azure Stack Edge 資源的 Azure 入口網站中，移至 [ **頻寬**]。
-2. 在右窗格中，選取 [+ 新增排程]****。
+2. 在右窗格中，選取 [+ 新增排程]。
 
     ![選取頻寬](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-1.png)
 
-3. 在 [新增排程]**** 中： 
+3. 在 [新增排程] 中：
 
-   1. 提供排程的 **開始日期**、 **結束日期**、 **開始時間**和 **結束時間** 。
+   1. 提供排程的 **開始日期**、 **結束日期**、 **開始時間** 和 **結束時間** 。
    2. 如果此排程應全天執行，請勾選 [ **全天** ] 選項。
    3. **頻寬速率** 是您的裝置在牽涉到雲端 (上傳和下載) 時，每秒 Mb (Mbps) 的頻寬。 請為此欄位提供20到2147483647之間的數位。
-   4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制]**** 頻寬。
+   4. 如果您不想要在日期上傳及下載進行節流處理，請選取 [ **無限制的頻寬** ]。
    5. 選取 [新增]。
 
       ![新增排程](media/azure-stack-edge-j-series-manage-bandwidth-schedules/add-schedule-2.png)
@@ -58,9 +58,10 @@ ms.locfileid: "91951599"
 
 執行下列步驟來編輯頻寬排程。
 
-1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **頻寬**]。 
+1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **頻寬**]。
 2. 從頻寬排程清單中，選取您要修改的排程。
-    ![選取頻寬排程](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
+
+   ![選取頻寬排程](media/azure-stack-edge-j-series-manage-bandwidth-schedules/modify-schedule-1.png)
 
 3. 進行所要的變更並儲存變更。
 
@@ -77,7 +78,7 @@ ms.locfileid: "91951599"
 
 1. 在 Azure 入口網站中，移至您的 Azure Stack Edge 資源，然後移至 [ **頻寬**]。  
 
-2. 從頻寬排程清單中，選取您想要刪除的排程。 在 [編輯排程]**** 中，選取 [刪除]****。 系統提示您確認時，請選取 [是]****。
+2. 從頻寬排程清單中，選取您想要刪除的排程。 在 [編輯排程] 中，選取 [刪除]。 系統提示您確認時，請選取 [是]。
 
    ![刪除使用者](media/azure-stack-edge-j-series-manage-bandwidth-schedules/delete-schedule-2.png)
 

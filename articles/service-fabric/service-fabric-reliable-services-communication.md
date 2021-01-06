@@ -4,12 +4,12 @@ description: Reliable Services 通訊模型概觀，其中包括開啟服務的�
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3436d29446e963faea9bda47f5a5247b7de7d859
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574321"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912609"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>如何使用 Reliable Services 通訊 API
 「Azure Service Fabric 即平台」完全不受服務間的通訊影響。 所有通訊協定和堆疊 (從 UDP 到 HTTP) 都可接受。 它是由服務開發人員選擇服務應有的通訊方式。 Reliable Services 應用程式架構會提供內建的通訊堆疊以及 API，讓您可用來建置自訂通訊元件。
@@ -288,7 +288,7 @@ public class MyCommunicationClient implements CommunicationClient {
 }
 ```
 
-用戶端 Factory 主要是負責建立通訊用戶端。 對於不會維持持續連線的用戶端 (例如 HTTP 用戶端)，用戶端 Factory 只需建立並傳回用戶端。 其他會維持持續連線的通訊協定 (例如某些二進位通訊協定) 也應該由 Factory 驗證，以判斷是否需要重新建立連線。  
+用戶端 Factory 主要是負責建立通訊用戶端。 對於不會維持持續連線的用戶端 (例如 HTTP 用戶端)，用戶端 Factory 只需建立並傳回用戶端。 其他維護持續連線的通訊協定（例如某些二進位通訊協定）也應該由處理站)  (驗證， `ValidateClient(string endpoint, MyCommunicationClient client)` 以判斷是否需要重新建立連接。  
 
 ```csharp
 public class MyCommunicationClientFactory : CommunicationClientFactoryBase<MyCommunicationClient>

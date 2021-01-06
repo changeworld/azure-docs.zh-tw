@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: fac26c616c977eedc466f004a9455297ec995fb8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352536"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915618"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>使用 Private Link (preview 保護和隔離 Azure HDInsight 叢集) 
 
@@ -29,7 +29,7 @@ ms.locfileid: "96352536"
 
 預設虛擬網路架構中使用的基本負載平衡器會自動提供公用 NAT (的網路位址轉譯) 來存取必要的輸出相依性，例如 HDInsight RP。 如果您想要限制對公用網際網路的輸出連線能力，您可以 [設定防火牆](./hdinsight-restrict-outbound-traffic.md)，但這不是必要條件。
 
-設定 `resourceProviderConnection` 為輸出也可讓您使用私人端點來存取叢集特定資源，例如 Azure Data Lake Storage Gen2 或外部中繼存放區。 不會 mandetory 這些資源的私人端點，但如果您打算讓這些資源擁有私用端點，則必須設定您建立 HDInsight 叢集的私人端點和 DNS 專案 `before` 。 我們建議您在叢集建立期間，建立並提供所需的所有外部 SQL 資料庫，例如 Apache Ranger、Ambari、Oozie 和 Hive 中繼存放區。 需求是必須能夠從叢集子網內部存取這些資源，不論是透過自己的私人端點或其他資源。
+設定 `resourceProviderConnection` 為輸出也可讓您使用私人端點來存取叢集特定資源，例如 Azure Data Lake Storage Gen2 或外部中繼存放區。 使用這些資源的私人端點並非必要，但如果您打算讓這些資源擁有私用端點，則必須設定您建立 HDInsight 叢集的私人端點和 DNS 專案 `before` 。 我們建議您在叢集建立期間，建立並提供所需的所有外部 SQL 資料庫，例如 Apache Ranger、Ambari、Oozie 和 Hive 中繼存放區。 需求是必須能夠從叢集子網內部存取這些資源，不論是透過自己的私人端點或其他資源。
 
 不支援針對 Azure Key Vault 使用私用端點。 如果您要使用 Azure Key Vault 進行待用加密，則必須可從沒有私人端點的 HDInsight 子網記憶體取 Azure Key Vault 端點。
 

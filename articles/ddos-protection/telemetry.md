@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a54404dafaf1093a2e2acbde88187739bd6c9f06
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 86e4a111be7585373ecf4c2fe9508f2bfca7de16
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827405"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915074"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>檢視和設定 DDoS 保護遙測
 
@@ -37,7 +37,7 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
 以下是適用于 Azure DDoS 保護標準的 [計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetworkpublicipaddresses) 。 這些計量也可透過診斷設定匯出 (請參閱 [查看和設定 DDoS 診斷記錄](diagnostic-logging.md)) 。
 
 
-| Metric | 計量顯示名稱 | 單位 | 彙總類型 | 描述 |
+| 計量 | 計量顯示名稱 | 單位 | 彙總類型 | 描述 |
 | --- | --- | --- | --- | --- |
 | ByteCount | 位元組計數 | Count | 總計 | 在期間內傳輸的位元組總數 |
 | BytesDroppedDDoS | 傳入位元組數捨棄 DDoS | 每秒位元組 | 最大值 | 傳入位元組數捨棄 DDoS| 
@@ -70,7 +70,7 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - 在您可以完成本教學課程中的步驟之前，您必須先建立 [Azure DDoS 標準保護方案](manage-ddos-protection.md) ，而且必須在虛擬網路上啟用 Ddos 保護標準。
-- DDoS 會監視指派給虛擬網路內資源的公用 IP 位址。 如果您在虛擬網路中沒有任何具有公用 IP 位址的資源，就必須先建立一個具有公用 IP 位址的資源。 您可以透過 [azure 服務的虛擬網路](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) 中所列出的 Resource Manager (非傳統) ，來監視所有部署資源的公用 IP 位址 (包括) 環境和 Azure VPN 閘道以外的後端虛擬機器位於虛擬網路 Azure App Service 的 Azure 負載平衡器。 若要繼續進行本教學課程，您可以快速建立一個 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器。  
+- DDoS 會監視指派給虛擬網路內資源的公用 IP 位址。 如果您在虛擬網路中沒有任何具有公用 IP 位址的資源，就必須先建立一個具有公用 IP 位址的資源。 您可以透過 [azure 服務的虛擬網路](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) 中所列出的 Resource Manager (非傳統) ，監視所有部署資源的公用 IP 位址 (包括) 環境以外的後端虛擬機器位於虛擬網路 Azure App Service 的 Azure 負載平衡器。 若要繼續進行本教學課程，您可以快速建立一個 [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器。  
 
 ## <a name="view-ddos-protection-telemetry"></a>查看 DDoS 保護遙測
 
@@ -111,4 +111,4 @@ Azure DDoS 保護標準透過 DDoS 攻擊分析，提供詳細的攻擊見解和
 若要瞭解如何設定攻擊風險降低報告和流程記錄，請繼續進行下一個教學課程。
 
 > [!div class="nextstepaction"]
-> [查看及設定 DDoS 診斷記錄](diagnostic-logging.md)
+> [檢視和設定 DDoS 診斷記錄](diagnostic-logging.md)

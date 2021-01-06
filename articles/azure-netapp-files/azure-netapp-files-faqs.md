@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 1537a87999f9a8eecf83a2431b2f53d3ceaedacb
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854694"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913493"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -137,6 +137,16 @@ Azure NetApp Files 支援 NFSv3 和 Nfsv4.1 4.1。 您可以使用任何 NFS 版
 是，您可以。 不過，檔案路徑必須在不同的訂用帳戶或不同的區域中使用。   
 
 例如，您可以建立名為的磁片區 `vol1` 。 然後，您可以在 `vol1` 不同的容量集區中建立另一個磁片區，但在相同的訂用帳戶和區域中呼叫。 在此情況下，使用相同的磁片區名稱 `vol1` 將會造成錯誤。 若要使用相同的檔案路徑，該名稱必須位於不同的區域或訂用帳戶中。
+
+### <a name="when-i-try-to-access-nfs-volumes-through-a-windows-client-why-does-the-client-take-a-long-time-to-search-folders-and-subfolders"></a>當我嘗試透過 Windows 用戶端存取 NFS 磁片區時，為什麼用戶端需要很長的時間來搜尋資料夾和子資料夾？
+
+請確定 `CaseSensitiveLookup` 已在 Windows 用戶端上啟用，以加速資料夾和子資料夾的查閱：
+
+1. 使用下列 PowerShell 命令來啟用 CaseSensitiveLookup：   
+    `Set-NfsClientConfiguration -CaseSensitiveLookup 1`    
+2. 在 Windows 伺服器上裝載磁片區。   
+    範例：   
+    `Mount -o rsize=1024 -o wsize=1024 -o mtype=hard \\10.x.x.x\testvol X:*`
 
 ## <a name="smb-faqs"></a>SMB 常見問題集
 

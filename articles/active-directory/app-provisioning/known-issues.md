@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 12/14/2020
+ms.date: 01/05/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bde5cecc4052724f795cac03f6efceb3451ea2ee
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509541"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914343"
 ---
 # <a name="known-issues-application-provisioning"></a>已知問題：應用程式布建
 使用應用程式布建時要注意的已知問題。 您可以在 UserVoice 上提供關於應用程式布建服務的意見反應，請參閱 [Azure AD 應用程式](https://aka.ms/appprovisioningfeaturerequest)布建 UserVoice。 我們會密切觀賞 UserVoice，讓我們可以改善服務。 
@@ -82,6 +82,10 @@ Azure AD 目前無法布建 null 屬性。 如果使用者物件上的屬性為 
 **變更不會從目標應用程式移至 Azure AD**
 
 應用程式布建服務不會察覺在外部應用程式中所做的變更。 因此，不會採取任何動作來復原。 應用程式布建服務依賴 Azure AD 中所做的變更。 
+
+**從同步處理切換至已指派的同步處理無法運作**
+
+將範圍從「同步全部」變更為「已指派同步處理」之後，請務必同時執行重新開機，以確保變更生效。 您可以從 UI 重新開機。
 
 **布建週期會持續到完成為止**
 

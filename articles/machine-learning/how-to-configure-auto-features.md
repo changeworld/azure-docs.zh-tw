@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694004"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915856"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自動化機器學習中的資料特徵化
 
@@ -28,7 +28,7 @@ ms.locfileid: "97694004"
 
 *特徵工程* 是使用資料的領域知識來建立功能的程式，以協助機器學習服務 (ML) 演算法來學習更好的學習。 在 Azure Machine Learning 中，會套用資料調整和正規化技術，讓特徵設計更容易。 這些技術和此功能工程統稱統稱在自動化機器學習或 *autoML* 實驗中 *特徵化*。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本文假設您已經知道如何設定 AutoML 實驗。 如需設定的相關資訊，請參閱下列文章：
 
@@ -68,9 +68,6 @@ ms.locfileid: "97694004"
 |_*產生更多功能**_ |針對 DateTime 特徵：年、月、日、星期幾、幾月幾日、季、第幾週、小時、分鐘、秒。<br><br> _For 的預測工作，則會建立這些額外的日期時間功能： ISO 年、半半年、日曆月份，以字串、周、周中的日、日、年、日、年、中的日、AM/PM (0 （如果小時是在中午 () 下午12點之前）) <br/><br/>針對文字功能：根據 unigrams、雙字母組和 trigrams 的詞彙頻率。 深入瞭解[如何使用 BERT 完成這](#bert-integration)項工作。|
 |**轉換和編碼** _|將有幾個唯一值的數值特徵轉換成類別特徵。<br/><br/>一種經常性編碼用於低基數類別功能。 一種熱雜湊編碼用於高基數類別功能。|
 |_ *Word 內嵌**|文字 featurizer 使用預先定型的模型，將文字標記的向量轉換成句子向量。 檔中每個單字的內嵌向量都會使用 rest 來匯總，以產生檔功能向量。|
-|**目標編碼**|針對類別功能，此步驟會將每個類別對應至回歸問題的平均目標值，並對應至每個類別的類別機率，以解決分類問題。 會套用以頻率為基礎的加權和 k 折迭交叉驗證，以減少由稀疏資料類別造成的對應和雜訊過度學習。|
-|**文字目標編碼**|針對文字輸入，會使用具備文字袋 (bag-of-words) 的堆疊線性模型來產生每個類別其機率。|
-|**證據權數 (WoE)**|將 WoE 作為類別資料行相互關聯與目標資料行相互關聯的量值計算。 WoE 的計算方式是依類別和類別外機率的比率記錄。 此步驟會針對每個類別產生一個數值特徵資料行，並免除明確插補遺漏值和極端值處理的需求。|
 |**叢集距離**|在所有數值資料行上訓練 k 表示叢集模型。 會為每個叢集產生 *k* 個新功能 (一個新的數值功能，) 包含每個範例與每個叢集的距心之間的距離。|
 
 ## <a name="data-guardrails"></a>資料護欄

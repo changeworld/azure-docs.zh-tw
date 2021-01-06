@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 776db820ffb1a216c3f6f7e9c6d6b8d90913a063
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 9e0102cdb7e8494a8540b1970932f0d9f7f39fde
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881458"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912912"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning (preview 來追蹤 Azure Databricks ML 實驗) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "97881458"
 
 [MLflow](https://www.mlflow.org) 是一個開放原始碼程式庫，可用於管理機器學習實驗的生命週期。 MLFlow 追蹤是 MLflow 的元件，可記錄及追蹤您的定型回合計量和模型成品。 深入瞭解 [Azure Databricks 與 MLflow](/azure/databricks/applications/mlflow/)。 
 
-如需其他 MLflow 和 Azure Machine Learning 功能整合，請參閱 [使用 MLflow 和 Azure Machine Learning 來追蹤實驗執行和建立端點](how-to-use-mlflow.md) 。
+如需其他 MLflow 和 Azure Machine Learning 功能整合，請參閱 [使用 MLflow 和 Azure Machine Learning 來追蹤實驗執行](how-to-use-mlflow.md) 。
 
 >[!NOTE]
 > 作為開放原始碼程式庫，MLflow 經常變更。 因此，透過 Azure Machine Learning 和 MLflow 整合所提供的功能，應該視為預覽，而且 Microsoft 不會完全支援。
@@ -32,7 +32,7 @@ ms.locfileid: "97881458"
 > [!TIP]
 > 本文件中的資訊主要適用於想要監視模型定型程序的資料科學家和開發人員。 如果您是系統管理員，且想要從 Azure Machine Learning 監視資源使用量和事件 (例如配額、已完成的定型執行或已完成的模型部署)，請參閱[監視 Azure Machine Learning](monitor-azure-machine-learning.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 安裝 `azureml-mlflow` 套件。 
     * 此套件會自動帶入 `azureml-core` [AZURE MACHINE LEARNING Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)，以提供 MLflow 的連線能力以存取您的工作區。
@@ -181,8 +181,8 @@ mlflow.sklearn.log_model(model, artifact_path = "model",
 您可以利用 [mlflow](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) API，將模型部署到您的 Azure Machine Learning 工作區。 如果您只將模型註冊到 Azure Databricks 工作區（如 [使用 MLflow 註冊模型](#register-models-with-mlflow) 一節中所述），請指定 `model_name` 要將模型註冊到 Azure Machine Learning 工作區的參數。 
 
 Azure Databricks 執行可部署至下列端點： 
-* [Azure 容器實例](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
+* [Azure 容器實例](how-to-deploy-mlflow-models.md#deploy-to-azure-container-instance-aci)
+* [Azure Kubernetes Service](how-to-deploy-mlflow-models.md#deploy-to-azure-kubernetes-service-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>將模型部署至 ADB 端點以進行批次評分 
 
@@ -232,7 +232,7 @@ display(preds)
 [Azure Machine Learning 筆記本的 MLflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow)會示範並擴充本文中所呈現的概念。
 
 ## <a name="next-steps"></a>後續步驟
-
+* [將 MLflow 模型部署為 Azure web 服務](how-to-deploy-mlflow-models.md)。 
 * [管理您的模型](concept-model-management-and-deployment.md)。
-* [使用 MLflow 和 Azure Machine Learning 來追蹤實驗執行和建立端點](how-to-use-mlflow.md)。 
+* [使用 MLflow 和 Azure Machine Learning 來追蹤實驗執行](how-to-use-mlflow.md)。 
 * 深入瞭解 [Azure Databricks 與 MLflow](/azure/databricks/applications/mlflow/)。

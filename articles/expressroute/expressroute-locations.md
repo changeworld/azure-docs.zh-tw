@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 12/10/2020
+ms.date: 01/05/2021
 ms.author: duau
-ms.openlocfilehash: dab480012ced3a8fc50fd5f4295272c0eccc4307
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: c68d9654c673b75742205853ec186caa5d6a3ce5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831851"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916145"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 連線能力合作夥伴和對等互連位置
 
@@ -105,7 +105,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **du datamena** |支援 |支援 | 杜拜 2 |
 | **eir** |支援 |支援 |都柏林|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |支援 |支援 |新加坡、新加坡 2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |支援 |支援 |阿姆斯特丹、亞特蘭大、柏林、Canberra2、芝加哥、達拉斯、Dubai2、都柏林、法蘭克福、Geneva、香港特別行政區、倫敦、倫敦2、洛杉磯、Los Angeles2、墨爾本、邁阿密、米蘭、紐約、大阪、巴黎、聖保羅、西雅圖、首爾、矽谷、新加坡、斯德哥爾摩、悉尼、東京、多倫多、華盛頓特區、蘇黎世 |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |支援 |支援 |阿姆斯特丹、阿姆斯特丹2、亞特蘭大、柏林、Canberra2、芝加哥、達拉斯、Dubai2、都柏林、法蘭克福、Geneva、香港特別行政區、倫敦、倫敦2、洛杉磯、Los Angeles2、墨爾本、邁阿密、米蘭、紐約、大阪、巴黎、聖保羅、西雅圖、首爾、矽谷、新加坡、斯德哥爾摩、聖保羅、東京、多倫多、華盛頓特區、蘇黎世 |
 | **Etisalat UAE** |支援 |支援 |杜拜|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |支援 |支援 |阿姆斯特丹、阿姆斯特丹2、都柏林、法蘭克福、倫敦 |
 | **[FarEasTone](https://www.fetnet.net/corporate/en/Enterprise.html)** |支援 |支援 |台北|

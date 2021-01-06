@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: d0c26255e6d9d35d51390ed2b432b9c5dc9ab2be
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: db29fbda404900c29f85fa876e9427994ee9a093
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862459"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915907"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 數位 Twins 的已知問題
 
@@ -47,11 +47,11 @@ ms.locfileid: "97862459"
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Azure 上的預設 Azure 認證驗證問題。身分識別1.3。0
 
-**問題描述：** 當您在 Azure 數位 Twins 應用程式中使用 **[Azure 身分識別](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)程式庫** 的版本 **1.3.0** 來撰寫驗證碼時，您可能會遇到這些檔中許多範例所使用的 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true)方法問題。當程式碼嘗試進行驗證時，這會顯示為「Azure AuthenticationFailedException： SharedTokenCacheCredential authentication 失敗」的錯誤回應。
+**問題描述：** 使用 **[Azure 身分識別](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true)程式庫** 的版本 **1.3.0** 撰寫驗證程式代碼時，某些使用者在這些 azure 數位 Twins 檔的許多範例中，都遇到 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true)方法的問題。當程式碼嘗試進行驗證時，這會顯示為「Azure AuthenticationFailedException： SharedTokenCacheCredential authentication 失敗」的錯誤回應。
 
 | 這對我有何影響？ | 原因 | 解決方案 |
 | --- | --- | --- |
-| DefaultAzureCredential 用於大部分包含驗證的檔範例中。 如果您使用 DefaultAzureCredential 撰寫驗證程式代碼，並使用程式庫的版本 1.3.0 `Azure.Identity` ，這可能會影響您。 | 使用 DefaultAzureCredential 搭配程式庫的版本 **1.3.0** 時，會出現此問題 `Azure.Identity` 。 | 若要解決此問題，請將您的應用程式切換為使用的 [版本 1.2.2](https://www.nuget.org/packages/Azure.Identity/1.2.2) `Azure.Identity` 。 變更程式庫版本之後，驗證應該會如預期般成功。 |
+| `DefaultAzureCredential` 用於此服務的大部分檔範例中，包括驗證。 如果您要使用程式庫的版本1.3.0 來撰寫驗證程式代碼， `DefaultAzureCredential` `Azure.Identity` 並看到此錯誤訊息，這會影響您。 | 這可能是某些設定問題的結果 `Azure.Identity` 。 | 解決此問題的其中一個策略 `SharedTokenCacheCredential` ，是從您的認證中排除，如這個 [DefaultAzureCredential](https://github.com/Azure/azure-sdk/issues/1970) 中目前開啟的問題所述 `Azure.Identity` 。<br>另一個選項是將您的應用程式變更為使用舊版 `Azure.Identity` ，例如 [版本 1.2.3](https://www.nuget.org/packages/Azure.Identity/1.2.3)。 這對 Azure 數位 Twins 不會有任何影響，因此也是接受的解決方案。 |
 
 ## <a name="next-steps"></a>後續步驟
 

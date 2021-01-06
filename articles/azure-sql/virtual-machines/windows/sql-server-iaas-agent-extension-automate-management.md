@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359246"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914241"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理程式擴充功能來自動化管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,20 +42,21 @@ SQL Server IaaS 代理程式擴充功能可為 Azure Vm 上的 SQL Server 提供
 
 - **Free**：所有三種管理性模式中的擴充功能完全免費。 擴充功能或變更管理模式沒有相關的額外成本。 
 
-- **簡化的授權管理**：此延伸模組可簡化 SQL Server 授權管理，並可讓您快速識別 Azure Hybrid Benefit 使用 [Azure 入口網站](manage-sql-vm-portal.md)、Azure CLI 或 PowerShell 啟用的 SQL Server vm： 
-
-   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-   ```azurecli-interactive
-   $vms = az sql vm list | ConvertFrom-Json
-   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
-   ```
+- **簡化的授權管理**：此延伸模組可簡化 SQL Server 授權管理，並可讓您快速識別使用 [Azure 入口網站](manage-sql-vm-portal.md)、PowerShell 或 Azure CLI 啟用 Azure Hybrid Benefit 的 SQL Server vm： 
 
    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
    ```
+
+   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+   ```azurecli-interactive
+   $ az sql vm list --query "[?sqlServerLicenseType=='AHUB']"
+   ```
+
+
 
    ---
 
@@ -71,7 +72,7 @@ SQL Server IaaS 代理程式擴充功能會解除管理 SQL Server VM 的一些�
 下表詳細說明這些優點： 
 
 
-| 功能 | 說明 |
+| 功能 | 描述 |
 | --- | --- |
 | **連接埠管理** | 在 [入口網站](manage-sql-vm-portal.md)中解除鎖定管理，讓您可以在同一處查看所有 SQL Server vm，以便您可以直接從入口網站啟用和停用 SQL 特定功能。 
 | **自動備份** |為預設執行個體或在 VM 上[正確安裝](frequently-asked-questions-faq.md#administration)的 SQL Server 具名執行個體，自動化所有資料庫的備份排程。 如需詳細資訊，請參閱 [Azure 虛擬機器中的 SQL Server 自動備份 (Resource Manager)](automated-backup-sql-2014.md)。 |
@@ -201,11 +202,11 @@ NoAgent 模式需要客戶設定 SQL Server 版本和版本屬性。 輕量模�
 
 **是否可以在不指定 SQL Server 授權類型的情況下，向 SQL IaaS 代理程式延伸模組註冊？**
 
-否。 當您向 SQL IaaS 代理程式延伸模組註冊時，SQL Server 授權類型不是選擇性屬性。 您必須將 SQL Server 授權類型設定為隨用隨付，Azure Hybrid Benefit 或在所有管理性模式下註冊 SQL IaaS 代理程式延伸模組時， (NoAgent、羽量級和 full) 。 如果您已安裝任何免費版本的 SQL Server，例如 Developer 或評估版，您必須向隨用隨付授權註冊。 Azure Hybrid Benefit 僅適用于 SQL Server 的付費版本，例如 Enterprise 和 Standard edition。
+不會。 當您向 SQL IaaS 代理程式延伸模組註冊時，SQL Server 授權類型不是選擇性屬性。 您必須將 SQL Server 授權類型設定為隨用隨付，Azure Hybrid Benefit 或在所有管理性模式下註冊 SQL IaaS 代理程式延伸模組時， (NoAgent、羽量級和 full) 。 如果您已安裝任何免費版本的 SQL Server，例如 Developer 或評估版，您必須向隨用隨付授權註冊。 Azure Hybrid Benefit 僅適用于 SQL Server 的付費版本，例如 Enterprise 和 Standard edition。
 
 **我可以將 SQL Server IaaS 延伸模組從 NoAgent 模式升級為完整模式嗎？**
 
-否。 NoAgent 模式無法使用 [完整] 或 [輕量] 將管理性模式升級 這是 Windows Server 2008 的技術限制。 您必須先將 OS 升級至 Windows Server 2008 R2 或更新版本，然後才能升級為完整管理模式。 
+不會。 NoAgent 模式無法使用 [完整] 或 [輕量] 將管理性模式升級 這是 Windows Server 2008 的技術限制。 您必須先將 OS 升級至 Windows Server 2008 R2 或更新版本，然後才能升級為完整管理模式。 
 
 **我可將 SQL Server IaaS 延伸模組從輕量模式升級為完整模式嗎？**
 
@@ -219,11 +220,11 @@ NoAgent 模式需要客戶設定 SQL Server 版本和版本屬性。 輕量模�
 
 **我可以從 Azure 入口網站向 SQL IaaS 代理程式延伸模組註冊嗎？**
 
-否。 Azure 入口網站不提供使用 SQL IaaS 代理程式擴充功能註冊。 只有 Azure CLI 或 Azure PowerShell 才支援向 SQL IaaS 代理程式擴充功能註冊。 
+不會。 Azure 入口網站不提供使用 SQL IaaS 代理程式擴充功能註冊。 只有 Azure CLI 或 Azure PowerShell 才支援向 SQL IaaS 代理程式擴充功能註冊。 
 
 **是否可以在安裝 SQL Server 之前，使用 SQL IaaS 代理程式擴充功能來註冊 VM？**
 
-否。 VM 至少必須有一個 SQL Server (資料庫引擎) 實例，才能成功向 SQL IaaS 代理程式延伸模組註冊。 如果 VM 上沒有 SQL Server 執行個體，則新的 Microsoft.SqlVirtualMachine 資源會處於失敗狀態。
+不會。 VM 至少必須有一個 SQL Server (資料庫引擎) 實例，才能成功向 SQL IaaS 代理程式延伸模組註冊。 如果 VM 上沒有 SQL Server 執行個體，則新的 Microsoft.SqlVirtualMachine 資源會處於失敗狀態。
 
 **如果有多個 SQL Server 實例，是否可以使用 SQL IaaS 代理程式擴充功能來註冊 VM？**
 

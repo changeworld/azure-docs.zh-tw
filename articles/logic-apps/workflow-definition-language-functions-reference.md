@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 5c03d9b64f957f6ef8450197477f185dc8d15b2d
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: b15849fb8fbfed5d55b9c224f51634047b7c75b2
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825853"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914479"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在運算式中使用函式的參考指南，適用於 Azure Logic Apps 和 Power Automate
 
@@ -2072,7 +2072,7 @@ formatNumber(1234567890, '0,0.00', 'is-is')
 假設您想要格式化數字 `17.35`。 此範例將該數字格式化為字串 "$17.35"。
 
 ```
-formatNumber(17.36, 'C2')
+formatNumber(17.35, 'C2')
 ```
 
 *範例 4*
@@ -2080,7 +2080,7 @@ formatNumber(17.36, 'C2')
 假設您想要格式化數字 `17.35`。 此範例將該數字格式化為字串 "17,35 kr"。
 
 ```
-formatNumber(17.36, 'C2', 'is-is')
+formatNumber(17.35, 'C2', 'is-is')
 ```
 
 <a name="getFutureTime"></a>
@@ -2719,15 +2719,11 @@ lastIndexOf('<text>', '<searchText>')
 
 如果字串或子字串的值是空的，則會發生下列行為：
 
-* 如果字串值是空的， `-1` 則會傳回：
+* 如果只有字串值是空的，則函數會傳回 `-1` 。
 
-* 如果字串和子字串值都是空的， `0` 則會傳回。
+* 如果字串和子字串值都是空的，則函數會傳回 `0` 。
 
-* 如果只有子字串值是空的，則會傳回下列兩個值的最大值：
-
-  * `0`
-
-  * 字串的長度，減1。
+* 如果只有子字串值是空的，函數會傳回字串長度減1。
 
 *範例*
 

@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2cac7a8310482305467a1cb3ed3127eb18ae416
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95976188"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915771"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>設定微焦點 CICS BankDemo，以在 Azure 上取得微型企業開發人員4。0
 
@@ -22,13 +22,13 @@ CICs 代表客戶資訊控制系統，也就是許多線上大型主機應用程
 > [!NOTE]
 > 即將推出：在 Azure Vm 上設定 [微焦點企業伺服器 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) 的指示。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 具有 [企業開發人員](set-up-micro-focus-azure.md)的 VM。 請記住，企業開發人員有企業伺服器的完整實例，可供開發和測試之用。 這個實例是用於示範的 Enterprise Server 實例。
 
 - [SQL Server 2017 Express 版](https://www.microsoft.com/sql-server/sql-server-editions-express)。 在企業開發人員 VM 上下載並安裝它。 企業伺服器需要管理 CICS 區域的資料庫，而 BankDemo 應用程式也會使用名為 BANKDEMO 的 SQL Server 資料庫。 此示範假設您使用的是兩個資料庫的 SQL Server Express。 安裝時，請選取基本安裝。
 
-- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) (SSMS) 。 SSMS 可用來管理資料庫和執行 T-sql 腳本。 在企業開發人員 VM 上下載並安裝它。
+- [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) (SSMS) 。 SSMS 可用來管理資料庫和執行 T-sql 腳本。 在企業開發人員 VM 上下載並安裝它。
 
 - [Visual Studio 2019](https://azure.microsoft.com/downloads/) 與最新的 service pack 或 [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/)，您可以免費下載。
 

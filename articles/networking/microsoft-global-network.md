@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/13/2019
+ms.date: 01/05/2020
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a33c7e7d637b519b249c250481a73d04c661d4d5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819901"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915839"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全域網路
 
@@ -71,4 +71,5 @@ Microsoft Azure 提供服務和功能的最豐富組合，可讓客戶快速且�
 Azure 和其網路的指數成長已達到最後的時間點，而無法再依賴人類直覺來管理全球網路作業。 為了滿足在網路上進行長期、中和短期變更的需求，我們開發了一個平臺來鏡像和模擬我們的生產網路合成方式。 建立鏡像環境並執行數百萬個模擬的能力，可讓我們測試軟體和硬體變更及其影響，然後再將它們認可到生產平臺和網路。 
 
 ## <a name="next-steps"></a>後續步驟
+- [瞭解 Microsoft 如何透過智慧型軟體提升全球網路可靠性](https://azure.microsoft.com/blog/advancing-global-network-reliability-through-intelligent-software-part-1-of-2/)
 - [深入瞭解 Azure 中提供的網路服務](https://azure.microsoft.com/product-categories/networking/)

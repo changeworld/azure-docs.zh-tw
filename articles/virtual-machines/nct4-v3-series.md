@@ -6,21 +6,18 @@ ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 01/05/2021
 ms.author: vikancha
-ms.openlocfilehash: 2de6cceb1e3b85060a146b18a689b57573bc932e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 6463e54fb7f0a2cc03ffa043c00048c1131899ce
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585423"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913425"
 ---
-# <a name="ncast4_v3-series-in-preview"></a>預覽版中的 NCasT4_v3 系列 ()  
+# <a name="ncast4_v3-series"></a>NCasT4_v3 系列 
 
 NCasT4_v3 系列虛擬機器支援 [Nvidia Tesla T4](https://www.nvidia.com/en-us/data-center/tesla-t4/) GPU 和 AMD EPYC 7V12 (羅馬) cpu。 Vm 最多可以有4個 NVIDIA T4 Gpu （每個都有 16 GB 的記憶體），最多64個非多執行緒 AMD EPYC 7V12 (羅馬) 處理器核心和 440 GiB 的系統記憶體。 這些虛擬機器適用于部署 AI 服務，例如即時推斷使用者產生的要求，或使用 NVIDIA 的方格驅動程式和虛擬 GPU 技術的互動式圖形和視覺效果工作負載。 以 CUDA、TensorRT、Caffe、ONNX 和其他架構為基礎的標準 GPU 計算工作負載，或是以 GPU 加速圖形應用程式為基礎的 OpenGL 和 DirectX，可在 NCasT4_v3 系列上以經濟實惠的方式進行部署，並接近使用者的距離。
-
-> [!NOTe]
-> [提交要求](https://aka.ms/NCT4v3Preview) 成為預覽計畫的一部分。
 
 <br>
 

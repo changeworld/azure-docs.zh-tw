@@ -4,12 +4,12 @@ description: Service Fabric Reliable Actors 的重新進入簡介，以邏輯方
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c2356db0eee82a133afad6aa95299ced0595db32
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9578b676e46d21fe5d30de92ad59c852a8b05f70
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576055"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915873"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors 重新進入
 Reliable Actors 執行階段預設允許邏輯呼叫以內容為基礎的重新進入。 這允許位於相同的呼叫內容鏈結的動作項目可重新進入。 例如，動作項目 A 傳送訊息給動作項目 B，而動作項目 B 又將訊息傳送給動作項目 C。當處理訊息時，如果動作項目 C 呼叫動作項目 A，則此訊息是可以重新進入的，因此將允許此訊息。 屬於不同呼叫內容的其他任何訊息都將在動作項目 A 上遭到封鎖，直到其處理完畢為止。
@@ -101,4 +101,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>後續步驟
-* 參閱[動作項目 API 參考文件](/previous-versions/azure/dn971626(v=azure.100))來深入了解重新進入
+* 深入瞭解動作專案 [API 參考檔](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet) 中的重新進入) 

@@ -1,18 +1,21 @@
 ---
 title: 分割 Service Fabric 服務
-description: 描述如何分割 Service Fabric 具狀態服務。 資料分割可讓資料儲存在本機電腦上，因此可以一起調整資料和計算。
+description: 瞭解如何分割 Service Fabric 無狀態和具狀態服務
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d33e7b5ee293cf9dfb49e509bec2e1950033a956
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199ae9d9844149c1931da638633110f717fe0517
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89005423"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915890"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>分割 Service Fabric 可靠服務
-這篇文章介紹分割 Azure Service Fabric 可靠服務的基本概念。 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)上也提供本文中使用的原始碼。
+這篇文章介紹分割 Azure Service Fabric 可靠服務的基本概念。 資料分割可讓您在本機電腦上儲存資料，讓資料和計算可以一起調整。
+
+> [!TIP]
+> 您可以在 GitHub 上取得本文中程式碼的 [完整範例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions) 。
 
 ## <a name="partitioning"></a>資料分割
 分割不是 Service Fabric 所獨有。 事實上，它是建置可調整服務的核心模式。 廣義上，我們可以將分割視為將狀態 (資料) 和計算分成較小的可存取單位來改善延展性和效能。 [資料分割][wikipartition]是一種知名的分割形式，也稱為分區化。
@@ -116,10 +119,10 @@ Service Fabric 有三個資料分割配置可選擇：
 > 
 > 
 
-1. 開啟**Visual Studio**檔案  >  **File**  >  **新增**  >  **專案**]。
-2. 在 [新增專案] **** 對話方塊中，選擇 Service Fabric 應用程式
+1. 開啟 **Visual Studio** 檔案  >    >  **新增**  >  **專案**]。
+2. 在 [新增專案]  對話方塊中，選擇 Service Fabric 應用程式
 3. 將專案命名為 "AlphabetPartitions"。
-4. 在 [建立服務]**** 對話方塊中，選擇 [具狀態]**** 服務並且命名為 "Alphabet.Processing"。
+4. 在 [建立服務] 對話方塊中，選擇 [具狀態] 服務並且命名為 "Alphabet.Processing"。
 5. 設定資料分割數目。 開啟位於 AlphabetPartitions 專案的 ApplicationPackageRoot 資料夾中的 ApplicationManifest.xml 檔案，將參數 Processing_PartitionCount 更新為 26，如下所示。
    
     ```xml
@@ -229,7 +232,7 @@ Service Fabric 有三個資料分割配置可選擇：
 10. 讓我們將無狀態服務加入至專案，瞭解如何呼叫特定的資料分割。
     
     這項服務做為簡單的 Web 介面，將接受 lastname 做為查詢字串參數、決定資料分割索引鍵，然後將它傳送給 Alphabet.Processing 服務來處理。
-11. 在 [建立服務]**** 對話方塊中，選擇 [無狀態]**** 服務，命名為 "Alphabet.Web"，如下圖所示。
+11. 在 [建立服務] 對話方塊中，選擇 [無狀態] 服務，命名為 "Alphabet.Web"，如下圖所示。
     
     ![無狀態服務螢幕擷取畫面](./media/service-fabric-concepts-partitioning/createnewstateless.png).
 12. 更新 Alphabet.WebApi 服務的 ServiceManifest.xml 中的端點資訊，以開啟連接埠，如下所示。
@@ -348,14 +351,14 @@ Service Fabric 有三個資料分割配置可選擇：
     
     ![瀏覽器螢幕擷取畫面](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
-範例的完整原始程式碼位於 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)。
+本文中所使用之程式碼的完整解決方案可從這裡取得： https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions 。
 
 ## <a name="next-steps"></a>後續步驟
-如需 Service Fabric 概念的資訊，請參閱下列項目：
+深入瞭解 Service Fabric 服務：
 
+* [連接至 Service Fabric 中的服務並與其進行通訊](service-fabric-connect-and-communicate-with-services.md)
 * [Service Fabric 服務的可用性](service-fabric-availability-services.md)
 * [Service Fabric 服務的延展性](service-fabric-concepts-scalability.md)
-* [Service Fabric 應用程式的容量規劃](service-fabric-capacity-planning.md)
 
 [wikipartition]: https://en.wikipedia.org/wiki/Partition_(database)
 

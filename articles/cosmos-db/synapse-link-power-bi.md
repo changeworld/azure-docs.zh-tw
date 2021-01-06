@@ -6,24 +6,24 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 959070ca431c3397779a2a22c16f03b3adebbb35
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: be2657d9606f260fcea06d2535be87fc6976577c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444505"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915669"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>使用 Power BI 和無伺服器 Synapse SQL 集區 (預覽) 透過 Synapse 連結來分析 Azure Cosmos DB 資料 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 在本文中，您將瞭解如何建立無伺服器 SQL 集區資料庫，並透過 Synapse 連結來進行 Azure Cosmos DB 的流覽。 您將會查詢 Azure Cosmos DB 的容器，然後建立模型，以 Power BI 這些視圖，以反映該查詢。
 
-在此案例中，您將會在合作夥伴零售商店中使用有關 Surface product sales 的虛擬資料。 您將根據大型家庭的鄰近程度，以及對特定周廣告的影響，分析每個商店的收入。 在本文中，您會建立兩個名為 **RetailSales** 和 **StoreDemographics** 的視圖，以及兩者之間的查詢。 您可以從這個 [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) 存放庫取得範例產品資料。
+在此案例中，您將會在合作夥伴零售商店中使用有關 Surface product sales 的虛擬資料。 您將根據大型家庭的鄰近程度，以及對特定周廣告的影響，分析每個商店的收入。 在本文中，您會建立兩個名為 **RetailSales** 和 **StoreDemographics** 的視圖，以及兩者之間的查詢。 您可以從這個 [GitHub](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) 存放庫取得範例產品資料。
 
 > [!IMPORTANT]
 > 適用于 Azure Cosmos DB 的 Azure Synapse 連結 Synapse 無伺服器 SQL 集區支援目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請務必先建立下列資源：
 
@@ -33,7 +33,7 @@ ms.locfileid: "96444505"
 
 * 在 Azure Cosmos 帳戶中建立資料庫，並在兩個已[啟用分析存放區](configure-synapse-link.md#create-analytical-ttl)的容器中建立資料庫。
 
-* 將產品資料載入至 Azure Cosmos 容器，如此 [批次資料](https://github.com/Azure-Samples/Synapse/blob/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) 內嵌筆記本中所述。
+* 將產品資料載入至 Azure Cosmos 容器，如此 [批次資料](https://github.com/Azure-Samples/Synapse/blob/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/spark-notebooks/pyspark/1CosmoDBSynapseSparkBatchIngestion.ipynb) 內嵌筆記本中所述。
 
 * 建立名為 **SynapseLinkBI**[的 Synapse 工作區](../synapse-analytics/quickstart-create-workspace.md)。
 

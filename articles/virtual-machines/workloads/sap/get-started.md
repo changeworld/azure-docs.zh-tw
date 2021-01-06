@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/04/2021
+ms.date: 01/05/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d56ed0cdae9046cb7d76f7d74545309ee6292ecd
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: f74e6435af9084b0c8f222c33dc922fe678bc4c7
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883090"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914514"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -83,6 +83,7 @@ SAP 應用層和 DBMS 的高可用性記載于從[適用于 Sap NetWeaver 的 Az
 
 ## <a name="change-log"></a>變更記錄
 
+- 01/05/2021：在具有 [ANF ON SLES 的 Azure vm 上使用待命節點進行相應](./sap-hana-scale-out-standby-netapp-files-suse.md) 放大的 SAP Hana 變更，並 [在 azure vm 上使用待命節點與 ANF on RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md)進行相應放大，SAP Hana 並修改建議的設定，以允許 SAP 主機代理程式管理本機埠範圍  
 - 01/04/2021：將您所支援的新 Azure 區域新增至 [azure (大型實例上 SAP Hana 的內容) ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 - 12/29/2020：[使用 Azure 可用性區域新增 SAP 工作負載](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)設定中特定 Azure 區域的架構建議
 - 12/21/2020：在您的[可用 sku 中，](./hana-available-skus.md)將新的認證新增至 HANA 大型實例的 sku

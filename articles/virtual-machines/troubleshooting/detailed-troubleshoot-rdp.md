@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5782765504eb1e0cb57558d3d4772d08de6b4d25
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002675"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913102"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 中 Windows VM 之遠端桌面連線問題的詳細疑難排解步驟
 本文章提供診斷和修正複雜的以 Windows 為基礎的 Azure 虛擬機器的遠端桌面錯誤的詳細疑難排解步驟。
@@ -135,7 +135,7 @@ ms.locfileid: "96002675"
 
 接下來，如果尚未安裝 Azure PowerShell，則請先安裝。 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
-接下來，開啟 Azure PowerShell 命令提示字元，並將目前資料夾變更為 **InstallWinRMCertAzureVM.ps1** 指令碼檔案的位置。 若要執行 Azure PowerShell 指令碼，您必須設定正確的執行原則。 請執行 **Get-ExecutionPolicy** 命令來判斷您目前的原則層級。 如需設定適當層級的相關資訊，請參閱 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1)。
+接下來，開啟 Azure PowerShell 命令提示字元，並將目前資料夾變更為 **InstallWinRMCertAzureVM.ps1** 指令碼檔案的位置。 若要執行 Azure PowerShell 指令碼，您必須設定正確的執行原則。 請執行 **Get-ExecutionPolicy** 命令來判斷您目前的原則層級。 如需設定適當層級的相關資訊，請參閱 [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-5.1&preserve-view=true)。
 
 接下來，請填入您的 Azure 訂用帳戶名稱、雲端服務名稱以及虛擬機器名稱 (移除 "<" 和 ">" 字元)，然後再執行這些命令。
 

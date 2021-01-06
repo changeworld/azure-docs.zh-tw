@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 1/04/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509558"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916247"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -66,7 +66,7 @@ ms.locfileid: "97509558"
 | `ztdid`                    | 全自動部署識別碼 | JWT | | 裝置身分識別，用於 [Windows AutoPilot](/windows/deployment/windows-autopilot/windows-10-autopilot) |
 | `email`                    | 此使用者可定址的電子郵件 (如果使用者有的話)。  | JWT、SAML | MSA、Azure AD | 如果使用者是租用戶中的來賓，則預設會包含此值。  若為受管理的使用者 (租用戶內的使用者)，則必須透過此選擇性宣告，或使用 OpenID 範圍 (僅限 v2.0) 來要求此值。  若為受管理的使用者，電子郵件地址必須設定於 [Office 管理入口網站](https://portal.office.com/adminportal/home#/users)。|
 | `acct`                | 租使用者中的使用者帳戶狀態 | JWT、SAML | | 如果使用者是租用戶的成員，則值為 `0`。 如果是來賓使用者，則值為 `1`。 |
-| `groups`| 群組宣告的選擇性格式化 |JWT、SAML| |與[應用程式資訊清單](reference-app-manifest.md)中的 GroupMembershipClaims 設定 (也必須設定) 搭配使用。 如需詳細資訊，請參閱下面的[群組宣告](#configuring-groups-optional-claims)。 如需群組宣告的詳細資訊，請參閱[如何設定群組宣告](../hybrid/how-to-connect-fed-group-claims.md)
+| `groups`| 群組宣告的選擇性格式化 |JWT、SAML| |與 [應用程式資訊清單](reference-app-manifest.md)中的 GroupMembershipClaims 設定搭配使用，必須進行設定。 如需詳細資訊，請參閱下面的[群組宣告](#configuring-groups-optional-claims)。 如需群組宣告的詳細資訊，請參閱[如何設定群組宣告](../hybrid/how-to-connect-fed-group-claims.md)
 | `upn`                      | UserPrincipalName | JWT、SAML  |           | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久性識別碼，也不能用來唯一識別使用者資訊 (例如，做為資料庫金鑰) 。 相反地，請使用使用者物件識別碼 (`oid`) 做為資料庫索引鍵。 使用 [替代登入識別碼登](../authentication/howto-authentication-use-email-signin.md) 入的使用者不應該顯示其使用者主體名稱 (UPN) 。 相反地，請使用下列識別碼權杖宣告來向使用者顯示登入狀態： `preferred_username` 或 `unique_name` 適用于 v1 權杖和 `preferred_username` v2 權杖。 雖然會自動包含此宣告，但在來賓使用者案例中，您可以將它指定為選擇性宣告來附加額外屬性，以修改其行為。  |
 | `idtyp`                    | Token 類型   | JWT 存取權杖 | 特殊：只在僅限應用程式的存取權杖中 |  值是 `app` 當令牌是僅限應用程式的權杖時。 這是 API 判斷權杖是否為應用程式權杖或應用程式 + 使用者權杖的最精確方式。|
 
@@ -76,7 +76,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **表 3：僅限 v2.0 的選擇性宣告**
 
-| JWT 宣告     | 名稱                            | 說明                                | 注意 |
+| JWT 宣告     | 名稱                            | 描述                                | 注意 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 位址                      | 用戶端的登入來源 IP 位址。   |       |
 | `onprem_sid`  | 內部部署安全性識別碼 |                                             |       |
@@ -85,7 +85,17 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 | `in_corp`     | 公司網路內部        | 指出用戶端是否是從公司網路登入的。 如果不是，則不包含此宣告。   |  根據 MFA 中的[可信任 IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) 設定。    |
 | `family_name` | 姓氏                       | 提供使用者物件中定義的使用者姓氏。 <br>"family_name":"Miller" | MSA 和 Azure AD 支援。 需要 `profile` 範圍。   |
 | `given_name`  | 名字                      | 提供使用者物件上設定的使用者名字。<br>"given_name"："Frank"                   | MSA 和 Azure AD 支援。  需要 `profile` 範圍。 |
-| `upn`         | 使用者主體名稱 | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久性識別碼，也不能用來唯一識別使用者資訊 (例如，做為資料庫金鑰) 。 相反地，請使用使用者物件識別碼 (`oid`) 做為資料庫索引鍵。 使用 [替代登入識別碼登](../authentication/howto-authentication-use-email-signin.md) 入的使用者不應該顯示其使用者主體名稱 (UPN) 。 相反地，請使用下列識別碼權杖宣告來向使用者顯示登入狀態： `preferred_username` 或 `unique_name` 適用于 v1 權杖和 `preferred_username` v2 權杖。 | 如需了解宣告的設定，請參閱下方的[額外屬性](#additional-properties-of-optional-claims)。 需要 `profile` 範圍。|
+| `upn`         | 使用者主體名稱 | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久性識別碼，也不能用來唯一識別使用者資訊 (例如，做為資料庫金鑰) 。 相反地，請使用使用者物件識別碼 (`oid`) 做為資料庫索引鍵。 使用 [替代登入識別碼登](../authentication/howto-authentication-use-email-signin.md) 入的使用者不應該顯示其使用者主體名稱 (UPN) 。 相反地，請使用下列宣告來 `preferred_username` 向使用者顯示登入狀態。 | 如需了解宣告的設定，請參閱下方的[額外屬性](#additional-properties-of-optional-claims)。 需要 `profile` 範圍。|
+
+
+**表4：僅1.0 版的選擇性宣告**
+
+使用 v1 權杖格式的應用程式可以使用 v2 權杖格式的部分增強功能，因為它們有助於提高安全性和可靠性。 這些將不會對從 v2 端點要求的識別碼權杖生效，也不會對使用 v2 權杖格式的 Api 存取權杖。 
+
+| JWT 宣告     | 名稱                            | 描述 | 附註 |
+|---------------|---------------------------------|-------------|-------|
+|`aud`          | 適用對象 | 一律存在於 Jwt 中，但在 v1 存取權杖中，可以透過各種不同的方式發出，這在執行權杖驗證時可能會很難進行程式碼撰寫。  請使用 [此宣告的其他屬性](#additional-properties-of-optional-claims) ，以確保其一律設定為 v1 存取權杖中的 GUID。 | v1 JWT 存取權杖|
+|`preferred_username` | 慣用的使用者名稱        | 在 v1 權杖內提供慣用的使用者名稱宣告。 這可讓應用程式更容易提供使用者名稱提示，並顯示人類可閱讀的顯示名稱，不論其權杖類型為何。  建議您使用此選用宣告，而不要使用，例如 `upn` 或 `unique_name` 。 | v1 識別碼權杖和存取權杖 |
 
 ### <a name="additional-properties-of-optional-claims"></a>選擇性宣告的額外屬性
 
@@ -97,7 +107,9 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 |----------------|--------------------------|-------------|
 | `upn`          |                          | 可同時用於 SAML 和 JWT 回應，以及用於 v1.0 和 v2.0 權杖。 |
 |                | `include_externally_authenticated_upn`  | 包含儲存在資源租用戶中的來賓 UPN。 例如， `foo_hometenant.com#EXT#@resourcetenant.com` |
-|                | `include_externally_authenticated_upn_without_hash` | 同上，只不過井字號 (`#`) 換成底線 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn_without_hash` | 同上，只不過井字號 (`#`) 換成底線 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com`|
+| `aud`          |                          | 在 v1 存取權杖中，這會用來變更宣告的格式 `aud` 。  這不會影響 v2 權杖或識別碼權杖，其中宣告 `aud` 一律是用戶端識別碼。 您可以使用此資訊來確保您的 API 可以更輕鬆地執行物件驗證。 如同所有會影響存取權杖的選擇性宣告，要求中的資源必須設定此選用宣告，因為資源擁有存取權杖。|
+|                | `use_guid`               | 發出資源 (API) GUID 格式的用戶端識別碼作為宣告， `aud` 而不是 APPID URI 或 GUID。 因此，如果資源的用戶端識別碼為 `bb0a297b-6a42-4a55-ac40-09a501456577` ，任何要求該資源之存取權杖的應用程式都會收到具有下列各項的存取權杖 `aud` ： `bb0a297b-6a42-4a55-ac40-09a501456577` 。|
 
 #### <a name="additional-properties-example"></a>額外屬性範例
 
@@ -242,7 +254,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 1. 選取 [ **新增群組** 宣告]。
 1. 選取群組類型，以傳回 (**安全性群組** 或 **目錄角色**、 **所有群組**，以及/或 **指派給應用程式) 的群組** 。 **指派給應用程式** 選項的群組只會包含指派給應用程式的群組。 [ **所有群組** ] 選項包括 **SecurityGroup**、 **DirectoryRole** 和 **DistributionList**，而不是 **指派給應用程式的群組**。 
 1. 選擇性：選取特定的權杖類型屬性，以修改群組宣告值以包含內部部署群組屬性，或將宣告類型變更為角色。
-1. 選取 [儲存]。
+1. 選取 [Save] \(儲存\)。
 
 **透過應用程式資訊清單設定群組選擇性宣告：**
 

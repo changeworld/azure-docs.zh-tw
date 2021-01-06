@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: c1c2c5f27143be7fc10269c948bee9d5465d565a
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530437"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912694"
 ---
 # <a name="what-is-routing-preference-preview"></a>什麼是路由喜好設定 (預覽)？
 
@@ -72,11 +72,6 @@ Azure 路由喜好設定可讓您選擇流量在 Azure 與網際網路之間的�
 ## <a name="pricing"></a>定價
 這兩個選項之間的價格差異會反映在網際網路輸出資料傳輸定價中。 透過 **Microsoft 全球網路** 進行路由傳送的資料傳輸價格與目前的網際網路輸出價格相同。 如需最新的定價資訊，請造訪 [Azure 頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)。 
 
-## <a name="availability"></a>可用性
-
-使用公用 IP 進行網際網路輸出的路由喜好設定支援適用於下列區域的服務 - 北歐、西歐、法國南部、英國南部、美國東部、美國中北部、美國中南部、美國西部、美國中西部、東南亞、德國中西部、瑞士西部、日本東部和日本西部。
-
-儲存體帳戶的路由喜好設定支援適用于下列 Azure 區域：美國中北部、美國中西部、美國中南部、美國東部、美國西部、北歐、法國南部、德國中西部、瑞士西部、南東亞、日本東部及日本西部。
 ## <a name="limitations"></a>限制
 
 * 路由喜好設定僅與公用 IP 位址的標準 SKU 相容。 不支援公用 IP 位址的基本 SKU。

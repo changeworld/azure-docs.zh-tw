@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2020
+ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 283dbf152778b5ef58e298444058f619356ef241
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756104"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916366"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure 資訊安全中心的安全分數
 
@@ -72,7 +72,7 @@ Azure 資訊安全中心有兩個主要目標：
 
 ### <a name="get-your-secure-score-from-the-rest-api"></a>從 REST API 取得您的安全分數
 
-您可以透過安全分數 API 來存取您的分數， (目前為預覽) 。 API 方法可讓您靈活地查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用 [安全分數 API](/rest/api/securitycenter/securescores) 來取得特定訂用帳戶的分數。 此外，您可以使用 [安全分數控制項 API](/rest/api/securitycenter/securescorecontrols) 來列出安全性控制項和您的訂用帳戶的目前分數。
+您可以透過安全分數 API 來存取您的分數。 API 方法可讓您靈活地查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用 [安全分數 API](/rest/api/securitycenter/securescores) 來取得特定訂用帳戶的分數。 此外，您可以使用 [安全分數控制項 API](/rest/api/securitycenter/securescorecontrols) 來列出安全性控制項和您的訂用帳戶的目前分數。
 
 ![透過 API 來抓取單一安全分數](media/secure-score-security-controls/single-secure-score-via-api.png)
 

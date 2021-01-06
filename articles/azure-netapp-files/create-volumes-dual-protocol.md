@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/04/2020
+ms.date: 01/05/2020
 ms.author: b-juche
-ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881084"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914976"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的雙重通訊協定 (NFSv3 和 SMB) 磁片區
 
@@ -133,7 +133,10 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙協定
     * 網域中包含根憑證的另一部電腦  
 
 3. 匯出根 CA 憑證。  
-    根 CA 憑證可以從個人或受信任的根憑證授權單位匯出。   
+    您可以從個人或受信任的根憑證授權單位目錄匯出根 CA 憑證，如下列範例所示：   
+    ![顯示個人憑證的螢幕擷取畫面](../media/azure-netapp-files/personal-certificates.png)   
+    ![顯示受信任的根憑證授權單位的螢幕擷取畫面](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
+
     確定憑證已在64編碼的 x.509 ( 中匯出。CER) 格式： 
 
     ![憑證匯出精靈](../media/azure-netapp-files/certificate-export-wizard.png)

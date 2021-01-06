@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5b39ccc365575853a4a74a471023989f34ebc577
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821480"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913921"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>如何規劃商用 marketplace 的 SaaS 供應專案
 
@@ -149,14 +149,14 @@ _現在就 (免費的)_、_免費試用_，以及 _透過 Microsoft_ 清單選�
 5. 使用規定
 6. 隱私權原則
 7. 供應項目名稱
-8. 總結
+8. 摘要
 9. 描述
 10. 螢幕擷取畫面/影片
 11. 文件
 
 下列範例顯示 Azure 入口網站中的供應專案清單。
 
-![說明 Azure 入口網站中的供應專案清單。](./media/example-managed-services.png)
+![說明 Azure 入口網站中的供應專案清單。](./media/example-managed-service-azure-portal.png)
 
 **撥出描述**
 

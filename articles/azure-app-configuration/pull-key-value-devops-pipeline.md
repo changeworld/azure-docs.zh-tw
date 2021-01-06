@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 1c28b4e9821f31f927ef4f640aa664d330cf8792
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570989"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97914955"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 將設定提取至應用程式設定
 
 [Azure 應用程式組態](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task)工作會從您的應用程式設定存放區提取索引鍵/值，並將其設定為 Azure 管線變數，以供後續工作取用。 這項工作可補充將從設定檔中的索引鍵/值推送到應用程式設定存放區的 [Azure 應用程式組態推送](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) 工作。 如需詳細資訊，請參閱 [使用 Azure Pipelines 將設定推送至應用程式設定](push-kv-devops-pipeline.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - 應用程式設定存放區-在 [Azure 入口網站](https://portal.azure.com)中免費建立一個。
@@ -103,6 +103,9 @@ Azure 應用程式組態工作會使用下列參數：
 echo "$env:myBuildSetting"
 ```
 值將會列印到主控台。
+
+> [!NOTE]
+> 應用程式設定內的 Azure Key Vault 參考將會解析並設定為 [秘密變數](/azure/devops/pipelines/process/variables#secret-variables)。 在 Azure 管線中，秘密變數會從記錄遮罩。 它們不會以環境變數的形式傳遞至工作，而必須改為傳遞做為輸入。 
 
 ## <a name="troubleshooting"></a>疑難排解
 
