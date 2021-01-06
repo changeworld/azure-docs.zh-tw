@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 6e561a0e05cf1a0870d85369867caba6c4d6bf12
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862436"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932413"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
 
@@ -3733,7 +3733,7 @@ Azure AD Premium P2 中現已正式提供群組和應用程式的存取權檢閱
 
 **類型：** 新功能 **服務類別：** 其他 **產品功能：** 目錄
 
-有關如何部署 Azure Active Directory (Azure AD) 的全新逐步指引，包括自助式密碼重設 (SSPR)、單一登入 (SSO)、條件式存取 (CA)、應用程式 Proxy、使用者佈建、Active Directory 同盟服務 (ADFS) 至傳遞驗證 (PTA)，以及 ADFS 至密碼雜湊同步處理 (PHS)。
+新的逐步指引，說明如何部署 Azure Active Directory (Azure AD) ，包括自助式密碼重設 (SSPR) 、單一登入 (SSO) 、條件式存取、應用程式 proxy、使用者布建、Active Directory 同盟服務 (ADFS) 傳遞驗證 (PTA) ，以及 ADFS 至密碼雜湊同步 (PHS) 。
 
 如需檢視部署指南，請前往 GitHub 上的[識別部署指南](./active-directory-deployment-plans.md)存放庫。 如需提供有關部署指南的意見反應，請使用[部署方案意見反應單](https://aka.ms/deploymentplanfeedback)。 如果對於部署指南有任何疑問，請於 [IDGitDeploy](mailto:idgitdeploy@microsoft.com) 聯絡我們。
 

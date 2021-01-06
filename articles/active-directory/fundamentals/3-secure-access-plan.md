@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08a4f4a31893fc93789d019ea87dff390552f6a
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743927"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932515"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. 建立外部存取的安全性計畫 
 
@@ -175,7 +175,7 @@ Azure AD P2 和 Microsoft 365 E5 都有一套完整的安全性和治理工具�
 | 權利管理| **透過指派或自助存取新增使用者**| **存取套件**| **存取套件**|  |
 | Office 365 群組| | 存取網站 (s)  (和相關聯的內容) 包含在群組中| 存取小組 (以及群組中包含的相關內容) |  |
 | 敏感度標籤| | **手動並自動分類和限制存取**| **手動並自動分類和限制存取**| **手動並自動分類和限制存取** |
-| Azure AD 安全性群組| **存取套件中未包含存取權的 CA 原則**| | |  |
+| Azure AD 安全性群組| **存取套件中未包含存取的條件式存取原則**| | |  |
 
 
 ### <a name="entitlement-management"></a>權利管理 
@@ -195,7 +195,7 @@ Azure AD P2 和 Microsoft 365 E5 都有一套完整的安全性和治理工具�
 | Azure AD B2B 共同作業| **透過電子郵件、OTP、自助服務邀請**| 直接 B2B 同盟| **每個合作夥伴的定期審核**| 移除帳戶<br>限制登入 |
 | Microsoft 或 Office 365 群組| | | | 群組的到期或刪除。<br>從群組移除。 |
 | 安全性群組| | **將外部使用者新增至安全性群組 (組織、小組、專案等 )**| |  |
-| 條件式存取原則| | **外部使用者的登入 CA 原則**| |  |
+| 條件式存取原則| | **外部使用者的登入條件式存取原則**| |  |
 
 
  ### <a name="access-to-resources"></a>資源的存取權。
@@ -204,7 +204,7 @@ Azure AD P2 和 Microsoft 365 E5 都有一套完整的安全性和治理工具�
 | - |-|-|-|-|
 | Microsoft 或 Office 365 群組| | **存取網站 (s) 包含在群組 (和相關聯的內容)**|**存取 Microsoft 365 群組所包含的小組 (和相關聯的內容)**|  |
 | 敏感度標籤| | 手動分類和限制存取| 手動分類並限制存取。| 手動分類以限制和加密 |
-| 條件式存取原則| 適用于存取控制的 CA 原則| | |  |
+| 條件式存取原則| 存取控制的條件式存取原則| | |  |
 | 其他方法| | 使用安全性群組來更精確地限制 SharePoint 網站存取。<br>不允許直接共用。| **限制小組內的外部邀請**|  |
 
 

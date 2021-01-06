@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2157a1cb96475209762e829c549d628f2c35fd91
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425773"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930781"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>設定 MSIX 應用程式附加的檔案共用 (預覽) 
 
@@ -33,7 +33,7 @@ MSIX 應用程式的應用程式連接映射大小限制取決於您用來儲存
 |----------------------|--------------|
 | 穩定狀態 IOPs    | 1 IOPs       |
 | 電腦開機登入 | 10 IOPs      |
-| Latency              | 400毫秒       |
+| 延遲              | 400毫秒       |
 
 需求可能會有很大的差異，視 MSIX 映射中儲存的 MSIX 封裝應用程式數目而定。 針對較大的 MSIX 映射，您必須配置更多頻寬。
 
@@ -64,6 +64,12 @@ Azure 提供多個可用於 MISX 應用程式附加的儲存體選項。 建議�
 MSIX 應用程式附加檔案共用的安裝程式與 [FSLogix 設定檔共用的安裝](create-host-pools-user-profile.md)程式大致相同。 不過，您必須為使用者指派不同的許可權。 MSIX 應用程式附加需要唯讀許可權才能存取檔案共用。
 
 如果您要將 MSIX 應用程式儲存在 Azure 檔案儲存體中，則針對您的工作階段主機，您必須將儲存體帳戶角色型存取控制指派給所有工作階段主機 Vm (RBAC) 和檔案共用新技術檔案系統 (NTFS) 共用的許可權。
+
+| Azure 物件                      | 必要角色                                     | Role 函數                                  |
+|-----------------------------------|--------------------------------------------------|-----------------------------------------------|
+| 工作階段主機 (VM 電腦物件) | 儲存體檔案資料 SMB 共用參與者          | 讀取和執行、讀取、列出資料夾內容  |
+| 檔案共用上的系統管理員              | 儲存體檔案資料 SMB 共用提升權限的參與者 | 完整控制                                  |
+| 檔案共用上的使用者               | 儲存體檔案資料 SMB 共用參與者          | 讀取和執行、讀取、列出資料夾內容  |
 
 指派儲存體帳戶和檔案共用的工作階段主機 Vm 許可權：
 

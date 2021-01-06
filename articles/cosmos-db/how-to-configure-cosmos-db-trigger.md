@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: c47d18726d9581b1b03aa2e676a71d6ca1bc1b7d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f753010eb994c9f3c286ad6eca6392ca7b643075
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086460"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932906"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>如何使用 Cosmos DB 的 Azure Functions 觸發程式來設定記錄和連接
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ Azure Functions 的 Cosmos DB 觸發程序會在內部使用[變更摘要處理�
 }
 ```
 
-在 Azure Function 中部署更新的設定之後，您會看到追蹤功能中包含 Azure Functions 的 Cosmos DB 觸發程序記錄。 您可以在「類別」  `Host.Triggers.CosmosDB` 底下，自己設定的記錄提供者中檢視記錄。
+在 Azure Function 中部署更新的設定之後，您會看到追蹤功能中包含 Azure Functions 的 Cosmos DB 觸發程序記錄。 您可以在「類別」 `Host.Triggers.CosmosDB` 底下，自己設定的記錄提供者中檢視記錄。
 
 ### <a name="query-the-logs"></a>查詢記錄檔
 
@@ -57,7 +57,7 @@ traces
 
 ### <a name="changing-the-connection-mode-and-protocol"></a>變更連接模式和通訊協定
 
-有兩個重要組態設定可用來設定用戶端連線原則 - **連線模式** 和 **連線通訊協定** 。 您可以變更 Azure Functions 的 Cosmos DB 觸發程序所使用的預設連線模式和通訊協定，以及所有的 [Azure Cosmos DB 繫結](../azure-functions/functions-bindings-cosmosdb-v2-output.md)。 若要變更預設設定，您需要在您的 Azure Functions 專案或 Azure Functions 應用程式中找出 `host.json` 檔案，並新增下列[額外設定](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)：
+有兩個重要組態設定可用來設定用戶端連線原則 - **連線模式** 和 **連線通訊協定**。 您可以變更 Azure Functions 的 Cosmos DB 觸發程序所使用的預設連線模式和通訊協定，以及所有的 [Azure Cosmos DB 繫結](../azure-functions/functions-bindings-cosmosdb-v2-output.md)。 若要變更預設設定，您需要在您的 Azure Functions 專案或 Azure Functions 應用程式中找出 `host.json` 檔案，並新增下列[額外設定](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)：
 
 ```js
 {
@@ -82,7 +82,7 @@ traces
 ```
 
 > [!NOTE]
-> 使用 Azure Functions 取用方案主控方案時，每個執行個體都有可維護的通訊端連線數量限制。 使用 Direct / TCP 模式時，會依設計建立多個連線並可叫用[取用方案限制](../azure-functions/manage-connections.md#connection-limit)，在此情況下您可以使用閘道模式或在 [App Service 模式](../azure-functions/functions-scale.md#app-service-plan)中執行 Azure Functions。
+> 在取用方案中裝載函式應用程式時，每個實例都有其可維護的通訊端連線數量限制。 使用 Direct/TCP 模式時，會建立更多連線，並可達到取用 [方案限制](../azure-functions/manage-connections.md#connection-limit)，在此情況下，您可以使用閘道模式，或改為在高階 [方案](../azure-functions/functions-premium-plan.md) 或 [專用 (App Service) 方案](../azure-functions/dedicated-plan.md)中裝載您的函數應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 

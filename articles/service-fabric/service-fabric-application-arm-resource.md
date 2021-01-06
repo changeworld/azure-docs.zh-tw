@@ -3,12 +3,12 @@ title: 使用 Azure Resource Manager 部署和升級
 description: 了解如何使用 Azure Resource Manager 範本將應用程式和服務部署到 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ed6bc7d96cb3ea0934929e6543c5e637a9f42c1f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681664"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930832"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>將應用程式和服務視為 Azure Resource Manager 進行管理
 
@@ -50,13 +50,12 @@ ms.locfileid: "94681664"
 }
 ```
 
-
 ## <a name="add-a-new-application-to-your-resource-manager-template"></a>將應用程式新增到 Resource Manager 範本
 
 1. 準備好叢集的 Resource Manager 範本，以供部署之用。 如需詳細資訊，請參閱[使用 Azure Resource Manager 來建立 Service Fabric 叢集](service-fabric-cluster-creation-via-arm.md)。
 2. 思考幾個您計劃部署在叢集中的應用程式。 是否有任何應用程式將隨時保持執行狀態，讓其他應用程式得以依賴？ 您是否有部署任何叢集治理或設定應用程式的計劃？ 這類應用程式最適合透過 Resource Manager 範本管理，如同前文所討論。 
-3. 一旦想好要利用這種方法部署哪些應用程式後，您必須封裝、壓縮應用程式，再將它們放在檔案共用上。 共用必須可透過 REST 端點存取，Azure Resource Manager 才能在部署期間取用。
-4. 在 Resource Manager 範本的叢集宣告下方，描述每個應用程式的屬性。 這些屬性包括複本或執行個體計數，以及資源 (其他應用程式或服務) 之間的任何相依性鏈結。 如需完整屬性的清單，請參閱 [REST API Swagger 規格](https://aka.ms/sfrpswaggerspec)。請注意，這不會取代應用程式或服務資訊清單，而是在叢集的 Resource Manager 範本中說明其中的部分。 以下是範例範本，其中包括部署 *Application1* 無狀態服務 *Service1* 和具狀態服務 *Service2*：
+3. 一旦您知道要以何種方式部署哪些應用程式之後，應用程式就必須封裝、壓縮並放在儲存體共用上。 共用必須可透過 REST 端點存取，Azure Resource Manager 才能在部署期間取用。 如需詳細資料，請參閱 [建立儲存體帳戶](service-fabric-concept-resource-model.md#create-a-storage-account) 。
+4. 在 Resource Manager 範本的叢集宣告下方，描述每個應用程式的屬性。 這些屬性包括複本或執行個體計數，以及資源 (其他應用程式或服務) 之間的任何相依性鏈結。 請注意，這不會取代應用程式或服務資訊清單，而是在叢集的 Resource Manager 範本中描述它們的一些功能。 以下是範例範本，其中包括部署 *Application1* 無狀態服務 *Service1* 和具狀態服務 *Service2*：
 
    ```json
    {
@@ -244,7 +243,7 @@ ms.locfileid: "94681664"
    ```
 
    > [!NOTE] 
-   > *apiVersion* 必須設定為 `"2019-03-01"`。 這個範本也能與叢集分開部署，只要叢集已部署完成即可。
+   > 請參閱 Service Fabric [Azure Resource Manager 參考](/azure/templates/microsoft.servicefabric/clusters/applicationtypes) ，以尋找個別範本屬性的使用方式和詳細資料。
 
 5. 部署！ 
 

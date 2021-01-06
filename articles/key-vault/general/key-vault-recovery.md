@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704209"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933977"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>使用虛刪除和清除保護 Azure Key Vault 復原管理
 
@@ -23,7 +23,7 @@ ms.locfileid: "97704209"
 - [Key Vault 總覽](overview.md)
 - [Azure Key Vault 金鑰、秘密和憑證總覽](about-keys-secrets-certificates.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/dotnet)
 * [PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
@@ -394,4 +394,4 @@ ms.locfileid: "97704209"
 - [如何啟用 Key Vault 記錄](howto-logging.md)
 - [針對金鑰保存庫的存取進行保護](secure-your-key-vault.md)
 - [Azure Key Vault 開發人員指南](developers-guide.md)
-- [使用金鑰保存庫的最佳作法](best-practices.md)
+- [使用金鑰保存庫的最佳作法](security-overview.md)

@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746298"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932430"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>規劃 Azure Active Directory 存取審查部署
 
@@ -333,9 +333,9 @@ ms.locfileid: "97746298"
 > [!NOTE]
 > 我們建議定義定義群組建立方式的商務原則，以確保明確地審核成員資格的群組擁有權和責任。 
 
-### <a name="review-membership-of-exclusion-groups-in-ca-policies"></a>檢查 CA 原則中排除群組的成員資格 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>在條件式存取原則中審查排除群組的成員資格 
 
-有時候，條件式存取 (CA) 原則的設計目的是要讓您的網路保持安全，不應套用至所有使用者。 例如，只允許使用者在公司網路上登入的 CA 原則，可能不適用於大量傳輸的銷售團隊。 在這種情況下，銷售團隊成員會放入群組，而該群組將會從 CA 原則中排除。 
+有時，為了確保您的網路安全而設計的條件式存取原則，不應套用至所有使用者。 例如，只允許使用者在公司網路上登入的條件式存取原則，可能不適用於大量傳輸的銷售團隊。 在這種情況下，銷售團隊成員會放入群組中，而該群組將會從條件式存取原則中排除。 
 
 請定期檢查這類群組成員資格，因為排除的成員不符合需求時，會造成潛在的風險。
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656031"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934164"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>將語言分析器新增至 Azure 認知搜尋索引中的字串欄位
 
@@ -68,9 +68,9 @@ Azure 認知搜尋支援 Lucene 所支援的35語言分析器，以及由 Office
 ## <a name="language-analyzer-list"></a>語言分析器清單 
  以下是支援的語言清單與 Lucene 和 Microsoft 的分析器名稱。  
 
-| 語言 | Microsoft 分析器名稱 | Lucene 分析器名稱 |  |
-|--|--|--|--|
-| 阿拉伯文 | ar.microsoft | ar.lucene |  |
+| 語言 | Microsoft 分析器名稱 | Lucene 分析器名稱 |
+|--|--|--|
+| 阿拉伯文 | ar.microsoft | ar.lucene |
 | 亞美尼亞文 |  | hy.lucene |  |
 | 孟加拉文 | bn.microsoft |  |  |
 | 巴斯克文 |  | eu.lucene |  |
@@ -129,7 +129,7 @@ Azure 認知搜尋支援 Lucene 所支援的35語言分析器，以及由 Office
 
  所有名稱加上 **Lucene** 註解的分析器都是由 [Apache Lucene 的語言分析器](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ) \(英文\) 所提供。
 
-## <a name="see-also"></a>另請參閱  
+## <a name="see-also"></a>請參閱  
 
 + [建立索引 &#40;Azure 認知搜尋 REST API&#41;](/rest/api/searchservice/create-index)  
 

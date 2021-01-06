@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: bd85936c86656a8ae59a04ccdf53a62bd852368f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b346a23ccde6abd0f76982a4d19e00e28e8511a7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655267"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930866"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>設定 Azure Sentinel 客戶管理的金鑰
 
@@ -63,7 +63,7 @@ Azure Sentinel 解決方案會針對記錄收集和功能使用數個儲存體�
     > [!NOTE]
     >  必須將 Azure Key Vault 設定為可復原，才能保護您的金鑰和存取權。
 
-1.  [開啟復原選項：](../key-vault/general/best-practices.md#turn-on-recovery-options)
+1.  [開啟復原選項：](../key-vault/general/key-vault-recovery.md)
 
     -   請確定已開啟[虛刪除](../key-vault/general/soft-delete-overview.md)。
 

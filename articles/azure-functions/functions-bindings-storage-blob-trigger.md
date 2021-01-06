@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 3213df378bc3b8403ebd11f899d722106de67a65
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6735b3377650c900a7b7d18933180991a6a2c9fd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882019"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930883"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體觸發程式
 
@@ -241,7 +241,7 @@ def main(myblob: func.InputStream):
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  該屬性的建構函式採用路徑字串，指示要監看的容器以及可選的 [Blob 名稱模式](#blob-name-patterns)。 以下為範例：
+  該屬性的建構函式採用路徑字串，指示要監看的容器以及可選的 [Blob 名稱模式](#blob-name-patterns)。 以下是範例：
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -463,7 +463,7 @@ Azure Functions 會將 blob 回條儲存在您函數應用程式 (`AzureWebJobsS
 
 Blob 觸發程序會在內部使用佇列，因此並行函式叫用數上限由 [host.json 中的佇列組態](functions-host-json.md#queues)所控制。 預設設定會將並行存取限制為 24 個叫用。 這項限制會個別套用至使用 Blob 觸發程序的每個函式。
 
-取用[方案](functions-scale.md#how-the-consumption-and-premium-plans-work)會將一部虛擬機器上的函式應用程式限制 (VM) 至 1.5 GB 的記憶體。 每個並行執行的函式執行個體和函式執行階段本身都會使用記憶體。 如果 Blob 觸發的函式將整個 Blob 載入記憶體中，則該函式用於 Blob 的記憶體上限為 24 * Blob 大小上限。 例如，若某個函式應用程式有三個 Blob 觸發的函式，則預設的每一 VM 並行存取上限將是 3 * 24 = 72 個函式叫用。
+取用[方案](event-driven-scaling.md)會將一部虛擬機器上的函式應用程式限制 (VM) 至 1.5 GB 的記憶體。 每個並行執行的函式執行個體和函式執行階段本身都會使用記憶體。 如果 Blob 觸發的函式將整個 Blob 載入記憶體中，則該函式用於 Blob 的記憶體上限為 24 * Blob 大小上限。 例如，若某個函式應用程式有三個 Blob 觸發的函式，則預設的每一 VM 並行存取上限將是 3 * 24 = 72 個函式叫用。
 
 JavaScript 和 JAVA 函式會將整個 blob 載入記憶體中，而 c # 函式則會在您系結至或時，執行此工作 `string` `Byte[]` 。
 

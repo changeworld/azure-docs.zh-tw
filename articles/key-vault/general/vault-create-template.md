@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704515"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933926"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>如何使用 Resource Manager 範本建立 Azure key vault 和保存庫存取原則
 
@@ -23,7 +23,7 @@ ms.locfileid: "97704515"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文中的步驟：
 
@@ -168,7 +168,7 @@ ms.locfileid: "97704515"
 
 | 密碼 | 索引鍵 | 憑證 |
 |--|--|--|
-|<ul><li>[快速入門](../secrets/quick-create-template.md)<li>[參考](/azure/templates/microsoft.keyvault/vaults/secrets)|N/A|N/A|
+|<ul><li>[快速入門](../secrets/quick-create-template.md)<li>[參考](/azure/templates/microsoft.keyvault/vaults/secrets)|不適用|不適用|
 
 您可以在這裡找到更多 Key Vault 範本： [Key Vault Resource Manager 參考](/azure/templates/microsoft.keyvault/allversions)。
 
@@ -213,10 +213,10 @@ Write-Host "Press [ENTER] to continue..."
 
 - 閱讀 [Azure Key Vault 的總覽](../general/overview.md)。
 - 深入瞭解 [Azure Resource Manager](../../azure-resource-manager/management/overview.md)。
-- 複習 [Azure Key Vault 的最佳做法](../general/best-practices.md)。
+- 複習 [Azure Key Vault 安全性總覽](security-overview.md)
 
 ## <a name="next-steps"></a>後續步驟
 
 - [針對金鑰保存庫的存取進行保護](secure-your-key-vault.md)
 - [對金鑰保存庫進行驗證](authentication.md)
-- [Azure Key Vault 開發人員指南](developers-guide.md)
+- [Azure 金鑰保存庫開發人員指南](developers-guide.md)

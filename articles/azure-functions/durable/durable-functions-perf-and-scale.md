@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b9fc465b5e5f132264fd36e004fa3ee7623b87a5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c94218248f1122cdb60ab8124bc9d9365fe8947b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854983"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931733"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的效能和級別
 
@@ -51,7 +51,7 @@ ms.locfileid: "96854983"
 最大輪詢延遲可透過檔案 `maxQueuePollingInterval` [host.js](../functions-host-json.md#durabletask)中的屬性來設定。 將這個屬性設定為較高的值可能會導致訊息處理延遲較高。 只有在閒置一段時間之後，才需要較高的延遲。 將此屬性設定為較低的值，可能會因為儲存體交易增加而導致儲存體成本較高。
 
 > [!NOTE]
-> 在 Azure Functions 耗用量和高階方案中執行時， [Azure Functions 調整控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work) 每10秒會輪詢每個控制項和工作專案佇列一次。 需要進行額外的輪詢，以判斷何時要啟動函式應用程式實例，並做出調整決策。 在撰寫本文時，這10秒的間隔是固定的，無法設定。
+> 在 Azure Functions 耗用量和高階方案中執行時， [Azure Functions 調整控制器](../event-driven-scaling.md) 每10秒會輪詢每個控制項和工作專案佇列一次。 需要進行額外的輪詢，以判斷何時要啟動函式應用程式實例，並做出調整決策。 在撰寫本文時，這10秒的間隔是固定的，無法設定。
 
 ### <a name="orchestration-start-delays"></a>協調流程開始延遲
 協調流程實例的啟動方式是將 `ExecutionStarted` 訊息放在其中一個工作中樞的控制佇列中。 在某些情況下，您可能會觀察到協調流程排定執行的時間與實際開始執行的時間之間的多秒延遲。 在此時間間隔期間，協調流程實例會維持在 `Pending` 狀態中。 此延遲有兩個可能的原因：
@@ -138,7 +138,7 @@ Durable Functions 所使用的佇列、資料表和 blob 會在已設定的 Azur
 
 ## <a name="auto-scale"></a>自動調整規模
 
-如同在耗用量和彈性 Premium 方案中執行的所有 Azure Functions，Durable Functions 透過 [Azure Functions 調整控制器](../functions-scale.md#runtime-scaling)來支援自動調整規模。 縮放控制器藉由定期發出 _peek_ 命令來監視所有佇列的延遲。 縮放控制器會以所查看訊息的延遲為基礎，決定是要新增或移除 VM。
+如同在耗用量和彈性 Premium 方案中執行的所有 Azure Functions，Durable Functions 透過 [Azure Functions 調整控制器](../event-driven-scaling.md#runtime-scaling)來支援自動調整規模。 縮放控制器藉由定期發出 _peek_ 命令來監視所有佇列的延遲。 縮放控制器會以所查看訊息的延遲為基礎，決定是要新增或移除 VM。
 
 如果縮放控制器判斷控制佇列訊息延遲太高，它會新增 VM 執行個體，直到訊息延遲減少到可接受的程度或達到控制佇列資料分割計數。 同樣地，如果工作項目佇列延遲偏高，不論資料分割計數為何，縮放控制器都會持續新增 VM 執行個體。
 

@@ -11,19 +11,19 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa6726bb5c60dceab0a58632da99c04361183246
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355388"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932685"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>將 API 連接器新增至使用者流程
 
 若要使用 [api 連接器](api-connectors-overview.md)，請先建立 api 連接器，然後在使用者流程中啟用它。
 
 > [!IMPORTANT]
->自 **2021 年1月4日起**，Google 將 [淘汰 web 服務登入支援](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果您要使用 Google 同盟或使用 Gmail 的自助式註冊，您應該 [測試企業營運原生應用程式的相容性](google-federation.md#deprecation-of-webview-sign-in-support)。
+>**從 2021 年 1 月 4 日開始**，Google [淘汰了 WebView 登入支援](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)。 如果您使用 Google 同盟或 Gmail 的自助式註冊，建議您[測試您企業營運原生應用程式的相容性](google-federation.md#deprecation-of-webview-sign-in-support)。
 
 ## <a name="create-an-api-connector"></a>建立 API 連接器
 
@@ -274,7 +274,7 @@ Content-type: application/json
 | version     | String | 是      | API 的版本。                                                    |
 | 動作      | String | 是      | 值必須是 `ShowBlockPage`                                              |
 | userMessage | String | 是      | 要向使用者顯示的訊息。                                            |
-| code        | 字串 | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
+| code        | String | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
 
 **封鎖回應的終端使用者體驗**
 
@@ -301,7 +301,7 @@ Content-type: application/json
 | 動作      | String  | 是      | 值必須為 `ValidationError`。                                           |
 | status      | 整數 | 是      | 必須是 `400` ValidationError 回應的值。                        |
 | userMessage | String  | 是      | 要向使用者顯示的訊息。                                            |
-| code        | 字串  | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
+| code        | String  | 否       | 錯誤碼。 可用於偵錯工具。 不會向使用者顯示。 |
 
 **使用驗證錯誤回應的使用者體驗**
 
@@ -319,7 +319,7 @@ Content-type: application/json
 * API 連接器的 **端點 URL** 會指向正確的 api 端點。
 * 您的 API 會明確檢查收到的宣告是否有 null 值。
 * 您的 API 會儘快回應，以確保流暢的使用者體驗。
-    * 如果使用無伺服器函式或可擴充的 web 服務，請使用可保持 API 「喚醒」或「暖」的主控方案。 針對 Azure Functions，建議使用 [Premium 方案](../../azure-functions/functions-scale.md#premium-plan)。 
+    * 如果使用無伺服器函式或可擴充的 web 服務，請使用可保持 API 「喚醒」或「暖」的主控方案。 針對 Azure Functions，建議使用 [Premium 方案](../../azure-functions/functions-premium-plan.md)。 
 
 
 ### <a name="use-logging"></a>使用記錄

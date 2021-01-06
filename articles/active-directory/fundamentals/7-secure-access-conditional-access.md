@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c34135a59521eca361c59a1c82854469626616
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 8dd570a31813ef12ee8a007c84facb8aa5e7aca4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743900"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933127"
 ---
 # <a name="manage-external-access-with-conditional-access-policies"></a>使用條件式存取原則管理外部存取 
 
-[條件式存取](../conditional-access/overview.md) 是 Azure AD 用來結合信號、強制執行原則，以及判斷是否應該允許使用者存取資源的工具。 如需有關如何建立和使用條件式存取原則的詳細資訊 () 的 CA 原則，請參閱 [規劃條件式存取部署](../conditional-access/plan-conditional-access.md)。 
+[條件式存取](../conditional-access/overview.md) 是 Azure AD 用來結合信號、強制執行原則，以及判斷是否應該允許使用者存取資源的工具。 如需有關如何建立和使用條件式存取原則的詳細資訊)  (條件式存取原則，請參閱 [規劃條件式存取部署](../conditional-access/plan-conditional-access.md)。 
 
 ![條件式存取信號和決策的圖表](media/secure-external-access//7-conditional-access-signals.png)
 
 
 
-本文討論如何將 CA 原則套用至外部使用者，並假設您沒有 [權利管理](../governance/entitlement-management-overview.md) 功能的存取權。 CA 原則可以與權利管理一起使用。
+本文討論如何將條件式存取原則套用至外部使用者，並假設您沒有 [權利管理](../governance/entitlement-management-overview.md) 功能的存取權。 條件式存取原則可以與權利管理一起使用。
 
 稍早在本檔集中，您 [建立了一](3-secure-access-plan.md) 份概述的安全性方案：
 
@@ -36,27 +36,27 @@ ms.locfileid: "97743900"
 
 * 外部使用者的登入需求。
 
-您將使用該方案來建立外部存取的 CA 原則。 
+您將使用該方案來建立外部存取的條件式存取原則。 
 
 > [!IMPORTANT]
 > 建立幾個外部使用者測試帳戶，讓您可以測試您所建立的原則，然後將它們套用至所有外部使用者。
 
 ## <a name="conditional-access-policies-for-external-access"></a>外部存取的條件式存取原則
 
-以下是與管理 CA 原則的外部存取相關的最佳做法。
+以下是使用條件式存取原則來管理外部存取的相關最佳做法。
 
-* 如果您無法在權利管理中使用已連線的組織，請為您使用的每個夥伴組織建立 Azure AD 安全性群組或 Microsoft 365 群組。 將該夥伴的所有使用者指派給群組。 然後，您可以在 CA 原則中使用這些群組。
+* 如果您無法在權利管理中使用已連線的組織，請為您使用的每個夥伴組織建立 Azure AD 安全性群組或 Microsoft 365 群組。 將該夥伴的所有使用者指派給群組。 然後，您可以在條件式存取原則中使用這些群組。
 
-* 盡可能建立較少的 CA 原則。 針對具有相同存取需求的應用程式，將它們全部新增至相同的原則。  
+* 盡可能只建立條件式存取原則。 針對具有相同存取需求的應用程式，將它們全部新增至相同的原則。  
 ‎ 
    > [!NOTE]
-   > CA 原則最多可套用至250應用程式。 如果有超過250的應用程式具有相同的存取需求，請建立重複的原則。 原則 A 會套用至應用程式1-250，原則 B 會套用至應用程式251-500 等等。
+   > 條件式存取原則最多可套用至250應用程式。 如果有超過250的應用程式具有相同的存取需求，請建立重複的原則。 原則 A 會套用至應用程式1-250，原則 B 會套用至應用程式251-500 等等。
 
 * 使用命名慣例，清楚命名外部存取的特定原則。 其中一個命名慣例是 *ExternalAccess_actiontaken_AppGroup*。 例如 ExternalAccess_Block_FinanceApps。
 
 ## <a name="block-all-external-users-from-resources"></a>封鎖所有外部使用者的資源
 
-您可以封鎖外部使用者使用 CA 原則來存取特定資源集。 一旦您決定要封鎖存取的一組資源，請建立原則。
+您可以封鎖外部使用者使用條件式存取原則來存取特定資源集。 一旦您決定要封鎖存取的一組資源，請建立原則。
 
 若要建立原則來封鎖外部使用者對一組應用程式的存取：
 
