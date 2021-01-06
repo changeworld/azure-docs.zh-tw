@@ -9,18 +9,18 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 2902274cfff11ac256459abd4fe0378146ee067b
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: dde2794e459e9375a231b7792bc1bd5ab21561bf
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280176"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955224"
 ---
 # <a name="create-azure-sql-managed-instance-using-kubernetes-tools"></a>使用 Kubernetes 工具建立 Azure SQL 受控實例
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 您應該已建立 [Azure Arc 資料控制器](./create-data-controller.md)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "93280176"
 
 ## <a name="create-a-yaml-file"></a>建立 yaml 檔案
 
-您可以使用 [範本 yaml](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/sqlmi.yaml) 檔作為起點，以建立您自己的自訂 SQL 受控實例 yaml 檔。  將此檔案下載至您的本機電腦，並在文字編輯器中開啟它。  使用支援語法醒目提示和 linting 的文字編輯器（例如支援 yaml 檔案的語法醒目提示和 [VS Code](https://code.visualstudio.com/download) ）會很有用。
+您可以使用 [範本 yaml](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/sqlmi.yaml) 檔作為起點，以建立您自己的自訂 SQL 受控實例 yaml 檔。  將此檔案下載至您的本機電腦，並在文字編輯器中開啟它。  使用支援語法醒目提示和 linting 的文字編輯器（例如支援 yaml 檔案的語法醒目提示和 [VS Code](https://code.visualstudio.com/download) ）會很有用。
 
 這是範例 yaml 檔：
 

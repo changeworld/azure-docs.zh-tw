@@ -4,15 +4,15 @@ description: 建立及管理感應器的使用者和內部部署管理主控台�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c3a9e1c7e96d0392e1f94b71549f612738622dea
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839287"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955069"
 ---
 # <a name="about-defender-for-iot-console-users"></a>關於適用于 IoT 主控台使用者的 Defender
 
@@ -20,7 +20,7 @@ ms.locfileid: "97839287"
 
 也可以使用功能來追蹤使用者活動，並啟用 Active Directory 登入。
 
-根據預設，每個感應器和內部部署管理主控台都會與 *cyberx 和支援* 使用者一起安裝。 這些使用者可以存取用於疑難排解和設定的 advanced tools。 系統管理員使用者應該以這些使用者認證登入、建立管理使用者，然後為安全性分析師和唯讀使用者建立其他使用者。
+根據預設，每個感應器和內部部署管理主控台都會與 *cyberx 和支援* 使用者一起安裝。 這些使用者可以存取用於疑難排解和設定的 advanced tools。 系統管理員使用者應該以這些使用者認證登入、建立管理使用者，然後為安全性分析師和唯讀使用者建立額外的使用者。
 
 ## <a name="role-based-permissions"></a>以角色為基礎的許可權
 以下是可用的使用者角色：
@@ -89,8 +89,8 @@ ms.locfileid: "97839287"
 若要定義使用者：
 
 1. 從感應器或內部部署管理主控台的左窗格中，選取 [ **使用者**]。
-2. 在 [ **使用者** ] 視窗中，選取 [ **建立使用者**]。
-3. 在 [ **建立使用者** ] 窗格中，定義下列參數：
+1. 在 [ **使用者** ] 視窗中，選取 [ **建立使用者**]。
+1. 在 [ **建立使用者** ] 窗格中，定義下列參數：
 
    - **Username**：輸入使用者名稱。
    - **電子郵件**：輸入使用者的電子郵件地址。
@@ -122,7 +122,7 @@ ms.locfileid: "97839287"
 
 1. 使用 Defender for IoT 系統管理認證，登入感應器或內部部署管理主控台的 CLI。
 
-2. 輸入 `sudo nano /var/cyberx/properties/authentication`。
+1. 輸入 `sudo nano /var/cyberx/properties/authentication`。
 
 ```azurecli-interactive
     infinity_session_expiration = true
@@ -138,7 +138,6 @@ ms.locfileid: "97839287"
 若要停用此功能，請將變更 `infinity_session_expiration = true` 為 `infinity_session_expiration = false` 。
 
 若要更新登出計數期間，請將 `= <number>` 值調整為所需的時間。
-
 
 ## <a name="track-user-activity"></a>追蹤使用者活動 
 
@@ -171,11 +170,11 @@ ms.locfileid: "97839287"
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="查看您的 Active Directory 系統設定。":::
 
-2. 在 [ **系統設定** ] 窗格中，選取 [ **Active Directory**]。
+1. 在 [ **系統設定** ] 窗格中，選取 [ **Active Directory**]。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="編輯您的 Active Directory 設定。":::
 
-3. 在 [**編輯 Active Directory** 設定] 對話方塊中，選取 [**已啟用 Active Directory 整合**] 的 [  >  **儲存**]。 [ **編輯 Active Directory** 設定] 對話方塊會展開，而您現在可以輸入參數以設定 Active Directory。
+1. 在 [**編輯 Active Directory** 設定] 對話方塊中，選取 [**已啟用 Active Directory 整合**] 的 [  >  **儲存**]。 [ **編輯 Active Directory** 設定] 對話方塊會展開，而您現在可以輸入參數以設定 Active Directory。
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="輸入要設定 Active Directory 的參數。":::
 
@@ -184,7 +183,7 @@ ms.locfileid: "97839287"
     > - 針對所有 Active Directory 參數，只使用小寫。 即使 Active Directory 中的設定使用大寫，也請使用小寫。
     > - 您無法同時設定相同網域的 LDAP 和 LDAPS。 不過，您可以同時針對不同的網域使用兩者。
 
-4. 設定 Active Directory 伺服器參數，如下所示：
+1. 設定 Active Directory 伺服器參數，如下所示：
 
    | 伺服器參數 | 描述 |
    |--|--|
@@ -194,9 +193,79 @@ ms.locfileid: "97839287"
    | Active Directory 群組 | 輸入在 LDAP 伺服器上 Active Directory 設定中定義的組名。 |
    | 受信任的網域 | 若要新增受信任的網域，請新增受信任網域的功能變數名稱和連線類型。 <br />您只能針對在 [使用者] 下定義的使用者設定受信任網域。 |
 
-5. 選取 [儲存]。
+1. 選取 [儲存]。
 
-6. 若要新增信任的伺服器，請選取 [ **新增伺服器** ] 並設定另一部伺服器。
+1. 若要新增信任的伺服器，請選取 [ **新增伺服器** ] 並設定另一部伺服器。
+
+## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>為感應器或內部部署管理主控台重設使用者的密碼
+
+### <a name="cyberx-or-support-user"></a>CyberX 或支援使用者
+
+只有 **CyberX** 和 **支援** 使用者可以存取 **密碼** 復原功能。 如果 **CyberX** 或 **支援** 使用者忘記其密碼，可以透過 Defender 上的 [IoT 登入] 頁面上的 [ **密碼修復** ] 選項重設密碼。
+
+若要重設 CyberX 或支援使用者的密碼：
+
+1. 在 [Defender for IoT 登入] 畫面上，選取 [  **密碼** 復原]。 **密碼修復** 畫面隨即開啟。
+
+1. 選取 [ **CyberX** ] 或 [ **支援**]，然後複製唯一的識別碼。
+
+1. 流覽至 [Azure 入口網站]，然後選取 [ **網站和感應器**]。  
+
+1. 從頂端工具列中選取訂用帳戶 **篩選器** 圖示 :::image type="icon" source="media/password-recovery-images/subscription-icon.png" border="false":::  ，然後選取您的感應器所連接的訂用帳戶。
+
+1. 選取 [ **復原內部部署管理主控台密碼** ] 索引標籤。
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="選取 [復原內部部署管理] 按鈕，以下載修復檔案。":::
+
+1. 輸入您在 **密碼修復** 畫面上收到的唯一識別碼，然後選取 [ **復原**]。 `password_recovery.zip`下載檔案。
+
+    > [!NOTE]
+    > 請勿改變密碼修復檔。 這是已簽署的檔案，如果您使用它進行篡改，將無法運作。
+
+1. 在 [ **密碼修復** ] 畫面上，選取 **[上傳**]。 **[上傳密碼** 復原檔案] 視窗隨即開啟。
+
+   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="上傳您的修復檔案以取得新的密碼。":::
+
+1. 選取 **[流覽]** 以找出您的檔案 `password_recovery.zip` ，或將拖曳 `password_recovery.zip` 至視窗。
+
+    > [!NOTE]
+    > 可能會出現錯誤訊息，指出檔案無效。 若要修正這個錯誤訊息，請確定您已選取正確的訂用帳戶，然後再下載 `password_recovery.zip` 並重新下載。  
+
+1. 選取 **[下一步]**，系統就會顯示您的管理主控台的使用者和系統產生的密碼。
+
+### <a name="administrator-security-analyst-and-read-only-user"></a>系統管理員、安全性分析師和唯讀使用者
+
+唯讀和安全性分析師無法重設自己的密碼，而且需要聯繫具有系統管理員、支援或 CyberX 角色的使用者，才能重設其密碼。 系統管理員使用者必須聯絡 **CyberX** 或 **支援** 使用者以重設其密碼。
+
+若要在感應器上重設使用者的密碼：
+
+1. 系統管理員、支援或 CyberX 角色使用者應登入感應器。
+
+1. 從左側面板中選取 [ **使用者** ]。
+
+   :::image type="content" source="media/password-recovery-images/sensor-page.png" alt-text="從左側窗格中選取 [使用者] 選項。":::
+
+1. 找出使用者，然後從 [**動作**] 下拉式功能表中選取 [**編輯**]。
+
+   :::image type="content" source="media/password-recovery-images/edit.png" alt-text="從 [動作] 下拉式功能表中選取 [編輯]。":::
+
+1. 在 [ **新密碼** ] 中輸入新密碼，然後 **確認新的密碼** 欄位。
+
+1. 選取 [更新]。
+
+若要在內部部署管理主控台重設使用者的密碼：
+
+1. 系統管理員、支援或 CyberX 角色使用者應登入感應器。
+
+1. 從左側面板中選取 [ **使用者** ]。
+
+   :::image type="content" source="media/password-recovery-images/console-page.png" alt-text="在左面板中，選取使用者的選項。":::
+
+1. 找出您的使用者，然後選取 [編輯] 圖示 :::image type="icon" source="media/password-recovery-images/edit-icon.png" border="false"::: 。
+
+1. 在 [ **新密碼** ] 中輸入新密碼，然後 **確認新的密碼** 欄位。
+
+1. 選取 [更新]。
 
 ## <a name="see-also"></a>請參閱
 

@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 051a7f506d351a17764e38c760ffba06d224cc38
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: e8d00055d9a4d7355ccd8a33c8a9b811b852f5c8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422564"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955275"
 ---
 # <a name="create-azure-arc-data-controller-using-kubernetes-tools"></a>使用 Kubernetes 工具建立 Azure Arc 資料控制器
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 請參閱 [建立 Azure Arc 資料控制器](create-data-controller.md) 的主題，以取得總覽資訊。
 
@@ -38,11 +38,9 @@ ms.locfileid: "93422564"
 ```console
 # Cleanup azure arc data service artifacts
 kubectl delete crd datacontrollers.arcdata.microsoft.com 
-kubectl delete sqlmanagedinstances.sql.arcdata.microsoft.com 
-kubectl delete postgresql-11s.arcdata.microsoft.com 
-kubectl delete postgresql-12s.arcdata.microsoft.com
-kubectl delete clusterroles azure-arc-data:cr-arc-metricsdc-reader
-kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
+kubectl delete crd sqlmanagedinstances.sql.arcdata.microsoft.com 
+kubectl delete crd postgresql-11s.arcdata.microsoft.com 
+kubectl delete crd postgresql-12s.arcdata.microsoft.com
 ```
 
 ## <a name="overview"></a>總覽
@@ -59,7 +57,7 @@ kubectl delete clusterrolebindings azure-arc-data:crb-arc-metricsdc-reader
 執行下列命令以建立自訂資源定義。  **[需要 Kubernetes 叢集系統管理員許可權]**
 
 ```console
-kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
+kubectl create -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/custom-resource-definitions.yaml
 ```
 
 ## <a name="create-a-namespace-in-which-the-data-controller-will-be-created"></a>建立將在其中建立資料控制器的命名空間
@@ -79,7 +77,7 @@ kubectl create namespace arc
 執行下列命令來建立啟動載入器服務、啟動載入器服務的服務帳戶，以及啟動載入器服務帳戶的角色和角色系結。
 
 ```console
-kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/bootstrapper.yaml
+kubectl create --namespace arc -f https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/bootstrapper.yaml
 ```
 
 使用下列命令確認啟動載入器 pod 正在執行。  您可能需要執行數次，直到狀態變更為為止 `Running` 。
@@ -102,7 +100,7 @@ containers:
       - env:
         - name: ACCEPT_EULA
           value: "Y"
-        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-oct-2020  <-- template value to change
+        #image: mcr.microsoft.com/arcdata/arc-bootstrapper:public-preview-dec-2020  <-- template value to change
         image: <your registry DNS name or IP address>/<your repo>/arc-bootstrapper:<your tag>
         imagePullPolicy: IfNotPresent
         name: bootstrapper
@@ -150,7 +148,7 @@ echo '<your string to encode here>' | base64
 # echo 'example' | base64
 ```
 
-當您編碼使用者名稱和密碼之後，您可以建立以 [範本](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/controller-login-secret.yaml) 檔案為基礎的檔案，並將使用者名稱和密碼值取代為您自己的值。
+當您編碼使用者名稱和密碼之後，您可以建立以 [範本](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/controller-login-secret.yaml) 檔案為基礎的檔案，並將使用者名稱和密碼值取代為您自己的值。
 
 然後執行下列命令來建立秘密。
 
@@ -165,26 +163,26 @@ kubectl create --namespace arc -f C:\arc-data-services\controller-login-secret.y
 
 現在您已準備好建立資料控制器本身。
 
-首先，在電腦本機上建立 [範本](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/data-controller.yaml) 檔案的複本，讓您可以修改部分設定。
+首先，在電腦本機上建立 [範本](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/data-controller.yaml) 檔案的複本，讓您可以修改部分設定。
 
 視需要編輯下列內容：
 
 **必填**
-- **位置** ：將此變更為將儲存資料控制器 _中繼資料_ 的 Azure 位置。  您可以在 [建立資料控制器總覽](create-data-controller.md) 文章中查看可用的 Azure 位置清單。
-- **resourceGroup** ：您要在 Azure Resource Manager 中建立資料控制器 azure 資源的 azure 資源群組。  此資源群組通常應該已經存在，但在您將資料上傳至 Azure 之前，並不需要此資源群組。
+- **位置**：將此變更為將儲存資料控制器 _中繼資料_ 的 Azure 位置。  您可以在 [建立資料控制器總覽](create-data-controller.md) 文章中查看可用的 Azure 位置清單。
+- **resourceGroup**：您要在 Azure Resource Manager 中建立資料控制器 azure 資源的 azure 資源群組。  此資源群組通常應該已經存在，但在您將資料上傳至 Azure 之前，並不需要此資源群組。
 - **訂** 用帳戶：您要在其中建立 azure 資源之訂用帳戶的 azure 訂用帳戶 GUID。
 
 **建議您複習並可能變更預設值**
-- **儲存體 .。。className** ：用於資料控制器資料和記錄檔的儲存類別。  如果您不確定 Kubernetes 叢集中的可用儲存類別，您可以執行下列命令： `kubectl get storageclass` 。  預設值是， `default` 假設有一個儲存類別存在，而且其名稱 `default` 不是預設的儲存類別。 _is_  注意：有兩個要設定為所需儲存類別的 className 設定-一個用於資料，另一個用於記錄。
-- **serviceType** ： `NodePort` 如果您不使用 LoadBalancer，請將服務類型變更為。  注意：有兩個 serviceType 設定需要變更。
+- **儲存體 .。。className**：用於資料控制器資料和記錄檔的儲存類別。  如果您不確定 Kubernetes 叢集中的可用儲存類別，您可以執行下列命令： `kubectl get storageclass` 。  預設值是， `default` 假設有一個儲存類別存在，而且其名稱 `default` 不是預設的儲存類別。   注意：有兩個要設定為所需儲存類別的 className 設定-一個用於資料，另一個用於記錄。
+- **serviceType**： `NodePort` 如果您不使用 LoadBalancer，請將服務類型變更為。  注意：有兩個 serviceType 設定需要變更。
 
 **選**
-- **名稱** ：資料控制器的預設名稱 `arc` ，但您可以視需要加以變更。
-- **displayName** ：將此值設定為與檔案頂端的名稱屬性相同的值。
+- **名稱**：資料控制器的預設名稱 `arc` ，但您可以視需要加以變更。
+- **displayName**：將此值設定為與檔案頂端的名稱屬性相同的值。
 - 登錄 **： Microsoft** Container registry 是預設值。  如果您要從 Microsoft Container Registry 提取映射，並將 [其推送至私人容器](offline-deployment.md)登錄，請在此輸入您的登錄 IP 位址或 DNS 名稱。
-- **dockerRegistry** ：必要時，用來從私人容器登錄中提取映射的映射提取秘密。
-- 存放 **庫** ： Microsoft Container Registry 上的預設存放庫 `arcdata` 。  如果您使用私人容器登錄，請輸入資料夾/存放庫的路徑，其中包含已啟用 Azure Arr 的資料服務容器映射。
-- **imageTag** ：目前最新版本標記是範本中預設的標籤，但如果您想要使用較舊的版本，您可以變更它。
+- **dockerRegistry**：必要時，用來從私人容器登錄中提取映射的映射提取秘密。
+- 存放 **庫**： Microsoft Container Registry 上的預設存放庫 `arcdata` 。  如果您使用私人容器登錄，請輸入資料夾/存放庫的路徑，其中包含已啟用 Azure Arr 的資料服務容器映射。
+- **imageTag**：目前最新版本標記是範本中預設的標籤，但如果您想要使用較舊的版本，您可以變更它。
 
 完成的資料控制器 yaml 檔範例：
 ```yaml
@@ -200,7 +198,7 @@ spec:
     serviceAccount: sa-mssql-controller
   docker:
     imagePullPolicy: Always
-    imageTag: public-preview-oct-2020 
+    imageTag: public-preview-dec-2020 
     registry: mcr.microsoft.com
     repository: arcdata
   security:

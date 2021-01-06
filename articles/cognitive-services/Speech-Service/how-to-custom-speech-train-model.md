@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 5a912790b4a7a86c44576b98ce7e95f44b810c9e
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857370"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955190"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>定型和部署自訂語音模型
 
@@ -48,6 +48,11 @@ ms.locfileid: "97857370"
 
 請參閱 [如何](how-to-custom-speech-evaluate-data.md) 評估及改善自訂語音模型的精確度。 如果您選擇測試精確度，請務必選取與您在模型中使用的聲場資料集不同，以取得模型效能的實際意義。
 
+> [!NOTE]
+> 基底模型和自訂模型只能用於特定日期 (請參閱 [模型生命週期](custom-speech-overview.md#model-lifecycle)) 。 語音 Studio 會在每個模型和端點的 **到期** 資料行中顯示此日期。 在該日期要求至端點或批次轉譯之後，可能會失敗或切換回基底模型。
+>
+> 使用最新的基底模型重新定型您的模型，以受益于精確度的改進，並避免您的模型過期。
+
 ## <a name="deploy-a-custom-model"></a>部署自訂模型
 
 在您上傳和檢查資料、評估精確度以及定型自訂模型之後，您可以部署自訂端點，以搭配您的應用程式、工具和產品使用。 
@@ -63,7 +68,7 @@ ms.locfileid: "97857370"
 
 接下來，選取 [建立]。 此動作會將您返回 [ **部署** ] 頁面。 資料表現在包含對應至您自訂端點的專案。 端點的狀態會顯示其目前的狀態。 使用您的自訂模型來具現化新端點最多可能需要30分鐘的時間。 當部署的狀態變更為 [ **完成**] 時，端點就可供使用。
 
-部署端點之後，端點名稱會顯示為連結。 選取連結以查看您端點的特定資訊，例如端點金鑰、端點 URL 和範例程式碼。
+部署端點之後，端點名稱會顯示為連結。 選取連結以查看您端點的特定資訊，例如端點金鑰、端點 URL 和範例程式碼。 記下到期日，並在該日期之前更新端點的模型，以確保服務不中斷。
 
 ## <a name="view-logging-data"></a>查看記錄資料
 

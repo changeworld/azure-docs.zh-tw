@@ -3,12 +3,12 @@ title: 什麼是 Azure 轉送？ | Microsoft Docs
 description: 本文概述 Azure 轉送服務，此服務可讓您開發雲端應用程式來取用公司網路中所執行的內部部署服務，而不需要開啟防火牆連線或對網路基礎結構進行侵入式變更。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322653"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955377"
 ---
 # <a name="what-is-azure-relay"></a>什麼是 Azure 轉送？
 Azure 轉送服務可讓您在公用雲端中安全地公開公司網路中所執行的服務。 您不需要開啟防火牆上的連線，也不需要對公司網路基礎結構進行侵入式變更，就能做到這一點。 
@@ -17,7 +17,7 @@ Azure 轉送服務可讓您在公用雲端中安全地公開公司網路中所�
 
 - 傳統的單向、要求/回應和點對點通訊 
 - 在網際網路範圍散發事件，以實現發佈/訂閱案例 
-- 跨網路界限的雙向、未緩衝通訊端通訊。
+- 跨越網路界限的雙向和未緩衝通訊端通訊
 
 Azure 轉送不同於網路層級的整合技術，例如 VPN。 Azure 轉送可以侷限在單一機器上的單一應用程式端點內。 VPN 技術的侵入性則高得多，原因是其依賴於改變網路環境。 
 
@@ -27,7 +27,7 @@ Azure 轉送不同於網路層級的整合技術，例如 VPN。 Azure 轉送可
 1. 內部部署服務透過輸出連接埠連線到轉送服務。 
 2. 它會建立雙向通訊端以供進行繫結至特定位址的通訊。 
 3. 用戶端接著可將流量傳送至以該位址為目標的轉送服務，藉此與內部部署服務通訊。 
-4. 轉送服務接著會透過用戶端專用的雙向通訊端，將資料「轉送」** 至內部部署服務。 用戶端不需要直接連線到內部部署服務。 它不需要知道服務的所在位置。 而且，內部部署服務也不需要在防火牆上開啟任何輸入連接埠。
+4. 轉送服務接著會透過用戶端專用的雙向通訊端，將資料「轉送」至內部部署服務。 用戶端不需要直接連線到內部部署服務。 它不需要知道服務的所在位置。 而且，內部部署服務也不需要在防火牆上開啟任何輸入連接埠。
 
 
 ## <a name="features"></a>特性 
@@ -56,7 +56,7 @@ WCF 轉送適用於完整的 .NET Framework 和 WCF。 您可以在內部部署�
 | **WCF** |x | |
 | **.NET Core** | |x |
 | **.NET Framework** |x |x |
-| **Java 指令碼/Node.JS** | |x |
+| **JavaScript/Node.js** | |x |
 | **以標準為基礎的開放通訊協定** | |x |
 | **RPC 程式設計模型** | |x |
 

@@ -5,12 +5,12 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 746ec7aa3ee41204e051e843ff94ed0771a9d244
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: e37a14b2634395d7f31565d6d5a6f6ec96a4a2f1
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326177"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954513"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 入口網站中建立您的第一個函式
 
@@ -61,7 +61,7 @@ Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要�
 
     ![從 Azure 入口網站複製函式 URL](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. 將函式 URL 貼入瀏覽器的網址列中。 將查詢字串值 `?name=<your_name>` 新增至此 URL 的結尾，然後按 Enter 鍵以執行要求。 
+1. 將函式 URL 貼入瀏覽器的網址列中。 將查詢字串值 `&name=<your_name>` 新增至此 URL 的結尾，然後按 Enter 鍵以執行要求。 
 
     下列範例會顯示瀏覽器中的回應：
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 01/05/2021
 ms.author: aahi
-ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364933"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955037"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>關於文字分析認知服務的常見問題集 (FAQ)
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>關於文字分析 API 的常見問題集 (FAQ)
 
- 尋找 Azure 上 Microsoft 認知服務文字分析 API 相關概念、程式碼和案例常見問題的解答。
+ 尋找與 Azure 認知服務中的文字分析 API 相關的概念、程式碼和案例常見問題的解答。
 
 ## <a name="can-text-analytics-identify-sarcasm"></a>文字分析是否可以識別嘲笑挖苦？
 
@@ -47,11 +47,21 @@ ms.locfileid: "94364933"
 
 模型和演算法的改善若為主要變更則會宣佈，若為次要更新則會以安靜模式匯集到服務中。 過了一段時間，您可能會發現相同的文字輸入產生不同的人氣分數或關鍵片語輸出。 這是在雲端中使用受控機器學習服務資源的正常蓄意結果。
 
+## <a name="service-availability-and-redundancy"></a>服務可用性和冗余
+
+### <a name="is-text-analytics-service-zone-resilient"></a>文字分析的服務區域是否可復原？
+
+是。 依預設，文字分析服務具有區域彈性。
+
+### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>如何? 將文字分析服務設定為可復原區域？
+
+不需要客戶設定即可啟用區域復原。 預設會提供文字分析資源的區域復原功能，並由服務本身管理。
+
 ## <a name="next-steps"></a>後續步驟
 
 您的問題是否與缺少特性或功能相關？ 請考慮在我們的 [UserVoice 網站](https://cognitive.uservoice.com/forums/555922-text-analytics)上要求或對它投票。
 
 ## <a name="see-also"></a>請參閱
 
- [StackOverflow：文字分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow：認知服務](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ * [StackOverflow：文字分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ * [StackOverflow：認知服務](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

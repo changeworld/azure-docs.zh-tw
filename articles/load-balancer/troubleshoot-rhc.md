@@ -11,16 +11,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696314"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955615"
 ---
-# <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>針對資源健康狀態、前端和後端可用性問題進行疑難排解 
+# <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>針對資源健康狀態和輸入可用性問題進行疑難排解 
 
 本文是一份指南，可調查影響您負載平衡器前端 IP 和後端資源可用性的問題。 
+
+資源健康狀態檢查 Load Balancer 的 (RHC) 用來判斷負載平衡器的健康情況。 它會在 **2 分鐘** 的間隔內分析資料路徑可用性度量，以判斷負載平衡端點、前端 IP 和前端埠組合是否可以使用負載平衡規則。
+
+下表說明用來判斷負載平衡器健全狀況狀態的 RHC 邏輯。
+
+| 資源健康情況狀態 | 描述 |
+| --- | --- |
+| 可用 | 您的標準負載平衡器資源狀況良好且可供使用。 |
+| 已降級 | 您的標準負載平衡器有影響效能的平臺或使用者起始事件。 資料路徑可用性計量在至少兩分鐘內回報了小於 90% 但大於 25% 的健康情況。 您將體驗到嚴重的效能影響。 
+| 無法使用 | 您的標準負載平衡器資源狀況不良。 資料路徑可用性計量回報的健康情況低於至少兩分鐘的25% 健全狀況。 您將會遇到對輸入連線能力造成顯著的效能影響或缺乏可用性。 可能是使用者或平臺事件造成無法使用的情形。 |
+| Unknown | 標準負載平衡器資源的資源健康狀態尚未更新，或尚未收到過去10分鐘的資料路徑可用性資訊。 此狀態應該是暫時性的，系統會在收到資料後立即反/映正確的狀態。 |
+
 
 ## <a name="about-the-metrics-well-use"></a>關於我們將使用的計量
 要使用的兩個度量是 *資料路徑可用性* 和 *健康情況探查狀態* ，而且務必瞭解它們對衍生正確見解的意義。 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/21/2020
+ms.date: 01/05/2021
 ms.author: alkohli
-ms.openlocfilehash: f622d6e752b658172bce115cde4f30d555e2ed3a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: d601c6191da9d555e54c1d58c122420510d288fc
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763759"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955547"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>在 Azure Stack Edge Pro 裝置上執行的 Vm 上部署自訂腳本擴充功能
 
@@ -35,8 +35,8 @@ ms.locfileid: "97763759"
 
 | 散發 | 版本 |
 |---|---|
-| Windows Server 2019 | 核心版 |
-| Windows Server 2016 | 核心版 |
+| Windows Server 2019 | 核心 |
+| Windows Server 2016 | 核心 |
 
 #### <a name="supported-os-for-custom-script-extension-on-linux"></a>Linux 上自訂腳本擴充功能的支援 OS
 
@@ -45,7 +45,7 @@ ms.locfileid: "97763759"
 | 散發 | 版本 |
 |---|---|
 | Linux：Ubuntu | 18.04 LTS |
-| Linux：Red Hat Enterprise Linux | 7.4 |
+| Linux：Red Hat Enterprise Linux | 7.4、7.5、7。7 |
 
 <!--### Script location
 
@@ -60,7 +60,7 @@ If your script is on a local server, then you may still need additional firewall
 > [!NOTE]
 > Before you install the Custom Script extension, make sure that the port enabled for compute network on your device is connected to Internet and has access. -->
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 1. 將[VM 範本和參數檔案下載](https://aka.ms/ase-vm-templates)至您的用戶端電腦。 將它解壓縮至您將作為工作目錄的目錄。
 

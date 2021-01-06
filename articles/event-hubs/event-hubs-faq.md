@@ -3,12 +3,12 @@ title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: c756d0bccd9b2ad303bd97d3bfb7aed8b0b82b09
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96002780"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955411"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -153,7 +153,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 ## <a name="partitions"></a>資料分割
 
 ### <a name="how-many-partitions-do-i-need"></a>我需要多少個分割區？
-分割區數目是在建立時指定，且必須介於1到32之間。 資料分割計數不可變更，您在設定資料分割計數時，應該考慮長期的規模。 資料分割是一種資料組織機制，與取用端應用程式所需的下游平行處理原則有關。 事件中樞內的資料分割數目，與您預期有的並行讀取器數目直接相關。 如需分割區的詳細資訊，請參閱[分割區](event-hubs-features.md#partitions)。
+資料分割數目是在建立時指定，值必須介於 1 到 32 之間。 分割區計數無法在 [專用層](event-hubs-dedicated-overview.md)以外的所有層級中變更，因此您應該在設定資料分割計數時考慮長期的規模。 資料分割是一種資料組織機制，與取用端應用程式所需的下游平行處理原則有關。 事件中樞內的資料分割數目，與您預期有的並行讀取器數目直接相關。 如需分割區的詳細資訊，請參閱[分割區](event-hubs-features.md#partitions)。
 
 在建立時，您可能會想要將其設定為最高的可能值，也就是 32。 請記住，有多個分割區會導致事件傳送至多個分割區，而不會保留順序，除非您將傳送者設定為只傳送至 32 個分割區中的單一分割區，而留下剩餘的 31 個分割區做為備援之用。 在前者案例中，您必須跨所有 32 個分割區讀取事件。 在後者案例中，除了您必須在事件處理器主機上進行的額外設定外，沒有明顯的額外成本。
 

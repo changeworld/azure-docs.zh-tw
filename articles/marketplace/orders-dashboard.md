@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450761"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955020"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>商業市集分析中的訂單儀表板
 
@@ -109,17 +109,16 @@ SaaS 供應專案可以在每個方案中使用兩種定價模型的其中一種
 - 資料可以解壓縮至。CSV 或。如果記錄計數小於1000，則為 TSV 檔案。
 - 如果記錄數超過1000，匯出的資料會以非同步方式放在未來30天的 [下載] 頁面中。
 - 將篩選套用至 [ **訂單詳細** 資料] 資料表，只顯示您感興趣的資料。 依國家/地區、Azure 授權類型、商業 marketplace 授權類型、供應專案類型、訂單狀態、免費線索、商業 marketplace 訂用帳戶識別碼、客戶識別碼和公司名稱進行篩選。
-- 因為 SaaS 供應專案是透過 Azure Marketplace 或 Microsoft AppSource 購買，所以不需要 Azure 訂用帳戶，Marketplace 訂用帳戶識別碼會以00000000-0000-0000-0000-000000000000 形式出現在 [ **詳細訂單資料** ] 區段中。
 - 當受保護的客戶購買訂單時，會將 [ **訂單詳細資料** ] 中的資訊遮罩 ( * * * * * * * * * * * ) 。
 
 **_表1：資料的字典_* _
 
 | 資料行名稱 | 屬性名稱 | 定義 |
 | ------------ | ------------- | ------------- |
-| Marketplace 訂用帳戶識別碼 | Marketplace 訂用帳戶識別碼 | 與客戶用來購買商業 marketplace 供應專案的 Azure 訂用帳戶相關聯的唯一識別碼。 識別碼先前是 Azure 訂用帳戶 GUID。 |
+| Marketplace 訂用帳戶識別碼 | Marketplace 訂用帳戶識別碼 | 與客戶用來購買商業 marketplace 供應專案的 Azure 訂用帳戶相關聯的唯一識別碼。 針對基礎結構供應專案，這是客戶的 Azure 訂用帳戶 GUID。 針對 SaaS 供應專案，這會顯示為零，因為 SaaS 購買不需要 Azure 訂用帳戶。 |
 | MonthStartDate | 月開始日期 | 月開始日期代表購買月份。 |
 | 供應項目類型 | 供應項目類型 | 商業 marketplace 供應專案的類型。 |
-| Azure 授權類型 | Azure 授權類型 | 客戶用來購買 Azure 的授權合約類型。 也稱為「通道」。 可能的值包括：<ul><li>雲端解決方案提供者</li><li>企業</li><li>企業透過轉銷商</li><li>隨用隨付</li></ul> |
+| Azure 授權類型 | Azure 授權類型 | 客戶用來購買 Azure 的授權合約類型。 也稱為「通道」。 可能的值包括：<ul><li>雲端解決方案提供者</li><li>Enterprise</li><li>企業透過轉銷商</li><li>隨用隨付</li></ul> |
 | Marketplace 授權類型 | Marketplace 授權類型 | 商業 marketplace 供應專案的計費方法。 不同的值如下：<ul><li>透過 Azure 計費</li><li>攜帶您自己的授權</li><li>免費</li><li>Microsoft 成為轉銷商</li></ul> |
 | SKU | SKU | 與供應專案相關聯的方案 |
 | 客戶國家/地區 | Customer Country/Region | 客戶提供的國家/地區名稱。 國家/地區可能與客戶的 Azure 訂用帳戶中的國家/地區不同。 |

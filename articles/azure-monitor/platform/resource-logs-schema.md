@@ -4,12 +4,12 @@ description: 瞭解 Azure 資源記錄的支援服務和事件架構。
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: f5ea6d3f28fe85cf1453f3cf2b9eb0132bda0013
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 56de1f4f275eba46d5f8b146829e444a75eabb88
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808295"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955309"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>適用于 Azure 資源記錄的常見和服務專屬架構
 
@@ -51,7 +51,7 @@ ms.locfileid: "97808295"
 | Azure Active Directory | [總覽](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)、 [Audit log schema 和登](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md)[入架構](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | [Azure Analysis Services-設定診斷記錄](../../analysis-services/analysis-services-logging.md) |
 | API 管理 | [API 管理資源記錄](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
-| App Service | [App Service 記錄](../../app-service/troubleshoot-diagnostic-logs.md)
+| App Service 方案 | [App Service 記錄](../../app-service/troubleshoot-diagnostic-logs.md)
 | 應用程式閘道 |[應用程式閘道的記錄](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure 自動化 |[Azure 自動化的 Log analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 記錄](../../batch/batch-diagnostics.md) |
@@ -60,7 +60,7 @@ ms.locfileid: "97808295"
 | 內容傳遞網路 | [CDN 的 Azure 記錄](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB 記錄](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [使用 Azure 監視器監視資料處理站](../../data-factory/monitor-using-azure-monitor.md) |
-| Data Lake Analytics |[存取 Azure Data Lake Analytics 的記錄](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
+| 資料湖分析 |[存取 Azure Data Lake Analytics 的記錄](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[存取 Azure Data Lake 存放區的記錄](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Azure 資料總管 | [Azure 資料總管記錄](/azure/data-explorer/using-diagnostic-logs) |
 | 適用於 MySQL 的 Azure 資料庫 | [適用於 MySQL 的 Azure 資料庫診斷記錄](../../mysql/concepts-server-logs.md#diagnostic-logs) |
@@ -77,7 +77,7 @@ ms.locfileid: "97808295"
 | Load Balancer |[Azure 負載平衡器的記錄檔分析](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B 自訂追蹤結構描述](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | 網路安全性群組 |[網路安全性群組 (NSG) 的記錄檔分析](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDOS 保護 | [管理 Azure DDoS Protection Standard](../../ddos-protection/diagnostic-logging.md#log-schemas) |
+| DDoS 保護 | [Azure DDoS 保護 Standard 的記錄](../../ddos-protection/diagnostic-logging.md#log-schemas) |
 | Power BI 專用 | [Azure 中的 Power BI Embedded 記錄](/power-bi/developer/azure-pbie-diag-logs) |
 | [復原服務] | [Azure 備份的資料模型](../../backup/backup-azure-reports-data-model.md)|
 | 搜尋 |[啟用和使用搜尋流量分析](../../search/search-traffic-analytics.md) |

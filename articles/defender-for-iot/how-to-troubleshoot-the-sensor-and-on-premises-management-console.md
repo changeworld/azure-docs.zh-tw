@@ -1,20 +1,20 @@
 ---
-title: 針對感應器和內部部署管理主控台進行疑難排解
+title: 對感應器和內部部署管理主控台進行疑難排解
 description: 疑難排解您的感應器和內部部署管理主控台，以消除您可能遇到的任何問題。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/12/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a57db4f88de4a3b32b4fb315fb331500f955d501
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b91827fc0a6fb8380c9f8aa87a3def3bc1819523
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839154"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955428"
 ---
-# <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>針對感應器和內部部署管理主控台進行疑難排解
+# <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>對感應器和內部部署管理主控台進行疑難排解
 
 本文說明感應器和內部部署管理主控台的基本疑難排解工具。 除了此處所述的專案之外，您還可以透過下列方式檢查系統的健康情況：
 
@@ -28,22 +28,33 @@ ms.locfileid: "97839154"
 
 ### <a name="investigate-password-failure-at-initial-sign-in"></a>調查初始登入時的密碼失敗
 
-當您第一次登入預先設定的箭號感應器時，您必須執行下列密碼復原：
+當您第一次登入預先設定的箭號感應器時，您必須執行密碼復原。
 
-1. 在 [Defender for IoT 登入] 畫面上，選取 [ **密碼修復** ] 選項。 
+復原您的密碼：
 
-   **密碼修復** 畫面隨即開啟。 系統會提示您選取使用者和訂用帳戶，而且您會獲得唯一的識別碼。
+1. 在 [Defender for IoT 登入] 畫面上，選取 [  **密碼** 復原]。 **密碼修復** 畫面隨即開啟。
 
-1. 移至 [適用于 IoT 的 Defender **網站和感應器** ] 頁面，然後選取 [ **復原我的密碼** ] 索引標籤。
+1. 選取 [ **CyberX** ] 或 [ **支援**]，然後複製唯一的識別碼。
+
+1. 流覽至 [Azure 入口網站]，然後選取 [ **網站和感應器**]。  
+
+1. 選取 [ **復原內部部署管理主控台密碼** ] 索引標籤。
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="選取 [復原內部部署管理] 按鈕，以下載修復檔案。":::
 
 1. 輸入您在 **密碼修復** 畫面上收到的唯一識別碼，然後選取 [ **復原**]。 `password_recovery.zip`下載檔案。
 
-   > [!NOTE]
-   > 請勿變更啟用檔。 這是已簽署的檔案，如果您使用它進行篡改，將無法運作。
+    > [!NOTE]
+    > 請勿改變密碼修復檔。 這是已簽署的檔案，如果您使用它進行篡改，將無法運作。
 
-1. 在 [ **密碼修復** ] 畫面上，上傳檔案 `password_recovery.zip` 並選取 **[下一步]**。
+1. 在 [ **密碼修復** ] 畫面上，選取 **[上傳**]。 **[上傳密碼** 復原檔案] 視窗隨即開啟。
 
-然後，您會收到管理主控台的系統產生密碼。 
+1. 選取 **[流覽]** 以找出您的檔案 `password_recovery.zip` ，或將拖曳 `password_recovery.zip` 至視窗。
+
+1. 選取 **[下一步]**，系統就會顯示您的管理主控台的使用者和系統產生的密碼。
+
+    > [!NOTE]
+    > 當您第一次登入感應器或內部部署管理主控台時，它會連結到您所連線的訂用帳戶。 如果您需要重設 CyberX 或支援使用者的密碼，您必須選取該訂用帳戶。 如需復原 CyberX 或支援使用者密碼的詳細資訊，請參閱為 [感應器或內部部署管理主控台重設使用者的密碼](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console)
 
 ### <a name="investigate-a-lack-of-traffic"></a>調查缺少的流量
 
@@ -65,35 +76,35 @@ ms.locfileid: "97839154"
 
    :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/dashboard-view-v2.png" alt-text="範例儀表板的螢幕擷取畫面。"::: 
 
-2. 從側邊功能表選取 [ **裝置**]。
+1. 從側邊功能表選取 [ **裝置**]。
 
-3. 在 [ **裝置** ] 視窗中，確認正在探索裝置。
+1. 在 [ **裝置** ] 視窗中，確認正在探索裝置。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/discovered-devices.png" alt-text="確定已探索裝置。":::
 
-4. 從側邊功能表選取 [ **資料採礦**]。
+1. 從側邊功能表選取 [ **資料採礦**]。
 
-5. 在 [ **資料採礦** ] 視窗中，選取 [ **全部** ] 並產生報表。
+1. 在 [ **資料採礦** ] 視窗中，選取 [ **全部** ] 並產生報表。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="使用資料採礦產生新的報表。":::
 
-6. 請確定報表包含資料。
+1. 請確定報表包含資料。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="確定報表包含資料。":::
 
-7. 從側邊功能表選取 [ **趨勢] & 統計資料**。
+1. 從側邊功能表選取 [ **趨勢] & 統計資料**。
 
-8. 在 [ **趨勢 & 統計資料** ] 視窗中，選取 [ **新增 Widget**]。
+1. 在 [ **趨勢 & 統計資料** ] 視窗中，選取 [ **新增 Widget**]。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/add-widget.png" alt-text="選取 widget 以新增 widget。":::
 
-9. 新增 widget 並確定其顯示資料。
+1. 新增 widget 並確定其顯示資料。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/widget-data.png" alt-text="確定 widget 顯示資料。":::
 
-10. 從側邊功能表選取 [ **警示**]。 [ **警示** ] 視窗隨即出現。
+1. 從側邊功能表選取 [ **警示**]。 [ **警示** ] 視窗隨即出現。
 
-11. 請確定已建立警示。
+1. 請確定已建立警示。
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/alerts-created.png" alt-text="確定已建立警示。":::
 
@@ -154,9 +165,9 @@ ms.locfileid: "97839154"
 
 1. 以滑鼠右鍵按一下裝置對應上的雲端圖示，然後選取 [ **匯出 IP 位址**]。 複製私用的公用範圍，並將其新增至子網清單。 如需詳細資訊，請參閱 [設定子網](how-to-control-what-traffic-is-monitored.md#configure-subnets)。
 
-2. 針對網際網路連接產生新的資料採礦報告。
+1. 針對網際網路連接產生新的資料採礦報告。
 
-3. 在資料採礦報表中，選取 :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: 以進入系統管理員模式，並刪除您 ICS 裝置的 IP 位址。
+1. 在資料採礦報表中，選取 :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: 以進入系統管理員模式，並刪除您 ICS 裝置的 IP 位址。
 
 ### <a name="tweak-the-sensors-quality-of-service"></a>調整感應器的服務品質
 
@@ -179,7 +190,7 @@ ms.locfileid: "97839154"
    > [!NOTE]
    > 若為實體設備，請使用 em1 介面。
 
-2. 若要清除介面限制，請輸入 `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` 。
+1. 若要清除介面限制，請輸入 `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` 。
 
 ## <a name="on-premises-management-console-troubleshooting-tools"></a>內部部署管理主控台疑難排解工具
 
@@ -203,7 +214,7 @@ ms.locfileid: "97839154"
 
 1. 以 Defender for IoT 使用者的身份登入。 
 
-2. 確認預設值：
+1. 確認預設值：
 
    ```bash
    grep \"notifications\" /var/cyberx/properties/management.properties
@@ -216,20 +227,20 @@ ms.locfileid: "97839154"
    notifications.max_time_to_report=10 (seconds)
    ```
 
-3. 編輯預設設定：
+1. 編輯預設設定：
 
    ```bash
    sudo nano /var/cyberx/properties/management.properties
    ```
 
-4. 編輯下列各行的設定：
+1. 編輯下列各行的設定：
 
    ```bash
    notifications.max_number_to_report=50
    notifications.max_time_to_report=10 (seconds)
    ```
 
-5. 儲存變更。 不需要重新啟動。
+1. 儲存變更。 不需要重新啟動。
 
 ## <a name="export-information-for-troubleshooting"></a>匯出資訊以進行疑難排解
 
@@ -239,13 +250,13 @@ ms.locfileid: "97839154"
 
 1. 在左窗格中，選取 [ **系統設定**]。
 
-2. 選取 [匯出記錄]。
+1. 選取 [匯出記錄]。
 
     :::image type="content" source="media/how-to-export-information-for-troubleshooting/export-a-log.png" alt-text="將記錄匯出至系統支援。":::
 
-3. 在 [ **檔案名** ] 方塊中，輸入要用於記錄匯出的檔案名。 預設值是目前的日期。
+1. 在 [ **檔案名** ] 方塊中，輸入要用於記錄匯出的檔案名。 預設值是目前的日期。
 
-4. 若要定義您想要匯出的資料，請選取資料類別：  
+1. 若要定義您想要匯出的資料，請選取資料類別：  
 
     | 匯出分類 | 描述 |
     |--|--|
@@ -264,9 +275,9 @@ ms.locfileid: "97839154"
     | **資料庫記錄** | 選取此選項可從系統資料庫匯出記錄。 調查系統記錄有助於找出系統問題。 |
     | **設定** | 選取此選項以匯出所有可設定參數的相關資訊，以確定一切都已正確設定。 |
 
-5. 若要選取所有選項，請選取 [ **選取所有** ] 旁的 [選取 **類別**]。
+1. 若要選取所有選項，請選取 [ **選取所有** ] 旁的 [選取 **類別**]。
 
-6. 選取 [匯出記錄]。
+1. 選取 [匯出記錄]。
 
 匯出的記錄會新增至 [封存的 **記錄** ] 清單中。 將 OTP 從匯出記錄檔中的個別訊息和媒體傳送給支援小組。 支援小組只能使用用來加密記錄的唯一 OTP 來將匯出的記錄檔解壓縮。
 

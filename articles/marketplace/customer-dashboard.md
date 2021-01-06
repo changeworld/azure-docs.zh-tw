@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460477"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954272"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>商業 marketplace 分析中的客戶儀表板
 
@@ -144,20 +144,20 @@ _**表1：資料詞彙的字典**_
 
 | 資料行名稱 | 屬性名稱 | 定義 |
 | ------------ | ------------- | ------------- |
-| Marketplace 訂用帳戶識別碼 | Marketplace 訂用帳戶識別碼 | 與客戶用來購買商業 marketplace 供應專案的 Azure 訂用帳戶相關聯的唯一識別碼。 識別碼先前是 Azure 訂用帳戶 GUID。 |
+| Marketplace 訂用帳戶識別碼 | Marketplace 訂用帳戶識別碼 | 與客戶用來購買商業 marketplace 供應專案的 Azure 訂用帳戶相關聯的唯一識別碼。 針對基礎結構供應專案，這是客戶的 Azure 訂用帳戶 GUID。 針對 SaaS 供應專案，這會顯示為零，因為 SaaS 購買不需要 Azure 訂用帳戶。 |
 | DateAcquired | 取得日期 | 客戶購買任何您所發佈之供應專案的第一天。 |
 | DateLost | 損失日期 | 客戶最近一次購買的供應專案最後一個日期。 |
 | Provider Name | Provider Name | 與 Microsoft 和客戶之間的關係相關的提供者名稱。 如果客戶是透過轉銷商的企業，就會是轉銷商。 如果涉及雲端解決方案提供者 (CSP)，就會是 CSP。 |
 | 提供者電子郵件 | 提供者電子郵件 | 與 Microsoft 和客戶之間的關係相關之提供者的電子郵件地址。 如果客戶是透過轉銷商的企業，就會是轉銷商。 如果涉及雲端解決方案提供者 (CSP)，就會是 CSP。 |
-| 名字 | 客戶名字 | 客戶所提供的名字。 名稱可能與客戶的 Azure 訂用帳戶中提供的名稱不同。 |
-| 姓氏 | 客戶姓氏 | 客戶所提供的姓氏。 名稱可能與客戶的 Azure 訂用帳戶中提供的名稱不同。 |
+| FirstName | 客戶名字 | 客戶所提供的名字。 名稱可能與客戶的 Azure 訂用帳戶中提供的名稱不同。 |
+| LastName | 客戶姓氏 | 客戶所提供的姓氏。 名稱可能與客戶的 Azure 訂用帳戶中提供的名稱不同。 |
 | 電子郵件 | 客戶電子郵件 | 客戶提供的電子郵件地址。 電子郵件可能與客戶的 Azure 訂用帳戶中的電子郵件地址不同。 |
 | 客戶公司名稱 | 客戶公司名稱 | 客戶提供的公司名稱。 名稱可能與客戶的 Azure 訂用帳戶中的城市不同。 |
 | CustomerCity | 客戶縣/市 | 客戶提供的城市名稱。 城市可能與客戶的 Azure 訂用帳戶中的城市不同。 |
 | 客戶郵遞區號 | 客戶郵遞區號 | 客戶提供的郵遞區號。 程式碼可能與客戶的 Azure 訂用帳戶中提供的郵遞區號不同。 |
 | CustomerCommunicationCulture | 客戶通訊語言 | 客戶慣用於通訊的語言。 |
 | CustomerCountryRegion | Customer Country/Region | 客戶提供的國家/地區名稱。 國家/地區可能與客戶的 Azure 訂用帳戶中的國家/地區不同。 |
-| AzureLicenseType | Azure 授權類型 | 客戶用來購買 Azure 的授權合約類型。 也稱為 _通道_。 可能的值包括：<ul><li>雲端解決方案提供者</li><li>企業</li><li>企業透過轉銷商</li><li>隨用隨付</li></ul> |
+| AzureLicenseType | Azure 授權類型 | 客戶用來購買 Azure 的授權合約類型。 也稱為 _通道_。 可能的值包括：<ul><li>雲端解決方案提供者</li><li>Enterprise</li><li>企業透過轉銷商</li><li>隨用隨付</li></ul> |
 | PromotionalCustomers | 已選擇加入促銷連絡人 | 此值可讓您知道客戶是否主動選擇加入發行者的促銷連絡人。 目前，我們沒有向客戶顯示該選項，因此我們一律指出 [否]。 部署這項功能之後，我們將會據以開始更新。 |
 | CustomerState | 客戶州 | 客戶所提供的居住州。 狀態可能與客戶的 Azure 訂用帳戶中提供的狀態不同。 |
 | CommerceRootCustomer | 商務根客戶 | 一個計費帳戶識別碼可以與多個客戶識別碼相關聯。<br>計費帳戶識別碼和客戶識別碼的其中一個組合，可以與多個商業 marketplace 訂用帳戶相關聯。<br>商務根客戶表示訂用帳戶的客戶名稱。 |

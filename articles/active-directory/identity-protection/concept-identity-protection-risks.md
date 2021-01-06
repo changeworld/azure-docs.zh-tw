@@ -1,24 +1,24 @@
 ---
-title: 什麼是風險？ Azure AD Identity Protection
+title: 什麼是風險？ (機器翻譯) Azure AD Identity Protection
 description: 說明 Azure AD Identity Protection 的風險
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180637"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954480"
 ---
-# <a name="what-is-risk"></a>什麼是風險？
+# <a name="what-is-risk"></a>什麼是風險？ (機器翻譯)
 
 Azure AD Identity Protection 中的風險偵測包含任何與目錄中的使用者帳戶相關的已識別可疑動作。
 
@@ -55,7 +55,7 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 | 風險偵測 | 偵測類型 | 描述 |
 | --- | --- | --- |
 | 匿名 IP 位址 | 即時 | 此風險偵測類型表示來自匿名 IP 位址的登入 (例如，Tor browser 或匿名 VPN) 。 這些 IP 位址通常由意圖隱藏其登入遙測資料 (IP 位址、位置、裝置等) 的執行者所使用，以遂行其潛在惡意目的。 |
-| 非慣用登入位置 | 離線 | 此風險偵測類型會識別來自不同地理位置的兩個登入，其中至少有一個位置對於使用者來說可能也是非典型的，但有提供過去的行為。 在許多其他因素中，此機器學習演算法會考量兩次登入之間的時間，以及使用者從第一個位置移到第二個位置所需的時間，這表示有不同的使用者正在使用相同的認證。 <br><br> 演算法會忽略明顯的「誤判」，以致發生不可能的移動情況，例如，組織中的其他使用者定期使用的 VPN 和位置。 系統具有最早14天或10個登入的初始學習期間，在這段期間內，它會學習新使用者的登入行為。 |
+| 非慣用移動 | 離線 | 此風險偵測類型會識別來自不同地理位置的兩個登入，其中至少有一個位置對於使用者來說可能也是非典型的，但有提供過去的行為。 在許多其他因素中，此機器學習演算法會考量兩次登入之間的時間，以及使用者從第一個位置移到第二個位置所需的時間，這表示有不同的使用者正在使用相同的認證。 <br><br> 演算法會忽略明顯的「誤判」，以致發生不可能的移動情況，例如，組織中的其他使用者定期使用的 VPN 和位置。 系統具有最早14天或10個登入的初始學習期間，在這段期間內，它會學習新使用者的登入行為。 |
 | 已連結惡意程式碼的 IP 位址 | 離線 | 此風險偵測類型表示從受到惡意程式碼攻擊的 IP 位址登入，這些 IP 位址已知可主動與 bot 伺服器通訊。 這項偵測是藉由將使用者裝置的 IP 位址與 bot 伺服器使用中的 bot 伺服器相關聯的 IP 位址相互關聯而決定。 |
 | 不熟悉的登入屬性 | 即時 | 此風險偵測類型會考慮過去的登入歷程記錄 (IP、緯度/經度和 ASN) 來尋找異常的登入。系統會儲存使用者先前使用位置的相關資訊，並考慮這些「熟悉的」位置。 從不在熟悉位置清單中的位置進行登入時，就會觸發風險偵測。 新建立的使用者將會處於「學習模式」一段時間，在此期間內，不熟悉的登入屬性會在我們的演算法瞭解使用者的行為時關閉風險偵測。 學習模式持續時間是動態的，取決於演算法收集足夠的使用者登入模式資訊所花的時間。 最小持續時間為五天。 使用者可在一段長時間無活動後回到學習模式。 系統也會忽略從熟悉的裝置以及地理上靠近熟悉位置的位置進行的登入。 <br><br> 我們也會針對基本驗證 (或舊版通訊協定) 執行這項偵測。 由於這些通訊協定沒有用戶端識別碼之類的新式屬性，因此只能以有限的遙測資料減少誤判。 我們建議客戶移轉至新式驗證。 |
 | 系統管理員已確認使用者遭盜用 | 離線 | 此偵測表示系統管理員已在具風險的使用者 UI 或使用 riskyUsers API 中選取 [確認使用者遭盜用]。 若要查看哪些系統管理員已確認此使用者遭盜用，請透過 UI 或 API) 檢查使用者的風險歷程記錄 (。 |
@@ -63,6 +63,9 @@ Identity Protection 可讓組織存取強大的資源，以快速查看及回應
 | 可疑的收件匣操作規則 | 離線 | [Microsoft Cloud App Security (MCAS) ](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules)會探索此偵測。 此偵測可描述您的環境，並在使用者收件匣上設定會刪除或移動訊息或資料夾的可疑規則時觸發警示。 這項偵測可能表示使用者的帳戶遭到入侵、已刻意隱藏訊息，以及用來在組織中散發垃圾郵件或惡意程式碼的信箱。 |
 | 密碼噴灑 | 離線 | 密碼噴灑攻擊是指以統一的暴力密碼破解方式使用一般密碼來攻擊多個使用者名稱的攻擊，以取得未經授權的存取權。 執行密碼噴灑攻擊時，會觸發此風險偵測。 |
 | 不可能的旅遊 | 離線 | [Microsoft Cloud App Security (MCAS) ](/cloud-app-security/anomaly-detection-policy#impossible-travel)會探索此偵測。 此偵測會識別在一段時間內出現的兩個使用者活動 (可能是單一或多個工作階段)，它們來自遙遠的地理位置，而使用者從第一個位置移動到第二個位置所需的時間會比此段時間長，這代表不同的使用者在使用相同的認證。 |
+| 新國家/地區 | 離線 | [Microsoft Cloud App Security (MCAS) ](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country)會探索此偵測。 此偵測會考慮過去的活動位置，以判斷新的和非經常性的位置。 異常偵測引擎會儲存組織中使用者先前所使用位置的相關資訊。 |
+| 來自匿名 IP 位址的活動 | 離線 | [Microsoft Cloud App Security (MCAS) ](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses)會探索此偵測。 此偵測會識別活動是來自已視為匿名 Proxy IP 位址的使用者。 |
+| 可疑的收件匣轉寄 | 離線 | [Microsoft Cloud App Security (MCAS) ](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding)會探索此偵測。 此偵測可尋找可疑電子郵件轉寄規則，例如使用者建立會將所有電子郵件複本轉寄到外部地址的收件匣規則。 |
 
 ### <a name="other-risk-detections"></a>其他風險偵測
 

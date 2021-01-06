@@ -3,12 +3,12 @@ title: 功能概觀 - Azure 事件中樞 | Microsoft Docs
 description: 本文將詳細說明 Azure 事件中樞的相關功能與術語。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0730a5fa3abbc6b27cb96431125564a2475a90d1
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339977"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955635"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
 
@@ -16,32 +16,48 @@ ms.locfileid: "96339977"
 
 這篇文章是根據[概觀](./event-hubs-about.md)中的資訊建置，並且提供有關事件中樞元件和功能的技術和實作詳細資料。
 
+> [!TIP]
+> [ **Apache Kafka** 用戶端的通訊協定支援](event-hubs-for-kafka-ecosystem-overview.md)  (版本 >= 1.0) 提供的網路端點，可讓建立的應用程式搭配任何用戶端使用 Apache Kafka，以使用事件中樞。 大部分現有的 Kafka 應用程式都可以直接重新設定為指向事件中樞命名空間，而不是 Kafka 叢集啟動程式伺服器。 
+>
+>從成本、營運工作量和可靠性的觀點來看，Azure 事件中樞是部署和操作您自己的 Kafka 和 Zookeeper 叢集，以及不是 Azure 原生的 Kafka 即服務供應專案的絕佳替代方案。 
+>
+> 除了取得 Apache Kafka 訊息代理程式的相同核心功能之外，您還可以存取 Azure 事件中樞功能，例如自動批次處理和透過 [事件中樞捕捉](event-hubs-capture-overview.md)進行的封存、自動調整和平衡、嚴重損壞修復、成本中立的可用性區域支援、彈性且安全的網路整合，以及多通訊協定的支援，包括防火牆易記的 AMQP over websocket 通訊協定。
+
+
 ## <a name="namespace"></a>命名空間
-事件中樞命名空間提供唯一的範圍容器 (依其[完整網域名稱](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)來參考)，您可以在其中建立一或多個事件中樞或 Kafka 主題。 
-
-## <a name="event-hubs-for-apache-kafka"></a>適用於 Apache Kafka 的事件中樞
-
-[這項功能](event-hubs-for-kafka-ecosystem-overview.md)提供可讓客戶使用 Kafka 通訊協定來與事件中樞通訊的端點。 此整合可為客戶提供 Kafka 端點。 這讓客戶能夠設定其現有的 Kafka 應用程式來與事件中樞通訊，提供替代方案來執行他們自己的 Kafka 叢集。 適用於 Apache Kafka 的事件中樞支援 Kafka 通訊協定 1.0 和更新版本。 
-
-透過此整合，您不需要執行 Kafka 叢集或使用 Zookeeper 管理它們。 這也可讓您搭配事件中樞內需求最高的部分功能來運作，例如擷取、自動擴充和異地災害復原。
-
-此整合也可讓應用程式 (例如 Mirror Maker) 或架構 (例如 Kafka Connect) 只搭配設定變更以無叢集的方式運作。 
+事件中樞命名空間提供 DNS 整合式網路端點，以及一系列的存取控制和網路整合管理功能（例如 [IP 篩選](event-hubs-ip-filtering.md)、 [虛擬網路服務端點](event-hubs-service-endpoints.md)和 [Private Link](private-link-service.md) ），而且是在 Kafka 說法) 中的多個事件中樞實例之一 (或主題的管理容器。
 
 ## <a name="event-publishers"></a>事件發佈者
 
-任何將資料傳送至事件中樞的實體就稱為「事件產生者」或「事件發佈者」。 事件發佈者可以使用 HTTPS、AMQP 1.0 或 Kafka 1.0 版和更新版本來發佈事件。 事件發佈者使用共用存取簽章 (SAS) 權杖向事件中樞辨識自己的身分，而且可以擁有唯一的身分識別，或使用一般 SAS 權杖。
+將資料傳送至事件中樞的任何實體都是 (同義與 *事件* 產生者) 搭配使用的 *事件發行者*。 事件發行者可以使用 HTTPS 或 AMQP 1.0 或 Kafka 通訊協定發佈事件。 事件發行者會使用 Azure Active Directory 型授權搭配 OAuth2 發出的 JWT 權杖或事件中樞特定的共用存取簽章 (SAS) 權杖取得發佈存取權。
 
 ### <a name="publishing-an-event"></a>發佈事件
 
-您可以透過 AMQP 1.0、Kafka 1.0 (和更新版本) 或 HTTPS 來發佈事件。 事件中樞服務會提供 [REST API](/rest/api/eventhub/) 和 [.net](event-hubs-dotnet-standard-getstarted-send.md)、 [JAVA](event-hubs-java-get-started-send.md)、 [Python](event-hubs-python-get-started-send.md)、 [JavaScript](event-hubs-node-get-started-send.md)和 [Go](event-hubs-go-get-started-send.md) 用戶端程式庫，以將事件發佈至事件中樞。 對於其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端 (如 [Apache Qpid](https://qpid.apache.org/))。 
+您可以透過 AMQP 1.0、Kafka 通訊協定或 HTTPS 來發佈事件。 事件中樞服務會提供 [REST API](/rest/api/eventhub/) 和 [.net](event-hubs-dotnet-standard-getstarted-send.md)、 [JAVA](event-hubs-java-get-started-send.md)、 [Python](event-hubs-python-get-started-send.md)、 [JavaScript](event-hubs-node-get-started-send.md)和 [Go](event-hubs-go-get-started-send.md) 用戶端程式庫，以將事件發佈至事件中樞。 對於其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端 (如 [Apache Qpid](https://qpid.apache.org/))。 
 
-您可以單獨發佈事件，或以批次方式進行。 不論是單一事件或批次，單次發佈 (事件資料執行個體) 的上限為 1 MB。 發佈大於此臨界值的事件會導致錯誤。 發行者最好不要察覺事件中樞內的資料分割，並只指定 (下一節) 所引進的分割區索引 *鍵* ，或透過其 SAS 權杖的身分識別。
+使用 AMQP 或 HTTPS 的選擇因使用案例而異。 除了傳輸層級安全性 (TLS) 或 SSL/TLS 之外，AMQP 還需要建立持續性的雙向通訊端。 在初始化會話時，AMQP 會有較高的網路成本，不過 HTTPS 需要針對每個要求增加額外的 TLS 負擔。 針對頻繁的發行者，AMQP 具有大幅較高的效能，而且在搭配非同步發佈程式碼使用時可以達到更低的延遲。
 
-使用 AMQP 或 HTTPS 的選擇因使用案例而異。 除了傳輸層級安全性 (TLS) 或 SSL/TLS 之外，AMQP 還需要建立持續性的雙向通訊端。 在初始化會話時，AMQP 會有較高的網路成本，不過 HTTPS 需要針對每個要求增加額外的 TLS 負擔。 對於頻繁的發行者，AMQP 的效能較高。
+您可以個別或批次發佈事件。 單一發行集的限制為 1 MB，不論它是單一事件或批次。 超過此臨界值的發佈事件將會遭到拒絕。 
+
+事件中樞輸送量是使用資料分割和輸送量單位配置來調整 (請參閱以下) 。 發行者最好保持不知道針對事件中樞選擇的特定資料分割模型，並且只指定用來一致地將相關事件指派給相同資料分割的資料分割索引 *鍵* 。
 
 ![資料分割索引鍵](./media/event-hubs-features/partition_keys.png)
 
-事件中樞能確保所有共用資料分割索引鍵值的事件依序傳遞至同一個資料分割。 如果資料分割索引鍵與發佈者原則搭配使用，發佈者的身分識別與資料分割索引鍵的值必須相符， 否則就會發生錯誤。
+事件中樞可確保共用資料分割索引鍵值的所有事件都會儲存在一起，並以抵達順序傳遞。 如果資料分割索引鍵與發佈者原則搭配使用，發佈者的身分識別與資料分割索引鍵的值必須相符， 否則就會發生錯誤。
+
+### <a name="event-retention"></a>事件保留期
+
+已發佈的事件會根據可設定的以時間為基礎的保留原則，從事件中樞移除。 預設值和最短的可能保留期限為1天 (24 小時) 。 針對事件中樞標準，最大保留期限為7天。 針對事件中樞專用，最大保留期限為90天。
+
+> [!NOTE]
+> 事件中樞是一種即時事件串流引擎，其設計目的不是要用來取代資料庫和/或永久存放區，以保存無限期的事件資料流程。 
+> 
+> 事件資料流程的歷程記錄愈深入，您將需要輔助索引以找出特定資料流程的特定歷程記錄配量。 檢查事件承載和索引不在事件中樞 (或 Apache Kafka) 的功能範圍內。 因此，資料庫與特製化分析存放區和引擎（例如 [Azure Data Lake 存放區](../data-lake-store/data-lake-store-overview.md)、 [Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) 和 [Azure Synapse](../synapse-analytics/overview-what-is.md) ）都更適合用來儲存歷程記錄事件。
+>
+> [事件中樞捕捉](event-hubs-capture-overview.md) 可直接與 Azure Blob 儲存體和 Azure Data Lake Storage 整合，而透過該整合，也可讓您 [直接將事件流至 Azure Synapse](store-captured-data-data-warehouse.md)。
+>
+> 如果您想要針對您的應用程式使用 [事件來源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) 模式，您應該將快照集策略與事件中樞的保留限制對齊。 請勿從一開始就從原始事件重建具體化視圖。 當您的應用程式在生產環境中一段時間後，您一定會致歉這種策略，而且您的投射產生器在嘗試趕上最新和持續進行的變更時，必須有多年的變更事件。 
+
 
 ### <a name="publisher-policy"></a>發佈者原則
 
@@ -69,7 +85,7 @@ ms.locfileid: "96339977"
 
 任何從事件中樞讀取事件資料的實體都是 *事件取用者*。 所有事件中樞取用者都透過 AMQP 1.0 工作階段連接，而可供取用的事件都透過工作階段傳遞。 用戶端不需要輪詢資料可用性。
 
-### <a name="consumer-groups"></a>用戶群組
+### <a name="consumer-groups"></a>取用者群組
 
 事件中心的發佈/訂閱機制是透過「取用者群組」啟用。 取用者群組是檢視整個事件中樞 (狀態、位置或位移) 的窗口。 取用者群組能讓多個取用應用程式擁有自己的事件串流檢視，以及按照自己的步調及運用自己的位移自行讀取串流。
 

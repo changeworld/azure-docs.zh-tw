@@ -1,5 +1,5 @@
 ---
-title: '在啟用 Arc 的 Kubernetes 叢集 (預覽版上使用 Gitops) 將部署設定) '
+title: 在已啟用 Arc 的 Kubernetes 叢集上使用 GitOps 部署設定 (預覽)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,14 +8,14 @@ author: mlearned
 ms.author: mlearned
 description: '使用 Gitops) 將來設定啟用 Azure Arc 的 Kubernetes 叢集 (預覽) '
 keywords: Gitops) 將、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、AKS、容器
-ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653447"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955326"
 ---
-# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在啟用 Arc 的 Kubernetes 叢集 (預覽版上使用 Gitops) 將部署設定) 
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在已啟用 Arc 的 Kubernetes 叢集上使用 GitOps 部署設定 (預覽)
 
 Gitops) 將與 Kubernetes 相關，是在 Git 存放庫中宣告 (Kubernetes 設定的預期狀態，然後使用操作員進行這些設定至叢集的輪詢和提取型部署的做法，這是 ) 。 本檔涵蓋 Azure Arc 啟用的 Kubernetes 叢集上的這類工作流程設定。
 
@@ -97,7 +97,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>使用私人 Git 存放庫搭配 SSH 和 Flux 建立的金鑰
 
-| 參數 | [格式] | 備註
+| 參數 | [格式] | 注意
 | ------------- | ------------- | ------------- |
 | --存放庫-url | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能取代為 `user@`
 
@@ -106,7 +106,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>使用私用 Git 存放庫搭配 SSH 和使用者提供的金鑰
 
-| 參數 | [格式] | 備註 |
+| 參數 | [格式] | 注意 |
 | ------------- | ------------- | ------------- |
 | --存放庫-url  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能取代為 `user@` |
 | --ssh-私用金鑰 | [PEM 格式](https://aka.ms/PEMformat)的 base64 編碼金鑰 | 直接提供金鑰 |
@@ -117,7 +117,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>使用私人 Git 主機搭配 SSH 和使用者提供的已知主機
 
-| 參數 | [格式] | 備註 |
+| 參數 | [格式] | 注意 |
 | ------------- | ------------- | ------------- |
 | --存放庫-url  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能取代為 `user@` |
 | --ssh-已知主機 | base64 編碼 | 直接提供的已知主機內容 |
@@ -129,7 +129,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-https"></a>使用具有 HTTPS 的私人 Git 存放庫
 
-| 參數 | [格式] | 備註 |
+| 參數 | [格式] | 注意 |
 | ------------- | ------------- | ------------- |
 | --存放庫-url | https://server/repo[git] | 使用基本驗證的 HTTPS |
 | --HTTPs-使用者 | raw 或 base64 編碼 | HTTPS 使用者名稱 |
@@ -150,7 +150,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 `--helm-operator-chart-version`：適用於 Helm 操作員 (如果已啟用) 的「選擇性」圖表版本。 預設值： ' 1.2.0 '。
 
-`--operator-namespace`：操作員命名空間的「選擇性」名稱。 預設值：'default'
+`--operator-namespace`：操作員命名空間的「選擇性」名稱。 預設值： ' default '。 最多23個字元。
 
 `--operator-params`：適用於操作員的「選擇性」參數。 必須在單引號中提供。 例如， ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
 
@@ -169,12 +169,6 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 | --git-email  | 用於 Git 認可的電子郵件。 |
 
 * 如果未設定 '--git-user' 或 '--git-email' (這表示您不希望 Flux 寫入至存放庫)，將會自動設定 --git-readonly (如果您尚未設定)。
-
-* 如果 enableHelmOperator 為 True，則 operatorInstanceName + operatorNamespace 字串組合不能超過 47 個字元。  如果您無法遵守這項限制，您將會收到下列錯誤：
-
-   ```console
-   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-   ```
 
 如需詳細資訊，請參閱 [Flux 檔](https://aka.ms/FluxcdReadme)。
 
@@ -251,7 +245,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>從私用 Git 存放庫套用設定
 
-如果您使用的是私用 Git 存放庫，則需要在您的存放庫中設定 SSH 公開金鑰。 您可以在 Git 存放庫或可存取存放庫的 Git 使用者上設定公開金鑰。 SSH 公開金鑰會是您提供的金鑰，或 Flux 產生的公開金鑰。
+如果您使用的是私用 Git 存放庫，則需要在您的存放庫中設定 SSH 公開金鑰。 您可以在特定的 Git 存放庫或可存取存放庫的 Git 使用者上設定公開金鑰。 SSH 公開金鑰會是您提供的金鑰，或 Flux 產生的公開金鑰。
 
 **取得您自己的公開金鑰**
 
@@ -260,7 +254,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 **使用 Azure CLI 取得公開金鑰 (在 Flux 產生金鑰時很有用)**
 
 ```console
-$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
+$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --cluster-type connectedClusters --query 'repositoryPublicKey' 
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```

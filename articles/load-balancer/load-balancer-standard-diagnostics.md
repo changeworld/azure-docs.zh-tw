@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9c322620e1d66182937be41bb02d48fd1469f459
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: da4c5f7891b518f4e6393f3fb4e153d464f4f2a2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697555"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955530"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>包含計量、警示和資源健康情況的 Standard Load Balancer 診斷
 
@@ -231,7 +231,14 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>資源健康情況狀態
 
-標準 Load Balancer 資源的健康情況狀態會透過 [監視器] > [服務健康狀態] 底下現有的 [資源健康狀態] 公開。
+標準 Load Balancer 資源的健康情況狀態會透過 [監視器] > [服務健康狀態] 底下現有的 [資源健康狀態] 公開。 它會透過測量資料路徑可用性來評估每 **兩分鐘** ，以判斷您的前端負載平衡端點是否可用。
+
+| 資源健康情況狀態 | 描述 |
+| --- | --- |
+| 可用 | 您的標準負載平衡器資源狀況良好且可供使用。 |
+| 已降級 | 您的標準負載平衡器有影響效能的平臺或使用者起始事件。 資料路徑可用性計量在至少兩分鐘內回報了小於 90% 但大於 25% 的健康情況。 您將體驗到嚴重的效能影響。 [遵循疑難排解 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) ，判斷是否有使用者起始的事件造成影響您的可用性。
+| 無法使用 | 您的標準負載平衡器資源狀況不良。 資料路徑可用性計量回報的健康情況低於至少兩分鐘的25% 健全狀況。 您將會遇到對輸入連線能力造成顯著的效能影響或缺乏可用性。 可能是使用者或平臺事件造成無法使用的情形。 [遵循疑難排解 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) ，判斷是否有使用者起始的事件影響您的可用性。 |
+| Unknown | 標準負載平衡器資源的資源健康狀態尚未更新，或尚未收到過去10分鐘的資料路徑可用性資訊。 此狀態應該是暫時性的，系統會在收到資料後立即反/映正確的狀態。 |
 
 若要檢視公用標準 Load Balancer 資源的健康情況：
 1. 選取 [**監視**  >  **服務健康** 情況]。
@@ -254,12 +261,6 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
  
 一般資源健康狀態原因可在 [RHC 檔](../service-health/resource-health-overview.md)中取得。 下表列出 Azure Load Balancer 的特定狀態： 
 
-| 資源健康情況狀態 | 描述 |
-| --- | --- |
-| 可用 | 您的標準負載平衡器資源狀況良好且可供使用。 |
-| 已降級 | 您的標準負載平衡器有影響效能的平臺或使用者起始事件。 資料路徑可用性計量回報低於90%，但至少有兩分鐘的健康狀態超過25%。 您將體驗到嚴重的效能影響。 [遵循疑難排解資料路徑可用性指南]，判斷是否有使用者起始的事件造成影響您的可用性。
-| [無法使用] | 您的標準負載平衡器資源狀況不良。 資料路徑可用性計量回報的健康情況低於至少兩分鐘的25% 健全狀況。 您將會遇到對輸入連線能力造成顯著的效能影響或缺乏可用性。 可能是使用者或平臺事件造成無法使用的情形。 [遵循疑難排解資料路徑可用性指南]，判斷是否有使用者起始的事件影響您的可用性。 |
-| 未知 | 標準負載平衡器資源的資源健康狀態尚未更新，或尚未收到過去10分鐘的資料路徑可用性資訊。 此狀態應該是暫時性的，而且會在收到資料後立即反映正確的狀態。 |
 
 ## <a name="next-steps"></a>後續步驟
 

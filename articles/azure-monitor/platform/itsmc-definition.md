@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: b26643daede9e26f2bf1807ae99a6ced5d1cb08c
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 072abffcc74b8b060d98c07d1f310413c7b323ef
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901567"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954935"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -127,30 +127,34 @@ ms.locfileid: "97901567"
 
 8. 如果您想要以固定值填滿現成的欄位，請選取 [ **使用自訂範本**]。 否則，請在 **範本** 清單中選擇現有的 [範本](#template-definitions)，然後在範本欄位中輸入固定值。
 
-9. 在動作 ITSM 群組定義的最後一個區段中，您可以定義將從每個警示建立多少警示。 本節僅與記錄搜尋警示有關。
+9. 在動作 ITSM 群組定義的最後一個區段中，您可以定義將為每個警示建立多少工作專案。
+
+    >[!NOTE]
+    >
+    > * 本節僅與記錄搜尋警示有關。
+    > * 計量警示和活動記錄警示一律會為每個警示建立一個工作專案。
 
     * 如果您在工作專案下拉式清單中選取 [事件] 或 [警示]：
-        * 如果您勾選 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，每個警示中的每個設定專案都會建立新的工作專案。 ITSM 系統中的每個設定專案都可以有一個以上的工作專案。
+        * 如果您選取 [ **為每個設定專案建立個別的工作專案]** 核取方塊，每個警示中的每個設定專案都會建立新的工作專案。 ITSM 系統中的每個設定專案都可以有一個以上的工作專案。
 
             例如：
             1) 具有3個設定專案的警示1： A、B、C-將建立3個工作專案。
-            2) 具有1個設定專案的警示2： D-將建立1個工作專案。
+            2) 具有1個設定專案的警示2： A-將建立1個工作專案。
 
-                **此流程結束時，會有4個警示**
-        * 如果您清除 [ **為每個設定專案建立個別的工作專案** ] 核取方塊，則會出現警示，將不會建立新的工作專案。 工作專案將會根據警示規則合併。
+        * 如果您清除 [ **為每個設定專案建立個別的工作專案]** 核取方塊，ITSM 連接器會為每個警示規則建立單一工作專案，並將其附加到所有受影響的設定專案。 如果先前的工作專案已關閉，則會建立新的工作專案。
+        >[!NOTE]
+        > 在此情況下，某些引發的警示將不會在 ITSM 工具中產生新的工作專案。
 
-            例如：
-            1) 具有3個設定專案的警示1： A、B、C-將建立1個工作專案。
-            2) 相同警示規則的警示2與1個設定專案的階段1相同： D-將會合並到階段1中的工作專案。
-            3) 具有1個設定專案之不同警示規則的警示3： E-將建立1個工作專案。
-
-                **此流程結束時，會有2個警示**
+            For example:
+            1) Alert 1 with 3 Configuration Items: A, B, C - will create 1 work item.
+            2) Alert 2 for the same alert rule as phase 1 with 1 Configuration Item: D - will be merged to the work item in phase 1.
+            3) Alert 3 for a different alert rule with 1 Configuration Item: E - will create 1 work item.
 
        ![顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration.png)
 
     * 如果您在 [工作專案] 下拉式清單中選取 [事件]：
-        * 如果您針對選項按鈕選取範圍中的 **每個記錄專案選取 [建立個別的工作專案** ]，將會根據記錄搜尋警示查詢搜尋結果中的每個資料列來建立警示。 在警示的裝載中，description 屬性將會包含搜尋結果中的資料列。
-        * 如果您針對選項按鈕選取範圍中的 **每個設定專案選取 [建立個別的工作專案** ]，每個警示中的每個設定專案都會建立新的工作專案。 ITSM 系統中的每個設定專案都可以有一個以上的工作專案。 這會與檢查 [事件/警示] 區段中的核取方塊相同。
+        * 如果您選取 **[為每個記錄專案建立個別的工作專案] (設定專案欄位未填滿。可能會產生大量的工作專案。 )** 」在選項按鈕選取專案中，系統會針對記錄搜尋警示查詢搜尋結果中的每個資料列建立警示。 在警示的裝載中，description 屬性將會包含搜尋結果中的資料列。
+        * 如果您在選項按鈕選取專案中選取 [ **為每個設定專案建立個別的工作專案]** ，每個警示中的每個設定專案都會建立新的工作專案。 ITSM 系統中的每個設定專案都可以有一個以上的工作專案。 這會與檢查 [事件/警示] 區段中的核取方塊相同。
     ![顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. 選取 [確定]。

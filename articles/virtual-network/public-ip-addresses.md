@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: ef79844cf2f90ce97ea30a1948a441f909255f98
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e46cf78c76e873bcb78af4942f42a5c4be45391
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169928"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955581"
 ---
 # <a name="public-ip-addresses"></a>公用 IP 位址
 
@@ -55,6 +55,7 @@ ms.locfileid: "96169928"
 - 預設為安全且已關閉連入流量。 允許列出具有 [網路安全性群組](security-overview.md#network-security-groups)的輸入流量。
 - 指派給網路介面、標準公用負載平衡器或應用程式閘道。 如需標準負載平衡器的詳細資訊，請參閱 [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 - 可以是區域冗余 (從所有3個區域 advertized) 或區域 (可以在特定的可用性區域) 中建立區域性和保證。 若要了解可用性區域，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[標準負載平衡器和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 **區域多餘 Ip 只能在具有3個 [可用性區域的區域](https://docs.microsoft.com/azure/availability-zones/az-region) 中建立。** 在區域上線之前建立的 Ip 不會是區域冗余。
+- 可以用來作為 [跨區域負載平衡](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) 器的任意傳播前端 ip (預覽功能) 。
  
 > [!NOTE]
 > 在建立和關聯[網路安全性群組](security-overview.md#network-security-groups)並明確地允許所要輸入流量前，與標準 SKU 資源進行的輸入通訊會失敗。
@@ -62,7 +63,7 @@ ms.locfileid: "96169928"
 > [!NOTE]
 > 使用 [實例中繼資料服務 IMDS](../virtual-machines/windows/instance-metadata-service.md)時，只有具有基本 SKU 的公用 IP 位址可供使用。 不支援標準 SKU。
 
-### <a name="basic"></a>基本
+### <a name="basic"></a>Basic
 
 在 SKU 推出之前建立的公用 IP 位址全部都是基本 SKU 的公用 IP 位址。 
 

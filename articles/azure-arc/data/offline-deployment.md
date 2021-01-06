@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 575903654a165bef0d09ac6abf0793af3f6784e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fa0b6ca41349d20614a64006536e78d8ee71844
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90936711"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955360"
 ---
 # <a name="offline-deployment-overview"></a>離線部署總覽
 
@@ -22,7 +22,7 @@ ms.locfileid: "90936711"
 
 由於針對 Azure Arc 啟用的資料服務提供每月更新，且有大量的容器映射，因此最好使用腳本來執行此程式，以提取、標記容器映射，並將其推送至私人容器登錄。  腳本可以是自動化或手動執行。
 
-您可以在 Azure Arc GitHub 存放庫中找到 [範例腳本](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) 。
+您可以在 Azure Arc GitHub 存放庫中找到 [範例腳本](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/scripts/pull-and-push-arc-data-services-images-to-private-registry.py) 。
 
 > [!NOTE]
 > 此腳本需要安裝 python 和 [DOCKER CLI](https://docs.docker.com/install/)。
@@ -36,7 +36,7 @@ ms.locfileid: "90936711"
 |提供來源容器登錄的使用者名稱-請按 ENTER 鍵以使用 none：|SOURCE_DOCKER_USERNAME|如果您要從需要登入的來源提取容器映射，請只提供值。  Microsoft Container Registry 不需要登入。|
 |提供來源容器登錄的密碼-請按 ENTER 鍵以使用 none：|SOURCE_DOCKER_PASSWORD|如果您要從需要登入的來源提取容器映射，請只提供值。  Microsoft Container Registry 不需要登入。 這是遮罩密碼提示。  如果您在中輸入或貼上密碼，則不會看到密碼。|
 |在來源提供映射的容器映射標籤-按 ENTER 鍵以使用 ' `<current monthly release tag>` '：|SOURCE_DOCKER_TAG|預設的標記名稱會每月更新，以反映 Microsoft Container Registry 上目前版本的月份和年份。|
-|提供目標容器登錄 DNS 名稱或 IP 位址：|TARGET_DOCKER_REGISTRY|目標登錄 DNS 名稱或 IP 位址。  這是要將映射推送 _至_其中的登錄。|
+|提供目標容器登錄 DNS 名稱或 IP 位址：|TARGET_DOCKER_REGISTRY|目標登錄 DNS 名稱或 IP 位址。  這是要將映射推送 _至_ 其中的登錄。|
 |提供目標 container registry 存放庫：|TARGET_DOCKER_REPOSITORY|要將映射推送至目標登錄上的存放庫。|
 |提供目標容器登錄的使用者名稱-請按 enter 鍵以使用 none：|TARGET_DOCKER_USERNAME|用來登入目標容器登錄的使用者名稱（如果有的話）。|
 |提供目標容器登錄的密碼-請按 enter 鍵以使用 none：|TARGET_DOCKER_PASSWORD|用來登入目標容器登錄的密碼（如果有的話）。 這是遮罩密碼提示。  如果您在中輸入或貼上密碼，則不會看到密碼。|

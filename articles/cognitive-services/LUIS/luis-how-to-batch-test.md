@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: a6f4b0a503e942b79dff28212863831055892246
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916553"
+ms.locfileid: "97955207"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一組範例語句的批次測試
 
@@ -168,7 +168,7 @@ LUIS 入口網站中的圖表，您可以執行下列動作：
 
 LUIS 可讓您使用 LUIS 入口網站和 REST API 來進行批次測試。 以下列出 REST API 的端點。 如需使用 LUIS 入口網站進行批次測試的詳細資訊，請參閱 [教學課程：批次測試資料集](luis-tutorial-batch-testing.md)。 使用下列完整的 Url，將預留位置值取代為您自己的 LUIS 預測金鑰和端點。 
 
-請記得將您的 LUIS 金鑰新增至 `Apim-Subscription-Id` 標頭中，並設定 `Content-Type` 為 `application/json` 。
+請記得將您的 LUIS 金鑰新增至 `Ocp-Apim-Subscription-Key` 標頭中，並設定 `Content-Type` 為 `application/json` 。
 
 ### <a name="start-a-batch-test"></a>啟動批次測試
 

@@ -9,18 +9,18 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: f447c6028b1750aa96e531a97e7b0861f66a5749
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761663"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955241"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>使用 Kubernetes 工具建立于 postgresql 超大規模伺服器群組
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您應該已建立 [Azure Arc 資料控制器](./create-data-controller.md)。
 
@@ -28,13 +28,13 @@ ms.locfileid: "91761663"
 
 [安裝 kubectl 工具](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 若要建立于 postgresql 超大規模伺服器群組，您需要建立 Kubernetes 秘密，以安全地儲存您的 postgres 系統管理員登入和密碼，以及以于 postgresql-12 或超大規模-11 自訂資源定義為基礎的于 postgresql 于 postgresql 伺服器群組自訂資源。
 
 ## <a name="create-a-yaml-file"></a>建立 yaml 檔案
 
-您可以使用 [範本 yaml](https://raw.githubusercontent.com/microsoft/azure_arc/master/arc_data_services/deploy/yaml/postsgresql.yaml) 檔作為起點，建立您自己的自訂于 postgresql 超大規模伺服器群組 yaml 檔。  將此檔案下載至您的本機電腦，並在文字編輯器中開啟它。  使用支援語法醒目提示和 linting 的文字編輯器（例如支援 yaml 檔案的語法醒目提示和 [VS Code](https://code.visualstudio.com/download) ）會很有用。
+您可以使用 [範本 yaml](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) 檔作為起點，建立您自己的自訂于 postgresql 超大規模伺服器群組 yaml 檔。  將此檔案下載至您的本機電腦，並在文字編輯器中開啟它。  使用支援語法醒目提示和 linting 的文字編輯器（例如支援 yaml 檔案的語法醒目提示和 [VS Code](https://code.visualstudio.com/download) ）會很有用。
 
 這是範例 yaml 檔：
 
@@ -121,7 +121,7 @@ echo '<your string to encode here>' | base64
 > 您可以深入瞭解 [Kubernetes 資源管理](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes)。
 
 資源限制和要求的需求：
-- **需要**進行計費的核心限制值。
+- **需要** 進行計費的核心限制值。
 - 其餘的資源要求和限制都是選擇性的。
 - 核心限制和要求必須是正整數值（如果有指定的話）。
 - 核心要求需要最少1個核心（如果有指定的話）。
