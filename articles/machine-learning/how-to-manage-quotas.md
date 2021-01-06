@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 58dacc9e65da6502d083446cb7202c222cb7e795
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1b43a1ceb1f9e098e4932b405553ae8f33e27262
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034032"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937343"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>使用 Azure Machine Learning 管理和提高資源配額
 
@@ -29,7 +29,7 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 > + 要求增加配額。
 > + 私人端點和 DNS 配額。
 
-除了管理配額之外，您還可以瞭解如何 [規劃和管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)。
+除了管理配額之外，您還可以瞭解如何 [規劃和管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md) ，或瞭解 [Azure Machine Learning 中的服務限制](resource-limits-quotas-capacity.md)。
 
 ## <a name="special-considerations"></a>特殊考量
 
@@ -53,7 +53,9 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
 + Azure 儲存體
 
 > [!IMPORTANT]
-> 限制日後有可能會變更。 如需最新資訊，請參閱 [azure 訂用帳戶和服務限制、配額和](../azure-resource-manager/management/azure-subscription-service-limits.md) 所有 azure 的限制。
+> 限制日後有可能會變更。 如需最新資訊，請參閱  [Azure Machine Learning 中的服務限制](resource-limits-quotas-capacity.md)。
+
+
 
 ### <a name="azure-machine-learning-assets"></a>Azure Machine Learning 資產
 下列資產限制適用于每個工作區。 
@@ -194,10 +196,10 @@ Azure Machine Learning 會在 (客戶) 訂用帳戶中建立資源，但在某�
 
 1. [建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request) ，並在 [ __基本__ ] 區段中選取下列選項：
 
-    | 欄位 | 選取 |
+    | 欄位 | 選項 |
     | ----- | ----- |
     | 問題類型 | **技術** |
-    | Service | **我的服務**。 然後，在下拉式清單中選取 [ __Machine Learning__ ]。 |
+    | 服務 | **我的服務**。 然後，在下拉式清單中選取 [ __Machine Learning__ ]。 |
     | 問題類型 | **工作區設定和安全性** |
     | 問題子類型 | **私人端點和私人 DNS 區域額度要求** |
 
@@ -210,3 +212,4 @@ Azure Machine Learning 會在 (客戶) 訂用帳戶中建立資源，但在某�
 ## <a name="next-steps"></a>後續步驟
 
 + [規劃和管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)
++ [Azure Machine Learning 中的服務限制](resource-limits-quotas-capacity.md)

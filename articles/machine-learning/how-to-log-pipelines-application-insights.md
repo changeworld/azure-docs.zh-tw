@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 624409be4d7e2cfba37dbe16e083904766ae1389
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c0cb4527349b09ed8e794cc55dee6f9e54f8a7d4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309661"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937360"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>在 Application Insights 中收集警示和偵錯工具的機器學習管線記錄檔
 
@@ -24,7 +24,7 @@ ms.locfileid: "93309661"
 
 將您的記錄放入一次之後，就會提供例外狀況和錯誤訊息的歷程記錄。 由於 Application Insights 與 Azure 警示整合，因此您也可以根據 Application Insights 查詢來建立警示。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 遵循下列步驟來建立 [Azure Machine Learning](./how-to-manage-workspace.md) 工作區，並 [建立您的第一個管線](./how-to-create-your-first-pipeline.md)
 * [設定開發環境](./how-to-configure-environment.md)以安裝 Azure Machine Learning SDK。
@@ -34,7 +34,7 @@ ms.locfileid: "93309661"
   ```
 * 建立 [Application Insights 實例](../azure-monitor/app/opencensus-python.md) (此檔也包含取得資源連接字串的相關資訊) 
 
-## <a name="getting-started"></a>開始使用
+## <a name="getting-started"></a>使用者入門
 
 本節是從 Azure Machine Learning 管線使用 OpenCensus 的特定簡介。 如需詳細的教學課程，請參閱 [OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
@@ -134,7 +134,7 @@ custom_dimensions = {
 }
 
 # Assumes AzureLogHandler was already registered above
-logger.info("I will be sent to Application Insights with Custom Dimensions", custom_dimensions)
+logger.info("I will be sent to Application Insights with Custom Dimensions", extra= {"custom_dimensions":custom_dimensions})
 ```
 
 ## <a name="opencensus-python-logging-considerations"></a>OpenCensus Python 記錄考慮
