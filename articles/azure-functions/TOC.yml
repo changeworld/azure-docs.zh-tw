@@ -417,6 +417,8 @@
           href: functions-recover-storage-account.md
         - name: 針對 Python 函式進行疑難排解
           href: recover-python-functions.md
+        - name: Python 功能的調整和效能
+          href: python-scale-performance-reference.md
 - name: 參考
   items:
     - name: API 參考

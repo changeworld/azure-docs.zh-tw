@@ -28,7 +28,7 @@
       href: delete-application-portal.md
 - name: 教學課程
   items:
-    - name: 預先設定的應用程式清單
+    - name: 應用程式整合教學課程清單
       href: /azure/active-directory/saas-apps/
     - name: 透過應用程式 Proxy 新增內部部署應用程式
       href: application-proxy-add-on-premises-application.md

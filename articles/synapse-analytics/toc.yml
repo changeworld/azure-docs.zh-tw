@@ -2,7 +2,7 @@
   href: index.yml
 - name: 切換至專用 SQL 集區 (先前稱為 SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
-- name: 總覽
+- name: 概觀
   items:
     - name: 什麼是 Azure Synapse？
       href: overview-what-is.md
@@ -263,7 +263,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
@@ -1113,6 +1113,16 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: 設定 Azure Synapse 的認知服務
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: 資料目錄和管理
+  items:
+    - name: 快速入門
+      items:
+        - name: 與 Azure Purview 帳戶連線
+          href: ./catalog-and-governance/quickstart-connect-azure-purview.md
+    - name: 操作指南
+      items:
+        - name: 使用 Azure Purview 探索、連線及瀏覽 Synapse 中的資料
+          href: ./catalog-and-governance/how-to-discover-connect-analyze-azure-purview.md
 - name: 操作方式
   items:
     - name: 規劃和管理成本

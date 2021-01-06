@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 影像辨識, 影像辨識應用程式, 自訂視覺
-ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018345"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912979"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>快速入門：使用自訂視覺網站建置物件偵測器
 
@@ -100,6 +100,7 @@ ms.locfileid: "96018345"
 
 - **精確度** 表示識別的正確分類所得到的分數。 例如，如果模型識別 100 張影像為狗，而實際上有 99 張為狗，則精確度為 99%。
 - **回收** 表示正確識別實際分類所得到的分數。 例如，如果實際上有 100 張影像為蘋果，而模型識別 80 張為蘋果，則回收為 80%。
+- **平均精度均值** 是平均精確度 (AP) 的平均值。 AP 是精確度/召回曲線下的區域 (針對每個預測所繪製的精確度與召回之間的關係)。
 
 ![定型結果會顯示整體精確度和召回率以及平均精度均值。](./media/get-started-build-detector/trained-performance.png)
 

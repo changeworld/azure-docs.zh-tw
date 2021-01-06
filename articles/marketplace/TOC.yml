@@ -205,8 +205,16 @@
           href: partner-center-portal/create-iot-edge-module-asset.md
     - name: 受控服務供應項目
       items:
+        - name: 規劃受控服務供應項目
+          href: plan-managed-service-offer.md
         - name: 建立受控服務供應項目
-          href: partner-center-portal/create-new-managed-service-offer.md
+          href: create-managed-service-offer.md
+        - name: 設定受控服務清單
+          href: create-managed-service-offer-listing.md
+        - name: 新增預覽對象
+          href: create-managed-service-offer-preview.md
+        - name: 建立方案
+          href: create-managed-service-offer-plans.md
     - name: Power BI 應用程式供應項目
       items:
         - name: 規劃 Power BI 應用程式供應項目
