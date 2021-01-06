@@ -3,12 +3,12 @@ title: 估計 Azure Functions 中的耗用量方案成本
 description: 瞭解如何在 Azure 的取用方案中執行函數應用程式時，更有效地評估可能產生的成本。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 58082e03c1416848e9aa1e97308bed1ceaa67295
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 430804d478df718f51ae1da9adb6693f597157a9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168101"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934878"
 ---
 # <a name="estimating-consumption-plan-costs"></a>估計取用方案成本
 
@@ -16,9 +16,9 @@ ms.locfileid: "92168101"
 
 | 規劃 | 說明 |
 | ---- | ----------- |
-| [**消費**](functions-scale.md#consumption-plan) | 您只需針對函數應用程式執行的時間付費。 此方案包含每個訂用帳戶的[免費授]與[定價頁面]。|
-| [**Premium**](functions-scale.md#premium-plan) | 提供您與取用方案相同的功能和調整機制，但具備增強的效能和 VNET 存取權。 成本是以您選擇的定價層為基礎。 若要深入瞭解，請參閱 [Azure Functions Premium 方案](functions-premium-plan.md)。 |
-| [**專用 (App Service) **](functions-scale.md#app-service-plan) <br/> (基本層或更高)  | 當您需要在專用 Vm 或隔離中執行時，請使用自訂映射，或想要使用超出 App Service 的方案容量。 使用 [定期 App Service 方案計費](https://azure.microsoft.com/pricing/details/app-service/)。 成本是以您選擇的定價層為基礎。|
+| [**耗用量**](consumption-plan.md) | 您只需針對函數應用程式執行的時間付費。 此方案包含每個訂用帳戶的[免費授]與[定價頁面]。|
+| [**Premium**](functions-premium-plan.md) | 提供您與取用方案相同的功能和調整機制，但具備增強的效能和 VNET 存取權。 成本是以您選擇的定價層為基礎。 若要深入瞭解，請參閱 [Azure Functions Premium 方案](functions-premium-plan.md)。 |
+| [**專用 (App Service)**](dedicated-plan.md) <br/> (基本層或更高)  | 當您需要在專用 Vm 或隔離中執行時，請使用自訂映射，或想要使用超出 App Service 的方案容量。 使用 [定期 App Service 方案計費](https://azure.microsoft.com/pricing/details/app-service/)。 成本是以您選擇的定價層為基礎。|
 
 您選擇最能支援您的函數效能和成本需求的方案。 若要深入了解，請參閱 [Azure Functions 規模調整和主控](functions-scale.md)。
 
@@ -28,7 +28,7 @@ Durable Functions 也可以在取用方案中執行。 若要深入瞭解使用 
 
 ## <a name="consumption-plan-costs"></a>使用量方案成本
 
-單一函式執行的執行 *成本* 是以 *GB 為單位*來測量。 執行成本的計算方式是將其記憶體使用量與執行時間結合在一起。 執行較長成本的函式，也就是耗用更多記憶體的函數。 
+單一函式執行的執行 *成本* 是以 *GB 為單位* 來測量。 執行成本的計算方式是將其記憶體使用量與執行時間結合在一起。 執行較長成本的函式，也就是耗用更多記憶體的函數。 
 
 假設函數所使用的記憶體數量維持不變。 在此情況下，計算成本是簡單的乘法。 例如，假設您的函式在3秒內耗用了 0.5 GB。 然後，執行成本為 `0.5GB * 3s = 1.5 GB-seconds` 。 
 
@@ -57,7 +57,7 @@ Durable Functions 也可以在取用方案中執行。 若要深入瞭解使用 
 
 下列函式的行為可能會影響執行時間：
 
-+ **觸發程式和**系結：從 [函數](functions-triggers-bindings.md) 系結讀取輸入和將輸出寫入至函式系結所花費的時間，會計算為執行時間。 例如，當您的函式使用輸出系結將訊息寫入至 Azure 儲存體佇列時，您的執行時間會包含將訊息寫入佇列所花費的時間，該訊息會包含在函數成本的計算中。 
++ **觸發程式和** 系結：從 [函數](functions-triggers-bindings.md) 系結讀取輸入和將輸出寫入至函式系結所花費的時間，會計算為執行時間。 例如，當您的函式使用輸出系結將訊息寫入至 Azure 儲存體佇列時，您的執行時間會包含將訊息寫入佇列所花費的時間，該訊息會包含在函數成本的計算中。 
 
 + **非同步執行**：當您的函式等候非同步要求的結果時， (`await` c # ) 會計算為執行時間。 GB 秒計算是以函式的開始和結束時間以及該期間內的記憶體使用量為基礎。 在這段時間內，在 CPU 活動方面所發生的情況並不會納入計算中。 您可以使用 [Durable Functions](durable/durable-functions-overview.md)，在非同步作業期間降低成本。 在協調器函式中等候花費的時間並不計費。
 
@@ -73,7 +73,7 @@ Durable Functions 也可以在取用方案中執行。 若要深入瞭解使用 
 
 使用 [Azure 監視器計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md) ，以圖形格式針對您的耗用量方案函式應用程式來查看成本相關資料。 
 
-1. 在**搜尋服務、資源和**檔的[Azure 入口網站]頂端，搜尋 [服務] 下的 [ `monitor` 監視] ** **，然後選取 [**監視**]。
+1. 在 **搜尋服務、資源和** 檔的 [Azure 入口網站]頂端，搜尋 [服務] 下的 [ `monitor` 監視] ****，然後選取 [**監視**]。
 
 1. 在左側選取 [**計量**]  >  **選取資源**，然後使用影像下方的設定來選擇您的函式應用程式。
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: maquaran
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: c30e97a4bff8fa845f6eb3c3092a00ee541e59f4
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cf985999bac0cf45eec5d8f0f5f9e921b6f4591c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032791"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934946"
 ---
 # <a name="azure-cosmos-db-sql-sdk-connectivity-modes"></a>Azure Cosmos DB SQL SDK 連接模式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "97032791"
       
     所有 SDK 平臺都支援閘道模式。 如果您的應用程式在有嚴格防火牆限制的公司網路中執行，則閘道模式是最好的選擇，因為它會使用標準 HTTPS 埠和單一 DNS 端點。 不過，效能的取捨在於，每次從 Azure Cosmos DB 讀取或寫入資料時，閘道模式都會涉及額外的網路躍點。 當您在擁有有限數目之通訊端連線的環境中執行應用程式時，也建議使用閘道連線模式。
 
-    當您在 Azure Functions 中使用 SDK 時（特別是在取用 [方案](../azure-functions/functions-scale.md#consumption-plan)中），請注意目前的 [連接限制](../azure-functions/manage-connections.md)。
+    當您在 Azure Functions 中使用 SDK 時（特別是在取用 [方案](../azure-functions/consumption-plan.md)中），請注意目前的 [連接限制](../azure-functions/manage-connections.md)。
 
   * 直接模式
 

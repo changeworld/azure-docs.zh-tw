@@ -5,12 +5,12 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746024"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936986"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions 自訂處理常式
 
@@ -27,7 +27,7 @@ ms.locfileid: "96746024"
 
 使用 [Go 和 Rust 中的快速入門，](create-first-function-vs-code-other.md)開始使用 Azure Functions 自訂處理常式。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 下圖顯示函數主機與實作為自訂處理常式的 web 伺服器之間的關聯性。
 
@@ -60,7 +60,7 @@ ms.locfileid: "96746024"
 | handler.exe
 ```
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 應用程式是透過的 *host.js* 設定，並 *在檔案上local.settings.js* 。
 
@@ -407,7 +407,7 @@ func main() {
 針對沒有額外系結或輸出的 HTTP 觸發函式，您可能會想要讓處理常式直接使用 HTTP 要求和回應，而不是自訂處理常式 [要求](#request-payload) 和 [回應](#response-payload) 裝載。 您可以使用設定，在 *host.js* 中設定此行為 `enableForwardingHttpRequest` 。
 
 > [!IMPORTANT]
-> 自訂處理常式功能的主要目的是要在 Azure Functions 上啟用目前沒有第一級支援的語言和執行時間。 雖然您可以使用自訂處理常式來執行 web 應用程式，但 Azure Functions 不是標準反向 proxy。 無法使用某些功能，例如回應串流、HTTP/2 和 Websocket。 HTTP 要求的某些元件（例如特定標頭和路由）可能會受到限制。 您的應用程式可能也會遇到過多 [冷啟動](functions-scale.md#cold-start)。
+> 自訂處理常式功能的主要目的是要在 Azure Functions 上啟用目前沒有第一級支援的語言和執行時間。 雖然您可以使用自訂處理常式來執行 web 應用程式，但 Azure Functions 不是標準反向 proxy。 無法使用某些功能，例如回應串流、HTTP/2 和 Websocket。 HTTP 要求的某些元件（例如特定標頭和路由）可能會受到限制。 您的應用程式可能也會遇到過多 [冷啟動](event-driven-scaling.md#cold-start)。
 >
 > 若要解決這些情況，請考慮在 [Azure App Service](../app-service/overview.md)上執行您的 web 應用程式。
 

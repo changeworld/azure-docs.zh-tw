@@ -3,12 +3,12 @@ title: 範本結構和語法
 description: 使用宣告式 JSON 語法來描述 (ARM) 範本的 Azure Resource Manager 範本的結構和屬性。
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: 698309c5aa0817c4b758ec81133d4c98061aa355
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4c08612325d2776f8f1a7fe4486e6f592ca474a0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653124"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934691"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>了解 ARM 範本的結構和語法 \(部分機器翻譯\)
 
@@ -35,7 +35,7 @@ ms.locfileid: "97653124"
 
 | 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
-| $schema |是 |JSON 結構描述檔案的位置，說明範本語言的版本。 您所使用的版本號碼取決於部署範圍以及您的 JSON 編輯器。<br><br>如果您使用 [VS Code 搭配 Azure Resource Manager 工具擴充](quickstart-create-templates-use-visual-studio-code.md)功能，請使用最新版本進行資源群組部署：<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>其他編輯器 (包括 Visual Studio) 可能無法處理此架構。 針對這些編輯器，請使用：<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>針對訂用帳戶部署，使用：<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>針對管理群組部署，請使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>針對租使用者部署，請使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
+| $schema |是 |描述範本語言版本的 JavaScript 物件標記法 (JSON) 架構檔案的位置。 您所使用的版本號碼取決於部署範圍以及您的 JSON 編輯器。<br><br>如果您使用 [Visual Studio Code 搭配 Azure Resource Manager 工具擴充](quickstart-create-templates-use-visual-studio-code.md)功能，請使用最新版本進行資源群組部署：<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>其他編輯器 (包括 Visual Studio) 可能無法處理此架構。 針對這些編輯器，請使用：<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>針對訂用帳戶部署，使用：<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>針對管理群組部署，請使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>針對租使用者部署，請使用：<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |是 |範本版本 (例如 1.0.0.0)。 您可以為此元素提供任何值。 使用此值在範本中記載重大變更。 使用範本部署資源時，這個值可用來確定使用的是正確的範本。 |
 | apiProfile |否 | API 版本，作為資源類型的 API 版本集合。 使用此值，以避免必須為範本中的每個資源指定 API 版本。 當您指定 API 設定檔版本，但未指定資源類型的 API 版本時，Resource Manager 會使用設定檔中所定義之資源類型的 API 版本。<br><br>將範本部署到不同的環境（例如 Azure Stack 和全域 Azure）時，API 配置檔案屬性特別有用。 使用 API 設定檔版本，確保您的範本會自動使用兩個環境中支援的版本。 如需目前的 API 設定檔版本和設定檔中所定義之資源 API 版本的清單，請參閱 [API 設定檔](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)。<br><br>如需詳細資訊，請參閱 [使用 API 設定檔來追蹤版本](templates-cloud-consistency.md#track-versions-using-api-profiles)。 |
 | [parameters](#parameters) |否 |執行部署以自訂資源部署時所提供的值。 |
@@ -98,13 +98,13 @@ ms.locfileid: "97653124"
 
 針對以內嵌參數傳遞的整數，值的範圍可能會受到您用於部署的 SDK 或命令列工具的限制。 例如，使用 PowerShell 部署範本時，整數類型的範圍可以從-2147483648 到2147483647。 若要避免這項限制，請在 [參數](parameter-files.md)檔案中指定大型整數值。 資源類型會對整數屬性套用自己的限制。
 
-在您的範本中指定布林值和整數值時，請勿使用引號來括住值。 以雙引號括住的開頭和結尾字串值。
+在您的範本中指定布林值和整數值時，請勿使用引號來括住值。 以雙引號括住的開頭和結尾字串值 (`"string value"`) 。
 
-物件是以左大括弧開頭，並以右大括弧結尾。 陣列是以左括弧開頭，並以右括弧結尾。
+物件以左大括弧開頭 (`{`) ，並以右大括弧結尾 (`}`) 。 陣列的開頭是左括弧 (`[`) ，並以右括弧結尾 (`]`) 。
 
 ## <a name="parameters"></a>參數
 
-在範本的 parameters 區段中，您要指定可以在部署資源時輸入的值。 一個範本的限制為 256 個參數。 您可以使用包含多個屬性的物件來減少參數數目。
+在 `parameters` 範本的區段中，您可以指定部署資源時可輸入的值。 一個範本的限制為 256 個參數。 您可以使用包含多個屬性的物件來減少參數數目。
 
 參數的可用屬性包括：
 
@@ -141,7 +141,7 @@ ms.locfileid: "97653124"
 
 ## <a name="variables"></a>變數
 
-在 variables 區段中，您會建構可用於整個範本中的值。 您不需要定義變數，但它們通常會經由減少複雜運算式來簡化您的範本。 每個變數的格式都符合其中一個 [資料類型](#data-types)。
+在 `variables` 區段中，您會建立可在整個範本中使用的值。 您不需要定義變數，但它們通常會經由減少複雜運算式來簡化您的範本。 每個變數的格式都符合其中一個 [資料類型](#data-types)。
 
 下列範例顯示用於定義變數的可用選項：
 
@@ -174,7 +174,7 @@ ms.locfileid: "97653124"
 
 如需如何使用變數的範例，請參閱 [ARM 範本中的變數](template-variables.md)。
 
-## <a name="functions"></a>函數
+## <a name="functions"></a>函式
 
 在您的範本內，您可以建立自己的函式。 這些函式可供您在範本中使用。 一般而言，您會定義不想在整個範本中重複的複雜運算式。 您會從範本中支援的運算式和[函式](template-functions.md)建立使用者定義的函式。
 
@@ -211,7 +211,7 @@ ms.locfileid: "97653124"
 | 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | namespace |是 |自訂函式的命名空間。 使用以避免與範本函式發生名稱衝突。 |
-| 函數名稱 |是 |自訂函數的名稱。 呼叫函式時，請將函數名稱與命名空間合併。 例如，若要在 contoso 命名空間中呼叫名為 uniqueName 的函式，請使用 `"[contoso.uniqueName()]"` 。 |
+| 函數名稱 |是 |自訂函數的名稱。 呼叫函式時，請將函數名稱與命名空間合併。 例如，若要在命名空間 contoso 中呼叫名為的函式 `uniqueName` ，請使用 `"[contoso.uniqueName()]"` 。 |
 | 參數-名稱 |否 |要在自訂函數中使用的參數名稱。 |
 | 參數-值 |否 |參數值類型。 允許的類型和值為 **string**、**securestring**、**int**、**bool**、**object**、**secureObject**，以及 **array**。 |
 | 輸出類型 |是 |輸出值的類型。 輸出值支援與函數輸入參數相同的類型。 |
@@ -221,7 +221,7 @@ ms.locfileid: "97653124"
 
 ## <a name="resources"></a>資源
 
-在資源區段中，您會定義要部署或更新的資源。
+在 `resources` 區段中，您會定義要部署或更新的資源。
 
 您會定義結構如下的資源：
 
@@ -282,7 +282,7 @@ ms.locfileid: "97653124"
 | 元素名稱 | 必要 | 描述 |
 |:--- |:--- |:--- |
 | condition (條件) | 否 | 布林值，指出是否會在此部署期間佈建資源。 若為 `true`，就會在部署期間建立資源。 若為 `false`，則會略過此部署的資源。 請參閱 [條件](conditional-resource-deployment.md)。 |
-| 類型 |是 |資源類型。 此值是資源提供者的命名空間與資源類型 (的組合，例如 **Microsoft. Storage/storageAccounts**) 。 若要判斷可用的值，請參閱 [範本參考](/azure/templates/)。 針對子資源，類型的格式取決於其是否在父資源內進行嵌套，或在父資源外部定義。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
+| 類型 |是 |資源類型。 此值是資源提供者的命名空間與資源類型 (的組合，例如 `Microsoft.Storage/storageAccounts`) 。 若要判斷可用的值，請參閱 [範本參考](/azure/templates/)。 針對子資源，類型的格式取決於其是否在父資源內進行嵌套，或在父資源外部定義。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
 | apiVersion |是 |要用來建立資源的 REST API 版本。 建立新的範本時，請將此值設定為您要部署之資源的最新版本。 只要範本視需要運作，請繼續使用相同的 API 版本。 藉由繼續使用相同的 API 版本，您可以將新 API 版本的風險降至最低，以變更範本的運作方式。 只有當您想要使用在較新版本中引進的新功能時，才需要更新 API 版本。 若要判斷可用的值，請參閱 [範本參考](/azure/templates/)。 |
 | NAME |是 |資源名稱。 此名稱必須遵循在 RFC3986 中定義的 URI 元件限制。 將資源名稱公開到外部合作物件的 Azure 服務會驗證該名稱，以確保它不會嘗試偽造其他身分識別。 針對子資源，名稱的格式取決於其是否在父資源內進行嵌套，或在父資源外部定義。 請參閱[設定子資源的名稱和類型](child-resource-name-type.md)。 |
 | comments |否 |您在範本中記錄資源的註解。 如需詳細資訊，請參閱[範本中的註解](template-syntax.md#comments)。 |
@@ -298,7 +298,7 @@ ms.locfileid: "97653124"
 
 ## <a name="outputs"></a>輸出
 
-在輸出區段中，您可以指定從部署傳回的值。 通常，您會從已部署的資源傳回值。
+在 `outputs` 區段中，您會指定從部署傳回的值。 通常，您會從已部署的資源傳回值。
 
 下列範例顯示輸出定義的結構：
 
@@ -321,7 +321,7 @@ ms.locfileid: "97653124"
 | 輸出-名稱 |是 |輸出值的名稱。 必須是有效的 JavaScript 識別碼。 |
 | condition (條件) |否 | 布林值，指出是否傳回此輸出值。 當為 `true` 時，該值會包含在部署的輸出中。 若為 `false`，則會略過此部署的輸出值。 未指定時，預設值為 `true`。 |
 | 類型 |是 |輸出值的類型。 輸出值支援與範本輸入參數相同的類型。 如果您針對輸出類型指定 **securestring** ，此值就不會顯示在部署歷程記錄中，也無法從另一個範本中取出。 若要在多個範本中使用秘密值，請將秘密儲存在 Key Vault 中，並在參數檔中參考密碼。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](key-vault-parameter.md)。 |
-| 值 |否 |評估並傳回做為輸出值的範本語言運算式。 請指定 **值** 或 **複製**。 |
+| value |否 |評估並傳回做為輸出值的範本語言運算式。 請指定 **值** 或 **複製**。 |
 | copy |否 | 用來傳回一個以上的輸出值。 指定 **值** 或 **複製**。 如需詳細資訊，請參閱 [ARM 範本中的輸出反復](copy-outputs.md)專案。 |
 
 如需如何使用輸出的範例，請參閱 [ARM 範本中的輸出](template-outputs.md)。
@@ -351,7 +351,7 @@ ms.locfileid: "97653124"
   ],
 ```
 
-在 Visual Studio Code 中， [Azure Resource Manager Tools 擴充](quickstart-create-templates-use-visual-studio-code.md) 功能可以自動偵測 ARM 範本並變更語言模式。 如果您在 VS Code 右下角看到 **Azure Resource Manager 範本** ，則可以使用內嵌批註。 內嵌註解不再被標示為無效。
+在 Visual Studio Code 中， [Azure Resource Manager Tools 擴充](quickstart-create-templates-use-visual-studio-code.md) 功能可以自動偵測 ARM 範本並變更語言模式。 如果您在 Visual Studio Code 右下角看到 **Azure Resource Manager 範本** ，則可以使用內嵌批註。 內嵌註解不再被標示為無效。
 
 ![Visual Studio Code Azure Resource Manager 範本模式](./media/template-syntax/resource-manager-template-editor-mode.png)
 
@@ -369,7 +369,7 @@ ms.locfileid: "97653124"
   },
 ```
 
-對於 **參數**，新增 `description` 屬性的 `metadata` 物件。
+針對 `parameters` ，加入 `metadata` 具有屬性的物件 `description` 。
 
 ```json
 "parameters": {
@@ -385,7 +385,7 @@ ms.locfileid: "97653124"
 
 ![顯示參數提示](./media/template-syntax/show-parameter-tip.png)
 
-對於 **資源**，新增 `comments` 項目或中繼資料物件。 下列範例顯示註解項目和中繼資料物件。
+針對 `resources` ，加入 `comments` 元素或 `metadata` 物件。 下列範例會顯示 `comments` 元素和 `metadata` 物件。
 
 ```json
 "resources": [
@@ -411,7 +411,7 @@ ms.locfileid: "97653124"
 ]
 ```
 
-對於 **輸出**，將中繼資料物件新增至輸出值。
+針對 `outputs` ，將 `metadata` 物件新增至輸出值。
 
 ```json
 "outputs": {
@@ -424,11 +424,11 @@ ms.locfileid: "97653124"
   },
 ```
 
-您無法將中繼資料物件新增至使用者定義函式。
+您無法將 `metadata` 物件新增至使用者定義函數。
 
 ## <a name="multi-line-strings"></a>多行字串
 
-您可以將字串分割成多行。 例如，請參閱 location 屬性和下列 JSON 範例中的其中一個批註。
+您可以將字串分割成多行。 例如，請參閱 `location` 下列 JSON 範例中的屬性和其中一個批註。
 
 ```json
 {
@@ -448,7 +448,8 @@ ms.locfileid: "97653124"
   ],
 ```
 
-若要使用2.3.0 版或更舊版本的 Azure CLI 來部署具有多行字串的範本，您必須使用 `--handle-extended-json-format` 參數。
+> [!NOTE]
+> 若要使用2.3.0 版或更舊版本的 Azure CLI 來部署具有多行字串的範本，您必須使用 `--handle-extended-json-format` 參數。
 
 ## <a name="next-steps"></a>後續步驟
 

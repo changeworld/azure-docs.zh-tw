@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9cc19548f0b969421974afe3e274fc5334590cb0
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: b487dcad83ccbc31adf2d7ec2dd77c490db2c68e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805660"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935186"
 ---
 Azure Functions 可讓您建立以預先建立的進入點為基礎的僅限設定複寫工作。 Azure Functions 的設定 [式複寫範例](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) 說明如何在您自己的程式碼中運用 [預先建立](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) 的協助程式，或完全避免處理常式代碼，並只使用設定。
 
@@ -166,7 +166,7 @@ Azure Functions 可讓您建立以預先建立的進入點為基礎的僅限設�
             "direction": "out",
             "type": "serviceBus",
             "connection": "functionname-target-connection",
-            "eventHubName": "queue-b",
+            "queueName": "queue-b",
             "name": "output" 
         }
     ...
@@ -190,7 +190,7 @@ Azure Functions 可讓您建立以預先建立的進入點為基礎的僅限設�
             "direction": "out",
             "type": "serviceBus",
             "connection": "functionname-target-connection",
-            "eventHubName": "queue-b",
+            "topicName": "topic-b",
             "name": "output" 
         }
     ...

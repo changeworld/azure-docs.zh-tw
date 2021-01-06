@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 647009854ef5a0c0811fc303914f724272f1a3f5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: da04e7704274336f7f92237c1d7c30459caa7bc8
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486652"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936476"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure 上適用於 linux 的 SAP BusinessObjects BI 平台部署指南
 
@@ -317,8 +317,9 @@ Azure NetApp Files 可在數個 [azure 區域](https://azure.microsoft.com/globa
 
    # auditbl1 is the database name of Audit database. You can provide the name you want for CMS database.
    CREATE SCHEMA `auditbl1` DEFAULT CHARACTER SET utf8;
-
-4. Create user account to connect to schema
+   ```
+   
+4. 建立使用者帳戶以連接到架構
 
    ```sql
    # Create a user that can connect from any host, use the '%' wildcard as a host part

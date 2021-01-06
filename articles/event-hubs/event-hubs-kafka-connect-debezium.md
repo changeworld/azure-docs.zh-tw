@@ -1,25 +1,34 @@
 ---
-title: '使用 Debezium for Change Data Capture 整合 Apache Kafka Connect on Azure 事件中樞 (Preview) '
+title: 在 Azure 事件中樞上整合 Apache Kafka Connect 與 Debezium for Change Data Capture
 description: 本文提供有關如何使用 Debezium 搭配適用于 Kafka Azure 事件中樞的資訊。
 ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
-ms.date: 08/11/2020
-ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 01/06/2021
+ms.openlocfilehash: 0ad1df23e71e652f7d380ffbabb542b81954e038
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505404"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935167"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>使用 Debezium for Change Data Capture 整合 Azure 事件中樞 (Preview) 上的 Apache Kafka Connect 支援
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-with-debezium-for-change-data-capture"></a>在 Azure 事件中樞上整合 Apache Kafka Connect 支援與 Debezium for Change Data Capture
 
 **變更資料捕獲 (CDC)** 是一種技術，用來追蹤資料庫資料表中的資料列層級變更，以回應建立、更新和刪除作業。 [Debezium](https://debezium.io/) 是以不同資料庫中可用的變更資料捕獲功能為基礎的分散式平臺 (例如，于 postgresql) [中的邏輯解碼](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html) 。 它提供一組 [Kafka Connect 連接器](https://debezium.io/documentation/reference/1.2/connectors/index.html) ，可在資料庫資料表中的資料列層級變更 (s) ，然後將它們轉換成事件串流，然後再傳送至 [Apache Kafka](https://kafka.apache.org/)。
+
+> [!WARNING]
+> 使用 Apache Kafka Connect 架構以及 Debezium 平臺及其連接器，並 **不符合透過 Microsoft Azure 的產品支援**。
+>
+> Apache Kafka Connect 會假設其動態設定會保留在壓縮的主題中，並以其他無限制的保留。 Azure 事件中樞不 [會將壓縮實作為訊息代理程式功能](event-hubs-federation-overview.md#log-projections) ，而且一律會在保留的事件上加上以時間為基礎的保留限制，從 Azure 事件中樞為即時事件串流引擎而不是長期資料或設定存放區的原則進行根。
+>
+> 雖然 Apache Kafka 專案可能會很樂意混合這些角色，但 Azure 認為這類資訊最適合在適當的資料庫或設定存放區中進行管理。
+>
+> 許多 Apache Kafka Connect 案例都可以運作，但 Apache Kafka 和 Azure 事件中樞的保留模型之間的這些概念差異可能會導致某些設定無法如預期般運作。 
 
 本教學課程會逐步引導您瞭解如何使用適用于 Kafka) 、 [AZURE DB For 于 postgresql](../postgresql/overview.md)和 Debezium 的[Azure 事件中樞](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (，在 azure 上設定變更資料捕獲型系統。 它將使用 [Debezium 于 postgresql 連接器](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) ，從于 postgresql 將資料庫修改串流至 Azure 事件中樞中的 Kafka 主題
 
 > [!NOTE]
-> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+> 本文包含字詞「*允許清單*」的參考 (Microsoft 已不再使用該字詞)。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 在本教學課程中，您會執行下列步驟：
 

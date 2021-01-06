@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: d7e4d0c41990fcc23dd19b5682997f6381bfdb20
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861284"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937088"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 來建立具彈性的存取控制管理策略
 
@@ -38,8 +38,8 @@ ms.locfileid: "96861284"
 本文件中有四個重點：
 
 * 使用緊急存取帳戶來避免系統管理員鎖定。
-* 使用條件式存取 (CA) 來實行 MFA，而不是依使用者的 MFA。
-* 使用多個條件式存取 (CA) 控制項來緩和使用者鎖定。
+* 使用條件式存取來執行 MFA，而不是依使用者的 MFA。
+* 使用多個條件式存取控制來緩和使用者鎖定。
 * 為每個使用者佈建多個驗證方法或對等的方法，以降低使用者鎖定風險。
 
 ## <a name="before-a-disruption"></a>在中斷情況發生前
@@ -138,9 +138,9 @@ ms.locfileid: "96861284"
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
 ```
 
-下列範例： **可還原任務關鍵性共同作業應用程式之存取權的範例 A-應變 CA 原則**，是典型的公司應變。 在此案例中，組織通常要求所有 Exchange Online 和 SharePoint Online 存取都需要 MFA，而在此情況下，當客戶的 MFA 提供者發生中斷 (是否 Azure AD MFA、內部部署 MFA 提供者或協力廠商 MFA) 。 此原則可降低此中斷狀況的風險，方法是允許特定的目標使用者從受信任的 Windows 裝置存取這些應用程式，但只有在從受信任的公司網路存取應用程式時才允許。 它也會將緊急帳戶和核心系統管理員從這些限制中排除。 目標使用者將得以存取 Exchange Online 和 SharePoint Online，而其他使用者仍將因中斷而無法存取應用程式。 此範例將需要一個具名的網路位置 **CorpNetwork** 和一個安全性群組 **ContingencyAccess** (含有目標使用者)、一個名為 **CoreAdmins** 的群組 (含有核心系統管理員)，以及一個名為 **EmergencyAccess** 的群組 (含有緊急存取帳戶)。 此應變措施需要四個原則來提供所需的存取權。 
+下列範例： **可還原任務關鍵性共同作業應用程式之存取權的範例 A-應變條件式存取原則**，是典型的公司應變。 在此案例中，組織通常要求所有 Exchange Online 和 SharePoint Online 存取都需要 MFA，而在此情況下，當客戶的 MFA 提供者發生中斷 (是否 Azure AD MFA、內部部署 MFA 提供者或協力廠商 MFA) 。 此原則可降低此中斷狀況的風險，方法是允許特定的目標使用者從受信任的 Windows 裝置存取這些應用程式，但只有在從受信任的公司網路存取應用程式時才允許。 它也會將緊急帳戶和核心系統管理員從這些限制中排除。 目標使用者將得以存取 Exchange Online 和 SharePoint Online，而其他使用者仍將因中斷而無法存取應用程式。 此範例將需要一個具名的網路位置 **CorpNetwork** 和一個安全性群組 **ContingencyAccess** (含有目標使用者)、一個名為 **CoreAdmins** 的群組 (含有核心系統管理員)，以及一個名為 **EmergencyAccess** 的群組 (含有緊急存取帳戶)。 此應變措施需要四個原則來提供所需的存取權。 
 
-**範例 A - 用以還原對任務關鍵性共同作業應用程式之存取權的應變 CA 原則：**
+**用以還原對任務關鍵性共同作業應用程式之存取權的應變條件式存取原則範例：**
 
 * 原則1：需要已加入網域的 Exchange 和 SharePoint 裝置
   * 名稱： EM001-緊急時啟用： MFA 中斷 [1/4]-Exchange SharePoint-需要混合式 Azure AD Join
@@ -180,9 +180,9 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 5. 啟用原則4：確認所有使用者都無法從行動裝置上的原生郵件應用程式取得 Exchange Online。
 6. 停用 SharePoint Online 和 Exchange Online 的現有 MFA 原則。
 
-在這個接下來的範例 (**範例 B - 用以允許對 Salesforce 進行行動存取的應變 CA 原則**) 中，會還原一個商務應用程式的存取權。 在此案例中，客戶通常會要求只有當其銷售員工使用符合規範的裝置時，才允許他們從行動裝置存取 Salesforce (已針對使用 Azure AD 進行單一登入做設定)。 而在此情況下，中斷係指評估裝置合規性時發生問題，而中斷狀況發生在銷售小組需要存取 Salesforce 以完成交易的敏感時間。 這些應變原則將授與關鍵使用者從行動裝置存取 Salesforce 的權限，以便讓他們能夠繼續完成交易而不會中斷業務。 在此範例中，**SalesforceContingency** 包含所有需要保留存取權的銷售員工，而 **SalesAdmins** 則包含必要的 Salesforce 系統管理員。
+在下一個範例中， **範例 B-應變條件式存取原則以允許對 Salesforce** 的行動存取，商務應用程式的存取權會還原。 在此案例中，客戶通常會要求只有當其銷售員工使用符合規範的裝置時，才允許他們從行動裝置存取 Salesforce (已針對使用 Azure AD 進行單一登入做設定)。 而在此情況下，中斷係指評估裝置合規性時發生問題，而中斷狀況發生在銷售小組需要存取 Salesforce 以完成交易的敏感時間。 這些應變原則將授與關鍵使用者從行動裝置存取 Salesforce 的權限，以便讓他們能夠繼續完成交易而不會中斷業務。 在此範例中，**SalesforceContingency** 包含所有需要保留存取權的銷售員工，而 **SalesAdmins** 則包含必要的 Salesforce 系統管理員。
 
-**範例 B - 應變 CA 原則：**
+**範例 B-應變條件存取原則：**
 
 * 原則1：封鎖不在 SalesContingency 團隊中的所有人
   * 名稱： EM001-緊急時啟用：裝置合規性中斷 [1/2]-Salesforce-封鎖 SalesforceContingency 以外的所有使用者

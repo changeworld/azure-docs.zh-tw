@@ -3,12 +3,12 @@ title: 監視您管理租使用者中的委派變更
 description: 瞭解如何監視從客戶租使用者到您管理租使用者的委派活動。
 ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 8d254c90881d23255dda5c38a868eb61e51b4f08
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: f65ffda642e67ec6e2c7694a823c2ba6845a7af4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356407"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936102"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>監視您管理租使用者中的委派變更
 
@@ -46,7 +46,7 @@ ms.locfileid: "97356407"
 
 - [建立新的服務主體帳戶](../../active-directory/develop/howto-create-service-principal-portal.md) ，只用于此函式，而不是將此角色指派給用於其他自動化的現有服務主體。
 - 請確定此服務主體沒有任何委派客戶資源的存取權。
-- [使用憑證來進行驗證](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) ，並 [將其安全地儲存在 Azure Key Vault 中](../../key-vault/general/best-practices.md)。
+- [使用憑證來進行驗證](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) ，並 [將其安全地儲存在 Azure Key Vault 中](../../key-vault/general/security-overview.md)。
 - 限制有權代表服務主體具有存取權的使用者。
 
 > [!NOTE]

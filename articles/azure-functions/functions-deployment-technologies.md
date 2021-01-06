@@ -4,12 +4,12 @@ description: 瞭解可將程式碼部署到 Azure Functions 的不同方式。
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 04d96a09d41ace64bed5667bb9f0fa6e4beed244
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168095"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936952"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技術
 
@@ -25,7 +25,7 @@ ms.locfileid: "96168095"
 | -- | -- | -- |
 | 以工具為基礎 | &bull;&nbsp;[Visual &nbsp; Studio &nbsp; Code &nbsp; 發行](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio 發佈](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Core Tools 發佈](functions-run-local.md#publish) | 開發和其他 ad hock 部署期間的部署。 這些工具會在本機管理部署。 | 
 | App Service 管理| &bull;&nbsp;[部署 &nbsp; 中心 &nbsp; (CI/CD) ](functions-continuous-deployment.md)<br/>&bull;&nbsp;[容器 &nbsp; 部署](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  持續部署 (從原始檔控制或從容器登錄) CI/CD。 部署由 App Service platform (Kudu) 來管理。|
-| 外部管線|&bull;&nbsp;[DevOps 管線](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub 動作](functions-how-to-github-actions.md) | 包含額外驗證、測試和其他動作的生產和 DevOps 管線會作為自動化部署的一部分來執行。 部署由管線管理。 |
+| 外部管線|&bull;&nbsp;[Azure Pipelines](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub 動作](functions-how-to-github-actions.md) | 包含額外驗證、測試和其他動作的生產和 DevOps 管線會作為自動化部署的一部分來執行。 部署由管線管理。 |
 
 雖然特定的函式部署會根據其內容使用最佳技術，但大部分的部署方法都是以 [zip 部署](#zip-deploy)為基礎。
 
@@ -33,9 +33,9 @@ ms.locfileid: "96168095"
 
 Azure Functions 支援在 Windows 和 Linux 上進行跨平臺本機開發和裝載。 目前有三種主控方案可用：
 
-+ [消費](functions-scale.md#consumption-plan)
-+ [高級](functions-scale.md#premium-plan)
-+ [專用 (App Service) ](functions-scale.md#app-service-plan)
++ [耗用量](consumption-plan.md)
++ [高級](functions-premium-plan.md)
++ [專用 (App Service) ](dedicated-plan.md)
 
 每個方案都有不同的行為。 並非所有的部署技術都適用于 Azure Functions 的每個類別。 下圖顯示每個作業系統和主控方案組合支援的部署技術：
 
@@ -96,7 +96,7 @@ Azure Functions 可以在 zip 部署之後，自動對它所收到的程式碼�
 
 ##### <a name="dedicated-and-premium-plans"></a>專用和 Premium 方案
 
-在 Linux 上執行的函式應用程式在 [專用 (App Service) 方案](functions-scale.md#app-service-plan) 和高階 [方案](functions-scale.md#premium-plan) 中，也有限制的 SCM/Kudu 網站。
+在 Linux 上執行的函式應用程式在 [專用 (App Service) 方案](dedicated-plan.md) 和高階 [方案](functions-premium-plan.md) 中，也有限制的 SCM/Kudu 網站。
 
 ## <a name="deployment-technology-details"></a>部署技術詳細資料
 
@@ -191,7 +191,7 @@ Web Deploy 套件，並將您的 Windows 應用程式部署到任何 IIS 伺服�
 
 下表顯示支援入口網站編輯的作業系統和語言：
 
-| Language | Windows 耗用量 | Windows Premium | Windows 專用 | Linux 使用量 | Linux Premium | Linux 專用 |
+| 語言 | Windows 耗用量 | Windows Premium | Windows 專用 | Linux 使用量 | Linux Premium | Linux 專用 |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C# 指令碼 |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|

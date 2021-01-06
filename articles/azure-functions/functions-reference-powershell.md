@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
-ms.openlocfilehash: af9490433c344c712da55e9b29bf9df364380736
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 61ed3ed274505101c65e251260bd759fe78f7b31
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422530"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936782"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 開發人員指南
 
@@ -53,7 +53,7 @@ PSFunctionApp
 
 某些系結需要有檔案存在 `extensions.csproj` 。 [版本2.x 和更新版本](functions-versions.md)的函式執行時間所需的系結延伸模組，會在檔案中定義 `extensions.csproj` ，其中包含資料夾中的實際程式庫檔案 `bin` 。 在本機開發時，您必須[註冊繫結擴充功能](functions-bindings-register.md#extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
 
-在 PowerShell 函式應用程式中，您可以選擇是否要在函式 `profile.ps1` 應用程式開始執行時執行此功能 (否則即為 *[冷啟動](#cold-start)* 。 如需詳細資訊，請參閱 [PowerShell 設定檔](#powershell-profile)。
+在 PowerShell 函式應用程式中，您可以選擇是否要在函式 `profile.ps1` 應用程式開始執行時執行此功能 (否則即為 *[冷啟動](#cold-start)*。 如需詳細資訊，請參閱 [PowerShell 設定檔](#powershell-profile)。
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>將 PowerShell 腳本定義為函式
 
@@ -418,11 +418,11 @@ PowerShell 中有 PowerShell 設定檔的概念。 如果您不熟悉 PowerShell
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至函式應用程式。
 
-1. 在 [設定] **Configuration** 底下，選擇 [ **設定** ]。 在 [ **一般設定** ] 索引標籤中，找出 **PowerShell 版本** 。 
+1. 在 [設定] 底下，選擇 [**設定**]。 在 [ **一般設定** ] 索引標籤中，找出 **PowerShell 版本**。 
 
     :::image type="content" source="media/functions-reference-powershell/change-powershell-version-portal.png" alt-text="選擇函數應用程式所使用的 PowerShell 版本"::: 
 
-1. 選擇您想要的 **PowerShell Core 版本** ，然後選取 [ **儲存** ]。 當警告有關擱置中的重新開機時，請選擇 [ **繼續** ]。 函數應用程式會在所選的 PowerShell 版本上重新開機。 
+1. 選擇您想要的 **PowerShell Core 版本** ，然後選取 [ **儲存**]。 當警告有關擱置中的重新開機時，請選擇 [ **繼續**]。 函數應用程式會在所選的 PowerShell 版本上重新開機。 
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -441,7 +441,7 @@ Set-AzResource -ResourceId "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RES
 
 ## <a name="dependency-management"></a>相依性管理
 
-函數可讓您利用 [PowerShell 資源庫](https://www.powershellgallery.com) 來管理相依性。 啟用相依性管理後，就會使用 requirements.psd1 檔案自動下載必要的模組。 您可以藉由在 `managedDependency`host.json 檔案的根目錄中將屬性設為，以啟用此行為 `true` ，如下列範例[host.json file](functions-host-json.md)所示：
+函數可讓您利用 [PowerShell 資源庫](https://www.powershellgallery.com) 來管理相依性。 啟用相依性管理後，就會使用 requirements.psd1 檔案自動下載必要的模組。 您可以藉由在 `managedDependency`host.json 檔案的根目錄中將屬性設為，以啟用此行為 `true` ，如下列範例[](functions-host-json.md)所示：
 
 ```json
 {
@@ -525,7 +525,7 @@ PowerShell 語言背景工作角色通常會使用數個模組。 這些模組�
 目前的模組清單如下所示：
 
 * [封存[]：用於](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive)處理封存的模組，例如 `.zip` 、 `.nupkg` 和其他。
-* **ThreadJob** ： PowerShell 作業 api 的執行緒型執行。
+* **ThreadJob**： PowerShell 作業 api 的執行緒型執行。
 
 根據預設，函數會使用這些模組的最新版本。 若要使用特定模組版本，請將該特定版本放在 `Modules` 函數應用程式的資料夾中。
 
@@ -649,11 +649,11 @@ Export-ModuleMember -Function "Invoke-PSTestFunc"
 
 ### <a name="cold-start"></a>冷啟動
 
-在 [無伺服器裝載模型](functions-scale.md#consumption-plan)中開發 Azure Functions 時，冷啟動是現實的。 *冷啟動* 是指您的函數應用程式開始執行以處理要求所需的時間。 因為您的函式應用程式會在非使用狀態期間關閉，所以在取用方案中會更頻繁地開始進行。
+在 [無伺服器裝載模型](consumption-plan.md)中開發 Azure Functions 時，冷啟動是現實的。 *冷啟動* 是指您的函數應用程式開始執行以處理要求所需的時間。 因為您的函式應用程式會在非使用狀態期間關閉，所以在取用方案中會更頻繁地開始進行。
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>組合模組，而非使用 `Install-Module`
 
-您的腳本會在每次叫用時執行。 避免 `Install-Module` 在您的腳本中使用。 請改 `Save-Module` 為在發行之前使用，讓您的函式不需要浪費時間下載模組。 如果冷啟動影響您的函式，請考慮將您的函數應用程式部署至設定為 *always on* 或 [Premium 方案](functions-scale.md#premium-plan)的 [App Service 計畫](functions-scale.md#app-service-plan)。
+您的腳本會在每次叫用時執行。 避免 `Install-Module` 在您的腳本中使用。 請改 `Save-Module` 為在發行之前使用，讓您的函式不需要浪費時間下載模組。 如果冷啟動影響您的函式，請考慮將您的函數應用程式部署至設定為 *always on* 或 [Premium 方案](functions-premium-plan.md)的 [App Service 計畫](dedicated-plan.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

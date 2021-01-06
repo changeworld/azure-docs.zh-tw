@@ -4,12 +4,12 @@ description: 瞭解如何查看和查詢收集的 Azure Functions 遙測資料�
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1d8d9cc9a7a4111e98b1d9141957769d6f157d45
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 14b6ed3964900e3395ca335c301dfd0285da46e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027725"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937292"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>分析 Application Insights 中的 Azure Functions 遙測 
 
@@ -108,7 +108,7 @@ traces
 
 ## <a name="consumption-plan-specific-metrics"></a>取用方案特有的計量
 
-在取用 [方案](functions-scale.md#consumption-plan)中執行時，單一函數執行的執行 *成本* 會以 *GB 為單位* 來測量。 執行成本的計算方式是將其記憶體使用量與執行時間結合在一起。 若要深入瞭解，請參閱 [預估耗用量方案成本](functions-consumption-costs.md)。
+在取用 [方案](consumption-plan.md)中執行時，單一函數執行的執行 *成本* 會以 *GB 為單位* 來測量。 執行成本的計算方式是將其記憶體使用量與執行時間結合在一起。 若要深入瞭解，請參閱 [預估耗用量方案成本](functions-consumption-costs.md)。
 
 下列遙測查詢適用于影響取用方案中執行的函式成本的計量。
 

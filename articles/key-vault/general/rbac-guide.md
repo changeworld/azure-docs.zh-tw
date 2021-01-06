@@ -9,17 +9,17 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: be2fa0fa85da7c0f02567580c50968b7418e4cde
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f7a0190d664e3330d2a6205014c00c61c1183dd3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445178"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936238"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>使用 Azure 角色型存取控制 (預覽，提供 Key Vault 金鑰、憑證和秘密的存取權) 
 
 > [!NOTE]
-> Key Vault 資源提供者支援兩種資源類型：保存 **庫** 和 **受管理的 hsm** 。 本文所述的存取控制僅適用于保存 **庫** 。 若要深入瞭解受控 HSM 的存取控制，請參閱 [受控 hsm 存取控制](../managed-hsm/access-control.md)。
+> Key Vault 資源提供者支援兩種資源類型：保存 **庫** 和 **受管理的 hsm**。 本文所述的存取控制僅適用于保存 **庫**。 若要深入瞭解受控 HSM 的存取控制，請參閱 [受控 hsm 存取控制](../managed-hsm/access-control.md)。
 
 Azure 角色型存取控制 (Azure RBAC) 是以 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 為基礎的授權系統，可提供更細緻的 Azure 資源存取管理。
 
@@ -41,7 +41,7 @@ Azure RBAC 模型可讓您在不同的範圍層級上設定許可權：管理群
 
 如需 Azure Key Vault 管理指導方針的詳細資訊，請參閱：
 
-- [Azure Key Vault 最佳做法](best-practices.md)
+- [Azure Key Vault 安全性概觀](security-overview.md)
 - [Azure Key Vault 服務限制](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations-preview"></a>適用于 Key Vault 資料平面作業的 Azure 內建角色 (preview) 

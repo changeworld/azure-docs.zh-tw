@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 5558480f568e802637deb30c9f1b41c00826c9b5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2c7db937905baed94c6fe81adeb44c8b3f5be52b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454496"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936068"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 設定和管理 Azure AD 驗證
 
@@ -344,7 +344,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 - 從 .NET Framework 4.6 或更新版本 [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) 。
 - Azure Active Directory SQL Server (*ADAL.DLL*) 的驗證程式庫。 以下是安裝最新 SSMS、ODBC 以及包含 *ADAL.DLL* 程式庫 OLE DB 驅動程式的下載連結。
-  - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+  - [Transact-SQL](/sql/ssms/download-sql-server-management-studio-ssms)
   - [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
   - [適用于 SQL Server 的 OLE DB Driver 18](https://www.microsoft.com/download/details.aspx?id=56730)
 
@@ -395,7 +395,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 ```
 
 > [!NOTE]
-> 此命令需要代表登入的使用者 (「外部提供 ) 者」 Azure AD 的 SQL 存取權。 有時候，會導致 Azure AD 將例外狀況傳回給 SQL 的情況發生。 在這些情況下，使用者會看到 SQL 錯誤33134，其中應該包含 Azure AD 特定的錯誤訊息。 大部分的情況下，此錯誤會指出拒絕存取，或使用者必須註冊 MFA 以存取資源，或必須透過 preauthorization 處理第一方應用程式之間的存取。 在前兩個案例中，問題通常是由使用者的 Azure AD 租使用者中設定的條件式存取原則所造成：它們會防止使用者存取外部提供者。 更新 CA 原則以允許存取應用程式 ' 00000002-0000-0000-c000-000000000000 ' (Azure AD 圖形 API) 的應用程式識別碼應可解決此問題。 如果錯誤指出必須透過 preauthorization 處理第一方應用程式之間的存取，問題是因為使用者以服務主體的形式登入。 如果使用者改為執行命令，則應該會成功。
+> 此命令需要代表登入的使用者 (「外部提供 ) 者」 Azure AD 的 SQL 存取權。 有時候，會導致 Azure AD 將例外狀況傳回給 SQL 的情況發生。 在這些情況下，使用者會看到 SQL 錯誤33134，其中應該包含 Azure AD 特定的錯誤訊息。 大部分的情況下，此錯誤會指出拒絕存取，或使用者必須註冊 MFA 以存取資源，或必須透過 preauthorization 處理第一方應用程式之間的存取。 在前兩個案例中，問題通常是由使用者的 Azure AD 租使用者中設定的條件式存取原則所造成：它們會防止使用者存取外部提供者。 更新條件式存取原則以允許存取應用程式 ' 00000002-0000-0000-c000-000000000000 ' (Azure AD 圖形 API) 的應用程式識別碼應可解決此問題。 如果錯誤指出必須透過 preauthorization 處理第一方應用程式之間的存取，問題是因為使用者以服務主體的形式登入。 如果使用者改為執行命令，則應該會成功。
 
 > [!TIP]
 > 您無法從 Azure Active Directory 直接建立使用者，除了與您的 Azure 訂用帳戶相關聯的 Azure Active Directory 以外。 不過，在相關聯 Active Directory (稱為外部使用者) 中匯入之使用者的其他 Active Directory 成員可以新增至租用戶 Active Directory 中的 Active Directory 群組。 藉由建立該 AD 群組的自主資料庫使用者，來自外部 Active Directory 的使用者可以存取 SQL Database。

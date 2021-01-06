@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: b3e9c1e8ad23ea0ebf540eddbd6d4a03b8a72fe2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835069"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935813"
 ---
 # <a name="develop-custom-commands-applications"></a>開發自訂命令應用程式
 
@@ -52,7 +52,7 @@ ms.locfileid: "97835069"
 
 1. 選取左窗格頂端的 [ **新增命令** ]，以建立新的命令。 **新的命令** 視窗隨即開啟。
 1. 針對 [ **名稱** ] 欄位提供值 `TurnOn` 。
-1. 選取 [建立]。
+1. 選取 [建立]  。
 
 中間窗格會列出命令的屬性。 
 
@@ -178,12 +178,12 @@ ms.locfileid: "97835069"
    1. 選取 [更新]。
 
        > [!div class="mx-imgBorder"]
-       > ![顯示要在哪裡建立必要參數回應的螢幕擷取畫面。](media/custom-commands/add-required-on-off-parameter-response.png)
+       > ![螢幕擷取畫面，顯示已選取 [簡單編輯器] 索引標籤的 [加入必要參數的回應] 區段。](media/custom-commands/add-required-on-off-parameter-response.png)
    
    1. 使用下表來設定參數的屬性。 如需命令的所有設定屬性的相關資訊，請參閱 [自訂命令概念和定義](./custom-commands-references.md)。
       
 
-       | 設定      | 建議的值     | 描述                                                      |
+       | 組態      | 建議的值     | 描述                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
        | **名稱**               | `OnOff`           | 參數的描述性名稱                                                                           |
        | **為全域**          | 未選取       | 核取方塊，指出此參數的值是否全域套用至應用程式中的所有命令。|
@@ -252,7 +252,7 @@ turn something
 1. 在 [ **條件** ] 區段中，選取 [ **新增條件**]。
 1. 在 [ **新增條件** ] 視窗的 [ **類型** ] 清單中，選取 [ **必要參數**]。 在接下來的清單中，選取 [ **OnOff** ] 和 [ **SubjectDevice**]。
 1. 將 **IsGlobal** 保留為未選取狀態。
-1. 選取 [建立]。
+1. 選取 [建立]  。
 1. 在 [ **動作** ] 區段中，將滑鼠停留在其上方，然後選取 [編輯] 按鈕，以編輯 [ **傳送語音回應** ] 動作。 這次，請使用新建立的 `OnOff` 和 `SubjectDevice` 參數：
 
     ```
@@ -279,7 +279,7 @@ turn something
 
 加入 `Temperature` 參數。 請使用下列組態︰
 
-| 設定      | 建議的值     |
+| 組態      | 建議的值     |
 | ------------------ | ----------------|
 | **名稱**               | `Temperature`           |
 | **必要**           | 已選取         |
@@ -298,7 +298,7 @@ change the temperature
 
 編輯現有的完成規則。 使用下列設定。
 
-| 設定      | 建議的值     |
+| 組態      | 建議的值     |
 | ------------------ | ----------------|
 | **條件**         | **必要參數**  > **溫度**           |
 | **動作**           | **傳送語音回應** > `Ok, setting temperature to {Temperature} degrees` |

@@ -1,24 +1,24 @@
 ---
 title: 設定資源的部署順序
-description: 描述如何在部署期間將一個資源設定為相依于另一個資源。 相依性可確保以正確的順序部署資源。
+description: 說明如何在部署期間，將一個 Azure 資源設定為相依于另一個資源。 相依性可確保以正確的順序部署資源。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: a96dca0ab30d0baee2688427d78867ea128e673a
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722006"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934742"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>定義在 ARM 範本中部署資源的順序
 
-部署資源時，您可能需要確保某些資源存在於其他資源之前。 例如，在部署資料庫之前，您需要邏輯 SQL server。 您可以藉由將一個資源標記為相依于其他資源，來建立此關聯性。 使用 **dependsOn** 元素來定義明確的相依性。 使用 **參考** 或 **清單** 函數來定義隱含相依性。
+部署資源時，您可能需要確保某些資源存在於其他資源之前。 例如，在部署資料庫之前，您需要邏輯 SQL server。 您可以藉由將一個資源標記為相依于其他資源，來建立此關聯性。 您 `dependsOn` 可以使用元素來定義明確的相依性。 使用 **參考** 或 **清單** 函數來定義隱含相依性。
 
-資源管理員會評估資源之間的相依性，並依其相依順序進行部署。 如果資源並未彼此相依，Resource Manager 就會平行部署資源。 您只需要針對部署在相同範本中的資源定義相依性。
+Azure Resource Manager 會評估資源之間的相依性，並依其相依順序部署它們。 如果資源並未彼此相依，Resource Manager 就會平行部署資源。 您只需要針對部署在相同範本中的資源定義相依性。
 
 ## <a name="dependson"></a>dependsOn
 
-在您的範本內，dependsOn 元素可讓您定義一個資源作為一或多個資源的相依項目。 它的值是字串的 JSON 陣列，其中每一個都是資源名稱或識別碼。 陣列可包含有 [條件地部署](conditional-resource-deployment.md)的資源。 當條件式資源未部署時，Azure Resource Manager 會自動將它從必要的相依性中移除。
+在 (ARM 範本) 的 Azure Resource Manager 範本中， `dependsOn` 元素可讓您將一個資源定義為相依于一或多個資源。 其值為 JavaScript 物件標記法 (JSON) 字串陣列，其中每個字串都是資源名稱或識別碼。 陣列可包含有 [條件地部署](conditional-resource-deployment.md)的資源。 當條件式資源未部署時，Azure Resource Manager 會自動將它從必要的相依性中移除。
 
 下列範例顯示相依于虛擬網路、網路安全性群組和公用 IP 位址的網路介面。 如需完整的範本，請參閱 [LINUX VM 的快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json)。
 
@@ -37,11 +37,11 @@ ms.locfileid: "97722006"
 }
 ```
 
-雖然您可能比較傾向於使用 dependsOn 來對應資源之間的關聯性，但是請務必了解為什麼您要這麼做。 例如，若要記載資源互連的方式，dependsOn 並不是適當的方法。 在部署之後，您便無法查詢 dependsOn 元素中定義了哪些資源。 設定不必要的相依性會減緩部署時間，因為 Resource Manager 無法以平行方式部署這些資源。
+雖然您可能會傾向于使用 `dependsOn` 來對應資源之間的關聯性，但請務必瞭解您的做法。 例如，若要記錄資源的互連方式， `dependsOn` 不是正確的方法。 您無法在部署之後查詢元素中定義了哪些資源 `dependsOn` 。 設定不必要的相依性會減緩部署時間，因為 Resource Manager 無法以平行方式部署這些資源。
 
 ## <a name="child-resources"></a>子資源
 
-[子資源](child-resource-name-type.md)與父資源之間不會自動建立隱含的部署相依性。 如果您需要在父資源之後部署子資源，請設定 dependsOn 屬性。
+[子資源](child-resource-name-type.md)與父資源之間不會自動建立隱含的部署相依性。 如果您需要在父資源之後部署子資源，請設定 `dependsOn` 屬性。
 
 下列範例顯示邏輯 SQL 伺服器和資料庫。 請注意，即使資料庫是伺服器的子系，還是會在資料庫和伺服器之間定義明確的相依性。
 
@@ -85,13 +85,13 @@ ms.locfileid: "97722006"
 
 若要強制執行隱含相依性，請依名稱（而非資源識別碼）參考資源。 如果您將資源識別碼傳遞到 reference 或 list 函式，就不會建立隱含參考。
 
-reference 函式的一般格式為：
+函數的一般格式 `reference` 為：
 
 ```json
 reference('resourceName').propertyPath
 ```
 
-listKeys 函式的一般格式為：
+函數的一般格式 `listKeys` 為：
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
@@ -165,7 +165,7 @@ listKeys('resourceName', 'yyyy-mm-dd')
 }
 ```
 
-下列範例顯示如何在部署虛擬機器之前部署三個儲存體帳戶。 請注意，copy 元素的名稱是設定為 `storagecopy` ，而虛擬機器的 dependsOn 元素也會設定為 `storagecopy` 。
+下列範例顯示如何在部署虛擬機器之前部署三個儲存體帳戶。 請注意， `copy` 元素已 `name` 設定為 `storagecopy` ，而且 `dependsOn` 虛擬機器的專案也設定為 `storagecopy` 。
 
 ```json
 {
@@ -213,10 +213,9 @@ Resource Manager 範本會在驗證期間識別循環相依性。 如果您收�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如須逐步瀏覽教學課程，請參閱[教學課程：使用相依資源建立 Azure Resource Manager 範本](template-tutorial-create-templates-with-dependent-resources.md)。
+* 若要進行教學課程，請參閱 [教學課程：建立具有相依資源的 ARM 範本](template-tutorial-create-templates-with-dependent-resources.md)。
 * 如需涵蓋資源相依性的 Microsoft Learn 模組，請參閱 [使用 ADVANCED ARM 範本功能管理複雜的雲端部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
-* 如需設定相依性時的建議，請參閱 [Azure Resource Manager 範本最佳做法](template-best-practices.md)。
+* 如需設定相依性時的建議，請參閱 [ARM 範本的最佳做法](template-best-practices.md)。
 * 若要了解在部署期間如何對相依性進行疑難排解，請參閱[使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解](common-deployment-errors.md)。
-* 若要了解如何建立 Azure 資源管理員範本，請參閱 [撰寫範本](template-syntax.md)。
-* 如需在範本中可用函式的清單，請參閱 [範本函式](template-functions.md)。
-
+* 若要瞭解如何建立 Azure Resource Manager 範本，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需範本中可用函式的清單，請參閱 [ARM 範本函數](template-functions.md)。

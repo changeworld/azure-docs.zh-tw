@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: d10689937a037469399863395e0190e399334bd3
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924236"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936527"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>使用 Azure Logic Apps Preview 在 Azure 入口網站中建立具狀態和無狀態工作流程
 
@@ -75,8 +75,8 @@ ms.locfileid: "96924236"
    | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **訂用帳戶** | 是 | <*Azure-subscription-name*> | 要用於邏輯應用程式的 Azure 訂用帳戶。 |
-   | **資源群組** | 是 | <*Azure-resource-group-name*> | Azure 資源群組，您可以在其中建立邏輯應用程式和相關資源。 此資源名稱在不同區域中必須是唯一的，而且只能包含字母、數位、連字號 (**-**) 、底線 (**_**) 、括弧 (**( # B6**) **.** 和句點 () 。 <p><p>這個範例會建立名為的資源群組 `Fabrikam-Workflows-RG` 。 |
-   | **邏輯應用程式名稱** | 是 | <*logic-app-name*> | 用於邏輯應用程式的名稱。 此資源名稱在不同區域中必須是唯一的，而且只能包含字母、數位、連字號 (**-**) 、底線 (**_**) 、括弧 (**( # B6**) **.** 和句點 () 。 <p><p>這個範例會建立名為的邏輯應用程式 `Fabrikam-Workflows` 。 <p><p>**注意**：您的邏輯應用程式名稱會自動取得後置詞， `.azurewebsites.net` 因為 **邏輯應用程式 (Preview)** 資源是由 Azure Functions 所支援，其使用相同的應用程式命名慣例。 |
+   | **資源群組** | 是 | <*Azure-resource-group-name*> | Azure 資源群組，您可以在其中建立邏輯應用程式和相關資源。 此資源名稱在不同區域中必須是唯一的，而且只能包含字母、數位、連字號 (**-**) 、底線 (**_**) 、括弧 (**( # B6**) 和句點 () 。 <p><p>這個範例會建立名為的資源群組 `Fabrikam-Workflows-RG` 。 |
+   | **邏輯應用程式名稱** | 是 | <*logic-app-name*> | 用於邏輯應用程式的名稱。 此資源名稱在不同區域中必須是唯一的，而且只能包含字母、數位、連字號 (**-**) 、底線 (**_**) 、括弧 (**( # B6**) 和句點 () 。 <p><p>這個範例會建立名為的邏輯應用程式 `Fabrikam-Workflows` 。 <p><p>**注意**：您的邏輯應用程式名稱會自動取得後置詞， `.azurewebsites.net` 因為 **邏輯應用程式 (Preview)** 資源是由 Azure Functions 所支援，其使用相同的應用程式命名慣例。 |
    | **發佈** | 是 | <*部署-環境*> | 邏輯應用程式的部署目的地。 您可以選取 [ **工作流程** ] 或 Docker 容器來部署到 Azure。 <p><p>此範例會使用 **工作流程**，也就是在 Azure 中 **(預覽版) 資源的邏輯應用程式** 。 <p><p>如果您選取 [ **Docker 容器**]，請 [在邏輯應用程式的設定中指定要使用的容器](#set-docker-container)。 |
    | **區域** | 是 | <*Azure-region*> | 建立資源群組和資源時要使用的 Azure 區域。 <p><p>此範例會使用「美國西部」。 |
    |||||
@@ -90,7 +90,7 @@ ms.locfileid: "96924236"
    | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **儲存體帳戶** | 是 | <*Azure-storage-account-name*> | 用於儲存體交易的 [Azure 儲存體帳戶](../storage/common/storage-account-overview.md) 。 此資源名稱在不同區域中必須是唯一的，且只有數位和小寫字母的3-24 個字元。 請選取現有的帳戶或建立新的帳戶。 <p><p>這個範例會建立名為的儲存體帳戶 `fabrikamstorageacct` 。 |
-   | **方案類型** | 是 | <*Azure-裝載方案*> | 用來部署邏輯應用程式的 [主控方案](../app-service/overview-hosting-plans.md) ，也就是 [**Premium**](../azure-functions/functions-scale.md#premium-plan) 或 [**app service 方案**](../azure-functions/functions-scale.md#app-service-plan)。 您的選擇會影響您稍後可以選擇的定價層。 <p><p>此範例會使用 **App service 方案**。 <p><p>**注意**：類似于 Azure Functions， **邏輯應用程式 (預覽版)** 資源類型需要主控方案和定價層。 此資源類型不支援或無法使用耗用量主控方案。 如需詳細資訊，請參閱下列主題： <p><p>- [Azure Functions 規模和裝載](../azure-functions/functions-scale.md) <br>- [App Service 定價詳細資料](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
+   | **方案類型** | 是 | <*Azure-裝載方案*> | 用來部署邏輯應用程式的 [主控方案](../app-service/overview-hosting-plans.md) ，也就是 [**Premium**](../azure-functions/functions-premium-plan.md) 或 [**app service 方案**](../azure-functions/dedicated-plan.md)。 您的選擇會影響您稍後可以選擇的定價層。 <p><p>此範例會使用 **App service 方案**。 <p><p>**注意**：類似于 Azure Functions， **邏輯應用程式 (預覽版)** 資源類型需要主控方案和定價層。 此資源類型不支援或無法使用耗用量主控方案。 如需詳細資訊，請參閱下列主題： <p><p>- [Azure Functions 規模和裝載](../azure-functions/functions-scale.md) <br>- [App Service 定價詳細資料](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
    | **Windows 方案** | 是 | <*方案名稱*> | 要使用的計畫名稱。 請選取現有的方案，或提供新方案的名稱。 <p><p>此範例使用名稱 `Fabrikam-Service-Plan`。 |
    | **SKU 和大小** | 是 | <*定價層*> | 用來裝載邏輯應用程式的 [定價層](../app-service/overview-hosting-plans.md) 。 您的選擇會受到您先前選擇的方案類型所影響。 若要變更預設層，請選取 [ **變更大小**]。 然後，您可以根據所需的工作負載，選取其他定價層。 <p><p>此範例會針對 **開發/測試** 工作負載使用免費的 **F1 定價層**。 如需詳細資訊，請參閱 [App Service 定價詳細資料](https://azure.microsoft.com/pricing/details/app-service/)。 |
    |||||
@@ -307,7 +307,7 @@ ms.locfileid: "96924236"
    | **執行中** | 執行已觸發且正在進行中，但此狀態也可能會因為 [動作限制](logic-apps-limits-and-config.md) 或 [目前的定價方案](https://azure.microsoft.com/pricing/details/logic-apps/)而受到節流的執行。 <p><p>**秘訣**：如果您設定 [診斷記錄](monitor-logic-apps-log-analytics.md)，您可以取得任何發生之節流事件的相關資訊。 |
    | **已成功** | 執行成功。 如果任何動作失敗，工作流程中的後續動作會處理該失敗。 |
    | **逾時** | 執行時間已過，因為目前的持續時間超過執行持續時間限制，此限制是由 [ [**執行歷程記錄保留天數** ] 設定](logic-apps-limits-and-config.md#run-duration-retention-limits)所控制。 執行時間的計算方式是使用執行時間的開始時間和該開始時間的執行時間限制。 <p><p>**注意**：如果執行的持續時間也超過目前的 *執行歷程記錄保留限制*，也就是由 [ [**執行歷程記錄保留天數** ] 設定](logic-apps-limits-and-config.md#run-duration-retention-limits)所控制，則會從 [執行歷程記錄] 依每日清除作業來清除執行。 執行時間是否已用盡或完成時，一律會使用執行的開始時間和 *目前* 的保留限制來計算保留期限。 因此，如果您減少執行中執行的持續時間限制，則執行時間會超出。不過，執行會根據執行的持續時間是否超過保留限制，從執行歷程記錄中保留或清除。 |
-   | **等候** | 因為先前仍在執行的工作流程實例，所以執行尚未啟動或暫停。 |
+   | **等候中** | 因為先前仍在執行的工作流程實例，所以執行尚未啟動或暫停。 |
    |||
 
 1. 若要檢查執行中每個步驟的狀態，請選取您要檢查的執行。
@@ -328,7 +328,7 @@ ms.locfileid: "96924236"
    | 成功 | ![「成功」動作狀態的圖示][succeeded-icon] | 動作成功。 |
    | 成功但重試 | ![「已成功重試」動作狀態的圖示][succeeded-with-retries-icon] | 動作已成功，但只在一或多次重試後才會成功。 若要檢查重試歷程記錄，請在 [執行歷程記錄詳細資料] 視圖中選取該動作，讓您可以查看輸入和輸出。 |
    | 逾時 | ![「超時」動作狀態的圖示][timed-out-icon] | 因為該動作的設定所指定的超時限制，所以已停止動作。 |
-   | 等候 | ![「等待中」動作狀態的圖示][waiting-icon] | 適用于正在等候呼叫端輸入要求的 webhook 動作。 |
+   | 等候中 | ![「等待中」動作狀態的圖示][waiting-icon] | 適用于正在等候呼叫端輸入要求的 webhook 動作。 |
    ||||
 
    [aborted-icon]: ./media/create-stateful-stateless-workflows-azure-portal/aborted.png

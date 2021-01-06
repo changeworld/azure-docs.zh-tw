@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370962"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935745"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory 治理作業參考指南
 
@@ -31,7 +31,7 @@ ms.locfileid: "92370962"
 
 管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您也必須設定這些工作來優化您的環境。 主要工作和其建議的擁有者包括：
 
-| Task | 擁有者 |
+| 工作 | 擁有者 |
 | :- | :- |
 | 封存 Azure AD SIEM 系統中的 audit 記錄 | InfoSec 作業小組 |
 | 探索管理不符合規範的應用程式 | IAM 作業小組 |
@@ -59,7 +59,7 @@ ms.locfileid: "92370962"
 | 案例| 建議 |
 |-|-|
 |將驗證類型從同盟變更為 PHS/PTA 或反之亦然| 使用 [分段推出](../hybrid/how-to-connect-staged-rollout.md) 來測試變更驗證類型的影響。|
-| (CA) 原則或 Identity Protection 原則中推出新的條件式存取|建立新的 CA 原則，並指派給測試使用者。|
+| (CA) 原則或 Identity Protection 原則中推出新的條件式存取|建立新的條件式存取原則，並指派給測試使用者。|
 |上架應用程式的測試環境|將應用程式新增到生產環境、從 [MyApps] 面板中隱藏它，然後將它指派給測試使用者，以在品質保證 (QA) 階段進行測試。|
 |變更同步處理規則|使用目前在生產環境中的相同設定（也稱為「預備模式」）來執行測試 Azure AD Connect 中的變更，並分析 CSExport 結果。 如果滿意，請在準備就緒時切換至生產環境。|
 |商標的變更|在不同的測試租使用者中進行測試。|

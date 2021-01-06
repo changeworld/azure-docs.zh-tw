@@ -4,12 +4,12 @@ description: 瞭解如何使用 Visual Studio Code 的 Azure Functions 擴充功
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 573177615ff898326eb29649a7f766b5df34b587
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 33adcb853099778c4b06a9cd428f480f6138ee8b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168404"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936969"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio Code 來開發 Azure Functions
 
@@ -45,7 +45,7 @@ Azure Functions 擴充功能提供下列優點：
 
 * [Visual Studio Code](https://code.visualstudio.com/) 安裝在其中一個 [支援的平臺](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上。
 
-* 有效的 Azure 訂用帳戶。
+* 使用中的 Azure 訂用帳戶。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -255,7 +255,7 @@ Visual Studio Code 可讓您將函式專案直接發行至 Azure。 在這過程
     | ------ | ----- | ----------- |
     | 在 Azure 中選取函數應用程式 | 在 Azure 中建立新的函數應用程式 | 在下一個提示中，輸入識別新函數應用程式的全域唯一名稱，然後選取 Enter。 函式應用程式名稱的有效字元為 `a-z`、`0-9` 和 `-`。 |
     | 選取作業系統 | Windows | 函數應用程式會在 Windows 上執行。 |
-    | 選取主控方案 | 使用情況方案 | 使用裝載的無伺服器 [使用量方案](functions-scale.md#consumption-plan) 。 |
+    | 選取主控方案 | 使用情況方案 | 使用裝載的無伺服器 [使用量方案](consumption-plan.md) 。 |
     | 選取新應用程式的執行時間 | 您的專案語言 | 執行時間必須符合您要發行的專案。 |
     | 選取新資源的資源群組 | 建立新的資源群組 | 在下一個提示中輸入資源組名（例如 `myResourceGroup` ），然後選取 enter。 您也可以選取現有的資源群組。 |
     | 選取儲存體帳戶 | 建立新的儲存體帳戶 | 在下一個提示中，為您的函數應用程式所使用的新儲存體帳戶輸入全域唯一的名稱，然後選取 [輸入]。 儲存體帳戶名稱的長度必須介於3到24個字元之間，而且只能包含數位和小寫字母。 您也可以選取現有的帳戶。 |
@@ -294,7 +294,7 @@ Azure Functions 擴充功能可讓您在本機開發電腦上執行函式專案�
 
 * 安裝所選語言的特定需求：
 
-    | Language | 需求 |
+    | 語言 | 需求 |
     | -------- | --------- |
     | **C#** | [C# 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI 工具](/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [JAVA 延伸模組的偵錯工具](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)<br/>[Maven 3 或更新版本](https://maven.apache.org/) |

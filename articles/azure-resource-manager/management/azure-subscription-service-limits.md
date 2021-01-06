@@ -3,12 +3,12 @@ title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制以及最大值的資訊。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 182df937ae5c0194aecfbe20b5962b44b363c708
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547843"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934456"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -132,7 +132,7 @@ ms.locfileid: "96547843"
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
-如需詳細資訊，請參閱 [主控方案比較](../../azure-functions/functions-scale.md#hosting-plans-comparison)的函式。
+如需詳細資訊，請參閱 [主控方案比較](../../azure-functions/functions-scale.md)的函式。
 
 ## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes Service 限制
 

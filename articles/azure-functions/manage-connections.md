@@ -4,12 +4,12 @@ description: 了解如何使用靜態連線用戶端來避免 Azure Functions �
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: 53848e6273cf59439d44b431652981b18bdd5ba6
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: ec16ce3e7f9793be2a012a029bcca31c9a7ea4cf
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755951"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936697"
 ---
 # <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的連接
 
@@ -19,7 +19,7 @@ ms.locfileid: "97755951"
 
 可用的連接數目有限，部分原因是函式應用程式是在 [沙箱環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)中執行。 沙箱針對您的程式碼所強加的其中一項限制，就是輸出連接數目的限制，目前每個實例的600作用中 (1200 總) 連接數。 當您達到此限制時，函式執行時間會將下列訊息寫入至記錄檔： `Host thresholds exceeded: Connections` 。 如需詳細資訊，請參閱 [函數服務限制](functions-scale.md#service-limits)。
 
-這是每個實例的限制。 當 [調整控制器新增函數應用程式實例](functions-scale.md#how-the-consumption-and-premium-plans-work) 來處理更多要求時，每個實例都有獨立的連接限制。 這表示沒有全域連線限制，而且您可以在所有使用中的實例上擁有超過600個使用中的連接。
+這是每個實例的限制。 當 [調整控制器新增函數應用程式實例](event-driven-scaling.md) 來處理更多要求時，每個實例都有獨立的連接限制。 這表示沒有全域連線限制，而且您可以在所有使用中的實例上擁有超過600個使用中的連接。
 
 進行疑難排解時，請確定您已為函數應用程式啟用 Application Insights。 Application Insights 可讓您查看函式應用程式（例如執行）的計量。 如需詳細資訊，請參閱 [Application Insights 中的查看遙測](analyze-telemetry-data.md#view-telemetry-in-application-insights)。  
 

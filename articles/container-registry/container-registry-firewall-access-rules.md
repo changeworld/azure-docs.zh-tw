@@ -1,14 +1,14 @@
 ---
 title: 防火牆存取規則
-description: 設定可以從防火牆後方存取 Azure 容器登錄的規則，方法是允許存取 (「白名單」) REST API 和資料端點網域名稱或服務特定的 IP 位址範圍。
+description: 藉由允許存取 REST API 和資料端點功能變數名稱或服務特定的 IP 位址範圍，設定規則以從防火牆後方存取 Azure container registry。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148507"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935983"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>設定可以從防火牆後方存取 Azure 容器登錄的規則
 
@@ -22,7 +22,7 @@ ms.locfileid: "92148507"
 
 * **登錄 REST API 端點** - 驗證和登錄管理作業會透過登錄的公用 REST API 端點來處理。 此端點是登錄的登入伺服器名稱。 範例： `myregistry.azurecr.io`
 
-* **儲存體 (資料) 端點** - Azure 會代表每個登錄，在 Azure 儲存體帳戶中[配置 blob 儲存體](container-registry-storage.md)，以管理容器映像和其他成品的資料。 當用戶端存取 Azure 容器登錄中的映像層時，會使用登錄所提供的儲存體帳戶端點來提出要求。
+* **儲存體 (資料) 端點** - Azure 會代表每個登錄，在 Azure 儲存體帳戶中 [配置 blob 儲存體](container-registry-storage.md)，以管理容器映像和其他成品的資料。 當用戶端存取 Azure 容器登錄中的映像層時，會使用登錄所提供的儲存體帳戶端點來提出要求。
 
 如果您的登錄是[異地複寫](container-registry-geo-replication.md)，用戶端可能需要與特定區域或多個複寫區域中的資料端點互動。
 

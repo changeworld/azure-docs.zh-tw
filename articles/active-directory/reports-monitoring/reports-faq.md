@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107425"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935082"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>關於 Azure Active Directory 報告的常見問題集
 
@@ -99,7 +99,7 @@ ms.locfileid: "97107425"
 
 ---
 
-## <a name="risky-sign-ins"></a>風險性登入
+## <a name="risky-sign-ins"></a>有風險的登入
 
 **問： Identity Protection 有風險偵測，但我在登入報告中看不到對應的登入。這是預期的嗎？**
 
@@ -143,8 +143,8 @@ ms.locfileid: "97107425"
 
 **答：** 條件式存取狀態可以有下列值：
 
-* **不適用**：這表示沒有任何 CA 原則包含範圍中的使用者和應用程式。 
-* **成功**：這表示有一個 CA 原則包含範圍中的使用者和應用程式，且成功地符合 CA 原則。 
+* **未** 套用：這表示沒有任何條件式存取原則具有範圍內的使用者和應用程式。 
+* **成功**：這表示已成功滿足條件式存取原則，範圍中有使用者和應用程式，且已成功滿足條件式存取原則。 
 * **失敗**：登入符合至少一個條件式存取原則的使用者和應用程式條件，而且授與的控制項不符合或設定為封鎖存取。
     
 **問：條件式存取原則結果有哪些可能的值？**
@@ -158,7 +158,7 @@ ms.locfileid: "97107425"
     
 **問：所有登入報告中的原則名稱與 CA 中的原則名稱不符。原因為何？**
 
-**答：** 所有登入報告中的原則名稱是以登入時的 CA 原則名稱為基礎。 如果您稍後 (也就是登入之後) 更新原則名稱，這可能會與 CA 中的原則名稱不一致。
+**答：** 所有登入報告中的原則名稱是以登入時的條件式存取原則名稱為基礎。 如果您稍後 (也就是登入之後) 更新原則名稱，這可能會與 CA 中的原則名稱不一致。
 
 **問：我的登入因條件式存取原則而遭到封鎖，但登入活動報告顯示登入成功。為什麼？**
 

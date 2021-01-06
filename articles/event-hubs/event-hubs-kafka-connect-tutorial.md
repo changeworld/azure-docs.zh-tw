@@ -2,21 +2,30 @@
 title: 與 Apache Kafka Connect 整合 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何搭配使用 Kafka Connect 與適用于 Kafka 的 Azure 事件中樞的資訊。
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: d37d2465d9389a0bcfaabdec32bad0c86846cfb2
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/06/2021
+ms.openlocfilehash: f82dcdafa7921f4a994361371536b2f1ace7cbc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369534"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935150"
 ---
-# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>在 Azure 事件中樞上整合 Apache Kafka Connect 支援 (預覽)
-隨著擷取商務需求的情況增加，對於擷取各種外部來源和接收的需求也隨之增加。 [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) 會提供這類架構，以便在任何外部系統 (例如，MySQL、HDFS 以及透過 Kafka 叢集的檔案系統) 往返連線和匯入/匯出資料。 本教學課程會逐步引導您使用 Kafka Connect 架構搭配事件中樞。
+# <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs"></a>在 Azure 事件中樞上整合 Apache Kafka Connect 支援
+[Apache Kafka connect](https://kafka.apache.org/documentation/#connect) 是一種架構，可透過 Kafka 叢集連接及匯入/匯出任何外部系統（例如 MYSQL、HDFS 和檔案系統）的資料。 本教學課程會逐步引導您使用 Kafka Connect 架構搭配事件中樞。
+
+> [!WARNING]
+> 使用 Apache Kafka Connect 架構及其連接器並 **不符合透過 Microsoft Azure 的產品支援**。
+>
+> Apache Kafka Connect 會假設其動態設定會保留在壓縮的主題中，並以其他無限制的保留。 Azure 事件中樞不 [會將壓縮實作為訊息代理程式功能](event-hubs-federation-overview.md#log-projections) ，而且一律會在保留的事件上加上以時間為基礎的保留限制，從 Azure 事件中樞為即時事件串流引擎而不是長期資料或設定存放區的原則進行根。
+>
+> 雖然 Apache Kafka 專案可能會很樂意混合這些角色，但 Azure 認為這類資訊最適合在適當的資料庫或設定存放區中進行管理。
+>
+> 許多 Apache Kafka Connect 案例都可以運作，但 Apache Kafka 和 Azure 事件中樞的保留模型之間的這些概念差異可能會導致某些設定無法如預期般運作。 
 
 本教學課程會逐步引導您整合 Kafka Connect 與事件中樞，以及部署基本 FileStreamSource 和 FileStreamSink 連接器。 此功能目前為預覽狀態。 雖然這些連接器並非用於生產環境，但可示範 Azure 事件中樞會作為 Kafka 訊息代理程式的端對端 Kafka Connect 案例。
 
 > [!NOTE]
-> 您可在 [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) 上取得此範例。
+> 此範例可在 [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect)上取得。
 
 在本教學課程中，您會執行下列步驟：
 
@@ -92,7 +101,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 ```
 
 > [!IMPORTANT]
-> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需取得連接字串的指示，請參閱 [取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例設定： `sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
+> 將 `{YOUR.EVENTHUBS.CONNECTION.STRING}` 取代為事件中樞命名空間的連接字串。 如需有關取得連接字串的指示，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md)。 以下是範例組態：`sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://mynamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXX";`
 
 
 ## <a name="run-kafka-connect"></a>執行 Kafka Connect
@@ -106,7 +115,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
 > [!NOTE]
 > Kafka Connect 會使用 Kafka AdminClient API，以使用建議的設定 (包括壓縮) 自動建立主題。 在 Azure 入口網站中快速檢查命名空間，會顯露出 Connect 背景工作角色的內部主題已自動建立。
 >
->Kafka Connect 內部主題**必須使用壓縮**。  若未正確設定 [內部連線] 主題，事件中樞小組將不會負責修正不當的設定。
+>Kafka Connect 內部主題 **必須使用壓縮**。  若未正確設定 [內部連線] 主題，事件中樞小組將不會負責修正不當的設定。
 
 ### <a name="create-connectors"></a>建立連接器
 本節會逐步引導您啟動 FileStreamSource 和 FileStreamSink 連接器。 
@@ -151,7 +160,7 @@ plugin.path={KAFKA.DIRECTORY}/libs # path to the libs directory within the Kafka
     diff ~/connect-quickstart/input.txt ~/connect-quickstart/output.txt
     ```
 
-### <a name="cleanup"></a>清理
+### <a name="cleanup"></a>清除
 Kafka Connect 會建立事件中樞主題，以儲存即使在 Connect 叢集關閉後仍會保存下來的設定、位移及狀態。 除非需要此持續性，否則建議您刪除這些主題。 您也可以刪除在本逐步解說進行過程中所建立的 `connect-quickstart` 事件中樞。
 
 ## <a name="next-steps"></a>後續步驟

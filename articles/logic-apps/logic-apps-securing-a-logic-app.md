@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/08/2020
-ms.openlocfilehash: cdaa054559be9db52eeef6f3aaa0f86ccf84206f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/09/2020
+ms.openlocfilehash: 1d2ba6dbbcc2b8674718912f00b1d1ec58e1c4c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922948"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936085"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
@@ -308,12 +308,13 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 除了共用存取簽章 (SAS) ，您可能還想特別限制哪些用戶端可呼叫邏輯應用程式。 例如，如果您使用 [AZURE API 管理](../api-management/api-management-key-concepts.md)來管理您的要求端點，您可以限制邏輯應用程式只接受來自 [您所建立 API 管理服務實例](../api-management/get-started-create-service-instance.md)之 IP 位址的要求。
 
-> [!NOTE]
-> 無論您指定的任何 IP 位址為何，您仍然可以使用 [Logic Apps REST API：工作流程觸發程式-執行](/rest/api/logic/workflowtriggers/run) 要求或使用 API 管理，來執行具有要求型觸發程式的邏輯應用程式。 不過，此情況仍然需要經過 Azure REST API 來[驗證](../active-directory/develop/authentication-vs-authorization.md)。 所有事件都出現在 Azure 稽核記錄中。 請確定您已適當地設定存取控制原則。
+無論您指定的任何 IP 位址為何，您仍然可以使用 [Logic Apps REST API：工作流程觸發程式-執行](/rest/api/logic/workflowtriggers/run) 要求或使用 API 管理，來執行具有要求型觸發程式的邏輯應用程式。 不過，此情況仍然需要經過 Azure REST API 來[驗證](../active-directory/develop/authentication-vs-authorization.md)。 所有事件都出現在 Azure 稽核記錄中。 請確定您已適當地設定存取控制原則。
 
 <a name="restrict-inbound-ip-portal"></a>
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>在 Azure 入口網站中限制輸入 IP 範圍
+
+當您使用入口網站來限制邏輯應用程式的輸入 IP 位址時，這些限制會影響觸發程式 *和* 動作，儘管入口網站中的描述是在 [ **允許的輸入 ip 位址**] 下。 若要設定與動作分開的觸發程式限制，請[ `accessControl` 在邏輯應用程式的 Azure Resource Manager 範本](#restrict-inbound-ip-template)或[Logic Apps REST API：工作流程建立或更新](/rest/api/logic/workflows/createorupdate)作業中使用物件。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
@@ -338,7 +339,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>在 Azure Resource Manager 範本中限制輸入 IP 範圍
 
-如果您 [使用 Resource Manager 範本將邏輯應用程式的部署自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，您可以使用區段，在邏輯應用程式的資源定義中指定允許的輸入 IP 位址範圍 `accessControl` 。 在本節中，您可以將區段包含在屬性中， `triggers` `actions` `contents` `allowedCallerIpAddresses` `addressRange` 並將屬性值設定為 *x.x.x.x/x* *x.x.x.x-x.x.x.x* . x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x
+如果您 [使用 Resource Manager 範本將邏輯應用程式的部署自動化](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)，您可以使用區段，在邏輯應用程式的資源定義中指定允許的輸入 IP 位址範圍 `accessControl` 。 在本節中，您可以將區段包含在屬性中， `triggers` `actions` `contents` `allowedCallerIpAddresses` `addressRange` 並將屬性值設定為 *x.x.x.x/x*  . x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x. x
 
 * 如果您的嵌套邏輯應用程式使用 **唯一的 Logic Apps** 選項，只允許來自使用 Azure Logic Apps 動作之其他邏輯應用程式的輸入呼叫，請將屬性設定 `addressRange` 為空陣列 (**[]**) 。
 
@@ -1125,7 +1126,7 @@ Authorization: OAuth realm="Photos",
 
 * 若要執行您自己的程式碼或執行 XML 轉換，請 [建立並呼叫 Azure 函式](../logic-apps/logic-apps-azure-functions.md)，而不是使用 [內嵌程式碼功能](../logic-apps/logic-apps-add-run-inline-code.md) ，或分別提供 [元件來使用做為對應](../logic-apps/logic-apps-enterprise-integration-maps.md)。 此外，也請為您的函數應用程式設定裝載環境，以符合您的隔離需求。
 
-  例如，若要符合影響等級5的需求，請使用 [**獨立** 定價層](../app-service/overview-hosting-plans.md)來建立您的函數應用 [App Service](../azure-functions/functions-scale.md#app-service-plan)程式，並搭配也使用 **隔離** 定價層的 [App Service 環境 (ASE)](../app-service/environment/intro.md) 。 在此環境中，函式應用程式會在專用的 Azure 虛擬機器和專用的 Azure 虛擬網路上執行，以針對您的應用程式和最大的向外延展功能，在計算隔離之上提供網路隔離。 如需詳細資訊，請參閱 [Azure Government 影響等級5隔離指引-Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions)。
+  例如，若要符合影響等級5的需求，請使用 [**獨立** 定價層](../app-service/overview-hosting-plans.md)來建立您的函數應用 [App Service](../azure-functions/dedicated-plan.md)程式，並搭配也使用 **隔離** 定價層的 [App Service 環境 (ASE)](../app-service/environment/intro.md) 。 在此環境中，函式應用程式會在專用的 Azure 虛擬機器和專用的 Azure 虛擬網路上執行，以針對您的應用程式和最大的向外延展功能，在計算隔離之上提供網路隔離。 如需詳細資訊，請參閱 [Azure Government 影響等級5隔離指引-Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions)。
 
   如需詳細資訊，請參閱下列主題：<p>
 

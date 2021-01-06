@@ -3,12 +3,12 @@ title: 範本中的參數
 description: 描述如何在 Azure Resource Manager 範本中定義 (ARM 範本) 的參數。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 929d871bc0087d4fda585773b349dee4e0945c7c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353505"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934708"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM 範本中的參數
 
@@ -20,7 +20,7 @@ Resource Manager 在開始部署作業之前解析參數值。 在範本中使�
 
 ## <a name="define-parameter"></a>定義參數
 
-下列範例顯示簡單的參數定義。 它會定義名為 **storageSKU** 的參數。 參數是字串值，而且只接受對其預定用途有效的值。 當部署期間未提供任何值時，參數會使用預設值。
+下列範例顯示簡單的參數定義。 它會定義名為的參數 `storageSKU` 。 參數是字串值，而且只接受對其預定用途有效的值。 當部署期間未提供任何值時，參數會使用預設值。
 
 ```json
 "parameters": {
@@ -154,7 +154,7 @@ Resource Manager 在開始部署作業之前解析參數值。 在範本中使�
 
 下列範例示範使用參數的案例。
 
-|範本  |說明  |
+|範本  |描述  |
 |---------|---------|
 |[具有預設值之帶有函式的參數](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 示範定義參數的預設值時，如何使用範本函式。 範本不會部署任何資源。 它會建構參數值，並傳回這些值。 |
 |[parameter 物件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 示範如何針對參數使用物件。 範本不會部署任何資源。 它會建構參數值，並傳回這些值。 |

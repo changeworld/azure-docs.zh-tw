@@ -1,17 +1,17 @@
 ---
-title: Azure Logic Apps 預覽總覽
+title: Azure Logic Apps 預覽的概觀
 description: Azure Logic Apps Preview 是一種雲端解決方案，可讓您建立自動化具狀態和無狀態工作流程，將應用程式、資料、服務和系統與企業層級案例的程式碼進行整合。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 0c4d0416c107c9ceb4cd0dbdf80761ab9b52d56c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96924219"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936119"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>總覽： Azure Logic Apps 預覽
 
@@ -148,7 +148,7 @@ Azure Logic Apps Preview 包含許多目前和額外的功能，例如：
 
 當您在 Azure 入口網站中建立新的邏輯應用程式類型，或從 Visual Studio Code 進行部署時，您必須選擇主機方案（ [App Service 或 Premium](../azure-functions/functions-scale.md)），邏輯應用程式才能使用。 此方案會決定適用于執行邏輯應用程式的計價模式。 如果您選取 App Service 方案，則也必須選擇 [定價層](../app-service/overview-hosting-plans.md)。
 
-可設定 *狀態* 的工作流程會使用 [外部儲存體](../azure-functions/functions-scale.md#storage-account-requirements)，因此 [Azure 儲存體的定價](https://azure.microsoft.com/pricing/details/storage/)適用于 Azure Logic Apps Preview 執行時間所執行的儲存體交易。 例如，佇列是用於排程，而資料表和 blob 則是用來儲存工作流程狀態。
+可設定 *狀態* 的工作流程會使用 [外部儲存體](../azure-functions/storage-considerations.md#storage-account-requirements)，因此 [Azure 儲存體的定價](https://azure.microsoft.com/pricing/details/storage/)適用于 Azure Logic Apps Preview 執行時間所執行的儲存體交易。 例如，佇列是用於排程，而資料表和 blob 則是用來儲存工作流程狀態。
 
 > [!NOTE]
 > 在公開預覽期間，在 App Service 上執行邏輯應用程式不會在您選取的方案上方產生 *額外* 的費用。

@@ -4,19 +4,19 @@ description: 瞭解如何使用可高度效能的 Python 開發 Azure Functions 
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3383ec322903d15c6090630890d14ce6d90bc96f
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97899392"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935864"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>改善 Azure Functions 中的 Python 應用程式輸送量效能
 
 使用 Python 開發 Azure Functions 時，您需要瞭解函式的執行方式，以及該效能如何影響函數應用程式的調整方式。 設計高效能應用程式時，需要更重要。 設計、撰寫和設定函式應用程式時要考慮的主要因素是水準調整和輸送量效能設定。
 
 ## <a name="horizontal-scaling"></a>水平調整規模
-根據預設，Azure Functions 會自動監視應用程式上的負載，並視需要為 Python 建立其他主機執行個體。 Azure Functions 針對不同的觸發程式類型使用內建閾值，以決定何時要加入實例，例如訊息的存留期和 QueueTrigger 的佇列大小。 這些閾值不是使用者可設定的。 如需詳細資訊，請參閱[耗用量和進階方案的運作方式](functions-scale.md#how-the-consumption-and-premium-plans-work)。
+根據預設，Azure Functions 會自動監視應用程式上的負載，並視需要為 Python 建立其他主機執行個體。 Azure Functions 針對不同的觸發程式類型使用內建閾值，以決定何時要加入實例，例如訊息的存留期和 QueueTrigger 的佇列大小。 這些閾值不是使用者可設定的。 如需詳細資訊，請參閱 [Azure Functions 中的事件驅動規模調整](event-driven-scaling.md)。
 
 ## <a name="improving-throughput-performance"></a>改善輸送量效能
 

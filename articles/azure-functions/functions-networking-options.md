@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020977"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936853"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 網路選項
 
@@ -21,9 +21,9 @@ ms.locfileid: "96020977"
 您可以透過幾種方式來裝載函式應用程式：
 
 * 您可以從在多租用戶基礎結構上執行的方案選項中進行選擇，其具有各種層級的虛擬網路連線能力和調整選項：
-    * [取用方案](functions-scale.md#consumption-plan)會動態調整來回應負載，並提供最少的網路隔離選項。
-    * [進階方案](functions-scale.md#premium-plan)也會動態調整，並提供更全面的網路隔離。
-    * Azure [App Service 方案](functions-scale.md#app-service-plan)會以固定的規模運作，並提供類似進階方案的網路隔離。
+    * [取用方案](consumption-plan.md)會動態調整來回應負載，並提供最少的網路隔離選項。
+    * [進階方案](functions-premium-plan.md)也會動態調整，並提供更全面的網路隔離。
+    * Azure [App Service 方案](dedicated-plan.md)會以固定的規模運作，並提供類似進階方案的網路隔離。
 * 您可以在 [App Service 環境](../app-service/environment/intro.md)中執行函式。 此方法會將您的函式部署至虛擬網路，並提供完整的網路控制和隔離功能。
 
 ## <a name="matrix-of-networking-features"></a>網路功能的矩陣
@@ -34,7 +34,7 @@ ms.locfileid: "96020977"
 
 您可以使用存取限制來定義依優先順序排序的 IP 位址清單，以允許或拒絕對您應用程式的存取。 此清單可以包含 IPv4 和 IPv6 位址，或使用 [服務端點](#use-service-endpoints)的特定虛擬網路子網。 有一個或多個項目時，清單結尾會有隱含的「全部拒絕」語句。 IP 限制適用所有函式裝載選項。
 
-存取限制可在 [Premium](functions-premium-plan.md)、 [耗用量](functions-scale.md#consumption-plan)和 [App Service](functions-scale.md#app-service-plan)中取得。
+存取限制可在 [Premium](functions-premium-plan.md)、 [耗用量](consumption-plan.md)和 [App Service](dedicated-plan.md)中取得。
 
 > [!NOTE]
 > 有了網路限制之後，您就只能從虛擬網路內部署，或是將用來存取 Azure 入口網站的電腦 IP 位址放在 [安全收件者] 清單中。 不過，您仍然可以使用入口網站管理函式。
@@ -128,7 +128,7 @@ Azure Functions 中的虛擬網路整合會使用共用基礎結構搭配 App Se
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>具有虛擬網路觸發程序的進階方案
 
-當您執行進階方案時，可以將非 HTTP 觸發程序函式連線到在虛擬網路中執行的服務。 若要這麼做，您必須啟用函式應用程式的虛擬網路觸發程序支援。 **執行時間調整監視** 設定 **可在 [** [Azure portal](https://portal.azure.com)  >  **設定函數執行時間設定**] 下的 [Azure 入口網站] 中找到。
+當您執行進階方案時，可以將非 HTTP 觸發程序函式連線到在虛擬網路中執行的服務。 若要這麼做，您必須啟用函式應用程式的虛擬網路觸發程序支援。 **執行時間調整監視** 設定 **可在 [** [](https://portal.azure.com)  >  **設定函數執行時間設定**] 下的 [Azure 入口網站] 中找到。
 
 :::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 

@@ -3,16 +3,16 @@ title: 在 Linux 從 Azure 入口網站建立函式應用程式
 description: 瞭解如何使用 Azure 入口網站在 Linux 上建立您的第一個 Azure 函數。
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 20390239ed58e42749e9a3bae472a2f3f6324bb2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 34a93795b5e041ccef8e9576f97092e16c429444
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181249"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937173"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>在 Azure App Service 方案中建立 Linux 上的函式應用程式
 
-Azure Functions 可讓您在 Linux 上預設的 Azure App Service 容器中裝載函式。 本文會逐步引導您了解如何使用 [Azure 入口網站](https://portal.azure.com)，建立 Linux 裝載的函式應用程式，而該應用程式會在 [App Service 方案](functions-scale.md#app-service-plan)中執行。 您也可以[自備自訂容器](functions-create-function-linux-custom-image.md)。
+Azure Functions 可讓您在 Linux 上預設的 Azure App Service 容器中裝載函式。 本文會逐步引導您了解如何使用 [Azure 入口網站](https://portal.azure.com)，建立 Linux 裝載的函式應用程式，而該應用程式會在 [App Service 方案](dedicated-plan.md)中執行。 您也可以[自備自訂容器](functions-create-function-linux-custom-image.md)。
 
 ![在 Azure 入口網站中建立函式應用程式](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
 
@@ -50,7 +50,7 @@ Azure Functions 可讓您在 Linux 上預設的 Azure App Service 容器中裝�
 
     | 設定      | 建議的值  | 描述 |
     | ------------ | ---------------- | ----------- |
-    | **[儲存體帳戶](../storage/common/storage-account-create.md)** |  全域唯一的名稱 |  建立您函式應用程式使用的儲存體帳戶。 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。 您也可以使用現有帳戶，條件是必須符合[儲存體帳戶需求](../azure-functions/functions-scale.md#storage-account-requirements)。 |
+    | **[儲存體帳戶](../storage/common/storage-account-create.md)** |  全域唯一的名稱 |  建立您函式應用程式使用的儲存體帳戶。 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。 您也可以使用現有帳戶，條件是必須符合[儲存體帳戶需求](../azure-functions/storage-considerations.md#storage-account-requirements)。 |
     |**作業系統**| **Linux** | 系統會根據您的執行階段堆疊選項預先選取作業系統，但您可以視需要變更設定。 |
     | **[規劃](../azure-functions/functions-scale.md)** | **使用量 (無伺服器)** | 會定義如何將資源配置給函式應用程式的主控方案。 在預設 **取用** 方案中，您的函式會根據需要來動態新增資源。 在此[無伺服器](https://azure.microsoft.com/overview/serverless-computing/)裝載中，您只需要針對函式有執行的時間來付費。 在 App Service 方案中執行時，您必須管理[函式應用程式的調整](../azure-functions/functions-scale.md)。  |
 

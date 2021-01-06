@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724692"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934589"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault 的監視和警示
 
@@ -25,8 +25,8 @@ ms.locfileid: "97724692"
 當您開始使用 key vault 來儲存您的生產環境密碼時，請務必監視金鑰保存庫的健康情況，以確定您的服務會如預期般運作。 當您開始調整服務時，傳送至金鑰保存庫的要求數將會增加。 這可能會增加要求的延遲，而且在極端情況下，會導致您的要求受到節流處理，進而影響服務效能。 如果您的金鑰保存庫傳送異常數目的錯誤碼，您也需要收到警示，讓您可以快速收到任何存取原則或防火牆設定問題的通知。 本檔將討論下列主題：
 
 + 要監視的基本 Key Vault 計量
-+ 如何設定計量和建立儀表板 
-+ 如何在指定的閾值建立警示 
++ 如何設定計量和建立儀表板
++ 如何在指定的閾值建立警示
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>要監視的基本 Key Vault 計量
 

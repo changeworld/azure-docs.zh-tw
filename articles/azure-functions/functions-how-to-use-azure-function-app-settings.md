@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 746a97ecd9b0bdd676e70cca38edc75905e3e4bd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019495"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936935"
 ---
 # <a name="manage-your-function-app"></a>管理您的函數應用程式 
 
@@ -35,7 +35,7 @@ ms.locfileid: "96019495"
 
 您可以從 [總覽] 頁面流覽至管理函數應用程式所需的所有專案，特別是 **[應用程式設定](#settings)** 和 **[平臺功能](#platform-features)**。
 
-## <a name="application-settings"></a><a name="settings"></a>應用程式設定
+## <a name="work-with-application-settings"></a><a name="settings"></a>使用應用程式設定
 
 [ **應用程式設定** ] 索引標籤會維護函數應用程式所使用的設定。 這些設定會以加密方式儲存，您必須選取 [ **顯示值** ]，才能在入口網站中查看值。 您也可以使用 Azure CLI 來存取應用程式設定。
 
@@ -68,6 +68,56 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
 當您在本機開發函數應用程式時，您必須在專案檔的 local.settings.js中維護這些值的本機複本。 若要深入瞭解，請參閱 [本機設定檔](functions-run-local.md#local-settings-file)案。
+
+## <a name="hosting-plan-type"></a>主控方案類型
+
+當您建立函數應用程式時，您也會建立應用程式執行所在的 App Service 主控方案。 方案可以有一或多個函數應用程式。 函數的功能、規模調整和定價取決於方案的類型。 若要深入瞭解，請參閱 [Azure Functions 定價頁面](https://azure.microsoft.com/pricing/details/functions/)。
+
+您可以從 Azure 入口網站、使用 Azure CLI 或 Azure PowerShell Api，判斷函數應用程式所使用的方案類型。 
+
+下列值指出方案類型：
+
+| 方案類型 | 入口網站 | Azure CLI/PowerShell |
+| --- | --- | --- |
+| [耗用量](consumption-plan.md) | **耗用量** | `Dynamic` |
+| [高級](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
+| [專用 (App Service) ](dedicated-plan.md) | 各種類型 | 各種類型 |
+
+# <a name="portal"></a>[入口網站](#tab/portal)
+
+若要判斷您的函數應用程式所使用的計畫類型，請參閱 [Azure 入口網站](https://portal.azure.com)中函數應用程式的 [**總覽**] 索引標籤中的 **App Service 方案**。 若要查看定價層，請選取 **App Service 方案** 的名稱，然後從左窗格選取 [ **屬性** ]。
+
+![在入口網站中檢視調整方案](./media/functions-scale/function-app-overview-portal.png)
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
+
+執行下列 Azure CLI 命令以取得您的主控方案類型：
+
+```azurecli-interactive
+functionApp=<FUNCTION_APP_NAME>
+resourceGroup=FunctionMonitoringExamples
+appServicePlanId=$(az functionapp show --name $functionApp --resource-group $resourceGroup --query appServicePlanId --output tsv)
+az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
+
+```  
+
+在上述範例中 `<RESOURCE_GROUP>` `<FUNCTION_APP_NAME>` ，請將和取代為個別的資源群組和函式應用程式名稱。 
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+執行下列 Azure PowerShell 命令以取得您的主控方案類型：
+
+```azurepowershell-interactive
+$FunctionApp = '<FUNCTION_APP_NAME>'
+$ResourceGroup = '<RESOURCE_GROUP>'
+
+$PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionApp).AppServicePlan
+(Get-AzFunctionAppPlan -Name $PlanID -ResourceGroupName $ResourceGroup).SkuTier
+```
+在上述範例中 `<RESOURCE_GROUP>` `<FUNCTION_APP_NAME>` ，請將和取代為個別的資源群組和函式應用程式名稱。 
+
+---
+
 
 ## <a name="platform-features"></a>平台功能
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2020
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: 4dc85988d904fdec72e1e6d92f03582a2a8f1427
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eaea46044f0da4766fda051655d57caee9d98b6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85121313"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937005"
 ---
 1. 從 Azure 入口網站功能表或[首頁] 頁面，選取 [建立資源]。
 
@@ -36,9 +36,9 @@ ms.locfileid: "85121313"
 
     | 設定      | 建議的值  | 描述 |
     | ------------ | ---------------- | ----------- |
-    | **[儲存體帳戶](../articles/storage/common/storage-account-create.md)** |  全域唯一的名稱 |  建立您函式應用程式使用的儲存體帳戶。 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。 您也可以使用現有帳戶，條件是必須符合[儲存體帳戶需求](../articles/azure-functions/functions-scale.md#storage-account-requirements)。 |
+    | **[儲存體帳戶](../articles/storage/common/storage-account-create.md)** |  全域唯一的名稱 |  建立您函式應用程式使用的儲存體帳戶。 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。 您也可以使用現有帳戶，條件是必須符合[儲存體帳戶需求](../articles/azure-functions/storage-considerations.md#storage-account-requirements)。 |
     |**作業系統**| 慣用的作業系統 | 系統會根據您的執行階段堆疊選項預先選取作業系統，但您可以視需要變更設定。 只有 Linux 支援 Python。 |
-    | **[規劃](../articles/azure-functions/functions-scale.md)** | Premium | 會定義如何將資源配置給函式應用程式的主控方案。 選取 [Premium]。 依預設，會建立新的 App Service 方案。 預設的 [SKU 和大小] 是 **EP1**，其中 EP 代表_彈性進階 (elastic premium)_ 。 若要深入了解，請參閱 [Premium SKU 清單](../articles/azure-functions/functions-premium-plan.md#available-instance-skus)。<br/>在 Premium 上執行 JavaScript 函式時，您應該選擇 vCPU 數目較少的執行個體。 如需詳細資訊，請參閱[選擇單一核心 Premium 方案](../articles/azure-functions/functions-reference-node.md#considerations-for-javascript-functions)。  |
+    | **[規劃](../articles/azure-functions/functions-scale.md)** | Premium | 會定義如何將資源配置給函式應用程式的主控方案。 選取 [Premium]。 依預設，會建立新的 App Service 方案。 預設的 [SKU 和大小] 是 **EP1**，其中 EP 代表 _彈性進階 (elastic premium)_ 。 若要深入了解，請參閱 [Premium SKU 清單](../articles/azure-functions/functions-premium-plan.md#available-instance-skus)。<br/>在 Premium 上執行 JavaScript 函式時，您應該選擇 vCPU 數目較少的執行個體。 如需詳細資訊，請參閱[選擇單一核心 Premium 方案](../articles/azure-functions/functions-reference-node.md#considerations-for-javascript-functions)。  |
 
     ![主控頁面](./media/functions-premium-create/function-app-premium-create-hosting.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "85121313"
 
     | 設定      | 建議的值  | 描述 |
     | ------------ | ---------------- | ----------- |
-    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | 預設 | 在最近的支援區域中，建立相同*應用程式名稱*的 Application Insights 資源。 您可以展開此設定，變更 [新資源名稱]，或在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中選擇不同的**位置**來儲存資料。 |
+    | **[Application Insights](../articles/azure-functions/functions-monitoring.md)** | 預設 | 在最近的支援區域中，建立相同 *應用程式名稱* 的 Application Insights 資源。 您可以展開此設定，變更 [新資源名稱]，或在 [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)中選擇不同的 **位置** 來儲存資料。 |
 
     ![監視頁面](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 

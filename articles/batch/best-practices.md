@@ -3,12 +3,12 @@ title: 最佳作法
 description: 瞭解開發 Azure Batch 解決方案的最佳作法和實用秘訣。
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5c3521a3b5fe0dd9c2d1534f6e2a6864647f5da3
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 7e2a49c8307af89fb3898f5f2513fb493d0f5d90
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694180"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934283"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -24,6 +24,9 @@ ms.locfileid: "97694180"
 ### <a name="pool-configuration-and-naming"></a>集區設定和命名
 
 - **集區配置模式** 建立 Batch 帳戶時，您可以選擇兩個集區配置模式：**Batch 服務** 或 **使用者訂用帳戶**。 在大部分情況下，您應該使用預設 Batch 服務模式，以在幕後將集區配置在 Batch 管理的訂用帳戶中。 在其他使用者訂用帳戶模式中，在建立集區時，會直接在您的訂用帳戶中建立 Batch VM 和其他資源。 使用者訂用帳戶主要是用來啟用重要但較小的案例子集。 若要深入了解使用者訂用帳戶模式，請參閱[使用者訂用帳戶模式的其他設定](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)。
+
+- **' cloudServiceConfiguration ' 或 ' virtualMachineConfiguration '。**
+    應使用 ' virtualMachineConfiguration '。 ' VirtualMachineConfiguration ' 集區支援所有批次功能。 並非所有功能都支援 ' cloudServiceConfiguration ' 集區，而且不會規劃任何新功能。
 
 - **判斷作業與集區的對應時，請考慮作業和工作執行時間。**
     如果您的作業主要是由短期執行的作業所組成，而且預期的總工作計數很少，所以作業的整體預期執行時間不會太長，那麼請不要為每個工作配置新的集區。 節點的配置時間將會降低作業的執行時間。

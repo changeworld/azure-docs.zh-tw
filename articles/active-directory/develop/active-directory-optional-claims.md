@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/04/2021
+ms.date: 1/05/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4674fe41a0e3d63ef0cadc6ad55eca02fc69618e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916247"
+ms.locfileid: "97935898"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -92,9 +92,9 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 使用 v1 權杖格式的應用程式可以使用 v2 權杖格式的部分增強功能，因為它們有助於提高安全性和可靠性。 這些將不會對從 v2 端點要求的識別碼權杖生效，也不會對使用 v2 權杖格式的 Api 存取權杖。 
 
-| JWT 宣告     | 名稱                            | 描述 | 附註 |
+| JWT 宣告     | 名稱                            | 描述 | 注意 |
 |---------------|---------------------------------|-------------|-------|
-|`aud`          | 適用對象 | 一律存在於 Jwt 中，但在 v1 存取權杖中，可以透過各種不同的方式發出，這在執行權杖驗證時可能會很難進行程式碼撰寫。  請使用 [此宣告的其他屬性](#additional-properties-of-optional-claims) ，以確保其一律設定為 v1 存取權杖中的 GUID。 | v1 JWT 存取權杖|
+|`aud`          | 適用對象 | 一律存在於 Jwt 中，但在 v1 存取權杖中，可以透過各種不同的方式發出，也就是具有或不含尾端斜線的任何 appID URI，以及資源的用戶端識別碼。 在執行權杖驗證時，這種隨機載入可能很難進行程式碼撰寫。  使用此宣告的 [其他屬性](#additional-properties-of-optional-claims) ，以確保一律會將其設定為 v1 存取權杖中的資源用戶端識別碼。 | v1 JWT 存取權杖|
 |`preferred_username` | 慣用的使用者名稱        | 在 v1 權杖內提供慣用的使用者名稱宣告。 這可讓應用程式更容易提供使用者名稱提示，並顯示人類可閱讀的顯示名稱，不論其權杖類型為何。  建議您使用此選用宣告，而不要使用，例如 `upn` 或 `unique_name` 。 | v1 識別碼權杖和存取權杖 |
 
 ### <a name="additional-properties-of-optional-claims"></a>選擇性宣告的額外屬性
@@ -108,8 +108,8 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 | `upn`          |                          | 可同時用於 SAML 和 JWT 回應，以及用於 v1.0 和 v2.0 權杖。 |
 |                | `include_externally_authenticated_upn`  | 包含儲存在資源租用戶中的來賓 UPN。 例如， `foo_hometenant.com#EXT#@resourcetenant.com` |
 |                | `include_externally_authenticated_upn_without_hash` | 同上，只不過井字號 (`#`) 換成底線 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com`|
-| `aud`          |                          | 在 v1 存取權杖中，這會用來變更宣告的格式 `aud` 。  這不會影響 v2 權杖或識別碼權杖，其中宣告 `aud` 一律是用戶端識別碼。 您可以使用此資訊來確保您的 API 可以更輕鬆地執行物件驗證。 如同所有會影響存取權杖的選擇性宣告，要求中的資源必須設定此選用宣告，因為資源擁有存取權杖。|
-|                | `use_guid`               | 發出資源 (API) GUID 格式的用戶端識別碼作為宣告， `aud` 而不是 APPID URI 或 GUID。 因此，如果資源的用戶端識別碼為 `bb0a297b-6a42-4a55-ac40-09a501456577` ，任何要求該資源之存取權杖的應用程式都會收到具有下列各項的存取權杖 `aud` ： `bb0a297b-6a42-4a55-ac40-09a501456577` 。|
+| `aud`          |                          | 在 v1 存取權杖中，這會用來變更宣告的格式 `aud` 。  這不會影響 v2 權杖或版本的識別碼權杖，其中宣告 `aud` 一律是用戶端識別碼。 使用此設定可確保您的 API 可以更輕鬆地執行物件驗證。 如同所有會影響存取權杖的選擇性宣告，要求中的資源必須設定此選用宣告，因為資源擁有存取權杖。|
+|                | `use_guid`               | 以 GUID 格式發出資源 (API) 的用戶端識別碼，做為宣告， `aud` 而不是與執行時間相依。 例如，如果資源設定此旗標，而其用戶端識別碼是 `bb0a297b-6a42-4a55-ac40-09a501456577` ，則任何要求該資源之存取權杖的應用程式都會收到具有下列各項的存取權杖 `aud` ： `bb0a297b-6a42-4a55-ac40-09a501456577` 。 </br></br> 如果沒有此宣告集，API 可能會取得權杖，其宣告為 `aud` `api://MyApi.com` 、 `api://MyApi.com/` `api://myapi.com/AdditionalRegisteredField` 或任何其他值設定為該 API 的應用程式識別碼 URI，以及資源的用戶端識別碼。 |
 
 #### <a name="additional-properties-example"></a>額外屬性範例
 
@@ -254,7 +254,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 1. 選取 [ **新增群組** 宣告]。
 1. 選取群組類型，以傳回 (**安全性群組** 或 **目錄角色**、 **所有群組**，以及/或 **指派給應用程式) 的群組** 。 **指派給應用程式** 選項的群組只會包含指派給應用程式的群組。 [ **所有群組** ] 選項包括 **SecurityGroup**、 **DirectoryRole** 和 **DistributionList**，而不是 **指派給應用程式的群組**。 
 1. 選擇性：選取特定的權杖類型屬性，以修改群組宣告值以包含內部部署群組屬性，或將宣告類型變更為角色。
-1. 選取 [Save] \(儲存\)。
+1. 選取 [儲存]。
 
 **透過應用程式資訊清單設定群組選擇性宣告：**
 

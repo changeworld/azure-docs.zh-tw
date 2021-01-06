@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 59ba81944ecdf4f2b6322f4298e61df33f5b1da8
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0c7910ac149c8de43eeac92913a0d314fcc1854e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289185"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934572"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>指派 Key Vault 存取原則
 
@@ -23,11 +23,11 @@ Key Vault 存取原則會決定指定的服務主體（也就是應用程式或�
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-如需使用 Azure CLI 在 Azure Active Directory 中建立群組的詳細資訊，請參閱 [az ad group create](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-create) 和 [az ad group member add](/cli/azure/ad/group/member?view=azure-cli-latest#az-ad-group-member-add)。
+如需使用 Azure CLI 在 Azure Active Directory 中建立群組的詳細資訊，請參閱 [az ad group create](/cli/azure/ad/group#az-ad-group-create) 和 [az ad group member add](/cli/azure/ad/group/member#az-ad-group-member-add)。
 
 ## <a name="configure-the-azure-cli-and-sign-in"></a>設定 Azure CLI 並登入
 
-1. 若要在本機執行 Azure CLI 命令，請安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+1. 若要在本機執行 Azure CLI 命令，請安裝 [Azure CLI](/cli/azure/install-azure-cli)。
  
     若要直接在雲端中執行命令，請使用 [Azure Cloud Shell](../../cloud-shell/overview.md)。
 
@@ -43,19 +43,19 @@ Key Vault 存取原則會決定指定的服務主體（也就是應用程式或�
 
 決定您要指派存取原則的應用程式、群組或使用者的物件識別碼：
 
-- 應用程式和其他服務主體：使用 [az ad sp list](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) 命令來取出您的服務主體。 檢查命令的輸出，以判斷您要指派存取原則之安全性主體的物件識別碼。
+- 應用程式和其他服務主體：使用 [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) 命令來取出您的服務主體。 檢查命令的輸出，以判斷您要指派存取原則之安全性主體的物件識別碼。
 
     ```azurecli-interactive
     az ad sp list --show-mine
     ```
 
-- 群組：使用 [az ad group list](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) 命令，並使用參數篩選結果 `--display-name` ：
+- 群組：使用 [az ad group list](/cli/azure/ad/group#az-ad-group-list) 命令，並使用參數篩選結果 `--display-name` ：
 
      ```azurecli-interactive
     az ad group list --display-name <search-string>
     ```
 
-- 使用者：使用 [az ad user show](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-show) 命令，並在參數中傳遞使用者的電子郵件地址 `--id` ：
+- 使用者：使用 [az ad user show](/cli/azure/ad/user#az-ad-user-show) 命令，並在參數中傳遞使用者的電子郵件地址 `--id` ：
 
     ```azurecli-interactive
     az ad user show --id <email-address-of-user>
@@ -63,7 +63,7 @@ Key Vault 存取原則會決定指定的服務主體（也就是應用程式或�
 
 ## <a name="assign-the-access-policy"></a>指派存取原則
     
-使用 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令指派所需的許可權：
+使用 [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) 命令指派所需的許可權：
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permissions <secret-permissions> --key-permissions <key-permissions> --certificate-permissions <certificate-permissions>
@@ -71,11 +71,10 @@ az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permis
 
 取代 `<object-id>` 為您服務主體的物件識別碼。
 
-`--secret-permissions` `--key-permissions` `--certificate-permissions` 當您將許可權指派給這些特定類型時，只需要包含、和。 `<secret-permissions>` `<key-permissions>` `<certificate-permissions>` [Az keyvault set 原則](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)檔中提供、和的允許值。
+`--secret-permissions` `--key-permissions` `--certificate-permissions` 當您將許可權指派給這些特定類型時，只需要包含、和。 `<secret-permissions>` `<key-permissions>` `<certificate-permissions>` [Az keyvault set 原則](/cli/azure/keyvault#az-keyvault-set-policy)檔中提供、和的允許值。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Key Vault 安全性：身分識別和存取管理](overview-security.md#identity-and-access-management)
+- [Azure Key Vault 安全性：身分識別和存取管理](security-overview.md#identity-management)
 - [保護您的金鑰保存庫](secure-your-key-vault.md)。
 - [Azure Key Vault 開發人員指南](developers-guide.md)
-- [Azure Key Vault 最佳做法](best-practices.md)

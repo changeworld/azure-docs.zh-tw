@@ -3,12 +3,12 @@ title: 將 Azure Functions 與 Azure 虛擬網路整合
 description: 說明如何將函式連線至 Azure 虛擬網路的逐步教學課程
 ms.topic: article
 ms.date: 4/23/2020
-ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efc936111d162d73b1cc5465ae6b677c9006ab32
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387518"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937006"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>教學課程：將 Functions 與 Azure 虛擬網路整合
 
@@ -55,7 +55,7 @@ ms.locfileid: "87387518"
 
     ![用於建立 VM 的 [基本] 索引標籤](./media/functions-create-vnet/create-vm-1.png)
 
-    | 設定      | 建議的值  | 說明      |
+    | 設定      | 建議的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
     | **訂用帳戶** | 您的訂用帳戶 | 建立您資源所在位置的訂用帳戶。 | 
     | **[資源群組](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 選擇 `myResourceGroup` 或您使用函數應用程式建立的資源群組。 針對函數應用程式、WordPress VM 和主控方案使用相同的資源群組，可讓您在完成本教學課程時更輕鬆地清除資源。 |
@@ -66,11 +66,11 @@ ms.locfileid: "87387518"
 
 1. 選擇 [**網路**] 索引標籤，然後在 [設定虛擬網路] 下方選取 **[新建]。**
 
-1. 在**建立虛擬網路**中，使用影像下方表格中的設定：
+1. 在 **建立虛擬網路** 中，使用影像下方表格中的設定：
 
     ![建立 VM 的 [網路功能] 索引標籤](./media/functions-create-vnet/create-vm-2.png)
 
-    | 設定      | 建議的值  | 說明      |
+    | 設定      | 建議的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
     | **名稱** | myResourceGroup-vnet | 您可以使用為虛擬網路產生的預設名稱。 |
     | **位址範圍** | 10.10.0.0/16 | 在虛擬網路中使用單一位址範圍。 |
@@ -105,13 +105,13 @@ ms.locfileid: "87387518"
 
 1. 在 [ **VNET 整合** ] 頁面上，選取 [ **新增 VNET**]。
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="選擇函式應用程式中的網路功能":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="新增 VNet 整合預覽":::
 
 1. 在 [ **網路功能狀態**] 中，使用影像下方表格中的設定：
 
     ![定義函數應用程式虛擬網路](./media/functions-create-vnet/networking-3.png)
 
-    | 設定      | 建議的值  | 說明      |
+    | 設定      | 建議的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
     | **虛擬網路** | MyResourceGroup-vnet | 此虛擬網路是您稍早建立的虛擬網路。 |
     | **子網路** | 建立新的子網 | 在虛擬網路中建立子網，讓您的函數應用程式使用。 VNet 整合必須設定為使用空的子網。 您的函式所使用的子網與您的 VM 不同，不重要。 虛擬網路會自動在這兩個子網之間路由傳送流量。 |
@@ -129,9 +129,9 @@ ms.locfileid: "87387518"
 
 1. 在您的函數應用程式中  **，從左側功能表中選取** [proxy]，然後選取 [ **新增**]。 使用映射下表中的 proxy 設定：
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="選擇函式應用程式中的網路功能":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="定義 Proxy 設定":::
 
-    | 設定  | 建議的值  | 說明      |
+    | 設定  | 建議的值  | 描述      |
     | -------- | ---------------- | ---------------- |
     | **名稱** | PlAnT | 名稱可以是任何值。 它是用來識別 proxy。 |
     | **路由範本** | /plant | 對應至 VM 資源的路由。 |
@@ -141,7 +141,7 @@ ms.locfileid: "87387518"
 
 ## <a name="try-it-out"></a>試做
 
-1. 在您的瀏覽器中，嘗試存取用來作為 **後端 url**的 url。 如預期般，要求超時。因為您的 WordPress 網站只連接到您的虛擬網路，而不是連線到網際網路，所以會發生超時。
+1. 在您的瀏覽器中，嘗試存取用來作為 **後端 url** 的 url。 如預期般，要求超時。因為您的 WordPress 網站只連接到您的虛擬網路，而不是連線到網際網路，所以會發生超時。
 
 1. 從新的 proxy 複製 [ **PROXY URL** ] 值，並將它貼到瀏覽器的網址列。 傳回的映射來自于虛擬網路內執行的 WordPress 網站。
 
@@ -151,7 +151,7 @@ ms.locfileid: "87387518"
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，WordPress 網站可做為在函數應用程式中使用 proxy 呼叫的 API。 此案例可提供良好的教學課程，因為它很容易設定和視覺化。 您可以使用在虛擬網路內部署的任何其他 API。 您也可以建立具有程式碼的函式，以呼叫虛擬網路內部署的 Api。 更實際的案例是使用資料用戶端 Api 來呼叫部署于虛擬網路中 SQL Server 實例的函式。
 
@@ -160,4 +160,4 @@ ms.locfileid: "87387518"
 > [!div class="nextstepaction"]
 > [深入了解 Azure Functions 中的網路功能選項](./functions-networking-options.md)
 
-[進階方案]: functions-scale.md#premium-plan
+[進階方案]: functions-premium-plan.md

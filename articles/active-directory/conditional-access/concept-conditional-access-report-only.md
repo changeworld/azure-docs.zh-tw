@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049378"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935881"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>什麼是條件式存取僅限報表模式？
 
@@ -30,7 +30,7 @@ ms.locfileid: "89049378"
 - 具有 Azure 監視器訂用帳戶的客戶可以使用條件式存取深入解析活頁簿來監視其條件式存取原則的影響。
 
 > [!WARNING]
-> 在僅限報表模式中，需要符合規範之裝置的原則，可能會提示 Mac、iOS 和 Android 上的使用者在原則評估期間選取裝置憑證，即使未強制執行裝置合規性也是一樣。 這些提示可能會重複，直到裝置符合規範。 若要防止終端使用者在登入期間收到提示，請從執行裝置合規性檢查的僅限報表原則中排除裝置平臺 Mac、iOS 和 Android。 請注意，報告專用模式不適用於具有「使用者動作」範圍的 CA 原則。
+> 在僅限報表模式中，需要符合規範之裝置的原則，可能會提示 Mac、iOS 和 Android 上的使用者在原則評估期間選取裝置憑證，即使未強制執行裝置合規性也是一樣。 這些提示可能會重複，直到裝置符合規範。 若要防止終端使用者在登入期間收到提示，請從執行裝置合規性檢查的僅限報表原則中排除裝置平臺 Mac、iOS 和 Android。 請注意，僅限報表模式不適用於具有「使用者動作」範圍的條件式存取原則。
 
 ![Azure AD 登入記錄檔中的 [僅限報表] 索引標籤](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 

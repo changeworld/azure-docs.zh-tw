@@ -6,16 +6,16 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8033235cde5b7ebe298bb1fa8d4222e208df998b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a29d81be9b750d89230a180b8a7c786466d99bb8
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183000"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936425"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service 方案概觀
 
-在 App Service (Web Apps、API Apps 或 Mobile Apps) 中，應用程式一律會在 _App Service 方案_ 中執行。 此外， [Azure Functions](../azure-functions/functions-scale.md#app-service-plan) 也可以選擇在 _App Service 方案_ 中執行。 App Service 方案會針對要執行的 Web 應用程式定義一組計算資源。 這些計算資源類似于傳統 web 裝載中的 [_伺服器_](https://wikipedia.org/wiki/Server_farm) 陣列。 一或多個應用程式可設定為在相同的計算資源上執行 (或在相同的 App Service 方案中執行)。
+在 App Service (Web Apps、API Apps 或 Mobile Apps) 中，應用程式一律會在 _App Service 方案_ 中執行。 此外， [Azure Functions](../azure-functions/dedicated-plan.md) 也可以選擇在 _App Service 方案_ 中執行。 App Service 方案會針對要執行的 Web 應用程式定義一組計算資源。 這些計算資源類似于傳統 web 裝載中的 [_伺服器_](https://wikipedia.org/wiki/Server_farm) 陣列。 一或多個應用程式可設定為在相同的計算資源上執行 (或在相同的 App Service 方案中執行)。
 
 當您在特定區域 (例如，西歐) 建立 App Service 方案時，會為該區域的方案建立一組計算資源。 無論您將何種應用程式置入此 App Service 方案，都會在該 App Service 方案定義的計算資源上執行。 每個 App Service 方案都會定義：
 

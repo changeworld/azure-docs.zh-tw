@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093084"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936442"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>規劃您的 Azure Active Directory 裝置部署
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 讓您的組織能以裝置身分識別管理�
 
 * 在內部部署 Active Directory 和 Azure AD 的裝置之間[建立混合式 Azure AD 聯結](concept-azure-ad-join-hybrid.md)。 
 
-## <a name="learn"></a>學習
+## <a name="learn"></a>Learn
 
 開始之前，請確定您已熟悉 [裝置身分識別管理的總覽](overview.md)。
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) 讓您的組織能以裝置身分識別管理�
 
 * 提高生產力–透過 Azure AD，您的使用者可以對內部部署和雲端資源進行 [無縫登入 (SSO) ](./azuread-join-sso.md) ，讓他們在任何地方都能提高生產力。
 
-* 提高安全性– Azure AD 裝置可讓您根據裝置或使用者的身分識別，將 [條件式存取 (CA) 原則](../conditional-access/require-managed-devices.md) 套用至資源。 CA 原則可以使用 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)來提供額外的保護。 將裝置加入 Azure AD 是使用 [無密碼 Authentication](../authentication/concept-authentication-passwordless.md) 策略提高安全性的先決條件。
+* 提高安全性– Azure AD 裝置可讓您根據裝置或使用者的身分識別，將 [條件式存取原則](../conditional-access/require-managed-devices.md) 套用至資源。 條件式存取原則可以使用 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)來提供額外的保護。 將裝置加入 Azure AD 是使用 [無密碼 Authentication](../authentication/concept-authentication-passwordless.md) 策略提高安全性的先決條件。
 
 * 使用 Azure AD 中的裝置身分識別改善使用者體驗，您可以讓使用者從個人和公司裝置輕鬆存取組織的雲端式資源。 系統管理員可以在所有 Windows 裝置上啟用統一體驗的 [企業狀態漫遊](enterprise-state-roaming-overview.md) 。
 
@@ -102,7 +102,7 @@ Azure Active Directory (Azure AD) 讓您的組織能以裝置身分識別管理�
 
 iOS 和 Android 裝置可能只會 Azure AD 註冊。 下表提供 Windows 用戶端裝置的高階考慮。 請使用它作為總覽，然後詳細探索不同的整合方法。
 
-| 考量 | 已註冊的 Azure AD| Azure AD Join| 混合式 Azure AD Join |
+| 考量 | 已註冊 Azure AD| Azure AD Join| 混合式 Azure AD Join |
 | - | - | - | - |
 | **用戶端作業系統**| | |  |
 | Windows 10 裝置| ![這些值的核取記號。](./media/plan-device-deployment/check.png)| ![這些值的核取記號。](./media/plan-device-deployment/check.png)| ![這些值的核取記號。](./media/plan-device-deployment/check.png) |
@@ -129,7 +129,7 @@ iOS 和 Android 裝置可能只會 Azure AD 註冊。 下表提供 Windows 用�
 
 註冊的裝置通常會使用 [Microsoft Intune](/mem/intune/enrollment/device-enrollment)來管理。 裝置在 Intune 中的註冊方式有許多種，視作業系統而定。 
 
-Azure AD 已註冊的裝置可支援將您自己的裝置 (BYOD) 和公司擁有的裝置，以 SSO 至雲端資源。 資源的存取取決於套用至裝置和使用者的 Azure AD [CA 原則](../conditional-access/require-managed-devices.md) 。
+Azure AD 已註冊的裝置可支援將您自己的裝置 (BYOD) 和公司擁有的裝置，以 SSO 至雲端資源。 資源的存取取決於套用至裝置和使用者的 Azure AD [條件式存取原則](../conditional-access/require-managed-devices.md) 。
 
 ### <a name="registering-devices"></a>註冊裝置
 
@@ -183,7 +183,7 @@ Azure AD join 可讓您使用 Windows 轉換至雲端優先模型。 如果您�
 | - | - | - |
 | 已加入內部部署網域| Azure AD Join| 將裝置從內部部署網域退出，再加入 Azure AD |
 | 混合式 Azure AD 加入| Azure AD Join| 將裝置從內部部署網域和 Azure AD 退出，再加入 Azure AD |
-| 已註冊的 Azure AD| Azure AD Join| 將裝置取消註冊後再加入 Azure AD |
+| 已註冊 Azure AD| Azure AD Join| 將裝置取消註冊後再加入 Azure AD |
 
 
 ## <a name="hybrid-azure-ad-join"></a>混合式 Azure AD Join
@@ -237,7 +237,7 @@ Azure AD join 可讓您使用 Windows 轉換至雲端優先模型。 如果您�
 
 針對整合式裝置審核支援和不支援的平臺：
 
-| 裝置管理工具| 已註冊的 Azure AD| Azure AD Join| 混合式 Azure AD Join|
+| 裝置管理工具| 已註冊 Azure AD| Azure AD Join| 混合式 Azure AD Join|
 | - | - | - | - |
 | [ (MDM) 的行動裝置管理 ](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>範例： Microsoft Intune| ![這些值的核取記號。](./media/plan-device-deployment/check.png)| ![這些值的核取記號。](./media/plan-device-deployment/check.png)| ![這些值的核取記號。](./media/plan-device-deployment/check.png)|  |
 | [使用 Microsoft Intune 和 Microsoft Endpoint Configuration Manager 共同管理](/mem/configmgr/comanage/overview) <br> (Windows 10 和更新版本) | | ![這些值的核取記號。](./media/plan-device-deployment/check.png)| ![這些值的核取記號。](./media/plan-device-deployment/check.png)|  |

@@ -3,12 +3,12 @@ title: Azure Functions 的儲存考量事項
 description: 了解 Azure Functions 的儲存體需求，以及加密儲存資料的相關資訊。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 66bfded384be47224e86ee8e0a2999fe3d4ed5d9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107238"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936153"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions 的儲存考量事項
 
@@ -18,7 +18,7 @@ ms.locfileid: "97107238"
 |儲存體服務  | 函式使用方式  |
 |---------|---------|
 | [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)     | 維護繫結狀態和函式金鑰。  <br/>[Durable Functions 的工作中樞](durable/durable-functions-task-hubs.md)也會使用。 |
-| [Azure 檔案](../storage/files/storage-files-introduction.md)  | 用來在取用 [方案](functions-scale.md#consumption-plan) 和 [Premium 方案](functions-scale.md#premium-plan)中儲存和執行函數應用程式程式碼的檔案共用。 |
+| [Azure 檔案](../storage/files/storage-files-introduction.md)  | 用來在取用 [方案](consumption-plan.md) 和 [Premium 方案](functions-premium-plan.md)中儲存和執行函數應用程式程式碼的檔案共用。 |
 | [Azure 佇列儲存體](../storage/queues/storage-queues-introduction.md)     | 由 [Durable Functions 的工作中樞](durable/durable-functions-task-hubs.md)使用。   |
 | [Azure 資料表儲存體](../storage/tables/table-storage-overview.md)  |  由 [Durable Functions 的工作中樞](durable/durable-functions-task-hubs.md)使用。       |
 
@@ -33,9 +33,11 @@ ms.locfileid: "97107238"
 
 雖然您可以在函數應用程式中使用現有的儲存體帳戶，但您必須確定它符合這些需求。 在 Azure 入口網站中建立為函數應用程式建立流程一部分的儲存體帳戶，保證符合這些儲存體帳戶需求。 在入口網站中，當您在建立函數應用程式時選擇現有的儲存體帳戶時，不支援的帳戶會被篩選掉。 在此流程中，您只允許在與您建立的函式應用程式相同的區域中，選擇現有的儲存體帳戶。 若要深入瞭解，請參閱 [儲存體帳戶位置](#storage-account-location)。
 
+<!-- JH: Does using a Premium Storage account improve perf? -->
+
 ## <a name="storage-account-guidance"></a>儲存體帳戶指引
 
-每個函式應用程式都需要有儲存體帳戶才能運作。 如果該帳戶已刪除，您的函數應用程式就不會運作。 若要為儲存體相關問題疑難排解，請參閱[如何為儲存體相關問題疑難排解](functions-recover-storage-account.md)。 下列附加考量事項適用於函數應用程式所使用的儲存體帳戶。
+每個函式應用程式都需要有儲存體帳戶才能運作。 如果該帳戶已刪除，您的函數應用程式就不會運作。 若要為儲存體相關問題疑難排解，請參閱[如何為儲存體相關問題疑難排解](functions-recover-storage-account.md)。 下列其他考慮適用于函數應用程式所使用的儲存體帳戶。
 
 ### <a name="storage-account-location"></a>儲存體帳戶位置
 
@@ -59,7 +61,15 @@ ms.locfileid: "97107238"
 
 [!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
-## <a name="mount-file-shares-linux"></a>掛接檔案共用 (Linux)
+### <a name="in-region-data-residency"></a>區域內資料落地
+
+當所有客戶資料都必須保留在單一區域內時，與函數應用程式相關聯的儲存體帳戶必須是具有 [區域內冗余](../storage/common/storage-redundancy.md)的儲存體帳戶。 區域內多餘的儲存體帳戶也必須搭配 [Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection)使用。
+
+當裝載于內部負載平衡的 App Service 環境 (ASE) 時，其他平臺管理的客戶資料只會儲存在區域內。 若要深入瞭解，請參閱 [ASE 區域冗余](../app-service/environment/zone-redundancy.md#in-region-data-residency)。
+
+## <a name="mount-file-shares"></a>掛接檔案共用
+
+_這項功能僅適用于在 Linux 上執行時的最新狀態。_ 
 
 您可以將現有的 Azure 檔案儲存體共用掛接至 Linux 函數應用程式。 藉由將共用掛接至 Linux 函式應用程式，您可以利用現有的機器學習模型或函式中的其他資料。 您可以使用 [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) 命令，將現有的共用掛接到您的 Linux 函數應用程式。 
 

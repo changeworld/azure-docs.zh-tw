@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 07/03/2017
-ms.openlocfilehash: 3584f83c5e1a5e83d069373395227b70c084eae9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d21deea13aac3d40c452a183c340d3108a1a01f4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81428949"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936323"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault 安全世界和地理界限
 
@@ -37,12 +37,9 @@ Azure Key Vault 是多租用戶服務，並且在每個 Azure 位置使用硬體
 
 區域會對應至安全世界，在資料表中顯示為主要標題：
 
-在依區域的產品文章中，例如，[美國]**** 索引標籤包含都會對應至美國區域的美國東部、美國中部、美國西部。 
+在依區域的產品文章中，例如，[美國] 索引標籤包含都會對應至美國區域的美國東部、美國中部、美國西部。 
 
 >[!NOTE]
 >例外狀況是美國 DOD 東部和美國 DOD 中部有自己的安全世界。 
 
-同樣地，在 [歐洲]**** 索引標籤上，北歐和西歐都會對應到歐洲區域。 在 [亞太地區]**** 索引標籤上也是如此。
-
-
-
+同樣地，在 [歐洲] 索引標籤上，北歐和西歐都會對應到歐洲區域。 在 [亞太地區] 索引標籤上也是如此。

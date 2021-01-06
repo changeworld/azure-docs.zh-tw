@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.custom: devx-track-csharp, fasttrack-edit, contperf-fy21q2, devx-track-js
-ms.openlocfilehash: 7dbaa8712e09de9084e2bcb66d43f2181af292a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6dc3c582466fe0646b0350213947ff2173368bde
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033029"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936833"
 ---
 # <a name="monitor-azure-functions"></a>監視 Azure Functions
 
@@ -113,7 +113,7 @@ Application Insights 可讓您將遙測資料匯出至長期儲存或其他 anal
 
 此功能處於預覽狀態。 
 
-[Azure Functions 調整控制器](./functions-scale.md#runtime-scaling)會監視您的應用程式執行所在 Azure Functions 主機的實例。 此控制器會決定何時要根據目前的效能來新增或移除實例。 您可以讓調整控制器發出記錄來 Application Insights，以深入瞭解調整控制器針對您的函數應用程式所做的決策。 您也可以將產生的記錄儲存在 Blob 儲存體中，以供其他服務進行分析。 
+[Azure Functions 調整控制器](./event-driven-scaling.md#runtime-scaling)會監視您的應用程式執行所在 Azure Functions 主機的實例。 此控制器會決定何時要根據目前的效能來新增或移除實例。 您可以讓調整控制器發出記錄來 Application Insights，以深入瞭解調整控制器針對您的函數應用程式所做的決策。 您也可以將產生的記錄儲存在 Blob 儲存體中，以供其他服務進行分析。 
 
 若要啟用這項功能，請將名為的應用程式設定新增 `SCALE_CONTROLLER_LOGGING_ENABLED` 至函數應用程式設定。 若要深入瞭解，請參閱 [設定調整控制器記錄](configure-monitoring.md#configure-scale-controller-logs)檔。
 

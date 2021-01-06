@@ -4,12 +4,12 @@ description: 了解在 Azure 中開發函式所需的 Azure Functions 概念與�
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 54bfd770fba9a1766396d66c0c263111c233c9c2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd9a517749030f9f99731d36947c4d4ff2f13b01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167874"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936731"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開發人員指南
 在 Azure Functions 中，不論您使用何種語言或繫結，特定函式都會共用一些核心技術概念和元件。 閱讀指定語言或繫結特有的詳細資料之前，請務必詳閱這份適用於所有語言或繫結的概觀。
@@ -42,11 +42,11 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 
 | 屬性 | 值/類型 | 註解 |
 | --- | --- | --- |
-| `type` |字串 |繫結類型。 例如 `queueTrigger`。 |
+| `type` |字串 |繫結類型。 例如： `queueTrigger` 。 |
 | `direction` |'in'、'out' |表示繫結用於將資料接收到函數，還是從函數傳送資料。 |
 | `name` |字串 |用於函式中所繫結資料的名稱。 在 C# 中，這是引數名稱；在 JavaScript 中，這是索引鍵/值清單中的索引鍵。 |
 
-## <a name="function-app"></a>函式應用程式
+## <a name="function-app"></a>函數應用程式
 函數應用程式在 Azure 中提供您的函式可在其中執行的執行內容。 因此，它是您的函式部署和管理的單位。 函式應用程式是由一或多個個別函式所組成，這些函式可一起管理、部署與調整。 函數應用程式中的所有函式都會共用相同的定價方案、部署方法和執行階段版本。 請將函式應用程式視為用來組織及集體管理函式的方式。 若要深入瞭解，請參閱 [如何管理函數應用程式](functions-how-to-use-azure-function-app-settings.md)。 
 
 > [!NOTE]
@@ -69,7 +69,7 @@ function.json 檔案會定義函式的觸發程序、繫結和其他組態設定
 Azure 入口網站內建的函式編輯器可讓您更新您直接內嵌的程式碼和 *function.json* 檔案。 這僅建議用於概念的小型變更或證明 - 最佳作用是使用如 VS Code 等本機開發工具。
 
 ## <a name="parallel-execution"></a>平行執行
-發生速度比單一執行緒函數執行階段快的多個觸發事件可以處理它們時，執行階段可能會平行多次叫用函數。  如果函式應用程式使用[取用主控方案](functions-scale.md#how-the-consumption-and-premium-plans-work)，則函式應用程式可以自動相應放大。  不論應用程式是在取用主控方案還是一般 [App Service 主控方案](../app-service/overview-hosting-plans.md)上執行，函式應用程式的每個執行個體可能都會使用多個執行緒平行處理並行函式引動。  每個函式應用程式執行個體中的並行函式叫用次數上限，根據使用的觸發程序類型及函式應用程式內其他函式所使用的資源而有所不同。
+發生速度比單一執行緒函數執行階段快的多個觸發事件可以處理它們時，執行階段可能會平行多次叫用函數。  如果函式應用程式使用[取用主控方案](event-driven-scaling.md)，則函式應用程式可以自動相應放大。  不論應用程式是在取用主控方案還是一般 [App Service 主控方案](../app-service/overview-hosting-plans.md)上執行，函式應用程式的每個執行個體可能都會使用多個執行緒平行處理並行函式引動。  每個函式應用程式執行個體中的並行函式叫用次數上限，根據使用的觸發程序類型及函式應用程式內其他函式所使用的資源而有所不同。
 
 ## <a name="functions-runtime-versioning"></a>Functions 執行階段版本設定
 

@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f9c11c0671db882edd9a72bca8d11c7326edee43
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589792"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936884"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
 
@@ -30,7 +30,7 @@ Azure Functions 部署通常包含下列資源：
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
 | 函數應用程式                                                                     | 必要    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |
 | [Azure 儲存體](../storage/index.yml)帳戶                                   | 必要    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選用    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md)元件 | 選擇性    | [Microsoft Insights/元件](/azure/templates/microsoft.insights/components)         |
 | [主控方案](./functions-scale.md)                                             | 選用<sup>1</sup>    | [Microsoft. Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup>只有當您選擇在 [Premium 方案](./functions-premium-plan.md) 或 [App Service 方案](../app-service/overview-hosting-plans.md)上執行函數應用程式時，才需要主控方案。
@@ -175,7 +175,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 ## <a name="deploy-on-consumption-plan"></a>在取用方案上部署
 
-取用方案會在您的程式碼執行時自動設定計算能力、視需要相應放大來處理負載，然後在程式碼未執行時相應放大。 您不需要支付閒置 Vm 的費用，也不需要預先保留容量。 若要深入了解，請參閱 [Azure Functions 規模調整和主控](functions-scale.md#consumption-plan)。
+取用方案會在您的程式碼執行時自動設定計算能力、視需要相應放大來處理負載，然後在程式碼未執行時相應放大。 您不需要支付閒置 Vm 的費用，也不需要預先保留容量。 若要深入了解，請參閱 [Azure Functions 規模調整和主控](consumption-plan.md)。
 
 如需範例 Azure Resource Manager 範本，請參閱[採用取用方案的函數應用程式]。
 

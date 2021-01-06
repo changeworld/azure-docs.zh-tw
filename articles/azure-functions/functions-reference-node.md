@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 21ab58095fa919e6302251c16e474b02f1445993
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: bf6ebd01a18a0ebf0ab5dd7d7ac3aa34256b4696
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301999"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936799"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -68,7 +68,7 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 ```
 
 ### <a name="exporting-an-async-function"></a>匯出非同步函式
-在 2.x [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 版的函式運行[Promises](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)時間中使用宣告或一般 JavaScript 保證時，您不需要明確呼叫 [`context.done`](#contextdone-method) 回呼來表示您的函式已完成。 在匯出的非同步函式/Promise 完成時，函式便會完成。 針對以1.x 版執行時間為目標的函式，您仍然必須 [`context.done`](#contextdone-method) 在程式碼執行完成時呼叫。
+在 2.x [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 版的函式運行[](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)時間中使用宣告或一般 JavaScript 保證時，您不需要明確呼叫 [`context.done`](#contextdone-method) 回呼來表示您的函式已完成。 在匯出的非同步函式/Promise 完成時，函式便會完成。 針對以1.x 版執行時間為目標的函式，您仍然必須 [`context.done`](#contextdone-method) 在程式碼執行完成時呼叫。
 
 下列範例說明的簡單函式會記錄其已遭到觸發，並立即完成執行。
 
@@ -327,7 +327,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 | ---------------------- | ------------------------------------------ |
 | **_訊息_ (錯誤)**   | 在記錄檔中寫入錯誤層級事件。   |
 | **warn(_message_)**    | 將警告層級事件寫入記錄檔。 |
-| **info(_message_)**    | 寫入資訊層級或更低層級的記錄。    |
+| **資訊 (_訊息_)**    | 寫入資訊層級或更低層級的記錄。    |
 | **verbose(_message_)** | 寫入詳細資訊層級記錄。           |
 
 下列範例會在警告追蹤層級寫入相同的記錄，而不是在資訊層級上：
@@ -493,7 +493,7 @@ HTTP 和 Webhook 觸發程序以及 HTTP 輸出繫結會使用要求和回應物
 
 ## <a name="scaling-and-concurrency"></a>調整和並行
 
-根據預設，Azure Functions 會自動監視您應用程式的負載，並視需要為 Node.js 建立額外的主控制項實例。 Functions 會針對不同的觸發程序類型使用內建 (不是使用者可設定的) 閾值，以決定何時新增執行個體，例如訊息的存留期和 QueueTrigger 的佇列大小。 如需詳細資訊，請參閱[耗用量和進階方案的運作方式](functions-scale.md#how-the-consumption-and-premium-plans-work)。
+根據預設，Azure Functions 會自動監視您應用程式的負載，並視需要為 Node.js 建立額外的主控制項實例。 Functions 會針對不同的觸發程序類型使用內建 (不是使用者可設定的) 閾值，以決定何時新增執行個體，例如訊息的存留期和 QueueTrigger 的佇列大小。 如需詳細資訊，請參閱[耗用量和進階方案的運作方式](event-driven-scaling.md)。
 
 這項調整行為足以滿足許多 Node.js 的應用程式。 對於 CPU 系結的應用程式，您可以使用多個語言工作者進程進一步改善效能。
 
@@ -551,7 +551,7 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>使用 Kudu
-1. 移至 `https://<function_app_name>.scm.azurewebsites.net`。
+1. 前往 `https://<function_app_name>.scm.azurewebsites.net`。
 
 2. 按一下 **偵錯主控台**  >  **CMD**]。
 
@@ -672,7 +672,7 @@ module.exports = myObj;
 
 使用參數開始時 `--inspect` ，Node.js 進程會接聽指定埠上的偵錯工具用戶端。 在 Azure Functions 2.x 中，您可以藉由新增環境變數或應用程式設定，指定要傳遞至執行程式碼之 Node.js 進程的引數 `languageWorkers:node:arguments = <args>` 。 
 
-若要在本機進行本機調試，請在檔案的 `"languageWorkers:node:arguments": "--inspect=5858"`local.settings.js下加入， `Values` 然後將偵錯工具附加到埠5858。 [local.settings.json](./functions-run-local.md#local-settings-file)
+若要在本機進行本機調試，請在檔案的 `"languageWorkers:node:arguments": "--inspect=5858"`local.settings.js下加入， `Values` 然後將偵錯工具附加到埠5858。 [](./functions-run-local.md#local-settings-file)
 
 使用 VS Code 進行偵錯工具時，會 `--inspect` 使用專案 launch.js檔案中的值，自動新增參數 `port` 。
 

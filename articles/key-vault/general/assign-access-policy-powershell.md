@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb28b4b678b37f69331b2ecff6272fd7aa64d191
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287618"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934523"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>使用 Azure PowerShell 指派 Key Vault 存取原則
 
@@ -51,7 +51,7 @@ Key Vault 存取原則會決定指定的服務主體（也就是應用程式或�
     Get-AzADServicePrincipal -SearchString <search-string>
     ```
 
-- 群組：使用 [remove-azadgroup 指令程式](/powershell/module/az.resources/get-azadgroup?view=azps-2.7.0) 搭配 `-SearchString` 參數，將結果篩選為所需群組的名稱：
+- 群組：使用 [remove-azadgroup 指令程式](/powershell/module/az.resources/get-azadgroup) 搭配 `-SearchString` 參數，將結果篩選為所需群組的名稱：
 
     ```azurepowershell-interactive
     Get-AzADGroup -SearchString <search-string>
@@ -79,7 +79,6 @@ Set-AzKeyVaultAccessPolicy -VaultName <key-vault-name> -ObjectId <Id> -Permissio
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Key Vault 安全性：身分識別和存取管理](overview-security.md#identity-and-access-management)
+- [Azure Key Vault 安全性：身分識別和存取管理](security-overview.md#identity-management)
 - [保護您的金鑰保存庫](secure-your-key-vault.md)。
 - [Azure Key Vault 開發人員指南](developers-guide.md)
-- [Azure Key Vault 最佳做法](best-practices.md)

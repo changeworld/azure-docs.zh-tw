@@ -3,12 +3,12 @@ title: Azure Functions 的應用程式設定參考
 description: Azure Functions 應用程式設定或環境變數的參考文件。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898720"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937105"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的應用程式設定參考
 
@@ -131,7 +131,7 @@ Application Insights 的連接字串。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 
 
 |答案|範例值|
 |---|------------|
-|AzureWebJobsSecretStorageType|檔案|
+|AzureWebJobsSecretStorageType|檔案儲存體|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -256,7 +256,7 @@ _此設定目前為預覽狀態。_
 函式應用程式可相應放大的執行個體數目上限。 預設值是無限制。
 
 > [!IMPORTANT]
-> 此設定目前為預覽狀態。  已新增函式 [最大 scale out 的應用程式屬性](./functions-scale.md#limit-scale-out) ，而且是限制 scale out 的建議方式。
+> 此設定目前為預覽狀態。  已新增函式 [最大 scale out 的應用程式屬性](./event-driven-scaling.md#limit-scale-out) ，而且是限制 scale out 的建議方式。
 
 |答案|範例值|
 |---|------------|

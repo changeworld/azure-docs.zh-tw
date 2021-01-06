@@ -3,12 +3,12 @@ title: 範本中的使用者定義函數
 description: 描述如何在 Azure Resource Manager 範本中定義和使用使用者定義函數 (ARM 範本) 。
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: f428fa3bc827af3820ad9f928f4f92b881c9c84c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436958"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934674"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM 範本中的使用者定義函數
 
@@ -44,7 +44,7 @@ ms.locfileid: "96436958"
 
 ## <a name="use-the-function"></a>使用函數
 
-下列範例顯示包含使用者定義函數的範本。 它使用該函數來取得儲存體帳戶的唯一名稱。 範本有一個名為 **storageNamePrefix** 的參數，它會以參數的形式傳遞至函式。
+下列範例顯示包含使用者定義函數的範本。 它使用該函數來取得儲存體帳戶的唯一名稱。 範本有一個名為 `storageNamePrefix` 的參數，它會以參數的形式傳遞至函式。
 
 ```json
 {

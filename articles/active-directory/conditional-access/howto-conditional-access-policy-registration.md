@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81f4407ee7721332a4143952d1720151bb70d8c9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61f655d459592022a2e34b87adc50e3d49b03dc9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837533"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935762"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>條件式存取：保護安全性資訊註冊
 
@@ -61,7 +61,7 @@ ms.locfileid: "94837533"
 
 > [!WARNING]
 > 如果您使用裝置狀態作為原則中的條件，這可能會影響目錄中的來賓使用者。 [報告專用模式](concept-conditional-access-report-only.md)有助於判斷原則決策的影響。
-> 請注意，報告專用模式不適用於具有「使用者動作」範圍的 CA 原則。
+> 請注意，僅限報表模式不適用於具有「使用者動作」範圍的條件式存取原則。
 
 ## <a name="next-steps"></a>後續步驟
 

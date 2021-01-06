@@ -3,12 +3,12 @@ title: Azure 備份詞彙
 description: 本文定義有助於搭配 Azure 備份使用的術語。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 8baa47667e86b99ebbbf273610809814e768c077
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733321"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935065"
 ---
 # <a name="azure-backup-glossary"></a>Azure 備份詞彙
 
@@ -172,7 +172,7 @@ GFS (祖父-父親) 備份原則可讓您定義每日、每月和每年備份排
 
 ## <a name="instant-restore"></a>立即還原
 
-立即還原牽涉到直接從備份快照集還原電腦，而不是從保存庫中的快照集複本還原。 立即還原比從保存庫還原還快。 可用的立即還原點數目取決於針對快照集所設定的保留期間。
+ (工作負載特定的詞彙) 立即還原牽涉到直接從備份快照集還原機器，而不是從保存庫中的快照集複本還原。 立即還原比從保存庫還原還快。 可用的立即還原點數目取決於針對快照集所設定的保留期間。 目前僅適用于 Azure VM 備份。
 
 ## <a name="iops"></a>IOPS
 
@@ -226,23 +226,19 @@ GFS (祖父-父親) 備份原則可讓您定義每日、每月和每年備份排
 
 使用 MARS 代理程式在 Azure 中備份或還原內部部署或本機電腦時，會使用複雜密碼來加密和解密資料。
 
-## <a name="point-in-time-restore"></a>還原時間點
-
-將專案還原至特定時間點的狀態 (PIT) 。
-
 ## <a name="private-endpoint"></a>私人端點
 
 請參閱 [私人端點檔](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)集。
 
 ## <a name="protected-instance"></a>受保護的實例
 
-受保護的實例是指您用來設定備份至 Azure 的電腦、實體或虛擬伺服器。  從 **計費的觀點來看**，電腦的受保護實例計數是其前端大小的函式。 [深入了解](https://azure.microsoft.com/pricing/details/backup/)。
+受保護的實例是指您用來設定備份至 Azure 的電腦、實體或虛擬伺服器。  從 **計費的觀點來看**，電腦的受保護實例計數是其前端大小的函式。 因此，單一備份實例 (（例如備份至 Azure) 的 VM）可以對應至多個受保護的實例，視其前端大小而定。 [深入了解](https://azure.microsoft.com/pricing/details/backup/)。
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (角色型存取控制) 
 
 請參閱 [RBAC 檔](https://docs.microsoft.com/azure/role-based-access-control/overview)。
 
-## <a name="recovery-point-restore-point-retention-point"></a>復原點/還原點/保留點
+## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>復原點/還原點/保留點/時間點 (PIT) 
 
 正在備份的原始資料複本。 保留點會與時間戳記相關聯，因此您可以使用此保留點將專案還原至特定時間點。
 
@@ -264,11 +260,11 @@ GFS (祖父-父親) 備份原則可讓您定義每日、每月和每年備份排
 
 ## <a name="rpo-recovery-point-objective"></a>RPO (復原點目標) 
 
-RPO 表示資料遺失案例中可接受的最大資料遺失。 這取決於備份頻率。
+RPO 指出資料遺失案例中可能遺失的最大資料遺失。 這取決於備份頻率。
 
 ## <a name="rto-recovery-time-objective"></a>RTO (復原時間目標) 
 
-RTO 表示資料遺失案例之後，可以將資料還原到最後一個可用時間點的最大可接受時間。
+RTO 表示資料遺失案例後，可將資料還原到上次可用時間點的最大可能時間。
 
 ## <a name="scheduled-backup"></a>排定的備份
 
@@ -284,7 +280,7 @@ RTO 表示資料遺失案例之後，可以將資料還原到最後一個可用�
 
 ## <a name="snapshot"></a>快照式
 
-快照集是完整的虛擬硬碟 (VHD) 唯讀複本。 [深入了解](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)。
+快照集是虛擬硬碟 (VHD) 或 Azure 檔案共用的完整唯讀複本。 深入瞭解 [磁片快照](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) 集和檔案 [快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)集。
 
 ## <a name="storage-account"></a>儲存體帳戶
 
@@ -314,7 +310,7 @@ Azure 中存放備份資料的儲存實體。 它也是 RBAC 和帳單的單位�
 
 ## <a name="vault-credentials"></a>保存庫認證
 
-保存庫認證檔是入口網站針對每個保存庫所產生的憑證。 將伺服器登錄至保存庫時，會使用此功能。 [深入了解](backup-azure-dpm-introduction.md)。
+保存庫認證檔是入口網站針對每個保存庫所產生的憑證。 將內部部署伺服器註冊至保存庫時，會使用此功能。 [深入了解](backup-azure-dpm-introduction.md)。
 
 ## <a name="vnet-virtual-network"></a>VNET (虛擬網路) 
 

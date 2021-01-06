@@ -3,12 +3,12 @@ title: 使用範本的條件式部署
 description: 說明如何在 Azure Resource Manager 範本中，有條件地將資源部署 (ARM 範本) 。
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: 1492e9f9f45f23628f9933628fd2740e08ad9eb0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 5650f7fb9f1483f2dc7059607732ecc68cbb7b9d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672843"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934776"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM 範本中的條件式部署
 
@@ -19,7 +19,7 @@ ms.locfileid: "97672843"
 
 ## <a name="new-or-existing-resource"></a>新的或現有的資源
 
-您可以使用條件式部署來建立新的資源，或使用現有的資源。 下列範例說明如何使用條件來部署新的儲存體帳戶，或使用現有的儲存體帳戶。
+您可以使用條件式部署來建立新的資源，或使用現有的資源。 下列範例示範如何使用 `condition` 部署新的儲存體帳戶或使用現有的儲存體帳戶。
 
 ```json
 {
@@ -36,7 +36,7 @@ ms.locfileid: "97672843"
 }
 ```
 
-當參數 **>neworexisting** 設定為 **new** 時，條件評估為 true。 已部署儲存體帳戶。 不過，當 **>neworexisting** 設定為 [ **現有**] 時，條件會評估為 false，且不會部署儲存體帳戶。
+當參數 `newOrExisting` 設定為 **new** 時，條件評估為 true。 已部署儲存體帳戶。 不過，當 `newOrExisting` 設為 [ **現有**] 時，條件會評估為 false，且不會部署儲存體帳戶。
 
 如需使用 `condition` 項目的完整範例範本，請參閱[ 使用新的或現有的虛擬網路、儲存體和公用 IP 的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions)。
 
@@ -80,13 +80,13 @@ ms.locfileid: "97672843"
 
 如果您使用 [參考](template-functions-resource.md#reference) 或 [清單](template-functions-resource.md#list) 函式搭配有條件地部署的資源，即使資源未部署，也會評估函式。 如果函式參考的資源不存在，您會收到錯誤。
 
-使用 [if](template-functions-logical.md#if) 函式，以確保只有在部署資源時，才會評估函式的條件。 如需對有條件部署的資源搭配使用 if 和 reference 的範例範本，請參閱 [if 函式](template-functions-logical.md#if)。
+使用 [if](template-functions-logical.md#if) 函式，以確保只有在部署資源時，才會評估函式的條件。 請參閱 [if](template-functions-logical.md#if) 函式，以取得使用和搭配有 `if` `reference` 條件部署資源的範例範本。
 
 您可以將 [資源設定為相依](define-resource-dependency.md) 于條件式資源，就像任何其他資源一樣。 當條件式資源未部署時，Azure Resource Manager 會自動將它從必要的相依性中移除。
 
 ## <a name="complete-mode"></a>完整模式
 
-如果您使用 [完整模式](deployment-modes.md) 部署範本，而且因為條件評估為 false 而未部署資源，則結果取決於您用來部署範本的 REST API 版本。 如果您使用的版本早于2019-05-10，則 **不會刪除** 資源。 使用2019-05-10 或更新版本時， **會刪除** 資源。 當條件為 false 時，Azure PowerShell 和 Azure CLI 的最新版本會刪除資源。
+如果您以 [完整模式](deployment-modes.md) 部署範本，但因為評估為 false 而未部署資源 `condition` ，則結果取決於您用來部署範本的 REST API 版本。 如果您使用的版本早于2019-05-10，則 **不會刪除** 資源。 使用2019-05-10 或更新版本時， **會刪除** 資源。 當條件為 false 時，Azure PowerShell 和 Azure CLI 的最新版本會刪除資源。
 
 ## <a name="next-steps"></a>後續步驟
 

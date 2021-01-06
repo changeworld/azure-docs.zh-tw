@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 9416005c708cafe5adbad2b09ce70c41fae66fd7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443308"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936017"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>呼叫 web Api 的 Daemon 應用程式-取得權杖
 
@@ -57,7 +57,7 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 > [!IMPORTANT]
 > 當 MSAL 要求接受版本1.0 存取權杖之資源的存取權杖時，Azure AD 會取得最後一個斜線之前的所有內容，並將其作為資源識別碼，藉此從要求的範圍剖析所需的物件。
-> 因此，如果 Azure SQL Database ( **HTTPs： \/ /database.windows.net** ) ，則資源預期會有一個以斜線 (結尾的物件 Azure SQL Database， `https://database.windows.net/`) ，您必須要求的範圍 `https://database.windows.net//.default` 。  (記下雙斜線。 ) 另請參閱 MSAL.NET 問題 [#747：省略資源 url 的尾端斜線，這會導致 sql 驗證失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+> 因此，如果 Azure SQL Database (**HTTPs： \/ /database.windows.net**) ，則資源預期會有一個以斜線 (結尾的物件 Azure SQL Database， `https://database.windows.net/`) ，您必須要求的範圍 `https://database.windows.net//.default` 。  (記下雙斜線。 ) 另請參閱 MSAL.NET 問題 [#747：省略資源 url 的尾端斜線，這會導致 sql 驗證失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -91,6 +91,10 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
     // Mitigation: Change the scope to be as expected.
 }
 ```
+
+### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>AcquireTokenForClient 使用應用程式權杖快取
+
+在 MSAL.NET 中，會 `AcquireTokenForClient` 使用應用程式權杖快取。  (所有其他 AcquireToken *XX* 方法都會使用使用者權杖快取。 `AcquireTokenSilent` 在呼叫之前，) 不會呼叫 `AcquireTokenForClient` ，因為會 `AcquireTokenSilent` 使用 *使用者* 權杖快取。 `AcquireTokenForClient` 檢查 *應用程式* 權杖快取本身，並加以更新。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -200,10 +204,6 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 如需詳細資訊，請參閱通訊協定檔： [Microsoft 身分識別平臺和 OAuth 2.0 用戶端認證流程](v2-oauth2-client-creds-grant-flow.md)。
 
-## <a name="application-token-cache"></a>應用程式權杖快取
-
-在 MSAL.NET 中，會 `AcquireTokenForClient` 使用應用程式權杖快取。  (所有其他 AcquireToken *XX* 方法都會使用使用者權杖快取。 `AcquireTokenSilent` 在呼叫之前，) 不會呼叫 `AcquireTokenForClient` ，因為會 `AcquireTokenSilent` 使用 *使用者* 權杖快取。 `AcquireTokenForClient` 檢查 *應用程式* 權杖快取本身，並加以更新。
-
 ## <a name="troubleshooting"></a>疑難排解
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>您使用資源/. 預設範圍嗎？
@@ -228,6 +228,12 @@ Content: {
   }
 }
 ```
+
+### <a name="are-you-calling-your-own-api"></a>您是否呼叫自己的 API？
+
+如果您呼叫自己的 web API，但無法將應用程式許可權新增至您的 daemon 應用程式的應用程式註冊，您是否會在 web API 中公開應用程式角色？
+
+如需詳細資訊，請參閱 [公開應用程式角色 (的應用程式角色) ](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) ，尤其 [是確保 Azure AD 會將 web API 的權杖簽發給僅允許的用戶端](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients)。
 
 ## <a name="next-steps"></a>後續步驟
 

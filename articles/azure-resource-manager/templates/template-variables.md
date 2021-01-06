@@ -3,12 +3,12 @@ title: 範本中的變數
 description: 描述如何在 Azure Resource Manager 範本中定義 (ARM 範本) 的變數。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353454"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934657"
 ---
 # <a name="variables-in-arm-template"></a>ARM 範本中的變數
 
@@ -28,7 +28,7 @@ Resource Manager 在開始部署作業之前解析變數。 只要在範本中�
 },
 ```
 
-您無法在 variables 區段中使用 [reference](template-functions-resource.md#reference) 函式或任何 [清單](template-functions-resource.md#list) 函數。 這些函式會取得資源的執行時間狀態，而且在解析變數之前無法執行部署。
+您無法使用 [參考](template-functions-resource.md#reference) 函數或區段中的任何 [清單](template-functions-resource.md#list) 函數 `variables` 。 這些函式會取得資源的執行時間狀態，而且在解析變數之前無法執行部署。
 
 ## <a name="use-variable"></a>使用變數
 
@@ -63,7 +63,7 @@ Resource Manager 在開始部署作業之前解析變數。 只要在範本中�
 },
 ```
 
-在 parameters 中，您可建立一個值來表示所要使用的組態值。
+在中 `parameters` ，您會建立一個值，指出要使用的設定值。
 
 ```json
 "parameters": {
@@ -87,7 +87,7 @@ Resource Manager 在開始部署作業之前解析變數。 只要在範本中�
 
 下列範例示範使用變數的案例。
 
-|範本  |說明  |
+|範本  |描述  |
 |---------|---------|
 | [變數定義](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | 示範不同類型的變數。 範本不會部署任何資源。 它會建構變數值並傳回這些值。 |
 | [組態變數](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 示範如何使用可定義組態值的變數。 範本不會部署任何資源。 它會建構變數值並傳回這些值。 |

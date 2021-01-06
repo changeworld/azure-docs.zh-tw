@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837476"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934997"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>規劃條件式存取部署
 
@@ -24,7 +24,7 @@ ms.locfileid: "94837476"
 
 在行動優先、雲端至上的世界中，您的使用者可以使用各種裝置與應用程式，從任何位置存取您組織的資源。 因此，僅將焦點放在誰可以存取資源，已不再足夠。 您也必須考慮使用者的所在位置、使用中的裝置、要存取的資源等等。 
 
-Azure Active Directory (Azure AD) 條件式存取 (CA) 會分析訊號 (例如使用者、裝置與位置) 以自動進行決策制訂並強制執行組織的資源存取原則。 您可以使用 CA 原則來套用存取控制，例如 Multi-Factor Authentication (MFA)。 CA 原則可讓您在需要安全性時提示使用者進行 MFA，並在不需要時避免造成使用者的困擾。
+Azure Active Directory (Azure AD) 條件式存取會分析使用者、裝置和位置等信號，以將決策自動化，並強制執行資源的組織存取原則。 您可以使用條件式存取原則，將存取控制（例如 Multi-Factor Authentication (MFA) ）套用。 條件式存取原則可讓您在需要安全性時提示使用者進行 MFA，並在不需要時，讓使用者不需要使用。
 
 ![條件式存取概觀](./media/plan-conditional-access/conditional-access-overview-how-it-works.png)
 
@@ -38,7 +38,7 @@ Microsoft 提供名為[安全性預設值](../fundamentals/concept-fundamentals-
 
 部署條件式存取的優點如下：
 
-* 提高生產力。 僅在有一或多個訊號許可時，才中斷使用 MFA 之類登入條件的使用者。 CA 原則可讓您控制何時提示使用者進行 MFA、何時封鎖存取，以及何時必須使用受信任的裝置。
+* 提高生產力。 僅在有一或多個訊號許可時，才中斷使用 MFA 之類登入條件的使用者。 條件式存取原則可讓您控制何時會提示使用者進行 MFA、何時封鎖存取，以及何時必須使用受信任的裝置。
 
 * 管理風險。 使用原則條件進行自動化的風險評估，表示可以立即識別並補救或封鎖有風險的登入。 結合條件式存取與可偵測異常和可疑事件的 [Identity Protection](../identity-protection/overview-identity-protection.md)，可讓您確定何時封鎖或限制對資源的存取。 
 
@@ -71,7 +71,7 @@ Microsoft 提供名為[安全性預設值](../fundamentals/concept-fundamentals-
 
 * [何謂條件式存取？](https://youtu.be/ffMAw2IVO7A)
 * [如何部署條件式存取？](https://youtu.be/c_izIRNJNuk)
-* [如何向終端使用者推出 CA 原則？](https://youtu.be/0_Fze7Zpyvc)
+* [如何將條件式存取原則推出給終端使用者？](https://youtu.be/0_Fze7Zpyvc)
 * [使用裝置控制措施的條件式存取](https://youtu.be/NcONUf-jeS4)
 * [使用 Azure AD MFA 的條件式存取](https://youtu.be/Tbc-SU97G-w)
 * [Enterprise Mobility + Security 中的條件式存取](https://youtu.be/A7IrxAH87wc)
@@ -102,13 +102,13 @@ Microsoft 提供名為[安全性預設值](../fundamentals/concept-fundamentals-
 > [!NOTE]
 > 若要推出不是管理員特定的新原則，請排除所有管理員。 這可確保管理員仍然可以存取原則，並在發生重大影響時進行變更或將其撤銷。 將原則套用至所有使用者之前，請一律以一小群使用者進行驗證。
 
-## <a name="understand-ca-policy-components"></a>了解 CA 原則元件
-CA 原則是 if-then 語句：如果符合指派，則套用這些存取控制。
+## <a name="understand-conditional-access-policy-components"></a>瞭解條件式存取原則元件
+條件式存取原則是 if-then 語句：如果符合指派，則套用這些存取控制。
 
-設定 CA 原則時，條件稱為「指派」。 CA 原則可讓您根據特定指派，對貴組織的應用程式強制執行存取控制。
+設定條件式存取原則時，條件稱為 *指派*。 條件式存取原則可讓您根據特定指派，在貴組織的應用程式上強制執行存取控制。
 
 
-如需詳細資訊，請參閱[建置 CA 原則](concept-conditional-access-policies.md) \(部分機器翻譯\)。
+如需詳細資訊，請參閱 [建立條件式存取原則](concept-conditional-access-policies.md)。
 
 ![建立原則畫面](media/plan-conditional-access/create-policy.png)
 
@@ -195,7 +195,7 @@ CA 原則是 if-then 語句：如果符合指派，則套用這些存取控制�
 ![存取權杖發行圖表](media/plan-conditional-access/CA-policy-token-issuance.png)
 
 > [!NOTE]
-> 如果不需要指派，且沒有任何 CA 原則生效，則預設行為是發出存取權杖。 
+> 如果不需要指派，且沒有任何條件式存取原則生效，則預設行為是發出存取權杖。 
 
 例如，假設有一個原則，其中：
 
@@ -207,14 +207,14 @@ CA 原則是 if-then 語句：如果符合指派，則套用這些存取控制�
 
 條件式存取架構可為您提供絕佳的設定彈性。 不過，絕佳的彈性也表示您應該先仔細地檢閱每個設定原則，然後才加以發行，以避免產生不想要的結果。
 
-### <a name="apply-ca-policies-to-every-app"></a>將 CA 原則套用至每個應用程式
+### <a name="apply-conditional-access-policies-to-every-app"></a>將條件式存取原則套用至每個應用程式
 
-如果 CA 原則條件不會觸發存取控制，則預設會發出存取權杖。 請確定每個應用程式都已套用至少一個條件式存取原則
+如果條件式存取原則條件未觸發存取控制，則預設會發出存取權杖。 請確定每個應用程式都已套用至少一個條件式存取原則
 
 > [!IMPORTANT]
 > 在單一原則中使用區塊與所有應用程式要非常小心。 這可能會將管理員鎖定在 Azure 管理入口網站之外，而且無法為重要端點 (例如 Microsoft Graph) 設定排除項。
 
-### <a name="minimize-the-number-of-ca-policies"></a>將 CA 原則數目減到最少
+### <a name="minimize-the-number-of-conditional-access-policies"></a>將條件式存取原則的數目降至最低
 
 為每個應用程式建立原則效率不高，而且會導致管理困難。 條件式存取將僅對每個使用者套用前 195 個原則。 我們建議您分析您的應用程式，並將其分組為對相同使用者具有相同資源需求的應用程式。 例如，如果所有 Microsoft 365 apps 或所有 HR apps 對相同的使用者都有相同的需求，請建立單一原則，並包含其套用的所有應用程式。 
 
@@ -228,9 +228,9 @@ CA 原則是 if-then 語句：如果符合指派，則套用這些存取控制�
 
   * 建立內部部署安全性群組，並將其與 Azure AD 同步。 安全性群組應包含您的專用原則管理帳戶。 
 
-   * 豁免此安全性群組會構成所有 CA 原則。
+   * 豁免此安全性群組會形成所有條件式存取原則。
 
-   * 發生服務中斷時，請適當地將其他管理員新增至內部部署群組，並強制執行同步處理。這會以動畫方式呈現 CA 原則的豁免。
+   * 發生服務中斷時，請適當地將您的其他系統管理員新增至內部部署群組，並強制執行同步處理。這會對條件式存取原則的豁免進行動畫。
 
 ### <a name="set-up-report-only-mode"></a>設定報告專用模式
 
@@ -240,9 +240,9 @@ CA 原則是 if-then 語句：如果符合指派，則套用這些存取控制�
 * 要求使用 MFA
 * 實作登入風險原則
 
-[報告專用模式](concept-conditional-access-report-only.md) \(部分機器翻譯\) 可讓管理員在於 CA 原則的環境中加以啟用之前，先評估其影響。
+[僅限報表模式 ](concept-conditional-access-report-only.md) 可讓系統管理員在其環境中啟用條件式存取原則之前，先評估條件式存取原則的影響。
 
-了解如何[在 CA 原則上設定報告專用模式](howto-conditional-access-insights-reporting.md) \(部分機器翻譯\)。
+瞭解如何 [在條件式存取原則上設定僅限報表模式](howto-conditional-access-insights-reporting.md)。
 
 ### <a name="plan-for-disruption"></a>針對中斷進行規劃
 
@@ -293,9 +293,9 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 
 針對您的環境準備好新原則時，請確保在發布每個原則之前先對其進行檢閱，以避免產生不想要的結果。
 
-## <a name="common-policies"></a>常用原則
+## <a name="common-policies"></a>常見原則
 
-在規劃您的 CA 原則解決方案時，請評估您是否需要建立原則來達到下列結果。
+規劃條件式存取原則解決方案時，請評估您是否需要建立原則來達成下列結果。
 
 * [需要 MFA](#require-mfa)
 * [回應可能遭盜用的帳戶](#respond-to-potentially-compromised-accounts)
@@ -319,7 +319,7 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 
 ### <a name="respond-to-potentially-compromised-accounts"></a>回應可能遭盜用的帳戶
 
-透過 CA 原則，您可以針對使用可能遭盜用之身分識別的登入實作自動化回應。 帳戶遭到盜用的可能性會以風險層級的形式來表示。 Identity Protection 會計算兩種風險層級：登入風險與使用者風險。 下面是可以啟用的三個預設原則。
+使用條件式存取原則時，您可以透過可能遭盜用的身分識別，執行自動回應以進行登入。 帳戶遭到盜用的可能性會以風險層級的形式來表示。 Identity Protection 會計算兩種風險層級：登入風險與使用者風險。 下面是可以啟用的三個預設原則。
 
 * [要求所有使用者註冊 MFA](howto-conditional-access-policy-risk.md) \(部分機器翻譯\)
 
@@ -374,7 +374,7 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 
 ### <a name="create-a-test-plan"></a>建立測試計劃
 
-測試計畫非常重要，它可用來比較預期結果和實際結果。 您應該一律先做出預期，然後再測試某些項目。 下表概述範例測試案例。 根據您 CA 原則設定的方式，調整案例和預期的結果。
+測試計畫非常重要，它可用來比較預期結果和實際結果。 您應該一律先做出預期，然後再測試某些項目。 下表概述範例測試案例。 根據您的條件式存取原則的設定方式來調整案例和預期的結果。
 
 | 原則| 狀況| 預期的結果 |
 | - | - | - |
@@ -389,9 +389,9 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 
 ### <a name="configure-the-test-policy"></a>設定測試原則
 
-在 [Azure 入口網站](https://portal.azure.com/)中，您可以在 [Azure Active Directory] > [安全性] > [條件式存取] 下設定 CA 原則。
+在 [Azure 入口網站](https://portal.azure.com/)中，您可以在 [Azure Active Directory > 安全性 > 條件式存取] 下設定條件式存取原則。
 
-如果您想要深入了解如何建立 CA 原則，請參閱此範例：[當使用者登入 Azure 入口網站時，用來提示進行 MFA 的 CA 原則](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。 本快速入門可協助您：
+如果您想要深入瞭解如何建立條件式存取原則，請參閱此範例： [當使用者登入 Azure 入口網站時，條件式存取原則會提示 MFA](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。 本快速入門可協助您：
 
 * 熟悉使用者介面
 
@@ -415,7 +415,7 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 驗證條件式存取原則的另一種方法是使用 [what-if 工具](troubleshoot-conditional-access-what-if.md) \(部分機器翻譯\)，其模擬哪些原則適用於在假設情況下登入的使用者。 選取您要測試的登入屬性 (例如使用者、應用程式、裝置平台與位置)，並查看將會套用哪些原則。
 
 > [!NOTE] 
-> 雖然模擬執行可讓您了解 CA 原則的影響，但其不會取代實際的測試回合。
+> 雖然模擬執行可讓您瞭解條件式存取原則所造成的影響，但它並不會取代實際的測試回合。
 
 ### <a name="test-your-policy"></a>測試您的原則
 
@@ -442,14 +442,14 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 
 ## <a name="manage-access-to-cloud-apps"></a>管理雲端應用程式的存取權
 
-使用下列管理選項來控制及管理您的 CA 原則：
+使用下列管理選項來控制及管理您的條件式存取原則：
 
 ![螢幕擷取畫面顯示 C A 原則的管理選項，包括命名位置、自訂控制項、使用規定、V P N 連線能力，以及選取的傳統原則。](media/plan-conditional-access/manage-access.png)
 
 
 ### <a name="named-locations"></a>具名位置
 
-CA 原則的位置條件可讓您將存取控制設定和使用者的網路位置結合。 使用[具名位置](location-condition.md) \(部分機器翻譯\)，您可以建立 IP 位址範圍、國家與地區的邏輯分組。
+條件式存取原則的位置條件可讓您將存取控制設定與使用者的網路位置結合。 使用[具名位置](location-condition.md) \(部分機器翻譯\)，您可以建立 IP 位址範圍、國家與地區的邏輯分組。
 
 ### <a name="custom-controls"></a>自訂控制項
 
@@ -461,7 +461,7 @@ CA 原則的位置條件可讓您將存取控制設定和使用者的網路位�
 
 ## <a name="troubleshoot-conditional-access"></a>條件式存取的疑難排解
 
-當使用者遇到 CA 原則的問題時，請收集下列資訊以協助進行疑難排解。
+當使用者遇到條件式存取原則的問題時，請收集下列資訊以協助進行疑難排解。
 
 * 使用者主體名稱
 
@@ -493,4 +493,4 @@ CA 原則的位置條件可讓您將存取控制設定和使用者的網路位�
 
 [深入了解 Identity Protection](../identity-protection/overview-identity-protection.md)
 
-[使用 Microsoft Graph API 來管理 CA 原則](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md) \(英文\)
+[使用 Microsoft Graph API 管理條件式存取原則](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

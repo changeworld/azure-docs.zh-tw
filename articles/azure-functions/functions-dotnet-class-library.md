@@ -4,12 +4,12 @@ description: 了解如何使用 C# 開發 Azure Functions。
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 9e11d013b6e7473f290ba1ccb54857034491d116
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672660"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936918"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
 
@@ -138,7 +138,7 @@ public static class BindingExpressionsExample
 
 建置流程在組建資料夾的函式資料夾中建立 *function.json* 檔案。 如稍早所述，此檔案不適合直接編輯。 您無法編輯此檔案來變更繫結設定或停用函式。 
 
-此檔案的目的是要提供資訊給調整控制器，以用於調整取用 [方案的決策](functions-scale.md#how-the-consumption-and-premium-plans-work)。 因此，檔案只會有觸發程序資訊，而不會有輸入或輸出繫結。
+此檔案的目的是要提供資訊給調整控制器，以用於調整取用 [方案的決策](event-driven-scaling.md)。 因此，檔案只會有觸發程序資訊，而不會有輸入或輸出繫結。
 
 產生的 *function.json* 檔案包含 `configurationSource` 屬性 (property)，指示執行階段使用 .NET 屬性 (attribute) 屬性進行繫結，而不是使用 *function.json* 設定。 以下是範例：
 
@@ -208,7 +208,7 @@ Visual Studio 會使用 [Azure Functions Core Tools](functions-run-local.md#inst
 
 ## <a name="readytorun"></a>ReadyToRun
 
-您可以將函數應用程式編譯為 [ReadyToRun 二進位](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)檔。 ReadyToRun 是一種預先編譯的形式，可改善啟動效能，以協助降低在取用[方案](functions-scale.md#consumption-plan)中執行時[冷啟動](functions-scale.md#cold-start)的影響。
+您可以將函數應用程式編譯為 [ReadyToRun 二進位](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)檔。 ReadyToRun 是一種預先編譯的形式，可改善啟動效能，以協助降低在取用[方案](consumption-plan.md)中執行時[冷啟動](event-driven-scaling.md#cold-start)的影響。
 
 ReadyToRun 可在 .NET 3.0 中取得，且需要 [3.0 版的 Azure Functions 運行](functions-versions.md)時間。
 

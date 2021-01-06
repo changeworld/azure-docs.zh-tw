@@ -4,12 +4,12 @@ description: 瞭解如何將您的函數應用程式連接至 Application Insigh
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 77cc87e44990f471ef38871c0225835660779a3c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825747"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937275"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>如何設定 Azure Functions 的監視
 
@@ -197,7 +197,7 @@ Application Insights 具有[取樣](../azure-monitor/app/sampling.md)功能，�
 
 此功能處於預覽狀態。 
 
-您可以讓 [Azure Functions 的調整控制器](./functions-scale.md#runtime-scaling) 發出記錄至 Application Insights 或 Blob 儲存體，以進一步瞭解調整控制器針對您的函數應用程式所做的決策。
+您可以讓 [Azure Functions 的調整控制器](./event-driven-scaling.md#runtime-scaling) 發出記錄至 Application Insights 或 Blob 儲存體，以進一步瞭解調整控制器針對您的函數應用程式所做的決策。
 
 若要啟用這項功能，請將名為的應用程式設定新增 `SCALE_CONTROLLER_LOGGING_ENABLED` 至函數應用程式設定。 這項設定的值必須是以下格式的格式 `<DESTINATION>:<VERBOSITY>` ：
 

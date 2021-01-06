@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 86e13c0f57b30d2c53d9194e89ec89e7abdf1574
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 707c69efddeda364f0c62e9719ae1a6073dfe9ad
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187046"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935728"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>適用于 Azure Functions 的 Azure 安全性基準
 
 適用于 Azure Functions 的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
@@ -80,7 +80,7 @@ ms.locfileid: "96187046"
 
 - [Azure Functions 網路選項](./functions-networking-options.md)
 
-- [Azure Functions Premium 方案](./functions-scale.md#premium-plan)
+- [Azure Functions Premium 方案](./functions-premium-plan.md)
 
 - [App Service 環境簡介](../app-service/environment/intro.md)
 
@@ -124,7 +124,7 @@ ms.locfileid: "96187046"
 
 - [Azure Functions 網路選項](./functions-networking-options.md)
 
-- [Azure Functions Premium 方案](./functions-scale.md#premium-plan)
+- [Azure Functions Premium 方案](./functions-premium-plan.md)
 
 - [App Service 環境簡介](../app-service/environment/intro.md)
 
@@ -146,7 +146,7 @@ ms.locfileid: "96187046"
 
 - [Azure Functions 網路選項](./functions-networking-options.md)
 
-- [Azure Functions Premium 方案](./functions-scale.md#premium-plan)
+- [Azure Functions Premium 方案](./functions-premium-plan.md)
 
 - [App Service 環境簡介](../app-service/environment/intro.md)
 
@@ -463,7 +463,7 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合來監�
 
 - [如何設定您的 Azure Functions 應用程式以使用 Azure AD 登入](../app-service/configure-authentication-provider-aad.md)
 
-- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -551,7 +551,7 @@ Azure Functions 也提供與 Azure 應用程式 Insights 的內建整合來監�
 
 - [Azure Functions 網路選項](./functions-networking-options.md)
 
-- [Azure Functions Premium 方案](./functions-scale.md#premium-plan)
+- [Azure Functions Premium 方案](./functions-premium-plan.md)
 
 - [瞭解私人端點](../private-link/private-endpoint-overview.md)
 
@@ -827,7 +827,7 @@ Microsoft 管理 Azure Functions 的基礎結構，並已實行嚴格的控制�
 
 - [Azure Functions 網路選項](./functions-networking-options.md)
 
-- [Azure Functions Premium 方案](./functions-scale.md#premium-plan)
+- [Azure Functions Premium 方案](./functions-premium-plan.md)
 
 - [App Service 環境的網路考量](../app-service/environment/network-info.md)
 

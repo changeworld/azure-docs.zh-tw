@@ -3,12 +3,12 @@ title: 範本中的輸出
 description: 說明如何)  (ARM 範本中定義 Azure Resource Manager 範本的輸出值。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353522"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934725"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM 範本中的輸出
 
@@ -47,7 +47,7 @@ ms.locfileid: "96353522"
 
 ## <a name="dynamic-number-of-outputs"></a>動態輸出數目
 
-在某些情況下，您不知道建立範本時需要傳回值的實例數目。 您可以使用 **copy** 元素傳回變數的值數目。
+在某些情況下，您不知道建立範本時需要傳回值的實例數目。 您可以使用元素來傳回變數的值數目 `copy` 。
 
 ```json
 "outputs": {
@@ -61,7 +61,7 @@ ms.locfileid: "96353522"
 }
 ```
 
-如需詳細資訊，請參閱 [Azure Resource Manager 範本中的輸出反復](copy-outputs.md)專案。
+如需詳細資訊，請參閱 [ARM 範本中的輸出反復](copy-outputs.md)專案。
 
 ## <a name="linked-templates"></a>連結的範本
 
@@ -112,7 +112,7 @@ az deployment group show \
 
 下列範例示範使用輸出的案例。
 
-|範本  |說明  |
+|範本  |描述  |
 |---------|---------|
 |[複製變數](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 建立複雜的變數，並輸出那些值。 不會部署任何資源。 |
 |[公用 IP 位址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 建立公用 IP 位址，並輸出資源識別碼。 |

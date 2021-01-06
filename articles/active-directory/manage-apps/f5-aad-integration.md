@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e011417b936ed83b4658e6dad25bf8e8ee88aed
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317831"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935235"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>適用于安全混合式存取的 F5 大型 IP 存取原則管理員和 Azure Active Directory 整合
 
@@ -37,7 +37,7 @@ SHA 藉由讓組織繼續使用其 F5 投資來滿足更優質的網路和應用
 
 - [洩漏的認證偵測](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)
 
-- [自助式密碼重設 (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
+- [自助式密碼重設 (SSPR) ](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr)
 
 - [合作夥伴](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users) 共同作業-控管來賓存取權的權利管理
 
@@ -67,11 +67,11 @@ SHA 藉由讓組織繼續使用其 F5 投資來滿足更優質的網路和應用
 
 ![影像顯示高層級架構](./media/f5-aad-integration/integration-flow-diagram.png)
 
-| 步驟 | 說明 |
+| 步驟 | 描述 |
 |:------|:-----------|
 | 1. | 使用者會在入口網站中選取應用程式圖示，解析 SAML SP (大 IP) 的 URL |
 | 2. | 大型 IP 會將使用者重新導向至 SAML IDP (Azure AD) 進行預先驗證|
-| 3. | Azure AD 處理 CA 原則和 [會話控制項](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) 以進行授權|
+| 3. | Azure AD 處理適用于授權的條件式存取原則和[會話控制項](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session)|
 | 4. | 使用者重新導向回到大 IP，以呈現 Azure AD 所簽發的 SAML 宣告 |
 | 5. | 大型 IP 要求任何額外的會話資訊，以包含在 [SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 和 [角色型存取控制中， (RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview) 發佈的服務 |
 | 6. | 大型 IP 會將用戶端要求轉送至後端服務
@@ -100,7 +100,7 @@ SHA 藉由讓組織繼續使用其 F5 投資來滿足更優質的網路和應用
 
 ![此影像顯示監視流程](media/f5-aad-integration/azure-sentinel.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 將 F5 BIG IP 與適用于 SHA 的 Azure AD 整合有下列必要條件：
 
