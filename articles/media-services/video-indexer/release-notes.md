@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 7ce0807fa4cd068cfdd09ac9f78c5415da7e6437
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895337"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916655"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務影片索引子版本資訊
 
@@ -30,7 +30,7 @@ ms.locfileid: "97895337"
 * 錯誤修正
 * 已被取代的功能
 
-##  <a name="december-2020"></a>2020年12月？ 
+##  <a name="december-2020"></a>2020 年 12 月
 
 ### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>瑞士西部和瑞士北部中部署的影片索引子
 

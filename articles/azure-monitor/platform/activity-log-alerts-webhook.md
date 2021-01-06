@@ -4,12 +4,12 @@ description: 深入了解活動記錄警示啟動時，張貼至 Webhook URL 的
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: b48f094b460a2871b502c72b39b849ed68b9c085
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901431"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916623"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活動記錄警示的 Webhook
 在定義動作群組的過程中，您可以設定 Webhook 端點以接收活動記錄警示通知。 您可以使用 Webhook 將這些通知路由到其他系統，以進行後置處理或自訂動作。 本文會說明 HTTP POST 至 Webhook 的承載資料樣貌。
@@ -40,6 +40,7 @@ POST 作業中所包含的 JSON 承載，會根據承載的 data.context.activit
 > 如果您的條件 (在動作規則、webhook、邏輯應用程式或任何其他設定) 目前是以活動記錄警示的 [ **Description]** 屬性為基礎，您可能需要改為根據 [ **活動記錄檔事件描述]** 屬性加以修改。
 >
 > 為了填滿新的 **[Description]** 屬性，您可以在警示規則定義中加入描述。
+> ![引發的活動記錄警示](media/activity-log-alerts-webhook/activity-log-alert-fired.png)
 
 ### <a name="common"></a>通用
 
