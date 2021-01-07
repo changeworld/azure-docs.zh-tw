@@ -2,19 +2,21 @@
 title: 將 Batch 集區設定從雲端服務遷移至虛擬機器
 description: 瞭解如何將您的集區設定更新為最新和建議的設定
 ms.topic: how-to
-ms.date: 1/4/2021
-ms.openlocfilehash: 52e1762dc8e81b3eb7e1bce388d91dfd2c76191a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/6/2021
+ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937583"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969022"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>將 Batch 集區設定從雲端服務遷移至虛擬機器
 
 您可以使用 [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) 或 [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)來建立 Batch 集區。 ' virtualMachineConfiguration ' 是建議的設定，因為它支援所有批次功能。 ' cloudServiceConfiguration ' 集區不支援所有功能，也未規劃任何新功能。
 
-如果您使用 ' cloudServiceConfiguration ' 集區，強烈建議您移至使用 ' virtualMachineConfiguration ' 集區。 本文說明如何遷移至建議的 ' virtualMachineConfiguration ' 設定。
+如果您使用 ' cloudServiceConfiguration ' 集區，強烈建議您移至使用 ' virtualMachineConfiguration ' 集區。 這可讓您從所有批次功能獲益，例如，擴充 [的 VM 系列](batch-pool-vm-sizes.md)、Linux vm、 [容器](batch-docker-container-workloads.md)、 [Azure Resource Manager 虛擬網路](batch-virtual-network.md)和 [節點磁片加密](disk-encryption.md)選項。
+
+本文說明如何遷移至 ' virtualMachineConfiguration '。
 
 ## <a name="new-pools-are-required"></a>需要新的集區
 

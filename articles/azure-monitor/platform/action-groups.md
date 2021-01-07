@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: b5b6a697e6a5cae064a6a48419246dc12e8d048c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 72caeb60fc058b88158979d211a0bc38985975c7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695805"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968852"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 
@@ -318,7 +318,11 @@ Write-Host $myApp.AppRoles
 ### <a name="webhook"></a>Webhook
 
 > [!NOTE]
-> 使用 webhook 動作需要目標 webhook 端點不需要警示的詳細資料就能順利運作，或是可以剖析 POST 作業中提供的警示內容資訊。 如果 webhook 端點無法自行處理警示內容資訊，您可以使用類似 [邏輯應用程式動作](./action-groups-logic-app.md) 的解決方案來自訂警示內容資訊的操作，以符合 webhook 的預期資料格式。
+> 使用 webhook 動作需要目標 webhook 端點不需要警示的詳細資料就能順利運作，或是可以剖析 POST 作業中提供的警示內容資訊。 
+
+> 使用者應該是 webhook 服務主體的 **擁有** 者，才能確保不會違反安全性。 因為任何 azure 客戶都可以透過入口網站存取所有物件識別碼，而不檢查擁有者，所以任何人都可以將安全 webhook 新增至他們自己的 azure 監視器警示通知的動作群組，這會違反安全性。
+
+> 如果 webhook 端點無法自行處理警示內容資訊，您可以使用類似 [邏輯應用程式動作](./action-groups-logic-app.md) 的解決方案來自訂警示內容資訊的操作，以符合 webhook 的預期資料格式。
 
 Webhook 會使用下列規則來處理
 - 最多嘗試3次 webhook 呼叫。

@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/30/2020
+ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: e6591762ed6a7e2b462a209730276f3198d86ae8
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821463"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967118"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>針對 Azure Data Factory 連接器進行疑難排解
 
@@ -113,7 +113,7 @@ ms.locfileid: "97821463"
 
 - **解決方法**：在 MongoDB 連接字串中，新增 "**uuidRepresentation=standard**" 選項。 如需詳細資訊，請參閱 [MongoDB 連接字串](connector-mongodb.md#linked-service-properties)。
             
-## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB (SQL API)
+## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB (SQL API) 
 
 ### <a name="error-code--cosmosdbsqlapioperationfailed"></a>錯誤碼： CosmosDbSqlApiOperationFailed
 
@@ -458,34 +458,15 @@ ms.locfileid: "97821463"
 - **原因**：查詢 Azure 儲存體中的外部資料表時，Azure Synapse Analytics 遇到問題。
 
 - **解決方法**：在 SSMS 中執行相同的查詢，並檢查您是否看到相同的結果。 如果是，請開啟支援票證來 Azure Synapse Analytics，並提供您的 Azure Synapse Analytics 伺服器和資料庫名稱，以進行進一步的疑難排解。
-            
-
-### <a name="low-performance-when-load-data-into-azure-sql"></a>將資料載入 Azure SQL 時的效能低
-
-- **徵兆**：將資料複製到 Azure SQL 會變慢。
-
-- **原因**：問題的根本原因大多是由 Azure SQL 端的瓶頸所觸發。 以下是一些可能的原因：
-
-    - Azure DB 層級不夠高。
-
-    - Azure DB DTU 使用量接近100%。 您可以 [監視效能](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) ，並考慮升級 DB 層。
-
-    - 未正確設定索引。 在載入資料之前先移除所有索引，並在載入完成後重新建立索引。
-
-    - WriteBatchSize 不夠大，無法容納架構資料列大小。 請嘗試放大問題的屬性。
-
-    - 使用預存程式，而不是使用大量插入，這應該會有較差的效能。 
-
-- **解決方案**：請參閱適用于 [複製活動效能](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)的 TSG
 
 
 ### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>效能層級很低，導致複製失敗
 
-- **徵兆**：將資料複製到 Azure SQL 時發生錯誤訊息： `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
+- **徵兆**：將資料複製到 Azure SQL Database 時發生錯誤訊息： `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
 
-- **原因**： Azure SQL s1 正在使用中，因此在這種情況下會達到 IO 限制。
+- **原因**：正在使用 Azure SQL Database s1，這種情況下會達到 IO 限制。
 
-- **解決方案**：升級 Azure SQL 效能層級以修正問題。 
+- **解決方法**：升級 Azure SQL Database 效能層級以修正問題。 
 
 
 ### <a name="sql-table-cannot-be-found"></a>找不到 SQL 資料表 
@@ -619,31 +600,6 @@ ms.locfileid: "97821463"
 - **原因**： dynamics server instable 或無法存取，或網路發生問題。
 
 - **建議**：檢查網路連接或查看 dynamics server 記錄檔以取得詳細資料。 請聯絡 dynamics 支援以取得進一步協助。
-
-
-## <a name="excel-format"></a>Excel 格式
-
-### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>剖析大型 Excel 檔案時的效能超時或效能變慢
-
-- **徵兆**：
-
-    - 當您從連接/存放區、預覽資料、清單或重新整理工作表建立 Excel 資料集和匯入架構時，如果 Excel 檔案大小很大，您可能會遇到逾時錯誤。
-
-    - 當您使用複製活動將資料從大型 Excel 檔案複製 ( # B0 = 100 MB) 至其他資料存放區時，可能會遇到效能變慢或 OOM 問題。
-
-- **原因**： 
-
-    - 針對匯入架構、預覽資料，以及列出 excel 資料集上的工作表等作業，timeout 為 100 s 和靜態。 針對大型 Excel 檔案，這些作業可能無法在 timeout 值中完成。
-
-    - ADF 複製活動會將整個 Excel 檔案讀取到記憶體中，然後找出指定的工作表和資料格以讀取資料。 這是因為基礎 SDK ADF 使用的行為。
-
-- **解決方案**： 
-
-    - 若要匯入架構，您可以產生較小的範例檔案，也就是原始檔案的子集，然後選擇 [從範例檔案匯入架構]，而不是 [從連接/存放區匯入架構]。
-
-    - 針對清單工作表，您可以按一下 [工作表] 下拉式清單中的 [編輯]，改為輸入工作表名稱/索引。
-
-    - 若要將大型 excel 檔案 ( # B0 100 MB) 複製到其他存放區，您可以使用資料流程 Excel 來源，讓串流讀取和執行效能更好。
     
 
 ## <a name="ftp"></a>FTP

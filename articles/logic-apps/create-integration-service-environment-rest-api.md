@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 12/30/2020
+ms.openlocfilehash: ee6c116d02a7be1682d9e8379037ef1b8c92bce8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827473"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967033"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用 Logic Apps REST API 建立整合服務環境 (ISE)
 
@@ -121,7 +121,7 @@ ms.locfileid: "97827473"
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
+      // Include `certificates` object to enable self-signed certificate and the certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -185,6 +185,7 @@ ms.locfileid: "97827473"
    }
 }
 ```
+
 ## <a name="add-custom-root-certificates"></a>新增自訂根憑證
 
 您通常會使用 ISE 連接到您虛擬網路或內部部署的自訂服務。 這些自訂服務通常受到自訂根憑證授權單位發行的憑證所保護，例如企業憑證授權單位單位或自我簽署憑證。 如需有關使用自我簽署憑證的詳細資訊，請參閱 [安全存取和資料存取，以存取其他服務和系統的輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests)。 為了讓 ISE 透過傳輸層安全性 (TLS) 來成功連接到這些服務，您的 ISE 需要存取這些根憑證。 若要使用自訂的受信任根憑證更新 ISE，請提出此 HTTPS `PATCH` 要求：

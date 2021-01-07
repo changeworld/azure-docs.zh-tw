@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: a6a5d78385cc61838a606a3f3d2a7277f6b66a4d
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9670178a9c9d772d8966413371f998aa1f0cf5f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858530"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968284"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -198,6 +198,7 @@ Azure 資源庫映像 - 第三方發行 | 支援 | 只要 VM 在支援的作業�
 Azure RBAC 原則 | 不支援 | Azure 角色型存取控制 (Vm 上的 Azure RBAC) 原則，不會複寫到目的地區域中的容錯移轉 VM。
 延伸模組 | 不支援 | 延伸模組不會複寫至目標區域中的容錯移轉 VM。 在容錯移轉之後必須手動安裝延伸模組。
 鄰近放置群組 | 支援 | 位於鄰近位置群組內的虛擬機器可以使用 Site Recovery 來保護。
+標籤  | 支援 | 套用於來源虛擬機器上的使用者產生的標記會在測試容錯移轉或容錯移轉之後，移至目標虛擬機器。
 
 
 ## <a name="replicated-machines---disk-actions"></a>複寫的機器 - 磁碟動作
@@ -256,6 +257,7 @@ NVMe 磁碟 | 不支援
 Azure 共用磁碟 | 不支援
 安全傳輸選項 | 支援
 已啟用寫入加速器的磁片 | 不支援
+標籤  | 使用者產生的標記會每隔24小時複寫一次。
 
 >[!IMPORTANT]
 > 若要避免發生效能問題，請務必遵循 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁碟可擴縮性和效能目標。 如果您使用預設設定，Site Recovery 會根據來源組態建立必要的磁碟和儲存體帳戶。 如果您自訂並選取您自己的設定，請遵循來源 VM 的磁碟可擴縮性和效能目標。
@@ -302,6 +304,7 @@ VNET 對 VNET 連線    | 支援 | [深入了解](./azure-to-azure-about-network
 Palo Alto 網路設備 | 不支援 | 使用協力廠商應用設備時，虛擬機器內的提供者通常會強加一些限制。 Azure Site Recovery 需要代理程式、擴充功能和輸出連線能力可供使用。 但設備不會讓任何輸出活動在虛擬機器內進行設定。
 IPv6  | 不支援 | 亦不支援同時包含 IPv4 和 IPv6 的混合組態。 請釋放 IPv6 範圍的子網路，再進行任何 Site Recovery 作業。
 Site Recovery 服務的 Private link 存取權 | 支援 | [深入了解](azure-to-azure-how-to-enable-replication-private-endpoints.md)
+標籤  | 支援 | 系統會每隔24小時複寫 Nic 上使用者產生的標記。
 
 
 

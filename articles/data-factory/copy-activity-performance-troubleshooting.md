@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: d22d040b0001ee30e29c551e686a7cb6bc47c2af
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/07/2021
+ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921927"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968886"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>針對複製活動效能進行疑難排解
 
@@ -172,6 +172,60 @@ ms.locfileid: "96921927"
 
   - 請考慮逐漸調整 [平行複製](copy-activity-performance-features.md)，請注意，太多平行複製甚至可能會影響效能。
 
+
+## <a name="connector-and-ir-performance"></a>連接器和 IR 效能
+
+本節將探討特定連接器類型或整合執行時間的一些效能疑難排解指南。
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>使用 Azure IR 與 Azure VNet IR 的活動執行時間會有所不同
+
+當資料集是根據不同的 Integration Runtime 時，活動執行時間會有所不同。
+
+- **徵兆**：只要切換資料集中的 [連結服務] 下拉式清單，就會執行相同的管線活動，但會有截然不同的執行時間。 當資料集是根據受管理的虛擬網路 Integration Runtime 時，平均需要2分鐘以上的時間才能完成執行，但根據預設 Integration Runtime，大約需要20秒的時間才能完成。
+
+- **原因**：檢查管線執行的詳細資料，您可以看到緩慢的管線是在受管理的 VNet (虛擬網路) IR，而在 Azure IR 上執行正常的虛擬網路。 根據設計，受控 VNet IR 的佇列時間會比 Azure IR 更長，因為我們不會為每個資料處理站保留一個計算節點，因此每個複製活動都有大約2分鐘的時間來啟動，而這主要是發生在 VNet 聯結而非 Azure IR。
+
+    
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>將資料載入 Azure SQL Database 時的效能低
+
+- **徵兆**：將中的資料複製到 Azure SQL Database 會變得很慢。
+
+- **原因**：問題的根本原因大部分是由 Azure SQL Database 端的瓶頸所觸發。 以下是一些可能的原因：
+
+    - Azure SQL Database 層不夠高。
+
+    - Azure SQL Database DTU 使用量接近100%。 您可以 [監視效能](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) ，並考慮升級 Azure SQL Database 層。
+
+    - 未正確設定索引。 在載入資料之前先移除所有索引，並在載入完成後重新建立索引。
+
+    - WriteBatchSize 不夠大，無法容納架構資料列大小。 請嘗試放大問題的屬性。
+
+    - 使用預存程式，而不是使用大量插入，這應該會有較差的效能。 
+
+- **解決** 方式：請參閱 [複製活動效能疑難排解](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)。
+
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>剖析大型 Excel 檔案時的效能超時或效能變慢
+
+- **徵兆**：
+
+    - 當您從連接/存放區、預覽資料、清單或重新整理工作表建立 Excel 資料集和匯入架構時，如果 Excel 檔案大小很大，您可能會遇到逾時錯誤。
+
+    - 當您使用複製活動將資料從大型 Excel 檔案複製 ( # B0 = 100 MB) 至其他資料存放區時，可能會遇到效能變慢或 OOM 問題。
+
+- **原因**： 
+
+    - 針對匯入架構、預覽資料，以及列出 excel 資料集上的工作表等作業，timeout 為 100 s 和靜態。 針對大型 Excel 檔案，這些作業可能無法在 timeout 值中完成。
+
+    - ADF 複製活動會將整個 Excel 檔案讀取到記憶體中，然後找出指定的工作表和資料格以讀取資料。 這是因為基礎 SDK ADF 使用的行為。
+
+- **解決方案**： 
+
+    - 若要匯入架構，您可以產生較小的範例檔案，也就是原始檔案的子集，然後選擇 [從範例檔案匯入架構]，而不是 [從連接/存放區匯入架構]。
+
+    - 針對清單工作表，您可以按一下 [工作表] 下拉式清單中的 [編輯]，改為輸入工作表名稱/索引。
+
+    - 若要將大型 excel 檔案 ( # B0 100 MB) 複製到其他存放區，您可以使用資料流程 Excel 來源，讓串流讀取和執行效能更好。
+    
 ## <a name="other-references"></a>其他參考資料
 
 以下是幾個支援的資料存放區所適用的效能監視及調整參考：

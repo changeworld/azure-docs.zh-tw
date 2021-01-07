@@ -3,12 +3,12 @@ title: 關於 Azure VM 備份
 description: 在本文中，您將瞭解 Azure 備份服務如何備份 Azure 虛擬機器，以及如何遵循最佳作法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 7fa47b83eb8fa06c028079cf47ea0cb46df31860
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 291c50d4ac52d34a218b1b7cc76d625da3119d25
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325225"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968988"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM 備份的總覽
 
@@ -121,6 +121,7 @@ Azure 備份會根據備份排程來取得快照集。
 - 如果您要從單一保存庫還原 Vm，強烈建議您使用不同的 [一般用途 v2 儲存體帳戶](../storage/common/storage-account-upgrade.md) ，以確保目標儲存體帳戶不會受到節流。 例如，每個 VM 都必須有不同的儲存體帳戶。 例如，如果還原10個 Vm，請使用10個不同的儲存體帳戶。
 - 針對使用 premium 儲存體搭配立即還原的 Vm 備份，建議您配置 *50%* 的總配置儲存空間的可用空間，而這 **只** 是第一次備份所需的空間。 50% 的可用空間不是第一次備份完成後的備份需求
 - 對每一儲存體帳戶的磁碟數目限制，與在基礎結構即服務 (IaaS) VM 上執行的應用程式對磁碟的存取次數多寡有關。 一般做法是，如果單一儲存體帳戶上有 5 到 10 個磁碟或更多磁碟，請將部分磁碟移至個別的儲存體帳戶來平衡負載。
+- 若要使用 PowerShell 來還原具有受控磁片的 Vm，請提供額外的參數 **_TargetResourceGroupName_* _ 來指定將還原受控磁片的資源群組，請 [在這裡深入瞭解](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-managed-disks)。
 
 ## <a name="backup-costs"></a>備份成本
 
@@ -130,7 +131,7 @@ Azure 備份會根據備份排程來取得快照集。
 
 只有在停止保護且刪除全部備份資料時，才會對指定的虛擬機器停止計費。 當保護停止且沒有任何作用中的備份作業時，最後一個成功 VM 備份的大小會成為每月帳單所使用的受保護執行個體大小。
 
-受保護實例大小的計算是根據 VM 的 *實際* 大小。 VM 的大小是 VM 中所有資料的總和，但不包括暫存儲存體。 定價是根據儲存在資料磁片上的實際資料，而不是每個連接至 VM 的資料磁片所支援的大小上限。
+受保護實例大小的計算是以 VM 的 _actual * 大小為基礎。 VM 的大小是 VM 中所有資料的總和，但不包括暫存儲存體。 定價是根據儲存在資料磁片上的實際資料，而不是每個連接至 VM 的資料磁片所支援的大小上限。
 
 同樣地，備份儲存體帳單是以 Azure 備份中儲存的資料量為基礎，也就是每個復原點中的實際資料總和。
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746604"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968529"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用 Spark & Hive Tools for Visual Studio Code
 
@@ -269,7 +269,7 @@ ms.locfileid: "97746604"
 
 > [!NOTE]
 >
-> 已解決「 [Ms-python >= 此擴充功能不支援2020.5.78807 版本](#issues-changed)」。 目前可使用最新的 ms python 版本。
+> 已解決「 [Ms-python >= 此延伸模組不支援2020.5.78807 版本](#issues-changed)」。 請立即將 **ms python** 更新為 **最新版本** 。
 
 ## <a name="submit-pyspark-batch-job"></a>提交 PySpark 批次工作
 
@@ -353,7 +353,7 @@ ms.locfileid: "97746604"
   
   **要求本文**
 
-  | 名稱 | description | type |
+  | 名稱 | description | 類型 |
   | --- | --- | --- |
   | 檔案 | 包含要執行之應用程式的檔案 | 需要 (路徑)  |
   | proxyUser | 執行作業時要模擬的使用者 | String |
@@ -374,7 +374,7 @@ ms.locfileid: "97746604"
 
   **回應主體** 建立的批次物件。
 
-  | 名稱 | description | type |
+  | 名稱 | description | 類型 |
   | --- | ---| --- |
   | 識別碼 | 工作階段識別碼 | Int |
   | appId | 此會話的應用程式識別碼 | String |
@@ -491,7 +491,7 @@ ms.locfileid: "97746604"
 
 ## <a name="issues-changed"></a>問題已變更
 
-針對這個問題，「ms-python >= 2020.5.78807 版本在此擴充功能上不受支援」已解決，現在可使用 **最新的 ms python 版本** 。
+針對這個問題，「ms-python >= 2020.5.78807 版本在此延伸模組上不受支援」已解決，請立即將 **ms python** 更新為 **最新版本** 。
 
 
 ## <a name="next-steps"></a>後續步驟

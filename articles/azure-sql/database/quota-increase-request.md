@@ -9,12 +9,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: cfcdd143a26d36ed3c4646122fce7c19c41976d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448835"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967696"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體的要求配額增加
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,18 +33,18 @@ ms.locfileid: "91448835"
 
     ![建立新的支援要求](./media/quota-increase-request/new-support-request.png)
 
-1. 針對 [ **問題類型**]，選取 [ **服務與訂用帳戶限制] (配額) **。
+1. 針對 [ **問題類型**]，選取 [ **服務與訂用帳戶限制] (配額)**。
 
    ![選取問題類型](./media/quota-increase-request/select-quota-issue-type.png)
 
-1. 針對 [ **訂**用帳戶]，選取您要增加其配額的訂用帳戶。
+1. 針對 [ **訂** 用帳戶]，選取您要增加其配額的訂用帳戶。
 
    ![選取提高配額的訂用帳戶](./media/quota-increase-request/select-subscription-support-request.png)
 
 1. 針對 [ **配額類型**]，選取下列其中一個配額類型：
 
-   - 適用于單一資料庫和彈性集區配額的**SQL Database** 。
-   - 受控實例的**SQL Database 受控執行個體**。
+   - 適用于單一資料庫和彈性集區配額的 **SQL Database** 。
+   - 受控實例的 **SQL Database 受控執行個體**。
 
    然後，選取 **[下一步：解決方案 >>]** 。
 
@@ -83,7 +83,7 @@ ms.locfileid: "91448835"
 
 使用下列步驟來要求每個訂用帳戶增加伺服器數目。
 
-1. 選取**每個訂用帳戶的伺服器**配額類型。
+1. 選取 **每個訂用帳戶的伺服器** 配額類型。
 
 1. 在 [位置] 清單中，選取要使用的 Azure 區域。 配額是各個區域中的每個訂用帳戶。
 
@@ -105,20 +105,22 @@ ms.locfileid: "91448835"
 
 1. 在 [ **選取位置** ] 清單中，選取要使用的 Azure 區域。 配額是各個區域中的每個訂用帳戶。
 
-1. 輸入 **購買模型**和預期的 **耗用量** 詳細資料。
+1. 輸入 **購買模型** 和預期的 **耗用量** 詳細資料。
 
    ![要求區域存取](./media/quota-increase-request/quota-request.png)
 
-### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a> 啟用區域的 M 系列存取
+<!--
+### <a id="mseries"></a> Enable M-series access to a region
 
-若要啟用訂用帳戶和區域的 M 系列硬體，必須開啟支援要求。
+To enable M-series hardware for a subscription and region, a support request must be opened.
 
-1. 選取 **M 系欄區域存取** 配額類型。
+1. Select the **M-series region access** quota type.
 
-1. 在 [ **選取位置** ] 清單中，選取要使用的 Azure 區域。 配額是各個區域中的每個訂用帳戶。
+1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
 
 
-   ![要求 M 系欄區域存取](./media/quota-increase-request/quota-m-series.png)
+   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
+-->
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL 受控執行個體配額類型
 
@@ -126,7 +128,7 @@ ms.locfileid: "91448835"
 
 1. 在 [ **區域** ] 清單中，選取要設為目標的 Azure 區域。
 
-1. 輸入您針對 **子網** 和 **vCore**要求的新限制。
+1. 輸入您針對 **子網** 和 **vCore** 要求的新限制。
 
    ![SQL 受控執行個體配額詳細資料](./media/quota-increase-request/quota-details-managed-instance.png)
 

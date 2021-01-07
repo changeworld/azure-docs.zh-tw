@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: c549cae0b7bdc5e237ec3cf704a1ead53db91449
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754023"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968563"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>實體伺服器遷移的支援矩陣
 
@@ -48,7 +48,7 @@ ms.locfileid: "96754023"
 **UEFI 開機** | 支援。 以 UEFI 為基礎的機器將會遷移至 Azure 第2代 Vm。  <br/><br/> OS 磁片應該有最多四個磁碟分割，而磁片區應使用 NTFS 格式化。
 **UEFI-安全開機**         | 不支援遷移。
 **目標磁片** | 電腦只能遷移至受控磁片， (標準 HDD、標準 SSD、Azure 中的 premium SSD) 。
-**磁碟大小** | 2 TB 的 OS 磁片 (BIOS 開機) ;4 TB 的 OS 磁片 (UEFI 開機) ;適用于資料磁片的 8 TB。
+**磁碟大小** | 2 TB 的 OS 磁片;適用于資料磁片的 32 TB。
 **磁片限制** |  每部電腦最多63個磁片。
 **加密的磁片/磁片區** |  具有加密磁片/磁片區的電腦不支援遷移。
 **共用磁碟叢集** | 不支援。

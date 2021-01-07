@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: bdfbe5106f220a9fe4a3568709187b9071bc7917
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 96652b2a1eb35668bd8a810b309ab31cec5afdb7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334271"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967220"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>交易和開放式並行存取控制
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -53,7 +53,9 @@ JavaScript 型預存程序、觸發程序、UDF，以及合併程序，都包裝
 
 開放式並行存取控制可讓您避免遺失更新和刪除。 並行、衝突的作業會受制於擁有項目之邏輯分割區所裝載的資料庫引擎所受到的一般封閉式鎖定限制。 當兩個並行作業嘗試更新邏輯分割區內某個項目的最新版本時，它們其中之一將會成功，另一個則會失敗。 但是，如果嘗試並行更新相同項目的一或兩個作業之前已讀取該項目的較舊版本時，資料庫不會知道兩個衝突作業的其中之一或兩者之前所讀取的值是否確實為項目的最新值。 幸運的是，這種情況可以使用 **開放式並行存取控制來 (OCC)** ，然後讓這兩個作業進入 database engine 內的交易界限。 OCC 會保護您的資料，避免意外遭到其他人覆寫。 它也能防止其他人不小心覆寫您自己所做的變更。
 
-Azure Cosmos DB 的通訊通訊協定層項目的並行更新受制於 OCC。 Azure Cosmos 資料庫可確保您正在更新 (或刪除) 之項目的用戶端版本和 Azure Cosmos 容器中項目的版本相同。 這可確保您的寫入受到保護，而不會被他人的寫入不慎覆寫，反之亦然。 在多使用者環境中，開放式並行存取控制可防止您不小心刪除項目，或更新項目的錯誤版本。 因此，項目會收到保護，不會受到惡名昭彰的「遺失更新」或「遺失刪除」問題影響。
+Azure Cosmos DB 的通訊通訊協定層項目的並行更新受制於 OCC。 針對針對 **單一區域寫入** 設定的 Azure Cosmos 帳戶，Azure Cosmos DB 可確保您要更新之專案的用戶端版本 (或刪除) 與 Azure Cosmos 容器中專案的版本相同。 這可確保您的寫入受到保護，而不會被他人的寫入不慎覆寫，反之亦然。 在多使用者環境中，開放式並行存取控制可防止您不小心刪除項目，或更新項目的錯誤版本。 因此，專案會受到保護，以防止惡名昭彰「遺失更新」或「遺失刪除」問題。
+
+在使用 **多重區域寫入** 設定的 Azure Cosmos 帳戶中，如果資料 `_etag` 符合本機區域中的資料，就可以獨立地將資料認可到次要區域。 一旦新的資料在次要區域的本機認可之後，就會合並到中樞或主要區域中。 如果衝突解決原則將新的資料合併到中樞區域，則會使用新的來全域複寫此資料 `_etag` 。 如果衝突解決原則拒絕新的資料，次要區域將會回復成原始資料和 `_etag` 。
 
 Azure Cosmos 容器中儲存的每個項目都有系統定義的 `_etag` 屬性。 `_etag` 的值會自動產生，並在項目每次更新時，由伺服器更新。 `_etag` 可與用戶端提供的 `if-match` 要求標頭搭配使用，以允許伺服器決定是否可有條件地更新專案。 標頭的值 `if-match` 符合伺服器的值 `_etag` ，然後更新專案。 如果 `if-match` 要求標頭的值不再是最新的值，伺服器會拒絕具有「HTTP 412 前置條件失敗」回應訊息的操作。 然後，用戶端可以重新提取專案，以取得伺服器上目前版本的專案，或使用它自己的專案值來覆寫伺服器中的專案版本 `_etag` 。 此外， `_etag` 也可以搭配 `if-none-match` 標頭使用，以判斷是否需要資源的重新擷取。
 

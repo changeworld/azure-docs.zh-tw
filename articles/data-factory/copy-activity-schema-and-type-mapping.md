@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507518"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968869"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>複製活動中的架構和資料類型對應
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -47,18 +47,18 @@ ms.locfileid: "97507518"
 
 您可以在 Data Factory 撰寫 UI > 複製活動-> 對應] 索引標籤上設定對應，或以程式設計方式指定複製活動-> 屬性中的對應 `translator` 。 陣列 > 的物件支援下列屬性 `translator`  ->  `mappings` -> `source` 和 `sink` ，這些屬性指向特定的資料行/欄位以對應資料。
 
-| 屬性 | 說明                                                  | 必要 |
+| 屬性 | 描述                                                  | 必要 |
 | -------- | ------------------------------------------------------------ | -------- |
 | NAME     | 來源或接收資料行/欄位的名稱。 適用于表格式來源和接收。 | 是      |
 | 序數  | 資料行索引。 從1開始。 <br>使用不含標頭行的分隔文字時，請套用和要求。 | 否       |
 | path     | 要解壓縮或對應的每個欄位的 JSON 路徑運算式。 適用于階層式來源和接收，例如 Cosmos DB、MongoDB 或 REST 連接器。<br>針對根物件底下的欄位，JSON 路徑的開頭為根 `$` ; 針對屬性所選擇的陣列中的欄位 `collectionReference` ，json 路徑會從陣列元素開始，而不需要 `$` 。 | 否       |
 | type     | 來源或接收資料行 Data Factory 過渡期資料類型。 一般而言，您不需要指定或變更這個屬性。 深入瞭解 [資料類型對應](#data-type-mapping)。 | 否       |
-| culture  | 來源或接收資料行的文化特性。 當類型為或時套用 `Datetime` `Datetimeoffset` 。 預設值為 `en-us`。<br>一般而言，您不需要指定或變更這個屬性。 深入瞭解 [資料類型對應](#data-type-mapping)。 | 否       |
+| culture  | 來源或接收資料行的文化特性。 當類型為或時套用 `Datetime` `Datetimeoffset` 。 預設為 `en-us`。<br>一般而言，您不需要指定或變更這個屬性。 深入瞭解 [資料類型對應](#data-type-mapping)。 | 否       |
 | format   | 當類型為或時，要使用的格式字串 `Datetime` `Datetimeoffset` 。 有關如何格式化日期時間的資訊，請參閱[自訂日期和時間格式字串](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 一般而言，您不需要指定或變更這個屬性。 深入瞭解 [資料類型對應](#data-type-mapping)。 | 否       |
 
 除了下列屬性之外，還支援下列屬性 `translator` `mappings` ：
 
-| 屬性            | 說明                                                  | 必要 |
+| 屬性            | 描述                                                  | 必要 |
 | ------------------- | ------------------------------------------------------------ | -------- |
 | collectionReference | 從階層式來源複製資料（例如 Cosmos DB、MongoDB 或 REST 連接器）時適用。<br>如果您想要逐一查看 **陣列欄位內** 相同模式的物件並擷取資料，然後轉換為每個物件一個資料列，則請指定該陣列的 JSON 路徑，以執行交叉套用。 | 否       |
 
@@ -283,9 +283,9 @@ ms.locfileid: "97507518"
 
 從來源到接收的過渡型別之間，支援下列資料類型轉換。
 
-| Source\Sink | 布林值 | 位元組陣列 | Decimal | 日期/時間 <small> (1) </small> | 浮點數 <small> (2) </small> | GUID | 整數 <small> (3) </small> | String | TimeSpan |
+| Source\Sink | Boolean | 位元組陣列 | Decimal | 日期/時間 <small> (1) </small> | 浮點數 <small> (2) </small> | GUID | 整數 <small> (3) </small> | String | TimeSpan |
 | ----------- | ------- | ---------- | ------- | ---------------------------- | ------------------------------ | ---- | -------------------------- | ------ | -------- |
-| 布林值     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
+| Boolean     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | 位元組陣列  |         | ✓          |         |                              |                                |      |                            | ✓      |          |
 | 日期/時間   |         |            |         | ✓                            |                                |      |                            | ✓      |          |
 | Decimal     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
@@ -307,7 +307,7 @@ ms.locfileid: "97507518"
 
 以下是在 `translator` programmatical 編寫) 一節中，用於資料類型轉換的複製活動中支援的屬性 (：
 
-| 屬性                         | 說明                                                  | 必要 |
+| 屬性                         | 描述                                                  | 必要 |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
 | typeConversion                   | 啟用新的資料類型轉換體驗。 <br>預設值為 false，因為回溯相容性。<br><br>針對在2020年6月之後透過 Data Factory 撰寫 UI 所建立的新複製活動，預設會啟用此資料類型轉換以獲得最佳體驗，而您可以在 [複製活動-> 對應] 索引標籤上看到適用案例的下列類型轉換設定。 <br>若要以程式設計方式建立管線，您必須明確地將屬性設為 `typeConversion` true 以啟用它。<br>針對在發行這項功能之前建立的現有複製活動，您將不會在 Data Factory 撰寫 UI 上看到類型轉換選項，以提供回溯相容性。 | 否       |
 | typeConversionSettings           | 類型轉換設定的群組。 當 `typeConversion` 設為時套用 `true` 。 下列屬性全都在此群組底下。 | 否       |
@@ -452,7 +452,7 @@ ms.locfileid: "97507518"
 
 您可以指定複製活動->， `translator`  ->  `schemaMapping` 以便在階層式資料和表格式資料之間進行對應，例如，從 MongoDB/REST 複製到文字檔，以及從 Oracle 複製到 Azure Cosmos DB 適用于 mongodb 的 API。 複製活動的 `translator` 區段支援下列屬性：
 
-| 屬性            | 說明                                                  | 必要 |
+| 屬性            | 描述                                                  | 必要 |
 | :------------------ | :----------------------------------------------------------- | :------- |
 | type                | 複製活動轉譯器的 type 屬性必須設定為： **TabularTranslator** | 是      |
 | schemaMapping       | 機碼值組的集合，表示 **從來源端到接收端** 的對應關聯性。<br/>- **Key：** 代表 source。 若為 **表格式來源**，請指定資料集結構中所定義的資料行名稱;針對 [ **階層式來源**]，指定要解壓縮和對應的每個欄位的 JSON 路徑運算式。<br>- **Value：** 代表 sink。 若為 **表格式接收**，請指定資料集結構中所定義的資料行名稱;針對 **階層式接收**，請針對要解壓縮和對應的每個欄位指定 JSON 路徑運算式。 <br>在階層式資料的情況下，針對根物件底下的欄位，JSON 路徑的開頭為根 $;針對屬性所選擇的陣列內的欄位 `collectionReference` ，JSON 路徑會從陣列元素開始。 | 是      |

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: a7227195c767d90141a9b6cd95f784c239a31fd5
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 41fdb3d2e69ae39dbe80f21a953fd9fdaa6d1127
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955190"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968461"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>定型和部署自訂語音模型
 
@@ -35,12 +35,12 @@ ms.locfileid: "97955190"
 
 定型模型的第一個步驟是上傳定型資料。 請參閱 [準備和測試您的資料](./how-to-custom-speech-test-and-train.md) ，以取得逐步指示，以準備人標記的轉譯和相關文字 (語句和發音) 。 上傳定型資料之後，請依照下列指示開始訓練您的模型：
 
-1. 登入 [自訂語音入口網站](https://speech.microsoft.com/customspeech)。
+1. 登入 [自訂語音入口網站](https://speech.microsoft.com/customspeech)。 如果您打算使用音訊 + 人標示的轉譯資料集來定型模型，請在 [具有專用硬體的區域](custom-speech-overview.md#set-up-your-azure-account) 中挑選語音訂用帳戶來進行訓練。
 2. 移至 **語音轉換文字**  >  **自訂語音**  >  **[專案的名稱]**  >  **訓練**。
 3. 選取 [ **定型模型**]。
 4. 提供訓練的 **名稱** 和 **描述**。
 5. 在 [ **案例和基準模型** ] 清單中，選取最適合您的網域的案例。 如果您不確定要選擇哪一種案例，請選取 **[一般**]。 基準模型是定型的起點。 最新的模型通常是最佳選擇。
-6. 在 [ **選取定型資料** ] 頁面上，選擇您要用於定型的一或多個音訊 + 人標示的轉譯資料集。
+6. 在 [ **選取定型資料** ] 頁面上，選擇一或多個相關的文字資料集，或選擇您想要用於定型的一或多個相關的文字資料集或音訊 + 人為 當您將新模型定型時，請從相關文字開始：使用音訊 + 人為標記的轉譯進行定型，可能需要更長的 [ (，) ](how-to-custom-speech-evaluate-data.md#improve-model-recognition) 。
 7. 定型完成之後，您可以在新定型的模型上執行精確度測試。 此為選用步驟。
 8. 選取 [ **建立** ] 以建立您的自訂模型。
 
