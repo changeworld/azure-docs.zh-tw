@@ -1,5 +1,5 @@
 ---
-title: 控制監視的流量
+title: 控制監視到的流量
 description: 感應器會自動對其執行深層封包偵測和流量，以及解析網路裝置的相關資訊，例如裝置屬性和網路行為。 有數個工具可用來控制每個感應器偵測到的流量類型。
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 08afba8ade30775a49492f337bb5337320b9e282
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839323"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977062"
 ---
-# <a name="control-what-traffic-is-monitored"></a>控制監視的流量
+# <a name="control-what-traffic-is-monitored"></a>控制監視到的流量
 
 感應器會自動對其執行深層封包偵測和流量，以及解析網路裝置的相關資訊，例如裝置屬性和行為。 有數個工具可用來控制每個感應器偵測到的流量類型。
 
@@ -228,7 +228,7 @@ ms.locfileid: "97839323"
 
 3. 在 [**伺服器的 DNS 反向對應測試**] 對話方塊中，輸入 [**查閱位址**] 中的位址。
 
-    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-looup-test-screen.png" alt-text="顯示 [查閱位址] 區域的螢幕擷取畫面。":::
+    :::image type="content" source="media/how-to-enrich-asset-information/dns-reverse-lookup-test-screen.png" alt-text="顯示 [查閱位址] 區域的螢幕擷取畫面。":::
 
 4. 選取 [測試]。
 

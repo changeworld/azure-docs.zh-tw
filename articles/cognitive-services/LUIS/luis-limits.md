@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: c855be6d31a1ee46434ecadbeae7a36dd6a3ff95
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 41423ce34a62dfdbd5b9a60f683a2366a94d1bfd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018798"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976787"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和金鑰的限制
 LUIS 有數個限制區域。 第一個是 [模型限制](#model-limits)，可控制 LUIS 中的意圖、實體和功能。 第二個領域是以金鑰類型為基礎的[配額限制](#key-limits)。 第三個限制區域是用來控制 LUIS 網站的 [鍵盤組合](#keyboard-controls) 。 第四個領域是 LUIS 撰寫網站和 LUIS [端點](luis-glossary.md#endpoint) API 之間的[世界區域對應](luis-reference-regions.md)。
@@ -28,9 +28,9 @@ LUIS 有數個限制區域。 第一個是 [模型限制](#model-limits)，可�
 | [批次測試][batch-testing]| 10 個資料集，每個資料集 1000 個語句|
 | 明確清單 | 每個應用程式 50 個|
 | 外部實體 | 無限制 |
-| [對應方式][intents]|每個應用程式500：499個自訂意圖，以及所需的 _None_ 意圖。<br>[分派](https://aka.ms/dispatch-tool) 應用程式有對應的500分派來源。|
+| [意圖][intents]|每個應用程式500：499個自訂意圖，以及所需的 _None_ 意圖。<br>[分派](https://aka.ms/dispatch-tool) 應用程式有對應的500分派來源。|
 | [列出實體](./luis-concept-entity-types.md) | 父系：50 個項目，子系：20,000 個項目。 正式名稱為*預設字元上限。同義值沒有長度限制。 |
-| [機器學習實體 + 角色](./luis-concept-entity-types.md)：<br> 複合<br>簡單<br>實體角色|100父實體或330實體的限制，以較小者為准。 角色會計算為此限制用途的實體。 範例是具有簡單實體的複合，其中有2個角色：1個複合 + 1 個簡單 + 2 個角色 = 4 個330實體。<br>子實體最多可以嵌套到5個層級。|
+| [機器學習實體 + 角色](./luis-concept-entity-types.md)：<br> 複合<br>簡單<br>實體角色|100父實體或330實體的限制，以較小者為准。 角色會計算為此限制用途的實體。 範例是具有簡單實體的複合，其中有2個角色：1個複合 + 1 個簡單 + 2 個角色 = 4 個330實體。<br>子實體最多可以嵌套到5個層級，每個層級最多10個子系。|
 |模型即功能| 可做為特定模型之功能的最大模型數目，以做為10個模型。 用來作為特定模型之功能的片語清單最大數目是10個片語清單。|
 | [預覽-動態清單實體](./luis-migration-api-v3.md)|2個每個查詢預測端點要求的清單 ~ 1k|
 | [模式](luis-concept-patterns.md)|每個應用程式 500 個模式。<br>模式的長度上限為 400 個字元。<br>每個模式 3 個 pattern.any 實體<br>模式中最多有 2 個巢狀選擇性文字|
@@ -76,7 +76,7 @@ LUIS 有數個限制區域。 第一個是 [模型限制](#model-limits)，可�
 
 ### <a name="authoring-resource-limits"></a>撰寫資源限制
 
-_kind_ `LUIS.Authoring` 篩選 Azure 入口網站中的資源時，請使用類型。 LUIS 會限制每個 Azure 撰寫資源的500個應用程式。
+ `LUIS.Authoring` 篩選 Azure 入口網站中的資源時，請使用類型。 LUIS 會限制每個 Azure 撰寫資源的500個應用程式。
 
 |撰寫資源|編寫 TPS|
 |--|--|
@@ -89,7 +89,7 @@ _kind_ `LUIS.Authoring` 篩選 Azure 入口網站中的資源時，請使用類�
 
 ### <a name="query-prediction-resource-limits"></a>查詢預測資源限制
 
-_kind_ `LUIS` 篩選 Azure 入口網站中的資源時，請使用類型。在執行時間上使用的 LUIS 查詢預測端點資源僅對端點查詢有效。
+ `LUIS` 篩選 Azure 入口網站中的資源時，請使用類型。在執行時間上使用的 LUIS 查詢預測端點資源僅對端點查詢有效。
 
 |查詢預測資源|查詢 TP|
 |--|--|
@@ -108,7 +108,7 @@ _kind_ `LUIS` 篩選 Azure 入口網站中的資源時，請使用類型。在�
 
 ## <a name="keyboard-controls"></a>鍵盤控制項
 
-|鍵盤輸入 | Description |
+|鍵盤輸入 | 描述 |
 |--|--|
 |Ctrl+E|在語句清單上的權杖和實體之間切換|
 

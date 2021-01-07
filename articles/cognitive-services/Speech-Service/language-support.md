@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 68a384197409115343a81aea23b0f7d42166d716
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762957"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976804"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -36,7 +36,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Language                           | 地區設定 (BCP-47)  | 自訂                                   |
+| 語言                           | 地區設定 (BCP-47)  | 自訂                                   |
 |------------------------------------|--------|--------------------------------------------------|
 | 阿拉伯文 (巴林)，現代標準  | `ar-BH` | 語言模型                                   |
 | 阿拉伯文 (埃及)                     | `ar-EG` | 語言模型                                   |
@@ -53,9 +53,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 阿拉伯文 (阿拉伯酋長國)       | `ar-AE` | 語言模型                                   |
 | 保加利亞文 (保加利亞)               | `bg-BG` | 語言模型                                   |
 | 加泰蘭文 (西班牙)                    | `ca-ES` | 語言模型                                   |
-| 中文 (廣東話，繁體)   | `zh-HK` | 語言模型                                   |
+| 中文 (廣東話，繁體)   | `zh-HK` | 原音模型<br>語言模型                 |
 | 中文 (中文，簡化)      | `zh-CN` | 原音模型<br>語言模型                 |
-| 中文 (繁體，國語)       | `zh-TW` | 語言模型                                   |
+| 中文 (繁體，國語)       | `zh-TW` | 原音模型<br>語言模型                 |
 | 克羅埃西亞文 (克羅埃西亞)                 | `hr-HR` | 語言模型                                   |
 | 捷克文 (捷克共和國)             | `cs-CZ` | 語言模型                                   |
 | 丹麥文 (丹麥)                   | `da-DK` | 語言模型                                   |
@@ -83,8 +83,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | 匈牙利文 (匈牙利)                | `hu-HU` | 語言模型                                   |
 | 愛爾蘭 (愛爾蘭)                      | `ga-IE` | 語言模型                                   |
 | 義大利文 (義大利)                    | `it-IT` | 原音模型<br>語言模型<br>發音|
-| 日文 (日本)                   | `ja-JP` | 語言模型                                   |
-| 韓文 (韓國)                     | `ko-KR` | 語言模型                                   |
+| 日文 (日本)                   | `ja-JP` | 原音模型<br>語言模型                 |
+| 韓文 (韓國)                     | `ko-KR` | 原音模型<br>語言模型                 |
 | 拉脫維亞文 (拉脫維亞)                   | `lv-LV` | 語言模型                                   |
 | 立陶宛文 (立陶宛)             | `lt-LT` | 語言模型                                   |
 | 馬爾他 (馬爾他)                      | `mt-MT` | 語言模型                                   |
@@ -143,7 +143,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 > 當合成時，所有語音都可以 upsample 或縮減至其他取樣率。
 
 
-| Language | 地區設定 | 性別 | 語音名稱 | 樣式支援 |
+| 語言 | Locale | 性別 | 語音名稱 | 樣式支援 |
 |---|---|---|---|---|
 | 阿拉伯文 (埃及) | `ar-EG` | Female | `ar-EG-SalmaNeural` | 一般 |
 | 阿拉伯文 (埃及) | `ar-EG` | Male | `ar-EG-ShakirNeural` <sup>新增</sup> | 一般 |
@@ -264,7 +264,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 
 以下神經語音處於公開預覽狀態。 
 
-| Language                         | 地區設定  | 性別 | 語音名稱                             | 樣式支援 |
+| 語言                         | Locale  | 性別 | 語音名稱                             | 樣式支援 |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
 | 中文 (中文，簡化)  | `zh-CN` | Female | `zh-CN-XiaohanNeural` | 一般，[使用 SSML](speech-synthesis-markup.md#adjust-speaking-styles)時可使用多個樣式 |
 | 中文 (中文，簡化)  | `zh-CN` | Female | `zh-CN-XiaomoNeural` | 一般，[使用 SSML 可使用](speech-synthesis-markup.md#adjust-speaking-styles)的多個角色扮演和樣式 |
@@ -304,7 +304,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 > 您也可以從使用 24 khz 取樣率的範例中，建立 **En-us AriaRUS** 和 **en-us GuyRUS** 的語音。
 > 當合成時，所有語音都可以 upsample 或縮減至其他取樣率。
 
-| Language | 地區設定 (BCP-47)  | 性別 | 語音名稱 |
+| 語言 | 地區設定 (BCP-47)  | 性別 | 語音名稱 |
 |--|--|--|--|
 | 阿拉伯文 (阿拉伯文 )  | `ar-EG` | Female | `ar-EG-Hoda`|
 | 阿拉伯文 (沙烏地阿拉伯) | `ar-SA` | Male | `ar-SA-Naayf`|
@@ -481,7 +481,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 
 請參閱下表以了解各種說話者辨識 API 支援的語言。 如需說話者辨識的其他詳細資訊，請參閱 [概觀](speaker-recognition-overview.md)。
 
-| Language | 地區設定 (BCP-47)  | 文字相依驗證 | 與文字無關的驗證 | 與文字無關的識別 |
+| 語言 | 地區設定 (BCP-47)  | 文字相依驗證 | 與文字無關的驗證 | 與文字無關的識別 |
 |----|----|----|----|----|
 |英文 (美國)  |  en-US  |  是  |  是  |  是 |
 |中文 (普通話，簡體) | zh-CN     |     n/a |     是 |     是|

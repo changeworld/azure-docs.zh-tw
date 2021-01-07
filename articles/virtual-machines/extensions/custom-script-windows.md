@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b0502fb05043a54d81d768a7809d19b108cc6248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861777"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976838"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows 的自訂指令碼延伸模組
 
@@ -50,6 +50,8 @@ ms.locfileid: "97861777"
 ### <a name="internet-connectivity"></a>網際網路連線
 
 如果您需要在外部下載指令碼 (例如從 GitHub 或 Azure 儲存體)，則必須開放額外的防火牆和網路安全性群組連接埠。 例如，如果您的指令碼位於 Azure 儲存體，則可以允許使用[儲存體](../../virtual-network/network-security-groups-overview.md#service-tags)適用的 Azure NSG 服務標記進行存取。
+
+請注意，CustomScript 延伸模組沒有任何略過憑證驗證的方式。 如果您是從安全的位置下載，例如 自我簽署的憑證最後可能會出現「 *根據驗證程式，遠端憑證無效*」之類的錯誤。 請確定憑證已正確安裝在虛擬機器上的「 *受信任的根憑證授權* 單位」存放區中。
 
 如果您的指令碼是在本機伺服器上，則仍然可能需要開放額外的防火牆和網路安全性群組連接埠。
 

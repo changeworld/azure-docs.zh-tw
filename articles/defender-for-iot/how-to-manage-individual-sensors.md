@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/22/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 87bc3b172fdbd99130dbb36cceb5f3d16fc39dbd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: daaca1d7c6cf43f69241e6a23f8bdfaf4015ba23
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838747"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976940"
 ---
 # <a name="manage-individual-sensors"></a>管理個別感應器
 
@@ -397,7 +397,7 @@ Pem (或罕見的 der) 具有不同副檔名的格式檔案。 Windows 檔案總
 
 下列程式說明如何使用感應器主控台來更新獨立感應器。 更新程式大約需要30分鐘的時間。
 
-1. 移至 [Azure 入口網站](https://portal.azure.com/)。
+1. 前往 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 前往 Defender for IoT。
 
@@ -426,8 +426,6 @@ Pem (或罕見的 der) 具有不同副檔名的格式檔案。 Windows 檔案總
 - 已中斷連線的感應器
 
 - 遠端備份失敗
-
-:::image type="content" source="media/how-to-work-with-system-notifications/image81.png" alt-text="管理系統狀態郵件視圖的螢幕擷取畫面。] (媒體/image80.png) ！[管理系統狀態郵件視圖的螢幕擷取畫面":::
 
 當您建立系統通知的轉送規則時，就會傳送這項資訊。
 

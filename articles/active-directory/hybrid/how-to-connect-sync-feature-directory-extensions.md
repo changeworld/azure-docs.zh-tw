@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172362"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976872"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同步處理：目錄擴充
 您可以使用目錄擴充功能，從內部部署 Active Directory 利用自己的屬性擴充 Azure Active Directory (Azure AD) 中的結構描述。 此功能可讓您建置 LOB 應用程式，方法是取用您在內部部署中持續進行管理的屬性。 這些屬性可以透過 [擴充](/graph/extensibility-overview
@@ -46,7 +46,7 @@ ms.locfileid: "96172362"
 
 
 >[!NOTE]
-> 儘管 Azure AD Connect 支援將多重值的 Active Directory 屬性同步處理為 Azure AD 作為多重值的目錄擴充，但是目前沒有辦法可以擷取/取用在多重值目錄擴充屬性中上傳的資料。
+> 在 Azure AD Connect 同步處理多重值 Active Directory 屬性 Azure AD 為多重值屬性擴充功能之後，就可以將屬性包含在 SAML 宣告中。 但是，您無法透過 API 呼叫來使用此資料。
 
 屬性清單是從 Azure AD Connect 安裝期間建立的結構描述快取讀取。 如果您已使用其他屬性擴充 Active Directory 結構描述，就必須[重新整理結構描述](how-to-connect-installation-wizard.md#refresh-directory-schema)，才可看見這些新屬性。
 

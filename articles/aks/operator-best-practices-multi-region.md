@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b53c0002af3680567aabf0955f6bb4e0d99c2ab1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3ff8406a3634fa946ab8ce7aca694bbc57d556a5
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093429"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976396"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>因應 Azure Kubernetes Service (AKS) 中商務持續性和災害復原的最佳做法
 
@@ -119,10 +119,7 @@ AKS 區域可用性和配對區域是聯合考慮。 請將 AKS 叢集部署到�
 
 ![以基礎結構為基礎的非同步複寫](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
 
-如果您使用 Azure 受控磁碟，則可以選擇複寫和 DR 解決方案，如下所示：
-
-* [Azure 上的 Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure 備份](../backup/backup-overview.md)
+如果您使用 Azure 受控磁碟，有幾個選項可用來處理複寫和嚴重損壞修復。 [Azure 上的 Velero][velero] 和 [Kasten][kasten] 是 Kubernetes 原生的解決方案，但不受支援。
 
 ### <a name="application-based-asynchronous-replication"></a>以應用程式為基礎的非同步複寫
 
@@ -140,3 +137,6 @@ Kubernetes 目前沒有針對以應用程式為基礎的非同步複寫提供原
 <!-- INTERNAL LINKS -->
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
+
+[velero]: https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md
+[kasten]: https://www.kasten.io/

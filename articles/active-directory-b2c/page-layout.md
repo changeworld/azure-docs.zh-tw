@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108496"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976498"
 ---
 # <a name="page-layout-versions"></a>頁面配置版本
 
@@ -51,7 +51,7 @@ ms.locfileid: "97108496"
 - 現在焦點會放在驗證電子郵件之後的密碼欄位。
 - 已 `autofocus` 從 checkbox 控制項移除。 
 - 已新增電話號碼驗證的顯示控制項支援。
-- 您現在可以將 `data-preload="true"` 屬性 [在 HTML 標籤中] (自訂-使用-HTML。 md # 指導方針-適用于
+- 您現在可以 `data-preload="true"` [在您的 HTML 標籤中](customize-ui-with-html.md#guidelines-for-using-custom-page-content)新增屬性
   - 同時載入連結的 CSS 檔案與您的 HTML 範本，使其不會在載入檔案時「閃爍」。
   - 控制在 `script` 頁面載入之前提取和執行標記的順序。
 - 電子郵件欄位現在會 `type=email` 提供正確的建議。

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 22d0c59110ba033232fbdf41062b49e9a146ca6f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955069"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977008"
 ---
 # <a name="about-defender-for-iot-console-users"></a>關於適用于 IoT 主控台使用者的 Defender
 
@@ -223,8 +223,6 @@ ms.locfileid: "97955069"
     > 請勿改變密碼修復檔。 這是已簽署的檔案，如果您使用它進行篡改，將無法運作。
 
 1. 在 [ **密碼修復** ] 畫面上，選取 **[上傳**]。 **[上傳密碼** 復原檔案] 視窗隨即開啟。
-
-   :::image type="content" source="media/password-recovery-images/upload.png" alt-text="上傳您的修復檔案以取得新的密碼。":::
 
 1. 選取 **[流覽]** 以找出您的檔案 `password_recovery.zip` ，或將拖曳 `password_recovery.zip` 至視窗。
 

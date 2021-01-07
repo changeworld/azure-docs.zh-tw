@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a0abbacc55cff2f561323a22dd83311c87b1511d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 90debef39b3e657bf96221dfaf5fa762d332a364
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584488"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976515"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -1217,7 +1217,7 @@ OAuth 驗證碼授與流程中的步驟：
 > [!NOTE]
 > 儘管目前無法在非資源庫應用程式上設定 OAuth，但是您可以從授權伺服器手動產生存取權杖，並在非資源庫應用程式的秘密權杖欄位中輸入該存取權杖。 這可讓您在登入應用程式資源庫之前，驗證 SCIM 伺服器與 Azure AD SCIM 用戶端的相容性，以支援 OAuth 驗證碼授與。  
 
-**長時間存留的 OAuth 持有人權杖：** 如果您的應用程式不支援 OAuth 授權碼授與流程，您也可以產生長時間存留的 OAuth 持有人權杖，且其存留期可比管理員可用來設定佈建整合的權杖還要久。 此權杖應該是永久的，否則，當權杖過期時，佈建作業將遭到[隔離](application-provisioning-quarantine-status.md)。 此權杖的大小必須低於 1KB。  
+**長時間存留的 OAuth 持有人權杖：** 如果您的應用程式不支援 OAuth 授權碼授與流程，您也可以產生長時間存留的 OAuth 持有人權杖，且其存留期可比管理員可用來設定佈建整合的權杖還要久。 此權杖應該是永久的，否則，當權杖過期時，佈建作業將遭到[隔離](application-provisioning-quarantine-status.md)。
 
 如需其他驗證和授權方法的相關資訊，請在 [UserVoice](https://aka.ms/appprovisioningfeaturerequest) 上告訴我們。
 

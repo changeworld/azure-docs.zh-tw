@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d634978333e2b833324228fb0908cfba61a786d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d04f2d1717e1d95f8bcafb8f72f2b0a2f83a248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919756"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976821"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -1434,6 +1434,14 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
+| microsoft 目錄/應用程式/appRoles/更新 | 管理應用程式角色和要求應用程式的委派許可權。 |
+| microsoft.directory/applications/audience/update | 更新所有應用程式類型的物件。 |
+| microsoft.directory/applications/authentication/update | 更新所有類型之應用程式的驗證。 |
+| microsoft.directory/applications/basic/update | 更新所有類型之應用程式的基本屬性。 |
+| microsoft.directory/applications/credentials/update | 更新所有類型之應用程式的認證。 |
+| microsoft.directory/applications/owners/update | 更新所有類型之應用程式的擁有者。 |
+| microsoft.directory/applications/permissions/update | 更新所有類型之應用程式的公開許可權和必要許可權。 |
+| microsoft.directory/applications/policies/update | 更新 Azure Active Directory 中的 applications.policies 屬性。 |
 | microsoft.directory/contacts/basic/update | 更新 Azure Active Directory 中 contacts 的基本屬性。 |
 | microsoft.directory/contacts/create | 在 Azure Active Directory 中建立 contacts。 |
 | microsoft.directory/contacts/delete | 刪除 Azure Active Directory 中的 contacts。 |
@@ -1467,6 +1475,14 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
+| microsoft 目錄/應用程式/appRoles/更新 | 管理應用程式角色和要求應用程式的委派許可權。 |
+| microsoft.directory/applications/audience/update | 更新所有應用程式類型的物件。 |
+| microsoft.directory/applications/authentication/update | 更新所有類型之應用程式的驗證。 |
+| microsoft.directory/applications/basic/update | 更新所有類型之應用程式的基本屬性。 |
+| microsoft.directory/applications/credentials/update | 更新所有類型之應用程式的認證。 |
+| microsoft.directory/applications/owners/update | 更新所有類型之應用程式的擁有者。 |
+| microsoft.directory/applications/permissions/update | 更新所有類型之應用程式的公開許可權和必要許可權。 |
+| microsoft.directory/applications/policies/update | 更新 Azure Active Directory 中的 applications.policies 屬性。 |
 | microsoft.directory/contacts/basic/update | 更新 Azure Active Directory 中 contacts 的基本屬性。 |
 | microsoft.directory/contacts/create | 在 Azure Active Directory 中建立 contacts。 |
 | microsoft.directory/contacts/delete | 刪除 Azure Active Directory 中的 contacts。 |

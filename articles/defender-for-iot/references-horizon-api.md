@@ -4,15 +4,15 @@ description: 本指南說明常用的範圍方法。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 11/19/2020
+ms.date: 1/7/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3266517b9ddc8fc7ac7b06a137286c05ea9a28fa
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6d2e3fccd6a61fe129050faa29cb7bb77674ccfe
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838655"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976892"
 ---
 # <a name="horizon-api"></a>範圍 API 
 
@@ -24,7 +24,7 @@ ms.locfileid: "97838655"
 
 - 針對 (NODE.JS) SDK 的水準開放開發環境，請洽詢您的 CyberX 代表。
 - 如需支援和疑難排解資訊，請聯絡 <support@cyberx-labs.com> 。
-- 若要從 CyberX 主控台存取 Cyberx 使用者指南，請選取， :::image type="icon" source="media/references-horizon-api//image3.png"::: 然後選取 [ **下載使用者指南**]。
+- 若要從 CyberX 主控台存取 Cyberx 使用者指南，請選取， :::image type="icon" source="media/references-horizon-api/profile-icon.png"::: 然後選取 [ **下載使用者指南**]。
 
 ## `horizon::protocol::BaseParser`
 

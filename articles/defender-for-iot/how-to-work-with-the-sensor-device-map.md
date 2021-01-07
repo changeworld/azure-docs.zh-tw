@@ -4,15 +4,15 @@ description: 裝置對應提供偵測到的網路裝置的圖形標記法。 使
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/07/2020
+ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: dd0f28411dccab1a1dd36fbd01d2d1acbcc689e0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839490"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976753"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>調查裝置對應中的感應器偵測
 
@@ -59,7 +59,7 @@ ms.locfileid: "97839490"
 
 下圖顯示已折迭的 IT 子網，其中包含27個 IT 網路元素。
 
-:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet.png" alt-text="折迭的 IT 子網與27個 IT 網路元素":::
+:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="折迭的 IT 子網與27個 IT 網路元素":::
 
 若要啟用 IT 網路折迭功能：
 
@@ -120,7 +120,7 @@ ms.locfileid: "97839490"
 
 | 群組名稱 | 描述 |
 |--|--|
-| **已知的應用程式或非 standrad 的埠 (預設)** | 使用保留埠的裝置，例如 TCP。 使用非標準埠或未獲指派別名之埠的裝置。 |
+| **已知的應用程式或非標準埠 (預設)** | 使用保留埠的裝置，例如 TCP。 使用非標準埠或未獲指派別名之埠的裝置。 |
 | **(預設) 的通訊協定** | 處理 OT 流量的裝置。 |
 | **授權 (預設)** | 在學習過程中或正式新增至網路的網路中探索到的裝置 |
 | **裝置清查篩選** | 裝置會根據 [裝置清查] 資料表中的篩選器儲存來分組。 |
@@ -226,7 +226,7 @@ ms.locfileid: "97839490"
 
 詳細的觀點顯示裝置和裝置標籤，以及下列資訊：
 
-:::image type="content" source="media/how-to-work-with-maps/device-map.png" alt-text="詳細檢視":::
+:::image type="content" source="media/how-to-work-with-maps/device-map-v2.png" alt-text="詳細檢視":::
 
 ### <a name="control-the-zoom-view"></a>控制縮放視圖
 
@@ -236,7 +236,7 @@ ms.locfileid: "97839490"
 
 ### <a name="enable-simplified-zoom-views"></a>啟用簡化的縮放視圖
 
-如果系統管理員想要讓安全性分析師和 RO 使用者存取 Brid 的眼睛和裝置，以及輸入連接視圖，則應該啟用簡化的視圖選項。
+如果系統管理員想要讓安全性分析師和 RO 使用者存取鳥和裝置，以及輸入連接視圖，則應該啟用簡化的視圖選項。
 
 若要啟用簡化的地圖視圖：
 
@@ -361,7 +361,7 @@ ms.locfileid: "97839490"
 | 積體電路 | 工程站 <br /> Plc <br />史學 家 <br />人機界面 <br />Ied <br />DC 控制器 <br />RTU <br />工業封裝系統 <br />產業規模 <br />產業機器人 <br />位置 <br />計量 <br />變數頻率磁片磁碟機  <br />機器人控制器 <br />伺服 <br />氣動裝置 <br />Marquee |
 | IT | 網域控制站 <br />DB 伺服器 <br />工作站 <br />伺服器 <br />終端機工作站 <br />儲存體 <br />Smart Phone <br />Tablet <br />備份伺服器 |
 | IoT | IP 攝影機 <br />印表機  <br />打孔時鐘 <br />ATM <br />智慧型電視 <br />遊戲主控台 <br />Dvr <br />大門主控台 <br />暖 通 空調 <br />控溫器 <br />引發警示 <br />智慧型燈光 <br />智慧型切換 <br />引發偵測器 <br />IP 電話 <br />鬧鐘系統 <br />鬧鐘警報器 <br />動作偵測 <br />電梯 <br />濕度感應器 <br />條碼掃描器 <br />不斷電供應系統 <br />人員計數器系統 <br />Intercom <br />大門 |
-| 網路 | 無線存取點 <br />路由器 <br />Switch <br />防火牆 <br />VPN 閘道 <br />NTP 伺服器 <br />Wifi Pineapple <br />實體位置 <br />I/o 介面卡 <br /> 通訊協定轉換器 |
+| 網路 | 無線存取點 <br />路由器 <br />參數 <br />防火牆 <br />VPN 閘道 <br />NTP 伺服器 <br />Wifi Pineapple <br />實體位置 <br />I/o 介面卡 <br /> 通訊協定轉換器 |
 
 若要查看裝置資訊：
 
