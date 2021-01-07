@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 0e174f9b78606e0bea5cded3a176f4207745bb5c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7a52d3971e4ec0cb8ec104a57ba7fb4057c23b72
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077298"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964638"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>如何在 Azure 虛擬 WAN hub 中建立網路虛擬裝置 (預覽版) 
 
@@ -21,7 +21,7 @@ ms.locfileid: "92077298"
 
 本文中的步驟可協助您在虛擬 WAN 中樞內建立 **Barracuda CLOUDGEN WAN** 網路虛擬裝置。 若要完成此練習，您必須擁有 Barracuda Cloud 部署裝置 (CPE) 以及您在開始之前部署到中樞的 Barracuda CloudGen WAN 設備的授權。
 
-如需 **CISCO SD-wan** 在 AZURE 虛擬 WAN 內的部署檔，請以下列電子郵件地址傳送電子郵件給 cisco： vwan_public_preview@external.cisco.com
+如需 **CISCO SD-wan** 在 AZURE 虛擬 WAN 內的部署檔，請參閱 [cisco Cloud 通往 for 多重雲端](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701)。 若要註冊您的帳戶並取得必要的 Cisco SD-WAN 授權，請以下列電子郵件地址傳送電子郵件給 Cisco： vwan_public_preview@external.cisco.com
 
 
 ## <a name="prerequisites"></a>必要條件
@@ -50,15 +50,15 @@ ms.locfileid: "92077298"
 1. 在 [ **中樞** ] 頁面上，選取 [+ 新增中樞] 以開啟 [ **建立虛擬中樞** ] 頁面。
 
    :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="基本概念":::
-1. 在 [建立虛擬中樞]**** 頁面的 [基本]**** 索引標籤中，完成以下欄位：
+1. 在 [建立虛擬中樞] 頁面的 [基本] 索引標籤中，完成以下欄位：
 
    **專案詳細資料**
 
    * 區域 (先前稱為位置)
    * 名稱
    * 中樞私人位址空間。 建立中樞的最小位址空間為 /24，這表示在建立期間從 /25 到 /32 的任何範圍都會產生錯誤。 Azure 虛擬 WAN 是 Microsoft 所提供的受控服務，可在虛擬中樞內針對不同的閘道/服務建立適當的子網。  (例如：網路虛擬裝置、VPN 閘道、ExpressRoute 閘道、使用者 VPN/點對站閘道、防火牆、路由等 ) 。 使用者不需要為虛擬中樞內的服務明確規劃子網位址空間，因為 Microsoft 會將其作為服務的一部分。
-1. 選取 [檢閱 + 建立]**** 以進行驗證。
-1. 選取 [建立]**** 以建立中樞。
+1. 選取 [檢閱 + 建立] 以進行驗證。
+1. 選取 [建立] 以建立中樞。
 
 ## <a name="create-the-network-virtual-appliance-in-the-hub"></a>在中樞內建立網路虛擬裝置
 
@@ -66,14 +66,14 @@ ms.locfileid: "92077298"
 
 1. 找出您在上一個步驟中建立的虛擬 WAN 中樞，並加以開啟。
 
-   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="基本概念":::
+   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="虛擬中樞":::
 1. 尋找 [網路虛擬裝置] 磚，然後選取 [ **建立** ] 連結。
 1. 在 [ **網路虛擬裝置** ] 分頁上，選取 [ **Barracuda CloudGen WAN**]，然後選取 [ **建立** ] 按鈕。
 
-   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="基本概念":::
+   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="選取 NVA":::
 1. 這會帶您前往 Barracuda CloudGen WAN 閘道的 Azure Marketplace 供應專案。 閱讀條款，然後在您準備就緒時選取 [ **建立** ] 按鈕。
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="基本概念":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Barracuda NVA 基本概念":::
 1. 在 [ **基本** ] 頁面上，您將需要提供下列資訊：
 
    * **訂** 用帳戶-選擇您用來部署虛擬 WAN 和中樞的訂用帳戶。
@@ -83,7 +83,7 @@ ms.locfileid: "92077298"
    * **受控資源群組** -這是受控資源群組的名稱，Barracuda 會在其中部署其所管理的資源。 此名稱應預先填入。
 1. 選取 [ **下一步： CLOUDGEN WAN 閘道]** 按鈕。
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="基本概念":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="CloudGen WAN 閘道":::
 1. 請在此提供下列資訊：
 
    * **虛擬 Wan 中樞** -您想要部署此 NVA 的虛擬 wan 中樞。

@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 06a9a955e8a963f94b1885abf5a920cb96c01940
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: adb3691625d6cdde03c803480ae948bb1911cc7d
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007421"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964366"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 入口網站列出 Azure 角色指派
 
-[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] 本文說明如何使用 Azure 入口網站列出角色指派。
+[!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control/definition-list.md)] 本文說明如何使用 Azure 入口網站列出角色指派。
 
 > [!NOTE]
 > 如果您的組織具有外包管理功能給使用 [Azure 委派資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服務提供者，此服務提供者所授權的角色指派將不會顯示在此處。
@@ -83,7 +83,7 @@ ms.locfileid: "97007421"
 
 1. 按一下 [檢查存取權]  索引標籤。
 
-    ![資源群組存取控制-檢查存取索引標籤](./media/role-assignments-list-portal/rg-access-control-check-access.png)
+    ![資源群組存取控制 - [檢查存取權] 索引標籤](./media/role-assignments-list-portal/rg-access-control-check-access.png)
 
 1. 在 [ **尋找** ] 清單中，選取您要檢查其存取權的使用者、群組、服務主體或受控識別。
 
@@ -93,11 +93,11 @@ ms.locfileid: "97007421"
 
 1. 按一下安全性主體以開啟 [指派]  窗格。
 
-    在此窗格中，您可以在此範圍查看所選取安全性主體的存取權，並繼承到此範圍。 未列出子範圍的指派。 您會看到下列指派：
+    在此窗格中，您可以看到此範圍內或繼承至此範圍的所選安全性主體有何存取權。 子系範圍上的指派不會列出。 您會看到下列指派：
 
     - 使用 Azure RBAC 新增的角色指派。
-    - 使用 Azure 藍圖或 Azure 受控應用程式新增的拒絕指派。
-    - 傳統部署的傳統服務管理員或 Co-Administrator 指派。 
+    - 使用 Azure 藍圖或 Azure 受控應用程式新增的否定性指派。
+    - 傳統部署的傳統服務管理員或共同管理員指派。 
 
     ![[指派] 窗格](./media/shared/rg-check-access-assignments-user.png)
 

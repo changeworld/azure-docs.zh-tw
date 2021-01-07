@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 565b84603a14452dd2ec49f8cf61da128503bc03
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648271"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964247"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>新增角色指派的步驟
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] 本文說明使用 [Azure 入口網站](role-assignments-portal.md)、 [Azure PowerShell](role-assignments-powershell.md)、 [Azure CLI](role-assignments-cli.md)或 [REST API](role-assignments-rest.md)新增角色指派的高階步驟。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] 本文說明使用 [Azure 入口網站](role-assignments-portal.md)、 [Azure PowerShell](role-assignments-powershell.md)、 [Azure CLI](role-assignments-cli.md)或 [REST API](role-assignments-rest.md)新增角色指派的高階步驟。
 
 ## <a name="step-1-determine-who-needs-access"></a>步驟1：判斷需要存取的人員
 
@@ -58,7 +58,7 @@ ms.locfileid: "94648271"
 
 ## <a name="step-3-identify-the-needed-scope"></a>步驟3：識別所需的範圍
 
-「範圍」是要套用存取權的一組資源。 在 Azure 中，您可以在四個層級指定範圍： [管理群組](../governance/management-groups/overview.md)、訂用帳戶、 [資源群組](../azure-resource-manager/management/overview.md#resource-groups)和資源。 範圍的結構為父子式關聯性。 每個階層層級可讓範圍更加具體。 您可以在任何範圍層級指派角色。 您選取的層級會決定角色的套用幅度。 較低層級會從較高的層級繼承角色許可權。 
+「範圍」是要套用存取權的一組資源。 在 Azure 中，您可以在四個層級指定範圍： [管理群組](../governance/management-groups/overview.md)、訂用帳戶、 [資源群組](../azure-resource-manager/management/overview.md#resource-groups)和資源。 範圍會採用父子式關聯性的結構。 每個階層層級可讓範圍更加具體。 您可以在任何範圍層級指派角色。 您選取的層級會決定角色的套用幅度。 較低層級會從較高的層級繼承角色許可權。 
 
 ![角色指派的範圍](./media/shared/rbac-scope.png)
 

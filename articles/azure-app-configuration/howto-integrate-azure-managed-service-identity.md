@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d6b3d60a44725869d68dd9f1158d2279f3cf3e86
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929747"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963975"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用受控識別來存取應用程式組態
 
@@ -102,7 +102,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     using Azure.Identity;
     ```
 
-1. 如果您只想要存取直接儲存在應用程式設定中的值，請藉 `CreateWebHostBuilder` 由取代方法來更新方法 `config.AddAzureAppConfiguration()` 。
+1. 如果您只想要存取直接儲存在應用程式設定中的值，請藉 `CreateWebHostBuilder` 由取代 `config.AddAzureAppConfiguration()` (在封裝) 中找到的方法來更新方法 `Microsoft.Azure.AppConfiguration.AspNetCore` 。
 
     > [!IMPORTANT]
     > `CreateHostBuilder` 會取代 .NET Core 3.0 中的 `CreateWebHostBuilder`。  根據您的環境選取正確的語法。

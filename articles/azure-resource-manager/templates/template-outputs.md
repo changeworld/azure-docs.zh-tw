@@ -3,16 +3,16 @@ title: 範本中的輸出
 description: 說明如何)  (ARM 範本中定義 Azure Resource Manager 範本的輸出值。
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 9e4ac134e9c1864bca8dd56c3a6e2311d0328d7d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f8f13b6caf063cea79dc71775fb936f406a3ee6c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934725"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964009"
 ---
 # <a name="outputs-in-arm-templates"></a>ARM 範本中的輸出
 
-本文說明如何在 Azure Resource Manager 範本中定義輸出值 (ARM 範本) 。 當您需要從已部署的資源傳回值時，您可以使用輸出。
+本文說明如何在 Azure Resource Manager 範本中定義輸出值 (ARM 範本) 。 `outputs`當您需要從已部署的資源傳回值時，請使用。
 
 每個輸出值的格式都必須符合其中一種 [資料類型](template-syntax.md#data-types)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "97934725"
 
 ## <a name="conditional-output"></a>條件式輸出
 
-在 [輸出] 區段中，您可以有條件地傳回值。 一般來說，當您有 [條件地部署](conditional-resource-deployment.md) 資源時，會在輸出中使用條件。 下列範例示範如何根據是否部署新的 IP 位址，有條件地傳回公用 IP 位址的資源識別碼：
+在 `outputs` 區段中，您可以有條件地傳回值。 一般來說， `condition` `outputs` 當您有 [條件地部署](conditional-resource-deployment.md) 資源時，會在中使用。 下列範例示範如何根據是否部署新的 IP 位址，有條件地傳回公用 IP 位址的資源識別碼：
 
 ```json
 "outputs": {

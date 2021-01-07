@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/03/2021
-ms.openlocfilehash: 36d40215f759190cc9e6c6e3f4918dcbc384f94f
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 73af7e2a1920e6cfdad9245d965908255ef95a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893262"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964587"
 ---
 # <a name="apache-hbase-advisories-in-azure-hdinsight"></a>Azure HDInsight 中的 Apache HBase 諮詢
 
@@ -21,9 +21,9 @@ ms.locfileid: "97893262"
 
 ## <a name="optimize-hbase-to-read-most-recently-written-data"></a>優化 HBase 以讀取最近寫入的資料
 
-當您在 Azure HDInsight 中使用 Apache HBase 時，您可以針對應用程式讀取最近寫入資料的案例，將 HBase 的設定優化。 為了達到高效能，最好是從 memstore （而不是從遠端儲存體）提供 HBase 讀取。
+如果您的 usecase 牽涉到從 HBase 讀取最近撰寫的資料，此諮詢可以協助您。 為了達到高效能，最好是從 memstore （而不是從遠端儲存體）提供 HBase 讀取。
 
-查詢諮詢指出資料表中指定的資料行系列有 > 的75% 讀取，且從 memstore 取得服務。 此指標表示即使在 memstore 上發生排清，也需要存取最近使用的檔案，且必須在快取中。 系統會先將資料寫入 memstore 系統存取最近的資料。 內部 HBase 清除器執行緒可能會偵測到指定區域已達到 128M (預設) 大小，並且可以觸發排清。 這種情況也會發生在 memstore 大約128M 時所寫入的最新資料。 因此，稍後閱讀這些最近的記錄可能需要讀取檔案，而不是 memstore。 因此最好將最近排清的最新資料優化，以快取的方式來進行優化。
+查詢諮詢指出資料表中指定的資料行系列 > 從 memstore 取得的75% 讀取。 此指標表示即使在 memstore 上發生排清，也需要存取最近使用的檔案，且必須在快取中。 系統會先將資料寫入 memstore 系統存取最近的資料。 內部 HBase 清除器執行緒可能會偵測到指定區域已達到 128M (預設) 大小，並且可以觸發排清。 這種情況也會發生在 memstore 大約128M 時所寫入的最新資料。 因此，稍後閱讀這些最近的記錄可能需要讀取檔案，而不是 memstore。 因此最好將最近排清的最新資料優化，以快取的方式來進行優化。
 
 若要將快取中的最新資料優化，請考慮下列設定：
 
@@ -35,7 +35,7 @@ ms.locfileid: "97893262"
 
 4. 如果您確定只需要讀取最近的資料，請將 [設定] 設定 `hbase.rs.cachecompactedblocksonwrite` 為 [ **開啟**]。 這項設定會告訴系統即使發生壓縮，資料仍會保留在快取中。 您也可以在系列層級設定這些設定。 
 
-   在 HBase Shell 中，執行下列命令：
+   在 HBase Shell 中，執行下列命令以設定 `hbase.rs.cachecompactedblocksonwrite` config：
    
    ```
    alter '<TableName>', {NAME => '<FamilyName>', CONFIGURATION => {'hbase.hstore.blockingStoreFiles' => '300'}}
@@ -43,15 +43,15 @@ ms.locfileid: "97893262"
 
 5. 您可以針對資料表中的指定系列關閉 [封鎖快取]。 確定已針對具有最新資料 **讀取的系列開啟此功能。** 依預設，會針對資料表中的所有系列開啟 [封鎖快取]。 如果您已停用某系列的區塊快取，且需要將其開啟，請使用 hbase shell 中的 alter 命令。
 
-   這些設定有助於確保資料在快取中，而且最近的資料不會進行壓縮。 如果您的案例可能會有 TTL，請考慮使用「資料層級壓縮」。 如需詳細資訊，請參閱 [Apache HBase 參考指南：資料分層式壓縮](https://hbase.apache.org/book.html#ops.date.tiered)  
+   這些設定可協助確保資料可以在快取中使用，而最近的資料則不會進行壓縮。 如果您的案例可能會有 TTL，請考慮使用「資料層級壓縮」。 如需詳細資訊，請參閱 [Apache HBase 參考指南：資料分層式壓縮](https://hbase.apache.org/book.html#ops.date.tiered)  
 
 ## <a name="optimize-the-flush-queue"></a>優化清除佇列
 
-優化排清佇列諮詢指出 HBase 排清可能需要微調。 清除處理常式的設定可能不夠高。
+此諮詢指出 HBase 排清可能需要微調。 目前的 flush 處理常式設定可能不夠高，無法處理寫入流量，可能會導致排清的速度變慢。
 
 在區域伺服器 UI 中，請注意清除佇列是否成長超過100。 此閾值表示排清的速度很慢，您可能必須微調設定   `hbase.hstore.flusher.count` 。 根據預設，此值為2。 確定清除器執行緒的最大值不會增加到6以上。
 
-此外，請查看您是否有區域計數微調的建議。 如果是的話，請先嘗試進列區域調整，看看這是否有助於加快排清的速度。 微調清除器執行緒可能會有多種方法，例如 
+此外，請查看您是否有區域計數微調的建議。 如果有的話，建議您嘗試進列區域調整，以查看是否能更快地進行清除。 否則，調整清除器執行緒可能會有説明。
 
 ## <a name="region-count-tuning"></a>區域計數調整
 
@@ -65,7 +65,7 @@ ms.locfileid: "97893262"
 
 - 設定好這些設定後，區域數目就是100。 4 GB 的全域 memstore 現已在100個區域中分割。 因此，有效的每個區域都只會取得 40 MB 的 memstore。 當寫入是一致的時，系統會頻繁地排清和較小的順序 < 40 MB 的大小。 有許多清除器執行緒可能會提高排清速度 `hbase.hstore.flusher.count` 。
 
-此諮詢表示要重新考慮每台伺服器的區域數目、堆積大小和全域 memstore 大小設定，以及排清執行緒微調，以便避免這類更新遭到封鎖。
+此諮詢表示要重新考慮每台伺服器的區域數目、堆積大小和全域 memstore 大小設定，以及微調排清執行緒以避免更新遭到封鎖，是很好的方法。
 
 ## <a name="compaction-queue-tuning"></a>壓縮佇列微調
 

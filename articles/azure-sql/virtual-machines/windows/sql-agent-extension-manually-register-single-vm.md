@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: e7a8f54abbadb63c870c4d92843699c67f59752c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505625"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964519"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>使用 SQL IaaS 代理程式擴充功能註冊 SQL Server VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "97505625"
 本文說明如何使用 SQL IaaS 代理程式擴充功能註冊單一 SQL Server VM。 或者，您可以 [自動](sql-agent-extension-automatic-registration-all-vms.md) 註冊所有 SQL Server vm，或 [多個以大量方式編寫腳本的 vm](sql-agent-extension-manually-register-vms-bulk.md)。
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 向 [SQL Server IaaS 代理程式擴充](sql-server-iaas-agent-extension-automate-management.md)功能註冊會在您的訂用帳戶內建立 **SQL 虛擬機器**_資源_，這是與虛擬機器資源 _不同_ 的資源。 從擴充功能取消註冊 SQL Server VM 將會移除 **SQL 虛擬機器**_資源_，但不會捨棄實際的虛擬機器。
 
@@ -41,11 +41,11 @@ ms.locfileid: "97505625"
 > [!IMPORTANT]
 > SQL IaaS 代理程式擴充功能會收集資料，以在 Azure 虛擬機器中使用 SQL Server 時，為客戶提供選擇性的權益。 Microsoft 不會在未經客戶同意的情況下，使用此資料進行授權審核。 如需詳細資訊，請參閱 [SQL Server 隱私權補充](/sql/sql-server/sql-server-privacy#non-personal-data) 資訊。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要向擴充功能註冊 SQL Server VM，您需要： 
 
-- [Azure 訂閱](https://azure.microsoft.com/free/)。
+- [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
 - Azure 資源模型 [Windows Server 2008 (或更高) 虛擬機器](../../../virtual-machines/windows/quick-create-portal.md) ，其 [SQL Server 2008 (或更高) ](https://www.microsoft.com/sql-server/sql-server-downloads) 部署至公用或 Azure Government 雲端。 
 - 最新版本的 [Azure CLI](/cli/azure/install-azure-cli) 或 [Azure PowerShell (5.0 的最小) ](/powershell/azure/install-az-ps)。 
 
@@ -188,6 +188,9 @@ $sqlvm.SqlManagementType
 ## <a name="upgrade-to-full"></a>升級至 full  
 
 在 *輕量* 模式下註冊擴充的 SQL Server vm 可以使用 Azure 入口網站、Azure CLI 或 Azure PowerShell 升級為 _full_ 。 在 OS 升級為 Windows 2008 R2 和更新版本後，_NoAgent_ 模式中的 SQL Server VM 就可以升級為 _完整_ 模式。 無法降級-若要這樣做，您必須從 SQL IaaS 代理程式擴充功能中 [取消註冊](#unregister-from-extension) SQL Server VM。 這麼做會移除 **SQL 虛擬機器**_資源_，但不會刪除實際的虛擬機器。 
+
+> [!NOTE]
+> 當您將 SQL IaaS 延伸模組的管理模式升級為 full 時，它會重新開機 SQL Server 服務。 在某些情況下，重新開機可能會導致服務主體名稱 (Spn) 與 SQL Server 服務相關聯，以變更為錯誤的使用者帳戶。 如果您在將管理模式升級為 full 之後遇到連線問題，請 [取消註冊並重新註冊您的 spn](/sql/database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections)。
 
 
 ### <a name="azure-portal"></a>Azure 入口網站

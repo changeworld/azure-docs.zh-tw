@@ -3,12 +3,12 @@ title: 範本中的子資源
 description: 說明如何在 Azure Resource Manager 範本中設定子資源的名稱和類型 (ARM 範本) 。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 408914fd309676da36904a364f905a8ee809d648
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a950d72751b829c0a2aa3ba5ca27316a0544d9cc
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934300"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963907"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>設定子資源的名稱和類型
 
@@ -137,5 +137,4 @@ ms.locfileid: "97934300"
 ## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解如何建立 ARM 範本，請參閱 [瞭解 arm 範本的結構和語法](template-syntax.md)。
-
 * 若要瞭解參考資源時資源名稱的格式，請參閱 [reference](template-functions-resource.md#reference)函式。

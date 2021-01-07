@@ -10,18 +10,18 @@ author: lobrien
 ms.date: 12/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 15d8a198df4769b94bced49b82f7be827c771994
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9038d6bc9cd061200ef4553242889776f30d2dc1
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630901"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964553"
 ---
 # <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>使用適用于 Python 的 Azure Machine Learning SDK 來觸發機器學習管線
 
 在本文中，您將瞭解如何以程式設計方式排程要在 Azure 上執行的管線。 您可以選擇根據經過時間或檔案系統變更來建立排程。 以時間為基礎的排程可以用來處理例行的工作，例如監視資料漂移。 以變更為基礎的排程可以用來回應異常或無法預測的變更，例如上傳的新資料或正在編輯的舊資料。 在瞭解如何建立排程之後，您將瞭解如何取出和停用排程。 最後，您將瞭解如何使用 Azure 邏輯應用程式，以允許更複雜的觸發邏輯或行為。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立 [免費帳戶](https://aka.ms/AMLFree)。
 
@@ -190,16 +190,19 @@ published_pipeline.endpoint
 1. 設定您的排程，以設定您可能擁有的任何 [資料路徑 PipelineParameters](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-datapath-and-pipelineparameter.ipynb) 值：
 
     ```json
-    "DataPathAssignments": { 
-         "input_datapath": { 
-                            "DataStoreName": "<datastore-name>", 
-                            "RelativePath": "@triggerBody()?['Name']" 
-    } 
-    }, 
-    "ExperimentName": "MyRestPipeline", 
-    "ParameterAssignments": { 
-    "input_string": "sample_string3" 
-    },
+    {
+      "DataPathAssignments": {
+        "input_datapath": {
+          "DataStoreName": "<datastore-name>",
+          "RelativePath": "@{triggerBody()?['Name']}" 
+        }
+      },
+      "ExperimentName": "MyRestPipeline",
+      "ParameterAssignments": {
+        "input_string": "sample_string3"
+      },
+      "RunSource": "SDK"
+    }
     ```
 
     使用 `DataStoreName` 您新增至工作區的作為必要條件[](#prerequisites)。
@@ -212,7 +215,7 @@ published_pipeline.endpoint
 > [!IMPORTANT]
 > 如果您使用 Azure 角色型存取控制 (Azure RBAC) 來管理管線的存取權，請 [設定管線案例的許可權 (定型或計分) ](how-to-assign-roles.md#common-scenarios)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已使用適用于 Python 的 Azure Machine Learning SDK，以兩種不同的方式來排程管線。 會根據經過的時鐘時間重複一次排程。 如果在指定的上 `Datastore` 或在該存放區的目錄內修改檔案，則會執行另一個排程。 您已瞭解如何使用入口網站來檢查管線和個別執行。 您已瞭解如何停用排程，讓管線停止執行。 最後，您已建立 Azure 邏輯應用程式來觸發管線。 
 
