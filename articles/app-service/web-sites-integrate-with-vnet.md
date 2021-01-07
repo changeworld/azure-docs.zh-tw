@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854939"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963582"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>將您的應用程式與 Azure 虛擬網路整合
 
@@ -130,6 +130,12 @@ App Service 方案 VNet 整合 UI 會顯示您的 App Service 方案中，應用
 
 * **同步網路**：同步網路作業僅用於與閘道相依的 VNet 整合功能。 執行同步網路作業可確保您的憑證與網路資訊會保持同步。如果您新增或變更 VNet 的 DNS，請執行同步網路作業。 此作業會重新啟動任何使用此 VNet 的應用程式。 如果您是使用屬於不同訂用帳戶的應用程式與 VNet，此作業將無法運作。
 * **新增路由**：新增路由會將連出流量驅使到您的 VNet。
+
+指派給實例的私人 IP 會透過環境變數（ **WEBSITE_PRI加值稅E_IP**）公開。 Kudu 主控台 UI 也會顯示 Web 應用程式可用的環境變數清單。 此 IP 是從整合式子網的位址範圍指派的。 針對區域 VNet 整合，WEBSITE_PRI加值稅E_IP 的值是來自委派子網位址範圍的 IP，而針對閘道所需的 VNet 整合，此值是來自虛擬網路閘道上所設定點對站位址集區的位址範圍內的 IP。 這是 Web 應用程式用來透過虛擬網路連接到資源的 IP。 
+
+> [!NOTE]
+> WEBSITE_PRI加值稅E_IP 的值已系結至變更。 不過，它會是整合子網或點對站位址範圍的位址範圍內的 IP，因此您必須允許來自整個位址範圍的存取。
+>
 
 ### <a name="gateway-required-vnet-integration-routing"></a>需要閘道的 VNet 整合路由傳送
 VNet 中所定義的路由用於將流量從您的應用程式導向至 VNet。 若要將額外的連出流量傳送到 VNet，請在這裡新增那些位址區塊。 此功能僅適用於需要閘道的 VNet 整合。 當您使用需要閘道的 VNet 整合時，路由表不會像影響區域 VNet 整合那樣，對您的應用程式流量造成相同影響。

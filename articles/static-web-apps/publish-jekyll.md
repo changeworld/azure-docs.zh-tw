@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 673852f8f9aa81c838a7c1db68681bb9ee0b7e0b
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000210"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862019"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>教學課程：將 Jekyll 網站發佈至 Azure Static Web Apps Preview
 
@@ -112,13 +112,13 @@ Azure Static Web Apps 會使用 GitHub 來發佈您的網站。 下列步驟說�
 
 1. 按一下 [以 GitHub 登入] 按鈕。
 
-1. 選取您的存放庫建立所在的**組織**。
+1. 選取您的存放庫建立所在的 **組織**。
 
 1. 選取 [jekyll-static-app] 作為「存放庫」。
 
 1. 針對 [分支]，選取 [主要]。
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="已填寫的詳細資料":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="已完成的 GitHub 資訊":::
 
 ### <a name="build"></a>Build
 
@@ -150,7 +150,7 @@ Azure Static Web Apps 會使用 GitHub 來發佈您的網站。 下列步驟說�
 
     ```yml
     - name: Set up Ruby
-      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      uses: ruby/setup-ruby@v1.59.1
       with:
         ruby-version: 2.6
     - name: Install dependencies
@@ -171,7 +171,7 @@ Azure Static Web Apps 會使用 GitHub 來發佈您的網站。 下列步驟說�
 
 1. 在 Azure 入口網站的「概觀」 視窗上，按一下 [URL] 連結以開啟您已部署的應用程式。
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="已填寫的詳細資料":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="已部署的應用程式":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

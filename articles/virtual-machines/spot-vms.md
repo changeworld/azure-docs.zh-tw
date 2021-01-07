@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1666b7e74ceefd7e7e4fe6e499667b09efa0ac7
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963358"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963788"
 ---
 # <a name="use-spot-vms-in-azure"></a>在 Azure 中使用點 Vm
 
@@ -26,14 +26,14 @@ ms.locfileid: "91963358"
 
 您可以根據容量或您所設定的最大價格來收回 Vm。 建立點 VM 時，您可以將收回原則設定為 *解除配置* (預設) 或 *刪除*。 
 
-*解除配置*原則會將您的 VM 移至已停止解除配置的狀態，讓您稍後重新部署。 不過，不保證配置會成功。 已解除配置的 Vm 將計入您的配額，而您將會支付基礎磁片的儲存體成本。 
+*解除配置* 原則會將您的 VM 移至已停止解除配置的狀態，讓您稍後重新部署。 不過，不保證配置會成功。 已解除配置的 Vm 將計入您的配額，而您將會支付基礎磁片的儲存體成本。 
 
 如果您想要在收回 VM 時將其刪除，您可以將收回原則設定為 [ *刪除*]。 系統會將已收回的 Vm 與其基礎磁片一起刪除，因此不會繼續向您收取儲存體費用。 
 
 您可以選擇透過 [Azure Scheduled Events](./linux/scheduled-events.md)接收 VM 內通知。 這會在您的 Vm 被收回時通知您，而且您將有30秒的時間來完成任何工作，並在收回之前執行關機工作。 
 
 
-| 選項 | 成果 |
+| 選項 | 結果 |
 |--------|---------|
 | 最大價格設定為 >= 目前的價格。 | 如果容量和配額可供使用，則會部署 VM。 |
 | 最大價格設定為 < 目前的價格。 | 未部署 VM。 您會收到一則錯誤訊息，指出最大價格需要 >= 目前價格。 |
@@ -81,7 +81,7 @@ ms.locfileid: "91963358"
 
 **資料表**：
 
-:::image type="content" source="./media/spot-table.png" alt-text="區域選項的螢幕擷取畫面，其中定價和收回率的差異是圖表。":::
+:::image type="content" source="./media/spot-table.png" alt-text="區域選項的螢幕擷取畫面，其中的定價和收回率差異為數據表。":::
 
 
 
@@ -110,6 +110,11 @@ ms.locfileid: "91963358"
 **問：** 我可以在哪裡張貼問題？
 
 **答：** 您可以 `azure-spot` 在 [Q&A](/answers/topics/azure-spot.html)張貼並標記問題。 
+
+
+**問：** 如何變更點 VM 的最大價格？
+
+**答：** 您必須先解除配置 VM，才能變更最大價格。 然後，您可以從 VM 的 [設定] 區段變更入口網站 **中的最** 大價格。 
 
 ## <a name="next-steps"></a>後續步驟
 使用 [CLI](./linux/spot-cli.md)、 [入口網站](spot-portal.md)、 [ARM 範本](./linux/spot-template.md)或 [PowerShell](./windows/spot-powershell.md) 來部署現成的 vm。

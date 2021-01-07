@@ -5,12 +5,12 @@ ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions-full
-ms.openlocfilehash: f270f74f97a9b9306d7b23dacec12c38f418dbd1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fb85920b04e3cd457dc36d1ba1fd0f18dcd7abb6
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921818"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937054"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
@@ -20,7 +20,7 @@ ms.locfileid: "96921818"
 Azure Functions 支援使用[自訂處理常式](functions-custom-handlers.md)的任何語言或執行階段。 針對某些語言 (例如本教學課程中使用的 R 程式設計語言)，您需要將執行階段或其他程式庫安裝為需要使用自訂容器的相依性。
 ::: zone-end
 
-在自訂 Linux 容器中部署您的函式程式碼需要[進階方案](functions-premium-plan.md#features)或[專用 (App Service) 方案](functions-scale.md#app-service-plan)裝載。 完成本教學課程會在您的 Azure 帳戶中產生費用 (以美元計價)，您可以在完成時[清除資源](#clean-up-resources)，將這些成本降到最低。
+在自訂 Linux 容器中部署您的函式程式碼需要[進階方案](functions-premium-plan.md)或[專用 (App Service) 方案](dedicated-plan.md)裝載。 完成本教學課程會在您的 Azure 帳戶中產生費用 (以美元計價)，您可以在完成時[清除資源](#clean-up-resources)，將這些成本降到最低。
 
 您也可以如[建立您在 Linux 上託管的第一個函式](./create-first-function-cli-csharp.md?pivots=programming-language-python)所述，使用預設 Azure App Service 容器。 在 [Azure Functions 基底映像存放庫](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的基底映像。
 

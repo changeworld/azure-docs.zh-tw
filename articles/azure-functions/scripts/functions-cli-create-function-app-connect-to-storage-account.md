@@ -4,12 +4,12 @@ description: Azure CLI 指令碼範例 - 建立連線至 Azure 儲存體的 Azur
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b95ec2da96e385ba4595a5552e64d6cc039c0e16
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 13120ad4478febf9281ff423a3a7a8f8f3b25845
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565325"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934402"
 ---
 # <a name="create-a-function-app-with-a-named-storage-account-connection"></a>透過具名儲存體帳戶連線建立函式應用程式 
 
@@ -37,7 +37,7 @@ ms.locfileid: "94565325"
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 使用位置建立資源群組。 |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 建立儲存體帳戶。 |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在無伺服器[取用方案](../functions-scale.md#consumption-plan)中建立函式應用程式。 |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | 在無伺服器[取用方案](../consumption-plan.md)中建立函式應用程式。 |
 | [az storage account show-connection-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | 取得帳戶的連接字串。 |
 | [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | 將連接字串設定為函式應用程式中的應用程式設定。 |
 

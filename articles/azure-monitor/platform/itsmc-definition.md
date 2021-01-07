@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 072abffcc74b8b060d98c07d1f310413c7b323ef
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: fc0f148da518c718dafaab082f9598ccd4372a1f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954935"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963805"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -140,15 +140,15 @@ ms.locfileid: "97954935"
             例如：
             1) 具有3個設定專案的警示1： A、B、C-將建立3個工作專案。
             2) 具有1個設定專案的警示2： A-將建立1個工作專案。
-
-        * 如果您清除 [ **為每個設定專案建立個別的工作專案]** 核取方塊，ITSM 連接器會為每個警示規則建立單一工作專案，並將其附加到所有受影響的設定專案。 如果先前的工作專案已關閉，則會建立新的工作專案。
-        >[!NOTE]
+       >[!NOTE]
         > 在此情況下，某些引發的警示將不會在 ITSM 工具中產生新的工作專案。
 
-            For example:
-            1) Alert 1 with 3 Configuration Items: A, B, C - will create 1 work item.
-            2) Alert 2 for the same alert rule as phase 1 with 1 Configuration Item: D - will be merged to the work item in phase 1.
-            3) Alert 3 for a different alert rule with 1 Configuration Item: E - will create 1 work item.
+        * 如果您清除 [ **為每個設定專案建立個別的工作專案]** 核取方塊，ITSM 連接器會為每個警示規則建立單一工作專案，並將其附加到所有受影響的設定專案。 如果先前的工作專案已關閉，則會建立新的工作專案。
+
+            例如：
+             1) 具有3個設定專案的警示1： A、B、C-將建立1個工作專案。
+             2) 相同警示規則的警示2與1個設定專案的階段1相同： D-將會合並到階段1中的工作專案。
+             3) 具有1個設定專案之不同警示規則的警示3： E-將建立1個工作專案。
 
        ![顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration.png)
 

@@ -9,19 +9,19 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 183d8b415ccb35d22dcc23ccf11d0707ad0778dd
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533475"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963650"
 ---
 # <a name="monitor-azure-machine-learning"></a>監視 Azure Machine Learning
 
 當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure Machine Learning 所產生的監視資料，以及如何使用 Azure 監視器分析和警示此資料。
 
 > [!TIP]
-> 本檔中的資訊主要適用于系統 __管理員__ ，因為它描述 Azure Machine Learning 服務和相關聯的 Azure 服務的監視。 如果您是 __資料科學家__ 或 __開發人員__ ，而且想要監視 *模型定型執行* 的特定資訊，請參閱下列檔：
+> 本檔中的資訊主要適用于系統 __管理員__，因為它描述 Azure Machine Learning 服務和相關聯的 Azure 服務的監視。 如果您是 __資料科學家__ 或 __開發人員__，而且想要監視 *模型定型執行* 的特定資訊，請參閱下列檔：
 >
 > * [啟動、監視及取消定型回合](how-to-manage-runs.md)
 > * [記錄訓練執行的計量](how-to-track-experiments.md)
@@ -81,7 +81,7 @@ Azure Machine Learning 會收集與 [azure 資源監視資料](../azure-monitor/
 
 ## <a name="analyzing-metrics"></a>分析計量
 
-您可以從 [ **Azure 監視器** ] 功能表開啟 **計量** ，以分析 Azure Machine Learning 的計量，以及來自其他 Azure 服務的度量。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)。
+您可以從 [ **Azure 監視器**] 功能表開啟 **計量**，以分析 Azure Machine Learning 的計量，以及來自其他 Azure 服務的度量。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)。
 
 如需所收集的平臺度量清單，請參閱 [監視 Azure Machine Learning 資料參考度量](monitor-resource-reference.md#metrics)。
 
@@ -91,6 +91,8 @@ Azure Machine Learning 的所有計量都在命名空間 **Machine Learning 服�
 
 如需參考，您可以查看 [Azure 監視器中支援的所有資源計量](../azure-monitor/platform/metrics-supported.md)清單。
 
+> [!TIP]
+> Azure 監視器計量資料可供90天使用。 不過，在建立圖表時，只能視覺化30天。 例如，如果您想要將90天期間視覺化，您必須在90天期間內將它分成30天的三個圖表。
 ### <a name="filtering-and-splitting"></a>篩選和分割
 
 針對支援維度的計量，您可以使用維度值來套用篩選。 例如，針對的叢集 **名稱** 篩選使用中 **核心** `cpu-cluster` 。 
@@ -102,7 +104,7 @@ Azure Machine Learning 的所有計量都在命名空間 **Machine Learning 服�
 <a id="analyzing-log-data"></a>
 ## <a name="analyzing-logs"></a>分析記錄
 
-使用 Azure 監視器 Log Analytics 需要您建立診斷設定，並啟用 __將資訊傳送至 Log analytics__ 。 如需詳細資訊，請參閱 [收集和路由](#collection-and-routing) 區段。
+使用 Azure 監視器 Log Analytics 需要您建立診斷設定，並啟用 __將資訊傳送至 Log analytics__。 如需詳細資訊，請參閱 [收集和路由](#collection-and-routing) 區段。
 
 Azure 監視器記錄檔中的資料會儲存在資料表中，每個資料表都有自己的唯一屬性集。 Azure Machine Learning 會將資料儲存在下列資料表中：
 
@@ -120,7 +122,7 @@ Azure 監視器記錄檔中的資料會儲存在資料表中，每個資料表�
 ### <a name="sample-kusto-queries"></a>範例 Kusto 查詢
 
 > [!IMPORTANT]
-> 當您從 [服務-名稱] 功能表選取 **記錄** 時，會開啟 Log Analytics，並將查詢範圍設定為目前的 Azure Machine Learning 工作區。 這表示記錄查詢只會包含來自該資源的資料。 如果您想要執行包含來自其他工作區或來自其他 Azure 服務之資料的查詢，請從 [ **Azure 監視器** ] 功能表中選取 [ **記錄** ]。 如需詳細資訊，請參閱 [Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](../azure-monitor/log-query/scope.md)。
+> 當您從 [服務-名稱] 功能表選取 **記錄** 時，會開啟 Log Analytics，並將查詢範圍設定為目前的 Azure Machine Learning 工作區。 這表示記錄查詢只會包含來自該資源的資料。 如果您想要執行包含來自其他工作區或來自其他 Azure 服務之資料的查詢，請從 [ **Azure 監視器**] 功能表中選取 [**記錄**]。 如需詳細資訊，請參閱 [Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](../azure-monitor/log-query/scope.md)。
 
 以下是您可以用來協助監視 Azure Machine Learning 資源的查詢： 
 
@@ -158,7 +160,7 @@ Azure 監視器記錄檔中的資料會儲存在資料表中，每個資料表�
 
 ## <a name="alerts"></a>警示
 
-您可以從 [ **Azure 監視器** ] 功能表開啟 **警示** ，以存取 Azure Machine Learning 的警示。 如需建立警示的詳細資訊，請參閱 [使用 Azure 監視器建立、查看和管理計量警示](../azure-monitor/platform/alerts-metric.md) 。
+您可以從 [ **Azure 監視器**] 功能表開啟 **警示**，以存取 Azure Machine Learning 的警示。 如需建立警示的詳細資訊，請參閱 [使用 Azure 監視器建立、查看和管理計量警示](../azure-monitor/platform/alerts-metric.md) 。
 
 下表列出 Azure Machine Learning 的常見和建議的度量警示規則：
 

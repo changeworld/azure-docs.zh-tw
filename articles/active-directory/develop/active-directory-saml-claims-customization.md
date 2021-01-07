@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9c316362e2cd3fca9290e5f8070879567d9b7ea5
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936789"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963497"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：針對企業應用程式自訂 SAML 權杖中發出的宣告
 
@@ -135,7 +135,7 @@ ms.locfileid: "96936789"
 | **StartWith()** | 如果輸入的開頭是指定的值，則輸出屬性或常數。 否則，您可以在沒有相符結果時指定另一個輸出。<br/>例如，假設您想要發出宣告，其中如果國家/地區是以 "US" 作為開頭，便代表值為使用者的員工識別碼，否則您便想要輸出分機屬性。 若要這麼做，您必須設定下列值：<br/>參數 1 (輸入)：user.country<br/>*值*："US"<br/>參數 2 (輸出)：user.employeeid<br/>參數 3 (在沒有相符項目下的輸出)：user.extensionattribute1 |
 | **Extract() - 比對之後** | 在子字串符合指定值之後加以傳回。<br/>例如，假設輸入的值是 "Finance_BSimon"，相符的值是 "Finance_"，則宣告的輸出便是 "BSimon"。 |
 | **Extract() - 比對之前** | 傳回子字串，直到其符合指定值為止。<br/>例如，假設輸入的值是 "BSimon_US"，相符的值是 "_US"，則宣告的輸出便是 "BSimon"。 |
-| **Extract() - 比對之間** | 傳回子字串，直到其符合指定值為止。<br/>例如，假設輸入的值是 "Finance_BSimon_US"，第一個相符的值是 "Finance_"，第二個相符的值是 "_US"，則宣告的輸出便是 "BSimon"。 |
+| **Extract() - 比對之間** | 傳回子字串，直到其符合指定值為止。<br/>例如，如果輸入的值為 "Finance_BSimon_US"，則第一個相符的值為 "財務 \_ "，第二個相符值為 " \_ US"，則宣告的輸出為 ">bsimon"。 |
 | **ExtractAlpha() - 前置詞** | 傳回字串的前置詞字母部分。<br/>例如，如果輸入的值是 "BSimon_123"，其便會傳回 "BSimon"。 |
 | **ExtractAlpha() - 後置詞** | 傳回字串的後置詞字母部分。<br/>例如，如果輸入的值是 "123_Simon"，其便會傳回 "Simon"。 |
 | **ExtractNumeric() - 前置詞** | 傳回字串的前置詞數值部分。<br/>例如，如果輸入的值是 "123_BSimon"，其便會傳回 "123"。 |

@@ -3,12 +3,12 @@ title: 教學課程：建立自訂原則定義
 description: 在本教學課程中，針對 Azure 原則製作自訂原則定義，以在您的 Azure 資源上強制執行自訂商務規則。
 ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 24058a2c8428d306c5e53a73393b0d98785831cf
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 817e6f494b024b9a789f39a4101236f64d8fa0cd
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876289"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882886"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>教學課程：建立自訂原則定義
 
@@ -122,13 +122,13 @@ ms.locfileid: "91876289"
 ...
 ```
 
-[屬性] 底下是名為 **supportsHttpsTrafficOnly**、且設定為 **false** 的值。 這個屬性似乎就是我們要尋找的屬性。 此外，該資源的**類型**是 **Microsoft.Storage/storageAccounts**。 該類型可讓我們將原則限制為僅限此類型的資源。
+[屬性] 底下是名為 **supportsHttpsTrafficOnly**、且設定為 **false** 的值。 這個屬性似乎就是我們要尋找的屬性。 此外，該資源的 **類型** 是 **Microsoft.Storage/storageAccounts**。 該類型可讓我們將原則限制為僅限此類型的資源。
 
 #### <a name="create-a-resource-in-the-portal"></a>在入口網站建立資源
 
 另一種透過入口網站的方式是資源建立體驗。 在透過入口網站建立儲存體帳戶時，[進階] 索引標籤下有 [需要安全性傳輸] 選項。 此屬性具有 [停用] 和 [啟用] 選項。 資訊圖示會有額外的文字，可確認此選項或許就是我們想要的屬性。 不過，入口網站不會在此畫面上告訴我們屬性名稱。
 
-在 [檢閱 + 建立] 索引標籤上，頁面底部會有用來**下載自動化的範本**的連結。 選取連結就會開啟範本，以建立我們所設定的資源。 在此案例中，我們會看到兩項關鍵資訊：
+在 [檢閱 + 建立] 索引標籤上，頁面底部會有用來 **下載自動化的範本** 的連結。 選取連結就會開啟範本，以建立我們所設定的資源。 在此案例中，我們會看到兩項關鍵資訊：
 
 ```json
 ...
@@ -151,7 +151,7 @@ GitHub 上的 [Azure 快速入門範本](https://github.com/Azure/azure-quicksta
 
 #### <a name="resource-reference-docs"></a>資源參考文件
 
-若要驗證 **supportsHttpsTrafficOnly** 是否為正確屬性，請在該儲存體提供者上查看[儲存體帳戶資源](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)的 ARM 範本參考。 屬性物件有一份有效參數清單。 選取 [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) 連結即可顯示所能接受屬性的資料表。 **supportsHttpsTrafficOnly** 存在，且其描述符合我們為了符合商務需求而所要尋找的內容。
+若要驗證 **supportsHttpsTrafficOnly** 是否為正確屬性，請在該儲存體提供者上查看 [儲存體帳戶資源](/azure/templates/microsoft.storage/2018-07-01/storageaccounts)的 ARM 範本參考。 屬性物件有一份有效參數清單。 選取 [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) 連結即可顯示所能接受屬性的資料表。 **supportsHttpsTrafficOnly** 存在，且其描述符合我們為了符合商務需求而所要尋找的內容。
 
 ### <a name="azure-resource-explorer"></a>Azure 資源總管
 
@@ -168,7 +168,6 @@ GitHub 上的 [Azure 快速入門範本](https://github.com/Azure/azure-quicksta
 - 適用於 VS Code 的Azure 原則擴充功能
 - Azure CLI
 - Azure PowerShell
-- Azure Resource Graph
 
 ### <a name="get-aliases-in-vs-code-extension"></a>取得 VS Code 擴充功能中的別名
 
@@ -202,125 +201,6 @@ az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" 
 ```
 
 和 Azure CLI 一樣，結果會顯示名為 **supportsHttpsTrafficOnly**、且為儲存體帳戶所支援的別名。
-
-### <a name="azure-resource-graph"></a>Azure Resource Graph
-
-[Azure Resource Graph](../../resource-graph/overview.md) 服務可提供另一個方法來尋找 Azure 資源的屬性。 以下是用來查看 Resource Graph 所搭配單一儲存體帳戶的 查詢範例：
-
-```kusto
-Resources
-| where type=~'microsoft.storage/storageaccounts'
-| limit 1
-```
-
-```azurecli-interactive
-az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
-```
-
-其結果看起來與我們在 ARM 範本中以及透過 Azure 資源總管所看到的結果類似。 不過，Azure Resource Graph 的結果也可能因_投射_了_別名_陣列而包含[別名](../concepts/definition-structure.md#aliases)詳細資料：
-
-```kusto
-Resources
-| where type=~'microsoft.storage/storageaccounts'
-| limit 1
-| project aliases
-```
-
-```azurecli-interactive
-az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-```
-
-以下是來自儲存體帳戶的別名輸出範例：
-
-```json
-"aliases": {
-    "Microsoft.Storage/storageAccounts/accessTier": null,
-    "Microsoft.Storage/storageAccounts/accountType": "Standard_LRS",
-    "Microsoft.Storage/storageAccounts/enableBlobEncryption": true,
-    "Microsoft.Storage/storageAccounts/enableFileEncryption": true,
-    "Microsoft.Storage/storageAccounts/encryption": {
-        "keySource": "Microsoft.Storage",
-        "services": {
-            "blob": {
-                "enabled": true,
-                "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-            },
-            "file": {
-                "enabled": true,
-                "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-            }
-        }
-    },
-    "Microsoft.Storage/storageAccounts/encryption.keySource": "Microsoft.Storage",
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyname": null,
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyvaulturi": null,
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyversion": null,
-    "Microsoft.Storage/storageAccounts/encryption.services": {
-        "blob": {
-            "enabled": true,
-            "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-        },
-        "file": {
-            "enabled": true,
-            "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-        }
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.blob": {
-        "enabled": true,
-        "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.blob.enabled": true,
-    "Microsoft.Storage/storageAccounts/encryption.services.file": {
-        "enabled": true,
-        "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.file.enabled": true,
-    "Microsoft.Storage/storageAccounts/networkAcls": {
-        "bypass": "AzureServices",
-        "defaultAction": "Allow",
-        "ipRules": [],
-        "virtualNetworkRules": []
-    },
-    "Microsoft.Storage/storageAccounts/networkAcls.bypass": "AzureServices",
-    "Microsoft.Storage/storageAccounts/networkAcls.defaultAction": "Allow",
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*]": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].action": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].state": [],
-    "Microsoft.Storage/storageAccounts/primaryEndpoints": {
-        "blob": "https://mystorageaccount.blob.core.windows.net/",
-        "file": "https://mystorageaccount.file.core.windows.net/",
-        "queue": "https://mystorageaccount.queue.core.windows.net/",
-        "table": "https://mystorageaccount.table.core.windows.net/"
-    },
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.blob": "https://mystorageaccount.blob.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.file": "https://mystorageaccount.file.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.queue": "https://mystorageaccount.queue.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.table": "https://mystorageaccount.table.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.web": null,
-    "Microsoft.Storage/storageAccounts/primaryLocation": "eastus2",
-    "Microsoft.Storage/storageAccounts/provisioningState": "Succeeded",
-    "Microsoft.Storage/storageAccounts/sku.name": "Standard_LRS",
-    "Microsoft.Storage/storageAccounts/sku.tier": "Standard",
-    "Microsoft.Storage/storageAccounts/statusOfPrimary": "available",
-    "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly": false
-}
-```
-
-Azure Resource Graph 可透過 [Cloud Shell](https://shell.azure.com) 來使用，因此可讓您輕鬆快速地探索資源的屬性。
 
 ## <a name="determine-the-effect-to-use"></a>決定要使用的效果
 
@@ -365,7 +245,7 @@ Azure Resource Graph 可透過 [Cloud Shell](https://shell.azure.com) 來使用�
 
 ### <a name="parameters"></a>參數
 
-雖然我們不會使用參數來變更評估，但我們會使用參數來允許變更用於進行疑難排解的**效果**。 我們會定義 **effectType** 參數，並將其限制為只能使用 **Deny** 和 **Disabled**。 這兩個選項符合我們的商務需求。 已完成的參數區塊如下列範例所示：
+雖然我們不會使用參數來變更評估，但我們會使用參數來允許變更用於進行疑難排解的 **效果**。 我們會定義 **effectType** 參數，並將其限制為只能使用 **Deny** 和 **Disabled**。 這兩個選項符合我們的商務需求。 已完成的參數區塊如下列範例所示：
 
 ```json
 "parameters": {

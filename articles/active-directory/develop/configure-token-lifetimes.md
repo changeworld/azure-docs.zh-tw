@@ -9,57 +9,89 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e663cdd3846e804d1dcf96076c07b9a3db84272c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4d6a7150c854ba89c3cd8eacd6b553c4b8e97343
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507739"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963344"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a> (預覽版設定權杖存留期原則) 
-當您為應用程式、服務主體及您整體組織建立及管理權杖存留期時，在 Azure AD 中許多案例都是可能的。  
+您可以指定 Microsoft 身分識別平臺所發出的存取、SAML 或識別碼權杖的存留期。 不論是針對組織中所有的應用程式、針對多租用戶 (多組織) 應用程式，還是針對組織中特定的服務主體，都可以設定權杖存留期。 如需詳細資訊，請參閱可設定的 [權杖存留期](active-directory-configurable-token-lifetimes.md)。
 
-> [!IMPORTANT]
-> 5月2020之後，租使用者將無法再設定重新整理和會話權杖存留期。  Azure Active Directory 將會在2021年1月30日之後停止接受現有的重新整理和會話權杖設定。 您仍然可以在淘汰之後設定存取權杖存留期。  若要深入瞭解，請閱讀 [Microsoft 身分識別平臺中可設定的權杖存留期](active-directory-configurable-token-lifetimes.md)。
-> 我們已在 Azure AD 條件式存取中實行 [驗證會話管理功能](../conditional-access/howto-conditional-access-session-lifetime.md)   。 您可以使用這項新功能，藉由設定 [登入頻率] 來設定重新整理權杖存留期。
+在本節中，我們會逐步解說可協助您對權杖存留期強加新規則的常見原則案例。 在此範例中，您會瞭解如何建立原則，要求使用者在您的 web 應用程式中更頻繁地進行驗證。
 
-
-在本節中，我們將逐步解說一些常見的原則案例，這些案例可以協助您強制實行下列各項的新規則：
-
-* 權杖存留期
-* 權杖最大閒置時間
-* 權杖最大壽命
-
-在範例中，您可以了解如何︰
-
-* 管理組織的預設原則
-* 為 Web 登入建立原則
-* 針對呼叫 Web API 的原生應用程式建立原則
-* 管理進階原則
-
-## <a name="prerequisites"></a>Prerequisites
-在下列範例中，您建立、更新連結，並刪除應用程式、服務主體和您整體組織的原則。 如果您不熟悉 Azure AD，建議您先瞭解 [如何取得 Azure AD 租](quickstart-create-new-tenant.md) 使用者，然後再繼續進行這些範例。  
-
+## <a name="get-started"></a>開始使用
 若要開始使用，請執行下列步驟：
 
 1. 下載最新的 [Azure AD PowerShell 模組公開預覽版本](https://www.powershellgallery.com/packages/AzureADPreview)。
-2. 執行 `Connect` 命令以登入您的 Azure AD 管理帳戶。 您每次啟動新的工作階段時執行此命令。
+1. 執行 `Connect` 命令以登入您的 Azure AD 管理帳戶。 您每次啟動新的工作階段時執行此命令。
 
     ```powershell
     Connect-AzureAD -Confirm
     ```
 
-3. 若要查看在組織中建立的所有原則，請執行下列命令。 在下列案例中的大多數操作之後，執行此命令。 執行命令也會協助您取得原則的 ** **。
+1. 若要查看在您的組織中建立的所有原則，請執行 [new-azureadpolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) Cmdlet。  具有已定義屬性值（不同于上述預設值）的任何結果都在淘汰範圍內。
 
     ```powershell
-    Get-AzureADPolicy
+    Get-AzureADPolicy -All
     ```
 
-## <a name="manage-an-organizations-default-policy"></a>管理組織的預設原則
+1. 若要查看哪些應用程式和服務主體連結到您所識別的特定原則，請將 **1a37dad8-5da7-4cc8-87c7-efbc0326cf20** 取代為任何原則識別碼來執行下列 [>get-azureadpolicyappliedobject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) Cmdlet。 然後您可以決定是否要設定條件式存取登入頻率，或保留 Azure AD 預設值。
+
+    ```powershell
+    Get-AzureADPolicyAppliedObject -id 1a37dad8-5da7-4cc8-87c7-efbc0326cf20
+    ```
+
+如果您的租使用者具有可定義重新整理和會話權杖設定屬性之自訂值的原則，Microsoft 建議您將這些原則更新為反映上述預設值的值。 如果未進行任何變更，Azure AD 將會自動接受預設值。
+
+## <a name="create-a-policy-for-web-sign-in"></a>為 Web 登入建立原則
+
+在此範例中，您建立會要求使用者提高驗證頻率來登入 Web 應用程式的原則。 此原則會為 Web 應用程式的服務主體設定存取權杖/識別碼權杖的存留期及多重要素工作階段權杖的最大壽命。
+
+1. 建立權杖存留期原則。
+
+    這個 Web 登入原則會將存取權杖/識別碼權杖的存留期及單一要素工作階段權杖最大壽命設定為 2 小時。
+
+    1. 若要建立原則，請執行 [new-azureadpolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) Cmdlet：
+
+        ```powershell
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+        ```
+
+    1. 若要查看您的新原則，並取得原則 **ObjectId**，請執行 [new-azureadpolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) Cmdlet：
+
+        ```powershell
+        Get-AzureADPolicy -Id $policy.Id
+        ```
+
+1. 將原則指派給服務主體。 您也需要取得服務主體的 **ObjectId** 。
+
+    1. 使用 [get-azureadserviceprincipal 指令程式](/powershell/module/azuread/get-azureadserviceprincipal) 可查看您組織的所有服務主體或單一服務主體。
+        ```powershell
+        # Get ID of the service principal
+        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
+        ```
+
+    1. 當您有服務主體時，請執行 [AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) Cmdlet：
+        ```powershell
+        # Assign policy to a service principal
+        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
+        ```
+
+## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>建立重新整理和會話權杖的權杖存留期原則
+> [!IMPORTANT]
+> 從2020到5月，新租使用者無法設定重新整理和會話權杖存留期。  具有現有設定的租使用者可以修改重新整理和會話權杖原則，直到2021年1月30日為止。  Azure Active Directory 將會在2021年1月30日之後停止接受現有的重新整理和會話權杖設定。 您仍然可以在淘汰之後設定存取、SAML 和識別碼權杖存留期。
+>
+> 如果您需要在要求使用者再次登入之前，繼續定義時間週期，請在條件式存取中設定登入頻率。 若要深入瞭解條件式存取，請參閱 [使用條件式存取設定驗證會話管理](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)。
+>
+> 如果您不想在停用日期之後使用條件式存取，您的重新整理和會話權杖將會在該日期設定為 [預設](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement) 設定，而且您將無法再變更其存留期。
+
+### <a name="manage-an-organizations-default-policy"></a>管理組織的預設原則
 在此範例中，您會建立一個原則，讓您的使用者在整個組織中的登入頻率較低。 若要這樣做，請建立單一要素重新整理權杖的權杖存留期原則，此原則會套用至整個組織。 此原則套用至您組織中的每個應用程式，以及每個尚未設定原則的服務主體。
 
 1. 建立權杖存留期原則。
@@ -102,41 +134,7 @@ ms.locfileid: "97507739"
     Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
-## <a name="create-a-policy-for-web-sign-in"></a>為 Web 登入建立原則
-
-在此範例中，您建立會要求使用者提高驗證頻率來登入 Web 應用程式的原則。 此原則會為 Web 應用程式的服務主體設定存取權杖/識別碼權杖的存留期及多重要素工作階段權杖的最大壽命。
-
-1. 建立權杖存留期原則。
-
-    這個 Web 登入原則會將存取權杖/識別碼權杖的存留期及單一要素工作階段權杖最大壽命設定為 2 小時。
-
-    1. 若要建立原則，請執行 [new-azureadpolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) Cmdlet：
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
-        ```
-
-    1. 若要查看您的新原則，並取得原則 **ObjectId**，請執行 [new-azureadpolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) Cmdlet：
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. 將原則指派給服務主體。 您也需要取得服務主體的 **ObjectId** 。
-
-    1. 使用 [get-azureadserviceprincipal 指令程式](/powershell/module/azuread/get-azureadserviceprincipal) 可查看您組織的所有服務主體或單一服務主體。
-        ```powershell
-        # Get ID of the service principal
-        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
-        ```
-
-    1. 當您有服務主體時，請執行 [AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) Cmdlet：
-        ```powershell
-        # Assign policy to a service principal
-        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
-        ```
-
-## <a name="create-a-policy-for-a-native-app-that-calls-a-web-api"></a>針對呼叫 Web API 的原生應用程式建立原則
+### <a name="create-a-policy-for-a-native-app-that-calls-a-web-api"></a>針對呼叫 Web API 的原生應用程式建立原則
 在此範例中，您建立會要求使用者減少驗證頻率的原則。 原則也會延長使用者必須重新驗證之前，可以是非使用中的時間量。 原則會套用到 Web API。 當原生應用程式要求 Web API 做為資源時，會套用此原則。
 
 1. 建立權杖存留期原則。
@@ -165,7 +163,7 @@ ms.locfileid: "97507739"
     Add-AzureADApplicationPolicy -Id $app.ObjectId -RefObjectId $policy.Id
     ```
 
-## <a name="manage-an-advanced-policy"></a>管理進階原則
+### <a name="manage-an-advanced-policy"></a>管理進階原則
 在此範例中，您會建立幾個原則，以瞭解優先順序系統的運作方式。 您也會瞭解如何管理套用至數個物件的多個原則。
 
 1. 建立權杖存留期原則。

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 5f511a898b3b2964f954ba150b05f02486456dcf
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e49a84f5ac507ac80481313c103701a88934083a
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171489"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97900752"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>教學課程：將 Hugo 網站發佈至 Azure 靜態 Web Apps 預覽版
 
@@ -115,17 +115,17 @@ ms.locfileid: "92171489"
 
 1. 針對 [SKU]，選取 [免費]。
 
-   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="在入口網站中建立 Azure 靜態 Web Apps 資源":::
+   :::image type="content" source="./media/publish-hugo/basic-app-details.png" alt-text="已填寫的詳細資料":::
 
 1. 按一下 [以 GitHub 登入] 按鈕。
 
-1. 選取您的存放庫建立所在的 **組織** 。
+1. 選取您的存放庫建立所在的 **組織**。
 
 1. 選取 **hugo-static-app** 作為 [存放庫]。
 
 1. 針對 [分支]，選取 [主要]。
 
-   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="在入口網站中建立 Azure 靜態 Web Apps 資源":::
+   :::image type="content" source="./media/publish-hugo/completed-github-info.png" alt-text="已完成的 GitHub 資訊":::
 
 ### <a name="build"></a>Build
 
@@ -149,7 +149,7 @@ ms.locfileid: "92171489"
 
 1. 在 Azure 入口網站中，移至新建立的 Azure 靜態 Web Apps 資源的 [概觀] 視窗，然後按一下 [URL] 連結以開啟已部署的應用程式。
 
-   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="在入口網站中建立 Azure 靜態 Web Apps 資源":::
+   :::image type="content" source="./media/publish-hugo/deployed-app.png" alt-text="已部署的應用程式":::
 
 #### <a name="custom-hugo-version"></a>自訂 Hugo 版本
 
@@ -176,7 +176,7 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "/" # App source code path
           api_location: "api" # Api source code path - optional
-          app_artifact_location: "public" # Built app content directory - optional
+          output_location: "public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
           HUGO_VERSION: 0.58.0

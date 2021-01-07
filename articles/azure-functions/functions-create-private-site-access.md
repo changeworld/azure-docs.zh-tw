@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 766ad12daeb6d2763f7ed5fe026cd4a0021eaf33
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182493"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937037"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>教學課程：建立 Azure Functions 私人網站存取
 
@@ -130,7 +130,7 @@ ms.locfileid: "96182493"
 
 ## <a name="create-an-azure-functions-app"></a>建立 Azure Functions 應用程式
 
-下一個步驟是使用[取用方案](functions-scale.md#consumption-plan)在 Azure 中建立函式應用程式。 您稍後會在本教學課程中將函式程式碼部署到此資源。
+下一個步驟是使用[取用方案](consumption-plan.md)在 Azure 中建立函式應用程式。 您稍後會在本教學課程中將函式程式碼部署到此資源。
 
 1. 在入口網站中，選擇資源群組檢視頂端的 [新增]。
 1. 選取 [計算 > 函式應用程式]
@@ -149,7 +149,7 @@ ms.locfileid: "96182493"
 
     | 設定      | 建議的值  | 描述      |
     | ------------ | ---------------- | ---------------- |
-    | _儲存體帳戶_ | 全域唯一的名稱 | 建立您函式應用程式使用的儲存體帳戶。 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。 您也可以使用現有帳戶，條件是必須符合[儲存體帳戶需求](./functions-scale.md#storage-account-requirements)。 |
+    | _儲存體帳戶_ | 全域唯一的名稱 | 建立您函式應用程式使用的儲存體帳戶。 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。 您也可以使用現有帳戶，條件是必須符合[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。 |
     | _作業系統_ | 慣用的作業系統 | 系統會根據您的執行階段堆疊選項預先選取作業系統，但您可以視需要變更設定。 |
     | _規劃_ | 耗用量 | [主控方案](./functions-scale.md) 會指示函式應用程式的調整方式，以及每個執行個體可用的資源。 |
 1. 選取 [檢閱 + 建立]，以檢閱應用程式組態選項。

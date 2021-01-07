@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b93c8d48313dc41928400efdddf14e88c8a7e6c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 537b01e39bf911c7bf0b16c29ff1611e810410f9
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86508113"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912847"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 平衡 Azure 中 Windows 虛擬機器的負載以建立高可用性應用程式
 負載平衡會將傳入要求分散到多部虛擬機器，藉此提供高可用性。 在本教學課程中，您會了解 Azure Load Balancer 的不同元件，以分散流量並提供高可用性。 您會了解如何：
@@ -92,7 +92,7 @@ $lb = New-AzLoadBalancer `
 ### <a name="create-a-health-probe"></a>建立健康狀態探查
 若要讓負載平衡器監視您應用程式的狀態，請使用健康狀態探查。 健康狀態探查會根據 VM 對健康狀態檢查的回應，以動態方式從負載平衡器輪替中新增或移除 VM。 根據預設，在 15 秒的間隔內連續發生兩次失敗後，VM 就會從負載平衡器分配中移除。 您可根據通訊協定或您應用程式的特定健康狀態檢查頁面，建立健康狀態探查。 
 
-下列範例會建立 TCP 探查。 您也可以建立自訂 HTTP 探查，以進行更精細的健康狀態檢查。 使用自訂 HTTP 探查時，您必須建立健康狀態檢查頁面，例如 healthcheck.aspx**。 此探查必須對負載平衡器傳回 **HTTP 200 OK** 回應，以將主機保留在輪替中。
+下列範例會建立 TCP 探查。 您也可以建立自訂 HTTP 探查，以進行更精細的健康狀態檢查。 使用自訂 HTTP 探查時，您必須建立健康狀態檢查頁面，例如 healthcheck.aspx。 此探查必須對負載平衡器傳回 **HTTP 200 OK** 回應，以將主機保留在輪替中。
 
 若要建立 TCP 健康狀態探查，請使用 [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig)。 下列範例會建立名為 *myHealthProbe* 的健康狀態探查，在 *TCP* 連接埠 *80* 上監視每個 VM：
 
@@ -188,7 +188,7 @@ $availabilitySet = New-AzAvailabilitySet `
   -PlatformUpdateDomainCount 2
 ```
 
-使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 來設定 VM 的系統管理員使用者名稱和密碼：
+使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) 來設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -256,7 +256,7 @@ Get-AzPublicIPAddress `
 您可能需要在執行您應用程式的 VM 上執行維護，例如安裝 OS 更新。 若要處理您應用程式增加的流量，您可能需要新增額外的 VM。 本節說明如何在負載平衡器中移除或新增 VM。
 
 ### <a name="remove-a-vm-from-the-load-balancer"></a>從負載平衡器移除 VM
-使用 [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) 取得網路介面卡，然後將虛擬 NIC 的 LoadBalancerBackendAddressPools** 屬性設定為 $null**。 最後，更新虛擬 NIC：
+使用 [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) 取得網路介面卡，然後將虛擬 NIC 的 LoadBalancerBackendAddressPools 屬性設定為 $null。 最後，更新虛擬 NIC：
 
 ```azurepowershell-interactive
 $nic = Get-AzNetworkInterface `
@@ -269,7 +269,7 @@ Set-AzNetworkInterface -NetworkInterface $nic
 若要查看負載平衡器如何將流量分散到其餘兩部執行您應用程式的 VM，您可以強制重新整理您的 Web 瀏覽器。 您現在可以在 VM 上執行維護，例如安裝 OS 更新或執行 VM 重新開機。
 
 ### <a name="add-a-vm-to-the-load-balancer"></a>將 VM 新增至負載平衡器
-在執行 VM 維護之後，或者如果需要擴充容量，請經由 [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) 將虛擬 NIC 的 LoadBalancerBackendAddressPools** 屬性設定為 BackendAddressPool**：
+在執行 VM 維護之後，或者如果需要擴充容量，請經由 [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) 將虛擬 NIC 的 LoadBalancerBackendAddressPools 屬性設定為 BackendAddressPool：
 
 取得負載平衡器：
 
