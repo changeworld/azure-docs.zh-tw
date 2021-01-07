@@ -3,16 +3,16 @@ title: 澳大利亞政府 ISM 受保護藍圖範例概觀
 description: 澳大利亞政府 ISM 受保護藍圖範例概觀。 此藍圖範例可協助客戶評定特定 ISO 受保護控制措施。
 ms.date: 09/11/2020
 ms.topic: sample
-ms.openlocfilehash: 4e6b1db0d2f4ecff13068c8e673f2237740ffec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69f18c7a34bdf39ebbc2031b187d033c999165a9
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90038683"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955564"
 ---
 # <a name="overview-of-the-australian-government-ism-protected-blueprint-sample"></a>澳大利亞政府 ISM 受保護藍圖範例概觀
 
-ISM 治理藍圖範例提供一組使用 [Azure 原則](../../../policy/overview.md)的治理規範，協助您取得 ISM 受保護證明 (2020 年 2 月版本)。 這個藍圖可協助客戶針對任何需要資格認證，或符合 ISM 架構的已部署 Azure 的架構，部署一組核心原則。 控制項對應區域可針對此方案中包含的原則提供詳細資料，並說明這些原則如何滿足由 ISM 架構定義的各種控制項。 將資源指派給架構時，Azure 原則會評估不符合已指派原則的資源。
+ISM 治理藍圖範例提供一組使用 [Azure 原則](../../../policy/overview.md)的治理規範，協助您取得 ISM 受保護證明 (2020 年 2 月版本)。 這個藍圖可協助客戶針對任何需要資格認證，或符合 ISM 架構的已部署 Azure 的架構，部署一組核心原則。 
 
 ## <a name="control-mapping"></a>控制項對應
 

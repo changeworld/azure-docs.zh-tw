@@ -3,6 +3,8 @@
 - name: 概觀
   href: overview.md
   items:
+    - name: 新功能
+      href: release-notes.md
     - name: 方案架構
       href: architecture.md
 - name: 快速入門
