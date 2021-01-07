@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400670"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746723"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制無伺服器 SQL 集區的儲存體帳戶存取
 
@@ -83,15 +83,73 @@ ms.locfileid: "97400670"
 
 | 授權類型  | Blob 儲存體   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| SAS    | 支援\*      | 不支援   | 支援\*     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | 支援\*      | 不支援   | 支援\*     |
 | [受控身分識別](?tabs=managed-identity#supported-storage-authorization-types) | 支援      | 支援        | 支援     |
 | [使用者身分識別](?tabs=user-identity#supported-storage-authorization-types)    | 支援\*      | 支援\*        | 支援\*     |
 
 \* SAS 權杖和 Azure AD 身分識別可用來存取未受防火牆保護的儲存體。
 
-> [!IMPORTANT]
-> 存取受防火牆保護的儲存體時，只能使用受控識別。 您必須[允許受信任的 Microsoft 服務... 設定](../../storage/common/storage-network-security.md#trusted-microsoft-services)，並針對該資源執行個體明確[指派 Azure 角色](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)給[系統指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 Azure 角色。
->
+
+### <a name="querying-firewall-protected-storage"></a>查詢受防火牆保護的儲存體
+
+存取受防火牆保護的儲存體時，可以使用 **使用者身分識別** 或 **受控識別**。
+
+#### <a name="user-identity"></a>使用者身分識別
+
+若要透過使用者身分識別存取受防火牆保護的儲存體，您可以使用 PowerShell 模組 Az.Storage。
+#### <a name="configuration-via-powershell"></a>透過 PowerShell 進行設定
+
+請依照下列步驟來設定儲存體帳戶防火牆，並新增 Synapse 工作區的例外狀況。
+
+1. 開啟 PowerShell 或 [安裝 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+2. 安裝更新的 Az。 儲存體模組： 
+    ```powershell
+    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    ```
+    > [!IMPORTANT]
+    > 請確定您使用的是 3.0.1 版或更新版本。 您可以藉由執行下列命令來檢查 Az.Storage 版本：  
+    > ```powershell 
+    > Get-Module -ListAvailable -Name  Az.Storage | select Version
+    > ```
+    > 
+
+3. 連線至您的 Azure 租用戶： 
+    ```powershell
+    Connect-AzAccount
+    ```
+4. 在 PowerShell 中定義變數： 
+    - 資源群組名稱 - 可以在 Synapse 工作區概觀的 Azure 入口網站中找到此名稱。
+    - 帳戶名稱 - 受防火牆規則保護的儲存體帳戶名稱。
+    - 租用戶識別碼 - 可以在租用戶資訊中 Azure Active Directory 的 Azure 入口網站中找到此項。
+    - 資源識別碼 - 可以在 Synapse 工作區概觀的 Azure 入口網站中找到此項。
+
+    ```powershell
+        $resourceGroupName = "<resource group name>"
+        $accountName = "<storage account name>"
+        $tenantId = "<tenant id>"
+        $resourceId = "<Synapse workspace resource id>"
+    ```
+    > [!IMPORTANT]
+    > 請確定資源識別碼符合此範本。
+    >
+    > 請務必以小寫字母寫下 **resourcegroups**。
+    > 資源識別碼的範例： 
+    > ```
+    > /subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Synapse/workspaces/{name-of-workspace}
+    > ```
+    > 
+5. 新增儲存體網路規則： 
+    ```powershell
+        Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
+    ```
+6. 確認該規則已套用至您的儲存體帳戶： 
+    ```powershell
+        $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
+        $rule.ResourceAccessRules
+    ```
+
+#### <a name="managed-identity"></a>受控識別
+您必須[允許受信任的 Microsoft 服務... 設定](../../storage/common/storage-network-security.md#trusted-microsoft-services)，並針對該資源執行個體明確[指派 Azure 角色](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)給[系統指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 Azure 角色。
 
 ## <a name="credentials"></a>認證
 
