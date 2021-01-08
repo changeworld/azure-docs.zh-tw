@@ -10,12 +10,12 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7617a41798821fbb4208898171b7d78b6dcafc99
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 83a19074eb131b4024c0eaf92631a7b2f3d266d9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964060"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014462"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
@@ -23,7 +23,7 @@ ms.locfileid: "97964060"
 
 [參考](/powershell/module/Az.Storage/)  | [Gen1 至 Gen2 對應](#gen1-gen2-map)  | [提供意見](https://github.com/Azure/azure-powershell/issues)反應
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -78,8 +78,7 @@ $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseCon
 使用此方法時，系統不會檢查 Azure RBAC 或 ACL 許可權。
 
 ```powershell
-$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
-$ctx = $storageAccount.Context
+$ctx = New-AzStorageContext -StorageAccountName "<storage-account-name>" -StorageAccountKey "<storage-account-key>"
 ```
 
 ## <a name="create-a-container"></a>建立容器
@@ -409,7 +408,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 下表顯示用於 Data Lake Storage Gen1 的 Cmdlet 如何對應至 Data Lake Storage Gen2 的 Cmdlet。
 
-|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 注意 |
+|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 附註 |
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|根據預設，Get-AzDataLakeGen2ChildItem Cmdlet 只會列出第一個層級的子專案。 -遞迴參數會以遞迴方式列出子專案。 |
 |Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Get-AzDataLakeGen2Item Cmdlet 的輸出專案具有下列屬性： Acl、擁有者、群組、許可權。|

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c4c98ad377100c35b0c364607bfd3803d07a95a7
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169489"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015924"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>如何：使用 MSAL 在 Android 上啟用跨應用程式的 SSO
 
@@ -29,7 +29,7 @@ ms.locfileid: "96169489"
 
 在此操作說明中，您將瞭解如何設定應用程式所使用的 Sdk，以提供 SSO 給您的客戶。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此操作說明假設您知道如何：
 
@@ -119,7 +119,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 當您使用 *keytool* 產生簽章雜湊之後，請使用 Azure 入口網站來產生重新導向 URI：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com) ，並在 **應用程式註冊** 中選取您的 Android 應用程式。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span></a> ，並在 **應用程式註冊** 中選取您的 Android 應用程式。
 1. 選取 [**驗證**]  >  **新增平臺**  >  **Android**。
 1. 在 [ **設定您的 Android 應用程式** ] 窗格中，輸入您稍早產生的簽章 **雜湊** 和 **套件名稱**。
 1. 選取 [ **設定** ] 按鈕。

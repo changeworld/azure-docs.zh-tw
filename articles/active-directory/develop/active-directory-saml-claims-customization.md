@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9c316362e2cd3fca9290e5f8070879567d9b7ea5
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 9fb5e229882532fed076f2e0d800f32acfcdbf4c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963497"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013782"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：針對企業應用程式自訂 SAML 權杖中發出的宣告
 
@@ -81,7 +81,7 @@ ms.locfileid: "97963497"
 
 您也可以將任何常數 (靜態) 值指派給您在 Azure AD 中定義的任何宣告。 請遵循下列步驟來指派常數值：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，於 [使用者屬性與宣告] 區段上，按一下 [編輯] 圖示來編輯宣告。
+1. 在 [ <a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span></a>] 的 [**使用者屬性] & [宣告**] 區段上，按一下 [**編輯**] 圖示以編輯宣告。
 
 1. 按一下您想要修改的必要宣告。
 

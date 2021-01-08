@@ -2,17 +2,17 @@
 title: 使用重新分割來優化 Azure 串流分析作業
 description: 本文說明如何使用重新分割來優化無法平行處理的 Azure 串流分析作業。
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72f81a0eac81acdca71c8ed81695789c417898ca
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75732377"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014190"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>使用 Azure 串流分析來使用重新分割來優化處理
 
@@ -27,7 +27,7 @@ ms.locfileid: "75732377"
 
 ## <a name="how-to-repartition"></a>如何重新分割
 
-若要重新分割，請 **在查詢** 中的 **PARTITION BY** 語句後面使用關鍵字。 下列範例會依 **DeviceID** 將資料分割成10個分割區計數。 **DeviceID**的雜湊會用來判斷哪個資料分割應接受哪些子串流。 如果輸出支援資料分割寫入，而且有10個數據分割，則會針對每個分割的資料流程獨立清除資料。
+若要重新分割，請 **在查詢** 中的 **PARTITION BY** 語句後面使用關鍵字。 下列範例會依 **DeviceID** 將資料分割成10個分割區計數。 **DeviceID** 的雜湊會用來判斷哪個資料分割應接受哪些子串流。 如果輸出支援資料分割寫入，而且有10個數據分割，則會針對每個分割的資料流程獨立清除資料。
 
 ```sql
 SELECT * 

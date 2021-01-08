@@ -3,16 +3,15 @@ title: 使用參考資料在 Azure 串流分析中進行查閱
 description: 本文說明如何在 Azure 串流分析作業的查詢設計中使用參考資料來查閱或相互關聯資料。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: d4053cd02dd11922a402971c7f3934a8b818eaa4
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722125"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015898"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>使用參考資料在串流分析中進行查閱
 
@@ -82,7 +81,7 @@ Azure 串流分析會每隔一分鐘自動掃描已重新整理的參考資料 b
 3. 參考資料 blob **不** 會依 blob 的「上次修改時間」時間來排序，而是只依 blob 名稱中使用 {date} 和 {time} 替代來指定的時間和日期來排序。
 3. 若要避免必須列出大量 Blob，請考慮刪除再也不會進行處理且非常舊的 Blob。 請注意，ASA 在某些案例 (例如重新啟動) 中可能需要重新處理很少數舊的 Blob。
 
-## <a name="azure-sql-database"></a>Azure SQL 資料庫
+## <a name="azure-sql-database"></a>Azure SQL Database
 
 您的串流分析作業將擷取 Azure SQL Database 參考資料，並將其作為快照集儲存在記憶體中以進行處理。 參考資料的快照集也會儲存在組態設定中所指定的儲存體帳戶的容器中。 作業開始時自動建立容器。 如果作業已停止或進入失敗狀態，則在重新啟動作業時將刪除自動建立的容器。  
 

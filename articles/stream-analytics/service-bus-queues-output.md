@@ -1,18 +1,17 @@
 ---
 title: 服務匯流排將 Azure 串流分析的輸出排在佇列
 description: 本文說明服務匯流排佇列作為 Azure 串流分析的輸出。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 3527bdbbf1ba337d24dc390f97ed090c8dfbe039
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9f71a0f9c6d3fdca4b81be3a69479c78236fcc31
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348384"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014207"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>服務匯流排將 Azure 串流分析的輸出排在佇列
 
@@ -34,7 +33,7 @@ ms.locfileid: "93348384"
 | 事件序列化格式 |輸出資料的序列化格式。 支援 JSON、CSV 和 Avro。 |
 | 編碼 |對於 CSV 和 JSON 而言，UTF-8 是目前唯一支援的編碼格式。 |
 | 分隔符號 |僅適用於 CSV 序列化。 串流分析可支援多種以 CSV 格式序列化資料常用的分隔符號。 支援的值是逗號、分號、空格、索引標籤和分隔號。 |
-| [格式] |僅適用於 JSON 類型。 **分隔的行** 會指定輸出的格式化方式為利用新行分隔每個 JSON 物件。 如果您選取 **分隔的行** ，JSON 會一次讀取一個物件。 整個內容本身不是有效的 JSON。 **陣列** 會指定輸出將會格式化為 JSON 物件的陣列。 |
+| [格式] |僅適用於 JSON 類型。 **分隔的行** 會指定輸出的格式化方式為利用新行分隔每個 JSON 物件。 如果您選取 **分隔的行**，JSON 會一次讀取一個物件。 整個內容本身不是有效的 JSON。 **陣列** 會指定輸出將會格式化為 JSON 物件的陣列。 |
 | 屬性資料行 | 選擇性。 以逗號分隔的資料行，必須附加為外寄郵件的使用者屬性，而不是承載。 如需這項功能的詳細資訊，請參閱[輸出的自訂中繼資料屬性](#custom-metadata-properties-for-output)一節。 |
 | 系統屬性資料行 | 選擇性。 系統屬性的索引鍵值組，以及必須附加至外寄郵件而非承載的對應資料行名稱。  |
 

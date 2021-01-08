@@ -1,17 +1,17 @@
 ---
 title: 使用受控識別來存取 Azure SQL Database 或 Azure Synapse Analytics-Azure 串流分析
 description: 本文說明如何使用受控識別來驗證您的 Azure 串流分析作業，以 Azure SQL Database 或 Azure Synapse Analytics 輸出。
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: ee617b50d85f611e130ec5533239c8924efecc6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352179"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014140"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>使用受控識別來存取 Azure 串流分析作業的 Azure SQL Database 或 Azure Synapse Analytics (預覽) 
 
@@ -73,7 +73,7 @@ Azure 串流分析支援 Azure SQL Database 和 Azure Synapse Analytics 輸出�
 
    ![新增 Active Directory 管理員](./media/sql-db-output-managed-identity/add-admin.png)
 
-   [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 無法選取灰色的使用者或群組，因為這些使用者或群組不受 Azure Active Directory 系統管理員的支援。 請參閱 **Azure Active Directory Features and Limitations**    [使用 Azure Active Directory 驗證 SQL Database 或 Azure Synapse 的驗證](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations)Azure Active Directory 功能和限制一節中支援的系統管理員清單。 Azure 角色型存取控制 (Azure RBAC) 只適用于入口網站，不會傳播至 SQL Server。 此外，選取的使用者或群組就是在下一節中能夠建立 **自主資料庫使用者** 的使用者。
+   [Active Directory 系統管理員] 頁面會顯示您 Active Directory 的所有成員和群組。 無法選取灰色的使用者或群組，因為這些使用者或群組不受 Azure Active Directory 系統管理員的支援。 請參閱 ****    [使用 Azure Active Directory 驗證 SQL Database 或 Azure Synapse 的驗證](../azure-sql/database/authentication-aad-overview.md#azure-ad-features-and-limitations)Azure Active Directory 功能和限制一節中支援的系統管理員清單。 Azure 角色型存取控制 (Azure RBAC) 只適用于入口網站，不會傳播至 SQL Server。 此外，選取的使用者或群組就是在下一節中能夠建立 **自主資料庫使用者** 的使用者。
 
 1. 在 [Active Directory 管理員] 頁面上選取 [儲存]。 變更管理員的程序需要幾分鐘的時間。
 

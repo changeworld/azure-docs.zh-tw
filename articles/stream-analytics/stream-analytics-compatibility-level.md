@@ -1,17 +1,17 @@
 ---
 title: Azure 串流分析相容性層級
 description: 了解如何為 Azure 串流分析作業設定相容性層級，並了解最新相容性層級中的重大變更
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 11014c5a5c5cd0cabae1b62083bd5e662be2c6b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348928"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015975"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 串流分析作業的相容性層級
 
@@ -39,7 +39,7 @@ Azure 串流分析目前支援三種相容性層級：
 
 1. 使用 [Azure 入口網站](https://portal.azure.com) 來尋找您的串流分析作業。
 2. 更新相容性層級之前，請先 **停止** 作業。 如果您的作業處於執行中狀態，您就無法更新相容性層級。
-3. 在 [ **設定** ] 標題下，選取 [ **相容性層級** ]。
+3. 在 [ **設定** ] 標題下，選取 [ **相容性層級**]。
 4. 選擇您想要的相容性層級值。
 5. 選取頁面底部的 [ **儲存** ]。
 
@@ -53,7 +53,7 @@ Azure 串流分析目前支援三種相容性層級：
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP 訊息通訊協定
 
-**1.2 層級** ： Azure 串流分析使用 [Advanced Message 佇列通訊協定 (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) 訊息通訊協定寫入至服務匯流排佇列和主題。 透過開放式標準通訊協定，AMQP 可讓您打造一個跨平台的混合式應用程式。
+**1.2 層級**： Azure 串流分析使用 [Advanced Message 佇列通訊協定 (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) 訊息通訊協定寫入至服務匯流排佇列和主題。 透過開放式標準通訊協定，AMQP 可讓您打造一個跨平台的混合式應用程式。
 
 ### <a name="geospatial-functions"></a>GeoSpatial 函式
 
@@ -75,11 +75,11 @@ Azure 串流分析支援地理空間參考資料索引。 您可以為包含地�
 
 ### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>原生大量 API 與 CosmosDB 輸出整合
 
-**先前的層級：** Upsert 行為為 *insert 或 merge* 。
+**先前的層級：** Upsert 行為為 *insert 或 merge*。
 
 **1.2 層級：** 原生大量 API 與 CosmosDB 輸出整合可將輸送量最大化，並有效率地處理節流要求。 如需詳細資訊，請參閱 [Azure Cosmos DB 頁面的 Azure 串流分析輸出](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)。
 
-Upsert 行為為 *insert 或 replace* 。
+Upsert 行為為 *insert 或 replace*。
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>寫入 SQL 輸出時的 DateTimeOffset
 

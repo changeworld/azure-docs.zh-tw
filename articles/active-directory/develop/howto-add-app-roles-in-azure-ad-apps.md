@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b2ac90334ade52d68c775d9db5a84545774f3844
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614926"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013697"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>如何：將應用程式角色新增至您的應用程式，並在權杖中接收這些角色
 
@@ -49,7 +49,7 @@ ms.locfileid: "97614926"
 
 若要使用 Azure 入口網站的使用者介面來建立應用程式角色：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 在頂端功能表中選取 [ **目錄 + 訂** 用帳戶] 篩選，然後選擇包含您要新增應用程式角色的應用程式註冊 Azure Active Directory 租使用者。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 [ **管理**] 底下，選取 [ **應用程式註冊**]，然後選取您想要在其中定義應用程式角色的應用程式。
@@ -64,7 +64,7 @@ ms.locfileid: "97614926"
     |-------|-------------|---------|
     | **顯示名稱** | 顯示在管理員同意和應用程式指派體驗中的應用程式角色名稱。 此值可包含空格。 | `Survey Writer` |
     | **允許的成員類型** | 指定是否可將此應用程式角色指派給使用者、應用程式或兩者。<br/><br/>如果有 `applications` ，應用程式角色會顯示為應用程式註冊的 [ **管理** ] 區段中的 [應用程式許可權] > **API 許可權 > 新增 > 我的 Api 的許可權 > 選擇 API > 應用程式許可權**。 | `Users/Groups` |
-    | **值** | 指定應用程式在權杖中應預期的角色宣告值。 此值應與應用程式程式碼中所參考的字串完全相符。 值不能包含空格。 | `Survey.Create` |
+    | **ReplTest1** | 指定應用程式在權杖中應預期的角色宣告值。 此值應與應用程式程式碼中所參考的字串完全相符。 值不能包含空格。 | `Survey.Create` |
     | **說明** | 更詳細描述在系統管理員應用程式指派和同意體驗期間所顯示的應用程式角色。 | `Writers can create surveys.` |
     | **要啟用此應用程式角色嗎？** | 指定是否啟用應用程式角色。 若要刪除應用程式角色，請取消選取此核取方塊，並在嘗試刪除操作之前套用變更。 | *已核取* |
 
@@ -74,7 +74,7 @@ ms.locfileid: "97614926"
 
 若要直接編輯資訊清單來新增角色：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 在頂端功能表中選取 [ **目錄 + 訂** 用帳戶] 篩選，然後選擇包含您要新增應用程式角色的應用程式註冊 Azure Active Directory 租使用者。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 [ **管理**] 底下，選取 [ **應用程式註冊**]，然後選取您想要在其中定義應用程式角色的應用程式。
@@ -136,7 +136,7 @@ ms.locfileid: "97614926"
 
 若要使用 Azure 入口網站將使用者和群組指派給角色：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 在 **Azure Active Directory** 中，選取左側導覽功能表中的 [ **企業應用程式** ]。
 1. 選取 [所有應用程式]，以檢視所有應用程式的清單。 如果您的應用程式未出現在清單中，請使用 [ **所有應用程式** ] 清單頂端的篩選準則來限制清單，或向下移動清單以找出您的應用程式。
 1. 選取您想要在其中將使用者或安全性群組指派給角色的應用程式。
@@ -158,7 +158,7 @@ ms.locfileid: "97614926"
 
 使用 Azure 入口網站將應用程式角色指派給應用程式：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 在 **Azure Active Directory** 中，選取左側導覽功能表中的 [ **應用程式註冊** ]。
 1. 選取 [所有應用程式]，以檢視所有應用程式的清單。 如果您的應用程式未出現在清單中，請使用 [ **所有應用程式** ] 清單頂端的篩選準則來限制清單，或向下移動清單以找出您的應用程式。
 1. 選取您要指派應用程式角色的應用程式。

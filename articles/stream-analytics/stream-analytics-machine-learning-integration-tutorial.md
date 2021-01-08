@@ -1,19 +1,18 @@
 ---
 title: Azure 串流分析與 Azure Machine Learning Studio (傳統) 的整合
 description: 本文說明如何快速設定簡單的 Azure 串流分析作業，以使用使用者定義函數來整合 Azure Machine Learning Studio (傳統) 。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: krishna0815
+ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d7d74887b4b4e205645a45fa7e07768a1af73940
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011382"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015295"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>使用 Azure 串流分析和 Azure Machine Learning Studio (傳統) 進行情感分析
 
@@ -35,7 +34,7 @@ ms.locfileid: "96011382"
 
 開始之前，請確定您具有下列項目：
 
-* 有效的 Azure 訂用帳戶。
+* 使用中的 Azure 訂用帳戶。
 
 * 內含一些 Twitter 資料的 CSV 檔案。 您可以從 [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/sampleinput.csv)下載範例檔案，也可以建立您自己的檔案。 在真實世界的案例中，您會直接從 Twitter 資料流取得資料。
 
@@ -57,7 +56,7 @@ ms.locfileid: "96011382"
 
    ![提供儲存體帳戶詳細資料](./media/stream-analytics-machine-learning-integration-tutorial/create-storage-account1.png)
 
-3. 選取 [檢閱 + 建立]。 然後，選取 [ **建立** ] 以部署儲存體帳戶。
+3. 選取 [檢閱 + 建立]  。 然後，選取 [ **建立** ] 以部署儲存體帳戶。
 
 4. 當部署完成時，請流覽至您的儲存體帳戶。 在 [Blob 服務] 之下，選取 [容器]。 然後選取 [ **+ 容器** ] 以建立新的容器。
 
@@ -163,7 +162,7 @@ ms.locfileid: "96011382"
    |---------|---------|
    | 函式別名 | 使用 [名稱] `sentiment` 並選取 [ **提供 Azure Machine Learning** 函式設定]，這可讓您選擇輸入 URL 和金鑰。      |
    | URL| 貼上 Web 服務 URL。|
-   |答案 | 貼上 API 金鑰。 |
+   |Key | 貼上 API 金鑰。 |
 
 4. 選取 [儲存]。
 

@@ -5,18 +5,27 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: a450c4057b4639206fd1db4b7f44d27c69441f7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 964af92006aad7b5ce8bdf25a332cbcf9c7ef144
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569857"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014513"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>如何設定 ExpressRoute Direct
 
 ExpressRoute Direct 可讓您透過策略性分散在世界各地的對等互連位置，直接連線到 Microsoft 的全球網路。 如需詳細資訊，請參閱[關於 ExpressRoute Direct](expressroute-erdirect-about.md)。
+
+## <a name="before-you-begin"></a>開始之前
+
+使用 ExpressRoute Direct 之前，您必須先註冊您的訂用帳戶。 若要註冊，請將電子郵件與您的訂用帳戶識別碼傳送至 <ExpressRouteDirect@microsoft.com>，其中包含下列詳細資訊：
+
+* 您想要使用 **ExpressRoute Direct** 完成的案例
+* 位置喜好設定 - 請參閱[合作夥伴和對等互連位置](expressroute-locations-providers.md)以取得所有位置的完整清單
+* 實作的時間軸
+* 有任何其他問題嗎
 
 ## <a name="create-the-resource"></a><a name="resources"></a>建立資源
 

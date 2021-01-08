@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 6834f9cc8202f49f53c20f3941945bba4a4b2efd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b4b38112e32a55739ea14d5ff06e327819171557
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026741"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014547"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用網路監看員和開放原始碼工具執行網路入侵偵測
 
@@ -26,7 +26,7 @@ ms.locfileid: "95026741"
 
 一種開放原始碼工具是 Suricata，這是使用規則集監視網路流量且在可疑事件發生時就會觸發警示的 IDS 引擎。 Suricata 提供多執行緒的引擎，這表示它可以更高的速度和效率執行網路流量分析。 如需關於 Suricata 和其功能的詳細資訊，請瀏覽其網站：https://suricata-ids.org/。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 本文說明如何使用網路監看員、Suricata 和彈性堆疊來設定您的環境，以執行網路入侵偵測。 網路監看員會提供用來執行網路入侵偵測的封包擷取。 Suricata 會根據比對指定的威脅規則集處理封包擷取和觸發警示。 這些警示會儲存在本機電腦上的記錄檔。 使用彈性堆疊的 Suricata 所產生之記錄可以編製索引及用來建立 Kibana 儀表板，提供您視覺表示法的記錄，以便快速獲得潛在網路弱點的見解。  
 
@@ -280,7 +280,7 @@ tail -f /var/log/suricata/fast.log
 
 藉由結合網路監看員所提供的封包擷取和開放原始碼 IDS 工具 (例如 Suricata)，您可以執行各式各樣威脅的網路入侵偵測。 這些儀表板可讓您快速發現您網路內的趨勢和異常，並且深入瞭解來探索警示資料的根本原因，例如惡意的使用者代理程式或連接埠弱點。 利用這個擷取的資料，您可以做出關於如何回應和保護網路免於任何有害入侵嘗試，以及建立規則來避免未來入侵您網路的明智決策。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要了解如何根據警示觸發封包擷取，請造訪[使用封包擷取搭配 Azure Functions 進行主動式網路監視](network-watcher-alert-triggered-packet-capture.md)
 

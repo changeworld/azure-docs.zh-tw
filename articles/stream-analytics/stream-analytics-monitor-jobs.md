@@ -3,17 +3,16 @@ title: 以程式設計方式監視和管理 Azure 串流分析作業
 description: 本文說明如何以程式設計方式監視透過 REST API、Azure SDK 或 PowerShell 建立的串流分析作業。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c746e409964b4625a4c9921d9f02ca0c9730a35
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: dda1b6b652870440e7228e6640bb555f4c2e4a63
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123441"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015071"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以程式設計方式來建立串流分析工作監視
 
@@ -139,7 +138,7 @@ ms.locfileid: "93123441"
 下列程式碼將為「現有」 串流分析作業啟用監視。 程式碼的第一部分會對串流分析服務執行 GET 要求，以擷取特定串流分析工作的相關資訊。 其會在程式碼的第二部分使用 *ID* 屬性 (擷取自 GET 要求) 當成 Put 方法的參數，其會將 PUT 要求傳送至 Insights 服務，來為串流分析作業啟用監視。
 
 > [!WARNING]
-> 如果您先前已經為不同的串流分析作業啟用監視 (不論是透過 Azure 入口網站，還是以程式設計方式透過以下的程式碼)， **建議您提供先前啟用監視時所提供的相同儲存體帳戶名稱。**
+> 如果您先前已經為不同的串流分析作業啟用監視 (不論是透過 Azure 入口網站，還是以程式設計方式透過以下的程式碼)，**建議您提供先前啟用監視時所提供的相同儲存體帳戶名稱。**
 > 
 > 儲存體帳戶會連結到您建立串流分析作業所在的區域，而不是明確地連結到作業本身。
 > 

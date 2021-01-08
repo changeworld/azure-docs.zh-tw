@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: cd51210a64223fab5d2d48a91bd3d0a6521a9627
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341309"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015686"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引編製原則
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](index-policy.md)來為資料編製索引。 新建立的容器所套用的預設索引編製原則，會對任何字串或數字強制執行範圍索引。 您可使用自己的自訂索引編製原則來覆寫此原則。
+在 Azure Cosmos DB 中，會依照為每個容器定義的 [索引編制原則](index-policy.md) 來編制資料的索引。 新建立的容器所套用的預設索引編製原則，會對任何字串或數字強制執行範圍索引。 您可使用自己的自訂索引編製原則來覆寫此原則。
 
 > [!NOTE]
 > 本文章中所述的更新編制索引原則的方法只適用于 Azure Cosmos DB 的 SQL (Core) API。 瞭解如何在 Azure Cosmos DB Cassandra API 中[Azure Cosmos DB 的 MONGODB API](mongodb-indexing.md)和[次要索引](cassandra-secondary-index.md)編制索引。
@@ -27,7 +27,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
 
 以下是一些以 [JSON 格式](index-policy.md#include-exclude-paths)顯示的索引編制原則範例，也就是它們在 Azure 入口網站上的公開方式。 透過 Azure CLI 或任何 SDK 也可以設定相同的參數。
 
-### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>可選擇性地排除一些屬性路徑的退出原則
+### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a><a id="range-index"></a>可選擇性地排除一些屬性路徑的退出原則
 
 ```json
     {
@@ -146,7 +146,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
 > [!NOTE]
 > 通常建議使用 **退出** 編制索引原則，讓 Azure Cosmos DB 主動為可能新增至資料模型的新屬性編制索引。
 
-### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>僅對特定屬性路徑使用空間索引
+### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a><a id="spatial-index"></a>僅對特定屬性路徑使用空間索引
 
 ```json
 {
@@ -176,7 +176,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
 }
 ```
 
-## <a name="composite-indexing-policy-examples"></a>複合式索引編製原則範例
+## <a name="composite-indexing-policy-examples"></a><a id="composite-index"></a>複合式索引編製原則範例
 
 除了包含或排除個別屬性的路徑以外，您也可以指定複合式索引。 如果您要為多個屬性執行具有 `ORDER BY` 子句的查詢，則必須要有這些屬性的[複合式索引](index-policy.md#composite-indexes)。 此外，對於具有多個篩選器或篩選準則和 ORDER BY 子句的查詢，複合索引將會有效能優勢。
 

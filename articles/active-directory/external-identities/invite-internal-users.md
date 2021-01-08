@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 8acc547552cecaebb60888bb7b9777f6279b9b7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093463"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015754"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>邀請內部使用者進行 B2B 共同作業
 
@@ -44,8 +44,7 @@ ms.locfileid: "97093463"
 
 您可以使用 PowerShell 或邀請 API 將 B2B 邀請傳送給內部使用者。 請確定您要用於邀請的電子郵件地址已設定為內部使用者物件的外部電子郵件地址。
 
-- 針對僅限雲端的使用者，請使用 OtherMails 屬性中的電子郵件地址來取得邀請。
-- 若為內部部署同步處理的使用者，您必須使用 [使用者] 的 [郵件] 屬性中的值來取得邀請。
+- 您必須在 [使用者] 的 [郵件] 屬性中使用邀請的電子郵件地址。
 - 使用者的 Mail 屬性中的網域必須與他們用來登入的帳戶相符。 否則，某些服務（例如小組）將無法驗證使用者。
 
 根據預設，邀請會傳送電子郵件給使用者，告知他們已獲邀，但您可以隱藏這封電子郵件，並改為傳送您自己的電子郵件。

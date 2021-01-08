@@ -1,14 +1,14 @@
 ---
 title: 登錄服務層和功能
-description: 深入了解 Azure Container Registry 基本、標準和進階服務層級 (SKU) 中的功能和限制。
+description: 深入瞭解) 在基本、標準和高階服務層級中 (配額的功能和限制 (Sku) 的 Azure Container Registry。
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: e2a5ad52775e9000aa0beb0a926d809da1c5a0e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048469"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015654"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry 服務層級
 
@@ -30,7 +30,9 @@ Azure Container Registry 具有多個服務層級 (也稱為SKU)。 這些層級
 
 ## <a name="changing-tiers"></a>變更層級
 
-您可以使用 Azure CLI 或在 Azure 入口網站中變更登錄的服務層級。 您可以自由地改用其他層級，只要您所要改用的目標層級具有所需的最大儲存容量即可。 
+您可以使用 Azure CLI 或在 Azure 入口網站中變更登錄的服務層級。 只要您要切換的階層具有所需的儲存體容量上限，您就可以在各層之間自由移動。 
+
+當您在服務層之間移動時，不會發生任何登錄中斷或對登錄作業的影響。
 
 ### <a name="azure-cli"></a>Azure CLI
 

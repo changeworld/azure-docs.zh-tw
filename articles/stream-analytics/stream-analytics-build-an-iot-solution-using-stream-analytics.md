@@ -1,19 +1,18 @@
 ---
 title: 利用 Azure 串流分析來建置 IoT 解決方案
 description: 串流分析收費亭案例 IoT 解決方案的入門教學課程
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 87ec59d19fb442293fb7f14d110cf513015ec9f7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ddec53b18cd6f374a5665298b43b46122bcfa143
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130794"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016145"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>利用串流分析來建置 IoT 解決方案
 
@@ -28,7 +27,7 @@ ms.locfileid: "93130794"
 * 有自信地使用串流分析來為客戶開發串流解決方案。
 * 利用監視和記錄的經驗來排解問題。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 若要完成本解決方案，您需要滿足下列必要條件：
 * [Azure 訂用帳戶](https://azure.microsoft.com/pricing/free-trial/)
 
@@ -43,7 +42,7 @@ ms.locfileid: "93130794"
 ### <a name="entry-data-stream"></a>入口資料流
 入口資料流包含車輛進入收費站的相關資訊。 出口資料事件會從包含在範例應用程式中的 Web 應用程式即時串流到事件中樞佇列。
 
-| TollID | EntryTime | LicensePlate | 狀態 | 請確定 | 型號 | VehicleType | VehicleWeight | Toll | 標籤 |
+| TollID | EntryTime | LicensePlate | 州 | 請確定 | 型號 | VehicleType | VehicleWeight | Toll | Tag |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -59,13 +58,13 @@ ms.locfileid: "93130794"
 | TollID |唯一識別收費亭的收費亭識別碼 |
 | EntryTime |車輛進入收費亭的日期及時間 (國際標準時間) |
 | LicensePlate |車輛的車牌號碼 |
-| 狀態 |美國的某個洲 |
+| 州 |美國的某個洲 |
 | 請確定 |車輛的製造商 |
 | 型號 |車輛的型號 |
 | VehicleType |1 代表載客車或 2 代表商用車 |
 | WeightType |車輛的重量，單位為噸；0 代表客車 |
 | Toll |通行費，單位為美元 |
-| 標籤 |車輛上可用來自動付費的 e-Tag，空白則代表手動付費 |
+| Tag |車輛上可用來自動付費的 e-Tag，空白則代表手動付費 |
 
 ### <a name="exit-data-stream"></a>出口資料流
 出口資料流包含車輛離開收費站的相關資訊。 出口資料事件會從包含在範例應用程式中的 Web 應用程式即時串流到事件中樞佇列。
@@ -126,15 +125,15 @@ ms.locfileid: "93130794"
 
 5. 選取 Azure 位置。
 
-6. 將 [間隔]  指定為秒數。 範例 Web 應用程式中會使用此值來說明將資料傳送到事件中樞的頻率。
+6. 將 [間隔] 指定為秒數。 範例 Web 應用程式中會使用此值來說明將資料傳送到事件中樞的頻率。
 
-7. [勾選]  以同意條款和條件。
+7. [勾選] 以同意條款和條件。
 
-8. 選取 [釘選到儀表板]  以便您稍後可以輕鬆地找到資源。
+8. 選取 [釘選到儀表板] 以便您稍後可以輕鬆地找到資源。
 
-9. 選取 [購買]  以部署範例範本。
+9. 選取 [購買] 以部署範例範本。
 
-10. 一段時間之後，系統會顯示通知以確認 **部署成功** 。
+10. 一段時間之後，系統會顯示通知以確認 **部署成功**。
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>檢閱 Azure 串流分析 TollApp 資源
 
@@ -152,7 +151,7 @@ ms.locfileid: "93130794"
 ## <a name="examine-the-sample-tollapp-job"></a>檢查範例 TollApp 作業
 1. 從上一節中的資源群組開始，選取以 **tollapp** 名稱 (名稱會包含隨機字元以保持獨特性) 開頭的串流分析串流作業。
 
-2. 在作業的 [概觀]  頁面中，請注意 [查詢]  方塊，以檢視查詢語法。
+2. 在作業的 [概觀] 頁面中，請注意 [查詢] 方塊，以檢視查詢語法。
 
    ```sql
    SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*) AS Count
@@ -176,20 +175,20 @@ ms.locfileid: "93130794"
 ## <a name="start-the-tollapp-streaming-job"></a>啟動 TollApp 串流作業
 請遵循下列步驟以啟動串流作業：
 
-1. 在作業的 [概觀]  頁面中，選取 [啟動]  。
+1. 在作業的 [概觀] 頁面中，選取 [啟動]。
 
-2. 在 [啟動作業]  窗格中，選取 [現在]  。
+2. 在 [啟動作業] 窗格中，選取 [現在]。
 
-3. 一段時間後，當作業開始執行時，請在串流作業的 [概觀]  頁面中檢視 [監視]  圖形。 圖形應該會顯示數千個輸入事件，以及數十個輸出事件。
+3. 一段時間後，當作業開始執行時，請在串流作業的 [概觀] 頁面中檢視 [監視] 圖形。 圖形應該會顯示數千個輸入事件，以及數十個輸出事件。
 
 ## <a name="review-the-cosmosdb-output-data"></a>檢閱 CosmosDB 輸出資料
 1. 尋找包含 TollApp 資源的資源群組。
 
 2. 選取名稱模式為 **tollapp\<random\>-cosmos** 的 Azure Cosmos DB 帳戶。
 
-3. 選取 [資料總管]  標題以開啟 [資料總管] 頁面。
+3. 選取 [資料總管] 標題以開啟 [資料總管] 頁面。
 
-4. 展開 [ **tollAppDatabase**  >  **tollAppCollection**  >  **檔** ]。
+4. 展開 [ **tollAppDatabase**  >  **tollAppCollection**  >  **檔**]。
 
 5. Azure 串流分析經悉心設計，能彈性調整以便於處理大量的資料。
 
@@ -214,19 +213,19 @@ AND DATEDIFF (minute, EntryStream, ExitStream ) BETWEEN 0 AND 15
 
 ### <a name="to-update-the-tollapp-streaming-job-query-syntax"></a>若要更新 TollApp 串流作業查詢語法：
 
-1. 在作業的 [概觀]  頁面中，選取 [停止]  。
+1. 在作業的 [概觀] 頁面中，選取 [停止]。
 
 2. 稍候片刻，便會收到作業已停止的通知。
 
-3. 在 JOB TOPOLOGY 標題下，選取 [< > 查詢] 
+3. 在 JOB TOPOLOGY 標題下，選取 [< > 查詢]
 
 4. 將已調整的串流 SQL 查詢貼上。
 
-5. 選取 [儲存]  以儲存查詢。 確認 [是]  以儲存變更。
+5. 選取 [儲存] 以儲存查詢。 確認 [是] 以儲存變更。
 
-6. 在作業的 [概觀]  頁面中，選取 [啟動]  。
+6. 在作業的 [概觀] 頁面中，選取 [啟動]。
 
-7. 在 [啟動作業]  窗格中，選取 [現在]  。
+7. 在 [啟動作業] 窗格中，選取 [現在]。
 
 ### <a name="review-the-total-time-in-the-output"></a>檢閱輸出中的總時間
 重複上一節中的步驟，檢閱串流作業中的 CosmosDB 輸出資料。 檢閱最新的 JSON 文件。
@@ -299,20 +298,20 @@ GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 
 1. **停止** 目前的作業。
 
-2. 更新 [< > 查詢]  頁面中的查詢語法，並儲存變更。
+2. 更新 [< > 查詢] 頁面中的查詢語法，並儲存變更。
 
-3. 在串流作業的 CONFIGURE 標題下，選取 [縮放]  。
+3. 在串流作業的 CONFIGURE 標題下，選取 [縮放]。
 
-4. 將 [串流單位]  滑桿從 1 滑動到 6。 串流單位會定義作業所能接收的計算能力量。 選取 [儲存]  。
+4. 將 [串流單位] 滑桿從 1 滑動到 6。 串流單位會定義作業所能接收的計算能力量。 選取 [儲存]。
 
 5. **啟動** 串流作業以示範額外的縮放。 Azure 串流分析可將工作分送給更多計算資源以改善輸送量，並使用 PARTITION BY 子句中指定的資料行，將工作分割給各個資源。
 
 ## <a name="monitor-the-job"></a>監視作業
-[監視]  區域包含執行中作業的相關統計資料。 第一次設定需要使用相同區域中的儲存體帳戶 (如同本文的其餘部分，也就是收費)。
+[監視] 區域包含執行中作業的相關統計資料。 第一次設定需要使用相同區域中的儲存體帳戶 (如同本文的其餘部分，也就是收費)。
 
 ![Azure 串流分析作業監視](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
-您也可以從作業儀表板的 [設定]  區域存取 [活動記錄]  。
+您也可以從作業儀表板的 [設定] 區域存取 [活動記錄]。
 
 ## <a name="clean-up-the-tollapp-resources"></a>清除 TollApp 資源
 1. 從 Azure 入口網站停止串流分析工作。
