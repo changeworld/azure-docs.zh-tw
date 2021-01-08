@@ -4,16 +4,15 @@ description: 本文說明如何使用 Azure 串流分析 CI/CD 工具來自動�
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: aa75a553ffc131f4827aa045849f1317d894ddc5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e79e0a2c030e2ebfcd5ddfd49e7c05afdb0dc3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123145"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019545"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>使用 CI/CD 工具將 Azure 串流分析作業的組建、測試和部署自動化
 
@@ -66,7 +65,7 @@ azure-streamanalytics-cicd build -project "/Users/username/projects/samplejob/sa
 
 parameters.json 檔案中的預設參數是來自 Visual Studio Code 或 Visual Studio 專案中的設定。 如果您想要部署到其他環境，請據以取代參數。
 
-所有認證的預設值都是 **null** 。 您必須在部署至 Azure 之前設定這些值。
+所有認證的預設值都是 **null**。 您必須在部署至 Azure 之前設定這些值。
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
@@ -122,7 +121,7 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 | 參數 | 描述 |
 |---|---|
 | `-project` | Visual Studio Code 專案的 **asaproj.js** 檔案路徑，或 Visual Studio 專案的 **[專案名稱]. >asaproj.json** 。 |
-| `-testConfigPath` | 測試組態檔案的路徑。 如果未指定，則會在 **\test** 的目前 **asaproj.js** 目錄下的檔案中搜尋檔案，預設檔案名為 **testConfig.js** 。 如果不存在，則會建立新的檔案。 |
+| `-testConfigPath` | 測試組態檔案的路徑。 如果未指定，則會在 **\test** 的目前 **asaproj.js** 目錄下的檔案中搜尋檔案，預設檔案名為 **testConfig.js**。 如果不存在，則會建立新的檔案。 |
 
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -139,7 +138,7 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
 
 如果測試組態檔案是空的，則會將下列內容寫入檔案中。 否則，會將測試案例加入至 **testcases.txt** 陣列。 必要的輸入設定會根據輸入設定檔（如果有的話）自動填入。 否則，會設定預設值。 執行測試之前，必須指定每個輸入的 **FilePath** 和預期的輸出。 您可以手動修改設定。
 
-如果您想要讓測試驗證忽略特定的輸出，請將預期輸出的 **必要** 欄位設定為 **false** 。
+如果您想要讓測試驗證忽略特定的輸出，請將預期輸出的 **必要** 欄位設定為 **false**。
 
 ```json
 {
@@ -179,11 +178,11 @@ azure-streamanalytics-cicd test -project <projectFullPath> [-testConfigPath <tes
 | 參數 | 描述 |
 |---|---|
 | `-project` | Visual Studio Code 專案的 **asaproj.js** 檔案路徑，或 Visual Studio 專案的 **[專案名稱]. >asaproj.json** 。 |
-| `-testConfigPath` | 測試組態檔案的路徑。 如果未指定，則會在 **\test** 的目前 **asaproj.js** 目錄下的檔案中搜尋檔案，預設檔案名為 **testConfig.js** 。
+| `-testConfigPath` | 測試組態檔案的路徑。 如果未指定，則會在 **\test** 的目前 **asaproj.js** 目錄下的檔案中搜尋檔案，預設檔案名為 **testConfig.js**。
 | `-outputPath` | 測試結果輸出檔案夾的路徑。 如果未指定，輸出結果檔案將會放在目前的目錄中。 |
 | `-customCodeZipFilePath` | 自訂程式碼（例如 UDF 或還原序列化程式）的 zip 檔案路徑（如果使用的話）。 |
 
-當所有測試完成時，輸出檔案夾中會產生 JSON 格式的測試結果摘要。 摘要檔案的名稱為 **testResultSummary.json** 。
+當所有測試完成時，輸出檔案夾中會產生 JSON 格式的測試結果摘要。 摘要檔案的名稱為 **testResultSummary.json**。
 
 ```json
 {

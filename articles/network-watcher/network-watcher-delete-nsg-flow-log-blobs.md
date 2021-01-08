@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2019
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 84f34c9441805352422215fcbac300bd900024d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b73b8fa14271619d07fca63b01e4197f4f7c8cb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737949"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017845"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>刪除網路監看員中的網路安全性群組流量記錄儲存體 blob
 
@@ -135,7 +135,7 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 - 客戶可以使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)或[Azure 自動化](https://azure.microsoft.com/services/automation/)，自動執行腳本。
 - 若要深入瞭解 NSG 記錄，請參閱 [網路安全性群組的 Azure 監視器記錄 (nsg) ](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 

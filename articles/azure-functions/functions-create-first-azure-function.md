@@ -5,12 +5,12 @@ ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: e37a14b2634395d7f31565d6d5a6f6ec96a4a2f1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 5c9612547fcfed8e583f5b2fbcfe0bddd5dc412c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954513"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019103"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>在 Azure 入口網站中建立您的第一個函式
 
@@ -61,13 +61,13 @@ Azure Functions 可讓您在無伺服器環境中執行程式碼，而不需要�
 
     ![從 Azure 入口網站複製函式 URL](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. 將函式 URL 貼入瀏覽器的網址列中。 將查詢字串值 `&name=<your_name>` 新增至此 URL 的結尾，然後按 Enter 鍵以執行要求。 
+1. 將函式 URL 貼入瀏覽器的網址列中。 將查詢字串值 `?name=<your_name>` 新增至此 URL 的結尾，然後按 Enter 鍵以執行要求。 
 
     下列範例會顯示瀏覽器中的回應：
 
     ![瀏覽器中的函式回應。](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
-    要求 URL 預設會包含所需金鑰，以便透過 HTTP 存取您的函式。
+    如果要求 URL 包含 () 的 [存取金鑰](functions-bindings-http-webhook-trigger.md#authorization-keys) `?code=...` ，則在建立函式時，表示您選擇函式，而不是 **匿名** 存取層級。 在此情況下，您應該改為附加 `&name=<your_name>` 。
 
 1. 當函式執行時，系統會將追蹤資訊寫入到記錄中。 若要查看追蹤輸出，請回到入口網站中的 [程式碼 + 測試] 頁面，然後展開頁面底部的 [記錄] 箭號。
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: tisande
-ms.openlocfilehash: 2d99e0e2b65f7131e564e6ab64e454d2947c58a6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903015"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019171"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引編製原則
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -103,7 +103,7 @@ Azure Cosmos DB 支援兩種索引編制模式：
 
 如果包含的路徑和排除的路徑發生衝突，則會優先採用更精確的路徑。
 
-以下是範例：
+以下為範例：
 
 **包含的路徑**： `/food/ingredients/nutrition/*`
 
@@ -135,7 +135,7 @@ Azure Cosmos DB 預設不會建立任何空間索引。 如果您想要使用空
 
 ## <a name="composite-indexes"></a>複合式索引
 
-具有 `ORDER BY` 兩個或多個屬性之子句的查詢需要複合索引。 您也可以定義複合索引，以改善許多相等和範圍查詢的效能。 依預設，不會定義任何複合索引，因此您應該視需要 [加入複合索引](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) 。
+具有 `ORDER BY` 兩個或多個屬性之子句的查詢需要複合索引。 您也可以定義複合索引，以改善許多相等和範圍查詢的效能。 依預設，不會定義任何複合索引，因此您應該視需要 [加入複合索引](how-to-manage-indexing-policy.md#composite-index) 。
 
 不同于包含或排除的路徑，您無法使用萬用字元來建立路徑 `/*` 。 每個複合路徑在 `/?` 不需要指定的路徑結尾都有隱含的。 複合路徑會導致純量值，而這是複合索引中唯一包含的值。
 
@@ -160,7 +160,7 @@ Azure Cosmos DB 預設不會建立任何空間索引。 如果您想要使用空
 
 請參考下列範例，其中會在屬性名稱、年齡和 _ts 上定義複合索引：
 
-| **複合索引**     | **範例 `ORDER BY` 查詢**      | **由複合索引支援？** |
+| **複合式索引**     | **範例 `ORDER BY` 查詢**      | **複合式索引可支援嗎？** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.name ASC, c.age asc``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.age ASC, c.name asc```   | ```No```             |
@@ -205,7 +205,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 
 請考慮下列範例，其中會在屬性名稱、年齡和時間戳記上定義複合索引：
 
-| **複合索引**     | **範例查詢**      | **由複合索引支援？** |
+| **複合式索引**     | **範例查詢**      | **複合式索引可支援嗎？** |
 | ----------------------- | -------------------------------- | -------------- |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18``` | ```Yes```            |
 | ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
@@ -256,7 +256,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 * 針對 `ORDER BY` 具有多個屬性的查詢，以及具有多個屬性之篩選準則的查詢，建立複合索引的所有考慮仍適用。
 
 
-| **複合索引**                      | **範例 `ORDER BY` 查詢**                                  | **由複合索引支援？** |
+| **複合式索引**                      | **範例 `ORDER BY` 查詢**                                  | **複合式索引可支援嗎？** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" AND c.timestamp > 1589840355 ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |

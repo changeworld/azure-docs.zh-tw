@@ -4,28 +4,20 @@ description: 藉由使用 SSH 和 Azure Logic Apps，讓針對 SFTP 伺服器監
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 01/07/2021
 tags: connectors
-ms.openlocfilehash: 31714eee2e79481bbc8afb47718ed38e178d5b82
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324239"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016757"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>藉由使用 SSH 和 Azure Logic Apps 來監視、建立及管理 SFTP 檔案
 
 若要使用 [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/) 通訊協定在[安全檔案傳輸通訊協定 (SFTP)](https://www.ssh.com/ssh/sftp/) \(英文\) 伺服器上，將監視、建立、傳送及接收檔案的工作自動化，您可以使用 Azure Logic Apps 和 SFTP-SSH 連接器來建置整合工作流程並自動化。 SFTP 是一個網路通訊協定，可透過任何可靠的資料流提供檔案存取、檔案傳輸和檔案管理。
-
-> [!NOTE]
-> SFTP SSH 連接器目前不支援這些 SFTP 伺服器：
-> 
-> * IBM DataPower
-> * MessageWay
-> * OpenText 安全的 MFT
-> * OpenText GXS
 
 以下是一些您可自動化的範例工作：
 
@@ -41,6 +33,13 @@ ms.locfileid: "93324239"
 
 ## <a name="limits"></a>限制
 
+* SFTP SSH 連接器目前不支援這些 SFTP 伺服器：
+
+  * IBM DataPower
+  * MessageWay
+  * OpenText 安全的 MFT
+  * OpenText GXS
+
 * SFTP SSH 連接器支援私密金鑰驗證或密碼驗證，而不是兩者都支援。
 
 * SFTP-支援 [區塊](../logic-apps/logic-apps-handle-large-messages.md) 處理的 ssh 動作可以處理高達 1 GB 的檔案，而不支援區塊處理的 sftp ssh 動作則可以處理高達 50 MB 的檔案。 雖然預設區塊大小為 15 MB，但此大小可動態變更（從 5 MB 開始），並根據網路延遲、伺服器回應時間等因素，逐漸增加到 50 MB 的最大值。
@@ -48,7 +47,7 @@ ms.locfileid: "93324239"
   > [!NOTE]
   > 若為 [整合服務環境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，則此連接器的 ISE 標記版本需要區塊化才能改用 [ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) 。
 
-  當您指定要改用 [的常數區塊大小時](#change-chunk-size) ，您可以覆寫這個調適型行為。 此大小的範圍可從 5 MB 到 50 MB。 例如，假設您有 45 MB 的檔案，以及可以支援該檔案大小而不需要延遲的網路。 彈性區塊化會導致數個呼叫，而不是呼叫一次。 若要減少呼叫的數目，您可以嘗試設定 50 MB 的區塊大小。 在不同的案例中，如果邏輯應用程式的執行時間（例如，使用 15 MB 區塊），您可以嘗試將大小縮減為 5 MB。
+  當您指定要改用 [的常數區塊大小時](#change-chunk-size) ，您可以覆寫這個調適型行為。 此大小的範圍可從 5 MB 到 50 MB。 例如，假設您有 45 MB 的檔案，以及可以支援該檔案大小而不需要延遲的網路。 彈性區塊化會導致數個呼叫，而不是呼叫一次。 若要減少呼叫的數目，您可以嘗試設定 50 MB 的區塊大小。 在不同的案例中，如果邏輯應用程式的執行時間（例如，使用 15 MB 的區塊），您可以嘗試將大小縮減為 5 MB。
 
   區塊大小會與連接產生關聯，這表示您可以針對支援區塊化的動作使用相同的連接，然後針對不支援區塊化的動作使用相同的連接。 在此情況下，不支援區塊化的動作區塊大小範圍從 5 MB 到 50 MB。 下表顯示哪些 SFTP SSH 動作支援區塊化：
 
@@ -70,7 +69,7 @@ ms.locfileid: "93324239"
 
 * SFTP-SSH 觸發程式不支援訊息區塊處理。 在要求檔案內容時，觸發程式只會選取 15 MB 或更小的檔案。 若要取得大於 15 MB 的檔案，請改為遵循此模式：
 
-  1. 使用只會傳回檔案屬性的 SFTP SSH 觸發程式，例如， **在新增或修改檔案時， (屬性只)** 。
+  1. 使用只會傳回檔案屬性的 SFTP SSH 觸發程式，例如， **在新增或修改檔案時， (屬性只)**。
 
   1. 遵循 [SFTP-SSH **取得檔案內容** ] 動作的觸發程式，它會讀取完整的檔案，並隱含地使用訊息區塊處理。
 
@@ -86,9 +85,9 @@ ms.locfileid: "93324239"
 
 * 提供 **重新命名檔案** 動作，可重新命名 SFTP 伺服器上的檔案。
 
-* 可將連線快取至 SFTP 伺服器 *最多 1 小時* ，這可以改善效能並減少嘗試連線伺服器的次數。 若要設定此快取行為的持續期間，請編輯 SFTP 伺服器 SSH 組態中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 屬性。
+* 可將連線快取至 SFTP 伺服器 *最多 1 小時*，這可以改善效能並減少嘗試連線伺服器的次數。 若要設定此快取行為的持續期間，請編輯 SFTP 伺服器 SSH 組態中的 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 屬性。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -98,13 +97,13 @@ ms.locfileid: "93324239"
   >
   > SFTP-SSH 連接器 *只* 支援這些私密金鑰格式、演算法和指紋：
   >
-  > * **私用金鑰格式** ： RSA (Rivest Shamir Adleman) 和 DSA (數位簽章演算法) OpenSSH 和 ssh.com 格式的金鑰。 如果您的私密金鑰是 ( PuTTY) 檔案格式，請先 [將金鑰轉換為 OpenSSH ( pem) 檔案格式](#convert-to-openssh)。
+  > * **私用金鑰格式**： RSA (Rivest Shamir Adleman) 和 DSA (數位簽章演算法) OpenSSH 和 ssh.com 格式的金鑰。 如果您的私密金鑰是 ( PuTTY) 檔案格式，請先 [將金鑰轉換為 OpenSSH ( pem) 檔案格式](#convert-to-openssh)。
   >
-  > * **加密演算法** ：DES-EDE3-CBC、DES-EDE3-CFB、 DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
+  > * **加密演算法**：DES-EDE3-CBC、DES-EDE3-CFB、 DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
   >
-  > * **指紋** ：MD5
+  > * **指紋**：MD5
   >
-  > 將您想要的 SFTP SSH 觸發程式或動作新增至邏輯應用程式之後，您必須提供 SFTP 伺服器的連線資訊。 當您為此連線提供 SSH 私密金鑰時，* *_請勿手動輸入或編輯索引鍵_* _，這可能會導致連線失敗。 相反地，請確定您是從 SSH 私密金鑰檔案 _*_複製金鑰_*_ ，並將該金鑰 _*_貼入_*_ 連線詳細資料。 
+  > 將您想要的 SFTP SSH 觸發程式或動作新增至邏輯應用程式之後，您必須提供 SFTP 伺服器的連線資訊。 當您為此連線提供 SSH 私密金鑰時，**_請勿手動輸入或編輯索引鍵_* _，這可能會導致連線失敗。 相反地，請確定您是從 SSH 私密金鑰檔案 _*_複製金鑰_*_ ，並將該金鑰 _*_貼入_*_ 連線詳細資料。 
   > 如需詳細資訊，請參閱本文稍後的 [使用 SSH 連接到 SFTP](#connect) 一節。
 
 _[如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
@@ -113,15 +112,25 @@ _[如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic
 
 ## <a name="how-sftp-ssh-triggers-work"></a>SFTP-SSH 觸發程序的運作方式
 
-SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自上次輪詢後已變更的任何檔案。 某些工具可讓您在檔案變更時保留時間戳記。 在這些情況下，您必須停用此功能，以便讓您的觸發程序可以運作。 以下是一些常見的設定：
+<a name="polling-behavior"></a>
+
+### <a name="polling-behavior"></a>輪詢行為
+
+SFTP-SSH 觸發程式會輪詢 SFTP 檔案系統，並尋找自上次輪詢後變更的任何檔案。 某些工具可讓您在檔案變更時保留時間戳記。 在這些情況下，您必須停用此功能，以便讓您的觸發程序可以運作。 以下是一些常見的設定：
 
 | SFTP 用戶端 | 動作 |
 |-------------|--------|
 | Winscp | 移至 **選項**  >  **喜好** 設定  >  **傳輸**  >  **編輯**  >  **保留時間戳**  >  **停** 用 |
-| FileZilla | 移至 [ **傳輸**  >  **保留已傳輸檔案的時間戳記** ]  >  **停** 用 |
+| FileZilla | 移至 [**傳輸**  >  **保留已傳輸檔案的時間戳記**]  >  **停** 用 |
 |||
 
 當觸發程序找到新檔案時，觸發程序會確認該新檔案是完整檔案，而不是部分寫入的檔案。 例如，當觸發程序檢查檔案伺服器時，檔案可能正在進行變更。 為避免傳回部分寫入的檔案，觸發程序會備註最近發生變更之檔案的時間戳記，但不會立即傳回該檔案。 觸發程序只有在再次輪詢伺服器時，才會傳回該檔案。 有時，此行為可能會導致最長可達觸發程序輪詢間隔兩倍的延遲。
+
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>觸發迴圈移位和漂移
+
+以連線為基礎的觸發程式，您必須先建立連線（例如 SFTP SSH 觸發程式），這與在 Azure Logic Apps 中以原生方式執行的內建觸發程式不同，例如 [迴圈觸發](../connectors/connectors-native-recurrence.md)程式。 在週期性的以連線為基礎的觸發程式中，週期排程不是控制執行的唯一驅動程式，而時區只會決定初始開始時間。 後續的執行取決於週期排程、最後一個觸發程式執行， *以及* 可能造成執行時間漂移或產生非預期行為的其他因素，例如，當日光節約時間 (DST) 開始和結束時，不會維持指定的排程。 為了確保在 DST 生效時，週期時間不會轉移，請手動調整週期，讓邏輯應用程式在預期的時間繼續執行。 否則，開始時間會在 DST 開始時向前移動一小時，而當 DST 結束時，則會向後移動一小時。 如需詳細資訊，請參閱 [以連接為基礎之觸發程式的週期](../connectors/apis-list.md#recurrence-connection-based)。
 
 <a name="convert-to-openssh"></a>
 
@@ -131,7 +140,7 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 ### <a name="unix-based-os"></a>以 Unix 為基礎的作業系統
 
-1. 如果您的系統上尚未安裝 PuTTY 工具，請立即這麼做，例如：
+1. 如果您的系統上沒有安裝 PuTTY 工具，請立即這麼做，例如：
 
    `sudo apt-get install -y putty`
 
@@ -147,13 +156,13 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 1. 如果您尚未這麼做，請 [下載最新的 PuTTY 產生器 ( # A0) 工具](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)，然後啟動該工具。
 
-1. 在此畫面上，選取 [ **載入** ]。
+1. 在此畫面上，選取 [ **載入**]。
 
    ![選取 [載入]](./media/connectors-sftp-ssh/puttygen-load.png)
 
-1. 以 PuTTY 格式流覽至您的私密金鑰檔案，然後選取 [ **開啟** ]。
+1. 以 PuTTY 格式流覽至您的私密金鑰檔案，然後選取 [ **開啟**]。
 
-1. 從 [ **轉換** ] 功能表選取 [ **匯出 OpenSSH 金鑰** ]。
+1. 從 [ **轉換** ] 功能表選取 [ **匯出 OpenSSH 金鑰**]。
 
    ![選取 [匯出 OpenSSH 金鑰]](./media/connectors-sftp-ssh/export-openssh-key.png)
 
@@ -181,7 +190,7 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
    -或-
 
-   針對現有的邏輯應用程式，請在您要新增動作的最後一個步驟底下，選取 [ **新增步驟** ]。 在搜尋方塊中，輸入 `sftp ssh` 作為篩選條件。 在動作清單底下，選取您想要的動作。
+   針對現有的邏輯應用程式，請在您要新增動作的最後一個步驟底下，選取 [ **新增步驟**]。 在搜尋方塊中，輸入 `sftp ssh` 作為篩選條件。 在動作清單底下，選取您想要的動作。
 
    若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選擇所顯示的加號 ( **+** )，然後選取 [新增動作]。
 
@@ -195,13 +204,13 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
    1. 在文字編輯器中開啟您的 SSH 私密金鑰檔案。 這些步驟會使用記事本作為範例。
 
-   1. 在 [記事本] 的 [ **編輯** ] 功能表上，選取 [ **全選** ]。
+   1. 在 [記事本] 的 [ **編輯** ] 功能表上，選取 [ **全選**]。
 
-   1. 選取 [ **編輯**  >  **複本** ]。
+   1. 選取 [**編輯**  >  **複本**]。
 
-   1. 在您新增的 SFTP-SSH 觸發程序或動作中，將所複製的「完整」金鑰貼到 [SSH 私密金鑰] 屬性中，此屬性支援多行。  **_請務必貼_* 上金鑰。 _*_請勿手動輸入或編輯金鑰_*_ 。
+   1. 在您新增的 SFTP-SSH 觸發程序或動作中，將所複製的「完整」金鑰貼到 [SSH 私密金鑰] 屬性中，此屬性支援多行。  **_請務必貼_* 上金鑰。 _*_請勿手動輸入或編輯金鑰_*_。
 
-1. 當您完成輸入連線詳細資料時，請選取 [_ * 建立 * *]。
+1. 輸入連接詳細資料之後，請選取 [_ * 建立 * *]。
 
 1. 現在請為您選取的觸發程序或動作提供必要的詳細資料，並且繼續建置邏輯應用程式的工作流程。
 
@@ -211,15 +220,15 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 若要覆寫區塊使用的預設調適型行為，您可以將固定區塊大小從 5 MB 指定為 50 MB。
 
-1. 在動作的右上角，選取省略號按鈕 ( **...** ) ，然後選取 [ **設定** ]。
+1. 在動作的右上角，選取省略號按鈕 (**...**) ，然後選取 [ **設定**]。
 
    ![開啟 SFTP-SSH 設定](./media/connectors-sftp-ssh/sftp-ssh-connector-setttings.png)
 
-1. 在 [ **內容傳輸** ] 下的 [ **區塊大小** ] 屬性中，輸入的整數值 `5` `50` ，例如： 
+1. 在 [ **內容傳輸**] 下的 [ **區塊大小** ] 屬性中，輸入的整數值 `5` `50` ，例如： 
 
    ![指定要改用的區塊大小](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
-1. 完成之後，選取 [完成]。
+1. 完成之後，請選取 [ **完成**]。
 
 ## <a name="examples"></a>範例
 
@@ -229,7 +238,7 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 此觸發程序會在 SFTP 伺服器上新增或變更了檔案時，啟動邏輯應用程式工作流程。 舉例來說，您可以新增條件來檢查檔案的內容，並根據內容是否符合指定條件來取得內容。 接著，您可以新增要取得檔案內容的動作，並將該內容放置於 SFTP 伺服器上的資料夾中。
 
-**企業範例** ：您可以使用此觸發程序，來監視代表客戶訂單的新檔案 SFTP 資料夾。 然後，您可以使用 SFTP 動作 (例如 **取得檔案內容** )，來取得訂單的內容以進一步處理，並將該訂單儲存在訂單資料庫中。
+**企業範例**：您可以使用此觸發程序，來監視代表客戶訂單的新檔案 SFTP 資料夾。 然後，您可以使用 SFTP 動作 (例如 **取得檔案內容**)，來取得訂單的內容以進一步處理，並將該訂單儲存在訂單資料庫中。
 
 <a name="get-content"></a>
 
@@ -239,21 +248,9 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 
 <a name="troubleshooting-errors"></a>
 
-## <a name="troubleshoot-errors"></a>針對錯誤進行疑難排解
+## <a name="troubleshoot-problems"></a>問題疑難排解
 
 本節說明常見錯誤或問題的可能解決方案。
-
-<a name="file-does-not-exist"></a>
-
-### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404錯誤：「對不存在的檔案或資料夾進行參考」
-
-當您的邏輯應用程式透過 SFTP-SSH **建立** 檔案動作在您的 sftp 伺服器上建立新檔案時，就會發生此錯誤，但在 Logic Apps 服務可以取得檔案的中繼資料之前，會立即移動新建立的檔案。 當您的邏輯應用程式執行 [ **建立** 檔案] 動作時，Logic Apps 服務也會自動呼叫您的 SFTP 伺服器來取得檔案的中繼資料。 但是，如果移動檔案，Logic Apps 服務就無法再找到該檔案，因此您會收到 `404` 錯誤訊息。
-
-如果您無法避免或延遲移動檔案，您可以在檔案建立之後略過讀取檔案的中繼資料，而不是遵循下列步驟：
-
-1. 在 [ **建立** 檔案] 動作中，開啟 [ **加入新的參數** ] 清單，選取 [ **取得所有檔案中繼資料** ] 屬性，並將值設定為 [ **否** ]。
-
-1. 如果您稍後需要此檔案中繼資料，您可以使用 [ **取得檔案中繼資料** ] 動作。
 
 <a name="connection-attempt-failed"></a>
 
@@ -272,6 +269,18 @@ SFTP-SSH 觸發程式的運作方式是輪詢 SFTP 檔案系統，並尋找自�
 * 若要減少連線建立成本，請在 SFTP 伺服器的 SSH 設定中，將 [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) 屬性增加到大約一小時。
 
 * 檢查 SFTP 伺服器記錄檔，以檢查來自邏輯應用程式的要求是否已到達 SFTP 伺服器。 若要取得連接問題的詳細資訊，您也可以在防火牆和 SFTP 伺服器上執行網路追蹤。
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404錯誤：「對不存在的檔案或資料夾進行參考」
+
+當您的邏輯應用程式透過 SFTP-SSH **建立** 檔案動作在您的 sftp 伺服器上建立新檔案時，就會發生此錯誤，但會在 Logic Apps 服務取得檔案的中繼資料之前立即移動新建立的檔案。 當您的邏輯應用程式執行 [ **建立** 檔案] 動作時，Logic Apps 服務也會自動呼叫您的 SFTP 伺服器來取得檔案的中繼資料。 不過，如果您的邏輯應用程式移動檔案，Logic Apps 服務將無法再找到該檔案，因此您會收到 `404` 錯誤訊息。
+
+如果您無法避免或延遲移動檔案，您可以在檔案建立之後略過讀取檔案的中繼資料，而不是遵循下列步驟：
+
+1. 在 [ **建立** 檔案] 動作中，開啟 [ **加入新的參數** ] 清單，選取 [ **取得所有檔案中繼資料** ] 屬性，並將值設定為 [ **否**]。
+
+1. 如果您稍後需要此檔案中繼資料，您可以使用 [ **取得檔案中繼資料** ] 動作。
 
 ## <a name="connector-reference"></a>連接器參考
 

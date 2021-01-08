@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/08/2020
+ms.date: 01/07/2021
 ms.author: tisande
-ms.openlocfilehash: f65d179baa2c0a08e2c1dca1716c9691797fc242
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f959e4e230c1d9f89ad5141713b6a17a8cbb17a2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106287"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018899"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 中的陣列和物件
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,9 +54,27 @@ SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as Ch
 FROM f
 ```
 
+結果為：
+
+```json
+[
+    {
+        "id": "AndersenFamily",
+        "ChildNames": []
+    },
+    {
+        "id": "WakefieldFamily",
+        "ChildNames": [
+            "Jesse",
+            "Lisa"
+        ]
+    }
+]
+```
+
 ## <a name="iteration"></a><a id="Iteration"></a>迭 代
 
-SQL API 支援反覆運算 JSON 陣列，並透過從來源的 [in 關鍵字](sql-query-keywords.md#in) 加入新的結構。 在下例中︰
+SQL API 支援使用 FROM 來源的 [in 關鍵字](sql-query-keywords.md#in) ，逐一查看 JSON 陣列。 在下例中︰
 
 ```sql
 SELECT *
@@ -147,7 +165,7 @@ SELECT COUNT(1) AS Count
 FROM child IN Families.children
 ```
 
-結果如下：
+結果為：
 
 ```json
 [
@@ -156,6 +174,9 @@ FROM child IN Families.children
   }
 ]
 ```
+
+> [!NOTE]
+> 使用 IN 關鍵字進行反復專案時，您無法篩選或投射陣列以外的任何屬性。 相反地，您應該 [使用聯結](sql-query-join.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

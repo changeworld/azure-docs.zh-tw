@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2020
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: a97f3bf3a479d956747755a421d7946f7aafd4f1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 3c094bf5397d15e24c3b1a58369a74438c99017e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494234"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018406"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>從連線監視器遷移至連線監視器 (傳統) 
 
@@ -34,7 +34,7 @@ ms.locfileid: "96494234"
    * **警示**：自動遷移至新的計量。
    * **儀表板和** 整合：需要手動編輯計量集。 
     
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您是使用自訂工作區，請確定您的訂用帳戶和 Log Analytics 工作區的區域中已啟用網路監看員。 
 

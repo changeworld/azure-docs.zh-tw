@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2020
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 688786fd60d7945340e0a027cf6ee28e6dc2bb32
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 3eb456dad2836bed55c45e7be9e898fdf72ac4d2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492466"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017930"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>從網路效能監控遷移至連線監視器
 
@@ -39,7 +39,7 @@ ms.locfileid: "96492466"
    * **Log Analytics 中的資料**：在遷移之前，資料會保留在工作區中，而該工作區中的 NPM 是在 NetworkMonitoring 資料表中設定。 遷移之後，資料會移至 NetworkMonitoring 資料表，並在相同的工作區中 ConnectionMonitor_CL 資料表。 在 NPM 中停用測試之後，資料只會儲存在 ConnectionMonitor_CL 資料表中。
    * 以 **記錄為基礎的警示、儀表板和** 整合：您必須根據新的 ConnectionMonitor_CL 資料表，手動編輯查詢。 若要在計量中重新建立警示，請參閱 [使用連線監視器進行網路連線監視](./connection-monitor-overview.md#metrics-in-azure-monitor)。
     
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 確定您的訂用帳戶中已啟用網路監看員，以及 Log Analytics 工作區的區域。
 * 已安裝 Log Analytics 代理程式的 Azure 虛擬機器必須使用網路監看員擴充功能來啟用。

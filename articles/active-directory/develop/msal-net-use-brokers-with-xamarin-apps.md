@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 10fb55cc133d5d6b39ca2809474ff20dfe500708
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173425"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017794"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 應用程式上使用 Microsoft Authenticator 或 Intune 公司入口網站
 
@@ -153,7 +153,7 @@ MSAL.NET 使用 Url 叫用訊息代理程式，然後將訊息代理程式回應
 
 MSAL `–canOpenURL:` 會使用檢查訊息代理程式是否已安裝在裝置上。 在 iOS 9 中，Apple 已鎖定應用程式可以查詢的配置。
 
-新增 `msauthv2` 至 plist 檔案的 `LSApplicationQueriesSchemes` 區段 *Info.plist* ，如下列範例所示：
+新增 `msauthv2` 至 plist 檔案的 `LSApplicationQueriesSchemes` 區段 ，如下列範例所示：
 
 ```XML
 <key>LSApplicationQueriesSchemes</key>
@@ -171,7 +171,7 @@ MSAL `–canOpenURL:` 會使用檢查訊息代理程式是否已安裝在裝置�
 $"msauth.{BundleId}://auth"
 ```
 
-以下是範例：
+以下為範例：
 
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
@@ -183,7 +183,7 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 **若要產生重新導向 URI：**
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 選取 **Azure Active Directory**  >  **應用程式註冊**> 您註冊的應用程式
 1. 選取 **驗證**  >  **新增平臺**  >  **iOS/macOS**
 1. 輸入您的套件組合識別碼，然後選取 [ **設定**]。

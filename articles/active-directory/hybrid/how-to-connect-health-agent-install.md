@@ -3,7 +3,7 @@ title: 在 Azure Active Directory 中安裝 Connect Health 代理程式
 description: 本 Azure AD Connect Health 文章說明 Active Directory 同盟服務 (AD FS) 和同步處理的代理程式安裝。
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 editor: curtand
 ms.assetid: 1cc8ae90-607d-4925-9c30-6770a4bd1b4e
@@ -17,18 +17,18 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff6f96c62936d8bf66b908060b91f8cad7989763
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 57362aa84886d7b7d764617ce5a43ca2393bed52
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962590"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018236"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
 
 在本文中，您將瞭解如何安裝及設定 Azure Active Directory (Azure AD) Connect Health 代理程式。 若要下載代理程式，請參閱 [這些指示](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 下表列出使用 Azure AD Connect Health 的需求。
 
@@ -351,7 +351,7 @@ Set-AzureAdConnectHealthProxySettings -ImportFromWinHttp
 Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 ```
 
-以下是範例： 
+以下為範例： 
 
 `Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress myproxyserver: 443`
 

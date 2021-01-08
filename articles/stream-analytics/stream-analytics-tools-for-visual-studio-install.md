@@ -3,16 +3,15 @@ title: 安裝適用於 Visual Studio 的 Azure 串流分析工具
 description: 本文說明安裝需求，以及如何設定適用于 Visual Studio 的 Azure 串流分析工具。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/22/2018
-ms.openlocfilehash: 464e8fbf624dfa84ec54bf6a7e0ce202d047e15d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0077ac8465e8f785e772b384f26e0edc6874a1a0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045105"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018695"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>安裝適用於 Visual Studio 的 Azure 串流分析工具
 
@@ -42,9 +41,9 @@ Azure Data Lake 和串流分析工具都是 **Azure 開發** 和 **資料儲存�
 
 新增工作負載之後，請更新工具。 此程式是指 Visual Studio 2019：
 
-1. 選取 [**擴充**功能  >  **管理延伸**模組]。
+1. 選取 [**擴充** 功能  >  **管理延伸** 模組]。
 
-1. 在 [ **管理延伸**模組] 中，選取 [ **更新** ]，然後選擇 **Azure Data Lake 和串流分析工具**。
+1. 在 [ **管理延伸** 模組] 中，選取 [ **更新** ]，然後選擇 **Azure Data Lake 和串流分析工具**。
 
 1. 選取 [ **更新** ] 以安裝最新的擴充功能。
 
@@ -68,4 +67,4 @@ Visual Studio Enterprise (旗艦版/Premium) 、Professional 和社團版本都�
 
 您可以卸載 Azure Data Lake 和串流分析工具。 針對 Visual Studio 2019 或 Visual Studio 2017，請選取 [**工具**  >  **取得工具和功能**]。 在 [ **修改**] 中，取消選取 **Azure Data Lake 和串流分析工具**。 它會出現在 **資料儲存體和處理** 工作負載或 **Azure 開發** 工作負載之下。
 
-若要從 Visual Studio 2015 或 Visual Studio 2013 卸載，請移至**主控台**  >  **程式和功能**]。 卸載 **適用于 Visual Studio 的 Microsoft Azure Data Lake 和串流分析工具**。
+若要從 Visual Studio 2015 或 Visual Studio 2013 卸載，請移至 **主控台**  >  **程式和功能**]。 卸載 **適用于 Visual Studio 的 Microsoft Azure Data Lake 和串流分析工具**。

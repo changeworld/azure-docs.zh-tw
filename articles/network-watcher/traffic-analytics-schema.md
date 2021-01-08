@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 015b8e400e9d386fff8f35756a77139e61bbaff1
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 765a2728c5de49787a64fff723625e53e100e450
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809287"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017777"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架構和資料匯總
 
@@ -96,7 +96,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 
 以下列出架構中的欄位和它們所代表的內容
 
-| 欄位 | [格式] | 註解 |
+| 欄位 | 格式 | 註解 |
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | 適用于流量分析資料的資料表
 | SubType_s | FlowLog | 流程記錄的子類型。 僅使用 "FlowLog"，SubType_s 的其他值用於產品的內部運作 |
@@ -161,7 +161,7 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 | SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | 以橫條分隔的專案 |
 | DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | 以橫條分隔的專案 |
 
-### <a name="notes"></a>注意
+### <a name="notes"></a>附註
 
 1. 如果是 AzurePublic 和 ExternalPublic 流程，客戶擁有的 Azure VM IP 會填入 VMIP_s 欄位，而公用 IP 位址則會填入 PublicIPs_s 欄位。 針對這兩種流程類型，我們應該使用 VMIP_s 和 PublicIPs_s，而不是 SrcIP_s 和 DestIP_s 欄位。 針對 AzurePublic 和 ExternalPublicIP 位址，我們會進一步匯總，以便將內嵌至客戶 log analytics 工作區的記錄數目降至最少。 (此欄位即將淘汰，而且我們應該根據 azure VM 是否為流程中的來源或目的地，使用 SrcIP_ 和 DestIP_s) 
 1. 流程類型的詳細資料：根據流程中涉及的 IP 位址，我們會將流程分類至下列流程類型：

@@ -3,7 +3,7 @@ title: Azure Active Directory Connect Health 作業
 description: 本文說明可以在您部署 Azure AD Connect Health 之後執行的其他作業。
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 ms.assetid: 86cc3840-60fb-43f9-8b2a-8598a9df5c94
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91b7bd6d05ee0b992ee166b9acb13aff2e605a2c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 99ad0963677b9ef536deacc2122130186afe0726
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961000"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016961"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 作業
 本主題說明您可以使用 Azure Active Directory (Azure AD) Connect Health 來執行的各種作業。
@@ -136,7 +136,7 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
 2. 選取 [新增]  。
 3. 在 [選取角色] 窗格中，選取角色 (例如，**擁有者**)。<br>
    ![Azure AD Connect Health 和 Azure RBAC [設定] 功能表的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_add.png)
-4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]  。
+4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]。
    ![Azure AD Connect Health 和 Azure 角色清單的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_select_users.png)
 5. 選取 [確定]。<br>
 6. 完成角色指派之後，使用者和群組就會出現在清單中。<br>

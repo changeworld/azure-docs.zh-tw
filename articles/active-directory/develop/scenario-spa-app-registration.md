@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: e42b6b7ffa39110ce356094de690bb353a3fb10f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 0050eb61aac53b69c74306b9aaab797d8adfa915
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107782"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016995"
 ---
 # <a name="single-page-application-app-registration"></a>單頁應用程式：應用程式註冊
 
@@ -27,10 +27,10 @@ ms.locfileid: "97107782"
 
 針對以 MSAL.js 1.0 和 2.0 為基礎的應用程式，請先完成下列步驟，以建立初始應用程式註冊。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]。
-1. 在 [**管理**] 底下，選取 [**應用程式註冊**  >  **新增註冊**]。
+1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
 1. 輸入應用程式的 **名稱**。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
 1. 選擇應用程式 **支援的帳戶類型** 。 請 **不要** 輸入 **重新導向 URI**。 如需不同帳戶類型的說明，請參閱 [註冊應用程式](quickstart-register-app.md)。
 1. 選取 [註冊] 以建立應用程式註冊。
@@ -45,7 +45,7 @@ ms.locfileid: "97107782"
 請遵循這些步驟，為使用 MSAL.js 2.0 或更新版本的應用程式新增重新導向 URI。 MSAL.js 2.0+ 支援使用 PKCE 和 CORS 的授權碼流程，以回應[瀏覽器協力廠商 Cookie 限制](reference-third-party-cookies-spas.md)。 MSAL.js 2.0+ 不支援隱含授與流程。
 
 1. 在 Azure 入口網站中，選取您稍早在[建立應用程式註冊](#create-the-app-registration)中建立的應用程式註冊。
-1. 在 [**管理**] 底下，選取 [**驗證**  >  **新增平臺**]。
+1. 在 [管理] 底下，選取 [驗證] > [新增平台]。
 1. 在 [Web 應用程式] 底下，選取 [單頁應用程式] 圖格。
 1. 在 [重新導向 URI] 底下，輸入[重新導向 URI](reply-url.md)。 請 **不要** 選取 [隱含授與] 底下的任一核取方塊。
 1. 選取 [設定] 以完成新增重新導向 URI。
@@ -59,7 +59,7 @@ ms.locfileid: "97107782"
 請遵循這些步驟，針對使用 MSAL.js 1.3 或更早版本及隱含授與流程的單頁應用程式新增重新導向 URI。 使用 MSAL.js 1.3 或更早版本的應用程式不支援驗證碼流程。
 
 1. 在 Azure 入口網站中，選取您稍早在[建立應用程式註冊](#create-the-app-registration)中建立的應用程式註冊。
-1. 在 [**管理**] 底下，選取 [**驗證**  >  **新增平臺**]。
+1. 在 [管理] 底下，選取 [驗證] > [新增平台]。
 1. 在 [Web 應用程式] 底下，選取 [單頁應用程式] 圖格。
 1. 在 [重新導向 URI] 底下，輸入[重新導向 URI](reply-url.md)。
 1. 啟用 **隱含流程**：

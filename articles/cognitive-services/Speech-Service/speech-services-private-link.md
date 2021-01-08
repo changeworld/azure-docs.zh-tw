@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: f905582615b16780fae179ba6a21bd4343bd47f3
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: d5822b6eeecfc61a5092519618ddfcaf88a625ae
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755798"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018525"
 ---
 # <a name="use-speech-service-through-a-private-endpoint"></a>透過私人端點使用語音服務
 
@@ -39,7 +39,7 @@ ms.locfileid: "97755798"
 
 私人端點需要 [認知服務自訂子功能變數名稱稱](../cognitive-services-custom-subdomains.md)。 請遵循下列指示，為您的語音資源建立一個。
 
-> [!CAUTION]
+> [!WARNING]
 > 啟用自訂功能變數名稱的語音資源會使用不同的方式來與語音服務互動。
 > 您可能必須調整 [啟用私人端點](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled) 的應用程式程式碼，而 [**不** 是啟用私人端點](#use-speech-resource-with-custom-domain-name-without-private-endpoints) 的案例。
 >
@@ -56,7 +56,7 @@ ms.locfileid: "97755798"
 1. 在左側流覽窗格的 [ **資源管理** ] 群組中，按一下 [ **網路**]。
 1. 在 [ **防火牆與虛擬網路** ] 索引標籤中，按一下 [ **產生自訂功能變數名稱**]。 新的右面板隨即出現，並顯示為您的資源建立唯一自訂子域的指示。
 1. 在 [產生自訂功能變數名稱] 面板中，輸入自訂功能變數名稱部分。 您的完整自訂網域看起來會像這樣： `https://{your custom name}.cognitiveservices.azure.com` 。 
-    **建立自訂功能變數名稱之後，就 _無法_ 變更！重新閱讀上述的警告警示。** 輸入自訂功能變數名稱之後，請按一下 [ **儲存**]。
+    **建立自訂功能變數名稱之後，就 _無法_ 變更！重新讀取上方的警告警示。** 輸入自訂功能變數名稱之後，請按一下 [ **儲存**]。
 1. 作業完成之後，請在 [ **資源管理** ] 群組中，按一下 [ **金鑰和端點**]。 確認資源的新端點名稱會以這種方式啟動：
 
     `https://{your custom name}.cognitiveservices.azure.com`
@@ -81,7 +81,7 @@ ms.locfileid: "97755798"
 
 ## <a name="verify-custom-domain-name-is-available"></a>確認自訂功能變數名稱可用
 
-您需要檢查您想要使用的自訂網域是否可用。 請遵循下列步驟，使用認知服務 REST API 中的 [ [檢查網域可用性](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) ] 作業來確認網域可供使用。
+檢查您想要使用的自訂網域是否可用。 請遵循下列步驟，使用認知服務 REST API 中的 [ [檢查網域可用性](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) ] 作業來確認網域可供使用。
 
 > [!TIP]
 > 下列程式碼在 Azure Cloud Shell 中將 **無法** 運作。
@@ -128,9 +128,9 @@ subdomainName        : my-custom-name
 
 若要為選取的語音資源啟用自訂功能變數名稱，我們會使用 [AzCognitiveServicesAccount 指令程式](/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount) 。
 
-> [!CAUTION]
+> [!WARNING]
 > 順利執行下列程式碼之後，您將會建立語音資源的自訂功能變數名稱。
-> **無法** 變更此名稱。 如需詳細資訊，請參閱上面的 **警告** 警示。
+> **無法** 變更此名稱。 請參閱上方 **警告** 警示的詳細資訊。
 
 ```azurepowershell
 $resourceGroup = "Resource group name where Speech resource is located"
@@ -143,7 +143,7 @@ $subId = "Your Azure subscription Id"
 Set-AzContext -SubscriptionId $subId
 
 # Set the custom domain name to the selected resource.
-# CAUTION: THIS CANNOT BE CHANGED OR UNDONE!
+# WARNING: THIS CANNOT BE CHANGED OR UNDONE!
 Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
     -Name $speechResourceName -CustomSubdomainName $subdomainName
 ```
@@ -156,7 +156,7 @@ Set-AzCognitiveServicesAccount -ResourceGroupName $resourceGroup `
 
 ## <a name="verify-the-custom-domain-name-is-available"></a>確認自訂功能變數名稱可用
 
-您需要檢查您想要使用的自訂網域是否為免費。 我們將使用認知服務 REST API 中的 [ [檢查網域可用性](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) 方法]。
+檢查您想要使用的自訂網域是否為免費。 我們將使用認知服務 REST API 中的 [ [檢查網域可用性](/rest/api/cognitiveservices/accountmanagement/checkdomainavailability/checkdomainavailability) 方法]。
 
 複製下方的程式碼區塊，插入您慣用的自訂功能變數名稱，並儲存至檔案 `subdomain.json` 。
 
@@ -201,7 +201,7 @@ az account set --subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 將自訂功能變數名稱設定為選取的資源。 將範例參數值取代為實際的參數值，然後執行下列命令。
 
-> [!CAUTION]
+> [!WARNING]
 > 成功執行以下命令之後，您將會建立語音資源的自訂功能變數名稱。 **無法** 變更此名稱。 如需詳細資訊，請參閱上面的警告警示。
 
 ```azurecli
@@ -212,11 +212,9 @@ az cognitiveservices account update --name my-speech-resource-name --resource-gr
 
 ## <a name="enable-private-endpoints"></a>啟用私人端點
 
-使用 Azure 入口網站、Azure PowerShell 或 Azure CLI 啟用私人端點。
+建議您在布建過程中，使用附加至虛擬網路的 [私人 DNS 區域](../../dns/private-dns-overview.md) ，並搭配私人端點的必要更新（依預設會建立）。 但是，如果您使用自己的 DNS 伺服器，您可能也需要變更您的 DNS 設定，如下所示： _私人端點的 dns_ 中所示。 針對生產語音資源布建私人端點 () 之前，請 *先* 決定 dns 策略 _，並測試您的 dns 變更，尤其是當您使用自己的 dns 伺服器時。
 
-建議您在布建過程中，使用附加至虛擬網路的 [私人 DNS 區域](../../dns/private-dns-overview.md) ，並搭配私人端點的必要更新（依預設會建立）。 但是，如果您使用自己的 DNS 伺服器，您可能需要對 DNS 設定進行其他變更。 請參閱 [ [私人端點的 DNS](#dns-for-private-endpoints) ] 區段。 最佳做法是在針對生產語音資源布建私人端點 () *之前，先* 決定 DNS 策略 _。 我們也建議進行初步測試，特別是當您使用自己的 DNS 伺服器時。
-
-使用下列文章來建立私人端點 (s) 。 這些文章會將 Web 應用程式做為使用私人端點啟用的範例資源。 請改用下列參數：
+您可以使用下列其中一篇文章來建立私人端點 (的) 。 這些文章會使用 Web 應用程式做為使用私人端點啟用的範例資源。 您將使用這些參數，而不是本文中的參數：
 
 | 設定             | 值                                    |
 |---------------------|------------------------------------------|
@@ -228,15 +226,17 @@ az cognitiveservices account update --name my-speech-resource-name --resource-gr
 - [使用 Azure PowerShell 建立私人端點](../../private-link/create-private-endpoint-powershell.md)
 - [使用 Azure CLI 建立私人端點](../../private-link/create-private-endpoint-cli.md)
 
-### <a name="dns-for-private-endpoints"></a>私人端點的 DNS
+**私人端點的 DNS：** 請參閱 [認知服務資源中私人端點 DNS](../cognitive-services-virtual-networks.md#dns-changes-for-private-endpoints)的一般原則。 然後藉由執行下列檢查來確認您的 DNS 設定是否正常運作：
 
-熟悉 [認知服務資源中私人端點的 DNS](../cognitive-services-virtual-networks.md#dns-changes-for-private-endpoints)一般原則。 然後檢查您的 DNS 設定是否正常運作 (請參閱下一節) 。
+### <a name="resolve-dns-from-the-virtual-network"></a>從虛擬網路解析 DNS
 
-#### <a name="mandatory-check-dns-resolution-from-the-virtual-network"></a> (強制檢查) 。 來自虛擬網路的 DNS 解析
+這是 **必要** 的檢查。
 
-我們將使用 `my-private-link-speech.cognitiveservices.azure.com` 此區段的範例語音資源 DNS 名稱。
+請遵循下列步驟，從您的虛擬網路測試自訂 DNS 專案。
 
-登入位於您已連接私人端點的虛擬網路中的虛擬機器。 開啟 Windows 命令提示字元或 Bash shell，執行 `nslookup` 並確認它已成功解析您的資源自訂功能變數名稱：
+1. 登入位於您已連接私人端點的虛擬網路中的虛擬機器。 
+1. 開啟 Windows 命令提示字元或 Bash shell，執行 `nslookup` 並確認它已成功解析您的資源自訂功能變數名稱。
+
 ```dos
 C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
 Server:  UnKnown
@@ -247,15 +247,16 @@ Name:    my-private-link-speech.privatelink.cognitiveservices.azure.com
 Address:  172.28.0.10
 Aliases:  my-private-link-speech.cognitiveservices.azure.com
 ```
-檢查已解析的 IP 位址是否對應到您私人端點的位址。
 
-#### <a name="optional-check-dns-resolution-from-other-networks"></a> (選擇性檢查) 。 來自其他網路的 DNS 解析
+3. 確認 IP 位址符合您私人端點的 IP 位址。
 
-如果您打算在「混合式」模式中使用啟用私人端點的語音資源，且您已在資源的 [*網路*] 區段中啟用 [*所有網路*] 或 [*選取的網路] 和 [私人端點*] 存取選項，就需要進行這項檢查。 如果您打算只使用私人端點來存取資源，您可以略過本節。
+### <a name="resolve-dns-from-other-networks"></a>從其他網路解析 DNS
 
-我們會使用 `my-private-link-speech.cognitiveservices.azure.com` 做為此區段的範例語音資源 DNS 名稱。
+只有在您打算在「混合式」模式中使用啟用私人端點的語音資源時，才執行此檢查，您已在資源的 [**網路**] 區段中，啟用 [**所有網路**] 或 [**選取的網路] 和 [私人端點**] 存取選項。 如果您打算只使用私人端點來存取資源，您可以略過本節。
 
-在任何連接到您允許存取資源之網路的電腦上，開啟 Windows 命令提示字元或 Bash shell，執行命令， `nslookup` 並確認它已成功解析您的資源自訂功能變數名稱：
+1. 登入連接到允許存取資源之網路的電腦。
+2. 開啟 Windows 命令提示字元或 Bash shell，執行 `nslookup` 並確認它已成功解析您的資源自訂功能變數名稱。
+
 ```dos
 C:\>nslookup my-private-link-speech.cognitiveservices.azure.com
 Server:  UnKnown
@@ -269,11 +270,14 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
           westeurope.prod.vnet.cog.trafficmanager.net
 ```
 
-請注意，已解析的 IP 位址指向虛擬網路 proxy 端點，其會將網路流量分派至認知服務資源的私人端點。 對於具有自訂功能變數名稱但 *沒有* 私用端點的資源，其行為會有所不同。 如需詳細資訊，請參閱 [這一節](#dns-configuration) 。
+3. 確認 IP 位址符合您私人端點的 IP 位址。
+
+> [!NOTE]
+> 已解析的 IP 位址指向虛擬網路 proxy 端點，其會將網路流量分派至認知服務資源的私人端點。 對於具有自訂功能變數名稱但 *沒有* 私用端點的資源，其行為會有所不同。 如需詳細資訊，請參閱 [這一節](#dns-configuration) 。
 
 ## <a name="adjust-existing-applications-and-solutions"></a>調整現有的應用程式和解決方案
 
-啟用自訂網域的語音資源會使用不同的方式來與語音服務互動。 這適用于具有和[沒有](#use-speech-resource-with-custom-domain-name-without-private-endpoints)私[用](#use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled)端點的已啟用自訂網域語音資源。 目前的區段提供這兩種案例的必要資訊。
+啟用自訂網域的語音資源會使用不同的方式來與語音服務互動。 這適用于具有和沒有私用端點的已啟用自訂網域語音資源。 本節中的資訊適用于這兩種案例。
 
 ### <a name="use-speech-resource-with-custom-domain-name-and-private-endpoint-enabled"></a>使用已啟用自訂功能變數名稱和私人端點的語音資源
 
@@ -320,9 +324,9 @@ https://westeurope.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions
 ```http
 https://my-private-link-speech.cognitiveservices.azure.com/speechtotext/v3.0/transcriptions
 ```
-此 URL 應該可從已附加私人端點的虛擬網路存取 (提供正確的 [DNS 解析](#mandatory-check-dns-resolution-from-the-virtual-network)) 。
+此 URL 應該可從已附加私人端點的虛擬網路存取 (提供正確的 [DNS 解析](#resolve-dns-from-the virtual-network)) 。
 
-一般來說，在啟用語音資源的自訂功能變數名稱之後，您必須以新的自訂網域主機名稱取代所有要求 Url 中的主機名稱。 要求的所有其他部分 (類似 `/speechtotext/v3.0/transcriptions` 上述範例中的路徑) 保持不變。
+一般來說，在啟用語音資源的自訂功能變數名稱之後，您會將所有要求 Url 中的主機名稱取代為新的自訂網域主機名稱。 要求的所有其他部分 (類似 `/speechtotext/v3.0/transcriptions` 上述範例中的路徑) 保持不變。
 
 > [!TIP]
 > 某些客戶開發的應用程式會使用區域端點 DNS 名稱的區域部分 (例如，將要求傳送至在特定 Azure 區域中部署的語音資源) 。
@@ -340,7 +344,7 @@ https://my-private-link-speech.cognitiveservices.azure.com/speechtotext/v3.0/tra
 熟悉上一段所述小節中的材質，然後參閱下列範例。  (範例描述文字轉換語音 REST API;針對短音訊使用語音轉換文字 REST API 是完全相同的) 
 
 > [!NOTE]
-> 針對私人端點案例中 **的短音訊使用語音轉換文字 REST API** 時，您必須使用 [透過](rest-speech-to-text.md#request-headers) `Authorization` [標頭](rest-speech-to-text.md#request-headers)傳遞的授權權杖; 透過標頭將語音訂用帳戶金鑰傳遞給特殊端點 `Ocp-Apim-Subscription-Key` 將 **無法** 運作，且會產生錯誤401。
+> 針對私人端點案例中 **的短音訊使用語音轉換文字 REST API** 時，請使用 [透過](rest-speech-to-text.md#request-headers) `Authorization` [標頭](rest-speech-to-text.md#request-headers)傳遞的授權權杖。 透過標頭將語音訂用帳戶金鑰傳遞給特殊端點 `Ocp-Apim-Subscription-Key` 將 **無法** 運作，且會產生錯誤401。
 
 **文字轉換語音 REST API 使用範例。**
 
@@ -372,13 +376,13 @@ https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices
 
 #### <a name="speech-resource-with-custom-domain-name-and-private-endpoint-usage-with-speech-sdk"></a>具有自訂功能變數名稱和私人端點的語音資源。 使用語音 SDK
 
-使用具有自訂功能變數名稱和啟用私人端點的語音資源的語音 SDK 需要審查和可能變更您的應用程式程式碼。 我們正在努力更順暢地支援私人端點案例。
+使用具有自訂功能變數名稱和啟用私人端點的語音資源的語音 SDK 需要審查和可能變更您的應用程式程式碼。
 
 在本節中，我們將使用 `my-private-link-speech.cognitiveservices.azure.com` (自訂網域) 範例語音資源 DNS 名稱。
 
 ##### <a name="general-principle"></a>一般原則
 
-通常在 SDK 案例中 (以及文字轉換語音 REST API 案例中) 語音資源會針對不同的服務供應專案使用特殊的區域端點。 這些端點的 DNS 名稱格式為： </p>`{region}.{speech service offering}.speech.microsoft.com`
+通常在 SDK 案例中 (以及文字轉換語音 REST API 案例中) 語音資源會針對不同的服務供應專案使用專用的區域端點。 這些端點的 DNS 名稱格式為： </p>`{region}.{speech service offering}.speech.microsoft.com`
 
 範例： </p>`westeurope.stt.speech.microsoft.com`
 
@@ -395,72 +399,81 @@ https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices
 
 因此，上述範例 (`westeurope.stt.speech.microsoft.com`) 代表西歐的語音轉換文字端點。
 
-啟用私人端點的端點會透過特殊的 proxy 與語音服務進行通訊，因為 **端點連接 url 必須變更**。 套用的原則如下：「標準」端點 URL 會遵循下列模式： <p/>`{region}.{speech service offering}.speech.microsoft.com/{URL path}`
+啟用私人端點的端點會透過特殊的 proxy 與語音服務進行通訊，因此 **您必須變更端點連接 url**。 
 
-則必須變更為： <p/>`{your custom name}.cognitiveservices.azure.com/{speech service offering}/{URL path}`
+「標準」端點 URL 看起來像這樣： <p/>`{region}.{speech service offering}.speech.microsoft.com/{URL path}`
 
-**範例1。** 應用程式會使用下列 URL 來進行通訊， (在西歐) 使用美國英文的基本模型進行語音辨識： 
+私人端點 URL 看起來像這樣： <p/>`{your custom name}.cognitiveservices.azure.com/{speech service offering}/{URL path}`
+
+**範例1。** 應用程式會使用下列 URL 來進行通訊， (在西歐) 使用美國英文的基本模型進行語音辨識：
+
 ```
 wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
 
-若要在啟用私人端點的案例中使用它，當語音資源的自訂功能變數名稱為此 URL 時，必須 `my-private-link-speech.cognitiveservices.azure.com` 像這樣修改：
+若要在啟用私人端點的案例中使用它，當語音資源的自訂功能變數名稱為時 `my-private-link-speech.cognitiveservices.azure.com` ，您必須修改 URL，如下所示：
+
 ```
 wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
 
-讓我們更仔細看看：
-- 主機名稱 `westeurope.stt.speech.microsoft.com` 被自訂網域主機名稱取代 `my-private-link-speech.cognitiveservices.azure.com`
-- 原始 DNS 名稱的第二個元素 (`stt`) 會成為 URL 路徑的第一個元素，並在原始路徑之前，也就是原始 URL。 `/speech/recognition/conversation/cognitiveservices/v1?language=en-US``/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US`
- 
-**範例2。** 應用程式使用下列 URL 進行通訊 (語音合成使用西歐的自訂語音模型) ： 
+請注意詳細資料：
+
+- 主機名稱 `westeurope.stt.speech.microsoft.com` 被自訂網域主機名稱取代 `my-private-link-speech.cognitiveservices.azure.com` 。
+- 原始 DNS 名稱的第二個元素 (`stt`) 會成為 URL 路徑的第一個元素，並在原始路徑之前。 如此一來，原始的 URL `/speech/recognition/conversation/cognitiveservices/v1?language=en-US` 就會變成 `/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US` 。
+
+**範例2。** 應用程式會使用下列 URL，在西歐使用自訂語音模型) 合成語音：
 ```http
 https://westeurope.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=974481cc-b769-4b29-af70-2fb557b897c4
 ```
-若要在啟用私人端點的案例中使用它，當語音資源的自訂功能變數名稱為此 URL 時，必須 `my-private-link-speech.cognitiveservices.azure.com` 像這樣修改： 
+
+以下是對等的 URL，它會使用啟用私人端點的，其中語音資源的自訂功能變數名稱為 `my-private-link-speech.cognitiveservices.azure.com` ：
+
 ```http
 https://my-private-link-speech.cognitiveservices.azure.com/voice/cognitiveservices/v1?deploymentId=974481cc-b769-4b29-af70-2fb557b897c4
 ```
 
 套用了與範例1相同的原則，但這次的關鍵元素是 `voice` 。
 
-##### <a name="modifying-applications"></a>修改應用程式
+##### <a name="modify-applications"></a>修改應用程式
 
-若要將上一節中所述的原則套用至您的應用程式程式碼，您需要執行兩項重要工作：
+遵循下列步驟來修改您的程式碼：
 
-- 判斷您的應用程式正在使用的端點 URL
-- 依照上一節所述修改您的端點 URL，並 `SpeechConfig` 明確地使用此修改過的 URL 來建立類別實例
+**1. 判斷應用程式端點 URL**
 
-###### <a name="determine-application-endpoint-url"></a>判斷應用程式端點 URL
+- [為您的應用程式啟用記錄](how-to-use-logging.md) ，並將其執行至記錄活動。
+- 在記錄檔中搜尋 `SPEECH-ConnectionUrl` 。 在相符的行中， `value` 參數包含您的應用程式用來連接語音服務的完整 URL。
 
-- [為您的應用程式啟用記錄](how-to-use-logging.md) ，並執行它來產生記錄檔
-- 在記錄檔中搜尋 `SPEECH-ConnectionUrl` 。 字串將會包含 `value` 參數，而參數會包含您的應用程式所使用的完整 URL
+範例：
 
-具有端點 URL 的記錄檔行範例：
 ```
 (114917): 41ms SPX_DBG_TRACE_VERBOSE:  property_bag_impl.cpp:138 ISpxPropertyBagImpl::LogPropertyAndValue: this=0x0000028FE4809D78; name='SPEECH-ConnectionUrl'; value='wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?traffictype=spx&language=en-US'
 ```
+
 因此，此範例中的應用程式所使用的 URL 為：
+
 ```
 wss://westeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
-###### <a name="create-speechconfig-instance-using-full-endpoint-url"></a>`SpeechConfig`使用完整端點 URL 建立實例
+
+**2. `SpeechConfig` 使用完整端點 URL 建立實例**
 
 依照上述 [一般原則](#general-principle) 中所述，修改您在上一節中決定的端點。
 
-現在您需要修改您建立實例的方式 `SpeechConfig` 。 您目前的應用程式很可能會使用類似以下的內容：
+現在修改您建立實例的方式 `SpeechConfig` 。 您目前的應用程式很可能會使用類似以下的內容：
 ```csharp
 var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
 ```
 因為先前各節所述的主機名稱和 URL 變更，所以無法用於啟用私人端點的語音資源。 如果您嘗試使用啟用私人端點之資源的金鑰來執行現有的應用程式，而不進行任何修改，您將會收到 (401) 的驗證錯誤。
 
-若要使其運作，您必須修改具現化類別的方式， `SpeechConfig` 並使用 "from endpoint"/"與端點" 初始化。 假設我們已定義下列兩個變數：
+若要使其正常運作，請修改具現化類別的方式， `SpeechConfig` 並使用「從端點」/「使用端點」初始化。 假設我們已定義下列兩個變數：
 - `subscriptionKey` 包含啟用私人端點語音資源的金鑰
 - `endPoint` 包含完整 **修改過** 的端點 URL (使用連結程式設計語言) 所需的型別。 在我們的範例中，此變數應該包含
 ```
 wss://my-private-link-speech.cognitiveservices.azure.com/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 ```
-接著，我們需要具現化 `SpeechConfig` 類別，如下所示：
+
+接著，建立 `SpeechConfig` 實例：
 ```csharp
 var config = SpeechConfig.FromEndpoint(endPoint, subscriptionKey);
 ```
@@ -477,8 +490,9 @@ speech_config = speechsdk.SpeechConfig(endpoint=endPoint, subscription=subscript
 ```objectivec
 SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithEndpoint:endPoint subscription:subscriptionKey];
 ```
+
 > [!TIP]
-> 端點 URI 中指定的查詢參數不會變更，即使它們是由任何其他 Api 所設定亦同。 例如，如果辨識語言在 URI 中定義為查詢參數 "language = en-us"，而且也透過 [對應] 屬性設定為 [ru-RU]，則 URI 中的語言設定會優先，而且有效的語言為 "en-us"。 只有未在端點 URI 中指定的參數可以由其他 Api 進行設定。
+> 端點 URI 中指定的查詢參數不會變更，即使它們是由任何其他 Api 所設定亦同。 例如，如果辨識語言在 URI 中定義為查詢參數 "language = en-us"，而且也透過 [對應] 屬性設定為 [ru-RU]，則會使用 URI 中的語言設定，而有效的語言為 "en-us"。 端點 URI 中設定的參數一律採用 precidence。 只有未在端點 URI 中指定的參數可以由其他 Api 覆寫。
 
 修改之後，您的應用程式應該使用啟用私人的語音資源。 我們正在努力更順暢地支援私人端點案例。
 
@@ -490,7 +504,7 @@ SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithE
 
 #### <a name="dns-configuration"></a>DNS 組態
 
-請記住，私人端點啟用語音資源的自訂網域 DNS 名稱是如何 [從公用網路解析](#optional-check-dns-resolution-from-other-networks)的。 在此情況下，IP 位址會被解析為 VNet Proxy 端點，此端點是用來將網路流量分派至啟用私人端點的認知服務資源。
+請記住，私人端點啟用語音資源的自訂網域 DNS 名稱是如何 [從公用網路解析](#resolve-dns-from-other-networks)的。 在此情況下，IP 位址會被解析為 VNet Proxy 端點，此端點是用來將網路流量分派至啟用私人端點的認知服務資源。
 
 不過，在啟用自訂功能變數名稱後 (或右邊移除 **所有** 資源私人端點時) 會重新布建語音資源的 CNAME 記錄，而現在會指向對應 [認知服務區域端點](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)的 IP 位址。
 
@@ -510,7 +524,7 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
           apimgmttmdjylckcx6clmh2isu2wr38uqzm63s8n4ub2y3e6xs.trafficmanager.net
           cognitiveweprod-westeurope-01.regional.azure-api.net
 ```
-將它 [與本節的](#optional-check-dns-resolution-from-other-networks)輸出做比較。
+將它 [與本節的](#resolve-dns-from-other-networks)輸出做比較。
 
 #### <a name="speech-resource-with-custom-domain-name-without-private-endpoints-usage-with-rest-api"></a>沒有私人端點的自訂功能變數名稱的語音資源。 使用 REST API
 
@@ -523,7 +537,7 @@ Aliases:  my-private-link-speech.cognitiveservices.azure.com
 在此情況下，語音轉換文字 REST API 針對短音訊和文字轉換語音 REST API 使用方式與一般案例沒有任何差異，因為語音轉換文字 REST API 的簡短音訊例外 (請參閱以下) 的附注。 這兩個 Api 都應該依照 [語音轉換文字 REST API 中的說明，以取得簡短的音訊](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) 和 [文字轉換語音 REST API](rest-text-to-speech.md) 檔。
 
 > [!NOTE]
-> 針對自訂網域案例中 **的短音訊使用語音轉換文字 REST API** 時，您必須使用 [透過](rest-speech-to-text.md#request-headers) `Authorization` [標頭](rest-speech-to-text.md#request-headers)傳遞的授權權杖; 透過標頭將語音訂用帳戶金鑰傳遞給特殊端點 `Ocp-Apim-Subscription-Key` 將 **無法** 運作，而且會產生錯誤401。
+> 針對自訂網域案例中 **的短音訊使用語音轉換文字 REST API** 時，請使用 [透過](rest-speech-to-text.md#request-headers) `Authorization` [標頭](rest-speech-to-text.md#request-headers)傳遞的授權權杖。 透過標頭將語音訂用帳戶金鑰傳遞給特殊端點 `Ocp-Apim-Subscription-Key` 將 **無法** 運作，且會產生錯誤401。
 
 #### <a name="speech-resource-with-custom-domain-name-without-private-endpoints-usage-with-speech-sdk"></a>沒有私人端點的自訂功能變數名稱的語音資源。 使用語音 SDK
 
@@ -543,30 +557,29 @@ var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
 
 ##### <a name="modifying-applications"></a>修改應用程式
 
-若要讓您的應用程式使用自訂功能變數名稱（沒有私人端點）的語音資源案例，您需要執行下列動作：
-- 透過認知服務 REST API 要求授權權杖
-- `SpeechConfig`使用「從授權權杖」/「授權權杖」方法來具現化類別 
+若要讓您的應用程式使用具有自訂功能變數名稱且沒有私人端點的語音資源，請遵循下列步驟：
 
-###### <a name="request-authorization-token"></a>要求授權權杖
+**1. 從認知服務 REST API 要求授權權杖**
 
-請參閱 [這篇文章](../authentication.md#authenticate-with-an-authentication-token) ，瞭解如何透過認知服務 REST API 取得權杖。 
+[本文說明如何](../authentication.md#authenticate-with-an-authentication-token) 使用認知服務 REST API 取得權杖。
 
 在端點 URL 中使用您的自訂功能變數名稱，在我們的範例中，此 URL 為：
 ```http
 https://my-private-link-speech.cognitiveservices.azure.com/sts/v1.0/issueToken
 ```
 > [!TIP]
-> 您可以在 Azure 入口網站中語音資源的 *金鑰和端點* (*資源管理* 群組) 區段中找到此 URL。
+> 您可以在 Azure 入口網站中找到此 URL。 在 [語音資源] 頁面的 [ **資源管理** ] 群組底下，選取 [ **金鑰和端點**]。
 
-###### <a name="create-speechconfig-instance-using-authorization-token"></a>`SpeechConfig`使用授權權杖建立實例
+**2. 使用「 `SpeechConfig` 從授權權杖」/「授權權杖」方法建立實例。**
 
-您必須 `SpeechConfig` 使用您在上一節中取得的授權權杖來具現化類別。 假設我們已定義下列變數：
+`SpeechConfig`使用您在上一節中取得的授權權杖來建立實例。 假設我們已定義下列變數：
 
-- `token` 包含在上一節中取得的授權權杖
-- `azureRegion` 包含語音資源 [區域](regions.md) 的名稱 (範例： `westeurope`) 
-- `outError` (僅適用于 [目標 C](/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithauthorizationtokenregionerror) 案例) 
+- `token`：上一節中取得的授權權杖
+- `azureRegion`：語音資源 [區域](regions.md) 的名稱 (範例： `westeurope`) 
+- `outError`：僅適用于 [目標 C](/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithauthorizationtokenregionerror) 案例) 的 (
 
-接著，我們需要具現化 `SpeechConfig` 類別，如下所示：
+接著，建立 `SpeechConfig` 實例：
+
 ```csharp
 var config = SpeechConfig.FromAuthorizationToken(token, azureRegion);
 ```
@@ -584,17 +597,21 @@ speech_config = speechsdk.SpeechConfig(auth_token=token, region=azureRegion)
 SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithAuthorizationToken:token region:azureRegion error:outError];
 ```
 > [!NOTE]
-> 呼叫端必須確定授權權杖是否有效。 在授權權杖到期之前，呼叫端必須使用新的有效權杖來呼叫這個 setter，以重新整理它。 當建立新的辨識器/合成器時，會複製設定值，新的權杖值將不會套用至已建立的辨識器。 針對之前建立的辨識器/合成器，您必須設定對應辨識器/合成器的授權權杖，以重新整理權杖。 否則，辨識器/合成器會在辨識/合成期間遇到錯誤。
+> 呼叫端必須確定授權權杖是否有效。
+> 在授權權杖到期之前，呼叫端必須使用新的有效權杖來呼叫這個 setter，以重新整理它。
+> 當建立新的辨識器或合成器時，會複製設定值，新的權杖值將不會套用至已建立的辨識器或合成器。
+> 針對這些設定，請設定對應辨識器或合成器的授權權杖，以重新整理權杖。
+> 如果您未重新整理權杖，辨識器或合成器會在操作時遇到錯誤。
 
-修改之後，您的應用程式應該使用自訂的功能變數名稱啟用的語音資源，而不需要私人端點。 我們正在努力更順暢地支援自訂網域/私人端點案例。
+修改之後，您的應用程式應該使用不具私人端點的自訂功能變數名稱的語音資源。
 
 ## <a name="pricing"></a>定價
 
 如需定價詳細資料，請參閱 [Azure Private Link 定價](https://azure.microsoft.com/pricing/details/private-link)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="learn-more"></a>深入了解
 
-* 深入了解 [Azure Private Link](../../private-link/private-link-overview.md)
-* 深入瞭解 [語音 SDK](speech-sdk.md)
-* 深入瞭解 [語音轉換文字 REST API](rest-speech-to-text.md)
-* 深入瞭解 [文字轉換語音 REST API](rest-text-to-speech.md)
+* [Azure Private Link](../../private-link/private-link-overview.md)
+* [語音 SDK](speech-sdk.md)
+* [語音轉換文字 REST API](rest-speech-to-text.md)
+* [文字轉換語音 REST API](rest-text-to-speech.md)
