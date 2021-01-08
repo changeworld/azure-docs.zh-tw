@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558924"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028891"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>常見問題身分識別保護 Azure Active Directory 的常見問題
 
@@ -35,7 +35,7 @@ ms.locfileid: "96558924"
 
 如果您是 Azure AD Identity Protection 客戶，請前往 [具風險的 [使用者](howto-identity-protection-investigate-risk.md#risky-users) ] 視圖，然後按一下 [具風險的使用者]。 在底部的選單中，索引標籤的 [風險歷程記錄] 會顯示導致使用者風險變更的所有事件。 若要查看使用者的所有具風險登入，請按一下 [使用者的有風險的登入]。 若要查看此使用者的所有風險偵測，請按一下 [使用者的風險偵測]。
 
-## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>為什麼我的登入被封鎖，但 Identity Protection 未產生風險偵測？
+### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>為什麼我的登入被封鎖，但 Identity Protection 未產生風險偵測？
 登入可能會因為許多原因而遭到封鎖。 請務必注意，只有在驗證要求中使用正確的認證時，身分識別保護才會產生風險偵測。 如果使用者使用不正確的認證，則不會受到 Identity Protection 的旗標，除非有不良執行者使用正確的認證，否則不會有認證洩漏的風險。 有一些原因會封鎖使用者不會產生身分識別保護偵測的簽章，包括：
 * 由於 IP 位址有惡意活動，因此 **ip 可能已被封鎖** 。 IP 封鎖的訊息不會區分認證是否正確。 如果 IP 遭到封鎖且未使用正確的認證，則不會產生身分識別保護偵測
 * **[Smart 鎖定](../authentication/howto-password-smart-lockout.md)** 可以封鎖帳戶在多次嘗試失敗後登入
@@ -96,3 +96,7 @@ IP 地理位置對應對整個產業而言是項挑戰。 如果您認為登入�
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>當與登入相關聯的偵測其風險為低或中時，為何該登入的「登入風險 (彙總)」分數為「高」？
 
 高彙總風險分數是根據登入的其他特徵而定，或根據為該登入引發了多個偵測的這項事實而定。 相反地，即使與該登入相關聯的偵測為「高」風險，登入的「登入風險 (彙總)」也有可能為「中」。
+
+### <a name="what-is-the-difference-between-the-activity-from-anonymous-ip-address-and-anonymous-ip-address-detections"></a>「來自匿名 IP 位址的活動」和「匿名 IP 位址」偵測之間有何差異？
+
+「匿名 IP 位址」偵測的來源是 Azure AD Identity Protection，而「來自匿名 IP 位址的活動」偵測則是整合 MCAS (Microsoft Cloud App Security) 。 雖然它們有非常類似的名稱，而且您可能會在這些信號中看到重迭，但它們具有不同的後端偵測。

@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20f1e152d67e653b10b8378b7d667106c48dc116
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 5942d208fa3859d0a4a80de5f072f2e798fe040f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98016927"
+ms.locfileid: "98028925"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>對重複屬性同步處理錯誤進行診斷和修復
 
@@ -137,6 +137,9 @@ ms.locfileid: "98016927"
 
 **不支援對租用戶中的雲端式使用者更新來源錨點。**  
 Azure AD 中的雲端式使用者不應擁有來源錨點。 在此情況下，不支援更新來源錨點。 必須從內部部署環境手動修正。 
+
+**修正程式無法更新這些值。**
+不支援特定的設定，例如 [Azure AD Connect 中的 UserWriteback](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-preview#user-writeback) 。 請在設定中停用。 
 
 ## <a name="faq"></a>常見問題集
 **問：** 如果 **套用修正** 執行失敗，會發生什麼狀況？  
