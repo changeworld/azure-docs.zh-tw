@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 90c827774f38f07b9791a6399a53b0304bbe28c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921891"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695212"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>教學課程：在 Azure Machine Learning 中使用自動化 ML 建立分類模型
 
@@ -102,9 +102,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
         資料行標題| 指出資料集標題 (如果有的話) 的處理方式。| All files have same headers (所有檔案都有相同的標頭)
         Skip rows (略過資料列) | 指出資料集內略過多少資料列 (如果有的話)。| None
 
-    1. [Schema] \(結構描述\) 表單可讓您進一步設定此實驗的資料。 針對此範例，請選取 [day_of_week] 特徵的切換開關，如此一來，就不會將它包含在此實驗中。 選取 [下一步] 。
-
-        ![預覽索引標籤的設定](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
+    1. [Schema] \(結構描述\) 表單可讓您進一步設定此實驗的資料。 在此範例中，我們不會進行任何選取。 選取 [下一步]  。
 
     1. 在 [確認詳細資料] 表單上，確認資訊符合先前在 [基本資訊、資料存放區和檔案選取] 與 [設定和預覽] 表單上填入的內容。
     
@@ -112,32 +110,44 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
     
     1. 當您的資料集出現在清單中時，請加以選取。
     
-    1. 檢閱 [資料預覽] 以確保您未包含 **day_of_week**，然後選取 [確定]。
+    1. 檢閱 [資料預覽] 以確保您未包含 **day_of_week**，然後選取 [關閉]。
 
     1. 選取 [下一步]。
 
-## <a name="configure-experiment-run"></a>設定實驗執行
+## <a name="configure-run"></a>設定執行
 
 在載入和設定資料之後，您可以設定您的實驗。 這項設定包括實驗設計工作，例如，選取計算環境的大小，以及指定您要預測的資料行。 
+
+1. 選取 [建立新的] 選項按鈕。
 
 1. 如下所示填入 [設定執行] 表單：
     1. 輸入此實驗名稱：`my-1st-automl-experiment`
 
     1. 選取 [y] 作為您要預測的目標資料行。 此資料行會指出用戶端是否已申請定期存款。
     
-    1. 選取 [建立新的計算]，並設定您的計算目標。 計算目標是用來執行定型指令碼或裝載服務部署的本機或雲端式資源環境。 針對此實驗，我們會使用雲端式計算。 
+    1. 選取 [+建立新的計算]，並設定您的計算目標。 計算目標是用來執行定型指令碼或裝載服務部署的本機或雲端式資源環境。 針對此實驗，我們會使用雲端式計算。 
+        1. 填入 **虛擬機器** 表單，以設定您的計算。
 
-        欄位 | 描述 | 教學課程的值
-        ----|---|---
-        計算名稱 |可識別您計算內容的唯一名稱。|automl-compute
-        虛擬機器類型&nbsp;&nbsp;| 為您的計算選取虛擬機器類型。|CPU (中央處理器)
-        虛擬機器大小&nbsp;&nbsp;| 為您的計算選取虛擬機器大小。|Standard_DS12_V2
-        最小/最大節點數| 若要分析資料，您必須指定一個或多個節點。|最小節點數：1<br>最大節點數：6
-        縮小之前的閒置秒數 | 叢集自動縮小至最小節點計數之前的閒置時間。|120 (預設值)
-        進階設定 | 用於設定和授權虛擬網路以進行實驗的設定。| None
-        1. 選取 [建立] 以取得計算目標。 
+            欄位 | 描述 | 教學課程的值
+            ----|---|---
+            虛擬&nbsp;機器&nbsp;優先順序 |選取您的實驗應具備的優先順序| 專用
+            虛擬機器類型&nbsp;&nbsp;| 為您的計算選取虛擬機器類型。|CPU (中央處理器)
+            虛擬機器大小&nbsp;&nbsp;| 為您的計算選取虛擬機器大小。 系統會根據您的資料和實驗類型提供建議的大小清單。 |Standard_DS12_V2
+        
+        1. 選取 [下一步]，以填入 [設定設定表單]。
+        
+            欄位 | 描述 | 教學課程的值
+            ----|---|---
+            計算名稱 |  可識別您計算內容的唯一名稱。 | automl-compute
+            最小/最大節點數| 若要分析資料，您必須指定一個或多個節點。|最小節點數：1<br>最大節點數：6
+            縮小之前的閒置秒數 | 叢集自動縮小至最小節點計數之前的閒置時間。|120 (預設值)
+            進階設定 | 用於設定和授權虛擬網路以進行實驗的設定。| None               
+
+        1. 選取 [建立] 以建立您的計算目標。 
 
             **這需要幾分鐘來完成。** 
+
+             ![設定頁面](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
 
         1. 建立完成後，請從下拉式清單選取新的計算目標。
 
@@ -159,14 +169,18 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
         並行| 每個反覆運算已執行的平行反覆運算數目上限| 並行反覆運算上限：&nbsp;&nbsp;5
         
         選取 [儲存]。
+    
+    1. 選取 [檢視特徵化設定]。 針對此範例，請選取 [day_of_week] 特徵的切換開關，如此，在此實驗中就不會包含其特徵化。
 
-1. 選取 [完成] 以執行實驗。 當實驗準備開始時，[回合詳細資料] 畫面隨即開啟，其頂端顯示 [執行狀態]。
+        ![特徵化選取](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
+ 
+        選取 [儲存]。
+
+1. 選取 [完成] 以執行實驗。 當實驗準備開始時，[回合詳細資料] 畫面隨即開啟，其頂端顯示 [執行狀態]。 此狀態會隨著實驗的進行而更新。 通知也會出現在 Studio 的右上角，以通知您實驗的狀態。
 
 >[!IMPORTANT]
 > 準備實驗執行需要 **10-15 分鐘** 的時間。
-> 執行之後，**每個反覆項目需要 2-3 分鐘以上的時間**。  
-> 定期選取 [重新整理] 以查看實驗進行時的執行狀態。
->
+> 執行之後，**每個反覆項目需要 2-3 分鐘以上的時間**。  <br> <br>
 > 在生產環境中，您可以先離開一下。 但是在此教學課程中，在其他項目仍在執行時，我們建議您開始探索 [模型] 索引標籤上完成的已測試演算法。 
 
 ##  <a name="explore-models"></a>探索模型
@@ -238,7 +252,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
 在此自動化機器學習教學課程中，您已使用 Azure Machine Learning 的自動化 ML 介面來建立及部署分類模型。 請參閱下列文章，以了解更多資訊及接下來的步驟：
 
 > [!div class="nextstepaction"]
-> [取用 Web 服務](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [取用 Web 服務](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + 深入了解[自動化機器學習](concept-automated-ml.md)。
 + 如需分類計量與圖表的詳細資訊，請參閱[了解自動化機器學習結果](how-to-understand-automated-ml.md)一文。

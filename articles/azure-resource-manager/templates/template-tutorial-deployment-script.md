@@ -8,15 +8,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/14/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ec7b951581efd0a25b44d298b1f1bfb997167d88
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589095"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683490"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>教學課程：使用部署指令碼建立自我簽署憑證
 
@@ -34,13 +34,15 @@ ms.locfileid: "97589095"
 > * 對失敗的指令碼進行偵錯
 > * 清除資源
 
+如需涵蓋部署指令碼的 Microsoft Learn 模組，請參閱[使用部署指令碼擴充 ARM 範本](/learn/modules/extend-resource-manager-template-deployment-scripts/)。
+
 ## <a name="prerequisites"></a>必要條件
 
 若要完成本文，您需要：
 
 * **[Visual Studio Cod](https://code.visualstudio.com/) 搭配 Resource Manager Tools 擴充功能**。 請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](./quickstart-create-templates-use-visual-studio-code.md)。
 
-* **使用者指派的受控識別，且在訂用帳戶層級上具有參與者角色**。 此身分識別會用來執行部署指令碼。 若要建立身分識別，請參閱[使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
+* **使用者指派的受控識別**。 此身分識別可用來在指令碼中執行 Azure 的特定動作。 若要建立身分識別，請參閱[使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -253,7 +255,7 @@ ms.locfileid: "97589095"
 
     `deploymentScripts` 資源取決於金鑰保存庫資源和角色指派資源。 其屬性包括：
 
-    * `identity`：部署指令碼會使用使用者指派的受控識別來執行指令碼。
+    * `identity`：部署指令碼會使用使用者指派的受控識別，來執行指令碼中的作業。
     * `kind`：指定指令碼的類型。 目前僅支援 PowerShell 指令碼。
     * `forceUpdateTag`：判斷即使在指令碼來源並未變更的情況下是否仍要執行部署指令碼。 可以是目前的時間戳記或 GUID。 若要深入了解，請參閱[執行指令碼多次](./deployment-script-template.md#run-script-more-than-once)。
     * `azPowerShellVersion`：指定要使用的 Azure PowerShell 模組版本。 部署指令碼目前支援 2.7.0、2.8.0 和3.0.0 版。

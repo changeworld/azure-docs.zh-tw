@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 0d5b6b7b3cf74ab740dbaeb8d86ab8bbb98e8531
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0c43e085725ceb5db718c9b4c9c9d83787964d63
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357004"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813525"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Meraki Dashboard 整合
 
@@ -132,7 +132,7 @@ ms.locfileid: "97357004"
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 
     ![使用者角色](./media/meraki-dashboard-tutorial/user-role.png)
 
@@ -143,7 +143,15 @@ ms.locfileid: "97357004"
 
 ## <a name="configure-meraki-dashboard-sso"></a>設定 Meraki Dashboard SSO
 
-1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入 Meraki Dashboard 網站。
+1. 若要自動執行 Meraki Dashboard 內的設定，您必須按一下 [安裝擴充功能] 來安裝「我的應用程式安全登入瀏覽器擴充功能」。
+
+    ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
+
+2. 將擴充功能新增至瀏覽器之後，按一下 [設定 Meraki Dashboard] 便會將您導向至 Meraki Dashboard 應用程式。 請從該處提供用以登入 Meraki Dashboard 的管理員認證。 瀏覽器延伸模組將會自動為您設定應用程式，並自動執行步驟 3 到 7。
+
+    ![設定組態](common/setup-sso.png)
+
+3. 如果您想要手動設定 Meraki Dashboard，請在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Meraki Dashboard 公司網站。
 
 1. 瀏覽至 [組織]   -> [設定]  。
 

@@ -6,19 +6,19 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 05/06/2019
-ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 2353d15707fe215bfcab7912f2a9c598c4af7e49
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75443684"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822007"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>教學課程：Azure 串流分析的自訂 .NET 還原序列化程式
 
 Azure 串流分析具有[三種資料格式的內建支援](stream-analytics-parsing-json.md)：JSON、CSV 和 Avro。 透過自訂 .NET 還原序列化程式，您可以讀取其他格式的資料，例如[通訊協定緩衝區](https://developers.google.com/protocol-buffers/)、[Bond](https://github.com/Microsoft/bond)，以及雲端和 Edge 作業的其他使用者定義格式。
 
-本教學課程示範如何使用 Visual Studio 建立 Azure 串流分析雲端作業的自訂 .NET 還原序列化程式。 
+本教學課程示範如何使用 Visual Studio 建立 Azure 串流分析雲端作業的自訂 .NET 還原序列化程式。 若要了解如何在 Visual Studio Code 中建立 .NET 還原序列化程式，請參閱[在 Visual Studio Code 中建立適用於 Azure 串流分析作業的 .NET 還原序列化程式](visual-studio-code-custom-deserializer.md)。
 
 在本教學課程中，您會了解如何：
 
@@ -26,17 +26,16 @@ Azure 串流分析具有[三種資料格式的內建支援](stream-analytics-par
 > * 建立通訊協定緩衝區的自訂還原序列化程式。
 > * 在 Visual Studio 中建立 Azure 串流分析作業。
 > * 將您的串流分析作業設定為使用自訂還原序列化程式。
-> * 在本機執行串流分析作業，以測試自訂還原序列化程式。
+> * 在本機執行串流分析作業，以測試自訂還原序列化程式，並進行偵錯。
 
-## <a name="prerequisites"></a>Prerequisites
+
+## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* 安裝 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 或 [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/)。 支援 Enterprise (Ultimate/Premium)、Professional 和 Community 版本。 不支援 Express 版本。
+* 安裝 [Visual Studio 2019 (建議)](https://www.visualstudio.com/downloads/) 或 [Visual Studio 2017](https://www.visualstudio.com/vs/older-downloads/)。 支援 Enterprise (Ultimate/Premium)、Professional 和 Community 版本。 不支援 Express 版本。 
 
-* [安裝適用於 Visual Studio 的串流分析工具](stream-analytics-tools-for-visual-studio-install.md)或更新至最新版本。 支援下列其中一個 Visual Studio 版本：
-   * Visual Studio 2015
-   * Visual Studio 2017
+* [安裝適用於 Visual Studio 的串流分析工具](stream-analytics-tools-for-visual-studio-install.md)或更新至最新版本。 
 
 * 在 Visual Studio 中開啟 **Cloud Explorer**，然後登入您的 Azure 訂用帳戶。
 
@@ -45,21 +44,21 @@ Azure 串流分析具有[三種資料格式的內建支援](stream-analytics-par
 
 ## <a name="create-a-custom-deserializer"></a>建立自訂還原序列化程式
 
-1. 開啟 Visual Studio，然後選取 [檔案] > [新增] > [專案]  。 搜尋**串流分析**，並選取 [Azure 串流分析自訂還原序列化程式專案 (.NET)]  。 指定專案的名稱，例如 **Protobuf 還原序列化程式**。
+1. 開啟 Visual Studio，然後選取 [檔案] > [新增] > [專案]。 搜尋 **串流分析**，並選取 [Azure 串流分析自訂還原序列化程式專案 (.NET)]。 指定專案的名稱，例如 **Protobuf 還原序列化程式**。
 
    ![建立 Visual Studio dotnet 標準類別庫專案](./media/custom-deserializer/create-dotnet-library-project.png)
 
-2. 在方案總管中，以滑鼠右鍵按一下 **Protobuf 還原序列化程式**專案，然後從功能表中選取 [管理 NuGet 套件]  。 然後，安裝 **Microsoft.Azure.StreamAnalytics** 和 **Google.Protobuf** NuGet 套件。
+2. 在方案總管中，以滑鼠右鍵按一下 **Protobuf 還原序列化程式** 專案，然後從功能表中選取 [管理 NuGet 套件]。 然後，安裝 **Microsoft.Azure.StreamAnalytics** 和 **Google.Protobuf** NuGet 套件。
 
 3. 將 [MessageBodyProto 類別](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/MessageBodyProto.cs)和 [MessageBodyDeserializer 類別](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/MessageBodyDeserializer.cs)新增至您的專案。
 
-4. 建置 **Protobuf 還原序列化程式**專案。
+4. 建置 **Protobuf 還原序列化程式** 專案。
 
 ## <a name="add-an-azure-stream-analytics-project"></a>新增 Azure 串流分析專案
 
-1. 在方案總管中，以滑鼠右鍵按一下 **Protobuf 還原序列化程式**方案，然後選取 [新增] > [新增專案]  。 在 [Azure 串流分析] > [串流分析]  底下，選擇 [Azure 串流分析應用程式]  。 將其命名 **ProtobufCloudDeserializer**，然後選取 [確定]  。 
+1. 在方案總管中，以滑鼠右鍵按一下 **Protobuf 還原序列化程式** 方案，然後選取 [新增] > [新增專案]。 在 [Azure 串流分析] > [串流分析] 底下，選擇 [Azure 串流分析應用程式]。 將其命名 **ProtobufCloudDeserializer**，然後選取 [確定]。 
 
-2. 以滑鼠右鍵按一下 **ProtobufCloudDeserializer** Azure 串流分析專案下的 [參考]  。 在 [專案]  底下，新增 **Protobuf 還原序列化程式**。 此項目應該會自動填入。
+2. 以滑鼠右鍵按一下 **ProtobufCloudDeserializer** Azure 串流分析專案下的 [參考]。 在 [專案] 底下，新增 **Protobuf 還原序列化程式**。 此項目應該會自動填入。
 
 ## <a name="configure-a-stream-analytics-job"></a>設定串流分析作業
 
@@ -74,7 +73,7 @@ Azure 串流分析具有[三種資料格式的內建支援](stream-analytics-par
    |自訂程式碼儲存體設定儲存體帳戶|< 您的儲存體帳戶 >|
    |自訂程式碼儲存體設定容器|< 您的儲存體容器 >|
 
-2. 在 [輸入]  底下，按兩下 **Input.json**。 使用預設組態，但下列設定除外：
+2. 在 [輸入] 底下，按兩下 **Input.json**。 使用預設組態，但下列設定除外：
 
    |設定|建議的值|
    |-------|---------------|
@@ -87,7 +86,7 @@ Azure 串流分析具有[三種資料格式的內建支援](stream-analytics-par
    |資源|從 ASA 專案參考或 CodeBehind 載入|
    |CSharp 組件名稱|ProtobufDeserializer.dll|
    |類別名稱|MessageBodyProto.MessageBodyDeserializer|
-   |事件壓縮類型|None|
+   |事件壓縮類型|無|
 
 3. 將下列查詢新增至 **script.asaql** 檔案。
 
@@ -95,7 +94,7 @@ Azure 串流分析具有[三種資料格式的內建支援](stream-analytics-par
    SELECT * FROM Input
    ```
 
-4. 下載[範例 protobuf 輸入檔](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf)。 在 [輸入]  資料夾中，以滑鼠右鍵按一下 [Input.json]  ，然後選取 [新增本機輸入]  。 然後，按兩下 **local_Input.json**，並設定下列設定：
+4. 下載[範例 protobuf 輸入檔](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf)。 在 [輸入] 資料夾中，以滑鼠右鍵按一下 [Input.json]，然後選取 [新增本機輸入]。 然後，按兩下 **local_Input.json**，並設定下列設定：
 
    |設定|建議的值|
    |-------|---------------|
@@ -108,19 +107,21 @@ Azure 串流分析具有[三種資料格式的內建支援](stream-analytics-par
 
 ## <a name="execute-the-stream-analytics-job"></a>執行串流分析作業
 
-1. 開啟 **script.asaql**，並選取 [在本機執行]  。
+1. 開啟 **script.asaql**，並選取 [在本機執行]。
 
-2. 觀察 [串流分析本機執行結果]  中的結果。
+2. 觀察 [串流分析本機執行結果] 中的結果。
 
 您已成功為您的串流分析作業執行自訂還原序列化程式！ 在本教學課程中，您在本機測試了自訂還原序列化程式。 針對您的實際資料，您應適當設定輸入和輸出。 然後，從 Visual Studio 將作業提交至 Azure，以使用您剛剛實作的自訂還原序列化程式在雲端中執行您的作業。
 
 ## <a name="debug-your-deserializer"></a>對還原序列化程式進行偵錯
 
-您可以透過用來對標準 .NET 程式碼進行偵錯的相同方式，在本機對 .NET 還原序列化程式進行偵錯。 
+您可以透過用來對標準 .NET 程式碼進行偵錯的相同方式，在本機對 .NET 還原序列化程式進行偵錯。
 
-1. 在函式中新增中斷點。
+1. 以滑鼠右鍵按一下 **ProtobufCloudDeserializer** 專案名稱，並將其設定為啟始專案。
 
-2. 按 **F5** 開始偵錯。 程式將如預期般地在您的中斷點處停止。
+2. 在函式中新增中斷點。
+
+3. 按 **F5** 開始偵錯。 程式將如預期般地在您的中斷點處停止。
 
 ## <a name="clean-up-resources"></a>清除資源
 

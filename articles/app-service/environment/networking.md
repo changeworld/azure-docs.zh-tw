@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 61059c3e0f9737df6ace338f4252a338ea1f200c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663505"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013478"
 ---
 # <a name="app-service-environment-networking"></a>App Service 環境網路
 
@@ -34,7 +34,11 @@ ASE 在建立時有下列位址：
 | Windows 輸出位址 | 在對網際網路進行輸出呼叫時，此 ASE 中的 Windows 應用程式預設會使用此位址。 |
 | Linux 輸出位址 | 此 ASE 中的 Linux 應用程式預設會在對網際網路進行輸出呼叫時，使用此位址。 |
 
-如果您刪除 ASE 所使用的私人端點，您將無法連線到 ASE 中的應用程式。 請勿刪除與您的 ASE 相關聯的 Azure DNS 私人區域。  
+ASEv3 會詳細說明 ase 入口網站的 **IP 位址** 部分中 ase 所使用的位址。
+
+![ASE 位址 UI](./media/networking/networking-ip-addresses.png)
+
+如果您刪除 ASE 所使用的私人端點，您將無法連線到 ASE 中的應用程式。  
 
 ASE 會使用輸出子網中的位址來支援 ASE 所使用的基礎結構。 當您在 ASE 中調整 App Service 方案時，您將會使用更多位址。 ASE 中的應用程式在輸出子網中沒有專用位址。 應用程式在輸出子網中的應用程式所使用的位址，會隨著時間而變更。
 
@@ -48,7 +52,7 @@ ASE 會接收埠80和443上的應用程式流量。  ASE 沒有任何輸入或�
 
 ## <a name="dns"></a>DNS
 
-您 ASE 中的應用程式將會使用您的 VNet 設定所在的 DNS。 如果您希望某些應用程式使用不同的 DNS 伺服器，您可以使用應用程式設定 WEBSITE_DNS_SERVER 和 WEBSITE_DNS_ALT_SERVER，以手動方式在每個應用程式上進行設定。 應用程式設定 WEBSITE_DNS_ALT_SERVER 設定次要 DNS 伺服器。 只有當主要 DNS 伺服器沒有回應時，才會使用次要 DNS 伺服器。 
+您 ASE 中的應用程式將會使用您的 VNet 設定所在的 DNS。 遵循 [使用 App Service 環境](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration) 中的指示，將您的 DNS 伺服器設定為指向您的 ASE。 如果您希望某些應用程式使用不同的 DNS 伺服器，而不是使用您的 VNet 設定，您可以使用應用程式設定 WEBSITE_DNS_SERVER 和 WEBSITE_DNS_ALT_SERVER，以手動方式在每個應用程式上設定它。 應用程式設定 WEBSITE_DNS_ALT_SERVER 設定次要 DNS 伺服器。 只有當主要 DNS 伺服器沒有回應時，才會使用次要 DNS 伺服器。 
 
 ## <a name="preview-limitation"></a>預覽限制
 

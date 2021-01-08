@@ -2,16 +2,16 @@
 title: 教學課程 - 建立及部署範本
 description: 建立第一個 Azure Resource Manager 範本 (ARM 範本)。 在本教學課程中，您將了解範本檔案語法及部署儲存體帳戶的方式。
 author: mumian
-ms.date: 09/28/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 191eacbc9cc66ccfb9b378cb5e8a90b4e0fb20e6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 001a20c38a82d053ae22a2614a32f0be9d8aabce
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107018"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656983"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>教學課程：建立及部署您的第一個 ARM 範本
 
@@ -19,7 +19,7 @@ ms.locfileid: "97107018"
 
 此教學課程是系列中的第一個。 當您進行本課程系列時，將會逐步修改起始範本，直到您已探索 ARM 範本的所有核心部分為止。 這些元素都是適用於更複雜範本的建置組塊。 我們希望在本系列結束時，您能夠有信心地建立自己的範本，並準備好使用範本來將部署自動化。
 
-如果您想要了解使用範本的優點，以及為何要使用範本將部署自動化，請參閱 [ARM 範本概觀](overview.md)。
+如果您想要了解使用範本的優點，以及為何要使用範本將部署自動化，請參閱 [ARM 範本概觀](overview.md)。 若要透過 Microsoft Learn 的一組引導式模組來了解 ARM 範本，請參閱[使用 ARM 範本來部署和管理 Azure 中的資源](/learn/paths/deploy-manage-resource-manager-templates/)。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 

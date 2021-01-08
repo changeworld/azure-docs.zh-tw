@@ -5,25 +5,25 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 01/07/2021
 ms.author: duau
-ms.openlocfilehash: 4b57dec32a3a008cadf68c19ea52353a23fb2cd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae0a39d65bf0f1bc5221cd5e46493c489f7630f8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397489"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012660"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-nat"></a>設定和管理 NAT 的路由器組態範例
 
-此頁面提供當使用 ExpressRoute 時，適用於 Cisco ASA 和 Juniper SRX 系列路由器的 NAT 組態範例。 這些範例僅可用作指引，不能依原樣使用。 您可以和廠商合作來擬定適合您網路的組態。
+本文提供使用 ExpressRoute 時 Cisco ASA 和刺柏 SRX 系列路由器的 NAT 設定範例。 這些路由器設定僅供指引之用，不能依原樣使用。 您將需要與廠商合作，為您的網路帶來適當的設定。
 
 > [!IMPORTANT]
 > 此頁面中的範例純粹只用作指引。 您必須和廠商的業務人員 / 技術小組及您的網路團隊合作，來擬定適當的組態以符合您的需求。 Microsoft 將不支援此頁面中所列組態的相關問題。 您必須連絡您的裝置廠商來支援問題。
 > 
 > 
 
-* 下列路由器組態範例適用於 Azure Public 與 Microsoft 對等互連。 您必須設定 Azure 私人對等互連的 NAT。 如需詳細資訊，請檢閱 [ExpressRoute 對等互連](expressroute-circuit-peerings.md)和 [ExpressRoute NAT 需求](expressroute-nat.md)。
+* 下列路由器組態範例適用於 Azure Public 與 Microsoft 對等互連。 您不會為 Azure 私人對等互連設定 NAT。 如需詳細資訊，請檢閱 [ExpressRoute 對等互連](expressroute-circuit-peerings.md)和 [ExpressRoute NAT 需求](expressroute-nat.md)。
 
 * 您必須使用個別的 NAT IP 集區來連線至網際網路和 ExpressRoute。 在網際網路與 ExpressRoute 中使用相同的 NAT IP 集區，將會導致非對稱路由和連線中斷。
 
@@ -361,5 +361,5 @@ nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT dest
 ```
 
 ## <a name="next-steps"></a>後續步驟
-如需詳細資訊，請參閱〈 [ExpressRoute 常見問題集](expressroute-faqs.md) 〉。
+如需詳細資訊，請參閱 [ExpressRoute 常見問題集](expressroute-faqs.md)。
 

@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: mbullwin
 keywords: 異常偵測, 機器學習, 演算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 1a13b962a000e6e3b2143dc23f94b63c122bd963
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999090"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705076"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什麼是異常偵測器 API？
 
@@ -97,6 +97,6 @@ Anomaly Detector API 是一種 RESTful Web 服務，因此可輕易地從任何�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [快速入門：使用 Anomaly Detector REST API 偵測時間序列資料中的異常狀況](quickstarts/detect-data-anomalies-csharp.md)
+* [快速入門：使用 Anomaly Detector 偵測時間序列資料中的異常狀況](quickstarts/client-libraries.md)
 * Anomaly Detector API [線上示範](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
 * Anomaly Detector [REST API 參考](https://aka.ms/anomaly-detector-rest-api-ref)

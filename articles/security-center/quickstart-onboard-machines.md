@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 572c657dd44db73b1401c72f0750fe8e000985ac
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 8d0d4726763e36bd889c2f564d116d454b2f62b9
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734348"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740601"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>將您的非 Azure 機器連線至資訊安全中心
 
@@ -139,4 +139,4 @@ ms.locfileid: "94734348"
 
 此頁面說明了如何將您的非 Azure 機器新增至 Azure 資訊安全中心。 若要監視其狀態，請依照下列頁面的說明使用清查工具：
 
-- [使用資產清查和管理工具探索及管理資源](asset-inventory.md)
+- [利用資產清查來探索和管理您的資源](asset-inventory.md)

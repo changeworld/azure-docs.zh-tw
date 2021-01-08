@@ -3,12 +3,12 @@ title: Azure 原則的概觀
 description: Azure 原則是 Azure 中的一個服務，您可以在 Azure 環境中用來建立、指派和管理原則定義。
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097383"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803947"
 ---
 # <a name="what-is-azure-policy"></a>什麼是 Azure 原則？
 
@@ -94,7 +94,7 @@ Azure 原則會評估 Azure 中的所有資源和已啟用 Arc 的資源。 某�
 - 在建立定義和指派時，請考慮組織階層。 建議您在較高的層級建立定義，例如管理群組或訂用帳戶層級。 接著，在下一個子層級建立指派。 如果您在管理群組建立定義，可以將指派的範圍縮小為該管理群組內的訂用帳戶或資源群組。
 
 - 即使是針對單一原則定義，也建議您建立並指派計畫定義。
-  例如，您有原則定義 _policyDefA_ ，並建立計畫定義 _initiativeDefC_ 下建立該定義。 如果您稍後針對 _policyDefB_ 建立另一個目標類似 _policyDefA_ 的原則定義，您可以在 _initiativeDefC_ 底下加入該定義，並一起進行追蹤。
+  例如，您有原則定義 _policyDefA_，並建立計畫定義 _initiativeDefC_ 下建立該定義。 如果您稍後針對 _policyDefB_ 建立另一個目標類似 _policyDefA_ 的原則定義，您可以在 _initiativeDefC_ 底下加入該定義，並一起進行追蹤。
 
 - 一旦您建立了計畫指派之後，則加入至計畫的原則定義也會成為該計畫指派的一部分。
 
@@ -124,7 +124,7 @@ Azure 原則會評估 Azure 中的所有資源和已啟用 Arc 的資源。 某�
 
 原則參數減少您必須建立的原則定義數量，有助於簡化原則管理。 在建立更通用的原則定義時，您可以定義參數。 接著，您便可以針對不同的案例，重複使用該原則定義。 若要這麼做，只要在指派原則定義時傳入不同的值即可。 例如，為訂用帳戶指定一組位置。
 
-參數是在建立原則定義時定義的。 定義參數時，需要指定名稱並選擇性地指定值。 例如，您可以為原則定義一個標題為 _location_ 的參數。 接著，您可以在指派原則時給予它不同的值，例如 _EastUS_ 或 _WestUS_ 。
+參數是在建立原則定義時定義的。 定義參數時，需要指定名稱並選擇性地指定值。 例如，您可以為原則定義一個標題為 _location_ 的參數。 接著，您可以在指派原則時給予它不同的值，例如 _EastUS_ 或 _WestUS_。
 
 如需有關原則參數的詳細資訊，請參閱[定義結構 - 參數](./concepts/definition-structure.md#parameters)。
 
@@ -143,7 +143,7 @@ Azure 原則會評估 Azure 中的所有資源和已啟用 Arc 的資源。 某�
 
 類似原則參數，計畫參數減少重複性，有助於簡化計畫管理。 計畫參數是計畫內原則定義所要使用的參數。
 
-例如，以具有計畫定義的案例 - **initiativeC** 來說，其中包含原則定義 **policyA** 和 **policyB** ，每個都必須有不同類型的參數：
+例如，以具有計畫定義的案例 - **initiativeC** 來說，其中包含原則定義 **policyA** 和 **policyB**，每個都必須有不同類型的參數：
 
 | 原則 | 參數名稱 |參數類型  |附註 |
 |---|---|---|---|
@@ -152,8 +152,8 @@ Azure 原則會評估 Azure 中的所有資源和已啟用 Arc 的資源。 某�
 
 在此案例中，定義 **initiativeC** 的計畫參數時，有三個選項：
 
-- 使用此計畫內原則定義的參數：在此範例中， _allowedLocations_ 和 _allowedSingleLocation_ 會變成 **initiativeC** 的計畫參數。
-- 提供值給此計畫定義內原則定義的參數。 在此範例中，您可以提供位置清單給 **policyA** 的參數 – **allowedLocations** 和 **policyB** 的參數 – **allowedSingleLocation** 。 您也可以在指派此計畫時提供值。
+- 使用此計畫內原則定義的參數：在此範例中，_allowedLocations_ 和 _allowedSingleLocation_ 會變成 **initiativeC** 的計畫參數。
+- 提供值給此計畫定義內原則定義的參數。 在此範例中，您可以提供位置清單給 **policyA** 的參數 – **allowedLocations** 和 **policyB** 的參數 – **allowedSingleLocation**。 您也可以在指派此計畫時提供值。
 - 提供指派此計畫時可以使用的 _值_ 選項清單。 當您指派此計畫時，從計畫內原則定義繼承的參數，只能有來自此提供清單中的值。
 
 建立計畫定義中的值選項時，您無法在計畫指派期間輸入不同的值，因為它不是清單的一部分。

@@ -3,16 +3,16 @@ title: 連接到 SQL Server、Azure SQL Database 或 Azure SQL 受控執行個�
 description: 使用 Azure Logic Apps 將內部部署或雲端中的 SQL 資料庫工作自動化
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 01/07/2021
 tags: connectors
-ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 75c657236b6e06a7e0f6c717d746bcc8c034d423
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130930"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013442"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 將 SQL database 的工作流程自動化
 
@@ -38,7 +38,7 @@ ms.locfileid: "93130930"
 
   * 針對 Azure SQL Database，您可以在連接字串中找到這些詳細資料。
   
-    例如，若要在 Azure 入口網站中尋找這個字串，請開啟您的資料庫。 在 [資料庫] 功能表上，選取 [ **連接字串** ] 或 [ **屬性** ]：
+    例如，若要在 Azure 入口網站中尋找這個字串，請開啟您的資料庫。 在 [資料庫] 功能表上，選取 [ **連接字串** ] 或 [ **屬性**]：
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
@@ -72,19 +72,19 @@ ms.locfileid: "93130930"
 
 當您第一次新增 [sql 觸發](#add-sql-trigger) 程式或 [sql 動作](#add-sql-action)，但您尚未建立與資料庫的連線時，系統會提示您完成這些步驟：
 
-1. 在 [ **驗證類型** ] 中，選取您的資料庫在 Azure SQL Database 或 Azure SQL 受控執行個體中所需和啟用的驗證：
+1. 在 [ **驗證類型**] 中，選取您的資料庫在 Azure SQL Database 或 Azure SQL 受控執行個體中所需和啟用的驗證：
 
    | 驗證 | 描述 |
    |----------------|-------------|
    | [**Azure AD 整合式**](../azure-sql/database/authentication-aad-overview.md) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要具有資料庫存取權的 Azure Active Directory (Azure AD) 中的有效身分識別。 <p>如需詳細資訊，請參閱下列主題： <p>- [Azure SQL 安全性概觀-驗證](../azure-sql/database/security-overview.md#authentication) <br>- [授權資料庫存取 Azure SQL-驗證和授權](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-Azure AD 整合式驗證](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的資料庫中建立並儲存有效的使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱下列主題： <p>- [Azure SQL 安全性概觀-驗證](../azure-sql/database/security-overview.md#authentication) <br>- [授權資料庫存取 Azure SQL-驗證和授權](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**SQL Server Authentication**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的資料庫中建立並儲存有效的使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱下列主題： <p>- [Azure SQL 安全性概觀-驗證](../azure-sql/database/security-overview.md#authentication) <br>- [授權資料庫存取 Azure SQL-驗證和授權](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    此範例會繼續 **Azure AD 整合** 式：
 
    ![顯示 [SQL Server] 連線視窗的螢幕擷取畫面，其中已選取 [驗證類型] 清單和 [Azure AD 整合]。](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
 
-1. 選取 [ **Azure AD 整合** ] 之後，請選取 [登 **入** ]。 根據您是否使用 Azure SQL Database 或 Azure SQL 受控執行個體，請選取您的使用者認證以進行驗證。
+1. 選取 [ **Azure AD 整合**] 之後，請選取 [登 **入**]。 根據您是否使用 Azure SQL Database 或 Azure SQL 受控執行個體，請選取您的使用者認證以進行驗證。
 
 1. 為您的資料庫選取下列值：
 
@@ -98,7 +98,7 @@ ms.locfileid: "93130930"
    > [!TIP]
    > 若要提供您的資料庫和資料表資訊，您可以使用下列選項：
    > 
-   > * 在資料庫的連接字串中尋找此資訊。 例如，在 Azure 入口網站中，尋找並開啟您的資料庫。 在 [資料庫] 功能表上，選取 [ **連接字串** ] 或 [ **屬性** ]，您可以在其中找到這個字串：
+   > * 在資料庫的連接字串中尋找此資訊。 例如，在 Azure 入口網站中，尋找並開啟您的資料庫。 在 [資料庫] 功能表上，選取 [ **連接字串** ] 或 [ **屬性**]，您可以在其中找到這個字串：
    >
    >   `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
    >
@@ -121,15 +121,15 @@ ms.locfileid: "93130930"
 
    否則，當您建立連線時，您的資料閘道資源將不會出現在連線 **閘道** 清單中。
 
-1. 針對 [ **驗證類型** ]，選取您的 SQL Server 所需且已啟用的驗證：
+1. 針對 [ **驗證類型**]，選取您的 SQL Server 所需且已啟用的驗證：
 
    | 驗證 | 描述 |
    |----------------|-------------|
    | [**Windows 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -僅支援非 ISE SQL Server 連接器，此連接器需要先前在 Azure 中為您的連線建立的資料閘道資源，無論您是使用多租使用者 Azure 或 ISE。 <p><p>-需要有效的 Windows 使用者名稱和密碼，才能透過您的 Windows 帳戶確認您的身分識別。 <p>如需詳細資訊，請參閱 [Windows 驗證](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
-   | [**SQL Server 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的 SQL Server 中建立並儲存有效的使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱 [SQL Server Authentication](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。 |
+   | [**SQL Server Authentication**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的 SQL Server 中建立並儲存有效的使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱 [SQL Server Authentication](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。 |
    |||
 
-   此範例會繼續進行 **Windows 驗證** ：
+   此範例會繼續進行 **Windows 驗證**：
 
    ![選取要使用的驗證類型](./media/connectors-create-api-sqlazure/select-windows-authentication.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "93130930"
    | **使用者名稱** | 是 | SQL server 和資料庫的使用者名稱 |
    | **密碼** | 是 | SQL server 和資料庫的密碼 |
    | **訂用帳戶** |  是，適用于 Windows 驗證 | 您先前在 Azure 中建立之資料閘道資源的 Azure 訂用帳戶 |
-   | **連接閘道** | 是，適用于 Windows 驗證 | 您先前在 Azure 中建立之資料閘道資源的名稱 <p><p>**秘訣** ：如果您的閘道未出現在清單中，請檢查您是否已正確 [設定閘道](../logic-apps/logic-apps-gateway-connection.md)。 |
+   | **連接閘道** | 是，適用于 Windows 驗證 | 您先前在 Azure 中建立之資料閘道資源的名稱 <p><p>**秘訣**：如果您的閘道未出現在清單中，請檢查您是否已正確 [設定閘道](../logic-apps/logic-apps-gateway-connection.md)。 |
    |||
 
    > [!TIP]
@@ -178,12 +178,18 @@ ms.locfileid: "93130930"
 1. 若要加入此觸發程式的其他可用屬性，請開啟 [ **加入新的參數** ] 清單。
 
    此觸發程式只會傳回所選資料表中的一個資料列，不會傳回任何其他資料列。 若要執行其他工作，請在邏輯應用程式工作流程中新增 [SQL connector 動作](#add-sql-action) 或執行下一個工作的 [另一個動作](../connectors/apis-list.md) ，以繼續執行。
-   
+
    例如，若要檢視此資料列中的資料，您可以新增其他動作來建立檔案，使其包含傳回資料列中的欄位，然後傳送電子郵件警示。 若要深入了解此連接器的其他可用動作，請參閱[連接器的參考頁面](/connectors/sql/)。
 
 1. 在設計工具的工具列上，選取 [儲存]  。
 
    雖然這個步驟會在 Azure 中自動啟用併發布您的邏輯應用程式，但您的邏輯應用程式目前所採用的唯一動作，就是根據指定的間隔和頻率來檢查您的資料庫。
+
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>觸發迴圈移位和漂移
+
+以連線為基礎的觸發程式，您必須先建立連接，例如 SQL 觸發程式，與在 Azure Logic Apps 中以原生方式執行的內建觸發程式不同，例如 [迴圈觸發](../connectors/connectors-native-recurrence.md)程式。 在週期性的以連線為基礎的觸發程式中，週期排程不是控制執行的唯一驅動程式，而時區只會決定初始開始時間。 後續的執行取決於週期排程、最後一個觸發程式執行， *以及* 可能造成執行時間漂移或產生非預期行為的其他因素，例如，當日光節約時間 (DST) 開始和結束時，不會維持指定的排程。 為了確保在 DST 生效時，週期時間不會轉移，請手動調整週期，讓邏輯應用程式在預期的時間繼續執行。 否則，開始時間會在 DST 開始時向前移動一小時，而當 DST 結束時，則會向後移動一小時。 如需詳細資訊，請參閱 [以連接為基礎之觸發程式的週期](../connectors/apis-list.md#recurrence-connection-based)。
 
 <a name="add-sql-action"></a>
 
@@ -244,11 +250,11 @@ ms.locfileid: "93130930"
 
 1. 在設計工具中，於您呼叫預存程序的動作底下，選取 [新增步驟]。
 
-1. 在 **[選擇動作** ] 底下，尋找並選取 [ [**剖析 JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) ] 動作。
+1. 在 **[選擇動作**] 底下，尋找並選取 [ [**剖析 JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) ] 動作。
 
 1. 在 **剖析 JSON** 動作中，選取 [使用範例承載來產生結構描述]。
 
-1. 在 [ **輸入或貼上範例 JSON** 承載] 方塊中，貼上您的範例輸出，然後選取 [ **完成** ]。
+1. 在 [ **輸入或貼上範例 JSON** 承載] 方塊中，貼上您的範例輸出，然後選取 [ **完成**]。
 
    > [!NOTE]
    > 如果您收到 Logic Apps 無法產生結構描述的錯誤，請檢查您輸出範例的語法格式是否正確。 如果您仍然無法產生架構，請在 [ **架構** ] 方塊中，手動輸入架構。
@@ -259,13 +265,17 @@ ms.locfileid: "93130930"
 
 ## <a name="troubleshoot-problems"></a>問題疑難排解
 
-* 連接問題通常可能發生，因此若要疑難排解和解決這類問題，請參閱 [解決連線錯誤以 SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)。 以下是一些範例：
+<a name="connection-problems"></a>
 
-  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+### <a name="connection-problems"></a>連線問題
 
-  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+連接問題通常可能發生，因此若要疑難排解和解決這類問題，請參閱 [解決連線錯誤以 SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)。 這裡有一些範例：
 
-  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+
+* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>連接器特定的詳細資料
 

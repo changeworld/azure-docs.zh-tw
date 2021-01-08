@@ -137,6 +137,8 @@
           href: batch-automatic-scaling.md
         - name: 選擇計算節點的 VM 大小
           href: batch-pool-vm-sizes.md
+        - name: 從雲端服務移至虛擬機器集區
+          href: batch-pool-cloud-service-to-virtual-machine-configuration.md
         - name: 設定計算節點的存取
           href: pool-endpoint-configuration.md
         - name: 使用共用映像庫建立集區

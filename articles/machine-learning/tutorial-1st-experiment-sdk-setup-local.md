@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 05ac0f78345e1c1d7643f24410d53b209ab7c375
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 62a1f43fb73f0eda77ebb8f62f64c95ff4ad37a1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574151"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734193"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教學課程：開始在開發環境中使用 Azure Machine Learning (第 1 部分，共 4 部分)
 
@@ -65,6 +65,9 @@ tutorial
 
 - `tutorial`：專案的最上層目錄。
 - `.azureml`：用來儲存 Azure Machine Learning 組態檔的隱藏子目錄。
+
+> [!TIP]
+> 如果您使用 Mac，請使用 Finder 視窗中的 **Command + Shift + .** 切換功能以查看並建立以點 (.) 開頭的目錄。  或使用命令終端機建立目錄。
 
 
 > [!div class="nextstepaction"]

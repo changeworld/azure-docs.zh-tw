@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 6d66648680aa14baa53372732df52a6c247a0117
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 42f649f9dd206b34f0fac8513ba742febed2dbcb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483758"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724624"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>在 Key Vault 中建立和合併 CSR
 
@@ -38,7 +38,34 @@ Key Vault 與下列兩個憑證授權單位合作，以簡化建立憑證的程�
 下列步驟將協助您從非 Key Vault 合作憑證授權單位中建立憑證 (例如，GoDaddy 不是受信任的金鑰保存庫 CA) 
 
 
-### <a name="azure-powershell"></a>Azure PowerShell
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+1.  若要為您選擇的 CA 產生 CSR，請瀏覽至您想要新增憑證的金鑰保存庫。
+2.  在 Key Vault 屬性頁面上，選取 [憑證]。
+3.  選取 [產生/匯入] 索引標籤。
+4.  在 [建立憑證] 畫面上，選擇下列值：
+    - **憑證建立方法：** 產生。
+    - **憑證名稱：** ContosoManualCSRCertificate。
+    - **憑證授權單位 (CA) 的類型：** 非整合式 CA 所發行的憑證
+    - **主旨：** `"CN=www.contosoHRApp.com"`
+    - 視需要選取其他值。 按一下 [建立]。
+
+    ![憑證屬性](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+
+
+6.  您會看到憑證現在已新增至 [憑證] 清單中。 選取您剛才建立的新憑證。 憑證的目前狀態會是「已停用」，因為 CA 尚未發行該憑證。
+7. 按一下 [憑證作業] 索引標籤，然後選取 [下載 CSR]。
+
+   ![醒目提示 [下載 CSR] 按鈕的螢幕擷取畫面。](../media/certificates/create-csr-merge-csr/download-csr.png)
+ 
+8.  將 .csr 檔案帶到 CA，以簽署要求。
+9.  一旦 CA 簽署要求之後，請將憑證檔案帶回，以在同一個憑證作業畫面中 **合併已簽署的要求**。
+
+憑證要求現已成功合併。
+
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 
 
@@ -68,36 +95,11 @@ Key Vault 與下列兩個憑證授權單位合作，以簡化建立憑證的程�
     ```
 
     現在已成功合併憑證要求。
-
-### <a name="azure-portal"></a>Azure 入口網站
-
-1.  若要為您選擇的 CA 產生 CSR，請瀏覽至您想要新增憑證的金鑰保存庫。
-2.  在 Key Vault 屬性頁面上，選取 [憑證]。
-3.  選取 [產生/匯入] 索引標籤。
-4.  在 [建立憑證] 畫面上，選擇下列值：
-    - **憑證建立方法：** 產生。
-    - **憑證名稱：** ContosoManualCSRCertificate。
-    - **憑證授權單位 (CA) 的類型：** 非整合式 CA 所發行的憑證
-    - **主旨：** `"CN=www.contosoHRApp.com"`
-    - 視需要選取其他值。 按一下 [建立]。
-
-    ![憑證屬性](../media/certificates/create-csr-merge-csr/create-certificate.png)  
-
-
-6.  您會看到憑證現在已新增至 [憑證] 清單中。 選取您剛才建立的新憑證。 憑證的目前狀態會是「已停用」，因為 CA 尚未發行該憑證。
-7. 按一下 [憑證作業] 索引標籤，然後選取 [下載 CSR]。
-
-   ![醒目提示 [下載 CSR] 按鈕的螢幕擷取畫面。](../media/certificates/create-csr-merge-csr/download-csr.png)
- 
-8.  將 .csr 檔案帶到 CA，以簽署要求。
-9.  一旦 CA 簽署要求之後，請將憑證檔案帶回，以在同一個憑證作業畫面中 **合併已簽署的要求**。
-
-憑證要求現已成功合併。
+---
 
 > [!NOTE]
 > 如果您的 RDN 值中有逗號，您也可以依照步驟 4 的說明以雙引號括住值，將其新增至 [主體] 欄位中。
 > 「主體」的範例輸入：`DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` 在此範例中，RDN `OU` 包含名稱中含有逗號的值。 `OU` 產生的輸出為 **Docs, Contoso**。
-
 
 ## <a name="adding-more-information-to-csr"></a>在 CSR 中新增更多資訊
 
@@ -118,6 +120,8 @@ Key Vault 與下列兩個憑證授權單位合作，以簡化建立憑證的程�
 
 ## <a name="troubleshoot"></a>疑難排解
 
+- 若要監視或管理憑證要求回應，請在[這裡](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios)深入了解
+
 - **錯誤類型「在指定的 x.509 憑證內容中，終端實體憑證的公開金鑰不符合所指定私密金鑰的公開部分。請檢查憑證是否有效」** 如果您並未合併 CSR 與起始的相同 CSR 要求，就會發生此錯誤。 每次建立 CSR 時，都會建立一個必須在合併已簽署要求時進行比對的私密金鑰。
     
 - 合併 CSR 後，整個鏈結都會合併嗎？
@@ -129,6 +133,7 @@ Key Vault 與下列兩個憑證授權單位合作，以簡化建立憑證的程�
 
 - **錯誤類型「提供的主體名稱不是有效的 X500 名稱」** 如果您在 SubjectName 的值中包含任何「特殊字元」，就可能會發生此錯誤。 請分別參閱 Azure 入口網站和 PowerShell 指示中的附註。 
 
+---
 ## <a name="next-steps"></a>後續步驟
 
 - [驗證、要求和回應](../general/authentication-requests-and-responses.md)

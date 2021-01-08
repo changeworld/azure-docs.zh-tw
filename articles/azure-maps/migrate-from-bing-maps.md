@@ -3,22 +3,36 @@ title: 教學課程：從 Bing 地圖服務遷移至 Azure 地圖服務 | Micros
 description: 從 Bing 地圖服務遷移至 Microsoft Azure 地圖服務的教學課程。 此指引會引導您切換至 Azure 地圖服務 API 和 SDK。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0045520849ea20d3e53a30101e6db0f5d495ab15
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 52768874ef27bf87846d4abbd68e9e8c1972f996
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897002"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679448"
 ---
-# <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>教學課程 - 從 Bing 地圖服務遷移至 Azure 地圖服務
+# <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>教學課程：從 Bing 地圖服務遷移至 Azure 地圖服務
 
-本指南將深入解析如何將 Web、行動裝置和伺服器應用程式從 Bing 地圖服務遷移至 Azure 地圖服務平台。 本指南包含比較程式碼範例、移轉建議，以及遷移至 Azure 地圖服務的最佳做法。
+本指南將深入解析如何將 Web、行動裝置和伺服器應用程式從 Bing 地圖服務遷移至 Azure 地圖服務平台。 本指南包含比較程式碼範例、移轉建議，以及遷移至 Azure 地圖服務的最佳做法。 
+
+在本教學課程中，您將了解：
+
+> [!div class="checklist"]
+> * Azure 地圖服務中可用的對等 Bing 地圖服務功能的高階比較。
+> * 需要納入考慮的授權差異。
+> * 如何規劃移轉。
+> * 可以找到技術資源和支援的位置。
+
+## <a name="prerequisites"></a>必要條件
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+2. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 ## <a name="azure-maps-platform-overview"></a>Azure 地圖服務平台概觀
 
@@ -39,7 +53,7 @@ Azure 地圖服務為來自各個產業的開發人員提供功能強大的地�
 | 自動建議                           | ✓                  |
 | 指示 (包括卡車)          | ✓                  |
 | 距離矩陣                       | ✓                  |
-| 提高權限                            | 已規劃            |
+| 提高權限                            | ✓ (預覽)        |
 | 影像 – 靜態地圖                  | ✓                  |
 | 影像中繼資料                      | ✓                  |
 | 等時線                            | ✓                  |
@@ -58,11 +72,11 @@ Bing 地圖服務提供基本的金鑰型驗證。 Azure 地圖服務同時提�
 
 ## <a name="licensing-considerations"></a>授權考量
 
-從 Bing 地圖服務遷移至 Azure 地圖服務時，應考量下列有關於授權的事項。
+從 Bing 地圖服務遷移至 Azure 地圖服務時，應考量下列有關於授權的資訊。
 
--   Azure 地圖服務會根據載入的地圖底圖數目收取使用互動式地圖的費用，而 Bing 地圖服務則會收取載入地圖控制項 (工作階段) 的費用。 在 Azure 地圖服務中會自動快取地圖底圖，以降低開發人員的成本。 每載入 15 個地圖底圖，就會產生一筆 Azure 地圖服務交易。 互動式 Azure 地圖服務 SDK 使用 512 像素的底圖，平均每個頁面檢視會產生一筆或更少的交易。
+* Azure 地圖服務會根據載入的地圖底圖數目收取使用互動式地圖的費用，而 Bing 地圖服務則會收取載入地圖控制項 (工作階段) 的費用。 為了降低開發人員的成本，Azure 地圖服務會自動快取地圖底圖。 每載入 15 個地圖底圖，就會產生一筆 Azure 地圖服務交易。 互動式 Azure 地圖服務 SDK 使用 512 像素的底圖，平均每個頁面檢視會產生一筆或更少的交易。
 
--   Azure 地圖服務允許將其平台中的資料儲存在 Azure 中。 您也可以根據[使用規定](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)，在別處快取最久達六個月前的資料。
+* Azure 地圖服務允許將其平台中的資料儲存在 Azure 中。 您也可以根據[使用規定](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)，在別處快取最久達六個月前的資料。
 
 以下是 Azure 地圖服務的一些授權相關資源：
 
@@ -73,7 +87,7 @@ Bing 地圖服務提供基本的金鑰型驗證。 Azure 地圖服務同時提�
 
 ## <a name="suggested-migration-plan"></a>建議的移轉計劃
 
-高階移轉計劃如下。
+以下是高階移轉方案的範例。
 
 1.  清查您的應用程式所使用的 Bing 地圖服務 SDK 和服務，並確認 Azure 地圖服務提供替代的 SDK 和服務可讓您遷移。
 2.  經由 <https://azure.com> 建立 Azure 訂用帳戶 (如果您還沒有的話)。
@@ -88,28 +102,28 @@ Bing 地圖服務提供基本的金鑰型驗證。 Azure 地圖服務同時提�
 
 1. 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 2. 登入 [Azure 入口網站](https://portal.azure.com/)。
-3. 建立 [Azure 地圖服務帳戶](./how-to-manage-account-keys.md)。 
+3. 建立 [Azure 地圖服務帳戶](./how-to-manage-account-keys.md)。
 4. [取得您 Azure 地圖服務的訂用帳戶金鑰](./how-to-manage-authentication.md#view-authentication-details)或設定 Azure Active Directory 驗證以增強安全性。
 
 ## <a name="azure-maps-technical-resources"></a>Azure 地圖服務技術資源
 
 以下列出 Azure 地圖服務的實用技術資源。
 
--   概觀： https://azure.com/maps
--   文件：<https://aka.ms/AzureMapsDocs>
--   Web SDK 程式碼範例：<https://aka.ms/AzureMapsSamples>
--   開發人員論壇：<https://aka.ms/AzureMapsForums>
--   影片：<https://aka.ms/AzureMapsVideos>
--   部落格：<https://aka.ms/AzureMapsBlog>
--   Azure 地圖服務意見反應 (UserVoice)：<https://aka.ms/AzureMapsFeedback>
+* 概觀： <https://azure.com/maps>
+* 文件：<https://aka.ms/AzureMapsDocs>
+* Web SDK 程式碼範例：<https://aka.ms/AzureMapsSamples>
+* 開發人員論壇：<https://aka.ms/AzureMapsForums>
+* 影片：<https://aka.ms/AzureMapsVideos>
+* 部落格：<https://aka.ms/AzureMapsBlog>
+* Azure 地圖服務意見反應 (UserVoice)：<https://aka.ms/AzureMapsFeedback>
 
 ## <a name="migration-support"></a>移轉支援
 
 開發人員可透過[論壇](/answers/topics/azure-maps.html)或透過眾多 Azure 支援選項之一尋求移轉支援：<https://azure.microsoft.com/support/options/>
 
-## <a name="new-terminology"></a>新術語 
+## <a name="new-terminology"></a>新術語
 
-以下是常見的 Bing 地圖服務字詞清單，而這些字詞在 Azure 地圖服務中所知為不同字詞。
+下列清單包含常見的 Bing 地圖服務條款及其對應的 Azure 地圖服務字詞。
 
 | Bing 地圖服務字詞                    | Azure 地圖服務字詞                                                |
 |-----------------------------------|----------------------------------------------------------------|
@@ -128,12 +142,13 @@ Bing 地圖服務提供基本的金鑰型驗證。 Azure 地圖服務同時提�
 | 導覽列                    | 地圖樣式選擇器、縮放控制、音調控制、羅盤控制 |
 | 圖釘                           | 氣泡圖層、符號圖層或 HTML 標記                      |
 
+## <a name="clean-up-resources"></a>清除資源
+
+沒有任何資源需要清除。
+
 ## <a name="next-steps"></a>下一步
 
 參考下列文章以詳細了解如何遷移您的 Bing 地圖服務應用程式：
 
 > [!div class="nextstepaction"]
 > [遷移 Web 應用程式](migrate-from-bing-maps-web-app.md)
-
-> [!div class="nextstepaction"]
-> [遷移 Web 服務](migrate-from-bing-maps-web-services.md)

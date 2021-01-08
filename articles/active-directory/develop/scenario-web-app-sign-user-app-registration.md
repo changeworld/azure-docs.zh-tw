@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 30d646ff7d4f97289ff238211418ac57cd8167a4
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107680"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011521"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>登入使用者的 Web 應用程式：應用程式註冊
 
@@ -41,10 +41,10 @@ ms.locfileid: "97107680"
 > 使用的入口網站會根據您的應用程式是否在 Microsoft Azure 公用雲端或在全國或主權雲端中執行而有所不同。 如需詳細資訊，請參閱 [國家](./authentication-national-cloud.md#app-registration-endpoints)雲端。
 
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 
 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
-1. 在 [**管理**] 底下，選取 [**應用程式註冊**  >  **新增註冊**]。
+1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -76,7 +76,7 @@ ms.locfileid: "97107680"
     1. 輸入應用程式的 [名稱]，例如 `java-webapp`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。 
     1. 選取 **任何組織目錄中的帳戶及個人的 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com)**。
     1. 選取 [ **註冊** ] 以註冊應用程式。
-1. 在 [**管理**] 底下，選取 [**驗證**  >  **新增平臺**]。
+1. 在 [管理] 底下，選取 [驗證] > [新增平台]。
 1. 選取 [Web]。
 1. 針對 [重新 **導向 URI**]，輸入相同的主機和埠號碼，然後輸入登 `/msal4jsample/secure/aad` 入頁面。 
 1. 選取 [設定] 。
@@ -91,7 +91,7 @@ ms.locfileid: "97107680"
 
    1. 輸入金鑰描述。
    1. 選取 **1 年** 的金鑰持續時間。
-   1. 選取 [新增]。
+   1. 選取 [新增]  。
    1. 出現金鑰值時，將其複製以供稍後進行。 此值將不會再次顯示，也無法透過任何其他方式來抓取。
 
 # <a name="python"></a>[Python](#tab/python)
@@ -106,7 +106,7 @@ ms.locfileid: "97107680"
 1. 在 [ **用戶端密碼** ] 區段中，選取 [ **新增用戶端密碼**]，然後：
    1. 輸入金鑰描述。
    1. 選取 [1 年]  作為 [金鑰持續時間]。
-   1. 選取 [新增]。
+   1. 選取 [新增]  。
    1. 出現金鑰值時，將它複製。 稍後您將會用到此資訊。
 ---
 

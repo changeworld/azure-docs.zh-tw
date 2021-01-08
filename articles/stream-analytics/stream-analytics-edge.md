@@ -2,18 +2,17 @@
 title: Azure IoT Edge 串流分析
 description: 在 Azure 串流分析中建立 Edge 作業，並將其部署至執行 Azure IoT Edge 的裝置。
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: an-emma
+ms.author: raan
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 65f1ad93bf711f7f7efe95c38619390dde527dd0
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: c2a062b75caa84a0e3c342ca1ce45ccce12f2bb7
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827235"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012609"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 串流分析
  
@@ -21,7 +20,7 @@ Azure IoT Edge 串流分析可讓開發人員在更接近 IoT 裝置的地方部
 
 IoT Edge 上的 Azure 串流分析是在 [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) 架構內執行。 在串流分析中建立作業之後，您就可以使用 IoT 中樞來部署和管理作業。
 
-## <a name="common-scenarios"></a>常見的案例
+## <a name="common-scenarios"></a>常見案例
 
 本節說明 IoT Edge 上串流分析的常見案例。 下圖顯示 IoT 裝置與 Azure 雲端之間的資料流程。
 

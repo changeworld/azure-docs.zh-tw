@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: 176b89c9fc80b198a8a639afdd14185ab0008aed
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e75661b54ce9a74013938d11ca7f13d9c3698c76
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029435"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822041"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>什麼是 Azure HDInsight 中的 Apache Spark
 
@@ -32,7 +32,7 @@ HDInsight 中的 Spark 叢集可提供完全受控的 Spark 服務。 以下列�
 | 功能 | 描述 |
 | --- | --- |
 | 輕鬆建立 |您可以使用 Azure 入口網站、Azure PowerShell 或 HDInsight .NET SDK，在幾分鐘內便能於 HDInsight 中建立新的 Spark 叢集。 請參閱[開始使用 HDInsight 中的 Apache Spark 叢集](apache-spark-jupyter-spark-sql-use-portal.md)。 |
-| 容易使用 |HDInsight 中的 Spark 叢集包含 Jupyter 和 Apache Zeppelin Notebook。 您可以使用這些 Notebook 來進行互動式的資料處理和視覺化。 請參閱[搭配使用 Apache Zeppelin 筆記本與 Apache Spark](apache-spark-zeppelin-notebook.md) 和[在 Apache Spark 叢集上載入資料和執行查詢](apache-spark-load-data-run-query.md)。|
+| 容易使用 |HDInsight 中的 Spark 叢集包含 Jupyter Notebook 和 Apache Zeppelin Notebook。 您可以使用這些 Notebook 來進行互動式的資料處理和視覺化。 請參閱[搭配使用 Apache Zeppelin 筆記本與 Apache Spark](apache-spark-zeppelin-notebook.md) 和[在 Apache Spark 叢集上載入資料和執行查詢](apache-spark-load-data-run-query.md)。|
 | REST API |HDInsight 中的 Spark 叢集包含 [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)，它是 REST-API 型 Spark 作業伺服器，可用來遠端提交及監視作業。 請參閱[使用 Apache Spark REST API 將遠端作業提交至 HDInsight Spark 叢集](apache-spark-livy-rest-interface.md)。|
 | Azure 儲存體的支援 | HDInsight 中的 Spark 叢集可以使用 Azure Data Lake Storage Gen1/Gen2 作為主要儲存體或額外的儲存體。 如需 Data Lake Storage Gen1 的詳細資訊，請參閱 [Azure Data Lake Storage Gen1](../../data-lake-store/data-lake-store-overview.md)。 如需 Data Lake Storage Gen2 的詳細資訊，請參閱 [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md)。|
 | Azure 服務整合 |HDInsight 中的 Spark 叢集隨附連至 Azure 事件中樞的連接器。 您可以使用事件中樞建立串流應用程式。 包括 Apache Kafka (已是 Spark 的一部分)。 |

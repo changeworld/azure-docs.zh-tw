@@ -123,6 +123,8 @@
           href: troubleshoot-cross-region-replication.md
         - name: 針對雙重通訊協定磁碟區進行疑難排解
           href: troubleshoot-dual-protocol-volumes.md
+        - name: 針對 NFSv4.1 Kerberos 磁碟區進行疑難排解
+          href: troubleshoot-nfsv41-kerberos-volumes.md
         - name: 針對快照集原則進行疑難排解
           href: troubleshoot-snapshot-policies.md
         - name: 針對資源提供者錯誤進行疑難排解

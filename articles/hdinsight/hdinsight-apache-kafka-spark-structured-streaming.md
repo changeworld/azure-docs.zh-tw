@@ -1,6 +1,6 @@
 ---
 title: 教學課程：Apache Spark 串流和 Apache Kafka - Azure HDInsight
-description: 了解如何使用 Apache Spark 串流將資料傳入或傳出 Apache Kafka。 在此教學課程中，您會使用 Jupyter Notebook 從 HDInsight 上的 Spark 串流處理資料。
+description: 了解如何使用 Apache Spark 串流將資料傳入或傳出 Apache Kafka。 在本教學課程中，您會使用 Jupyter Notebook 從 HDInsight 上的 Spark 串流處理資料。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 8aa7401a2ee7a0d87736e6b18fc814f983e2afa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9af0349326cf82ed9d050c367b6ed784c9ea9ce9
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82184192"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821123"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>教學課程：將 Apache Spark 結構化串流用於 HDInsight 上的 Apache Kafka
 
@@ -154,7 +154,7 @@ Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息�
 
     ![自訂範本的螢幕擷取畫面](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
-3. 讀取**條款及條件**，然後選取 [我同意上方所述的條款及條件]  。
+3. 讀取 **條款及條件**，然後選取 [我同意上方所述的條款及條件]  。
 
 4. 選取 [購買]  。
 

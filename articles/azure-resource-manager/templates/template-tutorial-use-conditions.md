@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f044863be7d0bfaaad57d3974a1d2856b27927ea
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: bc6dc5b385a39ddb1c4f1663649ea21e5ed14767
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589129"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669307"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>教學課程：使用 ARM 範本中的條件
 
@@ -34,6 +34,8 @@ ms.locfileid: "97589129"
 * [在 ARM 範本中有條件地部署資源](/azure/architecture/building-blocks/extending-templates/conditional-deploy)。
 * [範本函式：If](./template-functions-logical.md#if)。
 * [ARM 範本的比較函式](./template-functions-comparison.md)
+
+對於涵蓋條件的 Microsoft Learn 模組，請參閱[使用進階 ARM 範本功能管理複雜的雲端部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 

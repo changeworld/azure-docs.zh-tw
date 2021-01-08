@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507756"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013646"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教學課程：將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
@@ -374,7 +374,8 @@ ms.locfileid: "97507756"
    1. 將 [SSL 已啟用] 變更為 `True`。
    1. 在 Visual Studio 中的專案上按一下滑鼠右鍵，選取 [屬性]  ，然後選取 [Web]  索引標籤。在 [伺服器]  區段中，將 [專案 URL]  設定變更為 [SSL URL]  。
    1. 複製 SSL URL。 在下一個步驟中，將這個 URL 新增到註冊入口網站的重新導向 URI 清單的重新導向 URI 清單中。<br/><br/>![專案屬性](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+   
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。

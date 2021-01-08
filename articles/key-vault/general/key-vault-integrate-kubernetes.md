@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: c628ba780ae64fceb32322fdb2004d69e2ebf24b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2645842130b83fe7b4cfb33b9389b19a1306506d
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452741"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756019"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
 
@@ -81,7 +81,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. 若要顯示所建立 AKS 叢集的中繼資料，請使用下列命令。 複製 **principalId**、**clientId**、**subscriptionId** 與 **nodeResourceGroup** 以供稍後使用。 如果未建立啟用受控識別的 ASK 叢集，則 **principalId** 和 **clientId** 會是 Null。 
+1. 若要顯示所建立 AKS 叢集的中繼資料，請使用下列命令。 複製 **principalId**、**clientId**、**subscriptionId** 與 **nodeResourceGroup** 以供稍後使用。 如果未建立啟用受控識別的 AKS 叢集，則 **principalId** 和 **clientId** 會是 Null。 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup

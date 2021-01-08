@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207524"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724104"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教學課程：保護 Azure 遠端轉譯和模型儲存體
 
@@ -204,7 +204,7 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
     **AAR -> AccessControl (IAM)** ![ARR 角色](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
-    > 「擁有者」 角色不足透過用戶端應用程式來管理工作階段。 針對您想要授與管理工作階段功能的每個使用者，您必須提供**遠端轉譯用戶端**角色。 針對您想要管理工作階段和轉換模型的每個使用者，您必須提供**遠端轉譯管理員**角色。
+    > 「擁有者」 角色不足透過用戶端應用程式來管理工作階段。 針對您想要授與管理工作階段功能的每個使用者，您必須提供 **遠端轉譯用戶端** 角色。 針對您想要管理工作階段和轉換模型的每個使用者，您必須提供 **遠端轉譯管理員** 角色。
 
 有了 Azure 的加持，我們現在需要修改程式碼與 AAR 服務連線的方式。 我們可藉由實作 **BaseARRAuthentication** 的執行個體來達到此目的，這會傳回新的 **AzureFrontendAccountInfo** 物件。 在本教學課程中，將會使用 Azure 存取權杖來設定帳戶資訊。
 
@@ -255,6 +255,14 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
             get => azureRemoteRenderingAccountID.Trim();
             set => azureRemoteRenderingAccountID = value;
         }
+    
+        [SerializeField]
+        private string azureRemoteRenderingAccountAuthenticationDomain;
+        public string AzureRemoteRenderingAccountAuthenticationDomain
+        {
+            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
+            set => azureRemoteRenderingAccountAuthenticationDomain = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
@@ -262,7 +270,7 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
-        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
 
         public void OnEnable()
         {
@@ -279,7 +287,7 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -369,7 +377,7 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
 return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-在這裡，我們會使用帳戶網域、帳戶識別碼和存取權杖建立新的 **AzureFrontendAccountInfo** 物件。 只要使用者已根據稍早設定的角色型權限獲得授權，ARR 服務就會使用此權杖來查詢、建立和加入遠端轉譯工作階段。
+在這裡，我們會使用帳戶網域、帳戶識別碼、帳戶驗證網域和存取權杖建立新的 **AzureFrontendAccountInfo** 物件。 只要使用者已根據稍早設定的角色型權限獲得授權，ARR 服務就會使用此權杖來查詢、建立和加入遠端轉譯工作階段。
 
 透過此變更，目前的應用程式狀態和對您 Azure 資源存取權應該看起來如下所示：
 
@@ -387,10 +395,11 @@ return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRe
 
 1. 填入您的 [用戶端識別碼] 和 [租用戶識別碼] 值。 您可以在應用程式註冊的概觀頁面中找到這些值：
 
-    * **帳戶網域**是您在 **RemoteRenderingCoordinator** 的帳戶網域中使用的相同網域。
-    * **Active Directory 應用程式用戶端識別碼**是在 AAD 應用程式註冊中找到的「應用程式 (用戶端) 識別碼」 (請參閱下圖)。
-    * **Azure 租用戶識別碼**是在 AAD 應用程式註冊中找到的「目錄 (租用戶) 識別碼 (請參閱下圖)。
-    * **Azure 遠端轉譯帳戶識別碼**與您針對 **RemoteRenderingCoordinator** 使用的**帳戶識別碼**相同。
+    * **帳戶網域** 是您在 **RemoteRenderingCoordinator** 的帳戶網域中使用的相同網域。
+    * **Active Directory 應用程式用戶端識別碼** 是在 AAD 應用程式註冊中找到的「應用程式 (用戶端) 識別碼」 (請參閱下圖)。
+    * **Azure 租用戶識別碼** 是在 AAD 應用程式註冊中找到的「目錄 (租用戶) 識別碼 (請參閱下圖)。
+    * **Azure 遠端轉譯帳戶識別碼** 與您針對 **RemoteRenderingCoordinator** 使用的 **帳戶識別碼** 相同。
+    * **帳戶驗證網域** 與您在 **RemoteRenderingCoordinator** 中使用的 **帳戶驗證網域** 相同。
 
     ![醒目提示應用程式 (用戶端) 識別碼和目錄 (租用戶) 識別碼的螢幕擷取畫面。](./media/app-overview-data.png)
 
@@ -403,9 +412,9 @@ return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRe
 
 ## <a name="build-to-device"></a>建置至裝置
 
-如果您使用 MSAL 將應用程式建置至裝置，您必須在專案的**資產** 資料夾中納入一個檔案。 這可協助編譯器使用 **教學課程資產**中所包含的 Microsoft.Identity.Client.dll  正確地建置應用程式。
+如果您使用 MSAL 將應用程式建置至裝置，您必須在專案的 **資產** 資料夾中納入一個檔案。 這可協助編譯器使用 **教學課程資產** 中所包含的 Microsoft.Identity.Client.dll  正確地建置應用程式。
 
-1. 在名為 **link.xml** 的**資產**中新增檔案
+1. 在名為 **link.xml** 的 **資產** 中新增檔案
 1. 將下列項目新增至該檔案：
 
     ```xml

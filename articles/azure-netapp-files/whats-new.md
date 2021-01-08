@@ -12,18 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/05/2020
+ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421697"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631154"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files 的新功能
 
 Azure NetApp Files 會定期更新。 本文提供最新功能和增強功能的摘要。 
+
+## <a name="december-2020"></a>2020 年 12 月
+
+* [Azure 應用程式一致快照集工具](azacsnap-introduction.md) (公開預覽)    
+
+    Azure 應用程式一致快照集工具 (AzAcSnap) 是一種命令列工具，可讓您簡化 Linux 環境 (例如 SUSE 和 RHEL) 中協力廠商資料庫 (SAP Hana) 的資料保護。   
+
+    AzAcSnap 會利用 Azure NetApp Files 和 Azure 大型執行個體中的磁碟區快照和複寫功能。 其提供下列優點：
+
+    * 一致的應用程式資料保護 
+    * 資料庫目錄管理 
+    * 臨機操作磁碟區保護 
+    * 複製儲存體磁碟區 
+    * 支援災害復原 
 
 ## <a name="november-2020"></a>2020 年 11 月
 

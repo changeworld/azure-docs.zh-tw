@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.openlocfilehash: bc93c3643e329879e5118d1cfb61a356442df808
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7d93002af866aa653972182a13ea37d37e912ce8
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618363"
+ms.locfileid: "97630304"
 ---
 # <a name="tutorial-shard-data-on-worker-nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>教學課程：適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus) 中背景工作角色節點上的分區資料
 
@@ -171,8 +171,8 @@ limit 5;
 
 由於散發資料行的屬性 `email`，`users` 範例中的資料列會平均分佈。
 
-1. 電子郵件地址數目大於或等於分區數目
-2. 每個電子郵件地址的資料列數目都很相似 (在我們的案例中，每個位址只會有一個資料列，因為針對電子郵件宣告了索引鍵)
+1. 電子郵件地址數目大於或等於分區數目。
+2. 每個電子郵件地址的資料列數目都很相似 (在我們的案例中，每個位址只會有一個資料列，因為針對電子郵件宣告了索引鍵)。
 
 選擇任何一個屬性失敗的資料表和散發資料行，將會在背景工作角色上產生不平均的資料大小，也就是「資料扭曲」。
 

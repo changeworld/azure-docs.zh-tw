@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4513a1997dc2955e1c5488a4a3740afa88f51623
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d35d6e75b45c2ea263c2e986c5fc6f414cad16e4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207269"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724964"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>快速入門：將原生 C++ 範例部署至 HoloLens
 
@@ -39,7 +39,7 @@ ms.locfileid: "92207269"
 
 ## <a name="clone-the-arr-samples-repository"></a>複製 ARR 範例存放庫
 
-在第一個步驟中，我們複製 Git 存放庫，其中裝載公用的 Azure 遠端轉譯範例。 開啟命令提示字元 (在 Windows [開始] 功能表中輸入 `cmd`)，然後變更至您要儲存 ARR 範例專案的目錄。
+在第一個步驟中，我們複製 Git 存放庫，其中裝載全域 Azure 遠端轉譯範例。 開啟命令提示字元 (在 Windows [開始] 功能表中輸入 `cmd`)，然後變更至您要儲存 ARR 範例專案的目錄。
 
 執行下列命令：
 
@@ -70,7 +70,8 @@ C++HoloLens 教學課程可以在 *NativeCpp/HoloLens* 的子目錄中找到。
     RR::AzureFrontendAccountInfo init;
     init.AccountId = "00000000-0000-0000-0000-000000000000";
     init.AccountKey = "<account key>";
-    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+    init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
     m_modelURI = "builtin://Engine";
     m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
     m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
@@ -78,9 +79,9 @@ C++HoloLens 教學課程可以在 *NativeCpp/HoloLens* 的子目錄中找到。
 ```
 
 具體來說，請變更下列值：
-* `init.AccountId` 和 `init.AccountKey` 來使用您的帳戶資料。 請參閱有關如何[取出帳戶資訊](../../../how-tos/create-an-account.md#retrieve-the-account-information)的段落。
-* `init.AccountDomain` 字串的區域部分 (適用於 `westus2` 以外的其他區域)，例如 `"westeurope.mixedreality.azure.com"`
-* 此外，`m_sessionOverride` 可以變更為現有的工作階段識別碼。 工作階段可以在此範例外建立，例如，方法為使用 [powershell 指令碼](../../../samples/powershell-example-scripts.md#script-renderingsessionps1)或直接使用[工作階段 REST API](../../../how-tos/session-rest-api.md#create-a-session)。
+* `init.AccountId`、`init.AccountKey` 和 `init.AccountAuthenticationDomain`，以使用您的帳戶資料。 請參閱有關如何[取出帳戶資訊](../../../how-tos/create-an-account.md#retrieve-the-account-information)的段落。
+* 針對 `westus2` 以外的區域修改 `init.AccountDomain` 字串的區域部分 (例如 `"westeurope.mixedreality.azure.com"`)，以指定要建立遠端轉譯工作階段的位置。
+* 此外，`m_sessionOverride` 可以變更為現有的工作階段識別碼。 工作階段可以在此範例外建立，例如，方法為使用 [PowerShell 指令碼](../../../samples/powershell-example-scripts.md#script-renderingsessionps1)或直接使用[工作階段 REST API](../../../how-tos/session-rest-api.md#create-a-session)。
 當範例應該執行多次時，建議您在範例外建立工作階段。 如果未傳入任何工作階段，此範例會在每次啟動時建立新的工作階段，這可能需要幾分鐘的時間。
 
 現在可以編譯應用程式。
@@ -97,7 +98,7 @@ C++HoloLens 教學課程可以在 *NativeCpp/HoloLens* 的子目錄中找到。
 
 ## <a name="next-steps"></a>後續步驟
 
-本快速入門是以教學課程的成果為基礎，說明如何將所有的遠端轉譯相關片段整合到庫存*全像攝影應用程式*。 若要了解所需的步驟，請遵循下列教學課程：
+本快速入門是以教學課程的成果為基礎，說明如何將所有的遠端轉譯相關片段整合到庫存 *全像攝影應用程式*。 若要了解所需的步驟，請遵循下列教學課程：
 
 > [!div class="nextstepaction"]
 > [教學課程：將遠端轉譯整合到 Hololens 全像攝影應用程式](../../../tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md)

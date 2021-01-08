@@ -5,19 +5,19 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 11/28/2018
+ms.date: 01/07/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 7df96f34ee408c0a6d26b27adbac7351c9ab937f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84c8275b7a7257530a735e8612047ef42e2f8a7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393083"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011334"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>重設失敗的 ExpressRoute 電路
 
-當 ExpressRoute 電路上的作業未成功完成時，電路可能會進入 [失敗] 狀態。 本文可協助您重設失敗的 Azure ExpressRoute 電路。
+當 ExpressRoute 電路上的作業未順利完成時，電路可能會進入「失敗」狀態。 本文將協助您重設失敗的 Azure ExpressRoute 線路。
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
@@ -52,4 +52,4 @@ ms.locfileid: "89393083"
 
 ## <a name="next-steps"></a>後續步驟
 
-如果仍會發生問題，請向 [Microsoft 支援服務](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 開啟支援票證。
+如果您仍遇到問題，請向 [Microsoft 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 服務開啟支援票證。

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 12/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 830e0a8733d3f5a49cede09b331dc0298ee1ce4d
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449358"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734693"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>教學課程：安裝搭配 GPU 的 Azure Stack Edge Pro
 
@@ -159,14 +159,14 @@ ms.locfileid: "96449358"
 
 配置纜線，然後將裝置接上纜線。 下列程序說明如何為 Azure Stack Edge Pro 裝置接上電源線和網路線。
 
-開始為裝置接上纜線之前，您需要下列項目：
+開始為裝置接上纜線之前，您需要：
 
 - 已打開包裝並掛接機架的 Azure Stack Edge Pro 實體裝置。
 - 兩條電源線。
 - 至少一條連接到管理介面的 1-GbE RJ-45 網路線。 裝置上有兩個 1-GbE 網路介面：一個管理介面和一個資料介面。
 - 每個要設定的資料網路介面各一條 25-GbE SFP + 銅纜線。 至少一個來自連接埠 2、連接埠 3、連接埠 4、連接埠 5 或連接埠 6 的資料網路介面必須連接到網際網路 (使用與 Azure 的連線)。  
 - 可以存取兩個配電裝置 (建議)。
-- 至少一個 1-GbE 網路交換器，可將 1-GbE 網路介面連線到網際網路以取得資料。 如果連線的交換器並非至少 1-GbE，將無法存取本機 Web UI。 如果使用 25/10 GbE 介面來取得資料，您需要 25-GbE 或 10-GbE 交換器。 
+- 至少一個 1-GbE 網路交換器，可將 1-GbE 網路介面連線到網際網路以取得資料。 如果連線的交換器並非至少 1 GbE，將無法存取本機 Web UI。 如果使用 25/10-GbE 介面來取得資料，您需要 25-GbE 或 10-GbE 交換器。
 
 > [!NOTE]
 > - 如果您只連接一個資料網路介面，建議您使用 25/10-GbE 網路介面 (例如連接埠 3、連接埠 4、連接埠 5 或連接埠 6) 將資料傳送至 Azure。 
@@ -186,14 +186,14 @@ ms.locfileid: "96449358"
     - 四個 25-Gbps介面 (也可以當作 10-Gbps 介面)。
     - 基礎板管理控制器 (BMC)。
 
-- 裝置背面有兩張對應至 6 個連接埠的網路卡：
+- 裝置背面有兩張對應至六個連接埠的網路卡：
 
-    - **自訂 Microsoft Qlogic Cavium 25G NDC 介面卡** - 連接埠 1 到連接埠 4。
+    - **自訂 Microsoft `Qlogic` Cavium 25G NDC 介面卡** - 連接埠 1 到連接埠 4。
     - **Mellanox 雙連接埠 25G ConnectX-4 通道網路介面卡** -連接埠 5 和連接埠 6。
 
 如需支援這些網路卡的纜線、交換器及收發器清單，請移至：
 
-- [Qlogic Cavium 25G NDC 介面卡互通性對照表](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
+- [`Qlogic`Cavium 25G NDC 介面卡互通性對照表](https://www.marvell.com/documents/xalflardzafh32cfvi0z/)。
 - [Mellanox 雙連接埠 25G ConnectX-4 通道網路介面卡相容產品](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products)。  
 
  
@@ -201,15 +201,15 @@ ms.locfileid: "96449358"
 
 1. 識別裝置背面上的各個連接埠。 視裝置中的 GPU 數目而定，您可能已收到工廠寄出的下列其中一個裝置。
 
-    - 具有 2 個周邊元件連接 (PCI) 插槽和一個 GPU 的裝置
+    - 具有兩個周邊元件連接 (PCI) 插槽和一個 GPU 的裝置
 
         ![已連接纜線的裝置背面](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
-    - 具有 3 個 PCI 插槽和一個 GPU 的裝置
+    - 具有三個 PCI 插槽和一個 GPU 的裝置
 
         ![已連接纜線的裝置背面 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
-    - 具有 3 個 PCI 插槽和二個 GPU 的裝置
+    - 具有三個 PCI 插槽和兩個 GPU 的裝置
 
         ![已連接纜線的裝置背面 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 

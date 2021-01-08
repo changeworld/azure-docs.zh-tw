@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27eecc5560bc99520fea85baf13c0ff4d8a84e7e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c62fd0d946d53244809cca3b77496ffa6f3379d2
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424861"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97731863"
 ---
 在本快速入門中，您將了解如何使用語音 SDK 進行文字轉換語音合成的常見設計模式。 首先，您會進行基本設定與合成，並繼續處理更多用於自訂應用程式開發的高階範例，包括：
 
@@ -162,6 +162,9 @@ static async Task SynthesizeAudioAsync()
 
 根據您的需求而定，有各種選項可供不同的檔案類型使用。 請注意，依照定義，原始格式 (例如 `Raw24Khz16BitMonoPcm`) 不包含音訊標頭。 只有在您知道下游實作可將原始位元資料流解碼，或者打算根據位元深度、採樣速率、通道數目等手動建立標頭時，才會使用原始格式。
 
+> [!NOTE]
+> 語音 **en-US-AriaRUS** 和 **en-US-GuyRUS** 是根據以 `Riff24Khz16BitMonoPcm` 採樣速率編碼的樣本建立的。
+
 在此範例中，您可藉由在 `SpeechConfig` 物件上設定 `SpeechSynthesisOutputFormat`，以指定高精確度的 RIFF 格式 `Riff24Khz16BitMonoPcm`。 與上一節中的範例類似，您可使用 [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?preserve-view=true&view=azure-dotnet) 來取得結果的記憶體內部資料流，然後將其寫入至檔案。
 
 ```csharp
@@ -214,7 +217,7 @@ public static async Task SynthesizeAudioAsync()
 }
 ```
 
-輸出有作用，但您可進行額外幾項簡單的變更，使其聽起來更自然。 整體說話速度有點太快，因此我們會新增 `<prosody>` 標籤並將速度降低為預設速率的 **90%** 。 此外，句子中逗點之後的暫停有點太短，而且聽起來不自然。 若要修正此問題，請新增 `<break>` 標籤以延遲語音，並將時間參數設定為 **200 毫秒** 。 重新執行合成，以查看這些自訂項目對輸出有何影響。
+輸出有作用，但您可進行額外幾項簡單的變更，使其聽起來更自然。 整體說話速度有點太快，因此我們會新增 `<prosody>` 標籤並將速度降低為預設速率的 **90%** 。 此外，句子中逗點之後的暫停有點太短，而且聽起來不自然。 若要修正此問題，請新增 `<break>` 標籤以延遲語音，並將時間參數設定為 **200 毫秒**。 重新執行合成，以查看這些自訂項目對輸出有何影響。
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">

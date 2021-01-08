@@ -9,29 +9,46 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589996"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679404"
 ---
-# <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>教學課程 - 從 Bing 地圖服務遷移 Web 應用程式
+# <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>教學課程：從 Bing 地圖服務遷移 Web 應用程式
 
-使用 Bing 地圖服務的 Web 應用程式通常會使用 Bing 地圖服務 V8 JavaScript SDK。 Azure 地圖服務 Web SDK 是適合作為遷移目的地的 Azure 型 SDK。 Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像，自訂顯示在 Web 或行動應用程式中的互動式地圖。 此控制項使用 WebGL，可讓您以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 以此 SDK 進行開發。
+使用 Bing 地圖服務的 Web 應用程式通常會使用 Bing 地圖服務 V8 JavaScript SDK。 Azure 地圖服務 Web SDK 是適合作為遷移目的地的 Azure 型 SDK。 Azure 地圖服務 Web SDK 可讓您以自己的內容和圖像，自訂顯示在 Web 或行動應用程式中的互動式地圖。 此控制項使用 WebGL，可讓您以高效能轉譯大型資料集。 您可以使用 JavaScript 或 TypeScript 以此 SDK 進行開發。 在本教學課程中，您將學會如何：
+
+> [!div class="checklist"]
+> * 載入地圖
+> * 將地圖當地語系化
+> * 新增圖釘、聚合線條和多邊形。
+> * 在快顯或資訊方塊中顯示資訊
+> * 載入和顯示 KML 和 GeoJSON 資料
+> * 叢集圖釘
+> * 覆蓋地圖底圖圖層
+> * 顯示流量資料
+> * 新增地面覆蓋
 
 如果要遷移現有的 Web 應用程式，請檢查其是否使用開放原始碼地圖控制項程式庫，例如 Cesium、Leaflet 和 OpenLayers。 如果是，而且您想要繼續使用該程式庫，可以將其連線到 Azure 地圖服務地圖底圖服務 ([道路地圖底圖](/rest/api/maps/render/getmaptile) \| [衛星地圖底圖](/rest/api/maps/render/getmapimagerytile))。 以下連結提供詳細說明如何在某些常用的開放原始碼地圖控制項程式庫中使用 Azure 地圖服務。
 
--   Cesium - 適用於 Web 的3D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文件](https://cesiumjs.org/)
--   Leaflet – 適用於 Web 的輕量型 2D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文件](https://leafletjs.com/)
--   OpenLayers - 適用於 Web 且支援投影的 2D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [文件](https://openlayers.org/)
+* Cesium - 適用於 Web 的3D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [文件](https://cesiumjs.org/)
+* Leaflet – 適用於 Web 的輕量型 2D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [文件](https://leafletjs.com/)
+* OpenLayers - 適用於 Web 且支援投影的 2D 地圖控制項。 [程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20OpenLayers) \| [文件](https://openlayers.org/)
 
 如果使用 JavaScript 架構進行開發，下列其中一個開放原始碼專案可能會很有用：
 
-- [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure 地圖服務的 Angular 10 包裝函式。
-- [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure 地圖服務 Blazor 元件。
-- [Azure 地圖服務 React 元件](https://github.com/WiredSolutions/react-azure-maps) - Azure 地圖服務控制項的反應包裝函式。
-- [Vue Azure 地圖服務](https://github.com/rickyruiz/vue-azure-maps) - Vue 應用程式的 Azure 地圖服務元件。
+* [ng-azure-maps](https://github.com/arnaudleclerc/ng-azure-maps) - Azure 地圖服務的 Angular 10 包裝函式。
+* [AzureMapsControl.Components](https://github.com/arnaudleclerc/AzureMapsControl.Components) - Azure 地圖服務 Blazor 元件。
+* [Azure 地圖服務 React 元件](https://github.com/WiredSolutions/react-azure-maps) - Azure 地圖服務控制項的反應包裝函式。
+* [Vue Azure 地圖服務](https://github.com/rickyruiz/vue-azure-maps) - Vue 應用程式的 Azure 地圖服務元件。
+
+## <a name="prerequisites"></a>必要條件
+
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+2. [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)
+3. [取得主要訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為主要金鑰或訂用帳戶金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 ## <a name="key-features-support"></a>主要功能支援
 
@@ -68,24 +85,24 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
 
 以下是 Bing 地圖服務與 Azure 地圖服務 Web SDK 之間需要注意的一些主要差異：
 
--   除了提供主控端點以供存取 Azure 地圖服務 Web SDK 外，如果您想要的話，也可使用 NPM 套件來將 Web SDK 內嵌至應用程式。 如需詳細資訊，請參閱[文件](./how-to-use-map-control.md)。 此套件也包含 TypeScript 定義。
--   Bing 地圖服務提供兩個其 SDK 的主控分支；「發行」和「實驗性」。 「實驗性」分支在進行新的開發時，可能會一天收到多個更新。 Azure 地圖服務只會主控發行分支，不過，實驗性功能會建立為開放原始碼 Azure 地圖服務程式碼範例專案中的自訂模組。 Bing 地圖服務也用來擁有已凍結的分支，但較不頻繁地更新，因而降低因發行而中斷變更的風險。 在 Azure 地圖服務中，您可以使用 NPM 模組並指向任何先前的次要版本發行。
+* 除了提供主控端點以供存取 Azure 地圖服務 Web SDK 外，如果您想要的話，也可使用 NPM 套件來將 Web SDK 內嵌至應用程式。 如需詳細資訊，請參閱[文件](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。 此套件也包含 TypeScript 定義。
+* Bing 地圖服務提供兩個其 SDK 的主控分支；「發行」和「實驗性」。 「實驗性」分支在進行新的開發時，可能會一天收到多個更新。 Azure 地圖服務只會主控發行分支，不過，實驗性功能會建立為開放原始碼 Azure 地圖服務程式碼範例專案中的自訂模組。 Bing 地圖服務也用來擁有已凍結的分支，但較不頻繁地更新，因而降低因發行而中斷變更的風險。 在 Azure 地圖服務中，您可以使用 NPM 模組並指向任何先前的次要版本發行。
 
 > [!TIP]
 > Azure 地圖服務會同時發行 SDK 的縮製和解除縮製版本。 簡單移除檔案名稱中的 `.min`。 解除縮製版本在偵錯問題時很有用，但請務必使用生產環境中的縮製版本以利用較小的檔案大小。
 
--   在 Azure 地圖服務中建立 Map 類別的執行個體之後，您的程式碼應該先等待地圖的 `ready` 或 `load` 事件引發，然後再與地圖互動。 這些事件會確保所有地圖資源都已載入，並可供存取。
--   這兩種平台都會針對基底地圖使用類似的地圖底圖系統，不過，Bing 地圖服務中的地圖底圖維度是 256 像素，而 Azure 地圖服務中的地圖底圖維度則是 512 像素。 因此，若要在 Azure 地圖服務中獲得和 Bing 地圖服務相同的地圖檢視，則 Bing 地圖服務中所使用的縮放層級，在 Azure 地圖服務中就必須減一。
--   Bing 地圖服務中的座標是 `latitude, longitude`，而 Azure 地圖服務是使用 `longitude, latitude`。 此格式與大多數 GIS 平台所遵循的標準 `[x, y]` 相符。
+* 在 Azure 地圖服務中建立 Map 類別的執行個體之後，您的程式碼應該先等待地圖的 `ready` 或 `load` 事件引發，然後再與地圖互動。 這些事件會確保所有地圖資源都已載入，並可供存取。
+* 這兩種平台都會針對基底地圖使用類似的地圖底圖系統，不過，Bing 地圖服務中的地圖底圖維度是 256 像素，而 Azure 地圖服務中的地圖底圖維度則是 512 像素。 因此，若要在 Azure 地圖服務中獲得和 Bing 地圖服務相同的地圖檢視，則 Bing 地圖服務中所使用的縮放層級，在 Azure 地圖服務中就必須減一。
+* Bing 地圖服務中的座標是 `latitude, longitude`，而 Azure 地圖服務是使用 `longitude, latitude`。 此格式與大多數 GIS 平台所遵循的標準 `[x, y]` 相符。
 
--   Azure 地圖服務 Web SDK 中的圖形依據的是 GeoJSON 結構描述。 協助程式類別則會透過 [atlas.data namespace](/javascript/api/azure-maps-control/atlas.data) 來公開。 另外還有 [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) 類別可用來包裝 GeoJSON 物件，這可讓您以資料可繫結的方式來更新和維護這些物件。
--   Azure 地圖服務中的座標會定義為 Position 物件，並可指定為 `[longitude, latitude]` 或 `new atlas.data.Position(longitude, latitude)` 格式的簡單數字陣列。
+* Azure 地圖服務 Web SDK 中的圖形依據的是 GeoJSON 結構描述。 協助程式類別則會透過 [atlas.data namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) 來公開。 另外還有 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 類別可用來包裝 GeoJSON 物件，這可讓您以資料可繫結的方式來更新和維護這些物件。
+* Azure 地圖服務中的座標會定義為 Position 物件，並可指定為 `[longitude, latitude]` 或 `new atlas.data.Position(longitude, latitude)` 格式的簡單數字陣列。
 
 > [!TIP]
 > Position 類別具有靜態協助程式函式，可用於匯入 `latitude, longitude` 格式的座標。 [atlas.data.Position.fromLatLng](/javascript/api/azure-maps-control/atlas.data.position) 函式通常會取代 Bing 地圖服務程式碼中的 `new Microsoft.Maps.Location` 函式。
 
--   Azure 地圖服務並不會在每個新增至地圖的圖形上指定樣式資訊，而是會將樣式與資料分開。 資料會儲存在資料來源中，並連結至 Azure 地圖服務程式碼用來呈現資料的呈現圖層。 這種方法可提供增強的效能優勢。 此外，許多圖層都支援資料驅動的樣式，也就是可將商務邏輯新增至圖層樣式選項，以根據圖形中定義的屬性來變更圖層內個別圖形的呈現方式。
--   Azure 地圖服務在 `atlas.math` 命名空間中提供了許多實用的空間數學函式，不過這些函式與 Bing 地圖服務空間數學模組中的不同。 主要的差異在於，Azure 地圖服務不會提供二進位作業的內建函式 (例如聯合與交集)，不過，由於 Azure 地圖服務是以開放式標準的 GeoJSON 為基礎，因此有許多開放原始碼程式庫可供使用。 一個適用於 Azure 地圖服務並提供大量空間數學功能的熱門選項為 [turf js](http://turfjs.org/)。
+* Azure 地圖服務並不會在每個新增至地圖的圖形上指定樣式資訊，而是會將樣式與資料分開。 資料會儲存在資料來源中，並連結至 Azure 地圖服務程式碼用來呈現資料的呈現圖層。 這種方法可提供增強的效能優勢。 此外，許多圖層都支援資料驅動的樣式，也就是可將商務邏輯新增至圖層樣式選項，以根據圖形中定義的屬性來變更圖層內個別圖形的呈現方式。
+* Azure 地圖服務在 `atlas.math` 命名空間中提供了許多實用的空間數學函式，不過這些函式與 Bing 地圖服務空間數學模組中的不同。 主要的差異在於，Azure 地圖服務不會提供二進位作業的內建函式 (例如聯合與交集)，不過，由於 Azure 地圖服務是以開放式標準的 GeoJSON 為基礎，因此有許多開放原始碼程式庫可供使用。 一個適用於 Azure 地圖服務並提供大量空間數學功能的熱門選項為 [turf js](http://turfjs.org/)。
 
 另請參閱 [Azure 地圖服務詞彙](./glossary.md)，以取得與 Azure 地圖服務相關聯術語的深入清單。
 
@@ -95,41 +112,40 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
 
 **主題**
 
-- [載入地圖](#load-a-map)
-- [將地圖當地語系化](#localizing-the-map)
-- [設定地圖檢視](#setting-the-map-view)
-- [新增圖釘](#adding-a-pushpin)
-- [新增自訂圖釘](#adding-a-custom-pushpin)
-- [新增聚合線條](#adding-a-polyline)
-- [新增多邊形](#adding-a-polygon)
-- [顯示 InfoBox](#display-an-infobox)
-- [圖釘叢集](#pushpin-clustering)
-- [新增熱度圖](#add-a-heat-map)
-- [覆蓋地圖底圖圖層](#overlay-a-tile-layer)
-- [顯示流量資料](#show-traffic-data)
-- [新增地面覆蓋](#add-a-ground-overlay)
-- [將 KML 資料新增至地圖](#add-kml-data-to-the-map)
-- [新增繪製工具](#add-drawing-tools)
-
+* [載入地圖](#load-a-map)
+* [將地圖當地語系化](#localizing-the-map)
+* [設定地圖檢視](#setting-the-map-view)
+* [新增圖釘](#adding-a-pushpin)
+* [新增自訂圖釘](#adding-a-custom-pushpin)
+* [新增聚合線條](#adding-a-polyline)
+* [新增多邊形](#adding-a-polygon)
+* [顯示 InfoBox](#display-an-infobox)
+* [圖釘叢集](#pushpin-clustering)
+* [新增熱度圖](#add-a-heat-map)
+* [覆蓋地圖底圖圖層](#overlay-a-tile-layer)
+* [顯示流量資料](#show-traffic-data)
+* [新增地面覆蓋](#add-a-ground-overlay)
+* [將 KML 資料新增至地圖](#add-kml-data-to-the-map)
+* [新增繪製工具](#add-drawing-tools)
 
 ### <a name="load-a-map"></a>載入地圖
 
 在這兩種 SDK 中，載入地圖時都會遵循同一組步驟；
 
--   在地圖 SDK 中新增參考。
--   在頁面主體中新增 `div` 標籤以作為地圖的預留位置。
--   建立會在頁面載入時加以呼叫的 JavaScript 函式。
--   建立個別 Map 類別的執行個體。
+* 在地圖 SDK 中新增參考。
+* 在頁面主體中新增 `div` 標籤以作為地圖的預留位置。
+* 建立會在頁面載入時加以呼叫的 JavaScript 函式。
+* 建立個別 Map 類別的執行個體。
 
 **一些主要差異**
 
--   Bing 地圖服務需要在 API 的指令碼參考或地圖選項中指定帳戶金鑰。 Azure 地圖服務的驗證認證會指定為 Map 類別的選項。 這可以是訂用帳戶金鑰或 Azure Active Directory 資訊。
--   Bing 地圖服務會在 API 的指令碼參考中採用回呼函式，以便用來呼叫初始化函式以載入地圖。 在使用 Azure 地圖服務時，則應該使用頁面的 onload 事件。
--   使用識別碼來參考地圖將轉譯的 `div` 元素時，Bing 地圖服務會使用 HTML 選取器 (也就是 `#myMap`)，而 Azure 地圖服務只會使用識別碼值 (也就是 `myMap`)。
--   Azure 地圖服務中的座標會定義為 Position 物件，並可指定為 `[longitude, latitude]` 格式的簡單數字陣列。
--   Azure 地圖服務的縮放層級比 Bing 地圖服務範例低一層，其原因是這兩種平台的地圖底圖系統有差異。
--   根據預設，Azure 地圖服務不會將任何導覽控制項新增至地圖畫布，例如縮放按鈕和地圖樣式按鈕。 不過，會有控制項可用來新增地圖樣式選擇器、縮放按鈕、羅盤或旋轉控制項，以及傾斜角度控制項。
--   Azure 地圖服務中會新增事件處理常式，以監視地圖執行個體的 `ready` 事件。 當地圖所需的 WebGL 內容和所有資源載入完成時，就會引發此事件。 您可以在此事件處理常式中新增任何後續載入程式碼。
+* Bing 地圖服務需要在 API 的指令碼參考或地圖選項中指定帳戶金鑰。 Azure 地圖服務的驗證認證會指定為 Map 類別的選項。 這可以是訂用帳戶金鑰或 Azure Active Directory 資訊。
+* Bing 地圖服務會在 API 的指令碼參考中採用回呼函式，以便用來呼叫初始化函式以載入地圖。 在使用 Azure 地圖服務時，則應該使用頁面的 onload 事件。
+* 使用識別碼來參考地圖將轉譯的 `div` 元素時，Bing 地圖服務會使用 HTML 選取器 (也就是 `#myMap`)，而 Azure 地圖服務只會使用識別碼值 (也就是 `myMap`)。
+* Azure 地圖服務中的座標會定義為 Position 物件，並可指定為 `[longitude, latitude]` 格式的簡單數字陣列。
+* Azure 地圖服務的縮放層級比 Bing 地圖服務範例低一層，其原因是這兩種平台的地圖底圖系統有差異。
+* 根據預設，Azure 地圖服務不會將任何導覽控制項新增至地圖畫布，例如縮放按鈕和地圖樣式按鈕。 不過，會有控制項可用來新增地圖樣式選擇器、縮放按鈕、羅盤或旋轉控制項，以及傾斜角度控制項。
+* Azure 地圖服務中會新增事件處理常式，以監視地圖執行個體的 `ready` 事件。 當地圖所需的 WebGL 內容和所有資源載入完成時，就會引發此事件。 您可以在此事件處理常式中新增任何後續載入程式碼。
 
 下列範例示範如何載入基本地圖，該地圖的中心位於紐約，座標為 (經度：-73.985、緯度：40.747)，在 Bing 地圖服務中的縮放層級為 12。
 
@@ -152,7 +168,7 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
         function initMap() {
             map = new Microsoft.Maps.Map('#myMap', {
                 credentials: '<Your Bing Maps Key>',
-          center: new Microsoft.Maps.Location(40.747, -73.985),
+                center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
         }
@@ -169,9 +185,7 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
 
 在瀏覽器中執行此程式碼會顯示如下圖所示的地圖：
 
-<center>
-
-![Bing 地圖服務地圖](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)</center>
+![Bing 地圖服務地圖](media/migrate-bing-maps-web-app/bing-maps-load-map.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -209,10 +223,10 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
             map.events.add('ready', function () {
                 //Add zoom and map style controls to top right of map.
                 map.controls.add([
-                    new atlas.control.StyleControl(),
-                    new atlas.control.ZoomControl()
-                ], {
-                    position: 'top-right'
+                        new atlas.control.StyleControl(),
+                        new atlas.control.ZoomControl()
+                    ], {
+                        position: 'top-right'
                 });
             });
         }
@@ -226,18 +240,16 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
 
 在瀏覽器中執行此程式碼會顯示如下圖所示的地圖：
 
-<center>
+![Azure 地圖服務地圖](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)
 
-![Azure 地圖服務地圖](media/migrate-bing-maps-web-app/azure-maps-load-map.jpg)</center>
-
-如需如何在 Web 應用程式中設定及使用 Azure 地圖服務地圖控制項的詳細文件，請參閱[這裡](./how-to-use-map-control.md)。
+如需如何在 Web 應用程式中設定及使用 Azure 地圖服務地圖控制項的詳細文件，請參閱[這裡](how-to-use-map-control.md)。
 
 > [!TIP]
 > Azure 地圖服務會同時發行 SDK 的縮製和解除縮製版本。 移除檔案名稱中的 `.min`。 解除縮製版本在偵錯問題時很有用，但請務必使用生產環境中的縮製版本以利用較小的檔案大小。
 
 **其他資源**
 
--   Azure 地圖服務也會提供導覽控制項以供您旋轉地圖和傾斜地圖檢視角度，如[這裡](./map-add-controls.md)所述。
+* Azure 地圖服務也會提供導覽控制項以供您旋轉地圖和傾斜地圖檢視角度，如[這裡](map-add-controls.md)所述。
 
 ### <a name="localizing-the-map"></a>將地圖當地語系化
 
@@ -253,13 +265,11 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
 
 以下是語言設定為 "fr-FR" 的 Bing 地圖服務範例。
 
-<center>
-
-![當地語系化的 Bing 地圖服務地圖](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![當地語系化的 Bing 地圖服務地圖](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 **之後：Azure 地圖服務**
 
-Azure 地圖服務僅提供設定地圖語言和區域檢視的選項。 市場參數不會用來限制功能。 提供兩種不同的方式供您設定地圖的語言和區域檢視。 第一個選項是將這項資訊新增至全球 `atlas` 命名空間，這會導致應用程式中的所有地圖控制項執行個體預設為這些設定。 以下範例會將語言設定為法文 ("fr-FR")，並將區域檢視設為 `"auto"`：
+Azure 地圖服務僅提供設定地圖語言和區域檢視的選項。 市場參數不會用來限制功能。 提供兩種不同的方式供您設定地圖的語言和區域檢視。 第一個選項是將這項資訊新增至全球 `atlas` 命名空間，這會導致應用程式中的所有地圖控制項執行個體預設為這些設定。 以下範例會將語言設定為法文 ("fr-FR")，並將區域檢視設為 `"Auto"`：
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -285,9 +295,7 @@ map = new atlas.Map('myMap', {
 
 以下範例會示範語言設為 "fr" 且使用者區域設為 "fr-FR" 的 Azure 地圖服務。
 
-<center>
-
-![當地語系化的 Azure 地圖服務地圖](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)</center>
+![當地語系化的 Azure 地圖服務地圖](media/migrate-bing-maps-web-app/bing-maps-localized-map.jpg)
 
 ### <a name="setting-the-map-view"></a>設定地圖檢視
 
@@ -308,9 +316,7 @@ map.setView({
 });
 ```
 
-<center>
-
-![Bing 地圖服務設定地圖視圖](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)</center>
+![Bing 地圖服務設定地圖視圖](media/migrate-bing-maps-web-app/bing-maps-set-map-view.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -327,9 +333,7 @@ map.setStyle({
 });
 ```
 
-<center>
-
-![Azure 地圖服務設定地圖視圖](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)</center>
+![Azure 地圖服務設定地圖視圖](media/migrate-bing-maps-web-app/azure-maps-set-map-view.jpg)
 
 **其他資源**
 
@@ -340,9 +344,9 @@ map.setStyle({
 
 Azure 地圖服務有多種方式可在地圖上呈現位置點資料；
 
--   HTML 標記 – 使用傳統 DOM 元素來呈現位置點。 HTML 標記支援拖曳。
--   符號圖層 – 會在 WebGL 內容中以圖示和/或文字呈現位置點。
--   泡泡圖層 – 在地圖上以圓圈呈現位置點。 圓圈半徑可根據資料中的屬性來縮放。
+* HTML 標記 – 使用傳統 DOM 元素來呈現位置點。 HTML 標記支援拖曳。
+* 符號圖層 – 會在 WebGL 內容中以圖示和/或文字呈現位置點。
+* 泡泡圖層 – 在地圖上以圓圈呈現位置點。 圓圈半徑可根據資料中的屬性來縮放。
 
 符號和泡泡圖層都會在 WebGL 內容中呈現，而且能在地圖上呈現非常大的一組位置點。 這些圖層會要求將資料儲存在資料來源中。 在 `ready` 事件引發之後，就應該將資料來源和呈現圖層新增至地圖中。 HTML 標記會在頁面中呈現為 DOM 元素，且不會使用資料來源。 頁面所擁有的 DOM 元素越多，頁面就會變得越慢。 如果要在地圖上呈現超過幾百個位置點，建議您改用其中一個呈現圖層。
 
@@ -374,9 +378,7 @@ var pushpin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(51.5, -0.2)
 map.entities.add(pushpin);
 ```
 
-<center>
-
-![Bing 地圖服務新增圖釘](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)</center>
+![Bing 地圖服務新增圖釘](media/migrate-bing-maps-web-app/bing-maps-add-pushpin.jpg)
 
 **之後：使用 HTML 標記的 Azure 地圖服務**
 
@@ -390,9 +392,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure 地圖服務新增標記](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![Azure 地圖服務新增標記](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **之後：使用符號圖層的 Azure 地圖服務**
 
@@ -456,9 +456,7 @@ map.markers.add(new atlas.HtmlMarker({
 </html>
 ```
 
-<center>
-
-![Azure 地圖服務新增符號圖層](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)</center>
+![Azure 地圖服務新增符號圖層](media/migrate-bing-maps-web-app/azure-maps-add-pushpin.jpg)
 
 **其他資源**
 
@@ -481,7 +479,6 @@ map.markers.add(new atlas.HtmlMarker({
 |:-----------------------------------------------------------------------:|
 | yellow-pushpin.png                                                        |
 
-
 **之前：Bing 地圖服務**
 
 在 Bing 地圖服務中，會將影像的 URL 傳遞至圖釘的 `icon` 選項，藉此建立自訂標記。 `anchor` 選項會用來將圖釘影像的位置點與地圖上的座標對齊。 Bing 地圖服務中的 anchor 值會相對於影像的左上角。
@@ -497,9 +494,7 @@ layer.add(pushpin);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing 地圖服務新增自訂圖釘](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)</center>
+![Bing 地圖服務新增自訂圖釘](media/migrate-bing-maps-web-app/bing-maps-add-custom-pushpin.jpg)
 
 **之後：使用 HTML 標記的 Azure 地圖服務**
 
@@ -517,9 +512,7 @@ map.markers.add(new atlas.HtmlMarker({
 }));
 ```
 
-<center>
-
-![Azure 地圖服務新增自訂標記](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)</center>
+![Azure 地圖服務新增自訂標記](media/migrate-bing-maps-web-app/azure-maps-add-custom-marker.jpg)
 
 **之後：使用符號圖層的 Azure 地圖服務**
 
@@ -584,9 +577,7 @@ Azure 地圖服務中的符號圖層也支援自訂影像，但影像必須先�
 </html>
 ```
 
-<center>
-
-![Bing 地圖服務新增自訂符號圖層](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)</center>
+![Bing 地圖服務新增自訂符號圖層](media/migrate-bing-maps-web-app/azure-maps-add-custom-symbol-layer.jpg)
 
 > [!TIP]
 > 若要為位置點建立進階的自訂呈現條件，請一起使用多個呈現圖層。 例如，如果您想要擁有多個圖釘，並讓這些圖釘在不同顏色的圓上具有相同的圖示，則不必為每個顏色建立一堆影像，而是可以在泡泡圖層上方覆蓋符號圖層，並讓這些圖釘參考相同的資料來源。 這會比建立地圖並讓地圖保有一堆不同影像來得有效率。
@@ -631,9 +622,7 @@ layer.add(polyline);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing 地圖服務的聚合線條](media/migrate-bing-maps-web-app/bing-maps-line.jpg)</center>
+![Bing 地圖服務的聚合線條](media/migrate-bing-maps-web-app/bing-maps-line.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -662,9 +651,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure 地圖服務線條](media/migrate-bing-maps-web-app/azure-maps-line.jpg)</center>
+![Azure 地圖服務線條](media/migrate-bing-maps-web-app/azure-maps-line.jpg)
 
 **其他資源**
 
@@ -702,9 +689,7 @@ layer.add(polygon);
 map.layers.insert(layer);
 ```
 
-<center>
-
-![Bing 地圖服務的多邊形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Bing 地圖服務的多邊形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -738,9 +723,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 }));
 ```
 
-<center>
-
-![Azure 地圖服務的多邊形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)</center>
+![Azure 地圖服務的多邊形](media/migrate-bing-maps-web-app/azure-maps-polygon.jpg)
 
 **其他資源**
 
@@ -780,9 +763,7 @@ Microsoft.Maps.Events.addHandler(pushpin, 'click', function () {
 });
 ```
 
-<center>
-
-![Bing 地圖服務 Infobox](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)</center>
+![Bing 地圖服務 Infobox](media/migrate-bing-maps-web-app/bing-maps-infobox.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -811,9 +792,7 @@ map.events.add('click', marker, function () {
 });
 ```
 
-<center>
-
-![Azure 地圖服務的快顯視窗](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)</center>
+![Azure 地圖服務的快顯視窗](media/migrate-bing-maps-web-app/azure-maps-popup.jpg)
 
 > [!NOTE]
 > 若要使用符號、泡泡、線條或多邊形圖層來進行相同操作，請將圖層傳遞至地圖事件程式碼即可 (而不是標記)。
@@ -883,7 +862,7 @@ map.events.add('click', marker, function () {
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';   //Default to lime green.
+            var fillColor = 'lime';     //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.
@@ -917,18 +896,16 @@ map.events.add('click', marker, function () {
 </html>
 ```
 
-<center>
-
-![Bing 地圖服務的叢集](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)</center>
+![Bing 地圖服務的叢集](media/migrate-bing-maps-web-app/bing-maps-clustering.jpg)
 
 **之後：Azure 地圖服務**
 
 在 Azure 地圖服務中，資料則會由資料來源新增和管理。 圖層會連線到資料來源，並呈現其中所含的資料。 Azure 地圖服務中的 `DataSource` 類別會提供數個群集選項。
 
--   `cluster` - 讓資料來源群集位置點資料。 
--   `clusterRadius` - 用來群集位置點的半徑 (以像素為單位)。
--   `clusterMaxZoom` - 要執行叢集的最大縮放層級。 如果您放大的倍數超過此層級，所有位置點都會呈現為符號。
--   `clusterProperties` - 定義會使用運算式針對每個群集內的所有位置點進行計算，並新增至每個群集位置點屬性的自訂屬性。
+* `cluster` - 讓資料來源群集位置點資料。 
+* `clusterRadius` - 用來群集位置點的半徑 (以像素為單位)。
+* `clusterMaxZoom` - 要執行叢集的最大縮放層級。 如果您放大的倍數超過此層級，所有位置點都會呈現為符號。
+* `clusterProperties` - 定義會使用運算式針對每個群集內的所有位置點進行計算，並新增至每個群集位置點屬性的自訂屬性。
 
 啟用群集時，資料來源會將已群集和未群集的資料點傳送到圖層來呈現。 資料來源能夠群集數十萬個資料點。 已群集的資料點具有下列屬性：
 
@@ -1045,9 +1022,7 @@ map.events.add('click', marker, function () {
 </html>
 ```
 
-<center>
-
-![Azure 地圖服務的群集](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)</center>
+![Azure 地圖服務的群集](media/migrate-bing-maps-web-app/azure-maps-clustering.jpg)
 
 **其他資源**
 
@@ -1113,9 +1088,7 @@ map.events.add('click', marker, function () {
 </html>
 ```
 
-<center>
-
-![Bing 地圖服務熱度圖](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)</center>
+![Bing 地圖服務熱度圖](media/migrate-bing-maps-web-app/bing-maps-heatmap.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -1177,9 +1150,7 @@ map.events.add('click', marker, function () {
 </html>
 ```
 
-<center>
-
-![Azure 地圖服務熱度圖](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)</center>
+![Azure 地圖服務熱度圖](media/migrate-bing-maps-web-app/azure-maps-heatmap.jpg)
 
 **其他資源**
 
@@ -1207,9 +1178,7 @@ var weatherTileLayer = new Microsoft.Maps.TileLayer({
 map.layers.insert(weatherTileLayer);
 ```
 
-<center>
-
-![Bing 地圖服務加權熱度圖](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)</center>
+![Bing 地圖服務加權熱度圖](media/migrate-bing-maps-web-app/bing-maps-weighted-heatmap.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -1217,7 +1186,7 @@ map.layers.insert(weatherTileLayer);
 
 > [!TIP]
 > 在 Azure 地圖服務中，您可以輕鬆地將圖層放到其他圖層下面來呈現，其中也包括基底地圖圖層。 地圖底圖圖層通常最好是放到地圖標籤下面來呈現，以方便辨識。 `map.layers.add` 函式會採用第二個參數，也就是要插入下方新圖層的第二個圖層識別碼。 若要在地圖標籤下面插入地圖底圖圖層，您可以使用下列程式碼：
-> 
+>
 > `map.layers.add(myTileLayer, "labels");`
 
 ```javascript
@@ -1229,9 +1198,7 @@ map.layers.add(new atlas.layer.TileLayer({
 }), 'labels');
 ```
 
-<center>
-
-![Azure 地圖服務加權熱度圖](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)</center>
+![Azure 地圖服務加權熱度圖](media/migrate-bing-maps-web-app/azure-maps-weighted-heatmap.jpg)
 
 > [!TIP]
 > 您可以使用地圖的 `transformRequest` 選項來擷取地圖底圖要求。 這可讓您視需要在要求中修改或新增標頭。
@@ -1257,9 +1224,7 @@ Microsoft.Maps.loadModule('Microsoft.Maps.Traffic', function () {
 });
 ```
 
-<center>
-
-![Bing 地圖服務的交通](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)</center>
+![Bing 地圖服務的交通](media/migrate-bing-maps-web-app/bing-maps-traffic.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -1272,15 +1237,11 @@ map.setTraffic({
 });
 ```
 
-<center>
-
-![Azure 地圖服務的交通](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)</center>
+![Azure 地圖服務的交通](media/migrate-bing-maps-web-app/azure-maps-traffic.jpg)
 
 如果您在 Azure 地圖服務中按一下其中一個交通圖示，則會在快顯視窗中顯示其他資訊。
 
-<center>
-
-![Azure 地圖服務的交通快顯視窗](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)</center>
+![Azure 地圖服務的交通快顯視窗](media/migrate-bing-maps-web-app/azure-maps-traffic-popup.jpg)
 
 **其他資源**
 
@@ -1335,9 +1296,7 @@ Bing 地圖服務和 Azure 地圖服務都支援在地圖上覆蓋有地理參�
 
 在瀏覽器中執行此程式碼會顯示如下圖所示的地圖：
 
-<center>
-
-![Bing 地圖服務地面重疊](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)</center>
+![Bing 地圖服務地面重疊](media/migrate-bing-maps-web-app/bing-maps-ground-overlay.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -1398,9 +1357,7 @@ Bing 地圖服務和 Azure 地圖服務都支援在地圖上覆蓋有地理參�
 </html>
 ```
 
-<center>
-
-![Azure 地圖服務地面重疊](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)</center>
+![Azure 地圖服務地面重疊](media/migrate-bing-maps-web-app/azure-maps-ground-overlay.jpg)
 
 **其他資源**
 
@@ -1433,7 +1390,7 @@ Azure 地圖服務和 Bing 地圖服務都可以在地圖上匯入及呈現 KML�
                 center: new Microsoft.Maps.Location(40.747, -73.985),
                 zoom: 12
             });
-
+                
             Microsoft.Maps.loadModule('Microsoft.Maps.GeoXml', function () {
                 var callback = function (dataset) {
                     if (dataset.shapes) {
@@ -1461,9 +1418,7 @@ Azure 地圖服務和 Bing 地圖服務都可以在地圖上匯入及呈現 KML�
 </html>
 ```
 
-<center>
-
-![Bing 地圖服務 kml](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)</center>
+![Bing 地圖服務 kml](media/migrate-bing-maps-web-app/bing-maps-kml.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -1558,9 +1513,7 @@ Azure 地圖服務和 Bing 地圖服務都可以在地圖上匯入及呈現 KML�
 </html>
 ```
 
-<center>
-
-![Azure 地圖服務 KML](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)</center>
+![Azure 地圖服務 KML](media/migrate-bing-maps-web-app/azure-maps-kml.jpg)
 
 **其他資源**
 
@@ -1617,9 +1570,7 @@ Bing 地圖服務和 Azure 地圖服務都會提供模組，讓使用者能夠�
 
 ```
 
-<center>
-
-![Bing 地圖服務繪圖工具](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)</center>
+![Bing 地圖服務繪圖工具](media/migrate-bing-maps-web-app/bing-maps-drawing-tools.jpg)
 
 **之後：Azure 地圖服務**
 
@@ -1649,8 +1600,8 @@ Bing 地圖服務和 Azure 地圖服務都會提供模組，讓使用者能夠�
             //Initialize a map instance.
             map = new atlas.Map('myMap', {
                 view: 'Auto',
-                
-                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.
+
+                //Add your Azure Maps key to the map SDK. Get an Azure Maps key at https://azure.com/maps. NOTE: The primary key should be used as the key.                
                 authOptions: {
                     authType: 'subscriptionKey',
                     subscriptionKey: '<Your Azure Maps Key>'
@@ -1674,9 +1625,7 @@ Bing 地圖服務和 Azure 地圖服務都會提供模組，讓使用者能夠�
 </html>
 ```
 
-<center>
-
-![Azure 地圖服務繪圖工具](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)</center>
+![Azure 地圖服務繪圖工具](media/migrate-bing-maps-web-app/azure-maps-drawing-tools.jpg)
 
 > [!TIP]
 > 在 Azure 地圖服務圖層中，繪圖工具提供多種方式可供使用者繪製圖形。 例如，當繪製多邊形時，使用者可以按一下以新增每個點，或按住滑鼠左鍵並拖曳滑鼠來繪製路徑。 這可以使用 `DrawingManager` 的 `interactionType` 選項進行修改。
@@ -1686,7 +1635,7 @@ Bing 地圖服務和 Azure 地圖服務都會提供模組，讓使用者能夠�
 -   [文件集](./set-drawing-options.md)
 -   [程式碼範例](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
-## <a name="next-steps"></a>下一步
+## <a name="additional-resources"></a>其他資源
 
 請參閱[開放原始碼 Azure 地圖服務 Web SDK 模組](open-source-projects.md#open-web-sdk-modules)。 這些模組提供大量的額外功能，且完全可自訂。
 
@@ -1733,3 +1682,14 @@ Bing 地圖服務和 Azure 地圖服務都會提供模組，讓使用者能夠�
 
 > [!div class="nextstepaction"]
 > [Azure 地圖服務 Web SDK 服務 API 參考文件](/javascript/api/azure-maps-control/)
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有要清除的資源。
+
+## <a name="next-steps"></a>後續步驟
+
+深入了解從 Bing 地圖服務遷移至 Azure 地圖服務的相關資訊。
+
+> [!div class="nextstepaction"]
+> [遷移 Web 服務](migrate-from-bing-maps-web-services.md)

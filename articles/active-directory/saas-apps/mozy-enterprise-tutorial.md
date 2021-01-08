@@ -61,7 +61,7 @@ Mozy Enterprise 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Mozy Enterprise** ，從結果面板中選取 [Mozy Enterprise]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Mozy Enterprise**，從結果面板中選取 [Mozy Enterprise]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
      ![結果清單中的 Mozy Enterprise](common/search-new-app.png)
 
@@ -132,7 +132,7 @@ Mozy Enterprise 與 Azure AD 整合提供下列優點：
    
     ![此螢幕擷取畫面顯示可以在其中輸入所述值的 [驗證原則] 區段。](./media/mozy-enterprise-tutorial/ic777315.png "驗證原則")
    
-    a. 選取 [目錄服務]  做為 **提供者** 。
+    a. 選取 [目錄服務]  做為 **提供者**。
    
     b. 選取 [使用 LDAP 推送]  。
    
@@ -164,7 +164,7 @@ Mozy Enterprise 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon** 。
+    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
   
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com

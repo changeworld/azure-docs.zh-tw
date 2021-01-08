@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: d969b1639dbb39b920c985964abe1239f068d740
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 81d2804d99896200ea6f68592ea168112e172c20
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185262"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762591"
 ---
 選取 [組建]  。 在開啟的窗格上，選取要將 Xcode 專案匯出至其中的資料夾。
 
@@ -30,9 +30,9 @@ open ./Unity-iPhone.xcodeproj
 
 選取根 **Unity-iPhone** 節點以檢視專案設定，然後選取 [一般] 索引標籤。
 
-在 [簽署] 底下，確定 [自動管理簽署] 已啟用。 如果未啟用，請啟用它，然後在出現的窗格上選取 [啟用自動] 以重設組建設定。
+在 [部署資訊] 底下，確定部署目標設定為 **iOS 11.0**。
 
-在 [部署資訊] 底下，確定 [部署目標] 已設定為 [11.0]。
+在 [簽署與功能] 索引標籤底下，確定 [自動管理簽署] 已啟用。 如果未啟用，請啟用它，然後在出現的窗格上選取 [啟用自動] 以重設組建設定。
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>將應用程式部署到您的 iOS 裝置
 

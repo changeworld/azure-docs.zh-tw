@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7c0623d58bf88b8bcc5f19665a081ce012b560b6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 08e07ac3a8079d725611f9b072e8d21dabb32867
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614861"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011555"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>呼叫 web Api 的桌面應用程式：應用程式註冊
 
@@ -48,7 +48,7 @@ ms.locfileid: "97614861"
 - 如果您的應用程式只使用整合式 Windows 驗證或使用者名稱和密碼，您就不需要為應用程式註冊重新導向 URI。 這些流程會往返 Microsoft 身分識別平臺2.0 版端點。 您的應用程式不會被回呼任何特定的 URI。
 - 若要使用在[daemon 應用](scenario-daemon-overview.md)程式中使用的用戶端認證流程來區別[裝置程式碼流程](scenario-desktop-acquire-token.md#device-code-flow)、[整合式 Windows 驗證](scenario-desktop-acquire-token.md#integrated-windows-authentication)，以及機密用戶端應用程式的使用者[名稱和密碼](scenario-desktop-acquire-token.md#username-and-password)，則不需要重新導向 URI，您必須將它設定為公用用戶端應用程式。 若要達成這項組態︰
 
-    1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 **應用程式註冊** 中的應用程式，然後選取 [ **驗證**]。
+    1. 在 [ <a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span></a>中，選取 **應用程式註冊** 中的應用程式，然後選取 [**驗證**]。
     1. 在 [**高級設定**] 中，  >  **允許公用用戶端流程**  >  **啟用下列行動和桌面流程：**，選取 **[是]**。
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="在 Azure 入口網站中啟用 [驗證] 窗格上的 [公用用戶端設定]":::

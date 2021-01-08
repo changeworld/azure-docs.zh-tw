@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565903"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740499"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什麼是 Azure Machine Learning Studio？
 
@@ -25,6 +25,11 @@ ms.locfileid: "94565903"
 > - 如何[管理 Studio 中的資產和資源](#manage-assets-and-resources)。
 > - [Azure Machine Learning Studio 與 ML Studio (傳統版)](#ml-studio-classic-vs-azure-machine-learning-studio) 之間的差異。
 
+建議使用與您的作業系統相容的最新瀏覽器。 支援下列瀏覽器：
+  * Microsoft Edge (新的 Microsoft Edge，最新版本， 並非舊版 Microsoft Edge)
+  * Safari (最新版本，僅限 Mac)
+  * Chrome (最新版本)
+  * Firefox (最新版本)
 
 ## <a name="author-machine-learning-projects"></a>撰寫機器學習專案
 
@@ -33,6 +38,8 @@ ms.locfileid: "94565903"
 + **筆記本**
 
   在直接整合到 Studio 中的受控 [Jupyter Notebook 伺服器](how-to-run-jupyter-notebooks.md)中，撰寫並執行您自己的程式碼。 
+
+:::image type="content" source="media/overview-what-is-azure-ml-studio/notebooks.gif" alt-text="螢幕擷取畫面：在筆記本中撰寫和執行程式碼":::
 
 + **Azure Machine Learning 設計工具**
 
@@ -94,6 +101,9 @@ ms.locfileid: "94565903"
 | 資料漂移偵測 | 不支援 | [支援](how-to-monitor-datasets.md) |
 | 資料標記專案 | 不支援 | [支援](how-to-create-labeling-projects.md) |
 
+## <a name="troubleshooting"></a>疑難排解
+
+* **Studio 中缺少使用者介面項目** Azure 角色型存取控制可用來限制可以使用 Azure Machine Learning 執行的動作。 這些限制可以防止使用者介面項目出現在 Azure Machine Learning Studio 中。 例如，如果系統指派無法建立計算執行個體的角色給您，建立計算執行個體的選項就不會出現在 Studio 中。 如需詳細資訊，請參閱[管理使用者和角色](how-to-assign-roles.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

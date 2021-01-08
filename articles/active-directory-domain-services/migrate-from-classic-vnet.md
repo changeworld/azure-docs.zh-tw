@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: justinha
-ms.openlocfilehash: 1fcd46870a4f85d1b88d22d77de5c201404c3a09
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619363"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013034"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>將 Azure Active Directory Domain Services 從傳統虛擬網路模型遷移至 Resource Manager
 
@@ -153,11 +153,11 @@ Azure AD DS 通常會使用位址範圍中的前兩個可用 IP 位址，但不�
 
 | 步驟    | 執行  | 預估時間  | 停機  | 復原/還原？ |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [步驟 1-更新並找出新的虛擬網路](#update-and-verify-virtual-network-settings) | Azure 入口網站 | 15 分鐘 | 不需要停機時間 | N/A |
+| [步驟 1-更新並找出新的虛擬網路](#update-and-verify-virtual-network-settings) | Azure 入口網站 | 15 分鐘 | 不需要停機時間 | 不適用 |
 | [步驟 2-準備受控網域以進行遷移](#prepare-the-managed-domain-for-migration) | PowerShell | 平均15–30分鐘 | 此命令完成之後，就會開始 Azure AD DS 的停機時間。 | 復原和還原可用。 |
-| [步驟 3-將受控網域移至現有的虛擬網路](#migrate-the-managed-domain) | PowerShell | 平均 1-3 小時 | 當此命令完成時，有一個網域控制站可供使用，而停機時間會結束。 | 失敗時，可使用復原 (自助) 和還原。 |
-| [步驟 4-測試並等候複本網域控制站](#test-and-verify-connectivity-after-the-migration)| PowerShell 和 Azure 入口網站 | 1小時以上，視測試數目而定 | 這兩個網域控制站都可供使用，而且應該正常運作。 | N/A。 成功遷移第一個 VM 之後，就不會有復原或還原的選項。 |
-| [步驟 5-選用設定步驟](#optional-post-migration-configuration-steps) | Azure 入口網站和 Vm | N/A | 不需要停機時間 | N/A |
+| [步驟 3-將受控網域移至現有的虛擬網路](#migrate-the-managed-domain) | PowerShell | 平均 1-3 小時 | 當此命令完成之後，就可以使用一個網域控制站。 | 失敗時，可使用復原 (自助) 和還原。 |
+| [步驟 4-測試並等候複本網域控制站](#test-and-verify-connectivity-after-the-migration)| PowerShell 和 Azure 入口網站 | 1小時以上，視測試數目而定 | 這兩個網域控制站都可供使用，而且應該正常運作，而停機時間則結束。 | N/A。 成功遷移第一個 VM 之後，就不會有復原或還原的選項。 |
+| [步驟 5-選用設定步驟](#optional-post-migration-configuration-steps) | Azure 入口網站和 Vm | 不適用 | 不需要停機時間 | 不適用 |
 
 > [!IMPORTANT]
 > 若要避免額外的停機時間，請在開始進行遷移程式之前，先閱讀所有的遷移文章和指引。 遷移程式會影響一段時間內 Azure AD DS 網域控制站的可用性。 在遷移過程中，使用者、服務和應用程式無法對受控網域進行驗證。
@@ -262,16 +262,14 @@ Migrate-Aadds `
 
 ## <a name="test-and-verify-connectivity-after-the-migration"></a>在遷移後測試並驗證連線能力
 
-第二個網域控制站可能需要一些時間才能順利部署，並可在受控網域中使用。
+第二個網域控制站可能需要一些時間才能順利部署，並可在受控網域中使用。 第二個網域控制站在遷移 Cmdlet 完成之後，應可在1-2 小時內使用。 使用 Resource Manager 部署模型，受控網域的網路資源會顯示在 Azure 入口網站或 Azure PowerShell 中。 若要檢查第二個網域控制站是否可用，請查看 Azure 入口網站中受控網域的 [ **屬性** ] 頁面。 如果顯示兩個 IP 位址，則第二個網域控制站已準備就緒。
 
-使用 Resource Manager 部署模型，受控網域的網路資源會顯示在 Azure 入口網站或 Azure PowerShell 中。 若要深入瞭解這些網路資源和用途，請參閱 [AZURE AD DS 所使用的網路資源][network-resources]。
-
-如果至少有一個網域控制站可供使用，請完成下列設定步驟，以使用 Vm 的網路連線能力：
+當第二個網域控制站可供使用之後，請完成下列設定步驟，以使用 Vm 的網路連線能力：
 
 * **更新 DNS 伺服器設定** 若要讓 Resource Manager 的虛擬網路上的其他資源解析並使用受控網域，請使用新網域控制站的 IP 位址來更新 DNS 設定。 Azure 入口網站可以為您自動設定這些設定。
 
     若要深入瞭解如何設定 Resource Manager 虛擬網路，請參閱 [更新 Azure 虛擬網路的 DNS 設定][update-dns]。
-* **重新開機已加入網域的 vm** ：當 Azure AD DS 網域控制站的 DNS 伺服器 IP 位址變更時，請重新開機任何已加入網域的 vm，使其使用新的 DNS 伺服器設定。 如果應用程式或 Vm 已手動設定 DNS 設定，請使用 Azure 入口網站中顯示之網域控制站的新 DNS 伺服器 IP 位址，手動更新這些設定。
+* **重新開機已加入網域的 vm (選用)** 當 Azure AD DS 網域控制站的 DNS 伺服器 IP 位址變更時，您可以重新開機任何已加入網域的 Vm，然後再使用新的 DNS 伺服器設定。 如果應用程式或 Vm 已手動設定 DNS 設定，請使用 Azure 入口網站中顯示之網域控制站的新 DNS 伺服器 IP 位址，手動更新這些設定。 將已加入網域的 Vm 重新開機，可防止未重新整理的 IP 位址所造成的連線問題。
 
 現在，請測試虛擬網路連線和名稱解析。 在連線到 Resource Manager 虛擬網路的 VM 上，或對等互連至該虛擬網路的 VM 上，嘗試下列網路通訊測試：
 
@@ -280,7 +278,7 @@ Migrate-Aadds `
 1. 確認受控網域的名稱解析，例如 `nslookup aaddscontoso.com`
     * 請指定您自己的受控網域的 DNS 名稱，以確認 DNS 設定是否正確且可解決。
 
-第二個網域控制站在遷移 Cmdlet 完成之後，應可在1-2 小時內使用。 若要檢查第二個網域控制站是否可用，請查看 Azure 入口網站中受控網域的 [ **屬性** ] 頁面。 如果顯示兩個 IP 位址，則第二個網域控制站已準備就緒。
+若要深入瞭解其他網路資源，請參閱 [AZURE AD DS 所使用的網路資源][network-resources]。
 
 ## <a name="optional-post-migration-configuration-steps"></a>選用的遷移後設定步驟
 

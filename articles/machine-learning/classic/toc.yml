@@ -161,6 +161,6 @@
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 定價
-      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-studio/'
     - name: 自訂神經網路 (Net#)
       href: azure-ml-netsharp-reference-guide.md

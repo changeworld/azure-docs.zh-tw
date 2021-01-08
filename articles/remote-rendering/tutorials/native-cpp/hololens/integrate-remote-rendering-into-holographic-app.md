@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: 56e889778e3b598dc4ded5f64eef20101c542b6a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 44c80703466f91ccdfa33934efa0a05e699fd5de
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207507"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724386"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>教學課程：將遠端轉譯整合到 Hololens 全像攝影應用程式
 
@@ -30,7 +30,7 @@ ms.locfileid: "92207507"
 
 在本教學課程中，您需要：
 
-* 您的帳戶資訊 (帳戶識別碼、帳戶金鑰、訂用帳戶識別碼)。 如果您沒有帳戶，請[建立帳戶](../../../how-tos/create-an-account.md)。
+* 您的帳戶資訊 (帳戶識別碼、帳戶金鑰、帳戶網域、訂用帳戶識別碼)。 如果您沒有帳戶，請[建立帳戶](../../../how-tos/create-an-account.md)。
 * Windows SDK 10.0.18362.0 [(下載)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)。
 * 最新版的 Visual Studio 2019 [(下載)](https://visualstudio.microsoft.com/vs/older-downloads/)。
 * [適用於混合實境的 Visual Studio 工具](/windows/mixed-reality/install-the-tools)。 具體而言，必須要安裝下列「工作負載」：
@@ -169,7 +169,8 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
         RR::AzureFrontendAccountInfo init;
         init.AccountId = "00000000-0000-0000-0000-000000000000";
         init.AccountKey = "<account key>";
-        init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+        init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+        init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
         m_modelURI = "builtin://Engine";
         m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
 
@@ -220,7 +221,7 @@ HolographicAppMain::HolographicAppMain(std::shared_ptr<DX::DeviceResources> cons
 
 程式碼會呼叫成員函式 `SetNewSession` 與 `SetNewState`，我們將在下一個段落中，實作這些函式與狀態機器程式碼。
 
-請注意，範例中的認證是硬式編碼，必須確實填寫 ([帳戶識別碼、帳戶金鑰](../../../how-tos/create-an-account.md#retrieve-the-account-information)與[網域](../../../reference/regions.md))。
+請注意，範例中的認證是硬式編碼，必須確實填寫 ([帳戶識別碼、帳戶金鑰、帳戶網域](../../../how-tos/create-an-account.md#retrieve-the-account-information)與[遠端轉譯網域](../../../reference/regions.md))。
 
 我們會在解構函式主體的結尾，以對稱方式及反過來的順序進行解除初始化：
 
@@ -589,7 +590,7 @@ HolographicFrame HolographicAppMain::Update()
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解將遠端轉譯新增至庫存**全像攝影應用程式** C++/DirectX11 範例的所有必要步驟。
+在本教學課程中，您已了解將遠端轉譯新增至庫存 **全像攝影應用程式** C++/DirectX11 範例的所有必要步驟。
 若要轉換您自己的模型，請參閱下列快速入門：
 
 > [!div class="nextstepaction"]

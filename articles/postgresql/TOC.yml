@@ -14,7 +14,7 @@
   items:
     - name: 資料庫部署
       items:
-        - name: Github 動作
+        - name: GitHub 動作
           href: how-to-deploy-github-action.md
     - name: 遷移
       items:
@@ -640,6 +640,8 @@
           href: howto-hyperscale-create-users.md
         - name: 分散式資料
           items:
+            - name: 決定資料表大小
+              href: howto-hyperscale-table-size.md
             - name: 散發和修改資料表
               href: howto-hyperscale-modify-distributed-tables.md
         - name: 高可用性
@@ -657,6 +659,8 @@
             - name: 針對連線問題進行疑難排解
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
               displayName: 'connection errors, hyperscale'
+            - name: 有用的診斷查詢
+              href: howto-hyperscale-useful-diagnostic-queries.md
 - name: 參考
   items:
     - name: Azure CLI
