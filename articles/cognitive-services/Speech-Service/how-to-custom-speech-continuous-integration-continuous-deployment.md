@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d37fca06a3d2eafa0af9e31c3a30ac66be5404f0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591611"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020599"
 ---
 # <a name="cicd-for-custom-speech"></a>自訂語音的 CI/CD
 
@@ -83,7 +83,7 @@ CI/CD 工作流程的主要目的是要使用定型資料來建立新的模型�
 [語音 DevOps 範本](https://github.com/Azure-Samples/Speech-Service-DevOps-Template)存放庫提供基礎結構和詳細的指導方針：
 
 - 將範本存放庫複製到您的 GitHub 帳戶，然後為 GitHub Actions CI/CD 工作流程建立 Azure 資源和 [服務主體](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) 。
-- 逐步解說「[開發內部迴圈](https://mitchdenny.com/the-inner-loop/)」。 從功能分支更新定型和測試資料、使用暫時性開發模型來測試變更，以及提出要求和檢查變更的提取要求。
+- 逐步解說「[開發內部迴圈](/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/docker-apps-inner-loop-workflow)」。 從功能分支更新定型和測試資料、使用暫時性開發模型來測試變更，以及提出要求和檢查變更的提取要求。
 - 將提取要求中的定型資料更新為 *主要* 時，請使用 GitHub Actions CI 工作流程將模型定型。
 - 執行自動化的精確度測試，以 (WER) 建立模型的 [文字](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) 錯誤率。 將測試結果儲存在 Azure Blob 中。
 - 執行 CD 工作流程，以在 WER 改善時建立端點。

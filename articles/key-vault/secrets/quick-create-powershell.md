@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c28dbc25abfd701450cf9f232ea1a4b5e16841aa
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d1fa63da035cba35538d13ffe4c3897458364a65
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686171"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936646"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>快速入門：使用 PowerShell 從 Azure Key Vault 設定及擷取祕密
 
@@ -117,4 +117,4 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 - 閱讀 [Azure Key Vault 概觀](../general/overview.md)
 - 請參閱 [Azure PowerShell Key Vault Cmdlet](/powershell/module/az.keyvault/#key_vault) 的參考
-- 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 請參閱 [Key Vault 安全性概觀](../general/security-overview.md)

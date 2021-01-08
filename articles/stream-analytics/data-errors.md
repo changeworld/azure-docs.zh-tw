@@ -1,17 +1,17 @@
 ---
 title: Azure 串流分析資源記錄檔資料錯誤
 description: 本文說明使用 Azure 串流分析時可能發生的不同輸入和輸出資料錯誤。
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 416e6cb29ab2816d53cb837f72233a9fe098f659
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2ca289cd52b9a406e486ee9c186be683e71f02d0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011416"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020106"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 串流分析資料錯誤
 

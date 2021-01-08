@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 41f3d60d91b7418d6e9733b8351d4830b31dbace
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 419fe72d400177ce9fa3d9811d7dfa06e74c0810
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81420282"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935048"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站從 Azure Key Vault 設定及擷取金鑰
 
@@ -30,7 +30,7 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 
 ## <a name="create-a-vault"></a>建立保存庫
 
-1. 從 Azure 入口網站功能表或**首頁**，選取 [建立資源]。
+1. 從 Azure 入口網站功能表或 **首頁**，選取 [建立資源]。
 2. 在 [搜尋] 方塊中輸入 **Key Vault**。
 3. 從結果清單中，選擇 [Key Vault]。
 4. 在 [金鑰保存庫] 區段上選擇 [建立]。
@@ -40,7 +40,7 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
     - 在 [資源群組] 底下，選擇 [新建]，然後輸入資源群組名稱。
     - 在 [位置] 下拉式功能表中選擇位置。
     - 將其他的選項保留預設值。
-6. 提供上述資訊之後，請選取 [建立]。
+6. 提供上述資訊之後，請選取 [建立]  。
 
 請記下下列兩個屬性：
 
@@ -83,4 +83,4 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 
 - 閱讀 [Azure Key Vault 概觀](../general/overview.md)
 - 參閱 [Azure Key Vault 開發人員指南](../general/developers-guide.md)
-- 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 請參閱 [Key Vault 安全性概觀](../general/security-overview.md)

@@ -3,14 +3,14 @@ title: 使用 Python 在 Azure 中建立第一個耐久函式
 description: 使用 Visual Studio Code 在 Python 中建立及發佈 Azure Durable Function。
 author: anthonychu
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0cc321563de645aeb1d204b67b0ab72053d79c7e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012624"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763552"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>使用 Python 建立第一個耐久函式
 
@@ -40,7 +40,7 @@ ms.locfileid: "96012624"
 
 在這一節中，您會使用 Visual Studio Code 來建立本機 Azure Functions 專案。 
 
-1. 在 Visual Studio Code 中，按 F1 (或 Ctrl/Cmd+Shift+P) 以開啟命令選擇區。 在命令選擇區中，搜尋並選取 `Azure Functions: Create New Project...`。
+1. 在 Visual Studio Code 中，按 F1 (或 <kbd>Ctrl/Cmd+Shift+P</kbd>) 以開啟命令選擇區。 在命令選擇區中，搜尋並選取 `Azure Functions: Create New Project...`。
 
     ![建立函式](media/quickstart-python-vscode/functions-create-project.png)
 
@@ -60,18 +60,33 @@ ms.locfileid: "96012624"
 
 此外，也會在根資料夾中建立一個需求 requirements.txt 檔案。 其會指定執行函數應用程式所需的 Python 套件。
 
+## <a name="update-azure-functions-extension-bundles-version"></a>更新 Azure Functions 擴充功能組合版本
+
+Python Azure Functions 需要 2.x 版的 [Azure Functions 擴充功能組合](../functions-bindings-register.md#access-extensions-in-non-net-languages)。 擴充功能組合設定於 *host.json* 中。
+
+1. 在專案中開啟 *host.json*。 將擴充功能組合 `version` 更新為 `[2.*, 3.0.0)`。 這會指定大於或等於2.0 且小於 3.0 的版本範圍。
+
+    ```json
+    "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.*, 3.0.0)"
+    }
+    ```
+
+1. 必須先重新載入 VS Code，才會反映更新的擴充功能組合版本。 在命令選擇區中，搜尋 *開發人員：重新載入視窗* 命令，並加以執行。
+
 ## <a name="install-azure-functions-durable-from-pypi"></a>從 PyPI 安裝 azure-functions-durable
 
 當您建立專案時，Azure Functions VS Code 擴充功能會自動使用您選取的 Python 版本建立虛擬環境。 您將會在終端機中啟用虛擬環境，並安裝 Azure Functions 和 Durable Functions 所需的一些相依性。
 
-1. 在編輯器中開啟 `requirements.txt`，並將其內容變更為下列內容：
+1. 在編輯器中開啟 *requirements.txt*，並將其內容變更為下列內容：
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b6
+    azure-functions-durable>=1.0.0b12
     ```
 
-1. 在目前的資料夾 (`` Ctrl-Shift-` ``) 中開啟編輯器的整合式終端。
+1. 在目前的資料夾中開啟編輯器的整合式終端 (<kbd>Ctrl+Shift+`</kbd>)。
 
 1. 在整合式終端中，啟動目前資料夾中的虛擬環境：
 
@@ -160,7 +175,7 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
     > [!NOTE]
     > 如需有關偵錯的詳細資訊，請參閱 [Durable Functions 診斷](durable-functions-diagnostics.md#debugging)。
 
-1. Durable Functions 需要執行 Azure 儲存體帳戶。 當 VS Code 提示您選取儲存體帳戶時，請選擇 [選取儲存體帳戶]。
+1. Durable Functions 需要執行 Azure 儲存體帳戶。 當 VS Code 提示您選取儲存體帳戶時，請選擇 [選取儲存體帳戶]  。
 
     ![建立儲存體帳戶](media/quickstart-python-vscode/functions-select-storage.png)
 
@@ -168,10 +183,10 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
 
     | Prompt | 值 | 描述 |
     | ------ | ----- | ----------- |
-    | 選取訂閱 | 您的訂用帳戶名稱 | 選取您的 Azure 訂用帳戶 |
+    | 選取訂閱 | 您的訂用帳戶名稱  | 選取您的 Azure 訂用帳戶 |
     | 選取儲存體帳戶 | 建立新的儲存體帳戶 |  |
-    | 輸入新儲存體帳戶的名稱 | 唯一名稱 | 要建立的儲存體帳戶名稱 |
-    | 選取資源群組 | 唯一名稱 | 要建立的資源群組名稱 |
+    | 輸入新儲存體帳戶的名稱 | 唯一名稱  | 要建立的儲存體帳戶名稱 |
+    | 選取資源群組 | 唯一名稱  | 要建立的資源群組名稱 |
     | 選取位置 | *region* | 選取您附近的區域 |
 
 1. 在 **終端機** 面板中，複製 HTTP 觸發函式的 URL 端點。
@@ -203,7 +218,7 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
     }
     ```
 
-1. 若要停止偵錯，請在 VS Code 中按 **Shift + F5**。
+1. 若要停止偵錯，請在 VS Code 中按 <kbd>Shift+F5</kbd>。
 
 確認函式在本機電腦上正確執行之後，就可以將專案發佈到 Azure。
 
@@ -213,7 +228,7 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中測試您的函式
 
-1. 從 [輸出] 面板中複製 HTTP 觸發程序的 URL。 呼叫 HTTP 觸發函式的 URL 應採用下列格式：`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. 從 [輸出]  面板中複製 HTTP 觸發程序的 URL。 呼叫 HTTP 觸發函式的 URL 應採用下列格式：`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
 
 2. 將 HTTP 要求的新 URL 貼到瀏覽器的網址列。 在使用已發佈的應用程式之前，您應會取得如同以往的相同狀態回應。
 

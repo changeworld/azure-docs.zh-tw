@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490052"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813610"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>從 Azure 資訊安全中心自動佈建代理程式和擴充功能
 
@@ -30,6 +30,17 @@ ms.locfileid: "96490052"
 > 隨著資訊安全中心增長，可以監視的資源類型也會隨之增加。 延伸模組的數目也會增加。 自動佈建會藉由運用 Azure 原則的功能來擴充，以支援其他資源類型。
 
 :::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="資訊安全中心的自動佈建設定頁面":::
+
+
+## <a name="availability"></a>可用性
+
+| 層面                  | 詳細資料                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 版本狀態：          | **功能**：自動佈建已正式發行 (GA)<br>**代理程式與擴充功能**：適用於 Azure VM 的 Log Analytics 代理程式已正式發行，Microsoft Dependency Agent 處於預覽階段，Kubernetes 的原則附加元件已正式發行                |
+| 定價：                | 免費                                                                                                                                                                                                                         |
+| 支援的目的地： | ![是](./media/icons/yes-icon.png) Azure 機器<br>![否](./media/icons/no-icon.png) Azure Arc 機器<br>![否](./media/icons/no-icon.png) Kubernetes 節點<br>![否](./media/icons/no-icon.png) 虛擬機器擴展集 |
+| 雲端：                 | ![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov、中國 Gov、其他 Gov                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
 
 
 ## <a name="why-use-auto-provisioning"></a>為什麼使用自動佈建？

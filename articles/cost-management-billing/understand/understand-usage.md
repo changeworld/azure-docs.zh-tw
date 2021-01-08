@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/04/2021
 ms.author: banders
-ms.openlocfilehash: 559fe43bbd9b8951a97733ae1250046f65f10404
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 07e3cfdce238d5fc4e2737a49dde6fd624de8506
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149362"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882495"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用量和費用檔案中的詞彙
 
@@ -126,10 +126,24 @@ UsageDate | Date
 UsageEnd | Date
 UsageStart | Date
 
-
 ## <a name="ensure-charges-are-correct"></a>確保費用正確
 
 若要深入了解詳細的使用量和費用，請閱讀如何了解您的[隨用隨付](review-individual-bill.md)或 [Microsoft 客戶合約](review-customer-agreement-bill.md)發票。
+
+## <a name="unexpected-usage-or-charges"></a>未預期的使用量或費用
+
+如果您有無法辨識的使用量或費用，您可以做幾件事來協助您了解原因：
+
+- 檢閱具有資源費用的發票
+- 檢閱成本分析中的發票費用
+- 尋找負責資源並與他們互動的人員
+- 分析稽核記錄
+- 分析使用者對資源父範圍的許可權
+- 建立 [Azure 支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)以協助識別費用
+
+如需詳細資訊，請參閱[分析未預期的費用](analyze-unexpected-charges.md)。
+
+請注意，Azure 不會記錄大部分的使用者動作。 相反地，Microsoft 會記錄資源使用量以便計費。 如果您發現過去有使用量突然增加，而且未啟用記錄功能，Microsoft 就無法找出原因。 針對您想要檢視增加使用量的服務啟用記錄功能，讓適當的技術小組可以協助您解決問題。
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 

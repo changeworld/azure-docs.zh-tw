@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 73c52963df65dc4037f087a93108ccfacb3fb5d4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 566ddae3893a5499ddefe0ccd1ade8caff4567c2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461552"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934980"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>快速入門：使用 ARM 範本建立 Azure 金鑰保存庫和金鑰 (預覽)
 
@@ -217,4 +217,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - 閱讀 [Azure Key Vault 概觀](../general/overview.md)
 - 深入了解 [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-- 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 請參閱 [Key Vault 安全性概觀](../general/security-overview.md)

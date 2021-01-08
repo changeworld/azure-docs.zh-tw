@@ -1,16 +1,16 @@
 ---
 title: Azure Arc 啟用的伺服器的 VM 延伸模組管理
 description: Azure Arc 啟用的伺服器可以管理虛擬機器擴充功能的部署，以使用非 Azure Vm 提供部署後設定和自動化工作。
-ms.date: 12/14/2020
+ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5430b1c1318747cccfb95f031700fddaad716284
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504503"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020616"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>已啟用 Azure Arc 的伺服器的虛擬機器擴充功能管理
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>已啟用 Azure Arc 的伺服器的虛擬機器擴充功能管理 (機器翻譯)
 
 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure Vm 上提供部署後設定和自動化工作。 例如，如果虛擬機器需要軟體安裝、防毒軟體或在其中執行腳本，則可以使用 VM 擴充功能。
 
@@ -43,22 +43,33 @@ VM 擴充功能只能在 [支援的區域](overview.md#supported-regions)清單�
 
 在此版本中，我們支援 Windows 和 Linux 機器上的下列 VM 擴充功能。
 
-|延伸模組 |OS |發行者 |其他資訊 |
-|----------|---|----------|-----------------------|
-|CustomScriptExtension |Windows |Microsoft.Compute |[Windows 自訂腳本擴充功能](../../virtual-machines/extensions/custom-script-windows.md)|
-|DSC |Windows |Microsoft PowerShell|[Windows PowerShell DSC 延伸模組](../../virtual-machines/extensions/dsc-windows.md)|
-|Log Analytics 代理程式 |Windows |Microsoft.EnterpriseCloud.Monitoring |[適用于 Windows 的 Log Analytics VM 擴充功能](../../virtual-machines/extensions/oms-windows.md)|
-|Microsoft Dependency Agent | Windows |Microsoft.Compute | [適用于 Windows 的相依性代理程式虛擬機器擴充功能](../../virtual-machines/extensions/agent-dependency-windows.md)|
-|Key Vault | Windows | Microsoft.Compute | [適用於 Windows 的金鑰保存庫虛擬機器擴充功能](../../virtual-machines/extensions/key-vault-windows.md) |
-|CustomScript|Linux |Microsoft Azure 延伸模組 |[Linux 自訂腳本擴充功能第2版](../../virtual-machines/extensions/custom-script-linux.md) |
-|DSC |Linux |Microsoft.OSTCExtensions |[適用于 Linux 的 PowerShell DSC 擴充功能](../../virtual-machines/extensions/dsc-linux.md) |
-|Log Analytics 代理程式 |Linux |Microsoft.EnterpriseCloud.Monitoring |[適用于 Linux 的 Log Analytics VM 擴充功能](../../virtual-machines/extensions/oms-linux.md) |
-|Microsoft Dependency Agent | Linux |Microsoft.Compute | [適用于 Linux 的相依性代理程式虛擬機器擴充功能](../../virtual-machines/extensions/agent-dependency-linux.md) |
-|Key Vault | Linux | Microsoft.Compute | [適用於 Linux 的金鑰保存庫虛擬機器擴充功能](../../virtual-machines/extensions/key-vault-linux.md) |
-
 若要瞭解 Azure Connected Machine 代理程式封裝和延伸模組代理程式元件的詳細資料，請參閱 [代理程式總覽](agent-overview.md#agent-component-details)。
 
-## <a name="prerequisites"></a>Prerequisites
+### <a name="windows-extensions"></a>Windows 擴充功能
+
+|延伸模組 |Publisher |類型 |其他資訊 |
+|----------|----------|-----|-----------------------|
+|Azure Defender 整合式弱點掃描器 |Qualys |WindowsAgent.AzureSecurityCenter |[適用于 Azure 和混合式機器的 azure Defender 整合式弱點評定解決方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|自訂指令碼擴充功能 |Microsoft.Compute | CustomScriptExtension |[Windows 自訂腳本擴充功能](../../virtual-machines/extensions/custom-script-windows.md)|
+|PowerShell DSC |Microsoft PowerShell |DSC |[Windows PowerShell DSC 延伸模組](../../virtual-machines/extensions/dsc-windows.md)|
+|Log Analytics 代理程式 |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[適用于 Windows 的 Log Analytics VM 擴充功能](../../virtual-machines/extensions/oms-windows.md)|
+|適用於 VM 的 Azure 監視器 (深入解析)  |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [適用于 Windows 的相依性代理程式虛擬機器擴充功能](../../virtual-machines/extensions/agent-dependency-windows.md)|
+|Azure Key Vault 憑證同步處理 | Azure. 金鑰保存庫 |KeyVaultForWindows | [適用於 Windows 的金鑰保存庫虛擬機器擴充功能](../../virtual-machines/extensions/key-vault-windows.md) |
+|Azure 監視器代理程式 |Microsoft Azure 監視器 |AzureMonitorWindowsAgent |[安裝 Azure 監視器代理程式 (預覽版) ](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+
+### <a name="linux-extensions"></a>Linux 擴充功能
+
+|延伸模組 |Publisher |類型 |其他資訊 |
+|----------|----------|-----|-----------------------|
+|Azure Defender 整合式弱點掃描器 |Qualys |LinuxAgent.AzureSecurityCenter |[適用于 Azure 和混合式機器的 azure Defender 整合式弱點評定解決方案](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|自訂指令碼擴充功能 |Microsoft Azure 延伸模組 |CustomScript |[Linux 自訂腳本擴充功能第2版](../../virtual-machines/extensions/custom-script-linux.md) |
+|PowerShell DSC |Microsoft.OSTCExtensions |DSCForLinux |[適用于 Linux 的 PowerShell DSC 擴充功能](../../virtual-machines/extensions/dsc-linux.md) |
+|Log Analytics 代理程式 |Microsoft.EnterpriseCloud.Monitoring |OmsAgentForLinux |[適用于 Linux 的 Log Analytics VM 擴充功能](../../virtual-machines/extensions/oms-linux.md) |
+|適用於 VM 的 Azure 監視器 (深入解析)  |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[適用于 Linux 的相依性代理程式虛擬機器擴充功能](../../virtual-machines/extensions/agent-dependency-linux.md) |
+|Azure Key Vault 憑證同步處理 | Azure. 金鑰保存庫 |KeyVaultForLinux | [適用於 Linux 的金鑰保存庫虛擬機器擴充功能](../../virtual-machines/extensions/key-vault-linux.md) |
+|Azure 監視器代理程式 |Microsoft Azure 監視器 |AzureMonitorLinuxAgent |[安裝 Azure 監視器代理程式 (預覽版) ](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+
+## <a name="prerequisites"></a>必要條件
 
 這項功能取決於您訂用帳戶中的下列 Azure 資源提供者：
 

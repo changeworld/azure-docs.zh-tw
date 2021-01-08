@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 52a43874060748479beebc994bf0a9b663cde9dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95238389"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020174"
 ---
 # <a name="create-an-app-service-environment"></a>建立 App Service 環境
 
@@ -20,10 +20,9 @@ ms.locfileid: "95238389"
 > 本文說明 App Service 環境 v3 (preview) 
 > 
 
-[App Service 環境 (ASE) ][Intro]是 App Service 的單一租使用者部署，會插入您的 Azure 虛擬網路 (VNet) 。  ASEv3 只支援在 Vnet 的私人位址上公開應用程式。 在預覽期間建立 ASEv3 時，會將三個資源新增至您的訂用帳戶。
+[App Service 環境 (ASE) ][Intro]是 App Service 的單一租使用者部署，會插入您的 Azure 虛擬網路 (VNet) 。  ASEv3 只支援在 Vnet 的私人位址上公開應用程式。 在預覽期間建立 ASEv3 時，會將這些資源新增至您的訂用帳戶。
 
 - App Service 環境
-- Azure DNS 私人區域
 - 私人端點
 
 ASE 的部署將需要使用兩個子網。  一個子網會保存私人端點。  此子網可用於 Vm 之類的其他專案。  另一個子網用於從 ASE 發出的輸出呼叫。  此子網不能用於 ASE 以外的任何其他以外的地方。 

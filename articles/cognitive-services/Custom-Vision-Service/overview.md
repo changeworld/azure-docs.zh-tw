@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 影像辨識, 影像識別工具, 影像辨識應用程式, 自訂視覺
-ms.openlocfilehash: 7274fed961c4bbac8841e1c741f54031614cea5c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 12877f2d43f9b8f864871e5a5ab050aa0eeb61e2
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562985"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814596"
 ---
 # <a name="what-is-custom-vision"></a>什麼是自訂視覺服務？
 
@@ -51,4 +51,4 @@ Azure 自訂視覺是一項影像辨識服務，可讓您建置、部署和改�
 
 ## <a name="next-steps"></a>後續步驟
 
-遵循[建置分類器](getting-started-build-a-classifier.md)指南，以在入口網站上開始使用自訂視覺，或完成[用戶端程序庫快速入門](quickstarts/image-classification.md)以在程序碼中實作基本案例。
+遵循[建置分類器](getting-started-build-a-classifier.md)指南，以在入口網站上開始使用自訂視覺，或完成[快速入門](quickstarts/image-classification.md)以在程式碼中實作基本案例。

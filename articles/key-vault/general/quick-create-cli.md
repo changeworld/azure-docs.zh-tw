@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d84f500560031322cff32005b537037dc897919e
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: e29a692e3fdad1bea7132b3bed50444c7398ba46
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516759"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936306"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>快速入門：使用 Azure CLI 來建立金鑰保存庫
 
@@ -72,5 +72,6 @@ az group delete --name myResourceGroup
 在本快速入門中，您已建立 Key Vault 並且刪除。 若要深入了解 Key Vault 以及要如何將其與應用程式整合，請繼續閱讀下列文章。
 
 - 閱讀 [Azure Key Vault 概觀](overview.md)
-- 請參閱 [Azure CLI az keyvault 命令](/cli/azure/keyvault?view=azure-cli-latest)的參考
-- 檢閱 [Azure Key Vault 最佳做法](best-practices.md)
+- 請參閱 [Azure Key Vault 安全性概觀](security-overview.md)
+- 請參閱 [Azure CLI az keyvault 命令](/cli/azure/keyvault)的參考
+

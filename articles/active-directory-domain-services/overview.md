@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/03/2020
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 99a207810f51949b0da0e78b1cb0e0a7f8bc95e3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 765aa10e57c472d7a1af0952364783bb1d711078
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027334"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861515"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什麼是 Azure Active Directory Domain Services？
 
@@ -41,7 +41,7 @@ Azure AD DS 會與您現有的 Azure AD 租用戶整合。 此整合可讓使用
 
 ![使用 AD Connect 讓 Azure AD Domain Services 與 Azure AD 和內部部署 AD DS 進行同步](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-Azure AD DS 會從 Azure AD 複寫身分識別資訊，因此適用於僅限雲端的 Azure AD 租用戶，或與內部部署 AD DS 環境 同步處理的 Azure AD 租用戶。 這兩個環境都有一組相同的 Azure AD DS 功能。
+Azure AD DS 會從 Azure AD 複寫身分識別資訊，因此適用於僅限雲端的 Azure AD 租用戶，或與內部部署 AD DS 環境同步處理的 Azure AD 租用戶。 這兩個環境都有一組相同的 Azure AD DS 功能。
 
 * 如果您有現有的內部部署 AD DS 環境，您可以同步使用者帳戶資訊，為使用者提供一致的身分識別。 若要深入了解，請參閱[如何在受控網域中同步處理物件和認證][synchronization] \(部分機器翻譯\)。
 * 針對僅限雲端環境，您不需要傳統內部部署 AD DS 環境，就能使用 Azure AD DS 的集中式識別服務。

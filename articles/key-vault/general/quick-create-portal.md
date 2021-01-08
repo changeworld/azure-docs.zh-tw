@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b5f4f3d2b3eda9f00049cee26ae95850d65257d6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 729b6ccf1092679a71aa35f49be7d3199d4f4918
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778864"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936267"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立金鑰保存庫
 
@@ -70,5 +70,5 @@ Azure Key Vault 是一項雲端服務，可為[金鑰](../keys/index.yml)、[祕
 在本快速入門中，您使用 Azure 入口網站建立了 Key Vault。 若要深入了解 Key Vault 以及要如何將其與應用程式整合，請繼續閱讀下列文章。
 
 - 閱讀 [Azure Key Vault 概觀](overview.md)
+- 請參閱 [Azure Key Vault 安全性概觀](security-overview.md)
 - 參閱 [Azure Key Vault 開發人員指南](developers-guide.md)
-- 檢閱 [Azure Key Vault 最佳做法](best-practices.md)

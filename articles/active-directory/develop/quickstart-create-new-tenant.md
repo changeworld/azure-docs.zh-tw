@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: f43cb80a148f5dadb409f506f237cb1210a2000a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91575974"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933994"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入門：設定租用戶
 
@@ -55,7 +55,7 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 > [!TIP]
 > 如果您要尋找租用戶識別碼，您可以︰
 > * 將滑鼠停留在您的帳戶名稱上，以取得目錄/租用戶識別碼，或
-> * 在 Azure 入口網站中依序選取 [Azure Active Directory] > [屬性] > [目錄識別碼]
+> * 在 Azure 入口網站中搜尋並選取 [Azure Active Directory] > [屬性] > [租用戶識別碼]
 
 如果您目前沒有與帳戶相關聯的租用戶，則會在您的帳戶名稱下方看到一個 GUID，且您在依照下一節的步驟執行之前，將無法執行註冊應用程式之類的動作。
 

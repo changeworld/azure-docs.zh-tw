@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: 2aec3cc96e123da57166f1c304254d520a96e156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a416db3b27ac25ba7a3b1712c76cd1c8fb632e
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81400607"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821531"
 ---
-預設的音訊串流格式為 WAV (16kHz 或 8kHz、16 位元和 mono PCM)。 除了 WAV/PCM 以外，也支援下列壓縮的輸入格式。 若要啟用下列格式，必須進行[額外的設定](../how-to-use-codec-compressed-audio-input-streams.md)。
+預設的音訊串流格式為 WAV (16 kHz 或 8 kHz、16 位元和 mono PCM)。 除了 WAV/PCM 以外，也支援使用 GStreamer 的下列壓縮輸入格式。
 
 - MP3
 - OPUS/OGG

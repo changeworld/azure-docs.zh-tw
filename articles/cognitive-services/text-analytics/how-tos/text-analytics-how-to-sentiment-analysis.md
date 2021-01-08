@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505217"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673048"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>操作說明：情感分析與意見挖掘
 
@@ -24,8 +24,6 @@ ms.locfileid: "97505217"
 API 所使用的 AI 模型由服務所提供，您只需要傳送要分析的內容即可。
 
 ## <a name="sentiment-analysis-versions-and-features"></a>情感分析版本和功能
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 | 功能                                   | 情感分析 v3 | 情感分析 v3.1 (預覽) |
 |-------------------------------------------|-----------------------|-----------------------------------|
@@ -47,7 +45,7 @@ API 所使用的 AI 模型由服務所提供，您只需要傳送要分析的內
 | 文件中至少有一個 `negative` 句子和至少一個 `positive` 句子。    | `mixed`                 |
 | 文件中的所有句子皆為 `neutral`。                                                  | `neutral`               |
 
-信賴分數的範圍是從 1 到 0。 接近 1 的分數表示標籤分類的信賴度更高，而較低的分數則表示較低的信賴度。 針對每個檔案或每個句子，與標籤 (正面、負面和中性) 相關聯的預測分數最多會加到 1 為止。
+信賴分數的範圍是從 1 到 0。 接近 1 的分數表示標籤分類的信賴度更高，而較低的分數則表示較低的信賴度。 針對每個檔案或每個句子，與標籤 (正面、負面和中性) 相關聯的預測分數最多會加到 1 為止。 如需詳細資訊，請參閱[文字分析透明度注意事項](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)。 
 
 ## <a name="opinion-mining"></a>意見挖掘
 

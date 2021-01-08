@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 495b4427fb7e456c60a489b9ce3d19c2a44bd918
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335208"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680884"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>教學課程：透過 SMB 從 Azure 資料箱複製資料 (預覽)
+# <a name="tutorial-copy-data-from-azure-data-box-via-smb"></a>教學課程：透過 SMB 從 Azure 資料箱複製資料
 
 本教學課程說明如何使用本機 Web UI 連線至內部部署伺服器，並將資料從資料箱複製到該伺服器中。 資料箱裝置包含從 Azure 儲存體帳戶匯出的資料。
 
@@ -27,8 +27,6 @@ ms.locfileid: "94335208"
 > * 必要條件
 > * 連線至資料箱
 > * 從資料箱複製資料
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>必要條件
 

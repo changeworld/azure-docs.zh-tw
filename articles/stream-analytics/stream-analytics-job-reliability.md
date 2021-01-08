@@ -3,17 +3,16 @@ title: 避免 Azure 串流分析作業中發生服務中斷
 description: 本文說明可讓串流分析作業升級具有彈性的指引。
 author: jseb225
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 889e298f64689748340713de6318f8ffcd181001
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f4eda779b1bc719706f9eb42cf805a7d5ce864aa
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006450"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020327"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>在服務更新期間確保串流分析工作可靠性
 

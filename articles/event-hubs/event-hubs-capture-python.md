@@ -2,13 +2,13 @@
 title: 從 Python 應用程式讀取 Azure 事件中樞擷取的資料 (最新版)
 description: 本文將說明如何撰寫 Python 程式碼來擷取傳送至事件中樞的資料，以及從 Azure 儲存體帳戶讀取已擷取的事件資料。
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: f513b35e300141f16ee4c4880bc54aaf37945d65
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.date: 01/04/2021
+ms.openlocfilehash: acc2ce04add5fd837e9edc789e9616a9f04fb4b9
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109907"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883192"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>使用 Python 擷取及讀取 Azure 儲存體中的事件中樞資料 (azure-eventhub)
 
@@ -27,7 +27,11 @@ ms.locfileid: "97109907"
 
 ## <a name="prerequisites"></a>必要條件
 
-- Python 2.7 和 3.5 或更新版本，且已安裝並更新 PIP。  
+- 已安裝具有 PIP 的 Python 和下列套件。 本文中的程式碼已針對這些版本進行過測試。 
+    - Python 3.7
+    - azure-eventhub 5.2.0
+    - azure-storage-blob 12.6.0
+    - avro-python3 1.10.1
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。  
 - 作用中的事件中樞命名空間和事件中樞。
 [建立事件中樞命名空間和命名空間中的事件中樞](event-hubs-create.md)。 記下事件中樞命名空間的名稱、事件中樞的名稱，以及命名空間的主要存取金鑰。 若要取得存取金鑰，請參閱[取得事件中樞連接字串](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)。 預設的金鑰名稱為 *RootManageSharedAccessKey*。 在本快速入門中，您只需要主要金鑰。 您無須連接字串。  
@@ -155,6 +159,13 @@ ms.locfileid: "97109907"
    pip install azure-eventhub
    pip install avro-python3
    ```
+
+    > [!NOTE]
+    > 本文中的程式碼已針對這些版本進行過測試。 
+    > - Python 3.7
+    > - azure-eventhub 5.2.0
+    > - azure-storage-blob 12.6.0
+    > - avro-python3 1.10.1
 2. 將目錄變更為儲存已儲存 sender.py 和 capturereader.py 的目錄，並執行此命令︰
    
    ```

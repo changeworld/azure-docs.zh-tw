@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3d7e6357fd8f1091509cbf27875c028d3af310cb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 904c00c26171854a32234d7b6ba5cac81ac43e5c
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445914"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936663"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站從 Azure Key Vault 設定及擷取祕密
 
@@ -86,4 +86,4 @@ Azure Key Vault 是一項雲端服務，可為祕密提供安全的存放區。 
 - 請參閱[使用 Key Vault 搭配 App Service Web 應用程式](../general/tutorial-net-create-vault-azure-web-app.md)
 - 請參閱[使用 Key Vault 搭配部署至 VM 的應用程式](../general/tutorial-net-virtual-machine.md)
 - 參閱 [Azure Key Vault 開發人員指南](../general/developers-guide.md)
-- 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 請參閱 [Key Vault 安全性概觀](../general/security-overview.md)

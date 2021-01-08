@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/25/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8205ecab3abfc7a944c12db1aca2bf594f6cd98f
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ab335c8cc682f6b33dcb30509d682186a178c676
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349447"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861068"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "96349447"
 
 ## <a name="wire-protocol-compatibility"></a>Wire Protocol 相容性
 
-Azure Cosmos DB 會實作 MongoDB 有線通訊協定。 此實作允許與原生 MongoDB 用戶端 SDK、驅動程式和工具的透明相容性。 Azure Cosmos DB 裝載 MongoDB 資料庫引擎。 您可以在這裡找到 MongoDB 所支援功能的詳細資料： 
+Azure Cosmos DB 會實作 MongoDB 有線通訊協定。 此實作允許與原生 MongoDB 用戶端 SDK、驅動程式和工具的透明相容性。 Azure Cosmos DB 不裝載 MongoDB 資料庫引擎。 您可以在這裡找到 MongoDB 所支援功能的詳細資料： 
 - [適用於 MongoDB 的 Azure Cosmos DB API (引擎版本 3.6)](mongodb-feature-support-36.md)
 - [適用於 MongoDB 的 Azure Cosmos DB API (引擎版本 3.2)](mongodb-feature-support.md)
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d9fdfc89c8c02749fdf677ad119f1eed5a4b1fa2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6ae20c55a16b12f7543af3f08d96400a8e5f20c9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185176"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934912"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>快速入門：適用於 Python 的 Azure Key Vault 憑證用戶端程式庫
 
@@ -86,7 +86,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS 或 Linux
@@ -215,5 +215,5 @@ az group delete --resource-group KeyVault-PythonQS-rg
 - [Azure 金鑰保存庫概觀](../general/overview.md)
 - [針對金鑰保存庫的存取進行保護](../general/secure-your-key-vault.md)
 - [Azure Key Vault 開發人員指南](../general/developers-guide.md)
-- [Azure Key Vault 最佳做法](../general/best-practices.md)
+- [Key Vault 安全性概觀](../general/security-overview.md)
 - [使用 Key Vault 進行驗證](../general/authentication.md)

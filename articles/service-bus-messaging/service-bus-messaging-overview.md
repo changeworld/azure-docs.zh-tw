@@ -3,15 +3,15 @@ title: Azure 服務匯流排傳訊概觀 | Microsoft Docs
 description: 本文提供 Azure 服務匯流排的高階總覽，其為完全受控的企業整合訊息代理程式。
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: b795d0c5b429a812d90e0759fbcde3d348b86e22
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602711"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755730"
 ---
 # <a name="what-is-azure-service-bus"></a>什麼是 Azure 服務匯流排？
-Microsoft Azure 服務匯流排是完全受控的企業訊息代理程式，具有訊息佇列和公用訂閱主題。 服務匯流排可用來將應用程式和服務彼此分離，而提供下列優點：
+Microsoft Azure 服務匯流排是完全受控的企業訊息代理程式，具有訊息佇列和發佈/訂閱主題。 服務匯流排可用來將應用程式和服務彼此分離，而提供下列優點：
 
 - 在競爭的背景工作之間進行工作的負載平衡
 - 跨服務和應用程式界限安全地路由和傳輸資料與控制

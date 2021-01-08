@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1a7bd36a6e3f3cc5b785745fc51f0aede3b47b74
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 2029ec2d0b0f27d7078f381880cf7ca177d24ca0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803301"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020196"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>使用 Azure 媒體分析修訂臉部
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 **Azure 媒體修訂器** 是 [Azure 媒體分析](./legacy-components.md) 媒體處理器 (MP)，可在雲端提供可調整的臉部修訂。 臉部修訂可讓您修改視訊，以模糊所選人物的臉部。 在公共安全和新聞媒體案例中，您可能會想要使用臉部修訂服務。 若要手動修訂包含多個臉部的幾分鐘影片，可能要花上數小時的時間，若使用此服務，則只需要幾個簡單的步驟就能完成臉部修訂程序。
 
@@ -37,11 +37,14 @@ ms.locfileid: "97803301"
 
 除了完全自動模式，還有一種兩段式的工作流程可讓您透過識別碼清單選取/取消選取找到的臉部。 此外，為了進行任意的每一畫面調整，MP 使用 JSON 格式的中繼資料檔案。 此工作流程分割成 **分析** 和 **修訂** 模式。 您可以將這兩種模式結合成單一階段，以在一個作業中執行這兩項工作，我們將這個模式稱為 **結合**。
 
+   > [!NOTE]
+   > 從2020年6月起， [Azure 媒體服務舊版元件](./legacy-components.md)，臉部偵測器媒體處理器已淘汰。 請考慮使用 Azure 媒體服務 v3 API。
+
 ### <a name="combined-mode"></a>結合模式
 
 這會自動產生修訂的 mp4，而不需要手動輸入。
 
-| 階段 | 檔案名稱 | 注意 |
+| 階段 | 檔案名稱 | 附註 |
 | --- | --- | --- |
 | 輸入資產 |foo.bar |WMV、MOV 或 MP4 格式的視訊 |
 | 輸入組態 |作業組態預設值 |{'version':'1.0', 'options': {'mode':'combined'}} |
@@ -51,7 +54,7 @@ ms.locfileid: "97803301"
 
 兩段式工作流程的 **分析** 階段會接受視訊輸入，並產生臉部位置的 JSON 檔案和每個偵測到之臉部的 jpg 影像。
 
-| 階段 | 檔案名稱 | 注意 |
+| 階段 | 檔案名稱 | 附註 |
 | --- | --- | --- |
 | 輸入資產 |foo.bar |WMV、MPV 或 MP4 格式的視訊 |
 | 輸入組態 |作業組態預設值 |{'version':'1.0', 'options': {'mode':'analyze'}} |
@@ -117,7 +120,7 @@ ms.locfileid: "97803301"
 
 分析階段的輸出不包含原始視訊。 視訊必須上傳到修訂模式工作的輸入資產並選取做為主要檔案。
 
-| 階段 | 檔案名稱 | 注意 |
+| 階段 | 檔案名稱 | 附註 |
 | --- | --- | --- |
 | 輸入資產 |foo.bar |WMV、MPV 或 MP4 格式的視訊。 和步驟 1 相同的視訊。 |
 | 輸入資產 |foo_annotations.json |來自第一個階段的註解中繼資料檔案，並帶有選擇性的修改。 |

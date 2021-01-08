@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 59784b6e618e875a6eedc947ce75afdf3bd1df74
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0d4945ee97a46c78aac3c4ac508c5f89f5942296
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327384"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937156"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler Beta 來自動佈建使用者
 
@@ -80,6 +80,9 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 > [!TIP]
 > 建議您選擇為 Zscaler Beta 啟用 SAML 型單一登入，請遵循 [Zscaler Beta 單一登入教學課程](zscaler-beta-tutorial.md)中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
+
+> [!NOTE]
+> 在佈建或取消佈建使用者和群組時，建議您定期重新啟動佈建，以確保群組成員資格會正確更新。 重新啟動會強制讓我們的服務重新評估所有群組，並更新成員資格。  
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>若要在 Azure AD 中為 Zscaler Beta 設定自動使用者佈建：
 

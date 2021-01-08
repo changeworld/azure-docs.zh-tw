@@ -3,19 +3,19 @@ title: Durable Functions 概觀 - Azure
 description: Azure Functions 的 Durable Functions 擴充簡介。
 author: cgillum
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669242"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763569"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions 是什麼？
 
-*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的擴充功能，可讓您在無伺服器計算環境中撰寫具狀態函式。 此擴充功能可讓您使用 Azure Functions 程式設計模型，藉由撰寫[協調器函式**](durable-functions-orchestrations.md)來定義具狀態的工作流程，以及撰寫[實體函式**](durable-functions-entities.md)來定義具狀態的實體。 擴充功能其實會為您管理狀態、檢查點和重新啟動，讓您將焦點放在商務邏輯。
+*Durable Functions* 是 [Azure Functions](../functions-overview.md) 的擴充功能，可讓您在無伺服器計算環境中撰寫具狀態函式。 此擴充功能可讓您使用 Azure Functions 程式設計模型，藉由撰寫[協調器函式](durable-functions-orchestrations.md)來定義具狀態的工作流程，以及撰寫[實體函式](durable-functions-entities.md)來定義具狀態的實體。 擴充功能其實會為您管理狀態、檢查點和重新啟動，讓您將焦點放在商務邏輯。
 
 ## <a name="supported-languages"></a><a name="language-support"></a>支援的語言
 
@@ -23,9 +23,11 @@ Durable Functions 目前支援下列語言：
 
 * **C#**：[預先編譯的類別庫](../functions-dotnet-class-library.md)和 [C# 指令碼](../functions-reference-csharp.md)。
 * **JavaScript**：只有 2.x 版的 Azure Functions 執行階段才支援。 需要 1.7.0 版的 Durable Functions 擴充功能，或更新版本。 
-* **Python**：需要 1.8.5 版的 Durable Functions 擴充功能，或更新版本。 Durable Functions 的支援目前處於公開預覽狀態。
+* **Python**：需要 2.3.1 版的 Durable Functions 擴充功能，或更新版本。 Durable Functions 的支援目前處於公開預覽狀態。
 * **F#**：預先編譯的類別庫和 F# 指令碼。 只有 1.x 版的 Azure Functions 執行階段才支援 F# 指令碼。
 * **PowerShell**：Durable Functions 的支援目前處於公開預覽狀態。 只有 3.x 版的 Azure Functions 執行階段和 PowerShell 7 才支援。 需要 2.2.2 版的 Durable Functions 擴充功能，或更新版本。 目前僅支援以下模式：[函式鏈結](#chaining)、[展開傳送/傳入](#fan-in-out)、[非同步 HTTP API](#async-http)。
+
+若要存取最新的功能和更新，建議您使用最新版的 Durable Functions 擴充功能和語言特定的 Durable Functions 程式庫。 深入了解 [Durable Functions 版本](durable-functions-versions.md)。
 
 Durable Functions 的目標是支援所有的 [Azure Functions 語言](../supported-languages.md)。 請參閱 [Durable Functions 問題清單](https://github.com/Azure/azure-functions-durable-extension/issues)，以取得最新工作狀態來支援其他語言。
 
@@ -261,7 +263,7 @@ Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
 
 ![HTTP API 模式的圖表](./media/durable-functions-concepts/async-http-api.png)
 
-Durable Functions 會提供此模式的**內建**支援，進而簡化或甚至移除您需要撰寫的程式碼，以與長時間執行的函式執行作業互動。 例如，Durable Functions 快速入門範例 ([C#](durable-functions-create-first-csharp.md) 和 [JavaScript](quickstart-js-vscode.md)) 會顯示一個簡單的 REST 命令，您可將此命令用來啟動新的協調器函式執行個體。 在執行個體啟動後，擴充功能就會公開 Webhook HTTP API 來查詢協調器函式的狀態。 
+Durable Functions 會提供此模式的 **內建** 支援，進而簡化或甚至移除您需要撰寫的程式碼，以與長時間執行的函式執行作業互動。 例如，Durable Functions 快速入門範例 ([C#](durable-functions-create-first-csharp.md) 和 [JavaScript](quickstart-js-vscode.md)) 會顯示一個簡單的 REST 命令，您可將此命令用來啟動新的協調器函式執行個體。 在執行個體啟動後，擴充功能就會公開 Webhook HTTP API 來查詢協調器函式的狀態。 
 
 下列範例顯示 REST 命令，這些命令可啟動協調器及查詢其狀態。 為了清楚起見，此範例省略了一些通訊協定詳細資料。
 
@@ -556,7 +558,7 @@ PowerShell 目前不支援人為互動。
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>模式 #6：彙總工具 (具狀態實體)
 
-第六個模式是關於將一段時間的事件資料彙總成單一可定址的「實體」**。 在此模式中，所彙總的資料可能來自多個來源、可分批傳遞，或可散佈於長期的時間。 彙總工具可能需要在事件資料送達時對其採取動作，而外部用戶端可能需要查詢所彙總的資料。
+第六個模式是關於將一段時間的事件資料彙總成單一可定址的「實體」。 在此模式中，所彙總的資料可能來自多個來源、可分批傳遞，或可散佈於長期的時間。 彙總工具可能需要在事件資料送達時對其採取動作，而外部用戶端可能需要查詢所彙總的資料。
 
 ![彙總工具圖表](./media/durable-functions-concepts/aggregator.png)
 
@@ -639,7 +641,7 @@ PowerShell 目前不支援耐久性實體。
 
 ---
 
-用戶端可以使用[實體用戶端繫結](durable-functions-bindings.md#entity-client)，將實體函式的「作業」** 排入佇列 (也稱為「訊號處理」)。
+用戶端可以使用[實體用戶端繫結](durable-functions-bindings.md#entity-client)，將實體函式的「作業」排入佇列 (也稱為「訊號處理」)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

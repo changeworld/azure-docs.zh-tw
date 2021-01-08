@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1b23fa9f9cbf7b385a04835149b5d53cc42351eb
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: db6bb5c204bfe79b9d7470f651081aa4f4dcf2ed
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825883"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932702"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>快速入門：適用於 JavaScript (版本 4) 的 Azure Key Vault 金鑰用戶端程式庫
 
@@ -91,7 +91,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS 或 Linux
@@ -274,4 +274,4 @@ Purging your key from <your-unique-keyvault-name> ... done.
 - 閱讀 [Azure Key Vault 金鑰的概觀](about-keys.md)
 - 如何[針對金鑰保存庫的存取進行保護](../general/secure-your-key-vault.md)
 - 參閱 [Azure Key Vault 開發人員指南](../general/developers-guide.md)
-- 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 請參閱 [Key Vault 安全性概觀](../general/security-overview.md)

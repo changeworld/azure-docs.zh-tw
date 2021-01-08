@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: da3ad4f70e0cc41fe95327eb74093c1471c877bd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 14708ddcc5c0e06ee58f5e9db5945c4e9f1a1d08
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351566"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937136"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler Private Access (ZPA) 來自動佈建使用者
 
@@ -117,6 +117,9 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 > 建議您選擇為 Zscaler Private Access (ZPA) 啟用 SAML 型單一登入，請遵循 [Zscaler Private Access (ZPA) 單一登入教學課程](./zscalerprivateaccess-tutorial.md)中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將這兩者分開設定。
 
 > [!NOTE]
+> 在佈建或取消佈建使用者和群組時，建議您定期重新啟動佈建，以確保群組成員資格會正確更新。 重新啟動會強制讓我們的服務重新評估所有群組，並更新成員資格。  
+
+> [!NOTE]
 > 若要深入了解 Zscaler Private Access 的 SCIM 端點，請參閱[本文](https://www.zscaler.com/partners/microsoft)。
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-private-access-zpa-in-azure-ad"></a>若要在 Azure AD 中對 Zscaler Private Access (ZPA) 設定自動使用者佈建：
@@ -133,7 +136,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
-4. 將 [佈建模式]  設定為 [自動]  。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
@@ -173,7 +176,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]  。
+15. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 

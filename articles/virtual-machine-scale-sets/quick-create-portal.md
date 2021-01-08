@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8243619bc7a32c5fa86b6e108d954674b54394e5
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87077544"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913716"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入門：在 Azure 入口網站建立虛擬機器擴展集
 
@@ -40,7 +40,7 @@ Azure [負載平衡器](../load-balancer/load-balancer-overview.md)會在良好�
     | 訂用帳戶  | 選取您的訂用帳戶。    |    
     | 資源群組 | 選取 [新建]，並在文字方塊中輸入 *myVMSSResourceGroup*。|
     | 名稱           | *myLoadBalancer*         |
-    | 區域         | 選取 [美國東部]。       |
+    | 區域         | 選取 [美國東部]  。       |
     | 類型          | 選取 [公用]。       |
     | SKU           | 選取 [標準]。       |
     | 公用 IP 位址 | 選取 [建立新的]。 |
@@ -60,13 +60,12 @@ Azure [負載平衡器](../load-balancer/load-balancer-overview.md)會在良好�
 1. 在 [基本資料] 索引標籤中的 [專案詳細資料] 底下，確認已選取正確的訂用帳戶，然後選擇 [新建] 資源群組。 為名稱輸入 *myVMSSResourceGroup*，然後選取 [確定]。 
 1. 為您的擴展集名稱輸入 *myScaleSet*。
 1. 在 [區域] 中，選取您附近的區域。
-1. 為 [協調流程模式]保留 [擴展集虛擬機器] 的預設值。
 1. 為 [映像] 選取 Marketplace 映像。 在此範例中，我們已選擇 [Ubuntu Server 18.04 LTS]。
 1. 輸入所需的使用者名稱，然後選取偏好的驗證類型。
-   - **密碼**長度必須至少有 12 個字元，且符合下列四個複雜性需求的其中三項：1 個小寫字元、1 個大寫字元、1 個數字和 1 個特殊字元。 如需詳細資訊，請參閱[使用者名稱和密碼需求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。
+   - **密碼** 長度必須至少有 12 個字元，且符合下列四個複雜性需求的其中三項：1 個小寫字元、1 個大寫字元、1 個數字和 1 個特殊字元。 如需詳細資訊，請參閱[使用者名稱和密碼需求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。
    - 如果您選取 Linux OS 磁碟映像，可以改為選擇 [SSH 公開金鑰]。 在此只需提供您的公開金鑰，例如 *~/.ssh/id_rsa.pub*。 您可以從入口網站使用 Azure Cloud Shell [建立及使用 SSH 金鑰](../virtual-machines/linux/mac-create-ssh-keys.md)。
    
-    ![建立虛擬機器擴展集](./media/virtual-machine-scale-sets-create-portal/quick-create-scaleset.png)
+    :::image type="content" source="./media/virtual-machine-scale-sets-create-portal/quick-create-scale-set.png" alt-text="顯示 Azure 入口網站中擴展集建立選項的影像":::
 
 1. 選取 [下一步] 以移動其他頁面。 
 1. 為 [執行個體] 和 [磁碟] 頁面保留預設值。
