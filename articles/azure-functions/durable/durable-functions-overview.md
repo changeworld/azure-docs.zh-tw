@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763569"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931716"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions 是什麼？
 
@@ -697,7 +697,7 @@ Durable Functions 擴充功能其實是以[長期工作架構](https://github.co
 
 ## <a name="billing"></a>計費
 
-Durable Functions 的收費方式與 Azure Functions 相同。 如需詳細資訊，請參閱 [Azure Functions 價格](https://azure.microsoft.com/pricing/details/functions/)。 在 Azure Functions [取用方案](../functions-scale.md#consumption-plan)中執行協調器函式時，有一些要注意的計費行為。 如需這些行為的詳細資訊，請參閱 [Durable Functions 計費](durable-functions-billing.md)一文。
+Durable Functions 的收費方式與 Azure Functions 相同。 如需詳細資訊，請參閱 [Azure Functions 價格](https://azure.microsoft.com/pricing/details/functions/)。 在 Azure Functions [取用方案](../consumption-plan.md)中執行協調器函式時，有一些要注意的計費行為。 如需這些行為的詳細資訊，請參閱 [Durable Functions 計費](durable-functions-billing.md)一文。
 
 ## <a name="jump-right-in"></a>立即參與
 

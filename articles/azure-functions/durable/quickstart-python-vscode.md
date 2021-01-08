@@ -5,12 +5,12 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 0cc321563de645aeb1d204b67b0ab72053d79c7e
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 749dea2d9d46cb69d0c7c8a799a3f82c04d020e8
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763552"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936170"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>使用 Python 建立第一個耐久函式
 
@@ -68,8 +68,8 @@ Python Azure Functions 需要 2.x 版的 [Azure Functions 擴充功能組合](..
 
     ```json
     "extensionBundle": {
-    "id": "Microsoft.Azure.Functions.ExtensionBundle",
-    "version": "[2.*, 3.0.0)"
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[2.*, 3.0.0)"
     }
     ```
 

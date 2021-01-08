@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 35133b32360f65d70aa1931b31fac6886fd00b02
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 95323ec513f1a3d00347da022f7c808b029bd44f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732949"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934793"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>快速入門：適用於 Java 的 Azure Key Vault 祕密用戶端程式庫
 開始使用適用於 Java 的 Azure Key Vault 秘密用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
@@ -126,7 +126,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS 或 Linux
