@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/12/2018
+ms.date: 01/07/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27f16ac7d7d799c5467b11fd93352dc5fdef666c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322490"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028058"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>使用 Azure CLI 來設定 ExpressRoute 全球存取範圍
 
@@ -48,7 +48,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>識別要設定的 ExpressRoute 線路
 
-您可以在任何兩個 ExpressRoute 線路之間啟用 ExpressRoute 全球範圍，只要它們位於支援的國家/地區，並在不同的對等互連位置建立。 如果這兩個線路皆為您的訂用帳戶所擁有，您可以選擇任一線路來執行設定，如本文稍後所述。 如果這兩個線路位於不同的 Azure 訂用帳戶，您就必須具備其中一個 Azure 訂用帳戶的授權，並在您於另一個 Azure 訂用帳戶中執行設定命令時傳入它的授權金鑰。
+您可以在任何兩個 ExpressRoute 線路之間啟用 ExpressRoute 全球存取範圍。 線路必須位於支援的國家/地區，並在不同的對等互連位置建立。 如果您的訂用帳戶同時擁有這兩個線路，您可以選取任一線路來執行設定。 不過，如果這兩個線路位於不同的 Azure 訂用帳戶中，您必須從其中一個線路建立授權金鑰。 使用從第一個線路產生的授權金鑰，您可以在第二個線路上啟用全球觸達範圍。
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>在內部部署網路之間啟用連線
 
@@ -58,7 +58,7 @@ az account set --subscription <your subscription ID>
 
   > /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-* *位址首碼* 必須是 "/29" IPv4 子網 (例如 "10.0.0.0/29" ) 。 我們會使用此子網路中的 IP 位址，在兩個 ExpressRoute 線路之間建立連線。 您不得在 Azure 虛擬網路或內部部署網路中使用此子網路中的位址。
+* *位址首碼* 必須是 "/29" IPv4 子網 (例如 "10.0.0.0/29" ) 。 我們會使用此子網路中的 IP 位址，在兩個 ExpressRoute 線路之間建立連線。 您無法在 Azure 虛擬網路或內部部署網路中使用此子網中的位址。
 
 執行下列 CLI 命令以連接兩條 ExpressRoute 線路：
 
@@ -94,7 +94,7 @@ CLI 輸出如下所示：
 
 ## <a name="enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions"></a>在不同 Azure 訂用帳戶中啟用 ExpressRoute 線路之間的連線
 
-如果這兩個線路位於不同的 Azure 訂用帳戶，您就需要授權。 在下列設定中，您會在線路 2 的訂用帳戶中產生授權，並將授權金鑰傳遞至線路 1。
+如果這兩個線路位於不同的 Azure 訂用帳戶，您就需要授權。 在下列設定中，您會線上路2的訂用帳戶中產生授權。 然後，將授權金鑰傳遞至線路1。
 
 1. 產生授權金鑰：
 

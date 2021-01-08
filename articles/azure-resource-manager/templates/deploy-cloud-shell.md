@@ -1,18 +1,18 @@
 ---
 title: 使用 Cloud Shell 部署範本
-description: 使用 Azure Resource Manager 和 Cloud Shell 將資源部署到 Azure。 資源會定義在 Azure Resource Manager 範本中。
+description: 使用 Azure Resource Manager 和 Azure Cloud Shell 將資源部署到 Azure。 資源會定義在 Azure Resource Manager 範本中 (ARM 範本) 。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d0b519955cb877f5fb9640cc0cf95a898e1743ef
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681406"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028602"
 ---
-# <a name="deploy-arm-templates-from-cloud-shell"></a>從 Cloud Shell 部署 ARM 範本
+# <a name="deploy-arm-templates-from-azure-cloud-shell"></a>從 Azure Cloud Shell 部署 ARM 範本
 
-您可以使用 [Cloud Shell](../../cloud-shell/overview.md) 部署 Azure Resource Manager 範本 (ARM 範本) 。 您可以部署儲存在遠端的 ARM 範本，或是儲存在本機儲存體帳戶中 Cloud Shell 的 ARM 範本。
+您可以使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 部署 Azure Resource Manager 範本 (ARM 範本) 。 您可以部署儲存在遠端的 ARM 範本，或是儲存在本機儲存體帳戶中 Cloud Shell 的 ARM 範本。
 
 您可以部署到任何範圍。 本文說明如何部署至資源群組。
 
@@ -62,27 +62,27 @@ ms.locfileid: "92681406"
 
 1. 選取 Cloud Shell 的儲存體帳戶。
 
-   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="開啟 Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/cloud-shell-storage.png" alt-text="選取儲存體帳戶":::
 
-1. 選取 [檔案 **共用** ]。
+1. 選取 [檔案 **共用**]。
 
-   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="開啟 Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/files-shares.png" alt-text="選取檔案共用":::
 
 1. 選取 Cloud Shell 的預設檔案共用。 檔案共用的名稱格式為 `cs-<user>-<domain>-com-<uniqueGuid>` 。
 
-   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="開啟 Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/select-file-share.png" alt-text="預設檔案共用":::
 
 1. 加入新的目錄來保存您的範本。 選取該目錄。
 
-   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="開啟 Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/add-directory.png" alt-text="加入目錄":::
 
-1. 選取 [上傳] 。
+1. 選取 [上傳]。
 
-   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="開啟 Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/upload-template.png" alt-text="上傳範本":::
 
 1. 尋找並上傳您的範本。
 
-   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="開啟 Cloud Shell":::
+   :::image type="content" source="./media/deploy-cloud-shell/select-template.png" alt-text="選取範本":::
 
 1. 開啟 Cloud Shell 提示。
 

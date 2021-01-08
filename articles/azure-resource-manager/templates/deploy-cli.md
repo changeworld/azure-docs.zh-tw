@@ -3,12 +3,12 @@ title: 使用 Azure CLI 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure CLI 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7b1639f31b696f300177d05107a98effc3f3ae23
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2caea70a51a737bfa433a089c03b43f252b5d6e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676201"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028143"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>使用 ARM 範本與 Azure CLI 來部署資源
 
@@ -18,13 +18,13 @@ Azure CLI 版本2.2.0 中的部署命令已變更。 本文中的範例需要 Az
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-如果您沒有安裝 Azure CLI，可以使用 Cloud Shell。 如需詳細資訊，請參閱 [部署 Cloud Shell 的 ARM 範本](deploy-cloud-shell.md)。
+如果您未安裝 Azure CLI，可以使用 Azure Cloud Shell。 如需詳細資訊，請參閱 [部署 Azure Cloud Shell 的 ARM 範本](deploy-cloud-shell.md)。
 
 ## <a name="deployment-scope"></a>部署範圍
 
 您可以將部署的目標設為資源群組、訂用帳戶、管理群組或租使用者。 視部署的範圍而定，您可以使用不同的命令。
 
-* 若要部署至 **資源群組** ，請使用 [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)：
+* 若要部署至 **資源群組**，請使用 [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)：
 
   ```azurecli-interactive
   az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
@@ -38,7 +38,7 @@ Azure CLI 版本2.2.0 中的部署命令已變更。 本文中的範例需要 Az
 
   如需訂用帳戶層級部署的詳細資訊，請參閱[在訂用帳戶層級建立資源群組和資源](deploy-to-subscription.md)。
 
-* 若要部署至 **管理群組** ，請使用 [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)：
+* 若要部署至 **管理群組**，請使用 [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)：
 
   ```azurecli-interactive
   az deployment mg create --location <location> --template-file <path-to-template>
@@ -169,7 +169,7 @@ az deployment group create \
 
 ### <a name="inline-parameters"></a>內嵌參數
 
-若要傳遞內嵌參數，請提供 `parameters` 中的值。 例如，若要透過 Bash 殼層將字串和陣列傳遞至範本，請使用：
+若要傳遞內嵌參數，請提供 `parameters` 中的值。 例如，若要在 Bash shell 中將字串和陣列傳遞至範本，請使用：
 
 ```azurecli-interactive
 az deployment group create \
@@ -191,7 +191,7 @@ az deployment group create \
 
 當您需要提供組態值時，從檔案取得參數值會很有幫助。 例如，您可以提供 [Linux 虛擬機器的 cloud-init 值](../../virtual-machines/linux/using-cloud-init.md)。
 
-arrayContent.json 的格式為：
+_arrayContent.js_ 的格式為：
 
 ```json
 [
@@ -228,7 +228,7 @@ az deployment group create --name addstorage  --resource-group myResourceGroup \
 
 如需參數檔案的詳細資訊，請參閱[建立 Resource Manager 參數檔案](parameter-files.md)。
 
-若要傳遞本機參數檔案，請使用 `@` 來指定名為 storage.parameters.json 的本機檔案。
+若要傳遞本機參數檔案，請使用 `@` 指定名為 _storage.parameters.js_ 的本機檔案。
 
 ```azurecli-interactive
 az deployment group create \

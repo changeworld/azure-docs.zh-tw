@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 7938920459654bd59620ad0992f3a13db85ff4fb
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018995"
+ms.locfileid: "98028857"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中撰寫預存程序、觸發程序和使用者定義函式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -284,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>如何撰寫觸發程序
 
-Azure Cosmos DB 支援預先觸發程序和後續觸發程序。 在修改資料庫專案之前會先執行前置觸發程式，並在修改資料庫專案之後執行後續觸發程式。觸發程式不是自動的。 您必須針對想要執行的每個資料庫作業指定它們。
+Azure Cosmos DB 支援預先觸發程序和後續觸發程序。 預先觸發程序會在修改資料庫項目之前執行，而後續觸發程序則在修改資料庫項目執行之後執行。 觸發程式不會自動執行，您必須針對想要執行的每個資料庫作業指定這些觸發程式。 定義觸發程式之後，您應該使用 Azure Cosmos DB Sdk 來 [註冊和呼叫預先觸發](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) 程式。
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>預先觸發程式
 

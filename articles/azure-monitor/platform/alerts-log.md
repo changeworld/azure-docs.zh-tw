@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: a8dbadd3af9dc21ced54af151e4de705f854e011
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 950482a96604165a8f1ff20cab9e3eafe1224c90
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696059"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028993"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure 監視器來建立、檢視及管理記錄警示
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 記錄警示可讓使用者使用 [Log Analytics](../log-query/log-analytics-tutorial.md) 查詢來評估每個設定頻率的資源記錄，並根據結果引發警示。 規則可以使用 [動作群組](./action-groups.md)觸發一或多個動作。 [深入瞭解記錄警示的功能和術語](alerts-unified-log.md)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "97696059"
 
 下列步驟可讓您開始撰寫警示的查詢：
 
-1. 移至您想要警示的資源。
+1. 移至您想要警示的資源。 請考慮盡可能選取訂用帳戶或資源群組範圍，以在多個資源上設定警示規則。 對多個資源發出警示可降低成本，以及管理多個警示規則的需求。
 1. 在 [ **監視**] 底下，選取 [ **記錄**]。
 1. 查詢可指出問題的記錄資料。 您可以使用「 [警示查詢範例」主題](../log-query/example-queries.md) 來瞭解您可以探索的內容，或 [開始撰寫您自己的查詢](../log-query/log-analytics-tutorial.md)。 此外，[了解如何建立最佳化的警示查詢](alerts-log-query.md)。
 1. 按 [+ 新增警示規則] 按鈕，以啟動警示建立流程。
@@ -155,7 +155,7 @@ ms.locfileid: "97696059"
     1. 視需要選擇 [依維度分割的警示](alerts-unified-log.md#split-by-alert-dimensions)： 
        - 如果偵測到，系統會自動選取 [**資源識別碼**] 資料行，並將引發的警示內容變更為記錄的資源。 
        - 您可以取消選取 [**資源識別碼**] 資料行，以在訂用帳戶或資源群組上引發警示。 當查詢結果是以跨資源為基礎時，取消選取會很有用。 例如，檢查80% 的資源群組虛擬機器是否遇到高 CPU 使用率的查詢。
-       - 使用維度資料表的任何數位或文字資料行類型，最多可以選取六個額外的 splittings。
+       - 使用 dimension 資料表的任何數位或文字資料行類型，也可以選取最多六個 splittings。
        - 系統會根據唯一組合的分割來個別引發警示，而警示承載則包含這種資訊。
     
         ![選取匯總參數和分割](media/alerts-log/select-aggregation-parameters-and-splitting.png)

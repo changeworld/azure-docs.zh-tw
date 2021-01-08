@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/05/2021
+ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: fd3e4a4442f7da89ffee1557e7d908db805931ed
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014861"
+ms.locfileid: "98028466"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -87,12 +87,14 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 | `given_name`  | 名字                      | 提供使用者物件上設定的使用者名字。<br>"given_name"："Frank"                   | MSA 和 Azure AD 支援。  需要 `profile` 範圍。 |
 | `upn`         | 使用者主體名稱 | 可與 username_hint 參數搭配使用的使用者識別碼。  不是使用者的持久性識別碼，也不能用來唯一識別使用者資訊 (例如，做為資料庫金鑰) 。 相反地，請使用使用者物件識別碼 (`oid`) 做為資料庫索引鍵。 使用 [替代登入識別碼登](../authentication/howto-authentication-use-email-signin.md) 入的使用者不應該顯示其使用者主體名稱 (UPN) 。 相反地，請使用下列宣告來 `preferred_username` 向使用者顯示登入狀態。 | 如需了解宣告的設定，請參閱下方的[額外屬性](#additional-properties-of-optional-claims)。 需要 `profile` 範圍。|
 
+## <a name="v10-specific-optional-claims-set"></a>1.0 版特定的選擇性宣告集
+
+使用 v1 權杖格式的應用程式可以使用 v2 權杖格式的部分增強功能，因為它們有助於提高安全性和可靠性。 這些將不會對從 v2 端點要求的識別碼權杖生效，也不會對使用 v2 權杖格式的 Api 存取權杖。 這些只適用于 Jwt，而非 SAML 權杖。 
 
 **表4：僅1.0 版的選擇性宣告**
 
-使用 v1 權杖格式的應用程式可以使用 v2 權杖格式的部分增強功能，因為它們有助於提高安全性和可靠性。 這些將不會對從 v2 端點要求的識別碼權杖生效，也不會對使用 v2 權杖格式的 Api 存取權杖。 
 
-| JWT 宣告     | 名稱                            | 描述 | 附註 |
+| JWT 宣告     | 名稱                            | 描述 | 注意 |
 |---------------|---------------------------------|-------------|-------|
 |`aud`          | 適用對象 | 一律存在於 Jwt 中，但在 v1 存取權杖中，可以透過各種不同的方式發出，也就是具有或不含尾端斜線的任何 appID URI，以及資源的用戶端識別碼。 在執行權杖驗證時，這種隨機載入可能很難進行程式碼撰寫。  使用此宣告的 [其他屬性](#additional-properties-of-optional-claims) ，以確保一律會將其設定為 v1 存取權杖中的資源用戶端識別碼。 | v1 JWT 存取權杖|
 |`preferred_username` | 慣用的使用者名稱        | 在 v1 權杖內提供慣用的使用者名稱宣告。 這可讓應用程式更容易提供使用者名稱提示，並顯示人類可閱讀的顯示名稱，不論其權杖類型為何。  建議您使用此選用宣告，而不要使用，例如 `upn` 或 `unique_name` 。 | v1 識別碼權杖和存取權杖 |
@@ -245,7 +247,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **透過 UI 設定群組選擇性宣告：**
 
-1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 [管理]  底下選取 [應用程式註冊]  。
@@ -258,7 +260,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **透過應用程式資訊清單設定群組選擇性宣告：**
 
-1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 從清單中，選取您要設定選擇性宣告的應用程式。
@@ -389,7 +391,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **UI 設定：**
 
-1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
 
 1. 搜尋並選取 [Azure Active Directory]  。
@@ -412,7 +414,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 **資訊清單設定：**
 
-1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 從清單中，找出並選取您要設定選擇性宣告的應用程式。
