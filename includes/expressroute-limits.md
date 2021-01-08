@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 12c0acd5211a6fbcfd1e2861a3109b57fc67dbcf
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 54306b8bd8718a0a69f5b04ceaab15dff46d21a8
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930553"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978844"
 ---
 | 資源 | 限制 |
 | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "97930553"
 | 每個訂用帳戶每個區域的 ExpressRoute 線路 (具有 Azure Resource Manager) |10 |
 | 具有 ExpressRoute Standard 的 Azure 私人對等互連的公告路由數目上限 |4,000 |
 | 具有 ExpressRoute Premium 附加元件的 Azure 私人對等互連的公告路由數目上限 |10,000 |
-| 從 ExpressRoute 連線的 VNet 位址空間的 Azure 私人對等互連的公告路由數目上限 |200 |
+| 從 ExpressRoute 連線的 VNet 位址空間的 Azure 私人對等互連的公告路由數目上限 |1000 |
 | 具有 ExpressRoute Standard 的 Microsoft 對等互連的公告路由數目上限 |200 |
 | 具有 ExpressRoute Premium 附加元件的 Microsoft 對等互連的公告路由數目上限 |200 |
 | 連結至相同對等互連位置的相同虛擬網路的 ExpressRoute 線路數目上限 |4 |

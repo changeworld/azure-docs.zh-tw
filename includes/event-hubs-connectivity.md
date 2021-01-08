@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/19/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dac82692c76d9d36b1f25d7b93b5c3a2e2400672
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002781"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978834"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上開啟哪些連接埠？ 
 您可以使用下列通訊協定搭配 Azure 事件中樞來傳送和接收事件：
@@ -34,7 +34,7 @@ ms.locfileid: "96002781"
 
 正式的 Azure Sdk 通常會使用 AMQP 通訊協定來從事件中樞傳送和接收事件。 AMQP over Websocket 通訊協定選項會透過埠 TCP 443 （如同 HTTP API）來執行，但在功能上與一般 AMQP 相同。 此選項的初始連線延遲較高，因為有額外的交握往返，而且會稍微增加額外的負荷，以因應共用 HTTPS 埠的取捨。 如果選取此模式，則 TCP 埠443已足夠進行通訊。 下列選項可讓您選取 [一般 AMQP] 或 [AMQP Websocket] 模式：
 
-| Language | 選項   |
+| 語言 | 選項   |
 | -------- | ----- |
 | .NET     | 具有[EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true)或[EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true)的[EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true)屬性 |
 | Java     | [eventhubs. EventProcessorClientBuilder. transporttype](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) with [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) or [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
@@ -72,7 +72,7 @@ ms.locfileid: "96002781"
     > [!NOTE]
     > 命令傳回的 IP 位址 `nslookup` 不是靜態 ip 位址。 不過，它會保持不變，直到基礎部署被刪除或移至不同的叢集為止。
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>哪裡可以找到用戶端 IP 傳送或接收到命名空間的訊息？
+### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>哪些用戶端 Ip 會將事件傳送至我的命名空間或從中接收事件？
 首先，在命名空間上啟用 [IP 篩選](../articles/event-hubs/event-hubs-ip-filtering.md) 。 
 
 然後，遵循「[啟用診斷記錄](../articles/event-hubs/event-hubs-diagnostic-logs.md#enable-diagnostic-logs)」中的指示，啟用[事件中樞虛擬網路線上活動](../articles/event-hubs/event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)的診斷記錄。 您會看到連線遭到拒絕的 IP 位址。
@@ -92,3 +92,6 @@ ms.locfileid: "96002781"
 
 > [!IMPORTANT]
 > 只有在命名空間允許 (IP 篩選規則) 的 **特定 ip 位址** 進行存取時，才會產生虛擬網路記錄檔。 如果您不想要使用這些功能來限制對命名空間的存取權，但仍想要取得虛擬網路記錄來追蹤連線至事件中樞命名空間之用戶端的 IP 位址，您可以使用下列因應措施：啟用 IP 篩選，並將可定址的 IPv4 範圍總計新增 (1.0.0.0/1-255.0.0.0/1) 。 事件中樞不支援 IPv6 位址範圍。 
+
+> [!NOTE]
+> 目前無法判斷個別訊息或事件的來源 IP。 

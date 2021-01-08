@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: 3000709f19b53eb6e79b4dae0559040ca025c9e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58d547995d39505da18a6bca1a6c3925b95252a6
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282721"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978786"
 ---
-若要以壓縮的音訊格式串流至語音服務，請建立 `PullAudioInputStream` 或 `PushAudioInputStream` 。 然後， `AudioConfig` 從串流類別的實例中建立，並指定資料流程的壓縮格式。
+若要設定語音 SDK 接受壓縮的音訊輸入，請建立 `PullAudioInputStream` 或 `PushAudioInputStream` 。 然後， `AudioConfig` 從串流類別的實例中建立，並指定資料流程的壓縮格式。
 
 讓我們假設您的使用案例是用於檔案 `PullStream` `MP3` 。 您的程式碼看起來可能像這樣：
 
