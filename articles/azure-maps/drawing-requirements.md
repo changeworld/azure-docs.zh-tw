@@ -3,23 +3,23 @@ title: 'Microsoft Azure Maps Creator (Preview 中繪製套件需求) '
 description: 瞭解轉換設備設計檔案以對應資料的繪圖套件需求
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 1/08/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903457"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044776"
 ---
 # <a name="drawing-package-requirements"></a>繪圖套件需求
 
 
 > [!IMPORTANT]
-> Azure 地圖服務 Creator 服務目前處於公開預覽狀態。
+> Azure Maps Creator 服務目前為公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您可以使用 [Azure 地圖服務轉換服務](/rest/api/maps/conversion)，將已上傳的繪圖封裝轉換成對應資料。 本文將說明轉換 API 的繪圖套件需求。 若要查看範例套件，您可以下載[繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples)範例。
@@ -41,7 +41,7 @@ ms.locfileid: "96903457"
 | 階層 | AutoCAD DWG 圖層。|
 | 層級 | 已設定高度的建築物區域。 例如，建築物的樓層。 |
 | Xref  |以 AutoCAD DWG 檔案格式)  ( 的檔案，會附加至主要繪圖作為外部參考。  |
-| 功能 | 結合幾何與額外中繼資料資訊的物件。 |
+| 功能 | 結合幾何與其他中繼資料資訊的物件。 |
 | 功能類別 | 特徵的常見藍圖。 例如，某個 *單位* 是功能類別，而 *辦公室* 是一項功能。 |
 
 ## <a name="drawing-package-structure"></a>繪圖套件結構
@@ -49,9 +49,9 @@ ms.locfileid: "96903457"
 繪製套件是包含下列檔案的 .zip 封存檔：
 
 * AutoCAD DWG 檔案格式的 DWG 檔案。
-* 單一設施的 _manifest.json_ 檔案。
+* 描述繪圖套件中 DWG 檔案的檔案 _manifest.js_ 。
 
-您可以在資料夾內以任何方式組織 DWG 檔案，但資訊清單檔必須存留在資料夾的根目錄中。 您必須將資料夾壓縮成 .zip 副檔名的單一保存檔案。 下一節將詳細說明 DWG 檔案的需求、資訊清單檔案，以及這些檔案的內容。  
+繪圖套件必須壓縮成 .zip 副檔名的單一保存檔案。 您可以在套件內以任何方式組織 DWG 檔案，但資訊清單檔案必須存留在壓縮封裝的根目錄中。 下面各節將詳細說明 DWG 檔案、資訊清單檔案及這些檔案內容的需求。
 
 ## <a name="dwg-files-requirements"></a>DWG 檔案需求
 
@@ -60,6 +60,7 @@ ms.locfileid: "96903457"
 * 必須定義「外部」和「單位」圖層。 它可以選擇性地定義下列選用圖層： _牆_、 _門_、 _UnitLabel_、 _Zone_ 和 _ZoneLabel_。
 * 不能包含多個樓層中的特徵。
 * 不能包含多個設施中的特徵。
+* 必須參考與繪圖套件中其他 DWG 檔案相同的測量系統和度量單位。
 
 [Azure 地圖轉換服務](/rest/api/maps/conversion)可以從 DWG 檔案中將下列特徵類別解壓縮：
 
@@ -78,19 +79,19 @@ DWG 圖層也必須遵循下列準則：
 
 * 所有 DWG 檔案的繪圖來源都必須對齊相同的緯度和經度。
 * 每個樓層的方向都必須與其他樓層相同。
-* 自動相交的多邊形會自動修復，而 [Azure 地圖服務轉換服務](/rest/api/maps/conversion) 會引發警告。 您應手動檢查修復的結果，因為它們可能不符合預期的結果。
+* 自動相交的多邊形會自動修復，而 [Azure 地圖服務轉換服務](/rest/api/maps/conversion) 會引發警告。 建議您手動檢查修復的結果，因為它們可能不符合預期的結果。
 
-所有圖層實體都必須是下列其中一種類型：直線、折線、多邊形、圓弧、圓形或文字 (單一線條) 。 系統會忽略任何其他實體類型。
+所有圖層實體都必須是下列其中一種類型：直線、折線、多邊形、圓弧、圓形、橢圓形 (封閉的) ，或 (單一行的文字) 。 系統會忽略任何其他實體類型。
 
-下表概述支援的實體類型，以及每個圖層的支援功能。 如果圖層包含不支援的實體類型，則 [Azure 地圖服務轉換服務](/rest/api/maps/conversion) 會忽略這些實體。  
+下表概述每個圖層支援的實體類型和已轉換的地圖功能。 如果圖層包含不支援的實體類型，則 [Azure 地圖服務轉換服務](/rest/api/maps/conversion) 會忽略這些實體。  
 
-| 階層 | 實體類型 | 特性 |
+| 階層 | 實體類型 | 轉換的功能 |
 | :----- | :-------------------| :-------
-| [外部](#exterior-layer) | 多邊形、聚合線條 (封閉)、圓形 | Levels
-| [單位](#unit-layer) |  多邊形、聚合線條 (封閉)、圓形 | 垂直 penetrations，單位
-| [牆](#wall-layer)  | 多邊形、聚合線條 (封閉)、圓形 | 不適用。 如需詳細資訊，請參閱[牆圖層](#wall-layer)。
+| [外部](#exterior-layer) | 多邊形、聚合線條 (封閉的) 、圓形、橢圓形 (封閉)  | Levels
+| [單位](#unit-layer) |  多邊形、聚合線條 (封閉的) 、圓形、橢圓形 (封閉)  | 垂直 penetrations、單位
+| [牆](#wall-layer)  | 多邊形、聚合線條 (封閉的) 、圓形、橢圓形 (封閉)  | 不適用。 如需詳細資訊，請參閱[牆圖層](#wall-layer)。
 | [門](#door-layer) | 多邊形、聚合線條、線條、圓弧、圓形 | 開口
-| [區域](#zone-layer) | 多邊形、聚合線條 (封閉)、圓形 | 區域
+| [區域](#zone-layer) | 多邊形、聚合線條 (封閉的) 、圓形、橢圓形 (封閉)  | 區域
 | [UnitLabel](#unitlabel-layer) | 文字 (單行) | 不適用。 此圖層只能從單位層將屬性新增至單位特徵。 如需詳細資訊，請參閱 [UnitLabel 圖層](#unitlabel-layer)。
 | [ZoneLabel](#zonelabel-layer) | 文字 (單行) | 不適用。 此層只能從 ZonesLayer 將屬性新增至區域特徵。 如需詳細資訊，請參閱 [ZoneLabel 圖層](#zonelabel-layer)。
 
@@ -102,8 +103,10 @@ DWG 圖層也必須遵循下列準則：
 
 無論外部層有多少個實體繪圖， [產生的設備資料集](tutorial-creator-indoor-maps.md#create-a-feature-stateset) 都只會包含一個適用于每個 DWG 檔案的層級功能。 此外：
 
-* Exteriors 必須以多邊形、聚合線條 (封閉) 或圓形的形式繪製。
-* Exteriors 可以重迭，但會被解析成一個幾何。
+* Exteriors 必須繪製為多邊形、聚合線條 (封閉的) 、圓形或橢圓形 (封閉的) 。
+* Exteriors 可能會重迭，但會被解除為一個幾何。
+* 結果層級功能至少必須有4個正方形計量。
+* 產生的層級功能不能大於400正方形計量。
 
 如果圖層包含多個重迭的多個線條，則會將多線條解析成單一層級功能。 或者，如果圖層包含多個非重迭的多個線條，則產生的層級功能會有多多邊形標記法。
 
@@ -111,9 +114,11 @@ DWG 圖層也必須遵循下列準則：
 
 ### <a name="unit-layer"></a>單位圖層
 
-每個層級的 DWG 檔案會定義包含單位的圖層。 單位是建築物中的可通行空間，例如辦公室、走廊、階梯和電梯。 單位圖層應遵循下列需求：
+每個層級的 DWG 檔案會定義包含單位的圖層。 單位是建築物中的可通行空間，例如辦公室、走廊、階梯和電梯。 如果 `VerticalPenetrationCategory` 定義了屬性，則跨越多個層級的可導覽單位（例如電梯和階梯）都會轉換成垂直滲透功能。 彼此重迭的垂直滲透功能會被指派一個 `setid` 。
 
-* 單位必須繪製為多邊形、聚合線條 (封閉) 或圓形。
+單位圖層應遵循下列需求：
+
+* 單位必須繪製為多邊形、聚合線條 (封閉的) 、圓形或橢圓形 (封閉的) 。
 * 單位必須落在設施外部周邊的範圍內。
 * 單位不能部分重疊。
 * 單位不得包含任何自我相交的幾何圖形。
@@ -126,7 +131,7 @@ DWG 圖層也必須遵循下列準則：
 
 每個層級的 DWG 檔案都可以包含圖層，以定義背景牆、資料行和其他建築物結構的實體範圍。
 
-* 您必須以多邊形、聚合線條 (封閉的) 或圓形來繪製牆壁。
+* 您必須以多邊形、聚合線條 (封閉的) 、圓形或橢圓形 (封閉) 來繪製牆壁。
 * 牆壁圖層應只包含被解釋為建立結構的幾何。
 
 您可以在 [範例繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples)中看到牆壁圖層的範例。
@@ -141,9 +146,9 @@ Azure 地圖服務資料集中的門，會表示為與多個單位界限重迭�
 
 ### <a name="zone-layer"></a>區域圖層
 
-每個層級的 DWG 檔案可以包含定義區域實體範圍的區域層。 區域可以是空的室內空間或後院。
+每個層級的 DWG 檔案可以包含定義區域實體範圍的區域層。 區域是不可導覽的空間，可以命名和轉譯。 區域可以橫跨多個層級，並使用 zoneSetId 屬性將它們群組在一起。
 
-* 區域必須以多邊形、聚合線條 (封閉) 或圓形的形式繪製。
+* 區域必須繪製為多邊形、聚合線條 (封閉) 或橢圓形 (封閉) 。
 * 區域可以重迭。
 * 區域可以落在設備的外部周邊或外部。
 
@@ -153,7 +158,7 @@ Azure 地圖服務資料集中的門，會表示為與多個單位界限重迭�
 
 ### <a name="unitlabel-layer"></a>UnitLabel 圖層
 
-每個層級的 DWG 檔案可以包含 UnitLabel 圖層。 UnitLabel 圖層會將名稱屬性新增至從單元層解壓縮的單位。 具有名稱屬性的單位可以在資訊清單檔中指定額外的詳細資料。
+每個層級的 DWG 檔案可以包含 UnitLabel 圖層。 UnitLabel 圖層會將名稱屬性新增至從單元層解壓縮的單位。 具有 name 屬性的單位可以在資訊清單檔中指定更多詳細資料。
 
 * 單位標籤必須是單行文字實體。
 * 單位標籤必須落在其單位的界限內。
@@ -163,7 +168,7 @@ Azure 地圖服務資料集中的門，會表示為與多個單位界限重迭�
 
 ### <a name="zonelabel-layer"></a>ZoneLabel 圖層
 
-每個層級的 DWG 檔案可以包含 ZoneLabel 圖層。 此層會將名稱屬性新增至從區域圖層擷取的區域。 具有名稱屬性的區域可以在資訊清單檔中指定額外的詳細資料。
+每個層級的 DWG 檔案可以包含 ZoneLabel 圖層。 此層會將名稱屬性新增至從區域圖層擷取的區域。 具有 name 屬性的區域可以在資訊清單檔中指定更多詳細資料。
 
 * 區域標籤必須是單行文字實體。
 * 區域標籤必須落在其區域的界限內。
@@ -186,8 +191,8 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 | `buildingLevels` | true | 指定建築物的樓層，以及包含樓層設計的檔案。 |
 | `georeference` | true | 包含設施繪圖的數值地理資訊。 |
 | `dwgLayers` | true | 列出圖層的名稱，而每個圖層都會列出其所有特徵的名稱。 |
-| `unitProperties` | false | 可以用來插入單位特徵的其他中繼資料。 |
-| `zoneProperties` | false | 可以用來插入區域特徵的其他中繼資料。 |
+| `unitProperties` | false | 可以用來插入多個單位功能的中繼資料。 |
+| `zoneProperties` | false | 可以用來為區域功能插入更多中繼資料。 |
 
 下面各節將詳細說明每個物件的需求。
 
@@ -260,7 +265,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 |`verticalPenetrationDirection`|    字串|    false    |如果已定義 `verticalPenetrationCategory`，則可選擇定義有效的行進方向。 允許的值為： `lowToHigh` 、 `highToLow` 、 `both` 和 `closed` 。 預設值是 `both`。|
 | `nonPublic` | bool | false | 指出單位是否要向外公開。 |
 | `isRoutable` | bool | false | 當這個屬性設定為時 `false` ，您無法移至或透過單位。 預設值是 `true`。 |
-| `isOpenArea` | bool | false | 允許流覽代理程式進入單位，而不需要將開啟連接至單位。 依預設，此值會設定為， `true` 而不含任何下傳的單位，以及具有下傳 `false` 的單位。 在 `isOpenArea` `false` 沒有任何開啟結果的單位上手動將設定為，會產生警告。 這是因為所產生的單元將無法由流覽代理程式來觸達。|
+| `isOpenArea` | bool | false | 允許流覽代理程式進入單位，而不需要將開啟連接至單位。 依預設，此值會設定為， `true` 而不含任何下傳的單位，以及具有下傳 `false` 的單位。 `isOpenArea` `false` 在沒有開啟結果的單位上手動將設定為，因為流覽代理程式無法連線到產生的單位。|
 
 ### `zoneProperties`
 
@@ -276,7 +281,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 
 ### <a name="sample-drawing-package-manifest"></a>繪圖套件資訊清單範例
 
-以下是範例繪圖套件的範例資訊清單檔。 若要下載整個封裝，請參閱 [範例繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
+以下是範例繪圖套件的資訊清單檔。 若要下載整個封裝，請參閱 [範例繪圖套件](https://github.com/Azure-Samples/am-creator-indoor-data-examples)。
 
 #### <a name="manifest-file"></a>資訊清單檔
 
@@ -407,7 +412,7 @@ zip 資料夾必須在目錄的根樓層中包含資訊清單檔，而且該檔�
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 當您的繪圖套件符合需求時，您可以使用 [Azure 地圖服務轉換服務](/rest/api/maps/conversion) 將封裝轉換成地圖資料集。 然後，您可以使用「室內地圖」模組，使用資料集來產生室內地圖。
 

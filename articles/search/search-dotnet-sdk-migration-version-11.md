@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/07/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c5f070f59df69bb186041af450e6ca922469d960
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532817"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043739"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升級至 Azure 認知搜尋 .NET SDK 11 版
 
@@ -30,8 +30,7 @@ ms.locfileid: "96532817"
 + 三個用戶端，而不是兩個： `SearchClient` 、 `SearchIndexClient` 、 `SearchIndexerClient`
 + 命名 Api 範圍和簡化部分工作的小型結構差異之間的差異
 
-> [!NOTE]
-> 請參閱 [**變更記錄**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) 檔，以取得 .net SDK 第11版中變更的詳細清單。
+除了本文之外，您還可以複習 [變更記錄](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) 檔，以取得 .net SDK 11 版中的詳細變更清單。
 
 ## <a name="package-and-library-consolidation"></a>封裝和程式庫合併
 
@@ -90,7 +89,7 @@ ms.locfileid: "96532817"
 | 第10版 | 第11版對等專案 |
 |------------|-----------------------|
 | [索引編製程式](/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
-| [資料來源](/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
+| [DataSource](/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
 | [技能](/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [技能集](/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [DataSourceType](/dotnet/api/microsoft.azure.search.models.datasourcetype) | [SearchIndexerDataSourceType](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) |
@@ -109,6 +108,41 @@ ms.locfileid: "96532817"
 | [>documentsearchresult](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) | [>.searchresult](/dotnet/api/azure.search.documents.models.searchresult-1) 或 [>.searchresults](/dotnet/api/azure.search.documents.models.searchresults-1)，視結果為單一或多個檔而定。 |
 | [DocumentSuggestResult](/dotnet/api/microsoft.azure.search.models.documentsuggestresult-1) | [SuggestResults](/dotnet/api/azure.search.documents.models.suggestresults-1) |
 | [>searchparameters](/dotnet/api/microsoft.azure.search.models.searchparameters) |  [SearchOptions](/dotnet/api/azure.search.documents.searchoptions)  |
+
+### <a name="json-serialization"></a>JSON 序列化
+
+根據預設，Azure SDK 使用 [System.Text.Json](/dotnet/api/system.text.json) 進行 JSON 序列化，依賴這些 api 的功能來處理先前透過原生 [SerializePropertyNamesAsCamelCaseAttribute](/dotnet/api/microsoft.azure.search.models.serializepropertynamesascamelcaseattribute) 類別所執行的文字轉換，在新的程式庫中沒有對應的類別。
+
+若要將屬性名稱序列化為 camelCase，您可以使用類似[此範例](https://github.com/Azure/azure-sdk-for-net/tree/d263f23aa3a28ff4fc4366b8dee144d4c0c3ab10/sdk/search/Azure.Search.Documents#use-c-types-for-search-results)) 的[JsonPropertyNameAttribute](/dotnet/api/system.text.json.serialization.jsonpropertynameattribute) (。
+
+或者，您也可以設定[JsonSerializerOptions](/dotnet/api/system.text.json.jsonserializeroptions)中提供的[JsonNamingPolicy](/dotnet/api/system.text.json.jsonnamingpolicy) 。 下列 System.Text.Js程式碼範例（取自 camelCase）將 [示範如何](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial/README.md#deserializing-documents) 使用，而不需要為每個屬性進行屬性：
+
+```csharp
+// Get the Azure Cognitive Search endpoint and read-only API key.
+Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
+AzureKeyCredential credential = new AzureKeyCredential(Environment.GetEnvironmentVariable("SEARCH_API_KEY"));
+
+// Create serializer options with our converter to deserialize geographic points.
+JsonSerializerOptions serializerOptions = new JsonSerializerOptions
+{
+    Converters =
+    {
+        new MicrosoftSpatialGeoJsonConverter()
+    },
+    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+};
+
+SearchClientOptions clientOptions = new SearchClientOptions
+{
+    Serializer = new JsonObjectSerializer(serializerOptions)
+};
+
+SearchClient client = new SearchClient(endpoint, "mountains", credential, clientOptions);
+Response<SearchResults<Mountain>> results = client.Search<Mountain>("Rainier");
+```
+
+如果您使用 Newtonsoft.Json 進行 JSON 序列化，您可以使用類似的屬性傳入全域命名原則，或使用 [JsonSerializerSettings](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonSerializerSettings.htm)上的屬性。 如需相當於上述的範例，請參閱讀我檔案的 Newtonsoft.Js中的還原 [序列化檔範例](https://github.com/Azure/azure-sdk-for-net/blob/259df3985d9710507e2454e1591811f8b3a7ad5d/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) 。
+
 
 <a name="WhatsNew"></a>
 
@@ -202,7 +236,7 @@ Azure 認知搜尋用戶端程式庫的每個版本都是以對應的 REST API �
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-11"></a>第11版中的重大變更
+## <a name="breaking-changes"></a>重大變更
 
 由於程式庫和 Api 的清除變更，升級至第11版並不簡單，而且會導致您的程式碼不會再與第10版及更早版本相容的重大變更。 如需差異的完整評論，請參閱的 [變更記錄](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) 檔 `Azure.Search.Documents` 。
 
@@ -212,7 +246,7 @@ Azure 認知搜尋用戶端程式庫的每個版本都是以對應的 REST API �
 
 + Null 值的[排序結果](search-query-odata-orderby.md)已在此版本中變更，如果排序是，則會先出現 null 值，如果 `asc` 排序是，則為最後一個 `desc` 。 如果您撰寫程式碼來處理 null 值的排序方式，您應該在不再需要時，檢查並可能移除該程式碼。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 + [Azure.Search.Documents 套件](https://www.nuget.org/packages/Azure.Search.Documents/)
 + [GitHub 範例](https://github.com/azure/azure-sdk-for-net/tree/Azure.Search.Documents_11.0.0/sdk/search/Azure.Search.Documents/samples)

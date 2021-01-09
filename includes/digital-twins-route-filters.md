@@ -5,14 +5,14 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: 5eafac1c1bc2e7dd28e0cae544dc178e5bdc601e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: e06e660a43aaa0ff5eb79bc00bd8a5d2c61c6580
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96748228"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045305"
 ---
-| 篩選名稱 | 說明 | 篩選文字架構 | 支援的值 | 
+| 篩選名稱 | 描述 | 篩選文字架構 | 支援的值 | 
 | --- | --- | --- | --- |
 | True/False | 允許建立未篩選的路由，或停用路由，不傳送任何事件 | `<true/false>` | `true` = 未篩選的路由已啟用 <br> `false` = 路由已停用 |
 | 類型 | 流經數位對應項實例的[事件種類](../articles/digital-twins/concepts-route-events.md#types-of-event-messages) | `type = '<eventType>'` | 以下是可能的事件種類值： <br>`Microsoft.DigitalTwins.Twin.Create` <br> `Microsoft.DigitalTwins.Twin.Delete` <br> `Microsoft.DigitalTwins.Twin.Update`<br>`Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br> `Microsoft.DigitalTwins.Relationship.Delete` <br> `microsoft.iot.telemetry`  |
@@ -25,15 +25,7 @@ ms.locfileid: "96748228"
 
 請注意，您可以將多個篩選新增至要求，如下所示： 
 
-```json  
-{
-    "endpointName": "dt-endpoint", 
-    "filter": "true", 
-    "filter": "source = 'ADT-resource.api.wus2.digitaltwins.azure.net/myFloorID'", 
-    "filter": "type = 'Microsoft.DigitalTwins.Twin.Delete'", 
-    "filter": "specversion = '1.0'"
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter-multiple.json":::
 
 下列資料類型支援作為上述資料參考所傳回的值：
 
@@ -47,14 +39,14 @@ ms.locfileid: "96748228"
 
 定義路由篩選時支援下列運算子：
 
-|系列|運算子|範例|
+|Family|運算子|範例|
 |-|-|-|
 |邏輯|和、或 ( ) |`(type != 'microsoft.iot.telemetry' OR datacontenttype = 'application/json') OR (specversion != '1.0')`|
 |比較|<、<=、>、>=、=、！ =|`$body.temperature <= 5.5`
 
 定義路由篩選時支援下列功能：
 
-|函式|說明|範例|
+|函式|描述|範例|
 |--|--|--|
 |STARTS_WITH (x，y) |如果值是以字串開頭，則傳回 true `x` `y` 。|`STARTS_WITH($body.$metadata.$model, 'dtmi:example:com:floor')`|
 |ENDS_WITH (x，y)  | 如果值 `x` 以字串結尾，則傳回 true `y` 。|`ENDS_WITH($body.$metadata.$model, 'floor;1')`|

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1fc5be93e2b9729838aa9fb3a777936003c5f45
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356380"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045949"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>瞭解數位 twins 及其對應項圖表
 
-在 Azure 數位 Twins 解決方案中，您環境中的實體會由 Azure **數位 Twins** 表示。 數位對應項是您其中一個自訂 [模型](concepts-models.md)的實例。 您可以透過 **關聯** 性連接到其他數位 twins 來形成對應項 **圖形** ：此對應項圖形是您整個環境的標記法。
+在 Azure 數位 Twins 解決方案中，您環境中的實體會由 Azure **數位 Twins** 表示。 數位對應項是您其中一個自訂 [模型](concepts-models.md)的實例。 您可以透過 **關聯** 性連接到其他數位 twins 來形成對應項 **圖形**：此對應項圖形是您整個環境的標記法。
 
 > [!TIP]
 > 「Azure 數位 Twins」指的是此一整體的 Azure 服務。 「數位對應項 (s) 」或只是「對應項 (s) 」指的是服務實例內的個別對應項節點。
@@ -25,13 +25,13 @@ ms.locfileid: "93356380"
 
 您必須先將 *模型* 上傳至服務，才可以在 Azure 數位 Twins 實例中建立數位對應項。 模型描述特定對應項可以有的屬性、遙測訊息和關聯性集合，還有其他專案。 針對模型中所定義的資訊類型，請參閱 [*概念：自訂模型*](concepts-models.md)。
 
-建立並上傳模型之後，您的用戶端應用程式可以建立類型的實例;這是數位對應項。 例如，在建立 *樓層* 的模型之後，您可以建立一或多個使用此 (類型的數位 twins，例如名為 *GroundFloor* 、另一個稱為 ) *Floor2* 等的 *樓層* 類型對應項。 
+建立並上傳模型之後，您的用戶端應用程式可以建立類型的實例;這是數位對應項。 例如，在建立 *樓層* 的模型之後，您可以建立一或多個使用此 (類型的數位 twins，例如名為 *GroundFloor*、另一個稱為 ) *Floor2* 等的 *樓層* 類型對應項。 
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>關聯性：數位 twins 的圖形
 
 Twins 會依關聯性連接到對應項圖形。 對應項可以有的關聯性會定義為其模型的一部分。  
 
-例如，模型 *樓層* 可能會定義一個 *包含* twins 型別 *房間* 的關聯性。 使用此定義時，Azure 數位 Twins 可讓您建立 *包含* 任何 *樓層* 對應項的關聯性 *Room* ， (包括) *房間* 子類型的 Twins。 
+例如，模型 *樓層* 可能會定義一個 *包含* twins 型別 *房間* 的關聯性。 使用此定義時，Azure 數位 Twins 可讓您建立 *包含* 任何 *樓層* 對應項的關聯性 ， (包括) *房間* 子類型的 Twins。 
 
 這項程式的結果是一組節點， (數位 twins) 透過邊緣連線， (其在圖形中) 的關聯性。
 
@@ -47,7 +47,7 @@ Twins 會依關聯性連接到對應項圖形。 對應項可以有的關聯性�
 
 當對應項建立時，您可以初始化對應項的屬性，或稍後再進行設定。 若要建立具有已初始化之屬性的對應項，請建立 JSON 檔，以提供必要的初始化值。
 
-[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 您也可以使用稱為的 helper 類別 `BasicDigitalTwin` ，更直接將屬性欄位儲存在「對應項」物件中，做為使用字典的替代方法。 如需協助程式類別及其用法範例的詳細資訊，請參閱 *如何：管理數位 twins* 的 [*建立數位*](how-to-manage-twin.md#create-a-digital-twin)對應項一節。
 
@@ -58,25 +58,7 @@ Twins 會依關聯性連接到對應項圖形。 對應項可以有的關聯性�
 
 以下是使用 [DigitalTwins api](/rest/api/digital-twins/dataplane/twins)的一些範例用戶端程式代碼，以建立名為 *GroundFloor* 的 *樓層* 型數位對應項和名為 *咖啡廳* 的 *房間* 型數位對應項之間的關聯性。
 
-```csharp
-// Create Twins, using functions similar to the previous sample
-await CreateRoom("Cafe", 70, 66);
-await CreateFloor("GroundFloor", averageTemperature=70);
-// Create relationships
-var relationship = new BasicRelationship
-{
-    TargetId = "Cafe",
-    Name = "contains"
-};
-try
-{
-    string relId = $"GroundFloor-contains-Cafe";
-    await client.CreateOrReplaceRelationshipAsync<BasicRelationship>("GroundFloor", relId, relationship);
-} catch(ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
 
 ## <a name="json-representations-of-graph-elements"></a>圖形元素的 JSON 標記法
 
@@ -90,7 +72,7 @@ try
 | --- | --- |
 | `$dtId` | 使用者提供的字串，代表數位對應項的識別碼 |
 | `$etag` | Web 服務器指派的標準 HTTP 欄位 |
-| `$conformance` | 列舉，其中包含此數位對應項的符合性狀態， ( *符合* 規範且 *不符合* 規範的 *未知* )  |
+| `$conformance` | 列舉，其中包含此數位對應項的符合性狀態， (*符合* 規範且 *不符合* 規範的 *未知*)  |
 | `{propertyName}` | JSON (`string` 、數位類型或物件中的屬性值)  |
 | `$relationships` | 關聯性集合路徑的 URL。 如果數位對應項沒有外寄關聯性邊緣，則此欄位不存在。 |
 | `$metadata.$model` | 參數此數位對應項之特性的模型介面識別碼 |
@@ -175,7 +157,7 @@ try
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何使用 Azure 數位對應項 Api 管理圖形元素：
 * [*How to：管理數位 twins*](how-to-manage-twin.md)

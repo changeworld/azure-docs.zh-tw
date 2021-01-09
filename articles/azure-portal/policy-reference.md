@@ -1,15 +1,15 @@
 ---
 title: Azure 入口網站的內建原則定義
 description: 列出 Azure 入口網站 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 11/17/2020
+ms.date: 01/08/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: a4b9664e7627074f62b2961b3867144965bea6d4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 34cfeadb301b520e0884333e32a30ec49f663106
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745684"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043895"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-portal"></a>Azure 原則 Azure 入口網站的內建定義
 

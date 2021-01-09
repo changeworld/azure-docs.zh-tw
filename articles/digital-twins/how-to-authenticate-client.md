@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bf7b829d70af27850affe619d47ed4a4f5ec1bea
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 2502fdd14acae206b8440fe602639aa49be55f4e
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279913"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045915"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
@@ -22,7 +22,7 @@ Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖
 
 本文說明如何使用 `Azure.Identity` 用戶端程式庫取得認證。 雖然本文說明 c # 中的程式碼範例（例如您針對 [.net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)撰寫的內容），但您可以使用版本的， `Azure.Identity` 不論您使用的 sdk 為何 (如需 azure 數位 Twins 可用 sdk 的詳細資訊，請參閱作法 [*：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 首先，請完成 how [*to：設定實例和驗證*](how-to-set-up-instance-portal.md)中的設定步驟。 這可確保您擁有 Azure 數位 Twins 實例，而且您的使用者具有存取權限。 完成設定之後，您就可以開始撰寫用戶端應用程式程式碼。
 
@@ -39,7 +39,7 @@ Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖
 
 中有三種常見的認證取得方法 `Azure.Identity` ：
 
-* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` 會針對將部署至 Azure 的應用程式提供預設驗證流程，而且是 **本機開發的建議選擇** 。 也可以啟用此功能，以嘗試本文中建議的其他兩種方法;它會包裝 `ManagedIdentityCredential` 和存取設定 `InteractiveBrowserCredential` 變數。
+* [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` 會針對將部署至 Azure 的應用程式提供預設驗證流程，而且是 **本機開發的建議選擇**。 也可以啟用此功能，以嘗試本文中建議的其他兩種方法;它會包裝 `ManagedIdentityCredential` 和存取設定 `InteractiveBrowserCredential` 變數。
 * [ManagedIdentityCredential](/dotnet/api/azure.identity.managedidentitycredential?preserve-view=true&view=azure-dotnet) 適用于您需要 [受控識別 (MSI) ](../active-directory/managed-identities-azure-resources/overview.md)的情況，而且是使用 Azure Functions 及部署至 Azure 服務的絕佳候選。
 * [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet) 適用于互動式應用程式，可用於建立已驗證的 SDK 用戶端
 
@@ -53,38 +53,19 @@ Azure 數位 Twins 會使用以 [OAUTH 2.0 為基礎的 Azure AD 安全性權杖
 
 您也需要將下列 using 語句新增至您的專案程式碼：
 
-```csharp
-using Azure.Identity;
-using Azure.DigitalTwins.Core;
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="Azure_Digital_Twins_dependencies":::
 
 然後，新增程式碼，以使用中的其中一個方法來取得認證 `Azure.Identity` 。
 
 ### <a name="defaultazurecredential-method"></a>DefaultAzureCredential 方法
 
-[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` 會針對將部署至 Azure 的應用程式提供預設驗證流程，而且是 **本機開發的建議選擇** 。
+[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) `TokenCredential` 會針對將部署至 Azure 的應用程式提供預設驗證流程，而且是 **本機開發的建議選擇**。
 
 若要使用預設的 Azure 認證，您將需要 Azure 數位 Twins 實例的 URL ([指示來尋找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)) 。
 
 以下是將加入至專案的程式碼範例 `DefaultAzureCredential` ：
 
-```csharp
-// The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
-
-//...
-
-DigitalTwinsClient client;
-try
-{
-    var credential = new DefaultAzureCredential();
-    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-} catch(Exception e)
-{
-    Console.WriteLine($"Authentication or client creation error: {e.Message}");
-    Environment.Exit(0);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_full":::
 
 #### <a name="set-up-local-azure-credentials"></a>設定本機 Azure 認證
 
@@ -100,45 +81,20 @@ try
 
 在 Azure 函式中，您可以使用受控識別認證，如下所示：
 
-```csharp
-ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-DigitalTwinsClientOptions opts = 
-    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="ManagedIdentityCredential":::
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential 方法
 
 [InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)方法適用于互動式應用程式，並會啟動網頁瀏覽器以進行驗證。 您可以使用這種方式，而不是 `DefaultAzureCredential` 在需要互動式驗證的情況下使用。
 
 若要使用互動式瀏覽器認證，您將需要具有 Azure 數位 Twins Api 許可權的 **應用程式註冊** 。 如需有關如何設定此應用程式註冊的步驟，請參閱 [*如何：建立應用程式註冊*](how-to-create-app-registration.md)。 一旦設定應用程式註冊，您將需要 .。。
-* 應用程式註冊的 *應用程式 (用戶端) 識別碼* ( [要尋找的指示](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) 
-* 應用程式註冊的 *目錄 (租使用者) 識別碼* ( [要尋找的指示](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) 
+* 應用程式註冊的 *應用程式 (用戶端) 識別碼* ([要尋找的指示](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) 
+* 應用程式註冊的 *目錄 (租使用者) 識別碼* ([要尋找的指示](how-to-create-app-registration.md#collect-client-id-and-tenant-id)) 
 * Azure 數位 Twins 實例的 URL (尋找) 的[指示](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)
 
 以下是使用建立已驗證之 SDK 用戶端的程式碼範例 `InteractiveBrowserCredential` 。
 
-```csharp
-// Your client / app registration ID
-private static string clientId = "<your-client-ID>"; 
-// Your tenant / directory ID
-private static string tenantId = "<your-tenant-ID>";
-// The URL of your instance, starting with the protocol (https://)
-private static string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-URL>";
-
-//...
-
-DigitalTwinsClient client;
-try
-{
-    var credential = new InteractiveBrowserCredential(tenantId, clientId);
-    client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-} catch(Exception e)
-{
-    Console.WriteLine($"Authentication or client creation error: {e.Message}");
-    Environment.Exit(0);
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="InteractiveBrowserCredential":::
 
 >[!NOTE]
 > 雖然您可以將用戶端識別碼、租使用者識別碼和實例 URL 直接放入程式碼中（如上所示），但最好讓您的程式碼改為從設定檔或環境變數取得這些值。
@@ -156,7 +112,7 @@ try
 
 如果上述的醒目提示驗證案例並未涵蓋您應用程式的需求，您可以探索 [**Microsoft 身分識別平臺**](../active-directory/develop/v2-overview.md#getting-started)所提供的其他驗證類型。 此平臺的檔涵蓋其他驗證案例，依應用程式類型進行組織。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解 Azure 數位 Twins 中的安全性運作方式：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

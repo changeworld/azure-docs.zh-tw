@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c2620b52c426871b0ec85e3db237be2d373d42f1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a1a55bdf21b74116450ca32f66d891f1aa206d3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458699"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045405"
 ---
 # <a name="add-tags-to-digital-twins"></a>將標記新增至數位 twins 
 
@@ -32,23 +32,7 @@ ms.locfileid: "96458699"
 
 以下是將標記標記實作為屬性之對應項模型的摘錄：
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "boolean"
-    }
-  }
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="2-16":::
 
 ### <a name="add-marker-tags-to-digital-twins"></a>將標記標記新增至數位 twins
 
@@ -56,11 +40,7 @@ ms.locfileid: "96458699"
 
 以下範例會填入 `tags` 三個 twins 的標記：
 
-```csharp
-entity-01: "tags": { "red": true, "round": true } 
-entity-02: "tags": { "blue": true, "round": true } 
-entity-03: "tags": { "red": true, "large": true } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesMarker":::
 
 ### <a name="query-with-marker-tags"></a>使用標記標記進行查詢
 
@@ -68,15 +48,11 @@ entity-03: "tags": { "red": true, "large": true }
 
 以下查詢會取得已標記為 "red" 的所有 twins： 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 您也可以合併標記以進行更複雜的查詢。 以下查詢會取得所有四捨五入的 twins，而不是紅色： 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.round) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags2":::
 
 ## <a name="value-tags"></a>值標記 
 
@@ -88,23 +64,7 @@ SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.ro
 
 以下是將值標記實作為屬性之對應項模型的摘錄：
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "string"
-    }
-  }
-} 
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="17-31":::
 
 ### <a name="add-value-tags-to-digital-twins"></a>將數值標記新增至數位 twins
 
@@ -112,11 +72,7 @@ SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.ro
 
 以下範例會填入 `tags` 三個 twins 的值：
 
-```csharp
-entity-01: "tags": { "red": "", "size": "large" } 
-entity-02: "tags": { "purple": "", "size": "small" } 
-entity-03: "tags": { "red": "", "size": "small" } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesValue":::
 
 請注意 `red` ， `purple` 在此範例中，和會用來做為標記標記。
 
@@ -124,19 +80,15 @@ entity-03: "tags": { "red": "", "size": "small" }
 
 如同標記標記，您可以使用值標記來篩選查詢中的 twins。 您也可以同時使用值標記和標記標記。
 
-在上述範例中， `red` 是用來做為標記標記。 以下查詢會取得已標記為 "red" 的所有 twins： 
+在上述範例中， `red` 是用來做為標記標記。 請記住，這是一個查詢，可取得標記為 "red" 的所有 twins： 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 以下查詢會取得小型 (值標記) ，而非紅色的所有實體： 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND tags.size = 'small' 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解如何設計和管理數位對應項模型：
 * [操作說明：管理自訂模型](how-to-manage-model.md)

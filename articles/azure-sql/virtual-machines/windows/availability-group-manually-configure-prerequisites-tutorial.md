@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a9a2f9d999a51f2b4600e8379d4a8913675b338
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360011"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044283"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>教學課程：在 Azure 虛擬機器上的 SQL Server 上建立可用性群組的必要條件
 
@@ -539,7 +539,7 @@ Azure 會建立虛擬機器。
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>調整容錯移轉叢集網路閾值
 
-在具有 SQL Server AlwaysOn 的 Azure Vm 中執行 Windows 容錯移轉叢集節點時，建議將叢集設定變更為較寬鬆的監視狀態。  這會讓叢集更穩定且更可靠。  如需有關此功能的詳細資訊，請參閱 [使用 SQL AlwaysOn 的 IaaS-調整容錯移轉叢集網路閾值](/windows-server/troubleshoot/iaas-sql-failover-cluster)。
+在具有 SQL Server 可用性群組的 Azure Vm 中執行 Windows 容錯移轉叢集節點時，請將叢集設定變更為較寬鬆的監視狀態。  這會讓叢集更穩定且更可靠。  如需有關此功能的詳細資訊，請參閱 [使用 SQL Server 調整容錯移轉叢集網路閾值的 IaaS](/windows-server/troubleshoot/iaas-sql-failover-cluster)。
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> 在每個 SQL Server VM 上設定防火牆
@@ -563,7 +563,7 @@ Azure 會建立虛擬機器。
 
    ![SQL 防火牆](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. 選取 [下一步]。
+5. 選取 [下一步] 。
 6. 在 [ **動作** ] 頁面上，保持選取 **[允許連接** ]，然後選取 **[下一步]**。
 7. 在 [ **設定檔** ] 頁面上，接受預設設定，然後選取 **[下一步]**。
 8. 在 [**名稱**] 頁面上，在 [**名稱**] 文字方塊中指定規則名稱 (例如 **Azure LB 探查**) ，然後選取 **[完成]**。
@@ -571,6 +571,6 @@ Azure 會建立虛擬機器。
 在第二個 SQL Server VM 上重複上述步驟。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [在 Azure 虛擬機器上建立 SQL Server Always On 可用性群組](availability-group-manually-configure-tutorial.md)

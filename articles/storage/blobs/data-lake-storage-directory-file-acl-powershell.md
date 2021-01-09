@@ -10,12 +10,12 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 83a19074eb131b4024c0eaf92631a7b2f3d266d9
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: fb715840ec3b3b1d5e65f17d4c18eb719e6acf80
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014462"
+ms.locfileid: "98043569"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
@@ -23,7 +23,7 @@ ms.locfileid: "98014462"
 
 [參考](/powershell/module/Az.Storage/)  | [Gen1 至 Gen2 對應](#gen1-gen2-map)  | [提供意見](https://github.com/Azure/azure-powershell/issues)反應
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -51,34 +51,36 @@ ms.locfileid: "98014462"
 
 ## <a name="connect-to-the-account"></a>連線到帳戶
 
-開啟 Windows PowerShell 命令視窗，然後使用命令登入 Azure 訂用帳戶， `Connect-AzAccount` 並遵循畫面上的指示。
-
-```powershell
-Connect-AzAccount
-```
-
-如果您的身分識別與多個訂用帳戶相關聯，請將您的使用中訂用帳戶設定為您想要在其中建立及管理目錄的儲存體帳戶訂用帳戶。 在此範例中，請將 `<subscription-id>` 預留位置值取代為您的訂用帳戶識別碼。
-
-```powershell
-Select-AzSubscription -SubscriptionId <subscription-id>
-```
-
-接下來，選擇您要命令如何取得儲存體帳戶的授權。 
+選擇您要命令如何取得儲存體帳戶的授權。 
 
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>選項1：使用 Azure Active Directory (AD) 取得授權
 
-使用此方法時，系統會確保您的使用者帳戶具有適當的 Azure 角色型存取控制， (Azure RBAC) 指派和 ACL 許可權。 
+使用此方法時，系統會確保您的使用者帳戶具有適當的 Azure 角色型存取控制， (Azure RBAC) 指派和 ACL 許可權。
 
-```powershell
-$ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
-```
+1. 開啟 Windows PowerShell 命令視窗，然後使用命令登入 Azure 訂用帳戶， `Connect-AzAccount` 並遵循畫面上的指示。
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+2. 如果您的身分識別與多個訂用帳戶相關聯，請將您的使用中訂用帳戶設定為您想要在其中建立及管理目錄的儲存體帳戶訂用帳戶。 在此範例中，請將 `<subscription-id>` 預留位置值取代為您的訂用帳戶識別碼。
+
+   ```powershell
+   Select-AzSubscription -SubscriptionId <subscription-id>
+   ``` 
+
+3. 取得儲存體帳戶內容。
+
+   ```powershell
+   $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
+   ```
 
 ### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>選項2：使用儲存體帳戶金鑰取得授權
 
-使用此方法時，系統不會檢查 Azure RBAC 或 ACL 許可權。
+使用此方法時，系統不會檢查 Azure RBAC 或 ACL 許可權。 使用帳戶金鑰取得儲存體帳戶內容。
 
 ```powershell
-$ctx = New-AzStorageContext -StorageAccountName "<storage-account-name>" -StorageAccountKey "<storage-account-key>"
+$ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -StorageAccountKey '<storage-account-key>'
 ```
 
 ## <a name="create-a-container"></a>建立容器
@@ -337,7 +339,7 @@ $dir.ACL
 ```
 
 > [!NOTE]
-> 如果您想要設定 **預設** ACL 專案，請在執行 **AzDataLakeGen2ItemAclObject** 命令時使用 **-內容** 參數。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`。
+> 如果您想要設定 **預設** ACL 專案，請在執行 **AzDataLakeGen2ItemAclObject** 命令時使用 **-內容** 參數。 例如： `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope` 。
 
 此範例會針對擁有使用者、擁有群組或其他 **使用者的檔案** 設定 acl，然後將 acl 列印到主控台。
 
@@ -352,7 +354,7 @@ $file = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $
 $file.ACL
 ```
 > [!NOTE]
-> 如果您想要設定 **預設** ACL 專案，請在執行 **AzDataLakeGen2ItemAclObject** 命令時使用 **-內容** 參數。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`。
+> 如果您想要設定 **預設** ACL 專案，請在執行 **AzDataLakeGen2ItemAclObject** 命令時使用 **-內容** 參數。 例如： `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope` 。
 
 下圖顯示設定檔案的 ACL 之後的輸出。
 
@@ -375,7 +377,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 ```
 
 > [!NOTE]
-> 如果您想要更新 **預設** ACL 專案，請在執行 **AzDataLakeGen2ItemAclObject** 命令時使用 **-內容** 參數。 例如：`$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -DefaultScope`。
+> 如果您想要更新 **預設** ACL 專案，請在執行 **AzDataLakeGen2ItemAclObject** 命令時使用 **-內容** 參數。 例如： `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -DefaultScope` 。
 
 ### <a name="remove-an-acl-entry"></a>移除 ACL 專案
 
@@ -408,7 +410,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 下表顯示用於 Data Lake Storage Gen1 的 Cmdlet 如何對應至 Data Lake Storage Gen2 的 Cmdlet。
 
-|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 附註 |
+|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 注意 |
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|根據預設，Get-AzDataLakeGen2ChildItem Cmdlet 只會列出第一個層級的子專案。 -遞迴參數會以遞迴方式列出子專案。 |
 |Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|Get-AzDataLakeGen2Item Cmdlet 的輸出專案具有下列屬性： Acl、擁有者、群組、許可權。|
@@ -419,7 +421,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 |Set-AzDataLakeStoreItemOwner<br>Set-AzDataLakeStoreItemPermission<br>Set-AzDataLakeStoreItemAcl|Update-AzDataLakeGen2Item|Update-AzDataLakeGen2Item Cmdlet 只會更新單一專案，而不會以遞迴方式更新。 如果想要以遞迴方式更新，請使用 Get-AzDataLakeStoreChildItem Cmdlet 來列出專案，然後再將管線加入 Update-AzDataLakeGen2Item Cmdlet。|
 |Test-AzDataLakeStoreItem|Get-AzDataLakeGen2Item|如果專案不存在，Get-AzDataLakeGen2Item Cmdlet 將會報告錯誤。|
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [已知問題](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [儲存體 PowerShell Cmdlet](/powershell/module/az.storage)

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 58d101bb93b4635e362c5ec78a03a659b71b63da
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 22ee57592af838a236d75fa7f56a0c8e1ed89403
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92495280"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046515"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>整合 Azure 數位 Twins 與 Azure 時間序列深入解析
 
@@ -20,13 +20,13 @@ ms.locfileid: "92495280"
 
 本文所述的解決方案可讓您收集及分析 IoT 解決方案的歷程記錄資料。 Azure 數位 Twins 非常適合用來將資料摘要到時間序列深入解析，因為它可讓您將多個資料流程相互關聯，並在將資訊傳送到時間序列深入解析之前將資訊標準化。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您必須要有 **Azure 數位 Twins 實例**，才能設定與時間序列深入解析之間的關聯性。 此實例應設定為根據資料更新數位對應項資訊，因為您需要更新對應項資訊幾次，才能看到時間序列深入解析中所追蹤的資料。 
 
 如果您還沒有此設定，您可以遵循 Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)來建立它。 本教學課程將逐步引導您設定 Azure 數位 Twins 實例，以搭配虛擬 IoT 裝置來觸發數位對應項更新。
 
-## <a name="solution-architecture"></a>解決方案架構
+## <a name="solution-architecture"></a>方案架構
 
 您將透過下列路徑將時間序列深入解析附加至 Azure 數位 Twins。
 
@@ -74,7 +74,7 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
 5. 在 Azure 數位 Twins 中建立 [路由](concepts-route-events.md#create-an-event-route) ，以將對應項更新事件傳送至您的端點。 此路由中的篩選器只允許將對應項更新訊息傳遞至您的端點。
 
     >[!NOTE]
-    >目前 Cloud Shell 有**已知問題**會影響這些命令群組：`az dt route`、`az dt model`、`az dt twin`。
+    >目前 Cloud Shell 有 **已知問題** 會影響這些命令群組：`az dt route`、`az dt model`、`az dt twin`。
     >
     >若要解決此問題，請在執行命令之前，先在 Cloud Shell 中執行 `az login`；或使用[本機 CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)，而不是 Cloud Shell。 如需這方面的詳細資訊，請參閱[疑難排解：Azure Digital Twins 中的已知問題](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
@@ -94,51 +94,7 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
 
 在您已發佈的函式應用程式中，以下列程式碼取代函式程式碼。
 
-```C#
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Threading.Tasks;
-using System.Text;
-using System.Collections.Generic;
-
-namespace SampleFunctionsApp
-{
-    public static class ProcessDTUpdatetoTSI
-    { 
-        [FunctionName("ProcessDTUpdatetoTSI")]
-        public static async Task Run(
-            [EventHubTrigger("twins-event-hub", Connection = "EventHubAppSetting-Twins")]EventData myEventHubMessage, 
-            [EventHub("tsi-event-hub", Connection = "EventHubAppSetting-TSI")]IAsyncCollector<string> outputEvents, 
-            ILogger log)
-        {
-            JObject message = (JObject)JsonConvert.DeserializeObject(Encoding.UTF8.GetString(myEventHubMessage.Body));
-            log.LogInformation("Reading event:" + message.ToString());
-
-            // Read values that are replaced or added
-            Dictionary<string, object> tsiUpdate = new Dictionary<string, object>();
-            foreach (var operation in message["patch"]) {
-                if (operation["op"].ToString() == "replace" || operation["op"].ToString() == "add")
-                {
-                    //Convert from JSON patch path to a flattened property for TSI
-                    //Example input: /Front/Temperature
-                    //        output: Front.Temperature
-                    string path = operation["path"].ToString().Substring(1);                    
-                    path = path.Replace("/", ".");                    
-                    tsiUpdate.Add(path, operation["value"]);
-                }
-            }
-            //Send an update if updates exist
-            if (tsiUpdate.Count>0){
-                tsiUpdate.Add("$dtId", myEventHubMessage.Properties["cloudEvents:subject"]);
-                await outputEvents.AddAsync(JsonConvert.SerializeObject(tsiUpdate));
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
 接著，此函式會將它所建立的 JSON 物件傳送至第二個事件中樞，而您將連接到時間序列深入解析。
 
@@ -202,14 +158,14 @@ namespace SampleFunctionsApp
 接下來，您將設定時間序列深入解析實例，以接收第二個事件中樞的資料。 請遵循下列步驟，如需此程式的詳細資訊，請參閱 [*教學課程：設定 Azure 時間序列深入解析 GEN2 PAYG 環境*](../time-series-insights/tutorials-set-up-tsi-environment.md)。
 
 1. 在 Azure 入口網站中，開始建立時間序列深入解析資源。 
-    1. 選取 **PAYG (預覽版) ** 定價層。
+    1. 選取 **Gen2 (L1)** 定價層。
     2. 您將需要為此環境選擇 **時間序列識別碼** 。 您的時間序列識別碼最多可以有三個值，您將在時間序列深入解析中用來搜尋資料。 在本教學課程中，您可以使用 **$dtId**。 在 [*選擇時間序列識別碼的最佳做法中，*](../time-series-insights/how-to-select-tsid.md)深入瞭解如何選取識別碼值。
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="時間序列深入解析環境的建立入口網站 UX。已選取 Gen2 (L1) 定價層，且時間序列識別碼屬性名稱為 $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
 2. 選取 **[下一步：事件來源]** ，然後選取上述的事件中樞資訊。 您也需要建立新的事件中樞取用者群組。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="時間序列深入解析環境事件來源的建立入口網站 UX。您正在使用上述的事件中樞資訊來建立事件來源。您也會建立新的取用者群組。" lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>開始將 IoT 資料傳送至 Azure 數位 Twins
 
@@ -221,23 +177,23 @@ namespace SampleFunctionsApp
 
 現在，資料應該流入您的時間序列深入解析實例，並準備好進行分析。 請遵循下列步驟來探索即將推出的資料。
 
-1. 在 [Azure 入口網站](https://portal.azure.com) 中開啟您的時間序列深入解析實例 (您可以在入口網站的搜尋列中搜尋您的實例名稱) 。 造訪實例總覽中所示的 *時間序列深入解析總管 URL* 。
+1. 在 [Azure 入口網站](https://portal.azure.com) 中開啟您的時間序列深入解析實例 (您可以在入口網站的搜尋列中搜尋您的實例名稱) 。 造訪執行個體概觀中所顯示的「時間序列深入解析總管 URL」。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在時間序列深入解析環境的 [總覽] 索引標籤中，選取時間序列深入解析 explorer URL":::
 
 2. 在 [explorer] 中，您會看到來自 Azure 數位 Twins 的三個 twins 顯示于左邊。 選取 [ _**thermostat67**_]，選取 [ **溫度**]，然後按 [ **新增**]。
 
-    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/add-data.png" alt-text="選取 * * thermostat67 * *，選取 * * 溫度 * *，然後按 [新增] * *":::
 
-3. 您現在應該會看到來自控溫器的初始溫度讀數，如下所示。 系統會針對 *room21* 和 *floor1*更新相同的溫度讀數，而且您可以將這些資料流程一併呈現出來。
+3. 您現在應該會看到來自控溫器的初始溫度讀數，如下所示。 系統會針對 *room21* 和 *floor1* 更新相同的溫度讀數，而且您可以將這些資料流程一併呈現出來。
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/initial-data.png" alt-text="初始溫度資料會在 TSI explorer 中繪製圖形。這是介於68到85之間的隨機值行":::
 
 4. 如果您讓模擬執行得更久，視覺效果看起來會像這樣：
     
-    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="在端對端案例中，反白顯示時間序列深入解析的 Azure 服務視圖":::
+    :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="每個對應項的溫度資料會以不同色彩的三個平行線繪製。":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 預設會在時間序列深入解析中將數位 twins 儲存為一般階層，但是可以使用模型資訊和組織的多層級階層進行擴充。 若要深入瞭解此程式，請參閱： 
 

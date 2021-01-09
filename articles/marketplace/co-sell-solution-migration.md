@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 6ad58283ad9078088f241a67426657eb7a538e10
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781125"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043773"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>將協力公司的共同銷售解決方案遷移至商業市場
 
@@ -136,7 +136,7 @@ Microsoft 正在移動發佈體驗。 [商業 marketplace](overview.md)藉由在
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="合作夥伴中心中的 [供應專案總覽設定] 索引標籤。":::
 
-3. 部分 Microsoft 賣方相關的詳細資料是從 OCP 的轉移解決方案複製而來。 在 [ **與 Microsoft 共同銷售** ] 索引標籤中填寫剩餘的必要資訊，讓您的供應專案共同銷售就緒。 完成時，選取 [ **審核併發布**]。
+3. 部分 Microsoft 賣方相關的詳細資料是從 OCP 的轉移解決方案複製而來。 在 [ **與 Microsoft 共同銷售** ] 索引標籤中填寫剩餘的必要資訊，讓您的供應專案共同銷售就緒。 完成時，選取 [ **審核併發布**]。 如需詳細資訊，請參閱 [如何在合作夥伴中心提交共同銷售教材](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)。
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="合作夥伴中心中的 [供應專案共同銷售] 索引標籤。":::
 
@@ -151,7 +151,9 @@ Microsoft 正在移動發佈體驗。 [商業 marketplace](overview.md)藉由在
 6. 我們會在認證評論完成時通知您。 如果我們提供可採取動作的意見反應，請加以解決，然後選取 [ **發行** ] 以起始重新認證。
 7. 供應專案通過認證後，請使用提供的連結來預覽供應專案，並進行任何您可能想要的最終調整。 當您準備好時，請選取 [ **上線** ] (參閱上方的按鈕) ，將您的供應專案發佈至相關的商用 marketplace 店面 (s) 。 一旦上線，您的供應專案將會從原始的 OCP 進行中解決方案保留其共同銷售狀態。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [透過 CSP 合作夥伴轉售](cloud-solution-providers.md)
+- [如何在合作夥伴中心提交共同銷售教材](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 -  (PDF) 觀看這些[常見問題](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf)
+
