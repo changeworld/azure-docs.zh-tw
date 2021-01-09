@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9119af718131808bce0440934d482a53e39b8ef7
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 29c05544b4291eb57215bb733eb3791ad3196b6c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964570"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049791"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -93,62 +93,25 @@ Azure 數位 Twins .NET (c # ) SDK 是 Azure SDK for .NET 的一部分。 它是
 
 對服務進行驗證：
 
-```csharp
-// Authenticate against the service and create a client
-string adtInstanceUrl = "https://<your-Azure-Digital-Twins-instance-hostName>";
-var credential = new DefaultAzureCredential();
-DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_basic":::
 
 [!INCLUDE [Azure Digital Twins: local credentials note](../../includes/digital-twins-local-credentials-note.md)] 
 
-上傳模型和清單模型：
+上傳模型：
 
-```csharp
-// Upload a model
-var typeList = new List<string>();
-string dtdl = File.ReadAllText("SampleModel.json");
-typeList.Add(dtdl);
-try {
-    await client.CreateModelsAsync(typeList);
-} catch (RequestFailedException rex) {
-    Console.WriteLine($"Load model: {rex.Status}:{rex.Message}");
-}
-// Read a list of models back from the service
-AsyncPageable<DigitalTwinsModelData> modelDataList = client.GetModelsAsync();
-await foreach (DigitalTwinsModelData md in modelDataList)
-{
-    Console.WriteLine($"Type name: {md.DisplayName}: {md.Id}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
-建立和查詢 twins：
+列出模型：
 
-```csharp
-// Initialize twin metadata
-BasicDigitalTwin twinData = new BasicDigitalTwin();
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
 
-twinData.Id = $"firstTwin";
-twinData.Metadata.ModelId = "dtmi:com:contoso:SampleModel;1";
-twinData.Contents.Add("data", "Hello World!");
-try {
-    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("firstTwin", twinData);
-} catch(RequestFailedException rex) {
-    Console.WriteLine($"Create twin error: {rex.Status}:{rex.Message}");  
-}
- 
-// Run a query    
-AsyncPageable<string> result = client.QueryAsync("Select * From DigitalTwins");
-await foreach (string twin in result)
-{
-    // Use JSON deserialization to pretty-print
-    object jsonObj = JsonSerializer.Deserialize<object>(twin);
-    string prettyTwin = JsonSerializer.Serialize(jsonObj, new JsonSerializerOptions { WriteIndented = true });
-    Console.WriteLine(prettyTwin);
-    // Or use BasicDigitalTwin for convenient property access
-    BasicDigitalTwin btwin = JsonSerializer.Deserialize<BasicDigitalTwin>(twin);
-}
-```
+建立 twins：
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
+
+查詢 twins 和迴圈結果：
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="FullQuerySample":::
 
 如需此範例應用程式程式碼的逐步解說，請參閱 [*教學課程：撰寫用戶端應用程式程式*](tutorial-code.md) 代碼。 
 
@@ -168,103 +131,41 @@ await foreach (string twin in result)
 
 您一律可以使用您選擇的 JSON 程式庫（例如或）來還原序列化對應項資料 `System.Test.Json` `Newtonsoft.Json` 。 針對對應項的基本存取權，helper 類別讓這項工作變得更方便。
 
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-```
-
 `BasicDigitalTwin`Helper 類別也可讓您透過來存取對應項上定義的屬性 `Dictionary<string, object>` 。 若要列出對應項的屬性，您可以使用：
 
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
 
 ##### <a name="create-a-digital-twin"></a>建立數位對應項
 
 `BasicDigitalTwin`您可以使用類別來準備資料，以建立對應項實例：
 
-```csharp
-BasicDigitalTwin twin = new BasicDigitalTwin();
-twin.Metadata = new DigitalTwinMetadata();
-twin.Metadata.ModelId = "dtmi:example:Room;1";
-// Initialize properties
-Dictionary<string, object> props = new Dictionary<string, object>();
-props.Add("Temperature", 25.0);
-twin.Contents = props;
-
-client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myNewRoomID", twin);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 上述程式碼相當於下列「手動」變異：
 
-```csharp
-Dictionary<string, object> meta = new Dictionary<string, object>()
-{
-    { "$model", "dtmi:example:Room;1"}
-};
-Dictionary<string, object> twin = new Dictionary<string, object>()
-{
-    { "$metadata", meta },
-    { "Temperature", 25.0 }
-};
-client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myNewRoomID", twin);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 ##### <a name="deserialize-a-relationship"></a>將關聯性還原序列化
 
 您一律可以將關聯性資料還原序列化為您選擇的類型。 如需關聯性的基本存取權，請使用類型 `BasicRelationship` 。
 
-```csharp
-BasicRelationship res = client.GetRelationship<BasicRelationship>(twin_id, rel_id);
-Console.WriteLine($"Relationship Name: {rel.Name}");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="GetRelationshipsCall":::
 
 `BasicRelationship`Helper 類別也可讓您透過來存取關聯性上定義的屬性 `IDictionary<string, object>` 。 若要列出屬性，您可以使用：
 
-```csharp
-BasicRelationship res = client.GetRelationship<BasicRelationship>(twin_id, rel_id);
-Console.WriteLine($"Relationship Name: {rel.Name}");
-foreach (string prop in rel.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="ListRelationshipProperties":::
 
 ##### <a name="create-a-relationship"></a>建立關聯性
 
 `BasicRelationship`您也可以使用類別來準備資料，以便在對應項實例上建立關聯性：
 
-```csharp
-BasicRelationship rel = new BasicRelationship();
-rel.TargetId = "myTargetTwin";
-rel.Name = "contains"; // a relationship with this name must be defined in the model
-// Initialize properties
-Dictionary<string, object> props = new Dictionary<string, object>();
-props.Add("active", true);
-rel.Properties = props;
-client.CreateOrReplaceRelationshipAsync("mySourceTwin", "rel001", rel);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
 ##### <a name="create-a-patch-for-twin-update"></a>建立對應項更新的修補程式
 
 更新 twins 和關聯性的呼叫會使用 [JSON 修補程式](http://jsonpatch.com/) 結構。 若要建立 JSON 修補程式作業的清單，您可以使用， `JsonPatchDocument` 如下所示。
 
-```csharp
-var updateTwinData = new JsonPatchDocument();
-updateTwinData.AppendAddOp("/Temperature", 25.0);
-updateTwinData.AppendAddOp("/myComponent/Property", "Hello");
-// Un-set a property
-updateTwinData.AppendRemoveOp("/Humidity");
-
-client.UpdateDigitalTwin("myTwin", updateTwinData);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
 ## <a name="general-apisdk-usage-notes"></a>一般 API/SDK 使用注意事項
 
@@ -280,9 +181,9 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 * 所有服務函數都存在於同步和非同步版本中。
 * 所有服務函式都會針對400或更新版本的任何傳回狀態擲回例外狀況。 請務必將呼叫包裝到 `try` 區段中，並至少攔截 `RequestFailedExceptions` 。 如需這種例外狀況類型的詳細資訊，請參閱 [這裡](/dotnet/api/azure.requestfailedexception?preserve-view=true&view=azure-dotnet)。
 * 大部分的服務方法 `Response<T>` `Task<Response<T>>` 會針對非同步呼叫傳回或 () ，其中 `T` 是服務呼叫的 return 物件類別。 [`Response`](/dotnet/api/azure.response-1?preserve-view=true&view=azure-dotnet)類別會封裝服務傳回，並在其欄位中提供傳回值 `Value` 。  
-* 具有分頁結果的服務方法會傳回 `Pageable<T>` 或 `AsyncPageable<T>` 作為結果。 如需類別的詳細資訊 `Pageable<T>` ，請參閱 [這裡](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet-preview); 如需詳細資訊 `AsyncPageable<T>` ，請參閱 [這裡](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet-preview)。
+* 具有分頁結果的服務方法會傳回 `Pageable<T>` 或 `AsyncPageable<T>` 作為結果。 如需類別的詳細資訊 `Pageable<T>` ，請參閱 [這裡](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet); 如需詳細資訊 `AsyncPageable<T>` ，請參閱 [這裡](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet)。
 * 您可以使用迴圈來反復查看分頁 `await foreach` 的結果。 如需此程式的詳細資訊，請參閱 [這裡](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)。
-* 基礎 SDK 為 `Azure.Core` 。 請參閱 [Azure 命名空間檔](/dotnet/api/azure?preserve-view=true&view=azure-dotnet-preview) 以取得 SDK 基礎結構和類型的參考。
+* 基礎 SDK 為 `Azure.Core` 。 請參閱 [Azure 命名空間檔](/dotnet/api/azure?preserve-view=true&view=azure-dotnet) 以取得 SDK 基礎結構和類型的參考。
 
 服務方法會盡可能傳回強型別的物件。 不過，因為 Azure 數位 Twins 是以使用者在執行時間中自訂的模型為基礎， (透過上傳至服務) 的 DTDL 模型來執行，所以許多服務 Api 會以 JSON 格式採用和傳回對應項資料。
 
@@ -296,7 +197,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 
 您可以從這裡查看實例的計量，並建立自訂的視圖。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何使用 Postman 對 Api 進行直接要求：
 * [*How to：使用 Postman 提出要求*](how-to-use-postman.md)

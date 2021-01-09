@@ -3,14 +3,14 @@ title: Azure 自動化 Runbook 類型
 description: 本文描述您在 Azure 自動化中可使用的 Runbook 類型，以及決定使用何種類型的考量。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/22/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1a0c12297f19d30bf13ffbe594e0433c83914a8e
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c1398d25b6d2540abea0012acd69555e5e53e25c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733955"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050964"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure 自動化 Runbook 類型
 
@@ -117,7 +117,6 @@ Python 2 和 Python 3 下的 python runbook 編譯。 Python 3 runbook 目前為
 * 若要使用第三方程式庫，您必須[匯入套件](python-packages.md)至自動化帳戶。
 * 使用   Powershell/powershell 工作流程中的 AutomationRunbook Cmdlet 啟動 Python 3 runbook (預覽) 無法運作。 您可以使用 **AzAutomationRunbook** Cmdlet 從 Az. automation 模組或 **>start-azurermautomationrunbook** Cmdlet，在 AzureRm. automation 模組中解決這項限制。  
 * Python 3 runbook (預覽版) 和套件無法搭配 PowerShell 使用。
-* 不支援使用 Webhook 來啟動 Python Runbook。
 * Azure 自動化不支援 **sys. stderr**。
 
 ### <a name="known-issues"></a>已知問題

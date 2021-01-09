@@ -3,12 +3,12 @@ title: 使用 Azure 入口網站在 Azure 事件方格夥伴上架
 description: 使用 Azure 入口網站來讓 Azure 事件方格夥伴上線。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349381"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050947"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>使用 Azure 入口網站在 Azure 事件方格夥伴上架
 本文說明協力廠商 SaaS 提供者（也稱為「事件發行者」或「夥伴」）上線至「事件方格」的方式，以便從服務發佈事件，以及使用者如何使用這些事件。
@@ -37,7 +37,7 @@ ms.locfileid: "96349381"
 ## <a name="communicate-your-interest-in-becoming-a-partner"></a>傳達您對成為合作夥伴的興趣
 填寫 [此表單](https://aka.ms/gridpartnerform) ，並與事件方格小組聯絡 [GridPartner@microsoft.com](mailto:GridPartner@microsoft.com) 。 我們會與您對話，以提供合作夥伴事件使用案例、角色、上架程式、功能、定價等的詳細資訊。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 若要完成其餘步驟，請確定您有：
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
@@ -82,7 +82,7 @@ ms.locfileid: "96349381"
     :::image type="content" source="./media/onboard-partner/add-partner-namespace-link.png" alt-text="夥伴命名空間-新增連結":::
 1. 在 [ **建立夥伴命名空間-基本** ] 頁面上，指定下列資訊。
     1. 在 [ **專案詳細資料** ] 區段中，執行下列步驟： 
-        1. 選取 Azure **訂** 用帳戶。
+        1. 選取 Azure **訂用帳戶**。
         1. 選取現有的 **資源群組** ，或建立資源群組。 
     1. 在 [ **命名空間詳細資料** ] 區段中，執行下列步驟：
         1. 輸入命名空間的 **名稱**。 
@@ -112,7 +112,6 @@ ms.locfileid: "96349381"
     1. 在 [ **通道詳細資料** ] 區段中，執行下列步驟：
         1. 針對 [ **事件通道名稱**]，輸入事件通道的名稱。 
         1. 輸入 **來源**。 請參閱 [雲端事件1.0 規格](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source-1) ，以瞭解適用于來源的適當值。 另請參閱 [此雲端事件架構範例](cloud-event-schema.md#sample-event-using-cloudevents-schema)。
-        1. 輸入來源 (什麼？ ) 。
     1. 在 [ **目的地詳細資料** ] 區段中，輸入將為此事件通道建立之目的地夥伴主題的詳細資料。 
         1. 輸入將在其中建立夥伴主題的訂用帳戶 **識別碼** 。 
         1. 輸入將在其中建立夥伴主題資源的 **資源組名** 。 
