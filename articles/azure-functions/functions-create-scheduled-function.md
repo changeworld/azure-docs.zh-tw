@@ -1,20 +1,20 @@
 ---
-title: 在 Azure 中建立會按照排程執行的函式
-description: 了解如何在 Azure 中建立函式，並使其按照您定義的排程來執行。
+title: 在 Azure 中建立依排程執行的函式
+description: 瞭解如何使用 Azure 入口網站建立根據您定義的排程來執行的函式。
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 9e542c493c02174364072f91d092f05ad9ec69cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14d918cc41f49b954f5cabf48572db5df829fd10
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973087"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035184"
 ---
-# <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>在 Azure 中建立由計時器觸發的函式
+# <a name="create-a-function-in-the-azure-portal-that-runs-on-a-schedule"></a>在依排程執行的 Azure 入口網站中建立函數
 
-了解如何使用 Azure Functions 來建立[無伺服器](https://azure.microsoft.com/solutions/serverless/)函式，並使其按照您定義的排程來執行。
+瞭解如何使用 Azure 入口網站建立可根據您定義的排程，在 Azure 上執行 [無伺服器](https://azure.microsoft.com/solutions/serverless/) 的函式。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -22,7 +22,7 @@ ms.locfileid: "90973087"
 
 + 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-an-azure-function-app"></a>建立 Azure 函數應用程式
+## <a name="create-a-function-app"></a>建立函數應用程式
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -36,15 +36,15 @@ ms.locfileid: "90973087"
 
 1. 在您的函式應用程式下，選取 [函數]，然後選取 [+ 新增]。 
 
-   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="已成功建立函數應用程式。" border="true":::
+   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="在 Azure 入口網站中新增函式。" border="true":::
 
 1. 選取 [計時器觸發程序] 範本。 
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="已成功建立函數應用程式。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="在 Azure 入口網站中選取計時器觸發程序。" border="true":::
 
 1. 使用影像下方表格中指定的設定來設定新觸發程序，然後選取 [建立函式]。
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="已成功建立函數應用程式。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="螢幕擷取畫面顯示已選取計時器觸發程式範本的 [新增函數] 頁面。" border="true":::
     
     | 設定 | 建議的值 | 描述 |
     |---|---|---|
@@ -55,11 +55,11 @@ ms.locfileid: "90973087"
 
 1. 在您的函式中，選取 [程式碼 + 測試]，然後展開記錄。
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="已成功建立函數應用程式。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="在 Azure 入口網站中測試計時器觸發程序。" border="true":::
 
 1. 檢視寫入到記錄的資訊以確認執行情形。
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="已成功建立函數應用程式。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="在 Azure 入口網站中檢視計時器觸發程序。" border="true":::
 
 現在，您可以變更函式的排程，使其每小時執行一次，而非每分鐘執行一次。
 
@@ -69,11 +69,11 @@ ms.locfileid: "90973087"
 
 1. 選取 [計時器 (myTimer)]。
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="已成功建立函數應用程式。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="在 Azure 入口網站中更新計時器排程。" border="true":::
 
 1. 將 [排程] 值更新為 `0 0 */1 * * *`，然後選取 [儲存]。  
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="已成功建立函數應用程式。" border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="更新 Azure 入口網站中的函數計時器排程。" border="true":::
 
 您現在已擁有每小時整點執行一次的函式。
 

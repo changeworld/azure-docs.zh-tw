@@ -3,12 +3,12 @@ title: 容器群組的靜態 IP 位址
 description: 在虛擬網路中建立容器群組，並使用 Azure 應用程式閘道將靜態前端 IP 位址公開至容器化的 web 應用程式
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260781"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035048"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>公開容器群組的靜態 IP 位址
 
@@ -101,6 +101,9 @@ ACI_IP=$(az container show \
   --query ipAddress.ip --output tsv)
 ```
 
+> [!IMPORTANT]
+> 如果容器群組已停止、啟動或重新開機，容器群組的私人 IP 可能會變更。 如果發生這種情況，您將必須更新應用程式閘道設定。
+
 ## <a name="create-application-gateway"></a>建立應用程式閘道
 
 遵循 [應用程式閘道快速入門](../application-gateway/quick-create-cli.md)中的步驟，在虛擬網路中建立應用程式閘道。 下列 [az network application-gateway create][az-network-application-gateway-create] 命令會建立具有公用前端 IP 位址和後端容器群組路由的閘道。 如需閘道設定的詳細資訊，請參閱 [應用程式閘道檔](../application-gateway/index.yml) 。
@@ -142,7 +145,7 @@ az network public-ip show \
 
 ![顯示在 Azure 容器執行個體中執行之應用程式的瀏覽器螢幕擷取畫面](./media/container-instances-application-gateway/aci-app-app-gateway.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 * 請參閱 [快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) ，以使用 WordPress 容器實例來建立容器群組，作為應用程式閘道後方的後端伺服器。
 * 您也可以設定具有 SSL 終止憑證的應用程式閘道。 請參閱 [總覽](../application-gateway/ssl-overview.md) 和 [教學](../application-gateway/create-ssl-portal.md)課程。

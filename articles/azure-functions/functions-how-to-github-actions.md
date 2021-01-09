@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608505"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035218"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 動作進行持續傳遞
 
-使用 [GitHub Actions](https://github.com/features/actions) 定義工作流程，以自動建立程式碼並將其部署至您的 Azure 函數應用程式。 
+使用 [GitHub Actions](https://github.com/features/actions) 定義工作流程，以在 Azure Functions 中自動建立程式碼並部署至您的函數應用程式。 
 
-在 GitHub Actions 中， [工作流程](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) 是您在 GitHub 存放庫中定義的自動化流程。 此程式會告知 GitHub 如何在 GitHub 上建立和部署函數應用程式專案。 
+在 GitHub Actions 中， [工作流程](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) 是您在 GitHub 存放庫中定義的自動化流程。 此程式會告知 GitHub 如何在 GitHub 上建立及部署您的函數應用程式專案。 
 
 工作流程是由您存放庫內 `/.github/workflows/` 路徑中的 YAML (. yml) 檔案所定義的。 此定義包含組成工作流程的各種步驟與參數。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "97608505"
 | **建置** | 設定環境。<br/>建置函式應用程式。|
 | **部署** | 部署函數應用程式。|
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。  
@@ -187,6 +187,7 @@ Python 會使用 `actions/setup-python` 動作。
 ---
 
 ## <a name="deploy-the-function-app"></a>部署函數應用程式
+
 使用 `Azure/functions-action` 動作將程式碼部署至函數應用程式。 此動作有三個參數：
 
 |參數 |說明  |
@@ -202,7 +203,7 @@ Python 會使用 `actions/setup-python` 動作。
 設定使用發行設定檔的 .NET Linux 工作流程。
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
+name: Deploy DotNet project to function app with a Linux environment
 
 on:
   [push]
@@ -241,7 +242,7 @@ jobs:
 設定使用發行設定檔的 .NET Windows 工作流程。
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
+name: Deploy DotNet project to function app with a Windows environment
 
 on:
   [push]
@@ -283,7 +284,7 @@ jobs:
 設定使用發行設定檔的 JAVA Linux 工作流程。
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -325,7 +326,7 @@ jobs:
 設定使用發行設定檔的 JAVA Windows 工作流程。
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -369,7 +370,7 @@ jobs:
 設定使用發行設定檔的 Node.JS Linux 工作流程。
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -411,7 +412,7 @@ jobs:
 設定使用發行設定檔的 Node.JS Windows 工作流程。
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -455,7 +456,7 @@ jobs:
 設定使用發行設定檔的 Python Linux 工作流程。
 
 ```yaml
-name: Deploy Python project to Azure Function App
+name: Deploy Python project to function app
 
 on:
   [push]
@@ -495,7 +496,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [深入瞭解 Azure 和 GitHub 整合](/azure/developer/github/)

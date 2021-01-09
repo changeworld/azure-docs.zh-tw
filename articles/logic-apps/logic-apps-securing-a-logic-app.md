@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 1d2ba6dbbcc2b8674718912f00b1d1ec58e1c4c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5ad01e31cb9af18fa018d99424b25dee338981d7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936085"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034504"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
@@ -1083,7 +1083,7 @@ Authorization: OAuth realm="Photos",
 
 1. 若要讓邏輯應用程式使用受控識別，請遵循[在 Azure Logic Apps 中使用受控識別來驗證對 Azure 資源的存取](../logic-apps/create-managed-service-identity.md)中的步驟。 這些步驟會在邏輯應用程式上啟用受控識別，並設定該身分識別對目標 Azure 資源的存取權。
 
-1. 請先[啟用 Azure 函式的驗證](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions)，Azure 函式才能使用受控識別。
+1. 請先[啟用 Azure 函式的驗證](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions)，Azure 函式才能使用受控識別。
 
 1. 在您要使用受控識別的觸發程序或動作中，請指定下列屬性值：
 
@@ -1147,7 +1147,7 @@ Authorization: OAuth realm="Photos",
 * [Azure 公用雲端中的隔離](../security/fundamentals/isolation-choices.md)
 * [Azure 中高度機密的 IaaS 應用程式安全性](/azure/architecture/reference-architectures/n-tier/high-security-iaas)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [適用于 Azure Logic Apps 的 Azure 安全性基準](../logic-apps/security-baseline.md)
 * [Azure Logic Apps 的自動化部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

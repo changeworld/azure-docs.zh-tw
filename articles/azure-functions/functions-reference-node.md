@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: bf6ebd01a18a0ebf0ab5dd7d7ac3aa34256b4696
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936799"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034912"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -18,9 +18,9 @@ ms.locfileid: "97936799"
 
 Express.js、Node.js 或 JavaScript 開發人員，如果您不熟悉 Azure Functions，請考慮先閱讀下列其中一篇文章：
 
-| 開始使用 | 概念| 引導式學習 |
+| 使用者入門 | 概念| 引導式學習 |
 | -- | -- | -- | 
-| <ul><li>[ 使用 Visual Studio CodeNode.js 函數](./create-first-function-vs-code-node.md)</li><li>[ 使用終端機/命令提示字元Node.js 函式](./create-first-function-cli-java.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[TypeScript 函數](#typescript)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> | <ul><li>[建立無伺服器應用程式](/learn/paths/create-serverless-applications/)</li><li>[重構 Node.js 和 Express Api 到無伺服器 Api](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
+| <ul><li>[ 使用 Visual Studio CodeNode.js 函數](./create-first-function-vs-code-node.md)</li><li>[ 使用終端機/命令提示字元Node.js 函式](./create-first-function-cli-node.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[TypeScript 函數](#typescript)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> | <ul><li>[建立無伺服器應用程式](/learn/paths/create-serverless-applications/)</li><li>[重構 Node.js 和 Express Api 到無伺服器 Api](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
 ## <a name="javascript-function-basics"></a>JavaScript 函式基本概念
 
@@ -551,7 +551,7 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>使用 Kudu
-1. 前往 `https://<function_app_name>.scm.azurewebsites.net`。
+1. 移至 `https://<function_app_name>.scm.azurewebsites.net`。
 
 2. 按一下 **偵錯主控台**  >  **CMD**]。
 

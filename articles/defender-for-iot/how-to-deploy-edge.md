@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: c2b440413599ce07112231af17daa0bc14817b76
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9ac283721526488f587fcabc68348dafac1835db
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832772"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033348"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>在您的 IoT Edge 裝置上部署安全性模組
 
@@ -32,7 +32,7 @@ ms.locfileid: "97832772"
 
 使用下列步驟來為 IoT Edge 部署適用于 IoT 的 Defender 安全性模組。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 1. 在 IoT 中樞中，確定您的裝置已 [註冊為 IoT Edge 裝置](../iot-edge/how-to-manual-provision-symmetric-key.md#register-a-new-device)。
 
@@ -51,13 +51,13 @@ ms.locfileid: "97832772"
 
 1. 從 Azure 入口網站開啟 **Marketplace**。
 
-1. 選取 **物聯網**，然後搜尋適用 **于 IoT 的 Defender** ，然後選取它。
+1. 選取 **物聯網**，然後搜尋 **適用於 IoT 的 Azure 資訊安全中心** 並加以選取。
 
    :::image type="content" source="media/howto/edge-onboarding-8.png" alt-text="為 IoT 選取 Defender":::
 
-1. 按一下 [ **建立** ] 以設定部署。
+1. 選取 [ **建立** ] 以設定部署。
 
-1. 選擇 IoT 中樞的 Azure **訂** 用帳戶，然後選取您的 **iot 中樞**。<br>選取 [ **部署至裝置** 以單一裝置為目標]，或選取 [ **大規模部署** 至目標多個裝置]，然後按一下 [ **建立**]。 如需大規模部署的詳細資訊，請參閱 [如何部署](../iot-edge/how-to-deploy-at-scale.md)。
+1. 選擇 IoT 中樞的 Azure **訂** 用帳戶，然後選取您的 **iot 中樞**。<br>選取 [ **部署至裝置** 以單一裝置為目標]，或選取 [ **大規模部署** 至目標多個裝置]，然後選取 [ **建立**]。 如需大規模部署的詳細資訊，請參閱 [如何部署](../iot-edge/how-to-deploy-at-scale.md)。
 
     >[!Note]
     >如果您選取 [ **大規模部署**]，請先新增裝置名稱和詳細資料，然後再繼續進行下列指示中的 [ **新增模組** ] 索引標籤。
@@ -68,7 +68,7 @@ ms.locfileid: "97832772"
 
 1. 選取 [ **AzureSecurityCenterforIoT** ] 模組。
 1. 在 [ **模組設定** ] 索引標籤上，將 **名稱** 變更為 **azureiotsecurity**。
-1. 在 [ **環境變數** ] 索引標籤上，視需要新增變數 (例如，debug 層級) 。
+1. 在 [ **環境變數** ] 索引標籤上，視需要新增變數 (例如，您可以加入 *debug 層級* ，並將它設定為下列其中一個值：「嚴重」、「錯誤」、「警告」或「資訊」 ) 。
 1. 在 [ **容器建立選項** ] 索引標籤上，新增下列設定：
 
     ``` json
@@ -112,8 +112,12 @@ ms.locfileid: "97832772"
 #### <a name="step-2-runtime-settings"></a>步驟2：執行時間設定
 
 1. 選取 [ **執行時間設定**]。
-1. 在 [ **Edge 中樞**] 下，將 **映射** 變更為 **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**。
-1. 確認 **建立選項** 設定為下列設定：
+2. 在 [ **Edge 中樞**] 下，將 **映射** 變更為 **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**。
+
+    >[!Note]
+    > 目前支援版本1.0.8.3 或更舊版本。
+
+3. 確認 **建立選項** 設定為下列設定：
 
     ``` json
     {
@@ -139,9 +143,9 @@ ms.locfileid: "97832772"
     }
     ```
 
-1. 選取 [儲存]。
+4. 選取 [儲存]。
 
-1. 選取 [下一步]  。
+5. 選取 [下一步] 。
 
 #### <a name="step-3-specify-routes"></a>步驟3：指定路由
 
@@ -157,7 +161,7 @@ ms.locfileid: "97832772"
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ```
 
-1. 選取 [下一步]  。
+1. 選取 [下一步] 。
 
 #### <a name="step-4-review-deployment"></a>步驟4：審查部署
 
@@ -191,7 +195,7 @@ ms.locfileid: "97832772"
 
 1. 如需更詳細的記錄，請將下列環境變數新增至 **azureiotsecurity** 模組部署： `logLevel=Debug` 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解設定選項，請繼續進行模組設定的操作指南。
 > [!div class="nextstepaction"]

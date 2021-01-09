@@ -2,20 +2,19 @@
 title: 沒有800計數限制的資源
 description: 列出可在資源群組中有超過800個實例的 Azure 資源類型。
 ms.topic: conceptual
-ms.date: 10/28/2020
-ms.openlocfilehash: c2d5797a7ec354f41d510ec6e884968bf9dbdbcd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 01/08/2021
+ms.openlocfilehash: 6a63fd7e41c03b542f4a43b483243702c5be5f14
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672359"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034929"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>資源不限於每個資源群組800個實例
 
 根據預設，您可以在每個資源群組中部署最多800個資源類型的實例。 不過，某些資源類型會豁免800實例的限制。 本文列出可在資源群組中有超過800個實例的 Azure 資源類型。 所有其他資源類型的限制為800個實例。
 
 針對某些資源類型，您必須聯絡支援人員，以移除800個實例的限制。 本文會注明這些資源類型。
-
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -105,6 +104,11 @@ ms.locfileid: "97672359"
 * software
 * softwareUpdateProfile
 * softwareUpdates
+
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+
+* 機器-最多支援5000個實例
+* 擴充功能-支援不限數目的 VM 延伸模組實例
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 
@@ -211,6 +215,6 @@ ms.locfileid: "97672359"
 * apiManagementAccounts/apis
 * sites
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需配額和限制的完整清單，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](azure-subscription-service-limits.md)。

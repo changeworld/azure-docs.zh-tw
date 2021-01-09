@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 25848d313fc01fc41ef8874707bd10b2fa9912d3
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857319"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033507"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>語音轉換文字常見問題集
 
@@ -134,11 +134,11 @@ ms.locfileid: "97857319"
 
 **答**：是。 您可以自行轉譯，或使用專業轉譯服務。 某些使用者偏好專業的轉譯人員，其他人則會使用群眾外包，或是自行轉譯。
 
-**問：定型自訂模型音訊資料需要多久的時間？**
+**問：使用音訊資料定型自訂模型需要多久的時間？**
 
 **答**：使用音訊資料來定型模型是一種漫長的程式。 視資料量而定，可能需要幾天的時間來建立自訂模型。 如果無法在一周內完成，服務可能會中止定型作業，並將模型回報為失敗。 為了更快獲得結果，請使用專用硬體可供定型的其中一個 [區域](custom-speech-overview.md#set-up-your-azure-account) 。 您可以使用 [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)，將完整定型的模型複製到另一個區域。 只使用文字進行定型的速度更快，而且通常會在幾分鐘內完成。
 
-某些基底模型無法使用音訊資料進行自訂。 這項服務只會使用轉譯的文字來定型和捨棄音訊資料。 定型將會更快完成，而且結果會與只使用文字定型的結果相同。
+某些基底模型無法使用音訊資料進行自訂。 針對這些服務，服務只會使用轉譯的文字來定型並忽略音訊資料。 定型將會更快完成，而且結果會與只使用文字定型的結果相同。
 
 ## <a name="accuracy-testing"></a>準確性測試
 

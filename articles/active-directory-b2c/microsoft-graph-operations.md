@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.custom: fasttrack-edit
+ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509813"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033603"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>適用于 Azure AD B2C 的 Microsoft Graph 作業
 
@@ -57,10 +58,10 @@ ms.locfileid: "97509813"
 
 設定註冊、登入、合併註冊與登入、密碼重設和設定檔更新的預先建立原則。
 
-- [列出使用者流程](/graph/api/identityuserflow-list)
-- [建立使用者流程](/graph/api/identityuserflow-post-userflows)
-- [取得使用者流程](/graph/api/identityuserflow-get)
-- [刪除使用者流程](/graph/api/identityuserflow-delete)
+- [列出使用者流程](/graph/api/identitycontainer-list-b2cuserflows)
+- [建立使用者流程](/graph/api/identitycontainer-post-b2cuserflows)
+- [取得使用者流程](/graph/api/b2cidentityuserflow-get)
+- [刪除使用者流程](/graph/api/b2cidentityuserflow-delete)
 
 ## <a name="custom-policies"></a>自訂原則
 

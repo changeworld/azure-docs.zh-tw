@@ -1,28 +1,28 @@
 ---
-title: 從 Azure Logic Apps 新增和呼叫 Azure Functions
-description: 在 Azure Logic Apps 從自動化工作和工作流程呼叫並執行 Azure Functions 中的自訂程式碼
+title: 從 Azure Logic Apps 新增和呼叫函式
+description: 從 Azure Logic Apps 中的自動化工作和工作流程，呼叫並執行在 Azure 中建立的自訂程式碼
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 75693c57a8d120aad53a15d03ae4054bac8262af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd04e5a7f084de7a95f20b54b99a9e4590f10cd7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023052"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034759"
 ---
-# <a name="call-azure-functions-from-azure-logic-apps"></a>從 Azure Logic Apps 呼叫 Azure 函式
+# <a name="call-functions-from-azure-logic-apps"></a>從 Azure Logic Apps 呼叫函數
 
-當您想要執行程式碼，以在邏輯應用程式中執行特定的作業時，您可以使用 [Azure Functions](../azure-functions/functions-overview.md) 建立自己的函式。 此服務可協助您建立 Node.js、C# 和 F# 和函式，而不需要組建完整的應用程式或基礎結構來執行程式碼。 您也可以[從 Azure 函式內呼叫邏輯應用程式](#call-logic-app)。 Azure Functions 可提供在雲端進行的無伺服器運算，適合用來執行以下舉例的各種工作：
+當您想要執行程式碼，以在邏輯應用程式中執行特定的作業時，您可以使用 [Azure Functions](../azure-functions/functions-overview.md) 建立自己的函式。 此服務可協助您建立 Node.js、C# 和 F# 和函式，而不需要組建完整的應用程式或基礎結構來執行程式碼。 您也可以 [從函數內部呼叫邏輯應用程式](#call-logic-app)。 Azure Functions 可提供在雲端進行的無伺服器運算，適合用來執行以下舉例的各種工作：
 
 * 使用 Node.js 或 C# 中的函式來擴充邏輯應用程式的行為。
 * 在邏輯應用程式工作流程中執行計算。
 * 在邏輯應用程式中套用進階格式設定或計算欄位。
 
-若要在不建立 Azure 函式的情況下執行程式碼片段，請了解如何[新增和執行內嵌程式碼](../logic-apps/logic-apps-add-run-inline-code.md)。
+若要在不使用 Azure Functions 的情況下執行程式碼片段，請瞭解如何 [新增和執行內嵌程式碼](../logic-apps/logic-apps-add-run-inline-code.md)。
 
 > [!NOTE]
 > Logic Apps 和 Azure Functions 之間的整合目前不支援啟用「位置」。
@@ -31,7 +31,7 @@ ms.locfileid: "96023052"
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* Azure 函數應用程式 (Azure 函式的容器) 及您的 Azure 函式。 如果您沒有函式應用程式，[請先建立該函式應用程式](../azure-functions/functions-create-first-azure-function.md)。 然後，您可以使用 Azure 入口網站在邏輯應用程式外建立函式，或在邏輯應用程式設計工具中[從邏輯應用程式內](#create-function-designer)建立函式。
+* 函數應用程式，這是在 Azure Functions 中建立之函式的容器，以及您所建立的函式。 如果您沒有函式應用程式，[請先建立該函式應用程式](../azure-functions/functions-create-first-azure-function.md)。 然後，您可以使用 Azure 入口網站在邏輯應用程式外建立函式，或在邏輯應用程式設計工具中[從邏輯應用程式內](#create-function-designer)建立函式。
 
 * 使用邏輯應用程式時，無論是現有或新的函數應用程式和函式，也都要符合相同的需求：
 
@@ -41,7 +41,7 @@ ms.locfileid: "96023052"
 
   * 您的函式會使用 **HTTP 觸發程序** 範本。
 
-    HTTP 觸發程序範本可以接受內容中有來自邏輯應用程式的 `application/json` 類型。 當您將 Azure 函式新增至邏輯應用程式時，邏輯應用程式設計工具會顯示 Azure 訂用帳戶內從這個範本建立的自訂函式。
+    HTTP 觸發程序範本可以接受內容中有來自邏輯應用程式的 `application/json` 類型。 當您將函式新增至邏輯應用程式時，邏輯應用程式設計工具會顯示在您的 Azure 訂用帳戶內從這個範本建立的自訂函數。
 
   * 除非您已定義 [OpenAPI 定義](../azure-functions/functions-openapi-definition.md) (先前稱為 [Swagger 檔案](https://swagger.io/))，否則您的函式不會使用自訂路由。
 
@@ -96,15 +96,15 @@ function convertToDateString(request, response){
    body: data.date.ToDateString();
    ```
 
-您已建立 Azure 函式，接下來請遵循如何[將函式新增至邏輯應用程式](#add-function-logic-app)的步驟。
+現在您已在 Azure 中建立函式，接下來請遵循將函式 [新增至邏輯應用程式](#add-function-logic-app)的步驟。
 
 <a name="create-function-designer"></a>
 
 ## <a name="create-functions-inside-logic-apps"></a>在邏輯應用程式內部建立函式
 
-您可以在邏輯應用程式設計工具中使用內建的 Azure Functions 動作，直接從邏輯應用程式的工作流程建立 Azure 函式，但此方法僅適用於以 JavaScript 撰寫的 Azure 函式。 若為其他語言，您可以透過 Azure 入口網站中的 Azure Functions 體驗來建立 Azure 函式。 如需詳細資訊，請參閱[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-create-first-azure-function.md)。
+您可以使用邏輯應用程式設計工具中內建的 Azure Functions 動作，直接從邏輯應用程式的工作流程建立函式，但您只能將此方法用於以 JavaScript 撰寫的函式。 若為其他語言，您可以透過 Azure 入口網站中的 Azure Functions 體驗來建立函數。 如需詳細資訊，請參閱[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-create-first-azure-function.md)。
 
-不過，您必須已有 Azure 函數應用程式 (函式的容器)，才能建立任何 Azure 函數。 如果您沒有函式應用程式，請先建立該函式應用程式。 請參閱[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-create-first-azure-function.md)。
+不過，在 Azure 中建立函式之前，您必須已經有函數應用程式，這是您函式的容器。 如果您沒有函式應用程式，請先建立該函式應用程式。 請參閱[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-create-first-azure-function.md)。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
@@ -116,9 +116,9 @@ function convertToDateString(request, response){
 
 1. 在搜尋方塊中，輸入「azure functions」作為篩選條件。 從動作清單中，選取 [選擇 Azure 函式] 動作，例如：
 
-   ![尋找 "Azure functions"](./media/logic-apps-azure-functions/find-azure-functions-action.png)
+   ![在 Azure 入口網站中尋找函數。](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. 從函式應用程式清單中，選取您的函式應用程式。 在動作清單開啟之後，選取此動作：**建立新函數**
+1. 從函式應用程式清單中，選取您的函式應用程式。 開啟 [動作] 清單之後，請選取此動作： **建立新** 的函式。
 
    ![選取函式應用程式](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -155,13 +155,13 @@ function convertToDateString(request, response){
 
    ![將物件轉換為字串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 若要指定其他詳細資料，例如要使用的方法、要求標頭、查詢參數或驗證，請開啟 [新增參數] 清單，然後選取您想要的選項。 在驗證方面，選項會隨著您選取的函式而有所不同。 請參閱[啟用 Azure 函式的驗證](#enable-authentication-functions)。
+1. 若要指定其他詳細資料，例如要使用的方法、要求標頭、查詢參數或驗證，請開啟 [新增參數] 清單，然後選取您想要的選項。 在驗證方面，選項會隨著您選取的函式而有所不同。 請參閱 [啟用功能的驗證](#enable-authentication-functions)。
 
 <a name="add-function-logic-app"></a>
 
 ## <a name="add-existing-functions-to-logic-apps"></a>在邏輯應用程式中新增現有函式
 
-若要從邏輯應用程式呼叫現有 Azure 函式，您可以在邏輯應用程式設計工具中新增 Azure 函式，例如任何其他動作。
+若要從邏輯應用程式呼叫現有的函式，您可以在邏輯應用程式設計工具中新增函式，就像任何其他動作一樣。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)的邏輯應用程式設計工具中，開啟邏輯應用程式。
 
@@ -169,15 +169,15 @@ function convertToDateString(request, response){
 
 1. 在 [選擇動作] 下的搜尋方塊中，輸入 "azure functions" 作為篩選條件。 從動作清單中，選取 [選擇 Azure 函式] 動作。
 
-   ![尋找 "Azure functions"](./media/logic-apps-azure-functions/find-azure-functions-action.png)
+   ![在 Azure 中尋找函式。](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
 1. 從函式應用程式清單中，選取您的函式應用程式。 函式清單出現後，選取您的函式。
 
-   ![選取函式應用程式和 Azure 函式](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
+   ![選取您的函數應用程式和函式](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
    如果函式有 API 定義 (Swagger 描述)，而且[設定為可讓邏輯應用程式尋找和存取這些函式](#function-swagger)，您可以選取 [Swagger 動作]。
 
-   ![選取函數應用程式、[Swagger 動作] 和 Azure 函式](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
+   ![選取您的函數應用程式、「Swagger 動作」和您的函式](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
 1. 在 [要求本文] 方塊中，提供函式的輸入 (必須以 JavaScript 物件標記法 (JSON) 物件進行格式化)。
 
@@ -189,27 +189,27 @@ function convertToDateString(request, response){
 
    ![將物件轉換為字串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 若要指定其他詳細資料，例如要使用的方法、要求標頭、查詢參數或驗證，請開啟 [新增參數] 清單，然後選取您想要的選項。 在驗證方面，選項會隨著您選取的函式而有所不同。 請參閱[在 Azure 函式中啟用驗證](#enable-authentication-functions)。
+1. 若要指定其他詳細資料，例如要使用的方法、要求標頭、查詢參數或驗證，請開啟 [新增參數] 清單，然後選取您想要的選項。 在驗證方面，選項會隨著您選取的函式而有所不同。 請參閱 [在函數中啟用驗證](#enable-authentication-functions)。
 
 <a name="call-logic-app"></a>
 
-## <a name="call-logic-apps-from-azure-functions"></a>從 Azure 函式呼叫邏輯應用程式
+## <a name="call-logic-apps-from-functions"></a>從函式呼叫邏輯應用程式
 
-若要從 Azure 函式內觸發邏輯應用程式，該邏輯應用程式必須以能提供可呼叫端點的觸發程序作為開頭。 例如，您可以使用 **HTTP**、**要求**、**Azure 佇列** 或 **事件方格** 觸發程序來起始邏輯應用程式。 在函式內部，將 HTTP POST 要求傳送給該觸發程序的 URL，並包含您想要讓該邏輯應用程式處理的承載。 如需詳細資訊，請參閱[呼叫、觸發或巢狀邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。
+當您想要從函式內觸發邏輯應用程式時，邏輯應用程式必須以提供可呼叫端點的觸發程式為開頭。 例如，您可以使用 **HTTP**、**要求**、**Azure 佇列** 或 **事件方格** 觸發程序來起始邏輯應用程式。 在函式內部，將 HTTP POST 要求傳送給該觸發程序的 URL，並包含您想要讓該邏輯應用程式處理的承載。 如需詳細資訊，請參閱[呼叫、觸發或巢狀邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。
 
 <a name="enable-authentication-functions"></a>
 
-## <a name="enable-authentication-for-azure-functions"></a>啟用 Azure 函式的驗證
+## <a name="enable-authentication-for-functions"></a>啟用函數驗證
 
 若要輕鬆驗證存取 Azure Active Directory (Azure AD) 所保護的其他資源，而不需要登入並提供認證或秘密，您的邏輯應用程式可以使用[受控識別](../active-directory/managed-identities-azure-resources/overview.md) (先前稱為受控服務識別，縮寫為 MSI)。 Azure 會為您管理此身分識別，並協助保護您的認證，因為您不需要提供或輪替使用祕密。 深入了解[支援使用受控識別進行 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
-如果您將邏輯應用程式設定為使用系統指派的身分識別，或使用者指派的手動建立身分識別，則邏輯應用程式中的 Azure 函式也可以使用該相同的身分識別進行驗證。 如需邏輯應用程式中的 Azure 函式驗證支援的詳細資訊，請參閱[將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+如果您將邏輯應用程式設定為使用系統指派的身分識別，或手動建立的使用者指派身分識別，則邏輯應用程式中的函式也可以使用相同的身分識別進行驗證。 如需邏輯應用程式中函式之驗證支援的詳細資訊，請參閱 [將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
 若要對您的函式設定和使用受控識別，請遵循下列步驟：
 
 1. 在邏輯應用程式上啟用受控識別，並設定該身分識別對目標資源的存取權。 請參閱 [在 Azure Logic Apps 中使用受控識別來驗證對 Azure 資源的存取](../logic-apps/create-managed-service-identity.md)。
 
-1. 遵循下列步驟，在 Azure 函式和函數應用程式中啟用驗證：
+1. 依照下列步驟，在您的函式和函數應用程式中啟用驗證：
 
    * [在函式中設定匿名驗證](#set-authentication-function-app)
    * [在函數應用程式中設定 Azure AD 驗證](#set-azure-ad-authentication)
@@ -218,7 +218,7 @@ function convertToDateString(request, response){
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>在函式中設定匿名驗證
 
-若要在 Azure 函式中使用邏輯應用程式的受控識別，您必須將函式的驗證層級設為匿名。 否則，邏輯應用程式會擲回 "BadRequest" 錯誤。
+若要在您的函式中使用邏輯應用程式的受控識別，您必須將函數的驗證層級設定為匿名。 否則，邏輯應用程式會擲回 "BadRequest" 錯誤。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，尋找並選取您的函數應用程式。 這些步驟使用 "FabrikamFunctionApp" 作為範例函數應用程式。
 

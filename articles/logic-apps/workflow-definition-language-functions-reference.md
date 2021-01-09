@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b15849fb8fbfed5d55b9c224f51634047b7c75b2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914479"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034290"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在運算式中使用函式的參考指南，適用於 Azure Logic Apps 和 Power Automate
 
@@ -1701,7 +1701,7 @@ div(<dividend>, <divisor>)
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*quotient-result*> | 整數或浮點數 | 將第一個數位除以第二個數字的結果。 如果被除數或除數具有 Float 類型，則結果會是 Float 類型。 <p><p>**注意**：若要將 float 結果轉換成整數，請嘗試從邏輯應用程式 [建立和呼叫 Azure 函式](../logic-apps/logic-apps-azure-functions.md) 。 |
+| <*quotient-result*> | 整數或浮點數 | 將第一個數位除以第二個數字的結果。 如果被除數或除數具有 Float 類型，則結果會是 Float 類型。 <p><p>**注意**：若要將 float 結果轉換成整數，請嘗試從邏輯應用程式 [在 Azure 中建立和呼叫](../logic-apps/logic-apps-azure-functions.md) 函式。 |
 ||||
 
 *範例 1*
