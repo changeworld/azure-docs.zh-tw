@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: dc6412a85beba67551e7683c8127a65730f9218f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4c703fc1ddac4af2e3cf8716764a21da7e870b19
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535462"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048669"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>使用防火牆設定 Azure HDInsight 叢集的輸出網路流量
 
@@ -45,13 +45,13 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
 ### <a name="create-a-new-firewall-for-your-cluster"></a>為叢集建立新的防火牆
 
-使用＜ **部署防火牆** ＞中的步驟，建立名為 **Test-FW01** 的防火牆，請見 [教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)。
+使用＜**部署防火牆**＞中的步驟，建立名為 **Test-FW01** 的防火牆，請見 [教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall)。
 
 ### <a name="configure-the-firewall-with-application-rules"></a>使用應用程式規則設定防火牆
 
 建立應用程式規則集合，讓叢集能夠傳送和接收重要通訊。
 
-1. 從 Azure 入口網站選取新的防火牆 **TEST-FW01** 。
+1. 從 Azure 入口網站選取新的防火牆 **TEST-FW01**。
 
 1. 瀏覽至 [設定] > [規則] > [應用程式規則集合] > [+ 新增應用程式規則集合]。
 
@@ -105,7 +105,7 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
     | 名稱 | 通訊協定 | 來源位址 | 服務標記 | 目的地連接埠 | 注意 |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_5 | TCP | * | SQL | 1433 | 如果您使用 HDInsight 提供的預設 sql server，請在 SQL 的 [服務標記] 區段中設定網路規則，以允許您記錄和審核 SQL 流量。 除非您已在 HDInsight 子網路上設定 SQL Server 的服務端點 (這麼做將會略過防火牆)。 如果您使用自訂 SQL server 來進行 Ambari、Oozie、Ranger 和 Hive metastroes，則只需要允許您自訂 SQL server 的流量。|
+    | Rule_5 | TCP | * | SQL | 1433 | 如果您使用 HDInsight 提供的預設 sql server，請在 SQL 的 [服務標記] 區段中設定網路規則，以允許您記錄和審核 SQL 流量。 除非您已在 HDInsight 子網路上設定 SQL Server 的服務端點 (這麼做將會略過防火牆)。 如果您使用自訂 SQL server 來進行 Ambari、Oozie、Ranger 和 Hive 中繼存放區，則只需要允許您自訂 SQL server 的流量。|
     | Rule_6 | TCP | * | Azure 監視器 | * | (選擇性) 計畫使用「自動調整」功能的客戶應新增此規則。 |
     
    ![標題：輸入應用程式規則集合](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
@@ -116,13 +116,13 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
 建立包含下列項目的路由表：
 
-* 來自 [健康情況和管理服務](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) 的所有 IP 位址，下一個躍點類型為 [ **網際網路** ]。 其中應該包含四個一般區域的 Ip，以及適用于您特定區域的2個 ip。 只有在 ResourceProviderConnection 設定為 [ *輸入* ] 時，才需要此規則。 如果 ResourceProviderConnection 設定為 *輸出* ，則 UDR 中不需要這些 ip。 
+* 來自 [健康情況和管理服務](../hdinsight/hdinsight-management-ip-addresses.md#health-and-management-services-all-regions) 的所有 IP 位址，下一個躍點類型為 [ **網際網路**]。 其中應該包含四個一般區域的 Ip，以及適用于您特定區域的2個 ip。 只有在 ResourceProviderConnection 設定為 [ *輸入*] 時，才需要此規則。 如果 ResourceProviderConnection 設定為 *輸出* ，則 UDR 中不需要這些 ip。 
 
 * IP 位址 0.0.0.0/0 的其中一個虛擬設備路由，並且以 Azure 防火牆私人IP 位址作為下一個躍點。
 
 例如，如果叢集建立在美國的「美國東部」區域中，請使用使用下列步驟來為該叢集設定路由表：
 
-1. 選取您的 Azure 防火牆 **Test-FW01** 。 複製 [概觀] 頁面上所列的 **私人 IP 位址** 。 在此範例中，我們將使用 **範例位址 10.0.2.4** 。
+1. 選取您的 Azure 防火牆 **Test-FW01**。 複製 [概觀] 頁面上所列的 **私人 IP 位址**。 在此範例中，我們將使用 **範例位址 10.0.2.4**。
 
 1. 然後瀏覽至 [所有服務] > [網路] > [路由表] 和 [建立路由表]。
 
@@ -144,7 +144,7 @@ HDInsight 輸出流量相依性幾乎完全是以 FQDN 進行定義。 其後面
 
 1. 選取 [+ 關聯]。
 
-1. 在 [關聯子網路] 畫面上，選取其中已建立您叢集的虛擬網路。 以及用於 HDInsight 叢集的 **子網路** 。
+1. 在 [關聯子網路] 畫面上，選取其中已建立您叢集的虛擬網路。 以及用於 HDInsight 叢集的 **子網路**。
 
 1. 選取 [確定]。
 
@@ -170,7 +170,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 第一次執行應用程式時，將 Azure 防火牆與 Azure 監視器記錄整合將會十分實用。 特別是當您不知道所有應用程式相依性時。 您可以從[分析 Azure 監視器中的記錄資料](../azure-monitor/log-query/log-query-overview.md)深入了解 Azure 監視器記錄
 
-若要深入了解 Azure 防火牆和要求增加的級別限制，請參閱[此文件](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)，或參閱[常見問題集](../firewall/firewall-faq.md)。
+若要深入了解 Azure 防火牆和要求增加的級別限制，請參閱[此文件](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)，或參閱[常見問題集](../firewall/firewall-faq.yml)。
 
 ## <a name="access-to-the-cluster"></a>存取叢集
 

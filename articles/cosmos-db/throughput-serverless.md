@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: 3f5c3400f319a3f9d5f1544457b009f90d479634
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760243"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049825"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>如何在布建的輸送量和無伺服器之間進行選擇
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,11 +25,11 @@ Azure Cosmos DB 有兩種不同的容量模式：布 [建的輸送量](set-throu
 | 準則 | 佈建的輸送量 | 無伺服器 |
 | --- | --- | --- |
 | 狀態 | 正式推出 | 預覽狀態 |
-| 最適用於 | 需要可預測效能的任務關鍵性工作負載 | 使用很難預測的輕量和間歇流量的小型至中型工作負載 |
+| 最適用於 | 持續流量需要可預測效能的工作負載 | 具有間歇或無法預測的流量，以及低平均至尖峰流量比率的工作負載 |
 | 運作方式 | 針對每個容器，您可以布建以每秒 [要求單位](request-units.md) 數表示的輸送量量。 每秒，此數量的要求單位適用于您的資料庫作業。 您可以手動更新布建的 [輸送量，或使用自動](provision-throughput-autoscale.md)調整自動調整。 | 您可以對容器執行資料庫作業，而不需要布建任何容量。 |
 | 地理分散 | 可用 (不限數量的 Azure 區域)  | 無法使用 (無伺服器帳戶只能在1個 Azure 區域中執行)  |
 | 每個容器的儲存體上限 | 無限制 | 50 GB |
-| 效能 | SLA 涵蓋99.99% 到99.999% 的可用性<br>SLA 所涵蓋的點讀取和寫入 < 10 毫秒延遲<br>SLA 涵蓋99.99% 的保證輸送量 | SLA 涵蓋99.9% 到99.99% 的可用性<br>適用于點讀取的10毫秒延遲，以及 SLO 所涵蓋的寫入 < 30 毫秒 <<br>SLO 所涵蓋的 95% burstability |
+| 效能 | SLA 所涵蓋的點讀取和寫入 < 10 毫秒延遲 | 適用于點讀取的10毫秒延遲，以及 SLO 所涵蓋的寫入 < 30 毫秒 < |
 | 計費模式 | 我們會每小時根據佈建的 RU/秒來收取費用，而不論使用的 RU 數目為何。 | 系統會根據您的資料庫作業所耗用的 ru 量，以每小時為單位來計費。 |
 
 > [!IMPORTANT]
@@ -54,7 +54,7 @@ Azure Cosmos DB 有兩種不同的容量模式：布 [建的輸送量](set-throu
 > [!NOTE]
 > 上述範例所示的成本僅供示範之用。 如需最新定價資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解如何[在 Azure Cosmos DB 上](set-throughput.md)布建輸送量
 - 深入瞭解 [Azure Cosmos DB 無伺服器](serverless.md)

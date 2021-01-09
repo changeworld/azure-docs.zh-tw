@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: c1dbdc4761c107a8e5028a43ead9710d45526016
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3bc24e88368af056e4d4506a5cf688e1172d4930
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461185"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051559"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 建立 Azure 數位 Twins 的自訂 Sdk
 
@@ -57,7 +57,7 @@ AutoRest 支援各種不同的語言程式碼產生器。
 
 本節提供的指示說明如何將 SDK 建立為類別庫，也就是它自己的專案，而且可以包含在其他專案中。 這些步驟依賴 **Visual Studio** (您可以從 [這裡](https://visualstudio.microsoft.com/downloads/) 安裝最新版本) 。
 
-以下是步驟：
+步驟如下：
 
 1. 為類別庫建立新的 Visual Studio 方案
 2. 使用 *ADTApi* 做為專案名稱
@@ -99,17 +99,7 @@ REST API 呼叫通常會傳回強型別物件。 不過，因為 Azure 數位 Tw
 
 以下程式碼片段會嘗試新增對應項並攔截此進程中的任何錯誤：
 
-```csharp
-try
-{
-    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(id, initData);
-    Console.WriteLine($"Created a twin successfully: {id}");
-}
-catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}"); 
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_errorHandling":::
 
 ### <a name="paging"></a>Paging
 
@@ -117,64 +107,17 @@ AutoRest 會針對 SDK 產生兩種類型的分頁模式：
 * 一個用於所有 Api （查詢 API 除外）
 * 一個用於查詢 API
 
-在非查詢分頁模式中，以下程式碼片段顯示如何從 Azure 數位 Twins 抓取傳出關聯性的分頁清單：
+在非查詢分頁模式中，以下是示範如何從 Azure 數位 Twins 取得傳出關聯性分頁清單的範例方法：
 
-```csharp
- try 
- {
-     // List the relationships.
-    AsyncPageable<BasicRelationship> results = client.GetRelationshipsAsync<BasicRelationship>(srcId);
-    Console.WriteLine($"Twin {srcId} is connected to:");
-    // Iterate through the relationships found.
-    int numberOfRelationships = 0;
-    await foreach (string rel in results)
-    {
-         ++numberOfRelationships;
-         // Do something with each relationship found
-         Console.WriteLine($"Found relationship-{rel.Name}->{rel.TargetId}");
-    }
-    Console.WriteLine($"Found {numberOfRelationships} relationships on {srcId}");
-} catch (RequestFailedException rex) {
-    Console.WriteLine($"Relationship retrieval error: {rex.Status}:{rex.Message}");   
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_sample.cs" id="FindOutgoingRelationshipsMethod":::
 
 第二個模式只會針對查詢 API 產生。 它會 `continuationToken` 明確使用。
 
 以下是使用此模式的範例：
 
-```csharp
-string query = "SELECT * FROM digitaltwins";
-string conToken = null; // continuation token from the query
-int page = 0;
-try
-{
-    // Repeat the query while there are pages
-    do
-    {
-        QuerySpecification spec = new QuerySpecification(query, conToken);
-        QueryResult qr = await client.Query.QueryTwinsAsync(spec);
-        page++;
-        Console.WriteLine($"== Query results page {page}:");
-        if (qr.Items != null)
-        {
-            // Query returns are JObjects
-            foreach(JObject o in qr.Items)
-            {
-                string twinId = o.Value<string>("$dtId");
-                Console.WriteLine($"  Found {twinId}");
-            }
-        }
-        Console.WriteLine($"== End query results page {page}");
-        conToken = qr.ContinuationToken;
-    } while (conToken != null);
-} catch (ErrorResponseException e)
-{
-    Console.WriteLine($"*** Error in twin query: ${e.Response.StatusCode}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/queries.cs" id="PagedQuery":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 逐步解說建立用戶端應用程式的步驟，讓您可以在其中使用 SDK：
 * [*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)

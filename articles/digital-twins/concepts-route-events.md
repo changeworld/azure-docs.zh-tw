@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6559de2b94879ac8643f4945fd5adcf4fc7e1045
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aa3466456b99664b1b39bd415680a6a291f85acd
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350818"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049281"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由傳送事件
 
@@ -75,11 +75,7 @@ Azure 數位 twins 會使用 **事件路由** 將資料傳送給服務外的取�
 
 以下範例示範如何使用 `CreateOrReplaceEventRouteAsync` [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 呼叫，在用戶端應用程式中建立事件路由： 
 
-```csharp
-string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
-var er = new DigitalTwinsEventRoute("endpointName", eventFilter);
-await client.CreateOrReplaceEventRouteAsync("routeName", er);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
 
 1. 首先 `DigitalTwinsEventRoute` 會建立物件，而此函式會採用端點的名稱。 此 `endpointName` 欄位會識別端點，例如事件中樞、事件方格或服務匯流排。 您必須在訂用帳戶中建立這些端點，並使用控制平面 Api 連接至 Azure 數位 Twins，然後再進行此註冊呼叫。
 
@@ -113,7 +109,7 @@ IoT 中樞和 Azure 數位 Twins 中的不同事件種類會產生不同類型�
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱如何設定和管理事件路由：
 * [*如何：管理端點和路由*](how-to-manage-routes-apis-cli.md)

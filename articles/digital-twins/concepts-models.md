@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0a38f9b8135fed08a95df68f108e44c34fec6325
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dfea6d531dfb87a5344c5d8e53570b6e1ae8e598
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955322"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049315"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>瞭解 Azure 數位 Twins 中的對應項模型
 
@@ -88,53 +88,7 @@ Azure 數位 Twins 也不會觀察 `writable` 屬性或關聯性的屬性。 雖
  
 請考慮行星也 **可以與衛星本身互動，而且** 可能包含 **craters**。 在下列範例中， `Planet` 模型藉由參考兩個外部模型（和）來表示與這些其他實體的連接 `Moon` `Crater` 。 這些模型也會在下列範例程式碼中定義，但會保持不變，因此不會降低主要 `Planet` 範例。
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Planet",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "name",
-        "schema": "string"
-      },
-      {
-        "@type": "Property",
-        "name": "mass",
-        "schema": "double"
-      },
-      {
-        "@type": "Telemetry",
-        "name": "Temperature",
-        "schema": "double"
-      },
-      {
-        "@type": "Relationship",
-        "name": "satellites",
-        "target": "dtmi:com:contoso:Moon;1"
-      },
-      {
-        "@type": "Component",
-        "name": "deepestCrater",
-        "schema": "dtmi:com:contoso:Crater;1"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Crater;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Crater-Moon.json":::
 
 模型的欄位如下：
 
@@ -166,57 +120,7 @@ Azure 數位 Twins 也不會觀察 `writable` 屬性或關聯性的屬性。 雖
 
 下列範例會從先前的 DTDL 範例重新 imagines *地球* 模型，作為較大 *CelestialBody* 模型的子類型。 「父」模型會先定義，然後「子」模型會使用欄位來建立 `extends` 。
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:CelestialBody;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Celestial body",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "name",
-        "schema": "string"
-      },
-      {
-        "@type": "Property",
-        "name": "mass",
-        "schema": "double"
-      },
-      {
-        "@type": "Telemetry",
-        "name": "temperature",
-        "schema": "double"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Planet;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Planet",
-    "extends": "dtmi:com:contoso:CelestialBody;1",
-    "contents": [
-      {
-        "@type": "Relationship",
-        "name": "satellites",
-        "target": "dtmi:com:contoso:Moon;1"
-      },
-      {
-        "@type": "Component",
-        "name": "deepestCrater",
-        "schema": "dtmi:com:contoso:Crater;1"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Crater;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
 
 在此範例中， *CelestialBody* 會為 *地球* 提供名稱、品質和溫度。 `extends`區段是介面名稱或介面名稱陣列 (如果需要) ，可讓擴充介面繼承多個父模型。
 
@@ -244,7 +148,7 @@ Azure 數位 Twins 也不會觀察 `writable` 屬性或關聯性的屬性。 雖
 
 如需這兩個處理常式的詳細資訊，請參閱作法 [*：整合產業標準模型*](how-to-integrate-models.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱如何使用 DigitalTwinModels Api 管理模型：
 * [操作說明：管理自訂模型](how-to-manage-model.md)

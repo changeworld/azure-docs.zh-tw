@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4b72bb8bac8f9949c83d0bbc85a0995f790c437d
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 9b092c3c7382c984e8555125820c7c34d91f5e87
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347892"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048924"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>針對 Azure 數位 Twins 進行疑難排解：計量
 
@@ -55,7 +55,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 若要進行此設定，請使用 Azure 監視器中的 [ [警示](troubleshoot-alerts.md) ] 功能。 您可以定義這些計量的臨界值，以便在計量達到其已發佈限制的特定百分比時收到警示。
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | TwinCount | 對應項計數 (預覽)  | 計數 | 總計 | Azure 數位 Twins 實例中的 twins 總數。 使用此計量來判斷您是否即將達到每個實例允許的最大 twins 數目的 [服務限制](reference-service-limits.md#functional-limits) 。 |  無 |
 | ModelCount |  (預覽的模型計數)  | 計數 | 總計 | Azure 數位 Twins 實例中的總模型數目。 使用此計量來判斷您是否已接近每個實例允許的最大模型數的 [服務限制](reference-service-limits.md#functional-limits) 。 | 無 |
@@ -64,7 +64,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 需要處理 API 要求的計量：
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API 要求 | 計數 | 總計 | 針對數位 Twins 的讀取、寫入、刪除和查詢作業所提出的 API 要求數目。 |  認證 <br>操作 <br>協定 <br>狀態碼， <br>狀態碼類別， <br>狀態文字 |
 | ApiRequestsFailureRate | API 要求失敗率 | 百分比 | Average | 服務針對您的實例所收到的 API 要求百分比，可提供內部錯誤 (500) Twins 讀取、寫入、刪除和查詢作業的回應碼。 | 認證 <br>操作 <br>協定 <br>狀態碼， <br>狀態碼類別， <br>狀態文字
@@ -74,11 +74,11 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 需要計費的計量：
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
-| BillingApiOperations | 計費 API 作業 | 計數 | 總計 | 針對 Azure 數位 Twins 服務提出之所有 API 要求計數的計費計量。 | 計量識別碼 |
-| BillingMessagesProcessed | 已處理的帳單訊息 | 計數 | 總計 | 從 Azure 數位 Twins 送出至外部端點之訊息數目的計費度量。<br><br>若要將帳單視為單一訊息，承載必須不超過 1 KB。 大於此的承載會以 1 KB 的遞增量計算為額外訊息 (因此1到 2 KB 之間的訊息將會計算為2則訊息，介於2到 3 KB 之間將會是3則訊息，依此類推) 。<br>這項限制也適用于回應，因此在回應本文中傳回 1.5 KB 的呼叫將會以2個作業計費。 | 計量識別碼 |
-| BillingQueryUnits | 帳單查詢單位 | 計數 | 總計 | 查詢單位的數目，這是服務資源使用量的內部計算量值，用來執行查詢。 另外還有可用於測量查詢單位的協助程式 API： [QueryChargeHelper 類別](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | 計量識別碼 |
+| BillingApiOperations | 計費 API 作業 | 計數 | 總計 | 針對 Azure 數位 Twins 服務提出之所有 API 要求計數的計費計量。 | Meter ID |
+| BillingMessagesProcessed | 已處理的帳單訊息 | 計數 | 總計 | 從 Azure 數位 Twins 送出至外部端點之訊息數目的計費度量。<br><br>若要將帳單視為單一訊息，承載必須不超過 1 KB。 大於此的承載會以 1 KB 的遞增量計算為額外訊息 (因此1到 2 KB 之間的訊息將會計算為2則訊息，介於2到 3 KB 之間將會是3則訊息，依此類推) 。<br>這項限制也適用于回應，因此在回應本文中傳回 1.5 KB 的呼叫將會以2個作業計費。 | Meter ID |
+| BillingQueryUnits | 帳單查詢單位 | 計數 | 總計 | 查詢單位的數目，這是服務資源使用量的內部計算量值，用來執行查詢。 另外還有可用於測量查詢單位的協助程式 API： [QueryChargeHelper 類別](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet) | Meter ID |
 
 如需 Azure 數位 Twins 計費方式的詳細資訊，請參閱 [*Azure 數位 Twins 定價*](https://azure.microsoft.com/pricing/details/digital-twins/)。
 
@@ -86,7 +86,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 與資料輸入有關的計量：
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | IngressEvents | 輸入事件 | 計數 | 總計 | 傳入的遙測事件到 Azure 數位 Twins 的數目。 | 結果 |
 | IngressEventsFailureRate | 輸入事件失敗率 | 百分比 | Average | 服務傳回內部錯誤 (500) 回應碼的傳入遙測事件百分比。 | 結果 |
@@ -96,7 +96,7 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 
 使用路由的計量：
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | 路由傳送的訊息 | 計數 | 總計 | 路由至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）的訊息數目。 | 端點類型， <br>結果 |
 | RoutingFailureRate | 路由失敗率 | 百分比 | Average | 從 Azure 數位 Twins 路由傳送至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）時，會產生錯誤的事件百分比。 | 端點類型， <br>結果 |
@@ -117,6 +117,6 @@ Azure 數位 Twins 提供數個計量，可讓您瞭解實例的健康情況和�
 | 狀態碼類別 | 2xx、4xx、5xx 等等。 |
 | 狀態文字 | 內部伺服器錯誤、找不到等等。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解如何管理 Azure 數位 Twins 的已記錄計量，請參閱 [*疑難排解：設定診斷*](troubleshoot-diagnostics.md)。

@@ -8,12 +8,12 @@ ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 3e5eb49a91e2c8bbd73f5dd37ed90f10b406fa3d
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 7b2039f8b1aebef65112067e4fd9184777192015
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496043"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051576"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 數位 Twins 來更新 Azure 地圖服務室內地圖
 
@@ -25,11 +25,11 @@ ms.locfileid: "92496043"
 2. 建立 Azure 函數來更新 Azure 地圖服務室內地圖功能 stateset。
 3. 如何在 Azure 數位 Twins 圖形中儲存地圖識別碼和功能 stateset 識別碼。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 * 遵循 Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)。
     * 您將會使用額外的端點和路由來擴充此對應項。 您也會從該教學課程將另一個函式新增至函數應用程式。 
-* 遵循 Azure 地圖服務 [*教學課程：使用 Azure 地圖服務建立者來建立室內地圖*](../azure-maps/tutorial-creator-indoor-maps.md) ，以使用 *功能 stateset*建立 Azure 地圖服務室內地圖。
+* 遵循 Azure 地圖服務 [*教學課程：使用 Azure 地圖服務建立者來建立室內地圖*](../azure-maps/tutorial-creator-indoor-maps.md) ，以使用 *功能 stateset* 建立 Azure 地圖服務室內地圖。
     * [功能 statesets](../azure-maps/creator-indoor-maps.md#feature-statesets) 是動態屬性的集合， (狀態) 指派給資料集功能，例如房間或設備。 在上述的 Azure 地圖服務教學課程中，功能 stateset 會儲存您將在地圖上顯示的房間狀態。
     * 您將需要您的功能 *STATESET 識別碼* 和 Azure 地圖服務訂用帳戶 *識別碼*。
 
@@ -62,7 +62,7 @@ ms.locfileid: "92496043"
 3. 在 Azure 數位 Twins 中建立路由，以將對應項更新事件傳送至您的端點。
 
     >[!NOTE]
-    >目前 Cloud Shell 有**已知問題**會影響這些命令群組：`az dt route`、`az dt model`、`az dt twin`。
+    >目前 Cloud Shell 有 **已知問題** 會影響這些命令群組：`az dt route`、`az dt model`、`az dt twin`。
     >
     >若要解決此問題，請在執行命令之前，先在 Cloud Shell 中執行 `az login`；或使用[本機 CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)，而不是 Cloud Shell。 如需這方面的詳細資訊，請參閱[疑難排解：Azure Digital Twins 中的已知問題](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)。
 
@@ -78,60 +78,7 @@ ms.locfileid: "92496043"
 
 以下列程式碼取代函式程式碼。 它只會篩選出空間 twins 的更新、讀取更新的溫度，然後將該資訊傳送至 Azure 地圖服務。
 
-```C#
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Threading.Tasks;
-using System.Net.Http;
-
-namespace SampleFunctionsApp
-{
-    public static class ProcessDTUpdatetoMaps
-    {   //Read maps credentials from application settings on function startup
-        private static string statesetID = Environment.GetEnvironmentVariable("statesetID");
-        private static string subscriptionKey = Environment.GetEnvironmentVariable("subscription-key");
-        private static HttpClient httpClient = new HttpClient();
-
-        [FunctionName("ProcessDTUpdatetoMaps")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-        {
-            JObject message = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-            log.LogInformation("Reading event from twinID:" + eventGridEvent.Subject.ToString() + ": " +
-                eventGridEvent.EventType.ToString() + ": " + message["data"]);
-
-            //Parse updates to "space" twins
-            if (message["data"]["modelId"].ToString() == "dtmi:contosocom:DigitalTwins:Space;1")
-            {   //Set the ID of the room to be updated in your map. 
-                //Replace this line with your logic for retrieving featureID. 
-                string featureID = "UNIT103";
-
-                //Iterate through the properties that have changed
-                foreach (var operation in message["data"]["patch"])
-                {
-                    if (operation["op"].ToString() == "replace" && operation["path"].ToString() == "/Temperature")
-                    {   //Update the maps feature stateset
-                        var postcontent = new JObject(new JProperty("States", new JArray(
-                            new JObject(new JProperty("keyName", "temperature"),
-                                 new JProperty("value", operation["value"].ToString()),
-                                 new JProperty("eventTimestamp", DateTime.Now.ToString("s"))))));
-
-                        var response = await httpClient.PostAsync(
-                            $"https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetID}&featureID={featureID}&subscription-key={subscriptionKey}",
-                            new StringContent(postcontent.ToString()));
-
-                        log.LogInformation(await response.Content.ReadAsStringAsync());
-                    }
-                }
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateMaps.cs":::
 
 您必須在函數應用程式中設定兩個環境變數。 其中一個是您的 [Azure 地圖服務主要訂](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)用帳戶金鑰，另一個則是您的 [Azure 地圖服務 stateset 識別碼](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)。
 
@@ -152,7 +99,7 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 這兩個範例都會以相容的範圍傳送溫度，因此您應該會在地圖上看到大約每隔30秒的房間121更新色彩。
 
-:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="在端對端案例中的 Azure 服務視圖，並反白顯示室內地圖整合片段":::
+:::image type="content" source="media/how-to-integrate-maps/maps-temperature-update.png" alt-text="顯示房間121彩色橙色的辦公室地圖":::
 
 ## <a name="store-your-maps-information-in-azure-digital-twins"></a>將您的地圖服務資訊儲存在 Azure 數位 Twins 中
 
@@ -162,7 +109,7 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 視拓撲的設定而定，您可以將這三個屬性儲存在與對應的資料細微性相關聯的不同層級上。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解如何管理、升級及從 twins 圖形中取得資訊，請參閱下列參考：
 

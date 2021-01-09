@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 09/13/2020
-ms.openlocfilehash: 805bc2aecda37599234c81dd928868d8c14aea4e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 242ff1d7c16ca952b19f44fb139f8fae7562524a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97091984"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048312"
 ---
 # <a name="train-machine-learning-models"></a>訓練機器學習模型
 Azure Synapse Analytics 中的 Apache Spark 能以大量資料進行機器學習，讓您能夠從大量的結構化、非結構化和快速移動的資料中取得寶貴的見解。 在 Azure Synapse Analytics 中使用 Azure Spark 定型機器學習模型時，有數個選項： Apache Spark MLlib、Azure Machine Learning，以及各種其他開放原始碼程式庫。 
@@ -55,9 +55,9 @@ Azure Machine Learning 是一個雲端式環境，可讓您定型、部署、自
 ## <a name="azure-cognitive-services"></a>Azure 認知服務
 [Azure 認知服務](https://docs.microsoft.com/azure/cognitive-services/what-are-cognitive-services) 提供機器學習服務功能，可解決一般問題，例如分析情緒情感的文字，或分析影像以辨識物件或臉部。 您不需要具備機器學習或資料科學的專門知識，即可使用這些服務。 認知服務會在機器學習解決方案中提供部分或所有元件：資料、演算法和定型的模型。 這些服務的目的是要要求您資料的一般知識，而不需要使用機器學習或資料科學的經驗。 您可以在 Azure Synapse Analytics 內自動利用這些預先定型的認知服務。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 本文概述在 Azure Synapse Analytics 的 Apache Spark 集區中訓練機器學習模型的各種選項。 您可以遵循下列教學課程來深入瞭解模型定型：
 
-- 使用 Azure Machine Learning 和 Azure Synapse Analytics 執行自動化 ML 實驗：[自動化 Ml 教學](./spark/../apache-spark-autoscale.md)課程 
-- 執行 SparkML 實驗： [Apache SparkML 教學](../spark/apache-spark-azure-machine-learning-tutorial.md)課程
+- 使用 Azure Machine Learning 和 Azure Synapse Analytics 執行自動化 ML 實驗：[自動化 Ml 教學](../spark/apache-spark-azure-machine-learning-tutorial.md)課程 
+- 執行 SparkML 實驗： [Apache SparkML 教學](../spark/apache-spark-machine-learning-mllib-notebook.md)課程
 - 查看預設程式庫： [Azure Synapse Analytics 運行](../spark/apache-spark-version-support.md)時間

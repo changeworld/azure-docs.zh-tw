@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927312"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050556"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何針對 Log Analytics Windows 代理程式的問題進行疑難排解 
 
@@ -22,9 +22,43 @@ ms.locfileid: "87927312"
 * 具有 Azure 支援合約的客戶可以在 [Azure 入口網站](https://manage.windowsazure.com/?getsupport=true)開啟支援要求。
 * 造訪 Log Analytics 意見反應頁面，以審查提交的想法和 bug， [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) 或提出新的 bug。 
 
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics 疑難排解工具
+
+Log Analytics 代理程式 Windows 疑難排解工具是 PowerShell 腳本的集合，其設計目的是要協助找出並診斷 Log Analytics 代理程式的問題。 它會在安裝時自動隨附于代理程式。 執行工具應該是診斷問題的第一個步驟。
+
+### <a name="how-to-use"></a>如何使用
+1. 在安裝 Log Analytics 代理程式的電腦上，以系統管理員身分開啟 PowerShell 提示字元。
+1. 流覽至工具所在的目錄。
+   * `cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"`
+1. 使用下列命令來執行主要腳本：
+   * `.\GetAgentInfo.ps1`
+1. 選取疑難排解案例。
+1. 遵循主控台上的指示。  (附注：追蹤記錄步驟需要手動介入才能停止記錄檔收集。 根據問題的重現性，等候時間持續時間，然後按 [下一步] 停止記錄收集，然後繼續進行下一個步驟) 。
+
+   結果檔案的位置會在完成時進行記錄，並會開啟新的瀏覽器視窗，並將其反白顯示。
+
+### <a name="installation"></a>安裝
+安裝 Log Analytics 代理程式組建10.20.18053.0 和更新版本時，會自動包含疑難排解工具。
+
+### <a name="scenarios-covered"></a>涵蓋的案例
+以下是疑難排解工具所檢查的案例清單：
+
+- 代理程式未回報資料或資料包資料遺失
+- 代理程式延伸模組部署失敗
+- 代理程式損毀
+- 耗用高 CPU/記憶體的代理程式
+- 安裝/卸載失敗
+- 自訂記錄問題
+- OMS 閘道問題
+- 效能計數器問題
+- 收集所有記錄
+
+>[!NOTE]
+>當您遇到問題時，請執行疑難排解工具。 當您開啟票證時，一開始有記錄會大幅説明我們的支援小組更快速地對您的問題進行疑難排解。
+
 ## <a name="important-troubleshooting-sources"></a>重要疑難排解來源
 
- 為了協助疑難排解與適用于 Windows 的 Log Analytics 代理程式相關的問題，代理程式會將事件記錄到 Windows 事件記錄檔，尤其是在 *Application and Services\Operations Manager*下。  
+ 為了協助疑難排解與適用于 Windows 的 Log Analytics 代理程式相關的問題，代理程式會將事件記錄到 Windows 事件記錄檔，尤其是在 *Application and Services\Operations Manager* 下。  
 
 ## <a name="connectivity-issues"></a>連線能力問題
 
@@ -55,11 +89,11 @@ ms.locfileid: "87927312"
 
     如果電腦已成功與服務通訊，則查詢應該會傳回結果。 如果查詢未傳回結果，請先確認代理程式已設定為向正確的工作區回報。 如果設定正確，請繼續進行步驟3，並搜尋 Windows 事件記錄檔，以找出代理程式是否正在記錄哪個問題可能導致無法與 Azure 監視器通訊。
 
-- 識別連線問題的另一種方法是執行 **TestCloudConnectivity** 工具。 此工具預設會與 *%SystemRoot%\Program Files\Microsoft Monitoring Agent\Agent*資料夾中的代理程式一起安裝。 從提升許可權的命令提示字元中，流覽至資料夾，然後執行工具。 此工具會傳回結果，並醒目顯示測試失敗的 (例如，如果它與已封鎖) 的特定埠/URL 有關。 
+- 識別連線問題的另一種方法是執行 **TestCloudConnectivity** 工具。 此工具預設會與 *%SystemRoot%\Program Files\Microsoft Monitoring Agent\Agent* 資料夾中的代理程式一起安裝。 從提升許可權的命令提示字元中，流覽至資料夾，然後執行工具。 此工具會傳回結果，並醒目顯示測試失敗的 (例如，如果它與已封鎖) 的特定埠/URL 有關。 
 
     ![TestCloudConnection 工具執行結果](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
-- 依**事件來源**健全狀況服務模組、HealthService 和服務連接器篩選*Operations Manager*事件記錄檔，  -  *Health Service Modules*並依**事件層級***警告*和*錯誤*進行篩選，以確認它是否已寫入下表中的事件。 *HealthService* *Service Connector* 如果有，請檢查每個可能事件所包含的解決步驟。
+- 依 **事件來源** 健全狀況服務模組、HealthService 和服務連接器篩選 *Operations Manager* 事件記錄檔，  -  並依 **事件層級***警告* 和 *錯誤* 進行篩選，以確認它是否已寫入下表中的事件。   如果有，請檢查每個可能事件所包含的解決步驟。
 
     |事件識別碼 |來源 |描述 |解決方案 |
     |---------|-------|------------|-----------|
@@ -93,11 +127,11 @@ Heartbeat
 如果查詢傳回結果，您就必須判斷是否未收集特定資料類型，並將其轉送至服務。 這可能是因為代理程式未收到來自服務的更新設定，或某些其他的徵兆導致代理程式無法正常運作。 請執行下列步驟以進行進一步的疑難排解。
 
 1. 在電腦上開啟提高許可權的命令提示字元，然後輸入以重新開機代理程式服務 `net stop healthservice && net start healthservice` 。
-2. 開啟*Operations Manager*事件記錄檔，並從**事件來源** *HealthService*搜尋**事件識別碼** *7023、7024、7025、7028*和*1210* 。  這些事件表示代理程式已順利接收 Azure 監視器的設定，而且正在主動監視電腦。 事件識別碼1210的事件描述也會在最後一行指定代理程式監視範圍中包含的所有解決方案和見解。  
+2. 開啟 *Operations Manager* 事件記錄檔，並從 **事件來源** *HealthService* 搜尋 **事件識別碼** *7023、7024、7025、7028* 和 *1210* 。  這些事件表示代理程式已順利接收 Azure 監視器的設定，而且正在主動監視電腦。 事件識別碼1210的事件描述也會在最後一行指定代理程式監視範圍中包含的所有解決方案和見解。  
 
     ![事件識別碼1210描述](./media/agent-windows-troubleshoot/event-id-1210-healthservice-01.png)
 
-3. 在幾分鐘後，您在查詢結果或視覺效果中看不到預期的資料，視您是從解決方案或深入解析中的資料而定，在*Operations Manager*的事件記錄檔中，搜尋**事件來源** *HealthService*和*健全狀況服務模組*並依**事件層級***警告*和*錯誤*進行篩選，以確認它是否已寫入下表中的事件。
+3. 在幾分鐘後，您在查詢結果或視覺效果中看不到預期的資料，視您是從解決方案或深入解析中的資料而定，在 *Operations Manager* 的事件記錄檔中，搜尋 **事件來源** *HealthService* 和 *健全狀況服務模組* 並依 **事件層級***警告* 和 *錯誤* 進行篩選，以確認它是否已寫入下表中的事件。
 
     |事件識別碼 |來源 |描述 |解決方案 |
     |---------|-------|------------|

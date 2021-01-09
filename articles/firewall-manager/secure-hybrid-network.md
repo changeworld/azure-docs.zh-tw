@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 3d4d1e65c2200aee178abefb46d3e330acbd3108
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d662efc927235711c4dd5e8a424d8775279c30b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023681"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048040"
 ---
 # <a name="tutorial-secure-your-hub-virtual-network-using-azure-firewall-manager"></a>教學課程：使用 Azure 防火牆管理員來保護您的中樞虛擬網路
 
@@ -107,7 +107,7 @@ ms.locfileid: "96023681"
 ## <a name="create-the-firewall-hub-virtual-network"></a>建立防火牆中樞虛擬網路
 
 > [!NOTE]
-> AzureFirewallSubnet 子網路的大小是 /26。 如需有關子網路大小的詳細資訊，請參閱 [Azure 防火牆的常見問題集](../firewall/firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
+> AzureFirewallSubnet 子網路的大小是 /26。 如需有關子網路大小的詳細資訊，請參閱 [Azure 防火牆的常見問題集](../firewall/firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)。
 
 1. 從 Azure 入口網站首頁，選取 [建立資源]。
 2. 在 [網路] 底下，選取 [虛擬網路]。

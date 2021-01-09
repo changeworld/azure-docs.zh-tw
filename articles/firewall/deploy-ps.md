@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 12/03/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: e39e27dbeb9394d19a9d7fd8791c147e11a56bdb
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: dc36d45e226cffafb51cf7aa09ea6f0d528ee016
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558875"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051372"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>使用 Azure PowerShell 部署和設定 Azure 防火牆
 
@@ -47,7 +47,7 @@ ms.locfileid: "96558875"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 此程式需要您在本機執行 PowerShell。 您必須已安裝 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 驗證 PowerShell 版本之後，請執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
@@ -68,7 +68,7 @@ New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 此虛擬網路有三個子網：
 
 > [!NOTE]
-> AzureFirewallSubnet 子網路的大小是 /26。 如需有關子網路大小的詳細資訊，請參閱 [Azure 防火牆的常見問題集](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
+> AzureFirewallSubnet 子網路的大小是 /26。 如需有關子網路大小的詳細資訊，請參閱 [Azure 防火牆的常見問題集](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)。
 
 ```azurepowershell
 $Bastionsub = New-AzVirtualNetworkSubnetConfig -Name AzureBastionSubnet -AddressPrefix 10.0.0.0/27

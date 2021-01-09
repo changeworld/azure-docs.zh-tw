@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 558e03e698d184aa9b5914f7d494ea61b5a6b18e
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 6d9df48839505714deead567b3d342febdb41c90
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616927"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051763"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -23,7 +23,7 @@ ms.locfileid: "97616927"
 > [!TIP]
 > 所有 SDK 函式都有同步和非同步版本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -35,9 +35,7 @@ ms.locfileid: "97616927"
 
 若要建立對應項，請在 `CreateOrReplaceDigitalTwinAsync()` 服務用戶端上使用方法，如下所示：
 
-```csharp
-await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myTwinId", initData);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwinCall":::
 
 若要建立數位對應項，您需要提供：
 * 數位對應項所需的識別碼
@@ -65,25 +63,13 @@ await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myTwinId", initD
 
 若未使用任何自訂 helper 類別，您可以在中表示對應項的屬性 `Dictionary<string, object>` ，其中 `string` 是屬性的名稱，而 `object` 是代表屬性和其值的物件。
 
-[!INCLUDE [Azure Digital Twins code: create twin](../../includes/digital-twins-code-create-twin.md)]
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="CreateTwin_noHelper":::
 
 #### <a name="create-twins-with-the-helper-class"></a>使用 helper 類別建立 twins
 
 的 helper 類別 `BasicDigitalTwin` 可讓您直接將屬性欄位儲存在 "對應項" 物件中。 您仍可能會想要使用建立屬性清單 `Dictionary<string, object>` ，然後直接將其新增至對應項物件 `CustomProperties` 。
 
-```csharp
-BasicDigitalTwin twin = new BasicDigitalTwin();
-twin.Metadata = new DigitalTwinMetadata();
-twin.Metadata.ModelId = "dtmi:example:Room;1";
-// Initialize properties
-Dictionary<string, object> props = new Dictionary<string, object>();
-props.Add("Temperature", 25.0);
-props.Add("Humidity", 50.0);
-twin.Contents = props;
-
-client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myRoomId", twin);
-Console.WriteLine("The twin is created successfully");
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwin_withHelper":::
 
 >[!NOTE]
 > `BasicDigitalTwin` 物件會隨附一個 `Id` 欄位。 您可以將此欄位保留為空白，但如果您新增了識別碼值，它必須符合傳遞至呼叫的 ID 參數 `CreateOrReplaceDigitalTwinAsync()` 。 例如：
@@ -96,20 +82,12 @@ Console.WriteLine("The twin is created successfully");
 
 您可以藉由呼叫方法來存取任何數位對應項的詳細資料， `GetDigitalTwin()` 如下所示：
 
-```csharp
-object result = await client.GetDigitalTwin(id);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwinCall":::
+
 這個呼叫會以強型別物件類型（例如）傳回對應項資料 `BasicDigitalTwin` 。 `BasicDigitalTwin` 是 SDK 隨附的序列化 helper 類別，會以預先剖析的格式傳回核心對應項中繼資料和屬性。 以下是如何使用此方法來查看對應項詳細資料的範例：
 
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin("myRoomId");
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-  if (twin.Contents.TryGetValue(prop, out object value))
-  Console.WriteLine($"Property '{prop}': {value}");
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="GetTwin":::
+
 當您使用方法取得對應項時，只會傳回至少已設定一次的屬性 `GetDigitalTwin()` 。
 
 >[!TIP]
@@ -119,27 +97,8 @@ foreach (string prop in twin.Contents.Keys)
 
 請考慮下列模型 (以 [數位 Twins 定義語言撰寫 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) 定義 *月亮*：
 
-```json
-{
-    "@id": "dtmi:example:Moon;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "contents": [
-        {
-            "@type": "Property",
-            "name": "radius",
-            "schema": "double",
-            "writable": true
-        },
-        {
-            "@type": "Property",
-            "name": "mass",
-            "schema": "double",
-            "writable": true
-        }
-    ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/Moon.json":::
+
 在月亮型別對應項上呼叫的結果 `object result = await client.GetDigitalTwinAsync("my-moon");` 可能如下所示： 
 
 ```json
@@ -184,18 +143,13 @@ foreach (string prop in twin.Contents.Keys)
 
 以下是基本查詢的主體，會傳回實例中所有數位 twins 的清單：
 
-```sql
-SELECT *
-FROM DIGITALTWINS
-``` 
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="GetAllTwins":::
 
 ## <a name="update-a-digital-twin"></a>更新數位分身
 
 若要更新數位對應項的屬性，請使用 [JSON 修補程式](http://jsonpatch.com/) 格式來撰寫要取代的資訊。 如此一來，您就可以一次取代多個屬性。 然後，您可以將 JSON 修補檔傳遞給 `UpdateDigitalTwin()` 方法：
 
-```csharp
-await client.UpdateDigitalTwin(id, patch);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="UpdateTwinCall":::
 
 Patch 呼叫可以依您想要的方式，在單一對應項上更新多個屬性， (甚至) 。 如果您需要更新跨多個 twins 的屬性，則每個對應項都需要個別的更新呼叫。
 
@@ -204,27 +158,11 @@ Patch 呼叫可以依您想要的方式，在單一對應項上更新多個屬�
 
 以下是 JSON 修補程式程式碼的範例。 這份檔會取代套用的數位對應項的 *大量* 和 *半徑* 屬性值。
 
-```json
-[
-  {
-    "op": "replace",
-    "path": "/mass",
-    "value": 0.0799
-  },
-  {
-    "op": "replace",
-    "path": "/radius",
-    "value": 0.800
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
+
 您可以使用 SDK 中的來建立修補程式 `JsonPatchDocument` 。 [](how-to-use-apis-sdks.md) 範例如下。
 
-```csharp
-var updateTwinData = new JsonPatchDocument();
-updateTwinData.AppendAddOp("/Temperature", temperature.Value<double>());
-await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
 ### <a name="update-properties-in-digital-twin-components"></a>更新數位對應項元件中的屬性
 
@@ -232,15 +170,7 @@ await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
 
 若要修補數位對應項元件中的屬性，您可以使用 JSON 修補程式中的路徑語法：
 
-```json
-[
-  {
-    "op": "replace",
-    "path": "/mycomponentname/mass",
-    "value": 0.0799
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component.json":::
 
 ### <a name="update-a-digital-twins-model"></a>更新數位對應項的模型
 
@@ -248,15 +178,7 @@ await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
 
 例如，請考慮下列會取代數位對應項之元資料欄位的 JSON 修補檔 `$model` ：
 
-```json
-[
-  {
-    "op": "replace",
-    "path": "/$metadata/$model",
-    "value": "dtmi:example:foo;1"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-model-1.json":::
 
 只有當修補程式所修改的數位對應項符合新的模型時，這項作業才會成功。 
 
@@ -267,20 +189,7 @@ await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
 
 這種情況的修補程式必須更新模型和對應項的溫度屬性，如下所示：
 
-```json
-[
-  {
-    "op": "replace",
-    "path": "/$metadata/$model",
-    "value": "dtmi:example:foo_new;1"
-  },
-  {
-    "op": "add",
-    "path": "/temperature",
-    "value": 60
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-model-2.json":::
 
 ### <a name="handle-conflicting-update-calls"></a>處理衝突的更新呼叫
 
@@ -301,65 +210,11 @@ Azure 數位 Twins 可確保所有連入要求都會在另一個之後處理。 
 
 以下是用來刪除 twins 和其關聯性的程式碼範例：
 
-```csharp
-static async Task DeleteTwin(string id)
-{
-    await FindAndDeleteOutgoingRelationshipsAsync(id);
-    await FindAndDeleteIncomingRelationshipsAsync(id);
-    try
-    {
-        await client.DeleteDigitalTwin(id);
-    } catch (RequestFailedException exc)
-    {
-        Console.WriteLine($"*** Error:{exc.Error}/{exc.Message}");
-    }
-}
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="DeleteTwin":::
 
-public async Task FindAndDeleteOutgoingRelationshipsAsync(string dtId)
-{
-    // Find the relationships for the twin
-
-    try
-    {
-        // GetRelationshipsAsync will throw an error if a problem occurs
-        AsyncPageable<BasicRelationship> rels = client.GetRelationshipsAsync<BasicRelationship>(dtId);
-
-        await foreach (BasicRelationship rel in rels)
-        {
-            await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
-            Log.Ok($"Deleted relationship {rel.Id} from {dtId}");
-        }
-    }
-    catch (RequestFailedException ex)
-    {
-        Log.Error($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
-    }
-}
-
-async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
-{
-    // Find the relationships for the twin
-
-    try
-    {
-        // GetRelationshipsAsync will throw an error if a problem occurs
-        AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
-
-        await foreach (IncomingRelationship incomingRel in incomingRels)
-        {
-            await client.DeleteRelationshipAsync(incomingRel.SourceId, incomingRel.RelationshipId).ConfigureAwait(false);
-            Log.Ok($"Deleted incoming relationship {incomingRel.RelationshipId} from {dtId}");
-        }
-    }
-    catch (RequestFailedException ex)
-    {
-        Log.Error($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
-    }
-}
-```
 ### <a name="delete-all-digital-twins"></a>刪除所有數位 twins
 
-如需如何一次刪除所有 twins 的範例，請下載 _Tutorial 中使用的範例應用程式 [：探索範例用戶端應用程式的基本概念 *](tutorial-command-line-app.md)。 *CommandLoop.cs* 檔案會在函式中執行此 `CommandDeleteAllTwins()` 工作。
+如需如何一次刪除所有 twins 的範例，請下載教學課程中使用的範例應用程式 [*：使用範例用戶端應用程式探索基本概念*](tutorial-command-line-app.md)。 *CommandLoop.cs* 檔案會在函式中執行此 `CommandDeleteAllTwins()` 工作。
 
 ## <a name="runnable-digital-twin-code-sample"></a>可執行檔數位對應項程式碼範例
 
@@ -372,11 +227,9 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 執行範例之前，請執行下列動作：
 1. 下載模型檔案，將它放在您的專案中，並取代 `<path-to>` 下列程式碼中的預留位置，告訴您的程式要在哪裡尋找它。
 2. 將預留位置取代 `<your-instance-hostname>` 為您的 Azure 數位 Twins 實例的主機名稱。
-3. 將這些套件新增至您的專案：
-    ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
-    ```
+3. 將兩個相依性加入至您的專案，以使用 Azure 數位 Twins。 您可以使用下列連結瀏覽至 NuGet 上的套件，在其中找到主控台命令 (包括 .NET CLI 可用的命令)，將每個套件的最新版本新增至您的專案。
+    * [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 這是適用於[適用於 .NET 的 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的套件。
+    * [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 此程式庫會提供協助驗證 Azure 的工具。
 
 如果您想要直接執行範例，您也必須設定本機認證。 下一節將逐步解說這一點。
 [!INCLUDE [Azure Digital Twins: local credentials prereq (outer)](../../includes/digital-twins-local-credentials-outer.md)]
@@ -385,157 +238,13 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 完成上述步驟之後，您可以直接執行下列範例程式碼。
 
-```csharp
-using System;
-using Azure.DigitalTwins.Core;
-using Azure.Identity;
-using System.Threading.Tasks;
-using System.IO;
-using System.Collections.Generic;
-using Azure;
-using Azure.DigitalTwins.Core.Serialization;
-using System.Text.Json;
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs":::
 
-namespace minimal
-{
-    class Program
-    {
-
-        public static async Task Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-
-            //Create the Azure Digital Twins client for API calls
-            string adtInstanceUrl = "https://<your-instance-hostname>";
-            var credentials = new DefaultAzureCredential();
-            DigitalTwinsClient client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credentials);
-            Console.WriteLine($"Service client created – ready to go");
-            Console.WriteLine();
-
-            //Upload models
-            Console.WriteLine($"Upload a model");
-            Console.WriteLine();
-            string dtdl = File.ReadAllText("<path-to>/Room.json");
-            var typeList = new List<string>();
-            typeList.Add(dtdl);
-            // Upload the model to the service
-            await client.CreateModelsAsync(typeList);
-
-            //Create new digital twin
-            BasicDigitalTwin twin = new BasicDigitalTwin();
-            string twin_Id = "myRoomId";
-            twin.Metadata = new DigitalTwinMetadata();
-            twin.Metadata.ModelId = "dtmi:example:Room;1";
-            // Initialize properties
-            Dictionary<string, object> props = new Dictionary<string, object>();
-            props.Add("Temperature", 35.0);
-            props.Add("Humidity", 55.0);
-            twin.Contents = props;
-            await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(twin_Id, twin);
-            Console.WriteLine("Twin created successfully");
-            Console.WriteLine();
-
-            //Print twin
-            Console.WriteLine("--- Printing twin details:");
-            twin = FetchAndPrintTwin(twin_Id, client);
-            Console.WriteLine("--------");
-            Console.WriteLine();
-
-            //Update twin data
-            var updateTwinData = new JsonPatchDocument();
-            updateTwinData.AppendAdd("/Temperature", 25.0);
-            await client.UpdateDigitalTwinAsync(twin_Id, updateTwinData);
-            Console.WriteLine("Twin properties updated");
-            Console.WriteLine();
-
-            //Print twin again
-            Console.WriteLine("--- Printing twin details (after update):");
-            FetchAndPrintTwin(twin_Id, client);
-            Console.WriteLine("--------");
-            Console.WriteLine();
-
-            //Delete twin
-            await DeleteTwin(client, twin_Id);
-        }
-
-        private static BasicDigitalTwin FetchAndPrintTwin(string twin_Id, DigitalTwinsClient client)
-        {
-            BasicDigitalTwin twin;
-            Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
-            Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-            foreach (string prop in twin.Contents.Keys)
-            {
-                if (twin.Contents.TryGetValue(prop, out object value))
-                    Console.WriteLine($"Property '{prop}': {value}");
-            }
-
-            return twin;
-        }
-        private static async Task DeleteTwin(DigitalTwinsClient client, string id)
-        {
-            await FindAndDeleteOutgoingRelationshipsAsync(client, id);
-            await FindAndDeleteIncomingRelationshipsAsync(client, id);
-            try
-            {
-                await client.DeleteDigitalTwinAsync(id);
-                Console.WriteLine("Twin deleted successfully");
-            }
-            catch (RequestFailedException exc)
-            {
-                Console.WriteLine($"*** Error:{exc.Message}");
-            }
-        }
-
-        private static async Task FindAndDeleteOutgoingRelationshipsAsync(DigitalTwinsClient client, string dtId)
-        {
-            // Find the relationships for the twin
-
-            try
-            {
-                // GetRelationshipsAsync will throw an error if a problem occurs
-                AsyncPageable<BasicRelationship> rels = client.GetRelationshipsAsync<BasicRelationship>(dtId);
-
-                await foreach (BasicRelationship rel in rels)
-                {
-                    await client.DeleteRelationshipAsync(dtId, rel.Id).ConfigureAwait(false);
-                    Console.WriteLine($"Deleted relationship {rel.Id} from {dtId}");
-                }
-            }
-            catch (RequestFailedException ex)
-            {
-                Console.WriteLine($"**_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting relationships for {dtId} due to {ex.Message}");
-            }
-        }
-
-       private static async Task FindAndDeleteIncomingRelationshipsAsync(DigitalTwinsClient client, string dtId)
-        {
-            // Find the relationships for the twin
-
-            try
-            {
-                // GetRelationshipsAsync will throw an error if a problem occurs
-                AsyncPageable<IncomingRelationship> incomingRels = client.GetIncomingRelationshipsAsync(dtId);
-
-                await foreach (IncomingRelationship incomingRel in incomingRels)
-                {
-                    await client.DeleteRelationshipAsync(incomingRel.SourceId, incomingRel.RelationshipId).ConfigureAwait(false);
-                    Console.WriteLine($"Deleted incoming relationship {incomingRel.RelationshipId} from {dtId}");
-                }
-            }
-            catch (RequestFailedException ex)
-            {
-                Console.WriteLine($"_*_ Error {ex.Status}/{ex.ErrorCode} retrieving or deleting incoming relationships for {dtId} due to {ex.Message}");
-            }
-        }
-
-    }
-}
-
-```
 以下是上述程式的主控台輸出： 
 
 :::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="顯示對應項已建立、更新及刪除的主控台輸出" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-瞭解如何建立和管理數位 twins 之間的關聯性： _ [*如何：管理具有關聯性的* 對應項圖表](how-to-manage-graph.md)
+瞭解如何建立和管理數位 twins 之間的關聯性：
+* [*How to：使用關聯性管理對應項圖表*](how-to-manage-graph.md)

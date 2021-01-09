@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: aeae1f1a99d1fa574df8202efd2405232855628b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1517c066fe20d478094f57d85d6e27f355a93601
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091798"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049808"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服務要求失敗。 狀態： 403 (禁止的) 
 
@@ -44,7 +44,7 @@ ms.locfileid: "93091798"
 請注意，此角色不同于 .。。
 * 此角色先前的名稱在預覽期間， *Azure 數位 Twins 擁有者 (預覽版)* (角色相同，但名稱已變更) 
 * 整個 Azure 訂用帳戶的 *擁有* 者角色。 *Azure 數位 Twins 資料擁有* 者是 Azure 數位 Twins 內的角色，其範圍為此個別 Azure 數位 Twins 實例。
-* Azure 數位 Twins 中的 *擁有* 者角色。 這些是兩個不同的 Azure 數位 Twins 管理角色，而 *Azure 數位 Twins 資料擁有* 者是在預覽期間用於管理的角色。
+* Azure 數位 Twins 中的 *擁有* 者角色。 這些是兩個不同的 Azure 數位 Twins 管理角色，而 *Azure 數位 Twins 資料擁有* 者是應該用於管理的角色。
 
 #### <a name="check-current-setup"></a>檢查目前的設定
 
@@ -60,7 +60,7 @@ ms.locfileid: "93091798"
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Data Owner"
 ```
 
-如需有關此角色需求和指派程式的詳細資訊，請參閱 how *to：設定實例和驗證 (CLI 或入口網站)* 的「 [*設定使用者的存取權限* 」一節](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)。
+如需有關此角色需求和指派程式的詳細資訊，請參閱 how *to：設定實例和驗證 (CLI 或入口網站)* 的「 [*設定使用者的存取權限*」一節](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)。
 
 如果您已有此角色指派 *，且* 您使用 Azure AD 應用程式註冊來驗證用戶端應用程式，如果此解決方案未解決403問題，您可以繼續進行下一個解決方案。
 
@@ -80,11 +80,11 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 首先，請確認已在註冊時正確設定 Azure 數位 Twins 許可權設定。 若要這樣做，請從功能表列選取 [ *資訊清單* ]，以查看應用程式註冊的資訊清單程式碼。 滾動至程式碼視窗底部，然後在底下尋找這些欄位 `requiredResourceAccess` 。 這些值應該符合以下螢幕擷取畫面中的值：
 
-:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Azure 入口網站中的應用程式註冊頁面":::
+:::image type="content" source="media/troubleshoot-error-403/verify-manifest.png" alt-text="Azure AD 應用程式註冊的資訊清單入口網站視圖":::
 
 接下來，從功能表列選取 [ *API 許可權* ]，以確認此應用程式註冊包含 Azure 數位 Twins 的讀取/寫入權限。 您應該會看到如下所示的專案：
 
-:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="Azure 入口網站中的應用程式註冊頁面":::
+:::image type="content" source="media/troubleshoot-error-403/verify-api-permissions.png" alt-text="入口網站的 Azure AD 應用程式註冊 API 許可權的入口網站視圖，顯示 Azure 數位 Twins 的「讀取/寫入存取權」":::
 
 #### <a name="fix-issues"></a>修正問題
 

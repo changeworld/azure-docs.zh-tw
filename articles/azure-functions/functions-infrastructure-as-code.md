@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f9c11c0671db882edd9a72bca8d11c7326edee43
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dbb380dca231f75f6d6e77676c9059ef3762dac5
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936884"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050930"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
 
@@ -114,7 +114,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 * [進階方案](#premium)
 * [App Service 計劃](#app-service-plan)
 
-### <a name="function-app"></a>函數應用程式
+### <a name="function-app"></a>函式應用程式
 
 函數應用程式資源是 **使用類型為** **functionapp** 的資源所定義：
 
@@ -140,7 +140,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 | 設定名稱                 | 描述                                                                               | 範例值                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | 函數執行時間用於內部佇列的儲存體帳戶連接字串 | 查看 [儲存體帳戶](#storage)       |
-| FUNCTIONS_EXTENSION_VERSION  | Azure Functions 執行時間的版本                                                | `~2`                                  |
+| FUNCTIONS_EXTENSION_VERSION  | Azure Functions 執行時間的版本                                                | `~3`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | 要用於此應用程式中函式的語言堆疊                                   | `dotnet`、`node`、`java`、`python` 或 `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | 只有在使用 `node` 語言堆疊時，才需要指定要使用的版本              | `10.14.1`                             |
 
@@ -164,7 +164,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
             },
             {
                 "name": "FUNCTIONS_EXTENSION_VERSION",
-                "value": "~2"
+                "value": "~3"
             }
         ]
     }
@@ -251,7 +251,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -290,7 +290,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         },
@@ -371,7 +371,7 @@ Premium 方案上的函式應用程式必須將 `serverFarmId` 屬性設定為�
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -459,7 +459,7 @@ App Service 方案上的函數應用程式必須將 `serverFarmId` 屬性設定�
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -467,13 +467,13 @@ App Service 方案上的函數應用程式必須將 `serverFarmId` 屬性設定�
 }
 ```
 
-Linux 應用程式也應該 `linuxFxVersion` 在下包含屬性 `siteConfig` 。 如果您只是部署程式碼，則這個值是由您所需的執行時間堆疊所決定：
+Linux 應用程式也應該 `linuxFxVersion` 在下包含屬性 `siteConfig` 。 如果您只是部署程式碼，則這個值是由您所需的執行時間堆疊所決定，其格式 ```runtime|runtimeVersion``` 如下：
 
 | Stack            | 範例值                                         |
 |------------------|-------------------------------------------------------|
-| Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
-| JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
-| .NET             | `DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0` |
+| Python           | `python|3.7`      |
+| JavaScript       | `node|12`          |
+| .NET             | `dotnet|3.0` |
 
 ```json
 {
@@ -504,10 +504,10 @@ Linux 應用程式也應該 `linuxFxVersion` 在下包含屬性 `siteConfig` 。
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ],
-            "linuxFxVersion": "DOCKER|microsoft/azure-functions-node8:2.0"
+            "linuxFxVersion": "node|12"
         }
     }
 }
@@ -544,7 +544,7 @@ Linux 應用程式也應該 `linuxFxVersion` 在下包含屬性 `siteConfig` 。
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 },
                 {
                     "name": "DOCKER_REGISTRY_SERVER_URL",
@@ -594,7 +594,7 @@ Linux 應用程式也應該 `linuxFxVersion` 在下包含屬性 `siteConfig` 。
         "appSettings": [
             {
                 "name": "FUNCTIONS_EXTENSION_VERSION",
-                "value": "~2"
+                "value": "~3"
             },
             {
                 "name": "Project",
@@ -616,7 +616,7 @@ Linux 應用程式也應該 `linuxFxVersion` 在下包含屬性 `siteConfig` 。
         "properties": {
           "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
           "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
-          "FUNCTIONS_EXTENSION_VERSION": "~2",
+          "FUNCTIONS_EXTENSION_VERSION": "~3",
           "FUNCTIONS_WORKER_RUNTIME": "dotnet",
           "Project": "src"
         }
@@ -686,7 +686,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 若要測試此部署，您可以使用 [像這樣的範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) ，在取用方案中于 Windows 上建立函數應用程式。 取代為 `<function-app-name>` 函數應用程式的唯一名稱。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入了解如何開發並設定 Azure Functions。
 

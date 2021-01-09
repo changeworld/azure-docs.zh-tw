@@ -1,20 +1,20 @@
 ---
 title: 儲存體帳戶概觀
 titleSuffix: Azure Storage
-description: 請參閱 Azure 儲存體中的儲存體帳戶總覽。 查看帳戶命名、效能層級、存取層、冗余、加密、端點等等。
+description: 瞭解 Azure 儲存體中不同類型的儲存體帳戶。 查看帳戶命名、效能層級、存取層、冗余、加密、端點等等。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 01/08/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357376"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051219"
 ---
 # <a name="storage-account-overview"></a>儲存體帳戶概觀
 
@@ -24,7 +24,40 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 ## <a name="types-of-storage-accounts"></a>儲存體帳戶類型
 
-[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
+Azure 儲存體提供數種儲存體帳戶。 每個類型都支援不同的功能，而且都有自己的計價模式。 您在建立儲存體帳戶之前請先考量這些差異，以判斷您的應用程式最適用的帳戶類型。 儲存體帳戶的類型如下：
+
+- **一般用途 v2 帳戶**：適用於 Blob、文件，佇列和資料表的基本儲存體帳戶類型。 在大部分情況下，建議您使用 Azure 儲存體。
+- **一般用途 v1 帳戶**：適用於 Blob、文件，佇列和資料表的傳統帳戶類型。 如果可能的話，請改為使用一般用途 v2 帳戶。
+- **BlockBlobStorage 帳戶**：在區塊 Blob 和附加 Blob 上具有進階效能特性的儲存體帳戶。 建議用於具有高交易率的案例，或使用較小物件或需要儲存延遲保持一樣低的案例。
+- **FileStorage 帳戶**：具有進階效能特性的僅限檔案儲存體帳戶。 建議用於企業或高效能規模的應用程式。
+- **BlobStorage 帳戶**：舊版僅限 Blob 的儲存體帳戶。 如果可能的話，請改為使用一般用途 v2 帳戶。
+
+下表描述儲存體帳戶的類型、其支援的服務，以及每個帳戶類型所支援的部署模型：
+
+| 儲存體帳戶類型 | 支援的服務 | 冗余選項 | 部署模型<sup>1</sup> |
+|--|--|--|--|
+| 一般用途 V2 | Blob、檔案、佇列、資料表、磁片和 Data Lake Gen2<sup>2</sup> | LRS、GRS、RA-GRS、ZRS、GZRS、RA-GZRS<sup>3</sup> | Resource Manager |
+| 一般用途 V1 | Blob、檔案、佇列、資料表及磁碟 | LRS、GRS、RA-GRS | Resource Manager、傳統 |
+| BlockBlobStorage | Blob (僅限區塊 Blob 和附加 Blob) | LRS，ZRS<sup>3</sup> | Resource Manager |
+| FileStorage | 僅檔案 | LRS，ZRS<sup>3</sup> | Resource Manager |
+| BlobStorage | Blob (僅限區塊 Blob 和附加 Blob) | LRS、GRS、RA-GRS | Resource Manager |
+
+<sup>1</sup>建議使用 Azure Resource Manager 部署模型。 使用傳統部署模型的儲存體帳戶仍可建立於某些位置，而且會繼續支援現有的傳統帳戶。 如需詳細資訊，請參閱 [Azure Resource Manager vs. 傳統部署：了解資源的部署模型和狀態](../../azure-resource-manager/management/deployment-models.md)。
+
+<sup>2</sup>Azure Data Lake Storage Gen2 是以 Azure Blob 儲存體為基礎的大型資料分析專用的一組功能。 只有已啟用階層命名空間的一般用途 V2 儲存體帳戶可支援 Data Lake Storage Gen2。 如需 Data Lake Storage Gen2 的詳細資訊，請參閱 [Azure Data Lake Storage Gen2 簡介](../blobs/data-lake-storage-introduction.md)。
+
+<sup>3</sup>區域冗余儲存體 (ZRS) 和地理區域冗余儲存體 (GZRS/RA-GZRS) 僅適用于特定區域中的標準一般用途 V2、BlockBlobStorage 和 FileStorage 帳戶。 如需 Azure 儲存體備援選項的詳細資訊，請參閱 [Azure 儲存體備援](storage-redundancy.md)。
+
+### <a name="storage-account-redundancy"></a>儲存體帳戶的冗余
+
+儲存體帳戶的備援選項包含：
+
+- **本機冗余儲存體 (LRS)**：簡單、低成本的冗余策略。 資料會在主要區域中的單一實體位置內同步複製三次。
+- **區域冗余儲存體 (ZRS)**：需要高可用性的案例冗余。 資料會同步複製到主要區域中的三個 Azure 可用性區域。
+- **異地冗余儲存體 (GRS)**：跨區域冗余以防止區域中斷。 資料會在主要區域中同步複製三次，然後以非同步方式複製到次要區域。 如需次要區域中資料的讀取存取權，請啟用讀取存取異地備援儲存體 (RA-GRS)。
+- **異地區域冗余儲存體 (GZRS)**：需要高可用性和最大耐久性的案例的冗余。 資料會同步複製到主要區域中的三個 Azure 可用性區域，然後以非同步方式複製到次要區域。 如需次要區域中資料的讀取存取權，請啟用讀取存取異地區域備援儲存體 (RA-GZRS)。
+
+如需 Azure 儲存體中備援選項的詳細資訊，請參閱 [Azure 儲存體備援](storage-redundancy.md)。
 
 ### <a name="general-purpose-v2-accounts"></a>一般用途 v2 帳戶
 
@@ -32,7 +65,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 - Blob (所有類型：區塊、附加、分頁)
 - Data Lake Gen2
-- 檔案儲存體
+- 檔案
 - 磁碟
 - 佇列
 - 資料表
@@ -49,7 +82,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 一般用途 v1 儲存體帳戶提供所有 Azure 儲存體服務的存取權，但可能沒有最新的功能或每 gb 的最低定價。 一般用途 v1 儲存體帳戶支援這些 Azure 儲存體服務：
 
 - Blobs (所有類型)
-- 檔案儲存體
+- 檔案
 - 磁碟
 - 佇列
 - 資料表
@@ -83,7 +116,17 @@ FileStorage 帳戶提供獨特的效能專屬特性，例如 IOPS 高載。 如�
 
 ## <a name="performance-tiers"></a>效能層級
 
-視您建立的儲存體帳戶類型而定，您可以在標準和 premium 效能層級之間進行選擇。
+視您建立的儲存體帳戶類型而定，您可以在標準和 premium 效能層級之間進行選擇。 下表摘要說明哪些效能層級適用于哪些類型的儲存體帳戶。
+
+| 儲存體帳戶類型 | 支援的效能層級 |
+|--|--|
+| 一般用途 V2 | Standard、Premium<sup>1</sup> |
+| 一般用途 V1 | Standard、Premium<sup>1</sup> |
+| BlockBlobStorage | 進階 |
+| FileStorage | 進階 |
+| BlobStorage | 標準 |
+
+<sup>1</sup>一般用途 v2 和一般用途 v1 帳戶的 Premium 效能僅適用于磁片和分頁 blob。 區塊或附加 Blob 的進階效能僅適用於 BlockBlobStorage 帳戶。 檔案進階效能僅適用於 FileStorage 帳戶。
 
 ### <a name="general-purpose-storage-accounts"></a>一般用途的儲存體帳戶
 
@@ -112,12 +155,20 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 
 如果您的資料使用模式有變更，您可以隨時在這些存取層之間切換。 如需存取層的詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取層和封存存取層](../blobs/storage-blob-storage-tiers.md)。
 
+下表顯示每個儲存體帳戶類型中 blob 的可用存取層。
+
+| 儲存體帳戶類型 | 支援的存取層 |
+|--|--|
+| 一般用途 V2 | 經常性存取、非經常性存取、封存<sup>1</sup> |
+| 一般用途 V1 | N/A |
+| BlockBlobStorage | N/A |
+| FileStorage | N/A |
+| BlobStorage | 經常性存取、非經常性存取、封存<sup>1</sup> |
+
+<sup>1</sup> 封存儲存體和 blob 層級的階層處理只支援區塊 blob。 封存儲存層適用於於個別 Blob 的等級，不適用於儲存體帳戶層級。 如需詳細資訊，請參閱 [Azure Blob 儲存體經常性存取、非經常性存取層和](../blobs/storage-blob-storage-tiers.md)封存。
+
 > [!IMPORTANT]
-> 變更現有儲存體帳戶或 Blob 的存取層可能會導致額外的費用。 如需詳細資訊，請參閱[儲存體帳戶計費](#storage-account-billing)小節。
-
-## <a name="redundancy"></a>備援性
-
-[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
+> 變更現有儲存體帳戶或 Blob 的存取層可能會導致額外的費用。 如需詳細資訊，請參閱 [儲存體帳戶計費](#storage-account-billing)。
 
 ## <a name="encryption"></a>加密
 
@@ -127,13 +178,15 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 
 儲存體帳戶會在 Azure 中為您的資料提供唯一命名空間。 每個儲存在 Azure 儲存體中的物件都有一個位址，其中包含您的唯一帳戶名稱。 帳戶名稱與 Azure 儲存體服務端點的組合會形成儲存體帳戶的端點。
 
-例如，如果您的一般用途儲存體帳戶名為 mystorageaccount，則該帳戶的預設端點如下：
+下表列出每個 Azure 儲存體服務的端點。
 
-- Blob 儲存體： `https://*mystorageaccount*.blob.core.windows.net`
-- 資料表儲存體： `https://*mystorageaccount*.table.core.windows.net`
-- 佇列儲存體： `https://*mystorageaccount*.queue.core.windows.net`
-- Azure 檔案儲存體： `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2： `https://*mystorageaccount*.dfs.core.windows.net` (使用 [專門針對大型資料優化的 ABFS 驅動程式](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2)。 ) 
+| 儲存體服務 | 端點 |
+|--|--|
+| Blob 儲存體 | `https://<storage-account>.blob.core.windows.net` |
+| Azure Data Lake Storage Gen2 | `https://<storage-account>.dfs.core.windows.net` |
+| Azure 檔案 | `https://<storage-account>.file.core.windows.net` |
+| 佇列儲存體 | `https://<storage-account>.queue.core.windows.net` |
+| 表格儲存體 | `https://<storage-account>.table.core.windows.net` |
 
 > [!NOTE]
 > 區塊 blob 和 blob 儲存體帳戶只會公開 Blob 服務端點。
@@ -184,7 +237,17 @@ AzCopy 為 Windows 命令列公用程式，可以極高效能將資料複製到 
 
 ## <a name="storage-account-billing"></a>儲存體帳戶計費
 
-[!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
+根據您的儲存體帳戶使用量 Azure 儲存體帳單。 儲存體帳戶中的所有物件會做為群組共同計費。 儲存體成本是根據下列因素來計算：
+
+- **「區域」** 係指您帳戶所在的地理區域。
+- 「帳戶類型」係指您目前使用的儲存體帳戶類型。
+- 「存取層」係指您已為一般用途 v2 或 Blob 儲存體帳戶指定的資料使用模式。
+- **容量** 是指您用來儲存資料的儲存體帳戶配額量。
+- 「複寫」會決定一次維護多少個資料複本，以及在哪些位置維護。
+- 「交易」係指對「Azure 儲存體」進行的所有讀取和寫入作業。
+- 「資料輸出」係指從 Azure 區域傳出的任何資料。 當您儲存體帳戶中的資料受不同區域中執行的應用程式存取時，您需負擔資料輸出的費用。 如需了解如何使用資源群組來將您的資料和服務聚集在相同區域以限制輸出費用，請參閱[什麼是 Azure 資源群組?](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group)
+
+[Azure 儲存體價格](https://azure.microsoft.com/pricing/details/storage/) 頁面提供了以帳戶類型、儲存體容量、複寫和交易為基礎的詳細價格資訊。 [資料傳輸定價詳細資料](https://azure.microsoft.com/pricing/details/data-transfers/) 則提供了出口流量的詳細定價資訊。 您可以使用 [Azure 儲存體定價計算機](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) ，以協助消除成本。
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 

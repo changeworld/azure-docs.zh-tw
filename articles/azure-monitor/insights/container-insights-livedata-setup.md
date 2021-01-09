@@ -2,14 +2,14 @@
 title: 設定容器即時資料 (預覽) 的 Azure 監視器 |Microsoft Docs
 description: 本文說明如何在不使用 kubectl 搭配容器 Azure 監視器的情況下，設定容器記錄的即時觀點 (stdout/stderr) 和事件。
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830780"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050777"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>如何設定即時資料 (預覽) 功能
 
@@ -29,8 +29,6 @@ ms.locfileid: "97830780"
 - Kubernetes 以角色為基礎的存取控制 (Kubernetes RBAC) 已啟用 AKS 叢集
 - Azure Active Directory 整合式 AKS 叢集。
 
->[!NOTE]
->這項功能不支援啟用為 [私人](https://azure.microsoft.com/updates/aks-private-cluster/) 叢集的 AKS 叢集。 這項功能依賴從瀏覽器透過 proxy 伺服器直接存取 Kubernetes API。 啟用網路安全性以封鎖此 proxy 的 Kubernetes API 將會封鎖此流量。
 
 ## <a name="authentication-model"></a>驗證模型
 
@@ -138,6 +136,6 @@ AKS 在2020年1月發行這個新的角色系結，因此在2020年1月之前建
 
 如需設定 AKS 叢集 **ClusterRoleBinding** 的其他協助，請參閱 [建立 Kubernetes RBAC](../../aks/azure-ad-integration-cli.md#create-kubernetes-rbac-binding)系結。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已設定驗證，您可以從叢集即時查看 [計量](container-insights-livedata-metrics.md)、 [部署](container-insights-livedata-deployments.md)和 [事件和記錄](container-insights-livedata-overview.md) 。

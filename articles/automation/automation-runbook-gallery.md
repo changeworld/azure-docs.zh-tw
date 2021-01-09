@@ -3,21 +3,21 @@ title: 使用 PowerShell 資源庫中的 Azure 自動化 Runbook 和模組
 description: 本文說明如何使用 PowerShell 資源庫中 Microsoft 和社群的 Runbook 和模組。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/17/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 26dfedf1961cf39645c3bcf3ce5fa2db6c14119e
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 590220782a7f43e785cc7885e68eefa99afb7d1d
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682773"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049111"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>使用 PowerShell 資源庫中的 Runbook 和模組
 
 您可以存取已由 Microsoft 和社群建置的案例，而不是在 Azure 自動化中建立您自己的 Runbook 和模組。 您可以從 Azure 自動化 GitHub 組織的 PowerShell 資源庫和[Python runbook](#use-python-runbooks)取得 PowerShell runbook 和[模組](#modules-in-powershell-gallery)。 您也可以藉由共用[您開發的案例](#add-a-powershell-runbook-to-the-gallery)來參與社群。
 
 > [!NOTE]
-> TechNet 腳本中心即將淘汰。 Runbook 資源庫中腳本中心的所有 runbook 都已移至我們的 [自動化 GitHub 組織](https://github.com/azureautomation)。
+> TechNet 腳本中心即將淘汰。 已將 Runbook 資源庫中腳本中心的所有 runbook 移至我們的 [自動化 GitHub 組織](https://github.com/azureautomation) 以取得詳細資訊，請參閱 [這裡](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337)。
 
 ## <a name="runbooks-in-powershell-gallery"></a>PowerShell 資源庫中的 Runbook
 

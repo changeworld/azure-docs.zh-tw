@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 9/15/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ff7c50d08962fec55584e8c4b3259fb8fda1fd97
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 9ecc14aa9591d6e62dccd9899a80de44411928a1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035286"
+ms.locfileid: "98051083"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>將 IoT 中樞遙測內嵌到 Azure 數位 Twins
 
@@ -47,20 +47,7 @@ Azure 數位 Twins 是由來自 IoT 裝置和其他來源的資料所驅動。 A
 您可以使用下列 CLI 命令來新增/上傳模型，然後使用此模型來建立對應項，此對應項會使用來自 IoT 中樞的資訊進行更新。
 
 模型看起來像這樣：
-```JSON
-{
-  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",
-  "@type": "Interface",
-  "@context": "dtmi:dtdl:context;2",
-  "contents": [
-    {
-      "@type": "Property",
-      "name": "Temperature",
-      "schema": "double"
-    }
-  ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/Thermostat.json":::
 
 若要將 **此模型上傳至您的 twins 實例**，請開啟 Azure CLI，然後執行下列命令：
 
@@ -107,21 +94,11 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
 
 下列程式碼顯示將遙測傳送為 JSON 的簡單裝置範例。 此範例完整地在 [*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)中進行探索。 下列程式碼會尋找傳送訊息之裝置的裝置識別碼，以及溫度值。
 
-```csharp
-JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
-var temperature = deviceMessage["body"]["Temperature"];
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs" id="Find_device_ID_and_temperature":::
 
 下一個程式碼範例會採用識別碼和溫度值，並使用它們來「patch」 (進行更新以) 該對應項。
 
-```csharp
-//Update twin using device temperature
-var updateTwinData = new JsonPatchDocument();
-updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
-await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
-...
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs" id="Update_twin_with_device_temperature":::
 
 ### <a name="update-your-function-code"></a>更新函數程式碼
 
@@ -129,66 +106,8 @@ await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
 
 將您的函式程式碼取代為此範例程式碼。
 
-```csharp
-using System;
-using System.Net.Http;
-using Azure.Core.Pipeline;
-using Azure.DigitalTwins.Core;
-using Azure.DigitalTwins.Core.Serialization;
-using Azure.Identity;
-using Microsoft.Azure.EventGrid.Models;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/IoTHubToTwins.cs":::
 
-namespace IotHubtoTwins
-{
-    public class IoTHubtoTwins
-    {
-        private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static readonly HttpClient httpClient = new HttpClient();
-
-        [FunctionName("IoTHubtoTwins")]
-        public async void Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log)
-        {
-            if (adtInstanceUrl == null) log.LogError("Application setting \"ADT_SERVICE_URL\" not set");
-
-            try
-            {
-                //Authenticate with Digital Twins
-                ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
-                DigitalTwinsClient client = new DigitalTwinsClient(
-                    new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions 
-                    { Transport = new HttpClientTransport(httpClient) });
-                log.LogInformation($"ADT service client connection created.");
-            
-                if (eventGridEvent != null && eventGridEvent.Data != null)
-                {
-                    log.LogInformation(eventGridEvent.Data.ToString());
-
-                    // Reading deviceId and temperature for IoT Hub JSON
-                    JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-                    string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
-                    var temperature = deviceMessage["body"]["Temperature"];
-                    
-                    log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
-
-                    //Update twin using device temperature
-                    var updateTwinData = new JsonPatchDocument();
-                    updateTwinData.AppendReplace("/Temperature", temperature.Value<double>());
-                    await client.UpdateDigitalTwinAsync(deviceId, updateTwinData);
-                }
-            }
-            catch (Exception e)
-            {
-                log.LogError($"Error in ingest function: {e.Message}");
-            }
-        }
-    }
-}
-```
 儲存您的函式程式碼，並將函數應用程式發佈至 Azure。 若要深入瞭解，請參閱發佈函式 [*應用程式*](./how-to-create-azure-function.md#publish-the-function-app-to-azure) ，以瞭解如何在 [*Azure 中設定函數來處理資料*](how-to-create-azure-function.md)。
 
 成功發佈之後，您會在 Visual Studio 命令視窗中看到輸出，如下所示：

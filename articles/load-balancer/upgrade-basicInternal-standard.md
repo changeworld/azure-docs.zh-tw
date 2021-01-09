@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: 59bf5eb22289238633b1f07c29a878bd0a9ae620
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1b7bdbdb9e1d642f2ef4a715d4993e4f449ccd0a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696161"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050692"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升級 Azure 內部 Load Balancer-不需要輸出連接
 [Azure Standard Load Balancer](load-balancer-overview.md) 透過區域冗余提供一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱 [比較表](./skus.md#skus)。
@@ -102,10 +102,6 @@ ms.locfileid: "94696161"
 
 是的，它會遷移流量。 如果您想要以個人的方式遷移流量，請使用 [此腳本，此腳本](https://www.powershellgallery.com/packages/AzureILBUpgrade/1.0) 不會為您移動 vm。
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
-  
-您可以傳送電子郵件給 slbupgradesupport@microsoft.com 、使用 Azure 支援來開啟支援案例，或同時進行這兩項作業。
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [瞭解 Standard Load Balancer](load-balancer-overview.md)

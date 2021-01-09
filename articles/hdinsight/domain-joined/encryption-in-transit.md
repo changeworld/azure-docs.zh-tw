@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: ba1542d1bb10933edb34b697f1c81cc5e3e7f1c9
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705365"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049774"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>傳輸中的 IPSec 加密 Azure HDInsight
 
@@ -24,7 +24,7 @@ Azure HDInsight 提供各種安全性功能來保護您的企業資料。 這些
 
 靜態加密是在 Azure 儲存體帳戶上的伺服器端加密，以及屬於您 HDInsight 叢集一部分的 Azure Vm 上的磁片加密所涵蓋。
 
-您可以使用 [傳輸層安全性 (TLS) ](../transport-layer-security.md) 來存取 HDInsight 上傳輸中的資料，以存取叢集閘道和 [網際網路通訊協定安全性 (](https://wikipedia.org/wiki/IPsec) 叢集節點之間的 IPSec) 。 IPSec 可以選擇性地在所有前端節點、背景工作節點、邊緣節點和 zookeeper 節點之間啟用。 它不會在閘道或 [識別碼](./identity-broker.md) 代理人節點（以 Windows 為基礎的 vm 和叢集中其他以 linux 為基礎的節點）之間的流量啟用。
+您可以使用 [傳輸層安全性 (TLS) ](../transport-layer-security.md) 來存取 HDInsight 上傳輸中的資料，以存取叢集閘道和 [網際網路通訊協定安全性 (](https://wikipedia.org/wiki/IPsec) 叢集節點之間的 IPSec) 。 您可以選擇性地在所有前端節點、背景工作節點、邊緣節點、zookeeper 節點，以及閘道和 [識別碼代理](./identity-broker.md) 程式節點之間啟用 IPSec。
 
 ## <a name="enable-encryption-in-transit"></a>啟用傳輸中加密
 
@@ -76,7 +76,7 @@ az deployment group create --name HDInsightEnterpriseSecDeployment \
     --parameters parameters.json
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Azure HDInsight 中的企業安全性概觀](hdinsight-security-overview.md)
 * [將 Azure Active Directory 的使用者同步處理至 HDInsight](../disk-encryption.md)叢集。

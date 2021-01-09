@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 6993bd10caf2f7e489de8074e311f75710b83d82
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4d611a6d575fbc94a555006882f77e5a31753164
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659432"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051423"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>使用 Azure CLI 部署和設定 Azure 防火牆
 
@@ -48,7 +48,7 @@ ms.locfileid: "94659432"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- 本文需要 Azure CLI 的版本2.0.4 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
+- 本文需要 2.0.4 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="set-up-the-network"></a>設定網路
 
@@ -67,7 +67,7 @@ az group create --name Test-FW-RG --location eastus
 此虛擬網路有三個子網。
 
 > [!NOTE]
-> AzureFirewallSubnet 子網路的大小是 /26。 如需有關子網路大小的詳細資訊，請參閱 [Azure 防火牆的常見問題集](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
+> AzureFirewallSubnet 子網路的大小是 /26。 如需有關子網路大小的詳細資訊，請參閱 [Azure 防火牆的常見問題集](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)。
 
 ```azurecli-interactive
 az network vnet create \

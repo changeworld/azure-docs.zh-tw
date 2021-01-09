@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: b0937bbd72460b1d46ce0394af1933e858424966
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c2efd9ac137c226c1d3a77e2cb6ebe17d75cb496
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360317"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051525"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>管理使用者 VPN 用戶端輪輻 Vnet 中資源的安全存取
 
@@ -23,7 +23,7 @@ ms.locfileid: "97360317"
 
 :::image type="content" source="./media/manage-secure-access-resources-spoke-p2s/diagram.png" alt-text="圖：安全的虛擬中樞" :::
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [Prerequisites](../../includes/virtual-wan-before-include.md)]
 
@@ -144,7 +144,7 @@ ms.locfileid: "97360317"
 * 請確定安全虛擬中樞上的 **有效路由表** ，有防火牆的下一個躍點可進行私人流量。 若要存取有效的路由表，請流覽至您的 **虛擬中樞** 資源。 在 [連線 **能力**] 底下，選取 [ **路由**]，然後選取 [ **有效路由**]。 從該處選取 **預設** 路由表。
 * 確認您已在 [ [建立規則](#create-rules) ] 區段中建立規則。 如果缺少這些步驟，您所建立的規則將不會實際與中樞相關聯，且路由表和封包流程將不會使用 Azure 防火牆。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 常見問題集](virtual-wan-faq.md)。
-* 如需 Azure 防火牆的詳細資訊，請參閱 [Azure 防火牆常見問題](../firewall/firewall-faq.md)。
+* 如需 Azure 防火牆的詳細資訊，請參閱 [Azure 防火牆常見問題](../firewall/firewall-faq.yml)。
