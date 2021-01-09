@@ -1,6 +1,6 @@
 - name: Microsoft 身分識別平台文件
   href: index.yml
-- name: 概觀
+- name: 總覽
   expanded: true
   items:
     - name: 什麼是 Microsoft 身分識別平台？
@@ -39,7 +39,8 @@
         - name: Node.js - MSAL | 預覽
           href: quickstart-v2-nodejs-webapp-msal.md
         - name: Node.js - Passport.js
-          displayName: OIDC
+          displayName: 'OIDC, express'
+          href: quickstart-v2-nodejs-webapp.md
         - name: Java
           href: quickstart-v2-java-webapp.md
         - name: Python

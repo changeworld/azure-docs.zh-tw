@@ -1,14 +1,14 @@
 ---
 title: IRS 1075 藍圖範例概觀
 description: IRS 1075 藍圖範例概觀。 此藍圖範例可協助客戶評定特定 IRS 1075 控制措施。
-ms.date: 08/19/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 41a35eed7fee1b0c2c1e792997ec61c4035b9abd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ca934fde9f993429cedbe53149d8d8cbac031d5
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653676"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045184"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>IRS 1075 藍圖範例概觀
 

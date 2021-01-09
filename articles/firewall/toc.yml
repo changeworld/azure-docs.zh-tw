@@ -1,6 +1,6 @@
 - name: Azure 防火牆文件
   href: index.yml
-- name: 概觀
+- name: 總覽
   items:
     - name: 何謂 Azure 防火牆？
       href: overview.md
@@ -110,7 +110,7 @@
 - name: 資源
   items:
     - name: 常見問題集
-      href: firewall-faq.md
+      href: firewall-faq.yml
     - name: 作者範本
       href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure 藍圖

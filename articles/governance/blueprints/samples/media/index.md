@@ -1,14 +1,14 @@
 ---
 title: 媒體藍圖範例概觀
 description: 媒體藍圖範例的概觀。 此藍圖範例可協助客戶評定特定媒體控制項。
-ms.date: 08/13/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: db7e67cb7f96a19a04efc001bc7752f7c9a02e73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2b9e29d8f5095947587107cc372beb34b18abb7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208251"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034980"
 ---
 # <a name="overview-of-the-media-blueprint-sample"></a>媒體藍圖範例的概觀
 
