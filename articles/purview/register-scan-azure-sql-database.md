@@ -1,18 +1,18 @@
 ---
 title: 註冊和掃描 Azure SQL Database
 description: 本教學課程說明如何掃描 Azure SQL Database
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1fbeedd8643a777b29ebe4993eed7b664240621c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920274"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739785"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>註冊和掃描 Azure SQL Database
 
@@ -28,7 +28,7 @@ Azure SQL Database 資料來源支援下列功能：
 
 ### <a name="known-limitations"></a>已知限制
 
-Azure Purview 不支援掃描 Azure SQL Database 中的[檢視](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15)。 
+Azure Purview 不支援掃描 Azure SQL Database 中的[檢視](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true)。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -89,7 +89,7 @@ Azure Purview 不支援掃描 Azure SQL Database 中的[檢視](https://docs.mic
 服務主體或受控識別必須有權取得資料庫、結構描述和資料表的中繼資料。 此外也必須能夠查詢要取樣以進行分類的資料表。
 
 - [使用 Azure SQL 設定和管理 Azure AD 驗證](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- 如果您使用受控識別，則 Purview 帳戶會有本身的受控識別，這基本上是您在建立 Purview 時的 Purview 名稱。 您必須依照[在 Azure SQL Database 中建立服務主體使用者](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)的教學課程，在 Azure SQL Database 中使用確切的 Purview 受控識別或您本身的服務主體建立 Azure AD 使用者。 您必須將 `db_owner` (**建議**) 權限指派給身分識別。 建立使用者並授與權限的範例 SQL 語法：
+- 如果您使用受控識別，則 Purview 帳戶會有本身的受控識別，這基本上是您在建立 Purview 時的 Purview 名稱。 您必須依照[在 Azure SQL Database 中建立服務主體使用者](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)的教學課程，在 Azure SQL Database 中使用確切的 Purview 受控識別或您本身的服務主體建立 Azure AD 使用者。 您必須將適當的權限 (例如 `db_owner` 或 `db_datareader`) 指派給身分識別。 建立使用者並授與權限的範例 SQL 語法：
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER
@@ -100,7 +100,7 @@ Azure Purview 不支援掃描 Azure SQL Database 中的[檢視](https://docs.mic
     ```
 
     > [!Note]
-    > `Username` 是您本身的服務主體或 Purview 的受控識別
+    > `Username` 是您本身的服務主體或 Purview 的受控識別。 您可以閱讀更多有關[固定資料庫角色及其功能](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)的詳細資訊。
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>將服務主體新增至金鑰保存庫和 Purview 的認證
 
@@ -138,7 +138,7 @@ Azure Purview 不支援掃描 Azure SQL Database 中的[檢視](https://docs.mic
 
 1. 瀏覽至您的 Purview 帳戶
 
-1. 在左側導覽列上選取 [來源]
+1. 在左側導覽列中選取 [來源]
 
 1. 選取 [註冊]
 

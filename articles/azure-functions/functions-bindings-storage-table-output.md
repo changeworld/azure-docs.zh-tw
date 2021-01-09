@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: ec857db64529a27db7412c61f8f09c66f8a76363
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92098215"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033790"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>適用于 Azure Functions 的 Azure 資料表儲存體輸出系結
 
@@ -101,112 +101,6 @@ public class Person
 
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-下列範例所示範的是使用繫結之 *function.json* 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的資料表輸出繫結。 函式會寫入多個資料表實體。
-
-以下是 *function.json* 檔案：
-
-```json
-{
-  "bindings": [
-    {
-      "name": "input",
-      "type": "manualTrigger",
-      "direction": "in"
-    },
-    {
-      "tableName": "Person",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "tableBinding",
-      "type": "table",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-[設定](#configuration)章節會說明這些屬性。
-
-以下是 JavaScript 程式碼：
-
-```javascript
-module.exports = function (context) {
-
-    context.bindings.tableBinding = [];
-
-    for (var i = 1; i < 10; i++) {
-        context.bindings.tableBinding.push({
-            PartitionKey: "Test",
-            RowKey: i.toString(),
-            Name: "Name " + i
-        });
-    }
-
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-下列範例示範如何使用資料表儲存體輸出系結。 系結 `table` 是在 *function.js* 中設定，方法是將值指派給 `name` 、 `tableName` 、 `partitionKey` 和 `connection` ：
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "message",
-      "type": "table",
-      "tableName": "messages",
-      "partitionKey": "message",
-      "connection": "AzureWebJobsStorage",
-      "direction": "out"
-    },
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ]
-}
-```
-
-下列函式會產生值的唯一 UUI `rowKey` ，並將訊息保存到資料表儲存體中。
-
-```python
-import logging
-import uuid
-import json
-
-import azure.functions as func
-
-def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
-
-    rowKey = str(uuid.uuid4())
-
-    data = {
-        "Name": "Output binding message",
-        "PartitionKey": "message",
-        "RowKey": rowKey
-    }
-
-    message.set(json.dumps(data))
-
-    return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 下列範例顯示的 JAVA 函式會使用 HTTP 觸發程式來寫入單一資料表資料列。
@@ -284,6 +178,152 @@ public class AddPersons {
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+下列範例所示範的是使用繫結之 *function.json* 檔案，以及 [JavaScript 函式](functions-reference-node.md)中的資料表輸出繫結。 函式會寫入多個資料表實體。
+
+以下是 *function.json* 檔案：
+
+```json
+{
+  "bindings": [
+    {
+      "name": "input",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+[設定](#configuration)章節會說明這些屬性。
+
+以下是 JavaScript 程式碼：
+
+```javascript
+module.exports = function (context) {
+
+    context.bindings.tableBinding = [];
+
+    for (var i = 1; i < 10; i++) {
+        context.bindings.tableBinding.push({
+            PartitionKey: "Test",
+            RowKey: i.toString(),
+            Name: "Name " + i
+        });
+    }
+
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+下列範例示範如何將多個實體從函式寫入至資料表。
+
+_function.js中的_ 系結設定：
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputData",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "TableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+_run.ps1_ 中的 PowerShell 程式碼：
+
+```powershell
+param($InputData, $TriggerMetadata)
+  
+foreach ($i in 1..10) {
+    Push-OutputBinding -Name TableBinding -Value @{
+        PartitionKey = 'Test'
+        RowKey = "$i"
+        Name = "Name $i"
+    }
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+下列範例示範如何使用資料表儲存體輸出系結。 系結 `table` 是在 *function.js* 中設定，方法是將值指派給 `name` 、 `tableName` 、 `partitionKey` 和 `connection` ：
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "message",
+      "type": "table",
+      "tableName": "messages",
+      "partitionKey": "message",
+      "connection": "AzureWebJobsStorage",
+      "direction": "out"
+    },
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
+```
+
+下列函式會產生值的唯一 UUI `rowKey` ，並將訊息保存到資料表儲存體中。
+
+```python
+import logging
+import uuid
+import json
+
+import azure.functions as func
+
+def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
+
+    rowKey = str(uuid.uuid4())
+
+    data = {
+        "Name": "Output binding message",
+        "PartitionKey": "message",
+        "RowKey": rowKey
+    }
+
+    message.set(json.dumps(data))
+
+    return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>屬性和註釋
@@ -326,19 +366,23 @@ public static MyPoco TableOutput(
 
 C# 指令碼不支援屬性。
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-JavaScript 不支援屬性。
-
-# <a name="python"></a>[Python](#tab/python)
-
-Python 指令碼不支援屬性。
-
 # <a name="java"></a>[Java](#tab/java)
 
 在 JAVA 函式執行時間連結 [庫](/java/api/overview/azure/functions/runtime)中，使用參數上的 [TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/) 注釋，將值寫入資料表儲存體中。
 
 如需 [詳細資訊](#example)，請參閱範例。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+JavaScript 不支援屬性。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 不支援屬性。
+
+# <a name="python"></a>[Python](#tab/python)
+
+Python 指令碼不支援屬性。
 
 ---
 
@@ -368,13 +412,25 @@ Python 指令碼不支援屬性。
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-使用方法參數 `ICollector<T> paramName` 或 `IAsyncCollector<T> paramName` `T` 包含 `PartitionKey` 和 `RowKey` 屬性的，存取輸出資料表實體。 這些屬性通常會伴隨執行 `ITableEntity` 或繼承 `TableEntity` 。 `paramName`值是在 `name` *function.js*的屬性中指定。
+使用方法參數 `ICollector<T> paramName` 或 `IAsyncCollector<T> paramName` `T` 包含 `PartitionKey` 和 `RowKey` 屬性的，存取輸出資料表實體。 這些屬性通常會伴隨執行 `ITableEntity` 或繼承 `TableEntity` 。 `paramName`值是在 `name` *function.js* 的屬性中指定。
 
 或者，您也可以使用 `CloudTable` 方法參數，利用 AZURE 儲存體 SDK 來寫入資料表。 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x)。
+
+# <a name="java"></a>[Java](#tab/java)
+
+有兩個選項可使用 [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) 注釋，從函式輸出資料表儲存體資料列：
+
+- 傳回 **值**：藉由將批註套用至函式本身，函式的傳回值會保存為數據表儲存體資料列。
+
+- **命令式**：若要明確設定訊息值，請將批註套用至類型的特定參數 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) ，其中 `T` 包含 `PartitionKey` 和 `RowKey` 屬性。 這些屬性通常會伴隨執行 `ITableEntity` 或繼承 `TableEntity` 。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 使用 `context.bindings.<name>` 存取輸出事件，其中 `<name>` 是 *function.json* 的 `name` 屬性中指定的值。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+若要寫入資料表資料，請使用 `Push-OutputBinding` Cmdlet，將 `-Name TableBinding` 參數和 `-Value` 參數設定為等於資料列資料。 如需詳細資訊，請參閱 [PowerShell 範例](#example) 。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -384,25 +440,17 @@ Python 指令碼不支援屬性。
 
 - **命令式**：將值傳遞至宣告為 [Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) 類型之參數的 [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) 方法。 傳遞至 `set` 的值會保存為事件中樞訊息。
 
-# <a name="java"></a>[Java](#tab/java)
-
-有兩個選項可使用 [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true) 注釋，從函式輸出資料表儲存體資料列：
-
-- 傳回**值**：藉由將批註套用至函式本身，函式的傳回值會保存為數據表儲存體資料列。
-
-- **命令式**：若要明確設定訊息值，請將批註套用至類型的特定參數 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) ，其中 `T` 包含 `PartitionKey` 和 `RowKey` 屬性。 這些屬性通常會伴隨執行 `ITableEntity` 或繼承 `TableEntity` 。
-
 ---
 
 ## <a name="exceptions-and-return-codes"></a>例外狀況和傳回碼
 
 | 繫結 | 參考 |
 |---|---|
-| Table | [資料表錯誤碼](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| 資料表 | [資料表錯誤碼](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Bob、資料表、佇列 | [儲存體錯誤碼](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Bob、資料表、佇列 | [疑難排解](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [深入了解 Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)

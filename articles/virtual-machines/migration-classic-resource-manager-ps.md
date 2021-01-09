@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07b511182950095c356887d72ffde75ac098674d
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 82eaa597796bf3772faa90a9dbc4151da935c46a
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904689"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027718"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>使用 PowerShell 將 IaaS 資源從傳統遷移至 Azure Resource Manager
 
@@ -265,7 +265,7 @@ Azure PowerShell 的主要安裝選項有兩個：[PowerShell 資源庫](https:/
 在您完成遷移虛擬機器之後，請在遷移儲存體帳戶之前，先執行下列先決條件檢查。
 
 > [!NOTE]
-> 如果您的儲存體帳戶沒有相關聯的磁片或 VM 資料，您可以直接跳到「驗證儲存體帳戶並開始遷移」一節。
+> 如果您的儲存體帳戶沒有相關聯的磁片或 VM 資料，您可以直接跳到「驗證儲存體帳戶並開始遷移」一節。 另請注意，刪除傳統磁片、VM 映射或 OS 映射時，不會移除儲存體帳戶中的來源 VHD 檔案。 不過，它會中斷這些 VHD 檔案的租用，讓它們可以在遷移後重複使用，以建立 ARM 磁片或映射。
 
 * 必要條件檢查是否已遷移任何 Vm，或您的儲存體帳戶是否有磁片資源：
     * 遷移磁片儲存在儲存體帳戶中的虛擬機器。

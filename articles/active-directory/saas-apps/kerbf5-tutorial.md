@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16fff00f04c4cd57ad46759cceb50134e58d5e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009155"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933076"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 F5 整合
 
@@ -195,7 +195,7 @@ ms.locfileid: "96009155"
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 1. 按一下 [條件式存取]。
 1. 按一下 [新增原則]。
-1. 現在，您可以看到您的 F5 應用程式已成為 CA 原則的資源，並套用任何條件式存取，包括多重要素驗證、裝置型存取控制或身分識別保護原則。
+1. 現在，您可以看到您的 F5 應用程式已成為條件式存取原則的資源，並套用任何條件式存取，包括多重要素驗證、裝置型存取控制或身分識別保護原則。
 
 ## <a name="configure-f5-sso"></a>設定 F5 SSO
 

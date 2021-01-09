@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c746666d58e21c2705a2ef1d6a17d0d1196f7590
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504469"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033637"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
@@ -61,7 +61,7 @@ REST API v3.0 包含下列功能：
 如果您的應用程式需要傳送較長的音訊，請考慮使用 [語音 SDK](speech-sdk.md) 或 [語音轉換文字 REST API v3.0](#speech-to-text-rest-api-v30)。
 
 > [!TIP]
-> 請參閱政府雲端的 Azure 政府 [檔](../../azure-government/compare-azure-government-global-azure.md) (FairFax) 端點。
+> 請參閱 [這篇文章](sovereign-clouds.md) ，以瞭解 Azure Government 和 Azure 中國端點。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -335,7 +335,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 - [自訂原音模型](./how-to-custom-speech-train-model.md)

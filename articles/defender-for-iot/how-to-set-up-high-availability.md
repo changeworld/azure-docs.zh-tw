@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 6540b5f93bebfe39253a88dc495a3613568f8926
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: e5fa4bde316f4b1677f78c65e913a6303a9f4735
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838671"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019137"
 ---
 # <a name="about-high-availability"></a>關於高可用性
 
@@ -52,7 +52,7 @@ ms.locfileid: "97838671"
 
 3. 安裝內部部署管理主控台次要設備。 如需詳細資訊，請參閱 [關於適用于 IoT 的 Defender 安裝](how-to-install-software.md)。
 
-4. 將主要和次要內部部署管理主控台設備配對[，如下所述。](/create-the-primary-and-secondary-pair.md) 主要的內部部署管理主控台必須至少管理兩個感應器，才能執行安裝程式。
+4. 將主要和次要內部部署管理主控台設備配對[，如下所述。](https://infrascale.secure.force.com/pkb/articles/Support_Article/How-to-access-your-Appliance-Management-Console) 主要的內部部署管理主控台必須至少管理兩個感應器，才能執行安裝程式。
 
 ## <a name="high-availability-requirements"></a>高可用性需求
 
@@ -151,4 +151,4 @@ cyberx-management-deploy-ssh-key <Primary ip>
 
 ## <a name="see-also"></a>請參閱
 
-[啟用並設定您的內部部署管理主控台](how-to-activate-and-set-up-your-on-premises-management-console.md)
+[啟用和設定內部部署管理主控台](how-to-activate-and-set-up-your-on-premises-management-console.md)

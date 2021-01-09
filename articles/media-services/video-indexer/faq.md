@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 721af069a76497576b92c4203a93656d19c283aa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217723"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028789"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>影片索引器常見問題集
 
@@ -51,7 +51,7 @@ Video Indexer 可以對媒體檔案執行的一些作業包括：
 
 ### <a name="do-i-need-coding-skills-to-use-video-indexer"></a>需要編碼技能才能使用影片索引器嗎？
 
-您可以在**無需撰寫程式碼**的情況下，使用影片索引器 Web 型介面來評估、設定及管理您的帳戶。  當您準備好開發更複雜的應用程式時，便可以使用[影片索引器 API](https://api-portal.videoindexer.ai/) \(英文\) 來將影片索引器整合到您的應用程式、網站，或是[使用無伺服器技術 (例如 Azure Logic Apps 或 Azure Functions) 的自訂工作流程](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) \(英文\) 之中。
+您可以在 **無需撰寫程式碼** 的情況下，使用影片索引器 Web 型介面來評估、設定及管理您的帳戶。  當您準備好開發更複雜的應用程式時，便可以使用[影片索引器 API](https://api-portal.videoindexer.ai/) \(英文\) 來將影片索引器整合到您的應用程式、網站，或是[使用無伺服器技術 (例如 Azure Logic Apps 或 Azure Functions) 的自訂工作流程](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/) \(英文\) 之中。
 
 ### <a name="do-i-need-machine-learning-skills-to-use-video-indexer"></a>需要機器學習技能才能使用影片索引器嗎？
 
@@ -183,7 +183,7 @@ Azure 媒體服務的 SLA 涵蓋影片索引器，並可以在 [SLA](https://azu
 
 影片索引器 API 包含授權 API 和作業 API。 授權 API 包含讓您存取權杖的呼叫。 作業 API 的每次呼叫皆應與存取權杖相關聯，以符合呼叫的授權範圍。
 
-基於安全性考量，需要有存取權杖才能使用影片索引器 API。 這可確保任何呼叫都來自您或具有您帳戶存取權限的人員。 
+基於安全性考量，需要有存取權杖才能使用影片索引器 API。 這可確保任何呼叫都來自您或具有您帳戶存取權限的人員。 
 
 ### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>帳戶存取權杖、使用者存取權杖，以及影片存取權杖之間的差異為何？
 
@@ -197,7 +197,7 @@ Azure 媒體服務的 SLA 涵蓋影片索引器，並可以在 [SLA](https://azu
 
 ### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>影片索引器開發人員入口網站的登入選項有哪些？
 
-您可以使用 Azure AD、Microsoft 帳戶、Google 帳戶或 Facebook 帳戶來登入。 
+請參閱有關登入 [資訊](release-notes.md#october-2020)的版本資訊。
 
 一旦使用識別提供者註冊您的電子郵件帳戶之後，您就無法搭配另一個識別提供者使用此電子郵件帳戶。
 

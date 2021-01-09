@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: d8b6a852ff0aeb287b12d63bfa689a38a56d418f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 00ae812536e73f432b9bddb93fc1b4a958b379f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485005"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97812863"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure 資料處理站是什麼？
 
@@ -56,8 +56,7 @@ Data Factory 包含一系列的互連系統，可為資料工程師提供完整�
 如果您想要手動編寫轉換的程式碼，ADF 支援外部活動，可供在 HDInsight Hadoop、Spark、Data Lake Analytics 和 Machine Learning 等計算服務上執行轉換。
 
 ### <a name="cicd-and-publish"></a>CI/CD 和發佈
-Data Factory 使用 Azure DevOps 和 GitHub，為資料管線的 CI/CD 提供完整的支援。 這可讓您在發佈成品之前，以累加方式開發和傳遞您的 ETL 程序。 在未經處理資料已精簡成符合業務需求的可取用形式之後，將該資料載入到 Azure 資料倉儲、Azure SQL Database、Azure CosmosDB，或業務使用者可從其商業智慧工具指向的任何分析引擎。
-
+[Data Factory](continuous-integration-deployment.md) 使用 Azure DevOps 和 GitHub，為資料管線的 CI/CD 提供完整的支援。 這可讓您在發佈成品之前，以累加方式開發和傳遞您的 ETL 程序。 在未經處理資料已精簡成符合業務需求的可取用形式之後，將該資料載入到 Azure 資料倉儲、Azure SQL Database、Azure CosmosDB，或業務使用者可從其商業智慧工具指向的任何分析引擎。
 ### <a name="monitor"></a>監視
 在您順利建置並部署資料整合管線之後 (從精簡資料提供業務價值)，請監視所排定活動和管線的成功和失敗率。 Azure Data Factory 提供內建支援，可讓您透過 Azure 監視器、API、PowerShell、Azure 監視器記錄及 Azure 入口網站上的健康情況面板監視管線。
 

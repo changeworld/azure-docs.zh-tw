@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 11/24/2020
+ms.date: 01/05/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ce906ad62b51956cb85f854846740fa09e06895d
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 780da47e6f071d854a16ca1d1c5cd02dbdd6bef0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97665050"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955634"
 ---
 事件中樞會將事件序列組織成一或多個分割區。 當較新的事件送達時，系統會將其新增至序列的結尾。 您可以將資料分割視為一種「認可記錄」。
 
@@ -21,7 +21,7 @@ ms.locfileid: "97665050"
 
 ![顯示事件序列 (從舊到新) 的圖表。](./media/event-hubs-partitions/partition.png)
 
-設計出事件中樞是為了協助處理非常大量的事件，而分割可從兩個方面提供協助：
+設計出事件中樞是為了協助處理大量的事件，而分割可從兩個方面提供協助：
 
 首先，即使事件中樞是 PaaS 服務，其底下仍有實體現實，若要保存記錄以保留事件的順序，就需要將這些事件一起保存在基礎儲存體及其複本中，而這便導致了這類記錄的輸送量上限。 分割可讓您將多個平行記錄用於相同的事件中樞，因此讓可用的原始 IO 輸送量容量倍增。
 
@@ -51,7 +51,7 @@ ms.locfileid: "97665050"
 
 分割區索引鍵所識別的一連串事件便是 *串流*。 分割區是許多這類串流的多工記錄存放區。 
 
-事件中樞的分割區計數可以在建立事件中樞後予以增加，但分割區中的串流分佈，則會在完成時隨著分割區索引鍵與分割區的對應有所變更而跟著變更，因此如果事件的相對順序在您的應用程式中很重要，就請試著盡量避免這類變更。
+[專用的事件中樞叢集](../articles/event-hubs/event-hubs-dedicated-overview.md)中事件中樞的分割區計數可以在建立事件中樞後予以[增加](../articles/event-hubs/dynamically-add-partitions.md)，但分割區中的串流分佈，則會在完成時隨著分割區索引鍵與分割區的對應有所變更而跟著變更，因此如果事件的相對順序在您的應用程式中很重要，就請試著盡量避免這類變更。
 
 將分割區數量設定為所允許的最大值雖然是誘人的方式，但請務必記住，事件串流必須有良好的結構，才能確實地利用好多個分割區。 如果您需要讓所有事件或只在少量子串流以絕對順序進行保留，則不一定能夠利用好多個分割區。 此外，多個分割區會讓處理層面變得更複雜。 
 

@@ -1,16 +1,16 @@
 ---
-title: 在 Azure 中設定函數應用程式設定
-description: 了解如何設定 Azure Functions 應用程式設定。
+title: 在 Azure Functions 中設定函數應用程式設定
+description: 瞭解如何在 Azure Functions 中設定函數應用程式設定。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 746a97ecd9b0bdd676e70cca38edc75905e3e4bd
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936935"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035201"
 ---
 # <a name="manage-your-function-app"></a>管理您的函數應用程式 
 
@@ -79,7 +79,7 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 | 方案類型 | 入口網站 | Azure CLI/PowerShell |
 | --- | --- | --- |
-| [耗用量](consumption-plan.md) | **耗用量** | `Dynamic` |
+| [取用量](consumption-plan.md) | **取用量** | `Dynamic` |
 | [高級](functions-premium-plan.md) | **ElasticPremium** | `ElasticPremium` |
 | [專用 (App Service) ](dedicated-plan.md) | 各種類型 | 各種類型 |
 
@@ -186,14 +186,14 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 
 使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) 命令可列出目前允許的來源。
 
-### <a name="authentication"></a><a name="auth"></a>驗證
+### <a name="authentication"></a><a name="auth"></a>認證
 
 ![設定函數應用程式的驗證](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
 當函數使用 HTTP 觸發程序時，您可以要求呼叫必須先經過驗證。 App Service 支援 Azure Active Directory 驗證，以及使用社交提供者（例如 Facebook、Microsoft 和 Twitter）登入。 如需設定特定驗證提供者的詳細資訊，請參閱 [Azure App Service 驗證概觀](../app-service/overview-authentication-authorization.md)。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 + [設定 Azure App Service 設定](../app-service/configure-common.md)
 + [Azure Functions 的持續部署](functions-continuous-deployment.md)

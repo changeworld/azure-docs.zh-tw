@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93602e522338166abac98c3e4a198e1aff392d21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451816"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934963"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics 共用資料庫
 
-Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 Apache Spark 集區和無伺服器 SQL 集區之間共用資料庫和資料表。
+Azure Synapse Analytics 可讓不同的計算工作區引擎共用資料庫和資料表。 目前，在 Apache Spark 集區上建立的資料庫和 Parquet 資料表會自動與無伺服器 SQL 集區引擎共用。
 
-使用 Spark 作業所建立的資料庫將會以同樣的名稱顯示給工作區中所有目前和未來的 Spark 集區，包括無伺服器 SQL 集區引擎。
+使用 Spark 作業所建立的資料庫將會以同樣的名稱顯示給工作區中所有目前和未來的 Spark 集區，包括無伺服器 SQL 集區引擎。 您無法使用無伺服器 SQL 集區，直接在這個複寫的資料庫中新增自訂物件 (外部資料表、檢視、程序)。
 
 Spark 預設資料庫 (稱為 `default`) 也會在無伺服器 SQL 集區內容中顯示為稱為 `default` 的資料庫。
 

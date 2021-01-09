@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/11/2020
 ms.author: sngun
-ms.openlocfilehash: a149f0b331a77462aa53b948fedf25dd1331969e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "94683619"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630746"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Azure Cosmos DB Gremlin 圖形對於 TinkerPop 功能的支援和相容性
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -195,31 +195,31 @@ _ * **[Gremlin 位元組程式碼](https://tinkerpop.apache.org/docs/current/tut
 
 _ **使用 mid-traversal `.V()` 步驟所進行的 Gremlin 查詢索引使用率**：目前只有周遊的第一個 `.V()` 呼叫會使用索引來解析其附加的任何篩選或述詞。 後續的呼叫則不會查閱索引，這可能會增加查詢的延遲和成本。
     
-    Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
+採用預設索引編制時，以 `.V()` 步驟開頭的典型讀取 Gremlin 查詢會在其附加的篩選步驟中使用參數 (例如 `.has()` 或 `.where()`) 來將查詢的成本和效能最佳化。 例如：
 
-    ```java
-    g.V().has('category', 'A')
-    ```
+```java
+g.V().has('category', 'A')
+```
 
-    However, when more than one `.V()` step is included in the Gremlin query, the resolution of the data for the query might not be optimal. Take the following query as an example:
+不過，如果 Gremlin 查詢中包含多個 `.V()` 步驟，則查詢的資料解析可能不會有最佳效能。 以下列查詢為例：
 
-    ```java
-    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
-    ```
+```java
+g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+```
 
-    This query will return two groups of vertices based on their property called `category`. In this case, only the first call, `g.V().has('category', 'A')` will make use of the index to resolve the vertices based on the values of their properties.
+此查詢會根據稱為 `category` 的屬性，傳回兩個頂點群組。 在此情況下，只有第一次呼叫 `g.V().has('category', 'A')` 會使用索引來根據屬性值解析頂點。
 
-    A workaround for this query is to use subtraversal steps such as `.map()` and `union()`. This is exemplified below:
+此查詢的因應措施是使用子周遊步驟，例如 `.map()` 和 `union()`。 舉例如下：
 
-    ```java
-    // Query workaround using .map()
-    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+```java
+// Query workaround using .map()
+g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
 
-    // Query workaround using .union()
-    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
-    ```
+// Query workaround using .union()
+g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+```
 
-    You can review the performance of the queries by using the [Gremlin `executionProfile()` step](graph-execution-profile.md).
+您可以使用 [Gremlin `executionProfile()` 步驟](graph-execution-profile.md)來檢閱查詢的效能。
 
 ## <a name="next-steps"></a>後續步驟
 

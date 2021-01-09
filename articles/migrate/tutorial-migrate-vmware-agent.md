@@ -7,16 +7,16 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 0c3b86fc823e4b563dc747a5604fcb2e04995fed
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 480051680ea98b82627a9a2b3ea004d9472f7124
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752646"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797089"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>將 VMware VM 遷移至 Azure (代理程式型)
 
-本文將說明如何使用 [Azure Migrate 伺服器移轉](migrate-services-overview.md#azure-migrate-server-migration-tool)工具搭配代理程式型移轉，將內部部署 VMware VM 遷移至 Azure。  您也可使用代理程式型移轉來遷移 VMware VM。 [比較](server-migrate-overview.md#compare-migration-methods)方法。
+本文將說明如何使用 [Azure Migrate 伺服器移轉](migrate-services-overview.md#azure-migrate-server-migration-tool)工具搭配代理程式型移轉，將內部部署 VMware VM 遷移至 Azure。  您也可使用無代理程式移轉來遷移 VMware VM。 [比較](server-migrate-overview.md#compare-migration-methods)方法。
 
 
  在本教學課程中，您會了解如何：
@@ -253,7 +253,7 @@ Azure Migrate 伺服器移轉需要 VMware 伺服器的存取權，才能探索�
     
 13. 在 [Azure Hybrid Benefit] 中：
 
-    - 如果您不想套用 Azure Hybrid Benefit，請選取 [否]。 然後按一下 [下一步]  。
+    - 如果您不想套用 Azure Hybrid Benefit，請選取 [否]。 然後按一下 [下一步]。
     - 如果您有 Windows Server 機器涵蓋於有效的軟體保證或 Windows Server 訂用帳戶下，且您想要將權益套用至要移轉的機器，請選取 [是]。 然後按一下 [下一步]  。
 
 14. 請檢閱 **計算** 中的 VM 名稱、大小、OS 磁碟類型和可用性設定 (如果有在上一個步驟中選取)。 VM 必須符合 [Azure 需求](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)。
@@ -263,7 +263,7 @@ Azure Migrate 伺服器移轉需要 VMware 伺服器的存取權，才能探索�
     - **可用性區域**：指定要使用的可用性區域。
     - **可用性設定組**：指定要使用的可用性設定組。
 
-15. 在 [磁碟] 中，指定是否應將 VM 磁碟複寫至 Azure，並選取 Azure 中的磁碟類型 (標準 SSD/HDD 或進階受控磁碟)。 然後按一下 [下一步]  。
+15. 在 [磁碟] 中，指定是否應將 VM 磁碟複寫至 Azure，並選取 Azure 中的磁碟類型 (標準 SSD/HDD 或進階受控磁碟)。 然後按一下 [下一步]。
     - 您可以從複寫排除磁碟。
     - 如果您排除磁碟，則在移轉後磁碟將不會出現在 Azure VM 上。 
 

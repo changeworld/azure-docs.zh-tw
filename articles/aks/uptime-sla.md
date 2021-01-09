@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) 與運作時間 SLA
 description: 了解 Azure Kubernetes Service (AKS) API 伺服器的選用運作時間 SLA 供應項目。
 services: container-service
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 95728ca14b96adf7396ca13888107477d953b2a9
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607334"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033331"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS) 運作時間 SLA
 
@@ -26,7 +26,7 @@ ms.locfileid: "97607334"
 ## <a name="region-availability"></a>區域可用性
 
 * 執行時間 SLA 適用于公用區域，以及 [支援 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的 Azure Government 區域。
-* 在支援 AKS 的所有區域中， [私用 AKS][private-clusters] 叢集都可以使用執行時間 SLA。
+* 在支援 AKS 的所有公用區域中， [私人 AKS][private-clusters] 叢集都可以使用執行時間 SLA。
 
 ## <a name="sla-terms-and-conditions"></a>SLA 條款及條件
 
@@ -43,7 +43,7 @@ ms.locfileid: "97607334"
 
 若要透過運作時間 SLA 建立新叢集，請使用 Azure CLI。
 
-下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組：
+下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 # Create a resource group
@@ -107,7 +107,7 @@ az aks create --resource-group myResourceGroup --name myAKSCluster--node-count 1
   },
   ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要避免產生費用，請清除您所建立的任何資源。 若要刪除叢集，請使用 [`az group delete`][az-group-delete] 命令來刪除 AKS 資源群組：
 

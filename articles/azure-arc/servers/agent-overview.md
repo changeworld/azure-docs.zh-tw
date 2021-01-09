@@ -1,14 +1,14 @@
 ---
 title: Connected Machine Windows 代理程式概觀
 description: 本文提供 Azure Arc 啟用的伺服器代理程式的詳細總覽，可支援監視混合式環境中裝載的虛擬機器。
-ms.date: 12/21/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: bff76cbaa678ed82538eb6d75633aa94cdce30bf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 86d524665b70725108324b1d88521a4c3cb8ff05
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723264"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033960"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 已啟用伺服器代理程式的總覽
 
@@ -68,6 +68,8 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 ### <a name="azure-subscription-and-service-limits"></a>Azure 訂用帳戶與服務限制
 
 在使用已啟用 Azure Arc 的伺服器設定電腦之前，請先參閱 Azure Resource Manager 訂用帳戶 [限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) 和 [資源群組限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) ，以規劃要連線的機器數目。
+
+Azure Arc 已啟用的伺服器在資源群組中最多可支援5000個電腦實例。
 
 ### <a name="transport-layer-security-12-protocol"></a>傳輸層安全性1.2 通訊協定
 
@@ -266,7 +268,7 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 若要開始評估已啟用 Azure Arc 的伺服器，請遵循 [從 Azure 入口網站將混合式機器連線到 Azure](onboard-portal.md)的文章。
 

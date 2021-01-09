@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 44a5131a7ad90feeeeff56e95b64e65f3f18855c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929311"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674152"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教學課程：在 ARM 範本部署中整合 Azure Key Vault
 
@@ -33,6 +33,8 @@ ms.locfileid: "96929311"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
+對於使用金鑰保存庫所含安全值的 Microsoft Learn 模組，請參閱[使用進階 ARM 範本功能管理複雜的雲端部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
+
 ## <a name="prerequisites"></a>必要條件
 
 若要完成本文，您需要：
@@ -43,6 +45,7 @@ ms.locfileid: "96929311"
     ```console
     openssl rand -base64 32
     ```
+
     請確認所產生的密碼符合虛擬機器的密碼需求。 每個 Azure 服務都有特定的密碼需求。 有關 VM 密碼需求，請參閱[建立 VM 時的密碼需求為何？](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 
 ## <a name="prepare-a-key-vault"></a>準備金鑰保存庫
@@ -53,7 +56,7 @@ ms.locfileid: "96929311"
 * 將秘密新增至金鑰保存庫。 此祕密會儲存虛擬機器的系統管理員密碼。
 
 > [!NOTE]
-> 作為要部署虛擬機器範本的使用者，如果您不是金鑰保存庫的擁有者或參與者，則擁有者或參與者必須授與您存取金鑰保存庫的 *Microsoft.KeyVault/vaults/deploy/action* 權限。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](./key-vault-parameter.md)。
+> 作為要部署虛擬機器範本的使用者，如果您不是金鑰保存庫的擁有者或參與者，則擁有者或參與者必須授與您存取金鑰保存庫的 `Microsoft.KeyVault/vaults/deploy/action` 權限。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](./key-vault-parameter.md)。
 
 若要執行下列 Azure PowerShell 指令碼，請選取 [試試看] 來開啟 Azure Cloud Shell。 若要貼上指令碼，請以滑鼠右鍵按一下 Shell 窗格，然後選取 [貼上]。
 
@@ -79,7 +82,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * 祕密的預設名稱是 **vmAdminPassword**。 其會硬式編碼在範本中。
 > * 若要讓範本能夠擷取祕密，您必須為金鑰保存庫啟用稱為「為範本部署啟用對 Azure Resource Manager 的存取」的存取原則。 範本中會啟用此原則。 如需此存取原則的詳細資訊，請參閱[部署金鑰保存庫和祕密](./key-vault-parameter.md#deploy-key-vaults-and-secrets)。
 
-範本有一個稱為 *keyVaultId* 的輸出值。 在本教學課程中，您稍後將使用此識別碼搭配秘密名稱來擷取秘密值。 資源識別碼格式為：
+範本有一個稱為 `keyVaultId` 的輸出值。 在本教學課程中，您稍後將使用此識別碼搭配秘密名稱來擷取秘密值。 資源識別碼格式為：
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,7 +90,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 當您複製並貼上識別碼時，識別碼可能會分成多行。 將這幾行合併，並移除多餘的空格。
 
-若要驗證部署，請在相同的 Shell 窗格中執行下列 PowerShell 命令，來以純文字擷取祕密。 此命令會使用先前 PowerShell 指令碼中定義的 *$keyVaultName* 變數，因此只能在同一個殼層工作階段中起作用。
+若要驗證部署，請在相同的 Shell 窗格中執行下列 PowerShell 命令，來以純文字擷取祕密。 此命令會使用先前 PowerShell 指令碼中定義的 `$keyVaultName` 變數，因此只能在同一個殼層工作階段中起作用。
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -146,14 +149,14 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
     ```
 
     > [!IMPORTANT]
-    > 使用您在前一個程序中所建立的金鑰保存庫資源 ID 來取代 **id** 值。 SecretName 會硬式編碼為 **vmAdminPassword**。  請參閱[準備金鑰保存庫](#prepare-a-key-vault)。
+    > 使用您在前一個程序中所建立的金鑰保存庫資源 ID 來取代 `id` 值。 會硬式編碼為 `secretName` **vmAdminPassword**。  請參閱[準備金鑰保存庫](#prepare-a-key-vault)。
 
     ![整合金鑰保存庫與 Resource Manager 範本虛擬機器部署參數檔案](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. 更新下列值：
 
-    * **adminUsername**：虛擬機器系統管理員帳戶的名稱。
-    * **dnsLabelPrefix**：dnsLabelPrefix 值的名稱。
+    * `adminUsername`：虛擬機器系統管理員帳戶的名稱。
+    * `dnsLabelPrefix`：命名 `dnsLabelPrefix` 值。
 
     如需名稱範例，請參閱前述的映像。
 
@@ -167,7 +170,7 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
     ![Azure 入口網站的 Cloud Shell 上傳檔案](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. 選取 [上傳/下載檔案]，然後選取 [上傳]。 將 azuredeploy.json 和 azuredeploy.parameters.json 上傳至 Cloud Shell。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
+1. 選取 [上傳/下載檔案]，然後選取 [上傳]。 將 azuredeploy.json 和 azuredeploy.parameters.json 上傳至 Cloud Shell。 上傳檔案之後，您可以使用 `ls` 命令和 `cat` 命令來確認檔案是否已成功上傳。
 
 1. 然後執行下列 PowerShell 指令碼來部署範本。
 

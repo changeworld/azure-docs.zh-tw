@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/30/2020
+ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 3552d55d995608dd0d471c84cd5e9f9988ebe2c0
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916655"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028636"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務影片索引子版本資訊
 
@@ -44,12 +44,15 @@ ms.locfileid: "97916655"
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>規劃的影片索引子網站 authenticatication 變更
 
-自2021年1月1日起，您將無法再使用 Facebook 或 LinkedIn 註冊並登入 [影片索引子](https://www.videoindexer.ai/) 網站 (試用版供應專案) 。
+自2021年3月1日起，您將無法再使用 Facebook 或 LinkedIn 註冊並登入 [影片索引子](https://www.videoindexer.ai/) 網站。
 
 您可以使用下列其中一個提供者來註冊並登入： Azure AD、Microsoft 和 Google。
 
 > [!NOTE]
-> 建議您在2021年1月1日之前匯出內容，因為連線至 LinkedIn 和 Facebook 的帳戶將會遭到刪除，而且將無法再存取該內容。
+> 在2021年3月1日之後，將無法存取連線到 LinkedIn 和 Facebook 的影片索引子帳戶。 
+> 
+> 您應 [邀請](invite-users.md) 您所擁有的 Azure AD、Microsoft 或 Google 電子郵件給影片索引子帳戶，讓您仍可存取。<br/>
+> 或者，您可以建立付費帳戶並遷移資料。
 
 ## <a name="august-2020"></a>2020 年 8 月
 

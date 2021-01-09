@@ -1,17 +1,17 @@
 ---
 title: 資料錯誤碼 - Azure 串流分析
 description: 針對出現資料錯誤碼的 Azure 串流分析問題進行疑難排解。
-ms.author: mamccrea
-author: mamccrea
+ms.author: sidram
+author: sidramadoss
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 56d7527eebb91bd09895f6cd0238721574df1015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 33e617c8c3589d76d649dd2ea2236a4247b12500
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86037319"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016485"
 ---
 # <a name="azure-stream-analytics-data-error-codes"></a>Azure 串流分析資料錯誤碼
 

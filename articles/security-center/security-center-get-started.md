@@ -12,20 +12,27 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/30/2020
 ms.author: memildin
-ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d3ed064547b1202aa562fffdfde85a28cbe8514e
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187165"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809542"
 ---
-# <a name="quickstart-setting-up-azure-security-center"></a>快速入門：設定 Azure 資訊安全中心
+# <a name="quickstart-set-up-azure-security-center"></a>快速入門：設定 Azure 資訊安全中心
 
 Azure 資訊安全中心為混合式雲端工作負載提供統一的安全性管理和威脅防護。 免費功能只為 Azure 資源提供有限的安全性，而啟用 Azure Defender 會將這些功能延伸至內部部署與其他雲端。 Azure Defender 可協助您尋找和修正安全性弱點、套用存取和應用程式控制項以封鎖惡意活動、使用分析和情報來偵測威脅，以及在遭受攻擊時迅速回應。 您可以免費試用 Azure Defender。 若要深入了解，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
-在本文中，您可升級到 Azure Defender 以取得額外的安全性，並且在您的電腦上安裝 Log Analytics 代理程式以監視安全性弱點和威脅。
+此快速入門會逐步引導您啟用 Azure Defender 以取得額外的安全性，並在您的機器上安裝 Log Analytics 代理程式以監視安全性弱點和威脅。
+
+您將執行下列步驟：
+
+> [!div class="checklist"]
+> * 在 Azure 訂用帳戶上啟用資訊安全中心
+> * 在您的 Azure 訂用帳戶上啟用 Azure Defender
+> * 啟用自動資料收集
 
 ## <a name="prerequisites"></a>Prerequisites
 若要開始使用資訊安全中心，您必須有 Microsoft Azure 訂用帳戶。 如果您沒有訂用帳戶，可以註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。

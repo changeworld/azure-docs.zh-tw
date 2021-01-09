@@ -1,18 +1,18 @@
 ---
-title: 在 Azure 通訊服務上開始使用 Teams 互通性
+title: 快速入門 - Azure 通訊服務上的 Teams 互通性
 titleSuffix: An Azure Communication Services quickstart
-description: 在本快速入門中，您將了解如何使用 Azure 通訊通話 SDK 來加入 Teams 會議
+description: 在本快速入門中，您將了解如何使用 Azure 通訊通話 SDK 來加入 Teams 會議。
 author: matthewrobertson
 ms.author: chpalm
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: a51833088ad10fc261405d350bb8d0ba61cbcb66
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 48b9e1139ecae3deed513c954bf4faa7022a88a1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114558"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936680"
 ---
 # <a name="quickstart-join-your-calling-app-to-a-teams-meeting"></a>快速入門：將您的通話應用程式加入至小組會議
 

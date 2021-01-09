@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: 56638f14565f76b0a2fc252b81dba3dae9e53dd8
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: acbd5c3aa88c2c8c14407ebda0c42d228aa6c9e3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289433"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018933"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 入口網站建立 ExpressRoute Direct
 
@@ -21,18 +21,25 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
 ## <a name="before-you-begin"></a><a name="before"></a>開始之前
 
-確認已向您的訂用帳戶註冊 **Microsoft 網路** 資源提供者。 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。
+使用 ExpressRoute Direct 之前，您必須先註冊您的訂用帳戶。 若要註冊，請將電子郵件與您的訂用帳戶識別碼傳送至 <ExpressRouteDirect@microsoft.com>，其中包含下列詳細資訊：
+
+* 您想要使用 **ExpressRoute Direct** 完成的案例
+* 位置喜好設定 - 請參閱[合作夥伴和對等互連位置](expressroute-locations-providers.md)以取得所有位置的完整清單
+* 實作的時間軸
+* 有任何其他問題嗎
+
+註冊之後，請確認已向您的訂用帳戶註冊 **Microsoft** 資源提供者。 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。
 
 1. 存取您的訂用帳戶設定 [，如 Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)中所述。
-1. 在您的訂用帳戶中，針對 **資源提供者** ，確認 **Microsoft** 的提供者顯示 **已註冊** 的狀態。 如果已註冊的提供者清單中沒有 Microsoft 網路資源提供者，請新增它。
+1. 在您的訂用帳戶中，針對 **資源提供者**，確認 **Microsoft** 的提供者顯示 **已註冊** 的狀態。 如果已註冊的提供者清單中沒有 Microsoft 網路資源提供者，請新增它。
 
 ## <a name="create-expressroute-direct"></a><a name="create-erdir"></a>建立 ExpressRoute Direct
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com) ] 功能表中，或從 **首頁** 選取 [ **建立資源** ]。
+1. 在 [ [Azure 入口網站](https://portal.azure.com) ] 功能表中，或從 **首頁** 選取 [ **建立資源**]。
 
-1. 在 [ **新增** ] 頁面的 [ **_搜尋 Marketplace_*_] 欄位中，輸入 _* ExpressRoute Direct** ，然後選取 **Enter 鍵** 以取得搜尋結果。
+1. 在 [ **新增** ] 頁面的 [ **_搜尋 Marketplace_*_] 欄位中，輸入 _* ExpressRoute Direct**，然後選取 **Enter 鍵** 以取得搜尋結果。
 
-1. 從結果中選取 [ **ExpressRoute Direct** ]。
+1. 從結果中選取 [ **ExpressRoute Direct**]。
 
 1. 在 **ExpressRoute direct** 頁面上，選取 [ **建立** ] 以開啟 [ **建立 ExpressRoute direct** ] 頁面。
 
@@ -41,17 +48,17 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
     :::image type="content" source="./media/how-to-expressroute-direct-portal/basics.png" alt-text="基本資料頁面":::
 
     * **訂** 用帳戶：您要用來建立新 ExpressRoute Direct 的 Azure 訂用帳戶。 ExpressRoute Direct 資源和 ExpressRoute 線路必須位於相同的訂用帳戶中。
-    * **資源群組** ：將在其中建立新 ExpressRoute Direct 資源的 Azure 資源群組。 如果您沒有現有資源群組，可以建立新的資源群組。
-    * **區域** ：將在其中建立資源的 Azure 公用區域。
-    * **名稱** ：新 ExpressRoute Direct 資源的名稱。
+    * **資源群組**：將在其中建立新 ExpressRoute Direct 資源的 Azure 資源群組。 如果您沒有現有資源群組，可以建立新的資源群組。
+    * **區域**：將在其中建立資源的 Azure 公用區域。
+    * **名稱**：新 ExpressRoute Direct 資源的名稱。
 
 1. 接下來，完成 [設定] **頁面上的欄位** 。
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="顯示 [建立 ExpressRoute Direct] 頁面的螢幕擷取畫面，其中已選取 [設定] 索引標籤。":::
 
-    * 對 **等互連位置** ：您將連接到 ExpressRoute Direct 資源的對等互連位置。 如需對等互連位置的詳細資訊，請參閱 [ExpressRoute 位置](expressroute-locations-providers.md)。
-   * **頻寬** ：您要保留的埠配對頻寬。 ExpressRoute Direct 支援 10 Gb 和 100 Gb 的頻寬選項。 如果您所需的頻寬不適用於指定的對等互連位置，請 [在 Azure 入口網站中開啟支援要求](https://aka.ms/azsupt)。
-   * **封裝** ： ExpressRoute Direct 支援 QinQ 和 Dot1Q 封裝。
+    * 對 **等互連位置**：您將連接到 ExpressRoute Direct 資源的對等互連位置。 如需對等互連位置的詳細資訊，請參閱 [ExpressRoute 位置](expressroute-locations-providers.md)。
+   * **頻寬**：您要保留的埠配對頻寬。 ExpressRoute Direct 支援 10 Gb 和 100 Gb 的頻寬選項。 如果您所需的頻寬不適用於指定的對等互連位置，請 [在 Azure 入口網站中開啟支援要求](https://aka.ms/azsupt)。
+   * **封裝**： ExpressRoute Direct 支援 QinQ 和 Dot1Q 封裝。
      * 如果選取 QinQ，則每個 ExpressRoute 線路都會動態獲得指派的 S-Tag，並將成為整個 ExpressRoute Direct 資源中唯一的。
      *  線路上的每個 C-Tag 必須是線路上唯一的，但不是 ExpressRoute Direct 上唯一的。
      * 如果選取 Dot1Q 封裝，您必須管理 C-Tag (VLAN) 在整個 ExpressRoute Direct 資源中的唯一性。
@@ -73,11 +80,11 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
 此程序應用於進行第 1 層測試，確保每個交叉連線都已在每個主要和次要路由器中正確修補。
 
-1. 在 [ExpressRoute Direct 資源 **總覽** ] 頁面的 [ **連結** ] 區段中，選取 [ **link1** ]。
+1. 在 [ExpressRoute Direct 資源 **總覽** ] 頁面的 [ **連結** ] 區段中，選取 [ **link1**]。
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/link.png" alt-text="連結 1" lightbox="./media/how-to-expressroute-direct-portal/link-expand.png":::
 
-1. 將 [ **管理狀態** ] 設定切換為 [ **已啟用** ]，然後選取 [ **儲存** ]。
+1. 將 [ **管理狀態** ] 設定切換為 [ **已啟用**]，然後選取 [ **儲存**]。
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/state.png" alt-text="系統管理員狀態":::
 
@@ -99,7 +106,7 @@ ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位
 
 下列步驟可協助您從 ExpressRoute Direct 工作流程建立 ExpressRoute 線路。 如果您想要的話，也可以使用一般的電路工作流程來建立電路，不過在使用此設定的一般電路工作流程步驟時，並沒有任何好處。 請參閱 [建立和修改 ExpressRoute 線路](expressroute-howto-circuit-portal-resource-manager.md)。
 
-1. 在 [ExpressRoute Direct **設定** ] 區段中，選取 [ **線路** ]，然後選取 [ **+ 新增** ]。 
+1. 在 [ExpressRoute Direct **設定** ] 區段中，選取 [ **線路**]，然後選取 [ **+ 新增**]。 
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/add.png" alt-text="螢幕擷取畫面顯示已選取線路的 ExpressRoute 設定，並醒目提示 [新增]。" lightbox="./media/how-to-expressroute-direct-portal/add-expand.png":::
 

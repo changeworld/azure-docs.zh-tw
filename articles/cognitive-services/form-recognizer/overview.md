@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自動化資料處理, 文件處理, 自動化資料輸入, 表單處理
-ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353675"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845528"
 ---
 # <a name="what-is-form-recognizer"></a>什麼是表單辨識器？
 
@@ -108,23 +108,21 @@ Azure 表單辨識器是一種認知服務，可讓您使用機器學習技術�
 
 使用[範例表單辨識器工具](https://fott.azurewebsites.net/)或遵循快速入門，以開始從表單中擷取資料。 當您學習技術時，我們建議您使用免費的服務。 請記住，免費的頁數限制為每個月 500 頁。
 
-* [用戶端程式庫快速入門](./quickstarts/client-library.md) (所有語言，多個案例)
+* [用戶端程式庫/REST API 快速入門](./quickstarts/client-library.md) (所有語言，多個案例)
 * Web UI 快速入門
   * [使用標籤進行定型 - 範例標籤工具](quickstarts/label-tool.md)
-* REST 快速入門
+* REST 範例 (GitHub)
  * 從文件中擷取文字、選取標記和資料表結構
-    * [擷取版面配置資料 - Python](quickstarts/python-layout.md)
+    * [擷取版面配置資料 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
   * 定型自訂模型和擷取表單資料
-    * [不使用標籤進行定型 - cURL](quickstarts/curl-train-extract.md)
-    * [不使用標籤進行定型 - Python](quickstarts/python-train-extract.md)
-    * [使用標籤進行定型 - Python](quickstarts/python-labeled-data.md)
+    * [不使用標籤進行定型 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+    * [使用標籤進行定型 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
   * 從發票中擷取資料
-    * [擷取發票資料 - Python](quickstarts/python-invoices.md)
+    * [擷取發票資料 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
   * 從銷售收據中擷取資料
-    * [擷取收據資料 - cURL](quickstarts/curl-receipts.md)
-    * [擷取收據資料 - Python](quickstarts/python-receipts.md)
+    * [擷取收據資料 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
   * 從名片擷取資料
-    * [擷取名片資料 - Python](quickstarts/python-business-cards.md)
+    * [擷取名片資料 - Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
 
 ### <a name="review-the-rest-apis"></a>檢閱 REST API
 
@@ -162,4 +160,4 @@ Azure 表單辨識器是一種認知服務，可讓您使用機器學習技術�
 
 ## <a name="next-steps"></a>後續步驟
 
-完成[用戶端程式庫快速入門](quickstarts/client-library.md)，開始以您選擇的語言搭配表單辨識器，來撰寫表單處理應用程式。
+完成[快速入門](quickstarts/client-library.md)，開始以您選擇的語言搭配表單辨識器，來撰寫表單處理應用程式。

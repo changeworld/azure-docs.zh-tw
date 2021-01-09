@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3679bf9d55ddccefddb4bf3b2a96ec1b427315af
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663457"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013527"
 ---
 # <a name="using-an-app-service-environment"></a>使用 App Service 環境
 
@@ -78,13 +78,20 @@ SCM URL 是用來存取 Kudu 主控台，或是使用 Web Deploy 來發佈您的
 
 ### <a name="dns-configuration"></a>DNS 組態 
 
-ASE 會使用私人端點進行輸入流量，並使用 Azure DNS 私人區域自動設定。 如果您想要使用自己的 DNS 伺服器，您需要新增下列記錄：
+ASE 會針對輸入流量使用私人端點。 它不會使用 Azure DNS 私人區域自動設定。 如果您想要使用自己的 DNS 伺服器，您需要新增下列記錄：
 
 1. 為 &lt;ASE 名稱&gt;.appserviceenvironment.net 建立一個區域
 1. 在該區域中建立 A 記錄，並將 * 指向 ASE 私人端點所使用的輸入 IP 位址
 1. 在該區域中建立 A 記錄，以將 @ 指向 ASE 私人端點所使用的輸入 IP 位址
 1. 在名為 scm 的 &lt;ASE 名稱&gt;.appserviceenvironment.net 中建立一個區域
 1. 在 scm 區域中建立 A 記錄，並將 * 指向 ASE 私人端點所使用的 IP 位址
+
+若要在 Azure DNS 私人區域中設定 DNS：
+
+1. 建立名為 <ASE name>.appserviceenvironment.net 的 Azure DNS 私人區域
+1. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
+1. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
+1. 在該區域中建立一個將 *.scm 指向 ILB IP 位址的 A 記錄
 
 ASE 預設網域尾碼的 DNS 設定，不會將您的應用程式限制為只能透過這些名稱存取。 您可以設定自訂功能變數名稱，而不需要對 ASE 中的應用程式進行任何驗證。 如果您想要建立名為 *contoso.net* 的區域，您可以這樣做，並將其指向輸入 IP 位址。 自訂網域名稱適用於應用程式要求，但不適用於 scm 網站。 Scm 網站僅適用于 *&lt; appname &gt; . scm &lt; 。asename &gt; . appserviceenvironment.net*。 
 
@@ -125,7 +132,7 @@ ASE 具有 1 TB 的儲存體，適用于 ASE 中的所有應用程式。 隔離�
 若要在您的 ASE 上啟用記錄：
 
 1. 在入口網站中，移至 [ **診斷設定**]。
-1. 選取 [ **新增診斷設定**]。
+1. 選取 [新增診斷設定]。
 1. 提供記錄整合的名稱。
 1. 選取並設定您想要的記錄目的地。
 1. 選取 [ **AppServiceEnvironmentPlatformLogs**]。

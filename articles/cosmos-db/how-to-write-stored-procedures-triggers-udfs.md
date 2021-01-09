@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: 18cedad34a6ca7d9a0ba18cd01c082f2878380a8
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7600d8aa2f78e06ea4046273635fdbba18042010
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339813"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028857"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中撰寫預存程序、觸發程序和使用者定義函式
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB 所提供的語言整合式、交易式 JavaScript 執行，可讓您撰寫 **預存程序** 、 **觸發程序** 和 **使用者定義函式 (UDF)** 。 在 Azure Cosmos DB 中使用 SQL API 時，您可以使用 JavaScript 語言定義預存程序預存程序、觸發程序和 UDF。 您可以使用 JavaScript 撰寫邏輯，並在資料庫引擎內加以執行。 您可以使用 [Azure 入口網站](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 語言整合式查詢 API](javascript-query-api.md) 和 [Cosmos DB SQL API 用戶端 SDK](sql-api-dotnet-samples.md)，來建立與執行觸發程序、預存程序及 UDF。 
+Azure Cosmos DB 所提供的語言整合式、交易式 JavaScript 執行，可讓您撰寫 **預存程序**、**觸發程序** 和 **使用者定義函式 (UDF)**。 在 Azure Cosmos DB 中使用 SQL API 時，您可以使用 JavaScript 語言定義預存程序預存程序、觸發程序和 UDF。 您可以使用 JavaScript 撰寫邏輯，並在資料庫引擎內加以執行。 您可以使用 [Azure 入口網站](https://portal.azure.com/)、[Azure Cosmos DB 中的 JavaScript 語言整合式查詢 API](javascript-query-api.md) 和 [Cosmos DB SQL API 用戶端 SDK](sql-api-dotnet-samples.md)，來建立與執行觸發程序、預存程序及 UDF。 
 
 若要呼叫預存程序、觸發程序和使用者定義函式，您必須加以註冊。 如需詳細資訊，請參閱[如何在 Azure Cosmos DB 中使用預存程序、觸發程序、使用者定義函式](how-to-use-stored-procedures-triggers-udfs.md)。
 
@@ -284,7 +284,7 @@ function async_sample() {
 
 ## <a name="how-to-write-triggers"></a><a id="triggers"></a>如何撰寫觸發程序
 
-Azure Cosmos DB 支援預先觸發程序和後續觸發程序。 預先觸發程序會在修改資料庫項目之前執行，而後續觸發程序則在修改資料庫項目執行之後執行。
+Azure Cosmos DB 支援預先觸發程序和後續觸發程序。 預先觸發程序會在修改資料庫項目之前執行，而後續觸發程序則在修改資料庫項目執行之後執行。 觸發程式不會自動執行，您必須針對想要執行的每個資料庫作業指定這些觸發程式。 定義觸發程式之後，您應該使用 Azure Cosmos DB Sdk 來 [註冊和呼叫預先觸發](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) 程式。
 
 ### <a name="pre-triggers"></a><a id="pre-triggers"></a>預先觸發程式
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bd85d6faf05fcf659e9335ee9de3d64198dfa08
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84725050"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011164"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>使用 Azure 網路監看員進行封包檢查
 
@@ -77,7 +77,7 @@ ms.locfileid: "84725050"
 
 ### <a name="step-1"></a>步驟 1
 
-在先前的案例中使用相同的捕獲，請按一下**統計資料**  >  **通訊協定**階層
+在先前的案例中使用相同的捕獲，請按一下 **統計資料**  >  **通訊協定** 階層
 
 ![通訊協定階層功能表][2]
 
@@ -93,7 +93,7 @@ ms.locfileid: "84725050"
 
 ### <a name="step-1"></a>步驟 1
 
-在先前的案例中使用相同的捕獲，請按一下**統計資料**  >  **IPv4 統計資料**  >  **目的地和埠**
+在先前的案例中使用相同的捕獲，請按一下 **統計資料**  >  **IPv4 統計資料**  >  **目的地和埠**
 
 ![封包擷取視窗][4]
 
@@ -121,7 +121,7 @@ tcp.port == 111
 
 從結果中，我們可以看到所有的流量來自相同子網路上的本機虛擬機器。 如果我們還是不懂此流量發生的原因，可以進一步檢查封包來判斷為何它在連接埠 111 上進行這些呼叫。 利用此資訊，我們可以採取適當動作。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解網路監看員的其他診斷功能，請造訪 [Azure 網路監視概觀](network-watcher-monitoring-overview.md)
 

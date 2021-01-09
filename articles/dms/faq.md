@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: bf6e61ef3dfb1c50166cf17168b4deeb21e958d7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 200753c6458698d515b02252933e4fdf6d88df55
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962904"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019086"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務的常見問題
 
@@ -50,6 +50,9 @@ Azure 資料庫移轉服務是將資料庫移轉至大規模 Microsoft Azure 的
 
 **問。Azure 資料庫移轉服務與 Azure Migrate 供應專案有何不同？**
 Azure Migrate 有助於將內部部署虛擬機器遷移至 Azure IaaS。 此服務會評估移轉適用性，以及如何根據效能來調整大小，並估計在 Azure 中執行內部部署機器的成本。 Azure Migrate 可用來將內部部署的 VM 型工作負載隨即移轉到 Azure IaaS VM。 不過，不同于 Azure 資料庫移轉服務，Azure Migrate 不是適用于 Azure PaaS 關係資料庫平臺（例如 Azure SQL Database 或 Azure SQL 受控執行個體）的特殊資料庫移轉服務供應專案。
+
+**問。資料庫移轉服務會儲存客戶資料嗎？**
+不會。 資料庫移轉服務不會儲存客戶資料。
 
 ## <a name="setup"></a>安裝程式
 

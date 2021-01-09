@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580114"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740652"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>教學課程：在 Hyper-V 中佈建 Azure 資料箱閘道
 
@@ -58,7 +58,7 @@ ms.locfileid: "96580114"
   * 至少 8 GB 的 RAM。
   * 一個網路介面。
   * 250 GB 的 OS 磁碟。
-  * 供資料使用的 2 TB 虛擬磁碟。
+  * 供資料使用的 2-TB 虛擬磁碟。
 
 ### <a name="for-the-network-in-the-datacenter"></a>針對資料中心內的網路
 
@@ -79,7 +79,7 @@ ms.locfileid: "96580114"
   * 至少 8 GB 的 RAM。
   * 網路介面，且已連線到能夠將流量路由至網際網路的網路。
   * 250 GB 的 OS 磁碟。
-  * 供系統資料使用的 2 TB 虛擬磁碟。
+  * 供系統資料使用的 2-TB 虛擬磁碟。
 
 ## <a name="bitlocker-considerations"></a>BitLocker 考量
 
@@ -92,10 +92,11 @@ ms.locfileid: "96580114"
 請執行下列步驟，以便在您的 Hypervisor 中佈建裝置。
 
 1. 在 Windows Server 主機上，將虛擬裝置映像複製到本機磁碟機中。 您已透過 Azure 入口網站下載這個 VHDX 映像。 請記下您複製映像的位置，因為稍後會在程序中使用此映像。
+
 2. 開啟 **[伺服器管理員]** 。 按一下右上角的 [工具]，然後選取 [Hyper-V 管理員]。
 
-    ![在伺服器管理員中選取 Hyper-V 管理員](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
-  
+    ![在伺服器管理員中選取 Hyper-V 管理員](./media/data-box-gateway-deploy-provision-hyperv/image1.png)
+
 3. 在 [Hyper-V 管理員] 的範圍窗格中，於您的系統節點上按一下滑鼠右鍵以開啟操作功能表，然後按一下 [新增] >  [虛擬機器]。
 
    ![在 Hyper-V 管理員中建立新的虛擬機器](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
@@ -118,13 +119,13 @@ ms.locfileid: "96580114"
 10. 檢閱「摘要」，然後按一下 [結束] 來建立虛擬機器。
 
     ![完成新虛擬機器精靈頁面](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
-11. 若要符合最低需求，您需要 4 個虛擬處理器。 若要新增 4 顆虛擬處理器，請在 [Hyper-V 管理員] 視窗中選取您的主機系統。 在右窗格中的 [虛擬機器] 清單下，找出您剛才建立的虛擬機器。 選取虛擬機器的名稱並按一下滑鼠右鍵，然後選取 [設定] 。
+11. 若要符合最低需求，您需要四顆虛擬處理器。 若要新增四顆虛擬處理器，請在 [Hyper-V 管理員] 視窗中選取您的主機系統。 在右窗格中的 [虛擬機器] 清單下，找出您剛才建立的虛擬機器。 選取虛擬機器的名稱並按一下滑鼠右鍵，然後選取 [設定] 。
 
     ![虛擬機器設定](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
 12. 在 [設定] 頁面上，按一下左窗格中的 [處理器]。 在右窗格中，將 [虛擬處理器數目] 設定為 4 (或更多)。 按一下 [套用]。
 
     ![在 [設定] 頁面上設定虛擬處理器數目](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
-13. 您也必須新增 2 TB 的虛擬資料磁碟，才能符合最低需求。 在 [設定] 頁面中：
+13. 您也必須新增 2-TB 的虛擬資料磁碟，才能符合最低需求。 在 [設定] 頁面中：
 
     1. 在左窗格中，選取 [SCSI 控制器]。
     2. 在右窗格中，選取 [硬碟]，然後按一下 [新增]。
@@ -152,6 +153,11 @@ ms.locfileid: "96580114"
 21. 返回 [設定] 頁面。 按一下 [確定] 來關閉「設定」頁面並返回 [Hyper-V 管理員] 視窗。
 
     ![設定頁面](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
+
+您的虛擬機器已設定成功。
+
+> [!NOTE]
+> 您無法複製已設定的 VHD 來佈建新的資料箱閘道。 每個新的資料箱閘道虛擬裝置都必須從 Azure 入口網站下載之 Hyper-V 的虛擬裝置映像進行佈建。
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>啟動虛擬裝置並取得 IP 位址
 

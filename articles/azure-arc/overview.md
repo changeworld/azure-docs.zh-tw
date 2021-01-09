@@ -3,12 +3,12 @@ title: Azure Arc 概觀
 description: 了解什麼是 Azure Arc，以及其如何協助客戶使用其他 Azure 服務和功能來管理及治理其混合式資源。
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714151"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672681"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc 概觀
 
@@ -50,7 +50,7 @@ Azure Arc 的主要功能包括：
 
 ### <a name="arc-enabled-servers"></a>已啟用 Arc 的伺服器
 
-使用 Azure Arc 控制平面功能不需額外付費。這包括：
+使用 Azure Arc 控制平面功能不需額外付費。 這包括：
 
 * 透過 Azure 管理群組和標籤的資源組織。
 
@@ -79,3 +79,5 @@ Azure Arc 的主要功能包括：
 * 若要深入了解啟用 Arc 的 Kubernetes，請參閱下列[概觀](./kubernetes/overview.md)
 
 * 若要深入了解啟用 Arc 的資料服務，請參閱下列[概觀](https://azure.microsoft.com/services/azure-arc/hybrid-data-services/)
+
+* 從[概念證明開始](https://azurearcjumpstart.io/azure_arc_jumpstart/)，體驗已啟用 Arc 的服務

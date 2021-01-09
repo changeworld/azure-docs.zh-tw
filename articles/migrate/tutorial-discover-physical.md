@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 2da5577b1b82c5374f33b732a0af54bac5ebae58
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 639b810cbb99496f84b76fc96124145a019fb625
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109210"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705535"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>教學課程：使用伺服器評量來探索實體伺服器
 
@@ -210,11 +210,16 @@ chmod a+r /sys/class/dmi/id/product_uuid | 若要收集 BIOS GUID
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
 1. 貼上從入口網站複製的 **Azure Migrate 專案金鑰**。 如果沒有金鑰，請移至 **伺服器評估 > 探索 > 管理現有的設備**，選取在金鑰產生時提供的設備名稱，並複製對應的金鑰。
-1. 按一下 [登入]。 系統會在新的瀏覽器索引標籤中開啟 Azure 登入提示。如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
-1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
+1. 您需要裝置程式碼才能向 Azure 驗證。 按一下 [登入] 會以如下所示的裝置程式碼開啟強制回應。
+
+    ![顯示裝置程式碼的強制回應](./media/tutorial-discover-vmware/device-code.png)
+
+1. 按一下 [複製程式碼和登入] 以複製裝置程式碼，然後在新的瀏覽器索引標籤中開啟 Azure 登入提示。如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
+1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入並貼上裝置程式碼。
    
    不支援使用 PIN 登入。
-3. 成功登入後，返回 Web 應用程式。 
+3. 如果不小心在尚未完成登入流程時關閉了登入索引標籤，則需要重新整理設備組態管理員的瀏覽器索引標籤，才能再次啟用登入按鈕。
+1. 成功登入之後，請回到設備組態管理員的上一個索引標籤。
 4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限]()，就會起始設備註冊。
 1. 成功註冊設備之後，您可以按一下 [檢視詳細資料]查看註冊詳細資料。
 
@@ -231,6 +236,9 @@ chmod a+r /sys/class/dmi/id/product_uuid | 若要收集 BIOS GUID
     - Azure Migrate 支援使用 RSA、DSA、ECDSA 和 ed25519 演算法的 ssh-keygen 命令所產生的 SSH 私密金鑰。
     - 目前 Azure Migrate 不支援複雜密碼型的 SSH 金鑰。 若沒有複雜密碼，請使用 SSH 金鑰。
     - 目前 Azure Migrate 不支援 PuTTY 所產生的 SSH 私密金鑰檔案。
+    - Azure Migrate 支援 SSH 私密金鑰檔案的 OpenSSH 格式，如下所示：
+    
+    ![支援 SSH 私密金鑰的格式](./media/tutorial-discover-physical/key-format.png)
 
 1. 如果想要一次新增多個認證，請按一下 [新增更多] 以儲存並新增更多認證。 實體伺服器探索支援使用多個認證。
 1. 在 **步驟 2：提供實體或虛擬伺服器詳細資料** 中，按一下 [新增探索來源] 來指定伺服器 **IP 位址/FQDN** 和認證的自訂名稱，以連線到伺服器。

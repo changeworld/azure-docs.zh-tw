@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: 21ccbc83c80e1b659dd240973a609d624f270835
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cb7a441a6d86cd64847300d1e597cf6f86067282
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028507"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740941"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>快速入門：建立 Azure SQL Database 單一資料庫
 
@@ -141,7 +141,7 @@ az sql server firewall-rule create \
 ```
 
 
-## <a name="create-a-single-database"></a>建立單一資料庫
+## <a name="create-a-single-database-with-azure-cli"></a>使用 Azure CLI 建立單一資料庫
 
 使用 [az sql db create](/cli/azure/sql/db) 命令建立資料庫。 下列程式碼會建立
 
@@ -230,7 +230,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 ```
 
 
-## <a name="create-a-single-database"></a>建立單一資料庫
+## <a name="create-a-single-database-with-powershell"></a>使用 PowerShell 建立單一資料庫
 
 使用 [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) Cmdlet 建立單一資料庫。
 

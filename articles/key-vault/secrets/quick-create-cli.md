@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 36688586cc0b9c94a07873bacfa6210f31695d36
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 01741540d94d906fc6d41693392f48c17dbae5ce
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517235"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934810"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>快速入門：使用 Azure CLI 從 Azure Key Vault 設定及擷取祕密
 
@@ -90,4 +90,4 @@ az group delete --name ContosoResourceGroup
 
 - 閱讀 [Azure Key Vault 概觀](../general/overview.md)
 - 請參閱 [Azure CLI az keyvault 命令](/cli/azure/keyvault?view=azure-cli-latest)的參考
-- 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 請參閱 [Key Vault 安全性概觀](../general/security-overview.md)

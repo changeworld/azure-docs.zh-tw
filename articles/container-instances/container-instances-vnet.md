@@ -4,12 +4,12 @@ description: 瞭解如何使用 Azure 命令列介面，將容器群組部署至
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746899"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028874"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>將容器執行個體部署至 Azure 虛擬網路
 
@@ -20,7 +20,7 @@ ms.locfileid: "92746899"
 如需網路案例和限制，請參閱 [Azure 容器實例的虛擬網路案例和資源](container-instances-virtual-network-concepts.md)。
 
 > [!IMPORTANT]
-> 在可使用 Azure 容器實例的大部分區域中，適用于虛擬網路的容器群組部署已正式適用于 Linux 容器。 如需詳細資訊，請參閱 [區域和資源可用性](container-instances-virtual-network-concepts.md#where-to-deploy)。 
+> 在可使用 Azure 容器實例的大部分區域中，適用于虛擬網路的容器群組部署已正式適用于 Linux 容器。 如需詳細資訊，請參閱 [區域和資源可用性][container-regions]。 
 
 本文中的範例會針對 Bash shell 進行格式化。 如果您慣用其他殼層，例如 PowerShell 或命令提示字元，請相應調整行接續字元。
 
@@ -36,7 +36,7 @@ ms.locfileid: "92746899"
 
 虛擬網路及子網路位址首碼分別指定了虛擬網路及子網路的位址空間。 這些值會使用無類別網域間路由選擇 (CIDR) 標記法呈現，例如：`10.0.0.0/16`。 如需使用子網路的詳細資訊，請參閱[新增、變更或刪除虛擬網路子網路](../virtual-network/virtual-network-manage-subnet.md)。
 
-當您利用此方法部署了第一個容器群組後，就可以透過指定虛擬網路及子網路名稱，或是 Azure 自動為您建立的網路設定檔，來部署至同一個子網路。 因為 Azure 將該子網路委派至 Azure 容器執行個體，所以您「只」  能將容器群組部署至子網路。
+當您利用此方法部署了第一個容器群組後，就可以透過指定虛擬網路及子網路名稱，或是 Azure 自動為您建立的網路設定檔，來部署至同一個子網路。 因為 Azure 將該子網路委派至 Azure 容器執行個體，所以您「只」能將容器群組部署至子網路。
 
 ### <a name="example"></a>範例
 
@@ -69,7 +69,7 @@ az container create \
 
 下列範例會將第二個容器群組部署至先前建立的相同子網，並確認兩個容器實例之間的通訊。
 
-首先，取得您部署的第一個容器群組 IP 位址 *appcontainer* ：
+首先，取得您部署的第一個容器群組 IP 位址 *appcontainer*：
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -204,7 +204,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 在執行指令碼之前，請將變數 `RES_GROUP` 設定為包含應刪除虛擬網路及子網路的資源群組名稱。 如果您未使用先前建議的名稱，請更新虛擬網路的名稱 `aci-vnet` 。 此指令碼會針對 Bash 殼層加以格式化。 如果您慣用其他殼層，例如 PowerShell 或是命令提示字元，您需要相應調整變數指派及存取子。
 
 > [!WARNING]
-> 此指令碼會刪除資源！ 它會刪除虛擬網路及內含的所有子網路。 在執行此指令碼之前，請先確認您已不再需要虛擬網路中的「任何」  資源，包括內含的任何子網路。 一旦您刪除後， **這些資源就無法復原** 。
+> 此指令碼會刪除資源！ 它會刪除虛擬網路及內含的所有子網路。 在執行此指令碼之前，請先確認您已不再需要虛擬網路中的「任何」資源，包括內含的任何子網路。 一旦您刪除後，**這些資源就無法復原**。
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
@@ -238,3 +238,4 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 [az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[container-regions]: container-instances-region-availability.md

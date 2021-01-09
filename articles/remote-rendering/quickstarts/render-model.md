@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 74bad563de60abc0c1eb7623a81c83fea03f5ee6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207218"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724917"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>快速入門：使用 Unity 轉譯模型
 
@@ -56,7 +56,7 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 最後一個命令會在 ARR 目錄中建立子目錄，其中包含 Azure 遠端轉譯的各種範例專案。
 
-在 *Unity/快速入門*的子目錄中可找到 Unity 的快速入門範例應用程式。
+在 *Unity/快速入門* 的子目錄中可找到 Unity 的快速入門範例應用程式。
 
 ## <a name="rendering-a-model-with-the-unity-sample-project"></a>使用 Unity 範例專案轉譯模型
 
@@ -74,17 +74,17 @@ git clone https://github.com/Azure/azure-remote-rendering
 ![ARR 帳戶資訊](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Azure 入口網站只會將您帳戶的網域顯示為 *mixedreality.azure.com*。 這不足以順利連線。
-> 將 [AccountDomain] 設定為 `<region>.mixedreality.azure.com`，其中 `<region>` 是 [您附近的其中一個可用區域](../reference/regions.md)。
+> 將 [AccountDomain] 設定為 `<region>.mixedreality.azure.com`，其中，`<region>` 是[您附近的其中一個可用區域](../reference/regions.md)。
+> 將 **AccountAuthenticationDomain** 設定為 Azure 入口網站中顯示的[帳戶網域](../how-tos/create-an-account.md#retrieve-the-account-information)。
 
-稍後，我們想要將此專案部署至 HoloLens，並從該裝置連線到遠端轉譯服務。 由於我們沒有簡單的方法可在裝置上輸入認證，所以快速入門範例會**將認證儲存在 Unity 場景**中。
+稍後，我們想要將此專案部署至 HoloLens，並從該裝置連線到遠端轉譯服務。 由於我們沒有簡單的方法可在裝置上輸入認證，所以快速入門範例會 **將認證儲存在 Unity 場景** 中。
 
 > [!WARNING]
 > 切勿將含有已儲存認證的專案簽入到某個存放庫，因為會洩漏秘密登入資訊！
 
 ### <a name="create-a-session-and-view-the-default-model"></a>建立工作階段和檢視預設模型
 
-按下 Unity 的 [播放] 按鈕以啟動工作階段。 您應會在 [遊戲] 面板中檢視區的底部看到狀態文字重疊。 工作階段將會經歷一系列的狀態轉換。 處於**啟動**狀態時，伺服器會啟動，這需要幾分鐘的時間。 成功時，其會轉換成 [就緒] 狀態。 現在工作階段會進入 [連線中] 狀態，並於此狀態嘗試連線到該伺服器的轉譯執行階段。 成功時，範例會轉換成 [已連線] 狀態。 此時，其會開始下載模型以進行轉譯。 由於模型的大小，下載可能需要幾分鐘的時間。 然後遠端轉譯的模型就會出現。
+按下 Unity 的 [播放] 按鈕以啟動工作階段。 您應會在 [遊戲] 面板中檢視區的底部看到狀態文字重疊。 工作階段將會經歷一系列的狀態轉換。 處於 **啟動** 狀態時，伺服器會啟動，這需要幾分鐘的時間。 成功時，其會轉換成 [就緒] 狀態。 現在工作階段會進入 [連線中] 狀態，並於此狀態嘗試連線到該伺服器的轉譯執行階段。 成功時，範例會轉換成 [已連線] 狀態。 此時，其會開始下載模型以進行轉譯。 由於模型的大小，下載可能需要幾分鐘的時間。 然後遠端轉譯的模型就會出現。
 
 ![範例的輸出](media/arr-sample-output.png)
 
@@ -92,9 +92,7 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 ## <a name="inspecting-the-scene"></a>檢查場景
 
-遠端轉譯連線一旦在執行中，[偵測器] 面板就會以其他狀態資訊進行更新：
-
-![Unity 範例播放](./media/arr-sample-configure-session-running.png)
+遠端轉譯連線一旦在執行中，[偵測器] 面板就會以其他狀態資訊進行更新：![Unity 範例播放](./media/arr-sample-configure-session-running.png)
 
 您現在可以選取新節點，然後按一下 [偵測器] 中的 [顯示子系]，藉此探索場景圖表。
 

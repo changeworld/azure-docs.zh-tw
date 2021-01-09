@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 11/24/2020
+ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 01f61eac31c388cd0bf8a857beb7a10944187c6b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027895"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679533"
 ---
 # <a name="what-is-azure-cognitive-search"></a>什麼是 Azue 認知搜尋？
 
@@ -25,8 +25,8 @@ Azure 認知搜尋 ([先前稱為「Azure 搜尋服務」](whats-new.md#new-serv
 + 執行編製索引和查詢執行的搜尋引擎
 + 您所建立和管理之搜尋索引的持續性儲存體
 + 用於撰寫簡單到複雜查詢的查詢語言
-+ 以 AI 為主的分析，可從影像、未經處理文字，應用程式檔案建立可搜尋的內容
-+ 透過搜尋索引子與 Azure 資料進行的整合，可將資料匯入和重新整理自動化
++ [AI 驅動的擴充](cognitive-search-concept-intro.md)，可從影像、未經處理文字，應用程式檔案建立可搜尋的內容
++ 在資料、機器學習、AI 和安全性等方面與其他 Azure 服務整合
 
 在架構上，搜尋服務位於包含未編制索引資料的外部資料存放區，與將查詢要求傳送至搜尋索引並處理回應的用戶端應用程式之間。
 
@@ -89,11 +89,11 @@ Azure 認知搜尋適用於下列應用程式案例：
 主要優點包括︰
 
 + 索引層的 Azure 資料整合 (編目程式)
-+ 集中管理的 Azure 入口網站
-+ Azure 調整性、可靠性和世界級的可用性
-+ 透過 AI 處理，原始資料會變得更容易搜尋，包括影像中的文字或尋找非結構化內容中的圖樣。
++ Azure 私人連結整合可支援網際網路外的安全需求
++ 與 AI 處理整合，讓無法搜尋的內容類型可供文字搜尋。
 + 語言和自訂分析，還有分析器提供可靠的全文檢索搜尋，支援 56 種語言
-+ [搜尋導向應用程式常用的核心功能包括](search-features-list.md)：評分、多面向、建議、同義字、地區搜尋等。
++ [重要功能](search-features-list.md)：豐富的查詢語言、相關性調整、Facet、自動完成、同義字、地理搜尋和結果組合。
++ Azure 調整性、可靠性和世界級的可用性
 
 在我們的客戶中，享有最多種 Azure 認知搜尋功能的客戶包括線上型錄、商務營運程式和文件探索應用程式。
 

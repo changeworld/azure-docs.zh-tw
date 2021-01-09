@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484799"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631944"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>教學課程：使用 Azure 私人端點連線至 Azure Cosmos 帳戶
 
@@ -208,13 +208,9 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 5. 選取 [確定]  。
 
-10. 在 CosmosDB 帳戶的 [設定] 區段中，選取 [金鑰]。
+6. 在 CosmosDB 帳戶的 [設定] 區段中，選取 [金鑰]。
 
-11. 選取 **myResourceGroup**。
-
-12. 選取您在上一個步驟中建立的儲存體帳戶。
-
-14. 選取並複製 **PRIMARY CONNECTION STRING**。
+7. 選取並複製 **PRIMARY CONNECTION STRING**。
 
 ## <a name="test-connectivity-to-private-endpoint"></a>測試對私人端點的連線能力
 
@@ -234,7 +230,7 @@ Azure 私人端點是 Azure 中私人連結的基本建置組塊。 其可讓 Az
 
 7. 連線之後，在伺服器上開啟 Windows PowerShell。
 
-8. 輸入 `nslookup <storage-account-name>.documents.azure.com`。 將 **\<storage-account-name>** 取代為您在先前步驟中建立的儲存體帳戶名稱。 
+8. 輸入 `nslookup <cosmosdb-account-name>.documents.azure.com`。 將 **\<cosmosdb-account-name>** 取代為您在先前步驟中建立的 Cosmos DB 帳戶名稱。 
 
     ```powershell
     Server:  UnKnown

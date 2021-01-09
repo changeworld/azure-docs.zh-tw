@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 97d95f9993f85a51ac7baa69ebb331f6c8588c18
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: acc1660be99b3b7cc9a3c7414c47f9f6e159b559
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318726"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674080"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>教學課程：Azure Active Directory 與 &frankly 整合
 
@@ -63,7 +63,7 @@ ms.locfileid: "92318726"
 
 4. 在搜尋方塊中，輸入 **&frankly**，從結果面板中選取 [&frankly]  ，然後按一下 [新增]  按鈕以新增應用程式。
 
-     ![結果清單中的 &frankly](common/search-new-app.png)
+    ![結果清單中的 &frankly](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
 
@@ -112,9 +112,9 @@ ms.locfileid: "92318726"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [&frankly 用戶端支援小組](mailto:help@andfrankly.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [&frankly 用戶端支援小組](mailto:help@andfrankly.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載 **同盟中繼資料 XML**，並儲存在您的電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "92318726"
     ![[使用者] 對話方塊](common/user-properties.png)
 
     a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
-  
+
     b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
@@ -181,7 +181,7 @@ ms.locfileid: "92318726"
 
 ### <a name="create-frankly-test-user"></a>建立 &frankly 測試使用者
 
-在本節中，您會在 &frankly 中建立名為 Britta Simon 的使用者。 請與  [&frankly 支援小組](mailto:help@andfrankly.com)合作，在 &frankly 平台新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 &frankly 中建立名為 Britta Simon 的使用者。 請與 [&frankly 支援小組](mailto:help@andfrankly.com)合作，在 &frankly 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 

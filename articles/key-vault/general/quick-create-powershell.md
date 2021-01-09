@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3407b9539047b5c683f304549977eace7b57341
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 73d247464f167040c6f7129bdf7014b877317fc5
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778984"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936255"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>快速入門：使用 PowerShell 建立金鑰保存庫
 
@@ -78,4 +78,5 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 - 閱讀 [Azure Key Vault 概觀](overview.md)
 - 請參閱 [Azure PowerShell Key Vault Cmdlet](/powershell/module/az.keyvault/) 的參考
-- 檢閱 [Azure Key Vault 最佳做法](best-practices.md)
+- 請參閱 [Azure Key Vault 安全性概觀](security-overview.md)
+

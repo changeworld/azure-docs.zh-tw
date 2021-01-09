@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88750196"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845416"
 ---
 # <a name="durable-orchestrations"></a>長期協調流程
 
@@ -293,7 +293,7 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 .NET 中，您也可以使用 [ValueTuples](/dotnet/csharp/tuples) 物件。 下列範例會使用附加 [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples) 的 [ValueTuples](/dotnet/csharp/tuples) 新功能：
+在 .NET 中，您也可以使用 [ValueTuple](/dotnet/csharp/tuples) 物件。 下列範例會使用附加 [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples) 的 [ValueTuple](/dotnet/csharp/tuples) 新功能：
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

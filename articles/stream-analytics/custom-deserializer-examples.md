@@ -1,19 +1,18 @@
 ---
 title: 在 Azure 串流分析中使用 .NET 自訂還原序列化程式來讀取任何格式的輸入
 description: 本文說明序列化格式，以及可為 Azure 串流分析雲端和邊緣作業定義自訂 .NET 還原序列化程式的介面。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4adf0b8a7c12abed9689b9ac0cc9c5d5c8c3f980
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 140a836882ad3abe048047120e4fe1ebc0a3067c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488429"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018151"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>使用 .NET 自訂還原序列化程式讀取任何格式的輸入
 
@@ -201,7 +200,7 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>REST API 的序列化格式
 
-每個串流分析輸入都有 **序列化格式** 。 如需輸入選項的詳細資訊，請參閱[輸入 REST API](/rest/api/streamanalytics/2016-03-01/inputs) 文件。
+每個串流分析輸入都有 **序列化格式**。 如需輸入選項的詳細資訊，請參閱[輸入 REST API](/rest/api/streamanalytics/2016-03-01/inputs) 文件。
 
 下列 Javascript 程式碼是使用 REST API 時的 .NET 還原序列化程式序列化格式的範例：
 

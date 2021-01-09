@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: bbebe3b3f63e6ccbb5f351abfc9ba3b846ca6fbe
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: d53a619dc6ca5fb0f43f6097664f50bf22943928
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337656"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678889"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教學課程：透過 NFS 將資料複製到 Azure 資料箱
 
@@ -98,11 +98,11 @@ ms.locfileid: "94337656"
 > [!IMPORTANT]
 > 在確認資料箱已將您的資料移轉至 Azure 儲存體之前，請務必先保留一份來源資料複本。
 
-如果您使用 Linux 主機電腦，請使用類似於 Robocopy 的複製公用程式。 在 Linux 中有替代工具可供使用，包括 [rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/) 或 [Ultracopier](https://ultracopier.first-world.info/)。  
+如果您使用 Linux 主機電腦，請使用類似於 Robocopy 的複製公用程式。 在 Linux 中有替代工具可供使用，包括 [`rsync`](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[ Unison](https://www.cis.upenn.edu/~bcpierce/unison/) 或 [Ultracopier](https://ultracopier.first-world.info/)。  
 
 `cp` 命令是複製目錄的最佳選項之一。 如需其使用方式的詳細資訊，請移至 [cp 手冊頁](http://man7.org/linux/man-pages/man1/cp.1.html)。
 
-如果使用 rsync 選項進行多執行緒複製，請遵循下列指導方針：
+如果使用 `rsync` 選項進行多執行緒複製，請遵循下列指導方針：
 
 * 根據您的 Linux 用戶端所使用的檔案系統，安裝 **CIFS Utils** 或 **NFS Utils** 套件。
 
@@ -110,7 +110,7 @@ ms.locfileid: "94337656"
 
     `sudo apt-get install nfs-utils`
 
-* 安裝 **Rsync** 和 **Parallel** (依 Linux 發行的版本而有所不同)。
+* 安裝 `rsync` 和 **Parallel** (依 Linux 發行的版本而有所不同)。
 
     `sudo apt-get install rsync`
    

@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 1f4e1def81fc79ec159ce6be825793a9bd8d0ce7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286964"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011538"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 應用程式資訊清單
 
@@ -33,8 +33,8 @@ ms.locfileid: "93286964"
 
 若要設定應用程式資訊清單：
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory] 服務。
-1. 選取 **應用程式註冊** 。
+1. 移至<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 搜尋並選取 [Azure Active Directory] 服務。
+1. 選取 **應用程式註冊**。
 1. 選取您要設定的應用程式。
 1. 從應用程式的 [概觀] 頁面，選取 [資訊清單] 區段。 Web 式的資訊清單編輯器隨即開啟，以供您在入口網站內編輯資訊清單。 或者，您也可以選取 [下載] 在本機編輯資訊清單，然後使用 [上傳] 將其重新套用到您的應用程式。
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 12b49bf81328cc405337b682241aef2cd965c3de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356540"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808652"
 ---
 > [!IMPORTANT]
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 請參閱下列參考文件。 
@@ -36,17 +36,23 @@ ms.locfileid: "96356540"
 
 安裝 Python 之後，您可以使用下列方式安裝最新版本的表單辨識器用戶端程式庫：
 
-#### <a name="version-30"></a>[3.0 版](#tab/ga)
+#### <a name="version-20"></a>[2.0 版](#tab/ga)
 
 ```console
 pip install azure-ai-formrecognizer
 ```
 
-#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+> [!NOTE]
+> 最新的表單辨識器會反映 API 2.0 版
+
+#### <a name="version-21-preview"></a>[2.1 版 (預覽)](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
+
+> [!NOTE]
+> 表單辨識器預覽 SDK 會反映 API 2.1 版 (預覽)
 
 ---
 
@@ -91,7 +97,7 @@ pip install azure-ai-formrecognizer --pre
 
 這些程式碼片段會示範如何使用適用於 Python 的表單辨識器用戶端程式庫來執行下列工作：
 
-#### <a name="version-30"></a>[3.0 版](#tab/ga)
+#### <a name="version-20"></a>[2.0 版](#tab/ga)
 
 * [驗證用戶端](#authenticate-the-client)
 * [辨識表單內容](#recognize-form-content)
@@ -100,7 +106,7 @@ pip install azure-ai-formrecognizer --pre
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+#### <a name="version-21-preview"></a>[2.1 版 (預覽)](#tab/preview)
 
 * [驗證用戶端](#authenticate-the-client)
 * [辨識表單內容](#recognize-form-content)
@@ -123,7 +129,9 @@ pip install azure-ai-formrecognizer --pre
 ## <a name="get-assets-for-testing"></a>取得用於測試的資產
 
 您需要為訓練和測試資料新增 URL 的參考。
-* 若要為您的自訂模型訓練資料擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 確定 [讀取] 和 [列出] 權限均已勾選，再按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="擷取 SAS URL":::
 * 使用下列範例中所包含的範例表單和收據影像 (也可在 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) 上取得)，或者您也可以使用上述步驟來取得 Blob 儲存體中個別文件的 SAS URL。 
 
 > [!NOTE]
@@ -194,11 +202,15 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-#### <a name="version-30"></a>[3.0 版](#tab/ga)
-
-#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
 
 ## <a name="recognize-business-cards"></a>辨識名片
+
+#### <a name="version-20"></a>[2.0 版](#tab/ga)
+
+> [!IMPORTANT]
+> 選取的 API 版本不提供這項功能。
+
+#### <a name="version-21-preview"></a>[2.1 版 (預覽)](#tab/preview)
 
 本節示範如何使用預先定型的模型，辨識並擷取英文名片中的常見欄位。 若要從 URL 辨識名片，請使用 `begin_recognize_business_cards_from_url` 方法。 
 
@@ -207,7 +219,16 @@ Total: 1203.39 has confidence 0.774
 > [!TIP]
 > 您也可以辨識本機名片影像。 請參閱 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) 方法，例如 `begin_recognize_business_cards`。 或如需本機映像的相關案例，請參閱 [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上的範例程式碼。
 
+---
+
 ## <a name="recognize-invoices"></a>辨識發票
+
+#### <a name="version-20"></a>[2.0 版](#tab/ga)
+
+> [!IMPORTANT]
+> 選取的 API 版本不提供這項功能。
+
+#### <a name="version-21-preview"></a>[2.1 版 (預覽)](#tab/preview)
 
 本節示範如何使用預先定型的模型，辨識並擷取銷售發票中的常見欄位。 若要從 URL 辨識發票，請使用 `begin_recognize_invoices_from_url` 方法。 
 

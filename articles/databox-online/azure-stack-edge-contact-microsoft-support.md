@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 5bbd02f9e15a4ee29e244b2a0307accd151ba487
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696030"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033943"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>開啟 Azure Stack Edge Pro 和 Azure 資料箱閘道的支援票證
 
@@ -78,7 +78,7 @@ ms.locfileid: "97696030"
     * 傳送失敗硬體元件的現場可更換單元 (FRU)。 目前唯一支援的 Fru 是電源供應器單位和固態硬碟。
     * 只有 FRU 會在下一個工作天內更換，其他所有單元則需要等到完整的系統更換 (FSR) 運送。
 
-3. 如果支援票證在下午4:30：00，當地時間 (星期一到星期五) ，現場技術人員會在下一個工作天分派至您的位置，以執行 FRU 更換。 完整系統取代通常需要較長的時間，因為這些元件是從我們的工廠出貨，而且可能會受到運輸和自海關的延遲。
+3. 如果決定將 FRU 更換為下午1點的當地時間 (星期一到星期五) ，現場技術人員會將下一個工作天分派至您的位置，以執行 FRU 更換。 完整系統取代通常需要較長的時間，因為這些元件是從我們的工廠出貨，而且可能會受到運輸和自海關的延遲。
 
 ## <a name="manage-a-support-request"></a>管理支援要求
 

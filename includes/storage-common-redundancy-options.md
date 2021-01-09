@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 73c2b742ede21a4e86d717d994f8ebc4f16389c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65729934ea7c4037d6857aec10b14cdddd616368
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77157208"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805593"
 ---
 儲存體帳戶的備援選項包含：
 
-* 本地備援儲存體 (LRS)：簡單、低成本的備援策略。 資料會在主要區域內同步複製三次。
+* 本地備援儲存體 (LRS)：簡單、低成本的備援策略。 資料會在主要區域中的單一實體位置內同步複製三次。
 * 區域備援儲存體 (ZRS)：需要高可用性案例的備援。 資料會同步複製到主要區域中的三個 Azure 可用性區域。
 * 異地備援儲存體 (GRS)：跨區域備援，以防止區域性中斷。 資料會在主要區域中同步複製三次，然後以非同步方式複製到次要區域。 如需次要區域中資料的讀取存取權，請啟用讀取存取異地備援儲存體 (RA-GRS)。
 * 地理區域備援儲存體 (GZRS) (預覽)：需要高可用性和最大持久性案例的備援。 資料會同步複製到主要區域中的三個 Azure 可用性區域，然後以非同步方式複製到次要區域。 如需次要區域中資料的讀取存取權，請啟用讀取存取異地區域備援儲存體 (RA-GZRS)。

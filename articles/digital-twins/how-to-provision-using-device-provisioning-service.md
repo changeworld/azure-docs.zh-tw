@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0a18e6cef568afa8a0092fc06d8f6bb526739b2a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e783e5dd3b0f1952928d1c36c682c5be1cba2599
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145798"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044385"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>使用裝置布建服務 (DPS) 自動管理 Azure 數位 Twins 中的裝置
 
@@ -22,21 +22,21 @@ ms.locfileid: "93145798"
 
 如需有關布建和 _淘汰__階段的詳細_ 資訊，並進一步瞭解所有企業 IoT 專案通用的一般裝置管理階段，請參閱 IoT 中樞裝置管理檔的 [*裝置生命週期* 一節](../iot-hub/iot-hub-device-management-overview.md#device-lifecycle)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在您可以設定布建之前，您必須擁有包含模型和 Twins 的 **Azure 數位 Twins 實例** 。 此實例也應該設定為根據資料更新數位對應項資訊。 
 
 如果您還沒有此設定，您可以遵循 Azure 數位 Twins [*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)來建立它。 本教學課程將逐步引導您使用模型和 Twins、已連線的 Azure [IoT 中樞](../iot-hub/about-iot-hub.md)，以及用來傳播資料流程的數個 [azure](../azure-functions/functions-overview.md) 函式來設定 Azure 數位 Twins 實例。
 
 您稍後會在本文中，從設定您的實例時，需要下列值。 如果您需要再次收集這些值，請使用下列連結以取得相關指示。
-* Azure Digital Twins 執行個體 **_主機名稱_** ( [在入口網站中尋找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
-* Azure 事件中樞連接字串 **_連接字串_** ( [在入口網站中尋找](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal)) 
+* Azure Digital Twins 執行個體 **_主機名稱_** ([在入口網站中尋找](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))
+* Azure 事件中樞連接字串 **_連接字串_** ([在入口網站中尋找](../event-hubs/event-hubs-get-connection-string.md#get-connection-string-from-the-portal)) 
 
 此範例也會使用 **裝置** 模擬器，其中包含使用裝置布建服務進行布建。 裝置模擬器位於此處： [Azure 數位 Twins 和 IoT 中樞整合範例](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/)。 流覽至範例連結，然後選取標題底下的 [ *下載 ZIP* ] 按鈕，以取得電腦上的範例專案。 將下載的資料夾解壓縮。
 
 裝置模擬器是以 **Node.js** 10.0. x 版或更新版本為基礎。 [*準備您的開發環境*](https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md) ，說明如何在 Windows 或 Linux 上安裝本教學課程的 Node.js。
 
-## <a name="solution-architecture"></a>解決方案架構
+## <a name="solution-architecture"></a>方案架構
 
 下圖說明此解決方案使用 Azure 數位 Twins 搭配裝置布建服務的架構。 它會顯示裝置布建和淘汰流程。
 
@@ -52,7 +52,7 @@ ms.locfileid: "93145798"
 
 在本節中，您會將裝置布建服務附加至 Azure 數位 Twins，以透過下列路徑自動布建裝置。 這是稍 [早](#solution-architecture)所示的完整架構摘錄。
 
-:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
+:::image type="content" source="media/how-to-provision-using-dps/provision.png" alt-text="布建流程--解決方案架構圖的摘要，其中包含流程的數位標籤區段。控溫器裝置與 DPS 之間的資料會在裝置和 DPS (> 1 之間來回流動 > 裝置) 的 dps 和5。資料也會從 DPS 流出至 IoT 中樞 (4) ，以及透過標示為「配置」 (2) 之 Azure 函式的 Azure 數位 Twins (3) 。":::
 
 以下是程式流程的說明：
 1. 裝置會聯繫 DPS 端點，傳遞識別資訊以證明其身分識別。
@@ -77,7 +77,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 ### <a name="create-an-azure-function"></a>建立 Azure 函式
 
-接下來，您將在函數應用程式內建立 HTTP 要求觸發的函式。 您可以使用在端對端教學課程中建立的函數應用程式 ( [*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)) 或您自己的解決方案。
+接下來，您將在函數應用程式內建立 HTTP 要求觸發的函式。 您可以使用在端對端教學課程中建立的函數應用程式 ([*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)) 或您自己的解決方案。
 
 裝置布建服務會使用此函式，在 [自訂配置原則](../iot-dps/how-to-use-custom-allocation-policies.md) 中布建新的裝置。 如需有關搭配 Azure 函式使用 HTTP 要求的詳細資訊，請參閱 [*Azure Functions 的 Azure HTTP 要求觸發程式*](../azure-functions/functions-bindings-http-webhook-trigger.md)。
 
@@ -85,150 +85,7 @@ az iot dps create --name <Device Provisioning Service name> --resource-group <re
 
 在新建立的函式程式碼檔案中，貼上下列程式碼。
 
-```C#
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-using Microsoft.Azure.Devices.Shared;
-using Microsoft.Azure.Devices.Provisioning.Service;
-using System.Net.Http;
-using Azure.Identity;
-using Azure.DigitalTwins.Core;
-using Azure.Core.Pipeline;
-using Azure;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace Samples.AdtIothub
-{
-    public static class DpsAdtAllocationFunc
-    {
-        const string adtAppId = "https://digitaltwins.azure.net";
-        private static string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static readonly HttpClient httpClient = new HttpClient();
-
-        [FunctionName("DpsAdtAllocationFunc")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger log)
-        {
-            // Get request body
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            log.LogDebug($"Request.Body: {requestBody}");
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
-
-            // Get registration ID of the device
-            string regId = data?.deviceRuntimeContext?.registrationId;
-
-            bool fail = false;
-            string message = "Uncaught error";
-            ResponseObj obj = new ResponseObj();
-
-            // Must have unique registration ID on DPS request 
-            if (regId == null)
-            {
-                message = "Registration ID not provided for the device.";
-                log.LogInformation("Registration ID: NULL");
-                fail = true;
-            }
-            else
-            {
-                string[] hubs = data?.linkedHubs.ToObject<string[]>();
-
-                // Must have hubs selected on the enrollment
-                if (hubs == null)
-                {
-                    message = "No hub group defined for the enrollment.";
-                    log.LogInformation("linkedHubs: NULL");
-                    fail = true;
-                }
-                else
-                {
-                    // Find or create twin based on the provided registration ID and model ID
-                    dynamic payloadContext = data?.deviceRuntimeContext?.payload;
-                    string dtmi = payloadContext.modelId;
-                    log.LogDebug($"payload.modelId: {dtmi}");
-                    string dtId = await FindOrCreateTwin(dtmi, regId, log);
-
-                    // Get first linked hub (TODO: select one of the linked hubs based on policy)
-                    obj.iotHubHostName = hubs[0];
-
-                    // Specify the initial tags for the device.
-                    TwinCollection tags = new TwinCollection();
-                    tags["dtmi"] = dtmi;
-                    tags["dtId"] = dtId;
-
-                    // Specify the initial desired properties for the device.
-                    TwinCollection properties = new TwinCollection();
-
-                    // Add the initial twin state to the response.
-                    TwinState twinState = new TwinState(tags, properties);
-                    obj.initialTwin = twinState;
-                }
-            }
-
-            log.LogDebug("Response: " + ((obj.iotHubHostName != null) ? JsonConvert.SerializeObject(obj) : message));
-
-            return (fail)
-                ? new BadRequestObjectResult(message)
-                : (ActionResult)new OkObjectResult(obj);
-        }
-
-        public static async Task<string> FindOrCreateTwin(string dtmi, string regId, ILogger log)
-        {
-            // Create Digital Twins client
-            var cred = new ManagedIdentityCredential(adtAppId);
-            var client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-
-            // Find existing twin with registration ID
-            string dtId;
-            string query = $"SELECT * FROM DigitalTwins T WHERE $dtId = '{regId}' AND IS_OF_MODEL('{dtmi}')";
-            AsyncPageable<string> twins = client.QueryAsync(query);
-
-            await foreach (string twinJson in twins)
-            {
-                // Get DT ID from the Twin
-                JObject twin = (JObject)JsonConvert.DeserializeObject(twinJson);
-                dtId = (string)twin["$dtId"];
-                log.LogInformation($"Twin '{dtId}' with Registration ID '{regId}' found in DT");
-                return dtId;
-            }
-
-            // Not found, so create new twin
-            log.LogInformation($"Twin ID not found, setting DT ID to regID");
-            dtId = regId; // use the Registration ID as the DT ID
-
-            // Define the model type for the twin to be created
-            Dictionary<string, object> meta = new Dictionary<string, object>()
-            {
-                { "$model", dtmi }
-            };
-            // Initialize the twin properties
-            Dictionary<string, object> twinProps = new Dictionary<string, object>()
-            {
-                { "$metadata", meta }
-            };
-            twinProps.Add("Temperature", 0.0);
-
-            await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(dtId, twinProps);
-            log.LogInformation($"Twin '{dtId}' created in DT");
-
-            return dtId;
-        }
-    }
-
-    public class ResponseObj
-    {
-        public string iotHubHostName { get; set; }
-        public TwinState initialTwin { get; set; }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_allocate.cs":::
 
 儲存檔案，然後重新發佈您的函數應用程式。 如需有關發佈函式應用程式的指示，請參閱端對端教學課程的 [*發佈應用程式*](tutorial-end-to-end.md#publish-the-app) 一節。
 
@@ -248,7 +105,7 @@ az functionapp config appsettings set --settings "ADT_SERVICE_URL=https://<Azure
 
 接下來，您必須使用 **自訂配置** 函式，在裝置布建服務中建立註冊。 依照有關自訂配置原則的「 [*建立註冊*](../iot-dps/how-to-use-custom-allocation-policies.md#create-the-enrollment) 和 [*衍生唯一的裝置金鑰*](../iot-dps/how-to-use-custom-allocation-policies.md#derive-unique-device-keys) 」一節中的指示執行此動作。
 
-進行該流程時，您會在步驟中選取您的函式，以 **選取要如何將裝置指派給中樞** ，以將註冊連結至您剛才建立的函式。 建立註冊之後，註冊名稱和主要或次要 SAS 金鑰稍後將用來設定本文的裝置模擬器。
+進行該流程時，您會在步驟中選取您的函式，以 **選取要如何將裝置指派給中樞**，以將註冊連結至您剛才建立的函式。 建立註冊之後，註冊名稱和主要或次要 SAS 金鑰稍後將用來設定本文的裝置模擬器。
 
 ### <a name="set-up-the-device-simulator"></a>設定裝置模擬器
 
@@ -281,7 +138,7 @@ node .\adt_custom_register.js
 ```
 
 您應該會看到裝置已註冊並聯機到 IoT 中樞，然後開始傳送訊息。
-:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
+:::image type="content" source="media/how-to-provision-using-dps/output.png" alt-text="顯示裝置註冊和傳送訊息命令視窗":::
 
 ### <a name="validate"></a>Validate
 
@@ -292,13 +149,13 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```
 
 您應該會看到在 Azure 數位 Twins 實例中找到的裝置對應項。
-:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
+:::image type="content" source="media/how-to-provision-using-dps/show-provisioned-twin.png" alt-text="顯示新建立對應項的命令視窗":::
 
 ## <a name="auto-retire-device-using-iot-hub-lifecycle-events"></a>使用 IoT 中樞生命週期事件自動淘汰裝置
 
 在本節中，您會將 IoT 中樞生命週期事件附加至 Azure 數位 Twins，以透過下列路徑自動淘汰裝置。 這是稍 [早](#solution-architecture)所示的完整架構摘錄。
 
-:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
+:::image type="content" source="media/how-to-provision-using-dps/retire.png" alt-text="淘汰裝置流程--解決方案架構圖表的摘要，其中包含流程的數位標籤區段。控溫器裝置會顯示，且不會連接到圖表中的 Azure 服務。手動「刪除裝置」動作的資料會流經 IoT 中樞 (1) > 事件中樞 (2) > Azure Functions > Azure 數位 Twins (3) 。":::
 
 以下是程式流程的說明：
 1. 外部或手動進程會觸發在 IoT 中樞內刪除裝置。
@@ -312,128 +169,20 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 您現在需要建立將用來接收 IoT 中樞生命週期事件的 Azure [事件中樞](../event-hubs/event-hubs-about.md)。 
 
 使用下列資訊，逐步完成 [*建立事件中樞*](../event-hubs/event-hubs-create.md) 快速入門中所述的步驟：
-* 如果您使用端對端教學課程 ( [*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)) ，您可以重複使用您為端對端教學課程建立的資源群組。
+* 如果您使用端對端教學課程 ([*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)) ，您可以重複使用您為端對端教學課程建立的資源群組。
 * 為您的事件中樞 *lifecycleevents* 命名或您選擇的其他專案，並記住您所建立的命名空間。 當您在下一節中設定生命週期函式和 IoT 中樞路由時，將會使用這些功能。
 
 ### <a name="create-an-azure-function"></a>建立 Azure 函式
 
-接下來，您將在函數應用程式內建立事件中樞觸發的函式。 您可以使用在端對端教學課程中建立的函數應用程式 ( [*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)) 或您自己的解決方案。 
+接下來，您將在函數應用程式內建立事件中樞觸發的函式。 您可以使用在端對端教學課程中建立的函數應用程式 ([*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)) 或您自己的解決方案。 
 
-命名您的事件中樞觸發程式 *lifecycleevents* ，並將事件中樞觸發程式連線到您在上一個步驟中建立的事件中樞。 如果您使用不同的事件中樞名稱，請將它變更為符合以下的觸發程式名稱。
+命名您的事件中樞觸發程式 *lifecycleevents*，並將事件中樞觸發程式連線到您在上一個步驟中建立的事件中樞。 如果您使用不同的事件中樞名稱，請將它變更為符合以下的觸發程式名稱。
 
 此函式會使用 IoT 中樞裝置生命週期事件來淘汰現有的裝置。 如需生命週期事件的詳細資訊，請參閱 [*IoT 中樞非遙測事件*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。 如需使用事件中樞搭配 Azure 函式的詳細資訊，請參閱 [*Azure Functions 的 Azure 事件中樞觸發程式*](../azure-functions/functions-bindings-event-hubs-trigger.md)。
 
 在您已發佈的函式應用程式中，新增 *事件中樞觸發* 程式類型的新函式類別，並貼上下列程式碼。
 
-```C#
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Azure;
-using Azure.Core.Pipeline;
-using Azure.DigitalTwins.Core;
-using Azure.DigitalTwins.Core.Serialization;
-using Azure.Identity;
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-namespace Samples.AdtIothub
-{
-    public static class DeleteDeviceInTwinFunc
-    {
-        private static string adtAppId = "https://digitaltwins.azure.net";
-        private static readonly string adtInstanceUrl = System.Environment.GetEnvironmentVariable("ADT_SERVICE_URL", EnvironmentVariableTarget.Process);
-        private static readonly HttpClient httpClient = new HttpClient();
-
-        [FunctionName("DeleteDeviceInTwinFunc")]
-        public static async Task Run(
-            [EventHubTrigger("lifecycleevents", Connection = "EVENTHUB_CONNECTIONSTRING")] EventData[] events, ILogger log)
-        {
-            var exceptions = new List<Exception>();
-
-            foreach (EventData eventData in events)
-            {
-                try
-                {
-                    //log.LogDebug($"EventData: {System.Text.Json.JsonSerializer.Serialize(eventData)}");
-
-                    string opType = eventData.Properties["opType"] as string;
-                    if (opType == "deleteDeviceIdentity")
-                    {
-                        string deviceId = eventData.Properties["deviceId"] as string;
-                        
-                        // Create Digital Twin client
-                        var cred = new ManagedIdentityCredential(adtAppId);
-                        var client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-
-                        // Find twin based on the original Registration ID
-                        string regID = deviceId; // simple mapping
-                        string dtId = await GetTwinId(client, regID, log);
-                        if (dtId != null)
-                        {
-                            await DeleteRelationships(client, dtId, log);
-
-                            // Delete twin
-                            await client.DeleteDigitalTwinAsync(dtId);
-                            log.LogInformation($"Twin '{dtId}' deleted in DT");
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    // We need to keep processing the rest of the batch - capture this exception and continue.
-                    exceptions.Add(e);
-                }
-            }
-
-            if (exceptions.Count > 1)
-                throw new AggregateException(exceptions);
-
-            if (exceptions.Count == 1)
-                throw exceptions.Single();
-        }
-
-
-        public static async Task<string> GetTwinId(DigitalTwinsClient client, string regId, ILogger log)
-        {
-            string query = $"SELECT * FROM DigitalTwins T WHERE T.$dtId = '{regId}'";
-            AsyncPageable<string> twins = client.QueryAsync(query);
-            await foreach (string twinJson in twins)
-            {
-                JObject twin = (JObject)JsonConvert.DeserializeObject(twinJson);
-                string dtId = (string)twin["$dtId"];
-                log.LogInformation($"Twin '{dtId}' found in DT");
-                return dtId;
-            }
-
-            return null;
-        }
-
-        public static async Task DeleteRelationships(DigitalTwinsClient client, string dtId, ILogger log)
-        {
-            var relationshipIds = new List<string>();
-
-            AsyncPageable<string> relationships = client.GetRelationshipsAsync(dtId);
-            await foreach (var relationshipJson in relationships)
-            {
-                BasicRelationship relationship = System.Text.Json.JsonSerializer.Deserialize<BasicRelationship>(relationshipJson);
-                relationshipIds.Add(relationship.Id);
-            }
-
-            foreach (var relationshipId in relationshipIds)
-            {
-                client.DeleteRelationship(dtId, relationshipId);
-                log.LogInformation($"Twin '{dtId}' relationship '{relationshipId}' deleted in DT");
-            }
-        }
-    }
-}
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIotHub_delete.cs":::
 
 儲存專案，然後再次發佈函數應用程式。 如需有關發佈函式應用程式的指示，請參閱端對端教學課程的 [*發佈應用程式*](tutorial-end-to-end.md#publish-the-app) 一節。
 
@@ -464,7 +213,7 @@ az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Eve
 您必須進行此設定的步驟如下：
 1. 建立自訂 IoT 中樞事件中樞端點。 此端點應該以您在 [ [*建立事件中樞*](#create-an-event-hub) ] 區段中建立的事件中樞為目標。
 2. 新增 *裝置生命週期事件* 路由。 使用在上一個步驟中建立的端點。 您可以藉由新增路由查詢來限制裝置生命週期事件，只傳送刪除事件 `opType='deleteDeviceIdentity'` 。
-    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
+    :::image type="content" source="media/how-to-provision-using-dps/lifecycle-route.png" alt-text="新增路由":::
 
 完成此流程之後，所有專案都會設定為端對端淘汰裝置。
 
@@ -485,7 +234,7 @@ az dt twin show -n <Digital Twins instance name> --twin-id <Device Registration 
 ```
 
 您應該會看到裝置的對應項不再于 Azure 數位 Twins 實例中找到。
-:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="在端對端案例中，裝置和數個 Azure 服務的觀點。資料會在控溫器裝置與 DPS 之間來回流動。資料也會從 DPS 流出至 IoT 中樞，以及透過標示為「配置」的 Azure 函式傳遞至 Azure 數位 Twins。手動「刪除裝置」動作的資料會流經 IoT 中樞 > 事件中樞 > Azure Functions > Azure 數位 Twins。":::
+:::image type="content" source="media/how-to-provision-using-dps/show-retired-twin.png" alt-text="顯示找不到對應項的命令視窗":::
 
 ## <a name="clean-up-resources"></a>清除資源
 

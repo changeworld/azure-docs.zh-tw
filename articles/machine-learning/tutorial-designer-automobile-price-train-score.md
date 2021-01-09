@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575970"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796103"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>教學課程：使用設計工具預測汽車價格
 
@@ -272,7 +272,7 @@ Azure Machine Learning 管線會將多個機器學習和資料處理步驟組織
     > [!NOTE]
     > 實驗群組的類似管線會一起執行。 如果您多次執行某個管線，您可以選取相同的實驗進行後續執行。
 
-    1. 輸入 **新實驗名稱** 的描述性名稱。
+    1. 針對 [新的實驗名稱]，輸入 **Tutorial-CarPrices**。
 
     1. 選取 [提交]  。
     

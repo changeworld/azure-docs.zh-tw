@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e25469e23358ade32e050bed0818338dc290e71f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7dccce597dcfbcedd5083befafa79b8ba6f3adac
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451397"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693470"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database 與 Azure SQL 受控執行個體連線及查詢的文章
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,6 +42,29 @@ ms.locfileid: "96451397"
 |[Ruby](connect-query-ruby.md)|此快速入門示範如何使用 Ruby 建立程式，以連線至資料庫，並使用 Transact-SQL 陳述式查詢資料。|
 |[R](connect-query-r.md)|本快速入門示範如何搭配使用 R 與 Azure SQL Database 機器學習服務來建立程式，以連線至 Azure SQL Database 資料庫，並使用 Transact-SQL 陳述式查詢資料。|
 |||
+
+## <a name="get-server-connection-information"></a>取得伺服器連線資訊
+
+取得連線到 Azure SQL Database 資料庫所需的連線資訊。 在後續程序中，您將需要完整的伺服器名稱或主機名稱、資料庫名稱和登入資訊。
+
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+
+2. 瀏覽至 [SQL 資料庫] 或 [SQL 受控執行個體] 頁面。
+
+3. 在 [概觀] 頁面上，若是 Azure SQL Database 中的資料庫，則檢閱 [伺服器名稱] 旁的完整伺服器名稱；若是 Azure SQL 受控執行個體或 Azure VM 上的 SQL Server，則檢閱 [主機] 旁的完整伺服器名稱 (或 IP 位址)。 若要複製伺服器名稱或主機名稱，請將滑鼠暫留在其上方，然後選取 [複製] 圖示。
+
+> [!NOTE]
+> 如需 Azure VM 上的 SQL Server 連線資訊，請參閱[連線到 SQL Server 執行個體](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)。
+
+## <a name="get-adonet-connection-information-optional---sql-database-only"></a>取得 ADO.NET 連線資訊 (選擇性 - 僅限 SQL Database)
+
+1. 瀏覽至 Azure 入口網站中的資料庫刀鋒視窗，然後在 [設定] 底下選取 [連接字串]。
+
+2. 檢閱完整 **ADO.NET** 連接字串。
+
+    ![ADO.NET 連接字串](./media/connect-query-dotnet-core/adonet-connection-string2.png)
+
+3. 視需要複製 **ADO.NET** 連接字串。
 
 ## <a name="tls-considerations-for-database-connectivity"></a>資料庫連線的 TLS 考量
 

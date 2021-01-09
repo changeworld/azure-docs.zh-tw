@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f56bb5e3ed8c953b67f1e88fc16846accaed995
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82195106"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821276"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>教學課程：在 HDInsight 中使用 Power BI 來分析 Apache Spark 資料
 
@@ -37,7 +37,7 @@ ms.locfileid: "82195106"
 
 您在[上一個教學課程](apache-spark-load-data-run-query.md)中建立的 [Jupyter Notebook](https://jupyter.org/) 包含可建立 `hvac` 資料表的程式碼。 本資料表根據的是 `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv` 上所有 HDInsight Spark 叢集上的可用 CSV 檔案。 使用下列程序來驗證資料。
 
-1. 從 Jupyter Notebook 貼上下列程式碼，然後按下 **SHIFT + ENTER** 鍵。 該程式碼會驗證資料表是否存在。
+1. 從 Jupyter Notebook 貼上下列程式碼，然後按 **SHIFT + ENTER** 鍵。 該程式碼會驗證資料表是否存在。
 
     ```PySpark
     %%sql

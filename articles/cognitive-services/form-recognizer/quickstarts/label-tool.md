@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文件處理
-ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96009325"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845545"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -106,7 +106,7 @@ ms.locfileid: "96009325"
    此命令會讓範例標籤工具可透過網頁瀏覽器來使用。 移至 `http://localhost:3000`。
 
 > [!NOTE]
-> 您也可以使用表單辨識器 REST API 為文件加上標籤及定型模型。 若要使用此 REST API 進行定型和分析，請參閱[使用 REST API 和 Python以標籤定型](./python-labeled-data.md)。
+> 您也可以使用表單辨識器 REST API 為文件加上標籤及定型模型。 若要使用此 REST API 進行定型和分析，請參閱[使用 REST API 和 Python以標籤定型](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)。
 
 ## <a name="set-up-input-data"></a>設定輸入資料
 
@@ -137,7 +137,9 @@ ms.locfileid: "96009325"
 
 * **顯示名稱** - 連線的顯示名稱。
 * **描述** - 您的專案描述。
-* **SAS URL** - Azure Blob 儲存體容器的共用存取簽章 (SAS) URL。 若要擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 請將到期時間設定為您用完服務後的時間。 確定 [讀取]、[寫入]、[刪除] 和 [列出] 權限均已勾選，然後按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+* **SAS URL** - Azure Blob 儲存體容器的共用存取簽章 (SAS) URL。 [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+
+   :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="擷取 SAS URL":::
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="範例標籤工具的連線設定。":::
 
@@ -223,7 +225,7 @@ ms.locfileid: "96009325"
 
 ### <a name="specify-tag-value-types"></a>指定標記值類型
 
-(選擇性) 您可以為每個標記設定預期的資料類型。 開啟標記右邊的捷徑功能表，然後從功能表中選取類型。 這項功能可讓偵測演算法做出一些可改善文字偵測精確度的假設。 也可確保在最終 JSON 輸出中，會以標準化格式傳回偵測到的值。 
+(選擇性) 您可以為每個標記設定預期的資料類型。 開啟標記右邊的捷徑功能表，然後從功能表中選取類型。 這項功能可讓偵測演算法做出一些可改善文字偵測精確度的假設。 也可確保在最終 JSON 輸出中，會以標準化格式傳回偵測到的值。 值類型資訊會儲存在 *fields.json* 檔案中，其路徑與您的標籤檔案相同。
 
 > [!div class="mx-imgBorder"]
 > ![具有範例標籤工具的值類型選取](../media/whats-new/formre-value-type.png)
@@ -266,7 +268,7 @@ ms.locfileid: "96009325"
 
 按一下左窗格上的「訓練」圖示，以開啟 [訓練] 頁面。 然後，按一下 [訓練] 按鈕，開始對模型進行定型。 定型程序完成後，您會看到下列資訊：
 
-* **模型識別碼** - 已建立並定型之模型的識別碼。 每個定型呼叫都會以本身的識別碼建立新的模型。 請將此字串複製到安全之處；如果您想要透過 [REST API](./curl-train-extract.md) 或[用戶端程式庫](./client-library.md)進行預測呼叫，就會需要此字串。
+* **模型識別碼** - 已建立並定型之模型的識別碼。 每個定型呼叫都會以本身的識別碼建立新的模型。 請將此字串複製到安全之處；如果您想要透過 [REST API](./client-library.md?pivots=programming-language-rest-api) 或[用戶端程式庫](./client-library.md)進行預測呼叫，就會需要此字串。
 * **平均精確度** - 模型的平均精確度。 您可以為其他表單加上標籤並再次定型以建立新的模型，進而改善模型的精確度。 建議您先為五個表單加上標籤，然後再視需要新增更多表單。
 * 標籤的清單，以及每個標籤的預估精確度。
 
@@ -276,7 +278,7 @@ ms.locfileid: "96009325"
 定型完成後，請查看 [平均精確度] 值。 如果該值偏低，您應新增更多輸入文件，並重複上述步驟。 您已加上標籤的文件會保留在專案索引中。
 
 > [!TIP]
-> 您也可以使用 REST API 呼叫來執行定型程序。 若要了解其執行方法，請參閱[使用 Python 以標籤定型](./python-labeled-data.md)。
+> 您也可以使用 REST API 呼叫來執行定型程序。 若要了解其執行方法，請參閱[使用 Python 以標籤定型](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)。
 
 ## <a name="compose-trained-models"></a>撰寫已定型的模型
 
@@ -299,7 +301,7 @@ ms.locfileid: "96009325"
 按一下左側的「預測 (燈泡)」圖示，以測試您的模型。 上傳還未用於定型程序的表單文件。 然後按一下右側的 [預測] 按鈕，以取得表單的索引鍵/值預測。 此工具會將標籤套用到週框方塊中，且會報告每個標籤的信賴度。
 
 > [!TIP]
-> 您也可以使用 REST 呼叫來執行分析 API。 若要了解其執行方法，請參閱[使用 Python 以標籤定型](./python-labeled-data.md)。
+> 您也可以使用 REST 呼叫來執行分析 API。 若要了解其執行方法，請參閱[使用 Python 以標籤定型](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)。
 
 ## <a name="improve-results"></a>改善結果
 
@@ -326,7 +328,7 @@ ms.locfileid: "96009325"
 在本快速入門中，您已了解如何使用表單辨識器範例標籤工具，以手動加上標籤的資料為模型定型。 如果您想要建置自己的公用程式來為定型資料加上標籤，請使用處理已加上標籤資料定型的 REST API。
 
 > [!div class="nextstepaction"]
-> [使用 Python 以標籤定型](./python-labeled-data.md)
+> [使用 Python 以標籤定型](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
 
 * [什麼是表單辨識器？](../overview.md)
-* [表單辨識器用戶端程式庫快速入門](client-library.md)
+* [表單辨識器快速入門](client-library.md)

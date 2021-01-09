@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 1b50fbfa0ec4116f7d0b5988e5be70d0db086732
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 74f9ed5913ca089e12d5958fe96eeb1552c9137a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95098004"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745692"
 ---
 [參考文件](/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/) | [範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="c-prerequisites"></a>C# 必要條件
 
 * 有效的 Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
 * 最新版 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
@@ -86,6 +86,10 @@ dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
 
 ## <a name="create-a-cognitive-services-resource"></a>建立認知服務資源
 
+若要建立並訂閱新的認知服務資源，請使用 **Create** 方法。 這個方法會將新的可計費資源新增至您傳入的資源群組。 建立新的資源時，必須知道您要使用的服務「種類」，以及其定價層 (或 SKU) 和 Azure 位置。 下列方法會將這些項目全部當作引數，並建立資源。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_create)]
+
 ### <a name="choose-a-service-and-pricing-tier"></a>選擇服務和定價層
 
 建立新的資源時，必須知道您要使用的服務「種類」，以及想要的[定價層](https://azure.microsoft.com/pricing/details/cognitive-services/) (或 SKU)。 建立資源時，您將使用此資訊和其他資訊作為參數。 您可以在指令碼中呼叫下列方法，以尋找可用的認知服務「種類」清單：
@@ -95,12 +99,6 @@ dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
 [!INCLUDE [SKUs and pricing](./sku-pricing.md)]
-
-## <a name="create-a-cognitive-services-resource"></a>建立認知服務資源
-
-若要建立並訂閱新的認知服務資源，請使用 **Create** 方法。 這個方法會將新的可計費資源新增至您傳入的資源群組。 建立新的資源時，必須知道您要使用的服務「種類」，以及其定價層 (或 SKU) 和 Azure 位置。 下列方法會將這些項目全部當作引數，並建立資源。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_create)]
 
 ## <a name="view-your-resources"></a>檢視資源
 

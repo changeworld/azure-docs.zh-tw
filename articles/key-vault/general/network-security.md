@@ -10,16 +10,18 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d1b1c27fe0136220d5a1851af4a5c24102a37da1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3639237a0dc34c521fd3fa52631fdb19c26ec284
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015548"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936340"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>設定 Azure Key Vault 防火牆和虛擬網路
 
 本文將為您提供如何設定 Azure Key Vault 防火牆的指引。 本文件將詳細說明 Key Vault 防火牆的不同設定，並提供如何設定 Azure Key Vault 以與其他應用程式和 Azure 服務搭配使用的逐步指示。
+
+如需詳細資訊，請參閱 [Azure Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)。
 
 ## <a name="firewall-settings"></a>防火牆設定
 
@@ -167,10 +169,10 @@ ms.locfileid: "96015548"
 
 ## <a name="references"></a>參考
 * ARM 範本參考：[Azure Key Vault ARM 範本參考](/azure/templates/Microsoft.KeyVault/vaults)
-* Azure CLI 命令：[az keyvault network-rule](/cli/azure/keyvault/network-rule?view=azure-cli-latest)
+* Azure CLI 命令：[az keyvault network-rule](/cli/azure/keyvault/network-rule)
 * Azure PowerShell Cmdlet：[Get-AzKeyVault](/powershell/module/az.keyvault/get-azkeyvault)、[Add-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule)、[Remove-AzKeyVaultNetworkRule](/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule)、[Update-AzKeyVaultNetworkRuleSet](/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Key Vault 的虛擬網路服務端點](overview-vnet-service-endpoints.md)
-* [保護您的金鑰保存庫](secure-your-key-vault.md)
+* [Azure Key Vault 安全性概觀](security-overview.md)

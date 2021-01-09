@@ -5,12 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-js
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1729e0b27dd50519359cf6a39bfa81ba7b3b41e9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e280fddbe83da2a7ee89185046883f6c2c77167a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185142"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739805"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 將 Azure Functions 連線至 Azure 儲存體
 
@@ -148,6 +148,8 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 
 [!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
 
+## <a name="update-the-test-set"></a>更新測試集
+
 [!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
 
 ::: zone-end  
@@ -169,6 +171,8 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage
 您第一次使用輸出繫結時，Functions 執行階段會在儲存體帳戶中建立名為 **outqueue** 的新佇列。 您將會使用儲存體總管來確認佇列已連同新訊息一起被建立。
 
 ::: zone pivot="programming-language-java"  
+
+## <a name="update-the-tests"></a>更新測試
 
 [!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
 

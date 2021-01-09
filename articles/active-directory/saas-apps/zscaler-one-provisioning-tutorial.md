@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: b8b6383c7808fd6c298d7776fc10572631bc6ddc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f6725045064b74079e00ca5bbe1d560f3b19f3ff
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006212"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937122"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler One 來自動佈建使用者
 
@@ -77,6 +77,9 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 > [!TIP]
 > 您也可以為 Zscaler One 啟用 SAML 型單一登入。 請遵循 [Zscaler One 單一登入教學課程](zscaler-One-tutorial.md)中的指示。 單一登入和自動使用者佈建可以分開設定，但這兩個功能是互補的。
+
+> [!NOTE]
+> 在佈建或取消佈建使用者和群組時，建議您定期重新啟動佈建，以確保群組成員資格會正確更新。 重新啟動會強制讓我們的服務重新評估所有群組，並更新成員資格。  
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>在 Azure AD 中為 Zscaler One 設定自動使用者佈建
 

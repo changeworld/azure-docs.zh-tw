@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 967d2da61ffdfa9d1723bcab589deb2277d4041e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68b9b31cdfb55e8150b05e3efd35389320905cdc
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825611"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034266"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>在專用主機上部署
 
@@ -18,7 +18,10 @@ ms.locfileid: "91825611"
 
 專用 sku 適用于需要從實體伺服器觀點來隔離工作負載的容器工作負載。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
+
+> [!NOTE]
+> 由於有一些目前的限制，因此不保證會核准所有的限制增加要求。
 
 * 使用專用 sku 之任何訂用帳戶的預設限制為0。 如果您想要將此 sku 用於生產容器部署，請建立 [Azure 支援要求][azure-support] 來提高限制。
 

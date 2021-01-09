@@ -3,24 +3,24 @@ title: 教學課程 - 建立和管理 Azure 預算
 description: 此教學課程可協助規劃和說明您取用之 Azure 服務的成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: c8b0265a72911688f08e0f8c4a39fa657f034472
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132800"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630134"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
 成本管理中的預算可協助您進行規劃並促進組織責任歸屬。 透過預算，您可以說明您在特定期間所取用或訂閱的 Azure 服務。 它們可協助您通知其他人其費用的相關資訊以主動管理成本，並監視費用在經過一段時間的進展方式。 當超過您所建立的預算閾值時，只會觸發通知。 您的資源都會不受到影響，而您的使用量並不會停止。 當您分析成本時，您可以使用預算來比較及追蹤費用。
 
-成本和使用方式資料通常會在 8-24 小時內提供，而其後將會根據這些成本每 12-14 時評估一次預算。 請務必熟悉[成本和使用量資料更新](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) 詳細資訊。 達到預算閾值時，通常會在評估的一小時內收到電子郵件通知。
+成本和使用方式資料通常會在 8-24 小時內提供，而其後將會根據這些成本每 24 時評估一次預算。 請務必熟悉[成本和使用量資料更新](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) 詳細資訊。 達到預算閾值時，通常會在評估的一小時內收到電子郵件通知。
 
 當您在未來選取到期日時，預算會在期間 (每月、每季或每年) 結束時自動重設相同的預算金額。 因為它們會使用相同的預算金額重設，所以，在預算的貨幣金額與未來期間不同時您需要另外建立預算。
 
@@ -116,7 +116,7 @@ ms.locfileid: "92132800"
 
 ![成本分析中顯示的預算和支出範例](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-在上述範例中，您已針對訂用帳戶建立預算。 您也可以針對資源群組建立預算。 如果您想要針對資源群組建立預算，請瀏覽至 [成本管理 + 計費]&gt;[訂用帳戶]&gt; 選取訂用帳戶 > [資源群組] > 選取資源群組 > [預算] > 然後**新增**預算。
+在上述範例中，您已針對訂用帳戶建立預算。 您也可以針對資源群組建立預算。 如果您想要針對資源群組建立預算，請瀏覽至 [成本管理 + 計費]&gt;[訂用帳戶]&gt; 選取訂用帳戶 > [資源群組] > 選取資源群組 > [預算] > 然後 **新增** 預算。
 
 ### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>針對合併的 Azure 與 AWS 成本建立預算
 

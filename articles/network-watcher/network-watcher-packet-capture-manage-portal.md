@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 099ead37b8d6b46b767ef59ff24a7e7ff9dc9e3c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d4112bd1d632ec21e2d8cb565027277eeb85452d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966440"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018254"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>使用入口網站以 Azure 網路監看員管理封包擷取
 
@@ -79,7 +79,7 @@ ms.locfileid: "94966440"
 ## <a name="delete-a-packet-capture"></a>刪除封包擷取
 
 1. 在封包擷取檢視中，選取位於封包擷取右側的 [...]，或以滑鼠右鍵按一下現有的封包擷取，然後選取 [刪除]。
-2. 系統會要求您確認您要刪除封包擷取。 選取 [是]。
+2. 系統會要求您確認您要刪除封包擷取。 選取 [是]  。
 
 > [!NOTE]
 > 刪除封包擷取時，並不會刪除儲存體帳戶中或虛擬機器上的擷取檔案。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352502"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835154"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>快速入門：在 IoT 中樞上架適用於 IoT 的 Azure Defender
 
@@ -33,7 +33,7 @@ ms.locfileid: "96352502"
   - 適用於 IoT 的 Defender 預設會在 Log Analytics 工作區中儲存兩種類型 (**安全性警示** 和 **建議**) 的資訊。
   - 您可以選擇新增其他資訊類型 (**未經處理的事件**) 的儲存體。 請注意，在 Log Analytics 中儲存 **未經處理的事件** 會帶來額外的儲存體成本。
 - IoT 中樞 (標準層)
-- 符合所有[服務必要條件](service-prerequisites.md)
+- 符合所有[系統必要條件](quickstart-system-prerequisites.md)。
 
 ## <a name="enable-defender-for-iot-on-your-iot-hub"></a>在 IoT 中樞上啟用適用於 IoT 的 Defender
 

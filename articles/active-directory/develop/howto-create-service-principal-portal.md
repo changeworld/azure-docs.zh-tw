@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 46781edad6ad9290932216b9e9f23a359d25497a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366151"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014938"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體
 
@@ -38,14 +38,14 @@ ms.locfileid: "92366151"
 ### <a name="check-azure-ad-permissions"></a>檢查 Azure AD 權限
 
 1. 選取 **Azure Active Directory**。
-1. 記下您的角色。 如果您具有 [使用者]**** 角色，則必須確定非系統管理員可以註冊應用程式。
+1. 記下您的角色。 如果您具有 [使用者] 角色，則必須確定非系統管理員可以註冊應用程式。
 
    ![尋找您的角色。 如果您是使用者，請確定非系統管理員可以註冊應用程式](./media/howto-create-service-principal-portal/view-user-info.png)
 
 1. 在左窗格中，選取 [ **使用者設定**]。
-1. 檢查 [應用程式註冊]**** 設定。 此值只能由系統管理員設定。 若設定為 [是]****，則 Azure AD 租用戶中的任何使用者都可以註冊應用程式。
+1. 檢查 [應用程式註冊] 設定。 此值只能由系統管理員設定。 若設定為 [是]，則 Azure AD 租用戶中的任何使用者都可以註冊應用程式。
 
-如果應用程式註冊設定設為 [否]****，則只有具備系統管理員角色的使用者才能註冊這些類型的應用程式。 若要了解 Azure AD 中可用的系統管理員角色及賦予每個角色的特定權限，請參閱[可用的角色](../roles/permissions-reference.md#available-roles)和[角色權限](../roles/permissions-reference.md#role-permissions)。 如果您的帳戶已獲指派使用者角色，但應用程式註冊設定僅限於系統管理員使用者，請要求系統管理員為您指派其中一個系統管理員角色，以建立和管理應用程式註冊的所有層面，或讓使用者可以註冊應用程式。
+如果應用程式註冊設定設為 [否]，則只有具備系統管理員角色的使用者才能註冊這些類型的應用程式。 若要了解 Azure AD 中可用的系統管理員角色及賦予每個角色的特定權限，請參閱[可用的角色](../roles/permissions-reference.md#available-roles)和[角色權限](../roles/permissions-reference.md#role-permissions)。 如果您的帳戶已獲指派使用者角色，但應用程式註冊設定僅限於系統管理員使用者，請要求系統管理員為您指派其中一個系統管理員角色，以建立和管理應用程式註冊的所有層面，或讓使用者可以註冊應用程式。
 
 ### <a name="check-azure-subscription-permissions"></a>檢查 Azure 訂用帳戶權限
 
@@ -53,7 +53,7 @@ ms.locfileid: "92366151"
 
 若要檢查訂用帳戶權限：
 
-1. 搜尋並選取訂用**帳戶，或選取****首頁**上的**訂閱**。
+1. 搜尋並選取訂用 **帳戶，或選取****首頁** 上的 **訂閱**。
 
    ![搜尋](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "92366151"
 
    ![選取要指派的訂用帳戶](./media/howto-create-service-principal-portal/select-one-subscription.png)
 
-   如果您未看見所尋找的訂用帳戶，請選取 [全域訂閱篩選]****。 確定您想要的訂用帳戶已針對入口網站選取。
+   如果您未看見所尋找的訂用帳戶，請選取 [全域訂閱篩選]。 確定您想要的訂用帳戶已針對入口網站選取。
 
 1. 選取 [我的權限]。 然後，選取 [按一下這裡以詳細檢視此訂用帳戶的完整存取權]。
 
@@ -75,11 +75,11 @@ ms.locfileid: "92366151"
 
 讓我們直接跳到建立身分識別。 如果您遇到問題，請檢查[必要的權限](#permissions-required-for-registering-an-app)，以確定您的帳戶可以建立身分識別。
 
-1. 透過 [Azure 入口網站](https://portal.azure.com)登入您的 Azure 帳戶。
+1. 透過<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>登入您的 Azure 帳戶。
 1. 選取 **Azure Active Directory**。
 1. 選取 **應用程式註冊**。
 1. 選取 [新增註冊]。
-1. 為應用程式命名。 選取支援的帳戶類型，以決定可以使用此應用程式的人員。 在 [重新 **導向 URI**] 下，針對您要建立的應用程式類型選取 [ **Web** ]。 輸入傳送存取權杖的目標 URI。 您無法建立[原生應用程式](../manage-apps/application-proxy-configure-native-client-application.md)的認證。 您無法將該類型使用於自動化應用程式。 設定值之後，選取 [註冊]****。
+1. 為應用程式命名。 選取支援的帳戶類型，以決定可以使用此應用程式的人員。 在 [重新 **導向 URI**] 下，針對您要建立的應用程式類型選取 [ **Web** ]。 輸入傳送存取權杖的目標 URI。 您無法建立[原生應用程式](../manage-apps/application-proxy-configure-native-client-application.md)的認證。 您無法將該類型使用於自動化應用程式。 設定值之後，選取 [註冊]。
 
    ![輸入應用程式的名稱](./media/howto-create-service-principal-portal/create-app.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "92366151"
 
 您可以針對訂用帳戶、資源群組或資源的層級設定範圍。 較低的範圍層級會繼承較高層級的權限。 例如，將應用程式新增至資源群組的「 *讀取* 者」角色，表示它可以讀取資源群組及其包含的任何資源。
 
-1. 在 [Azure 入口網站中，選取您要指派應用程式的範圍層級。 例如，若要在訂用帳戶範圍指派角色，請搜尋並選取訂用帳戶，**或在****首頁****上選取訂**用帳戶。
+1. 在 [Azure 入口網站中，選取您要指派應用程式的範圍層級。 例如，若要在訂用帳戶範圍指派角色，請搜尋並選取訂用帳戶，**或在****首頁****上選取訂** 用帳戶。
 
    ![例如，在訂用帳戶範圍指派角色](./media/howto-create-service-principal-portal/select-subscription.png)
 
@@ -99,9 +99,9 @@ ms.locfileid: "92366151"
 
    ![選取要指派的訂用帳戶](./media/howto-create-service-principal-portal/select-one-subscription.png)
 
-   如果您未看見所尋找的訂用帳戶，請選取 [全域訂閱篩選]****。 確定您想要的訂用帳戶已針對入口網站選取。
+   如果您未看見所尋找的訂用帳戶，請選取 [全域訂閱篩選]。 確定您想要的訂用帳戶已針對入口網站選取。
 
-1. 選取 [存取控制 (IAM)]  。
+1. 選取 [存取控制 (IAM)]。
 1. 選取 [新增角色指派]。
 1. 選取您想要將應用程式指派給哪個角色。 例如，若要允許應用程式執行 **重新開機**、 **啟動** 和 **停止** 實例等動作，請選取 [ **參與者** ] 角色。  依預設，請閱讀 [可用角色](../../role-based-access-control/built-in-roles.md) 的詳細資訊，Azure AD 的應用程式不會顯示在可用的選項中。 若要尋找您的應用程式，請搜尋名稱並加以選取。
 
@@ -118,14 +118,14 @@ ms.locfileid: "92366151"
 以程式設計方式登入時，您需要將租使用者識別碼與您的驗證要求和應用程式識別碼一起傳遞。  您也需要憑證或驗證金鑰 (下一節) 所述。 若要取得這些值，請使用下列步驟︰
 
 1. 選取 **Azure Active Directory**。
-1. 在 Azure AD 中，從 [應用程式註冊]**** 選取您的應用程式。
+1. 在 Azure AD 中，從 [應用程式註冊] 選取您的應用程式。
 1. 複製 (租使用者) 識別碼的目錄，並將它儲存在您的應用程式程式碼中。
 
     ![複製目錄 (租用戶) 識別碼並將它儲存在您的應用程式程式碼中。](./media/howto-create-service-principal-portal/copy-tenant-id.png)
 
     您也可以在 [預設目錄] 總覽頁面中找到 (租使用者) 識別碼的目錄。
 
-1. 複製 [應用程式識別碼]**** 並儲存在您的應用程式碼中。
+1. 複製 [應用程式識別碼] 並儲存在您的應用程式碼中。
 
    ![複製應用程式 (用戶端) 識別碼](./media/howto-create-service-principal-portal/copy-app-id.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "92366151"
 
 ### <a name="option-1-upload-a-certificate"></a>選項1：上傳憑證
 
-您可以使用現有的憑證（如果有的話）。  （選擇性）您可以建立自我簽署憑證以供 *測試之*用。 若要建立自我簽署憑證，請開啟 PowerShell，並使用下列參數執行 [new-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ，以在您電腦上的使用者憑證存放區中建立憑證：
+您可以使用現有的憑證（如果有的話）。  （選擇性）您可以建立自我簽署憑證以供 *測試之* 用。 若要建立自我簽署憑證，請開啟 PowerShell，並使用下列參數執行 [new-selfsignedcertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ，以在您電腦上的使用者憑證存放區中建立憑證：
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -143,7 +143,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 使用可從 Windows 主控台存取的 [ [管理使用者憑證](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) ] MMC 嵌入式管理單元，將此憑證匯出至檔案。
 
-1. 從 [**開始**] 功能表選取 [**執行**]，然後輸入**certmgr.msc。**
+1. 從 [**開始**] 功能表選取 [**執行**]，然後輸入 **certmgr.msc。**
 
    目前使用者的憑證管理員工具隨即出現。
 
@@ -154,7 +154,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 若要上傳憑證：
 
 1. 選取 **Azure Active Directory**。
-1. 在 Azure AD 中，從 [應用程式註冊]**** 選取您的應用程式。
+1. 在 Azure AD 中，從 [應用程式註冊] 選取您的應用程式。
 1. 選取 [憑證和秘密]  。
 1. 選取 [ **上傳憑證** ]，然後選取憑證 (現有憑證或您匯出) 的自我簽署憑證。
 
@@ -169,7 +169,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 如果您選擇不使用憑證，您可以建立新的應用程式密碼。
 
 1. 選取 **Azure Active Directory**。
-1. 在 Azure AD 中，從 [應用程式註冊]**** 選取您的應用程式。
+1. 在 Azure AD 中，從 [應用程式註冊] 選取您的應用程式。
 1. 選取 [憑證和秘密]  。
 1. 選取 [用戶端秘密] -> [新增用戶端密碼]  。
 1. 提供秘密的描述及持續時間。 完成時，選取 [新增]  。
@@ -181,7 +181,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 ## <a name="configure-access-policies-on-resources"></a>設定資源的存取原則
 請記住，您可能需要在應用程式需要存取的資源上設定額外的許可權。 例如，您也必須 [更新金鑰保存庫的存取原則](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) ，讓您的應用程式能夠存取金鑰、秘密或憑證。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至您的金鑰保存庫，然後選取 [ **存取原則**]。
+1. 在 <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure 入口網站</a>中，流覽至您的金鑰保存庫，然後選取 [**存取原則**]。
 1. 選取 [ **新增存取原則**]，然後選取您想要授與應用程式的金鑰、秘密和憑證許可權。  選取您先前建立的服務主體。
 1. 選取 [ **新增** ] 以新增存取原則，然後 **儲存** 以認可您的變更。
     ![新增存取原則](./media/howto-create-service-principal-portal/add-access-policy.png)
@@ -190,4 +190,4 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 * 瞭解如何 [使用 Azure PowerShell 來建立服務主體](howto-authenticate-service-principal-powershell.md)。
 * 若要瞭解如何指定安全性原則，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)。
 * 如需可授與或拒絕使用者的可用動作清單，請參閱 [Azure Resource Manager 資源提供者作業](../../role-based-access-control/resource-provider-operations.md)。
-* 如需使用 **Microsoft Graph**來處理應用程式註冊的詳細資訊，請參閱 [應用程式](/graph/api/resources/application) API 參考。
+* 如需使用 **Microsoft Graph** 來處理應用程式註冊的詳細資訊，請參閱 [應用程式](/graph/api/resources/application) API 參考。

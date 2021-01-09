@@ -1,17 +1,17 @@
 ---
 title: Azure 串流分析中的使用者定義函數
 description: 本文概述 Azure 串流分析中的使用者定義函數。
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c671d3989fa46fa7546ba042b9132e19d80265a1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82598363"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020497"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Azure 串流分析中的使用者定義函數
 
@@ -51,7 +51,7 @@ Azure 串流分析不會記錄所有函式呼叫和傳回的結果。 為了保�
 
 在 Azure 串流分析中使用資料時，資料處理期間的任何例外狀況都會被視為災難性的失敗。 使用者自訂函數有更高的潛能可擲回例外狀況，並導致處理停止。 若要避免這個問題，請在 JavaScript 或 c # 中使用 *try-catch* 區塊，以在程式碼執行期間攔截例外狀況。 您可以記錄和處理攔截到的例外狀況，而不會造成系統失敗。 建議您一律將自訂程式碼包裝在 try-catch 區塊中，以避免擲回 *非* 預期的例外狀況至處理引擎。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 串流分析中的 JavaScript 使用者定義函式](stream-analytics-javascript-user-defined-functions.md)
 * [Azure 串流分析 JavaScript 使用者定義彙總](stream-analytics-javascript-user-defined-aggregates.md)

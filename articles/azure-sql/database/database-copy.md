@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: ''
 ms.date: 10/30/2020
-ms.openlocfilehash: 53e62d790514bd3fb5bef93788fa78944db28c2c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7f053b1984a2d838deb14bacd10cdc071e19d8a1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127734"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035133"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>在 Azure SQL Database 中複製資料庫的交易一致性複本
 
@@ -43,7 +43,7 @@ Azure SQL Database 提供數種方法，可在相同的伺服器或不同的伺�
 
 ## <a name="copy-using-the-azure-portal"></a>使用 Azure 入口網站複製
 
-若要使用 Azure 入口網站來複製資料庫，請開啟資料庫頁面，然後按一下 [複製]  。
+若要使用 Azure 入口網站來複製資料庫，請開啟資料庫頁面，然後按一下 [複製]。
 
    ![資料庫複本](./media/database-copy/database-copy.png)
 
@@ -135,6 +135,46 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 您可以使用「 [將 SQL Database 複製到不同的伺服器](#copy-to-a-different-server) 」一節中的步驟，使用 t-sql 將您的資料庫複製到不同訂用帳戶中的伺服器。 請確定您使用的登入與源資料庫的資料庫擁有者具有相同的名稱和密碼。 此外，登入必須是 `dbmanager` 來源和目標伺服器上角色或伺服器管理員的成員。
 
+```sql
+Step# 1
+Create login and user in the master database of the source server.
+
+CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx'
+GO
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+Step# 2
+Create the user in the source database and grant dbowner permission to the database.
+
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
+GO
+exec sp_addrolemember 'db_owner','loginname'
+GO
+
+Step# 3
+Capture the SID of the user “loginname” from master database
+
+SELECT [sid] FROM sysusers WHERE [name] = 'loginname'
+
+Step# 4
+Connect to Destination server.
+Create login and user in the master database, same as of the source server.
+
+CREATE LOGIN loginname WITH PASSWORD = 'xxxxxxxxx', SID = [SID of loginname login on source server]
+GO
+CREATE USER [loginname] FOR LOGIN [loginname] WITH DEFAULT_SCHEMA=[dbo]
+GO
+exec sp_addrolemember 'dbmanager','loginname'
+GO
+
+Step# 5
+Execute the copy of database script from the destination server using the credentials created
+
+CREATE DATABASE new_database_name
+AS COPY OF source_server_name.source_database_name
+```
+
 > [!NOTE]
 > [Azure 入口網站](https://portal.azure.com)、PowerShell 和 Azure CLI 不支援將資料庫複製到不同的訂用帳戶。
 
@@ -143,10 +183,10 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>監視複製作業的進度
 
-藉由查詢 [sys. 資料庫](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)、 [sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)和 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 視圖，來監視複製程式。 正在進行複製時，新資料庫之 sys. 資料庫檢視的 **state_desc** 資料行會設定為 [ **複製** ]。
+藉由查詢 [sys. 資料庫](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql)、 [sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)和 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 視圖，來監視複製程式。 正在進行複製時，新資料庫之 sys. 資料庫檢視的 **state_desc** 資料行會設定為 [ **複製**]。
 
-* 如果複製失敗，新資料庫之 sys. 資料庫檢視的 [ **state_desc** ] 資料行會設定為 [ **可疑** ]。 在新的資料庫上執行 DROP 陳述式，稍後再試一次。
-* 如果複製成功，新資料庫之 sys. 資料庫檢視的 **state_desc** 資料行會設定為 **ONLINE** 。 複製已完成且新資料庫是一般資料庫，能夠與來源資料庫分開進行變更。
+* 如果複製失敗，新資料庫之 sys. 資料庫檢視的 [ **state_desc** ] 資料行會設定為 [ **可疑**]。 在新的資料庫上執行 DROP 陳述式，稍後再試一次。
+* 如果複製成功，新資料庫之 sys. 資料庫檢視的 **state_desc** 資料行會設定為 **ONLINE**。 複製已完成且新資料庫是一般資料庫，能夠與來源資料庫分開進行變更。
 
 > [!NOTE]
 > 如果您決定在進行複製時予以取消，請在新資料庫上執行 [DROP DATABASE](/sql/t-sql/statements/drop-database-transact-sql) 陳述式。
@@ -208,7 +248,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 | 40570 |16 |資料庫複製因內部錯誤而失敗。 請卸除目標資料庫並稍後再試一次。 |
 | 40571 |16 |資料庫複製因內部錯誤而失敗。 請卸除目標資料庫並稍後再試一次。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需登入的相關資訊，請參閱 [管理](logins-create-manage.md) 登入，以及 [如何在嚴重損壞修復之後管理 Azure SQL Database 安全性](active-geo-replication-security-configure.md)。
 * 若要匯出資料庫，請參閱將 [資料庫匯出至 BACPAC](database-export.md)。

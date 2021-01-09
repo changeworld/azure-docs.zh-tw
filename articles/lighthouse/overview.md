@@ -1,20 +1,20 @@
 ---
 title: 什麼是 Azure Lighthouse ？
 description: Azure Lighthouse 能讓服務提供者以高度自動化且有效率的方式為其客戶傳遞受控服務。
-ms.date: 12/10/2020
+ms.date: 12/16/2020
 ms.topic: overview
-ms.openlocfilehash: bef6107878f36e02a896b3c38b8913ebb50169a7
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: b9215f42e3ad3b7517d14fdaee710a31680ce453
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356356"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617148"
 ---
 # <a name="what-is-azure-lighthouse"></a>什麼是 Azure Lighthouse ？
 
 Azure Lighthouse 支援跨租用戶和多租用戶管理，允許更高的自動化、可擴縮性以及跨資源和租用戶的強化治理。
 
-透過 Azure Lighthouse，服務提供者可以使用內建於 Azure 平台、完整且強大的管理工具來傳遞受控服務。 客戶可以控制誰能存取其租用戶、其可以存取哪些資源，以及可以採取哪些動作。 此供應項目也能為跨多個租用戶管理資源的[企業 IT 組織](concepts/enterprise.md)帶來好處。
+透過 Azure Lighthouse，服務提供者可以使用內建於 Azure 平台、完整且強大的管理工具來傳遞受控服務。 客戶可以控制誰能存取其租用戶、他們可以存取哪些資源，以及可以採取哪些動作。 此供應項目也能為跨多個租用戶管理資源的[企業 IT 組織](concepts/enterprise.md)帶來好處。
 
 ![Azure Lighthouse 的概觀圖表](media/azure-lighthouse-overview.jpg)
 

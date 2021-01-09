@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 01/08/2021
 ms.locfileid: "92109182"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>使用 Sqoop 在 Data Lake Storage Gen1 和 Azure SQL Database 之間複製資料
@@ -24,7 +24,7 @@ ms.locfileid: "92109182"
 
 [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) 是一個專門設計來在關聯式資料庫和巨量資料儲存機制 (例如 Azure Data Lake Storage Gen1) 之間傳送資料的工具。 您可以使用它從像是 Azure SQL Database 這類的關聯式資料庫管理系統 (RDBMS)，匯入資料至 Azure Data Lake Storage Gen1。 然後，您可以使用大型資料工作負載來轉換和分析資料，然後將資料匯出回 RDBMS。 在本文中，您會使用 Azure SQL Database 中的資料庫作為要匯入/匯出來源的關係資料庫。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，您必須具備下列條件：
 
@@ -97,7 +97,7 @@ HDInsight 叢集已有可用的 Sqoop 套件。 如果您已將 HDInsight 叢集
     sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
     ```
 
-   **Sql-資料庫-伺服器名稱**預留位置代表資料庫執行所在的伺服器名稱。 **sql-database-name** 預留位置代表實際的資料庫名稱。
+   **Sql-資料庫-伺服器名稱** 預留位置代表資料庫執行所在的伺服器名稱。 **sql-database-name** 預留位置代表實際的資料庫名稱。
 
    例如，
 
@@ -105,7 +105,7 @@ HDInsight 叢集已有可用的 Sqoop 套件。 如果您已將 HDInsight 叢集
     sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
     ```
 
-1. 請確認資料已被傳輸至 Data Lake Storage Gen1 帳戶。 執行下列命令：
+1. 請確認資料已被傳輸至 Data Lake Storage Gen1 帳戶。 執行以下命令：
 
     ```console
     hdfs dfs -ls adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/
@@ -121,7 +121,7 @@ HDInsight 叢集已有可用的 Sqoop 套件。 如果您已將 HDInsight 叢集
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   每個 **部分-m-*** 檔案都會對應到來源資料表 **Table1**中的一個資料列。 您可以檢視 part-m-* 檔案的內容來確認。
+   每個 **部分-m-** _ 檔案都會對應到來源資料表中的一個資料列，即 _ *Table1 * *。您可以查看部分 m* 檔案的內容以進行驗證。
 
 ### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>從 Data Lake Storage Gen1 將資料匯出到 Azure SQL Database
 

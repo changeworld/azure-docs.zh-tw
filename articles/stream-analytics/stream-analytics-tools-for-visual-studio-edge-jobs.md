@@ -3,23 +3,22 @@ title: Visual Studio 中的 Azure 串流分析 Edge 作業
 description: 本文說明如何使用適用于 Visual Studio 的串流分析工具，在 IoT Edge 工作上撰寫、偵測和建立串流分析。
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ff983169e15c74bf343993b66088932a538c36
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 09151ea0fe3d419401d576149f6655b8cdc09f8e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127513"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019953"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>使用 Visual Studio 工具來開發串流分析 Edge 作業
 
 在本教學課程中，您將瞭解如何使用適用于 Visual Studio 的串流分析工具。 您將瞭解如何撰寫、偵測和建立您的串流分析 Edge 作業。 建立和測試作業之後，您可以前往 Azure 入口網站將其部署到您的裝置。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，您需要下列必要條件：
 
@@ -29,7 +28,7 @@ ms.locfileid: "93127513"
  
 ## <a name="create-a-stream-analytics-edge-project"></a>建立串流分析 Edge 專案 
 
-從 **Visual Studio 選取 [** 檔案  >  **新增**  >  **專案** ]。 巡覽至左側 [範本] 清單 > 展開 [Azure 串流分析] > [串流分析 Edge] > [Azure 串流分析 Edge 應用程式]。 為您的專案提供名稱、位置及解決方案名稱，然後選取 [確定]。
+從 **Visual Studio 選取 [** 檔案  >  **新增**  >  **專案**]。 巡覽至左側 [範本] 清單 > 展開 [Azure 串流分析] > [串流分析 Edge] > [Azure 串流分析 Edge 應用程式]。 為您的專案提供名稱、位置及解決方案名稱，然後選取 [確定]。
 
 ![Visual Studio 中的新串流分析 Edge 專案](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
@@ -57,7 +56,7 @@ ms.locfileid: "93127513"
 
 1. 在 [方案總管] 中，展開 [輸出] 節點，您應該會看到名為 **EdgeOutput.json** 的輸出。 按兩下以檢視其設定。  
 
-2. 請務必將接收器設定為選取 **Edge 中樞** 、將事件序列化格式設定為 **Json** 、將編碼設定為 **UTF8** ，以及設定格式 **陣列** 。 (選擇性) 您可以將 [輸出別名] 重新命名，在此範例中，我們將它保持原狀。 如果您將輸出別名重新命名，請使用您定義查詢時指定的名稱。 選取 [儲存]  以儲存設定。 
+2. 請務必將接收器設定為選取 **Edge 中樞**、將事件序列化格式設定為 **Json**、將編碼設定為 **UTF8**，以及設定格式 **陣列**。 (選擇性) 您可以將 [輸出別名] 重新命名，在此範例中，我們將它保持原狀。 如果您將輸出別名重新命名，請使用您定義查詢時指定的名稱。 選取 [儲存]  以儲存設定。 
    ![串流分析作業輸出組態](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
 ## <a name="define-the-transformation-query"></a>定義轉換查詢
@@ -71,7 +70,7 @@ ms.locfileid: "93127513"
 
 當您在入口網站中建立串流分析 Edge 作業時，如果您未使用支援的運算子，編譯器會自動警告您。
 
-在您的 Visual Studio 中，請在查詢編輯器中定義下列轉換查詢 ( **script.asaql 檔案** )
+在您的 Visual Studio 中，請在查詢編輯器中定義下列轉換查詢 (**script.asaql 檔案**)
 
 ```sql
 SELECT * INTO EdgeOutput
@@ -88,7 +87,7 @@ FROM EdgeInput
    ![Visual Studio 中的本機輸入組態](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
 3. 系統會自動在您的 inputs 資料夾中新增名為 **local_EdgeInput.json** 的檔案。  
-4. 您可以在本機執行，或提交至 Azure。 若要測試查詢，請選取 [在 **本機執行** ]。  
+4. 您可以在本機執行，或提交至 Azure。 若要測試查詢，請選取 [在 **本機執行**]。  
    ![Visual Studio 中的串流分析作業執行選項](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  
 5. 命令提示字元視窗會顯示作業的狀態。 作業執行成功時，它會在您的專案資料夾路徑 "Visual Studio 2015\Projects\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42" 中建立一個類似 "2018-02-23-11-31-42" 的資料夾。 巡覽至資料夾路徑以檢視本機資料夾中的結果：
@@ -111,7 +110,7 @@ FROM EdgeInput
 
 ## <a name="manage-the-job"></a>管理作業 
 
-您可以在 [伺服器總管] 中檢視作業的狀態和作業圖表。 從 **伺服器總管** 中的 **串流分析** ，展開訂用帳戶和您部署串流分析 Edge 作業的資源群組。 您可以檢視 [已建立] 狀態的 MyASAEdgejob。 展開作業節點並按兩下來開啟作業檢視。
+您可以在 [伺服器總管] 中檢視作業的狀態和作業圖表。 從 **伺服器總管** 中的 **串流分析**，展開訂用帳戶和您部署串流分析 Edge 作業的資源群組。 您可以檢視 [已建立] 狀態的 MyASAEdgejob。 展開作業節點並按兩下來開啟作業檢視。
 
 ![伺服器總管作業管理選項](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  

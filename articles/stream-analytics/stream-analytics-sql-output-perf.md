@@ -3,16 +3,15 @@ title: 從 Azure 串流分析提高 Azure SQL Database 的輸送量效能
 description: 了解從 Azure 串流分析將資料輸出至 Azure SQL Database，達到更高的寫入輸送速率。
 author: chetanmsft
 ms.author: chetang
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: a902cbc8256e249a608a5da8436a1145ddb0d565
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 8baa33c8d9622ff76db04345f5c6c465f026e261
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490928"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020225"
 ---
 # <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>從 Azure 串流分析提高 Azure SQL Database 的輸送量效能
 
@@ -41,7 +40,7 @@ Azure 串流分析中的 SQL 輸出支援平行寫入作為選項。 此選項�
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory 及記憶體內部資料表
 
-- 記憶體內部 **資料表為臨時表** - [記憶體中的資料表](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)允許非常高速的資料載入，但資料必須符合記憶體。 效能評定顯示從記憶體內部資料表大量載入磁碟式資料表的速度，大約是使用單一寫入器直接大量插入具有識別欄位和叢集索引磁碟式資料表的 10 倍。 若要利用此大量插入效能，請[使用 Azure Data Factory 設定複製作業](../data-factory/connector-azure-sql-database.md)，從記憶體內部資料表將資料複製到以磁碟為基礎的資料表。
+- 記憶體內部 **資料表為臨時表**-[記憶體中的資料表](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)允許非常高速的資料載入，但資料必須符合記憶體。 效能評定顯示從記憶體內部資料表大量載入磁碟式資料表的速度，大約是使用單一寫入器直接大量插入具有識別欄位和叢集索引磁碟式資料表的 10 倍。 若要利用此大量插入效能，請[使用 Azure Data Factory 設定複製作業](../data-factory/connector-azure-sql-database.md)，從記憶體內部資料表將資料複製到以磁碟為基礎的資料表。
 
 ## <a name="avoiding-performance-pitfalls"></a>避免效能陷阱
 大量插入資料比使用單一插入載入資料快許多，因為傳送資料的重複負荷、剖析 insert 語句、執行語句，以及發出交易記錄都是避免的。 相反地，儲存引擎會使用更有效率的路徑來串流資料。 但是，這個路徑的設定成本比以磁片為基礎的資料表中的單一 insert 語句高出許多。 這點通常是大約100的資料列，但大量載入幾乎一律較有效率。 

@@ -2,17 +2,17 @@
 title: 在 Azure 串流分析中剖析 JSON 和 AVRO
 description: 本文說明如何對複雜資料類型 (如 陣列、JSON、CSV 格式的資料) 進行作業。
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6c2eb4225cb014b3251d12470e4e9827150a5cf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f6cb131fb3ff3cab4122aac5e1c6960dee4f8421
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123348"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012235"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>在 Azure 串流分析中剖析 JSON 和 Avro 資料
 
@@ -91,7 +91,7 @@ FROM input
 
 如果屬性名稱為變數，請使用 [GetRecordPropertyValue](/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) \(英文\) 函式。 這可讓您在無需對屬性名稱進行硬式編碼的情況下建置動態查詢。
 
-例如，假設範例資料流需要與包含每個裝置感應器閾值的 **參考資料聯結** 。 下列顯示這類參考資料的程式碼片段。
+例如，假設範例資料流需要與包含每個裝置感應器閾值的 **參考資料聯結**。 下列顯示這類參考資料的程式碼片段。
 
 ```json
 {

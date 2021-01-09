@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 2af79efa2bd1685d0e7bd621e2ddb8930425dee1
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: cdd32185d1ffddb4c6bc3d62b91690f68dec17ca
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614892"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014717"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>註冊呼叫 web Api 的行動應用程式
 
@@ -83,7 +83,7 @@ ms.locfileid: "97614892"
 
 不過，您必須將應用程式識別為公用用戶端應用程式。 操作方法：
 
-1. 仍在 [Azure 入口網站](https://portal.azure.com)中，選取 **應用程式註冊** 中的應用程式，然後選取 [ **驗證**]。
+1. 仍在 <a href="https://portal.azure.com/" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> Azure 入口網站</a>中，選取 **應用程式註冊** 中的應用程式，然後選取 [**驗證**]。
 1. 在 [**高級設定**] 中，  >  **允許公用用戶端流程**  >  **啟用下列行動和桌面流程：**，選取 **[是]**。
 
    :::image type="content" source="media/scenarios/default-client-type.png" alt-text="在 Azure 入口網站中啟用 [驗證] 窗格上的 [公用用戶端設定]":::

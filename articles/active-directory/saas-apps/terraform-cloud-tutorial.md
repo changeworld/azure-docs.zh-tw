@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/29/2020
+ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: a960bb3590138ca5efa5146988240db1707a3cf0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c26224f388c09ec758373c877004f5485bb420df
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182116"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725070"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-cloud"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Terraform Cloud 整合
 
@@ -76,7 +76,7 @@ ms.locfileid: "96182116"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
+1. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請執行下列步驟：
 
     在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://app.terraform.io/sso/saml/samlconf-<ID>/metadata`
 
@@ -100,7 +100,7 @@ ms.locfileid: "96182116"
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下 [建立]。
+   1. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -116,7 +116,15 @@ ms.locfileid: "96182116"
 
 ## <a name="configure-terraform-cloud-sso"></a>設定 Terraform Cloud SSO
 
-1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入 Terraform Cloud 網站。
+1. 若要自動執行 Terraform Cloud 內的設定，您必須按一下 [安裝擴充功能] 來安裝「我的應用程式安全登入瀏覽器擴充功能」。
+
+    ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
+
+2. 將擴充功能新增至瀏覽器之後，按一下 [設定 Terraform Cloud] 便會將您導向到 Terraform Cloud 應用程式。 請從該處提供用以登入 Terraform Cloud 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式，並自動執行步驟 3 到 5。
+
+    ![設定組態](common/setup-sso.png)
+
+3. 如果您想要手動設定 Terraform Cloud，請在不同的 Web 瀏覽器視窗中，以系統管理員身分登入您的 Terraform Cloud 公司網站。
 
 2. 移至 [設定] > [SSO] > [編輯設定]
 

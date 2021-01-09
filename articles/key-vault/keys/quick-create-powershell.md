@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3cea28fa278bb699a7fb5aaa0c79bf1e71f59ac1
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: e3570a716eccf131cf19192454bfbc1008a6306e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91940492"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935031"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 從 Azure Key Vault 設定及擷取金鑰
 
@@ -94,4 +94,4 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 - 閱讀 [Azure Key Vault 概觀](../general/overview.md)
 - 請參閱 [Azure PowerShell Key Vault Cmdlet](/powershell/module/az.keyvault/) 的參考
-- 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 請參閱 [Key Vault 安全性概觀](../general/security-overview.md)

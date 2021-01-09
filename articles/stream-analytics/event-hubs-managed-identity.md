@@ -1,17 +1,17 @@
 ---
 title: '使用受控識別從 Azure 串流分析作業存取事件中樞 (預覽版) '
 description: 本文說明如何使用受控識別來驗證您的 Azure 串流分析作業，以 Azure 事件中樞輸入和輸出。
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/04/2021
-ms.openlocfilehash: ca27df7188c5edd1da94fc41707f6c25eb4034bf
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 4dc718f21f2ef3beabc31821bd60b571ac07be05
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895133"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018746"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>使用受控識別從 Azure 串流分析作業存取事件中樞 (預覽版) 
 
@@ -56,7 +56,7 @@ Azure 串流分析支援 Azure 事件中樞輸入和輸出的受控識別驗證�
    |---------|-----|
    |角色|Azure 事件中樞資料擁有者|
    |存取權指派對象|使用者、群組或服務主體|
-   |選取|輸入您的串流分析作業名稱|
+   |Select|輸入您的串流分析作業名稱|
 
    :::image type="content" source="media/event-hubs-managed-identity/add-role-assignment.png" alt-text="新增角色指派":::
 

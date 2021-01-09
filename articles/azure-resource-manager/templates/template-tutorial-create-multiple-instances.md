@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: fc1401959adb97f8c4caf6d413a212d9f3b62801
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e669e27547633639a88674ffee499fb1d84facdf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588109"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673948"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>教學課程：使用 ARM 範本建立多個資源執行個體
 
@@ -27,6 +27,8 @@ ms.locfileid: "97588109"
 > * 部署範本
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+
+對於涵蓋資源複本的 Microsoft Learn 模組，請參閱[使用進階 ARM 範本功能管理複雜的雲端部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -177,10 +179,10 @@ Write-Host "Press [ENTER] to continue ..."
 
 不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
-2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
+2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
 3. 選取資源群組名稱。  您在資源群組中應該會看到共計三個資源。
-4. 從頂端功能表中選取 [刪除資源群組]。
+4. 從頂端功能表中選取 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟
 

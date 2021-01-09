@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e9a2259f1e15a94ad1f2a9eabf7d3a2f3ed419f1
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387797"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755985"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>適用於 SQL 的 Azure Defender 簡介
 
@@ -53,7 +53,9 @@ ms.locfileid: "97387797"
 
 - [弱點評量](../azure-sql/database/sql-vulnerability-assessment.md) - 掃描服務以探索、追蹤及協助您修復潛在的資料庫弱點。 評量掃描可讓您概略了解 SQL 機器的安全性狀態，並提供任何安全性結果的詳細資料。
 
-- [進階威脅防護](../azure-sql/database/threat-detection-overview.md) - 此偵測服務會持續監視您的 SQL 伺服器是否有威脅，例如 SQL 插入式攻擊、暴力密碼破解攻擊和權限濫用。 這項服務會在 Azure 資訊安全中心提供動作導向的安全性警示，以及可疑活動的詳細資料、如何降低威脅的指引，以及使用 Azure Sentinel 繼續進行調查的選項。
+- [進階威脅防護](../azure-sql/database/threat-detection-overview.md) - 此偵測服務會持續監視您的 SQL 伺服器是否有威脅，例如 SQL 插入式攻擊、暴力密碼破解攻擊和權限濫用。 這項服務會在 Azure 資訊安全中心提供動作導向的安全性警示，以及可疑活動的詳細資料、如何降低威脅的指引，以及使用 Azure Sentinel 繼續進行調查的選項。 
+    > [!TIP]
+    > 在[警示參考頁面中](alerts-reference.md#alerts-sql-db-and-warehouse)，檢視 SQL 伺服器的安全性警示清單。
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>適用於 SQL 的 Azure Defender 提供何種警示？
@@ -74,8 +76,3 @@ ms.locfileid: "97387797"
 
 > [!div class="nextstepaction"]
 > [使用 Azure Defender 掃描 SQL Server 中的弱點](defender-for-sql-usage.md)
-
-如需相關內容，請參閱下列文章： 
-
-- [如何啟用適用於 SQL 資料庫伺服器的 Azure Defender](../azure-sql/database/azure-defender-for-sql.md)
-- [SQL Server 的安全性警示清單](alerts-reference.md#alerts-sql-db-and-warehouse)

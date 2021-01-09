@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437145"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018066"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>將數百 TB 的資料遷移至 Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB 的遷移策略目前會根據 API 選擇和資料大小而有�
 
 自訂工具會使用大量執行程式程式庫，並支援跨多個用戶端相應放大，並在內嵌進程期間追蹤錯誤。 若要使用此工具，來源資料應該分割成 Azure Data Lake Storage (ADLS) 中的不同檔案，讓不同的遷移工作者可以挑選每個檔案，並將其內嵌到 Azure Cosmos DB。 自訂工具會使用個別的集合，該集合會儲存 ADLS 中每個個別原始程式檔之遷移進度的相關中繼資料，並追蹤任何與其相關聯的錯誤。  
 
-下圖說明使用此自訂工具的遷移程式。 此工具會在一組虛擬機器上執行，而且每個虛擬機器都會查詢 Azure Cosmos DB 中的追蹤集合，以取得其中一個來源資料分割的租用。 完成這項操作之後，工具會讀取來源資料分割區，並使用大量執行程式程式庫內嵌至 Azure Cosmos DB。 接下來，會更新追蹤集合，以記錄資料內嵌的進度，以及任何遇到的錯誤。 處理資料分割之後，工具會嘗試查詢下一個可用的來源資料分割。 它會繼續處理下一個來源分割區，直到所有資料都遷移為止。 此工具的原始程式碼可在 [這裡](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)取得。  
+下圖說明使用此自訂工具的遷移程式。 此工具會在一組虛擬機器上執行，而且每個虛擬機器都會查詢 Azure Cosmos DB 中的追蹤集合，以取得其中一個來源資料分割的租用。 完成這項操作之後，工具會讀取來源資料分割區，並使用大量執行程式程式庫內嵌至 Azure Cosmos DB。 接下來，會更新追蹤集合，以記錄資料內嵌的進度，以及任何遇到的錯誤。 處理資料分割之後，工具會嘗試查詢下一個可用的來源資料分割。 它會繼續處理下一個來源分割區，直到所有資料都遷移為止。 此工具的原始程式碼可在 [Azure Cosmos DB 大量](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion) 內嵌存放庫中取得。  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="遷移工具設定" border="false":::

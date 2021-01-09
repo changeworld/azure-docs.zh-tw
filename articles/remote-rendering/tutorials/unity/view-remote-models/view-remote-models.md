@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 834df29597abaaadad98b232ce75b32a6431cfc2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d954d4c20dc267a8f62349b5e450710a78af8d9f
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574729"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724565"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>教學課程：檢視遠端轉譯模型
 
@@ -238,6 +238,14 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     }
 
     [SerializeField]
+    private string accountAuthenticationDomain = "<enter your account authentication domain here>";
+    public string AccountAuthenticationDomain
+    {
+        get => accountAuthenticationDomain.Trim();
+        set => accountAuthenticationDomain = value;
+    }   
+
+    [SerializeField]
     private string accountKey = "<enter your account key here>";
     public string AccountKey {
         get => accountKey.Trim();
@@ -326,7 +334,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     private async Task<AzureFrontendAccountInfo> GetDevelopmentCredentials()
     {
         Debug.LogWarning("Using development credentials! Not recommended for production.");
-        return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AccountId, AccountKey));
+        return await Task.FromResult(new AzureFrontendAccountInfo(AccountAuthenticationDomain, AccountDomain, AccountId, AccountKey));
     }
 
     /// <summary>
@@ -540,7 +548,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 1. 將 RemoteRenderingCoordinator 指令碼新增至 **RemoteRenderingCoordinator** GameObject。\
 ![新增 RemoteRenderingCoordinator 元件](./media/add-coordinator-script.png)
 1. 確認 ARRServiceUnity 指令碼 (在偵測器中顯示為「服務」) 會自動新增至 GameObject。 如果您想知道，這是 `[RequireComponent(typeof(ARRServiceUnity))]` 在 **RemoteRenderingCoordinator** 指令碼頂端的結果。
-1. 將您的 Azure 遠端轉譯認證和帳戶網域新增至協調器指令碼：\
+1. 將您的 Azure 遠端轉譯認證、帳戶驗證網域以及帳戶網域新增至協調器指令碼：
 ![新增您的認證](./media/configure-coordinator-script.png)
 
 ## <a name="initialize-azure-remote-rendering"></a>初始化 Azure 遠端轉譯

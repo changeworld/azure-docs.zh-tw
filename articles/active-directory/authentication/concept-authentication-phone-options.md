@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d3a00491bc0628244a5a7907f0dee03a5f8d3c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744188"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012830"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-phone 選項中的驗證方法
 
@@ -58,6 +58,8 @@ Microsoft 不保證一致的 SMS 或以語音為基礎的 Azure AD Multi-Factor 
 
 * 「在登入期間，您已達到對驗證呼叫的限制」或「您已達到文字驗證碼的限制」錯誤訊息
    * Microsoft 可能會在短時間內限制相同使用者所執行的重複驗證嘗試。 此限制不適用於 Microsoft Authenticator 或驗證碼。 如果您已達到這些限制，您可以使用驗證器應用程式、驗證碼，或在幾分鐘內嘗試重新登入。
+* 「抱歉，登入期間無法驗證您的帳戶」錯誤訊息
+   * Microsoft 可能會限制或封鎖由相同使用者、電話號碼或組織所執行的語音或 SMS 驗證嘗試，因為有大量的語音或 SMS 驗證嘗試失敗。 如果您遇到此錯誤，您可以嘗試其他方法（例如驗證器應用程式或驗證碼），或與您的系統管理員聯繫以尋求支援。
 * 在單一裝置上封鎖了呼叫者識別碼。
    * 檢閱裝置上設定的任何已封鎖號碼。
 * 錯誤的電話號碼或不正確的國家/區域碼，或個人電話號碼與公司電話號碼混淆不清。

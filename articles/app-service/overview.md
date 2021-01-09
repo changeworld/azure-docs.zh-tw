@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007088"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936204"
 ---
 # <a name="app-service-overview"></a>App Service 概觀
 
@@ -45,6 +45,12 @@ App Service 也可以針對支援的應用程式堆疊，在 Linux 上以原生�
 ### <a name="built-in-languages-and-frameworks"></a>內建語言和架構
 
 Linux 上的 App Service 支援許多語言特定的內建映像。 請直接部署您的程式碼即可。 支援的語言包括：Node.js、Java (JRE 8 和 JRE 11)、PHP、Python、.NET Core 和 Ruby。 執行 [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) 以檢視最新的語言和支援的版本。 如果內建映像不支援應用程式所需的執行階段，您可以使用自訂容器進行部署。
+
+已過期的執行階段會從入口網站中的 Web 應用程式 [建立] 和 [設定] 刀鋒視窗定期移除。 這些執行階段在維護組織淘汰或發現有重大弱點時，會從入口網站中隱藏。 這些選項都是隱藏的，以將客戶引導至最成功的最新執行階段。 
+
+從入口網站中隱藏過期的執行階段時，使用該版本的任何現有網站都會繼續執行。 如果執行階段已從 App Service 平台完全移除，您的 Azure 訂用帳戶擁有者將會在移除之前收到電子郵件通知。
+
+如果您需要使用已過期的執行階段版本 (不再顯示在入口網站上) 來建立另一個 Web 應用程式，請參閱語言設定指南，以取得如何取得網站執行階段版本的指示。 您可以使用 Azure CLI，以相同的執行階段建立另一個網站。 或者，您可以使用入口網站中 Web 應用程式刀鋒視窗上的 [匯出範本] 按鈕，匯出網站的 ARM 範本。 您可以重複使用此範本來部署具有相同執行階段和設定的新網站。
 
 ### <a name="limitations"></a>限制
 

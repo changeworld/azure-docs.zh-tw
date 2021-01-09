@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d04f2d1717e1d95f8bcafb8f72f2b0a2f83a248
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 6da053bb04e5ee3f2b2b307c382f2695663669e5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976821"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020650"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -87,6 +87,14 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 >* 安全性群組和 Microsoft 365 群組擁有者，他們可以管理群組成員資格。 這個群組可以存取機密或私人資訊或者 Azure AD 和其他位置中的重要組態。
 >* Azure AD 外部其他服務 (例如，Exchange Online、Office 安全性與合規性中心和人力資源系統) 中的系統管理員。
 >* 非系統管理員，例如主管、法律顧問和人力資源員工，他們可以存取機密或私人資訊。
+
+### <a name="attack-payload-author"></a>[攻擊承載作者](#attack-payload-author-permissions)
+
+此角色中的使用者可以建立攻擊承載，但不會實際啟動或排程它們。 然後，可以將攻擊承載提供給租使用者中的所有系統管理員使用，以建立模擬。
+
+### <a name="attack-simulation-administrator"></a>[攻擊模擬系統管理員](#attack-simulation-administrator-permissions)
+
+此角色的使用者可以建立和管理攻擊模擬建立的所有層面、啟動/排程模擬，以及審核模擬結果。 此角色的成員具有租使用者中所有模擬的此存取權。
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps 管理員](#azure-devops-administrator-permissions)
 
@@ -489,6 +497,10 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 此角色的使用者可以透過 Microsoft Teams 和商務用 Skype 系統管理中心以及個別的 PowerShell 模組，管理 Microsoft Teams 工作負載的所有層面。 這包括所有與電話語音、傳訊、會議和小組本身相關的管理工具以及其他領域。 此角色會另外授與建立和管理所有 Microsoft 365 群組、管理支援票證，以及監視服務健康情況的能力。
 
+### <a name="usage-summary-reports-reader"></a>[使用量摘要報表讀者](#usage-summary-reports-reader-permissions)
+
+具有此角色的使用者可以存取 Microsoft 365 系統管理中心內的租使用者層級匯總資料和相關見解，以取得使用量和生產力分數，但無法存取任何使用者層級的詳細資料或深入資訊。 在兩份報告的 Microsoft 365 系統管理中心，我們會區分租使用者層級的匯總資料和使用者層級的詳細資料。 此角色可針對個別使用者識別資料提供額外一層保護，這是由客戶和法律團隊所要求。 
+
 ### <a name="user-administrator"></a>[使用者管理員](#user-administrator-permissions)
 
 具有此角色的使用者可以建立使用者，以及管理使用者的所有層面，但有一些限制 (查看資料表) ，而且可以更新密碼到期原則。 此外，具有此角色的使用者可以建立與管理所有群組。 此角色也包含建立和管理使用者檢視、管理支援票證，以及監視服務健康情況的能力。 對於具有大部分系統管理員角色的使用者，使用者管理員沒有權限可管理其某些使用者屬性。 具有此角色的使用者沒有管理 MFA 的權限。 下表列出此限制的例外角色。
@@ -591,6 +603,25 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Microsoft 365 服務健康狀態。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
 | microsoft.directory/users/password/update | 更新 Microsoft 365 組織中所有使用者的密碼。 如需詳細資訊，請參閱線上文件。 |
+
+### <a name="attack-payload-author-permissions"></a>攻擊承載的作者許可權
+
+可以建立稍後可由系統管理員部署的攻擊承載。
+
+| **動作** | **說明** |
+| --- | --- |
+| office365. Microsoft.office365.protectioncenter/attackSimulator/承載/allProperties/allTasks | 在攻擊模擬器中建立和管理攻擊承載。 |
+| office365. Microsoft.office365.protectioncenter/attackSimulator/reports/allProperties/read | 讀取攻擊模擬、回應和相關定型的報告。 |
+
+### <a name="attack-simulation-administrator-permissions"></a>攻擊模擬系統管理員許可權
+
+可以建立和管理攻擊模擬活動的所有層面。
+
+| **動作** | **說明** |
+| --- | --- |
+| office365. Microsoft.office365.protectioncenter/attackSimulator/承載/allProperties/allTasks | 在攻擊模擬器中建立和管理攻擊承載。 |
+| office365. Microsoft.office365.protectioncenter/attackSimulator/reports/allProperties/read | 讀取攻擊模擬、回應和相關定型的報告。 |
+| office365. Microsoft.office365.protectioncenter/attackSimulator/模擬/allProperties/allTasks | 在攻擊模擬器中建立和管理攻擊模擬範本。 |
 
 ### <a name="azure-devops-administrator-permissions"></a>Azure DevOps 管理員權限
 
@@ -1876,6 +1907,14 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 | microsoft. 團隊/allEntities/allProperties/allTasks | 管理小組中的所有資源。 |
 
+### <a name="usage-summary-reports-reader-permissions"></a>使用量摘要報表讀取者許可權
+只能查看 M365 使用量分析和生產力分數中的租使用者層級匯總。
+
+| **動作** | **說明** |
+| --- | --- |
+| office365. usageReports/allEntities/standard/read | 讀取租使用者層級的匯總 Office 365 使用量報表。 |
+| microsoft.office365.webPortal/allEntities/standard/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。|
+
 ### <a name="user-administrator-permissions"></a>使用者管理員權限
 能夠管理使用者與群組的所有層面，包含為受限制的管理員重設密碼。
 
@@ -1922,6 +1961,8 @@ Graph displayName | Azure 入口網站顯示名稱 | directoryRoleTemplateId
 應用程式系統管理員 | 應用程式管理員 | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 應用程式開發人員 | 應用程式開發人員 | CF1C38E5-3621-4004-A7CB-879624DCED7C
 驗證系統管理員 | 驗證管理員 | c4e39bd9-1100-46d3-8c65-fb160da0071f
+攻擊承載作者 | 攻擊承載作者 | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
+攻擊模擬系統管理員 | 攻擊模擬系統管理員 | c430b396-e693-46cc-96f3-db01bf8bb62a
 Azure DevOps 管理員 | Azure DevOps 管理員 | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure 資訊保護管理員 | Azure 資訊保護管理員 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C IEF 金鑰集管理員 | B2C IEF 金鑰集管理員 | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1985,6 +2026,7 @@ Microsoft Teams 通訊支援工程師 | Microsoft Teams 通訊支援工程師 | 
 Microsoft Teams 通訊支援專家 | Microsoft Teams 通訊支援專家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams 裝置管理員 | Teams 裝置管理員 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
 Microsoft Teams 服務管理員 | Microsoft Teams 服務管理員 | 69091246-20e8-4a56-aa4d-066075b2a7a8
+使用量摘要報表讀者 | 使用量摘要報表讀者 | 75934031-6c7e-415a-99d7-48dbd49e875e
 User | 未顯示，因為不能使用 | a0b1b346-4d3e-4e8b-98f8-753987be4970
 使用者帳戶管理員 | 使用者管理員 | fe930be7-5e62-47db-91af-98c3a49a38b1
 加入工作場所裝置 | 已被取代 | c34f683f-4d5a-4403-affd-6615e00e3a7f

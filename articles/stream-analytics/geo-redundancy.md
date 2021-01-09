@@ -1,17 +1,17 @@
 ---
 title: 達成 Azure 串流分析作業的地理位置冗余
 description: 本文說明如何達到 Azure 串流分析作業的地理位置，而不是異地容錯移轉。
-author: mamccrea
-ms.author: mamccrea
+author: an-emma
+ms.author: raan
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/26/2020
-ms.openlocfilehash: 44b0394773485f8054eddc94c7d7e9b91baebc6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86a90cbcbb3381e853dcea766364642a89dafd7b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88951089"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015516"
 ---
 # <a name="achieve-geo-redundancy-for-azure-stream-analytics-jobs"></a>達成 Azure 串流分析作業的地理位置冗余
 
@@ -27,7 +27,7 @@ Azure 串流分析不會提供自動異地容錯移轉，但您可以藉由在�
 
 雖然不同的輸入和輸出類型允許不同的異地複寫選項，但我們建議使用本文中所述的模式來達成地理位置冗余，因為它可提供事件產生者和事件取用者的彈性和控制。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [使用 PowerShell 監視和管理 Azure 串流分析作業](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
 * [在 Azure 串流分析中進行資料導向的偵錯](stream-analytics-job-diagram-with-metrics.md)

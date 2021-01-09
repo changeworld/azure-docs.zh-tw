@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/17/2020
 ms.author: banders
-ms.openlocfilehash: f0ace05d6a4df65282bd56cca8e7895b0dc24edf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 511c0ecdef45a882bcc3a427d5ec602b3ebabc66
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686542"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673826"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Microsoft 客戶合約管理角色
 
@@ -32,7 +32,7 @@ ms.locfileid: "88686542"
 |帳單設定檔擁有者|管理帳單設定檔的所有項目|
 |帳單設定檔參與者|管理帳單設定檔上除了權限以外的所有項目|
 |帳單設定檔讀者|對帳單設定檔中所有項目的唯讀檢視|
-|發票管理員|檢視和支付帳單設定檔的發票|
+|發票管理員|檢視帳單設定檔的發票|
 |發票區段擁有者|管理發票區段上的所有項目|
 |發票區段參與者|管理發票區段上除了權限以外的所有項目|
 |發票區段讀者|對發票區段上所有項目的唯讀檢視|

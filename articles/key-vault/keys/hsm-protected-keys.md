@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 99339914b66dc40f686cc46cacbcea15438c9004
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 7fa8590b4fb148b2a8969c4f474f6627cea263df
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413338"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935320"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>將受 HSM 保護的金鑰匯入 Key Vault
 
@@ -44,5 +44,5 @@ ms.locfileid: "94413338"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 遵循 [Key Vault 最佳做法](../general/best-practices.md)，確保金鑰的安全性、持久性同時加以監視。
+* 請檢閱 [Key Vault 安全性概觀](../general/security-overview.md)，以確保金鑰的安全性、耐久性和監視。
 * 如需新 BYOK 方法的完整說明，請參閱 [BYOK 規格](./byok-specification.md)

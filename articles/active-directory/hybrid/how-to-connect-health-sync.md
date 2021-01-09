@@ -3,7 +3,7 @@ title: 使用 Azure AD Connect Health 進行同步處理 | Microsoft Docs
 description: 這是 Azure AD Connect Health 頁面，其中討論如何監視 Azure AD Connect 同步處理。
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efb332cf8d5e34a435010a39a12b38f87cff5875
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e803614a02e76d179579a2258abd563b5c58e63a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313360"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016978"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 Azure AD Connect 同步處理
 下列文件適用於使用 Azure AD Connect Health 來監視 Azure AD Connect (同步處理)。  如需使用 Azure AD Connect Health 來監視 AD FS 的詳細資訊，請參閱 [在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，如需使用 Azure AD Connect Health 監視 Active Directory Domain Services 的詳細資訊，請參閱 [使用 Azure AD Connect Health 搭配 AD DS](how-to-connect-health-adds.md)。
@@ -70,7 +70,7 @@ ms.locfileid: "91313360"
 * 此報告涵蓋同步處理用戶端所記錄的錯誤 (Azure AD Connect 1.1.281.0 版或更高版本)
 * 它包含同步處理引擎上執行的最後一個同步處理作業所發生的錯誤 (Azure AD Connector 上的「匯出」)。
 * 用於同步處理的 Azure AD Connect Health 代理程式必須有指向所需端點的輸出連線，此報告才會包含最新的資料。
-* **每隔30分鐘就會更新一次**報表，使用 Azure AD Connect Health 代理程式上傳的資料進行同步處理。它提供下列重要功能：
+* **每隔30分鐘就會更新一次** 報表，使用 Azure AD Connect Health 代理程式上傳的資料進行同步處理。它提供下列重要功能：
 
   * 錯誤分類
   * 依各類別之錯誤列出物件
@@ -101,8 +101,8 @@ ms.locfileid: "91313360"
 每個錯誤的詳細檢視中提供下列資料
 
 * 已醒目提示衝突的屬性
-* 所涉及之「AD 物件」** 的識別項
-* 所涉及之「Azure AD 物件」** 的識別項 (視情況)
+* 所涉及之「AD 物件」的識別項
+* 所涉及之「Azure AD 物件」的識別項 (視情況)
 * 錯誤描述及如何修正
 
 ![同步處理錯誤報告詳細資料](./media/how-to-connect-health-sync/duplicateAttributeSyncError.png)

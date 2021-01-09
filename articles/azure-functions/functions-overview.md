@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d0641129d641043f10cdb94d9e7f634fb35fbbef
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 41b627259d84539c868f95eb3cf33db5dbdab52c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032995"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862401"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure Functions 簡介
 
-Azure Functions 是無伺服器解決方案，可讓您撰寫較少的程式碼、維護較少的基礎結構，並節省成本。 雲端基礎結構會提供讓應用程式保持執行所需的所有最新伺服器，而不需要擔心部署和維護伺服器。
+Azure Functions 是無伺服器解決方案，可讓您撰寫較少的程式碼、維護較少的基礎結構，並節省成本。 雲端基礎結構會提供讓應用程式保持執行所需的所有最新資源，而不需要擔心部署和維護伺服器。
 
 您可以著重於最重要的程式碼片段，讓 Azure Functions 處理其餘部分。<br /><br />
 

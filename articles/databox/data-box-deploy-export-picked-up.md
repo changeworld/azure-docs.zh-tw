@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 1035f7fb34ed5b2b11e3ef472ccda7cccc30f652
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 4b5bbe19ddeda7c6b313186b7e24532a294f7253
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359025"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680847"
 ---
-# <a name="tutorial-return-azure-data-box-preview"></a>教學課程：送回 Azure 資料箱 (預覽)
+# <a name="tutorial-return-azure-data-box"></a>教學課程：退回 Azure 資料箱
 
 本教學課程將說明如何送回 Azure 資料箱，並在裝置收到 Azure 資料之後清除資料。
 
@@ -27,8 +27,6 @@ ms.locfileid: "97359025"
 > * 準備寄送
 > * 將資料箱寄送給 Microsoft
 > * 清除資料箱的資料
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>必要條件
 

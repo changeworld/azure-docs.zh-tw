@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 2d748f787b40bb26e9faebb028d71c6c3e30ee55
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d5eba5486e7d26e62379e0112cd4b95322e6dae1
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516555"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705229"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>教學課程：使用 Azure 範本在虛擬機器擴展集中安裝應用程式
 若要在擴展集的虛擬機器 (VM) 執行個體上執行應用程式，您需要先安裝應用程式元件和必要的檔案。 在先前的教學課程中，您已了解如何建立及使用自訂 VM 映像來部署您的 VM 執行個體。 此自訂映像已包含手動應用程式安裝和組態。 您也可以在部署好每個 VM 執行個體後，讓應用程式自動安裝到擴展集，或更新已在擴展集上執行的應用程式。 在本教學課程中，您將了解如何：
@@ -76,10 +76,10 @@ FileUris 屬性會用來定義來源安裝指令碼和套件。 若要啟動安�
 az group create --name myResourceGroup --location eastus
 ```
 
-現在，請使用 [az group deployment create](/cli/azure/group/deployment) 建立虛擬機器擴展集。 出現提示時，請提供您自己的使用者名稱，以及作為每個 VM 執行個體之認證的密碼：
+現在，請使用 [az deployment group create](/cli/azure/deployment/group) 建立虛擬機器擴展集。 出現提示時，請提供您自己的使用者名稱，以及作為每個 VM 執行個體之認證的密碼：
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy.json
 ```
@@ -134,10 +134,10 @@ az network public-ip show \
 }
 ```
 
-使用 [az group deployment create](/cli/azure/group/deployment)，再次將自訂指令碼擴充功能組態套用到擴展集中的 VM 執行個體。 azuredeployv2.json 範本會用來套用更新版的應用程式。 實際上，您會編輯現有的 azuredeploy.json 範本，以參考更新的安裝指令碼，如前一節中所示。 出現提示時，輸入您第一次建立擴展集時使用的相同使用者名稱和密碼認證：
+使用 [az deployment group create](/cli/azure/deployment/group)，再次將自訂指令碼延伸模組設定套用至擴展集中的 VM 執行個體。 azuredeployv2.json 範本會用來套用更新版的應用程式。 實際上，您會編輯現有的 azuredeploy.json 範本，以參考更新的安裝指令碼，如前一節中所示。 出現提示時，輸入您第一次建立擴展集時使用的相同使用者名稱和密碼認證：
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy_v2.json
 ```

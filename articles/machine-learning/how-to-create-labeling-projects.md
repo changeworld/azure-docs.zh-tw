@@ -9,12 +9,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5abb222a6211e2f3f92c002a49987ac54edc78e2
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: cd35cea28e23e88ba97bb7a27dc252d6bebd65e4
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346651"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739649"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -256,6 +256,17 @@ ms.locfileid: "97346651"
 COCO 檔案會建立在 Azure Machine Learning 工作區的預設 Blob 存放區中，而其所在的資料夾位於 *export/coco* 內。 您可以在 Machine Learning 的 [資料集] 區段中，存取已匯出的 Azure Machine Learning 資料集。 資料集詳細資料頁面也會提供從 Python 存取標籤的程式碼範例。
 
 ![所匯出的資料集](./media/how-to-create-labeling-projects/exported-dataset.png)
+
+## <a name="troubleshooting"></a>疑難排解
+
+如果您發現下列任何問題，請使用這些提示。
+
+|問題  |解決方案  |
+|---------|---------|
+|只能使用在 Blob 資料存放區上建立的資料集。     |  這是目前版本的已知限制。       |
+|建立之後，專案長時間顯示為「正在初始化」。     | 手動重新整理頁面。 初始化應該會以大約每秒 20 個資料點的速率進行。 缺乏自動重新整理功能是已知問題。         |
+|在檢閱影像時，不會顯示新加上標籤的影像。     |   若要載入所有加上標籤的影像，請選擇 [第一個] 按鈕。 [第一個] 按鈕會讓您回到清單的前面，但也會載入所有加上標籤的資料。      |
+|在物件偵測的標記期間按下 Esc 鍵，會在左上角建立零大小的標籤。 在此狀態下提交標籤將會失敗。     |   按一下旁邊的叉號將標籤刪除。  |
 
 ## <a name="next-steps"></a>後續步驟
 

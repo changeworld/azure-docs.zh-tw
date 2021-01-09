@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 6bc6776df889c5c8ccc6acfe5764549ccf7354a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320195"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739700"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教學課程：使用 Azure DevOps Services 和 Azure Pipelines 在 Azure 中將應用程式部署至 Linux 虛擬機器
 
@@ -91,7 +91,7 @@ https://github.com/azure-devops/fabrikam-node
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
-若要安裝 Javascript 應用程式或 Node.js 應用程式，您將需要具有 Nginx Web 伺服器的 Linux VM，才能部署應用程式。
+若要安裝 JavaScript 應用程式或 Node.js 應用程式，您將需要具有 Nginx Web 伺服器的 Linux VM，才能部署應用程式。
 如果您還沒有具有 Nginx 的 Linux VM，請使用[此範例](./quick-create-cli.md)中的步驟，在 Azure 中立即建立一個。
 
 * * * 
@@ -118,7 +118,7 @@ https://github.com/azure-devops/fabrikam-node
 
     ![VMresource_view](media/tutorial-deploy-vms-azure-pipelines/vm-resourceview.png)
 
-9. 您可以將標籤新增至 VM 作為互動式 PS 註冊指令碼的一部分，或者，您也可以在資源檢視中，按一下每個 VM 資源結尾處的三個點，以新增/移除相同的標籤。
+9. 您可以將標籤新增至 VM 作為互動式 PowerShell 註冊指令碼的一部分，或者，您也可以在資源檢視中，按一下每個 VM 資源結尾處的三個點，以新增/移除相同的標籤。
 
    您指派的標籤可讓您在部署作業中使用環境時，將部署限定於特定的虛擬機器。 每個標籤的上限為 256 個字元，但您可以使用的標籤數目並沒有限制。
 
@@ -144,7 +144,7 @@ https://github.com/azure-devops/fabrikam-node
 
 #### <a name="java"></a>[Java](#tab/java)
 
-選取**入門**範本，並複製下列 YAML 程式碼片段，以使用 Apache Maven 建置您的 Java 專案並執行測試：
+選取 **入門** 範本，並複製下列 YAML 程式碼片段，以使用 Apache Maven 建置您的 Java 專案並執行測試：
 
 ```YAML
 jobs:
@@ -169,7 +169,7 @@ jobs:
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
-選取**入門**範本，並複製下列 YAML 程式碼片段，以使用 npm 建置一般 Node.js 專案。
+選取 **入門** 範本，並複製下列 YAML 程式碼片段，以使用 npm 建置一般 Node.js 專案。
 
 ```YAML
 - stage: Build
@@ -202,7 +202,7 @@ jobs:
 
 - 查看管線以了解其作用。 請確定所有預設輸入均適用於您的程式碼。
 
-- 選取 [儲存並執行]  ，並選取 [直接認可至主要分支]  ，然後再次選擇 [儲存並執行]  。
+- 選取 [儲存並執行]，並選取 [直接認可至主要分支]，然後再次選擇 [儲存並執行]。
 
 - 新的執行隨即啟動。 等待執行完成。
 
@@ -221,7 +221,7 @@ jobs:
        resourceType: VirtualMachine
        tags: web
    ```
-2. 您可以藉由指定您為環境中的每個虛擬機器定義的**標籤**，從環境中選取特定幾組虛擬機器來接收部署。
+2. 您可以藉由指定您為環境中的每個虛擬機器定義的 **標籤**，從環境中選取特定幾組虛擬機器來接收部署。
 [這裡](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job)提供部署作業的完整 YAML 結構描述。
 
 3. 您可以指定 `runOnce` 或 `rolling` 作為部署策略。 

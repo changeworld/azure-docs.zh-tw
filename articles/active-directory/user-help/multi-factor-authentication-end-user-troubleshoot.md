@@ -13,12 +13,12 @@ ms.date: 09/01/2020
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: caa2c66d66cce09f5b5b0fe0948ab924389d756e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 0cb5e3463eda5d77bbbdefe223954105fd125c71
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033777"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033977"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>雙因素驗證和您的公司或學校帳戶常見問題
 
@@ -74,7 +74,7 @@ ms.locfileid: "97033777"
 
 試試看 | 指引資訊
 --------- | ------------
-使用 Microsoft 驗證器應用程式或驗證碼 | 在登入期間，您會收到「您已達到驗證呼叫的限制」或「您已達到我們的文字驗證碼限制」錯誤訊息。 <br/><br/>Microsoft 可能會在短時間內限制相同使用者所執行的重複驗證嘗試。 此限制不適用於 Microsoft Authenticator 或驗證碼。 如果您已達到這些限制，您可以使用驗證器應用程式、驗證碼，或在幾分鐘內嘗試重新登入。
+使用 Microsoft 驗證器應用程式或驗證碼 | 在登入期間，您會收到「您已達到驗證呼叫的限制」或「您已達到我們的文字驗證碼限制」錯誤訊息。 <br/><br/>Microsoft 可能會在短時間內限制相同使用者所執行的重複驗證嘗試。 此限制不適用於 Microsoft Authenticator 或驗證碼。 如果您已達到這些限制，您可以使用驗證器應用程式、驗證碼，或在幾分鐘內嘗試重新登入。 <br/><br/> 在登入期間，您遇到「很抱歉，無法驗證您的帳戶」錯誤訊息。 <br/><br/> Microsoft 可能會限制或封鎖由相同使用者、電話號碼或組織所執行的語音或 SMS 驗證嘗試，因為有大量的語音或 SMS 驗證嘗試失敗。 如果您遇到此錯誤，您可以嘗試其他方法（例如驗證器應用程式或驗證碼），或與您的系統管理員聯繫以尋求支援。
 重新啟動您的行動裝置 | 有時您的裝置只是需要重新整理。 當您重新開機裝置時，所有背景進程和服務都會結束。 重新開機也會關閉您裝置的核心元件。 當您重新開機裝置時，任何服務或元件都會重新整理。
 確認您的安全性資訊正確 | 請確定您的安全性驗證方法資訊正確，尤其是您的電話號碼。 如果您輸入錯誤的電話號碼，您所有的警示將會發送至不正確的號碼。 幸運的是，該使用者無法對警示執行任何動作，但是也無法協助您登入您的帳戶。 若要確保您的資訊正確無誤，請參閱[管理雙因素驗證方法設定](multi-factor-authentication-end-user-manage-settings.md)一文中的指示。
 確認您的通知已開啟 | 請確定您的行動裝置已開啟通知。 確定允許下列通知模式： <br/><br/> &bull; 電話 <br/> &bull; 您的驗證應用程式 <br/> &bull; 您的文字訊息應用程式 <br/><br/> 確定這些模式會建立可在您的裝置上 _看到_ 的警示。

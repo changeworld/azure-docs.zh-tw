@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 2da56514870f279da342976ac074697be5196021
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c84c45605911b74fd2c03a0987341257cae3623e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027319"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97731859"
 ---
 在本快速入門中，您將了解如何使用語音 SDK 進行文字轉換語音合成的常見設計模式。 首先，您會進行基本設定與合成，並繼續處理更多用於自訂應用程式開發的高階範例，包括：
 
@@ -155,6 +155,9 @@ public static void main(String[] args) {
 若要變更音訊格式，請在 `SpeechConfig` 物件上使用 `setSpeechSynthesisOutputFormat()` 函式。 此函式應該有 [`SpeechSynthesisOutputFormat`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat) 類型的 `enum`，您可使用此類型來選取輸出格式。 如需可用的[音訊格式清單](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-dotnet)，請參閱參考文件。
 
 根據您的需求而定，有各種選項可供不同的檔案類型使用。 請注意，依照定義，原始格式 (例如 `Raw24Khz16BitMonoPcm`) 不包含音訊標頭。 只有在您知道下游實作可將原始位元資料流解碼，或者打算根據位元深度、採樣速率、通道數目等手動建立標頭時，才會使用原始格式。
+
+> [!NOTE]
+> 語音 **en-US-AriaRUS** 和 **en-US-GuyRUS** 是根據以 `Riff24Khz16BitMonoPcm` 採樣速率編碼的樣本建立的。
 
 在此範例中，您可藉由在 `SpeechConfig` 物件上設定 `SpeechSynthesisOutputFormat`，以指定高精確度的 RIFF 格式 `Riff24Khz16BitMonoPcm`。 與上一節中的範例類似，您可使用 [`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream) 來取得結果的記憶體內部資料流，然後將其寫入至檔案。
 

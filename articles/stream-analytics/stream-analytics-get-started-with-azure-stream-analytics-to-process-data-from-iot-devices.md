@@ -1,18 +1,17 @@
 ---
 title: 使用 Azure 串流分析處理即時 IoT 資料流程
 description: IoT 感應器標記和具有串流分析的資料串流與即時資料處理
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/26/2019
-ms.openlocfilehash: 311aca139220622a0436d490e73a536c3fc898c9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a438401ff93c20d8759e6128936c3626bd3de484
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129009"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012677"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>使用 Azure 串流分析處理即時 IoT 資料流程
 
@@ -44,13 +43,13 @@ Contoso 是一家工業自動化空間的公司，他們已完全自動化其製
 
 ## <a name="create-a-stream-analytics-job"></a>建立串流分析作業
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，從左側導覽功能表中選取 [ **+ 建立資源** ]。 然後，從 **分析** 中選取 **串流分析作業** 。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，從左側導覽功能表中選取 [ **+ 建立資源** ]。 然後，從 **分析** 中選取 **串流分析作業**。
    
     ![建立新的串流分析作業](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 
 1. 輸入唯一的工作名稱，並確認訂用帳戶為您作業適用的正確訂用帳戶。 建立新的資源群組，或從您的訂用帳戶中選取現有的資源群組。
 
-1. 選取作業的位置。 針對您的資源群組和所有資源使用相同的位置，以提高處理速度和降低成本。 進行設定之後，請選取 [ **建立** ]。
+1. 選取作業的位置。 針對您的資源群組和所有資源使用相同的位置，以提高處理速度和降低成本。 進行設定之後，請選取 [ **建立**]。
    
     ![建立新的串流分析作業詳細資料](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
 
@@ -60,7 +59,7 @@ Contoso 是一家工業自動化空間的公司，他們已完全自動化其製
 從 GitHub 下載 [HelloWorldASA-InputStream.js](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/GettingStarted/HelloWorldASA-InputStream.json
 ) 。 然後，在 Azure 入口網站中，流覽至您的 Azure 串流分析作業。
 
-從左側功能表中選取 [ **作業拓撲** ] 下的 [ **查詢** ]。 然後選取 **[上傳範例輸入** ]。 上傳檔案 `HelloWorldASA-InputStream.json` ，然後選取 **[確定]** 。
+從左側功能表中選取 [**作業拓撲**] 下的 [**查詢**]。 然後選取 **[上傳範例輸入**]。 上傳檔案 `HelloWorldASA-InputStream.json` ，然後選取 **[確定]**。
 
 ![串流分析儀表板查詢圖格](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 

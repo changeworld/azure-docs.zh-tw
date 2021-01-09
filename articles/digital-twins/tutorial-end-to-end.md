@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f788c9e78790e6872870869e2bc153e1b1451e51
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 64e648cf6ae3c763d3e9ab1a6970f48c84331bad
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566532"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845634"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教學課程：建置端對端解決方案
 
@@ -52,8 +52,6 @@ ms.locfileid: "94566532"
 * 呼叫 Azure Digital Twins API 的主控台介面
 * *SampleClientApp*：範例 Azure Digital Twins 解決方案
 * *SampleFunctionsApp*：Azure Functions 應用程式，可將 Azure Digital Twins 圖形更新為來自 IoT 中樞和 Azure Digital Twins 事件的遙測結果
-
-範例專案也包含互動式的授權元件。 每次啟動專案時，瀏覽器視窗都會隨即開啟，提示您使用 Azure 帳戶登入。
 
 ### <a name="instantiate-the-pre-created-twin-graph"></a>具現化預先建立的對應項圖形
 
@@ -134,7 +132,7 @@ Query
 
 在 [Functions 執行個體] 頁面中，選擇您的訂用帳戶。 這應該會用您訂用帳戶的「資源群組」填入方塊。
 
-選取您執行個體的資源群組，然後按 [+ 建立新的 Azure Function]。
+選取您執行個體的資源群組，然後按 *+* 以建立新的 Azure 函式。
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="在 Visual Studio 中發佈 Azure 函式：Functions 執行個體 (在函數應用程式之前)":::
 

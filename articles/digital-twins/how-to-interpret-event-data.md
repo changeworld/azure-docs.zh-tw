@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22bedcf7921e3c8d4f2566a70515eef3e3b136b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a0f2b971eae5d37e8fb0771e213075289af6c519
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461017"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045252"
 ---
 # <a name="understand-event-data"></a>瞭解事件資料
 
@@ -99,11 +99,11 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 * 建立數位對應項
 * 數位對應項已刪除
 
-#### <a name="properties"></a>屬性
+#### <a name="properties"></a>[內容]
 
 以下是生命週期通知主體中的欄位。
 
-| Name | 值 |
+| 名稱 | 值 |
 | --- | --- |
 | `id` | 通知的識別碼，例如 UUID 或服務所維護的計數器。 `source` + `id` 對每個相異事件而言是唯一的。 |
 | `source` | IoT 中樞或 Azure 數位 Twins 實例的名稱，例如 *myhub.azure-devices.net* 或 *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -183,13 +183,13 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 
 ### <a name="digital-twin-relationship-change-notifications"></a>數位對應項關聯性變更通知
 
-建立、更新或刪除數位對應項的任何關聯性時，會觸發**關聯性變更通知**。 
+建立、更新或刪除數位對應項的任何關聯性時，會觸發 **關聯性變更通知**。 
 
-#### <a name="properties"></a>屬性
+#### <a name="properties"></a>[內容]
 
 以下是 edge 變更通知主體中的欄位。
 
-| Name    | 值 |
+| 名稱    | 值 |
 | --- | --- |
 | `id` | 通知的識別碼，例如 UUID 或服務所維護的計數器。 `source` + `id` 對每個相異事件而言都是唯一的 |
 | `source` | Azure 數位 Twins 實例的名稱，例如 *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -237,15 +237,15 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 
 ### <a name="digital-twin-change-notifications"></a>數位對應項變更通知
 
-更新數位對應項時，會觸發數位對應項**變更通知**，例如：
+更新數位對應項時，會觸發數位對應項 **變更通知**，例如：
 * 當屬性值或中繼資料變更時。
 * 數位對應項或元件中繼資料變更時。 此案例的其中一個範例是變更數位對應項的模型。
 
-#### <a name="properties"></a>屬性
+#### <a name="properties"></a>[內容]
 
 以下是數位對應項變更通知主體中的欄位。
 
-| Name    | 值 |
+| 名稱    | 值 |
 | --- | --- |
 | `id` | 通知的識別碼，例如 UUID 或服務所維護的計數器。 `source` + `id` 對每個相異事件而言都是唯一的 |
 | `source` | IoT 中樞或 Azure 數位 Twins 實例的名稱，例如 *myhub.azure-devices.net* 或 *mydigitaltwins.westus2.azuredigitaltwins.net*
@@ -262,20 +262,7 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 
 例如，假設已使用下列修補程式來更新數位對應項。
 
-```json
-[
-    {
-        "op": "replace",
-        "value": 40,
-        "path": "/Temperature"
-    },
-    {
-        "op": "add",
-        "value": 30,
-        "path": "/comp1/prop1"
-    }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/patch-component-2.json":::
 
 對應的通知 (如果服務以同步方式執行，例如 Azure 數位 Twins 更新數位對應項) 會有如下的主體：
 
@@ -297,7 +284,7 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
   }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何建立端點和路由以傳遞事件：
 * [*如何：管理端點和路由*](how-to-manage-routes-apis-cli.md)

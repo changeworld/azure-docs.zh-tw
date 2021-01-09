@@ -1,18 +1,17 @@
 ---
 title: 設定 Azure 串流分析的事件順序原則
 description: 本文說明如何在串流分析中設定甚至訂購設定
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 08/06/2020
-ms.openlocfilehash: 80567a211f08d6322c80b6645f8b70ec7df64b59
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f7ec6f32b48a93a29210311c7ba6747eb2e2d066
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130658"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014290"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>設定 Azure 串流分析的事件順序原則
 
@@ -50,7 +49,7 @@ ms.locfileid: "93130658"
 
 ## <a name="can-these-settings-delay-output-of-my-job"></a>這些設定是否會延遲作業的輸出？ 
 
-是。 依預設，依序將原則設定為零 (00 分鐘和00秒) 。 如果您變更預設值，則作業的第一個輸出會以這個值延遲 (或更大的) 。 
+可以。 依預設，依序將原則設定為零 (00 分鐘和00秒) 。 如果您變更預設值，則作業的第一個輸出會以這個值延遲 (或更大的) 。 
 
 如果您輸入的其中一個資料分割未收到事件，您應該預期您的輸出會被延遲抵達原則值所延遲。 若要瞭解原因，請閱讀下面的 InputPartition 錯誤一節。 
 

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: kanshiG
 ms.author: govindk
-ms.date: 06/25/2020
-ms.openlocfilehash: dc47f2f7a0f1586b197d14015fe2167293c806c6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 01/07/2021
+ms.openlocfilehash: ec82532b54e7834b62fcc03d3ee7de1345a0f546
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099329"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027765"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>如何監視 Azure Cosmos 容器或帳戶的正規化 RU/秒
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -28,11 +28,9 @@ Azure 監視器計量可協助您使用「 **要求總數** 」度量來尋找 S
 
 若要尋找速率受限的要求，建議的方法是透過診斷記錄取得這項資訊。
 
-如果在多個分割區索引鍵範圍內有100% 正規化 RU/s 耗用量或接近100% 的持續尖峰，建議您增加輸送量。 您可以利用 Azure 監視器計量和 Azure 監視器診斷記錄，找出哪些作業很繁重，以及其尖峰使用量。
+如果連續尖峰100% 的正規化 RU/秒耗用量，或接近100% 之間的多個分割區索引鍵範圍，建議您增加輸送量。 您可以利用 Azure 監視器計量和 Azure 監視器診斷記錄，找出哪些作業很繁重，以及其尖峰使用量。
 
-總而言之，「 **正規化的 RU 耗用量** 」度量會用來查看哪些資料分割索引鍵範圍在使用方面更暖。 因此，它可讓您對資料分割索引鍵範圍的輸送量產生扭曲。 您稍後可以在 Azure 監視器記錄檔中查看 **PartitionKeyRUConsumption** 記錄，以取得有關使用方式最忙碌的邏輯分割區索引鍵的相關資訊。 這會指向分割區索引鍵選擇中的變更，或應用程式邏輯中的變更。 若要解決速率限制，請將資料的負載分散在多個分割區上，或只是在真正需要的情況下增加輸送量。 
-
-
+總而言之，「 **正規化的 RU 耗用量** 」度量會用來查看哪些資料分割索引鍵範圍在使用方面更暖。 因此，它可讓您對資料分割索引鍵範圍的輸送量產生扭曲。 您稍後可以在 Azure 監視器記錄檔中查看 **PartitionKeyRUConsumption** 記錄，以取得有關使用方式最忙碌的邏輯分割區索引鍵的相關資訊。 這會指向分割區索引鍵選擇中的變更，或應用程式邏輯中的變更。 若要解決速率限制，請將資料的負載分散在多個分割區，或只在需要時增加輸送量。 
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>查看正規化的要求單位耗用量度量
 
@@ -42,27 +40,27 @@ Azure 監視器計量可協助您使用「 **要求總數** 」度量來尋找 S
 
    :::image type="content" source="./media/monitor-normalized-request-units/monitor-metrics-blade.png" alt-text="Azure 監視器中的 [計量] 窗格":::
 
-3. 從 [計量] 窗格 > **選取資源** > 選擇必要的 **訂用帳戶** 和 **資源群組** 。 在 [資源類型] 中，選取 [Azure Cosmos DB 帳戶]，然後選擇其中一個現有的 Azure Cosmos 帳戶並選取 [套用]。
+3. 從 [計量] 窗格 > **選取資源** > 選擇必要的 **訂用帳戶** 和 **資源群組**。 在 [資源類型] 中，選取 [Azure Cosmos DB 帳戶]，然後選擇其中一個現有的 Azure Cosmos 帳戶並選取 [套用]。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Azure 監視器中的 [計量] 窗格":::
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="選擇 Azure Cosmos 帳戶以查看計量":::
 
 4. 接下來，您可以從可用的計量清單中選取計量。 您可以選取 [要求單位]、[儲存體]、[延遲]、[可用性]、[Cassandra] 等等的專屬計量。 若要深入了解此清單中所有可用的計量，請參閱[依類別區分的計量](monitor-cosmos-db-reference.md)一文。 在此範例中，讓我們選取 **正規化的 RU 耗用量** 計量和 **最大** 值作為匯總值。
 
    除了這些詳細資料之外，您也可以選取計量的 [時間範圍] 和 [時間細微性]。 在 [最大值] 中，您可以檢視過去 30 天的計量。  套用篩選之後，圖表就會根據您的篩選條件來顯示。
 
-   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Azure 監視器中的 [計量] 窗格":::
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="從 Azure 入口網站選擇計量":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>標準化要求單位耗用量的篩選
 
-您也可以篩選特定 **CollectionName** 、 **DatabaseName** 、 **PartitionKeyRangeID** 和 **區域** 所顯示的計量和圖表。 若要篩選計量，請選取 [ **加入篩選** ]，然後選擇必要的屬性，例如 **CollectionName** 和您感興趣的對應值。 然後，圖形會顯示所選期間內針對容器取用的正規化 RU 耗用量單位。  
+您也可以篩選特定 **CollectionName**、 **DatabaseName**、 **PartitionKeyRangeID** 和 **區域** 所顯示的計量和圖表。 若要篩選計量，請選取 [ **加入篩選** ]，然後選擇必要的屬性，例如 **CollectionName** 和您感興趣的對應值。 然後，圖形會顯示所選期間內針對容器取用的正規化 RU 耗用量單位。  
 
-您可以使用 [套用分割] 選項來將計量分組。  
+您可以使用 [套用分割] 選項來將計量分組。 針對共用輸送量資料庫，正規化的 RU 度量只會顯示資料庫資料細微性的資料，而不會顯示每個集合的任何資料。 因此對於共用輸送量資料庫，當您依集合名稱套用分割時，將不會看到任何資料。
 
 每個容器的標準化要求單位耗用量度量會顯示如下圖所示：
 
-:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Azure 監視器中的 [計量] 窗格":::
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="將篩選套用至標準化的要求單位耗用量度量":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 使用 Azure 中的 [診斷設定](cosmosdb-monitor-resource-logs.md) 來監視 Azure Cosmos DB 資料。
 * [Audit Azure Cosmos DB 控制平面作業](audit-control-plane-logs.md)

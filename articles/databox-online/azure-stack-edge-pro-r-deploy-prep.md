@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: d992748e9829993acc28795778baae3eb92e88f3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463696"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630763"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>教學課程：準備部署 Azure Stack Edge Pro R
 
@@ -41,7 +41,7 @@ ms.locfileid: "96463696"
 |  | |
 |**部署教學課程** |需要這些教學課程，才能在生產環境中部署您的 Azure Stack Edge Pro R 裝置。 |
 |**[1.為裝置準備 Azure 入口網站](azure-stack-edge-pro-r-deploy-prep.md)** |在安裝 Azure Stack Edge 實體裝置之前，請先建立並設定您的 Azure Stack Edge 資源。 |
-|**[2.安裝裝置](azure-stack-edge-pro-r-deploy-install.md)**|打開您實體裝置的包裝、機架和纜線。  |
+|**[2.安裝裝置](azure-stack-edge-pro-r-deploy-install.md)**|檢查實體裝置並接線。  |
 |**[3.將裝置連線](azure-stack-edge-pro-r-deploy-connect.md)** |安裝裝置之後，請連線到裝置本機 Web UI。  |
 |**[4.設定網路](azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy.md)** |設定網路，包括裝置的計算網路和 Web Proxy 設定。   |
 |**[5.設定裝置](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |指派裝置名稱和 DNS 網域，設定更新伺服器和裝置時間。 |

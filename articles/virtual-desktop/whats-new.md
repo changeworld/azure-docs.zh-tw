@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533956"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617352"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虛擬桌面的新增功能？
 
@@ -49,7 +49,7 @@ RDP Shortpath 使用點對站和站對站 VPN 和 ExpressRoute，為您的 Windo
 
 ### <a name="azure-advisor-updates"></a>Azure Advisor 更新
 
-Azure Advisor 現在提供新的 Windows 虛擬桌面鄰近性指導建議。 若要深入了解，請參閱 [Azure 網站](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)。
+Azure Advisor 現在提供新的 Windows 虛擬桌面鄰近性指導建議，且在深度優先負載平衡主機集區中的效能最佳化方面也提供了新的建議。 若要深入了解，請參閱 [Azure 網站](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)。
 
 ## <a name="october-2020"></a>2020 年 10 月
 

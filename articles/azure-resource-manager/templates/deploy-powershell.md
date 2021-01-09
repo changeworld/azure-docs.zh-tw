@@ -3,12 +3,12 @@ title: 使用 PowerShell 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure PowerShell 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 5266aa51422dce6dfa4b82238e905f4f630ccf48
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 40ee659f5892c983f84409a10634c6a8d6d78cc5
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668554"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028484"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 範本與 Azure PowerShell 來部署資源
 
@@ -16,26 +16,26 @@ ms.locfileid: "92668554"
 
 ## <a name="prerequisites"></a>必要條件
 
-您需要部署範本。 如果您還沒有，請從 Azure 快速入門範本存放庫下載並儲存 [範例範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) 。 本文所使用的本機檔案名稱是 **c:\MyTemplates\azuredeploy.json** 。
+您需要部署範本。 如果您還沒有，請從 Azure 快速入門範本存放庫下載並儲存 [範例範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) 。 本文中使用的本機檔案名 _C:\MyTemplates\azuredeploy.js在上_。
 
 您必須安裝 Azure PowerShell 並連接到 Azure：
 
 - **在本機電腦上安裝 Azure PowerShell Cmdlet。** 如需詳細資訊，請參閱[開始使用 Azure PowerShell](/powershell/azure/get-started-azureps)。
 - **使用 [Connect-AZAccount](/powershell/module/az.accounts/connect-azaccount)** 來連線至 Azure。 如果您有多個 Azure 訂用帳戶，則可能還需要執行 [Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)。 如需詳細資訊，請參閱[使用多個 Azure 訂用帳戶](/powershell/azure/manage-subscriptions-azureps)。
 
-如果您尚未安裝 PowerShell，您可以使用 Cloud Shell。 如需詳細資訊，請參閱 [部署 Cloud Shell 的 ARM 範本](deploy-cloud-shell.md)。
+如果您尚未安裝 PowerShell，您可以使用 Azure Cloud Shell。 如需詳細資訊，請參閱 [部署 Azure Cloud Shell 的 ARM 範本](deploy-cloud-shell.md)。
 
 ## <a name="deployment-scope"></a>部署範圍
 
 您可以將部署的目標設為資源群組、訂用帳戶、管理群組或租使用者。 視部署的範圍而定，您可以使用不同的命令。
 
-* 若要部署至 **資源群組** ，請使用 [New->new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)：
+- 若要部署至 **資源群組**，請使用 [New->new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)：
 
   ```azurepowershell
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
   ```
 
-* 若要部署至 **訂** 用帳戶，請使用 New-AzSubscriptionDeployment：
+- 若要部署至 **訂** 用帳戶，請使用 [新的-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment) ，它是 Cmdlet 的別名 `New-AzDeployment` ：
 
   ```azurepowershell
   New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
@@ -43,7 +43,7 @@ ms.locfileid: "92668554"
 
   如需訂用帳戶層級部署的詳細資訊，請參閱[在訂用帳戶層級建立資源群組和資源](deploy-to-subscription.md)。
 
-* 若要部署至 **管理群組** ，請使用 [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)。
+- 若要部署至 **管理群組**，請使用 [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment)。
 
   ```azurepowershell
   New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
@@ -51,7 +51,7 @@ ms.locfileid: "92668554"
 
   如需管理群組層級部署的詳細資訊，請參閱[在管理群組層級建立資源](deploy-to-management-group.md)。
 
-* 若要部署至 **租** 使用者，請使用 [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)。
+- 若要部署至 **租** 使用者，請使用 [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)。
 
   ```azurepowershell
   New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
@@ -209,7 +209,7 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 如需參數檔案的詳細資訊，請參閱[建立 Resource Manager 參數檔案](parameter-files.md)。
 
-若要傳遞本機參數檔案，請使用 **TemplateParameterFile** 參數︰
+若要傳遞本機參數檔案，請使用 `TemplateParameterFile` 參數：
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -217,7 +217,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
   -TemplateParameterFile c:\MyTemplates\storage.parameters.json
 ```
 
-若要傳遞外部參數檔案，請使用 **TemplateParameterUri** 參數︰
+若要傳遞外部參數檔案，請使用 `TemplateParameterUri` 參數：
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
@@ -230,4 +230,4 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 - 在您收到錯誤時，若要回復為成功的部署，請參閱[錯誤回復至成功部署](rollback-on-error.md)。
 - 若要指定如何處理存在於資源群組中、但尚未定義於範本中的資源，請參閱 [Azure Resource Manager 部署模式](deployment-modes.md)。
 - 若要瞭解如何在您的範本中定義參數，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
-- 如需部署需要 SAS 權杖之範本的詳細資訊，請參閱[使用 SAS 權杖部署私人範本](secure-template-with-sas-token.md)。
+- 如需部署需要 SAS 權杖之範本的相關資訊，請參閱 [使用 sas 權杖部署私用 ARM 範本](secure-template-with-sas-token.md)。

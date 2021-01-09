@@ -1,17 +1,17 @@
 ---
 title: 欄位上的 Azure 串流分析 JobConfig.js
 description: 本文列出 Azure 串流分析 JobConfig.js在 Visual Studio Code 用來建立作業之檔案的支援欄位。
-author: mamccrea
-ms.author: mamccrea
+author: su-jie
+ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/14/2020
-ms.openlocfilehash: bb1a1a0b9f3a5996af56ff2c4e2de91d78a6c260
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0eebd0b62e973572a40b7b141ae908046700ba3c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129332"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020480"
 ---
 # <a name="azure-stream-analytics-jobconfigjson-fields"></a>欄位上的 Azure 串流分析 JobConfig.js
 

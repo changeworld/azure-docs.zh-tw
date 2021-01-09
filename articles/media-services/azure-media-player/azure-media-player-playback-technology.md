@@ -7,12 +7,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b9772f89f78f21cfb0f2f9baa7c6b9915fbacf37
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 24a38fde3d1b6bbe1efef9241458da846c186112
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91275688"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916332"
 ---
 # <a name="playback-technology-tech"></a>播放技術 (「技術」) #
 
@@ -44,8 +44,8 @@ ms.locfileid: "91275688"
 
 | 瀏覽器        | OS                                                       | 預期技術 (Clear)  | 預期技術 (AES)  | 預期技術 (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
-| EdgeIE 11      | Windows 10、Windows 8.1、Windows Phone 101               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
-| IE 11IE 9-101  | Windows 7、Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | silverlightSS (PlayReady)    |
+| EdgeIE 11      | Windows 10、Windows 8.1、Windows Phone 10<sup>1</sup>               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
+| IE 11          | Windows 7、Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | silverlightSS (PlayReady)    |
 | IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | 不支援                |
 | Edge           | Xbox One<sup>1</sup> (2015 年 11 月更新)                   | azureHtml5JS           | azureHtml5JS         | 不支援                |
 | Chrome 37+     | Windows 10、Windows 8.1、macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
@@ -58,7 +58,7 @@ ms.locfileid: "91275688"
 | Chrome 37+     | Android 4.4.4+<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
 | Chrome 37+     | Android 4.02                                             | html5                  | html5 (無權杖)<sup>3</sup>    | 不支援                |
 | Firefox 42+    | Android 5.0+<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | 不支援                |
-| IE 8           | Windows                                                  | 不支援          | 不支援        | 不支援                |
+| IE 8、IE 9、IE 10  | Windows                                                  | 不支援          | 不支援        | 不支援                |
 
 <sup>1</sup> 設定不受支援或未經過測試；列為完成參考。
 

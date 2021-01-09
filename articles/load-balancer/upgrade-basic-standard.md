@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: d54994a7c64718835e70381f92abed83ef693018
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938506"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045388"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>升級 Azure 公用 Load Balancer
 [Azure Standard Load Balancer](load-balancer-overview.md) 透過區域冗余提供一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱 [比較表](./skus.md#skus)。
@@ -111,7 +111,7 @@ ms.locfileid: "96938506"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>將設定從 v1 遷移至 v2 的 Azure PowerShell 腳本是否有任何限制？
 
-是。 請參閱 [警告/限制](#caveatslimitations)。
+可以。 請參閱 [警告/限制](#caveatslimitations)。
 
 ### <a name="how-long-does-the-upgrade-take"></a>升級需要多久的時間？
 
@@ -119,12 +119,8 @@ ms.locfileid: "96938506"
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將基本 Load Balancer 的流量切換至新建立的 Standard Load Balancer？
 
-是。 Azure PowerShell 腳本不只會升級公用 IP 位址、將設定從基本複製到 Standard Load Balancer，也會將 VM 遷移至新建立的標準公用 Load Balancer 後方。 
+可以。 Azure PowerShell 腳本不只會升級公用 IP 位址、將設定從基本複製到 Standard Load Balancer，也會將 VM 遷移至新建立的標準公用 Load Balancer 後方。 
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
-  
-您可以傳送電子郵件給 slbupgradesupport@microsoft.com 、使用 Azure 支援來開啟支援案例，或同時進行這兩項作業。
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [瞭解 Standard Load Balancer](load-balancer-overview.md)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: bfdea5f2e2bd20a35ee948e99b3be9bf55038b13
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 9bee5fa6b76aad9305947ebe460f37c399340038
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760651"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033438"
 ---
 # <a name="text-to-speech-rest-api"></a>文字轉換語音 REST API
 
@@ -35,7 +35,7 @@ ms.locfileid: "97760651"
 * 文字轉語音 REST API 需要授權標頭。 這表示需要完成權杖交換，才能存取服務。 如需詳細資訊，請參閱[驗證](#authentication)。
 
 > [!TIP]
-> 請參閱政府雲端的 [Azure 政府檔](/azure/azure-government/compare-azure-government-global-azure) (FairFax) 端點。
+> 請參閱 [這篇文章](sovereign-clouds.md) ，以瞭解 Azure Government 和 Azure 中國端點。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -76,7 +76,10 @@ ms.locfileid: "97760651"
 
 | 標頭 | 描述 | 必要/選用 |
 |--------|-------------|---------------------|
-| `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必要 |
+| `Ocp-Apim-Subscription-Key` | 您的語音服務訂用帳戶金鑰。 | 必須有此標頭或 `Authorization`。 |
+| `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必須有此標頭或 `Ocp-Apim-Subscription-Key`。 |
+
+
 
 ### <a name="request-body"></a>要求本文
 
@@ -90,7 +93,7 @@ ms.locfileid: "97760651"
 GET /cognitiveservices/voices/list HTTP/1.1
 
 Host: westus.tts.speech.microsoft.com
-Authorization: Bearer [Base64 access_token]
+Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
 ```
 
 ### <a name="sample-response"></a>範例回應
@@ -271,7 +274,7 @@ Authorization: Bearer [Base64 access_token]
 
 如果 HTTP 狀態為 `200 OK`，則回應主體會包含所要求格式的音訊檔案。 會在將此檔案傳輸、儲存到緩衝區或儲存到檔案時播放。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 - [適用于長格式音訊的非同步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)

@@ -5,19 +5,28 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7931ad9e55d62d5fa2b1828d276e56f7c8cd02e1
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286475"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011300"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 設定 ExpressRoute Direct
 
 ExpressRoute Direct 可讓您透過策略性分散在世界各地的對等互連位置，直接連線到 Microsoft 的全球網路。 如需詳細資訊，請參閱[關於 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
+
+## <a name="before-you-begin"></a>開始之前
+
+使用 ExpressRoute Direct 之前，您必須先註冊您的訂用帳戶。 若要註冊，請將電子郵件與您的訂用帳戶識別碼傳送至 <ExpressRouteDirect@microsoft.com>，其中包含下列詳細資訊：
+
+* 您想要使用 **ExpressRoute Direct** 完成的案例
+* 位置喜好設定 - 請參閱[合作夥伴和對等互連位置](expressroute-locations-providers.md)以取得所有位置的完整清單
+* 實作的時間軸
+* 有任何其他問題嗎
 
 ## <a name="create-the-resource"></a><a name="resources"></a>建立資源
 
@@ -152,7 +161,7 @@ ExpressRoute Direct 可讓您透過策略性分散在世界各地的對等互連
    ```
 
    > [!NOTE]
-   > 您也可以將 [封裝] 屬性設定為 **Dot1Q** 。 
+   > 您也可以將 [封裝] 屬性設定為 **Dot1Q**。 
    >
 
    **範例輸出**

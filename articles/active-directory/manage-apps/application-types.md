@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 07/11/2017
+ms.topic: reference
+ms.date: 01/07/2021
 ms.author: kenwith
-ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 18e29ce8bf744cabb31c5634c9b0ca547bca5acc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858224"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020667"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>使用您的 Azure AD 租使用者來查看身分識別管理的應用程式
 [應用程式管理的快速入門系列](view-applications-portal.md)將帶領您瞭解基本概念。 在其中，您將瞭解如何使用您的 Azure AD 租使用者來查看身分識別管理的所有應用程式。 本文將更深入地探討您將找到的應用程式類型。

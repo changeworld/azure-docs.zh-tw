@@ -6,18 +6,21 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: dff98a5c54d2fee350e2b35dc00148c19ea233b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956495"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653107"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 TLS/SSL 憑證
 
 [Azure App Service](overview.md) 可提供可高度擴充、自我修復的 Web 主控服務。 本文說明如何將私人憑證或公開憑證建立、上傳或匯入到 App Service。 
 
 一旦將憑證新增至您的 App Service 應用程式或[函數應用程式](../azure-functions/index.yml)後，您就可以[使用它來保護自訂 DNS 名稱](configure-ssl-bindings.md)，或[用於應用程式程式碼中](configure-ssl-certificate-in-code.md)。
+
+> [!NOTE]
+> 上傳至應用程式的憑證會儲存在繫結至應用程式資源群組和區域組合的部署單位中 (內部稱為 *網路空間*)。 這可讓相同資源群組和區域組合中的其他應用程式能夠存取憑證。 
 
 下表列出您在 App Service 中所擁有可新增憑證的選項：
 

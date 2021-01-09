@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1e5848e568f42fb8a77c65c775962f27a5a03df
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a77f64e51a26e1f916f9f96704c55412a870a509
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588031"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673931"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>教學課程：建立具有相依資源的 ARM 範本
 
@@ -28,6 +28,8 @@ ms.locfileid: "97588031"
 > * 部署範本
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
+
+對於涵蓋資源相依性的 Microsoft Learn 模組，請參閱[使用進階 ARM 範本功能管理複雜的雲端部署](/learn/modules/manage-deployments-advanced-arm-template-features/)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -173,10 +175,10 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
 不再需要 Azure 資源時，可藉由刪除資源群組來清除您所部署的資源。
 
-1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]。
-2. 在 [依名稱篩選] 欄位中輸入資源群組名稱。
+1. 在 Azure 入口網站中，選取左側功能表中的 [資源群組]  。
+2. 在 [依名稱篩選]  欄位中輸入資源群組名稱。
 3. 選取資源群組名稱。 您在資源群組中應該會看到共計六個資源。
-4. 從頂端功能表中選取 [刪除資源群組]。
+4. 從頂端功能表中選取 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟
 

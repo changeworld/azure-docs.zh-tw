@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7016abc9d52aa12b497d29f605fe351ee3f6a2dd
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 33b30f29146e446c5525b1bbcfd76af71c557702
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519094"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045306"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "96519094"
 
 或者，您也可以使用 [Azure 入口網站](https://portal.azure.com)來管理端點和路由。 如需使用入口網站的文章版本，請參閱 [*如何： (入口網站) 管理端點和路由*](how-to-manage-routes-portal.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 您將需要 **Azure 帳戶** (您可以在 [這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免費設定一個帳戶) 
 * 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-cli.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：
@@ -125,17 +125,8 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 1. 接下來，將 `deadLetterSecret` 欄位新增至要求 **主體** 中的屬性物件。 根據以下範本來設定此值，這會從儲存體帳戶名稱、容器名稱和您在 [上一節](#set-up-storage-resources)中收集的 SAS 權杖值中建立 URL。
       
-    ```json
-    {
-      "properties": {
-        "endpointType": "EventGrid",
-        "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
-        "accessKey1": "xxxxxxxxxxx",
-        "accessKey2": "xxxxxxxxxxx",
-        "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
-      }
-    }
-    ```
+  :::code language="json" source="~/digital-twins-docs-samples/api-requests/deadLetterEndpoint.json":::
+
 1. 傳送要求以建立端點。
 
 如需有關結構化此要求的詳細資訊，請參閱 Azure 數位 Twins REST API 檔： [端點-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate)。
@@ -202,11 +193,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 `CreateOrReplaceEventRouteAsync` 是用來新增事件路由的 SDK 呼叫。 以下是其使用方式的範例：
 
-```csharp
-string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
-var er = new DigitalTwinsEventRoute("<your-endpointName>", eventFilter);
-await client.CreateOrReplaceEventRouteAsync("routeName", er);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
     
 > [!TIP]
 > 所有 SDK 函式都有同步和非同步版本。
@@ -214,35 +201,8 @@ await client.CreateOrReplaceEventRouteAsync("routeName", er);
 ### <a name="event-route-sample-code"></a>事件路由範例程式碼
 
 下列範例方法顯示如何建立、列出和刪除事件路由：
-```csharp
-private async static Task CreateEventRoute(DigitalTwinsClient client, String routeName, DigitalTwinsEventRoute er)
-{
-  try
-  {
-    Console.WriteLine("Create a route: testRoute1");
-            
-    // Make a filter that passes everything
-    er.Filter = "true";
-    await client.CreateOrReplaceEventRouteAsync(routeName, er);
-    Console.WriteLine("Create route succeeded. Now listing routes:");
-    Pageable<DigitalTwinsEventRoute> result = client.GetEventRoutes();
-    foreach (DigitalTwinsEventRoute r in result)
-    {
-        Console.WriteLine($"Route {r.Id} to endpoint {r.EndpointName} with filter {r.Filter} ");
-    }
-    Console.WriteLine("Deleting routes:");
-    foreach (DigitalTwinsEventRoute r in result)
-    {
-        Console.WriteLine($"Deleting route {r.Id}:");
-        client.DeleteEventRoute(r.Id);
-    }
-  }
-    catch (RequestFailedException e)
-    {
-        Console.WriteLine($"*** Error in event route processing ({e.ErrorCode}):\n${e.Message}");
-    }
-  }
-```
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="FullEventRouteSample":::
 
 ## <a name="filter-events"></a>篩選事件
 
@@ -255,12 +215,8 @@ private async static Task CreateEventRoute(DigitalTwinsClient client, String rou
 
 若要加入篩選，您可以使用 PUT 要求至 *HTTPs：//{您的-twins-hostname}/eventRoutes/{event-route-name}？ api-version = 2020-10-31* ，具有下列主體：
 
-```json  
-{
-    "endpointName": "<endpoint-name>",
-    "filter": "<filter-text>"
-}
-``` 
+:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter.json":::
+
 以下是支援的路由篩選。 使用 *篩選文字架構* 資料行中的詳細資料來取代 `<filter-text>` 上述要求主體中的預留位置。
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]
@@ -271,7 +227,7 @@ private async static Task CreateEventRoute(DigitalTwinsClient client, String rou
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解您可以接收的不同事件訊息類型：
 * [*How to：解讀事件資料*](how-to-interpret-event-data.md)

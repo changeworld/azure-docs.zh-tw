@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: a52188dc5058dbc74d3b03fba860b98540cd4a41
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: d2b77708609f61eeb4ce33148f020027d646836b
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608497"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813593"
 ---
 # <a name="communication-services-notifications"></a>通訊服務通知
 
@@ -45,15 +45,15 @@ Azure 通訊服務與 [Azure 事件方格](https://azure.microsoft.com/services/
 
 ### <a name="notification-hub-provisioning"></a>通知中樞佈建 
 
-若要使用通知中樞將推播通知傳遞至用戶端裝置，請在與您的通訊服務資源相同的訂用帳戶中[建立通知中樞](../../notification-hubs/create-notification-hub-portal.md)。 必須為您要使用的平台通知服務設定 Azure 通知中樞。 若要了解如何在用戶端應用程式中收到通知中樞的推播通知，請參閱[開始使用通知中心](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)，並從靠近頁面頂端的下拉式清單中選取目標用戶端平台。
+若要使用通知中樞將推播通知傳遞至用戶端裝置，請在與您的通訊服務資源相同的訂用帳戶中[建立通知中樞](../../notification-hubs/create-notification-hub-portal.md)。 您必須為要使用的平台通知系統設定 Azure 通知中樞。 若要了解如何在用戶端應用程式中收到通知中樞的推播通知，請參閱[開始使用通知中心](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)，並從靠近頁面頂端的下拉式清單中選取目標用戶端平台。
 
 > [!NOTE]
 > 目前支援 APN 和 FCM 平台。  
 必須以權杖驗證模式設定 APN 平台。 目前不支援憑證驗證模式。 
 
-設定通知中樞之後，您可以使用 Azure Resource Manager 用戶端或透過 Azure 入口網站提供中樞的連接字串，將其與您的「通訊服務」資源建立關聯。 連接字串應該包含「傳送」權限。 我們建議您特別為您的中樞建立另一個具有僅限「傳送」權限的存取原則。 深入了解[通知中樞安全性和存取原則](../../notification-hubs/notification-hubs-push-notification-security.md)
+設定通知中樞之後，您可以使用 Azure Resource Manager 用戶端或透過 Azure 入口網站提供中樞的連接字串，將其與您的「通訊服務」資源建立關聯。 連接字串應該包含 `Send` 權限。 我們建議您特別為您的中樞建立另一個具有僅限 `Send` 權限的存取原則。 深入了解[通知中樞安全性和存取原則](../../notification-hubs/notification-hubs-push-notification-security.md)
 
-#### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>使用 Azure Resource Manager 用戶端來設定通知中樞
+#### <a name="using-the-azure-resource-manager-client-to-link-your-notification-hub"></a>使用 Azure Resource Manager 用戶端來連結通知中樞
 
 若要登入 Azure Resource Manager，請執行下列作業，並使用您的認證登入。
 
@@ -67,9 +67,9 @@ armclient login
 armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers/Microsoft.Communication/CommunicationServices/<resource_id>/linkNotificationHub?api-version=2020-08-20-preview "{'connectionString': '<connection_string>','resourceId': '<resource_id>'}"
 ```
 
-#### <a name="using-the-azure-portal-to-configure-the-notification-hub"></a>使用 Azure 入口網站設定通知中樞
+#### <a name="using-the-azure-portal-to-link-your-notification-hub"></a>使用 Azure 入口網站來連結通知中樞
 
-在入口網站中，瀏覽至您的 Azure 通訊服務資源。 在通訊服務資源中，從 [通訊服務] 頁面的左側功能表選取 [推播通知]，然後連線您先前佈建的通知中樞。 您必須在這裡提供您的連接字串和資源識別碼：
+在入口網站中，瀏覽至您的 Azure 通訊服務資源。 在通訊服務資源中，從 [通訊服務] 頁面的左側功能表選取 [推播通知]，然後連線您先前佈建的通知中樞。 您必須在這裡提供連接字串和資源識別碼：
 
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="顯示 Azure 入口網站中推播通知設定的螢幕擷取畫面。":::
 
@@ -77,9 +77,51 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 > 如果 Azure 通知中樞連接字串有更新，則必須一併更新通訊服務資源。  
 中樞連結方式的任何變更，都會在最長期間 ``10`` 分鐘內反映於資料平面中 (亦即在傳送通知時)。 **如果** 之前已傳送通知，在第一次連結中樞時也適用此原則。
 
-#### <a name="device-registration"></a>裝置註冊 
+### <a name="device-registration"></a>裝置註冊 
 
 請參閱[語音通話快速入門](../quickstarts/voice-video-calling/getting-started-with-calling.md)，以了解如何向通訊服務註冊您的裝置控制代碼。
+
+### <a name="troubleshooting-guide-for-push-notifications"></a>推播通知的疑難排解指南
+
+在裝置上看不到推播通知時，系統可能將通知捨棄在其他三個位置：
+
+- Azure 通知中樞不接受來自 Azure 通訊服務的通知
+- 平台通知系統 (例如 APN 和 FCM) 不接受來自 Azure 通知中樞的通知
+- 平台通知系統未將通知傳遞給裝置。
+
+以下涵蓋系統可能捨棄通知的第一個位置 (Azure 通知中樞不接受來自 Azure 通訊服務的通知)。 如需了解其他兩個位置，請參閱[診斷 Azure 通知中樞捨棄的通知](../../notification-hubs/notification-hubs-push-notification-fixer.md)。
+
+若要查看您的通訊服務資源是否將通知傳送至 Azure 通知中樞，其中一種方式是從連結的 [Azure 通知中樞計量](../../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs)查看 `incoming messages` 計量。
+
+以下是因為 Azure 通知中樞不接受來自您通訊服務資源的通知，而導致的一些常見錯誤設定。
+
+#### <a name="azure-notification-hub-not-linked-to-the-communication-services-resource"></a>Azure 通知中樞未連結至通訊服務資源
+
+在此情況下，您可能未將 Azure 通知中樞連結至您的通訊服務資源。 您可以查 [通知中樞佈建區段](#notification-hub-provisioning) 以了解如何連結。
+
+#### <a name="the-linked-azure-notification-hub-isnt-configured"></a>未設定連結的 Azure 通知中樞
+
+您必須以要使用的平台 (例如 iOS 或 Android) 平台通知系統認證來設定連結的通知中樞。 如需如何完成這項作業的詳細資訊，請參閱[在通知中樞內設定推播通知](../../notification-hubs/configure-notification-hub-portal-pns-settings.md)。
+
+#### <a name="the-linked-azure-notification-hub-doesnt-exist"></a>連結的 Azure 通知中樞不存在
+
+連結到您的通訊服務資源的 Azure 通知中樞已不存在。 檢查連結的通知中樞是否仍然存在。
+
+#### <a name="the-azure-notification-hub-apns-platform-is-configured-with-certificate-authentication-mode"></a>Azure 通知中樞 APN 平台已設定憑證驗證模式
+
+如果要使用 APN 平台搭配憑證驗證模式，目前不支援此功能。 您應該依照[在通知中樞內設定推播通知](../../notification-hubs/configure-notification-hub-portal-pns-settings.md)中所指定的權杖驗證模式來設定 APN 平台。
+
+#### <a name="the-linked-connection-string-doesnt-have-send-permission"></a>連結的連接字串沒有 `Send` 權限
+
+您用來將通知中樞連結到通訊服務資源的連接字串必須具有 `Send` 權限。 如需如何建立新連接字串，或從 Azure 通知中樞查看目前連接字串的詳細資訊，請參閱[通知中樞安全性和存取原則](../../notification-hubs/notification-hubs-push-notification-security.md)
+
+#### <a name="the-linked-connection-string-or-azure-notification-hub-resourceid-arent-valid"></a>連結的連接字串或 Azure 通知中樞資源識別碼無效
+
+請確定使用正確的連接字串和 Azure 通知中樞資源識別碼來設定通訊服務資源
+
+#### <a name="the-linked-connection-string-is-regenerated"></a>已重新產生連結的連接字串
+
+如果重新產生連結的 Azure 通知中樞之連接字串，您必須[重新連結通知中樞](#notification-hub-provisioning)，才能在您的通訊服務資源中更新連接字串。
 
 ## <a name="next-steps"></a>下一步
 

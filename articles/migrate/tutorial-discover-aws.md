@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: ce86da7697341e769ada120dc7a941319b64fc18
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 935aa8297e8b244bfd05483f07aad3eadb485f1b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109533"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797072"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>教學課程：使用伺服器評量來探索 AWS 執行個體
 
@@ -42,7 +42,7 @@ ms.locfileid: "97109533"
 --- | ---
 **設備** | 您需要用來執行 Azure Migrate 設備的 EC2 VM。 機器應具有：<br/><br/> - 已安裝的 Windows Server 2016。 不支援在使用 Windows Server 2019 的電腦上執行設備。<br/><br/> - 16 GB RAM、8 個 vCPU、約 80 GB 的磁碟儲存體和外部虛擬交換器。<br/><br/> - 靜態或動態 IP 位址，以及網際網路存取 (直接或透過 Proxy)。
 **Windows 執行個體** | 允許 WinRM 連接埠 5985 上的輸入連線 (HTTP)，讓設備可以提取設定和效能中繼資料。
-**Linux 執行個體** | 允許連接埠 22 上的輸入連線 (TCP)。
+**Linux 執行個體** | 允許連接埠 22 上的輸入連線 (TCP)。<br/><br/> 執行個體應該使用 `bash` 作為預設殼層，否則探索將會失敗。
 
 ## <a name="prepare-an-azure-user-account"></a>準備 Azure 使用者帳戶
 
@@ -222,11 +222,16 @@ Azure Migrate 設備是輕量型設備，可供 Azure Migrate 伺服器評量用
 ### <a name="register-the-appliance-with-azure-migrate"></a>向 Azure Migrate 註冊設備
 
 1. 貼上從入口網站複製的 **Azure Migrate 專案金鑰**。 如果沒有金鑰，請移至 **伺服器評估 > 探索 > 管理現有的設備**，選取在金鑰產生時提供的設備名稱，並複製對應的金鑰。
-1. 按一下 [登入]。 系統會在新的瀏覽器索引標籤中開啟 Azure 登入提示。如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
-1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入。
+1. 您需要裝置程式碼才能向 Azure 驗證。 按一下 [登入] 會以如下所示的裝置程式碼開啟強制回應。
+
+    ![顯示裝置程式碼的強制回應](./media/tutorial-discover-vmware/device-code.png)
+
+1. 按一下 [複製程式碼和登入] 以複製裝置程式碼，然後在新的瀏覽器索引標籤中開啟 Azure 登入提示。如果未出現，請確定您已在瀏覽器中停用快顯封鎖程式。
+1. 在新的索引標籤上，使用您的 Azure 使用者名稱和密碼登入並貼上裝置程式碼。
    
    不支援使用 PIN 登入。
-3. 成功登入後，返回 Web 應用程式。 
+3. 如果不小心在尚未完成登入流程時關閉了登入索引標籤，則需要重新整理設備組態管理員的瀏覽器索引標籤，才能再次啟用登入按鈕。
+1. 成功登入之後，請回到設備組態管理員的上一個索引標籤。
 4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](./tutorial-discover-physical.md)，就會起始設備註冊。
 1. 成功註冊設備之後，您可以按一下 [檢視詳細資料]查看註冊詳細資料。
 
@@ -243,6 +248,10 @@ Azure Migrate 設備是輕量型設備，可供 Azure Migrate 伺服器評量用
     - Azure Migrate 支援使用 RSA、DSA、ECDSA 和 ed25519 演算法的 ssh-keygen 命令所產生的 SSH 私密金鑰。
     - 目前 Azure Migrate 不支援複雜密碼型的 SSH 金鑰。 若沒有複雜密碼，請使用 SSH 金鑰。
     - 目前 Azure Migrate 不支援 PuTTY 所產生的 SSH 私密金鑰檔案。
+    - Azure Migrate 支援 SSH 私密金鑰檔案的 OpenSSH 格式，如下所示：
+    
+    ![支援 SSH 私密金鑰的格式](./media/tutorial-discover-physical/key-format.png)
+
 
 1. 如果想要一次新增多個認證，請按一下 [新增更多] 以儲存並新增更多認證。 實體伺服器探索支援使用多個認證。
 1. 在 **步驟 2：提供實體或虛擬伺服器詳細資料** 中，按一下 [新增探索來源] 來指定伺服器 **IP 位址/FQDN** 和認證的自訂名稱，以連線到伺服器。

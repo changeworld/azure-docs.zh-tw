@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: bb146f03000f17d94d3d2ffc93b55c42eea20dac
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1152c8b72bcb830a7ba4efa053d3ffff667f9dc8
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736403"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034164"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的受控識別驗證及存取 Azure 資源
 
@@ -156,7 +156,7 @@ Azure Logic Apps 支援 [*系統指派的*](../active-directory/managed-identiti
 
    ![新增受控識別](./media/create-managed-service-identity/add-user-assigned-identity.png)
 
-1. 提供受控識別的相關資訊，然後選取 [ **審核 + 建立** ]，例如：
+1. 提供受控識別的相關資訊，然後選取 [ **審核 + 建立**]，例如：
 
    ![建立使用者指派的受控識別](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
@@ -303,7 +303,7 @@ Azure Logic Apps 支援 [*系統指派的*](../active-directory/managed-identiti
    > [!TIP]
    > 如果 [新增角色指派] 選項已停用，很可能表示您沒有權限。 如需可讓您管理資源角色的權限的詳細資訊，請參閱 [Azure Active Directory 中的系統管理員角色權限](../active-directory/roles/permissions-reference.md)。
 
-1. 在 [新增角色指派] 中，選取能為您的身分識別提供目標資源必要存取權的 **角色** 。
+1. 在 [新增角色指派] 中，選取能為您的身分識別提供目標資源必要存取權的 **角色**。
 
    在本主題的範例中，您的身分識別需要 [可存取 Azure 儲存體容器中 blob 的角色](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)，因此請選取受控識別的 **儲存體 blob 資料參與者** 角色。
 
@@ -348,7 +348,7 @@ Azure Logic Apps 支援 [*系統指派的*](../active-directory/managed-identiti
 當您[啟用邏輯應用程式的受控識別](#azure-portal-system-logic-app)並[授與目標資源或實體的身分識別存取權](#access-other-resources)時，您可以在[支援受控識別的觸發和動作](logic-apps-securing-a-logic-app.md#managed-identity-authentication)中使用該身分識別。
 
 > [!IMPORTANT]
-> 如果您有想要使用系統指派身分識別的Azure 函式，請先[啟用 Azure Function 的驗證功能](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions)。
+> 如果您有想要使用系統指派身分識別的Azure 函式，請先[啟用 Azure Function 的驗證功能](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions)。
 
 這些步驟示範如何透過 Azure 入口網站，使用受控識別搭配觸發或動作。 若要在觸發或動作的基礎 JSON 定義中指定受控識別，請參閱[受控識別驗證](../logic-apps/logic-apps-securing-a-logic-app.md#managed-identity-authentication)。
 
@@ -378,7 +378,7 @@ Azure Logic Apps 支援 [*系統指派的*](../active-directory/managed-identiti
    |----------|----------|---------------|-------------|
    | **方法** | 是 | `PUT`| 快照集 Blob 操作所使用的HTTP 方法 |
    | **URI** | 是 | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Azure 全域 (公用) 環境中 Azure Blob 儲存體檔案的資源識別碼會使用此語法 |
-   | **標頭** | 針對 Azure 儲存體 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type` `x-ms-version` `x-ms-date` Azure 儲存體作業需要、和標頭值。 <p><p>**重要** ：在 Azure 儲存體的傳出 HTTP 觸發和動作要求中，標題需要您要執行的作業所用的 `x-ms-version` 屬性和 API 版本。 `x-ms-date`必須是目前的日期。 否則，您的邏輯應用程式會失敗，並出現 `403 FORBIDDEN` 錯誤。 若要取得所需格式的目前日期，您可以使用範例值中的運算式。 <p>如需詳細資訊，請參閱下列主題： <p><p>- [要求標題 - 快照集 Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure 儲存體服務的版本設定](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **標頭** | 針對 Azure 儲存體 | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | `x-ms-blob-type` `x-ms-version` `x-ms-date` Azure 儲存體作業需要、和標頭值。 <p><p>**重要**：在 Azure 儲存體的傳出 HTTP 觸發和動作要求中，標題需要您要執行的作業所用的 `x-ms-version` 屬性和 API 版本。 `x-ms-date`必須是目前的日期。 否則，您的邏輯應用程式會失敗，並出現 `403 FORBIDDEN` 錯誤。 若要取得所需格式的目前日期，您可以使用範例值中的運算式。 <p>如需詳細資訊，請參閱下列主題： <p><p>- [要求標題 - 快照集 Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Azure 儲存體服務的版本設定](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **查詢** | 僅適用于快照集 Blob 作業 | `comp` = `snapshot` | 運算的查詢參數名稱和值。 |
    |||||
 
@@ -407,7 +407,7 @@ Azure Logic Apps 支援 [*系統指派的*](../active-directory/managed-identiti
 
      ![選取使用者指派的身分識別](./media/create-managed-service-identity/select-user-assigned-identity-for-action.png)
 
-   此範例會繼續使用 **系統指派的受控識別** 。
+   此範例會繼續使用 **系統指派的受控識別**。
 
 1. 在某些觸發和動作上，也會顯示 [物件] 屬性，讓您設定目標資源識別碼。 將 [物件] 屬性設定為[目標資源或服務的資源識別碼](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 否則，根據預設，[物件] 屬性會使用 `https://management.azure.com/` 資源識別碼，也就是 Azure Resource Manager 的資源識別碼。
 

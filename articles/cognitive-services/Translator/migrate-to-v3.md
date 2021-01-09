@@ -10,19 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f22213bf192b12e046bab12346e5d5d83fb36b96
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364270"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028228"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 至 V3 的遷移
 
 > [!NOTE]
-> V2 已于2018年4月30日淘汰。 請將您的應用程式遷移至 V3，以充分利用 V3 提供的新功能。
-> 
-> Microsoft Translator Hub 將于2019年5月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。  
+> V2 已于2018年4月30日淘汰。 請將您的應用程式遷移至 V3，以充分利用 V3 提供的新功能。 V2 將于2021年5月24日淘汰。 
 
 Microsoft Translator 團隊已發行第3版 (V3) 的翻譯工具。 本版包含對 Microsoft Translator 服務傳送和接收資料的新功能、汰用方法和新格式。 本文件提供將應用程式變更為使用 V3 的資訊。 
 
@@ -86,7 +84,7 @@ Microsoft Translator V3 的定價方式與 V2 相同，即依字元計價，包�
 
 ## <a name="v3-end-points"></a>V3 結束點
 
-全球
+全域
 
 * api.cognitive.microsofttranslator.com
 

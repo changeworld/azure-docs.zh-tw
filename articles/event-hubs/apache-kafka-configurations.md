@@ -2,13 +2,13 @@
 title: Apache Kafka 用戶端的建議設定-Azure 事件中樞
 description: 本文提供建議的 Apache Kafka 設定，讓用戶端與 Apache Kafka 的 Azure 事件中樞互動。
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096132"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028823"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>適用于 Apache Kafka 用戶端的建議設定
 以下是從 Apache Kafka 用戶端應用程式使用 Azure 事件中樞的建議設定。 
@@ -77,9 +77,9 @@ ms.locfileid: "87096132"
 
 檢查下列常見設定相關錯誤案例的表格。
 
-徵兆 | 問題 | 解決方法
+徵兆 | 問題 | 解決方案
 ----|---|-----
-因為重新平衡，所以位移認可失敗 | 您的取用者在輪詢 ( # A1 的呼叫之間等候太長，而服務正在開始群組中的取用者。 | 您有幾種選項： <ul><li>增加會話超時時間</li><li>減少訊息批次大小以加速處理</li><li>改善處理平行處理，以避免封鎖取用者。輪詢 ( # A1</li></ul> 套用這三種三種組合可能會 wisest。
+因為重新平衡，所以位移認可失敗 | 您的取用者在輪詢 ( # A1 的呼叫之間等候太長，而服務正在開始群組中的取用者。 | 您有幾種選項： <ul><li>增加輪詢處理超時 (`max.poll.interval.ms`) </li><li>減少訊息批次大小以加速處理</li><li>改善處理平行處理，以避免封鎖取用者。輪詢 ( # A1</li></ul> 套用這三種三種組合可能會 wisest。
 高產生輸送量的網路例外狀況 | 您使用的是 JAVA 用戶端 + 預設最大要求大小。  您的要求可能太大。 | 請參閱上述的 JAVA 進行。
 
 ## <a name="next-steps"></a>後續步驟

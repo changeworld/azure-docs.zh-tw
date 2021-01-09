@@ -3,16 +3,15 @@ title: 在 Azure 串流分析中調整 Machine Learning Studio (傳統) 函數
 description: 本文說明如何藉由設定資料分割和串流單位，來調整使用 Machine Learning Studio (傳統) 函式的串流分析作業。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: feeb709f67a0e75f5980ec0520b95feb7edd5960
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b9768bacf8d29b37f479ea080afddd494b506262
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018812"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013935"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure Machine Learning Studio (傳統版) 函式調整串流分析作業
 

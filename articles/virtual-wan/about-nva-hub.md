@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
 Customer intent: As someone with a networking background, I want to learn about Network Virtual Appliances in the Virtual WAN hub.
-ms.openlocfilehash: 1e4b8a2d801d7d7eccfaf558c3926ead1ab0a953
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 365ed60e73be9bb2098022fa767f4ae54b93c37c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313768"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028075"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>關於 Azure 虛擬 WAN hub 中的網路虛擬裝置 (預覽) 
 
 Azure 虛擬 WAN 與網路夥伴合作，以建立自動化，讓您輕鬆地將客戶的客戶部署設備 (CPE) 連接到虛擬中樞內的 Azure VPN 閘道。 Azure 正與選取的網路合作夥伴合作，讓客戶可以部署協力廠商網路虛擬裝置 (NVA 直接) 至虛擬中樞。 這可讓想要將其分支 CPE 連線到虛擬中樞內相同品牌 NVA 的客戶，讓他們可以利用專屬的端對端 SD WAN 功能。
 
-Barracuda 網路是第一個提供 NVA 供應專案的合作夥伴，可以使用其 [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) 產品直接部署到虛擬 WAN 中樞。 Azure 正與更多合作夥伴合作，因此預期會看到其他供應專案。
+Barracuda 網路和 Cisco 系統是第一個提供 Nva 的合作夥伴，可直接部署到虛擬 WAN 中樞。  請參閱 [Barracuda CLOUDGEN WAN](https://www.barracuda.com/products/cloudgenwan) 和 [Cisco Cloud 通往 for 多重雲端](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) ，以瞭解其各自的產品檔。 Azure 正與更多合作夥伴合作，因此預期會看到其他供應專案。
 
 > [!NOTE]
 > 只有可部署到虛擬 WAN 中樞的 NVA 供應專案可以部署到虛擬 WAN 中樞。 它們無法部署至 Azure 中的任意虛擬網路。
@@ -50,11 +50,11 @@ NVA 合作夥伴可能會根據其設備部署、設定授權和管理需求來�
 * **客戶資源群組** -這將包含受控應用程式的應用程式預留位置。 合作夥伴可以使用此屬性，公開他們在此處選擇的任何客戶內容。
 * **受控資源群組** -客戶無法直接設定或變更此資源群組中的資源，因為這是由受管理應用程式的發行者所控制。 此資源群組會包含 **NetworkVirtualAppliances** 資源。
 
-:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="程序概觀":::
+:::image type="content" source="./media/about-nva-hub/managed-app.png" alt-text="受控應用程式資源群組":::
 
 ### <a name="nva-infrastructure-units"></a><a name="units"></a>NVA 基礎結構單位
 
-當您在虛擬 WAN 中樞內建立 NVA 時，您必須選擇要用來部署的 NVA 基礎結構單位數目。 **NVA 基礎結構單位**是虛擬 WAN 中樞內 NVA 的匯總頻寬容量單位。 **NVA 基礎結構單位**類似于 VPN[縮放單位](pricing-concepts.md#scale-unit)，就您考慮容量和調整大小的方式而言。
+當您在虛擬 WAN 中樞內建立 NVA 時，您必須選擇要用來部署的 NVA 基礎結構單位數目。 **NVA 基礎結構單位** 是虛擬 WAN 中樞內 NVA 的匯總頻寬容量單位。 **NVA 基礎結構單位** 類似于 VPN [縮放單位](pricing-concepts.md#scale-unit)，就您考慮容量和調整大小的方式而言。
 
 * 1 NVA 基礎結構單位代表所有進入此 NVA 之分支網站連線的匯總頻寬 500 Mbps，成本為每小時 $ 0.25/小時。
 * 針對指定的 NVA 虛擬中樞部署，Azure 支援 1-80 NVA 基礎結構單位。
@@ -93,11 +93,11 @@ NVA 合作夥伴可能會根據其設備部署、設定授權和管理需求來�
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>我可以從 Azure Marketplace 將任何 NVA 部署到虛擬 WAN 中樞嗎？
 
-否。 目前，只有 [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) 可以部署到虛擬 WAN 中樞。
+目前，只有 [Barracuda CLOUDGEN WAN](https://aka.ms/BarracudaMarketPlaceOffer) 和 [Cisco Cloud vWAN 應用程式](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) 可部署到虛擬 WAN 中樞。
 
 ### <a name="what-is-the-cost-of-the-nva"></a>NVA 的成本為何？
 
-您必須向 Barracuda 購買 Barracuda CloudGen WAN NVA 的授權。 如需授權的詳細資訊，請參閱 [Barracuda 的 CLOUDGEN WAN 頁面](https://www.barracuda.com/products/cloudgenwan)。 此外，您也會針對您所使用的 NVA 基礎結構單位，以及您使用的任何其他資源，產生費用給 Microsoft。 如需詳細資訊，請參閱 [定價概念](pricing-concepts.md)。
+您必須向 NVA 廠商購買 NVA 的授權。  如需 Barracuda 授權的 Barracuda CloudGen WAN NVA，請參閱 [Barracuda 的 CLOUDGEN wan 頁面](https://www.barracuda.com/products/cloudgenwan)。 Cisco 目前僅提供 BYOL (攜帶您自己的授權，) 需要直接從 Cisco 購買的授權模型。 此外，您也會針對您所使用的 NVA 基礎結構單位，以及您使用的任何其他資源，產生費用給 Microsoft。 如需詳細資訊，請參閱 [定價概念](pricing-concepts.md)。
 
 ### <a name="can-i-deploy-an-nva-to-a-basic-hub"></a>我可以將 NVA 部署至基本中樞嗎？
 
@@ -105,11 +105,11 @@ NVA 合作夥伴可能會根據其設備部署、設定授權和管理需求來�
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>我可以將 NVA 部署到安全的中樞嗎？
 
-是。 您可以使用 Azure 防火牆將 Barracuda CloudGen WAN 部署到中樞。
+可以。 您可以使用 Azure 防火牆將 Barracuda CloudGen WAN 部署到中樞。
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>我可以將我的分公司中的任何 CPE 裝置連線到中樞內的 Barracuda CloudGen WAN NVA 嗎？
 
-否。 Barracuda CloudGen WAN 只與 Barracuda CPE 裝置相容。 若要深入瞭解 CloudGen WAN 需求，請參閱 [Barracuda 的 CLOUDGEN wan 頁面](https://www.barracuda.com/products/cloudgenwan)。
+否。 Barracuda CloudGen WAN 只與 Barracuda CPE 裝置相容。 若要深入瞭解 CloudGen WAN 需求，請參閱 [Barracuda 的 CLOUDGEN wan 頁面](https://www.barracuda.com/products/cloudgenwan)。 針對 Cisco，有數個相容的 SD-WAN CPE 裝置。 請參閱 [Cisco Cloud 通往 for](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) 相容 CPEs 的多重雲端檔。
 
 ### <a name="what-routing-scenarios-are-supported-with-nva-in-the-hub"></a>中樞內的 NVA 支援哪些路由案例？
 

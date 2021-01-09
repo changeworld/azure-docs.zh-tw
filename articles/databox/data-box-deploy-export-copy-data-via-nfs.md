@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 64bb5e94c4b18626d1f85d7e61252aae74202eb9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91660833"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680627"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>教學課程：透過 NFS 從 Azure 資料箱複製資料 (預覽)
+# <a name="tutorial-copy-data-from-azure-data-box-via-nfs"></a>教學課程：透過 NFS 從 Azure 資料箱複製資料
 
 本教學課程說明如何透過 NFS 連線至內部部署資料伺服器，並將資料從資料箱的本機 Web UI 複製到該伺服器中。 資料箱上的資料會從您的 Azure 儲存體帳戶匯出。
 
@@ -26,8 +26,6 @@ ms.locfileid: "91660833"
 > * 必要條件
 > * 連線至資料箱
 > * 從資料箱複製資料
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -79,11 +77,11 @@ ms.locfileid: "91660833"
 
 [!INCLUDE [data-box-export-review-logs](../../includes/data-box-export-review-logs.md)]
 
- 您現在可以開始複製資料了。 如果您使用 Linux 主機電腦，請使用類似於 Robocopy 的複製公用程式。 在 Linux 中有替代工具可供使用，包括 [rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/) 或 [Ultracopier](https://ultracopier.first-world.info/)。  
+ 您現在可以開始複製資料了。 如果您使用 Linux 主機電腦，請使用類似於 Robocopy 的複製公用程式。 在 Linux 中有替代工具可供使用，包括 [`rsync`](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[ Unison](https://www.cis.upenn.edu/~bcpierce/unison/) 或 [Ultracopier](https://ultracopier.first-world.info/)。  
 
 `cp` 命令是複製目錄的最佳選項之一。 如需其使用方式的詳細資訊，請移至 [cp 手冊頁](http://man7.org/linux/man-pages/man1/cp.1.html)。
 
-如果使用 rsync 選項進行多執行緒複製，請遵循下列指導方針：
+如果使用 `rsync` 選項進行多執行緒複製，請遵循下列指導方針：
 
 * 根據您的 Linux 用戶端所使用的檔案系統，安裝 **CIFS Utils** 或 **NFS Utils** 套件。
 
@@ -91,7 +89,7 @@ ms.locfileid: "91660833"
 
     `sudo apt-get install nfs-utils`
 
-* 安裝 **Rsync** 和 **Parallel** (依 Linux 發行的版本而有所不同)。
+* 安裝 `rsync` 和 **Parallel** (依 Linux 發行的版本而有所不同)。
 
     `sudo apt-get install rsync`
    
@@ -118,7 +116,7 @@ ms.locfileid: "91660833"
      建議您一開始先使用 16 個平行複製，然後再根據可用的資源增加執行緒數目。
 
 > [!IMPORTANT]
-> 不支援下列 Linux 檔案類型：符號連結、字元檔案、區塊檔案、通訊端和管線。 這些檔案類型會導致在**準備寄送**步驟期間發生失敗。
+> 不支援下列 Linux 檔案類型：符號連結、字元檔案、區塊檔案、通訊端和管線。 這些檔案類型會導致在 **準備寄送** 步驟期間發生失敗。
 
 複製完成後，請移至 [儀表板]，並確認您的裝置上已使用的空間和可用空間。
 

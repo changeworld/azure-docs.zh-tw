@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/04/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182279"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723961"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教學課程：Azure Active Directory 與 Citrix ShareFile 整合
 
@@ -51,7 +51,7 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Citrix ShareFile**。
 1. 從結果面板選取 [Citrix ShareFile]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-citrix-sharefile"></a>設定和測試 Citrix ShareFile 的 Azure AD SSO
 
 在本節中，您會以名為 **Britta Simon** 的測試使用者為基礎，設定及測試與 Citrix ShareFile 搭配運作的 Azure AD 單一登入。
 若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Citrix ShareFile 中相關使用者之間的連結關聯性。
@@ -60,10 +60,10 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
     
-    * **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
-    * **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
+    1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
+    1. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
 2. **[設定 Citrix ShareFile SSO](#configure-citrix-sharefile-sso)** - 在應用程式端設定單一登入設定。
-    * **[建立 Citrix ShareFile 測試使用者](#create-citrix-sharefile-test-user)** - 讓 Citrix ShareFile 中對應的 Britta Simon 連結到使用者在 Azure AD 中的代表項目。
+    1. **[建立 Citrix ShareFile 測試使用者](#create-citrix-sharefile-test-user)** - 讓 Citrix ShareFile 中對應的 Britta Simon 連結到使用者在 Azure AD 中的代表項目。
 3. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
@@ -78,7 +78,7 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 
 1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：
 
-    a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<tenant-name>.sharefile.com/saml/login`
+    a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<tenant-name>.sharefile.com/saml/login`
 
     b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：
 
@@ -115,7 +115,7 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下 [建立]。
+   1. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -131,7 +131,15 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 
 ## <a name="configure-citrix-sharefile-sso"></a>設定 Citrix ShareFile SSO
 
-1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 **Citrix ShareFile** 公司網站。
+1. 若要自動執行 **Citrix ShareFile** 內的設定，您必須按一下 [安裝擴充功能] 來安裝「我的應用程式安全登入瀏覽器擴充功能」。
+
+    ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
+
+2. 將擴充功能新增至瀏覽器之後，按一下 [設定 Citrix ShareFile] 便會將您導向至 Citrix ShareFile 應用程式。 請從該處提供用以登入 Citrix ShareFile 的管理員認證。 瀏覽器延伸模組將會自動為您設定應用程式，並自動執行步驟 3 到 7。
+
+    ![設定組態](common/setup-sso.png)
+
+3. 如果您想要手動設定 Citrix ShareFile，請在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Citrix ShareFile 公司網站。
 
 1. 在 [儀表板] 中按一下 [設定]，然後選取 [管理員設定]
 
@@ -184,13 +192,13 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 
 ## <a name="test-sso"></a>測試 SSO 
 
-在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。
 
-1. 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向至您可以在其中起始登入流程的 Citrix ShareFile 登入 URL。 
+* 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向至您可以在其中起始登入流程的 Citrix ShareFile 登入 URL。
 
-2. 直接移至 Citrix ShareFile 登入 URL，然後從該處起始登入流程。
+* 直接移至 Citrix ShareFile 登入 URL，然後從該處起始登入流程。
 
-3. 您可以使用 Microsoft 存取面板。 當您按一下存取面板中的 [Citrix ShareFile] 圖格時，將會重新導向至 Citrix ShareFile 登入 URL。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [Citrix ShareFile] 圖格時，將會重新導向至 Citrix ShareFile 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 
 ## <a name="next-steps"></a>後續步驟

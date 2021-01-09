@@ -3,12 +3,12 @@ title: 以程式設計方式建立原則
 description: 此文章會逐步引導您使用 Azure CLI、Azure PowerShell 及 REST API，以程式設計方式建立及管理 Azure 原則的原則。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920010"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033858"
 ---
 # <a name="programmatically-create-policies"></a>以程式設計方式建立原則
 
@@ -95,7 +95,7 @@ ms.locfileid: "94920010"
    - 訂用帳戶 - `/subscriptions/{subId}`
    - 管理群組 - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-如需使用 Resource Manager PowerShell 模組管理資源原則的詳細資訊，請參閱 [Az. Resources](/powershell/module/az.resources/#policies)。
+如需使用 Resource Manager PowerShell 模組管理資源原則的詳細資訊，請參閱 [Az. Resources](/powershell/module/az.resources/#policy)。
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>使用 ARMClient 來建立及指派原則定義
 
@@ -242,7 +242,7 @@ az policy definition show --name 'Audit Storage Accounts with Open Public Networ
 如需本文中查詢與命令的詳細資訊，請檢閱以下文章。
 
 - [Azure REST API 資源](/rest/api/resources/)
-- [Azure PowerShell 模組](/powershell/module/az.resources/#policies)
+- [Azure PowerShell 模組](/powershell/module/az.resources/#policy)
 - [Azure CLI 原則命令](/cli/azure/policy)
 - [Azure 原則見解資源提供者 REST API 參考](/rest/api/policy-insights)
 - [使用 Azure 管理群組來組織資源](../../management-groups/overview.md)。

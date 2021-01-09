@@ -10,14 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 657ccafa0e7b7f640122fd6b397b3fa2a7c5f0fc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72968747"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015550"
 ---
-# <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>自動識別及轉譯多語言內容 (預覽) 
+# <a name="automatically-identify-and-transcribe-multi-language-content"></a>自動識別並轉譯多語言內容
 
 影片索引子支援在多語言內容中進行自動語言識別和轉譯。 此程式牽涉到自動從音訊識別不同區段中的語音語言，傳送媒體檔案的每個區段以進行轉譯，並將轉譯合併回一個統一轉譯。 
 

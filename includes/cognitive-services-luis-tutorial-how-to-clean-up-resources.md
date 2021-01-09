@@ -2,19 +2,19 @@
 title: 包含檔案
 description: 包含檔案
 services: cognitive-services
-author: diberry
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.custom: seodec18, include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 07/26/2018
-ms.author: diberry
-ms.openlocfilehash: d7fc8210d96993c20366b1b139152d7d9540698b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/29/2020
+ms.author: aahi
+ms.openlocfilehash: c583cb508522e08c77f2c9acaee264665ae1d62a
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88057786"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820537"
 ---
-當不再需要 LUIS 應用程式時，請將其刪除。 若要這樣做，請選取左上方功能表中的 [我的應用程式]  。 選取應用程式清單中應用程式名稱右邊的省略符號 (***...***)，然後選取 [刪除]  。 在 [Delete app?] \(刪除應用程式?\)  快顯對話方塊上，選取 [Ok] \(確定\)  。 
+當不再需要 LUIS 應用程式時，請將其刪除。 若要這樣做，請選取左上方功能表中的 [我的應用程式]  。 選取應用程式清單中應用程式名稱右側的省略符號 (**_..._ *)，然後選取 [刪除]***。 在 [Delete app?] \(刪除應用程式?\)  快顯對話方塊上，選取 [Ok] \(確定\)  。 

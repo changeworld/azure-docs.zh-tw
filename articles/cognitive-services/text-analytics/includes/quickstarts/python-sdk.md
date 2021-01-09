@@ -5,12 +5,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 12/11/2020
 ms.author: aahi
-ms.openlocfilehash: da5aae933de1317dd97f74c97f9c08ca6cc1d090
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1f99eb203cf4124f3249ab1b74989708bea93c51
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366454"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820559"
 ---
 <a name="HOLTop"></a>
 
@@ -60,6 +60,7 @@ pip install --upgrade azure-ai-textanalytics
 
 > [!TIP]
 > 想要立刻檢視整個快速入門程式碼檔案嗎？ 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/TextAnalytics/python-v3-client-library.py) 上找到該檔案，其中包含本快速入門中的程式碼範例。 
+
 
 # <a name="version-21"></a>[2.1 版](#tab/version-2)
 
@@ -171,6 +172,7 @@ client = authenticate_client()
 使用上方建立的 `key` 和 `endpoint` 來建立可具現化 `TextAnalyticsClient` 物件的函式。 然後，建立新的用戶端。 請注意，您應該使用 3.0 版來定義 `api_version=TextAnalyticsApiVersion.V3_0`。
 
 ```python
+# use this code if you're using SDK version is 5.0.0
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 
@@ -178,10 +180,27 @@ def authenticate_client():
     ta_credential = AzureKeyCredential(key)
     text_analytics_client = TextAnalyticsClient(
             endpoint=endpoint, 
-            credential=ta_credential, 
-            api_version=TextAnalyticsApiVersion.V3_0)
+            credential=ta_credential) 
     return text_analytics_client
 
+client = authenticate_client()
+```
+
+如果您已使用 `pip install azure-ai-textanalytics --pre` 安裝用戶端程式庫 v5.1.0，您可以使用用戶端的 `api_version` 參數來指定文字分析 API v3.0。 如果您的用戶端是 v5.1.0 或更新版本，則必須使用下列 `authenticate_client()` 方法。
+
+```python
+# Only use the following code sample if you're using v5.1.0 of the client library, 
+# and are looking to specify v3.0 of the Text Analytics API for your client
+from azure.ai.textanalytics import TextAnalyticsClient, TextAnalyticsApiVersion
+from azure.core.credentials import AzureKeyCredential
+def authenticate_client():
+   ta_credential = AzureKeyCredential(key)
+   text_analytics_client = TextAnalyticsClient(
+     endpoint=endpoint,
+     credential=ta_credential,
+     api_version=TextAnalyticsApiVersion.V3_0
+   )
+   
 client = authenticate_client()
 ```
 

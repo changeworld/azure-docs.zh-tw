@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: d39bc35d1edcbcfef4c7774259112ec5144efa15
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760353"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044334"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB 無伺服器 (預覽) 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,16 +31,13 @@ Azure Cosmos DB 無伺服器，可讓您以耗用量方式使用您的 Azure Cos
 
 ## <a name="use-cases"></a>使用案例
 
-Azure Cosmos DB 無伺服器最適合您預期的案例：
-
-- **低、間歇和無法預測的流量**：由於在這種情況下不需要布建容量，而且可能是成本高昂的
-- **適中效能**：由於無伺服器容器具有 [特定的效能特性](#performance)
-
-基於這些理由，在下列情況下應考慮 Azure Cosmos DB 無伺服器：
+Azure Cosmos DB 無伺服器的最適合案例，在此情況下，您預期會有 **間歇性且無法預期的流量，且** 閒置 由於在這種情況下不需要布建容量，而且可能會發生成本高昂的情況，因此在下列使用案例中應考慮 Azure Cosmos DB 無伺服器：
 
 - 開始使用 Azure Cosmos DB
-- 新應用程式的開發、測試和原型設計
-- 使用很難預測的間歇性流量來執行小型到中型應用程式
+- 執行應用程式
+    - 暴增、難以預測的間歇性流量，或
+    - 低 ( # B0 10% ) 平均到尖峰流量比率
+- 在流量模式不明的生產環境新應用程式中進行開發、測試、原型設計和執行
 - 與無伺服器計算服務（例如[Azure Functions](../azure-functions/functions-overview.md) ）整合
 
 請參閱 [如何選擇布建的輸送量和無伺服器](throughput-serverless.md) 文章，以取得如何選擇最適合您使用案例的供應專案的詳細指引。
@@ -74,16 +71,9 @@ Azure Cosmos DB 無伺服器最適合您預期的案例：
 
 ## <a name="performance"></a><a id="performance"></a>效能
 
-無伺服器資源會產生與布建的輸送量資源所提供不同的特定效能特性：
+無伺服器資源會產生與布建的輸送量資源所提供不同的特定效能特性。 在無伺服器供應專案正式推出之後，無伺服器容器的延遲將會由服務等級目標（ (SLO) 10 毫秒或更少的時間點讀取，以及30毫秒或更少的寫入）所涵蓋。 點讀取作業包含依識別碼和資料分割索引鍵值來提取單一專案。
 
-- **可用性**：當無伺服器供應專案正式推出之後，如果未使用可用性區域 (區域冗余) ，則服務等級協定 (SLA) 99.9%，將會涵蓋無伺服器容器的可用性。 使用可用性區域時，SLA 為99.99%。
-- **延遲**：在無伺服器供應專案正式推出之後，無伺服器容器的延遲將會由服務等級目標（ (SLO) 10 毫秒或更低的時間點讀取，以及30毫秒或更少的寫入）所涵蓋。 點讀取作業包含依識別碼和資料分割索引鍵值來提取單一專案。
-- **Burstability**：在無伺服器供應專案正式推出之後，服務等級目標將會涵蓋無伺服器容器的 BURSTABILITY (SLO) 95%。 這表示最大 burstability 可達至少95% 的時間。
-
-> [!NOTE]
-> 如同任何 Azure 預覽版，Azure Cosmos DB 無伺服器的服務等級協定 (SLA) 。 上述的效能特性可作為此供應專案在正式推出時將提供的內容預覽。
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 透過下列文章開始使用無伺服器：
 

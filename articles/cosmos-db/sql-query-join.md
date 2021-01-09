@@ -1,25 +1,25 @@
 ---
 title: Azure Cosmos DB 的 SQL 聯結查詢
 description: 瞭解如何聯結 Azure Cosmos DB 中的多個資料表來查詢資料
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.author: mjbrown
-ms.openlocfilehash: c3fad0c7eed2b42a9ac340a091f17b90e22b000a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 01/07/2021
+ms.author: tisande
+ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333829"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011370"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Azure Cosmos DB 中的聯結
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 在關係資料庫中，跨資料表的聯結是設計正規化架構的邏輯必然結果。 相反地，SQL API 會使用無架構專案的反正規化資料模型，這是 *自我聯結* 的邏輯對等專案。
 
-內部聯結是參與聯結之集的完整交叉乘積。 N 方聯結的結果為一組 N 元素 Tuple，其中 Tuple 中的每個值都與參與聯結的別名集相關聯，而且可以透過參考其他子句中的別名加以存取。
+聯結會產生參與聯結之集合的完整交叉乘積。 N 方聯結的結果為一組 N 元素 Tuple，其中 Tuple 中的每個值都與參與聯結的別名集相關聯，而且可以透過參考其他子句中的別名加以存取。
 
 ## <a name="syntax"></a>語法
 
@@ -242,7 +242,7 @@ JOIN 子句的實際公用程式是在圖形中形成交叉乘積的元組，而
     WHERE p.givenName = "Shadow"
 ```
 
-結果如下：
+結果為：
 
 ```json
     [
@@ -253,6 +253,8 @@ JOIN 子句的實際公用程式是在圖形中形成交叉乘積的元組，而
       }
     ]
 ```
+
+如果您的查詢有聯結和篩選，您可以將部分查詢重寫為 [子](sql-query-subquery.md#optimize-join-expressions) 查詢，以改善效能。
 
 ## <a name="next-steps"></a>後續步驟
 

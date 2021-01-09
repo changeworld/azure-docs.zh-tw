@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 73c4931533e3926086320531a0800a572d13808c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46919a97364aeff29e2b458c619315571dba7710
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89535767"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013663"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>How to：設定應用程式的服務條款和隱私權聲明
 
@@ -58,10 +58,10 @@ ms.locfileid: "89535767"
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>使用 Azure 入口網站
 請在 Azure 入口網站中遵循下列步驟。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com/)，選取正確的 AzureAD 租使用者 (不是 B2C) 。
-2. 瀏覽至 [應用程式註冊]**** 區段，然後選取應用程式。
+1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>，選取正確的 AzureAD 租使用者 (不是 B2C) 。
+2. 瀏覽至 [應用程式註冊] 區段，然後選取應用程式。
 3. 開啟 [ **商標** ] 窗格。
-4. 填妥 [服務條款 URL]**** 和 [隱私權聲明 URL]**** 欄位。
+4. 填妥 [服務條款 URL] 和 [隱私權聲明 URL] 欄位。
 5. 儲存您的變更。
 
     ![應用程式屬性包含服務條款和隱私權聲明 Url](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)

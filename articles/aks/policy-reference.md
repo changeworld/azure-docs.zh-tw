@@ -1,15 +1,15 @@
 ---
 title: 適用於 Azure Kubernetes Service 的內建原則定義
 description: 列出適用於 Azure Kubernetes Service 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 29f5d2a3a6824730a5a1c96f3a6247867bdb43ee
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c754e394b8f59be750d5cadf7dd358ad455b2ce5
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989682"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045426"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-kubernetes-service"></a>適用於 Azure Kubernetes Service 的 Azure 原則內建定義
 

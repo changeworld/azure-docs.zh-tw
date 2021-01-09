@@ -8,12 +8,12 @@ ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 56505c95e65911cafbaaa403cd09332695439d97
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149009"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825672"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 Azure 應用程式組態存放區
 
@@ -46,10 +46,10 @@ ms.locfileid: "92149009"
 
 範本中定義了兩個 Azure 資源：
 
-- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-06-01/configurationstores)：建立應用程式組態存放區。
-- Microsoft.AppConfiguration/configurationStores/keyValues：在應用程式組態存放區內建立索引鍵/值。
+- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores)：建立應用程式組態存放區。
+- [Microsoft.AppConfiguration/configurationStores/keyValues](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores/keyvalues)：在應用程式組態存放區內建立索引鍵/值。
 
-> [!NOTE]
+> [!TIP]
 > `keyValues` 資源的名稱是索引鍵和標籤的組合。 索引鍵和標籤是以 `$` 分隔符號聯結。 標籤是選擇性的。 在上述範例中，名稱為 `myKey` 的 `keyValues` 資源會建立不含標籤的索引鍵/值。
 >
 > 百分比編碼 (也稱為 URL 編碼) 可讓金鑰或標籤包含 ARM 範本資源名稱中不允許的字元。 `%` 不是允許的字元，因此會在其位置使用 `~`。 若要正確地進行名稱編碼，請遵循下列步驟：
@@ -59,6 +59,13 @@ ms.locfileid: "92149009"
 > 3. 將 `%` 取代為 `~`
 >
 > 例如，若要使用索引鍵名稱 `AppName:DbEndpoint` 和標籤名稱 `Test`建立索引鍵/值組，則資源名稱應該為 `AppName~3ADbEndpoint$Test`。
+
+> [!NOTE]
+> 應用程式組態可讓您從虛擬網路透過[私人連結](concept-private-endpoint.md)進行索引鍵/值資料存取。 根據預設，此功能啟用時，將會拒絕所有透過公用網路存取應用程式組態資料的要求。 由於 ARM 範本是在您的虛擬網路外執行的，因此不允許從 ARM 範本進行資料存取。 若要在使用私人連結時允許從 ARM 範本進行資料存取，您可以使用下列 Azure CLI 命令來啟用公用網路存取。 在此案例中，請務必考量啟用公用網路存取的安全性影響。
+>
+> ```azurecli-interactive
+> az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
+> ```
 
 ## <a name="deploy-the-template"></a>部署範本
 
@@ -84,7 +91,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 ## <a name="review-deployed-resources"></a>檢閱已部署的資源
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在 Azure 入口網站搜尋方塊中，鍵入 **應用程式組態** 。 從清單中選取 [應用程式組態]。
+1. 在 Azure 入口網站搜尋方塊中，鍵入 **應用程式組態**。 從清單中選取 [應用程式組態]。
 1. 選取新建立的應用程式組態資源。
 1. 在 [作業] 之下，按一下 [組態總管]。
 1. 確認有兩個索引鍵/值存在。

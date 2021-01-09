@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ca56c285baff9982ff465b0d4115d15eadedb8c9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534750"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045235"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -20,7 +20,7 @@ ms.locfileid: "94534750"
 
 管理作業包括上傳、驗證、抓取和刪除模型。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -36,40 +36,12 @@ Azure 數位 Twins 的模型會以 DTDL 撰寫，並儲存為 *json* 檔案。 �
 
 解決方案的第一個步驟是建立模型來代表醫院的各個層面。 此案例中的患者房間可能會描述如下：
 
-```json
-{
-  "@id": "dtmi:com:contoso:PatientRoom;1",
-  "@type": "Interface",
-  "@context": "dtmi:dtdl:context;2",
-  "displayName": "Patient Room",
-  "contents": [
-    {
-      "@type": "Property",
-      "name": "visitorCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashCount",
-      "schema": "double"
-    },
-    {
-      "@type": "Property",
-      "name": "handWashPercentage",
-      "schema": "double"
-    },
-    {
-      "@type": "Relationship",
-      "name": "hasDevices"
-    }
-  ]
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/PatientRoom.json":::
 
 > [!NOTE]
 > 這是 json 檔案的範例主體，其中定義和儲存模型，以便上傳做為用戶端專案的一部分。 另一方面，REST API 呼叫會採用類似上述的模型定義陣列， (對應至 `IEnumerable<string>` .NET SDK) 中的。 因此，若要直接在 REST API 中使用此模型，請以括弧括住。
 
-此模型會定義病人房間的名稱和唯一識別碼，並使用屬性來代表訪客計數和手擦洗狀態 (這些計數器將會從動作感應器和智慧型 soap 機更新，並會一起用來計算 *handwash 百分比* 屬性) 。 此模型也會定義關聯性 *hasDevices* ，此關聯性會用來將任何以此 *房間* 模型為基礎的 [數位 twins](concepts-twins-graph.md)連接至實際裝置。
+此模型會定義病人房間的名稱和唯一識別碼，並使用屬性來代表訪客計數和手擦洗狀態 (這些計數器將會從動作感應器和智慧型 soap 機更新，並會一起用來計算 *handwash 百分比* 屬性) 。 此模型也會定義關聯性 *hasDevices*，此關聯性會用來將任何以此 *房間* 模型為基礎的 [數位 twins](concepts-twins-graph.md)連接至實際裝置。
 
 在此方法之後，您可以繼續為醫院的 wards、區域或醫院本身定義模型。
 
@@ -86,48 +58,16 @@ Azure 數位 Twins 的模型會以 DTDL 撰寫，並儲存為 *json* 檔案。 �
 
 當您準備好上傳模型時，您可以使用下列程式碼片段：
 
-```csharp
-// 'client' is an instance of DigitalTwinsClient
-// Read model file into string (not part of SDK)
-StreamReader r = new StreamReader("MyModelFile.json");
-string dtdl = r.ReadToEnd(); r.Close();
-string[] dtdls = new string[] { dtdl };
-client.CreateModels(dtdls);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModel":::
 
 請注意，此 `CreateModels` 方法會在單一交易中接受多個檔案。 以下是說明的範例：
 
-```csharp
-var dtdlFiles = Directory.EnumerateFiles(sourceDirectory, "*.json");
-
-List<string> dtdlStrings = new List<string>();
-foreach (string fileName in dtdlFiles)
-{
-    // Read model file into string (not part of SDK)
-    StreamReader r = new StreamReader(fileName);
-    string dtdl = r.ReadToEnd(); r.Close();
-    dtdlStrings.Add(dtdl);
-}
-client.CreateModels(dtdlStrings);
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="CreateModels_multi":::
 
 模型檔案可以包含一個以上的模型。 在此情況下，模型必須放在 JSON 陣列中。 例如：
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet",
-    "@type": "Interface",
-    //...
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon",
-    "@type": "Interface",
-    //...
-  }
-]
-```
- 
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Moon.json":::
+
 上傳時，服務會驗證模型檔案。
 
 ## <a name="retrieve-models"></a>取出模型
@@ -141,18 +81,7 @@ client.CreateModels(dtdlStrings);
 
 以下是一些範例呼叫：
 
-```csharp
-// 'client' is a valid DigitalTwinsClient object
-
-// Get a single model, metadata and data
-DigitalTwinsModelData md1 = client.GetModel(id);
-
-// Get a list of the metadata of all available models
-Pageable<DigitalTwinsModelData> pmd2 = client.GetModels();
-
-// Get models and metadata for a model ID, including all dependencies (models that it inherits from, components it references)
-Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { IncludeModelDefinition = true });
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="GetModels":::
 
 用以取得模型的 API 呼叫會傳回 `DigitalTwinsModelData` 物件。 `DigitalTwinsModelData` 包含 Azure 數位 Twins 實例中所儲存之模型的相關中繼資料，例如模型的名稱、DTMI 和建立日期。 `DigitalTwinsModelData`物件也可以選擇性地包含模型本身。 根據參數，您可以使用抓取呼叫來取出中繼資料 (這在您想要顯示可用工具 UI 清單的情況下很有用，例如) 或整個模型。
 
@@ -194,7 +123,7 @@ Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { I
 
 這也表示上傳新版本的模型不會自動影響現有的 twins。 現有的 twins 只會保留舊模型版本的實例。
 
-您可以藉由修補，將這些現有的 twins 更新為新的模型版本，如「 *如何：管理數位 twins* 」的「 [*更新數位對應項的模型*](how-to-manage-twin.md#update-a-digital-twins-model)」一節中所述。 在相同的修補程式中，您必須將 **模型識別碼** (更新為新版本) 以及 **必須在對應項上更改的任何欄位，使其符合新的模型** 。
+您可以藉由修補，將這些現有的 twins 更新為新的模型版本，如「*如何：管理數位 twins*」的「[*更新數位對應項的模型*](how-to-manage-twin.md#update-a-digital-twins-model)」一節中所述。 在相同的修補程式中，您必須將 **模型識別碼** (更新為新版本) 以及 **必須在對應項上更改的任何欄位，使其符合新的模型**。
 
 ## <a name="remove-models"></a>移除模型
 
@@ -208,12 +137,7 @@ Pageable<DigitalTwinsModelData> pmd3 = client.GetModels(new GetModelsOptions { I
 
 以下是解除委任模型的程式碼：
 
-```csharp
-// 'client' is a valid DigitalTwinsClient  
-client.DecommissionModel(dtmiOfPlanetInterface);
-// Write some code that deletes or transitions digital twins
-//...
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DecommissionModel":::
 
 模型的解除委任狀態會包含在 `ModelData` 模型抓取 api 所傳回的記錄中。
 
@@ -244,10 +168,8 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 6. 刪除模型 
 
 若要刪除模型，請使用此呼叫：
-```csharp
-// 'client' is a valid DigitalTwinsClient
-await client.DeleteModelAsync(IDToDelete);
-```
+
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/model_operations.cs" id="DeleteModel":::
 
 #### <a name="after-deletion-twins-without-models"></a>刪除之後：不含模型的 Twins
 
@@ -276,7 +198,7 @@ await client.DeleteModelAsync(IDToDelete);
 
 Azure 數位 Twins 不會防止此狀態，因此請小心適當地修補 Twins，以確保它們透過模型定義參數保持有效。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何根據您的模型建立和管理數位 twins：
 * [*How to：管理數位 twins*](how-to-manage-twin.md)

@@ -3,27 +3,26 @@ title: 在 Azure 串流分析中使用 Azure Machine Learning Studio (傳統) �
 description: 本文說明如何使用 Azure 串流分析中的機器語言使用者定義函式。
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/11/2019
-ms.openlocfilehash: 236191710dac19a08db0e8ce94dc695d393009a7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a36162d24e18371fdf6b19835e4748e3043d1f24
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127122"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012520"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>串流分析中的 Azure Machine Learning Studio (傳統版) 整合 (預覽)
 串流分析支援對外呼叫 Azure Machine Learning Studio (傳統版) 端點的使用者定義函式。 [串流分析 REST API 程式庫](/rest/api/streamanalytics/)中會詳細說明此功能的 REST API 支援。 本文提供要在串流分析中成功實作這項功能所需的補充資訊。 您也可以在 [這裡](stream-analytics-machine-learning-integration-tutorial.md)取得已發佈的教學課程。
 
 ## <a name="overview-azure-machine-learning-studio-classic-terminology"></a>概觀：Azure Machine Learning Studio (傳統版) 術語
-Microsoft Azure Machine Learning Studio (傳統版) 提供共同作業的拖放工具，讓您可用來依據資料建置、測試及部署預測性分析解決方案。 這項工具稱為 *Azure Machine Learning Studio (傳統)* 。 Studio (傳統) 用來與機器學習服務資源互動，並可讓您輕鬆地建立、測試及逐一查看您的設計。 這些資源和其定義如下。
+Microsoft Azure Machine Learning Studio (傳統版) 提供共同作業的拖放工具，讓您可用來依據資料建置、測試及部署預測性分析解決方案。 這項工具稱為 *Azure Machine Learning Studio (傳統)*。 Studio (傳統) 用來與機器學習服務資源互動，並可讓您輕鬆地建立、測試及逐一查看您的設計。 這些資源和其定義如下。
 
-* **工作區** ： *工作區* 是一種容器，可將所有其他機器學習資源一起保存在容器中，以供管理和控制。
-* **實驗** ：資料科學家會建立「實驗」來利用資料集和訓練機器學習服務模型。
-* **端點** ： *端點* 是 Studio (傳統) 物件，用來將功能當做輸入、套用指定的機器學習模型，並傳回計分的輸出。
-* **評分 Web 服務** ：「評分 Web 服務」是上述端點的集合。
+* **工作區**： *工作區* 是一種容器，可將所有其他機器學習資源一起保存在容器中，以供管理和控制。
+* **實驗**：資料科學家會建立「實驗」來利用資料集和訓練機器學習服務模型。
+* **端點**： *端點* 是 Studio (傳統) 物件，用來將功能當做輸入、套用指定的機器學習模型，並傳回計分的輸出。
+* **評分 Web 服務**：「評分 Web 服務」是上述端點的集合。
 
 每個端點都有適用於批次執行和同步執行的 API。 串流分析使用同步執行。 該特定服務在 Azure Machine Learning Studio (傳統版) 中的名稱為[要求/回應服務](../machine-learning/classic/consume-web-services.md)。
 
@@ -41,7 +40,7 @@ Microsoft Azure Machine Learning Studio (傳統版) 提供共同作業的拖放�
 6. 啟動工作
 
 ## <a name="creating-a-udf-with-basic-properties"></a>使用基本屬性建立 UDF
-下列範例程式碼會建立名為 *newudf* 且繫結至 Azure Machine Learning Studio (傳統版) 端點的純量 UDF，來做為示範。 請注意，您可以在 API 說明頁面中找到所選服務的 *端點* (服務 URI)，以及在 [服務] 主頁面中找到 *apiKey* 。
+下列範例程式碼會建立名為 *newudf* 且繫結至 Azure Machine Learning Studio (傳統版) 端點的純量 UDF，來做為示範。 請注意，您可以在 API 說明頁面中找到所選服務的 *端點* (服務 URI)，以及在 [服務] 主頁面中找到 *apiKey*。
 
 ```
     PUT : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microsoft.StreamAnalytics/streamingjobs/<streamingjobName>/functions/<udfName>?api-version=<apiVersion>

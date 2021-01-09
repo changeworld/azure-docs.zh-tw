@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: a7fc96127d4449cfe0333ba81532d3c5c4ec19fe
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ed85faf9ffe38489eb00ed5a71b3eb841c399d24
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95096929"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745689"
 ---
 [參考文件](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18) | [套件 (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="java-prerequisites"></a>Java 必要條件
 
 * 有效的 Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
 * 最新版的 [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -96,6 +96,10 @@ dependencies {
 
 ## <a name="create-a-cognitive-services-resource"></a>建立認知服務資源
 
+若要建立並訂閱新的認知服務資源，請使用 **create** 方法。 這個方法會將新的可計費資源新增至您傳入的資源群組。 建立新的資源時，必須知道您要使用的服務「種類」，以及其定價層 (或 SKU) 和 Azure 位置。 下列方法會將這些項目全部當作引數，並建立資源。
+
+[!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_create)]
+
 ### <a name="choose-a-service-and-pricing-tier"></a>選擇服務和定價層
 
 建立新的資源時，必須知道您要使用的服務「種類」，以及想要的[定價層](https://azure.microsoft.com/pricing/details/cognitive-services/) (或 SKU)。 建立資源時，您將使用此資訊和其他資訊作為參數。 您可以呼叫下列方法，以尋找可用的認知服務「種類」清單：
@@ -105,12 +109,6 @@ dependencies {
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
 [!INCLUDE [SKUs and pricing](./sku-pricing.md)]
-
-## <a name="create-a-cognitive-services-resource"></a>建立認知服務資源
-
-若要建立並訂閱新的認知服務資源，請使用 **create** 方法。 這個方法會將新的可計費資源新增至您傳入的資源群組。 建立新的資源時，必須知道您要使用的服務「種類」，以及其定價層 (或 SKU) 和 Azure 位置。 下列方法會將這些項目全部當作引數，並建立資源。
-
-[!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_create)]
 
 ## <a name="view-your-resources"></a>檢視資源
 

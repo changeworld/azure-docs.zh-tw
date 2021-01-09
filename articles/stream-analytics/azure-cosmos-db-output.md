@@ -1,18 +1,17 @@
 ---
 title: Azure 串流分析的 Azure Cosmos DB 輸出
 description: 本文說明如何將資料從 Azure 串流分析輸出至 Azure Cosmos DB。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: a086d9fe150766c6b31210f29bf802a75e0ee4ec
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9382ac8dc71d1ccb3a85dc0a7a027c8e99296cc6
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491727"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016572"
 ---
 # <a name="azure-cosmos-db-output-from-azure-stream-analytics"></a>Azure 串流分析的 Azure Cosmos DB 輸出
 
@@ -34,7 +33,7 @@ Azure China 21Vianet 和 Azure 德國 (T-Systems International) 區域目前無�
 | 帳戶識別碼 | Azure Cosmos DB 帳戶的名稱或端點 URI。 |
 | 帳戶金鑰 | Azure Cosmos DB 帳戶的共用存取金鑰。 |
 | 資料庫 | Azure Cosmos DB 資料庫名稱。 |
-| 容器名稱 | 要使用的容器名稱，必須存在於 Cosmos DB 中。 範例：  <br /><ul><li> _MyContainer_ ：名為 "MyContainer" 的容器必須存在。</li>|
+| 容器名稱 | 要使用的容器名稱，必須存在於 Cosmos DB 中。 範例：  <br /><ul><li> _MyContainer_：名為 "MyContainer" 的容器必須存在。</li>|
 | 文件識別碼 |選擇性。 輸出事件中的欄位名稱會用來指定主索引鍵，此為插入或更新作業的依據。
 
 ## <a name="partitioning"></a>資料分割

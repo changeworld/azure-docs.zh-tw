@@ -3,12 +3,12 @@ title: 使用 REST API 和範本部署資源
 description: 使用 Azure Resource Manager 和 Resource Manager REST API 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d1c8a365153007d3337d922bc163ba3767eeddc9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 77192aff9ed4fe33269b5e11891c30e15bc312dd
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675413"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028959"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-resource-manager-rest-api"></a>使用 ARM 範本部署資源，並 Azure Resource Manager REST API
 
@@ -20,13 +20,13 @@ ms.locfileid: "92675413"
 
 您可以將部署的目標設為資源群組、Azure 訂用帳戶、管理群組或租使用者。 視部署的範圍而定，您可以使用不同的命令。
 
-* 若要部署至 **資源群組** ，請使用 [[部署 - 建立]](/rest/api/resources/deployments/createorupdate)。 要求會傳送至：
+- 若要部署至 **資源群組**，請使用 [[部署 - 建立]](/rest/api/resources/deployments/createorupdate)。 要求會傳送至：
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
   ```
 
-* 若要部署至 **訂用帳戶** ，請使用 [[部署 - 在訂用帳戶範圍建立]](/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 要求會傳送至：
+- 若要部署至 **訂用帳戶**，請使用 [[部署 - 在訂用帳戶範圍建立]](/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 要求會傳送至：
 
   ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -34,7 +34,7 @@ ms.locfileid: "92675413"
 
   如需訂用帳戶層級部署的詳細資訊，請參閱[在訂用帳戶層級建立資源群組和資源](deploy-to-subscription.md)。
 
-* 若要部署到 **管理群組** ，請使用 [[部署 - 在管理群組範圍建立]](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 要求會傳送至：
+- 若要部署到 **管理群組**，請使用 [[部署 - 在管理群組範圍建立]](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 要求會傳送至：
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -42,7 +42,7 @@ ms.locfileid: "92675413"
 
   如需管理群組層級部署的詳細資訊，請參閱[在管理群組層級建立資源](deploy-to-management-group.md)。
 
-* 若要部署至 **租用戶** ，請使用 [[部署 - 在租用戶範圍建立或更新]](/rest/api/resources/deployments/createorupdateattenantscope)。 要求會傳送至：
+- 若要部署至 **租用戶**，請使用 [[部署 - 在租用戶範圍建立或更新]](/rest/api/resources/deployments/createorupdateattenantscope)。 要求會傳送至：
 
   ```HTTP
   PUT https://management.azure.com/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2020-06-01
@@ -83,7 +83,7 @@ ms.locfileid: "92675413"
 
    在要求本文中，提供您的範本和參數檔案的連結。 如需參數檔案的詳細資訊，請參閱[建立 Resource Manager 參數檔案](parameter-files.md)。
 
-   請注意， **mode** 是設為 **Incremental** 。 若要執行完整部署，請將 **mode** 設為 **Complete** 。 使用完整模式時請務必謹慎，因為您可能會不小心刪除不在範本中的資源。
+   請注意， `mode` 已設定為 **增量**。 若要執行完整部署，請將設定 `mode` 為 [ **完成**]。 使用完整模式時請務必謹慎，因為您可能會不小心刪除不在範本中的資源。
 
    ```json
    {
@@ -122,9 +122,9 @@ ms.locfileid: "92675413"
    }
    ```
 
-    您可以設定儲存體帳戶以使用共用存取簽章 (SAS) Token。 如需詳細資訊，請參閱[使用共用存取簽章委派存取](/rest/api/storageservices/delegating-access-with-a-shared-access-signature)。
+    您可以設定儲存體帳戶以使用共用存取簽章 (SAS) Token。 如需詳細資訊，請參閱 [使用共用存取簽章來委派存取權](/rest/api/storageservices/delegate-access-with-shared-access-signature)。
 
-    如果您需要提供參數機密的值 (例如密碼)，請將該值加入金鑰保存庫。 在部署期間擷取金鑰保存庫，如先前範例所示。 如需詳細資訊，請參閱 [在部署期間傳遞安全值](key-vault-parameter.md)。
+    如果您需要提供參數機密的值 (例如密碼)，請將該值加入金鑰保存庫。 在部署期間擷取金鑰保存庫，如先前範例所示。 如需詳細資訊，請參閱[在部署期間使用 Azure Key Vault 以傳遞安全的參數值](key-vault-parameter.md)。
 
 1. 不要連結至含有範本和參數的檔案，而是將它們納入要求本文中。 下列範例顯示內嵌範本和參數的要求本文：
 
@@ -217,4 +217,3 @@ ms.locfileid: "92675413"
 - 若要指定如何處理存在於資源群組中、但尚未定義於範本中的資源，請參閱 [Azure Resource Manager 部署模式](deployment-modes.md)。
 - 若要了解如何處理非同步 REST 作業，請參閱[追蹤非同步 Azure 作業 (英文)](../management/async-operations.md)。
 - 若要深入了解範本，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
-

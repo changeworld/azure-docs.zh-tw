@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 389842901a4c508015d527c0fd8fd87af57dcd9b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967919"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046816"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>適用於 Windows 的 Log Analytics 虛擬機器擴充功能
 
 Azure 監視器記錄提供跨雲端和內部部署資產的監視功能。 Microsoft 已發佈和支援適用於 Windows 的 Log Analytics 代理程式虛擬機器擴充功能。 擴充功能會在 Azure 虛擬機器上安裝 Log Analytics 代理程式，並且在現有的 Log Analytics 工作區中註冊虛擬機器。 本文件詳述適用於 Windows 的 Log Analytics 虛擬機器擴充功能所支援的平台、組態和部署選項。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
@@ -37,6 +37,7 @@ Azure 監視器記錄提供跨雲端和內部部署資產的監視功能。 Micr
 
 | Log Analytics Windows 代理程式套件組合版本 | Log Analytics Windows VM 擴充功能版本 | 發行日期 | 版本資訊 |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18053| 1.0.18053.0 | 2020 年 10 月   | <ul><li>新增代理程式疑難排解員</li><li>代理程式如何處理 Azure 服務的憑證變更的更新</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | 2020 年 8 月   | <ul><li>解決 Azure Arc 上的問題</li></ul> |
 | 10.20.18038 | 1.0.18038 | 2020 年 4 月   | <ul><li>使用 Azure 監視器 Private Link 範圍，啟用透過 Private Link 的連接</li><li>新增內嵌節流，以避免在工作區中內嵌突然意外的異常湧入</li><li>新增額外 Azure Government 雲端和區域的支援</li><li>解決 HealthService.exe 損毀的 bug</li></ul> |
 | 10.20.18029 | 1.0.18029 | 2020 年 3 月   | <ul><li>新增 SHA-1 程式碼簽署支援</li><li>改進 VM 延伸模組的安裝和管理</li><li>解決伺服器整合 Azure Arc 中的 bug</li><li>新增客戶支援的內建疑難排解工具</li><li>新增額外 Azure Government 區域的支援</li> |

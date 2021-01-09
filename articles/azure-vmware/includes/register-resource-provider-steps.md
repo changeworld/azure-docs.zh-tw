@@ -2,21 +2,35 @@
 title: 註冊 Azure VMware 解決方案資源提供者
 description: 註冊 Azure VMware 解決方案資源提供者的步驟。
 ms.topic: include
-ms.date: 09/21/2020
-ms.openlocfilehash: 96d15546c5102a69a0b19f92de33d35d2e9ab6c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/24/2020
+ms.openlocfilehash: 7d24ce86f24c941c7d48d3b73576dcdfda120f51
+ms.sourcegitcommit: 489ce69c0ff3f5188889ecfef5ffa76f7121e0d3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575736"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97770808"
 ---
 <!-- Used in avs-deployment.md and tutorial-create-private-cloud.md -->
 
-若要使用 Azure VMware 解決方案，您必須先向您的訂用帳戶註冊資源提供者。
+若要使用 Azure VMware 解決方案，您必須先向您的訂用帳戶註冊資源提供者。  
+
+### <a name="azure-cli"></a>Azure CLI 
 
 ```azurecli-interactive
 az provider register -n Microsoft.AVS --subscription <your subscription ID>
 ```
 
->[!TIP]
->或者，您可以使用 GUI 來註冊 **Microsoft.AVS** 資源提供者。  如需詳細資訊，請參閱[註冊資源提供者和類型](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)一文。  
+
+### <a name="azure-portal"></a>Azure 入口網站
+ 
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+
+1. 在 Azure 入口網站功能表上，選取 [所有服務]。
+
+1. 在 [所有服務] 方塊中，輸入 [訂用帳戶]，然後選取 [訂用帳戶]。
+
+1. 從訂用帳戶清單中選取要檢視的訂用帳戶。
+
+1. 選取 [資源提供者] 並在搜尋中輸入 **Microsoft.AVS**。 
+ 
+1. 若資源提供者未註冊，請選取 [註冊]。

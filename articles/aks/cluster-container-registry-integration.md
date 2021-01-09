@@ -4,13 +4,13 @@ description: '瞭解如何整合 Azure Kubernetes Service (AKS) 與 Azure Contai
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 02/25/2020
-ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/08/2021
+ms.openlocfilehash: 4157195260e5c685faaddeaca87db81d199ffb23
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87406498"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043841"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>從 Azure Kubernetes Service 對 Azure Container Registry 進行驗證
 
@@ -18,11 +18,14 @@ ms.locfileid: "87406498"
 
 您可以使用 Azure CLI，以幾個簡單的命令來設定 ACR 整合的 AKS。 此整合會將 AcrPull 角色指派給與 AKS 叢集相關聯的服務主體。
 
+> [!NOTE]
+> 本文涵蓋 AKS 與 ACR 之間的自動驗證。 如果您需要從私人外部登錄提取映射，請使用 [映射提取秘密][Image Pull Secret]。
+
 ## <a name="before-you-begin"></a>開始之前
 
 這些範例需要：
 
-* **Azure 訂**用帳戶上的**擁有**者或**azure 帳戶管理員**角色
+* **Azure 訂** 用帳戶上的 **擁有** 者或 **azure 帳戶管理員** 角色
 * Azure CLI 2.7.0 版或更新版本
 
 若要避免需要 **擁有** 者或 **Azure 帳戶管理員** 角色，您可以手動設定服務主體，或使用現有的服務主體從 AKS 驗證 ACR。 如需詳細資訊，請參閱[使用服務主體進行 ACR 驗證](../container-registry/container-registry-auth-service-principal.md)或[使用提取密碼從 Kubernetes 進行驗證](../container-registry/container-registry-auth-kubernetes.md)。
@@ -152,3 +155,4 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 
 <!-- LINKS - external -->
 [AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[Image Pull secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

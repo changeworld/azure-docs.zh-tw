@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: d53863ccf71970cca3900707c844a2e5add050fa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356506"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808584"
 ---
 > [!IMPORTANT]
 > 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。
@@ -58,7 +58,7 @@ gradle init --type basic
 
 在專案的 build.gradle.kts 檔案中，將用戶端程式庫納入為 `implementation` 陳述式，以及必要的外掛程式和設定。
 
-#### <a name="version-30"></a>[3.0 版](#tab/ga)
+#### <a name="version-20"></a>[2.0 版](#tab/ga)
 ```kotlin
 plugins {
     java
@@ -74,6 +74,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.0.0")
 }
 ```
+
+> [!NOTE]
+> 表單辨識器 3.0.0 SDK 會反映 API 2.0 版
+
 #### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
 ```kotlin
 plugins {
@@ -90,6 +94,10 @@ dependencies {
     implementation(group = "com.azure", name = "azure-ai-formrecognizer", version = "3.1.0-beta.1")
 }
 ```
+
+> [!NOTE]
+> 表單辨識器 3.1.0 SDK 會反映 API 2.1 版 (預覽)
+
 ---
 
 ### <a name="create-a-java-file"></a>建立 Java 檔案
@@ -120,15 +128,17 @@ mkdir -p src/main/java
 
 在應用程式的 **main** 方法中，針對本快速入門中使用的方法新增呼叫。 稍後您會定義這些項目。 您也需要為訓練和測試資料新增 URL 的參考。
 
-* 若要為您的自訂模型訓練資料擷取 SAS URL，請開啟 Microsoft Azure 儲存體總管、以滑鼠右鍵按一下您的容器，然後選取 [取得共用存取簽章]。 確定 [讀取] 和 [列出] 權限均已勾選，再按一下 [建立]。 然後，複製 [URL] 區段的值。 其格式應該為：`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+  
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="擷取 SAS URL":::
 * 若要取得要測試的表單 URL，您可以使用上述步驟來取得 Blob 儲存體中個別文件的 SAS URL， 或使用位於他處的文件 URL。
 * 也請使用上述方法取得收據影像的 URL。
 
-#### <a name="version-30"></a>[3.0 版](#tab/ga)
+#### <a name="version-20"></a>[2.0 版](#tab/ga)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_maincalls)]
-#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+#### <a name="version-21-preview"></a>[2.1 版 (預覽)](#tab/preview)
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_mainvars)]
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_maincalls)]
@@ -165,14 +175,14 @@ mkdir -p src/main/java
 
 這些程式碼片段會示範如何使用適用於 Java 的表單辨識器用戶端程式庫來執行下列工作：
 
-#### <a name="version-30"></a>[3.0 版](#tab/ga)
+#### <a name="version-20"></a>[2.0 版](#tab/ga)
 * [驗證用戶端](#authenticate-the-client)
 * [辨識表單內容](#recognize-form-content)
 * [辨識收據](#recognize-receipts)
 * [訓練自訂模型](#train-a-custom-model)
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
-#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
+#### <a name="version-21-preview"></a>[2.1 版 (預覽)](#tab/preview)
 * [驗證用戶端](#authenticate-the-client)
 * [辨識表單內容](#recognize-form-content)
 * [辨識收據](#recognize-receipts)
@@ -259,11 +269,14 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-#### <a name="version-30"></a>[3.0 版](#tab/ga)
-
-#### <a name="version-31-preview"></a>[3.1 版 (預覽)](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>辨識名片
+
+#### <a name="version-20"></a>[2.0 版](#tab/ga)
+
+> [!IMPORTANT]
+> 選取的 API 版本不提供這項功能。
+
+#### <a name="version-21-preview"></a>[2.1 版 (預覽)](#tab/preview)
 
 本節示範如何使用預先定型的模型，辨識並擷取英文名片中的常見欄位。
 
@@ -278,7 +291,16 @@ Total Price: null, confidence: 0.93
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>辨識發票
+
+#### <a name="version-20"></a>[2.0 版](#tab/ga)
+
+> [!IMPORTANT]
+> 選取的 API 版本不提供這項功能。
+
+#### <a name="version-21-preview"></a>[2.1 版 (預覽)](#tab/preview)
 
 本節示範如何使用預先定型的模型，辨識並擷取銷售發票中的常見欄位。
 

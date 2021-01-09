@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b4ac8f87e8e19d3487859849ba37272c501751d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: e1b82dbe169e01b68e7d4b8a4c243cb72d3a3e8b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744375"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013000"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
@@ -140,6 +140,7 @@ FIDO2 安全性金鑰是以 unphishable 標準為基礎的無密碼驗證方法�
 | VinCSS | [https://passwordless.vincss.net](https://passwordless.vincss.net) |
 | KONA I | [https://konai.com/business/security/fido](https://konai.com/business/security/fido) |
 | Excelsecu | [https://www.excelsecu.com/productdetail/esecufido2secu.html](https://www.excelsecu.com/productdetail/esecufido2secu.html) |
+| Token2 瑞士 | [https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key](https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key) |
 
 > [!NOTE]
 > 如果您購買並計畫使用以 NFC 為基礎的安全性金鑰，則需要安全性金鑰支援的 NFC 讀取程式。 NFC 讀取器不是 Azure 需求或限制。 請洽詢廠商以取得以 NFC 為基礎的安全性金鑰，以取得支援的 NFC 讀取器清單。
@@ -171,7 +172,7 @@ Azure AD 無密碼登入功能目前為預覽狀態。 您必須考量下列事�
 ||**Windows Hello 企業版**|**使用 Microsoft Authenticator 應用程式無密碼登入**|**FIDO2 安全性金鑰**|
 |:-|:-|:-|:-|
 |**先決條件**| Windows 10，版本 1809 或更新版本<br>Azure Active Directory| Microsoft Authenticator 應用程式<br>手機 (執行 Android 6.0 或更新版本的 iOS 和 Android 裝置。 ) |Windows 10，1903版或更新版本<br>Azure Active Directory|
-|**Mode**|平台|軟體|硬體|
+|**模式**|平台|軟體|硬體|
 |**系統和裝置**|具有內建信賴平臺模組 (TPM) 的電腦<br>PIN 和生物識別辨識 |手機上的 PIN 和生物識別辨識|FIDO2 Microsoft 相容的安全性裝置|
 |**使用者體驗**|使用 PIN 或生物識別辨識進行登入， (臉部、鳶尾花或指紋) 與 Windows 裝置。<br>Windows Hello authentication 會系結至裝置;使用者需要裝置和登入元件（例如 PIN 或生物特徵辨識因素）來存取公司資源。|使用具有指紋掃描、臉部或鳶尾花辨識或 PIN 的行動電話進行登入。<br>使用者可以從他們的電腦或行動電話登入工作或個人帳戶。|使用 FIDO2 安全性裝置登入 (生物識別、PIN 和 NFC) <br>使用者可以使用裝置來存取裝置，並根據 PIN、使用 USB 安全性金鑰和啟用 NFC 的智慧卡、金鑰或穿戴式裝置等裝置來進行生物特徵辨識。|
 |**啟用的案例**| Windows 裝置的無密碼體驗。<br>適用于具有單一登入裝置和應用程式能力的專用工作電腦。|使用行動電話的無密碼隨處解決方案。<br>適用于從任何裝置存取網站上的工作或個人應用程式。|使用生物識別、PIN 和 NFC 之工作者的無密碼體驗。<br>適用于共用電腦，而且行動電話不是可行的選項 (例如支援服務中心人員、公共 kiosk 或醫院團隊) |

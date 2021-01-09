@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 3a53a5b7e60ef214a3db58d9e280e9dee8fec609
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 11aac69816714611c168cd05c2828dd1ae85786e
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355829"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813644"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 AWS ClientVPN 整合
 
@@ -89,7 +89,7 @@ ms.locfileid: "97355829"
     |
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」和「回覆 URL」來更新這些值。 請連絡 [AWS ClientVPN 用戶端支援小組](https://aws.amazon.com/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
+    > 這些都不是真正的值。  請使用實際的「登入 URL」和「回覆 URL」來更新這些值。  登入 URL 和回復 URL 可以具有相同的值 (http://127.0.0.1:35001) 。  請參閱 [AWS 用戶端 VPN 文件](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/client-authentication.html#ad)以取得詳細資料。   您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。 請連絡 [AWS 用戶端 VPN 支援小組](https://aws.amazon.com/contact-us/)，了解是否有任何組態問題。 
 
 1. 在 Azure Active Directory 服務中，瀏覽至 **應用程式註冊**，然後選取 [所有應用程式]。
 
@@ -126,7 +126,7 @@ ms.locfileid: "97355829"
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下 [建立]。
+   1. 按一下頁面底部的 [新增]  。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 

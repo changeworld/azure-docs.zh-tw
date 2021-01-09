@@ -1,17 +1,17 @@
 ---
 title: 外部可用性錯誤碼 - Azure 串流分析
 description: 使用外部可用性錯誤碼針對 Azure 串流分析問題進行疑難排解。
-ms.author: mamccrea
-author: mamccrea
+ms.author: sidram
+author: sidramadoss
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: c70a3a2d0630148a077f9c149ba40d48a6b7c0ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71625c4b81fc0795c376a89397e98659f4c72ff0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045275"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020548"
 ---
 # <a name="azure-stream-analytics-external-availability-error-codes"></a>Azure 串流分析的外部可用性錯誤碼
 

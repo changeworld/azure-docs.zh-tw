@@ -7,23 +7,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 52772519cc3b9aebc42175e812ad47ae54b529e9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: dd71b03f55cc1522727f6c496c1bdbe0f42cb828
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336674"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678622"
 ---
 # <a name="what-is-azure-data-box"></a>什麼是 Azure 資料箱？
 
 Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠和可靠的方式，將數 TB 的資料傳入及傳出 Azure。 透過向您寄送專屬的資料箱存放裝置，來加速安全的資料傳輸。 每個存放裝置的最大可用儲存容量為 80 TB，並透過區域性貨運公司運輸至您的資料中心。 該裝置具有堅固的外殼，可在運輸過程中保護裝置與資料。
 
-您可以透過 Azure 入口網站來訂購資料箱裝置，以從 Azure 匯入或匯出資料。 一旦收到裝置之後，您就可以快速地使用本機 Web UI 來設定它。 根據您要匯入或匯出資料，將資料從您的伺服器複製到裝置 (反之亦然)，然後將裝置寄回 Azure。 如果要將資料匯入 Azure，在 Azure 資料中心內，您的資料會自動從裝置上傳到 Azure。 Azure 入口網站中的資料箱服務會以端對端的方式追蹤這整個程序。
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
+您可以透過 Azure 入口網站來訂購資料箱裝置，以從 Azure 匯入或匯出資料。 一旦收到裝置之後，您就可以快速地使用本機 Web UI 來設定它。 根據您要匯入或匯出資料，將資料從您的伺服器複製到裝置 (或從裝置複製到伺服器)，然後將裝置寄回 Azure。 如果要將資料匯入 Azure，在 Azure 資料中心內，您的資料會自動從裝置上傳到 Azure。 Azure 入口網站中的資料箱服務會以端對端的方式追蹤這整個程序。
 
 ## <a name="use-cases"></a>使用案例
 
@@ -43,7 +40,7 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠和可靠�
 
 以下是使用資料箱來將資料從 Azure 匯出的各種案例。
 
-- **災害復原** - 用於將 Azure 中的資料複本還原至內部部署網路時。 這通常會在發生災害復原案例時執行，此案例會將大量的 Azure 資料匯出至資料箱。 接著，Microsoft 會提供此資料箱，讓資料可快速地在您的內部部署環境中還原。 
+- **災害復原** - 用於將 Azure 中的資料複本還原至內部部署網路時。 在典型的災害復原案例中，會將大量的 Azure 資料匯出至資料箱。 接著，Microsoft 會提供此資料箱，讓資料可快速地在您的內部部署環境中還原。
 
 - **安全性需求** - 因為政府或安全性需求而必須匯出 Azure 上的資料時。 例如，Azure 儲存體可在美國的「機密」和「最高機密」雲端中使用，而且您可以使用料箱將資料從 Azure 匯出。 
 
@@ -54,14 +51,14 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠和可靠�
 
 資料箱的設計可讓它在幾乎不對網路產生影響的情況下，將大量資料移至 Azure。 此解決方案有下列優點：
 
-- **速度** - 資料箱使用 1 Gbps 或 10 Gbps 網路介面，可將最多 80 TB 的資料移至或移出 Azure。
+- **速度** - 資料箱使用 1 Gbps 或 10 Gbps 網路介面，可將最多 80 TB 的資料移入或移出 Azure。
 
 - **安全** - 資料箱具有適用於裝置、資料和服務的內建安全保護機制。
   - 裝置有堅固的外殼，並以防拆螺絲和易碎貼紙加以保護。 
   - 裝置上的資料會全程受到 AES 256 位元加密的保護。
   - 裝置只能使用 Azure 入口網站中提供的密碼來解除鎖定。
   - 此服務受到 Azure 安全功能的保護。
-  - 根據匯入訂單將資料上傳至 Azure 後，裝置上的磁碟即會根據 NIST 800-88r1 標準進行抹除。 針對匯出訂單，磁碟會在裝置到達 Azure 資料中心後進行抹除。
+  - 將資料從匯入訂單上傳至 Azure 後，裝置上的磁碟即會根據 NIST 800-88r1 標準進行抹除。 針對匯出訂單，磁碟會在裝置到達 Azure 資料中心後進行抹除。
     
     如需詳細資訊，請移至 [Azure 資料箱安全性和資料保護](data-box-security.md)。
 
@@ -138,11 +135,11 @@ Microsoft Azure 資料箱雲端解決方案可讓您以快速、實惠和可靠�
 
 ## <a name="region-availability"></a>區域可用性
 
-資料箱可以根據其服務所部署的區域、裝置所寄送的國家/地區，以及資料傳輸後所在的目標 Azure 儲存體帳戶來傳輸資料。 
+資料箱可以根據其服務部署所在的區域、裝置寄往的國家或地區，以及資料傳輸後所在的目標 Azure 儲存體帳戶來傳輸資料。
 
 ### <a name="for-import"></a>匯入
 
-- **服務可用性** - 針對匯入或匯出訂單使用資料箱時，若要取得區域可用性的相關資訊，請移至 [依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 資料箱上的匯出功能目前為預覽狀態。 
+- **服務可用性** - 針對匯入或匯出訂單使用資料箱時，若要取得區域可用性的相關資訊，請移至 [依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。
 
     針對匯入訂單，資料箱也可部署在 Azure Government 雲端中。 如需詳細資訊，請參閱[何謂 Azure Government？](../azure-government/documentation-government-welcome.md)。 
 

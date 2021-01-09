@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 7e727d06670c9d07ec1aa18b92504433f6c519d6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 88cec878ca5d3ccab3a232888ff3a3c0b0faa1db
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518289"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705246"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>教學課程：使用 Azure 範本自動調整虛擬機器擴展集
 當建立擴展集時，您會定義您想要執行的 VM 執行個體數目。 當您的應用程式需求變更時，您可以自動增加或減少 VM 執行個體數目。 自動調整的能力可讓您在整個應用程式的生命週期中，跟上客戶的需求或對應用程式效能變更做出回應。 在本教學課程中，您將了解如何：
@@ -143,10 +143,10 @@ ms.locfileid: "94518289"
 az group create --name myResourceGroup --location eastus
 ```
 
-現在，請使用 [az group deployment create](/cli/azure/group/deployment) 建立虛擬機器擴展集。 出現提示時，請提供您自己的使用者名稱 (例如 *azureuser*)，以及作為每個 VM 執行個體之認證的密碼：
+現在，請使用 [az deployment group create](/cli/azure/deployment/group) 建立虛擬機器擴展集。 出現提示時，請提供您自己的使用者名稱 (例如 *azureuser*)，以及作為每個 VM 執行個體之認證的密碼：
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json
 ```

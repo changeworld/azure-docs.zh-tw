@@ -3,23 +3,23 @@ title: 部署至 Azure 按鈕
 description: 使用按鈕，從 GitHub 存放庫部署 Azure Resource Manager 範本。
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 65891cace1cb17614abbfe091e1592d6f13feff4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185720"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028738"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用部署按鈕從 GitHub 存放庫部署範本
 
-本文說明如何使用 [ **部署至 Azure** ] 按鈕，從 GitHub 存放庫部署範本。 您可以直接將按鈕新增至 GitHub 儲存機制中的 README.md 檔案。 或者，您可以將按鈕加入至參考存放庫的網頁。
+本文說明如何使用 [ **部署至 Azure** ] 按鈕，從 GitHub 存放庫部署範本。 您可以直接將按鈕新增至 GitHub 儲存機制中的 _README.md_ 檔案。 或者，您可以將按鈕加入至參考存放庫的網頁。
 
-部署範圍是由範本架構所決定。 如需詳細資訊，請參閱
+部署範圍是由範本架構所決定。 如需詳細資訊，請參閱：
 
-* [資源群組](deploy-to-resource-group.md)
-* [訂閱](deploy-to-subscription.md)
-* [管理群組](deploy-to-management-group.md)
-* [租戶](deploy-to-tenant.md)
+- [資源群組](deploy-to-resource-group.md)
+- [訂閱](deploy-to-subscription.md)
+- [管理群組](deploy-to-management-group.md)
+- [租戶](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>使用通用映射
 
@@ -78,7 +78,7 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 一般來說，您會將範本裝載于公用存放庫中。 如果您使用私人存放庫，則必須包含權杖以存取範本的原始內容。 GitHub 產生的權杖只會在短時間後有效。 您需要經常更新連結。
 
-如果您使用 [Git 搭配 Azure Repos](/azure/devops/repos/git/) 而不是使用 GitHub 存放庫，您仍可使用 [部署至 Azure] 按鈕。 請確定您的存放庫是公用的。 使用 [Items](/rest/api/azure/devops/git/items/get) 作業來取得範本。 您的要求應該採用下列格式：
+如果您使用 [Git 搭配 Azure Repos](/azure/devops/repos/git/) 而不是使用 GitHub 存放庫，您仍可使用 [ **部署至 Azure** ] 按鈕。 請確定您的存放庫是公用的。 使用 [Items](/rest/api/azure/devops/git/items/get) 作業來取得範本。 您的要求應該採用下列格式：
 
 ```http
 https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
@@ -90,7 +90,7 @@ https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/
 
 最後，將連結和影像放在一起。
 
-若要在 GitHub 存放庫或網頁的 README.md 檔案中新增具有 Markdown 的按鈕，請使用：
+若要在 GitHub 存放庫或網頁的 _README.md_ 檔案中新增具有 Markdown 的按鈕，請使用：
 
 ```markdown
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
@@ -122,4 +122,4 @@ https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入瞭解範本，請參閱 [瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
+- 若要深入了解範本，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。

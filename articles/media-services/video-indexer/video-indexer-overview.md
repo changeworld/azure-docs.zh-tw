@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: b327facc2ac9ad64cf5237ecddc3e4024f75daa6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052132"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014530"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>什麼是 Azure 媒體服務影片索引器？
 
@@ -69,14 +69,14 @@ ms.locfileid: "90052132"
 * **黑色畫面偵測**：識別影片中出現的黑色畫面。
 * **主要畫面格擷取**：偵測影片中的穩定主要畫面格。
 * **滾動演職員表**：識別電視節目和電影結束時的滾動演職員表開頭與結尾。
-* **動畫角色偵測** (預覽)：透過與[認知服務自訂視覺](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)整合，而能偵測、分組和辨識動畫內容中的角色。 如需詳細資訊，請參閱[動畫角色偵測](animated-characters-recognition.md)。
+* **動畫角色偵測** (預覽)：透過與 [認知服務自訂視覺](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)整合，而能偵測、分組和辨識動畫內容中的角色。 如需詳細資訊，請參閱[動畫角色偵測](animated-characters-recognition.md)。
 * **編輯鏡頭類型偵測**：根據鏡頭的類型 (例如，寬鏡頭、中鏡頭、特寫、極度特寫、雙人鏡頭、多人、戶外和室內等等) 來為鏡頭加上標籤。 如需詳細資訊，請參閱[編輯鏡頭類型偵測](scenes-shots-keyframes.md#editorial-shot-type-detection)。
 
 ### <a name="audio-insights"></a>音訊見解
 
 * **音訊轉譯**：將語音轉換為 12 種語言的文字，並允許擴充。 支援的語言包括英文、西班牙文、法文、德文、義大利文、普通話、日文、阿拉伯文、俄文、葡萄牙文、印度文和韓文。
 * **自動語言偵測**：自動識別主要口說語言。 支援的語言包括英文、西班牙文、法文、德文、義大利文、普通話、日文、俄文和葡萄牙文。 如果沒有把握能識別語言，影片索引器就會假設口語為英文。 如需詳細資訊，請參閱[語言識別模型](language-identification-model.md)。
-* **多語言語音識別和轉譯** (預覽)：自動識別音訊中不同區段的口語。 其會傳送所要轉譯媒體檔案的每個區段，然後將轉譯結果回頭合併為一個整合起來的轉譯。 如需詳細資訊，請參閱[自動識別並轉譯多語言內容](multi-language-identification-transcription.md)。
+* **多語言語音辨識和** 轉譯：自動從音訊識別不同區段中的語音語言。 其會傳送所要轉譯媒體檔案的每個區段，然後將轉譯結果回頭合併為一個整合起來的轉譯。 如需詳細資訊，請參閱[自動識別並轉譯多語言內容](multi-language-identification-transcription.md)。
 * **隱藏式輔助字幕**：建立三種格式的隱藏式輔助字幕：VTT、TTML、SRT。
 * **雙通道處理**：自動偵測分離的文字記錄並合併到單一時間軸。
 * **減少雜訊**：清除電話音頻或錄音雜訊 (視 Skype 的篩選條件而定)。

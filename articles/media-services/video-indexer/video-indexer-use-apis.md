@@ -8,29 +8,31 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cdba4ce36322f9c3fb0f898cb7eb1d1185ed1dc6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636940"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028169"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>教學課程：使用影片索引器 API
 
 影片索引器會將 Microsoft 提供的各種音訊和視訊人工智慧 (AI) 技術合併成一個整合式服務，讓開發變得更簡單。 API 可讓開發人員將焦點放在使用媒體 AI 技術上，而不需擔心雲端平台的規模、全球觸達率、可用性和可靠性。 您可使用 API 來上傳檔案、取得詳細的影片見解、取得可內嵌見解和播放程式介面控件的 URL 等等。
 
-建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編制索引的分鐘數。如需詳細資訊，請參閱 [媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)。
+建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，如需詳細資訊，請參閱[媒體服務定價](https://azure.microsoft.com/pricing/details/media-services/)。
 
 本文說明開發人員可以如何善用[影片索引器 API](https://api-portal.videoindexer.ai/)。
 
 ## <a name="subscribe-to-the-api"></a>訂閱 API
 
 1. 登入[影片索引器開發人員入口網站](https://api-portal.videoindexer.ai/)。
+
+    請參閱有關登入 [資訊](release-notes.md#october-2020)的版本資訊。
     
-    ![登入影片索引器開發人員入口網站](./media/video-indexer-use-apis/video-indexer-api01.png)
+     ![登入影片索引器開發人員入口網站](./media/video-indexer-use-apis/sign-in.png)
 
    > [!Important]
    > * 您必須使用註冊影片索引器時所使用的提供者。
@@ -40,14 +42,14 @@ ms.locfileid: "94636940"
 
     選取 [[產品](https://api-portal.videoindexer.ai/products)] 索引標籤。然後，選取授權並訂閱。
     
-    ![影片索引器開發人員入口網站中的 [產品] 索引標籤](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![影片索引器開發人員入口網站中的 [產品] 索引標籤](./media/video-indexer-use-apis/authorization.png)
 
     > [!NOTE]
     > 系統會自動完成新使用者的授權訂閱。
     
-    訂閱之後，您可以在 [ **產品** 授權] 下找到您的訂用帳戶  ->  **** 。 在 [訂用帳戶] 頁面中，您會找到主要和次要金鑰。 應妥善保護金鑰。 這些金鑰應只供伺服器程式碼使用。 不應該用於用戶端 (.js、.html 等等)。
+    訂閱之後，您可以在 [**產品** 授權] 下找到您的訂用帳戶  ->  ****。 在 [訂用帳戶] 頁面中，您會找到主要和次要金鑰。 應妥善保護金鑰。 這些金鑰應只供伺服器程式碼使用。 不應該用於用戶端 (.js、.html 等等)。
 
-    ![影片索引器開發人員入口網站中的訂用帳戶和金鑰](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![影片索引器開發人員入口網站中的訂用帳戶和金鑰](./media/video-indexer-use-apis/subscriptions.png)
 
 > [!TIP]
 > 影片索引器使用者可以使用單一訂用帳戶金鑰來連線到多個影片索引器帳戶。 接著，您可以將這些影片索引器帳戶連結到不同媒體服務帳戶。
@@ -64,7 +66,7 @@ ms.locfileid: "94636940"
 
 您可藉由指定 **allowEdit=true/false** 來控制這些權杖是唯讀還是可編輯。
 
-針對大部分的伺服器對伺服器案例，您可能會使用相同的 **帳戶** 權杖，因為其同時涵蓋 **帳戶** 作業和 **影片** 作業。 不過，如果您打算讓用戶端呼叫影片索引器 (例如，從 javascript)，您可以使用 **影片** 存取權杖，以防止用戶端取得整個帳戶的存取權。 這也是為什麼當您將 VideoIndexer 用戶端程式碼內嵌到用戶端 (例如使用 **取得見解介面控件** 或 **取得播放程式介面控件** ) 時，您必須提供 **影片** 存取權杖。
+針對大部分的伺服器對伺服器案例，您可能會使用相同的 **帳戶** 權杖，因為其同時涵蓋 **帳戶** 作業和 **影片** 作業。 不過，如果您打算讓用戶端呼叫影片索引器 (例如，從 javascript)，您可以使用 **影片** 存取權杖，以防止用戶端取得整個帳戶的存取權。 這也是為什麼當您將 VideoIndexer 用戶端程式碼內嵌到用戶端 (例如使用 **取得見解介面控件** 或 **取得播放程式介面控件**) 時，您必須提供 **影片** 存取權杖。
 
 為了方便起見，您可以使用 **授權** API > **GetAccounts** 來取得您的帳戶，而不需先取得使用者權杖。 您也可以透過有效權杖來要求取得帳戶，以略過用於取得帳戶權杖的額外呼叫。
 
@@ -84,7 +86,7 @@ ms.locfileid: "94636940"
 
         ![影片索引器設定和帳戶識別碼](./media/video-indexer-use-apis/account-id.png)
 
-* 使用 **影片索引器開發人員入口網站** ，以程式設計方式取得帳戶識別碼。
+* 使用 **影片索引器開發人員入口網站**，以程式設計方式取得帳戶識別碼。
 
     使用[取得帳戶](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) API。
 

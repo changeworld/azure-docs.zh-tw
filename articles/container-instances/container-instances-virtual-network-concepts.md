@@ -3,12 +3,12 @@ title: 使用虛擬網路的案例
 description: 將容器群組部署至 Azure 虛擬網路的案例、資源和限制。
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882427"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033824"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>虛擬網路案例和資源
 
@@ -33,6 +33,7 @@ ms.locfileid: "97882427"
 * **Azure Load Balancer** -不支援將 Azure Load Balancer 放置在網路容器群組中的容器實例前面
 * **全域虛擬網路對等互連** -不支援跨 Azure 區域連接虛擬網路的全域對等互連 () 
 * **公用 ip 或 DNS 標籤** -部署至虛擬網路的容器群組目前不支援使用公用 ip 位址或完整功能變數名稱將容器直接公開至網際網路
+* **虛擬網路 NAT** -部署至虛擬網路的容器群組目前不支援使用 NAT 閘道資源進行輸出網際網路連線。
 
 ## <a name="other-limitations"></a>其他限制
 
@@ -75,7 +76,7 @@ ms.locfileid: "97882427"
 
 ![虛擬網路中的容器群組][aci-vnet-01]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需 Azure CLI 的部署範例，請參閱將 [容器實例部署至 Azure 虛擬網路](container-instances-vnet.md)。
 * 若要使用 Resource Manager 範本部署新的虛擬網路、子網路、網路設定檔及容器群組，請參閱 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet

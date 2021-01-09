@@ -12,18 +12,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: e88a721d500ea1c17c768e9f28835248711bd361
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 10b61dd4b6cc3a99b8eecf86cb5ba7e718d64743
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584437"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015108"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>操作說明：針對企業應用程式，設定 SAML 權杖中發出的角色宣告
 
 藉由使用 Azure Active Directory (Azure AD)，您可以針對在授權應用程式之後所收到回應權杖中的角色宣告，自訂其宣告類型。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有目錄設定的 Azure AD 訂用帳戶。
 - 已啟用單一登入 (SSO) 的訂用帳戶。 您必須設定與您應用程式搭配運作的 SSO。
@@ -34,7 +34,7 @@ ms.locfileid: "97584437"
 
 ## <a name="create-roles-for-an-application"></a>建立應用程式的角色
 
-1. 在 [Azure 入口網站](https://portal.azure.com)的左側窗格中，選取 [Azure Active Directory]  圖示。
+1. 在 [ <a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span></a>] 的左窗格中，選取 **Azure Active Directory** 圖示。
 
     ![Azure Active Directory 圖示][1]
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2020
-ms.openlocfilehash: c22136e58ddf35ca28ab2251b3476ce2a80dbc4a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6554d112e494a129fa2cc811c2acf1959ff79f8b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539270"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822262"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>快速入門：使用 Azure 入口網站在 Azure HDInsight 中建立 Apache Spark 叢集
 
@@ -52,9 +52,9 @@ ms.locfileid: "92539270"
     |區域   | 從下拉式清單中，選取要在其中建立叢集的區域。 |
     |叢集類型| 選取 [選取叢集類型] 以開啟清單。 從清單中選取 [Spark]  。|
     |叢集版本|一旦選取叢集類型，此欄位就會自動填入預設版本。|
-    |叢集登入使用者名稱| 輸入叢集登入使用者名稱。  預設名稱為 **admin** 。您稍後會在本快速入門中使用此帳戶來登入 Jupyter Notebook。 |
+    |叢集登入使用者名稱| 輸入叢集登入使用者名稱。  預設名稱為 **admin**。您稍後會在本快速入門中使用此帳戶來登入 Jupyter Notebook。 |
     |叢集登入密碼| 輸入叢集登入密碼。 |
-    |安全殼層 (SSH) 使用者名稱| 輸入 SSH 使用者名稱。 針對本快速入門所使用的 SSH 使用者名稱是 **sshuser** 。 根據預設，此帳戶會共用與「叢集登入使用者名稱」  帳戶相同的密碼。 |
+    |安全殼層 (SSH) 使用者名稱| 輸入 SSH 使用者名稱。 針對本快速入門所使用的 SSH 使用者名稱是 **sshuser**。 根據預設，此帳戶會共用與「叢集登入使用者名稱」  帳戶相同的密碼。 |
 
     ![此螢幕擷取畫面顯示 [建立 H D 見解叢集]，並已選取 [基本] 索引標籤。](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-basics-spark.png "在 HDInsight 中建立 Spark 叢集基本設定")
 
@@ -106,7 +106,7 @@ SQL (結構化查詢語言) 是最常見且廣泛使用的語言，可用於查�
     SHOW TABLES
     ```
 
-    當您使用 Jupyter Notebook 搭配 HDInsight 叢集時，您可取得預設的 `sqlContext`，用來執行使用 Spark SQL 的 Hive 查詢。 `%%sql` 會告知 Jupyter Notebook 使用預設的 `sqlContext` 來執行 Hive 查詢。 此查詢會擷取 Hive 資料表 ( **hivesampletable** ) 中的前 10 個資料列，依預設所有 HDInsight 叢集均隨附該資料表。 大約需要 30 秒才能取得結果。 輸出看起來如下：
+    當您使用 Jupyter Notebook 搭配 HDInsight 叢集時，您可取得預設的 `sqlContext`，用來執行使用 Spark SQL 的 Hive 查詢。 `%%sql` 會告知 Jupyter Notebook 使用預設的 `sqlContext` 來執行 Hive 查詢。 此查詢會擷取 Hive 資料表 (**hivesampletable**) 中的前 10 個資料列，依預設所有 HDInsight 叢集均隨附該資料表。 大約需要 30 秒才能取得結果。 輸出看起來如下：
 
     ![此螢幕擷取畫面顯示 Jupyter 視窗，此視窗適用於本快速入門中建立的筆記本。](./media/apache-spark-jupyter-spark-sql-use-portal/hdinsight-spark-get-started-hive-query.png "HDInsight 中的 Hive 查詢")
 
