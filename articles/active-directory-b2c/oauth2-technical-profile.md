@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78ce6466521c7903187798d902056948c659653c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 624cf4012316b832e507518aa7e0f0874f517971
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509847"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059127"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 OAuth2 技術設定檔
 
@@ -87,7 +87,7 @@ Azure Active Directory B2C (Azure AD B2C) 提供 OAuth2 通訊協定身分識別
 | end_session_endpoint | 是 | 依據 RFC 6749 的結束交談端點 URL。 |
 | AccessTokenResponseFormat | 否 | 存取權杖端點呼叫的格式。 例如，Facebook 需要 HTTP GET 方法，但存取權杖回應採用 JSON 格式。 |
 | AdditionalRequestQueryParameters | 否 | 其他要求查詢參數。 例如，您可以將其他參數傳送給識別提供者。 您可以使用逗號分隔符號包含多個參數。 |
-| ClaimsEndpointAccessTokenName | 否 | 存取權杖查詢字串參數的名稱。 某些識別提供者的宣告端點支援 GET HTTP 要求。 在此情況下，會使用查詢字串參數來傳送持有人權杖，而不使用授權標頭。 |
+| ClaimsEndpointAccessTokenName | 否 | 存取權杖查詢字串參數的名稱。 某些識別提供者的宣告端點支援 GET HTTP 要求。 在此情況下，會使用查詢字串參數來傳送持有人權杖，而不使用授權標頭。 預設值： `access_token` 。 |
 | ClaimsEndpointFormatName | 否 | 格式查詢字串參數的名稱。 例如，您可以在 LinkedIn 宣告端點 `https://api.linkedin.com/v1/people/~?format=json` 中將名稱設定為 `format`。 |
 | ClaimsEndpointFormat | 否 | 格式查詢字串參數的值。 例如，您可以在 LinkedIn 宣告端點 `https://api.linkedin.com/v1/people/~?format=json` 中將值設定為 `json`。 |
 | ProviderName | 否 | 識別提供者的名稱。 |
@@ -100,13 +100,14 @@ Azure Active Directory B2C (Azure AD B2C) 提供 OAuth2 通訊協定身分識別
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值為：`true` 或 `false` (預設)。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 | ResolveJsonPathsInJsonTokens  | 否 | 指出技術設定檔是否解析 JSON 路徑。 可能的值為：`true` 或 `false` (預設)。 使用此中繼資料可從嵌套的 JSON 元素讀取資料。 在 [OutputClaim](technicalprofiles.md#output-claims)中，將設定 `PartnerClaimType` 為您要輸出的 JSON 路徑元素。 例如： `firstName.localized` 、或 `data.0.to.0.email` 。|
 |token_endpoint_auth_method| 否| 指定 Azure AD B2C 將驗證標頭傳送至權杖端點的方式。 可能的值： `client_secret_post` (預設) 和 `client_secret_basic` (公開預覽) 。 如需詳細資訊，請參閱 [OpenID Connect 用戶端驗證一節](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication)。 |
-|SingleLogoutEnabled| 否| 指出在登入技術設定檔時，是否嘗試從同盟身分識別提供者登出。 如需詳細資訊，請參閱 [Azure AD B2C 會話登出](session-behavior.md#sign-out)。 可能的值： `true` (預設) 或 `false` 。|
+|SingleLogoutEnabled| 否| 指出在登入技術設定檔時，是否嘗試從同盟身分識別提供者登出。 如需詳細資訊，請參閱 [Azure AD B2C 會話登出](session-behavior.md#sign-out)。可能的值： `true` (預設) 或 `false` 。|
+| UsePolicyInRedirectUri | 否 | 表明在建構重新導向 URI 時，是否使用原則。 在設定識別提供者中的應用程式時，需要指定重新導向 URI。 重新導向 URI 會指向 Azure AD B2C、 `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` 。 如果指定 `true`，則需要為每個使用的原則新增重新導向 URI。 例如： `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp` 。 |
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
 **CryptographicKeys** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 識別提供者應用程式的用戶端密碼。 只有在 **response_types** 中繼資料設為 `code` 時，才需要密碼編譯金鑰。 在此情況下，Azure AD B2C 會進行另一次呼叫，以交換存取權杖的授權碼。 如果中繼資料設定為 `id_token` ，您可以省略密碼編譯金鑰。 |
 

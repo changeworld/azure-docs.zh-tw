@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 520b2eff91faf2e333ab0a5df7bcc85e6a47c80a
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585185"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058662"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中自訂使用者介面
 
@@ -74,7 +74,7 @@ Azure AD B2C 在客戶的瀏覽器中使用 [跨原始資源分享 (CORS) ](http
 ## <a name="guidelines-for-using-custom-page-content"></a>使用自訂頁面內容的指導方針
 
 - 當您在 HTML 檔案中包含媒體、CSS 和 JavaScript 檔案等外部資源時，請使用絕對 URL。
-- 使用 [頁面配置版本](page-layout.md) 1.2.0 和更新版本時，您可以 `data-preload="true"` 在 HTML 標籤中加入屬性，以控制 CSS 和 JavaScript 的載入順序。 使用時 `data-preload=true` ，會在向使用者顯示頁面之前先建立頁面。 這個屬性可透過預先載入 CSS 檔案來防止頁面「閃爍」，而不會對使用者顯示未設樣式的 HTML。 下列 HTML 程式碼片段會示範如何使用 `data-preload` 標記。
+- 使用 [頁面配置版本](page-layout.md) 1.2.0 和更新版本時，您可以 `data-preload="true"` 在 HTML 標籤中加入屬性，以控制 CSS 和 JavaScript 的載入順序。 使用時 `data-preload="true"` ，會在向使用者顯示頁面之前先建立頁面。 這個屬性可透過預先載入 CSS 檔案來防止頁面「閃爍」，而不會對使用者顯示未設樣式的 HTML。 下列 HTML 程式碼片段會示範如何使用 `data-preload` 標記。
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
@@ -116,7 +116,7 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 1. 為您的 Web 應用程式設定跨原始來源資源分享 (CORS)。
 1. 將您的原則指向您的自訂原則內容 URI。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -201,11 +201,11 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 #### <a name="22-upload-your-custom-page-content-files"></a>2.2 上傳您的自訂頁面內容檔案
 
-1. 選取 [上傳] 。
+1. 選取 [上傳]。
 1. 選取 [ **選取** 檔案] 旁的資料夾圖示。
 1. 流覽至並選取您稍早在 [頁面 UI 自訂] 區段中建立的 **customize-ui.html**。
 1. 如果您想要上傳至子資料夾，請展開 [ **Advanced** ]，然後在 **[上傳至資料夾**] 中輸入資料夾名稱。
-1. 選取 [上傳] 。
+1. 選取 [上傳]。
 1. 選取您上傳的 **customize-ui.html** blob。
 1. 選取 [ **URL** ] 文字方塊右邊的 [ **複製到剪貼** 簿] 圖示，將 URL 複製到剪貼簿。
 1. 在網頁瀏覽器中，流覽至您所複製的 URL，以確認您上傳的 blob 可以存取。 如果無法存取，例如如果您遇到 `ResourceNotFound` 錯誤，請確定容器的存取類型設定為 **blob**。
@@ -387,7 +387,7 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
 1. 現在修改原則，指向您的 HTML 檔案（如先前所述）。
 1. 如果您看到遺漏字型、影像或 CSS，請檢查延伸模組原則和 .html 檔案中的參考 \* 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解如何啟用 [用戶端 JavaScript 程式碼](javascript-and-page-layout.md)。
 

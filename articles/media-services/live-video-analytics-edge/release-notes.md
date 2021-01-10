@@ -3,12 +3,12 @@ title: IoT Edge 版本資訊的即時影片分析-Azure
 description: 本主題提供有關 IoT Edge 版本、增強功能、bug 修正和已知問題的即時影片分析版本資訊。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400840"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059971"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 版本資訊的即時影片分析
 
@@ -33,7 +33,7 @@ ms.locfileid: "97400840"
 * 針對每個圖表拓撲新增了使用一個以上 HTTP 擴充處理器和 gRPC 擴充處理器的支援。
 * 已新增接收節點的磁碟空間管理支援。
 * `MediaGraphGrpcExtension` 節點現在支援在單一 gRPC 伺服器內使用多個 AI 模型的 [extensionConfiguration](grpc-extension-protocol.md) 屬性。
-* 已新增以[Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集即時影片分析模組計量的支援 
+* 已新增以 [Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集即時影片分析模組計量的支援。 深入瞭解如何 [在 Azure 監視器中收集計量和觀點。](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
 * 畫面播放速率篩選處理器已被 **取代**。  
     * 圖形擴充處理器節點本身內現在可使用畫面播放速率管理。
 

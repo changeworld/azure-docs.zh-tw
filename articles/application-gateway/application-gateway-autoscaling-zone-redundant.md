@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 8c989e426faa77025a84515fe0a19424cb6bfa89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fad6e27c4ee7e8c10237cb3face5cfab9329b2ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91826628"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059716"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動調整規模和區域備援應用程式閘道 v2 
 
@@ -21,7 +21,7 @@ ms.locfileid: "91826628"
 
 新的 v2 SKU 包含下列增強功能：
 
-- 自動**調整：自動**調整 SKU 下的應用程式閘道或 WAF 部署可以根據變動的流量負載模式來相應放大或縮小。 自動調整規模也可讓您在佈建時，無須選擇部署大小或執行個體計數。 此 SKU 可提供真正的靈活彈性。 在 Standard_v2 和 WAF_v2 SKU 中，「應用程式閘道」可在固定容量 (停用自動調整) 模式下運作，也可在啟用自動調整模式下運作。 固定容量模式適用於工作負載一致且可預測的案例。 自動調整模式則有利於在應用程式流量中可看到變異的應用程式。
+- 自動 **調整：自動** 調整 SKU 下的應用程式閘道或 WAF 部署可以根據變動的流量負載模式來相應放大或縮小。 自動調整規模也可讓您在佈建時，無須選擇部署大小或執行個體計數。 此 SKU 可提供真正的靈活彈性。 在 Standard_v2 和 WAF_v2 SKU 中，「應用程式閘道」可在固定容量 (停用自動調整) 模式下運作，也可在啟用自動調整模式下運作。 固定容量模式適用於工作負載一致且可預測的案例。 自動調整模式則有利於在應用程式流量中可看到變異的應用程式。
 - **區域備援**：「應用程式閘道」或 WAF 部署可跨多個「可用性區域」，因此無須使用流量管理員在每個區域中佈建個別的「應用程式閘道」執行個體。 您可選擇已部署「應用程式閘道」執行個體的單一或多個區域，以便更能在區域失敗後復原。 應用程式的後端集區可以均等分散在可用性區域間。
 
   區域備援僅適用於可使用 Azure 區域的位置。 在其他區域中，則支援所有其他功能。 如需詳細資訊，請參閱 [Azure 中的區域和可用性區域](../availability-zones/az-overview.md)
@@ -101,7 +101,7 @@ Azure 應用程式閘道一律會以高可用性的方式部署。 此服務是�
 |驗證憑證|不支援。<br>如需詳細資訊，請參閱[應用程式閘道端對端 TLS 的概觀](ssl-overview.md#end-to-end-tls-with-the-v2-sku)。|
 |在相同子網路上混合使用 Standard_v2 和標準應用程式閘道|不支援|
 |應用程式閘道子網路上的使用者定義路由 (UDR)|支援 (特殊案例)。 處於預覽狀態。<br> 如需支援案例的詳細資訊，請參閱[應用程式閘道設定概觀](configuration-infrastructure.md#supported-user-defined-routes)。|
-|輸入連接埠範圍的 NSG| - Standard_v2 SKU 適用 65200 至 65535<br>- 標準 SKU 適用 65503 至 65534<br>如需詳細資訊，請參閱[常見問題集](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
+|輸入連接埠範圍的 NSG| - Standard_v2 SKU 適用 65200 至 65535<br>- 標準 SKU 適用 65503 至 65534<br>如需詳細資訊，請參閱[常見問題集](application-gateway-faq.yml#are-network-security-groups-supported-on-the-application-gateway-subnet)。|
 |Azure 診斷中的效能記錄|不支援。<br>應該使用 Azure 計量。|
 |計費|排定於 2019 年 7 月 1 日開始計費。|
 |FIPS 模式|目前不支援。|

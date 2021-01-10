@@ -2,17 +2,17 @@
 title: '使用 Azure 資料總管 (preview 從 Azure 監視器查詢匯出的資料) '
 description: 使用 Azure 資料總管來查詢從 Log Analytics 工作區匯出到 Azure 儲存體帳戶的資料。
 ms.subservice: logs
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 2735aec0f95f5e282bb1dffba6e4f42f966cf117
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25452748e423cbbe819afa2618789b377027346b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186536"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060464"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 資料總管 (preview 從 Azure 監視器查詢匯出的資料) 
 將資料從 Azure 監視器匯出至 Azure 儲存體帳戶可提供低成本的保留，以及將記錄重新配置到不同區域的能力。 使用 Azure 資料總管來查詢從 Log Analytics 工作區匯出的資料。 一旦設定之後，從您的工作區傳送到 Azure 儲存體帳戶的支援資料表將可作為 Azure 資料總管的資料來源。
@@ -134,6 +134,6 @@ external_table("HBTest","map") | take 10000
 
 [![查詢 Log Analytics 匯出的資料](media/azure-data-explorer-query-storage/external-table-query.png)](media/azure-data-explorer-query-storage/external-table-query.png#lightbox)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解如何 [在 Azure 資料總管中撰寫查詢](/azure/data-explorer/write-queries)

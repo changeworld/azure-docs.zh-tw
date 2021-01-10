@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: dc5efd6ad478710ba839634a49f041211756af71
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 732054ae2cd8f93d17694e9ea1bdd85680e9c314
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397666"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058645"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>應用程式閘道前端 IP 位址設定
 
@@ -25,7 +25,7 @@ ms.locfileid: "93397666"
 * 私人 IP 位址和公用 IP 位址
 * 僅限公用 IP 位址
 
-如需詳細資訊，請參閱 [關於應用程式閘道](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)的常見問題。
+如需詳細資訊，請參閱 [關於應用程式閘道](application-gateway-faq.yml#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)的常見問題。
 
 
 未向網際網路公開的內部端點不需要公用 IP 位址。 這就是所謂的 *內部負載平衡器* (ILB) 端點或私人前端 IP。 應用程式閘道 ILB 適用于不會向網際網路公開的內部企業營運系統應用程式。 它也適用于在不會對網際網路公開但需要迴圈配置資源負載散發、會話或 TLS 終止的安全性界限內的多層式應用程式中的服務和層級。
@@ -38,6 +38,6 @@ ms.locfileid: "93397666"
 
 前端 IP 位址與接聽程式相關 *聯，它* 會檢查前端 ip 上的傳入要求。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [瞭解接聽程式設定](configuration-listeners.md)

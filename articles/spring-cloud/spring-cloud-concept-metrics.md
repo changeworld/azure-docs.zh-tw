@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 015aadb791172f5033bf0198caad567c9bc03221
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c4299bc41a656fd678c14d63ae1d4987dba327b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974658"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060634"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>瞭解 Azure 春季雲端的計量
 
@@ -87,7 +87,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 
 下表顯示可用的計量和詳細資料。
 
-### <a name="error"></a>Error
+### <a name="error"></a>錯誤
 >[!div class="mx-tdCol2BreakAll"]
 >| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|----|----|----|------------|
@@ -114,7 +114,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 >[!div class="mx-tdCol2BreakAll"]
 >| 名稱 | 彈簧傳動標準名稱 | 單位 | 詳細資料 |
 >|------|-----------------------------|------|---------|
->| CPU 使用量       | cpu-使用量      | 毫秒 | 進程使用 CPU 的時間量。 |
+>| CPU 使用量       | cpu-使用量      | 百分比      | 相對於所有系統 CPU 資源 [0-100] 的進程 CPU 使用量百分比。 |
 >| 工作集     | 工作集    | MB    | 進程使用的工作集量。 |
 >| GC 堆積大小    | gc-堆積-大小   | MB    | 垃圾收集行程所報告的總堆積大小。 |
 >| Gen 0 GC 計數  | gen-0-gc-計數 | 計數        | 每秒層代0垃圾收集數目。 |
@@ -175,7 +175,7 @@ Azure 春季 Cloud 提供這五個具有每分鐘更新計量的圖表：
 
 * [使用診斷設定來分析記錄和計量](./diagnostic-services.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [教學課程：使用警示和動作群組監視春季雲端資源](./spring-cloud-tutorial-alerts-action-groups.md)
 

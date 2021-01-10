@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 監視器跨資源查詢 Azure 資料總管
 description: 使用 Azure 監視器，在 Azure 監視器中的 Azure 資料總管、Log Analytics 工作區和傳統 Application Insights 應用程式之間執行交叉乘積查詢。
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: cb586d15e762f88620fe0c91152af41b3f607d74
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674424"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060447"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>使用 Azure 監視器跨資源查詢 Azure 資料總管
 Azure 監視器支援 Azure 資料總管、 [Application Insights](/azure/azure-monitor/app/app-insights-overview)與 [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)之間的跨服務查詢。 然後，您可以使用 Log Analytics/Application Insights 工具來查詢您的 Azure 資料總管叢集，並在跨服務查詢中加以參考。 本文說明如何進行跨服務查詢。
@@ -22,7 +22,7 @@ Azure 監視器支援 Azure 資料總管、 [Application Insights](/azure/azure-
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="顯示使用者、Azure 監視器、proxy 和 Azure 資料總管之間的查詢流程的圖表。":::
 
 >[!NOTE]
-> Azure 監視器的跨服務查詢處於私人預覽狀態。 Allowlisting 為必要項。 如有任何問題，請洽詢 [服務小組](mailto:ADXProxy@microsoft.com) 。
+> Azure 監視器的跨服務查詢處於公開預覽狀態。 如有任何問題，請洽詢 [服務小組](mailto:ADXProxy@microsoft.com) 。
 
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>跨查詢 Log Analytics 或 Application Insights 資源和 Azure 資料總管
 

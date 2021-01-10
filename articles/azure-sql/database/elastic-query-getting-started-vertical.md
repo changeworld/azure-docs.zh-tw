@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: dd8a30c60c81ef2761d5dc051d2dfeb300e1bac4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 90f89e72193c26b71859076b99c448a6e2d4c4c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792118"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060079"
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>開始使用跨資料庫查詢 (垂直資料分割) (預覽)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,13 +27,13 @@ Azure SQL Database 彈性資料庫查詢 (預覽) 可讓您執行使用單一連
 
 如需關於彈性資料庫查詢功能的詳細資訊，請參閱 [Azure SQL Database 彈性資料庫查詢概觀](elastic-query-overview.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 必須具備 ALTER ANY EXTERNAL DATA SOURCE 權限。 這個權限包含在 ALTER DATABASE 權限中。 需有 ALTER ANY EXTERNAL DATA SOURCE 權限，才能參考基礎資料來源。
 
 ## <a name="create-the-sample-databases"></a>建立範例資料庫
 
-首先，在相同或不同的伺服器中建立兩個資料庫、 **客戶** 和 **訂單** 。
+首先，在相同或不同的伺服器中建立兩個資料庫、 **客戶** 和 **訂單**。
 
 在 **Orders** 資料庫上執行下列查詢，以建立 **OrderInformation** 資料表及輸入範例資料。
 
@@ -77,6 +77,7 @@ INSERT INTO [dbo].[CustomerInformation] ([CustomerID], [CustomerName], [Company]
     SECRET = '<password>';  
     ```
 
+    「Master_key_password」是您選擇的強式密碼，用來加密連接認證。 
     "username" 和 "password" 應該是用來登入 Customers 資料庫的使用者名稱和密碼。
     目前不支援使用 Azure Active Directory 與彈性查詢進行驗證。
 
@@ -123,7 +124,7 @@ ON CustomerInformation.CustomerID = OrderInformation.CustomerID
 
 如需定價資訊，請參閱 [SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需彈性查詢的概觀，請參閱[彈性查詢概觀](elastic-query-overview.md)。
 * 如需垂直資料分割之資料的語法和範例查詢，請參閱[查詢垂直資料分割的資料](elastic-query-vertical-partitioning.md)

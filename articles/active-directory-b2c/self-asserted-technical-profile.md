@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 14195ad4638c724cf0c8dd46945a0da79ec0e4ec
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 08b08e3e799ff7b579889a62ecec70677a3cbce9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509695"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059053"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義自我判斷技術設定檔
 
@@ -197,7 +197,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 設定. operatingMode <sup>1</sup>| 否 | 對於登入頁面，此屬性會控制使用者名稱欄位的行為，例如輸入驗證和錯誤訊息。 預期的值：`Username` 或 `Email`。  |
 | AllowGenerationOfClaimsWithNullValues| 否| 允許產生具有 null 值的宣告。 例如，在案例中，使用者不會選取核取方塊。|
@@ -208,8 +208,8 @@ Azure Active Directory B2C (Azure AD B2C) 中的所有互動都必須提供自�
 | setting.showCancelButton | 否 | 顯示取消按鈕。 可能的值：`true` (預設) 或 `false` |
 | setting.showContinueButton | 否 | 顯示繼續按鈕。 可能的值：`true` (預設) 或 `false` |
 | 設定. showSignupLink <sup>2</sup>| 否 | 顯示註冊按鈕。 可能的值：`true` (預設) 或 `false` |
-| 設定. forgotPasswordLinkLocation <sup>2</sup>| 否| 顯示忘記的密碼連結。 可能的值： `AfterInput` (預設值) 連結會顯示在頁面底部，或 `None` 移除 [忘記密碼] 連結。|
-| 設定. enableRememberMe <sup>2</sup>| 否| 顯示 [ [讓我保持登入](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) ] 核取方塊。 可能的值為：`true` 或 `false` (預設)。 |
+| 設定. forgotPasswordLinkLocation <sup>2</sup>| 否| 顯示忘記的密碼連結。 可能的值： `AfterLabel` (預設值) 在標籤之後或在沒有標籤的情況下，于 [密碼輸入] 欄位之後顯示連結、在 [  `AfterInput` 密碼輸入] 欄位之後顯示連結、在 `AfterButtons` 按鈕之後顯示表單底部的連結，或 `None` 移除 [忘記密碼] 連結。|
+| 設定. enableRememberMe <sup>2</sup>| 否| 顯示 [ [讓我保持登入](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) ] 核取方塊。 可能的值： `true` 或 `false` (預設) 。 |
 | 設定. inputVerificationDelayTimeInMilliseconds <sup>3</sup>| 否| 藉由等待使用者停止輸入，然後驗證值，來改善使用者體驗。 預設值為2000毫秒。 |
 | IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含 [宣告解析](claim-resolver-overview.md) 。 可能的值為：`true` 或 `false` (預設)。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
 

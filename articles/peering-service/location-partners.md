@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 11/06/2020
 ms.author: derekol
-ms.openlocfilehash: c2c16e6b5be4e187a776f75454ecf9377da911e3
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: da6c53675378fcf9d395debe750bb97738763a09
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763167"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059512"
 ---
 # <a name="peering-service-partners"></a>對等互連服務合作夥伴
 
@@ -44,12 +44,14 @@ Microsoft 已與網際網路服務提供者合作 (Isp) 、網際網路交換服
 | [Singtel](https://www.singtel.com/business/campaign/singnet-cloud-connect-microsoft-direct) |亞洲 |
 | [NAP 非洲](https://www.napafrica.net/technical/microsoft-azure-peering-service/) |非洲|
 | [Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/wireline/ip-plus.html) |歐洲|
+| [CMC 網路](https://www.cmcnetworks.net/products/microsoft-azure-peering-services.html) |非洲|
+| [MainOne](https://www.mainone.net/connectivity-services/microsoft-azure-peering-service/) |非洲|
 
 > [!NOTE]
 >如需有關使用對等互連服務夥伴計畫登記的詳細資訊，請洽詢 peeringservice@microsoft.com 。
 >
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要深入瞭解對等互連服務，請參閱對 [等互連服務的總覽](about.md)。
 - 若要深入瞭解對等互連服務的常見問題，請參閱對 [等互連服務常見問題](faq.md)。

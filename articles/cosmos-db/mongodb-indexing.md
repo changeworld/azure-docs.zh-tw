@@ -1,22 +1,22 @@
 ---
-title: 管理 Azure Cosmos DB 的 MongoDB API 中的編制索引
+title: 管理適用於 MongoDB 的 Azure Cosmos DB API 中的索引
 description: 本文概述如何使用 Azure Cosmos DB 適用于 MongoDB 的 API 來 Azure Cosmos DB 索引功能
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/08/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 34caca47746814046a894494ec43d9b5c977389a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369285"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060062"
 ---
-# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的 MongoDB API 中的編制索引
+# <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理適用於 MongoDB 的 Azure Cosmos DB API 中的索引
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Azure Cosmos DB 適用于 MongoDB 的 API 會利用 Azure Cosmos DB 的核心索引管理功能。 本文著重于如何使用 Azure Cosmos DB 適用于 MongoDB 的 API 來新增索引。 您也可以閱讀在與所有 Api 相關的 [Azure Cosmos DB 中建立索引的總覽](index-overview.md) 。
@@ -29,6 +29,16 @@ Azure Cosmos DB 適用于 MongoDB 伺服器版本3.6 的 API 會自動為無法�
 
 若要將排序套用至查詢，您必須在排序作業中使用的欄位上建立索引。
 
+### <a name="editing-indexing-policy"></a>編輯編制索引原則
+
+建議您在 Azure 入口網站內的資料總管中編輯您的編制索引原則。
+. 您可以從資料總管中的編制索引原則編輯器新增單一欄位和萬用字元索引：
+
+:::image type="content" source="./media/mongodb-indexing/indexing-policy-editor.png" alt-text="編制索引原則編輯器":::
+
+> [!NOTE]
+> 您無法使用資料總管中的編制索引原則編輯器來建立複合索引。
+
 ## <a name="index-types"></a>索引類型
 
 ### <a name="single-field"></a>單一欄位
@@ -36,6 +46,10 @@ Azure Cosmos DB 適用于 MongoDB 伺服器版本3.6 的 API 會自動為無法�
 您可以在任何單一欄位上建立索引。 單一欄位索引的排序次序並不重要。 下列命令會在欄位上建立索引 `name` ：
 
 `db.coll.createIndex({name:1})`
+
+您可以在 Azure 入口網站中建立相同的單一欄位索引 `name` ：
+
+:::image type="content" source="./media/mongodb-indexing/add-index.png" alt-text="在編制索引原則編輯器中加入名稱索引":::
 
 其中一個查詢會使用多個單一欄位索引（如果有的話）。 您最多可以為每個容器建立500個單一欄位索引。
 
@@ -54,7 +68,7 @@ Azure Cosmos DB 的 MongoDB API 支援使用3.6 線路通訊協定版本之帳�
 
 `db.coll.find().sort({name:1,age:1})`
 
-您也可以使用上述的複合索引，在所有欄位上以相反的排序次序來有效率地排序查詢。 以下是範例：
+您也可以使用上述的複合索引，在所有欄位上以相反的排序次序來有效率地排序查詢。 以下為範例：
 
 `db.coll.find().sort({name:-1,age:-1})`
 
@@ -122,7 +136,7 @@ Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對�
 
 `db.coll.createIndex({"children.$**" : 1})`
 
-**與 MongoDB 不同的是，萬用字元索引可以支援查詢述詞中的多個欄位** 。 如果您使用一個單一萬用字元索引，而不是為每個屬性建立個別的索引，則查詢效能不會有差異。
+**與 MongoDB 不同的是，萬用字元索引可以支援查詢述詞中的多個欄位**。 如果您使用一個單一萬用字元索引，而不是為每個屬性建立個別的索引，則查詢效能不會有差異。
 
 您可以使用萬用字元語法來建立下列索引類型：
 
@@ -134,6 +148,10 @@ Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對�
 以下是您可以在所有欄位上建立萬用字元索引的方法：
 
 `db.coll.createIndex( { "$**" : 1 } )`
+
+您也可以使用 Azure 入口網站中的資料總管來建立萬用字元索引：
+
+:::image type="content" source="./media/mongodb-indexing/add-wildcard-index.png" alt-text="在編制索引原則編輯器中新增萬用字元索引":::
 
 > [!NOTE]
 > 如果您只是開始開發， **強烈** 建議您從所有欄位上的萬用字元索引開始著手。 這可以簡化開發工作，讓查詢更容易。
@@ -148,7 +166,7 @@ Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對�
 - TTL
 - 唯一
 
-**不同于 mongodb** ，在 Azure Cosmos DB 適用于 MONGODB 的 API 中，您 **無法** 使用萬用字元索引來進行下列動作：
+**不同于 mongodb**，在 Azure Cosmos DB 適用于 MONGODB 的 API 中，您 **無法** 使用萬用字元索引來進行下列動作：
 
 - 建立包含多個特定欄位的萬用字元索引
 
@@ -174,7 +192,7 @@ Azure Cosmos DB 適用于 MongoDB 的 API 目前不支援文字索引。 針對�
     }
 )`
 
-或者，您可以建立多個萬用字元索引。
+但是，您可以建立多個萬用字元索引。
 
 ## <a name="index-properties"></a>索引屬性
 
@@ -410,7 +428,7 @@ globaldb:PRIMARY> db.coll.createIndex({"_ts":1}, {expireAfterSeconds: 10})
 
 如果您想要建立萬用字元索引，請 [升級至3.6 版](mongodb-version-upgrade.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [Azure Cosmos DB 中的編製索引](../cosmos-db/index-policy.md)
 * [利用存留時間讓 Azure Cosmos DB 中的資料自動過期](../cosmos-db/time-to-live.md)

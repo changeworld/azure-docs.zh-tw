@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347484"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059376"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中新增已連線的組織
 
@@ -136,8 +136,6 @@ Azure AD 目錄或網域驗證的使用者取決於驗證類型。 已連線組�
 
 1. 在已連線的組織的 [總覽] 窗格中，選取 [ **刪除** ] 以刪除它。
 
-    目前，只有在沒有任何已連線的使用者時，您才能刪除已連線的組織。
-
     ![[已連線的組織刪除] 按鈕](./media/entitlement-management-organization/organization-delete.png)
 
 ## <a name="managing-a-connected-organization-programmatically"></a>以程式設計方式管理已連線的組織
@@ -161,7 +159,7 @@ Azure AD 目錄或網域驗證的使用者取決於驗證類型。 已連線組�
 > [!NOTE]
 > 在推出這項新功能的過程中，在09/09/20 之前建立的所有已連線組織都被視為 **已設定**。 如果您的存取套件允許來自任何組織的使用者註冊，您應該檢查在該日期之前建立的已連線組織清單，以確保未依 **設定** miscategorized。  系統管理員可以適當地更新 **狀態** 屬性。 如需指引，請參閱 [更新已連線的組織](#update-a-connected-organization)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [管控外部使用者的存取](./entitlement-management-external-users.md)
 - [針對不在您目錄中的使用者管理存取權](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

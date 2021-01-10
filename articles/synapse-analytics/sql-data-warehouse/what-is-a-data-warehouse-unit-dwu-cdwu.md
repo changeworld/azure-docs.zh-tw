@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3d9d5d4009ad40eecee26271b726c6a3e9aeb8b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 271922a4181f4be3ed6900b3f81cefaf5ed21191
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459190"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060277"
 ---
 # <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>適用于專用 SQL 集區的資料倉儲單位 (Dwu)  (先前為 SQL DW) Azure Synapse Analytics
 
@@ -129,7 +129,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 2. 在 [調整] 下方，將滑桿向左或右移動來變更 DWU 設定。
 
-3. 按一下 [檔案] 。 確認訊息隨即出現。 按一下 [是] 以確認或 [否] 以取消。
+3. 按一下 [檔案]  。 確認訊息隨即出現。 按一下 [是] 以確認或 [否] 以取消。
 
 #### <a name="powershell"></a>PowerShell
 
@@ -168,7 +168,7 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000
+        "requestedServiceObjectiveName": "DW1000c"
     }
 }
 ```

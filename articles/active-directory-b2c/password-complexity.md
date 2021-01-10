@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: f9748d0d278375029fc9875f5b36674d19ad871a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614246"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058968"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>設定 Azure Active Directory B2C 中的密碼複雜度需求
 
@@ -26,7 +26,7 @@ ms.locfileid: "97614246"
 
 Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求，是在建立帳戶時由使用者所提供的。 根據預設，Azure AD B2C 是使用 **強式** 密碼。 Azure AD B2C 也支援組態選項，可控制客戶可以使用的密碼複雜度。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -76,7 +76,7 @@ Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求�
 可讓您控制密碼的長度要求。
 
 - **最小長度** 必須至少為 4。
-- **最大長度** 必須大於或等於最小長度，且最多可以有 64 個字元。
+- **最大長度** 必須大於或等於最小長度，最多可以是256個字元。
 
 ### <a name="character-classes"></a>字元類別
 
@@ -216,7 +216,7 @@ Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求�
 3. 按一下 [立即執行] 。
 4. 選取 [立即註冊]，輸入電子郵件地址，然後輸入新密碼。 系統會顯示有關密碼限制的指引。 完成使用者資訊輸入，然後按一下 [建立]。 您應該會看到傳回的權杖內容。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解如何 [在 Azure Active Directory B2C 中設定密碼變更](add-password-change-policy.md)。
 - 深入瞭解 IEF 參考中的述 [詞和](predicates.md) [PredicateValidations](predicates.md#predicatevalidations) 元素。

@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: dd24c4f20fa3a56d25ef142947268b2d2b75474a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029595"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060005"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>虛擬網路隔離和隱私權總覽
 
@@ -28,7 +28,7 @@ ms.locfileid: "97029595"
 
 **1. VNet 總覽**  >  [2。保護工作區](how-to-secure-workspace-vnet.md)  >  [3。保護定型環境](how-to-secure-training-vnet.md)  >  [4。保護推斷環境](how-to-secure-inferencing-vnet.md)  >  [5。啟用 studio 功能](how-to-enable-studio-virtual-network.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本文假設您已熟悉下列主題：
 + [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)
@@ -152,7 +152,8 @@ ms.locfileid: "97029595"
 若要在 VNet 內啟用完整 studio 功能，請參閱 [在虛擬網路中使用 Azure Machine Learning studio](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio)。 Studio 支援使用服務端點或私人端點的儲存體帳戶。
 
 ### <a name="limitations"></a>限制
-- [ML 輔助資料標記](how-to-create-labeling-projects.md#use-ml-assisted-labeling) 不支援在虛擬網路後方保護的預設儲存體帳戶。 您必須使用非預設儲存體帳戶進行 ML 輔助資料標記。 請注意，非預設儲存體帳戶可以在虛擬網路後方受到保護。 
+
+[ML 輔助資料標記](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling) 不支援在虛擬網路後方保護的預設儲存體帳戶。 您必須使用非預設儲存體帳戶進行 ML 輔助資料標記。 請注意，非預設儲存體帳戶可以在虛擬網路後方受到保護。 
 
 ## <a name="configure-firewall-settings"></a>設定防火牆設定
 
@@ -166,7 +167,7 @@ ms.locfileid: "97029595"
 
 如需有關所需功能變數名稱和 IP 位址的詳細資訊，請參閱 [如何使用工作區與自訂 DNS 伺服器](how-to-custom-dns.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 本文是四部分虛擬網路系列的第一篇。 請參閱文章的其餘部分，以瞭解如何保護虛擬網路：
 

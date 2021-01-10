@@ -6,18 +6,15 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/08/2021
-ms.openlocfilehash: d39bc35d1edcbcfef4c7774259112ec5144efa15
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0c75f9938b3bc4fa8a2e650f77a3708e91180fea
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044334"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059214"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB 無伺服器 (預覽) 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
-
-> [!IMPORTANT]
-> Azure Cosmos DB 無伺服器目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Cosmos DB 無伺服器，可讓您以耗用量方式使用您的 Azure Cosmos 帳戶，您只需支付資料庫作業所耗用的要求單位，以及資料所耗用的儲存體。 無伺服器容器每秒可提供數千個要求，且不需要最低費用，也不需要任何容量規劃。
 

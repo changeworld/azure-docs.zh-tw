@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 9763835142e66bbbce51cd5c863dff87f261c270
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763939"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060155"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 上節點應用程式的最佳作法和疑難排解指南
 
@@ -245,9 +245,8 @@ http.createServer(function (req, res) {
 造成應用程式啟動時間過長的常見原因是 node\_modules 中有大量檔案。 應用程式會嘗試在啟動時載入大部分檔案。 根據預設，因為您的檔案會儲存在 Azure App Service 的網路共用上，所以載入多個檔案可能需要一些時間。
 讓處理程序速度變快的解決方式如下︰
 
-1. 藉由使用 npm3 來安裝您的模組，確定您有扁平相依性結構，而且沒有重複的相依性。
-2. 試著延遲載入您的 node\_modules，而不要在應用程式啟動時載入所有的模組。 若要延遲載入模組，應在函數中確實需要模組時，於第一次執行模組程式碼之前執行 require('module') 呼叫。
-3. Azure App Service 會提供稱為本機快取的功能。 這項功能會將您的內容從網路共用複製到 VM 上的本機磁碟。 因為這些檔案都在本機，node\_modules 的載入時間快很多。
+1. 試著延遲載入您的 node\_modules，而不要在應用程式啟動時載入所有的模組。 若要延遲載入模組，應在函數中確實需要模組時，於第一次執行模組程式碼之前執行 require('module') 呼叫。
+2. Azure App Service 會提供稱為本機快取的功能。 這項功能會將您的內容從網路共用複製到 VM 上的本機磁碟。 因為這些檔案都在本機，node\_modules 的載入時間快很多。
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE http 狀態和子狀態
 

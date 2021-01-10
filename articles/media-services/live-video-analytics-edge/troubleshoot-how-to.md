@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: 31cf89cb66dfbc404d65f8fc09b96c03e1be2f8f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401289"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060226"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>針對 IoT Edge 上的即時影片分析進行疑難排解
 
@@ -65,6 +65,8 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
     * 406 - IoT Edge 裝置已離線或無法傳送狀態報表。
     * 500 - IoT Edge 執行階段發生錯誤。
 
+    > [!TIP]
+    > 如果您在環境中執行 Azure IoT Edge 模組時遇到問題，請 **[Azure IoT Edge 標準的診斷步驟](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** ，作為疑難排解和診斷的指南。
 ### <a name="post-deployment-direct-method-error-code"></a>部署後：直接方法錯誤碼
 1. 如果您收到狀態 `501 code` ，請檢查以確定直接方法名稱正確無誤。 如果方法名稱和要求承載都是正確的，您應該會得到結果，以及成功碼 = 200。 
 1. 如果要求承載不正確，您將會取得狀態 `400 code` 和回應承載，以指出可協助您在直接方法呼叫中診斷問題的錯誤碼和訊息。
@@ -93,6 +95,8 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
 * [即時影片分析或任何其他自訂 IoT Edge 模組無法將訊息傳送至 Edge 中樞，並出現404錯誤](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error)。
 * 已[成功部署 IoT Edge 模組，然後從裝置中消失](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device)。
 
+    > [!TIP]
+    > 如果您在環境中執行 Azure IoT Edge 模組時遇到問題，請 **[Azure IoT Edge 標準的診斷步驟](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** ，作為疑難排解和診斷的指南。
 ### <a name="live-video-analytics-working-with-external-modules"></a>使用外部模組的即時影片分析
 
 透過 media graph 擴充處理器的即時影片分析可以擴充媒體圖形，以使用 HTTP 或 gRPC 通訊協定從其他 IoT Edge 模組傳送和接收資料。 在 [特定範例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)中，此媒體圖形可將影片框架作為影像傳送至外部推斷模組（例如 Yolo v3），並使用 HTTP 通訊協定接收以 JSON 為基礎的分析結果。 在這種拓撲中，事件的目的地大多是 IoT 中樞。 在您沒有在中樞上看到推斷事件的情況下，請檢查下列各項：
@@ -310,6 +314,6 @@ Live Video Analytics 不會監視或提供任何硬體資源監視。 開發人�
 1. 然後，當您擁有所需的影像框架數目時，就可以執行處理邏輯。
 1. 準備好時，請將推斷結果回復為即時影片分析。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [教學課程：以事件為基礎的影片錄製到雲端並從雲端播放](event-based-video-recording-tutorial.md)

@@ -1,15 +1,15 @@
 ---
 title: 在 Azure Kubernetes Service 上部署 Hyperledger Fabric 聯盟
 description: 如何在 Azure Kubernetes Service 上部署和設定 Hyperledger Fabric 聯盟網路
-ms.date: 08/06/2020
+ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651563"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060311"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>在 Azure Kubernetes Service 上部署 Hyperledger Fabric 聯盟
 
@@ -42,18 +42,18 @@ ms.locfileid: "89651563"
 
 - **對等節點**：主要裝載總帳和智慧型合約的節點，這是網路的基本元素。
 
-- 網狀**架構 CA**： Hyperledger FABRIC (CA) 的憑證授權單位單位。 網狀架構 CA 可讓您初始化和啟動裝載憑證授權單位單位的伺服器進程。 它可讓您管理身分識別及憑證。 每個部署為範本一部分的 AKS 叢集預設會有網狀架構 CA pod。
+- 網狀 **架構 CA**： Hyperledger FABRIC (CA) 的憑證授權單位單位。 網狀架構 CA 可讓您初始化和啟動裝載憑證授權單位單位的伺服器進程。 它可讓您管理身分識別及憑證。 每個部署為範本一部分的 AKS 叢集預設會有網狀架構 CA pod。
 
 - **CouchDB 或 LevelDB**：對等節點的全球狀態資料庫。 LevelDB 是內嵌于對等節點中的預設狀態資料庫。 它會將鏈碼的資料儲存為簡單的索引鍵/值組，並僅支援索引鍵、索引鍵範圍和複合索引鍵查詢。 CouchDB 是選擇性的替代狀態資料庫，可在鏈碼資料值模型化為 JSON 時支援豐富的查詢。
 
 部署上的範本會在您的訂用帳戶中加速各種 Azure 資源。 已部署的 Azure 資源如下：
 
-- **AKS**叢集：根據客戶提供的輸入參數設定的 Azure Kubernetes Service 叢集。 AKS 叢集有針對執行 Hyperledger 網狀架構網路元件而設定的各種 pod。 建立的 pod 如下：
+- **AKS** 叢集：根據客戶提供的輸入參數設定的 Azure Kubernetes Service 叢集。 AKS 叢集有針對執行 Hyperledger 網狀架構網路元件而設定的各種 pod。 建立的 pod 如下：
 
-  - 網狀**架構工具**：負責設定 Hyperledger Fabric 元件的工具。
-  - **排序者/對等**Pod： Hyperledger 網狀架構網路的節點。
+  - 網狀 **架構工具**：負責設定 Hyperledger Fabric 元件的工具。
+  - **排序者/對等** Pod： Hyperledger 網狀架構網路的節點。
   - **Proxy**： NGNIX Proxy pod，用戶端應用程式可以透過此 pod 來與 AKS 叢集通訊。
-  - 網狀架構**ca**：執行網狀架構 ca 的 pod。
+  - 網狀架構 **ca**：執行網狀架構 ca 的 pod。
 - **于 postgresql**：維護網狀架構 CA 身分識別的資料庫實例。
 
 - **Key vault**：部署 Azure Key Vault 服務的實例，用來儲存網狀架構 CA 認證和客戶提供的根憑證。 保存庫會在範本部署重試時使用，以處理範本的機制。
@@ -66,14 +66,14 @@ ms.locfileid: "89651563"
 
 若要開始部署 Hyperledger Fabric 網路元件，請移至 [Azure 入口網站](https://portal.azure.com)。
 
-1. 選取 [**建立資源**]  >  **區塊鏈**，然後**在 Azure Kubernetes Service (preview) 上搜尋 Hyperledger Fabric **。
+1. 選取 [**建立資源**]  >  **區塊鏈**，然後 **在 Azure Kubernetes Service (preview) 上搜尋 Hyperledger Fabric**。
 
 2. 在 [ **基本** ] 索引標籤上輸入專案詳細資料。
 
     ![顯示 [基本] 索引標籤的螢幕擷取畫面。](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-basics.png)
 
 3. 輸入下列詳細資料：
-    - **訂**用帳戶：選擇您想要部署 Hyperledger Fabric 網路元件的訂用帳戶名稱。
+    - **訂** 用帳戶：選擇您想要部署 Hyperledger Fabric 網路元件的訂用帳戶名稱。
     - **資源群組**：建立新的資源群組，或選擇現有的空白資源群組。 資源群組會保留所有部署為範本一部分的資源。
     - **區域**：選擇您要為 Hyperledger Fabric 元件部署 Azure Kubernetes Service 叢集的 Azure 區域。 範本適用于 AKS 可使用的所有區域。 選擇您的訂用帳戶未達到虛擬機器 (VM) 配額限制的區域。
     - **資源首碼**：輸入用來命名已部署之資源的前置詞。 它必須少於6個字元，且字元的組合必須同時包含數位和字母。
@@ -83,16 +83,16 @@ ms.locfileid: "89651563"
 
 5. 輸入下列詳細資料：
     - **組織名稱**：輸入各種資料平面作業所需的 Hyperledger Fabric 組織名稱。 每個部署的組織名稱都必須是唯一的。
-    - 網狀**架構網路元件**：根據您要設定的區塊鏈網路元件，選擇**訂購服務**或**對等節點**。
+    - 網狀 **架構網路元件**：根據您要設定的區塊鏈網路元件，選擇 **訂購服務** 或 **對等節點**。
     - **節點數目**：以下是兩種類型的節點：
         - **訂購服務**：選取要為網路提供容錯的節點數目。 支援的 order 節點計數為3、5和7。
         - **對等節點**：您可以根據您的需求選擇1到10個節點。
-    - **對等節點世界狀態資料庫**：選擇 LevelDB 和 CouchDB。 當您在 [網狀**架構網路元件**] 下拉式清單中選擇 [**對等節點**] 時，會顯示此欄位。
-    - 網狀**架構 ca 使用者名稱**：輸入用於網狀架構 ca 驗證的使用者名稱。
-    - 網狀**架構 ca 密碼**：輸入 fabric ca 驗證的密碼。
+    - **對等節點世界狀態資料庫**：選擇 LevelDB 和 CouchDB。 當您在 [網狀 **架構網路元件**] 下拉式清單中選擇 [**對等節點**] 時，會顯示此欄位。
+    - 網狀 **架構 ca 使用者名稱**：輸入用於網狀架構 ca 驗證的使用者名稱。
+    - 網狀 **架構 ca 密碼**：輸入 fabric ca 驗證的密碼。
     - **確認密碼**：確認網狀架構 CA 密碼。
     - **憑證**：如果您想要使用自己的根憑證來初始化網狀架構 ca，請選擇 [ **上傳網狀架構 ca 的根憑證** ] 選項。 否則，網狀架構 CA 預設會建立自我簽署憑證。
-    - 跟**證書**：上傳根憑證 (公開金鑰) ，必須將網狀架構 CA 初始化。 支援 pem 格式的憑證。 憑證必須是有效的，而且必須是 UTC 時區。
+    - 跟 **證書**：上傳根憑證 (公開金鑰) ，必須將網狀架構 CA 初始化。 支援 pem 格式的憑證。 憑證必須是有效的，而且必須是 UTC 時區。
     - **根憑證私密金鑰**：上傳根憑證的私密金鑰。 如果您有包含合併的公開和私密金鑰的 pem 憑證，也請在此上傳。
 
 
@@ -106,7 +106,7 @@ ms.locfileid: "89651563"
     - **Dns 首碼**：輸入 AKS 叢集的網域名稱系統 (DNS) 名稱首碼。 當您在建立叢集之後管理容器時，您將會使用 DNS 連線到 Kubernetes API。
     - **節點大小**：針對 Kubernetes 節點的大小，您可以從 Azure 上提供的 VM 庫存單位 (sku) 清單中選擇。 為了達到最佳效能，我們建議標準 DS3 v2。
     - **節點計數**：輸入要在叢集中部署的 Kubernetes 節點數目。 建議您讓此節點計數保持等於或大於 [網狀 **架構設定** ] 索引標籤上指定的 Hyperledger Fabric 節點數目。
-    - **服務主體用戶端識別碼**：輸入現有服務主體的用戶端識別碼，或建立一個新的服務主體。 AKS authentication 需要服務主體。 請參閱 [建立服務主體的步驟](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)。
+    - **服務主體用戶端識別碼**：輸入現有服務主體的用戶端識別碼，或建立一個新的服務主體。 AKS authentication 需要服務主體。 請參閱 [建立服務主體的步驟](/powershell/azure/create-azure-service-principal-azureps#create-a-service-principal)。
     - **服務主體用戶端密碼**：輸入服務主體的用戶端識別碼中提供的服務主體用戶端密碼。
     - **確認用戶端密碼**：確認服務主體的用戶端密碼。
     - **啟用容器監視**：選擇啟用 AKS 監視，可讓 AKS 記錄推送至指定的 Log Analytics 工作區。
@@ -393,23 +393,35 @@ CHANNEL_NAME=<channelName>
 
 ## <a name="troubleshoot"></a>疑難排解
 
-執行下列命令來尋找您範本部署的版本。
+### <a name="find-deployed-version"></a>尋找部署的版本
 
-根據已部署範本的資源群組來設定環境變數。
-
-```bash
-
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
-AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
-AKS_CLUSTER_NAME=<AKSClusterName>
-```
-執行下列命令以列印範本版本。
+執行下列命令來尋找您範本部署的版本。 根據已部署範本的資源群組來設定環境變數。
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
+```
 
+### <a name="patch-previous-version"></a>修補先前的版本
+
+如果您遇到在 v 3.0.0 以下範本版本的任何部署上執行鏈碼的問題，請遵循下列步驟，利用修正程式修補您的對等節點。
+
+下載對等部署腳本。
+
+```bash
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/scripts/patchPeerDeployment.sh -o patchPeerDeployment.sh; chmod 777 patchPeerDeployment.sh
+```
+
+使用下列命令來執行腳本，以取代您對等的參數。
+
+```bash
+source patchPeerDeployment.sh <peerOrgSubscription> <peerOrgResourceGroup> <peerOrgAKSClusterName>
+```
+
+等候所有的對等節點進行修補。 您一律可以使用下列命令，在不同的 shell 實例中檢查對等節點的狀態。
+
+```bash
+kubectl get pods -n hlf
 ```
 
 ## <a name="support-and-feedback"></a>支援與意見反應

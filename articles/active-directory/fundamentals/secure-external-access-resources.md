@@ -1,5 +1,5 @@
 ---
-title: 保護 Azure Active Directory 中資源的外部存取
+title: 保護 Azure Active Directory 中的外部協同作業
 description: 保護內部資源外部存取的架構設計人員和 IT 系統管理員指南
 services: active-directory
 author: BarbaraSelden
@@ -13,14 +13,14 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39300c887245a99dce2913661f6492c85a1e6722
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7f09d2050617cbda539eee9fcda1ecfb204a015a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743897"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059274"
 ---
-# <a name="securing-external-access-to-resources"></a>保護資源的外部存取
+# <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>保護 Azure Active Directory 和 Microsoft 365 的外部協同作業
 
 與外部夥伴進行安全共同作業，可確保適當的外部夥伴可適當地存取內部資源。 透過整體治理方法，您可以降低安全性風險、符合合規性目標，並確保您知道誰有權存取。
 
@@ -38,12 +38,12 @@ Microsoft 提供完整的工具套件，以安全地進行外部存取。  Azure
 
 本檔集的設計目的是要讓您從臨機操作或鬆散管理的外部共同作業移至更安全的狀態。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱下列文章，以保護對資源的外部存取。 建議您依列出的循序執行動作。
 
 
-1. [判斷您所需的外部存取安全性狀態](1-secure-access-posture.md)
+1. [判斷外部存取的安全性狀態](1-secure-access-posture.md)
 
 2. [探索您目前的狀態](2-secure-access-current-state.md)
 
