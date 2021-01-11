@@ -13,12 +13,12 @@ ms.date: 05/29/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5eb30f7dcf4b459b0af0bd8de965971fbbe44863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c96d161e55261af1bbe04eae6ead1d245158d02
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85477646"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064822"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>使用 MSAL.js 以無訊息方式取得和更新權杖時，請避免頁面重載
 適用于 JavaScript 的 Microsoft 驗證程式庫 ( # A0) 使用隱藏 `iframe` 的元素，在背景中以無訊息方式取得和更新權杖。 Azure AD 會將權杖傳回權杖要求中所指定的註冊 redirect_uri (預設是應用程式的根頁面) 。 因為回應是302，所以會產生對應至中所載入之的 HTML `redirect_uri` `iframe` 。 應用程式通常 `redirect_uri` 是根頁面，而這會導致其重載。
@@ -145,5 +145,5 @@ export class MsalComponent {
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入瞭解如何使用 MSAL.js [建立單一頁面應用程式 (SPA) ](scenario-spa-overview.md) 。

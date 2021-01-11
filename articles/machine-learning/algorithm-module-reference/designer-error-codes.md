@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b917e3fc93c59de85c5236c18e31d7bbc9d891f0
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753904"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065468"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>設計工具的例外狀況和錯誤碼
 
@@ -1532,3 +1532,8 @@ For general information about how the Matchbox recommendation algorithm works, a
 |程式庫例外狀況。|
 |程式庫例外狀況：{exception}。|
 |未知的程式庫例外狀況：{exception}。 {customer_support_guidance}。|
+
+
+## <a name="execute-python-script-module"></a>執行 Python 腳本模組
+
+在 **azureml_main** 的 [**執行 Python 腳本] 模組** **70_driver_logs** 中搜尋，並找出發生錯誤的行。 例如，"File"/tmp/tmp01_ID/user_script. .py "，第17行（在 azureml_main 中）表示您的 python 腳本的17行發生錯誤。

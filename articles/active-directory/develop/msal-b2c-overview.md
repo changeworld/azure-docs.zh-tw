@@ -13,16 +13,16 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107867"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063717"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>使用適用于 JavaScript 的 Microsoft 驗證程式庫來處理 Azure AD B2C
+# <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>使用適用于 JavaScript 的 Microsoft 驗證程式庫來處理 Azure AD B2C
 
-[適用于 javascript 的 Microsoft 驗證程式庫 ( # A0) ](https://github.com/AzureAD/microsoft-authentication-library-for-js) 可讓 JavaScript 開發人員使用 [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C) ，以社交和本機身分識別驗證使用者。
+[適用于 javascript 的 Microsoft 驗證程式庫 ( # A0) ](https://github.com/AzureAD/microsoft-authentication-library-for-js)可讓 JavaScript 開發人員使用[Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C) ，以社交和本機身分識別驗證使用者。
 
 藉由使用 Azure AD B2C 作為身分識別管理服務，您可以自訂及控制客戶在使用您的應用程式時，註冊、登入及管理其設定檔的方式。 Azure AD B2C 也可讓您為應用程式在驗證程式期間所顯示的 UI 提供品牌和自訂。
 
@@ -32,7 +32,7 @@ ms.locfileid: "97107867"
 - 支援在單一頁面應用程式中 (SPA) 登入，並呼叫受保護 *的* web API
 - 啟用密碼重設支援
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 如果您還沒有這麼做，請建立 [Azure AD B2C 的租](../../active-directory-b2c/tutorial-create-tenant.md)使用者。
 

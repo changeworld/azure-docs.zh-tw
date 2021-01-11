@@ -7,19 +7,19 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d4c099d29a843b4c354ffb218887dc7ffab51771
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987349"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065434"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>使用資料匯出 (舊版) 將 IoT 資料匯出至雲端目的地
 
 > [!Note]
 > 本文說明 IoT Central 中的舊版資料匯出功能。
 >
-> - 如需新的預覽資料匯出功能的相關資訊，請參閱 [使用資料匯出將 IoT 資料匯出至雲端目的地](./howto-export-data.md)。
+> - 如需最新資料匯出功能的相關資訊，請參閱 [使用資料匯出將 IoT 資料匯出至雲端目的地](./howto-export-data.md)。
 > - 若要瞭解預覽資料匯出與舊版資料匯出功能之間的差異，請參閱 [比較表](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export)。
 
 本文說明如何使用 Azure IoT Central 中的資料匯出功能。 這項功能可讓您將資料持續匯出至 **Azure 事件中樞**、 **Azure 服務匯流排** 或 **Azure Blob 儲存體** 實例。 資料匯出會使用 JSON 格式，而且可以包含遙測、裝置資訊和裝置範本資訊。 使用匯出的資料：
@@ -30,7 +30,7 @@ ms.locfileid: "94987349"
 > [!Note]
 > 當您開啟資料匯出時，您只會取得該時間的資料。 目前，資料匯出關閉時無法取出資料。 若要保留更多歷程記錄資料，請提早開啟資料匯出。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您必須是 IoT Central 應用程式的系統管理員，或具有資料匯出許可權。
 
@@ -748,7 +748,7 @@ ms.locfileid: "94987349"
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已瞭解如何將資料匯出至 Azure 事件中樞、Azure 服務匯流排和 Azure Blob 儲存體，請繼續進行下一個步驟：
 

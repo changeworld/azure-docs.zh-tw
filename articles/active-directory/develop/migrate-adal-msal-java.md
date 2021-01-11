@@ -14,18 +14,18 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 1cc94519525d5f87a14769b0109e425171265c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0183471db274bb7fca59ed8f24aa87b2bf997fb6
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258314"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063734"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>適用于 JAVA 的 ADAL 至 MSAL 遷移指南
 
 本文強調您需要進行的變更，以將使用 Azure Active Directory Authentication Library (ADAL) 的應用程式遷移至使用 Microsoft 驗證程式庫 (MSAL) 。
 
-適用于 JAVA 的 Microsoft 驗證程式庫 (MSAL4J) 和適用于 JAVA (ADAL4J) 的 Azure AD 驗證程式庫，可用來驗證 Azure AD 實體並要求 Azure AD 中的權杖。 到目前為止，大部分的開發人員都已使用 Azure AD 開發人員平臺 (v1.0) 使用 (ADAL) Azure AD 驗證程式庫來要求權杖，以驗證 Azure AD 身分識別 (公司和學校帳戶) 。
+適用于 JAVA 的 Microsoft 驗證程式庫 (MSAL4J) 和 JAVA (ADAL4J) 的 Azure AD 驗證程式庫都是用來驗證 Azure AD 實體和要求 Azure AD 中的權杖。 到目前為止，大部分的開發人員都已使用 Azure AD 開發人員平臺 (v1.0) 使用 (ADAL) Azure AD 驗證程式庫來要求權杖，以驗證 Azure AD 身分識別 (公司和學校帳戶) 。
 
 MSAL 提供下列優點：
 

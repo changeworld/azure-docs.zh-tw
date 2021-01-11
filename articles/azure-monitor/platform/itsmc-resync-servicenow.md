@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803794"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065170"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>針對 ITSM 連接器中的問題進行疑難排解
 
@@ -23,13 +23,38 @@ ITSM 可讓您選擇將警示傳送至外部票證系統，例如 ServiceNow。
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>將事件和變更要求資料視覺化並加以分析
 
-視您設定連線時的設定而定，ITSMC 最多可以同步處理120天的事件和變更要求資料。 本文的 [ [其他資訊] 區段](./itsmc-overview.md) 中會提供此資料的記錄檔記錄架構。
+視您設定連線時的設定而定，ITSMC 最多可以同步處理120天的事件和變更要求資料。 本文的 [ [其他資訊] 區段](./itsmc-synced-data.md) 中會提供此資料的記錄檔記錄架構。
 
 您可以使用 ITSMC 儀表板，將事件視覺化並變更要求資料：
 
 ![顯示 ITSMC 儀表板的螢幕擷取畫面。](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 儀表板也會提供連接器狀態的相關資訊，您可以使用此資訊作為起點來分析連接問題。
+
+### <a name="error-investigation-using-the-dashboard"></a>使用儀表板進行錯誤調查
+
+若要在儀表板中查看錯誤，您應該遵循後續步驟：
+
+1. 在 [ **所有資源**] 中，尋找 **>servicedesk (*您的工作區名稱*)**：
+
+   ![顯示 Azure 入口網站中最近資源的螢幕擷取畫面。](media/itsmc-definition/create-new-connection-from-resource.png)
+
+2. 在左窗格的 [ **工作區資料來源** ] 底下，選取 [ **ITSM 連接**：
+
+   ![顯示 [ITSM 連接] 功能表項目的螢幕擷取畫面。](media/itsmc-overview/add-new-itsm-connection.png)
+
+3. 在 [ **IT 服務管理連接器**] 左側方塊的 [**摘要**] 底下，選取 [ **View Summary**：
+
+    ![顯示視圖摘要的螢幕擷取畫面。](media/itsmc-resync-servicenow/dashboard-view-summary.png)
+
+4. 在左側 box **IT 服務管理連接器** 的 [**摘要**] 底下，按一下圖形：
+
+    ![顯示圖形點擊的螢幕擷取畫面。](media/itsmc-resync-servicenow/dashboard-graph-click.png)
+
+5. 使用此儀表板，您將能夠檢查連接器中的狀態和錯誤。
+    ![顯示連接器狀態的螢幕擷取畫面。](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="service-map"></a>服務對應
 
 您也可以在服務對應中將與受影響電腦同步的事件視覺化。
 

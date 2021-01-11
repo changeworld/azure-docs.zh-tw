@@ -1,7 +1,7 @@
 ---
 title: Xamarin iOS 考慮 (MSAL.NET) |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解搭配使用 Xamarin iOS 與適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 的考慮。
+description: 瞭解搭配適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 使用 Xamarin iOS 的考慮。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 70ab4a151fe73b59663fd8fa16170b2e507c2511
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62eb4ab9eb6e4b0e7be0f7aadae1173950d21615
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258054"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064482"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>搭配使用 Xamarin iOS 與 MSAL.NET 的考慮
 
@@ -131,7 +131,7 @@ Apple 的 [UIApplicationOpenURLOptionsSourceApplicationKey](https://developer.ap
 ### <a name="additional-requirements"></a>其他需求
 
 - 使用最新的 MSAL 程式庫時，請確定裝置上已安裝 **Microsoft Authenticator 版本 6.3.19 +** 。
-- 更新為 MSAL.NET 4.4.0 + 時，請在 plist 檔案中更新您的， `LSApplicationQueriesSchemes` 然後*Info.plist*新增 `msauthv3` ：
+- 更新為 MSAL.NET 4.4.0 + 時，請在 plist 檔案中更新您的， `LSApplicationQueriesSchemes` 然後新增 `msauthv3` ：
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>
@@ -151,7 +151,7 @@ Apple 的 [UIApplicationOpenURLOptionsSourceApplicationKey](https://developer.ap
 
 如需 Xamarin iOS 屬性的相關資訊，請參閱下列範例 README.md 檔的 [iOS 特定考慮](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/master/1-Basic#ios-specific-considerations) 段落：
 
-範例 | 平台 | 描述
+範例 | 平台 | 說明
 ------ | -------- | -----------
 [https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、通用 Windows 平臺 (UWP)  | 簡單的 Xamarin Forms 應用程式，示範如何使用 MSAL 透過 Azure AD 2.0 端點驗證 Microsoft 個人帳戶和 Azure AD。 應用程式也會顯示如何使用產生的權杖來存取 Microsoft Graph。
 

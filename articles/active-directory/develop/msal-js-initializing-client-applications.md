@@ -13,22 +13,22 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 6b5093c5a1a45aed3493fabd7a362b0579998171
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e12beafc81cbc41ea070fbdda1d68990f6f3fcda
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343581"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063683"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>使用 MSAL.js 初始化用戶端應用程式
 
-本文說明如何使用使用者代理程式應用程式的實例，將適用于 JavaScript ( # A0) 的 Microsoft 驗證程式庫初始化。
+本文說明如何使用使用者代理程式應用程式的實例，將適用于 JavaScript 的 Microsoft 驗證程式庫 ( # A0) 初始化。
 
 使用者代理程式應用程式是一種公開用戶端應用程式，其中用戶端程式代碼會在使用者代理程式（例如網頁瀏覽器）中執行。 這類用戶端不會儲存秘密，因為瀏覽器內容可供公開存取。
 
 若要深入瞭解用戶端應用程式類型和應用程式設定選項，請參閱 [MSAL 中的公用和機密用戶端應用](msal-client-applications.md)程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在初始化應用程式之前，您必須先向 [Azure 入口網站註冊它](scenario-spa-app-registration.md)，並在您的應用程式與 Microsoft 身分識別平臺之間建立信任關係。
 

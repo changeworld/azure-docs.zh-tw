@@ -1,7 +1,7 @@
 ---
 title: 'Azure AD FS 支援 (MSAL Python) '
 titleSuffix: Microsoft identity platform
-description: 瞭解適用于 Python 的 Microsoft 驗證程式庫中的 Active Directory 同盟服務 (AD FS) 支援
+description: 瞭解適用于 Python 的 Microsoft 驗證程式庫中 Active Directory 同盟服務 (AD FS) 支援
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ad874a4b117b7a7ccecea0e1800ca18c6fce8aaa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 161bcb2a4276b39765361e97a4516812c26ef580
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846202"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064465"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>適用于 Python 的 MSAL Active Directory 同盟服務支援
 

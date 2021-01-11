@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 22b3ea9eb0e4c3379438b6c3fb58ccfb13b4ed32
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453591"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064788"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在國家雲端環境中使用 MSAL
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 部署在下列國家雲端中，包括全域�
 
 本指南示範如何登入公司和學校帳戶、取得存取權杖，以及在 [Azure Government 雲端](https://azure.microsoft.com/global-infrastructure/government/) 環境中呼叫 Microsoft Graph API。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您符合這些必要條件。
 

@@ -1,7 +1,7 @@
 ---
 title: Xamarin Android 程式碼設定和疑難排解 (MSAL.NET) |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解搭配使用 Xamarin Android 與適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 的考慮。
+description: 瞭解搭配適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 使用 Xamarin Android 的考慮。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 08/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34f2b146dda6e739f977c4894b5ec333c79d74d4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995177"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063428"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Xamarin Android with MSAL.NET 的設定需求和疑難排解秘訣
 
@@ -160,7 +160,7 @@ var authResult = AcquireTokenInteractive(scopes)
 
 如需詳細資訊，請參閱 [使用 Microsoft 身分識別平臺的 Xamarin 行動應用程式](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)範例。 下表摘要說明讀我檔案中的相關資訊。
 
-| 範例 | 平台 | 描述 |
+| 範例 | 平台 | 說明 |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin. iOS、Android、UWP | 簡單的 Xamarin. Forms 應用程式，示範如何使用 MSAL 來驗證 Microsoft 個人帳戶，以及透過 Azure AD 2.0 端點 Azure AD。 應用程式也會顯示如何存取 Microsoft Graph，並顯示所產生的權杖。 <br>![驗證流程的圖表](media/msal-net-xamarin-android-considerations/topology.png) |
 

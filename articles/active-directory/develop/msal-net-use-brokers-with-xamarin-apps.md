@@ -1,7 +1,7 @@
 ---
 title: 使用代理程式搭配 Xamarin iOS & Android |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解如何設定可使用 Microsoft Authenticator 和適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 的 Xamarin iOS 應用程式。 同時瞭解如何從適用于 .NET 的 Azure AD 驗證程式庫遷移 (ADAL.NET) 至適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 。
+description: 瞭解如何設定可使用 Microsoft Authenticator 的 Xamarin iOS 應用程式，以及適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 。 同時瞭解如何從適用于 .NET 的 Azure AD 驗證程式庫 (ADAL.NET) 遷移至適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 。
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 10fb55cc133d5d6b39ca2809474ff20dfe500708
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017794"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063479"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>在 Xamarin 應用程式上使用 Microsoft Authenticator 或 Intune 公司入口網站
 
@@ -183,7 +183,7 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 **若要產生重新導向 URI：**
 
-1. 登入<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 選取 **Azure Active Directory**  >  **應用程式註冊**> 您註冊的應用程式
 1. 選取 **驗證**  >  **新增平臺**  >  **iOS/macOS**
 1. 輸入您的套件組合識別碼，然後選取 [ **設定**]。

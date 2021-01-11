@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173459"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064963"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>在您開發的 mobile apps 中支援單一登入和應用程式保護原則
 
@@ -36,7 +36,7 @@ ms.locfileid: "96173459"
 
 建議您採用下列各項，讓您的應用程式能夠利用單一登入。
 
-### <a name="use-microsoft-authentication-library-msal"></a>使用 Microsoft 驗證程式庫 (MSAL) 
+### <a name="use-the-microsoft-authentication-library-msal"></a>使用 Microsoft 驗證程式庫 (MSAL) 
 
 在您的應用程式中執行單一登入的最佳選擇是使用 [Microsoft 驗證程式庫 (MSAL) ](msal-overview.md)。 藉由使用 MSAL，您可以使用最少量的程式碼和 API 呼叫，將驗證新增至您的應用程式、取得 [Microsoft 身分識別平臺](./index.yml)的完整功能，並讓 Microsoft 處理安全驗證解決方案的維護。 根據預設，MSAL 會為您的應用程式新增 SSO 支援。 此外，如果您也計畫要執行應用程式保護原則，則需要使用 MSAL。
 

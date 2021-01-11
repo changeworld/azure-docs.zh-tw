@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 99246ecee27f7ded693e2a797f8e98480e350983
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 0143b014328dfd5c164f0c3c62aeef7cabe1a17c
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854524"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065417"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -37,7 +37,7 @@ Azure 春季 Cloud 藉由整合 Azure 監視器、Application Insights 和 Log A
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>哪些區域可以使用 Azure 春季 Cloud？
 
-美國東部、美國東部2、美國中部、美國中南部、美國中北部、美國西部、美國西部2、西歐、北歐、英國南部、東南亞、澳大利亞東部、加拿大中部和阿拉伯聯合大公國北部。
+美國東部、美國東部2、美國中部、美國中南部、美國中北部、美國西部、美國西部2、西歐、北歐、英國南部、東南亞、澳大利亞東部、加拿大中部、阿拉伯聯合大公國北部、印度中部、韓國中部和東亞。 [深入了解](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud)
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>是否有任何客戶資料儲存在指定的區域之外？
 
@@ -190,7 +190,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>我是否可以存取 Kubernetes 來操作我的應用程式容器？
 
-不會。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
+否。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支援從來源建立容器？
 

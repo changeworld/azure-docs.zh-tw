@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5af4eb931015e386e35470f2b36341e15f76150f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353301"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065400"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 資源
 
@@ -123,17 +123,23 @@ App service （為已發佈的知識庫提供 QnA Maker 的預測執行時間）
     > ![在 [設定] 窗格中，選取 [一般設定]，然後尋找 [永遠開啟] * *，然後選取 [開啟] * * 作為值。](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
 1. 選取 [ **儲存** ] 以儲存設定。
-1. 系統會詢問您是否要重新開機應用程式，以使用新的設定。 選取 [繼續]  。
+1. 系統會詢問您是否要重新開機應用程式，以使用新的設定。 選取 [繼續]。
 
 深入瞭解如何設定 App Service [一般設定](../../../app-service/configure-common.md#configure-general-settings)。
 
 ### <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>將 App Service 環境設定為裝載 QnA Maker App Service
-App Service 環境可以用來裝載 QnA Maker App Service。 如果 App Service 環境是內部的，您就必須遵循下列步驟：
-1. 建立 App service 和 Azure 搜尋服務。
-2. 公開 app service，並允許 QnA Maker 可用性，如下所示：
-    * 公開可用-預設值
-    * DNS 服務標記： `CognitiveServicesManagement`
-3. 使用 Azure Resource Manager 建立 QnA Maker 認知服務實例 (CognitiveServices/帳戶) ，其中 QnA Maker 端點應設定為 App Service 環境。
+App Service 環境 (ASE) 可以用來裝載 QnA Maker App Service。 請依照下列步驟執行：
+
+1. 建立 App Service 環境，並將其標示為「外部」。 如需相關指示，請遵循 [教學](https://docs.microsoft.com/azure/app-service/environment/create-external-ase) 課程。
+2.  在 App Service 環境內建立 App service。
+    * 檢查 App service 的設定，並新增 ' PrimaryEndpointKey ' 做為應用程式設定。 ' PrimaryEndpointKey ' 的值應該設定為 " \<app-name\> -PrimaryEndpointKey"。 應用程式名稱是在 App service URL 中定義。 比方說，如果 App service URL 是 "mywebsite.myase.p.azurewebsite.net"，則應用程式名稱會是 "mywebsite"。 在此情況下，' PrimaryEndpointKey ' 的值應該設定為 "mywebsite-PrimaryEndpointKey"。
+    * 建立 Azure 搜尋服務。
+    * 確定已適當設定 Azure 搜尋服務和應用程式設定。 
+      請遵循此 [教學](https://docs.microsoft.com/azure/cognitiveservices/qnamaker/reference-app-service#app-service)課程。
+3.  更新與 App Service 環境相關聯的網路安全性群組
+    * 依據您的需求更新預先建立的輸入安全性規則。
+    * 將來源為「服務標籤」的新輸入安全性規則和來源服務標記新增為 ' CognitiveServicesManagement '。
+4.  使用 Azure Resource Manager 來建立 QnA Maker 認知服務實例 (CognitiveServices/帳戶) ，其中 QnA Maker 端點應設定為以上建立的 App Service 端點 (HTTPs://mywebsite.myase.p.azurewebsite.net) 。
 
 ### <a name="network-isolation-for-app-service"></a>App Service 的網路隔離
 
@@ -254,15 +260,15 @@ QnA Maker 認知服務使用服務標記： `CognitiveServicesManagement` 。 �
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker 正式發行 (穩定版本)](#tab/v1)
 
-如果您打算有許多知識庫，請升級您的 Azure 認知搜尋服務定價層。
+如果您預計會有許多知識庫，請升級 Azure 認知搜尋服務定價層。
 
-目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要執行此動作，請依照下列步驟執行：
+目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要這樣做，請遵循下列步驟：
 
 1. 在 Azure 入口網站中建立新的 Azure 搜尋服務資源，然後選取所需的 SKU。
 
     ![QnA Maker Azure 搜尋服務資源](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. 從原始的 Azure 搜尋服務資源將索引還原到新的 Azure 搜尋服務資源。 請參閱 [備份還原範例程式碼](https://github.com/pchoudhari/QnAMakerBackupRestore)。
+1. 從原始的 Azure 搜尋服務資源將索引還原到新的 Azure 搜尋服務資源。 請[參閱備份還原範例程式碼](https://github.com/pchoudhari/QnAMakerBackupRestore)。
 
 1. 還原資料之後，請移至新的 Azure 搜尋服務資源、選取 **金鑰**，並記下 **名稱** 和 **管理金鑰**：
 
@@ -272,11 +278,11 @@ QnA Maker 認知服務使用服務標記： `CognitiveServicesManagement` 。 �
 
     ![QnA Maker App Service 實例](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-1. 選取 [ **應用程式設定** ]，並修改步驟 3 **AzureSearchName** 和 **AzureSearchAdminKey** 欄位中的設定。
+1. 選取 [應用程式設定]，並修改步驟 3 的 [AzureSearchName] 和 [AzureSearchAdminKey] 欄位中的設定。
 
     ![QnA Maker App Service 設定](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
-1. 重新開機 App Service 實例。
+1. 重新啟動 App Service 執行個體。
 
     ![重新開機 QnA Maker App Service 實例](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
@@ -343,15 +349,15 @@ QnA Maker 的 **App Service** 資源使用認知搜尋資源。 為了變更 QnA
 
 # <a name="qna-maker-managed-preview-release"></a>[受控 QnA Maker (預覽版本)](#tab/v2)
 
-如果您打算有許多知識庫，請升級您的 Azure 認知搜尋服務定價層。
+如果您預計會有許多知識庫，請升級 Azure 認知搜尋服務定價層。
 
-目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要執行此動作，請依照下列步驟執行：
+目前，您無法執行 Azure 搜尋服務 SKU 的就地升級。 不過，您可以使用所需的 SKU 建立新的 Azure 搜尋服務資源，並將資料還原到新的資源，然後再將新的資源連結至 QnA Maker 堆疊。 若要這樣做，請遵循下列步驟：
 
 1. 在 Azure 入口網站中建立新的 Azure 搜尋服務資源，然後選取所需的 SKU。
 
     ![QnA Maker Azure 搜尋服務資源](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. 從原始的 Azure 搜尋服務資源將索引還原到新的 Azure 搜尋服務資源。 請參閱 [備份還原範例程式碼](https://github.com/pchoudhari/QnAMakerBackupRestore)。
+1. 從原始的 Azure 搜尋服務資源將索引還原到新的 Azure 搜尋服務資源。 請[參閱備份還原範例程式碼](https://github.com/pchoudhari/QnAMakerBackupRestore)。
 
 1. 若要將新的 Azure 搜尋服務資源連結至 QnA Maker 受控 (Preview) 服務，請參閱下列主題。
 
@@ -365,7 +371,7 @@ QnA Maker 的 **App Service** 資源使用認知搜尋資源。 為了變更 QnA
 
     ![QnA Maker 受控 (預覽) 設定頁面的螢幕擷取畫面](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-configuration.png)
 
-1. 按一下 [儲存]。
+1. 按一下 [檔案]  。
 
 > [!NOTE]
 > 如果您變更與 QnA Maker 相關聯的 Azure 搜尋服務，您將無法存取所有已存在的知識庫。 變更 Azure 搜尋服務之前，請務必先匯出現有的知識庫。

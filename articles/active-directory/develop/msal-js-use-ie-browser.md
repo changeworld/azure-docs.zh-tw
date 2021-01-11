@@ -13,12 +13,12 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 633166f3bb46212991920d6720737f8268b3f401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87026849"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064839"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Internet Explorer 瀏覽器 ( # A0) 的已知問題
 
@@ -47,11 +47,11 @@ ms.locfileid: "87026849"
 
     1. 按一下齒輪圖示)  (Internet Explorer **工具** ]。
     1. 選取 [ **網際網路選項** ]，然後選取 [ **安全性** ] 索引標籤。
-    1. 按一下 [ **網際網路** ] 區域，然後取消核取 [ **啟用受保護模式] (需要重新開機 Internet Explorer) **。 Internet Explorer 警告您的電腦已不再受到保護。 按一下 [確定]  。
+    1. 按一下 [ **網際網路** ] 區域，然後取消核取 [ **啟用受保護模式] (需要重新開機 Internet Explorer)**。 Internet Explorer 警告您的電腦已不再受到保護。 按一下 [確定]。
     1. 重新開機 Internet Explorer。
     1. 執行您的應用程式並進行偵錯工具。
 
 當您完成時，請還原 Internet Explorer 的安全性設定。  選取 [**設定**  ->  **網際網路選項**  ->  **安全性**  ->  **將所有區域重設為預設層級**]。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 深入瞭解 [在 Internet Explorer 中使用 MSAL.js 時的已知問題](msal-js-use-ie-browser.md)。

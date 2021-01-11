@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8935cb3208aadc2822af1f57067877f9cedcb931
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120621"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064363"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 條件式存取的開發人員指引
 
@@ -43,7 +43,7 @@ ms.locfileid: "88120621"
 
 ### <a name="app-types-impacted"></a>受影響的應用程式類型
 
-在最常見的案例中，條件式存取不會變更應用程式的行為，或是需要從開發人員進行任何變更。 只有當應用程式以間接或無訊息方式要求權杖提供服務的特定案例中，應用程式才會要求程式碼變更，以處理條件式存取「挑戰」。 這有如執行互動式登入要求一樣簡單。
+在最常見的案例中，條件式存取不會變更應用程式的行為，或是需要從開發人員進行任何變更。  只有當應用程式以間接或無訊息方式要求權杖提供服務的特定案例中，應用程式才會要求程式碼變更，以處理條件式存取「挑戰」。  這有如執行互動式登入要求一樣簡單。
 
 具體而言，下列情節需要程式碼來處理條件式存取「挑戰」：
 
@@ -182,6 +182,6 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 * 若要深入了解功能，請參閱 [Azure Active Directory 中的條件式存取](../conditional-access/overview.md)。
 * 如需更多的 Azure AD 程式碼範例，請參閱[範例](sample-v2-code.md)。
-* 如需 MSAL SDK 的詳細資訊及存取參考文件，請參閱 [Microsoft 驗證程式庫概觀](msal-overview.md)。
+* 如需 MSAL SDK 及存取參考檔的詳細資訊，請參閱 [Microsoft 驗證程式庫總覽](msal-overview.md)。
 * 若要深入了解多租用戶情節，請參閱[如何使用多租用戶模式將使用者登入](howto-convert-app-to-be-multi-tenant.md)。
 * 深入了解[條件式存取及保護 IoT 應用程式的存取權](/azure/architecture/example-scenario/iot-aad/iot-aad)。

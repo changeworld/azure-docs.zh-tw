@@ -7,21 +7,18 @@ ms.author: viviali
 ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: b84f1efd77ca757fd2ceaa8bb5605e3fc78297d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q3
+ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032366"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065383"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用資料匯出將 IoT 資料匯出至雲端目的地
 
 > [!Note]
-> 本文說明 IoT Central 中的資料匯出功能。
->
-> - 如需舊版資料匯出功能的相關資訊，請參閱 [使用資料匯出 (舊版) 將 IoT 資料匯出至雲端目的地 ](./howto-export-data-legacy.md)。
-> - 若要瞭解資料匯出與舊版資料匯出功能之間的差異，請參閱下 [表中的比較表](#comparison-of-legacy-data-export-and-data-export) 。
+> 本文說明 IoT Central 中的資料匯出功能。 如需舊版資料匯出功能的相關資訊，請參閱 [使用資料匯出 (舊版) 將 IoT 資料匯出至雲端目的地 ](./howto-export-data-legacy.md)。
 
 本文說明如何使用 Azure IoT Central 中的新資料匯出功能。 使用此功能可從您的 IoT Central 應用程式持續匯出已篩選和擴充的 IoT 資料。 資料匯出會以近乎即時的方式將變更推送至雲端解決方案的其他部分，以取得暖路徑見解、分析和儲存體。
 
@@ -35,7 +32,7 @@ ms.locfileid: "97032366"
 > [!Tip]
 > 當您開啟資料匯出時，您只會取得該時間的資料。 目前，資料匯出關閉時無法取出資料。 若要保留更多歷程記錄資料，請提早開啟資料匯出。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要使用資料匯出功能，您必須有 [V3 應用程式](howto-get-app-info.md)，而且必須擁有 [資料匯出](howto-manage-users-roles.md) 許可權。
 
@@ -43,7 +40,7 @@ ms.locfileid: "97032366"
 
 設定資料匯出之前，您必須先有匯出目的地。 目前提供下列目的地類型：
 
-- Azure 事件中心
+- Azure 事件中樞
 - Azure 服務匯流排佇列
 - Azure 服務匯流排主題
 - Azure Blob 儲存體
@@ -100,7 +97,7 @@ ms.locfileid: "97032366"
     |標準|一般用途 V2|
     |標準|一般用途 V1|
     |標準|Blob 儲存體|
-    |進階|區塊 Blob 儲存體|
+    |Premium|區塊 Blob 儲存體|
 
 1. 若要在儲存體帳戶中建立容器，請移至您的儲存體帳戶。 在 [Blob 服務] 下，選取 [瀏覽 Blob]。 選取頂端的 [+ 容器] 以建立新的容器。
 
@@ -161,7 +158,7 @@ ms.locfileid: "97032366"
     - 針對 Webhook，貼上 webhook 端點的回呼 URL。 您可以選擇性地 (OAuth 2.0 與授權權杖) 設定 webhook 授權，並新增自訂標頭。 
         - 針對 OAuth 2.0，僅支援用戶端認證流程。 儲存目的地之後，IoT Central 會與您的 OAuth 提供者進行通訊，以抓取授權權杖。 此權杖會附加至每個傳送至此目的地之訊息的「授權」標頭。
         - 針對授權權杖，您可以針對每個傳送至此目的地的訊息，指定將直接附加至「授權」標頭的權杖值。
-    - 選取 [建立]。
+    - 選取 [建立]  。
 
 1. 選取 [ **+ 目的地** ]，然後從下拉式清單中選擇目的地。 您最多可以在單一匯出中新增五個目的地。
 
@@ -279,8 +276,8 @@ ms.locfileid: "97032366"
 | 功能  | 舊版資料匯出 | 新增資料匯出 |
 | :------------- | :---------- | :----------- |
 | 可用的資料類型 | 遙測、裝置、裝置範本 | 遙測，屬性變更 |
-| 篩選 | 無 | 取決於匯出的資料類型。 針對遙測，依遙測篩選、訊息屬性、屬性值 |
-| 擴充 | 無 | 使用裝置上的自訂字串或屬性值進行擴充 |
+| 篩選 | None | 取決於匯出的資料類型。 針對遙測，依遙測篩選、訊息屬性、屬性值 |
+| 擴充 | None | 使用裝置上的自訂字串或屬性值進行擴充 |
 | 目的地 | Azure 事件中樞、Azure 服務匯流排佇列和主題，Azure Blob 儲存體 | 與舊版資料匯出和 webhook 相同|
 | 支援的應用程式版本 | V2、V3 | 僅限第 3 版 |
 | 值得注意的限制 | 每個應用程式5個匯出，每個匯出1個目的地 | 10個匯出-每個應用程式的目的地連線數 |

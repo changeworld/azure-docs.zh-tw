@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: c72538de8aba60ce7ed880561b55773c22737f97
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e46b08e31725765d700bf41649d997d7b20e5f95
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498620"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065485"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory 中的管道執行和觸發程序
 
@@ -235,13 +235,13 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="schema-overview"></a>結構描述概觀
 下表提供與觸發程序之週期和排程相關的主要結構描述元素概觀：
 
-| JSON 屬性 | 描述 |
+| JSON 屬性 | 說明 |
 | --- | --- |
 | **startTime** | 日期時間值。 在基本排程中，**startTime** 屬性的值會套用至第一個發生項目。 在複雜的排程中，觸發程序會在到了指定的 **startTime** 值才啟動。 |
 | **endTime** | 觸發程序的結束日期和時間。 觸發程序在指定的結束日期和時間之後便不再執行。 此屬性的值不可以是過去的時間。 <!-- This property is optional. --> |
 | **時區** | 時區。 如需支援的時區清單，請參閱 [建立依排程執行管線的觸發程式](how-to-create-schedule-trigger.md#time-zone-option)。 |
 | **復發** | 指定觸發程序之週期規則的 recurrence 物件。 recurrence 物件支援 **frequency**、**interval**、**endTime**、**count** 及 **schedule** 元素。 定義 recurrence 物件時，必須一併定義 **frequency** 元素。 其他 recurrence 物件元素則為選用元素。 |
-| **frequency** | 觸發程序重複執行時的頻率單位。 支援的值包括 "minute"、"hour"、"day"、"week" 及 "month"。 |
+| **頻率** | 觸發程序重複執行時的頻率單位。 支援的值包括 "minute"、"hour"、"day"、"week" 及 "month"。 |
 | **區間** | 代表 **frequency** 值之間隔的整數值。 **frequency** 值可決定觸發程序執行的頻率。 例如，如果 **interval** 為 3，而 **frequency** 為 "week"，觸發程序就會每隔三週重複執行一次。 |
 | **附表** | 觸發程序的週期排程。 具有指定之 **frequency** 值的觸發程序會根據週期排程來改變其週期。 **schedule** 屬性會根據分鐘、小時、星期幾、月日及週數來修改週期。 |
 
@@ -283,10 +283,10 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 | JSON 屬性 | 類型 | 必要 | 預設值 | 有效值 | 範例 |
 | --- | --- | --- | --- | --- | --- |
-| **startTime** | 字串 | 是 | 無 | ISO 8601 日期時間 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **復發** | 物件 (object) | 是 | 無 | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **區間** | 數目 | 否 | 1 | 1 到 1000 | `"interval":10` |
-| **endTime** | 字串 | 是 | 無 | 代表未來時間的日期時間值 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **startTime** | 字串 | 是 | None | ISO 8601 日期時間 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **復發** | 物件 (object) | 是 | None | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **區間** | number | 否 | 1 | 1 到 1000 | `"interval":10` |
+| **endTime** | 字串 | 是 | None | 代表未來時間的日期時間值 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **附表** | 物件 (object) | 否 | None | Schedule 物件 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime 屬性
@@ -314,9 +314,9 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 下表詳細說明 **schedule** 元素：
 
-| JSON 元素 | 描述 | 有效值 |
+| JSON 元素 | 說明 | 有效值 |
 | --- | --- | --- |
-| **分鐘** | 一小時內觸發程序執行的分鐘數。 |- 整數<br />- 一連串整數 |
+| **minutes** | 一小時內觸發程序執行的分鐘數。 |- 整數<br />- 一連串整數 |
 | **小時** | 一天內觸發程序執行的小時數。 |- 整數<br />- 一連串整數 |
 | **平日** | 觸發程序執行的星期幾。 此值只能搭配 weekly 頻率指定。|<br />- 星期一<br />- 星期二<br />- 星期三<br />- 星期四<br />- 星期五<br />- 星期六<br />- 星期六<br />- 日期值陣列 (最大陣列大小為 7)<br /><br />日期值不區分大小寫 |
 | **monthlyOccurrences** | 觸發程序在一個月中的執行日。 此值只能與 monthly 頻率搭配指定。 |- **monthlyOccurrence** 物件的陣列︰`{ "day": day, "occurrence": occurrence }`<br />- **day** 屬性是觸發程序在一週中的執行日。 例如，**day** 值為 `{Sunday}` 的 **monthlyOccurrences** 屬性意謂著月份中的每個星期日。 **day** 屬性為必要屬性。<br />- **occurrence** 屬性係指所指定的 **day** 在月份中出現的位置。 例如，**day** 和 **occurrence** 值為 `{Sunday, -1}` 的 **monthlyOccurrences** 屬性意謂著月份中的最後一個星期日。 **occurrence** 屬性為選用屬性。 |
@@ -381,7 +381,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 | **可靠性** | 100% 可靠性。 管線執行可排程於指定的開始日期之後的所有時間範圍執行，且不間斷。 | 較不可靠。 |
 | **功能** | 支援。 失敗管線執行的預設重試原則為 0，或是使用者在觸發程序定義中指定的原則。 當管線執行因為並行/伺服器/節流限制而失敗時自動重試 (也就是狀態碼400：使用者錯誤、429：太多要求，以及500：內部伺服器錯誤) 。 | 不支援。 |
 | **並行** | 支援。 使用者可以明確設定觸發程序的並行限制。 允許 1 個到 50 個已觸發的並行管線執行。 | 不支援。 |
-| **系統變數** | 除了 @trigger ( # A1 scheduledTime 和 @trigger ( # A3. startTime 之外，它也支援使用 **WindowStart** 和 **WindowEnd** 系統變數。 使用者可以存取 `triggerOutputs().windowStartTime` 和 `triggerOutputs().windowEndTime` 作為觸發程序定義中的觸發程序系統變數。 其值會分別作為時間範圍開始時間和時間範圍結束時間。 例如，對於每小時執行一次的輪轉視窗觸發程序，如果時間範圍為凌晨 1 點到凌晨 2 點，則定義為 `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` 和 `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`。 | 僅支援預設 @trigger ( # A1. scheduledTime 和 @trigger ( # A3. startTime 變數。 |
+| **系統變數** | 除了 @trigger ( # A1 scheduledTime 和 @trigger ( # A3. startTime 之外，它也支援使用 **WindowStart** 和 **WindowEnd** 系統變數。 使用者可以存取 `trigger().outputs.windowStartTime` 和 `trigger().outputs.windowEndTime` 作為觸發程序定義中的觸發程序系統變數。 其值會分別作為時間範圍開始時間和時間範圍結束時間。 例如，對於每小時執行一次的輪轉視窗觸發程序，如果時間範圍為凌晨 1 點到凌晨 2 點，則定義為 `trigger().outputs.windowStartTime = 2017-09-01T01:00:00Z` 和 `trigger().outputs.windowEndTime = 2017-09-01T02:00:00Z`。 | 僅支援預設 @trigger ( # A1. scheduledTime 和 @trigger ( # A3. startTime 變數。 |
 | **管線與觸發程序的關聯性** | 支援一對一關聯性。 只能觸發一個管線。 | 支援多對多關聯性。 多個觸發程序可以啟動單一管道。 單一觸發程序可以啟動多個管道。 |
 
 ## <a name="next-steps"></a>後續步驟

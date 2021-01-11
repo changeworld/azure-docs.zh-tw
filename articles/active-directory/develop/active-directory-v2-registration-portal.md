@@ -13,12 +13,13 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 0574eb0b8ab0b5d4de671ad44a45a85e434393f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: b165cd4abd55026e10aa43eb20faa85b887de194
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115572"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065038"
 ---
 # <a name="app-registration-reference"></a>App 註冊參考
 
@@ -30,7 +31,7 @@ ms.locfileid: "88115572"
 
 ## <a name="azure-ad-only-applications"></a>僅限 Azure AD 的應用程式
 
-此清單包含所有已註冊且可與 Azure AD v1.0 端點搭配使用的應用程式。 這些應用程式只能使用 Azure Active Directory 中的工作/學校帳戶來登入使用者。 這份清單包含已在 [Azure 入口網站](https://portal.azure.com)中使用**應用程式註冊**體驗來註冊的應用程式。
+此清單包含所有已註冊且可與 Azure AD v1.0 端點搭配使用的應用程式。 這些應用程式只能使用 Azure Active Directory 中的工作/學校帳戶來登入使用者。 這份清單包含已在 [Azure 入口網站](https://portal.azure.com)中使用 **應用程式註冊** 體驗來註冊的應用程式。
 
 ## <a name="live-sdk-applications"></a>Live SDK 應用程式
 

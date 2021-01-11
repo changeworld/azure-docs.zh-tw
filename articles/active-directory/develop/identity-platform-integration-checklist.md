@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 47c3c091e767cac63bb814469397ef1a0aeca3a4
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516500"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063785"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft 身分識別平台最佳做法和建議
 
@@ -30,7 +30,7 @@ ms.locfileid: "97516500"
 > [!TIP]
 > Azure 入口網站中的 [ *整合助理* ] 可協助您套用許多這些最佳作法和建議。 在 Azure 入口網站中選取您的任何 [應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ，然後選取 [ **整合助理** ] 功能表項目以開始使用助理。
 
-## <a name="basics"></a>基本
+## <a name="basics"></a>基礎
 
 ![核取方塊 ](./media/active-directory-integration-checklist/checkbox-two.svg) ：閱讀並瞭解 [Microsoft 平臺原則](/legal/microsoft-identity-platform/terms-of-use)。 確定您的應用程式符合所述的條款，因為它們是設計來保護使用者和平臺。
 
@@ -70,7 +70,7 @@ ms.locfileid: "97516500"
 
 ![核取方塊 ](./media/active-directory-integration-checklist/checkbox-two.svg) 不會直接對通訊協定（例如 OAuth 2.0 和 OPEN ID）進行程式設計。 相反地，請利用 [Microsoft 驗證程式庫 (MSAL) ](msal-overview.md)。 MSAL 程式庫會安全地將安全性通訊協定包裝在容易使用的程式庫中，您可以取得條件式 [存取](../conditional-access/overview.md) 案例的內建支援、 [ (SSO) ](../manage-apps/what-is-single-sign-on.md)的全裝置單一登入，以及內建的權杖快取支援。 如需詳細資訊，請參閱 Microsoft 支援的 [用戶端程式庫](reference-v2-libraries.md#microsoft-supported-client-libraries) 和 [中介軟體程式庫](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) 清單，以及 [相容的協力廠商用戶端程式庫](reference-v2-libraries.md#compatible-client-libraries)清單。<br/><br/>如果您必須為驗證通訊協定編寫程式碼，您應該遵循 [MICROSOFT SDL](https://www.microsoft.com/sdl/default.aspx)這類方法。 請密切注意每個通訊協定的標準規格中的安全性考慮。
 
-![核取方塊 ](./media/active-directory-integration-checklist/checkbox-two.svg) ，將現有的應用程式從 [Azure Active Directory authentication LIBRARY (ADAL) ](../azuread-dev/active-directory-authentication-libraries.md) 遷移至 [Microsoft 驗證程式庫](msal-overview.md)。 MSAL 是 Microsoft 最新的身分識別平臺解決方案，而且是 ADAL 慣用的解決方案。 它適用于 .NET、JavaScript、Android、iOS、macOS，也適用于 Python 和 JAVA 的公開預覽。 深入瞭解如何遷移 [ADAL.NET](msal-net-migration.md)、 [ADAL.js](msal-compare-msal-js-and-adal-js.md)和 [ADAL.NET 和 iOS broker](msal-net-migration-ios-broker.md) 應用程式。
+![核取方塊 ](./media/active-directory-integration-checklist/checkbox-two.svg) 可將現有的應用程式從 [Azure Active Directory authentication LIBRARY (ADAL) ](../azuread-dev/active-directory-authentication-libraries.md) 遷移至 [Microsoft 驗證程式庫](msal-overview.md)。 MSAL 是 Microsoft 最新的身分識別平臺解決方案，而且是 ADAL 慣用的解決方案。 它適用于 .NET、JavaScript、Android、iOS、macOS，也適用于 Python 和 JAVA 的公開預覽。 深入瞭解如何遷移 [ADAL.NET](msal-net-migration.md)、 [ADAL.js](msal-compare-msal-js-and-adal-js.md)和 [ADAL.NET 和 iOS broker](msal-net-migration-ios-broker.md) 應用程式。
 
 ![核取方塊](./media/active-directory-integration-checklist/checkbox-two.svg) 針對 mobile apps，請使用應用程式註冊體驗來設定每個平臺。 為了讓您的應用程式能夠利用 Microsoft Authenticator 或 Microsoft 公司入口網站進行單一登入，您的應用程式需要設定「broker 重新導向 URI」。 這可讓 Microsoft 在驗證之後將控制權交還給您的應用程式。 設定每個平臺時，應用程式註冊體驗將引導您完成此程式。 使用快速入門下載可運作的範例。 在 iOS 上，請盡可能使用訊息代理程式和系統 web 程式。
 

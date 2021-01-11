@@ -8,15 +8,15 @@ ms.author: keli19
 ms.reviewer: peterlu
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/25/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: designer
-ms.openlocfilehash: 29d83f4acddfce6294457f87519d62e35f52bf15
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709413"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065247"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>啟用 Azure Machine Learning 設計工具管線中的記錄
 
@@ -27,7 +27,7 @@ ms.locfileid: "97709413"
 
 ## <a name="enable-logging-with-execute-python-script"></a>使用執行 Python 腳本啟用記錄
 
-使用 [ __執行 Python 腳本__ ] 模組，在設計工具管線中啟用記錄功能。 雖然您可以使用此工作流程來記錄任何值，但是從 __評估模型__ 模組記錄計量來追蹤跨回合的模型效能特別有用。
+使用 [ [執行 Python 腳本](./algorithm-module-reference/execute-python-script.md) ] 模組，在設計工具管線中啟用記錄功能。 雖然您可以使用此工作流程來記錄任何值，但是從 __評估模型__ 模組記錄計量來追蹤跨回合的模型效能特別有用。
 
 下列範例示範如何使用 [評估模型] 和 [執行 Python 腳本] 模組，記錄兩個定型模型的 mean 平方誤差。
 
@@ -53,7 +53,7 @@ ms.locfileid: "97709413"
         
         # Log left output port result of Evaluate Model. This also works when evaluate only 1 model.
         parent_run.log(name='Mean_Absolute_Error (left port)', value=dataframe1['Mean_Absolute_Error'][0])
-        # Log right output port result of Evaluate Model.
+        # Log right output port result of Evaluate Model. The following line should be deleted if you only connect one Score Module to the` left port of Evaluate Model module.
         parent_run.log(name='Mean_Absolute_Error (right port)', value=dataframe1['Mean_Absolute_Error'][1])
 
         return dataframe1,
@@ -81,3 +81,4 @@ ms.locfileid: "97709413"
 
 * 瞭解如何針對設計工具管線進行疑難排解，請參閱 [Debug & 針對 ML 管線進行疑難排解](how-to-debug-pipelines.md#azure-machine-learning-designer)。
 * 瞭解如何使用 Python SDK 來記錄 SDK 撰寫體驗中的計量，請參閱 [在 AZURE ML 定型回合中啟用記錄](how-to-track-experiments.md)。
+* 瞭解如何在設計工具中使用 [ [執行 Python 腳本](./algorithm-module-reference/execute-python-script.md) ]。

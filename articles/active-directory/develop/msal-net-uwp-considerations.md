@@ -1,7 +1,7 @@
 ---
 title: UWP 考慮 (MSAL.NET) |蔚藍
 titleSuffix: Microsoft identity platform
-description: 瞭解搭配適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 使用通用 Windows 平臺 (UWP) 的考慮事項。
+description: 瞭解搭配適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 使用通用 Windows 平臺 (UWP) 的考慮。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c71c55adbf79af780169380269b5081322f94baf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6451368baf9c047f0318eb74d53ffac075d4a184
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083434"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063445"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>搭配 MSAL.NET 使用通用 Windows 平臺的考慮
 使用通用 Windows 平臺 (UWP) 的應用程式開發人員應該考慮本文所提供的概念。
@@ -58,10 +58,10 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execu
 
 如需詳細資訊，請參閱 [Web 驗證訊息代理程式-Fiddler](/windows/uwp/security/web-authentication-broker#fiddler)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 下列範例會提供詳細資訊。
 
-範例 | 平台 | 描述 
+範例 | 平台 | 說明 
 |------ | -------- | -----------|
 |[active directory-dotnet-原生-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | 使用 MSAL.NET 的 UWP 用戶端應用程式。 它會針對使用 Azure AD 2.0 端點進行驗證的使用者，存取 Microsoft Graph。 <br>![拓撲](media/msal-net-uwp-considerations/topology-native-uwp.png)|
 |[active directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、UWP | Xamarin Forms 應用程式，示範如何使用 MSAL 透過 Microsoft 身分識別平臺來驗證 Microsoft 個人帳戶和 Azure AD。 它也會示範如何存取 Microsoft Graph，並顯示所產生的權杖。 <br>![顯示如何使用 MSAL 透過 Microsoft 身分識別平臺驗證 Microsoft 個人帳戶和 Azure AD 的圖表。](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

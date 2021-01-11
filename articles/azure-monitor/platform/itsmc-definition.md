@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 2d7c732771749c0c0372c5433b76c3e30469e2b0
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: eacdf0cf80414c44aaccf6925e466b914c66da03
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968410"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065298"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -64,7 +64,7 @@ ms.locfileid: "97968410"
 
 1. 在 [ **所有資源**] 中，尋找 **>servicedesk (*您的工作區名稱*)**：
 
-   ![顯示 Azure 入口網站中最近資源的螢幕擷取畫面。](media/itsmc-overview/itsm-connections.png)
+   ![顯示 Azure 入口網站中最近資源的螢幕擷取畫面。](media/itsmc-definition/create-new-connection-from-resource.png)
 
 1. 在左窗格的 [ **工作區資料來源** ] 底下，選取 [ **ITSM 連接**：
 

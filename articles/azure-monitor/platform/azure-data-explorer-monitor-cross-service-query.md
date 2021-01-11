@@ -1,18 +1,18 @@
 ---
 title: 'Azure 監視器與 Azure 資料總管 (preview 之間的跨服務查詢) '
 description: 透過 Azure Log Analytics 工具來查詢 Azure 資料總管資料，反之亦然，可在單一位置加入及分析您的所有資料。
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 0af9111223bb16f1c5843223e7fe1661ce99c623
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 5aadd9d96f538f92e1b9e0100b2c1055ee0b0633
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749238"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065264"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>跨服務查詢-Azure 監視器和 Azure 資料總管 (Preview) 
 在 [Azure 資料總管](https://docs.microsoft.com/azure/data-explorer/)、 [Application Insights](/azure/azure-monitor/app/app-insights-overview)與 [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)之間建立跨服務查詢。
