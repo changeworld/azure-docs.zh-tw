@@ -1,6 +1,6 @@
 - name: 應用程式閘道文件
   href: index.yml
-- name: 概觀
+- name: 總覽
   items:
     - name: 關於應用程式閘道
       href: overview.md
@@ -109,7 +109,7 @@
     - name: 了解定價
       href: understanding-pricing.md
     - name: 常見問題集
-      href: application-gateway-faq.md
+      href: application-gateway-faq.yml
 - name: 操作指南
   items:
     - name: 裝載單一網站

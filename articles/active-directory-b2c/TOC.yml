@@ -443,7 +443,7 @@
     - name: 計費模式
       href: billing.md
     - name: 程式碼範例
-      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+      href: /samples/browse/?terms=b2c
     - name: Cookie 定義
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'
