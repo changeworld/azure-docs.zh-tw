@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 3fe1b966b56142fd312850ac5d77839b7d9db434
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e451171859efc49753131b145642aec4864db45d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97706209"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015655"
 ---
 | 資源 | 基本 | 標準 | Premium |
 |---|---|---|---|
@@ -22,8 +22,8 @@ ms.locfileid: "97706209"
 | 映像層大小上限 (GiB) | 200 | 200 | 200 |
 | 每分鐘的 ReadOps<sup>2, 3</sup> | 1,000 | 3,000 | 10,000 |
 | 每分鐘的 WriteOps<sup>2, 4</sup> | 100 | 500 | 2,000 |
-| 下載頻寬 Mbps<sup>2</sup> | 30 | 60 | 100 |
-| 上傳頻寬 Mbps<sup>2</sup> | 10 | 20 | 50 |
+| 下載頻寬 <sup>2</sup> (Mbps) | 30 | 60 | 100 |
+| 上傳頻寬 <sup>2</sup> (Mbps) | 10 | 20 | 50 |
 | Webhook | 2 | 10 | 500 |
 | 異地複寫 | N/A | N/A | [支援][geo-replication] |
 | 可用性區域 | N/A | N/A | [預覽][zones] |
@@ -38,7 +38,7 @@ ms.locfileid: "97706209"
 | &bull; 每個範圍對應的存放庫 | N/A | N/A | 500 |
 
 
-<sup>1</sup> 每一層的每日費率包含的儲存體。 對於其他儲存體，您需支付每個 GiB 的額外每日費率，最高可達儲存體限制。 如需費率資訊，請參閱 [Azure Container Registry 定價][pricing]。
+<sup>1</sup> 每一層的每日費率包含的儲存體。 可以使用額外的儲存體，每個 GiB 需要額外的每日費率，以登錄儲存體限制為上限。 如需費率資訊，請參閱 [Azure Container Registry 定價][pricing]。
 
 <sup>2</sup>*ReadOps*、*WriteOps* 和「頻寬」是最小預估值。 Azure Container Registry 致力於改善需要使用時的效能。
 

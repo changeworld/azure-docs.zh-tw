@@ -1,6 +1,6 @@
 - name: Azure 應用程式組態文件
   href: index.yml
-- name: 概觀
+- name: 總覽
   items:
     - name: 關於 Azure 應用程式組態
       href: overview.md
@@ -54,7 +54,7 @@
           href: enable-dynamic-configuration-java-spring-app.md
     - name: 使用功能旗標
       items:
-        - name: .NET Core
+        - name: ASP.NET Core
           href: use-feature-flags-dotnet-core.md
         - name: Spring Boot
           href: use-feature-flags-spring-boot.md
@@ -110,7 +110,7 @@
           href: concept-disaster-recovery.md
 - name: 操作指南
   items:
-    - name: 為使用者百分比啟用功能
+    - name: 使用條件式功能旗標
       href: howto-feature-filters-aspnet-core.md
     - name: 為指定的使用者/群組啟用功能
       href: howto-targetingfilter-aspnet-core.md

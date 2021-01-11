@@ -199,9 +199,9 @@
           href: event-hubs-kafka-spark-tutorial.md
         - name: 將 Apache Flink 連線到事件中樞
           href: event-hubs-kafka-flink-tutorial.md
-        - name: 將 Apache Kafka Connect 與中樞進行整合 (預覽)
+        - name: 整合 Apache Kafka Connect
           href: event-hubs-kafka-connect-tutorial.md
-        - name: 將 Apache Kafka Connect (預覽) 與 Debezium 進行整合
+        - name: 將 Apache Kafka Connect 與 Debezium 進行整合
           href: event-hubs-kafka-connect-debezium.md
         - name: 將 Akka 串流連線到事件中樞
           href: event-hubs-kafka-akka-streams-tutorial.md

@@ -37,16 +37,12 @@
     - name: 適用於應用程式 Proxy 的 Azure PowerShell 範例
       href: application-proxy-powershell-samples.md
 - name: 概念
-  expanded: false
+  expanded: true
   items:
     - name: 應用程式管理最佳做法
       href: application-management-fundamentals.md
     - name: 應用程式管理常見案例
       href: common-scenarios.md
-    - name: 在您的租用戶中檢視應用程式
-      href: application-types.md
-    - name: 將使用者指派給應用程式
-      href: ways-users-get-assigned-to-applications.md
     - name: 規劃雲端應用程式整合
       items:
         - name: 開始使用應用程式整合
@@ -286,6 +282,10 @@
       href: application-proxy-faq.md
     - name: 應用程式 Proxy 版本記錄
       href: application-proxy-release-version-history.md
+    - name: 在企業應用程式中出現應用程式的原因
+      href: application-types.md
+    - name: 將使用者指派給應用程式的原因
+      href: ways-users-get-assigned-to-applications.md
 - name: 資源
   items:
     - name: 開發人員的支援和協助選項

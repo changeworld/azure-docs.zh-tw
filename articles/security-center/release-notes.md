@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/28/2020
+ms.date: 01/07/2021
 ms.author: memildin
-ms.openlocfilehash: f0015177332aa07ed65f9d0345a11bfdad170104
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 4e4ee8690822c6caf4a7c5bd69387ea00d6d00a8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862620"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955445"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -29,6 +29,30 @@ ms.locfileid: "97862620"
 
 > [!TIP]
 > 如果想要尋找超過 6 個月的項目，請前往[Azure 資訊安全中心內新功能的封存](release-notes-archive.md)。
+
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>內部部署和多雲端電腦的弱點評量已正式推出
+
+我們在十月宣佈了一個預覽版，該版本使用 [適用於伺服器的 Azure Defender](defender-for-servers-introduction.md) 整合式弱點評量掃描器 (由 Qualys 提供技術支援)，來掃描已啟用 Azure Arc 的伺服器。
+
+現已正式推出。 
+
+當您在非 Azure 機器上啟用 Azure Arc 時，資訊安全中心將可供手動且大規模地部署整合式弱點掃描器。
+
+透過這項更新，您可以充分發揮 **適用於伺服器的 Azure Defender** 功效，以整合所有 Azure 和非 Azure 資產的弱點管理程式。
+
+主要功能：
+
+- 監視 Azure Arc 機器上的 VA (弱點評量) 掃描器佈建狀態
+- 將整合式 VA 代理程式佈建到未受保護的 Windows 和 Linux Azure Arc 機器 (手動方式且大規模)
+- 從已部署的代理程式接收和分析偵測到的弱點 (手動方式且大規模)
+- 適用於 Azure VM 和 Azure Arc 機器的整合體驗
+
+[深入了解如何將整合式弱點掃描器部署到混合式機器](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
+
+[深入了解已啟用 Azure Arc 的伺服器](../azure-arc/servers/index.yml)。
 
 
 ## <a name="december-2020"></a>2020 年 12 月
@@ -796,118 +820,3 @@ Pod 安全性原則 (預覽) 功能即將淘汰，2020 年 10 月 15 日之後�
 
 1. **單一預覽** – 僅加入此個人預覽版。 明確提及「ASC 連續掃描」作為您想要加入的預覽。
 1. **進行中的計畫** – 新增到此個人預覽版及未來的個人預覽版。 您必須完成設定檔和隱私權合約。
-
-
-## <a name="july-2020"></a>2020 年 7 月
-
-7 月的更新包括：
-- [虛擬機器的弱點評量現在可用於非市集映像](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
-- [Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 (預覽)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
-- [啟用威脅防護功能的八個新建議](#eight-new-recommendations-to-enable-threat-protection-features)
-- [容器安全性改善 - 加快登錄掃描和重新整理文件的速度](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
-- [使用新建議更新自適性應用程式控制和路徑規則中支援萬用字元](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
-- [已淘汰 SQL 進階資料安全性的六個原則](#six-policies-for-sql-advanced-data-security-deprecated)
-
-
-
-
-### <a name="vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images"></a>虛擬機器的弱點評量現在可用於非市集映像
-
-部署弱點評量解決方案時，資訊安全中心已先執行驗證檢查，然後再進行部署。 檢查是要確認目的地虛擬機器的市集SKU。 
-
-此更新中已移除這項檢查，您現在可以將弱點評量工具部署到「自訂」的 Windows 和 Linux 電腦。 自訂映像是您從市集預設值中修改的映像。
-
-雖然您現在可以在許多電腦上部署整合式弱點評量擴充功能 (由 Qualys 提供技術支援)，但只有當您使用＜[將整合式弱點掃描程式部署到標準層 VM 中](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)＞所列的作業系統時，才能受到支援
-
-深入了解[適用於虛擬機器的整合式弱點掃描程式 (需要 Azure Defender)](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)。
-
-若要深入了解如何從 Qualys 或 Rapid7 使用您自己的私下授權弱點評量解決方案，請參閱[部署合作夥伴弱點掃描解決方案](deploy-vulnerability-assessment-vm.md)。
-
-
-### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 (預覽)
-
-Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的活動。 資訊安全中心會在偵測到儲存體帳戶上有存取或惡意探索的嘗試時，顯示警示。 
-
-不論您的資料儲存為 Blob 容器、檔案共用或資料湖，皆可受到保護。
-
-
-
-
-### <a name="eight-new-recommendations-to-enable-threat-protection-features"></a>啟用威脅防護功能的八個新建議
-
-已新增八項新建議，目的是提供簡單的方式來為下列資源類型啟用 Azure 資訊安全中心的威脅防護功能：虛擬機器、App Service 方案、Azure SQL Database 伺服器、機器上的 SQL 伺服器、Azure 儲存體帳戶、Azure Kubernetes Service 叢集、Azure Container Registry 登錄，以及 Azure Key Vault 保存庫。
-
-新建議如下：
-
-- **Azure SQL Database 伺服器應啟用進階資料安全性**
-- **應在機器上的 SQL 伺服器啟用進階資料安全性**
-- **應在 Azure App Service 方案上啟用進階威脅防護**
-- **應在 Azure Container Registry 登錄上啟用進階威脅防護**
-- **應在 Azure Key Vault 保存庫上啟用進階威脅防護**
-- **應在 Azure Kubernetes Service 叢集上啟用進階威脅防護**
-- **應在 Azure 儲存體帳戶上啟用進階威脅防護**
-- **應在虛擬機器上啟用進階威脅防護**
-
-這些新建議屬於 **啟用 Azure Defender** 安全性控制。
-
-這些建議也包含快速修正功能。 
-
-> [!IMPORTANT]
-> 補救這些建議中的任何一項，都會產生相關資源的保護費用。 如果您目前的訂用帳戶中有相關資源，這些費用就會立即產生。 或是，如果您是在日後新增這些資源，則費用會在未來產生。
-> 
-> 例如，如果您的訂用帳戶中沒有任何 Azure Kubernetes Service 叢集，那麼您啟用威脅防護並不會產生任何費用。 如果您未來會在相同的訂用帳戶上新增叢集，則該叢集將會自動受到保護，並於該時間開始收費。
-
-如需詳細資訊，請參閱[安全性建議參考頁面](recommendations-reference.md)。
-
-深入了解 [Azure 資訊安全中心內的威脅防護](azure-defender.md)。
-
-
-
-
-### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>容器安全性改善 - 加快登錄掃描和重新整理文件的速度
-
-在不斷投資容器安全性領域的過程中，我們很高興資訊安全中心在對 Azure Container Registry 中儲存的容器映像進行動態掃描時，已大幅地改善效能。 現在，掃描通常會在大約兩分鐘內完成。 在某些情況下，最多可能需要 15 分鐘的時間。
-
-為了在 Azure 資訊安全中心的容器安全功能上改善簡潔度和指引方式，我們也重新整理了容器安全性的文件頁面。 
-
-若要深入了解資訊安全中心的容器安全性，請參閱下列文章：
-
-- [資訊安全中心的容器安全功能概觀](container-security.md)
-- [與 Azure Container Registry 整合的詳細資料](defender-for-container-registries-introduction.md)
-- [與 Azure Kubernetes Service 整合的詳細資料](defender-for-kubernetes-introduction.md)
-- [如何掃描您的登錄並強化 Docker 主機](container-security.md)
-- [來自 Azure Kubernetes Service 叢集威脅防護功能的安全性警示](alerts-reference.md#alerts-akscluster)
-- [來自 Azure Kubernetes Service 主機威脅防護功能的安全性警示](alerts-reference.md#alerts-containerhost)
-- [容器的安全性建議](recommendations-reference.md#recs-containers)
-
-
-
-### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>使用新建議更新自適性應用程式控制和路徑規則中支援萬用字元
-
-自適性應用程式控制功能已收到兩個重大更新：
-
-* 新建議會識別先前未允許的可能合理行為。 「**您應該更新自適性應用程式控制原則中的允許清單規則**」建議會提示您將新規則新增至現有原則，以減少自適性應用程式控制違規警示中的誤判數量。
-
-* 路徑規則現在支援萬用字元。 在此更新中，您可以使用萬用字元來設定允許的路徑規則。 支援的案例有兩種：
-
-    * 在路徑結尾使用萬用字元，以允許此資料夾和子資料夾中的所有可執行檔
-
-    * 在路徑中間使用萬用字元，可啟用其資料夾名稱不固定的已知可執行檔名稱 (例如，具有已知可執行檔的個人使用者資料夾、自動產生的資料夾名稱等等)。
-
-
-[深入了解自適性應用程式控制](security-center-adaptive-application.md)。
-
-
-
-### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>已淘汰 SQL 進階資料安全性的六個原則
-
-與 SQL 機器進階資料安全性相關的六個原則即將淘汰：
-
-- 在 SQL 受控執行個體的進階資料安全性設定中，進階威脅防護類型應設定為 [全部]
-- 在 SQL 伺服器的進階資料安全性設定中，進階威脅防護類型應設定為「全部」
-- SQL 受控執行個體的進階資料安全性設定應包含用來接收安全性警示的電子郵件地址
-- SQL 伺服器的進階資料安全性設定應包含用來接收安全性警示的電子郵件地址
-- 應在 SQL 受控執行個體進階資料安全性設定中，啟用傳給系統管理員和訂用帳戶擁有者的電子郵件通知
-- 應在 SQL 伺服器進階資料安全性設定中啟用傳給系統管理員和訂用帳戶擁有者的通知
-
-深入了解[內建原則](./policy-reference.md)。

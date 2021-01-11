@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 6265a7cde8e276570409238cadfd5ebc777b4527
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 71782661fd960cae3248005a8b90944eff9bef45
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532092"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98024253"
 ---
 | 資源 | 免費 | 共用 | 基本 | 標準 | 進階 (v1-v3) | 隔離 </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -31,6 +31,7 @@ ms.locfileid: "97532092"
 | 自訂網域 [SSL 支援](../articles/app-service/configure-ssl-certificate.md) |不支援，依預設可使用 \*.azurewebsites.net 的萬用字元憑證|不支援，依預設可使用 \*.azurewebsites.net 的萬用字元憑證|無限制的 SNI SSL 連線 |包含無限制的 SNI SSL 和 1 個 IP SSL 連線 |包含無限制的 SNI SSL 和 1 個 IP SSL 連線 | 包含無限制的 SNI SSL 和 1 個 IP SSL 連線|
 | 混合式連線 | | | 每個方案 5 個 | 每個方案 25 個 | 每個應用程式 200 個 | 每個應用程式 200 個 |
 | [虛擬網路整合](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
+| [私人端點](../articles/app-service/networking/private-endpoint.md) | | |   |   |  每個應用程式 100 個  |    |
 | 整合式負載平衡器 | |X |X |X |X |X<sup>10</sup> |
 | [存取限制](../articles/app-service/networking-features.md#access-restrictions) | 每一應用程式 512 個規則 | 每一應用程式 512 個規則 | 每一應用程式 512 個規則 | 每一應用程式 512 個規則 | 每一應用程式 512 個規則 | 每一應用程式 512 個規則 |
 | [Always On](../articles/app-service/configure-common.md) | | |X |X |X |X |

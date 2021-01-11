@@ -4,13 +4,13 @@ description: 本文會定期更新 Azure 認知服務 Language Understanding API
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 06/15/2020
-ms.openlocfilehash: 52f8aad0a429d3378d46265fab719b1cb9f07fd0
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.date: 01/05/2021
+ms.openlocfilehash: 4591bc26c848032d1c0f8b96720c4ec66b9b064d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813185"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916349"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding 的新功能
 
@@ -20,7 +20,8 @@ ms.locfileid: "97813185"
 
 ### <a name="december-2020"></a>2020 年 12 月
 
-* 所有 LUIS 使用者都必須[遷移至 LUIS authorint 資源](luis-migration-authoring.md)
+* 所有 LUIS 使用者都必須 [遷移至 LUIS 撰寫資源](luis-migration-authoring.md)
+* 新的 [評估端點](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) 讓您可以使用 REST API 提交批次測試，並取得意圖和實體的正確性結果。 從 v3.0-preview LUIS 端點開始提供。
 
 ### <a name="june-2020"></a>2020 年 6 月
 

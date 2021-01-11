@@ -1,29 +1,29 @@
 ---
-title: 快速入門 - 適用於 Java 的 Azure Key Vault 憑證用戶端程式庫
-description: 提供適用於 Java 的 Azure Key Vault 憑證用戶端程式庫。
+title: 快速入門 - 適用於 Java 的 Azure Key Vault 金鑰用戶端程式庫
+description: 提供適用於 Java 的 Azure Key Vault 金鑰用戶端程式庫的快速入門。
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
-ms.date: 12/18/2020
+ms.date: 01/05/2021
 ms.service: key-vault
-ms.subservice: certificates
+ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: cb5abf59c446ef0835375bac45d1e852144a6f28
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733463"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935269"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>快速入門：適用於 Java 的 Azure Key Vault 憑證用戶端程式庫
-開始使用適用於 Java 的 Azure Key Vault 憑證用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
+# <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>快速入門：適用於 Java 的 Azure Key Vault 金鑰用戶端程式庫
+開始使用適用於 Java 的 Azure Key Vault 金鑰用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
 
 其他資源：
 
-* [原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates) \(英文\)
+* [原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-keys) \(英文\)
 * [API 參考文件](https://azure.github.io/azure-sdk-for-java/keyvault.html)
 * [產品文件](index.yml)
-* [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates/src/samples/java/com/azure/security/keyvault/certificates)
+* [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-keys/src/samples/java/com/azure/security/keyvault/keys)
 
 ## <a name="prerequisites"></a>必要條件
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -50,11 +50,11 @@ ms.locfileid: "97733463"
 2. 請在瀏覽器中使用您的帳戶認證登入。
 
 ### <a name="create-a-new-java-console-app"></a>建立新的 Java 主控台應用程式
-在主控台視窗中，使用 `mvn` 命令建立名為 `akv-certificates-java` 的新 Java 主控台應用程式。
+在主控台視窗中，使用 `mvn` 命令建立名為 `akv-keys-java` 的新 Java 主控台應用程式。
 
 ```console
-mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
-                       -DartifactId=akv-certificates-java
+mvn archetype:generate -DgroupId=com.keyvault.keys.quickstart
+                       -DartifactId=akv-keys-java
                        -DarchetypeArtifactId=maven-archetype-quickstart
                        -DarchetypeVersion=1.4
                        -DinteractiveMode=false
@@ -66,16 +66,16 @@ mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
 [INFO] ----------------------------------------------------------------------------
 [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
 [INFO] ----------------------------------------------------------------------------
-[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
-[INFO] Parameter: artifactId, Value: akv-certificates-java
+[INFO] Parameter: groupId, Value: com.keyvault.keys.quickstart
+[INFO] Parameter: artifactId, Value: akv-keys-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: package, Value: com.keyvault.keys.quickstart
 [INFO] Parameter: packageInPathFormat, Value: com/keyvault/quickstart
-[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
-[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
-[INFO] Parameter: artifactId, Value: akv-certificates-java
+[INFO] Parameter: package, Value: com.keyvault.keys.quickstart
+[INFO] Parameter: groupId, Value: com.keyvault.keys.quickstart
+[INFO] Parameter: artifactId, Value: akv-keys-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-certificates-java
+[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-keys-java
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
@@ -84,10 +84,10 @@ mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
 [INFO] ------------------------------------------------------------------------
 ```
 
-將目錄變更為新建立的 `akv-certificates-java/` 資料夾。
+將目錄變更為新建立的 `akv-keys-java/` 資料夾。
 
 ```console
-cd akv-certificates-java
+cd akv-keys-java
 ```
 
 ### <a name="install-the-package"></a>安裝套件
@@ -96,8 +96,8 @@ cd akv-certificates-java
 ```xml
     <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-security-keyvault-certificates</artifactId>
-      <version>4.1.3</version>
+      <artifactId>azure-security-keyvault-keys</artifactId>
+      <version>4.2.3</version>
     </dependency>
 
     <dependency>
@@ -111,14 +111,14 @@ cd akv-certificates-java
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 #### <a name="grant-access-to-your-key-vault"></a>授與對金鑰保存庫的存取權
-建立金鑰保存庫的存取原則，將憑證權限授與服務主體。
+建立金鑰保存庫的存取原則，將金鑰權限授與服務主體。
 
 ```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>設定環境變數
-此應用程式使用您的金鑰保存庫名稱作為稱為 `KEY_VAULT_NAME` 的環境變數。
+此應用程式使用您的金鑰保存庫名稱作為名為 `KEY_VAULT_NAME` 的環境變數。
 
 Windows
 ```cmd
@@ -126,7 +126,7 @@ set KEY_VAULT_NAME=<your-key-vault-name>
 ````
 Windows PowerShell
 ```powershell
-$Env:KEY_VAULT_NAME=<your-key-vault-name>
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
 macOS 或 Linux
@@ -135,7 +135,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
 ## <a name="object-model"></a>物件模型
-適用於 Java 的 Azure Key Vault 憑證用戶端程式庫可讓您管理憑證。 [程式碼範例](#code-examples)一節說明如何建立用戶端、建立憑證、擷取憑證及刪除憑證。
+適用於 Java 的 Azure Key Vault 金鑰用戶端程式庫可讓您管理金鑰。 [程式碼範例](#code-examples) 一節會示範如何建立用戶端、建立金鑰、擷取金鑰，以及刪除金鑰。
 
 整個主控台應用程式[如下](#sample-code)。
 
@@ -147,13 +147,11 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.certificates.CertificateClient;
-import com.azure.security.keyvault.certificates.CertificateClientBuilder;
-import com.azure.security.keyvault.certificates.models.CertificateOperation;
-import com.azure.security.keyvault.certificates.models.CertificatePolicy;
-import com.azure.security.keyvault.certificates.models.DeletedCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
+import com.azure.security.keyvault.keys.KeyClient;
+import com.azure.security.keyvault.keys.KeyClientBuilder;
+import com.azure.security.keyvault.keys.models.DeletedKey;
+import com.azure.security.keyvault.keys.models.KeyType;
+import com.azure.security.keyvault.keys.models.KeyVaultKey;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>驗證並建立用戶端
@@ -165,44 +163,48 @@ import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPo
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
 String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-CertificateClient certificateClient = new CertificateClientBuilder()
+KeyClient keyClient = new KeyClientBuilder()
     .vaultUrl(keyVaultUri)
     .credential(new DefaultAzureCredentialBuilder().build())
     .buildClient();
 ```
 
-### <a name="save-a-secret"></a>儲存秘密
-現在應用程式已通過驗證，您可以使用 `certificateClient.beginCreateCertificate` 方法在金鑰保存庫中建立憑證。 這需要憑證的名稱和憑證原則 -- 我們已將 "myCertificate" 值指派給此範例中的 `certificateName` 變數，並使用預設原則。
-
-憑證建立是長時間執行的作業，您可以輪詢進度或等待其完成。
+### <a name="create-a-key"></a>建立金鑰
+現在應用程式已通過驗證，您可以使用 `keyClient.createKey` 方法在金鑰保存庫中建立金鑰。 這需要金鑰的名稱和金鑰類型 -- 我們已將 "myKey" 值指派給 `keyName` 變數，並在此範例中使用 RSA `KeyType`。
 
 ```java
-SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
-    certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
-certificatePoller.waitForCompletion();
+keyClient.createKey(keyName, KeyType.RSA);
 ```
 
-建立完成後，您可以透過下列呼叫取得憑證：
+您可以確認金鑰是否已使用 [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) 命令來加以設定：
 
-```java
-KeyVaultCertificate createdCertificate = certificatePoller.getFinalResult();
+```azurecli
+az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
 ```
 
-### <a name="retrieve-a-certificate"></a>擷取憑證
-您現在可以使用 `certificateClient.getCertificate` 方法擷取先前建立的憑證。
+### <a name="retrieve-a-key"></a>擷取金鑰
+您現在可以使用 `keyClient.getKey` 方法來擷取先前建立的金鑰。
 
 ```java
-KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
+KeyVaultKey retrievedKey = keyClient.getKey(keyName);
  ```
 
-您現在可以使用 `retrievedCertificate.getName`、`retrievedCertificate.getProperties` 等作業來存取已取出之憑證的詳細資料，以及其內容 `retrievedCertificate.getCer`。
+您現在可以使用 `retrievedKey.getProperties`、`retrievedKey.getKeyOperations` 等作業來存取已取出金鑰的詳細資料。
 
-### <a name="delete-a-certificate"></a>刪除憑證
-最後，我們將使用 `certificateClient.beginDeleteCertificate` 方法 (也是長時間執行的作業)，從您的金鑰保存庫中刪除憑證。
+### <a name="delete-a-key"></a>刪除金鑰
+最後，我們將使用 `keyClient.beginDeleteKey` 方法從金鑰保存庫中刪除金鑰。
+
+刪除金鑰是長時間執行的作業，您可以輪詢進度或等待其完成。
 
 ```java
-SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
+SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
 deletionPoller.waitForCompletion();
+```
+
+您可以確認金鑰是否已使用 [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show) 命令來加以刪除：
+
+```azurecli
+az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
 ```
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -218,48 +220,44 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="sample-code"></a>範例程式碼
 ```java
-package com.keyvault.certificates.quickstart;
+package com.keyvault.keys.quickstart;
 
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.certificates.CertificateClient;
-import com.azure.security.keyvault.certificates.CertificateClientBuilder;
-import com.azure.security.keyvault.certificates.models.CertificateOperation;
-import com.azure.security.keyvault.certificates.models.CertificatePolicy;
-import com.azure.security.keyvault.certificates.models.DeletedCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
-import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
+import com.azure.security.keyvault.keys.KeyClient;
+import com.azure.security.keyvault.keys.KeyClientBuilder;
+import com.azure.security.keyvault.keys.models.DeletedKey;
+import com.azure.security.keyvault.keys.models.KeyType;
+import com.azure.security.keyvault.keys.models.KeyVaultKey;
 
 public class App {
     public static void main(String[] args) throws InterruptedException, IllegalArgumentException {
         String keyVaultName = System.getenv("KEY_VAULT_NAME");
         String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-        System.out.printf("key vault name = %s and kv uri = %s \n", keyVaultName, keyVaultUri);
+        System.out.printf("key vault name = %s and key vault URI = %s \n", keyVaultName, keyVaultUri);
 
-        CertificateClient certificateClient = new CertificateClientBuilder()
+        KeyClient keyClient = new KeyClientBuilder()
                 .vaultUrl(keyVaultUri)
                 .credential(new DefaultAzureCredentialBuilder().build())
                 .buildClient();
 
-        String certificateName = "myCertificate";
+        String keyName = "myKey";
 
-        System.out.print("Creating a certificate in " + keyVaultName + " called '" + certificateName + " ... ");
+        System.out.print("Creating a key in " + keyVaultName + " called '" + keyName + " ... ");
 
-        SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
-                certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
-        certificatePoller.waitForCompletion();
+        keyClient.createKey(keyName, KeyType.RSA);
 
         System.out.print("done.");
-        System.out.println("Retrieving certificate from " + keyVaultName + ".");
+        System.out.println("Retrieving key from " + keyVaultName + ".");
 
-        KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
+        KeyVaultKey retrievedKey = keyClient.getKey(keyName);
 
-        System.out.println("Your certificate's ID is '" + retrievedCertificate.getId() + "'.");
-        System.out.println("Deleting your certificate from " + keyVaultName + " ... ");
+        System.out.println("Your key's ID is '" + retrievedKey.getId() + "'.");
+        System.out.println("Deleting your key from " + keyVaultName + " ... ");
 
-        SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
+        SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
         deletionPoller.waitForCompletion();
 
         System.out.print("done.");
@@ -268,8 +266,9 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>後續步驟
-在本快速入門中，您已建立金鑰保存庫和憑證、擷取該憑證然後刪除。 若要深入了解 Key Vault 以及要如何將其與應用程式整合，請繼續閱讀下列文章。
+在本快速入門中，您已建立金鑰保存庫、建立金鑰、擷取該金鑰然後刪除。 若要深入了解 Key Vault 以及要如何將其與應用程式整合，請繼續閱讀下列文章。
 
 - 閱讀 [Azure Key Vault 概觀](../general/overview.md)
+- 閱讀 [Key Vault 安全性概觀](../general/security-overview.md)
 - 參閱 [Azure Key Vault 開發人員指南](../general/developers-guide.md)
 - 如何[針對金鑰保存庫的存取進行保護](../general/secure-your-key-vault.md)

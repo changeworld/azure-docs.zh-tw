@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c801a276f3a116f00b34d750ca8bfec7e56d377b
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: e0fff67d6998e55854d4dc3c8db261bc4499f0be
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680735"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936051"
 ---
 # <a name="calling-client-library-overview"></a>通話用戶端程式庫概觀
 
@@ -96,8 +96,8 @@ WebRTC API (例如 `getUserMedia` ) 需要透過 HTTPS 提供呼叫這些 API �
 
 |           |Web | Android/iOS|
 |-----------|----|------------|
-|可以同時傳送的傳出串流數目 |1 段影片 + 1 個螢幕共用 | 1 段影片 + 1 個螢幕共用|
-|可以同時轉譯的傳入串流數目 |1 段影片 + 1 個螢幕共用| 6 段影片 + 1 個螢幕共用 |
+|**可以同時傳送的傳出串流數目** |1 段影片 + 1 個螢幕共用 | 1 段影片 + 1 個螢幕共用|
+|**可以同時轉譯的傳入串流數目** |1 段影片 + 1 個螢幕共用| 6 段影片 + 1 個螢幕共用 |
 
 
 ## <a name="next-steps"></a>下一步

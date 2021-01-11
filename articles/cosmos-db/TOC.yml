@@ -1,6 +1,6 @@
 - name: Azure Cosmos DB 文件
   href: index.yml
-- name: 概觀
+- name: 總覽
   items:
     - name: 歡迎使用 Azure Cosmos DB
       href: introduction.md
@@ -966,6 +966,10 @@
               href: cassandra-migrate-cosmos-db-blitzz.md
             - name: 遷移 - 使用 Databricks 將 Apache Cassandra 遷移至 Cassandra API
               href: cassandra-migrate-cosmos-db-databricks.md
+            - name: 遷移 - 使用 Databricks 將 Apache Cassandra 遷移至 Cassandra API
+              href: cassandra-migrate-cosmos-db-databricks.md
+            - name: 遷移 - 使用 Apache Kafka 將 PostgreSQL 遷移至 Cassandra API
+              href: postgres-migrate-cosmos-db-kafka.md
         - name: 變更摘要
           href: cassandra-change-feed.md
         - name: 建立容器 - Cassandra API
