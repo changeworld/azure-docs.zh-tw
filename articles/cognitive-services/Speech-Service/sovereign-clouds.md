@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 01/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 539ea6f80604eabdbbe56a3280cf5ddb367c0439
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: f30b1f0f14bba54b8b4fcd7c5190f3c533f199a6
+ms.sourcegitcommit: 63caac7871df9d999ca5a5f1b8c036ae7014231c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97966778"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98061747"
 ---
 # <a name="speech-services-in-sovereign-clouds"></a>主權雲端中的語音服務
 
@@ -36,9 +36,10 @@ ms.locfileid: "97966778"
     - 自訂語音 (聲場模型 () 和語言模型 (LM) 適應性) 
       - [Speech Studio](https://speech.azure.us/) \(英文\)
   - 文字轉換語音
+    - 標準語音
+    - 類神經語音
   - 語音翻譯
 - **不支援的功能：**
-  - 類神經語音
   - 自訂語音
 - **支援的語言：**
   - 請參閱[這裡](language-support.md)的支援語言清單
@@ -105,20 +106,13 @@ spx recognize --host "usGovHost" --file myaudio.wav
     - 自訂語音 (聲場模型 () 和語言模型 (LM) 適應性) 
       - [Speech Studio](https://speech.azure.cn/) \(英文\)
   - 文字轉換語音
+    - 標準語音
+    - 類神經語音
   - 語音翻譯
 - **不支援的功能：**
-  - 類神經語音
   - 自訂語音
 - **支援的語言：**
-  - 阿拉伯文 (ar-* ) 
-  - 中文 (zh-* ) 
-  - 英文 (en-*)
-  - 法文 (fr-* ) 
-  - 德文 (de-* ) 
-  - 印度) 的印度文 (
-  - 韓文 (ko-KR)
-  - 俄文 (ru-RU)
-  - 西班牙文 (es-* ) 
+  - 請參閱[這裡](language-support.md)的支援語言清單
 
 ### <a name="endpoint-information"></a>端點資訊
 
