@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/05/2021
 ms.author: mbullwin
 keywords: 異常偵測, 機器學習, 演算法
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
+ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705076"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97901363"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>什麼是異常偵測器 API？
 
@@ -83,8 +83,17 @@ Anomaly Detector API 是一種 RESTful Web 服務，因此可輕易地從任何�
 
 您可以閱讀 [Microsoft 的時間序列異常偵測服務](https://arxiv.org/abs/1906.03821)文件 (KDD 已於 2019 接受)，以深入了解由 Microsoft 開發的 SR-CNN 演算法。
 
-
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="service-availability-and-redundancy"></a>服務可用性與備援能力
+
+### <a name="is-the-anomaly-detector-service-zone-resilient"></a>異常偵測器服務區域是否可復原？
+
+是。 依預設，異常偵測器服務具有區域復原性。
+
+### <a name="how-do-i-configure-the-anomaly-detector-service-to-be-zone-resilient"></a>如何將異常偵測器服務設定為具有區域復原能力？
+
+不需要客戶設定即可啟用區域復原。 依預設可以使用異常偵測器資源的區域復原功能，並由服務本身進行管理。
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器在內部部署環境進行部署
 
