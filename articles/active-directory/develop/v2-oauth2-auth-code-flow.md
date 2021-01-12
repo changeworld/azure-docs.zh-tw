@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 580ec0761c997a0ee7611f7104aa48650c8573e7
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88612311"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107407"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 授權碼流程
 
@@ -58,7 +58,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=code
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
-&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read%20api%3A%2F%2F
 &state=12345
 &code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
 &code_challenge_method=S256
@@ -71,11 +71,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 參數    | 必要條件/選擇性 | 描述 |
 |--------------|-------------|--------------|
 | `tenant`    | required    | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。  |
-| `client_id`   | required    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。  |
-| `response_type` | required    | 授權碼流程必須包含 `code`。       |
-| `redirect_uri`  | required | 應用程式的 redirect_uri，您的應用程式可在此傳送及接收驗證回應。 其必須完全符合您在入口網站中註冊的其中一個 redirect_uris，不然就必須得是編碼的 url。 對於原生和行動應用程式，請使用 `https://login.microsoftonline.com/common/oauth2/nativeclient` 的預設值。   |
+| `client_id`   | required    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的 **應用程式 (用戶端) 識別碼**。  |
+| `response_type` | required    | 授權碼流程必須包含 `code`。 也可以包含 `id_token` 或（ `token` 如果使用 [混合式流程](#request-an-id-token-as-well-hybrid-flow)）。 |
+| `redirect_uri`  | 必要 | 應用程式的 redirect_uri，您的應用程式可在此傳送及接收驗證回應。 其必須完全符合您在入口網站中註冊的其中一個 redirect_uris，不然就必須得是編碼的 url。 對於原生和行動應用程式，請使用 `https://login.microsoftonline.com/common/oauth2/nativeclient` 的預設值。   |
 | `scope`  | required    | 您要使用者同意的 [範圍](v2-permissions-and-consent.md) 空格分隔清單。  在要求的 `/authorize` 階段中，這可以涵蓋多項資源，讓您的應用程式對於您想要呼叫的多個 Web API 徵得同意。 |
-| `response_mode`   | 建議使用 | 指定將產生的權杖送回到應用程式所應該使用的方法。 可以是下列其中一項：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 會提供程式碼，以作為重新導向 URI 的查詢字串參數。 如果您要求可使用隱含流程的識別碼權杖，就無法使用 [OpenID 規格](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果您只要求程式碼，您可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 會執行 POST，其中包含您重新導向 URI 的程式碼。 如需詳細資訊，請參閱 [OpenID Connect 通訊協定](../azuread-dev/v1-protocols-openid-connect-code.md)。  |
+| `response_mode`   | 建議使用 | 指定將產生的權杖送回到應用程式所應該使用的方法。 可以是下列其中一項：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 會提供程式碼，以作為重新導向 URI 的查詢字串參數。 如果您要求可使用隱含流程的識別碼權杖，就無法使用 [OpenID 規格](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果您只要求程式碼，您可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 會執行 POST，其中包含您重新導向 URI 的程式碼。 |
 | `state`                 | 建議使用 | 同樣會隨權杖回應傳回之要求中所包含的值。 其可以是您想要之任何內容的字串。 隨機產生的唯一值通常用於 [防止跨站台要求偽造攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此值也可以將驗證要求發生前使用者在應用程式中的狀態相關資訊 (例如他們所在的網頁或檢視) 編碼。 |
 | `prompt`  | 選用    | 表示需要的使用者互動類型。 此時唯有 `login`、`none` 及 `consent` 是有效值。<br/><br/>- `prompt=login` 會強制使用者在該要求上輸入認證，否定單一登入。<br/>- `prompt=none` 則相反，其會確保使用者不會看到任何互動式提示。 如果無法透過單一登入以無訊息方式完成要求，Microsoft 身分識別平台端點將傳回 `interaction_required` 錯誤。<br/>- `prompt=consent` 會在使用者登入之後觸發 OAuth 同意對話方塊，詢問使用者是否要授與權限給應用程式。<br/>- `prompt=select_account` 將中斷單一登入，其中會列出工作階段或任何已記住的帳戶中的所有帳戶，或提供選擇使用不同帳戶的選項。<br/> |
 | `login_hint`  | 選用    | 如果您事先知道其使用者名稱，可用來預先填入使用者登入頁面的使用者名稱/電子郵件地址欄位。 通常應用程式會在重新驗證期間使用此參數，已經使用 `preferred_username` 宣告從上一個登入擷取使用者名稱。   |
@@ -101,9 +101,9 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 | 參數 | 描述  |
 |-----------|--------------|
 | `code` | 應用程式要求的 authorization_code。 應用程式可以使用授權碼要求目標資源的存取權杖。 Authorization_codes 的有效期很短，通常會在大約 10 分鐘後到期。 |
-| `state` | 如果要求中包含狀態參數，回應中就應該出現相同的值。 應用程式應該確認要求和回應中的狀態值完全相同。 |
+| `state` | 如果要求中包含狀態參數，回應中就應該出現相同的值。 應用程式必須驗證要求與回應中的狀態值是否相同。 |
 
-如果您要求一個存取權杖和識別碼權杖，並在您的應用程式註冊中啟用隱含授與，則您也可以接收這些存取權杖和識別碼權杖。  這有時稱為「混合式流程」，而且是由 ASP.NET 之類的架構所使用。
+如果您要求識別碼權杖，並在您的應用程式註冊中啟用隱含授與，您也可以接收該權杖。  這有時稱為「 [混合式流程](#request-an-id-token-as-well-hybrid-flow)」，可供 ASP.NET 之類的架構使用。
 
 #### <a name="error-response"></a>錯誤回應
 
@@ -129,12 +129,59 @@ error=access_denied
 | `invalid_request` | 通訊協定錯誤，例如遺漏必要的參數。 | 修正並重新提交要求。 這是通常會在初始測試期間擷取到的開發錯誤。 |
 | `unauthorized_client` | 不允許用戶端應用程式要求授權碼。 | 這個錯誤通常會在用戶端應用程式未在 Azure AD 中註冊，或未加入至使用者的 Azure AD 租用戶時發生。 應用程式可以對使用者提示關於安裝應用程式，並將它加入至 Azure AD 的指示。 |
 | `access_denied`  | 資源擁有者拒絕同意  | 用戶端應用程式可以通知使用者除非使用者同意，否則其無法繼續進行。 |
-| `unsupported_response_type` | 授權伺服器不支援要求中的回應類型。 | 修正並重新提交要求。 這是通常會在初始測試期間擷取到的開發錯誤。  |
+| `unsupported_response_type` | 授權伺服器不支援要求中的回應類型。 | 修正並重新提交要求。 這是通常會在初始測試期間擷取到的開發錯誤。 在 [混合式流程](#request-an-id-token-as-well-hybrid-flow)中看到時，表示您必須啟用用戶端應用程式註冊上的識別碼權杖隱含授與設定。 |
 | `server_error`  | 伺服器發生非預期的錯誤。| 重試要求。 這些錯誤可能是由暫時性狀況所引起。 用戶端應用程式可能會向使用者解釋其回應因暫時性錯誤而延遲。 |
 | `temporarily_unavailable`   | 伺服器暫時過於忙碌而無法處理要求。 | 重試要求。 用戶端應用程式可能會向使用者解釋其回應因暫時性狀況而延遲。 |
 | `invalid_resource`  | 目標資源無效，因為它不存在、Azure AD 無法找到它，或是它並未正確設定。 | 此錯誤表示尚未在租用戶中設定資源 (如果存在)。 應用程式可以對使用者提示關於安裝應用程式，並將它加入至 Azure AD 的指示。 |
 | `login_required` | 找到太多使用者或找不到使用者 | 用戶端已要求無訊息驗證 (`prompt=none`)，但找不到單一使用者。 這可能表示工作階段中有多個作用中使用者，或沒有任何使用者。 這會將選擇的租用戶列入考慮 (例如，如果有兩個使用中的 Azure AD 帳戶和一個 Microsoft 帳戶，且已選擇 `consumers`，無訊息驗證即可運作)。 |
 | `interaction_required` | 要求需要使用者互動。 | 必須進行其他驗證步驟或同意。 請在不使用 `prompt=none` 的情況下重試要求。 |
+
+### <a name="request-an-id-token-as-well-hybrid-flow"></a>也要求 (混合式流程的識別碼權杖) 
+
+若要瞭解使用者在兌換授權碼之前的身分，通常應用程式在要求授權碼時，也會要求識別碼權杖。 這稱為混合式 *流程* ，因為它會混用與授權碼流程的隱含授與。 混合流程常用於想要呈現使用者頁面的 web 應用程式，而不會封鎖程式碼兌換，尤其是 [ASP.NET](quickstart-v2-aspnet-core-webapp.md)。 單一頁面應用程式和傳統 web 應用程式都受益于此模型中的延遲減少。
+
+混合式流程與稍早所述的授權碼流程相同，但有三項新增功能，要求識別碼權杖時需要用到：新的範圍、新的 response_type，以及新的 `nonce` 查詢參數。
+
+```
+// Line breaks for legibility only
+
+https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&response_type=code%20id_token
+&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&response_mode=fragment
+&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
+&state=12345
+&nonce=abcde
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
+```
+
+| 更新的參數 | 必要條件/選擇性 | 描述 |
+|---------------|-------------|--------------|
+|`response_type`| 必要 | 新增 `id_token` 會向伺服器表示應用程式在端點的回應中想要有識別碼權杖 `/authorize` 。  |
+|`scope`| 必要 | 針對識別碼權杖，必須更新以包含識別碼權杖範圍 `openid` ，以及選擇性 `profile` 和 `email` 。 |
+|`nonce`| 必要|     包含在要求中的值 (由應用程式產生)，該值將會以宣告的形式包含在產生的 id_token 中。 然後，應用程式可以驗證此值，以減輕權杖重新執行所造成的攻擊。 此值通常是隨機的唯一字串，可以用來識別要求的來源。 |
+|`response_mode`| 建議 | 指定應該用來將所產生權杖傳回給應用程式的方法。 `query`只有授權碼預設為，但 `fragment` 如果要求包含 id_token 則為 `response_type` 。|
+
+使用 `fragment` 作為回應模式可能會造成 web 應用程式的問題，而這些應用程式會從重新導向讀取程式碼，因為瀏覽器不會將片段傳遞給 web 伺服器。  在這些情況下，建議應用程式使用 `form_post` 回應模式，以確保所有資料都會傳送至伺服器。 
+
+#### <a name="successful-response"></a>成功回應
+
+使用 `response_mode=fragment` 的成功回應如下所示：
+
+```HTTP
+GET https://login.microsoftonline.com/common/oauth2/nativeclient#
+code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
+&id_token=eYj...
+&state=12345
+```
+
+| 參數 | 描述  |
+|-----------|--------------|
+| `code` | 應用程式所要求的授權碼。 應用程式可以使用授權碼要求目標資源的存取權杖。 授權碼存留期很短，通常會在大約10分鐘後到期。 |
+| `id_token` | 使用者的識別碼權杖，透過 *隱含授* 與發出。 包含 `c_hash` `code` 在相同要求中的雜湊的特殊宣告。 |
+| `state` | 如果要求中包含 state 參數，則回應中應該會出現相同的值。 應用程式必須驗證要求與回應中的狀態值是否相同。 |
 
 ## <a name="request-an-access-token"></a>要求存取權杖
 
@@ -167,7 +214,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | 選用   | 以空格分隔的範圍清單。 範圍必須全部來自單一資源，以及 OIDC 範圍 (`profile`、`openid`、`email`)。 如需範圍的詳盡說明，請參閱 [權限、同意和範圍](v2-permissions-and-consent.md)。 這是授權碼流程的 Microsoft 擴充功能，目的是讓應用程式在權杖兌換期間宣告他們想要權杖的資源。|
 | `code`          | required  | 您在流程的第一個階段中取得的 authorization_code。 |
 | `redirect_uri`  | required  | 用來取得 authorization_code 的相同 redirect_uri 值。 |
-| `client_secret` | 機密 Web 應用程式所需 | 您在應用程式註冊入口網站中為應用程式建立的應用程式密碼。 您不應該在原生應用程式或單頁應用程式中使用應用程式密碼，因為 client_secrets 無法可靠地儲存在裝置或網頁上。 這是 Web 應用程式和 Web API 的必要參數，能夠將 client_secret 安全地儲存在伺服器端。  用戶端密碼必須在傳送之前先進行 URL 編碼。 如需有關 URI 編碼的詳細資訊，請參閱 [URI 一般語法規格](https://tools.ietf.org/html/rfc3986#page-12)。 |
+| `client_secret` | 機密 Web 應用程式所需 | 您在應用程式註冊入口網站中為應用程式建立的應用程式密碼。 您不應該在原生應用程式或單頁應用程式中使用應用程式密碼，因為 client_secrets 無法可靠地儲存在裝置或網頁上。 這是 Web 應用程式和 Web API 的必要參數，能夠將 client_secret 安全地儲存在伺服器端。  就像這裡所討論的所有參數一樣，用戶端密碼必須在傳送之前先進行 URL 編碼，這通常是由 SDK 執行的步驟。 如需有關 URI 編碼的詳細資訊，請參閱 [URI 一般語法規格](https://tools.ietf.org/html/rfc3986#page-12)。 |
 | `code_verifier` | 建議使用  | 用來取得 authorization_code 的相同 code_verifier。 如果在授權碼授與要求中已使用 PKCE，則為必要參數。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 |
 
 ### <a name="successful-response"></a>成功回應
@@ -284,7 +331,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 參數     | 類型           | 描述        |
 |---------------|----------------|--------------------|
 | `tenant`        | required     | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。   |
-| `client_id`     | required    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
+| `client_id`     | required    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的 **應用程式 (用戶端) 識別碼**。 |
 | `grant_type`    | required    | 必須是授權碼流程此階段的 `refresh_token` 。 |
 | `scope`         | required    | 範圍的空格分隔清單。 在此階段中要求的範圍必須相當於或為原始 authorization_code 要求階段中所要求的範圍子集。 如果這個要求中指定的範圍遍及多個資源伺服器，Microsoft 身分識別平台端點就會傳回第一個範圍中所指定資源的權杖。 如需範圍的詳盡說明，請參閱 [權限、同意和範圍](v2-permissions-and-consent.md)。 |
 | `refresh_token` | required    | 您在流程的第二個階段中取得的 refresh_token。 |

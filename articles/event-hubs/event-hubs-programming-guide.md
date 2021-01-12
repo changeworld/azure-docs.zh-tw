@@ -4,12 +4,12 @@ description: 本文提供有關如何使用 Azure .NET SDK 為「Azure 事件中
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17bec931f79a6dbb3d98270ab0ff6e2d1d4c6541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f95abe3668bb400d84e354c3bca9eac289c5795
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013906"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108682"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中樞 (舊版 EventHubs 套件的 .NET 程式設計指南) 
 本文會討論一些使用 Azure 事件中樞來撰寫程式碼的常見案例。 它假設使用者對事件中樞已有初步了解。 如需事件中樞的概念概觀，請參閱 [事件中樞概觀](./event-hubs-about.md)。
@@ -68,7 +68,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 }
 ```
 
-## <a name="partition-key"></a>資料分割索引鍵
+## <a name="partition-key"></a>分割區索引鍵
 
 > [!NOTE]
 > 如果您不熟悉資料分割，請參閱 [這篇文章](event-hubs-features.md#partitions)。 
@@ -93,7 +93,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 分批傳送事件可以協助增加輸送量。 您可使用 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 來建立批次，資料物件稍後可針對 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 呼叫新增至該批次。
 
-單一批次不能超過每個事件 1 MB 的限制。 此外，批次中的每個訊息都會使用相同的身分識別。 確保批次未超過最大事件大小是傳送者的責任。 如果超過，則會產生「傳送」**** 錯誤。 您可以使用協助程式方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) 以確保批次不超過 1 MB。 您會從 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 取得空 [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)，然後使用 [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) 新增事件來建立批次。 
+單一批次不能超過每個事件 1 MB 的限制。 此外，批次中的每個訊息都會使用相同的身分識別。 確保批次未超過最大事件大小是傳送者的責任。 如果超過，則會產生「傳送」錯誤。 您可以使用協助程式方法 [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) 以確保批次不超過 1 MB。 您會從 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API 取得空 [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)，然後使用 [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) 新增事件來建立批次。 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>以非同步方式傳送和大規模傳送
 
@@ -144,7 +144,6 @@ await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 > [!NOTE]
 > 目前只有 REST API 支援這項功能 ([發行者撤銷](/rest/api/eventhub/revoke-publisher)) 。
 
-如需有關發佈者撤銷，以及如何以發佈者身分傳送到事件中樞的詳細資訊，請參閱[事件中樞大規模安全發佈](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab)範例。
 
 ## <a name="next-steps"></a>後續步驟
 

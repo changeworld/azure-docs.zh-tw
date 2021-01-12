@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 2dac4b461d4506015f0ef374eae37f67c445791d
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094568"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107866"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 無縫單一登入：常見問題集
 
@@ -85,6 +85,7 @@ ms.locfileid: "97094568"
 
    > [!NOTE]
    >您將需要網域系統管理員和全域管理員認證，才能執行下列步驟。
+   >如果您不是網域系統管理員，而且您已被網域系統管理員指派許可權，您應該呼叫 `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
 
    **步驟 1.取得已啟用無縫 SSO 的 AD 樹系清單**
 
@@ -105,9 +106,6 @@ ms.locfileid: "97094568"
    >使用的網域系統管理員帳戶不得為「受保護的使用者」群組的成員。 若是如此，作業會失敗。
 
    2. 呼叫 `Update-AzureADSSOForest -OnPremCredentials $creds`。 此命令會更新此特定 AD 樹系中 `AZUREADSSO` 電腦帳戶的 Kerberos 解密金鑰，並且在 Azure AD 中更新它。
-   
-   >[!NOTE]
-   >如果您不是網域系統管理員，而且您已被網域系統管理員指派許可權，您應該呼叫 `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. 針對您已設定此功能的每個 AD 樹系，重複上述步驟。
    

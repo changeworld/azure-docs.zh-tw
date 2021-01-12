@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 11/16/2020
-ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/18/2020
+ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302859"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107390"
 ---
 # <a name="introduction-to-listing-options"></a>清單選項簡介
 
@@ -26,21 +26,23 @@ ms.locfileid: "96302859"
 
 下表顯示每個供應專案類型可使用的清單選項。
 
-| 供應項目類型 | 免費試用 | 試用產品 | 與我連絡 | 立即取得 (可交易)  |
+| 供應項目類型 | 免費試用 | 試用產品 | 與我連絡 | 立即取得 `*` |
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 | Azure 應用程式 (受控應用程式)  |   | &#10004; |   | &#10004; |
-| Azure 應用程式 (解決方案範本)  |  |  |  |  |
+| Azure 應用程式 (解決方案範本)  |  |  |  | &#10004; |
 | 諮詢服務 |  |  | &#10004; |  |
-| Azure 容器 |  |  |  |  |
-| Dynamics 365 business central | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 Customer Engagement & PowerApps | &#10004; | &#10004; | &#10004; |  |
-| 適用于作業的 Dynamics 365 | &#10004; | &#10004; | &#10004; |  |
-| IoT Edge 模組 |  |  |  |  |
-| 受控服務 |  |  |  |  |
-| Power BI 應用程式 |  |  |  |  |
+| Azure 容器 |  |  |  | &#10004; |
+| Dynamics 365 business central | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 Customer Engagement & PowerApps | &#10004; | &#10004; | &#10004; | &#10004; |
+| 適用于作業的 Dynamics 365 | &#10004; | &#10004; | &#10004; | &#10004; |
+| IoT Edge 模組 |  |  |  | &#10004; |
+| 受控服務 |  |  |  | &#10004; |
+| Power BI 應用程式 |  |  |  | &#10004; |
 | Azure 虛擬機器 | &#10004; | &#10004; |  | &#10004; |
 | 軟體即服務 | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
+
+`*` [立即取得] 選項包括立即取得 (免費) 、自備授權 (BYOL) 、訂用帳戶和以使用量為基礎的定價。 如需詳細資訊，請參閱 [立即取得](#get-it-now)。
 
 ### <a name="free-trial"></a>免費試用
 

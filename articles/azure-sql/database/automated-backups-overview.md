@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 11/18/2020
-ms.openlocfilehash: c6754e6f0e3f0d6208bd34c96c8bc473429c943c
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: e4917d03e3c0fb8109f9ad9bdcea9e7c1cdcd5df
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917897"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108053"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -122,7 +122,7 @@ SQL Database 和 SQL 受控執行個體計算已使用的備份儲存體總數�
 
 ## <a name="backup-retention"></a>備份保留
 
-針對所有新的、已還原和複製的資料庫，Azure SQL Database 和 Azure SQL 受控執行個體保留足夠的備份，以允許在過去7天內 PITR。 除了超大規模資料庫之外，您可以在1-35 天的範圍內，變更每個使用中資料庫的 [備份保留期限](#change-the-pitr-backup-retention-period) 。 如 [備份儲存體耗用量](#backup-storage-consumption)所述，儲存來啟用 PITR 的備份可能會比保留期限還舊。 僅針對 Azure SQL 受控執行個體，在0-35 天的範圍內刪除資料庫之後，就可以設定 PITR 備份保留費率。 
+針對所有新的、已還原和複製的資料庫，Azure SQL Database 和 Azure SQL 受控執行個體保留足夠的備份，以允許在過去7天內 PITR。 除了超大規模和基本層資料庫之外，您可以在1-35 天的範圍內，變更每個使用中資料庫的 [備份保留期限](#change-the-pitr-backup-retention-period) 。 如 [備份儲存體耗用量](#backup-storage-consumption)所述，儲存來啟用 PITR 的備份可能會比保留期限還舊。 僅針對 Azure SQL 受控執行個體，在0-35 天的範圍內刪除資料庫之後，就可以設定 PITR 備份保留費率。 
 
 如果您刪除資料庫，系統會保留備份的方式，就像是線上資料庫的特定保留期限一樣。 您無法變更已刪除之資料庫的備份保留期限。
 
@@ -211,7 +211,7 @@ Azure SQL 工程團隊會持續自動測試自動資料庫備份的還原。  (�
 
 系統會使用總和檢查碼選項來執行所有資料庫備份，以提供額外的備份完整性。
 
-## <a name="compliance"></a>法規遵循
+## <a name="compliance"></a>合規性
 
 當您將資料庫從以 DTU 為基礎的服務層級遷移至以 vCore 為基礎的服務層級時，會保留 PITR 保留期，以確保您應用程式的資料修復原則不會遭到入侵。 如果預設保留不符合您的合規性需求，您可以變更 PITR 保留期限。 如需詳細資訊，請參閱 [變更 PITR 備份保留期限](#change-the-pitr-backup-retention-period)。
 
@@ -308,7 +308,7 @@ Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -Instanc
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
 ```
 
-#### <a name="request-body"></a>Request body
+#### <a name="request-body"></a>要求本文
 
 ```json
 {
@@ -341,7 +341,7 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
 ```
 
-#### <a name="request-body"></a>Request body
+#### <a name="request-body"></a>要求本文
 
 ```json
 {

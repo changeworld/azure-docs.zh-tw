@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d9dd07e3a35d83ff6bd9c7c493768d1197667c39
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740533"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108784"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>針對 Azure 時間序列深入解析 Gen2 環境進行診斷和疑難排解
 
@@ -71,7 +71,7 @@ ms.locfileid: "97740533"
 - 發生這個問題的原因可能是因為您的環境正在進行節流。
 
     > [!NOTE]
-    > 目前時間序列深入解析支援最高 6 Mbps 的擷取速率。
+    > 時間序列深入解析目前支援 1 Mbps 的最大內嵌速率。
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>問題：顯示資料，但現在內嵌已停止
 

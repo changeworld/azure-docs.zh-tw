@@ -3,22 +3,75 @@ title: 將受控識別與應用程式搭配使用
 description: 如何在 Azure Service Fabric 應用程式程式碼中使用受控識別來存取 Azure 服務。
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c89f7bd064e643b978253f2e083c449d904d2cad
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253638"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108512"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>如何利用 Service Fabric 應用程式的受控識別來存取 Azure 服務
 
 Service Fabric 的應用程式可以利用受控識別來存取其他支援 Azure Active Directory 型驗證的 Azure 資源。 應用程式可以取得代表其身分識別的 [存取權杖](../active-directory/develop/developer-glossary.md#access-token) ，可能是系統指派或使用者指派的權杖，並使用它作為「持有人」權杖，向其他服務（也稱為 [受保護的資源伺服器](../active-directory/develop/developer-glossary.md#resource-server)）進行驗證。 權杖代表指派給 Service Fabric 應用程式的身分識別，而且只會向 Azure 資源發出 (包括) 共用該身分識別的 SF 應用程式。 如需受控識別的詳細說明，以及系統指派和使用者指派的身分識別之間的差異，請參閱 [受控識別總覽](../active-directory/managed-identities-azure-resources/overview.md) 檔。 我們會將已啟用身分識別的 Service Fabric 應用程式稱為用戶端應用程式，以做為本文中的 [用戶端應用程式](../active-directory/develop/developer-glossary.md#client-application) 。
+
+請參閱隨附的範例應用程式，示範如何使用系統指派的 [Service Fabric 應用程式受控](https://github.com/Azure-Samples/service-fabric-managed-identity) 識別以及 Reliable Services 和容器。
 
 > [!IMPORTANT]
 > 受控識別代表與包含資源的訂用帳戶相關聯之 Azure AD 租使用者中的 Azure 資源與服務主體之間的關聯。 因此，在 Service Fabric 的內容中，只有部署為 Azure 資源的應用程式才支援受控識別。 
 
 > [!IMPORTANT]
 > 在使用 Service Fabric 應用程式的受控識別之前，必須先將受保護資源的存取權授與用戶端應用程式。 請參閱 [支援 Azure AD authentication](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) 以檢查支援的 Azure 服務清單，然後再參閱個別服務的檔，以取得特定步驟，以授與存取權給您感興趣資源的身分識別存取權。 
+ 
+
+## <a name="leverage-a-managed-identity-using-azureidentity"></a>使用 Azure 身分識別來利用受控識別
+
+Azure 身分識別 SDK 現在支援 Service Fabric。 使用 Azure 時，身分識別會撰寫程式碼以使用 Service Fabric 應用程式受控識別，因為它會處理提取權杖、快取權杖和伺服器驗證。 存取大部分的 Azure 資源時，會隱藏權杖的概念。
+
+下列版本提供這些語言的 Service Fabric 支援： 
+- [版本1.3.0 中的 c #](https://www.nuget.org/packages/Azure.Identity)。 請參閱 [c # 範例](https://github.com/Azure-Samples/service-fabric-managed-identity)。
+- [1.5.0 版中的 Python](https://pypi.org/project/azure-identity/)。 請參閱 [Python 範例](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md)。
+- [版本1.2.0 中的 JAVA](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable)。
+
+將認證初始化和使用認證從 Azure Key Vault 提取秘密的 c # 範例：
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+namespace MyMIService
+{
+    internal sealed class MyMIService : StatelessService
+    {
+        protected override async Task RunAsync(CancellationToken cancellationToken)
+        {
+            try
+            {
+                // Load the service fabric application managed identity assigned to the service
+                ManagedIdentityCredential creds = new ManagedIdentityCredential();
+
+                // Create a client to keyvault using that identity
+                SecretClient client = new SecretClient(new Uri("https://mykv.vault.azure.net/"), creds);
+
+                // Fetch a secret
+                KeyVaultSecret secret = (await client.GetSecretAsync("mysecret", cancellationToken: cancellationToken)).Value;
+            }
+            catch (CredentialUnavailableException e)
+            {
+                // Handle errors with loading the Managed Identity
+            }
+            catch (RequestFailedException)
+            {
+                // Handle errors with fetching the secret
+            }
+            catch (Exception e)
+            {
+                // Handle generic errors
+            }
+        }
+    }
+}
+
+```
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>使用 REST API 取得存取權杖
 在針對受控識別啟用的叢集內，Service Fabric 執行時間會公開可供應用程式用來取得存取權杖的 localhost 端點。 此端點可在叢集的每個節點上使用，並且可供該節點上的所有實體存取。 授權的呼叫端可以藉由呼叫此端點並出示驗證碼來取得存取權杖;程式碼是由每個不同服務程式代碼套件啟動的 Service Fabric 執行時間所產生，並且會系結至裝載該服務程式代碼套件的進程存留期。
@@ -332,11 +385,11 @@ HTTP 回應標頭的 [狀態碼] 欄位指出要求的成功狀態。「200確�
 
 如果發生錯誤，對應的 HTTP 回應主體會包含 JSON 物件，其中包含錯誤詳細資料：
 
-| 元素 | 說明 |
+| 元素 | 描述 |
 | ------- | ----------- |
 | code | 錯誤碼。 |
 | correlationId | 可以用來進行偵錯工具的相互關聯識別碼。 |
-| 訊息 | 錯誤的詳細資訊描述。 **錯誤描述可隨時變更。請勿相依于錯誤訊息本身。**|
+| message | 錯誤的詳細資訊描述。 **錯誤描述可隨時變更。請勿相依于錯誤訊息本身。**|
 
 範例錯誤：
 ```json
@@ -373,7 +426,8 @@ HTTP 回應標頭的 [狀態碼] 欄位指出要求的成功狀態。「200確�
 ## <a name="resource-ids-for-azure-services"></a>Azure 服務的資源識別碼
 請參閱支援 [Azure AD authentication 的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) ，以取得支援 Azure AD 的資源清單及其各自的資源識別碼。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [使用系統指派的受控識別部署 Azure Service Fabric 應用程式](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [使用使用者指派的受控識別部署 Azure Service Fabric 應用程式](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [將 Azure Service Fabric 應用程式存取權授與其他 Azure 資源](./how-to-grant-access-other-resources.md)
+* [使用 Service Fabric 受控識別來探索範例應用程式](https://github.com/Azure-Samples/service-fabric-managed-identity)

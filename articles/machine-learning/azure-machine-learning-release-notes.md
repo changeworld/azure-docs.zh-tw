@@ -9,16 +9,36 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 1cc6c8cd49a2388ad66a276f4a1667b4c3ee3826
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070315"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107900"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
 在本文中，您將瞭解 Azure Machine Learning 版本。  如需完整的 SDK 參考內容，請造訪 Azure Machine Learning 的 [**適用于 Python 的主要 SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 參考頁面。
+
+
+ ## <a name="2021-01-11"></a>2021-01-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1200"></a>Azure Machine Learning SDK for Python v 1.20。0
++ **Bug 修正和改善**
+  + **azure-cli-ml**
+    + framework_version 在 OptimizationConfig 中新增。 當模型已向架構多重註冊時，就會使用它。
+  + **azureml-automl-runtime**
+    + 在此更新中，我們新增了 holt yuk-winters 指數凹凸貼圖，以預測 AutoML SDK 的 [工具箱]。 指定時間序列之後， [AICc (更正 Akaike 的資訊準則) ](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) 並傳回，就會選取最佳模型。
+  + **azureml-contrib-優化**
+    + framework_version 在 OptimizationConfig 中新增。 當模型已向架構多重註冊時，就會使用它。
+  + **azureml-pipeline-steps**
+    + CommandStep 會執行命令以進行處理。 命令可包含可執行檔、shell 命令、腳本等。
+  + **azureml-core**
+    + 現在工作區建立支援使用者指派的身分識別。 從 SDK/CLI 新增 uai 支援
+    + 已修正服務的問題。請重載 ( # A1 以在本機部署中收取 score.py 的變更。
+    + `run.get_details()` 有一個名為 "submittedBy" 的額外欄位，會顯示此執行的作者名稱。
+    + 已編輯的模型。請註冊方法檔，以提及如何直接從執行中註冊模型
+   
 
 ## <a name="2020-12-31"></a>2020-12-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio 筆記本體驗 (12 月更新) 
@@ -31,6 +51,7 @@ ms.locfileid: "98070315"
   + 改善的頁面載入時間
   + 提升效能 
   + 提升速度和核心可靠性
+
   
 ## <a name="2020-12-07"></a>2020-12-07
 

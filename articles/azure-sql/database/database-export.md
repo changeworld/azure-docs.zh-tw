@@ -9,14 +9,14 @@ author: stevestein
 ms.custom: sqldbrb=2
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/16/2019
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 7dc6cd580687544226b61a29ca9ccf2d1b8dff42
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f874803e0ae361255754477ca68184255f35b91f
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671542"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107373"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>匯出至 BACPAC 檔案-Azure SQL Database 和 Azure SQL 受控執行個體
 
@@ -30,11 +30,12 @@ ms.locfileid: "92671542"
 - 如果您要匯出至 blob 儲存體，BACPAC 檔案的大小上限為 200 GB。 若要封存較大的 BACPAC 檔案，請將匯出到本機儲存體。
 - 不支援使用本文所討論的方法將 BACPAC 檔案匯出到 Azure 進階儲存體。
 - 目前不支援在防火牆後方的儲存體。
+- StorageURI 的儲存檔案名稱或輸入值應少於128個字元，且結尾不能是 '. '，而且不能包含特殊字元，例如空白字元或 ' <、>、*、%、&、：、 \, /、？ '。 
 - 如果匯出作業超過 20 個小時，它可能會被取消。 若要增加匯出期間的效能，您可以︰
 
   - 暫時提高計算大小。
   - 在匯出期間停止所有讀取及寫入活動。
-  - 在所有大型資料表上搭配使用 [叢集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described) 和非 null 值。 若沒有叢集索引，如果要花超過 6-12 小時，匯出可能會失敗。 這是因為匯出服務需要完成資料表掃描，以便嘗試匯出整份資料表。 有一個可判斷資料表是否已針對匯出進行最佳化的好方法，就是執行 **DBCC SHOW_STATISTICS** ，並確定 *RANGE_HI_KEY* 不是 null 且其值具有良好的分佈。 如需詳細資料，請參閱 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql)。
+  - 在所有大型資料表上搭配使用 [叢集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described) 和非 null 值。 若沒有叢集索引，如果要花超過 6-12 小時，匯出可能會失敗。 這是因為匯出服務需要完成資料表掃描，以便嘗試匯出整份資料表。 有一個可判斷資料表是否已針對匯出進行最佳化的好方法，就是執行 **DBCC SHOW_STATISTICS**，並確定 *RANGE_HI_KEY* 不是 null 且其值具有良好的分佈。 如需詳細資料，請參閱 [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql)。
 
 > [!NOTE]
 > BACPAC 並非用於備份和還原作業。 Azure 會自動為每個使用者資料庫建立備份。 如需詳細資訊，請參閱[商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)和 [SQL Database 備份](automated-backups-overview.md)。
@@ -46,7 +47,7 @@ ms.locfileid: "92671542"
 > [!NOTE]
 > 處理透過 Azure 入口網站或 PowerShell 提交的匯入/匯出要求的機器，必須儲存 BACPAC 檔案以及資料層應用程式架構 (DacFX) 所產生的暫存檔案。 大小相同的資料庫所需的磁碟空間有很大的差異，且最多可能需要資料庫大小 3 倍的磁碟空間。 執行匯入/匯出要求的電腦只有450GB 的本機磁碟空間。 因此，某些要求可能會失敗，並出現錯誤 `There is not enough space on the disk`。 在此情況下，因應措施是在具有足夠本機磁碟空間的機器上執行 sqlpackage.exe。 我們鼓勵使用 [SqlPackage](#sqlpackage-utility) 來匯入/匯出大於150GB 的資料庫，以避免此問題。
 
-1. 若要使用  。
+1. 若要使用 [Azure 入口網站](https://portal.azure.com)匯出資料庫，請開啟資料庫頁面，然後按一下工具列上的 [匯出]。
 
    ![醒目顯示 [匯出] 按鈕的螢幕擷取畫面。](./media/database-export/database-export1.png)
 
@@ -56,7 +57,7 @@ ms.locfileid: "92671542"
 
 3. 按一下 [確定]。
 
-4. 若要監視匯出作業的進度，請開啟包含要匯出之資料庫的伺服器頁面。 在 [設定]  下，然後按一下 [匯入/匯出記錄]  。
+4. 若要監視匯出作業的進度，請開啟包含要匯出之資料庫的伺服器頁面。 在 [設定] 下，然後按一下 [匯入/匯出記錄]。
 
    ![匯出記錄](./media/database-export/export-history.png)
 
@@ -89,7 +90,7 @@ $exportRequest = New-AzSqlDatabaseExport -ResourceGroupName $ResourceGroupName -
   -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
 ```
 
-若要檢查匯出要求的狀態，請使用 [AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) Cmdlet。 如果在要求後立即執行此 Cmdlet，通常會傳回 **Status : InProgress** 。 當您看見 **Status: Succeeded** 時，便代表匯出已完成。
+若要檢查匯出要求的狀態，請使用 [AzSqlDatabaseImportExportStatus](/powershell/module/az.sql/get-azsqldatabaseimportexportstatus) Cmdlet。 如果在要求後立即執行此 Cmdlet，通常會傳回 **Status : InProgress**。 當您看見 **Status: Succeeded** 時，便代表匯出已完成。
 
 ```powershell
 $exportStatus = Get-AzSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink

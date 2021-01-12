@@ -3,18 +3,18 @@ title: Azure Data Lake Storage Gen2 JAVA SDK for files & Acl
 description: 使用適用于 JAVA 的 Azure 儲存體程式庫，在已啟用階層命名空間 (HNS) 的儲存體帳戶中，管理目錄和檔案和目錄存取控制清單 (ACL) 。
 author: normesta
 ms.service: storage
-ms.date: 09/10/2020
+ms.date: 01/11/2021
 ms.custom: devx-track-java
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: f6e8219f744a91628f9860f0af133c07eddb4253
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1cc6954569c509c977634a8e1cdd52c5c55b2100
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913380"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108122"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JAVA 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
@@ -37,7 +37,6 @@ ms.locfileid: "95913380"
 接下來，將這些 imports 語句新增至您的程式碼檔案。
 
 ```java
-import com.azure.core.credential.TokenCredential;
 import com.azure.storage.common.StorageSharedKeyCredential;
 import com.azure.storage.file.datalake.DataLakeDirectoryClient;
 import com.azure.storage.file.datalake.DataLakeFileClient;
@@ -45,11 +44,16 @@ import com.azure.storage.file.datalake.DataLakeFileSystemClient;
 import com.azure.storage.file.datalake.DataLakeServiceClient;
 import com.azure.storage.file.datalake.DataLakeServiceClientBuilder;
 import com.azure.storage.file.datalake.models.ListPathsOptions;
+import com.azure.storage.file.datalake.models.PathItem;
+import com.azure.storage.file.datalake.models.AccessControlChangeCounters;
+import com.azure.storage.file.datalake.models.AccessControlChangeResult;
+import com.azure.storage.file.datalake.models.AccessControlType;
 import com.azure.storage.file.datalake.models.PathAccessControl;
 import com.azure.storage.file.datalake.models.PathAccessControlEntry;
-import com.azure.storage.file.datalake.models.PathItem;
 import com.azure.storage.file.datalake.models.PathPermissions;
+import com.azure.storage.file.datalake.models.PathRemoveAccessControlEntry;
 import com.azure.storage.file.datalake.models.RolePermissions;
+import com.azure.storage.file.datalake.options.PathSetAccessControlRecursiveOptions;
 ```
 
 ## <a name="connect-to-the-account"></a>連線到帳戶 
@@ -62,22 +66,7 @@ import com.azure.storage.file.datalake.models.RolePermissions;
 
 此範例會使用帳戶金鑰建立 **DataLakeServiceClient** 實例。
 
-```java
-
-static public DataLakeServiceClient GetDataLakeServiceClient
-(String accountName, String accountKey){
-
-    StorageSharedKeyCredential sharedKeyCredential =
-        new StorageSharedKeyCredential(accountName, accountKey);
-
-    DataLakeServiceClientBuilder builder = new DataLakeServiceClientBuilder();
-
-    builder.credential(sharedKeyCredential);
-    builder.endpoint("https://" + accountName + ".dfs.core.windows.net");
-
-    return builder.buildClient();
-}      
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/Authorize_DataLake.java" id="Snippet_AuthorizeWithKey":::
 
 ### <a name="connect-by-using-azure-active-directory-azure-ad"></a>使用 Azure Active Directory (Azure AD 進行連接) 
 
@@ -85,22 +74,7 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 
 此範例會使用用戶端識別碼、用戶端密碼和租使用者識別碼來建立 **DataLakeServiceClient** 實例。  若要取得這些值，請參閱 [從 Azure AD 取得權杖，以授權用戶端應用程式的要求](../common/storage-auth-aad-app.md)。
 
-```java
-static public DataLakeServiceClient GetDataLakeServiceClient
-    (String accountName, String clientId, String ClientSecret, String tenantID){
-
-    String endpoint = "https://" + accountName + ".dfs.core.windows.net";
-        
-    ClientSecretCredential clientSecretCredential = new ClientSecretCredentialBuilder()
-    .clientId(clientId)
-    .clientSecret(ClientSecret)
-    .tenantId(tenantID)
-    .build();
-           
-    DataLakeServiceClientBuilder builder = new DataLakeServiceClientBuilder();
-    return builder.credential(clientSecretCredential).endpoint(endpoint).buildClient();
- } 
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/Authorize_DataLake.java" id="Snippet_AuthorizeWithAzureAD":::
 
 > [!NOTE]
 > 如需更多範例，請參閱 [適用于 JAVA 的 Azure 身分識別用戶端程式庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity) 檔。
@@ -112,13 +86,7 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 
 這個範例會建立名為的容器 `my-file-system` 。 
 
-```java
-static public DataLakeFileSystemClient CreateFileSystem
-(DataLakeServiceClient serviceClient){
-
-    return serviceClient.createFileSystem("my-file-system");
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/CRUD_DataLake.java" id="Snippet_CreateFileSystem":::
 
 ## <a name="create-a-directory"></a>建立目錄
 
@@ -126,19 +94,7 @@ static public DataLakeFileSystemClient CreateFileSystem
 
 此範例會將名為 `my-directory` 的目錄新增至容器，然後新增名為的子目錄 `my-subdirectory` 。 
 
-```java
-static public DataLakeDirectoryClient CreateDirectory
-(DataLakeServiceClient serviceClient, String fileSystemName){
-    
-    DataLakeFileSystemClient fileSystemClient =
-    serviceClient.getFileSystemClient(fileSystemName);
-
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.createDirectory("my-directory");
-
-    return directoryClient.createSubDirectory("my-subdirectory");
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/CRUD_DataLake.java" id="Snippet_CreateDirectory":::
 
 ## <a name="rename-or-move-a-directory"></a>重新命名或移動目錄
 
@@ -146,31 +102,11 @@ static public DataLakeDirectoryClient CreateDirectory
 
 此範例會將子目錄重新命名為名稱 `my-subdirectory-renamed` 。
 
-```java
-static public DataLakeDirectoryClient
-    RenameDirectory(DataLakeFileSystemClient fileSystemClient){
-
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory/my-subdirectory");
-
-    return directoryClient.rename(
-        fileSystemClient.getFileSystemName(),"my-subdirectory-renamed");
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/CRUD_DataLake.java" id="Snippet_RenameDirectory":::
 
 此範例會將名為的目錄移 `my-subdirectory-renamed` 至名為之目錄的子目錄 `my-directory-2` 。 
 
-```java
-static public DataLakeDirectoryClient MoveDirectory
-(DataLakeFileSystemClient fileSystemClient){
-
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory/my-subdirectory-renamed");
-
-    return directoryClient.rename(
-        fileSystemClient.getFileSystemName(),"my-directory-2/my-subdirectory-renamed");                
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/CRUD_DataLake.java" id="Snippet_MoveDirectory":::
 
 ## <a name="delete-a-directory"></a>刪除目錄
 
@@ -178,15 +114,7 @@ static public DataLakeDirectoryClient MoveDirectory
 
 此範例刪除名為 `my-directory` 的目錄。   
 
-```java
-static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
-        
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory");
-
-    directoryClient.deleteWithResponse(true, null, null, null);
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/CRUD_DataLake.java" id="Snippet_DeleteDirectory":::
 
 ## <a name="upload-a-file-to-a-directory"></a>將檔案上傳至目錄
 
@@ -194,26 +122,7 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 
 此範例會將文字檔上傳至名為的目錄 `my-directory` 。
 
-```java
-static public void UploadFile(DataLakeFileSystemClient fileSystemClient) 
-    throws FileNotFoundException{
-        
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory");
-
-    DataLakeFileClient fileClient = directoryClient.createFile("uploaded-file.txt");
-
-    File file = new File("C:\\mytestfile.txt");
-
-    InputStream targetStream = new BufferedInputStream(new FileInputStream(file));
-
-    long fileSize = file.length();
-
-    fileClient.append(targetStream, 0, fileSize);
-
-    fileClient.flush(fileSize);
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/CRUD_DataLake.java" id="Snippet_UploadFile":::
 
 > [!TIP]
 > 如果您的檔案大小很大，您的程式碼就必須對 **DataLakeFileClient 附加** 方法進行多次呼叫。 請考慮改為使用 **DataLakeFileClient. uploadFromFile** 方法。 如此一來，您就可以在單一呼叫中上傳整個檔案。 
@@ -224,79 +133,19 @@ static public void UploadFile(DataLakeFileSystemClient fileSystemClient)
 
 使用 **DataLakeFileClient. uploadFromFile** 方法上傳大型檔案，而不需要對 **DataLakeFileClient. append** 方法進行多次呼叫。
 
-```java
-static public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient) 
-    throws FileNotFoundException{
-        
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory");
-
-    DataLakeFileClient fileClient = directoryClient.getFileClient("uploaded-file.txt");
-
-    fileClient.uploadFromFile("C:\\mytestfile.txt");
-
-    }
-
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/CRUD_DataLake.java" id="Snippet_UploadFileBulk":::
 
 ## <a name="download-from-a-directory"></a>從目錄下載
 
 首先，建立代表您要下載之檔案的 **DataLakeFileClient** 實例。 使用 **DataLakeFileClient** 讀取方法來讀取檔案。 使用任何 .NET 檔案處理 API，將資料流程中的位元組儲存至檔案。 
 
-```java
-static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
-    throws FileNotFoundException, java.io.IOException{
-
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory");
-
-    DataLakeFileClient fileClient = 
-        directoryClient.getFileClient("uploaded-file.txt");
-
-    File file = new File("C:\\downloadedFile.txt");
-
-    OutputStream targetStream = new FileOutputStream(file);
-
-    fileClient.read(targetStream);
-
-    targetStream.close();
-      
-}
-
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/CRUD_DataLake.java" id="Snippet_DownloadFile":::
 
 ## <a name="list-directory-contents"></a>列出目錄內容
 
 此範例會列印名為的目錄中每個檔案的名稱 `my-directory` 。
 
-```java
-static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient){
-        
-    ListPathsOptions options = new ListPathsOptions();
-    options.setPath("my-directory");
-     
-    PagedIterable<PathItem> pagedIterable = 
-    fileSystemClient.listPaths(options, null);
-
-    java.util.Iterator<PathItem> iterator = pagedIterable.iterator();
-       
-    PathItem item = iterator.next();
-
-    while (item != null)
-    {
-        System.out.println(item.getName());
-
-
-        if (!iterator.hasNext())
-        {
-            break;
-        }
-            
-        item = iterator.next();
-    }
-
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/CRUD_DataLake.java" id="Snippet_ListFilesInDirectory":::
 
 ## <a name="manage-access-control-lists-acls"></a> (Acl) 管理存取控制清單
 
@@ -312,43 +161,7 @@ static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClien
 > [!NOTE]
 > 如果您的應用程式使用 Azure Active Directory (Azure AD) 來授與存取權，請確定您的應用程式用來授與存取權的安全性主體已獲指派 [儲存體 Blob 資料擁有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](./data-lake-storage-access-control.md)。
 
-```java
-static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient){
-
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory");
-
-    PathAccessControl directoryAccessControl =
-        directoryClient.getAccessControl();
-
-    List<PathAccessControlEntry> pathPermissions = directoryAccessControl.getAccessControlList();
-       
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-             
-    RolePermissions groupPermission = new RolePermissions();
-    groupPermission.setExecutePermission(true).setReadPermission(true);
-  
-    RolePermissions ownerPermission = new RolePermissions();
-    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
-  
-    RolePermissions otherPermission = new RolePermissions();
-    otherPermission.setReadPermission(true);
-  
-    PathPermissions permissions = new PathPermissions();
-  
-    permissions.setGroup(groupPermission);
-    permissions.setOwner(ownerPermission);
-    permissions.setOther(otherPermission);
-
-    directoryClient.setPermissions(permissions, null, null);
-
-    pathPermissions = directoryClient.getAccessControl().getAccessControlList();
-     
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-
-}
-
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_ManageDirectoryACLs":::
 
 您也可以取得及設定容器根目錄的 ACL。 若要取得根目錄，請將空字串 (`""`) 傳遞至 **DataLakeFileSystemClient. getDirectoryClient** 方法。
 
@@ -359,45 +172,7 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 > [!NOTE]
 > 如果您的應用程式使用 Azure Active Directory (Azure AD) 來授與存取權，請確定您的應用程式用來授與存取權的安全性主體已獲指派 [儲存體 Blob 資料擁有者角色](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)。 若要深入了解如何套用 ACL 權限以及變更權限的效果，請參閱 [Azure Data Lake Storage Gen2 中的存取控制](./data-lake-storage-access-control.md)。
 
-```java
-static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
-
-    DataLakeDirectoryClient directoryClient =
-        fileSystemClient.getDirectoryClient("my-directory");
-
-    DataLakeFileClient fileClient = 
-        directoryClient.getFileClient("uploaded-file.txt");
-
-    PathAccessControl fileAccessControl =
-        fileClient.getAccessControl();
-
-    List<PathAccessControlEntry> pathPermissions = fileAccessControl.getAccessControlList();
-     
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-           
-    RolePermissions groupPermission = new RolePermissions();
-    groupPermission.setExecutePermission(true).setReadPermission(true);
-
-    RolePermissions ownerPermission = new RolePermissions();
-    ownerPermission.setExecutePermission(true).setReadPermission(true).setWritePermission(true);
-
-    RolePermissions otherPermission = new RolePermissions();
-    otherPermission.setReadPermission(true);
-
-    PathPermissions permissions = new PathPermissions();
-
-    permissions.setGroup(groupPermission);
-    permissions.setOwner(ownerPermission);
-    permissions.setOther(otherPermission);
-
-    fileClient.setPermissions(permissions, null, null);
-
-    pathPermissions = fileClient.getAccessControl().getAccessControlList();
-   
-    System.out.println(PathAccessControlEntry.serializeList(pathPermissions));
-
-}
-```
+:::code language="java" source="~/azure-storage-snippets/blobs/howto/Java/Java-v12/src/main/java/com/datalake/manage/ACL_DataLake.java" id="Snippet_ManageFileACLs":::
 
 ### <a name="set-an-acl-recursively"></a>以遞迴方式設定 ACL
 

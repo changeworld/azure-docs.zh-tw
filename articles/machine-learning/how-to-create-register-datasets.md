@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 28e70a5d5a6ac4cd51f5ed3fc85afd47a5af68d8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033267"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108699"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -173,9 +173,42 @@ titanic_ds.take(3).to_pandas_dataframe()
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund，Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings，Mrs John Bradley (Florence Briggs Th .。。|female|38.0|1|0|電腦17599|71.2833|C85|C
-2|3|是|3|Heikkinen，遺漏。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
+2|3|True|3|Heikkinen，遺漏。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 若要在工作區中重複使用和共用實驗中的資料集，請 [註冊您的資料集](#register-datasets)。
+
+
+## <a name="explore-data"></a>探索資料
+
+建立並 [註冊](#register-datasets) 您的資料集之後，您可以將其載入至您的筆記本，以便在模型定型之前進行資料探索。 如果您不需要進行任何資料探索，請參閱如何使用定型腳本中的資料集，以 [利用資料集定型](how-to-train-with-datasets.md)來提交 ML 實驗。
+
+針對 FileDatasets，您可以 **掛接** 或 **下載** 資料集，並套用通常用於資料探索的 python 程式庫。 [深入瞭解掛接 vs 下載](how-to-train-with-datasets.md#mount-vs-download)。
+
+```python
+# download the dataset 
+dataset.download(target_path='.', overwrite=False) 
+
+# mount dataset to the temp directory at `mounted_path`
+
+import tempfile
+mounted_path = tempfile.mkdtemp()
+mount_context = dataset.mount(mounted_path)
+
+mount_context.start()
+```
+
+若為 TabularDatasets，請使用 [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法來查看資料框架中的資料。 
+
+```python
+# preview the first 3 rows of titanic_ds
+titanic_ds.take(3).to_pandas_dataframe()
+```
+
+| (索引) |PassengerId|存活的|Pclass|名稱|性|年齡|SibSp|Parch|票證|費用|小屋|著手
+-|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
+0|1|False|3|Braund，Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
+1|2|True|1|Cumings，Mrs John Bradley (Florence Briggs Th .。。|female|38.0|1|0|電腦17599|71.2833|C85|C
+2|3|True|3|Heikkinen，遺漏。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 ## <a name="create-a-dataset-from-pandas-dataframe"></a>從 pandas 資料框架建立資料集
 

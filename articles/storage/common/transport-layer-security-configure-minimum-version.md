@@ -10,12 +10,12 @@ ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 558f4792a055fc491f15600ecc5502c3a114a94b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e5ab583330b46b8f53223500076aa04780e6deac
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360215"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108716"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>對儲存體帳戶的要求強制執行最小必要版本的傳輸層安全性 (TLS) 
 
@@ -37,9 +37,8 @@ Azure 儲存體目前支援三種版本的 TLS 通訊協定：1.0、1.1 和1.2�
 
 Azure 監視器中的 Azure 儲存體記錄支援使用記錄查詢來分析記錄資料。 若要查詢記錄，您可以使用 Azure Log Analytics 工作區。 若要深入瞭解記錄查詢，請參閱 [教學課程：開始使用 Log Analytics 查詢](../../azure-monitor/log-query/log-analytics-tutorial.md)。
 
-若要使用 Azure 監視器來記錄 Azure 儲存體資料，並使用 Azure Log Analytics 進行分析，您必須先建立診斷設定，以指出哪些類型的要求以及您想要用來記錄資料的儲存體服務。 若要在 Azure 入口網站中建立診斷設定，請遵循下列步驟：
+若要使用 Azure 監視器來記錄 Azure 儲存體資料，並使用 Azure Log Analytics 進行分析，您必須先建立診斷設定，以指出哪些類型的要求以及您想要用來記錄資料的儲存體服務。 Azure 監視器中的 Azure 儲存體記錄處於公開預覽狀態，可在所有公用雲端區域中進行預覽測試。 此預覽可讓 blob 的記錄 (包括 Azure Data Lake Storage Gen2) 、檔案、佇列和資料表。 若要在 Azure 入口網站中建立診斷設定，請遵循下列步驟：
 
-1. [在 Azure 監視器 preview 中註冊 Azure 儲存體記錄](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)。
 1. 在訂用帳戶中建立新的 Log Analytics 工作區，其中包含您的 Azure 儲存體帳戶。 設定儲存體帳戶的記錄之後，記錄將會出現在 Log Analytics 工作區中。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。
 1. 在 Azure 入口網站中巡覽至您的儲存體帳戶。
 1. 在 [監視] 區段中，選取 [ **診斷設定 (預覽])**。

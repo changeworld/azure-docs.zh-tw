@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e1031df9f305015048de7f708123a51875776e1b
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 2ee4e313366bafdd2f6e3bd0e104abd9f11b7776
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760583"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108665"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>在 IoT Edge 使用 Azure Blob 儲存體，以便在邊緣儲存資料
 
@@ -187,7 +187,7 @@ Azure Blob 儲存體檔包含數種語言的快速入門範例程式碼。 您�
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * Python SDK 2.1 之前的版本有已知問題，模組不會傳回 blob 建立時間。 基於這個問題，某些方法（例如清單 blob）無法運作。 解決方法是將 blob 用戶端上的 API 版本明確設定為 ' 2017-04-17 '。 範例：`block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [附加 Blob 範例](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
-* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md) \(英文\)
+* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md)
 * [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy.md)
 * [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
 * [Go](../storage/blobs/storage-quickstart-blobs-go.md)
@@ -195,7 +195,7 @@ Azure Blob 儲存體檔包含數種語言的快速入門範例程式碼。 您�
 
 ## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>使用 Azure 儲存體總管連接到您的本機儲存體
 
-您可以使用 [Azure 儲存體總管](https://github.com/microsoft/AzureStorageExplorer/releases/tag/v1.14.2) 連接到您的本機儲存體帳戶。
+您可以使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/) 連接到您的本機儲存體帳戶。
 
 1. 下載並安裝 Azure 儲存體總管
 

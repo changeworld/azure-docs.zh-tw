@@ -3,19 +3,19 @@ title: 存取 Azure 虛擬網路
 description: '瞭解整合服務環境如何 (Ise) 協助邏輯應用程式存取 Azure 虛擬網路 (Vnet) '
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/11/2021
+ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996316"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108563"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>透過整合服務環境 (ISE) 從 Azure Logic Apps 存取 Azure 虛擬網路資源
 
-有時，您的邏輯應用程式需要存取受保護的資源，例如虛擬機器 (Vm) ，以及內部或連接至 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)的其他系統或服務。 若要設定此存取權，您可以 [ (ISE) 建立 *整合服務環境*](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。 ISE 是 Logic Apps 服務的實例，它會使用專用的資源，並與「全域」多租使用者 Logic Apps 服務分開執行。
+有時，您的邏輯應用程式需要存取受保護的資源，例如虛擬機器 (Vm) ，以及內部或連接至 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)的其他系統或服務。 若要設定此存取權，您可以 [ (ISE) 建立 *整合服務環境*](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。 ISE 是 Logic Apps 服務的實例，它會使用專用的資源，並與「全域」多租使用者 Logic Apps 服務分開執行。 ISE 中的資料會保留在 [您建立和部署該 ise 的相同區域](https://azure.microsoft.com/global-infrastructure/data-residency/)中。
 
 例如，某些 Azure 虛擬網路會使用私人端點（您可以透過 [Azure Private Link](../private-link/private-link-overview.md)設定），以提供 azure PaaS 服務的存取權，例如 azure 上託管的 Azure 儲存體、Azure Cosmos DB 或 Azure SQL Database、合作夥伴服務或客戶服務。 如果您的邏輯應用程式需要存取使用私人端點的虛擬網路，您必須在 ISE 內建立、部署和執行這些邏輯應用程式。
 
@@ -123,7 +123,7 @@ ms.locfileid: "95996316"
   > 如果您需要使用這些以 webhook 為基礎的觸發程式，當您建立 ISE 時，請使用外部端點， *而不* 是內部端點：
   > 
   > * Azure DevOps
-  > * Azure 事件方格
+  > * Azure Event Grid
   > * Common Data Service
   > * Office 365
   > * SAP (ISE 版本) 

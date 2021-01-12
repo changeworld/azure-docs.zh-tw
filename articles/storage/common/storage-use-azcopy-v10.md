@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 6232b315abf8840d6fd77d02e3e928c0004746a0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ab3cb403a8757f424a141206f99f9c29bf3e0b49
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029323"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108143"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
@@ -103,9 +103,9 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要尋找範例命令，請參閱這些文章。
 
-| Service | 發行項 |
+| 服務 | 發行項 |
 |--------|-----------|
-|Azure Blob 儲存體 |[將檔案上傳至 Azure Blob 儲存體](storage-use-azcopy-blobs-upload.md)<br><br>[從 Azure Blob 儲存體下載 blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 儲存體帳戶之間複製 blob](storage-use-azcopy-blobs-download.md)<br><br>[與 Azure Blob 儲存體同步處理](storage-use-azcopy-blobs-download.md)|
+|Azure Blob 儲存體 |[將檔案上傳至 Azure Blob 儲存體](storage-use-azcopy-blobs-upload.md)<br><br>[從 Azure Blob 儲存體下載 blob](storage-use-azcopy-blobs-download.md)<br><br>[在 Azure 儲存體帳戶之間複製 blob](storage-use-azcopy-blobs-copy.md)<br><br>[與 Azure Blob 儲存體同步處理](storage-use-azcopy-blobs-synchronize.md)|
 |Azure 檔案 |[使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)|
 |Amazon S3|[使用 AzCopy 和 Amazon S3 貯體轉送資料](storage-use-azcopy-s3.md)|
 |Azure Stack 儲存體|[使用 AzCopy 和 Azure Stack 儲存體傳輸資料](/azure-stack/user/azure-stack-storage-transfer#azcopy)|

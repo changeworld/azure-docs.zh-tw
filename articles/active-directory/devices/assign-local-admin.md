@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfd7b5ac981fcb87d0fc929d944205dec9432b74
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d482f21955b76e6b90523afe3b4933378c91d36e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575817"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107356"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的裝置上的本機系統管理員群組
 
@@ -32,8 +32,7 @@ ms.locfileid: "96575817"
 - Azure AD 裝置管理員角色 
 - 執行 Azure AD Join 的使用者   
 
-藉由將 Azure AD 角色新增至本機系統管理員群組，您可以直接更新能夠隨時在 Azure AD 中管理裝置的使用者，而無須對裝置進行任何修改。 目前，您無法將群組指派給系統管理員角色。
-Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員群組，以支援最低權限 (PoLP) 的準則。 除了全域管理員以外，您也可以讓 *僅* 被指派裝置管理員角色的使用者管理裝置。 
+藉由將 Azure AD 角色新增至本機系統管理員群組，您可以直接更新能夠隨時在 Azure AD 中管理裝置的使用者，而無須對裝置進行任何修改。 Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員群組，以支援最低權限 (PoLP) 的準則。 除了全域管理員以外，您也可以讓 *僅* 被指派裝置管理員角色的使用者管理裝置。 
 
 ## <a name="manage-the-global-administrators-role"></a>管理全域管理員角色
 
@@ -70,7 +69,7 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 ## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>使用 Azure AD 群組 (預覽版來管理系統管理員許可權) 
 
 >[!NOTE]
-> 此功能目前為預覽狀態。
+> 這項功能目前為預覽狀態。
 
 
 從 Windows 10 2004 更新開始，您可以使用 Azure AD 群組，以 [受限的群組](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM 原則來管理 Azure AD 已加入裝置上的系統管理員許可權。 此原則可讓您將個別使用者或 Azure AD 群組指派給已加入 Azure AD 的裝置上的本機系統管理員群組，讓您可以針對不同的裝置群組設定不同的系統管理員。 

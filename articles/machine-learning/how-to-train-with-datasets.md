@@ -12,19 +12,21 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740669"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108585"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure Machine Learning 中的資料集定型
 
 
-在本文中，您將瞭解如何在訓練實驗中使用 [Azure Machine Learning 資料集](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) 。  您可以使用本機或遠端計算目標中的資料集，而不需要擔心連接字串或資料路徑。
+在本文中，您將瞭解如何使用 [Azure Machine Learning 資料集](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) 來定型機器學習模型。  您可以使用本機或遠端計算目標中的資料集，而不需要擔心連接字串或資料路徑。 
 
 Azure Machine Learning 資料集可讓您與 Azure Machine Learning 訓練功能（例如 [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、 [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) 和 [Azure Machine Learning 管線](how-to-create-your-first-pipeline.md)）緊密整合。
+
+如果您尚未準備好將資料提供給模型定型，但想要將資料載入到您的筆記本以進行資料探索，請參閱如何 [流覽資料集中的資料](how-to-create-register-datasets.md#explore-data)。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -34,7 +36,7 @@ Azure Machine Learning 資料集可讓您與 Azure Machine Learning 訓練功能
 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-* [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) ( # B0 = 1.13.0) ，其中包含 azureml 資料集套件。
+* [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) ( # B0 = 1.13.0) ，其中包含 `azureml-datasets` 套件。
 
 > [!Note]
 > 某些資料集類別具有 [azureml dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) 封裝的相依性。 針對 Linux 使用者，只有下列發行版本才支援這些類別： Red Hat Enterprise Linux、Ubuntu、Fedora 和 CentOS。
@@ -65,7 +67,7 @@ TabularDataset 物件可讓您將 TabularDataset 中的資料載入 pandas 或 S
 > [!Note]
 > 如果您的原始資料來源包含 NaN、空字串或空白值，則當您使用時， `to_pandas_dataframe()` 這些值會被取代為 *Null* 值。
 
-如果您需要將備妥的資料從記憶體中的 pandas 資料框架載入至新的資料集，請將資料寫入本機檔案（例如 parquet），然後從該檔案建立新的資料集。 您也可以在資料存放區的本機檔案或路徑中建立資料集。 深入瞭解 [如何建立資料集](how-to-create-register-datasets.md)。
+如果您需要將備妥的資料從記憶體中的 pandas 資料框架載入至新的資料集，請將資料寫入本機檔案（例如 parquet），然後從該檔案建立新的資料集。 深入瞭解 [如何建立資料集](how-to-create-register-datasets.md)。
 
 ```Python
 %%writefile $script_folder/train_titanic.py

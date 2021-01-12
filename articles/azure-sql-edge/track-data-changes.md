@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 86e84c60aec99246f58b5dc9d67584b23a3969f3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: dddaad3e171c757b353deb81ffcb77cfbe706340
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394915"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108257"
 ---
 # <a name="track-data-changes-in-azure-sql-edge"></a>在 Azure SQL Edge 中追蹤資料變更
 
@@ -36,7 +36,10 @@ Azure SQL Edge 支援兩項 SQL Server 功能，可追蹤資料庫中資料的�
 
 若要瞭解如何查詢和使用已變更的資料，請參閱使用 [變更資料](/sql/relational-databases/track-changes/work-with-change-data-sql-server)。
 
-## <a name="change-tracking"></a>變更追蹤
+> [!NOTE]
+> Azure SQL Edge 不支援相依于 CLR 的變更資料捕獲函數。
+
+## <a name="change-tracking"></a>Change tracking
 
 若要瞭解這項功能如何運作的詳細資訊，請參閱 [關於變更追蹤](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。
 

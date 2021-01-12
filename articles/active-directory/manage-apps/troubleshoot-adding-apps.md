@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 714cbb06506cc3e0dffe74007712d9cbad072284
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f873608d07785e6b99bd8e0fcdadf64a8899d490
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655063"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108410"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>針對新增或移除應用程式以 Azure Active Directory 的常見問題進行疑難排解
 本文可協助您瞭解使用者在新增或移除應用程式以 Azure Active Directory 時所面臨的常見問題。
@@ -43,7 +43,7 @@ ms.locfileid: "94655063"
 
 - 針對 Microsoft 應用程式，無論您的角色為何，都無法從 UI 中刪除它們。
 
-- 適用于對應至受控識別的 servicePrincipals。 無法在企業應用程式分頁中刪除受控識別服務主體。 您必須移至 Azure 資源以進行管理。 深入瞭解[受控識別](../managed-identities-azure-resources/overview.md)清除
+- 適用于對應至受控識別的 servicePrincipals。 無法在企業應用程式分頁中刪除受控識別服務主體。 您必須移至 Azure 資源以進行管理。 深入瞭解 [受控識別](../managed-identities-azure-resources/overview.md)
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>如何查看入口網站通知的詳細資料
 您可以依照下列步驟來查看任何入口網站通知的詳細資料：

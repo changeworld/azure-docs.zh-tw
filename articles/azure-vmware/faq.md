@@ -3,12 +3,12 @@ title: 常見問題集
 description: 提供有關 Azure VMware 解決方案的一些常見問題解答。
 ms.topic: conceptual
 ms.date: 1/4/2020
-ms.openlocfilehash: d0228739a6ee4eac20d2fa04e47cf86b6fddb84e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1420fba40492e1a5f45f4ad5e58da2caa29ae7e7
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881220"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107951"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>關於 Azure VMware 解決方案的常見問題
 
@@ -29,6 +29,10 @@ ms.locfileid: "97881220"
 #### <a name="can-workloads-running-in-an-azure-vmware-solution-instance-consume-or-integrate-with-azure-services"></a>在 Azure VMware 解決方案實例中執行的工作負載是否可以取用或與 Azure 服務整合？
 
 Azure VMware 解決方案客戶將可使用所有 Azure 服務。 特定服務的效能和可用性限制必須以案例為基礎來解決。
+
+#### <a name="what-guest-operating-systems-are-compatible-with-azure-vmware-solution"></a>哪些客體作業系統與 Azure VMware 解決方案相容？
+
+您可以使用 [VMware 相容性指南](https://www.vmware.com/resources/compatibility/search.php?deviceCategory=software&details=1&releases=485&page=1&display_interval=10&sortColumn=Partner&sortOrder=Asc&testConfig=16)，找到與 vSphere 的客體作業系統相容性的相關資訊。  若要識別在 Azure VMware 解決方案中執行的 vSphere 版本，請參閱 [VMware 軟體版本](concepts-private-clouds-clusters.md#vmware-software-versions)。
 
 #### <a name="do-i-use-the-same-tools-that-i-use-now-to-manage-private-cloud-resources"></a>我是否使用此時用來管理私人雲端資源的相同工具？
 

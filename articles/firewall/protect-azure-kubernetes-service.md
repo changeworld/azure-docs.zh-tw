@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 09/03/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: 43755b312a64c429b38a07c8c4fad8c85b08342a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51af9ff4972f5edef02426a6e81e8582123c9a7a
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437848"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107849"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>使用 Azure 防火牆來保護 Azure Kubernetes Service (AKS) 部署
 
@@ -37,7 +37,7 @@ Azure 防火牆提供 AKS FQDN 標記以簡化設定。 使用下列步驟來允
 
 - 當您使用 Azure 防火牆來限制輸出流量，並建立使用者定義的路由 (UDR) 將所有輸出流量導向時，請務必在防火牆中建立適當的 DNAT 規則，以正確地允許連入流量。 
 
-   使用具有 UDR 的 Azure 防火牆會中斷輸入設定，因為非對稱式路由。 如果 AKS 子網具有前往防火牆私人 IP 位址的預設路由，但您使用的是公用負載平衡器，就會發生此問題。 例如，類型為 *LoadBalancer*的輸入或 Kubernetes 服務。
+   使用具有 UDR 的 Azure 防火牆會中斷輸入設定，因為非對稱式路由。 如果 AKS 子網具有前往防火牆私人 IP 位址的預設路由，但您使用的是公用負載平衡器，就會發生此問題。 例如，類型為 *LoadBalancer* 的輸入或 Kubernetes 服務。
 
    在此情況下，系統會透過傳入負載平衡器流量的公用 IP 位址接收它，但傳回路徑則會通過防火牆的私人 IP 位址。 由於防火牆是具狀態，其會捨棄傳回封包，因為防火牆並不知道已建立的工作階段。 若要了解如何整合 Azure 防火牆與您的連入或服務負載平衡器，請參閱[整合 Azure 防火牆與 Azure Standard Load Balancer](integrate-lb.md) \(部分機器翻譯\)。
 - 建立應用程式規則集合，並新增規則以啟用 *AzureKubernetesService* FQDN 標記。 來源 IP 位址範圍是主機集區虛擬網路，通訊協定是 HTTPs，目的地是 AzureKubernetesService。
@@ -47,7 +47,7 @@ Azure 防火牆提供 AKS FQDN 標記以簡化設定。 使用下列步驟來允
    - 如果您有需要與 API 伺服器通訊的應用程式，則需要 TCP [*IPAddrOfYourAPIServer*]：443。 此變更可以在建立叢集之後設定。
    - TCP 埠9000和 UDP 埠1194，通道前端 pod 可與 API 伺服器上的通道進行通訊。
 
-      若要更明確，請參閱 **。 <location>* 下表中的 azmk8s.io 和位址：
+      若要更明確，請參閱下表中的位址：
 
    | 目的地端點                                                             | 通訊協定 | 連接埠    | 使用  |
    |----------------------------------------------------------------------------------|----------|---------|------|

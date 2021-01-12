@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: c8be18049e6ae74a198f5885a46b70df581e0cd7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7496a7a40df49fa1b9f8410526cb9ec00c10478b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187454"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108767"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>串流內嵌輸送量限制
 
@@ -34,7 +34,7 @@ Azure 時間序列深入解析 Gen2 串流資料輸入限制如下所述。
 
 > [!TIP]
 >
-> * 要求可以提供擷取速度最高可達 8 MBps 的環境支援。
+> * 要求可以提供擷取速度最高可達 2 MBps 的環境支援。
 > * 如果您需要透過 Azure 入口網站提交支援票證，請與我們聯絡。
 
 * **範例 1：**
@@ -47,10 +47,10 @@ Azure 時間序列深入解析 Gen2 串流資料輸入限制如下所述。
 
 * **範例 2：**
 
-    Contoso 車隊分析有每秒發出事件的40000裝置。 它們會使用分割區計數為2的事件中樞做為 Azure 時間序列深入解析 Gen2 事件來源。 事件的大小為 200 個位元組。
+    Contoso 車隊分析有每秒發出事件的10000裝置。 它們會使用分割區計數為2的事件中樞做為 Azure 時間序列深入解析 Gen2 事件來源。 事件的大小為 200 個位元組。
 
-  * 環境的內嵌速率為： **40000 裝置 * 200 bytes/event * 1 event/sec = 8 MBps**。
-    * 假設有平衡的資料分割，則其每個資料分割速率會是 4 MBps。
+  * 環境的內嵌速率為： **10000 裝置 * 200 bytes/event * 1 event/sec = 2 MBps**。
+    * 假設有平衡的資料分割，則每個資料分割的速率會是 1 MBps。
     * Contoso Fleet Analytics 的擷取速率超過環境和分割區限制。 他們可以透過 Azure 入口網站提交要求 Azure 時間序列深入解析 Gen2，以增加其環境的內嵌速率，以及建立具有更多資料分割的事件中樞，以在限制範圍內。
 
 ## <a name="hub-partitions-and-per-partition-limits"></a>中樞分割區和每個分割區限制

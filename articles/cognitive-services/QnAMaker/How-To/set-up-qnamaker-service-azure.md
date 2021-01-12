@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5af4eb931015e386e35470f2b36341e15f76150f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: af9087f0dd45212ec88b620dcd965c895b86bbce
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065400"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108187"
 ---
 # <a name="manage-qna-maker-resources"></a>管理 QnA Maker 資源
 
@@ -135,7 +135,7 @@ App Service 環境 (ASE) 可以用來裝載 QnA Maker App Service。 請依照�
     * 檢查 App service 的設定，並新增 ' PrimaryEndpointKey ' 做為應用程式設定。 ' PrimaryEndpointKey ' 的值應該設定為 " \<app-name\> -PrimaryEndpointKey"。 應用程式名稱是在 App service URL 中定義。 比方說，如果 App service URL 是 "mywebsite.myase.p.azurewebsite.net"，則應用程式名稱會是 "mywebsite"。 在此情況下，' PrimaryEndpointKey ' 的值應該設定為 "mywebsite-PrimaryEndpointKey"。
     * 建立 Azure 搜尋服務。
     * 確定已適當設定 Azure 搜尋服務和應用程式設定。 
-      請遵循此 [教學](https://docs.microsoft.com/azure/cognitiveservices/qnamaker/reference-app-service#app-service)課程。
+      請遵循此 [教學](https://docs.microsoft.com/azure/cognitive-services/qnamaker/reference-app-service?tabs=v1#app-service)課程。
 3.  更新與 App Service 環境相關聯的網路安全性群組
     * 依據您的需求更新預先建立的輸入安全性規則。
     * 將來源為「服務標籤」的新輸入安全性規則和來源服務標記新增為 ' CognitiveServicesManagement '。

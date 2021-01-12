@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: cd4b0b53cdc818cc942382021c1dff97b22f1243
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 60ae6eb3142f8898f760027d37881ded8261f571
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051610"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108087"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 儲存體備援
 
@@ -155,6 +155,7 @@ GRS 和 GZRS 之間主要差異是資料在主要區域中複寫的方式。 在
 | 指定年份的物件持久性百分比 | 至少 99.999999999% (11 個 9) | 至少 99.9999999999% (12 個 9) | 至少 99.99999999999999% (16 個 9) | 至少 99.99999999999999% (16 個 9) |
 | 讀取要求的可用性 | 至少 99.9% (非經常性存取層為 99%) | 至少 99.9% (非經常性存取層為 99%) | GRS 至少 99.9% (非經常性存取層為 99%)<br /><br />RA-GRS 至少 99.99% (非經常性存取層為 99.9%) | GZRS 至少 99.9% (非經常性存取層為 99%)<br /><br />RA-GZRS 至少 99.99% (非經常性存取層為 99.9%) |
 | 寫入要求的可用性 | 至少 99.9% (非經常性存取層為 99%) | 至少 99.9% (非經常性存取層為 99%) | 至少 99.9% (非經常性存取層為 99%) | 至少 99.9% (非經常性存取層為 99%) |
+| 可在不同的節點上維護的資料副本數量。                             | 3   | 3   | 6   | 6      |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>持久性和可用性 (依中斷案例)
 

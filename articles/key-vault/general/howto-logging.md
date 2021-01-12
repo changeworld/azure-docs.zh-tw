@@ -9,36 +9,26 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285653"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108733"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>如何啟用 Key Vault 記錄
 
 在建立一或多個金鑰保存庫之後，您可能會想要監視金鑰保存庫的存取方式、時間和存取者。 如需此功能的完整詳細資訊，請參閱 [Key Vault 記錄](logging.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程，必須具備下列項目：
 
 * 所使用的現有金鑰保存庫。  
-* Azure CLI 或 Azure PowerShell。
+* [Azure Cloud Shell](https://shell.azure.com) -Bash 環境
 * 足夠的 Azure 儲存體以儲存金鑰保存庫記錄。
 
-如果您選擇在本機安裝和使用 CLI，您將需要 Azure CLI 2.0.4 版版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 若要使用 CLI 登入 Azure，您可以輸入：
-
-```azurecli-interactive
-az login
-```
-
-如果您選擇在本機安裝和使用 PowerShell，您將需要 Azure PowerShell 模組1.0.0 版或更新版本。 執行 `$PSVersionTable.PSVersion` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
-
-```powershell-interactive
-Connect-AzAccount
-```
+本指南命令的格式是以 Bash 作為環境 [Cloud Shell](https://shell.azure.com) 。
 
 ## <a name="connect-to-your-key-vault-subscription"></a>連接到您的 Key Vault 訂用帳戶
 
@@ -64,7 +54,7 @@ Set-AzContext -SubscriptionId "<subscriptionID>"
 
 雖然您可以為記錄使用現有的儲存體帳戶，但我們將建立專用於 Key Vault 記錄的新儲存體帳戶。 
 
-為了進一步簡化管理，我們也會使用包含金鑰保存庫的同一個資源群組。 在 [Azure CLI 快速入門](quick-create-cli.md) 和 [Azure PowerShell 快速入門](quick-create-powershell.md)中，此資源群組會命名為 **myResourceGroup** ，且位置為 *eastus* 。 視情況將這些值取代為您自己的值。 
+為了進一步簡化管理，我們也會使用包含金鑰保存庫的同一個資源群組。 在 [Azure CLI 快速入門](quick-create-cli.md) 和 [Azure PowerShell 快速入門](quick-create-powershell.md)中，此資源群組會命名為 **myResourceGroup**，且位置為 *eastus*。 視情況將這些值取代為您自己的值。 
 
 我們也必須提供儲存體帳戶名稱。 儲存體帳戶名稱必須是唯一的，長度介於3到24個字元之間，而且只能使用數位和小寫字母。  最後，我們會建立「Standard_LRS」 SKU 的儲存體帳戶。
 
@@ -162,7 +152,7 @@ az storage blob list --account-name "<your-unique-storage-account-name>" --conta
 使用 Azure PowerShell，請使用 [AzStorageBlob](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) 列出此容器中的所有 blob，然後輸入：
 
 ```powershell
-Get-AzStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
 ```
 
 您會從 Azure CLI 命令或 Azure PowerShell Cmdlet 的輸出中看到，blob 的名稱格式為 `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json` 。 日期和時間值使用 UTC。
@@ -178,7 +168,7 @@ az storage blob download --container-name "insights-logs-auditevent" --file <pat
 使用 Azure PowerShell，使用 [AzStorageBlobs 指令程式](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) 取得 blob 的清單，然後使用管線將其傳送至 [>get-azstorageblobcontent](/powershell/module/az.storage/get-azstorageblobcontent?view=azps-4.7.0) Cmdlet，以將記錄下載至您選擇的路徑。
 
 ```powershell-interactive
-$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
+$blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
 ```
 
 當您在 PowerShell 中執行第二個 Cmdlet 時， **/** blob 名稱中的分隔符號會在目的地資料夾下建立完整資料夾結構。 您將使用此結構來下載 Blob 並儲存為檔案。
@@ -188,19 +178,19 @@ $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzSt
 * 如果您有多個金鑰保存庫，並且只想下載其中的 CONTOSOKEYVAULT3 金鑰保存庫的記錄：
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * 如果您有多個資源群組，並且只想下載其中某個資源群組的記錄，請使用 `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`：
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * 如果您想下載 2019 年 1 月份當月的所有記錄，請使用 `-Blob '*/year=2019/m=01/*'`：
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
 您現在已做好準備，可以開始查看記錄中有何內容。 但是在繼續進行之前，您應該多了解兩個命令：
