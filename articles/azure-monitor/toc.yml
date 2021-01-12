@@ -226,6 +226,8 @@
               href: platform/service-providers.md
             - name: 專用叢集
               href: log-query/logs-dedicated-clusters.md
+            - name: 針對記錄進行疑難排解
+              href: platform/azure-monitor-troubleshooting-logs.md
         - name: Log Analytics
           items:
             - name: 概觀

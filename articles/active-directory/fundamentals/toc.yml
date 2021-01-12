@@ -1,6 +1,6 @@
 - name: 基本概念文件
   href: index.yml
-- name: 概觀
+- name: 總覽
   expanded: true
   items:
     - name: 什麼是 Azure Active Directory？
@@ -25,7 +25,7 @@
   items:
     - name: 安全性
       items:
-        - name: 保護資源的外部存取
+        - name: 保護外部共同作業
           items:
             - name: 保護外部存取概觀
               href: secure-external-access-resources.md
@@ -47,6 +47,8 @@
               href: 8-secure-access-sensitivity-labels.md
             - name: 9 安全存取小組、SharePoint 和 OneDrive
               href: 9-secure-access-teams-sharepoint.md
+        - name: 保護 Microsoft 365 以避免內部攻擊
+          href: protect-m365-from-on-premises-attacks.md
         - name: 啟用 MFA
           href: concept-fundamentals-mfa-get-started.md
         - name: 安全性預設值
