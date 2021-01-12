@@ -7,19 +7,17 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 5aadd9d96f538f92e1b9e0100b2c1055ee0b0633
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e60f77495cdb822a0c50be936c2b0d3ac31348f3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065264"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116704"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>跨服務查詢-Azure 監視器和 Azure 資料總管 (Preview) 
 在 [Azure 資料總管](https://docs.microsoft.com/azure/data-explorer/)、 [Application Insights](/azure/azure-monitor/app/app-insights-overview)與 [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)之間建立跨服務查詢。
 ## <a name="azure-monitor-and-azure-data-explorer-cross-service-querying"></a>Azure 監視器和 Azure 資料總管跨服務查詢
 這種體驗可讓您在 [Azure 資料總管和 Azure 監視器之間建立跨服務查詢](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) ，以及在 [Azure 監視器和 Azure 資料總管之間建立跨服務查詢](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy)。
-
-:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure 資料瀏覽器 proxy 流程。":::
 
 例如， (從 Log Analytics) 查詢 Azure 資料總管：
 ```kusto

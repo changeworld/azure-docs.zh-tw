@@ -16,22 +16,20 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 846e1a83f3cba5f87210ae4f825b5fac4f1569c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a18fc3e4851c2daf03c662cf40cef58cc7d9e77a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648373"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117702"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>使用 Azure 入口網站新增或移除外部來賓使用者的 Azure 角色指派
 
 [Azure 角色型存取控制 (AZURE RBAC) ](overview.md) 可針對大型組織以及需要存取您環境中特定資源，但不一定要存取整個基礎結構或任何計費相關範圍的外部共同作業者、廠商或兼職企業，提供更佳的安全性管理。 您可以使用 [AZURE ACTIVE DIRECTORY B2B](../active-directory/external-identities/what-is-b2b.md) 中的功能與外部來賓使用者共同作業，也可以使用 Azure RBAC 僅授與來賓使用者在您環境中所需的許可權。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-若要新增或移除角色指派，您必須具有：
-
-- `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 權限，例如[使用者存取系統管理員](built-in-roles.md#user-access-administrator)或[擁有者](built-in-roles.md#owner)
+[!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
 ## <a name="when-would-you-invite-guest-users"></a>您何時會邀請來賓使用者？
 

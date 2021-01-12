@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 565b84603a14452dd2ec49f8cf61da128503bc03
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964247"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117243"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>新增角色指派的步驟
 
@@ -31,7 +31,7 @@ ms.locfileid: "97964247"
 - 服務主體 - 應用程式或服務用來存取特定 Azure 資源的安全性身分識別。 您可以將它視為應用程式的「使用者身分識別」(使用者名稱和密碼或憑證)。
 - 受控識別 (MSI) - 在 Azure Active Directory 中由 Azure 自動管理的身分識別。 您通常會在開發雲端應用程式來管理 Azure 服務驗證所需的認證時，使用[受控識別](../active-directory/managed-identities-azure-resources/overview.md)。
 
-## <a name="step-2-find-the-appropriate-role"></a>步驟2：尋找適當的角色
+## <a name="step-2-select-the-appropriate-role"></a>步驟2：選取適當的角色
 
 許可權會群組在一起成為 *角色定義*。 一般會直接稱之為 *角色*。 您可以從數個內建角色的清單中選取。 如果內建角色無法滿足您組織的特定需求，您可以建立自己的自訂角色。
 

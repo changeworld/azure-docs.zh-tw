@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4886cf6c24e7e96676b9ca5e74b431685cd5a8bb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452860"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117770"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>將資料從 Azure Data Lake Storage 載入至 Azure Synapse Analytics 中的專用 SQL 集區
 
-本指南概述如何使用 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) ，從 Azure Data Lake Storage 載入資料。 如需有關在所有驗證方法上使用 COPY 語句的快速範例，請造訪下列檔： [使用專用的 SQL 集區安全地載入資料](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)。
+本指南概述如何使用 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) ，從 Azure Data Lake Storage 載入資料。 如需有關在所有驗證方法上使用 COPY 語句的快速範例，請造訪下列檔： [使用專用的 SQL 集區安全地載入資料](./quickstart-bulk-load-copy-tsql-examples.md)。
 
 > [!NOTE]  
 > 若要在 COPY 語句上提供意見反應或回報問題，請傳送電子郵件至下列通訊群組清單： sqldwcopypreview@service.microsoft.com 。
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>建立 COPY 語句
 
-連接到您的 SQL 專用集區，並執行 COPY 語句。 如需範例的完整清單，請參閱下列檔： [使用專用的 SQL 集區安全地載入資料](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)。
+連接到您的 SQL 專用集區，並執行 COPY 語句。 如需範例的完整清單，請參閱下列檔： [使用專用的 SQL 集區安全地載入資料](./quickstart-bulk-load-copy-tsql-examples.md)。
 
 ```sql
 -- B: Create and execute the COPY statement
@@ -133,6 +133,6 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 > [了解如何開發適用於資料倉儲的資料表](sql-data-warehouse-tables-overview.md)
 
 如需更多載入範例和參考，請參閱下列檔：
-- [COPY 語句參考檔](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
-- [複製每個驗證方法的範例](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
-- [複製單一資料表的快速入門](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)
+- [COPY 語句參考檔](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [複製每個驗證方法的範例](./quickstart-bulk-load-copy-tsql-examples.md)
+- [複製單一資料表的快速入門](./quickstart-bulk-load-copy-tsql.md)

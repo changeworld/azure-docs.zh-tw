@@ -3,12 +3,12 @@ title: 安全性概觀
 description: Azure Arc 已啟用伺服器的安全性資訊。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: be79be3030af76425b54fd683784d0e216ac2cf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa8653b783e7eb3e211b7514831604dd5642cfbe
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329035"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117022"
 ---
 # <a name="azure-arc-for-servers-security-overview"></a>適用於伺服器的 Azure Arc 安全性總覽
 
@@ -16,13 +16,13 @@ ms.locfileid: "91329035"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-每個啟用 Azure Arc 的伺服器都具有受控識別作為 Azure 訂用帳戶內資源群組的一部分，此身分識別代表執行內部部署或其他雲端環境的伺服器。 此資源的存取權是由標準的 [Azure 角色型存取控制](../../role-based-access-control/overview.md)所控制。 您可以從 Azure 入口網站中的 [ [**存取控制] (IAM) **](../../role-based-access-control/role-assignments-portal.md#access-control-iam) ] 頁面，確認可存取已啟用 Azure Arc 之伺服器的人員。
+每個啟用 Azure Arc 的伺服器都具有受控識別作為 Azure 訂用帳戶內資源群組的一部分，此身分識別代表執行內部部署或其他雲端環境的伺服器。 此資源的存取權是由標準的 [Azure 角色型存取控制](../../role-based-access-control/overview.md)所控制。 您可以從 Azure 入口網站中的 [ [**存取控制] (IAM)**](../../role-based-access-control/role-assignments-portal.md) ] 頁面，確認可存取已啟用 Azure Arc 之伺服器的人員。
 
 :::image type="content" source="./media/security-overview/access-control-page.png" alt-text="Azure Arc 啟用的伺服器存取控制" border="false" lightbox="./media/security-overview/access-control-page.png":::
 
 授與 [參與者](../../role-based-access-control/built-in-roles.md#contributor) 或系統管理員角色存取權的使用者和應用程式可以對資源進行變更，包括在電腦上部署或刪除 [擴充](manage-vm-extensions.md) 功能。 延伸模組可以包含在具特殊許可權的內容中執行的任意腳本，因此請考慮 Azure 資源上的任何參與者，以成為伺服器的間接系統管理員。
 
-**Azure Connected Machine**上線角色可供大規模上線，而且只能在 Azure 中讀取或建立新的啟用 Arc 的伺服器。 它無法用來刪除已經註冊或管理延伸模組的伺服器。 建議的最佳作法是只將此角色指派給 Azure Active Directory (Azure AD) 的服務主體，以供大規模登入機器。
+**Azure Connected Machine** 上線角色可供大規模上線，而且只能在 Azure 中讀取或建立新的啟用 Arc 的伺服器。 它無法用來刪除已經註冊或管理延伸模組的伺服器。 建議的最佳作法是只將此角色指派給 Azure Active Directory (Azure AD) 的服務主體，以供大規模登入機器。
 
 以 **Azure Connected Machine 資源管理員** 角色成員身分的使用者可以讀取、修改、重新上架和刪除電腦。 此角色的設計目的是支援對啟用 Arc 的伺服器進行管理，但不支援資源群組或訂用帳戶中的其他資源。
 

@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e3daf89b80daf47049150b05ca392eede360bd3e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d778844fee8cad9359532ffa23e177bf7b13c4b8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673411"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117685"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的容量限制
 
@@ -43,7 +43,7 @@ Azure Synapse Analytics 中專用 SQL 集區的各種元件允許的最大值。
 | Table |每個資料庫的資料表數 | 100,000 |
 | Table |資料表的資料行數 |1024 個資料行 |
 | Table |每個資料行的位元組 |相依於資料行[資料類型](sql-data-warehouse-tables-data-types.md)。 char 資料類型的限制為 8000、nvarchar 為 4000 或 MAX 資料類型為 2 GB。 |
-| Table |每個資料列的位元組，已定義的大小 |8060 個位元組<br/><br/>每個資料列的位元組數目計算方式和使用頁面壓縮的 SQL Server 所使用的方式相同。 和 SQL Server 一樣，支援資料列溢位儲存體，可讓 **可變長度** 資料行以非資料列方式推送。 可變長度的資料列會發送至超出資料列，只有 24 位元組的根會儲存在主要記錄中。 如需詳細資訊，請參閱 [超過 8 KB 的資料列溢位資料](https://msdn.microsoft.com/library/ms186981.aspx)。 |
+| Table |每個資料列的位元組，已定義的大小 |8060 個位元組<br/><br/>每個資料列的位元組數目計算方式和使用頁面壓縮的 SQL Server 所使用的方式相同。 和 SQL Server 一樣，支援資料列溢位儲存體，可讓 **可變長度** 資料行以非資料列方式推送。 可變長度的資料列會發送至超出資料列，只有 24 位元組的根會儲存在主要記錄中。 如需詳細資訊，請參閱 [超過 8 KB 的資料列溢位資料](/previous-versions/sql/sql-server-2008-r2/ms186981(v=sql.105))。 |
 | Table |每個資料表的資料分割 |15,000<br/><br/>為了獲得高效能，建議在仍能支援業務需求的情況下，將您需要的資料分割數目降至最低。 隨著資料分割數目增加，資料定義語言 (DDL) 和資料操作語言 (DML) 作業的負荷會加重，導致效能變慢。 |
 | Table |每個資料分割界限值的字元。 |4000 |
 | 索引 |每個資料表的非叢集索引。 |50<br/><br/>僅適用於資料列存放區資料表。 |

@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 9e7d45a588e60cd082f1eef43d1d1b6681b9e912
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093650"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117736"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>使用 PREDICT 來評分機器學習模型
 
-專用的 SQL 集區可讓您使用熟悉的 T-sql 語言來對機器學習模型進行評分。 您可以使用 T-sql [預測](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)，讓現有的機器學習模型以歷程記錄資料進行定型，並在資料倉儲的安全界限內進行評分。 PREDICT 函數會採用 [ONNX (Open Neural Network Exchange) ](https://onnx.ai/) 模型和資料作為輸入。 這項功能消除了在資料倉儲外部移動重要資料以進行評分的步驟。 其目標是要讓資料專業人員能夠輕鬆地使用熟悉的 T-sql 介面部署機器學習服務模型，並與資料科學家完美地共同作業，並使用適合其工作的架構。
+專用的 SQL 集區可讓您使用熟悉的 T-sql 語言來對機器學習模型進行評分。 您可以使用 T-sql [預測](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)，讓現有的機器學習模型以歷程記錄資料進行定型，並在資料倉儲的安全界限內進行評分。 PREDICT 函數會採用 [ONNX (Open Neural Network Exchange) ](https://onnx.ai/) 模型和資料作為輸入。 這項功能消除了在資料倉儲外部移動重要資料以進行評分的步驟。 其目標是要讓資料專業人員能夠輕鬆地使用熟悉的 T-sql 介面部署機器學習服務模型，並與資料科學家完美地共同作業，並使用適合其工作的架構。
 
 > [!NOTE]
 > 無伺服器 SQL 集區目前不支援此功能。
@@ -35,7 +35,7 @@ ms.locfileid: "97093650"
 
 - 專用的 SQL 集區只支援 ONNX 格式模型。 ONNX 是一種開放原始碼模型格式，可讓您在各種架構之間交換模型，以實現互通性。 您可以將現有的模型轉換成 ONNX 格式，方法是使用以原生方式支援的架構，或可使用轉換的套件。 例如， [sklearn-onnx](https://github.com/onnx/sklearn-onnx) package 會將 scikit-learn-學習模型轉換為 onnx。 [ONNX GitHub 存放庫](https://github.com/onnx/tutorials#converting-to-onnx-format) 提供支援的架構和範例清單。
 
-   如果您使用 [自動化 ML](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) 進行定型，請務必將 *enable_onnx_compatible_models* 參數設為 TRUE，以產生 onnx 格式模型。 [自動 Machine Learning 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 示範如何使用自動化 ML 來建立 ONNX 格式的機器學習模型的範例。
+   如果您使用 [自動化 ML](../../machine-learning/concept-automated-ml.md) 進行定型，請務必將 *enable_onnx_compatible_models* 參數設為 TRUE，以產生 onnx 格式模型。 [自動 Machine Learning 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) 示範如何使用自動化 ML 來建立 ONNX 格式的機器學習模型的範例。
 
 - 輸入資料支援下列資料類型：
     - int、Bigint、real、float
@@ -66,7 +66,7 @@ GO
 
 ```
 
-一旦模型轉換為十六進位字串和指定的資料表定義之後，請使用 [COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) 或 Polybase 將模型載入專用的 SQL 集區資料表中。 下列程式碼範例會使用 Copy 命令來載入模型。
+一旦模型轉換為十六進位字串和指定的資料表定義之後，請使用 [COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?preserve-view=true&view=azure-sqldw-latest) 或 Polybase 將模型載入專用的 SQL 集區資料表中。 下列程式碼範例會使用 Copy 命令來載入模型。
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location
@@ -80,9 +80,9 @@ WITH (
 
 ## <a name="scoring-the-model"></a>評分模型
 
-在資料倉儲中載入模型和資料之後，請使用 **T-SQL PREDICT** 函數來對模型進行評分。 請確定新的輸入資料與用於建立模型的定型資料具有相同的格式。 T-sql 預測會採用兩個輸入：模型和新計分輸入資料，並產生輸出的新資料行。您可以將模型指定為變數、常值或純量 sub_query。 使用 [WITH common_table_expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql?view=azure-sqldw-latest&preserve-view=true) 指定資料參數的命名結果集。
+在資料倉儲中載入模型和資料之後，請使用 **T-SQL PREDICT** 函數來對模型進行評分。 請確定新的輸入資料與用於建立模型的定型資料具有相同的格式。 T-sql 預測會採用兩個輸入：模型和新計分輸入資料，並產生輸出的新資料行。您可以將模型指定為變數、常值或純量 sub_query。 使用 [WITH common_table_expression](/sql/t-sql/queries/with-common-table-expression-transact-sql?preserve-view=true&view=azure-sqldw-latest) 指定資料參數的命名結果集。
 
-下列範例顯示使用預測函數的範例查詢。 系統會建立包含預測結果的額外資料行，其中包含名稱 *分數* 和資料類型 *float* 。 您可以使用 select 語句來顯示所有輸入資料行以及輸出預測資料行。 如需詳細資訊，請參閱 [預測 (transact-sql) ](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
+下列範例顯示使用預測函數的範例查詢。 系統會建立包含預測結果的額外資料行，其中包含名稱 *分數* 和資料類型 *float* 。 您可以使用 select 語句來顯示所有輸入資料行以及輸出預測資料行。 如需詳細資訊，請參閱 [預測 (transact-sql) ](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)。
 
 ```sql
 -- Query for ML predictions
@@ -93,4 +93,4 @@ DATA = dbo.mytable AS d, RUNTIME = ONNX) WITH (Score float) AS p;
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解 PREDICT 函數，請參閱 [預測 (transact-sql) ](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)。
+若要深入瞭解 PREDICT 函數，請參閱 [預測 (transact-sql) ](/sql/t-sql/queries/predict-transact-sql?preserve-view=true&view=azure-sqldw-latest)。

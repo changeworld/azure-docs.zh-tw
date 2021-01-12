@@ -11,18 +11,18 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 950cb4c40a534f252ec8b0daa5a57eb87c098450
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b213954dde6ca4eaa0a69ddf0e40398fc09b9063
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450479"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115764"
 ---
 # <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS，連接到 Azure Synapse Analytics 中的專用 SQL 集區 (先前的 SQL DW) ) 
 
 > [!div class="op_single_selector"]
 >
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
+> * [Power BI](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
@@ -30,7 +30,7 @@ ms.locfileid: "96450479"
 
 使用 SQL Server Management Studio (SSMS) 來連接和查詢先前 SQL DW)  (的專用 SQL 集區。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用本教學課程，您需要：
 
@@ -61,7 +61,7 @@ ms.locfileid: "96450479"
 現已建立對您的資料庫的連線，接著繼續撰寫查詢。
 
 1. 在 [SQL Server 物件總管] 中您的資料庫上按一下滑鼠右鍵。
-2. 選取 [新增查詢]  。 隨即開啟 [新增查詢] 視窗。
+2. 選取 [新增查詢]。 隨即開啟 [新增查詢] 視窗。
 
    ![新增查詢](./media/sql-data-warehouse-query-ssms/new-query.png)
 3. 將下列 T-SQL 查詢複製到查詢視窗：
@@ -79,4 +79,4 @@ ms.locfileid: "96450479"
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在可以連線並查詢，請嘗試[使用 Power BI 將資料視覺化](sql-data-warehouse-get-started-visualize-with-power-bi.md)。 若要為 Azure Active Directory 驗證設定您的環境，請參閱 [驗證專用的 SQL 集](sql-data-warehouse-authentication.md)區。
+您現在可以連線並查詢，請嘗試[使用 Power BI 將資料視覺化](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)。 若要為 Azure Active Directory 驗證設定您的環境，請參閱 [驗證專用的 SQL 集](sql-data-warehouse-authentication.md)區。

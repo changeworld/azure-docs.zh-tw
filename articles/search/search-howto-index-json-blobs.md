@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: a3c44d667b6baaf16e109dfb88c22c16a1ea2ce1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1fc6c7086917f2bcd6e4991d2dac37ea24cbfa83
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697198"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116376"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用 Blob 索引子編制 JSON blob 的索引
 
@@ -108,7 +108,7 @@ Azure Blob 儲存體中的 JSON blob 通常是單一 JSON 檔， (剖析模式 `
 
 您可以在本節結尾處查看 [REST 範例程式碼](#rest-example) ，說明如何建立這三個物件。 本節也包含 [json 剖析模式](#parsing-modes)、 [單一 blob](#parsing-single-blobs)、 [JSON 陣列](#parsing-arrays)和 [嵌套陣列](#nested-json-arrays)的詳細資料。
 
-若要進行以程式碼為基礎的 JSON 索引，請使用 [Postman 或 Visual Studio Code](search-get-started-rest.md) ，並使用 REST API 來建立這些物件：
+若要進行以程式碼為基礎的 JSON 索引，請使用 [Postman](search-get-started-rest.md) 或 [Visual Studio Code](search-get-started-vs-code.md) ，並使用 REST API 來建立這些物件：
 
 + [index](/rest/api/searchservice/create-index)
 + [資料來源](/rest/api/searchservice/create-data-source)

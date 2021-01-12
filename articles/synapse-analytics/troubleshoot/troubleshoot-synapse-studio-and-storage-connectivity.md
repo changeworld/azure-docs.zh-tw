@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8cf440a517c1a3496b3df438fdd0d2534609908f
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: d570b4a8df5d59cf8828985bee20852d6bc79b1e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733093"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117056"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>針對 Azure Synapse Analytics Synapse Studio 與儲存體之間的連線進行疑難排解
 
@@ -63,4 +63,4 @@ ms.locfileid: "97733093"
 
 
 ## <a name="next-steps"></a>後續步驟
-如果先前的步驟無法協助您解決問題，請 [建立支援票證](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md)。
+如果先前的步驟無法協助您解決問題，請 [建立支援票證](../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md)。

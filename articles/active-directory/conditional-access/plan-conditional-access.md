@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43200985820779c56983f09b81a86989261c36f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934997"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116002"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>規劃條件式存取部署
 
@@ -223,14 +223,6 @@ Microsoft 提供名為[安全性預設值](../fundamentals/concept-fundamentals-
 如果您設定了錯誤的原則，則可能會將組織鎖定在 Azure 入口網站之外。 透過在組織中建立兩個或多個[緊急存取帳戶](../roles/security-emergency-access.md) \(部分機器翻譯\)，來減輕管理員意外遭鎖定的影響。
 
 * 建立一個專門用來管理原則，且從您的所有原則排除的使用者帳戶。
-
-* 中斷混合式環境的半透明案例：
-
-  * 建立內部部署安全性群組，並將其與 Azure AD 同步。 安全性群組應包含您的專用原則管理帳戶。 
-
-   * 豁免此安全性群組會形成所有條件式存取原則。
-
-   * 發生服務中斷時，請適當地將您的其他系統管理員新增至內部部署群組，並強制執行同步處理。這會對條件式存取原則的豁免進行動畫。
 
 ### <a name="set-up-report-only-mode"></a>設定報告專用模式
 
@@ -493,4 +485,4 @@ Azure Active Directory 可讓您建立[具名位置](location-condition.md) \(�
 
 [深入了解 Identity Protection](../identity-protection/overview-identity-protection.md)
 
-[使用 Microsoft Graph API 管理條件式存取原則](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[使用 Microsoft Graph API 管理條件式存取原則](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)

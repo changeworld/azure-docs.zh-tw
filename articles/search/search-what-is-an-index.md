@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3d5663177bb087e936a49dd7289659b684d85860
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701128"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116189"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立基本搜尋索引
 
@@ -70,7 +70,7 @@ ms.locfileid: "94701128"
 在開發期間，請規劃頻繁的重建。 因為實體結構是在服務中建立的，所以需要卸載和重新建立 [索引](search-howto-reindex.md) ，才能對現有的欄位定義進行大部分的修改。 您可以考慮處理部份的資料，讓重建更快速。 
 
 > [!Tip]
-> 建議使用程式碼（而不是入口網站方法）來同時處理索引設計和資料匯入。 或者， [Postman 和 Visual Studio Code](search-get-started-rest.md) 等工具在開發專案仍處於早期階段時，對於概念證明的測試很有説明。 您可以對要求主體中的索引定義進行累加變更，然後將要求傳送至您的服務，以使用更新後的結構描述來重建索引。
+> 建議使用程式碼（而不是入口網站方法）來同時處理索引設計和資料匯入。 或者， [Postman](search-get-started-rest.md) 或 [Visual Studio Code](search-get-started-vs-code.md) 之類的工具在開發專案仍處於早期階段時，對於概念證明的測試而言很有説明。 您可以對要求主體中的索引定義進行累加變更，然後將要求傳送至您的服務，以使用更新後的結構描述來重建索引。
 
 ## <a name="index-schema"></a>索引架構
 
@@ -242,7 +242,7 @@ ms.locfileid: "94701128"
 
 ![以屬性選取專案為基礎的索引大小](./media/search-what-is-an-index/realestate-index-size.png "以屬性選取專案為基礎的索引大小")
 
-雖然這些是人工的索引變體，但我們可以參考這些變體，以便廣泛比較屬性如何影響儲存體。 設定「已抓取」是否增加索引大小？ 否。 將欄位新增至 **建議工具** 會增加索引大小嗎？ 可以。
+雖然這些是人工的索引變體，但我們可以參考這些變體，以便廣泛比較屬性如何影響儲存體。 設定「已抓取」是否增加索引大小？ 不會。 將欄位新增至 **建議工具** 會增加索引大小嗎？ 是。
 
 支援篩選和排序的索引會依比例大於僅支援全文檢索搜尋的索引。 這是因為篩選和排序作業會掃描是否有完全相符的專案，而需要存在逐字文字字串。 相較之下，支援全文檢索查詢的可搜尋欄位會使用反向索引，這些索引會以不含整份檔空間的 token 化詞彙來填入。 
 

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2afc274bf7c040eca6a83abbab24c41767f16482
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3e55ef054d5c305937f88d6ec5b2b4453cac6792
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453659"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117753"
 ---
 # <a name="integrate-other-services-with-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>將其他服務與專用的 SQL 集區整合 (先前的 SQL DW) Azure Synapse Analytics。
 
@@ -36,7 +36,7 @@ Power BI 整合可讓您結合資料倉儲的計算能力以及 Power BI 的動�
 * **Direct Connect**：針對使用專用 sql 集區布建的資料倉儲，以更先進的邏輯下推連接， (先前的 sql DW) 。 下推可提供更快速且更大規模的分析。
 * **在 Power BI 中開啟**：[在 Power BI 中開啟] 按鈕會傳遞執行個體資訊給 Power BI，提供簡化的連線方式。
 
-如需詳細資訊，請參閱[與 Power BI 整合](sql-data-warehouse-get-started-visualize-with-power-bi.md)或 [Power BI 文件](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/)。
+如需詳細資訊，請參閱[與 Power BI 整合](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)或 [Power BI 文件](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/)。
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 

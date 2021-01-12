@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 9a8dba99435e1616b1c49d5209b30c3c523876db
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 34d8881eb072c4c723bf68b7c6ccfd24ab19cd3c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071335"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116274"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>使用安全中心的整合式 EDR 解決方案來保護您的端點： Microsoft Defender for Endpoint
 
@@ -45,7 +45,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 | 支援的平台：            | 執行 Windows 的 Azure 機器<br>執行 Windows 的 Azure Arc 電腦|
 | 支援的 Windows 版本：  |  •資訊安全中心支援 Windows Server 2016、2012 R2 和 2008 R2 SP1 的偵測<br> • Office 365 GCC 客戶已停用使用此整合的伺服器端點監視<br> •不支援 Windows Server 2019、Windows 10 1703 (與較新的) 或 Linux|
 | 必要的角色和權限： | 若要啟用/停用整合：**安全性系統管理員** 或 **擁有** 者<br>若要在安全性中心內查看 MDATP 警示： **安全性讀取者**、 **讀者**、 **資源群組參與者**、 **資源群組擁有** 者、 **安全性系統管理員**、訂用帳戶 **擁有** 者或訂用帳戶 **參與者**|
-| 雲端：                         | ![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov<br>![否](./media/icons/no-icon.png) 在全域 Azure 雲端中執行工作負載的 GCC 客戶                                                        |
+| 雲端：                         | ![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov<br>![No](./media/icons/no-icon.png) 在全域 Azure 雲端中執行工作負載的 GCC 客戶                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -131,7 +131,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已有 Microsoft Defender for Endpoint 的授權，可以取得 Azure Defender 的折扣嗎？
 如果您已經擁有適用于 Microsoft Defender for Endpoint 的授權，則不需要支付該部分的 Azure Defender 授權。
 
-若要確認您的折扣，請聯絡資訊安全中心的支援小組，並提供相關的工作區識別碼、區域及授權資訊。
+若要確認您的折扣，請聯絡資訊安全中心的支援小組，並為每個相關的授權提供相關的工作區識別碼、區域及授權資訊。
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>從協力廠商 EDR 工具如何? 切換？
 如需從非 Microsoft 端點解決方案切換的完整指示，請參閱 Microsoft Defender for Endpoint 檔： [遷移總覽](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration)。

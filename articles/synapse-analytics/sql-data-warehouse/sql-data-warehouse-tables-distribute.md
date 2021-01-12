@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c452d51018ef3f204cd7281971c07fb6337d39bf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3b61df954e913671eafff4b739e0f53a4d420c28
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449708"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117294"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的專用 SQL 集區來設計分散式資料表的指引
 
@@ -68,7 +68,7 @@ ms.locfileid: "96449708"
 - 如果此聯結比查詢中的其他聯結較不重要
 - 當資料表是暫存預備資料表時
 
-[載入紐約計程車資料](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse)教學課程會提供範例，示範如何將資料載入循環配置資源的暫存資料表。
+[載入紐約計程車資料](./load-data-from-azure-blob-storage-using-copy.md#load-the-data-into-your-data-warehouse)教學課程會提供範例，示範如何將資料載入循環配置資源的暫存資料表。
 
 ## <a name="choosing-a-distribution-column"></a>選擇散發資料行
 

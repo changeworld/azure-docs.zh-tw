@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ec62724b7aedbad4111a4882dd89f86d116b2a96
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2a8cfbe75925ddc49f6fa3205fafdd1c2203b472
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448065"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115628"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用專用的 SQL 集區來設計資料表
 
@@ -47,7 +47,7 @@ CREATE SCHEMA wwi;
 | WideWorldImportersDW 資料表  | 資料表類型 | 專用的 SQL 集區 |
 |:-----|:-----|:------|:-----|
 | City | 維度 | wwi.DimCity |
-| 順序 | 事實 | wwi.FactOrder |
+| 單 | 事實 | wwi.FactOrder |
 
 ## <a name="table-persistence"></a>資料表持續性
 
@@ -71,7 +71,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 外部資料表會指向位於 Azure 儲存體 blob 或 Azure Data Lake Store 中的資料。 搭配 CREATE TABLE AS SELECT 語句使用時，從外部資料表選取會將資料匯入到專用的 SQL 集區。
 
-因此，外部資料表很適合用來載入資料。 如需載入教學課程，請參閱 [使用 PolyBase 從 Azure blob 儲存體載入資料](load-data-from-azure-blob-storage-using-polybase.md)。
+因此，外部資料表很適合用來載入資料。 如需載入教學課程，請參閱 [使用 PolyBase 從 Azure blob 儲存體載入資料](./load-data-from-azure-blob-storage-using-copy.md)。
 
 ## <a name="data-types"></a>資料類型
 
