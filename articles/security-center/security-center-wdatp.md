@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 34d8881eb072c4c723bf68b7c6ccfd24ab19cd3c
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116274"
+ms.locfileid: "98126847"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>使用安全中心的整合式 EDR 解決方案來保護您的端點： Microsoft Defender for Endpoint
 
@@ -45,7 +45,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 | 支援的平台：            | 執行 Windows 的 Azure 機器<br>執行 Windows 的 Azure Arc 電腦|
 | 支援的 Windows 版本：  |  •資訊安全中心支援 Windows Server 2016、2012 R2 和 2008 R2 SP1 的偵測<br> • Office 365 GCC 客戶已停用使用此整合的伺服器端點監視<br> •不支援 Windows Server 2019、Windows 10 1703 (與較新的) 或 Linux|
 | 必要的角色和權限： | 若要啟用/停用整合：**安全性系統管理員** 或 **擁有** 者<br>若要在安全性中心內查看 MDATP 警示： **安全性讀取者**、 **讀者**、 **資源群組參與者**、 **資源群組擁有** 者、 **安全性系統管理員**、訂用帳戶 **擁有** 者或訂用帳戶 **參與者**|
-| 雲端：                         | ![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov<br>![No](./media/icons/no-icon.png) 在全域 Azure 雲端中執行工作負載的 GCC 客戶                                                        |
+| 雲端：                         | ![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov、其他 Gov<br>![否](./media/icons/no-icon.png) 在全域 Azure 雲端中執行工作負載的 GCC 客戶                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -71,7 +71,7 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 
 當您使用 Azure 資訊安全中心監視您的伺服器時，會自動建立 Microsoft Defender for Endpoint 租使用者。 Defender 針對端點所收集的資料會儲存在租使用者的地理位置中，如布建期間所識別。 客戶資料（匿名化形式）也可能儲存在美國中部儲存和處理系統中。 
 
-設定位置之後，就無法變更它。 如果您需要將資料移到另一個位置，請聯絡 Microsoft 支援服務，以重設租使用者。
+設定位置之後，就無法變更它。 如果您有自己的 Microsoft Defender for Endpoint 授權，而且需要將您的資料移到另一個位置，請聯絡 Microsoft 支援服務，以重設租使用者。
 
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>啟用 Microsoft Defender 以進行端點整合

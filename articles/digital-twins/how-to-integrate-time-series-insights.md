@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 7/14/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 22ee57592af838a236d75fa7f56a0c8e1ed89403
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f776482c684004c8d661f69d8158ba9597c923b2
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046515"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127024"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>整合 Azure 數位 Twins 與 Azure 時間序列深入解析
 
@@ -20,7 +20,7 @@ ms.locfileid: "98046515"
 
 本文所述的解決方案可讓您收集及分析 IoT 解決方案的歷程記錄資料。 Azure 數位 Twins 非常適合用來將資料摘要到時間序列深入解析，因為它可讓您將多個資料流程相互關聯，並在將資訊傳送到時間序列深入解析之前將資訊標準化。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須要有 **Azure 數位 Twins 實例**，才能設定與時間序列深入解析之間的關聯性。 此實例應設定為根據資料更新數位對應項資訊，因為您需要更新對應項資訊幾次，才能看到時間序列深入解析中所追蹤的資料。 
 
@@ -84,13 +84,13 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
 
 在繼續之前，請記下您的 *事件中樞命名空間* 和 *資源群組*，因為您將在本文稍後使用它們來建立另一個事件中樞。
 
-## <a name="create-an-azure-function"></a>建立 Azure 函式 
+## <a name="create-a-function-in-azure"></a>在 Azure 中建立函式
 
-接下來，您將在函數應用程式內建立事件中樞觸發的函式。 您可以使用在端對端教學課程中建立的函數應用程式 ([*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)) 或您自己的解決方案。 
+接下來，您將使用 Azure Functions 在函數應用程式中建立事件中樞觸發的函式。 您可以使用在端對端教學課程中建立的函數應用程式 ([*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)) 或您自己的解決方案。 
 
 此函式會將這些對應項更新事件從其原始格式轉換為 json 物件，其中只包含來自您 twins 的已更新和新增值。
 
-如需使用事件中樞搭配 Azure 函式的詳細資訊，請參閱 [*Azure Functions 的 Azure 事件中樞觸發程式*](../azure-functions/functions-bindings-event-hubs-trigger.md)。
+如需使用事件中樞搭配 Azure Functions 的詳細資訊，請參閱 [*Azure Functions 的 Azure 事件中樞觸發程式*](../azure-functions/functions-bindings-event-hubs-trigger.md)。
 
 在您已發佈的函式應用程式中，以下列程式碼取代函式程式碼。
 
@@ -193,7 +193,7 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="每個對應項的溫度資料會以不同色彩的三個平行線繪製。":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 預設會在時間序列深入解析中將數位 twins 儲存為一般階層，但是可以使用模型資訊和組織的多層級階層進行擴充。 若要深入瞭解此程式，請參閱： 
 

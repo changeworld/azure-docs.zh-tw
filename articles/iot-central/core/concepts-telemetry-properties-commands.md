@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 87fb7f0eb4017a39aca081f73de543a67400d4b5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 5a9f6fa79da59425e4972dddd21ffdea15af73e7
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969056"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127901"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遙測、屬性和命令承載
 
@@ -187,6 +187,9 @@ IoT Central 可讓您查看裝置傳送至應用程式的原始資料。 此視�
   "schema": "geopoint"
 }
 ```
+
+> [!NOTE]
+> **Geopoint** 架構類型不是 [數位 Twins 定義語言規格](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)的一部分。 IoT Central 目前支援 **geopoint** 架構型別和 **位置** 語義型別，以提供回溯相容性。
 
 裝置用戶端應將遙測以 JSON 形式傳送，如下列範例所示。 IoT Central 將值顯示為地圖上的圖釘：
 
@@ -429,7 +432,7 @@ IoT Central 可讓您查看裝置傳送至應用程式的原始資料。 此視�
 { "IntegerState": 2 }
 ```
 
-## <a name="properties"></a>[內容]
+## <a name="properties"></a>屬性
 
 > [!NOTE]
 > 屬性的裝載格式適用于在07/14/2020 或之後建立的應用程式。
@@ -575,6 +578,9 @@ IoT Central 可讓您查看裝置傳送至應用程式的原始資料。 此視�
   "writable": false
 }
 ```
+
+> [!NOTE]
+> **Geopoint** 架構類型不是 [數位 Twins 定義語言規格](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)的一部分。 IoT Central 目前支援 **geopoint** 架構型別和 **位置** 語義型別，以提供回溯相容性。
 
 裝置用戶端應該傳送看起來像下列範例的 JSON 承載，作為裝置對應項中的報告屬性：
 

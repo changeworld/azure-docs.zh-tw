@@ -3,12 +3,12 @@ title: Azure 服務匯流排的疑難排解指南 |Microsoft Docs
 description: 深入瞭解使用 Azure 服務匯流排時，您可能會看到的一些問題的疑難排解秘訣和建議。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: aab7fa53b4af309c68cd91fdb1d25c5771f89828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c31d252d75a2ba75528cd12d3a94bad5bd9f677
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261119"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126864"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服務匯流排的疑難排解指南
 本文提供使用 Azure 服務匯流排時，您可能會看到的一些問題的疑難排解秘訣和建議。 
@@ -26,7 +26,7 @@ ms.locfileid: "91261119"
     
     失敗錯誤訊息的範例：
 
-    ```json
+    ```xml
     <Error>
         <Code>400</Code>
         <Detail>

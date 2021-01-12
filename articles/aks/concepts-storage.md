@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes Service (AKS) 中的儲存體，包括磁�
 services: container-service
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 0ed38625703397c9ba5021e84cd3118f30fa83c7
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: bf910c66694a62505f259c0a95a88f7dfed05d19
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900937"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127952"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的應用程式適用的儲存體選項
 
@@ -20,7 +20,7 @@ ms.locfileid: "92900937"
 本文將介紹為 AKS 中的應用程式提供儲存體的核心概念：
 
 - [磁碟區](#volumes)
-- [永續性磁碟區](#persistent-volumes)
+- [持續性磁片區](#persistent-volumes)
 - [儲存類別](#storage-classes)
 - [永續性磁碟區宣告](#persistent-volume-claims)
 
@@ -30,7 +30,7 @@ ms.locfileid: "92900937"
 
 用來儲存和擷取資料的傳統磁碟區，會建立為受 Azure 儲存體支援的 Kubernetes 資源。 您可以手動建立這些資料磁碟區並直接將其指派給 Pod，或是由 Kubernetes 自動加以建立。 這些資料磁碟區可使用 Azure 磁碟或 Azure 檔案：
 
-- *Azure 磁碟* 可用來建立 Kubernetes *DataDisk* 資源。 Azure 磁碟可以使用採用高效能 SSD 的 Azure 進階儲存體，或是採用一般 HDD 的 Azure 標準儲存體。 對於大部分的生產和開發工作負載，請使用進階儲存體。 Azure 磁片會掛接為 *>readwriteonce* ，因此僅適用于單一 pod。 針對可同時由多個 pod 存取的儲存體磁片區，請使用 Azure 檔案儲存體。
+- *Azure 磁碟* 可用來建立 Kubernetes *DataDisk* 資源。 Azure 磁碟可以使用採用高效能 SSD 的 Azure 進階儲存體，或是採用一般 HDD 的 Azure 標準儲存體。 對於大部分的生產和開發工作負載，請使用進階儲存體。 Azure 磁片會掛接為 *>readwriteonce*，因此僅適用于單一 pod。 針對可同時由多個 pod 存取的儲存體磁片區，請使用 Azure 檔案儲存體。
 - *Azure 檔案* 可用來將 Azure 儲存體帳戶所支援的 SMB 3.0 共用掛接至 Pod。 Azure 檔案可讓您在多個節點和 Pod 之間共用資料。 檔案可以使用標準 Hdd 所支援的 Azure 標準儲存體，或是由高效能 Ssd 支援的 Azure Premium 儲存體。
 
 在 Kubernetes 中，磁碟區所代表的不只是可供儲存和擷取資訊的傳統磁碟。 Kubernetes 磁碟區也可用來將資料插入 Pod 中，供容器使用。 Kubernetes 中常見的其他磁碟區類型包括：
@@ -51,7 +51,7 @@ PersistentVolume 可由叢集管理員 *靜態* 建立，或由 Kubernetes API �
 
 ## <a name="storage-classes"></a>儲存類別
 
-若要定義不同層級的儲存體 (例如進階和標準)，您可以建立 *StorageClass* 。 StorageClass 也會定義 *reclaimPolicy* 。 此 reclaimPolicy 可控制基礎 Azure 儲存體資源在 Pod 刪除後和不再需要永續性磁碟區時的行為。 基礎儲存體資源可以刪除或保留供未來的 Pod 使用。
+若要定義不同層級的儲存體 (例如進階和標準)，您可以建立 *StorageClass*。 StorageClass 也會定義 *reclaimPolicy*。 此 reclaimPolicy 可控制基礎 Azure 儲存體資源在 Pod 刪除後和不再需要永續性磁碟區時的行為。 基礎儲存體資源可以刪除或保留供未來的 Pod 使用。
 
 在 AKS 中， `StorageClasses` 會使用樹狀結構內儲存體外掛程式為叢集建立四個初始：
 
@@ -107,7 +107,7 @@ spec:
       storage: 5Gi
 ```
 
-當您建立 Pod 定義時，您會指定永續性磁碟區宣告應要求所需的儲存體。 接著，您也會指定供應用程式用來讀取和寫入資料的 *volumeMount* 。 下列範例 YAML 資訊清單說明如何使用先前的永續性磁碟區宣告在 */mnt/azure* 上掛階磁碟區：
+當您建立 Pod 定義時，您會指定永續性磁碟區宣告應要求所需的儲存體。 接著，您也會指定供應用程式用來讀取和寫入資料的 *volumeMount*。 下列範例 YAML 資訊清單說明如何使用先前的永續性磁碟區宣告在 */mnt/azure* 上掛階磁碟區：
 
 ```yaml
 kind: Pod
@@ -125,6 +125,18 @@ spec:
     - name: volume
       persistentVolumeClaim:
         claimName: azure-managed-disk
+```
+
+若要在 Windows 容器中裝載磁片區，請指定磁碟機號和路徑。 例如：
+
+```yaml
+...      
+       volumeMounts:
+        - mountPath: "d:"
+          name: volume
+        - mountPath: "c:\k"
+          name: k-dir
+...
 ```
 
 ## <a name="next-steps"></a>後續步驟

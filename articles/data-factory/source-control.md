@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: e839b8a22da50ce172043f57a4467219a1771175
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 27f14834e45dd32bdf3a26d22d38ab250aa1bcbe
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584196"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127731"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -25,6 +25,7 @@ ms.locfileid: "97584196"
 
 - Data Factory 服務未包含存放庫，此存放庫會用於儲存變更的 JSON 實體。 若要儲存變更，唯一的方式是透過 [全部發佈] 按鈕，將所有變更直接發佈給資料處理站服務。
 - Data Factory 服務並未針對共同作業和版本控制進行最佳化。
+- 不包含部署 Data Factory 本身所需的 Azure Resource Manager 範本。
 
 為了提供更好的撰寫體驗，Azure Data Factory 可讓您使用 Azure Repos 或 GitHub 來設定 Git 存放庫。 Git 是一種版本控制系統，可讓您更輕鬆地追蹤變更和共同作業。 本文將概述如何在 git 存放庫中設定及使用，以及反白顯示最佳作法和疑難排解指南。
 

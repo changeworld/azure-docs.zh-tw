@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service (AKS) 的常見問題解答。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780343"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127629"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -146,7 +146,7 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 
 目前不支援在訂用帳戶之間移動叢集。
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>我可以將 AKS 叢集從目前的 Azure 訂用帳戶移至另一個嗎？ 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>我可以將 AKS 叢集從目前的 Azure 訂用帳戶移至另一個嗎？
 
 不支援在 Azure 訂用帳戶之間移動您的 AKS 叢集及其相關聯的資源。
 
@@ -154,7 +154,7 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 
 不支援移動或重新命名您的 AKS 叢集與其相關聯的資源。
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>為何叢集刪除如此耗時？ 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>為何叢集刪除如此耗時？
 
 大部分的叢集都會在使用者要求時刪除；在某些情況下，特別是當客戶帶入自己的資源群組，或進行跨 RG 工作刪除時，可能需要額外的時間或失敗。 如果您有刪除的問題，請仔細檢查您沒有 RG 的鎖定、RG 以外的任何資源是否與 RG 解除關聯，依此類推。
 
@@ -166,7 +166,7 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 
 否，刪除/移除處於失敗狀態的任何節點，或在升級之前從叢集中移除。
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>我已執行叢集刪除，但看到錯誤 `[Errno 11001] getaddrinfo failed` 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>我已執行叢集刪除，但看到錯誤 `[Errno 11001] getaddrinfo failed`
 
 最常見的原因是，使用者有一或多個網路安全性群組 (NSG) 仍在使用中且與叢集相關聯。  請將它們移除，然後再次嘗試刪除。
 
@@ -174,7 +174,7 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 
 確認您的服務主體未過期。  請參閱： [AKS 服務主體](./kubernetes-service-principal.md) 和 [AKS 更新認證](./update-credentials.md)。
 
-## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>我的叢集正常運作，但突然無法布建 LoadBalancers、裝載 Pvc 等？ 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>我的叢集正常運作，但突然無法布建 LoadBalancers、裝載 Pvc 等？
 
 確認您的服務主體未過期。  請參閱： [AKS 服務主體](./kubernetes-service-principal.md)  和 [AKS 更新認證](./update-credentials.md)。
 
@@ -254,6 +254,25 @@ root@k8s-agentpool1-20465682-1:/#
 - 橋接器模式中的其中一個角落案例是，Azure CNI 無法持續更新新增至 VNET 或 NIC 的自訂 DNS 伺服器清單。 這會導致 CNI 只挑選 DNS 伺服器清單的第一個實例。 因為 CNI 不會變更任何 eth0 屬性，所以在透明模式中解決。 請參閱 [這裡](https://github.com/Azure/azure-container-networking/issues/713)的詳細資訊。
 - 提供較佳的 UDP 流量處理，並在 ARP 超時時降低 UDP 洪水洪水的衝擊。在橋接模式中，當橋接器在 VM 內 Pod 對 Pod 之間的通訊中不知道目的地 pod 的 MAC 位址時，這會導致封包在所有埠上都不存在。 因為路徑中沒有任何 L2 裝置，所以在透明模式中解決。 請參閱 [這裡](https://github.com/Azure/azure-container-networking/issues/704)的詳細資訊。
 - 相較于橋接模式，透明模式在 VM Pod 與 Pod 之間的通訊中，會在輸送量和延遲方面發揮效果。
+
+## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>當磁片區有大量檔案時，如何避免許可權擁有權設定變慢問題？
+
+傳統上，如果您的 pod 以非根使用者的形式執行 (您應該) ，您必須在 `fsGroup` pod 的安全性內容內指定，讓 pod 可以讀取和寫入磁片區。 [這裡](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)有更詳細的說明這項需求。
+
+但設定的副作用 `fsGroup` 是，每次掛接磁片區時，Kubernetes 必須以遞迴方式 `chown()` 以及磁片區 `chmod()` 內的所有檔案和目錄，但有幾個例外，如下所示。 即使磁片區的群組擁有權已經符合要求，也會發生這種情況， `fsGroup` 而且具有許多小型檔案的大型磁片區可能相當昂貴，因為這會導致 pod 啟動花費很長的時間。 在 v 1.20 之前，此案例是已知的問題，而因應措施是將 Pod 以 root 的形式執行：
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+Kubernetes v 1.20 已解決此問題，如需詳細資料，請參閱 [Kubernetes 1.20：磁片區許可權變更的細微控制](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/) 。
 
 
 <!-- LINKS - internal -->

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: bca826cda8dfe47c341886faaf4a0d66f09d37d2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966338"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127136"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>針對 Azure Windows VM 擴充功能的失敗進行疑難排解
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "94966338"
 ## <a name="viewing-extension-status"></a>檢視擴充功能狀態
 Azure Resource Manager 範本可以從 Azure PowerShell 執行。 一旦執行範本之後，就可以從 Azure 資源總管或命令列工具檢視延伸模組狀態。
 
-範例如下：
+請看以下範例：
 
 Azure PowerShell：
 
@@ -85,19 +85,23 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 - 以滑鼠右鍵按一下，然後選取 [結束工作]。 此程式將會自動重新開機
 
 
-您也可以藉由執行「空的更新」來觸發新的 Goalstate 設定至 VM：
+您也可以執行「重新套用 VM」，以觸發新的 Goalstate 設定至 VM。 VM [重新](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) 套用是在2020中引進的 API，可重新套用 vm 的狀態。 建議您一次執行此操作，以容許短暫的 VM 停機時間。 雖然重新套用本身並不會導致 VM 重新開機，且大部分的呼叫重新套用都不會重新開機 VM，但在重新套用觸發新的目標狀態，而且其他變更可能需要重新開機時，會有極小的風險。 
 
-Azure PowerShell：
+Azure 入口網站：
+
+在入口網站中，選取 VM，然後在左窗格的 [ **支援 + 疑難排解**] 底下，選取 [重新 **部署 + 重新** 套用]，然後選取 [ **重新** 套用]。
+
+
+Azure PowerShell *(以您的值取代 RG 名稱和 VM 名稱)*：
 
 ```azurepowershell
-$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
-Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+Set-AzVM -ResourceGroupName <RG Name> -Name <VM Name> -Reapply
 ```
 
-Azure CLI：
+Azure CLI *(以您的值取代 RG 名稱和 VM 名稱)*：
 
 ```azurecli
-az vm update -g <rgname> -n <vmname>
+az vm reapply -g <RG Name> -n <VM Name>
 ```
 
-如果「空的更新」無法運作，您可以從 Azure 管理入口網站將新的空資料磁片新增至 VM，並在稍後新增憑證後將其移除。
+如果「VM 重新套用」沒有作用，您可以從 Azure 管理入口網站將新的空資料磁片新增至 VM，並在稍後新增憑證後將其移除。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 07562167131d1839bc0827c74fae09c683302c08
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118603"
+ms.locfileid: "98127204"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -83,11 +83,11 @@ Azure 監視器使用受控識別將存取權授與您的 Azure Key Vault。 叢
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-N/A
+不適用
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -126,10 +126,10 @@ Authorization: Bearer <token>
 ## <a name="create-cluster"></a>建立叢集
 
 > [!NOTE]
-> 叢集支援兩種 [受控識別類型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系統指派和使用者指派，可根據您的案例使用。 當您將身分識別設定為時，系統指派的受控識別會在建立叢集時自動建立，並在 `type` `SystemAssigned` 稍後用來授與存取權給您 Key Vault 的身分識別。 如果您需要在建立時建立具有客戶管理金鑰設定的叢集，您應該事先在 Key Vault 中定義金鑰和使用者指派的身分識別，然後以身分識別的 `type` `UserAssigned` `UserAssignedIdentities` 資源識別碼和金鑰詳細資料，建立具有身分識別的叢集 `keyVaultProperties` 。
+> 叢集支援兩種 [受控識別類型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系統指派和使用者指派，且每一種都可以根據您的案例而定。 系統指派的受控識別更簡單，而且當身分識別設定為 "SystemAssigned" 時，會在叢集建立時自動建立 `type` --此身分識別可稍後用來授與叢集對您 Key Vault 的存取權。** 如果您想要在叢集建立期間定義客戶管理的金鑰時建立叢集，您應該事先在 Key Vault 中定義金鑰和使用者指派的身分識別，然後使用這些設定來建立叢集：身分識別 `type` 為 "*UserAssigned*"， `UserAssignedIdentities` 包含身分識別的資源識別碼和 `keyVaultProperties` 金鑰詳細資料。
 
 > [!IMPORTANT]
-> 您目前無法使用使用者指派的受控識別來定義客戶管理的金鑰（如果您的 Key Vault 位於 Private-Link (vNet) 。 這項限制不適用於系統指派的受控識別。
+> 您目前無法使用使用者指派的受控識別來定義客戶管理的金鑰，如果您的 Key Vault 位於 Private-Link (vNet) ，而且您可以在此情況下使用系統指派的受控識別。
 
 請依照 [專用叢集文章](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中所述的程式進行操作。 
 
@@ -160,7 +160,7 @@ Authorization: Bearer <token>
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -283,7 +283,7 @@ Log Analytics 中使用的查詢語言是可表達的，且可以包含您新增
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -327,7 +327,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -416,7 +416,7 @@ Content-type: application/json
 
   - 如果您的叢集是以使用者指派的受控識別來設定，則設定會 `UserAssignedIdentities` `None` 暫停叢集並防止存取您的資料，但您無法在不開啟支援要求的情況下還原撤銷並啟用叢集。 這項限制不適用於系統指派的受控識別。
 
-  - 您目前無法使用使用者指派的受控識別來定義客戶管理的金鑰（如果您的 Key Vault 位於 Private-Link (vNet) 。 這項限制不適用於系統指派的受控識別。
+  - 您目前無法使用使用者指派的受控識別來定義客戶管理的金鑰，如果您的 Key Vault 位於 Private-Link (vNet) ，而且您可以在此情況下使用系統指派的受控識別。
 
 ## <a name="troubleshooting"></a>疑難排解
 

@@ -3,12 +3,12 @@ title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
 ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 111e5310f1dac01053eebc6592d7b56105358c41
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: b789f241fba4b77223272f81d1a69c8fcb050008
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630083"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127153"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -174,7 +174,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 - 雖然您可以讓使用 Azure Databricks 的訂用帳戶上線，但管理租用戶中的使用者目前無法在委派的訂閱上啟動 Azure Databricks 的工作區。
 - 雖然您可以讓具有資源鎖定的訂用帳戶和資源群組上線，但這些鎖定不會防止使用者在管理租使用者中執行動作。 [拒絕指派](../../role-based-access-control/deny-assignments.md)可保護系統管理的資源，例如由 Azure 管理的應用程式或 Azure 藍圖所建立的資源 (系統指派的拒絕指派)，因此可防止管理租用戶中的使用者在這些資源上執行動作；不過，目前客戶租用戶中的使用者無法建立自己的拒絕指派 (使用者指派的拒絕指派)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [使用 Azure Resource Manager 範本](../how-to/onboard-customer.md)或將[私人或公用受控服務供應專案發佈至 Azure Marketplace](../how-to/publish-managed-services-offers.md)，讓您的客戶上線 Azure Lighthouse。
 - 前往 Azure 入口網站中的 [我的客戶]，以[檢視及管理客戶](../how-to/view-manage-customers.md)。

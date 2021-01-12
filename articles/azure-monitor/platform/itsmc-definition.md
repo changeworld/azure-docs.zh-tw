@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: a7e39bb8ed742007a13a222771b430372d50e889
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 717a1bc4361ba4a7366f4864c1fe44f93b6f4b5e
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071692"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127850"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -153,7 +153,7 @@ ms.locfileid: "98071692"
 
     * 如果您選取 [工作專案] 下拉式清單中的 [事件]，則會 ![ 顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration-event.png)
 
-        * 如果您選取 **[為每個記錄專案建立個別的工作專案] (設定專案欄位未填滿。可能會產生大量的工作專案。 )** 」在選項按鈕選取專案中，將會針對記錄搜尋警示查詢搜尋結果中的每個資料列建立工作專案。 在工作專案的裝載中，description 屬性將會包含搜尋結果中的資料列。
+        * 如果您選取 **[為每個記錄專案建立個別的工作專案] (設定專案欄位未填滿。可能會產生大量的工作專案。 )** 」在選項按鈕選取專案中，將會針對記錄搜尋警示查詢搜尋結果中的每個資料列建立工作專案。 工作專案承載中的 description 屬性將會包含搜尋結果中的資料列。
         * 如果您在選項按鈕選取專案中選取 [ **為每個設定專案建立個別的工作專案]** ，每個警示中的每個設定專案都會建立新的工作專案。 ITSM 系統中的每個設定專案都可以有一個以上的工作專案。 這會與檢查 [事件/警示] 區段中的核取方塊相同。
 
 10. 選取 [確定]。

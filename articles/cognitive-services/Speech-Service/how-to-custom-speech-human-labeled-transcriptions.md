@@ -10,18 +10,21 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4516bbddd3fda593021288a440e1b354d4d7f1e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340232"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126881"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何建立人為標記的轉譯
 
 如果您想要改善辨識精確度，特別是在刪除或不正確地取代單字時所造成的問題，您會想要使用人為標記的轉譯以及您的音訊資料。 什麼是人為標記的轉譯？ 這很簡單，它們都是音訊檔案的單字文字轉譯。
 
-需要大型轉譯資料樣本才能改善辨識，我們建議您提供10到1000小時的轉譯資料。 在此頁面上，我們將探討設計來協助您建立高品質轉譯的指導方針。 本指南會依地區設定來細分，並提供美國英文、中文中文和德文的章節。
+需要大型轉譯資料樣本才能改善辨識，我們建議您提供10到20小時的轉譯資料。 在此頁面上，我們將探討設計來協助您建立高品質轉譯的指導方針。 本指南會依地區設定來細分，並提供美國英文、中文中文和德文的章節。
+
+> [!NOTE]
+> 並非所有的基底模型都支援使用音訊檔案進行自訂。 如果基底模型不支援它，則定型只會使用轉譯的文字，就像使用相關的文字一樣。
 
 ## <a name="us-english-en-us"></a>美式英文 (en-US)
 

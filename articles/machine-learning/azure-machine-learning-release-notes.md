@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 0ecf47ecdc66c0005f0d793d91a67af102fb1c76
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107900"
+ms.locfileid: "98127612"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -27,8 +27,6 @@ ms.locfileid: "98107900"
 + **Bug 修正和改善**
   + **azure-cli-ml**
     + framework_version 在 OptimizationConfig 中新增。 當模型已向架構多重註冊時，就會使用它。
-  + **azureml-automl-runtime**
-    + 在此更新中，我們新增了 holt yuk-winters 指數凹凸貼圖，以預測 AutoML SDK 的 [工具箱]。 指定時間序列之後， [AICc (更正 Akaike 的資訊準則) ](https://otexts.com/fpp3/selecting-predictors.html#selecting-predictors) 並傳回，就會選取最佳模型。
   + **azureml-contrib-優化**
     + framework_version 在 OptimizationConfig 中新增。 當模型已向架構多重註冊時，就會使用它。
   + **azureml-pipeline-steps**

@@ -8,18 +8,24 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 62979a2cbe2a5912476ca65327a06eef9c36c1cb
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566362"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127884"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure 虛擬 WAN 記錄和計量
 
-您可以使用 Azure 監視器來監視 Azure 虛擬 WAN。 虛擬 WAN 是一種網路服務，可將許多網路、安全性和路由功能整合在一起，以提供單一操作介面。 虛擬 WAN VPN 閘道、ExpressRoute 閘道和 Azure 防火牆具有可透過 Azure 監視器取得的記錄和計量。 如需 Azure 防火牆的資訊，請參閱 [Azure 防火牆記錄和計量](../firewall/logs-and-metrics.md)。
+您可以使用 Azure 監視器來監視 Azure 虛擬 WAN。 虛擬 WAN 是一種網路服務，可將許多網路、安全性和路由功能整合在一起，以提供單一操作介面。 虛擬 WAN VPN 閘道、ExpressRoute 閘道和 Azure 防火牆具有可透過 Azure 監視器取得的記錄和計量。
 
 本文討論可透過入口網站取得的計量和診斷。 計量很輕量，可支援近乎即時的案例，讓它們對警示和快速的問題偵測很有用。
+
+## <a name="monitoring-secured-hub-azure-firewall"></a> (Azure 防火牆) 監視安全中樞 
+
+您可以使用 Azure 防火牆記錄來監視受保護的中樞。 您也可以使用活動記錄來稽核 Azure 防火牆資源上的作業。
+
+如果您已選擇使用 Azure 防火牆來保護您的虛擬中樞，可于此處取得相關的記錄和計量： [Azure 防火牆記錄和計量](../firewall/logs-and-metrics.md)。
 
 ## <a name="metrics"></a>計量
 
@@ -30,12 +36,12 @@ Azure 監視器中的計量是數值，可描述系統在特定時間的某個�
 下列計量適用于 Azure 站對站 VPN 閘道：
 
 * **閘道頻寬** ：閘道的平均站對站匯總頻寬（以每秒位元組數為單位）。
-* 通道 **頻寬** ：通道的平均頻寬（位元組/秒）。
-* 通道輸出 **位元組** –通道的傳出位元組。 
-* 通道輸出封 **包** –通道的傳出封包計數。 
+* 通道 **頻寬**：通道的平均頻寬（位元組/秒）。
+* 通道輸出 **位元組**–通道的傳出位元組。 
+* 通道輸出封 **包**–通道的傳出封包計數。 
 * 通道輸出 **TS 不相符** 的封包卸載–來自流量選取器與通道不符的傳出封包計數。 
-* 通道輸入 **位元組** –通道的傳入位元組數。 
-* 通道輸入封 **包** –通道的傳入封包計數。 
+* 通道輸入 **位元組**–通道的傳入位元組數。 
+* 通道輸入封 **包**–通道的傳入封包計數。 
 * 通道輸入 **TS 不相符** 的封包卸載–來自流量選取器與通道不符的傳入封包下降計數。 
 
 ### <a name="point-to-site-vpn-gateways"></a>點對站 VPN 閘道
@@ -75,7 +81,7 @@ Azure 監視器中的計量是數值，可描述系統在特定時間的某個�
 下列診斷適用于 Azure 站對站 VPN 閘道：
 
 * **閘道診斷記錄** –閘道專屬的診斷，例如健康情況、設定、服務更新，以及額外的診斷。
-* 通道 **診斷記錄** –這些是與 IPsec 通道相關的記錄，例如站對站 IPsec 通道的連線和中斷線上活動、協商的 SAs、中斷連接原因，以及其他診斷。
+* 通道 **診斷記錄**–這些是與 IPsec 通道相關的記錄，例如站對站 IPsec 通道的連線和中斷線上活動、協商的 SAs、中斷連接原因，以及其他診斷。
 * **路由診斷記錄** –這些是與靜態路由、BGP、路由更新和其他診斷事件相關的記錄。
 * **Ike 診斷記錄** –適用于 IPsec 連線的 ike 特定診斷。
 
@@ -95,11 +101,11 @@ Azure 監視器中的計量是數值，可描述系統在特定時間的某個�
 
    :::image type="content" source="./media/logs-metrics/3.png" alt-text="顯示 [總覽] 區段的螢幕擷取畫面，其中箭號指向 [複製] 按鈕。":::
 
-2. 在 [監視] 區段中，流覽至資源群組。 選取 [ **診斷設定** ]，然後輸入資源資訊。 這是您在步驟2中從本文稍早的 [ [View gateway 計量](#metrics-steps) ] 區段中複製的資源資訊。
+2. 在 [監視] 區段中，流覽至資源群組。 選取 [ **診斷設定**]，然後輸入資源資訊。 這是您在步驟2中從本文稍早的 [ [View gateway 計量](#metrics-steps) ] 區段中複製的資源資訊。
 
    :::image type="content" source="./media/logs-metrics/4.png" alt-text="顯示 [監視] 區段的螢幕擷取畫面，其中箭號指向 [資源] 下拉式清單。":::
 
-3. 在 [結果] 頁面上，選取 [ **+ 新增診斷設定** ]，然後選取一個選項。 您可以選擇傳送至 Log Analytics、串流至事件中樞，或只封存至儲存體帳戶。
+3. 在 [結果] 頁面上，選取 [ **+ 新增診斷設定**]，然後選取一個選項。 您可以選擇傳送至 Log Analytics、串流至事件中樞，或只封存至儲存體帳戶。
 
    :::image type="content" source="./media/logs-metrics/5.png" alt-text="計量頁面":::
 

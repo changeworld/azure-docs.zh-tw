@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62c8240a4d2e50aa3b584f322baf7d2ee217c6d3
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816154"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127867"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>針對行動服務推送安裝進行疑難排解
 
@@ -34,7 +34,7 @@ ms.locfileid: "88816154"
 
 ## <a name="credentials-check-errorid-95107--95108"></a>認證檢查 (錯誤碼：95107 & 95108)
 
-確認在啟用複寫期間選擇的使用者帳戶是否有效且正確。 Azure Site Recovery 需要具有**系統管理員許可權**的**根**帳戶或使用者帳戶，才能執行推送安裝。 否則，將會封鎖來源機器上的推送安裝。
+確認在啟用複寫期間選擇的使用者帳戶是否有效且正確。 Azure Site Recovery 需要具有 **系統管理員許可權** 的 **根** 帳戶或使用者帳戶，才能執行推送安裝。 否則，將會封鎖來源機器上的推送安裝。
 
 針對 Windows (**錯誤 95107**) ，請使用本機帳戶或網域帳戶，確認使用者帳戶具有來源電腦的系統管理存取權。 如果您不是使用網域帳戶，您必須停用本機電腦上的遠端使用者存取控制。
 
@@ -50,8 +50,8 @@ ms.locfileid: "88816154"
 
 針對 Linux (**錯誤 95108**) ，您必須選擇 **根** 帳戶，才能成功安裝行動服務代理程式。 此外，SSH 檔案傳輸通訊協定 (SFTP) 服務應該正在執行。 若要在 _sshd_config_ 檔案中啟用 SFTP 子系統和密碼驗證：
 
-1. 以 **root**身份登入。
-1. 移至 _/etc/ssh/sshd_config_檔案，尋找開頭為的行 `PasswordAuthentication` 。
+1. 以 **root** 身份登入。
+1. 移至 _/etc/ssh/sshd_config_ 檔案，尋找開頭為的行 `PasswordAuthentication` 。
 1. 將該行取消批註，並將值變更為 `yes` 。
 1. 找出開頭為的行 `Subsystem` ，然後將該行取消批註。
 1. 重新啟動 `sshd` 服務。
@@ -106,7 +106,22 @@ ms.locfileid: "88816154"
 
 若要解決此錯誤：
 
+* 確認使用者帳戶具有來源電腦的系統管理存取權，其中包含本機帳戶或網域帳戶。 如果您不是使用網域帳戶，您必須停用本機電腦上的遠端使用者存取控制。
+  * 若要手動新增可停用遠端使用者存取控制的登錄機碼：
+    * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+    * 加入新的 `DWORD` ： `LocalAccountTokenFilterPolicy`
+    * 將值設定為 `1`
+  * 若要新增登錄機碼，請在命令提示字元中執行下列命令：
+
+    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
 * 確定您可以從設定伺服器偵測來源電腦。 如果您在啟用複寫期間選擇相應放大進程伺服器，請確定您可以從進程伺服器偵測來源電腦。
+
+* 確定已在您的虛擬機器上啟用檔案和印表機共用服務。 請查看 [此處](vmware-azure-troubleshoot-push-install.md#file-and-printer-sharing-services-check-errorid-95105--95106)的步驟。
+
+* 確定已在您的虛擬機器上啟用 WMI 服務。 請查看 [此處](vmware-azure-troubleshoot-push-install.md#windows-management-instrumentation-wmi-configuration-check-error-code-95103)的步驟。
+
+* 確定可以從進程伺服器存取虛擬機器上的網路共用資料夾。 請查看 [此處](vmware-azure-troubleshoot-push-install.md#check-access-for-network-shared-folders-on-source-machine-errorid-9510595523)的步驟。
 
 * 從來源伺服器電腦命令列，使用 `Telnet` 來偵測 HTTPS 埠135上的設定伺服器或相應放大進程伺服器，如下列命令所示。 此命令會檢查是否有任何網路連線問題或防火牆埠封鎖問題。
 
@@ -117,7 +132,7 @@ ms.locfileid: "88816154"
   * 請檢查並確定安全殼層 (SSH) 已啟用且正在連接埠 22 上執行。
   * SFTP 服務應執行。 若要在 _sshd_config_ 檔案中啟用 SFTP 子系統和密碼驗證：
 
-    1. 以 **root**身份登入。
+    1. 以 **root** 身份登入。
     1. 移至 _/etc/ssh/sshd_config_ 檔案，尋找開頭為的行 `PasswordAuthentication` 。
     1. 將該行取消批註，並將值變更為 `yes` 。
     1. 找出開頭為的行 `Subsystem` ，然後將該行取消批註
@@ -159,18 +174,18 @@ ms.locfileid: "88816154"
 針對 **Windows 2008 R2 和先前版本**：
 
 * 若要透過 Windows 防火牆啟用檔案與列印共用，
-  1. 開啟**主控台**  >  **系統和安全性**  >  **Windows 防火牆**。 在左窗格中，選取 [**設定**  >  主控台樹中的 [**輸入規則**] 的 [Advanced settings]。
+  1. 開啟 **主控台**  >  **系統和安全性**  >  **Windows 防火牆**。 在左窗格中，選取 [**設定**  >  主控台樹中的 [**輸入規則**] 的 [Advanced settings]。
   1. 找出 [檔案及印表機共用] (NB-Session-In) 和 [檔案及印表機共用] (Smb-in) 的規則。
-  1. 針對每個規則，以滑鼠右鍵按一下該規則，然後按一下 [啟用規則]****。
+  1. 針對每個規則，以滑鼠右鍵按一下該規則，然後按一下 [啟用規則]。
 
 * 若要使用群組原則啟用檔案共用：
   1. 移至 [ **開始**]，輸入 `gpmc.msc` 並搜尋。
-  1. 在流覽窗格中，開啟下列資料夾：**本機電腦原則**  >  **使用者**設定  >  **系統管理範本**  >  **Windows 元件**  >  的**網路共用**。
-  1. 在 [詳細資料] 窗格中，按兩下 [防止使用者共用其設定檔內的檔案]****。
+  1. 在流覽窗格中，開啟下列資料夾：**本機電腦原則**  >  **使用者** 設定  >  **系統管理範本**  >  **Windows 元件**  >  的 **網路共用**。
+  1. 在 [詳細資料] 窗格中，按兩下 [防止使用者共用其設定檔內的檔案]。
 
      若要停用群組原則設定，並啟用使用者共用檔案的能力，請選取 [ **已停用**]。
 
-  1. 按一下 [確定]  以儲存您的變更。
+  1. 按一下 [確定] 以儲存您的變更。
 
   若要深入瞭解，請參閱 [啟用或停用群組原則的檔案共用](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))。
 
@@ -182,7 +197,7 @@ ms.locfileid: "88816154"
 
 若要啟用 WMI：
 
-1. 移至**主控台**  >  **安全性**]，然後選取 [ **Windows 防火牆**]。
+1. 移至 **主控台**  >  **安全性**]，然後選取 [ **Windows 防火牆**]。
 1. 選取 [ **變更設定** ]，然後選取 [ **例外** 狀況] 索引標籤。
 1. 在 [ **例外** 狀況] 視窗中，選取 [wmi) 的 Windows Management Instrumentation (] 核取方塊，以啟用通過防火牆的 wmi 流量。
 
@@ -224,15 +239,15 @@ ms.locfileid: "88816154"
 
 ### <a name="possible-cause"></a>可能的原因
 
- (_/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/boot/grub2/grub.cfg_或) _/etc/default/grub_ 的 (GRUB) 設定檔的「統一開機載入器」，可能會包含參數 **根目錄** 的值，並以實際的裝置名稱（而不是通用唯一識別碼 (UUID) ）來 **繼續** 。 Site Recovery 會要求 UUID 方法，因為裝置名稱可能會在 VM 重新開機時變更。 例如，VM 可能不會在容錯移轉時以相同名稱上線，並導致問題。
+ (_/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/boot/grub2/grub.cfg_ 或) _/etc/default/grub_ 的 (GRUB) 設定檔的「統一開機載入器」，可能會包含參數 **根目錄** 的值，並以實際的裝置名稱（而不是通用唯一識別碼 (UUID) ）來 **繼續** 。 Site Recovery 會要求 UUID 方法，因為裝置名稱可能會在 VM 重新開機時變更。 例如，VM 可能不會在容錯移轉時以相同名稱上線，並導致問題。
 
 例如：
 
-- 以下是來自 GRUB 檔案 _/boot/grub2/grub.cfg_的行：
+- 以下是來自 GRUB 檔案 _/boot/grub2/grub.cfg_ 的行：
 
   `linux /boot/vmlinuz-3.12.49-11-default root=/dev/sda2  ${extra_cmdline} resume=/dev/sda1 splash=silent quiet showopts`
 
-- 以下是來自 GRUB 檔案 _/boot/grub/menu.lst_的行：
+- 以下是來自 GRUB 檔案 _/boot/grub/menu.lst_ 的行：
 
   `kernel /boot/vmlinuz-3.0.101-63-default root=/dev/sda2 resume=/dev/sda1 splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -254,7 +269,7 @@ ms.locfileid: "88816154"
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-1. 現在以像這樣的格式將裝置名稱取代為其 UUID `root=UUID=\<UUID>` 。 例如，如果我們將 _/boot/grub2/grub.cfg_、 _/boot/grub2/grub.cfg_或 _/etc/default/grub_ 中所述之 root 和 resume 參數的 UUID 取代為裝置名稱，則檔案中的程式程式碼看起來會像下面這一行：
+1. 現在以像這樣的格式將裝置名稱取代為其 UUID `root=UUID=\<UUID>` 。 例如，如果我們將 _/boot/grub2/grub.cfg_、 _/boot/grub2/grub.cfg_ 或 _/etc/default/grub_ 中所述之 root 和 resume 參數的 UUID 取代為裝置名稱，則檔案中的程式程式碼看起來會像下面這一行：
 
    `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
@@ -333,7 +348,7 @@ Site Recovery 行動服務有許多元件，其中一個稱為篩選器驅動程
 
 ### <a name="examine-the-installation-logs"></a>檢查安裝記錄檔
 
-1. 開啟位於 _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_的安裝記錄檔。
+1. 開啟位於 _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_ 的安裝記錄檔。
 2. 出現下列錯誤表示此問題：
 
     ```Output
@@ -359,7 +374,7 @@ Site Recovery 行動服務有許多元件，其中一個稱為篩選器驅動程
 
 若要略過 Azure Site Recovery VSS 提供者安裝，並在安裝後手動安裝 Azure Site Recovery VSS 提供者：
 
-1. 安裝行動服務。 安裝會在下列步驟失敗： **安裝後**設定。
+1. 安裝行動服務。 安裝會在下列步驟失敗： **安裝後** 設定。
 1. 若要略過 VSS 安裝：
    1. 開啟位於下列位置的 Azure Site Recovery 行動服務安裝目錄：
 
@@ -388,7 +403,7 @@ Site Recovery 行動服務有許多元件，其中一個稱為篩選器驅動程
 
 ### <a name="to-identify-the-issue"></a>找出問題
 
-在位於 _ \<date-time> UA_InstallLogFile C:\ProgramData\ASRSetupLogs\UploadedLogs_ 的設定伺服器上的記錄檔中，您會發現下列例外狀況：
+在位於 _\<date-time> UA_InstallLogFile C:\ProgramData\ASRSetupLogs\UploadedLogs_ 的設定伺服器上的記錄檔中，您會發現下列例外狀況：
 
 ```plaintext
 COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
@@ -418,6 +433,6 @@ COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Ex
 
 1. 重新安裝任何遺失的驅動程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [深入瞭解](vmware-azure-tutorial.md) 如何設定 VMware vm 的嚴重損壞修復。

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: 1780b4a64de349c1e272158fe6bfde9cab6f8369
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fc6b2e4c944394d811abc19f70aeb34a0ae3c9a4
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486040"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127663"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory 支援的系統變數
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -28,29 +28,43 @@ ms.locfileid: "96486040"
 
 | 變數名稱 | 描述 |
 | --- | --- |
-| @pipeline().DataFactory |管線執行在其中執行的資料處理站名稱 |
+| @pipeline().DataFactory |執行管線的資料處理站名稱 |
 | @pipeline().Pipeline |管線的名稱 |
-| @pipeline().RunId | 特定管線執行的識別碼 |
-| @pipeline().TriggerType | 叫用管線的觸發程序類型 (手動、排程器) |
-| @pipeline().TriggerId| 叫用管線之觸發程序的識別碼 |
-| @pipeline().TriggerName| 叫用管線之觸發程序的名稱 |
-| @pipeline().TriggerTime| 叫用管線之觸發程序的時間。 觸發程序時間是實際的觸發時間，而非排定的時間。 例如，會傳回 `13:20:08.0149599Z` 而非 `13:20:00.00Z` |
+| @pipeline().RunId |特定管線執行的識別碼 |
+| @pipeline().TriggerType |叫用管線的觸發程式類型 (例如， `ScheduleTrigger` `BlobEventsTrigger`) 。 如需支援的觸發程式類型清單，請參閱 [Azure Data Factory 中的管線執行和觸發](concepts-pipeline-execution-triggers.md)程式。 的觸發程式類型 `Manual` 表示已手動觸發管線。 |
+| @pipeline().TriggerId|叫用管線之觸發程式的識別碼 |
+| @pipeline().TriggerName|叫用管線之觸發程式的名稱 |
+| @pipeline().TriggerTime|叫用管線之觸發程式執行的時間。 這是觸發程式 **實際** 引發來叫用管線執行的時間，與觸發程式的排程時間可能稍有不同。  |
 
-## <a name="schedule-trigger-scope"></a>排程觸發程序範圍
-如果觸發程序的類型為："ScheduleTrigger"，則可以在管線 JSON 中的任何位置參考這些系統變數。
+>[!NOTE]
+>觸發程式相關的日期/時間系統變數 (在管線和觸發程式範圍中) 會傳回 ISO 8601 格式的 UTC 日期，例如， `2017-06-01T22:20:00.4061448Z` 。
 
-| 變數名稱 | 描述 |
-| --- | --- |
-| @trigger().scheduledTime |排定觸發程序叫用管線執行的時間。 例如，對於每隔 5 分鐘就觸發的觸發程序，此變數分別會傳回 `2017-06-01T22:20:00Z`、`2017-06-01T22:25:00Z` 和 `2017-06-01T22:30:00Z`。|
-| @trigger().startTime |觸發程序「實際」觸發以叫用管線執行的時間。 例如，對於每隔 5 分鐘就觸發的觸發程序，此變數可能會傳回分別像是 `2017-06-01T22:20:00.4061448Z`、`2017-06-01T22:25:00.7958577Z` 和 `2017-06-01T22:30:00.9935483Z` 的項目。  (注意：時間戳記預設為 ISO 8601 格式) |
-
-## <a name="tumbling-window-trigger-scope"></a>輪轉視窗觸發程序範圍
-如果觸發程序的類型為："TumblingWindowTrigger"，則可以在管線 JSON 中的任何位置參考這些系統變數。
- (注意：時間戳記預設為 ISO 8601 格式) 
+## <a name="schedule-trigger-scope"></a>排程觸發程式範圍
+您可以在 [ScheduleTrigger](concepts-pipeline-execution-triggers.md#schedule-trigger)類型之觸發程式的觸發程式 JSON 中的任何位置參考這些系統變數。
 
 | 變數名稱 | 描述 |
 | --- | --- |
-| @trigger().outputs.windowStartTime |排定觸發程序叫用管線執行的開始時間範圍。 如果輪轉視窗觸發程序的頻率為「每小時」，則這可能是一小時開頭的時間。|
-| @trigger().outputs.windowEndTime |排定觸發程序叫用管線執行的結束時間範圍。 如果輪轉視窗觸發程序的頻率為「每小時」，則這可能是一小時結束的時間。|
+| @trigger().scheduledTime |排定觸發程式叫用管線執行的時間。 |
+| @trigger().startTime |**實際** 引發觸發程式以叫用管線執行的時間。 這可能與觸發程式的排程時間稍有不同。 |
+
+## <a name="tumbling-window-trigger-scope"></a>輪轉視窗觸發程式範圍
+您可以在 [TumblingWindowTrigger](concepts-pipeline-execution-triggers.md#tumbling-window-trigger)類型之觸發程式的觸發程式 JSON 中的任何位置參考這些系統變數。
+
+| 變數名稱 | 描述 |
+| --- | --- |
+| @trigger().outputs.windowStartTime |與觸發程式執行相關聯之視窗的起點。 |
+| @trigger().outputs.windowEndTime |與觸發程式執行相關聯的視窗結尾。 |
+| @trigger().scheduledTime |排定觸發程式叫用管線執行的時間。 |
+| @trigger().startTime |**實際** 引發觸發程式以叫用管線執行的時間。 這可能與觸發程式的排程時間稍有不同。 |
+
+## <a name="event-based-trigger-scope"></a>以事件為基礎的觸發程式範圍
+您可以在 [BlobEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger)類型之觸發程式的觸發程式 JSON 中的任何位置參考這些系統變數。
+
+| 變數名稱 | 描述 |
+| --- | --- |
+| @triggerBody ( # A1. 檔案名  |建立或刪除造成觸發程式引發的檔案名。   |
+| @triggerBody ( # A1. 資料夾資料夾  |包含所指定檔案之資料夾的路徑 `@triggerBody().fileName` 。 資料夾路徑的第一個區段是 Azure Blob 儲存體容器的名稱。  |
+| @trigger().startTime |引發觸發程式以叫用管線執行的時間。 |
+
 ## <a name="next-steps"></a>後續步驟
 如需如何在運算式中使用這些變數的詳細資訊，請參閱[運算式語言和函數](control-flow-expression-language-functions.md)。

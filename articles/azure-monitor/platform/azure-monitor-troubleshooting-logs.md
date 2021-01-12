@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: 816cdddc1f3d0a9bc9ebc3f277bc223a688cba31
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b3d1ad2d327da60874d2d07ba697b8f5ab815189
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98067358"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127085"
 ---
 # <a name="azure-monitor-troubleshooting-logs-preview"></a>Azure 監視器 (Preview 的疑難排解記錄) 
 使用 Azure 監視器來快速及/或定期調查問題、對程式碼或設定問題進行疑難排解，或解決支援案例，這通常依賴于大量資料的搜尋，以取得特定的見解。
@@ -48,7 +48,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": "{tableName}"
-      }
+}
 ```
 ## <a name="check-if-the-troubleshooting-logs-feature-is-enabled-for-a-given-table"></a>檢查給定資料表是否已啟用疑難排解記錄功能
 若要檢查給定資料表的疑難排解記錄是否已啟用，您可以使用下列 API 呼叫。
@@ -65,6 +65,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.operationalinsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": " {tableName}"
+                }
 
 ```
 ## <a name="check-if-the-troubleshooting-logs-feature-is-enabled-for-all-of-the-tables-in-a-workspace"></a>檢查工作區中所有資料表的 [疑難排解記錄] 功能是否已啟用
@@ -83,7 +84,7 @@ Response:
           },
           "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.operationalinsights/workspaces/{workspaceName}/tables/table1",
           "name": "table1"
-        },
+ },
         {
           "properties": {
             "retentionInDays": 7,
@@ -119,7 +120,7 @@ Response:
         },
         "id": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
         "name": "{tableName}"
-      }
+}
 ```
 >[!TIP]
 >* 您可以使用任何 REST API 工具來執行命令。 [閱讀更多資訊](https://docs.microsoft.com/rest/api/azure/)

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 01/11/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296679135063e2c7e1b7f0e3ffd193c8f18c3acf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576259"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127833"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Azure Active Directory 中的使用者管理增強功能 (預覽) 
 
@@ -60,6 +60,9 @@ ms.locfileid: "96576259"
 - 名稱：使用者的顯示名稱。
 - 使用者主體名稱：使用者的使用者主體名稱 (UPN) 。
 - 使用者類型：成員、來賓、無。
+- 建立時間：使用者建立的日期和時間。
+- 職稱：使用者的職稱。
+- 部門：使用者工作所在的部門。
 - 目錄同步：指出使用者是否從內部部署目錄進行同步處理。
 - 身分識別簽發者：用來登入使用者帳戶之身分識別的簽發者。
 - 物件識別碼：使用者的物件識別碼。
@@ -76,7 +79,8 @@ ms.locfileid: "96576259"
 [ **刪除的使用者** ] 頁面包含 [ **所有使用者** ] 頁面上可用的所有資料行，以及一些額外的資料行，亦即：
 
 - 刪除日期：使用者從組織中首次刪除的日期 (使用者可還原) 。
-- 永久刪除日期：此日期之後，會自動從組織中永久刪除使用者的程式開始。 
+- 永久刪除日期：此日期之後，會自動從組織中永久刪除使用者的程式開始。
+- 原始使用者主體名稱：使用者的原始 UPN 會在其物件識別碼新增為其已刪除 UPN 的前置詞之前。
 
 > [!NOTE]
 > 刪除日期會以國際標準時間 (UTC) 顯示。
@@ -105,6 +109,10 @@ ms.locfileid: "96576259"
 - 使用者類型：成員、來賓、無
 - 目錄同步狀態：是，否
 - 建立類型：邀請、電子郵件驗證、本機帳戶
+- 建立時間：過去7、14、30、90、360或 >360 天前
+- 職稱：輸入職稱
+- 部門：輸入部門名稱
+- 群組：搜尋群組
 - 邀請狀態-等待接受、已接受
 - 功能變數名稱：輸入功能變數名稱
 - 公司名稱：輸入公司名稱
@@ -117,6 +125,9 @@ ms.locfileid: "96576259"
 - 使用者類型：成員、來賓、無
 - 目錄同步狀態：是，否
 - 建立類型：邀請、電子郵件驗證、本機帳戶
+- 建立時間：過去7、14、30、90、360或 > 360 天前
+- 職稱：輸入職稱
+- 部門：輸入部門名稱
 - 邀請狀態：等待接受，已接受
 - 刪除日期：過去7、14或30天
 - 功能變數名稱：輸入功能變數名稱

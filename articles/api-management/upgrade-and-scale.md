@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bd36434bbfe435a53567c46728610627f99f987f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183782"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127782"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>升級和調整 Azure API 管理執行個體的規模  
 
@@ -74,7 +74,7 @@ ms.locfileid: "96183782"
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您的 API 管理服務。
 2. 按一下功能表中的 **定價層** 。
 3. 從下拉式清單中選取所需的服務層級。 使用滑杆來指定您的 API 管理服務在變更之後的規模。
-4. 按一下 **[儲存]** 。
+4. 按一下 [檔案] 。
 
 ## <a name="downtime-during-scaling-up-and-down"></a>相應增加和減少期間的停機時間
 如果您要從或升級至開發人員層，將會有停機時間。 否則，就不會有停機時間。 
@@ -88,4 +88,5 @@ ms.locfileid: "96183782"
 
 - [如何將 Azure API 管理服務執行個體部署到多個 Azure 區域](api-management-howto-deploy-multi-region.md)
 - [如何自動調整 Azure API 管理服務執行個體](api-management-howto-autoscale.md)
-- [優化並節省您的雲端費用](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+- [規劃和管理 API 管理的成本](plan-manage-costs.md)
+- [API 管理限制](../azure-resource-manager/management/azure-subscription-service-limits.md#api-management-limits)

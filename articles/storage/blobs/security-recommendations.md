@@ -7,21 +7,21 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 01/12/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5be3652d7fca62a0740888ad458f8564f555169e
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 1593c47b7a6cf3b861f3e1af148b7a5fbfae9a19
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518901"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127374"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Blob 儲存體的安全性建議
 
-本文包含適用于 Blob 儲存體的安全性建議。 依照我們的共同責任模型所述，執行這些建議有助於您履行安全性義務。 如需 Microsoft 如何履行服務提供者責任的詳細資訊，請參閱[雲端運算的共同責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)。
+本文包含適用于 Blob 儲存體的安全性建議。 依照我們的共同責任模型所述，執行這些建議有助於您履行安全性義務。 如需 Microsoft 如何滿足服務提供者責任的詳細資訊，請參閱 [雲端運算的共同責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf)。
 
-本文中包含的一些建議可由 Azure 資訊安全中心自動監視。 Azure 資訊安全中心是保護 Azure 中資源的第一道防線。 如需 Azure 資訊安全中心的詳細資訊，請參閱 [Azure 資訊安全中心是什麼？](../../security-center/security-center-introduction.md)。
+本文中包含的一些建議可由 Azure 資訊安全中心自動監視。 Azure 資訊安全中心是保護 Azure 中資源的第一道防線。 如需 Azure 資訊安全中心的詳細資訊，請參閱 [Azure 資訊安全中心是什麼？](../../security-center/security-center-introduction.md)
 
 Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找出潛在的安全性弱點。 接著，這會為您提供如何解決這些問題的建議。 如需 Azure 資訊安全中心建議的詳細資訊，請參閱 [Azure 資訊安全中心的安全性建議](../../security-center/security-center-recommendations.md)。
 
@@ -31,9 +31,11 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 |-|----|--|
 | 使用 Azure Resource Manager 部署模型 | 使用 Azure Resource Manager 部署模型來建立新的儲存體帳戶，以進行重要的安全性增強功能，包括絕佳的 Azure 角色型存取控制 (Azure RBAC) 和審核、Resource Manager 型部署和治理、受控識別的存取、秘密的 Azure Key Vault 存取，以及 Azure AD 資料和資源的存取 Azure 儲存體型驗證和授權。 可能的話，請將使用傳統部署模型的現有儲存體帳戶遷移為使用 Azure Resource Manager。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](../../azure-resource-manager/management/overview.md)。 | - |
 | 為您的所有儲存體帳戶啟用 Azure Defender | 適用于 Azure 儲存體的 Azure Defender 提供額外一層的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶嘗試。 當活動中發生異常狀況，而且也透過電子郵件傳送給訂用帳戶管理員時，會在 Azure 資訊安全中心中觸發安全性警示，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 如需詳細資訊，請參閱 [設定 Azure Defender 的 Azure 儲存體](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
-| 開啟 blob 資料的虛刪除 | 虛刪除可讓您復原已刪除的 blob 資料。 如需虛刪除的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](./soft-delete-blob-overview.md)。 | - |
-| 鎖定儲存體帳戶以防止意外刪除 | 您可以鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改該訂用帳戶、資源群組或資源。 如需詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
+| 開啟 blob 的虛刪除 | 虛刪除可讓您復原已刪除的 blob 資料。 如需虛刪除的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](./soft-delete-blob-overview.md)。 | - |
+| 開啟容器的虛刪除 | ???. | - |
+| 鎖定儲存體帳戶以防止意外刪除帳戶 | 您可以鎖定 Azure Resource Manager 資源（例如訂用帳戶、資源群組或儲存體帳戶），以防止組織中的其他使用者不小心刪除或修改它。 鎖定儲存體帳戶不會防止該帳戶中的資料遭到刪除。 它只會防止帳戶本身遭到刪除。 如需詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
 | 在不可變的 blob 中儲存商務關鍵資料 | 設定合法保存和以時間為基礎的保留原則，將 blob 資料儲存在 WORM (寫入一次，讀取許多) 狀態。 Blob 儲存的, 可以讀取，但無法在保留間隔的持續期間內修改或刪除。 如需詳細資訊，請參閱 [使用不可變的儲存體儲存商務關鍵 blob 資料](storage-blob-immutable-storage.md)。 | - |
+| 需要 (HTTPS) 至儲存體帳戶的安全傳輸 | ??? | - |
 | 將共用存取簽章 (SAS) 權杖限制為僅限 HTTPS 連接 | 當用戶端使用 SAS 權杖來存取 blob 資料時，需要 HTTPS 有助於將竊聽的風險降至最低。 如需詳細資訊，請參閱 [使用共用存取簽章將有限存取權授與 Azure 儲存體資源 (SAS) ](../common/storage-sas-overview.md)。 | - |
 
 ## <a name="identity-and-access-management"></a>身分識別和存取管理

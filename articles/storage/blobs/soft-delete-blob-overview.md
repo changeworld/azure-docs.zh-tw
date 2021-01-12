@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022372"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127476"
 ---
 # <a name="soft-delete-for-blobs"></a>Blob 的虛刪除
 
@@ -79,7 +79,7 @@ Blob 虛刪除適用于新的和現有的一般用途 v2、一般用途 v1 和 B
 > [!NOTE]  
 > 在覆寫已虛刪除的 Blob 時，將會自動產生該 Blob 在寫入作業之前所處狀態的虛刪除快照集。 覆寫的 Blob 層會由新的 Blob 繼承。
 
-如果是刪除容器或帳戶，或是覆寫了 Blob 中繼資料和 Blob 屬性，虛刪除將不會儲存您的資料。 若要防止儲存體帳戶誤遭刪除，您可以使用 Azure Resource Manager 設定鎖定。 如需詳細資訊，請參閱 Azure Resource Manager 文章 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
+虛刪除不會在容器或帳戶刪除的情況下儲存您的資料，也不會在覆寫 blob 中繼資料和 blob 屬性時儲存您的資料。 若要防止刪除儲存體帳戶，您可以使用 Azure Resource Manager 設定鎖定。 如需詳細資訊，請參閱 Azure Resource Manager 文章 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
 
 下表將詳細說明虛刪除開啟時的預期行為：
 
@@ -171,7 +171,7 @@ Copy a snapshot over the base blob:
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>如果我在開啟虛刪除的情況下刪除整個帳戶或容器，是否會儲存所有相關聯的 Blob？
 
-不會，如果您刪除整個帳戶或容器，將會永久刪除所有相關聯的 Blob。 如需保護儲存體帳戶免于意外刪除的詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
+不會，如果您刪除整個帳戶或容器，將會永久刪除所有相關聯的 Blob。 如需防止意外刪除儲存體帳戶的詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>我可以檢視已刪除資料的容量計量嗎？
 
