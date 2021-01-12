@@ -8,18 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 09e922ffddcce732d9213eb91026561528c0728a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169132"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895966"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教學課程：從 Blazor WebAssembly 應用程式登入使用者並呼叫受保護的 API
 
-在本教學課程中，您會建置 Blazor WebAssembly 應用程式，以藉由使用 Microsoft 身分識別平台並在 Azure Active Directory (Azure AD) 中註冊應用程式，來讓使用者登入並從 Microsoft Graph 取得資料。
-
-我們也提供 [Blazor Server 的教學課程](tutorial-blazor-server.md)。 
+在本教學課程中，您會建置 Blazor WebAssembly 應用程式，以藉由使用 Microsoft 身分識別平台並在 Azure Active Directory (Azure AD) 中註冊應用程式，來讓使用者登入並從 Microsoft Graph 取得資料。 
 
 在本教學課程中：
 
@@ -27,6 +25,10 @@ ms.locfileid: "96169132"
 >
 > * 建立新的 Blazor WebAssembly 應用程式，並設定為使用 Azure Active Directory (Azure AD) 來透過 Microsoft 身分識別平台進行[驗證和授權](authentication-vs-authorization.md)
 > * 從受保護的 Web API 擷取資料，在此案例中為 [Microsoft Graph](/graph/overview)
+
+本教學課程使用 .NET Core 3.1。 .NET 文件包含[如何使用 ASP.NET Core 5.0 保護 Blazor WebAssembly 應用程式](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api)的指示。 
+
+我們也提供 [Blazor Server 的教學課程](tutorial-blazor-server.md)。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -74,9 +76,11 @@ dotnet run --framework netstandard2.1
 
 此範本的元件會啟用以 Microsoft 身分識別平台搭配 Azure AD 的登入作業，如[本主題的 ASP.NET 文件](/aspnet/core/blazor/security/webassembly/standalone-with-azure-active-directory#authentication-package)所述。
 
-## <a name="retrieving-data-from-microsoft-graph"></a>正在從 Microsoft Graph 中擷取資料
+## <a name="retrieving-data-from-a-protected-api-microsoft-graph"></a>從受保護的 API (Microsoft Graph) 擷取資料
 
-[Microsoft Graph](/graph/overview) 提供了一系列的 API，可讓您存取租用戶中使用者的 Microsoft 365 資料。 因為 Microsoft Graph 直接支援 Microsoft 身分識別平台所發行的權杖，您可以使用 Microsoft 身分識別平台做為應用程式的身分識別提供者，藉此更輕鬆地存取這項資訊。 在本節中，您會新增程式碼，以在應用程式的 [提取資料] 頁面上顯示已登入使用者的電子郵件。
+[Microsoft Graph](/graph/overview) 包含可為您的使用者提供 Microsoft 365 資料存取權的 API，並支援 Microsoft 身分識別平台所發行的權杖，是非常適合用來當作範例的受保護 API。 在本節中，您會新增程式碼以呼叫 Microsoft Graph，並在應用程式的「提取資料」頁面上顯示使用者的電子郵件。
+
+本節依使用具名用戶端呼叫受保護 API 的常見方法撰寫。 相同的方法也可用於您要呼叫的其他受保護 API。 不過，如果您希望應用程式呼叫 Microsoft Graph，可以使用 Graph SDK 增添一些變化。 .NET 文件包含[如何使用 Graph SDK](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0) 的指示。
 
 開始之前，請先登出您的應用程式，因為您將會變更必要的權限，而目前的權杖將無法使用。 如果您還沒有這麼做，請再次執行您的應用程式並選取 [登出]，然後再更新下面的程式碼。
 

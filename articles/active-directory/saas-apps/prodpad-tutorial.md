@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/28/2020
+ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 0faaf37e55e5b3f7bb89b9a601a6f4b98e7fdd15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 770e934b3040aae8b1bb55298460e91bae367f35
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181670"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97915584"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-prodpad"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ProdPad 整合
 
@@ -71,7 +71,7 @@ ms.locfileid: "96181670"
 
 1. 在 Azure 入口網站的 **ProdPad** 應用程式整合頁面上，尋找 **管理** 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的鉛筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
@@ -79,7 +79,7 @@ ms.locfileid: "96181670"
 
 1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-    在 [登入 URL]  文字方塊中，輸入 URL：`https://app.prodpad.com/login`
+    在 [登入 URL] 文字方塊中，輸入 URL：`https://app.prodpad.com/login`
 
 1. 按一下 [檔案] 。
 
@@ -96,7 +96,7 @@ ms.locfileid: "96181670"
     | User.ProdpadRole | user.assignedroles |
 
     > [!NOTE]
-    > ProdPad 需要將使用者的角色指派給應用程式。 請在 Azure AD 中設定這些角色，以便為使用者指派適當的角色。 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](../develop/active-directory-enterprise-app-role-management.md)。
+    > ProdPad 需要將使用者的角色指派給應用程式。 請在 Azure AD 中設定這些角色，以便為使用者指派適當的角色。 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -126,7 +126,7 @@ ms.locfileid: "96181670"
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
-1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
+1. 如果您已如上述所述設定角色，可以從 **選取角色** 下拉式清單中選取。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ## <a name="configure-prodpad-sso"></a>設定 ProdPad SSO

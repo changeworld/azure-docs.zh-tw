@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: bbea6a0aa31034cd1c04145fb50b72432c9f8520
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 9e5d12bcea1bd7a587568c30b49c8c4ee95f8362
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319004"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937377"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Akamai 整合
 
@@ -53,7 +53,7 @@ Microsoft 與 Akamai EAA 的合作關係可根據您的商業需求支援多個�
 
 #### <a name="integration-scenario-1"></a>整合案例 1
 
-Akamai EAA 設定為 Azure AD 上的單一應用程式。 管理員可設定應用程式的 CA 原則，一旦符合條件，使用者即可取得 Akamai EAA 入口網站的存取權。
+Akamai EAA 設定為 Azure AD 上的單一應用程式。 管理員可設定應用程式的條件式存取原則，一旦符合條件，使用者即可取得 Akamai EAA 入口網站的存取權。
 
 **優點**：
 
@@ -63,13 +63,13 @@ Akamai EAA 設定為 Azure AD 上的單一應用程式。 管理員可設定應�
 
 * 使用者最終會有兩個應用程式入口網站
 
-* 所有應用程式有共同的單一 CA 原則涵蓋範圍。
+* 所有應用程式有共同的單一條件式存取原則涵蓋範圍。
 
 ![整合案例 1](./media/header-akamai-tutorial/scenario1.png)
 
 #### <a name="integration-scenario-2"></a>整合案例 2
 
-Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可對應用程式設定個別的 CA 原則，一旦符合條件，使用者即可直接重新導向至特定的應用程式。
+Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可對應用程式設定個別的條件式存取原則，一旦符合條件，使用者即可直接重新導向至特定的應用程式。
 
 **優點**：
 
@@ -99,7 +99,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 #### <a name="important"></a>重要事項
 
-在**整合案例 1** 和**案例 2** 中，以下所列的所有設定都相同。 在**整合案例 2** 中，您已在 Akamai EAA 中設定個別 IDP，且必須修改 URL 屬性以指向應用程式 URL。
+在 **整合案例 1** 和 **案例 2** 中，以下所列的所有設定都相同。 在 **整合案例 2** 中，您已在 Akamai EAA 中設定個別 IDP，且必須修改 URL 屬性以指向應用程式 URL。
 
 ![Akamai 企業應用程式存取中 AZURESSO-SP [一般] 索引標籤的螢幕擷取畫面。 [驗證組態 URL] 欄位會反白顯示。](./media/header-akamai-tutorial/important.png)
 
@@ -138,18 +138,18 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Akamai] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定] 區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
+1. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
 
-    a. 在 [識別碼] 文字方塊中，使用下列模式來輸入 URL：`https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
+    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
-    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
+    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https:// <Yourapp>.login.go.akamai-access.com/saml/sp/response`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Akamai 用戶端支援小組](https://www.akamai.com/us/en/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Akamai 用戶端支援小組](https://www.akamai.com/us/en/contact-us/)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -164,11 +164,11 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]。
-1. 在 [使用者] 屬性中，執行下列步驟：
-   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+1. 在畫面頂端選取 [新增使用者]  。
+1. 在 [使用者]  屬性中，執行下列步驟：
+   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
    1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
@@ -181,12 +181,12 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
+1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-akamai-sso"></a>設定 Akamai SSO
@@ -195,7 +195,7 @@ Akamai EAA 應用程式個別設定於 Azure AD 入口網站上。 管理員可�
 
 **AKAMAI EAA IDP 設定**
 
-1. 登入 **Akamai 企業應用程式存取**主控台。
+1. 登入 **Akamai 企業應用程式存取** 主控台。
 1. 在 [Akamai EAA 主控台] 上，選取 [身分識別] > [識別提供者]，然後按一下 [新增識別提供者]。
 
     ![Akamai EAA 主控台識別提供者視窗的螢幕擷取畫面。 在 [身分識別] 功能表上選取 [識別提供者]，然後選取 [新增識別提供者]。](./media/header-akamai-tutorial/configure01.png)

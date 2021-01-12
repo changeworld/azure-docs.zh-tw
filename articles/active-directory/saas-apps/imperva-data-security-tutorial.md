@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 0ea08f8ec98ff8ddd4a9f15f12a0224db440b7b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 710164fa3712058d64e5d23006b986eb3dc3eaba
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675619"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882750"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-imperva-data-security"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Imperva Data Security 整合
 
@@ -37,7 +37,7 @@ ms.locfileid: "97675619"
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
-* Imperva Data Security 支援由 **IDP** 起始的 SSO
+* Imperva Data Security 支援由 **SP** 起始的 SSO
 
 ## <a name="adding-imperva-data-security-from-the-gallery"></a>從資源庫新增 Imperva Data Security
 
@@ -76,9 +76,13 @@ ms.locfileid: "97675619"
 
 1. 在 [以 SAML 設定單一登入]  頁面上，輸入下列欄位的值：
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<IMPERVA_DNS_NAME>:8443`
+    a. 在 [識別碼] 文字方塊中，使用下列模式來輸入識別碼：`application-name`
 
     b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<IMPERVA_DNS_NAME>:8443`
+    
+    c. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<IMPERVA_DNS_NAME>:8443`
+    
+    d. 在 [登出 URL] 文字方塊中，以下列模式輸入 URL：`https://<IMPERVA_DNS_NAME>:8443`    
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 請連絡 [Imperva Data Security 用戶端支援小組](mailto:support@jsonar.imperva.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
@@ -100,7 +104,7 @@ ms.locfileid: "97675619"
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 

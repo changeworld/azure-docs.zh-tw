@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 41c0bd23bbd2d69506a979c5a36ac40f73258f2c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ab03e0bdf7761e45a134ec90685955403fbc433b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605508"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060379"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教學課程：使用 DMS 在線上將 MySQL 移轉至適用於 MySQL 的 Azure 資料庫
 
@@ -237,7 +237,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     ![對應到目標資料庫](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > 雖然您可以在此步驟中選取多個資料庫，但是 Azure 資料庫移轉服務的每個執行個體最多可支援四個資料庫進行並行移轉。 此外，訂用帳戶中的每個區域都有兩個 Azure 資料庫移轉服務執行個體的限制。 例如，如果您有 40 個資料庫要遷移，您只能同時遷移其中八個，而且只有在您已建立兩個 Azure 資料庫移轉服務執行個體時才可以。
+   > 雖然您可以在此步驟中選取多個資料庫，但是 Azure 資料庫移轉服務的每個執行個體最多可支援 4 個資料庫進行並行移轉。 此外，每個區域的每個訂用帳戶限制只能有 10 個 Azure 資料庫移轉服務執行個體。 例如，如果您有 80 個要遷移的資料庫，則可以同時將其中的 40 個遷移到相同的區域，但前提是您已經建立 10 個 Azure 資料庫移轉服務執行個體。
 
 3. 選取 [儲存]，在 [移轉摘要] 畫面的 [活動名稱] 文字方塊中，指定移轉活動的名稱，然後檢閱摘要，以確定來源和目標詳細資料都與您先前的指定相符。
 

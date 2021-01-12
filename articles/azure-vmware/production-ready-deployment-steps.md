@@ -3,12 +3,12 @@ title: 規劃 Azure VMware 解決方案部署
 description: 本文概述 Azure VMware 解決方案部署工作流程。  最終結果是準備好用於建立和移轉虛擬機器 (VM) 的環境。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 1d1deebd56717c63a745500198eb8df9e3687b49
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558686"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912728"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>規劃 Azure VMware 解決方案部署
 

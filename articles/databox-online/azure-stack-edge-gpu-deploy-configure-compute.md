@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 08/28/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c884ad6850b8f94baa7c658d685651c3241be33f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184649"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935636"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>教學課程：在 Azure Stack Edge Pro GPU 裝置上設定計算
 
@@ -45,40 +45,38 @@ ms.locfileid: "96184649"
 
 若要設定 Azure Stack Edge Pro 上的計算，您會透過 Azure 入口網站建立 IoT 中樞資源。
 
-1. 在 Azure Stack Edge 資源的 Azure 入口網站中，移至 [概觀]。 在右窗格的 [計算] 圖格上，選取 [開始使用]。
+1. 在 Azure Stack Edge 資源的 Azure 入口網站中，移至 [概觀]，接著選取 [IoT Edge]。
 
-    ![開始使用計算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
+   ![開始使用計算](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-1.png)
 
-2. 在 [設定 Edge 計算] 圖格上，選取 [設定計算]。
+2. 在 **啟用 IoT Edge 服務** 中，選取 [新增]。
 
-    ![設定計算](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
+   ![設定計算](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-2.png)
 
 3. 在 [設定 Edge 計算] 刀鋒視窗上，輸入下列資訊：
-
    
-    |欄位  |值  |
-    |---------|---------|
-    |IoT 中樞     | 選擇 [新增] 或 [現有]。 <br> 根據預設，標準層 (S1) 用來建立 IoT 資源。 若要使用免費層 IoT 資源，請建立一個資源，然後選取現有的資源。 <br> 在每個案例中，IoT 中樞資源會使用 Azure Stack Edge 資源所用的相同訂用帳戶和資源群組。     |
-    |名稱     |輸入 IoT 中樞資源的名稱。         |
+   |欄位  |值  |
+   |---------|---------|
+   |IoT 中樞     | 選擇 [新增]  或 [現有]  。 <br> 根據預設，標準層 (S1) 用來建立 IoT 資源。 若要使用免費層 IoT 資源，請建立一個資源，然後選取現有的資源。 <br> 在每個案例中，IoT 中樞資源會使用 Azure Stack Edge 資源所用的相同訂用帳戶和資源群組。     |
+   |名稱     |輸入 IoT 中樞資源的名稱。         |
 
-    ![開始使用計算 2](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
+   ![開始使用計算 2](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-3.png)
 
-4. 選取 [建立]。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定計算] 圖格會更新以顯示計算組態。 
+4. 完成設定時，請選取 [檢閱 + 建立]。 檢閱 IoT 中樞資源的設定，然後選取 [建立]。
 
-    ![開始使用計算 3](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-4.png)
+   建立 IoT 中樞資源需要幾分鐘。 建立資源之後，**概觀** 會指出 IoT Edge 服務目前正在執行。
 
-5. 若要確認已設定 Edge 計算角色，請選取 [設定計算] 圖格上的 [檢視計算]。
-    
-    ![開始使用計算 4](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-5.png)
+   ![開始使用計算 3](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-4.png)
 
-    > [!NOTE]
-    > 如果在 [設定計算] 對話方塊關閉後，IoT 中樞才與 Azure Stack Edge Pro 裝置相關聯，則會建立 IoT 中樞，但不會顯示在計算設定中。 
-    
-在 Edge 裝置上設定 Edge 計算角色時，其會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 IoT Edge 執行階段也是在此 IoT Edge 裝置上執行。 目前只有 Linux 平台適用於您的 IoT Edge 裝置。
+5. 若要確認已設定 Edge 計算角色，請選取 [屬性]。
 
-設定計算可能需要 20-30 分鐘的時間，因為系統會在幕後作業並建立虛擬機器和 Kubernetes 叢集。 
+   ![開始使用計算 4](./media/azure-stack-edge-gpu-deploy-configure-compute/configure-compute-5.png)
 
-在 Azure 入口網站中成功設定計算之後，就會存在與 IoT 命名空間 (由 Azure Stack Edge Pro 控制的系統命名空間) 相關聯的 Kubernetes 叢集和預設使用者。 
+   在 Edge 裝置上設定 Edge 計算角色時，其會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 IoT Edge 執行階段也是在此 IoT Edge 裝置上執行。 目前只有 Linux 平台適用於您的 IoT Edge 裝置。
+
+設定計算可能需要 20-30 分鐘的時間，因為系統會在幕後作業並建立虛擬機器和 Kubernetes 叢集。
+
+在 Azure 入口網站中成功設定計算之後，就會存在與 IoT 命名空間 (由 Azure Stack Edge Pro 控制的系統命名空間) 相關聯的 Kubernetes 叢集和預設使用者。
 
 ## <a name="get-kubernetes-endpoints"></a>取得 Kubernetes 端點
 
@@ -89,7 +87,7 @@ ms.locfileid: "96184649"
 
     ![本機 UI 中的裝置頁面](./media/azure-stack-edge-j-series-create-kubernetes-cluster/device-kubernetes-endpoint-1.png)
 
-3. 儲存端點字串。 稍後設定用戶端以透過 kubectl 存取 Kubernetes 叢集時，將會用到此資訊。
+3. 儲存端點字串。 稍後設定用戶端以透過 kubectl 存取 Kubernetes 叢集時，將會用到此端點字串。
 
 4. 在本機 Web UI 中時，您可以：
 
@@ -97,7 +95,7 @@ ms.locfileid: "96184649"
 
         ![本機 UI 1 中的裝置頁面](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-1.png)
 
-        如果 Microsoft 已提供金鑰 (選取可能具備此金鑰的使用者)，則可以使用此設定檔。
+        如果 Microsoft 已提供金鑰 (選取可能具備金鑰的使用者)，則可以使用此設定檔。
 
         ![本機 UI 中的裝置頁面 2](./media/azure-stack-edge-gpu-deploy-configure-compute/download-advanced-config-2.png)
 

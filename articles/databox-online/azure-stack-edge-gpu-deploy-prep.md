@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/21/2020
+ms.date: 01/05/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: cdfd012d5015e156439a1afa89e818bf82b64dc6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e8b58069dc41d5272c67edcb1f05ebd9f1bc5ad4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449328"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935594"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教學課程：準備部署 Azure Stack Edge Pro 搭配 GPU 
 
@@ -36,7 +36,7 @@ ms.locfileid: "96449328"
 | --- | --- |
 | **準備** |這些步驟是針對將要進行的部署所必須完成的準備工作。 |
 | **[部署設定檢查清單](#deployment-configuration-checklist)** |使用此檢查清單，將部署之前和部署期間的資訊加以收集並記錄。 |
-| **[部署必要條件](#prerequisites)** |這些會驗證環境是否準備就緒以供部署。 |
+| **[部署必要條件](#prerequisites)** |這些必要條件會驗證環境是否準備就緒以供部署。 |
 |  | |
 |**部署教學課程** |需要這些教學課程，才能在生產環境中部署您的 Azure Stack Edge Pro 裝置。 |
 |**[1.準備 Azure Stack Edge Pro 的 Azure 入口網站](azure-stack-edge-gpu-deploy-prep.md)** |在安裝 Azure Stack Edge 實體裝置之前，請先建立並設定您的 Azure Stack Edge 資源。 |
@@ -46,7 +46,7 @@ ms.locfileid: "96449328"
 |**[5.設定 Azure Stack Edge Pro 的裝置設定](azure-stack-edge-gpu-deploy-set-up-device-update-time.md)** |指派裝置名稱和 DNS 網域，設定更新伺服器和裝置時間。 |
 |**[6.設定 Azure Stack Edge Pro 的安全性設定](azure-stack-edge-gpu-deploy-configure-certificates.md)** |設定裝置的憑證。 使用裝置產生的憑證或攜帶您自己的憑證。   |
 |**[7.啟動 Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-activate.md)** |使用服務的啟用金鑰來啟動裝置。 裝置已就緒，可設定 SMB 或 NFS 共用或透過 REST 連線。 |
-|**[8.設定計算](azure-stack-edge-gpu-deploy-configure-compute.md)** |在您的裝置上設定計算角色。 這同時也會建立 Kubernetes 叢集。 |
+|**[8.設定計算](azure-stack-edge-gpu-deploy-configure-compute.md)** |在您的裝置上設定計算角色。 同時也會建立 Kubernetes 叢集。 |
 |**[9A.使用 Edge 共用傳輸資料](azure-stack-edge-j-series-deploy-add-shares.md)** |新增共用，並透過 SMB 或 NFS 連線至共用。 |
 |**[9B.使用 Edge 儲存體帳戶傳輸資料](azure-stack-edge-j-series-deploy-add-storage-accounts.md)** |新增儲存體帳戶，並透過 REST API 連線到 Blob 儲存體。 |
 
@@ -125,7 +125,7 @@ ms.locfileid: "96449328"
     
     |設定  |值  |
     |---------|---------|
-    |訂用帳戶    |這會根據您稍早的選取項目自動填入。 訂用帳戶會連結到您的帳單帳戶。 |
+    |訂用帳戶    |訂用帳戶會根據稍早的選取項目自動填入。 訂用帳戶會連結到您的帳單帳戶。 |
     |資源群組  |選取現有的群組或建立新的群組。<br>深入了解 [Azure 資源群組](../azure-resource-manager/management/overview.md)。     |
 
 7. 輸入或選取下列 [執行個體詳細資料]  。
@@ -139,7 +139,7 @@ ms.locfileid: "96449328"
 
 8. 完成時，選取 [下一步:交貨地址]。
 
-    - 如果您已經有一個裝置，請選取 [我有 Azure Stack Edge Pro 裝置] 的下拉式方塊。
+    - 如果您已經有一個裝置，請選取 [我已有裝置] 的下拉式方塊。
 
         ![建立資源 6](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
 
@@ -176,19 +176,17 @@ ms.locfileid: "96449328"
 
 在 Azure Stack Edge 資源已啟動並執行之後，您將必須取得啟用金鑰。 此金鑰可用來啟動 Azure Stack Edge Pro 裝置，並將其與資源連線。 您現在可以在 Azure 入口網站中取得此金鑰。
 
-1. 選取您建立的資源。 選取[概觀]，然後選取 [裝置設定]。
+1. 選取您所建立的資源，然後選取 [概觀]。
 
-    ![選取 [裝置設定]](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)
+2. 在右側窗格上，提供 Azure Key Vault 的名稱或接受預設名稱。 金鑰保存庫名稱可介於 3 到 24 個字元之間。
 
-2. 在 [啟動] 圖格上，提供 Azure Key Vault 的名稱或接受預設名稱。 金鑰保存庫名稱可介於 3 到 24 個字元之間。 
+   系統會為使用您的裝置啟動的每個 Azure Stack Edge 資源建立金鑰保存庫。 金鑰保存庫可讓您儲存及存取祕密，例如，服務的通道完整性金鑰 (CIK) 會儲存在金鑰保存庫中。 
 
-    系統會為使用您的裝置啟動的每個 Azure Stack Edge 資源建立金鑰保存庫。 金鑰保存庫可讓您儲存及存取祕密，例如，服務的通道完整性金鑰 (CIK) 會儲存在金鑰保存庫中。 
+   指定金鑰保存庫名稱之後，請選取 [產生金鑰] 以建立啟用金鑰。 
 
-    指定金鑰保存庫名稱之後，請選取 [產生金鑰] 以建立啟用金鑰。 
+   ![取得啟用金鑰](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![取得啟用金鑰](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-3.png)
-
-    請等候幾分鐘讓金鑰保存庫和啟用金鑰建立。 選取 [複製] 圖示以複製金鑰，並儲存金鑰以供日後使用。
+   請等候幾分鐘，讓系統建立金鑰保存庫和啟用金鑰。 選取 [複製] 圖示以複製金鑰，並儲存金鑰以供日後使用。<!--Verify that the new screen has a copy icon.-->
 
 
 > [!IMPORTANT]

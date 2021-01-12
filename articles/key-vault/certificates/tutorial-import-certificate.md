@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 8689b6851ae219ee6f41ebf58736692e557b2344
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 626d7f161d23e6105eea0ca160cd2c9be0ed0ea0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289728"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935932"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>教學課程：在 Azure Key Vault 中匯入憑證
 
@@ -154,4 +154,4 @@ Import-AzureKeyVaultCertificate
 
 - 深入了解如何[在 Azure Key Vault 中管理憑證建立](./create-certificate-scenarios.md)
 - 請參閱[使用 REST API 來匯入憑證](/rest/api/keyvault/importcertificate/importcertificate)的範例
-- 檢閱 [Azure Key Vault 最佳做法](../general/best-practices.md)
+- 請參閱 [Key Vault 安全性概觀](../general/security-overview.md)

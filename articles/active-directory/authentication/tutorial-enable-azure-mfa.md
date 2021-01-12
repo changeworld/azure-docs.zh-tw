@@ -10,18 +10,18 @@ ms.author: justinha
 author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32228e90e3cfc064cd5be9cd0655f321ab3e2809
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741145"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881305"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>教學課程：使用 Azure AD Multi-Factor Authentication 來保護使用者登入事件
 
 多重要素驗證 (MFA) 是一種程序，此程序會讓系統在登入事件期間提示使用者提供其他形式的識別。 此提示可能會要求使用者在行動電話上輸入代碼，也可能會要求其提供指紋掃描。 當您要求第二種形式的驗證時，安全性將會增加，因為這項額外的因素並不容易讓攻擊者取得或複製。
 
-Azure AD Multi-Factor Authentication 和條件式存取原則可讓您在特定登入事件期間，彈性地為使用者啟用 MFA。
+Azure AD Multi-Factor Authentication 和條件式存取原則可讓您在特定登入事件期間，彈性地為使用者啟用 MFA。 觀看這段 [了解如何在您的租用戶中設定和強制執行多重要素驗證](https://www.youtube.com/watch?v=qNndxl7gqVM)的影片 **(建議**)
 
 > [!IMPORTANT]
 > 此教學課程將說明系統管理員如何啟用 Azure AD Multi-Factor Authentication。

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458102"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050233"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>教學課程：使用範例用戶端應用程式探索 Azure Digital Twins
 
@@ -51,27 +51,15 @@ ms.locfileid: "96458102"
 1. **編輯屬性**。 將 `Humidity` 屬性的名稱變更為 *HumidityLevel* (或任何您想要的名稱。 若您使用與 *HumidityLevel* 不同的名稱，請記住您使用的名稱，並繼續在本教學課程中使用該名稱，而非 *HumidityLevel*)。
 1. **新增屬性**。 在第 15 行結束的 `HumidityLevel` 屬性下方，貼上下列程式碼以將 `RoomName` 屬性新增到 Room：
 
-    ```json
-    ,
-    {
-      "@type": "Property",
-      "name": "RoomName",
-      "schema": "string"
-    }
-    ```
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="16-20":::
+
 1. **新增關聯性**。 在您剛新增的 `RoomName` 屬性下方，貼上下列程式碼讓此類型的分身能夠與其他分身產生「包含」關聯性：
 
-    ```json
-    ,
-    {
-      "@type": "Relationship",
-      "name": "contains"
-    }
-    ```
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="21-24":::
 
-當您完成時，更新的模型看起來應該像這樣：
+當您完成時，更新的模型應該會符合下列內容：
 
-:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="編輯後的 Room.json，其中含有更新後的版本號碼、HumidityLevel 與 RoomName 屬性，並包含關聯性" border="false":::
+:::code language="json" source="~/digital-twins-docs-samples/models/Room.json":::
 
 請務必儲存檔案再繼續。
 

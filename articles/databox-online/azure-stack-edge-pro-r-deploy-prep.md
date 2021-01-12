@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: dd0b6833c4c51c218497cea4fec04390200edff4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630763"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935341"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>教學課程：準備部署 Azure Stack Edge Pro R
 
-這是一系列部署教學課程中的第一個，為完全部署 Azure Stack Edge Pro R 的必要課程。本教學課程說明如何準備 Azure 入口網站以部署 Azure Stack Edge 資源。 本教學課程使用不斷電供應系統 (UPS) 隨附的 1 個節點 Azure Stack Edge Pro R 裝置。
+本教學課程是一系列部署教學課程中的第一個教學課程，是完整部署 Azure Stack Edge Pro R 的必要課程。本教學課程說明如何準備 Azure 入口網站以部署 Azure Stack Edge 資源。 本教學課程使用不斷電供應系統 (UPS) 隨附的 1 個節點 Azure Stack Edge Pro R 裝置。
 
 您需要有系統管理員權限，才能完成安裝和設定程序。 入口網站準備工作不到 10 分鐘就能完成。
 
@@ -37,7 +37,7 @@ ms.locfileid: "97630763"
 | --- | --- |
 | **準備** |這些步驟是針對將要進行的部署所必須完成的準備工作。 |
 | **[部署設定檢查清單](#deployment-configuration-checklist)** |使用此檢查清單，將部署之前和部署期間的資訊加以收集並記錄。 |
-| **[部署必要條件](#prerequisites)** |這些會驗證環境是否準備就緒以供部署。 |
+| **[部署必要條件](#prerequisites)** |這些必要條件會驗證環境是否準備就緒以供部署。 |
 |  | |
 |**部署教學課程** |需要這些教學課程，才能在生產環境中部署您的 Azure Stack Edge Pro R 裝置。 |
 |**[1.為裝置準備 Azure 入口網站](azure-stack-edge-pro-r-deploy-prep.md)** |在安裝 Azure Stack Edge 實體裝置之前，請先建立並設定您的 Azure Stack Edge 資源。 |
@@ -47,7 +47,7 @@ ms.locfileid: "97630763"
 |**[5.設定裝置](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |指派裝置名稱和 DNS 網域，設定更新伺服器和裝置時間。 |
 |**[6.設定安全性](azure-stack-edge-pro-r-deploy-configure-certificates-vpn-encryption.md)** |設定裝置憑證、VPN 及待用加密。 使用裝置產生的憑證或攜帶您自己的憑證。   |
 |**[7.啟用裝置](azure-stack-edge-pro-r-deploy-activate.md)** |使用服務的啟用金鑰來啟動裝置。 裝置已就緒，可設定 SMB 或 NFS 共用或透過 REST 連線。 |
-|**[8.設定計算](azure-stack-edge-gpu-deploy-configure-compute.md)** |在您的裝置上設定計算角色。 這同時也會建立 Kubernetes 叢集。 |
+|**[8.設定計算](azure-stack-edge-gpu-deploy-configure-compute.md)** |在您的裝置上設定計算角色。 同時也會建立 Kubernetes 叢集。 |
 
 現在您可以開始設定 Azure 入口網站。
 
@@ -109,7 +109,7 @@ ms.locfileid: "97630763"
     
     |設定  |值  |
     |---------|---------|
-    |訂用帳戶    |這會根據您稍早的選取項目自動填入。 訂用帳戶會連結到您的帳單帳戶。 |
+    |訂用帳戶    |訂用帳戶會根據稍早的選取項目自動填入。 訂用帳戶會連結到您的帳單帳戶。 |
     |資源群組  |選取現有的群組或建立新的群組。<br>深入了解 [Azure 資源群組](../azure-resource-manager/management/overview.md)。     |
 
 7. 輸入或選取下列 [執行個體詳細資料]  。
@@ -150,7 +150,7 @@ ms.locfileid: "97630763"
 
 下單之後，Microsoft 會檢閱順訂單並與您接洽 (透過電子郵件) 交貨詳細資料。
 
-<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
+<!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png) - If this is restored, it must go above "After the resource is successfully created." The azure-stack-edge-resource-1.png would seem superfluous in that case.--> 
 
 如果您在訂單處理期間遇到任何問題，請參閱[訂單問題疑難排解](azure-stack-edge-troubleshoot-ordering.md)。
 
@@ -158,20 +158,17 @@ ms.locfileid: "97630763"
 
 在 Azure Stack Edge 資源已啟動並執行之後，您將必須取得啟用金鑰。 此金鑰可用來啟動 Azure Stack Edge Pro 裝置，並將其與資源連線。 您現在可以在 Azure 入口網站中取得此金鑰。
 
-1. 選取您建立的資源。 選取[概觀]，然後選取 [裝置設定]。
+1. 選取您所建立的資源，然後選取 [概觀]。
 
-    ![選取 [裝置設定]](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-2.png)
+2. 在右側窗格上，提供 Azure Key Vault 的名稱或接受預設名稱。 金鑰保存庫名稱可介於 3 到 24 個字元之間。
 
-2. 在 [啟動] 圖格上，提供 Azure Key Vault 的名稱或接受預設名稱。 金鑰保存庫名稱可介於 3 到 24 個字元之間。 
+   系統會為使用您的裝置啟動的每個 Azure Stack Edge 資源建立金鑰保存庫。 金鑰保存庫可讓您儲存及存取祕密，例如，服務的通道完整性金鑰 (CIK) 會儲存在金鑰保存庫中。
 
-    系統會為使用您的裝置啟動的每個 Azure Stack Edge 資源建立金鑰保存庫。 金鑰保存庫可讓您儲存及存取祕密，例如，服務的通道完整性金鑰 (CIK) 會儲存在金鑰保存庫中。 
+   指定金鑰保存庫名稱之後，請選取 [產生啟用金鑰] 以建立啟用金鑰。
 
-    指定金鑰保存庫名稱之後，請選取 [產生金鑰] 以建立啟用金鑰。 
+   ![取得啟用金鑰](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
 
-    ![取得啟用金鑰](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
-
-    請等候幾分鐘讓金鑰保存庫和啟用金鑰建立。 選取 [複製] 圖示以複製金鑰，並儲存金鑰以供日後使用。
-
+   請等候幾分鐘，讓系統建立金鑰保存庫和啟用金鑰。 選取 [複製] 圖示以複製金鑰，並儲存金鑰以供日後使用。<!--Verify that the new screen has a copy icon.-->
 
 > [!IMPORTANT]
 > - 啟用金鑰在產生之後 3 天就會到期。

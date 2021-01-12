@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/22/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 919ec1c3c2b71b7d9aecb90d434aa919c7188d38
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740907"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897589"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>教學課程：以 Azure Stack Edge Pro GPU 透過共用傳輸資料
 
@@ -43,7 +43,7 @@ ms.locfileid: "97740907"
 
 若要建立共用，請執行下列程序：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure Stack Edge 資源，然後移至 [概觀]  。 您的裝置應在線上。
+1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure Stack Edge 資源，然後移至 [概觀]  。 您的裝置應在線上。 選取 [雲端儲存空間閘道]。
 
    ![線上裝置](./media/azure-stack-edge-j-series-deploy-add-shares/device-online-1.png)
 
@@ -51,7 +51,7 @@ ms.locfileid: "97740907"
 
    ![新增共用](./media/azure-stack-edge-j-series-deploy-add-shares/select-add-share-1.png)
 
-3. 在 [新增共用]  窗格中，執行下列程序：
+3. 在 **新增共用** 窗格中，依照下列步驟執行：
 
     a. 在 [名稱]  方塊中，為共用提供唯一的名稱。  
     共用名稱只能包含字母、數字和連字號。 此名稱必須介於 3 到 63 個字元，並且以字母或數字開頭。 連字號的前後必須緊鄰字母或數字。

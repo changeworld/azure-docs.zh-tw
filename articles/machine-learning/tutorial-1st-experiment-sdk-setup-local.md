@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 62a1f43fb73f0eda77ebb8f62f64c95ff4ad37a1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 5df8b478c550522d4602398afd208c1e001c96a2
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734193"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883294"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教學課程：開始在開發環境中使用 Azure Machine Learning (第 1 部分，共 4 部分)
 
@@ -67,8 +67,10 @@ tutorial
 - `.azureml`：用來儲存 Azure Machine Learning 組態檔的隱藏子目錄。
 
 > [!TIP]
-> 如果您使用 Mac，請使用 Finder 視窗中的 **Command + Shift + .** 切換功能以查看並建立以點 (.) 開頭的目錄。  或使用命令終端機建立目錄。
-
+> 您可以在終端機視窗中建立隱藏的 .azureml 子目錄。  或使用下列方式：
+> * 在 Mac 的 Finder 視窗中，使用 **Command + Shift + .** 切換功能以查看並建立以點 (.) 開頭的目錄。  
+> * 在 Windows 10 中，請參閱 [如何檢視隱藏的檔案和資料夾](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)。 
+> * 在 Linux 圖形化介面中，使用 **Ctrl + h** 或 [檢視] 功能表，然後勾選 [顯示隱藏的檔案] 方塊。
 
 > [!div class="nextstepaction"]
 > [我已建立目錄](?success=create-dir#workspace) [我遇到問題](https://www.research.net/r/7C8Z3DN?issue=create-dir)

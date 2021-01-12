@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 8706ac588f2cc868805de7126140a1edd4b8c735
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6bf21205c028eaff08eef91757424f8b52764ada
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92445506"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936136"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教學課程：設定 Azure Active Directory 與 F5 之間的單一登入 (SSO)
 
@@ -117,7 +117,7 @@ ms.locfileid: "92445506"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **F5** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **F5**。
 1. 從結果面板選取 [F5]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>設定及測試 F5 的 Azure AD 單一登入
@@ -138,7 +138,7 @@ ms.locfileid: "92445506"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [F5]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
@@ -195,7 +195,7 @@ ms.locfileid: "92445506"
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 1. 按一下 [條件式存取]  。
 1. 按一下 [新增原則]  。
-1. 現在，您可以看到您的 F5 應用程式已成為 CA 原則的資源，並套用任何條件式存取，包括多重要素驗證、裝置型存取控制或身分識別保護原則。
+1. 現在，您可以看到您的 F5 應用程式已成為條件式存取原則的資源，並套用任何條件式存取，包括多重要素驗證、裝置型存取控制或身分識別保護原則。
 
 ## <a name="configure-f5-sso"></a>設定 F5 SSO
 
@@ -237,7 +237,7 @@ ms.locfileid: "92445506"
 
     ![顯示 [虛擬伺服器屬性] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure04.png) 
 
-1. 在 [選取設定 IdP 連接器的方法]  底下指定中繼資料，按一下 [選擇檔案]，然後上傳先前從 Azure AD 下載的中繼資料 XML 檔案。 為 SAML IDP 連接器指定唯一的 **名稱** 。 選擇先前上傳的 [中繼資料簽署憑證]  。 按一下 [儲存並繼續下一步]  。
+1. 在 [選取設定 IdP 連接器的方法]  底下指定中繼資料，按一下 [選擇檔案]，然後上傳先前從 Azure AD 下載的中繼資料 XML 檔案。 為 SAML IDP 連接器指定唯一的 **名稱**。 選擇先前上傳的 [中繼資料簽署憑證]  。 按一下 [儲存並繼續下一步]  。
 
     ![顯示 [外部識別提供者連接器設定] 頁面的螢幕擷取畫面。](./media/headerf5-tutorial/configure05.png)
  
@@ -301,7 +301,7 @@ ms.locfileid: "92445506"
 
         * 指定現有的應用程式集區，或建立一個新的。
 
-        * 如果建立新的應用程式伺服器，請指定 **內部 IP 位址** 和 **連接埠號碼** 。
+        * 如果建立新的應用程式伺服器，請指定 **內部 IP 位址** 和 **連接埠號碼**。
 
         ![顯示窗格的螢幕擷取畫面，您可以在其中指定這些詳細資料。](./media/headerf5-tutorial/configure19.png) 
 

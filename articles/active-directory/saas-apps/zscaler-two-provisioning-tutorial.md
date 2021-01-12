@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fcbe2101f85678414d4496977d9a0a1d41a71ea5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1c63639321966cbb73f5c47524f408d17ba46c3a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517492"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936548"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler Two 來自動佈建使用者
 
@@ -52,7 +52,7 @@ ms.locfileid: "92517492"
 
 ![選取 [新增應用程式]](common/add-new-app.png)
 
-在搜尋方塊中，輸入 **Zscaler Two** 。 在結果中選取 [Zscaler Two]  ，然後選取 [新增]  。
+在搜尋方塊中，輸入 **Zscaler Two**。 在結果中選取 [Zscaler Two]  ，然後選取 [新增]  。
 
 ![結果清單](common/search-new-app.png)
 
@@ -74,6 +74,9 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
 > [!TIP]
 > 您也可以為 Zscaler Two 啟用SAML 型單一登入。 如果您這麼做，請依照 [Zscaler Two 單一登入教學課程](zscaler-two-tutorial.md)中的指示操作。 單一登入可以與自動使用者佈建分開設定，但這兩個功能彼此補充。
+
+> [!NOTE]
+> 在佈建或取消佈建使用者和群組時，建議您定期重新啟動佈建，以確保群組成員資格會正確更新。 重新啟動會強制讓我們的服務重新評估所有群組，並更新成員資格。 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)設定，然後選取 [企業應用程式]   > [所有應用程式]   > [Zscaler Two]  ：
 

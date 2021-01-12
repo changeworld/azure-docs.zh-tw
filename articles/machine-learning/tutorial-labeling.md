@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347501"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882461"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教學課程：建立多類別影像分類的標記專案 
 
@@ -104,7 +104,8 @@ Azure Machine Learning 資料存放區用來儲存連線資訊，例如您的訂
 1. 針對 [從資料存放區建立資料集] 表單，使用下列輸入：
 
     1. 在 [基本資訊] 表單上，新增名稱，我們在此使用 **images-for-tutorial**。  視需要新增說明。  然後選取 [下一步]。
-    1. 在 [資料存放區選取] 表單上，使用下拉式清單來選取 [先前建立的資料存放區]，例如 **tutorial_images (Azure Blob 儲存體)**
+    1. 在 **資料存放區選取項目** 表單上，選取 [先前建立的資料存放區]，然後按一下資料存放區名稱並選取 [選取資料存放區]。
+    1. 在下一個頁面上，確認目前選取的資料存放區是正確的。 如果不正確，請選取 [先前建立的資料存放區] 並重複先前的步驟。
     1. 接下來，仍然在 [資料存放區選取] 表單上，選取 [瀏覽]，然後選取 [MultiClass - DogsCats]。  選取 [儲存] 以使用 **/MultiClass - DogsCats** 作為路徑。
     1. 選取 [下一步] 以確認詳細資料，然後選取 [建立] 來建立資料集。
     1. 選取清單中資料集名稱旁邊的圓形，例如 **images-for-tutorial**。

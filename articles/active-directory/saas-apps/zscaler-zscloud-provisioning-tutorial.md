@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4579fa3c6dd1e34072a31747fda5113a5ac1be2a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fa90cbf1e467416010ae0ba83e9344a84ce52e21
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517424"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936493"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler ZSCloud 來自動佈建使用者
 
@@ -53,7 +53,7 @@ ms.locfileid: "92517424"
 
 ![選取 [新增應用程式]](common/add-new-app.png)
 
-在搜尋方塊中，輸入 **Zscaler ZSCloud** 。 在結果中選取 [Zscaler ZSCloud]  ，然後選取 [新增]  。
+在搜尋方塊中，輸入 **Zscaler ZSCloud**。 在結果中選取 [Zscaler ZSCloud]  ，然後選取 [新增]  。
 
 ![結果清單](common/search-new-app.png)
 
@@ -75,6 +75,9 @@ Azure AD 使用者必須先獲得所選應用程式的存取權，才能使用�
 
 > [!TIP]
 > 您可能也想為 Zscaler ZSCloud 啟用 SAML 型單一登入。 如果您這麼做，請依照 [Zscaler ZSCloud 單一登入教學課程](zscaler-zsCloud-tutorial.md)中的指示操作。 單一登入可以與自動使用者佈建分開設定，但這兩個功能彼此補充。
+
+> [!NOTE]
+> 在佈建或取消佈建使用者和群組時，建議您定期重新啟動佈建，以確保群組成員資格會正確更新。 重新啟動會強制讓我們的服務重新評估所有群組，並更新成員資格。 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [企業應用程式]   > [所有應用程式]   > [Zscaler ZSCloud]  ：
 

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cf638e1de116532136b9e78df1933048c8305b7b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 907bf06c009738eb098532ac5ff53e13dbd16826
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005450"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98047195"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -65,3 +65,4 @@ ms.locfileid: "96005450"
 |[儲存體帳戶內含的容器如有活動記錄，就必須以 BYOK 加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |此原則會稽核內含容器且有活動記錄的儲存體帳戶是否以 BYOK 加密。 根據設計，只有在儲存體帳戶位於與活動記錄相同的訂用帳戶時，原則才會生效。 如需 Azure 儲存體待用資料加密的詳細資訊，請參閱 [https://aka.ms/azurestoragebyok](https://aka.ms/azurestoragebyok)。  |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json) |
 |[Log Analytics 代理程式應該安裝在虛擬機器擴展集上](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fefbde977-ba53-4479-b8e9-10b957924fbf) |此原則會稽核任何 Windows/Linux 虛擬機器擴展集是否未安裝 Log Analytics 代理程式。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VMSS_LogAnalyticsAgent_AuditIfNotExists.json) |
 |[Log Analytics 代理程式應該安裝在虛擬機器上](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa70ca396-0a34-413a-88e1-b956c1e683be) |此原則會稽核任何 Windows/Linux 虛擬機器是否未安裝 Log Analytics 代理程式。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VirtualMachines_LogAnalyticsAgent_AuditIfNotExists.json) |
+|[活頁簿應儲存到您控制的儲存體帳戶中](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6fc8115b-2008-441f-8c61-9b722c1e537f) |使用「自備儲存體 (BYOS)」時，活頁簿會上傳至您控制的儲存體帳戶。 這表示您可以控制待用加密原則、存留期管理原則和網路存取。 不過，您要負責支付與該儲存體帳戶相關聯的成本。 如需詳細資訊，請瀏覽 [https://aka.ms/workbooksByos](https://aka.ms/workbooksByos) |拒絕, 稽核, 已停用 |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Workbooks_BYOSEnabled_Audit.json) |

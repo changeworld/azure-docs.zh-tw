@@ -3,7 +3,7 @@ title: 教學課程：使用 Postgres 部署 Python Django 應用程式
 description: 使用 PostgreSQL 資料庫建立 Python Web 應用程式，並部署至 Azure。 此教學課程會使用 Django 架構，應用程式則裝載於 Linux 上的 Azure App Service 中。
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/02/2020
+ms.date: 01/04/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: b106b403022f3407a3838b7f65222baf41cbfff5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852960"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898584"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教學課程：在 Azure App Service 中使用 PostgreSQL 部署 Django Web 應用程式
 
@@ -236,14 +236,11 @@ Django 資料庫移轉可確保 Azure 資料庫上 PostgreSQL 中的結構描述
 1. 在 SSH 工作階段中，執行下列命令 (您可以使用 **Ctrl**+**Shift**+**V** 來貼上命令)：
 
     ```bash
-    # Change to the folder where the app code is deployed
-    cd site/wwwroot
+    # Change to the app folder
+    cd $APP_PATH
     
-    # Activate default virtual environment in App Service container
+    # Activate the venv (requirements.txt is installed automatically)
     source /antenv/bin/activate
-
-    # Install packages
-    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -251,6 +248,8 @@ Django 資料庫移轉可確保 Azure 資料庫上 PostgreSQL 中的結構描述
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
+
+    如果您遇到與連線至資料庫相關的任何錯誤，請檢查在先前章節中所建立的應用程式設定值。
 
 1. `createsuperuser` 命令會提示您輸入超級使用者認證。 基於此教學課程的目的，請使用預設的使用者名稱 `root`、按 **Enter** 以讓電子郵件地址保留空白，然後輸入 `Pollsdb1` 作為密碼。
 
@@ -260,13 +259,13 @@ Django 資料庫移轉可確保 Azure 資料庫上 PostgreSQL 中的結構描述
     
 ### <a name="44-create-a-poll-question-in-the-app"></a>4.4 在應用程式中建立投票問題
 
-1. 在瀏覽器中，開啟 URL `http://<app-name>.azurewebsites.net`。 應用程式應該會顯示訊息「沒有可用的投票」，因為資料庫中尚未有特定的投票。
+1. 在瀏覽器中，開啟 URL `http://<app-name>.azurewebsites.net`。 應用程式應該會顯示訊息「投票應用程式」和「沒有可用的投票」，因為資料庫中尚未有特定的投票。
 
     如果您看到「應用程式錯誤」，則可能是您未在先前的步驟[設定環境變數以連線資料庫](#42-configure-environment-variables-to-connect-the-database)中建立必要的設定，或是這些值包含錯誤。 請執行 `az webapp config appsettings list` 命令以檢查設定。 您也可以[檢查診斷記錄](#6-stream-diagnostic-logs)，以查看應用程式啟動期間的特定錯誤。 例如，如果您未建立設定，記錄將會顯示錯誤 `KeyError: 'DBNAME'`。
 
     更新設定以更正任何錯誤後，請稍候片刻讓應用程式重新啟動，然後重新整理瀏覽器。
 
-1. 瀏覽至 `http://<app-name>.azurewebsites.net/admin`。 使用上一節的超級使用者認證 (`root` 和 `Pollsdb1`) 登入。 在 [投票] 下方，選取 [問題] 旁的 [新增]，然後建立具有一些選項的投票問題。
+1. 瀏覽至 `http://<app-name>.azurewebsites.net/admin`。 使用上一節的 Django 超級使用者認證 (`root` 和 `Pollsdb1`) 登入。 在 [投票] 下方，選取 [問題] 旁的 [新增]，然後建立具有一些選項的投票問題。
 
 1. 再次瀏覽至 `http://<app-name>.azurewebsites.net`，以確認現在可向使用者呈現問題。 回答問題，但是您想要在資料庫中產生一些資料。
 
@@ -292,7 +291,7 @@ Django 資料庫移轉可確保 Azure 資料庫上 PostgreSQL 中的結構描述
 python3 -m venv venv
 source venv/bin/activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -310,7 +309,7 @@ py -3 -m venv venv
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 venv\scripts\activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -327,7 +326,7 @@ python manage.py runserver
 py -3 -m venv venv
 venv\scripts\activate
 
-:: Install packages
+:: Install dependencies
 pip install -r requirements.txt
 :: Run Django migrations
 python manage.py migrate
@@ -397,11 +396,8 @@ az webapp up
 瀏覽至 `https://<app-name>.scm.azurewebsites.net/webssh/host`，再次於瀏覽器中開啟 SSH 工作階段。 然後，執行下列命令：
 
 ```
-cd site/wwwroot
-
-# Activate default virtual environment in App Service container
+cd $APP_PATH
 source /antenv/bin/activate
-# Run database migrations
 python manage.py migrate
 ```
 

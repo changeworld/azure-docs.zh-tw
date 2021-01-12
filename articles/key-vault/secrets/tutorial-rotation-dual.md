@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: c2496959f851b55f8cc66c0e793b641cdafb003a
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 39081bc7bec7cfd76ccfc9107d5c2286affb7df0
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808329"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913765"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>針對具有兩組驗證認證的資源，將秘密的輪替自動化
 
@@ -222,8 +222,15 @@ az storage account keys list -n vaultrotationstorage
 
 ## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>兩組認證的 Key Vault 輪替函式
 
-- [儲存體帳戶](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
-- [Redis 快取](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
+兩組認證的輪替函式範本，以及數個準備好可供使用的功能：
+
+- [專案範本](https://serverlesslibrary.net/sample/bc72c6c3-bd8f-4b08-89fb-c5720c1f997f)
+- [Redis 快取](https://serverlesslibrary.net/sample/0d42ac45-3db2-4383-86d7-3b92d09bc978)
+- [儲存體帳戶](https://serverlesslibrary.net/sample/0e4e6618-a96e-4026-9e3a-74b8412213a4)
+- [Cosmos DB](https://serverlesslibrary.net/sample/bcfaee79-4ced-4a5c-969b-0cc3997f47cc)
+
+> [!NOTE]
+> 上述輪替函式是由社群成員所建立，而不是由 Microsoft 所建立。 社群 Azure Functions 並未依據任何 Microsoft 支援方案或服務來提供支援，而且會在沒有任何擔保的情況下「依現況」提供。
 
 ## <a name="next-steps"></a>後續步驟
 

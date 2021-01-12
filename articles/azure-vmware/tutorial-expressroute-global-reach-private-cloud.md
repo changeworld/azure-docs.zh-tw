@@ -2,13 +2,13 @@
 title: 教學課程 - 將內部部署環境對等互連至私人雲端
 description: 了解如何在 Azure VMware 解決方案中建立與私人雲端對等互連的 ExpressRoute Global Reach。
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: 4d10972a693f7c4c3ae25a5bc986f6c15e978294
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 1/5/2021
+ms.openlocfilehash: 613aece6ed548f70840349e017de4416883d6cf3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912492"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913153"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>教學課程：將內部部署環境對等互連至私人雲端
 
@@ -30,12 +30,13 @@ ExpressRoute Global Reach 可將您的內部部署環境連線至 Azure VMware �
 
 ## <a name="prerequisites"></a>必要條件
 
-- 已建立進出於 Azure VMware 解決方案私人雲端的連線，且其 ExpressRoute 線路已與 Azure 虛擬網路 (VNet) 中的 ExpressRoute 閘道對等互連 – 這是對等互連程序中的 _線路 2_ 。  
-- 不同的運作中 ExpressRoute 線路，用以將內部部署環境連線至 Azure – 從對等互連程序的角度來看，這是 _線路 1_ 。
+- 已建立進出於 Azure VMware 解決方案私人雲端的連線，且其 ExpressRoute 線路已與 Azure 虛擬網路 (VNet) 中的 ExpressRoute 閘道對等互連 – 這是對等互連程序中的 _線路 2_。  
+- 不同的運作中 ExpressRoute 線路，用以將內部部署環境連線至 Azure – 從對等互連程序的角度來看，這是 _線路 1_。
 - /29 的非重疊[網路位址區塊](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings)，用於進行 ExpressRoute Global Reach 對等互連。
+- 請確定包含 ExpressRoute 提供者服務的所有路由器都支援 4 個位元組的自發系統編號 (ASN)。 Azure VMware 解決方案會使用 4 位元組的公用 ASN 公告路由。
 
 > [!TIP]
-> 在這些必要條件的內容中，您的內部部署 ExpressRoute 線路是 _線路 1_ ，而您的私人雲端 ExpressRoute 線路會在不同的訂用帳戶中，並標示為 _線路 2_ 。 
+> 在這些必要條件的內容中，您的內部部署 ExpressRoute 線路是 _線路 1_，而您的私人雲端 ExpressRoute 線路會在不同的訂用帳戶中，並標示為 _線路 2_。 
 
 
 ## <a name="create-an-expressroute-authorization-key-in-the-private-cloud"></a>在私人雲端中建立 ExpressRoute 授權金鑰

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: e451171859efc49753131b145642aec4864db45d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 089b1b6f1af2f19c16866858324bde2e151e8bdb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015655"
+ms.locfileid: "98052937"
 ---
 | 資源 | 基本 | 標準 | Premium |
 |---|---|---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "98015655"
 | &bull; 每個範圍對應的存放庫 | N/A | N/A | 500 |
 
 
-<sup>1</sup> 每一層的每日費率包含的儲存體。 可以使用額外的儲存體，每個 GiB 需要額外的每日費率，以登錄儲存體限制為上限。 如需費率資訊，請參閱 [Azure Container Registry 定價][pricing]。
+<sup>1</sup> 每一層的每日費率包含的儲存體。 可以使用額外的儲存體，每個 GiB 需要額外的每日費率，以登錄儲存體限制為上限。 如需費率資訊，請參閱 [Azure Container Registry 定價][pricing]。 如果您需要的儲存體超過登錄儲存體上限，請連絡 Azure 支援。
 
 <sup>2</sup>*ReadOps*、*WriteOps* 和「頻寬」是最小預估值。 Azure Container Registry 致力於改善需要使用時的效能。
 
