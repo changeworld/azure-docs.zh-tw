@@ -65,7 +65,7 @@ ms.locfileid: "96743338"
 1. 搜尋並選取 [Azure Active Directory]。
 1. 從 Azure Active Directory 視窗左側的導覽功能表中，選取 [安全性 > 驗證方法 > 驗證方法原則 (預覽)]。
 
-    [![在 Azure 入口網站中流覽並選取 [驗證方法] 原則 (預覽]) 視窗。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![在 Azure 入口網站中流覽並選取 [驗證方法] 原則 (預覽) 視窗。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. 從可用驗證方法的清單中，選取 [文字簡訊]。
 1. 將 [啟用] 設定為 [是]。
