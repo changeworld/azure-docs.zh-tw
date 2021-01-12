@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a57abd080bdbbaefbe07258a2b241c093dc8c441
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 58e14ab04084871dfd5de400cac0c38401855d0c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308734"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120252"
 ---
 # <a name="design-a-polybase-data-loading-strategy-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中為專用的 SQL 集區設計 PolyBase 資料載入策略
 
@@ -38,9 +38,9 @@ ms.locfileid: "93308734"
 5. 轉換資料。
 6. 將資料插入生產資料表。
 
-如需載入教學課程，請參閱 [使用 PolyBase 將資料從 Azure blob 儲存體載入至 Azure Synapse Analytics](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+如需載入教學課程，請參閱 [使用 PolyBase 將資料從 Azure blob 儲存體載入至 Azure Synapse Analytics](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。
 
-如需詳細資訊，請參閱[載入模式部落格](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)。
+如需詳細資訊，請參閱[載入模式部落格](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies)。
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1.將來源資料擷取至文字檔
 
@@ -118,10 +118,10 @@ PolyBase 會從 UTF-8 和 UTF-16 編碼分隔符號文字檔載入資料。 除�
 
 若要使用 PolyBase 載入資料，您可以使用任何一種載入選項：
 
-- [PolyBase 與 T-SQL](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 非常適合於當您的資料是在 Azure Blob 儲存體或 Azure Data Lake Store 中的時候。 它給予您對於載入程序最多的控制權，但是也需要您定義外部資料物件。 其他方法會在您將來源資料表對應至目的地資料表時，在幕後定義這些物件。  若要協調 T-SQL 載入，您可以使用 Azure Data Factory、SSIS 或 Azure 函式。
+- [PolyBase 與 T-SQL](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) 非常適合於當您的資料是在 Azure Blob 儲存體或 Azure Data Lake Store 中的時候。 它給予您對於載入程序最多的控制權，但是也需要您定義外部資料物件。 其他方法會在您將來源資料表對應至目的地資料表時，在幕後定義這些物件。  若要協調 T-SQL 載入，您可以使用 Azure Data Factory、SSIS 或 Azure 函式。
 - 當您的來源資料位於 SQL Server 時[，具有 SSIS 的 PolyBase](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)會正常運作。 SSIS 會定義來源至目的地資料表對應，也會協調載入。 如果您已經有 SSIS 套件，您可以將套件修改為搭配新的資料倉儲目的地。
 - [PolyBase 與 Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 是另一個協調工具。  它會定義管線並排程作業。
-- [具有 Azure Databricks 的 PolyBase](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 會將資料從 Azure Synapse Analytics 資料表傳送到 Databricks 資料框架，以及/或使用 PolyBase 將資料從 Databricks 資料框架寫入 Azure Synapse Analytics 資料表。
+- [具有 Azure Databricks 的 PolyBase](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) 會將資料從 Azure Synapse Analytics 資料表傳送到 Databricks 資料框架，以及/或使用 PolyBase 將資料從 Databricks 資料框架寫入 Azure Synapse Analytics 資料表。
 
 ### <a name="non-polybase-loading-options"></a>非 PolyBase 載入選項
 

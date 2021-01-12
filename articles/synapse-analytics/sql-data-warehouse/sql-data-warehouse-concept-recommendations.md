@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462862"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121187"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的 Azure Advisor 建議
 
@@ -65,12 +65,12 @@ Advisor 會持續運用工作負載型啟發學習法 (例如資料表存取頻�
 
 
 ## <a name="adaptive-gen2-cache-utilization"></a>自適型 (Gen2) 快取使用率
-當您有很大的工作集時，您可能會遇到快取命中百分比較低和快取使用率較高的情況。 在此情節中，您應該擴大以增加快取容量並重新執行您的工作負載。 如需詳細資訊，請瀏覽下列[文件](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache) \(部分機器翻譯\)。 
+當您有很大的工作集時，您可能會遇到快取命中百分比較低和快取使用率較高的情況。 在此情節中，您應該擴大以增加快取容量並重新執行您的工作負載。 如需詳細資訊，請瀏覽下列[文件](./sql-data-warehouse-how-to-monitor-cache.md) \(部分機器翻譯\)。 
 
 ## <a name="tempdb-contention"></a>Tempdb 爭用
 
-當 tempdb 爭用很高時，查詢效能可能會降低。  Tempdb 爭用可能會透過使用者定義的暫存資料表，或在大量的資料移動時發生。 在此情節中，您可以針對更多 tempdb 配置進行調整，並[設定資源類別和工作負載管理](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) \(部分機器翻譯\)，為您的查詢提供更多記憶體。 
+當 tempdb 爭用很高時，查詢效能可能會降低。  Tempdb 爭用可能會透過使用者定義的暫存資料表，或在大量的資料移動時發生。 在此情節中，您可以針對更多 tempdb 配置進行調整，並[設定資源類別和工作負載管理](./sql-data-warehouse-workload-management.md) \(部分機器翻譯\)，為您的查詢提供更多記憶體。 
 
 ## <a name="data-loading-misconfiguration"></a>資料載入設定錯誤
 
-您應該一律從與您專用的 SQL 集區位於相同區域的儲存體帳戶載入資料，以將延遲降至最低。 [針對高輸送量資料內嵌使用 COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，並將您的暫存檔案分割在儲存體帳戶中，以將輸送量最大化。 如果您無法使用 COPY 語句，您可以使用 SqlBulkCopy API 或 bcp 搭配高批次大小，以獲得更好的輸送量。 如需其他資料載入指引，請參閱下列 [檔](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)。 
+您應該一律從與您專用的 SQL 集區位於相同區域的儲存體帳戶載入資料，以將延遲降至最低。 [針對高輸送量資料內嵌使用 COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，並將您的暫存檔案分割在儲存體帳戶中，以將輸送量最大化。 如果您無法使用 COPY 語句，您可以使用 SqlBulkCopy API 或 bcp 搭配高批次大小，以獲得更好的輸送量。 如需其他資料載入指引，請參閱下列 [檔](./guidance-for-loading-data.md)。

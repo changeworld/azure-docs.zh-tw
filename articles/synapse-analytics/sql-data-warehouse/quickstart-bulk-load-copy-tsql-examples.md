@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: de446209104c113b10346645f79b461239c3efab
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901264"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120983"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地載入資料
 
-本文主要說明 [COPY 陳述式](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)的安全驗證機制，並提供相關範例。 在 Synapse SQL 中大量載入資料時，COPY 陳述式是最具彈性且安全的方式。
+本文主要說明 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)的安全驗證機制，並提供相關範例。 在 Synapse SQL 中大量載入資料時，COPY 陳述式是最具彈性且安全的方式。
 ## <a name="supported-authentication-mechanisms"></a>支援的驗證機制
 
 下列矩陣說明每個檔案類型和儲存體帳戶支援的驗證方法。 這適用於來源儲存位置和錯誤檔案位置。
@@ -136,7 +136,7 @@ WITH (
 
     ![授與 Azure RBAC 授權以載入](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
-2. 參考下列[文件](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)以設定 Azure AD 驗證。 
+2. 參考下列[文件](../../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)以設定 Azure AD 驗證。 
 
 3. 使用 Active Directory 連線至您的 SQL 集區，您現在可以在其中執行 COPY 陳述式，而無須指定任何認證：
 
@@ -152,11 +152,11 @@ WITH (
 ## <a name="e-service-principal-authentication"></a>E. 服務主體驗證
 #### <a name="steps"></a>步驟
 
-1. [建立 Azure Active Directory 應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
-2. [取得應用程式識別碼](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)
-3. [取得驗證金鑰](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret)
-4. [取得 V1 OAuth 2.0 權杖端點](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
-5. [將讀取、寫入和執行權限指派給儲存體帳戶上的 Azure AD 應用程式](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
+1. [建立 Azure Active Directory 應用程式](../..//active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)
+2. [取得應用程式識別碼](../..//active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)
+3. [取得驗證金鑰](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)
+4. [取得 V1 OAuth 2.0 權杖端點](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications)
+5. [將讀取、寫入和執行權限指派給儲存體帳戶上的 Azure AD 應用程式](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder)
 6. 現在，您可以執行 COPY 陳述式：
 
     ```sql
@@ -176,5 +176,5 @@ WITH (
 
 ## <a name="next-steps"></a>後續步驟
 
-- 參閱 [COPY 陳述式文章](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)以了解詳細語法
-- 參閱[資料載入概觀](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt)一文以了解載入的最佳做法
+- 參閱 [COPY 陳述式文章](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)以了解詳細語法
+- 參閱[資料載入概觀](./design-elt-data-loading.md#what-is-elt)一文以了解載入的最佳做法

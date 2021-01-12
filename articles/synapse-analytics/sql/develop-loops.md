@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 99ee41de7ffd66191ff712a5ffbda65f3233196f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0d83e1305a851bf6bafb6c4c79f5caf73f8e44b6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324442"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120881"
 ---
 # <a name="use-t-sql-loops-with-synapse-sql-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中搭配使用 T-sql 迴圈與 Synapse SQL
 
@@ -23,7 +23,7 @@ ms.locfileid: "93324442"
 
 ## <a name="purpose-of-while-loops"></a>WHILE 迴圈的用途
 
-Synapse SQL 支援 [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15&preserve-view=true) 迴圈，以重複執行語句區塊。 只要指定的條件都成立，或者在程式碼使用 BREAK 關鍵字特別終止迴圈之前，這個 WHILE 迴圈都會繼續下去。 
+Synapse SQL 支援 [WHILE](/sql/t-sql/language-elements/while-transact-sql?preserve-view=true&view=sql-server-ver15) 迴圈，以重複執行語句區塊。 只要指定的條件都成立，或者在程式碼使用 BREAK 關鍵字特別終止迴圈之前，這個 WHILE 迴圈都會繼續下去。 
 
 Synapse SQL 中的迴圈適用于取代 SQL 程式碼中定義的資料指標。 幸運的是，幾乎所有以 SQL 程式碼撰寫的資料指標都是向前快轉，並且只讀取多樣性。 因此，WHILE 迴圈是取代資料指標的絕佳替代方案。
 

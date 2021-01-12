@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095095"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121340"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>在 Azure Synapse Link Preview 中使用無伺服器 SQL 集區查詢 Azure Cosmos DB 資料
 
@@ -31,7 +31,7 @@ ms.locfileid: "97095095"
 > [!IMPORTANT]
 > 本教學課程使用具有 [Azure Cosmos DB 妥善定義架構](../../cosmos-db/analytical-store-introduction.md#schema-representation)的容器。 無伺服器 SQL 集區針對 [Azure Cosmos DB 完整精確度架構](#full-fidelity-schema) 提供的查詢體驗，是根據預覽意見反應而變更的暫時行為。 請勿依賴函數的結果集架構 `OPENROWSET` ，而不使用 `WITH` 子句從容器中讀取具有完整精確度架構的資料，因為查詢體驗可能會對齊，並根據妥善定義的架構來變更。 您可以在 [Azure Synapse Analytics 意見反應論壇](https://feedback.azure.com/forums/307516-azure-synapse-analytics)張貼您的意見反應。 您也可以聯絡 [Azure Synapse Link 產品小組](mailto:cosmosdbsynapselink@microsoft.com) 來提供意見反應。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 無伺服器 SQL 集區可讓您使用函數來查詢 Azure Cosmos DB 分析儲存體 `OPENROWSET` 。 
 - `OPENROWSET` 具有內嵌索引鍵。 這個語法可以用來查詢 Azure Cosmos DB 的集合，而不需要準備認證。
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-請勿使用未 `OPENROWSET` 明確定義的架構，因為它可能會影響您的效能。 請確定您使用的是資料行的最小可能大小 (例如 VARCHAR (100) ，而不是預設的 VARCHAR (8000) # A5。 您應使用部分 UTF-8 定序作為預設資料庫定序，或將它設定為明確的資料行定序，以避免發生 [utf-8 轉換問題](/azure/synapse-analytics/troubleshoot/reading-utf8-text)。 `Latin1_General_100_BIN2_UTF8`當 yu 使用一些字串資料行來篩選資料時，定序會提供最佳效能。
+請勿使用未 `OPENROWSET` 明確定義的架構，因為它可能會影響您的效能。 請確定您使用的是資料行的最小可能大小 (例如 VARCHAR (100) ，而不是預設的 VARCHAR (8000) # A5。 您應使用部分 UTF-8 定序作為預設資料庫定序，或將它設定為明確的資料行定序，以避免發生 [utf-8 轉換問題](../troubleshoot/reading-utf8-text.md)。 `Latin1_General_100_BIN2_UTF8`當 yu 使用一些字串資料行來篩選資料時，定序會提供最佳效能。
 
 ## <a name="query-nested-objects-and-arrays"></a>查詢嵌套的物件和陣列
 
@@ -268,8 +268,8 @@ WITH (  paper_id    varchar(8000),
 深入瞭解如何在[無伺服器 SQL 集](query-parquet-nested-types.md)區中分析 Azure Synapse 連結和嵌套結構中的[複雜資料類型](../how-to-analyze-complex-schema.md)。
 
 > [!IMPORTANT]
-> 如果您在文字（例如）中看到 `MÃƒÂ©lade` 非預期的字元 `Mélade` ，則您的資料庫定序不會設定為 [utf-8 定](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) 序。
-> 使用類似的 SQL 語句，[將資料庫的定序變更](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)為 utf-8 定序 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` 。
+> 如果您在文字（例如）中看到 `MÃƒÂ©lade` 非預期的字元 `Mélade` ，則您的資料庫定序不會設定為 [utf-8 定](/sql/relational-databases/collations/collation-and-unicode-support#utf8) 序。
+> 使用類似的 SQL 語句，[將資料庫的定序變更](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)為 utf-8 定序 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` 。
 
 ## <a name="flatten-nested-arrays"></a>壓平合併嵌套陣列
 
@@ -325,7 +325,7 @@ Epidemi 的補充資訊 .。。 | `[{"first":"Nicolas","last":"4#","suffix":"","
 | Epidemi 的補充資訊 .。。 |   `[{"first":"Olivier","last":"Flores","suffix":"","affiliation":{"laboratory":"UMR C53 CIRAD, …` | 奧利維爾 | 弗洛雷斯 |`{"laboratory":"UMR C53 CIRAD, …` |     
 
 > [!IMPORTANT]
-> 如果您在文字（例如）中看到 `MÃƒÂ©lade` 非預期的字元 `Mélade` ，則您的資料庫定序不會設定為 [utf-8 定](https://docs.microsoft.com/sql/relational-databases/collations/collation-and-unicode-support#utf8) 序。 使用類似的 SQL 語句，[將資料庫的定序變更](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)為 utf-8 定序 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` 。
+> 如果您在文字（例如）中看到 `MÃƒÂ©lade` 非預期的字元 `Mélade` ，則您的資料庫定序不會設定為 [utf-8 定](/sql/relational-databases/collations/collation-and-unicode-support#utf8) 序。 使用類似的 SQL 語句，[將資料庫的定序變更](/sql/relational-databases/collations/set-or-change-the-database-collation#to-change-the-database-collation)為 utf-8 定序 `ALTER DATABASE MyLdw COLLATE LATIN1_GENERAL_100_CI_AS_SC_UTF8` 。
 
 ## <a name="azure-cosmos-db-to-sql-type-mappings"></a>Azure Cosmos DB 至 SQL 類型對應
 
@@ -338,7 +338,7 @@ SQL (Core) API 的 Azure Cosmos DB 帳戶支援數位、字串、布林值、nul
 | 布林值 | bit |
 | 整數 | BIGINT |
 | Decimal | FLOAT |
-| 字串 | Varchar (UTF-8 資料庫定序)  |
+| String | Varchar (UTF-8 資料庫定序)  |
 | 日期時間 (ISO 格式的字串)  | Varchar (30)  |
 | 日期時間 (UNIX 時間戳記)  | BIGINT |
 | Null | `any SQL type` 
@@ -422,7 +422,7 @@ GROUP BY geo_id
 
 下表列出可能的錯誤和疑難排解動作。
 
-| [錯誤] | 根本原因 |
+| 錯誤 | 根本原因 |
 | --- | --- |
 | 語法錯誤：<br/> -接近的語法不正確 `Openrowset`<br/> - `...` 不是可辨識的 `BULK OPENROWSET` 提供者選項。<br/> -接近的語法不正確 `...` | 可能的根本原因：<br/> -不使用 CosmosDB 做為第一個參數。<br/> -使用字串常值，而不是第三個參數中的識別碼。<br/> -未指定第三個參數 (容器名稱) 。 |
 | CosmosDB 連接字串中發生錯誤。 | -未指定帳戶、資料庫或金鑰。 <br/> -無法辨識的連接字串中有一些選項。<br/> -分號 (`;`) 放置於連接字串的結尾。 |

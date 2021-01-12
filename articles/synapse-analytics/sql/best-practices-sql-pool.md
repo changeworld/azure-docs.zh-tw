@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 03a536e16a6ba12611ed704b404c1bd411f0c4c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 242e5d042aa14e3b7bd92ebb37ae1be61b1b2c8f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322702"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120966"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的最佳作法
 
@@ -61,7 +61,7 @@ SQL 集區支援透過數種工具 (包括 Azure Data Factory、PolyBase 及 BCP
 
 - [資料載入](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [使用 PolyBase 指南](data-loading-best-practices.md)
-- [Azure SQL 集區載入模式和策略](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/) \(英文\)
+- [Azure SQL 集區載入模式和策略](/archive/blogs/sqlcat/azure-sql-data-warehouse-loading-patterns-and-strategies) \(英文\)
 - [使用 Azure Data Factory 載入資料](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [使用 Azure Data Factory 移動資料](../../data-factory/transform-data-using-machine-learning.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
@@ -88,7 +88,7 @@ PolyBase 並不是查詢的最佳選項。 專用 SQL 集區的 Polybase 資料�
 
 - [資料表概觀](develop-tables-overview.md)
 - [資料表散發](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [選取資料表發佈](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)
+- [選取資料表發佈](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)
 - [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 - [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
 
@@ -193,7 +193,7 @@ SQL 集區有數個 DMV 可用來監視查詢執行。  下列監視相關文章
 
 另請參閱[疑難排解](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)一文中的常見問題和解決方案。
 
-如果您需要此文章未提供的資訊，請搜尋[適用於 Azure Synapse 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) \(英文\)，其為您可以向其他使用者與 SQL 集區產品小組提出問題的地方。  
+如果您需要此文章未提供的資訊，請搜尋[適用於 Azure Synapse 的 Microsoft 問與答頁面](/answers/topics/azure-synapse-analytics.html) \(英文\)，其為您可以向其他使用者與 SQL 集區產品小組提出問題的地方。  
 
 我們會主動監看這個論壇，以確保您的問題有其他使用者或是我們回答。  如果您比較想在 Stack Overflow 上提出您的問題，我們也有 [Azure SQL 集區 Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw) \(英文\)。
 

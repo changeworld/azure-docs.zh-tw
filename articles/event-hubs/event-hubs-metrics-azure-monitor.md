@@ -3,12 +3,12 @@ title: Azure 監視器中的計量 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何使用「Azure 監視」來監視「Azure 事件中樞」的資訊
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ad570a41fd9dfff01e3a1da6b2d309a7a8464cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b055c02783c40d844d1c6306bbb71cb23d602f2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88931143"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118790"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 事件中樞計量
 
@@ -29,7 +29,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ![檢視成功計量][1]
 
-您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後按一下 [計量]。 若要顯示篩選至事件中樞範圍的計量，請選取事件中樞，然後按一下 [計量]****。
+您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後按一下 [計量]。 若要顯示篩選至事件中樞範圍的計量，請選取事件中樞，然後按一下 [計量]。
 
 針對支援維度的計量，您必須使用所需的維度值來進行篩選，如以下範例所示：
 
@@ -46,58 +46,8 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 所有計量值都會每分鐘傳送至「Azure 監視器」。 時間細微性會定義呈現計量值的時間間隔。 針對所有「事件中樞」計量，支援的時間間隔為 1 分鐘。
 
-## <a name="request-metrics"></a>要求計量
-
-計算資料和管理作業要求的數目。
-
-| 標準名稱 | 描述 |
-| ------------------- | ----------------- |
-| 傳入的要求  | 在指定的期間內，向「Azure 事件中樞」服務提出的要求數目。 <br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName |
-| 成功的要求    | 在指定的期間內，向「Azure 事件中樞」服務提出的成功要求數目。 <br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName |
-| 伺服器錯誤  | 在指定的期間內，因「Azure 事件中樞」服務發生錯誤而未處理的要求數目。 <br/><br/>單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName |
-|使用者錯誤 |在指定的期間內，因使用者錯誤而未處理的要求數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|超出配額的錯誤 |超出可用配額的要求數目。 如需有關「事件中樞」配額的詳細資訊，請參閱[這篇文章](event-hubs-quotas.md)。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-
-## <a name="throughput-metrics"></a>輸送量計量
-
-| 標準名稱 | 描述 |
-| ------------------- | ----------------- |
-|節流的要求 |因為超出輸送量單位使用量而節流的要求數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-
-## <a name="message-metrics"></a>訊息計量
-
-| 標準名稱 | 描述 |
-| ------------------- | ----------------- |
-|傳入訊息 |在指定的期間內，傳送到「事件中樞」的事件或訊息數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|外送訊息 |在指定的期間內，從「事件中樞」擷取的事件或訊息數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|傳入的位元組 |在指定的期間內，傳送到「Azure 事件中樞」服務的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|傳出的位元組 |在指定的期間內，從「Azure 事件中樞」服務擷取的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-
-## <a name="connection-metrics"></a>連接計量
-
-| 標準名稱 | 描述 |
-| ------------------- | ----------------- |
-|ActiveConnections |命名空間及實體上的作用中連線數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|已開啟的連線 |已開啟的連線數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|已關閉的連線 |已關閉的連線數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-
-## <a name="event-hubs-capture-metrics"></a>事件中樞擷取計量
-
-當您針對事件中樞啟用「擷取」功能時，即可監視「事件中樞」的「擷取」計量。 下列計量說明當您啟用「擷取」時可以監視的項目。
-
-| 標準名稱 | 描述 |
-| ------------------- | ----------------- |
-|擷取待辦項目 |尚未擷取到所選目的地的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|已擷取的訊息 |在指定的期間內，擷取到所選目的地的訊息或事件數目。<br/><br/> 單位：Count <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|已擷取的位元組 |在指定的期間內，擷取到所選目的地的位元組數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-
-## <a name="metrics-dimensions"></a>計量維度
-
-「Azure 事件中樞」針對「Azure 監視器」中的計量支援下列維度。 將維度新增至計量為選擇性。 如果不新增維度，則會在命名空間層級指定計量。 
-
-| 標準名稱 | 描述 |
-| ------------------- | ----------------- |
-|EntityName| 「事件中樞」可在命名空間底下支援事件中樞實體。|
+## <a name="azure-event-hubs-metrics"></a>Azure 事件中樞計量
+如需服務所支援的度量清單，請參閱 [Azure 事件中樞](../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)
 
 ## <a name="azure-monitor-integration-with-siem-tools"></a>Azure 監視器與 SIEM 工具整合
 使用 Azure 監視器讓您的監視資料 (活動記錄、診斷記錄等 ) 到事件中樞，可讓您輕鬆地整合安全性資訊和事件管理 (SIEM) 工具。 如需詳細資訊，請參閱下列文章/blog 文章：
@@ -112,7 +62,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 - 如果有內送訊息，但 **沒有任何外寄訊息**，則表示 SIEM 應用程式未讀取訊息。 請聯絡 SIEM 提供者，以判斷事件中樞的設定是否正確。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 請參閱 [Azure 監視概觀](../azure-monitor/overview.md)。
 * GitHub 上的[使用 .NET 擷取 Azure 監視計量](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) \(英文\) 範例。 

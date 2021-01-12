@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: fee7e244e26a59a773a5d5c9c74e23acd4113ee6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c681195a60329320b875cc06919e9440b65eb9e5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446694"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120235"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark 公用程式簡介
 
@@ -33,7 +33,7 @@ Synapse 管線會使用 (MSI) 的工作區身分識別來存取儲存體帳戶�
 1. 開啟 [Azure 入口網站](https://portal.azure.com/) 以及您想要存取的儲存體帳戶。 您可以流覽至您想要存取的特定容器。
 2. 從左面板中選取 [ **存取控制] (IAM)** 。
 3. 將 **您的 Azure AD 帳戶** 和 **工作區身分識別** (與您的工作區名稱相同) 至儲存體帳戶上的 **儲存體 Blob 資料參與者** 角色（如果尚未指派）。 
-4. 選取 [儲存]。
+4. 選取 [儲存]  。
 
 您可以透過下列 URL 使用 Synapse Spark 存取 ADLS Gen2 上的資料：
 
@@ -48,7 +48,7 @@ Synapse 利用 **(SAS) 的共用存取** 簽章來存取 Azure Blob 儲存體。
 1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
 2. 從左側面板中選取 [**管理**]，然後選取 [**外部連接**] 底下的 [**連結服務**]。
 3. 在右側的 [**新增連結服務**] 面板中搜尋 **Azure Blob 儲存體**。
-4. 選取 [繼續]  。
+4. 選取 [繼續]。
 5. 選取要存取的 Azure Blob 儲存體帳戶，並設定連結的服務名稱。 建議使用 **驗證方法** 的 **帳戶金鑰**。
 6. 選取 [ **測試連接** ] 以驗證設定是否正確。
 7. 選取 [先 **建立** ]，然後按一下 [ **全部發佈** ] 儲存變更。 
@@ -706,12 +706,12 @@ Env.Help()
 
 取得結果：
 ```
-getUserName(): returns user name
-getUserId(): returns unique user id
-getJobId(): returns job id
-getWorkspaceName(): returns workspace name
-getPoolName(): returns Spark pool name
-getClusterId(): returns cluster id
+GetUserName(): returns user name
+GetUserId(): returns unique user id
+GetJobId(): returns job id
+GetWorkspaceName(): returns workspace name
+GetPoolName(): returns Spark pool name
+GetClusterId(): returns cluster id
 ```
 
 ### <a name="get-user-name"></a>取得使用者名稱
@@ -881,4 +881,4 @@ Env.GetClusterId()
 - [查看 Synapse 範例筆記本](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [快速入門：使用 Web 工具在 Azure Synapse Analytics 中建立 Apache Spark 集區](../quickstart-apache-spark-notebook.md)
 - [什麼是 Azure Synapse Analytics 中的 Apache Spark](apache-spark-overview.md)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8295e619cfda0d4b83a7356d5fd21d4b80f83849
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 6b1079797f1a753fa8362d6e920f3394087d7e9f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530879"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119283"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>在 Azure 認知搜尋中設定客戶管理的金鑰進行資料加密
 
@@ -41,7 +41,7 @@ Azure 認知搜尋會使用 [服務管理的金鑰](../security/fundamentals/enc
 
 如果您使用不同的區域，或在8月1日之前建立的服務，則受管理的金鑰加密僅限於資料磁片，但不包括服務使用的暫存磁片。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 此案例中會使用下列工具和服務。
 
@@ -52,7 +52,7 @@ Azure 認知搜尋會使用 [服務管理的金鑰](../security/fundamentals/enc
 您應該有可建立加密物件的搜尋應用程式。 在此程式碼中，您將參考金鑰保存庫金鑰，並 Active Directory 註冊資訊。 此程式碼可以是可運作的應用程式，或原型程式碼，例如 [c # 程式碼範例 DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)。
 
 > [!TIP]
-> 您可以使用 [Postman 或 Visual Studio Code](search-get-started-rest.md)（或 [Azure PowerShell](./search-get-started-powershell.md)）來呼叫 REST api，以建立包含加密金鑰參數的索引和同義字地圖。 目前沒有可將索引鍵加入至索引或同義字對應的入口網站支援。
+> 您可以使用 [Postman](search-get-started-rest.md)、 [Visual Studio Code](search-get-started-vs-code.md)或 [Azure PowerShell](./search-get-started-powershell.md)來呼叫 REST api，以建立包含加密金鑰參數的索引和同義字地圖。 目前沒有可將索引鍵加入至索引或同義字對應的入口網站支援。
 
 ## <a name="1---enable-key-recovery"></a>1-啟用金鑰復原
 

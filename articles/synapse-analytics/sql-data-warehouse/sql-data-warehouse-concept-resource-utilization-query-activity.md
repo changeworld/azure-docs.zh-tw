@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: f66efb9112a9342122f5b56ab11b862ce3c7c61b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 75c0058f2d4878016281656935cbd82f79b859fd
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314444"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119997"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>監視 Azure Synapse Analytics 中的資源使用率和查詢活動
 
@@ -24,7 +24,7 @@ Azure Synapse Analytics 在 Azure 入口網站中提供豐富的監視體驗，�
 
 ## <a name="resource-utilization"></a>資源使用率
 
-在 Azure 入口網站中，下列計量可供 Synapse SQL 使用。 我們透過 [Azure 監視器](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)提供這些計量。
+在 Azure 入口網站中，下列計量可供 Synapse SQL 使用。 我們透過 [Azure 監視器](../../azure-monitor/platform/data-platform.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json#metrics)提供這些計量。
 
 | 標準名稱             | 描述                                                  | 彙總類型 |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -45,7 +45,7 @@ Azure Synapse Analytics 在 Azure 入口網站中提供豐富的監視體驗，�
 
 在檢視計量和設定警示時要考量的事項：
 
-- 使用的 DWU 只代表 SQL 集區之間 **使用量的高階表示法** ，而不是完整的使用率指標。 若要判斷要擴大或縮小，請考量會受到 DWU 影響的所有因素，例如並行存取、記憶體、tempdb 和調適型快取容量。 建議[在不同的 DWU 設定中執行您的工作負載](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units)，以判斷最符合您營運目標的方式。
+- 使用的 DWU 只代表 SQL 集區之間 **使用量的高階表示法**，而不是完整的使用率指標。 若要判斷要擴大或縮小，請考量會受到 DWU 影響的所有因素，例如並行存取、記憶體、tempdb 和調適型快取容量。 建議[在不同的 DWU 設定中執行您的工作負載](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units)，以判斷最符合您營運目標的方式。
 - 針對特定的資料倉儲報告失敗和成功的連線，而非伺服器本身的連接。
 - 即使資料倉儲處於閒置狀態，記憶體百分比也會反映使用率，而不會反映使用中工作負載記憶體耗用量。 使用並追蹤此計量，以及其他項目 (tempdb、gen2 快取)，在調整額外快取容量會增加工作負載效能的情況下，制定整體決策以符合您的需求。
 
@@ -57,7 +57,7 @@ Azure Synapse Analytics 在 Azure 入口網站中提供豐富的監視體驗，�
 
 ## <a name="metrics-and-diagnostics-logging"></a>計量和診斷記錄 
 
-計量和記錄都可以匯出至 Azure 監視器 (尤其是 [Azure 監視器記錄](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)元件)，而且可以透過[記錄查詢](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)以程式設計方式進行存取。 Synapse SQL 的記錄延遲大約是 10 到 15 分鐘。 如需影響延遲因素的詳細資訊，請參閱下列文件。
+計量和記錄都可以匯出至 Azure 監視器 (尤其是 [Azure 監視器記錄](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)元件)，而且可以透過[記錄查詢](../../azure-monitor/log-query/log-analytics-tutorial.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)以程式設計方式進行存取。 Synapse SQL 的記錄延遲大約是 10 到 15 分鐘。 如需影響延遲因素的詳細資訊，請參閱下列文件。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,17 +1,17 @@
 ---
 title: Azure 監視器客戶管理的金鑰
-description: 使用 Azure Key Vault 金鑰，設定 Customer-Managed 金鑰來加密 Log Analytics 工作區中資料的資訊和步驟。
+description: 使用 Azure Key Vault 金鑰，設定客戶管理的金鑰來加密 Log Analytics 工作區中資料的資訊和步驟。
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 66a3276863b05cb2fe0dd80a2195f7fd2af1443c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 07562167131d1839bc0827c74fae09c683302c08
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071930"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118603"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -25,25 +25,25 @@ Azure 監視器中的資料會使用 Microsoft 管理的金鑰進行加密。 �
 
 Azure 監視器使用 Microsoft 管理的金鑰 (MMK) ，確保所有資料和儲存的查詢都會加密。 Azure 監視器也會提供使用您自己的金鑰（儲存在 [Azure Key Vault](../../key-vault/general/overview.md)中）進行加密的選項，讓您可以隨時撤銷對資料的存取權。 Azure 監視器使用加密等同于 [Azure 儲存體加密](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption) 的運作方式。
 
-在提供更高保護層級和控制權的 [專用](../log-query/logs-dedicated-clusters.md) 叢集上，會提供 Customer-Managed 金鑰。 使用 Microsoft 管理的金鑰或客戶管理的金鑰，在服務層級進行資料內嵌的資料加密兩次，而在基礎結構層級使用兩個不同的加密演算法和兩個不同的金鑰。 [雙精確度加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) 可防止其中一個加密演算法或金鑰可能會遭到入侵的案例。 在此情況下，額外的加密層級會繼續保護您的資料。 專用叢集也可讓您使用加密 [箱](#customer-lockbox-preview) 控制來保護您的資料。
+客戶管理的金鑰會在 [專用](../log-query/logs-dedicated-clusters.md) 叢集上傳遞，以提供更高的保護層級和控制。 使用 Microsoft 管理的金鑰或客戶管理的金鑰，在服務層級進行資料內嵌的資料加密兩次，而在基礎結構層級使用兩個不同的加密演算法和兩個不同的金鑰。 [雙精確度加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) 可防止其中一個加密演算法或金鑰可能會遭到入侵的案例。 在此情況下，額外的加密層級會繼續保護您的資料。 專用叢集也可讓您使用加密 [箱](#customer-lockbox-preview) 控制來保護您的資料。
 
-過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 無論客戶管理的金鑰設定為何，此資料仍會以 Microsoft 金鑰加密，但您對 SSD 資料的控制會遵守 [金鑰撤銷](#key-revocation)。 我們正在努力將 SSD 資料加密，並在2021的上半年 Customer-Managed 金鑰。
+過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 無論客戶管理的金鑰設定為何，此資料仍會以 Microsoft 金鑰加密，但您對 SSD 資料的控制會遵守 [金鑰撤銷](#key-revocation)。 我們正在努力將 SSD 資料以客戶管理的金鑰加密，在2021的前半部。
 
 Log Analytics 專用叢集會使用每日 1000 GB 起的容量保留 [定價模型](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) 。
 
 > [!IMPORTANT]
 > 由於有暫時性的容量限制，我們要求您在建立叢集之前預先註冊。 使用您的連絡人進入 Microsoft，或開啟支援要求以註冊您的訂用帳戶識別碼。
 
-## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Customer-Managed 金鑰在 Azure 監視器中的運作方式
+## <a name="how-customer-managed-key-works-in-azure-monitor"></a>客戶管理的金鑰在 Azure 監視器中的運作方式
 
-Azure 監視器使用受控識別將存取權授與您的 Azure Key Vault。 叢集層級支援 Log Analytics 叢集的身分識別。 為了允許在多個工作區上 Customer-Managed 金鑰保護，新的 Log Analytics *叢集資源會* 以您的 Key Vault 與 Log Analytics 工作區之間的中繼身分識別連線形式來執行。 叢集的儲存體會使用與叢集資源相關聯的受控識別，透過 \' Azure Active Directory 向您的 Azure Key Vault 進行驗證。  
+Azure 監視器使用受控識別將存取權授與您的 Azure Key Vault。 叢集層級支援 Log Analytics 叢集的身分識別。 為了在多個工作區上允許客戶管理的金鑰保護，新的 Log Analytics *叢集資源會* 以您 Key Vault 與 Log Analytics 工作區之間的中繼身分識別連線形式來執行。 叢集的儲存體會使用與叢集資源相關聯的受控識別，透過 \' Azure Active Directory 向您的 Azure Key Vault 進行驗證。  
 
 在客戶管理的金鑰設定之後，連結至您專用叢集之工作區的新內嵌資料會以您的金鑰加密。 您可以隨時從叢集取消連結工作區。 然後，新的資料會內嵌至 Log Analytics 儲存體，並使用 Microsoft 金鑰進行加密，而您可以順暢地查詢新的和舊的資料。
 
 > [!IMPORTANT]
-> Customer-Managed 的主要功能是區域性的。 您的 Azure Key Vault、叢集和連結的 Log Analytics 工作區必須位於相同的區域中，但它們可以在不同的訂用帳戶中。
+> 客戶管理的金鑰功能是區域性的。 您的 Azure Key Vault、叢集和連結的 Log Analytics 工作區必須位於相同的區域中，但它們可以在不同的訂用帳戶中。
 
-![Customer-Managed 金鑰總覽](media/customer-managed-keys/cmk-overview.png)
+![客戶管理的金鑰總覽](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. 具有受控識別及 Key Vault 權限的 Log Analytics「叢集」資源 -- 此身分識別會傳播至專用的基礎 Log Analytics 叢集儲存體
@@ -54,7 +54,7 @@ Azure 監視器使用受控識別將存取權授與您的 Azure Key Vault。 叢
 
 儲存體資料加密牽涉到 3 種金鑰類型：
 
-- **KEK** 金鑰加密金鑰 (您的 Customer-Managed 金鑰) 
+- **KEK** 金鑰加密金鑰 (客戶管理的金鑰) 
 - **AEK** - 帳戶加密金鑰
 - **DEK** - 資料加密金鑰
 
@@ -75,7 +75,7 @@ Azure 監視器使用受控識別將存取權授與您的 Azure Key Vault。 叢
 1. 使用金鑰識別碼詳細資料更新叢集
 1. 連結 Log Analytics 工作區
 
-目前的 Azure 入口網站不支援 Customer-Managed 金鑰設定，且可透過 [PowerShell](/powershell/module/az.operationalinsights/)、 [CLI](/cli/azure/monitor/log-analytics) 或 [REST](/rest/api/loganalytics/) 要求執行布建。
+目前的 Azure 入口網站不支援客戶管理的金鑰設定，並可透過 [PowerShell](/powershell/module/az.operationalinsights/)、 [CLI](/cli/azure/monitor/log-analytics) 或 [REST](/rest/api/loganalytics/) 要求執行布建。
 
 ### <a name="asynchronous-operations-and-status-check"></a>非同步作業和狀態檢查
 
@@ -125,7 +125,8 @@ Authorization: Bearer <token>
 
 ## <a name="create-cluster"></a>建立叢集
 
-> [!資訊] 群集支援兩種 [受控識別類型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。 當您輸入身分識別類型時，系統指派的受控識別會與叢集一起建立 `SystemAssigned` ，並可稍後用來授與存取權給您的 Key Vault。 如果您想要建立在建立時為客戶管理的金鑰設定的叢集，請使用 Key Vault 中授與的使用者指派受控識別來建立叢集--更新具有身分 `UserAssigned` 識別類型的叢集、中的身分識別資源識別碼， `UserAssignedIdentities` 並提供中的金鑰詳細資料 `keyVaultProperties` 。
+> [!NOTE]
+> 叢集支援兩種 [受控識別類型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系統指派和使用者指派，可根據您的案例使用。 當您將身分識別設定為時，系統指派的受控識別會在建立叢集時自動建立，並在 `type` `SystemAssigned` 稍後用來授與存取權給您 Key Vault 的身分識別。 如果您需要在建立時建立具有客戶管理金鑰設定的叢集，您應該事先在 Key Vault 中定義金鑰和使用者指派的身分識別，然後以身分識別的 `type` `UserAssigned` `UserAssignedIdentities` 資源識別碼和金鑰詳細資料，建立具有身分識別的叢集 `keyVaultProperties` 。
 
 > [!IMPORTANT]
 > 您目前無法使用使用者指派的受控識別來定義客戶管理的金鑰（如果您的 Key Vault 位於 Private-Link (vNet) 。 這項限制不適用於系統指派的受控識別。
@@ -254,20 +255,20 @@ Content-type: application/json
 
 ## <a name="key-rotation"></a>金鑰輪替
 
-Customer-Managed 金鑰輪替需要在 Azure Key Vault 中使用新的金鑰版本來明確更新叢集。 [更新具有金鑰識別碼詳細資料的](#update-cluster-with-key-identifier-details)叢集。 如果您未更新叢集中的新金鑰版本，Log Analytics 叢集儲存體將繼續使用您先前的金鑰進行加密。 如果您在更新叢集中的新金鑰之前，停用或刪除舊金鑰，將會進入 [金鑰撤銷](#key-revocation) 狀態。
+客戶管理的金鑰輪替需要以 Azure Key Vault 中的新金鑰版本來明確更新叢集。 [更新具有金鑰識別碼詳細資料的](#update-cluster-with-key-identifier-details)叢集。 如果您未更新叢集中的新金鑰版本，Log Analytics 叢集儲存體將繼續使用您先前的金鑰進行加密。 如果您在更新叢集中的新金鑰之前，停用或刪除舊金鑰，將會進入 [金鑰撤銷](#key-revocation) 狀態。
 
 您所有的資料在金鑰輪替作業之後仍可供存取，因為資料一律會以帳戶加密金鑰 (AEK) 加密，而 AEK 現在會以 Key Vault 中的新金鑰加密金鑰 (KEK) 版本來加密。
 
-## <a name="customer-managed-key-for-queries"></a>查詢的 Customer-Managed 索引鍵
+## <a name="customer-managed-key-for-queries"></a>客戶管理的查詢金鑰
 
-Log Analytics 中使用的查詢語言是可表達的，且可以包含您新增至查詢或在查詢語法中的批註中的機密資訊。 某些組織要求在 Customer-Managed 金鑰原則下保護這類資訊，而您需要儲存以金鑰加密的查詢。 Azure 監視器可讓您在連線到您的工作區時，將 *已儲存的搜尋* 和 *記錄警示* 查詢儲存在您自己的儲存體帳戶中，並以您的金鑰加密。 
+Log Analytics 中使用的查詢語言是可表達的，且可以包含您新增至查詢或在查詢語法中的批註中的機密資訊。 某些組織要求將這類資訊保持受客戶管理的金鑰原則保護，而您需要儲存以金鑰加密的查詢。 Azure 監視器可讓您在連線到您的工作區時，將 *已儲存的搜尋* 和 *記錄警示* 查詢儲存在您自己的儲存體帳戶中，並以您的金鑰加密。 
 
 > [!NOTE]
-> 您可以根據所使用的案例，將 Log Analytics 查詢儲存在不同的存放區。 無論 Customer-Managed 的金鑰設定： Azure 監視器中的活頁簿、Azure 儀表板、Azure 邏輯應用程式、Azure Notebooks 和自動化 Runbook，查詢都會以 Microsoft key (MMK) 在下列案例中保持加密。
+> 您可以根據所使用的案例，將 Log Analytics 查詢儲存在不同的存放區。 無論客戶管理的金鑰設定： Azure 監視器、Azure 儀表板、Azure 邏輯應用程式、Azure Notebooks 和自動化 Runbook 的活頁簿，在下列案例中，查詢仍會以 Microsoft key (MMK) 加密。
 
-當您將自己的儲存體 (BYOS) 並將其連結至您的工作區時，服務會將 *已儲存的搜尋* 和 *記錄警示* 查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來將 Log Analytics 叢集中的資料加密的相同金鑰或不同的金鑰，來控制儲存體帳戶和 [靜態加密原則](../../storage/common/customer-managed-keys-overview.md) 。 不過，您將負責處理與該儲存體帳戶相關聯的成本。 
+當您將自己的儲存體 (BYOS) 並將其連結至您的工作區時，服務會將 *已儲存的搜尋* 和 *記錄警示* 查詢上傳至您的儲存體帳戶。 這表示您可以使用您用來將 Log Analytics 叢集中的資料加密的相同金鑰或不同的金鑰，來控制儲存體帳戶和 [靜態加密原則](../../storage/common/customer-managed-keys-overview.md) 。 不過，您要負責支付與該儲存體帳戶相關聯的成本。 
 
-**設定查詢的 Customer-Managed 索引鍵之前的考慮**
+**針對查詢設定客戶管理的金鑰之前的考慮**
 * 您必須具有您的工作區和儲存體帳戶的「寫入」許可權
 * 請務必在您的 Log Analytics 工作區所在的相同區域中建立儲存體帳戶
 * 儲存體中的儲存 *搜尋* 會被視為服務成品，而其格式可能會變更
@@ -385,7 +386,7 @@ Content-type: application/json
 
 ## <a name="limitations-and-constraints"></a>限制和條件約束
 
-- 專用的 Log Analytics 叢集支援 Customer-Managed 金鑰，適用于每天傳送1TB 或更多的客戶。
+- 專用的 Log Analytics 叢集支援客戶管理的金鑰，適用于每天傳送1TB 或更多的客戶。
 
 - 每個區域和訂用帳戶的叢集數目上限為2
 
@@ -395,7 +396,7 @@ Content-type: application/json
 
 - 只有在您確認 Log Analytics 叢集布建完成後，才應將工作區連結傳送至叢集。  在完成之前傳送至工作區的資料將會遭到捨棄且無法復原。
 
-- Customer-Managed 金鑰加密會在設定時間之後套用至新內嵌的資料。 在設定之前所內嵌的資料，會以 Microsoft 金鑰維持加密狀態。 您可以在 Customer-Managed 機碼設定的前後，無縫地查詢資料內嵌。
+- 客戶管理的金鑰加密會在設定時間之後套用至新內嵌的資料。 在設定之前所內嵌的資料，會以 Microsoft 金鑰維持加密狀態。 您可以順暢地查詢客戶管理的金鑰設定之前和之後的資料內嵌。
 
 - Azure Key Vault 必須設定為可復原。 這些屬性預設不會啟用，而且應該使用 CLI 或 PowerShell 進行設定：<br>
   - [虛刪除](../../key-vault/general/soft-delete-overview.md)
@@ -424,7 +425,7 @@ Content-type: application/json
     
   - 暫時性連線錯誤 -- 儲存體處理暫時性錯誤 (逾時、連線失敗、DNS 問題) 的方式是允許將金鑰更長時間保留在快取中，這會克服可用性中的任何小型暫時性問題。 查詢和擷取功能會繼續進行，而不會中斷。
     
-  - 即時網站 -- 約有 30 分鐘無法使用會導致儲存體帳戶變成無法使用。 查詢功能會無法使用，且擷取的資料會使用 Microsoft 金鑰快取數小時以避免資料遺失。 當還原 Key Vault 的存取權時，查詢就會變成可用，而且暫存快取的資料會內嵌到資料存放區，並使用 Customer-Managed 金鑰進行加密。
+  - 即時網站 -- 約有 30 分鐘無法使用會導致儲存體帳戶變成無法使用。 查詢功能會無法使用，且擷取的資料會使用 Microsoft 金鑰快取數小時以避免資料遺失。 當還原 Key Vault 的存取權時，查詢就會變成可用，而且暫存快取的資料會內嵌到資料存放區，並使用客戶管理的金鑰進行加密。
 
   - Key Vault 存取率 -- Azure 監視器儲存體存取 Key Vault 以進行包裝和解除包裝作業的頻率介於 6 到 60 秒之間。
 

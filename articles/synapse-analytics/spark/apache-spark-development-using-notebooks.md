@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: bfb822481e00e84fa17bd4b1fcb58c1d4b89a124
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450857"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120949"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio 筆記本
 
@@ -33,7 +33,7 @@ Synapse Studio 筆記本是一個 web 介面，可讓您建立包含即時程式
 ## <a name="preview-of-the-new-notebook-experience"></a>新筆記本體驗的預覽
 Synapse 團隊將新的筆記本元件帶入 Synapse Studio 中，為 Microsoft 客戶提供一致的筆記本體驗，並最大化探索能力、生產力、共用和共同作業。 新的筆記本體驗已備妥可供預覽。 檢查筆記本工具列中的 [ **預覽功能** ] 按鈕以開啟。 下表會捕捉現有筆記本 (的功能比較，因此稱為「傳統筆記本」 ) 新的預覽版本。  
 
-|特徵|傳統筆記本|預覽筆記本|
+|功能|傳統筆記本|預覽筆記本|
 |--|--|--|
 |% 執行| 不支援 | &#9745;|
 |% 歷程記錄| 不支援 |&#9745;
@@ -553,4 +553,4 @@ Azure Data Factory 會尋找參數儲存格，並將此資料格視為在執行�
 - [什麼是 Azure Synapse Analytics 中的 Apache Spark](apache-spark-overview.md)
 - [使用適用於 Apache Spark 的 .NET 搭配 Azure Synapse Analytics](spark-dotnet.md)
 - [適用於 Apache Spark 的 .NET 文件](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)

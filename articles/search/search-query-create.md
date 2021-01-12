@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: db36a77d93735b151ad893b7e25ba86f104e7b90
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9bee391ddb0fa6c270c6d833fb7e81d5f4880497
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510459"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118637"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>在 Azure 認知搜尋中建立查詢
 
@@ -23,17 +23,17 @@ ms.locfileid: "97510459"
 
 您將需要工具或 API 來建立查詢。 下列任何建議適用于測試和生產工作負載。
 
-| 方法 | 說明 |
+| 方法 | 描述 |
 |-------------|-------------|
 | 入口網站| [Search explorer (入口網站) ](search-explorer.md) 是 Azure 入口網站中的查詢介面，可針對基礎搜尋服務上的索引執行查詢。 入口網站會在幕後對 [搜尋檔](/rest/api/searchservice/search-documents) 作業進行 REST API 呼叫，但無法叫用自動完成、建議或檔查閱。<br/><br/> 您可以選取任何索引和 REST API 版本，包括預覽。 查詢字串可以使用簡單或完整語法，並支援所有查詢參數， (篩選、選取、searchFields 等) 。 在入口網站中，當您開啟索引時，您可以使用 [搜尋瀏覽器] 與 [並列] 索引標籤中的索引 JSON 定義一起使用，以方便存取欄位屬性。 檢查在測試查詢時可搜尋、可排序、可篩選和可 facet 的欄位。 <br/>建議進行早期調查、測試和驗證。 [深入了解。](search-explorer.md) |
-| Web 測試控管| [Postman 或 Visual Studio Code](search-get-started-rest.md) 是用來編寫 [搜尋檔](/rest/api/searchservice/search-documents) 要求的強式選擇，以及任何其他要求，也就是 REST。 REST Api 支援 Azure 認知搜尋中的每個可能的程式設計作業，而且當您使用 Postman 或 Visual Studio Code 之類的工具時，您可以透過互動方式發出要求，以瞭解功能在投資程式碼之前的運作方式。 如果您在 Azure 入口網站中沒有參與者或系統管理許可權，則 web 測試控管是不錯的選擇。 只要您有搜尋 URL 和查詢 API 金鑰，您就可以使用這些工具對現有的索引執行查詢。 |
+| Web 測試控管| [Postman](search-get-started-rest.md) 或 [Visual Studio Code](search-get-started-vs-code.md) 是用來編寫 [搜尋檔](/rest/api/searchservice/search-documents) 要求的強式選擇，以及任何其他要求，也就是 REST。 REST Api 支援 Azure 認知搜尋中的每個可能的程式設計作業，而且當您使用 Postman 或 Visual Studio Code 之類的工具時，您可以透過互動方式發出要求，以瞭解功能在投資程式碼之前的運作方式。 如果您在 Azure 入口網站中沒有參與者或系統管理許可權，則 web 測試控管是不錯的選擇。 只要您有搜尋 URL 和查詢 API 金鑰，您就可以使用這些工具對現有的索引執行查詢。 |
 | Azure SDK | 當您準備好要撰寫程式碼時，可以在適用于 .NET、Python、JavaScript 或 JAVA 的 Azure Sdk 中使用 Azure.Search.Doc>ument 用戶端程式庫。 每個 SDK 都有自己的發行排程，但您可以在其中建立和查詢索引。 <br/><br/>[SearchClient ( .net) ](/dotnet/api/azure.search.documents.searchclient) 可以用來查詢 c # 中的搜尋索引。  [深入了解。](search-howto-dotnet-sdk.md)<br/><br/>[SearchClient (python) ](/dotnet/api/azure.search.documents.searchclient) 可以用來查詢 python 中的搜尋索引。 [深入了解。](search-get-started-python.md)<br/><br/>您可以使用[SearchClient (javascript) ](/dotnet/api/azure.search.documents.searchclient) ，以 javascript 查詢搜尋索引。 [深入了解。](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>設定搜尋用戶端
 
 搜尋用戶端會向搜尋服務進行驗證、傳送要求和處理回應。 無論您使用哪一種工具或 API，搜尋用戶端都必須有下列各項：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |------------|-------------|
 | 端點 | 搜尋服務的 URL 可定址格式如下： `https://[service-name].search.windows.net` 。 |
 |  (系統管理員或查詢) 的 API 存取金鑰 | 驗證搜尋服務的要求。 |

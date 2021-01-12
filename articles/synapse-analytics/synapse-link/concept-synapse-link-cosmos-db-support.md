@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3d12e60e2aeee667b89d56589870d53366772014
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b58474758ac4d26b347dc72d84be401d15a3846b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459031"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119810"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-supported-features"></a>適用於 Azure Cosmos DB 的 Azure Synapse Link 支援的功能
 
@@ -31,7 +31,7 @@ Azure Cosmos DB 中有兩種類型的容器：
 
 您可以連接到 Azure Cosmos DB 容器，而不需要啟用 Synapse 連結。 在此案例中，您只能讀取/寫入交易式存放區。 接下來是 Azure Cosmos DB Synapse 連結內目前支援的功能清單。 
 
-| 類別              | 描述 |[Apache Spark 集區](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) | [無伺服器 SQL 集區](https://docs.microsoft.com/azure/synapse-analytics/sql/on-demand-workspace-overview) |
+| 類別              | 描述 |[Apache Spark 集區](../sql/on-demand-workspace-overview.md) | [無伺服器 SQL 集區](../sql/on-demand-workspace-overview.md) |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- | ----------------------------------------------------------- |
 | **執行階段支援** |支援存取 Azure Cosmos DB 的 Azure Synapse 執行時間| ✓ | 預覽 |
 | **Azure Cosmos DB API 支援** | 支援的 Azure Cosmos DB API 種類 | SQL/MongoDB | SQL/MongoDB |

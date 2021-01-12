@@ -10,19 +10,19 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 45c7f89f773095a102429c07f7441223de3c2dec
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c537d3109f770c1ce77be6495bdacd24270dad5f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448260"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119589"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>專用的 SQL 集區 (先前的 SQL DW) 架構 Azure Synapse Analytics
 
 Azure Synapse Analytics 是一種分析服務，可將企業資料倉儲和巨量資料分析整合在一起。 它可讓您自由地依據您的條件來查詢資料。
 
 > [!NOTE]
->探索 [Azure Synapse Analytics 檔](../overview-what-is.md)。
+>探索 [Azure Synapse Analytics 文件](../overview-what-is.md)。
 >
 
 
@@ -107,13 +107,13 @@ Azure Synapse Analytics 是一種分析服務，可將企業資料倉儲和巨�
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解 Azure Synapse，請瞭解如何快速 [建立專用的 sql 集區 (先前的 SQL DW) ](create-data-warehouse-portal.md) 並 [載入範例資料](load-data-from-azure-blob-storage-using-polybase.md)。 如果您不熟悉 Azure，您可能會發現 [Azure 詞彙](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 在您遇到新術語時很有幫助。 或者，您也可以看看以下其他 Azure Synapse 資源。  
+既然您已瞭解 Azure Synapse，請瞭解如何快速 [建立專用的 sql 集區 (先前的 SQL DW) ](create-data-warehouse-portal.md) 並 [載入範例資料](./load-data-from-azure-blob-storage-using-copy.md)。 如果您不熟悉 Azure，您可能會發現 [Azure 詞彙](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 在您遇到新術語時很有幫助。 或者，您也可以看看以下其他 Azure Synapse 資源。  
 
 - [客戶成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [部落格](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [功能要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [影片](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [建立支援票證](sql-data-warehouse-get-started-create-support-ticket.md)
-- [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- [Microsoft 問與答頁面](/answers/topics/azure-synapse-analytics.html)
 - [Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

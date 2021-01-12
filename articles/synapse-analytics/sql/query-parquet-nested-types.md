@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462565"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118756"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區來查詢 Parquet 和 JSON 檔案中的巢狀型別
 
@@ -24,7 +24,7 @@ ms.locfileid: "96462565"
 - 階層式 Json 檔案，您可以在其中將複雜 JSON [檔](query-json-files.md)讀取為單一資料行。
 - Azure Cosmos DB 的 (集合目前位於閘道公開預覽) 下，每份檔都可以包含複雜的嵌套屬性。
 
-無伺服器 SQL 集區會將所有的巢狀型別格式化為 JSON 物件和陣列。 因此，您可以使用 JSON 函式來 [解壓縮或修改複雜物件](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) ，或 [使用 OPENJSON 函數來剖析 JSON 資料](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)。 
+無伺服器 SQL 集區會將所有的巢狀型別格式化為 JSON 物件和陣列。 因此，您可以使用 JSON 函式來 [解壓縮或修改複雜物件](/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) ，或 [使用 OPENJSON 函數來剖析 JSON 資料](/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server)。 
 
 以下是從 [covid-19-19 Open Research 資料集](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) JSON 檔案（其中包含嵌套物件）解壓縮純量和物件值的查詢範例： 
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > 此範例會使用 COVID-19-19 Open Research 資料集的檔案。 [請參閱此處的授權和資料結構](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 第一個步驟是建立將建立資料來源的資料庫。 然後，您將在資料庫上執行 [安裝腳本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) 來初始化物件。 安裝腳本會建立範例中所使用的資料來源、資料庫範圍的認證，以及外部檔案格式。
 
@@ -121,7 +121,7 @@ FROM
 | --- | --- | --- | --- |
 | Epidemiolo 的補充資訊 .。。 | 朱利安   | -圖 S1： Phylogeny 的 .。。 | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
-不同于 JSON 檔案，在大部分情況下會傳回包含複雜 JSON 物件的單一資料行，Parquet 檔案可以有多個複雜的資料行。 您可以使用每個資料行上的函數來讀取嵌套資料行的屬性 `JSON_VALUE` 。 `OPENROWSET` 可讓您直接在子句中指定嵌套屬性的路徑 `WITH` 。 您可以將路徑設定為數據行的名稱，也可以在資料行類型之後加入 [JSON 路徑運算式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server) 。
+不同于 JSON 檔案，在大部分情況下會傳回包含複雜 JSON 物件的單一資料行，Parquet 檔案可以有多個複雜的資料行。 您可以使用每個資料行上的函數來讀取嵌套資料行的屬性 `JSON_VALUE` 。 `OPENROWSET` 可讓您直接在子句中指定嵌套屬性的路徑 `WITH` 。 您可以將路徑設定為數據行的名稱，也可以在資料行類型之後加入 [JSON 路徑運算式](/sql/relational-databases/json/json-path-expressions-sql-server) 。
 
 下列查詢會讀取 structExample. parquet 檔案，並顯示如何呈現嵌套資料行的元素。 有兩種方式可參考嵌套值：
 - 藉由在類型規格之後指定嵌套值路徑運算式。

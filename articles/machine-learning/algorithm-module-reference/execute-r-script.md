@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/17/2020
-ms.openlocfilehash: 5d291ad745122d929c4b664e9da5e4649e463529
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: bdd7fd8e19bf2de6d0b3c6b2edd4515771fae237
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679111"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118998"
 ---
 # <a name="execute-r-script-module"></a>執行 R 腳本模組
 
@@ -49,10 +49,12 @@ azureml_main <- function(dataframe1, dataframe2){
 若要安裝其他 R 套件，請使用 `install.packages()` 方法。 系統會為每個「執行 R 腳本」模組安裝套件。 它們不會在其他執行 R 腳本模組之間共用。
 
 > [!NOTE]
+> **不** 建議從腳本套件組合安裝 R 套件。 建議您直接在腳本編輯器中安裝套件。
 > 當您安裝套件時，請指定 CRAN 存放庫，例如 `install.packages("zoo",repos = "http://cran.us.r-project.org")` 。
 
 > [!WARNING]
 > Excute R 腳本模組不支援安裝需要原生編譯的封裝，例如 `qdap` 需要需要 c + + 的 JAVA 和 package 的封裝 `drc` 。 這是因為此模組是在預先安裝的環境中以非系統管理員許可權執行。
+> 請勿安裝在 Windows 上預先建立的套件，因為設計工具模組是在 Ubuntu 上執行。 若要檢查是否已在 windows 上預先建立封裝，您可以移至 [CRAN](https://cran.r-project.org/)並搜尋您的套件、根據您的作業系統下載一個二進位檔案，然後檢查 **DESCRIPTION** 檔案中的 [已 **建立：** ] 部分。 以下是範例： :::image type="content" source="media/module/r-package-description.png" alt-text="R 套件描述" lightbox="media/module/r-package-page.png":::
 
 此範例說明如何安裝 Zoo：
 ```R
@@ -416,7 +418,7 @@ azureml_main <- function(dataframe1, dataframe2){
 | magrittr     | 1.5        | 
 | markdown     | 1          | 
 | MASS         | 7.3-51。4   | 
-| 矩陣       | 1.2-17     | 
+| Matrix       | 1.2-17     | 
 | methods      | 3.5.1      | 
 | mgcv         | 1.8-28     | 
 | mime         | 0.7        | 

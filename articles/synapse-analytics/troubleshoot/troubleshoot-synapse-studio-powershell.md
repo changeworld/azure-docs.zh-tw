@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5f0dc73877d7742d4fc6a0c5b9bcf0529d475e0a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6ff3d985bb24ec852bb5c6cfaedf295fd79a8247
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445264"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120354"
 ---
 # <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>使用 PowerShell 對 Synapse Studio 連線能力進行疑難排解
 
@@ -58,4 +58,4 @@ Azure Synapse Studio 相依于一組 Web API 端點，才能正常運作。 當�
 
 
 ## <a name="next-steps"></a>後續步驟
-如果先前的步驟無法協助您解決問題，請 [建立支援票證](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md)。
+如果先前的步驟無法協助您解決問題，請 [建立支援票證](../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md)。

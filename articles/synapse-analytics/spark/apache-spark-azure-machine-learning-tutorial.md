@@ -9,18 +9,18 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e547d047e8d736acbd1cdda5ffe3a78dbe8259f7
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 2594e25bff3ca949b329f8b66f4427eb1f6950b0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901028"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118705"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>教學課程：使用自動化機器學習在 Python 中訓練模型
 
 Azure Machine Learning 是一個雲端式環境，可讓您定型、部署、自動化、管理和追蹤機器學習模型。 
 
-在本教學課程中，您將使用 Azure Machine Learning 中的 [自動化機器學習](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) 建立迴歸模型，以預測計程車車資價格。 此程序透過接受定型資料和組態設定，並自動逐一查看不同方法、模型及超參數設定的組合，以獲得最佳模型。
+在本教學課程中，您將使用 Azure Machine Learning 中的 [自動化機器學習](../../machine-learning/concept-automated-ml.md) 建立迴歸模型，以預測計程車車資價格。 此程序透過接受定型資料和組態設定，並自動逐一查看不同方法、模型及超參數設定的組合，以獲得最佳模型。
 
 在本教學課程中，您會了解如何：
 - 使用 Apache Spark 和 Azure 開放資料集下載資料。
@@ -31,7 +31,7 @@ Azure Machine Learning 是一個雲端式環境，可讓您定型、部署、自
 ## <a name="before-you-begin"></a>開始之前
 
 - 遵循[建立無伺服器 Apache Spark 集區快速入門](../quickstart-create-apache-spark-pool-studio.md)，建立無伺服器 Apache Spark 集區。
-- 如果您沒有現有的 Azure Machine Learning 工作區，請完成 [Azure Machine Learning 工作區設定教學課程](https://docs.microsoft.com/azure/machine-learning/tutorial-1st-experiment-sdk-setup)。 
+- 如果您沒有現有的 Azure Machine Learning 工作區，請完成 [Azure Machine Learning 工作區設定教學課程](../../machine-learning/tutorial-1st-experiment-sdk-setup.md)。 
 
 ## <a name="understand-regression-models"></a>了解迴歸模型
 
@@ -48,7 +48,7 @@ Azure Machine Learning 是一個雲端式環境，可讓您定型、部署、自
 
 其做法如下：
 
-1. 使用 PySpark 核心建立筆記本。 如需相關指示，請參閱 [建立筆記本](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook)。
+1. 使用 PySpark 核心建立筆記本。 如需相關指示，請參閱 [建立筆記本](../quickstart-apache-spark-notebook.md#create-a-notebook)。
    
     > [!Note]
     > 由於使用 PySpark 核心，因此不需要明確建立任何內容。 當您執行第一個程式碼儲存格時，系統會自動為您建立 Spark 內容。
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>將資料框架轉換為 Azure Machine Learning 資料集
-為了提交遠端實驗，將您的資料集轉換為 Azure Machine Learning ```TabularDatset```。 [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py&preserve-view=true) 會剖析提供的檔案，並以表格格式呈現資料。
+為了提交遠端實驗，將您的資料集轉換為 Azure Machine Learning ```TabularDatset```。 [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) 會剖析提供的檔案，並以表格格式呈現資料。
 
 下列程式碼會取得現有的工作區和 Azure Machine Learning 的預設資料存放區。 接著會將資料存放區和檔案位置傳至路徑參數，以建立新的 ```TabularDataset```。 
 
@@ -170,7 +170,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 下列各節將逐步引導您完成提交自動化機器學習實驗流程。
 
 ### <a name="define-training-settings"></a>定義定型設定
-1. 為了提交實驗，您需要定義用於定型的實驗參數與模型設定。 如需完整的設定清單，請參閱 [在 Python 中設定自動化機器學習實驗](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)。
+1. 為了提交實驗，您需要定義用於定型的實驗參數與模型設定。 如需完整的設定清單，請參閱 [在 Python 中設定自動化機器學習實驗](../../machine-learning/how-to-configure-auto-train.md)。
 
    ```python
    import logging
@@ -338,5 +338,5 @@ NYCGreenTaxiModel 1
 ![Azure Machine Learning 工作區的螢幕擷取畫面](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>後續步驟
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [教學課程：使用 Apache Spark MLlib 和 Azure Synapse Analytics 來建置機器學習應用程式](./apache-spark-machine-learning-mllib-notebook.md)

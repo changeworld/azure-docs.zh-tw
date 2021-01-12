@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 0cad8fcdf58f4827f28b40550ae93e607e0c0858
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: b2d4f653f2bd86d30b2a0f7828a6e09c64c62e82
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368999"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121204"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 版本資訊中先前 (SQL DW) 專用 SQL 集區
 
@@ -44,22 +44,22 @@ ms.locfileid: "97368999"
 
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
-|**(預覽) 的資料行預存程式 sp_rename**|在沒有 [CTAS](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas) 的情況下重新命名資料行就變得更簡單。 Azure Synapse SQL 現在已新增對系統預存程式的支援 sp_rename (preview) 在使用者資料表中重新命名非散發資料行。 這項功能目前為預覽狀態，在 GA 的工具中將會支援此功能。 如需詳細資訊，請參閱 [sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest)。|
-|**T-sql Predict 的其他參數**|在這個新版本中，會為現有的 T-sql PREDICT 語句加入名為 ' RUNTIME ' 的必要額外參數。 如需更新現有的腳本，請參閱 [T-SQL PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)中的範例。|
+|**(預覽) 的資料行預存程式 sp_rename**|在沒有 [CTAS](./sql-data-warehouse-develop-ctas.md) 的情況下重新命名資料行就變得更簡單。 Azure Synapse SQL 現在已新增對系統預存程式的支援 sp_rename (preview) 在使用者資料表中重新命名非散發資料行。 這項功能目前為預覽狀態，在 GA 的工具中將會支援此功能。 如需詳細資訊，請參閱 [sp_rename](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest)。|
+|**T-sql Predict 的其他參數**|在這個新版本中，會為現有的 T-sql PREDICT 語句加入名為 ' RUNTIME ' 的必要額外參數。 如需更新現有的腳本，請參閱 [T-SQL PREDICT](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)中的範例。|
 
 ## <a name="oct-2020"></a>10月2020
 
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
-|**T-sql 內嵌 Table-Valued 函式 (預覽)**|在此版本中，您現在可以使用 Transact-sql 建立內嵌資料表值函式，並查詢其結果，就像處理資料表一樣。 這項功能目前為預覽狀態，在 GA 的工具中將會支援此功能。 如需詳細資訊，請參閱 [CREATE FUNCTION (Azure Synapse Analytics) ](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest)。|
-|**MERGE 命令 (preview)**|您現在可以從與來源資料表聯結的結果，在目標資料表上執行插入、更新或刪除作業。 例如，您可以根據在另一個資料表中所找到的差異在資料表中插入、更新或刪除資料列，以同步處理兩個資料表。  檢查 [合併](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) 以取得詳細資料。|
+|**T-sql 內嵌 Table-Valued 函式 (預覽)**|在此版本中，您現在可以使用 Transact-sql 建立內嵌資料表值函式，並查詢其結果，就像處理資料表一樣。 這項功能目前為預覽狀態，在 GA 的工具中將會支援此功能。 如需詳細資訊，請參閱 [CREATE FUNCTION (Azure Synapse Analytics) ](/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest)。|
+|**MERGE 命令 (preview)**|您現在可以從與來源資料表聯結的結果，在目標資料表上執行插入、更新或刪除作業。 例如，您可以根據在另一個資料表中所找到的差異在資料表中插入、更新或刪除資料列，以同步處理兩個資料表。  檢查 [合併](/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) 以取得詳細資料。|
 
 ## <a name="aug-2020"></a>2020年8月
 
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
-|**工作負載管理-入口網站體驗**|使用者可以透過 Azure 入口網站來設定及管理其工作負載管理設定。 可以設定[工作群組](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal)和具有重要性的[工作負載分類器](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)。|
-|**改進的資料表對應目錄檢視**|新的目錄檢視 [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql) 會將永久使用者資料表 **object_ids** 對應至其實體資料表名稱。|
+|**工作負載管理-入口網站體驗**|使用者可以透過 Azure 入口網站來設定及管理其工作負載管理設定。 可以設定[工作群組](./quickstart-configure-workload-isolation-portal.md)和具有重要性的[工作負載分類器](./quickstart-create-a-workload-classifier-portal.md)。|
+|**改進的資料表對應目錄檢視**|新的目錄檢視 [sys.pdw_permanent_table_mappings](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql) 會將永久使用者資料表 **object_ids** 對應至其實體資料表名稱。|
 
 ## <a name="july-2020"></a>2020 年 7 月
 
@@ -68,22 +68,22 @@ ms.locfileid: "97368999"
 |**資料行層級加密 (公開預覽)**|使用 Transact-sql 將對稱式加密套用至資料行，以保護您 Azure Synapse Analytics 中的機密資訊。 資料行層級加密具有內建函數，可讓您使用以憑證、密碼、對稱金鑰或非對稱金鑰進一步保護的對稱金鑰來加密資料。 如需詳細資訊，請造訪 [加密資料行](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)。|
 |**(GA) 的相容性層級支援**|在此版本中，使用者現在可以設定資料庫的相容性層級，以取得特定版本 Synapse SQL 引擎的 Transact-SQL 語言和查詢處理行為。 如需詳細資訊，請參閱 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和[改變資料庫範圍設定](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
 |**資料列層級安全性**|此版本包含在其上強制執行 RLS 之資料列的更新和刪除作業的改進。 在此版本中，如果內建函式未參考 DML 目標資料表中的任何資料行，則具有 ' is_rolemember ' 等內建函式的更新和刪除作業將會成功。 在這項改進之前，這些作業會因為基礎 DML 作業的限制而失敗。|
-|**DBCC SHRINKDATABASE (GA)**|您現在可以壓縮指定之資料庫中的資料和記錄檔大小。 如需詳細資訊，請參閱 [檔](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)。|
+|**DBCC SHRINKDATABASE (GA)**|您現在可以壓縮指定之資料庫中的資料和記錄檔大小。 如需詳細資訊，請參閱 [檔](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)。|
 
 ## <a name="may-2020"></a>2020 年 5 月
 
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
-|**工作負載隔離 (GA)**|[工作負載隔離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)現已正式推出。  您可以透過[工作負載群組](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)保留和包含資源。  也可以設定查詢逾時來取消失控查詢。|
-|**工作負載管理入口網站體驗 (預覽)**| 使用者可以透過 Azure 入口網站來設定及管理其工作負載管理設定。  可以設定[工作群組](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)和具有重要性的[工作負載分類器](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal)。|
-|**改變工作負載群組**|現在可以使用 [ALTER WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) 命令。  使用改變來變更現有[工作負載群組](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-isolation)的設定。|
-|**使用複製命令 (預覽) 自動偵測 Parquet 檔案的架構**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援在載入 Parquet 檔案時進行自動結構描述偵測。 此命令會自動偵測 Parquet 檔案結構描述，並且在載入之前建立資料表。 前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。 |
-|**使用複製命令 (預覽版載入複雜的 Parquet 資料類型)**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援載入複雜的 Parquet 類型。 您可以將例如「地圖」和「清單」的複雜類型載入至字串資料行。  前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。 |
-|**使用 COPY 命令進行 Parquet 檔案的自動壓縮偵測**|[COPY 命令](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援 Parquet 檔案的壓縮方法自動偵測。 前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。|
-|**其他載入建議**|[載入建議](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations)現在適用於 Synapse SQL。 當您應該分割您的檔案以取得最大輸送量時，請取得主動式通知、將您的儲存體帳戶與專用 SQL 集區共置 (先前為 SQL DW) ，或在使用 SQLBulkCopy API 或 BCP 等載入公用程式時，增加批次大小|
-|**T-SQL 可更新散發資料行 (GA)**|使用者現在可以更新儲存在散發資料行中的資料。 如需詳細資料，請參閱 [ (先前的 SQL DW) 在專用 sql 集區中設計分散式資料表的指引 ](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute) 。|
-|**T-SQL 更新/刪除來源...聯結 (GA)**|現在可以根據與其他資料表聯結的結果更新和刪除。 如需詳細資訊，請參閱[更新](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest)和[刪除](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest)文件。|
-|**T-SQL PREDICT (預覽)**|您現在可以在資料倉儲中預測機器學習模型，而不需要進行大型且複雜的資料移動。 T-SQL PREDICT 函式依賴開放式模型架構，並且會採用資料和機器學習模型作為輸入來產生預測。 如需詳細資訊，請參閱[文件](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)。|
+|**工作負載隔離 (GA)**|[工作負載隔離](./sql-data-warehouse-workload-isolation.md)現已正式推出。  您可以透過[工作負載群組](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)保留和包含資源。  也可以設定查詢逾時來取消失控查詢。|
+|**工作負載管理入口網站體驗 (預覽)**| 使用者可以透過 Azure 入口網站來設定及管理其工作負載管理設定。  可以設定[工作群組](./quickstart-create-a-workload-classifier-portal.md)和具有重要性的[工作負載分類器](./quickstart-create-a-workload-classifier-portal.md)。|
+|**改變工作負載群組**|現在可以使用 [ALTER WORKLOAD GROUP](/sql/t-sql/statements/alter-workload-group-transact-sql?view=azure-sqldw-latest) 命令。  使用改變來變更現有[工作負載群組](./sql-data-warehouse-workload-isolation.md)的設定。|
+|**使用複製命令 (預覽) 自動偵測 Parquet 檔案的架構**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援在載入 Parquet 檔案時進行自動結構描述偵測。 此命令會自動偵測 Parquet 檔案結構描述，並且在載入之前建立資料表。 前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。 |
+|**使用複製命令 (預覽版載入複雜的 Parquet 資料類型)**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援載入複雜的 Parquet 類型。 您可以將例如「地圖」和「清單」的複雜類型載入至字串資料行。  前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。 |
+|**使用 COPY 命令進行 Parquet 檔案的自動壓縮偵測**|[COPY 命令](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)現在支援 Parquet 檔案的壓縮方法自動偵測。 前往下列電子郵件通訊群組清單，以啟用此功能： sqldwcopypreview@service.microsoft.com 。|
+|**其他載入建議**|[載入建議](./sql-data-warehouse-concept-recommendations.md)現在適用於 Synapse SQL。 當您應該分割您的檔案以取得最大輸送量時，請取得主動式通知、將您的儲存體帳戶與專用 SQL 集區共置 (先前為 SQL DW) ，或在使用 SQLBulkCopy API 或 BCP 等載入公用程式時，增加批次大小|
+|**T-SQL 可更新散發資料行 (GA)**|使用者現在可以更新儲存在散發資料行中的資料。 如需詳細資料，請參閱 [ (先前的 SQL DW) 在專用 sql 集區中設計分散式資料表的指引 ](./sql-data-warehouse-tables-distribute.md) 。|
+|**T-SQL 更新/刪除來源...聯結 (GA)**|現在可以根據與其他資料表聯結的結果更新和刪除。 如需詳細資訊，請參閱[更新](/sql/t-sql/queries/update-transact-sql?view=azure-sqldw-latest)和[刪除](/sql/t-sql/statements/delete-transact-sql?view=azure-sqldw-latest)文件。|
+|**T-SQL PREDICT (預覽)**|您現在可以在資料倉儲中預測機器學習模型，而不需要進行大型且複雜的資料移動。 T-SQL PREDICT 函式依賴開放式模型架構，並且會採用資料和機器學習模型作為輸入來產生預測。 如需詳細資訊，請參閱[文件](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)。|
 
 ## <a name="april-2020"></a>2020 年 4 月
 
@@ -94,13 +94,13 @@ ms.locfileid: "97368999"
 
 | 工具改進                                         | 詳細資料                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16.6 Preview 5](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#--visual-studio-2019-version-166-preview-5-) - SQL Server Data Tools (SSDT)** | 此版本包含 SSDT 的下列改進： </br> </br> - 資料探索與分類<br/> - COPY 陳述式 <br/> - 具有唯一條件約束的資料表<br/> - 具有已排序叢集資料行存放區索引的資料表<br/> <br/>此版本包含 SSDT 的下列修正︰ </br></br>  - 當變更散發資料行資料類型時， SSDT 所產生的更新指令碼會執行 CTAS 和 RENAME 作業，而不是捨棄然後重新建立資料表。 </br> |
+| **[Visual Studio 16.6 Preview 5](/visualstudio/releases/2019/release-notes-preview#--visual-studio-2019-version-166-preview-5-) - SQL Server Data Tools (SSDT)** | 此版本包含 SSDT 的下列改進： </br> </br> - 資料探索與分類<br/> - COPY 陳述式 <br/> - 具有唯一條件約束的資料表<br/> - 具有已排序叢集資料行存放區索引的資料表<br/> <br/>此版本包含 SSDT 的下列修正︰ </br></br>  - 當變更散發資料行資料類型時， SSDT 所產生的更新指令碼會執行 CTAS 和 RENAME 作業，而不是捨棄然後重新建立資料表。 </br> |
 
 ## <a name="march-2020"></a>2020 年 3 月
 
 | 工具改進                                         | 詳細資料                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16.6 Preview 2](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) - SQL Server Data Tools (SSDT)** | 此版本包含 SSDT 的下列改進和修正： </br> </br> - 已解決變更具體化檢視 (MV) 所參考資料表會導致產生 MV 不支援的 Alter View 陳述式<br/><br/> - 已實作變更以確定當資料列層級安全性物件顯示在資料庫或專案中時，結構描述比較作業不會失敗。 目前不支援 SSDT 的資料列層級安全性物件。  <br/><br/> - SQL Server 物件總管逾時閾值已增加，以避免在資料庫中列出大量物件時逾時<br/><br/> - 最佳化 SQL Server 物件總管擷取資料庫物件清單的方式，以在填入物件總管時減少不穩定並提升效能 |
+| **[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) - SQL Server Data Tools (SSDT)** | 此版本包含 SSDT 的下列改進和修正： </br> </br> - 已解決變更具體化檢視 (MV) 所參考資料表會導致產生 MV 不支援的 Alter View 陳述式<br/><br/> - 已實作變更以確定當資料列層級安全性物件顯示在資料庫或專案中時，結構描述比較作業不會失敗。 目前不支援 SSDT 的資料列層級安全性物件。  <br/><br/> - SQL Server 物件總管逾時閾值已增加，以避免在資料庫中列出大量物件時逾時<br/><br/> - 最佳化 SQL Server 物件總管擷取資料庫物件清單的方式，以在填入物件總管時減少不穩定並提升效能 |
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -226,7 +226,7 @@ ms.locfileid: "97368999"
 ## <a name="more-information"></a>詳細資訊
 
 - [部落格 - Azure Synapse Analytics](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-- [客戶諮詢小組部落格](https://docs.microsoft.com/archive/blogs/sqlcat/)
+- [客戶諮詢小組部落格](/archive/blogs/sqlcat/)
 - [客戶成功案例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

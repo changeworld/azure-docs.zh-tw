@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f8db19b209ddefebd4a297f18fb9b178fcf40f21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8826dff6d347f78625272a5620a1f168b8804db
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89457901"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120031"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL 集區的開發最佳做法
 
@@ -55,7 +55,7 @@ SQL 集區可以設定為自動偵測資料行並建立統計資料。  最佳�
 
 載入分散的資料表時，請確定您的內送資料的分散式索引鍵沒有排序，因為這會拖慢載入。  下文進一步詳述選取分散資料行如何能提升效能，以及如何在 CREATE TABLE 陳述式的 WITH 子句中定義分散的資料表。
 
-另請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)、[資料表散發](sql-data-warehouse-tables-distribute.md)、[選取資料表散發](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](sql-data-warehouse-tables-overview.md) 和 [CREATE TABLE AS SELECT](sql-data-warehouse-develop-ctas.md)
+另請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)、[資料表散發](sql-data-warehouse-tables-distribute.md)、[選取資料表散發](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](sql-data-warehouse-tables-overview.md) 和 [CREATE TABLE AS SELECT](sql-data-warehouse-develop-ctas.md)
 
 ## <a name="do-not-over-partition"></a>不要過度執行資料分割
 
@@ -120,7 +120,7 @@ SQL 集區可以設定為自動偵測資料行並建立統計資料。  最佳�
 
 如果您在此文件中找不到想要尋找的內容，請嘗試使用此頁面左邊的 [搜尋文件] 來搜尋所有 Azure Synapse Analytics 文件。  
 
-[Microsoft 問與答問題](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)頁面，可讓您將問題張貼至其他使用者和 Azure Synapse Analytics 產品群組。  我們會主動監看這個論壇，以確保您的問題有其他使用者或是我們回答。  
+[Microsoft 問與答問題](/answers/topics/azure-synapse-analytics.html)頁面，可讓您將問題張貼至其他使用者和 Azure Synapse Analytics 產品群組。  我們會主動監看這個論壇，以確保您的問題有其他使用者或是我們回答。  
 
 如果您想要在 Stack Overflow 上詢問您的問題，我們也有 [Azure Synapse Analytics Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)。
 

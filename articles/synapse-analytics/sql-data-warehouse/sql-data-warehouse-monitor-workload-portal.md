@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 53c68f44273b14658bd4d95ce7cf3cf847c077d0
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f780d5404d99435a61c4e3f9e90b1acbd9539af9
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025947"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118433"
 ---
 # <a name="monitor-workload---azure-portal"></a>監視工作負載-Azure 入口網站
 
@@ -24,7 +24,7 @@ ms.locfileid: "93025947"
 ## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
-- SQL 集區：我們將會收集 SQL 集區的記錄檔。 如果您尚未布建 SQL 集區，請參閱 [建立 sql 集](load-data-from-azure-blob-storage-using-polybase.md)區中的指示。
+- SQL 集區：我們將會收集 SQL 集區的記錄檔。 如果您尚未布建 SQL 集區，請參閱 [建立 sql 集](./load-data-from-azure-blob-storage-using-copy.md)區中的指示。
 
 ## <a name="create-a-log-analytics-workspace"></a>建立 Log Analytics 工作區
 
@@ -63,7 +63,7 @@ ms.locfileid: "93025947"
 - 建立記錄警示
 - 將查詢結果釘選到儀表板
 
-如需記錄查詢功能的詳細資訊，請參閱下列 [檔](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+如需記錄查詢功能的詳細資訊，請參閱下列 [檔](/azure/data-explorer/kusto/query/?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json)。
 
 ![Log Analytics 工作區編輯器](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
 

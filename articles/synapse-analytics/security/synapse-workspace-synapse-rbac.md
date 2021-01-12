@@ -8,16 +8,16 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7972f34bf0d2b93828899903e013c2e35bc997c0
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 2d9f3bfe6a273bfb0f3d314d1a4664806bd45ae2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523409"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118807"
 ---
 # <a name="what-is-synapse-role-based-access-control-rbac"></a>什麼是 Synapse 以角色為基礎的存取控制 (RBAC) ？
 
-Synapse RBAC 可延伸 [AZURE rbac](https://docs.microsoft.com/azure/role-based-access-control/overview) 的功能，以用於 Synapse 工作區及其內容。 
+Synapse RBAC 可延伸 [AZURE rbac](../../role-based-access-control/overview.md) 的功能，以用於 Synapse 工作區及其內容。 
 
 Azure RBAC 可用來管理誰可以建立、更新或刪除 Synapse 工作區及其 SQL 集區、Apache Spark 集區，以及整合執行時間。
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: be7c6ec9dbc577143e6c7219580f42c876f536bc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 563edae0292062e1ed7f216c69aeeb84ef0fa7a8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499963"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119470"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用索引子為 Cosmos DB 資料編製索引 
 
@@ -137,7 +137,7 @@ Azure Cosmos DB 專案編制索引最簡單的方法是使用 [Azure 入口網�
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1-組合要求的輸入
 
-針對每個要求，您必須為 POST 標頭) 中的 Azure 認知搜尋 (提供服務名稱和管理金鑰，以及 blob 儲存體的儲存體帳戶名稱和金鑰。 您可以使用 [Postman 或 Visual Studio Code](search-get-started-rest.md) ，將 HTTP 要求傳送至 Azure 認知搜尋。
+針對每個要求，您必須為 POST 標頭) 中的 Azure 認知搜尋 (提供服務名稱和管理金鑰，以及 blob 儲存體的儲存體帳戶名稱和金鑰。 您可以使用 [Postman](search-get-started-rest.md) 或 [VISUAL STUDIO CODE](search-get-started-vs-code.md) ，將 HTTP 要求傳送至 Azure 認知搜尋。
 
 將下列四個值複製到 [記事本]，讓您可以將它們貼到要求中：
 
@@ -274,7 +274,7 @@ SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @High
 | Bool |Edm.Boolean、Edm.String |
 | 看起來像是整數的數字 |Edm.Int32、Edm.Int64、Edm.String |
 | 看起來像是浮點的數字 |Edm.Double、Edm.String |
-| 字串 |Edm.String |
+| String |Edm.String |
 | 基本類型的陣列，例如 ["a", "b", "c"] |Collection(Edm.String) |
 | 看起來像是日期的字串 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON 物件，例如 { "type": "Point", "coordinates": [long, lat] } |Edm.GeographyPoint |

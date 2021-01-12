@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: ae8fd7f405beb20d516835ccb80b86e769fd0393
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 47e9b80bb25b7ff14695cc67682265fe338ff76f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697079"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119096"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中重建索引
 
@@ -91,7 +91,7 @@ ms.locfileid: "94697079"
 
 第一個文件載入之後，您就可以開始查詢索引。 如果您知道文件的別碼，[查閱文件 REST API](/rest/api/searchservice/lookup-document) \(英文\) 可傳回特定文件。 若要進行更廣泛的測試，您應該等到索引完全載入，然後使用查詢來確認您預期會看到的內容。
 
-您可以使用 [Search Explorer](search-explorer.md) 或 Web 測試控管（例如 [Postman 或 Visual Studio Code](search-get-started-rest.md) ）來檢查是否有更新的內容。
+您可以使用 [Search Explorer](search-explorer.md) 或 Web 測試控管（例如 [Postman](search-get-started-rest.md) 或 [Visual Studio Code](search-get-started-vs-code.md) ）來檢查是否有更新的內容。
 
 如果您已新增或重新命名欄位，請使用 [$select](search-query-odata-select.md) 傳回該欄位： `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 

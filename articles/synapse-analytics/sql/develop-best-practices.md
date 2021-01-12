@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a5e514602668c96d63562e45fb114cf9770a54a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1fd7649cac6b636873ca529fe9780429d86697c6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321493"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120898"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Synapse SQL 的開發最佳做法
 
@@ -53,7 +53,7 @@ ms.locfileid: "93321493"
 
 關於選取分散資料行能如何提升效能，以及如何在 CREATE TABLE 陳述式的 WITH 子句中定義分散的資料表，如需詳細資料，請參閱以下的連結。
 
-另請參閱[資料表概觀](develop-tables-overview.md)、[資料表散發](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[選取資料表散發](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+另請參閱[資料表概觀](develop-tables-overview.md)、[資料表散發](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)、[選取資料表散發](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ### <a name="do-not-over-partition"></a>不要過度執行資料分割
 雖然分割資料可以讓資料維護變得有效率 (透過分割切換或最佳化掃描將分割消除)，但太多的資料分割會讓查詢變慢。  很高的資料細微性資料分割策略，在 SQL Server 可能無法在專用的 SQL 集區上運作。  
@@ -167,7 +167,6 @@ ms.locfileid: "93321493"
 
 ### <a name="next-steps"></a>後續步驟
 
-如果您需要本文中未提供的資訊，請使用此頁面左側的 **搜尋 doc** 函式來搜尋所有的 SQL 集區檔。  您可以 [針對 Azure Synapse Analytics 的 Microsoft 問&問題頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html) ，為其他使用者和 Azure Synapse Analytics 產品群組提出問題。 我們會主動監看這個論壇，以確保您的問題有其他使用者或是我們回答。  
+如果您需要本文中未提供的資訊，請使用此頁面左側的 **搜尋 doc** 函式來搜尋所有的 SQL 集區檔。  您可以 [針對 Azure Synapse Analytics 的 Microsoft 問&問題頁面](/answers/topics/azure-synapse-analytics.html) ，為其他使用者和 Azure Synapse Analytics 產品群組提出問題。 我們會主動監看這個論壇，以確保您的問題有其他使用者或是我們回答。  
 
 如果您想要在 Stack Overflow 上詢問您的問題，我們也有 [Azure Synapse Analytics Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)。
- 

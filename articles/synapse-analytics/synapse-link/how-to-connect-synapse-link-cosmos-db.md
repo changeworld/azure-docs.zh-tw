@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e4bcc13a2eaddbf394d8468b29eeff475119e2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5316f74ee38f597592ae4582aef31837f0f05fda
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459024"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119827"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>連線至適用於 Azure Cosmos DB 的 Azure Synapse Link
 
@@ -24,8 +24,8 @@ ms.locfileid: "96459024"
 
 要將 Azure Cosmos DB 資料庫連線至您的工作區，您將需要：
 
-* 現有的 Azure Cosmos DB 資料庫，或依照下列指示建立新帳戶：[快速入門：管理 Azure Cosmos DB 帳戶](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)。
-* 現有的 Azure Synapse Analytics 工作區，或遵循下列步驟建立新的工作區：[快速入門：建立 Synapse 工作區](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)。
+* 現有的 Azure Cosmos DB 資料庫，或依照下列指示建立新帳戶：[快速入門：管理 Azure Cosmos DB 帳戶](../../cosmos-db/how-to-manage-database-account.md)。
+* 現有的 Azure Synapse Analytics 工作區，或遵循下列步驟建立新的工作區：[快速入門：建立 Synapse 工作區](../quickstart-create-workspace.md)。
 
 > [!IMPORTANT]
 > 適用於 Azure Cosmos DB 的 Azure Synapse Link 現在支援未啟用受控虛擬網路的工作區。

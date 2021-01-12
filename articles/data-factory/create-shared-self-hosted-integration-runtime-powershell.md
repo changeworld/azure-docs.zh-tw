@@ -11,18 +11,31 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 8734247a913bdf6a44a9156f6f87705b618f7228
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3f0cf3de4c2cffca6540fcd727872372103ac98f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632884"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118229"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中建立共用的自我裝載整合執行階段
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 本指南說明如何在 Azure Data Factory 中建立共用的自我裝載整合執行階段。 然後您可以在其他資料處理站中，使用該共用的自我裝載整合執行階段。
+
+## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中建立共用的自我裝載整合執行階段
+
+您可以重複使用您已經在資料處理站中設定的現有自我裝載整合執行階段基礎結構。 這項重複使用可讓您藉由參考現有的共用自我裝載 IR，在不同的資料處理站中建立連結的自我裝載整合執行時間。
+
+若要查看這項功能的簡介與示範，請觀看下列12分鐘的影片：
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
+
+### <a name="terminology"></a>詞彙
+
+- **共用 ir**：在實體基礎結構上執行的原始自我裝載 ir。  
+- **連結的 ir**：參考另一個共用 IR 的 ir。 連結的 IR 是邏輯 IR，並使用另一個共用自我裝載 IR 的基礎結構。
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>使用 Azure Data Factory UI 建立共用的自我裝載 IR
 
@@ -55,9 +68,9 @@ ms.locfileid: "92632884"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 訂用帳戶** 。 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。 
+- **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。 
 
-- **Azure PowerShell** (英文)。 請依照[使用 PowerShellGet 在 Windows 上安裝 Azure PowerShell](/powershell/azure/install-az-ps) 中的指示操作。 您會使用 PowerShell 來執行指令碼，以建立可與其他資料處理站共用的自我裝載整合執行階段。 
+- **Azure PowerShell**(英文)。 請依照[使用 PowerShellGet 在 Windows 上安裝 Azure PowerShell](/powershell/azure/install-az-ps) 中的指示操作。 您會使用 PowerShell 來執行指令碼，以建立可與其他資料處理站共用的自我裝載整合執行階段。 
 
 > [!NOTE]  
 > 如需目前可取得 Data Factory 的 Azure 區域，請在 [依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory) 上選取您感興趣的區域。
@@ -66,7 +79,7 @@ ms.locfileid: "92632884"
 
 1. 啟動 Windows PowerShell 整合式指令碼環境 (ISE)。
 
-1. 建立變數。 複製並貼上下列指令碼。 請將變數 (例如 **SubscriptionName** 和 **ResourceGroupName** ) 取代為實際值： 
+1. 建立變數。 複製並貼上下列指令碼。 請將變數 (例如 **SubscriptionName** 和 **ResourceGroupName**) 取代為實際值： 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -213,6 +226,37 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -Links `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
+
+### <a name="monitoring"></a>監視
+
+#### <a name="shared-ir"></a>共用 IR
+
+![尋找共用整合執行時間的選取專案](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+
+![監視共用整合執行時間](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+
+#### <a name="linked-ir"></a>連結的 IR
+
+![選取以尋找連結的整合執行時間](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+
+![監視連結的整合執行時間](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+
+
+### <a name="known-limitations-of-self-hosted-ir-sharing"></a>自我裝載整合執行階段共用的已知限制
+
+* 建立連結 IR 的資料處理站必須有 [受控識別](../active-directory/managed-identities-azure-resources/overview.md)。 根據預設，在 Azure 入口網站或 PowerShell Cmdlet 中建立的資料處理站具有隱含建立的受控識別。 但是，透過 Azure Resource Manager 範本或 SDK 建立資料處理站時，您必須明確設定 **Identity** 屬性。 此設定可確保 Resource Manager 建立包含受控識別的 data factory。
+
+* 支援此功能的 Data Factory .NET SDK 必須是1.1.0 版或更新版本。
+
+* 若要授與許可權，您需要有共用 IR 存在之 data factory 中的擁有者角色或繼承的擁有者角色。
+
+* 共用功能只適用于相同 Azure AD 租使用者內的資料處理站。
+
+* 針對 Azure AD [來賓使用者](../active-directory/governance/manage-guest-access-with-access-reviews.md)，UI 中的搜尋功能（使用搜尋關鍵字列出所有資料處理站）將無法運作。 但只要來賓使用者是 data factory 的擁有者，您就可以在沒有搜尋功能的情況下共用 IR。 針對需要共用 IR 的資料處理站受控識別，請在 [ **指派許可權** ] 方塊中輸入該受控識別，然後選取 Data Factory UI 中的 [ **新增** ]。
+
+  > [!NOTE]
+  > 這項功能僅適用于 Data Factory V2。
+
 
 ### <a name="next-steps"></a>後續步驟
 

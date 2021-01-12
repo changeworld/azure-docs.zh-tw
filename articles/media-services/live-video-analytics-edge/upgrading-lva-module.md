@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: 9621f0a933c6102309286505f2c551c5256c5506
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901550"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119453"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>將 IoT Edge 的即時影片分析從1.0 升級為2。0
 
@@ -21,7 +21,7 @@ ms.locfileid: "97901550"
 > [!div class="mx-tdCol4BreakAll"]
 > |標題|即時影片分析1。0|即時影片分析2。0|描述|
 > |-------------|----------|---------|---------|
-> |容器映射|mcr.microsoft.com/media/live-video-analytics:1.0.0|mcr.microsoft.com/media/live-video-analytics:2.0.0|Microsoft 已發佈 docker 映射，可在 Azure IoT Edge 上進行即時影片分析|
+> |容器映射|mcr.microsoft.com/media/live-video-analytics:1|mcr.microsoft.com/media/live-video-analytics:2|Microsoft 已發佈 docker 映射，可在 Azure IoT Edge 上進行即時影片分析|
 > |**MediaGraph-節點** |    |   |   |
 > |來源|:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP 來源 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT 中樞訊息來源 |:::image type="icon" source="./././media/upgrading-lva/check.png"::: RTSP 來源 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: IoT 中樞訊息來源 | MediaGraph-節點，作為媒體內嵌和訊息的來源。|
 > |處理器|:::image type="icon" source="./././media/upgrading-lva/check.png"::: 動作偵測處理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: 畫面播放速率篩選處理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Http 擴充處理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Grpc 擴充處理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: 信號閘道處理器 |:::image type="icon" source="./././media/upgrading-lva/check.png"::: 動作偵測處理器 </br>:::image type="icon" source="./././media/upgrading-lva/remove.png":::**畫面播放速率篩選處理器**</br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Http 擴充處理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: Grpc 擴充處理器 </br>:::image type="icon" source="./././media/upgrading-lva/check.png"::: 信號閘道處理器 | MediaGraph 可讓您將媒體格式化，再傳送至 AI 推斷伺服器的節點。|

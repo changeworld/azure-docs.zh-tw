@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 8d4c1928ae1fac9b840245756c4bf5fe22a83f0f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 4ed02901aa0d6948e9c6443e5bbcf4ebfbc872f7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590506"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118688"
 ---
 # <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 Synapse Studio SQL 腳本 
 
@@ -88,4 +88,4 @@ Synapse Studio 提供 SQL 腳本 web 介面，可讓您撰寫 SQL 查詢。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需撰寫 SQL 腳本的詳細資訊，請參閱 [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)。
+如需撰寫 SQL 腳本的詳細資訊，請參閱 [Azure Synapse Analytics](../index.yml)。

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4e4e6a1607fa42f4be07451f9aa0d8ff923d85d6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fc90ad8104cff7ead501470a883b56b67a86cf7c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317323"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121255"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>Synapse SQL 中支援的系統檢視
 
@@ -252,6 +252,5 @@ SQL 集區和 Analytics Platform System 的平行資料倉儲 (PDW) 使用相同
 
 ## <a name="next-steps"></a>後續步驟
 
-如需更多的參考資訊，請參閱 [SYNAPSE sql 中的 t-sql 語句](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)，以及 [Synapse Sql 中的 t-sql 語言元素](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)。
+如需更多的參考資訊，請參閱 [SYNAPSE sql 中的 t-sql 語句](../sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements.md)，以及 [Synapse Sql 中的 t-sql 語言元素](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md)。
 
- 

@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 254e07d5a3266927c9677107772b4ac2dbfd2ce0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b033fd9c0a7f752cf08d6e679facc9fa27b44037
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454406"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120201"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse 專用 SQL 集區中的備份與還原
 
@@ -45,7 +45,7 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>使用者定義的還原點
 
-這項功能可讓您手動觸發快照集，以在進行大型修改之前和之後，建立資料倉儲的還原點。 這項功能可確保還原點在邏輯上是一致的，可在任何工作負載中斷時提供額外的資料保護，或在快速復原時提供使用者錯誤。 使用者定義的還原點可保留七天，而且會自動刪除。 您無法變更使用者定義還原點的保留期。 **只保證在任何時間點設定 42 個使用者定義的還原點**，因此必須先 [刪除還原點](https://go.microsoft.com/fwlink/?linkid=875299)，才能再建立另一個還原點。 您可以透過 [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) 或 Azure 入口網站觸發快照集，以建立使用者定義的還原點。
+這項功能可讓您手動觸發快照集，以在進行大型修改之前和之後，建立資料倉儲的還原點。 這項功能可確保還原點在邏輯上是一致的，可在任何工作負載中斷時提供額外的資料保護，或在快速復原時提供使用者錯誤。 使用者定義的還原點可保留七天，而且會自動刪除。 您無法變更使用者定義還原點的保留期。 **只保證在任何時間點設定 42 個使用者定義的還原點**，因此必須先 [刪除還原點](/powershell/module/azurerm.sql/remove-azurermsqldatabaserestorepoint?viewFallbackFrom=azurermps-6.2.0)，才能再建立另一個還原點。 您可以透過 [PowerShell](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) 或 Azure 入口網站觸發快照集，以建立使用者定義的還原點。
 
 > [!NOTE]
 > 如果您需要保留還原點超過 7 天，請[在此](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)投票給這項功能。 您也可以建立使用者定義的還原點，並從新建立的還原點還原到新資料倉儲。 還原之後，您就可以在線上使用專用的 SQL 集區，並可無限期地暫停它來節省計算成本。 暫停的資料庫會產生儲存體費用，以「Azure 進階儲存體」費率計費。 如果您需要作用中的已還原資料倉儲副本，您可以讓其恢復上線 (只需幾分鐘的時間)。

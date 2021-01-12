@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60a995f78b9b696197d9bd45e04becb19e4129f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653056"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120099"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用專用的 SQL 集區載入資料的最佳作法
 
@@ -47,7 +47,7 @@ ms.locfileid: "97653056"
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-連接到專用的 SQL 集區，並建立使用者。 下列程式碼假設您已連接到名為 mySampleDataWarehouse 的資料庫。 它會示範如何建立名為 loader 的使用者，並為使用者提供使用 [COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)建立資料表和載入的許可權。 然後，它會將使用者分類為具有最大資源的 DataLoads 工作負載群組。 
+連接到專用的 SQL 集區，並建立使用者。 下列程式碼假設您已連接到名為 mySampleDataWarehouse 的資料庫。 它會示範如何建立名為 loader 的使用者，並為使用者提供使用 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)建立資料表和載入的許可權。 然後，它會將使用者分類為具有最大資源的 DataLoads 工作負載群組。 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -179,5 +179,5 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 ## <a name="next-steps"></a>後續步驟
 
 - 若要在設計 (ELT) 進程的解壓縮、載入和轉換時，深入瞭解 COPY 語句或 PolyBase，請參閱 [為 Azure Synapse Analytics 設計 ELT](design-elt-data-loading.md)。
-- 如需載入教學課程，請 [使用 COPY 語句將資料從 Azure blob 儲存體載入至 SYNAPSE SQL](load-data-from-azure-blob-storage-using-polybase.md)。
+- 如需載入教學課程，請 [使用 COPY 語句將資料從 Azure blob 儲存體載入至 SYNAPSE SQL](./load-data-from-azure-blob-storage-using-copy.md)。
 - 若要監視資料載入，請參閱[使用 DMV 監視工作負載](sql-data-warehouse-manage-monitor.md)。

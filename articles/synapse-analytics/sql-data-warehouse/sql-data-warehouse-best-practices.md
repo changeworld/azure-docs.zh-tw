@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9802e6553d553aae4f13194dc9951d1a17af6f66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b17e47463ef3fe9a2cc959364825451468266f0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462873"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120014"
 ---
 # <a name="best-practices-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>專用 SQL 集區的最佳作法 (先前的 SQL DW) Azure Synapse Analytics
 
@@ -74,7 +74,7 @@ Azure Data Factory 也支援 PolyBase 載入，並且可以達到與 CTAS 類似
 > [!NOTE]
 > 若要在使用 gzip 文字檔案時獲得最大的輸送量，將檔案分成 60 個以上的檔案讓載入有最大化的平行處理。  如需更快的總輸送量，請考慮同時載入資料。
 
-另請參閱 [載入資料](design-elt-data-loading.md)、 [使用 PolyBase 的指南](guidance-for-loading-data.md)、 [專用的 SQL 集區載入模式和策略](https://blogs.msdn.microsoft.com/sqlcat/20../../)、 [使用 Azure Data Factory 來載入資料]( ../../data-factory/load-azure-sql-data-warehouse.md)、 [使用 Azure Data Factory 移動資料](../../data-factory/transform-data-using-machine-learning.md)、 [建立外部檔案格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以及將 [資料表建立為 select (CTAS) ](sql-data-warehouse-develop-ctas.md)。
+另請參閱 [載入資料](design-elt-data-loading.md)、 [使用 PolyBase 的指南](guidance-for-loading-data.md)、 [專用的 SQL 集區載入模式和策略](/archive/blogs/sqlcat/)、 [使用 Azure Data Factory 來載入資料]( ../../data-factory/load-azure-sql-data-warehouse.md)、 [使用 Azure Data Factory 移動資料](../../data-factory/transform-data-using-machine-learning.md)、 [建立外部檔案格式](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以及將 [資料表建立為 select (CTAS) ](sql-data-warehouse-develop-ctas.md)。
 
 ## <a name="load-then-query-external-tables"></a>載入並查詢外部資料表
 
@@ -97,7 +97,7 @@ Azure Data Factory 也支援 PolyBase 載入，並且可以達到與 CTAS 類似
 
 關於選取分散資料行如何能提升效能，以及如何在 CREATE TABLE 陳述式的 WITH 子句中定義分散的資料表，如需詳細資訊請參閱以下的連結。
 
-資料表[概觀](sql-data-warehouse-tables-overview.md)、[資料表散發](sql-data-warehouse-tables-distribute.md)、[選取資料表散發](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+資料表[概觀](sql-data-warehouse-tables-overview.md)、[資料表散發](sql-data-warehouse-tables-distribute.md)、[選取資料表散發](/archive/blogs/sqlcat/choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service)、[CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="do-not-over-partition"></a>不要過度執行資料分割
 
@@ -180,7 +180,7 @@ Azure Data Factory 也支援 PolyBase 載入，並且可以達到與 CTAS 類似
 
 另請參閱 [疑難排解](sql-data-warehouse-troubleshoot.md) 一文中的常見問題和解決方案。
 
-如果您在此文件中找不到想要尋找的內容，請嘗試使用此頁面左邊的 [搜尋文件] 來搜尋所有 Azure Synapse Analytics 文件。  [Azure Synapse 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)，可讓您將問題張貼至其他使用者和 Azure Synapse Analytics 產品群組。 我們會主動監看這個論壇，以確保您的問題有其他使用者或是我們回答。  
+如果您在此文件中找不到想要尋找的內容，請嘗試使用此頁面左邊的 [搜尋文件] 來搜尋所有 Azure Synapse Analytics 文件。  [Azure Synapse 的 Microsoft 問與答頁面](/answers/topics/azure-synapse-analytics.html)，可讓您將問題張貼至其他使用者和 Azure Synapse Analytics 產品群組。 我們會主動監看這個論壇，以確保您的問題有其他使用者或是我們回答。  
 
 如果您比較想在 Stack Overflow上詢問您的問題，我們也有 [Azure Synapse Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)。
 

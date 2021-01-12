@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33eb5977ecb373a0dba87c26cacea247f541be8f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3778b6046c750bb131be1e51bf1afdc7b0df7184
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452724"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116784"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 Synapse SQL 設計資料表
 
@@ -37,10 +37,10 @@ ms.locfileid: "96452724"
 | [資料類型](#data-types)                                    | 是                | 是                     |
 | [分散式資料表](#distributed-tables)                    | 是                | 否                      |
 | [雜湊分散式資料表](#hash-distributed-tables)          | 是                | 否                      |
-| [複寫的資料表](#replicated-tables)                      | 是                | 否                      |
+| [複寫資料表](#replicated-tables)                      | 是                | 否                      |
 | [循環配置資源資料表](#round-robin-tables)                    | 是                | 否                      |
 | [資料表常用的散發方法](#common-distribution-methods-for-tables) | 是                | 否                      |
-| [資料分割](#partitions)                                    | 是                | 是                     |
+| [分割區](#partitions)                                    | 是                | 是                     |
 | [資料行存放區索引](#columnstore-indexes)                  | 是                | 否                      |
 | [統計資料](#statistics)                                    | 是                | 是                     |
 | [主鍵和唯一索引鍵](#primary-key-and-unique-key)    | 是                | 否                      |
@@ -76,7 +76,7 @@ CREATE SCHEMA wwi;
 | WideWorldImportersDW 資料表  | 資料表類型 | 專用的 SQL 集區 |
 |:-----|:-----|:------|:-----|
 | City | 維度 | wwi.DimCity |
-| 順序 | 事實 | wwi.FactOrder |
+| 單 | 事實 | wwi.FactOrder |
 
 ## <a name="table-persistence"></a>資料表持續性
 
@@ -102,7 +102,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 [外部資料表](develop-tables-external-tables.md) 會指向位於 Azure 儲存體 blob 或 Azure Data Lake Storage 中的資料。
 
-使用 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 語句，將外部資料表中的資料匯入到專用的 SQL 集區。 如需載入教學課程，請參閱 [使用 PolyBase 從 Azure blob 儲存體載入資料](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+使用 [CREATE TABLE AS SELECT](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 語句，將外部資料表中的資料匯入到專用的 SQL 集區。 如需載入教學課程，請參閱 [使用 PolyBase 從 Azure blob 儲存體載入資料](../sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。
 
 針對無伺服器 SQL 集區，您可以使用 [CETAS](develop-tables-cetas.md) 將查詢結果儲存至 Azure 儲存體中的外部資料表。
 
@@ -146,7 +146,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 | 維度      | 對較小的資料表使用複寫。 如果資料表太大而無法儲存在每個計算節點上，請使用雜湊散發。 |
 | 預備        | 對暫存資料表使用循環配置資源。 使用 CTAS 的載入速度較快。 一旦資料位於臨時表中，請使用 INSERT .。。選取即可將資料移至生產資料表。 |
 
-## <a name="partitions"></a>資料分割
+## <a name="partitions"></a>分割區
 
 在專用的 SQL 集區中，資料分割資料表會根據資料範圍，在資料表資料列上儲存和執行作業。 例如，資料表可能會依日、月或年進行分割。 您可以透過「資料分割消除」將查詢掃描限定於某個資料分割內的資料，進而提升查詢效能。
 

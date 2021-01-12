@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 11/18/2020
 ms.author: procha
 ms.reviewer: jrasnick
-ms.openlocfilehash: 861b963922d64926266b42a23f85e9dc30fda7a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1031656eaa5125d07ae078773379270b26625e7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95903979"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121374"
 ---
 # <a name="compatibility-issues-with-third-party-applications-and-azure-synapse-analytics"></a>協力廠商應用程式和 Azure Synapse Analytics 的相容性問題
 
@@ -30,7 +30,7 @@ ms.locfileid: "95903979"
 
 這是 Azure Synapse 專用 SQL 集區中的問題，因為引進了 ODBC 和 JDBC 驅動程式會自動呼叫的新系統預存程式。 這些系統預存程式的其中一個可能會在執行失敗時中止開啟的交易。 視用戶端應用程式邏輯而定，可能會發生此問題。
 
-### <a name="solution"></a>解決方法
+### <a name="solution"></a>解決方案
 當您使用連線到 Azure Synapse 專用 SQL 集區的 Tableau 時，如果客戶看到此特定問題，則應在 SQL 連線中將 FMTONLY 設定為 YES。 針對 Tableau Desktop 和 Tableau 伺服器，您應該使用 Tableau 資料來源自訂 (TDC) 檔，以確保 Tableau 將此參數傳遞至驅動程式。  
 
 > [!NOTE] 
@@ -55,5 +55,5 @@ ms.locfileid: "95903979"
 
 ## <a name="see-also"></a>另請參閱
 
-* [Azure Synapse Analytics 中專用 SQL 集區的 t-sql 語言元素。](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-* [Azure Synapse Analytics 中的專用 SQL 集區支援 t-sql 語句。](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)
+* [Azure Synapse Analytics 中專用 SQL 集區的 t-sql 語言元素。](./sql-data-warehouse-reference-tsql-language-elements.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
+* [Azure Synapse Analytics 中的專用 SQL 集區支援 t-sql 語句。](./sql-data-warehouse-reference-tsql-statements.md)

@@ -12,12 +12,12 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 512775369bd7787c6228c6d452be0e236ddf5cc2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0ce07ff3ca5fbcc9776792129d3bfb4ef54efe7d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456343"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120116"
 ---
 # <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>將您專用的 SQL 集區 (先前的 SQL DW) 升級至 Gen2
 
@@ -133,4 +133,4 @@ Microsoft 可協助降低 (先前為 SQL DW) 執行專用 SQL 集區的專案層
 - [就地升級和從還原點升級](upgrade-to-latest-generation.md)
 - [建立使用者定義的還原點](sql-data-warehouse-restore-points.md)
 - [了解如何還原至 Gen2](sql-data-warehouse-restore-active-paused-dw.md)
-- [開啟 Azure Synapse Analytics 支援要求](https://go.microsoft.com/fwlink/?linkid=857950)
+- [開啟 Azure Synapse Analytics 支援要求](./sql-data-warehouse-get-started-create-support-ticket.md)

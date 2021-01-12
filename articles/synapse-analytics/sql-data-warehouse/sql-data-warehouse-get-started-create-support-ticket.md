@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: de45e338b0b863dc2364af399a6991f56658b0e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6042b5be48144ce6730a9bf4f342d7735a262643
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212270"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118059"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>要求增加配額及取得 Azure Synapse Analytics 的支援
 
@@ -36,13 +36,13 @@ ms.locfileid: "85212270"
 
 1. 檢閱您的 [Azure 支援計劃](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/)。
 
-   * **帳單、配額及訂用帳戶管理**支援適用於所有支援層級。
-   * **協助修正**支援則透過[開發人員](https://azure.microsoft.com/support/plans/developer/)、[標準](https://azure.microsoft.com/support/plans/standard/)、[專業直接](https://azure.microsoft.com/support/plans/prodirect/)支援或[頂級](https://azure.microsoft.com/support/plans/premier/)支援來提供。 客戶在使用 Azure 期間如果遇到可合理認為是 Microsoft 所造成的問題，這類問題即屬於可協助修正的問題。
-   * [專業直接支援](https://azure.microsoft.com/support/plans/prodirect/)和[頂級](https://azure.microsoft.com/support/plans/premier/)支援層級可提供**開發顧問**和**諮詢服務**。
+   * **帳單、配額及訂用帳戶管理** 支援適用於所有支援層級。
+   * **協助修正** 支援則透過 [開發人員](https://azure.microsoft.com/support/plans/developer/)、[標準](https://azure.microsoft.com/support/plans/standard/)、[專業直接](https://azure.microsoft.com/support/plans/prodirect/)支援或 [頂級](https://azure.microsoft.com/support/plans/premier/)支援來提供。 客戶在使用 Azure 期間如果遇到可合理認為是 Microsoft 所造成的問題，這類問題即屬於可協助修正的問題。
+   * [專業直接支援](https://azure.microsoft.com/support/plans/prodirect/)和 [頂級](https://azure.microsoft.com/support/plans/premier/)支援層級可提供 **開發顧問** 和 **諮詢服務**。
 
    如果您有頂級支援計劃，您也可以在 [Microsoft Premier 線上入口網站](https://premier.microsoft.com/)回報 Azure Synapse Analytics 的相關問題。 請參閱 [Azure 支援計劃](https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/)，進一步了解包括範圍、回應時間、價格等各種 Azure 支援計劃。如需有關 Azure 支援的常見問題集，請參閱 [Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
 
-1. 針對**問題類型**，請選取適當的問題類型。 針對協助修正問題，請選取 [技術]。 針對增加配額要求，選取 [服務與訂用帳戶限制 (配額)]。
+1. 針對 **問題類型**，請選取適當的問題類型。 針對協助修正問題，請選取 [技術]。 針對增加配額要求，選取 [服務與訂用帳戶限制 (配額)]。
 
    ![選取問題類型](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-issue-type.png)  
 
@@ -100,7 +100,7 @@ ms.locfileid: "85212270"
 
 若要啟用訂用帳戶的區域存取，您必須完成下列步驟：  
 
-1. 選取 ** (資料倉儲) 區域存取配額類型的 SYNAPSE SQL 集區** 。
+1. 選取 **(資料倉儲) 區域存取配額類型的 SYNAPSE SQL 集區** 。
 
 1. 從下拉式清單中選擇 **位置** ，以選取區域。
 
@@ -121,7 +121,7 @@ ms.locfileid: "85212270"
 
 ## <a name="submit-your-request"></a>提交您的要求
 
-最後一個步驟是填入 SQL Database 支援要求的剩餘詳細資料。 然後選取 **[下一步：檢查 + 建立>>] **。
+最後一個步驟是填入 SQL Database 支援要求的剩餘詳細資料。 然後選取 **[下一步：檢查 + 建立>>]**。
 
 ![查看建立詳細資料](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
 
@@ -137,5 +137,4 @@ ms.locfileid: "85212270"
 
 ## <a name="other-resources"></a>其他資源
 
-您也可以在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) 上或透過 [Microsoft 問&Azure Synapse Analytics 的問題頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)，與 Azure Synapse Analytics 社區進行連接。
-
+您也可以在 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) 上或透過 [Microsoft 問&Azure Synapse Analytics 的問題頁面](/answers/topics/azure-synapse-analytics.html)，與 Azure Synapse Analytics 社區進行連接。

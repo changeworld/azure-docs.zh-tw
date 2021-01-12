@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: da4c5f7891b518f4e6393f3fb4e153d464f4f2a2
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 386e0051a64f73b18c1ff76ed33af5f9eebe8aa0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955530"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121408"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>包含計量、警示和資源健康情況的 Standard Load Balancer 診斷
 
@@ -35,19 +35,22 @@ Azure Load Balancer 透過 Azure 入口網站的 Azure 計量提供多維度計�
 
 各種標準 Load Balancer 組態提供下列計量：
 
-| 計量 | 資源類型 | 描述 | 建議的彙總 |
+| Metric | 資源類型 | 描述 | 建議的彙總 |
 | --- | --- | --- | --- |
 | 資料路徑可用性 | 公用和內部負載平衡器 | 標準 Load Balancer 會在資料路徑上持續運用，從區域內到 Load Balancer 前端，再一路到支援 VM 的 SDN 堆疊。 只要狀況良好的執行個體持續存在，測量就會依循與您應用程式的負載平衡流量相同的路徑。 此外，也會驗證您客戶所使用的資料路徑。 此測量對您的應用程式來說是看不見的，也不會干擾到其他作業。| Average |
 | 健康情況探查狀態 | 公用和內部負載平衡器 | 標準 Load Balancer 使用分散式健康情況探查服務，可根據您的組態設定監視應用程式端點的健康情況。 這個計量會提供負載平衡器集區中每個執行個體端點的彙總檢視，或各端點篩選過的檢視。 您可以看到 Load Balancer 藉由健康情況探查設定如何檢視應用程式的健康情況。 |  Average |
-| SYN (同步) 封包 | 公用和內部負載平衡器 | 標準 Load Balancer 不會終止傳輸控制通訊協定 (TCP) 連線，也不會與 TCP 或 UDP 封包流程互動。 流程及其交握一律是在來源與 VM 執行個體之間進行。 若要針對您的 TCP 通訊協定案例進行進一步疑難排解，您可使用 SYN 封包計數器來了解已進行多少次 TCP 連線嘗試。 此計量會回報已收到的 TCP SYN 封包數。| Average |
-| SNAT 連線 | 公用 Load Balancer |標準 Load Balancer 會回報偽裝為公用 IP 位址前端的輸出流程數目。 來源網路位址轉譯 (SNAT) 連接埠是可耗盡的資源。 此計量可以指出應用程式有多依賴 SNAT 來處理連出的起始流程。 系統會回報成功和失敗之連出 SNAT 流程的計數器，而且可用來對連出流程的健康情況進行疑難排解及了解。| Average |
+| SYN (同步) 計數 | 公用和內部負載平衡器 | 標準 Load Balancer 不會終止傳輸控制通訊協定 (TCP) 連線，也不會與 TCP 或 UDP 封包流程互動。 流程及其交握一律是在來源與 VM 執行個體之間進行。 若要針對您的 TCP 通訊協定案例進行進一步疑難排解，您可使用 SYN 封包計數器來了解已進行多少次 TCP 連線嘗試。 此計量會回報已收到的 TCP SYN 封包數。| Sum |
+| SNAT 連線計數 | 公用 Load Balancer |標準 Load Balancer 會回報偽裝為公用 IP 位址前端的輸出流程數目。 來源網路位址轉譯 (SNAT) 連接埠是可耗盡的資源。 此計量可以指出應用程式有多依賴 SNAT 來處理連出的起始流程。 系統會回報成功和失敗之連出 SNAT 流程的計數器，而且可用來對連出流程的健康情況進行疑難排解及了解。| Sum |
 | 配置的 SNAT 埠 | 公用 Load Balancer | Standard Load Balancer 報告每個後端實例配置的 SNAT 埠數目 | 平均。 |
-| 使用的 SNAT 埠 | 公用 Load Balancer | Standard Load Balancer 報告每個後端實例使用的 SNAT 埠數目。 | Average | 
-| 位元組計數器 |  公用和內部負載平衡器 | 標準 Load Balancer 會報告每個前端處理的資料。 您可能有注意到，位元組不會在後端實例間平均散發。 這是預期的情況，因為 Azure 的 Load Balancer 演算法是以流程為基礎 | Average |
-| 封包計數器 |  公用和內部負載平衡器 | 標準 Load Balancer 會報告每個前端處理的封包。| Average |
+| 使用的 SNAT 埠 | 公用 Load Balancer | Standard Load Balancer 報告每個後端實例使用的 SNAT 埠數目。 | 平均 | 
+| 位元組計數 |  公用和內部負載平衡器 | 標準 Load Balancer 會報告每個前端處理的資料。 您可能有注意到，位元組不會在後端實例間平均散發。 這是預期的情況，因為 Azure 的 Load Balancer 演算法是以流程為基礎 | Sum |
+| 封包計數 |  公用和內部負載平衡器 | 標準 Load Balancer 會報告每個前端處理的封包。| Sum |
 
   >[!NOTE]
-  >當您透過 NVA 或防火牆 Syn 封包使用來自內部負載平衡器的流量，而位元組計數器和封包計數器計量無法使用時，將會顯示為零。 
+  >當您透過 NVA 或防火牆 Syn 封包使用來自內部負載平衡器的流量時，將無法使用位元組計數和封包計數計量，而且會顯示為零。 
+  
+  >[!NOTE]
+  >最大和最小匯總不能用於 SYN 計數、封包計數、SNAT 連線計數和位元組計數計量 
   
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>在 Azure 入口網站中檢視負載平衡器計量
 
@@ -237,7 +240,7 @@ Azure Standard Load Balancer 支援可輕鬆設定多維度計量的警示。 �
 | --- | --- |
 | 可用 | 您的標準負載平衡器資源狀況良好且可供使用。 |
 | 已降級 | 您的標準負載平衡器有影響效能的平臺或使用者起始事件。 資料路徑可用性計量在至少兩分鐘內回報了小於 90% 但大於 25% 的健康情況。 您將體驗到嚴重的效能影響。 [遵循疑難排解 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) ，判斷是否有使用者起始的事件造成影響您的可用性。
-| 無法使用 | 您的標準負載平衡器資源狀況不良。 資料路徑可用性計量回報的健康情況低於至少兩分鐘的25% 健全狀況。 您將會遇到對輸入連線能力造成顯著的效能影響或缺乏可用性。 可能是使用者或平臺事件造成無法使用的情形。 [遵循疑難排解 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) ，判斷是否有使用者起始的事件影響您的可用性。 |
+| [無法使用] | 您的標準負載平衡器資源狀況不良。 資料路徑可用性計量回報的健康情況低於至少兩分鐘的25% 健全狀況。 您將會遇到對輸入連線能力造成顯著的效能影響或缺乏可用性。 可能是使用者或平臺事件造成無法使用的情形。 [遵循疑難排解 RHC 指南](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc) ，判斷是否有使用者起始的事件影響您的可用性。 |
 | Unknown | 標準負載平衡器資源的資源健康狀態尚未更新，或尚未收到過去10分鐘的資料路徑可用性資訊。 此狀態應該是暫時性的，系統會在收到資料後立即反/映正確的狀態。 |
 
 若要檢視公用標準 Load Balancer 資源的健康情況：

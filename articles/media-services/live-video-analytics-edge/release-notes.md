@@ -3,12 +3,12 @@ title: IoT Edge 版本資訊的即時影片分析-Azure
 description: 本主題提供有關 IoT Edge 版本、增強功能、bug 修正和已知問題的即時影片分析版本資訊。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7761fee8f23b5be259f9a5c278f761fa4ce92fbf
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059971"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121238"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 版本資訊的即時影片分析
 
@@ -20,6 +20,23 @@ ms.locfileid: "98059971"
 * 已知問題
 * 錯誤修正
 * 已被取代的功能
+
+<hr width=100%>
+
+## <a name="january-12-2021"></a>2021年1月12日
+
+此版本標籤適用于2021年1月的重新整理模組：
+
+```
+mcr.microsoft.com/media/live-video-analytics:2.0.1
+```
+
+> [!NOTE]
+> 在快速入門和教學課程中，部署資訊清單會使用 2 (即時影片分析： 2) 的標記。 因此只要重新部署這類資訊清單，就會更新您的 edge > 裝置上的模組。
+### <a name="bug-fixes"></a>錯誤修正 
+
+* `ActivationSignalOffset` `MinimumActivationTime` `MaximumActivationTime` 未正確地將欄位和信號閘道處理器設定為必要的屬性。 它們現在是 **選擇性** 屬性。
+* 修正了使用 bug，讓 IoT Edge 模組上的即時影片分析在特定區域中部署時損毀。
 
 <hr width=100%>
 

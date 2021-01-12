@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 4d9a5900990ea41788ced5f25690619fbde68d33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87bc2338ecc48f1115a406c276ef221cb185a4c5
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854982"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118620"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight 中的受控識別
 
@@ -55,6 +55,7 @@ HDInsight 會自動更新您在這些案例中使用之受控識別的憑證。 
  * 在 ESP 叢集中，變更 AAD DS LDAPS 憑證時，LDAPS 憑證不會自動更新，因此 LDAP 同步和擴展 ups 會開始失敗。
  * ADLS Gen2 的 MSI 存取開始失敗。
  * 在 CMK 案例中無法輪替加密金鑰。
+
 然後，您應該將上述案例所需的角色和許可權指派給叢集中使用的所有受控識別。 例如，如果您針對 ADLS Gen2 和 ESP 叢集使用不同的受控識別，則兩者都應該將「儲存體 blob 資料擁有者」和「HDInsight 網域服務參與者」角色指派給他們，以避免在這些問題中遇到。
 
 ## <a name="faq"></a>常見問題集
