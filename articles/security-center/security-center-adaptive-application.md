@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 95c3ad6f689893195e0e5c17c59ab31143cf238d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 473353c3f61d1096beb11c521c08ac723d54b780
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346514"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071592"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用適應性應用程式控制來減少電腦的攻擊面
 
@@ -71,7 +71,7 @@ ms.locfileid: "93346514"
 
     [自動調整 **應用** 程式控制] 頁面隨即開啟，並將您的 vm 分組為下列索引標籤：
 
-    - 已 **設定** -已定義應用程式允許清單的電腦群組。 針對每個群組，[已設定] 索引標籤會顯示：
+    - 已 **設定**-已定義應用程式允許清單的電腦群組。 針對每個群組，[已設定] 索引標籤會顯示：
         - 群組中的電腦數目
         - 最近的警示
 
@@ -112,7 +112,7 @@ ms.locfileid: "93346514"
       > 
       > 應用程式是由其發行者定義，如果應用程式沒有發行者資訊 (不帶正負號的) ，則會針對特定應用程式的完整路徑建立路徑規則。
 
-   1. 若要套用規則，請選取 [ **Audit** ]。 
+   1. 若要套用規則，請選取 [ **Audit**]。 
 
 
 
@@ -131,7 +131,7 @@ ms.locfileid: "93346514"
 
 1. （選擇性）新增一或多個自訂規則：
 
-   1. 選取 [ **新增規則** ]。
+   1. 選取 [ **新增規則**]。
 
       ![新增自訂規則](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
 
@@ -145,27 +145,22 @@ ms.locfileid: "93346514"
   
    1. 定義允許的使用者和受保護的檔案類型。
 
-   1. 當您完成定義規則之後，請選取 [ **新增** ]。
+   1. 當您完成定義規則之後，請選取 [ **新增**]。
 
-1. 若要套用變更，請選取 [ **儲存** ]。
+1. 若要套用變更，請選取 [ **儲存**]。
 
 
 ## <a name="review-and-edit-a-groups-settings"></a>檢查和編輯群組的設定
 
-1. 若要查看群組的詳細資料和設定，請選取 [ **群組設定** ]。
+1. 若要查看群組的詳細資料和設定，請選取 [**群組設定**]。
 
     此窗格會顯示可以修改的組名 () 、OS 類型、位置和其他相關詳細資料。
 
     :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-group-settings.png" alt-text="自我調整應用程式控制的 [群組設定] 頁面" lightbox="./media/security-center-adaptive-application/adaptive-application-group-settings.png":::
 
-    > [!IMPORTANT]
-    > 在 [檔案類型保護模式] 設定中，[ **強制** ] 選項在 **所有** 案例中會呈現灰色。 目前沒有任何強制選項可用。 
-    >
-    > :::image type="content" source="./media/security-center-adaptive-application/adaptive-application-modes.png" alt-text="檔案保護的強制模式會永久呈現灰色。沒有任何強制選項可供使用。":::
-
 1. （選擇性）修改群組的名稱或檔案類型保護模式。
 
-1. 選取 **[** 套用並 **儲存** ]。
+1. 選取 **[** 套用並 **儲存**]。
 
 
 
@@ -181,7 +176,7 @@ ms.locfileid: "93346514"
 
 1. 請參閱 **設定應用程式控制規則** 頁面的各個區段，如在 [一組電腦上啟用](#enable-application-controls-on-a-group-of-machines)自動調整應用程式控制項所述。
 
-1. 若要套用變更，請選取 [ **Audit** ]。
+1. 若要套用變更，請選取 [ **Audit**]。
 
 
 
@@ -210,11 +205,11 @@ ms.locfileid: "93346514"
 
 1. 開啟  **已設定的電腦** 清單。
 
-1. 從資料列結尾的三個點開啟電腦的功能表，然後選取 [ **移動** ]。 [ **將電腦移到不同的群組** ] 窗格隨即開啟。
+1. 從資料列結尾的三個點開啟電腦的功能表，然後選取 [ **移動**]。 [ **將電腦移到不同的群組** ] 窗格隨即開啟。
 
-1. 選取目的地群組，然後選取 [ **移動電腦** ]。
+1. 選取目的地群組，然後選取 [ **移動電腦**]。
 
-1. 若要儲存變更，請選取 [ **儲存** ]。
+1. 若要儲存變更，請選取 [ **儲存**]。
 
 
 

@@ -5,22 +5,19 @@ description: 瞭解如何使用 Azure Machine Learning studio、CLI、SDK 和已
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 82e128ffdc215a084110a68170ac12accd8fca0e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4f48acc2d6e57dea0a8db2a149d7ca2871c9f39
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308126"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071998"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>匯出或刪除您的 Machine Learning services 工作區資料
-
-
 
 在 Azure Machine Learning 中，您可以使用入口網站的圖形化介面或 Python SDK 來匯出或刪除工作區資料。 本文說明這兩個選項。
 
@@ -39,12 +36,12 @@ Azure Machine Learning 所儲存的產品內資料可供匯出及刪除。 您�
 當您建立工作區時，Azure 會在資源群組內建立一些資源：
 
 - 工作區本身
-- 儲存體帳戶
+- 一個儲存體帳戶
 - 容器登錄
 - Application Insights 實例
 - 金鑰保存庫
 
-您可以從清單中選取這些資源，然後選擇 [ **刪除** ]，以刪除這些資源 
+您可以從清單中選取這些資源，然後選擇 [**刪除**]，以刪除這些資源 
 
 :::image type="content" source="media/how-to-export-delete-data/delete-resource-group-resources.png" alt-text="入口網站的螢幕擷取畫面，其中已醒目提示刪除圖示":::
 
@@ -54,13 +51,13 @@ Azure Machine Learning 所儲存的產品內資料可供匯出及刪除。 您�
 
 ## <a name="export-and-delete-machine-learning-resources-using-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio 來匯出和刪除機器學習資源
 
-Azure Machine Learning studio 提供您機器學習資源的統一觀點，例如筆記本、資料集、模型和實驗。 Azure Machine Learning studio 強調保留資料和實驗的記錄。 您可以使用瀏覽器來刪除計算資源（例如管線和計算資源）。 針對這些資源，請流覽至有問題的資源，然後選擇 [ **刪除** ]。 
+Azure Machine Learning studio 提供您機器學習資源的統一觀點，例如筆記本、資料集、模型和實驗。 Azure Machine Learning studio 強調保留資料和實驗的記錄。 您可以使用瀏覽器來刪除計算資源（例如管線和計算資源）。 針對這些資源，請流覽至有問題的資源，然後選擇 [ **刪除**]。 
 
 您可以取消註冊資料集，並封存實驗，但是這些作業不會刪除資料。 若要完全移除資料，必須在儲存層級刪除資料集和執行資料。 如先前所述，您可以使用入口網站來刪除儲存層級的。
 
-您可以使用 Studio 從實驗回合下載訓練成品。 選擇您感興趣的 **實驗** 和 **執行** 。 選擇 [ **輸出 + 記錄** ]，並流覽至您想要下載的特定構件。 選擇 **[...]** 並 **下載** 。
+您可以使用 Studio 從實驗回合下載訓練成品。 選擇您感興趣的 **實驗** 和 **執行** 。 選擇 [ **輸出 + 記錄** ]，並流覽至您想要下載的特定構件。 選擇 **[...]** 並 **下載**。
 
-您可以流覽至所需的 **模型** ，然後選擇 [ **下載** ]，以下載已註冊的模型。 
+您可以流覽至所需的 **模型** ，然後選擇 [ **下載**]，以下載已註冊的模型。 
 
 :::image type="contents" source="media/how-to-export-delete-data/model-download.png" alt-text="醒目提示下載選項的 studio 模型頁面螢幕擷取畫面":::
 

@@ -7,18 +7,17 @@ author: vladvino
 manager: erikre
 editor: ''
 ms.service: api-management
-ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e36f7c6085908630d5e7aa2593fe4d57202d6ee7
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: d0d5434de747b48464df1c07f8c7b6a7e785c858
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107646"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070904"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何將 Azure API 管理與虛擬網路搭配使用
 「Azure 虛擬網路」(VNET) 可讓您將任何 Azure 資源，放在您控制存取權的非網際網路可路由網路中。 然後，可以使用各種 VPN 技術，將這些網路連線到您的內部部署網路。 若要深入了解「Azure 虛擬網路」，請從以下資訊著手：[Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
@@ -147,6 +146,9 @@ Azure API 管理可以部署在虛擬網路 (VNET) 內，因此它可以存取�
   > 上述叢集的變更 (DNS 區域 **.nsatc.net** 變更為 **.microsoftmetrics.com**) 大多是 DNS 變更。 叢集的 IP 位址不會變更。
 
 + **區域服務標籤**：允許 Storage、SQL 和事件中樞服務標籤輸出連線的 NSG 規則，可以使用那些標籤 (與包含 API 管理執行個體的區域相對應) 的區域版本 (例如，適用於美國西部地區之 API 管理執行個體的 Storage.WestUS)。 在多區域部署中，每個區域中的 NSG 應該允許流量到達該區域和主要區域的服務標籤。
+
+    > [!IMPORTANT]
+    > 若要在虛擬網路中啟用 API 管理實例的 [開發人員入口網站](api-management-howto-developer-portal.md) ，請確定您也允許對美國西部區域中的 blob 儲存體進行輸出連線。 例如，在 NSG 規則中使用 **WestUS** 服務標記。 目前必須能夠連線到美國西部區域中的 blob 儲存體，才能發佈任何 API 管理實例的開發人員入口網站。
 
 + **SMTP 轉送**：SMTP 轉送的輸出網路連線能力，其會在主機 `smtpi-co1.msn.com`、`smtpi-ch1.msn.com`、`smtpi-db3.msn.com`、`smtpi-sin.msn.com` 和 `ies.global.microsoft.com` 下解析
 

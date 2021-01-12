@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/04/2020
+ms.date: 01/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 919a9831731a8f7c8065f2f1c496691ae33ba659
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: a66b5d59415aad7abf3e8dc95c7498b5d774d640
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861992"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071267"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp Files 的方案架構
 本文提供最佳作法的參考，可協助您瞭解使用 Azure NetApp Files 的解決方案架構。  
@@ -39,7 +39,7 @@ ms.locfileid: "97861992"
 * [Oracle VM 映射及其在 Microsoft Azure 上的部署：共用存放裝置設定選項](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [使用 Azure NetApp Files 搭配 Oracle Database 的優點](solutions-benefits-azure-netapp-files-oracle-database.md)
 
-### <a name="machine-learning"></a>Machine Learning
+### <a name="machine-learning"></a>機器學習
 *   [Cloudera Machine Learning](https://docs.cloudera.com/machine-learning/cloud/requirements-azure/topics/ml-requirements-azure.html)
 
 ## <a name="windows-apps-and-sql-server-solutions"></a>Windows 應用程式和 SQL Server 解決方案
@@ -136,6 +136,7 @@ ms.locfileid: "97861992"
 * [整合 Azure NetApp Files 與 Azure Kubernetes Service](../aks/azure-netapp-files.md)
 * [在 Azure 上使用 Azure NetApp Files 的全球 Kubernetes 效能](https://cloud.netapp.com/blog/ma-anf-blg-configure-kubernetes-openshift)
 * [Trident-適用于容器的儲存體協調器](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
+* [Azure Kubernetes Service (AKS) 的 Magento 電子商務平臺 ](/azure/architecture/example-scenario/magento/magento-azure)
 
 ### <a name="azure-batch"></a>Azure Batch
 

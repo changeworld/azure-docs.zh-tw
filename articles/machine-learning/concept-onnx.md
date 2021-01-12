@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: e7b818de12a968869d655a80917572ddf5f2c210
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5a1ed6c43e4d3a96e0e19d7be50e1e16bcab780e
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323014"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071233"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX 和 Azure Machine Learning：建立及加速 ML 模型
 
@@ -28,7 +27,7 @@ Microsoft 和合作夥伴的一群 ONNX 建立為代表機器學習模型的開�
 
 [ONNX 運行](https://onnxruntime.ai) 時間是一個高效能的推斷引擎，可將 ONNX 模型部署到生產環境。 它已針對雲端和邊緣優化，並可在 Linux、Windows 和 Mac 上運作。 它以 c + + 撰寫，也有 C、Python、c #、JAVA 和 JAVAscript ( # A0) Api，可用於各種環境中的使用方式。 ONNX Runtime 支援 DNN 和傳統 ML 模型，並與不同硬體上的加速器整合，例如 NVidia Gpu 上的 TensorRT、Intel 處理器上的 OpenVINO、Windows 上的 DirectML 等等。 藉由使用 ONNX 執行時間，您可以受益于大量的生產等級優化、測試和持續改進。
 
-ONNX Runtime 用於大規模的 Microsoft 服務，例如 Bing、Office 和 Azure 認知服務。 效能提升取決於許多因素，但這些 Microsoft 服務已看到 __CPU 的平均2倍效能提升__ 。 除了 Azure Machine Learning 服務之外，ONNX Runtime 也會在支援 Machine Learning 工作負載的其他產品中執行，包括：
+ONNX Runtime 用於大規模的 Microsoft 服務，例如 Bing、Office 和 Azure 認知服務。 效能提升取決於許多因素，但這些 Microsoft 服務已看到 __CPU 的平均2倍效能提升__。 除了 Azure Machine Learning 服務之外，ONNX Runtime 也會在支援 Machine Learning 工作負載的其他產品中執行，包括：
 + Windows：執行時間內建于 windows 中，做為 [windows Machine Learning](/windows/ai/windows-ml/) 的一部分，並在數百個裝置上執行。 
 + Azure SQL 產品系列：對 [AZURE Sql Edge](../azure-sql-edge/onnx-overview.md) 和 [azure sql 受控執行個體](../azure-sql/managed-instance/machine-learning-services-overview.md)中的資料執行原生評分。
 + ML.NET： [在 ML.NET 中執行 ONNX 模型](/dotnet/machine-learning/tutorials/object-detection-onnx)。

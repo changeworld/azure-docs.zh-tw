@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 9a8dba99435e1616b1c49d5209b30c3c523876db
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854837"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071335"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>使用安全中心的整合式 EDR 解決方案來保護您的端點： Microsoft Defender for Endpoint
 
@@ -121,13 +121,19 @@ Microsoft Defender for Endpoint 是全方位的雲端提供端點安全性解決
 
 ## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>適用于端點的安全性中心整合式 Microsoft Defender 常見問題
 
-### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint 的授權需求有哪些？
+- [Microsoft Defender for Endpoint 的授權需求有哪些？](#what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint)
+- [如果我已有 Microsoft Defender for Endpoint 的授權，可以取得 Azure Defender 的折扣嗎？](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
+- [從協力廠商 EDR 工具如何? 切換？](#how-do-i-switch-from-a-third-party-edr-tool)
 
+### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint 的授權需求有哪些？
 適用于 **伺服器的 Azure defender** 不需額外付費，即可使用 Defender for Endpoint。 或者，您也可以另外購買50部機器或更多。
 
+### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已有 Microsoft Defender for Endpoint 的授權，可以取得 Azure Defender 的折扣嗎？
+如果您已經擁有適用于 Microsoft Defender for Endpoint 的授權，則不需要支付該部分的 Azure Defender 授權。
+
+若要確認您的折扣，請聯絡資訊安全中心的支援小組，並提供相關的工作區識別碼、區域及授權資訊。
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>從協力廠商 EDR 工具如何? 切換？
-
 如需從非 Microsoft 端點解決方案切換的完整指示，請參閱 Microsoft Defender for Endpoint 檔： [遷移總覽](/windows/security/threat-protection/microsoft-defender-atp/switch-to-microsoft-defender-migration)。
   
 

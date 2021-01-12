@@ -7,16 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 author: gvashishtha
 ms.author: gopalv
-ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 4224e301d6410fc97da1f98cd0dd9577c6341cd3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 2b953fd040b9ba76eacddb91a89ac65d51e340a0
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740618"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071658"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>遠端模型部署疑難排解 
 
@@ -182,7 +181,7 @@ Azure Kubernetes Service 部署支援自動調整，可讓您新增複本以支�
 
 針對下列錯誤採取下列動作：
 
-|[錯誤]  | 解決方案  |
+|錯誤  | 解決方案  |
 |---------|---------|
 |部署 web 服務時映射建立失敗     |  新增 "pynacl = = 1.2.1" 作為映射設定 Conda 檔案的 pip 相依性       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   將部署中所使用 Vm 的 SKU 變更為具有更多記憶體的 Vm。 |

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a3427be85314f06b5408c4450e0415768122879f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a5764a9f230540d58edf71e8c00781e86589aa9a
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913000"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070162"
 ---
 # <a name="configure-and-submit-training-runs"></a>設定和提交定型執行
 
@@ -216,6 +216,8 @@ run.wait_for_completion(show_output=True)
     4. 使用 `pip install 'PyJWT<2.0.0'` 進行安裝
     
     如果您要在執行時提交使用者建立的環境，請考慮在該環境中使用最新版本的 azureml 核心。 版本 >= azureml 核心已釘選 PyJWT < 2.0.0 的1.18.0。 如果您需要在您提交的環境中使用 azureml 核心 < 1.18.0，請務必在您的 pip 相依性中指定 PyJWT < 2.0.0。
+
+* **計算目標需要很長的時間才能啟動**：計算目標的 Docker 映射會從 AZURE CONTAINER REGISTRY (ACR) 載入。 根據預設，Azure Machine Learning 會建立使用 *基本* 服務層級的 ACR。 將工作區的 ACR 變更為「標準」或「進階層」，可減少建立和載入映射所需的時間。 如需詳細資訊，請參閱 [Azure Container Registry 服務層級](../container-registry/container-registry-skus.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

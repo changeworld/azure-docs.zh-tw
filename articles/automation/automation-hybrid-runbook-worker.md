@@ -3,22 +3,20 @@ title: Azure 自動化混合式 Runbook 背景工作角色概觀
 description: 此文章概述混合式 Runbook 背景工作角色，可供您用來在本機資料中心或雲端提供者的機器上執行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 11/23/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7feac3ccb94cd8b4b0fab509477d4dbf772df2ae
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: a23d30047a13b1d176b086a9923e140e7f8d3e45
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505523"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072134"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合式 Runbook 背景工作概觀
 
 Azure 自動化中的 Runbook 可能無法存取其他雲端或內部部署環境中的資源，因為這些資源是在 Azure 雲端平台上執行。 您可以使用 Azure 自動化的混合式 Runbook 背景工作角色功能，直接在裝載角色的電腦上以及針對環境中的資源執行 runbook，以管理這些本機資源。 Runbook 會在 Azure 自動化中儲存和管理，然後傳遞至一或多個指派的電腦。
 
-下圖說明這項功能：
-
-![混合式 Runbook 背景工作概觀](media/automation-hybrid-runbook-worker/automation.png)
+## <a name="runbook-worker-types"></a>Runbook 背景工作類型
 
 Runbook Worker 有兩種類型：系統和使用者。 下表說明兩者之間的差異。
 
@@ -29,18 +27,19 @@ Runbook Worker 有兩種類型：系統和使用者。 下表說明兩者之間�
 
 混合式 Runbook 背景工作角色可在 Windows 或 Linux 作業系統上執行，而且此角色依賴 [Log analytics 代理程式](../azure-monitor/platform/log-analytics-agent.md) 向 Azure 監視器 [log analytics 工作區](../azure-monitor/platform/design-logs-deployment.md)報告。 工作區不僅能監視支援的作業系統的電腦，也會下載安裝混合式 Runbook 背景工作角色所需的元件。
 
-當 Azure 自動化 [更新管理](./update-management/overview.md) 啟用時，任何連線到 Log Analytics 工作區的電腦都會自動設定為系統混合式 Runbook 背景工作角色。
+當 Azure 自動化 [更新管理](./update-management/overview.md) 啟用時，任何連線到 Log Analytics 工作區的電腦都會自動設定為系統混合式 Runbook 背景工作角色。 若要將它設定為使用者 Windows 混合式 Runbook 背景工作角色，請參閱 [部署 Windows 混合式 runbook](automation-windows-hrw-install.md) 背景工作角色及 linux 的部署，請參閱 [部署 Linux 混合式 Runbook 背景工作角色](automation-linux-hrw-install.md)。
 
-每個使用者混合式 Runbook 背景工作角色都是您在安裝背景工作時所指定之混合式 Runbook 背景工作角色群組的成員。 群組可以包含單一背景工作角色，但您可以在群組中包含多個背景工作角色，以獲得高可用性。 每部電腦可以將一個混合式 Runbook 背景工作角色裝載到一個自動化帳戶;您無法跨多個自動化帳戶註冊混合式背景工作角色。 這是因為混合式背景工作角色只能接聽單一自動化帳戶中的作業。 針對裝載受更新管理管理之系統混合式 Runbook 背景工作角色的電腦，您可以將它們新增至混合式 Runbook 背景工作角色群組。 但是，您必須針對更新管理和混合式 Runbook 背景工作角色群組成員資格使用相同的自動化帳戶。
+## <a name="how-does-it-work"></a>運作方式
+
+![混合式 Runbook 背景工作概觀](media/automation-hybrid-runbook-worker/automation.png)
+
+每個使用者混合式 Runbook 背景工作角色都是您在安裝背景工作時所指定之混合式 Runbook 背景工作角色群組的成員。 群組可以包含單一背景工作角色，但您可以在群組中包含多個背景工作角色，以獲得高可用性。 每部電腦可以將一個混合式 Runbook 背景工作角色裝載到一個自動化帳戶;您無法跨多個自動化帳戶註冊混合式背景工作角色。 混合式背景工作角色只能接聽單一自動化帳戶中的作業。 針對裝載受更新管理管理之系統混合式 Runbook 背景工作角色的電腦，您可以將它們新增至混合式 Runbook 背景工作角色群組。 但是，您必須針對更新管理和混合式 Runbook 背景工作角色群組成員資格使用相同的自動化帳戶。
 
 當您在使用者混合式 Runbook 背景工作角色上啟動 runbook 時，您要指定執行的群組。 每個群組中的背景工作角色會對 Azure 自動化進行輪詢，以查看是否有任何可用的作業。 若有可用的作業，會由第一個取得該作業的背景工作角色負責。 作業佇列的處理時間取決於混合式背景工作角色的硬體設定檔和負載。 您無法指定特定背景工作角色。 「混合式背景工作角色」適用于每隔30秒)  (輪詢機制，並遵循先出的第一層。 根據推送作業的時間，無論是哪一種混合式背景工作角色 ping，自動化服務都會挑選工作。 單一混合式背景工作角色通常可以針對每個 ping 收取四項作業 (也就是每隔30秒) 。 如果您的推播作業速率超過每30秒4秒，則混合式 Runbook 背景工作角色群組中的另一個混合式背景工作角色群組會收取作業的可能性很高。
 
+混合式 Runbook 背景工作角色的磁碟空間、記憶體或網路通訊端沒有許多 [Azure 沙箱](automation-runbook-execution.md#runbook-execution-environment) 資源 [限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) 。 混合式背景工作角色的限制僅與背景工作角色本身的資源相關，且不受 Azure 沙箱擁有的 [公平共用](automation-runbook-execution.md#fair-share) 時間限制所限制。
+
 若要控制混合式 Runbook 背景工作角色上的 runbook 分佈，以及觸發工作的時間或方式，您可以在自動化帳戶內針對不同的混合式 Runbook 背景工作角色群組註冊混合式背景工作角色群組。 針對特定群組或群組，將作業設為目標，以支援您的執行安排。
-
-使用混合式 Runbook 背景工作角色，而不是 [Azure 沙箱](automation-runbook-execution.md#runbook-execution-environment)，因為其不會有許多沙箱在磁碟空間、記憶體或網路通訊端上的[限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。 混合式背景工作角色的限制只與背景工作角色本身的資源相關。
-
-> [!NOTE]
-> 混合式 Runbook 背景工作角色不受限於 Azure 沙箱所具有的[公平共用](automation-runbook-execution.md#fair-share)時間限制。
 
 ## <a name="hybrid-runbook-worker-installation"></a>混合式 Runbook 背景工作角色安裝
 
@@ -99,7 +98,7 @@ Azure 自動化混合式 Runbook 背景工作角色可在 Azure Government 中�
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色的更新管理位址
 
-除了混合式 Runbook 背景工作角色所需的標準位址和埠之外，更新管理還有 [ [網路規劃](./update-management/overview.md#ports) ] 區段下所述的其他網路設定需求。
+除了混合式 Runbook 背景工作角色所需的標準位址和埠之外，更新管理還有 [ [網路規劃](./update-management/overview.md#ports) ] 區段中所述的其他網路設定需求。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>混合式 Runbook 背景工作角色上的 Azure 自動化狀態設定
 
@@ -107,7 +106,7 @@ Azure 自動化混合式 Runbook 背景工作角色可在 Azure Government 中�
 
 ## <a name="runbook-worker-limits"></a>Runbook Worker 限制
 
-每個自動化帳戶的混合式背景工作角色群組數目上限為4000，適用于系統 & 使用者混合式背景工作角色。 如果您有超過4000部要管理的電腦，我們建議您建立額外的自動化帳戶。
+每個自動化帳戶的混合式背景工作角色群組數目上限為4000，適用于系統 & 使用者混合式背景工作角色。 如果您有超過4000部要管理的電腦，我們建議您建立另一個自動化帳戶。
 
 ## <a name="runbooks-on-a-hybrid-runbook-worker"></a>在混合式 Runbook 背景工作角色上啟動 Runbook
 

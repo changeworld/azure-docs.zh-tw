@@ -9,13 +9,13 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
-ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 6276d5c8d333f29c55720f2255f2cdf27e1e36cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.reviewer: mldocs
+ms.openlocfilehash: 1c549cd4a4d76e96f16eb04f3cf5aa3368725b8c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91342233"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070536"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>從 Azure AI 資源庫檢視和刪除產品中的使用者資料
 
@@ -61,7 +61,7 @@ ms.locfileid: "91342233"
 1.    登入 [Azure AI 資源庫](https://gallery.azure.ai/)。
 2.    按一下右上角的個人資料圖片，然後按一下帳戶名稱以載入個人資料頁面。
 3.    按 F12 來開啟瀏覽器的 [開發人員工具] 窗格、選取 [網路] 索引標籤，然後重新整理頁面。 
-4. 在 [篩選條件] 文字方塊中輸入「目錄」** 字串來對該字串篩選要求。
+4. 在 [篩選條件] 文字方塊中輸入「目錄」字串來對該字串篩選要求。
 5.    在 URL 的要求中 `https://catalog.cortanaanalytics.com/entities` 尋找 GET 要求，然後選取 [ *標頭* ] 索引標籤。向下移至 [ *要求標頭* ] 區段。
 6.    `DataLabAccessToken`　標頭下方是英數字元權杖。 為了讓資料保持安全，請勿共用此權杖。
 

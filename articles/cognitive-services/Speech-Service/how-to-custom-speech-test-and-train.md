@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: af5ed0296ce99a4450fffec6b047285307ed0ff2
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709294"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070757"
 ---
 # <a name="prepare-data-for-custom-speech"></a>準備自訂語音的資料
 
@@ -50,7 +50,7 @@ ms.locfileid: "97709294"
 | [音訊 + 人類標記的文字記錄](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用來評估精確度 | 0.5-5 小時的音訊 | 是 | 1-20 小時的音訊 |
 | [相關文字](#related-text-data-for-training) | 否 | N/a | 是 | 1-200 MB 的相關文字 |
 
-當您將新模型定型時，請從 [相關文字](#related-text-data-for-training)開始。 這項資料將已改善特殊條款和片語的辨識。
+當您將新模型定型時，請從 [相關文字](#related-text-data-for-training)開始。 這項資料將已改善特殊條款和片語的辨識。 以文字定型的速度會比使用音訊 (分鐘與天) 進行定型更快。
 
 檔案應該依類型分組至資料集，並以 .zip 檔案的形式上傳。 每一個資料集只能包含單一資料類型。
 
@@ -138,7 +138,9 @@ ms.locfileid: "97709294"
 > [!div class="mx-imgBorder"]
 > ![從語音入口網站選取音訊](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
-請參閱 [設定您的 Azure 帳戶](custom-speech-overview.md#set-up-your-azure-account) ，以取得語音服務訂用帳戶的建議區域清單。 在其中一個區域中設定語音訂用帳戶，將可縮短定型模型所花費的時間。
+請參閱 [設定您的 Azure 帳戶](custom-speech-overview.md#set-up-your-azure-account) ，以取得語音服務訂用帳戶的建議區域清單。 在其中一個區域中設定語音訂用帳戶，將可縮短定型模型所花費的時間。 在這些區域中，相較于在其他區域中每天1小時，定型可以每天處理大約10小時的音訊。 如果模型定型無法在一周內完成，則模型會標示為失敗。
+
+並非所有的基底模型都支援使用音訊資料進行定型。 如果基底模型不支援它，則服務會忽略音訊，並只使用轉譯的文字進行定型。 在此情況下，定型將與使用相關文字進行定型一樣。
 
 ## <a name="related-text-data-for-training"></a>定型的相關文字資料
 
@@ -150,6 +152,8 @@ ms.locfileid: "97709294"
 | 發音 | 使用未定義的發音來改善不尋常詞彙、縮寫或其他單字的發音。 |
 
 句子可以提供為單一文字檔或多個文字檔。 若要改善精確度，請使用更接近預期說話語句的文字資料。 發音應以單一文字檔的形式提供。 所有專案都可以封裝成單一 zip 檔案，並上傳至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂 <span class="docon docon-navigate-external x-hidden-focus"></span> 語音入口網站</a>。
+
+使用相關文字定型通常會在幾分鐘內完成。
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>建立句子檔案的指導方針
 
@@ -190,7 +194,7 @@ ms.locfileid: "97709294"
 
 自訂的發音提供英文 (`en-US`) 和德文 (`de-DE`) 。 下表顯示支援的字元（依語言）：
 
-| Language | 地區設定 | 字元 |
+| 語言 | Locale | Characters |
 |----------|--------|------------|
 | 英文 | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 | 德文 | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |

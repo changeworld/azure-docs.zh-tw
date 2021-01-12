@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 11/18/2020
-ms.openlocfilehash: 6037b372f73bcf3554120e305f4b3031b26e97d4
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.date: 01/10/2021
+ms.openlocfilehash: 66a3276863b05cb2fe0dd80a2195f7fd2af1443c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831647"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071930"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -36,7 +36,7 @@ Log Analytics 專用叢集會使用每日 1000 GB 起的容量保留 [定價模�
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Customer-Managed 金鑰在 Azure 監視器中的運作方式
 
-Azure 監視器會使用系統指派的受控識別，來授與您 Azure Key Vault 的存取權。 叢集層級支援 Log Analytics 叢集的身分識別，並允許在多個工作區上 Customer-Managed 金鑰，新的 Log Analytics *叢集資源會* 作為您 Key Vault 與 Log analytics 工作區之間的中繼身分識別連線來執行。 Log Analytics 叢集儲存體使用與「叢集」資源建立關聯的受控識別，以透過 Azure Active Directory 向 Azure Key Vault 進行驗證。 
+Azure 監視器使用受控識別將存取權授與您的 Azure Key Vault。 叢集層級支援 Log Analytics 叢集的身分識別。 為了允許在多個工作區上 Customer-Managed 金鑰保護，新的 Log Analytics *叢集資源會* 以您的 Key Vault 與 Log Analytics 工作區之間的中繼身分識別連線形式來執行。 叢集的儲存體會使用與叢集資源相關聯的受控識別，透過 \' Azure Active Directory 向您的 Azure Key Vault 進行驗證。  
 
 在客戶管理的金鑰設定之後，連結至您專用叢集之工作區的新內嵌資料會以您的金鑰加密。 您可以隨時從叢集取消連結工作區。 然後，新的資料會內嵌至 Log Analytics 儲存體，並使用 Microsoft 金鑰進行加密，而您可以順暢地查詢新的和舊的資料。
 
@@ -125,6 +125,11 @@ Authorization: Bearer <token>
 
 ## <a name="create-cluster"></a>建立叢集
 
+> [!資訊] 群集支援兩種 [受控識別類型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。 當您輸入身分識別類型時，系統指派的受控識別會與叢集一起建立 `SystemAssigned` ，並可稍後用來授與存取權給您的 Key Vault。 如果您想要建立在建立時為客戶管理的金鑰設定的叢集，請使用 Key Vault 中授與的使用者指派受控識別來建立叢集--更新具有身分 `UserAssigned` 識別類型的叢集、中的身分識別資源識別碼， `UserAssignedIdentities` 並提供中的金鑰詳細資料 `keyVaultProperties` 。
+
+> [!IMPORTANT]
+> 您目前無法使用使用者指派的受控識別來定義客戶管理的金鑰（如果您的 Key Vault 位於 Private-Link (vNet) 。 這項限制不適用於系統指派的受控識別。
+
 請依照 [專用叢集文章](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中所述的程式進行操作。 
 
 ## <a name="grant-key-vault-permissions"></a>授與 Key Vault 權限
@@ -132,7 +137,7 @@ Authorization: Bearer <token>
 在 Key Vault 中建立存取原則，以將許可權授與您的叢集。 基礎 Azure 監視器儲存體會使用這些許可權。 在 Azure 入口網站中開啟您的 Key Vault，然後按一下 *[存取原則]* ，然後按一下 *[+ 新增存取原則]* ，以使用這些設定來建立原則：
 
 - 金鑰許可權：選取 [ *取得*]、[ *包裝金鑰* ] 和 [解除包裝 *金鑰*]。
-- 選取主體：輸入叢集名稱或主體識別碼。
+- 選取 [主體]：根據叢集 (系統或使用者指派的受控識別中使用的身分識別類型) 為系統指派的受控識別或使用者指派的受控識別名稱輸入叢集名稱或叢集主體識別碼。
 
 ![授與 Key Vault 權限](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
@@ -237,11 +242,15 @@ Content-type: application/json
 
 ## <a name="key-revocation"></a>金鑰撤銷
 
-您可以停用金鑰，或刪除 Key Vault 中叢集的存取原則，以撤銷資料的存取權。 Log Analytics 叢集儲存體的金鑰權限變更一律會在一小時或更短的時間內生效，且儲存體會變成無法使用。 與您的叢集連結之工作區的任何新資料內嵌都會被捨棄且無法復原、無法存取資料，而且這些工作區的查詢會失敗。 只要您的叢集和您的工作區未刪除，先前內嵌的資料就會保留在儲存體中。 無法存取的資料是由資料保留原則所控管，並會在達到保留期時加以清除。 
+您可以停用金鑰，或刪除 Key Vault 中叢集的存取原則，以撤銷資料的存取權。 
 
-過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 這會在金鑰撤銷作業中刪除，且也會變成無法存取。
+> [!IMPORTANT]
+> - 如果您的叢集是以使用者指派的受控識別來設定，則設定會 `UserAssignedIdentities` `None` 暫停叢集並防止存取您的資料，但您無法在不開啟支援要求的情況下還原撤銷並啟用叢集。 這項限制不適用於系統指派的受控識別。
+> - 建議的金鑰撤銷動作是在您的 Key Vault 中停用您的金鑰。
 
-儲存體會定期輪詢 Key Vault 以嘗試將加密金鑰解除包裝，且一旦存取，資料擷取和查詢就會在 30 分鐘內繼續進行。
+叢集儲存體一律會在一小時內或更快的時間內取得金鑰許可權的變更，而且儲存體將會變成無法使用。 與您的叢集連結之工作區的任何新資料內嵌都會被捨棄且無法復原，資料會變成無法存取，而且這些工作區上的查詢會失敗。 只要您的叢集和您的工作區未刪除，先前內嵌的資料就會保留在儲存體中。 無法存取的資料是由資料保留原則所控管，並會在達到保留期時加以清除。 過去 14 天內擷取的資料也會保留在經常性快取 (支援 SSD) 中，以進行有效率的查詢引擎作業。 這會在金鑰撤銷作業中刪除，且也會變成無法存取。
+
+叢集的儲存體會定期輪詢您的 Key Vault，以嘗試解除包裝加密金鑰，並在存取之後，在30分鐘內將資料內嵌和查詢繼續進行。
 
 ## <a name="key-rotation"></a>金鑰輪替
 
@@ -404,6 +413,37 @@ Content-type: application/json
   - 如果您建立叢集並收到錯誤「<的區功能變數名稱稱> 不支援叢集的雙重加密」，您仍然可以建立不含雙重加密的叢集。 將 `"properties": {"isDoubleEncryptionEnabled": false}` 屬性新增至 REST 要求主體。
   - 建立叢集之後，就無法變更雙重加密設定。
 
+  - 如果您的叢集是以使用者指派的受控識別來設定，則設定會 `UserAssignedIdentities` `None` 暫停叢集並防止存取您的資料，但您無法在不開啟支援要求的情況下還原撤銷並啟用叢集。 這項限制不適用於系統指派的受控識別。
+
+  - 您目前無法使用使用者指派的受控識別來定義客戶管理的金鑰（如果您的 Key Vault 位於 Private-Link (vNet) 。 這項限制不適用於系統指派的受控識別。
+
+## <a name="troubleshooting"></a>疑難排解
+
+- Key Vault 可用性的行為
+  - 在正常作業中 -- 儲存體會短時間快取 AEK，並定期回到 Key Vault 以解除包裝。
+    
+  - 暫時性連線錯誤 -- 儲存體處理暫時性錯誤 (逾時、連線失敗、DNS 問題) 的方式是允許將金鑰更長時間保留在快取中，這會克服可用性中的任何小型暫時性問題。 查詢和擷取功能會繼續進行，而不會中斷。
+    
+  - 即時網站 -- 約有 30 分鐘無法使用會導致儲存體帳戶變成無法使用。 查詢功能會無法使用，且擷取的資料會使用 Microsoft 金鑰快取數小時以避免資料遺失。 當還原 Key Vault 的存取權時，查詢就會變成可用，而且暫存快取的資料會內嵌到資料存放區，並使用 Customer-Managed 金鑰進行加密。
+
+  - Key Vault 存取率 -- Azure 監視器儲存體存取 Key Vault 以進行包裝和解除包裝作業的頻率介於 6 到 60 秒之間。
+
+- 如果您建立叢集並立即指定 KeyVaultProperties，此作業可能會失敗，因為在將系統身分識別指派給叢集之前無法定義存取原則。
+
+- 如果您使用 KeyVaultProperties 來更新現有的叢集，但 Key Vault 中缺少 ' Get ' 金鑰存取原則，此作業將會失敗。
+
+- 如果您在建立叢集時收到衝突錯誤，可能是因為您在過去14天內刪除了您的叢集，而且它是在虛刪除期間。 在虛刪除期間，叢集名稱仍保持保留，且您無法使用該名稱建立新的叢集。 當您永久刪除叢集時，此名稱會在虛刪除期限之後釋放。
+
+- 如果您在作業進行時更新您的叢集，此作業將會失敗。
+
+- 如果您無法部署叢集，請確認您的 Azure Key Vault、叢集和連結的 Log Analytics 工作區位於相同的區域中。 但其可位於不同的訂用帳戶中。
+
+- 如果您在 Key Vault 中更新金鑰版本，但未更新叢集中的新金鑰識別碼詳細資料，Log Analytics 叢集將會繼續使用您先前的金鑰，而您的資料將變成無法存取。 更新叢集中的新金鑰識別碼詳細資料，以繼續資料內嵌和查詢資料的能力。
+
+- 某些作業很長，可能需要一段時間才能完成，這些作業包括叢集建立、叢集金鑰更新和叢集刪除。 您可以透過兩種方式來檢查作業狀態：
+  1. 使用 REST 時，請從回應中複製 Azure-AsyncOperation URL 值，並遵循 [非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
+  2. 將 GET 要求傳送至叢集或工作區，並觀察回應。 例如，未連結的工作區不會有 [*功能*] 下的 *clusterResourceId* 。
+
 - 錯誤訊息
   
   **叢集建立**
@@ -441,34 +481,6 @@ Content-type: application/json
   **工作區取消連結**
   -  404--找不到工作區。 您指定的工作區不存在或已刪除。
   -  409--進程中的工作區連結或取消連結作業。
-
-## <a name="troubleshooting"></a>疑難排解
-
-- Key Vault 可用性的行為
-  - 在正常作業中 -- 儲存體會短時間快取 AEK，並定期回到 Key Vault 以解除包裝。
-    
-  - 暫時性連線錯誤 -- 儲存體處理暫時性錯誤 (逾時、連線失敗、DNS 問題) 的方式是允許將金鑰更長時間保留在快取中，這會克服可用性中的任何小型暫時性問題。 查詢和擷取功能會繼續進行，而不會中斷。
-    
-  - 即時網站 -- 約有 30 分鐘無法使用會導致儲存體帳戶變成無法使用。 查詢功能會無法使用，且擷取的資料會使用 Microsoft 金鑰快取數小時以避免資料遺失。 當還原 Key Vault 的存取權時，查詢就會變成可用，而且暫存快取的資料會內嵌到資料存放區，並使用 Customer-Managed 金鑰進行加密。
-
-  - Key Vault 存取率 -- Azure 監視器儲存體存取 Key Vault 以進行包裝和解除包裝作業的頻率介於 6 到 60 秒之間。
-
-- 如果您建立叢集並立即指定 KeyVaultProperties，此作業可能會失敗，因為在將系統身分識別指派給叢集之前無法定義存取原則。
-
-- 如果您使用 KeyVaultProperties 來更新現有的叢集，但 Key Vault 中缺少 ' Get ' 金鑰存取原則，此作業將會失敗。
-
-- 如果您在建立叢集時收到衝突錯誤，可能是因為您在過去14天內刪除了您的叢集，而且它是在虛刪除期間。 在虛刪除期間，叢集名稱仍保持保留，且您無法使用該名稱建立新的叢集。 當您永久刪除叢集時，此名稱會在虛刪除期限之後釋放。
-
-- 如果您在作業進行時更新您的叢集，此作業將會失敗。
-
-- 如果您無法部署叢集，請確認您的 Azure Key Vault、叢集和連結的 Log Analytics 工作區位於相同的區域中。 但其可位於不同的訂用帳戶中。
-
-- 如果您在 Key Vault 中更新金鑰版本，但未更新叢集中的新金鑰識別碼詳細資料，Log Analytics 叢集將會繼續使用您先前的金鑰，而您的資料將變成無法存取。 更新叢集中的新金鑰識別碼詳細資料，以繼續資料內嵌和查詢資料的能力。
-
-- 某些作業很長，可能需要一段時間才能完成，這些作業包括叢集建立、叢集金鑰更新和叢集刪除。 您可以透過兩種方式來檢查作業狀態：
-  1. 使用 REST 時，請從回應中複製 Azure-AsyncOperation URL 值，並遵循 [非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
-  2. 將 GET 要求傳送至叢集或工作區，並觀察回應。 例如，未連結的工作區不會有 [*功能*] 下的 *clusterResourceId* 。
-
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Log Analytics 專用叢集計費](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters)

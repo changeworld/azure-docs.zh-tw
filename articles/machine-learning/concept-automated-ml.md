@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 10/27/2020
 ms.custom: automl
-ms.openlocfilehash: 2d759a8ed58d5b323f9894a5127c222ce1f75c52
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: ee9267637c5e3250bfcd543ca46c39d513725819
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97345971"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072219"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 
@@ -104,7 +103,7 @@ ms.locfileid: "97345971"
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 
-## <a name="feature-engineering"></a>特徵設計
+## <a name="feature-engineering"></a>功能工程
 
 特徵工程是使用資料的領域知識來建立功能，以協助 ML 演算法更深入瞭解的程式。 在 Azure Machine Learning 中，會套用調整規模和正規化技巧，以促進特徵工程。 這些技術和特性工程統稱統稱為特徵化。
 
@@ -276,7 +275,7 @@ ONNX 執行階段也支援 C#，因此您可以使用在 C# 應用程式中自�
 
  + **如需低或無程式碼的體驗**，請參閱 [教學課程：使用 Azure Machine Learning STUDIO 建立自動化 ML 分類模型](tutorial-first-experiment-automated-ml.md)。
 
-How to 文章提供 AutoML 所提供之功能的其他詳細資料。 例如 
+How to 文章提供 AutoML 所提供之功能的其他詳細資料。 例如， 
 
 + 設定自動定型實驗的設定
     + 在 Azure Machine Learning Studio 中，[使用這些步驟](how-to-use-automated-ml-for-ml-models.md)。 

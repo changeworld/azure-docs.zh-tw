@@ -1,15 +1,15 @@
 ---
 title: 了解計量警示在 Azure 監視器中的運作方式。
 description: 取得計量警示有何用途以及其在 Azure 監視器中如何運作的概觀。
-ms.date: 09/30/2020
+ms.date: 01/11/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 066ffff5979e658a7c06fe10bd668a9fac839a14
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 424cc9db01f1eb6300c2915795f3e2c37b34449f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460838"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071046"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解計量警示在 Azure 監視器中的運作方式
 
@@ -137,7 +137,7 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 
 | 服務 | 公用 Azure | 政府機關 | 中國 |
 |:--------|:--------|:--------|:--------|
-| 虛擬機器<sup>1</sup>  | **是** | 否 | 否 |
+| 虛擬機器<sup>1</sup>  | **是** | **是** | 否 |
 | SQL server 資料庫 | **是** | **是** | **是** |
 | SQL server 彈性集區 | **是** | **是** | **是** |
 | NetApp files 容量集區 | **是** | **是** | **是** |

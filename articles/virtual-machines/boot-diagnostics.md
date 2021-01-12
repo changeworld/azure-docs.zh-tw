@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 408ba76c44d1161a4b91ccc037721796c7b94661
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500745"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071726"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 開機診斷
 
@@ -21,10 +21,14 @@ ms.locfileid: "96500745"
 ## <a name="boot-diagnostics-storage-account"></a>開機診斷儲存體帳戶
 在 Azure 入口網站中建立 VM 時，預設會啟用開機診斷。 建議的開機診斷體驗是使用受控儲存體帳戶，因為它在建立 Azure VM 時，會大幅改善效能。 這是因為將使用 Azure 受控儲存體帳戶，以移除建立新的使用者儲存體帳戶來儲存開機診斷資料所需的時間。
 
-替代的開機診斷體驗是使用使用者管理的儲存體帳戶。 使用者可以建立新的儲存體帳戶或使用現有的儲存體帳戶。 
-
 > [!IMPORTANT]
 > 開機診斷資料 blob (，其中包含記錄檔和快照集映射) 會儲存在受控儲存體帳戶中。 客戶只需支付 blob 所用的 Gib，而不是磁片的布建大小。 快照計量會用於受控儲存體帳戶的計費。 由於受管理的帳戶是在標準 LRS 或標準 ZRS 上建立，因此客戶只需支付其診斷資料 blob 大小的每月 $ 0.05/GB。 如需此定價的詳細資訊，請參閱 [受控磁片定價](https://azure.microsoft.com/pricing/details/managed-disks/)。 客戶會看到此費用與 VM 資源 URI 相關聯。 
+
+替代的開機診斷體驗是使用使用者管理的儲存體帳戶。 使用者可以建立新的儲存體帳戶或使用現有的儲存體帳戶。
+> [!NOTE]
+> 與開機診斷相關聯的使用者受控儲存體帳戶，需要儲存體帳戶和相關聯的虛擬機器位於相同的訂用帳戶中。 
+
+
 
 ## <a name="boot-diagnostics-view"></a>開機診斷視圖
 位於虛擬機器分頁中的 [開機診斷] 選項位於 Azure 入口網站的 [ *支援與疑難排解* ] 區段下。 選取 [開機診斷] 將會顯示幕幕快照和序列記錄檔資訊。 序列記錄檔包含核心訊息，而螢幕擷取畫面則是 Vm 目前狀態的快照集。 根據 VM 是否正在執行 Windows 或 Linux，判斷預期的螢幕擷取畫面。 針對 Windows，使用者會看到桌面背景，而針對 Linux，使用者會看到登入提示。

@@ -5,18 +5,17 @@ description: 瞭解 Azure Machine Learning 資源的配額和限制，以及如�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 1b43a1ceb1f9e098e4932b405553ae8f33e27262
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 3f08f401f24d95431bcd3bba48976641cebb28e9
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937343"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072202"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>使用 Azure Machine Learning 管理和提高資源配額
 
@@ -49,7 +48,7 @@ Azure 會使用限制和配額來防止因詐騙而產生的預算溢出，並�
   + Azure Machine Learning Compute
   + Azure Machine Learning 管線
 + 虛擬機器
-+ Azure 容器執行個體
++ Azure Container Instances
 + Azure 儲存體
 
 > [!IMPORTANT]
@@ -196,7 +195,7 @@ Azure Machine Learning 會在 (客戶) 訂用帳戶中建立資源，但在某�
 
 1. [建立 Azure 支援要求](../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request) ，並在 [ __基本__ ] 區段中選取下列選項：
 
-    | 欄位 | 選項 |
+    | 欄位 | 選取 |
     | ----- | ----- |
     | 問題類型 | **技術** |
     | 服務 | **我的服務**。 然後，在下拉式清單中選取 [ __Machine Learning__ ]。 |

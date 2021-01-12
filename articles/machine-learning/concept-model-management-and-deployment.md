@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 64784d747e9f33961c2f5d2df95e0d5a83e01548
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8813b2cad5800bd4ede6e64119117df57c230fdc
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324841"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071216"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 的模型管理、部署及監視
 
@@ -32,13 +31,13 @@ Machine Learning 作業 (MLOps) 是以提高工作流程效率的 [DevOps](https
 
 Azure Machine Learning 提供下列 MLOps 功能：
 
-- **建立可重現的 ML 管線** 。 Machine Learning 管線可讓您針對資料準備、定型和評分程式，定義可重複且可重複使用的步驟。
+- **建立可重現的 ML 管線**。 Machine Learning 管線可讓您針對資料準備、定型和評分程式，定義可重複且可重複使用的步驟。
 - **建立可重複使用的軟體環境** ，以定型和部署模型。
-- **從任何地方註冊、封裝及部署模型** 。 您也可以追蹤使用模型所需的相關中繼資料。
-- **針對端對端 ML 生命週期，捕捉治理資料** 。 記錄的資訊可能包括正在發佈模型的人員、進行變更的原因，以及在生產環境中部署或使用模型的時間。
-- **通知並警示 ML 生命週期中的事件** 。 例如，實驗完成、模型註冊、模型部署和資料漂移偵測。
-- **監視 ml 應用程式是否有操作和 ML 相關的問題** 。 比較定型和推斷之間的模型輸入、探索模型特定的計量，以及提供 ML 基礎結構的監視和警示。
-- **使用 Azure Machine Learning 和 Azure Pipelines 自動化端對端 ML 生命週期** 。 使用管線可讓您頻繁地更新模型、測試新模型，以及隨著其他應用程式和服務持續推出新的 ML 模型。
+- **從任何地方註冊、封裝及部署模型**。 您也可以追蹤使用模型所需的相關中繼資料。
+- **針對端對端 ML 生命週期，捕捉治理資料**。 記錄的資訊可能包括正在發佈模型的人員、進行變更的原因，以及在生產環境中部署或使用模型的時間。
+- **通知並警示 ML 生命週期中的事件**。 例如，實驗完成、模型註冊、模型部署和資料漂移偵測。
+- **監視 ml 應用程式是否有操作和 ML 相關的問題**。 比較定型和推斷之間的模型輸入、探索模型特定的計量，以及提供 ML 基礎結構的監視和警示。
+- **使用 Azure Machine Learning 和 Azure Pipelines 自動化端對端 ML 生命週期**。 使用管線可讓您頻繁地更新模型、測試新模型，以及隨著其他應用程式和服務持續推出新的 ML 模型。
 
 ## <a name="create-reproducible-ml-pipelines"></a>建立可重現的 ML 管線
 
@@ -46,7 +45,7 @@ Azure Machine Learning 提供下列 MLOps 功能：
 
 ML 管線可以包含從資料準備至功能解壓縮到超參數微調模型評估的步驟。 如需詳細資訊，請參閱 [ML 管線](concept-ml-pipelines.md)。
 
-如果您使用 [設計](concept-designer.md) 工具來建立 ML 管線，您隨時都可以按一下設計工具頁面右上方的 [ **...]** ，然後選取 [ **複製** ]。 複製您的管線可讓您反復查看管線設計，而不會遺失舊版本。  
+如果您使用 [設計](concept-designer.md) 工具來建立 ML 管線，您隨時都可以按一下設計工具頁面右上方的 [ **...]** ，然後選取 [ **複製**]。 複製您的管線可讓您反復查看管線設計，而不會遺失舊版本。  
 
 ## <a name="create-reusable-software-environments"></a>建立可重複使用的軟體環境
 
@@ -139,7 +138,7 @@ Azure Machine Learning 可協助您瞭解當您部署模型時，將會建立之
 
 #### <a name="iot-edge-devices"></a>IoT Edge 裝置
 
-您可以透過 **Azure IoT Edge 模組** ，使用 IoT 裝置的模型。 IoT Edge 模組會部署到裝置上啟用推斷或模型計分的硬體裝置。
+您可以透過 **Azure IoT Edge 模組**，使用 IoT 裝置的模型。 IoT Edge 模組會部署到裝置上啟用推斷或模型計分的硬體裝置。
 
 如需詳細資訊，請參閱 [部署模型](how-to-deploy-and-where.md)。
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: 68f536e06ec5a40083d96745f5b72e511e423f64
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 01/11/2021
+ms.openlocfilehash: a411f4ce261ee6d203e274efe3cf23ca23203453
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695178"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070876"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Synapse Analytics 中複製和轉換資料
 
@@ -391,7 +391,7 @@ Azure Data Factory 支援將資料載入 Azure Synapse Analytics 的三種方式
 | writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/><br/>允許的值為 **時間範圍**。 範例：「00:30:00」(30 分鐘)。 | 否。<br/>使用 bulk insert 時套用。        |
 | preCopyScript     | 指定在每次執行中將資料寫入 Azure Synapse Analytics 之前，要執行的複製活動的 SQL 查詢。 使用此屬性來清除預先載入的資料。 | 否                                            |
 | tableOption | 指定是否要根據來源架構， [自動建立接收資料表](copy-activity-overview.md#auto-create-sink-tables) （如果不存在的話）。 允許的值包為：`none` (預設) 或 `autoCreate`。 |否 |
-| disableMetricsCollection | Data Factory 會收集諸如複製效能優化和建議的 Azure Synapse Analytics Dwu 等度量。 如果您擔心此行為，請指定 `true` 將其關閉。 | 否 (預設值為 `false`) |
+| disableMetricsCollection | Data Factory 會收集諸如複製效能優化和建議的 Azure Synapse Analytics Dwu 之類的度量，其中導入了額外的 master DB 存取權。 如果您擔心此行為，請指定 `true` 將其關閉。 | 否 (預設值為 `false`) |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure Synapse Analytics 接收器範例
 

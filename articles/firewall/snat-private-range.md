@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348028"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072236"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure 防火牆 SNAT 私人 IP 位址範圍
 
@@ -25,6 +25,9 @@ Azure 防火牆會針對公用 IP 位址的所有輸出流量提供自動 SNAT�
 - 若要將 Azure 防火牆設定為 **永遠不** 使用 SNAT，而不考慮目的地 ip 位址，請使用 **0.0.0.0/0** 做為您的私人 ip 位址範圍。 使用此設定時，Azure 防火牆永遠不會將流量直接路由傳送到網際網路。 
 
 - 若要將防火牆設定為 **一律** 使用 SNAT （不論目的地位址為何），請使用 **255.255.255.255/32** 做為您的私人 IP 位址範圍。
+
+> [!IMPORTANT]
+> 您指定的私人位址範圍只會套用到網路規則。 目前，應用程式規則一律為 SNAT。
 
 > [!IMPORTANT]
 > 如果您想要指定自己的私人 IP 位址範圍，並保留預設的 IANA RFC 1918 位址範圍，請確定您的自訂清單仍包含 IANA RFC 1918 範圍。 

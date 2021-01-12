@@ -3,12 +3,12 @@ title: 了解如何稽核虛擬機器的內容
 description: 瞭解 Azure 原則如何使用「來賓設定」用戶端來審核虛擬機器內的設定。
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 58fe1c630de4abfb2fe04ddedb45b360cfebd423
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862330"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071828"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -153,8 +153,6 @@ Azure 原則中的一項計畫可讓您依照「基準」來稽核作業系統�
 Windows：`C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
 Linux：`/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
-
-其中 `<version>` 是指目前的版本號碼。
 
 ### <a name="collecting-logs-remotely"></a>在遠端收集記錄
 

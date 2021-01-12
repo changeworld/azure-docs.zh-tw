@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 075f113975e5f340493fe33584d8072190be77c8
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 130fcaacedc8aaea7790f6aa9ca7463b4e378e02
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896476"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070706"
 ---
 # <a name="select-a-vmware-migration-option"></a>選取 VMware 遷移選項
 
@@ -32,7 +32,7 @@ ms.locfileid: "97896476"
 **設備部署** | [Azure Migrate 設備](migrate-appliance.md)會部署在內部部署環境中。 | [Azure Migrate 複寫設備](migrate-replication-appliance.md)部署于內部部署環境。
 **Site Recovery 相容性** | 相容。 | 如果您已使用 Site Recovery 設定電腦的複寫，您就無法使用 Azure Migrate Server 遷移進行複寫。
 **目標磁片** | 受控磁碟 | 受控磁碟
-**磁片限制** | OS 磁片： 2 TB<br/><br/> 資料磁片： 32 TB<br/><br/> 磁片上限：60 | OS 磁片： 2 TB<br/><br/> 資料磁片： 8 TB<br/><br/> 磁片上限：63
+**磁片限制** | OS 磁片： 2 TB<br/><br/> 資料磁片： 32 TB<br/><br/> 磁片上限：60 | OS 磁片： 2 TB<br/><br/> 資料磁片： 32 TB<br/><br/> 磁片上限：63
 **傳遞磁片** | 不支援 | 支援
 **UEFI 開機** | 支援。 | 支援。
 

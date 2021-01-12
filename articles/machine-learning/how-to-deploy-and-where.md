@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: dd7a336df5ff187b874876db32abb45915e00f3b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739377"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070417"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 
@@ -322,6 +322,8 @@ print(service.state)
 | Failed | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
 | Healthy | 服務狀況良好，且端點可供使用。 | 是 |
 
+> [!TIP]
+> 部署時，會從 Azure Container Registry (ACR) 建立和載入計算目標的 Docker 映射。 根據預設，Azure Machine Learning 會建立使用 *基本* 服務層級的 ACR。 將工作區的 ACR 變更為「標準」或「進階層」，可減少建立映射並將其部署至計算目標所需的時間。 如需詳細資訊，請參閱 [Azure Container Registry 服務層級](../container-registry/container-registry-skus.md)。
 
 ### <a name="batch-inference"></a><a id="azuremlcompute"></a> 批次推斷
 Azure Machine Learning 計算目標是由 Azure Machine Learning 所建立和管理。 它們可用於從 Azure Machine Learning 管線進行批次預測。

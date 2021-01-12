@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 9baf305ab72354c150cb06e594ed8909f2fa1dda
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d55a9ff4dc2a639fca67d19d9323b9397aa0f409
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739309"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070366"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>針對機器學習管線進行疑難排解
 
@@ -33,6 +33,7 @@ ms.locfileid: "97739309"
 | 管線未重複使用步驟 | 預設會啟用步驟重複使用，但請確定您未在管線步驟中將它停用。 如果已停用重複使用， `allow_reuse` 則步驟中的參數會設定為 `False` 。 |
 | 不必要地重新執行管線 | 為確保只有在基礎資料或腳本變更時才會重新執行步驟，請將每個步驟的原始程式碼目錄分離。 如果您使用相同的來原始目錄進行多個步驟，可能會遇到不必要的重新執行。 `source_directory`在管線步驟物件上使用參數，以指向該步驟的隔離目錄，並確保您不會 `source_directory` 針對多個步驟使用相同的路徑。 |
 | 逐步減緩定型 epoch 或其他迴圈行為 | 請嘗試將任何檔案寫入（包括記錄）切換 `as_mount()` 至 `as_upload()` 。 **掛接** 模式使用遠端虛擬化檔案系統，並在每次將檔案附加至時，上傳整個檔案。 |
+| 計算目標需要很長的時間才能啟動 | 計算目標的 Docker 映射是從 Azure Container Registry (ACR) 載入的。 根據預設，Azure Machine Learning 會建立使用 *基本* 服務層級的 ACR。 將工作區的 ACR 變更為「標準」或「進階層」，可減少建立和載入映射所需的時間。 如需詳細資訊，請參閱 [Azure Container Registry 服務層級](../container-registry/container-registry-skus.md)。 |
 
 ### <a name="authentication-errors"></a>驗證錯誤
 

@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.author: jmartens
-author: j-martens
+ms.author: larryfr
+author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 1cc6c8cd49a2388ad66a276f4a1667b4c3ee3826
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881815"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070315"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -518,7 +518,7 @@ ms.locfileid: "97881815"
     + 當「azureml-預設值」未包含為 pip 相依性的一部分時，即登出警告
     + 改善便箋轉譯。
     + 已新增將分隔的檔案剖析為 PipelineOutputFileDataset 時，對引號換行的支援。
-    + PipelineDataset 類別已被取代。 如需詳細資訊，請參閱 https://aka.ms/dataset-deprecation 。 瞭解如何使用具有管線的資料集，請參閱 https://aka.ms/pipeline-with-dataset 。
+    + PipelineDataset 類別已被取代。 如需詳細資訊，請參閱https://aka.ms/dataset-deprecation。 瞭解如何使用具有管線的資料集，請參閱 https://aka.ms/pipeline-with-dataset 。
   + **azureml-pipeline-steps**
     + Azureml-管線-步驟的更新。
     +  已新增 ParallelRunConfig 的支援， `load_yaml()` 可讓使用者定義以 rest 設定或個別檔案內嵌的環境

@@ -5,17 +5,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 06/22/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: a413cabf59fbd89cfe53b581d1018231c0e22e84
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e88fbaed77113896f818710497a544fbab486246
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323926"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072270"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>安裝和使用 Azure Machine Learning 的 CLI 擴充功能
 
@@ -285,7 +284,7 @@ max_duration_minutes: 100 # The maximum length of time to run the experiment bef
 az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
 ```
 
-請注意 runconfig 中的 *arguments* 區段，以及 HyperDrive config 中的 *parameter space* 。其包含要傳遞至定型指令碼的命令列引數。 runconfig 中的值會在每次反覆運算時維持不變，而 HyperDrive config 中的範圍則會遭到反覆處理。 請勿在這兩個檔案中指定相同的引數。
+請注意 runconfig 中的 *arguments* 區段，以及 HyperDrive config 中的 *parameter space*。其包含要傳遞至定型指令碼的命令列引數。 runconfig 中的值會在每次反覆運算時維持不變，而 HyperDrive config 中的範圍則會遭到反覆處理。 請勿在這兩個檔案中指定相同的引數。
 
 ## <a name="dataset-management"></a>資料集管理
 
@@ -411,7 +410,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 | JSON 欄位 | 類型 | 描述 |
 |---|---|---|
-| `name` | `string` | 環境的名稱。 名稱開頭請勿使用 **Microsoft** 或 **AzureML** 。 |
+| `name` | `string` | 環境的名稱。 名稱開頭請勿使用 **Microsoft** 或 **AzureML**。 |
 | `version` | `string` | 環境的版本。 |
 | `environmentVariables` | `{string: string}` | 環境變數名稱和值的雜湊對應。 |
 | `python` | [`PythonSection`](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)hat 會定義要在目標計算資源上使用的 Python 環境和解譯器。 |

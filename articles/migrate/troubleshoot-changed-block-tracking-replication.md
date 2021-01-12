@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: e19c5064dd69538dfc025b0d244baf4fa74706b2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753530"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071369"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>針對無代理程式 VMware VM 遷移中的複寫問題進行疑難排解
 
@@ -297,6 +297,24 @@ _錯誤訊息：發生內部錯誤。[錯誤訊息]_
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>錯誤訊息：發生內部錯誤。 [記憶體配置失敗。 記憶體不足。]
 
 當 NFC 主機緩衝區記憶體不足時，就會發生這種情況。 若要解決此問題，您必須將 VM (compute vMotion) ，移至具有可用資源的不同主機。
+
+## <a name="replication-cycle-failed"></a>複寫週期失敗
+
+**錯誤 ID：** 181008
+
+**錯誤訊息：** VM： ' VMName '。 錯誤：找不到快照集識別碼： ' SnapshotID ' 的快照式複寫的 disksnapshots。
+
+**可能的原因：**
+
+可能的原因包括：
+1. 一或多個內含磁片的路徑因儲存體 VMotion 而變更。
+2. 一或多個包含的磁片已不再連接至 VM。
+      
+**建議：**
+
+提供下列建議
+1. 使用 storage vMotion 將包含的磁片還原至原始路徑，然後停用 storage vmotion。
+2. 停用儲存體 VMotion （若已啟用），停止虛擬機器上的複寫，然後再次複寫虛擬機器。 若問題持續發生，請連絡支援人員。
 
 ## <a name="next-steps"></a>後續步驟
 

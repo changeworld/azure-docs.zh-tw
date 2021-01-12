@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548183"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071182"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>針對 (先前為 SQL DW) 的專用 SQL 集區啟用 Synapse 工作區功能
 
 所有 SQL 資料倉儲使用者現在都可以透過 Synapse Studio 和工作區，存取和使用現有的專用 SQL 集區 (先前的 SQL DW) 實例。 使用者可以使用 Synapse Studio 和工作區，而不會影響自動化、連接或工具。 本文說明現有的 Azure Synapse Analytics 使用者如何為現有的專用 SQL 集區 (先前的 SQL DW) 啟用 Synapse 工作區功能。 使用者可以利用現在可透過 Synapse 工作區和 Studio 取得的新功能豐富功能，來擴充其現有的分析解決方案。   
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 啟用資料倉儲上的 Synapse 工作區功能之前，您必須確定您具有下列各項：
 - 建立及管理 sql 邏輯伺服器上所裝載之 SQL 資源的許可權。
 - 建立 Azure Synapse 資源的許可權。
@@ -57,6 +57,9 @@ ms.locfileid: "96548183"
 4. 選取其中一個專用的 SQL 集區 (先前裝載于邏輯伺服器上的 SQL DW) 實例。 在 [總覽] 頁面中，選取 [ **啟動 Synapse studio** ]，或移至 [Synapse studio](https://web.azuresynapse.net) 並登入您的工作區。
 
 5. 開啟 **資料中樞** ，並在 [物件瀏覽器] 中展開專用的 SQL 集區，以確定您已存取並可查詢您的資料倉儲。
+
+    > [!NOTE] 
+    > 您可以隨時刪除已連線的工作區。 刪除工作區並不會刪除已連線的專用 SQL 集區 (先前的 SQL DW) 。 當刪除作業完成時，可以在專用的 SQL 集區上重新啟用工作區功能 (先前的 SQL DW) 。
 
 ## <a name="next-steps"></a>後續步驟
 開始使用 [Synapse Workspace 和 Studio](../get-started.md)。

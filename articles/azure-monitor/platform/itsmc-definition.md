@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: eacdf0cf80414c44aaccf6925e466b914c66da03
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a7e39bb8ed742007a13a222771b430372d50e889
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065298"
+ms.locfileid: "98071692"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>使用 IT 服務管理連接器將 Azure 連接至 ITSM 工具
 
@@ -132,10 +132,10 @@ ms.locfileid: "98065298"
     >[!NOTE]
     >
     > * 本節僅與記錄搜尋警示有關。
-    > * 計量警示和活動記錄警示一律會為每個警示建立一個工作專案。
+    > * 針對所有其他警示類型，每個警示都會建立一個工作專案。
 
-    * 如果您在工作專案下拉式清單中選取 [事件] 或 [警示]：
-        * 如果您選取 [ **為每個設定專案建立個別的工作專案]** 核取方塊，每個警示中的每個設定專案都會建立新的工作專案。 ITSM 系統中的每個設定專案都可以有一個以上的工作專案。
+    * 如果您在 [工作專案] 下拉式清單中選取 [事件] 或 [警示]： ![ 顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration.png)
+        * 如果您選取 [ **為每個設定專案建立個別的工作專案]** 核取方塊，每個警示中的每個設定專案都會建立新的工作專案。 由於有多個警示會影響相同的設定專案，因此每個設定專案都會有一個以上的工作專案。
 
              例如：
              1) 具有3個設定專案的警示1： A、B、C-將建立3個工作專案。
@@ -148,15 +148,13 @@ ms.locfileid: "98065298"
 
         例如：
          1) 具有3個設定專案的警示1： A、B、C-將建立1個工作專案。
-         2) 相同警示規則的警示2與1個設定專案的階段1相同： D-將會合並到階段1中的工作專案。
+         2) 相同警示規則的警示2與步驟 a 中的1個設定專案相同： d. D-D 會附加至步驟 a 中建立的工作專案中受影響的設定專案清單。
          3) 具有1個設定專案之不同警示規則的警示3： E-將建立1個工作專案。
 
-       ![顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration.png)
+    * 如果您選取 [工作專案] 下拉式清單中的 [事件]，則會 ![ 顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration-event.png)
 
-    * 如果您在 [工作專案] 下拉式清單中選取 [事件]：
         * 如果您選取 **[為每個記錄專案建立個別的工作專案] (設定專案欄位未填滿。可能會產生大量的工作專案。 )** 」在選項按鈕選取專案中，將會針對記錄搜尋警示查詢搜尋結果中的每個資料列建立工作專案。 在工作專案的裝載中，description 屬性將會包含搜尋結果中的資料列。
         * 如果您在選項按鈕選取專案中選取 [ **為每個設定專案建立個別的工作專案]** ，每個警示中的每個設定專案都會建立新的工作專案。 ITSM 系統中的每個設定專案都可以有一個以上的工作專案。 這會與檢查 [事件/警示] 區段中的核取方塊相同。
-    ![顯示 [ITSM 事件] 視窗的螢幕擷取畫面。](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. 選取 [確定]。
 

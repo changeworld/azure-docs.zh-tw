@@ -3,13 +3,13 @@ title: 推送 & 提取 Docker 映射
 description: 使用 Docker CLI 推送和提取 Docker 映像至 Azure 中的私人容器登錄
 ms.topic: article
 ms.date: 01/23/2019
-ms.custom: seodec18, H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 067b5749332c2c41b86d22e7de60083d5f61a442
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: seodec18, H1Hack27Feb2017
+ms.openlocfilehash: d04a5fcbc4d6294a216ddfc9a8e6ea1ef98825a3
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020053"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071624"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 將您的第一個映像推送至私人 Docker 容器登錄
 
@@ -17,7 +17,7 @@ Azure container registry 會儲存和管理私人 [docker](https://hub.docker.co
 
 在下列步驟中，您會從公用 Docker 中樞登錄庫下載官方提供的 [Nginx 映像](https://store.docker.com/images/nginx)，將其標記為私人 Azure 容器登錄庫，推送到您的登錄庫，然後再從登錄庫將其提取出來。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * **Azure container registry** -在您的 azure 訂用帳戶中建立容器登錄。 例如，使用 [Azure 入口網站](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **Docker CLI** - 您也必須在本機上安裝 Docker。 Docker 提供可輕鬆在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系統上設定 Docker 的套件。
@@ -37,6 +37,8 @@ docker login myregistry.azurecr.io
 ```
 
 完成後，這兩個命令會傳回 `Login Succeeded`。
+> [!NOTE]
+>* 您可能會想要搭配使用 Visual Studio Code 與 Docker 擴充功能，以提供更快速且更方便的登入。
 
 > [!TIP]
 > 當您使用 `docker login` 時，以及當您標記要推送到您的登錄庫的映像時，請一定要指定完整登錄庫名稱 (全部小寫)。 在本文的範例中，完整名稱是 myregistry.azurecr.io。

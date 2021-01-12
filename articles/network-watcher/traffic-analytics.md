@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: damendo
 ms.reviewer: vinigam
 ms.custom: references_regions
-ms.openlocfilehash: 8b1eedc47d2a89b9552c22b3ae770f655f926945
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 6cd1965ab51e7a7bbcc65836383000f0773b9b82
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898771"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070927"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -85,7 +85,7 @@ Azure 虛擬網路具有 NSG 流量記錄，可為您了解透過與個別網路
       美國中北部  
    :::column-end:::
    :::column span="":::
-      北歐  
+      歐洲北部  
       南非北部  
       美國中南部  
       印度南部  
@@ -134,7 +134,7 @@ Log Analytics 工作區必須存在於下列區域：
       日本東部  
       南韓中部  
       美國中北部  
-      北歐  
+      歐洲北部  
       南非北部  
       美國中南部  
    :::column-end:::
@@ -269,7 +269,7 @@ New-AzStorageAccount `
 - 封鎖的流量統計資料。
     - 主機封鎖大量良性流量的原因為何？ 這種行為需要進一步調查與可能的組態最佳化
 - 允許/封鎖的惡意流量統計資料
-  - 為什麼主機收到惡意流量，且為什麼允許惡意來源？ 這種行為需要進一步調查與可能的組態最佳化。
+  - 為什麼主機會收到惡意流量，以及為何允許來自惡意來源的流程？ 這種行為需要進一步調查與可能的組態最佳化。
 
     選取 [主機] 底下的 [檢視全部]，如下圖所示：
 

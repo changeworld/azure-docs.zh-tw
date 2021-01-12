@@ -4,14 +4,14 @@ description: Azure 監視器計量警示和可能解決方案的常見問題。
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/03/2021
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857336"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070723"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -91,9 +91,9 @@ ms.locfileid: "97857336"
 如果您想要對 [度量的特定維度值](./alerts-metric-overview.md#using-dimensions)發出警示，但找不到這些值，請注意下列事項：
 
 1. 可能需要幾分鐘的時間，維度值才會出現在 [維度值] 清單底下
-1. 顯示的維度值會以過去三天內收集的計量資料為基礎
-1. 如果尚未發出維度值，請按一下 [+] 符號來新增自訂值
-1. 如果您想要針對維度的所有可能值發出警示 (包括未來值) ，請選取 [選取 *] 核取方塊
+1. 顯示的維度值是以最後一天收集的計量資料為基礎
+1. 如果維度值尚未發出或未顯示，您可以使用 [加入自訂值] 選項來加入自訂維度值。
+1. 如果您想要針對維度的所有可能值發出警示 (包括未來值) ，請選擇 [選取所有目前及未來的值] 選項。
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>已刪除的資源仍定義計量警示規則 
 

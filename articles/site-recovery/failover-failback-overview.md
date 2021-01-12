@@ -3,12 +3,12 @@ title: 關於 Azure Site Recovery 中的容錯移轉和容錯回復
 description: 瞭解 Azure Site Recovery 中的容錯移轉和 failable。
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: 3617683200aa3ffba08061b70993613fd0cc7241
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b900655d6fdf1143d430ac842bfd84eb1dfdf34c
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369874"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070734"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>關於內部部署嚴重損壞修復容錯移轉/容錯回復
 
@@ -45,10 +45,10 @@ Site Recovery 中的容錯移轉和容錯回復有四個階段：
 
 **容錯移轉** | **位置** | **動作**
 --- | --- | ---
-**Azure VM (Windows (** | 在容錯移轉前的內部部署機器上 | 透過**網際網路存取**：啟用 RDP。 請確定已為**公用**新增 TCP 和 UDP 規則，而且允許**Windows 防火牆**  >  **允許的應用程式**中的所有設定檔使用 RDP。<br/><br/> 透過**站對站 VPN 存取**：在電腦上啟用 RDP。 檢查**Windows 防火牆**  ->  **允許的應用程式和功能**（適用于**網域和專用**網）是否允許 RDP。<br/><br/>  確定作業系統的 SAN 原則已設為 **OnlineAll**。 [深入了解](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 當您容錯移轉時，Windows Update 可能會啟動，而且您必須等到更新完成後才能登入 VM。
-**執行 Windows 的 Azure VM** | 在容錯移轉後的 Azure VM 上 |  [新增 VM 的公用 IP 位址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。<br/><br/> 已容錯移轉的 VM (上的網路安全性群組規則，以及其所連線的 Azure 子網) 必須允許 RDP 埠的連入連線。<br/><br/> 勾選 [開機診斷]**** 以確認 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢查 [疑難排解秘訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
+**執行 Windows 的 Azure VM** | 在容錯移轉前的內部部署機器上 | 透過 **網際網路存取**：啟用 RDP。 請確定已為 **公用** 新增 TCP 和 UDP 規則，而且允許 **Windows 防火牆**  >  **允許的應用程式** 中的所有設定檔使用 RDP。<br/><br/> 透過 **站對站 VPN 存取**：在電腦上啟用 RDP。 檢查 **Windows 防火牆**  ->  **允許的應用程式和功能**（適用于 **網域和專用** 網）是否允許 RDP。<br/><br/>  確定作業系統的 SAN 原則已設為 **OnlineAll**。 [深入了解](https://support.microsoft.com/kb/3031135)。<br/><br/> 觸發容錯移轉時，請確定 VM 上沒有任何暫止的 Windows 更新。 當您容錯移轉時，Windows Update 可能會啟動，而且您必須等到更新完成後才能登入 VM。
+**執行 Windows 的 Azure VM** | 在容錯移轉後的 Azure VM 上 |  [新增 VM 的公用 IP 位址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。<br/><br/> 已容錯移轉的 VM (上的網路安全性群組規則，以及其所連線的 Azure 子網) 必須允許 RDP 埠的連入連線。<br/><br/> 勾選 [開機診斷] 以確認 VM 的螢幕擷取畫面。 如果您無法連線，請檢查 VM 是否正在執行，並檢查 [疑難排解秘訣](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx)。
 **執行 Linux 的 Azure VM** | 在容錯移轉前的內部部署機器上 | 確定 VM 上的安全殼層服務已設定為在系統開機時自動啟動。<br/><br/> 請檢查防火牆規則是否允許 SSH 連線。
-**執行 Linux 的 Azure VM** | 在容錯移轉後的 Azure VM 上 | 已容錯移轉的 VM 上的網路安全性群組規則 (以及它所連線的 Azure 子網路) 必須允許 SSH 連接埠的連入連線。<br/><br/> [新增 VM 的公用 IP 位址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。<br/><br/> 勾選 [開機診斷]**** 以檢視 VM 的螢幕擷取畫面。<br/><br/>
+**執行 Linux 的 Azure VM** | 在容錯移轉後的 Azure VM 上 | 已容錯移轉的 VM 上的網路安全性群組規則 (以及它所連線的 Azure 子網路) 必須允許 SSH 連接埠的連入連線。<br/><br/> [新增 VM 的公用 IP 位址](/archive/blogs/srinathv/how-to-add-a-public-ip-address-to-azure-vm-for-vm-failed-over-using-asr)。<br/><br/> 勾選 [開機診斷] 以檢視 VM 的螢幕擷取畫面。<br/><br/>
 
 ## <a name="types-of-failover"></a>容錯移轉的類型
 
@@ -78,7 +78,7 @@ Site Recovery 提供不同的容錯移轉選項。
 
 **選項** | **詳細資料**
 --- | ---
-**最新 (最低 RPO) ** | 此選項提供最低的復原點目標 (RPO)。 它會先處理已傳送至 Site Recovery 服務的所有資料，以建立每個 VM 的復原點，再進行容錯移轉。 此復原點會在觸發容錯移轉時，將所有資料複寫至 Site Recovery。
+**最新 (最低 RPO)** | 此選項提供最低的復原點目標 (RPO)。 此選項會先處理已傳送到 Site Recovery 服務的所有資料，先為每部 VM 建立復原點後再進行容錯移轉。 在觸發容錯移轉時，此復原點會將所有資料複寫到 Site Recovery。
 **最新處理**  | 此選項會將 Vm 容錯移轉至 Site Recovery 所處理的最新復原點。 若要查看特定 VM 的最新復原點，請檢查 VM 設定中的 [最新復原點]。 此選項提供低 RTO (復原時間目標)，因為無須花費時間處理未處理的資料。
 **最新應用程式一致** |  如果啟用應用程式一致復原點，此選項會將 Vm 容錯移轉至 Site Recovery 所處理的最新應用程式一致復原點。 檢查 VM 設定中的最新復原點。
 **已處理的最新多 VM** | 此選項適用於一或多部 VM 已啟用多部 VM 一致性的復原計劃。 啟用這項設定的 VM 會容錯移轉至最新的一般多部 VM 一致復原點。 方案中的任何其他 Vm 都會容錯移轉至最新的已處理復原點。
@@ -124,8 +124,8 @@ Site Recovery 提供不同的容錯移轉選項。
 
 當您將 Azure Vm 重新保護到內部部署時，您可以指定要容錯回復至原始位置或替代位置。
 
-- **原始位置**復原：這會從 Azure 容錯回復到相同的來源內部部署機器（如果存在的話）。 在此案例中，只會將變更複寫回內部部署。
-- **替代位置**復原：如果內部部署機器不存在，您可以從 Azure 容錯回復到替代位置。 當您將 Azure VM 重新保護到內部部署時，會建立內部部署機器。 從 Azure 到內部部署進行的完整資料複寫。 -- [檢查](concepts-types-of-failback.md) 位置容錯回復的需求和限制。
+- **原始位置** 復原：這會從 Azure 容錯回復到相同的來源內部部署機器（如果存在的話）。 在此案例中，只會將變更複寫回內部部署。
+- **替代位置** 復原：如果內部部署機器不存在，您可以從 Azure 容錯回復到替代位置。 當您將 Azure VM 重新保護到內部部署時，會建立內部部署機器。 從 Azure 到內部部署進行的完整資料複寫。 -- [檢查](concepts-types-of-failback.md) 位置容錯回復的需求和限制。
 
 
 
@@ -147,8 +147,8 @@ Site Recovery 提供不同的容錯移轉選項。
 
 當您將 Azure Vm 重新保護到內部部署時，您可以指定要容錯回復至原始位置或替代位置。
 
-- **原始位置**復原：這會從 Azure 容錯回復到相同的來源內部部署機器（如果存在的話）。 在此案例中，您會選取先前程式中所述的其中一個同步處理選項。
-- **替代位置**復原：如果內部部署機器不存在，您可以從 Azure 容錯回復到替代位置。 當您將 Azure VM 重新保護到內部部署時，會建立內部部署機器。 使用這個選項時，建議您選取在容錯移轉之前同步處理資料的選項。
+- **原始位置** 復原：這會從 Azure 容錯回復到相同的來源內部部署機器（如果存在的話）。 在此案例中，您會選取先前程式中所述的其中一個同步處理選項。
+- **替代位置** 復原：如果內部部署機器不存在，您可以從 Azure 容錯回復到替代位置。 當您將 Azure VM 重新保護到內部部署時，會建立內部部署機器。 使用這個選項時，建議您選取在容錯移轉之前同步處理資料的選項。
 - 請[參閱](hyper-v-azure-failback.md)位置容錯回復的需求和限制。
 
 

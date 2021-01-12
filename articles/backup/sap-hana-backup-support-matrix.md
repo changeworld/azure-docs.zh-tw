@@ -4,12 +4,12 @@ description: 在本文中，當您使用 Azure 備份在 Azure Vm 上備份 SAP 
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: cb7f31986b9ebd91c631d2b896600039c93084de
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 7f287206c40e4556db2ee4b38bb46ef8e5352102
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607087"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072185"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上 SAP Hana 資料庫 備份的支援矩陣
 
@@ -27,7 +27,7 @@ Azure 備份支援將 SAP HANA 資料庫備份至 Azure。 此文章摘要說明
 | **作業系統版本**            | SLES 12 SP2、SP3、SP4 和 SP5;SLES 15 含 SP0、SP1、SP2 <br><br>  從 2020 年 8 月 1 日起，適用於 RHEL 的 SAP Hana 備份 (7.4、7.6、7.7 和 8.1) 已正式推出。                |                                             |
 | **HANA 版本**          | Hana 2.x 上的 SDC、HANA 2.x 上的 MDC <= SPS04 Rev 48、SPS05 (尚未針對啟用加密的案例進行驗證)       |                                                            |
 | **HANA 部署**       | 單一 Azure VM 上一個 SAP HANA - 僅限擴大。 <br><br> 針對高可用性部署，系統會將兩部不同電腦上的兩個節點視為具有不同資料鏈的個別節點。               | 向外延展 <br><br> 在高可用性部署中，備份不會自動容錯移轉至次要節點。 應分別針對每個節點來設定備份。                                           |
-| **HANA 執行個體**         | 單一 Azure VM 上一個 SAP HANA 執行個體 - 僅限擴大 | 單一 VM 上多個 SAP HANA 執行個體                  |
+| **HANA 執行個體**         | 單一 Azure VM 上一個 SAP HANA 執行個體 - 僅限擴大 | 單一 VM 上的多個 SAP Hana 實例。 您一次只能保護其中一個多個實例。                  |
 | **HANA 資料庫類型**    | 1\.x 上單一資料庫容器 (SDC)、2.x 上多個資料庫容器 (MDC) | HANA 1.x 上 MDC                                              |
 | **HANA 資料庫大小**     | 大小 <= 2 TB 的 HANA 資料庫 (這不是 HANA 系統的記憶體大小)                |                                                              |
 | **備份類型**           | 完整、差異、增量 (預覽) 和記錄備份                          |  快照集                                       |
