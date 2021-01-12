@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-author: nabhishek
-ms.author: abnarain
-manager: anandsub
+author: lrtoyou1223
+ms.author: lle
+manager: shwang
 ms.custom: seo-lt-2019
-ms.date: 11/25/2020
-ms.openlocfilehash: 04efb7bcae11ef6cf377d821b49f9b07d41d347f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.date: 12/25/2020
+ms.openlocfilehash: 76d53458154a7e66589c16f955373975bb04b25b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932586"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121576"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>建立和設定自我裝載整合執行階段
 
@@ -30,13 +30,61 @@ ms.locfileid: "96932586"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+
+## <a name="considerations-for-using-a-self-hosted-ir"></a>使用自我裝載 IR 的考量
+
+- 您可以針對多個內部部署資料來源使用單一自我裝載整合執行時間。 您也可以在相同 Azure Active Directory (Azure AD) 租使用者中，與另一個資料處理站共用。 如需詳細資訊，請參閱[共用自我裝載整合執行階段](./create-shared-self-hosted-integration-runtime-powershell.md)。
+- 您只能在任何單一電腦上安裝一個自我裝載整合執行時間實例。 如果您有兩個需要存取內部部署資料來源的資料處理站，請使用 [自我裝載 ir 共用功能](./create-shared-self-hosted-integration-runtime-powershell.md) 來共用自我裝載 ir，或在兩部內部部署電腦上安裝自我裝載 ir （每個資料處理站各一個）。  
+- 自我裝載整合執行時間不一定要在與資料來源相同的電腦上。 不過，讓自我裝載整合執行時間接近資料來源，可以減少自我裝載整合執行時間連接到資料來源的時間。 建議您在與裝載內部部署資料來源不同的電腦上安裝自我裝載整合執行時間。 當自我裝載整合執行時間和資料來源位於不同的電腦上時，自我裝載整合執行時間不會與資源的資料來源競爭。
+- 您可以在不同電腦上有多個自我裝載整合執行階段，但它們皆連接至相同的內部部署資料來源。 例如，如果您有兩個自我裝載整合執行時間來服務兩個資料處理站，則相同的內部部署資料來源可以同時向這兩個資料處理站註冊。
+- 使用自我裝載整合執行時間支援 Azure 虛擬網路內的資料整合。
+- 即使您使用 Azure ExpressRoute，也應該將資料來源視為在防火牆後的內部部署資料來源。 使用自我裝載整合執行時間，將服務連接到資料來源。
+- 即使資料存放區位於 Azure 基礎結構即服務 (IaaS) 虛擬機器的雲端中，仍請使用自我裝載整合執行時間。
+- 在已啟用 FIPS 相容加密的 Windows server 上安裝的自我裝載整合執行時間中，工作可能會失敗。 若要解決此問題，您有兩個選項：在 Azure Key Vault 中儲存認證/密碼值，或在伺服器上停用符合 FIPS 規範的加密。 若要停用符合 FIPS 規範的加密，請將下列登錄子機碼值從 1 (已啟用) 變更為 0 (停用) ： `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` 。 如果您使用 [自我裝載整合執行時間作為 SSIS 整合執行時間的 proxy](./self-hosted-integration-runtime-proxy-ssis.md)，則可啟用 FIPS 相容的加密，並在將資料從內部部署移至 Azure Blob 儲存體作為臨時區域時使用。
+
+
+## <a name="command-flow-and-data-flow"></a>命令流程和資料流程
+
+當您在內部部署和雲端之間移動資料時，活動會使用自我裝載整合執行時間，在內部部署資料來源與雲端之間傳輸資料。
+
+以下是使用自我裝載 IR 進行複製之資料流程步驟的高階摘要：
+
+![資料流程的高層級總覽](media/create-self-hosted-integration-runtime/high-level-overview.png)
+
+1. 資料開發人員使用 PowerShell Cmdlet 在 Azure data factory 中建立自我裝載整合執行時間。 目前，Azure 入口網站不支援這項功能。
+2. 資料開發人員建立內部部署資料存放區的連結服務。 開發人員藉由指定服務應該用來連接到資料存放區的自我裝載整合執行時間實例來執行此動作。
+3. 自我裝載整合執行階段節點會使用 Windows 資料保護應用程式開發介面 (DPAPI) 將加密，並將認證儲存在本機上。 如果有多個節點設定為高可用性，則該認證會進一步同步處理到其他節點。 每個節點都會使用 DPAPI 來加密認證，並將其儲存在本機上。 認證同步處理無需資料開發人員介入，並且由自我裝載 IR 處理。
+4. Azure Data Factory 與自我裝載整合執行時間進行通訊，以排程和管理作業。 通訊是透過使用共用 [Azure 轉送](../azure-relay/relay-what-is-it.md#wcf-relay) 連接的控制通道來進行。 當需要執行活動作業時，Data Factory 會將要求和任何認證資訊排入佇列。 如果認證尚未儲存在自我裝載整合執行時間中，它就會這麼做。 自我裝載整合執行時間會在輪詢佇列之後啟動作業。
+5. 自我裝載整合執行時間會在內部部署存放區與雲端儲存體之間複製資料。 複製的方向取決於在資料管線中如何設定複製活動。 在此步驟中，自我裝載整合執行時間會透過安全的 HTTPS 通道，直接與雲端式儲存體服務（例如 Azure Blob 儲存體）進行通訊。
+
+
+## <a name="prerequisites"></a>Prerequisites
+
+- 支援的 Windows 版本為：
+  + Windows 8.1
+  + Windows 10
+  + Windows Server 2012
+  + Windows Server 2012 R2
+  + Windows Server 2016
+  + Windows Server 2019
+   
+不支援在網域控制站上安裝自我裝載整合執行時間。
+- 自我裝載整合執行時間需要具有 .NET Framework 4.7.2 或更新版本的64位作業系統，如需詳細資料，請參閱 [.NET Framework 系統需求](/dotnet/framework/get-started/system-requirements) 。
+- 「自我裝載整合執行時間」電腦的建議最小設定是具有4個核心、8 GB RAM 和 80 GB 可用硬碟空間的 2 GHz 處理器。 如需系統需求的詳細資訊，請參閱 [下載](https://www.microsoft.com/download/details.aspx?id=39717)。
+- 如果主機電腦休眠，自我裝載整合執行時間就不會回應資料要求。 因此，安裝自我裝載整合執行階段之前，請先在電腦上設定適當的電源計劃。 如果電腦已設定為休眠，自我裝載整合執行時間安裝程式會提示訊息。
+- 您必須是電腦上的系統管理員，才能成功安裝和設定自我裝載整合執行時間。
+- 複製-活動執行會以特定的頻率進行。 電腦上的處理器和 RAM 使用量遵循與尖峰和閒置時間相同的模式。 資源使用量也取決於移動的資料量。 如果有多個複製作業正在進行，您會看到資源使用量在尖峰時段增加。
+- 在 Parquet、ORC 或 Avro 格式的資料解壓縮期間，工作可能會失敗。 如需 Parquet 的詳細資訊，請參閱 [Azure Data Factory 中的 Parquet 格式](./format-parquet.md#using-self-hosted-integration-runtime)。 檔案建立會在自我裝載整合機器上執行。 若要如預期般運作，檔案建立需要下列必要條件：
+    - [Visual C++ 2010](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) 可轉散發套件封裝 (x64) 
+    - 從 JRE 提供者（例如 [採用 OpenJDK](https://adoptopenjdk.net/)），JAVA 執行時間 (jre) 8 版。 確定 `JAVA_HOME` 已設定環境變數。
+
 ## <a name="setting-up-a-self-hosted-integration-runtime"></a>設定自我裝載整合執行時間
 
 若要建立和設定自我裝載整合執行時間，請使用下列程式。
 
 ### <a name="create-a-self-hosted-ir-via-azure-powershell"></a>透過 Azure PowerShell 建立自我裝載 IR
 
-1. 您可以使用此工作的 Azure PowerShell。 範例如下：
+1. 您可以使用此工作的 Azure PowerShell。 請看以下範例：
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
@@ -126,84 +174,49 @@ dmgcmd ACTION args...
 |ssa<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|將 DIAHostService 設定為以新帳戶執行。 針對系統帳戶和虛擬帳戶，請使用空白密碼 ""。|
 
 
-## <a name="command-flow-and-data-flow"></a>命令流程和資料流程
-
-當您在內部部署和雲端之間移動資料時，活動會使用自我裝載整合執行時間，在內部部署資料來源與雲端之間傳輸資料。
-
-以下是使用自我裝載 IR 進行複製之資料流程步驟的高階摘要：
-
-![資料流程的高層級總覽](media/create-self-hosted-integration-runtime/high-level-overview.png)
-
-1. 資料開發人員使用 PowerShell Cmdlet 在 Azure data factory 中建立自我裝載整合執行時間。 目前，Azure 入口網站不支援這項功能。
-1. 資料開發人員建立內部部署資料存放區的連結服務。 開發人員藉由指定服務應該用來連接到資料存放區的自我裝載整合執行時間實例來執行此動作。
-1. 自我裝載整合執行階段節點會使用 Windows 資料保護應用程式開發介面 (DPAPI) 將加密，並將認證儲存在本機上。 如果有多個節點設定為高可用性，則該認證會進一步同步處理到其他節點。 每個節點都會使用 DPAPI 來加密認證，並將其儲存在本機上。 認證同步處理無需資料開發人員介入，並且由自我裝載 IR 處理。
-1. Azure Data Factory 與自我裝載整合執行時間進行通訊，以排程和管理作業。 通訊是透過使用共用 [Azure 服務匯流排轉送](../azure-relay/relay-what-is-it.md#wcf-relay) 連接的控制通道來進行。 當需要執行活動作業時，Data Factory 會將要求和任何認證資訊排入佇列。 如果認證尚未儲存在自我裝載整合執行時間中，它就會這麼做。 自我裝載整合執行時間會在輪詢佇列之後啟動作業。
-1. 自我裝載整合執行時間會在內部部署存放區與雲端儲存體之間複製資料。 複製的方向取決於在資料管線中如何設定複製活動。 在此步驟中，自我裝載整合執行時間會透過安全的 HTTPS 通道，直接與雲端式儲存體服務（例如 Azure Blob 儲存體）進行通訊。
-
-## <a name="considerations-for-using-a-self-hosted-ir"></a>使用自我裝載 IR 的考量
-
-- 您可以針對多個內部部署資料來源使用單一自我裝載整合執行時間。 您也可以在相同 Azure Active Directory (Azure AD) 租使用者中，與另一個資料處理站共用。 如需詳細資訊，請參閱[共用自我裝載整合執行階段](#create-a-shared-self-hosted-integration-runtime-in-azure-data-factory)。
-- 您只能在任何單一電腦上安裝一個自我裝載整合執行時間實例。 如果您有兩個需要存取內部部署資料來源的資料處理站，請使用 [自我裝載 ir 共用功能](#create-a-shared-self-hosted-integration-runtime-in-azure-data-factory) 來共用自我裝載 ir，或在兩部內部部署電腦上安裝自我裝載 ir （每個資料處理站各一個）。  
-- 自我裝載整合執行時間不一定要在與資料來源相同的電腦上。 不過，讓自我裝載整合執行時間接近資料來源，可以減少自我裝載整合執行時間連接到資料來源的時間。 建議您在與裝載內部部署資料來源不同的電腦上安裝自我裝載整合執行時間。 當自我裝載整合執行時間和資料來源位於不同的電腦上時，自我裝載整合執行時間不會與資源的資料來源競爭。
-- 您可以在不同電腦上有多個自我裝載整合執行階段，但它們皆連接至相同的內部部署資料來源。 例如，如果您有兩個自我裝載整合執行時間來服務兩個資料處理站，則相同的內部部署資料來源可以同時向這兩個資料處理站註冊。
-- 使用自我裝載整合執行時間支援 Azure 虛擬網路內的資料整合。
-- 即使您使用 Azure ExpressRoute，也應該將資料來源視為在防火牆後的內部部署資料來源。 使用自我裝載整合執行時間，將服務連接到資料來源。
-- 即使資料存放區位於 Azure 基礎結構即服務 (IaaS) 虛擬機器的雲端中，仍請使用自我裝載整合執行時間。
-- 在已啟用 FIPS 相容加密的 Windows server 上安裝的自我裝載整合執行時間中，工作可能會失敗。 若要解決此問題，您有兩個選項：在 Azure Key Vault 中儲存認證/密碼值，或在伺服器上停用符合 FIPS 規範的加密。 若要停用符合 FIPS 規範的加密，請將下列登錄子機碼值從 1 (已啟用) 變更為 0 (停用) ： `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` 。 如果您使用 [自我裝載整合執行時間作為 SSIS 整合執行時間的 proxy](./self-hosted-integration-runtime-proxy-ssis.md)，則可啟用 FIPS 相容的加密，並在將資料從內部部署移至 Azure Blob 儲存體作為臨時區域時使用。
-
-## <a name="prerequisites"></a>必要條件
-
-- 支援的 Windows 版本為：
-  + Windows 7 Service Pack 1
-  + Windows 8.1
-  + Windows 10
-  + Windows Server 2008 R2 SP1
-  + Windows Server 2012
-  + Windows Server 2012 R2
-  + Windows Server 2016
-  + Windows Server 2019
-   
-   不支援在網域控制站上安裝自我裝載整合執行時間。
-- 必須要有 .NET Framework 4.6.1 或更新版本。 如果您要在 Windows 7 電腦上安裝自我裝載整合執行階段，必須安裝 .NET Framework 4.6.1 或更新版本。 如需詳細資訊，請參閱 [.NET Framework 系統需求](/dotnet/framework/get-started/system-requirements) 。
-- 「自我裝載整合執行時間」電腦的建議最小設定是具有4個核心、8 GB RAM 和 80 GB 可用硬碟空間的 2 GHz 處理器。
-- 如果主機電腦休眠，自我裝載整合執行時間就不會回應資料要求。 因此，安裝自我裝載整合執行階段之前，請先在電腦上設定適當的電源計劃。 如果電腦已設定為休眠，自我裝載整合執行時間安裝程式會提示訊息。
-- 您必須是電腦上的系統管理員，才能成功安裝和設定自我裝載整合執行時間。
-- 複製-活動執行會以特定的頻率進行。 電腦上的處理器和 RAM 使用量遵循與尖峰和閒置時間相同的模式。 資源使用量也取決於移動的資料量。 如果有多個複製作業正在進行，您會看到資源使用量在尖峰時段增加。
-- 在 Parquet、ORC 或 Avro 格式的資料解壓縮期間，工作可能會失敗。 如需 Parquet 的詳細資訊，請參閱 [Azure Data Factory 中的 Parquet 格式](./format-parquet.md#using-self-hosted-integration-runtime)。 檔案建立會在自我裝載整合機器上執行。 若要如預期般運作，檔案建立需要下列必要條件：
-    - [Visual C++ 2010](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) 可轉散發套件封裝 (x64) 
-    - 從 JRE 提供者（例如 [採用 OpenJDK](https://adoptopenjdk.net/)），JAVA 執行時間 (jre) 8 版。 確定 `JAVA_HOME` 已設定環境變數。
-
-## <a name="installation-best-practices"></a>安裝最佳做法
-
-您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=39717)下載受控識別安裝套件來安裝自我裝載整合執行時間。 請參閱文章 [在內部部署和雲端之間移動資料](tutorial-hybrid-copy-powershell.md) ，以取得逐步指示。
-
-- 為自我裝載整合執行時間設定主機電腦上的電源計劃，使電腦不會進入休眠狀態。 如果主機電腦休眠，自我裝載整合執行階段就會離線。
-- 定期備份與自我裝載整合執行時間相關聯的認證。
-- 若要將自我裝載 IR 設定作業自動化，請參閱透過 [PowerShell 設定現有的自我裝載 ir](#setting-up-a-self-hosted-integration-runtime)。  
-
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>從 Microsoft 下載中心安裝和註冊自我裝載 IR
 
 1. 瀏覽至 [Microsoft 整合執行階段下載頁面](https://www.microsoft.com/download/details.aspx?id=39717)。
-1. 選取 [ **下載**]，選取64位版本，然後選取 **[下一步]**。 不支援32位版本。
-1. 直接執行受控識別檔案，或將它儲存至硬碟並加以執行。
-1. 在 [ **歡迎使用** ] 視窗中選取語言，然後選取 **[下一步**]。
-1. 接受「Microsoft 軟體授權條款」，然後選取 [下一步]。
-1. 選取 [資料夾] 來安裝自我裝載整合執行階段，接著按一下 [下一步]。
-1. 在 [ **安裝準備就緒** ] 頁面上，選取 [ **安裝**]。
-1. 選取 **[完成]** 以完成安裝。
-1. 使用 PowerShell 取得驗證金鑰。 擷取驗證金鑰的 PowerShell 範例：
+2. 選取 [ **下載**]，選取64位版本，然後選取 **[下一步]**。 不支援32位版本。
+3. 直接執行受控識別檔案，或將它儲存至硬碟並加以執行。
+4. 在 [ **歡迎使用** ] 視窗中選取語言，然後選取 **[下一步**]。
+5. 接受「Microsoft 軟體授權條款」，然後選取 [下一步]。
+6. 選取 [資料夾] 來安裝自我裝載整合執行階段，接著按一下 [下一步]。
+7. 在 [ **安裝準備就緒** ] 頁面上，選取 [ **安裝**]。
+8. 選取 **[完成]** 以完成安裝。
+9. 使用 PowerShell 取得驗證金鑰。 擷取驗證金鑰的 PowerShell 範例：
 
     ```powershell
     Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 
-1. 在電腦上執行 Microsoft Integration Runtime Configuration Manager 的 [ **註冊 Integration Runtime (自我裝載)** 視窗中，執行下列步驟：
+10. 在電腦上執行 Microsoft Integration Runtime Configuration Manager 的 [ **註冊 Integration Runtime (自我裝載)** 視窗中，執行下列步驟：
 
     1. 將驗證金鑰貼到文字區域。
 
-    1. (選擇性) 選取 [顯示驗證金鑰] 以查看金鑰文字。
+    2. (選擇性) 選取 [顯示驗證金鑰] 以查看金鑰文字。
 
-    1. 選取 [註冊]。
+    3. 選取 [註冊]。
+
+## <a name="service-account-for-self-hosted-integration-runtime"></a>自我裝載整合執行時間的服務帳戶
+自我裝載整合執行時間的預設登入服務帳戶為 **NT SERVICE\DIAHostService**。 您可以在 [ **服務-> Integration Runtime 服務-> 屬性**] 中看到它-> 登入]。
+
+![自我裝載整合執行時間的服務帳戶](media/create-self-hosted-integration-runtime/shir-service-account.png)
+
+請確定帳戶具有 [以服務方式登入] 的許可權。 否則，自我裝載整合執行時間無法成功啟動。 您可以在 [ **本機安全性原則-> 安全性設定] 中檢查許可權-> 本機原則-> 使用者權限指派-> 以服務方式登入**
+
+![服務帳戶許可權](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+
+![服務帳戶許可權](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+
+
+## <a name="notification-area-icons-and-notifications"></a>通知區域圖示和通知
+
+如果您將游標移至通知區域中的圖示或訊息，您可以查看自我裝載整合執行時間狀態的詳細資料。
+
+![通知區域中的通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
+
+
 
 ## <a name="high-availability-and-scalability"></a>高可用性與延展性
 
@@ -253,90 +266,6 @@ dmgcmd ACTION args...
 >
 > 從自我裝載 IR 傳輸到其他資料存放區的資料移動一律會在加密通道內進行，無論是否已設定此憑證。
 
-## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中建立共用的自我裝載整合執行階段
-
-您可以重複使用您已經在資料處理站中設定的現有自我裝載整合執行階段基礎結構。 這項重複使用可讓您藉由參考現有的共用自我裝載 IR，在不同的資料處理站中建立連結的自我裝載整合執行時間。
-
-若要查看這項功能的簡介與示範，請觀看下列12分鐘的影片：
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
-
-### <a name="terminology"></a>詞彙
-
-- **共用 ir**：在實體基礎結構上執行的原始自我裝載 ir。  
-- **連結的 ir**：參考另一個共用 IR 的 ir。 連結的 IR 是邏輯 IR，並使用另一個共用自我裝載 IR 的基礎結構。
-
-### <a name="methods-to-share-a-self-hosted-integration-runtime"></a>共用自我裝載整合執行時間的方法
-
-若要與多個資料處理站共用自我裝載整合執行時間，請參閱 [建立共用的自我裝載整合運行](create-shared-self-hosted-integration-runtime-powershell.md) 時間以取得詳細資料。
-
-### <a name="monitoring"></a>監視
-
-#### <a name="shared-ir"></a>共用 IR
-
-![尋找共用整合執行時間的選取專案](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
-
-![監視共用整合執行時間](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
-
-#### <a name="linked-ir"></a>連結的 IR
-
-![選取以尋找連結的整合執行時間](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
-
-![監視連結的整合執行時間](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
-
-### <a name="known-limitations-of-self-hosted-ir-sharing"></a>自我裝載整合執行階段共用的已知限制
-
-* 建立連結 IR 的資料處理站必須有 [受控識別](../active-directory/managed-identities-azure-resources/overview.md)。 根據預設，在 Azure 入口網站或 PowerShell Cmdlet 中建立的資料處理站具有隱含建立的受控識別。 但是，透過 Azure Resource Manager 範本或 SDK 建立資料處理站時，您必須明確設定 **Identity** 屬性。 此設定可確保 Resource Manager 建立包含受控識別的 data factory。
-
-* 支援此功能的 Data Factory .NET SDK 必須是1.1.0 版或更新版本。
-
-* 若要授與許可權，您需要有共用 IR 存在之 data factory 中的擁有者角色或繼承的擁有者角色。
-
-* 共用功能只適用于相同 Azure AD 租使用者內的資料處理站。
-
-* 針對 Azure AD [來賓使用者](../active-directory/governance/manage-guest-access-with-access-reviews.md)，UI 中的搜尋功能（使用搜尋關鍵字列出所有資料處理站）將 [無法運作](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits)。 但只要來賓使用者是 data factory 的擁有者，您就可以在沒有搜尋功能的情況下共用 IR。 針對需要共用 IR 的資料處理站受控識別，請在 [ **指派許可權** ] 方塊中輸入該受控識別，然後選取 Data Factory UI 中的 [ **新增** ]。
-
-  > [!NOTE]
-  > 這項功能僅適用于 Data Factory V2。
-
-## <a name="notification-area-icons-and-notifications"></a>通知區域圖示和通知
-
-如果您將游標移至通知區域中的圖示或訊息，您可以查看自我裝載整合執行時間狀態的詳細資料。
-
-![通知區域中的通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
-
-## <a name="ports-and-firewalls"></a>埠和防火牆
-
-有兩個要考慮的防火牆：
-
-- 在組織的中央路由器上執行的 *公司防火牆*
-- 在安裝自我裝載整合執行時間的本機電腦上，設定為 daemon 的 *Windows 防火牆*
-
-![防火牆](media/create-self-hosted-integration-runtime/firewall.png)
-
-在公司防火牆層級，您需要設定下列網域和輸出連接埠：
-
-[!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
-
-
-在 Windows 防火牆層級或電腦層級上，通常會啟用這些輸出埠。 如果不是，您可以在自我裝載整合執行時間電腦上設定網域和埠。
-
-> [!NOTE]
-> 根據您的來源和接收器，您可能需要在公司防火牆或 Windows 防火牆中允許額外的網域和輸出埠。
->
-> 針對某些雲端資料庫，例如 Azure SQL Database 和 Azure Data Lake，您可能需要允許其防火牆設定上的自我裝載整合執行時間電腦的 IP 位址。
-
-### <a name="copy-data-from-a-source-to-a-sink"></a>將資料從來源複製到接收器
-
-確定您已在公司防火牆、自我裝載整合執行時間電腦的 Windows 防火牆，以及資料存放區本身上，正確啟用防火牆規則。 啟用這些規則可讓自我裝載整合執行時間成功地連接到來源和接收。 請為複製作業所涉及的每個資料存放區啟用規則。
-
-例如，若要從內部部署資料存放區複製到 SQL Database 接收或 Azure Synapse Analytics 接收，請執行下列步驟：
-
-1. 針對 Windows 防火牆和公司防火牆，允許埠1433上的輸出 TCP 通訊。
-1. 設定 SQL Database 的防火牆設定，將自我裝載整合執行時間電腦的 IP 位址新增至允許的 IP 位址清單。
-
-> [!NOTE]
-> 如果您的防火牆不允許輸出埠1433，自我裝載整合執行時間將無法直接存取 SQL 資料庫。 在此情況下，您可以使用 [分段複製](copy-activity-performance.md) 來 SQL Database 和 Azure Synapse Analytics。 在此案例中，您只需要 HTTPS (埠 443) 來移動資料。
 
 ## <a name="proxy-server-considerations"></a>Proxy 伺服器考量
 
@@ -361,7 +290,7 @@ dmgcmd ACTION args...
 1. 開啟 [Microsoft Integration Runtime 管理員]。
 1. 選取 [Settings] \(設定\) 索引標籤。
 1. 在 [ **Http proxy**] 底下，選取 [ **變更** ] 連結以開啟 [ **設定 HTTP proxy** ] 對話方塊。
-1. 選取 [下一步]。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
+1. 選取 [下一步] 。 接著，您會看到一則警告，要求您儲存 proxy 設定並重新啟動 integration runtime 主機服務的許可權。
 
 您可以使用 configuration manager 工具來查看和更新 HTTP proxy。
 
@@ -437,6 +366,66 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
 
 如果您選擇不開啟自我裝載整合執行時間電腦上的埠8060，請使用 [設定認證] 應用程式以外的機制來設定資料存放區認證。 例如，您可以使用 **AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell Cmdlet。
+
+
+## <a name="ports-and-firewalls"></a>埠和防火牆
+
+有兩個要考慮的防火牆：
+
+- 在組織的中央路由器上執行的 *公司防火牆*
+- 在安裝自我裝載整合執行時間的本機電腦上，設定為 daemon 的 *Windows 防火牆*
+
+![防火牆](media/create-self-hosted-integration-runtime/firewall.png)
+
+在公司防火牆層級，您需要設定下列網域和輸出連接埠：
+
+[!INCLUDE [domain-and-outbound-port-requirements](./includes/domain-and-outbound-port-requirements-internal.md)]
+
+
+在 Windows 防火牆層級或電腦層級上，通常會啟用這些輸出埠。 如果不是，您可以在自我裝載整合執行時間電腦上設定網域和埠。
+
+> [!NOTE]
+> 因為目前 Azure 轉送不支援服務標籤，所以您必須在 NSG 規則中使用服務標記 **AzureCloud** 或 **網際網路** ，才能 Azure 轉送通訊。
+> 針對 Azure Data Factory 的通訊，您可以在 NSG 規則設定中使用服務標記 **DataFactoryManagement** 。
+
+根據您的來源和接收器，您可能需要在公司防火牆或 Windows 防火牆中允許額外的網域和輸出埠。
+
+[!INCLUDE [domain-and-outbound-port-requirements](./includes/domain-and-outbound-port-requirements-external.md)]
+
+針對某些雲端資料庫，例如 Azure SQL Database 和 Azure Data Lake，您可能需要允許其防火牆設定上的自我裝載整合執行時間電腦的 IP 位址。
+
+### <a name="get-url-of-azure-relay"></a>取得 Azure 轉送的 URL
+需要放在防火牆允許清單中的一個必要網域和埠，就是要 Azure 轉送的通訊。 自我裝載整合執行時間會將它用於互動式撰寫，例如測試連線、流覽資料夾清單和資料表清單、取得架構和預覽資料。 如果您不想要允許 **servicebus.windows.net** ，而且想要擁有更明確的 url，您可以從 ADF 入口網站取得自我裝載整合執行時間所需的所有 fqdn。
+1. 移至 ADF 入口網站，然後選取您的自我裝載整合執行時間。
+2. 在 [編輯] 頁面中，選取 [ **節點**]。
+3. 按一下 [ **View Service url** ] 以取得所有 fqdn。
+
+![Azure 轉送 Url](media/create-self-hosted-integration-runtime/Azure-relay-url.png)
+
+4. 您可以在允許的防火牆規則清單中新增這些 Fqdn。
+
+### <a name="copy-data-from-a-source-to-a-sink"></a>將資料從來源複製到接收器
+
+確定您已在公司防火牆、自我裝載整合執行時間電腦的 Windows 防火牆，以及資料存放區本身上，正確啟用防火牆規則。 啟用這些規則可讓自我裝載整合執行時間成功地連接到來源和接收。 請為複製作業所涉及的每個資料存放區啟用規則。
+
+例如，若要從內部部署資料存放區複製到 SQL Database 接收或 Azure Synapse Analytics 接收，請執行下列步驟：
+
+1. 針對 Windows 防火牆和公司防火牆，允許埠1433上的輸出 TCP 通訊。
+2. 設定 SQL Database 的防火牆設定，將自我裝載整合執行時間電腦的 IP 位址新增至允許的 IP 位址清單。
+
+> [!NOTE]
+> 如果您的防火牆不允許輸出埠1433，自我裝載整合執行時間將無法直接存取 SQL 資料庫。 在此情況下，您可以使用 [分段複製](copy-activity-performance.md) 來 SQL Database 和 Azure Synapse Analytics。 在此案例中，您只需要 HTTPS (埠 443) 來移動資料。
+
+
+## <a name="installation-best-practices"></a>安裝最佳做法
+
+您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=39717)下載受控識別安裝套件來安裝自我裝載整合執行時間。 請參閱文章 [在內部部署和雲端之間移動資料](tutorial-hybrid-copy-powershell.md) ，以取得逐步指示。
+
+- 為自我裝載整合執行時間設定主機電腦上的電源計劃，使電腦不會進入休眠狀態。 如果主機電腦休眠，自我裝載整合執行階段就會離線。
+- 定期備份與自我裝載整合執行時間相關聯的認證。
+- 若要將自我裝載 IR 設定作業自動化，請參閱透過 [PowerShell 設定現有的自我裝載 ir](#setting-up-a-self-hosted-integration-runtime)。  
+
+
 
 ## <a name="next-steps"></a>後續步驟
 

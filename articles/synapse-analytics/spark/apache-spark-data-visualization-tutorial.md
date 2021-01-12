@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8768b8f8c7bf70b184971abc6ce27e2193823dea
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458759"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121544"
 ---
 # <a name="analyze-data-with-apache-spark"></a>使用 Apache Spark 分析資料
 
@@ -25,7 +25,7 @@ ms.locfileid: "96458759"
 - 遵循[建立 Apache Spark 集區教學](../articles/../quickstart-create-apache-spark-pool-studio.md)課程來建立 Apache Spark 集區 
 
 ## <a name="download-and-prepare-the-data"></a>下載並準備資料
-1. 使用 PySpark 核心建立筆記本。 如需相關指示，請參閱 [建立筆記本](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook)。 
+1. 使用 PySpark 核心建立筆記本。 如需相關指示，請參閱 [建立筆記本](../quickstart-apache-spark-notebook.md#create-a-notebook)。 
    
 > [!Note]
 > 
@@ -92,7 +92,7 @@ GROUP BY day_of_month
 ORDER BY day_of_month ASC
 ```
 
-2. 當查詢完成執行之後，就可以藉由切換至 **圖表視圖** 來將結果視覺化。 在此範例中，我們會將 **line chart** ```day_of_month``` 欄位指定為索引 **鍵**，並將其指定 ```avgTipAmount``` 為 **值**，以建立折線圖。 完成選取後 **，按一下 [** 套用] 以重新整理圖表。 
+2. 當查詢完成執行之後，就可以藉由切換至 **圖表視圖** 來將結果視覺化。 在此範例中，我們會將 ```day_of_month``` 欄位指定為索引 **鍵**，並將其指定 ```avgTipAmount``` 為 **值**，以建立折線圖。 完成選取後 **，按一下 [** 套用] 以重新整理圖表。 
    
 ## <a name="visualize-data"></a>顯現資料
 除了內建的筆記本圖表選項以外，您也可以使用熱門的開放原始碼程式庫來建立自己的視覺效果。 在下列範例中，我們將使用以 seaborn 和 Matplotlib，這是常用於資料視覺效果的 Python 程式庫。 
@@ -180,5 +180,5 @@ plt.show()
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
+- [Azure Synapse Analytics](../index.yml)
 - [Apache Spark 官方文件](https://spark.apache.org/docs/latest/)
