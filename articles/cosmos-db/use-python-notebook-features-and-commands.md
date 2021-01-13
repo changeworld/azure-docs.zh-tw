@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 381aa88326440aba91e02393cfe2bdb1e2c38097
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b89fcf32ed033f359b4db601e36cc69bb899944d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340408"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165819"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>使用 Azure Cosmos DB Python 筆記本 (預覽) 中的內建筆記本命令和功能
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -123,6 +123,8 @@ Total time taken : 00:00:38.1228087 hours
 Total RUs consumed : 25022.58
 ```
 透過輸出統計資料，您可計算用來上傳項目的有效 RU/秒。 例如，如果在 38 秒內使用了 25,000 個 RU，則有效 RU/秒就是 25,000 個 RU / 38 秒 = 658 RU/秒。
+
+您可以將檔案儲存 (例如 CSV 或 JSON 檔案) 至本機筆記本工作區。 建議您在筆記本中新增資料格，以儲存檔案。 您可以從筆記本環境中的整合式終端機來查看這些檔案。 您可以使用 "ls" 命令來查看儲存的檔案。 但是，如果您重設工作區，則會移除這些檔案。 因此，最好使用永久性儲存體，例如 GitHub 或儲存體帳戶，而不是本機工作區。
 
 ## <a name="run-another-notebook-in-current-notebook"></a>在目前的筆記本中執行另一個筆記本 
 您可使用 ``%%run`` magic 命令，從工作區中目前的筆記本執行另一個筆記本。 使用語法：

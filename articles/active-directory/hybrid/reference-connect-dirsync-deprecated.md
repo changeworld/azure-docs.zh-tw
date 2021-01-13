@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 915b56e9a9340920e99f4d3d4de6da4c39233eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 713ec3a4020434fa73aad2e04676129cf43853be
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014798"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165836"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>升級 Windows Azure Active Directory Sync 和 Azure Active Directory Sync
-Azure AD Connect 是將內部部署目錄連線至 Azure AD 和 Microsoft 365 的最佳方式。 這是將 Azure AD Connect 從 Windows Azure Active Directory Sync (DirSync) 或 Azure AD Sync 升級的最佳時機，因為這些工具現在已淘汰，而且從 2017 年 4 月 13 日起不再提供支援。
+Azure AD Connect 是將內部部署目錄連線至 Azure AD 和 Microsoft 365 的最佳方式。 這是從 Windows Azure Active Directory Sync (DirSync) 或 Azure AD 同步 (AADSync) 升級至 Azure AD Connect 的絕佳時機，因為這些工具現在已淘汰，且自2017年4月13日起不再提供支援。
 
 已淘汰的兩個身分識別同步處理工具會提供給單一樹系客戶 (DirSync)，以及多樹系和其他進階客戶 (Azure AD Sync)。 這些較舊的工具已經取代為適用於所有案例的單一解決方案︰Azure AD Connect。 它提供新的功能、增強功能和新案例的支援。 若要能夠繼續將內部部署身分識別資料同步處理到 Azure AD 和 Microsoft 365，強烈建議您升級至 Azure AD Connect。 Microsoft 不保證舊版本在 2017 年 12 月 31 日之後能夠正常運作。
 
@@ -35,7 +35,7 @@ Azure AD Connect 是將內部部署目錄連線至 Azure AD 和 Microsoft 365 �
 Azure AD Connect 是 DirSync 和 Azure AD 同步的後續版本。它會結合這兩個支援的案例。 您可以在 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)中進一步了解。
 
 ## <a name="deprecation-schedule"></a>淘汰排程
-| Date | 註解 |
+| 日期 | 註解 |
 | --- | --- |
 | 2016 年 4 月 13 日 |Windows Azure Active Directory Sync (“DirSync”) 和 Microsoft Azure Active Directory Sync (“Azure AD Sync”) 已宣布淘汰。 |
 | 2017 年 4 月 13 日 |支援結束。 客戶必須先升級至 Azure AD Connect 才能開啟支援案例。 |
@@ -44,7 +44,7 @@ Azure AD Connect 是 DirSync 和 Azure AD 同步的後續版本。它會結合�
 ## <a name="how-to-transition-to-azure-ad-connect"></a>如何轉換為 Azure AD Connect
 如果您正在執行 DirSync，有兩種方式可以升級︰就地升級和平行部署。 對大多數的客戶，以及如果您擁有最新的作業系統和少於 50,000 個物件，建議採用就地升級。 在其他情況下，建議執行平行部署，DirSync 組態會移至執行 Azure AD Connect 的新伺服器。
 
-| 解決方法 | 狀況 |
+| 解決方案 | 案例 |
 | --- | --- |
 | [從 DirSync 升級](how-to-dirsync-upgrade-get-started.md) |<li>如果您有已在執行中的現有 DirSync 伺服器。</li> |
 | [從 Azure AD Sync 升級](how-to-upgrade-previous-version.md) |<li>如果您要從 Azure AD Sync 移動。</li> |
@@ -66,7 +66,7 @@ DirSync/Azure AD Sync 在 2017 年 4 月 13 日會繼續運作。  不過，Azur
  目前使用的任何 DirSync 版本皆支援升級。 
 
 **問：什麼是 FIM/MIM 的 Azure AD 連接器？**  
-FIM/MIM 的 Azure AD 連接器**尚未**宣布淘汰。 它目前在 **功能凍結**狀態；不會新增任何功能，而且不會收到任何錯誤修正。 Microsoft 建議使用它的客戶規劃從它移至 Azure AD Connect。 強烈建議不要使用它啟動任何新的部署。 此連接器會在未來宣布淘汰。
+FIM/MIM 的 Azure AD 連接器 **尚未** 宣布淘汰。 它目前在 **功能凍結** 狀態；不會新增任何功能，而且不會收到任何錯誤修正。 Microsoft 建議使用它的客戶規劃從它移至 Azure AD Connect。 強烈建議不要使用它啟動任何新的部署。 此連接器會在未來宣布淘汰。
 
 ## <a name="additional-resources"></a>其他資源
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)

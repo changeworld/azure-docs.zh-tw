@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: ba4e6b8b5e9db494ab4c0c372c2086087a2d58cb
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133169"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165785"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>適用于 JAVA 的遙測處理器 (預覽) -Azure 監視器 Application Insights
 
@@ -23,58 +23,48 @@ ms.locfileid: "98133169"
 以下是遙測處理器的一些使用案例：
  * 遮罩敏感性資料
  * 有條件地加入自訂維度
- * 更新用於匯總和顯示的遙測名稱
- * Drop 或 filter span 屬性以控制內嵌成本
+ * 更新用於匯總並顯示在 Azure 入口網站中的名稱
+ * 捨棄範圍屬性以控制內嵌成本
 
 ## <a name="terminology"></a>詞彙
 
-在我們跳到遙測處理器之前，請務必瞭解追蹤和範圍是什麼。
+在我們跳到遙測處理器之前，請務必先瞭解「範圍」（span）所參考的內容。
 
-### <a name="traces"></a>追蹤
+範圍是下列三種情況的一般詞彙：
 
-追蹤會追蹤單一要求的進展（稱為 a `trace` ），因為它是由構成應用程式的服務所處理。 要求可能會由使用者或應用程式起始。 中的每個工作單位 `trace` 稱為 a `span` ; a `trace` 是範圍的樹狀結構。 `trace`是由單一根範圍和任意數目的子範圍所組成。
+* 傳入要求
+* 外寄相依性 (例如對另一個服務的遠端呼叫) 
+* 同進程的相依性 (例如，服務的子元件所進行的工作) 
 
-### <a name="span"></a>跨度
+針對遙測處理器用途，範圍的重要元件如下：
 
-「範圍」（span）是代表個別服務或元件流經系統時所執行之工作的物件。 `span`包含 `span context` ，它是一組全域唯一識別碼，代表每個範圍所屬的唯一要求。 
+* 名稱
+* 屬性
 
-範圍封裝：
+範圍名稱是用於 Azure 入口網站中的要求和相依性的主要顯示。
 
-* 範圍名稱
-* 可 `SpanContext` 唯一識別範圍的不可變
-* 的父範圍 `Span` ，以、 `SpanContext` 或 null 形式
-* `SpanKind`
-* 開始時間戳
-* 結束時間戳記
-* [`Attributes`](#attributes)
-* 有時間戳記的事件清單
-* `Status`。
+Span 屬性代表給定要求或相依性的標準和自訂屬性。
 
-一般來說，範圍的生命週期如下所示：
+## <a name="telemetry-processor-types"></a>遙測處理器類型
 
-* 服務收到要求。 範圍內容會從要求標頭中解壓縮（如果有的話）。
-* 新的範圍會建立為已解壓縮的範圍內容的子系;如果不存在，則會建立新的根範圍。
-* 服務會處理要求。 額外的屬性和事件會新增至範圍，此範圍有助於瞭解要求的內容，例如處理要求的電腦主機名稱或客戶識別碼。
-* 您可以建立新的範圍，以代表服務的子元件所進行的工作。
-* 當服務對另一個服務進行遠端呼叫時，會將範圍內容插入標頭或訊息信封中，藉以序列化目前的範圍內容並轉送至下一個服務。
-* 服務所執行的工作已成功完成。 範圍狀態會適當設定，且範圍會標示為已完成。
+目前有兩種類型的遙測處理器。
 
-### <a name="attributes"></a>屬性
+#### <a name="attribute-processor"></a>屬性處理器
 
-`Attributes` 這是在中封裝的零或多個索引鍵/值組清單 `span` 。 屬性必須具有下列屬性：
+屬性處理器可以插入、更新、刪除或雜湊屬性。
+它也可以透過正則運算式來將 (解壓縮) 現有屬性中的一個或多個新屬性。
 
-屬性索引鍵，必須是非 null 和非空白的字串。
-屬性值，也就是：
-* 基本類型：字串、布林值、雙精確度浮點數 (IEEE 754-1985) 或帶正負號的64位整數。
-* 基本類型值的陣列。 陣列必須是同質，亦即它不能包含不同類型的值。 對於原本不支援陣列值的通訊協定，這類值應該以 JSON 字串表示。
+#### <a name="span-processor"></a>範圍處理器
 
-## <a name="supported-processors"></a>支援的處理器：
- * 屬性處理器
- * 範圍處理器
+範圍處理器可以更新遙測名稱。
+它也可以透過正則運算式來將 (解壓縮) 範圍名稱中的一或多個新屬性。
 
-## <a name="to-get-started"></a>快速入門
+> [!NOTE]
+> 請注意，目前的遙測處理器只會處理類型字串的屬性，而且不會處理布林值或數位類型的屬性。
 
-建立名為的設定檔 `applicationinsights.json` ，並 `applicationinsights-agent-***.jar` 使用下列範本，將它放在與相同的目錄中。
+## <a name="getting-started"></a>開始使用
+
+建立名為的設定檔 `applicationinsights.json` ，並 `applicationinsights-agent-*.jar` 使用下列範本，將它放在與相同的目錄中。
 
 ```json
 {
@@ -98,9 +88,14 @@ ms.locfileid: "98133169"
 }
 ```
 
-## <a name="includeexclude-spans"></a>包含/排除範圍
+## <a name="includeexclude-criteria"></a>包含/排除準則
 
-屬性處理器和範圍處理器會公開選項，以提供一組要比對的範圍屬性，以判斷是否應該在遙測處理器中包含或排除該範圍。 若要設定此選項， `include` 必須在和/或 `exclude` 至少一個 `matchType` 和 `spanNames` 或 `attributes` 。 包含/排除設定支援有一個以上的指定條件。 所有指定的條件都必須評估為 true，才會發生相符的情況。 
+屬性處理器和 span 處理器都支援選擇性 `include` 和 `exclude` 準則。
+處理器只會套用至符合條件的範圍 `include` (如果有提供) _，而且_ 不符合其 `exclude` 準則 (（如果有提供) ）。
+
+若要設定此選項， `include` 必須在和/或 `exclude` 至少一個 `matchType` 和 `spanNames` 或 `attributes` 。
+包含/排除設定支援有一個以上的指定條件。
+所有指定的條件都必須評估為 true，才會發生相符的情況。 
 
 **必要欄位**： 
 * `matchType` 控制如何 `spanNames` 解讀和陣列中的專案 `attributes` 。 可能的值為 `regexp` 或 `strict`。 
@@ -150,7 +145,7 @@ ms.locfileid: "98133169"
 ```
 若要深入瞭解，請參閱 [遙測處理器範例](./java-standalone-telemetry-processors-examples.md) 檔。
 
-## <a name="attribute-processor"></a>屬性處理器 
+## <a name="attribute-processor"></a>屬性處理器
 
 屬性處理器會修改範圍的屬性。 它可選擇性地支援包含/排除範圍的功能。 它會採用在設定檔中指定的循序執行的動作清單。 支援的動作包括：
 
@@ -167,7 +162,7 @@ ms.locfileid: "98133169"
         "key": "attribute1",
         "value": "value1",
         "action": "insert"
-      },
+      }
     ]
   }
 ]
@@ -190,7 +185,7 @@ ms.locfileid: "98133169"
         "key": "attribute1",
         "value": "newValue",
         "action": "update"
-      },
+      }
     ]
   }
 ]
@@ -213,7 +208,7 @@ ms.locfileid: "98133169"
       {
         "key": "attribute1",
         "action": "delete"
-      },
+      }
     ]
   }
 ]
@@ -234,7 +229,7 @@ ms.locfileid: "98133169"
       {
         "key": "attribute1",
         "action": "hash"
-      },
+      }
     ]
   }
 ]
@@ -259,7 +254,7 @@ ms.locfileid: "98133169"
         "key": "attribute1",
         "pattern": "<regular pattern with named matchers>",
         "action": "extract"
-      },
+      }
     ]
   }
 ]
@@ -271,7 +266,7 @@ ms.locfileid: "98133169"
 
 若要深入瞭解，請參閱 [遙測處理器範例](./java-standalone-telemetry-processors-examples.md) 檔。
 
-## <a name="span-processors"></a>範圍處理器
+## <a name="span-processor"></a>範圍處理器
 
 範圍處理器會根據範圍名稱修改範圍的範圍名稱或屬性。 它可選擇性地支援包含/排除範圍的功能。
 

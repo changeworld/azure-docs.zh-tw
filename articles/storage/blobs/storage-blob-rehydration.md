@@ -4,17 +4,17 @@ description: 從封存儲存體解除凍結您的 blob，讓您可以存取 blob
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/08/2020
+ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f74d4ffdd724039354a311234317dac889cd7cfe
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545922"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165666"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>將 Blob 資料從封存層解除凍結
 
@@ -29,9 +29,13 @@ ms.locfileid: "95545922"
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+## <a name="monitor-rehydration-progress"></a>監視解除凍結進度
+
+在解除凍結期間，使用「取得 blob 屬性」作業來檢查 [封存 **狀態** ] 屬性，並確認階層變更已完成。 視目的地層而定，狀態會顯示為 "rehydrate-pending-to-hot" 或 "rehydrate-pending-to-cool"。 完成時，會移除封存狀態屬性，而 **存取層** blob 屬性會反映新的經常性存取層或非經常性存取層。
+
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>將封存的 Blob 複製到線上階層
 
-如果您不想將封存 Blob 解除凍結，可以選擇執行[複製 Blob](/rest/api/storageservices/copy-blob) 作業。 您的原始 Blob 會在封存中維持未修改的狀態，而新 Blob 會建立在線上的經常性存取層或非經常性存取層中，以便您使用。 在「複製 Blob」作業中，您也可以將選擇性的 [x-ms-rehydrate-priority] 屬性設定為 [標準] 或 [高]，以指定您想要建立 Blob 複本的優先順序。
+如果您不想將封存 Blob 解除凍結，可以選擇執行[複製 Blob](/rest/api/storageservices/copy-blob) 作業。 您的原始 Blob 會在封存中維持未修改的狀態，而新 Blob 會建立在線上的經常性存取層或非經常性存取層中，以便您使用。 在 **複製 blob** 作業中，您也可以將選擇性的 [ *解除凍結-priority* ] 屬性設定為 [標準] 或 [高]，以指定您要建立 Blob 複製的優先順序。
 
 從封存中複製 Blob 可能需要數小時才能完成 (視選取的解除凍結優先順序而定)。 在幕後，**複製 Blob** 作業會讀取您的封存來源 Blob，以在選取的目的地層中建立新的線上 Blob。 當您列出 Blob 時，您可能會看到新的 Blob，但在完成從來源封存 Blob 讀取資料並寫入新的線上目的地 Blob 之前，您無法使用資料。 新的 Blob 是獨立複本，對其進行任何修改或刪除並不會影響來源封存 Blob。
 

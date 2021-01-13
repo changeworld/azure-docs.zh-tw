@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 12/14/2020
-ms.openlocfilehash: 9ee7440b10bc348d3ba87a4779208791a7b0e9ac
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5a30846a6e2aaf85ded2e55641aa5fba9507a29
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512023"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165768"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database 和 Azure SQL 受控執行個體服務層級
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,23 +42,23 @@ Azure SQL Database 有額外的服務層級：
 | **適用對象** | |  提供以預算為導向且平衡的計算與儲存體選項。 | 大部分的商業工作負載。 自動調整儲存體大小，最高可達 100 TB、流暢的垂直和水準計算規模調整、快速的資料庫還原。 | 具有高交易率和低 IO 延遲的 OLTP 應用程式。 使用多個同步更新的複本，針對失敗提供最高的復原能力，並快速進行容錯移轉|
 |  **適用于資源類型：** ||SQL Database/SQL 受控執行個體 | 單一 Azure SQL Database | SQL Database/SQL 受控執行個體 |
 | **計算大小**| SQL Database | 1 到 80 個虛擬核心 | 1至80虛擬核心 | 1 到 80 個虛擬核心 |
-| | SQL 受控執行個體 | 4、8、16、24、32、40、64、80虛擬核心 | N/A | 4、8、16、24、32、40、64、80虛擬核心 |
-| | SQL 受控執行個體集區 | 2、4、8、16、24、32、40、64、80虛擬核心 | N/A | N/A |
+| | SQL 受控執行個體 | 4、8、16、24、32、40、64、80虛擬核心 | 不適用 | 4、8、16、24、32、40、64、80虛擬核心 |
+| | SQL 受控執行個體集區 | 2、4、8、16、24、32、40、64、80虛擬核心 | 不適用 | 不適用 |
 | **儲存體類型** | 全部 | 進階遠端儲存體 (每個執行個體) | 與本機 SSD 快取分離的儲存體 (每個執行個體) | 超快速本機 SSD 儲存體 (每個執行個體) |
 | **資料庫大小** | SQL Database | 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
-| | SQL 受控執行個體  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
+| | SQL 受控執行個體  | 32 GB – 8 TB | 不適用 | 32 GB – 4 TB |
 | **儲存體大小** | SQL Database | 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
-| | SQL 受控執行個體  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
+| | SQL 受控執行個體  | 32 GB – 8 TB | 不適用 | 32 GB – 4 TB |
 | **TempDB 大小** | SQL Database | [每個 vCore 32 GB](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | [每個 vCore 32 GB](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5) | [每個 vCore 32 GB](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
-| | SQL 受控執行個體  | [每個 vCore 24 GB](../managed-instance/resource-limits.md#service-tier-characteristics) | N/A | 最高 4 TB-受 [儲存體大小限制](../managed-instance/resource-limits.md#service-tier-characteristics) |
+| | SQL 受控執行個體  | [每個 vCore 24 GB](../managed-instance/resource-limits.md#service-tier-characteristics) | 不適用 | 最高 4 TB-受 [儲存體大小限制](../managed-instance/resource-limits.md#service-tier-characteristics) |
 | **記錄寫入輸送量** | SQL Database | [每個 vCore 1.875 MB/秒 (最多 30 MB/秒) ](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/秒 | [每個 vCore 6 MB/s (最大 96 MB/秒) ](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
-| | SQL 受控執行個體 | [每個 vCore 3 MB/s (最大 22 MB/秒) ](../managed-instance/resource-limits.md#service-tier-characteristics) | N/A | [每個 vcore 4 MB/s (最大 48 MB/秒) ](../managed-instance/resource-limits.md#service-tier-characteristics) |
+| | SQL 受控執行個體 | [每個 vCore 3 MB/s (最大 22 MB/秒) ](../managed-instance/resource-limits.md#service-tier-characteristics) | 不適用 | [每個 vcore 4 MB/s (最大 48 MB/秒) ](../managed-instance/resource-limits.md#service-tier-characteristics) |
 |**可用性**|全部| 99.99% |  [有一個次要複本的99.95%，有更多複本的99.99%](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [具有區域多餘單一資料庫的99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**備份**|全部|GRS、7-35 天 (預設為7天) 。 基本層的最大保留期為7天。 | GRS、7天、常數時間點恢復 (PITR)  | RA-GRS、7-35 天 (預設為 7 天) |
-|**記憶體內部 OLTP** | | N/A | N/A | 可用 |
+|**記憶體內部 OLTP** | | 不適用 | 不適用 | 可用 |
 |**唯讀複本**| | 0內建 <br> 使用[異地複寫的](active-geo-replication-overview.md)0-4 | 0-4 內建 | 1個內建，包含在價格中 <br> 使用[異地複寫的](active-geo-replication-overview.md)0-4 |
 |**定價/計費** | SQL Database | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/) 會收取費用。 <br/>IOPS 不會收費。 | [每個複本的 vCore 和使用的儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/) 都會收費。 <br/>尚未收費的 IOPS。 | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/single/) 會收取費用。 <br/>IOPS 不會收費。 |
-|| SQL 受控執行個體 | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/managed/) 會收取費用。 <br/>未向 IOPS 收費| N/A | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/managed/) 會收取費用。 <br/>IOPS 不會收費。| 
+|| SQL 受控執行個體 | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/managed/) 會收取費用。 <br/>未向 IOPS 收費| 不適用 | [vCore、保留的儲存體和備份儲存體](https://azure.microsoft.com/pricing/details/sql-database/managed/) 會收取費用。 <br/>IOPS 不會收費。| 
 |**折扣模型**| | [保留執行個體](reserved-capacity-overview.md)<br/>[Azure Hybrid Benefit](../azure-hybrid-benefit.md) (無法在開發/測試訂用帳戶上使用) <br/>[企業](https://azure.microsoft.com/offers/ms-azr-0148p/) 和 [隨用隨付](https://azure.microsoft.com/offers/ms-azr-0023p/) 開發/測試訂用帳戶| [Azure Hybrid Benefit](../azure-hybrid-benefit.md) (無法在開發/測試訂用帳戶上使用) <br/>[企業](https://azure.microsoft.com/offers/ms-azr-0148p/) 和 [隨用隨付](https://azure.microsoft.com/offers/ms-azr-0023p/) 開發/測試訂用帳戶| [保留執行個體](reserved-capacity-overview.md)<br/>[Azure Hybrid Benefit](../azure-hybrid-benefit.md) (無法在開發/測試訂用帳戶上使用) <br/>[企業](https://azure.microsoft.com/offers/ms-azr-0148p/) 和 [隨用隨付](https://azure.microsoft.com/offers/ms-azr-0023p/) 開發/測試訂用帳戶|
 
 如需詳細資訊，請參閱 [Azure SQL Database (vCore ](resource-limits-vcore-single-databases.md)中服務層級的詳細差異) 、 [單一 Azure SQL Database (dtu ](resource-limits-dtu-single-databases.md)) 、集區 [Azure SQL Database (dtu) ](resource-limits-dtu-single-databases.md)和 [Azure SQL 受控執行個體](../managed-instance/resource-limits.md) 頁面。
@@ -78,6 +78,7 @@ Azure SQL Database 有額外的服務層級：
   - 針對 premium 或業務關鍵服務層級中的儲存體，增加或減少大小（以 250 GB 為增量單位）。
 - 在一般用途服務層級中， `tempdb` 會使用附加的 SSD，且此儲存體成本會包含在 vCore 價格中。
 - 在業務關鍵服務層級中，會 `tempdb` 與 MDF 和 LDF 檔案共用附加的 SSD，且 `tempdb` 儲存體成本會包含在 vCore 價格中。
+- 在 DTU premium 服務層中， `tempdb` 與 MDF 和 LDF 檔案共用附加的 SSD。
 - SQL 受控執行個體的儲存體大小必須指定為 32 GB 的倍數。
 
 

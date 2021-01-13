@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 1e57ae537c271e61f0b2d37f5320cb177b04802b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708935"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164867"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker 知識庫的限制和界限
 
@@ -39,7 +39,7 @@ ms.locfileid: "97708935"
 
 ### <a name="maximum-file-size"></a>檔案大小上限
 
-|[格式]|檔案大小上限 (MB) |
+|格式|檔案大小上限 (MB) |
 |--|--|
 |`.docx`|10|
 |`.pdf`|25|
@@ -74,7 +74,7 @@ ms.locfileid: "97708935"
 
 下表列出中繼資料名稱和值的長度和可接受的字元。
 
-|Item|允許的字元|Regex 模式相符|最大字元數|
+|項目|允許的字元|Regex 模式相符|最大字元數|
 |--|--|--|--|
 | (金鑰) 名稱|允許<br>英數位元 (字母和數位) <br>`_` (底線) <br> 不得包含空格。|`^[a-zA-Z0-9_]+$`|100|
 |值|允許以外的所有專案<br>`:` (冒號) <br>`|` (垂直管道) <br>只允許一個值。|`^[^:|]+$`|500|
@@ -99,6 +99,7 @@ ms.locfileid: "97708935"
 * 建議的每個解答的替代問題數目上限：300
 * URL 數目上限︰10
 * 檔案數目上限︰10
+* 每次呼叫允許的 Qna 數目上限：1000
 
 ## <a name="update-knowledge-base-call-limits"></a>更新知識庫呼叫限制
 這些代表每個更新動作的限制；也就是，按一下 [儲存及訓練] 或呼叫 UpdateKnowledgeBase API。
@@ -106,6 +107,7 @@ ms.locfileid: "97708935"
 * 建議新增或刪除的替代問題數目上限：300
 * 新增或刪除的中繼資料欄位數目上限：10
 * 可重新整理的 URL 數目上限：5
+* 每次呼叫允許的 Qna 數目上限：1000
 
 ## <a name="next-steps"></a>後續步驟
 

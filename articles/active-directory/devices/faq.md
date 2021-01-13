@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860944"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165139"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 裝置管理常見問題集
 
@@ -142,6 +142,12 @@ ms.locfileid: "96860944"
 >* 如果從 Azure AD Connect 上的同步範圍中移除裝置，並將其新增回去。
 >
 >在這兩種情況下，您都必須在這些裝置上手動重新註冊裝置。 若要檢查裝置是否先前已註冊，您可以 [使用 dsregcmd.exe 命令針對裝置進行疑難排解](troubleshoot-device-dsregcmd.md)。
+
+---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>問：我無法在 Windows 10 裝置上的同一個使用者會話中新增3個以上的 Azure AD 使用者帳戶，原因為何？
+
+**答**： Azure AD 在 Windows 10 1803 版本中新增了多個 Azure AD 帳戶的支援。 不過，Windows 10 會將裝置上的 Azure AD 帳戶數目限制為3，以限制權杖要求的大小，並 (SSO) 啟用可靠的單一登入。 新增3個帳戶之後，使用者將會看到後續帳戶發生錯誤。 錯誤畫面上的其他問題資訊會提供下列訊息，指出原因：「因為已達到帳戶限制，所以已封鎖新增帳戶作業」。 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Azure AD Join 常見問題集

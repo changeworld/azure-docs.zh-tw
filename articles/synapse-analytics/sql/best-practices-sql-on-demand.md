@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 93ac8cd3e462c244840a5ed569d685a9d67fa6c2
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457900"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165870"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中無伺服器 SQL 集區的最佳作法
 
@@ -25,9 +25,9 @@ ms.locfileid: "96457900"
 
 無伺服器 SQL 集區可讓您查詢 Azure 儲存體帳戶中的檔案。 其沒有本機儲存或內嵌功能。 因此查詢目標的所有檔案都是無伺服器 SQL 集區的外部。 從儲存體讀取檔案的任何相關動作，都可能會影響查詢效能。
 
-## <a name="colocate-your-azure-storage-account-and-serverless-sql-pool"></a>共置您的 Azure 儲存體帳戶和無伺服器 SQL 集區
+## <a name="colocate-your-storage-and-serverless-sql-pool"></a>共置您的儲存體和無伺服器 SQL 集區
 
-若要將延遲降至最低，請共置您的 Azure 儲存體帳戶和無伺服器的 SQL 集區端點。 在工作區建立期間佈建的儲存體帳戶和端點都會位於相同區域。
+若要將延遲降至最低，請共置您的 Azure 儲存體帳戶，或 CosmosDB 分析儲存體和無伺服器的 SQL 集區端點。 在工作區建立期間佈建的儲存體帳戶和端點都會位於相同區域。
 
 為了達到最佳效能，如果您存取無伺服器 SQL 集區的其他儲存體帳戶，請確定它們位於相同的區域中。 如果不在相同區域，則遠端區域與端點區域之間的資料網路傳輸延遲將會增加。
 
@@ -44,9 +44,9 @@ ms.locfileid: "96457900"
 
 可能的話，您可以準備檔案以獲得更好的效能：
 
-- 將 CSV 和 JSON 轉換成 Parquet。 Parquet 是單欄式格式。 由於已經過壓縮，所以其檔案大小會比包含相同資料的 CSV 或 JSON 檔案小。 無伺服器的 SQL 集區需要較少的時間，而且需要較少的儲存體要求來讀取它。
+- 將大型 CSV 和 JSON 轉換為 Parquet。 Parquet 是單欄式格式。 由於已經過壓縮，所以其檔案大小會比包含相同資料的 CSV 或 JSON 檔案小。 如果您要讀取 Parquet 檔，無伺服器 SQL 集區可以略過查詢中不需要的資料行和資料列。 無伺服器的 SQL 集區需要較少的時間，而且需要較少的儲存體要求來讀取它。
 - 如果查詢是以單一大型檔案為目標，則好處是可將其分割成多個較小的檔案。
-- 請盡可能將 CSV 檔案大小維持在小於 10 GB。
+- 請嘗試將 CSV 檔案大小保持在 100 MB 到 10 GB 之間。
 - 單一 OPENROWSET 路徑或外部資料表 LOCATION 的檔案大小應相同。
 - 藉由將分割區儲存至不同的資料夾或檔案名稱來分割您的資料。 請參閱[使用 filename 和 filepath 函式以特定的分割區為目標](#use-filename-and-filepath-functions-to-target-specific-partitions)。
 

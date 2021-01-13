@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 5eb58c48acc7974a4379cf1993a73228c99f5e6d
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 03a16bfbcb3a8d46a6cb4faa03aa6b6e96cf3db3
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857566"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165955"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>使用安全匯出將 Azure 設定為連接 ITSM 工具
 
@@ -39,9 +39,9 @@ ms.locfileid: "97857566"
 
 ## <a name="define-service-principal"></a>定義服務主體
 
-動作群組服務將需要從您的 AAD 應用程式取得驗證權杖的許可權，才能立即使用服務進行驗證。 若要授與這些許可權，您必須為您租使用者中的動作群組服務建立服務主體。
-您可以針對此目的使用此 [PowerShell 命令](./action-groups.md#secure-webhook-powershell-script) 。  (需要) 的租使用者系統管理員許可權。
-選擇性的步驟是，您可以在建立的應用程式資訊清單中定義應用程式角色，這樣可讓您進一步限制存取，方法是只有具有該特定角色的特定應用程式可以傳送訊息。 此角色必須接著指派給動作群組服務主體。 \
+動作群組服務是第一個合作物件應用程式，因此它有權從您的 AAD 應用程式取得驗證權杖，以便立即使用服務進行驗證。
+選擇性的步驟是，您可以在建立的應用程式資訊清單中定義應用程式角色，這樣可讓您進一步限制存取，方法是只有具有該特定角色的特定應用程式可以傳送訊息。 此角色必須接著指派給動作群組服務主體 (需要) 租使用者系統管理員許可權。
+
 您可以透過相同的 [PowerShell 命令](./action-groups.md#secure-webhook-powershell-script)來完成此步驟。
 
 ## <a name="create-a-secure-webhook-action-group"></a>建立安全 Webhook 動作群組

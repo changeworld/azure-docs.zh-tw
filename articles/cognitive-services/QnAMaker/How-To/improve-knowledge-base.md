@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a77083c721328a8df9facd2f4b320b863aa03c68
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6b9077fec13dd177ec4e07e7fbd7818ded2fd0a1
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352400"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164935"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知識庫中的主動式學習建議問題
 
@@ -26,7 +26,7 @@ ms.locfileid: "96352400"
 
 ## <a name="view-suggested-questions"></a>查看建議的問題
 
-1. 為了查看建議的問題，請在 [ **編輯** 知識庫] 頁面上選取 [ **視圖選項**]，然後選取 [ **顯示主動式學習建議**]。
+1. 為了查看建議的問題，請在 [ **編輯** 知識庫] 頁面上選取 [ **視圖選項**]，然後選取 [ **顯示主動式學習建議**]。 如果沒有任何問題和答案配對的建議，則會停用此選項。  
 
     [![在入口網站的 [編輯] 區段中，選取 [顯示建議]，以查看主動式學習的新問題替代方案。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
@@ -145,7 +145,7 @@ JSON 主體有數個設定：
 |`feedbackRecords`|array|意見反應清單。|
 |`userId`|字串|接受建議問題之人員的使用者識別碼。 使用者識別碼格式是由您負責。 例如，電子郵件地址可以是您架構中的有效使用者識別碼。 選擇性。|
 |`userQuestion`|字串|使用者查詢的確切文字。 必要。|
-|`qnaID`|數目|問題的識別碼，可在 [GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
+|`qnaID`|number|問題的識別碼，可在 [GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
 
 範例 JSON 主體看起來像這樣：
 

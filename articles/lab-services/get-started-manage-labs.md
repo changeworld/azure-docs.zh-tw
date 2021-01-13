@@ -3,12 +3,12 @@ title: 開始使用 Azure 實驗室服務
 description: 本文說明如何開始使用 Azure 實驗室服務。
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d260ace7d7819c3ca2db96d6c4984bf834e170da
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602660"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165037"
 ---
 # <a name="get-started-with-lab-services"></a>開始使用實驗室服務 
 
@@ -46,7 +46,7 @@ VM 是作為虛擬電腦的虛擬環境。 Vm 有自己的處理器、記憶體�
 
 ## <a name="lab-dashboards"></a>實驗室儀表板
 
-### <a name="overview"></a>概觀
+### <a name="overview"></a>總覽
 
 適用于 Azure 實驗室服務中的實驗室的儀表板可提供特定實驗室的不同層面，包括 VM 資訊、指派和未指派 Vm 的數目、已註冊和未註冊的使用者數目，以及實驗室排程的相關資訊。 
 
@@ -109,56 +109,7 @@ VM 是作為虛擬電腦的虛擬環境。 Vm 有自己的處理器、記憶體�
 
 ## <a name="manage-users-in-a-lab"></a>管理實驗室中的使用者
 
-教師能夠將學生使用者新增至實驗室，並監視其小時配額。 
-
-### <a name="add-users-by-email-address"></a>依電子郵件地址新增使用者
-
-1. 從 [Azure 實驗室服務網站](https://labs.azure.com/) 按一下視窗左側的 [ **使用者** ]。
-1. 在視窗頂端，按一下 [ **新增使用者** ]，然後選取 [透過 **電子郵件地址新增**]。 
-1. 在顯示于右側的 [ **新增使用者** ] 窗格中，在個別行上輸入學生的電子郵件地址，或在同一行上輸入學生的電子郵件地址，並以分號分隔。
-1. 按一下 **[儲存]** 。
-1. 現在會使用電子郵件、狀態、邀請和配額時數來更新您的使用者清單。
-
-    註冊實驗室的學生之後，其名稱將會更新 Azure Active Directory 的名字和姓氏。
-
-    > [!NOTE]
-    > 讓使用者可以開啟 [限制存取] 選項切換。 這表示只有您列出的使用者可以使用您傳送的註冊連結向實驗室註冊。
-
-### <a name="add-users-using-a-spreadsheet"></a>使用試算表新增使用者 
-
-您也可以透過上傳包含其電子郵件地址的 CSV 檔案來新增使用者。
-
-1. 在 Microsoft Excel 中建立 CSV 檔案，以在一個資料行中列出學生的電子郵件地址。
-1. 從 [Azure 實驗室服務網站](https://labs.azure.com/)的 [ **使用者** ] 頁面頂端，按一下 [ **新增使用者** ] 按鈕。
-1. 選取 **[上傳 CSV**]。
-1. 選取包含學生電子郵件地址的 CSV 檔案，然後按一下 [ **開啟**]。
-
-    :::image type="content" source="./media/get-started-manage-labs/add-users-spreadsheet.png" alt-text="使用試算表新增使用者":::
-1. 電子郵件現在會出現在右側的視窗中。 按一下 **[儲存]** 。
-
-    :::image type="content" source="./media/get-started-manage-labs/register-users.png" alt-text="註冊使用者":::
-
-### <a name="register-users"></a>註冊使用者
-
-一旦將使用者新增至實驗室，他們必須註冊，才能存取 Vm。 您可以從入口網站邀請使用者來完成這項工作，這會傳送包含實驗室註冊連結的電子郵件。 或者，將註冊連結複製並貼到電子郵件或其他與學生通訊的形式。
-
-1. 從 [ **使用者** ] 頁面的清單中，選取一或多個學生。
-
-    在您選取之學生的資料列中，選取清單中的信封圖示，或按一下畫面頂端的 [ **邀請** ]。
-
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation.png" alt-text="傳送邀請":::
-    
-    在 [透過電子郵件 **傳送邀請** ] 視窗中，輸入選用的郵件 (例如) 給學生的使用者名稱和密碼，然後按一下 [ **傳送**]。 
-    
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation-mail.png" alt-text="傳送電子郵件邀請":::
-
-    或者，您也可以在 [相同的 **使用者** ] 頁面上，按一下畫面頂端的 [ **註冊連結** ] 按鈕。 
-
-    :::image type="content" source="./media/get-started-manage-labs/registration-link.png" alt-text="使用者註冊連結":::
-    
-    從文字欄位複製註冊連結，並將其貼到電子郵件或您慣用的安全訊息工具中。  
-    
-    :::image type="content" source="./media/get-started-manage-labs/user-registration.png" alt-text="傳送使用者註冊":::
+教師能夠將學生使用者新增至實驗室，並監視其小時配額。 如需有關如何透過電子郵件地址新增使用者或使用電子表格清單和註冊使用者的詳細資訊，請參閱 [新增和管理實驗室使用者](how-to-configure-student-usage.md)。
 
 當您邀請使用者或共用連結之後，您就可以在 [**狀態**] 資料行的 [**使用者**] 頁面中，監視哪些使用者已成功註冊。 
 

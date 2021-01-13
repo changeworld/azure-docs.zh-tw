@@ -3,12 +3,12 @@ title: Azure 監視器中的計量 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何使用「Azure 監視」來監視「Azure 事件中樞」的資訊
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5b055c02783c40d844d1c6306bbb71cb23d602f2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 74830775a4f31e6f8e486b4d6cc434335b4ee723
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118790"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165887"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 事件中樞計量
 
@@ -20,7 +20,7 @@ ms.locfileid: "98118790"
 
 Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure 入口網站](https://portal.azure.com)來存取計量，或使用 Azure 監視器 API (REST 和 .NET) 和分析解決方案 (例如 Log Analytics 和事件中樞) 來存取計量。 如需詳細資訊，請參閱[監視 Azure 監視器所收集的資料](../azure-monitor/platform/data-platform.md)。
 
-計量是預設啟用的功能，您可以存取最近 30 天的資料。 如果您需要延長這些資料的保留時間，您可以將計量資料封存到 Azure 儲存體帳戶。 此功能可於 Azure 監視器的[診斷設定](../azure-monitor/platform/diagnostic-settings.md)中進行設定。
+計量是預設啟用的功能，您可以存取最近 30 天的資料。 如果您需要保留較長一段時間的資料，您可以將計量資料封存至 Azure 儲存體帳戶。 這項設定可以在 Azure 監視器的 [ [診斷設定](../azure-monitor/platform/diagnostic-settings.md) ] 中設定。
 
 
 ## <a name="access-metrics-in-the-portal"></a>在入口網站中存取計量
@@ -29,7 +29,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ![檢視成功計量][1]
 
-您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後按一下 [計量]。 若要顯示篩選至事件中樞範圍的計量，請選取事件中樞，然後按一下 [計量]。
+您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後選取 [ **計量**]。 若要顯示篩選至事件中樞範圍的計量，請選取事件中樞，然後選取 [ **計量**]。
 
 針對支援維度的計量，您必須使用所需的維度值來進行篩選，如以下範例所示：
 
@@ -37,7 +37,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ## <a name="billing"></a>計費
 
-在 Azure 監視器中使用計量目前是免費的服務。 不過，如果您使用內嵌計量資料的額外解決方案，可能就需支付這些解決方案的使用費。 例如，如果您將計量資料封存到 Azure 儲存體帳戶，就要支付 Azure 儲存體的使用費。 如果您將計量資料串流至 Azure 監視器記錄以進行高階分析，也會向您收取費用。
+在 Azure 監視器中使用計量目前是免費的服務。 不過，如果您使用其他內嵌計量資料的解決方案，您可能會依這些解決方案計費。 例如，如果您將計量資料封存到 Azure 儲存體帳戶，就要支付 Azure 儲存體的使用費。 如果您將計量資料串流至 Azure 監視器記錄以進行高階分析，也會向您收取費用。
 
 下列計量會提供您服務健康狀態的概觀。 
 
@@ -49,8 +49,11 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 ## <a name="azure-event-hubs-metrics"></a>Azure 事件中樞計量
 如需服務所支援的度量清單，請參閱 [Azure 事件中樞](../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)
 
+> [!NOTE]
+> 發生使用者錯誤時，Azure 事件中樞會更新 **使用者錯誤** 度量，但不會記錄任何其他診斷資訊。 因此，您需要在應用程式中捕獲使用者錯誤的詳細資料。 或者，您也可以在將訊息傳送或接收到 application insights 時，轉換產生的遙測。 如需範例，請參閱 [使用 Application Insights 追蹤](../service-bus-messaging/service-bus-end-to-end-tracing.md#tracking-with-azure-application-insights)。
+
 ## <a name="azure-monitor-integration-with-siem-tools"></a>Azure 監視器與 SIEM 工具整合
-使用 Azure 監視器讓您的監視資料 (活動記錄、診斷記錄等 ) 到事件中樞，可讓您輕鬆地整合安全性資訊和事件管理 (SIEM) 工具。 如需詳細資訊，請參閱下列文章/blog 文章：
+將您的監視資料路由傳送 (活動記錄、診斷記錄等。使用 Azure 監視器 ) 到事件中樞，可讓您輕鬆地與安全性資訊和事件管理 (SIEM) 工具整合。 如需詳細資訊，請參閱下列文章/blog 文章：
 
 - [將 Azure 監視資料串流至事件中樞以供外部工具取用](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
 - [Azure 記錄整合簡介](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)

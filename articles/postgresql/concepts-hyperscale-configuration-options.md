@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 7/1/2020
-ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/12/2021
+ms.openlocfilehash: 48537483501165d4a978afdbd05560613170d187
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964510"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165606"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>適用於 PostgreSQL 的 Azure 資料庫–超大規模 (Citus) 設定選項
 
@@ -119,9 +119,13 @@ ms.locfileid: "85964510"
 
 協調器與背景工作節點上支援最多 2 TiB 的儲存體。 如需節點和叢集大小，請參閱 [上面](#compute-and-storage) 的可用儲存體選項和 IOPS 計算。
 
+### <a name="database-creation"></a>建立資料庫
+
+Azure 入口網站會提供認證，以連線至每個超大規模 (Citus) 伺服器群組、資料庫的單一資料庫 `citus` 。 目前不允許建立另一個資料庫，且 CREATE DATABASE 命令將會失敗並出現錯誤。
+
 ## <a name="pricing"></a>定價
 如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/postgresql/)。
-若要查看您想要的設定成本， [Azure 入口網站](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) 會根據您選取的選項，在 [ **設定** ] 索引標籤上顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 網站上，選取 **[新增專案**]，展開 [ **資料庫** ] 類別，然後選擇 [ **適用於 PostgreSQL 的 Azure 資料庫–超大規模 (Citus) ** 自訂選項。
+若要查看您想要的設定成本， [Azure 入口網站](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) 會根據您選取的選項，在 [ **設定** ] 索引標籤上顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) 網站上，選取 **[新增專案**]，展開 [ **資料庫** ] 類別，然後選擇 [ **適用於 PostgreSQL 的 Azure 資料庫–超大規模 (Citus)** 自訂選項。
  
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 瞭解如何 [在入口網站中建立超大規模 (Citus) server 群組](quickstart-create-hyperscale-portal.md)。

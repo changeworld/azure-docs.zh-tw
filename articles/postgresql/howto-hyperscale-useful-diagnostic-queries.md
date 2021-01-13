@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/5/2021
-ms.openlocfilehash: 90f8b74168f1b02647f14645aa4dc7a3dff8c2ba
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4858f650aca1b704ac79482e0158fd83fc0264b8
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937575"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165236"
 ---
 # <a name="useful-diagnostic-queries"></a>有用的診斷查詢
 
@@ -278,6 +278,31 @@ $cmd$);
 │ 10.0.0.20 │ 0.89           │
 └───────────┴────────────────┘
 ```
+
+## <a name="cache-hit-rate"></a>快取點擊率
+
+大部分的應用程式通常會一次存取資料總計的一小部分。 于 postgresql 會將經常存取的資料保留在記憶體中，以避免磁片的讀取速度變慢。 您可以在 [pg_statio_user_tables](https://www.postgresql.org/docs/current/monitoring-stats.html#MONITORING-PG-STATIO-ALL-TABLES-VIEW) 視圖中查看相關的統計資料。
+
+重要的測量是記憶體快取與您工作負載中磁片之間的資料百分比：
+
+``` postgresql
+SELECT
+  sum(heap_blks_read) AS heap_read,
+  sum(heap_blks_hit)  AS heap_hit,
+  sum(heap_blks_hit) / (sum(heap_blks_hit) + sum(heap_blks_read)) AS ratio
+FROM
+  pg_statio_user_tables;
+```
+
+範例輸出︰
+
+```
+ heap_read | heap_hit |         ratio
+-----------+----------+------------------------
+         1 |      132 | 0.99248120300751879699
+```
+
+如果您發現自己的比率明顯低於99%，則您可能會想要將快取增加到資料庫的可用位置。
 
 ## <a name="next-steps"></a>後續步驟
 

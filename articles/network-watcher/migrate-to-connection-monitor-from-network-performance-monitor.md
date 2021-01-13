@@ -12,21 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 3eb456dad2836bed55c45e7be9e898fdf72ac4d2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 59e266274d6b65182ad63513ecf9bf3b5ab95490
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017930"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164833"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>從網路效能監控遷移至連線監視器
 
 您可以從網路效能監控 (NPM) 將測試遷移至新的、已改善的連線監視器，只要按一下就能獲得改進，而不需要停機。 若要深入瞭解這些優點，請參閱 [連接監視器](./connection-monitor-overview.md)。
 
-
->[!NOTE]
-> 只有來自服務連線監視器的測試可以遷移至連線監視器。
->
 
 ## <a name="key-points-to-note"></a>要注意的重點
 
@@ -39,7 +35,7 @@ ms.locfileid: "98017930"
    * **Log Analytics 中的資料**：在遷移之前，資料會保留在工作區中，而該工作區中的 NPM 是在 NetworkMonitoring 資料表中設定。 遷移之後，資料會移至 NetworkMonitoring 資料表，並在相同的工作區中 ConnectionMonitor_CL 資料表。 在 NPM 中停用測試之後，資料只會儲存在 ConnectionMonitor_CL 資料表中。
    * 以 **記錄為基礎的警示、儀表板和** 整合：您必須根據新的 ConnectionMonitor_CL 資料表，手動編輯查詢。 若要在計量中重新建立警示，請參閱 [使用連線監視器進行網路連線監視](./connection-monitor-overview.md#metrics-in-azure-monitor)。
     
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件：
 
 * 確定您的訂用帳戶中已啟用網路監看員，以及 Log Analytics 工作區的區域。
 * 已安裝 Log Analytics 代理程式的 Azure 虛擬機器必須使用網路監看員擴充功能來啟用。
@@ -52,7 +48,7 @@ ms.locfileid: "98017930"
 
     :::image type="content" source="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png" alt-text="將測試從網路效能監控遷移至連線監視器" lightbox="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png":::
     
-1. 在下拉式清單中，選取您的訂用帳戶和工作區，然後選取您想要遷移的 NPM 功能。 目前，您只能從服務連線監視器遷移測試。  
+1. 在下拉式清單中，選取您的訂用帳戶和工作區，然後選取您想要遷移的 NPM 功能。 
 1. 選取 [匯 **入** ] 以遷移測試。
 
 開始遷移之後，會進行下列變更： 
@@ -74,5 +70,5 @@ ms.locfileid: "98017930"
 ## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解連接監視器，請參閱：
-* [從連線監視器遷移至連線監視器](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
+* [從連線監視器 (傳統) 遷移至連線監視器](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [使用 Azure 入口網站建立連線監視器](./connection-monitor-create-using-portal.md)

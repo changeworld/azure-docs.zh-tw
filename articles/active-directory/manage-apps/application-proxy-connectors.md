@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a2d4cec57eb6ac23c191e504c305c2c6d11268ac
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591050"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164997"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 應用程式 Proxy 連接器
 
@@ -25,7 +25,7 @@ ms.locfileid: "97591050"
 
 ## <a name="what-is-an-application-proxy-connector"></a>什麼是應用程式 Proxy 連接器？
 
-連接器是輕量級代理程式，位於內部部署並可推動應用程式 Proxy 服務的輸出連線。 連接器必須安裝在可存取後端應用程式的 Windows 伺服器上。 您可以在連接器群組內將連接器加以組織，每個群組處理特定應用程式的流量。
+連接器是輕量級代理程式，位於內部部署並可推動應用程式 Proxy 服務的輸出連線。 連接器必須安裝在可存取後端應用程式的 Windows 伺服器上。 您可以在連接器群組內將連接器加以組織，每個群組處理特定應用程式的流量。 如需應用程式 proxy 的詳細資訊和應用程式 proxy 架構的圖表標記法，請參閱 [使用 Azure AD 應用程式 proxy 發佈內部部署應用程式以供遠端使用者使用](what-is-application-proxy.md#application-proxy-connectors)
 
 ## <a name="requirements-and-deployment"></a>需求和部署
 
