@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6bb54cf6a5545a49b3c84df59a9ee1294b788846
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 629a063d80c9f1bb1a9ae3d56783e07491149f24
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462685"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118236"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL 中支援的 Transact-SQL 功能
 
@@ -43,7 +43,7 @@ Synapse SQL 中的使用量模型可讓您使用不同的資料庫物件。 下�
 | **[資料表的資料分割](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | 是 | 否 |
 | **[統計資料](develop-tables-statistics.md)**            | 是 | 是 |
 | **[工作負載管理、資源類別與並行控制](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | 是    | 否 |
-| **成本控制** | 是，使用擴大和縮小動作。 | 是，使用 [Azure 入口網站或 T-SQL 程序](https://docs.microsoft.com/azure/synapse-analytics/sql/data-processed#cost-control)。 |
+| **成本控制** | 是，使用擴大和縮小動作。 | 是，使用 [Azure 入口網站或 T-SQL 程序](./data-processed.md#cost-control)。 |
 
 ## <a name="query-language"></a>查詢語言
 
@@ -84,23 +84,23 @@ Synapse SQL 可讓您使用內建的安全性功能來保護您的資料和控�
 | **儲存體 Azure Active Directory (Azure AD) 通道驗證** | 是 | 是 |
 | **儲存體 SAS 權杖驗證** | 否 | 是，使用 [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中的 [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 或執行個體層級的 [CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 |
 | **儲存體存取金鑰驗證** | 是，使用 [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中的 [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 否 |
-| **儲存體 [受控識別](../security/synapse-workspace-managed-identity.md)驗證** | 是，使用[受控服務識別認證](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 是，使用 `Managed Identity` 認證。 |
+| **儲存體 [受控識別](../security/synapse-workspace-managed-identity.md)驗證** | 是，使用[受控服務識別認證](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&preserve-view=true&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=azure-sqldw-latest) | 是，使用 `Managed Identity` 認證。 |
 | **儲存體應用程式身分識別驗證** | [是](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 否 |
 | **權限 - 物件層級** | 是，包括針對使用者 GRANT、DENY 和 REVOKE 權限的能力 | 是，包括在支援的系統物件上針對使用者/登入 GRANT、DENY 和 REVOKE 權限的能力 |
 | **權限 - 結構描述層級** | 是，包括在結構描述上針對使用者/登入 GRANT、DENY 和 REVOKE 權限的能力 | 是，包括在結構描述上針對使用者/登入 GRANT、DENY 和 REVOKE 權限的能力 |
 | **權限 - [資料庫層級](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)** | 是 | 是 |
 | **權限 - [伺服器層級](/sql/relational-databases/security/authentication-access/server-level-roles)** | 否 | 是，支援 sysadmin 和其他伺服器角色 |
-| **權限 - [資料行層級安全性](/azure/synapse-analytics/sql-data-warehouse/column-level-security?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (機器翻譯)** | 是 | 是 |
+| **權限 - [資料行層級安全性](../sql-data-warehouse/column-level-security.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) (機器翻譯)** | 是 | 是 |
 | **角色/群組** | 是 (資料庫範圍) | 是 (伺服器和資料庫範圍) |
 | **安全性和身分識別函式** | 某些 Transact-SQL 安全性函式和運算子：`CURRENT_USER`、`HAS_DBACCESS`、`IS_MEMBER`、`IS_ROLEMEMBER`、`SESSION_USER`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS`、`OPEN/CLOSE MASTER KEY` | 某些 Transact-SQL 安全性函式和運算子：`CURRENT_USER`、`HAS_DBACCESS`、`HAS_PERMS_BY_NAME`、`IS_MEMBER', 'IS_ROLEMEMBER`、`IS_SRVROLEMEMBER`、`SESSION_USER`、`SESSION_CONTEXT`、`SUSER_NAME`、`SUSER_SNAME`、`SYSTEM_USER`、`USER`、`USER_NAME`、`EXECUTE AS` 和 `REVERT`。 安全性函式無法用來查詢外部資料 (請將結果儲存在可用於查詢的變數中)。  |
 | **DATABASE SCOPED CREDENTIAL** | 是 | 是 |
 | **SERVER SCOPED CREDENTIAL** | 否 | 是 |
-| **資料列層級安全性** | [是](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | 否 |
-| **透明資料加密 (TDE)** | [是](/azure/sql-database/transparent-data-encryption-azure-sql?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) | 否 | 
-| **資料探索與分類** | [是](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 否 |
-| **弱點評定** | [是](/azure/sql-database/sql-vulnerability-assessment?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 否 |
-| **進階威脅防護** | [是](/azure/sql-database/sql-database-threat-detection-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-| **稽核** | [是](/azure/sql-database/sql-database-auditing?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 否 |
+| **資料列層級安全性** | [是](/sql/relational-databases/security/row-level-security?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=sql-server-ver15) | 否 |
+| **透明資料加密 (TDE)** | [是](../../azure-sql/database/transparent-data-encryption-tde-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&tabs=azure-portal&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | 否 | 
+| **資料探索與分類** | [是](../../azure-sql/database/data-discovery-and-classification-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | 否 |
+| **弱點評定** | [是](../../azure-sql/database/sql-vulnerability-assessment.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | 否 |
+| **進階威脅防護** | [是](../../azure-sql/database/threat-detection-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
+| **稽核** | [是](../../azure-sql/database/auditing-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) | 否 |
 | **[防火牆規則](../security/synapse-workspace-ip-firewall.md)**| 是 | 是 |
 | **[私人端點](../security/synapse-workspace-managed-private-endpoints.md)**| 是 | 是 |
 
@@ -134,7 +134,7 @@ Synapse SQL 可讓您使用內建的安全性功能來保護您的資料和控�
 | **Azure Blob 儲存體** | 是 | 是 |
 | **Azure SQL (遠端)** | 否 | 否 |
 | **Azure CosmosDB 交易式儲存體** | 否 | 否 |
-| **Azure CosmosDB 分析儲存體** | 否 | 是，使用 [Synapse Link (預覽)](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ([公開預覽](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)) |
+| **Azure CosmosDB 分析儲存體** | 否 | 是，使用 [Synapse Link (預覽)](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) ([公開預覽](../../cosmos-db/synapse-link.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json#limitations)) |
 | **Apache Spark 資料表 (在工作區中)** | 否 | 僅使用[中繼資料同步處理](develop-storage-files-spark-tables.md)的 PARQUET 資料表 |
 | **Apache Spark 資料表 (遠端)** | 否 | 否 |
 | **Databricks 資料表 (遠端)** | 否 | 否 |
@@ -153,7 +153,7 @@ Synapse SQL 可讓您使用內建的安全性功能來保護您的資料和控�
 | **JSON** | 是 | [是](query-json-files.md) |
 | **Avro** | 否 | 否 |
 | **[Delta-lake](https://delta.io/)** | 否 | 否 |
-| **[CDM](https://docs.microsoft.com/common-data-model/)** | 否 | 否 |
+| **[CDM](/common-data-model/)** | 否 | 否 |
 
 ## <a name="next-steps"></a>後續步驟
 如需關於專用 SQL 集區和無伺服器 SQL 集區最佳做法的其他資訊，請參閱下列文章：

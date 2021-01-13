@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: e85e433e1b1b31470fc8d7dee24353fd719b64e2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031176"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011879"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>快速入門：以 Microsoft 身分識別平台保護 ASP.NET Core Web API
 
@@ -35,7 +35,7 @@ ms.locfileid: "97031176"
 >
 > 首先，請在您的 Azure AD 租用戶中註冊 Web API，並遵循下列步驟來新增範圍：
 >
-> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 > 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 > 1. 搜尋並選取 [Azure Active Directory]  。
 > 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。

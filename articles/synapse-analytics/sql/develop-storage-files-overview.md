@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f398f80e4e283f971e0d947d0dda131e12fe88a7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446571"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120388"
 ---
 # <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區存取外部儲存體
 
@@ -116,7 +116,7 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
 
 具有讀取資料表權限的使用者可以使用 EXTERNAL TABLE 存取外部檔案，該資料表會建立在 Azure 儲存體資料夾和檔案集合的上方。
 
-具有[建立外部資料表權限](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15#permissions&preserve-view=true)的使用者 (例如 CREATE TABLE 和 ALTER ANY CREDENTIAL 或 REFERENCES DATABASE SCOPED CREDENTIAL)，可以使用下列指令碼，在 Azure 儲存體資料來源上方建立資料表：
+具有[建立外部資料表權限](/sql/t-sql/statements/create-external-table-transact-sql?preserve-view=true&view=sql-server-ver15#permissions)的使用者 (例如 CREATE TABLE 和 ALTER ANY CREDENTIAL 或 REFERENCES DATABASE SCOPED CREDENTIAL)，可以使用下列指令碼，在 Azure 儲存體資料來源上方建立資料表：
 
 ```sql
 CREATE EXTERNAL TABLE [dbo].[DimProductexternal]

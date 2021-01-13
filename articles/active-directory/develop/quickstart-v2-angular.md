@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 72d9aefcdda5d224b256c6e969b7a75259a97005
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c34ea5e2c622b7b203c56c6de2b611d6eca1d35c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95750768"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017505"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入門：讓使用者登入並取得 Angular 單頁應用程式中的存取權杖
 
@@ -35,7 +35,7 @@ ms.locfileid: "95750768"
 >
 > ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>選項 1 (快速)：註冊和自動設定您的應用程式，然後下載程式碼範例
 >
-> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 > 1. 如果您的帳戶可存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure Active Directory (Azure AD) 租用戶。
 > 1. 在 Azure 入口網站中開啟新的[應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)窗格。
 > 1. 輸入應用程式的名稱，然後選取 [註冊]。
@@ -45,7 +45,7 @@ ms.locfileid: "95750768"
 >
 > #### <a name="step-1-register-the-application"></a>步驟 1:註冊應用程式
 >
-> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 > 1. 如果您的帳戶可存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure AD 租用戶。
 > 1. 依照指示，在 Azure 入口網站中[註冊單頁應用程式](./scenario-spa-app-registration.md)。
 > 1. 在應用程式註冊的 [驗證] 窗格中新增平台，然後註冊重新導向 URI：`http://localhost:4200/`。

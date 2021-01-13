@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 7c0efbae3576a5b57433fe70885fd97aae5e87e3
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 476261181ca4a8f32bb307a13aa6faa2f1ef9d26
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107935"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017386"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>快速入門：使用主控台應用程式的身分識別來取得權杖並呼叫 Microsoft Graph API
 
@@ -49,7 +49,7 @@ ms.locfileid: "97107935"
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 > 若要手動註冊您的應用程式，並將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
-> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 > 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 > 1. 搜尋並選取 [Azure Active Directory]  。
 > 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。

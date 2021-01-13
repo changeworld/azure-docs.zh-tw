@@ -11,12 +11,12 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse, devx-track-azurepowershell
-ms.openlocfilehash: 08ddb6077887043d798af9790a7b66f1b8ebb95c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6022974b80a7f691edc9b9a11b972035b203187c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91570692"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121034"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 暫停和繼續 Synapse SQL 集區中的計算
 
@@ -27,7 +27,7 @@ ms.locfileid: "91570692"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-本快速入門假設您已有可暫停和繼續的 SQL 集區。 若您需要建立 SQL 集區，您可以使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)建立名為 **mySampleDataWarehouse** 的 SQL 集區。
+本快速入門假設您已有可暫停和繼續的 SQL 集區。 若您需要建立 SQL 集區，您可以使用 [建立與連線 - 入口網站](create-data-warehouse-portal.md)建立名為 **mySampleDataWarehouse** 的 SQL 集區。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
@@ -136,4 +136,4 @@ Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlp
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解 SQL 集區，請繼續閱讀[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。 如需管理計算功能的其他資訊，請參閱[管理計算概觀](sql-data-warehouse-manage-compute-overview.md) 一文。
+若要深入了解 SQL 集區，請繼續閱讀[將資料載入 SQL 集區](./load-data-from-azure-blob-storage-using-copy.md)一文。 如需管理計算功能的其他資訊，請參閱[管理計算概觀](sql-data-warehouse-manage-compute-overview.md) 一文。

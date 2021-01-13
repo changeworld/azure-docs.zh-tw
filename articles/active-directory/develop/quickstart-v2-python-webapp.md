@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 383f7f37e93b4705419ba1f93f509c86eaab192b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4b6da5fce9c4ebac671b90a91b39053fcc4c4d2c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030632"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017301"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式
 
@@ -50,7 +50,7 @@ ms.locfileid: "97030632"
 >
 > 若要手動註冊您的應用程式，並將應用程式註冊資訊新增到您的解決方案，請執行下列步驟：
 >
-> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 > 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 > 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
 > 1. 輸入應用程式的 [名稱]，例如 `python-webapp`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。

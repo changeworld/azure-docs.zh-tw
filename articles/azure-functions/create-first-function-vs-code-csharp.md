@@ -4,12 +4,12 @@ description: 了解如何建立 C# 函式，然後使用 Visual Studio Code 中�
 ms.topic: quickstart
 ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 444dff214a70a47ced127a3ca2533c20ea2a779a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 791416a54fa75091facf1f7bc2aadf6fccf54b05
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424633"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968614"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 在 Azure 中建立 C# 函式
 
@@ -27,8 +27,7 @@ ms.locfileid: "93424633"
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Node.js](https://nodejs.org/)，Windows 需要將其用於 npm。 僅限[作用中 LTS 和維修 LTS 版本](https://nodejs.org/about/releases/)。 請使用 `node --version` 命令來檢查您的版本。
-    macOS 和 Linux 上的本機開發不需要此項目。
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 3.x 版。
 
 + 其中一個[支援的平台](https://code.visualstudio.com/docs/supporting/requirements#_platforms)上有 [Visual Studio Code](https://code.visualstudio.com/)。
 

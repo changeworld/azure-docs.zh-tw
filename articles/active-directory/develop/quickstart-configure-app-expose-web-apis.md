@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 4ebae7e97f9128bb9302e9076e71dd3164f0c29e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: bf8b705aff8ac608d0eb3626026797f1d106414b
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030955"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017747"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>快速入門：設定應用程式以公開 Web API
 
@@ -45,7 +45,7 @@ ms.locfileid: "97030955"
 
 首先，請遵循下列步驟來建立名為 `Employees.Read.All` 的範例範圍：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用戶，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: 來選取包含您用戶端應用程式的租用戶。
 1. 依序選取 [Azure Active Directory] > [應用程式註冊]，接著選取 API 的應用程式註冊。
 1. 選取 [公開 API] > [增範圍]。

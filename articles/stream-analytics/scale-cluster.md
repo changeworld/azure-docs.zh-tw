@@ -3,17 +3,16 @@ title: 調整 Azure 串流分析叢集大小
 description: 了解如何擴大和縮減 Azure 串流分析叢集的大小。
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 0763e56de6c72a36d39b17d153db6fc4d7dd821a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e469e9bfd13bf8d89084b66e954cb51b27c2ebc2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943994"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020021"
 ---
 # <a name="resize-an-azure-stream-analytics-cluster"></a>調整 Azure 串流分析叢集大小
 
@@ -25,7 +24,7 @@ ms.locfileid: "90943994"
 
 1. 在 Azure 入口網站中，找出並選取您的串流分析叢集。
 
-1. 在**概觀**區段中，選取 [縮放]。 您可以看到指派給您叢集的 SU 數目。 視需要使用選取器來增加或減少 SU。
+1. 在 **概觀** 區段中，選取 [縮放]。 您可以看到指派給您叢集的 SU 數目。 視需要使用選取器來增加或減少 SU。
 
    ![縮放叢集](./media/scale-cluster/scale-cluster.png)
 

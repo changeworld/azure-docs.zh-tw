@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ff2d9708642c347a829de290d45849d8629807f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f0c762d0f12f11cb4eef23b55fccb5b7c2a274d3
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462346"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118212"
 ---
 # <a name="connect-to-synapse-sql"></a>連線到 Synapse SQL
 連線到 Azure Synapse Analytics 中的 Synapse SQL 功能。
@@ -51,7 +51,7 @@ ms.locfileid: "96462346"
 ![完整伺服器名稱無伺服器 SQL 集區](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>支援的驅動程式和連接字串
-Synapse SQL 支援 [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx)、[ODBC](https://msdn.microsoft.com/library/jj730314.aspx)、[PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396) 和 [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)。 若要尋找最新版本和文件，請選取前述的其中一個驅動程式。 若要從 Azure 入口網站自動為您使用的驅動程式產生連接字串，選取前述範例中的 [顯示資料庫連接字串]。 下列一些範例顯示每個驅動程式的連接字串。
+Synapse SQL 支援 [ADO.NET](/dotnet/framework/data/adonet/)、[ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows)、[PHP](/sql/connect/php/overview-of-the-php-sql-driver?f=255&MSPPError=-2147217396) 和 [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)。 若要尋找最新版本和文件，請選取前述的其中一個驅動程式。 若要從 Azure 入口網站自動為您使用的驅動程式產生連接字串，選取前述範例中的 [顯示資料庫連接字串]。 下列一些範例顯示每個驅動程式的連接字串。
 
 > [!NOTE]
 > 請考慮將連線逾時設定為 300 秒，以便在短時間無法使用時能夠維持連線。

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1217cf74ab36a8fe865e47009616b1ccb240df67
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462408"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119878"
 ---
 # <a name="sql-authentication"></a>SQL 驗證
 
@@ -111,7 +111,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. 使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) 程序將新的使用者新增至 `master` 中的 **dbmanager** 資料庫角色 (請注意，已佈建的 SQL 中不支援 [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 陳述式)。 範例陳述式︰
+4. 使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=azure-sqldw-latest) 程序將新的使用者新增至 `master` 中的 **dbmanager** 資料庫角色 (請注意，已佈建的 SQL 中不支援 [ALTER ROLE](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 陳述式)。 範例陳述式︰
 
    ```sql
    EXEC sp_addrolemember 'dbmanager', 'Mary'; 
@@ -133,7 +133,7 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 
 ## <a name="non-administrator-users"></a>非系統管理員的使用者
 
-一般而言，非系統管理員帳戶不需要 master 資料庫的存取權。 請使用 [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx) 陳述式，在資料庫層級建立自主資料庫使用者。 
+一般而言，非系統管理員帳戶不需要 master 資料庫的存取權。 請使用 [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) 陳述式，在資料庫層級建立自主資料庫使用者。 
 
 使用者可以是 Azure Active Directory 驗證自主資料庫使用者 (如果您已針對 Azure AD 驗證設定您的環境)，或 SQL Server 驗證自主資料庫使用者，或根據 SQL Server 驗證登入 (在上一個步驟中建立) 的 SQL Server 驗證使用者。  
 
@@ -191,7 +191,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 例如，**db_datareader** 固定資料庫角色可授與資料庫中每個資料表的讀取存取權，這通常並非絕對必要。 
 
-最好是使用 [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) 陳述式來建立您自己的使用者定義資料庫角色，並謹慎地授與每個角色在業務需求上所需的最小權限。 當使用者是多個角色的成員時，會集所有這些角色的權限在一身。
+最好是使用 [CREATE ROLE](/sql/t-sql/statements/create-role-transact-sql) 陳述式來建立您自己的使用者定義資料庫角色，並謹慎地授與每個角色在業務需求上所需的最小權限。 當使用者是多個角色的成員時，會集所有這些角色的權限在一身。
 
 ## <a name="permissions"></a>權限
 
@@ -199,7 +199,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 因為權限的巢狀本質和數目，可能需要仔細研究，設計適當的權限系統以便適當地保護您的資料庫。 
 
-請從[權限 (Database Engine)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) 的權限清單開始著手，然後檢閱[海報大小的權限圖](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)。
+請從[權限 (Database Engine)](/sql/relational-databases/security/permissions-database-engine) 的權限清單開始著手，然後檢閱[海報大小的權限圖](/sql/relational-databases/security/media/database-engine-permissions.png)。
 
 ### <a name="considerations-and-restrictions"></a>考量與限制
 
@@ -236,5 +236,4 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 
 ## <a name="next-steps"></a>後續步驟
 
-如需詳細資訊，請參閱 [自主的資料庫使用者 - 使資料庫可攜](https://msdn.microsoft.com/library/ff929188.aspx)。
- 
+如需詳細資訊，請參閱 [自主的資料庫使用者 - 使資料庫可攜](/sql/relational-databases/security/contained-database-users-making-your-database-portable)。

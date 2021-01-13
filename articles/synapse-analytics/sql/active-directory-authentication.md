@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b0ac002cb52acdc043e4e8ca4fa91daae4e665
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 962e0e734abd73f5a66f9b9ee6067155dd839e5d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457981"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118280"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>使用 Azure Active Directory 驗證向 Synapse SQL 進行驗證
 
@@ -129,8 +129,7 @@ Azure AD 伺服器主體 (登入) 支援下列驗證方法：
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需 Synapse SQL 中的存取和控制概觀，請參閱 [Synapse SQL 存取控制](../sql/access-control.md)。
+- 如需 Synapse SQL 中的存取和控制概觀，請參閱 [Synapse SQL 存取控制](../security/synapse-workspace-access-control-overview.md)。
 - 如需資料庫主體的詳細資訊，請參閱[主體](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 - 如需資料庫角色的詳細資訊，請參閱[資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
- 

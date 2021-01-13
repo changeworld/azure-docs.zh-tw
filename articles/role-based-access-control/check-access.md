@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 12/09/2020
 ms.author: rolyon
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 7cf4020ad38224b25ea8bb7dc7f0fdea7dd6f3b1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5e4f3314ba580dddbd995855bc0f0512b7597107
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033998"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115717"
 ---
 # <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>快速入門：檢查使用者的 Azure 資源存取權
 
@@ -37,7 +37,7 @@ ms.locfileid: "97033998"
 
     以下顯示資源群組範例。
 
-    ![資源群組概觀](./media/check-access/rg-overview.png)
+    ![資源群組概觀](./media/shared/rg-overview.png)
 
 ## <a name="step-2-check-access-for-a-user"></a>步驟 2:檢查使用者存取權
 
@@ -47,7 +47,7 @@ ms.locfileid: "97033998"
 
     下面顯示某資源群組的 [存取控制 (IAM)] 頁面範例。
 
-    ![資源群組存取控制 - [檢查存取權] 索引標籤](./media/check-access/rg-access-control.png)
+    ![資源群組存取控制 - [檢查存取權] 索引標籤](./media/shared/rg-access-control.png)
 
 1. 在 [檢查存取權] 索引標籤的 [尋找] 清單中，選取想要檢查其存取權的使用者、群組、服務主體或受控識別。
 

@@ -3,17 +3,16 @@ title: 建立 Azure 串流分析叢集快速入門
 description: 了解如何建立 Azure 串流分析叢集。
 author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: a7be204c30d242be991fb9a57d239b69342ace97
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eb36af5b3f1e142405b24ade16516d0268b4ab2f
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90943747"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016553"
 ---
 # <a name="quickstart-create-a-dedicated-azure-stream-analytics-cluster-using-azure-portal"></a>快速入門：使用 Azure 入口網站建立專用的 Azure 串流分析叢集
 
@@ -34,7 +33,7 @@ ms.locfileid: "90943747"
 
    :::image type="content" source="./media/create-cluster/search-result.png" alt-text="串流分析叢集搜尋結果。":::
 
-1. 在**建立串流分析叢集**頁面上，輸入新叢集的基本設定。
+1. 在 **建立串流分析叢集** 頁面上，輸入新叢集的基本設定。
 
    |設定|值|描述 |
    |---|---|---|
@@ -46,7 +45,7 @@ ms.locfileid: "90943747"
 
    ![建立叢集](./media/create-cluster/create-cluster.png)
 
-1. 選取 [檢閱 + 建立]。 您可以略過**標籤**區段。
+1. 選取 [檢閱 + 建立]。 您可以略過 **標籤** 區段。
 
 1. 檢閱叢集設定，然後選取 [建立]。 叢集建立作業是長時間執行的作業，需要大約 60 分鐘才能完成。 等候入口網站頁面顯示 [您的部署已完成] 訊息。 在此同時，您也可以建立和開發要在此叢集上執行的 [串流分析作業](stream-analytics-quick-create-portal.md#create-a-stream-analytics-job) (如果尚未這麼做)。
 
@@ -56,9 +55,9 @@ ms.locfileid: "90943747"
 
 如果您不打算在串流分析叢集上執行任何串流分析作業，可以將其刪除。 遵循 Azure 入口網站的步驟，刪除您的叢集：
 
-1. 移至**設定**下的**串流分析作業**並停止所有執行中的作業。
+1. 移至 **設定** 下的 **串流分析作業** 並停止所有執行中的作業。
 
-1. 移至您叢集的**概觀**。 選取 [刪除]，然後遵循指示刪除您的叢集。
+1. 移至您叢集的 **概觀**。 選取 [刪除]，然後遵循指示刪除您的叢集。
 
 ## <a name="next-steps"></a>後續步驟
 

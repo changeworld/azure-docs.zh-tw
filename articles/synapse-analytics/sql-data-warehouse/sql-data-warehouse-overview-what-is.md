@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f9ab6dacde0259905368d8a0cb788dde77bbfb2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453617"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115815"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的專用 SQL 集區 (先前稱為 SQL DW) 是什麼？
 
@@ -51,7 +51,7 @@ Azure Synapse Analytics 是一種分析服務，可將企業資料倉儲和巨�
 
 - 探索 [Azure Synapse 架構](massively-parallel-processing-mpp-architecture.md)
 - 快速[建立專用 SQL 集區](create-data-warehouse-portal.md)
-- [載入範例資料](load-data-from-azure-blob-storage-using-polybase.md)。
+- [載入範例資料](./load-data-from-azure-blob-storage-using-copy.md)。
 - 探索[影片](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 或者，您也可以看看以下其他 Azure Synapse 資源。
@@ -59,5 +59,5 @@ Azure Synapse Analytics 是一種分析服務，可將企業資料倉儲和巨�
 - 搜尋[部落格](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - 提交[功能要求](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [建立支援票證](sql-data-warehouse-get-started-create-support-ticket.md)
-- 搜尋 [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+- 搜尋 [Microsoft 問與答頁面](/answers/topics/azure-synapse-analytics.html)
 - 搜尋 [Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-sqldw)

@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 44f23e4f5b3f65fb4f3c69b2ddc55af8c983aa23
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887530"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043722"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>開始使用群組通話 Hero 範例
 
@@ -72,7 +72,7 @@ Azure 通訊服務的 **群組通話 Hero 範例** 會示範如何使用通訊�
 
 若要在本機測試範例，您可以透過通話 URL 開啟多個瀏覽器工作階段來模擬多使用者通話。
 
-## <a name="before-running-the-sample-for-the-first-time"></a>第一次執行範例之前
+### <a name="before-running-the-sample-for-the-first-time"></a>第一次執行範例之前
 
 1. 開啟 [PowerShell]、[Windows 終端機]、[命令提示字元] 或 [對等] 的執行個體，然後瀏覽至您想要將範例複製到其中的目錄。
 2. `git clone https://github.com/Azure-Samples/communication-services-web-calling-hero.git`

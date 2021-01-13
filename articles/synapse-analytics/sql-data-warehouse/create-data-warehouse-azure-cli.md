@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 11/20/2020
 ms.author: Kevin
 ms.custom: azure-synapse
-ms.openlocfilehash: 59195bba69bb343e55cfcb7342400d93dcce60c0
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 2920c96d6a2e505347edb51780101327cb884e08
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932952"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120167"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-cli"></a>快速入門：使用 Azure CLI 建立 Synapse SQL 集區
 
@@ -134,4 +134,4 @@ az group delete --ResourceGroupName MyResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已建立了 SQL 集區、防火牆規則並連線到您的 SQL 集區。 若要深入了解，請繼續閱讀[將資料載入 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。
+您現在已建立了 SQL 集區、防火牆規則並連線到您的 SQL 集區。 若要深入了解，請繼續閱讀[將資料載入 SQL 集區](./load-data-from-azure-blob-storage-using-copy.md)一文。

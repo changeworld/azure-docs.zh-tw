@@ -3,12 +3,12 @@ title: 使用 Visual Studio Code 建立 PowerShell 函式 - Azure Functions
 description: 了解如何建立 PowerShell 函式，然後使用 Visual Studio Code 中的 Azure Functions 擴充功能，將本機專案發佈至 Azure Functions 中的無伺服器裝載。
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 5d85c0362daa9dc3b42ed0cc1329329ffa598bee
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: ad129d8faec5725a6e76f14577e6a0e9deae8d86
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637042"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968002"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 在 Azure 中建立 PowerShell 函式
 
@@ -26,8 +26,7 @@ ms.locfileid: "94637042"
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Node.js](https://nodejs.org/)，Windows 需要將其用於 npm。 僅限[作用中 LTS 和維修 LTS 版本](https://nodejs.org/about/releases/)。 請使用 `node --version` 命令來檢查您的版本。
-    macOS 和 Linux 上的本機開發不需要此項目。
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 3.x 版。
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 

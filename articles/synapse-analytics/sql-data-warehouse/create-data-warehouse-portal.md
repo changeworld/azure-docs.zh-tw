@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 78a0982081b8e34461fb2910cc7ce21be622cb6a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 4da99200079557ab9d1674635c0df26c9e62d488
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922788"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120269"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立和查詢 Azure Synapse Analytics 中的專用 SQL 集區 (先前稱為 SWL DW)
 
@@ -153,7 +153,7 @@ Azure Synapse 服務會在伺服器層級建立防火牆。 此防火牆會防�
 
 ## <a name="run-some-queries"></a>執行一些查詢
 
-不建議在以伺服器管理員身分登入時執行大型查詢，因為這麼做會使用[有限的資源類別](resource-classes-for-workload-management.md)。 請改為設定[工作負載隔離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)，如[教學課程所述](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)。
+不建議在以伺服器管理員身分登入時執行大型查詢，因為這麼做會使用[有限的資源類別](resource-classes-for-workload-management.md)。 請改為設定[工作負載隔離](./quickstart-configure-workload-isolation-tsql.md)，如[教學課程所述](./load-data-wideworldimportersdw.md#create-a-user-for-loading-data)。
 
 Azure Synapse Analytics 使用 T-SQL 作為查詢語言。 若要開啟查詢視窗並執行一些 T-SQL 查詢，請使用下列步驟：
 

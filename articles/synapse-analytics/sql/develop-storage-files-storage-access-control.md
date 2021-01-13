@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746723"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120405"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中控制無伺服器 SQL 集區的儲存體帳戶存取
 
@@ -63,7 +63,7 @@ ms.locfileid: "97746723"
 
 ### <a name="anonymous-access"></a>[匿名存取](#tab/public-access)
 
-您可以存取放在 Azure 儲存體帳戶上的公用檔案，而且這些檔案[允許匿名存取](/azure/storage/blobs/storage-manage-access-to-resources)。
+您可以存取放在 Azure 儲存體帳戶上的公用檔案，而且這些檔案[允許匿名存取](../../storage/blobs/anonymous-read-access-configure.md)。
 
 ---
 
@@ -101,7 +101,7 @@ ms.locfileid: "97746723"
 
 請依照下列步驟來設定儲存體帳戶防火牆，並新增 Synapse 工作區的例外狀況。
 
-1. 開啟 PowerShell 或 [安裝 PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+1. 開啟 PowerShell 或 [安裝 PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)
 2. 安裝更新的 Az。 儲存體模組： 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease

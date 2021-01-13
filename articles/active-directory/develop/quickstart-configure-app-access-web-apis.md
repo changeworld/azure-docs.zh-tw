@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 2630984d54134ca8fca94fdc1960265ba71935a6
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fdaaf935dc458a6a5b2a87a81bb98a1392f1034a
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031295"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012116"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入門：設定用戶端應用程式以存取 Web API
 
@@ -42,7 +42,7 @@ ms.locfileid: "97031295"
 
 一旦您註冊了用戶端應用程式和 Web API，並藉由建立範圍來公開 API，您可以遵循下列步驟來設定用戶端對 API 的權限：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用戶，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: 來選取包含您用戶端應用程式的租用戶。
 1. 依序選取 [Azure Active Directory] > [應用程式註冊]，接著選取您的用戶端應用程式 (「不是」您的 Web API)。
 1. 選取 [API 權限] > [新增權限] > [我的 API]。
@@ -71,7 +71,7 @@ ms.locfileid: "97031295"
 
 將委派的權限設定為 Microsoft Graph，讓您的用戶端應用程式代表登入的使用者執行作業，例如讀取其電子郵件或修改其設定檔。 根據預設，用戶端應用程式的使用者登入時，系統會詢問用戶端應用程式的使用者以同意您為其設定的委派權限。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用戶，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: 來選取包含您用戶端應用程式的租用戶。
 1. 依序選取 [Azure Active Directory] > [應用程式註冊]，接著選取您的用戶端應用程式。
 1. 選取 [API 權限] > [新增權限] > [Microsoft Graph]
@@ -96,7 +96,7 @@ ms.locfileid: "97031295"
 
 在下列步驟中，您會將權限授與 Microsoft Graph 的 Files.Read.All 權限作為範例。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用戶，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: 來選取包含您用戶端應用程式的租用戶。
 1. 依序選取 [Azure Active Directory] > [應用程式註冊]，接著選取您的用戶端應用程式。
 1. 選取 [API 權限] > [新增權限] > [Microsoft Graph] > [應用程式權限]。

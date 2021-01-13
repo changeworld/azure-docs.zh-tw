@@ -3,21 +3,21 @@ title: 快速入門：將驗證新增至具有 MSAL 節點的節點 Web 應用�
 titleSuffix: Microsoft identity platform
 description: 在本快速入門中，您會了解如何使用 Node.js Web 應用程式和適用於 Node.js 的 Microsoft 驗證程式庫 (MSAL) 實作驗證。
 services: active-directory
-author: amikuma
-manager: saeeda
+author: mmacy
+manager: celested
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/22/2020
-ms.author: amikuma
+ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e860a33ba44743dcc5a96d7656f22fd952a1d0b8
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 7fc76259f30f96d95c63b7e9369ec5e9647d923e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762562"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107441"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>快速入門：使用授權碼流程讓使用者登入並取得 Node Web 應用程式中的存取權杖
 
@@ -41,7 +41,7 @@ ms.locfileid: "96762562"
 >
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 >
-> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
+> 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 > 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 > 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
 > 1. 輸入應用程式的 **名稱**。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。

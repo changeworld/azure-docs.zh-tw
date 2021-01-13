@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 18fba46e4e8de14d9b3ec43455ba2abcc4218dc1
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456589"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120184"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立專用 SQL 集區 (先前稱為 SQL DW)
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已建立專用 SQL 集區 (先前稱為 SQL DW)、建立防火牆規則，並連線至您的專用 SQL 集區。 若要深入了解，請繼續閱讀[將資料載入專用 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)一文。
+現在，您已建立專用 SQL 集區 (先前稱為 SQL DW)、建立防火牆規則，並連線至您的專用 SQL 集區。 若要深入了解，請繼續閱讀[將資料載入專用 SQL 集區](./load-data-from-azure-blob-storage-using-copy.md)一文。

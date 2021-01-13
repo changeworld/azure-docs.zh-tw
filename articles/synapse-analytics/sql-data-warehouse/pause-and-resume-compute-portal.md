@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 567d5ae8b9d480003486362a7aa0ef69f9740d52
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109647"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120286"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>快速入門：透過 Azure 入口網站暫停和繼續專用 SQL 集區中的計算
 
@@ -98,5 +98,4 @@ ms.locfileid: "97109647"
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已暫停和繼續專用 SQL 集區的計算。 請繼續閱讀下一篇文章以深入了解如何[將資料載入專用 SQL 集區](load-data-from-azure-blob-storage-using-polybase.md)。 如需管理計算功能的其他資訊，請參閱[管理計算概觀](sql-data-warehouse-manage-compute-overview.md) 一文。 
-
+現在您已暫停和繼續專用 SQL 集區的計算。 請繼續閱讀下一篇文章以深入了解如何[將資料載入專用 SQL 集區](./load-data-from-azure-blob-storage-using-copy.md)。 如需管理計算功能的其他資訊，請參閱[管理計算概觀](sql-data-warehouse-manage-compute-overview.md) 一文。

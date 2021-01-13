@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7e7dce7ec4b8d4d55e734487595bb330e97ab18b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446687"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120439"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>如何在 Azure Synapse Analytics 中使用無伺服器 SQL 集區使用 OPENROWSET
 
@@ -171,7 +171,7 @@ WITH (
 )
 ```
 
-json_path = 資料行或巢狀屬性的 [JSON 路徑運算式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)。 預設[路徑模式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE)為 lax 模式。
+json_path = 資料行或巢狀屬性的 [JSON 路徑運算式](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)。 預設[路徑模式](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE)為 lax 模式。
 
 > [!NOTE]
 > 在 strict 模式中，如果提供的路徑不存在，則查詢會失敗。 在 lax 模式中，查詢將會成功，而且 JSON 路徑運算式會評估為 Null。
@@ -371,7 +371,7 @@ WITH (
 
 ### <a name="specify-columns-using-json-paths"></a>使用 JSON 路徑指定資料行
 
-下列範例示範如何在 WITH 子句中使用 [JSON 路徑運算式](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)，並示範 strict 和 lax 路徑模式之間的差異： 
+下列範例示範如何在 WITH 子句中使用 [JSON 路徑運算式](/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15)，並示範 strict 和 lax 路徑模式之間的差異： 
 
 ```sql
 SELECT 

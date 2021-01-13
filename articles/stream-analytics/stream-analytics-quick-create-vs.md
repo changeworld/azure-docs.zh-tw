@@ -1,17 +1,17 @@
 ---
 title: 快速入門 - 使用 Visual Studio 建立 Azure 串流分析作業
 description: 本快速入門將說明如何開始使用 Visual Studio 建立串流分析作業、設定輸入與輸出以及定義查詢。
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 034f1497cb6262ca86cd440b914f3ae67356eef9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7a02d0914ae111d6e2e00493fe27613e27d836b1
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124606"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012354"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>快速入門：使用 Visual Studio 建立 Azure 串流分析作業
 
@@ -51,7 +51,7 @@ ms.locfileid: "93124606"
 
 4. 完成時，選取 [下一步:  設定大小與級別]。
 
-5. 選擇您的 **定價與級別層** 。 在本快速入門中，選取 [F1-免費]  層 (如果仍可用於您的訂用帳戶)。 如果無法使用免費層，請選擇可用的最低層。 如需詳細資訊，請參閱 [IoT 中樞定價](https://azure.microsoft.com/pricing/details/iot-hub/)。
+5. 選擇您的 **定價與級別層**。 在本快速入門中，選取 [F1-免費]  層 (如果仍可用於您的訂用帳戶)。 如果無法使用免費層，請選擇可用的最低層。 如需詳細資訊，請參閱 [IoT 中樞定價](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
    ![調整 IoT 中樞的大小與級別](./media/stream-analytics-quick-create-vs/iot-hub-size-and-scale.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "93124606"
 
 ## <a name="define-the-transformation-query"></a>定義轉換查詢
 
-1. 從 Visual Studio 中的 **方案總管** 開啟 **Script.asaql** 。
+1. 從 Visual Studio 中的 **方案總管** 開啟 **Script.asaql**。
 
 2. 新增下列查詢：
 
@@ -188,7 +188,7 @@ ms.locfileid: "93124606"
 
    ![執行中的串流分析作業](./media/stream-analytics-quick-create-vs/stream-analytics-job-running.png)
 
-4. 若要檢視結果，請在 [檢視]  功能表上選取 [Cloud Explorer]  ，並瀏覽至您資源群組中的儲存體帳戶。 在 [Blob 容器]  下方按兩下 **container1** ，然後按兩下 **輸出** 檔案路徑。
+4. 若要檢視結果，請在 [檢視]  功能表上選取 [Cloud Explorer]  ，並瀏覽至您資源群組中的儲存體帳戶。 在 [Blob 容器]  下方按兩下 **container1**，然後按兩下 **輸出** 檔案路徑。
 
    ![檢視結果](./media/stream-analytics-quick-create-vs/stream-analytics-vs-results.png)
 

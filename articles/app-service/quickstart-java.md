@@ -11,12 +11,12 @@ ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 32d7dc913ae19353574e91837b4ea009d9f797c6
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802468"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071760"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>快速入門：在 Azure App Service 上建立 Java 應用程式
 
@@ -218,7 +218,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 `<subscriptionId>` | false | 指定訂用帳戶識別碼。 | 0.1.0+
 `<resourceGroup>` | true | Web 應用程式的 Azure 資源群組。 | 0.1.0+
 `<appName>` | true | 您的 Web 應用程式名稱。 | 0.1.0+
-`<region>` | true | 指定將裝載 Web 應用程式的區域；預設值為 **westeurope**。 所有有效的區域皆列於[支援的區域](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)一節。 | 0.1.0+
+`<region>` | true | 指定將裝載 Web 應用程式的區域；預設值為 **westeurope**。 所有有效的區域皆列於[支援的區域](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)一節。 | 0.1.0+
 `<pricingTier>` | false | 您 Web 應用程式的定價層。 生產工作負載預設值為 **P1V2**，而 Java 開發/測試建議最少使用 **B2**。 [深入了解](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0+
 `<runtime>` | true | 執行階段環境組態，您可以在[此處](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看詳細資料。 | 0.1.0+
 `<deployment>` | true | 部署組態，您可以在[此處](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)查看詳細資料。 | 0.1.0+

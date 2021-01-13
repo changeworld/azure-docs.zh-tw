@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501068"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116359"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics 受控虛擬網路
 
@@ -41,7 +41,7 @@ ms.locfileid: "96501068"
 
 ## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-virtual-network"></a>建立具有受控工作區虛擬網路的 Azure Synapse 工作區
 
-如果您尚未這麼做，請註冊網路資源提供者。 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 當您[註冊](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)時，請從資源提供者清單中選擇 [Microsoft.Network]。
+如果您尚未這麼做，請註冊網路資源提供者。 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 當您[註冊](../../azure-resource-manager/management/resource-providers-and-types.md)時，請從資源提供者清單中選擇 [Microsoft.Network]。
 
 若要建立具有相關聯受控工作區虛擬網路的 Azure Synapse 工作區，請選取 Azure 入口網站中的 [網路] 索引標籤，然後勾選 [啟用受控虛擬網路] 核取方塊。
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4c3b5095da4e55dc8f881a610f80f1150422e739
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457191"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119912"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>無伺服器 SQL 集區的自助服務
 
@@ -25,7 +25,7 @@ ms.locfileid: "96457191"
 如果 Synapse Studio 無法與無伺服器 SQL 集區連線，您將會發現無伺服器 SQL 集區呈現灰色，或顯示狀態為「離線」。 這個問題通常會在有下列其中一種情況時發生：
 
 1) 網路阻止與 Azure Synapse 後端通訊。 最常見的情況是連接埠 1443 已遭到封鎖。 若要讓無伺服器 SQL 集區正常執行，請將此連接埠解除封鎖。 其他問題也可能會讓無伺服器 SQL 集區無法運作，[請瀏覽完整的疑難排解指南以取得詳細資訊](../troubleshoot/troubleshoot-synapse-studio.md)。
-2) 您沒有可供登入無伺服器 SQL 集區的權限。 若要取得存取權，請讓其中一個 Azure Synapse 工作區系統管理員將您新增至工作區系統管理員或 SQL 系統管理員角色。 [請瀏覽關於存取控制的完整指南以取得詳細資訊](access-control.md)。
+2) 您沒有可供登入無伺服器 SQL 集區的權限。 若要取得存取權，請讓其中一個 Azure Synapse 工作區系統管理員將您新增至工作區系統管理員或 SQL 系統管理員角色。 [請瀏覽關於存取控制的完整指南以取得詳細資訊](../security/synapse-workspace-access-control-overview.md)。
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>查詢因為無法開啟檔案而失敗
 

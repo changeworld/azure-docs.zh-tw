@@ -4,12 +4,12 @@ description: 了解如何建立 Python 函式，然後使用 Visual Studio Code 
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 4d37acfddeb5f5b6220e7082e729a7d6e6dfe66b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9e4ddc479b0adcb88e846b92e6603dfdf3c99baa
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542417"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967985"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 搭配 Python 在 Azure 中建立函式
 
@@ -27,8 +27,7 @@ ms.locfileid: "94542417"
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-+ [Node.js](https://nodejs.org/)，Windows 需要將其用於 npm。 僅限[作用中 LTS 和維修 LTS 版本](https://nodejs.org/about/releases/)。 請使用 `node --version` 命令來檢查您的版本。
-    macOS 和 Linux 上的本機開發不需要此項目。
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) 3.x 版。
 
 + Azure Functions (x64) 支援 [Python 3.8](https://www.python.org/downloads/release/python-381/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/)。
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3cbd9fd697bbae8779f5b2b9fa4ab817efce30ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12966503bfa17030fc4ebcb4d790a2f4655142a2
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454643"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116529"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules"></a>Azure Synapse Analytics IP 防火牆規則
 
@@ -43,7 +43,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址，授與或拒絕 Syn
 
 此外，您還需要為 Synapse Studio 允許 UDP 連接埠 53 上的傳出通訊。 若要使用 SSMS 和 Power BI 這類工具進行連線，您必須允許 TCP 通訊埠 1433 上的傳出通訊。
 
-如果您使用預設的重新導向連線原則設定，您可能需要允許其他連接埠上的傳出通訊。 您可以在[這裡](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)深入了解連線原則。
+如果您使用預設的重新導向連線原則設定，您可能需要允許其他連接埠上的傳出通訊。 您可以在[這裡](../../azure-sql/database/connectivity-architecture.md#connection-policy)深入了解連線原則。
 
 ## <a name="next-steps"></a>後續步驟
 

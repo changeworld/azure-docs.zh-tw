@@ -10,12 +10,12 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.custom: has-adal-ref
-ms.openlocfilehash: fb8aad52eeaef2366afe28aa71059b7f8f780501
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 511d5841652b1f7b6487a42341ec392cb86d2b3a
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843293"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120371"
 ---
 # <a name="use-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>搭配使用多重要素 AAD 驗證與 Synapse SQL (MFA 的 SSMS 支援)
 
@@ -71,7 +71,7 @@ Azure AD MFA 有助於保護資料和應用程式的存取，同時又滿足使�
    ![mfa-tenant-ssms](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD 企業對企業支援   
-在 Azure AD B2B 案例中，以來賓使用者身分支援的 Azure AD 使用者 (請參閱[什麼是 Azure B2B 共同作業](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)，只能以在目前 Azure AD 中建立之群組的成員連線至 Synapse SQL，並且在指定的資料庫中使用 Transact-SQL `CREATE USER` 手動對應。 
+在 Azure AD B2B 案例中，以來賓使用者身分支援的 Azure AD 使用者 (請參閱[什麼是 Azure B2B 共同作業](../../active-directory/external-identities/what-is-b2b.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)，只能以在目前 Azure AD 中建立之群組的成員連線至 Synapse SQL，並且在指定的資料庫中使用 Transact-SQL `CREATE USER` 手動對應。 
 
 例如，如果 `steve@gmail.com` 受邀加入 Azure AD `contosotest` (與 Azure Ad 網域`contosotest.onmicrosoft.com`)，則必須在 Azure AD 中建立包含 `steve@gmail.com` 成員的 Azure AD 群組 (例如 `usergroup`)。 然後，Azure AD SQL 系統管理員或 Azure AD DBO 必須藉由執行 Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` 陳述式，針對特定資料庫 (也就是 MyDatabase) 建立此群組。 
 
@@ -92,5 +92,4 @@ Azure AD MFA 有助於保護資料和應用程式的存取，同時又滿足使�
 - 通用驗證的 Active Directory 驗證程式庫 (ADAL) 版本已更新為最新的 ADAL.dll 3.13.9 可用發行版本。 請參閱 [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)。  
 
 ## <a name="next-steps"></a>後續步驟
-如需詳細資訊，請參閱[使用 SQL Server Management Studio 連線到 Synapse SQL](get-started-ssms.md) 一文。 
-
+如需詳細資訊，請參閱[使用 SQL Server Management Studio 連線到 Synapse SQL](get-started-ssms.md) 一文。
