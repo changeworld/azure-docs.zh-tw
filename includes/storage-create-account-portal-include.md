@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 01/11/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: f8959904482bda8dc26e4df626377027e1ab4bd1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3da4fd26b3f985e034ca60039c09412e8237e965
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005534"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109474"
 ---
 若要在 Azure 入口網站中建立一般用途 v2 儲存體帳戶，請遵循下列步驟：
 
@@ -26,8 +26,7 @@ ms.locfileid: "96005534"
 1. 選取一個效能層級。 預設階層為 [標準]。
 1. 將 [帳戶類型] 欄位設定為 [Storage V2 (一般用途 v2)]。
 1. 指定儲存體帳戶的複寫方式。 預設複寫選項為「讀取權限異地備援儲存體 (RA-GRS)」。 如需可用複寫選項的詳細資訊，請參閱 [Azure 儲存體備援](../articles/storage/common/storage-redundancy.md)。
-1. 在儲存體帳戶中指定 blob 的存取層。 預設階層為 [經常性存取層]。 如需 blob 存取層的詳細資訊，請參閱 [Blob 的經常性存取層、非經常性存取層，以及封存存取層](../articles/storage/blobs/storage-blob-storage-tiers.md)。
-1. 若要使用 Azure Data Lake Storage，請選擇 [進階] 索引標籤，然後將 [階層命名空間] 設定為 [啟用]。 如需詳細資訊，請參閱 [Azure Data Lake Storage Gen2 簡介](../articles/storage/blobs/data-lake-storage-introduction.md)
+1. 您可以在 [網路]、[資料保護]、[進階] 和 [標籤] 索引標籤上取得其他選項。 若要使用 Azure Data Lake Storage，請選擇 [進階] 索引標籤，然後將 [階層命名空間] 設定為 [啟用]。 如需詳細資訊，請參閱 [Azure Data Lake Storage Gen2 簡介](../articles/storage/blobs/data-lake-storage-introduction.md)
 1. 選取 [檢閱 + 建立]  ，以檢閱您的儲存體帳戶設定並建立帳戶。
 1. 選取 [建立]。
 
