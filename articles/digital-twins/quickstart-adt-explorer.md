@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f6bd6b13ab4a2e654bdabc86355f2c3388abed31
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187287"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050522"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>快速入門 - 使用 ADT Explorer 探索 Azure Digital Twins 案例的範例
 
@@ -251,9 +251,7 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
 
 若要查看答案，請在 [查詢總管] 方塊中執行下列查詢。
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 回想一下您稍早看到的對應項屬性，Room0 的溫度是 70，而 Room1 的溫度是 80。 因此，只有 Room1 會顯示在此結果中。
     
@@ -284,9 +282,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 若要確認圖形是否已成功將更新登錄到 Room0 的溫度，請重新執行先前的查詢，以取得環境中所有溫度高於 75 的對應項。
 
-```SQL
-SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
 
 現在，Room0 的溫度已從 70 變更為 76，因此這兩個分身應該都會顯示在結果中。
 

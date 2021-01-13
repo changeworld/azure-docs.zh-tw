@@ -67,7 +67,7 @@
       items:
         - name: 設定 IP 防火牆 (預覽)
           href: ip-firewall-virtual-networks.md
-        - name: 設定私人端點 (預覽)
+        - name: 設定私人端點
           href: private-link-service.md
     - name: 管理和監視
       items:

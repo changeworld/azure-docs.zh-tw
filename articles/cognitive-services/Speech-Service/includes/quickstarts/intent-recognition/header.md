@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
-ms.openlocfilehash: 8d70d282ffb1a39f9ffb3eb6addf694ac9d0d060
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4725a1a9cf2cb74655a37ac27a0a86f10d7f4bb9
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81422313"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052901"
 ---
 在本快速入門中，您將使用[語音 SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) 和 Language Understanding (LUIS)服務來辨識從麥克風擷取之音訊資料的意圖。 具體而言，您將使用語音 SDK 來擷取語音，並使用 LUIS 中預先建置的網域來識別家庭自動化的意圖，例如開燈和關燈。 
 
@@ -22,3 +22,4 @@ ms.locfileid: "81422313"
 > * 使用上面的 `SpeechConfig` 物件來建立 `IntentRecognizer` 物件。
 > * 使用 `IntentRecognizer` 物件，開始針對單一表達進行辨識程序。
 > * 檢查所傳回的 `IntentRecognitionResult`。
+

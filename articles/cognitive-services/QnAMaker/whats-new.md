@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 2c159e25195c5f144187268b4355c1078695e809
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c3dc2f91fcd09807a7eaaaaa638e78ba3717faec
+ms.sourcegitcommit: 63caac7871df9d999ca5a5f1b8c036ae7014231c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345520"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98061764"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 的新功能
 
@@ -26,6 +26,8 @@ ms.locfileid: "96345520"
 ### <a name="november-2020"></a>2020 年 11 月
 
 * 新版 QnA Maker 會以免費的公開預覽版推出。 您可以在[這裡](https://techcommunity.microsoft.com/t5/azure-ai/introducing-qna-maker-managed-now-in-public-preview/ba-p/1845575)深入了解.
+
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-QnA-managed-Now-in-Public-Preview/player]
 * 簡化的資源建立
 * 端對端區域支援
 * 深度學習排名模型
