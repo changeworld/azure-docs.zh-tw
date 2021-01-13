@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e2a950037aed2a8ded4d4e55920721285cbfc05c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83f0ce27172879a37de9488499e46de30b8e112c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82204623"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147363"
 ---
 使用自訂 IPsec 原則時，請記住下列需求：
 
@@ -34,3 +34,4 @@ ms.locfileid: "82204623"
 | IPsec 加密 | GCMAES256、GCMAES128、AES256、AES128、None |
 | IPsec 完整性 | GCMAES256、GCMAES128、SHA256 |
 | PFS 群組 | ECP384、ECP256、PFS24、PFS14、None |
+| SA 存留期 |等效最小值 300/預設值27000秒 |

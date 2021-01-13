@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 64e648cf6ae3c763d3e9ab1a6970f48c84331bad
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 09ce611b5bca6c04d55da95a82a8fcd7ae348db3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845634"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049211"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教學課程：建置端對端解決方案
 
@@ -89,10 +89,7 @@ Query
 >
 > 以下是用來取得執行個體中所有數位對應項的完整查詢主體：
 > 
-> ```sql
-> SELECT *
-> FROM DIGITALTWINS
-> ``` 
+> :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="GetAllTwins":::
 
 在此之後，您就可以停止執行專案。 但請在 Visual Studio 中保持開啟此解決方案，因為您在本教學課程中還要繼續使用。
 

@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 6ffe631dc237e7efaf1d6bfd9ac79ab7431c7371
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: bfcd8b3c482b4d429a9e3a4d7bc75e27ada63a98
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023134"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134393"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows 虛擬桌面 RDP Shortpath (preview) 
 
@@ -141,7 +141,8 @@ New-NetFirewallRule -DisplayName 'Remote Desktop - Shortpath (UDP-In)'  -Action 
 $domainName = "contoso.com"
 $policyName = "RDP Shortpath Policy"
 $gpoSession = Open-NetGPO -PolicyStore "$domainName\$policyName"
-New-NetFirewallRule -DisplayName 'Remote Desktop - Shortpath (UDP-In)'  -Action Allow -Description 'Inbound rule for the Remote Desktop service to allow RDP traffic. [UDP 3390]' -Group '@FirewallAPI.dll,-28752' -Name 'RemoteDesktop-UserMode-In-Shortpath-UDP'  -PolicyStore PersistentStore -Profile Domain, Private -Service TermService -Protocol udp -LocalPort 3390 -Program '%SystemRoot%\system32\svchost.exe' -Enabled:True
+New-NetFirewallRule -DisplayName 'Remote Desktop - Shortpath (UDP-In)'  -Action Allow -Description 'Inbound rule for the Remote Desktop service to allow RDP traffic. [UDP 3390]' -Group '@FirewallAPI.dll,-28752' -Name 'RemoteDesktop-UserMode-In-Shortpath-UDP' -Profile Domain, Private -Service TermService -Protocol udp -LocalPort 3390 -Program '%SystemRoot%\system32\svchost.exe' -Enabled:True -GPOSession $gpoSession
+Save-NetGPO -GPOSession $gpoSession
 ```
 
 ## <a name="configuring-azure-network-security-group"></a>正在設定 Azure 網路安全性群組
@@ -252,7 +253,7 @@ Get-Process -id (Get-NetUDPEndpoint  -LocalPort 3390 -LocalAddress 0.0.0.0).Owni
 我們想要聽取您對於此公開預覽體驗的意見！
 * 針對問題、要求、批註和其他意見反應，請 [使用此意見反應表單](https://aka.ms/RDPShortpathFeedback)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 若要深入瞭解 Windows 虛擬桌面網路連線能力，請參閱 [瞭解 Windows 虛擬桌面網路連線能力](network-connectivity.md)。
 * 若要開始使用適用于 Windows 虛擬桌面的服務品質 (QoS) ，請參閱 [為 Windows 虛擬桌面 (qos) 執行服務品質](rdp-quality-of-service-qos.md)。

@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: include
-ms.date: 07/25/2019
+ms.date: 01/12/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 54306b8bd8718a0a69f5b04ceaab15dff46d21a8
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 6f8ed3381f056238bdbb24fe52c5f859afef7d03
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97978844"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147469"
 ---
 | 資源 | 限制 |
 | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "97978844"
 | 每個訂用帳戶每個區域的 ExpressRoute 線路 (具有 Azure Resource Manager) |10 |
 | 具有 ExpressRoute Standard 的 Azure 私人對等互連的公告路由數目上限 |4,000 |
 | 具有 ExpressRoute Premium 附加元件的 Azure 私人對等互連的公告路由數目上限 |10,000 |
-| 從 ExpressRoute 連線的 VNet 位址空間的 Azure 私人對等互連的公告路由數目上限 |1000 |
+| 從 ExpressRoute 連線的 VNet 位址空間的 Azure 私人對等互連的公告路由數目上限 |200 |
 | 具有 ExpressRoute Standard 的 Microsoft 對等互連的公告路由數目上限 |200 |
 | 具有 ExpressRoute Premium 附加元件的 Microsoft 對等互連的公告路由數目上限 |200 |
 | 連結至相同對等互連位置的相同虛擬網路的 ExpressRoute 線路數目上限 |4 |

@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 308b2a9cb00f44f0e330d4fef5592d8855ee3394
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 00c1c8ddab9214bf7698c21b05c24afa36ec20d9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553112"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147473"
 ---
 ## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>健康情況類別、實體和屬性的文字分析
 
@@ -23,22 +23,22 @@ ms.locfileid: "94553112"
 
 | 類別  | 描述  |
 |---------|---------|
-| 解剖 | 捕獲內文與 anatomic 系統、網站、地點或區域相關資訊的概念。 |
- | 人口 | 可捕獲性別和年齡資訊的概念。 |
- | 考試 | 捕捉診斷程式和測試相關資訊的概念。 |
- | 基因 組 學 | 捕獲基因和變體相關資訊的概念。 |
- | 醫療 | 捕獲有關系統管理事件、護理環境和醫療保健職業相似性之資訊的概念。 |
- | 醫療條件 | 捕捉診斷、徵兆或正負號相關資訊的概念。 |
- | 藥物 | 捕獲藥物相關資訊的概念，包括藥物名稱、類別、劑量和系統管理路由。 |
- | 社會 | 此概念會捕捉有關 medically 相關社交層面的資訊，例如家族關聯性。 |
- | 治療 | 捕獲 ekko-wave 治療程式相關資訊的概念。 |
+| [解剖](#anatomy) | 捕獲內文與 anatomic 系統、網站、地點或區域相關資訊的概念。 |
+ | [人口](#demographics) | 可捕獲性別和年齡資訊的概念。 |
+ | [考試](#examinations) | 捕捉診斷程式和測試相關資訊的概念。 |
+ | [基因 組 學](#genomics) | 捕獲基因和變體相關資訊的概念。 |
+ | [醫療](#healthcare) | 捕獲有關系統管理事件、護理環境和醫療保健職業相似性之資訊的概念。 |
+ | [醫療條件](#medical-condition) | 捕捉診斷、徵兆或正負號相關資訊的概念。 |
+ | [藥物](#medication) | 捕獲藥物相關資訊的概念，包括藥物名稱、類別、劑量和系統管理路由。 |
+ | [社會](#social) | 此概念會捕捉有關 medically 相關社交層面的資訊，例如家族關聯性。 |
+ | [治療](#treatment) | 捕獲 ekko-wave 治療程式相關資訊的概念。 |
   
 每個類別可能包含兩個概念群組：
 
 * **實體** -捕獲醫療概念的詞彙，例如診斷、藥物名稱或處理名稱。  例如， *bronchitis* 是一個診斷，而 *aspirin* 是一種藥物名稱。  此群組中的提及可以連結至 UMLS 概念識別碼。
 * **屬性** -提供所偵測到實體之詳細資訊的片語，例如，「 *嚴重* 」是 *bronchitis* 或 *81 mg* 的條件辨識符號，是 *aspirin* 的劑量。  此類別中提及的將不會連結至 UMLS 概念識別碼。
 
-此外，此服務會辨識不同概念之間的關聯性，包括屬性與實體之間的關聯性，例如， *主體結構* 的 *方向* *，或將* 實體 *名稱* 和實體之間的關聯性，例如縮寫偵測中的關係。
+此外，此服務會辨識不同概念之間的關聯性，包括屬性與實體之間的關聯性，例如，*主體結構* 的 *方向* *，或將* 實體 *名稱* 和實體之間的關聯性，例如縮寫偵測中的關係。
 
 ## <a name="anatomy"></a>結構
 
@@ -86,7 +86,7 @@ ms.locfileid: "94553112"
 
 ### <a name="entities"></a>實體
 
-**EXAMINATION_NAME** –診斷程式和測試。 例如，MRI、ECG、HIV test、hemoglobin、platelets count、scale 系統，例如 *Bristol stool scale* 。
+**EXAMINATION_NAME** –診斷程式和測試。 例如，MRI、ECG、HIV test、hemoglobin、platelets count、scale 系統，例如 *Bristol stool scale*。
 
 :::image type="content" source="../../media/ta-for-health/exam-name-entities.png" alt-text="測驗實體的範例。":::
 
@@ -236,7 +236,7 @@ ms.locfileid: "94553112"
 
 ### <a name="attributes"></a>屬性
 
-**劑量** -已訂購的藥物數量。 例如，注入 Sodium Chloride solution *1000 mL* 。
+**劑量** -已訂購的藥物數量。 例如，注入 Sodium Chloride solution *1000 mL*。
 
 :::image type="content" source="../../media/ta-for-health/medication-dosage.png" alt-text="藥物劑量屬性的範例。":::
 
@@ -267,7 +267,15 @@ ms.locfileid: "94553112"
 +   **FREQUENCY_OF_MEDICATION**
 +   **ROUTE_OF_MEDICATION**
 +   **TIME_OF_MEDICATION**
-  
+
+## <a name="social"></a>社交
+
+### <a name="entities"></a>實體
+
+**FAMILY_RELATION** –提及主體的家人親屬。 例如，父親、女兒、同輩、父系。
+
+:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="螢幕擷取畫面顯示處理時間屬性的另一個範例。":::
+
 ## <a name="treatment"></a>處理方式
 
 ### <a name="entities"></a>實體
@@ -294,17 +302,8 @@ ms.locfileid: "94553112"
 
 :::image type="content" source="../../media/ta-for-health/treatment-time.png" alt-text="螢幕擷取畫面顯示處理時間屬性的範例。":::
 
-
 ### <a name="supported-relations"></a>支援的關聯性
 
 + **DIRECTION_OF_TREATMENT**
 +   **TIME_OF_TREATMENT**
 +   **FREQUENCY_OF_TREATMENT**
-
-## <a name="social"></a>社交
-
-### <a name="entities"></a>實體
-
-**FAMILY_RELATION** –提及主體的家人親屬。 例如，父親、女兒、同輩、父系。
-
-:::image type="content" source="../../media/ta-for-health/family-relation.png" alt-text="螢幕擷取畫面顯示處理時間屬性的另一個範例。":::

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915856"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134410"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自動化機器學習中的資料特徵化
 
@@ -28,7 +28,7 @@ ms.locfileid: "97915856"
 
 *特徵工程* 是使用資料的領域知識來建立功能的程式，以協助機器學習服務 (ML) 演算法來學習更好的學習。 在 Azure Machine Learning 中，會套用資料調整和正規化技術，讓特徵設計更容易。 這些技術和此功能工程統稱統稱在自動化機器學習或 *autoML* 實驗中 *特徵化*。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已經知道如何設定 AutoML 實驗。 如需設定的相關資訊，請參閱下列文章：
 
@@ -48,7 +48,7 @@ ms.locfileid: "97915856"
 
 |特徵化設定 | 描述|
 ------------- | ------------- |
-|`"featurization": 'auto'`| 指定在前置處理過程中，會自動執行 [資料護欄](#data-guardrails) 和 [特徵化步驟](#featurization) 。 這項設定是預設值。|
+|`"featurization": 'auto'`| 指定在前置處理過程中，會自動執行 [資料護欄](#data-guardrails) 和 [特徵化步驟](#featurization) 。 這是預設設定。|
 |`"featurization": 'off'`| 指定不會自動執行特徵化步驟。|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| 指定要使用的自訂特徵化步驟。 [了解如何自訂特徵化](#customize-featurization)。|
 
@@ -122,6 +122,9 @@ ms.locfileid: "97915856"
 |**轉換器參數更新** |更新指定轉換器的參數。 目前支援 *Imputer* (mean、最頻繁和中位數) 和 *HashOneHotEncoder*。|
 |**卸除資料行** |指定要從特徵化中捨棄的資料行。|
 |**區塊轉換器**| 指定要在特徵化進程中使用的區塊轉換器。|
+
+>[!NOTE]
+> 從 SDK 1.19 版，卸載資料 **行** 功能已被取代。 在您的自動化 ML 實驗中使用資料行之前，請先在資料清理過程中將資料行卸載。 
 
 `FeaturizationConfig`使用 API 呼叫來建立物件：
 
