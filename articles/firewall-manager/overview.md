@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 01/12/2021
 ms.author: victorh
-ms.openlocfilehash: 84ecea7764ddf48d68c983eaa5bccbac5f332d9b
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95489689"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132438"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什麼是 Azure 防火牆管理員？
 
@@ -86,7 +86,6 @@ Azure 防火牆管理員有下列已知問題：
 |已啟用私人流量篩選時的分支對分支流量|已啟用私人流量篩選時，不支援分支對分支流量。 |正在調查。<br><br>如果分支對分支連線能力很重要，則請勿保護私人流量。|
 |所有共用相同虛擬 WAN 的安全虛擬中樞，都必須位於相同的資源群組中。|此行為與現今的虛擬 WAN 中樞一致。|建立多個虛擬 WAN，以允許在不同的資源群組中建立安全虛擬中樞。|
 |大量 IP 位址新增失敗|如果您新增多個公用 IP 位址，則安全中樞防火牆會進入失敗狀態。|請以遞增方式少量增加公用 IP 位址。 例如，一次新增 10 個。|
-|應用程式規則在已設定自訂 DNS (預覽) 的安全中樞中失敗。|自訂 DNS (預覽) 無法在安全中樞部署和已啟用強制通道的中樞虛擬網路部署中運作。|正在調查是否有可用的修正。|
 |不支援 DDoS 保護標準搭配安全的虛擬中樞|DDoS保護標準不會與 vWAN 整合。|正在調查|
 |未完全支援活動記錄|防火牆原則目前不支援活動記錄。|正在調查|
 |設定 SNAT 私人 IP 位址範圍|如果已設定 Azure 防火牆原則，則會忽略[私人 IP 範圍設定](../firewall/snat-private-range.md)。 已使用預設 Azure 防火牆行為，當目的地 IP 位址不在私人 IP 位址範圍 [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) 時，不會採用 SNAT 網路規則。|正在調查|
