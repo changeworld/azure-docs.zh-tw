@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 99f47df86d89e9daf2bc8878b868b04b7038ffd5
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ce95106c56e919fa0fcc7d7553a3f0cc0dc77f98
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071199"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121289"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure 資訊安全中心的定價
 Azure 資訊安全中心提供統一的安全性管理和進階的威脅防護，保護 Azure、內部部署和其他雲端中執行的工作負載。 其提供了針對混合式雲端工作負載的可見性和控制能力、可降低威脅曝露度的主動防禦措施、還有智慧型偵測可幫助您跟上網路風險快速發展的腳步。
@@ -115,7 +115,7 @@ Azure 訂用帳戶可能有多個管理員具有變更定價設定的權限。 �
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>如果我已經有「適用於端點的 Microsoft Defender」授權，我可以擁有 Azure Defender 的折扣嗎？
 如果您已經有「適用於端點的 Microsoft Defender」授權，就不需要支付該部分的 Azure Defender 授權。
 
-若要確認您的折扣，請洽詢資訊安全中心的支援小組，並提供相關的工作區識別碼、區域和授權資訊。
+若要確認您的折扣，請洽詢資訊安全中心的支援小組，並針對每個相關授權提供相關的工作區識別碼、區域和授權資訊。
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>我的訂用帳戶已啟用適用於伺服器的 Azure Defender，是否需要支付非執行中伺服器的費用？ 
 否。 當您啟用訂用帳戶上 [適用於伺服器的 Azure Defender](defender-for-servers-introduction.md) 時，只需支付執行中伺服器的每小時費用。 您無需支付任何關閉的伺服器費用。 
