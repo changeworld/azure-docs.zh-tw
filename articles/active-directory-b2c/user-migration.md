@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: fea8d93121fcb5622f86257febcc7d834b444098
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509609"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178801"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>將使用者遷移至 Azure AD B2C
 
@@ -97,9 +97,9 @@ ms.locfileid: "97509609"
 
 ### <a name="password-policy"></a>密碼原則
 
-如果您要遷移的帳戶的密碼強度比 Azure AD B2C 強制執行的 [強式密碼強度](../active-directory/authentication/concept-sspr-policy.md) 弱，您可以停用強式密碼需求。 如需詳細資訊，請參閱 [密碼原則屬性](manage-user-accounts-graph-api.md#password-policy-property)。
+如果您要遷移的帳戶的密碼強度比 Azure AD B2C 強制執行的 [強式密碼強度](../active-directory/authentication/concept-sspr-policy.md) 弱，您可以停用強式密碼需求。 如需詳細資訊，請參閱 [密碼原則屬性](user-profile-attributes.md#password-policy-attribute)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 GitHub 上的 [azure ad-b2c/使用者-遷移](https://github.com/azure-ad-b2c/user-migration) 存放庫包含無縫遷移自訂原則範例和 REST API 程式碼範例：
 

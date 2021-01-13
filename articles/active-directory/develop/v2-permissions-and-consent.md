@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: d3edadd4878dbd6e06648f7fb67a0c3e111665d1
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355693"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178121"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
@@ -166,10 +166,11 @@ Microsoft 生態系統中的某些高特權權限可以設定為「受系統管�
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>若要設定應用程式的靜態要求許可權清單
 
-1. 在 Azure 入口網站中，移至您的應用程式 [-應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908) 體驗，或 [建立應用](quickstart-register-app.md) 程式（如果尚未這麼做）。
-2. 找出 [ **Api 許可權** ] 區段，然後在 [api 許可權] 內按一下 [新增許可權]。
-3. 從可用的 Api 清單中選取 **Microsoft Graph** ，然後新增您應用程式所需的許可權。
-3. [儲存] 應用程式註冊。
+1. 移至<a href="https://go.microsoft.com/fwlink/?linkid=2083908" target="_blank">Azure 入口網站應用程式註冊 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>快速入門體驗中的應用程式。
+1. 選取應用程式，或 [建立](quickstart-register-app.md) 應用程式（如果尚未建立）。
+1. 在應用程式的 **[總覽**] 頁面的 [**管理**] 底下，選取 [ **API 許可權**  >  **新增許可權**]。
+1. 從可用的 Api 清單中選取 **Microsoft Graph** ，然後新增您應用程式所需的許可權。
+1. 選取 [ **新增許可權**]。
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>建議：將使用者登入您的應用程式
 
@@ -193,7 +194,7 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 參數        | 條件        | 說明                                                                                |
+| 參數        | 條件        | 描述                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | 必要 | 您想要要求權限的目錄租用戶。 可以用 GUID 或易記名稱格式提供，或是與組織一般參考，如範例中所示。 請勿使用「一般」，因為個人帳戶無法在租使用者的內容中提供系統管理員同意。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
 | `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的 **應用程式 (用戶端) 識別碼**。 |
@@ -212,7 +213,7 @@ https://graph.microsoft.com/mail.send
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| 參數 | 說明 |
+| 參數 | Description |
 | --- | --- |
 | `tenant` | 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。 |
 | `state` | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。 |
@@ -322,7 +323,7 @@ response_type=token            //code or a hybrid flow is also possible here
 
 如果您或應用程式的使用者在同意程式中看到未預期的錯誤，請參閱這篇文章以取得疑難排解步驟：對 [應用程式執行同意時出現非預期的錯誤](../manage-apps/application-sign-in-unexpected-user-consent-error.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [識別碼權杖 |Microsoft 身分識別平臺](id-tokens.md)
 * [存取權杖 |Microsoft 身分識別平臺](access-tokens.md)

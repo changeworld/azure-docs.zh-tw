@@ -2,13 +2,13 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 2d4bd0db32a4bf0224b9da3af6e03ca86d7b496e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: ba055970a8fac71b798fca9d3c76550cb7d482a7
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807698"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178988"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>使用 ARM 範本的訂用帳戶部署
 
@@ -142,7 +142,8 @@ New-AzSubscriptionDeployment `
 * 租使用者中的任何訂用帳戶
 * 訂用帳戶或其他訂用帳戶內的資源群組
 * 訂用帳戶的租使用者
-* [擴充功能資源](scope-extension-resources.md) 可以套用至資源
+
+[延伸模組資源](scope-extension-resources.md)的範圍可以設定為與部署目標不同的目標。
 
 部署範本的使用者必須擁有指定範圍的存取權。
 
@@ -487,7 +488,7 @@ New-AzSubscriptionDeployment `
 
 :::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 您可於 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments) 找到範本範例。

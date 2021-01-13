@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549084"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178971"
 ---
 # <a name="object-replication-for-block-blobs"></a>區塊 blob 的物件複寫
 
@@ -90,11 +90,21 @@ ms.locfileid: "96549084"
 
 來源和目的地容器必須同時存在，您才能在規則中加以指定。 建立複寫原則之後，目的地容器會變成唯讀。 任何寫入目的地容器的嘗試都會失敗，錯誤碼為 409 (衝突)。 不過，您可以在目的地容器中的 blob 上呼叫「 [設定 Blob 層](/rest/api/storageservices/set-blob-tier) 」作業，以將它移至封存層。 如需封存層的詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取層和封存存取層](storage-blob-storage-tiers.md#archive-access-tier)。
 
+## <a name="replication-status"></a>複寫狀態
+
+您可以在來源帳戶中檢查 blob 的複寫狀態。 如需詳細資訊，請參閱 [檢查 blob 的複寫狀態](object-replication-configure.md#check-the-replication-status-of-a-blob)。
+
+如果來源帳戶中 blob 的複寫狀態指出失敗，則請調查下列可能的原因：
+
+- 請確定已在目的地帳戶上設定物件複寫原則。
+- 確認目的地容器仍然存在。
+- 如果已使用客戶提供的金鑰來加密來源 blob 做為寫入作業的一部分，則物件複寫將會失敗。 如需客戶提供之金鑰的詳細資訊，請參閱針對 [Blob 儲存體的要求提供加密金鑰](encryption-customer-provided-keys.md)。
+
 ## <a name="billing"></a>計費
 
 物件複寫會針對來源和目的地帳戶的讀取和寫入交易產生額外成本，以及將資料從來源帳戶複製到目的地帳戶的輸出費用，以及讀取處理變更摘要的費用。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [設定物件複寫](object-replication-configure.md)
 - [Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)

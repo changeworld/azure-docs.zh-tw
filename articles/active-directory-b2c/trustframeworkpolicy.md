@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 354c6f9710b7cbd70e0631bc973b2482ea8d8bb3
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386879"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178835"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -40,13 +40,13 @@ ms.locfileid: "97386879"
 
 | 屬性 | 必要 | 描述 |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | 是 | 用來執行此原則的結構描述版本。 值必須是 `0.3.0.0` |
-| TenantObjectId | 否 | Azure Active Directory B2C (Azure AD B2C) 租使用者的唯一物件識別碼。 |
-| TenantId | 是 | 此原則所屬之租用戶的唯一識別碼。 |
-| PolicyId | 是 | 原則的唯一識別碼。 此識別碼必須加上前置詞 *B2C_1A_* |
-| PublicPolicyUri | 是 | 原則的 URI，也就是租用戶識別碼和原則識別碼的組合。 |
-| DeploymentMode | 否 | 可能的值： `Production` 、或 `Development` 。 `Production` 是預設值。 使用此屬性以偵錯您的原則。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
-| UserJourneyRecorderEndpoint | 否 | 當 **DeploymentMode** 設為 `Development` 時，可使用端點。 值必須是 `urn:journeyrecorder:applicationinsights`。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
+| PolicySchemaVersion | Yes | 用來執行此原則的結構描述版本。 值必須是 `0.3.0.0` |
+| TenantObjectId | No | Azure Active Directory B2C (Azure AD B2C) 租使用者的唯一物件識別碼。 |
+| TenantId | Yes | 此原則所屬之租用戶的唯一識別碼。 |
+| PolicyId | Yes | 原則的唯一識別碼。 此識別碼必須加上前置詞 *B2C_1A_* |
+| PublicPolicyUri | Yes | 原則的 URI，也就是租用戶識別碼和原則識別碼的組合。 |
+| DeploymentMode | No | 可能的值： `Production` 、或 `Development` 。 `Production` 是預設值。 使用此屬性以偵錯您的原則。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
+| UserJourneyRecorderEndpoint | No | 用於記錄的端點。 如果屬性存在，此值必須設定為 `urn:journeyrecorder:applicationinsights` 。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
 
 
 下列範例顯示如何指定 **TrustFrameworkPolicy** 元素：
@@ -64,7 +64,7 @@ ms.locfileid: "97386879"
 
 **TrustFrameworkPolicy** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | ----------- |
 | BasePolicy| 0:1| 基底原則的識別碼。 |
 | [BuildingBlocks](buildingblocks.md) | 0:1 | 原則的組建區塊。 |
@@ -76,7 +76,7 @@ ms.locfileid: "97386879"
 
 **BasePolicy** 元素包含下列元素：
 
-| 元素 | 發生次數 | 描述 |
+| 元素 | 發生次數 | Description |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C 租用戶的識別碼。 |
 | PolicyId | 1:1 | 父代原則的識別碼。 |

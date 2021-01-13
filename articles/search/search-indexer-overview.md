@@ -7,34 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/25/2020
+ms.date: 01/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 305682812896bb74474b5065cfd56a071a73ed15
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0405db2b68abefbfdc424def9e35e363e45043cd
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358774"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180127"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 認知搜尋中的索引子
 
-Azure 認知搜尋中的 *索引子* 是一種編目程式，可從外部 Azure 資料來源中解壓縮可搜尋的資料和中繼資料，並根據索引和資料來源之間的欄位對欄位對應填入索引。 這種方法有時稱為「提取模型」，因為服務會在中提取資料，而不需要撰寫任何程式碼來將資料新增至索引。
+Azure 認知搜尋中的 *索引子* 是一種編目程式，可從外部 Azure 資料來源中解壓縮可搜尋的資料和中繼資料，並使用來源資料和您的索引之間的欄位對欄位對應填入搜尋索引。 這種方法有時稱為「提取模型」，因為服務會在中提取資料，而不需要撰寫任何程式碼來將資料新增至索引。
 
-索引子是以資料來源類型或平臺為基礎，其中包含適用于 Azure 上 SQL Server 的個別索引子、Cosmos DB、Azure 資料表儲存體和 Blob 儲存體。 Blob 儲存體索引子具有 blob 內容類型特定的其他屬性。
-
-您可以使用索引子做為擷取資料的唯一手段，或結合使用多項技術 (包含使用索引子) 來僅載入索引中的某些欄位。
+索引子僅限 Azure，具有適用于 Azure SQL、Azure Cosmos DB、Azure 資料表儲存體和 Blob 儲存體的個別索引子。 當您設定索引子時，您將會指定資料來源 (源) ，以及 (目的地) 的索引。 數個數據源（例如 Blob 儲存體索引子）具有該內容類型特定的其他屬性。
 
 您可以視需要執行索引子，或依週期性的資料重新整理排程執行，頻率為每五分鐘一次。 更頻繁的更新需要推播模型，同時更新 Azure 認知搜尋和您的外部資料源中的資料。
+
+## <a name="usage-scenarios"></a>使用方式情節
+
+您可以使用索引子作為資料內嵌的唯一方法，或使用包含只載入索引中某些欄位的技術組合，並選擇性地轉換或擴充內容。 下表摘要說明主要案例。
+
+| 案例 |策略 |
+|----------|---------|
+| 單一來源 | 這是最簡單的模式：一個資料來源是搜尋索引的唯一內容提供者。 從來源，您將識別一個欄位，其中包含唯一值，以作為搜尋索引中的檔索引鍵。 唯一值將會用來做為識別碼。 所有其他來源欄位都會隱含或明確地對應到索引中的對應欄位。 </br></br>重要的重點是，檔索引鍵的值來自來源資料。 搜尋服務不會產生索引鍵值。 在後續的執行中，會新增具有新金鑰的內送檔，而包含現有金鑰的內送檔則會合並或覆寫，視索引欄位為 null 或擴展而定。 |
+| 多個來源| 索引可以接受來自多個來源的內容，其中每個回合都會從不同的來源引入新的內容。 </br></br>其中一個結果可能是在每個索引子執行之後取得檔的索引，而整個檔是從每個來源完整建立的。 此案例的挑戰在於設計可用於所有傳入資料的索引架構，以及在搜尋索引中統一的檔索引鍵。 例如，如果可唯一識別檔的值 metadata_storage_path 在 blob 容器中，以及 SQL 資料表中的主鍵，您可以想像您必須修改一個或兩個來源，以提供通用格式的索引鍵值，而不論內容來源為何。 在此案例中，您應該預期會執行某種程度的前置處理來 homogenize 資料，以便將資料提取到單一索引中。</br></br>替代的結果可能是在第一次執行時部分填入的搜尋檔，然後進一步填入後續的執行，以帶入其他來源的值。 這種模式的挑戰是確定每個索引執行都是以相同的檔為目標。 將欄位合併到現有的檔時，必須符合檔索引鍵。 如需此案例的示範，請參閱 [教學課程：從多個資料來源編制索引](tutorial-multiple-data-sources.md)。 |
+| 內容轉換 | 認知搜尋支援選擇性的 [AI 擴充](cognitive-search-concept-intro.md) 行為，可新增影像分析和自然語言處理，以建立可搜尋的新內容和結構。 AI 擴充是由附加至索引子的 [技能集](cognitive-search-working-with-skillsets.md)所定義。 若要執行 AI 擴充，索引子仍然需要索引和資料來源，但在此案例中，會將技能集處理新增至索引子執行。 |
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>建立與管理索引子的方法
 
 您可以使用這些方法建立和管理索引子：
 
-* [入口網站 > 匯入資料 Wizard](search-import-data-portal.md)
-* [服務 REST API](/rest/api/searchservice/Indexer-operations)
-* [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
++ [入口網站 > 匯入資料 Wizard](search-import-data-portal.md)
++ [服務 REST API](/rest/api/searchservice/Indexer-operations)
++ [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
 
-一開始，會宣布新的索引子作為預覽功能。 預覽功能會在 API (REST 和 .NET) 中引進，然後在准許正式推出之後整合到入口網站中。 如果您正在評估新的索引子，您應該計劃撰寫程式碼。
+如果您使用的是 SDK，請建立 [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient) 來處理索引子、資料來源和技能集。 上述連結適用于 .NET SDK，但所有 Sdk 都提供 SearchIndexerClient 和類似的 Api。
+
+一開始，新的資料來源會宣告為預覽功能，而且僅供 REST 之用。 在即將畢業至正式運作後，就會在入口網站內內建完整的支援，並將其放入各種不同的 Sdk 中，每個 Sdk 都有自己的發行排程。
 
 ## <a name="permissions"></a>權限
 
@@ -46,15 +56,15 @@ Azure 認知搜尋中的 *索引子* 是一種編目程式，可從外部 Azure 
 
 索引子會搜耙 Azure 上的資料存放區。
 
-* [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)
-* 預覽版中的[Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) () 
-* [Azure 資料表儲存體](search-howto-indexing-azure-tables.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [SQL 受控執行個體](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
-* [Azure 虛擬機器上的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
++ [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)
++ 預覽版中的[Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) () 
++ [Azure 資料表儲存體](search-howto-indexing-azure-tables.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [SQL 受控執行個體](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
++ [Azure 虛擬機器上的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
-## <a name="indexer-stages"></a>索引子階段
+## <a name="stages-of-indexing"></a>編制索引的階段
 
 在首次執行時，索引為空白時，索引子會讀取資料表或容器中提供的所有資料。 在後續的執行中，索引子通常可以偵測並只取出已變更的資料。 若為 blob 資料，變更偵測為自動。 針對其他資料來源（例如 Azure SQL 或 Cosmos DB），必須啟用變更偵測。
 
@@ -68,9 +78,9 @@ Azure 認知搜尋中的 *索引子* 是一種編目程式，可從外部 Azure 
 
 範例：  
 
-* 當檔是 [AZURE SQL 資料來源](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)中的記錄時，索引子將會提取記錄的每個欄位。
-* 當檔是 [Azure Blob 儲存體資料來源](search-howto-indexing-azure-blob-storage.md)中的 PDF 檔案時，索引子會將檔案的文字、影像和中繼資料解壓縮。
-* 當檔是 [Cosmos DB 資料來源](search-howto-index-cosmosdb.md)中的記錄時，索引子會從 Cosmos DB 檔中解壓縮欄位和子欄位。
++ 當檔是 [AZURE SQL 資料來源](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)中的記錄時，索引子將會提取記錄的每個欄位。
++ 當檔是 [Azure Blob 儲存體資料來源](search-howto-indexing-azure-blob-storage.md)中的 PDF 檔案時，索引子會將文字、影像和中繼資料解壓縮。
++ 當檔是 [Cosmos DB 資料來源](search-howto-index-cosmosdb.md)中的記錄時，索引子會從 Cosmos DB 檔中解壓縮欄位和子欄位。
 
 ### <a name="stage-2-field-mappings"></a>階段2：欄位對應 
 
@@ -95,17 +105,20 @@ Azure 認知搜尋中的 *索引子* 是一種編目程式，可從外部 Azure 
 索引子可以提供資料來源特有的功能。 在這方面，索引子或資料來源組態的某些層面會因索引子類型而所有不同。 不過，所有索引子都有共用的的基本組成和需求。 下文涵蓋所有的索引子的通用步驟。
 
 ### <a name="step-1-create-a-data-source"></a>步驟 1:建立資料來源
+
 索引子會從 *資料來源* 物件取得資料來源連接。 資料來源定義會提供連接字串，以及可能的認證。 呼叫 [Create Datasource](/rest/api/searchservice/create-data-source) REST API 或 [SearchIndexerDataSourceConnection 類別](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) 來建立資源。
 
 資料來源和使用資料來源的索引子是各自獨立設定與管理，這表示多個索引子可使用同一個資料來源來一次載入多個索引。
 
 ### <a name="step-2-create-an-index"></a>步驟 2：建立索引
+
 索引子會自動執行有關資料擷取的某些工作，但是通常不包括建立索引。 若要滿足必要條件，您必須擁有預先定義的索引，且欄位必須與外部資料來源中的欄位相符。 欄位必須符合名稱和資料類型。 如需結構化索引的詳細資訊，請參閱 [建立索引 (Azure 認知搜尋 REST API) ](/rest/api/searchservice/Create-Index) 或 [SearchIndex 類別](/dotnet/api/azure.search.documents.indexes.models.searchindex)。 如需關於欄位關聯的說明，請參閱 [Azure 認知搜尋索引子中的欄位](search-indexer-field-mappings.md)對應。
 
 > [!Tip]
 > 雖然索引子不能為您產生索引，但入口網站中的 [匯入資料] 精靈有所幫助。 在大部分情況下，此精靈可以從來源中的現有中繼資料推斷索引結構描述，並呈現您可以在精靈作用中時以內嵌方式編輯的初步索引結構描述。 一旦在服務上建立索引後，在入口網站中的進一步編輯大部分都受限於新增欄位。 請考慮使用精靈進行建立，但非修改索引。 如需實際操作學習，請逐步執行[入口網站逐步解說](search-get-started-portal.md)。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>步驟 3：建立和排程索引子
+
 索引子定義是一種結構，可將所有與資料內嵌相關的元素結合在一起。 必要的元素包括資料來源和索引。 選擇性元素包括排程和欄位對應。 只有當來源欄位和索引欄位清楚地對應時，欄位對應才是選擇性的。 如需結構化索引子的詳細資訊，請參閱 [建立索引子 (Azure 認知搜尋 REST API) ](/rest/api/searchservice/Create-Indexer)。
 
 <a id="RunIndexer"></a>
@@ -120,9 +133,9 @@ api-key: [Search service admin key]
 ```
 
 > [!NOTE]
-> 當執行 API 成功傳回時，索引子叫用已經排程，但實際處理不會同步發生。 
+> 當執行 API 傳回成功碼時，索引子調用已排程，但是實際的處理會以非同步方式進行。 
 
-您可以在入口網站中或透過取得索引子狀態 API 來監視索引子狀態。 
+您可以在入口網站中或透過 [取得索引子狀態 API](/rest/api/searchservice/get-indexer-status)來監視索引子狀態。 
 
 <a name="GetIndexerStatus"></a>
 
@@ -167,12 +180,13 @@ api-key: [Search service admin key]
 
 執行歷程記錄包含多達 50 個最近完成的執行，以倒序的方式進行儲存 (因此最新的執行會排在回應中的第一位)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
+
 既然您已瞭解基本概念，下一個步驟是檢閱需求和每個資料來源類型特有的工作。
 
-* [Azure 虛擬機器上的 Azure SQL Database、SQL 受控執行個體或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-* [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)
-* [Azure 資料表儲存體](search-howto-indexing-azure-tables.md)
-* [使用 Azure 認知搜尋 Blob 索引子編制索引 CSV blob](search-howto-index-csv-blobs.md)
-* [使用 Azure 認知搜尋 Blob 索引子編制 JSON blob 的索引](search-howto-index-json-blobs.md)
++ [Azure 虛擬機器上的 Azure SQL Database、SQL 受控執行個體或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
++ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
++ [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)
++ [Azure 資料表儲存體](search-howto-indexing-azure-tables.md)
++ [使用 Azure 認知搜尋 Blob 索引子編制索引 CSV blob](search-howto-index-csv-blobs.md)
++ [使用 Azure 認知搜尋 Blob 索引子編制 JSON blob 的索引](search-howto-index-json-blobs.md)

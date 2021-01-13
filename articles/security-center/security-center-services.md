@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: f5d6d6255b48192a5943159599531fac18ebeb26
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: f3d1918eafe8d61d9c5a7db3f29b83b5412914c0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796987"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179554"
 ---
 # <a name="feature-coverage-for-machines"></a>機器適用的功能涵蓋範圍
 
@@ -126,13 +126,13 @@ ms.locfileid: "97796987"
 |[安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)|✔|✔|
 |[資產詳細目錄](asset-inventory.md)|✔|✔|
 |[適用於 App Service 的 Azure Defender](defender-for-app-service-introduction.md)|-|-|
-|[適用於儲存體的 Azure Defender](defender-for-storage-introduction.md)|✔ (2)|-|
+|[適用於儲存體的 Azure Defender](defender-for-storage-introduction.md)|✔|-|
 |[適用於 SQL 的 Azure Defender](defender-for-sql-introduction.md)|✔|✔ (2)|
 |[適用於 Key Vault 的 Azure Defender](defender-for-key-vault-introduction.md)|-|-|
 |[適用於 Resource Manager 的 Azure Defender](defender-for-resource-manager-introduction.md)|-|-|
 |[適用於 DNS 的 Azure Defender](defender-for-dns-introduction.md)|-|-|
-|[適用於 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)|✔ (2)|✔|
-|[適用於容器登錄的 Azure Defender](defender-for-container-registries-introduction.md)|✔ (2)|-|
+|[適用於 Kubernetes 的 Azure Defender](defender-for-kubernetes-introduction.md)|✔|✔|
+|[適用於容器登錄的 Azure Defender](defender-for-container-registries-introduction.md)|✔ (2)|✔ (2)|
 |||
 
 (1) 需要 *適用於伺服器的 Azure Defender**

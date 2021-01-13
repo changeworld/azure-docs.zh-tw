@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 01/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6abc3316e18fc70a2969bc220fd75e10e10f0e6e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ff3cd858de86d21637f4a7a9ab9d9a83c7022f5a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507773"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178869"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶
 
@@ -43,85 +43,6 @@ Microsoft Graph 可讓您在 Microsoft Graph API 中提供建立、讀取、更�
 - [更新使用者](/graph/api/user-update)
 - [刪除使用者](/graph/api/user-delete)
 
-## <a name="user-properties"></a>使用者屬性
-
-### <a name="display-name-property"></a>顯示名稱屬性
-
-`displayName`是要在使用者的 Azure 入口網站使用者管理中顯示的名稱，而在存取權杖中 Azure AD B2C 會傳回給應用程式。 這是必要屬性。
-
-### <a name="identities-property"></a>識別屬性
-
-客戶帳戶（可能是取用者、合作夥伴或公民）可以與這些身分識別類型相關聯：
-
-- **本機** 身分識別：使用者名稱和密碼會儲存在本機的 Azure AD B2C 目錄。 我們通常會將這些身分識別稱為「本機帳戶」。
-- 同盟身分識別（也稱為 *社交* 或 *企業* 帳戶）是由同盟身分識別提供者（例如 FACEBOOK、Microsoft、ADFS 或 Salesforce）管理的使用者 **身分識別。**
-
-具有客戶帳戶的使用者可以使用多個身分識別登入。 例如，使用者名稱、電子郵件、員工識別碼、政府識別碼等。 單一帳戶可以有多個身分識別（本機和社交），且具有相同的密碼。
-
-在 Microsoft Graph API 中，本機和同盟身分識別都會儲存在使用者 `identities` 屬性中，其類型為 [objectIdentity][graph-objectIdentity]。 `identities`集合代表一組用來登入使用者帳戶的身分識別。 此集合可讓使用者使用其任何相關聯的身分識別來登入使用者帳戶。
-
-| 屬性   | 類型 |說明|
-|:---------------|:--------|:----------|
-|signInType|字串| 指定目錄中的使用者登入類型。 針對本機帳戶：  `emailAddress` 、 `emailAddress1` 、 `emailAddress2` 、 `emailAddress3` 、  `userName` 或您喜歡的任何其他類型。 社交帳戶必須設定為  `federated` 。|
-|簽發者|字串|指定身分識別的簽發者。 若為本機帳戶 (未) signInType `federated` ，則此屬性為本機 B2C 租使用者預設功能變數名稱，例如 `contoso.onmicrosoft.com` 。 針對 **signInType**) 的社交身分識別 ( `federated` ，此值是簽發者的名稱，例如 `facebook.com`|
-|issuerAssignedId|字串|指定簽發者指派給使用者的唯一識別碼。 **簽發者** 和 **issuerAssignedId** 的組合在您的租使用者中必須是唯一的。 針對本機帳戶，當 **signInType** 設定為 `emailAddress` 或時 `userName` ，它代表使用者的登入名稱。<br>當 **signInType** 設定為： <ul><li>`emailAddress` (或以類似的開頭 `emailAddress` `emailAddress1`) **issuerAssignedId** 必須是有效的電子郵件地址</li><li>`userName` (或任何其他值) ， **issuerAssignedId** 必須是 [電子郵件地址的有效本機部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`， **issuerAssignedId** 代表同盟帳戶的唯一識別碼</li></ul>|
-
-**下列身分** 識別屬性，具有具有登入名稱的本機帳戶身分識別、電子郵件地址，以及社交身分識別。 
-
- ```json
- "identities": [
-     {
-       "signInType": "userName",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "johnsmith"
-     },
-     {
-       "signInType": "emailAddress",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "jsmith@yahoo.com"
-     },
-     {
-       "signInType": "federated",
-       "issuer": "facebook.com",
-       "issuerAssignedId": "5eecb0cd"
-     }
-   ]
- ```
-
-針對同盟身分識別，視身分識別提供者而定， **issuerAssignedId** 是每個應用程式或開發帳戶之指定使用者的唯一值。 使用與社交提供者相同的應用程式識別碼，或相同開發帳戶內的另一個應用程式，設定 Azure AD B2C 原則。
-
-### <a name="password-profile-property"></a>密碼配置檔案屬性
-
-若為本機身分識別，則需要 **passwordProfile** 屬性，而且會包含使用者的密碼。 `forceChangePasswordNextSignIn`屬性必須設定為 `false` 。
-
-針對同盟 (社交) 身分識別，不需要 **passwordProfile** 屬性。
-
-```json
-"passwordProfile" : {
-    "password": "password-value",
-    "forceChangePasswordNextSignIn": false
-  }
-```
-
-### <a name="password-policy-property"></a>密碼原則屬性
-
-本機帳戶的 Azure AD B2C 密碼原則 () 是以 Azure Active Directory [強式密碼強度](../active-directory/authentication/concept-sspr-policy.md) 原則為基礎。 Azure AD B2C 的註冊或登入和密碼重設原則都需要此強式密碼強度，而且密碼不會過期。
-
-在使用者遷移案例中，如果您想要遷移的帳戶的密碼強度比 Azure AD B2C 強制執行的 [強式密碼強度](../active-directory/authentication/concept-sspr-policy.md) 弱，您可以停用強式密碼需求。 若要變更預設密碼原則，請將 `passwordPolicies` 屬性設定為 `DisableStrongPassword`。 例如，您可以修改「建立使用者要求」，如下所示：
-
-```json
-"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
-```
-
-### <a name="extension-properties"></a>擴充屬性
-
-每個客戶面向的應用程式對於要收集的資訊都有獨特的需求。 您的 Azure AD B2C 租使用者隨附一組內建的資訊，這些資訊儲存在屬性中，例如名字、姓氏、城市和郵遞區號。 使用 Azure AD B2C，您可以擴充儲存在每個客戶帳戶中的屬性集。 如需定義自訂屬性的詳細資訊，請參閱 [自訂屬性](user-flow-custom-attributes.md)。
-
-Microsoft Graph API 支援以擴充屬性建立和更新使用者。 圖形 API 中的擴充屬性會使用慣例來命名 `extension_ApplicationClientID_attributename` ，其中是應用程式 `ApplicationClientID` **(用戶端) 識別碼**， (在應用程式註冊 Azure 入口網站中的 `b2c-extensions-app`   >  **所有應用程式** 中找到。 請注意， **應用程式 (用戶端) 識別碼** ，因為它在延伸模組屬性名稱中表示不包含連字號。 例如︰
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-```
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>程式碼範例：如何以程式設計方式管理使用者帳戶
 
@@ -205,7 +126,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 
 [使用 Microsoft Graph Sdk 進行 API 呼叫的](/graph/sdks/create-requests) 資訊包括如何從 Microsoft Graph 讀取和寫入資訊、使用 `$select` 控制傳回的屬性、提供自訂查詢參數，以及使用 `$filter` 和 `$orderBy` 查詢參數。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需 Azure AD B2C 資源支援之 Microsoft Graph API 作業的完整索引，請參閱 [適用于 Azure AD B2C 的 Microsoft Graph 作業](microsoft-graph-operations.md)。
 

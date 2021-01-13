@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f5a5242cb9448b3d11e0921b2272cf00bef8f6c1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 5f6ac11fc5c7bbe7a8f81e6ea89e2c582ebcf264
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722261"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178733"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>如何：將 Azure AD 應用程式限制為 Azure AD 租使用者中的一組使用者
 
@@ -34,8 +34,8 @@ ms.locfileid: "97722261"
 
 將應用程式限制為僅供租用戶中一組特定使用者或安全性群組存取的選項，適用於下列類型的應用程式︰
 
-- 設定了同盟單一登入與 SAML 型驗證的應用程式
-- 使用 Azure AD 預先驗證的應用程式 Proxy 應用程式
+- 針對使用 SAML 型驗證進行同盟單一登入所設定的應用程式。
+- 使用 Azure AD 預先驗證的應用程式 proxy 應用程式。
 - 直接建置在 Azure AD 應用程式平台上，且會在使用者或系統管理員同意該應用程式之後，使用 OAuth 2.0/OpenID Connect 驗證的應用程式。
 
      > [!NOTE]
@@ -47,50 +47,40 @@ ms.locfileid: "97722261"
 
 ### <a name="enterprise-applications-requires-the-global-administrator-role"></a>企業應用程式 (需要全域管理員角色) 
 
-1. 移至 [**Azure 入口網站**](https://portal.azure.com/) 並以 **全域系統管理員** 身分登入。
-1. 在頂端列中，選取已登入的帳戶。 
-1. 在 [目錄] 底下，選取要在其中註冊應用程式的 Azure AD 租用戶。
-1. 在左側的導覽中，選取 [Azure Active Directory]。 如果 [流覽] 窗格中無法使用 Azure Active Directory，請遵循下列步驟：
-
-    1. 在左側主導覽功能表的頂端選取 [所有服務]。
-    1. 在篩選搜尋方塊中輸入 **Azure Active Directory** ，然後從結果中選取 **Azure Active Directory** 專案。
-
-1. 在 [ **Azure Active Directory** ] 窗格中，從 **Azure Active Directory** 左側導覽功能表中選取 [**企業應用程式**]。
-1. 選取 [所有應用程式]，以檢視所有應用程式的清單。
-
-     如果看不到您希望在此顯示的應用程式，請使用 [所有應用程式] 清單頂端的各種篩選條件來限制清單，或向下捲動清單以找出應用程式。
-
-1. 從清單中選取想要作為使用者或安全性群組指派目標的應用程式。
-1. 在應用程式的 **[總覽** ] 頁面上，從應用程式的左側導覽功能表中選取 [ **屬性** ]。
+1. 以 **全域管理員** 身分登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span></a> 。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 [**管理**] 底下，選取 [**企業應用** 程式  >  **所有應用程式**]。
+1. 從清單中選取您想要指派使用者或安全性群組的應用程式。 
+    使用視窗頂端的篩選準則來搜尋特定的應用程式。
+1. 在應用程式的 **[總覽** ] 頁面的 [ **管理**] 底下，選取 [ **屬性**]。
 1. 找出 [需要使用者指派嗎？] 設定，並將它設定為 [是]。 當此選項設定為 **[是]** 時，租使用者中的使用者必須先指派給此應用程式，否則他們將無法登入此應用程式。
-1. 選取 [儲存] 以儲存此設定變更。
+1. 選取 [儲存]。
 
 ### <a name="app-registration"></a>應用程式註冊
 
-1. 移至 [**Azure 入口網站**](https://portal.azure.com/)。
-1. 在頂端列中，選取已登入的帳戶。 
-1. 在 [目錄] 底下，選取要在其中註冊應用程式的 Azure AD 租用戶。
-1. 在左側的導覽中，選取 [Azure Active Directory]。
-1. 在 [ **Azure Active Directory** ] 窗格中，從 **Azure Active Directory** 左側導覽功能表中選取 [**應用程式註冊**]。
-1. 建立或選取您想要管理的應用程式。 您必須是此應用程式註冊的 **擁有** 者。
-1. 在應用程式的 **[總覽** ] 頁面上，依照頁面頂端的基本資訊，在 [ **本機目錄中的受控應用程式** ] 連結。 這會將您帶到應用程式註冊的 _受控企業應用程式_ 。
-1. 從左側導覽視窗中，選取 [ **屬性**]。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 [管理]  底下選取 [應用程式註冊]  。
+1. 建立或選取您想要管理的應用程式。 您必須是此應用程式的 **擁有** 者。
+1. 在應用程式的 **[總覽**] 頁面上，選取 [**基本** 資訊] 區段中的 [**本機目錄中的受控應用程式**] 連結。
+1. 在 [ **管理**] 底下，選取 [ **屬性**]。
 1. 找出 [需要使用者指派嗎？] 設定，並將它設定為 [是]。 當此選項設定為 **[是]** 時，租使用者中的使用者必須先指派給此應用程式，否則他們將無法登入此應用程式。
-1. 選取 [儲存] 以儲存此設定變更。
+1. 選取 [儲存]。
 
 ## <a name="assign-users-and-groups-to-the-app"></a>將使用者和群組指派給應用程式
 
 在設定完應用程式以啟用使用者指派後，您便可繼續作業並將使用者和群組指派給應用程式。
 
-1. 在企業應用程式的左側導覽功能表中，選取 [ **使用者和群組** ] 窗格。
-1. 在 [使用者和群組] 清單頂端，選取 [新增使用者] 按鈕，以開啟 [新增指派] 窗格。
-1. 選取 [新增指派] 窗格中的 [使用者] 選取器。 
+1. 在 [**管理**] 底下，選取 [**使用者和群組**  >  **新增使用者/群組**]。
+1. 選取 [ **使用者** ] 選取器。 
 
      隨即會顯示使用者和安全性群組清單，以及用來搜尋並找出特定使用者或群組的文字方塊。 此畫面可讓您一次選取多個使用者和群組。
 
-1. 在您選好使用者和群組後，請按底部的 [選取] 按鈕，以移至下一個部分。
+1. 當您完成選取使用者和群組之後，請選取 [ **選取**]。
 1.  (選擇性) 如果您已在應用程式中定義應用程式角色，則可以使用 [ **選取角色** ] 選項，將選取的使用者和群組指派給應用程式的其中一個角色。 
-1. 按底部的 [指派] 按鈕，即可將使用者和群組指派給應用程式。 
+1. 選取 [ **指派** ] 以完成將使用者和群組指派給應用程式的作業。 
 1. 確認您新增的使用者和群組有顯示在更新後的 [使用者和群組] 清單中。
 
 ## <a name="more-information"></a>詳細資訊

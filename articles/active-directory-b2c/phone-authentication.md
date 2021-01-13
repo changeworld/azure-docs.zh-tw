@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953571"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178937"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>使用 Azure AD B2C 中的自訂原則設定電話註冊和登入
 
@@ -39,7 +39,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 >
 > *&lt;插入：隱私權聲明的連結&gt;*<br/>*&lt;插入：服務條款的連結&gt;*
 
-若要新增您自己的同意資訊，請自訂下列範例，並將它包含在 LocalizedResources 中，以供自我判斷頁面的 ContentDefinition 所使用的顯示控制項， (手機註冊 & 登入入門套件) 中的 Phone-Email-Base.xml 檔案：
+若要新增您自己的同意資訊，請自訂下列範例，並將它包含在 LocalizedResources 中，以供自我判斷頁面的 ContentDefinition 使用，並將其顯示在 [電話註冊和登入入門套件][starter-pack-phone]) 中的 *Phone_Email_Base.xml* 檔案 (：
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
@@ -88,7 +88,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 設定 OTP 之前，您需要有下列資源。
 

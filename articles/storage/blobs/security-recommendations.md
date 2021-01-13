@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132472"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179158"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Blob 儲存體的安全性建議
 
@@ -35,7 +35,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 | 開啟容器的虛刪除 | 適用于容器的虛刪除可讓您在容器刪除之後復原容器。 如需有關容器虛刪除的詳細資訊，請參閱 [容器的虛刪除 (預覽) ](./soft-delete-container-overview.md)。 | - |
 | 鎖定儲存體帳戶以防止意外刪除帳戶 | 您可以鎖定 Azure Resource Manager 資源（例如訂用帳戶、資源群組或儲存體帳戶），以防止組織中的其他使用者不小心刪除或修改它。 鎖定儲存體帳戶不會防止該帳戶中的資料遭到刪除。 它只會防止帳戶本身遭到刪除。 如需詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
 | 在不可變的 blob 中儲存商務關鍵資料 | 設定合法保存和以時間為基礎的保留原則，將 blob 資料儲存在 WORM (寫入一次，讀取許多) 狀態。 Blob 儲存的, 可以讀取，但無法在保留間隔的持續期間內修改或刪除。 如需詳細資訊，請參閱 [使用不可變的儲存體儲存商務關鍵 blob 資料](storage-blob-immutable-storage.md)。 | - |
-| 需要 (HTTPS) 至儲存體帳戶的安全傳輸 | ??? | - |
+| 需要 (HTTPS) 至儲存體帳戶的安全傳輸 | 當您需要儲存體帳戶的安全傳輸時，對儲存體帳戶的所有要求都必須透過 HTTPS 進行。 任何透過 HTTP 提出的要求都會遭到拒絕。 Microsoft 建議您一律針對所有儲存體帳戶要求安全傳輸。 如需詳細資訊，請參閱 [要求安全傳輸以確保安全連線](../common/storage-require-secure-transfer.md)。 | - |
 | 將共用存取簽章 (SAS) 權杖限制為僅限 HTTPS 連接 | 當用戶端使用 SAS 權杖來存取 blob 資料時，需要 HTTPS 有助於將竊聽的風險降至最低。 如需詳細資訊，請參閱 [使用共用存取簽章將有限存取權授與 Azure 儲存體資源 (SAS) ](../common/storage-sas-overview.md)。 | - |
 
 ## <a name="identity-and-access-management"></a>身分識別和存取管理
@@ -73,7 +73,7 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 | 追蹤要求的授權方式 | 啟用 Azure 儲存體記錄，以追蹤針對 Azure 儲存體所提出的每個要求如何獲得授權。 這些記錄會指出是以匿名方式、使用 OAuth 2.0 權杖、使用共用金鑰，或使用共用存取簽章 (SAS) 來進行要求。 如需詳細資訊，請參閱使用 [Azure 監視器的監視 Azure Blob 儲存體](monitor-blob-storage.md) ，或 [使用傳統監視 Azure 儲存體分析記錄](../common/storage-analytics-logging.md)。 | - |
 | 在 Azure 監視器中設定警示 | 設定記錄警示，以設定的頻率評估資源記錄，並根據結果引發警示。 如需詳細資訊，請參閱 [Azure 監視器中的記錄警示](../../azure-monitor/platform/alerts-unified-log.md)。 | - |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure 安全性文件](../../security/index.yml)
 - [安全開發檔](../../security/develop/index.yml)。

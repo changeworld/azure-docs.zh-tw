@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9afce964652d2bedbe105a8a750a93d2f37eef85
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483278"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179026"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure 儲存體加密的客戶管理金鑰
 
@@ -78,7 +78,7 @@ Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA HSM 金鑰。
 
     明確指定金鑰版本時，您必須在建立新版本時，手動更新儲存體帳戶，以使用新的金鑰版本 URI。 若要瞭解如何將儲存體帳戶更新為使用新版本的金鑰，請參閱使用儲存 [在 Azure Key Vault 中的客戶管理金鑰來設定加密](customer-managed-keys-configure-key-vault.md) ，或 [使用儲存在 Azure Key Vault 受控 HSM (preview) 中客戶管理的金鑰 ](customer-managed-keys-configure-key-vault-hsm.md)來設定加密。
 
-更新客戶管理金鑰的金鑰版本並不會在儲存體帳戶中觸發資料的重新加密。 使用者不需要採取任何進一步的動作。
+當您更新金鑰版本時，根加密金鑰的保護會變更，但 Azure 儲存體帳戶中的資料不會重新加密。 使用者不需要採取任何進一步的動作。
 
 > [!NOTE]
 > 若要輪替金鑰，請根據您的合規性政策，在金鑰保存庫或受控 HSM 中建立新版本的金鑰。 您可以手動輪替金鑰，或建立可依排程旋轉的函式。
@@ -92,7 +92,7 @@ Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA HSM 金鑰。
 - [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
 - [取得 Blob 中繼資料](/rest/api/storageservices/get-blob-metadata)
 - [設定 Blob 中繼資料](/rest/api/storageservices/set-blob-metadata)
-- [Snapshot Blob](/rest/api/storageservices/snapshot-blob)使用 `x-ms-meta-name` 要求標頭呼叫時的快照集 Blob
+- [](/rest/api/storageservices/snapshot-blob)使用 `x-ms-meta-name` 要求標頭呼叫時的快照集 Blob
 - [複製 Blob](/rest/api/storageservices/copy-blob)
 - [從 URL 複製 Blob](/rest/api/storageservices/copy-blob-from-url)
 - [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
@@ -115,7 +115,7 @@ Azure 儲存體加密支援2048、3072和4096大小的 RSA 和 RSA HSM 金鑰。
 
 客戶管理的金鑰也可用於管理 Azure 受控磁片的加密。 客戶管理的金鑰在受控磁片上的行為會與 Azure 儲存體資源的行為不同。 如需詳細資訊，請參閱適用于 Windows 的 [azure 受控磁片的伺服器端加密](../../virtual-machines/disk-encryption.md) ，或適用于 Linux [的 azure 受控磁片的伺服器端加密](../../virtual-machines/disk-encryption.md) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [待用資料的 Azure 儲存體加密](storage-service-encryption.md)
 - [使用儲存在 Azure Key Vault 中的客戶受控金鑰來設定加密](customer-managed-keys-configure-key-vault.md) (機器翻譯)

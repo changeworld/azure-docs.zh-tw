@@ -14,16 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 722d935c242a51ddfc01377676f026b71a8951b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a820fb4ec5d6c2053b1104b68dbda0ae70f624c0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89468533"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179192"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>將 Cloud Shell 部署到 Azure 虛擬網路
-> [!NOTE]
-> 這項功能目前為公開預覽狀態。
 
 一般 Cloud Shell 會話會與您的資源分開在 Microsoft 網路的容器中執行。 這表示在容器內執行的命令無法存取只能從特定虛擬網路存取的資源。 例如，您不能使用 SSH 從 Cloud Shell 連接到只有私人 IP 位址的虛擬機器，或使用 kubectl 連接到已鎖定存取的 Kubernetes 叢集。 
 
@@ -64,7 +62,7 @@ ms.locfileid: "89468533"
 ## <a name="virtual-network-deployment-limitations"></a>虛擬網路部署限制
 * 由於涉及額外的網路資源，因此在虛擬網路中開始 Cloud Shell 通常會比標準 Cloud Shell 會話慢。
 
-* 在預覽期間，虛擬網路中 Cloud Shell 支援較少的區域。 這目前僅限於： WestUS 和 WestCentralUS。
+* 目前支援與印度中部以外的所有 Cloud Shell 區域。 
 
 * [Azure 轉送](../azure-relay/relay-what-is-it.md) 不是免費服務，請參閱其 [定價](https://azure.microsoft.com/pricing/details/service-bus/)。 在 Cloud Shell 案例中，每個系統管理員在使用 Cloud Shell 時，會使用一個混合式連接。 Cloud Shell 會話完成後，連接將會自動關閉。
 
@@ -113,5 +111,5 @@ ResourceTypes                             RegistrationState
 
 ![說明 Cloud Shell 隔離式 VNET 首次體驗設定。](media/private-vnet/vnet-settings.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 [深入瞭解 Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)

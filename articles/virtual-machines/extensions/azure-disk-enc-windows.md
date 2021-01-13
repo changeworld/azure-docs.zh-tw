@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
-ms.openlocfilehash: e5a0069e02c5285a950d23abc0ec4bee6e9e467b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 361751107212d556aaee6886902d2798c014ff39
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968378"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180178"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>適用於 Windows 的 Azure 磁碟加密 (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -27,7 +27,7 @@ ms.locfileid: "94968378"
 
 Azure 磁碟加密會利用 BitLocker 在執行 Windows 的 Azure 虛擬機器上提供完整的磁碟加密。  此解決方案與 Azure Key Vault 整合，可讓您管理金鑰保存庫訂用帳戶中的磁碟加密金鑰與祕密。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 如需必要條件的完整清單，請參閱 [適用于 Windows vm 的 Azure 磁碟加密](../windows/disk-encryption-overview.md)，特別是下列各節：
 
@@ -149,7 +149,7 @@ Azure 磁碟加密 (ADE) 有兩種版本的延伸模組架構：
 |  (1.1 架構) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
 |  (1.1 架構) AADClientSecret | 密碼 | 字串 |
 |  (1.1 架構) AADClientCertificate | thumbprint | 字串 |
-| EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | 字串 | 
+| EncryptionOperation | EnableEncryption | 字串 | 
 |  (選用-預設的 RSA-OAEP ) KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | 字串 |
 | KeyVaultURL | url | 字串 |
 | KeyVaultResourceId | url | 字串 |
@@ -179,7 +179,7 @@ Azure 磁碟加密 (ADE) 有兩種版本的延伸模組架構：
 
 或者，您可以提出 Azure 支援事件。 移至 [Azure 支援](https://azure.microsoft.com/support/options/) ，然後選取 [取得支援]。 如需使用 Azure 支援的相關資訊，請參閱 [Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需擴充功能的詳細資訊，請參閱[虛擬機器擴充功能和 Windows 功能](features-windows.md)。
 * 如需 Windows Azure 磁碟加密的詳細資訊，請參閱 [windows 虛擬機器](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#windows-virtual-machines)。

@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 1736a1d22ccfb0f00061534d1c733ab72da4c7b0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922499"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179600"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用內嵌程式碼來新增和執行程式碼片段
 
@@ -31,13 +31,13 @@ ms.locfileid: "96922499"
   > [!NOTE]
   > `require()`執行 JavaScript 的內嵌程式碼動作不支援函式。
 
-此動作會執行程式碼片段，並以名為的權杖傳回該程式碼片段的輸出 `Result` 。 您可以搭配邏輯應用程式工作流程中的後續動作使用此權杖。 針對您想要為程式碼建立函式的其他案例，請嘗試在您的邏輯應用程式中 [建立和呼叫 Azure 函數](../logic-apps/logic-apps-azure-functions.md) 。
+此動作會執行程式碼片段，並以名為的權杖傳回該程式碼片段的輸出 `Result` 。 您可以搭配邏輯應用程式工作流程中的後續動作使用此權杖。 針對您想要為程式碼建立函式的其他案例，請嘗試透過 Azure Functions 在您的邏輯應用程式中 [建立和呼叫](../logic-apps/logic-apps-azure-functions.md) 函式。
 
 在本文中，範例邏輯應用程式會在新的電子郵件送達公司或學校帳戶時觸發。 程式碼片段會解壓縮並傳回出現在電子郵件內文中的任何電子郵件地址。
 
 ![顯示範例邏輯應用程式的螢幕擷取畫面](./media/logic-apps-add-run-inline-code/inline-code-example-overview.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -147,11 +147,11 @@ ms.locfileid: "96922499"
 
 下表包含這些子屬性的詳細資訊：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | Description |
 |----------|------|-------|
 | `actions` | 物件集合 | 在您的程式碼片段執行之前執行的動作結果物件。 每個物件都有索引 *鍵/值* 組，其中索引鍵是動作的名稱，而值相當於呼叫 [ ( # A1 函數的動作](../logic-apps/workflow-definition-language-functions-reference.md#actions) `@actions('<action-name>')` 。 動作的名稱會使用基礎工作流程定義中使用的相同動作名稱，此名稱會取代動作名稱中的空格 ( "" )  (_) 的底線。 這個物件可讓您從目前的工作流程實例執行存取動作屬性值。 |
-| `trigger` | 物件 | 來自觸發程式的結果物件，相當於呼叫 [觸發程式 ( # A1 函數](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 這個物件會從目前的工作流程實例執行中提供觸發程式屬性值的存取權。 |
-| `workflow` | 物件 | 工作流程物件和等同于呼叫 [工作流程 ( # A1 函數](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 這個物件可讓您從目前的工作流程實例執行，存取工作流程屬性值，例如工作流程名稱、執行識別碼等等。 |
+| `trigger` | Object | 來自觸發程式的結果物件，相當於呼叫 [觸發程式 ( # A1 函數](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 這個物件會從目前的工作流程實例執行中提供觸發程式屬性值的存取權。 |
+| `workflow` | Object | 工作流程物件和等同于呼叫 [工作流程 ( # A1 函數](../logic-apps/workflow-definition-language-functions-reference.md#workflow)。 這個物件可讓您從目前的工作流程實例執行，存取工作流程屬性值，例如工作流程名稱、執行識別碼等等。 |
 |||
 
 在本主題的範例中， `workflowContext` 物件具有您的程式碼可以存取的這些屬性：
@@ -237,7 +237,7 @@ ms.locfileid: "96922499"
 
    ![新增參數](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
-   | 參數 | 描述 |
+   | 參數 | Description |
    |-----------|-------------|
    | **動作** | 包含先前動作的結果。 請參閱 [包含動作結果](#action-results)。 |
    | **觸發程序** | 包含來自觸發程式的結果。 請參閱 [包含觸發程式結果](#trigger-results)。 |
@@ -279,10 +279,10 @@ ms.locfileid: "96922499"
 
 1. 若要新增其他動作，請選取 [ **加入新專案**]。
 
-## <a name="reference"></a>參考資料
+## <a name="reference"></a>參考
 
 如需有關使用工作流程定義語言，在邏輯應用程式的基礎工作流程定義中 **執行 JavaScript 程式碼** 動作之結構和語法的詳細資訊，請參閱此動作的 [參考章節](../logic-apps/logic-apps-workflow-actions-triggers.md#run-javascript-code)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解 [Azure Logic Apps 的連接器](../connectors/apis-list.md)

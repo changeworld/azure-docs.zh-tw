@@ -6,15 +6,15 @@ ms.service: storage
 ms.topic: how-to
 ms.author: jukullam
 ms.reviewer: dineshm
-ms.date: 09/11/2020
+ms.date: 01/11/2021
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 544b22e3395cacf0cc2e7a21e4b86325a8f4d236
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: d8727bd747ef6d035cabbccf2ad42b80937a06a8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605253"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180195"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>設定 GitHub Actions 工作流程，以在 Azure 儲存體中部署您的靜態網站
 
@@ -24,7 +24,7 @@ ms.locfileid: "97605253"
 > 如果您使用 [Azure 靜態 Web Apps](../../static-web-apps/index.yml)，則不需要手動設定 GitHub Actions 的工作流程。
 > Azure 靜態 Web Apps 會為您自動建立 GitHub Actions 的工作流程。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 Azure 訂用帳戶和 GitHub 帳戶。 
 
@@ -90,10 +90,10 @@ Azure 訂用帳戶和 GitHub 帳戶。
     name: CI
 
     on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
+        push:
+            branches: [ master ]
+        pull_request:
+            branches: [ master ]
     ```
 
 1. 重新命名工作流程 `Blob storage website CI`，並新增簽出和登入動作。 這些動作會簽出您的站台碼，並使用您稍早建立的 `AZURE_CREDENTIALS` GitHub 祕密向 Azure 進行驗證。 
@@ -102,10 +102,10 @@ Azure 訂用帳戶和 GitHub 帳戶。
     name: Blob storage website CI
 
     on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
+        push:
+            branches: [ master ]
+        pull_request:
+            branches: [ master ]
 
     jobs:
       build:
@@ -114,21 +114,21 @@ Azure 訂用帳戶和 GitHub 帳戶。
         - uses: actions/checkout@v2
         - uses: azure/login@v1
           with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+              creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
 
 1. 使用 Azure CLI 動作，將您的程式碼上傳至 blob 儲存體，並清除您的 CDN 端點。 針對 `az storage blob upload-batch` ，將預留位置取代為您的儲存體帳戶名稱。 腳本會上傳至 `$web` 容器。 針對 `az cdn endpoint purge` ，將預留位置取代為您的 cdn 設定檔名稱、cdn 端點名稱和資源群組。
 
     ```yaml
         - name: Upload to blob storage
-        uses: azure/CLI@v1
-        with:
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
                 az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
         - name: Purge CDN endpoint
-        uses: azure/CLI@v1
-        with:
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
             az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
@@ -137,36 +137,37 @@ Azure 訂用帳戶和 GitHub 帳戶。
 1. 藉由新增動作至 Azure 的登出，來完成您的工作流程。 以下是完成後的工作流程。 檔案會出現在存放庫的 `.github/workflows` 資料夾中。
 
     ```yaml
-   name: Blob storage website CI
+    name: Blob storage website CI
 
     on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
+        push:
+            branches: [ master ]
+        pull_request:
+            branches: [ master ]
 
     jobs:
-    build:
+      build:
         runs-on: ubuntu-latest
-        steps:
+        steps:            
         - uses: actions/checkout@v2
-        - name: Azure Login
-        uses: azure/login@v1
-        with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}    
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
+        - uses: azure/login@v1
+          with:
+              creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+        - name: Upload to blob storage
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
                 az storage blob upload-batch --account-name <STORAGE_ACCOUNT_NAME> -d '$web' -s .
-        - name: Azure CLI script
-        uses: azure/CLI@v1
-        with:
+        - name: Purge CDN endpoint
+          uses: azure/CLI@v1
+          with:
             azcliversion: 2.0.72
             inlineScript: |
             az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group "RESOURCE_GROUP"
-            # Azure logout 
+      
+      # Azure logout 
         - name: logout
           run: |
                 az logout
@@ -184,7 +185,7 @@ Azure 訂用帳戶和 GitHub 帳戶。
 
 當您的靜態網站和 GitHub 存放庫不再需要時，請刪除資源群組和您的 GitHub 存放庫，以清除您所部署的資源。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [瞭解 Azure 靜態 Web Apps](../../static-web-apps/index.yml)

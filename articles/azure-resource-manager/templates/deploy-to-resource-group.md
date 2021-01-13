@@ -2,13 +2,13 @@
 title: 將資源部署至資源群組
 description: 描述如何在 Azure Resource Manager 範本中部署資源。 它會顯示如何將多個資源群組設為目標。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 9d0bec51fa55ee377eb647a11fb554ec3b81e9eb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: 8fe503cc95d71772c07427438b17e2ff0d4620a7
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807715"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178886"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>使用 ARM 範本的資源群組部署
 
@@ -85,7 +85,8 @@ New-AzResourceGroupDeployment `
 * 相同訂用帳戶或其他訂用帳戶中的其他資源群組
 * 租使用者中的任何訂用帳戶
 * 資源群組的租使用者
-* [擴充功能資源](scope-extension-resources.md) 可以套用至資源
+
+[延伸模組資源](scope-extension-resources.md)的範圍可以設定為與部署目標不同的目標。
 
 部署範本的使用者必須擁有指定範圍的存取權。
 
@@ -312,6 +313,6 @@ az deployment group create \
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。

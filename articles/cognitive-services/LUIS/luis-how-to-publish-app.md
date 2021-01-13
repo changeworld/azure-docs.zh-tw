@@ -3,18 +3,20 @@ title: 發佈應用程式-LUIS
 titleSuffix: Azure Cognitive Services
 description: 當您完成作用中 LUIS 應用程式的建置和測試時，將它發佈至端點以供用戶端應用程式使用。
 services: cognitive-services
+author: aahill
 manager: nitinme
+ms.author: aahi
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.openlocfilehash: b72f1fd64cca0fa77ebc486670a512c5228e1146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/12/2021
+ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541470"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180025"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>將作用中且經過訓練的應用程式發佈至預備或生產端點
 
@@ -23,7 +25,7 @@ ms.locfileid: "91541470"
 ## <a name="publishing"></a>發佈
 1. 登入 [LUIS 入口網站](https://www.luis.ai)，然後選取您的 [訂用帳戶] 和 [撰寫資源]，以查看指派給該撰寫資源的應用程式。
 1. 在 **我的應用程式** ] 頁面上選取應用程式的名稱，以開啟您的應用程式。
-1. 若要發佈至端點，請選取右側面板頂端的 [發佈]****。
+1. 若要發佈至端點，請選取右側面板頂端的 [發佈]。
 
     ![右上方導覽列中的 [發佈] 按鈕](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
@@ -55,7 +57,7 @@ ms.locfileid: "91541470"
 選取位置之後，請設定的發佈設定：
 
 * 情感分析
-* [拼寫更正](luis-tutorial-bing-spellcheck.md) -僅限 v2 預測端點
+* [拼寫更正](luis-tutorial-bing-spellcheck.md)
 * 語音預備
 
 發佈之後，您可以從 [ **管理** ] 區段的 [ **發佈設定** ] 頁面查看這些設定。 您可以在每次發行時變更設定。 如果您取消發行，在發佈期間所做的任何變更也會一併取消。
@@ -80,7 +82,32 @@ ms.locfileid: "91541470"
 
 ## <a name="spelling-correction"></a>拼字校正
 
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+V3 預測 API 現在支援 Bing 拼字檢查 API。 您可以將拼寫檢查加入至您的應用程式，方法是在要求的標頭中包含 Bing 搜尋資源的金鑰。 如果您已經擁有 Bing 資源，您可以使用現有的 Bing 資源，或 [建立新](https://portal.azure.com/#create/Microsoft.BingSearch) 的資源來使用這項功能。 
+
+|標頭索引鍵|標頭值|
+|--|--|
+|`mkt-bing-spell-check-key`|在資源的 **金鑰和端點** 分頁中找到的金鑰|
+
+拼錯查詢的預測輸出範例：
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
 
 更正拼寫是在 LUIS 使用者語句預測之前進行。 您可以在回應中看到原始語句的任何變更，包括拼寫。
 
@@ -88,7 +115,7 @@ ms.locfileid: "91541470"
 
 語音預備是在將文字轉換成語音之前，使用將 LUIS 模型傳送至語音服務的程式。 這可讓語音服務為您的模型提供更精確的語音轉換。 如此一來，就可以進行一次語音通話並取回 LUIS 回應，藉以在單一呼叫中 LUIS bot 語音和回應。 它可降低整體延遲。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 請參閱[管理金鑰](./luis-how-to-azure-subscription.md)，將金鑰新增至 LUIS 的 Azure 訂用帳戶金鑰，以及了解如何設定 Bing 拼字檢查金鑰並且在結果中包含所有意圖。
 * 如需如何在測試主控台中測試已發佈應用程式的指示，請參閱[訓練和測試應用程式](luis-interactive-test.md)。

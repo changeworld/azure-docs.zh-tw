@@ -2,13 +2,13 @@
 title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 79cdb35de40501dfc0794155dcf807cced94bfa7
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: f847e481670d7f9afd4b40cfb8fcbec65d1e28c8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95798597"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178920"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>使用 ARM 範本進行管理群組部署
 
@@ -123,7 +123,8 @@ New-AzManagementGroupDeployment `
 * 管理群組中的訂用帳戶
 * 管理群組中的資源群組
 * 資源群組的租使用者
-* [擴充功能資源](scope-extension-resources.md) 可以套用至資源
+
+[延伸模組資源](scope-extension-resources.md)的範圍可以設定為與部署目標不同的目標。
 
 部署範本的使用者必須擁有指定範圍的存取權。
 
@@ -325,7 +326,7 @@ New-AzManagementGroupDeployment `
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 若要瞭解如何指派角色，請參閱 [使用 Azure Resource Manager 範本新增 Azure 角色指派](../../role-based-access-control/role-assignments-template.md)。
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。

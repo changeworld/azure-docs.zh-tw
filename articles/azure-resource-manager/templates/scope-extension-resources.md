@@ -2,21 +2,24 @@
 title: 延伸模組資源類型的範圍
 description: 描述如何在部署延伸模組資源類型時使用 scope 屬性。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: bd468d31454c38bd314269243702d7df4f279a5e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 01/13/2021
+ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681480"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179974"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>在 ARM 範本中設定延伸模組資源的範圍
 
-延伸模組資源是修改其他資源的資源。 例如，您可以將角色指派給資源，以限制存取。 角色指派是延伸模組資源類型。
+延伸模組資源是修改其他資源的資源。 例如，您可以將角色指派給資源。 角色指派是延伸模組資源類型。
 
 如需延伸模組資源類型的完整清單，請參閱 [擴充其他資源功能的資源類型](../management/extension-resource-types.md)。
 
 本文說明如何在使用 Azure Resource Manager 範本 (ARM 範本) 部署延伸模組資源類型的範圍。 它描述套用至資源時，適用于擴充功能資源的範圍屬性。
+
+> [!NOTE]
+> [範圍] 屬性僅適用于延伸模組資源類型。 若要針對不是延伸模組類型的資源類型指定不同的範圍，請使用嵌套或連結的部署。 如需詳細資訊，請參閱 [資源群組部署](deploy-to-resource-group.md)、訂用帳戶 [部署](deploy-to-subscription.md)、 [管理群組部署](deploy-to-management-group.md)和 [租使用者部署](deploy-to-tenant.md)。
 
 ## <a name="apply-at-deployment-scope"></a>套用於部署範圍
 

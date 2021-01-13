@@ -1,19 +1,19 @@
 ---
 title: 與 Azure 地圖服務整合
 titleSuffix: Azure Digital Twins
-description: 瞭解如何建立 Azure 函式，該函式可使用對應項圖形和 Azure 數位 Twins 通知來更新 Azure 地圖服務室內地圖。
+description: 瞭解如何使用 Azure Functions 建立可使用對應項圖形和 Azure 數位 Twins 通知的函式，以更新 Azure 地圖服務室內地圖。
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 7b2039f8b1aebef65112067e4fd9184777192015
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: e582415d9a83dc506b77d506f3e0803002129a07
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051576"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180042"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 數位 Twins 來更新 Azure 地圖服務室內地圖
 
@@ -22,7 +22,7 @@ ms.locfileid: "98051576"
 此操作說明將涵蓋：
 
 1. 設定您的 Azure 數位 Twins 實例，以將對應項更新事件傳送至 [Azure Functions](../azure-functions/functions-overview.md)中的函式。
-2. 建立 Azure 函數來更新 Azure 地圖服務室內地圖功能 stateset。
+2. 建立可更新 Azure 地圖服務室內地圖功能 stateset 的函式。
 3. 如何在 Azure 數位 Twins 圖形中儲存地圖識別碼和功能 stateset 識別碼。
 
 ### <a name="prerequisites"></a>先決條件
@@ -41,7 +41,7 @@ ms.locfileid: "98051576"
 
 ## <a name="create-a-function-to-update-a-map-when-twins-update"></a>建立函式以在 twins 更新時更新對應
 
-首先，您將在 Azure 數位 Twins 中建立路由，以將所有對應項更新事件轉寄至事件方格主題。 然後，您會使用 Azure 函式來讀取這些更新訊息，並更新 Azure 地圖服務中的功能 stateset。 
+首先，您將在 Azure 數位 Twins 中建立路由，以將所有對應項更新事件轉寄至事件方格主題。 然後，您將使用函式來讀取這些更新訊息，並更新 Azure 地圖服務中的功能 stateset。 
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>建立路由並篩選對應項更新通知
 
@@ -70,7 +70,7 @@ ms.locfileid: "98051576"
     az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
-## <a name="create-an-azure-function-to-update-maps"></a>建立 Azure 函數以更新對應
+## <a name="create-a-function-to-update-maps"></a>建立函式以更新對應
 
 您將從端對端教學課程中，在函式應用程式內建立事件方格觸發的函式 ([*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)) 。 此函式會將這些通知解壓縮，並將更新傳送至 Azure 地圖服務的功能 stateset，以更新一個房間的溫度。 
 

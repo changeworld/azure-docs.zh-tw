@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 22b3ea9eb0e4c3379438b6c3fb58ccfb13b4ed32
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 5a032f45027cc4bffc7f2bc46c6ea1a69a1b83e4
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064788"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178614"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在國家雲端環境中使用 MSAL
 
@@ -70,19 +70,21 @@ Azure Active Directory (Azure AD) 部署在下列國家雲端中，包括全域�
 
 ### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 
-1. 登入 [Azure 入口網站](https://portal.azure.us/)。
+1. 登入 <a href="https://portal.azure.us/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 
    若要尋找其他國家雲端 Azure 入口網站端點，請參閱 [應用程式註冊端點](authentication-national-cloud.md#app-registration-endpoints)。
 
-1. 如果您的帳戶可讓您存取一個以上的租使用者，請在右上角選取您的帳戶，並將您的入口網站會話設定為所需的 Azure AD 租使用者。
-1. 移至適用于開發人員的 Microsoft 身分識別平臺上的 [應用程式註冊](https://aka.ms/ra/ff) 頁面。
-1. [註冊應用程式] 頁面出現時，輸入您應用程式的名稱。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+1. 輸入應用程式的 **名稱**。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
 1. 在 [支援的帳戶類型] 下，選取 [任何組織目錄中的帳戶]。
 1. 在 [重新 **導向 URI** ] 區段中，選取 **web** 平臺，然後根據您的網頁伺服器，將值設定為應用程式的 URL。 請參閱下一節，以取得如何在 Visual Studio 和節點中設定和取得重新導向 URL 的指示。
 1. 選取 [註冊]。
-1. 在應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值。
-1. 本教學課程會要求您啟用 [隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在所註冊應用程式的左側窗格中，選取 [驗證]。
-1. 在 [進階設定] 的 [隱含授與] 底下，選取 [識別碼權杖] 和 [存取權杖] 核取方塊。 識別碼權杖和存取權杖是必要的，因為此應用程式需要登入使用者並呼叫 API。
+1. 在 [ **總覽** ] 頁面上，記下 **應用程式 (用戶端) 識別碼** 值以供稍後使用。
+    本教學課程會要求您啟用 [隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 
+1. 在 [管理] 底下，選取 [驗證]。
+1. 在 **[隱含授** 與] 底下，選取 [ **識別碼權杖** 和 **存取權杖**]。 識別碼權杖和存取權杖是必要的，因為此應用程式需要登入使用者並呼叫 API。
 1. 選取 [儲存]。
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>步驟2：設定您的 web 伺服器或專案
@@ -220,7 +222,7 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱 [國家雲端驗證端點](authentication-national-cloud.md) ，以取得每個雲端的 Azure 入口網站 url 和權杖端點清單。
 
