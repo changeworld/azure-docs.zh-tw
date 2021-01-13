@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 28d0d7b14c18a1d98be1872b1555930b2e1650c3
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 366a9a63e4577a9b8470faec68f8d4a25114dd48
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342445"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133696"
 ---
 # <a name="protect-your-network-resources"></a>保護您的網路資源
 Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲得網路安全性最佳做法。 當資訊安全中心發現潛在的安全性弱點時，它會建立可引導您完成所需控制之設定程序的建議，以加強並保護您的資源。
 
-如需網路建議的完整清單，請參閱 [網路建議](recommendations-reference.md#recs-network)。
+如需網路建議的完整清單，請參閱 [網路建議](recommendations-reference.md#recs-networking)。
 
 此文章從網路安全性觀點，說明適用於您 Azure 資源的建議。 網路建議中心圍繞下一代防火牆、網路安全性群組、JIT VM 存取、過度寬鬆的輸入流量規則等等。 如需網路建議和補救動作的清單，請參閱[管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)。
 
@@ -48,7 +48,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 
 1. 在 [安全性中心] 功能表中，開啟 Azure Defender 儀表板，然後選取 [ **網路對應**]。
 
-    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="資產清查網路資源類型" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
+    :::image type="content" source="./media/security-center-network-recommendations/opening-network-map.png" alt-text="從 Azure Defender 儀表板開啟網路地圖" lightbox="./media/security-center-network-recommendations/opening-network-map.png":::
 
 1. 選取 [ **圖層** ] 功能表選擇 [ **拓撲**]。
  
@@ -69,7 +69,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 
 ### <a name="the-topology-view"></a>拓撲檢視
 
-在網路地圖的 [拓撲]**** 檢視中，您可以檢視下列關於網路資源的見解：
+在網路地圖的 [拓撲] 檢視中，您可以檢視下列關於網路資源的見解：
 
 - 在內部圓形中，您可以看到所選訂用帳戶內的所有 Vnet，下一個圓形是所有子網路，外部圓形則是所有虛擬機器。
 - 連接地圖中資源的線條可讓您知道哪些資源彼此相關聯，以及您 Azure 網路的結構。 
@@ -85,7 +85,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
    - **建議**：您可以根據資源的有效建議，選取要顯示的資源。 例如，您可以僅檢視資訊安全中心建議您啟用網路安全性群組的資源。
    - **網路區域**：根據預設，地圖僅會顯示網際網路面向資源，您也可以選取內部 VM。
  
-2. 您隨時可以按一下左上角的 [重設]****，將地圖回復到其預設狀態。
+2. 您隨時可以按一下左上角的 [重設]，將地圖回復到其預設狀態。
 
 若要向下切入到某個資源：
 
@@ -96,7 +96,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 
 ### <a name="the-traffic-view"></a>流量檢視
 
-[流量]**** 檢視會為您提供資源之間所有可能流量的地圖。 這會為您提供您所設定之所有規則的視覺導覽圖，而且這些規則會定義能夠與其進行通訊的資源。 這可讓您查看網路安全性群組的現有設定，以及快速找出您工作負載中可能有風險的設定。
+[流量] 檢視會為您提供資源之間所有可能流量的地圖。 這會為您提供您所設定之所有規則的視覺導覽圖，而且這些規則會定義能夠與其進行通訊的資源。 這可讓您查看網路安全性群組的現有設定，以及快速找出您工作負載中可能有風險的設定。
 
 ### <a name="uncover-unwanted-connections"></a>發現來路不明的連線
 
@@ -109,7 +109,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 若要向下切入到某個資源：
 
 1. 當您在地圖上選取特定的資源時，右窗格會開啟，並提供您資源的一般資訊、連線的安全性解決方案 (如果有的話)，以及與資源相關的建議。 對於您選取的每種類型資源而言，這是相同類型的行為。 
-2. 按一下 [流量]**** 可針對資源查看可能的輸出和輸入流量清單，這是誰可以與資源進行通訊、誰可以進行通訊，以及透過哪些通訊協定與連接埠的完整清單。 例如，當您選取 VM 時，會顯示其可以通訊的所有 Vm，而當您選取子網時，會顯示可與其通訊的所有子網。
+2. 按一下 [流量] 可針對資源查看可能的輸出和輸入流量清單，這是誰可以與資源進行通訊、誰可以進行通訊，以及透過哪些通訊協定與連接埠的完整清單。 例如，當您選取 VM 時，會顯示其可以通訊的所有 Vm，而當您選取子網時，會顯示可與其通訊的所有子網。
 
 **此資料是以網路安全性群組以及進階機器學習演算法為基礎，後者可以分析多個規則，以了解其交叉與互動。** 
 

@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 01/22/2020
-ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/12/2021
+ms.openlocfilehash: 2478148f946ddc88e571b76396544b028455ec75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998748"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132099"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>叢集建立失敗，並在 Azure HDInsight 中 InvalidNetworkConfigurationErrorCode
 
@@ -30,7 +30,7 @@ ms.locfileid: "95998748"
 
 此錯誤指向自訂 DNS 設定的問題。 虛擬網路內的 DNS 伺服器可以將 DNS 查詢轉送至 Azure 的遞迴解析程式，以解析該虛擬網路內的主機名稱 (如需詳細資料，請參閱 [虛擬網路中的名稱解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)) 。 存取 Azure 的遞迴解析程式是透過所提供的虛擬 IP 168.63.129.16。 此 IP 只能從 Azure Vm 進行存取。 因此，如果您使用內部部署 DNS 伺服器，或您的 DNS 伺服器是不屬於叢集虛擬網路一部分的 Azure VM，它將無法運作。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 1. 透過 Ssh 連線到屬於叢集一部分的 VM，然後執行命令 `hostname -f` 。 這會傳回主機的完整功能變數名稱 (如 `<host_fqdn>` 下列指示所示) 。
 
@@ -56,7 +56,7 @@ ms.locfileid: "95998748"
 
 Azure 儲存體和 SQL 沒有固定的 IP 位址，因此我們需要允許所有 Ip 的輸出連線，以允許存取這些服務。 確切的解決步驟取決於您是否已設定網路安全性群組 (NSG) 或 (UDR) 的 User-Defined 規則。 如需這些設定的詳細資訊，請參閱使用 [網路安全性群組和使用者定義路由來控制 HDInsight 的網路流量](../control-network-traffic.md) 一節。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 * 如果您的叢集使用 [ (NSG) 的網路安全性群組 ](../../virtual-network/virtual-network-vnet-plan-design-arm.md)。
 
@@ -78,7 +78,7 @@ Azure 儲存體和 SQL 沒有固定的 IP 位址，因此我們需要允許所�
 
 使用私人連結的 HDInsight 叢集時，必須將來自叢集的輸出存取設定為允許對 HDInsight 資源提供者進行連線。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 * 若要解決此問題，請參閱 HDInsight Private Link 設定步驟，位於 [私人連結設定](../hdinsight-private-link.md)
 ---
@@ -98,7 +98,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 可能是自訂 DNS 設定有問題。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 驗證168.63.129.16 是否位於自訂 DNS 鏈中。 虛擬網路內的 DNS 可以將要求轉送到 Azure 內的遞迴解析程式，以解析該虛擬網路內的主機名稱。 如需詳細資訊，請參閱 [虛擬網路中的名稱解析](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。 存取 Azure 的遞迴解析程式是透過所提供的虛擬 IP 168.63.129.16。
 
@@ -108,7 +108,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. 執行下列命令：
+1. 執行以下命令：
 
     ```bash
     cat /etc/resolv.conf | grep nameserver*
@@ -147,6 +147,13 @@ hostname -f
 nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
 ```
+### <a name="cause"></a>原因
+
+此錯誤碼的另一個原因 `InvalidNetworkConfigurationErrorCode` 可能是在 `EnableVmProtection` PowerShell 或 Azure Runbook 中使用已被取代的參數。
+
+### <a name="resolution"></a>解決方案
+
+使用適用于 `Get-AzVirtualNetwork` [AZ PowerShell SDK](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-5.3.0&viewFallbackFrom=azps-4.2.0)中記載的有效參數
 
 ---
 

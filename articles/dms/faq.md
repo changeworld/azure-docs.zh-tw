@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 200753c6458698d515b02252933e4fdf6d88df55
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 460380d9435528dcd8cbb3f877c8034fdc34f50c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019086"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134142"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務的常見問題
 
@@ -109,7 +109,7 @@ Azure 資料庫移轉服務必要條件在所有支援的移轉案例中都是�
 ## <a name="troubleshooting-and-optimization"></a>疑難排解和優化
 
 **問。我正在設定 DMS 中的遷移專案，而且我無法連接到源資料庫。我該怎麼做？**
-如果您在進行遷移時無法連線到您的源資料庫系統，請在您用來設定 DMS 實例的虛擬網路中建立虛擬機器。 在虛擬機器中，您應該能夠執行連接測試，例如使用 UDL 檔案來測試連線，以 SQL Server 或下載 Robo 3T 來測試 MongoDB 連接。 如果連接測試成功，您就不應該有連接至源資料庫的問題。 如果連線測試失敗，請洽詢您的網路系統管理員。
+如果您在進行遷移時無法連線到您的源資料庫系統，請在您用來設定 DMS 實例的虛擬網路的相同子網中建立虛擬機器。 在虛擬機器中，您應該能夠執行連接測試，例如使用 UDL 檔案來測試連線，以 SQL Server 或下載 Robo 3T 來測試 MongoDB 連接。 如果連接測試成功，您就不應該有連接至源資料庫的問題。 如果連線測試失敗，請洽詢您的網路系統管理員。
 
 **問。為什麼我的 Azure 資料庫移轉服務無法使用或停止？**
 如果使用者明確地停止 Azure 資料庫移轉服務 (DMS) 或服務在24小時內處於非使用中狀態，則服務會處於停止或自動暫停狀態。 在每個情況下，服務都將無法使用並處於停止的狀態。  若要繼續使用中的移轉，請重新啟動服務。

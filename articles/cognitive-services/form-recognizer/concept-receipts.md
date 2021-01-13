@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845475"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131438"
 ---
-# <a name="receipt-concepts"></a>回條概念
+# <a name="form-recognizer-prebuilt-receipt-model"></a>表單辨識器預建的收據模型
 
-Azure 表單辨識器可以使用其中一個預先建立的模型來分析收據。 回條 API 會以英文從銷售收據中解壓縮重要資訊，例如商家名稱、交易日期、交易總計、明細專案等等。 
+Azure 表單辨識器可以使用其預建的收據模型，分析和解壓縮銷售收據的資訊。 它結合了強大的 [光學字元辨識 (OCR) ](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) 功能，並透過接收理解深度學習模型，從以英文的收據中解壓縮重要資訊。 回條 API 會以英文從銷售收據中解壓縮重要資訊，例如商家名稱、交易日期、交易總計、明細專案等等。 
 
 ## <a name="understanding-receipts"></a>瞭解收據 
 
@@ -27,32 +27,39 @@ Azure 表單辨識器可以使用其中一個預先建立的模型來分析收�
 
 從這些收據自動解壓縮資料可能很複雜。 收據可能會 crumpled 且難以閱讀、列印或手寫的零件，以及收據的智慧型手機影像可能低品質。 此外，每個市場、區域和商家的收據範本和欄位可能會有極大的差異。 這兩種資料提取和現場偵測的挑戰，是因為有一個獨特的問題。  
 
-使用光學字元辨識 (OCR) 和預建的收據模型，收據 API 會啟用這些收據處理案例，並從收據中提取資料，例如商家名稱、秘訣、總計、明細專案等等。 使用此 API 時，您不需要定型模型，您只需要將回條傳送給分析收據 API，資料就會被解壓縮。
+使用光學字元辨識 (OCR) 和預建的收據模型，收據 API 會啟用這些收據處理案例，並從收據中提取資料，例如商家名稱、秘訣、總計、明細專案等等。 使用此 API 時，不需要訓練模型，只要將收據影像傳送至分析收據 API，資料就會解壓縮。
 
-![範例收據](./media/contoso-receipt-small.png)
+![範例收據](./media/receipts-example.jpg)
 
-## <a name="what-does-the-receipt-api-do"></a>收據 API 有哪些功能？ 
 
-預建的收據 API 會將銷售收據的內容 &mdash; ，與您通常會在餐廳、零售商或雜貨商店取得的收據類型進行解壓縮。
+## <a name="what-does-the-receipt-service-do"></a>回條服務有何用途？ 
+
+預建的接收服務會將銷售收據的內容 &mdash; ，與您通常會在餐廳、零售商或雜貨商店取得的收據類型進行解壓縮。
 
 ### <a name="fields-extracted"></a>已解壓縮的欄位
 
-* 商家名稱 
-* 商家位址 
-* 商家電話號碼 
-* 交易日期 
-* 異動時間 
-* 小計 
-* 稅金 
-* 總計 
-* 提示 
-* 明細專案的解壓縮 (例如專案數量、專案價格、專案名稱) 
+|名稱| 類型 | 描述 | 文字 | 值 (標準化輸出)  |
+|:-----|:----|:----|:----| :----|
+| ReceiptType | 字串 | 銷售收據的類型 | 逐項 |  |
+| MerchantName | 字串 | 發出收據的商家名稱 | Contoso |  |
+| MerchantPhoneNumber | phoneNumber | 列出的商家電話號碼 | 987-654-3210 | + 19876543210 |
+| MerchantAddress | 字串 | 商家的已列出位址 | 123主要 St Redmond WA 98052 |  |
+| TransactionDate | date | 發出回條的日期 | 2019年6月6日 | 2019-06-26  |
+| TransactionTime | time | 發出回條的時間 | 4:49 PM | 16:49:00  |
+| 總計 | number | 完整交易總計 | $14.34 | 14.34 |
+| 小計 | number | 收據小計，通常是在套用稅額之前 | $12.34 | 12.34 |
+| 稅金 | number | 收據稅，通常是銷售稅或同等的 | $2.00 | 2.00 |
+| 提示 | number | 買方包含的秘訣 | $1.00 | 1.00 |
+| 項目 | 物件的陣列 | 已解壓縮的明細專案，包含名稱、數量、單價和已解壓縮的總價格 | |
+| 名稱 | 字串 | 項目名稱 | Surface Pro 6 | |
+| 數量 | number | 每個專案的數量 | 1 | |
+| 價格 | number | 每個專案單位的個別價格 | $999.00 | 999.00 |
+| 總價格 | number | 明細專案的總價 | $999.00 | 999.00 |
 
 ### <a name="additional-features"></a>其他功能
 
 收據 API 也會傳回下列資訊：
 
-* 收據類型 (例如明細、信用卡等) 
 * 欄位信賴等級 (每個欄位都會傳回相關聯的信賴值) 
 * OCR 原始文字 (OCR 將整個收據的文字輸出解壓縮) 
 * 每個值、行和單字的周框方塊

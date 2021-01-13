@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 47cc67b408ff7fa50a244fffa8d41e640df0ecf3
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796426"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132077"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>將時間序列預測模型自動定型
 
@@ -33,7 +33,7 @@ ms.locfileid: "97796426"
 
 不同于傳統的時間序列方法，在自動化 ML 中，過去的時間序列值會「轉換」為回歸輸入變數與其他預測指標的額外維度。 這個方法會在定型期間結合多個內容變數及其相互關聯性。 由於有多個因素可能會影響預測，因此此方法非常吻合真實世界的預測案例。 例如，在預測銷售額時，歷程記錄趨勢、匯率和價格的互動，全都共同推動銷售結果。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 針對本文，您需要 
 
@@ -224,6 +224,9 @@ automl_config = AutoMLConfig(task='forecasting',
 |**卸除資料行** |指定要從特徵化中捨棄的資料行。|
 
 若要使用 SDK 自訂 featurizations，請 `"featurization": FeaturizationConfig` 在您的物件中指定 `AutoMLConfig` 。 深入瞭解 [自訂 featurizations](how-to-configure-auto-features.md#customize-featurization)。
+
+>[!NOTE]
+> 從 SDK 1.19 版，卸載資料 **行** 功能已被取代。 在您的自動化 ML 實驗中使用資料行之前，請先在資料清理過程中將資料行卸載。 
 
 ```python
 featurization_config = FeaturizationConfig()

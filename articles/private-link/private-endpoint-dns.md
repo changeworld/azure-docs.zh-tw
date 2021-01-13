@@ -5,14 +5,14 @@ services: private-link
 author: mblanco77
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 01/12/2021
 ms.author: allensu
-ms.openlocfilehash: 1c296b157fbac1e4c8d3fefb2b8cc09ff2ccc7a8
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 859768345c2b88e38e09d897391ac8a3501fd901
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620591"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134070"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 私人端點 DNS 設定
 
@@ -68,7 +68,7 @@ Azure 服務會在公用 DNS 服務上建立正式名稱 DNS 記錄 (CNAME) ，�
 | Azure 備份 (Microsoft.RecoveryServices/vaults) / 保存庫 | privatelink.{region}.backup.windowsazure.com | {region}.backup.windowsazure.com |
 | Azure 事件中樞 (Microsoft. EventHub/namespace) /namespace | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure 服務匯流排 (Microsoft.ServiceBus/namespaces) / 命名空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
-| Azure IoT 中樞 (IotHubs) /iotHub | privatelink.azure-devices.net | azure-devices.net |
+| Azure IoT 中樞 (IotHubs) /iotHub | privatelink.azure-devices.net<br/>privatelink.servicebus.windows.net<sup>1</sup> | azure-devices.net<br/>servicebus.windows.net |
 | Azure 轉送 (Microsoft.Relay/namespaces) / 命名空間 | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure 事件方格 (Microsoft.EventGrid/topics) / 主題 | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure 事件方格 (Microsoft.EventGrid/domains) / 網域 | privatelink.eventgrid.azure.net | eventgrid.azure.net |
@@ -83,6 +83,7 @@ Azure 服務會在公用 DNS 服務上建立正式名稱 DNS 記錄 (CNAME) ，�
 | Azure Data Factory (DataFactory/工廠 ) /入口網站 |  privatelink.azure.com  |  azure.com  |
 | Azure Cache for Redis (Redis) /redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 
+<sup>1</sup>使用 IoT 中樞內建的事件中樞相容端點。 若要深入瞭解，請參閱 [IoT 中樞內建端點的 private link 支援](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)
  
 ## <a name="dns-configuration-scenarios"></a>DNS 設定案例
 

@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: dd05a4880bdf077f63dc58575828e6180e415260
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 52872175eb799785674c331ad4d687ff8ef427a4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122154"
+ms.locfileid: "98134274"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>如何在 Azure IoT Central 解決方案中使用命令
 
@@ -219,10 +219,8 @@ const commandHandler = async (request, response) => {
 
 本節說明裝置處理離線命令的方式。 如果裝置在線上，就可以在收到時立即處理離線命令。 如果裝置處於離線狀態，它會在下一次連線到 IoT Central 時處理離線命令。 裝置無法傳送回復值以回應離線命令。
 
-下列程式碼片段會顯示裝置如何執行離線命令：
-
 > [!NOTE]
-> 為了簡單起見，本文使用 Node.js。 如需其他語言的範例，請參閱 [建立並將用戶端應用程式連線到您的 Azure IoT Central 應用程式](tutorial-connect-device.md) 教學課程。
+> 為了簡單起見，本文使用 Node.js。
 
 下列螢幕擷取畫面顯示稱為 **GenerateDiagnostics** 的離線命令。 Request 參數是具有 datetime 屬性（稱為 **StartTime** ）的物件，以及名為 **Bank** 的整數列舉屬性：
 

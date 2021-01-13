@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 05/04/2020
-ms.openlocfilehash: 2d6d18cc73c02d3139074555fdd22a40c797ce40
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/12/2021
+ms.openlocfilehash: 429f0b2ffe486279a1c429fc7a153e6528642f54
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825144"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131656"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>為 Azure HDInsight 規劃虛擬網路
 
@@ -51,7 +51,8 @@ ms.locfileid: "97825144"
 使用本節中的步驟，以了解如何將新的 HDInsight 新增至現有 Azure 虛擬網路。
 
 > [!NOTE]  
-> 您無法在虛擬網路中新增現有的 HDInsight 叢集。
+> - 您無法在虛擬網路中新增現有的 HDInsight 叢集。
+> - VNET 和正在建立的叢集必須位於相同的訂用帳戶中。
 
 1. 您要使用虛擬網路的傳統或 Resource Manager 部署模型嗎？
 

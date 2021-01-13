@@ -1,14 +1,14 @@
 ---
 title: 大規模監視委派的資源
 description: 瞭解如何在您所管理的客戶租使用者之間，以可擴充的方式有效地使用 Azure 監視器記錄。
-ms.date: 12/14/2020
+ms.date: 01/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 6c1cbde696ccf9131797a05db33553b8505216a4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 797a6159d310f85c35c7eb550f05ff152526b3e8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509269"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131146"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大規模監視委派的資源
 
@@ -24,6 +24,9 @@ ms.locfileid: "97509269"
 為了收集資料，您將需要建立 Log Analytics 工作區。 這些 Log Analytics 工作區是 Azure 監視器所收集資料的唯一環境。 每個工作區都有自己的資料存放庫與設定，而且資料來源和解決方案會設定為將其資料儲存在特定的工作區中。
 
 建議您直接在客戶租使用者中建立這些工作區。 如此一來，它們的資料就會保留在其租使用者中，而不是匯出到您的 這也可讓您集中監視 Log Analytics 所支援的任何資源或服務，讓您在監視的資料類型上有更大的彈性。
+
+> [!TIP]
+> 用來存取 Log Analytics 工作區資料的任何自動化帳戶，都必須建立在與工作區相同的租使用者中。
 
 您可以使用 [Azure 入口網站](../../azure-monitor/learn/quick-create-workspace.md)、使用 [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)，或使用 [Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md)來建立 Log Analytics 工作區。
 

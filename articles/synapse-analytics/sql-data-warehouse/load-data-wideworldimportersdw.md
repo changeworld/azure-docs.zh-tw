@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 11/23/2020
+ms.date: 01/12/2021
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
-ms.openlocfilehash: 7c41474143fbb7782ccf7b5c89b0b34802e5ef0a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: c492ec930cea000e45f7b6f09cc5e9c7a6a0db22
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119691"
+ms.locfileid: "98134495"
 ---
 # <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>教學課程：將資料載入 Azure Synapse Analytics SQL 集區
 
@@ -37,7 +37,10 @@ ms.locfileid: "98119691"
 
 開始本教學課程之前，請下載並安裝最新版的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。
 
-本教學課程假設您已在下列 [教學](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)課程中建立 SQL 專用集區。
+本教學課程假設您已在下列 [教學](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)課程中建立 SQL 專用集區。 
+
+> [!NOTE]
+> 建議您至少針對本教學課程使用 DW1000c。 
 
 ## <a name="create-a-user-for-loading-data"></a>建立載入資料的使用者
 

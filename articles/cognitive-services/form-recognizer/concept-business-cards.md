@@ -10,39 +10,43 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845605"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131115"
 ---
-# <a name="business-card-concepts"></a>名片概念
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>表單辨識器預建名片模型 
 
-Azure 表單辨識器可以使用其中一個預先建立的模型，分析和解壓縮名片中的連絡人資訊。 名片 API 結合了強大的光學字元辨識 (OCR) 功能，以及我們的智慧卡理解模型，以英文的方式從名片中取出重要資訊。 它會解壓縮個人連絡人資訊、公司名稱、職稱等等。 預先建立的名片 API 可在表單辨識器2.1 版 preview 中公開使用。 
+Azure 表單辨識器可以使用其預先建立的名片模型，分析和解壓縮名片中的連絡人資訊。 它結合了強大的光學字元辨識 (OCR) 功能，以及我們的名片理解模型，以英文的方式從名片中取出重要資訊。 它會解壓縮個人連絡人資訊、公司名稱、職稱等等。 預先建立的名片 API 可在表單辨識器2.1 版 preview 中公開使用。 
 
-## <a name="what-does-the-business-card-api-do"></a>名片 API 的用途為何？
+## <a name="what-does-the-business-card-service-do"></a>名片服務的用途為何？
 
-名片 API 會將名片中的索引鍵欄位解壓縮，並在組織的 JSON 回應中傳回這些欄位。
+預先建立的名片 API 會將名片中的索引鍵欄位解壓縮，並在組織的 JSON 回應中傳回這些欄位。
 
-![來自 FOTT + JSON 輸出的 Contoso 明細影像](./media/business-card-english.jpg)
+![來自 FOTT + JSON 輸出的 Contoso 明細影像](./media/business-card-example.jpg)
+
+
 
 ### <a name="fields-extracted"></a>已解壓縮的欄位：
 
-* 連絡人名稱 
-  * 名字
-  * 姓氏
-* 公司名稱 
-* 部門 
-* 頭銜 
-* 電子郵件 
-* 網站 
-* 位址 
-* 電話號碼 
-  * 手機 
-  * 傳真 
-  * 公司電話 
-  * 其他電話 
+|名稱| 類型 | 描述 | 文字 | 
+|:-----|:----|:----|:----|
+| ContactNames | 物件的陣列 | 從名片解壓縮的連絡人名稱 | [{"FirstName"： "John"，"LastName"： "Doe"}] |
+| FirstName | 字串 | 第一個 (指定的 contact) 名稱 | "John" | 
+| LastName | 字串 | 連絡人的最後 (系列) 名稱 |   "Doe" | 
+| CompanyNames | 字串陣列 | 從商業智慧卡解壓縮的公司名稱 | ["Contoso"] | 
+| 部門 | 字串陣列 | 連絡人的部門或組織 | ["R&D"] | 
+| JobTitles | 字串陣列 | 列出連絡人的職稱 | [軟體工程師] | 
+| 電子郵件 | 字串陣列 | 從商業智慧卡解壓縮的連絡人電子郵件 | ["johndoe@contoso.com"] | 
+| 網站 | 字串陣列 | 從名片解壓縮的網站 | ["https://www.contoso.com"] | 
+| 位址 | 字串陣列 | 從名片解壓縮的位址 | ["123 的主要街道，Redmond，WA 98052"] | 
+| MobilePhones | 電話號碼陣列 | 從名片解壓縮的行動電話號碼 | ["+ 19876543210"] |
+| 傳真 | 電話號碼陣列 | 從名片解壓縮的傳真呼叫號碼 | ["+ 19876543211"] |
+| WorkPhones | 電話號碼陣列 | 從名片解壓縮的公司電話號碼 | ["+ 19876543231"] |
+| OtherPhones    | 電話號碼陣列 | 從名片中解壓縮的其他電話號碼 | ["+ 19876543233"] |
+
 
 名片 API 也可以從名片傳回所有已辨識的文字。 此 OCR 輸出包含在 JSON 回應中。  
 

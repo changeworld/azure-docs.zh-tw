@@ -4,12 +4,12 @@ description: 瞭解如何針對 Azure 監視器 Application Insights 的 JAVA �
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507637"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133186"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>疑難排解指南：適用于 JAVA 的 Azure 監視器 Application Insights
 
@@ -20,6 +20,10 @@ ms.locfileid: "97507637"
 根據預設，Application Insights 的 JAVA 3.0 代理程式會產生一個記錄檔， `applicationinsights.log` 該檔案會在保存該檔案的相同目錄中命名 `applicationinsights-agent-3.0.0.jar` 。
 
 此記錄檔是檢查提示是否有您可能遇到之任何問題的第一個位置。
+
+## <a name="jvm-fails-to-start"></a>JVM 無法啟動
+
+如果 JVM 無法啟動，並出現「開啟 zip 檔案或 JAR 資訊清單遺失時發生錯誤」，請嘗試重新下載代理程式 JAR 檔案，因為它在檔案傳輸期間可能已損毀。
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>從 Application Insights JAVA 2.x SDK 升級
 

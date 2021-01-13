@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: b36f52fd97a9f7ff294f14ec394ff9a9f607b5b0
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3c0dd2b4e7e48eeb76d82c26eb52b89b61e9f668
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187148"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134104"
 ---
 # <a name="monitor-identity-and-access"></a>監視身分識別和存取
 
@@ -44,7 +44,7 @@ Azure 資訊安全中心有兩個專屬的安全性控制措施可確保您符�
 - 已淘汰的帳戶應從您的訂用帳戶中移除 (已淘汰的帳戶是不再需要的帳戶，且已封鎖無法 Azure Active Directory 登入) 
 
 > [!TIP]
-> 如需這些建議以及您可能會在這些控制項中看到的其他建議的詳細資訊，請參閱身分 [識別和存取建議](recommendations-reference.md#recs-identity)。
+> 如需這些建議以及您可能會在這些控制項中看到的其他建議的詳細資訊，請參閱身分 [識別和存取建議](recommendations-reference.md#recs-identityandaccess)。
 
 ### <a name="limitations"></a>限制
 

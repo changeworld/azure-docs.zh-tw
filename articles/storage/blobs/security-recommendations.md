@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 1593c47b7a6cf3b861f3e1af148b7a5fbfae9a19
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127374"
+ms.locfileid: "98132472"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Blob 儲存體的安全性建議
 
@@ -31,8 +31,8 @@ Azure 資訊安全中心會定期分析 Azure 資源的安全性狀態，以找�
 |-|----|--|
 | 使用 Azure Resource Manager 部署模型 | 使用 Azure Resource Manager 部署模型來建立新的儲存體帳戶，以進行重要的安全性增強功能，包括絕佳的 Azure 角色型存取控制 (Azure RBAC) 和審核、Resource Manager 型部署和治理、受控識別的存取、秘密的 Azure Key Vault 存取，以及 Azure AD 資料和資源的存取 Azure 儲存體型驗證和授權。 可能的話，請將使用傳統部署模型的現有儲存體帳戶遷移為使用 Azure Resource Manager。 如需 Azure Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 總覽](../../azure-resource-manager/management/overview.md)。 | - |
 | 為您的所有儲存體帳戶啟用 Azure Defender | 適用于 Azure 儲存體的 Azure Defender 提供額外一層的安全性情報，可偵測不尋常且可能有害的存取或惡意探索儲存體帳戶嘗試。 當活動中發生異常狀況，而且也透過電子郵件傳送給訂用帳戶管理員時，會在 Azure 資訊安全中心中觸發安全性警示，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 如需詳細資訊，請參閱 [設定 Azure Defender 的 Azure 儲存體](../common/azure-defender-storage-configure.md)。 | [是](../../security-center/security-center-sql-service-recommendations.md) |
-| 開啟 blob 的虛刪除 | 虛刪除可讓您復原已刪除的 blob 資料。 如需虛刪除的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](./soft-delete-blob-overview.md)。 | - |
-| 開啟容器的虛刪除 | ???. | - |
+| 開啟 blob 的虛刪除 | Blob 的虛刪除可讓您復原已刪除的 blob 資料。 如需有關虛刪除 blob 的詳細資訊，請參閱 [Azure 儲存體 blob 的虛刪除](./soft-delete-blob-overview.md)。 | - |
+| 開啟容器的虛刪除 | 適用于容器的虛刪除可讓您在容器刪除之後復原容器。 如需有關容器虛刪除的詳細資訊，請參閱 [容器的虛刪除 (預覽) ](./soft-delete-container-overview.md)。 | - |
 | 鎖定儲存體帳戶以防止意外刪除帳戶 | 您可以鎖定 Azure Resource Manager 資源（例如訂用帳戶、資源群組或儲存體帳戶），以防止組織中的其他使用者不小心刪除或修改它。 鎖定儲存體帳戶不會防止該帳戶中的資料遭到刪除。 它只會防止帳戶本身遭到刪除。 如需詳細資訊，請參閱 [鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
 | 在不可變的 blob 中儲存商務關鍵資料 | 設定合法保存和以時間為基礎的保留原則，將 blob 資料儲存在 WORM (寫入一次，讀取許多) 狀態。 Blob 儲存的, 可以讀取，但無法在保留間隔的持續期間內修改或刪除。 如需詳細資訊，請參閱 [使用不可變的儲存體儲存商務關鍵 blob 資料](storage-blob-immutable-storage.md)。 | - |
 | 需要 (HTTPS) 至儲存體帳戶的安全傳輸 | ??? | - |

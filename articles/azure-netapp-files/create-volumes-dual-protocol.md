@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: b-juche
-ms.openlocfilehash: d296f80d85bb5081c466b27e6a8624e8b3f2c924
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914976"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133152"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的雙重通訊協定 (NFSv3 和 SMB) 磁片區
 
@@ -39,7 +39,6 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙協定
 * 在 DNS 伺服器上建立反向對應區域，然後在該反向對應區域中新增 AD 主機電腦的指標 (PTR) 記錄。 否則，建立雙重通訊協定磁片區將會失敗。
 * 請確定 NFS 用戶端為最新狀態，並執行作業系統的最新更新。
 * 確定 ad) 的 Active Directory (AD LDAP 伺服器已啟動且正在執行。 您可以在 AD 電腦上安裝並設定 [Active Directory 輕量型目錄服務 (AD LDS) ](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) 角色來這麼做。
-* 使用 [Active Directory 憑證服務 (AD CS) ](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 角色來產生和匯出自我簽署的根 CA 憑證，以確定為 AD 建立的憑證授權單位單位 (CA) 。   
 * 雙通訊協定磁片區目前不支援 Azure Active Directory Domain Services (AADDS) 。  
 * 雙通訊協定磁片區所使用的 NFS 版本是 NFSv3。 因此，適用下列考慮：
     * 雙重通訊協定不支援 NFS 用戶端的 Windows ACL 延伸屬性 `set/get` 。
@@ -105,9 +104,6 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙協定
 3. 按一下 [通訊協定]  ，然後完成下列動作：  
     * 選取 [ **雙通訊協定 (NFSv3] 和 [SMB)** ] 作為磁片區的通訊協定類型。   
 
-    * 從下拉式清單中選取 **Active Directory** 連接。  
-    您使用的 Active Directory 必須有伺服器根 CA 憑證。 
-
     * 指定磁片區的 **磁片區路徑** 。   
     此磁片區路徑是共用磁片區的名稱。 名稱必須以字母字元開頭，而且在每個訂用帳戶和每個區域內必須是唯一的。  
 
@@ -122,32 +118,6 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙協定
     建立的磁碟區會出現在 [磁碟區] 頁面中。 
  
     磁碟區會從其容量集區繼承訂用帳戶、資源群組、位置屬性。 若要監視磁碟區部署狀態，您可以使用 [通知] 索引標籤。
-
-## <a name="upload-active-directory-certificate-authority-public-root-certificate"></a>上傳 Active Directory 憑證授權單位單位公開根憑證  
-
-1.  遵循 [[安裝憑證授權單位](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) 單位] 來安裝和設定 [新增憑證授權單位單位]。 
-
-2.  遵循使用 mmc 嵌入式管理單元的 [ [查看憑證](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) ]，以使用 mmc 嵌入式管理單元和憑證管理員工具。  
-    使用 [憑證管理員] 嵌入式管理單元找出本機裝置的根目錄或頒發證書。 您應該從下列其中一個設定執行憑證管理嵌入式管理單元命令：  
-    * 以 Windows 為基礎的用戶端，已加入網域並已安裝根憑證 
-    * 網域中包含根憑證的另一部電腦  
-
-3. 匯出根 CA 憑證。  
-    您可以從個人或受信任的根憑證授權單位目錄匯出根 CA 憑證，如下列範例所示：   
-    ![顯示個人憑證的螢幕擷取畫面](../media/azure-netapp-files/personal-certificates.png)   
-    ![顯示受信任的根憑證授權單位的螢幕擷取畫面](../media/azure-netapp-files/trusted-root-certification-authorities.png)    
-
-    確定憑證已在64編碼的 x.509 ( 中匯出。CER) 格式： 
-
-    ![憑證匯出精靈](../media/azure-netapp-files/certificate-export-wizard.png)
-
-4. 移至 [雙重通訊協定] 磁片區的 NetApp 帳戶、按一下 [ **Active Directory 連接**]，然後使用 [ **加入 Active Directory** ] 視窗上傳根 CA 憑證：  
-
-    ![伺服器根 CA 憑證](../media/azure-netapp-files/server-root-ca-certificate.png)
-
-    確定 DNS 可解析憑證授權單位單位名稱。 此名稱是憑證上的「發行者」或「簽發者」欄位：  
-
-    ![憑證資訊](../media/azure-netapp-files/certificate-information.png)
 
 ## <a name="manage-ldap-posix-attributes"></a>管理 LDAP POSIX 屬性
 

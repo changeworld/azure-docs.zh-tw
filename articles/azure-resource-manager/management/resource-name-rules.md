@@ -3,12 +3,12 @@ title: 資源命名限制
 description: 顯示命名 Azure 資源的規則和限制。
 ms.topic: conceptual
 ms.date: 12/29/2020
-ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 59babd9298fdca96b450b2dc67832c86c043c49c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814375"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132744"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 資源的命名規則和限制
 
@@ -83,7 +83,7 @@ ms.locfileid: "97814375"
 > | 單位 | 影響範圍 | 長度 | 有效字元 |
 > | --- | --- | --- | --- |
 > | locks | 指派範圍 | 1-90 | 英數字元、句號、底線、連字號和括弧。<br><br>不能以句號結尾。 |
-> | policyAssignments | 指派範圍 | 1-128 (顯示名稱)<br><br>1-64 資源名稱 | 顯示名稱可包含任何字元。<br><br>資源名稱不能包含 `%`，且不能以句號或空格結尾。 |
+> | policyAssignments | 指派範圍 | 1-128 (顯示名稱)<br><br>1-64 資源名稱<br><br>1-24 管理群組範圍的資源名稱 | 顯示名稱可包含任何字元。<br><br>資源名稱不能包含 `%`，且不能以句號或空格結尾。 |
 > | policyDefinitions | 定義範圍 | 1-128 (顯示名稱)<br><br>1-64 資源名稱 | 顯示名稱可包含任何字元。<br><br>資源名稱不能包含 `%`，且不能以句號或空格結尾。 |
 > | policySetDefinitions | 定義範圍 | 1-128 (顯示名稱)<br><br>1-64 資源名稱<br><br>1-24 管理群組範圍的資源名稱 | 顯示名稱可包含任何字元。<br><br>資源名稱不能包含 `%`，且不能以句號或空格結尾。  |
 

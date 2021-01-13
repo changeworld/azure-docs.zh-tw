@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 12/06/2019
-ms.openlocfilehash: f7cac8ef41ff49f2d623e2b86dff271adcd71ff1
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.date: 01/12/2021
+ms.openlocfilehash: 43e46c1b5e720e4f9f46f8d3198fea7124d8f5ba
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821412"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132200"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上管理 Apache Spark 叢集的資源
 
@@ -85,6 +85,9 @@ spark-submit --class <the application class to execute> --executor-memory 3072M 
 curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
 ```
 
+> [!Note]
+> 將 JAR 檔案複製到您的叢集儲存體帳戶。 請勿將 JAR 檔案直接複製到前端節點。
+
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>在 Spark Thrift 伺服器上變更這些參數
 
 Spark Thrift 伺服器提供對 Spark 叢集的 JDBC/ODBC 存取，並且用來服務 Spark SQL 查詢。 如 Power BI、Tableau 等等的工具，會使用 ODBC 通訊協定與 Spark Thrift 伺服器進行通訊，將 Spark SQL 查詢當作 Spark 應用程式執行。 建立 Spark 叢集時，會啟動 Spark Thrift 伺服器的兩個執行個體，每個前端節點上一個執行個體。 每個 Spark Thrift 伺服器會顯示為 YARN UI 中的 Spark 應用程式。
@@ -146,7 +149,7 @@ Spark Thrift 伺服器會使用 Spark 動態執行程式配置，因此 `spark.e
 
     ![終止 App2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "終止 App2")
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [追蹤和偵錯在 HDInsight 中的 Apache Spark 叢集上執行的作業](apache-spark-job-debugging.md)
 

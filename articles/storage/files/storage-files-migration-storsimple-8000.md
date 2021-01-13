@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723973"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134342"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>將 StorSimple 8100 和8600遷移至 Azure 檔案同步
 
@@ -56,7 +56,7 @@ Azure 檔案共用會在儲存的檔案（如屬性、許可權和時間戳記�
 
 本文著重于遷移步驟。 如果您想要在遷移之前深入瞭解 Azure 檔案同步，請參閱下列文章：
 
-* [Azure 檔案同步總覽](./storage-sync-files-planning.md "總覽")
+* [Azure 檔案同步總覽](./storage-sync-files-planning.md "概觀")
 * [Azure 檔案同步部署指南](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple 服務資料加密金鑰
@@ -145,7 +145,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 您的儲存體帳戶名稱將會成為 URL 的一部分，並具有某些字元限制。 在您的命名慣例中，請考慮儲存體帳戶名稱在世界中必須是唯一的，只允許小寫字母和數位，且必須介於3到24個字元之間，而且不允許使用連字號或底線等特殊字元。 如需詳細資訊，請參閱 [Azure 儲存體資源命名規則](../../azure-resource-manager/management/resource-name-rules.md#microsoftstorage)。
 
-#### <a name="location"></a>Location
+#### <a name="location"></a>位置
 
 儲存體帳戶的位置或 Azure 區域非常重要。 如果您使用 Azure 檔案同步，則所有的儲存體帳戶都必須位於與儲存體同步服務資源相同的區域中。 您挑選的 Azure 區域應接近或集中于您的本機伺服器和使用者。 部署資源之後，您就無法變更其區域。
 
@@ -441,6 +441,9 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 1. 由於不正確字元，資料轉換作業可能遺留了某些檔案。 若是如此，請將它們複製到已啟用 Azure 檔案同步的 Windows Server 實例。 稍後您可以調整它們，使它們能夠同步。如果您未針對特定的共用使用 Azure 檔案同步，最好是在 StorSimple 磁片區上以無效字元重新命名檔案。 然後直接對 Azure 檔案共用執行 RoboCopy。
 
 > [!WARNING]
+> Windows Server 2019 中的 Robocopy 目前遇到的問題，會 Azure 檔案同步導致從來源重新複製目標伺服器上的檔案，並在使用 robocopy 的/MIR 功能時重新上傳至 Azure。 在2019以外的 Windows 伺服器上，請務必使用 Robocopy。 慣用的選擇是 Windows Server 2016。 如果問題是透過 Windows Update 解決，就會更新這個注意事項。
+
+> [!WARNING]
 > 在伺服器具有完整下載的 Azure 檔案共用的命名空間之前，您 *不* 能啟動 RoboCopy。 如需詳細資訊，請參閱 [判斷您的命名空間何時完整下載到您的伺服器](#determine-when-your-namespace-has-fully-synced-to-your-server)。
 
  您只想要複製在上一次執行遷移作業之後變更的檔案，以及之前未移動過這些作業的檔案。 您可以解決此問題，原因是它們在完成遷移之後，為什麼不會在伺服器上移動。 如需詳細資訊，請參閱 [Azure 檔案同步疑難排解](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)。
@@ -448,7 +451,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 RoboCopy 有數個參數。 下列範例會展示已完成的命令，以及選擇這些參數的原因清單。
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 後景：
@@ -499,6 +502,14 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <Source
    :::column-end:::
    :::column span="1":::
       允許 RoboCopy 只考慮來源 (StorSimple 設備之間的差異) 和目標 (Windows Server 目錄) 。
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /IT
+   :::column-end:::
+   :::column span="1":::
+      確保在某些鏡像案例中會保留精確度。</br>範例：在兩個 Robocopy 之間執行時，檔案會遇到 ACL 變更和屬性更新，例如，它也標記為 *隱藏*。 如果沒有/IT，則 Robocopy 可能會遺漏 ACL 變更，因此不會傳送到目標位置。
    :::column-end:::
 :::row-end:::
 :::row:::

@@ -6,12 +6,12 @@ ms.date: 01/10/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 299e9010b74c8363cacd1c20044d183dc1def6a6
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 50c5a8a0c1e7c5d554e19ffcbc9a78bc0a385a5c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601283"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131724"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>在 JAVA web 應用程式中監視相依性、攔截到例外狀況和方法執行時間
 
@@ -37,7 +37,7 @@ ms.locfileid: "96601283"
 若要使用 Java 代理程式，您要在伺服器上安裝它。 您必須使用 [Application Insights Java SDK][java] 檢測您的 Web 應用程式。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>安裝 Java 的 Application Insights 代理程式
-1. 在執行 Java 伺服器的電腦上[下載代理程式](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)。 請確定下載的 Java 代理程式版本與 Application Insights Java SDK 核心和網頁套件相同。
+1. 在執行您 JAVA 伺服器的電腦上， [下載2.x 代理程式](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/2.6.2)。 請確定您使用的 2.x JAVA 代理程式版本符合您所使用的 2.x Application Insights JAVA SDK 版本。
 2. 編輯應用程式伺服器啟動腳本，並加入下列 JVM 引數：
    
     `-javaagent:<full path to the agent JAR file>`
@@ -89,10 +89,7 @@ ms.locfileid: "96601283"
 * 選取 [設定] > [應用程式設定]
 * 在 [應用程式設定] 之下，新增索引鍵值組︰
 
-機碼： `JAVA_OPTS` 值： `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
-
-如需最新版本的 JAVA 代理程式，請參閱 [這裡](https://github.com/Microsoft/ApplicationInsights-Java/releases
-)的版本。 
+機碼： `JAVA_OPTS` 值： `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.6.2.jar`
 
 代理程式必須封裝為專案中的資源，使其最後位於 D：/home/site/wwwroot/目錄中。 您可以前往 [**開發工具**] 的 [  >  **Advanced tools**]  >  **偵錯主控台** 和檢查網站目錄的內容，確認您的代理程式位於正確的 App Service 目錄。    
 
@@ -127,7 +124,7 @@ ms.locfileid: "96601283"
 
 [診斷相依性問題 - 深入了解](./asp-net-dependencies.md#diagnosis)。
 
-## <a name="questions-problems"></a>有任何問題嗎？ 有問題嗎？
+## <a name="questions-problems"></a>有問題嗎？ 有問題嗎？
 * 沒有資料？ [設定防火牆例外狀況](./ip-addresses.md)
 * [疑難排解 Java](java-troubleshoot.md)
 

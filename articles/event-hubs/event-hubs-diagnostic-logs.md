@@ -3,12 +3,12 @@ title: 設定診斷記錄 - Azure 事件中樞 | Microsoft Docs
 description: 了解如何為 Azure 中的事件中樞設定活動記錄和診斷記錄。
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912594"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131979"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>為 Azure 事件中樞設定診斷記錄
 
@@ -28,7 +28,7 @@ ms.locfileid: "92912594"
 2. 在左窗格中，選取 [監視] 底下的 [診斷設定]，然後選取 [+ 新增診斷設定]。 
 
     ![[診斷設定] 頁面 - 新增診斷設定](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
-4. 在 [類別詳細資料] 區段中，選取您想要啟用的 **診斷記錄類型** 。 您稍後會在此文章中找到關於這些類別的詳細資料。 
+4. 在 [類別詳細資料] 區段中，選取您想要啟用的 **診斷記錄類型**。 您稍後會在此文章中找到關於這些類別的詳細資料。 
 5. 在 [目的地詳細資料] 區段中，設定您想要的封存目標 (目的地)，例如儲存體帳戶、事件中樞或 Log Analytics 工作區。
 
     ![[新增診斷設定] 頁面](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
@@ -45,7 +45,7 @@ ms.locfileid: "92912594"
 | 類別 | 描述 | 
 | -------- | ----------- | 
 | 封存記錄 | 擷取[事件中樞擷取](event-hubs-capture-overview.md)作業的相關資訊，具體而言就是與擷取錯誤相關的記錄。 |
-| 作業記錄 | 擷取在 Azure 事件中樞命名空間上執行的所有管理作業。 不會擷取資料作業，因為在 Azure 事件中樞上執行的資料作業量很高。 |
+| 作業記錄 | 擷取在 Azure 事件中樞命名空間上執行的所有管理作業。 因為在 Azure 事件中樞上進行大量的資料作業，所以不會捕捉資料作業。 |
 | 自動調整記錄 | 擷取在事件中樞命名空間上完成的自動擴充作業。 |
 | Kafka 協調器記錄 | 擷取與事件中樞相關的 Kafka 協調器作業。 |
 | Kafka 使用者錯誤記錄 | 擷取在事件中樞上呼叫之 Kafka API 的相關資訊。 |
@@ -100,12 +100,12 @@ ms.locfileid: "92912594"
 名稱 | 描述
 ------- | -------
 `ActivityId` | 內部識別碼，用來進行追蹤 |
-`EventName` | 作業名稱 |
+`EventName` | 作業名稱。 如需此元素的值清單，請參閱 [事件名稱](#event-names) |
 `resourceId` | Azure Resource Manager 資源識別碼 |
 `SubscriptionId` | 訂用帳戶識別碼 |
 `EventTimeString` | 作業時間 |
-`EventProperties` | 作業屬性 |
-`Status` | 作業狀態 |
+`EventProperties` |作業的屬性。 此元素提供有關事件的詳細資訊，如下列範例所示。 |
+`Status` | 作業狀態。 值可以是 **成功** 或 **失敗**。  |
 `Caller` | 作業呼叫者 (Azure 入口網站或管理用戶端) |
 `Category` | OperationalLogs |
 
@@ -125,6 +125,13 @@ Example:
    "category": "OperationalLogs"
 }
 ```
+
+### <a name="event-names"></a>事件名稱
+事件名稱會填入為下列列舉的作業類型 + 資源類型。 例如，`Create Queue`、`Retrieve Event Hu` 或 `Delete Rule`。 
+
+| 作業類型 | 資源類型 | 
+| -------------- | ------------- | 
+| <ul><li>建立</li><li>更新</li><li>刪除</li><li>擷取</li><li>Unknown</li></ul> | <ul><li>命名空間</li><li>佇列</li><li>主題</li><li>訂用帳戶</li><li>EventHub</li><li>EventHubSubscription</li><li>>notificationhub</li><li>NotificationHubTier</li><li>SharedAccessPolicy</li><li>UsageCredit</li><li>NamespacePnsCredentials</li>規則</li>ConsumerGroup</li> |
 
 ## <a name="autoscale-logs-schema"></a>自動調整記錄結構描述
 自動調整記錄 JSON 包括下表所列的元素：
@@ -222,7 +229,7 @@ Kafka 使用者錯誤記錄 JSON 包括下表所列的元素：
 
 | 名稱 | 描述 |
 | ---- | ----------- | 
-| `Category` | 訊息的類別類型。 其為下列其中一個值： **error** 和 **info** |
+| `Category` | 訊息的類別類型。 其為下列其中一個值：**error** 和 **info** |
 | `ResourceId` | 內部資源識別碼，其包括 Azure 訂用帳戶識別碼和命名空間名稱 |
 | `KeyVault` | 金鑰保存庫資源的名稱 |
 | `Key` | 金鑰保存庫金鑰的名稱。 |

@@ -6,14 +6,14 @@ ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 01/05/2021
+ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 6463e54fb7f0a2cc03ffa043c00048c1131899ce
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 41ab057bdbf31667e45a73b2c5ded4993e716a66
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913425"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131554"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 系列 
 
@@ -26,7 +26,7 @@ NCasT4_v3 系列虛擬機器支援 [Nvidia Tesla T4](https://www.nvidia.com/en-u
 [進階儲存體](premium-storage-performance.md)快取：支援<br>
 [即時移轉](maintenance-and-updates.md)：不支援<br>
 [記憶體保留更新](maintenance-and-updates.md)：不支援<br>
-[VM 世代支援](generation-2.md)：第1代<br>
+[VM 世代支援](generation-2.md)：第1代和第2代<br>
 加速網路：支援<br>
 Nvidia NVLink 互連：不支援<br>
 <br>

@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 12/16/2020
+ms.date: 01/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: b789f241fba4b77223272f81d1a69c8fcb050008
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: a550655b8076a1e3946ff015239715ddf0712236
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127153"
+ms.locfileid: "98131758"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -97,7 +97,7 @@ Azure PowerShell [>select-azsubscription 指令程式](/powershell/module/Az.Acc
 
 - 查看委派訂用帳戶的警示，並能夠在所有訂用帳戶之間查看並重新整理警示
 - 檢視委派之訂用帳戶的活動記錄詳細資料
-- Log analytics：從多個租使用者中的遠端工作區查詢資料
+- Log analytics：從多個租使用者中的遠端工作區查詢資料 (請注意，您必須在相同的租使用者中建立用來從客戶租使用者中的工作區存取資料的自動化帳戶) 
 - 在客戶租使用者中建立警示，以透過 webhook 在管理租使用者中觸發自動化（例如 Azure 自動化 runbook 或 Azure Functions）
 - 在客戶租使用者中建立 [診斷設定](../..//azure-monitor/platform/diagnostic-settings.md) ，以將資源記錄傳送至管理租使用者中的工作區
 - 針對 SAP 工作負載， [使用跨客戶租使用者的匯總視圖來監視 Sap 解決方案計量](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)

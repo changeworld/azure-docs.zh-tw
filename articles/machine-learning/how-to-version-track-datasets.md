@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8c9beaca0fb3ee7881559ffcc955f171bc2ddd7b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886442"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133441"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>實驗中的版本和追蹤資料集
 
@@ -27,7 +27,7 @@ ms.locfileid: "94886442"
 * 當新資料可供重新訓練時
 * 當您要套用不同的資料準備或特徵工程方法時
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在本教學課程中，您需要：
 
@@ -166,9 +166,7 @@ Azure Machine Learning 在整個實驗中追蹤您的資料做為輸入和輸出
 以下是以 **輸出資料集** 的形式追蹤資料的案例。  
 
 * `OutputFileDatasetConfig` `outputs` `arguments` 提交實驗執行時，透過或參數傳遞物件。 `OutputFileDatasetConfig` 物件也可以用來在管線步驟之間保存資料。 請參閱 [在 ML 管線步驟之間移動資料。](how-to-move-data-in-out-of-pipelines.md)
-    > [!TIP]
-    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) 是一個公開預覽類別，包含可能會隨時變更的 [實驗](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) 性預覽功能。
-
+  
 * 在您的腳本中註冊資料集。 在此案例中，當您將資料集註冊到工作區時，指派給該資料集的名稱是顯示的名稱。 在下列範例中， `training_ds` 是要顯示的名稱。
 
     ```Python

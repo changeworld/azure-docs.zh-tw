@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 11/03/2020
+ms.date: 1/12/2020
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08d5e20bf0755a71e70a0e446cf96d33bb42ad59
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: aadf4000da4ab88a3c3b4dee37d2179eb49d39d7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351882"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132059"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>在 Azure 入口網站中建立 Linux VM 的完整網域名稱
 
@@ -24,16 +24,14 @@ ms.locfileid: "93351882"
 此文章假設您已經建立一個 VM。 如有需要，您可以在入口網站中建立 [Linux](./linux/quick-create-portal.md) 或 [Windows](./windows/quick-create-portal.md) VM。 在您的 VM 已啟動並執行之後，請遵循下列步驟：
 
 
-1. 在入口網站中選取您的 VM。 在 [ **DNS 名稱** ] 底下，選取 [ **設定** ]。
-2. 輸入 DNS 名稱，然後選取頁面頂端的 [ **儲存** ]。
-3. 若要返回 VM 總覽分頁，請選取右上 **角的** **X** 來關閉設定分頁。 
-4. 確認 *DNS 名稱* 現在已正確顯示。
-   
-
-
+1. 在入口網站中選取您的 VM。 
+1. 在左側功能表中 **，選取 [** 設定]
+1. 在 [ **DNS 名稱] 標籤** 下，輸入您要使用的前置詞。
+1. 在頁面上方選取 [儲存]  。
+1. 選取左側功能表中的 **[總覽** ]，返回 VM 總覽分頁。 
+1. 確認 *DNS 名稱* 是否正確出現。 
 
 ## <a name="next-steps"></a>後續步驟
-現在，您的 VM 有公用 IP 和 DNS 名稱，您可以部署通用應用程式架構或服務，例如 nginx、MongoDB 和 Docker。
 
-您也可以進一步閱讀[使用 Resource Manager](../azure-resource-manager/management/overview.md)，以取得建置 Azure 部署的相關秘訣。
+您也可以使用 [Azure DNS 區域](../dns/dns-getstarted-portal.md)管理 DNS。
 

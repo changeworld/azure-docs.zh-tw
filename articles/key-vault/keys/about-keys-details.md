@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
-ms.openlocfilehash: b483ffc480f9ad750f8d9901d6bec382db2378c2
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 675c4f04ece322000ae0ebb44d6291c455db9397
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368914"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133271"
 ---
 # <a name="key-types-algorithms-and-operations"></a>金鑰類型、演算法和作業
 
@@ -26,7 +26,7 @@ Key Vault 支援兩種資源類型：保存庫和受管理的 Hsm。 這兩種�
 | --- | --- | --- |
 |EC-P256, EC-P256K, EC-P384, EC-521|NA|ES256<br>ES256K<br>ES384<br>ES512|
 |RSA 2K, 3K, 4K| RSA1_5<br>RSA-OAEP<br>RSA-OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
-|AES 128 位元、256 位元| AES-KW<br>AES-GCM<br>AES-CBC| NA| 
+|AES 128 位元、256 位元 <br/>僅 (受管理的 HSM) | AES-KW<br>AES-GCM<br>AES-CBC| NA| 
 |||
 
 ##  <a name="ec-algorithms"></a>EC 演算法
@@ -65,7 +65,7 @@ Key Vault 支援兩種資源類型：保存庫和受管理的 Hsm。 這兩種�
 -   **RS512** - 使用 SHA-512 的 RSASSA-PKCS-v1_5。 提供摘要值的應用程式必須使用 SHA-512 計算，而且長度必須是 64 個位元組。  
 -   **RSNULL** - 請參閱啟用特定 TLS 案例的特殊使用案例 [RFC2437](https://tools.ietf.org/html/rfc2437)。  
 
-##  <a name="symmetric-key-algorithms"></a>對稱金鑰演算法
+##  <a name="symmetric-key-algorithms-managed-hsm-only"></a>對稱金鑰演算法 (僅限受控 HSM) 
 - **AES-KW** - AES 金鑰包裝 ([RFC3394](https://tools.ietf.org/html/rfc3394))。
 - **Aes-GCM** -Galois 計數器模式中的 aes 加密 ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800)) 
 - **Aes-CBC** -加密區塊鏈模式中的 aes 加密 ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800)) 
@@ -107,7 +107,7 @@ Key Vault 不支援匯出作業。 在系統中佈建金鑰後，即無法加以
 
 除了金鑰內容，您可以指定下列屬性。 在 JSON 要求中，屬性關鍵字和括弧「{」「}」是必要的，即使沒有指定任何屬性。  
 
-- enabled  ：選擇性的布林值，預設值是 **true**。 指定金鑰是否已啟用，並可用於密碼編譯作業。 enabled 屬性會與 nbf 和 exp 一起使用。當作業發生於 nbf 和 exp 之間時，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf / exp 範圍外的作業將自動禁止，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。
+- enabled：選擇性的布林值，預設值是 **true**。 指定金鑰是否已啟用，並可用於密碼編譯作業。 enabled 屬性會與 nbf 和 exp 一起使用。當作業發生於 nbf 和 exp 之間時，只有在 enabled 設定為 **true** 時，才能允許此作業。 發生於 nbf / exp 範圍外的作業將自動禁止，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。
 - *nbf*：選擇性的 IntDate，預設值為現在 (now)。 nbf (不早於) 屬性會定義一個時間，而在此時間之前「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 nbf 屬性，目前的日期/時間「必須」晚於或等同 nbf 屬性中所列的「不早於」日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
 - *exp*：選擇性的 IntDate，預設值為永久 (forever)。 exp (到期時間) 屬性會定義到期時間，而在此時間點或之後「絕不可」將金鑰用於密碼編譯作業，除了[特定條件](#date-time-controlled-operations)下的特定作業類型。 若要處理 exp 屬性，目前的日期/時間「必須」早於 exp 屬性中所列的到期日期/時間。 考慮到時鐘誤差，Key Vault 可能會多提供一點時間 (通常都在幾分鐘內)。 其值必須是包含 IntDate 值的數字。  
 

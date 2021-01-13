@@ -1,7 +1,7 @@
 ---
-title: 為您的模型微調超參數
+title: 超參數微調模型
 titleSuffix: Azure Machine Learning
-description: 使用 Azure Machine Learning 有效率地微調深度學習和機器學習模型的超參數。
+description: 使用 Azure Machine Learning 自動化深度學習和機器學習模型的超參數調整。
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a1a0b89dee5a6d57e6f317c5f6c8b61ffeda3c33
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029068"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133838"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 為您的模型微調超參數
+# <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>超參數使用 Azure Machine Learning 微調模型
 
 
 使用 Azure Machine Learning [HyperDrive 套件](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)將有效率的超參數微調自動化。 瞭解如何使用 [AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)完成微調超參數所需的步驟：
@@ -31,11 +31,11 @@ ms.locfileid: "97029068"
 1. 視覺化定型執行
 1. 為您的模型選取最佳設定
 
-## <a name="what-are-hyperparameters"></a>什麼是超參數？
+## <a name="what-is-hyperparameter-tuning"></a>什麼是超參數調整？
 
 **超參數** 是可調整的參數，可讓您控制模型定型流程。 例如，使用類神經網路時，您可以決定隱藏層的數目和每個圖層中的節點數目。 模型效能主要取決於超參數。
 
- **超參數微調** 是尋找可產生最佳效能之超參數設定的程式。 此程式通常會耗費大量運算資源和手動。
+ **超參數微調** 也稱為「 **超參數優化**」，這是尋找可產生最佳效能之超參數設定的程式。 此程式通常會耗費大量運算資源和手動。
 
 Azure Machine Learning 可讓您將超參數調整自動化，並以平行方式執行實驗，以有效率地優化超參數。
 
@@ -46,7 +46,7 @@ Azure Machine Learning 可讓您將超參數調整自動化，並以平行方式
 
 超參數可以是離散或連續的，而且具有由 [參數運算式](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?preserve-view=true&view=azure-ml-py)所描述的值分佈。
 
-### <a name="discrete-hyperparameters"></a>離散超參數 
+### <a name="discrete-hyperparameters"></a>離散超參數
 
 離散超參數會指定為離散值之間的一個 `choice`。 `choice` 可以是：
 
@@ -296,7 +296,7 @@ max_concurrent_runs=4
 
 此程式碼會將超參數微調實驗設定為使用最多20個執行，一次執行四個設定。
 
-## <a name="configure-experiment"></a>設定實驗
+## <a name="configure-hyperparameter-tuning-experiment"></a>設定超參數微調實驗
 
 若要 [設定您的超參數微調](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py) 實驗，請提供下列各項：
 * 定義的超參數搜尋空間
@@ -323,7 +323,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="submit-experiment"></a>提交實驗
+## <a name="submit-hyperparameter-tuning-experiment"></a>提交超參數微調實驗
 
 在您定義超參數微調設定之後，請 [提交實驗](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)：
 
@@ -333,7 +333,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hd_config)
 ```
 
-## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>暖開機您的超參數微調實驗 (選擇性) 
+## <a name="warm-start-hyperparameter-tuning-optional"></a>暖開機超參數微調 (選擇性) 
 
 為您的模型尋找最佳的超參數值可以是反復的流程。 您可以重複使用前五個執行的知識，以加速超參數微調。
 
@@ -380,7 +380,7 @@ hd_config = HyperDriveConfig(run_config=src,
                              max_concurrent_runs=4)
 ```
 
-## <a name="visualize-experiment"></a>視覺化實驗
+## <a name="visualize-hyperparameter-tuning-runs"></a>視覺化超參數微調執行
 
 使用 [筆記本 widget](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py) 來視覺化定型執行的進度。 您可以在 Jupyter Notebook 中使用下列程式碼片段，在同一個位置視覺化您所有的超參數微調執行：
 
@@ -391,15 +391,15 @@ RunDetails(hyperdrive_run).show()
 
 此程式碼會顯示一個表格，其中包含每個超參數設定的定型執行相關詳細資料。
 
-![超參數微調表](./media/how-to-tune-hyperparameters/HyperparameterTuningTable.png)
+![超參數微調表](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
 
 您也可以依照定型進度視覺化每個執行的效能。 
 
-![超參數微調圖](./media/how-to-tune-hyperparameters/HyperparameterTuningPlot.png)
+![超參數微調圖](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
 
 您可以使用平行座標圖，以視覺化方式識別效能與個別超參數值之間的關聯性。 
 
-[![超參數微調平行座標](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
+[![超參數微調平行座標](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
 您也可以在 Azure 入口網站中，將所有的超參數微調執行視覺化。 如需如何在入口網站中查看實驗的詳細資訊，請參閱 [如何追蹤實驗](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)。
 
@@ -420,6 +420,7 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>範例 Notebook
+
 請參閱此資料夾中的超參數-* 筆記本：
 * [how-to-use-azureml/ml-frameworks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks)
 

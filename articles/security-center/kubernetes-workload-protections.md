@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030844"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131333"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>保護 Kubernetes 工作負載
 
@@ -21,13 +21,13 @@ ms.locfileid: "96030844"
 
 深入瞭解[使用 Kubernetes 許可控制的工作負載保護最佳做法](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)中的這些功能
 
-如果您啟用 Azure Defender，資訊安全中心會提供更多容器安全性功能。 明確說來：
+如果您啟用 Azure Defender，資訊安全中心會提供更多容器安全性功能。 具體來說：
 
 - 使用[適用于容器登錄的 Azure Defender](defender-for-container-registries-introduction.md)來掃描您的容器登錄是否有弱點
 - 為您的 K8s 叢集[Azure Defender For Kubernetes](defender-for-kubernetes-introduction.md)取得即時威脅偵測警示
 
 > [!TIP]
-> 如需 Kubernetes 叢集和節點可能出現的 *所有* 安全性建議清單，請參閱建議參考表的 [容器一節](recommendations-reference.md#recs-containers) 。
+> 如需 Kubernetes 叢集和節點可能出現的 *所有* 安全性建議清單，請參閱建議參考資料表的 [計算一節](recommendations-reference.md#recs-compute) 。
 
 
 
@@ -51,7 +51,7 @@ Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附�
 
 若要設定建議，請安裝  **適用于 Kubernetes 的 Azure 原則附加** 元件。 
 
-- 您可以自動部署此附加元件，如 [啟用自動](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)布建延伸模組中所述。 當附加元件的自動布建設定為 [開啟] 時，預設會在所有符合附加元件安裝需求的現有和未來叢集 (中啟用擴充功能) 。
+- 您可以自動部署此附加元件，如 [啟用自動](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)布建延伸模組中所述。 當附加元件的自動佈建設定為「開啟」時，預設會在所有現有和未來的叢集 (符合附加元件安裝需求) 中啟用此延伸模組。
 
 - 若要手動部署附加元件：
 
@@ -102,7 +102,7 @@ Azure 資訊安全中心包含安裝 **適用于 Kubernetes 的 Azure 原則附�
     1. 選取 [ASC 預設值]。
     1. 開啟 [ **參數** ] 索引標籤，並視需要修改值。
     1. 選取 [檢閱 + 儲存]。
-    1. 選取 [儲存]。
+    1. 選取 [儲存]  。
 
 
 1. 若要強制執行任何建議， 
@@ -251,6 +251,6 @@ spec:
 
 如需其他相關材質，請參閱下列頁面： 
 
-- [適用于容器的安全性中心建議](recommendations-reference.md#recs-containers)
+- [適用于計算的安全性中心建議](recommendations-reference.md#recs-compute)
 - [AKS 叢集層級的警示](alerts-reference.md#alerts-akscluster)
 - [容器主機層級的警示](alerts-reference.md#alerts-containerhost)

@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 3144633f76d1c4738f2323f1e047d6f32329909f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607893"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133237"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>適用于 JAVA SDK 的 Application Insights 疑難排解和問與答
 
@@ -23,7 +23,7 @@ ms.locfileid: "97607893"
 ## <a name="build-errors"></a>建置錯誤
 **在 Eclipse 或 Intellij Idea 中，透過 Maven 或 Gradle 加入 Application Insights SDK 時，我收到建置或總和檢查碼驗證錯誤。**
 
-* 如果相依性 `<version>` 元素使用具有萬用字元的模式 (例如 (Maven) `<version>[2.0,)</version>` 或 (Gradle) `version:'2.0.+'`)，請嘗試改為指定特定版本 (例如 `2.0.1`)。 請參閱最新版本的 [版本資訊](https://github.com/Microsoft/ApplicationInsights-Java/releases) 。
+* 如果相依性 `<version>` 元素使用具有萬用字元的模式 (例如 (Maven) `<version>[2.0,)</version>` 或 (Gradle) `version:'2.+'`)，請嘗試改為指定特定版本 (例如 `2.6.2`)。
 
 ## <a name="no-data"></a>無資料
 **我已成功加入 Application Insights 並執行我的應用程式，但在入口網站中從未看到資料。**
@@ -36,7 +36,7 @@ ms.locfileid: "97607893"
 * [](#debug-data-from-the-sdk)藉由在專案) 中的 [資源] 資料夾中，于 [資源] 資料夾內的 [ `<SDKLogger />` ApplicationInsights.xml 檔 (的根節點下加入專案，然後檢查前面加上 AI： INFO/警告/錯誤的專案，以開啟記錄。 
 * 藉由查看主控台的輸出訊息「已成功找到組態檔」陳述式，確定 Java SDK 已成功載入正確的 ApplicationInsights.xml 檔案。
 * 如果找不到組態檔，請檢查輸出訊息以查看在何處搜尋組態檔，並確定 ApplicationInsights.xml 位在這些搜尋位置中的其中一個位置。 根據經驗法則，您可以將組態檔置於 Application Insights SDK JAR 附近。 例如：在 Tomcat 中，這可能表示 WEB-INF/classes 資料夾。 在開發過程中，您可以將 ApplicationInsights.xml 放在您 Web 專案的 resources 資料夾中。
-* 另外也請查看 [GitHub 問題頁面](https://github.com/Microsoft/ApplicationInsights-Java/issues) \(英文\) 以了解 SDK 的已知問題。
+* 另外也請查看 [GitHub 問題頁面](https://github.com/microsoft/ApplicationInsights-Java/issues) \(英文\) 以了解 SDK 的已知問題。
 * 請務必使用相同版本的 Application Insights 核心、Web、代理程式和記錄附加器，以避免任何版本衝突問題。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>我曾經看到資料，但是已停止
@@ -194,7 +194,7 @@ Application insights 會使用 `org.apache.http`。 這會重新配置在 Applic
 
 ## <a name="get-help"></a>取得協助
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
-* [在 GitHub 上提出問題](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [在 GitHub 上提出問題](https://github.com/microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 62b4629d258f8779dc53b4b8e00684d3b793291d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ab4ae6980af9556f973ece93634b614d01c615e9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183748"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132659"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>適用於 API 管理的 Azure 安全性基準
 
 適用於 API 管理的 Azure 安全性基準包含的建議有助於改善部署的安全性狀態。
 
-此服務的基準取自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其中提供有關如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
@@ -381,7 +381,7 @@ Azure Active Directory (AD) 具有必須明確指派且可供查詢的內建角�
 
 * [如何使用 PowerShell 在 Azure AD 中取得目錄角色定義](/powershell/module/az.resources/get-azroledefinition)
 
-* [了解 Azure 資訊安全中心的身分識別和存取建議](../security-center/recommendations-reference.md#recs-identity)
+* [了解 Azure 資訊安全中心的身分識別和存取建議](../security-center/recommendations-reference.md#recs-identityandaccess)
 
 **Azure 資訊安全中心監視**：是
 
@@ -490,7 +490,7 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 * [如何使用 OAuth 2.0 搭配 Azure Active Directory 與 API 管理來保護 API](./api-management-howto-protect-backend-with-aad.md)
 
-* [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 

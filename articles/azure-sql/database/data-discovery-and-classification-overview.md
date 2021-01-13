@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462123"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132015"
 ---
 # <a name="data-discovery--classification"></a>資料探索與分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "96462123"
 您最敏感的資料可能包括商務、財務、醫療保健或個人資訊。 探索和分類此資料可以在組織的資訊保護方法中扮演 pivotal 角色。 它可以作為以下的基礎結構：
 
 - 協助符合法規合規性的資料隱私權和需求標準。
-- 各種安全性案例，例如針對敏感性資料異常存取的監視 (稽核) 及警示。
+- 各種安全性案例，例如監視 (的) 存取機密資料。
 - 控制對包含高度敏感性資料之資料庫的存取和強化安全性。
 
 > [!NOTE]
@@ -112,16 +112,16 @@ ms.locfileid: "96462123"
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>對敏感性資料的審核存取
 
-資訊保護範例的重要層面，就是監視機密資料存取的能力。 [AZURE SQL 審核](../../azure-sql/database/auditing-overview.md) 已增強，可在名為的 audit 記錄中包含新的欄位 `data_sensitivity_information` 。 此欄位會記錄查詢所傳回的資料 (標籤) 的敏感度分類。 以下是範例：
+資訊保護範例的重要層面，就是監視機密資料存取的能力。 [AZURE SQL 審核](../../azure-sql/database/auditing-overview.md) 已增強，可在名為的 audit 記錄中包含新的欄位 `data_sensitivity_information` 。 此欄位會記錄查詢所傳回的資料 (標籤) 的敏感度分類。 以下為範例：
 
-![稽核記錄檔](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
+![稽核記錄](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 
 ## <a name="permissions"></a><a id="permissions"></a>Permissions
 
 這些內建角色可以讀取資料庫的資料分類：
 
 - 擁有者
-- 讀取者
+- 讀者
 - 參與者
 - SQL 安全性管理員
 - 使用者存取系統管理員

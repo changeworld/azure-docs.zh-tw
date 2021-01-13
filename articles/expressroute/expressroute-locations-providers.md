@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: duau
-ms.openlocfilehash: 0dc60f1785ee0d59307cb0d5b62405af62121518
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 21ec11110c28c3818bc5f834d21e0603e8ee0be3
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98027616"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132370"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -98,6 +98,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **杜拜 2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | 阿拉伯聯合大公國北部 | n/a | DE CIX、du datamena、Equinix、Megaport、橙色、Orixcom |
 | **都柏林** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | 北歐 | 10G、100G | CenturyLink Cloud Connect、Colt、eir、Equinix、GEANT、euNetworks、Interxion、Megaport |
 | **法蘭克福** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德國中西部 | 10G、100G | 在&T NetBond、CenturyLink Cloud Connect、Colt、DE CIX、Equinix、euNetworks、GEANT、InterCloud、Interxion、Megaport、橙色、Telia 承運商、T 系統 |
+| **Frankfurt2** | [Equinix FR7](https://www.equinix.com/locations/europe-colocation/germany-colocation/frankfurt-data-centers/fr7/) | 1 | 德國中西部 | 10G、100G | |
 | **日內瓦** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G、100G | Equinix、Megaport |
 | **香港** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 東亞 | 10G | Aryaka Networks、British Telecom、CenturyLink Cloud Connect、Chief Telecom、China Telecom Global、Equinix、InterCloud、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telia Carrier、Verizon |
 | **香港 2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 東亞 | 10G | 中國行動國際、中國電訊全球、PCCW Global 有限、SingTel |

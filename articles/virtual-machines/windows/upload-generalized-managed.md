@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 94db8ce46fc240a6c48c0919b6d2c2cd148522ac
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6e3333ac780cfca02a6ce4f28d2b0e312016f713
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976045"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131503"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>將一般化 VHD 上傳，並使用它在 Azure 中建立新的 VM
 
@@ -38,13 +38,15 @@ ms.locfileid: "91976045"
 > 
 
 1. 登入 Windows 虛擬機器。
-2. 以系統管理員身分開啟 [命令提示字元] 視窗。 將目錄變更到 %windir%\system32\sysprep，然後執行 `sysprep.exe`。
-3. 在 [系統準備工具] 對話方塊中，選取 [進入系統全新體驗 (OOBE)]，並確認已啟用 [一般化] 核取方塊。
-4. 針對 [關機選項]，選取 [關機]。
-5. 選取 [確定]。
+1. 以系統管理員身分開啟 [命令提示字元] 視窗。 
+1.  (C:\Windows\Panther) 刪除 >\panther\setupact.log 目錄。
+1. 將目錄變更到 %windir%\system32\sysprep，然後執行 `sysprep.exe`。
+1. 在 [系統準備工具] 對話方塊中，選取 [進入系統全新體驗 (OOBE)]，並確認已啟用 [一般化] 核取方塊。
+1. 針對 [關機選項]，選取 [關機]。
+1. 選取 [確定]。
    
     ![啟動 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Sysprep 完成時，會關閉虛擬機器。 不要重新啟動 VM。
+1. Sysprep 完成時，會關閉虛擬機器。 不要重新啟動 VM。
 
 
 ## <a name="upload-the-vhd"></a>上傳 VHD 

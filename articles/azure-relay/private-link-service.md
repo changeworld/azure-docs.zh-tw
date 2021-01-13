@@ -3,23 +3,23 @@ title: 將 Azure 轉送與 Azure Private Link 服務整合
 description: 了解如何整合 Azure 轉送與 Azure Private Link 服務
 ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13644082160704ba9918e6bd6257fa314bb463a6
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263831"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134376"
 ---
-# <a name="integrate-azure-relay-with-azure-private-link-preview"></a>將 Azure 轉送與 Azure Private Link 整合 (預覽)
-Azure **Private Link 服務**可讓您透過虛擬網路中的私人端點，存取各 Azure 服務 (例如 Azure 轉送、Azure 服務匯流排、Azure 事件中樞、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。 如需詳細資訊，請參閱[何謂 Azure Private Link (預覽)？](../private-link/private-link-overview.md)
+# <a name="integrate-azure-relay-with-azure-private-link"></a>整合 Azure 轉送與 Azure Private Link 
+Azure **Private Link 服務** 可讓您透過虛擬網路中的私人端點，存取各 Azure 服務 (例如 Azure 轉送、Azure 服務匯流排、Azure 事件中樞、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。 如需詳細資訊，請參閱[何謂 Azure Private Link？](../private-link/private-link-overview.md)
 
-**私人端點**是一種網路介面，其允許您在虛擬網路中執行的工作負載，透過私密又安全的方式，連線到具有 **Private Link 資源**的服務 (例如，「轉送」命名空間)。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute、VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可以允許連線到特定 Azure 轉送命名空間，在存取控制中提供細微性層級。 
+**私人端點** 是一種網路介面，其允許您在虛擬網路中執行的工作負載，透過私密又安全的方式，連線到具有 **Private Link 資源** 的服務 (例如，「轉送」命名空間)。 私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute、VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可以允許連線到特定 Azure 轉送命名空間，在存取控制中提供細微性層級。 
 
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>使用 Azure 入口網站新增私人端點
 
 ### <a name="prerequisites"></a>Prerequisites
-若要將 Azure 轉送命名空間與 Azure Private Link (預覽) 整合，您將需要下列實體或權限：
+若要將 Azure 轉送命名空間與 Azure Private Link 整合，您需要下列實體或許可權：
 
 - Azure 轉送命名空間。
 - Azure 虛擬網路。
@@ -35,23 +35,23 @@ Azure **Private Link 服務**可讓您透過虛擬網路中的私人端點，存
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 2. 在搜尋列中，輸入 [轉送]。
-3. 從清單中選取您要新增私人端點的**命名空間**。
-4. 選取 [設定] 底下的 [網路] 索引標籤。
-5. 選取頁面頂端的 [私人端點連線 (預覽)]**Private endpoint connections (preview)** 索引標籤
+3. 從清單中選取您要新增私人端點的 **命名空間**。
+4. 選取 [設定] 下的 [網路] 索引標籤。
+5. 選取頁面頂端的 [私人端點連線] 索引標籤
 6. 選取頁面頂端的 [+ 私人端點] 按鈕。
 
     ![新增私人端點按鈕](./media/private-link-service/add-private-endpoint-button.png)
 7. 在 [基本] 頁面上，遵循下列步驟： 
     1. 選取您要在其中建立私人端點的 **Azure 訂閱**。 
-    2. 選取私人端點資源的**資源群組**。
-    3. 輸入私人端點的**名稱**。 
-    5. 選取私人端點的**區域**。 您的私人端點必須與虛擬網路位於相同的區域，但可與您要連線的目的地 Azure 轉送命名空間位於不同的區域。 
+    2. 選取私人端點資源的 **資源群組**。
+    3. 輸入私人端點的 **名稱**。 
+    5. 選取私人端點的 **區域**。 您的私人端點必須與虛擬網路位於相同的區域，但可與您要連線的目的地 Azure 轉送命名空間位於不同的區域。 
     6. 完成時，選取 [下一步:資源 >] 按鈕 (位於頁面底部)。
 
         ![建立私人端點 - [基本] 頁面](./media/private-link-service/create-private-endpoint-basics-page.png)
 8. 在 [資源] 頁面上，遵循下列步驟：
     1. 對於連線方法，如果您選取 [連線至我目錄中的 Azure 資源]，您對命名空間具備擁有者與參與者存取權，而且該命名空間位於與私人端點相同的目錄中，請遵循下列步驟： 
-        1. 選取您的 **Azure 轉送命名空間**所在的 **Azure 訂閱**。 
+        1. 選取您的 **Azure 轉送命名空間** 所在的 **Azure 訂閱**。 
         2. 對於 [資源類型]，選取 [Microsoft.Relay/namespaces] 做為 [資源類型]。
         3. 對於 [資源]，從下拉式清單中選取轉送命名空間。 
         4. 確認 [目標 SubResource] 已設定為 [命名空間]。
@@ -59,18 +59,18 @@ Azure **Private Link 服務**可讓您透過虛擬網路中的私人端點，存
         
             ![建立私人端點 - [資源] 頁面](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. 如果您選取 [依資源識別碼或別名連線至 Azure 資源]，因為命名空間與私人端點的目錄不在相同的目錄下，請遵循下列步驟：
-        1. 輸入**資源識別碼**或**別名**。 其可以是某人與您共用的資源識別碼或別名。 取得資源識別碼最簡單的方式，便是瀏覽到 Azure 入口網站中的 Azure 轉送命名空間，然後複製 URI 從 `/subscriptions/` 開始的部分。 範例如下：`/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
-        2. 針對 [目標子資源]，請輸入**命名空間**。 其為您的私人端點可以存取的子資源類型。
-        3. (選擇性) 輸入**要求訊息**。 資源擁有者會在管理私人端點連線時看見此訊息。
+        1. 輸入 **資源識別碼** 或 **別名**。 其可以是某人與您共用的資源識別碼或別名。 取得資源識別碼最簡單的方式，便是瀏覽到 Azure 入口網站中的 Azure 轉送命名空間，然後複製 URI 從 `/subscriptions/` 開始的部分。 範例如下：`/subscriptions/000000000-0000-0000-0000-000000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Relay/namespaces/myrelaynamespace.` 
+        2. 針對 [目標子資源]，請輸入 **命名空間**。 其為您的私人端點可以存取的子資源類型。
+        3. (選擇性) 輸入 **要求訊息**。 資源擁有者會在管理私人端點連線時看見此訊息。
         4. 然後，選取 [下一步:設定 >] 按鈕 (位於頁面底部)。
 
             ![建立私人端點 - 使用資源識別碼連線](./media/private-link-service/connect-resource-id.png)
 9. 在 [設定] 頁面上，您會選取在虛擬網路中要部署私人端點的子網路。 
-    1. 選取**虛擬網路**。 下拉式清單只會列出目前所選訂閱與位置中的虛擬網路。 
-    2. 選取您所選虛擬網路中的**子網路**。 
+    1. 選取 **虛擬網路**。 下拉式清單只會列出目前所選訂閱與位置中的虛擬網路。 
+    2. 選取您所選虛擬網路中的 **子網路**。 
     3. 如果您想要將您的私人端點與私人 DNS 區域整合，請啟用 [與私人 DNS 區域整合]。 
     
-        若要私下與私人端點連線，則需要 DNS 記錄。 我們建議將私人端點與**私人 DNS 區域**整合。 您也可以利用自己的 DNS 伺服器，或使用虛擬機器上的主機檔案來建立 DNS 記錄。 如需詳細資訊，請參閱[＜Azure 私人端點 DNS 設定＞](../private-link/private-endpoint-dns.md)。 在此範例中，會選取 [與私人 DNS 區域整合] 選項，並為您建立私人 DNS 區域。 
+        若要私下與私人端點連線，則需要 DNS 記錄。 我們建議將私人端點與 **私人 DNS 區域** 整合。 您也可以利用自己的 DNS 伺服器，或使用虛擬機器上的主機檔案來建立 DNS 記錄。 如需詳細資訊，請參閱[＜Azure 私人端點 DNS 設定＞](../private-link/private-endpoint-dns.md)。 在此範例中，會選取 [與私人 DNS 區域整合] 選項，並為您建立私人 DNS 區域。 
     3. 完成時，選取 [下一步:標記 >] 按鈕 (位於頁面底部)。 
 
         ![建立私人端點 - [設定] 頁面](./media/private-link-service/create-private-endpoint-configuration-page.png)
@@ -81,7 +81,7 @@ Azure **Private Link 服務**可讓您透過虛擬網路中的私人端點，存
 12. 在 [私人端點] 頁面中，您可以看見私人端點連線的狀態。 如果您是轉送命名空間的擁有者，或具備其管理存取權，且已針對 [連線方法] 選取 [連線至我目錄中的 Azure 資源] 選項，則端點連線應該為 [自動核准]。 如果其處於 [擱置] 狀態，請參閱[＜使用 Azure 入口網站管理私人端點＞](#manage-private-endpoints-using-azure-portal)一節。
 
     ![私人端點頁面](./media/private-link-service/private-endpoint-page.png)
-13. 導覽回 **命名空間**的 [網路] 頁面，然後切換至 [私人端點連線 (預覽)] 索引標籤。您應該會看見您建立的私人端點。 
+13. 流覽回 **命名空間** 的 [**網路** 功能] 頁面，並切換至 [**私人端點連接**] 索引標籤。您應該會看到您所建立的私人端點。 
 
     ![已建立私人端點](./media/private-link-service/private-endpoint-created.png)
 
@@ -163,18 +163,18 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 1. 登入 Azure 入口網站。
 1. 在搜尋列中，輸入 [轉送]。
-1. 選取您要管理的**命名空間**。
+1. 選取您要管理的 **命名空間**。
 1. 選取 [網路] 索引標籤。
 5. 根據您想要執行的作業 (核准、拒絕或移除)，移至下列適當的小節。 
 
 ### <a name="approve-a-private-endpoint-connection"></a>核准私人端點連線
 
 1. 如果有任何暫止的連線，您會在佈建狀態中看到以 [擱置] 列出的連線。 
-2. 選取您想要核准的**私人端點**
+2. 選取您想要核准的 **私人端點**
 3. 選取 [核准] 按鈕。
 
     ![核准私人端點](./media/private-link-service/private-endpoint-approve.png)
-4. 在 [核准連線] 頁面上，輸入選擇性的**註解**，然後選取 [是]。 如果您選取 [否]，則不會發生任何事。 
+4. 在 [核准連線] 頁面上，輸入選擇性的 **註解**，然後選取 [是]。 如果您選取 [否]，則不會發生任何事。 
 
     ![核准連線頁面](./media/private-link-service/approve-connection-page.png)
 5. 您應該會看見清單中連線的狀態變更為 [已核准]。
@@ -208,7 +208,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 在 [網路] 索引標籤中： 
 
 1. 指定 [虛擬網路] 和 [子網路]。 您必須選取您已在其上方部署私人端點的虛擬網路。
-2. 指定**公用 IP** 資源。
+2. 指定 **公用 IP** 資源。
 3. 針對 [NIC 網路安全性群組]，選取 [無]。
 4. 針對 [負載平衡]，選取 [否]。
 
@@ -230,8 +230,7 @@ Aliases:  <namespace-name>.servicebus.windows.net
 ## <a name="limitations-and-design-considerations"></a>限制和設計考量
 
 ### <a name="design-considerations"></a>設計考量
-- Azure 轉送的私人端點處於**公開預覽**狀態。 
-- 如需定價資訊，請參閱 [Azure 私人連結 (預覽) 定價](https://azure.microsoft.com/pricing/details/private-link/)。
+- 如需定價資訊，請參閱 [Azure Private Link 定價](https://azure.microsoft.com/pricing/details/private-link/)。
 
 ### <a name="limitations"></a>限制 
 - 每個 Azure 轉送命名空間的私人端點數目上限：64。
@@ -240,5 +239,5 @@ Aliases:  <namespace-name>.servicebus.windows.net
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解 [Azure Private Link (預覽)](../private-link/private-link-service-overview.md)
+- 深入了解 [Azure Private Link](../private-link/private-link-service-overview.md)
 - 深入了解 [Azure 轉送](relay-what-is-it.md)

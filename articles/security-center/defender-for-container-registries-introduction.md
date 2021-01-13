@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
-ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
+ms.openlocfilehash: 79a428c322b65bfbb982be7a7e0c8b9fab7eed18
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96310386"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132726"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>適用於容器登錄的 Azure Defender 簡介
 
@@ -28,7 +28,7 @@ Azure Container Registry (ACR) 是受控的私人 Docker 登錄服務，可在�
 
 **適用於容器登錄的 Azure Defender** 包含弱點掃描器，可在您以 Azure Resource Manager 為基礎的 Azure Container Registry 登錄中掃描映像，並且讓您更深入地檢視映像的弱點。 整合式掃描器由領先業界的弱點掃描廠商 Qualys 提供技術支援。
 
-當 Qualys 或資訊安全中心發現問題時，您將會在資訊安全中心儀表板中收到通知。 針對每個弱點，資訊安全中心都會提供可採取動作的建議及嚴重性分類，以及如何補救問題的指引。 如需資訊安全中心的容器建議詳細資料，請參閱[建議的參考清單](recommendations-reference.md#recs-containers)。
+當 Qualys 或資訊安全中心發現問題時，您將會在資訊安全中心儀表板中收到通知。 針對每個弱點，資訊安全中心都會提供可採取動作的建議及嚴重性分類，以及如何補救問題的指引。 如需資訊安全中心的容器建議詳細資料，請參閱[建議的參考清單](recommendations-reference.md#recs-compute)。
 
 資訊安全中心會篩選並分類掃描器發現的結果。 當映像狀況良好時，資訊安全中心會據以標示。 資訊安全中心只會針對有問題待解決的映像產生安全性建議。 資訊安全中心會提供每個回報的弱點和嚴重性分類的詳細資料。 此外也會提供如何對在每個映像上發現的特定弱點進行補救的指引。
 
