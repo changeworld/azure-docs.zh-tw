@@ -6,33 +6,36 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 10/25/2020
-ms.openlocfilehash: 30ac28ef996c42e99ebece27ec156777f0d033d2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 01/13/2021
+ms.openlocfilehash: 34210d08ad5328f200f5b92c13bfcf85cfead3ec
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587871"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199473"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>對適用於 MySQL 的 Azure 資料庫中的複寫延遲進行疑難排解
 
 [!INCLUDE[applies-to-single-flexible-server](./includes/applies-to-single-flexible-server.md)]
 
-[讀取複本](concepts-read-replicas.md)功能可讓您從適用於 MySQL 的 Azure 資料庫伺服器將資料複寫至唯讀複本伺服器。 您可以將應用程式的讀取和報告查詢路由傳送至複本伺服器，以相應放大工作負載。 此設定可減少來源伺服器的壓力。 它也可改善應用程式調整規模時的整體效能和延遲。 
+[讀取複本](concepts-read-replicas.md)功能可讓您從適用於 MySQL 的 Azure 資料庫伺服器將資料複寫至唯讀複本伺服器。 您可以將應用程式的讀取和報告查詢路由傳送至複本伺服器，以相應放大工作負載。 此設定可減少來源伺服器的壓力。 它也可改善應用程式調整規模時的整體效能和延遲。
 
-複本會使用 MySQL 引擎的原生二進位記錄檔 (binlog) 檔案位置型複寫技術，以非同步方式更新。 如需詳細資訊，請參閱 [MySQL binlog 以位置為基礎的](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)複寫設定總覽。 
+複本會使用 MySQL 引擎的原生二進位記錄檔 (binlog) 檔案位置型複寫技術，以非同步方式更新。 如需詳細資訊，請參閱 [MySQL binlog 以位置為基礎的](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)複寫設定總覽。
 
-次要讀取複本上的複寫延遲取決於數個因素。 這些因素包括但不限於： 
+次要讀取複本上的複寫延遲取決於數個因素。 這些因素包括但不限於：
 
 - 網路延遲。
 - 來源伺服器上的交易磁片區。
 - 來源伺服器和次要讀取複本伺服器的計算層。
-- 在來源伺服器和次要伺服器上執行的查詢。 
+- 在來源伺服器和次要伺服器上執行的查詢。
 
 在本文中，您將瞭解如何針對適用於 MySQL 的 Azure 資料庫中的複寫延遲進行疑難排解。 您也將瞭解複本伺服器上增加複寫延遲的一些常見原因。
 
 > [!NOTE]
-> 本文包含詞彙從屬的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+> 無偏差通訊
+>
+> Microsoft 支援多元和包容性的環境。 本文包含「 _主要_ 」和「 _從屬_」這些單字的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這些視為排他性行為單字。 本文中使用的單字是為了保持一致性，因為它們目前是出現在軟體中的單字。 當軟體更新為移除這些字組時，將會更新本文以進行調整。
+>
 
 ## <a name="replication-concepts"></a>複寫概念
 
@@ -47,7 +50,7 @@ ms.locfileid: "97587871"
 
 若要瞭解增加複寫延遲的原因，請使用 [MySQL 工作臺](connect-workbench.md) 或 [Azure Cloud Shell](https://shell.azure.com)連接到複本伺服器。 然後執行下列命令。
 
->[!NOTE] 
+>[!NOTE]
 > 在您的程式碼中，將範例值取代為您的複本伺服器名稱和系統管理員使用者名稱。 系統管理員使用者名稱需要 `@\<servername>` 適用於 MySQL 的 Azure 資料庫。
 
 ```azurecli-interactive
@@ -92,7 +95,6 @@ mysql> SHOW SLAVE STATUS;
 >[!div class="mx-imgBorder"]
 > :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="監視複寫延遲":::
 
-
 輸出包含許多資訊。 一般來說，您只需要將焦點放在下表所描述的資料列。
 
 |計量|描述|
@@ -122,7 +124,7 @@ mysql> SHOW SLAVE STATUS;
 
 ### <a name="network-latency-or-high-cpu-consumption-on-the-source-server"></a>來源伺服器上的網路延遲或高 CPU 耗用量
 
-如果您看到下列值，則複寫延遲可能是因為來源伺服器上的網路延遲過高或高 CPU 耗用量所造成。 
+如果您看到下列值，則複寫延遲可能是因為來源伺服器上的網路延遲過高或高 CPU 耗用量所造成。
 
 ```
 Slave_IO_State: Waiting for master to send event
@@ -132,7 +134,7 @@ Relay_Master_Log_File: the file sequence is smaller than Master_Log_File, e.g. m
 
 在此情況下，IO 執行緒正在執行，且正在等候來源伺服器。 來源伺服器已寫入二進位記錄檔編號20。 複本最多隻接收到檔案號碼10。 在此案例中，高複寫延遲的主要因素是來源伺服器上的網路速度或高 CPU 使用率。  
 
-在 Azure 中，區域內的網路延遲通常可以測量毫秒。 跨區域，延遲範圍從毫秒到秒。 
+在 Azure 中，區域內的網路延遲通常可以測量毫秒。 跨區域，延遲範圍從毫秒到秒。
 
 在大部分的情況下，IO 執行緒和來源伺服器之間的連接延遲是因為來源伺服器上的高 CPU 使用率所造成。 IO 執行緒的處理速度很慢。 您可以使用 Azure 監視器檢查來源伺服器上的 CPU 使用率和並行連接數目，來偵測此問題。
 
@@ -148,18 +150,17 @@ Master_Log_File: the binary file sequence is larger then Relay_Master_Log_File, 
 Relay_Master_Log_File: the file sequence is smaller then Master_Log_File, e.g. mysql-bin.00010
 ```
 
-輸出顯示覆本可以取出來源伺服器背後的二進位記錄檔。 但是複本 IO 執行緒指出轉送記錄空間已滿。 
+輸出顯示覆本可以取出來源伺服器背後的二進位記錄檔。 但是複本 IO 執行緒指出轉送記錄空間已滿。
 
-網路速度不會造成延遲。 複本正在嘗試趕上。 但更新的二進位記錄檔大小超過轉送記錄空間的上限。 
+網路速度不會造成延遲。 複本正在嘗試趕上。 但更新的二進位記錄檔大小超過轉送記錄空間的上限。
 
 若要針對此問題進行疑難排解，請在來源伺服器上啟用 [慢速查詢記錄](concepts-server-logs.md) 檔。 使用慢速查詢記錄來識別來源伺服器上長時間執行的交易。 然後調整已識別的查詢，以減少伺服器上的延遲。 
 
 這種排序的複寫延遲通常是來源伺服器上的資料負載所造成。 當來源伺服器有每週或每月的資料載入時，複寫延遲很可惜無法避免。 複本伺服器最後會在來源伺服器上的資料載入完成之後趕上。
 
-
 ### <a name="slowness-on-the-replica-server"></a>複本伺服器上的緩慢
 
-如果您觀察到下列值，則問題可能是在複本伺服器上。 
+如果您觀察到下列值，則問題可能是在複本伺服器上。
 
 ```
 Slave_IO_State: Waiting for master to send event
@@ -172,7 +173,7 @@ Exec_Master_Log_Pos: The position of slave reads from master binary log file is 
 Seconds_Behind_Master: There is latency and the value here is greater than 0
 ```
 
-在此案例中，輸出顯示 IO 執行緒和 SQL 執行緒都正常執行。 複本會讀取來源伺服器所寫入的相同二進位記錄檔。 不過，複本伺服器上的某些延遲會反映來自來源伺服器的相同交易。 
+在此案例中，輸出顯示 IO 執行緒和 SQL 執行緒都正常執行。 複本會讀取來源伺服器所寫入的相同二進位記錄檔。 不過，複本伺服器上的某些延遲會反映來自來源伺服器的相同交易。
 
 下列各節說明這種延遲的常見原因。
 
@@ -180,13 +181,13 @@ Seconds_Behind_Master: There is latency and the value here is greater than 0
 
 適用於 MySQL 的 Azure 資料庫使用以資料列為基礎的複寫。 來源伺服器會將事件寫入二進位記錄檔中，記錄個別資料表資料列中的變更。 然後，SQL 執行緒會將這些變更複寫到複本伺服器上對應的資料表資料列。 當資料表缺少 primary key 或 unique 索引鍵時，SQL 執行緒會掃描目標資料表中的所有資料列，以套用變更。 這種掃描可能會導致複寫延遲。
 
-在 MySQL 中，主鍵是相關聯的索引，可確保快速查詢效能，因為它不能包含 Null 值。 如果您使用 InnoDB 儲存引擎，則會以實體方式組織資料表資料，以進行非常快速的查閱，並根據主要索引鍵進行排序。 
+在 MySQL 中，主鍵是相關聯的索引，可確保快速查詢效能，因為它不能包含 Null 值。 如果您使用 InnoDB 儲存引擎，則會以實體方式組織資料表資料，以進行非常快速的查閱，並根據主要索引鍵進行排序。
 
 建議您先在來源伺服器的資料表上新增主鍵，然後再建立複本伺服器。 在來源伺服器上新增主鍵，然後重新建立讀取複本，以協助改善複寫延遲。
 
 您可以使用下列查詢，找出來源伺服器上的哪些資料表缺少主鍵：
 
-```sql 
+```sql
 select tab.table_schema as database_name, tab.table_name 
 from information_schema.tables tab left join 
 information_schema.table_constraints tco 
@@ -202,19 +203,19 @@ order by tab.table_schema, tab.table_name;
 
 #### <a name="long-running-queries-on-the-replica-server"></a>複本伺服器上長時間執行的查詢
 
-複本伺服器上的工作負載可以讓 SQL 執行緒延遲在 IO 執行緒後方。 複本伺服器上長時間執行的查詢是高複寫延遲的其中一個常見原因。 若要針對此問題進行疑難排解，請在複本伺服器上啟用 [慢速查詢記錄](concepts-server-logs.md) 檔。 
+複本伺服器上的工作負載可以讓 SQL 執行緒延遲在 IO 執行緒後方。 複本伺服器上長時間執行的查詢是高複寫延遲的其中一個常見原因。 若要針對此問題進行疑難排解，請在複本伺服器上啟用 [慢速查詢記錄](concepts-server-logs.md) 檔。
 
 緩慢的查詢可能會增加資源耗用量或降低伺服器的速度，讓複本無法趕上來源伺服器。 在此案例中，請調整緩慢查詢。 更快速的查詢能防止 SQL 執行緒的瓶頸，並大幅改善複寫延遲。
 
-
 #### <a name="ddl-queries-on-the-source-server"></a>來源伺服器上的 DDL 查詢
+
 在來源伺服器上，類似的資料定義語言 (DDL) 命令 [`ALTER TABLE`](https://dev.mysql.com/doc/refman/5.7/en/alter-table.html) 可能需要很長的時間。 執行 DDL 命令時，可能會在來源伺服器上平行執行數以千計的其他查詢。 
 
 複寫 DDL 時，為了確保資料庫的一致性，MySQL 引擎會在單一複寫執行緒中執行 DDL。 在此工作期間，所有其他複寫的查詢都會被封鎖，而且必須等到 DDL 作業在複本伺服器上完成為止。 即使是線上 DDL 作業也會造成此延遲。 DDL 作業會增加複寫延遲。
 
-如果您已在來源伺服器上啟用 [慢速查詢記錄](concepts-server-logs.md) ，您可以藉由檢查在來源伺服器上執行的 DDL 命令來偵測此延遲問題。 透過索引卸載、重新命名和建立，您可以針對 ALTER TABLE 使用「就地演算法」。 您可能需要複製資料表資料並重建資料表。 
+如果您已在來源伺服器上啟用 [慢速查詢記錄](concepts-server-logs.md) ，您可以藉由檢查在來源伺服器上執行的 DDL 命令來偵測此延遲問題。 透過索引卸載、重新命名和建立，您可以針對 ALTER TABLE 使用「就地演算法」。 您可能需要複製資料表資料並重建資料表。
 
-一般情況下，並存演算法支援並行 DML。 但是，當您準備並執行作業時，您可以簡單地在資料表上取得專屬的中繼資料鎖定。 因此，在 CREATE INDEX 語句中，您可以使用子句演算法和鎖定來影響資料表複製的方法，以及用於讀取和寫入的平行存取層級。 您仍然可以藉由加入全文檢索索引或空間索引來防止 DML 作業。 
+一般情況下，並存演算法支援並行 DML。 但是，當您準備並執行作業時，您可以簡單地在資料表上取得專屬的中繼資料鎖定。 因此，在 CREATE INDEX 語句中，您可以使用子句演算法和鎖定來影響資料表複製的方法，以及用於讀取和寫入的平行存取層級。 您仍然可以藉由加入全文檢索索引或空間索引來防止 DML 作業。
 
 下列範例會使用演算法和鎖定子句來建立索引。
 
@@ -226,24 +227,25 @@ ALTER TABLE table_name ADD INDEX index_name (column), ALGORITHM=INPLACE, LOCK=NO
 
 #### <a name="downgraded-replica-server"></a>降級複本伺服器
 
-在適用於 MySQL 的 Azure 資料庫中，讀取複本會使用與來源伺服器相同的伺服器設定。 您可以在建立複本伺服器之後變更它。 
+在適用於 MySQL 的 Azure 資料庫中，讀取複本會使用與來源伺服器相同的伺服器設定。 您可以在建立複本伺服器之後變更它。
 
-如果複本伺服器已降級，工作負載可能會耗用更多資源，而這可能會導致複寫延遲。 若要偵測這個問題，請使用 Azure 監視器檢查複本伺服器的 CPU 和記憶體耗用量。 
+如果複本伺服器已降級，工作負載可能會耗用更多資源，而這可能會導致複寫延遲。 若要偵測這個問題，請使用 Azure 監視器檢查複本伺服器的 CPU 和記憶體耗用量。
 
 在此案例中，建議您將複本伺服器的設定保留在等於或大於來源伺服器值的值。 此設定可讓複本跟上來源伺服器。
 
 #### <a name="improving-replication-latency-by-tuning-the-source-server-parameters"></a>藉由微調來源伺服器參數來改善複寫延遲
 
-在適用於 MySQL 的 Azure 資料庫中，根據預設，複寫會針對複本上的平行線程執行優化。 如果來源伺服器上的高並行工作負載導致複本伺服器落後，您可以在來源伺服器上設定 binlog_group_commit_sync_delay 的參數，以改善複寫延遲。 
+在適用於 MySQL 的 Azure 資料庫中，根據預設，複寫會針對複本上的平行線程執行優化。 如果來源伺服器上的高並行工作負載導致複本伺服器落後，您可以在來源伺服器上設定 binlog_group_commit_sync_delay 的參數，以改善複寫延遲。
 
-Binlog_group_commit_sync_delay 參數會控制在同步處理二進位記錄檔之前，二進位記錄檔認可等候的毫秒數。 此參數的優點是，它不會立即套用每個認可的交易，而是讓來源伺服器大量傳送二進位記錄檔更新。 此延遲會減少複本上的 IO，並協助提升效能。 
+Binlog_group_commit_sync_delay 參數會控制在同步處理二進位記錄檔之前，二進位記錄檔認可等候的毫秒數。 此參數的優點是，它不會立即套用每個認可的交易，而是讓來源伺服器大量傳送二進位記錄檔更新。 此延遲會減少複本上的 IO，並協助提升效能。
 
-將 binlog_group_commit_sync_delay 參數設定為1000或這樣可能會很有用。 然後監視複寫延遲。 請小心設定此參數，並只將其用於高平行存取工作負載。 
+將 binlog_group_commit_sync_delay 參數設定為1000或這樣可能會很有用。 然後監視複寫延遲。 請小心設定此參數，並只將其用於高平行存取工作負載。
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > 在 [複本伺服器] 中，建議 binlog_group_commit_sync_delay 參數為0。 這是建議的作法，因為與來源伺服器不同的是，複本伺服器不會有高平行存取，而且增加複本伺服器上 binlog_group_commit_sync_delay 的值可能會不慎導致複寫延遲增加。
 
-針對包含許多單一交易的低並行工作負載，binlog_group_commit_sync_delay 設定可能會增加延遲。 延遲可能會增加，因為 IO 執行緒會等待大量二進位記錄檔更新，即使只有少數交易才會認可。 
+針對包含許多單一交易的低並行工作負載，binlog_group_commit_sync_delay 設定可能會增加延遲。 延遲可能會增加，因為 IO 執行緒會等待大量二進位記錄檔更新，即使只有少數交易才會認可。
 
 ## <a name="next-steps"></a>後續步驟
+
 查看 [MySQL binlog 複製總覽](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)。

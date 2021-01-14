@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 82bebcbda3110d51ae72df1fb4b18fedaa6c2f4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7763c1d856a09acf2523a7073c3d300be6b70b37
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597704"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200697"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>使用 Azure 虛擬機器修復命令修復 Windows VM
 
@@ -60,7 +60,7 @@ ms.locfileid: "91597704"
 
    如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0.30 版或更新版本。 執行 ``az --version`` 以尋找版本。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
    
-   如果您需要使用與目前登入 Azure 入口網站不同的帳戶登入 Cloud Shell，可以使用 ``az login`` [az login 參考](/cli/azure/reference-index?view=azure-cli-latest#az-login&preserve-view=true)。  若要在與您帳戶相關聯的訂用帳戶之間切換，您可以使用 ``az account set --subscription`` [az 帳戶集參考](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true)。
+   如果您需要使用與目前登入 Azure 入口網站不同的帳戶登入 Cloud Shell，可以使用 ``az login`` [az login 參考](/cli/azure/reference-index#az-login&preserve-view=true)。  若要在與您帳戶相關聯的訂用帳戶之間切換，您可以使用 ``az account set --subscription`` [az 帳戶集參考](/cli/azure/account#az-account-set&preserve-view=true)。
 
 2. 如果這是您第一次使用 `az vm repair` 命令，請新增 vm-repair CLI 擴充功能。
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: e2f0d62ae6882229cee3ee32e3b362f2b6593da7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183331"
+ms.locfileid: "98199230"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -52,9 +52,11 @@ driveletter:\ 無法存取。
 <a id="server-registration-missing-subscriptions"></a>**伺服器註冊未列出所有 Azure 訂用帳戶**  
 使用 ServerRegistration.exe 註冊伺服器時，按一下 [Azure 訂用帳戶] 下拉式清單後未顯示訂用帳戶。
 
-此問題是因為 ServerRegistration.exe 目前不支援多租用戶環境。 我們將會在後續的 Azure 檔案同步代理程式更新中修正此問題。
+發生此問題的原因是 ServerRegistration.exe 只會從前5個 Azure AD 租使用者取得訂用帳戶。 
 
-若要解決此問題，請使用下列 PowerShell 命令來註冊伺服器：
+若要增加伺服器的伺服器註冊租使用者限制，請在 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync 下建立名為 ServerRegistrationTenantLimit 的 DWORD 值，其值大於5。
+
+您也可以使用下列 PowerShell 命令來註冊伺服器，以解決此問題：
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"

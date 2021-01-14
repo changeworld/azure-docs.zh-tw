@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 8667fc3c5224b1f75a9beeb95b6e1261c768c14d
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 512b949fceda850e968a6f97b3788ae3a602f56d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347909"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199252"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>使用 .NET 建立容器或 blob 的使用者委派 SAS
 
@@ -96,6 +96,16 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 下列範例會測試從模擬用戶端應用程式在上一個範例中建立的使用者委派 SAS。 如果 SAS 有效，用戶端應用程式可以讀取 blob 的內容。 如果 SAS 無效，例如，如果 SAS 已過期，Azure 儲存體會傳回錯誤碼 403 (禁止的) 。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_ListBlobsWithSasAsync":::
+
+## <a name="get-a-user-delegation-sas-for-a-directory"></a>取得目錄的使用者委派 SAS
+
+下列程式碼範例示範如何在啟用階層式命名空間時，產生目錄的使用者委派 SAS：
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasDirectory":::
+
+下列範例會測試從模擬用戶端應用程式在上一個範例中建立的使用者委派 SAS。 如果 SAS 有效，用戶端應用程式就可以列出此目錄的檔案路徑。 如果 SAS 無效，例如，如果 SAS 已過期，Azure 儲存體會傳回錯誤碼 403 (禁止的) 。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_ListFilePathsWithDirectorySasAsync":::
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

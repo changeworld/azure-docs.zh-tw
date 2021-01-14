@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929084"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200442"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 應用程式組態最佳作法
 
@@ -89,6 +89,10 @@ configBuilder.AddAzureAppConfiguration(options => {
 ## <a name="multi-region-deployment-in-app-configuration"></a>應用程式設定中的多重區域部署
 
 應用程式設定是區域服務。 針對每個區域具有不同設定的應用程式，將這些設定儲存在一個實例中，可能會產生單一失敗點。 跨區域跨多個區域部署一個應用程式設定實例，可能是較好的選項。 它有助於進列區域嚴重損壞修復、效能和安全性 siloing。 依區域設定也可改善延遲，並使用分開的節流配額，因為節流是針對每個實例。 若要套用嚴重損壞修復的風險降低，您可以使用 [多個](./concept-disaster-recovery.md)設定存放區。 
+
+## <a name="client-applications-in-app-configuration"></a>應用程式設定中的用戶端應用程式 
+
+對應用程式設定的要求過多可能會導致節流或超額費用。 應用程式會利用目前可用的快取和智慧型重新整理，將所傳送的要求數目優化。 您可以避免直接連線至設定存放區，以在高容量用戶端應用程式中鏡像此進程。 相反地，用戶端應用程式會連接到自訂服務，而此服務會與設定存放區進行通訊。 此 proxy 解決方案可確保用戶端應用程式不會處理設定存放區上的節流限制。 如需節流的詳細資訊，請參閱 [常見問題](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration)。  
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55dcd65e901a5ce8665ef8d3a2a29d7943581df9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074304"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200714"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>在套用 Windows Update 時，VM 未回應 "C01A001D" 錯誤
 
@@ -56,7 +56,7 @@ ms.locfileid: "87074304"
 
 如果磁片還不是 1 Tb，您必須調整它的大小。 磁片為 1 TB 之後，請執行磁片清理和磁片磁碟機的磁碟重組。
 
-1. 檢查磁碟是否已滿。 如果磁片低於 1 Tb，請 [使用 PowerShell 將它擴充到最大 1 tb](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
+1. 檢查磁碟是否已滿。 如果磁片低於 1 Tb，請 [使用 PowerShell 將它擴充到最大 1 tb](../windows/expand-os-disk.md)。
 2. 磁片為 1 Tb 之後，請執行磁片清理。
     - [從中斷的 VM 卸離資料磁片](../windows/detach-disk.md)。
     - [將資料磁片連接至正常運作的 VM](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。

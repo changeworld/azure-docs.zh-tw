@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: f9907be0e7cd14876964b820d9b267f279fc50d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: affdee6871649102ef7881fb0f540eba6ab450ca
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331449"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200952"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Linux VM 進行疑難排解
 如果 Linux 虛擬機器 (VM) 發生開機或磁碟錯誤，您可能需要對虛擬硬碟本身執行疑難排解步驟。 常見的例子是 `/etc/fstab` 中的項目無效，導致 VM 無法成功開機。 本文詳細說明如何使用 Azure 入口網站將虛擬硬碟連接至另一個 Linux VM，以修正任何錯誤，然後重新建立原始 VM。
@@ -39,11 +39,11 @@ ms.locfileid: "91331449"
 ## <a name="determine-boot-issues"></a>判斷開機問題
 檢查開機診斷和 VM 螢幕擷取畫面來判斷 VM 為何無法正常開機。 常見的例子是 `/etc/fstab` 中的項目無效，或因為刪除或移動基礎虛擬硬碟。
 
-在入口網站中選取您的 VM，然後向下捲動至 [支援 + 疑難排解]**** 區段。 按一下 [開機診斷]**** 以檢視從 VM 串流過來的主控台訊息。 檢閱主控台記錄，以查看是否可以判斷 VM 為何會發生問題。 下列範例說明卡在維護模式，因而需要手動互動的 VM：
+在入口網站中選取您的 VM，然後向下捲動至 [支援 + 疑難排解] 區段。 按一下 [開機診斷] 以檢視從 VM 串流過來的主控台訊息。 檢閱主控台記錄，以查看是否可以判斷 VM 為何會發生問題。 下列範例說明卡在維護模式，因而需要手動互動的 VM：
 
 ![檢視 VM 開機診斷主控台記錄](./media/troubleshoot-recovery-disks-portal-linux/boot-diagnostics-error.png)
 
-您也可以按一下橫跨在開機診斷記錄頂端的**螢幕擷取畫面**，下載所擷取的 VM 螢幕擷取畫面。
+您也可以按一下橫跨在開機診斷記錄頂端的 **螢幕擷取畫面**，下載所擷取的 VM 螢幕擷取畫面。
 
 ## <a name="take-a-snapshot-of-the-os-disk"></a>取得 OS 磁片的快照集
 快照集是完整的虛擬硬碟 (VHD) 唯讀複本。 建議您在建立快照集之前，先將 VM 完全關閉，以清除進行中的任何處理程式。 若要取得 OS 磁片的快照集，請遵循下列步驟：
@@ -51,7 +51,7 @@ ms.locfileid: "91331449"
 1. 移至 [Azure 入口網站](https://portal.azure.com)。 從側邊欄選取 [ **虛擬機器** ]，然後選取有問題的 VM。
 1. 在左窗格中，選取 [ **磁片**]，然後選取 OS 磁片的名稱。
     ![作業系統磁片名稱的相關影像](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
-1. 在 OS 磁片的 [ **總覽** ] 頁面上，選取 [ **建立快照**集]。
+1. 在 OS 磁片的 [ **總覽** ] 頁面上，選取 [ **建立快照** 集]。
 1. 在與 OS 磁片相同的位置中建立快照集。
 
 ## <a name="create-a-disk-from-the-snapshot"></a>從快照集建立磁碟
@@ -158,7 +158,7 @@ ms.locfileid: "91331449"
     sudo umount /dev/sdc1
     ```
 
-2. 現在從 VM 中斷連結虛擬硬碟。 在入口網站中選取 VM，然後按一下 [磁碟]****。 選取您現有的虛擬硬碟，然後按一下 [中斷連結]****：
+2. 現在從 VM 中斷連結虛擬硬碟。 在入口網站中選取 VM，然後按一下 [磁碟]。 選取您現有的虛擬硬碟，然後按一下 [中斷連結]：
 
     ![將現有虛擬硬碟中斷連結](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
@@ -166,7 +166,7 @@ ms.locfileid: "91331449"
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>交換 VM 的 OS 磁片
 
-Azure 入口網站現在支援變更 VM 的 OS 磁片。 若要執行此動作，請依照下列步驟執行：
+Azure 入口網站現在支援變更 VM 的 OS 磁片。 若要這樣做，請執行下列步驟：
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。 從側邊欄選取 [ **虛擬機器** ]，然後選取有問題的 VM。
 1. 在左窗格中，選取 [ **磁片**]，然後選取 [ **交換 OS 磁片**]。
@@ -176,6 +176,6 @@ Azure 入口網站現在支援變更 VM 的 OS 磁片。 若要執行此動作�
 1. 選取 [確定]。
 
 ## <a name="next-steps"></a>後續步驟
-如果連接至 VM 時發生問題，請參閱[針對 Azure VM 的 SSH 連接進行疑難排解](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果存取 VM 上執行的應用程式時發生問題，請參閱[針對 Linux VM 上的應用程式連線問題進行疑難排解](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
+如果連接至 VM 時發生問題，請參閱[針對 Azure VM 的 SSH 連接進行疑難排解](troubleshoot-ssh-connection.md)。 如果存取 VM 上執行的應用程式時發生問題，請參閱[針對 Linux VM 上的應用程式連線問題進行疑難排解](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
 
-如需使用 Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如需使用 Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。

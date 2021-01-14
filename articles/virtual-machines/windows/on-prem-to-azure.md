@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32cbfbcc8feeff66101ab5e2c95f476a4a4215e9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 55f7c68df1e339f0f9eda809bbb0acbb2e9131b5
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973898"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200884"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>從 Amazon Web Services (AWS) 和其他平台移轉至 Azure 中的受控磁碟
 
@@ -26,7 +26,7 @@ ms.locfileid: "91973898"
 - **特製化 VHD**：會維護來自原始 VM 的使用者帳戶、應用程式和其他狀態資料。 
 
 > [!IMPORTANT]
-> 將任何 VHD 上傳至 Azure 之前，您應該遵循 [準備 WINDOWS VHD 或 VHDX 以上傳至 azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> 將任何 VHD 上傳至 Azure 之前，您應該遵循 [準備 WINDOWS VHD 或 VHDX 以上傳至 azure](prepare-for-upload-vhd-image.md)
 >
 >
 
@@ -64,20 +64,20 @@ Azure 受控磁碟可免除管理儲存體帳戶的需求，進而簡化 VM 管�
 
 有七種型別的進階受控磁碟可以搭配 VM 使用，而且每種都有特定的 IOP 和輸送量限制。 為您的 VM 選擇進階磁碟類型時，請根據應用程式在容量、效能、延展性以及尖峰負載方面的需求，將這些限制納入考量。
 
-| 進階磁碟類型  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+| 進階磁碟類型  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| 磁碟大小           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| 每一磁碟的 IOPS       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
-| 每一磁碟的輸送量 | 每秒 25 MB  | 每秒 50 MB  | 每秒 100 MB | 每秒 125 MB |每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB |
+| 磁碟大小           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| 每一磁碟的 IOPS       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
+| 每一磁碟的輸送量 | 每秒 25 MB  | 每秒 50 MB  | 每秒 100 MB | 每秒 125 MB |每秒 150 MB | 每秒 200 MB | 每秒 250 MB | 每秒 250 MB |
 
 **標準受控磁碟**
 
 有七種型別的標準受控磁碟可搭配 VM 使用。 每種類型的容量各不相同，但其 IOPS 和輸送量限制相同。 根據您應用程式的容量需求，選擇標準受控磁碟的類型。
 
-| 標準磁碟類型  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
+| 標準磁碟類型  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
 |---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
-| 磁碟大小           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
-| 每一磁碟的 IOPS       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
+| 磁碟大小           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2TB)    | 4095 GB (4 TB)   | 
+| 每一磁碟的 IOPS       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
 | 每一磁碟的輸送量 | 每秒 60 MB | 每秒 60 MB | 每秒 60 MB | 每秒 60 MB |每秒 60 MB | 每秒 60 MB | 每秒 60 MB | 每秒 60 MB | 
 
 ### <a name="disk-caching-policy"></a>磁碟快取原則 
@@ -93,4 +93,4 @@ Azure 受控磁碟可免除管理儲存體帳戶的需求，進而簡化 VM 管�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 將任何 VHD 上傳至 Azure 之前，您應該遵循 [準備 WINDOWS VHD 或 VHDX 以上傳至 azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- 將任何 VHD 上傳至 Azure 之前，您應該遵循 [準備 WINDOWS VHD 或 VHDX 以上傳至 azure](prepare-for-upload-vhd-image.md)

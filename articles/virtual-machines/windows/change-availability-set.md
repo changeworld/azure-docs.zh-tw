@@ -6,12 +6,12 @@ author: cynthn
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 8c0694bd1dc2fefed644dc91a0d649dd1a480428
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 54f59a052132826897cfbc8dda59bc73fb6ad8d9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654535"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200561"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>變更 VM 的可用性設定組
 下列步驟說明如何使用 Azure PowerShell 來變更 VM 的可用性設定組。 只有在建立 VM 時，才能將 VM 新增到可用性設定組中。 若要變更可用性設定組，您必須將虛擬機器刪除，然後再重新建立。 
@@ -106,4 +106,4 @@ ms.locfileid: "97654535"
 
 ## <a name="next-steps"></a>後續步驟
 
-透過新增額外 [資料磁碟](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，將額外的存放裝置新增到您的 VM。
+透過新增額外 [資料磁碟](attach-managed-disk-portal.md)，將額外的存放裝置新增到您的 VM。

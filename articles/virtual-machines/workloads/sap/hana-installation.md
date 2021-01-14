@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 81d44dae0fed45d4a4df76973c7e233fd71baff1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006297"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198963"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>如何在 Azure 上安裝和設定 SAP HANA (大型執行個體)
 
@@ -125,11 +125,11 @@ HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需�
 因此，您必須設定不同時間伺服器，以供 Azure VM 上執行的 SAP 應用程式伺服器與 HANA 大型執行個體上執行的 SAP HANA 資料庫執行個體使用。 大型執行個體戳記中的儲存體基礎結構與 NTP 伺服器進行時間同步處理。
 
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 我們假設您已如下列文件所述，依照建議設計 Azure 虛擬網路，並將這些虛擬網路連接到 HANA 大型執行個體：
 
 - [SAP Hana (大型實例) 總覽和 Azure 上的架構](./hana-overview-architecture.md)
-- [SAP Hana (大型實例) Azure 上的基礎結構和連線能力](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP Hana (大型實例) Azure 上的基礎結構和連線能力](hana-overview-infrastructure-connectivity.md)
 
 關於單一單位的網路功能，有一些值得一提的細節。 每個「HANA 大型執行個體」單位都隨附兩個或三個 IP 位址，這些位址會指派給兩個或三個 NIC 連接埠。 在 HANA 向外延展組態與「HANA 系統複寫」案例中會使用三個 IP 位址。 其中一個指派給單位之 NIC 的 IP 位址是來自 [Azure 上 SAP HANA (大型執行個體) 的概觀和架構](./hana-overview-architecture.md)中所述的伺服器 IP 集區。
 
@@ -139,7 +139,7 @@ HANA 大型執行個體單位可以連接到這個 SMT 執行個體。 (如需�
 
 Azure (大型實例) 上 SAP Hana 的儲存體配置是 `service management` 透過 SAP 建議的指導方針，在 azure 上 SAP Hana 進行設定。 這些指引列載於 [SAP HANA 儲存體需求](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)白皮書中。 
 
-有不同 HANA 大型執行個體 SKU 的不同磁碟區的約略大小記載於 [Azure 上 SAP HANA (大型執行個體) 的概觀和架構](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有不同 HANA 大型執行個體 SKU 的不同磁碟區的約略大小記載於 [Azure 上 SAP HANA (大型執行個體) 的概觀和架構](hana-overview-architecture.md)。
 
 下表列出的存放磁碟區的命名慣例：
 
@@ -161,7 +161,7 @@ HANA usr/sap 會共用相同的磁碟區。 掛接點的專門用語包含 HANA 
 
 當您查看 HANA 大型執行個體單位時，您會發現這些單位有著相當大的 HANA/data 磁碟區，而且還有一個 HANA/log/backup 磁碟區。 我們之所以將 HANA/data 的大小設定成如此大，是因為我們為身為客戶的您提供的儲存體快照集就是使用同一個磁碟區。 您執行的儲存體快照集愈多，您在指派存放磁碟區中的快照集所使用的空間也愈多。 
 
-HANA/log/backup 磁碟區不支援作為資料庫備份的磁碟區。 它會調整大小以用為 HANA 交易記錄備份的備份磁碟區。 如須詳細資訊，請參閱 [Azure 上的 SAP Hana (大型執行個體) 高可用性和災害復原](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
+HANA/log/backup 磁碟區不支援作為資料庫備份的磁碟區。 它會調整大小以用為 HANA 交易記錄備份的備份磁碟區。 如須詳細資訊，請參閱 [Azure 上的 SAP Hana (大型執行個體) 高可用性和災害復原](hana-overview-high-availability-disaster-recovery.md)。 
 
 除了所提供的儲存體之外，您還可以購買額外的儲存體容量 (增量單位為 1 TB)。 此額外儲存體可以做為新的磁碟區新增至 HANA 大型執行個體。
 

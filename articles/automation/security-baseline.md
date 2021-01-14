@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e07e9035dc55f77a2e76b4f4ee306deab829980a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182745"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200833"
 ---
 # <a name="azure-security-baseline-for-automation"></a>自動化的 Azure 安全性基準
 
 適用于自動化的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
@@ -402,7 +402,7 @@ ms.locfileid: "96182745"
 
 **指導** 方針：使用 paw 搭配多重要素驗證設定，以在生產環境中登入和設定 Azure 自動化帳戶資源。
 
-* [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -438,7 +438,7 @@ ms.locfileid: "96182745"
 
 **指導** 方針：使用 Azure AD 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。 如果使用混合式 Runbook 背景工作角色，您可以利用受控識別（而非執行身分帳戶）來啟用更順暢的安全許可權。
 
-* [如何建立和設定 Azure AD 執行個體](../active-directory-domain-services/tutorial-create-instance.md)
+* [如何建立及設定 Azure AD 執行個體](../active-directory-domain-services/tutorial-create-instance.md)
 
 * [使用具有受控識別的 runbook 驗證](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
@@ -556,7 +556,7 @@ ms.locfileid: "96182745"
 
 * [瞭解 Azure 中的傳輸加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Azure 自動化 TLS 1.2 強制](https://azure.microsoft.com/updates/azure-automation-tls12-enforcement/)
+* [Azure 自動化 TLS 1.2 強制](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1280,7 +1280,7 @@ ms.locfileid: "96182745"
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft 的 Engagement 規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行方法。
+**指導** 方針：遵循 Microsoft 的 Engagement 規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。
 
 * [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e9712466734c0e42fd2bea05c5110cbff6924b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 308d30118349e020d3b407243f106d9ad8368118
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964791"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198980"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>大型執行個體的其他網路需求
 
@@ -31,7 +31,7 @@ ms.locfileid: "94964791"
 
 請將新的 IP 位址範圍新增到虛擬網路位址空間中作為新的範圍，而不要產生新的彙總範圍。 請這項變更提交給 Microsoft。 這可讓您在用戶端中從這個新的 IP 位址範圍連線到 HANA 大型執行個體單位。 您可以建立 Azure 支援要求，以新增虛擬網路位址空間。 收到確認之後，請執行後續步驟。
 
-若要從 Azure 入口網站建立額外的子網路，請參閱[使用 Azure 入口網站建立虛擬網路](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)。 若要從 PowerShell 建立子網路，請參閱[使用 PowerShell 建立虛擬網路](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)。
+若要從 Azure 入口網站建立額外的子網路，請參閱[使用 Azure 入口網站建立虛擬網路](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 若要從 PowerShell 建立子網路，請參閱[使用 PowerShell 建立虛擬網路](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network)。
 
 ## <a name="add-virtual-networks"></a>新增虛擬網路
 
@@ -51,11 +51,11 @@ ms.locfileid: "94964791"
 
 若要移除虛擬網路子網路，您可以使用 Azure 入口網站、PowerShell 或 Azure CLI。 如果您的 Azure 虛擬網路 IP 位址範圍或位址空間是一個彙總的範圍，Microsoft 就無須為您提供後續的協助。 但 (請注意，虛擬網路仍在傳播包含已刪除之子網的 BGP 路由位址空間。 ) 您可能已將 Azure 虛擬網路位址範圍或位址空間定義為多個 IP 位址範圍，其中一個是指派給已刪除子網的 IP 位址範圍。 請務必先從您的虛擬網路位址空間中刪除該範圍。 接著，請通知「SAP HANA on Microsoft 服務管理」，以將其從可與 SAP HANA on Azure (大型執行個體) 通訊的範圍中移除。
 
-如需詳細資訊，請參閱[刪除子網路](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet)。
+如需詳細資訊，請參閱[刪除子網路](../../../virtual-network/virtual-network-manage-subnet.md#delete-a-subnet)。
 
 ## <a name="delete-a-virtual-network"></a>刪除虛擬網路
 
-如需相關資訊，請參閱[刪除虛擬網路](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network)。
+如需相關資訊，請參閱[刪除虛擬網路](../../../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
 「SAP HANA on Microsoft 服務管理」會移除 SAP HANA on Azure (大型執行個體) ExpressRoute 線路的現有授權。 此外也會移除用來與 HANA 大型執行個體通訊的 Azure 虛擬網路 IP 位址範圍或位址空間。
 

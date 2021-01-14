@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: e3a48fa9f84a047a08e73bbaa239563dca541541
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 71e0f2e87fc71deef0bdc4dd48425cdc9dd99dc8
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978360"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200765"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>使用 Azure CLI 部署現成的 Vm
 
@@ -85,4 +85,4 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 使用 [Azure 零售價格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) 查詢目前的定價資訊，以取得有關找出定價的資訊。 `meterName`和 `skuName` 都會包含 `Spot` 。
 
-如果您遇到錯誤，請參閱 [錯誤碼](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如果您遇到錯誤，請參閱 [錯誤碼](../error-codes-spot.md)。

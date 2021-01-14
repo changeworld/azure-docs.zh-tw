@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d06dc03a016f057a9a3407a82a114f8df6757599
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89047287"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200680"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中建立一般化 VM 的受控映像
 
@@ -33,7 +33,7 @@ Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用
 >
 >Sysprep 要求磁片磁碟機必須完整解密。 如果您已在 VM 上啟用加密，請在執行 Sysprep 之前先停用加密。
 >
-> 如果您打算在第一次將虛擬硬碟 (VHD) 上傳到 Azure 之前，先執行 Sysprep，請確定您已[準備好 VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。  
+> 如果您打算在第一次將虛擬硬碟 (VHD) 上傳到 Azure 之前，先執行 Sysprep，請確定您已[準備好 VM](prepare-for-upload-vhd-image.md)。  
 > 
 > 
 
@@ -250,4 +250,4 @@ Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用
 
     
 ## <a name="next-steps"></a>後續步驟
-- [從受控映像建立 VM](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。    
+- [從受控映像建立 VM](create-vm-generalized-managed.md)。 

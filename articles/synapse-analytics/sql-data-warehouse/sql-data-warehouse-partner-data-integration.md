@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 779add921b82f4cd39e86864c600f056489e904e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 855f7b36c99bf7563c694529a43054da350561b7
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368593"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200850"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics 資料整合合作夥伴
 
@@ -29,7 +29,7 @@ ms.locfileid: "94368593"
 | ![從頭 算](./media/sql-data-warehouse-partner-data-integration/abinitio-logo.png) |**從頭 算**<br> Ab Initio 的 agile 數位工程平臺可協助您解決企業運算中最棘手的資料處理和資料管理問題。 Ab Initio 的雲端原生平臺可讓您無論在 Azure 或內部部署，都能存取及使用公司生態系統中任何地方的資料，包括儲存在舊版系統上的資料。 具有強大自動化、資料品質、資料控管和使用中中繼資料功能的直覺化介面組合可提供快速開發和真正的資料自助服務，讓分析師能快速且有效地完成工作。 使用 Ab Initio 來加入全球最大的企業，將大量資料轉換成有意義的資料。 |[產品頁面](https://www.abinitio.com/) \(英文\) |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma 是一種擷取、轉換和載入 (ETL) 解決方案，可讓資料小組即時將資料從各種資料定址接收器整合、擴充及串流至 Azure Synapse 資料倉儲。 |[產品頁面](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer 提供可重複用來進行自助式資料分析的工作流程，以小時為單位進行更深入的見解，而不是傳統處理方式通常使用的以週為單位！ Alteryx Designer 藉由使用相同的直覺式使用者介面來結合資料準備、資料混合及分析 (預測、統計和空間)，來協助資料分析人員。 |[產品頁面](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
-| ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>Attunity CloudBeam 提供自動化的解決方案將資料載入到 Azure Synapse 資料倉儲。 可簡化許多來源 (SQL Server、Oracle、DB2、Sybase、MySQL 等等) 資料的批次載入和增量複寫。 |[產品頁面](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/attunity_cloudbeam.cloudbeam-dw-byol) <br> |
+| ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>Attunity CloudBeam 提供自動化的解決方案將資料載入到 Azure Synapse 資料倉儲。 可簡化許多來源 (SQL Server、Oracle、DB2、Sybase、MySQL 等等) 資料的批次載入和增量複寫。 |[產品頁面](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Marketplace](https://aws.amazon.com/marketplace/pp/Attunity-Attunity-CloudBeam/B00B5PB8IM) <br> |
 | ![CData](./media/sql-data-warehouse-partner-data-integration/cdata-logo.png) |**CData 同步-雲端資料管線**<br>幾分鐘內就能為 Microsoft Azure Synapse 建立高效能資料管線。 CData Sync 是容易使用、可移出的 ETL/ELT 管線，可將來自超過200個以上企業資料來源的資料流程簡化為 Azure Synapse。  使用 CData 同步時，使用者可以輕鬆地在會計、CRM、ERP、行銷自動化、內部部署和雲端資料之間建立自動化的連續資料複寫。|[產品頁面](https://www.cdata.com/sync/to/azuresynapse/?utm_source=azuresynapse&utm_medium=partner)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/cdatasoftware.cdatasync?tab=Overview)<br>|
 | ![Denodo](./media/sql-data-warehouse-partner-data-integration/denodo_logo.png) |**Denodo**<br>Denodo 可讓您即時存取整個組織各種資料來源的資料。 使用資料虛擬化在許多來源之間橋接資料，而不需要複寫。 Denodo 可讓您廣泛存取企業、大型資料和雲端來源中的結構化和非結構化資料，同時也會以批次和即時的方式提供。|[產品頁面](https://www.denodo.com/en) \(英文\)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/denodo.denodo-platform-7_0)<br> |
 | ![Dimodelo](./media/sql-data-warehouse-partner-data-integration/dimodelo-logo.png) |**Dimodelo**<br>Dimodelo 資料倉儲 Studio 是適用于 Azure 資料平臺的資料倉儲自動化工具。 Dimodelo 透過專屬的資料倉儲模型和 ETL 設計工具、以模式為基礎的最佳作法程式碼產生、單鍵部署和 ETL 協調流程，提升開發人員生產力。 Dimodelo 利用變更傳播增強了可維護性，可讓開發人員專注于業務成果，並在資料平臺之間自動化可攜性。|[產品頁面](https://www.dimodelo.com/data-warehouse-studio-for-azure-synapse/) \(英文\)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/dimodelosolutions.dimodeloazurevs)<br> |

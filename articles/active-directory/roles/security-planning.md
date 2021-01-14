@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c981bde4e0699c4da33ada7e287b16e54b899a58
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861981"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198912"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>在 Azure AD 中保護混合式部署和雲端部署的特殊權限存取
 
@@ -255,7 +255,7 @@ Azure AD Identity Protection 是以演算法為基礎的監視和報告工具，
 * 模擬攻擊
 * 認證竊取攻擊，例如記錄按鍵輸入、雜湊傳遞和票證傳遞
 
-您可以部署特殊權限存取工作站，以降低管理員在未經強化的桌面環境輸入認證時的風險。 如需詳細資訊，請參閱[特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)。
+您可以部署特殊權限存取工作站，以降低管理員在未經強化的桌面環境輸入認證時的風險。 如需詳細資訊，請參閱[特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)。
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>檢閱美國國家標準技術局的事件處理建議
 

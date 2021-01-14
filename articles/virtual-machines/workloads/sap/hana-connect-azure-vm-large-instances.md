@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8f69f94c53227dc86fbbf9e9936a2fc3c97ec55
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: af248b4ee3ccd079d41317fdb1db3de82ad0f835
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967868"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199031"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>將 Azure VM 連接到 HANA 大型執行個體
 
@@ -41,7 +41,7 @@ ms.locfileid: "94967868"
 >[!Note]
 >您必須使用 Azure Resource Manager 部署模型為 HANA 大型執行個體建立 Azure 虛擬網路。 HANA 大型執行個體解決方案不支援舊版的 Azure 部署模型 (通常稱為傳統部署模型)。
 
-您可以使用 Azure 入口網站、PowerShell、Azure 範本或 Azure CLI 來建立虛擬網路。  (需詳細資訊，請參閱 [使用 Azure 入口網站) 建立虛擬網路](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network) 。 在下列範例中，我們將觀察使用 Azure 入口網站建立的虛擬網路。
+您可以使用 Azure 入口網站、PowerShell、Azure 範本或 Azure CLI 來建立虛擬網路。  (需詳細資訊，請參閱 [使用 Azure 入口網站) 建立虛擬網路](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network) 。 在下列範例中，我們將觀察使用 Azure 入口網站建立的虛擬網路。
 
 參考本檔中的 **位址空間** 時，是指允許 Azure 虛擬網路使用的位址空間。 此位址空間也是虛擬網路用來傳播 BGP 路由的位址範圍。 此 **位址空間** 可在這裡看到：
 

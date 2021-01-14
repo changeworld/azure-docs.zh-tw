@@ -10,18 +10,18 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2dccfebed26c8064db697413e7417ae08d69a3ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 38d9727cadd925b944809956eaee51103499a2df
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022027"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200901"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在執行 Windows 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式 
 
 若要利用 NVIDIA GPU 所支援 Azure N 系列 VM 的 GPU 功能，則必須安裝 NVIDIA GPU 驅動程式。 [NVIDIA GPU 驅動程式擴充功能](../extensions/hpccompute-gpu-windows.md)會在 N 系列 VM 上安裝適當的 NVIDIA CUDA 或 GRID 驅動程式。 使用 Azure 入口網站或者 Azure PowerShell 或 Azure Resource Manager 範本之類的工具，安裝或管理擴充功能。 如需支援的作業系統和部署步驟，請參閱 [NVIDIA GPU 驅動程式擴充功能文件](../extensions/hpccompute-gpu-windows.md)。
 
-如果您選擇手動安裝 NVIDIA GPU 驅動程式，本文提供支援的作業系統、驅動程式，以及安裝和驗證步驟。 驅動程式手動設定資訊也適用於 [Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如果您選擇手動安裝 NVIDIA GPU 驅動程式，本文提供支援的作業系統、驅動程式，以及安裝和驗證步驟。 驅動程式手動設定資訊也適用於 [Linux VM](../linux/n-series-driver-setup.md)。
 
 如需基本規格、儲存體容量與磁碟的詳細資料，請參閱 [GPU Windows VM 大小](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json)。 
 

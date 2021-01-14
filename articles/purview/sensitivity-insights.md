@@ -1,18 +1,18 @@
 ---
-title: Azure Blob 儲存體中的資料上報告的敏感度標籤
-description: 本操作指南說明如何在 Azure Blob 儲存體中，針對您的資料，查看和使用範疇敏感度標籤報告。
+title: 使用範疇 Insights 在 Azure 範疇中報告資料的敏感度標籤
+description: 本操作指南說明如何在您的資料上查看和使用範疇敏感度標籤報告。
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746177"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199371"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure 範疇中資料的敏感度標籤深入解析
 
@@ -27,6 +27,11 @@ ms.locfileid: "96746177"
 > - 查看您資料上的敏感度標籤見解
 > - 向下切入以取得更多關於您資料的敏感度標籤詳細資料
 
+> [!NOTE]
+> 在範疇掃描的 [Power BI 資產](register-scan-power-bi-tenant.md) 上找到的敏感度標籤，目前不會顯示在敏感度標籤見解報告中。 
+>
+> 若要查看 Power BI 資產上的敏感度標籤，請參閱 [範疇資料目錄](how-to-search-catalog.md)中的資產。
+> 
 ## <a name="prerequisites"></a>先決條件
 
 開始使用範疇 insights 之前，請確定您已完成下列步驟：
@@ -37,6 +42,8 @@ ms.locfileid: "96746177"
 
 - 針對每個資料來源中的測試資料設定和完成掃描
 
+- 使用具有 [資料讀取器或資料編者角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帳戶登入範疇。
+
 如需詳細資訊，請參閱 [管理 Azure 範疇中的資料來源 (預覽版) ](manage-data-sources.md) 並 [自動在 azure 範疇中為您的資料加上標籤](create-sensitivity-label.md)。
 
 ## <a name="use-purview-sensitivity-labeling-insights"></a>使用範疇敏感度標籤見解
@@ -45,9 +52,11 @@ ms.locfileid: "96746177"
 
 敏感度標籤可讓您陳述組織中特定資料的敏感程度。 例如，特定的專案名稱在您的組織內可能會有高度機密，但該相同的詞彙不是其他組織的機密。 
 
-雖然分類會直接符合 (社會安全號碼具有) 的 **社會安全號碼** 分類，但在一或多個分類和案例一起找到時，會套用敏感度標籤。 
+分類會直接比對，例如社會安全號碼，其具有身分證 **號碼** 的分類。 
 
-範疇會使用相同的分類，也稱為敏感性資訊類型，Microsoft 365。 這可讓您在 Azure 範疇資產之間擴充現有的敏感度標籤。
+相反地，當同時找到一或多個分類和條件時，便會套用敏感度標籤。 在此內容中， [條件](/microsoft-365/compliance/apply-sensitivity-label-automatically) 會參考您可以為非結構化資料定義的所有參數，例如與 **另一個分類的相近度**，以及 **% 信賴度**。 
+
+範疇會使用相同的分類，也稱為 [敏感性資訊類型](/microsoft-365/compliance/sensitive-information-type-entity-definitions)，Microsoft 365。 這可讓您在 Azure 範疇資產之間擴充現有的敏感度標籤。
 
 > [!NOTE]
 > 掃描來源類型之後，請在幾小時內提供 **敏感度標籤** 見解，以反映新的資產。

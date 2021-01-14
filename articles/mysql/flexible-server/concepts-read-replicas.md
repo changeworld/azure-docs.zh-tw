@@ -5,13 +5,13 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 3fe63deb8115c0043023301c6d0dc3731e97743f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/14/2021
+ms.openlocfilehash: ccae7b3f201e55af0e9e6b4ca9e7fd4ffb9c4897
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492620"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200969"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>在適用於 MySQL 的 Azure 資料庫彈性的伺服器中讀取複本
 
@@ -31,7 +31,7 @@ MySQL 是一種熱門的資料庫引擎，可執行網際網路規模的 Web 和
 > [!NOTE]
 > 無偏差通訊
 >
-> Microsoft 支援多元和包容性的環境。 本文包含 _slave_ 單字的參考。 Microsoft [無偏差通訊的樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這個單字辨識為排他性的單字。 本文中會使用這個單字來保持一致性，因為這個單字是目前出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新以保持一致。
+> Microsoft 支援多元和包容性的環境。 本文包含「 _主要_ 」和「 _從屬_」這些單字的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這些視為排他性行為單字。 本文中使用的單字是為了保持一致性，因為它們目前是出現在軟體中的單字。 當軟體更新為移除這些字組時，將會更新本文以進行調整。
 >
 
 ## <a name="common-use-cases-for-read-replica"></a>讀取複本的常見使用案例
@@ -40,7 +40,7 @@ MySQL 是一種熱門的資料庫引擎，可執行網際網路規模的 Web 和
 
 常見案例包括：
 
-* 使用輕量連線 proxy （例如 [ProxySQL](https://aka.ms/ProxySQLLoadBalanceReplica) 或使用以微服務為基礎的模式）來調整來自應用程式的讀取工作負載，以向外延展從應用程式到讀取複本的讀取查詢
+* 使用輕量連線 proxy （例如 [ProxySQL](https://aka.ms/ProxySQLLoadBalanceReplica) ）或使用以微服務為基礎的模式，來調整來自應用程式的讀取工作負載，以向外延展從應用程式到讀取複本的讀取查詢
 * BI 或分析報告工作負載可以使用讀取複本作為報告的資料來源
 * 適用于將遙測資訊內嵌至 MySQL 資料庫引擎的 IoT 或製造案例，而多個讀取複本用於報告資料
 
@@ -93,24 +93,24 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin -p
 
 ## <a name="failover"></a>容錯移轉
 
-來源與複本伺服器之間沒有自動容錯移轉。 
+來源與複本伺服器之間沒有自動容錯移轉。
 
 讀取複本適用于擴充大量讀取的工作負載，而且不是為了符合伺服器的高可用性需求而設計。 來源與複本伺服器之間沒有自動容錯移轉。 停止讀取複本上的複寫，以讀取寫入模式讓它上線，是執行這項手動容錯移轉的方式。
 
-由於複寫是非同步，因此來源與複本之間會有延遲。 延遲量可能會受到一些因素的影響，例如，在來源伺服器上執行的工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
+由於複寫是非同步，因此來源與複本之間會有延遲。 延隔量可能會受到許多因素影響，例如，在來源伺服器上執行工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
 
 > [!Tip]
 > 如果您容錯移轉至複本，從來源取消複本時的延遲將會指出遺失的資料量。
 
-一旦您決定要容錯移轉至複本， 
+確定您想要容錯移轉至複本之後：
 
 1. 停止複寫至複本<br/>
-   您必須執行此步驟，讓複本伺服器能夠接受寫入。 作為此程式的一部分，複本伺服器將會從來源 delinked。 當您起始停止複寫後，後端進程通常需要大約2分鐘才能完成。 請參閱本文的「 [停止](#stop-replication) 複寫」一節，以瞭解此動作的含意。
-    
+   您必須執行此步驟，讓複本伺服器能夠接受寫入。 作為此程式的一部分，複本伺服器將會從來源 delinked。 在您起始停止複寫後，後端進程通常需要大約2分鐘才能完成。 請參閱本文的「 [停止](#stop-replication) 複寫」一節，以瞭解此動作的含意。
+
 2. 將您的應用程式指向 (之前的) 複本<br/>
    每一部伺服器都有唯一的連接字串。 更新您的應用程式，使其指向 (之前的) 複本，而不是來源。
-    
-一旦您的應用程式成功處理讀取和寫入，您就已完成容錯移轉。 當您偵測到問題並完成上述步驟1和2時，您的應用程式所經歷的停機時間將會取決於您的情況。
+
+在您的應用程式成功處理讀取和寫入之後，您已完成容錯移轉。 當您偵測到問題並完成上述步驟1和2時，您的應用程式所經歷的停機時間將會取決於您的情況。
 
 ## <a name="considerations-and-limitations"></a>考量與限制
 
@@ -130,5 +130,5 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin -p
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何[使用 Azure 入口網站來建立及管理讀取複本](how-to-read-replicas-portal.md)
-- 了解如何[使用 Azure CLI 來建立及管理讀取複本](how-to-read-replicas-cli.md)
+* 了解如何[使用 Azure 入口網站來建立及管理讀取複本](how-to-read-replicas-portal.md)
+* 了解如何[使用 Azure CLI 來建立及管理讀取複本](how-to-read-replicas-cli.md)

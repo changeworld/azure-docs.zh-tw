@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/16/2017
 ms.author: cynthn
-ms.openlocfilehash: 38f231e63ad4974a23a1201aad4d290685860b50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d68ac7aa9927e62011c58b17139d7232ce4a10c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292164"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200748"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>在 Azure 上建立虛擬網路介面卡並使用內部 DNS 進行 VM 名稱解析
 
@@ -22,7 +22,7 @@ ms.locfileid: "87292164"
 這些需求包括：
 
 * [Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)
-* [SSH 公開金鑰和私密金鑰檔案](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [SSH 公開金鑰和私密金鑰檔案](mac-create-ssh-keys.md)
 
 ## <a name="quick-commands"></a>快速命令
 如果您需要快速完成工作，接下來這一節將詳細說明所需的命令。 每個步驟的詳細資訊和內容可在文件其他地方找到，從[這裡](#detailed-walkthrough)開始。 若要執行這些步驟，您需要安裝最新的 [Azure CLI](/cli/azure/install-az-cli2)，並且使用 [az login](/cli/azure/reference-index) 來登入 Azure 帳戶。
@@ -71,7 +71,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-the-virtual-network"></a>建立虛擬網路
 
-下一步是建置要在其中啟動 VM 的虛擬網路。 在本逐步解說中，此虛擬網路包含一個子網路。 如需 Azure 虛擬網路的詳細資訊，請參閱[建立虛擬網路](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)。 
+下一步是建置要在其中啟動 VM 的虛擬網路。 在本逐步解說中，此虛擬網路包含一個子網路。 如需 Azure 虛擬網路的詳細資訊，請參閱[建立虛擬網路](../../virtual-network/manage-virtual-network.md#create-a-virtual-network)。 
 
 使用 [az network vnet create](/cli/azure/network/vnet) 建立虛擬網路。 下列範例會建立名為 `myVnet` 的虛擬網路和名為 `mySubnet` 的子網路：
 
@@ -85,7 +85,7 @@ az network vnet create \
 ```
 
 ## <a name="create-the-network-security-group"></a>建立網路安全性群組
-「Azure 網路安全性群組」相當於網路層的防火牆。 如需有關「網路安全性群組」的詳細資訊，請參閱[如何在 Azure CLI 中建立 NSG](../../virtual-network/tutorial-filter-network-traffic-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
+「Azure 網路安全性群組」相當於網路層的防火牆。 如需有關「網路安全性群組」的詳細資訊，請參閱[如何在 Azure CLI 中建立 NSG](../../virtual-network/tutorial-filter-network-traffic-cli.md)。 
 
 使用 [az network nsg create](/cli/azure/network/nsg) 建立網路安全性群組。 下列範例會建立名為 `myNetworkSecurityGroup` 的網路安全性群組：
 
@@ -156,6 +156,6 @@ az vm create \
 
 我們使用 CLI 旗標來呼叫現有的資源，以指示 Azure 將 VM 部署在現有的網路內。 重申一次，VNet 和子網路部署之後，就可以在 Azure 區域內保持為靜態或永久性資源。  
 
-## <a name="next-steps"></a>接下來的步驟
-* [直接使用 Azure CLI 命令，建立自訂的 Linux VM 環境](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用範本在 Azure 上建立 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+## <a name="next-steps"></a>後續步驟
+* [直接使用 Azure CLI 命令，建立自訂的 Linux VM 環境](create-cli-complete.md)
+* [使用範本在 Azure 上建立 Linux VM](create-ssh-secured-vm-from-template.md)

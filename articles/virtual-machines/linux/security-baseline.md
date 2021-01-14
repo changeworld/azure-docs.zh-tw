@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d8893daaf73a15cdc0baf8eeb339e794f6f1da64
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: f0ae4ac4cf50eb6e54d41ff25e1cc671e76819ee
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913442"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200799"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>適用于 Linux 虛擬機器的 Azure 安全性基準
 
@@ -398,7 +398,7 @@ ms.locfileid: "97913442"
 
 **指引**：使用已設定 MFA 的特殊權限存取 PAW (特殊權限存取工作站) 登入和設定 Azure 資源。
 
-* [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中啟用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -602,7 +602,7 @@ Microsoft 在雲端服務與客戶之間移動時，會使用傳輸層安全性 
 
 * [如何建立 Azure 活動記錄事件的警示](../../azure-monitor/platform/alerts-activity-log.md)
 
-* [Azure 儲存體分析記錄](../../storage/common/storage-analytics-logging.md)
+* [Azure 儲存體分析記錄](../../storage/common/storage-analytics-logging.md) (部分機器翻譯)
 
 **Azure 資訊安全中心監視**：無法使用
 

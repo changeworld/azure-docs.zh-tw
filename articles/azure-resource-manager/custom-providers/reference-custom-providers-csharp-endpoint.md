@@ -5,13 +5,13 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.author: jobreen
 author: jjbfour
-ms.date: 06/20/2019
-ms.openlocfilehash: ce329e7cd8db73e217162fa0bc1bb433d57e9971
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/14/2021
+ms.openlocfilehash: 3b951cd0878bda4a3f65f9208f6997419a10d537
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935631"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200255"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>自訂提供者 c # RESTful 端點參考
 
@@ -24,7 +24,7 @@ ms.locfileid: "88935631"
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.WindowsAzure.Storage"
-#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent.dll"
+#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent"
 
 using System;
 using System.Net;
@@ -254,7 +254,7 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 }
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 自訂資源提供者總覽](overview.md)
 - [教學課程：建立 Azure 自訂資源提供者和部署自訂資源](./create-custom-provider.md)
