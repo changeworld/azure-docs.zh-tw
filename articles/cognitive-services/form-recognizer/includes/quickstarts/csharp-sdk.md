@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 4b44a8375bc13709959e2401f9d772fdeab00f52
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 9befe33f70341f218c3339a13dcc1d31dc452d34
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808601"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132264"
 ---
 > [!IMPORTANT]
 > 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。
@@ -113,8 +113,8 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 `FormRecognizerClient` 會提供用於下列目的的作業：
 
  - 使用已定型的自訂模型辨識表單欄位和內容，以辨識自訂表單。  這些值會在 `RecognizedForm` 物件的集合中傳回。 請參閱[分析自訂表單](#analyze-forms-with-a-custom-model)範例。
- - 辨識表單內容，包括資料表、線條和字組，而不需要將模型定型。  表單內容會在 `FormPage` 物件的集合中傳回。 請參閱[辨識表單內容](#recognize-form-content)範例。
- - 使用表單辨識器服務上已預先定型的收據模型，辨識美國收據的常見欄位。 這些欄位和中繼資料會在 `RecognizedForm` 物件的集合中傳回。 請參閱[辨識收據](#recognize-receipts)範例。
+ - 辨識表單內容，包括資料表、線條和字組，而不需要將模型定型。  表單內容會在 `FormPage` 物件的集合中傳回。 請參閱 [分析版面配置](#analyze-layout) 範例。
+ - 使用表單辨識器服務上已預先定型的收據模型，辨識美國收據的常見欄位。 這些欄位和中繼資料會在 `RecognizedForm` 物件的集合中傳回。 請參閱 [分析收據](#analyze-receipts) 範例。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -137,8 +137,8 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 #### <a name="version-20"></a>[2.0 版](#tab/ga)
 
 * [驗證用戶端](#authenticate-the-client)
-* [辨識表單內容](#recognize-form-content)
-* [辨識收據](#recognize-receipts)
+* [分析版面配置](#analyze-layout)
+* [分析收據](#analyze-receipts)
 * [訓練自訂模型](#train-a-custom-model)
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
@@ -146,10 +146,10 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 #### <a name="version-21-preview"></a>[2.1 版 (預覽)](#tab/preview)
 
 * [驗證用戶端](#authenticate-the-client)
-* [辨識表單內容](#recognize-form-content)
-* [辨識收據](#recognize-receipts)
-* [辨識名片](#recognize-business-cards)
-* [辨識發票](#recognize-invoices)
+* [分析版面配置](#analyze-layout)
+* [分析收據](#analyze-receipts)
+* [分析名片](#analyze-business-cards)
+* [分析發票](#analyze-invoices)
 * [訓練自訂模型](#train-a-custom-model)
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
@@ -189,7 +189,7 @@ dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ---
 
 
-## <a name="recognize-form-content"></a>辨識表單內容
+## <a name="analyze-layout"></a>分析版面配置
 
 您可以使用表單辨識器來辨識文件中的資料表、行和字組，而不需要訓練模型。 傳回的值會是 **FormPage** 物件的集合：提交的文件每頁各一個。 
 
@@ -239,7 +239,7 @@ Table 0 has 2 rows and 6 columns.
     Cell (1, 5) contains text: 'PT'.
 ```
 
-## <a name="recognize-receipts"></a>辨識收據
+## <a name="analyze-receipts"></a>分析收據
 
 本節示範如何使用預先訓練的收據模型，辨識並擷取美國收據中的常見欄位。
 
@@ -298,7 +298,7 @@ Item:
 Total: '1203.39', with confidence '0.774'
 ```
 
-## <a name="recognize-business-cards"></a>辨識名片
+## <a name="analyze-business-cards"></a>分析名片
 
 #### <a name="version-20"></a>[2.0 版](#tab/ga)
 
@@ -323,7 +323,7 @@ Total: '1203.39', with confidence '0.774'
 
 ---
 
-## <a name="recognize-invoices"></a>辨識發票
+## <a name="analyze-invoices"></a>分析發票
 
 #### <a name="version-20"></a>[2.0 版](#tab/ga)
 

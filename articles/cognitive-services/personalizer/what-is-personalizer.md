@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: 個人化工具, Azure 個人化工具, 機器學習
-ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33c1770c5c8722a55d8f1df4aff9b1637d903977
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094143"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028772"
 ---
 # <a name="what-is-personalizer"></a>什麼是個人化工具？
 
-Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最佳內容項目來向您的使用者顯示。 您可使用個人化工具服務來判斷要向購物者推薦哪些產品，或找出廣告的最佳位置。 將內容顯示給使用者之後，系統會監視即時使用者行為，並向個人化工具服務回報獎勵分數。 這可確保機器學習模型的持續改進，以及個人化工具能夠根據所收到的內容資訊來選取最佳內容項目。
+Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最佳內容項目來向您的使用者顯示。 您可使用個人化工具服務來判斷要向購物者推薦哪些產品，或找出廣告的最佳位置。 將內容顯示給使用者之後，您的應用程式會監視使用者反應，並向個人化工具服務回報獎勵分數。 這可確保機器學習模型的持續改進，以及個人化工具能夠根據所收到的內容資訊來選取最佳內容項目。
 
 > [!TIP]
 > 內容是您想要從中選取並向使用者顯示的任何資訊單位，例如文字、影像、URL、電子郵件或任何其他資訊。
@@ -65,7 +65,7 @@ Azure 個人化工具是雲端式服務，可協助您的應用程式選擇最�
 
 當您的內容如下時，請使用個人化工具：
 
-* 具有一組有限的項目 (最多 ~50) 可供選取。 如果您有較大的清單，[請使用建議引擎](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution)將清單縮減為 50 個項目。
+* 在每個個人化事件中只能選取一組動作或項目 (最多 50 個)。 如果您有較大的清單，則每次在個人化服務上呼叫排名時，[請使用建議引擎](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution)將清單縮減為 50 個項目。
 * 具有資訊來描述您要排名的內容：「具有特性的動作」和「關係特性」。
 * 每天至少有 1 千個內容相關事件，個人化工具才有效用。 如果個人化工具未收到所需的最小流量，則服務會花更長的時間來判斷單一最佳內容項目。
 

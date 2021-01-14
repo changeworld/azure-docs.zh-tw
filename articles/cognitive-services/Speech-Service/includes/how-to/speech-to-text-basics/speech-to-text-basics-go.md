@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: f87db54b43f0ece49b940521bea34737da676a31
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7603a5aa138e719d7ffe3db7a4c4484466efc1e3
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96912375"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147497"
 ---
 語音服務的核心功能之一，就是能夠辨識並轉譯人類語音 (通常稱為語音轉文字)。 在本快速入門中，您將了解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音轉換文字辨識。
 
@@ -99,6 +99,20 @@ func main() {
 }
 ```
 
+執行下列命令來建立 go.mod 檔案，該檔案連結至 Github 上裝載的元件。
+
+```cmd
+go mod init quickstart
+go get github.com/Microsoft/cognitive-services-speech-sdk-go
+```
+
+現在建置並執行程式碼。
+
+```cmd
+go build
+go run quickstart
+```
+
 如需 [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) 和 [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) 類別的詳細資訊，請參閱參考文件。
 
 ## <a name="speech-to-text-from-audio-file"></a>從音訊檔案進行語音轉換文字
@@ -163,6 +177,20 @@ func main() {
     fmt.Println("Got a recognition!")
     fmt.Println(outcome.Result.Text)
 }
+```
+
+執行下列命令來建立 go.mod 檔案，該檔案連結至 Github 上裝載的元件。
+
+```cmd
+go mod init quickstart
+go get github.com/Microsoft/cognitive-services-speech-sdk-go
+```
+
+現在建置並執行程式碼。
+
+```cmd
+go build
+go run quickstart
 ```
 
 如需 [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) 和 [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) 類別的詳細資訊，請參閱參考文件。

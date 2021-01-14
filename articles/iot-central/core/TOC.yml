@@ -85,8 +85,14 @@
       items:
         - name: 設定裝置範本
           href: howto-set-up-template.md
+        - name: 如何將裝置移至 IoT
+          href: how-to-move-device-to-iot.md
         - name: 如何使用屬性
           href: howto-use-properties.md
+        - name: 如何使用命令
+          href: howto-use-commands.md
+        - name: 如何使用位置資料
+          href: howto-use-location-data.md
         - name: 準備和連線 Azure Sphere DevKit
           href: howto-connect-sphere.md
         - name: 準備及連線 RuuviTag 裝置

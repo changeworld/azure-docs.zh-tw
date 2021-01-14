@@ -129,7 +129,7 @@
           href: app/data-retention-privacy.md
     - name: 警示
       items:
-        - name: 概觀
+        - name: 總覽
           href: platform/alerts-overview.md
         - name: 度量警示
           href: platform/alerts-metric-overview.md
@@ -226,8 +226,6 @@
               href: platform/service-providers.md
             - name: 專用叢集
               href: log-query/logs-dedicated-clusters.md
-            - name: 針對記錄進行疑難排解
-              href: platform/azure-monitor-troubleshooting-logs.md
         - name: Log Analytics
           items:
             - name: 概觀
@@ -368,7 +366,7 @@
               href: platform/data-collection-rule-azure-monitor-agent.md
         - name: Log Analytics 代理程式
           items:
-            - name: 概觀
+            - name: 總覽
               href: platform/log-analytics-agent.md
             - name: Windows 代理程式
               href: platform/agent-windows.md
@@ -422,7 +420,7 @@
             - name: Linux
               displayname: diagnostics extension
               items:
-                - name: 概觀
+                - name: 總覽
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: 使用 Telegraf 收集計量
                   href: platform/collect-custom-metrics-linux-telegraf.md
@@ -677,7 +675,7 @@
               href: app/remove-application-insights.md
         - name: 無程式碼監視
           items:
-            - name: 概觀
+            - name: 總覽
               href: app/codeless-overview.md
             - name: Azure 虛擬機器和虛擬機器擴展集
               href: app/azure-vm-vmss-apps.md
@@ -701,7 +699,11 @@
                     - name: 設定選項
                       href: app/java-standalone-config.md
                     - name: 遙測處理器
-                      href: app/java-standalone-telemetry-processors.md
+                      items:
+                        - name: 總覽
+                          href: app/java-standalone-telemetry-processors.md
+                        - name: 範例
+                          href: app/java-standalone-telemetry-processors-examples.md
                     - name: JVM 引數設定
                       href: app/java-standalone-arguments.md
                     - name: 從 2.x SDK 升級
@@ -1012,7 +1014,7 @@
           href: insights/vminsights-optout.md
     - name: 適用於容器的 Azure 監視器
       items:
-        - name: 概觀
+        - name: 總覽
           href: insights/container-insights-overview.md
         - name: 常見問題集
           href: faq.md#azure-monitor-for-containers
@@ -1107,7 +1109,7 @@
           href: insights/troubleshoot-workbooks.md
         - name: 方案
           items:
-            - name: 概觀
+            - name: 總覽
               href: insights/solutions.md
               displayName: 'Azure CLI, az monitor log-analytics'
             - name: 目標解決方案
@@ -1217,6 +1219,10 @@
               href: platform/workbooks-move-region.md
             - name: 將活頁簿範本移至另一個區域
               href: platform/workbook-templates-move-region.md
+        - name: 連結
+          items:
+            - name: 連結動作
+              href: platform/workbooks-link-actions.md
         - name: 將檢視轉換為活頁簿
           items:
             - name: 轉換概觀
@@ -1307,7 +1313,7 @@
               href: app/snapshot-collector-release-notes.md
         - name: 資料模型
           items:
-            - name: 概觀
+            - name: 總覽
               href: app/data-model.md
             - name: 要求
               href: app/data-model-request-telemetry.md

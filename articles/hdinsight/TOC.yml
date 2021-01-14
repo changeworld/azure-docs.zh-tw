@@ -3,7 +3,7 @@
 - name: HDInsight 服務
   expanded: true
   items:
-    - name: 概觀
+    - name: 總覽
       items:
         - name: 什麼是 Azure HDInsight？
           href: ./hdinsight-overview.md
@@ -355,6 +355,8 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: 遷移至 Spark 2.3 或 2.4
           href: ./spark/migrate-versions.md
+        - name: 將適用於 Apache Spark 的 .NET 更新至 1.0
+          href: ./spark/spark-dotnet-version-update.md
     - name: 操作指南
       items:
         - name: 使用工具

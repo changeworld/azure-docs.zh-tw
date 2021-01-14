@@ -6,14 +6,14 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 09b537d82ce4e9e44c36df628d120623e69abfaf
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9c0a0cb2cf6e291c42d72d6f46ff28b4d3fbf405
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424816"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109293"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前：
 
@@ -70,6 +70,13 @@ ms.locfileid: "94424816"
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=33-35)]
 
 這個範例會使用 `addIntent()` 函式來個別新增意圖。 如果要從模型新增所有意圖，請使用 `addAllIntents(model)` 並傳遞模型。
+
+> [!NOTE]
+> 語音 SDK 僅支援 LUIS v2.0 端點。
+> 您必須手動修改在範例查詢欄位中找到的 v3.0 端點 URL，以使用 v2.0 URL 模式。
+> LUIS v2.0 端點一律會遵循下列其中一種模式：
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
 ## <a name="recognize-an-intent"></a>辨識意圖
 

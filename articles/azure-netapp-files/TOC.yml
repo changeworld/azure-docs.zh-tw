@@ -37,6 +37,8 @@
       href: azure-netapp-files-cost-model.md
     - name: 適用於 Azure NetApp Files 網路方案的指導方針
       href: azure-netapp-files-network-topologies.md
+    - name: Azure NetApp Files 快照集的工作方式
+      href: snapshots-introduction.md
     - name: 手動 QoS 容量集區
       href: manual-qos-capacity-pool-introduction.md
     - name: 跨區域複寫

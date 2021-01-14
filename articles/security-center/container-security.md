@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030861"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132711"
 ---
 # <a name="container-security-in-security-center"></a>資訊安全中心的容器安全性
 
@@ -48,7 +48,7 @@ Azure 資訊安全中心是用來保護您容器的 Azure 原生解決方案。
 
 若要在 Azure Resource Manager 架構的 Azure 容器登錄中監視映像，請啟用[適用於容器登錄的 Azure Defender](defender-for-container-registries-introduction.md)。 資訊安全中心會掃描過去 30 天內提取的任何映像，以及推送至您登錄或匯入的映像。 整合式掃描程式是由領先業界的弱點掃描廠商 Qualys 所提供。
 
-當 Qualys 或資訊安全中心發現問題時，您會在 [Azure Defender 儀表板](azure-defender-dashboard.md)中收到通知。 針對每個弱點，資訊安全中心都會提供可採取動作的建議及嚴重性分類，以及如何補救問題的指引。 如需資訊安全中心的容器建議詳細資料，請參閱[建議的參考清單](recommendations-reference.md#recs-containers)。
+當 Qualys 或資訊安全中心發現問題時，您會在 [Azure Defender 儀表板](azure-defender-dashboard.md)中收到通知。 針對每個弱點，資訊安全中心都會提供可採取動作的建議及嚴重性分類，以及如何補救問題的指引。 如需資訊安全中心的容器建議詳細資料，請參閱[建議的參考清單](recommendations-reference.md#recs-compute)。
 
 資訊安全中心會篩選並分類掃描器發現的結果。 當映像狀況良好時，資訊安全中心會據以標示。 資訊安全中心只會針對有問題待解決的映像產生安全性建議。 資訊安全中心只會在發生問題時發出通知，藉以減少非必要的資訊警示。
 
@@ -60,7 +60,7 @@ Azure 資訊安全中心可識別 IaaS Linux VM 上裝載的非受控容器，�
 
 資訊安全中心包含 CIS Docker 基準測試的整個規則集，並會在您的容器無法滿足任何控制項時發出警示。 資訊安全中心會在找到錯誤的設定時，產生安全性建議。 使用資訊安全中心的 **建議頁面** 來檢視建議並補救問題。 CIS 基準測試不會在 AKS 管理的執行個體或 Databricks 管理的 VM 上執行。
 
-若要深入了解這項功能上可能會出現的相關資訊安全中心建議，請參閱建議參考資料表的[容器區段](recommendations-reference.md#recs-containers)。
+若要深入了解這項功能上可能會出現的相關資訊安全中心建議，請參閱建議參考資料表的[計算區段](recommendations-reference.md#recs-compute)。
 
 當您探索 VM 的安全性問題時，資訊安全中心會提供有關機器上容器的其他資訊。 這類資訊包括 Docker 版本，以及在主機上執行的映像數目。 
 
@@ -74,7 +74,7 @@ AKS 提供安全性控制項和叢集安全性狀態的可見度。 資訊安全
 * 持續監視 AKS 叢集的設定
 * 產生與業界標準一致的安全性建議
 
-若要深入了解這項功能上可能會出現的相關資訊安全中心建議，請參閱建議參考資料表的[容器區段](recommendations-reference.md#recs-containers)。
+若要深入了解這項功能上可能會出現的相關資訊安全中心建議，請參閱建議參考資料表的[計算區段](recommendations-reference.md#recs-compute)。
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>使用 Kubernetes 許可控制保護工作負載的最佳做法
 

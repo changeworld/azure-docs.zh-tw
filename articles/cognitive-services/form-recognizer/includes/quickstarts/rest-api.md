@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: a677623c030ff26567f14a4526f6d07bc6631a37
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 31e1a0d912c6623f57d4ea256968102604ce42ff
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97853704"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132266"
 ---
 > [!NOTE]
 > 本指南使用 cURL 執行 REST API 呼叫。 [GitHub上還有範例程式碼](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest)，說明如何使用 Python 呼叫 REST API。
@@ -32,7 +32,7 @@ ms.locfileid: "97853704"
 * 發票影像的 URL。 您可以使用本快速入門的[範例文件](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf)。
 
 
-## <a name="recognize-form-content"></a>辨識表單內容
+## <a name="analyze-layout"></a>分析版面配置
 
 您可以使用表單辨識器來辨識並擷取文件中的資料表、行和字組，而不需要訓練模型。 執行命令之前，請進行下列變更：
 
@@ -319,7 +319,7 @@ curl -v -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/layout/analyzeR
 
 ---
 
-## <a name="recognize-receipts"></a>辨識收據
+## <a name="analyze-receipts"></a>分析收據
 
 若要開始分析收據，請使用下列 cURL 命令呼叫 **[分析收據](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** API。 執行命令之前，請進行下列變更：
 
@@ -699,7 +699,7 @@ curl -X GET "https://{Endpoint}/formrecognizer/v2.1-preview.2/prebuilt/receipt/a
 }
 ```
 
-## <a name="recognize-business-cards"></a>辨識名片
+## <a name="analyze-business-cards"></a>分析名片
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)  
 
@@ -861,7 +861,7 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/formrecognizer
 
 ---
 
-## <a name="recognize-invoices"></a>辨識發票
+## <a name="analyze-invoices"></a>分析發票
 
 # <a name="version-20"></a>[版本 2.0](#tab/v2-0)
 

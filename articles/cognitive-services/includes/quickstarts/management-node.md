@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: eddee6bc0fdcd636b7b9ffb81b121052499251b2
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 97b8f889bf625ac36917debe2cc2848cb1a97e37
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97745690"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97956494"
 ---
 [參考文件](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices) | [套件 (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices) | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
@@ -74,7 +74,7 @@ npm install @azure/ms-rest-nodeauth
 
 將下列程式碼新增至您的 `quickstart` 函式結尾，以列出可用的資源、建立範例資源、列出您擁有的資源，然後刪除範例資源。 您會在稍後的步驟中定義這些函式。
 
-## <a name="create-a-cognitive-services-resource"></a>建立認知服務資源
+## <a name="create-a-cognitive-services-resource-nodejs"></a>建立認知服務資源 (Node.js)
 
 若要建立並訂閱新的認知服務資源，請使用 **Create** 函式。 這個函式會將新的可計費資源新增至您傳入的資源群組。 建立新的資源時，必須知道您要使用的服務「種類」，以及其定價層 (或 SKU) 和 Azure 位置。 下列函式會將這些項目全部當作引數，並建立資源。
 

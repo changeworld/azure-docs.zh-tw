@@ -1,6 +1,6 @@
 - name: Azure Resource Graph 文件
   href: index.yml
-- name: 總覽
+- name: 概觀
   items:
     - name: 什麼是 Azure Resource Graph？
       displayName: 'Resource Manager, query language, rbac, permissions'
@@ -38,6 +38,9 @@
     - name: 建立共用查詢 - Azure CLI
       displayName: 'extension, docker, queries'
       href: ./shared-query-azure-cli.md
+    - name: 建立共用查詢 - Azure PowerShell
+      displayName: 'powershell, queries, Az.ResourceGraph'
+      href: ./shared-query-azure-powershell.md
     - name: 部署共用查詢 - ARM 範本
       displayName: 'resource manager, queries'
       href: ./shared-query-template.md

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: fb9d74da6030c430cce4a2a3c4c5e4299183ca15
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808652"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132263"
 ---
 > [!IMPORTANT]
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 請參閱下列參考文件。 
@@ -100,8 +100,8 @@ pip install azure-ai-formrecognizer --pre
 #### <a name="version-20"></a>[2.0 版](#tab/ga)
 
 * [驗證用戶端](#authenticate-the-client)
-* [辨識表單內容](#recognize-form-content)
-* [辨識收據](#recognize-receipts)
+* [分析版面配置](#analyze-layout)
+* [分析收據](#analyze-receipts)
 * [訓練自訂模型](#train-a-custom-model)
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
@@ -109,10 +109,10 @@ pip install azure-ai-formrecognizer --pre
 #### <a name="version-21-preview"></a>[2.1 版 (預覽)](#tab/preview)
 
 * [驗證用戶端](#authenticate-the-client)
-* [辨識表單內容](#recognize-form-content)
-* [辨識收據](#recognize-receipts)
-* [辨識名片](#recognize-business-cards)
-* [辨識發票](#recognize-invoices)
+* [分析版面配置](#analyze-layout)
+* [分析收據](#analyze-receipts)
+* [分析名片](#analyze-business-cards)
+* [分析發票](#analyze-invoices)
 * [訓練自訂模型](#train-a-custom-model)
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
@@ -137,7 +137,7 @@ pip install azure-ai-formrecognizer --pre
 > [!NOTE]
 > 本指南中的程式碼片段會使用 URL 所存取的遠端表單。 如果您想要改為處理本機表單文件，請參閱[參考文件](/python/api/azure-ai-formrecognizer)和[範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)中的相關方法。
 
-## <a name="recognize-form-content"></a>辨識表單內容
+## <a name="analyze-layout"></a>分析版面配置
 
 您可以使用表單辨識器來辨識文件中的資料表、行和字組，而不需要訓練模型。
 
@@ -171,7 +171,7 @@ Confidence score: 1.0
 
 ```
 
-## <a name="recognize-receipts"></a>辨識收據
+## <a name="analyze-receipts"></a>分析收據
 
 本節示範如何使用預先訓練的收據模型，辨識並擷取美國收據中的常見欄位。 若要從 URL 辨識收據，請使用 `begin_recognize_receipts_from_url` 方法。 
 
@@ -203,7 +203,7 @@ Total: 1203.39 has confidence 0.774
 ```
 
 
-## <a name="recognize-business-cards"></a>辨識名片
+## <a name="analyze-business-cards"></a>分析名片
 
 #### <a name="version-20"></a>[2.0 版](#tab/ga)
 
@@ -221,7 +221,7 @@ Total: 1203.39 has confidence 0.774
 
 ---
 
-## <a name="recognize-invoices"></a>辨識發票
+## <a name="analyze-invoices"></a>分析發票
 
 #### <a name="version-20"></a>[2.0 版](#tab/ga)
 

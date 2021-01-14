@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自動化資料處理, 文件處理, 自動化資料輸入, 表單處理
-ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845528"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044759"
 ---
 # <a name="what-is-form-recognizer"></a>什麼是表單辨識器？
 
@@ -42,11 +42,11 @@ Azure 表單辨識器是一種認知服務，可讓您使用機器學習技術�
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [試用預建模型](https://fott.azurewebsites.net/)
+> [試用表單辨識器](https://fott.azurewebsites.net/)
 
 # <a name="v21-preview"></a>[v2.1 預覽](#tab/v2-1)
 > [!div class="nextstepaction"]
-> [試用預建模型](https://fott-preview.azurewebsites.net/)
+> [試用表單辨識器](https://fott-preview.azurewebsites.net/)
 
 ---
 
@@ -152,7 +152,18 @@ Azure 表單辨識器是一種認知服務，可讓您使用機器學習技術�
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>使用 Docker 容器在內部部署環境進行部署
 
-[使用表單辨識器容器 (預覽)](form-recognizer-container-howto.md) 在內部部署環境部署 API 功能。 此 Docker 容器可讓服務更加契合您的資料，以實現合規性、安全性或其他操作性原因。
+[使用表單辨識器容器 (預覽)](form-recognizer-container-howto.md) 在內部部署環境部署 API 功能。 此 Docker 容器可讓服務更加契合您的資料，以實現合規性、安全性或其他操作性原因。 
+
+## <a name="service-availability-and-redundancy"></a>服務可用性與備援能力
+
+### <a name="is-form-recognizer-service-zone-resilient"></a>表單辨識器服務是否具有區域復原性？
+
+是。 依預設，表單辨識器服務具有區域復原性。
+
+### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>如何將表單辨識器服務設定為具有區域復原能力？
+
+不需要客戶設定即可啟用區域復原。 依預設可以使用表單辨識器資源的區域復原功能，並由服務本身進行管理。
+
 
 ## <a name="data-privacy-and-security"></a>資料隱私權和安全性
 

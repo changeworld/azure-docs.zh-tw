@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2adca03a820d02731bca252dee99c76debc85e2e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965097"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028126"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文字分析 API 的資料和速率限制
 <a name="data-limits"></a>
@@ -35,7 +35,15 @@ ms.locfileid: "94965097"
 | 單一文件的大小上限 (`/analyze` 端點)  | 12.5 萬個字元，由 [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) 進行測量。 不適用於健康情況的文字分析。 |
 | 整體要求的大小上限 | 1 MB。 也適用於健康情況的文字分析。 |
 
-您可以在單一要求中傳送的文件數目上限取決於所使用的 API 版本和功能。 如果有任何文件超過大小上限 (12.5 萬個字元)，則 `/analyze` 端點會拒絕整個要求
+
+如果文件超過字元限制，API 的行為會根據所使用的端點而有所不同：
+
+* `/analyze` 端點：
+  * API 會拒絕整個要求，並在其中有任何文件超過大小上限時傳回 `400 bad request` 錯誤。
+* 所有其他端點：  
+  * API 不會處理超過大小上限的文件，而且會傳回無效文件的錯誤。 如果 API 要求有多份文件，則 API 會繼續處理這些文件 (如果其在字元限制內)。
+
+您可以在單一要求中傳送的文件數目上限取決於所使用的 API 版本和功能，如下表所述。
 
 #### <a name="version-3"></a>[第 3 版](#tab/version-3)
 

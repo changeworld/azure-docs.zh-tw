@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 影像辨識, 影像辨識應用程式, 自訂視覺
-ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b27864fc1fd1f94f99fccacd90a66120e6d044c4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912979"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132574"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>快速入門：使用自訂視覺網站建置物件偵測器
 
@@ -107,6 +107,10 @@ ms.locfileid: "97912979"
 ### <a name="probability-threshold"></a>機率閾值
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
+
+### <a name="overlap-threshold"></a>重疊閾值
+
+**重疊閾值** 滑杆會決定物件預測要多正確，才能在訓練中視為「正確」。 其會在預測的物件周框方塊和實際使用者輸入的周框方塊之間設定允許的最小重疊。 如果周框方塊不會與此程度重疊，預測就不會被視為正確。
 
 ## <a name="manage-training-iterations"></a>管理定型反覆項目
 

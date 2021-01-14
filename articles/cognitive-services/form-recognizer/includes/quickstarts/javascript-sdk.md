@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 45654d55ac07bc9056a41cacba6f8f5890c56580
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 6520c1e326dc95584030d3187fdaaaa7e06c498a
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808635"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132262"
 ---
 > [!IMPORTANT]
 > * 為求簡化，本文中的程式碼使用同步方法和未受保護的認證儲存體。 請參閱下列參考文件。 
@@ -102,8 +102,8 @@ npm install @azure/ai-form-recognizer
 這些程式碼片段會示範如何使用適用於 JavaScript 的表單辨識器用戶端程式庫來執行下列工作：
 
 * [驗證用戶端](#authenticate-the-client)
-* [辨識表單內容](#recognize-form-content)
-* [辨識收據](#recognize-receipts)
+* [分析版面配置](#analyze-layout)
+* [分析收據](#analyze-receipts)
 * [訓練自訂模型](#train-a-custom-model)
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
@@ -126,7 +126,7 @@ npm install @azure/ai-form-recognizer
 * 使用下列範例中所包含的範例表單和收據影像 (也可在 [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets) 上取得)，或者您也可以使用上述步驟來取得 Blob 儲存體中個別文件的 SAS URL。 
 
 
-## <a name="recognize-form-content"></a>辨識表單內容
+## <a name="analyze-layout"></a>分析版面配置
 
 您可以使用表單辨識器來辨識文件中的資料表、行和字組，而不需要訓練模型。 若要辨識位於指定 URI 的檔案內容，請使用 `beginRecognizeContentFromUrl` 方法。
 
@@ -152,7 +152,7 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
-## <a name="recognize-receipts"></a>辨識收據
+## <a name="analyze-receipts"></a>分析收據
 
 本節示範如何使用預先訓練的收據模型，辨識並擷取美國收據中的常見欄位。
 

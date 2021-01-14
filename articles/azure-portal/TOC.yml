@@ -70,8 +70,6 @@
       items:
         - name: 復原已刪除的儀表板
           href: recover-shared-deleted-dashboard.md
-        - name: 區域或 SKU 訂用帳戶問題疑難排解
-          href: supportability/sku-series-unavailable.md
         - name: 擷取瀏覽器追蹤以進行疑難排解
           href: capture-browser-trace.md
 - name: 參考

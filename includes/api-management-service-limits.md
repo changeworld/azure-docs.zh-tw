@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 04/14/2020
+ms.date: 01/11/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: cf051d96651161658796689639b5d268230d4b5a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 78890c0596642b629482a6d24d17d83fb8ebc9a0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555972"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147456"
 ---
 | 資源 | 限制 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -33,7 +33,8 @@ ms.locfileid: "95555972"
 | 總要求持續時間上限<sup>8</sup> | 30 秒 |
 | 緩衝承載大小上限<sup>8</sup> | 2 MiB |
 | 要求 URL 大小上限<sup>9</sup> | 4096 個位元組 |
-| 自我裝載閘道數目上限<sup>10</sup> | 25 |
+| URL 路徑區段的最大長度<sup>10</sup> | 260 個字元 |
+| 自我裝載閘道數目上限<sup>11</sup> | 25 |
 
 <sup>1</sup>調整限制取決於定價層。 如需定價層及其調整限制的詳細資訊，請參閱 [API 管理價格](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
 <sup>2</sup>每一單位快取大小取決於定價層。 若要查看定價層及其調整限制，請參閱 [API 管理價格](https://azure.microsoft.com/pricing/details/api-management/)。<br/>
@@ -44,4 +45,5 @@ ms.locfileid: "95555972"
 <sup>7</sup>使用層不支援 CA 憑證。<br/>
 <sup>8</sup>此限制僅適用於使用層。 其他層級的這些類別沒有任何限制。<br/>
 <sup>9</sup>僅適用於使用層。 包含最多 2048 個位元組長的查詢字串。<br/>
-<sup>10</sup>只有開發人員和進階層支援自我裝載閘道。 此限制適用於[自我裝載閘道資源](/rest/api/apimanagement/2019-12-01/gateway)數目。 若要提高此限制，請連絡[支援](https://azure.microsoft.com/support/options/)。 請注意，在進階層中，與自我裝載閘道資源相關聯的節點 (或複本) 數目沒有限制，而在開發人員層的單一節點上具有上限。
+<sup>10</sup>若要提高此限制，請連絡[支援人員](https://azure.microsoft.com/support/options/)。<br/>
+<sup>11</sup>只有開發人員和進階層支援自我裝載閘道。 此限制適用於[自我裝載閘道資源](/rest/api/apimanagement/2019-12-01/gateway)數目。 若要提高此限制，請連絡[支援](https://azure.microsoft.com/support/options/)。 請注意，在進階層中，與自我裝載閘道資源相關聯的節點 (或複本) 數目沒有限制，而在開發人員層的單一節點上具有上限。

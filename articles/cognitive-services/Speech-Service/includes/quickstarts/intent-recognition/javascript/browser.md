@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 4ac8ae4fd4218bbf74bbb6760d8344096c214a76
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: bbd7091eb2139801956d77ec8b3ca821c935ac64
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820703"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109265"
 ---
 ## <a name="start-with-some-boilerplate-code"></a>從重複使用程式碼開始著手
 
@@ -187,6 +187,14 @@ ms.locfileid: "97820703"
           recognizer.addAllIntents(lm);
         }
 ```
+
+> [!NOTE]
+> 語音 SDK 僅支援 LUIS v2.0 端點。
+> 您必須手動修改在範例查詢欄位中找到的 v3.0 端點 URL，以使用 v2.0 URL 模式。
+> LUIS v2.0 端點一律會遵循下列其中一種模式：
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+
 ## <a name="recognize-an-intent"></a>辨識意圖
 
 從 `IntentRecognizer` 物件，您將呼叫 `recognizeOnceAsync()` 方法。 此方法可讓語音服務知道您要傳送單一片語以進行辨識，且一旦識別出該片語即停止辨識語音。
