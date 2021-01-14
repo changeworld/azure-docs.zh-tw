@@ -2,13 +2,13 @@
 title: Azure IoT 中樞作為事件方格來源
 description: 本文提供 Azure IoT 中樞事件的屬性和結構描述。 它會列出可用的事件種類、範例事件和事件屬性。
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 7e1c480bd2a662a2ee3418b35dc9c3b50d412a60
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86113644"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185830"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>以事件方格來源 Azure IoT 中樞
 本文提供 Azure IoT 中樞事件的屬性和結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。 
@@ -26,8 +26,6 @@ Azure IoT 中樞會發出下列事件類型：
 | Microsoft.Devices.DeviceConnected | 在裝置連線至 IoT 中樞時發佈。 |
 | Microsoft.Devices.DeviceDisconnected | 在裝置從 IoT 中樞中斷連線時發佈。 | 
 | Microsoft.Devices.DeviceTelemetry | 將遙測訊息傳送至 IoT 中樞時發佈。 |
-
-除了裝置遙測事件以外的所有裝置事件，在事件方格所支援的所有區域中都已正式推出。 裝置遙測事件處於公開預覽狀態，可在美國東部、美國西部、西歐、 [Azure Government](../azure-government/documentation-government-welcome.md)、 [Azure 中國世紀](/azure/china/china-welcome)和 [Azure 德國](https://azure.microsoft.com/global-infrastructure/germany/)以外的所有區域中使用。
 
 ### <a name="example-event"></a>事件範例
 
@@ -160,9 +158,9 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 
 每個事件發行者有不同的資料物件內容。 
 
-對於**裝置連線**和**裝置中斷連線** IoT 中樞事件，資料物件會包含下列屬性：
+對於 **裝置連線** 和 **裝置中斷連線** IoT 中樞事件，資料物件會包含下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | moduleId | 字串 | 模組的唯一識別碼。 針對模組裝置才會輸出此欄位。 此區分大小寫的字串最長為 128 個字元，並支援 ASCII 7 位元英數字元和下列特殊字元：`- : . + % _ # * ? ! ( ) , = @ ; $ '`。 |
 | deviceConnectionStateEventInfo | 物件 (object) | 裝置連線狀態事件資訊
@@ -176,9 +174,9 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 | properties | 字串 | 應用程式屬性為可新增至訊息的使用者定義字串。 這些欄位為選擇性。 |
 | 系統屬性 | 字串 | [系統屬性](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) 有助於識別訊息的內容和來源。 裝置遙測訊息必須是有效的 JSON 格式，且 contentType 設定為 JSON，且 contentEncoding 在訊息系統屬性中設定為 UTF-8。 如果未設定，則 IoT 中樞會以基底64編碼格式寫入訊息。  |
 
-對於**裝置建立**和**裝置刪除** IoT 中樞事件，資料物件會包含下列屬性：
+對於 **裝置建立** 和 **裝置刪除** IoT 中樞事件，資料物件會包含下列屬性：
 
-| 屬性 | 類型 | 說明 |
+| 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | twin | 物件 (object) | 裝置對應項的相關資訊，這是應用程式裝置中繼資料的雲端標記法。 | 
 | deviceID | 字串 | 裝置對應項的唯一識別碼。 | 
@@ -188,18 +186,18 @@ DeviceCreated 和 DeviceDeleted 事件的結構描述具有相同的結構。 �
 | statusUpdateTime | 字串 | 上次更新裝置對應項狀態的 ISO8601 時間戳記。 |
 | connectionState | 字串 | 裝置已連線或已中斷連線。 | 
 | lastActivityTime | 字串 | 上次活動的 ISO8601 時間戳記。 | 
-| cloudToDeviceMessageCount | 整數 | 傳送到此裝置的雲端到裝置訊息計數。 | 
+| cloudToDeviceMessageCount | integer | 傳送到此裝置的雲端到裝置訊息計數。 | 
 | authenticationType | 字串 | 用於這個裝置的驗證類型：`SAS`、`SelfSigned` 或 `CertificateAuthority`。 |
 | x509Thumbprint | 字串 | 指紋是 x509 憑證的唯一值，通常用來尋找憑證存放區中的特定憑證。 指紋是使用 SHA1 演算法所動態產生的，並未實際存在於憑證中。 | 
 | primaryThumbprint | 字串 | x509 憑證的主要指紋。 |
 | secondaryThumbprint | 字串 | x509 憑證的次要指紋。 | 
-| version | 整數 | 每次更新裝置對應項時，整數就會遞增 1。 |
+| version | integer | 每次更新裝置對應項時，整數就會遞增 1。 |
 | desired | 物件 (object) | 只能由應用程式後端寫入，並可由裝置讀取的屬性部分。 | 
 | reported | 物件 (object) | 只能由裝置寫入，並可由應用程式後端讀取的屬性部分。 |
 | lastUpdated | 字串 | 上次更新裝置對應項屬性的 ISO8601 時間戳記。 | 
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
-|標題  |說明  |
+|標題  |描述  |
 |---------|---------|
 | [使用 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知](publish-iot-hub-events-to-logic-apps.md) | 每當有裝置新增至您的 IoT 中樞時，邏輯應用程式就會傳送電子郵件通知。 |
 | [使用事件方格來觸發動作以回應 IoT 中樞事件](../iot-hub/iot-hub-event-grid.md) | 整合 IoT 中樞與事件方格的概觀。 |

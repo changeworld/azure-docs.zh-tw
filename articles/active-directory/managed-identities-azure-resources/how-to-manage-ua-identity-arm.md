@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a503235f3ef948939f3188828b1e01f54dd2fe
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: acbeb8e0fc638955995cc5aaf00f58d40adc69a8
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588619"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184870"
 ---
-# <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>使用 Azure Resource Manager 來建立、列出及刪除使用者指派的受控識別
+# <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>使用 Azure Resource Manager 建立、列出和刪除使用者指派的受控識別
 
 
 適用于 Azure 資源的受控識別會在 Azure Active Directory 中提供具有受控識別的 Azure 服務。 您可以使用此身分識別來向支援 Azure AD 驗證的服務進行驗證，而不需要您程式碼中的認證。 
@@ -33,7 +33,7 @@ ms.locfileid: "97588619"
 
 - [列出使用者指派的受控識別](how-to-manage-ua-identity-cli.md#list-user-assigned-managed-identities)
 - [刪除使用者指派的受控識別](how-to-manage-ua-identity-cli.md#delete-a-user-assigned-managed-identity)
-  ## <a name="prerequisites"></a>必要條件
+  ## <a name="prerequisites"></a>先決條件
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱 [總覽一節](overview.md)。 **請務必檢閱 [系統指派和使用者指派受控識別之間的差異](overview.md#managed-identity-types)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。

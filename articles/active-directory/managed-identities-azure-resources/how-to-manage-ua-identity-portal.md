@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd4cccdfc3a2cf8dd3827776028a7738ae769673
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002999"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184825"
 ---
-# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色
+# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 入口網站建立、列出、刪除或指派角色給使用者指派的受控識別
 
 適用于 Azure 資源的受控識別會在 Azure Active Directory 中提供具有受控識別的 Azure 服務。 您可以使用此身分識別來向支援 Azure AD 驗證的服務進行驗證，而不需要您程式碼中的認證。 
 
@@ -46,7 +46,7 @@ ms.locfileid: "96002999"
     - **名稱**：這是使用者指派的受控識別名稱，例如 UAI1。
     ![建立使用者指派的受控識別](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 4. 按一下 [ **審核 + 建立** ] 以檢查變更。
-5. 按一下 [建立]。
+5. 按一下頁面底部的 [新增] 。
 
 ## <a name="list-user-assigned-managed-identities"></a>列出使用者指派的受控識別
 

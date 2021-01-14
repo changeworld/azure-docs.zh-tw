@@ -3,12 +3,12 @@ title: 使用 Azure 受控識別在 DevTest Labs 中建立環境 |Microsoft Docs
 description: 瞭解如何在 Azure 中使用受控識別來部署實驗室中的環境 Azure DevTest Labs。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e5bac4210afee6db1c7617dac1cd6d2ff9149439
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f3e4b4d7030eb26c25b291e03caaa430d1979c4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718966"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185779"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>使用 Azure 受控識別來部署實驗室中的環境 
 
@@ -17,7 +17,7 @@ ms.locfileid: "88718966"
 > [!NOTE]
 > 目前，每個實驗室都支援單一使用者指派的身分識別。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - [使用 Azure 入口網站建立、列出、刪除或指派角色給使用者指派的受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)。 
     
@@ -30,7 +30,7 @@ ms.locfileid: "88718966"
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 搜尋 **DevTest Labs**。
 1. 從實驗室清單中，選取您要的實驗室。
-1. 選取**Configuration 和原則**身分  ->  **識別 (預覽) **。 
+1. 選取 **Configuration 和原則** 身分  ->  **識別 (預覽)**。 
 1. 若要新增使用者指派的身分識別，請選取 [ **使用者指派** ] 索引標籤。
 1. 按下 [ **新增** ]。
 1. 從下拉式清單中選取您已建立及/或具有存取權的現有使用者。
@@ -42,7 +42,7 @@ ms.locfileid: "88718966"
 
 只要新增至實驗室的身分識別具有環境需要存取的外部資源許可權，實驗室擁有者就不需要在部署環境時進行任何特殊動作。 
 
-若要變更指派給實驗室的使用者受控識別，請先移除附加至實驗室的身分識別，然後將另一個身分識別新增至實驗室。 若要移除附加至實驗室的身分識別，請選取 [ **...] (省略號) **，然後按一下 [ **移除**]。 
+若要變更指派給實驗室的使用者受控識別，請先移除附加至實驗室的身分識別，然後將另一個身分識別新增至實驗室。 若要移除附加至實驗室的身分識別，請選取 [ **...] (省略號)**，然後按一下 [ **移除**]。 
 
 ## <a name="use-api"></a>使用 API
 

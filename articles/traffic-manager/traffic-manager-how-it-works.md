@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: duau
-ms.openlocfilehash: 471895f1a615770521584a627e6bca850b87d0ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1e1bd107e8b3b9209f99d1abfc4d7e391c3c4a6
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89462627"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184334"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理員的運作方式
 
@@ -30,7 +30,7 @@ Azure 流量管理員可讓您控制流量分散到應用程式端點的方式�
 
 當用戶端嘗試連接至服務時，它必須先將服務的 DNS 名稱解析為 IP 位址。 然後用戶端才能連線到該 IP 位址以存取服務。
 
-**最重要的一點是了解流量管理員是在 DNS 層級上運作。**  流量管理員會使用 DNS，根據流量路由方法的規則，將用戶端導向特定的服務端點。 用戶端會**直接**連接至選取的端點。 流量管理員不是 Proxy 或閘道。 流量管理員看不到在用戶端與服務之間傳遞的流量。
+**最重要的一點是了解流量管理員是在 DNS 層級上運作。**  流量管理員會使用 DNS，根據流量路由方法的規則，將用戶端導向特定的服務端點。 用戶端會 **直接** 連接至選取的端點。 流量管理員不是 Proxy 或閘道。 流量管理員看不到在用戶端與服務之間傳遞的流量。
 
 ## <a name="traffic-manager-example"></a>流量管理員範例
 
@@ -71,27 +71,27 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 
 ## <a name="faqs"></a>常見問題集
 
-* [「流量管理員」使用什麼 IP 位址？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-ip-address-does-traffic-manager-use)
+* [「流量管理員」使用什麼 IP 位址？](./traffic-manager-faqs.md#what-ip-address-does-traffic-manager-use)
 
-* [哪種類型的流量可以使用流量管理員路由傳送？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
+* [哪種類型的流量可以使用流量管理員路由傳送？](./traffic-manager-faqs.md#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* [流量管理員是否支援「粘滯」會話？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* [流量管理員是否支援「粘滯」會話？](./traffic-manager-faqs.md#does-traffic-manager-support-sticky-sessions)
 
-* [我在使用流量管理員時為何看到 HTTP 錯誤？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
+* [我在使用流量管理員時為何看到 HTTP 錯誤？](./traffic-manager-faqs.md#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
-* [使用「流量管理員」對效能有什麼影響？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-the-performance-impact-of-using-traffic-manager)
+* [使用「流量管理員」對效能有什麼影響？](./traffic-manager-faqs.md#what-is-the-performance-impact-of-using-traffic-manager)
 
-* [我可以搭配「流量管理員」使用哪些應用程式通訊協定？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
+* [我可以搭配「流量管理員」使用哪些應用程式通訊協定？](./traffic-manager-faqs.md#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [我可以使用流量管理員搭配「裸」功能變數名稱嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [我可以使用流量管理員搭配「裸」功能變數名稱嗎？](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-a-naked-domain-name)
 
-* [處理 DNS 查詢時，流量管理員會考量用戶端子網路位址嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
+* [處理 DNS 查詢時，流量管理員會考量用戶端子網路位址嗎？](./traffic-manager-faqs.md#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 
-* [什麼是 DNS TTL，以及它如何影響我的使用者？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users)
+* [什麼是 DNS TTL，以及它如何影響我的使用者？](./traffic-manager-faqs.md#what-is-dns-ttl-and-how-does-it-impact-my-users)
 
-* [我可以將流量管理員回應的 TTL 設為多高或多低？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
+* [我可以將流量管理員回應的 TTL 設為多高或多低？](./traffic-manager-faqs.md#how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses)
 
-* [如何了解傳給我的設定檔的查詢量？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
+* [如何了解傳給我的設定檔的查詢量？](./traffic-manager-faqs.md#how-can-i-understand-the-volume-of-queries-coming-to-my-profile)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -102,4 +102,3 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 <!--Image references-->
 [1]: ./media/traffic-manager-how-traffic-manager-works/dns-configuration.png
 [2]: ./media/traffic-manager-how-traffic-manager-works/flow.png
-

@@ -6,14 +6,14 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d8ed429003a9da7ae93fb93f4218cd66767dcd7b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 34bcef24d5e7fbda53984f14a2307859c9210262
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562271"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185949"
 ---
-# <a name="set-up-msix-app-attach-with-the-azure-portal"></a>使用 Azure 入口網站設定 MSIX 應用程式附加
+# <a name="set-up-msix-app-attach-with-the-azure-portal"></a>設定 Azure 入口網站設定 MSIX 應用程式連結
 
 > [!IMPORTANT]
 > MSIX 應用程式附加目前處於公開預覽狀態。
@@ -22,7 +22,7 @@ ms.locfileid: "97562271"
 
 本文將逐步引導您瞭解如何在 Windows 虛擬桌面環境中設定 MSIX 應用程式附加 (預覽) 。
 
-## <a name="requirements"></a>需求
+## <a name="requirements"></a>規格需求
 
 >[!IMPORTANT]
 >開始之前，請務必填寫並提交 [此表單](https://aka.ms/enablemsixappattach) ，以在您的訂用帳戶中啟用 MSIX 應用程式附加。 如果您沒有核准的要求，MSIX app attach 將無法運作。 要求的核准可能需要最多24小時的工作天。 當您的要求已接受且完成時，您會收到一封電子郵件。
@@ -54,19 +54,10 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v
 
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
 
-rem Disable Windows Update:
-
-sc config wuauserv start=disabled
-```
-
-停用自動更新之後，您必須啟用 Hyper-v，因為您將使用 `Mount-VHD` 命令來暫存和卸載 VHD 至 [移至]。
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 
 >[!NOTE]
->此變更需要您重新啟動虛擬機器。
+>建議您在啟用 Hyper-v 之後，重新開機虛擬機器。
 
 ## <a name="configure-the-msix-app-attach-management-interface"></a>設定 MSIX 應用程式附加管理介面
 

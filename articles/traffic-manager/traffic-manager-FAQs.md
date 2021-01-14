@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400172"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184572"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理員常見問題集 (FAQ)
 
@@ -59,7 +59,7 @@ ms.locfileid: "89400172"
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>我可以使用流量管理員搭配「裸」功能變數名稱嗎？
 
-是。 若要瞭解如何建立功能變數名稱頂點的別名記錄，以參考 Azure 流量管理員設定檔，請參閱 [使用流量管理員來設定別名記錄以支援頂點功能變數名稱](../dns/tutorial-alias-tm.md)。
+可以。 若要瞭解如何建立功能變數名稱頂點的別名記錄，以參考 Azure 流量管理員設定檔，請參閱 [使用流量管理員來設定別名記錄以支援頂點功能變數名稱](../dns/tutorial-alias-tm.md)。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>處理 DNS 查詢時，流量管理員會考量用戶端子網路位址嗎？ 
 
@@ -96,7 +96,7 @@ DNS 查詢進入流量管理員時，它會在稱為存留時間 (TTL) 的回應
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>流量管理員的地理路由支援哪些區域？
 
-[這裡](traffic-manager-geographic-regions.md)可以找到流量管理員所使用的國家/區域階層。 雖然此頁面一有變動就會隨時更新，但您也可以透過程式設計方式，利用 [Azure 流量管理員 REST API](https://docs.microsoft.com/rest/api/trafficmanager/) 擷取相同的資訊。 
+[這裡](traffic-manager-geographic-regions.md)可以找到流量管理員所使用的國家/區域階層。 雖然此頁面一有變動就會隨時更新，但您也可以透過程式設計方式，利用 [Azure 流量管理員 REST API](/rest/api/trafficmanager/) 擷取相同的資訊。 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>流量管理員如何判斷使用者從何處執行查詢？
 
@@ -116,11 +116,11 @@ DNS 查詢進入流量管理員時，它會在稱為存留時間 (TTL) 的回應
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>您可以在未設定為執行地理路由的設定檔中指派地理區域給端點嗎？
 
-是，如果設定檔的路由方法不是地理，您可以使用 [Azure 流量管理員 REST API](https://docs.microsoft.com/rest/api/trafficmanager/)，將地理區域指派給該設定檔中的端點。 在非地理路由類型的設定檔中，將忽略此設定。 如果您稍後將此設定檔變更為地理路由類型，流量管理員可以使用這些對應。
+是，如果設定檔的路由方法不是地理，您可以使用 [Azure 流量管理員 REST API](/rest/api/trafficmanager/)，將地理區域指派給該設定檔中的端點。 在非地理路由類型的設定檔中，將忽略此設定。 如果您稍後將此設定檔變更為地理路由類型，流量管理員可以使用這些對應。
 
 ### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>當我嘗試將現有設定檔的路由方法變更為地理時為何會發生錯誤？
 
-設為地理路由的設定檔下的所有端點，必須至少有一個區域對應到它。 若要將現有的設定檔轉換成地理路由類型，您需要先使用 [Azure 流量管理員 REST API](https://docs.microsoft.com/rest/api/trafficmanager/)，將地理區域和其所有端點相關聯，才能將路由類型變更為地理。 如果使用入口網站，先刪除端點，將設定檔的路由方法變更為地理，然後新增端點及其地理區域對應。
+設為地理路由的設定檔下的所有端點，必須至少有一個區域對應到它。 若要將現有的設定檔轉換成地理路由類型，您需要先使用 [Azure 流量管理員 REST API](/rest/api/trafficmanager/)，將地理區域和其所有端點相關聯，才能將路由類型變更為地理。 如果使用入口網站，先刪除端點，將設定檔的路由方法變更為地理，然後新增端點及其地理區域對應。
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>為什麼強烈建議客戶建立巢狀設定檔，而不是在啟用地理路由的設定檔下新增端點？
 
@@ -306,11 +306,11 @@ MultiValue 路由會在單一查詢回應中傳回多個狀況良好的端點。
 
 來自多個訂用帳戶的端點不能與 Azure Web 應用程式搭配使用。 Azure Web Apps 規定 Web Apps 使用的任何自訂網域名稱只能在單一訂用帳戶內使用。 無法使用具有相同網域名稱的多個訂用帳戶中的 Web Apps。
 
-針對其他端點類型，則可以將「流量管理員」與來自多個訂用帳戶的端點搭配使用。 在 Resource Manager 中，來自任何訂用帳戶的端點都可以新增至流量管理員，只要設定流量管理員設定檔的人員具有端點的讀取權限即可。 您可以使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)來授與這些許可權。 您可以使用 [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)，來新增其他訂用帳戶的端點。
+針對其他端點類型，則可以將「流量管理員」與來自多個訂用帳戶的端點搭配使用。 在 Resource Manager 中，來自任何訂用帳戶的端點都可以新增至流量管理員，只要設定流量管理員設定檔的人員具有端點的讀取權限即可。 您可以使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)來授與這些許可權。 您可以使用 [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) 或 [Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)，來新增其他訂用帳戶的端點。
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>我可以使用流量管理員來設定雲端服務「預備」位置嗎？
 
-是。 雲端服務「預備」位置可在流量管理員中設定為外部端點。 健康情況檢查仍然以 Azure 端點費率計費。
+可以。 雲端服務「預備」位置可在流量管理員中設定為外部端點。 健康情況檢查仍然以 Azure 端點費率計費。
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>流量管理員是否支援 IPv6 端點？
 
@@ -341,17 +341,17 @@ MultiValue 路由會在單一查詢回應中傳回多個狀況良好的端點。
 
 流量管理員是單一全域服務。 不是區域性。 如何選擇資源群組位置，對於部署在該資源群組中的流量管理員設定檔而言，並沒有差別。
 
-Azure Resource Manager 需要所有資源群組指定位置，這會決定部署在該資源群組中資源的預設位置。 當您建立流量管理員設定檔時，它會建立在資源群組中。 所有流量管理員設定檔都使用**全域**當作位置，覆寫資源群組預設值。
+Azure Resource Manager 需要所有資源群組指定位置，這會決定部署在該資源群組中資源的預設位置。 當您建立流量管理員設定檔時，它會建立在資源群組中。 所有流量管理員設定檔都使用 **全域** 當作位置，覆寫資源群組預設值。
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>如何判斷每個端點目前的健全狀況？
 
-每個端點的目前監視狀態以及整體設定檔都會顯示於 Azure 入口網站中。 您也可以透過流量監視 [REST API](https://msdn.microsoft.com/library/azure/mt163667.aspx)、[PowerShell cmdlets](https://docs.microsoft.com/powershell/module/az.trafficmanager) 和[跨平台 Azure CLI](../cli-install-nodejs.md) 取得此資訊。
+每個端點的目前監視狀態以及整體設定檔都會顯示於 Azure 入口網站中。 您也可以透過流量監視 [REST API](/rest/api/trafficmanager/)、[PowerShell cmdlets](/powershell/module/az.trafficmanager) 和[跨平台 Azure CLI](/cli/azure/install-classic-cli) 取得此資訊。
 
-您也可以使用 Azure 監視器來追蹤端點的健康情況，並查看它們的視覺效果表示法。 如需如何使用 Azure 監視器的相關資訊，請參閱 [Azure 監視文件](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)。
+您也可以使用 Azure 監視器來追蹤端點的健康情況，並查看它們的視覺效果表示法。 如需如何使用 Azure 監視器的相關資訊，請參閱 [Azure 監視文件](../azure-monitor/platform/data-platform.md)。
 
 ### <a name="can-i-monitor-https-endpoints"></a>我可以監視 HTTPS 端點嗎？
 
-是。 流量管理員支援透過 HTTPS 探查。 在監視組態中將 **HTTPS** 設定為通訊協定。
+可以。 流量管理員支援透過 HTTPS 探查。 在監視組態中將 **HTTPS** 設定為通訊協定。
 
 流量管理員無法提供任何憑證驗證，包括：
 
@@ -361,7 +361,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>新增端點時，使用 IP 位址還是 DNS 名稱？
 
-流量管理員支援使用三種方式來新增要參照的端點：作為 DNS 名稱、IPv4 位址和 IPv6 位址。 如果端點新增為 IPv4 或 IPv6 位址，則查詢回應分別是 A 或 AAAA 記錄類型。 如果端點已新增為 DNS 名稱，則查詢回應會是 CNAME 記錄類型。 只有在端點的類型為**外部**時，才允許將端點新增為 IPv4 或 IPv6 位址。
+流量管理員支援使用三種方式來新增要參照的端點：作為 DNS 名稱、IPv4 位址和 IPv6 位址。 如果端點新增為 IPv4 或 IPv6 位址，則查詢回應分別是 A 或 AAAA 記錄類型。 如果端點已新增為 DNS 名稱，則查詢回應會是 CNAME 記錄類型。 只有在端點的類型為 **外部** 時，才允許將端點新增為 IPv4 或 IPv6 位址。
 三端點定址類型支援所有路由方法和監視設定。
 
 ### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>新增端點時，可以使用哪些類型的 IP 位址？
@@ -412,7 +412,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>即使我的應用程式不支援 HTTP 或 HTTPS 也可以使用流量管理員嗎？
 
-是。 您可以指定 TCP 作為監視通訊協定，流量管理員可以起始 TCP 連線，並且等待端點的回應。 如果端點在逾時期間內以建立連線的回應來回覆連線要求，則該端點會標示為狀況良好。
+可以。 您可以指定 TCP 作為監視通訊協定，流量管理員可以起始 TCP 連線，並且等待端點的回應。 如果端點在逾時期間內以建立連線的回應來回覆連線要求，則該端點會標示為狀況良好。
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>使用 TCP 監視時需要端點的哪些特定回應？
 
@@ -458,7 +458,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>如果我的其中一個端點關閉，我如何取得通知？
 
-流量管理員所提供的其中一個計量是設定檔中端點的健全狀態。 您可以將此視為設定檔中所有端點的彙總 (例如，您的端點中 75% 是健康的)，或是依端點層級的端點彙總。 流量管理員計量是透過 Azure 監視器公開，因此您可以使用它的[警示功能](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)，在端點的健全狀態變更時取得通知。 如需詳細資訊，請參閱[流量管理員的計量與警示](traffic-manager-metrics-alerts.md)。  
+流量管理員所提供的其中一個計量是設定檔中端點的健全狀態。 您可以將此視為設定檔中所有端點的彙總 (例如，您的端點中 75% 是健康的)，或是依端點層級的端點彙總。 流量管理員計量是透過 Azure 監視器公開，因此您可以使用它的[警示功能](../azure-monitor/platform/alerts-metric.md)，在端點的健全狀態變更時取得通知。 如需詳細資訊，請參閱[流量管理員的計量與警示](traffic-manager-metrics-alerts.md)。  
 
 ## <a name="traffic-manager-nested-profiles"></a>流量管理員巢狀設定檔
 
@@ -472,7 +472,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 ### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>在同一個「流量管理員」設定檔中，是否可以將其他端點類型與巢狀子設定檔混合使用？
 
-是。 對於在設定檔內如何結合不同類型的端點，並沒有任何限制。
+可以。 對於在設定檔內如何結合不同類型的端點，並沒有任何限制。
 
 ### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>巢狀設定檔如何套用計費模型？
 
@@ -487,7 +487,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>巢狀設定檔是否會對效能造成影響？
 
-否。 使用巢狀設定檔不會影響效能。
+不會。 使用巢狀設定檔不會影響效能。
 
 在處理每個 DNS 查詢時，流量管理員名稱伺服器會周遊設定檔階層內部。 父設定檔的 DNS 查詢可能會收到從子設定檔傳回端點的 DNS 回應。 不論您使用單一設定檔或巢狀設定檔，都只會使用單一 CNAME 記錄。 不需要為階層中的每個設定檔建立 CNAME 記錄。
 
@@ -497,7 +497,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 下表描述流量管理員檢查巢狀端點健康狀態時的行為。
 
-| 子設定檔監視狀態 | 父端點監視狀態 | 注意 |
+| 子設定檔監視狀態 | 父端點監視狀態 | 備註 |
 | --- | --- | --- |
 | 停用。 已停用子設定檔。 |已停止 |父端點狀態為「已停止」，不是「已停用」。 「已停用」狀態會保留，表示您已停用父設定檔中的端點。 |
 | 已降級。 至少有一個子設定檔端點的狀態為「已降級」。 |線上︰子設定檔中「線上」端點的數目至少等於 MinChildEndpoints 的值。<BR>CheckingEndpoint︰子設定檔中「線上」加 CheckingEndpoint 端點的數目至少等於 MinChildEndpoints 的值。<BR>已降級︰其他情況。 |系統會將流量傳遞給狀態為 CheckingEndpoint 的端點。 如果 MinChildEndpoints 設定太高，則端點一律會降級。 |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91304284"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185473"
 ---
 # <a name="camera-placement-guide"></a>攝影機放置指南
 
@@ -52,7 +52,7 @@ ms.locfileid: "91304284"
 
 ## <a name="camera-height"></a>相機高度
 
-一般而言，攝影機應從地面掛上12-14 英尺。 當您在此範圍內規劃相機掛接時，請考慮障礙物 (例如：擱置、懸掛燈、下垂告示板，以及顯示可能影響相機視圖的) ，然後視需要調整高度。
+一般而言，攝影機應從地面掛上12-14 英尺。 針對臉部遮罩偵測，我們建議將攝影機從地面掛接到8-12 腳。 當您在此範圍內規劃相機掛接時，請考慮障礙物 (例如：擱置、懸掛燈、下垂告示板，以及顯示可能影響相機視圖的) ，然後視需要調整高度。
 
 ## <a name="camera-to-focal-point-distance"></a>攝影機與焦點距離
 
@@ -68,7 +68,7 @@ _攝影機與焦點距離_ 是從焦點 (或中央相機影像) 到以地面測�
 
 ![從上方算起的如何測量攝影機與焦點距離](./media/spatial-analysis/camera-focal-point-above.png)
 
-您可以使用下表，根據特定的裝載高度，判斷相機與焦點之間的距離。 這些距離適用于最佳位置。 請注意，資料表會提供 12 '-14 ' 建議的指導方針，因為某些上限可能會限制高度。
+您可以使用下表，根據特定的裝載高度，判斷相機與焦點之間的距離。 這些距離適用于最佳位置。 請注意，資料表會提供 12 '-14 ' 建議的指導方針，因為某些上限可能會限制高度。 針對臉部遮罩偵測，建議使用的相機對點距離 (最小/最大) 為 4 '-10 '，代表8到12之間的相機高度。
 
 | 相機高度 | 攝影機與點距離 (最小/最大)  |  
 | ------------- | ---------------------------------------- |  
@@ -91,7 +91,7 @@ _攝影機與焦點距離_ 是從焦點 (或中央相機影像) 到以地面測�
 
 ### <a name="line-configuration"></a>行配置
 
-下表顯示針對 **cognitiveservices spatialanalysis personcrossingline** 作業所設定之攝影機的建議。 
+下表顯示針對 **cognitiveservices spatialanalysis personcrossingline** 作業所設定之攝影機的建議。 針對臉部遮罩偵測，+/-30 度是相機高度在 8 ' 到 12 ' 之間的最佳相機裝入角度。
 
 | 相機高度 | 攝影機與焦點距離 | 最佳相機裝入角度 (最小/最大)  |  
 | ------------- | ------------------------------ | ------------------------------------------ |  
@@ -127,7 +127,7 @@ _攝影機與焦點距離_ 是從焦點 (或中央相機影像) 到以地面測�
 
 #### <a name="queues"></a>佇列
 
-**Cognitiveservices spatialanalysis-personcount**、 **cognitiveservices、spatialanalysis-persondistance**和**cognitiveservices. spatialanalysis-personcrossingpolygon 的**技能可能用來監視佇列。 為了達到最佳佇列資料品質，建議將 retractable 皮帶阻礙降至最低，以將佇列中的人員遮蔽降至最低，並確保佇列位置在一段時間內是一致的。
+**Cognitiveservices spatialanalysis-personcount**、 **cognitiveservices、spatialanalysis-persondistance** 和 **cognitiveservices. spatialanalysis-personcrossingpolygon 的** 技能可能用來監視佇列。 為了達到最佳佇列資料品質，建議將 retractable 皮帶阻礙降至最低，以將佇列中的人員遮蔽降至最低，並確保佇列位置在一段時間內是一致的。
 
 ![Retractable 皮帶佇列](./media/spatial-analysis/retractable-belt-queue.png)
 

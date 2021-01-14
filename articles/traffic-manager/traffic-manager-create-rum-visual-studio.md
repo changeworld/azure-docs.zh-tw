@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: devx-track-js
-ms.openlocfilehash: c49672ad38ac8cf80214d03870b5876d741e76ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f9e8cdd3eb5c9f441444683fb5efaccc880b2757
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994871"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184606"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>如何使用 Visual Studio Mobile Center 將實際使用者度量傳送給流量管理員
 
@@ -52,7 +52,7 @@ ms.locfileid: "95994871"
 
 ## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>步驟 2：使用 Mobile Center SDK 的 RUM 套件檢測應用程式
 
-如果您還不熟悉 Visual Studio Mobile Center，請造訪其[網站](https://mobile.azure.com)。 如需 SDK 整合的詳細指示，請參閱[開始使用 Android SDK](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android)。
+如果您還不熟悉 Visual Studio Mobile Center，請造訪其[網站](https://mobile.azure.com)。 如需 SDK 整合的詳細指示，請參閱[開始使用 Android SDK](/mobile-center/sdk/getting-started/Android)。
 
 若要使用實際使用者度量，請完成下列程序：
 
@@ -98,8 +98,7 @@ ms.locfileid: "95994871"
 ## <a name="next-steps"></a>後續步驟
 - 深入了解[實際使用者度量](traffic-manager-rum-overview.md)
 - 了解 [流量管理員的運作方式](traffic-manager-overview.md)
-- 深入了解 [Mobile Center](https://docs.microsoft.com/mobile-center/)
+- 深入了解 [Mobile Center](/mobile-center/)
 - [註冊](https://mobile.azure.com) Mobile Center
 - 深入了解流量管理員支援的 [流量路由方法](traffic-manager-routing-methods.md)
-- 了解如何 [建立流量管理員設定檔](traffic-manager-create-profile.md)
-
+- 了解如何 [建立流量管理員設定檔](./quickstart-create-traffic-manager-profile.md)

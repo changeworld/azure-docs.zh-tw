@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: 8606e89a40e9cfd2c0f55df2c65532928c0d11f8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2bb104fd9cfc3c4ffddb82e4cf442e94c4650550
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972584"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184553"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用網頁將實際使用者度量傳送給 Azure 流量管理員
 
@@ -68,5 +68,4 @@ ms.locfileid: "95972584"
 - 深入了解[實際使用者度量](traffic-manager-rum-overview.md)
 - 了解 [流量管理員的運作方式](traffic-manager-overview.md)
 - 深入了解流量管理員支援的 [流量路由方法](traffic-manager-routing-methods.md)
-- 了解如何 [建立流量管理員設定檔](traffic-manager-create-profile.md)
-
+- 了解如何 [建立流量管理員設定檔](./quickstart-create-traffic-manager-profile.md)

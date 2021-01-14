@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: '建立已啟用 Azure Arc 的上線服務主體 '
 keywords: Kubernetes, Arc, Azure, 容器
-ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050077"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184691"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>建立已啟用 Azure Arc 的上線服務主體 (預覽)
 
@@ -54,7 +54,7 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 | 資源  | `scope` 引數| 效果 |
 | ------------- | ------------- | ------------- |
 | 訂用帳戶 | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333` | 服務主體可以在指定的訂用帳戶中，於現有的資源群組中註冊任何叢集 |
-| 資源群組 | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | 服務主體__只能__在資源群組 `myGroup` 中註冊叢集 |
+| 資源群組 | `--scope /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333/resourceGroups/myGroup`  | 服務主體 __只能__ 在資源群組 `myGroup` 中註冊叢集 |
 
 ```console
 az role assignment create \
@@ -82,7 +82,7 @@ az role assignment create \
 
 參考新建立的服務主體：
 
-```console
+```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID
 az connectedk8s connect -n myConnectedClusterName -g myResoureGroupName
 ```

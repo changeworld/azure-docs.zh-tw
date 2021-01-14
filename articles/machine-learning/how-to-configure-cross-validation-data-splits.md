@@ -1,7 +1,7 @@
 ---
-title: 在自動化機器學習實驗中設定交叉驗證和資料分割
+title: 自動化機器學習中的資料分割和交叉驗證
 titleSuffix: Azure Machine Learning
-description: 瞭解如何設定自動化機器學習實驗的交叉驗證和資料集分割
+description: 瞭解如何設定自動化機器學習實驗的資料集分割和交叉驗證
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,20 +11,20 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: c29c8ab31507c0ec904a7534e50ef6523e1aab96
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360100"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185677"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自動化機器學習中設定資料分割和交叉驗證
 
-在本文中，您將瞭解針對自動化機器學習、AutoML、實驗設定定型/驗證資料分割和交叉驗證的不同選項。
+在本文中，您將瞭解不同的選項，讓您針對自動化機器學習服務、自動化 ML、實驗設定定型/驗證資料分割和交叉驗證。
 
-在 Azure Machine Learning 中，當您使用 AutoML 來建立多個 ML 模型時，每個子系執行都必須藉由計算該模型的品質計量（例如精確度或 AUC 加權）來驗證相關的模型。 這些計量的計算方式是比較每個模型所做的預測與驗證資料中過去觀察的真實標籤。 
+在 Azure Machine Learning 中，當您使用自動化 ML 來建立多個 ML 模型時，每個子系執行都必須藉由計算該模型的品質計量（例如精確度或 AUC 加權）來驗證相關的模型。 這些計量的計算方式是比較每個模型所做的預測與驗證資料中過去觀察的真實標籤。 
 
-AutoML 實驗會自動執行模型驗證。 下列各節說明如何使用 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)來進一步自訂驗證設定。 
+自動化 ML 實驗會自動執行模型驗證。 下列各節說明如何使用 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)來進一步自訂驗證設定。 
 
 如需低程式碼或無程式碼的體驗，請參閱 [在 Azure Machine Learning studio 中建立自動化機器學習實驗](how-to-use-automated-ml-for-ml-models.md)。 
 
@@ -39,13 +39,13 @@ AutoML 實驗會自動執行模型驗證。 下列各節說明如何使用 [Azur
 
 * 熟悉如何使用 Azure Machine Learning SDK 來設定自動化機器學習實驗。 遵循 [教學](tutorial-auto-train-models.md) 課程或操作 [說明](how-to-configure-auto-train.md) ，查看基本的自動化機器學習實驗設計模式。
 
-* 瞭解交叉驗證和定型/驗證資料分割作為 ML 概念。 如需概要說明，
+* 瞭解定型/驗證資料分割和交叉驗證，以做為機器學習概念。 如需概要說明，
 
     * [關於 Machine Learning 中的訓練、驗證和測試集](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [瞭解交叉驗證](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [瞭解機器學習中的交叉驗證](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
 
-## <a name="default--data-splits-and-cross-validation"></a>預設資料分割和交叉驗證
+## <a name="default-data-splits-and-cross-validation"></a>預設資料分割和交叉驗證
 
 使用 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) 物件來定義您的實驗和定型設定。 在下列程式碼片段中，請注意，只會定義必要的參數，也就是 `n_cross_validation` `validation_ data` **不** 包含或的參數。
 
@@ -67,7 +67,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 |定型 &nbsp; 資料 &nbsp; 大小| 驗證技術 |
 |---|-----|
 |**大於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用定型/驗證資料分割。 預設值是以10% 的初始訓練資料集做為驗證集。 接著，該驗證集會用於計算度量。
-|**小於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用交叉驗證方法。 預設的折迭數目取決於資料列數。 <br> **如果資料集小於1000個數據列** ，則會使用10個折迭。 <br> **如果資料列介於1000到20000之間** ，則會使用三個折迭。
+|**小於 &nbsp; 20000 的資料 &nbsp; &nbsp; 列**| 套用交叉驗證方法。 預設的折迭數目取決於資料列數。 <br> **如果資料集小於1000個數據列**，則會使用10個折迭。 <br> **如果資料列介於1000到20000之間**，則會使用三個折迭。
 
 ## <a name="provide-validation-data"></a>提供驗證資料
 
@@ -117,7 +117,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 在下列程式碼中，會定義交叉驗證的五個折迭。 因此，五種不同的訓練、每次使用4/5 的資料進行定型，以及每次使用1/5 的資料搭配不同的每次驗證都有不同的維持折迭。
 
-因此，系統會以5個驗證度量的平均值計算計量。
+因此，系統會使用五個驗證度量的平均值來計算計量。
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"

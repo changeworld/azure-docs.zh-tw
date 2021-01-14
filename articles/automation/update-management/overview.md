@@ -3,14 +3,14 @@ title: Azure 自動化更新管理概觀
 description: 此文章提供可對 Windows 和 Linux 機器實作更新的更新管理功能概觀。
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928421"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185609"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -65,16 +65,16 @@ ms.locfileid: "96928421"
 
 ## <a name="clients"></a>用戶端
 
-### <a name="supported-client-types"></a>支援的用戶端類型
+### <a name="supported-operating-systems"></a>支援的作業系統
 
-下表列出更新評估和修補支援的作業系統。 修補需要混合式 Runbook 背景工作角色，當您啟用虛擬機器或伺服器進行更新管理管理時，會自動安裝此背景工作角色。 如需混合式 Runbook 背景工作角色系統需求的詳細資訊，請參閱 [部署 Windows 混合式 runbook 背景工作角色](../automation-windows-hrw-install.md) 和 [部署 Linux 混合式 Runbook 背景工作角色](../automation-linux-hrw-install.md)。
+下表列出更新評估和修補支援的作業系統。 修補需要系統混合式 Runbook 背景工作角色，當您啟用虛擬機器或伺服器進行更新管理管理時，系統會自動安裝該背景工作角色。 如需混合式 Runbook 背景工作角色系統需求的詳細資訊，請參閱 [部署 Windows 混合式 runbook 背景工作角色](../automation-windows-hrw-install.md) 和 [部署 Linux 混合式 Runbook 背景工作角色](../automation-linux-hrw-install.md)。
 
 > [!NOTE]
 > 只有在自動化帳戶和 Log Analytics 工作區[對應表](../how-to/region-mappings.md#supported-mappings) \(部分機器翻譯\) 中列出的特定區域，才支援 Linux 機器的更新評量。
 
 |作業系統  |注意  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2012 R2(Datacenter/Standard)<br>Windows Server 2012 |
 |Windows Server 2008 R2 (RTM 和 SP1 Standard)| 更新管理支援此作業系統的評量和修補。 Windows Server 2008 R2 支援 [混合式 Runbook 背景工作角色](../automation-windows-hrw-install.md) 。 |
 |CentOS 6 和 7 (x64)       | Linux 代理程式需要存取更新存放庫。 分類型修補需要 `yum`，才能傳回 CentOS 在其 RTM 版本中沒有的安全性資料。 如需 CentOS 上分類型修補的詳細資訊，請參閱 [Linux 上的更新分類](view-update-assessments.md#linux)。          |
 |Red Hat Enterprise 6 和 7 (x64)      | Linux 代理程式需要存取更新存放庫。        |
@@ -84,9 +84,9 @@ ms.locfileid: "96928421"
 > [!NOTE]
 > 您可以透過更新管理來管理 Azure 虛擬機器擴展集。 更新管理適用於執行個體本身，而不是基礎映像。 您將必須以累加方式排程更新，如此一來，就不會一次更新所有 VM 執行個體。 您可以遵循[將非 Azure 電腦新增至變更追蹤和清查](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)中的步驟，來新增虛擬機器擴展集的節點。
 
-### <a name="unsupported-client-types"></a>不支援的用戶端類型
+### <a name="unsupported-operating-systems"></a>不支援的作業系統
 
-下表列出不支援的作業系統：
+下表列出更新管理不支援的作業系統：
 
 |作業系統  |注意  |
 |---------|---------|
@@ -94,15 +94,20 @@ ms.locfileid: "96928421"
 |Windows Server 2016 Nano Server     | 不支援。       |
 |Azure Kubernetes Service 節點 | 不支援。 使用[在 Azure Kubernetes Service (AKS) 中將安全性和核心更新套用至 Linux 節點](../../aks/node-updates-kured.md)中所述的修補程序。|
 
-### <a name="client-requirements"></a>用戶端需求
+### <a name="system-requirements"></a>系統需求
 
-下列資訊描述作業系統特有的用戶端需求。 如需其他指導方針，請參閱[網路規劃](#ports)。 若要瞭解 TLS 1.2 的用戶端需求，請參閱 [Azure 自動化的 tls 1.2 強制](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+下列資訊描述作業系統特有的需求。 如需其他指導方針，請參閱[網路規劃](#ports)。 若要瞭解 TLS 1.2 的需求，請參閱 [Azure 自動化的 tls 1.2 強制](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 #### <a name="windows"></a>Windows
 
+軟體需求：
+
+- 需要 .NET Framework 4.6 或更新版本。  ([下載 .NET Framework](/dotnet/framework/install/guide-for-developers)。
+- 需要 Windows PowerShell 5.1 ([下載 Windows Management Framework 5.1](https://www.microsoft.com/download/details.aspx?id=54616)。 ) 
+
 Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取 Microsoft Update。 對於混合式電腦，建議先將您的電腦連接到 [Azure Arc 啟用的伺服器](../../azure-arc/servers/overview.md)，然後使用 Azure 原則將「 [部署 log analytics 代理程式」指派給 windows Azure Arc 電腦](../../governance/policy/samples/built-in-policies.md#monitoring) 內建原則，以安裝適用于 windows 的 log analytics 代理程式。 或者，如果您打算使用適用於 VM 的 Azure 監視器監視電腦，請改用 [ [啟用適用於 VM 的 Azure 監視器](../../governance/policy/samples/built-in-initiatives.md#monitoring) ] 方案。
 
-您可以搭配 Microsoft Endpoint Configuration Manager 使用更新管理。 若要深入了解整合案例，請參閱[整合更新管理與 Windows Endpoint Configuration Manager](mecmintegration.md)。 針對 Configuration Manager 環境中網站所管理的 Windows 伺服器，需要[適用於 Windows 的 Log Analytics 代理程式](../../azure-monitor/platform/agent-windows.md)。 
+您可以搭配 Microsoft Endpoint Configuration Manager 使用更新管理。 若要深入了解整合案例，請參閱[整合更新管理與 Windows Endpoint Configuration Manager](mecmintegration.md)。 針對 Configuration Manager 環境中網站所管理的 Windows 伺服器，需要[適用於 Windows 的 Log Analytics 代理程式](../../azure-monitor/platform/agent-windows.md)。
 
 根據預設，從 Azure Marketplace 部署的 Windows Vm 會設定為從 Windows Update 服務接收自動更新。 當您將 Windows VM 新增至工作區時，此行為並不會變更。 如果您未使用更新管理主動管理更新，即會套用預設行為 (以自動套用更新)。
 
@@ -111,7 +116,11 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 #### <a name="linux"></a>Linux
 
-針對 Linux，機器必須能夠存取更新存放庫 (私人或公用)。 必須使用 TLS 1.1 或 TLS 1.2，才能與更新管理互動。 更新管理不支援已設定為向多個 Log Analytics 工作區回報之適用於 Linux 的 Log Analytics 代理程式。 該機器也必須安裝 Python 2.x。
+軟體需求：
+
+- 電腦需要存取更新存放庫（私人或公用）。
+- 必須使用 TLS 1.1 或 TLS 1.2，才能與更新管理互動。
+- 已安裝 Python 2.x。
 
 > [!NOTE]
 > 只有在特定區域中才支援 Linux 機器的更新評量。 請參閱自動化帳戶和 Log Analytics 工作區[對應表](../how-to/region-mappings.md#supported-mappings) \(部分機器翻譯\)。
@@ -130,11 +139,11 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 ### <a name="hybrid-runbook-worker-groups"></a>混合式 Runbook 背景工作群組
 
-當您啟用更新管理之後，任何直接連線到您 Log Analytics 工作區的 Windows 機器都會自動設定為混合式 Runbook 背景工作角色，以支援要支援更新管理的 Runbook。
+啟用更新管理之後，任何直接連線到 Log Analytics 工作區的 Windows 電腦都會自動設定為系統混合式 Runbook 背景工作角色，以支援支援更新管理的 runbook。
 
 更新管理所管理的每部 Windows 機器都會列於混合式背景工作角色群組窗格中，以作為自動化帳戶的系統混合式背景工作角色群組。 這些群組會使用 `Hostname FQDN_GUID` 命名慣例。 您不能讓這些群組以您帳戶中的 Runbook 為目標。 如果您嘗試，則嘗試會失敗。 這些群組僅用於支援更新管理。 若要深入瞭解如何查看已設定為混合式 Runbook 背景工作角色的 Windows 機器清單，請參閱「 [查看混合式 runbook 背景工作角色](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers)」。
 
-如果您針對更新管理和混合式 Runbook 背景工作角色群組成員資格使用相同的帳戶，則可將 Windows 機器新增到自動化帳戶中的混合式 Runbook 背景工作角色群組，以支援自動化 Runbook。 此功能已新增至混合式 Runbook 背景工作角色 7.2.12024.0 版。
+如果您對更新管理和混合式 Runbook 背景工作角色群組成員資格使用相同的帳戶，您可以將 Windows 電腦新增到自動化帳戶中的使用者混合式 Runbook 背景工作角色群組，以支援自動化 runbook。 此功能已新增至混合式 Runbook 背景工作角色 7.2.12024.0 版。
 
 ### <a name="management-packs"></a>管理組件
 

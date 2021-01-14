@@ -5,12 +5,12 @@ description: 瞭解如何安裝和設定 NGINX 輸入控制器，以使用 Let's
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 88e2bdc1b516e55fb630b2fd31ff6a2977d57bfe
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 3cf7b069d6f010a4461b22c5326589ad3ec31204
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607903"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186255"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器
 
@@ -67,7 +67,7 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
 
 若要取得公用 IP 位址，請使用 `kubectl get service` 命令。 將 IP 位址指派給服務需要幾分鐘的時間。
 
-```
+```console
 $ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
 NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
@@ -91,7 +91,7 @@ az network dns record-set a add-record \
 > [!NOTE]
 > （選擇性）您可以設定輸入控制器 IP 位址的 FQDN，而不是自訂網域。 請注意，此範例適用于 Bash shell。
 > 
-> ```azurecli-interactive
+> ```bash
 > # Public IP address of your ingress controller
 > IP="MY_EXTERNAL_IP"
 > 
@@ -337,7 +337,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 若要確認已成功建立憑證，請使用 `kubectl get certificate --namespace ingress-basic` 命令並確認 [ *就緒* ] 為 *True*，這可能需要幾分鐘的時間。
 
-```
+```console
 $ kubectl get certificate --namespace ingress-basic
 
 NAME         READY   SECRET       AGE
@@ -370,7 +370,7 @@ kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 
 使用命令列出 Helm 版本 `helm list` 。 尋找名為 *nginx* 和 *cert manager* 的圖表，如下列範例輸出所示：
 
-```
+```console
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
@@ -380,7 +380,7 @@ nginx                   ingress-basic   1               2020-01-15 10:09:45.9826
 
 使用命令卸載版本 `helm uninstall` 。 下列範例會卸載 NGINX 輸入和 cert 管理員部署。
 
-```
+```console
 $ helm uninstall cert-manager nginx --namespace ingress-basic
 
 release "cert-manager" uninstalled
@@ -423,7 +423,7 @@ kubectl delete namespace ingress-basic
 - [建立輸入控制器，其使用 Let's Encrypt 自動產生具有靜態公用 IP 的 TLS 憑證][aks-ingress-static-tls]
 
 <!-- LINKS - external -->
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/#az-network-dns-record-set-a-add-record
 [custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/

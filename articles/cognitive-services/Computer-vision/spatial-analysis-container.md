@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bb40586a93a40c2aaa3f0f884a0e747f168c324b
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606261"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186045"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>安裝並執行空間分析容器 (預覽版) 
 
 空間分析容器可讓您分析即時串流影片，以瞭解人員之間的空間關聯性、其移動和實體環境中物件的互動。 容器非常適合用於特定的安全性和資料控管需求。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
-* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="建立電腦視覺資源"  target="_blank">建立電腦視覺資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
+* 擁有 Azure 訂用帳戶之後，請 <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" 建立電腦視覺資源，以 "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 在 Azure 入口網站中建立標準 S1 層的電腦視覺資源，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您將需要您所建立資源的金鑰和端點，以執行空間分析容器。 您稍後將會使用您的金鑰和端點。
 
 
@@ -61,6 +61,9 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 * [DOCKER CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) 和 [NVIDIA-Docker2](https://github.com/NVIDIA/nvidia-docker) 
 * [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 執行時間。
 
+#### <a name="azure-vm-with-gpu"></a>[具有 GPU 的 Azure VM](#tab/virtual-machine)
+在我們的範例中，我們將使用具有一個 K80 GPU 的 [NC 系列 VM](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) 。
+
 ---
 
 | 需求 | 描述 |
@@ -85,7 +88,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 
 ## <a name="set-up-the-host-computer"></a>設定主機電腦
 
-建議您針對主機電腦使用 Azure Stack Edge 裝置。 如果您正在設定不同的裝置，請按一下 [ **桌上型電腦** ]。
+建議您針對主機電腦使用 Azure Stack Edge 裝置。 如果您要設定不同的裝置，請按一下 [ **桌上型電腦** ]，如果您要使用 VM，請按一下 [ **虛擬機器** ]。
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge 裝置](#tab/azure-stack-edge)
 
@@ -99,7 +102,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
   1. 在您的 Azure Stack Edge 裝置上啟用計算功能。 若要啟用計算，請移至您裝置的 web 介面中的 [ **計算** ] 頁面。 
   2. 選取您要為計算啟用的網路介面，然後按一下 [ **啟用**]。 這會在您的裝置上，于該網路介面上建立虛擬交換器。
   3. 將 [Kubernetes test node IP 位址] 和 [Kubernetes external services IP 位址] 保留空白。
-  4. 按一下 [套用]  。 這種作業可能需要大約兩分鐘的時間。 
+  4. 按一下 [套用]。 這種作業可能需要大約兩分鐘的時間。 
 
 ![設定計算](media/spatial-analysis/configure-compute.png)
 
@@ -111,7 +114,7 @@ Azure Stack Edge 是具有網路資料傳輸功能的硬體即服務解決方案
 
 在 [ **設定 Edge 計算**]   頁面中，選擇現有的 IoT 中樞，或選擇建立一個新的。 根據預設，會使用標準 (S1) 定價層來建立 IoT 中樞資源。 若要使用免費層 IoT 中樞資源，請建立一個，然後選取它。 IoT 中樞資源使用 Azure Stack Edge 資源所使用的相同訂用帳戶和資源群組 
 
-按一下 [建立]  。 建立 IoT 中樞資源可能需要幾分鐘的時間。 建立 IoT 中樞資源之後，[ **設定 Edge 計算** ] 圖格將會更新以顯示新的設定。 若要確認已設定 Edge 計算角色，請選取 [ **設定計算**] 磚上的 [ **View config** ]   。
+按一下頁面底部的 [新增] 。 建立 IoT 中樞資源可能需要幾分鐘的時間。 建立 IoT 中樞資源之後，[ **設定 Edge 計算** ] 圖格將會更新以顯示新的設定。 若要確認已設定 Edge 計算角色，請選取 [ **設定計算**] 磚上的 [ **View config** ]   。
 
 在 Edge 裝置上設定 Edge 計算角色時，其會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 Azure IoT Edge 執行時間將已在 IoT Edge 裝置上執行。
 
@@ -252,13 +255,13 @@ sudo systemctl --now enable nvidia-mps.service
 
 ```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-az login
-az account set --subscription <name or ID of Azure Subscription>
-az group create --name "test-resource-group" --location "WestUS"
+sudo az login
+sudo az account set --subscription <name or ID of Azure Subscription>
+sudo az group create --name "test-resource-group" --location "WestUS"
 
-az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
+sudo az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-resource-group"
 
-az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
+sudo az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
 如果主機電腦不是 Azure Stack Edge 裝置，您將需要安裝 [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 版本1.0.9。 遵循下列步驟下載正確的版本：
@@ -297,7 +300,7 @@ sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 您必須將 IoT Edge 裝置連線到您的 Azure IoT 中樞。 您必須從您稍早建立的 IoT Edge 裝置複製連接字串。 或者，您可以在 Azure CLI 中執行下列命令。
 
 ```bash
-az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 在主機電腦上開啟  `/etc/iotedge/config.yaml` 以供編輯。 取代 `ADD DEVICE CONNECTION STRING HERE` 為連接字串。 儲存並關閉檔案。 執行此命令，以重新開機主機電腦上的 IoT Edge 服務。
@@ -306,15 +309,100 @@ az iot hub device-identity show-connection-string --device-id my-edge-device --h
 sudo systemctl restart iotedge
 ```
 
-您可以從 [Azure 入口網站](../../iot-edge/how-to-deploy-modules-portal.md) 或 [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md)，將空間分析容器部署為主電腦上的 IoT 模組。 如果您使用的是入口網站，請將映射 URI 設定為 Azure Container Registry 的位置。 
+您可以從 [Azure 入口網站](../../iot-edge/how-to-deploy-modules-portal.md) 或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)，將空間分析容器部署為主電腦上的 IoT 模組。 如果您使用的是入口網站，請將映射 URI 設定為 Azure Container Registry 的位置。 
 
 使用下列步驟，使用 Azure CLI 部署容器。
+
+#### <a name="azure-vm-with-gpu"></a>[具有 GPU 的 Azure VM](#tab/virtual-machine)
+
+具有 GPU 的 Azure 虛擬機器也可以用來執行空間分析。 下列範例將使用具有一個 K80 GPU 的 [NC 系列](https://docs.microsoft.com/azure/virtual-machines/nc-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) VM。
+
+#### <a name="create-the-vm"></a>建立 VM
+
+開啟 Azure 入口網站中的 [ [建立虛擬機器](https://ms.portal.azure.com/#create/Microsoft.VirtualMachine) ]。
+
+提供 VM 的名稱，然後選取要 (我們) 美國西部2的區域。 請務必將設定 `Availability Options` 為「不需要基礎結構冗余」。 請參閱下圖以取得完整設定和下一個步驟，以協助找出正確的 VM 大小。 
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="虛擬機器設定詳細資料。" lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+
+若要找出 VM 大小，請選取 [查看所有大小]，然後查看 [非 premium 儲存體 VM 大小] 的清單，如下所示。
+
+:::image type="content" source="media/spatial-analysis/virtual-machine-sizes.png" alt-text="虛擬機器大小。" lightbox="media/spatial-analysis/virtual-machine-sizes.png":::
+
+然後，選取 [ **NC6** ] 或 [ **NC6_Promo**]。
+
+:::image type="content" source="media/spatial-analysis/promotional-selection.png" alt-text="促銷選擇" lightbox="media/spatial-analysis/promotional-selection.png":::
+
+接下來，建立 VM。 建立之後，流覽至 Azure 入口網站中的 VM 資源，然後 `Extensions` 從左窗格選取。 [擴充功能] 視窗隨即出現，並顯示所有可用的延伸模組。 選取 `NVIDIA GPU Driver Extension` ，按一下 [建立]，然後完成嚮導。
+
+成功套用擴充功能之後，請流覽至 Azure 入口網站中的 VM 主頁面，然後按一下 `Connect` 。 您可以透過 SSH 或 RDP 來存取 VM。 RDP 將會很有説明，因為它會啟用視覺化程式視窗的觀看 (稍後) 說明。 遵循下列 [步驟](https://docs.microsoft.com/azure/virtual-machines/linux/use-remote-desktop) 來設定 RDP 存取，並開啟 VM 的遠端桌面連線。
+
+### <a name="verify-graphics-drivers-are-installed"></a>確認已安裝圖形驅動程式
+
+執行下列命令，以確認已成功安裝圖形驅動程式。 
+
+```bash
+nvidia-smi
+```
+
+您應該會看見下列輸出。
+
+![NVIDIA 驅動程式輸出](media/spatial-analysis/nvidia-driver-output.png)
+
+### <a name="install-docker-ce-and-nvidia-docker2-on-the-vm"></a>在 VM 上安裝 Docker CE 和 nvidia docker2
+
+一次執行下列命令，以便在 VM 上安裝 Docker CE 和 nvidia docker2。
+
+在主機電腦上安裝 Docker CE。
+
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+```
+```bash
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+```
+```bash
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+```
+
+
+安裝 *nvidia-docker-2* 軟體套件。
+
+```bash
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+```
+```bash
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+```
+```bash
+sudo apt-get update
+```
+```bash
+sudo apt-get install -y docker-ce nvidia-docker2
+```
+```bash
+sudo systemctl restart docker
+```
+
+現在您已設定並設定 VM，請遵循下列步驟來部署空間分析容器。 
 
 ---
 
 ### <a name="iot-deployment-manifest"></a>IoT 部署資訊清單
 
-若要簡化多部主機電腦上的容器部署，您可以建立部署資訊清單檔來指定容器的建立選項和環境變數。 您可以在 Github 上找到 [Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179) 和  [其他桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) 的部署資訊清單範例。
+若要簡化多部主機電腦上的容器部署，您可以建立部署資訊清單檔來指定容器的建立選項和環境變數。 您可以在 GitHub 上找到 [Azure Stack Edge](https://go.microsoft.com/fwlink/?linkid=2142179)、 [其他桌上型電腦](https://go.microsoft.com/fwlink/?linkid=2152270)和 [Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 的部署資訊清單範例。
 
 下表顯示 IoT Edge 模組所使用的各種環境變數。 您也可以使用中的屬性，在上述連結的部署資訊清單中設定它們 `env` `spatialanalysis` ：
 
@@ -326,24 +414,27 @@ sudo systemctl restart iotedge
 | ARCHON_NODES_LOG_LEVEL | 更多資訊詳細 | 記錄層級，請選取兩個值的其中一個|
 | OMP_WAIT_POLICY | 被動 | 不要修改|
 | QT_X11_NO_MITSHM | 1 | 不要修改|
-| API_KEY | 您的 API 金鑰| 從電腦視覺資源的 Azure 入口網站收集此值。 您可以在資源的 [ **金鑰和端點** ] 區段中找到它。 |
-| BILLING_ENDPOINT | 您的端點 URI| 從電腦視覺資源的 Azure 入口網站收集此值。 您可以在資源的 [ **金鑰和端點** ] 區段中找到它。|
+| APIKEY | 您的 API 金鑰| 從電腦視覺資源的 Azure 入口網站收集此值。 您可以在資源的 [ **金鑰和端點** ] 區段中找到它。 |
+| 帳單 | 您的端點 URI| 從電腦視覺資源的 Azure 入口網站收集此值。 您可以在資源的 [ **金鑰和端點** ] 區段中找到它。|
 | 使用者授權合約 | accept | 此值必須設定為 [ *接受* ]，容器才能執行 |
 | DISPLAY | ：1 | 此值必須與主機電腦上的輸出相同 `echo $DISPLAY` 。 Azure Stack Edge 裝置沒有顯示。 這項設定不適用|
-
+| ARCHON_GRAPH_READY_TIMEOUT | 600 | 如果您的 GPU **不** 是 T4 或 NVIDIA 2080 Ti，請新增此環境變數|
+| ORT_TENSORRT_ENGINE_CACHE_ENABLE | 0 | 如果您的 GPU **不** 是 T4 或 NVIDIA 2080 Ti，請新增此環境變數|
+| KEY_ENV | ASE 加密金鑰 | 如果 Video_URL 是模糊字串，請新增此環境變數 |
+| IV_ENV | 初始化向量 | 如果 Video_URL 是模糊字串，請新增此環境變數|
 
 > [!IMPORTANT]
 > 必須指定 `Eula`、`Billing` 及 `ApiKey` 選項以執行容器，否則容器將不會啟動。  如需詳細資訊，請參閱[帳單](#billing)。
 
-當您使用自己的設定和作業選取來更新 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179) 或 [桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) 的部署資訊清單之後，您可以使用下列 [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) 命令，將容器部署在主機電腦上，作為 IoT Edge 模組。
+一旦您更新 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179)的部署資訊清單、具有您自己設定和選取作業的 GPU 的 [桌上型電腦](https://go.microsoft.com/fwlink/?linkid=2152270) 或 [Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) ，您可以使用下列 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) 命令，將容器部署在主機電腦上，作為 IoT Edge 模組。
 
 ```azurecli
-az login
-az extension add --name azure-iot
-az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
+sudo az login
+sudo az extension add --name azure-iot
+sudo az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge device name>" --content DeploymentManifest.json --subscription "<subscriptionId>"
 ```
 
-|參數  |描述  |
+|參數  |Description  |
 |---------|---------|
 | `--hub-name` | 您的 Azure IoT 中樞名稱。 |
 | `--content` | 部署檔案的名稱。 |
@@ -366,7 +457,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 ## <a name="redeploy-or-delete-the-deployment"></a>重新部署或刪除部署
 
-如果您需要更新部署，您必須確定已成功部署先前的部署，或您需要刪除未完成的 IoT Edge 裝置部署。 否則，這些部署會繼續進行，讓系統處於不良狀態。 您可以使用 Azure 入口網站或 [Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)。
+如果您需要更新部署，您必須確定已成功部署先前的部署，或您需要刪除未完成的 IoT Edge 裝置部署。 否則，這些部署會繼續進行，讓系統處於不良狀態。 您可以使用 Azure 入口網站或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows)。
 
 ## <a name="use-the-output-generated-by-the-container"></a>使用容器所產生的輸出
 
@@ -385,25 +476,25 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 
 按一下 [ **產生 SAS 權杖和 url** ]，然後複製 BLOB SAS URL。 取代開頭 `https` 為的 `http` ，並在支援影片播放的瀏覽器中測試 URL。
 
-`VIDEO_URL`在您的[Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179)的部署資訊清單中，或使用您為其建立之 URL 的其他[桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)，取代為所有圖形。 將設定 `VIDEO_IS_LIVE` 為 `false` ，並使用更新的資訊清單重新部署空間分析容器。 請參閱下方的範例。
+`VIDEO_URL`在您的[Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179)、[桌上型電腦](https://go.microsoft.com/fwlink/?linkid=2152270)或[Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189)的部署資訊清單中，以您為其建立的每個圖表的 GPU 取代。 將設定 `VIDEO_IS_LIVE` 為 `false` ，並使用更新的資訊清單重新部署空間分析容器。 請參閱下方的範例。
 
 空間分析模組會開始取用影片檔案，而且也會持續自動重新執行。
 
 
 ```json
 "zonecrossing": {
-  "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
-  "version": 1,
-  "enabled": true,
-  "parameters": {
-      "VIDEO_URL": "Replace http url here",
-      "VIDEO_SOURCE_ID": "personcountgraph",
-      "VIDEO_IS_LIVE": false,
-        "VIDEO_DECODE_GPU_INDEX": 0,
-      "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0 }",
-      "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"threshold\":35.0}]}"
+    "operationId" : "cognitiveservices.vision.spatialanalysis-personcrossingpolygon",
+    "version": 1,
+    "enabled": true,
+    "parameters": {
+        "VIDEO_URL": "Replace http url here",
+        "VIDEO_SOURCE_ID": "personcountgraph",
+        "VIDEO_IS_LIVE": false,
+      "VIDEO_DECODE_GPU_INDEX": 0,
+        "DETECTOR_NODE_CONFIG": "{ \"gpu_index\": 0, \"do_calibration\": true }",
+        "SPACEANALYTICS_CONFIG": "{\"zones\":[{\"name\":\"queue\",\"polygon\":[[0.3,0.3],[0.3,0.9],[0.6,0.9],[0.6,0.3],[0.3,0.3]], \"events\": [{\"type\": \"zonecrossing\", \"config\": {\"threshold\": 16.0, \"focus\": \"footprint\"}}]}]}"
     }
-  },
+   },
 
 ```
 
@@ -418,7 +509,7 @@ az iot edge set-modules --hub-name "<IoT Hub name>" --device-id "<IoT Edge devic
 Azure 認知服務容器不會授權執行，而不會連線到計量/帳單端點。 您必須讓容器隨時都能與計量端點進行帳單資訊的通訊。 認知服務容器不會將客戶資料（例如正在分析的影片或影像）傳送給 Microsoft。
 
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已瞭解下載、安裝及執行空間分析容器的概念和工作流程。 摘要說明：
 

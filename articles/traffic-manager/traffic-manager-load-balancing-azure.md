@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
-ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eaf50f3bdacaf5680bc5ecb1379faff20133b5ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021685"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184368"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>在 Azure 中使用負載平衡服務
 
@@ -41,7 +41,7 @@ Microsoft Azure 提供多個服務，可管理分配網路流量和負載平衡�
 * **應用程式閘道** 提供應用程式傳遞控制器 (ADC) 即服務，為您的應用程式提供各種第7層負載平衡功能。 它可讓客戶將 CPU 密集的 TLS 終止卸載至應用程式閘道，以優化 web 伺服陣列的生產力。 其他第 7 層路由功能包括循環配置連入流量、以 Cookie 為基礎的工作階段同質、URL 路徑型路由，以及在單一應用程式閘道背後代管多個網站的能力。 應用程式閘道可以設定為連結網際網路的閘道、內部專用閘道或兩者混合。 應用程式閘道完全由 Azure 管理、可調整且可用性極高。 它提供一組豐富的診斷和記錄功能，很好管理。
 * **Load Balancer** 是 Azure SDN 堆疊不可或缺的一部分，可為所有 UDP 和 TCP 通訊協定提供高效能、低延遲的第4層負載平衡服務。 它會管理輸入及輸出連線。 您可以設定公用和內部負載平衡端點，並使用 TCP 和 HTTP 健全狀況探查選項定義規則，將輸入連線對應至後端集區目的地，以管理服務可用性。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 在此範例案例中，我們使用簡單的網站提供兩種類型的內容︰影像及動態呈現的網頁。 網站必須是地理備援，且應從最接近 (最低延遲) 的位置將服務提供給其使用者。 應用程式開發人員決定任何符合模式/影像/* 的 URL 都是從不同於 Web 伺服陣列之其餘部分的專用 VM 集區提供。
 
@@ -88,15 +88,15 @@ Microsoft Azure 提供多個服務，可管理分配網路流量和負載平衡�
    * **執行個體計數**：執行個體的數目，從 2 到 10 的值。
    * **資源群組**：保存應用程式閘道的資源群組。 它可以是現有的或新的資源群組。
    * **位置**：應用程式閘道的區域，它是與資源群組所在相同的位置。 位置相當重要，因為虛擬網路和公用 IP 必須與閘道位於相同位置。
-3. 按一下 [確定]。
+3. 按一下 [確定]  。
 4. 接下來，針對應用程式閘道定義虛擬網路、子網路、前端 IP 與接聽程式設定。 在此案例中，前端 IP 位址是 **公用**，以允許它稍後做為端點新增至流量管理員設定檔。
 5. 使用下列其中一個選項設定接聽程式︰
-    * 如果您使用 HTTP，則無需設定。 按一下 [確定]。
-    * 如果您使用 HTTPS，則需要設定進一步的設定。 請參閱[建立應用程式閘道](../application-gateway/application-gateway-create-gateway-portal.md)，由步驟 9 開始。 完成設定後，按一下 [確定]。
+    * 如果您使用 HTTP，則無需設定。 按一下 [確定]  。
+    * 如果您使用 HTTPS，則需要設定進一步的設定。 請參閱[建立應用程式閘道](../application-gateway/quick-create-portal.md)，由步驟 9 開始。 完成設定後，按一下 [確定]。
 
 #### <a name="configure-url-routing-for-application-gateways"></a>設定應用程式閘道的 URL 路由
 
-當您選擇後端集區時，使用路徑型規則設定的應用程式閘道會採用除循環配置資源散發以外之要求 URL 的路徑模式。 在此案例中，我們要將導向任何具有「/images/\*」之 URL 的路徑型規則新增到映像伺服器集區。 如需設定應用程式閘道的 URL 路徑型路由相關資訊，請參閱[建立應用程式閘道的路徑型規則](../application-gateway/application-gateway-create-url-route-portal.md)。
+當您選擇後端集區時，使用路徑型規則設定的應用程式閘道會採用除循環配置資源散發以外之要求 URL 的路徑模式。 在此案例中，我們要將導向任何具有「/images/\*」之 URL 的路徑型規則新增到映像伺服器集區。 如需設定應用程式閘道的 URL 路徑型路由相關資訊，請參閱[建立應用程式閘道的路徑型規則](../application-gateway/create-url-route-portal.md)。
 
 ![應用程式閘道 Web 層圖表](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -156,7 +156,7 @@ Microsoft Azure 提供多個服務，可管理分配網路流量和負載平衡�
 
 如果您的高可用性資料庫叢集是使用 SQL Server AlwaysOn，請參閱[設定一或多個 Always On 可用性群組接聽程式](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md)以取得逐步指示。
 
-如需有關如何設定內部負載平衡器的詳細資訊，請參閱[在 Azure 入口網站中建立內部負載平衡器](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)。
+如需有關如何設定內部負載平衡器的詳細資訊，請參閱[在 Azure 入口網站中建立內部負載平衡器](../load-balancer/quickstart-load-balancer-standard-internal-portal.md)。
 
 1. 在 [Azure 入口網站] 的左窗格中，按一下 [**建立資源**  >  **網路**  >  **負載平衡器**]。
 2. 為負載平衡器選擇名稱。
@@ -210,5 +210,5 @@ Microsoft Azure 提供多個服務，可管理分配網路流量和負載平衡�
 ## <a name="next-steps"></a>後續步驟
 
 * [流量管理員概觀](traffic-manager-overview.md)
-* [應用程式閘道概觀](../application-gateway/application-gateway-introduction.md)
+* [應用程式閘道概觀](../application-gateway/overview.md)
 * [Azure 負載平衡器概觀](../load-balancer/load-balancer-overview.md)

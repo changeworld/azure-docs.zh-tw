@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: fa83c51469636eb269aa5dc3192ff7e65b53ce89
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912694"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186136"
 ---
 # <a name="what-is-routing-preference-preview"></a>什麼是路由喜好設定 (預覽)？
 
@@ -74,7 +74,7 @@ Azure 路由喜好設定可讓您選擇流量在 Azure 與網際網路之間的�
 
 ## <a name="limitations"></a>限制
 
-* 路由喜好設定僅與公用 IP 位址的標準 SKU 相容。 不支援公用 IP 位址的基本 SKU。
+* 路由喜好設定只與公用 IP 位址的區域冗余標準 SKU 相容。 不支援公用 IP 位址的基本 SKU。
 * 路由喜好設定目前僅支援 IPV4 公用 IP 位址。 不支援 IPv6 公用 IP 位址。
 * 具有多個 NIC 的虛擬機器只能有一種類型的路由喜好設定。
 

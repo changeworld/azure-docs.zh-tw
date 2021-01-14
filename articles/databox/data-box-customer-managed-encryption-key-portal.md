@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: f75907dc1fa079cebb3b80874090c658fd7b8174
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 80a6824edb92d8337481f592cbbf5eb23255b383
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302829"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185524"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>在 Azure Key Vault 中使用客戶管理的金鑰 Azure 資料箱
 
@@ -57,7 +57,7 @@ Azure 資料箱保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，它�
 
       ![複習和建立 Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
-      檢查金鑰保存庫的資訊，然後選取 [ **建立**]。 等候幾分鐘的時間來完成金鑰保存庫的建立。
+      檢閱金鑰保存庫的資訊，然後選取 [建立]。 等候幾分鐘的時間，讓金鑰保存庫完成建立。
 
        ![使用您的設定建立 Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
 
@@ -65,11 +65,11 @@ Azure 資料箱保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，它�
 
     ![從 Azure Key Vault 選取金鑰](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
-   如果您想要建立新的金鑰，請選取 [ **建立新** 的]。 您必須使用 RSA 金鑰。 大小可以是2048或更大。
+   如果您想要建立新的金鑰，請選取 [建立新的]。 您必須使用 RSA 金鑰。 大小可以是 2048 或更大。
 
     ![在 Azure Key Vault 中建立新的金鑰](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6-a.png)
 
-    輸入新金鑰的名稱、接受其他預設值，然後選取 [ **建立**]。 系統會通知您金鑰保存庫中已建立金鑰。
+    輸入新金鑰的名稱，接受其他預設值，然後選取 [建立]。 系統會通知您金鑰保存庫中已建立金鑰。
 
     ![命名新的金鑰](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
 
@@ -79,9 +79,9 @@ Azure 資料箱保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，它�
 
     如果您想要產生新的金鑰版本，請選取 [ **建立新** 的]。
 
-    ![開啟對話方塊來建立新的金鑰版本](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8-a.png)
+    ![開啟用來建立新金鑰版本的對話方塊](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8-a.png)
 
-    選擇新金鑰版本的設定，然後選取 [ **建立**]。
+    選擇新金鑰版本的設定，然後選取 [建立]。
 
     ![建立新的金鑰版本](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8-b.png)
 
@@ -91,11 +91,11 @@ Azure 資料箱保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，它�
 
     **加密類型** 設定會顯示您所選擇的金鑰保存庫和金鑰。
 
-    ![客戶管理金鑰的金鑰和金鑰保存庫](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-9.png)
+    ![客戶自控金鑰的金鑰和金鑰保存庫](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-9.png)
 
 7. 選取用來管理此資源之客戶管理金鑰的身分識別類型。 您可以使用在訂單建立期間產生的 **系統指派** 身分識別，或選擇使用者指派的身分識別。
 
-    使用者指派的身分識別是一種獨立的資源，可讓您用來管理資源的存取權。 如需詳細資訊，請參閱 [受控識別類型](/azure/active-directory/managed-identities-azure-resources/overview)。
+    使用者指派的身分識別是一種獨立的資源，可讓您用來管理資源的存取權。 如需詳細資訊，請參閱[受控識別類型](/azure/active-directory/managed-identities-azure-resources/overview)。
 
     ![選取身分識別類型](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-13.png)
 
@@ -107,7 +107,7 @@ Azure 資料箱保護裝置的解除鎖定金鑰 (也稱為裝置密碼) ，它�
 
     選取的使用者身分識別會顯示在 [ **加密類型** ] 設定中。
 
-    ![在 [加密類型設定] 中顯示所選的使用者身分識別](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-15.png)
+    ![已選取而顯示於 [加密類型] 設定中的使用者身分識別](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-15.png)
 
  9. 選取 [ **儲存** ] 以儲存已更新的 **加密類型** 設定。
 

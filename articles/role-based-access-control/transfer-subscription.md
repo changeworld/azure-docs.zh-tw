@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 81224b5e16f3bca5da641bbb2e9c82dd59000e79
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095418"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185881"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>將 Azure 訂用帳戶轉移至不同的 Azure AD 目錄
 
@@ -73,7 +73,7 @@ ms.locfileid: "97095418"
 | 自訂角色 | 是 | 是 | [列出自訂角色](#save-custom-roles) | 所有自訂角色都會永久刪除。 您必須重新建立自訂角色和任何角色指派。 |
 | 系統指派的受控識別 | 是 | 是 | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須停用並重新啟用受控識別。 您必須重新建立角色指派。 |
 | 使用者指派的受控識別 | 是 | 是 | [列出受控識別](#list-role-assignments-for-managed-identities) | 您必須刪除、重新建立，然後將受控識別附加至適當的資源。 您必須重新建立角色指派。 |
-| Azure 金鑰保存庫 | 是 | 是 | [列出 Key Vault 存取原則](#list-key-vaults) | 您必須更新與金鑰保存庫相關聯的租使用者識別碼。 您必須移除並新增新的存取原則。 |
+| Azure Key Vault | 是 | 是 | [列出 Key Vault 存取原則](#list-key-vaults) | 您必須更新與金鑰保存庫相關聯的租使用者識別碼。 您必須移除並新增新的存取原則。 |
 | 已啟用 Azure AD authentication 整合的 Azure SQL 資料庫 | 是 | 否 | [使用 Azure AD authentication 檢查 Azure SQL 資料庫](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
 | Azure 儲存體和 Azure Data Lake Storage Gen2 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
 | Azure Data Lake Storage Gen1 | 是 | 是 |  | 您必須重新建立任何 Acl。 |
@@ -88,7 +88,7 @@ ms.locfileid: "97095418"
 > [!WARNING]
 > 如果您針對資源（例如儲存體帳戶或 SQL database）使用待用資料加密，但其相依于金鑰保存庫，但該金鑰保存庫 **不** 在要傳輸的相同訂用帳戶中，則可能會導致無法復原的情況。 如果您有這種情況，您應該採取步驟來使用不同的金鑰保存庫，或暫時停用客戶管理的金鑰，以避免此無法復原的情況。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成這些步驟，您將需要：
 
@@ -319,7 +319,7 @@ ms.locfileid: "97095418"
 
 1. 停用並重新啟用系統指派的受控識別。
 
-    | Azure 服務 | 詳細資訊 | 
+    | Azure 服務 | 其他資訊 | 
     | --- | --- |
     | 虛擬機器 | [使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#system-assigned-managed-identity) |
     | 虛擬機器擴展集 | [使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
@@ -335,11 +335,11 @@ ms.locfileid: "97095418"
 
 1. 刪除、重新建立及附加使用者指派的受控識別。
 
-    | Azure 服務 | 詳細資訊 | 
+    | Azure 服務 | 其他資訊 | 
     | --- | --- |
     | 虛擬機器 | [使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) |
     | 虛擬機器擴展集 | [使用 Azure CLI 在虛擬機器擴展集上設定 Azure 資源受控識別](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
-    | 其他服務 | [支援適用於 Azure 資源的受控識別服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[使用 Azure CLI 建立、列出和刪除使用者指派的受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
+    | 其他服務 | [支援適用於 Azure 資源的受控識別服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[使用 Azure CLI 建立、列出或刪除使用者指派的受控識別](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
 1. 使用 [az role 指派 create](/cli/azure/role/assignment#az_role_assignment_create) 來建立使用者指派的受控識別的角色指派。 如需詳細資訊，請參閱 [使用 Azure CLI 將受控識別存取權指派給資源](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)。
 

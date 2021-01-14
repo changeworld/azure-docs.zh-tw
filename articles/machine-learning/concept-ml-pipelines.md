@@ -1,41 +1,30 @@
 ---
-title: 什麼是 Azure Machine Learning 管線
+title: 什麼是機器學習管線？
 titleSuffix: Azure Machine Learning
-description: 瞭解 machine learning (ML) 管線如何協助您建立、優化及管理機器學習工作流程。
+description: 瞭解機器學習管線如何協助您建立、優化及管理機器學習工作流程。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 01/11/2021
+ms.date: 01/12/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: ee3d7d1cf285573db894d64549cf79babb517d95
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a6ee4c08a7ecf9bcfcbc9cf6f630efe126248e9f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131282"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185701"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什麼是 Azure Machine Learning 管線？
 
-在本文中，您將瞭解 Azure Machine Learning 管線如何協助您建立、優化及管理機器學習工作流程。 這些工作流程有許多優點： 
-
-+ 簡潔
-+ 速度
-+ 可重複性
-+ 彈性
-+ 版本控制和追蹤
-+ 模組 化 
-+ 品質保證
-+ 成本控制
-
-當您的機器學習服務專案移至單純探索和反復專案之後，這些權益就會變成重大。 即使是簡單的單一步驟管線也很重要。 機器學習專案通常會處於複雜的狀態，而且可能會讓單一工作流程的精確成就成為簡單的程式。
+在本文中，您將瞭解機器學習管線如何協助您建立、優化及管理您的機器學習工作流程。 
 
 <a name="compare"></a>
-### <a name="which-azure-pipeline-technology-should-i-use"></a>我應該使用哪一種 Azure 管線技術？
+## <a name="which-azure-pipeline-technology-should-i-use"></a>我應該使用哪一種 Azure 管線技術？
 
-Azure 雲端提供數個其他管線，各有不同的用途。 下表列出不同的管線，以及它們的用途：
+Azure 雲端提供數種類型的管線，各有不同的用途。 下表列出不同的管線，以及它們的用途：
 
 | 案例 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
@@ -43,7 +32,7 @@ Azure 雲端提供數個其他管線，各有不同的用途。 下表列出不�
 | 資料協調 (資料準備)  | 資料工程師 | [Azure Data Factory 管線](../data-factory/concepts-pipelines-activities.md) | Apache Airflow | 資料 > 資料 | 強型別移動、以資料為中心的活動 |
 | & app 協調流程 (CI/CD) 的程式碼 | 應用程式開發人員/Ops | [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | 程式碼 + 模型-> 的應用程式/服務 | 最開放且彈性的活動支援、核准佇列、具有管制的階段 | 
 
-## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML 管線有何用途？
+## <a name="what-can-machine-learning-pipelines-do"></a>機器學習管線有何用途？
 
 Azure Machine Learning 管線是完整機器學習工作的獨立可執行工作流程。 子工作會封裝成管線內的一系列步驟。 Azure Machine Learning 管線可以像呼叫 Python 腳本一樣簡單，因此幾乎 _可以_ 進行任何動作。 管線 _應_ 著重于機器學習工作，例如：
 
@@ -64,9 +53,9 @@ Azure Machine Learning 管線是完整機器學習工作的獨立可執行工作
 
 ### <a name="analyzing-dependencies"></a>分析相依性
 
-許多程式設計生態系統具有可協調資源、程式庫或編譯相依性的工具。 一般而言，這些工具會使用檔案時間戳記來計算相依性。 當檔案變更時，只會更新它及其相依項， (下載、重新編譯或封裝) 。 Azure ML 管線擴充了這個概念。 如同傳統的組建工具，管線會計算步驟之間的相依性，而且只會執行必要的重新計算。 
+許多程式設計生態系統具有可協調資源、程式庫或編譯相依性的工具。 一般而言，這些工具會使用檔案時間戳記來計算相依性。 當檔案變更時，只會更新它及其相依項， (下載、重新編譯或封裝) 。 Azure Machine Learning 管線會擴充這個概念。 如同傳統的組建工具，管線會計算步驟之間的相依性，而且只會執行必要的重新計算。 
 
-不過，Azure ML 管線中的相依性分析比簡單的時間戳記更精密。 每個步驟都可以在不同的硬體和軟體環境中執行。 資料準備可能是耗時的程式，但不需要在具有強大 Gpu 的硬體上執行，某些步驟可能需要作業系統專用的軟體，您可能會想要使用分散式訓練等等。 
+不過，Azure Machine Learning 管線中的相依性分析比簡單的時間戳記更精密。 每個步驟都可以在不同的硬體和軟體環境中執行。 資料準備可能是耗時的程式，但不需要在具有強大 Gpu 的硬體上執行，某些步驟可能需要作業系統專用的軟體，您可能會想要使用分散式訓練等等。 
 
 Azure Machine Learning 會自動協調管線步驟之間的所有相依性。 此協調流程可能包括啟動及關閉 Docker 映射、附加和卸離計算資源，以及在步驟之間以一致且自動的方式移動資料。
 
@@ -92,7 +81,7 @@ Azure Machine Learning 會自動協調管線步驟之間的所有相依性。 �
 
 在 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)中，管線是在模組中定義的 python 物件 `azureml.pipeline.core` 。 [管線](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?preserve-view=true&view=azure-ml-py)物件包含一或多個[PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py)物件的排序次序。 `PipelineStep`類別是抽象的，而實際的步驟則是子類別，例如[EstimatorStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?preserve-view=true&view=azure-ml-py)、 [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?preserve-view=true&view=azure-ml-py)或[DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py)。 [ModuleStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?preserve-view=true&view=azure-ml-py)類別包含可重複使用的步驟順序，可在管線間共用。 會 `Pipeline` 作為的一部分執行 `Experiment` 。
 
-Azure ML 管線與 Azure Machine Learning 工作區相關聯，而管線步驟會與該工作區中可用的計算目標相關聯。 如需詳細資訊，請參閱 [Azure 入口網站中的建立和管理 Azure Machine Learning 工作區](./how-to-manage-workspace.md) 或 [Azure Machine Learning 中的計算目標](./concept-compute-target.md)。
+Azure machine learning 管線會與 Azure Machine Learning 工作區相關聯，而管線步驟會與該工作區中可用的計算目標相關聯。 如需詳細資訊，請參閱 [Azure 入口網站中的建立和管理 Azure Machine Learning 工作區](./how-to-manage-workspace.md) 或 [Azure Machine Learning 中的計算目標](./concept-compute-target.md)。
 
 ### <a name="a-simple-python-pipeline"></a>簡單的 Python 管線
 
@@ -147,7 +136,7 @@ pipeline_run.wait_for_completion()
 
 針對您的機器學習工作流程使用管線的主要優點如下：
 
-|主要優點|描述|
+|主要優點|Description|
 |:-------:|-----------|
 |**自動&nbsp;執行**|排程以平行方式或依序以可靠且自動的方式執行的步驟。 資料準備和模型化可能會在過去幾天或幾周，而管線可讓您在處理常式執行時專注于其他工作。 |
 |**異類計算**|使用多個在異類和可調整的計算資源和儲存位置之間可靠協調的管線。 在不同的計算目標上執行個別的管線步驟（例如 HDInsight、GPU 資料科學 Vm 和 Databricks），以有效率地使用可用的計算資源。|
@@ -158,8 +147,7 @@ pipeline_run.wait_for_completion()
 
 ## <a name="next-steps"></a>後續步驟
 
-Azure ML 管線是一項功能強大的工具，可在早期開發階段開始提供價值。 當小組和專案成長時，此值會增加。 本文說明如何使用 Azure Machine Learning Python SDK 來指定管線，並在 Azure 上進行協調。 您已看過一些簡單的原始程式碼，並引進一些 `PipelineStep` 可用的類別。 您應瞭解何時使用 Azure ML 管線，以及 Azure 如何執行它們。 
-
+Azure Machine Learning 管線是一項功能強大的工具，可在早期開發階段開始提供價值。 當小組和專案成長時，此值會增加。 本文說明如何使用 Azure Machine Learning Python SDK 來指定管線，並在 Azure 上進行協調。 您已看過一些簡單的原始程式碼，並引進一些 `PipelineStep` 可用的類別。 您應該可以瞭解何時使用 Azure Machine Learning 管線，以及 Azure 如何執行它們。 
 
 + 瞭解如何 [建立您的第一個管線](how-to-create-your-first-pipeline.md)。
 

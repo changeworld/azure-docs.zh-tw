@@ -4,15 +4,15 @@ description: Go-To-Market 服務 - 本節描述了發行者可以使用的 Micro
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: ad86ebe1ca397004745e75dd279ea0a7cfe8348e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 263c038cf5003d950cf500ccc13cf562ac71db0c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746562"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184988"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>您的商業市集權益
 
@@ -104,16 +104,16 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 
 對於出現已下行為的發行者，Microsoft 將保留撤銷及終止 Marketplace Rewards 權益的權利：
 
-* 使用其 marketplace 清單來參與不合法的活動。
-* 收到已知或認為詐騙的購買。
-* 從商業市場中取消列出。
-* 使用其供應專案來顯示違反著作權或商標法則的行銷或其他內容。
-* 違反 [azure 贊助方案](https://azure.microsoft.com/offers/ms-azr-0036p/)的原則，包括（但不限於）對自己的內部作業或比特幣挖掘使用 azure 贊助資金。
+- 使用其 marketplace 清單來參與不合法的活動。
+- 收到已知或認為詐騙的購買。
+- 從商業市場中取消列出。
+- 使用其供應專案來顯示違反著作權或商標法則的行銷或其他內容。
+- 違反 [azure 贊助方案](https://azure.microsoft.com/offers/ms-azr-0036p/)的原則，包括（但不限於）對自己的內部作業或比特幣挖掘使用 azure 贊助資金。
 
 在下列情況中，Microsoft 會保留撤銷和終止 Marketplace Rewards 的權利：
 
-* 進行購買的客戶不小心，希望取消購買。
-* 客戶會在使用合作夥伴的產品之前取消。
+- 進行購買的客戶不小心，希望取消購買。
+- 客戶會在使用合作夥伴的產品之前取消。
 
 ### <a name="offer-availability"></a>供應專案可用性
 

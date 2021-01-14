@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516965"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186187"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>關於 Azure 容器實例的常見問題
 
@@ -54,6 +54,10 @@ Azure 容器實例上可部署容器映射的大小上限為 15 GB。 您可以�
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>我應該在容器中使用什麼 .NET 或 .NET Core 映射層？ 
 
 使用符合您需求的最小影像。 針對 Linux，您可以使用 *執行時間 alpine* 的 .net core 映射（自 .net core 2.1 版起已支援）。 若是 Windows，如果您使用完整 .NET Framework，則必須使用 Windows Server Core 映射 (僅限執行時間的映射，例如  *4.7.2-windowsservercore-ltsc2016*) 。 僅限執行時間的映射較小，但不支援需要 .NET SDK 的工作負載。
+
+### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>哪些類型的容器登錄與 ACI 相容？
+
+ACI 支援從 ACR 和其他協力廠商容器登錄（例如 DockerHub）提取映射。 ACI 也支援從內部部署登錄中提取映射，只要它們是 OCR 相容的，且具有公開到網際網路的端點即可。
 
 ## <a name="availability-and-quotas"></a>可用性和配額
 

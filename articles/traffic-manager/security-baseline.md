@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d4523319c04703c04a293471124329512e31a265
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5d5ecf95289bf7860363b7e97d834372ee6c2268
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964672"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185252"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>適用于 Azure 流量管理員的 Azure 安全性基準
 
@@ -76,7 +76,7 @@ ms.locfileid: "94964672"
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-- [開始使用 Log Analytics 查詢](../azure-monitor/log-query/get-started-portal.md)
+- [開始使用 Log Analytics 查詢](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
@@ -116,9 +116,9 @@ ms.locfileid: "94964672"
 
 - [使用 Azure 入口網站新增或移除 Azure 角色指派](../role-based-access-control/role-assignments-portal.md)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -136,7 +136,7 @@ ms.locfileid: "94964672"
 
 您也可以使用 Azure AD Privileged Identity Management 和 Azure Resource Manager 來啟用即時存取。 
 
-- [深入瞭解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [深入瞭解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 - [如何使用 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -170,7 +170,7 @@ ms.locfileid: "94964672"
 
 **指導** 方針：使用安全且受 Azure 管理的工作站 (也稱為「特殊許可權存取工作站」，或 PAW 需要較高許可權的系統管理工作) 。
 
-- [瞭解安全、受 Azure 管理的工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [瞭解安全、受 Azure 管理的工作站](/security/compass/concept-azure-managed-workstation)
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -184,9 +184,9 @@ ms.locfileid: "94964672"
 
 此外，使用 Azure AD 風險偵測來查看警示和報告有風險的使用者行為。
 
-- [如何部署 Privileged Identity Management](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [如何部署 Privileged Identity Management](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [瞭解 Azure AD 風險偵測](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [瞭解 Azure AD 風險偵測](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -206,7 +206,7 @@ ms.locfileid: "94964672"
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -216,9 +216,9 @@ ms.locfileid: "94964672"
 
 **指引**：Azure AD 會提供記錄來協助探索過時的帳戶。 此外，使用 Azure AD 身分識別和存取評論，有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確定只有適當的使用者可以繼續存取。 
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
-- [如何使用 Azure AD 身分識別和存取權評論](../active-directory/governance/access-reviews-overview.md)
+- [如何使用 Azure AD 身分識別和存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -230,7 +230,7 @@ ms.locfileid: "94964672"
 
 您可以建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 您可以在 Log Analytics 工作區中設定所需的警示。
 
-- [如何整合 Azure 活動記錄與 Azure 監視器](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何整合 Azure 活動記錄與 Azure 監視器](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -240,7 +240,7 @@ ms.locfileid: "94964672"
 
 **指導** 方針：使用 Azure AD Identity Protection 功能，對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -258,7 +258,7 @@ ms.locfileid: "94964672"
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -276,9 +276,9 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 - [流量管理員參與者角色](../role-based-access-control/built-in-roles.md#traffic-manager-contributor)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -306,7 +306,7 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 - [如何使用 Azure Resource Graph Explorer 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何查看您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何查看您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -318,7 +318,7 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 **指導** 方針：使用原則名稱、描述和類別，根據分類法以邏輯方式組織資產。
 
-- [如需標記資產的詳細資訊，請參閱資源命名和標記決策指南](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
+- [如需標記資產的詳細資訊，請參閱資源命名和標記決策指南](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -335,11 +335,11 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 您也可以建立自訂 Azure 原則定義來限制更細微的資源設定。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -357,7 +357,7 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 **指導** 方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。
 
-使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 則可查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -378,7 +378,7 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -402,7 +402,7 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 **指導** 方針：使用 Azure 原則定義和實行 Azure 流量管理員的標準安全性設定。 使用 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以對復原服務保存庫的設定進行審核或強制執行。
 
-- [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -426,9 +426,9 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 **指導** 方針：如果您使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -494,7 +494,7 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -514,7 +514,7 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 **指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
 
-- [如何設定 Azure 資訊安全中心安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
+- [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -548,11 +548,11 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -560,5 +560,5 @@ Azure 流量管理員具有稱為「流量管理員參與者」的預先定義 A
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

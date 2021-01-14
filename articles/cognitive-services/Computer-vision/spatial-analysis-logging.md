@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014572"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186017"
 ---
 # <a name="telemetry-and-troubleshooting"></a>遙測和疑難排解
 
@@ -68,7 +68,7 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-在 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的部署資訊清單中，尋找 *telegraf* 模組，並將下列值取代為上一個步驟中的服務主體資訊，然後重新部署。
+在 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179)、 [桌上型電腦](https://go.microsoft.com/fwlink/?linkid=2152270)或 [具有 GPU 的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189)的部署資訊清單中，尋找 *telegraf* 模組，並將下列值取代為上一個步驟中的服務主體資訊，然後重新部署。
 
 ```json
 
@@ -129,7 +129,7 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>使用診斷容器收集記錄檔
 
-空間分析會產生可供您用來診斷執行時間問題或包含在支援票證中的 Docker 偵錯工具記錄。 您可在 Microsoft Container Registry 中取得空間分析診斷模組，以供您下載。 在 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的資訊清單部署檔案中，尋找 *診斷* 模組。
+空間分析會產生可供您用來診斷執行時間問題或包含在支援票證中的 Docker 偵錯工具記錄。 您可在 Microsoft Container Registry 中取得空間分析診斷模組，以供您下載。 在 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179)、 [桌上型電腦](https://go.microsoft.com/fwlink/?linkid=2152270)或 [具有 GPU 的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 的資訊清單部署檔案中，尋找 *診斷* 模組。
 
 在 [env] 區段中，新增下列設定：
 
@@ -188,13 +188,13 @@ az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principa
 > 此 `diagnostics` 模組不會影響記錄內容，只有助于收集、篩選和上傳現有的記錄。
 > 您必須擁有 Docker API 1.40 版或更高版本，才能使用此模組。
 
-[Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179)或其他[桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的部署資訊清單檔範例包含一個名為 `diagnostics` 的模組，該模組會收集和上傳記錄。 此模組預設為停用，而且當您需要存取記錄時，應該透過 IoT Edge 模組設定來啟用。 
+您 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179)、 [桌上型電腦](https://go.microsoft.com/fwlink/?linkid=2152270)或 [具有 GPU 的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 的範例部署資訊清單檔包含一個名為 `diagnostics` 的模組，可收集和上傳記錄。 此模組預設為停用，而且當您需要存取記錄時，應該透過 IoT Edge 模組設定來啟用。 
 
 `diagnostics`集合視需要而受到 IoT Edge 直接方法控制，並可將記錄傳送至 Azure Blob 儲存體。
 
 ### <a name="configure-diagnostics-upload-targets"></a>設定診斷上傳目標
 
-在 IoT Edge 入口網站中，選取您的裝置，然後選取 [ **診斷** ] 模組。 在 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)的部署資訊清單檔範例中，尋找 [診斷] 的 [ **環境變數** ] 區段， `env` 並將其命名為，然後新增下列資訊：
+在 IoT Edge 入口網站中，選取您的裝置，然後選取 [ **診斷** ] 模組。 在 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179)、 [桌上型電腦](https://go.microsoft.com/fwlink/?linkid=2152270)或 [具有 GPU 的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) 的範例部署資訊清單檔中，尋找診斷、名為的 **環境變數** 區段， `env` 並新增下列資訊：
 
 **設定上傳至 Azure Blob 儲存體**
 
@@ -395,13 +395,13 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 
 ### <a name="useful-commands"></a>有用的命令
 
-|命令  |說明  |
+|命令  |描述  |
 |---------|---------|
 |`Get-HcsKubernetesUserConfig -AseUser`     | 產生 Kubernetes 設定檔。 使用命令時，請將資訊複製到名為 *config* 的檔案中。請勿使用副檔名儲存檔案。        |
 | `Get-HcsApplianceInfo` | 傳回您裝置的相關資訊。 |
 | `Enable-HcsSupportAccess` | 產生存取認證以啟動支援會話。 |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [部署人員計數 web 應用程式](spatial-analysis-web-app.md)
 * [設定空間分析作業](./spatial-analysis-operations.md)

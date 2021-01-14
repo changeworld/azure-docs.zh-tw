@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 74bd7bc159f7f5974452adf6b2f51148d869b4ed
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 3b49177eb592906e3bf84d359699b354f8c87c6e
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589231"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185660"
 ---
 # <a name="deployment-best-practices"></a>部署最佳作法
 
@@ -113,7 +113,7 @@ jobs:
 
 先前所列的步驟適用于其他自動化公用程式，例如 CircleCI 或 Travis CI。 不過，您必須使用 Azure CLI，在最後一個步驟中使用新的映射標籤來更新部署位置。 若要在您的自動化腳本中使用 Azure CLI，請使用下列命令來產生服務主體。
 
-```shell
+```azurecli
 az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --scopes /subscriptions/{subscription}/resourceGroups/{resource-group} \
    --sdk-auth

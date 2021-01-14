@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: d2f35ae7a6110acb2ca89bdaeb487eddabf84923
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616241"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185813"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用實際範例在 Azure Cosmos DB 上建立資料的模型及加以分割
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "94616241"
 
 ## <a name="the-scenario"></a>案例
 
-在此練習中，我們將考量 *使用者* 可建立 *貼文* 的部落格平台領域。 使用者也可對這些貼文 *按讚* 及新增 *留言* 。
+在此練習中，我們將考量 *使用者* 可建立 *貼文* 的部落格平台領域。 使用者也可對這些貼文 *按讚* 及新增 *留言*。
 
 > [!TIP]
 > 某些字詞會以 *斜體* 醒目提示；這些字詞表示我們的模型必須操作的某些「事物」。
@@ -60,7 +60,7 @@ ms.locfileid: "94616241"
 
 在這個階段，我們還不會考慮每個實體 (使用者、張貼等 ) 將包含的詳細資料。 此步驟通常是在針對關聯式存放區進行設計時要破解的第一個步驟，因為我們必須找出這些實體在資料表、資料行、外鍵等方面的轉譯方式。在寫入時，不會強制執行任何架構的檔資料庫也不會有太大的顧慮。
 
-之所以要在一開始就找出存取模式，主要是因為這份要求清單將成為我們的測試套件。 我們在每次反覆執行資料模型時，都將查看每個要求，並檢查其效能和延展性。
+之所以要在一開始就找出存取模式，主要是因為這份要求清單將成為我們的測試套件。 我們在每次反覆執行資料模型時，都將查看每個要求，並檢查其效能和延展性。 我們會計算每個模型中所耗用的要求單位，並將其優化。 所有這些模型都使用預設的索引編制原則，您可以藉由編制特定屬性的索引來覆寫它，以便進一步改善 RU 耗用量和延遲。
 
 ## <a name="v1-a-first-version"></a>V1：第一個版本
 
@@ -149,7 +149,7 @@ ms.locfileid: "94616241"
 
 ### <a name="c2-createedit-a-post"></a>[C2] 建立/編輯貼文
 
-類似於 **[C1]** ，我們只需寫入 `posts` 容器即可。
+類似於 **[C1]**，我們只需寫入 `posts` 容器即可。
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入貼文容器" border="false":::
 
@@ -208,7 +208,7 @@ ms.locfileid: "94616241"
 
 ### <a name="c4-like-a-post"></a>[C4] 對貼文按讚
 
-如同 **[C3]** ，我們在 `posts` 容器中建立對應的項目。
+如同 **[C3]**，我們在 `posts` 容器中建立對應的項目。
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-C2.png" alt-text="將單一項目寫入貼文容器" border="false":::
 
@@ -218,7 +218,7 @@ ms.locfileid: "94616241"
 
 ### <a name="q5-list-a-posts-likes"></a>[Q5] 列出貼文的讚
 
-如同 **[Q4]** ，我們查詢該貼文的讚，然後彙總其使用者名稱。
+如同 **[Q4]**，我們查詢該貼文的讚，然後彙總其使用者名稱。
 
 :::image type="content" source="./media/how-to-model-partition-example/V1-Q5.png" alt-text="擷取某篇貼文所有的讚並彙總其他資料" border="false":::
 
@@ -295,7 +295,7 @@ ms.locfileid: "94616241"
 
 我們想要達到的結果是，每當我們新增留言或讚時，對應貼文中的 `commentCount` 或 `likeCount` 也會遞增。 由於我們的 `posts` 容器是以 `postId` 分割的，因此新的項目 (留言或讚) 及其對應的貼文會位於相同的邏輯分割區中。 因此，我們可以使用[預存程序](stored-procedures-triggers-udfs.md)來執行該作業。
 
-現在，在建立留言時 ( **[C3]** )，除了在 `posts` 容器中新增項目以外，我們還會對該容器呼叫下列預存程序：
+現在，在建立留言時 (**[C3]**)，除了在 `posts` 容器中新增項目以外，我們還會對該容器呼叫下列預存程序：
 
 ```javascript
 function createComment(postId, comment) {
@@ -409,7 +409,7 @@ function updateUsernames(userId, username) {
 
 ## <a name="v3-making-sure-all-requests-are-scalable"></a>V3：確定所有要求都可調整
 
-檢視整體效能的改進時，我們發現還有兩個要求未完全最佳化： **[Q3]** 和 **[Q6]** 。 這些要求牽涉到不會依目標容器的分割區索引鍵進行篩選的查詢。
+檢視整體效能的改進時，我們發現還有兩個要求未完全最佳化：**[Q3]** 和 **[Q6]**。 這些要求牽涉到不會依目標容器的分割區索引鍵進行篩選的查詢。
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>[Q3] 以簡短形式列出使用者的貼文
 
@@ -578,7 +578,7 @@ function truncateFeed() {
 
 這相對而言是合理的，因為部落格平台 (例如大部分的社交應用程式) 具有大量讀取的特性，這表示它所須處理的讀取要求數量通常遠高於寫入要求數量 (呈指數性的比例)。 因此，為了讓讀取要求以較低成本和較高的效率執行，而讓寫入要求的成本較為昂貴，是合理的做法。
 
-在我們完成的最佳化之中， **[Q6]** 是最極致的一個，它從 2000 多個 RU 陡降到 17 個 RU；這是我們以每個項目約 10 個 RU 的成本將貼文反正規化所達到的成果。 由於我們處理的摘要要求量遠高於建立或更新貼文的數量，考量到整體的節省效果，這項反正規化的成本是可忽略的。
+在我們完成的最佳化之中，**[Q6]** 是最極致的一個，它從 2000 多個 RU 陡降到 17 個 RU；這是我們以每個項目約 10 個 RU 的成本將貼文反正規化所達到的成果。 由於我們處理的摘要要求量遠高於建立或更新貼文的數量，考量到整體的節省效果，這項反正規化的成本是可忽略的。
 
 ### <a name="denormalization-can-be-applied-incrementally"></a>反正規化可以累加方式套用
 

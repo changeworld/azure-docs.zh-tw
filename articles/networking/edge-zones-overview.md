@@ -2,17 +2,17 @@
 title: 關於 Azure Edge 區域預覽
 description: 深入瞭解 Microsoft 的 edge 計算供應專案： Azure Edge 區域。
 services: vnf-manager
-author: ganesr
+author: cherylmc
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 07/07/2020
-ms.author: ganesr
-ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.author: cherylmc
+ms.openlocfilehash: 04555303d5128db6c183d27a0c5fcb69063fdc28
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329562"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185405"
 ---
 # <a name="about-azure-edge-zone-preview"></a>關於 Azure Edge 區域預覽
 
@@ -38,7 +38,7 @@ Edge 區域的一般使用案例包括：
 
 ![Azure Edge Zones](./media/edge-zones-overview/edge-zones.png "Azure Edge Zones")
 
-Azure Edge 區域是 Azure 的小型使用量延伸模組，放在與 Azure 區域遠相距的擴展中心內。 Azure Edge 區域支援 Vm、容器，以及一組選取的 Azure 服務，可讓您執行接近使用者的延遲和高輸送量應用程式。 Azure Edge 區域是 Microsoft 全球網路的一部分。 它們可在邊緣區域（接近使用者）執行的應用程式之間，提供安全、可靠、高頻寬的連線能力。 並提供在 Azure 區域內執行的一組完整的 Azure 服務。 Azure Edge 區域是由 Microsoft 所擁有及運作。 您可以使用一組相同的 Azure 工具和相同的入口網站來管理及部署服務到邊緣區域。
+Azure Edge 區域是 Azure 的小型使用量延伸模組，放在與 Azure 區域遠相距的擴展中心內。 Azure Edge 區域支援 Vm、容器，以及一組選取的 Azure 服務，可讓您執行接近使用者的延遲和高輸送量應用程式。 Azure Edge 區域是 Microsoft 全球網路的一部分。 它們可在邊緣區域（接近使用者）執行的應用程式之間，提供安全、可靠、高頻寬的連線能力。 Azure Edge 區域是由 Microsoft 所擁有及運作。 您可以使用一組相同的 Azure 工具和相同的入口網站來管理及部署服務到邊緣區域。
 
 一般使用案例包括：
 
@@ -61,7 +61,7 @@ Azure Edge 區域將可在下列 metro 區域中使用：
 
 具有電訊廠商的 azure Edge 區域是 Azure 的小型使用量擴充功能，這些擴充功能放在擴展中心的行動操作員的資料中心內。 具有貨運公司基礎結構的 Azure Edge 區域會從行動操作員的5G 網路下一個躍點。 這項放置可提供小於10毫秒的延遲給行動裝置的應用程式。
 
-具有電訊廠商的 Azure Edge 區域會部署在行動操作員的資料中心，並聯機到 Microsoft 全球網路。 它們在執行接近使用者的應用程式之間提供安全、可靠、高頻寬的連線能力。 並提供在 Azure 區域內執行的一組完整的 Azure 服務。 開發人員可以使用同一組熟悉的工具來建立服務，並將其部署到邊緣區域中。
+具有電訊廠商的 Azure Edge 區域會部署在行動操作員的資料中心，並聯機到 Microsoft 全球網路。 它們在執行接近使用者的應用程式之間提供安全、可靠、高頻寬的連線能力。 開發人員可以使用同一組熟悉的工具來建立服務，並將其部署到邊緣區域中。
 
 一般使用案例包括：
 

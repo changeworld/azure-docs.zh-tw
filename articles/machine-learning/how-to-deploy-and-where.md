@@ -1,26 +1,26 @@
 ---
-title: 部署模型的方式和位置
+title: 如何部署機器學習模型
 titleSuffix: Azure Machine Learning
-description: 瞭解部署 Azure Machine Learning 模型的方式和位置，包括 Azure 容器實例、Azure Kubernetes Service、Azure IoT Edge 和 FPGA。
+description: 瞭解部署機器學習模型的方式和位置。 部署至 Azure 容器實例、Azure Kubernetes Service、Azure IoT Edge 和 FPGA。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: e9c691485eb0ec1a0b3c0564f9a8f9a5d2aa255d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070417"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185796"
 ---
-# <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
+# <a name="deploy-machine-learning-models-to-azure"></a>將機器學習模型部署至 Azure
 
-瞭解如何將您的機器學習模型部署為 Azure 雲端中的 web 服務，或 Azure IoT Edge 裝置。
+瞭解如何將您的機器學習服務或深度學習模型部署為 Azure 雲端中的 web 服務。 您也可以部署到 Azure IoT Edge 裝置。
 
 無論部署模型的位置為何，工作流程都十分類似：
 
@@ -31,7 +31,7 @@ ms.locfileid: "98070417"
 1. 將模型部署至計算目標。
 1. 測試所產生的 web 服務。
 
-如需部署工作流程相關概念的詳細資訊，請參閱 [使用 Azure Machine Learning 管理、部署和監視模型](concept-model-management-and-deployment.md)。
+如需機器學習部署工作流程相關概念的詳細資訊，請參閱 [使用 Azure Machine Learning 管理、部署和監視模型](concept-model-management-and-deployment.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -197,7 +197,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 }
 ```
 
-這會指定部署會使用 `score.py` 目錄中的檔案 `./working_dir` 來處理傳入的要求。
+這會指定機器學習部署將會使用 `score.py` 目錄中的檔案 `./working_dir` 來處理傳入的要求。
 
 [請參閱這篇文章](./reference-azure-machine-learning-cli.md#inference-configuration-schema) ，以取得更詳盡的推斷設定討論。 
 
@@ -269,7 +269,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-## <a name="deploy-your-model"></a>部署模型
+## <a name="deploy-your-machine-learning-model"></a>部署您的機器學習模型
 
 您現在已準備好部署您的模型。 
 
@@ -314,7 +314,7 @@ print(service.state)
 
 下表說明不同的服務狀態：
 
-| Webservice 狀態 | 描述 | 最終狀態？
+| Webservice 狀態 | Description | 最終狀態？
 | ----- | ----- | ----- |
 | 過渡 | 服務正在進行部署。 | 否 |
 | Unhealthy | 服務已部署，但目前無法連線。  | 否 |

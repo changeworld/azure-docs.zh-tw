@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: duau
-ms.openlocfilehash: f080f5011311101ed8f9faa2ee807c030a048409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a0de772598877029649f8a985c79e28f5264535
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653038"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186170"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理員的效能考量
 
-此頁面說明使用流量管理員的效能考量。 請考慮下列案例：
+此頁面說明使用流量管理員的效能考量。 考慮下列案例：
 
 您在美國東部和東亞區域有網站的執行個體。 其中一個執行個體在流量管理員探查中健全狀況檢查失敗。 應用程式流量會被導向健全狀況良好的區域。 此容錯移轉是預期中之事，但效能可能是個問題，因為延遲的流量現在要流動到遙遠的區域。
 
@@ -80,7 +80,6 @@ ms.locfileid: "91653038"
 
 [測試流量管理員設定](traffic-manager-testing-settings.md)
 
-[流量管理員的相關作業 (REST API 參考)](https://go.microsoft.com/fwlink/?LinkId=313584)
+[流量管理員的相關作業 (REST API 參考)](/previous-versions/azure/reference/hh758255(v=azure.100))
 
-[Azure 流量管理員 Cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager)
-
+[Azure 流量管理員 Cmdlet](/powershell/module/az.trafficmanager)

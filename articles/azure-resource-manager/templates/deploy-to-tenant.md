@@ -3,12 +3,12 @@ title: 將資源部署到租用戶
 description: 描述如何在 Azure Resource Manager 範本中的租用戶範圍部署資源。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: a397678488921744f076d93235304c8d217d961f
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 0b3ddc63e49b272c93349ada91e9a1599ea4be4f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178954"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186204"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>使用 ARM 範本的租使用者部署
 
@@ -186,13 +186,15 @@ New-AzTenantDeployment `
 
 :::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
 
+如果您的帳戶沒有部署至租使用者的許可權，您仍然可以藉由部署至另一個範圍來建立管理群組。 如需詳細資訊，請參閱 [管理群組](deploy-to-management-group.md#management-group)。
+
 ## <a name="assign-role"></a>指派角色
 
 下列範本會在租用戶範圍指派角色。
 
 :::code language="json" source="~/quickstart-templates/tenant-deployments/tenant-role-assignment/azuredeploy.json":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解如何指派角色，請參閱 [使用 Azure Resource Manager 範本新增 Azure 角色指派](../../role-based-access-control/role-assignments-template.md)。
 * 您也可以在[訂用帳戶層級](deploy-to-subscription.md)或[管理群組層級](deploy-to-management-group.md)部署範本。

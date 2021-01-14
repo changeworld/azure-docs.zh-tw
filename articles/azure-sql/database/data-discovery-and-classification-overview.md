@@ -13,17 +13,17 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132015"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185347"
 ---
 # <a name="data-discovery--classification"></a>資料探索與分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-資料探索 & 分類內建于 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics。 其提供在資料庫中探索、分類、標記及報告敏感性資料的進階功能。
+資料探索 & 分類內建于 Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse Analytics。 它提供探索、分類、標記和報告資料庫中敏感性資料的基本功能。
 
 您最敏感的資料可能包括商務、財務、醫療保健或個人資訊。 探索和分類此資料可以在組織的資訊保護方法中扮演 pivotal 角色。 它可以作為以下的基礎結構：
 
@@ -36,11 +36,11 @@ ms.locfileid: "98132015"
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>什麼是資料探索 & 分類？
 
-資料探索 & 分類引進一組先進的服務和 Azure 中的新功能。 它會形成 SQL Database、SQL 受控執行個體和 Azure Synapse 的新資訊保護範例，目的是要保護資料，而不只是資料庫。 此範例包含：
+資料探索 & 分類引進一組基本服務和 Azure 中的新功能。 它會形成 SQL Database、SQL 受控執行個體和 Azure Synapse 的新資訊保護範例，目的是要保護資料，而不只是資料庫。 此範例包含：
 
 - **探索和建議：** 分類引擎會掃描您的資料庫，並識別包含潛在敏感性資料的資料行。 接著，它會提供簡單的方法，讓您透過 Azure 入口網站來檢查和套用建議的分類。
 
-- 卷 **標：** 您可以使用已新增至 SQL Server database engine 的新中繼資料屬性，持續將敏感度分類標籤套用到資料行。 然後，此中繼資料可用於高階、以敏感度為基礎的審核和保護案例。
+- 卷 **標：** 您可以使用已新增至 SQL Server database engine 的新中繼資料屬性，持續將敏感度分類標籤套用到資料行。 此中繼資料可用於以敏感度為基礎的審核和保護案例。
 
 - **查詢結果集敏感度：** 查詢結果集的敏感度是為了進行審核而即時計算。
 

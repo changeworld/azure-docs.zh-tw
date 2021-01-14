@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: duau
-ms.openlocfilehash: fc6e8bcda17f9d788a430ed763bd9f8702eaf250
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d5a888bf132725ff64c2a128b77f0257f435585
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003543"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184249"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>新增、停用、啟用或刪除端點
 
@@ -45,7 +45,7 @@ ms.locfileid: "96003543"
 7.  這兩個端點新增完畢後，它們會顯示在 [流量管理員設定檔] 刀鋒視窗中，而且監視狀態是 [線上]。
 
 > [!NOTE]
-> 在使用容錯移轉流量路由方法從設定檔新增或移除端點後，容錯移轉優先權清單可能無法依您想要的方式排序。 您可以在 [組態] 頁面上調整容錯移轉優先順序清單的順序。 如需詳細資訊，請參閱 [設定容錯移轉流量路由](traffic-manager-configure-failover-routing-method.md)。
+> 在使用容錯移轉流量路由方法從設定檔新增或移除端點後，容錯移轉優先權清單可能無法依您想要的方式排序。 您可以在 [組態] 頁面上調整容錯移轉優先順序清單的順序。 如需詳細資訊，請參閱 [設定容錯移轉流量路由](./traffic-manager-configure-priority-routing-method.md)。
 
 ## <a name="to-disable-an-endpoint"></a>若要停用端點
 
@@ -77,8 +77,7 @@ ms.locfileid: "96003543"
 ## <a name="next-steps"></a>後續步驟
 
 * [管理流量管理員設定檔](traffic-manager-manage-profiles.md)
-* [設定路由方法](traffic-manager-configure-routing-method.md)
+* [設定路由方法](./traffic-manager-configure-priority-routing-method.md)
 * [疑難排解流量管理員的已降級狀態](traffic-manager-troubleshooting-degraded.md)
 * [流量管理員的效能考量](traffic-manager-performance-considerations.md)
-* [流量管理員的相關作業 (REST API 參考)](https://go.microsoft.com/fwlink/p/?LinkID=313584)
-
+* [流量管理員的相關作業 (REST API 參考)](/previous-versions/azure/reference/hh758255(v=azure.100))

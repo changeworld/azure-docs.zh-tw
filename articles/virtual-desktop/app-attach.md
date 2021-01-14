@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400823"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185762"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>建立 MSIX 應用程式附加的 PowerShell 腳本 (預覽) 
 
@@ -39,6 +39,17 @@ ms.locfileid: "97400823"
 6. 選取 [將所有憑證放入以下的存放區]，然後選取 [瀏覽]。
 7. 當選取憑證存放區視窗出現時，選取 [受信任的人]，然後選取 [確定]。
 8. 選取 **[下一步** **] 和 [完成]**。
+
+## <a name="enable-microsoft-hyper-v"></a>啟用 Microsoft Hyper-V
+
+必須啟用 Microsoft Hyper-V，因為必須有 `Mount-VHD` 命令才能暫存，而且 `Dismount-VHD` 需要將它移出。
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+>[!NOTE]
+>此變更需要您重新啟動虛擬機器。
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>準備 PowerShell 指令碼以進行 MSIX 應用程式附加
 

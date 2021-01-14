@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 00e6802f37ec60467edbea98038dd23fcba1239a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045235"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185490"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
@@ -52,9 +53,6 @@ Azure 數位 Twins 的模型會以 DTDL 撰寫，並儲存為 *json* 檔案。 �
 ## <a name="upload-models"></a>上傳模型
 
 建立模型之後，您可以將它們上傳至 Azure 數位 Twins 實例。
-
-> [!TIP]
-> 建議您先離線驗證您的模型，然後再將它們上傳至您的 Azure 數位 Twins 實例。 您可以使用 [DTDL 客戶](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) 端剖析器程式庫和 [DTDL 驗證程式範例](/samples/azure-samples/dtdl-validator/dtdl-validator) ， [*方法：剖析和驗證模型*](how-to-parse-models.md) 以檢查您的模型，然後再將它們上傳至服務。
 
 當您準備好上傳模型時，您可以使用下列程式碼片段：
 
@@ -198,7 +196,7 @@ Azure 數位 Twins 的模型會以 DTDL 撰寫，並儲存為 *json* 檔案。 �
 
 Azure 數位 Twins 不會防止此狀態，因此請小心適當地修補 Twins，以確保它們透過模型定義參數保持有效。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何根據您的模型建立和管理數位 twins：
 * [*How to：管理數位 twins*](how-to-manage-twin.md)

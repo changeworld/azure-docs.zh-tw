@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: duau
-ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55c2115edef684f38aa53172596beffd101ef59
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401277"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184385"
 ---
 # <a name="traffic-manager-endpoints"></a>流量管理員端點
 
@@ -24,9 +24,9 @@ Microsoft Azure 流量管理員可讓您控制如何將網路流量分散到在�
 
 流量管理員支援三種類型的端點：
 
-* **Azure 端點**用於在 Azure 中裝載的服務。
-* **外部端點**適用於 IPv4/IPv6 位址、FQDN，或是裝載於 Azure 外部的服務 (可以是內部部署或搭配不同主機服務提供者的服務)。
-* **巢狀端點**用於合併流量管理員設定檔，以建立更有彈性的流量路由配置，進而支援更大型且更複雜部署的需求。
+* **Azure 端點** 用於在 Azure 中裝載的服務。
+* **外部端點** 適用於 IPv4/IPv6 位址、FQDN，或是裝載於 Azure 外部的服務 (可以是內部部署或搭配不同主機服務提供者的服務)。
+* **巢狀端點** 用於合併流量管理員設定檔，以建立更有彈性的流量路由配置，進而支援更大型且更複雜部署的需求。
 
 關於如何將不同類型的端點結合在單一流量管理員設定檔中，沒有任何限制。 每個設定檔都可以包含任意混合的端點類型。
 
@@ -92,15 +92,15 @@ PublicIPAddress 資源是 Azure Resource Manager 資源。 它們不存在於傳
 
 ## <a name="faqs"></a>常見問題集
 
-* [可以將流量管理員用於來自多個訂用帳戶的端點嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
+* [可以將流量管理員用於來自多個訂用帳戶的端點嗎？](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions)
 
-* [我可以使用流量管理員搭配雲端服務的「預備」位置嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-cloud-service-staging-slots)
+* [我可以使用流量管理員搭配雲端服務的「預備」位置嗎？](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-cloud-service-staging-slots)
 
-* [流量管理員是否支援 IPv6 端點？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-ipv6-endpoints)
+* [流量管理員是否支援 IPv6 端點？](./traffic-manager-faqs.md#does-traffic-manager-support-ipv6-endpoints)
 
-* [可以使用流量管理員搭配相同區域中的多個 Web 應用程式嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
+* [可以使用流量管理員搭配相同區域中的多個 Web 應用程式嗎？](./traffic-manager-faqs.md#can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region)
 
-* [如何將流量管理員設定檔的 Azure 端點移至不同的資源群組？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
+* [如何將流量管理員設定檔的 Azure 端點移至不同的資源群組？](./traffic-manager-faqs.md#how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 將資源部署至資源群組
 description: 描述如何在 Azure Resource Manager 範本中部署資源。 它會顯示如何將多個資源群組設為目標。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 8fe503cc95d71772c07427438b17e2ff0d4620a7
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 9eb70e5ce69a2c7bc7ac9b8c9a7a558d09ecbef0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178886"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186221"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>使用 ARM 範本的資源群組部署
 
@@ -137,6 +137,8 @@ New-AzResourceGroupDeployment `
 或者，您可以將範圍設定為 `/` 某些資源類型，例如管理群組。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-create-mg.json" highlight="12,15":::
+
+如需詳細資訊，請參閱 [管理群組](deploy-to-management-group.md#management-group)。
 
 ## <a name="deploy-to-target-resource-group"></a>部署至目標資源群組
 
@@ -313,6 +315,6 @@ az deployment group create \
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
