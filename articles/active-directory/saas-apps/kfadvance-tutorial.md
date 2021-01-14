@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 43e6495c0231d5b14d27eabc3b9b82ba791d7108
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 241e5abf8377bd2e2207d140e291b18592651ea6
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97364373"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179583"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kfadvance"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 KFAdvance 整合
 
@@ -76,13 +76,13 @@ ms.locfileid: "97364373"
 
 1. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://api.kfadvance-<ENVIRONMENT>.com/<PARTNER_ID>`
+    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://api.kfadvance.com/<PARTNER_ID>`
 
-    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://api.kfadvance-<ENVIRONMENT>.com/vn/account/partnerssocallback?partnerKey=<PARTNER_ID>`
+    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://api.kfadvance-<ENVIRONMENT>.com/v1/account/partnerssocallback?partnerKey=<PARTNER_ID>`
 
 1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://api.kfadvance-<ENVIRONMENT>.com/vn/account/partnerssologin?partnerKey=<PARTNER_ID>`
+    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://api.kfadvance.com/v1/account/partnerssologin?partnerKey=<PARTNER_ID>`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [KFAdvance 客戶支援小組](mailto:support@kornferry.com)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。

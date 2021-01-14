@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/06/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9b9390b498f28fc8f9029f1c11805b970aaca73d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: de011fb0f827ea90efe33e237bbf1c5100dc76a7
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014555"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183467"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>How to：部署人員計數 web 應用程式
 
@@ -63,12 +63,12 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>在主機電腦上 Azure IoT Edge 部署容器
 
-使用 Azure CLI 將空間分析容器部署為主電腦上的 IoT 模組。 部署程式需要部署資訊清單檔案，其中會列出您的部署所需的容器、變數和設定。 您可以在 GitHub 上找到 [Azure Stack Edge 特定部署資訊清單](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) 以及 [非 Azure Stack Edge 特定部署資訊清單](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) 的範例，其中包含 *空間分析* 容器的基本部署設定。 
+使用 Azure CLI 將空間分析容器部署為主電腦上的 IoT 模組。 部署程式需要部署資訊清單檔案，其中會列出您的部署所需的容器、變數和設定。 您可以在 GitHub 上找到範例 [Azure Stack Edge 特定的部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2142179)、 [非 Azure Stack Edge 的特定部署資訊清單](https://go.microsoft.com/fwlink/?linkid=2152189)，以及 [具有 GPU 特定部署資訊清單的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189) ，其中包含 *空間分析* 容器的基本部署設定。 
 
 或者，您可以使用適用于 Visual Studio Code 的 Azure IoT 擴充功能來執行 IoT 中樞的作業。 若要深入瞭解，請移至 [Visual Studio Code 中的部署 Azure IoT Edge 模組](../../iot-edge/how-to-deploy-modules-vscode.md) 。
 
 > [!NOTE] 
-> *空間分析-telegraf* 和 *空間分析-診斷* 容器是選擇性的。 您可以決定將它們從 *DeploymentManifest.js* 檔案中移除。 如需詳細資訊，請參閱 [遙測和疑難排解](./spatial-analysis-logging.md) 文章。 您可以在 Github 上的檔案中找到兩個範例 *DeploymentManifest.js* ，適用于 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179) 或其他 [桌上型電腦](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)
+> *空間分析-telegraf* 和 *空間分析-診斷* 容器是選擇性的。 您可以決定將它們從 *DeploymentManifest.js* 檔案中移除。 如需詳細資訊，請參閱 [遙測和疑難排解](./spatial-analysis-logging.md) 文章。 您可以在 GitHub、 [Azure Stack Edge 裝置](https://go.microsoft.com/fwlink/?linkid=2142179)、[桌上型電腦](https://go.microsoft.com/fwlink/?linkid=2152189)或 [具有 GPU 的 Azure VM](https://go.microsoft.com/fwlink/?linkid=2152189)上找到三個範例 *DeploymentManifest.js*
 
 ### <a name="set-environment-variables"></a>設定環境變數
 
@@ -185,7 +185,7 @@ docker push [desired local image name]
 * `EventHubConsumerGroup` –您的 Azure IoT 中樞取用者群組的字串名稱，您可以在 IoT 中樞內建立新的取用者群組，或使用預設群組。 
 * `IotHubConnectionString`–您 Azure IoT 中樞的連接字串，可從 Azure IoT 中樞資源設定參數的 [金鑰] 區段中取出。 ![](./media/spatial-analysis/solution-app-config-page.png)
 
-加入這兩個設定之後，請按一下 [ **儲存**]。 然後按一下左側導覽功能表中的 [ **驗證/授權** ]，並使用所需的驗證層級加以更新。 我們建議使用 Azure Active Director (Azure AD) express。 
+加入這兩個設定之後，請按一下 [ **儲存**]。 然後按一下左側導覽功能表中的 [ **驗證/授權** ]，並使用所需的驗證層級加以更新。 建議 Azure Active Directory (Azure AD) express。 
 
 ### <a name="test-the-app"></a>測試應用程式
 
@@ -194,9 +194,9 @@ docker push [desired local image name]
 ![測試部署](./media/spatial-analysis/solution-app-output.png)
 
 ## <a name="get-the-personcount-source-code"></a>取得 PersonCount 來源程式碼
-如果您想要查看或修改此應用程式的原始程式碼，您可以 [在 Github 上](https://github.com/Azure-Samples/cognitive-services-spatial-analysis)找到此程式碼。
+如果您想要查看或修改此應用程式的原始程式碼，您可以 [在 GitHub 上](https://github.com/Azure-Samples/cognitive-services-spatial-analysis)找到此程式碼。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [設定空間分析作業](./spatial-analysis-operations.md)
 * [記錄和疑難排解](spatial-analysis-logging.md)

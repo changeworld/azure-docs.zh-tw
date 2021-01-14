@@ -3,12 +3,12 @@ title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: f847e481670d7f9afd4b40cfb8fcbec65d1e28c8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178920"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184011"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>使用 ARM 範本進行管理群組部署
 
@@ -44,6 +44,8 @@ ms.locfileid: "98178920"
 若要管理您的資源，請使用：
 
 * [「標記」](/azure/templates/microsoft.resources/tags)
+
+管理群組是租使用者層級的資源。 不過，您可以將新管理群組的範圍設定為租使用者，以在管理群組部署中建立管理群組。 請參閱 [管理群組](#management-group)。
 
 ## <a name="schema"></a>結構描述
 
@@ -168,9 +170,55 @@ New-AzManagementGroupDeployment `
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
-或者，您可以將範圍設定為 `/` 某些資源類型，例如管理群組。
+或者，您可以將範圍設定為 `/` 某些資源類型，例如管理群組。 下一節將說明如何建立新的管理群組。
+
+## <a name="management-group"></a>管理群組
+
+若要在管理群組部署中建立管理群組，您必須將的範圍設定為 `/` 管理群組。
+
+下列範例會在根管理群組中建立新的管理群組。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
+
+下一個範例會在指定為父系的管理群組中建立新的管理群組。 請注意，範圍設定為 `/` 。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string",
+            "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
+        },
+        "parentMG": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('mgName')]",
+            "type": "Microsoft.Management/managementGroups",
+            "apiVersion": "2020-05-01",
+            "scope": "/",
+            "location": "eastus",
+            "properties": {
+                "details": {
+                    "parent": {
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('parentMG'))]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "output": {
+            "type": "string",
+            "value": "[parameters('mgName')]"
+        }
+    }
+}
+```
 
 ## <a name="azure-policy"></a>Azure 原則
 
@@ -326,7 +374,7 @@ New-AzManagementGroupDeployment `
 }
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 若要瞭解如何指派角色，請參閱 [使用 Azure Resource Manager 範本新增 Azure 角色指派](../../role-based-access-control/role-assignments-template.md)。
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。

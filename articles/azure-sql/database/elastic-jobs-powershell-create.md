@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427297"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131928"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>使用 PowerShell 建立彈性作業代理程式 (預覽)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,19 +123,11 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>使用彈性作業
-
-若要使用彈性作業，請執行下列命令以在 Azure 訂用帳戶中註冊此功能。 針對要在其中佈建彈性作業代理程式的訂用帳戶執行此命令一次。 訂用帳戶若只包含屬於作業目標的資料庫就不需要註冊。
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
-```
-
 ### <a name="create-the-elastic-job-agent"></a>建立彈性作業代理程式
 
 彈性作業代理程式是用來建立、執行和管理作業的 Azure 資源。 代理程式會根據排程來執行作業，或執行一次性的作業。
 
-**New-AzSqlElasticJobAgent** Cmdlet 會要求 Azure SQL Database 中必須已有資料庫存在，因此 *resourceGroupName* 、 *rerverName* 與 *databaseName* 參數全都必須指向現有的資源。
+**New-AzSqlElasticJobAgent** Cmdlet 會要求 Azure SQL Database 中必須已有資料庫存在，因此 *resourceGroupName*、*rerverName* 與 *databaseName* 參數全都必須指向現有的資源。
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -205,7 +197,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 [目標群組](job-automation-overview.md#target-group)可定義一或多個將會執行作業步驟的資料庫。
 
-下列程式碼片段會建立兩個目標群組： *serverGroup* 和 *serverGroupExcludingDb2* 。 *serverGroup* 會以執行時存在於伺服器上的所有資料庫為目標， *serverGroupExcludingDb2* 則會以伺服器上的所有資料庫為目標，但 *targetDb2* 除外：
+下列程式碼片段會建立兩個目標群組：*serverGroup* 和 *serverGroupExcludingDb2*。 *serverGroup* 會以執行時存在於伺服器上的所有資料庫為目標，*serverGroupExcludingDb2* 則會以伺服器上的所有資料庫為目標，但 *targetDb2* 除外：
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -221,7 +213,7 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 
 ### <a name="create-a-job-and-steps"></a>建立作業和步驟
 
-此範例會為要執行的作業定義一項作業和兩個作業步驟。 第一個作業步驟 ( *步驟 1* ) 會在目標群組 *ServerGroup* 的每個資料庫中 建立新的資料表 ( *Step1Table* )。 第二個作業步驟 ( *步驟 2* ) 會在每個資料庫中建立新的資料表 ( *Step2Table* )，但 *TargetDb2* 除外，因為先前定義的目標群組指定要加以排除。
+此範例會為要執行的作業定義一項作業和兩個作業步驟。 第一個作業步驟 (*步驟 1*) 會在目標群組 *ServerGroup* 的每個資料庫中 建立新的資料表 (*Step1Table*)。 第二個作業步驟 (*步驟 2*) 會在每個資料庫中建立新的資料表 (*Step2Table*)，但 *TargetDb2* 除外，因為先前定義的目標群組指定要加以排除。
 
 ```powershell
 Write-Output "Creating a new job..."

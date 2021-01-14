@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
-ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b76eab5771d724e4f0ec56b7d5acd5cf5f91edc0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003849"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183450"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>疑難排解 Azure 流量管理員上的已降級狀態
 
-本文說明如何針對顯示降級狀態的 Azure 流量管理員設定檔進行疑難排解。 針對 Azure 流量管理員降級狀態進行疑難排解的第一個步驟是啟用記錄。  如需詳細資訊，請參閱 [啟用資源記錄](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) 檔。 在此案例中，假設您已設定流量管理員設定檔來指向您的一些 cloudapp.net 託管服務。 如果流量管理員的健康情況顯示 [降級] 狀態，則可能有一或多個端點的狀態是 [降級]：
+本文說明如何針對顯示降級狀態的 Azure 流量管理員設定檔進行疑難排解。 針對 Azure 流量管理員降級狀態進行疑難排解的第一個步驟是啟用記錄。  如需詳細資訊，請參閱 [啟用資源記錄](./traffic-manager-diagnostic-logs.md) 檔。 在此案例中，假設您已設定流量管理員設定檔來指向您的一些 cloudapp.net 託管服務。 如果流量管理員的健康情況顯示 [降級] 狀態，則可能有一或多個端點的狀態是 [降級]：
 
 ![降級端點狀態](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
@@ -31,8 +31,8 @@ ms.locfileid: "96003849"
 
 ## <a name="understanding-traffic-manager-probes"></a>了解流量管理員探查
 
-* 只有當探查收到探查路徑傳回 HTTP 200 回應時，流量管理員才會將端點視為在「線上」。 如果您的應用程式會傳回任何其他 HTTP 回應碼，您應該將該回應程式碼新增至流量管理員設定檔的 [預期狀態碼範圍](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) 。
-* 除非您已在流量管理員設定檔的 [預期狀態碼範圍](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) 中指定此回應碼作為有效的回應碼，否則會將30倍的重新導向回應視為失敗。 流量管理員不會探查重新導向目標。
+* 只有當探查收到探查路徑傳回 HTTP 200 回應時，流量管理員才會將端點視為在「線上」。 如果您的應用程式會傳回任何其他 HTTP 回應碼，您應該將該回應程式碼新增至流量管理員設定檔的 [預期狀態碼範圍](./traffic-manager-monitoring.md#configure-endpoint-monitoring) 。
+* 除非您已在流量管理員設定檔的 [預期狀態碼範圍](./traffic-manager-monitoring.md#configure-endpoint-monitoring) 中指定此回應碼作為有效的回應碼，否則會將30倍的重新導向回應視為失敗。 流量管理員不會探查重新導向目標。
 * 若為 HTTP 探查，會忽略憑證錯誤。
 * 只要傳回 200，探查路徑的實際內容並不重要。 探查靜態內容 (例如 "/favicon.ico") 的 URL 是常用的技巧。 即使應用程式狀況良好，動態內容 (例如 ASP 頁面) 也不一定會傳回 200。
 * 最佳做法是將探查路徑設定為具有足夠邏輯的內容，以判斷該網站為啟動或關閉。 在上述範例中，您將路徑設為 "favicon.ico"，只是測試 w3wp.exe 是否有回應。 此探查可能不會指出您的 Web 應用程式狀況良好。 較好的選擇是將路徑設為 "/Probe.aspx" 之類的項目，它具有邏輯可判斷網站的健康狀態。 例如，您可以使用效能計數器來監視 CPU 使用率，或測量失敗的要求數。 或者，您可以嘗試存取資料庫資源或工作階段狀態，以確定 Web 應用程式正在運作。
@@ -87,12 +87,12 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [什麼是流量管理員](traffic-manager-overview.md)
 
-[雲端服務](https://go.microsoft.com/fwlink/?LinkId=314074)
+[雲端服務](/previous-versions/azure/jj155995(v=azure.100))
 
 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[流量管理員的相關作業 (REST API 參考)](https://go.microsoft.com/fwlink/?LinkId=313584)
+[流量管理員的相關作業 (REST API 參考)](/previous-versions/azure/reference/hh758255(v=azure.100))
 
 [Azure 流量管理員 Cmdlet][1]
 
-[1]: https://docs.microsoft.com/powershell/module/az.trafficmanager
+[1]: /powershell/module/az.trafficmanager

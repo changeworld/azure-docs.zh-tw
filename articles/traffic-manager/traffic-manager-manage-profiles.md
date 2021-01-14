@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: duau
-ms.openlocfilehash: 7bb5559f21289a40b6c75a3481680ab5b2c1c269
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a39120b1305022739aaef3407aa6c2621a97e842
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392879"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184148"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>管理 Azure 流量管理員設定檔
 
@@ -32,12 +32,12 @@ ms.locfileid: "89392879"
 1. 從瀏覽器登入 [Azure 入口網站](https://portal.azure.com)。 如果您沒有帳戶，您可以註冊[免費試用一個月](https://azure.microsoft.com/free/)。 
 2. 按一下 [建立資源]   > [網路]   > [流量管理員設定檔]   > [建立]  。
 4. 在 [建立流量管理員設定檔]  中，如下所示操作：
-    1. 在 [名稱]**** 中，提供設定檔的名稱。 此名稱在 trafficmanager.net 區域內必須是唯一的，而且會產生 DNS 名稱 `<name>`, trafficmanager.net，用以存取您的流量管理員設定檔。
-    2. 在 [路由方法]**** 中，選取 [優先順序]**** 路由方法。
-    3. 在 [訂用帳戶]**** 中，選取您要用來建立此設定檔的訂用帳戶
+    1. 在 [名稱]中，提供設定檔的名稱。 此名稱在 trafficmanager.net 區域內必須是唯一的，而且會產生 DNS 名稱 `<name>`, trafficmanager.net，用以存取您的流量管理員設定檔。
+    2. 在 [路由方法] 中，選取 [優先順序]路由方法。
+    3. 在 [訂用帳戶] 中，選取您要用來建立此設定檔的訂用帳戶
     4. 在 [資源群組]  中，建立新的資源群組來放置此設定檔。
     5. 在 [資源群組位置]  中，選取資源群組的位置。 這項設定是指資源群組的位置，完全不影響將部署到全球的流量管理員設定檔。
-    6. 按一下 [建立]。
+    6. 按一下頁面底部的 [新增] 。
     7. 當流量管理員設定檔的全球部署完成時，它會列為個別資源群組的其中一個資源。
 
 ## <a name="disable-enable-or-delete-a-profile"></a>停用、啟用或刪除設定檔
@@ -50,7 +50,7 @@ ms.locfileid: "89392879"
 2. 流量會停止導向至透過流量管理員設定檔設定的端點。
 3. 從瀏覽器登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在入口網站的搜尋列中，搜尋您要修改的 **流量管理員設定檔** 名稱，然後在顯示的結果中按一下流量管理員設定檔。
-3. 按一下 **[**  >  **停**用]。
+3. 按一下 **[**  >  **停** 用]。
 4. 確認停用流量管理員設定檔。
 
 ### <a name="to-enable-a-profile"></a>啟用設定檔
@@ -70,7 +70,7 @@ ms.locfileid: "89392879"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [新增端點。](traffic-manager-endpoints.md)
+* [新增端點。](./traffic-manager-manage-endpoints.md)
 * [設定優先順序路由方法](traffic-manager-configure-priority-routing-method.md)
 * [設定地理路由方法](traffic-manager-configure-geographic-routing-method.md) 
 * [設定加權路由方法](traffic-manager-configure-weighted-routing-method.md)

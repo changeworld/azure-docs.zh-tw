@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: a4bfe2b87f3f2242189a78d9a31a89d82720fd37
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 31392c1fa3d14d6f1e01a8b302575e9b592e42cd
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862049"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183144"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>教學課程：整合 Azure AD 單一登入與 Maverics Identity Orchestrator SAML Connector
 
@@ -167,27 +167,27 @@ secrets:
 
 1. 開啟 [Azure CLI](/cli/azure/install-azure-cli)，接著輸入下列命令：
 
-    ```shell
+    ```azurecli
     az login
     ```
 
 1. 執行下列命令來建立新的金鑰保存庫：
-    ```shell
+    ```azurecli
     az keyvault create --name "[VAULT_NAME]" --resource-group "[RESOURCE_GROUP]" --location "[REGION]"
     ```
 
 1. 執行下列命令，將祕密新增到金鑰保存庫：
-    ```shell
+    ```azurecli
     az keyvault secret set --vault-name "[VAULT_NAME]" --name "[SECRET_NAME]" --value "[SECRET_VALUE]"
     ```
 
 1. 執行下列命令，向 Azure AD 註冊應用程式：
-    ```shell
+    ```azurecli
     az ad sp create-for-rbac -n "MavericsKeyVault" --skip-assignment > azure-credentials.json
     ```
 
 1. 執行下列命令，授權應用程式使用祕密：
-    ```shell
+    ```azurecli
     az keyvault set-policy --name "[VAULT_NAME]" --spn [APPID] --secret-permissions list get
     #APPID can be found in the azure-credentials.json
     generated in the previous step
@@ -239,7 +239,7 @@ Maverics Identity Orchestrator Azure AD Connector 支援 OpenID Connect 和 SAML
 
 1. 使用 [OpenSSL 工具](https://www.openssl.org/source/)，產生用來保護 Maverics Identity Orchestrator 工作階段資訊的 JSON Web 權杖 (JWT) 簽署金鑰：
 
-    ```shell 
+    ```console 
     openssl rand 64 | base64
     ```
 1. 將回應複製到 `jwtSigningKey` 組態屬性：`jwtSigningKey: TBHPvTtu6NUqU84H3Q45grcv9WDJLHgTioqRhB8QGiVzghKlu1mHgP1QHVTAZZjzLlTBmQwgsSoWxGHRcT4Bcw==`。

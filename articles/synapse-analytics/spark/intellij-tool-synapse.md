@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 75cc23df41741a95e87ad64d168aea4fa4f45733
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 39f39b6f53944510b5f3692bb8b3fdd472004454
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451041"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121221"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>教學課程：使用 Synapse 工作區搭配 IntelliJ 來建立 Apache Spark 應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "96451041"
 - [IntelliJ IDEA 社群版本](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC)。
 - Azure 工具組外掛程式 3.27.0-2019.2 - 從 [IntelliJ 外掛程式存放庫](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)來安裝
 - [JDK (1.8 版)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。
-- Scala 外掛程式 - 從 [IntelliJ 外掛程式存放庫](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea)來安裝。
+- Scala 外掛程式 - 從 [IntelliJ 外掛程式存放庫](../../hdinsight/spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea)來安裝。
 - 下列必要條件僅適用於 Windows 使用者：
 
   在 Windows 電腦上執行本機 Spark Scala 應用程式時，可能會發生如 [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) 中所述的例外狀況。 發生這個例外狀況是因為 Windows 上遺失 WinUtils.exe。

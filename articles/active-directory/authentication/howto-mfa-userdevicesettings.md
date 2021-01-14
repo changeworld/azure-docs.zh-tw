@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a96f01d38fb41f64336d0a2b1d2aa33a96ca9f1a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fc0be7e50c5cce511fafd7d8b407626bd57659bd
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742743"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183127"
 ---
 # <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>管理 Azure AD Multi-Factor Authentication 的使用者驗證方法
 
@@ -49,7 +49,7 @@ Azure AD 中的使用者有兩組不同的連絡人資訊：
 1. 選擇您想要新增驗證方法的使用者，然後選取 [ **驗證方法**]。  
 1. 在視窗頂端，選取 [ **+ 新增驗證方法**]。
    1. 選取 (電話號碼或電子郵件) 的方法。 電子郵件可用於自我密碼重設，但不能用於驗證。 新增電話號碼時，請選取手機類型，然後輸入有效格式的電話號碼 (例如 + 1 4255551234) 。
-   1. 選取 [新增]  。
+   1. 選取 [新增]。
 
 > [!NOTE]
 > 預覽體驗可讓系統管理員為使用者新增任何可用的驗證方法，而原始體驗只允許更新電話和備用電話方法。
@@ -73,7 +73,7 @@ Get-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com
 為特定使用者建立行動電話驗證方法。
 
 ```powershell
-New-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -phoneType “mobile” -phoneNumber "+1 7748933135"
+New-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -phoneType "mobile" -phoneNumber "+1 7748933135"
 ```
 
 移除使用者的特定電話方法

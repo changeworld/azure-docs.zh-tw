@@ -4,15 +4,15 @@ description: 針對 Azure 檔案同步中部署的常見問題進行疑難排解
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 6/12/2020
+ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c7405ada800bd5fb9161e9d96bd4c8b0484be620
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b84256188cf5df3ddf389f763e669a2b2ca00852
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005303"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183331"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -199,10 +199,27 @@ Set-AzStorageSyncServerEndpoint `
 - 如果記錄 **已完成 GetNextJob，且狀態為：0**，則該伺服器便可與 Azure 檔案同步服務進行通訊。 
     - 在伺服器上開啟工作管理員，並確認儲存體同步監視器 (AzureStorageSyncMonitor.exe) 程序正在執行。 如果此程序未執行，先嘗試重新啟動伺服器。 如果重新啟動伺服器無法解決此問題，請升級至最新版 Azure 檔案同步[代理程式版本](./storage-files-release-notes.md)。 
 
-- 如果記錄 **已完成 GetNextJob，且狀態為：-2134347756**，則表示伺服器會因防火牆或 Proxy 而無法與 Azure 檔案同步服務進行通訊。 
+- 如果已記錄 **GetNextJob 完成，且狀態為：-2134347756** ，則伺服器無法與 Azure 檔案同步服務通訊，因為防火牆、PROXY 或 TLS 加密套件順序設定。 
     - 如果伺服器位於防火牆後方，請確認允許連接埠 443 輸出。 如果防火牆限制僅允許對特定網域的流量，請確認您可以存取防火牆[文件](./storage-sync-files-firewall-and-proxy.md#firewall)中列出的網域。
     - 如果伺服器位於 Proxy 後方，請依照 Proxy [文件](./storage-sync-files-firewall-and-proxy.md#proxy)中的步驟設定整部電腦或應用程式專屬的 Proxy 設定。
     - 使用 Test-StorageSyncNetworkConnectivity Cmdlet 來檢查與服務端點的網路連線能力。 若要深入了解，請參閱[測試與服務端點的網路連線能力](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints) (機器翻譯)。
+    - 若要在伺服器上新增加密套件，請使用群組原則或 TLS Cmdlet：
+        - 若要使用群組原則，請參閱 [使用群組原則設定 TLS 加密套件順序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)。
+        - 若要使用 TLS Cmdlet，請參閱 [使用 Tls PowerShell Cmdlet 設定 Tls 加密套件順序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)。
+    
+        Azure 檔案同步目前支援下列 TLS 1.2 通訊協定的加密套件：  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
+        - TLS_RSA_WITH_AES_256_GCM_SHA384  
+        - TLS_RSA_WITH_AES_128_GCM_SHA256  
+        - TLS_RSA_WITH_AES_256_CBC_SHA256  
+        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - 如果記錄 **已完成 GetNextJob，且狀態為：-2134347764**，則表示伺服器的憑證已到期或刪除，所以無法與 Azure 檔案同步服務進行通訊。  
     - 在伺服器上執行下列 PowerShell 命令，以重新設定要用於驗證的憑證：

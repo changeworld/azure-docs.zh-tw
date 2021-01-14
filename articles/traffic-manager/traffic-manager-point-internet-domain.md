@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: duau
-ms.openlocfilehash: 93a8076f12b8f006d600cbd32ce39169f4b47c67
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e0e2acfb0ec0068dcd08ae660e397f65e039a665
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014324"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183739"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>將公司網際網路網域指向 Azure 流量管理員網域
 
@@ -33,5 +33,5 @@ ms.locfileid: "96014324"
 ## <a name="next-steps"></a>後續步驟
 
 * [流量管理員路由傳送方法](traffic-manager-routing-methods.md)
-* [流量管理員 - 停用、啟用或刪除設定檔](disable-enable-or-delete-a-profile.md)
-* [流量管理員 - 停用或啟用端點](disable-or-enable-an-endpoint.md)
+* [流量管理員 - 停用、啟用或刪除設定檔](./traffic-manager-manage-profiles.md)
+* [流量管理員 - 停用或啟用端點](./traffic-manager-manage-endpoints.md)

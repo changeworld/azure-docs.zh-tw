@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/23/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c093dcff46676dc5f8a25974c3c38c74ae7666b7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a4c7612188043be070ead92c88838b567b22787d
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546682"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131265"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教學課程：使用 Linux VM 系統指派的受控識別來存取 Azure 儲存體 
 
@@ -33,9 +33,6 @@ ms.locfileid: "92546682"
 > * 在儲存體帳戶中建立 Blob 容器
 > * 將 Linux VM 的受控識別存取權授與 Azure 儲存體容器
 > * 取得存取權杖，並用來呼叫 Azure 儲存體
-
-> [!NOTE]
-> Azure 儲存體的 Azure Active Directory 驗證處於公開預覽狀態。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -55,7 +52,7 @@ ms.locfileid: "92546682"
 3. 在 [名稱]  下，輸入儲存體帳戶的名稱。  
 4. [部署模型]  和 [帳戶類型]  應該設定為 **資源管理員** 和儲存體 (一般用途 v1)  。 
 5. 確定 [訂用帳戶]  和 [資源群組]  符合您在上一個步驟中建立 VM 時指定的值。
-6. 按一下頁面底部的 [新增]  。
+6. 按一下 [建立]。
 
     ![建立新的儲存體帳戶](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -73,7 +70,7 @@ ms.locfileid: "92546682"
 5. 使用您選擇的編輯器，在本機電腦上建立標題為 hello world.txt  的檔案。  開啟檔案並新增以下文字 (不含引號)："Hello world! :)" 然後加以儲存。 
 
 6. 按一下容器名稱，然後按一下 [上傳]  ，即可將檔案上傳至新建立的容器
-7. 在 [上傳 blob]  窗格的 [檔案]  下，按一下資料夾圖示，然後在本機電腦瀏覽至檔案 **hello_world.txt** 、選取檔案，然後按一下 [上傳]  。
+7. 在 [上傳 blob]  窗格的 [檔案]  下，按一下資料夾圖示，然後在本機電腦瀏覽至檔案 **hello_world.txt**、選取檔案，然後按一下 [上傳]  。
 
     ![上傳文字檔](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
@@ -86,11 +83,11 @@ ms.locfileid: "92546682"
 
 1. 巡覽回到您新建立的儲存體帳戶。  
 2. 按一下左側面板中的 [存取控制 (IAM)]  連結。  
-3. 按一下頁面頂端的 [+ 新增角色指派]，以新增虛擬機器的新角色指派。
-4. 在 [角色] 下，從下拉式清單中，選取 [儲存體 Blob 資料讀取器]。 
-5. 在下一個下拉式清單的 [將存取權指派給] 下，選取 [虛擬機器]。  
-6. 接下來，請確保 [訂用帳戶] 下拉式清單中已列出適當的訂用帳戶，然後將 [資源群組] 設定為 [所有資源群組]。  
-7. 在 [選取] 下，選擇您的虛擬機器，然後按一下 [儲存]。
+3. 按一下頁面頂端的 [+ 新增角色指派]  ，以新增虛擬機器的新角色指派。
+4. 在 [角色]  下，從下拉式清單中，選取 [儲存體 Blob 資料讀取器]  。 
+5. 在下一個下拉式清單的 [將存取權指派給]  下，選取 [虛擬機器]  。  
+6. 接下來，請確保 [訂用帳戶]  下拉式清單中已列出適當的訂用帳戶，然後將 [資源群組]  設定為 [所有資源群組]  。  
+7. 在 [選取]  下，選擇您的虛擬機器，然後按一下 [儲存]  。
 
     ![指派權限](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
@@ -100,7 +97,7 @@ Azure 儲存體原生支援 Azure AD 驗證，因此可以直接接受使用受�
 
 若要完成下列步驟，您必須從稍早建立的 VM 中進行，且需要 SSH 用戶端來加以連線。 如果您使用 Windows，您可以在[適用於 Linux 的 Windows 子系統](/windows/wsl/about)中使用 SSH 用戶端。 如果您需要設定 SSH 用戶端金鑰的協助，請參閱[如何在 Azure 上搭配 Windows 使用 SSH 金鑰](~/articles/virtual-machines/linux/ssh-from-windows.md)，或[如何在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組](~/articles/virtual-machines/linux/mac-create-ssh-keys.md)。
 
-1. 在 Azure 入口網站中，巡覽至 [虛擬機器]，移至您的 Linux 虛擬機器，然後在 [概觀] 頁面中，按一下 [連線]。 複製字串以連線到您的 VM。
+1. 在 Azure 入口網站中，巡覽至 [虛擬機器]  ，移至您的 Linux 虛擬機器，然後在 [概觀]  頁面中，按一下 [連線]  。 複製字串以連線到您的 VM。
 2. 使用您所選擇的 SSH 用戶端來 **連線** 到 VM。 
 3. 在終端機視窗中，使用 CURL 向本機受控識別端點提出要求，來取得 Azure 儲存體的存取權杖。
     
@@ -119,7 +116,7 @@ Azure 儲存體原生支援 Azure AD 驗證，因此可以直接接受使用受�
    Hello world! :)
    ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已了解如何讓 Linux VM 系統指派的受控識別存取 Azure 儲存體。  若要深入了解 Azure 儲存體，請參閱：
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 01bd3b1e945ee7c9ac16af7048536c0a9e2d731a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 502533b69058eacd4ad18a3b29a33fbc4a3715a5
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401583"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183757"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>使用 Azure Powershell 的流量管理員子網覆寫
 
@@ -43,7 +43,7 @@ ms.locfileid: "89401583"
 
 1. **取出流量管理員端點：**
 
-    若要啟用子網覆寫，請取得您想要新增覆寫的端點，然後使用 [AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)將其儲存在變數中。
+    若要啟用子網覆寫，請取得您想要新增覆寫的端點，然後使用 [AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)將其儲存在變數中。
 
     以您要變更的端點值取代 Name、ProfileName 和 ResourceGroupName。
 
@@ -54,7 +54,7 @@ ms.locfileid: "89401583"
     ```
 2. **將 IP 位址範圍新增至端點：**
     
-    若要將 IP 位址範圍新增至端點，您將使用 [AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) 新增範圍。
+    若要將 IP 位址範圍新增至端點，您將使用 [AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) 新增範圍。
 
     ```powershell
 
@@ -68,18 +68,18 @@ ms.locfileid: "89401583"
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    一旦加入範圍之後，請使用 [AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) 來更新端點。
+    一旦加入範圍之後，請使用 [AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) 來更新端點。
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-您可以使用 [Remove-AzTrafficManagerIpAddressRange](https://docs.microsoft.com/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0)來完成移除 IP 位址範圍。
+您可以使用 [Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0)來完成移除 IP 位址範圍。
 
 1.  **取出流量管理員端點：**
 
-    若要啟用子網覆寫，請取得您想要新增覆寫的端點，然後使用 [AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)將其儲存在變數中。
+    若要啟用子網覆寫，請取得您想要新增覆寫的端點，然後使用 [AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0)將其儲存在變數中。
 
     以您要變更的端點值取代 Name、ProfileName 和 ResourceGroupName。
 
@@ -102,7 +102,7 @@ ms.locfileid: "89401583"
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     移除範圍之後，請使用 [AzTrafficManagerEndpoint](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) 來更新端點。
+     移除範圍之後，請使用 [AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) 來更新端點。
 
     ```powershell
 
@@ -113,4 +113,4 @@ ms.locfileid: "89401583"
 ## <a name="next-steps"></a>後續步驟
 深入了解「流量管理員」的 [流量路由方法](traffic-manager-routing-methods.md)。
 
-深入瞭解 [子網流量路由方法](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#subnet-traffic-routing-method)
+深入瞭解 [子網流量路由方法](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)

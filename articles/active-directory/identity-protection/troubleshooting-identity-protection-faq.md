@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028891"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183110"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>常見問題身分識別保護 Azure Active Directory 的常見問題
 
@@ -31,7 +31,7 @@ ms.locfileid: "98028891"
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-### <a name="why-is-a-user-is-at-risk"></a>為什麼使用者有風險？
+### <a name="why-is-a-user-at-risk"></a>為什麼使用者有風險？
 
 如果您是 Azure AD Identity Protection 客戶，請前往 [具風險的 [使用者](howto-identity-protection-investigate-risk.md#risky-users) ] 視圖，然後按一下 [具風險的使用者]。 在底部的選單中，索引標籤的 [風險歷程記錄] 會顯示導致使用者風險變更的所有事件。 若要查看使用者的所有具風險登入，請按一下 [使用者的有風險的登入]。 若要查看此使用者的所有風險偵測，請按一下 [使用者的風險偵測]。
 

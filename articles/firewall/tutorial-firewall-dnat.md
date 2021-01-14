@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 71eda40abd38b4885b8e88085e338667b608902f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 281d0587ca4c041c7149e49aad6227f6dc0b7fbf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655131"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050862"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以 Azure 防火牆 DNAT 篩選輸入網際網路流量
 
@@ -66,7 +66,7 @@ ms.locfileid: "94655131"
 
      防火牆會在此子網路中，且子網路名稱 **必須** 是 AzureFirewallSubnet。
      > [!NOTE]
-     > AzureFirewallSubnet 子網路的大小是 /26。 如需有關子網路大小的詳細資訊，請參閱 [Azure 防火牆的常見問題集](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size)。
+     > AzureFirewallSubnet 子網路的大小是 /26。 如需有關子網路大小的詳細資訊，請參閱 [Azure 防火牆的常見問題集](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size)。
 
 10. 在 [位址範圍]  中，輸入 **10.0.1.0/26**。
 11. 使用其他預設設定，然後選取 [建立]  。

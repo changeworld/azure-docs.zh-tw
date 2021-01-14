@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53fb256d3a0fba1cc10cafb239ff7f7bb21ac4eb
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450900"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121068"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>教學課程：使用 Apache Spark 和 Azure Synapse Analytics 建立 Power BI 報表
 
@@ -22,7 +22,7 @@ ms.locfileid: "96450900"
 
 ## <a name="before-you-begin"></a>開始之前
 - [Azure Synapse Analytics 工作區](../quickstart-create-workspace.md)，並將 ADLS Gen2 儲存體帳戶設定為預設儲存體。 
-- 可將資料視覺化的 Power BI 工作區和 Power BI Desktop。 如需詳細資訊，請參閱[建立 Power BI 工作區](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)和[安裝 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
+- 可將資料視覺化的 Power BI 工作區和 Power BI Desktop。 如需詳細資訊，請參閱[建立 Power BI 工作區](/power-bi/service-create-the-new-workspaces)和[安裝 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - 連結的服務，用來連結您的 Azure Synapse Analytics 和 Power BI 工作區。 如需詳細資訊，請參閱 [Power BI 工作區的連結](../quickstart-power-bi.md)
 - Synapse Analytics 工作區中的無伺服器 Apache Spark 集區。 如需詳細資訊，請參閱[建立無伺服器 Apache Spark 集區](../quickstart-create-apache-spark-pool-studio.md)
   
@@ -89,7 +89,7 @@ Azure Synapse Analytics 可讓不同的工作區計算引擎在其無伺服器 A
 接下來，我們會將無伺服器 SQL 集區連線到 Power BI 工作區。 連線到您的工作區後，您就能夠直接從 Azure Synapse Analytics 和 Power BI Desktop 建立 Power BI 報表。
 
 >[!Note]
-> 開始之前，您必須先設定 [Power BI 工作區](../quickstart-power-bi.md)，並下載 [Power BI Desktop](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)。  
+> 開始之前，您必須先設定 [Power BI 工作區](../quickstart-power-bi.md)，並下載 [Power BI Desktop](/power-bi/service-create-the-new-workspaces)。  
 
 若要將無伺服器 SQL 集區連線道 Power BI 工作區：
 
