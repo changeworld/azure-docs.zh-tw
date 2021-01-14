@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8d2901e71a3c638e25899803ff9b24e20fdf1969
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 08ba75b5160acb20cb5e2d172203ae48b546f17d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412658"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202227"
 ---
 # <a name="security-control-identity-and-access-control"></a>安全性控制：身分識別與存取控制
 
@@ -80,7 +80,7 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 
 使用 Paw (特殊許可權存取工作站) 設定 MFA 以登入和設定 Azure 資源。
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中啟用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -114,7 +114,7 @@ Azure AD 沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強
 
 使用 Azure Active Directory 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 Azure AD 實例](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 

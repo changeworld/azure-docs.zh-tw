@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0c5e51665b4b1d31e7d2b3e25e7be31b481d0d9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87761041"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203162"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>從 Azure 下載 Linux VHD
 
@@ -33,20 +33,20 @@ ms.locfileid: "87761041"
 若要下載 VHD 檔案，您需要產生 [ (SAS) URL 的共用存取 ](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) 簽章。 產生 URL 時，會將到期時間指派給 URL。
 
 1. 在 VM 頁面的功能表上，選取 [ **磁片**]。
-2. 選取 VM 的作業系統磁碟，然後選取 [磁碟匯出]****。
-1. 如有需要，請更新 ** (秒的 URL 值過期) ** ，讓您有足夠的時間完成下載。 預設值為3600秒 (一小時) 。
-3. 選取 [產生 URL]****。
+2. 選取 VM 的作業系統磁碟，然後選取 [磁碟匯出]。
+1. 如有需要，請更新 **(秒的 URL 值過期)** ，讓您有足夠的時間完成下載。 預設值為3600秒 (一小時) 。
+3. 選取 [產生 URL]。
  
       
 ## <a name="download-vhd"></a>下載 VHD
 
-1.  在產生的 URL 之下，選取 [下載 VHD 檔案]****。
+1.  在產生的 URL 之下，選取 [下載 VHD 檔案]。
 
-    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="顯示用來停止 VM 的功能表按鈕。":::
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="顯示用來下載 VHD 的按鈕。":::
 
 2.  您可能需要在瀏覽器中選取 [ **儲存** ] 以開始下載。 VHD 檔案的預設名稱是 *abcd*。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何[使用 Azure CLI 從自訂磁碟上傳並建立 Linux VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
-- [使用 Azure CLI 管理 Azure 磁碟](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+- 了解如何[使用 Azure CLI 從自訂磁碟上傳並建立 Linux VM](upload-vhd.md)。 
+- [使用 Azure CLI 管理 Azure 磁碟](tutorial-manage-disks.md)。

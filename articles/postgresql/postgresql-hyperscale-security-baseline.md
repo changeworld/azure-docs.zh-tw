@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 836cf4600e353da61673ec8ee5df8f30fb4b9562
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 524a0cf5d5b48300879f8a8ad650971490e8c062
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629845"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202397"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-超大規模 (Citus) 
 
@@ -194,7 +194,7 @@ ms.locfileid: "97629845"
 
 **指引**：使用已設定 Multi-Factor Authentication (MFA) 的特殊權限存取工作站 (PAW) 來登入和設定 Azure 資源。
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

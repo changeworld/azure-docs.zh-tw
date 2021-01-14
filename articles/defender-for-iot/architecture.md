@@ -11,20 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2020
+ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: 3b5a586b5db4fb15a32090e601bac5610ece1427
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832557"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201465"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>適用于 IoT 的 Azure Defender 架構
 
-本文說明 Defender for IoT 解決方案的功能性系統架構。
+本文說明 Defender for IoT 解決方案的功能性系統架構。 適用于 IoT 的 Azure Defender 提供兩組功能，可符合您環境的需求、適用于組織的無代理程式解決方案，以及適用于裝置產生器的代理程式解決方案。
 
-## <a name="defender-for-iot-components"></a>適用于 IoT 的 Defender 元件
+## <a name="agentless-solution-for-organizations"></a>適用于組織的無代理程式解決方案
+### <a name="defender-for-iot-components"></a>適用于 IoT 的 Defender 元件
 
 適用于 IoT 的 Defender 可連接到 Azure 雲端以及內部部署元件。 解決方案是針對具有多個遠端位置的大型和地理位置分散式環境中的擴充性而設計的。 此解決方案可依國家/地區、區域、業務單位或區域，啟用多層的分散式架構。 
 
@@ -79,12 +80,12 @@ Defender for IoT 感應器會探索和持續監視網路裝置。 感應器會�
 - 內部部署管理主控台
 - Azure 入口網站
 
-#### <a name="sensor-console"></a>感應器主控台
+### <a name="sensor-console"></a>感應器主控台
 感應器偵測會顯示在感應器主控台中，可供您在網路地圖、資產清查和廣泛的報表中進行查看、調查及分析，例如風險評量報告、資料採礦查詢和攻擊媒介。 您也可以使用主控台來查看和處理感應器引擎偵測到的威脅、將資訊轉送至夥伴系統、管理使用者等等。
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="適用于 IoT 的 Defender 感應器主控台":::
 
-#### <a name="on-premises-management-console"></a>內部部署管理主控台
+### <a name="on-premises-management-console"></a>內部部署管理主控台
 內部部署管理主控台可讓安全性作業中心 (SOC) 操作員管理及分析從多個感應器匯總到單一儀表板的警示，並提供對 OT 網路健康情況的整體觀點。
 
 此架構在 SOC 層級提供完整的網路整合觀點、優化的警示處理，以及操作網路安全性的控制，以確保決策和風險管理保持完美。
@@ -103,20 +104,23 @@ Defender for IoT 感應器會探索和持續監視網路裝置。 感應器會�
 
    :::image type="content" source="media/updates/alerts-and-site-management-v2.png" alt-text="管理您所有的警示和資訊。":::
 
-#### <a name="azure-portal"></a>Azure 入口網站
+### <a name="azure-portal"></a>Azure 入口網站
 
 Azure 中的 Defender for IoT 入口網站可用來協助您：
 
 - 購買解決方案設備
+
 - 安裝和更新軟體
 - 將感應器上架到 Azure
 - 更新威脅情報套件
 
-## <a name="embedded-security-agent-built-in-mode"></a>Embedded security agent：內建模式
+## <a name="agent-based-solution-for-device-builders"></a>裝置建立器的代理程式解決方案
+
+### <a name="embedded-security-agent-built-in-mode"></a>Embedded security agent：內建模式
 
 在內 **建** 模式中，當您選擇在 iot 中樞中開啟 **安全性** 選項時，會啟用 Defender for IoT。 內建模式提供即時監視、建議和警示，提供單一步驟的裝置可見度和無與倫比的安全性。 內建模式不需要在任何裝置上安裝代理程式，而且會在已記錄的活動上使用 advanced analytics 來分析及保護您的欄位裝置和 IoT 中樞。
 
-## <a name="embedded-security-agent-enhanced-mode"></a>Embedded security agent：增強模式
+### <a name="embedded-security-agent-enhanced-mode"></a>Embedded security agent：增強模式
 
 在 **增強** 模式中，開啟 iot 中樞的 [ **安全性** ] 選項，並在裝置上安裝適用于 IoT 裝置代理程式的 Defender 之後，代理程式會從您的裝置收集、匯總及分析原始安全性事件。 原始安全性事件可以包含 IP 連線、進程建立、使用者登入，以及其他安全性相關資訊。 適用于 IoT 的 Defender 裝置代理程式也會處理事件匯總，以協助避免高的網路輸送量。 代理程式具有高度自訂性，可讓您將它們用於特定的工作，例如只傳送最快速 SLA 的重要資訊，或是將大量的安全性資訊和內容匯總到較大的區段，以避免產生更高的服務成本。
 
@@ -129,6 +133,8 @@ Azure 中的 Defender for IoT 入口網站可用來協助您：
 流量分析管線，適用于 IoT 的 Defender 會合並所有資訊串流，以產生可採取動作的建議和警示。 此管線包含安全性研究人員和專家所建立的自訂規則，以及搜尋標準裝置行為和風險分析偏差的機器學習模型。
 
 適用于 IoT 的 Defender 建議和警示 (分析管線輸出) 會寫入至每個客戶的 Log Analytics 工作區。 在工作區中包含未經處理的事件以及警示和建議，可讓您使用所偵測到的可疑活動的確切詳細資料，深入探討調查和查詢。
+
+:::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="微代理程式架構。":::
 
 ## <a name="see-also"></a>請參閱
 

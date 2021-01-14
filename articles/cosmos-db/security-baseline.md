@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 961dae4cd35c7529a5661d1ddc7d0d1f6e4db634
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 67eece36444f06fed5fc81cd23b9ea284b43ec7c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029110"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202346"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>適用于 Cosmos DB 的 Azure 安全性基準
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -361,7 +361,7 @@ Azure Cosmos DB 針對 Azure Cosmos DB 中的常見管理案例提供內建的 A
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) ，並將 Multi-Factor Authentication 設定為登入和設定 Azure 資源。
 
-了解特殊權限存取工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+了解特殊權限存取工作站： https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 如何在 Azure 中啟用 MFA： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 

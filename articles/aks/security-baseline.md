@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 29bcf2fdd3e20b28b1f2cb014137cfba37ccaf2e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 4cf623ed960fd2efe6fdf506751858796008cef4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931804"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202023"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>適用于 Azure Kubernetes Service 的 Azure 安全性基準
 
@@ -445,7 +445,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) ，MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入指定的 Azure Kubernetes Service (叢集和相關資源。
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

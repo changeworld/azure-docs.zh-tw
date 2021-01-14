@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a23a177945316bca89aa5cbcc46f840213dbe832
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd81139c15e6bba65fe9b9a53a2e8e950ebd754b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964808"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201751"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>SAP HANA on Azure (大型執行個體) 架構
 
@@ -43,7 +43,7 @@ SAP HANA on Azure (大型執行個體) 的整體架構會提供一個經 SAP TDI
    對於可在 Azure 中執行的 SAP NetWeaver 應用程式和資料庫，請參閱 [SAP 支援附註 #1928533 - Azure 上的 SAP 應用程式︰支援的產品和 Azure VM 類型](https://launchpad.support.sap.com/#/notes/1928533)。 如需關於如何在 Azure 上部署 SAP 解決方案的說明文件，請參閱：
 
   -  [在 Windows 虛擬機器上使用 SAP](./get-started.md?toc=/azure/virtual-machines/linux/toc.json)
-  -  [在 Azure 虛擬機器上使用 SAP 解決方案](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [在 Azure 虛擬機器上使用 SAP 解決方案](get-started.md)
 
 - **左邊**：顯示「Azure 大型執行個體」戳記中經 SAP HANA TDI 認證的硬體。 HANA 大型實例單位會使用與從內部部署連線至 Azure 的相同技術，連線至您 Azure 訂用帳戶的虛擬網路。 從2019到，引進了優化，可讓 HANA 大型實例單位與 Azure Vm 之間進行通訊，而不需要 ExpressRoute 閘道的參與。 此架構中會顯示這項稱為 ExpressRoute Fast Path 的優化 (紅線) 。 
 

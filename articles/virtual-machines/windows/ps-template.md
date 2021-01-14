@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c327f5ffbf7c0fbfadf443e80cc1f7540855f59e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072293"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201819"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>利用 Resource Manager 範本建立 Windows 虛擬機器
 
@@ -33,7 +33,7 @@ ms.locfileid: "89072293"
 
 [!code-json[create-windows-vm](~/quickstart-templates/101-vm-simple-windows/azuredeploy.json)]
 
-若要執行 PowerShell 腳本，請選取 [ **試試看** ] 以開啟 Azure Cloud shell。 若要貼上腳本，請以滑鼠右鍵按一下 shell，然後選取 [ **貼**上]：
+若要執行 PowerShell 腳本，請選取 [ **試試看** ] 以開啟 Azure Cloud shell。 若要貼上腳本，請以滑鼠右鍵按一下 shell，然後選取 [ **貼** 上]：
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -71,11 +71,11 @@ New-AzResourceGroupDeployment `
 ## <a name="next-steps"></a>後續步驟
 
 - 如果部署發生問題，您可以查看[使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解](../../azure-resource-manager/templates/common-deployment-errors.md)。
-- 請參閱[使用 Azure PowerShell 模組建立和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，以了解如何建立和管理虛擬機器。
+- 請參閱[使用 Azure PowerShell 模組建立和管理 Windows VM](tutorial-manage-vm.md)，以了解如何建立和管理虛擬機器。
 
 若要深入了解如何建立範本，請針對您部署的資源類型檢視 JSON 語法和屬性：
 
 - [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
 - [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-- [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+- [Microsoft. Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

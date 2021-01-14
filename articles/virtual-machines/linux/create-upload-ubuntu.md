@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: d3bdc3d0705bd8edc70f55b8372818e60859eedd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ca1aae3e819d58ea32453f2549d162bbfc9c91ae
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500558"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203213"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>準備適用於 Azure 的 Ubuntu 虛擬機器
 
@@ -28,7 +28,7 @@ Ubuntu 現在發佈官方的 Azure Vhd 以供下載 [https://cloud-images.ubuntu
 
 * 如需有關準備 Azure 之 Linux 的更多秘訣，另請參閱 [一般 Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes) 。
 * Azure 不支援 VHDX 格式，只支援 **固定 VHD**。  您可以使用 Hyper-v 管理員或 Cmdlet，將磁片轉換為 VHD 格式 `Convert-VHD` 。
-* 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果願意，您可以在資料磁碟上使用 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或 [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果願意，您可以在資料磁碟上使用 [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) 或 [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid)。
 * 請勿在 OS 磁片上設定交換磁碟分割或 cloud-init。 您可以設定雲端初始布建代理程式，在暫存資源磁片上建立交換檔或交換磁碟分割。 您可以在以下步驟中找到與此有關的詳細資訊。
 * Azure 上的所有 VHD 必須具有與 1 MB 對應的虛擬大小。 從未經處理的磁碟轉換成 VHD 時，您必須確定未經處理的磁碟大小在轉換前是 1 MB 的倍數。 如需詳細資訊，請參閱 [Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)。
 
@@ -176,7 +176,7 @@ Ubuntu 現在發佈官方的 Azure Vhd 以供下載 [https://cloud-images.ubuntu
 
 13. 在 Hyper-V 管理員中，依序按一下 [動作] -> [關閉]。
 
-14. Azure 只接受固定大小的 Vhd。 如果 VM 的 OS 磁片不是固定大小的 VHD，請使用 `Convert-VHD` PowerShell Cmdlet 並指定 `-VHDType Fixed` 選項。 請參閱 `Convert-VHD` 以下檔： [轉換-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps)。
+14. Azure 只接受固定大小的 Vhd。 如果 VM 的 OS 磁片不是固定大小的 VHD，請使用 `Convert-VHD` PowerShell Cmdlet 並指定 `-VHDType Fixed` 選項。 請參閱 `Convert-VHD` 以下檔： [轉換-VHD](/powershell/module/hyper-v/convert-vhd)。
 
 
 ## <a name="next-steps"></a>後續步驟

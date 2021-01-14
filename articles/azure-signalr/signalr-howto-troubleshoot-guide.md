@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: bdda89483661eb6f6d006c3d8ea42b46d162de05
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707668"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201649"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR Service 常見問題的疑難排解指南
 
@@ -26,7 +26,7 @@ ms.locfileid: "97707668"
 * 413 承載太大
 * 存取權杖的長度不得超過4K。 413 要求實體太大
 
-### <a name="root-cause"></a>根源：
+### <a name="root-cause"></a>根本原因：
 
 若為 HTTP/2，單一標頭的最大長度為 **4 K**，因此，如果使用 browser 來存取 Azure 服務，這項限制將會發生錯誤 `ERR_CONNECTION_` 。
 
@@ -73,7 +73,7 @@ services.MapAzureSignalR(GetType().FullName, options =>
 * ASP.NET 「連接不在作用中，無法將資料傳送至服務」。 錯誤 [#324](https://github.com/Azure/azure-signalr/issues/324)
 * 「對 HTTPs://提出 HTTP 要求時發生錯誤 <API endpoint> 。 此錯誤可能是因為在 HTTPS 案例中，伺服器憑證未正確設定 HTTP.SYS。 這項錯誤也可能是因為用戶端與伺服器之間的安全性系結不相符所造成。」
 
-### <a name="root-cause"></a>根源：
+### <a name="root-cause"></a>根本原因：
 
 基於安全性考慮，Azure 服務僅支援 TLS 1.2。 使用 .NET framework 時，TLS 1.2 可能不是預設通訊協定。 因此，無法成功建立與 ASRS 的伺服器連接。
 
@@ -242,7 +242,7 @@ Azure SignalR 的記錄器類別一律以開始 `Microsoft.Azure.SignalR` 。 �
 * `{"type":7,"error":"Connection closed with an error."}`
 * `{"type":7,"error":"Internal server error."}`
 
-### <a name="root-cause"></a>根源：
+### <a name="root-cause"></a>根本原因：
 
 用戶端連接可能會在各種情況下下降：
 * 當 `Hub` 使用連入要求擲回例外狀況時。
@@ -268,7 +268,7 @@ Azure SignalR 的記錄器類別一律以開始 `Microsoft.Azure.SignalR` 。 �
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-guide/client-connection-increasing-constantly.jpg" alt-text="用戶端連接不斷增加":::
 
-### <a name="root-cause"></a>根源：
+### <a name="root-cause"></a>根本原因：
 
 `DisposeAsync`永遠不會呼叫 SignalR 用戶端連接，連接會保持開啟。
 
@@ -330,7 +330,7 @@ Azure SignalR Service 會定期發行新的版本，而且有時會修補或升�
 * `The remote party closed the WebSocket connection without completing the close handshake`
 * `Service timeout. 30.00ms elapsed without receiving a message from service.`
 
-### <a name="root-cause"></a>根源：
+### <a name="root-cause"></a>根本原因：
 
 **ASRS** **(Azure z)** **S** ignal **R** **S** service) 來關閉伺服器服務連接。
 
@@ -368,7 +368,7 @@ Azure SignalR Service 會定期發行新的版本，而且有時會修補或升�
 
     * [ASP.NET Core c # 用戶端](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample.CSharpClient/Program.cs#L64)
 
-    * [ASP.NET Core JavaScript 用戶端](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample/wwwroot/index.html#L164)
+    * [ASP.NET Core JavaScript 用戶端](https://github.com/Azure/azure-signalr/blob/release/1.0.0-preview1/samples/ChatSample/wwwroot/index.html#L164)
 
     * [ASP.NET c # 用戶端](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 

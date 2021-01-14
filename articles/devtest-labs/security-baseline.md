@@ -3,12 +3,12 @@ title: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348818"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202006"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
 
@@ -183,7 +183,7 @@ _ *責任：** 客戶
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 **指導方針：** 使用特殊許可權存取工作站 (Paw) ，並設定 MFA 以登入和設定 Azure 資源。
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)  
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)  
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)  
 
 **Azure 資訊安全中心監視：** N/A
@@ -212,7 +212,7 @@ _ *責任：** 客戶
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 **指導方針：** 使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)  
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)  
 
 **Azure 資訊安全中心監視：** 目前無法使用
 
@@ -877,7 +877,7 @@ Azure 資訊安全中心監視： * * * * 不適用
 
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：進行 Azure 資源的定期滲透測試，並確保在 60 天內補救所有重大安全性發現
-**指導方針：** 遵循 Microsoft 的參與規則，以確保您的滲透測試不會違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行方法。
+**指導方針：** 遵循 Microsoft 的參與規則，以確保您的滲透測試不會違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。
 
 - [滲透測試的參與規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 - [Microsoft cloud red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)

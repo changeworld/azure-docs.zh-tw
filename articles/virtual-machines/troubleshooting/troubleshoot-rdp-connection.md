@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: ba6dda86475456b6797d27e11727d70261be2e1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66e4ea622f546981d1f0651b20368590e59056d3
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440001"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201615"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>針對 Azure 虛擬機器的遠端桌面連線進行疑難排解
 有各式各樣的原因可能導致 Windows 型 Azure 虛擬機器 (VM) 的遠端桌面通訊協定 (RDP) 連線失敗，讓您無法存取您的 VM。 問題可能與 VM 上的遠端桌面服務、網路連線或主機電腦上的遠端桌面用戶端有關。 本文將引導您完成一些可解決 RDP 連線問題的最常見方法。 
@@ -101,7 +101,7 @@ ms.locfileid: "91440001"
 
 10. 確保任何內部部署防火牆或您電腦上的防火牆允許對 Azure 輸出 TCP 3389 流量。
 
-如果您仍然遇到 RDP 問題，可以[開啟支援要求](https://azure.microsoft.com/support/options/)或閱讀[更詳細的 RDP 疑難排解概念和步驟](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如果您仍然遇到 RDP 問題，可以[開啟支援要求](https://azure.microsoft.com/support/options/)或閱讀[更詳細的 RDP 疑難排解概念和步驟](detailed-troubleshoot-rdp.md)。
 
 ## <a name="troubleshoot-using-azure-powershell"></a>使用 Azure PowerShell 進行疑難排解
 如果您尚未這樣做，請參閱 [安裝並設定最新的 Azure PowerShell](/powershell/azure/)。
@@ -154,7 +154,7 @@ ms.locfileid: "91440001"
     Direction                : Inbound
     ```
    
-    如果您沒有可允許 RDP 流量的規則，請[建立網路安全性群組規則](../windows/nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 允許 TCP 連接埠 3389。
+    如果您沒有可允許 RDP 流量的規則，請[建立網路安全性群組規則](../windows/nsg-quickstart-powershell.md)。 允許 TCP 連接埠 3389。
 3. **重設使用者認證**。 當您不確定或忘了認證時，此疑難排解步驟可重設您指定之本機系統管理員帳戶的密碼。
    
     首先，藉由將認證指派給 `$cred` 變數，以指定使用者名稱和新密碼，如下所示︰
@@ -190,7 +190,7 @@ ms.locfileid: "91440001"
 
 7. 確保任何內部部署防火牆或您電腦上的防火牆允許對 Azure 輸出 TCP 3389 流量。
 
-如果您仍然遇到 RDP 問題，可以[開啟支援要求](https://azure.microsoft.com/support/options/)或閱讀[更詳細的 RDP 疑難排解概念和步驟](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如果您仍然遇到 RDP 問題，可以[開啟支援要求](https://azure.microsoft.com/support/options/)或閱讀[更詳細的 RDP 疑難排解概念和步驟](detailed-troubleshoot-rdp.md)。
 
 ## <a name="troubleshoot-vms-created-using-the-classic-deployment-model"></a>針對使用傳統部署模型建立的 VM 進行疑難排解
 
@@ -234,7 +234,7 @@ ms.locfileid: "91440001"
 
 7. 確保任何內部部署防火牆或您電腦上的防火牆允許對 Azure 輸出 TCP 3389 流量。
 
-如果您仍然遇到 RDP 問題，可以[開啟支援要求](https://azure.microsoft.com/support/options/)或閱讀[更詳細的 RDP 疑難排解概念和步驟](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如果您仍然遇到 RDP 問題，可以[開啟支援要求](https://azure.microsoft.com/support/options/)或閱讀[更詳細的 RDP 疑難排解概念和步驟](detailed-troubleshoot-rdp.md)。
 
 ## <a name="troubleshoot-specific-rdp-errors"></a>針對特定 RDP 錯誤進行疑難排解
 嘗試透過 RDP 連接到您的 VM 時，您可能會遇到特定的錯誤訊息。 以下是最常見的錯誤訊息：
@@ -246,6 +246,6 @@ ms.locfileid: "91440001"
 * [這部電腦無法連線到遠端電腦](troubleshoot-specific-rdp-errors.md#rdpconnect)。
 
 ## <a name="additional-resources"></a>其他資源
-如果這些錯誤皆未發生，而您仍然無法透過「遠端桌面」連接到 VM，請閱讀詳細的 [遠端桌面疑難排解指南](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如果這些錯誤皆未發生，而您仍然無法透過「遠端桌面」連接到 VM，請閱讀詳細的 [遠端桌面疑難排解指南](detailed-troubleshoot-rdp.md)。
 * 如需存取在 VM 上執行之應用程式的疑難排解步驟，請參閱[針對在 Azure VM 上執行之應用程式的存取進行疑難排解](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
 * 如果您在 Azure 中使用安全殼層 (SSH) 連線到 Linux VM 時遇到問題，請參閱[針對 Azure 中對 Linux VM 的 SSH 連線進行疑難排解](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)。

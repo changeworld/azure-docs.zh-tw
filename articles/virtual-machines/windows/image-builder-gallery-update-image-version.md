@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
-ms.openlocfilehash: 7515e0a39d1cf0da74d2a23457443e96716b4275
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ad463672660582f28e0fd758a2293ad4112a981
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335947"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201870"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>預覽：在 Windows 中使用 Azure 映射建立器，從現有的映射版本建立新的 VM 映射版本
 
@@ -107,7 +107,7 @@ imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, '
 
 
 ## <a name="modify-helloimage-example"></a>修改 helloImage 範例
-您可以在這裡開啟 json 檔案，以查看我們即將使用的範例： [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) ，以及影像產生器 [範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+您可以在這裡開啟 json 檔案，以查看我們即將使用的範例： [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) ，以及影像產生器 [範本參考](../linux/image-builder-json.md)。 
 
 
 下載 json 範例，並使用您的變數進行設定。 
@@ -177,4 +177,4 @@ dir c:\
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器 [範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器 [範本參考](../linux/image-builder-json.md)。

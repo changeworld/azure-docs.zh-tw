@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: baeeeae54829fad7378df597965eec5ba2039d20
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d2f283aa8b049602d25cf8969bc2327ebcfafe08
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972810"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202873"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>使用 PowerShell 將資料磁碟連結至 Windows VM
 
@@ -20,7 +20,7 @@ ms.locfileid: "91972810"
 
 首先，請檢閱下列提示：
 
-* 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](../sizes.md)。
 * 若要使用進階 SSD，您將需要[已啟用進階儲存體的 VM 類型](../sizes-memory.md)，例如 DS 系列或 GS 系列的虛擬機器。
 
 本文使用 [Azure Cloud Shell](../../cloud-shell/overview.md)中的 PowerShell，這會持續更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
@@ -49,7 +49,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 
 ### <a name="using-managed-disks-in-an-availability-zone"></a>在可用性區域中使用受控磁碟
 
-若要在可用性區域中建立磁碟，請使用 [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) 並搭配 `-Zone` 參數。 下列範例會在區域 1** 建立磁碟。
+若要在可用性區域中建立磁碟，請使用 [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) 並搭配 `-Zone` 參數。 下列範例會在區域 1 建立磁碟。
 
 ```powershell
 $rgName = 'myResourceGroup'

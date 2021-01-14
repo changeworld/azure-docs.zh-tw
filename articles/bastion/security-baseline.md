@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7849027c704c8b8d7d36a33cd58c84566ce96da3
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 36542bc87163e2be800a8f6a4db31307ae7dedbb
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530947"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202516"
 ---
 # <a name="azure-security-baseline-for-azure-bastion"></a>適用于 Azure 防禦的 azure 安全性基準
 
@@ -215,7 +215,7 @@ Azure 防禦服務需要開啟下列埠，服務才能正常運作：
 
 **指引**：安全、隔離的工作站對於敏感性角色 (例如系統管理員、開發人員及重要服務操作員) 的安全性來說至關重要。 視您的需求而定，您可以使用高度安全的使用者工作站，在生產環境中使用您的 Azure 防禦資源來執行系統管理管理工作。 請使用 Azure Active Directory、Microsoft Defender 進階威脅防護 (ATP) 和/或 Microsoft Intune，以部署安全且受控的使用者工作站來進行系統管理工作。 受保護的工作站可以集中管理以強制執行安全的設定，包括強式驗證、軟體和硬體基準，以及受限的邏輯和網路存取。 
 
-- [瞭解特殊許可權的存取工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [瞭解特殊許可權的存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [部署特殊權限存取工作站](../active-directory/devices/howto-azure-managed-workstation.md) (機器翻譯)
 

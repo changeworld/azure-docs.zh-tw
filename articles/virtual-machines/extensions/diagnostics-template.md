@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 181f226a4d7aa37ffd8c667db4736a96450e2be5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a91e21994dda126e14c100bcf1d2a69c36b13e1e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955951"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202159"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>使用 Windows VM 和 Azure Resource Manager 範本的監視和診斷
 Azure 診斷擴充功能會在以 Windows 為基礎的 Azure 虛擬機器上提供監視和診斷功能。 您可以將擴充功能納入為 Azure Resource Manager 範本的一部分，在虛擬機器上啟用這些功能。 請參閱 [使用 VM 延伸模組編寫 Azure 資源管理員範本](../windows/template-description.md#extensions) ，以取得將任何延伸模組納入為虛擬機器範本一部分的詳細資訊。 本文描述如何將 Azure 診斷延伸模組新增至 Windows 虛擬機器範本。  
@@ -179,5 +179,5 @@ PT1M 及 PT1H 的 MetricAggregation 值分別表示超過一分鐘的彙總及�
 
 ## <a name="next-steps"></a>後續步驟
 * 如需具有診斷擴充功能之 Windows 虛擬機器的完整範例範本，請參閱 [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* 使用 [Azure PowerShell](../windows/ps-template.md) 或 [Azure 命令列](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)部署 Azure Resource Manager 範本
+* 使用 [Azure PowerShell](../windows/ps-template.md) 或 [Azure 命令列](../linux/create-ssh-secured-vm-from-template.md)部署 Azure Resource Manager 範本
 * 深入了解 [編寫 Azure 資源管理員範本](../../azure-resource-manager/templates/template-syntax.md)

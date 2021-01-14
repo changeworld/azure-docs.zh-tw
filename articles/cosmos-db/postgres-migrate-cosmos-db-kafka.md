@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/05/2021
 ms.author: abhishgu
 ms.reviewer: abhishgu
-ms.openlocfilehash: 24714b185b0f666770b306a7e80a97a3f8f868a3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0038219ee8c1721ff5ab2be76231d33d2bd9064d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98052618"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203060"
 ---
 # <a name="migrate-data-from-postgresql-to-azure-cosmos-db-cassandra-api-account-using-apache-kafka"></a>使用 Apache Kafka 將資料從于 postgresql 遷移至 Azure Cosmos DB Cassandra API 帳戶
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -107,7 +107,7 @@ bin/kafka-server-start.sh config/server.properties
 
 ### <a name="setup-connectors"></a>設定連接器
 
-安裝 Debezium 于 postgresql 和 DataStax Apache Kafka 連接器。 下載 Debezium 于 postgresql connector 外掛程式封存。 例如，若要下載連接器的版本 1.3.0 (最新的) ，請使用 [此連結](https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.3.0.Final/debezium-connector-postgres-1.2.0.Final-plugin.tar.gz)。 從此 [連結](https://downloads.datastax.com/#akc)下載 DataStax Apache Kafka 連接器。
+安裝 Debezium 于 postgresql 和 DataStax Apache Kafka 連接器。 下載 Debezium 于 postgresql connector 外掛程式封存。 例如，若要下載連接器的版本 1.3.0 (最新的) ，請使用 [此連結](https://repo1.maven.org/maven2/io/debezium/debezium-connector-postgres/1.3.0.Final/debezium-connector-postgres-1.3.0.Final-plugin.tar.gz)。 從此 [連結](https://downloads.datastax.com/#akc)下載 DataStax Apache Kafka 連接器。
 
 將連接器封存解壓縮，並將 JAR 檔案複製到 [Kafka Connect 外掛程式。路徑](https://kafka.apache.org/documentation/#connectconfigs)。
 
@@ -257,7 +257,7 @@ select * from retail.orders_by_customer where customer_id = 10;
 
 您可以繼續在於 postgresql 中插入更多資料，並確認記錄已同步處理至 Azure Cosmos DB。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [使用 Kafka Connect 整合 Apache Kafka 和 Azure Cosmos DB Cassandra API](cassandra-kafka-connect.md)
 * [使用 Debezium for Change Data Capture 整合 Apache Kafka Connect on Azure 事件中樞 (Preview) ](../event-hubs/event-hubs-kafka-connect-debezium.md)

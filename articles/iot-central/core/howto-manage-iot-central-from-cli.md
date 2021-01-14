@@ -9,12 +9,12 @@ ms.date: 03/27/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 manager: philmea
-ms.openlocfilehash: 201318a5a5680f248b831bb480888f106286fbe1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6496e944d30724fe9e8db7168f9c9cb1552dcd1b
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660027"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "98203318"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>從 Azure CLI 管理 IoT Central
 
@@ -26,11 +26,13 @@ ms.locfileid: "94660027"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - 如果您需要在不同的 Azure 訂用帳戶中執行 CLI 命令，請參閱 [變更有效訂](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription)用帳戶。
+ - 如果您需要在不同的 Azure 訂用帳戶中執行 CLI 命令，請參閱 [變更有效訂](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription&preserve-view=true)用帳戶。
 
 ## <a name="create-an-application"></a>建立應用程式
 
-使用 [az iot central 應用程式 create](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-create) 命令，在您的 Azure 訂用帳戶中建立 IoT Central 應用程式。 例如：
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
+
+使用 [az iot central 應用程式 create](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-create&preserve-view=true) 命令，在您的 Azure 訂用帳戶中建立 IoT Central 應用程式。 例如：
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -63,11 +65,11 @@ az iot central app create \
 
 ## <a name="view-your-applications"></a>檢視您的應用程式
 
-使用 [az iot central 應用程式清單](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-list) 命令，列出您的 IoT Central 應用程式並查看中繼資料。
+使用 [az iot central 應用程式清單](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-list&preserve-view=true) 命令，列出您的 IoT Central 應用程式並查看中繼資料。
 
 ## <a name="modify-an-application"></a>修改應用程式
 
-使用 [az iot central 應用程式更新](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-update) 命令來更新 IoT Central 應用程式的中繼資料。 例如，若要變更應用程式的顯示名稱：
+使用 [az iot central 應用程式更新](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-update&preserve-view=true) 命令來更新 IoT Central 應用程式的中繼資料。 例如，若要變更應用程式的顯示名稱：
 
 ```azurecli-interactive
 az iot central app update --name myiotcentralapp \
@@ -77,7 +79,7 @@ az iot central app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>移除應用程式
 
-使用 [az iot central 應用程式刪除](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-delete) 命令來刪除 IoT Central 應用程式。 例如：
+使用 [az iot central 應用程式刪除](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-delete&preserve-view=true) 命令來刪除 IoT Central 應用程式。 例如：
 
 ```azurecli-interactive
 az iot central app delete --name myiotcentralapp \

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2be48025bcf2be8cec63e2a251f034e72c803e88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cefe427a7a6f7a46c838147f3d699423c9f19c7b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289650"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201887"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>從受控映像建立 VM
 
@@ -30,7 +30,7 @@ ms.locfileid: "87289650"
 5. 輸入虛擬機器資訊。 在此輸入的使用者名稱和密碼將用於登入虛擬機器。 完成時選取 [確定]。 您可以在現有資源群組中建立新的 VM，或選擇 [建立新項目] 來建立用於儲存 VM 的新資源群組。
 6. 選取 VM 的大小。 若要查看更多大小，請選取 [檢視全部] 或變更 [支援的磁碟類型] 篩選條件。 
 7. 在 [設定] 下，視需要變更，然後選取 [確定]。 
-8. 在摘要頁面上，您應該會看到您的映像名稱列出為**私人映像**。 選取 [確定] 以開始虛擬機器部署。
+8. 在摘要頁面上，您應該會看到您的映像名稱列出為 **私人映像**。 選取 [確定] 以開始虛擬機器部署。
 
 
 ## <a name="use-powershell"></a>使用 PowerShell
@@ -60,4 +60,4 @@ New-AzVm `
 
 
 ## <a name="next-steps"></a>後續步驟
-[使用 Azure PowerShell 模組建立和管理 Windows VM](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[使用 Azure PowerShell 模組建立和管理 Windows VM](tutorial-manage-vm.md)

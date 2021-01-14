@@ -7,18 +7,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: c449bce76cc9cb7e5f8b9659c11b443e186c65ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bd5c8ae7b4f2ba2d057f61712ce799814e19050
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306968"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202142"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>使用 Azure CLI 處理預定的維修通知
 
 **本文適用于執行 Linux 和 Windows 的虛擬機器。**
 
-您可以使用 CLI 來查看 Vm 何時排程進行 [維護](maintenance-notifications.md)。 您可以從 [az vm get-instance view 取得](/cli/azure/vm?view=azure-cli-latest#az-vm-get-instance-view)預定的維修資訊。
+您可以使用 CLI 來查看 Vm 何時排程進行 [維護](maintenance-notifications.md)。 您可以從 [az vm get-instance view 取得](/cli/azure/vm#az-vm-get-instance-view)預定的維修資訊。
  
 只在有預定進行的維修作業時，才會傳回維修資訊。 
 

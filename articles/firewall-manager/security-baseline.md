@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d25fc8e0a42c8b79a5b1bfaa0d842c9927f58e43
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: eca243a9a83ad5d2bfa006b46499470cf06e808a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602796"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203026"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>適用于 Azure 防火牆管理員的 Azure 安全性基準
 
@@ -210,7 +210,7 @@ Azure 進階威脅防護 (ATP) 是一項安全性解決方案，可使用 Active
 
 **指引**：安全、隔離的工作站對於敏感性角色 (例如系統管理員、開發人員及重要服務操作員) 的安全性來說至關重要。 使用高度安全的使用者工作站，在生產環境中使用您的 Azure 防火牆管理員資源來執行系統管理管理工作。 請使用 Azure Active Directory、Microsoft Defender 進階威脅防護 (ATP) 和/或 Microsoft Intune，以部署安全且受控的使用者工作站來進行系統管理工作。 受保護的工作站可以集中管理以強制執行安全的設定，包括強式驗證、軟體和硬體基準，以及受限的邏輯和網路存取。
 
-- [瞭解特殊許可權的存取工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [瞭解特殊許可權的存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [部署特殊權限存取工作站](../active-directory/devices/howto-azure-managed-workstation.md) (機器翻譯)
 

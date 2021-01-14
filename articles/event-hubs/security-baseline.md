@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9386b154148cf5b5b6b7cd0b43f5a4b4aa741059
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3f56fc1b321396c5cc6aa93e3f47fcaafcbe4ae4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339688"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202329"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>適用于事件中樞的 Azure 安全性基準
 
@@ -361,7 +361,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) 與 MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入和設定啟用事件中樞的資源。
 
-了解特殊權限存取工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+了解特殊權限存取工作站： https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
 如何在 Azure 中啟用 MFA： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 

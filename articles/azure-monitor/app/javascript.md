@@ -4,12 +4,12 @@ description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 31cfa2e56fa10743c9a95d4df880fb1869fd9613
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858547"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203434"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -167,7 +167,7 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 大部分的設定欄位都命名為，因此可以預設為 false。 除了以外，所有欄位都是選擇性的 `instrumentationKey` 。
 
 | 名稱 | 預設 | 描述 |
@@ -196,7 +196,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | correlationHeaderDomains |  | 啟用特定網域的相互關聯標頭 |
 | disableFlushOnBeforeUnload | false | 預設值為 false。 若為 true，onBeforeUnload 事件觸發程式時，將不會呼叫 flush 方法 |
 | enableSessionStorageBuffer | true | 預設值為 true。 若為 true，則會將包含所有未傳送遙測的緩衝區儲存在會話儲存體中。 在頁面載入時還原緩衝區 |
-| isCookieUseDisabled | false | 預設值為 false。 若為 true，SDK 將不會儲存或讀取 cookie 中的任何資料。|
+| isCookieUseDisabled | false | 預設值為 false。 若為 true，SDK 將不會儲存或讀取 cookie 中的任何資料。 請注意，這會停用使用者和會話 cookie，並將使用方式的 blade 和體驗呈現為無用。 |
 | cookieDomain | null | 自訂 cookie 網域。 如果您想要在子域之間共用 Application Insights cookie，這會很有説明。 |
 | isRetryDisabled | false | 預設值為 false。 若為 false，則在206上重試 (部分成功) 、408 (timeout) 、429 (太多要求) 、500 (內部伺服器錯誤) 、503 (服務無法使用) ，以及 0 (離線，只有在偵測到時)  |
 | isStorageUseDisabled | false | 若為 true，SDK 將不會儲存或讀取本機和會話儲存體中的任何資料。 預設值為 false。 |

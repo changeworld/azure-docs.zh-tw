@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e48b1357b8576baca0e8defca94f4c5248c6f74e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4e82b4adbfde7623de9497c94e56a9ae303131ad
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461283"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202771"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>適用于 Azure Data Factory 的 Azure 安全性基準
 
 適用于 Azure Data Factory 的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
@@ -408,7 +408,7 @@ ms.locfileid: "96461283"
 
 **指引**：使用已設定多重要素驗證 (MFA) 的特殊權限存取工作站 (PAW) 來登入和設定 Azure 資源。
 
-* [了解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

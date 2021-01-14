@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 477228f607f620f22ffab3a3435ebd850df0324a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7d01e033b6349861d5d89493aa5132368a53ca09
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492524"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201394"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>適用于適用於 MySQL 的 Azure 資料庫的 Azure 安全性基準
 
 適用於 MySQL 的 Azure 資料庫 Azure 安全性基準，會提供有助於改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md) (機器翻譯)。
 
@@ -28,11 +28,11 @@ ms.locfileid: "96492524"
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
-**指引**：使用私人端點為適用於 MySQL 的 Azure 資料庫設定 Private Link。 Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務。 Azure Private Link 基本上會將 Azure 服務帶入您的私人虛擬網路 (VNet) 內部。 您的虛擬網路與 MySQL 執行個體之間的流量會經由 Microsoft 骨幹網路傳輸。
+**指引**：使用私人端點為適用於 MySQL 的 Azure 資料庫設定 Private Link。 Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務。 Azure Private Link 基本上會將 Azure 服務帶入私人虛擬網路 (VNet) 內部。 您的虛擬網路與 MySQL 執行個體之間的流量會經由 Microsoft 骨幹網路傳輸。
 
 您也可以使用虛擬網路服務端點來保護和限制對適用於 MySQL 的 Azure 資料庫實作的網路存取。 虛擬網路規則是一項防火牆安全性功能，可控制適用於 MySQL 的 Azure 資料庫伺服器是否接受從虛擬網路中特定子網路所傳來的通訊。
 
-您也可以使用防火牆規則保護適用於 MySQL 的 Azure 資料庫伺服器。 伺服器防火牆會防止對您資料庫伺服器的所有存取，直到您指定哪些電腦擁有權限。 若要設定您的防火牆，您可以建立防火牆規則，指定可接受的 IP 位址範圍。 您可以在伺服器層級建立防火牆規則。
+您也可以使用防火牆規則保護適用於 MySQL 的 Azure 資料庫伺服器。 伺服器防火牆會防止對資料庫伺服器的所有存取，直到您指定哪些電腦擁有權限。 若要設定您的防火牆，您可以建立防火牆規則，指定可接受的 IP 位址範圍。 您可以在伺服器層級建立防火牆規則。
 
 - [如何設定適用於 MySQL 的 Azure 資料庫的 Private Link](howto-configure-privatelink-portal.md)
 
@@ -46,7 +46,7 @@ ms.locfileid: "96492524"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：監視和記錄虛擬網路、子網和網路介面的設定和流量
 
-**指引**：當適用於 MySQL 的 Azure 資料庫執行個體固定於私人端點時，您可以在相同的虛擬網路中部署虛擬機器。 您可以使用網路安全性群組 (NSG) 降低資料外洩的風險。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶進行流量稽核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
+**指引**：當適用於 MySQL 的 Azure 資料庫執行個體固定於私人端點時，您可以在相同的虛擬網路中部署虛擬機器。 您可使用網路安全性群組 (NSG) 來降低資料外洩的風險。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶進行流量稽核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
 - [如何設定適用於 MySQL 的 Azure 資料庫的 Private Link](howto-configure-privatelink-portal.md)
 
@@ -68,9 +68,9 @@ ms.locfileid: "96492524"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指引**：為適用於 MySQL 的 Azure 資料庫使用 Azure 進階威脅防護。 Azure 進階威脅防護偵測到了異常活動，這表示有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
+**指引**：為適用於 MySQL 的 Azure 資料庫使用 Azure 進階威脅防護。 進階威脅防護會偵測異常活動，指出有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
-在與適用於 MySQL 的 Azure 資料庫執行個體相關聯的虛擬網路上，啟用 Azure DDoS 保護標準，以抵禦分散式阻斷服務攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
+在與適用於 MySQL 的 Azure 資料庫執行個體相關聯的虛擬網路上，啟用 Azure DDoS 保護標準，以抵禦分散式阻斷服務攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
 
 - [如何設定適用於 MySQL 的 Azure 資料庫的 Advanced 威脅防護](howto-database-threat-protection-portal.md)
 
@@ -82,7 +82,7 @@ ms.locfileid: "96492524"
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
-**指引**：當適用於 MySQL 的 Azure 資料庫執行個體固定於私人端點時，您可以在相同的虛擬網路中部署虛擬機器。 然後可以設定網路安全性群組 (NSG)，以降低資料外洩的風險。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶進行流量稽核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
+**指引**：當適用於 MySQL 的 Azure 資料庫執行個體固定於私人端點時，您可以在相同的虛擬網路中部署虛擬機器。 然後可設定網路安全性群組 (NSG)，以降低資料外洩的風險。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶進行流量稽核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
 - [如何啟用 NSG 流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -94,7 +94,7 @@ ms.locfileid: "96492524"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵防護系統 (IDS/IPS) 
 
-**指引**：為適用於 MySQL 的 Azure 資料庫使用 Azure 進階威脅防護。 Azure 進階威脅防護偵測到了異常活動，這表示有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
+**指引**：為適用於 MySQL 的 Azure 資料庫使用 Azure 進階威脅防護。 進階威脅防護會偵測異常活動，指出有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
 - [如何設定適用於 MySQL 的 Azure 資料庫的 Advanced 威脅防護](howto-database-threat-protection-portal.md)
 
@@ -182,7 +182,7 @@ ms.locfileid: "96492524"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指引**：啟用診斷設定和伺服器記錄並內嵌記錄，以彙總適用於 MySQL 的 Azure 資料庫執行個體所產生的安全性資料。 在 Azure 監視器中使用 Log Analytics 工作區執行查詢和分析，並使用 Azure 儲存體帳戶處理長期/封存的儲存作業。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
+**指引**：啟用診斷設定和伺服器記錄並內嵌記錄，以彙總適用於 MySQL 的 Azure 資料庫執行個體所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區來查詢和執行分析，並使用 Azure 儲存體帳戶進行長期/封存儲存。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
 
 - [瞭解適用於 MySQL 的 Azure 資料庫的伺服器記錄](concepts-monitoring.md#server-logs)
 
@@ -244,7 +244,7 @@ ms.locfileid: "96492524"
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
-**指引**：為適用於 MySQL 的 Azure 資料庫啟用 Azure 進階威脅防護。 Azure 進階威脅防護偵測到了異常活動，這表示有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
+**指引**：為適用於 MySQL 的 Azure 資料庫啟用 Azure 進階威脅防護。 進階威脅防護會偵測異常活動，指出有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
 此外，您可以啟用 MySQL 的伺服器記錄和診斷設定，並將記錄傳送至 Log Analytics 工作區。 請將您的 Log Analytics 工作區在 Azure Sentinel 上線，因為其可提供安全性協調流程自動化回應 (SOAR) 解決方案。 如此可建立劇本 (自動化解決方案)，並用於修復安全性問題。
 
@@ -368,7 +368,7 @@ ms.locfileid: "96492524"
 
 **指引**：使用已設定多重要素驗證 (MFA) 的特殊權限存取工作站 (PAW) 來登入和設定 Azure 資源。
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -448,7 +448,7 @@ Azure AD 認證也可以用於管理平面層級 (例如，Azure 入口網站) �
 
 **指引**：為適用於 MySQL 的 Azure 資料庫啟用 Azure 進階威脅防護，針對可疑活動產生警示。
 
-請使用 Azure Active Directory Identity Protection 和風險偵測功能，設定針對偵測到的可疑動作的自動化回應。 您可透過 Azure Sentinel 啟用自動化回應，以實作組織的安全性回應。
+使用 Azure Active Directory Identity Protection 和風險偵測功能，設定對所偵測到可疑動作的自動化回應。 您可透過 Azure Sentinel 啟用自動化回應，以實作組織的安全性回應。
 
 您也可將記錄內嵌到 Azure Sentinel 中，以便進一步調查。
 
@@ -478,7 +478,7 @@ Azure AD 認證也可以用於管理平面層級 (例如，Azure 入口網站) �
 
 *如需詳細資訊，請參閱 [Azure 安全性基準測試：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的清查
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的適用於 MySQL 的 Azure 資料庫執行個體或相關資源。
 
@@ -490,7 +490,7 @@ Azure AD 認證也可以用於管理平面層級 (例如，Azure 入口網站) �
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引**：針對開發、測試和生產，實作不同的訂閱和/或管理群組。 請搭配使用 Private Link、服務端點，及/或防火牆規則，隔離並限制對適用於 MySQL 的 Azure 資料庫執行個體的網路存取。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 請搭配使用 Private Link、服務端點，及/或防火牆規則，隔離並限制對適用於 MySQL 的 Azure 資料庫執行個體的網路存取。
 
 - [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
@@ -536,7 +536,7 @@ Microsoft 會管理適用於 MySQL 的 Azure 資料庫的基礎結構，並已�
 
 **指引**：適用於 MySQL 的 Azure 資料庫目前無法使用資料識別、分類及外洩防護功能。 若需要達到合規性目標，請實作協力廠商解決方案。
 
-針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
+針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制和功能。
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
@@ -572,7 +572,7 @@ Microsoft 會管理適用於 MySQL 的 Azure 資料庫的基礎結構，並已�
 
 **指引**：適用於 MySQL 的 Azure 資料庫服務針對待用資料儲存體加密是使用符合 FIPS 140-2 的加密模組。 資料 (包含備份) 會在磁碟上加密，但不包括執行查詢時所建立的暫存檔案。 該服務使用包含在 Azure 儲存體加密中的 AES 256 位元加密，且金鑰是由系統進行管理。 儲存體加密會一律啟用，且無法停用。
 
-適用於 MySQL 的 Azure 資料庫使用客戶管理金鑰的資料加密，可讓您攜帶自己的金鑰 (BYOK) 來保護待用資料。 此時，您必須要求存取權限，才能使用這項功能。 若要這樣做，請連絡：
+適用於 MySQL 的 Azure 資料庫使用客戶管理金鑰的資料加密，可讓您攜帶自己的金鑰 (BYOK) 來保護待用資料。 此時，您必須要求存取權，才能使用這項功能。 若要這樣做，請連絡：
 
 AskAzureDBforMySQL@service.microsoft.com
 
@@ -854,7 +854,7 @@ Microsoft 會在支援適用於 MySQL 的 Azure 資料庫的基礎系統上執�
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
-**指引**：使用「Microsoft.DBforMySQL」命名空間中的 Azure 原則別名來建立自訂原則，以警示、稽核和強制執行系統設定。 此外，部署流程和管線以管理原則例外狀況。
+**指引**：使用「Microsoft.DBforMySQL」命名空間中的 Azure 原則別名來建立自訂原則，以警示、稽核和強制執行系統設定。 此外，開發流程和管線以管理原則例外狀況。
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -888,7 +888,7 @@ Microsoft 會在支援適用於 MySQL 的 Azure 資料庫的基礎系統上執�
 
 **責任**：N/A
 
-### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 秘密
+### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
 **指引**：對於在 Azure App Service 上執行的 Azure 虛擬機器或 Web 應用程式 (用於存取您的適用於 MySQL 的 Azure 資料庫執行個體)，請將受控服務識別與 Azure Key Vault 結合使用，以簡化和保護適用於 MySQL 的 Azure 資料庫密碼管理。 確保已啟用 Key Vault 虛刪除。
 
@@ -904,7 +904,7 @@ Microsoft 會在支援適用於 MySQL 的 Azure 資料庫的基礎系統上執�
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指引**：適用於 MySQL 的 Azure 資料庫執行個體支援 Azure Active Directory 驗證以存取資料庫。  建立適用於 MySQL 的 Azure 資料庫執行個體時，需要提供管理員使用者的認證。 此管理員可用於建立其他資料庫使用者。  
+**指引**：適用於 MySQL 的 Azure 資料庫執行個體支援 Azure Active Directory 驗證以存取資料庫。  建立適用於 MySQL 的 Azure 資料庫執行個體時，需要提供管理員使用者的認證。 此系統管理員可用於建立其他資料庫使用者。  
 
 對於在 Azure App Service 上執行的 Azure 虛擬機器或 Web 應用程式 (用於存取您的適用於 MySQL 的 Azure 資料庫執行個體)，請將受控服務識別與 Azure Key Vault 結合使用，以儲存和擷取適用於 MySQL 的 Azure 資料庫執行個體的認證。 確保已啟用 Key Vault 虛刪除。
 

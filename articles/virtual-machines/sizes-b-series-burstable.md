@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 5ba5c6799db6a32bce64a730f4888f59080300dd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 14c8584699ddc981fc24cc29b78c187288c6fb57
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657170"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203383"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
@@ -21,7 +21,7 @@ B 系列 Vm 非常適合不需要持續完整 CPU 效能的工作負載，例如
 
 B 系列有下列 VM 大小：
 
-[Azure 計算單位 (ACU) ](./acu.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)：改變 *<br>
+[Azure 計算單位 (ACU) ](./acu.md)：改變 *<br>
 [進階儲存體](premium-storage-performance.md)：支援<br>
 [進階儲存體](premium-storage-performance.md)快取：不支援<br>
 [即時移轉](maintenance-and-updates.md)：支援<br>
@@ -59,7 +59,7 @@ B16 特性：
 
 ![每小時流量資料的圖表](./media/b-series-burstable/office-workload.png)
 
-| 案例 | 時間 | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
+| 案例 | Time | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
 | --- | --- | --- | --- | --- |
 | B16ms 部署 | 部署 | 部署  | 480 (初始點數)  | 480 |
 | 沒有流量 | 0:00 | 0 | 162 | 642 |

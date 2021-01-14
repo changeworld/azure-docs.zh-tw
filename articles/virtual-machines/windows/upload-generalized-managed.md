@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 6e3333ac780cfca02a6ce4f28d2b0e312016f713
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: dc3920ac1e2269f4980ee67e2f5f82a0541ac0c2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131503"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201496"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>將一般化 VHD 上傳，並使用它在 Azure 中建立新的 VM
 
@@ -22,7 +22,7 @@ ms.locfileid: "98131503"
 
 ## <a name="before-you-begin"></a>開始之前
 
-- 將任何 VHD 上傳至 Azure 之前，您應該遵循[準備 Windows VHD 或 VHDX 以上傳至 Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+- 將任何 VHD 上傳至 Azure 之前，您應該遵循[準備 Windows VHD 或 VHDX 以上傳至 Azure](prepare-for-upload-vhd-image.md)。
 - 請先檢閱[規劃移轉至受控磁碟](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks)，再開始移轉至[受控磁碟](../managed-disks-overview.md)。
 
  
@@ -33,7 +33,7 @@ ms.locfileid: "98131503"
 請確定 Sysprep 支援電腦上執行的伺服器角色。 如需詳細資訊，請參閱 [Sysprep Support for Server Roles (伺服器角色的 Sysprep 支援)](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)。
 
 > [!IMPORTANT]
-> 如果您打算在第一次將 VHD 上傳至 Azure 之前，先執行 Sysprep，請確定您已[準備好 VM](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+> 如果您打算在第一次將 VHD 上傳至 Azure 之前，先執行 Sysprep，請確定您已[準備好 VM](prepare-for-upload-vhd-image.md)。 
 > 
 > 
 
@@ -114,4 +114,4 @@ New-AzVm `
 
 ## <a name="next-steps"></a>後續步驟
 
-登入至新的虛擬機器。 如需詳細資訊，請參閱 [如何連接和登入執行 Windows 的 Azure 虛擬機器](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+登入至新的虛擬機器。 如需詳細資訊，請參閱 [如何連接和登入執行 Windows 的 Azure 虛擬機器](connect-logon.md)。

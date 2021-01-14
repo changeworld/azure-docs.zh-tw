@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 34a84ed333172ea0931c529d2dbeee1b774ae8c5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7a7831a26d55e5c85b814efc6de78238678820ec
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016353"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203264"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細步驟：在 Azure 中建立和管理對 Linux VM 進行驗證所需的 SSH 金鑰
 
@@ -232,6 +232,6 @@ ssh myvm
 
 接下來是使用新的 SSH 公開金鑰建立 Azure Linux VM。 相較於以預設登入方法密碼建立的 VM，以 SSH 公開金鑰作為登入所建立的 Azure VM 比較安全。
 
-* [使用 Azure 入口網站建立 Linux 虛擬機器](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用 Azure CLI 建立 Linux 虛擬機器](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用 Azure 範本建立 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用 Azure 入口網站建立 Linux 虛擬機器](quick-create-portal.md)
+* [使用 Azure CLI 建立 Linux 虛擬機器](quick-create-cli.md)
+* [使用 Azure 範本建立 Linux VM](create-ssh-secured-vm-from-template.md)

@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 96603d27f53161c72c9e81bb7b84fdc6ab5d1ca2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6699db280c4d82867d5559255eab08fd6b55b65a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320059"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201513"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>預覽：建立 Windows 映像並將其發佈到共用映像庫 
 
@@ -20,7 +20,7 @@ ms.locfileid: "91320059"
 
 我們將會使用 .json 範本來設定映像。 我們要使用的 .json 檔案位於這裡：[armTemplateWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Win_Shared_Image_Gallery_Image/armTemplateWinSIG.json)。 我們將會下載並編輯該範本的本機版本，因此此文章是使用本機 PowerShell 工作階段來撰寫的。
 
-為了將映像發佈到共用映像庫，範本會使用 [sharedImage](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#distribute-sharedimage) 作為範本 `distribute` 區段的值。
+為了將映像發佈到共用映像庫，範本會使用 [sharedImage](../linux/image-builder-json.md#distribute-sharedimage) 作為範本 `distribute` 區段的值。
 
 Azure Image Builder 會自動執行 sysprep 以將映像一般化；此為一般的 sysprep 命令，您可以視需要將其[覆寫](../linux/image-builder-troubleshoot.md#vms-created-from-aib-images-do-not-create-successfully) \(英文\)。 
 
@@ -299,7 +299,7 @@ dir c:\
 
 
 ## <a name="clean-up-resources"></a>清除資源
-如果您現在想要嘗試重新自訂映像版本以建立相同映像的新版本，請**略過此步驟**並移至[使用 Azure Image Builder 建立另一個映像版本](image-builder-gallery-update-image-version.md)。
+如果您現在想要嘗試重新自訂映像版本以建立相同映像的新版本，請 **略過此步驟** 並移至 [使用 Azure Image Builder 建立另一個映像版本](image-builder-gallery-update-image-version.md)。
 
 
 這將會刪除所建立的映像，以及所有其他資源檔。 在刪除資源之前，請確定您已完成此部署。

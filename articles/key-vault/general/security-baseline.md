@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7d116010d5e6fea5e1ba8a66431b874194506283
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ad47ac7d51de6ab497d7061961c14b5324fab931
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843446"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202448"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>適用於 Key Vault 的 Azure 安全性基準
 
@@ -399,7 +399,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) 與 Azure AD MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入和設定 Key Vault 啟用的資源。 
 
-特殊許可權存取工作站： https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
+特殊許可權存取工作站： https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/ 
 
 規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -604,7 +604,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 **指導** 方針： Microsoft 管理 Azure Key Vault 的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
-何謂 Azure Key Vault？
+什麼是 Azure Key Vault？
 
 https://docs.microsoft.com/azure/key-vault/key-vault-overview
 
@@ -1261,7 +1261,7 @@ https://docs.microsoft.com/azure/security-center/continuous-export
 
   
 
-如何將警示串流至 Azure Sentinel：  
+如何將警示串流至 Azure Sentinel： 
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 

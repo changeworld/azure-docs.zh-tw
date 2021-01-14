@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 764b10d1af2a037c4d5285ae42669ea2345779e0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4fccb0b2e382e56e83fbbe54c0f0afa50a5c9590
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660503"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202465"
 ---
 # <a name="azure-security-baseline-for-azure-firewall"></a>Azure 防火牆的 azure 安全性基準
 
@@ -276,7 +276,7 @@ Azure 監視器記錄可以用來進行應用程式的一般即時監視，或�
 
 **指導** 方針：使用 paw (特殊許可權的存取工作站) 搭配多重要素驗證 (MFA) 設定為登入及設定 Azure 防火牆和相關資源。 
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations) 
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -310,7 +310,7 @@ Azure 監視器記錄可以用來進行應用程式的一般即時監視，或�
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。 
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -430,7 +430,7 @@ Azure 監視器記錄可以用來進行應用程式的一般即時監視，或�
 
 **指導** 方針：使用 azure 防火牆和相關資源，在所有 Azure 資源上使用待用加密。 Microsoft 建議讓 Azure 管理您的加密金鑰，但在某些情況下，您可以選擇管理您自己的金鑰。 
 
-- [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
+- [了解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
 - [如何設定客戶管理的加密金鑰](../storage/common/customer-managed-keys-configure-key-vault.md)
 
@@ -762,7 +762,7 @@ Azure 監視器記錄可以用來進行應用程式的一般即時監視，或�
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

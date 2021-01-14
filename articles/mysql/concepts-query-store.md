@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: 70e1e5d06ef025801322e15e589d26e31f116fc3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 82482b260233994672e603c16fe8cf919c92337f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535073"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201020"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>使用查詢存放區監視適用於 MySQL 的 Azure 資料庫效能
 
@@ -36,12 +36,12 @@ ms.locfileid: "94535073"
 1. 登入 Azure 入口網站，然後選取適用於 MySQL 的 Azure 資料庫伺服器。
 1. 在功能表的 [設定] 區段中，選取 [伺服器參數]。
 1. 搜尋 query_store_capture_mode 參數。
-1. 將值設為 [ALL]，然後 **儲存** 。
+1. 將值設為 [ALL]，然後 **儲存**。
 
 若要啟用查詢存放區中的等候統計資料：
 
 1. 搜尋 query_store_wait_sampling_capture_mode 參數。
-1. 將值設為 [ALL]，然後 **儲存** 。
+1. 將值設為 [ALL]，然後 **儲存**。
 
 請等候 20 分鐘，以讓第一批資料保存在 mysql 資料庫中。
 
@@ -69,7 +69,7 @@ SELECT * FROM mysql.query_store_wait_stats;
 ## <a name="finding-wait-queries"></a>尋找等候查詢
 
 > [!NOTE]
-> 等候統計資料不應在尖峰工作負載期間內啟用，或針對機密工作負載無限期地開啟。 <br>如果工作負載以高 CPU 使用率執行，或在設定較少虛擬核心的伺服器上執行，請在啟用等候統計資料時特別小心。 不應無限期地開啟等候統計資料。 
+> 等候統計資料不應在尖峰工作負載期間內啟用，或針對機密工作負載無限期地開啟。 <br>如果工作負載以高 CPU 使用率執行，或在設定較少虛擬核心的伺服器上執行，請在啟用等候統計資料時特別小心。 不應無限期地開啟等候統計資料。
 
 等候事件類型會依相似性，將不同的等候事件結合成貯體。 查詢存放區提供等候事件類型、特定的等候事件名稱，以及有問題的查詢。 能夠將此等候資訊與查詢執行階段相互關聯，表示您可以更深入了解查詢效能特性從何而來。
 
@@ -78,8 +78,8 @@ SELECT * FROM mysql.query_store_wait_stats;
 | **觀測** | **動作** |
 |---|---|
 |高鎖定等候數 | 查看受影響查詢的查詢文字，並找出目標實體。 查看查詢存放區，針對經常執行和/或持續時間很長的實體，尋找修改同一實體的其他查詢。 找出這些查詢之後，請考慮變更應用程式邏輯，改善並行存取，或使用限制較少的隔離等級。 |
-|高緩衝區 IO 等候數 | 在查詢存放區中尋找實體讀取次數高的查詢。 如果與高 IO 等候數的查詢相符，請考慮對基礎實體引進索引，以執行搜尋，而不是掃描。 這可將查詢的 IO 額外負荷降到最低。 請在入口網站檢查伺服器的 **效能建議** ，以查看是否有此伺服器的索引建議，可供將查詢最佳化。 |
-|高記憶體等候數 | 找出查詢存放區中記憶體耗用量名列前茅的查詢。 這些查詢可能會進一步延遲受影響查詢的進度。 請在入口網站檢查伺服器的 **效能建議** ，以查看是否有索引建議，可供將這些查詢最佳化。|
+|高緩衝區 IO 等候數 | 在查詢存放區中尋找實體讀取次數高的查詢。 如果與高 IO 等候數的查詢相符，請考慮對基礎實體引進索引，以執行搜尋，而不是掃描。 這可將查詢的 IO 額外負荷降到最低。 請在入口網站檢查伺服器的 **效能建議**，以查看是否有此伺服器的索引建議，可供將查詢最佳化。 |
+|高記憶體等候數 | 找出查詢存放區中記憶體耗用量名列前茅的查詢。 這些查詢可能會進一步延遲受影響查詢的進度。 請在入口網站檢查伺服器的 **效能建議**，以查看是否有索引建議，可供將這些查詢最佳化。 |
 
 ## <a name="configuration-options"></a>設定選項
 
@@ -102,13 +102,13 @@ SELECT * FROM mysql.query_store_wait_stats;
 | query_store_wait_sampling_frequency | 改變等候取樣的頻率 (以秒為單位)。 5 到 300 秒。 | 30 | 5-300 |
 
 > [!NOTE]
-> 目前， **query_store_capture_mode** 會取代此設定，這表示 **query_store_capture_mode** 和 **query_store_wait_sampling_capture_mode** 必須啟用為 ALL，等待統計資料才能正常執行。 如果關閉 **query_store_capture_mode** ，則等候統計資料也會關閉，因為等候統計資料會利用啟用的 performance_schema，以及查詢存放區所擷取的 query_text。
+> 目前，**query_store_capture_mode** 會取代此設定，這表示 **query_store_capture_mode** 和 **query_store_wait_sampling_capture_mode** 必須啟用為 ALL，等待統計資料才能正常執行。 如果關閉 **query_store_capture_mode**，則等候統計資料也會關閉，因為等候統計資料會利用啟用的 performance_schema，以及查詢存放區所擷取的 query_text。
 
 使用 [Azure 入口網站](howto-server-parameters.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md)，為參數取得或設定不同的值。
 
 ## <a name="views-and-functions"></a>檢視和函式
 
-使用下列檢視和函式來檢視和管理查詢存放區。 [選取權限公用角色](howto-create-users.md#to-create-additional-admin-users-in-azure-database-for-mysql)中的任何人都可以使用這些檢視，查看查詢存放區中的資料。 這些檢視僅適用於 **mysql** 資料庫。
+使用下列檢視和函式來檢視和管理查詢存放區。 [選取權限公用角色](howto-create-users.md#to-create-more-admin-users-in-azure-database-for-mysql)中的任何人都可以使用這些檢視，查看查詢存放區中的資料。 這些檢視僅適用於 **mysql** 資料庫。
 
 移除常值和常數之後，查看查詢結構，其會呈現標準化。 如果兩個查詢完全相同 (但常值除外)，則兩者會有相同的雜湊碼。
 

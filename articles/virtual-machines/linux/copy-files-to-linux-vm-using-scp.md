@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f56118750fc980c249c88b796728f4ecb2641a88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83c054a9e2dd829dbfb34a3873f06332e504b832
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86510951"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201190"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>使用 SCP 將檔案移入和移出 Linux VM
 
 本文說明如何使用安全複製 (SCP) 從您的工作站將檔案上移至 Azure Linux VM，或從 Azure Linux VM 下移至您的工作站。 在您的工作站與 Linux VM 之間快速又安全地移動檔案，對於管理您的 Azure 基礎結構來說相當重要。 
 
-針對本文，您需要一個使用 [SSH 公開和私密金鑰檔案](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)在 Azure 中部署的 Linux VM。 此外，還需要一個用於您本機電腦的 SCP 用戶端。 此工具建置在 SSH 之上，並包含在大多數 Linux 和 Mac 電腦的預設 Bash 殼層中，以及部分 Windows 殼層中。
+針對本文，您需要一個使用 [SSH 公開和私密金鑰檔案](mac-create-ssh-keys.md)在 Azure 中部署的 Linux VM。 此外，還需要一個用於您本機電腦的 SCP 用戶端。 此工具建置在 SSH 之上，並包含在大多數 Linux 和 Mac 電腦的預設 Bash 殼層中，以及部分 Windows 殼層中。
 
 ## <a name="quick-commands"></a>快速命令
 
@@ -43,7 +43,7 @@ scp azureuser@azurehost:directory/file targetfile
 
 SCP 會針對傳輸層使用 SSH。 SSH 會處理目的地主機上的驗證，它會在 SSH 預設提供的加密通道中移動檔案。 針對 SSH 驗證，可以使用使用者名稱和密碼。 不過，建議的安全性最佳做法是使用 SSH 公用和私密金鑰驗證。 在 SSH 驗證連線之後，SCP 就會開始複製檔案。 藉由使用已正確設定的 `~/.ssh/config` 和 SSH 公用與私密金鑰，只要使用伺服器名稱 (或 IP 位址)，即可建立 SCP 連線。 如果您只有一個 SSH 金鑰，SCP 會在 `~/.ssh/` 目錄中尋找它，並預設使用它來登入 VM。
 
-如需有關設定您的 `~/.ssh/config` 和 SSH 公用與私密金鑰的詳細資訊，請參閱[建立 SSH 金鑰](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如需有關設定您的 `~/.ssh/config` 和 SSH 公用與私密金鑰的詳細資訊，請參閱[建立 SSH 金鑰](mac-create-ssh-keys.md)。
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>SCP 檔案至 Linux VM
 
@@ -67,6 +67,6 @@ scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 
 旗標會 `-r` 指示 SCP 以遞迴方式從命令中列出的目錄點複製檔案和目錄。  另請注意，命令列語法類似 `cp` 複製命令。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [管理使用者、SSH，並使用 VMAccess 擴充功能檢查或修復 Azure Linux VM 上的磁碟](../extensions/vmaccess.md?toc=/azure/virtual-machines/linux/toc.json)

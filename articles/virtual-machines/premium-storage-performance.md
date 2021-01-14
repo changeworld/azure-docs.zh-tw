@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500388"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201955"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 進階儲存體：專為高效能而設計
 
@@ -230,7 +230,7 @@ IO 大小是其中一個很重要的因素。 IO 大小是指應用程式所產�
 
 *Linux 散發版本*  
 
-Azure 進階儲存體可讓執行 Windows 和 Linux 的 VM 達到相同層級的效能。 我們支援許多種 Linux 散發版本，您可以在 [這裡](linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)看到完整清單。 務必注意，針對不同類型的工作負載，不同的散發版本會更適合。 根據執行工作負載的散發版本而定，您會看到不同層級的效能。 請以您的應用程式來測試 Linux 散發版本，選擇最適合的散發版本。
+Azure 進階儲存體可讓執行 Windows 和 Linux 的 VM 達到相同層級的效能。 我們支援許多種 Linux 散發版本，您可以在 [這裡](linux/endorsed-distros.md)看到完整清單。 務必注意，針對不同類型的工作負載，不同的散發版本會更適合。 根據執行工作負載的散發版本而定，您會看到不同層級的效能。 請以您的應用程式來測試 Linux 散發版本，選擇最適合的散發版本。
 
 搭配進階儲存體執行 Linux 時，請檢查所需驅動程式的最新更新，以確保達到較高效能。
 

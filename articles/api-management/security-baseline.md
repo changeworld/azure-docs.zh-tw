@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ab4ae6980af9556f973ece93634b614d01c615e9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 1825767d8140421d4f0e22f9ebfde42f8262da5e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132659"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201071"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>適用於 API 管理的 Azure 安全性基準
 
@@ -446,7 +446,7 @@ Azure API 管理訂用帳戶是保護 API 存取的一種方法，不過其隨�
 
 **指引**：使用已設定多重要素驗證 (MFA) 的特殊權限存取工作站 (PAW) 來登入和設定 Azure 資源。
 
-* [了解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

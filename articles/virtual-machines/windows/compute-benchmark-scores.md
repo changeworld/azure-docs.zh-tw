@@ -9,15 +9,15 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: ccaf44f733958bff461e954c78196f7376a59771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b354f6f121e6a055e7db07a587936f3eaff94c33
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836202"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201564"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的計算基準測試分數
-下列 SPECInt 基準測試分數顯示執行 Windows Server 之選取 Azure Vm 的計算效能。 也有 [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的計算基準測試分數。
+下列 SPECInt 基準測試分數顯示執行 Windows Server 之選取 Azure Vm 的計算效能。 也有 [Linux VM](../linux/compute-benchmark-scores.md)的計算基準測試分數。
 
 
 ## <a name="av2---general-compute"></a>Av2 - 一般計算
@@ -65,9 +65,9 @@ ms.locfileid: "87836202"
 | Standard_B4ms | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 43 | 28.3 | 0.7 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 3 | 42.0 | 0.0 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 25 | 41.4 | 0.9 | 
-| Standard_B12ms | 12 | 1 | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 19 | 58.9 | 2.3 |
-| Standard_B16ms | 16 | 1 | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 18 | 75.4 | 2.1 |
-| Standard_B20ms | 20 | 1 | Intel (R) )  (R CPU E5-2673 v3 或 v4| 2 | 90.6 | 1.3 |
+| Standard_B12ms | 12 | 1 | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 19 | 58.9 | 2.3 |
+| Standard_B16ms | 16 | 1 | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 18 | 75.4 | 2.1 |
+| Standard_B20ms | 20 | 1 | Intel (R) )  (R CPU E5-2673 v3 或 v4| 2 | 90.6 | 1.3 |
 
 
 >[!NOTE]
@@ -91,12 +91,12 @@ ms.locfileid: "87836202"
 | Standard_D16s_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 38 | 298.2 | 4.4 | 
 | Standard_D32s_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 545.8 | 10.5 | 
 | Standard_D32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 9 | 535.6 | 12.6 | 
-| Standard_D32-8s_v3 | 8 |  | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 6 | 166.0 | 8.8 |
-| Standard_D32-16s_v3 | 16 |  | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 4 | 300.8 | 6.4 |
-| Standard_D48s_v3 | 48 | 2 | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 1 | 838.0 | 0.0 |
+| Standard_D32-8s_v3 | 8 |  | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 6 | 166.0 | 8.8 |
+| Standard_D32-16s_v3 | 16 |  | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 4 | 300.8 | 6.4 |
+| Standard_D48s_v3 | 48 | 2 | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 1 | 838.0 | 0.0 |
 | Standard_D64s_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 35 | 1070.6 | 2.4 | 
-| Standard_D64-16s_v3 | 16 |  | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 4 | 340.0 | 21.4 |
-| Standard_D64-32s_v3 | 32 |  | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 3 | 592.3 | 1.5 |
+| Standard_D64-16s_v3 | 16 |  | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 4 | 340.0 | 21.4 |
+| Standard_D64-32s_v3 | 32 |  | Intel (R) )  (R CPU E5-2673 v3 或 v4 | 3 | 592.3 | 1.5 |
 
 ## <a name="dv3---general-compute"></a>Dv3 - 一般計算
 
@@ -114,7 +114,7 @@ ms.locfileid: "87836202"
 | Standard_D16_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 300.7 | 8.8 | 
 | Standard_D32_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 549.3 | 11.1 | 
 | Standard_D32_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 7 | 538.6 | 9.4 | 
-| Standard_D48_v3 | 48 |  |  Intel (R) )  (R CPU E5-2673 v3 或 v4 | 3 | 839.7 | 14.4 |
+| Standard_D48_v3 | 48 |  |  Intel (R) )  (R CPU E5-2673 v3 或 v4 | 3 | 839.7 | 14.4 |
 | Standard_D64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 1070.6 | 12.4 | 
 
 ## <a name="dsv2---storage-optimized"></a>DSv2 - 儲存體最佳化
@@ -389,4 +389,4 @@ ms.locfileid: "87836202"
 Windows 數字是藉由在 Windows Server 上執行 [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) 來計算出。 執行 SPECint 時是使用基本費率選項 (SPECint_rate2006)，其中每個 vCPU 有一個複本。 SPECint 是由 12 個個別的測試組成，每個測試都執行三次，系統會從每個測試挑出中間值，然後將它們加權來形成複合分數。 這些測試會接著在多個 VM 上執行以提供所顯示的平均分數。
 
 ## <a name="next-steps"></a>後續步驟
-* 如需了解儲存體容量、磁碟詳細資料及其他選擇 VM 大小的考量，請參閱 [虛擬機器的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+* 如需了解儲存體容量、磁碟詳細資料及其他選擇 VM 大小的考量，請參閱 [虛擬機器的大小](../sizes.md)。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6f29c0608ec1c928493bae792171967834ba35ca
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 8b17a4718f5ef985c5b03cacec4b688163380a5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092647"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201683"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>適用于 Azure SignalR Service 的 Azure 安全性基準
 
@@ -313,7 +313,7 @@ Azure SignalR Service 中的內建角色包括：
 
 **指引**：安全、隔離的工作站對於敏感性角色 (例如系統管理員、開發人員及重要服務操作員) 的安全性來說至關重要。 使用高度安全的使用者工作站及/或 Azure 防禦來進行系統管理工作。 請使用 Azure Active Directory、Microsoft Defender 進階威脅防護 (ATP) 和/或 Microsoft Intune，以部署安全且受控的使用者工作站來進行系統管理工作。 受保護的工作站可以集中管理以施行安全設定，包括增強式驗證、軟體和硬體基準、受限的邏輯和網路存取。
 
-- [瞭解特殊許可權的存取工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [瞭解特殊許可權的存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [部署特殊權限存取工作站](../active-directory/devices/howto-azure-managed-workstation.md) (機器翻譯)
 

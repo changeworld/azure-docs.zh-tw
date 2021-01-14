@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3b648168cd80920b8042f1edeacca893c21b98e2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0e4c749d875ab22f8cdf26adf6050e1fa0476b28
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498943"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202244"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>適用于安全性中心的 Azure 安全性基準
 
@@ -248,7 +248,7 @@ ms.locfileid: "96498943"
 
 **指導** 方針：使用安全且受 Azure 管理的工作站 (也稱為「特殊許可權存取工作站」，或 PAW 需要較高許可權的系統管理工作) 。
 
-- [瞭解安全、受 Azure 管理的工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [瞭解安全、受 Azure 管理的工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何啟用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

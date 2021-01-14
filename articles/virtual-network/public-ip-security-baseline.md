@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 788c52490a97bb5d5aee0656bbdd09731d767d85
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8dd49125dc54403328fe53ae1aa0112ab2005501
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842595"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201122"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure 公用 IP 的 azure 安全性基準
 
@@ -150,9 +150,9 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) ，Azure AD Multi-Factor Authentication 已啟用 MFA (，以登入並設定) 相關的資源。
 
-- [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md)
+- [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -186,7 +186,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -283,7 +283,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 **指導** 方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。
 
-使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。 確保已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 則可查詢及探索其訂用帳戶內的資源。 確保已核准環境中的所有 Azure 資源。
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -462,11 +462,11 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。 
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。 
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

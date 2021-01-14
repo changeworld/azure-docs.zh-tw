@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 14e19732423da3842b2f2748a46219691fe222b9
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 0de08c166aba7609210892a32836bee9b07d5394
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803148"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203043"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>適用于 Azure Stack Edge 的 Azure 安全性基準
 
@@ -234,7 +234,7 @@ Azure Stack Edge Pro 裝置是內部部署裝置，可在本機處理資料，�
 
 受保護的工作站可以集中管理以施行安全設定，包括增強式驗證、軟體和硬體基準、受限的邏輯和網路存取。
 
-- [瞭解特殊許可權的存取工作站](/azure/active-directory/devices/concept-azure-managed-workstation) 
+- [瞭解特殊許可權的存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [部署特殊權限存取工作站](/azure/active-directory/devices/howto-azure-managed-workstation) (機器翻譯)
 

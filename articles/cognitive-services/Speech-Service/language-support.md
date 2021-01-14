@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 123302490e738e72106780006c77ef76fdc032cc
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: be0f082e7c27db1a696e17b32f11e676f4068810
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184623"
+ms.locfileid: "98201037"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -36,7 +36,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| 語言                 | 地區設定 (BCP-47)  | 自訂  | [自動語言偵測？](how-to-automatic-language-detection.md) |
+| 語言                 | 地區設定 (BCP-47)  | 自訂  | [語言偵測](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
 | 阿拉伯文 (巴林)，現代標準  | `ar-BH` | 語言模型                                   | 是                           | 
 | 阿拉伯文 (埃及)                     | `ar-EG` | 語言模型                                   | 是                          |

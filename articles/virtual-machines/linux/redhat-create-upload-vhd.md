@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 751d447c164c602b9b1524d4945d61556bf71932
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: d5caacc7ebbb39a5d6d4fa3d4e9757e8e83420f9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127289"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202686"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>準備適用於 Azure 的 Red Hat 型虛擬機器
 在本文中，您將學習如何準備 Red Hat Enterprise Linux (RHEL) 虛擬機器以在 Azure 中使用。 本文涵蓋的 RHEL 版本為 6.7 和 7.1。 本文章所述之準備作業使用 Hyper-V、核心為基礎之虛擬機器 (KVM) 及 VMware 等 Hypervisor。 如需參加 Red Hat 雲端存取方案之資格需求的詳細資訊，請參閱 [Red Hat 雲端存取網站](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)與[在 Azure 上執行 RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)。 如需自動建立 RHEL 映射的方式，請參閱 [Azure 映射](./image-builder-overview.md)產生器。
@@ -22,7 +22,7 @@ ms.locfileid: "98127289"
 
 本節說明如何使用 Hyper-v 管理員準備 [rhel 6](#rhel-6-using-hyper-v-manager) 或 [rhel 7](#rhel-7-using-hyper-v-manager) 虛擬機器。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 本節假設您已經從 Red Hat 網站取得 ISO 檔案並將 RHEL 映像安裝至虛擬硬碟 (VHD)。 如需有關如何使用 Hyper-V 管理員來安裝作業系統映像的詳細資訊，請參閱[安裝 Hyper-V 角色和設定虛擬機器](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))。
 
 **RHEL 安裝注意事項**
@@ -30,7 +30,7 @@ ms.locfileid: "98127289"
 * Azure 不支援 VHDX 格式。 Azure 只支援固定 VHD。 您可以使用 Hyper-V 管理員將磁碟轉換為 VHD 格式，或者使用 convert-vhd Cmdlet。 如果您使用 VirtualBox，請選取 [固定大小]  ，而不是預設在建立磁碟時動態配置的選項。
 * Azure 支援 Gen1 (BIOS 開機) & Gen2 (UEFI 開機) 虛擬機器。
 * 允許的 VHD 大小上限為 1,023 GB。
-* 邏輯磁碟區管理員 (LVM) 受到支援，而且可能會在 OS 磁碟或 Azure 虛擬機器中的資料磁碟上使用。 不過，通常建議在 OS 磁碟上使用標準磁碟分割，而不是 LVM。 此練習可避免 LVM 名稱與複製的虛擬機器發生衝突，特別是為了疑難排解而需要將作業系統磁碟連結至另一部相同虛擬機器時。 另請參閱 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 和 [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 文件。
+* 邏輯磁碟區管理員 (LVM) 受到支援，而且可能會在 OS 磁碟或 Azure 虛擬機器中的資料磁碟上使用。 不過，通常建議在 OS 磁碟上使用標準磁碟分割，而不是 LVM。 此練習可避免 LVM 名稱與複製的虛擬機器發生衝突，特別是為了疑難排解而需要將作業系統磁碟連結至另一部相同虛擬機器時。 另請參閱 [LVM](configure-lvm.md) 和 [RAID](configure-raid.md) 文件。
 * **需要 (UDF) 檔案系統裝載國際磁碟格式的核心支援**。 在 Azure 上第一次開機時，連結至客體的 UDF 格式媒體會將佈建組態傳遞至 Linux 虛擬機器。 Azure Linux 代理程式必須能夠掛接 UDF 檔案系統，才能讀取其設定並布建虛擬機器，否則布建將會失敗！
 * 請勿在作業系統磁碟上設定交換磁碟分割。 在下列步驟中可以找到與此有關的詳細資訊。
 
@@ -939,7 +939,7 @@ ms.locfileid: "98127289"
 
 本節說明如何從 VMware 準備 [rhel 6](#rhel-6-using-vmware) 或 [rhel 7](#rhel-6-using-vmware)  發行版本。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 本節假設您已在 VMware 中安裝 RHEL 虛擬機器。 如需有關如何在 VMware 中安裝作業系統的詳細資訊，請參閱 [VMware 客體作業系統安裝指南](https://partnerweb.vmware.com/GOSIG/home.html)。
 
 * 安裝 Linux 作業系統時，我們建議您使用標準磁碟分割而不是 LVM (這通常是許多安裝的預設設定)。 這可避免 LVM 名稱與複製的虛擬機器發生衝突，特別是為了疑難排解而需要將作業系統磁碟連結至另一部虛擬機器時。 如果願意，您可以在資料磁碟上使用 LVM 或 RAID。

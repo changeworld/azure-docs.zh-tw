@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931872"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203115"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>使用功能篩選來啟用條件式功能旗標
 
@@ -56,19 +56,19 @@ public void ConfigureServices(IServiceCollection services)
     > [!div class="mx-imgBorder"]
     > ![編輯 Beta 功能旗標](./media/edit-beta-feature-flag.png)
 
-1. 在 **編輯** 畫面中，選取 [ **開啟** ] 選項按鈕（如果尚未選取）。 然後按一下 [ **加入篩選** ] 按鈕。  (**On** 選項按鈕的標籤會變更為 [讀取 **條件**]。 ) 
+1. 在 **編輯** 畫面中，選取 [ **啟用功能旗** 標] 按鈕（如果尚未選取）。 然後，按一下 [ **使用功能篩選** ] 按鈕，然後選取 [ **自訂**]。 
 
 1. 在 [索引 **鍵** ] 欄位中，輸入 [ *Microsoft. 百分比*]。
 
     > [!div class="mx-imgBorder"]
     > ![新增功能篩選](./media/feature-flag-add-filter.png)
 
-1. 按一下功能篩選索引鍵旁的內容功能表。 按一下 [ **編輯參數**]。
+1. 按一下功能篩選索引鍵旁的內容功能表。 按一下 [ **編輯篩選參數**]。
 
     > [!div class="mx-imgBorder"]
-    > ![編輯功能篩選參數](./media/feature-flag-edit-filter-parameters.png)
+    > ![編輯功能篩選參數](./media/feature-flags-edit-filter-parameters.png)
 
-1. 將滑鼠停留在 **名稱** 標頭底下，讓文字方塊出現在方格中。 輸入 *值* 的 **名稱**，並輸入50的 **值**。 [ **值** ] 欄位表示要啟用功能篩選的要求百分比。
+1. 輸入 *值* 的 **名稱**，並輸入50的 **值**。 [ **值** ] 欄位表示要啟用功能篩選的要求百分比。
 
     > [!div class="mx-imgBorder"]
     > ![設定功能篩選參數](./media/feature-flag-set-filter-parameters.png)

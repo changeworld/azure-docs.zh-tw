@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 255b34fc683628846d2776d9db7a0fbe8fe32a45
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014307"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202074"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>使用入口網站或 PowerShell 建立快照集
 
@@ -82,4 +82,4 @@ ms.locfileid: "96014307"
 
 ## <a name="next-steps"></a>後續步驟
 
-從快照集建立受控磁碟，然後連結新的受控磁碟作為 OS 磁碟，以從快照集建立虛擬機器。 如需詳細資訊，請參閱[使用 PowerShell 從快照集建立 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)。
+從快照集建立受控磁碟，然後連結新的受控磁碟作為 OS 磁碟，以從快照集建立虛擬機器。 如需詳細資訊，請參閱[使用 PowerShell 從快照集建立 VM](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md)。

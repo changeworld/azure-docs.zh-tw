@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: bea618b34809544308caba46a0ffbdecee91d69f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541805"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201428"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>使用重新導向連線到適用於 MySQL 的 Azure 資料庫
 
@@ -21,6 +21,9 @@ ms.locfileid: "94541805"
 登入 [Azure 入口網站](https://portal.azure.com)。 建立具有引擎版本 5.6、5.7 或 8.0 的適用於 MySQL 的 Azure 資料庫伺服器。 
 
 如需詳細資訊，請參閱如何使用 [Azure 入口網站](quickstart-create-mysql-server-database-using-azure-portal.md) 或 [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md)建立適用於 MySQL 的 Azure 資料庫的伺服器。
+
+> [!IMPORTANT]
+> [適用於 MySQL 的 Azure 資料庫的 Private Link](concepts-data-access-security-private-link.md)目前不支援重新導向。
 
 ## <a name="enable-redirection"></a>啟用重新導向
 
@@ -38,7 +41,7 @@ Mysqlnd_azure 延伸模組可透過 PECL 新增至 PHP 應用程式，因此強�
 ### <a name="redirection-logic"></a>重新導向邏輯
 
 >[!IMPORTANT]
-> 重新導向邏輯/行為開始版本 1.1.0 已更新， **建議使用版本 1.1.0+** 。
+> 重新導向邏輯/行為開始版本 1.1.0 已更新，**建議使用版本 1.1.0+** 。
 
 重新導向行為取決於 `mysqlnd_azure.enableRedirect` 的值。 下表根據此參數的值 (從 **版本 1.1.0+** 開始)，列出重新導向的行為。
 

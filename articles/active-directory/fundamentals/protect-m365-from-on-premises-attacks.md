@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d64552520db28b3fe38cc354a30ee5470ee091
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060712"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201343"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>保護來自內部部署攻擊的 Microsoft 365
 
@@ -131,7 +131,7 @@ ms.locfileid: "98060712"
 
    *  限制來賓存取目錄中的群組和其他屬性。 使用外部共同作業設定，以限制來賓讀取不是其成員之群組的能力。 
 
-    *   封鎖對 Azure 入口網站的存取。 您可以進行罕見的必要例外狀況。  建立包含所有來賓和外部使用者的條件式存取原則，然後 [執行原則來封鎖存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management.md)。 
+    *   封鎖對 Azure 入口網站的存取。 您可以進行罕見的必要例外狀況。  建立包含所有來賓和外部使用者的條件式存取原則，然後 [執行原則來封鎖存取](/azure/role-based-access-control/conditional-access-azure-management)。 
 
 * **中斷** 連線的樹系：使用 [Azure AD 雲端](../cloud-provisioning/what-is-cloud-provisioning.md)布建。 這可讓您連線到中斷連線的樹系，而不需要建立跨樹系連線或信任，進而放寬內部部署缺口的影響。 * 
  

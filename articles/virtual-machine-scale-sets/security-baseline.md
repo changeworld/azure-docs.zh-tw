@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5c00d08fcaeed8eba5b9732c9196b9abddc32b36
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 68dc7c36159523bcc46e93a4784e9d038037a919
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500711"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201207"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的 Azure 安全性基準
 
@@ -412,7 +412,7 @@ ms.locfileid: "96500711"
 
 **指引**：使用已設定 MFA 的特殊權限存取 PAW (特殊權限存取工作站) 登入和設定 Azure 資源。
 
-* [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

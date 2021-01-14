@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 07ef3da9f67de92c3526b83222c1c8088660d7c7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f393c5df23b9552f598e05d25aaf09e529324abe
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499861"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201989"
 ---
 # <a name="azure-security-baseline-for-azure-cognitive-search"></a>適用于 Azure 認知搜尋的 Azure 安全性基準
 
@@ -340,7 +340,7 @@ ms.locfileid: "96499861"
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) ，MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入和存取 Azure 資源。
 
-- [瞭解安全、受 Azure 管理的工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [瞭解安全、受 Azure 管理的工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
  
 
 - [如何啟用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
@@ -988,7 +988,7 @@ Azure Resource Manager 範本可以用來維護您組織所需的 Azure 資源�
 
 此外，使用標記標記訂用帳戶，並建立命名系統來識別和分類 Azure 資源，尤其是處理敏感性資料。 您必須負責根據發生事件的 Azure 資源和環境的重要性來排定補救警示的優先順序。
 
-- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
+- [使用標籤來組織資源](../azure-resource-manager/management/tag-resources.md) \(部分機器翻譯\)
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 

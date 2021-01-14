@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: fdb7b1964bf4b8e2dbf6afd541e4415c0345347c
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4c6bd62e96d85305036626a8672c39ff1b9f6b26
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631460"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201088"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>關於 VPN 裝置和站對站 VPN 閘道連線的 IPsec/IKE 參數
 
@@ -59,7 +59,7 @@ ms.locfileid: "97631460"
 | Juniper |SSG |ScreenOS 6.2 |支援 |[設定指令碼](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12.x|支援 |[設定指令碼](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |路由及遠端存取服務 |Windows Server 2012 |不相容 |支援 |
-| 開啟系統 AG |任務控制安全性閘道 |N/A |[設定指南](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |不相容 |
+| 開啟系統 AG |任務控制安全性閘道 |不適用 |[設定指南](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |不相容 |
 | Palo Alto Networks |所有執行 PAN-OS 的裝置 |PAN-OS<br>原則式：6.1.5 或更新版本<br>路由式：7.1.4 |支援 |[設定指南](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium (開發人員)  | VyOS | VyOS 1.2。2 |  (未測試)  | [設定指南 ](https://docs.vyos.io/en/latest/configexamples/azure-vpn-bgp.html)|
 | ShareTech | 新一代 UTM (NU 系列) | 9.0.1.3 | 不相容 | [設定指南](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -67,7 +67,7 @@ ms.locfileid: "97631460"
 | Sophos | XG 新一代防火牆 | XG v17 |  (未測試)  | [設定指南](https://community.sophos.com/kb/127546)<br><br>[設定指南 - 多個 SA](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM 1.1.5/VpnPlusServer-1.2。0 |  (未測試)  | [設定指南](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 |  (未測試)  | [透過 IKEv2/IPsec 的 BGP](https://help.ubnt.com/hc/en-us/articles/115012374708) \(英文\)<br><br>[透過 IKEv2/IPsec 的 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347) \(英文\) |
-| Ultra | 3E-636L3 | 5.2.0 T3 組建-13  |  (未測試)  | [設定指南](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
+| Ultra | 3E-636L3 | 5.2.0 T3 組建-13  |  (未測試)  | 設定指南 |
 | WatchGuard |全部 |Fireware XTM<br> 原則式：v11.11.x<br>路由式：v11.12.x |[設定指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[設定指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | Zyxel |ZyWALL USG 系列<br>ZyWALL ATP 系列<br>ZyWALL VPN 系列 | ZLD v 4.32 + |  (未測試)  | [透過 IKEv2/IPsec 的 VTI](https://businessforum.zyxel.com/discussion/2648/) \(英文\)<br><br>[透過 IKEv2/IPsec 的 BGP](https://businessforum.zyxel.com/discussion/2650/) \(英文\)|
 
@@ -142,7 +142,7 @@ ms.locfileid: "97631460"
 | 加密與雜湊演算法 |1. AES256、SHA256<br>2. AES256、SHA1<br>3. AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA 供應項目](#RouteBasedOffers) |
 | SA 存留期 (時間)            |3,600 秒  |27,000 秒                               |
 | SA 存留期 (位元組)           |102,400,000 KB |102,400,000 KB                               |
-| 完整轉寄密碼 (PFS) |No             |[RouteBased QM SA 供應項目](#RouteBasedOffers) |
+| 完整轉寄密碼 (PFS) |否             |[RouteBased QM SA 供應項目](#RouteBasedOffers) |
 | 停用的對等偵測 (DPD)     |不支援  |支援                                    |
 
 

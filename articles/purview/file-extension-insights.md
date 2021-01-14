@@ -1,18 +1,18 @@
 ---
-title: 使用範疇 Insights 報告資料的副檔名
-description: 本操作指南說明如何在您的資料上查看和使用範疇 Insights 副檔名報告。
+title: 使用範疇 Insights 在 Azure 範疇中報告資料的副檔名
+description: 本操作指南說明如何在您的資料上查看和使用範疇副檔名報告。
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 246a9dcfa35498d99fd403f10e5c17d7707efe84
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746279"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202618"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Azure 範疇中資料的檔案延伸模組深入解析 
 
@@ -33,6 +33,9 @@ ms.locfileid: "96746279"
 - 設定您的 Azure 資源，並以測試資料填入相關帳戶
 
 - 針對每個資料來源中的測試資料設定和完成掃描
+
+- 使用具有 [資料讀取器或資料編者角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帳戶登入範疇。
+
 
 如需詳細資訊，請參閱 [管理 Azure 範疇中的資料來源 (預覽) ](manage-data-sources.md)。
 

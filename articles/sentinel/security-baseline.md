@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bf249046a30e023a2d7b596fb6424c7005c2a875
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 997e2c6fc92fd1c6b08b1b4d35eacd894f63d822
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841932"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202754"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>適用于 Azure Sentinel 的 Azure 安全性基準
 
@@ -165,9 +165,9 @@ ms.locfileid: "94841932"
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) ，Azure AD Multi-Factor Authentication 已啟用 MFA (，以登入並設定) 相關的資源。 
 
-- [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md)
+- [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -643,11 +643,11 @@ Log Analytics 角色包含 Log Analytics 參與者和 Log Analytics 讀取程式
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。 
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。 
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

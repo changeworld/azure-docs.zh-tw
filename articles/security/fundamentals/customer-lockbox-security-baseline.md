@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6cf106f6d7aef4324eeeaf232a28cdd91a8a774b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c2595d75acfacf3d501b6efb83b383d9a56215a6
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843123"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203281"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>適用于 Microsoft Azure 客戶加密箱的 Azure 安全性基準
 
@@ -285,9 +285,9 @@ ms.locfileid: "94843123"
 
 **指導** 方針：使用具特殊許可權的存取工作站 (PAW) ，Azure AD Multi-Factor Authentication (啟用 MFA) 以登入和設定您的客戶加密箱要求。
 
-* [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署](../../active-directory/authentication/howto-mfa-getstarted.md)
+* [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../../active-directory/authentication/howto-mfa-getstarted.md) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 

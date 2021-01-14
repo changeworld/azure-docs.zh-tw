@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9dda02e483f3437237837a9b3b8bdcbcf84fcd1d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 16320e3f667c413778e166bfaacf81347226f4b1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489593"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202737"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>適用于服務匯流排的 Azure 安全性基準
 
@@ -299,7 +299,7 @@ ms.locfileid: "96489593"
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) 與 MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入和設定啟用服務匯流排的資源。
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

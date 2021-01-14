@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8213523e3035841f42c4a56b777444fd616b29d6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 598f925d939694ea47605b0e8ea2e63872db7811
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948522"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201241"
 ---
 # <a name="azure-security-baseline-for-network-watcher"></a>適用于網路監看員的 Azure 安全性基準
 
@@ -293,9 +293,9 @@ ms.locfileid: "94948522"
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) ，Azure AD Multi-Factor Authentication 已啟用 MFA (，以登入並設定) 相關的資源。
 
-* [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md)
+* [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -329,7 +329,7 @@ ms.locfileid: "94948522"
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為 Azure Sentinel 實例的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-* [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -589,7 +589,7 @@ ms.locfileid: "94948522"
 
 **指導** 方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。
 
-使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。 確保已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 則可查詢及探索其訂用帳戶內的資源。 確保已核准環境中的所有 Azure 資源。
 
 * [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cb5fae022957dd5fdc56058ed08b92734929d13e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b44ea6f55717712cfba4045205e02bd9f2b851df
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562293"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202652"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>適用于 Azure Web 應用程式防火牆的 azure 安全性基準
 
-此安全性基準會將 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview-v1.md) 的指引套用至 Azure Web 應用程式防火牆。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Azure Web 應用程式防火牆的相關指引來分組。 尚未排除適用于 Azure Web 應用程式防火牆的 **控制項** 。 
+此安全性基準會將 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview-v1.md) 的指引套用至 Azure Web 應用程式防火牆。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于 Azure Web 應用程式防火牆的相關指引來分組。 尚未排除適用于 Azure Web 應用程式防火牆的 **控制項**。 
 
 若要查看 Azure Web 應用程式防火牆如何完全對應至 Azure 安全性基準測試，請參閱 [完整的 Azure Web 應用程式防火牆安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
 
@@ -41,9 +41,9 @@ ms.locfileid: "94562293"
 
 - [Front Door 上的 WAF 模式](afds/afds-overview.md#waf-modes)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
@@ -53,9 +53,9 @@ ms.locfileid: "94562293"
 
 - [Front Door 上的 WAF 模式](afds/afds-overview.md#waf-modes)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 Web 應用程式的流量
 
@@ -71,9 +71,9 @@ ms.locfileid: "94562293"
 
 - [Web 應用程式防火牆 CRS 規則群組和規則](ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負荷降至最低
 
@@ -85,9 +85,9 @@ ms.locfileid: "94562293"
 
 - [Front Door 上的 WAF 原則](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
@@ -103,9 +103,9 @@ ms.locfileid: "94562293"
 
 - [如何建立具有安全性設定的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
@@ -115,9 +115,9 @@ ms.locfileid: "94562293"
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
@@ -127,9 +127,9 @@ ms.locfileid: "94562293"
 
 **指導** 方針：建立 Azure Web 應用程式防火牆 (WAF) 的網路規則，以允許使用適當的埠和通訊協定（例如埠 123 over UDP）來存取 NTP 伺服器。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
@@ -143,9 +143,9 @@ Azure Sentinel 有內建的 Azure WAF 活頁簿，可概述 Azure WAF 上的安�
 
 - [將資料從 Microsoft web 應用程式防火牆連接到 Azure Sentinel](../sentinel/connect-azure-waf.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
@@ -157,18 +157,18 @@ Azure Sentinel 有內建的 Azure WAF 活頁簿，可概述 Azure WAF 上的安�
 
 - [Azure 平臺記錄總覽](../azure-monitor/platform/platform-logs-overview.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 
 **指導** 方針：將 Azure Web 應用程式防火牆 (WAF) 記錄傳送至自訂儲存體帳戶，並定義保留原則。 使用 Azure 監視器根據您組織的合規性需求來設定 Log Analytics 工作區保留期限。
 - [設定儲存體帳戶的監視](../storage/common/storage-monitor-storage-account.md#configure-logging)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和審核記錄
 
@@ -184,9 +184,9 @@ Azure Sentinel 有內建的 WAF 防火牆事件活頁簿，可提供 WAF 上安�
 
 - [監視 Azure Front Door 中的計量和記錄](../frontdoor/front-door-diagnostics.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
@@ -196,9 +196,9 @@ Azure Sentinel 有內建的 WAF 防火牆事件活頁簿，可提供 WAF 上安�
 
 - [如何在 Azure 中建立警示](../azure-monitor/learn/tutorial-response.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中化反惡意程式碼記錄
 
@@ -208,9 +208,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何部署 Azure WAF](ag/create-waf-policy-ag.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
@@ -224,9 +224,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
@@ -239,9 +239,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何使用 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：所有以 Azure Active Directory 為基礎的存取都使用多重要素驗證
 
@@ -251,21 +251,21 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何在 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) 與 MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入及設定 Azure Web 應用程式防火牆 (WAF) 和相關資源。 
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations) 
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：來自系統管理帳戶的可疑活動記錄和警示
 
@@ -275,9 +275,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何在 Azure 資訊安全中心監視使用者的身分識別和存取活動](../security-center/security-center-identity-access.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
@@ -287,18 +287,18 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [Azure Active Directory 條件式存取中的位置條件為何](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 使用強式加密來保護待用和傳輸中的資料，以及 salts、雜湊及安全地儲存使用者認證，藉此保護資料。
-- [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
@@ -308,9 +308,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：監視嘗試存取已停用的認證
 
@@ -320,9 +320,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：帳戶登入行為偏差的警示
 
@@ -334,9 +334,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="data-protection"></a>資料保護
 
@@ -347,9 +347,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 **指導** 方針：使用標籤協助追蹤 Azure Web 應用程式防火牆 (WAF) 和儲存或處理敏感性資訊的相關資源。
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
@@ -363,9 +363,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
@@ -375,30 +375,30 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [瞭解 Azure 中的傳輸加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：共用
+**責任**：共用
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
 **指導** 方針：使用 azure 角色型存取控制 (azure RBAC) 來控制 azure 資源的存取權。
 - [如何設定 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
 **指導** 方針：針對所有 azure 資源（包括 Azure Web 應用程式防火牆 (WAF) 和相關資源）使用待用加密。 Microsoft 建議讓 Azure 管理您的加密金鑰，但在某些情況下，您可以選擇管理您自己的金鑰。
 
-- [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
+- [了解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
 - [如何設定客戶管理的加密金鑰](../storage/common/customer-managed-keys-configure-key-vault.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：針對重要 Azure 資源的變更留下記錄和發出警示
 
@@ -412,9 +412,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [Front Door 上的 WAF 模式](afds/afds-overview.md#waf-modes)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
@@ -432,9 +432,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
 
@@ -442,9 +442,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
@@ -456,23 +456,23 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4：定義和維護已核准 Azure 資源的清查
 
 **指導** 方針：建立已核准資源的清查，包括根據組織需求的設定。
 
-使用 Azure 原則來限制可在訂用帳戶中建立的資源類型。 使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。 確認環境中的所有 Azure 資源都已核准。
+使用 Azure 原則來限制可在訂用帳戶中建立的資源類型。 使用 Azure Resource Graph 則可查詢及探索其訂用帳戶內的資源。 確認環境中的所有 Azure 資源都已核准。
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 - [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
@@ -483,17 +483,17 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
 **指導** 方針：使用 Azure 原則來監視和移除未核准的 azure WAF 資源，以拒絕部署 azure WAF 或特定類型的 WAF，例如 Azure WAF V1 與 V2。
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
@@ -503,9 +503,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="611-limit-users-ability-to-interact-with-azure-resource-manager"></a>6.11：限制使用者與 Azure Resource Manager 互動的能力
 
@@ -513,9 +513,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何設定條件式存取以封鎖對 Azure 資源管理員的存取](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
@@ -527,9 +527,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [訂用帳戶決策指南](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="secure-configuration"></a>安全設定
 
@@ -544,9 +544,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
@@ -560,9 +560,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [Azure Resource Manager 範本總覽](../azure-resource-manager/templates/overview.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
@@ -574,9 +574,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7：部署適用于 Azure 資源的設定管理工具
 
@@ -586,9 +586,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [Azure 原則文件](../governance/policy/index.yml)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-resources"></a>7.9：執行 Azure 資源的自動化設定監視
 
@@ -600,9 +600,9 @@ Azure WAF 為您的 web 應用程式提供集中式保護，免于遭受常見�
 
 - [Azure 原則文件](../governance/policy/index.yml)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 秘密
 
@@ -612,18 +612,18 @@ Azure 應用程式閘道支援與 Key Vault 整合，以使用連結到 HTTPS �
 
 - [如何使用 Azure PowerShell 以 Key Vault 憑證設定 SSL 終止](../application-gateway/configure-keyvault-ps.md)
 
-**Azure 資訊安全中心監視** ：目前無法使用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證公開
 
 **指導** 方針：執行認證掃描器來識別程式碼中的認證，也會鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。
 - [如何設定認證掃描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="data-recovery"></a>資料復原
 
@@ -635,9 +635,9 @@ Azure 應用程式閘道支援與 Key Vault 整合，以使用連結到 HTTPS �
 
 - [如何使用 Azure Key Vault 的虛刪除](../key-vault/general/key-vault-recovery.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="incident-response"></a>事件回應
 
@@ -653,36 +653,36 @@ Azure 應用程式閘道支援與 Key Vault 整合，以使用連結到 HTTPS �
 
 - [使用 NIST 的電腦安全性性事件處理指南來協助建立您自己的事件回應計畫](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程序
 
 **指導** 方針：資訊安全中心會將嚴重性指派給每個警示，以協助排列應先調查哪些警示的優先順序。 嚴重性的依據，在於資訊安全中心對於據以發出警示的發現結果或分析結果有多少信心，以及認定導致警示的活動背後存在惡意意圖的把握程度。
 清楚地將訂用帳戶標示 (例如生產、非生產) ，以及建立命名系統來清楚識別和分類 Azure 資源。
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
-**指引** ：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
+**指引**：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
 - [請參閱 NIST 的發行指南，以針對 IT 方案和功能進行測試、訓練和練習程式](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**指引** ：如果 Microsoft 安全性回應中心 (MSRC) 發現客戶的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡人資訊來連絡您。 事後檢討事件，確保問題已解決。
+**指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現客戶的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡人資訊來連絡您。 事後檢討事件，確保問題已解決。
 - [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示併入事件回應系統
 
@@ -692,18 +692,18 @@ Azure 應用程式閘道支援與 Key Vault 整合，以使用連結到 HTTPS �
 
 - [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
-**Azure 資訊安全中心監視** ：是
+**Azure 資訊安全中心監視**：是
 
-**責任** ：客戶
+**責任**：客戶
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
 **指導** 方針：使用資訊安全中心的工作流程自動化功能，透過安全性警示和建議的「Logic Apps」來自動觸發回應。
 - [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：客戶
+**責任**：客戶
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
@@ -715,11 +715,11 @@ Azure 應用程式閘道支援與 Key Vault 整合，以使用連結到 HTTPS �
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure 資訊安全中心監視** ：不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任** ：共用
+**責任**：共用
 
 ## <a name="next-steps"></a>後續步驟
 

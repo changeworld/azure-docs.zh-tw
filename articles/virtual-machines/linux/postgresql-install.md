@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: fdde7613627c9fec0694f3985f78cf10e52f59c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4052a9c8614a17c3b5cdd871ad78be8cc3258c5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397091"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202584"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>安裝和設定 Azure 上的 PostgreSQL
 PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它包含企業用功能，例如完整的 ACID 的相容性、可靠的交易式程序，以及多版本的並行控制。 它也支援標準，例如 ANSI SQL 和 SQL/MED (包括 Oracle、MySQL、MongoDB 和許多其他項目的外部資料包裝函式)。 其高度可擴充性支援超過 12 種程序性語言、GIN 和 GiST 索引、空間資料支援和多個類似 NoSQL 的功能，適用於 JSON 或以索引鍵-值為基礎的應用程式。
@@ -24,13 +24,13 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 
 ## <a name="install-postgresql"></a>安裝 PostgreSQL
 > [!NOTE]
-> 您必須已經具有執行 Linux 的 Azure 虛擬機器，才能完成本教學課程。 若要建立並設定 Linux VM 再繼續進行，請參閱 [Azure Linux VM 教學課程](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> 您必須已經具有執行 Linux 的 Azure 虛擬機器，才能完成本教學課程。 若要建立並設定 Linux VM 再繼續進行，請參閱 [Azure Linux VM 教學課程](quick-create-cli.md)。
 > 
 > 
 
 在此情況下，使用連接埠 1999 做為 PostgreSQL 連接埠。  
 
-連接到您透過 PuTTY 建立的 Linux VM。 如果這是您第一次使用 Azure Linux VM，請參閱[如何搭配 Azure 上的 Linux 使用 SSH](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 以了解如何使用 PuTTY 來連接到 Linux VM。
+連接到您透過 PuTTY 建立的 Linux VM。 如果這是您第一次使用 Azure Linux VM，請參閱[如何搭配 Azure 上的 Linux 使用 SSH](mac-create-ssh-keys.md) 以了解如何使用 PuTTY 來連接到 Linux VM。
 
 1. 執行下列命令來切換至 root (admin)：
 
@@ -115,7 +115,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
    > 基於安全性理由，PostgreSQL 會使用非根使用者初始化、啟動或關閉資料庫。
    > 
    > 
-4. 輸入下列命令以編輯 bash_profile** 檔。 這幾行將會加入至 bash_profile** 檔案的結尾：
+4. 輸入下列命令以編輯 bash_profile 檔。 這幾行將會加入至 bash_profile 檔案的結尾：
 
     ```config
     cat >> ~/.bash_profile <<EOF
@@ -132,7 +132,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
     EOF
     ```
 
-5. 執行 bash_profile** 檔案：
+5. 執行 bash_profile 檔案：
 
     ```console
     $ source .bash_profile
@@ -259,7 +259,7 @@ CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1
 INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 ```
 
-您應該會看見下列輸出：
+您應該會看見此輸出：
 
 ![顯示您所加入之資料列資訊的螢幕擷取畫面。](./media/postgresql-install/no6.png)
 

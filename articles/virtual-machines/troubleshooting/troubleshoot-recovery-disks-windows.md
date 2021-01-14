@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 63d5e4bcc57a734fc5ea455da7c2db940a4b8ec3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbdccc2efb72626d1974f4cd81be9d2ef4c522d4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654679"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201581"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>使用 Azure PowerShell 將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解
 如果 Azure 中的 Windows 虛擬機器 (VM) 發生開機或磁碟錯誤，您可能需要對磁碟本身執行疑難排解步驟。 常見的例子是應用程式更新無效，導致 VM 無法成功開機。 本文詳細說明如何使用 Azure PowerShell 將磁碟連接至另一部 Windows VM，以修正任何錯誤，然後重新建立原始 VM。 
@@ -40,7 +40,7 @@ ms.locfileid: "88654679"
 6. 從復原 VM 取消掛接磁碟並中斷其連結。
 7. 變更受影響 VM 的 OS 磁碟。
 
-您可以使用 VM repair 命令將步驟1、2、3、4、6和7自動化。 如需詳細的檔和指示，請參閱 [使用 Azure 虛擬機器修復命令修復 WINDOWS VM](repair-windows-vm-using-azure-virtual-machine-repair-commands.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+您可以使用 VM repair 命令將步驟1、2、3、4、6和7自動化。 如需詳細的檔和指示，請參閱 [使用 Azure 虛擬機器修復命令修復 WINDOWS VM](repair-windows-vm-using-azure-virtual-machine-repair-commands.md)。
 
 確定您已安裝[最新的 Azure PowerShell](/powershell/azure/) 並登入您的訂用帳戶。
 
@@ -256,6 +256,6 @@ Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
 ## <a name="next-steps"></a>後續步驟
-如果連接至 VM 時發生問題，請參閱[針對 Azure VM 的 RDP 連接進行疑難排解](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 如果存取 VM 上執行的應用程式時發生問題，請參閱[針對 Windows VM 上的應用程式連線問題進行疑難排解](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如果連接至 VM 時發生問題，請參閱[針對 Azure VM 的 RDP 連接進行疑難排解](troubleshoot-rdp-connection.md)。 如果存取 VM 上執行的應用程式時發生問題，請參閱[針對 Windows VM 上的應用程式連線問題進行疑難排解](troubleshoot-app-connection.md)。
 
 如需使用 Resource Manager 的詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2cd4b26e81df8ce57a09b4cdddc923035a41308e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 56a04a7f689846fc8688d9a3144882fff3a809ad
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352893"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201309"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>適用于 Data Lake Analytics 的 Azure 安全性基準
 
@@ -302,7 +302,7 @@ ms.locfileid: "96352893"
 
 **指導** 方針：使用安全且受 Azure 管理的工作站 (也稱為「特殊許可權存取工作站」，或 PAW 需要較高許可權的系統管理工作) 。
 
-* [瞭解安全、受 Azure 管理的工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+* [瞭解安全、受 Azure 管理的工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何啟用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -336,7 +336,7 @@ ms.locfileid: "96352893"
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure 角色型存取控制 (Azure RBAC) 可讓您更精細地控制用戶端對 Data Lake Analytics 資源的存取。
 
-* [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -973,7 +973,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行方法。
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。
 
 * [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

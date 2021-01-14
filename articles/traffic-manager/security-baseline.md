@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5d5ecf95289bf7860363b7e97d834372ee6c2268
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 13515f2428b1fc95c31b04c984dd77dd316a4315
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185252"
+ms.locfileid: "98202193"
 ---
 # <a name="azure-security-baseline-for-azure-traffic-manager"></a>適用于 Azure 流量管理員的 Azure 安全性基準
 
@@ -170,7 +170,7 @@ ms.locfileid: "98185252"
 
 **指導** 方針：使用安全且受 Azure 管理的工作站 (也稱為「特殊許可權存取工作站」，或 PAW 需要較高許可權的系統管理工作) 。
 
-- [瞭解安全、受 Azure 管理的工作站](/security/compass/concept-azure-managed-workstation)
+- [瞭解安全、受 Azure 管理的工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

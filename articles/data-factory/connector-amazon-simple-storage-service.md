@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/08/2020
-ms.openlocfilehash: 925a0270c50d20790c093eaf193d66e0acd4cd11
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.date: 01/14/2021
+ms.openlocfilehash: 82871a09916b2b64f74e25088f5e75ac60a40678
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347387"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202499"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Simple Storage Service 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -63,7 +63,7 @@ ms.locfileid: "97347387"
 
 以下是針對 Amazon S3 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | **Type** 屬性必須設為 **AmazonS3**。 | 是 |
 | authenticationType | 指定用來連接到 Amazon S3 的驗證類型。 您可以選擇使用 AWS 身分識別和存取管理 (IAM) 帳戶或 [暫時性安全性認證](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)的存取金鑰。<br>允許的值為： `AccessKey` (預設) 和 `TemporarySecurityCredentials` 。 |否 |
@@ -71,6 +71,7 @@ ms.locfileid: "97347387"
 | secretAccessKey | 密碼存取金鑰本身。 將此欄位標記為 **SecureString**，將它安全地儲存在 Data Factory 中，或 [參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
 | sessionToken | 適用于使用 [暫時性安全性](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) 認證驗證時。 瞭解如何從 AWS [要求暫時性的安全性認證](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken) 。<br>注意 AWS 根據設定，暫存認證會在15分鐘到36小時之間到期。 當活動執行時，請確定您的認證有效，尤其是針對實際運作工作負載，例如，您可以定期重新整理，並將其儲存在 Azure Key Vault 中。<br>將此欄位標記為 **SecureString**，將它安全地儲存在 Data Factory 中，或 [參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |否 |
 | serviceUrl | 如果您是從與 S3 相容的儲存體提供者（而非官方 Amazon S3 服務）複製資料，請指定自訂的 S3 端點。 例如，若要從 Google Cloud Storage 中複製資料，請指定 `https://storage.googleapis.com`。 | 否 |
+| forcePathStyle | 指出是否要使用 S3 [路徑樣式存取](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#path-style-access) ，而不是使用虛擬 hosted 樣式存取。 允許的值為： **false** (預設) ， **true**。<br>如果您要連線到與 S3 相容的儲存提供者，而非官方 Amazon S3 服務，且該資料存放區需要路徑樣式存取 (例如 [Oracle Cloud storage](https://docs.oracle.com/iaas/Content/Object/Tasks/s3compatibleapi.htm)) ，請將此屬性設定為 true。 檢查每個資料存放區的檔，以瞭解是否需要存取路徑樣式。 |否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路) ，您可以使用 Azure integration runtime 或自我裝載整合執行時間 (。 如果未指定此屬性，服務會使用預設的 Azure integration runtime。 |否 |
 
 >[!TIP]
@@ -133,7 +134,7 @@ ms.locfileid: "97347387"
 
 以下是以 `location` 格式為基礎的資料集設定中的 Amazon S3 支援的屬性：
 
-| 屬性   | 說明                                                  | 必要 |
+| 屬性   | 描述                                                  | 必要 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 資料集中的 **類型** 屬性 `location` 必須設定為 **AmazonS3Location**。 | 是      |
 | bucketName | S3 貯體名稱。                                          | 是      |
@@ -178,7 +179,7 @@ ms.locfileid: "97347387"
 
 以下是針對以 `storeSettings` 格式為基礎的複製來源設定下的 Amazon S3 支援的屬性：
 
-| 屬性                 | 說明                                                  | 必要                                                    |
+| 屬性                 | 描述                                                  | 必要                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | type                     | 下的 **類型** 屬性 `storeSettings` 必須設為 **AmazonS3ReadSettings**。 | 是                                                         |
 | **_找出要複製的檔案：_* _ |  |  |
@@ -281,7 +282,7 @@ ms.locfileid: "97347387"
 
 ### <a name="legacy-dataset-model"></a>舊版資料集模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設為 **>amazons3object**。 |是 |
 | bucketName | S3 貯體名稱。 不支援萬用字元篩選。 |適用于複製或查閱活動，GetMetadata 活動不是 |
@@ -361,7 +362,7 @@ ms.locfileid: "97347387"
 
 ### <a name="legacy-source-model-for-the-copy-activity"></a>複製活動的舊版來源模型
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設為 **>filesystemsource**。 |是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當 **遞迴** 設定為 **true** 且接收是檔案型存放區時，將不會在接收時複製或建立空的資料夾或子資料夾。<br/>允許的值為 **true** (預設值) 和 **false**。 | 否 |

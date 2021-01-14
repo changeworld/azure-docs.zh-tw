@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: bb5c6439f2e0b919e422c7a72f98468f0efc01f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 706392d95e371fe303bb9f2c18f59e4a224d83c0
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901299"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201054"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>在 Azure 監視器 Log Analytics 中使用客戶管理的儲存體帳戶
 
@@ -23,7 +23,7 @@ Log Analytics 依賴各種案例中的 Azure 儲存體。 此使用通常會自�
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>擷取 Azure 診斷擴充功能記錄 (WAD/LAD) 
 Azure 診斷擴充代理程式 (分別稱為 WAD 和 LAD，適用于 Windows 和 Linux 代理程式) 收集不同的作業系統記錄，並將它們儲存在客戶管理的儲存體帳戶。 然後，您可以將這些記錄內嵌至 Log Analytics，以檢查和分析這些記錄。
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>如何從儲存體帳戶收集 Azure 診斷擴充功能記錄
-使用 [Azure 入口網站](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) 或藉由呼叫 [儲存體深入解析 API](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate)，將儲存體帳戶連接至 Log Analytics 工作區作為儲存體資料來源。
+使用 [Azure 入口網站](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) 或藉由呼叫 [儲存體深入解析 API](/rest/api/loganalytics/storage%20insights/createorupdate)，將儲存體帳戶連接至 Log Analytics 工作區作為儲存體資料來源。
 
 支援的資料類型：
 * syslog

@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: f92f286fc9d9438331617cb567272a331834af42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7f9ac0ab9eacb90bde70c85ea06bc19a18aa0c05
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735382"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201139"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>使用 Azure CLI 和受控磁碟來建立 Azure Linux VM 的複本
 
 本文說明如何使用 Azure CLI，建立 Azure 虛擬機器 (VM) 執行 Linux 的複本。 若要大規模複製、建立、儲存及共用 VM 映射，請參閱 [共用映射資源庫](../shared-images-cli.md)。
 
-您也可以[上傳 VHD 並從中建立 VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+您也可以[上傳 VHD 並從中建立 VM](upload-vhd.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 -   安裝 [Azure CLI](/cli/azure/install-az-cli2)。
 
@@ -93,7 +93,7 @@ az vm deallocate \
         --subnet-prefix 192.168.1.0/24
     ```
 
-1.  使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 建立公用 IP。 下列範例會建立名為 *myPublicIP* 的公用 IP，其 DNS 名稱為 *mypublicdns* 。 (由於 DNS 名稱必須是唯一的，請提供唯一的名稱)。
+1.  使用 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) 建立公用 IP。 下列範例會建立名為 *myPublicIP* 的公用 IP，其 DNS 名稱為 *mypublicdns*。 (由於 DNS 名稱必須是唯一的，請提供唯一的名稱)。
 
     ```azurecli
     az network public-ip create --resource-group myResourceGroup \

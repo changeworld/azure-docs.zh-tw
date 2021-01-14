@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 9e5e96d97494f4ba9aa28e84b046cd057fe8eba7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 236acc2ded3fcb651295e0342ab4e1e88174be46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033403"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202958"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中定義新的 IoT 裝置類型
 
@@ -42,8 +42,16 @@ ms.locfileid: "97033403"
 
 - 在 IoT Central 中設計裝置範本，然後 [在您的裝置程式碼中執行其裝置模型](concepts-telemetry-properties-commands.md)。
 - 從 [Azure IoT 認證裝置目錄](https://aka.ms/iotdevcat)匯入裝置範本。 在 IoT Central 中自訂裝置範本，以符合您的需求。
+> [!NOTE]
+> IoT Central 需要具有相同檔案中所有參考介面的完整模型，當您從模型存放庫匯入模型時，請使用「展開」關鍵字來取得完整版。
+例如， https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json
+
 - 使用 [數位 Twins 定義語言撰寫裝置模型 (DTDL) -第2版](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。 Visual Studio 程式碼具有支援撰寫 DTDL 模型的延伸模組。 若要深入了解，請參閱[安裝及使用 DTDL 製作工具](../../iot-pnp/howto-use-dtdl-authoring-tools.md)。 然後將模型發佈至公用模型存放庫。 若要深入瞭解，請參閱 [裝置型號存放庫](../../iot-pnp/concepts-model-repository.md)。 從模型執行您的裝置程式碼，並將您的實際裝置連接到 IoT Central 應用程式。 IoT Central 會為您尋找並匯入公用存放庫中的裝置模型，並產生裝置範本。 然後，您便可以將 IoT Central 應用程式所需的任何雲端屬性、自訂和儀表板新增至裝置範本中。
 - 使用 DTDL 撰寫裝置模型。 從模型實作您的裝置程式碼。 手動將裝置模型匯入您的 IoT Central 應用程式，然後新增 IoT Central 應用程式所需的任何雲端屬性、自訂和儀表板。
+
+> [!TIP]
+> IoT Central 需要完整的模型，並在相同的檔案中包含所有參考的介面。 當您從模型存放庫匯入模型時，請使用 *展開* 的關鍵字來取得完整的版本。
+> 例如： [https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json](https://devicemodels.azure.com/dtmi/com/example/thermostat-1.expanded.json) 。
 
 您也可以使用 [REST API](/learn/modules/manage-iot-central-apps-with-rest-api/) 或 [CLI](howto-manage-iot-central-from-cli.md)將裝置範本新增至 IoT Central 應用程式。
 
@@ -126,7 +134,7 @@ ms.locfileid: "97033403"
 | 功能類型 | 遙測。 |
 | 語意類型 | 遙測的語意類型，例如溫度、狀態或事件。 所選擇的語意類型會決定下列哪些欄位可供使用。 |
 | 結構描述 | 遙測的資料類型，例如雙精度浮點數、字串或向量。 可用的選項取決於語意類型。 結構描述不適用於事件和狀態這兩種語意類型。 |
-| 嚴重性 | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。 |
+| Severity | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。 |
 | 狀態值 | 僅適用於狀態語意類型。 會定義可能的狀態值，每個狀態值都會有顯示名稱、名稱、列舉類型和值。 |
 | 單位 | 遙測值的單位，例如 **>mph**、 **%** 或 **&deg; C**。 |
 | 顯示單位 | 要在儀表板和表單上使用的顯示單位。 |
@@ -147,7 +155,7 @@ ms.locfileid: "97033403"
 | 語意類型 | 屬性的語意類型，例如溫度、狀態或事件。 所選擇的語意類型會決定下列哪些欄位可供使用。 |
 | 結構描述 | 屬性的資料類型，例如雙精度浮點數、字串或向量。 可用的選項取決於語意類型。 結構描述不適用於事件和狀態這兩種語意類型。 |
 | 可寫入 | 如果屬性不可寫入，則裝置可以向 IoT Central 報告屬性值。 如果屬性為可寫入，則裝置可以將屬性值回報給 IoT Central，IoT Central 可以將屬性更新傳送至裝置。
-| 嚴重性 | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。 |
+| Severity | 僅適用於事件語意類型。 嚴重性為 [錯誤]、[資訊]或 [警告]。 |
 | 狀態值 | 僅適用於狀態語意類型。 會定義可能的狀態值，每個狀態值都會有顯示名稱、名稱、列舉類型和值。 |
 | 單位 | 屬性值的單位，例如 **>mph**、 **%** 或 **&deg; C**。 |
 | 顯示單位 | 要在儀表板和表單上使用的顯示單位。 |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b19162636707b8d2cc8b7a9ef33c03738eb8e631
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: da3386692d2d02015c0d3f59c88ae78a6c84b9ab
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184428"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203094"
 ---
 # <a name="azure-security-baseline-for-azure-monitor"></a>適用于 Azure 監視器的 Azure 安全性基準
 
@@ -230,7 +230,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 **指導** 方針：使用安全且受 Azure 管理的工作站 (也稱為「特殊許可權存取工作站」，或 PAW 需要較高許可權的系統管理工作) 。
 
-- [瞭解安全、受 Azure 管理的工作站](../active-directory/devices/concept-azure-managed-workstation.md)
+- [瞭解安全、受 Azure 管理的工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何啟用 Azure AD MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -264,7 +264,7 @@ Azure 監視器是 Azure 核心服務的一部分，且 Azure 監視器服務無
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -465,7 +465,7 @@ Application Insights 和 Log Analytics 都會繼續允許內嵌 TLS 1.1 和 TLS 
 
 **指導** 方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型施加限制。
 
-使用 Azure Resource Graph 來查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 則可查詢及探索其訂用帳戶內的資源。  確保已核准環境中的所有 Azure 資源。
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 

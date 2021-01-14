@@ -3,15 +3,15 @@ title: Azure Kubernetes Service (AKS) 的叢集設定
 description: 了解如何在 Azure Kubernetes Service (AKS) 中設定叢集
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
+ms.date: 01/13/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606907"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201105"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
@@ -21,10 +21,52 @@ ms.locfileid: "97606907"
 
 AKS 現在支援 Ubuntu 18.04 作為節點作業系統 (OS) 在高於1.18.8 的 kubernetes 版本中的叢集正式運作。 針對小於 1.18. x 的版本，AKS Ubuntu 16.04 仍是預設的基底映射。 從 kubernetes v 1.18. x 和之後，預設基底為 AKS Ubuntu 18.04。
 
-> [!IMPORTANT]
-> 在 Kubernetes v 1.18 或更高版本上建立的節點集區預設為 `AKS Ubuntu 18.04` 節點映射。 小於1.18 的支援 Kubernetes 版本上的節點集區會 `AKS Ubuntu 16.04` 以節點映射的形式接收，但 `AKS Ubuntu 18.04` 一旦節點集區 Kubernetes 版本更新為1.18 或更高版本，則會更新為。
-> 
-> 強烈建議您先在 AKS Ubuntu 18.04 節點集區上測試您的工作負載，再于1.18 或更高版本上使用叢集。 瞭解如何 [測試 Ubuntu 18.04 節點](#use-aks-ubuntu-1804-existing-clusters-preview)集區。
+### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>使用 AKS Ubuntu 18.04 已在新叢集上正式推出
+
+在 Kubernetes v 1.18 或更高版本上建立的叢集預設為 `AKS Ubuntu 18.04` 節點映射。 低於1.18 的支援 Kubernetes 版本上的節點集區仍會 `AKS Ubuntu 16.04` 以節點映射的形式接收，但會在叢集 `AKS Ubuntu 18.04` 或節點集區 Kubernetes 版本更新為1.18 或更高版本時更新為。
+
+強烈建議您先在 AKS Ubuntu 18.04 節點集區上測試您的工作負載，再于1.18 或更高版本上使用叢集。 瞭解如何 [測試 Ubuntu 18.04 節點](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)集區。
+
+若要使用 `AKS Ubuntu 18.04` 節點映射建立叢集，只要建立執行 kubernetes v 1.18 或更新版本的叢集，如下所示
+
+```azurecli
+az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>使用 AKS Ubuntu 18.04 已在現有的叢集上正式推出
+
+在 Kubernetes v 1.18 或更高版本上建立的叢集預設為 `AKS Ubuntu 18.04` 節點映射。 低於1.18 的支援 Kubernetes 版本上的節點集區仍會 `AKS Ubuntu 16.04` 以節點映射的形式接收，但會在叢集 `AKS Ubuntu 18.04` 或節點集區 Kubernetes 版本更新為1.18 或更高版本時更新為。
+
+強烈建議您先在 AKS Ubuntu 18.04 節點集區上測試您的工作負載，再于1.18 或更高版本上使用叢集。 瞭解如何 [測試 Ubuntu 18.04 節點](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)集區。
+
+如果您的叢集或節點集區已就緒可供 `AKS Ubuntu 18.04` 節點映射使用，您可以直接將它們升級為1.18 或更高版本，如下所示。
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+如果只想要升級一個節點集區：
+
+```azurecli
+az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>測試 AKS Ubuntu 18.04 已在現有的叢集上正式推出
+
+在 Kubernetes v 1.18 或更高版本上建立的節點集區預設為 `AKS Ubuntu 18.04` 節點映射。 小於1.18 的支援 Kubernetes 版本上的節點集區仍會 `AKS Ubuntu 16.04` 以節點映射的形式接收，但 `AKS Ubuntu 18.04` 一旦節點集區 Kubernetes 版本更新為1.18 或更高版本，則會更新為。
+
+強烈建議您在升級生產節點集區之前，先在 AKS Ubuntu 18.04 節點集區上測試您的工作負載。
+
+若要使用節點映射建立節點集區 `AKS Ubuntu 18.04` ，只需建立執行 kubernetes 的節點集區（1.18 或更新版本）。 您的叢集控制平面至少必須在 v5.2 或更高版本上，但您的其他節點集區仍可保留在較舊的 kubernetes 版本上。
+以下我們先升級控制平面，然後使用 v 1.18 建立新的節點集區，以接收新的節點映射作業系統版本。
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14 --control-plane-only
+
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>在新的叢集上使用 AKS Ubuntu 18.04 (Preview) 
 
 下一節將說明如何在尚未使用 kubernetes 版本 1.18. x 或更高版本的叢集上使用案例，並測試 AKS Ubuntu 18.04，或使用 OS 設定預覽版在此功能正式推出之前建立。
 
@@ -57,8 +99,6 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/U
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>在新的叢集上使用 AKS Ubuntu 18.04 (Preview) 
 
 在叢集建立時，請將叢集設定為使用 Ubuntu 18.04。 請使用 `--aks-custom-headers` 旗標將 Ubuntu 18.04 設定為預設作業系統。
 

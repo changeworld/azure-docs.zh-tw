@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cynthn
-ms.openlocfilehash: f3c1e305024eb255a85aa470105d99edd3c26982
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cae75c88b4803912565e010f744a7757a3b98f04
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201302"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201547"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>如何從 Windows 虛擬機器卸離資料磁碟
 
@@ -60,4 +60,4 @@ Update-AzVM `
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您想要重複使用該資料磁碟，只要 [將它連結至另一個 VM](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+如果您想要重複使用該資料磁碟，只要 [將它連結至另一個 VM](attach-managed-disk-portal.md)

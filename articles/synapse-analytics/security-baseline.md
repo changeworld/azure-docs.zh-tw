@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 972788e04e12553e7c05f30cc246c6fb562031a4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 65985e05be1061bb69eb160cf5be559cb271d5cd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461360"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202924"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>適用于 Azure Synapse Analytics 的 Azure 安全性基準
 
@@ -393,7 +393,7 @@ ms.locfileid: "96461360"
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) ，MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入和設定 Azure 資源。
 
-* [瞭解特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 

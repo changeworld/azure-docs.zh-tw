@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a2cbd2dd4dd32be137e461985e9f10fd07ed8a60
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ee4c364012b32ff8ee938dec2a7446853c32ba0b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325633"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203077"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
@@ -186,7 +186,7 @@ ms.locfileid: "96325633"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
-**指導** 方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 您不需要任何額外的管理基礎結構，即可使用這些功能。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
+**指導** 方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 這些功能不需要任何額外的管理基礎結構即可供使用。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
 
 啟用 Azure 活動記錄診斷設定，並將記錄傳送至 Log Analytics 工作區。 在 Log Analytics 中執行查詢，以搜尋詞彙、識別趨勢、分析模式，以及根據可能已針對復原服務保存庫收集的活動記錄資料，提供許多其他見解。
 
@@ -202,7 +202,7 @@ ms.locfileid: "96325633"
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 
-**指導** 方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 您不需要任何額外的管理基礎結構，即可使用這些功能。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
+**指導** 方針： Azure 備份提供復原服務保存庫中的內建監視與警示功能。 這些功能不需要任何額外的管理基礎結構即可供使用。 您也可以使用 Azure 監視器來擴大監視和報告的規模。
 
 警示的主要案例是通知使用者，讓他們可以採取相關動作。 [備份警示] 區段會顯示 Azure 備份服務產生的警示。 這些警示是由服務所定義，而您無法自訂建立任何警示。
 
@@ -302,7 +302,7 @@ ms.locfileid: "96325633"
 
 - [Azure 備份中的 Multi-Factor Authentication](./backup-azure-security-feature.md)
 
-- [規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md)
+- [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md) (機器翻譯)
 
 **Azure 資訊安全中心監視**：是
 
@@ -312,9 +312,9 @@ ms.locfileid: "96325633"
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) 與 Azure AD MULTI-FACTOR AUTHENTICATION (MFA) 設定為登入並設定已啟用 Azure 備份的資源。
 
-- [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md)
+- [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -350,7 +350,7 @@ ms.locfileid: "96325633"
 
 - [如何設定 Azure 備份以使用 Azure AD 登入](../app-service/configure-authentication-provider-aad.md)
 
-- [如何建立和設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：是
 

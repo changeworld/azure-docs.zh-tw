@@ -4,21 +4,21 @@ description: 設定 BYOS (將您自己的儲存體) 用於 Profiler & 快照偵�
 ms.topic: conceptual
 author: renatosalas
 ms.author: regutier
-ms.date: 04/14/2020
+ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f82432c1dd8c66e8ce845831ff35d534a34e3e04
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117386"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202533"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>為 Application Insights Profiler 和快照偵錯工具設定自備儲存體 (BYOS) 
 
 ## <a name="what-is-bring-your-own-storage-byos-and-why-might-i-need-it"></a>什麼是攜帶您自己的儲存體 (BYOS) 以及為什麼需要它？ 
 當您使用 Application Insights Profiler 或快照偵錯工具時，您的應用程式所產生的成品會透過公用網際網路上傳至 Azure 儲存體帳戶。 這些帳戶由 Microsoft 付費及控制，以進行處理和分析。 Microsoft 會控制這些構件的靜態加密和存留期管理原則。
 
-使用「攜帶您自己的儲存體」時，這些構件會上傳至您所控制的儲存體帳戶。 這表示您會控制待用加密原則、存留期管理原則和網路存取。 不過，您將負責處理與該儲存體帳戶相關聯的成本。
+使用「攜帶您自己的儲存體」時，這些構件會上傳至您所控制的儲存體帳戶。 這表示您會控制待用加密原則、存留期管理原則和網路存取。 不過，您要負責支付與該儲存體帳戶相關聯的成本。
 
 > [!NOTE]
 > 如果您要啟用 Private Link，則需要攜帶您自己的儲存體。 如需 Application Insights Private Link 的詳細資訊， [請參閱檔。](../platform/private-link-security.md)
@@ -30,7 +30,7 @@ ms.locfileid: "87117386"
 1. Application Insights Profiler 或快照偵錯工具服務會分析傳入的 blob，並將分析結果和記錄檔回寫至 blob 儲存體。 根據可用的計算容量，此程式可能會在上傳之後隨時進行。
 1. 當您查看分析工具追蹤或快照偵錯工具分析時，服務將會從 blob 儲存體提取分析結果。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 * 請務必在與 Application Insights 資源相同的位置中建立您的儲存體帳戶。 例如 如果您的 Application Insights 資源美國西部2，您的儲存體帳戶也必須在美國西部2中。 
 * 透過存取控制 (IAM) UI，在您的儲存體帳戶中將「儲存體 Blob 資料參與者」角色授與 AAD 應用程式「診斷服務信任的儲存體存取」。
 * 如果 Private Link 啟用，請設定其他設定，以允許從您的虛擬網路連線到我們信任的 Microsoft 服務。 
@@ -53,11 +53,11 @@ BYOS 儲存體帳戶將會連結至 Application Insights 資源。 每個 Applic
 1. 搜尋 & 選取 [診斷服務受信任的儲存體存取] 應用程式 
 1. 儲存變更
 
-_ ![ 圖 1.0](media/profiler-bring-your-own-storage/figure-10.png)_ 
+_![ 圖 1.0](media/profiler-bring-your-own-storage/figure-10.png)_ 
  _圖 1.0_ 
 
 新增角色之後，它會出現在 [角色指派] 區段底下，如下圖1.1 所示。 
-_ ![ 圖 1.1](media/profiler-bring-your-own-storage/figure-11.png)_ 
+_![ 圖 1.1](media/profiler-bring-your-own-storage/figure-11.png)_ 
  _圖 1.1_ 
 
 如果您也使用 Private Link，則需要一個額外的設定，以允許從您的虛擬網路連線到我們的受信任的 Microsoft 服務。 請參閱 [存放裝置網路安全性檔案](../../storage/common/storage-network-security.md#trusted-microsoft-services)。
@@ -91,7 +91,7 @@ _ ![ 圖 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 
     模式：
     ```powershell
-    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{storage_account_name}"
+    $appInsights = Get-AzApplicationInsights -ResourceGroupName "{resource_group_name}" -Name "{application_insights_name}"
     Remove-AzApplicationInsightsLinkedStorageAccount -ResourceId $appInsights.Id
     ```
 
@@ -198,7 +198,7 @@ _ ![ 圖 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
 
 1. 當 PowerShell 主控台出現提示時，請提供下列參數：
     
-    |           參數           |                                說明                               |
+    |           參數           |                                描述                               |
     |-------------------------------|--------------------------------------------------------------------------|
     | application_insights_name     | 要啟用 BYOS 之 Application Insights 資源的名稱。            |
     | storage_account_name          | 您將用作 BYOS 的儲存體帳戶資源的名稱。 |
@@ -226,7 +226,7 @@ _ ![ 圖 1.1](media/profiler-bring-your-own-storage/figure-11.png)_
     DeploymentDebugLogLevel :
     ```
 
-1. 透過 Azure 入口網站來啟用程式碼層級診斷 (分析工具/偵錯工具) 感興趣的工作負載。  (App Service > Application Insights) _ ![ 圖 2.0](media/profiler-bring-your-own-storage/figure-20.png)_ 
+1. 透過 Azure 入口網站來啟用程式碼層級診斷 (分析工具/偵錯工具) 感興趣的工作負載。  (App Service > Application Insights) _![ 圖 2.0](media/profiler-bring-your-own-storage/figure-20.png)_ 
  _圖 2.0_
 
 ## <a name="troubleshooting"></a>疑難排解

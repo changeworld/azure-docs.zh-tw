@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2f3849e052cfc73d3e6e0bafd8b87b088a08266d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 041de50fea6152aade706cc938a75bb70619ebf3
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019271"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202805"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>認知服務的 Azure 安全性基準
 
@@ -362,7 +362,7 @@ Azure 認知服務的資料平面存取權是透過存取金鑰來控制。 連�
 
 **指引**：使用已設定多重要素驗證 (MFA) 的特殊權限存取工作站 (PAW) 來登入和設定 Azure 資源。
 
-* [了解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [了解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f6c990b3ce5edaab4d2ce6600c0291272058e092
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 7721100d902948364c9e4b1373f1fa805c680a50
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369288"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202210"
 ---
 # <a name="security-control-v2-privileged-access"></a>安全性控制 V2：特殊許可權存取
 
@@ -157,7 +157,7 @@ ms.locfileid: "97369288"
 
 安全、隔離的工作站對於機密角色（例如系統管理員、開發人員和重要服務操作員）的安全性至關重要。 使用高度安全的使用者工作站及/或 Azure 防禦來進行系統管理工作。 請使用 Azure Active Directory、Microsoft Defender 進階威脅防護 (ATP) 和/或 Microsoft Intune，以部署安全且受控的使用者工作站來進行系統管理工作。 受保護的工作站可以集中管理以強制執行安全的設定，包括強式驗證、軟體和硬體基準，以及受限的邏輯和網路存取。 
 
-- [瞭解特殊許可權的存取工作站](../../active-directory/devices/concept-azure-managed-workstation.md)
+- [瞭解特殊許可權的存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [部署特殊權限存取工作站](../../active-directory/devices/howto-azure-managed-workstation.md) (機器翻譯)
 

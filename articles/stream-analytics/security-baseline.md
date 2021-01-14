@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0a0756c0beeb752e69703119a300bf4cc85f621b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c1e61e9434d96148fbce840f4bad7f6a3b2ecb6b
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485173"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202720"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>適用于串流分析的 Azure 安全性基準
 
 適用于串流分析的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md)。
 
@@ -292,7 +292,7 @@ ms.locfileid: "96485173"
 
 **指導** 方針：使用 paw (特殊許可權的存取工作站) 搭配多重要素驗證 (MFA) 設定為登入和設定串流分析資源。
 
-* [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
