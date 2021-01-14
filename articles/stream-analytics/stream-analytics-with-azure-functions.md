@@ -1,18 +1,18 @@
 ---
 title: 教學課程 - 在 Azure 串流分析作業中執行 Azure Functions
 description: 在本教學課程中，您將了解如何設定 Azure Functions 作為串流分析作業的輸出接收。
-author: mamccrea
-ms.author: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: bb2eb36e4116c17efb20946b0da4586678838f3b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: ffc056a97d3c0fd14bab186614015a9352a34077
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861998"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015142"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>教學課程：從 Azure 串流分析作業執行 Azure Functions 
 

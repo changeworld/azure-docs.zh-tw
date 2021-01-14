@@ -1,19 +1,18 @@
 ---
 title: 教學課程 - 在 Visual Studio 中針對 Azure 串流分析作業撰寫 C# 使用者定義的函式 (預覽)
 description: 本教學課程說明如何在 Visual Studio 中針對串流分析作業撰寫 C# 使用者定義的函式。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d53f13cb740b3feb39dc64ce012ff320afbb1db5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 851229e441aa2fbdf7b6eec05390c0ce2b149da2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130488"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020463"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>教學課程：針對 Azure 串流分析作業撰寫 C# 使用者定義的函式 (預覽)
 
@@ -69,7 +68,7 @@ ms.locfileid: "93130488"
 
 
 ## <a name="write-a-c-udf-with-codebehind"></a>使用 CodeBehind 撰寫 C# UDF
-CodeBehind 檔案是與單一 ASA 查詢指令碼相關聯的 C# 檔案。 Visual Studio 工具將會自動壓縮 CodeBehind 檔案，並在提交時將它上傳至您的 Azure 儲存體帳戶。 所有類別都必須定義為 *public* ，而所有物件都必須定義為 *static public* 。
+CodeBehind 檔案是與單一 ASA 查詢指令碼相關聯的 C# 檔案。 Visual Studio 工具將會自動壓縮 CodeBehind 檔案，並在提交時將它上傳至您的 Azure 儲存體帳戶。 所有類別都必須定義為 *public*，而所有物件都必須定義為 *static public*。
 
 1. 在 [方案總管] 中，展開 **Script.asql** 以尋找 **Script.asaql.cs** CodeBehind 檔案。
 
@@ -115,7 +114,7 @@ CodeBehind 檔案是與單一 ASA 查詢指令碼相關聯的 C# 檔案。 Visua
 
    ![在 Visual Studio 中將本機輸入新增至串流分析作業](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
-3. 為您下載的範例資料指定本機輸入檔案路徑並 **儲存** 。
+3. 為您下載的範例資料指定本機輸入檔案路徑並 **儲存**。
 
     ![Visual Studio 中適用於串流分析作業的本機輸入設定](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
 

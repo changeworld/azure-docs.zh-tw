@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 服務匯流排傳訊的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure 服務匯流排傳訊的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 8564177868682561066f7728460d0cf89f582aae
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: cc13aefea18d7f492f32e0c7c1b87bed2d462358
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985397"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045560"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-service-bus-messaging"></a>適用於 Azure 服務匯流排傳訊的 Azure 原則法規合規性控制項
 

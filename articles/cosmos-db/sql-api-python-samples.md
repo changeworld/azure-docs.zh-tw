@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 8515ff7102095a278b2656608f00932fe8b19126
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4a1cd5b1773a58cf385fc6cc5c22be8df7b21e20
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098632"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018950"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python 範例
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -91,7 +91,7 @@ ms.locfileid: "93098632"
 
 ## <a name="indexing-examples"></a>索引範例
 
-[index_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python 範例示範如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-overview.md#index-kinds)及[索引路徑](index-policy.md#include-exclude-paths)概念性文章。
+[index_management.py](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py) Python 範例示範如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-overview.md#index-types)及[索引路徑](index-policy.md#include-exclude-paths)概念性文章。
 
 | Task | API 參考資料 |
 | --- | --- |

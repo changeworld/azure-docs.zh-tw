@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
-ms.date: 04/20/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfcf9568f37a26f234a417a86eebf1b0bde67ab0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76845214"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98014496"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站診斷虛擬機器網路路由問題
 
@@ -69,7 +69,7 @@ ms.locfileid: "76845214"
 
 如果您已啟用至少一個區域中的網路監看員，請跳至[使用下一個躍點](#use-next-hop)。
 
-1. 在入口網站中，選取 [所有服務]  。 在 [篩選條件]  方塊中，輸入*網路監看員*。 當結果中出現**網路監看員**時，請加以選取。
+1. 在入口網站中，選取 [所有服務]  。 在 [篩選條件]  方塊中，輸入 *網路監看員*。 當結果中出現 **網路監看員** 時，請加以選取。
 2. 選取 [地區]  、展開它，然後選取 [美國東部]  右邊的 [...]  ，如下圖所示：
 
     ![啟用網路監看員](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)

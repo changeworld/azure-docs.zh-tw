@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 37ecca6829f348137bbbc8b76fb1934c024550fd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e605c10a765379c8f7d33dbd4d1f884d0e08734e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097255"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018644"
 ---
 # <a name="azure-cosmos-dbnet-v3-sdk-microsoftazurecosmos-examples-for-the-sql-api"></a>適用於 SQL API 的 Azure Cosmos DB.NET V3 SDK (Microsoft.Azure.Cosmos) 範例
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "93097255"
 
 已安裝 Azure 開發工作流程的 Visual Studio 2019
 
-- 您可以下載並使用 **免費** 的 [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發** 。
+- 您可以下載並使用 **免費** 的 [Visual Studio 2019 Community 版本](https://www.visualstudio.com/downloads/)。 務必在 Visual Studio 設定期間啟用 **Azure 開發**。
 
    [Microsoft.Azure.cosmos NuGet 套件](https://www.nuget.org/packages/Microsoft.Azure.cosmos/)
 
@@ -93,7 +93,7 @@ DatabaseManagement 專案範例的 [RunDatabaseDemo](https://github.com/Azure/az
 
 ## <a name="indexing-examples"></a>索引範例
 
-範例 IndexManagement 專案的 [RunIndexDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-overview.md#index-kinds)及[索引路徑](index-policy.md#include-exclude-paths)。 
+範例 IndexManagement 專案的 [RunIndexDemo](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/IndexManagement/Program.cs#L108-L122) 方法說明如何執行下列工作。 若要在執行下列範例之前先了解 Azure Cosmos DB 中的索引功能，請參閱[索引原則](index-policy.md)、[索引類型](index-overview.md#index-types)及[索引路徑](index-policy.md#include-exclude-paths)。 
 
 | Task | API 參考資料 |
 | --- | --- |

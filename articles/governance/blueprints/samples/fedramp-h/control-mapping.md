@@ -1,14 +1,14 @@
 ---
 title: FedRAMP 高等級藍圖範例控制
-description: FedRAMP High 藍圖範例的控制項對應。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
-ms.date: 10/26/2020
+description: FedRAMP High 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則定義。
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 0b729046d44d76f71dfb520db16e6fd268d421c9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ee2988e94422c96be52d0bc4fc7266ccab38780e
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669369"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034878"
 ---
 # <a name="control-mapping-of-the-fedramp-high-blueprint-sample"></a>FedRAMP High 藍圖範例的控制項對應
 

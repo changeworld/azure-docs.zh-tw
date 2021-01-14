@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 4eb3c2905f3c1ccfa63da1bb4a8c81decdbc2f2b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 51b548beae57ce1da32006b61dfd222b0a4e6218
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507722"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015856"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>教學課程：登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
@@ -265,7 +265,7 @@ ms.locfileid: "97507722"
 
 在繼續進行驗證之前，請先在 **Azure Active Directory** 上註冊應用程式。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。

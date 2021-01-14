@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v3.2.1 藍圖範例控制項
 description: 支付卡產業資料安全性標準 v3.2.1 藍圖範例與 Azure 原則和 Azure RBAC 的控制項對應。
-ms.date: 08/19/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: 7391b32b23f6f0fb8b337a8178b83cffd7dba69b
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 9b1cf7702b627ae073f0172dde4694060004cb3f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955683"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045150"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 藍圖範例的控制項對應
 

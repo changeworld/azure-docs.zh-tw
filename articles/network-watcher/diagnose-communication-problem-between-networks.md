@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/27/2018
+ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 25c58f99f56a4328527d1dd970e3ade21eb51819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a556ea66bb54f994349ce9ba4d12fb486827edf
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987164"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013289"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站診斷網路之間的通訊問題
 
@@ -51,7 +51,7 @@ ms.locfileid: "90987164"
 
 如果您已經在美國東部區域中啟用網路監看員，請跳至[診斷閘道](#diagnose-a-gateway)。
 
-1. 在入口網站中，選取 [所有服務]  。 在 [篩選條件]  方塊中，輸入*網路監看員*。 當結果中出現**網路監看員**時，請加以選取。
+1. 在入口網站中，選取 [所有服務]  。 在 [篩選條件]  方塊中，輸入 *網路監看員*。 當結果中出現 **網路監看員** 時，請加以選取。
 2. 選取 [地區]  、展開它，然後選取 [美國東部]  右邊的 [...]  ，如下圖所示：
 
     ![啟用網路監看員](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)
@@ -61,7 +61,7 @@ ms.locfileid: "90987164"
 ## <a name="diagnose-a-gateway"></a>診斷閘道
 
 1. 在入口網站的左側，選取 [所有服務]  。
-2. 開始在 [篩選]  方塊中輸入「網路監看員」  。 當搜尋結果中出現**網路監看員**時，請加以選取。
+2. 開始在 [篩選]  方塊中輸入「網路監看員」  。 當搜尋結果中出現 **網路監看員** 時，請加以選取。
 3. 在 [網路診斷工具]  底下，選取 [VPN 診斷]  。
 4. 選取 [儲存體帳戶]  ，然後選取您想要將診斷資訊寫入至其中的儲存體帳戶。
 5. 從 [儲存體帳戶]  清單中，選取您想要使用的儲存體帳戶。 如果您現在沒有儲存體帳戶，請選取 [+ 儲存體帳戶]  ，輸入或選取必要資訊，然後選取 [建立]  以建立一個儲存體帳戶。 如果您使用[必要條件](#prerequisites)中的指令碼建立 VPN 閘道，您可以在與閘道相同的資源群組 TestRG1  中建立儲存體帳戶。

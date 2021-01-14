@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f04a8aa96b51ac9330e4302c3afcc48f7d305b39
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: c9e4997ad08f2dd1d96dd442f80ad4203abf6261
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507705"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015881"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>教學課程：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph
 
@@ -71,7 +71,7 @@ ms.locfileid: "97507705"
 
 ## <a name="register-your-application"></a>註冊您的應用程式
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。

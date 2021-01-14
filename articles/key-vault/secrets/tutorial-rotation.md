@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5e61510965693e123c724d7b40d2fa6071fdd94c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 61e1e729ab0aeac1f7b8e5ee6787da38c5fef108
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824811"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020140"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>針對使用一組驗證認證的資源，將秘密的輪替自動化
 
@@ -244,7 +244,7 @@ Web 應用程式需要以下元件：
 
 移至已部署的應用程式 URL：
  
-https://akvrotation-app.azurewebsites.net/
+'https://akvrotation-app.azurewebsites.net/'
 
 當應用程式在瀏覽器中開啟時，您會看到 [產生的密碼值] 以及值為 *true* 的 [資料庫已連線]。
 

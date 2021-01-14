@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 事件中樞的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure 事件中樞的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: event-hubs
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: c5b3d0569ef0babbf50f11ddc90423d5f536405b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1314b77d556631fe24b283ef7f38bbe747d6cbc9
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988474"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048076"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-hubs"></a>適用於 Azure 事件中樞的 Azure 原則法規合規性控制項
 
