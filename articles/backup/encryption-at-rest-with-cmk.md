@@ -3,12 +3,12 @@ title: 使用客戶管理的金鑰來加密備份資料
 description: 瞭解 Azure 備份如何讓您使用客戶管理的金鑰 (CMK) 來加密備份資料。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 6e3eea4b5f44203b68c1263c0fb3ae843cabbe72
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895982"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197731"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
 
@@ -23,17 +23,17 @@ Azure 備份可讓您使用客戶管理的金鑰 (CMK) 來加密備份資料，�
 - 執行備份至使用客戶管理金鑰加密的保存庫
 - 從備份還原資料
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 這項功能可讓您 **僅加密新** 的復原服務保存庫。 不支援任何包含已註冊或嘗試註冊之現有專案的保存庫。
 
 - 啟用復原服務保存庫後，使用客戶管理的金鑰進行加密，就無法使用平臺管理的金鑰 (預設) 還原回。 您可以根據您的需求變更加密金鑰。
 
-- 這項功能目前 **不支援使用 MARS 代理程式進行備份** ，而且您可能無法使用 CMK 加密的保存庫進行相同的工作。 MARS 代理程式會使用以使用者複雜密碼為基礎的加密。 這項功能也不支援傳統 Vm 的備份。
+- 這項功能目前 **不支援使用 MARS 代理程式進行備份**，而且您可能無法使用 CMK 加密的保存庫進行相同的工作。 MARS 代理程式會使用以使用者複雜密碼為基礎的加密。 這項功能也不支援傳統 Vm 的備份。
 
 - 這項功能與 [Azure 磁碟加密](../security/fundamentals/azure-disk-encryption-vms-vmss.md)無關，後者會使用 Windows) 的 BitLocker (和適用于 Linux 的 DM-Crypt (，來使用虛擬機器磁片的來賓型加密) 
 
-- 復原服務保存庫只能使用儲存在 Azure Key Vault （位於 **相同區域** ）中的金鑰進行加密。 此外，金鑰必須只有 **RSA 2048 金鑰** ，且應該處於 **啟用** 狀態。
+- 復原服務保存庫只能使用儲存在 Azure Key Vault （位於 **相同區域**）中的金鑰進行加密。 此外，金鑰必須只有 **RSA 2048 金鑰** ，且應該處於 **啟用** 狀態。
 
 - 目前不支援在資源群組和訂用帳戶之間移動 CMK 加密的復原服務保存庫。
 
@@ -66,7 +66,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
     ![身分識別設定](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. 將 **狀態** 變更為 [ **開啟** ]，然後選取 [ **儲存** ]。
+1. 將 **狀態** 變更為 [ **開啟** ]，然後選取 [ **儲存**]。
 
 1. 系統會產生物件識別碼，也就是系統指派的保存庫受控識別。
 
@@ -74,11 +74,11 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 您現在需要允許復原服務保存庫存取包含加密金鑰的 Azure Key Vault。 這是藉由允許復原服務保存庫的受控識別來存取 Key Vault 來完成。
 
-1. 移至您的 Azure Key Vault > **存取原則** 。 繼續前往 **+ 新增存取原則** 。
+1. 移至您的 Azure Key Vault > **存取原則**。 繼續前往 **+ 新增存取原則**。
 
     ![新增存取原則](./media/encryption-at-rest-with-cmk/access-policies.png)
 
-1. 在 [ **金鑰許可權** ] 底下，選取 [ **取得** 、 **列出** 、解除包裝 **金鑰** ] 和 [ **包裝金鑰** 作業]。 這會指定要允許的索引鍵上的動作。
+1. 在 [ **金鑰許可權**] 底下，選取 [ **取得**、 **列出**、解除包裝 **金鑰** ] 和 [ **包裝金鑰** 作業]。 這會指定要允許的索引鍵上的動作。
 
     ![指派金鑰許可權](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
@@ -148,28 +148,36 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
     ![加密設定](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. 選取 [ **加密設定** ] 下的 [ **更新** ]。
+1. 選取 [**加密設定**] 下的 [**更新**]。
 
 1. 在 [加密設定] 窗格中，選取 [ **使用您自己的金鑰** ]，然後使用下列其中一種方式繼續指定金鑰。 **確定您要使用的金鑰是處於已啟用狀態的 RSA 2048 金鑰。**
 
     1. 輸入您要用來加密此復原服務保存庫中資料的 **金鑰 URI** 。 您也必須指定訂用帳戶，其中包含此金鑰) 的 Azure Key Vault (存在。 您可以從 Azure Key Vault 中的對應機碼取得此金鑰 URI。 請確認金鑰 URI 已正確複製。 建議您使用金鑰識別碼所提供的 [ **複製到剪貼** 簿] 按鈕。
 
+        >[!NOTE]
+        >使用金鑰 URI 指定加密金鑰時，金鑰將不會自動輪替。 因此，必須在必要時指定新金鑰，以手動方式完成金鑰更新。
+
         ![輸入金鑰 URI](./media/encryption-at-rest-with-cmk/key-uri.png)
 
     1. 在 [金鑰選擇器] 窗格中，流覽並選取 Key Vault 中的機碼。
+
+        >[!NOTE]
+        >使用金鑰選擇器窗格來指定加密金鑰時，只要啟用新版本的金鑰，就會自動旋轉金鑰。
 
         ![從 key vault 選取金鑰](./media/encryption-at-rest-with-cmk/key-vault.png)
 
 1. 選取 [儲存]。
 
-1. **追蹤加密金鑰更新的進度：** 您可以使用復原服務保存庫中的 **活動記錄** 來追蹤金鑰指派的進度。 狀態應該會變更為 [ **成功** ]。 您的保存庫現在會將具有指定索引鍵的所有資料加密為 KEK。
+1. **追蹤加密金鑰更新的進度和狀態**：您可以使用左側導覽列上的 [ **備份作業** ] 視圖，追蹤加密金鑰指派的進度和狀態。 狀態應該會變更為 [ **已完成**]。 您的保存庫現在會將具有指定索引鍵的所有資料加密為 KEK。
 
-    ![使用活動記錄追蹤進度](./media/encryption-at-rest-with-cmk/activity-log.png)
+    ![狀態已完成](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
-    ![狀態成功](./media/encryption-at-rest-with-cmk/status-succeeded.png)
+    加密金鑰更新也會記錄在保存庫的活動記錄中。
+
+    ![活動記錄檔](./media/encryption-at-rest-with-cmk/activity-log.png)
 
 >[!NOTE]
-> 當您想要更新/變更加密金鑰時，此程式會維持不變。 如果您想要更新和使用來自另一個 Key Vault 的金鑰 (不同于目前) 的金鑰，請確定：
+> 當您想要更新或變更加密金鑰時，此程式會維持不變。 如果您想要更新和使用來自另一個 Key Vault 的金鑰 (不同于目前) 的金鑰，請確定：
 >
 > - Key Vault 位於與復原服務保存庫相同的區域中
 >
@@ -192,7 +200,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 >
 >如果已確認上述所有步驟，則只需繼續設定備份。
 
-針對使用客戶管理金鑰加密的復原服務保存庫設定和執行備份的程式，與使用平臺管理金鑰的保存庫相同， **不需要變更體驗** 。 這適用于 [備份 Azure vm](./quick-backup-vm-portal.md) ，以及備份在 VM 內執行的工作負載 (例如 [SAP Hana](./tutorial-backup-sap-hana-db.md) [SQL Server](./tutorial-sql-backup.md) 資料庫) 。
+針對使用客戶管理金鑰加密的復原服務保存庫設定和執行備份的程式，與使用平臺管理金鑰的保存庫相同， **不需要變更體驗**。 這適用于 [備份 Azure vm](./quick-backup-vm-portal.md) ，以及備份在 VM 內執行的工作負載 (例如 [SAP Hana](./tutorial-backup-sap-hana-db.md) [SQL Server](./tutorial-sql-backup.md) 資料庫) 。
 
 ## <a name="restoring-data-from-backup"></a>從備份還原資料
 
@@ -214,7 +222,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 磁片加密集是在 [還原] 窗格的 [加密設定] 下指定，如下所示：
 
-1. 在 [ **加密磁片 (s]) 使用您的金鑰** ，請選取 **[是]** 。
+1. 在 [ **加密磁片 (s]) 使用您的金鑰**，請選取 **[是]**。
 
 1. 從下拉式清單中，選取您要用於還原的磁片 (s) 的 DES。 **確定您具有 DES 的存取權。**
 

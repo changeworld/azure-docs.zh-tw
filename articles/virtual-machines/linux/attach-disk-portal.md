@@ -7,20 +7,20 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 8f60c83417e9c614ca30f140e6acbbf08e5643cf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ca8584d6cce3f5487d84f6647c42274879d610dd
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500643"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198062"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>使用入口網站將資料磁碟附加至 Linux VM 
-本文示範如何透過 Azure 入口網站將新的及現有的磁碟連結到 Linux 虛擬機器。 您也可以[在 Azure 入口網站中將資料磁碟連結到 Windows VM](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
+本文示範如何透過 Azure 入口網站將新的及現有的磁碟連結到 Linux 虛擬機器。 您也可以[在 Azure 入口網站中將資料磁碟連結到 Windows VM](../windows/attach-managed-disk-portal.md)。 
 
 將磁碟附加至 VM 之前，請檢閱下列提示︰
 
-* 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
-* 附加至虛擬機器的磁碟實際上是 Azure 中儲存的 .vhd 檔案。 如需詳細資料，請參閱我們的[受控磁碟簡介](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 虛擬機器的大小會控制您可以連接的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](../sizes.md)。
+* 附加至虛擬機器的磁碟實際上是 Azure 中儲存的 .vhd 檔案。 如需詳細資料，請參閱我們的[受控磁碟簡介](../managed-disks-overview.md)。
 * 連接磁碟之後，您必須[連線到 Linux VM 才能掛接新的磁碟](#connect-to-the-linux-vm-to-mount-the-new-disk)。
 
 

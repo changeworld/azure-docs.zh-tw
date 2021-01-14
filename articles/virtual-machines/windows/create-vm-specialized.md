@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: cddc7f4f453f22b0cb36b1d3a1e9c2fba2dcabaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 577b8527d95a6410deca8002cddfaae31be1fc97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455090"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197484"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 從特製化磁碟建立 Windows VM
 
@@ -54,7 +54,7 @@ $osDisk = Get-AzDisk `
 ### <a name="prepare-the-vm"></a>準備 VM
 依現況使用 VHD 來建立新 VM。 
   
-  * [準備要上傳至 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 請 **勿** 使用 Sysprep 將 VM一般化。
+  * [準備要上傳至 Azure 的 Windows VHD](prepare-for-upload-vhd-image.md). 請 **勿** 使用 Sysprep 將 VM一般化。
   * 移除已安裝在 VM 上的所有客體虛擬化工具和代理程式 (例如 VMware 工具)。
   * 確認已將 VM 設定成從 DHCP 取得 IP 位址和 DNS 設定。 這可確保伺服器在啟動時取得虛擬網路內的 IP 位址。 
 
@@ -193,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
     
 ```
 
-如需有關端點和 NSG 規則的詳細資訊，請參閱[使用 PowerShell 對 Azure 中的 VM 開啟連接埠](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+如需有關端點和 NSG 規則的詳細資訊，請參閱[使用 PowerShell 對 Azure 中的 VM 開啟連接埠](nsg-quickstart-powershell.md)。
 
 ### <a name="create-a-public-ip-address-and-nic"></a>建立公用 IP 位址和 NIC
 若要能夠與虛擬網路中的虛擬機器進行通訊，您將需要[公用 IP 位址](../../virtual-network/public-ip-addresses.md)和網路介面。

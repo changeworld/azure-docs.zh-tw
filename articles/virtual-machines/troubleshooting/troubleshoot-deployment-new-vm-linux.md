@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
-ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94f7389ce96c2e3bda35413cbcc7b1e8a992683
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87028442"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197535"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>針對在 Azure 中建立新 Linux 虛擬機器的 Resource Manager 部署問題進行疑難排解
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -46,9 +46,9 @@ ms.locfileid: "87028442"
 
 **上傳錯誤：**
 
-**N<sup>1</sup>：** 如果作業系統是一般化的 Linux，但是上傳它時是以特殊化形式上傳，就會發生佈建逾時錯誤，因為 VM 會卡在佈建階段。
+**N <sup>1</sup>：** 如果作業系統是一般化的 Linux，但是上傳它時是以特殊化形式上傳，就會發生佈建逾時錯誤，因為 VM 會卡在佈建階段。
 
-**N<sup>2</sup>：** 如果作業系統是特殊化的 Linux，但是上傳它時是以一般化形式上傳，就會發生佈建失敗錯誤，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。
+**N <sup>2</sup>：** 如果作業系統是特殊化的 Linux，但是上傳它時是以一般化形式上傳，就會發生佈建失敗錯誤，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。
 
 **解決方法：**
 
@@ -56,13 +56,13 @@ ms.locfileid: "87028442"
 
 **擷取錯誤：**
 
-**N<sup>3</sup>：** 如果作業系統是一般化的 Linux，但是擷取它時是以特殊化形式擷取，就會發生佈建逾時錯誤，因為原始 VM 會因被標示為一般化而無法供使用。
+**N <sup>3</sup>：** 如果作業系統是一般化的 Linux，但是擷取它時是以特殊化形式擷取，就會發生佈建逾時錯誤，因為原始 VM 會因被標示為一般化而無法供使用。
 
-**N<sup>4</sup>：** 如果作業系統是特殊化的 Linux，但是擷取它時是以一般化形式擷取，就會發生佈建失敗錯誤，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。 此外，原始 VM 會因被標示為特殊化而無法供使用。
+**N <sup>4</sup>：** 如果作業系統是特殊化的 Linux，但是擷取它時是以一般化形式擷取，就會發生佈建失敗錯誤，因為新 VM 是以原始的電腦名稱、使用者名稱和密碼執行。 此外，原始 VM 會因被標示為特殊化而無法供使用。
 
 **解決方法：**
 
-若要解決這兩個錯誤，請從入口網站中刪除目前的映像，然後使用與作業系統相同的設定 (一般化/特殊化) [從目前的 VHD 重新擷取映像](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+若要解決這兩個錯誤，請從入口網站中刪除目前的映像，然後使用與作業系統相同的設定 (一般化/特殊化) [從目前的 VHD 重新擷取映像](../linux/capture-image.md)。
 
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>問題︰自訂/資源庫/Marketplace 映像；配置失敗
 當新的 VM 要求被釘選到不支援所要求的 VM 大小、或沒有可用空間可處理要求的叢集，便會發生此錯誤。
@@ -74,7 +74,7 @@ ms.locfileid: "87028442"
 * 以較小的 VM 大小重試要求。
 * 如果無法變更要求的 VM 的大小︰
   * 停止可用性設定組中的所有 VM。
-    按一下**資源群組資源**  >  *群組*  >  **資源**：您的  >  *your availability set*  >  **Virtual Machines**  >  *虛擬機器*  >  **停止**的可用性設定虛擬機器。
+    按一下 **資源群組資源**  >  *群組*  >  **資源**：您的  >    >    >  *虛擬機器*  >  **停止** 的可用性設定虛擬機器。
   * 所有 VM 都停止後，建立所需大小的新 VM。
   * 先啟動新的 VM，然後選取每個已停止的 Vm，然後按一下 [ **啟動**]。
 
@@ -87,5 +87,5 @@ ms.locfileid: "87028442"
   * 在不同的可用性設定組 (位於相同區域) 中建立新的 VM。
   * 將新的 VM 加入相同的虛擬網路。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如果您在啟動已停止的 Linux VM，或重新調整 Azure 中現有的 Linux VM 大小時遇到問題，請參閱 [針對在 Azure 中重新啟動或調整現有 Linux 虛擬機器大小的 Resource Manager 部署問題進行疑難排解](./troubleshoot-deploy-vm-linux.md?toc=/azure/virtual-machines/linux/toc.json)。

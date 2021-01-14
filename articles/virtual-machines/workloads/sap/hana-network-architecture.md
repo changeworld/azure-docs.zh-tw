@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: c1403c514f5a278fd406769f1d5271cc95a5c1df
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093973"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195733"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (大型執行個體) 網路架構
 
@@ -47,9 +47,9 @@ Azure 網路服務的架構是在 HANA 大型執行個體上成功部署 SAP 應
 
 ## <a name="additional-virtual-network-information"></a>其他虛擬網路資訊
 
-若要將虛擬網路連線到 ExpressRoute，必須建立 Azure ExpressRoute 閘道。 如需詳細資訊，請參閱 [關於 expressroute 的 expressroute 閘道](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
+若要將虛擬網路連線到 ExpressRoute，必須建立 Azure ExpressRoute 閘道。 如需詳細資訊，請參閱 [關於 expressroute 的 expressroute 閘道](../../../expressroute/expressroute-about-virtual-network-gateways.md)。 
 
-Azure ExpressRoute 閘道可搭配 ExpressRoute 使用於 Azure 外部的基礎結構或 Azure 大型實例戳記。 您可以將 Azure ExpressRoute 閘道連接到最多四個不同的 ExpressRoute 線路，只要這些連線來自不同的 Microsoft enterprise edge 路由器即可。 如需詳細資料，請參閱 [Azure 上的 SAP HANA (大型執行個體) 基礎結構和連線](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 
+Azure ExpressRoute 閘道可搭配 ExpressRoute 使用於 Azure 外部的基礎結構或 Azure 大型實例戳記。 您可以將 Azure ExpressRoute 閘道連接到最多四個不同的 ExpressRoute 線路，只要這些連線來自不同的 Microsoft enterprise edge 路由器即可。 如需詳細資料，請參閱 [Azure 上的 SAP HANA (大型執行個體) 基礎結構和連線](hana-overview-infrastructure-connectivity.md)。 
 
 > [!NOTE] 
 > ExpressRoute 閘道可達到的最大輸送量是使用 ExpressRoute 連線的 10 Gbps。 在位於虛擬網路中的 VM 與內部部署系統之間複製檔案 (以單一複製串流的形式)，並不會達到不同閘道 SKU 的最大輸送量。 若要利用 ExpressRoute 閘道的完整頻寬，請使用多個串流。 或者，您必須以單一檔案的平行資料流複製不同的檔案。
@@ -60,7 +60,7 @@ Azure ExpressRoute 閘道可搭配 ExpressRoute 使用於 Azure 外部的基礎�
 
 - 內部部署網路和 Azure 的 ExpressRoute 連線。 這個部分是客戶網域，會透過 ExpressRoute 連線至 Azure。 此 Expressroute 線路會由您以客戶的形式完全支付。 頻寬必須夠大，才能處理您內部部署資產與您所連線之 Azure 區域之間的網路流量。 請參閱下圖右下方的區域。
 - 先前已討論過的 Azure 網路服務，與虛擬網路同樣需要新增 ExpressRoute 閘道。 這個部分是您需要針對應用程式需求、安全性及合規性需求尋找適當設計的區域。 是否使用 HANA 大型執行個體，是您在虛擬網路的數目和要選擇的 Azure 閘道 SKU 方面所應考量的另一個要點。 請查看圖中的右上方。
-- HANA 大型執行個體透過 ExpressRoute 技術連線至 Azure。 這部分已部署且會由 Microsoft 來處理。 您唯一需要做的，是在將資產部署至 HANA 大型執行個體後提供一些 IP 位址範圍，再將 ExpressRoute 線路連線至虛擬網路。 如需詳細資料，請參閱 [Azure 上的 SAP HANA (大型執行個體) 基礎結構和連線](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 如果您是 Azure 資料中心網路網狀架構與 HANA 大型實例單位之間的連線，則不需額外付費。
+- HANA 大型執行個體透過 ExpressRoute 技術連線至 Azure。 這部分已部署且會由 Microsoft 來處理。 您唯一需要做的，是在將資產部署至 HANA 大型執行個體後提供一些 IP 位址範圍，再將 ExpressRoute 線路連線至虛擬網路。 如需詳細資料，請參閱 [Azure 上的 SAP HANA (大型執行個體) 基礎結構和連線](hana-overview-infrastructure-connectivity.md)。 如果您是 Azure 資料中心網路網狀架構與 HANA 大型實例單位之間的連線，則不需額外付費。
 - 「HANA 大型實例」戳記內的網路功能，大部分都是透明的。
 
 ![連線至 SAP HANA on Azure (大型執行個體) 與內部部署環境的虛擬網路](./media/hana-overview-architecture/image1-architecture.png)
@@ -98,7 +98,7 @@ Azure ExpressRoute 閘道可搭配 ExpressRoute 使用於 Azure 外部的基礎�
 
 ## <a name="single-sap-system"></a>單一 SAP 系統
 
-先前顯示的內部部署基礎結構會透過 ExpressRoute 連線至 Azure。 ExpressRoute 線路會連線到 Microsoft enterprise edge 路由器 (MSEE) 。 如需詳細資訊，請參閱 [ExpressRoute 技術概觀](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 建立路由之後，它會連線到 Azure 骨幹。
+先前顯示的內部部署基礎結構會透過 ExpressRoute 連線至 Azure。 ExpressRoute 線路會連線到 Microsoft enterprise edge 路由器 (MSEE) 。 如需詳細資訊，請參閱 [ExpressRoute 技術概觀](../../../expressroute/expressroute-introduction.md)。 建立路由之後，它會連線到 Azure 骨幹。
 
 > [!NOTE] 
 > 若要在 Azure 中執行 SAP 架構，請連線至距離 SAP 架構中的 Azure 區域最近的 Enterprise Edge 路由器。 HANA 大型實例戳記會透過專用的企業邊緣路由器裝置來連線，以將 Azure IaaS 中的 Vm 與 HANA 大型實例戳記之間的網路延遲降至最低。
@@ -136,7 +136,7 @@ Azure ExpressRoute 閘道可搭配 ExpressRoute 使用於 Azure 外部的基礎�
 
 * 如果您在兩個不同的 Azure 區域中部署了 HANA 大型實例單位以進行嚴重損壞修復，則會在過去套用相同的暫時性路由限制。 換句話說，一個區域中 HANA 大型實例單位的 IP 位址 (例如，美國西部) 不會路由至部署在另一個區域中的 HANA 大型實例單位 (例如，美國東部) 。 這項限制與跨區域使用 Azure 網路對等互連或交叉連接 ExpressRoute 線路（將 HANA 大型實例單位連線至虛擬網路）無關。 如需以圖形檢視，請參閱「在多個區域中使用 HANA 大型執行個體單位」一節中的圖表。 這項限制是部署的架構所隨附的，禁止立即使用 HANA 系統複寫作為嚴重損壞修復功能。 針對最近的變更，請查閱「在多個區域中使用 HANA 大型實例單位」一節。 
 
-* Azure 上的 SAP Hana (大型實例) 單位有指派的 IP 位址，來自您在要求 HANA 大型實例部署時所提交的伺服器 IP 集區位址範圍。 如需詳細資料，請參閱 [Azure 上的 SAP HANA (大型執行個體) 基礎結構和連線](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 您可以透過將 Azure 虛擬網路連線到 HANA 大型實例的 Azure 訂用帳戶和線路來存取此 IP 位址。 從該伺服器 IP 集區位址範圍指派的 IP 位址會直接指派給硬體單位。 它 *不會* 再經過 NAT 處理，因為這是此解決方案的第一次部署才會有的情況。 
+* Azure 上的 SAP Hana (大型實例) 單位有指派的 IP 位址，來自您在要求 HANA 大型實例部署時所提交的伺服器 IP 集區位址範圍。 如需詳細資料，請參閱 [Azure 上的 SAP HANA (大型執行個體) 基礎結構和連線](hana-overview-infrastructure-connectivity.md)。 您可以透過將 Azure 虛擬網路連線到 HANA 大型實例的 Azure 訂用帳戶和線路來存取此 IP 位址。 從該伺服器 IP 集區位址範圍指派的 IP 位址會直接指派給硬體單位。 它 *不會* 再經過 NAT 處理，因為這是此解決方案的第一次部署才會有的情況。 
 
 ### <a name="direct-routing-to-hana-large-instances"></a>直接路由至 HANA 大型實例
 

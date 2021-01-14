@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 4cec8f77cacc5d3492dd6a5f8a8baa060f910763
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2cc6ef9b1d9ca8336162b524356ea6e0d1bf5fd2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650591"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197654"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>重設離線 Azure VM 的本機 Windows 密碼
-您可以使用 [Azure 入口網站或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 在 Azure 中重設 VM 的本機 Windows 密碼 (假設已安裝 Azure 客體代理程式)。 這個方法是為 Azure VM 重設密碼的主要方式。 如果您遇到 Azure 客體代理程式沒有回應，或無法在上傳自訂映像後進行安裝等問題，您可以手動重設 Windows 密碼。 本文將詳細說明如何將來源 OS 虛擬磁碟連接至另一部 VM，以重設本機帳戶密碼。 本文中所述的步驟不適用於 Windows 網域控制站。 
+您可以使用 [Azure 入口網站或 Azure PowerShell](reset-rdp.md) 在 Azure 中重設 VM 的本機 Windows 密碼 (假設已安裝 Azure 客體代理程式)。 這個方法是為 Azure VM 重設密碼的主要方式。 如果您遇到 Azure 客體代理程式沒有回應，或無法在上傳自訂映像後進行安裝等問題，您可以手動重設 Windows 密碼。 本文將詳細說明如何將來源 OS 虛擬磁碟連接至另一部 VM，以重設本機帳戶密碼。 本文中所述的步驟不適用於 Windows 網域控制站。 
 
 > [!WARNING]
-> 只能使用此程序做為最後手段。 一律先嘗試使用 [Azure 入口網站或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 重設密碼。
+> 只能使用此程序做為最後手段。 一律先嘗試使用 [Azure 入口網站或 Azure PowerShell](reset-rdp.md) 重設密碼。
 
 ## <a name="overview-of-the-process"></a>程序概觀
 無法存取 Azure 客體代理程式時，在 Azure 中為 Windows VM 執行本機密碼重設的核心步驟如下所示︰
@@ -41,7 +41,7 @@ ms.locfileid: "91650591"
 > [!NOTE]
 > 這些步驟不適用於 Windows 網域控制站。 僅適用於獨立伺服器或網域成員伺服器。
 
-一律先嘗試使用 [Azure 入口網站或 Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 重設密碼，再嘗試下列步驟。 在開始之前，確定您有 VM 的備份。
+一律先嘗試使用 [Azure 入口網站或 Azure PowerShell](reset-rdp.md) 重設密碼，再嘗試下列步驟。 在開始之前，確定您有 VM 的備份。
 
 1. 建立受影響 VM 的 OS 磁碟快照集、從快照集建立磁碟，然後將磁碟連結至疑難排解 VM。 如需詳細資訊，請參閱[使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解](troubleshoot-recovery-disks-portal-windows.md)。
 2. 使用遠端桌面連線到疑難排解 VM。
@@ -71,10 +71,17 @@ ms.locfileid: "91650591"
      0Parameters=
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-1.png" alt-text="顯示對 script.ini 檔案進行之更新的螢幕擷取畫面。":::
+
+5. 使用下列內容在 `\Windows\System32\GroupPolicy\Machine\Scripts\Startup\` 中建立 `FixAzureVM.cmd`，並以您自己的值取代 `<username>` 和 `<newpassword>`：
+   
+    ```
+    net user <username> <newpassword> /add /Y
+    net localgroup administrators <username> /add
+    net localgroup "remote desktop users" <username> /add
     ```
 
-    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="顯示新建立之 Fixazurevm.cmd .cmd 檔案的螢幕擷取畫面，您可以在其中更新使用者名稱和密碼。":::
    
     定義新的密碼時，必須符合針對 VM 設定的密碼複雜性需求。
 
@@ -106,31 +113,31 @@ ms.locfileid: "91650591"
    
    * 在 Azure 入口網站中選取 VM，然後按一下 [刪除]：
      
-     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+     :::image type="content" source="./media/reset-local-password-without-agent/delete-vm-classic.png" alt-text="刪除現有的傳統 VM":::
 
 2. 將來源 VM 的 OS 磁碟連接到疑難排解 VM。 疑難排解 VM 必須位於與來源 VM 的作業系統磁碟相同的區域 (例如 `West US`)：
    
    1. 在 Azure 入口網站中選取疑難排解 VM。 按一下 [磁碟] | [連接現有項目]：
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-existing-classic.png" alt-text="連接現有磁片-傳統":::
      
    2. 選取 [VHD 檔案]，然後選取包含來源 VM 的儲存體帳戶：
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-storage-account-classic.png" alt-text="選取儲存體帳戶-傳統":::
      
    3. 選取標示為 [顯示傳統儲存體帳戶] 的方塊，然後選取來源容器。 來源容器通常是 vhd：
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-classic.png" alt-text="選取儲存體容器-傳統":::
 
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-container-vhds-classic.png" alt-text="選取儲存體容器-VHD-傳統":::
      
    4. 選取要連接的 OS vhd。 按一下 [選取]，完成此程序：
      
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-select-source-vhd-classic.png" alt-text="選取來源虛擬磁片-傳統":::
 
    5. 按一下 [確定] 以連結磁碟
 
-      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+      :::image type="content" source="./media/reset-local-password-without-agent/disks-attach-okay-classic.png" alt-text="附加現有磁片-確定對話方塊-傳統":::
 
 3. 使用遠端桌面連接到疑難排解 VM，並確定看得見來源 VM 的 OS 磁碟︰
 
@@ -140,7 +147,7 @@ ms.locfileid: "91650591"
 
    3. 在檔案總管中，尋找您所連接的資料磁碟。 如果來源 VM 的 VHD 是連接到疑難排解 VM 的唯一資料磁碟，則應該是 F: 磁碟機︰
      
-      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+      :::image type="content" source="./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png" alt-text="檢視連接的資料磁碟":::
 
 4. 在來源 VM 磁碟機的 `\Windows\System32\GroupPolicy` 中建立 `gpt.ini` (如果 `gpt.ini` 存在，請將其重新命名為 `gpt.ini.bak`)︰
    
@@ -156,7 +163,7 @@ ms.locfileid: "91650591"
      Version=1
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-gpt-ini-classic.png" alt-text="建立 gpt.ini-傳統":::
 
 5. 在 `\Windows\System32\GroupPolicy\Machine\Scripts\` 中建立 `scripts.ini`。 確定已顯示隱藏的資料夾。 如有需要，請建立 `Machine` 或 `Scripts` 資料夾。
    
@@ -168,10 +175,17 @@ ms.locfileid: "91650591"
      0Parameters=
      ```
      
-     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。" <username> /add
+     :::image type="content" source="./media/reset-local-password-without-agent/create-scripts-ini-classic-1.png" alt-text="建立 scripts.ini-傳統":::
+
+6. 使用下列內容在 `\Windows\System32\GroupPolicy\Machine\Scripts\Startup\` 中建立 `FixAzureVM.cmd`，並以您自己的值取代 `<username>` 和 `<newpassword>`：
+   
+    ```
+    net user <username> <newpassword> /add /Y
+    net localgroup administrators <username> /add
+    net localgroup "remote desktop users" <username> /add
     ```
 
-    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+    :::image type="content" source="./media/reset-local-password-without-agent/create-fixazure-cmd-1.png" alt-text="建立 Fixazurevm.cmd .cmd-傳統":::
    
     定義新的密碼時，必須符合針對 VM 設定的密碼複雜性需求。
 
@@ -181,17 +195,17 @@ ms.locfileid: "91650591"
    
    2. 選取在步驟 2 中連結的資料磁碟、按一下 [中斷連結]，然後按一下 [確定]。
 
-     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+     :::image type="content" source="./media/reset-local-password-without-agent/data-disks-classic.png" alt-text="卸離磁片-疑難排解 VM-傳統":::
      
-     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+     :::image type="content" source="./media/reset-local-password-without-agent/detach-disk-classic.png" alt-text="卸離磁片-疑難排解 VM-確定對話方塊-傳統":::
 
 8. 從來源 VM 的 OS 磁碟建立 VM：
    
-     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-new-vm-from-template-classic.png" alt-text="從範本建立 VM-傳統":::
 
-     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+     :::image type="content" source="./media/reset-local-password-without-agent/choose-subscription-classic.png" alt-text="從範本建立 VM-選擇訂用帳戶-傳統":::
 
-     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="顯示對 gpt.ini 檔案進行之更新的螢幕擷取畫面。":::
+     :::image type="content" source="./media/reset-local-password-without-agent/create-vm-classic.png" alt-text="從範本建立 VM-建立 VM-傳統":::
 
 ## <a name="complete-the-create-virtual-machine-experience"></a>完成建立虛擬機器體驗
 
@@ -207,4 +221,4 @@ ms.locfileid: "91650591"
       * 移除 `gpt.ini` (如果 `gpt.ini` 之前已存在，而您將其重新命名為 `gpt.ini.bak`，請將 `.bak` 檔案重新命名回 `gpt.ini`)
 
 ## <a name="next-steps"></a>後續步驟
-如果您仍然無法使用遠端桌面進行連接，請參閱 [RDP 疑難排解指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 [詳細的 RDP 疑難排解指南](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)會探討疑難排解方法，而不是特定的步驟。 您也可以[開啟 Azure 支援要求](https://azure.microsoft.com/support/options/)，以取得實際操作協助。
+如果您仍然無法使用遠端桌面進行連接，請參閱 [RDP 疑難排解指南](troubleshoot-rdp-connection.md)。 [詳細的 RDP 疑難排解指南](detailed-troubleshoot-rdp.md)會探討疑難排解方法，而不是特定的步驟。 您也可以[開啟 Azure 支援要求](https://azure.microsoft.com/support/options/)，以取得實際操作協助。

@@ -4,12 +4,12 @@ description: 瞭解如何整合 Azure NetApp Files 與 Azure Kubernetes Service
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 19727d3c3322b05f340463d94a2bc3884e5d9d93
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126248"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196005"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>整合 Azure NetApp Files 與 Azure Kubernetes Service
 
@@ -28,14 +28,14 @@ ms.locfileid: "93126248"
 當您使用 Azure NetApp Files 時，適用下列限制：
 
 * Azure NetApp Files 僅適用 [于所選的 azure 區域][anf-regions]。
-* 在您可以使用 Azure NetApp Files 之前，您必須先獲得 Azure NetApp Files 服務的存取權。 若要申請存取權，您可以使用 [Azure NetApp Files 等候清單提交表單][anf-waitlist]。 在您收到來自 Azure NetApp Files 團隊的官方確認電子郵件之前，您無法存取 Azure NetApp Files 服務。
+* 在您可以使用 Azure NetApp Files 之前，您必須先獲得 Azure NetApp Files 服務的存取權。 若要申請存取權，您可以使用 [Azure NetApp Files 等候清單提交表單][anf-waitlist] 或移至 https://azure.microsoft.com/services/netapp/#getting-started 。 在您收到來自 Azure NetApp Files 團隊的官方確認電子郵件之前，您無法存取 Azure NetApp Files 服務。
 * 初始部署 AKS 叢集之後，只支援 Azure NetApp Files 的靜態布建。
 * 若要搭配 Azure NetApp Files 使用動態布建，請安裝和設定 [NetApp Trident](https://netapp-trident.readthedocs.io/) 19.07 版或更新版本。
 
 ## <a name="configure-azure-netapp-files"></a>設定 Azure NetApp Files
 
 > [!IMPORTANT]
-> 註冊  *Microsoft* netapp 資源提供者之前，您必須先完成訂用帳戶的 [Azure NetApp Files 等候清單提交表單][anf-waitlist] 。 在您收到來自 Azure NetApp Files 團隊的官方確認電子郵件之前，您無法註冊資源提供。
+> 註冊  *Microsoft* netapp 資源提供者之前，您必須先完成訂用帳戶的 [Azure NetApp Files 等候清單提交表單][anf-waitlist] 或移至 https://azure.microsoft.com/services/netapp/#getting-started 。 在您收到來自 Azure NetApp Files 團隊的官方確認電子郵件之前，您無法註冊資源提供。
 
 註冊 *Microsoft NetApp* 資源提供者：
 
@@ -158,6 +158,8 @@ spec:
     storage: 100Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - vers=3
   nfs:
     server: 10.0.0.4
     path: /myfilepath2
@@ -169,7 +171,7 @@ spec:
 kubectl apply -f pv-nfs.yaml
 ```
 
-使用 [kubectl 描述][kubectl-describe]命令確認 PersistentVolume 的 *狀態* 是否 *可用* ：
+使用 [kubectl 描述][kubectl-describe]命令確認 PersistentVolume 的 *狀態* 是否 *可用*：
 
 ```console
 kubectl describe pv pv-nfs
@@ -199,7 +201,7 @@ spec:
 kubectl apply -f pvc-nfs.yaml
 ```
 
-使用 [kubectl 描述][kubectl-describe]命令確認 PersistentVolumeClaim 的 *Bound* *狀態* ：
+使用 [kubectl 描述][kubectl-describe]命令確認 PersistentVolumeClaim 的 *狀態*：
 
 ```console
 kubectl describe pvc pvc-nfs
@@ -237,7 +239,7 @@ spec:
 kubectl apply -f nginx-nfs.yaml
 ```
 
-使用 [kubectl 描述][kubectl-describe]命令確認 *pod 正在執行* ：
+使用 [kubectl 描述][kubectl-describe]命令確認 *pod 正在執行*：
 
 ```console
 kubectl describe pod nginx-nfs

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: a3016900b6265bfd56ad1a5a71f70efc01181af5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499249"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196498"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder 服務 DevOps 工作
 
@@ -57,7 +57,7 @@ ms.locfileid: "96499249"
 
 選取 **發行管線**  >  **編輯**
 
-在使用者代理程式上，選取 *+* 要新增的映射產生器，然後搜尋 **影像** 產生器。 選取 [新增]  。
+在使用者代理程式上，選取 *+* 要新增的映射產生器，然後搜尋 **影像** 產生器。 選取 [新增]。
 
 設定下列工作屬性：
 
@@ -194,7 +194,7 @@ DevOps 工作目前不支援重新開機 Windows 組建，如果您嘗試使用 
     
 #### <a name="total-length-of-image-build"></a>映射組建的總長度
 
-目前無法變更 DevOps 管線工作中的總長度。 它使用預設值240分鐘。 如果您想要增加 [buildTimeoutInMinutes](./image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-buildtimeoutinminutes)，則可以在發行管線中使用 AZ CLI 工作。 設定工作以複製範本並提交範本。 如需範例，請參閱此 [解決方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
+目前無法變更 DevOps 管線工作中的總長度。 它使用預設值240分鐘。 如果您想要增加 [buildTimeoutInMinutes](./image-builder-json.md#properties-buildtimeoutinminutes)，則可以在發行管線中使用 AZ CLI 工作。 設定工作以複製範本並提交範本。 如需範例，請參閱此 [解決方案](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)，或使用 Az PowerShell。
 
 
 #### <a name="storage-account"></a>儲存體帳戶
@@ -233,7 +233,7 @@ DevOps 工作目前不支援重新開機 Windows 組建，如果您嘗試使用 
 
 #### <a name="vhd"></a>VHD 
 
-您無法將任何值傳遞給這個，影像產生器會將 VHD 發出至 vhd 容器中的暫存映射產生器資源群組 `IT_<DestinationResourceGroup>_<TemplateName>` 。 *vhds* 當您啟動發行組建時，影像產生器會發出記錄。 完成時，它會發出 VHD URL。
+您無法將任何值傳遞給這個，影像產生器會將 VHD 發出至 vhd 容器中的暫存映射產生器資源群組 `IT_<DestinationResourceGroup>_<TemplateName>` 。  當您啟動發行組建時，影像產生器會發出記錄。 完成時，它會發出 VHD URL。
 
 ### <a name="optional-settings"></a>選擇性設定
 
@@ -306,7 +306,7 @@ starting run template...
 
 ### <a name="can-i-specify-the-image-template-name"></a>我可以指定映射範本名稱嗎？
 
-否。 使用唯一的範本名稱，然後刪除。
+不會。 使用唯一的範本名稱，然後刪除。
 
 ### <a name="the-image-builder-failed-how-can-i-troubleshoot"></a>影像產生器失敗。 我該如何進行疑難排解？
 

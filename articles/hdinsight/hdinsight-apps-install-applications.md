@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3c1c7ac8fe8b7adf287bcde30a054df5ebaa63d7
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 2b6ea68d069b90293ab35024bebf3fbdc8acb592
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337435"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197671"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>在 Azure HDInsight 上安裝協力廠商 Apache Hadoop 應用程式
 
@@ -37,7 +37,7 @@ HDInsight 應用程式是使用者可以在 HDInsight 叢集上安裝的應用�
 |[適用於 Azure HDInsight 的 Starburst Presto](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1579800938563.starburst-presto?tab=Overview) |Hadoop |Presto 是快速且可調整規模的分散式 SQL 查詢引擎。 Presto 專為分隔儲存體與計算所打造的架構，最適合用來查詢 Azure Data Lake Storage、Azure Blob 儲存體、SQL 與 NoSQL 資料庫以及其他資料來源中的資料。 |
 |[適用於 HDInsight Cloud 的 StreamSets Data Collector](https://azuremarketplace.microsoft.com/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop、HBase、Spark、Kafka |StreamSets Data Collector 是輕量型且功能強大的引擎，可即時串流資料。 使用 Data Collector 可路由和處理資料流中的資料。 隨附 30 天試用版授權。 |
 |[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.trifacta-db?tab=Overview) |Hadoop、Spark、HBase |適用於 HDInsight 的 Trifacta Wrangler Enterprise 支援將整個企業任何規模的資料進行資料整頓。 在 Azure 上執行 Trifacta 的成本，是 Trifacta 訂閱成本加上虛擬機器的 Azure 基礎結構成本的結合。 |
-|[Unifi 資料平台](https://unifisoftware.com/platform/) |Hadoop、HBase、Storm、Spark |Unifi 資料平台是緊密整合的自助式資料工具套件，其設計可讓企業用戶解決資料難題，促進增加營收、降低成本或操作複雜度。 |
+|[Unifi 資料平台](https://www.crunchbase.com/organization/unifi-software) |Hadoop、HBase、Storm、Spark |Unifi 資料平台是緊密整合的自助式資料工具套件，其設計可讓企業用戶解決資料難題，促進增加營收、降低成本或操作複雜度。 |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |適用於 HDInsight Spark 叢集的解決資料應用程式。 |
 |[Waterline AI 導向資料目錄](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |Waterline 可使用 AI 歸類、整理及掌管資料，以商務詞彙自動標記資料。 Waterline 是自助式分析、合規性與治理以及 IT 管理計劃成功的重要環節。 |
 

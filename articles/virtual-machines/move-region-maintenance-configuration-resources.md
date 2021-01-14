@@ -6,24 +6,24 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4d9f3a5f73e5832e9ff22ed2cd4c215811c845
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86501648"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197552"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>將維護控制設定中的資源移至另一個區域
 
 遵循這篇文章，將與維護控制設定相關聯的資源移至不同的 Azure 區域。 您可能會因為許多原因而想要移動設定。 例如，若要利用新的區域，以部署特定區域中可用的功能或服務，以符合內部原則和治理需求，或為了回應容量規劃。
 
-使用自訂維護設定的維護控制，可讓您控制將平臺更新套用至 [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) 和 [Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) vm 的方式，以及 Azure 專用主機的應用程式。 有幾個案例可以跨區域移動維護控制：
+使用自訂維護設定的[維護控制](maintenance-control.md)，可讓您控制將平臺更新套用至 vm 的方式，以及 Azure 專用主機的應用程式。 有幾個案例可以跨區域移動維護控制：
 
 - 若要移動與維護設定相關聯的資源，但不移動設定本身，請遵循這篇文章。
 - 若要移動維護控制設定，而不是與設定相關聯的資源，請遵循下列 [指示](move-region-maintenance-configuration.md)。
 - 若要移動維護設定和與其相關聯的資源，請先遵循下列 [指示](move-region-maintenance-configuration.md)。 然後，依照本文中的指示進行。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 開始移動與維護控制設定相關聯的資源之前：
 
@@ -61,7 +61,7 @@ ms.locfileid: "86501648"
         ```
         Get-AzConfigurationAssignment -ResourceGroupName $rgName -ResourceName $vmName -ProviderName Microsoft.Compute -ResourceType virtualMachines | Format-Table Name
         ```
-3. 使用 CLI [az 維護指派](/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest) 命令取出維護設定：
+3. 使用 CLI [az 維護指派](/cli/azure/ext/maintenance/maintenance/assignment) 命令取出維護設定：
 
     - 針對 Azure 專用主機：
 
@@ -91,6 +91,6 @@ ms.locfileid: "86501648"
 移動之後，請考慮刪除來源區域中已移動的資源。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您需要移動維護設定，請遵循下列 [指示](move-region-maintenance-configuration.md) 。 

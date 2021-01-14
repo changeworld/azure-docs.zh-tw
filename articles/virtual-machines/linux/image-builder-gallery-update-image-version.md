@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 142b4a85826b9e9a95b17dc631045aab603f3859
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae113b5870fb5e9c85530b0c73cecb49fd16b216
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307325"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196311"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>預覽：在 Linux 中使用 Azure 映射建立器，從現有的映射版本建立新的 VM 映射版本
 
@@ -185,4 +185,4 @@ az sig image-version list -g $sigResourceGroup -r $sigName -i $imageDefName -o t
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器 [範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器 [範本參考](../linux/image-builder-json.md)。

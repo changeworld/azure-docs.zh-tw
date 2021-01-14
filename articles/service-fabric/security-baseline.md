@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9eab908d2767bcdc9305daa625c70be9b63b9756
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1ba23b73836f1a2dbe73932ba920649ca5bb8b33
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485541"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195699"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>適用于 Service Fabric 的 Azure 安全性基準
 
@@ -314,7 +314,7 @@ ms.locfileid: "96485541"
 
 *如需詳細資訊，請參閱 [安全性控制：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
 **指導**：維護在叢集布建期間建立的本機系統管理客戶紀錄，以及在 Azure Service Fabric 叢集和您建立的任何其他帳戶期間所建立的帳戶。 此外，如果使用 Azure AD 整合，Azure AD 內建角色必須明確指派，因此可供查詢。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
@@ -380,7 +380,7 @@ ms.locfileid: "96485541"
 
 **指導** 方針：使用 paw (特殊許可權的存取工作站) 搭配多重要素驗證 (MFA) 設定為登入及設定您的 Azure Service Fabric 叢集和相關資源。
 
-* [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

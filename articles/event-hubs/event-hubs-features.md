@@ -3,12 +3,12 @@ title: 功能概觀 - Azure 事件中樞 | Microsoft Docs
 description: 本文將詳細說明 Azure 事件中樞的相關功能與術語。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0730a5fa3abbc6b27cb96431125564a2475a90d1
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 60dc964d1b827eec75ee4f65a5776710e57fd6eb
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955635"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195784"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
 
@@ -73,7 +73,7 @@ ms.locfileid: "97955635"
 
 [事件中樞擷取](event-hubs-capture-overview.md)可讓您自動擷取「事件中樞」中的串流資料，然後將它儲存到您選擇的 Blob 儲存體帳戶，或是 Azure Data Lake 服務帳戶。 您可以從 Azure 入口網站啟用「擷取」，然後指定執行擷取的大小下限和時間範圍。 使用事件中樞擷取，您就可以指定自己的 Azure Blob 儲存體帳戶和容器或是 Azure Data Lake 服務帳戶，使用其中之一來儲存擷取的資料。 擷取的資料會以 Apache Avro 格式撰寫。
 
-## <a name="partitions"></a>資料分割
+## <a name="partitions"></a>分割區
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
 
@@ -104,7 +104,7 @@ Azure Sdk 所提供的部分用戶端是智慧型取用者代理程式，可自�
 
 下圖顯示事件中樞串流處理架構︰
 
-![事件中樞架構](./media/event-hubs-features/event_hubs_architecture.png)
+![事件中樞架構](./media/event-hubs-about/event_hubs_architecture.svg)
 
 ### <a name="stream-offsets"></a>串流位移
 

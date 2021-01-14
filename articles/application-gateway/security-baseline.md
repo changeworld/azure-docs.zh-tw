@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 45f6d374ed3782ab0e001631264adf977a762ca4
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: f544d2266f9b479f06ffed130592ecd44bfec80f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060345"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195921"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>適用于 Azure 應用程式閘道的 Azure 安全性基準
 
@@ -407,7 +407,7 @@ Azure 應用程式閘道也提供與 Azure 應用程式 Insights 的內建整合
 
 **指引**：使用已設定 MFA 的特殊權限存取 PAW (特殊權限存取工作站) 登入和設定 Azure 資源。
 
-* [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 

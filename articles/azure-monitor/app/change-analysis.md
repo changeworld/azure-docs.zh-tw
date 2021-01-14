@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 0cdb82bbf38244bc91ed54ffb7d7d734cefe9dd2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 728fd8f4705d24f719b6dd47ba88d89fb399fd5a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183314"
+ms.locfileid: "98195869"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>在 Azure 監視器中使用應用程式變更分析 (preview) 
 
@@ -206,8 +206,10 @@ foreach ($webapp in $webapp_list)
 這是一般未授權的錯誤訊息，說明目前的使用者沒有足夠的許可權可查看變更。 資源至少需要讀者存取權，才能查看 Azure Resource Graph 和 Azure Resource Manager 所傳回的基礎結構變更。 若為 web 應用程式的來賓檔案變更和設定變更，則至少需要「參與者」角色。
 
 ### <a name="failed-to-register-microsoftchangeanalysis-resource-provider"></a>無法註冊 ChangeAnalysis 資源提供者
+這則訊息表示 UI 傳送要求以註冊資源提供者時，會立即失敗，而且與許可權問題無關。 可能是暫時性的網際網路連線問題。 請嘗試重新整理頁面，並檢查您的網際網路連線。 如果錯誤持續發生，請聯絡 changeanalysishelp@microsoft.com
  
-**您沒有足夠的許可權可註冊 ChangeAnalysis 資源提供者。請洽詢您的 Azure 訂用帳戶管理員。** 此錯誤訊息表示您在目前訂用帳戶中的角色沒有相關聯的 **Microsoft 支援/註冊/動作** 範圍。 如果您不是訂用帳戶的擁有者，而且透過同事取得共用存取權限，就可能發生這種情況。 亦即，查看資源群組的存取權。 若要修正此問題，您可以聯繫訂用帳戶的擁有者，註冊 **ChangeAnalysis** 資源提供者。 這可以透過訂用帳戶在 Azure 入口網站中完成 **|資源提供者** ，並 ```Microsoft.ChangeAnalysis``` 在 UI 中搜尋和註冊，或透過 Azure PowerShell 或 Azure CLI。
+### <a name="you-dont-have-enough-permissions-to-register-microsoftchangeanalysis-resource-provider-contact-your-azure-subscription-administrator"></a>您沒有足夠的許可權可註冊 ChangeAnalysis 資源提供者。 請洽詢您的 Azure 訂用帳戶管理員。
+此錯誤訊息表示您在目前訂用帳戶中的角色沒有相關聯的 **Microsoft 支援/註冊/動作** 範圍。 如果您不是訂用帳戶的擁有者，而且透過同事取得共用存取權限，就可能發生這種情況。 亦即，查看資源群組的存取權。 若要修正此問題，您可以聯繫訂用帳戶的擁有者，註冊 **ChangeAnalysis** 資源提供者。 這可以透過訂用帳戶在 Azure 入口網站中完成 **|資源提供者** ，並 ```Microsoft.ChangeAnalysis``` 在 UI 中搜尋和註冊，或透過 Azure PowerShell 或 Azure CLI。
 
 透過 PowerShell 註冊資源提供者： 
 

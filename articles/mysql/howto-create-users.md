@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 10/1/2020
-ms.openlocfilehash: 2e934ede193d6efb9cc795c6b63cb485b88f792e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/13/2021
+ms.openlocfilehash: de4e7959a5778c7275427450ead876338f052882
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541414"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196770"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中建立資料庫和使用者
 
@@ -20,25 +20,23 @@ ms.locfileid: "94541414"
 本文說明如何在適用於 MySQL 的 Azure 資料庫中建立使用者。
 
 > [!NOTE]
-> **無偏差通訊**
+> 無偏差通訊
 >
-> Microsoft 支援多元和包容性的環境。 本文包含 *slave* 單字的參考。 Microsoft [無偏差通訊的樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這個單字辨識為排他性的單字。 本文會使用這個字來保持一致性，因為這是目前出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新以保持一致。
+> Microsoft 支援多元和包容性的環境。 本文包含「 _主要_ 」和「 _從屬_」這些單字的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這些視為排他性行為單字。 本文中使用的單字是為了保持一致性，因為它們目前是出現在軟體中的單字。 當軟體更新為移除這些字組時，將會更新本文以進行調整。
 >
 
 當您第一次建立適用於 MySQL 的 Azure 資料庫伺服器時，會提供伺服器系統管理員使用者名稱和密碼。 如需詳細資訊，請參閱本 [快速入門](quickstart-create-mysql-server-database-using-azure-portal.md)。 您可以在 Azure 入口網站中判斷您的伺服器管理員使用者名稱。
 
-伺服器管理員使用者有下列許可權： 
+伺服器管理員使用者有下列許可權：
 
    SELECT、INSERT、UPDATE、DELETE、CREATE、DROP、RELOAD、PROCESS、REFERENCES、INDEX、ALTER、SHOW DATABASES、CREATE TEMPORARY TABLES、LOCK TABLES、EXECUTE、REPLICATION SLAVE、REPLICATION CLIENT、CREATE VIEW、SHOW VIEW、CREATE ROUTINE、ALTER ROUTINE、CREATE USER、EVENT、TRIGGER
 
-
-建立適用於 MySQL 的 Azure 資料庫伺服器之後，您可以使用第一個伺服器系統管理員帳戶來建立其他使用者，並授與系統管理員存取權。 您也可以使用伺服器系統管理員帳戶來建立許可權較低的使用者，以存取個別的資料庫架構。
+建立適用於 MySQL 的 Azure 資料庫伺服器之後，您可以使用第一個伺服器系統管理員帳戶來建立更多使用者並授與系統管理員存取權。 您也可以使用伺服器系統管理員帳戶來建立許可權較低的使用者，以存取個別的資料庫架構。
 
 > [!NOTE]
 > 不支援超級許可權和 DBA 角色。 請參閱限制文章中的 [許可權](concepts-limits.md#privileges--data-manipulation-support) ，以瞭解服務中不支援的功能。
 >
 > `validate_password`服務不支援和等密碼外掛程式 `caching_sha2_password` 。
-
 
 ## <a name="to-create-a-database-with-a-non-admin-user-in-azure-database-for-mysql"></a>若要在適用於 MySQL 的 Azure 資料庫中建立具有非系統管理員使用者的資料庫
 
@@ -46,7 +44,7 @@ ms.locfileid: "94541414"
    若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您可以在 [伺服器 **總覽** ] 頁面或 Azure 入口網站的 [ **屬性** ] 頁面上，輕鬆找到伺服器名稱和登入資訊。
 
 2. 使用系統管理員帳戶和密碼來連線到資料庫伺服器。 使用您慣用的用戶端工具，例如 MySQL 工作臺、mysql.exe 或 HeidiSQL。
-   
+
    如果您不確定如何連線，請參閱 [連接和查詢單一伺服器的資料](./connect-workbench.md) ，或 [連接和查詢具有彈性之伺服器的資料](./flexible-server/connect-workbench.md)。
 
 3. 編輯並執行下列 SQL 程式碼。 將預留位置值取代 `db_user` 為您想要的新使用者名稱。 將預留位置值取代 `testdb` 為您的資料庫名稱。
@@ -73,28 +71,29 @@ ms.locfileid: "94541414"
 
 5. 使用新的使用者名稱和密碼來登入伺服器，並指定指定的資料庫。 此範例會顯示 mysql 命令列。 當您使用此命令時，系統會提示您輸入使用者的密碼。 使用您自己的伺服器名稱、資料庫名稱和使用者名稱。
 
-   # <a name="single-server"></a>[單一伺服器](#tab/single-server)
+   ### <a name="single-server"></a>[單一伺服器](#tab/single-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-   # <a name="flexible-server"></a>[彈性伺服器](#tab/flexible-server)
+
+   ### <a name="flexible-server"></a>[彈性伺服器](#tab/flexible-server)
 
    ```azurecli-interactive
    mysql --host mydemoserver.mysql.database.azure.com --database testdb --user db_user -p
    ```
  ---
 
-## <a name="to-create-additional-admin-users-in-azure-database-for-mysql"></a>若要在適用於 MySQL 的 Azure 資料庫中建立額外的系統管理使用者
+## <a name="to-create-more-admin-users-in-azure-database-for-mysql"></a>若要在適用於 MySQL 的 Azure 資料庫中建立更多系統管理員使用者
 
 1. 取得連線資訊和管理員使用者名稱。
    若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您可以在 [伺服器 **總覽** ] 頁面或 Azure 入口網站的 [ **屬性** ] 頁面上，輕鬆找到伺服器名稱和登入資訊。
 
 2. 使用系統管理員帳戶和密碼來連線到資料庫伺服器。 使用您慣用的用戶端工具，例如 MySQL 工作臺、mysql.exe 或 HeidiSQL。
-   
+
    如果您不確定如何連線，請參閱 [使用 MySQL 工作臺來連接和查詢資料](./connect-workbench.md)。
 
-3. 編輯並執行下列 SQL 程式碼。 `new_master_user`以新的使用者名稱取代預留位置值。 此語法會授與所有資料庫架構的所列許可權 ( *。* ) `new_master_user` 此範例) 的使用者 (。
+3. 編輯並執行下列 SQL 程式碼。 `new_master_user`以新的使用者名稱取代預留位置值。 此語法會授與所有資料庫架構的所列許可權 (*。*) `new_master_user` 此範例) 的使用者 (。
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -119,7 +118,8 @@ ms.locfileid: "94541414"
 ## <a name="next-steps"></a>後續步驟
 
 針對新使用者電腦的 IP 位址開啟防火牆，讓使用者能夠連線：
-- [在單一伺服器上建立和管理防火牆規則](howto-manage-firewall-using-portal.md) 
-- [ 在彈性的伺服器上建立和管理防火牆規則](flexible-server/how-to-connect-tls-ssl.md)
+
+* [在單一伺服器上建立和管理防火牆規則](howto-manage-firewall-using-portal.md)
+* [在彈性的伺服器上建立和管理防火牆規則](flexible-server/how-to-connect-tls-ssl.md)
 
 如需使用者帳戶管理的詳細資訊，請參閱 MySQL 產品檔中的 [使用者帳戶管理](https://dev.mysql.com/doc/refman/5.7/en/access-control.html)、 [授與語法](https://dev.mysql.com/doc/refman/5.7/en/grant.html)和 [許可權](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)。

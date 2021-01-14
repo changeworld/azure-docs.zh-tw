@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d2abc357a5a636aa15909a3645e284c978fb903f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489814"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197586"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 身分識別管理和存取控制安全性最佳作法
 
@@ -275,7 +275,7 @@ ms.locfileid: "96489814"
 **詳細資料**：使用系統管理工作站。 選擇工作站的安全性等級：
 
 - 高安全性的生產力裝置可為瀏覽等生產力工作提供進階的安全性。
-- [特殊權限存取工作站 (PAW)](/windows-server/identity/securing-privileged-access/privileged-access-workstations) 會提供敏感性工作的專用作業系統，以免遭受網際網路攻擊和威脅載體攻擊。
+- [特殊權限存取工作站 (PAW)](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 會提供敏感性工作的專用作業系統，以免遭受網際網路攻擊和威脅載體攻擊。
 
 **最佳做法**：當員工不再於組織中任職時，取消佈建系統管理員帳戶。
 **詳細資料**：備妥流程以在員工不再於組織中任職時停用或刪除系統管理員帳戶。

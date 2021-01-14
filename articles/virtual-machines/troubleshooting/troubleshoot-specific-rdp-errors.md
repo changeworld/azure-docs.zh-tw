@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f3e4c411223a3e8fc0602602cd941a00f7a19cca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 808443cb805b2dee2426198f9cd4f7ba502d8999
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87028238"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197501"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>針對 Azure 中 Windows VM 的特定 RDP 錯誤訊息進行疑難排解
 您在 Azure 中針對 Windows 虛擬機器 (VM) 使用遠端桌面連線時，可能會接收到特定錯誤訊息。 本文將詳述一些較常發生的錯誤訊息，並提供解決它們的疑難排解步驟。 如果您無法使用 RDP 連線到 VM，但沒有遇到特定錯誤訊息，請參閱[遠端桌面的疑難排解指南](troubleshoot-rdp-connection.md)。
@@ -73,7 +73,7 @@ mstsc <File name>.RDP /admin
 ## <a name="an-authentication-error-has-occurred-the-local-security-authority-cannot-be-contacted"></a>發生驗證錯誤。 無法連絡本機安全性授權。
 原因：目標 VM 在認證的使用者名稱部分找不到安全性授權。
 
-當您的使用者名稱格式為 *>securityauthority* \\ *UserName* (example： CORP\User1) 時， *>securityauthority*部分就是本地安全機構) 或 Active Directory 功能變數名稱的 VM 電腦名稱稱 (。
+當您的使用者名稱格式為 *>securityauthority* \\ *UserName* (example： CORP\User1) 時， *>securityauthority* 部分就是本地安全機構) 或 Active Directory 功能變數名稱的 VM 電腦名稱稱 (。
 
 可能的解決方案：
 
@@ -88,8 +88,8 @@ mstsc <File name>.RDP /admin
 
 以 Windows 為基礎的電腦可以驗證本機帳戶或網域帳戶之認證。
 
-* 若為本機帳戶，請使用*ComputerName* \\ *UserName*語法 (範例： SQL1\Admin4798) 。
-* 若為網域帳戶，請使用*DomainName* \\ *UserName*語法 (範例： CONTOSO\peterodman) 。
+* 若為本機帳戶，請使用 *ComputerName* \\ *UserName* 語法 (範例： SQL1\Admin4798) 。
+* 若為網域帳戶，請使用 *DomainName* \\ *UserName* 語法 (範例： CONTOSO\peterodman) 。
 
 如果您在新的 Active Directory 樹系將 VM 提升為網域控制站，您用來登入的本機系統管理員帳戶會轉換為對等的帳戶，在新樹系和網域中使用相同的密碼。 本機帳戶隨即刪除。
 
@@ -106,10 +106,10 @@ mstsc <File name>.RDP /admin
 
 每部 Windows 電腦都有遠端桌面使用者本機群組，其中包含能夠遠端登入的帳戶和群組。 本機系統管理員群組成員也有權限，即使這些帳戶未列在遠端桌面使用者本機群組中。 對於加入網域的機器，本機系統管理員群組也包含此網域的網域系統管理員。
 
-請確保您用於連接的帳戶具有遠端桌面登入權限。 因應措施是使用網域或本機系統管理員帳戶透過遠端桌面進行連接。 若要將所需帳戶新增至「遠端桌面」使用者本機群組，請使用 Microsoft Management Console 嵌入式管理單元 ([系統工具] > [本機使用者和群組] > [群組] > [遠端桌面使用者]****)。
+請確保您用於連接的帳戶具有遠端桌面登入權限。 因應措施是使用網域或本機系統管理員帳戶透過遠端桌面進行連接。 若要將所需帳戶新增至「遠端桌面」使用者本機群組，請使用 Microsoft Management Console 嵌入式管理單元 ([系統工具] > [本機使用者和群組] > [群組] > [遠端桌面使用者])。
 
-## <a name="next-steps"></a>接下來的步驟
-如果您在使用 RDP 進行連線時沒有發生上述錯誤，而是遇到未知的問題，請參閱[遠端桌面的疑難排解指南](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+## <a name="next-steps"></a>後續步驟
+如果您在使用 RDP 進行連線時沒有發生上述錯誤，而是遇到未知的問題，請參閱[遠端桌面的疑難排解指南](troubleshoot-rdp-connection.md)。
 
 * 如需存取在 VM 上執行之應用程式的疑難排解步驟，請參閱[針對在 Azure VM 上執行之應用程式的存取進行疑難排解](./troubleshoot-app-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
 * 如果您在 Azure 中使用安全殼層 (SSH) 連線到 Linux VM 時遇到問題，請參閱[針對 Azure 中對 Linux VM 的 SSH 連線進行疑難排解](./troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)。

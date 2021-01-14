@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e7be42b2a6e9f2cdc1aa0258f218fea9fd963093
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c27ef1af3e439b22f00f9247b5270118bbe9ca89
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532021"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197705"
 ---
 # <a name="azure-security-baseline-for-batch"></a>適用于 Batch 的 Azure 安全性基準
 
@@ -312,7 +312,7 @@ ms.locfileid: "96532021"
 
 **指導** 方針：使用 paw (特殊許可權存取工作站) 已設定多重要素驗證來登入及設定您的 Azure Batch 資源。
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中啟用多重要素驗證](../active-directory/authentication/howto-mfa-getstarted.md)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6c2a15ac8d0863539ca878a048940b19794e920d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2773a76ed1166a26ebc12b97550876eaa66bad14
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842902"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197314"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>適用于 Azure 資料箱的 Azure 安全性基準
 
@@ -273,9 +273,9 @@ ms.locfileid: "94842902"
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) ，Azure AD Multi-Factor Authentication 已啟用 MFA (，以登入並設定您的) 訂單。
 
-* [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [規劃以雲端為基礎的 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md)
+* [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md) (機器翻譯)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -309,7 +309,7 @@ ms.locfileid: "94842902"
 
 **指導** 方針：在適用的情況下，使用 AZURE ACTIVE DIRECTORY (AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
-* [如何建立和設定 Azure AD 實例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [如何建立及設定 Azure AD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -891,7 +891,7 @@ Azure 資料箱針對待用資料執行 AES 256 位加密。此外，Azure 資�
 
 * [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

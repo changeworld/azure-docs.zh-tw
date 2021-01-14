@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 01/05/2021
-ms.openlocfilehash: dad3cf9ce79ade827e77e442a38b3404ee35bfb3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8833c27421dfbfd4799828bce79afcad7c377fd8
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913119"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197348"
 ---
 # <a name="cognitive-services-docs-whats-new-for-december-1-2020---december-31-2020"></a>認知服務檔：2020年12月1日的新功能-2020 年12月31日
 
@@ -28,7 +28,7 @@ ms.locfileid: "97913119"
 
 - [設定 Azure 認知服務虛擬網路](cognitive-services-virtual-networks.md)
 
-## <a name="anomaly-detector"></a>異常偵測器
+## <a name="anomaly-detector"></a>Anomaly Detector
 
 ### <a name="updated-articles"></a>更新的文章
 
@@ -38,31 +38,31 @@ ms.locfileid: "97913119"
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [使用見解權杖取得影像的深入解析](/azure/cognitive-services/bing-visual-search/use-insights-token.md)
+- [使用見解權杖取得影像的深入解析](/azure/cognitive-services/bing-visual-search/use-insights-token)
 
 ## <a name="containers"></a>容器
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [在 Azure 容器執行個體上部署及執行容器](/azure/cognitive-services/containers/azure-container-instance-recipe.md)
+- [在 Azure 容器執行個體上部署及執行容器](/azure/cognitive-services/containers/azure-container-instance-recipe)
 
 ## <a name="form-recognizer"></a>表單辨識器
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [表單辨識器登陸頁面](/azure/cognitive-services/form-recognizer/index.yml)
-- [快速入門：使用表單辨識器用戶端程式庫](/azure/cognitive-services/form-recognizer/quickstarts/client-library.md)
+- [表單辨識器登陸頁面](/azure/cognitive-services/form-recognizer/)
+- [快速入門：使用表單辨識器用戶端程式庫](/azure/cognitive-services/form-recognizer/quickstarts/client-library)
 
 ## <a name="text-analytics"></a>文字分析
 
 ### <a name="updated-articles"></a>更新的文章
 
-- [文字分析 API v3 語言支援](/azure/cognitive-services/text-analytics/language-support.md)
-- [如何呼叫文字分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
-- [如何在文字分析中使用命名實體辨識](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [範例：如何使用文字分析來將關鍵字組解壓縮](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction.md)
-- [文字分析 API 文件 - 教學課程和 API 參考 - Azure 認知服務 | Microsoft Docs](/azure/cognitive-services/text-analytics/index.yml)
-- [快速入門：使用文字分析用戶端程式庫和 REST API](/azure/cognitive-services/text-analytics/quickstarts/client-libraries-rest-api.md)
+- [文字分析 API v3 語言支援](/azure/cognitive-services/text-analytics/language-support)
+- [如何呼叫文字分析 REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [如何在文字分析中使用命名實體辨識](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [範例：如何使用文字分析來將關鍵字組解壓縮](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction)
+- [文字分析 API 文件 - 教學課程和 API 參考 - Azure 認知服務 | Microsoft Docs](/azure/cognitive-services/text-analytics/)
+- [快速入門：使用文字分析用戶端程式庫和 REST API](/azure/cognitive-services/text-analytics/quickstarts/client-libraries-rest-api)
 
 ## <a name="community-contributors"></a>社群參與者
 

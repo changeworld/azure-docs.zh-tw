@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 26fb70592a75910ae21d327e53569eda12dfea97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704889"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197365"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何針對 Log Analytics Linux 代理程式的問題進行疑難排解 
 
@@ -96,6 +96,7 @@ Log Analytics 代理程式 Linux 疑難排解工具是設計用來協助找出�
 | 5 | 必須以 root 身分執行殼層組合，否則上架期間會傳回 403 錯誤。 請使用 `sudo` 執行命令。 |
 | 6 | 套件架構無效，或是在上架期間傳回錯誤 200 錯誤；omsagent-x64.sh 套件只能安裝在 64 位元系統上，而 omsagent-x86.sh 套件則只能安裝在 32 位元系統上。 從[最新版本](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)下載架構的正確套件。 |
 | 17 | OMS 套件安裝失敗。 查看命令的輸出中是否有 root 失敗。 |
+| 18 | OMSConfig 套件安裝失敗。 查看命令的輸出中是否有 root 失敗。 |
 | 19 | OMI 套件安裝失敗。 查看命令的輸出中是否有 root 失敗。 |
 | 20 | SCX 套件安裝失敗。 查看命令的輸出中是否有 root 失敗。 |
 | 21 | 提供者套件安裝失敗。 查看命令的輸出中是否有 root 失敗。 |

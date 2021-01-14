@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f9930f42e7d76820674405a98ef53489b91f31f5
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 12c7fd1d8ee36b562cd651f50fd0565825441883
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985683"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197382"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database--sql-managed-instance"></a>適用于 Azure SQL Database & SQL 受控執行個體的 Azure 安全性基準
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -383,7 +383,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **指導** 方針：啟用 Azure Active Directory (Azure AD) MULTI-FACTOR AUTHENTICATION (MFA) ，並遵循 Azure 資訊安全中心身分識別和存取管理建議。
 
-如何在 Azure 中啟用 MFA： 
+如何在 Azure 中啟用 MFA：
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -401,9 +401,9 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 了解特殊權限存取工作站： 
 
-https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/
 
-如何在 Azure 中啟用 MFA： 
+如何在 Azure 中啟用 MFA：
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -565,7 +565,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-over
 
 https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview
 
-了解 Azure 中的客戶資料保護： 
+瞭解 Azure 中的客戶資料保護：
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -617,7 +617,7 @@ https://docs.microsoft.com/azure/sql-database/sql-database-control-access
 
 **指導** 方針： Microsoft 管理 Azure SQL Database 的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
-了解 Azure 中的客戶資料保護： 
+瞭解 Azure 中的客戶資料保護：
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -875,7 +875,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **指導** 方針：使用 Azure 原則或 Azure 資訊安全中心建議進行 Azure SQL Database 維護所有 Azure 資源的安全性設定。
 
-如何設定和管理 Azure 原則： 
+如何設定和管理 Azure 原則：
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -1155,7 +1155,7 @@ https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **指導** 方針： Microsoft 安全性回應中心 (MSRC) 發現您的資料已被非法或未經授權的物件存取，microsoft 會使用安全性事件連絡人資訊來與您聯繫。
 
-如何設定 Azure 資訊安全中心的安全性連絡人： 
+如何設定 Azure 資訊安全中心安全性連絡人：
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
@@ -1171,7 +1171,7 @@ https://docs.microsoft.com/azure/security-center/security-center-provide-securit
 
 https://docs.microsoft.com/azure/security-center/continuous-export
 
-如何將警示串流至 Azure Sentinel： 
+如何將警示串流至 Azure Sentinel：
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 

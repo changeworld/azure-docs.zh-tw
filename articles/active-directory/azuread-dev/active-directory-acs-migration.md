@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: eda648a4d00a0ab4a51c66510060ce16421972ff
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4f6b2b1c0f584e092c9e8f7d330a94b0b54fd6f2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020005"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197416"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>操作說明：從 Azure 存取控制服務遷移
 
@@ -199,14 +199,14 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 | WIF | 支援 | 支援，但是提供的指示有限 |
 | WS-同盟 | 支援 | 支援 |
 | OAuth 2.0 | 支援 Draft 13 | 支援 RFC 6749 (最新型的規格) |
-| WS-Trust | 支援 | 不受支援 |
+| WS-Trust | 支援 | 不支援 |
 | **權杖格式** | | |
 | JWT | 在搶鮮版 (Beta) 中支援 | 支援 |
 | SAML 1.1 | 支援 | 預覽 |
 | SAML 2.0 | 支援 | 支援 |
-| SWT | 支援 | 不受支援 |
+| SWT | 支援 | 不支援 |
 | **自訂** | | |
-| 可自訂的首頁領域探索/帳戶挑選 UI | 可下載的程式碼，可以納入應用程式 | 不受支援 |
+| 可自訂的首頁領域探索/帳戶挑選 UI | 可下載的程式碼，可以納入應用程式 | 不支援 |
 | 上傳自訂權杖簽署憑證 | 支援 | 支援 |
 | 在權杖中自訂宣告 |- 從識別提供者傳遞輸入宣告<br />- 從識別提供者取得宣告形式的存取權杖<br />- 根據輸入宣告值簽發輸出宣告<br />- 簽發具有常數值的輸出宣告 |- 無法從同盟識別提供者傳遞宣告<br />- 無法從識別提供者取得宣告形式的存取權杖<br />- 無法根據輸入宣告值簽發輸出宣告<br />- 可以簽發具有常數值的輸出宣告<br />- 可以根據同步至 Azure AD 的使用者屬性簽發輸出宣告 |
 | **自動化** | | |
@@ -247,15 +247,15 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 | 個人用 Microsoft 帳戶 | 支援 | 支援 | 
 | Facebook、Google、Yahoo 帳戶 | 支援 | 原生支援 Facebook 和 Google，Yahoo 則是透過自訂原則建立 OpenID Connect 同盟則可支援 |
 | **通訊協定與 SDK 相容性** | | |
-| Windows Identity Foundation (WIF) | 支援 | 不受支援 |
-| WS-同盟 | 支援 | 不受支援 |
+| Windows Identity Foundation (WIF) | 支援 | 不支援 |
+| WS-同盟 | 支援 | 不支援 |
 | OAuth 2.0 | 支援 Draft 13 | 支援 RFC 6749 (最新型的規格) |
-| WS-Trust | 支援 | 不受支援 |
+| WS-Trust | 支援 | 不支援 |
 | **權杖格式** | | |
 | JWT | 在搶鮮版 (Beta) 中支援 | 支援 |
-| SAML 1.1 | 支援 | 不受支援 |
-| SAML 2.0 | 支援 | 不受支援 |
-| SWT | 支援 | 不受支援 |
+| SAML 1.1 | 支援 | 不支援 |
+| SAML 2.0 | 支援 | 不支援 |
+| SWT | 支援 | 不支援 |
 | **自訂** | | |
 | 可自訂的首頁領域探索/帳戶挑選 UI | 可下載的程式碼，可以納入應用程式 | 透過自訂 CSS 可完全自訂 UI |
 | 上傳自訂權杖簽署憑證 | 支援 | 支援透過自訂原則自訂簽署金鑰 (非憑證) |
@@ -287,7 +287,7 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 
 ![此影像顯示 Ping 身分識別標誌](./media/active-directory-acs-migration/rsz-ping.png)
 
-[Ping Identity](https://www.pingidentity.com) 提供兩種類似 ACS 的解決方案。 PingOne 是一種雲端身分識別服務，支援許多與 ACS 相同的功能，而 PingFederate 則是類似的內部部署身分識別產品，可提供更大的彈性。 如需有關使用這些產品的詳細資料，請參閱 [Ping 的 ACS 淘汰指導](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html)。
+[Ping Identity](https://www.pingidentity.com) 提供兩種類似 ACS 的解決方案。 PingOne 是一種雲端身分識別服務，支援許多與 ACS 相同的功能，而 PingFederate 則是類似的內部部署身分識別產品，可提供更大的彈性。 如需有關使用這些產品的詳細資料，請參閱 Ping 的 ACS 淘汰指導。
 
 我們與 Ping Identity 和 Auth0 合作的目的是，確保所有存取控制客戶都能獲得從存取控制中，盡可能簡單地搬移其應用程式和服務的移轉方式。
 
@@ -351,7 +351,7 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 [Auth0](https://auth0.com/acs) 是彈性的雲端識別服務，不僅建立了[適用於存取控制客戶的高階移轉指南](https://auth0.com/acs)，而且幾乎能支援 ACS 支援的所有功能。
 
 ![此圖顯示 Ping 身分識別標誌 ](./media/active-directory-acs-migration/rsz-ping.png)
- [Ping 身分識別](https://www.pingidentity.com)提供兩種類似 ACS 的解決方案。 PingOne 是一種雲端身分識別服務，支援許多與 ACS 相同的功能，而 PingFederate 則是類似的內部部署身分識別產品，可提供更大的彈性。 如需有關使用這些產品的詳細資料，請參閱 [Ping 的 ACS 淘汰指導](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html)。
+ [Ping 身分識別](https://www.pingidentity.com)提供兩種類似 ACS 的解決方案。 PingOne 是一種雲端身分識別服務，支援許多與 ACS 相同的功能，而 PingFederate 則是類似的內部部署身分識別產品，可提供更大的彈性。 如需有關使用這些產品的詳細資料，請參閱 Ping 的 ACS 淘汰指導。
 
 我們與 Ping Identity 和 Auth0 合作的目的是，確保所有存取控制客戶都能獲得從存取控制中，盡可能簡單地搬移其應用程式和服務的移轉方式。
 

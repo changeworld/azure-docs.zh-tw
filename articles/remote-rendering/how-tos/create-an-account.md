@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83bd4a7ae0082d24f7ac617719e628f4db4baeb9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998527"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197622"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>建立 Azure 遠端轉譯帳戶
 
@@ -71,35 +71,26 @@ ms.locfileid: "95998527"
 
 本段說明如何將儲存體帳戶連結至您的遠端轉譯帳戶。 在儲存體帳戶完成連結後，您就不需要在每次想要與帳戶中的資料互動時都產生一個 SAS URI，例如在載入模型時。 相對地，您可以直接使用儲存體帳戶名稱，如[載入模型](../concepts/models.md#loading-models)一節中所述。
 
-此段落中的步驟，必須針對應使用此替代存取方法的每個儲存體帳戶執行。 如果您尚未建立儲存體帳戶，您可以逐步執行[快速入門：轉換模型以進行轉譯](../quickstarts/convert-model.md#storage-account-creation)中的個別步驟。
+必須針對每個應使用此存取方法的儲存體帳戶執行此段落中的步驟。 如果您尚未建立儲存體帳戶，您可以逐步執行[快速入門：轉換模型以進行轉譯](../quickstarts/convert-model.md#storage-account-creation)中的個別步驟。
 
 現在假設您有儲存體帳戶。 瀏覽至入口網站中的儲存體帳戶，然後移至該儲存體帳戶的 [存取控制 (IAM)] 索引標籤：
 
 ![儲存體帳戶 IAM](./media/azure-storage-account.png)
 
- 請確定您具有此儲存體帳戶的擁有者存取權限，以確保您可以新增角色指派。 若您沒有指派角色權限，[新增角色指派] 選項將會被停用。
+請確定您具有此儲存體帳戶的擁有者存取權限，以確保您可以新增角色指派。 若您沒有指派角色權限，[新增角色指派] 選項將會被停用。
 
- 您需要新增三個不同的角色，如下一個步驟所述。 如果未提供這三個層級的存取權限，則在嘗試存取儲存體帳戶時會發生存取權限問題。
-
- 按一下 [新增角色指派] 圖格中的 [新增] 按鈕，新增第一個角色：
+按一下 [新增角色指派] 圖格中的 [ **新增** ] 按鈕，以新增角色。
 
 ![儲存體帳戶 IAM 新增角色指派](./media/azure-add-role-assignment.png)
 
-* 第一個要指派的角色是 [擁有者]，如上面的螢幕擷取畫面所示。
-* 從 [指派存取權給] 下拉式清單中，選取 [遠端轉譯帳戶]。
+* 指派 **儲存體 Blob 資料參與者** 角色，如上面的螢幕擷取畫面所示。
+* 從 [**指派存取權給**] 下拉式清單中，選取 [**遠端轉譯帳戶** 系統指派的受控識別]。
 * 在最後一個下拉式清單中，選取您的訂閱和遠端轉譯帳戶。
+* 按一下 [儲存] 以儲存您的變更。
 
 > [!WARNING]
 > 如果系統未列出您的遠端轉譯帳戶，請參閱此[疑難排解一節](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account)。
 
-針對 [角色] 下拉式清單中的個別選項，再次重複新增角色兩次：
-
-* **儲存體帳戶參與者**
-* **儲存體 Blob 資料參與者**
-
-另一個下拉式清單會在第一個步驟中選取。
-
-如果您已新增這三個角色，您的 Azure 遠端轉譯帳戶就可以使用系統指派的受控服務識別碼存取儲存體帳戶。
 > [!IMPORTANT]
 > Azure 角色指派會由 Azure 儲存體快取，因此當您授與存取權給遠端轉譯帳戶，以及可用來存取您的儲存體帳戶時，可能會有最多30分鐘的延遲。 如需詳細資料，請參閱 [ (AZURE RBAC) 檔中的 azure 角色型存取控制](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected) 。
 

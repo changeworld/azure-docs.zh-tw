@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533854"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197569"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>適用于 Site Recovery 的 Azure 安全性基準
 
@@ -222,7 +222,7 @@ ms.locfileid: "96533854"
 
 **指導** 方針：使用安全且受 Azure 管理的工作站 (也稱為特殊許可權存取工作站 (PAW) # A3 搭配 Azure 多重要素驗證進行系統管理工作，以及在 Site Recovery 資源上執行特殊許可權動作。
 
-- [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [規劃雲端式 Azure AD Multi-Factor Authentication 部署](../active-directory/authentication/howto-mfa-getstarted.md) (機器翻譯)
 

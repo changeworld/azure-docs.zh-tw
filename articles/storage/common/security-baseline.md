@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 29e72f8358591614489be2731d16e89428ef388b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301364"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195716"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>適用于 Azure 儲存體的 Azure 安全性基準
 
@@ -90,7 +90,7 @@ ms.locfileid: "96301364"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems"></a>1.6：部署網路型入侵偵測/入侵防護系統
 
-**指導**： Azure 儲存體的 Advanced 威脅防護提供額外一層的安全性情報，以偵測存取或惡意探索儲存體帳戶的異常和可能有害嘗試。 出現異常活動時，就會觸發安全性警示。 這些安全性警示會與 Azure 資訊安全中心整合，也會透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 
+**指導**： Azure 儲存體的 Advanced 威脅防護提供額外一層的安全性情報，以偵測存取或惡意探索儲存體帳戶的異常和可能有害嘗試。 出現異常活動時，就會觸發安全性警示。 這些安全性警示會與 Azure 資訊安全中心整合，且會透過電子郵件傳送給訂用帳戶系統管理員，其中會包含可疑活動的詳細資料，以及對調查和補救威脅方法的建議。 
 
 - [設定 Azure 儲存體的 advanced 威脅防護](./azure-defender-storage-configure.md)
 
@@ -220,7 +220,7 @@ ms.locfileid: "96301364"
 
 **指導** 方針：若要檢查 Azure 儲存體記錄，有一些常用的選項，例如透過 Log Analytics 供應專案查詢，以及直接查看記錄檔的唯一選項。 在 Azure 儲存體中，記錄檔會儲存在必須直接存取的 blob 中 `http://accountname.blob.core.windows.net/$logs` (記錄資料夾預設為隱藏，因此您必須直接流覽。 它不會顯示在清單命令中)  
 
-此外，針對您的 Azure 儲存體帳戶啟用 Advanced 威脅防護。 Azure 儲存體的「先進威脅防護」提供額外一層的安全性情報，可偵測到不尋常且可能有害的存取或惡意探索儲存體帳戶的嘗試。 出現異常活動時，就會觸發安全性警示。 這些安全性警示會與 Azure 資訊安全中心整合，也會透過電子郵件傳送給訂用帳戶系統管理員，並提供可疑活動的詳細資料，以及如何調查和修復威脅的建議。 
+此外，針對您的 Azure 儲存體帳戶啟用 Advanced 威脅防護。 Azure 儲存體的「先進威脅防護」提供額外一層的安全性情報，可偵測到不尋常且可能有害的存取或惡意探索儲存體帳戶的嘗試。 出現異常活動時，就會觸發安全性警示。 這些安全性警示會與 Azure 資訊安全中心整合，且會透過電子郵件傳送給訂用帳戶系統管理員，其中會包含可疑活動的詳細資料，以及對調查和補救威脅方法的建議。 
 
 - [記錄和審核資料](./storage-analytics-logging.md#how-logs-are-stored)
 
@@ -346,7 +346,7 @@ ms.locfileid: "96301364"
 
 **指導** 方針：使用 paw (特殊許可權存取工作站) 設定 MFA 以登入和設定儲存體帳戶資源。 
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中啟用 MFA](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -382,7 +382,7 @@ ms.locfileid: "96301364"
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure 提供 Azure 角色型存取控制 (的 Azure RBAC) ，可讓您更精細地控制用戶端對儲存體帳戶中資源的存取權。  盡可能使用 Azure AD 認證作為安全性最佳做法，而不是使用帳戶金鑰，這可能更容易遭到入侵。 當您的應用程式設計需要共用存取簽章以存取 Blob 儲存體時，請使用 Azure AD 認證來建立使用者委派共用存取簽章 (SAS) 以獲得較佳的安全性。
 
-- [如何建立和設定 Azure AD 執行個體](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何建立及設定 Azure AD 執行個體](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 - [使用 Azure 儲存體資源提供者存取管理資源](./authorization-resource-provider.md)
 

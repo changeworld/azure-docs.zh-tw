@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: f571dc5f4f3aee2405d4968b050bd2dd92a709db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 568760dcaebbad0e14405e14c5a5bf8f6cd18395
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012743"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197450"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>在 Azure 中使用 JAVA 建立並管理 Windows VM
 
-[Azure 虛擬機器](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) 需要數個支援的 Azure 資源。 本文涵蓋使用 JAVA 建立、管理和刪除 VM 資源。 您會了解如何：
+[Azure 虛擬機器](overview.md) (VM) 需要數個支援的 Azure 資源。 本文涵蓋使用 JAVA 建立、管理和刪除 VM 資源。 您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Maven 專案
@@ -288,7 +288,7 @@ input.nextLine();
 ```
 
 > [!NOTE]
-> 本教學課程中會建立執行 Windows Server 作業系統版本的虛擬機器。 若要深入了解如何選取其他映像，請參閱 [使用 Windows PowerShell 和 Azure CLI 來瀏覽和選取 Azure 虛擬機器映像](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+> 本教學課程中會建立執行 Windows Server 作業系統版本的虛擬機器。 若要深入了解如何選取其他映像，請參閱 [使用 Windows PowerShell 和 Azure CLI 來瀏覽和選取 Azure 虛擬機器映像](../linux/cli-ps-findimage.md)。
 > 
 >
 

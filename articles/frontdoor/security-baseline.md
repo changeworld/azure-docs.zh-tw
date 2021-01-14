@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 53324709e2d3dd11160ee0b7837d86d9e9594571
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 77fccf8b2480232debb88136394013941af796c8
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763922"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197263"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>適用于 Azure Front Door 的 Azure 安全性基準
 
@@ -86,7 +86,7 @@ Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更�
 
 使用具有 Azure 防禦的高度安全使用者工作站來進行系統管理工作。 選擇 Azure Active Directory (Azure AD) 、Microsoft Defender 進階威脅防護 (ATP) 和 Microsoft Intune 部署安全且受管理的使用者工作站以進行系統管理工作。 受保護的工作站必須集中管理以強制執行安全的設定，包括強式驗證、軟體和硬體基準、受限的邏輯和網路存取。
 
-- [瞭解特殊許可權的存取工作站](../active-directory/devices/concept-azure-managed-workstation.md) 
+- [瞭解特殊許可權的存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [部署特殊權限存取工作站](../active-directory/devices/howto-azure-managed-workstation.md) (機器翻譯)
 

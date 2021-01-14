@@ -1,18 +1,18 @@
 ---
-title: 使用範疇 Insights (預覽) 對資料進行分類報告
-description: 本操作指南說明如何在您的資料上查看和使用範疇 Insights 分類報告。
+title: 使用範疇 Insights 對 Azure 範疇中的資料進行分類報告
+description: 本操作指南說明如何在您的資料上查看和使用範疇分類報表。
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938880"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196532"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure 範疇中資料的分類見解
 
@@ -27,13 +27,15 @@ ms.locfileid: "96938880"
 > - 查看資料的分類見解
 > - 深入瞭解您的資料的更多分類詳細資料
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始使用範疇 insights 之前，請確定您已完成下列步驟：
 
 - 設定您的 Azure 資源，並以測試資料填入相關帳戶
 
-- 針對每個資料來源中的測試資料設定和完成掃描 
+- 針對每個資料來源中的測試資料設定和完成掃描
+
+- 使用具有 [資料讀取器或資料編者角色](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)的帳戶登入範疇。
 
 如需詳細資訊，請參閱 [管理 Azure 範疇中的資料來源 (預覽) ](manage-data-sources.md)。
 

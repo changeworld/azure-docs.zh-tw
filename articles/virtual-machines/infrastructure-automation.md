@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: dfa0efaa49fbca0b927bfd32511348f3ded7e6c7
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302818"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197994"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中使用基礎結構自動化工具搭配虛擬機器
 
@@ -88,7 +88,7 @@ DSC 設定會定義要在電腦上安裝的項目，以及設定主機的方式�
 了解如何：
 
 - [使用 Azure CLI 建立 Linux VM，並使用自訂指令碼擴充功能](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json)。
-- [使用 Azure PowerShell 建立 Windows VM，並使用自訂指令碼擴充功能](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json)。
+- [使用 Azure PowerShell 建立 Windows VM，並使用自訂指令碼擴充功能](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md)。
 
 
 ## <a name="packer"></a>Packer
@@ -138,7 +138,7 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
-[Azure Resource Manager](../azure-resource-manager/templates/overview.md) 是適用于 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 訂用帳戶中的資源。 您可以使用存取控制、鎖定和標記等管理功能，在部署後保護及組織您的資源。
+[Azure Resource Manager](../azure-resource-manager/templates/overview.md) 是 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 訂用帳戶中的資源。 您可以使用存取控制、鎖定和標記等管理功能，在部署後保護及組織您的資源。
 
 了解如何：
 

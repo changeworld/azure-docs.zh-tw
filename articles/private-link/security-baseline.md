@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 636bc3c64dcd15ead36a9a4e969e802d49895dca
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b38d86402f418e5c2b484bb9101e2b4cc3575d6e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522238"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196617"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>適用于 Azure Private Link 的 Azure 安全性基準
 
@@ -176,7 +176,7 @@ ms.locfileid: "95522238"
 
 **指導** 方針：使用特殊許可權存取工作站 (PAW) ，並將 Multi-Factor Authentication 設定為登入和設定 Azure 網路資源。
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -212,7 +212,7 @@ ms.locfileid: "95522238"
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 使用強式加密來保護待用和傳輸中的資料，以及 salts、雜湊及安全地儲存使用者認證，藉此保護資料。  
 
-- [如何建立和設定 Azure AD 實例](../active-directory-domain-services/tutorial-create-instance.md)
+- [如何建立及設定 Azure AD 執行個體](../active-directory-domain-services/tutorial-create-instance.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -698,7 +698,7 @@ Azure Key Vault 內備份客戶管理的金鑰。
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 830f58ea11ba84dd2aee81c0352b3ede4aa4929c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8aecee0946c8418016be542e65b117894c68c591
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498246"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197603"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---single-server"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-單一伺服器
 
@@ -366,7 +366,7 @@ ms.locfileid: "96498246"
 
 **指引**：使用已設定 Multi-Factor Authentication (MFA) 的特殊權限存取工作站 (PAW) 來登入和設定 Azure 資源。
 
-- [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -536,7 +536,7 @@ Microsoft 會管理適用於 PostgreSQL 的 Azure 資料庫基礎結構，並已
 
 **指引**：適用於 PostgreSQL 的 Azure 資料庫目前無法使用資料識別、分類及外洩防護功能。 若需要達到合規性目標，請實作協力廠商解決方案。
 
-針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
+針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制和功能。
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
@@ -574,7 +574,7 @@ Microsoft 會管理適用於 PostgreSQL 的 Azure 資料庫基礎結構，並已
 
 使用客戶管理的金鑰 (CMK) 對適用於 PostgreSQL 的 Azure 資料庫單一伺服器進行資料加密，其可供攜帶自己的金鑰 (BYOK) 來保護待用資料。 此時，您必須要求存取權，才能使用這項功能。 若要這樣做，請連絡：
 
-AskAzureDBforPostgreSQL@service.microsoft.com.
+第 1 課：建立 Windows Azure 儲存體物件AskAzureDBforPostgreSQL@service.microsoft.com。
 
 - [瞭解適用於 PostgreSQL 的 Azure 資料庫的待用加密](concepts-security.md)
 
