@@ -2,16 +2,16 @@
 title: 針對以活頁簿為基礎的深入解析 Azure 監視器進行疑難排解
 description: 針對 Azure Key Vault、Azure CosmosDB、Azure 儲存體和 Azure Cache for Redis 等服務 Azure 監視器以活頁簿為基礎的深入解析，提供疑難排解指引。
 services: azure-monitor
-ms.author: mbullwin
-author: mrbullwinkle
+ms.author: lagayhar
+author: lgayhardt
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 90743a213092aacfa10139c12f47bc11faf0d86d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3a2765e9dcf3b0e7bf28191e6ecbb069f26c42f5
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86498707"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208517"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>疑難排解以活頁簿為基礎的深入解析
 
@@ -31,7 +31,7 @@ ms.locfileid: "86498707"
 ## <a name="what-happens-when-i-save-a-workbook"></a>儲存活頁簿時，會發生什麼事
 
 * 當您儲存活頁簿時，它可讓您使用編輯來建立新的活頁簿複本，並變更標題。 儲存不會覆寫活頁簿，目前的活頁簿一律為預設檢視。
-* **未儲存的**活頁簿只是預設檢視。
+* **未儲存的** 活頁簿只是預設檢視。
 
 ## <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>為什麼我在入口網站中看不到所有的訂閱
 

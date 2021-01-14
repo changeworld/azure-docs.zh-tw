@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/2/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 5e33a7adc7b529df8c7c821cbfdcb0ad5709803b
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2bd994f14863715274e137bce2dd6873eeec1135
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838787"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208755"
 ---
 # <a name="defender-for-iot-installation"></a>適用于 IoT 的 Defender 安裝
 
@@ -57,17 +57,17 @@ ms.locfileid: "97838787"
 
 | **部署類型** | **企業** | **SMB** | **線條** |
 |--|--|--|--|
-| **說明** | 適用于企業部署的虛擬裝置 | 適用于 SMB 部署的虛擬裝置 | 適用于程式列部署的虛擬裝置 |
+| **描述** | 適用于企業部署的虛擬裝置 | 適用于 SMB 部署的虛擬裝置 | 適用于程式列部署的虛擬裝置 |
 | **最大 \* 頻寬* _ | 150 Mb/秒 | 每秒 15 Mb | 3 Mb/秒 |
 | _ *受保護的裝置數上限** | 3,000 | 300 | 100 |
-| **部署類型** | Enterprise | SMB | 線 |
-| **說明** | 適用于企業部署的虛擬裝置 | 適用于 SMB 部署的虛擬裝置 | 適用于程式列部署的虛擬裝置 |
+| **部署類型** | Enterprise | SMB | 線條 |
+| **描述** | 適用于企業部署的虛擬裝置 | 適用于 SMB 部署的虛擬裝置 | 適用于程式列部署的虛擬裝置 |
 
 * 頻寬容量上限可能會依通訊協定散發而有所不同。
 
 ### <a name="hardware-specifications-for-the-on-premises-management-console"></a>內部部署管理主控台的硬體規格
 
- | Item | 描述 |
+ | 項目 | 描述 |
  |----|--|
  **說明** | 在多層式架構中，內部部署管理主控台可跨分散各地的網站提供可見度和控制。 它會與 SOC 安全性堆疊整合，包括 Siem、票證系統、下一代防火牆、安全的遠端存取平臺，以及適用于 IoT ICS 惡意程式碼沙箱的 Defender。 |
  **部署類型** | Enterprise |
@@ -230,9 +230,9 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
 4. 設備的認證如下：
 
-   - Username： **cyberx**
+   - 使用者名稱： **XXX**
 
-   - 密碼： **xhxvhttju、 @4338**
+   - 密碼： **XXX**
 
      匯入伺服器設定檔作業已啟動。
 
@@ -245,7 +245,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
    :::image type="content" source="media/tutorial-install-components/configuration-screen.png" alt-text="顯示伺服器設定檔設定的螢幕擷取畫面。":::
 
-   | 參數 | 設定 |
+   | 參數 | 組態 |
    |--|--|
    | 位置類型 | 選取 [ **本機**]。 |
    | 檔案路徑 | 選取 **[選擇** 檔案] 並加入設定 XML 檔案。 |
@@ -274,7 +274,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
    - 如果設備不是適用于 IoT 設備的 Defender，請開啟瀏覽器並移至先前設定的 IP 位址。 使用 Dell 預設系統管理員許可權登入。 使用 **root** 做為密碼的使用者名稱和 **《 calvin** 。
 
-   - 如果設備是適用于 IoT 設備的 Defender，請使用 **cyberx** 作為使用者名稱和 **@4338 xhxvhttju** 的密碼來登入。
+   - 如果設備是適用于 IoT 設備的 Defender，請使用 Xxx 作為使用者名稱的 **xxx** 登入，並以 **xxx** 作為密碼。
 
 2. 存取 BIOS 之後，請移至 [ **裝置設定**]。
 
@@ -338,7 +338,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
    :::image type="content" source="media/tutorial-install-components/appliance-profile-screen-v2.png" alt-text="顯示裝置設定檔的螢幕擷取畫面。":::   
 
-   | 參數 | 設定 |
+   | 參數 | 組態 |
    |--|--|
    | **硬體設定檔** | **企業** |
    | **管理介面** | **eno1** |
@@ -478,7 +478,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="顯示安裝精靈的螢幕擷取畫面。":::
 
-    | 參數 | 設定 |
+    | 參數 | 組態 |
     | ----------| ------------- |
     | **硬體設定檔** | 選取 [ **企業** ] 或 [ **辦公室** ] 進行 SMB 部署。 |
     | **管理介面** | **eno2** |
@@ -562,7 +562,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
     :::image type="content" source="media/tutorial-install-components/installation-wizard-screen-v2.png" alt-text="顯示安裝精靈的螢幕擷取畫面。":::
 
-    | 參數 | 設定 |
+    | 參數 | 組態 |
     | ----------| ------------- |
     | **硬體設定檔** | 選取 [ **公司**]。 |
     | **管理介面** | **eno2** |
@@ -586,7 +586,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 | **小型企業** | CPU：4 <br/>記憶體： 8G RAM<br/>HDD： 500 GB | 測試或小型生產環境 | -  |
 | **Office** | CPU：4<br/>記憶體： 8G RAM<br/>HDD： 100 GB | 小型測試環境 | -  |
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 內部部署管理主控台支援 VMware 和 Hyper-v 部署選項。 開始安裝之前，請確定您有下列專案：
 
@@ -616,7 +616,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
    - 客體作業系統版本： **Ubuntu Linux (64 位)**
 
-6. 選取 [下一步]  。
+6. 選取 [下一步] 。
 
 7. 選擇相關的資料存放區，然後選取 **[下一步]**。
 
@@ -686,7 +686,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
 4. 定義設備設定檔和網路屬性：
 
-    | 參數 | 設定 |
+    | 參數 | 組態 |
     | ----------| ------------- |
     | **硬體設定檔** | &lt;需要的架構&gt; |
     | **管理介面** | **ens192** |
@@ -717,7 +717,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 | Enterprise | CPU：4 <br/> 記憶體： 8G RAM<br/> HDD： 500 GB | 大型生產環境 |
 | Enterprise | CPU：4 <br/>記憶體： 8G RAM <br/> HDD： 100 GB | 小型測試環境 | 
    
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 內部部署管理主控台支援 VMware 和 Hyper-v 部署選項。 開始安裝之前，請確認下列事項：
 
@@ -751,7 +751,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
    - 客體作業系統版本： Ubuntu Linux (64 位) 
 
-7. 選取 [下一步]  。
+7. 選取 [下一步] 。
 
 8. 選擇相關資料存放區，然後選取 **[下一步]**。
 
@@ -769,45 +769,45 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
 2. 選取 [ **VHDX** 格式]。
 
-3. 選取 [下一步]  。
+3. 選取 [下一步] 。
 
 4. 選取 **動態擴充** 的類型。
 
-5. 選取 [下一步]  。
+5. 選取 [下一步] 。
 
 6. 輸入 VHD 的名稱和位置。
 
-7. 選取 [下一步]  。
+7. 選取 [下一步] 。
 
 8. 根據架構) 輸入所需的大小 (。
 
-9. 選取 [下一步]  。
+9. 選取 [下一步] 。
 
 10. 檢閱摘要，然後選取 [完成]。
 
 11. 在 [ **動作** ] 功能表上，建立新的虛擬機器。
 
-12. 選取 [下一步]  。
+12. 選取 [下一步] 。
 
 13. 輸入虛擬機器的名稱。
 
-14. 選取 [下一步]  。
+14. 選取 [下一步] 。
 
 15. 選取 [ **產生** ]，並將它設定為 **第1代**。
 
-16. 選取 [下一步]  。
+16. 選取 [下一步] 。
 
 17. 根據架構) 指定記憶體配置 (，然後選取 [動態記憶體] 的核取方塊。
 
-18. 選取 [下一步]  。
+18. 選取 [下一步] 。
 
 19. 根據您的伺服器網路拓撲設定網路介面卡。
 
-20. 選取 [下一步]  。
+20. 選取 [下一步] 。
 
 21. 將先前建立的 VHDX 連接到虛擬機器。
 
-22. 選取 [下一步]  。
+22. 選取 [下一步] 。
 
 23. 檢閱摘要，然後選取 [完成]。
 
@@ -881,7 +881,7 @@ Dell 設備是由具有生命週期控制器 (LC) 的整合式 iDRAC 所管理�
 
 - **最長金鑰**：顯示可能造成大量記憶體使用量的最長索引鍵。
 
-#### <a name="system"></a>系統
+#### <a name="system"></a>System
 
 - **核心記錄**：提供核心記錄檔的最後500個數據列，讓您可以在不匯出整個系統記錄的情況下，查看最近的記錄資料列。
 
@@ -1073,4 +1073,4 @@ VSwitch 沒有鏡像功能，但您可以使用簡單的因應措施來執行 SP
 
 ### <a name="next-steps"></a>後續步驟
 
-[設定您的網路](how-to-set-up-your-network.md)
+[設定網路](how-to-set-up-your-network.md)

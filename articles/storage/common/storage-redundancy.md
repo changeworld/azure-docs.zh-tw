@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3c0b466a7db688ed3e24441f652f6a1ef1a88ee1
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180076"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209677"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 儲存體備援
 
@@ -97,11 +97,19 @@ GRS 和 GZRS 之間主要差異是資料在主要區域中複寫的方式。 在
 
 寫入作業會先認可到主要位置，並使用 LRS 進行複寫。 更新接著會以非同步方式複寫到次要區域。 當資料寫入次要位置時，也會使用 LRS 在該位置中複寫。
 
+下圖顯示使用 GRS 或 GRS 複寫資料的方式：
+
+:::image type="content" source="media/storage-redundancy/geo-redundant-storage.png" alt-text="顯示如何使用 GRS 或 RA 來複寫資料的圖表-GRS":::
+
 ### <a name="geo-zone-redundant-storage"></a>異地區域備援儲存體
 
 異地區域備援儲存體 (GZRS) 合併跨可用區域備援所提供的高可用性，以及異地複寫針對區域中斷所提供的保護。 GZRS 儲存體帳戶中資料會複製到主要區域中的三個 [Azure 可用區域](../../availability-zones/az-overview.md)，此外也會複寫到次要地理區域以保護其不受區域災害影響。 Microsoft 建議針對需要最大一致性、持久性、可用性、絕佳效能，以及針對災害復原恢復的應用程式使用 GZRS。
 
 透過 GZRS 儲存體帳戶，若可用區域無法使用或無法復原，則仍可繼續讀取和寫入資料。 此外，資料也會在發生全區中斷或災害，而導致主要區域無法復原時維持耐久。 GZRS 旨在於指定的一年中，為物件提供至少 99.99999999999999% (16 個 9) 的持久性。
+
+下圖顯示使用 GZRS 或 GZRS 複寫資料的方式：
+
+:::image type="content" source="media/storage-redundancy/geo-zone-redundant-storage.png" alt-text="顯示如何使用 GZRS 或 RA 來複寫資料的圖表-GZRS":::
 
 只有一般用途 V2 儲存體帳戶支援 GZRS 和 RA-GZRS。 如需有關儲存體帳戶類型的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](storage-account-overview.md)。 GZRS 和 RA-GZRS 支援區塊 blob、分頁 blob (VHD 磁碟除外)、檔案、資料表和佇列。
 

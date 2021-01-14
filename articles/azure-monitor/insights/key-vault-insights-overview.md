@@ -3,15 +3,15 @@ title: 使用 Key Vault 的 Azure 監視器監視 Key Vault |Microsoft Docs
 description: 本文說明 Key Vault 的 Azure 監視器。
 services: azure-monitor
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: d28138b251cf159b7cbc5cc6942bb287e57a95d7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 41b058cf41aa1a8fb1def68851457385c8187823
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088092"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209877"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>使用 Key Vault 的 Azure 監視器監視您的金鑰保存庫服務
 適用于 Key Vault 的 Azure 監視器可提供您 Key Vault 要求、效能、失敗和延遲的統一觀點，藉以全面監視您的金鑰保存庫。
@@ -34,7 +34,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)
 
-2. 從 Azure 入口網站的左側窗格中選取 [ **監視** ]，然後在 [見解] 區段下選取 [ **金鑰保存庫** ]。
+2. 從 Azure 入口網站的左側窗格中選取 [ **監視** ]，然後在 [見解] 區段下選取 [ **金鑰保存庫**]。
 
 ![概觀體驗的螢幕擷取畫面，其中包含多個圖表](./media/key-vaults-insights-overview/overview.png)
 

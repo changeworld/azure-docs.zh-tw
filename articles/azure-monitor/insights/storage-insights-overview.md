@@ -3,15 +3,15 @@ title: 使用適用於儲存體的 Azure 監視器監視 Azure 儲存體服務 |
 description: 此文章描述適用於儲存體的 Azure 監視器功能，可讓儲存體管理員快速了解其 Azure 儲存體帳戶的效能和使用率問題。
 ms.subservice: ''
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 05/11/2020
-ms.openlocfilehash: 2538bc91be59ff12b39ee3f5f629e4c016480a97
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 47799898251923b327954c764dcccb8157ba5119
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296330"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208636"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>使用適用於儲存體的 Azure 監視器監視儲存體服務
 

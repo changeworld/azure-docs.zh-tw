@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9a6e46c0b52c22df0682034deaebd58bbfeb34a7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065170"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210039"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>針對 ITSM 連接器中的問題進行疑難排解
 
@@ -53,6 +53,25 @@ ITSM 可讓您選擇將警示傳送至外部票證系統，例如 ServiceNow。
 
 5. 使用此儀表板，您將能夠檢查連接器中的狀態和錯誤。
     ![顯示連接器狀態的螢幕擷取畫面。](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="dashboard-elements"></a>儀表板元素
+
+儀表板包含使用此連接器傳送至 ITSM 工具之警示的資訊。
+儀表板分成4個部分：
+
+1. 建立的工作專案：圖表和下表包含每個類型的工作專案計數。 如果您按一下圖形或資料表，就可以查看更多有關工作專案的詳細資料。
+    ![顯示已建立之工作專案的螢幕擷取畫面。](media/itsmc-resync-servicenow/itsm-dashboard-workitems.png)
+2. 受影響的電腦：這些表格包含有關建立設定專案之設定專案的詳細資料。
+    藉由按一下資料表中的資料列，您可以取得設定專案的進一步詳細資料。
+    如果您想要查看所有清單，且您可以按一下 [查看全部]，資料表會包含有限的資料列數目。
+    ![顯示受影響電腦的螢幕擷取畫面。](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
+3. 連接器狀態：圖形和下表包含連接器狀態的相關訊息。 按一下資料表中的資料列，即可取得有關連接器狀態之訊息的進一步詳細資料。
+    如果您想要查看所有清單，且您可以按一下 [查看全部]，資料表會包含有限的資料列數目。
+    ![顯示連接器狀態的螢幕擷取畫面。](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
+4. 警示規則：表格包含偵測到的警示規則數目的資訊。
+    藉由按一下資料表中的資料列，您可以取得所偵測到之規則的進一步詳細資料。
+    如果您想要查看所有清單，且您可以按一下 [查看全部]，資料表會包含有限的資料列數目。
+    ![顯示警示規則的螢幕擷取畫面。](media/itsmc-resync-servicenow/itsm-dashboard-alert-rules.png)
 
 ### <a name="service-map"></a>服務對應
 

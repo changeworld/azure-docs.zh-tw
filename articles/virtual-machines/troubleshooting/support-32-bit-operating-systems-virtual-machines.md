@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 1b801bac28b131ff43c47024649bfe0986f768c7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 81b7efdd6bca0471719c11d130be95405f4d54e1
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202890"
+ms.locfileid: "98210183"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>在 Azure 虛擬機器中的 32 位元作業系統支援
 
 Microsoft Azure 現在可讓使用者將其32位 Windows 作業系統帶入 Azure。 僅支援特製化的 Vhd，且一般化映射無法在 Azure 中運作。 由於其中一些作業系統已達到其生命週期支援協定的結尾，因此 Microsoft 可能不會提供額外的支援。 針對以 Linux 為基礎的或 Berkeley 軟體散發，也不提供支援， (以) 為基礎的作業系統，可在 Microsoft Azure 的虛擬機器 (VM) 上執行。
 
 > [!NOTE]
-> Azure 平臺在執行32位作業系統的 Vm 上有一個記憶體位址空間限制，其中只有1GB 的記憶體可供 VM 使用，而且 VM 的其餘記憶體會顯示為在來賓 VM 內保留。 這是已知問題，我們目前沒有 ETA 可進行修正。 建議您移至64位作業系統版本。
+> Azure 平臺在執行32位作業系統的 Vm 上有一個記憶體位址空間限制，其中只有1GB 的記憶體可供 VM 使用 (*特別是在用戶端 sku 上（例如 Win7 或 Win10*) ），而 vm 的其餘部分會顯示為來賓 VM 中的保留。 這是已知問題，我們目前沒有 ETA 可進行修正。 建議您移至64位作業系統版本。
 > 
 
 ## <a name="more-information"></a>其他資訊

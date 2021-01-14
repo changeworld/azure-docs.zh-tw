@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de16c947c59f5a0111b9325dbefe7daf1268fb40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 006aaf7ca5066c552f9c0b797549d7e90ac9beb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649155"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208687"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>開發適用於 Azure Active Directory 的企業營運應用程式
 本指南概述如何針對 Azure Active Directory (AD) ，開發企業營運 (LoB) 應用程式。目標物件是 Active Directory/Microsoft 365 全域系統管理員。
@@ -70,7 +70,7 @@ ms.locfileid: "94649155"
 
 對於您信任的應用程式，您可以代表您的組織來同意應用程式，以簡化使用者體驗。
 
-如需有關 Azure 中使用者同意和同意體驗的詳細資訊，請參閱 [整合應用程式與 Azure Active Directory](../develop/quickstart-register-app.md)。
+如需 Azure 中的使用者同意和同意體驗的詳細資訊，請參閱 [瞭解 Azure AD 應用程式同意體驗](../develop/application-consent-experience.md)。
 
 ## <a name="related-articles"></a>相關文章
 * [使用 Azure AD 應用程式 Proxy 啟用對內部部署應用程式的安全遠端存取](application-proxy.md)

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cfec5ec5f14afc8c4eba5c21c5904687c9b187cc
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605071"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209248"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 將您的應用程式部署至 Azure App Service
 
@@ -111,7 +111,7 @@ ms.locfileid: "97605071"
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>我無法連線到 FTP 及發佈我的程式碼。 如何解決此問題？
 請檢查您已輸入正確的主機名稱和[認證](#open-ftp-dashboard)。 此外，檢查防火牆並未封鎖您電腦上的下列 FTP 連接埠：
 
-- FTP 控制連線連接埠︰21
+- FTP 控制連接埠：21，990
 - FTP 資料連線連接埠︰989、10001-10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>如何透過被動模式連線到 Azure App Service 中的 FTP？

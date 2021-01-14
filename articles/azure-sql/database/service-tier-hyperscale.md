@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/19/2020
-ms.openlocfilehash: 56c3475ae6a03600723e7a12b3f3809f003ce7c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 1/13/2021
+ms.openlocfilehash: 4b5020b6cf7ac2f7aec586d7e6499285c1447b68
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922271"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209758"
 ---
 # <a name="hyperscale-service-tier"></a>超大規模資料庫服務層級
 
@@ -168,16 +168,15 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 2. 請依照頁面的 [異地還原](./recovery-using-backups.md#geo-restore) 主題中的指示，從自動備份還原 Azure SQL Database 中的資料庫。
 
 > [!NOTE]
-> 因為來源和目標位於不同的區域，所以資料庫無法與源資料庫共用快照集儲存體，就像在非異地還原中一樣，這會非常快速完成。 在異地還原超大規模資料庫的情況下，它將會是資料大小的作業，即使目標位於異地複寫儲存體的配對區域中也是如此。  這表示執行異地還原的時間會與要還原的資料庫大小成正比。  如果目標在配對的區域中，則複本將會在區域內，其速度會比跨區域複製快很多，但仍會是資料大小的作業。
+> 因為來源和目標位於不同的區域，所以資料庫無法與源資料庫共用快照集儲存體，就像在非異地還原中一樣，這會快速完成，不論資料庫大小為何。 在異地還原超大規模資料庫的情況下，它將會是資料大小的作業，即使目標位於異地複寫儲存體的配對區域中也是如此。 因此，異地還原的時間會與要還原的資料庫大小成正比。 如果目標是在配對的區域中，資料傳輸將會在區域內，其速度會比跨區域資料傳輸快得多，但仍會是資料大小的作業。
 
 ## <a name="available-regions"></a><a name=regions></a>可用區域
 
-Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，如下所欄區域所提供。
-如果您想要在未列為支援的區域中建立超大規模資料庫，您可以透過 Azure 入口網站傳送登入要求。 如需相關指示，請參閱 [Azure SQL Database 的要求配額增加](quota-increase-request.md) 以取得指示。 提交您的要求時，請使用下列指導方針：
+Azure SQL Database 超大規模層適用于所有區域，但預設會在下欄區域中啟用。 如果您想要在預設未啟用超大規模的區域中建立超大規模資料庫，您可以透過 Azure 入口網站傳送上架要求。 如需相關指示，請參閱 [Azure SQL Database 的要求配額增加](quota-increase-request.md) 以取得指示。 提交您的要求時，請使用下列指導方針：
 
 - 使用 [區域存取](quota-increase-request.md#region) SQL Database 配額類型。
-- 在 [文字詳細資料] 中，新增計算 SKU/總核心數，包括可讀取的複本。
-- 也請指定估計的 TB。
+- 在 [描述] 中，新增計算 SKU/總核心數（包括可讀取的複本），並指出您正在要求超大規模容量。
+- 也指定一段時間內所有資料庫總大小的預測（以 TB 為限）。
 
 啟用的區域：
 - 澳大利亞東部
@@ -198,7 +197,7 @@ Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，�
 - 南韓中部
 - 南韓南部
 - 美國中北部
-- 北歐
+- 歐洲北部
 - 挪威東部
 - 挪威西部
 - 南非北部
@@ -216,19 +215,19 @@ Azure SQL Database 超大規模層適用于所有區域，但預設為啟用，�
 - 美國西部
 - 美國西部 2
 
-## <a name="known-limitations"></a>已知限制
+## <a name="known-limitations"></a>已知的限制
 
 這些是超大規模服務層級目前在 GA 的限制。  我們正積極地盡可能移除這些限制。
 
 | 問題 | 描述 |
 | :---- | :--------- |
 | 伺服器的 [管理備份] 窗格不會顯示超大規模資料庫。 這些將會從視圖進行篩選。  | 超大規模有個別的方法可管理備份，因此不適用 Long-Term 保留和時間點備份保留設定。 因此，超大規模資料庫不會出現在 [管理備份] 窗格中。<br><br>針對從其他 Azure SQL Database 服務層級遷移至超大規模的資料庫，系統會在源資料庫的 [備份保留](automated-backups-overview.md#backup-retention) 期間內保留預先遷移備份。 這些備份可以用來將源資料庫 [還原](recovery-using-backups.md#programmatic-recovery-using-automated-backups) 到遷移之前的時間點。|
-| 時間點還原 | 非超大規模資料庫無法還原為超大規模資料庫，且超大規模資料庫無法還原為非超大規模資料庫。 針對已藉由變更其服務層級遷移至超大規模的非超大規模資料庫，請在遷移之前，還原至資料庫的備份保留期限內的時間[點。](recovery-using-backups.md#programmatic-recovery-using-automated-backups) 還原的資料庫將不會超大規模。 |
-| 如果資料庫有一或多個資料檔案大於 1 TB，則遷移會失敗 | 在某些情況下，可能可以藉由將大型檔案壓縮為小於 1 TB 來解決此問題。 如果遷移過程中正在使用的資料庫，請確定沒有任何檔案超過 1 TB。 您可以使用下列查詢來判斷資料庫檔案的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
+| 時間點還原 | 非超大規模資料庫無法還原為超大規模資料庫，且超大規模資料庫無法還原為非超大規模資料庫。 針對已透過變更其服務層級遷移至超大規模的非超大規模資料庫，請在遷移之前還原至資料庫的備份保留期限內，並以程式設計 [方式](recovery-using-backups.md#programmatic-recovery-using-automated-backups)支援資料庫的備份保留期限內的時間點。 還原的資料庫將不會超大規模。 |
+| 將 Azure SQL Database 服務層級變更為超大規模時，如果資料庫的任何資料檔案大於 1 TB，作業就會失敗。 | 在某些情況下，您可能會在嘗試將服務層級變更為超大規模之前，將大型檔案 [壓縮](file-space-manage.md#shrinking-data-files) 為小於 1 TB，藉此解決此問題。 您可以使用下列查詢來判斷資料庫檔案目前的大小。 `SELECT file_id, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL 受控執行個體 | 超大規模資料庫目前不支援 Azure SQL 受控執行個體。 |
 | 彈性集區 |  超大規模目前不支援彈性集區。|
-| 移轉至超大規模資料庫模目前是單向作業 | 一旦資料庫移轉至超大規模之後，就無法直接遷移至非超大規模服務層級。 目前將資料庫從超大規模遷移至非超大規模的唯一方法，是使用 bacpac 檔案或其他資料移動技術來匯出/匯入 (大量複製、Azure Data Factory、Azure Databricks、SSIS 等 ) Bacpac 匯出/匯入、從 Azure 入口網站使用 [AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) 或 [AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)、從 Azure CLI 使用 [az sql db 匯出](/cli/azure/sql/db#az-sql-db-export) 和 [az sql db 匯入](/cli/azure/sql/db#az-sql-db-import)，以及從 [REST API](/rest/api/sql/databases%20-%20import%20export) 不受支援。 使用 SSMS 和 [SqlPackage](/sql/tools/sqlpackage) 18.4 版和更新版本可支援較小超大規模資料庫的 Bacpac 匯入/匯出 (高達 200 GB 的) 。 針對較大的資料庫，bacpac 匯出/匯入可能需要很長的時間，而且可能會因各種原因而失敗。|
-| 使用 In-Memory OLTP 物件遷移資料庫 | 超大規模支援 In-Memory OLTP 物件的子集，包括記憶體優化資料表類型、資料表變數和原生編譯模組。 不過，當要遷移的資料庫中有任何種類的 In-Memory OLTP 物件時，不支援從高階和業務關鍵服務層級遷移至超大規模。 若要將這類資料庫移轉至超大規模，必須卸載所有 In-Memory OLTP 物件及其相依性。 遷移資料庫之後，就可以重新建立這些物件。 超大規模目前不支援持久性和非持久性記憶體優化資料表，且必須重新建立為磁片資料表。|
+| 移轉至超大規模資料庫模目前是單向作業 | 一旦資料庫移轉至超大規模之後，就無法直接遷移至非超大規模服務層級。 目前，將資料庫從超大規模遷移至非超大規模的唯一方法，是使用 bacpac 檔案或其他資料移動技術來匯出/匯入 (大量複製。 Azure Data Factory、Azure Databricks、SSIS 等 ) Bacpac 匯出/匯入 Azure 入口網站、使用 [AzSqlDatabaseExport](/powershell/module/az.sql/new-azsqldatabaseexport) 或 [AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport)的 PowerShell 從 Azure CLI 使用 [az sql db export](/cli/azure/sql/db#az-sql-db-export) 和 [az sql db import](/cli/azure/sql/db#az-sql-db-import)，以及從 [REST API](/rest/api/sql/databases%20-%20import%20export) 。 使用 SSMS 和 [SqlPackage](/sql/tools/sqlpackage) 18.4 版和更新版本可支援較小超大規模資料庫的 Bacpac 匯入/匯出 (高達 200 GB 的) 。 針對較大的資料庫，bacpac 匯出/匯入可能需要很長的時間，而且可能會因各種原因而失敗。|
+| 使用 In-Memory OLTP 物件遷移資料庫 | 超大規模支援 In-Memory OLTP 物件的子集，包括記憶體優化資料表類型、資料表變數和原生編譯模組。 不過，當要遷移的資料庫中有任何種類的 In-Memory OLTP 物件時，不支援從高階和業務關鍵服務層級遷移至超大規模。 若要將這類資料庫移轉至超大規模，必須卸載所有 In-Memory OLTP 物件及其相依性。 遷移資料庫之後，就可以重新建立這些物件。 超大規模目前不支援持久性和非持久性記憶體優化資料表，且必須變更為磁片資料表。|
 | 異地複寫  | 您還無法設定 Azure SQL Database 超大規模的異地複寫。 |
 | 資料庫複製 | 超大規模上的資料庫複製現在處於公開預覽狀態。 |
 | 智慧型資料庫功能 | 除了 [強制執行計畫] 選項之外，超大規模上還不支援所有其他自動調整選項：可能會顯示選項已啟用，但不會有任何建議或動作。 |

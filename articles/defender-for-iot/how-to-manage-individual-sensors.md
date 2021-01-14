@@ -4,15 +4,15 @@ description: 瞭解如何管理個別的感應器，包括管理啟用檔案、�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/22/2020
+ms.date: 01/10/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: daaca1d7c6cf43f69241e6a23f8bdfaf4015ba23
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: b61bef89d53da280961b818425d11a6f81bbf5ea
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976940"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210234"
 ---
 # <a name="manage-individual-sensors"></a>管理個別感應器
 
@@ -397,7 +397,7 @@ Pem (或罕見的 der) 具有不同副檔名的格式檔案。 Windows 檔案總
 
 下列程式說明如何使用感應器主控台來更新獨立感應器。 更新程式大約需要30分鐘的時間。
 
-1. 前往 [Azure 入口網站](https://portal.azure.com/)。
+1. 移至 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 前往 Defender for IoT。
 

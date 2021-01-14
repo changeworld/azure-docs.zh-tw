@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958655"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208843"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 代理者流程
 
@@ -27,8 +27,8 @@ OAuth2.0 代理者流程 (OBO) 的使用案例，是應用程式叫用服務/Web
 
 本文說明如何在您的應用程式中直接針對通訊協定進行程式設計。  可能的話，建議您改為使用支援的 Microsoft 驗證程式庫 (MSAL)，以[取得權杖並呼叫受保護的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另請參閱[使用 MSAL 的範例應用程式](sample-v2-code.md)。
 
-> [!NOTE]
-> 從 2018 年 5 月起，部分隱含流程衍生 `id_token` 無法用於 OBO 流程。 單頁應用程式 (SPA) 應該將**存取**權杖傳遞至中介層機密用戶端，才能改為執行 OBO 流程。 若要進一步了解哪些用戶端可執行 OBO 呼叫，請參閱[限制](#client-limitations)。
+
+從 2018 年 5 月起，部分隱含流程衍生 `id_token` 無法用於 OBO 流程。 單頁應用程式 (SPA) 應該將 **存取** 權杖傳遞至中介層機密用戶端，才能改為執行 OBO 流程。 若要進一步了解哪些用戶端可執行 OBO 呼叫，請參閱[限制](#client-limitations)。
 
 ## <a name="protocol-diagram"></a>通訊協定圖表
 
@@ -42,10 +42,9 @@ OAuth2.0 代理者流程 (OBO) 的使用案例，是應用程式叫用服務/Web
 1. API A 會向 Azure 身分識別平台權杖發行端點進行驗證，並要求存取 API B 的權杖。
 1. Azure 身分識別平台權杖發行端點以權杖 A 驗證 API A 的認證，並對 API A 發出 API B 的存取權杖 (權杖 B)。
 1. 權杖 B 是由 API A 設定於對 API B 的要求授權標頭中。
-1. 來自受保護資源的資料會由 API B 傳回至 API A，然後從該處傳回至用戶端。
+1. 來自受保護資源的資料會由 API B 傳給 API A，然後傳回給用戶端。
 
-> [!NOTE]
-> 在此案例中，中介層服務不會利用使用者互動來取得使用者的下游 API 存取同意。 因此，在驗證期間必須先呈現授與存取下游 API 的選項，作為同意步驟的一部分。 若要深入了解如何為您的應用程式進行這個設定，請參閱[取得中介層應用程式的同意](#gaining-consent-for-the-middle-tier-application)。
+在此案例中，仲介層服務沒有使用者互動，無法讓使用者同意存取下游 API。 因此，在驗證期間必須先呈現授與存取下游 API 的選項，作為同意步驟的一部分。 若要深入了解如何為您的應用程式進行這個設定，請參閱[取得中介層應用程式的同意](#gaining-consent-for-the-middle-tier-application)。
 
 ## <a name="middle-tier-access-token-request"></a>仲介層存取權杖要求
 
@@ -152,10 +151,9 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 }
 ```
 
-> [!NOTE]
-> 上述存取權杖是 Microsoft Graph 的1.0 格式權杖。 這是因為權杖格式是根據所存取的 **資源** ，以及用來要求它的端點不相關的。 既然 Microsoft Graph 已設為接受 v1.0 權杖，所以當用戶端要求 Microsoft Graph 權杖時，Microsoft 身分識別平台即會產生 v1.0 存取權杖。 其他應用程式可能會指出他們想要的是 v2.0 格式權杖、v1.0 格式權杖，或甚至是專屬或加密的權杖格式。  V1.0 和 v2.0 端點都可以發出權杖的任何一種格式，如此一來，不論用戶端要求權杖的方式或位置為何，資源一律都可以取得正確的權杖格式。 
->
-> 只有應用程式應該檢查存取權杖。 用戶端**不得**檢查存取權杖。 檢查程式碼中其他應用程式的存取權杖，會導致您的應用程式在應用程式變更權杖的格式或開始加密時，意外中斷。 
+上述存取權杖是 Microsoft Graph 的1.0 格式權杖。 這是因為權杖格式是根據所存取的 **資源** ，以及用來要求它的端點不相關的。 既然 Microsoft Graph 已設為接受 v1.0 權杖，所以當用戶端要求 Microsoft Graph 權杖時，Microsoft 身分識別平台即會產生 v1.0 存取權杖。 其他應用程式可能會指出他們想要的是 v2.0 格式權杖、v1.0 格式權杖，或甚至是專屬或加密的權杖格式。  V1.0 和 v2.0 端點都可以發出權杖的任何一種格式，如此一來，不論用戶端要求權杖的方式或位置為何，資源一律都可以取得正確的權杖格式。 
+
+只有應用程式應該檢查存取權杖。 用戶端 **不得** 檢查存取權杖。 檢查程式碼中其他應用程式的存取權杖，會導致您的應用程式在應用程式變更權杖的格式或開始加密時，意外中斷。 
 
 ### <a name="error-response-example"></a>錯誤回應範例
 
@@ -189,8 +187,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 某些 OAuth 型 Web 服務需要存取會在非互動流程中接受 SAML 判斷提示的其他 Web 服務 API。 Azure Active Directory 可以提供 SAML 判斷提示，以回應使用 SAML 型 SAML Web 服務作為目標資源的代理者流程。
 
->[!NOTE]
->這是針對 OAuth 2.0 代理者流程的非標準擴充，能允許 OAuth2 型應用程式存取會耗用 SAML 權杖的 Web 服務 API 端點。
+這是針對 OAuth 2.0 代理者流程的非標準擴充，能允許 OAuth2 型應用程式存取會耗用 SAML 權杖的 Web 服務 API 端點。
 
 > [!TIP]
 > 當您從前端 Web 應用程式呼叫受 SAML 保護的 Web 服務時，只需呼叫 API 並搭配使用者現有的工作階段起始一般互動驗證流程。 當服務對服務呼叫需要 SAML 權杖以提供使用者內容時，您只需要使用 OBO 流程。
@@ -204,7 +201,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 ### <a name="default-and-combined-consent"></a>/.預設和合併的同意
 
-中介層應用程式會將用戶端新增至已知用戶端應用程式清單的資訊清單中，然後用戶端可以針對自己本身與中介層應用程式觸發合併的同意流程。 在 Microsoft 身分識別平台端點上，此作業是使用 [`/.default` 範圍](v2-permissions-and-consent.md#the-default-scope)來完成。 當使用已知用戶端應用程式和 `/.default` 來觸發同意畫面時，同意畫面會顯示**兩個**用戶端對中介層 API 的權限，也會要求中介層 API 需要的任何權限。 使用者提供兩個應用程式的同意，然後 OBO 流程就能運作。
+中介層應用程式會將用戶端新增至已知用戶端應用程式清單的資訊清單中，然後用戶端可以針對自己本身與中介層應用程式觸發合併的同意流程。 在 Microsoft 身分識別平台端點上，此作業是使用 [`/.default` 範圍](v2-permissions-and-consent.md#the-default-scope)來完成。 當使用已知用戶端應用程式和 `/.default` 來觸發同意畫面時，同意畫面會顯示 **兩個** 用戶端對中介層 API 的權限，也會要求中介層 API 需要的任何權限。 使用者提供兩個應用程式的同意，然後 OBO 流程就能運作。
 
 ### <a name="pre-authorized-applications"></a>已預先授權應用程式
 

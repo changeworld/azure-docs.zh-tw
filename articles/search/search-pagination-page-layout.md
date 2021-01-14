@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008478"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209826"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用搜尋結果
 
@@ -103,7 +103,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ### <a name="how-to-get-consistent-ordering"></a>如何取得一致的順序
 
-如果一致的順序是應用程式需求，您可以在欄位上明確地定義 [ **`$orderby`** ] 運算式 (query-odata-filter-orderby-syntax.md) 。 只有索引為的欄位 **`sortable`** 可以用來排序結果。 **`$orderby`** 如果您指定 **`orderby`** 參數值來包含功能變數名稱，以及地理空間值 [**`geo.distance()` 的函**](query-odata-filter-orderby-syntax.md)式呼叫，通常會在 [包含評等]、[日期] 和 [位置] 欄位中使用的欄位。
+如果一致的順序是應用程式需求，您可以在欄位上明確定義 [ **`$orderby`** 運算式](query-odata-filter-orderby-syntax.md)。 只有索引為的欄位 **`sortable`** 可以用來排序結果。 **`$orderby`** 如果您指定 **`orderby`** 參數值來包含功能變數名稱，以及地理空間值 [**`geo.distance()` 的函**](query-odata-filter-orderby-syntax.md)式呼叫，通常會在 [包含評等]、[日期] 和 [位置] 欄位中使用的欄位。
 
 提升一致性的另一種方法是使用 [自訂評分設定檔](index-add-scoring-profiles.md)。 評分設定檔可讓您更充分掌控搜尋結果中的專案排名，並能夠提升在特定欄位中找到的相符專案。 額外的評分邏輯可協助覆寫複本之間的微小差異，因為每份檔的搜尋分數會相距更遠。 我們建議採用此方法的 [排名演算法](index-ranking-similarity.md) 。
 

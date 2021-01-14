@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 93ac8cd3e462c244840a5ed569d685a9d67fa6c2
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c752bc6ae49f009056067545fde292dc29027d5d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165870"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208126"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中無伺服器 SQL 集區的最佳作法
 
@@ -129,7 +129,7 @@ FROM
 
 ## <a name="manually-create-statistics-for-csv-files"></a>手動建立 CSV 檔案的統計資料
 
-無伺服器 SQL 集區依賴統計資料來產生最佳查詢執行計畫。 當需要時，會自動為 Parquet 檔中的資料行建立統計資料。 目前，系統不會自動為 CSV 檔案中的資料行建立統計資料，而且您應該針對在查詢中使用的資料行，以手動方式建立統計資料，尤其是在相異、聯結、WHERE、ORDER BY 和 GROUP BY 中使用的資料行。 核取 [無伺服器 SQL 集區中的統計資料] (開發資料表-statistics # 統計資料-無伺服器-SQL-集區以取得詳細資料。
+無伺服器 SQL 集區依賴統計資料來產生最佳查詢執行計畫。 當需要時，會自動為 Parquet 檔中的資料行建立統計資料。 目前，系統不會自動為 CSV 檔案中的資料行建立統計資料，而且您應該針對在查詢中使用的資料行，以手動方式建立統計資料，尤其是在相異、聯結、WHERE、ORDER BY 和 GROUP BY 中使用的資料行。 查看 [無伺服器 SQL 集區中的統計資料](develop-tables-statistics.md#statistics-in-serverless-sql-pool) ，以取得詳細資料。
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>使用 CETAS 來增強查詢效能和聯結
 

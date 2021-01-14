@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2c632de3d602fe2d3e5bfa74f78e90f48412067
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444056"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208908"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>設定可呼叫 web Api 的行動應用程式
 
@@ -148,9 +148,9 @@ var pca = PublicClientApplicationBuilder
 
 在 Android 和 iOS 上，訊息代理程式會啟用：
 
-- **單一登入 (sso)** ：您可以針對使用 Azure Active Directory (Azure AD) 註冊的裝置使用 sso。 當您使用 SSO 時，您的使用者不需要登入每個應用程式。
-- **裝置識別** ：此設定可啟用與 Azure AD 裝置相關的條件式存取原則。 驗證程式會使用裝置加入工作場所時所建立的裝置憑證。
-- **應用程式識別驗證** ：當應用程式呼叫訊息代理程式時，它會傳遞其重新導向 URL。 然後，訊息代理程式會驗證它。
+- **單一登入 (sso)**：您可以針對使用 Azure Active Directory (Azure AD) 註冊的裝置使用 sso。 當您使用 SSO 時，您的使用者不需要登入每個應用程式。
+- **裝置識別**：此設定可啟用與 Azure AD 裝置相關的條件式存取原則。 驗證程式會使用裝置加入工作場所時所建立的裝置憑證。
+- **應用程式識別驗證**：當應用程式呼叫訊息代理程式時，它會傳遞其重新導向 URL。 然後，訊息代理程式會驗證它。
 
 ### <a name="enable-the-broker-on-xamarin"></a>啟用 Xamarin 上的訊息代理程式
 
@@ -218,7 +218,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
     `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker."`
 
-1. 在 `AcquireTokenInteractive` 呼叫上，使用 `.WithParentActivityOrWindow(App.RootViewController)` 。 傳入您將使用之物件視窗的參考。 以下是範例：
+1. 在 `AcquireTokenInteractive` 呼叫上，使用 `.WithParentActivityOrWindow(App.RootViewController)` 。 傳入您將使用之物件視窗的參考。 以下為範例：
 
     在 `App.cs` 中：
     ```csharp
@@ -249,8 +249,8 @@ MSAL.NET 使用 Url 叫用訊息代理程式，然後將訊息代理程式回應
 
    在這裡，可 `BundleId` 唯一識別您的裝置。 例如，如果 `BundleId` 是 `yourcompany.xforms` ，則您的 URL 配置為 `msauth.com.yourcompany.xforms` 。
 
-   > [!NOTE]
-   > 此 URL 配置將成為重新導向 URI 的一部分，可在接收到訊息代理程式的回應時，唯一識別您的應用程式。
+  
+      此 URL 配置將成為重新導向 URI 的一部分，可在接收到訊息代理程式的回應時，唯一識別您的應用程式。
 
    ```XML
     <key>CFBundleURLTypes</key>
@@ -310,10 +310,9 @@ MSAL `–canOpenURL:` 會使用檢查訊息代理程式是否已安裝在裝置�
     }
 ```
 
-> [!NOTE]
-> 如果您 `UISceneDelegate` 在 iOS 13 或更新版本上採用，請改為將 MSAL 回呼放入 `scene:openURLContexts:` 的 `UISceneDelegate` 。 `handleMSALResponse:sourceApplication:`每個 URL 都只能呼叫一次 MSAL。
->
-> 如需詳細資訊，請參閱 [Apple 檔](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)。
+如果您 `UISceneDelegate` 在 iOS 13 或更新版本上採用，請改為將 MSAL 回呼放入 `scene:openURLContexts:` 的 `UISceneDelegate` 。 `handleMSALResponse:sourceApplication:`每個 URL 都只能呼叫一次 MSAL。
+
+如需詳細資訊，請參閱 [Apple 檔](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)。
 
 #### <a name="step-2-register-a-url-scheme"></a>步驟2：註冊 URL 配置
 
@@ -329,8 +328,7 @@ MSAL `–canOpenURL:` 會使用檢查訊息代理程式是否已安裝在裝置�
 
    在這裡，可 `BundleId` 唯一識別您的裝置。 例如，如果 `BundleId` 是 `yourcompany.xforms` ，則您的 URL 配置為 `msauth.com.yourcompany.xforms` 。
 
-   > [!NOTE]
-   > 此 URL 配置將成為重新導向 URI 的一部分，可在接收到訊息代理程式的回應時，唯一識別您的應用程式。 請確定已在 `msauth.(BundleId)://auth` [Azure 入口網站](https://portal.azure.com)中為您的應用程式註冊格式的重新導向 URI。
+    此 URL 配置將成為重新導向 URI 的一部分，可在接收到訊息代理程式的回應時，唯一識別您的應用程式。 請確定已在 `msauth.(BundleId)://auth` [Azure 入口網站](https://portal.azure.com)中為您的應用程式註冊格式的重新導向 URI。
 
    ```XML
    <key>CFBundleURLTypes</key>

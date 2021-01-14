@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5d950598e4a0af86ac37b53722e80eb4ef0a71a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183051"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210013"
 ---
 # <a name="app-service-networking-features"></a>App Service 網路功能
 
@@ -110,7 +110,7 @@ App Service 有許多用來管理服務的端點。  這些位址會在個別的
 
 當您想要限制可用來存取應用程式的 IP 位址時，以 IP 為基礎的存取限制功能將有所説明。 可支援 IPv4 和 IPv6 兩者。 這項功能的一些使用案例：
 * 從一組定義完善的位址限制對您應用程式的存取。 
-* 透過負載平衡服務（例如 Azure Front Door）來限制對流量的存取。 如果您想要將輸入流量鎖定至 Azure Front Door，請建立規則，以允許來自 147.243.0.0/16 和2a01：111：2050：：/44 的流量。 
+* 使用具有已知輸出 IP 位址的外部負載平衡服務或其他網路設備，來限制對流量的存取。 
 
 若要瞭解如何啟用這項功能，請參閱設定 [存取限制][iprestrictions]。
 
@@ -126,7 +126,20 @@ App Service 有許多用來管理服務的端點。  這些位址會在個別的
 ![說明如何使用服務端點搭配應用程式閘道的圖表。](media/networking-features/service-endpoints-appgw.png)
 
 若要深入瞭解如何使用您的應用程式來設定服務端點，請參閱 [Azure App Service 存取限制][serviceendpoints]。
+#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>以服務標籤為基礎的存取限制規則 (預覽) 
+[Azure 服務標記][servicetags] 是一組定義完善的 AZURE 服務 IP 位址。 服務標記會將各種 Azure 服務中使用的 IP 範圍群組在一起，而且通常也會進一步設定為特定區域的範圍。 這可讓您篩選來自特定 Azure 服務的 *輸入* 流量。 
 
+如需完整的標記清單和詳細資訊，請造訪上面的服務標記連結。 若要瞭解如何啟用這項功能，請參閱設定 [存取限制][iprestrictions]。
+#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>存取限制規則的 Http 標頭篩選 (預覽) 
+針對每個存取限制規則，您可以新增額外的 HTTP 標頭篩選。 這可讓您進一步檢查傳入的要求，並根據特定的 HTTP 標頭值進行篩選。 每個標頭的每個規則最多可以有8個值。 目前支援下列 HTTP 標頭清單： 
+* X-Forwarded-For
+* X-Forwarded-Host
+* X-Azure-FDID
+* X-FD-HealthProbe
+
+Http 標頭篩選的一些使用案例包括：
+* 限制從 proxy 伺服器轉送主機名稱的流量存取
+* 使用服務標籤規則和 X FDID 標頭限制來限制存取特定的 Azure Front Door 實例
 ### <a name="private-endpoint"></a>私人端點
 
 私人端點是一種網路介面，可讓您以私人且安全的方式連線到您的 Web 應用程式，並透過 Azure private link。 私人端點會使用您虛擬網路中的私人 IP 位址，有效地將 web 應用程式帶入您的虛擬網路。 這項功能僅適用于 web 應用程式的 *輸入* 流量。
@@ -207,7 +220,7 @@ App Service 環境 (ASE) 是在您的虛擬網路中執行的 Azure App Service 
 
 因為 ILB ASE 中的應用程式可以在私人 IP 位址上公開，所以您可以輕鬆地新增 WAF 裝置，只公開您想要連線到網際網路的應用程式，並協助保護其餘的安全。 這項功能可讓您更輕鬆地開發多層式應用程式。 
 
-某些專案目前無法從多租使用者服務，但可以從 ASE 進行。 以下是一些範例：
+某些專案目前無法從多租使用者服務，但可以從 ASE 進行。 這裡有一些範例：
 
 * 在私人 IP 位址上公開您的應用程式。
 * 使用不屬於應用程式一部分的網路控制，協助保護所有輸出流量。
@@ -283,7 +296,7 @@ ASE 提供有關隔離和專用應用程式裝載的最佳案例，但它牽涉�
 | 使用 | 埠或埠 |
 |----------|-------------|
 |  HTTP/HTTPS  | 80、443 |
-|  管理 | 454、455 |
+|  管理性 | 454、455 |
 |  FTP/FTPS    | 21、990、10001-10020 |
 |  Visual Studio 遠端偵錯  |  4020、4022、4024 |
 |  Web Deploy 服務 | 8172 |
@@ -299,3 +312,4 @@ ASE 提供有關隔離和專用應用程式裝載的最佳案例，但它牽涉�
 [networkinfo]: ./environment/network-info.md
 [appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
 [privateendpoints]: ./networking/private-endpoint.md
+[servicetags]: ../virtual-network/service-tags-overview.md

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ba06a0f9d520f445965329203aecd6c576666737
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013527"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209724"
 ---
 # <a name="using-an-app-service-environment"></a>使用 App Service 環境
 
@@ -51,7 +51,7 @@ App Service 環境 (ASE) 是 Azure App Service 的單一租使用者部署，可
     > Linux 應用程式和 Windows 應用程式不能位於相同的 App Service 方案中，但可位於相同的 App Service 環境。
     >
 
-1. 如果您想要使用應用程式啟用 App Insights，請選取 [下一步：監視] * *，您可以在建立流程期間執行此動作。 
+1. 選取 **[下一步：監視]**  如果您想要使用您的應用程式啟用 app Insights，您可以在建立流程期間執行此動作。 
 
 1.  選取 **[下一步：標記]** 將任何您想要的標記新增至應用程式  
 

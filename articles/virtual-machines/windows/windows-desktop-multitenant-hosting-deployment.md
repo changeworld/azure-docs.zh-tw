@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: mimckitt
-ms.openlocfilehash: 9f45b0a9454176f53413940d3c310e0499b43d3c
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 444c6a9c131916a2a07f41fd5c1ff38fc1e7bfb2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180110"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210319"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>如何使用多租用戶主機權限在 Azure 上部署 Windows 10 
 對於每位使用者都具有 Windows 10 企業版 E3/E5 或每位使用者都具有 Windows 虛擬桌面存取 (使用者訂用帳戶授權或附加元件使用者訂用帳戶授權) 的客戶，適用於 Windows 10 的多租用戶主機權限可讓您將 Windows 10 授權帶到雲端，並在 Azure 上執行 Windows 10 虛擬機器，而不必付費取得其他授權。 如需詳細資訊，請參閱[適用於 Windows 10 的多租用戶主機](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)。
@@ -24,14 +24,22 @@ ms.locfileid: "98180110"
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>從 Azure Marketplace 部署 Windows 10 映像 
-針對 PowerShell、CLI 和 Azure Resource Manager 範本部署，您可以使用下列 publishername、供應專案、sku 來找到 Windows 10 映射。
+針對 PowerShell、CLI 和 Azure Resource Manager 範本部署，可以使用和來找到 Windows 10 的 `PublisherName: MicrosoftWindowsDesktop` 映射 `Offer: Windows-10` 。
 
-| OS  |      PublisherName      |  供應項目 | SKU |
-|:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
+```powershell
+Get-AzVmImageSku -Location '$location' -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10'
+
+Skus                        Offer      PublisherName           Location 
+----                        -----      -------------           -------- 
+rs4-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs4-pron                    Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprise              Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprisen             Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
+```
+
+如需可用映射的詳細資訊，請參閱 [使用 Azure PowerShell 尋找和使用 AZURE MARKETPLACE VM 映射](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)
 
 ## <a name="qualify-for-multi-tenant-hosting-rights"></a>符合多租使用者裝載許可權的資格 
 若要符合多租使用者裝載許可權，並在 Azure 使用者上執行 Windows 10 映射必須有下列其中一個訂用帳戶： 

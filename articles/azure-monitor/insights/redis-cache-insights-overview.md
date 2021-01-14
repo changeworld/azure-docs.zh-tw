@@ -2,15 +2,15 @@
 title: 適用于 Azure Cache for Redis 的 Azure 監視器 |Microsoft Docs
 description: 此文章描述適用於 Azure Redis Cache 的 Azure 監視器功能，其可讓快取擁有者快速了解效能和使用率問題。
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: e7b8a8e131cf7e0aae051f42043abf0640c927e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35f575410caa7a8a8ffbda35bdfa876418db8945
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90887018"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210370"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>探索 Azure Cache for Redis 的 Azure 監視器
 
@@ -29,11 +29,11 @@ ms.locfileid: "90887018"
 
 其可提供：
 
-- Azure Cache for Redis 資源在所有訂用帳戶單一位置的**整體觀點**。 您可以選擇性地將範圍僅限定於您想要評估的訂用帳戶與資源。
+- Azure Cache for Redis 資源在所有訂用帳戶單一位置的 **整體觀點**。 您可以選擇性地將範圍僅限定於您想要評估的訂用帳戶與資源。
 
-- 特定 Azure Cache for Redis 資源的**向下切入分析**。 您可以診斷問題，並查看使用量、失敗、容量和作業的詳細分析。 選取其中任何類別，以查看相關資訊的深入檢視。  
+- 特定 Azure Cache for Redis 資源的 **向下切入分析**。 您可以診斷問題，並查看使用量、失敗、容量和作業的詳細分析。 選取其中任何類別，以查看相關資訊的深入檢視。  
 
-- **自訂**體驗，建立在 Azure 監視器活頁簿範本的基礎之上。 此體驗可讓您變更所顯示的計量，以及修改或設定符合您限制的閾值。 您可以將變更儲存在自訂活頁簿中，然後將活頁簿圖表釘選到 Azure 儀表板。
+- **自訂** 體驗，建立在 Azure 監視器活頁簿範本的基礎之上。 此體驗可讓您變更所顯示的計量，以及修改或設定符合您限制的閾值。 您可以將變更儲存在自訂活頁簿中，然後將活頁簿圖表釘選到 Azure 儀表板。
 
 此功能不會要求您啟用或設定任何項目。 預設會收集 Azure Cache for Redis 資訊。
 
@@ -46,7 +46,7 @@ ms.locfileid: "90887018"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 搜尋**監視器**，然後選取 [監視器]。
+1. 搜尋 **監視器**，然後選取 [監視器]。
 
     ![包含「監視器」一詞的搜尋方塊，以及顯示「監視器」和速度表符號的服務搜尋結果](./media/cosmosdb-insights-overview/search-monitor.png)
 

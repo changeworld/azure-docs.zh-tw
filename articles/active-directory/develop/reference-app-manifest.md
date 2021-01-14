@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011538"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208884"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 應用程式資訊清單
 
@@ -115,17 +115,6 @@ ms.locfileid: "98011538"
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants 屬性
-
-| Key | 值類型 |
-| :--- | :--- |
-| availableToOtherTenants | Boolean |
-
-若應用程式要與其他租用戶共用，則設為 true；否則設為 false。
-
-> [!NOTE]
-> 此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `signInAudience` 取代。
-
 ### <a name="appid-attribute"></a>appId 屬性
 
 | Key | 值類型 |
@@ -165,17 +154,6 @@ ms.locfileid: "98011538"
     ],
 ```
 
-### <a name="displayname-attribute"></a>displayName 屬性
-
-| Key | 值類型 |
-| :--- | :--- |
-| displayName | String |
-
-應用程式的顯示名稱。
-
-> [!NOTE]
-> 此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `name` 取代。
-
 ### <a name="errorurl-attribute"></a>errorUrl 屬性
 
 | Key | 值類型 |
@@ -203,33 +181,6 @@ ms.locfileid: "98011538"
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>homepage 屬性
-
-| Key | 值類型 |
-| :--- | :--- |
-| homepage |String |
-
-應用程式首頁的 URL。
-
-> [!NOTE]
-> 此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `signInUrl` 取代。
-
-### <a name="objectid-attribute"></a>objectId 屬性
-
-| Key | 值類型 |
-| :--- | :--- |
-|objectId | String |
-
-目錄中應用程式的唯一識別碼。
-
-此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `id` 取代。
-
-範例：
-
-```json
-    "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
-
 ### <a name="optionalclaims-attribute"></a>optionalClaims 屬性
 
 | Key | 值類型 |
@@ -245,7 +196,6 @@ ms.locfileid: "98011538"
 ```json
     "optionalClaims": null,
 ```
-
 
 
 ### <a name="identifieruris-attribute"></a>identifierUris 屬性
@@ -489,16 +439,6 @@ ms.locfileid: "98011538"
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient 屬性
-
-| Key | 值類型 |
-| :--- | :--- |
-| publicClient | Boolean|
-
-指定此應用程式是否為公開用戶端 (例如行動裝置上執行的已安裝應用程式)。
-
-此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `allowPublicClient` 取代。
-
 ### <a name="publisherdomain-attribute"></a>publisherDomain 屬性
 
 | Key | 值類型 |
@@ -511,17 +451,7 @@ ms.locfileid: "98011538"
 
 ```json
     "publisherDomain": "https://www.contoso.com",
-````
-
-### <a name="replyurls-attribute"></a>replyUrls 屬性
-
-| Key | 值類型 |
-| :--- | :--- |
-| replyUrls | 字串陣列 |
-
-傳回權杖時，此多值屬性會保留 Azure AD 接受作為目的地的已註冊 redirect_uri 值清單。
-
-此屬性僅適用於 **應用程式註冊 (舊版)** 體驗。 已由[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中的 `replyUrlsWithType` 取代。
+```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 屬性
 

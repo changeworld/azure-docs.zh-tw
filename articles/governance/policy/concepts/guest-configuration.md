@@ -1,14 +1,14 @@
 ---
 title: 了解如何稽核虛擬機器的內容
 description: 瞭解 Azure 原則如何使用「來賓設定」用戶端來審核虛擬機器內的設定。
-ms.date: 10/14/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071828"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210115"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -101,11 +101,11 @@ Azure Arc 的機器會使用內部部署網路基礎結構進行連線，以連�
 
 ## <a name="managed-identity-requirements"></a>受控識別需求
 
-在 [虛擬機器上啟用來賓設定原則的方案部署必要條件](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) 中的原則定義會啟用系統指派的受控識別（如果不存在的話）。 方案中有兩個原則定義可管理身分識別建立。 原則定義中的 IF 條件會根據 Azure 中電腦資源的目前狀態，來確保正確的行為。
+在 _虛擬機器上啟用來賓設定原則的方案部署必要條件_ 中的原則定義會啟用系統指派的受控識別（如果不存在的話）。 方案中有兩個原則定義可管理身分識別建立。 原則定義中的 IF 條件會根據 Azure 中電腦資源的目前狀態，來確保正確的行為。
 
-如果電腦目前沒有任何受控識別，有效原則將會是： [ \[ 預覽 \] ：新增系統指派的受控識別，以在沒有身分識別的虛擬機器上啟用來賓設定指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+如果電腦目前沒有任何受控識別，有效原則將會是： [新增系統指派的受控識別，以在沒有身分識別的虛擬機器上啟用來賓設定指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
-如果電腦目前有使用者指派的系統身分識別，有效的原則將會是： [ \[ 預覽 \] ：新增系統指派的受控識別，以在具有使用者指派身分識別的虛擬機器上啟用來賓設定指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+如果電腦目前有使用者指派的系統身分識別，有效的原則將會是： [新增系統指派的受控識別，以在具有使用者指派身分識別的 vm 上啟用來賓設定指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>來賓設定定義需求
 
@@ -120,7 +120,7 @@ Azure 原則使用 [來賓設定資源提供者 **>compliancestatus** ] 屬性�
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>依照業界基準來稽核作業系統設定
 
-Azure 原則中的一項計畫可讓您依照「基準」來稽核作業系統設定。 _\[Preview\]:Audit Windows VMs that do not match Azure security baseline settings_ 這項定義包含一組以 Active Directory 群組原則為基礎的規則。
+Azure 原則在「基準」之後審核作業系統設定的一項計畫。 定義、 _\[ 預覽 \] ： Windows 機器應符合 Azure 安全性基準的需求_，其中包含一組以 Active Directory 群組原則為基礎的規則。
 
 大部分的設定都是以參數的形式提供。 參數可讓您自訂所要稽核的內容。
 使原則符合您的需求，或將原則對應至第三方資訊，例如產業法規標準。
