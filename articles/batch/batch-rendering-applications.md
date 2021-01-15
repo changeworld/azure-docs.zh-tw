@@ -3,14 +3,14 @@ title: 轉譯應用程式
 description: 您可以透過 Azure Batch 使用任何轉譯應用程式。 不過，此外也有預先安裝了通用應用程式的 Azure Marketplace VM 映像可供使用。
 ms.date: 09/19/2019
 ms.topic: how-to
-ms.openlocfilehash: f876671c6ac16137c2c1cf8d40bd70860c06975b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4eefa287575d68acccb2697e1d262c7e48dab62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85960481"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234404"
 ---
-# <a name="pre-installed-applications-on-rendering-vm-images"></a>在轉譯的 VM 映像上預先安裝的應用程式
+# <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>在 Batch 轉譯 VM 映射上預先安裝的應用程式
 
 您可以透過 Azure Batch 使用任何轉譯應用程式。 不過，此外也有預先安裝了通用應用程式的 Azure Marketplace VM 映像可供使用。
 
@@ -87,4 +87,4 @@ ms.locfileid: "85960481"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要使用轉譯 VM 映像，則必須在建立集區時在集區組態中指定這些映像；請參閱[用於轉譯的 Batch 集區功能](./batch-rendering-functionality.md#batch-pools)。
+若要使用轉譯 VM 映像，則必須在建立集區時在集區組態中指定這些映像；請參閱[用於轉譯的 Batch 集區功能](./batch-rendering-functionality.md)。

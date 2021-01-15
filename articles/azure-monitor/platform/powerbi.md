@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 53277f64c3d1b03572732157756da1fececbcd43
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f00416f180f83c761be5ed444e80903e9fcbb6
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184564"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234438"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>匯入 Azure 監視器記錄資料到 Power BI
 
@@ -27,6 +27,9 @@ ms.locfileid: "96184564"
 
 ## <a name="export-query"></a>匯出查詢
 首先建立 [記錄查詢](../log-query/log-query-overview.md) ，以傳回您要填入 Power BI 資料集的資料。  您接著可以將該查詢匯出到可以由 Power BI Desktop 使用的 [Power Query (M) 語言](/powerquery-m/power-query-m-language-specification)。
+
+> [!WARNING]
+> 請小心將 [查詢優化](../log-query/query-optimization.md) ，使其不需要花費太長的時間執行，否則可能會有超時時間。 請注意，匯出的查詢中的 **timespan** 值會定義查詢將取得的資料 timespan。 使用您限制查詢傳回的資料量所需的最小 timespan。
 
 1. [在 Log Analytics 中建立記錄查詢](../log-query/log-analytics-tutorial.md) ，以將資料集的資料解壓縮。
 2. 選取 [**匯出**]  >  **Power BI 查詢 (M)**。  這會將查詢匯出至名為 **PowerBIQuery.txt** 的文字檔。 

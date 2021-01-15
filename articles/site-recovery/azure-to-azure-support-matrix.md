@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 9670178a9c9d772d8966413371f998aa1f0cf5f3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: e2cbea433d56d4c1290a5d1cdc54b56e81b4cd73
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968284"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234319"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -233,6 +233,7 @@ OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/managed-
 備援性 | 支援 LRS 和 GRS。<br/><br/> 不支援 ZRS。
 非經常性和經常性儲存體 | 不支援 | 非經常性和經常性儲存體不支援 VM 磁碟
 儲存空間 | 支援 |
+NVMe 儲存介面 | 不支援
 待用加密 (SSE) | 支援 | SSE 是儲存體帳戶上的預設設定。
 待用加密 (CMK) | 支援 | 受控磁碟同時支援軟體和 HSM 金鑰
 靜態加密 | 支援 | 深入瞭解適用于[Windows](../virtual-machines/disk-encryption.md)和[Linux](../virtual-machines/disk-encryption.md)的支援區域
