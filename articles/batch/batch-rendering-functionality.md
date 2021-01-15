@@ -3,14 +3,14 @@ title: 轉譯功能
 description: 標準的 Azure Batch 功能用來執行轉譯工作負載和應用程式。 Batch 包含特定的功能來支援轉譯工作負載。
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d9d196897800467fd02397bb774af0bbb9ebabf0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107465"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234268"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 轉譯功能
 
@@ -18,7 +18,15 @@ ms.locfileid: "92107465"
 
 如需 Batch 概念 (包括集區、作業和工作) 的概觀，請參閱[這篇文章](./batch-service-workflow-features.md)。
 
-## <a name="batch-pools"></a>Batch 集區
+## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>使用自訂 VM 映射和標準應用程式授權的 Batch 集區
+
+如同其他工作負載和應用程式類型，您可以使用必要的轉譯應用程式和外掛程式來建立自訂 VM 映射。自訂 VM 映射會放在 [共用映射庫](../virtual-machines/shared-image-galleries.md) 中， [可用來建立 Batch](batch-sig-images.md)集區。
+
+工作命令列字串將需要參考建立自訂 VM 映射時所使用的應用程式和路徑。
+
+大部分轉譯應用程式都需要授權伺服器取得的授權。 如果有現有的內部部署授權伺服器，則集區和授權伺服器都必須位於相同的 [虛擬網路](../virtual-network/virtual-networks-overview.md)上。 您也可以在 Azure VM 上執行授權伺服器，並將 Batch 集區和授權伺服器 VM 放在相同的虛擬網路上。
+
+## <a name="batch-pools-using-rendering-vm-images"></a>使用呈現 VM 映射的 Batch 集區
 
 ### <a name="rendering-application-installation"></a>轉譯應用程式安裝
 
@@ -71,13 +79,13 @@ Arnold 2017 命令列|kick.exe|ARNOLD_2017_EXEC|
 |Arnold 2018 命令列|kick.exe|ARNOLD_2018_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Azure VM 系列
+## <a name="azure-vm-families"></a>Azure VM 系列
 
 如同其他工作負載，轉譯應用程式系統需求不盡相同，而且對於作業和專案的效能需求也有所不同。  Azure 中根據您的需求提供各種不同的 VM 系列：最低成本、最優惠的價格/效能、最佳效能等。
 某些轉譯應用程式 (例如 Arnold) 是以 CPU 為基礎；其他像是 V-ray 和 Blender Cycles 的轉譯應用程式則可使用 CPU 和/或 GPU。
 如需可用 VM 系列和 VM 大小的說明，請參閱 [VM 類型和大小](../virtual-machines/sizes.md)。
 
-### <a name="low-priority-vms"></a>低優先順序的 VM
+## <a name="low-priority-vms"></a>低優先順序的 VM
 
 如同其他工作負載，可以在 Batch 集區中使用低優先順序的 VM 進行轉譯。  低優先順序的 VM 執行方式與一般專用的 VM 相同，但會利用剩餘的 Azure 容量，並獲得較大的折扣。  使用低優先順序 VM 的代價是，這些 VM 可能無法用於配置，或可能隨時會有高優先順序的 VM 先佔，視可用容量而定。 基於這個理由，低優先順序的 VM 將不適用於所有轉譯作業。 例如，如果映像需要花數個小時來轉譯，則很可能因為無法接受已遭先占的 VM 而中斷那些映像的轉譯並重新啟動。
 

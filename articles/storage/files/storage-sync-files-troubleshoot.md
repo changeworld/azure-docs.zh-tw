@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/13/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e2f0d62ae6882229cee3ee32e3b362f2b6593da7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: a262c2b4351c96217001ba42e8c745f7d71c7d45
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199230"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233894"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -205,7 +205,7 @@ Set-AzStorageSyncServerEndpoint `
     - 如果伺服器位於防火牆後方，請確認允許連接埠 443 輸出。 如果防火牆限制僅允許對特定網域的流量，請確認您可以存取防火牆[文件](./storage-sync-files-firewall-and-proxy.md#firewall)中列出的網域。
     - 如果伺服器位於 Proxy 後方，請依照 Proxy [文件](./storage-sync-files-firewall-and-proxy.md#proxy)中的步驟設定整部電腦或應用程式專屬的 Proxy 設定。
     - 使用 Test-StorageSyncNetworkConnectivity Cmdlet 來檢查與服務端點的網路連線能力。 若要深入了解，請參閱[測試與服務端點的網路連線能力](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints) (機器翻譯)。
-    - 若要在伺服器上新增加密套件，請使用群組原則或 TLS Cmdlet：
+    - 如果伺服器上已設定 TLS 加密套件順序，您可以使用群組原則或 TLS Cmdlet 來新增加密套件：
         - 若要使用群組原則，請參閱 [使用群組原則設定 TLS 加密套件順序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy)。
         - 若要使用 TLS Cmdlet，請參閱 [使用 Tls PowerShell Cmdlet 設定 Tls 加密套件順序](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets)。
     

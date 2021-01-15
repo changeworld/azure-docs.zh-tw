@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 655a146ccde9c75629d0a991a6a3aafa91f40764
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740584"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233962"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>啟用適用於 VM 的 Azure 監視器概觀
 
@@ -46,11 +46,14 @@ ms.locfileid: "97740584"
 |:--|:--|:--|
 | Windows 代理程式 | 是 | 除了 [適用于 windows 的 Log Analytics 代理程式](../platform/log-analytics-agent.md)，windows 代理程式還需要相依性代理程式。 如需詳細資訊，請參閱 [支援的作業系統](../platform/agents-overview.md#supported-operating-systems)。 |
 | Linux 代理程式 | 是 | Linux 代理 [程式除了適用于 linux 的 Log Analytics 代理程式](../platform/log-analytics-agent.md)之外，還需要相依性代理程式。 如需詳細資訊，請參閱 [支援的作業系統](#supported-operating-systems)。 |
-| System Center Operations Manager 管理群組 | 否 | |
+| System Center Operations Manager 管理群組 | No | |
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
 適用於 VM 的 Azure 監視器支援支援 Log Analytics 代理程式和 Dependency agent 的任何作業系統。 如需完整清單，請參閱 [Azure 監視器代理 ](../platform/agents-overview.md#supported-operating-systems) 程式的總覽。
+
+> [!IMPORTANT]
+> 適用於 VM 的 Azure 監視器來賓健康情況功能在公開預覽版本中有更多的作業系統支援。 如需詳細清單，請參閱 [啟用適用於 VM 的 Azure 監視器來賓健全狀況 (preview) ](vminsights-health-enable.md) 。
 
 請參閱下列有關支援適用於 VM 的 Azure 監視器的相依性代理程式 Linux 支援的考慮清單：
 
@@ -63,7 +66,7 @@ ms.locfileid: "97740584"
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作區
 適用於 VM 的 Azure 監視器需要 Log Analytics 工作區。 如需此工作區的詳細資訊和需求，請參閱 [設定適用於 VM 的 Azure 監視器的 Log Analytics 工作區](vminsights-configure-workspace.md) 。
 ## <a name="agents"></a>代理程式
-適用於 VM 的 Azure 監視器需要在要監視的每部虛擬機器或虛擬機器擴展集上安裝下列兩個代理程式。 安裝這些代理程式並將它們連線至工作區，是將資源上架的唯一需求。
+適用於 VM 的 Azure 監視器需要在要監視的每部虛擬機器或虛擬機器擴展集上安裝下列兩個代理程式。 若要讓資源上線，請安裝這些代理程式，並將其連線至工作區。  請參閱這些代理程式網路需求的 [網路](../platform/log-analytics-agent.md#network-requirements) 需求。
 
 - [Log Analytics 代理程式](../platform/log-analytics-agent.md)。 從虛擬機器或虛擬機器擴展集收集事件和效能資料，並將其傳遞至 Log Analytics 工作區。 適用于 Azure 資源上的 Log Analytics 代理程式的部署方法會使用適用于 [Windows](../../virtual-machines/extensions/oms-windows.md) 和 [Linux](../../virtual-machines/extensions/oms-linux.md)的 VM 擴充功能。
 - Dependency agent。 收集在虛擬機器上執行之進程的探索資料，以及 [適用於 VM 的 Azure 監視器中的對應功能](vminsights-maps.md)所使用的外部進程相依性的相關資訊。 相依性代理程式相依于 Log Analytics 代理程式，以將其資料傳遞至 Azure 監視器。 適用于 Azure 資源上的相依性代理程式的部署方法會使用適用于 [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) 和 [Linux](../../virtual-machines/extensions/agent-dependency-linux.md)的 VM 擴充功能。

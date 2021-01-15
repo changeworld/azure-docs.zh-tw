@@ -3,12 +3,12 @@ title: Azure Service Fabric 中支援的叢集版本
 description: 瞭解 Azure Service Fabric 中的叢集版本，包括 Service Fabric team blog 中最新版本的連結。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: abf9900e9749a1b21d927e0315076b38848bea10
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c2ea2b53649cf148a19df46835c8936345aa20e5
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132642"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234336"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
@@ -37,18 +37,18 @@ ms.locfileid: "98132642"
 升級至下列 Service Fabric 支援的版本，以避免停機或與此變更相關的功能遺失。 請確定您的叢集至少執行了這些版本，以防止您的環境發生問題。
 
   ###### <a name="supported-service-fabric-runtime-versions"></a>支援的 Service Fabric 執行階段版本
-   如果您不在下面列出的 Service Fabric 支援版本，請升級為其中一個已包含必要變更的版本，以防止叢集停機。  
+   如果您不在下面列出的 Service Fabric 支援版本，請升級為其中一個已包含必要變更的版本，以防止叢集停機。 **注意：** 7.2 的所有發行版本都包含必要的變更。
   
   | OS | 叢集中目前的 Service Fabric 執行時間 | CU/Patch 版本  | 
   | --- | --- |--- | 
   | Windows | 7.0. * | 7.0.478.9590 |
   | Windows | 7.1. * | 7.1.503.9590 |
-  | Windows | 7.2. * | 7.2.445.9590 |
+  | Windows | 7.2. * | 7.2. * |
   | Ubuntu 16 | 7.0. * | 7.0.472.1  |
   | Linux Ubuntu 16.04 | 7.1. * | 7.1.455.1  |
   | Linux Ubuntu 18.04 | 7.1. * | 7.1.455.1804 |
-  | Linux Ubuntu 16.04 | 7.2. * | 7.2.447.1 |
-  | Linux Ubuntu 18.04 | 7.2. * | 7.2.447.1804 |
+  | Linux Ubuntu 16.04 | 7.2. * | 7.2. * |
+  | Linux Ubuntu 18.04 | 7.2. * | 7.2. * |
  
 ### <a name="upgrade-alert-for-versions-greater-than-63"></a>版本超過6.3 的升級警示 
 為了改善安全性和可用性，Azure 基礎結構將會進行變更，而這可能會影響 Service Fabric 客戶。 **所有使用 [容器的開放網路功能功能的](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)Service Fabric 叢集，在不支援的版本（大於6.3）和低於7.0 的版本上執行，且不相容的支援版本從7.0 開始會受到影響**。 解決此變更需要更新 Service Fabric 執行時間，而這些執行時間已可供所有區域中的所有支援 Service Fabric 版本使用。
@@ -58,24 +58,24 @@ ms.locfileid: "98132642"
  
   - 如果叢集 **執行的 Service Fabric 大於6.3 但未使用開放式網路功能功能**，叢集將會保持運作，不過容器叢集的開放網路功能會停止運作，而導致工作負載的服務中斷。
 
- - 如果叢集 **執行的 Service Fabric 大於6.3，並使用 [適用于容器的開放網路功能功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** ，叢集將會維持運作狀態，但會停止運作，而導致您工作負載的服務中斷。
+ - 如果叢集 **執行的 Service Fabric 大於6.3，並使用 [適用于容器的開放網路功能功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** ，叢集可能會變成無法使用，而且將會停止運作，而導致工作負載的服務中斷。
   
 #### <a name="required-action"></a>必要的動作
 升級至下列 Service Fabric 支援的版本，以避免停機或與此變更相關的功能遺失。 請確定您的叢集至少執行了這些版本，以防止您的環境發生問題。 
  
  ###### <a name="supported-service-fabric-runtime-versions"></a>支援的 Service Fabric 執行階段版本
- 如果您不在下面列出的 Service Fabric 支援版本，請升級為其中一個已包含必要變更的版本，以防止功能遺失。  
+ 如果您不在下面列出的 Service Fabric 支援版本，請升級為其中一個已包含必要變更的版本，以防止功能遺失。  **注意：** 7.2 的所有發行版本都包含必要的變更。
  
   | OS | 叢集中目前的 Service Fabric 執行時間 | CU/Patch 版本  | 
   | --- | --- |--- | 
   | Windows | 7.0. * | 7.0.478.9590 |
   | Windows | 7.1. * | 7.1.503.9590 |
-  | Windows | 7.2. * | 7.2.445.9590 |
+  | Windows | 7.2. * | 7.2. * |
   | Linux Ubuntu 16.04 | 7.0. * | 7.0.472.1  |
   | Linux Ubuntu 16.04 | 7.1. * | 7.1.455.1  |
   | Linux Ubuntu 18.04 | 7.1. * | 7.1.455.1804 |
-  | Linux Ubuntu 16.04 | 7.2. * | 7.2.447.1 |
-  | Linux Ubuntu 18.04 | 7.2. * | 7.2.447.1804 |
+  | Linux Ubuntu 16.04 | 7.2. * | 7.2. * |
+  | Linux Ubuntu 18.04 | 7.2. * | 7.2. * |
 
 ## <a name="supported-versions"></a>支援的版本
 下表列出 Service Fabric 的版本及其支援結束日期。

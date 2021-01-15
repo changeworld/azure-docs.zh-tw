@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694876"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232755"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>使用深入解析來監視和設定您的 Azure Load Balancer
 
@@ -45,7 +45,7 @@ ms.locfileid: "94694876"
 一開始，您會看到 [總覽] 索引標籤。您可以流覽可用的索引標籤，其中每個索引標籤都包含與 Load Balancer 特定層面相關的視覺效果。 每個索引標籤底部的儀表板中都有提供各自的明確指引。
 
 目前可用的儀表板索引標籤為：
-* 概觀
+* 總覽
 * 前端和後端可用性
 * 資料輸送量
 * 流量散發
@@ -68,7 +68,7 @@ ms.locfileid: "94694876"
 ### <a name="flow-distribution"></a>流量散發
 [流程散發] 索引標籤可協助您將後端實例接收和產生的流程數目視覺化及管理。 它會顯示輸入和輸出流量的流程建立率和流程計數，以及每個 VM 和虛擬機器擴展集實例所接收的網路流量。 
 
-這些視圖可讓您回饋 Load Balancer 設定或流量模式是否會導致不平衡流量。 例如，如果您已設定會話親和性，而單一用戶端進行了不相稱的要求數目。 它也會讓您知道您是否已接近機器大小的 [每個 VM 流量限制](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) 。
+這些視圖可讓您回饋 Load Balancer 設定或流量模式是否會導致不平衡流量。 例如，如果您已設定會話親和性，而單一用戶端進行了不相稱的要求數目。 它也會讓您知道您是否已接近機器大小的 [每個 VM 流量限制](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) 。
 
 ### <a name="connection-monitors"></a>連線監視
 [連線監視器] 索引標籤會顯示您已設定之所有連線 [監視器](../network-watcher/connection-monitor.md)  的全域地圖上的來回延遲。 這些視覺效果為具有嚴格延遲需求的服務提供有用的資訊。 若要符合您的需求，您可能需要新增額外的區域部署，或移至 [跨區域負載平衡](./cross-region-overview.md) 模型

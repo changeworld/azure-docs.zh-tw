@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 24e52f517f46de06fef8aa52e889185826c20d44
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: abf4e4621a7e42829032923a67d21c5322f432ec
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498390"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232721"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>傳統至 Azure Resource Manager 移轉的常見問題
 
@@ -82,11 +82,11 @@ IaaS VM (傳統) 中的 "傳統" 一字指的是 Azure Service Manager (ASM) 所
 
 當您將 VM 從傳統改為 Resource Manager 模式時，在移轉之前所建立的備份，將不會遷移至剛遷移的 Resource Manager VM。 不過，如果您想要保留傳統 VM 的備份，請在移轉之前執行下列步驟。 
 
-1. 在復原服務保存庫中，移至 [受保護的項目] 索引標籤，然後選取 VM。 
-2. 按一下 [停止保護]。 讓 [刪除相關聯的備份資料] 選項保持 [未核取] 狀態。
+1. 在復原服務保存庫中，移至 [ **備份專案** ] 分頁，然後選取 VM。 
+2. 按一下 [停止備份]。 在下拉式功能表中選取 [保留備份資料]。
 
 > [!NOTE]
-> 在保留資料之前，您需要一直支付備份執行個體費用。 系統會根據保留範圍剪除備份複本。 不過，最後一個備份複本會永遠保留下來，直到您明確刪除備份資料為止。 建議您檢查虛擬機器的保留範圍，並在超過保留範圍後，對保存庫中的受保護項目核取 [刪除備份資料] 觸發程序。 
+> 此選項將會停止所有未來的備份作業以保護您的 VM。 不過，Azure 備份服務會保留已備份的復原點。  您將需要付費以將復原點保留在保存庫中 (如需詳細資料) ，請參閱 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/) 。 如有需要，您將能夠還原 VM。 如果您決定繼續 VM 保護，則可以使用 [ *繼續備份* ] 選項。
 >
 >
 

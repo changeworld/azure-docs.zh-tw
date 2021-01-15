@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 2011d013cce43eaf471d61936d5c34c318360381
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 32d906bf96a0ad5cf798f68bf83f2d6af1064361
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616638"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231735"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights
 
@@ -34,11 +34,11 @@ ms.locfileid: "97616638"
 >
 > 請仔細檢查所有的設定 [選項](./java-standalone-config.md) ，因為 json 結構已完全變更，除了檔案名本身的所有小寫。
 
-下載 [applicationinsights-agent-3.0.0 .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0/applicationinsights-agent-3.0.0.jar)
+下載 [applicationinsights-agent-3.0.1 .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.1/applicationinsights-agent-3.0.1.jar)
 
 **2. 將 JVM 指向代理程式**
 
-新增 `-javaagent:path/to/applicationinsights-agent-3.0.0.jar` 至您應用程式的 JVM 引數
+新增 `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` 至您應用程式的 JVM 引數
 
 一般 JVM 引數包含 `-Xmx512m` 和 `-XX:+UseG1GC` 。 如果您知道要在何處加入這些，則您已經知道要在哪裡加入。
 
@@ -54,7 +54,7 @@ ms.locfileid: "97616638"
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-或者，建立名為的設定檔 `applicationinsights.json` ，並將它放在與相同的目錄中 `applicationinsights-agent-3.0.0.jar` ，並包含下列內容：
+或者，建立名為的設定檔 `applicationinsights.json` ，並將它放在與相同的目錄中 `applicationinsights-agent-3.0.1.jar` ，並包含下列內容：
 
 ```json
 {
@@ -143,12 +143,12 @@ Application Insights JAVA 3.0 會自動捕獲透過這些 Api 傳送的遙測資
 
 |                     | Micrometer | Log4j、logback、七月 | 2.x SDK |
 |---------------------|------------|---------------------|---------|
-| **自訂事件**   |            |                     |  是    |
+| **自訂事件**   |            |                     |  Yes    |
 | **自訂計量**  |  是       |                     |  是    |
-| **Dependencies** (相依性)    |            |                     |  是    |
+| **Dependencies** (相依性)    |            |                     |  Yes    |
 | **例外狀況**      |            |  是                |  是    |
-| **頁面檢視**      |            |                     |  是    |
-| **要求**        |            |                     |  是    |
+| **頁面流覽**      |            |                     |  Yes    |
+| **要求**        |            |                     |  Yes    |
 | **追蹤**          |            |  是                |  是    |
 
 我們目前未規劃 Application Insights 3.0 發行 SDK。
@@ -255,7 +255,7 @@ try {
 ### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>使用 2.x SDK 新增要求自訂維度
 
 > [!NOTE]
-> 這項功能僅適用于 3.0.1-BETA 和更新版本
+> 這項功能僅適用于3.0.1 和更新版本
 
 新增 `applicationinsights-web-2.6.2.jar` 至您的應用程式 (Application Insights JAVA 3.0 支援所有2.x 版，但如果您有選擇) ，則值得使用最新版本：
 
@@ -279,7 +279,7 @@ requestTelemetry.getProperties().put("mydimension", "myvalue");
 ### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>使用 2.x SDK 設定要求遙測 user_Id
 
 > [!NOTE]
-> 這項功能僅適用于 3.0.1-BETA 和更新版本
+> 這項功能僅適用于3.0.1 和更新版本
 
 新增 `applicationinsights-web-2.6.2.jar` 至您的應用程式 (Application Insights JAVA 3.0 支援所有2.x 版，但如果您有選擇) ，則值得使用最新版本：
 
@@ -303,7 +303,7 @@ requestTelemetry.getContext().getUser().setId("myuser");
 ### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>使用 2.x SDK 覆寫要求遙測名稱
 
 > [!NOTE]
-> 這項功能僅適用于 3.0.1-BETA 和更新版本
+> 這項功能僅適用于3.0.1 和更新版本
 
 新增 `applicationinsights-web-2.6.2.jar` 至您的應用程式 (Application Insights JAVA 3.0 支援所有2.x 版，但如果您有選擇) ，則值得使用最新版本：
 

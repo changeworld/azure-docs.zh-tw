@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 進行使用量分析 | Microsoft Docs
 description: 了解您的使用者，以及他們如何運用您的應用程式。
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4f4954451bfa195b07c580ffa451b8cb333eb32c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 633d35ec16f5eb9de664421c38cd4c824dc240cf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532098"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233843"
 ---
 # <a name="usage-analysis-with-application-insights"></a>使用 Application Insights 進行使用量分析
 
@@ -20,9 +20,9 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 
 若要獲得最佳體驗，請同時在您的應用程式伺服器程式碼和網頁中安裝 Application Insights。 您應用程式的用戶端和伺服器元件會將遙測資料傳送回 Azure 入口網站以供分析。
 
-1. **伺服器程式碼：** 為您的 [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md) 或[其他](./platforms.md)應用程式安裝適當的模組。
+1. **伺服器程式碼：** 為您的 [ASP.NET](./asp-net.md)、[Azure](./app-insights-overview.md)、[Java](./java-get-started.md)、[Node.js](./nodejs.md) 或 [其他](./platforms.md)應用程式安裝適當的模組。
 
-    * *不想安裝伺服器程式碼嗎？請直接[建立 Azure Application Insights 資源](./create-new-resource.md)。*
+    * *不想安裝伺服器程式碼嗎？請直接 [建立 Azure Application Insights 資源](./create-new-resource.md)。*
 
 2. **網頁程式碼：** 將下列指令碼新增至網頁的右 ``</head>`` 之前。 使用 Application Insights 資源的適當值來取代檢測金鑰：
     
@@ -58,14 +58,14 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 
 右方情資指出資料集內的有趣模式。  
 
-* **使用者**報告會在您所選擇的時間週期內，計算存取您網頁的唯一使用者數目。 對於 Web 應用程式，會使用 Cookie 來計算使用者。 如果有人使用不同的瀏覽器或用戶端電腦來存取您的網站，或清除其 Cookie，系統就會將他們計算為多次。
-* **工作階段**報告會計算存取您網站之使用者工作階段的數目。 工作階段是使用者活動的一段時間，在閒置時間超過半小時後就會加以終止。
+* **使用者** 報告會在您所選擇的時間週期內，計算存取您網頁的唯一使用者數目。 對於 Web 應用程式，會使用 Cookie 來計算使用者。 如果有人使用不同的瀏覽器或用戶端電腦來存取您的網站，或清除其 Cookie，系統就會將他們計算為多次。
+* **工作階段** 報告會計算存取您網站之使用者工作階段的數目。 工作階段是使用者活動的一段時間，在閒置時間超過半小時後就會加以終止。
 
 [進一步了解「使用者」、「工作階段」和「事件」工具](usage-segmentation.md)  
 
 ## <a name="retention---how-many-users-come-back"></a>保留期 - 回來使用的使用者人數？
 
-保留期可根據同群使用者在特定時間貯體期間執行的某些商務動作，協助您了解使用者返回使用其應用程式的頻率。 
+保留期可根據同群使用者在特定時間貯體期間執行的某些商務動作，協助您了解使用者返回使用其應用程式的頻率。 
 
 - 了解相較於其他功能，哪些特定功能會讓使用者回來使用 
 - 根據實際使用者資料的表單假設 
@@ -79,7 +79,9 @@ Web 或行動應用程式的哪些功能最受歡迎？ 您的使用者是否利
 
 ## <a name="custom-business-events"></a>自訂商務事件
 
-若要清楚了解使用者會使用您的應用程式來做什麼，插入程式碼行來記錄自訂事件會很有用。 這些事件可以追蹤任何項目，從詳細的使用者動作 (例如按一下特定按鈕)，到更重要的商務事件 (例如購物或遊戲獲勝)。 
+若要清楚了解使用者會使用您的應用程式來做什麼，插入程式碼行來記錄自訂事件會很有用。 這些事件可以追蹤任何項目，從詳細的使用者動作 (例如按一下特定按鈕)，到更重要的商務事件 (例如購物或遊戲獲勝)。
+
+您也可以使用 [Click Analytics 自動集合外掛程式](javascript-click-analytics-plugin.md) 來收集自訂事件。
 
 雖然在某些情況下，頁面檢視可以代表有用的事件，但一般而言它並不正確。 使用者可以開啟產品網頁而無需購買產品。 
 

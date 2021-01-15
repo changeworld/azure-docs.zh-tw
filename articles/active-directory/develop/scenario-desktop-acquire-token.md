@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: d5f5e1098b688fc307bae5ea3538c818cb529b0a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962392"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232296"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 Web API 的傳統型應用程式：取得權杖
 
@@ -420,8 +420,8 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 - 整合式 Windows 驗證僅適用於「同盟 +」使用者，也就是在 Active Directory 中建立並由 Azure AD 支援的使用者。 直接在 Azure AD 中建立的使用者若沒有 Active Directory 支援 (也稱為「受控」使用者)，就無法使用此驗證流程。 這項限制並不會影響使用者名稱和密碼流程。
 - IWA 適用於針對 .NET Framework、.NET Core 和通用 Windows 平台 (UWP) 平台所撰寫的應用程式。
 - IWA 不會略過[多重要素驗證 (MFA)](../authentication/concept-mfa-howitworks.md)。 如果已設定 MFA，則在需要 MFA 挑戰時，IWA 可能會失敗，因為 MFA 需要使用者互動。
-  > [!NOTE]
-  > 這一點很棘手。 IWA 並非互動式，但 MFA 需要使用者互動。 您無法控制執行識別提供者要求 MFA 的時間，而租用戶系統管理員會這麼做。 從我們的觀察，當您從不同的國家/地區、未透過 VPN 連線到公司網路，有時甚至是透過 VPN 連線時，都需要 MFA。 請勿預期一組具決定性的規則。 Azure AD 會使用 AI 來持續了解是否需要 MFA。 當 IWA 失敗時，切換回使用者提示，例如互動式驗證或裝置程式碼流程。
+  
+    IWA 並非互動式，但 MFA 需要使用者互動。 您無法控制執行識別提供者要求 MFA 的時間，而租用戶系統管理員會這麼做。 從我們的觀察，當您從不同的國家/地區、未透過 VPN 連線到公司網路，有時甚至是透過 VPN 連線時，都需要 MFA。 請勿預期一組具決定性的規則。 Azure AD 會使用 AI 來持續了解是否需要 MFA。 當 IWA 失敗時，切換回使用者提示，例如互動式驗證或裝置程式碼流程。
 
 - 傳入 `PublicClientApplicationBuilder` 的授權單位必須是：
   - `https://login.microsoftonline.com/{tenant}/` 表單的租用戶，其中 `tenant` 是代表租用戶識別碼的 GUID，或與租用戶相關聯的網域。
@@ -602,14 +602,13 @@ MSAL Python 尚不支援此流程。
 
 ### <a name="this-flow-isnt-recommended"></a>不建議使用此流程
 
-「不建議使用」此流程，因為讓應用程式要求使用者提供密碼並不安全。 如需詳細資訊，請參閱[持續增加的密碼問題有何解決方案？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。 在已加入網域的 Windows 電腦上以無訊息方式取得權杖的慣用流程是[整合式 Windows 驗證](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 您也可以使用[裝置程式碼流程](https://aka.ms/msal-net-device-code-flow)。
+*不建議使用* 使用者名稱和密碼流程，因為讓您的應用程式要求使用者提供其密碼並不安全。 如需詳細資訊，請參閱 [不斷成長之密碼問題的解決方法？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/) 在已加入網域的 Windows 電腦上以無訊息方式取得權杖的慣用流程是[整合式 Windows 驗證](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 您也可以使用[裝置程式碼流程](https://aka.ms/msal-net-device-code-flow)。
 
-> [!NOTE]
-> 在某些情況下 (例如 DevOps 案例)，使用使用者名稱和密碼會很有用。 但是，如果您想要在您提供自己 UI 的互動式案例中使用使用者名稱和密碼，請考慮如何將其移開。 使用使用者名稱和密碼，您將放棄許多項目：
->
-> - 新式身分識別的核心原則。 密碼可能會遭誘騙及重新執行，因為共用祕密可能會受到攔截。 其與無密碼不相容。
-> - 因為沒有互動，所以需要進行 MFA 的使用者無法登入。
-> - 使用者無法執行單一登入 (SSO)。
+在某些情況下 (例如 DevOps 案例)，使用使用者名稱和密碼會很有用。 但是，如果您想要在您提供自己 UI 的互動式案例中使用使用者名稱和密碼，請考慮如何將其移開。 使用使用者名稱和密碼，您將放棄許多項目：
+
+- 新式身分識別的核心原則。 密碼可能會遭誘騙及重新執行，因為共用祕密可能會受到攔截。 其與無密碼不相容。
+- 因為沒有互動，所以需要進行 MFA 的使用者無法登入。
+- 使用者無法執行單一登入 (SSO)。
 
 ### <a name="constraints"></a>條件約束
 

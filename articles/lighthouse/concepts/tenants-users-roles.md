@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse 案例中的租使用者、使用者和角色
 description: 了解 Azure Active Directory 租用戶、使用者和角色的概念，以及如何在 Azure Lighthouse 案例中使用它們。
-ms.date: 10/29/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023937"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233911"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 案例中的租使用者、使用者和角色
 
@@ -18,7 +18,10 @@ ms.locfileid: "96023937"
 
 若要達到此邏輯投射，必須將訂用帳戶 (或客戶租使用者中) 訂用帳戶內的一或多個資源群組 *上線* 至 Azure Lighthouse。 此上線程序可以[透過 Azure Resource Manager 範本](../how-to/onboard-customer.md)，或藉由[將公用或私用供應項目發佈至 Azure Marketplace](../how-to/publish-managed-services-offers.md) 來完成。
 
-無論您選擇哪一種上線方法，都必須定義 *授權*。 每個授權都會在管理租用戶中指定一個可存取委派資源的使用者帳戶，以及一個可設定每個使用者對這些資源所擁有之權限的內建角色。
+無論您選擇哪一種上線方法，都必須定義 *授權*。 每個授權都會指定可存取委派資源的 **principalId** ，以及一個內建角色，此角色會設定每個使用者對這些資源所擁有的許可權。 此 **principalId** 會定義管理租使用者中的 Azure AD 使用者、群組或服務主體。
+
+> [!NOTE]
+> 除非明確指定，否則 Azure Lighthouse 檔中的「使用者」參考可以套用至授權中的 Azure AD 使用者、群組或服務主體。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>定義使用者和角色的最佳做法
 

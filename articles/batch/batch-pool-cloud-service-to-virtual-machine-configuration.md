@@ -3,12 +3,12 @@ title: 將 Batch 集區設定從雲端服務遷移至虛擬機器
 description: 瞭解如何將您的集區設定更新為最新和建議的設定
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: b6f4184f7c4f133f74cb3157638b1621dad25fda
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97969022"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234302"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>將 Batch 集區設定從雲端服務遷移至虛擬機器
 
@@ -22,7 +22,7 @@ ms.locfileid: "97969022"
 
 無法將現有的作用中集區從 ' cloudServiceConfiguration ' 更新為 ' virtualMachineConfiguration '，必須建立新的集區。 所有 Batch Api、命令列工具、Azure 入口網站和 Batch Explorer UI 都支援使用 ' virtualMachineConfiguration ' 建立集區。
 
-[.Net](tutorial-parallel-dotnet.md)和[Python](tutorial-parallel-python.md)教學課程提供使用 ' virtualMachineConfiguration ' 建立集區的範例。
+**[.Net](tutorial-parallel-dotnet.md)和 [Python](tutorial-parallel-python.md)教學課程提供使用 ' virtualMachineConfiguration ' 建立集區的範例。**
 
 ## <a name="pool-configuration-differences"></a>集區設定差異
 

@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 6b5c328503a28c6eb92c2c20ca54d4d3d80c9a15
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028466"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232466"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
@@ -45,7 +45,7 @@ ms.locfileid: "98028466"
 以下列出預設可供應用程式使用的一組選擇性宣告。 若要為您的應用程式新增自訂選擇性宣告，請參閱下方的[目錄延伸模組](#configuring-directory-extension-optional-claims)。 請注意，將宣告新增至 **存取權杖** 時，宣告會套用至「為」應用程式 (Web API) 要求的存取權杖，而不是「由」應用程式要求的存取權杖。 無論用戶端如何存取您的 API，存取權杖中都有正確的資料，可用來向您的 API 驗證。
 
 > [!NOTE]
-> 這些宣告中大多數都可包含在 v1.0 和 v2.0 權杖的 JWT 中，但不可包含在 SAML 權杖中 (「權杖類型」欄中已註明者除外)。 取用者帳戶支援這些宣告的子集 (在「使用者類型」資料行中標示)。  列出的許多宣告不會套用至取用者使用者 (沒有租用戶，因此 `tenant_ctry` 沒有值)。
+>這些宣告中大多數都可包含在 v1.0 和 v2.0 權杖的 JWT 中，但不可包含在 SAML 權杖中 (「權杖類型」欄中已註明者除外)。 取用者帳戶支援這些宣告的子集 (在「使用者類型」資料行中標示)。  列出的許多宣告不會套用至取用者使用者 (沒有租用戶，因此 `tenant_ctry` 沒有值)。
 
 **表 2：v1.0 和 V2.0 選擇性宣告集**
 
@@ -94,7 +94,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 **表4：僅1.0 版的選擇性宣告**
 
 
-| JWT 宣告     | 名稱                            | 描述 | 注意 |
+| JWT 宣告     | 名稱                            | 描述 | 附註 |
 |---------------|---------------------------------|-------------|-------|
 |`aud`          | 適用對象 | 一律存在於 Jwt 中，但在 v1 存取權杖中，可以透過各種不同的方式發出，也就是具有或不含尾端斜線的任何 appID URI，以及資源的用戶端識別碼。 在執行權杖驗證時，這種隨機載入可能很難進行程式碼撰寫。  使用此宣告的 [其他屬性](#additional-properties-of-optional-claims) ，以確保一律會將其設定為 v1 存取權杖中的資源用戶端識別碼。 | v1 JWT 存取權杖|
 |`preferred_username` | 慣用的使用者名稱        | 在 v1 權杖內提供慣用的使用者名稱宣告。 這可讓應用程式更容易提供使用者名稱提示，並顯示人類可閱讀的顯示名稱，不論其權杖類型為何。  建議您使用此選用宣告，而不要使用，例如 `upn` 或 `unique_name` 。 | v1 識別碼權杖和存取權杖 |
@@ -139,7 +139,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 針對您的應用程式，您可以透過 UI 或應用程式資訊清單來設定選擇性宣告。
 
 1. 移至<a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 
-1. 搜尋並選取 [Azure Active Directory]  。
+1. 搜尋並選取 [Azure Active Directory]。
 1. 在 [管理]  底下選取 [應用程式註冊]  。
 1. 從清單中，選取您要設定選擇性宣告的應用程式。
 
@@ -148,13 +148,13 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 [![在 UI 中設定選擇性宣告](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. 在 [ **管理**] 底下，選取 [ **權杖** 設定]。
+   - 您可以藉由修改應用程式資訊清單來設定 Azure AD B2C 租使用者中註冊的應用程式，無法使用 UI 選項 **權杖** 設定分頁。 如需詳細資訊，請參閱  [在 Azure Active Directory B2C 中使用自訂原則新增宣告和自訂使用者輸入](../../active-directory-b2c/configure-user-input.md)  
+
 1. 選取 [新增選擇性宣告]。
 1. 選取您要設定的權杖類型。
 1. 選取要新增的選擇性宣告。
 1. 選取 [新增]。
 
-> [!NOTE]
-> 目前在 Azure AD B2C 租使用者中註冊的應用程式無法使用 UI 選項 **權杖** 設定分頁。 針對在 B2C 租使用者中註冊的應用程式，可以藉由修改應用程式資訊清單來設定選擇性宣告。 如需詳細資訊，請參閱 [在 Azure Active Directory B2C 中使用自訂原則新增宣告和自訂使用者輸入](../../active-directory-b2c/configure-user-input.md) 
 
 **透過應用程式資訊清單設定選擇性宣告：**
 
@@ -227,8 +227,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 選擇性宣告不支援結構描述和開啟式擴充，僅支援 AAD-Graph 樣式的目錄擴充。 此功能可用來附加應用程式可使用的額外使用者資訊 – 例如，使用者已設定的額外識別碼或重要設定選項。 如需範例，請參閱本頁底部。
 
-> [!NOTE]
-> 目錄結構描述擴充是僅限 Azure AD 的功能。 如果您的應用程式資訊清單要求自訂擴充，但有 MSA 使用者登入您的應用程式，則不會傳回這些擴充。
+目錄結構描述擴充是僅限 Azure AD 的功能。 如果您的應用程式資訊清單要求自訂擴充，但有 MSA 使用者登入您的應用程式，則不會傳回這些擴充。
 
 ### <a name="directory-extension-formatting"></a>目錄擴充格式
 
@@ -249,7 +248,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
-1. 搜尋並選取 [Azure Active Directory]  。
+1. 搜尋並選取 [Azure Active Directory]。
 1. 在 [管理]  底下選取 [應用程式註冊]  。
 1. 從清單中，選取您要設定選擇性宣告的應用程式。
 1. 在 [ **管理**] 底下，選取 [ **權杖** 設定]。
@@ -262,7 +261,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
-1. 搜尋並選取 [Azure Active Directory]  。
+1. 搜尋並選取 [Azure Active Directory]。
 1. 從清單中，選取您要設定選擇性宣告的應用程式。
 1. 在 [ **管理**] 底下，選取 [ **資訊清單**]。
 1. 使用資訊清單編輯器新增下列項目：
@@ -290,8 +289,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
    - accessToken，代表 OAuth 存取權杖
    - Saml2Token，代表 SAML 權杖。
 
-   > [!NOTE]
-   > Saml2Token 類型適用于 SAML 1.1 和 SAML 2.0 格式權杖。
+   Saml2Token 類型適用于 SAML 1.1 和 SAML 2.0 格式權杖。
 
    針對每個相關的權杖類型，將群組宣告修改為使用資訊清單中的 OptionalClaims 區段。 OptionalClaims 結構描述如下所示：
 
@@ -315,8 +313,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
    某些應用程式在角色宣告中需要使用者的群組資訊。  若要將宣告類型從群組宣告變更為角色宣告，請將 "emit_as_roles" 新增至其他屬性。  角色宣告中會發出群組值。
 
-   > [!NOTE]
-   > 如果使用「emit_as_roles」，則任何已指派給使用者的應用程式角色都不會出現在角色宣告中。
+   如果使用「emit_as_roles」，則任何已指派給使用者的應用程式角色都不會出現在角色宣告中。
 
 **範例：**
 
@@ -394,7 +391,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
 
-1. 搜尋並選取 [Azure Active Directory]  。
+1. 搜尋並選取 [Azure Active Directory]。
 
 1. 在 [管理]  底下選取 [應用程式註冊]  。
 
@@ -416,7 +413,7 @@ v1.0 Azure AD 權杖中一律包含這些宣告，但在 v2.0 權杖中，除非
 
 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 通過驗證後，請從頁面右上角選取您的 Azure AD 租用戶。
-1. 搜尋並選取 [Azure Active Directory]  。
+1. 搜尋並選取 [Azure Active Directory]。
 1. 從清單中，找出並選取您要設定選擇性宣告的應用程式。
 1. 在 [ **管理**] 底下，選取 [ **資訊清單** ] 以開啟內嵌資訊清單編輯器。
 1. 您可以使用此編輯器直接編輯資訊清單。 資訊清單遵循 [Application 實體](./reference-app-manifest.md)的結構描述，而且資訊清單儲存時會自動格式化。 新元素會新增至 `OptionalClaims` 屬性。

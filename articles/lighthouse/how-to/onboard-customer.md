@@ -1,14 +1,14 @@
 ---
 title: 讓客戶在 Azure Lighthouse 上線
 description: 瞭解如何將客戶上架到 Azure Lighthouse，讓其資源可透過您自己的租使用者使用 Azure 委派的資源管理來存取及管理。
-ms.date: 12/15/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516126"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232670"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>讓客戶在 Azure Lighthouse 上線
 
@@ -62,14 +62,17 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>定義角色與權限
 
-身為服務提供者，您可以對單一客戶執行多個工作，每個都要求存取不同範圍。 您可以定義所需數量的授權，以便將適當的 [Azure 內建角色](../../role-based-access-control/built-in-roles.md) 指派給租使用者中的使用者。
+身為服務提供者，您可以對單一客戶執行多個工作，每個都要求存取不同範圍。 您可以定義所需數量的授權，以便指派適當的 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。 每個授權都包含一個 **principalId** ，它會參考管理租使用者中的 Azure AD 使用者、群組或服務主體。
 
-為了讓管理更容易，建議您針對每個角色使用 Azure AD 的使用者群組。 這可讓您彈性地將個別使用者新增或移除至具有存取權的群組，如此您就不需要重複上執行緒序來進行使用者變更。 您可以將角色指派給服務主體，這對自動化案例可能很有用。
+> [!NOTE]
+> 除非明確指定，否則 Azure Lighthouse 檔中的「使用者」參考可以套用至授權中的 Azure AD 使用者、群組或服務主體。
+
+為了讓管理更容易，我們建議您盡可能針對每個角色使用 Azure AD 的使用者群組，而不是個別的使用者。 這可讓您彈性地將個別使用者新增或移除至具有存取權的群組，如此您就不需要重複上執行緒序來進行使用者變更。 您也可以將角色指派給服務主體，這對自動化案例可能很有用。
 
 > [!IMPORTANT]
 > 為了新增 Azure AD 群組的許可權， **群組類型** 必須設定為 [ **安全性**]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-定義您的授權時，請務必遵循最低許可權原則，讓使用者只具備完成其工作所需的許可權。 如需有關支援的角色的指導方針和資訊，請參閱 [Azure Lighthouse 案例中的租使用者、使用者和角色](../concepts/tenants-users-roles.md)。
+定義您的授權時，請務必遵循最低許可權原則，讓使用者只具備完成其工作所需的許可權。 如需有關支援的角色和最佳作法的詳細資訊，請參閱 [Azure Lighthouse 案例中的租使用者、使用者和角色](../concepts/tenants-users-roles.md)。
 
 若要定義授權，您必須知道您想要授與存取權之服務提供者租使用者中每個使用者、使用者群組或服務主體的識別碼值。 您也會需要所要指派每個內建角色的角色定義識別碼。 如果還沒有識別碼值，您可從服務提供者租用戶內，執行下列命令來擷取。
 
@@ -195,7 +198,7 @@ az role definition list --name "<roleName>" | grep name
 }
 ```
 
-上述範例的最後一個授權會新增具有「使用者存取系統管理員」角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 **principalId**。 當您指派此角色時，必須包含 **delegatedRoleDefinitionIds** 屬性與一或多個內建角色。 在此授權中建立的使用者將能夠將這些內建角色指派給客戶租使用者中的 [受控](../../active-directory/managed-identities-azure-resources/overview.md) 識別，以便 [部署可補救的原則](deploy-policy-remediation.md)。  使用者也可以建立支援事件。  通常與「使用者存取系統管理員」角色相關聯的其他權限都不會套用至此使用者。
+上述範例的最後一個授權會新增具有「使用者存取系統管理員」角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 **principalId**。 指派此角色時，您必須包含 **>delegatedroledefinitionids** 屬性，以及一或多個支援的 Azure 內建角色。 在此授權中建立的使用者將能夠將這些角色指派給客戶租使用者中的 [受控](../../active-directory/managed-identities-azure-resources/overview.md) 識別，以便 [部署可補救的原則](deploy-policy-remediation.md)。  使用者也可以建立支援事件。 通常與「使用者存取系統管理員」角色相關聯的其他許可權都不會套用至此 **principalId**。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure Resource Manager 範本
 
@@ -278,7 +281,7 @@ az deployment sub create --name <deploymentName> \
 3. 請確認您可以看到訂用帳戶顯示為您在 Resource Manager 範本中所提供的名稱。
 
 > [!NOTE]
-> 您部署完成之後可能需要幾分鐘，更新才會反映在 Azure 入口網站。
+> 在您的部署完成之後，最多可能需要15分鐘的時間，更新才會反映在 Azure 入口網站中。 如果您藉由重新整理瀏覽器、登入和登出，或要求新的權杖來更新 Azure Resource Manager 權杖，就可以更快看到更新。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -312,6 +315,7 @@ az account list
 - 您必須為委派的訂用帳戶註冊 **>microsoft.managedservices** 資源提供者。 這應該會在部署期間自動進行，但如果不是，您可以 [手動進行註冊](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)。
 - 授權不得包含擁有 [內建角色的任何](../../role-based-access-control/built-in-roles.md#owner) 使用者，或任何內建角色與 [DataActions](../../role-based-access-control/role-definitions.md#dataactions)。
 - 群組 [**類型**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) 必須設定為 [ **安全性** ]，而不是 [ **Microsoft 365**]。
+- 在對 [嵌套群組](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)啟用存取之前，可能會有額外的延遲。
 - 需要在 Azure 入口網站中查看資源的使用者，必須具有 (的 [讀取](../../role-based-access-control/built-in-roles.md#reader) 者角色，或包含讀取器存取) 的其他內建角色。
 
 ## <a name="next-steps"></a>後續步驟

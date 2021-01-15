@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 7be326e0f01ed6a00244c0f5b9ed6a960b2b6e0b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 50fd5641c61d08939eca1f2cbafb1d077254e37d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "86171851"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233265"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 後端連線功能的互通性：測試組態詳細資料
 
@@ -27,13 +27,13 @@ ms.locfileid: "86171851"
 
 [![1]][1]
 
-下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果您希望中樞 VNet 允許輪輻 VNet 使用中樞的閘道，請選取 [ **允許閘道傳輸** ]。
+下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果您希望中樞 VNet 允許輪輻 VNet 使用中樞的閘道，請選取 [ **允許閘道傳輸**]。
 
 [![2]][2]
 
 ## <a name="branch-vnet-connectivity-by-using-a-site-to-site-vpn"></a>使用站對站 VPN 的分支 VNet 連線
 
-透過使用 Azure VPN 閘道中的 VPN 閘道，設定中樞和分支 VNet 間的站對站 VPN 連線。 根據預設，VPN 閘道和 Azure ExpressRoute 閘道使用私用的自發系統編號 (ASN) 值 **65515** 。 您可以變更 VPN 閘道的 ASN 值。 在測試設定中，分支 VNet VPN 閘道的 ASN 值變更為 **65516** ，以支援中樞和分支 VNet 之間的 eBGP 路由。
+透過使用 Azure VPN 閘道中的 VPN 閘道，設定中樞和分支 VNet 間的站對站 VPN 連線。 根據預設，VPN 閘道和 Azure ExpressRoute 閘道使用私用的自發系統編號 (ASN) 值 **65515**。 您可以變更 VPN 閘道的 ASN 值。 在測試設定中，分支 VNet VPN 閘道的 ASN 值變更為 **65516**，以支援中樞和分支 VNet 之間的 eBGP 路由。
 
 
 [![3]][3]
@@ -49,7 +49,7 @@ ms.locfileid: "86171851"
 
 下圖顯示 ExpressRoute1 線路和中樞 VNet 之間的連線設定：
 
-[![.5]][5]
+[![5]][5]
 
 下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。  (Cisco ASR1000 路由器在測試設定中是用來做為 CE 路由器。 ) 當站對站 VPN 和 ExpressRoute 線路平行設定為將內部部署網路連線到 Azure 時，Azure 預設會排定 ExpressRoute 電路的優先順序。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
 
@@ -164,7 +164,7 @@ ip route vrf 30 10.10.30.254 255.255.255.255 Tunnel30
 
 ExpressRoute 1 會在不同的 Azure 區域將中樞 Vnet 和內部部署位置 1 連線至遠端 Vnet：
 
-[![8]][8]
+[![八角]][8]
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute 和站對站 VPN 連線串聯
 
@@ -217,18 +217,15 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 [8]: ./media/backend-interoperability/ExR2-Remote-Connection.png "ExpressRoute 2 至遠端 VNet ExR 閘道的連線組態"
 
 <!--Link References-->
-[Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface
-[ExpressRoute]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
-[VPN]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways
-[VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
-[Configuration]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-configuration
-[Control-Analysis]:https://docs.microsoft.com/azure/networking/connectivty-interoperability-control-plane
-[Data-Analysis]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-data-plane
-[ExR-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs
-[S2S-Over-ExR]: https://docs.microsoft.com/azure/expressroute/site-to-site-vpn-over-microsoft-peering
-[ExR-S2S-CoEx]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-coexist-resource-manager
-[Hub-n-Spoke]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
-[Deploy-NVA]: https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha
-[VNet-Config]: https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering
-
-
+[Setup]: ./connectivty-interoperability-preface.md
+[ExpressRoute]: ../expressroute/expressroute-introduction.md
+[VPN]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+[VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+[Control-Analysis]: ./connectivty-interoperability-control-plane.md
+[Data-Analysis]: ./connectivty-interoperability-data-plane.md
+[ExR-FAQ]: ../expressroute/expressroute-faqs.md
+[S2S-Over-ExR]: ../expressroute/site-to-site-vpn-over-microsoft-peering.md
+[ExR-S2S-CoEx]: ../expressroute/expressroute-howto-coexist-resource-manager.md
+[Hub-n-Spoke]: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+[Deploy-NVA]: /azure/architecture/reference-architectures/dmz/nva-ha
+[VNet-Config]: ../virtual-network/virtual-network-manage-peering.md

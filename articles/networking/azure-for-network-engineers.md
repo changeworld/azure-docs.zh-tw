@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861399"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234200"
 ---
 # <a name="azure-for-network-engineers"></a>適用於網路工程師的 Azure
 傳統的網路工程師是您處理的實體資產，例如路由器、交換器、纜線、防火牆，以建立基礎結構。 在邏輯層中，您已設定虛擬 LAN (VLAN) 、跨樹狀結構通訊協定 (STP) 、路由通訊協定 (RIP、OSPF、BGP) 。 您已使用管理工具和 CLI 來管理您的網路。 雲端中的網路功能不同，因為網路端點是邏輯的，且最少使用路由通訊協定。 您將使用 Azure Resource Manager API、Azure CLI 和 PowerShell 來設定和管理 Azure 中的資產。 您將瞭解 Azure 網路功能的基本租使用者，以開始使用雲端中的網路旅程。 
@@ -88,7 +88,6 @@ NSG 包含兩組規則：輸入和輸出。 規則的優先順序在每一個集
 深入瞭解 [網路安全性群組][network-security]。
 
 <!--Link References-->
-[VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
-[vnet-routing]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview
-[network-security]: https://docs.microsoft.com/azure/virtual-network/security-overview
-
+[VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+[vnet-routing]: ../virtual-network/virtual-networks-udr-overview.md
+[network-security]: ../virtual-network/network-security-groups-overview.md

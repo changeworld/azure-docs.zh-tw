@@ -4,12 +4,12 @@ description: 在您的裝置或桌面應用程式、網頁或服務中插入幾�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ae64888669fb9a3c053802ee4f7ad7db6316265d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780496"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233741"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
@@ -32,7 +32,7 @@ ms.locfileid: "96780496"
 
 您可以 [附加屬性和度量](#properties) 至這裡大部分的遙測呼叫。
 
-## <a name="before-you-start"></a><a name="prep"></a>開始之前
+## <a name="before-you-start"></a><a name="prep"></a>在您開始使用 Intune 之前
 
 如果您還沒有 Application Insights SDK 的參考：
 
@@ -146,7 +146,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>分析中的自訂事件
 
-[Application Insights 分析](../log-query/log-query-overview.md)的 `customEvents` 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackEvent(..)` 呼叫。
+遙測資料可在 `customEvents` [Application Insights 記錄]](../log-query/log-query-overview.md) 索引標籤或 [使用體驗](usage-overview.md)的表格中取得。 事件可能來自 `trackEvent(..)` 或 [按一下 [分析自動收集外掛程式](javascript-click-analytics-plugin.md)]。
+
+ 
 
 如果[取樣](./sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackEvent() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得正確的自訂事件計數，您應該使用像這樣的程式碼 `customEvents | summarize sum(itemCount)` 。
 
@@ -489,7 +491,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 記錄診斷事件，例如進入或離開某個方法。
 
- 參數 | 描述
+ 參數 | Description
 ---|---
 `message` | 診斷資料。 可以比名稱長很多。
 `properties` | 字串與字串的對應：用來在入口網站中 [篩選例外](#properties) 狀況的其他資料。 預設為空白。
@@ -1122,4 +1124,3 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 * [搜尋事件和記錄](./diagnostic-search.md)
 * [疑難排解](../faq.md)
-

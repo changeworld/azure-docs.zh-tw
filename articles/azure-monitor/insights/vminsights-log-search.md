@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 118bdcb6929abfc162ff05e91f1621f087b6c50c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ae0bc6ea35d5c6e3ebe0cd7f232e5c8b1e637d9d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186723"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234047"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>如何從適用於 VM 的 Azure 監視器查詢記錄
 
@@ -92,7 +92,7 @@ ms.locfileid: "96186723"
 
 #### <a name="naming-and-classification"></a>命名和分類
 
-為了方便起見，RemoteIp 屬性中會包含連線遠端的 IP 位址。 如果是輸入連線，RemoteIp 相當於 SourceIp，如果是連出連線，則它相當於 DestinationIp。 RemoteDnsCanonicalNames 屬性代表適用於 RemoteIp 的機器所報告的 DNS 標準名稱。 RemoteDnsQuestions 和 RemoteClassification 屬性均會保留，以供日後使用。 
+為了方便起見，RemoteIp 屬性中會包含連線遠端的 IP 位址。 如果是輸入連線，RemoteIp 相當於 SourceIp，如果是連出連線，則它相當於 DestinationIp。 RemoteDnsCanonicalNames 屬性代表適用於 RemoteIp 的機器所報告的 DNS 標準名稱。 RemoteDnsQuestions 屬性代表機器針對 RemoteIp 所報告的 DNS 問題。 RemoveClassification 屬性已保留供日後使用。 
 
 #### <a name="geolocation"></a>地理位置
 
@@ -112,10 +112,10 @@ ms.locfileid: "96186723"
 |:--|:--|
 |MaliciousIP |RemoteIp 位址 |
 |IndicatorThreadType |偵測到的威脅指標是下列值之一：*殭屍網路*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*惡意程式碼*、*網路釣魚*、*Proxy*、*PUA*、*關注清單*。   |
-|描述 |觀察到的威脅的說明。 |
+|Description |觀察到的威脅的說明。 |
 |TLPLevel |號誌燈通訊協定 (TLP) 層級是已定義的值 (*白色*、*綠色*、*琥珀色*、*紅色*) 之一。 |
 |信賴度 |值為 *0 – 100*。 |
-|嚴重性 |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為 *3*。  |
+|Severity |值為 *0 – 5*，其中 *5* 為最嚴重，*0* 為根本不嚴重。 預設值為 *3*。  |
 |FirstReportedDateTime |提供者第一次回報指標。 |
 |LastReportedDateTime |Interflow 最後一次看到指標。 |
 |IsActive |使用 *True* 或 *False* 值表示指標停用。 |
@@ -132,7 +132,7 @@ VMBoundPort 中的每一筆記錄都是由下欄欄位所識別：
 |:--|:--|
 |處理序 | 處理常式 (或與埠相關聯) 進程群組的身分識別。|
 |Ip | 埠 IP 位址 (可以是萬用字元 IP、 *0.0.0.0*)  |
-|連接埠 |埠號碼 |
+|Port |埠號碼 |
 |通訊協定 | 通訊協定。  例如， *tcp* 或 *udp* (目前只有 *tcp*) 支援。|
  
 身分識別會衍生自上述五個欄位，並儲存在 PortId 屬性中。 這個屬性可用來快速尋找特定埠在一段時間內的記錄。 
@@ -233,7 +233,7 @@ VMBoundPort 中的每一筆記錄都是由下欄欄位所識別：
 |群組 | 進程組名。 相同群組中的程式在邏輯上是相關的，例如，相同產品或系統元件的一部分。 |
 |StartTime | 處理序集區的開始時間 |
 |FirstPid | 處理序集區中的第一個 PID |
-|描述 | 處理序的描述 |
+|Description | 處理序的描述 |
 |CompanyName | 公司的名稱 |
 |InternalName | 內部名稱 |
 |ProductName | 產品的名稱 |
@@ -442,7 +442,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 |電腦 | 電腦 FQDN | 
 |來源 | *vm.azm.ms* |
 |命名空間 | 效能計數器的類別 | 
-|名稱 | 效能計數器的名稱 |
+|Name | 效能計數器的名稱 |
 |Val | 收集的值 | 
 |標籤 | 記錄的相關詳細資料。 請參閱下表，以瞭解搭配不同記錄類型使用的標記。  |
 |AgentId | 每部電腦的代理程式的唯一識別碼 |
@@ -451,10 +451,10 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 下表列出目前收集至 *InsightsMetrics* 資料表的效能計數器：
 
-| 命名空間 | 名稱 | 描述 | 單位 | 標籤 |
+| 命名空間 | Name | 描述 | 單位 | 標籤 |
 |:---|:---|:---|:---|:---|
 | 電腦    | 活動訊號             | 電腦的信號                        | | |
-| Memory      | AvailableMB           | 記憶體可用位元組數                    | MB      | memorySizeMB-記憶體大小總計|
+| 記憶體      | AvailableMB           | 記憶體可用位元組數                    | MB      | memorySizeMB-記憶體大小總計|
 | 網路     | WriteBytesPerSecond   | 每秒的網路寫入位元組數            | 每秒位元組 | NetworkDeviceId-裝置的識別碼<br>位元組-傳送的位元組總數 |
 | 網路     | ReadBytesPerSecond    | 每秒的網路讀取位元組數             | 每秒位元組 | networkDeviceId-裝置的識別碼<br>位元組-接收的位元組總數 |
 | 處理器   | UtilizationPercentage | 處理器使用率百分比          | 百分比        | totalCpus-Cpu 總計 |

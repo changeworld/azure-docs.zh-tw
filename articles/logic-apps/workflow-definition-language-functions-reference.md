@@ -4,14 +4,14 @@ description: 運算式中的函式參考指南，適用於 Azure Logic Apps 和 
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.topic: reference
+ms.date: 01/13/2021
+ms.openlocfilehash: fe40cbe84e8e3341b03c6c8e11701fe3db6bc3d0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034290"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234217"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在運算式中使用函式的參考指南，適用於 Azure Logic Apps 和 Power Automate
 
@@ -2532,11 +2532,17 @@ iterationIndexes('<loopName>')
 
 ### <a name="json"></a>json
 
-傳回字串或 XML 的 JavaScript 物件標記法 (JSON) 類型值或物件。
+傳回字串或 XML 的 JavaScript 物件標記法 (JSON) 類型值、物件或物件陣列。
 
 ```
 json('<value>')
+json(xml('value'))
 ```
+
+> [!IMPORTANT]
+> 如果沒有定義輸出結構的 XML 架構，此函式可能會傳回結果，其中結構與預期的格式有很大的不同，視輸入而定。
+>  
+> 此行為可讓此函式不適用於輸出必須符合定義完善之合約的案例，例如，在關鍵商務系統或解決方案中。
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
@@ -2545,7 +2551,7 @@ json('<value>')
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*JSON-result*> | JSON 原生類型或物件 | 所指定字串或 XML 的 JSON 原生類型值或物件。 如果字串為 Null，函式會傳回空物件。 |
+| <*JSON-result*> | JSON 原生類型、物件或陣列 | 來自輸入字串或 XML 的 JSON 原生類型值、物件或物件陣列。 <p><p>-如果您傳入的 XML 在根項目中具有單一子項目，則函式會傳回該子專案的單一 JSON 物件。 <p> -如果您傳入的 XML 中有多個子項目，則函式會傳回陣列，其中包含這些子項目的 JSON 物件。 <p>-如果字串為 null，則函式會傳回空的物件。 |
 ||||
 
 *範例 1*
@@ -2568,7 +2574,7 @@ json('{"fullName": "Sophia Owen"}')
 
 並傳回此結果：
 
-```
+```json
 {
   "fullName": "Sophia Owen"
 }
@@ -2576,23 +2582,53 @@ json('{"fullName": "Sophia Owen"}')
 
 *範例 3*
 
-此範例會將此 XML 轉換為 JSON：
+這個範例會使用和函式， `json()` `xml()` 將根項目中具有單一子項目的 XML 轉換成名為之子項目的 JSON 物件 `person` ：
 
-```
-json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))
-```
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))`
 
 並傳回此結果：
 
 ```json
 {
-   "?xml": { "@version": "1.0" },
+   "?xml": { 
+      "@version": "1.0" 
+   },
    "root": {
-      "person": [ {
+      "person": {
          "@id": "1",
          "name": "Sophia Owen",
          "occupation": "Engineer"
-      } ]
+      }
+   }
+}
+```
+
+*範例 4*
+
+這個範例會使用 `json()` 和函 `xml()` 式，將根項目中具有多個子項目的 XML 轉換成名為 `person` 的陣列，其中包含這些子項目的 JSON 物件：
+
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> <person id='2'> <name>John Doe</name> <occupation>Engineer</occupation> </person> </root>'))`
+
+並傳回此結果：
+
+```json
+{
+   "?xml": {
+      "@version": "1.0"
+   },
+   "root": {
+      "person": [
+         {
+            "@id": "1",
+            "name": "Sophia Owen",
+            "occupation": "Engineer"
+         },
+         {
+            "@id": "2",
+            "name": "John Doe",
+            "occupation": "Engineer"
+         }
+      ]
    }
 }
 ```

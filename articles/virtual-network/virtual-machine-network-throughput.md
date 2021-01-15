@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: b11bdf9b82352c15b7f7236168494f32fe4a4f9f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221505"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233860"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虛擬機器網路頻寬
 
@@ -52,15 +52,13 @@ Azure 虛擬機器必須連結一個 (但可以有數個) 網路介面。 配置
 
 ![透過轉送設備進行 TCP 交談的流程計數](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>流程限制和建議
+## <a name="flow-limits-and-active-connections-recommendations"></a>流程限制和使用中連接建議
 
-現今，Azure 網路堆疊支援250K 網路流量的總計，且具有超過8個 CPU 核心和100k 個流量的 Vm，且效能適用于具有少於8個 CPU 核心的 Vm 的良好效能。 超過此限制，其他流程的網路效能會因500K 總數的限制（250K 輸入和250K 輸出）而正常下降，之後會捨棄額外的流程。
+現今，Azure 網路堆疊支援1百萬個流程 (500k VM 的輸入和500k 輸出) 。 在不同的情況下，VM 可以處理的作用中連線總數如下所示。
+- 屬於 VNET 的 Vm 可以針對 _*_每個方向_*_ 有500k 作用中流程的所有 VM 大小，處理 500k **_active connections_* _。  
+- 具有網路虛擬裝置 (Nva _*_) 的 vm_*_ （例如閘道、proxy、防火牆）可以處理 *_每個方向_* 的250k 作用中連線與 500k _ 作用中流量 *，因為新連線設定上的轉送和其他新流程建立會在新連線設定到下一個躍點，如上圖所示。 
 
-| 效能等級 | 具有 <8 個 CPU 核心的 Vm | 具有8個以上 CPU 核心的 Vm |
-| ----------------- | --------------------- | --------------------- |
-|<b>良好的效能</b>|100K 流程 |250K 流程|
-|<b>效能降低</b>|超過100k 流量|上述250K 流程|
-|<b>流程限制</b>|500K 流程|500K 流程|
+一旦達到此限制，就會捨棄額外的連接。 連接建立和終止速率也可能會影響網路效能，因為連線建立和終止共用 CPU 與封包處理常式。 建議您根據預期的流量模式來基準測試工作負載，並適當地相應放大工作負載，以符合您的效能需求。
 
 您可以在 [Azure 監視器](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 中找到計量，以追蹤 VM 或 VMSS 實例上的網路流量和流程建立率。
 

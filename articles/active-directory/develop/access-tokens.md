@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4a798443560f62673ef8fcf0bce970a66071d011
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653277"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232381"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平台存取權杖
 
@@ -292,10 +292,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 - 語音
 - PIN 碼
 
-> [!NOTE]
-> Windows 10 上的主要重新整理權杖 (PRT) 會根據認證進行區隔。 例如，Windows Hello 和密碼具有各自的 PRT，彼此隔離。 當使用者使用 Hello 認證 (PIN 或生物特徵辨識) 登入，然後變更密碼時，將會撤銷先前取得的密碼型 PRT。 以密碼重新登入會使舊的 PRT 失效，並要求新的 PRT。
->
-> 使用重新整理權杖來擷取新的存取權杖和重新整理權杖時，不會使該權杖失效或撤銷。  不過，應用程式應該在使用舊權杖後立即加以捨棄，並將其取代為新權杖，因為新權杖中有新的到期時間。
+如需主要重新整理權杖的詳細資訊，請參閱主要重新整理 [權杖](../devices/concept-primary-refresh-token.md) 。
 
 ## <a name="next-steps"></a>後續步驟
 

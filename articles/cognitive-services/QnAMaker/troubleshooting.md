@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: e8b1d985fcb2852df52382e005ec0f0266e23d9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aea205bee41aed232b8453417dca521d2dfc83ab
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345639"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233775"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>針對 QnA Maker 進行疑難排解
 
@@ -323,6 +323,29 @@ ms.locfileid: "96345639"
 
 1. 啟動 App service。
 1. 請存取您的知識庫以確認它現在可以運作。
+
+</details>
+<details>
+<summary><b>為什麼我的 Application Insights 無法運作？</b></summary>
+
+**答**：請交叉檢查並更新下列步驟來修正此問題：
+
+1. 在 App Service-> 設定群組-> 設定區段-> 應用程式設定-> 名稱 "UserAppInsightsKey" 參數已正確設定，並設定為個別的 application insights 總覽索引標籤 ( [檢測金鑰] ) Guid。 
+
+1. 在 App Service-> Settings group-> "Application Insights" 區段中 > 確定已啟用 App insights，並將其連線到個別的 application insights 資源。
+
+</details>
+
+<details>
+<summary><b>我的 Application Insights 已啟用，但為何無法正常運作？</b></summary>
+
+**答**：請依照下列步驟執行： 
+
+1.  藉由覆寫是否有某個值，將 ' "APPINSIGHTS_INSTRUMENTATIONKEY" name ' 的值複製到 ' UserAppInsightsKey ' 名稱。 
+
+1.  如果 ' UserAppInsightsKey ' 機碼不存在於應用程式設定中，請新增具有該名稱的新金鑰，然後複製值。
+
+1.  儲存它，這將會自動重新開機 app service。 這應該會解決此問題。 
 
 </details>
 

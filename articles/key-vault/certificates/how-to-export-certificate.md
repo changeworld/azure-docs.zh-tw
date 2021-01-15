@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: b3c917c9652954783fcddd92b9a7370c358ab3cc
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826121"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233639"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>從 Azure Key Vault 匯出憑證
 
-了解如何從 Azure Key Vault 匯出憑證。 您可以使用 Azure CLI、Azure PowerShell 或 Azure 入口網站來匯出憑證。 也可以使用 Azure 入口網站來匯出 Azure App Service 憑證。
+了解如何從 Azure Key Vault 匯出憑證。 您可以使用 Azure CLI、Azure PowerShell 或 Azure 入口網站來匯出憑證。 
 
 ## <a name="about-azure-key-vault-certificates"></a>關於 Azure Key Vault 憑證
 
@@ -114,7 +114,7 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 
 **匯出 Azure App Service 憑證**
 
-Azure App Service 憑證是方便您購買 SSL 憑證的方式。 您可以從入口網站內將其指派給 Azure 應用程式。 也可以從入口網站將這些憑證匯出為 PFX 檔案，以便在其他地方使用。 在您匯入 PFX 檔案之後，App Service 憑證位於 **祕密** 之下。
+Azure App Service 憑證是方便您購買 SSL 憑證的方式。 您可以從入口網站內將其指派給 Azure 應用程式。 在您匯入 PFX 檔案之後，App Service 憑證位於 **祕密** 之下。
 
 如需詳細資訊，請參閱[匯出 Azure App Service 憑證](https://social.technet.microsoft.com/wiki/contents/articles/37431.exporting-azure-app-service-certificates.aspx)的步驟。
 

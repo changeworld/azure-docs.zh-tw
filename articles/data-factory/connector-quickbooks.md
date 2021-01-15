@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/03/2020
-ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/15/2021
+ms.openlocfilehash: ecdb0e55aa7127a373e63612908ed58109c1f8e2
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529257"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233161"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>使用 Azure Data Factory 從 QuickBooks Online 複製資料 (預覽)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -48,19 +48,19 @@ ms.locfileid: "87529257"
 
 以下是針對 QuickBooks 已連結服務支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | Type 屬性必須設定為：**QuickBooks** | 是 |
-| connectionProperties | 定義如何連接到 QuickBooks 的一組屬性。 | 是 |
-| ***在 `connectionProperties` 下列情況下：*** | | |
-| 端點 | QuickBooks Online 伺服器的端點。 (也就是 quickbooks.api.intuit.com)  | 是 |
-| companyId | 要授權之 QuickBooks 公司的公司識別碼。 如需有關如何尋找公司識別碼的詳細資訊，請參閱 [如何? 尋找我的公司識別碼](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)。 | 是 |
-| consumerKey | OAuth 2.0 驗證的取用者金鑰。 | 是 |
-| consumerSecret | OAuth 2.0 驗證的取用者密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| type | Type 屬性必須設定為：**QuickBooks** | Yes |
+| connectionProperties | 定義如何連接到 QuickBooks 的一組屬性。 | Yes |
+| **_在 `connectionProperties` ：_* _ | | |
+| 端點 | QuickBooks Online 伺服器的端點。 (也就是 quickbooks.api.intuit.com)  | Yes |
+| companyId | 要授權之 QuickBooks 公司的公司識別碼。 如需有關如何尋找公司識別碼的詳細資訊，請參閱 [如何? 尋找我的公司識別碼](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551)。 | Yes |
+| consumerKey | OAuth 2.0 驗證的 QuickBooks Online 應用程式用戶端識別碼。 從 [這裡](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)深入瞭解。 | Yes |
+| consumerSecret | 適用于 OAuth 2.0 驗證的 QuickBooks Online 應用程式用戶端密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | refreshToken | 與 QuickBooks 應用程式相關聯的 OAuth 2.0 重新整理權杖。 從 [這裡](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app)深入瞭解。 注意：重新整理權杖將于180天后到期。 客戶必須定期更新重新整理權杖。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。| 是 |
-| useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
+| useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | No |
 
-**範例︰**
+_ *範例：**
 
 ```json
 {
@@ -93,7 +93,7 @@ ms.locfileid: "87529257"
 
 若要從 QuickBooks Online 複製資料，請將資料集的 type 屬性設定為 **QuickBooksObject**。 以下是支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為： **>quickbooksobject** | 是 |
 | tableName | 資料表的名稱。 | 否 (如果已指定活動來源中的「查詢」) |
@@ -123,7 +123,7 @@ ms.locfileid: "87529257"
 
 若要從 QuickBooks Online 複製資料，請將複製活動中的來源類型設定為 **QuickBooksSource**。 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 type 屬性必須設定為：**QuickBooksSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM "Bill" WHERE Id = '123'"` 。 | 否 (如果已指定資料集中的 "tableName") |

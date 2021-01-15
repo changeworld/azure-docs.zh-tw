@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: da38dd99d0f27d83d5810a664d0c05f979f47080
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920071"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232058"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>在 Azure Data Factory 中將連結服務參數化
 
@@ -39,9 +39,10 @@ ms.locfileid: "96920071"
 
 - Amazon Redshift
 - Amazon S3
-- Azure Cosmos DB (SQL API)
+- Azure Cosmos DB (SQL API) 
 - 適用於 MySQL 的 Azure 資料庫
 - Azure Databricks
+- Azure Key Vault
 - Azure SQL Database
 - Azure SQL 受控執行個體
 - Azure Synapse Analytics 

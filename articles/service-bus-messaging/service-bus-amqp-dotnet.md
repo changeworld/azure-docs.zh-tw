@@ -3,16 +3,19 @@ title: Azure 服務匯流排和 .NET 與 AMQP 1.0 | Microsoft Docs
 description: 本文說明如何使用 AMQP (Advanced 訊息佇列通訊協定) ，從 .NET 應用程式使用 Azure 服務匯流排。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6d7d01a56d2e7068f9c4ccb8ec505914a31ecf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067098"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233928"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>搭配使用 .NET 的服務匯流排與 AMQP 1.0
 
 服務匯流排套件 2.1 版或更新版本提供 AMQP 1.0 支援。 您可以從 [NuGet][NuGet] 下載服務匯流排軟體，以確保您擁有最新版本。
+
+> [!NOTE]
+> 您可以使用 Advanced 訊息佇列通訊協定 (AMQP) 或服務匯流排訊息通訊協定 (SBMP) 與適用于服務匯流排的 .NET 程式庫。 AMQP 是 .NET 程式庫所使用的預設通訊協定。 建議您使用 AMQP 通訊協定 (這是預設) ，而不是覆寫它。 
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>設定 .NET 應用程式以使用 AMQP 1.0
 
@@ -41,6 +44,14 @@ ms.locfileid: "88067098"
 其中 `namespace` 和 `SAS key` 是當您建立服務匯流排命名空間時，取自 [Azure 入口網站][Azure portal]。 如需詳細資訊，請參閱[使用 Azure 入口網站建立服務匯流排命名空間][Create a Service Bus namespace using the Azure portal]。
 
 使用 AMQP 時，在連接字串中附加 `;TransportType=Amqp`。 此標記法會指示用戶端程式庫使用 AMQP 1.0 來連線到「服務匯流排」。
+
+### <a name="amqp-over-websockets"></a>透過 WebSocket 的 AMQP
+若要使用 AMQP over Websocket，請 `TransportType` 在連接字串中將設定為 `AmqpWebSockets` 。 例如：`Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`。 
+
+如果您使用的是 .NET ServiceBusConnection，請將 [TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) 設定為 AmqpWebSockets of [TransportType enum](/dotnet/api/microsoft.azure.servicebus.transporttype)。
+
+如果您使用的是 .NET Azure TransportType 程式庫，請將 [>servicebusclient.](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) 設定為 AmqpWebSockets of [ServiceBusTransportType enum](/dotnet/api/azure.messaging.servicebus.servicebustransporttype)。
+
 
 ## <a name="message-serialization"></a>訊息序列化
 
@@ -75,10 +86,10 @@ ms.locfileid: "88067098"
 | Uri |描述的 string (請參閱下表) |AMQP 值 |
 | DateTimeOffset |描述的 long (請參閱下表) |AMQP 值 |
 | TimeSpan |描述的 long (請參閱下表) |AMQP 值 |
-| STREAM |BINARY |AMQP 資料 (可能有多個)。 Data 區段包含從 Stream 物件讀取的原始位元組。 |
+| 資料流 |BINARY |AMQP 資料 (可能有多個)。 Data 區段包含從 Stream 物件讀取的原始位元組。 |
 | 其他物件 |BINARY |AMQP 資料 (可能有多個)。 包含使用 DataContractSerializer 或應用程式所提供序列化程式之物件的序列化二進位資料。 |
 
-| .NET 類型 | 對應的 AMQP 描述類型 | 注意 |
+| .NET 類型 | 對應的 AMQP 描述類型 | 備註 |
 | --- | --- | --- |
 | Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |

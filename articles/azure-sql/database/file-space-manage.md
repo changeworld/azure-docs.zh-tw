@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
-ms.date: 03/12/2019
-ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 12/22/2020
+ms.openlocfilehash: 08cab806d6ad8b75821a92994dde0fa07db8b960
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789602"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233588"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>在 Azure SQL Database 中管理資料庫的檔案空間
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "92789602"
 > [!NOTE]
 > 本文「不」適用於 Azure SQL Database 受控執行個體。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 使用 Azure SQL Database 時，會有工作負載模式，而資料庫的基礎資料檔案配置可能會變得大於使用的資料頁量。 當使用的空間增加，隨後卻將資料刪除時，就會發生這種狀況。 原因是因為在資料刪除後，並不會自動回收已配置的檔案空間。
 
@@ -84,7 +84,7 @@ Azure SQL Database 不會自動壓縮資料檔案，以回收未使用的配置�
 SELECT TOP 1 storage_in_megabytes AS DatabaseDataSpaceUsedInMB
 FROM sys.resource_stats
 WHERE database_name = 'db1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>配置的資料庫資料空間與已配置但未使用的空間
@@ -98,7 +98,7 @@ SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
 SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
-HAVING type_desc = 'ROWS'
+HAVING type_desc = 'ROWS';
 ```
 
 ### <a name="database-data-max-size"></a>資料庫資料大小上限
@@ -108,7 +108,7 @@ HAVING type_desc = 'ROWS'
 ```sql
 -- Connect to database
 -- Database data max size in bytes
-SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
+SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes;
 ```
 
 ## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>了解彈性集區的儲存體空間類型
@@ -121,6 +121,9 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 |**已配置的資料空間**|彈性集區中的所有資料庫所配置的資料空間總和。||
 |**已配置但未使用的資料空間**|已配置的資料空間量與彈性集區中的所有資料庫已使用的資料空間之間的差異。|此數量代表已為彈性集區配置、且可藉由壓縮資料檔案而回收的空間量上限。|
 |**資料大小上限**|彈性集區可用於其所有資料庫的資料空間量上限。|為彈性集區配置的空間不應超過彈性集區大小上限。  如果發生此狀況，則可藉由壓縮資料庫資料檔案來回收已配置但未使用的空間。|
+
+> [!NOTE]
+> [彈性集區已達到儲存空間限制] 錯誤訊息表示已配置足夠的空間來符合彈性集區儲存體限制，但是資料空間配置中可能有未使用的空間。 請考慮增加彈性集區的儲存空間限制，或使用下面的「 [**回收未使用**](#reclaim-unused-allocated-space) 的配置空間」一節，以較短期的解決方案來釋出資料空間。 您也應該留意壓縮資料庫檔案的潛在負面效能影響，請參閱下面的 [**重建索引**](#rebuild-indexes) 一節。
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>查詢彈性集區，以取得儲存體空間資訊
 
@@ -136,7 +139,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 SELECT TOP 1 avg_storage_percent / 100.0 * elastic_pool_storage_limit_mb AS ElasticPoolDataSpaceUsedInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>配置的彈性集區資料空間與已配置但未使用的空間
@@ -187,7 +190,7 @@ Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocated
 
 ### <a name="elastic-pool-data-max-size"></a>彈性集區資料大小上限
 
-修改下列 T-SQL 查詢，以傳回彈性集區資料大小上限。  查詢結果以 MB 為單位。
+修改下列 T-SQL 查詢，以傳回上次記錄的彈性集區資料大小上限。  查詢結果以 MB 為單位。
 
 ```sql
 -- Connect to master
@@ -195,13 +198,13 @@ Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocated
 SELECT TOP 1 elastic_pool_storage_limit_mb AS ElasticPoolMaxSizeInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ## <a name="reclaim-unused-allocated-space"></a>回收未使用的配置空間
 
 > [!NOTE]
-> 此命令可能會在資料庫執行時影響其效能，如果可能，應該在低使用量期間執行。
+> 壓縮命令會影響資料庫在執行時的效能，並盡可能在低使用量期間執行。
 
 ### <a name="dbcc-shrink"></a>DBCC 壓縮
 
@@ -209,24 +212,28 @@ ORDER BY end_time DESC
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1')
+DBCC SHRINKDATABASE (N'db1');
 ```
 
-此命令可能會在資料庫執行時影響其效能，如果可能，應該在低使用量期間執行。  
+壓縮命令會影響資料庫在執行時的效能，並盡可能在低使用量期間執行。  
 
-如需有關此命令的詳細資訊，請參閱 [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)。
+您也應該留意壓縮資料庫檔案的潛在負面效能影響，請參閱下面的 [**重建索引**](#rebuild-indexes) 一節。
+
+如需有關此命令的詳細資訊，請參閱 [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql.md)。
 
 ### <a name="auto-shrink"></a>自動壓縮
 
 或者，可以啟用資料庫自動壓縮。  自動壓縮會減少檔案管理複雜度，且比起 `SHRINKDATABASE` 或 `SHRINKFILE` 較不影響資料庫效能。  自動壓縮對於管理包含許多資料庫的彈性集區可能特別有用。  不過，自動壓縮比起 `SHRINKDATABASE` 和 `SHRINKFILE` 在回收檔案空間上可能較沒效率。
+根據預設，針對大部分的資料庫，預設會停用自動壓縮。 如需詳細資訊，請參閱 [AUTO_SHRINK 的考慮](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink)。
+
 若要啟用自動壓縮，請修改下列命令中的資料庫名稱。
 
 ```sql
 -- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON
+ALTER DATABASE [db1] SET AUTO_SHRINK ON;
 ```
 
-如需有關此命令的詳細資訊，請參閱 [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 選項。
+如需有關此命令的詳細資訊，請參閱 [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options) 選項。
 
 ### <a name="rebuild-indexes"></a>重建索引
 
