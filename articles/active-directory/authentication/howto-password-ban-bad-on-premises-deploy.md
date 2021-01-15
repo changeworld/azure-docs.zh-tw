@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deb1f74902fe28d53a5180e4f341547f339a83ac
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741978"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220281"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>規劃和部署內部部署 Azure Active Directory 密碼保護
 
@@ -99,7 +99,7 @@ Azure AD 密碼保護 DC 代理程式軟體的設計可減少與高可用性相�
 
 下列需求適用于 Azure AD 密碼保護 DC 代理程式：
 
-* 將安裝 Azure AD 密碼保護 DC 代理程式軟體的所有電腦都必須執行 Windows Server 2012 或更新版本。
+* 將安裝 Azure AD 密碼保護 DC 代理程式軟體的所有電腦都必須執行 Windows Server 2012 或更新版本，包括 Windows Server Core 版本。
     * Active Directory 網域或樹系不需要位於 Windows Server 2012 網域功能等級 (DFL) 或樹系功能等級 (FFL) 。 如同在 [設計原則](concept-password-ban-bad-on-premises.md#design-principles)中所述，執行 DC 代理程式或 proxy 軟體沒有必要的最小 DFL 或 FFL。
 * 所有執行 Azure AD 密碼保護 DC 代理程式的電腦都必須安裝 .NET 4.5。
 * 任何執行 Azure AD 密碼保護 DC 代理程式服務的 Active Directory 網域，都必須使用分散式檔案系統 Replication (DFSR) 進行 sysvol 複寫。
@@ -116,7 +116,7 @@ Azure AD 密碼保護 DC 代理程式軟體的設計可減少與高可用性相�
 
 下列需求適用于 Azure AD 密碼保護 proxy 服務：
 
-* 將安裝 Azure AD 密碼保護 proxy 服務的所有電腦都必須執行 Windows Server 2012 R2 或更新版本。
+* 將安裝 Azure AD 密碼保護 proxy 服務的所有電腦都必須執行 Windows Server 2012 R2 或更新版本，包括 Windows Server Core 版本。
 
     > [!NOTE]
     > 即使網域控制站可能具有連出的直接網際網路連線，Azure AD 密碼保護 proxy 服務部署也是部署 Azure AD 密碼保護的必要需求。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1e46cf78c76e873bcb78af4942f42a5c4be45391
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: deb9f60cd3f75eacdf0adc06f6f7470819949555
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955581"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223222"
 ---
 # <a name="public-ip-addresses"></a>公用 IP 位址
 
@@ -44,7 +44,7 @@ ms.locfileid: "97955581"
 公用 IP 位址是使用下列其中一個 SKU 所建立的：
 
 >[!IMPORTANT]
-> 負載平衡器和公用 IP 資源必須要有相符的 Sku。 您無法將基本 SKU 資源與標準 SKU 資源混用。 您無法將獨立虛擬機器、可用性設定組資源中的虛擬機器或虛擬機器擴展集資源同時連結到這兩個 SKU。  新的設計應該考慮使用標準 SKU 資源。  請檢閱[標準負載平衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)以取得詳細資料。
+> 負載平衡器和公用 IP 資源必須要有相符的 Sku。 您無法將基本 SKU 資源與標準 SKU 資源混用。 您無法將獨立虛擬機器、可用性設定組資源中的虛擬機器或虛擬機器擴展集資源同時連結到這兩個 SKU。  新的設計應該考慮使用標準 SKU 資源。  請檢閱[標準負載平衡器](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)以取得詳細資料。
 
 ### <a name="standard"></a>標準
 
@@ -52,13 +52,13 @@ ms.locfileid: "97955581"
 
 - 一律使用靜態配置方法。
 - 讓可調整的輸入起源流量閒置逾時 4 到 30 分鐘 (預設值為 4 分鐘)，固定的輸出起源流量閒置逾時 4 分鐘。
-- 預設為安全且已關閉連入流量。 允許列出具有 [網路安全性群組](security-overview.md#network-security-groups)的輸入流量。
-- 指派給網路介面、標準公用負載平衡器或應用程式閘道。 如需標準負載平衡器的詳細資訊，請參閱 [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- 可以是區域冗余 (從所有3個區域 advertized) 或區域 (可以在特定的可用性區域) 中建立區域性和保證。 若要了解可用性區域，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[標準負載平衡器和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 **區域多餘 Ip 只能在具有3個 [可用性區域的區域](https://docs.microsoft.com/azure/availability-zones/az-region) 中建立。** 在區域上線之前建立的 Ip 不會是區域冗余。
-- 可以用來作為 [跨區域負載平衡](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) 器的任意傳播前端 ip (預覽功能) 。
+- 預設為安全且已關閉連入流量。 允許列出具有 [網路安全性群組](./network-security-groups-overview.md#network-security-groups)的輸入流量。
+- 指派給網路介面、標準公用負載平衡器或應用程式閘道。 如需標準負載平衡器的詳細資訊，請參閱 [Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 可以是區域冗余 (從所有3個區域 advertized) 或區域 (可以在特定的可用性區域) 中建立區域性和保證。 若要了解可用性區域，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[標準負載平衡器和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 **區域多餘 Ip 只能在具有3個 [可用性區域的區域](../availability-zones/az-region.md) 中建立。** 在區域上線之前建立的 Ip 不會是區域冗余。
+- 可以用來作為 [跨區域負載平衡](../load-balancer/cross-region-overview.md) 器的任意傳播前端 ip (預覽功能) 。
  
 > [!NOTE]
-> 在建立和關聯[網路安全性群組](security-overview.md#network-security-groups)並明確地允許所要輸入流量前，與標準 SKU 資源進行的輸入通訊會失敗。
+> 在建立和關聯[網路安全性群組](./network-security-groups-overview.md#network-security-groups)並明確地允許所要輸入流量前，與標準 SKU 資源進行的輸入通訊會失敗。
 
 > [!NOTE]
 > 使用 [實例中繼資料服務 IMDS](../virtual-machines/windows/instance-metadata-service.md)時，只有具有基本 SKU 的公用 IP 位址可供使用。 不支援標準 SKU。
@@ -150,7 +150,7 @@ ms.locfileid: "97955581"
 
 您可以將動態或靜態公用 IP 位址指派給負載平衡器前端。 您可以將多個公用 IP 位址指派給負載平衡器前端。 此設定可啟用 [多 VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 案例，例如具有 TLS 型網站的多租使用者環境。 
 
-如需 Azure 負載平衡器 SKU 的詳細資訊，請參閱 [Azure 負載平衡器的標準 SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+如需 Azure 負載平衡器 SKU 的詳細資訊，請參閱 [Azure 負載平衡器的標準 SKU](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="vpn-gateways"></a>VPN 閘道
 
@@ -163,7 +163,7 @@ ms.locfileid: "97955581"
 
 ## <a name="application-gateways"></a>應用程式閘道
 
-您可以將公用 IP 位址指派給閘道的 [前端](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)組態，以建立其與 Azure **應用程式閘道** 的關聯。 
+您可以將公用 IP 位址指派給閘道的 [前端](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)組態，以建立其與 Azure **應用程式閘道** 的關聯。 
 
 * 將 **動態** 基本公用 IP 指派給應用程式閘道 V1 前端設定。 
 * 將 **靜態** 標準 SKU 位址指派給 V2 前端設定。
@@ -200,4 +200,3 @@ IP 位址的限制列在 Azure 中的一組完整 [網路限制](../azure-resour
 ## <a name="next-steps"></a>後續步驟
 * 瞭解 [Azure 中的私人 IP 位址](private-ip-addresses.md)
 * [使用 Azure 入口網站部署使用靜態公用 IP 的 VM](virtual-network-deploy-static-pip-arm-portal.md)
-

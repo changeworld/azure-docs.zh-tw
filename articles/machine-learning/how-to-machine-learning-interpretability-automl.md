@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, automl
+ms.custom: how-to, automl, responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: ce13e0431827bb2c72a03ca33a1ecaefc53d4970
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 19cebefd64f5b6dce9c265a591c8d5072fcd83db
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702511"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222729"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>可解釋性：自動化機器學習中的模型說明 (預覽)
 
@@ -31,7 +31,7 @@ ms.locfileid: "97702511"
 - 啟用視覺效果，以協助您查看資料中的模式和說明。
 - 在推斷或評分期間執行可解譯性。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 可解譯性功能。 執行 `pip install azureml-interpret` 以取得必要的套件。
 - 建立 AutoML 實驗的知識。 如需有關如何使用 Azure Machine Learning SDK 的詳細資訊，請完成此 [回歸模型教學](tutorial-auto-train-models.md) 課程，或瞭解如何 [設定 AutoML 實驗](how-to-configure-auto-train.md)。

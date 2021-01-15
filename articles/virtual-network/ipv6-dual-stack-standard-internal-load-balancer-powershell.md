@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: 759bd94aee98aa04dee56acf0e50ca90cd0541b8
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 3df89b84e748f041f13866c1eb3c0b8a3341209c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96000601"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220825"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>在 Azure 中使用 Standard Internal Load Balancer 部署 IPv6 雙重堆疊應用程式-PowerShell (Preview) 
 
@@ -43,7 +43,7 @@ ms.locfileid: "96000601"
 
 如果您選擇在本機安裝和使用 PowerShell，本文會要求使用 Azure PowerShell 模組 6.9.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 在 Azure 中部署雙重堆疊應用程式之前，您必須使用下列 Azure PowerShell 設定此預覽功能的訂用帳戶：
 
 註冊方式如下：
@@ -302,7 +302,7 @@ $NIC_2 = New-AzNetworkInterface `
 
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
-使用 [Get-credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 來設定 VM 的系統管理員使用者名稱和密碼：
+使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential) 來設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell
 $cred = get-credential -Message "DUAL STACK VNET SAMPLE:  Please enter the Administrator credential to log into the VM's"

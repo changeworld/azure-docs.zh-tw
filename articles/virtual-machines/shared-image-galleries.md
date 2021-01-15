@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 4156308fa58ea1f02e6e3f2c5174839dc1cd381c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2731a7f263db223c258ddfc434bc84f59632d1f5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96841407"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223358"
 ---
 # <a name="shared-image-galleries-overview"></a>共用映像資源庫概觀
 
@@ -316,6 +316,11 @@ ms.locfileid: "96841407"
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>是否可以使用受控映像將建立的虛擬機器擴展集更新為使用共用映像庫映像？
 
 是，您可以將擴展集映像參考從受控映像更新為共用映像庫映像，只要映像之間的 OS 類型、Hyper-V 產生和資料磁碟版面配置相符即可。
+
+## <a name="troubleshoot-shared-image-gallery-issues"></a>針對共用映射庫問題進行疑難排解
+如果您在共用映射庫資源上執行任何作業時遇到問題，請參閱 [疑難排解指南](troubleshooting-shared-images.md)中的常見錯誤清單。
+
+此外，您可以 `azure-virtual-machines-images` 在 [Q&A](/answers/topics/azure-virtual-machines-images.html)張貼和標記問題。
 
 ## <a name="next-steps"></a>後續步驟
 

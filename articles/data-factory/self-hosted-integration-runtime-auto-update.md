@@ -1,8 +1,6 @@
 ---
-title: 自我裝載整合執行時間自動更新和過期通知
+title: 自我裝載整合執行階段自動更新及過期通知
 description: 瞭解自我裝載整合執行時間自動更新和過期通知
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
@@ -11,14 +9,14 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 6a6c897d92d469fd6247dd51f2bacb91032ac123
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8c51839e760dcca32bfc0d150c5e4d10767d95a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98122186"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222675"
 ---
-# <a name="self-hosted-integration-runtime-auto-update-and-expire-notification"></a>自我裝載整合執行時間自動更新和過期通知
+# <a name="self-hosted-integration-runtime-auto-update-and-expire-notification"></a>自我裝載整合執行階段自動更新及過期通知
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -33,7 +31,7 @@ ms.locfileid: "98122186"
 
 您可以在自我裝載整合執行時間用戶端中檢查上次更新的日期時間。
 
-![啟用自動更新](media/create-self-hosted-integration-runtime/shir-auto-update-2.png)
+![檢查更新時間的螢幕擷取畫面](media/create-self-hosted-integration-runtime/shir-auto-update-2.png)
 
 > [!NOTE]
 > 為了確保自我裝載整合執行時間的穩定性，雖然我們發行兩個版本，但每個月只會自動更新一次。 因此，有時候您會發現自動更新版本是最新版本的實際版本。 如果您想要取得最新版本，您可以前往 [下載中心](https://www.microsoft.com/download/details.aspx?id=39717)。

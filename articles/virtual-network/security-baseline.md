@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d183edbe82d59b9d0c1ebe075dd2639137d5081c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 716491f1a82b82bec865d0ca719e0e2c10e4400a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200867"
+ms.locfileid: "98223443"
 ---
 # <a name="azure-security-baseline-for-virtual-network"></a>虛擬網路的 Azure 安全性基準
 
@@ -54,11 +54,11 @@ ms.locfileid: "98200867"
 
 針對網路安全性群組設定套用資訊安全中心的彈性網路強化建議，以根據實際流量和威脅情報來限制埠和來源 Ip。 
 
-- [使用 Azure 入口網站管理 Azure DDoS 保護標準](manage-ddos-protection.md)
+- [使用 Azure 入口網站管理 Azure DDoS 保護標準](../ddos-protection/manage-ddos-protection.md)
 
 - [以 Azure 防火牆威脅情報為主的篩選](../firewall/threat-intel.md)
 
-- [安全性中心內的威脅防護](/azure/security-center/threat-protection)
+- [安全性中心內的威脅防護](../security-center/azure-defender.md)
 
 - [Azure 資訊安全中心中的適應性網路強化](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -106,7 +106,7 @@ ms.locfileid: "98200867"
 
 - [瞭解和使用服務標記](service-tags-overview.md)
 
-- [瞭解及使用應用程式安全性群組](/azure/virtual-network/security-overview#application-security-groups)
+- [瞭解及使用應用程式安全性群組](./network-security-groups-overview.md#application-security-groups)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -139,7 +139,7 @@ ms.locfileid: "98200867"
 
 選擇 Azure PowerShell 或 Azure CLI，以根據其標記查閱或執行資源的動作。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 - [如何建立虛擬網路](quick-create-portal.md)
 
@@ -153,7 +153,7 @@ ms.locfileid: "98200867"
 
 **指導** 方針：使用 Azure 活動記錄來監視資源設定，並偵測對您虛擬網路的變更。 在 Azure 監視器中建立警示，在發生重大資源變更時就會觸發此警示。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -174,7 +174,7 @@ ms.locfileid: "98200867"
 
 - [如何使用 Azure 監視器收集平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md) 
 
-- [查看和取出 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [查看和取出 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
@@ -188,7 +188,7 @@ ms.locfileid: "98200867"
 
 - [如何使用 Azure 監視器收集平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md) 
 
-- [查看和取出 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [查看和取出 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure 資訊安全中心監視**：是
 
@@ -212,7 +212,7 @@ ms.locfileid: "98200867"
 
 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。 
 
-- [了解 Log Analytics 工作區](../azure-monitor/log-query/get-started-portal.md)
+- [了解 Log Analytics 工作區](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [如何在 Azure 監視器中執行自訂查詢](../azure-monitor/log-query/get-started-queries.md)
 
@@ -258,9 +258,9 @@ ms.locfileid: "98200867"
 
 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -272,7 +272,7 @@ ms.locfileid: "98200867"
 
 使用適用于 Microsoft 服務和 Azure Resource Manager 的 Azure AD Privileged Identity Management 特殊許可權角色，來啟用及時/夠足夠的存取。 
 
-- [深入瞭解 Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [深入瞭解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure 資訊安全中心監視**：是
 
@@ -320,7 +320,7 @@ ms.locfileid: "98200867"
 
 使用動作群組將安全中心的風險偵測警示內嵌至 Azure 監視器並設定自訂警示/通知。
 
-- [瞭解 (可疑活動) 的安全性中心風險偵測 ](/azure/active-directory/reports-monitoring/concept-risk-events) 
+- [瞭解 (可疑活動) 的安全性中心風險偵測 ](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) 
 
@@ -356,7 +356,7 @@ ms.locfileid: "98200867"
 
 您可以執行 Azure 身分識別存取審查，有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 應定期檢查使用者存取權，以確保只有作用中的使用者可以繼續存取。
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
@@ -380,7 +380,7 @@ ms.locfileid: "98200867"
 
 **指導** 方針：使用 Azure Active Directory 的 (Azure AD) 風險和身分識別保護功能，以針對偵測到與您虛擬網路的使用者身分識別相關的可疑動作，設定自動回應。 將資料內嵌到 Azure Sentinel 以進行進一步的調查。
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -446,7 +446,7 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 - [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md) 
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0) 
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -458,7 +458,7 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 **指引**：將標籤套用至提供中繼資料的 Azure 資源，以邏輯方式依分類組織這些資源。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -468,11 +468,11 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 **指導** 方針：使用標記、管理群組和個別的訂用帳戶（如果適當）來組織和追蹤虛擬網路和相關資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription) 
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md) 
 
-- [如何建立管理群組](/azure/governance/management-groups/create) 
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md) 
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -499,7 +499,7 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 - [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [適用于虛擬網路的 Azure 原則範例內建](/azure/virtual-network/policy-samples)
+- [適用于虛擬網路的 Azure 原則範例內建](./policy-reference.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -524,9 +524,9 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md) 
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
-- [適用于虛擬網路的 Azure 原則範例內建](/azure/virtual-network/policy-samples)
+- [適用于虛擬網路的 Azure 原則範例內建](./policy-reference.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -554,11 +554,11 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 針對您的 Azure 資源，以安全的設定基準來執行來自「安全性中心」的建議。
 
-- [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
 - [教學課程：建立和管理原則來強制執行相容性](../governance/policy/tutorials/create-and-manage.md)
 
-- [適用于虛擬網路的 Azure 原則範例內建](/azure/virtual-network/policy-samples)
+- [適用于虛擬網路的 Azure 原則範例內建](./policy-reference.md)
 
 - [Azure 入口網站中的單一和多重資源匯出至範本](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -582,7 +582,7 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 - [虛擬網路的 Azure Resource Manager 範本範例](template-samples.md)
 
-- [適用于虛擬網路的 Azure 原則範例內建](/azure/virtual-network/policy-samples)
+- [適用于虛擬網路的 Azure 原則範例內建](./policy-reference.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -594,7 +594,7 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 您必須有權存取您想要在 Azure DevOps 中管理的資源，例如程式碼、組建和工作追蹤。 大部分的許可權是透過內建安全性群組授與。 您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 Active Directory 整合時的 Team Foundation Server。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops) 
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
 
 - [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions)
 
@@ -610,7 +610,7 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 - [如何使用別名](../governance/policy/concepts/definition-structure.md#aliases)
 
-- [適用于虛擬網路的 Azure 原則範例內建](/azure/virtual-network/policy-samples)
+- [適用于虛擬網路的 Azure 原則範例內建](./policy-reference.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -624,7 +624,7 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [適用于虛擬網路的 Azure 原則範例內建](/azure/virtual-network/policy-samples)
+- [適用于虛擬網路的 Azure 原則範例內建](./policy-reference.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -636,9 +636,9 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 - [如何與 Azure 受控識別整合](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md) 
 
-- [如何建立 Key Vault](/azure/key-vault/quick-create-portal) 
+- [如何建立 Key Vault](../key-vault/secrets/quick-create-portal.md) 
 
-- [如何使用受控識別來提供 Key Vault authentication](/azure/key-vault/managed-identity)
+- [如何使用受控識別來提供 Key Vault authentication](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -690,7 +690,7 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 - [Azure 自動化簡介](../automation/automation-intro.md)
 
-- [如何在 Azure 中備份金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -716,13 +716,13 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 在 Key Vault 中啟用 Soft-Delete 和清除保護，以防止金鑰遭到意外或惡意刪除。  
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 - [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions)
 
-- [如何在 Key Vault 中啟用 Soft-Delete 和清除保護](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal) 
+- [如何在 Key Vault 中啟用 Soft-Delete 和清除保護](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal) 
 
-- [Azure 儲存體 Blob 的虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Azure 儲存體 Blob 的虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -754,7 +754,7 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 - [安全性中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -822,5 +822,5 @@ Microsoft 提供數個選項，可讓客戶利用這些選項來保護 Azure 網
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3f9dd35959980eef4e1bec550bf7e9f583cf30d2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506324"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98225558"
 ---
 使用區域 VNet 整合可讓您的應用程式存取：
 
@@ -48,7 +48,6 @@ ms.locfileid: "97506324"
 * 此功能需要 Azure Resource Manager VNet 中的/28 或更大的未使用子網。
 * 應用程式和 VNet 必須位於相同的區域。
 * 您無法使用整合式應用程式刪除 VNet。 刪除 VNet 之前，請先移除整合。
-* 您只能在與應用程式相同的訂用帳戶中與 Vnet 整合。
 * 每 App Service 方案只能有一個區域 VNet 整合。 相同 App Service 方案中的多個應用程式可以使用相同的 VNet。
 * 當有使用區域 VNet 整合的應用程式時，您無法變更應用程式或方案的訂用帳戶。
 * 您的應用程式無法在沒有設定變更的 Azure DNS 私人區域中解析位址

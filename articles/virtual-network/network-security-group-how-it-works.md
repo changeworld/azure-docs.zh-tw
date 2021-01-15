@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: e60cdfb00d0dc9d446bd52a72e9fd15676acd285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cf0345ccffe95286b95607c6c7322752df6342b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458190"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223273"
 ---
 # <a name="how-network-security-groups-filter-network-traffic"></a>網路安全性群組篩選網路流量的方式
 <a name="network-security-groups"></a>
 
-您可以使用 Azure 網路安全性群組來篩選與 Azure 虛擬網路中的 Azure 資源之間的網路流量。 網路安全性群組包含 [安全性規則](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) ，可允許或拒絕來自數種 Azure 資源類型的輸入網路流量或輸出網路流量。 您可以為每個規則指定來源和目的地、連接埠及通訊協定。
+您可以使用 Azure 網路安全性群組來篩選與 Azure 虛擬網路中的 Azure 資源之間的網路流量。 網路安全性群組包含 [安全性規則](./network-security-groups-overview.md#security-rules) ，可允許或拒絕來自數種 Azure 資源類型的輸入網路流量或輸出網路流量。 您可以為每個規則指定來源和目的地、連接埠及通訊協定。
 
 您可以將數個 Azure 服務的資源部署到 Azure 虛擬網路。 如需完整清單，請參閱[可以部署至虛擬網路的服務](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)。 您可以將零個或一個網路安全性群組關聯至每個虛擬網路[子網路](virtual-network-manage-subnet.md#change-subnet-settings)，以及虛擬機器中的[網路介面](virtual-network-network-interface.md#associate-or-dissociate-a-network-security-group)。 您可以將相同的網路安全性群組關聯至所需數量的子網路和網路介面。
 
@@ -37,19 +37,19 @@ ms.locfileid: "89458190"
 
 針對輸入流量，Azure 會先針對與子網路相關聯的網路安全性群組，處理其中的規則 (如果有的話)，然後再針對與網路介面相關聯的網路安全性群組，處理其中的規則 (如果有的話)。
 
-- **VM1**：NSG1** 中的安全性規則會進行處理，因為它與 Subnet1** 和 VM1** 相關聯，並且位於 Subnet1** 中。 除非您已建立一個規則來允許連接埠 80 的輸入，否則流量會遭到 [DenyAllInbound](https://docs.microsoft.com/azure/virtual-network/security-overview#denyallinbound) 預設安全性規則拒絕，並永遠不會由 NSG2** 進行評估，因為 NSG2** 與網路介面相關聯。 如果 NSG1** 具有允許連接埠 80 的安全性規則，流量接著會由 NSG2** 進行處理。 若要允許流量從連接埠 80 輸入虛擬機器，則 NSG1** 和 NSG2** 都必須有規則來允許從網際網路輸入流量的連接埠 80。
-- **VM2**：在 NSG1** 中的規則會進行處理，因為VM2** 也位於 Subnet1** 中。 由於 VM2** 沒有與其網路介面相關聯的網路安全性群組，因此會接收允許通過 NSG1** 的所有流量，或拒絕所有 NSG1** 拒絕的流量。 如果網路安全性群組與子網路相關聯，則相同子網路中的所有資源會一起接收或拒絕流量。
-- **VM3**：由於沒有任何網路安全性群組與 Subnet2** 相關聯，流量會允許進入子網路並由NSG2 ** 處理流量，因為 NSG2** 與連結至 VM3** 的網路介面相關聯。
-- **VM4**：流量會允許進入 VM4**，因為網路安全性群組未與 Subnet3** 或虛擬機器中的網路介面相關聯。 如果沒有任何網路安全性群組與子網路和網路介面相關聯，則所有網路流量都可以通過子網路和網路介面。
+- **VM1**：NSG1 中的安全性規則會進行處理，因為它與 Subnet1 和 VM1 相關聯，並且位於 Subnet1 中。 除非您已建立一個規則來允許連接埠 80 的輸入，否則流量會遭到 [DenyAllInbound](./network-security-groups-overview.md#denyallinbound) 預設安全性規則拒絕，並永遠不會由 NSG2 進行評估，因為 NSG2 與網路介面相關聯。 如果 NSG1 具有允許連接埠 80 的安全性規則，流量接著會由 NSG2 進行處理。 若要允許流量從連接埠 80 輸入虛擬機器，則 NSG1 和 NSG2 都必須有規則來允許從網際網路輸入流量的連接埠 80。
+- **VM2**：在 NSG1 中的規則會進行處理，因為VM2 也位於 Subnet1 中。 由於 VM2 沒有與其網路介面相關聯的網路安全性群組，因此會接收允許通過 NSG1 的所有流量，或拒絕所有 NSG1 拒絕的流量。 如果網路安全性群組與子網路相關聯，則相同子網路中的所有資源會一起接收或拒絕流量。
+- **VM3**：由於沒有任何網路安全性群組與 Subnet2 相關聯，流量會允許進入子網路並由NSG2  處理流量，因為 NSG2 與連結至 VM3 的網路介面相關聯。
+- **VM4**：流量會允許進入 VM4，因為網路安全性群組未與 Subnet3 或虛擬機器中的網路介面相關聯。 如果沒有任何網路安全性群組與子網路和網路介面相關聯，則所有網路流量都可以通過子網路和網路介面。
 
 ## <a name="outbound-traffic"></a>輸出流量
 
 針對輸出流量，Azure 會先針對與網路介面相關聯的網路安全性群組，處理其中的規則 (如果有的話)，然後再針對與子網路相關聯的網路安全性群組，處理其中的規則 (如果有的話)。
 
-- **VM1**：NSG2** 中的安全性規則會進行處理。 除非您建立安全性規則來拒絕向網際網路輸出流量的連接埠 80，否則 NSG1** 和 NSG2** 中的 [AllowInternetOutbound](https://docs.microsoft.com/azure/virtual-network/security-overview#allowinternetoutbound) 預設安全性規則會允許流量通過。 如果 NSG2** 具有拒絕連接埠 80 的安全性規則，則流量會遭到拒絕，且永遠不會由 NSG1** 進行評估。 若要拒絕流量從連接埠 80 輸出虛擬機器，其中一個網路安全性群組或兩個網路安全性群組必須有規則來拒絕將流量流向網際網路的連接埠 80。
-- **VM2**：所有流量都會通過網路介面流向子網路，因為連結到 VM2** 的網路介面沒有與網路安全性群組相關聯。 NSG1** 中的規則會進行處理。
-- **VM3**：如果 NSG2** 具有拒絕連接埠 80 的安全性規則，則流量會遭到拒絕。 如果 NSG2** 有允許連接埠 80 的安全性規則，則連接埠 80 允許輸出流量到網際網路，因為沒有與 Subnet2** 相關聯的網路安全性群組。
-- **VM4**：所有網路流量會允許從 VM4** 輸出，因為網路安全性群組未與連結至虛擬機器的網路介面或 Subnet3** 相關聯。
+- **VM1**：NSG2 中的安全性規則會進行處理。 除非您建立安全性規則來拒絕向網際網路輸出流量的連接埠 80，否則 NSG1 和 NSG2 中的 [AllowInternetOutbound](./network-security-groups-overview.md#allowinternetoutbound) 預設安全性規則會允許流量通過。 如果 NSG2 具有拒絕連接埠 80 的安全性規則，則流量會遭到拒絕，且永遠不會由 NSG1 進行評估。 若要拒絕流量從連接埠 80 輸出虛擬機器，其中一個網路安全性群組或兩個網路安全性群組必須有規則來拒絕將流量流向網際網路的連接埠 80。
+- **VM2**：所有流量都會通過網路介面流向子網路，因為連結到 VM2 的網路介面沒有與網路安全性群組相關聯。 NSG1 中的規則會進行處理。
+- **VM3**：如果 NSG2 具有拒絕連接埠 80 的安全性規則，則流量會遭到拒絕。 如果 NSG2 有允許連接埠 80 的安全性規則，則連接埠 80 允許輸出流量到網際網路，因為沒有與 Subnet2 相關聯的網路安全性群組。
+- **VM4**：所有網路流量會允許從 VM4 輸出，因為網路安全性群組未與連結至虛擬機器的網路介面或 Subnet3 相關聯。
 
 
 ## <a name="intra-subnet-traffic"></a>Intra-Subnet 流量

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 53dd6d2dda762b3cbf53f4aaec6cd3692a9656e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d98107075c215c0a00bc2035325a6ad8bf5bfc5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432581"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222423"
 ---
 # <a name="public-ip-address-prefix"></a>公用 IP 位址首碼
 
 公用 IP 位址首碼是 Azure 中的保留 IP 位址範圍。 Azure 會根據您指定的數量，為您的訂用帳戶提供連續的位址範圍。 
 
-如果您不熟悉如何使用公用位址，請參閱[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+如果您不熟悉如何使用公用位址，請參閱[公用 IP 位址](./public-ip-addresses.md#public-ip-addresses)。
 
 將會從每個 Azure 區域的位址集區指派公用 IP 位址。 您可以[下載](https://www.microsoft.com/download/details.aspx?id=56519) Azure 用於每個區域的範圍清單。 例如，40.121.0.0/16 是 Azure 在美國東部區域使用的 100 多個範圍之一。 此範圍也包括 40.121.0.1 - 40.121.255.254 的可用位址。
 
@@ -68,14 +68,14 @@ ms.locfileid: "87432581"
 ## <a name="constraints"></a>條件約束
 
 - 您無法指定首碼的 IP 位址。 Azure 會根據您指定的大小，提供首碼的 IP 位址。
-- 您可以建立最多16個 IP 位址的前置詞，或預設為/28。 如需詳細資訊，請參閱 [網路限制增加要求](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) 和 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) 。
+- 您可以建立最多16個 IP 位址的前置詞，或預設為/28。 如需詳細資訊，請參閱 [網路限制增加要求](../azure-portal/supportability/networking-quota-requests.md) 和 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) 。
 - 建立首碼之後，就無法變更範圍。
-- 只能從首碼的範圍指派使用標準 SKU 建立的靜態公用 IP 位址。 若要深入了解公用 IP 位址 SKU，請參閱[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+- 只能從首碼的範圍指派使用標準 SKU 建立的靜態公用 IP 位址。 若要深入了解公用 IP 位址 SKU，請參閱[公用 IP 位址](./public-ip-addresses.md#public-ip-addresses)。
 - 範圍中的位址只能指派給 Azure Resource Manager 資源。 位址無法指派給傳統部署模型中的資源。
 - 從首碼建立的所有公用 IP 位址都必須存在於與前置詞相同的 Azure 區域和訂用帳戶中。 位址必須指派給相同區域和訂用帳戶中的資源。
 - 如果首碼中的任何位址指派給與資源相關聯的公用 IP 位址資源，則無法刪除該首碼。 首先，中斷已指派來自首碼 IP 位址之所有公用 IP 位址資源的關聯。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [建立](manage-public-ip-address-prefix.md) 公用 IP 位址首碼

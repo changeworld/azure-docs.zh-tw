@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70410e58acb30c7694e6fe4a6dcaff57bee98607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836100"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223426"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>針對 Azure 虛擬網路 NAT 連線進行疑難排解
 
@@ -68,10 +68,10 @@ _**解決方案：**_ 使用適當的模式和最佳做法
 SNAT 耗盡也會隨著基礎應用程式中的其他反向模式而增加。 請參閱這些額外的模式和最佳做法，以改善服務的規模調整和可靠性。
 
 - 探索減少 [TCP 閒置逾時](nat-gateway-resource.md#timers)的影響，以降低包括稍早要釋放 SNAT 連接埠清單的 4 分鐘預設閒置逾時。
-- 請考慮針對長時間執行的作業使用[非同步輪詢模式](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)，以釋出連線資源給其他作業使用。
+- 請考慮針對長時間執行的作業使用[非同步輪詢模式](/azure/architecture/patterns/async-request-reply)，以釋出連線資源給其他作業使用。
 - 長時間存留的流程 (例如，重複使用的 TCP 連線) 應該使用 TCP Keepalive 或應用程式層 Keepalive 來避免中繼系統逾時。增加閒置逾時的時間是最後手段，而且可能無法解決根本原因。 長時間逾時會在逾時時間到期時導致低速率失敗，並引來延遲和不必要的失敗。
-- 正常的[重試模式](https://docs.microsoft.com/azure/architecture/patterns/retry)應該在暫時性失敗或失敗復原期間用來避免積極重試/高載。
-為每個 HTTP 作業 (也稱為「不可部分完成的連線」) 建立新的 TCP 連線是一種反模式。  不可部分完成的連線會讓您的應用程式無法良好調整而浪費資源。  一律會透過管線將多個作業連至相同連線。  您的應用程式將受益於交易速度和資源成本。  當您的應用程式使用傳輸層加密 (例如 TLS) 時，處理新連線會產生相當大的成本。  如需其他最佳作法模式，請參閱 [Azure 雲端設計模式](https://docs.microsoft.com/azure/architecture/patterns/)。
+- 正常的[重試模式](/azure/architecture/patterns/retry)應該在暫時性失敗或失敗復原期間用來避免積極重試/高載。
+為每個 HTTP 作業 (也稱為「不可部分完成的連線」) 建立新的 TCP 連線是一種反模式。  不可部分完成的連線會讓您的應用程式無法良好調整而浪費資源。  一律會透過管線將多個作業連至相同連線。  您的應用程式將受益於交易速度和資源成本。  當您的應用程式使用傳輸層加密 (例如 TLS) 時，處理新連線會產生相當大的成本。  如需其他最佳作法模式，請參閱 [Azure 雲端設計模式](/azure/architecture/patterns/)。
 
 #### <a name="additional-possible-mitigations"></a>其他可能的因應措施
 
@@ -96,7 +96,7 @@ _**解決方案：**_ 相反地，請使用 TCP 連線測試 (例如「TCP Ping�
 | 作業系統 | 一般 TCP 連線測試 | TCP 應用程式層測試 | UDP |
 |---|---|---|---|
 | Linux | nc (一般連線測試) | curl (TCP 應用程式層測試) | 應用程式特有 |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | 應用程式特有 |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | 應用程式特有 |
 
 ### <a name="connectivity-failures"></a>連線失敗
 
@@ -113,7 +113,7 @@ _**解決方案：**_ 相反地，請使用 TCP 連線測試 (例如「TCP Ping�
 | 作業系統 | 一般 TCP 連線測試 | TCP 應用程式層測試 | UDP |
 |---|---|---|---|
 | Linux | nc (一般連線測試) | curl (TCP 應用程式層測試) | 應用程式特有 |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | 應用程式特有 |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | 應用程式特有 |
 
 #### <a name="configuration"></a>組態
 
@@ -202,4 +202,3 @@ _**解決方案：**_
 * 了解 [NAT 閘道資源](nat-gateway-resource.md)
 * 了解 [NAT 閘道資源的計量和警示](nat-metrics.md)。
 * [在 UserVoice 中告訴我們可為虛擬網路 NAT 打造的下一項功能](https://aka.ms/natuservoice)。
-

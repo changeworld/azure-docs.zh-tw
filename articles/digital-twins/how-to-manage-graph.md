@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/03/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dd5197f99f7187e21eb466bfa213f68a7638e24d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 54001cde76bd89305eb77544c6e6858defda6096
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045337"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222542"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>使用關聯性管理數位 twins 的圖形
 
@@ -157,7 +157,7 @@ Azure 數位 Twins 也有 API 可尋找指定對應項的所有連 **入** 關�
 > [!TIP]
 > 對應項圖形是在 twins 之間建立關聯性的概念。 如果您想要查看對應項圖形的視覺標記法，請參閱本文的 [視覺 [*效果*](how-to-manage-graph.md#visualization) ] 區段。 
 
-### <a name="create-a-twin-graph-from-a-csv-file"></a>從 CSV 檔案建立對應項圖形
+## <a name="create-graph-from-a-csv-file"></a>從 CSV 檔案建立圖形
 
 在實際使用案例中，對應項階層通常會從儲存在不同資料庫中的資料建立，或可能在試算表或 CSV 檔案中建立。 本節說明如何從 CSV 檔案讀取資料，並從中建立對應項圖形。
 
@@ -176,7 +176,7 @@ Azure 數位 Twins 也有 API 可尋找指定對應項的所有連 **入** 關�
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graphFromCSV.cs":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何查詢 Azure 數位 Twins 對應項圖形：
 * [*概念：查詢語言*](concepts-query-language.md)

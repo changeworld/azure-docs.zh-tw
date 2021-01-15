@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e28714e2557027a3f8f5504f7052973a77720b6
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: f83e5584f8f9c6823e1259cb5e6034d8b13ae3a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743941"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222372"
 ---
 # <a name="securing-external-access-with-groups"></a>使用群組保護外部存取 
 
@@ -104,7 +104,7 @@ ms.locfileid: "97743941"
 | - | - | - |
 | 群組可以包含哪些專案？| 使用者<br>群組<br>服務主體<br>裝置| 僅限使用者 |
 | 群組在哪裡建立？| Azure AD 入口網站<br>如果要啟用郵件功能，M365 入口網站 () <br>PowerShell<br>Microsoft Graph<br>終端使用者入口網站| M365 入口網站<br>Azure AD 入口網站<br>PowerShell<br>Microsoft Graph<br>在 Microsoft 365 應用程式中 |
-| 預設會建立誰？| 系統管理員 <br>使用者| 系統管理員<br>使用者 |
+| 預設會建立誰？| Administrators <br>使用者| Administrators<br>使用者 |
 | 誰可以依預設新增？| 內部使用者 (成員) | 來自任何組織的租使用者成員和來賓 |
 | 它授與存取權的專案為何？| 只有指派給它的資源。| 所有群組相關資源：<br> (群組信箱、網站、小組、聊天室和其他內含的 M365 資源) <br>新增群組的任何其他資源 |
 | 可以搭配使用| 條件式存取<br>權利管理<br>群組授權| 條件式存取<br>權利管理<br>敏感度標籤 |

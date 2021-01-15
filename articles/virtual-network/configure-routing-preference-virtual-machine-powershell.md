@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: mnayak
-ms.openlocfilehash: 65f5b27ecc7b526c4b3e4f5ed62ac90149df1ce1
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: cdd86984e5594d330f0080ee5f4cf0e9a8374652
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510602"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223538"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-powershell"></a>使用 Azure PowerShell 設定 VM 的路由喜好設定
 
@@ -150,5 +150,5 @@ $nic = New-AzNetworkInterface `
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解[公用 IP 位址中的路由喜好設定](routing-preference-overview.md)。
-* 深入了解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+* 深入了解 Azure 中的[公用 IP 位址](./public-ip-addresses.md#public-ip-addresses)。
 * 深入了解[公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)。

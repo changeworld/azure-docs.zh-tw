@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 06/12/2020
-ms.openlocfilehash: c42db1445c939069f334d04ea26d54cdb843c336
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488822"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220383"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>針對 Azure SQL Database 和 Azure SQL 受控執行個體 Intelligent Insights 的效能問題進行疑難排解
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -128,7 +128,9 @@ Azure SQL Database 上的資源通常稱為 [DTU](service-tiers-dtu.md) 或 [vCo
 
 此問題的最簡單且最安全緩和方式就是讓交易簡短，以及減少最耗用資源之查詢的鎖定使用量。 您可以將大型的作業批次分成較小的作業。 理想的做法是儘可能提升查詢效率，以減少查詢鎖定使用量。 請減少大型掃描，因為它們會增加死結的機率，並對整體資料庫效能帶來負面影響。 針對已識別為會造成鎖定的查詢，您可以建立新的索引，或是將資料行新增至現有索引中來避免資料表掃描。
 
-如需更多建議，請參閱[如何解決 SQL Server 中鎖定擴大所造成的鎖定問題](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in) (英文)。
+如需更多建議，請參閱：
+- [瞭解並解決 Azure SQL 封鎖問題](understand-resolve-blocking.md)
+- [如何解決 SQL Server 中鎖定擴大所造成的封鎖問題](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>MAXDOP 增加
 

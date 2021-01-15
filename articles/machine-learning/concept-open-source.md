@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/16/2020
-ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/14/2020
+ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914105"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223069"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>與 Azure Machine Learning 專案的開放原始碼整合
 
@@ -42,11 +42,11 @@ ms.locfileid: "97914105"
 
 開放原始碼深度學習架構和操作指南包括：
 
- *  [PyTorch](https://github.com/pytorch/pytorch)： [在 PyTorch 中使用傳輸學習來定型深度學習影像分類模型](how-to-train-pytorch.md) 
+ *  [PyTorch](https://github.com/pytorch/pytorch)： [使用轉移學習將深度學習影像分類模型定型](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow)： [使用 TensorFlow 辨識手寫數位](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras)： [使用 Keras 建立類神經網路以分析影像](how-to-train-keras.md)
 
-從頭開始定型深度學習模型，通常需要大量的時間、資料及計算資源。 您可以使用「轉移學習」來使用定型程式的快捷方式。 轉移學習是一種技術，可從解決一個問題到不同但相關的問題，來運用所獲得的知識。 這表示您可以採用現有的模型來重新調整它的用途。 若要深入瞭解轉移學習，請參閱 [深度學習文章](concept-deep-learning-vs-machine-learning.md#transfer-learning) 。
+從頭開始定型深度學習模型，通常需要大量的時間、資料及計算資源。 您可以使用「轉移學習」來使用定型程式的快捷方式。 轉移學習是一種技術，可從解決一個問題到不同但相關的問題，來運用所獲得的知識。 這表示您可以採用現有的模型來重新調整它的用途。 若要深入瞭解轉移學習，請參閱 [深度學習與機器學習文章](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) 。
 
 ### <a name="reinforcement-learning-ray-rllib"></a>增強式學習：光線 RLLib
 

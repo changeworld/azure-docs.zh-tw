@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: e76086db36642664ca15acee26f4e0aca85ff272
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 114c723b127a17ffdd9c7ed91c6e777838d68e8e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184454"
+ms.locfileid: "98223341"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard 概觀
 
@@ -36,7 +36,7 @@ Azure DDoS 保護不會儲存客戶資料。
 - 通行 **保護：** 簡化的設定會在啟用 DDoS 保護標準時立即保護虛擬網路上的所有資源。 不需要任何介入或使用者定義。 
 - **Always on 流量監視：** 您的應用程式流量模式會在一天24小時內（一周7天）進行監視，以尋找 DDoS 攻擊的指標。 一旦偵測到攻擊，DDoS Protection Standard 就會立即自動減輕攻擊。
 - **適應性調整：** 智慧型流量分析可在一段時間內學習您的應用程式流量，並選取及更新最適合您服務的設定檔。 設定檔會隨著時間調整流量變更。
-- **多層保護：** 搭配 web 應用程式防火牆使用時，提供完整的堆疊 DDoS 保護，以在 (第3層和第4層的網路層取得保護，這是由 Azure DDoS 保護標準) 以及 WAF) 提供的應用層 (第7層提供。 WAF 供應專案包括 Azure [應用程式閘道 WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ，以及 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)中提供的協力廠商 web 應用程式防火牆供應專案。
+- **多層保護：** 使用 web 應用程式防火牆部署 (WAF) 時，DDoS 保護標準會在 Azure DDoS 保護 Standard) 和應用層 (第7層提供的網路 (層（由 WAF) 提供）保護。 WAF 供應專案包括 Azure [應用程式閘道 WAF SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ，以及 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall)中提供的協力廠商 web 應用程式防火牆供應專案。
 - **廣泛的安全防護範圍：** 可利用全域功能降低超過 60 種不同攻擊類型的風險，以抵禦最大的已知 DDoS 攻擊。
 - **攻擊分析：** 在攻擊期間取得以五分鐘為增量的詳細報告，並在攻擊結束後取得完整摘要。 將風險降低流程記錄串流至 [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) 或離線安全性資訊與事件管理 (SIEM) 系統，以在攻擊期間進行近乎即時的監視。
 - **攻擊計量：** 透過 Azure 監視器可以存取每個攻擊的摘要計量。

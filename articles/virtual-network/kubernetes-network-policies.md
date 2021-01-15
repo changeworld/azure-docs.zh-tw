@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 36e5bb33b7d555c3b457b63f94d9032ff390e6cb
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b7c683edd15ab05e9efc239ffe07759078754607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342309"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222644"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes 網路原則總覽
 
@@ -38,7 +38,7 @@ Azure NPM 實行可與提供容器 VNet 整合的 Azure CNI 搭配運作。 NPM 
 Azure NPM 可透過下列方式使用，以提供 pod 的微型分割。
 
 ### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
-NPM 可在 AKS 中以原生方式提供，而且可以在建立叢集時啟用。 [使用 Azure Kubernetes Service (AKS) 中的網路原則](https://docs.microsoft.com/azure/aks/use-network-policies)，深入瞭解 pod 之間的安全流量。
+NPM 可在 AKS 中以原生方式提供，而且可以在建立叢集時啟用。 [使用 Azure Kubernetes Service (AKS) 中的網路原則](../aks/use-network-policies.md)，深入瞭解 pod 之間的安全流量。
 
 ### <a name="aks-engine"></a>AKS-引擎
 AKS-Engine 是一種工具，產生在 Azure 中部署 Kubernetes 叢集的 Azure Resource Manager 範本。 叢集設定是在 JSON 檔案中指定，產生範本時會將該檔案傳遞到工具。 若要深入了解支援叢集設定及其描述的完整清單，請參閱＜Microsoft Azure Container Service 引擎 - 叢集定義＞。
@@ -118,9 +118,9 @@ Azure NPM 包含資訊性 Prometheus 計量，可讓您監視及進一步瞭解�
 |`npm_num_iptables_rules`     | IPTables 規則數目     | 量測計        |-         |         
 |`npm_num_ipsets`     |IPSets 數目         |量測計            |-         |
 |`npm_num_ipset_entries`     |所有 IPSets 中的 IP 位址專案數         |量測計         |-         |
-|`npm_add_policy_exec_time`     |新增網路原則的執行時間         |摘要         |分量 (0.5、0.9 或 0.99)          |
-|`npm_add_iptables_rule_exec_time`     |用於新增 IPTables 規則的執行時間         |摘要         |分量 (0.5、0.9 或 0.99)          |
-|`npm_add_ipset_exec_time`     |用於新增 IPSet 的執行時間         |摘要         |分量 (0.5、0.9 或 0.99)          |
+|`npm_add_policy_exec_time`     |新增網路原則的執行時間         |總結         |分量 (0.5、0.9 或 0.99)          |
+|`npm_add_iptables_rule_exec_time`     |用於新增 IPTables 規則的執行時間         |總結         |分量 (0.5、0.9 或 0.99)          |
+|`npm_add_ipset_exec_time`     |用於新增 IPSet 的執行時間         |總結         |分量 (0.5、0.9 或 0.99)          |
 |`npm_ipset_counts` (advanced)      |每個個別 IPSet 中的專案數         |GaugeVec         |設定 & 雜湊的名稱         |
 
 「Exec_time」計量中的不同分量層級可協助您區分一般和最糟的案例。
@@ -130,7 +130,7 @@ Azure NPM 包含資訊性 Prometheus 計量，可讓您監視及進一步瞭解�
 您可以透過 Azure 監視器的容器或 Prometheus 來剪輯計量。
 
 ### <a name="setup-for-azure-monitor"></a>Azure 監視器的設定
-第一個步驟是為您的 Kubernetes 叢集啟用容器 Azure 監視器。 您可以在 [容器的 Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)中找到步驟總覽。 啟用容器 Azure 監視器之後，請設定 [容器的 Azure 監視器 ConfigMap](https://aka.ms/container-azm-ms-agentconfig) ，以啟用 NPM 整合和 Prometheus NPM 計量的集合。 適用于容器的 Azure 監視器 ConfigMap 有一個 ```integrations``` 區段，其中包含可收集 NPM 計量的設定。 這些設定在 ConfigMap 中預設為停用。 啟用基本設定 ```collect_basic_metrics = true``` 將會收集基本的 NPM 計量。 啟用 advanced 設定 ```collect_advanced_metrics = true``` 將會收集基本計量以外的 advanced 計量。 
+第一個步驟是為您的 Kubernetes 叢集啟用容器 Azure 監視器。 您可以在 [容器的 Azure 監視器](../azure-monitor/insights/container-insights-overview.md)中找到步驟總覽。 啟用容器 Azure 監視器之後，請設定 [容器的 Azure 監視器 ConfigMap](https://aka.ms/container-azm-ms-agentconfig) ，以啟用 NPM 整合和 Prometheus NPM 計量的集合。 適用于容器的 Azure 監視器 ConfigMap 有一個 ```integrations``` 區段，其中包含可收集 NPM 計量的設定。 這些設定在 ConfigMap 中預設為停用。 啟用基本設定 ```collect_basic_metrics = true``` 將會收集基本的 NPM 計量。 啟用 advanced 設定 ```collect_advanced_metrics = true``` 將會收集基本計量以外的 advanced 計量。 
 
 編輯 ConfigMap 之後，請將它儲存在本機，並將 ConfigMap 套用至您的叢集，如下所示。
 
@@ -143,7 +143,7 @@ integrations: |-
 ```
 Advanced 計量是選擇性的，而開啟這些計量會自動開啟基本計量集合。 Advanced 計量目前僅包含 `npm_ipset_counts`
 
-深入瞭解 [config map 中適用于容器的 Azure 監視器集合設定](https://aka.ms/azmon-containers-agent-collection-settings-doc)
+深入瞭解 [config map 中適用于容器的 Azure 監視器集合設定](../azure-monitor/insights/container-insights-agent-config.md)
 
 ### <a name="visualization-options-for-azure-monitor"></a>Azure 監視器的視覺效果選項
 啟用 NPM 計量收集之後，您就可以使用容器深入解析或 Grafana 來查看 Azure 入口網站中的計量。
@@ -154,7 +154,7 @@ Advanced 計量是選擇性的，而開啟這些計量會自動開啟基本計�
 除了在) 下方 (圖片中觀看活頁簿，您也可以直接在 [見解] 區段下的 [記錄] 中查詢 Prometheus 計量。 例如，此查詢會傳回所收集的所有計量。
 |TimeGenerated > 前 (5h) |其中 Name 包含 "npm_"
 
-您也可以直接查詢計量的 Log Analytics。 深入瞭解 [Log Analytics 查詢的消費者入門](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-log-search) 
+您也可以直接查詢計量的 Log Analytics。 深入瞭解 [Log Analytics 查詢的消費者入門](../azure-monitor/insights/container-insights-log-search.md) 
 
 #### <a name="viewing-in-grafana-dashboard"></a>在 Grafana 儀表板中查看
 設定您的 Grafana 伺服器，並設定 Log Analytics 資料來源[（如下所述）。](https://grafana.com/grafana/plugins/grafana-azure-monitor-datasource) 然後，將 [Grafana 儀表板與 Log Analytics 後端](https://grafana.com/grafana/dashboards/10956) 匯入 Grafana Labs 中。
@@ -266,4 +266,3 @@ helm install prometheus stable/prometheus -n monitoring \
 -  了解[容器網路服務](container-networking-overview.md)。
 - 部署適用于 Kubernetes 叢集或 Docker 容器[的外掛程式](deploy-container-networking.md)。
 
-    

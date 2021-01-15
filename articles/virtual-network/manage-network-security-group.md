@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 42efc2bee88f073f2a628b1d2041afcc310cb871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d42e0f5594fdde55f1b4183a806e388658e86dc3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822979"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222933"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>建立、變更或刪除網路安全性群組
 
-網路安全性群組中的安全性規則能讓您篩選可在虛擬網路子網路及網路介面中流入和流出的網路流量類型。 若要深入了解網路安全性群組，請參閱[網路安全性群組概觀](security-overview.md)。 接下來，請完成 [篩選網路流量](tutorial-filter-network-traffic.md) 教學課程，以獲得網路安全性群組的一些經驗。
+網路安全性群組中的安全性規則能讓您篩選可在虛擬網路子網路及網路介面中流入和流出的網路流量類型。 若要深入了解網路安全性群組，請參閱[網路安全性群組概觀](./network-security-groups-overview.md)。 接下來，請完成 [篩選網路流量](tutorial-filter-network-traffic.md) 教學課程，以獲得網路安全性群組的一些經驗。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -48,7 +48,7 @@ ms.locfileid: "91822979"
 
 1. 在 [Azure 入口網站](https://portal.azure.com) 功能表上，或從 [首頁] 頁面，選取 [建立資源]。
 
-2. 選取 **[網路]，然後**選取 [ **網路安全性群組**]。
+2. 選取 **[網路]，然後** 選取 [ **網路安全性群組**]。
 
 3. 在 [ **建立網路安全性群組** ] 頁面的 [ **基本** ] 索引標籤底下，設定下列設定的值：
 
@@ -59,13 +59,13 @@ ms.locfileid: "91822979"
     | **名稱** | 輸入資源群組內的唯一文字字串。 |
     | **區域** | 選擇您想要的位置。 |
 
-4. 選取 [檢閱 + 建立]****。
+4. 選取 [檢閱 + 建立]。
 
 5. 當您看到 [ **通過驗證** ] 訊息之後，請選取 [ **建立**]。
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) |
 | PowerShell | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) |
@@ -76,7 +76,7 @@ ms.locfileid: "91822979"
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network nsg list](/cli/azure/network/nsg#az-network-nsg-list) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
@@ -87,7 +87,7 @@ ms.locfileid: "91822979"
 
 2. 選取您的網路安全性群組名稱。
 
-在網路安全性群組的功能表列中，您可以在 [ **設定**] 底下，查看網路安全性群組相關聯的 **輸入安全性規則**、 **輸出安全性規則**、 **網路介面**和 **子網** 。
+在網路安全性群組的功能表列中，您可以在 [ **設定**] 底下，查看網路安全性群組相關聯的 **輸入安全性規則**、 **輸出安全性規則**、 **網路介面** 和 **子網** 。
 
 在 [ **監視**] 底下，您可以啟用或停用 **診斷設定**。 在 [ **支援 + 疑難排解**] 下，您可以看到 **有效的安全性規則**。 若要深入瞭解，請參閱 [網路安全性群組的診斷記錄](virtual-network-nsg-manage-log.md) ，以及 [診斷 VM 網路流量篩選問題](diagnose-network-traffic-filter-problem.md)。
 
@@ -101,7 +101,7 @@ ms.locfileid: "91822979"
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
@@ -116,7 +116,7 @@ ms.locfileid: "91822979"
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network nsg update](/cli/azure/network/nsg#az-network-nsg-update) |
 | PowerShell | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) |
@@ -133,11 +133,11 @@ ms.locfileid: "91822979"
 
 2. 選取您要刪除的網路安全性群組名稱。
 
-3. 在網路安全性群組的工具列中，選取 [ **刪除**]。 然後，選取確認對話方塊中的 [是]****。
+3. 在網路安全性群組的工具列中，選取 [ **刪除**]。 然後，選取確認對話方塊中的 [是]。
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network nsg delete](/cli/azure/network/nsg#az-network-nsg-delete) |
 | PowerShell | [移除->new-aznetworksecuritygroup](/powershell/module/az.network/remove-aznetworksecuritygroup) |
@@ -156,38 +156,38 @@ ms.locfileid: "91822979"
 
 3. 在網路安全性群組的功能表列中，選擇 [ **輸入安全性規則** ] 或 [ **輸出安全性規則**]。
 
-    列出數個現有的規則，包括您可能未新增的規則。 當您建立網路安全性群組時，會在其中建立數個預設安全性規則。 若要深入了解，請參閱[預設安全性規則](security-overview.md#default-security-rules)。  您無法刪除預設安全性規則，但是可以使用優先順序較高的規則來覆寫它們。
+    列出數個現有的規則，包括您可能未新增的規則。 當您建立網路安全性群組時，會在其中建立數個預設安全性規則。 若要深入了解，請參閱[預設安全性規則](./network-security-groups-overview.md#default-security-rules)。  您無法刪除預設安全性規則，但是可以使用優先順序較高的規則來覆寫它們。
 
 4. <a name="security-rule-settings"></a>選取 [ **新增**]。 選取或新增下列設定的值，然後選取 **[確定]**：
 
     | 設定 | 值 | 詳細資料 |
     | ------- | ----- | ------- |
-    | **Source** | 值為下列其中之一：<ul><li>**任何**</li><li>**IP 位址**</li><li>**服務標記** (輸入安全性規則) 或 **VirtualNetwork** (輸出安全性規則) </li><li>**應用程式 &nbsp; 安全 &nbsp; 組**</li></ul> | <p>如果您選擇 **IP 位址**，您也必須指定 **來源 IP 位址/CIDR 範圍**。</p><p>如果您選擇 **服務**標籤，也可以挑選 **來源服務標記**。</p><p>如果您選擇 [ **應用程式安全性群組**]，則也必須挑選現有的應用程式安全性群組。 如果您選擇 [ **應用程式安全性群組** ] 作為 **來源** 和 **目的地**，兩個應用程式安全性群組內的網路介面都必須位於相同的虛擬網路中。</p> |
-    | **來源 IP 位址/CIDR 範圍** | 以逗號分隔的 IP 位址清單以及無類別網域間路由 (CIDR) 範圍 | <p>如果您將 **來源** 變更為 **IP 位址**，就會顯示此設定。 您必須指定單一值或以逗號分隔的多個值清單。 多個值的範例為 `10.0.0.0/16, 192.188.1.1` 。 您可以指定的值數目有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。</p><p>如果您指定的 IP 位址已指派給 Azure VM，請指定其私人 IP 位址，而非其公用 IP 位址。 Azure 會在將公用 IP 位址轉譯為輸入安全性規則的私人 IP 位址之後，但在將私人 IP 位址轉譯為輸出規則的公用 IP 位址之前，處理安全性規則。 若要深入了解 Azure 中的公用和私人 IP 位址，請參閱 [IP 位址類型](virtual-network-ip-addresses-overview-arm.md)。</p> |
-    | **來源服務標籤** | 下拉式清單中的服務標記 | 如果您針對輸入安全性規則設定 **來源** 對 **服務** 標籤，則會出現此選用設定。 服務標籤是為 IP 位址類別預先定義的識別碼。 若要深入瞭解可用的服務標籤，以及每個標記所代表的內容，請參閱 [服務標記](security-overview.md#service-tags)。 |
+    | **來源** | 值為下列其中之一：<ul><li>**任何**</li><li>**IP 位址**</li><li>**服務標記** (輸入安全性規則) 或 **VirtualNetwork** (輸出安全性規則) </li><li>**應用程式 &nbsp; 安全 &nbsp; 組**</li></ul> | <p>如果您選擇 **IP 位址**，您也必須指定 **來源 IP 位址/CIDR 範圍**。</p><p>如果您選擇 **服務** 標籤，也可以挑選 **來源服務標記**。</p><p>如果您選擇 [ **應用程式安全性群組**]，則也必須挑選現有的應用程式安全性群組。 如果您選擇 [ **應用程式安全性群組** ] 作為 **來源** 和 **目的地**，兩個應用程式安全性群組內的網路介面都必須位於相同的虛擬網路中。</p> |
+    | **來源 IP 位址/CIDR 範圍** | 以逗號分隔的 IP 位址清單以及無類別網域間路由 (CIDR) 範圍 | <p>如果您將 **來源** 變更為 **IP 位址**，就會顯示此設定。 您必須指定單一值或以逗號分隔的多個值清單。 多個值的範例為 `10.0.0.0/16, 192.188.1.1` 。 您可以指定的值數目有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。</p><p>如果您指定的 IP 位址已指派給 Azure VM，請指定其私人 IP 位址，而非其公用 IP 位址。 Azure 會在將公用 IP 位址轉譯為輸入安全性規則的私人 IP 位址之後，但在將私人 IP 位址轉譯為輸出規則的公用 IP 位址之前，處理安全性規則。 若要深入了解 Azure 中的公用和私人 IP 位址，請參閱 [IP 位址類型](./public-ip-addresses.md)。</p> |
+    | **來源服務標籤** | 下拉式清單中的服務標記 | 如果您針對輸入安全性規則設定 **來源** 對 **服務** 標籤，則會出現此選用設定。 服務標籤是為 IP 位址類別預先定義的識別碼。 若要深入瞭解可用的服務標籤，以及每個標記所代表的內容，請參閱 [服務標記](./network-security-groups-overview.md#service-tags)。 |
     | **來源應用程式安全性群組** | 現有的應用程式安全性群組 | 如果您將 **來源** 設定為 [ **應用程式安全性群組**]，則會出現此設定。 選取與網路介面位於相同區域中的應用程式安全性群組。 了解如何[建立應用程式安全性群組](#create-an-application-security-group)。 |
     | **來源連接埠範圍** | 值為下列其中之一：<ul><li>單一端口，例如 `80`</li><li>埠範圍，例如 `1024-65535`</li><li>單一端口及/或埠範圍的逗號分隔清單，例如 `80, 1024-65535`</li><li>星號 (`*`) 允許任何埠上的流量</li></ul> | 此設定會指定規則允許或拒絕流量的埠。 您可以指定的連接埠數目有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 |
     | **目的地** | 值為下列其中之一：<ul><li>**任何**</li><li>**IP 位址**</li><li>**服務標記** (輸出安全性規則) 或 **VirtualNetwork** (輸入安全性規則) </li><li>**應用程式 &nbsp; 安全 &nbsp; 組**</li></ul> | <p>如果您選擇 [ **ip 位址**]，請同時指定 **目的地 IP 位址/CIDR 範圍**。</p><p>如果您選擇 **VirtualNetwork**，則會允許流量流向虛擬網路位址空間內的所有 IP 位址。 **VirtualNetwork** 是服務標記。</p><p>如果您選取 [ **應用程式安全性群組**]，則必須選取現有的應用程式安全性群組。 了解如何[建立應用程式安全性群組](#create-an-application-security-group)。</p> |
-    | **目的地 IP 位址/CIDR 範圍** | IP 位址和 CIDR 範圍的逗號分隔清單 | <p>如果您將 **目的地** 變更為 **IP 位址**，就會顯示此設定。 類似于 **來源** 和 **來源 IP 位址/CIDR 範圍**，您可以指定單一或多個位址或範圍。 您可以指定的數目有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。</p><p>如果您指定的 IP 位址已指派給 Azure VM，請確定您指定其私人 IP，而不是其公用 IP 位址。 Azure 會在將公用 IP 位址轉譯為輸入安全性規則的私人 IP 位址之後，但在 Azure 將私人 IP 位址轉譯為輸出規則的公用 IP 位址之前，處理安全性規則。 若要深入了解 Azure 中的公用和私人 IP 位址，請參閱 [IP 位址類型](virtual-network-ip-addresses-overview-arm.md)。</p> |
-    | **目的地服務標記** | 下拉式清單中的服務標記 | 如果您將輸出安全性規則的 **目的地** 變更為 **服務** 標籤，則會出現此選用設定。 服務標籤是為 IP 位址類別預先定義的識別碼。 若要深入瞭解可用的服務標籤，以及每個標記所代表的內容，請參閱 [服務標記](security-overview.md#service-tags)。 |
+    | **目的地 IP 位址/CIDR 範圍** | IP 位址和 CIDR 範圍的逗號分隔清單 | <p>如果您將 **目的地** 變更為 **IP 位址**，就會顯示此設定。 類似于 **來源** 和 **來源 IP 位址/CIDR 範圍**，您可以指定單一或多個位址或範圍。 您可以指定的數目有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。</p><p>如果您指定的 IP 位址已指派給 Azure VM，請確定您指定其私人 IP，而不是其公用 IP 位址。 Azure 會在將公用 IP 位址轉譯為輸入安全性規則的私人 IP 位址之後，但在 Azure 將私人 IP 位址轉譯為輸出規則的公用 IP 位址之前，處理安全性規則。 若要深入了解 Azure 中的公用和私人 IP 位址，請參閱 [IP 位址類型](./public-ip-addresses.md)。</p> |
+    | **目的地服務標記** | 下拉式清單中的服務標記 | 如果您將輸出安全性規則的 **目的地** 變更為 **服務** 標籤，則會出現此選用設定。 服務標籤是為 IP 位址類別預先定義的識別碼。 若要深入瞭解可用的服務標籤，以及每個標記所代表的內容，請參閱 [服務標記](./network-security-groups-overview.md#service-tags)。 |
     | **目的地應用程式安全性群組** | 現有的應用程式安全性群組 | 如果您將 **目的地** 設定為 [ **應用程式安全性群組**]，則會顯示此設定。 選取與網路介面位於相同區域中的應用程式安全性群組。 了解如何[建立應用程式安全性群組](#create-an-application-security-group)。 |
     | **目的地連接埠範圍** | 值為下列其中之一：<ul><li>單一端口，例如 `80`</li><li>埠範圍，例如 `1024-65535`</li><li>單一端口及/或埠範圍的逗號分隔清單，例如 `80, 1024-65535`</li><li>星號 (`*`) 允許任何埠上的流量</li></ul> | 如同 **來源埠範圍**，您可以指定單一或多個埠和範圍。 您可以指定的數目有所限制。 如需詳細資訊，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 |
-    | **通訊協定** | **Any**、 **TCP**、 **UDP**或 **ICMP** | 您可以將規則限制為傳輸控制通訊協定 (TCP) 、使用者資料包協定 (UDP) 或網際網路控制訊息通訊協定 (ICMP) 。 預設值是適用于所有通訊協定的規則。 |
+    | **通訊協定** | **Any**、 **TCP**、 **UDP** 或 **ICMP** | 您可以將規則限制為傳輸控制通訊協定 (TCP) 、使用者資料包協定 (UDP) 或網際網路控制訊息通訊協定 (ICMP) 。 預設值是適用于所有通訊協定的規則。 |
     | **動作** | **允許** 或 **拒絕** | 此設定會指定此規則是否允許或拒絕所提供來源和目的地設定的存取權。 |
     | **優先順序** | 介於100和4096之間的值，在網路安全性群組內的所有安全性規則中都是唯一的。 | Azure 會依優先權連續處理安全性規則。 編號愈低，優先順序愈高。 當您建立規則時，建議您在優先順序數位之間留出間距，例如100、200和300。 留出間距可讓您更輕鬆地在未來新增規則，讓您可以提供比現有規則更高或較低的優先順序。 |
     | **名稱** | 網路安全性群組中規則的唯一名稱 | 此名稱最多可有 80 個字元。 它必須以字母或數位開頭，且必須以字母、數位或底線結尾。 名稱只可包含字母、數位、底線、句點或連字號。 |
-    | **說明** | 文字描述 | 您可以選擇性地指定安全性規則的文字描述。 描述的長度不能超過140個字元。 |
+    | **描述** | 文字描述 | 您可以選擇性地指定安全性規則的文字描述。 描述的長度不能超過140個字元。 |
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) |
 | PowerShell | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) |
 
 ### <a name="view-all-security-rules"></a>檢視所有安全性規則
 
-網路安全性群組包含零或多個規則。 若要深入了解檢視規則時列出的資訊，請參閱[網路安全性群組概觀](security-overview.md)。
+網路安全性群組包含零或多個規則。 若要深入了解檢視規則時列出的資訊，請參閱[網路安全性群組概觀](./network-security-groups-overview.md)。
 
 1. 移至 [Azure 入口網站](https://portal.azure.com) 以查看網路安全性群組的規則。 搜尋並選取 [ **網路安全性群組**]。
 
@@ -195,11 +195,11 @@ ms.locfileid: "91822979"
 
 3. 在網路安全性群組的功能表列中，選擇 [ **輸入安全性規則** ] 或 [ **輸出安全性規則**]。
 
-此清單包含您已建立的任何規則，以及網路安全性群組的 [預設安全性規則](security-overview.md#default-security-rules)。
+此清單包含您已建立的任何規則，以及網路安全性群組的 [預設安全性規則](./network-security-groups-overview.md#default-security-rules)。
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list) |
 | PowerShell | [>new-aznetworksecurityruleconfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
@@ -219,7 +219,7 @@ ms.locfileid: "91822979"
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network nsg rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show) |
 | PowerShell | [>new-aznetworksecurityruleconfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
@@ -235,7 +235,7 @@ ms.locfileid: "91822979"
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update) |
 | PowerShell | [Set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig) |
@@ -251,14 +251,14 @@ ms.locfileid: "91822979"
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete) |
 | PowerShell | [移除->new-aznetworksecurityruleconfig](/powershell/module/az.network/remove-aznetworksecurityruleconfig) |
 
 ## <a name="work-with-application-security-groups"></a>使用應用程式安全性群組
 
-應用程式安全性群組包含零個或多個網路介面。 若要深入了解，請參閱[應用程式安全性群組](security-overview.md#application-security-groups)。 應用程式安全性群組內的所有網路介面都必須存在於相同的虛擬網路中。 若要了解如何將網路介面新增至應用程式安全性群組，請參閱[將網路介面新增至應用程式安全性群組](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)。
+應用程式安全性群組包含零個或多個網路介面。 若要深入了解，請參閱[應用程式安全性群組](./network-security-groups-overview.md#application-security-groups)。 應用程式安全性群組內的所有網路介面都必須存在於相同的虛擬網路中。 若要了解如何將網路介面新增至應用程式安全性群組，請參閱[將網路介面新增至應用程式安全性群組](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)。
 
 ### <a name="create-an-application-security-group"></a>建立應用程式安全性群組
 
@@ -277,13 +277,13 @@ ms.locfileid: "91822979"
     | **名稱** | 輸入資源群組內的唯一文字字串。 |
     | **區域** | 選擇您想要的位置。 |
 
-5. 選取 [檢閱 + 建立]****。
+5. 選取 [檢閱 + 建立]。
 
 6. 在 [ **審核 + 建立** ] 索引標籤下，當您看到 [ **通過驗證** ] 訊息之後，請選取 [ **建立**]。
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network asg create](/cli/azure/network/asg#az-network-asg-create) |
 | PowerShell | [新 AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup) |
@@ -294,7 +294,7 @@ ms.locfileid: "91822979"
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network asg list](/cli/azure/network/asg#az-network-asg-list) |
 | PowerShell | [AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
@@ -307,7 +307,7 @@ ms.locfileid: "91822979"
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network asg show](/cli/azure/network/asg#az-network-asg-show) |
 | PowerShell | [AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
@@ -318,16 +318,16 @@ ms.locfileid: "91822979"
 
 2. 選取您要變更的應用程式安全性群組的名稱。
 
-3. 選取您要修改之設定旁的 [ **變更** ]。 例如，您可以新增或移除 **標記**，也可以變更 **資源群組** 或 **訂**用帳戶。
+3. 選取您要修改之設定旁的 [ **變更** ]。 例如，您可以新增或移除 **標記**，也可以變更 **資源群組** 或 **訂** 用帳戶。
 
     > [!NOTE]
     > 您無法變更位置。
 
-    在功能表列中，您也可以選取 [ **存取控制] (IAM) **。 在 [ **存取控制 (IAM) ** ] 頁面上，您可以指派或移除應用程式安全性群組的許可權。
+    在功能表列中，您也可以選取 [ **存取控制] (IAM)**。 在 [ **存取控制 (IAM)** ] 頁面上，您可以指派或移除應用程式安全性群組的許可權。
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network asg update](/cli/azure/network/asg#az-network-asg-update) |
 | PowerShell | 無 PowerShell Cmdlet |
@@ -340,11 +340,11 @@ ms.locfileid: "91822979"
 
 2. 選取您要刪除的應用程式安全性群組的名稱。
 
-3. 選取 [刪除]****，然後選取 [是]**** 刪除應用程式安全性群組。
+3. 選取 [刪除]，然後選取 [是] 刪除應用程式安全性群組。
 
 #### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network asg delete](/cli/azure/network/asg#az-network-asg-delete) |
 | PowerShell | [移除-AzApplicationSecurityGroup](/powershell/module/az.network/remove-azapplicationsecuritygroup) |
@@ -383,4 +383,4 @@ ms.locfileid: "91822979"
 ## <a name="next-steps"></a>後續步驟
 
 - 使用[PowerShell](powershell-samples.md)或[Azure CLI](cli-samples.md)範例腳本或 Azure [Resource Manager 範本](template-samples.md)，建立網路或應用程式安全性群組
-- 建立並指派虛擬網路的[Azure 原則定義](policy-samples.md)
+- 建立並指派虛擬網路的[Azure 原則定義](./policy-reference.md)

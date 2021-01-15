@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: eedc3dc1422d4eb6dcce80766077e8056f8509cf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7bd991bd709bb4be69325afe967d7e5600a9e1a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678044"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222559"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL Database 的商務持續性概觀
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ SQL Database 和 SQL 受控執行個體也提供數種商務持續性功能，�
 
 - [時態表](../temporal-tables.md)可讓您從任何時間點還原資料列版本。
 - 內[建的自動備份](automated-backups-overview.md)和[時間點還原](recovery-using-backups.md#point-in-time-restore)可讓您將完整資料庫還原至設定的保留期間內的某個時間點（最多35天）。
-- 如果 **伺服器尚未刪除** ，您可以將 [已刪除的資料庫還原](recovery-using-backups.md#deleted-database-restore)到它被刪除的時間點。
+- 如果 **伺服器尚未刪除**，您可以將 [已刪除的資料庫還原](recovery-using-backups.md#deleted-database-restore)到它被刪除的時間點。
 - [長期備份保留](long-term-retention-overview.md)可讓您最多保留備份 10 年。 這是 SQL 受控執行個體的有限公開預覽版
 - [主動式異地](active-geo-replication-overview.md) 複寫可讓您建立可讀取複本，並在發生資料中心中斷或應用程式升級時，手動容錯移轉至任何複本。
 - [自動容錯移轉群組](auto-failover-group-overview.md#terminology-and-capabilities) 可讓應用程式在發生資料中心中斷時自動復原。
@@ -88,7 +88,7 @@ SQL Database 和 SQL 受控執行個體也提供數種商務持續性功能，�
 
 | 修復方法 | 復原時間目標 (RTO) | 復原點目標 (RPO) |
 | --- | --- | --- |
-| 從異地複寫備份進行異地還原 | 12小時 | 1 小時 |
+| 從異地複寫備份進行異地還原 | 12 h | 1 小時 |
 | 自動容錯移轉群組 | 1 小時 | 5秒 |
 | 手動資料庫容錯移轉 | 30秒 | 5秒 |
 

@@ -6,21 +6,21 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bc504034f8d4565dd365b8d92dc2b2e6eadc1dae
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008118"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223324"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>使用 Azure PowerShell 將 Azure 虛擬網路移至另一個區域
 
 有各種不同的案例可將現有的 Azure 虛擬網路從一個區域移至另一個區域。 例如，您可能想要使用與現有虛擬網路相同的測試和可用性設定來建立虛擬網路。 或者，您可能想要將生產虛擬網路移至另一個區域，作為嚴重損壞修復計畫的一部分。
 
-您可以使用 Azure Resource Manager 範本來完成將虛擬網路移至另一個區域的工作。 做法是將虛擬網路匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域。 如需 Resource Manager 範本的詳細資訊，請參閱 [將資源群組匯出至範本](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)。
+您可以使用 Azure Resource Manager 範本來完成將虛擬網路移至另一個區域的工作。 做法是將虛擬網路匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域。 如需 Resource Manager 範本的詳細資訊，請參閱 [將資源群組匯出至範本](../azure-resource-manager/management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 請確定您的虛擬網路位於您想要移動的 Azure 區域中。
 
@@ -32,7 +32,7 @@ ms.locfileid: "96008118"
 
 - 確認您的 Azure 訂用帳戶可讓您在目的地區域中建立虛擬網路。 若要啟用所需的配額，請聯絡支援人員。
 
-- 請確定您的訂用帳戶有足夠的資源，可支援新增此程式的虛擬網路。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
+- 請確定您的訂用帳戶有足夠的資源，可支援新增此程式的虛擬網路。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額和條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
 
 ## <a name="prepare-for-the-move"></a>準備移動
@@ -42,19 +42,19 @@ ms.locfileid: "96008118"
 
 若要匯出虛擬網路，並使用 PowerShell 部署目標虛擬網路，請執行下列動作：
 
-1. 使用 [disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登入您的 Azure 訂用帳戶，然後遵循畫面上的指示：
+1. 使用 [disconnect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) 命令登入您的 Azure 訂用帳戶，然後遵循畫面上的指示：
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-1. 取得您想要移至目的地區域之虛擬網路的資源識別碼，然後使用 [new-azvirtualnetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)將它放置在變數中：
+1. 取得您想要移至目的地區域之虛擬網路的資源識別碼，然後使用 [new-azvirtualnetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)將它放置在變數中：
 
     ```azurepowershell-interactive
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
     ```
 
-1. 將來源虛擬網路匯出到您執行命令匯出的目錄中的 json 檔案 [->new-azresourcegroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)：
+1. 將來源虛擬網路匯出到您執行命令匯出的目錄中的 json 檔案 [->new-azresourcegroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0)：
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -98,7 +98,7 @@ ms.locfileid: "96008118"
 
     ```
   
-1. 若要取得區域位置代碼，您可執行下列命令來使用 Azure PowerShell Cmdlet [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
+1. 若要取得區域位置代碼，您可執行下列命令來使用 Azure PowerShell Cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0)：
 
     ```azurepowershell-interactive
 
@@ -195,20 +195,20 @@ ms.locfileid: "96008118"
 
 1. 儲存 *\<resource-group-name>.json* 檔案。
 
-1. 使用 [>new-azresourcegroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)建立目標虛擬網路所要部署的目的地區域中的資源群組：
+1. 使用 [>new-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)建立目標虛擬網路所要部署的目的地區域中的資源群組：
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. 使用 [>new-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)將已編輯的 *\<resource-group-name> json* 檔案部署到您在上一個步驟中建立的資源群組：
+1. 使用 [>new-azresourcegroupdeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)將已編輯的 *\<resource-group-name> json* 檔案部署到您在上一個步驟中建立的資源群組：
 
     ```azurepowershell-interactive
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     ```
 
-1. 若要確認已在目的地區域中建立資源，請使用 [>new-azresourcegroup](https://docs.microsoft.com/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) 和 [new-azvirtualnetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)：
+1. 若要確認已在目的地區域中建立資源，請使用 [>new-azresourcegroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) 和 [new-azvirtualnetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0)：
     
     ```azurepowershell-interactive
 
@@ -224,7 +224,7 @@ ms.locfileid: "96008118"
 
 部署虛擬網路之後，若要在目的地區域中重新開機或捨棄虛擬網路，請刪除您在目的地區域中建立的資源群組，將會刪除已移動的虛擬網路。 
 
-若要移除資源群組，請使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
+若要移除資源群組，請使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)：
 
 ```azurepowershell-interactive
 
@@ -235,14 +235,14 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 若要認可您的變更並完成虛擬網路移動，請執行下列其中一項動作：
 
-* 使用 [移除->new-azresourcegroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)來刪除資源群組：
+* 使用 [移除->new-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0)來刪除資源群組：
 
     ```azurepowershell-interactive
 
     Remove-AzResourceGroup -Name <source-resource-group-name>
     ```
 
-* 使用 [移除-new-azvirtualnetwork](https://docs.microsoft.com/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0)來刪除來源虛擬網路：  
+* 使用 [移除-new-azvirtualnetwork](/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0)來刪除來源虛擬網路：  
     ``` azurepowershell-interactive
 
     Remove-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>
@@ -252,5 +252,5 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 在本教學課程中，您已使用 PowerShell 將虛擬網路從一個區域移至另一個區域，然後清除不需要的來源資源。 若要深入瞭解如何在 Azure 中的區域與災難復原之間移動資源，請參閱：
 
-- [將資源移到新的資源群組或訂用帳戶](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) \(部分機器翻譯\)
-- [將 Azure 虛擬機器移至另一個區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [將資源移到新的資源群組或訂用帳戶](../azure-resource-manager/management/move-resource-group-and-subscription.md) \(部分機器翻譯\)
+- [將 Azure 虛擬機器移至另一個區域](../site-recovery/azure-to-azure-tutorial-migrate.md)

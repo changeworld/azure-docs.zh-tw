@@ -10,13 +10,13 @@ author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 74ddaaf7a2d279439c0cd27ba0840f02f297877b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.custom: how-to, devx-track-python, responsible-ml
+ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119555"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222746"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用可解譯性套件以 Python (preview & 預測來說明 ML 模型) 
 
@@ -242,7 +242,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     ```bash
     pip install azureml-interpret
     ```
-1. 在本機 Jupyter Notebook 中建立定型腳本。 例如 `train_explain.py`。
+1. 在本機 Jupyter Notebook 中建立定型腳本。 例如： `train_explain.py` 。
 
     ```python
     from azureml.interpret import ExplanationClient

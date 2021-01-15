@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff656887081681a804285e9a96352feef15fc675
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7557985b23991f1a53d45f6f2d2283500c0d73f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743931"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222406"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>探索您組織中外部共同作業的目前狀態 
 
@@ -46,9 +46,9 @@ ms.locfileid: "97743931"
 
 ### <a name="use-allow-or-deny-lists"></a>使用允許或拒絕清單
 
-另一種探索您目前共同作業的物件，或您已封鎖共同作業的方式，是查看您是否已將任何組織新增至 [允許或拒絕清單](../external-identities/allow-deny-list.md)。
+請考慮您的組織是否想要只允許特定組織的共同作業。 或者，如果您的組織想要封鎖與特定組織的共同作業，請考慮此情況。  在租使用者層級，有 [允許或拒絕清單](../external-identities/allow-deny-list.md)，可用來控制所有的 B2B 邀請和兌換次數，不論來源 (例如，小組、SharePoint 和 Azure 入口網站) 。
+如果您是使用權利管理，您也可以使用特定的 [已連線組織] 設定，將存取套件的範圍設定為您的夥伴子集，如下所示。
 
-如果您的組織只想要允許與特定組織的共同作業，請考慮。 也請考慮您的組織是否想要封鎖與特定組織的合作。 這些設定可適用于整體 B2B 兌換或僅適用于特定的存取套件。
 
 ![建立新存取套件時允許拒絕清單的螢幕擷取畫面。](media/secure-external-access/2-new-access-package.png)
 

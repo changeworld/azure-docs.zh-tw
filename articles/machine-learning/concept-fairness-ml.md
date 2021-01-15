@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 459cb1f7ea6c756b8cf6eba70af5ebabe76cc8b0
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.custom: responsible-ml
+ms.openlocfilehash: 29e29e73aa1094a2941592655af78a24d95c53b5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335753"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223086"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>降低機器學習模型中的公平 (預覽) 
 
@@ -51,7 +52,7 @@ Fairlearn 開放原始碼套件有兩個元件：
 
 ## <a name="assess-fairness-in-machine-learning-models"></a>在機器學習模型中評估公平
 
-在 Fairlearn 的開放原始碼封裝中，公平的概念是一種稱為「 **群組公平** 」的方法，它會詢問：哪些個體群組有可能發生損害的風險？ 相關群體 (也稱為子總體) 會透過 **敏感性特徵** 或敏感性屬性來定義。 敏感性功能會傳遞至 Fairlearn 開放原始碼封裝中的估算器，作為向量或稱為的矩陣  `sensitive_features` 。 顧名思義，系統設計工具在評估群體公平性時應對這些特徵特別敏感。 
+在 Fairlearn 的開放原始碼封裝中，公平的概念是一種稱為「 **群組公平**」的方法，它會詢問：哪些個體群組有可能發生損害的風險？ 相關群體 (也稱為子總體) 會透過 **敏感性特徵** 或敏感性屬性來定義。 敏感性功能會傳遞至 Fairlearn 開放原始碼封裝中的估算器，作為向量或稱為的矩陣  `sensitive_features` 。 顧名思義，系統設計工具在評估群體公平性時應對這些特徵特別敏感。 
 
 有一點要注意的是，這些功能是否包含私用資料所造成的隱私權含意。 但「敏感性」一詞並不表示這些特徵不應用來進行預測。
 

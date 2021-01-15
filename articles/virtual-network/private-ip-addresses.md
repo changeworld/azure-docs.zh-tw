@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36db885cab734c037b0032c714de28b905595ef0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84172253"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223256"
 ---
 # <a name="private-ip-addresses"></a>私人 IP 位址
 私人 Ip 允許在 Azure 中的資源之間進行通訊。 
@@ -82,8 +82,8 @@ Azure 會保留每個子網位址範圍內的前四個位址。 無法將位址�
 
 您可以將私人 IP 位址指派給的 **前端** 設定：
 
-* [Azure 內部負載平衡器](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB) 
-* [Azure 應用程式閘道](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+* [Azure 內部負載平衡器](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB) 
+* [Azure 應用程式閘道](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 
 此私人 IP 位址會作為內部端點。 內部端點只能存取其虛擬網路內的資源，以及連接到它的遠端網路。 您可以指派動態或靜態 IP。
 
@@ -93,9 +93,9 @@ Azure 會保留每個子網位址範圍內的前四個位址。 無法將位址�
 也會顯示可以使用的可能配置方法：
 
 * 動態
-* Static
+* 靜態
 
-| 最上層資源 | IP 位址關聯 | 動態 | Static |
+| 最上層資源 | IP 位址關聯 | 動態 | 靜態 |
 | --- | --- | --- | --- |
 | 虛擬機器 |Linux |是 |是 |
 | 負載平衡器 |前端組態 |是 |是 |
@@ -104,6 +104,6 @@ Azure 會保留每個子網位址範圍內的前四個位址。 無法將位址�
 ## <a name="limits"></a>限制
 IP 位址限制可在 Azure 中的一組完整的 [網路限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) 中找到。 這些限制是針對每一區域和每一訂用帳戶。 [請聯絡支援](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 人員，以根據您的業務需求增加最大限制的預設限制。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 瞭解 [Azure 中的公用 IP 位址](public-ip-addresses.md)
 * [部署使用靜態私人 IP 位址的 VM](virtual-networks-static-private-ip-arm-pportal.md)

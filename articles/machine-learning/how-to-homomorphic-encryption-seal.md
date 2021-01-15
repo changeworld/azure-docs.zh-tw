@@ -9,13 +9,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 3509530994b07a16fb1f2780fffc6fd27cf8aa7c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, deploy, responsible-ml
+ms.openlocfilehash: a2c8b765f109408b8cb08f78a4b3ad2283f35eb9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325513"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223579"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>如何將加密的推斷 web 服務部署 (預覽版) 
 
@@ -160,7 +160,7 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores=1,
 
 ### <a name="deploy-to-azure-container-instances"></a>部署至 Azure 容器執行個體
 
-預估完成時間： **2 到 5 分鐘**
+預估完成時間：**2 到 5 分鐘**
 
 設定映像並部署。 下列程式碼會執行這些步驟：
 

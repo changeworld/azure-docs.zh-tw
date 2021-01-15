@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 79062ae45f04b290f6e4120906b98590ce95dbe1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 654c883498e724d10104133f99ef1664f72fe09d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87833261"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223477"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>建立虛擬網路對等互連 - Resource Manager，不同的訂用帳戶和 Azure Active Directory 租用戶
 
@@ -31,14 +31,14 @@ ms.locfileid: "87833261"
 |[一個使用 Resource Manager、一個使用傳統部署模型](create-peering-different-deployment-models.md) |相同|
 |[一個使用 Resource Manager、一個使用傳統部署模型](create-peering-different-deployment-models-subscriptions.md) |不同|
 
-虛擬網路對等互連無法在透過傳統部署模型建立的兩個虛擬網路之間建立。 如果您需要將兩個都是透過傳統部署模型建立的虛擬網路連接，可以使用 Azure [VPN 閘道](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)來連接這些虛擬網路。
+虛擬網路對等互連無法在透過傳統部署模型建立的兩個虛擬網路之間建立。 如果您需要將兩個都是透過傳統部署模型建立的虛擬網路連接，可以使用 Azure [VPN 閘道](../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)來連接這些虛擬網路。
 
 此教學課程將同一個區域中的虛擬網路視為對等。 您也可以針對不同[支援區域](virtual-network-manage-peering.md#cross-region)中的虛擬網路進行對等互連。 建議您在對等互連虛擬網路之前，先熟悉[對等互連的需求和限制條件](virtual-network-manage-peering.md#requirements-and-constraints)。
 
 您可以使用 [Azure 入口網站](#portal)、Azure [命令列介面](#cli) (CLI)、Azure [PowerShell](#powershell) 或 [Azure Resource Manager 範本](#template)，來建立虛擬網路對等互連。 選取任何先前的工具連結，直接前往使用您所選工具建立虛擬網路對等互連的步驟。
 
 如果虛擬網路位於不同的訂用帳戶中，而且該訂用帳戶與不同 Azure Active Directory 租用戶相關聯，請在繼續之前先完成下列步驟：
-1. 將每個 Active Directory 租用戶的使用者新增為相對 Azure Active Directory 租用戶中的[來賓使用者](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)。
+1. 將每個 Active Directory 租用戶的使用者新增為相對 Azure Active Directory 租用戶中的[來賓使用者](../active-directory/external-identities/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)。
 1. 每個使用者必須接受相對 Azure Active Directory 租用戶的來賓使用者邀請。
 
 ## <a name="create-peering---azure-portal"></a><a name="portal"></a>建立對等互連 - Azure 入口網站
@@ -95,7 +95,7 @@ ms.locfileid: "87833261"
 26. 以 UserB 身分登出入口網站，然後以 UserA 身分登入。
 27. 再次完成步驟 17 到 19。 **myVnetAToVNetB** 對等互連的 [對等互連狀態] 現在也是 [已連線]。 您在對等互連中兩個虛擬網路的 [對等互連狀態] 資料行中看到 [已連線] 之後，對等互連變已建立成功。 您在任何一個虛擬網路中建立的任何 Azure 資源現在能夠透過其 IP 位址彼此通訊。 如果您使用虛擬網路的預設 Azure 名稱解析，則虛擬網路中的資源無法跨虛擬網路解析名稱。 如果您想要跨對等互連中的虛擬網路解析名稱，您必須建立自己的 DNS 伺服器。 了解如何設定[使用自己的 DNS 伺服器進行名稱解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 28. **選擇性**：雖然本教學課程未涵蓋建立虛擬機器，但您可以在每個虛擬網路中建立一部虛擬機器，並從一部虛擬機器連線至另一部來驗證連線。
-29. **選擇性**：若要刪除您在本教學課程中建立的資源，請完成本文中[刪除資源](#delete-portal)一節的步驟。
+29. **選擇性**：若要刪除您在本教學課程中建立的資源，請完成本文中 [刪除資源](#delete-portal)一節的步驟。
 
 ## <a name="create-peering---azure-cli"></a><a name="cli"></a>建立對等互連 - Azure CLI
 
@@ -171,7 +171,7 @@ ms.locfileid: "87833261"
     > 必須等到兩個虛擬網路的對等互連狀態都變成 **Connected** 之後，才算已建立對等互連。
 
 11. **選擇性**：雖然本教學課程未涵蓋建立虛擬機器，但您可以在每個虛擬網路中建立一部虛擬機器，並從一部虛擬機器連線至另一部來驗證連線。
-12. **選擇性**：若要刪除您在本教學課程中所建立的資源，請完成本文中[刪除資源](#delete-cli)的步驟。
+12. **選擇性**：若要刪除您在本教學課程中所建立的資源，請完成本文中 [刪除資源](#delete-cli)的步驟。
 
 您在任何一個虛擬網路中建立的任何 Azure 資源現在能夠透過其 IP 位址彼此通訊。 如果您使用虛擬網路的預設 Azure 名稱解析，則虛擬網路中的資源無法跨虛擬網路解析名稱。 如果您想要跨對等互連中的虛擬網路解析名稱，您必須建立自己的 DNS 伺服器。 了解如何設定[使用自己的 DNS 伺服器進行名稱解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
@@ -241,7 +241,7 @@ ms.locfileid: "87833261"
     您在任何一個虛擬網路中建立的任何 Azure 資源現在能夠透過其 IP 位址彼此通訊。 如果您使用虛擬網路的預設 Azure 名稱解析，則虛擬網路中的資源無法跨虛擬網路解析名稱。 如果您想要跨對等互連中的虛擬網路解析名稱，您必須建立自己的 DNS 伺服器。 了解如何設定[使用自己的 DNS 伺服器進行名稱解析](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)。
 
 13. **選擇性**：雖然本教學課程未涵蓋建立虛擬機器，但您可以在每個虛擬網路中建立一部虛擬機器，並從一部虛擬機器連線至另一部來驗證連線。
-14. **選擇性**：若要刪除您在本教學課程中所建立的資源，請完成本文中[刪除資源](#delete-powershell)的步驟。
+14. **選擇性**：若要刪除您在本教學課程中所建立的資源，請完成本文中 [刪除資源](#delete-powershell)的步驟。
 
 ## <a name="create-peering---resource-manager-template"></a><a name="template"></a>建立對等互連 - Resource Manager 範本
 
@@ -282,7 +282,7 @@ ms.locfileid: "87833261"
    - **id**：將 `<subscription ID>` 取代為 UserB 的訂用帳戶識別碼，並將 *myVnetB* 變更為 *myVnetA*。
 5. 以 UserB 身分登入 Azure，並再次完成步驟 3。
 6. **選擇性**：雖然本教學課程未涵蓋建立虛擬機器，但您可以在每個虛擬網路中建立一部虛擬機器，並從一部虛擬機器連線至另一部來驗證連線。
-7. **選擇性**：若要刪除您在本教學課程中建立的資源，請使用 Azure 入口網站、PowerShell 或 Azure CLI 來完成本文之[刪除資源](#delete)一節中的步驟。
+7. **選擇性**：若要刪除您在本教學課程中建立的資源，請使用 Azure 入口網站、PowerShell 或 Azure CLI 來完成本文之 [刪除資源](#delete)一節中的步驟。
 
 ## <a name="delete-resources"></a><a name="delete"></a>刪除資源
 當您完成本教學課程時，您可能會想刪除您在教學課程中建立的資源，以免產生使用費。 刪除資源群組同時會刪除其內含的所有資源。

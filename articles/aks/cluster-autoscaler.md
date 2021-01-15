@@ -4,12 +4,12 @@ description: 了解如何使用叢集自動調整程式，根據 Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542636"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223137"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自動調整叢集以符合 Azure Kubernetes Service (AKS) 的應用程式需求
 
@@ -130,14 +130,15 @@ az aks update \
 | scale-down-unneeded-time         | 節點在符合縮小條件前，處於不受需要狀態的時間長度                  | 10 分鐘    |
 | scale-down-unready-time          | 未就緒節點在符合縮小條件前，處於不受需要狀態的時間長度         | 20 分鐘    |
 | scale-down-utilization-threshold | 節點使用率層級 (其定義是所要求資源總和除以容量)，低於此等級可考慮將節點縮小 | 0.5 |
-| max-graceful-termination-sec     | 嘗試縮小節點時，叢集自動調整程式等待 Pod 終止的秒數上限。 | 600 秒   |
+| max-graceful-termination-sec     | 嘗試縮小節點時，叢集自動調整程式等候 pod 終止的最大秒數 | 600 秒   |
 | balance-similar-node-groups      | 偵測類似的節點集區，並平衡它們之間的節點數目                 | false         |
-| 膨脹                         | 要在擴大中使用的節點集區 [擴充](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) 器類型。 可能的值： `most-pods` 、 `random` 、 `least-waste` | 隨機 | 
+| 膨脹                         | 要在擴大中使用的節點集區 [擴充](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) 器類型。 可能的值： `most-pods` 、 `random` 、 `least-waste` 、 `priority` | 隨機 | 
 | skip-具有-本機-儲存體的節點    | 若為 true，叢集自動調整程式將永遠不會刪除具有本機儲存體之 pod 的節點，例如 EmptyDir 或 HostPath | true |
 | skip-具有-系統-pod 的節點      | 若為 true，叢集自動調整程式將永遠不會從 kube 系統 (刪除節點（除了 DaemonSet 或鏡像 pod 以外）)  | true | 
-| 最大-空白-大量刪除            | 可同時刪除的空白節點數目上限。                      | 10個節點      |
-| 新的-pod-擴大延遲           | 針對高載/批次規模（例如，您不希望 CA 在 kubernetes 排程器可以排程所有 pod 之前採取行動的案例），您可以告知 CA 在處於特定時間之前忽略未排程的 pod」。                                                                                                                | 10 秒    |
-| 最大值-總-unready-百分比     | 叢集中 unready 節點的最大百分比。 超過此百分比之後，CA 會停止作業 | 45% | 
+| 最大-空白-大量刪除            | 可同時刪除的空白節點數目上限                       | 10個節點      |
+| 新的-pod-擴大延遲           | 針對高載/批次規模（例如，您不希望 CA 在 kubernetes 排程器可以排程所有 pod 之前採取行動的案例），您可以告知 CA 在處於特定時間之前忽略未排程的 pod。                                                                                                                | 0 秒    |
+| 最大值-總-unready-百分比     | 叢集中 unready 節點的最大百分比。 超過此百分比之後，CA 會停止作業 | 45% |
+| 節點-布建時間上限          | 自動調整程式等候節點布建的最長時間                           | 15 分鐘    |   
 | ok-total-unready-count           | 允許的 unready 節點數目，而不考慮最大值-unready-百分比            | 3個節點       |
 
 > [!IMPORTANT]

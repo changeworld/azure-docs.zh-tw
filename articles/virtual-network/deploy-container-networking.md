@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95b3cfdf8fea6e31015d945566803569b4ba064
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289587"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222916"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>部署 Azure 虛擬網路容器網路介面外掛程式
 
-Azure 虛擬網路容器網路介面 (CNI) 外掛程式會安裝 Azure 虛擬機器，並將虛擬網路功能帶到 Kubernetes Pod 和 Docker 容器。 若要深入了解外掛程式，請參閱[讓容器使用 Azure 虛擬網路功能](container-networking-overview.md)。 此外，選擇[進階網路功能](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)可讓外掛程式搭配 Azure Kubernetes Service (AKS)，因為該選項會自動將 AKS 放在虛擬網路中。
+Azure 虛擬網路容器網路介面 (CNI) 外掛程式會安裝 Azure 虛擬機器，並將虛擬網路功能帶到 Kubernetes Pod 和 Docker 容器。 若要深入了解外掛程式，請參閱[讓容器使用 Azure 虛擬網路功能](container-networking-overview.md)。 此外，選擇[進階網路功能](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json)可讓外掛程式搭配 Azure Kubernetes Service (AKS)，因為該選項會自動將 AKS 放在虛擬網路中。
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>部署 ACS-Engine Kubernetes 叢集外掛程式
 
@@ -95,10 +95,10 @@ ACS-Engine 使用 Azure Resource Manager 範本部署 Kubernetes 叢集。 叢�
 1. [下載並安裝外掛程式](#download-and-install-the-plug-in)。
 2. 在每個虛擬機器上預先配置虛擬網路 IP 位址集區，這些 IP 位址將會指派給 Pod。 每個 Azure 虛擬機器在每個網路介面上都隨附一個主要虛擬網路私人 IP 位址。 Pod 的 IP 位址集區會透過下列其中一個選項新增到虛擬機器網路介面上做為次要位址 (*ipconfig*)：
 
-   - **CLI**： [使用 Azure CLI 指派多個 IP 位址](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**： [使用 PowerShell 指派多個 IP 位址](virtual-network-multiple-ip-addresses-powershell.md)
-   - **入口網站**： [使用 Azure 入口網站指派多個 IP 位址](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Resource Manager 範本**： [使用範本指派多個 IP 位址](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**：[使用 Azure CLI 指派多個 IP 位址](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**：[使用 PowerShell 指派多個 IP 位址](virtual-network-multiple-ip-addresses-powershell.md)
+   - **入口網站**：[使用 Azure 入口網站指派多個 IP 位址](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure Resource Manager 範本**：[使用範本指派多個 IP　位址](./template-samples.md)
 
    請確定您在虛擬機器上為所有要啟動的 Pod 新增足夠的 IP 位址。
 
@@ -106,7 +106,7 @@ ACS-Engine 使用 Azure Resource Manager 範本部署 Kubernetes 叢集。 叢�
 4. 如果您想要 Pod 存取網際網路，請將下列 *iptables* 規則新增到 Linux 虛擬機器以獲取 NAT 網際網路流量。 在下列範例中，指定的 IP 範圍會是 10.0.0.0/8。
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
@@ -157,10 +157,10 @@ CNI 網路組態檔是以 JSON 格式描述。 根據預設，它出現在 Linux
 
 #### <a name="settings-explanation"></a>設定說明
 
-- **cniVersion**：Azure 虛擬網路 CNI 外掛程式支援版本 0.3.0 和 0.3.1 的  [CNI 規格](https://github.com/containernetworking/cni/blob/master/SPEC.md)。
+- **cniVersion**：Azure 虛擬網路 CNI 外掛程式支援版本 0.3.0 和 0.3.1 的 [CNI 規格](https://github.com/containernetworking/cni/blob/master/SPEC.md)。
 - **名稱**：網路的名稱。 這個屬性可以設定為任何唯一值。
 - **類型**：網路外掛程式的名稱。 設定為 *azure-vnet*。
-- **模式**：作業模式。 此為選擇性欄位。 唯一支援的模式是 "bridge"。 如需詳細資訊，請參閱 [作業模式](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)。
+- **模式**：作業模式。 此為選擇性欄位。 唯一支援的模式是 "bridge"。 如需詳細資訊，請參閱[作業模式](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)。
 - **橋接器**：橋接器名稱，用來將容器連線到虛擬網路。 此為選擇性欄位。 如果省略，外掛程式會根據主要介面索引自動挑選一個唯一名稱。
 - **ipam 類型**：IPAM 外掛程式的名稱。 一律設定為 *azure-vnet-ipam*。
 

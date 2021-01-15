@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358005"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223154"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>針對 Azure Vm 上的 FCI (SQL Server 準備虛擬機器) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "97358005"
 
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>先決條件 
 
 - Microsoft Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
 - Azure 虛擬機器上的 Windows 網域或內部部署資料中心會透過虛擬網路配對延伸至 Azure。
@@ -68,7 +68,7 @@ ms.locfileid: "97358005"
 將兩部虛擬機器放置於：
 
 - 如果您使用的是可用性設定組，請在與可用性設定組相同的 Azure 資源群組中。
-- 在與網域控制站相同的虛擬網路上。
+- 在與您的網域控制站相同的虛擬網路上，或與您的網域控制站具有適當連線的虛擬網路上。
 - 有足夠 IP 位址空間存放兩部虛擬機器，與最終會用於此叢集所有 FCI 的子網路上。
 - 在 Azure 可用性設定組或可用性區域中。
 
@@ -111,7 +111,7 @@ ms.locfileid: "97358005"
 
 下表詳細說明您可能需要開啟的埠，取決於您的 FCI 設定： 
 
-   | 目的 | 連接埠 | 注意
+   | 目的 | Port | 注意
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | 適用於 SDL Server 預設執行個體的一般連接埠。 若您曾使用來自資源庫的映像，此連接埠會自動開啟。 </br> </br> **消費者**：所有 FCI 設定。 |
    | 健全狀況探查 | TCP 59999 | 任何開啟的 TCP 連接埠。 設定負載平衡器 [健全狀況探查](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) 和叢集，以使用此埠。 </br> </br> **由**： FCI 與負載平衡器搭配使用。 |

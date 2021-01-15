@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: bccbfed96dd6cd87bdfe986baf4b52817a160ac0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533356"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222950"
 ---
-# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 建立具有加速網路功能的 Linux 虛擬機器
+# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>使用 Azure CLI 建立具有加速網路的 Linux 虛擬機器
 
 在本教學課程中，您將了解如何使用加速網路建立 Linux 虛擬機器 (VM)。 若要建立使用加速網路的 Windows VM，請參閱[建立使用加速網路的 Windows VM](create-vm-accelerated-networking-powershell.md)。 加速網路可以對 VM 啟用 Single Root I/O Virtualization (SR-IOV)，大幅提升其網路效能。 這個高效能路徑會略過資料路徑的主機，進而減少延遲、抖動和 CPU 使用率，供支援的 VM 類型中最嚴苛的網路工作負載使用。 下圖顯示兩部 VM 之間的通訊，一部具備加速網路而另一步沒有︰
 
 ![比較](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
-如果沒有加速網路，進出 VM 的所有網路流量都必須周遊主機和虛擬交換器。 虛擬交換器對網路流量提供所有原則強制執行，例如網路安全性群組、存取控制清單、隔離性以及其他網路虛擬化服務。 若要深入了解虛擬交換器，請閱讀 [Hyper-V Network Virtualization and Virtual Switch (Hyper-V 網路虛擬化和虛擬交換器)](https://technet.microsoft.com/library/jj945275.aspx) 文章。
+如果沒有加速網路，進出 VM 的所有網路流量都必須周遊主機和虛擬交換器。 虛擬交換器對網路流量提供所有原則強制執行，例如網路安全性群組、存取控制清單、隔離性以及其他網路虛擬化服務。 若要深入了解虛擬交換器，請閱讀 [Hyper-V Network Virtualization and Virtual Switch (Hyper-V 網路虛擬化和虛擬交換器)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134230(v=ws.11)) 文章。
 
 如果使用加速網路，網路流量就會先送達虛擬機器的網路介面 (NIC)，然後轉送到 VM。 虛擬交換器套用的所有網路原則現在皆已卸載，並在硬體中套用。 在硬體中套用原則會讓 NIC 略過主機和虛擬交換器，同時在主機中維護套用的所有原則，直接將網路流量轉送到 VM。
 
@@ -60,7 +60,7 @@ ms.locfileid: "95533356"
 
 在支援超執行緒的執行個體中，加速網路可在具有 4 個以上 vCPU 的 VM 執行個體上進行支援作業。 支援的系列為： D/Dsv3、D/Dsv4、Dd/Ddv4、Da/Dasv4、E/Esv3、E/Esv4、Ed/Edsv4、Ea/Easv4、Fsv2、Lsv2、Ms/Mms 和 Ms/Mmsv2。
 
-如需 VM 執行個體的詳細資訊，請參閱 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+如需 VM 執行個體的詳細資訊，請參閱 [Linux VM 大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ### <a name="custom-images"></a>自訂映像
 如果您使用自訂映射，而且您的映射支援加速網路，請務必具有必要的驅動程式，才能在 Azure 上搭配 Mellanox ConnectX-3 和 ConnectX-4 Lx Nic 使用。
@@ -173,7 +173,7 @@ az vm create \
     --nics myNic
 ```
 
-如需所有 VM 大小和特性的清單，請參閱 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+如需所有 VM 大小和特性的清單，請參閱 [Linux VM 大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 建立 VM 後，系統將傳回與下列範例輸出類似的輸出。 請記下 **publicIpAddress**。 在後續步驟中，將會使用此位址來存取 VM。
 
@@ -310,5 +310,4 @@ az vmss start \
 
 * 停止/解除配置 VM 或可用性設定組/VMSS 中的所有 VM。
 * 必須在 VM 或可用性設定組/VMSS 中所有 VM 的 NIC 上停用加速網路。
-* 一旦停用加速網路之後，VM/可用性設定組/VMSS 就可以移到不支援加速網路的新大小，並重新啟動。  
-
+* 一旦停用加速網路之後，VM/可用性設定組/VMSS 就可以移到不支援加速網路的新大小，並重新啟動。

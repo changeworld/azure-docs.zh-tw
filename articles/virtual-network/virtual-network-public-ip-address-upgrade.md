@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 3e2905019244279129528c177a76291cb7d75e11
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: d6e8c4f4b6646254aeea12cf587f47047e661e3f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825771"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222865"
 ---
 # <a name="upgrade-public-ip-addresses"></a>升級公用 IP 位址
 
@@ -33,15 +33,15 @@ Azure 公用 IP 位址會使用 SKU （基本或標準）來建立，以決定�
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>將公用 IP 位址從基本升級為標準 SKU
 
-若要升級公用 IP，其不得與任何資源相關聯 (請參閱 [此頁面](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) ，以取得如何將公用 ip 解除關聯) 的詳細資訊。
+若要升級公用 IP，其不得與任何資源相關聯 (請參閱 [此頁面](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) ，以取得如何將公用 ip 解除關聯) 的詳細資訊。
 
 >[!IMPORTANT]
->從基本升級至標準 SKU 的公用 Ip 會繼續沒有 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)。  這表示它們不能與區域冗余的 Azure 資源相關聯，或系結到提供此功能的區域中的預先指定區域。
+>從基本升級至標準 SKU 的公用 Ip 會繼續沒有 [可用性區域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)。  這表示它們不能與區域冗余的 Azure 資源相關聯，或系結到提供此功能的區域中的預先指定區域。
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**基本至標準-PowerShell**](#tab/option-upgrade-powershell)
 
-下列範例假設先前建立基本 SKU 公用 IP，使用 [此頁面](https://docs.microsoft.com/azure/virtual-network/create-public-ip-powershell?tabs=option-create-public-ip-basic)上提供的範例搭配 **MyResourceGroup** 中的基本公用 IP **myBasicPublicIP** 。
+下列範例假設先前建立基本 SKU 公用 IP，使用 [此頁面](./create-public-ip-powershell.md?tabs=option-create-public-ip-basic)上提供的範例搭配 **MyResourceGroup** 中的基本公用 IP **myBasicPublicIP** 。
 
 若要升級 IP，只要使用 PowerShell 執行下列命令即可。  請注意，如果已靜態配置 IP 位址，則可以略過該區段。
 
@@ -63,7 +63,7 @@ Set-AzPublicIpAddress -PublicIpAddress $pubIP
 
 # <a name="basic-to-standard---cli"></a>[**基本到標準-CLI**](#tab/option-upgrade-cli)
 
-下列範例假設先前建立基本 SKU 公用 IP，使用 [此頁面](https://docs.microsoft.com/azure/virtual-network/create-public-ip-cli?tabs=option-create-public-ip-basic)上提供的範例搭配 **MyResourceGroup** 中的基本公用 IP **myBasicPublicIP** 。
+下列範例假設先前建立基本 SKU 公用 IP，使用 [此頁面](./create-public-ip-cli.md?tabs=option-create-public-ip-basic)上提供的範例搭配 **MyResourceGroup** 中的基本公用 IP **myBasicPublicIP** 。
 
 若要升級 IP，只要使用 Azure CLI 執行下列命令。  請注意，如果已靜態配置 IP 位址，則可以略過該區段。
 
@@ -95,7 +95,7 @@ az network public-ip update \
 
 # <a name="reserved-to-basic---powershell"></a>[**保留至基本-PowerShell**](#tab/option-migrate-powershell)
 
-下列範例假設先前在 **myResourceGroup** 中建立傳統 Azure 保留的 IP **>myreservedip** 。 另一項遷移的必要條件是確保 Azure Resource Manager 的訂用帳戶已註冊進行遷移。 本 [頁面](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps)的步驟3和4將詳細說明這一點。
+下列範例假設先前在 **myResourceGroup** 中建立傳統 Azure 保留的 IP **>myreservedip** 。 另一項遷移的必要條件是確保 Azure Resource Manager 的訂用帳戶已註冊進行遷移。 本 [頁面](../virtual-machines/migration-classic-resource-manager-ps.md)的步驟3和4將詳細說明這一點。
 
 若要遷移保留的 IP，請使用 PowerShell 執行下列命令。  請注意，如果 IP 位址未與任何服務相關聯 (下有一個名為 **myService** 的服務) ，則可以略過該步驟。
 
@@ -119,7 +119,7 @@ Azure Resource Manager 中的新資源群組是使用上述範例中的已遷移
 
 # <a name="reserved-to-basic---cli"></a>[**保留至基本-CLI**](#tab/option-migrate-cli)
 
-下列範例假設先前在 **myResourceGroup** 中建立傳統 Azure 保留的 IP **>myreservedip** 。 另一項遷移的必要條件是確保 Azure Resource Manager 的訂用帳戶已註冊進行遷移。 本 [頁面](https://docs.microsoft.com/azure/virtual-machines/linux/migration-classic-resource-manager-cli)的步驟3和4將詳細說明這一點。
+下列範例假設先前在 **myResourceGroup** 中建立傳統 Azure 保留的 IP **>myreservedip** 。 另一項遷移的必要條件是確保 Azure Resource Manager 的訂用帳戶已註冊進行遷移。 本 [頁面](../virtual-machines/migration-classic-resource-manager-cli.md)的步驟3和4將詳細說明這一點。
 
 為了遷移保留的 IP，請使用 Azure CLI 執行下列命令。  請注意，如果 IP 位址未與任何服務相關聯 (下面有一個名為 **myService** And deployment **myDeployment**) 的服務，則可以略過該步驟。
 
@@ -145,12 +145,12 @@ Azure Resource Manager 中的新資源群組是使用上述範例中的已遷移
 
 ## <a name="limitations"></a>限制
 
-* 為了升級基本公用 IP，它無法與任何 Azure 資源相關聯。  請參閱 [此頁面](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) ，以取得如何將公用 ip 解除關聯的詳細資訊。  同樣地，若要遷移保留的 IP，則無法與任何雲端服務相關聯。  請參閱 [此頁面](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) ，以取得如何將保留的 ip 解除關聯的詳細資訊。  
-* 從基本升級至標準 SKU 的公用 Ip 會繼續沒有 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) ，因此無法與區域冗余或區域性的 Azure 資源相關聯。  請注意，這只適用于提供可用性區域的區域。
+* 為了升級基本公用 IP，它無法與任何 Azure 資源相關聯。  請參閱 [此頁面](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address) ，以取得如何將公用 ip 解除關聯的詳細資訊。  同樣地，若要遷移保留的 IP，則無法與任何雲端服務相關聯。  請參閱 [此頁面](./remove-public-ip-address-vm.md) ，以取得如何將保留的 ip 解除關聯的詳細資訊。  
+* 從基本升級至標準 SKU 的公用 Ip 會繼續沒有 [可用性區域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) ，因此無法與區域冗余或區域性的 Azure 資源相關聯。  請注意，這只適用于提供可用性區域的區域。
 * 您無法從標準降級為基本。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 Azure 中的 [公用 ip 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) ，包括 SKU 類型和 [公用 ip 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)之間的差異。
-- 瞭解如何將 [Azure 公用負載平衡器從基本升級至標準](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard)。
-- 瞭解 [傳統的 Azure 保留 ip](https://docs.microsoft.com/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) ，以及 [將傳統資源遷移至 Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)。
+- 深入瞭解 Azure 中的 [公用 ip 位址](./public-ip-addresses.md#public-ip-addresses) ，包括 SKU 類型和 [公用 ip 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)之間的差異。
+- 瞭解如何將 [Azure 公用負載平衡器從基本升級至標準](../load-balancer/upgrade-basic-standard.md)。
+- 瞭解 [傳統的 Azure 保留 ip](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) ，以及 [將傳統資源遷移至 Azure Resource Manager](../virtual-machines/migration-classic-resource-manager-overview.md)。

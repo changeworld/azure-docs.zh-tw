@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83587726"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222882"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>針對虛擬網路對等互連問題進行疑難排解
 
@@ -36,8 +36,8 @@ ms.locfileid: "83587726"
 
 若要針對位於相同訂用帳戶中的虛擬網路來設定虛擬網路對等互連，請使用下列文章中的方法：
 
-* 如果虛擬網路位於*相同區域*，請參閱[建立對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#create-a-peering)。
-* 如果虛擬網路位於*不同區域*，請參閱[虛擬網路對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)。 
+* 如果虛擬網路位於 *相同區域*，請參閱 [建立對等互連](./virtual-network-manage-peering.md#create-a-peering)。
+* 如果虛擬網路位於 *不同區域*，請參閱 [虛擬網路對等互連](./virtual-network-peering-overview.md)。 
 
 > [!Note]
 > 下列資源無法跨全球虛擬網路對等互連來連線： 
@@ -52,14 +52,14 @@ ms.locfileid: "83587726"
 > * Azure API 管理 (使用基本 ILB SKU)
 > * Azure Active Directory Domain Services (Azure AD DS) (使用基本 ILB SKU)
 
-如需詳細資訊，請參閱全球對等互連的[需求和限制](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints)。
+如需詳細資訊，請參閱全球對等互連的[需求和限制](./virtual-network-peering-overview.md#requirements-and-constraints)。
 
 ### <a name="the-virtual-networks-are-in-different-subscriptions-or-active-directory-tenants"></a>虛擬網路位於不同的訂用帳戶或 Active Directory 租用戶
 
-若要針對不同訂用帳戶或 Active Directory 租用戶中的虛擬網路來設定虛擬網路對等互連，請參閱[針對 Azure CLI 在不同訂用帳戶中建立對等互連](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)。
+若要針對不同訂用帳戶或 Active Directory 租用戶中的虛擬網路來設定虛擬網路對等互連，請參閱[針對 Azure CLI 在不同訂用帳戶中建立對等互連](./create-peering-different-subscriptions.md#cli)。
 
 > [!Note]
-> 若要設定網路對等互連，您必須同時擁有這兩個訂用帳戶中的**網路參與者**權限。 如需詳細資訊，請參閱[對等互連權限](virtual-network-manage-peering.md#permissions)。
+> 若要設定網路對等互連，您必須同時擁有這兩個訂用帳戶中的 **網路參與者** 權限。 如需詳細資訊，請參閱[對等互連權限](virtual-network-manage-peering.md#permissions)。
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>以使用內部部署資源的中樞輪輻拓撲來設定虛擬網路對等互連
 
@@ -67,11 +67,11 @@ ms.locfileid: "83587726"
 
 ### <a name="for-a-site-to-site-connection-or-an-expressroute-connection"></a>針對站對站連線或 ExpressRoute 連線
 
-遵循下列文章中的步驟：[為虛擬網路對等互連設定 VPN 閘道傳輸](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)。
+遵循下列文章中的步驟：[為虛擬網路對等互連設定 VPN 閘道傳輸](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ### <a name="for-point-to-site-connections"></a>針對點對站連線
 
-1. 遵循下列文章中的步驟：[為虛擬網路對等互連設定 VPN 閘道傳輸](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-peering-gateway-transit?toc=/azure/virtual-network/toc.json)。
+1. 遵循下列文章中的步驟：[為虛擬網路對等互連設定 VPN 閘道傳輸](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 2. 在建立或變更虛擬網路對等互連之後，請下載並重新安裝點對站套件，讓點對站用戶端獲得已更新的輪輻虛擬網路路由。
 
 ## <a name="configure-virtual-network-peering-with-hub-spoke-topology-virtual-network"></a>以中樞輪輻拓撲虛擬網路設定虛擬網路對等互連
@@ -84,12 +84,12 @@ ms.locfileid: "83587726"
 1. 在中樞虛擬網路中，設定網路虛擬設備 (NVA)。
 1. 在輪輻虛擬網路中，套用下一個躍點類型為「網路虛擬設備」的使用者定義路由。
 
-如需詳細資訊，請參閱[服務鏈結](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)。
+如需詳細資訊，請參閱[服務鏈結](./virtual-network-peering-overview.md#service-chaining)。
 
 > [!Note]
 > 如果您需要如何設定 NVA 的協助，請[連絡 NVA 廠商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
 
-如需如何針對 NVA 裝置設定和路由進行疑難排解的協助，請參閱 [Azure 中的網路虛擬設備問題](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)。
+如需如何針對 NVA 裝置設定和路由進行疑難排解的協助，請參閱 [Azure 中的網路虛擬設備問題](./virtual-network-troubleshoot-nva.md)。
 
 ### <a name="the-virtual-networks-are-in-different-regions"></a>虛擬網路位於不同區域
 
@@ -105,7 +105,7 @@ ms.locfileid: "83587726"
 * API 管理 (使用基本 ILB SKU)
 * Azure AD DS (使用基本 ILB SKU)
 
-若要深入了解全球對等互連的需求和限制，請參閱[虛擬網路對等互連](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints)。
+若要深入了解全球對等互連的需求和限制，請參閱[虛擬網路對等互連](./virtual-network-peering-overview.md#requirements-and-constraints)。
 
 ## <a name="troubleshoot-a-connectivity-issue-between-two-peered-virtual-networks"></a>針對兩個對等互連虛擬網路之間的連線問題進行疑難排解
 
@@ -117,11 +117,11 @@ ms.locfileid: "83587726"
 
 1. 檢查網路流量的流動情形：
 
-   從來源 VM 到目的地 VM 使用[連線疑難排解](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview)和 [IP 流量驗證](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview)，以判斷是否有 NSG 或 UDR 造成流量的流動受到干擾。
+   從來源 VM 到目的地 VM 使用[連線疑難排解](../network-watcher/network-watcher-connectivity-overview.md)和 [IP 流量驗證](../network-watcher/network-watcher-ip-flow-verify-overview.md)，以判斷是否有 NSG 或 UDR 造成流量的流動受到干擾。
 
    如果您使用防火牆或 NVA： 
    1. 記錄 UDR 參數，以便能夠在完成此步驟之後將這些參數還原。
-   2. 從指向 NVA 以作為下一個躍點的來源 VM 子網路或 NIC 中移除 UDR。 確認能否從來源 VM 直接連線到略過 NVA 的目的地。 如果此步驟無效，請參閱 [NVA 疑難排解員](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)。
+   2. 從指向 NVA 以作為下一個躍點的來源 VM 子網路或 NIC 中移除 UDR。 確認能否從來源 VM 直接連線到略過 NVA 的目的地。 如果此步驟無效，請參閱 [NVA 疑難排解員](./virtual-network-troubleshoot-nva.md)。
 
 2. 進行網路追蹤： 
    1. 在目的地 VM 上啟動網路追蹤。 針對 Windows，您可以使用 **Netsh**。 針對 Linux，請使用 **TCPDump**。
@@ -145,7 +145,7 @@ ms.locfileid: "83587726"
    > * API 管理 (使用基本 ILB SKU)
    > * Azure AD DS (使用基本 ILB SKU)
 
-如需詳細資訊，請參閱全球對等互連的[需求和限制](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints)。
+如需詳細資訊，請參閱全球對等互連的[需求和限制](./virtual-network-peering-overview.md#requirements-and-constraints)。
 
 ### <a name="the-peering-status-is-disconnected"></a>對等互連狀態為「已中斷連線」
 
@@ -159,8 +159,8 @@ ms.locfileid: "83587726"
 
 若要針對會影響第三方 NVA 或 VPN 閘道的連線問題進行疑難排解，請參閱下列文章：
 
-* [VPN 疑難排解員](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-nva)
-* [服務鏈結](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)
+* [VPN 疑難排解員](./virtual-network-troubleshoot-nva.md)
+* [服務鏈結](./virtual-network-peering-overview.md#service-chaining)
 
 ### <a name="my-network-does-not-use-a-third-party-nva-or-vpn-gateway"></a>我的網路未使用第三方 NVA 或 VPN 閘道
 
@@ -190,7 +190,7 @@ ms.locfileid: "83587726"
 
 中樞網路必須包含 NVA。 在已將 NVA 設定為下一個躍點的輪輻中設定 UDR，並在中樞虛擬網路中啟用 [允許轉送的流量]。
 
-如需詳細資訊，請參閱[服務鏈結](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#service-chaining)，並與您選擇的 [NVA 廠商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)討論這些需求。
+如需詳細資訊，請參閱[服務鏈結](./virtual-network-peering-overview.md#service-chaining)，並與您選擇的 [NVA 廠商](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)討論這些需求。
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>針對不同區域中輪輻虛擬網路之間的中樞輪輻網路連線問題進行疑難排解
 
@@ -206,7 +206,7 @@ ms.locfileid: "83587726"
 * API 管理 (使用基本 ILB SKU)
 * Azure AD DS (使用基本 ILB SKU)
 
-如需詳細資訊，請參閱全球對等互連的[需求和限制](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints)以及[不同的 VPN 拓撲](https://blogs.msdn.microsoft.com/igorpag/2016/02/11/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2/)。
+如需詳細資訊，請參閱全球對等互連的[需求和限制](./virtual-network-peering-overview.md#requirements-and-constraints)以及[不同的 VPN 拓撲](/archive/blogs/igorpag/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2)。
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-a-web-app-and-the-spoke-virtual-network"></a>針對 Web 應用程式與輪輻虛擬網路之間的中樞輪輻網路連線問題進行疑難排解
 
@@ -214,18 +214,18 @@ ms.locfileid: "83587726"
 
 1. 登入 Azure 入口網站。 
 1. 在 Web 應用程式中，依序選取 [網路] 和 [VNet 整合]。
-1. 檢查是否可以看到遠端虛擬網路。 手動輸入遠端虛擬網路位址空間 (**同步網路**和**新增路由**)。
+1. 檢查是否可以看到遠端虛擬網路。 手動輸入遠端虛擬網路位址空間 (**同步網路** 和 **新增路由**)。
 
 如需詳細資訊，請參閱下列文章：
 
-* [將您的應用程式與 Azure 虛擬網路整合](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
-* [關於點對站 VPN 路由](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
+* [將您的應用程式與 Azure 虛擬網路整合](../app-service/web-sites-integrate-with-vnet.md)
+* [關於點對站 VPN 路由](../vpn-gateway/vpn-gateway-about-point-to-site-routing.md)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>針對虛擬網路對等互連組態錯誤訊息進行疑難排解 
 
 ### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>目前的租用戶 `<TENANT ID>` 未獲授權存取連結的訂用帳戶
 
-若要解決此問題，請參閱[建立對等互連 - Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)。
+若要解決此問題，請參閱[建立對等互連 - Azure CLI](./create-peering-different-subscriptions.md#cli)。
 
 ### <a name="not-connected"></a>Not connected
 
@@ -246,4 +246,4 @@ ms.locfileid: "83587726"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [為 Azure VM 之間的連線問題疑難排解](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-connectivity-problem-between-vms)
+* [為 Azure VM 之間的連線問題疑難排解](./virtual-network-troubleshoot-connectivity-problem-between-vms.md)

@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/25/2020
+ms.date: 01/14/2020
 ms.author: jlian
-ms.openlocfilehash: f4438aebcb81d665a19a595ac7ade4fea27fc43f
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e569cbe9030b2ac5a42bd99233b4fefc925a5662
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621003"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220300"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT 中樞內的傳輸層安全性 (TLS) 支援
 
@@ -46,9 +46,16 @@ IoT 中樞 ECC 伺服器 TLS 憑證可供公開預覽。 雖然提供與 RSA 憑
 * 美國中南部
 * 美國西部 2
 * US Gov 亞利桑那州
-* US Gov 維吉尼亞州
+* 在此區域中無法使用 US Gov 維吉尼亞州 (TLS 1.0/1.1 支援-必須啟用 TLS 1.2 強制，否則無法建立 IoT 中樞) 
 
-基於此目的，請在任何支援的區域中佈建新的 IoT 中樞，並在 Azure Resource Manager 範本的 IoT 中樞資源規格中，將 `minTlsVersion` 屬性設定為 `1.2`：
+若要啟用 TLS 1.2 強制，請遵循在 [Azure 入口網站中建立 IoT 中樞](/.iot-hub-create-through-portal.md)的步驟，但
+
+- 從上述清單中的其中一個 **區域選擇區域** 。
+- 在 [ **管理-> Advanced-> 傳輸層安全性 (tls) -> 最小 tls 版本**，請選取 **1.2**。 只有在支援的區域中建立的 IoT 中樞才會顯示此設定。
+
+    :::image type="content" source="media/iot-hub-tls-12-enforcement.png" alt-text="顯示如何在建立 IoT 中樞期間開啟 TLS 1.2 強制的螢幕擷取畫面":::
+
+若要使用 ARM 範本建立，請在任何支援的區域中布建新的 IoT 中樞，並 `minTlsVersion` `1.2` 在資源規格中將屬性設為：
 
 ```json
 {

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: bd86b2ec803b2327d3daa2d4274f13328fec8c27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 727e79cede9319cb7aae701082d5842ad895a61d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283209"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223511"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>讓容器使用 Azure 虛擬網路功能
 
@@ -59,7 +59,7 @@ Pod 會在屬於虛擬網路的虛擬機器中提供。 適用於 Pod 的 IP 位
 
 外掛程式可透過下列方式使用，以針對 Pod 或 Docker 容器提供基本的虛擬網路連結：
 
-- **Azure Kubernetes Service**：外掛程式會整合到 Azure Kubernetes Service (AKS)，並可藉由選擇 [進階網路]  選項來使用。 進階網路功能可讓您在現有或新的虛擬網路中部署 Kubernetes 叢集。 若要深入了解進階網路功能及其設定步驟，請參閱 [AKS 中的網路設定](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- **Azure Kubernetes Service**：外掛程式會整合到 Azure Kubernetes Service (AKS)，並可藉由選擇 [進階網路]  選項來使用。 進階網路功能可讓您在現有或新的虛擬網路中部署 Kubernetes 叢集。 若要深入了解進階網路功能及其設定步驟，請參閱 [AKS 中的網路設定](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 - **AKS-Engine**：AKS-Engine 是一種工具，產生在 Azure 中部署 Kubernetes 叢集的 Azure Resource Manager 範本。 如需詳細指示，請參閱[部署適用於 AKS-Engine Kubernetes 叢集的外掛程式](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in)。
 - **在 Azure 中建立自己的 Kubernetes 叢集**：外掛程式可用來針對您在 Kubernetes 叢集中自行部署的 Pod 提供基本網路功能，而不依賴 AKS 或 AKS-Engine 之類的工具。 在此案例中，已在叢集中的每部虛擬機器上安裝並啟用外掛程式。 如需詳細指示，請參閱[部署自行部署的 Kubernetes 叢集外掛程式](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster)。
 - **Azure 中適用於 Docker 容器的虛擬網路連結**：如果您不想建立 Kubernetes 叢集，並且想要在虛擬機器中建立具有虛擬網路連結的 Docker 容器，即可使用外掛程式。 如需詳細指示，請參閱[部署適用於 Docker 的外掛程式](deploy-container-networking.md#deploy-plug-in-for-docker-containers)。
