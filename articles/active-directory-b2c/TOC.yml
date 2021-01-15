@@ -1,6 +1,6 @@
 - name: Azure AD B2C 文件
   href: index.yml
-- name: 總覽
+- name: 概觀
   items:
     - name: 關於 Azure AD B2C
       expanded: true
@@ -123,6 +123,8 @@
       items:
         - name: 註冊或登入原則
           href: add-sign-up-and-sign-in-policy.md
+        - name: 登入原則
+          href: add-sign-in-policy.md
         - name: 密碼重設原則
           href: add-password-reset-policy.md
         - name: 密碼變更原則
@@ -148,6 +150,8 @@
           href: identity-provider-azure-ad-single-tenant.md
         - name: Azure AD (多租用戶)
           href: identity-provider-azure-ad-multi-tenant.md
+        - name: Azure AD B2C
+          href: identity-provider-azure-ad-b2c.md
         - name: Facebook
           href: identity-provider-facebook.md
         - name: 一般識別提供者

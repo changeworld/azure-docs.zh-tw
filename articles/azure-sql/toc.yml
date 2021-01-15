@@ -10,7 +10,7 @@
   items:
     - name: 購買模型
       items:
-        - name: 概觀
+        - name: 總覽
           href: database/purchasing-models.md
         - name: 虛擬核心模型概觀
           href: database/service-tiers-vcore.md
@@ -20,7 +20,7 @@
           href: database/reserved-capacity-overview.md
     - name: 計算和儲存體
       items:
-        - name: 概觀
+        - name: 總覽
           href: database/service-tiers-general-purpose-business-critical.md
           displayName: provisioned compute tier
         - name: 一般目的/標準
@@ -45,7 +45,7 @@
           href: database/elastic-transactions-overview.md
         - name: 安全性
           items:
-            - name: 概觀
+            - name: 總覽
               href: database/security-overview.md
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
             - name: 最佳作法
@@ -179,6 +179,8 @@
               href: database/performance-guidance.md
             - name: 使用 DMV 監視效能
               href: database/monitoring-with-dmvs.md
+            - name: 了解並解析封鎖
+              href: database/understand-resolve-blocking.md
             - name: 記錄診斷遙測
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: 記憶體內部 OLTP
@@ -201,7 +203,7 @@
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/azure-sql/toc.json
         - name: 開發資料應用程式
           items:
-            - name: 概觀
+            - name: 總覽
               href: database/develop-overview.md
             - name: 使用 JSON 資料
               href: database/json-features.md
@@ -980,7 +982,7 @@
       href: virtual-machines/index.yml
     - name: Windows
       items:
-        - name: 概觀
+        - name: 總覽
           items:
             - name: 什麼是 SQL Server 虛擬機器？
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
@@ -1098,7 +1100,7 @@
                           href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                         - name: 手動設定
                           items:
-                            - name: Prerequisites
+                            - name: 必要條件
                               href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                             - name: 教學課程
                               href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
