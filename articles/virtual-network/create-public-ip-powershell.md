@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 99e79e4d094fe6e93510d139d2f4d08f260102df
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5b79a777ba8f7e615e4637f94311cba39e8a7f6c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010039"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223698"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立公用 IP 位址
 
-本文說明如何使用 Azure PowerShell 建立公用 IP 位址資源。 如需有關這可以關聯哪些資源的詳細資訊，基本和標準 SKU 之間的差異，以及其他相關資訊，請參閱 [公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses)。  在此範例中，我們只會將焦點放在 IPv4 位址;如需 IPv6 位址的詳細資訊，請參閱 [Azure VNet 的 ipv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)。
+本文說明如何使用 Azure PowerShell 建立公用 IP 位址資源。 如需有關這可以關聯哪些資源的詳細資訊，基本和標準 SKU 之間的差異，以及其他相關資訊，請參閱 [公用 IP 位址](./public-ip-addresses.md)。  在此範例中，我們只會將焦點放在 IPv4 位址;如需 IPv6 位址的詳細資訊，請參閱 [Azure VNet 的 ipv6](./ipv6-overview.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 已在本機安裝 Azure PowerShell 或 Azure Cloud Shell
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**標準 SKU-使用區域**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->下列命令適用于 API 2020-08-01 版或更新版本。  如需目前所使用的 API 版本的詳細資訊，請參閱 [資源提供者和類型](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
+>下列命令適用于 API 2020-08-01 版或更新版本。  如需目前所使用的 API 版本的詳細資訊，請參閱 [資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 使用 [>get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress) ，在 **myResourceGroup** 中建立名為 **myStandardZRPublicIP** 的標準區域冗余公用 IP 位址。
 
@@ -84,12 +84,12 @@ $zone = 2
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku -zone $zone
 ```
 
-請注意，上述適用于區域的選項僅適用于具有 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)的區域中的有效選項。
+請注意，上述適用于區域的選項僅適用于具有 [可用性區域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)的區域中的有效選項。
 
 # <a name="standard-sku---no-zones"></a>[**標準 SKU-沒有區域**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->下列命令適用于 API 2020-08-01 版或更新版本。  如需目前所使用的 API 版本的詳細資訊，請參閱 [資源提供者和類型](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
+>下列命令適用于 API 2020-08-01 版或更新版本。  如需目前所使用的 API 版本的詳細資訊，請參閱 [資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)。
 
 使用 [>get-azpublicipaddress](/powershell/module/az.network/new-azpublicipaddress)建立標準公用 IP 位址，作為 **myResourceGroup** 中名為 **myStandardPublicIP** 的非區域性資源。
 
@@ -104,7 +104,7 @@ $alloc = 'Static'
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku
 ```
 
-此選項在所有區域中都是有效的，而且是區域中標準公用 IP 位址的預設選擇，而不 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)。
+此選項在所有區域中都是有效的，而且是區域中標準公用 IP 位址的預設選擇，而不 [可用性區域](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)。
 
 # <a name="basic-sku"></a>[**基本 SKU**](#tab/option-create-public-ip-basic)
 
@@ -126,9 +126,9 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 
 ## <a name="additional-information"></a>其他資訊 
 
-如需上列個別變數的詳細資訊，請參閱 [管理公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)。
+如需上列個別變數的詳細資訊，請參閱 [管理公用 IP 位址](./virtual-network-public-ip-address.md#create-a-public-ip-address)。
 
 ## <a name="next-steps"></a>後續步驟
-- 將[公用 IP 位址與虛擬機器](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)產生關聯
-- 深入了解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+- 將[公用 IP 位址與虛擬機器](./associate-public-ip-address-vm.md#azure-portal)產生關聯
+- 深入了解 Azure 中的[公用 IP 位址](./public-ip-addresses.md#public-ip-addresses)。
 - 深入了解所有[公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: a820fb4ec5d6c2053b1104b68dbda0ae70f624c0
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 58f6c7a3b5d68d2825cead545ba1b683d1faf1af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179192"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222797"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>將 Cloud Shell 部署到 Azure 虛擬網路
 
@@ -88,9 +88,6 @@ ResourceTypes                             RegistrationState
 
 在 Azure 入口網站中，或使用 Azure CLI、Azure PowerShell 等，在新的資源群組中建立資源群組和虛擬網路， **資源群組和虛擬網路必須位於相同的區域中**。
 
-> [!NOTE]
-> 在公開預覽期間，資源群組和虛擬網路必須位於 WestCentralUS 或 WestUS 中。
-
 ### <a name="arm-templates"></a>ARM 範本
 利用 [Azure 快速入門範本](https://aka.ms/cloudshell/docs/vnet/template) ，在虛擬網路中建立 Cloud Shell 資源，並使用 [azure 快速入門](https://aka.ms/cloudshell/docs/vnet/template/storage) 範本來建立必要的儲存體。 記下您的資源名稱，主要是您的檔案共用名稱。
 
@@ -111,5 +108,5 @@ ResourceTypes                             RegistrationState
 
 ![說明 Cloud Shell 隔離式 VNET 首次體驗設定。](media/private-vnet/vnet-settings.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 [深入瞭解 Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121340"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222100"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>在 Azure Synapse Link Preview 中使用無伺服器 SQL 集區查詢 Azure Cosmos DB 資料
 
@@ -31,7 +31,7 @@ ms.locfileid: "98121340"
 > [!IMPORTANT]
 > 本教學課程使用具有 [Azure Cosmos DB 妥善定義架構](../../cosmos-db/analytical-store-introduction.md#schema-representation)的容器。 無伺服器 SQL 集區針對 [Azure Cosmos DB 完整精確度架構](#full-fidelity-schema) 提供的查詢體驗，是根據預覽意見反應而變更的暫時行為。 請勿依賴函數的結果集架構 `OPENROWSET` ，而不使用 `WITH` 子句從容器中讀取具有完整精確度架構的資料，因為查詢體驗可能會對齊，並根據妥善定義的架構來變更。 您可以在 [Azure Synapse Analytics 意見反應論壇](https://feedback.azure.com/forums/307516-azure-synapse-analytics)張貼您的意見反應。 您也可以聯絡 [Azure Synapse Link 產品小組](mailto:cosmosdbsynapselink@microsoft.com) 來提供意見反應。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 無伺服器 SQL 集區可讓您使用函數來查詢 Azure Cosmos DB 分析儲存體 `OPENROWSET` 。 
 - `OPENROWSET` 具有內嵌索引鍵。 這個語法可以用來查詢 Azure Cosmos DB 的集合，而不需要準備認證。
@@ -205,6 +205,8 @@ FROM OPENROWSET(
 如需有關 Azure Cosmos DB 值所應使用之 SQL 類型的詳細資訊，請參閱本文結尾的 [sql 型別對應規則](#azure-cosmos-db-to-sql-type-mappings) 。
 
 ## <a name="create-view"></a>建立視圖
+
+不建議或不支援在 master 或 default 資料庫中建立 views。 因此，您需要為您的視圖建立使用者資料庫。
 
 一旦您識別架構，您就可以在 Azure Cosmos DB 資料的最上層準備一個觀點。 您應該將 Azure Cosmos DB 帳戶金鑰放在個別的認證中，並從函式參考此認證 `OPENROWSET` 。 請勿將您的帳戶金鑰保留在 view 定義中。
 

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: ec70f7820994898cb8e552dab66547cc9c9f10ec
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042873"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223664"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>診斷虛擬機器網路流量篩選問題
 
 在本文中，您將了解如何藉由檢視對虛擬機器 (VM) 有效的網路安全性群組 (NSG) 安全性規則來診斷網路流量篩選問題。
 
-NSG 可讓您針對流入和流出 VM 的流量，控制流量的類型。 您可以將 NSG 關聯至 Azure 虛擬網路中的子網路、附加至 VM 的網路介面，或是上述兩者。 套用至網路介面的有效安全性規則，乃是針對網路介面及該網路介面所在子網路關聯的 NSG，存在其中的規則彙總。 不同 NSG 中的規則有時會互相衝突，並影響 VM 的網路連線能力。 您可以從 VM 網路介面上套用的 NSG 中檢視所有的有效安全性規則。 如果您不熟悉虛擬網路、網路介面或 NSG 概念，請參閱[虛擬網路概觀](virtual-networks-overview.md)、[網路介面](virtual-network-network-interface.md)及[網路安全性群組概觀](security-overview.md)。
+NSG 可讓您針對流入和流出 VM 的流量，控制流量的類型。 您可以將 NSG 關聯至 Azure 虛擬網路中的子網路、附加至 VM 的網路介面，或是上述兩者。 套用至網路介面的有效安全性規則，乃是針對網路介面及該網路介面所在子網路關聯的 NSG，存在其中的規則彙總。 不同 NSG 中的規則有時會互相衝突，並影響 VM 的網路連線能力。 您可以從 VM 網路介面上套用的 NSG 中檢視所有的有效安全性規則。 如果您不熟悉虛擬網路、網路介面或 NSG 概念，請參閱[虛擬網路概觀](virtual-networks-overview.md)、[網路介面](virtual-network-network-interface.md)及[網路安全性群組概觀](./network-security-groups-overview.md)。
 
 ## <a name="scenario"></a>案例
 
@@ -44,12 +44,12 @@ NSG 可讓您針對流入和流出 VM 的流量，控制流量的類型。 您�
 
    上圖所列的規則適用於名為 **myVMVMNic** 的網路介面。 其中有來自兩個不同網路安全性群組的網路介面 [輸入連接埠規則]：
    
-   - **mySubnetNSG** ：關聯至網路介面所在的子網路。
-   - **myVMNSG** ：關聯至名為 **myVMVMNic** 的 VM 中網路介面。
+   - **mySubnetNSG**：關聯至網路介面所在的子網路。
+   - **myVMNSG**：關聯至名為 **myVMVMNic** 的 VM 中網路介面。
 
-   名為 **DenyAllInBound** 的規則是防止從網際網路透過連接埠 80 與 VM 進行輸入通訊的規則，如 [案例](#scenario)中所述。 此規則針對 [來源] 列出 *0.0.0.0/0* ，這包括網際網路。 沒有其他具較高優先順序 (較低數字) 的規則允許透過連接埠 80 進行輸入。 若要允許從網際網路透過連接埠 80 對 VM 進行輸入，請參閱[解決問題](#resolve-a-problem)。 若要深入了解安全性規則及 Azure 套用它們的方式，請參閱[網路安全性群組](security-overview.md)。
+   名為 **DenyAllInBound** 的規則是防止從網際網路透過連接埠 80 與 VM 進行輸入通訊的規則，如 [案例](#scenario)中所述。 此規則針對 [來源] 列出 *0.0.0.0/0*，這包括網際網路。 沒有其他具較高優先順序 (較低數字) 的規則允許透過連接埠 80 進行輸入。 若要允許從網際網路透過連接埠 80 對 VM 進行輸入，請參閱[解決問題](#resolve-a-problem)。 若要深入了解安全性規則及 Azure 套用它們的方式，請參閱[網路安全性群組](./network-security-groups-overview.md)。
 
-   您也會在圖片底部看到 [輸出連接埠規則]。 位於其下方的是適用於網路介面的輸出連接埠規則。 雖然圖片針對每個 NSG 只有顯示四個輸入規則，您的 NSG 可能會具有四個以上的規則。 在圖中，您會在 [來源] 和 [目的地] 下方看到 [VirtualNetwork]，並在 [來源] 下方看到 [AzureLoadBalancer]。 [VirtualNetwork] 和 [AzureLoadBalancer] 為[服務標籤](security-overview.md#service-tags)。 服務標籤代表一組 IP 位址前置詞，有助於降低建立安全性規則的複雜性。
+   您也會在圖片底部看到 [輸出連接埠規則]。 位於其下方的是適用於網路介面的輸出連接埠規則。 雖然圖片針對每個 NSG 只有顯示四個輸入規則，您的 NSG 可能會具有四個以上的規則。 在圖中，您會在 [來源] 和 [目的地] 下方看到 [VirtualNetwork]，並在 [來源] 下方看到 [AzureLoadBalancer]。 [VirtualNetwork] 和 [AzureLoadBalancer] 為[服務標籤](./network-security-groups-overview.md#service-tags)。 服務標籤代表一組 IP 位址前置詞，有助於降低建立安全性規則的複雜性。
 
 4. 確認 VM 處於執行中狀態，然後選取 [有效的安全性規則] (如上圖所示)，以查看有效的安全性規則 (如下圖所示)：
 
@@ -69,11 +69,11 @@ NSG 可讓您針對流入和流出 VM 的流量，控制流量的類型。 您�
 
    ![螢幕擷取畫面顯示我的 V M V M M Nic 2 的網路設定 Azure 入口網站。](./media/diagnose-network-traffic-filter-problem/view-security-rules2.png)
 
-   不同於 **myVMVMNic** 網路介面， **myVMVMNic2** 網路介面沒有與它相關聯的網路安全性群組。 每個網路介面和子網路皆可有零個或一個與它相關聯的 NSG。 與每個網路介面或子網路相關聯的 NSG 可以是相同或不同的。 您可以將相同的網路安全性群組關聯至任意數目的網路介面和子網路。
+   不同於 **myVMVMNic** 網路介面，**myVMVMNic2** 網路介面沒有與它相關聯的網路安全性群組。 每個網路介面和子網路皆可有零個或一個與它相關聯的 NSG。 與每個網路介面或子網路相關聯的 NSG 可以是相同或不同的。 您可以將相同的網路安全性群組關聯至任意數目的網路介面和子網路。
 
 雖然可以透過 VM 檢視有效的安全性規則，您也可以透過下列個別的項目來檢視有效的安全性規則：
-- **網路介面** ：了解如何 [檢視網路介面](virtual-network-network-interface.md#view-network-interface-settings)。
-- **NSG** ：了解如何 [檢視 NSG](manage-network-security-group.md#view-details-of-a-network-security-group)。
+- **網路介面**：了解如何 [檢視網路介面](virtual-network-network-interface.md#view-network-interface-settings)。
+- **NSG**：了解如何 [檢視 NSG](manage-network-security-group.md#view-details-of-a-network-security-group)。
 
 ## <a name="diagnose-using-powershell"></a>使用 PowerShell 進行診斷
 
@@ -109,7 +109,7 @@ NetworkInterfaces
 {/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic
 ```
 
-在上述輸出中，網路介面名稱是 *myVMVMNic* 。
+在上述輸出中，網路介面名稱是 *myVMVMNic*。
 
 ## <a name="diagnose-using-azure-cli"></a>使用 Azure CLI 進行診斷
 
@@ -150,15 +150,15 @@ az vm show \
       },
 ```
 
-在上述輸出中，網路介面名稱是 *myVMVMNic interface* 。
+在上述輸出中，網路介面名稱是 *myVMVMNic interface*。
 
 ## <a name="interpret-command-output"></a>解譯命令輸出
 
 不論您是使用 [PowerShell](#diagnose-using-powershell) 或 [Azure CLI](#diagnose-using-azure-cli) 來診斷問題，都會收到包含下列資訊的輸出：
 
-- **NetworkSecurityGroup** ：網路安全性群組的識別碼。
-- **Association** ：網路安全性群組是否關聯至 *NetworkInterface* 或 *Subnet* 。 如果 NSG 同時關聯至兩者，則會針對每個 NSG 以 **NetworkSecurityGroup** 、 **Association** 和 **EffectiveSecurityRules** 傳回輸出。 如果在執行命令以檢視有效安全性規則之前建立/解除 NSG 的關聯，您可能需要等候幾秒鐘的時間，變更才會反映在命令輸出中。
-- **EffectiveSecurityRules** ： [建立安全性規則](manage-network-security-group.md#create-a-security-rule)中會詳述每個屬性的說明。 前面加上 *defaultSecurityRules/* 的規則名稱是存在於每個 NSG 中的預設安全性規則。 前面加上 *securityRules/* 的規則名稱是您已建立的規則。 針對 **destinationAddressPrefix** 或 **sourceAddressPrefix** 屬性指定 [服務標籤](security-overview.md#service-tags) (例如 **Internet** 、 **VirtualNetwork** 和 **AzureLoadBalancer** ) 的規則，也會具有 **expandedDestinationAddressPrefix** 屬性值。 **expandedDestinationAddressPrefix** 屬性會列出服務標籤所代表的所有位址前置詞。
+- **NetworkSecurityGroup**：網路安全性群組的識別碼。
+- **Association**：網路安全性群組是否關聯至 *NetworkInterface* 或 *Subnet*。 如果 NSG 同時關聯至兩者，則會針對每個 NSG 以 **NetworkSecurityGroup**、**Association** 和 **EffectiveSecurityRules** 傳回輸出。 如果在執行命令以檢視有效安全性規則之前建立/解除 NSG 的關聯，您可能需要等候幾秒鐘的時間，變更才會反映在命令輸出中。
+- **EffectiveSecurityRules**：[建立安全性規則](manage-network-security-group.md#create-a-security-rule)中會詳述每個屬性的說明。 前面加上 *defaultSecurityRules/* 的規則名稱是存在於每個 NSG 中的預設安全性規則。 前面加上 *securityRules/* 的規則名稱是您已建立的規則。 針對 **destinationAddressPrefix** 或 **sourceAddressPrefix** 屬性指定 [服務標籤](./network-security-groups-overview.md#service-tags) (例如 **Internet**、**VirtualNetwork** 和 **AzureLoadBalancer**) 的規則，也會具有 **expandedDestinationAddressPrefix** 屬性值。 **expandedDestinationAddressPrefix** 屬性會列出服務標籤所代表的所有位址前置詞。
 
 如果您看到輸出中有列出重複的規則，那是因為有某個 NSG 同時關聯至網路介面和子網路。 這兩個 NSG 都具有相同的預設規則，且如果您在這兩個 NSG 中自行建立相同的規則，則這兩個 NSG 可能會有其他重複的規則。
 
@@ -170,9 +170,9 @@ az vm show \
 
 | 屬性                | 值                                                                              |
 |---------                |---------                                                                           |
-| 來源                  | 任何                                                                                |
+| 來源                  | 任意                                                                                |
 | 來源連接埠範圍      | 任意                                                                                |
-| 目的地             | VM 的 IP 位址、IP 位址範圍，或是子網路中的所有位址。 |
+| Destination             | VM 的 IP 位址、IP 位址範圍，或是子網路中的所有位址。 |
 | 目的地連接埠範圍 | 80                                                                                 |
 | 通訊協定                | TCP                                                                                |
 | 動作                  | 允許                                                                              |
@@ -181,7 +181,7 @@ az vm show \
 
 當您建立規則之後，系統就會允許從網際網路經由連接埠 80 進行輸入，因為該規則的優先順序高於名為 *DenyAllInBound* 且會拒絕該流量的預設安全性規則。 了解如何[建立安全性規則](manage-network-security-group.md#create-a-security-rule)。 如果有不同的 NSG 同時關聯至網路介面和子網路，您就必須在那兩個 NSG 中建立相同的規則。
 
-當 Azure 處理輸入流量時，會先處理與子網路關聯 NSG 中的規則 (如果有相關聯的 NSG 的話)，然後再處理與網路介面相關聯 NSG 中的規則。 如果有某個 NSG 同時關聯至網路介面和子網路，就必須同時在那兩個 NSG 中開啟該連接埠來使流量能抵達 VM。 為了簡化管理和通訊問題，我們建議您將 NSG 關聯至子網路，而不是個別的網路介面。 如果子網路內的 VM 需要不同的安全性規則，您可以使網路介面成為應用程式安全性群組 (ASG) 的成員，並將 ASG 指定為安全性規則的來源和目的地。 深入了解[應用程式安全性群組](security-overview.md#application-security-groups)。
+當 Azure 處理輸入流量時，會先處理與子網路關聯 NSG 中的規則 (如果有相關聯的 NSG 的話)，然後再處理與網路介面相關聯 NSG 中的規則。 如果有某個 NSG 同時關聯至網路介面和子網路，就必須同時在那兩個 NSG 中開啟該連接埠來使流量能抵達 VM。 為了簡化管理和通訊問題，我們建議您將 NSG 關聯至子網路，而不是個別的網路介面。 如果子網路內的 VM 需要不同的安全性規則，您可以使網路介面成為應用程式安全性群組 (ASG) 的成員，並將 ASG 指定為安全性規則的來源和目的地。 深入了解[應用程式安全性群組](./network-security-groups-overview.md#application-security-groups)。
 
 如果您仍有通訊問題，請參閱 [考慮](#considerations) 和其他診斷。
 
@@ -189,8 +189,8 @@ az vm show \
 
 對連線問題進行疑難排解時，請考量下列幾點︰
 
-* 預設的安全性規則會封鎖來自網際網路的輸入存取，並且只允許來自虛擬網路的輸入流量。 若要允許來自網際網路的輸入流量，請新增優先順序高於預設規則的安全性規則。 深入了解[預設安全性規則](security-overview.md#default-security-rules)，或如何[新增安全性規則](manage-network-security-group.md#create-a-security-rule)。
-* 如果您有對等互連的虛擬網路， **VIRTUAL_NETWORK** 服務標籤預設會自動展開以包含適用於對等互連虛擬網路的前置詞。 若要對任何與虛擬網路對等互連相關的問題進行疑難排解，您可以在 **ExpandedAddressPrefix** 清單中檢視前置詞。 深入了解[虛擬網路對等互連](virtual-network-peering-overview.md)和[服務標籤](security-overview.md#service-tags)。
+* 預設的安全性規則會封鎖來自網際網路的輸入存取，並且只允許來自虛擬網路的輸入流量。 若要允許來自網際網路的輸入流量，請新增優先順序高於預設規則的安全性規則。 深入了解[預設安全性規則](./network-security-groups-overview.md#default-security-rules)，或如何[新增安全性規則](manage-network-security-group.md#create-a-security-rule)。
+* 如果您有對等互連的虛擬網路，**VIRTUAL_NETWORK** 服務標籤預設會自動展開以包含適用於對等互連虛擬網路的前置詞。 若要對任何與虛擬網路對等互連相關的問題進行疑難排解，您可以在 **ExpandedAddressPrefix** 清單中檢視前置詞。 深入了解[虛擬網路對等互連](virtual-network-peering-overview.md)和[服務標籤](./network-security-groups-overview.md#service-tags)。
 * 有效安全性規則只會在有 NSG 已關聯至 VM 的網路介面和/或子網路，且 VM 處於執行中狀態的情況下顯示。
 * 如果沒有 NSG 關聯至網路介面或子網路，而且您將[公用 IP 位址](virtual-network-public-ip-address.md)指派給 VM，則系統會開啟所有連接埠，並可從任何地方對它進行輸入和輸出存取。 如果 VM 具有公用 IP 位址，我們建議將 NSG 套用至網路介面所在的子網路。
 
@@ -204,4 +204,4 @@ az vm show \
 ## <a name="next-steps"></a>後續步驟
 
 - 了解適用於[網路安全性群組](manage-network-security-group.md#work-with-network-security-groups)和[安全性規則](manage-network-security-group.md#work-with-security-rules)的所有工作、屬性和設定。
-- 了解適用於 VM 的[預設安全性規則](security-overview.md#default-security-rules)、[服務標籤](security-overview.md#service-tags)，以及 [Azure 如何處理輸入和輸出流量的安全性規則](security-overview.md#network-security-groups)。
+- 了解適用於 VM 的[預設安全性規則](./network-security-groups-overview.md#default-security-rules)、[服務標籤](./network-security-groups-overview.md#service-tags)，以及 [Azure 如何處理輸入和輸出流量的安全性規則](./network-security-groups-overview.md#network-security-groups)。

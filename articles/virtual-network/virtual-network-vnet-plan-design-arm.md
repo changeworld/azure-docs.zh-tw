@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 29ea65e94e97b69e24c6935328cc01c2295adc5a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9ed060c1f3fc47aa7050c0f9b25c757953fa22fe
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518631"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220332"
 ---
 # <a name="plan-virtual-networks"></a>規劃虛擬網路
 
@@ -49,7 +49,7 @@ ms.locfileid: "92518631"
 
 - 組織針對將流量隔離至不同的虛擬網路上，是否有任何安全性需求？ 您可以選擇是否要連線虛擬網路。 如果您連線虛擬網路，就可以實作網路虛擬設備 (例如防火牆) 以控制虛擬網路之間流量的流動。 如需詳細資訊，請參閱[安全性](#security)和[連線能力](#connectivity)。
 - 組織是否有任何將虛擬網路隔離到不同[訂用帳戶](#subscriptions)或[區域](#regions)的需求？
-- [網路介面](virtual-network-network-interface.md)可讓 VM 與其他資源進行通訊。 每個網路介面都會被指派一或多個私人 IP 位址。 您在虛擬網路中需要多少個網路介面和[私人 IP 位址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)？ 您在虛擬網路內可以擁有的網路介面和私人 IP 位址數目是有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)的。
+- [網路介面](virtual-network-network-interface.md)可讓 VM 與其他資源進行通訊。 每個網路介面都會被指派一或多個私人 IP 位址。 您在虛擬網路中需要多少個網路介面和[私人 IP 位址](./private-ip-addresses.md)？ 您在虛擬網路內可以擁有的網路介面和私人 IP 位址數目是有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)的。
 - 您是否要將虛擬網路連線至另一個虛擬網路或內部部署網路？ 您可以選擇讓虛擬網路互相連線，或是連線到內部部署網路，但不能連線到其他網路。 如需詳細資訊，請參閱[連線能力](#connectivity)。 您連線到其他虛擬網路或內部部署網路的每個虛擬網路，都必須有唯一的位址空間。 每個虛擬網路都要有一或多個公用或私人位址範圍指派至其位址空間。 位址範圍是以無類別網域間路由選擇 (CIDR) 格式指定，例如 10.0.0.0/16。 深入了解虛擬網路的[位址範圍](manage-virtual-network.md#add-or-remove-an-address-range)。
 - 您針對不同虛擬網路中的資源，是否有任何組織管理需求？ 如果是，您可以將資源分散至不同的虛擬網路，以簡化對組織中個人的[權限指派](#permissions)，或對不同的虛擬網路指派不同的原則。
 - 當您將某些 Azure 服務資源部署到虛擬網路時，它們會建立自己的虛擬網路。 若要判斷 Azure 服務是否會建立自己的虛擬網路，請參閱針對每個[可部署到虛擬網路的 Azure 服務](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)的資訊。
@@ -72,8 +72,8 @@ ms.locfileid: "92518631"
 
 - 您可以使用網路安全性群組、能篩選網路流量的 NVA，或是上述兩者來篩選虛擬網路中資源之間的網路流量。 若要部署 NVA (例如防火牆) 來篩選網路流量，請參閱 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?subcategories=appliances&page=1)。 使用 NVA 時，您也可以建立自訂路由，以將來自子網路的流量路由傳送到 NVA。 深入了解[流量路由](#traffic-routing)。
 - 網路安全性群組包含數個預設的安全性規則，能允許或拒絕進出資源的流量。 網路安全性群組可以與網路介面、網路介面所在的子網路，或是上述兩者建立關聯。 為了簡化安全性規則的管理，建議您盡量將網路安全性群組關聯至個別的子網路，而不是子網路內的個別網路介面。
-- 如果子網路內不同的 VM 需要套用不同的安全性規則，您可以將 VM 中的網路介面與一或多個應用程式安全性群組建立關聯。 安全性規則可以在其來源、目的地，或是上述兩者中指定應用程式安全性群組。 該規則接著只會套用到身為該應用程式安全性群組成員的網路介面。 深入了解[網路安全性群組](security-overview.md)和[應用程式安全性群組](security-overview.md#application-security-groups)。
-- Azure 會在每個網路安全性群組內建立數個預設的安全性規則。 其中一個預設規則會允許流量流經虛擬網路中所有資源。 若要覆寫這個行為，請使用網路安全性群組、透過自訂路由將流量路由傳送到 NVA，或是上述兩者。 建議您熟悉 Azure 的所有[預設安全性規則](security-overview.md#default-security-rules)，並了解網路安全性群組規則套用到資源的方法。
+- 如果子網路內不同的 VM 需要套用不同的安全性規則，您可以將 VM 中的網路介面與一或多個應用程式安全性群組建立關聯。 安全性規則可以在其來源、目的地，或是上述兩者中指定應用程式安全性群組。 該規則接著只會套用到身為該應用程式安全性群組成員的網路介面。 深入了解[網路安全性群組](./network-security-groups-overview.md)和[應用程式安全性群組](./network-security-groups-overview.md#application-security-groups)。
+- Azure 會在每個網路安全性群組內建立數個預設的安全性規則。 其中一個預設規則會允許流量流經虛擬網路中所有資源。 若要覆寫這個行為，請使用網路安全性群組、透過自訂路由將流量路由傳送到 NVA，或是上述兩者。 建議您熟悉 Azure 的所有[預設安全性規則](./network-security-groups-overview.md#default-security-rules)，並了解網路安全性群組規則套用到資源的方法。
 
 您可以查看使用 [NVA](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json)在 Azure 與網際網路之間執行周邊網路的範例設計 (也稱為 DMZ) 。
 
@@ -95,7 +95,7 @@ Azure 會針對來自子網路的輸出流量建立數個預設路由。 您可�
 
 ### <a name="vpn-gateway"></a>VPN 閘道
 
-您可以使用 Azure [VPN 閘道](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，利用[站對站 VPN](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或搭配 Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的專用連線，將虛擬網路連線到您的內部部署網路。
+您可以使用 Azure [VPN 閘道](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，利用[站對站 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或搭配 Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 的專用連線，將虛擬網路連線到您的內部部署網路。
 
 您可以結合對等互連和 VPN 閘道來建立 [中樞和輪輻網路](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json)，其中輪輻虛擬網路會連線到中樞虛擬網路，而中樞則會連線至內部部署網路（例如）。
 
@@ -105,13 +105,13 @@ Azure 會針對來自子網路的輸出流量建立數個預設路由。 您可�
 
 ## <a name="permissions"></a>權限
 
-Azure 會利用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 資源。 許可權會指派給下列階層中的 [範圍](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) ：管理群組、訂用帳戶、資源群組和個別資源。 若要深入了解階層，請參閱[組織您的資源](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure 虛擬網路和其所有相關功能，例如對等互連、網路安全性群組、服務端點和路由表，您可以將組織的成員指派為內建的[擁有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)或[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，再將該角色指派到適當的範圍。 如果您想要針對一組虛擬網路功能指派特定權限，請建立[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，並針對該角色指派[虛擬網路](manage-virtual-network.md#permissions)、[子網路和服務端點](virtual-network-manage-subnet.md#permissions)、[網路介面](virtual-network-network-interface.md#permissions)、[對等互連](virtual-network-manage-peering.md#permissions)、[網路和應用程式安全性群組](manage-network-security-group.md#permissions)或[路由表](manage-route-table.md#permissions)所需的特定權限。
+Azure 會利用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 資源。 許可權會指派給下列階層中的 [範圍](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) ：管理群組、訂用帳戶、資源群組和個別資源。 若要深入了解階層，請參閱[組織您的資源](../governance/management-groups/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure 虛擬網路和其所有相關功能，例如對等互連、網路安全性群組、服務端點和路由表，您可以將組織的成員指派為內建的[擁有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner)、[參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)或[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，再將該角色指派到適當的範圍。 如果您想要針對一組虛擬網路功能指派特定權限，請建立[自訂角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，並針對該角色指派[虛擬網路](manage-virtual-network.md#permissions)、[子網路和服務端點](virtual-network-manage-subnet.md#permissions)、[網路介面](virtual-network-network-interface.md#permissions)、[對等互連](virtual-network-manage-peering.md#permissions)、[網路和應用程式安全性群組](manage-network-security-group.md#permissions)或[路由表](manage-route-table.md#permissions)所需的特定權限。
 
 ## <a name="policy"></a>原則
 
 Azure 原則可讓您建立、指派和管理原則定義。 原則定義會對您的資源強制執行不同的規則，讓資源能持續符合組織標準和服務等級協定的規範。 Azure 原則會針對資源執行評估，掃描出不符合您所擁有原則定義規範的資源。 例如，您可以定義並套用一個原則，以允許只在特定資源群組或區域中建立虛擬網路。 另一個原則可能會要求每個子網路都要有相關聯的網路安全性群組。 接著，在建立和更新資源時，系統就會評估這些原則。
 
-原則會套用到下列階層：管理群組、訂用帳戶和資源群組。 深入瞭解 [Azure 原則](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或部署一些虛擬網路 [Azure 原則定義](policy-samples.md)。
+原則會套用到下列階層：管理群組、訂用帳戶和資源群組。 深入瞭解 [Azure 原則](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或部署一些虛擬網路 [Azure 原則定義](./policy-reference.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

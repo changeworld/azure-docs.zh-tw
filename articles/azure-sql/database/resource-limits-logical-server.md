@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 09/15/2020
-ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 1/14/2021
+ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308834"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222219"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL Database 與 Azure Synapse Analytics 伺服器的資源限制
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,13 +80,13 @@ ms.locfileid: "93308834"
 - 提高資料庫或彈性集區的服務層級或計算大小。 請參閱[調整單一資料庫資源](single-database-scale.md)和[調整彈性集區資源](elastic-pool-scale.md)。
 - 如果背景工作角色的使用率增加是爭用計算資源所造成，則可將查詢最佳化，以減少每個查詢的資源使用率。 如需詳細資訊，請參閱[查詢微調/提示](performance-guidance.md#query-tuning-and-hinting)。
 - 減少 [MAXDOP](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (平行處理原則的最大程度) 設定。
-- 優化查詢工作負載，減少查詢封鎖的出現次數和持續時間。
+- 優化查詢工作負載，減少查詢封鎖的出現次數和持續時間。 如需詳細資訊，請參閱 [瞭解及解決 AZURE SQL 封鎖問題](understand-resolve-blocking.md)。
 
 ### <a name="memory"></a>記憶體
 
 與其他資源不同 (CPU、背景工作、儲存體) ，達到記憶體限制並不會對查詢效能造成負面影響，也不會造成錯誤和失敗。 如 [記憶體管理架構指南](/sql/relational-databases/memory-management-architecture-guide)中的詳細說明，SQL Server 資料庫引擎通常會依設計使用所有可用的記憶體。 記憶體主要用於快取資料，以避免更昂貴的儲存體存取。 因此，較高的記憶體使用量通常可改善查詢效能，因為從記憶體讀取的速度較快，而不是從儲存體進行較慢的讀取。
 
-在資料庫引擎啟動後，當工作負載開始從儲存體讀取資料時，資料庫引擎會積極地將資料快取到記憶體中。 在這個初始加速期間之後，通常會看到 `avg_memory_usage_percent` sys.dm_db_resource_stats 中的和資料 `avg_instance_memory_percent` 行接近或等於[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 100% （特別是針對非閒置的資料庫），而且不會完全納入記憶體中。
+在資料庫引擎啟動後，當工作負載開始從儲存體讀取資料時，資料庫引擎會積極地將資料快取到記憶體中。 在這個初始加速期間之後，通常會看到 `avg_memory_usage_percent` sys.dm_db_resource_stats 中的和資料 `avg_instance_memory_percent` 行接近或等於[](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 100% （特別是針對非閒置的資料庫），而且不會完全納入記憶體中。
 
 除了資料快取之外，還會在 database engine 的其他元件中使用記憶體。 當資料快取已使用記憶體和所有可用記憶體的需求時，資料庫引擎會動態地壓縮資料快取大小，以將記憶體提供給其他元件，並在其他元件釋放記憶體時，動態地成長資料快取。
 
@@ -158,7 +158,7 @@ Azure SQL Database 資源治理本質上是階層式的。 從上到下，限制
 
 記錄速率管理員流量成形是透過下列等候類型來呈現， (在 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 和 [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 視圖中公開) ：
 
-| 等候類型 | 注意 |
+| 等候類型 | 附註 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 資料庫限制 |
 | POOL_LOG_RATE_GOVERNOR | 集區限制 |

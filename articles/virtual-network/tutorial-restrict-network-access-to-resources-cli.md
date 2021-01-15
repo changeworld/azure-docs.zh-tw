@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a1eab081a7c1e83a57ef4735c6eb5248d92defc
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: b4f9dcf6fd43749cdf71098b3cd0da8a42020f6d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734101"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221760"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>透過使用 Azure CLI 的虛擬網路服務端點來限制對 PaaS 資源的網路存取
 
@@ -39,11 +39,11 @@ ms.locfileid: "94734101"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
+- 本文需要 2.0.28 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroup 的資源群組。
+建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
 
 ```azurecli-interactive
 az group create \
@@ -120,7 +120,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-每個網路安全性群組包含數個 [預設安全性規則](security-overview.md#default-security-rules)。 接下來的規則會覆寫允許對所有公用 IP 位址進行輸出存取的預設安全性規則。 `destination-address-prefix "Internet"`選項會拒絕對所有公用 IP 位址的輸出存取。 上一個規則會因其具有較高優先順序而覆寫這項規則，從而允許對 Azure 儲存體之公用 IP 位址的存取。
+每個網路安全性群組包含數個 [預設安全性規則](./network-security-groups-overview.md#default-security-rules)。 接下來的規則會覆寫允許對所有公用 IP 位址進行輸出存取的預設安全性規則。 `destination-address-prefix "Internet"`選項會拒絕對所有公用 IP 位址的輸出存取。 上一個規則會因其具有較高優先順序而覆寫這項規則，從而允許對 Azure 儲存體之公用 IP 位址的存取。
 
 ```azurecli-interactive
 az network nsg rule create \

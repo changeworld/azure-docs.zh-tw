@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 3ca83836771af8448f6510ab27d0ac5f2973b35c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c96da9d799b9d55429d66043906ba9be4fe5af3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87287698"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221301"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>使用 PowerShell 建立具有靜態公用 IP 位址的虛擬機器
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-您可以建立具有靜態公用 IP 位址的虛擬機器。 公用 IP 位址可讓您從網際網路與虛擬機器通訊。 指派靜態公用 IP 位址 (而非動態位址)，以確保位址永遠不會變更。 深入了解[靜態公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#allocation-method)。 若要將指派給現有虛擬機器的公用 IP 位址從動態變更為靜態，或要處理私人 IP 位址，請參閱[新增、變更或移除 IP 位址](virtual-network-network-interface-addresses.md)。 公用 IP 位址有[象徵性費用](https://azure.microsoft.com/pricing/details/ip-addresses)，而每個訂用帳戶可用的公用 IP 位址數目都有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
+您可以建立具有靜態公用 IP 位址的虛擬機器。 公用 IP 位址可讓您從網際網路與虛擬機器通訊。 指派靜態公用 IP 位址 (而非動態位址)，以確保位址永遠不會變更。 深入了解[靜態公用 IP 位址](./public-ip-addresses.md#allocation-method)。 若要將指派給現有虛擬機器的公用 IP 位址從動態變更為靜態，或要處理私人 IP 位址，請參閱[新增、變更或移除 IP 位址](virtual-network-network-interface-addresses.md)。 公用 IP 位址有[象徵性費用](https://azure.microsoft.com/pricing/details/ip-addresses)，而每個訂用帳戶可用的公用 IP 位址數目都有[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
 
-您可以從本機電腦或使用 Azure Cloud Shell 來完成下列步驟。 若要使用您的本機電腦，請確定已[安裝 Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure Cloud Shell，請選取後續任何命令方塊右上角的 [試試看]****。 Cloud Shell 可讓您登入 Azure。
+您可以從本機電腦或使用 Azure Cloud Shell 來完成下列步驟。 若要使用您的本機電腦，請確定已[安裝 Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json)。 若要使用 Azure Cloud Shell，請選取後續任何命令方塊右上角的 [試試看]。 Cloud Shell 可讓您登入 Azure。
 
 1. 如果使用 Cloud Shell，請跳至步驟 2。 開啟命令工作階段，然後使用 `Connect-AzAccount` 登入 Azure。
 2. 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。 下列範例會在美國東部 Azure 區域中建立一個資源群組：
@@ -47,7 +47,7 @@ ms.locfileid: "87287698"
      -AllocationMethod "Static"
    ```
 
-   如果公用 IP 位址必須是標準 SKU，您必須在不同的步驟中[建立公用 IP 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)[建立網路介面](virtual-network-network-interface.md#create-a-network-interface)[將公用 IP 位址指派給網路介面](virtual-network-network-interface-addresses.md#add-ip-addresses)，然後[透過網路介面建立虛擬機器](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)。 深入了解[公用 IP 位址 SKU](virtual-network-ip-addresses-overview-arm.md#sku)。 如果虛擬機器將會新增至公用 Azure Load Balancer 的後端集區，則虛擬機器公用 IP 位址的 SKU 必須符合負載平衡器公用 IP 位址的 SKU。 如需詳細資訊，請參閱 [Azure Load Balancer](../load-balancer/skus.md)。
+   如果公用 IP 位址必須是標準 SKU，您必須在不同的步驟中[建立公用 IP 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)[建立網路介面](virtual-network-network-interface.md#create-a-network-interface)[將公用 IP 位址指派給網路介面](virtual-network-network-interface-addresses.md#add-ip-addresses)，然後[透過網路介面建立虛擬機器](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm)。 深入了解[公用 IP 位址 SKU](./public-ip-addresses.md#sku)。 如果虛擬機器將會新增至公用 Azure Load Balancer 的後端集區，則虛擬機器公用 IP 位址的 SKU 必須符合負載平衡器公用 IP 位址的 SKU。 如需詳細資訊，請參閱 [Azure Load Balancer](../load-balancer/skus.md)。
 
 4. 查看指派的公用 IP 位址，並確認它已建立為靜態位址，並具有 [>get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress)：
 
@@ -74,7 +74,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 Azure 中的[公用 IP 位址](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
+- 深入瞭解 Azure 中的[公用 IP 位址](./public-ip-addresses.md#public-ip-addresses)
 - 深入瞭解所有 [公用 IP 位址設定](virtual-network-public-ip-address.md#create-a-public-ip-address)
-- 深入了解[私人 IP 位址](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)，並將[靜態私人 IP 位址](virtual-network-network-interface-addresses.md#add-ip-addresses)指派給 Azure 虛擬機器
+- 深入了解[私人 IP 位址](./private-ip-addresses.md)，並將[靜態私人 IP 位址](virtual-network-network-interface-addresses.md#add-ip-addresses)指派給 Azure 虛擬機器
 - 深入了解如何建立 [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 虛擬機器

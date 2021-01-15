@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812279"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221437"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>頻寬/輸送量測試 (NTTTCP)
 
@@ -26,7 +26,7 @@ ms.locfileid: "91812279"
 請將工具複製到兩個大小相同的 Azure VM。 一個 VM 作為「傳送端」，另一個作為「接收端」。
 
 #### <a name="deploying-vms-for-testing"></a>部署用於測試的 VM
-基於這項測試的目的，這兩個 Vm 應位於相同的 [鄰近放置群組](../virtual-machines/windows/co-location.md) 或相同的可用性設定組中，以便我們可以使用其內部 ip 並將負載平衡器從測試中排除。 您可以使用 VIP 進行測試，但這類型的測試不在本文件的涵蓋範圍內。
+基於這項測試的目的，這兩個 Vm 應位於相同的 [鄰近放置群組](../virtual-machines/co-location.md) 或相同的可用性設定組中，以便我們可以使用其內部 ip 並將負載平衡器從測試中排除。 您可以使用 VIP 進行測試，但這類型的測試不在本文件的涵蓋範圍內。
 
 記下「傳送端」的 IP 位址。 讓我將該 IP 稱為 "a.b.c.r"
 
@@ -37,7 +37,7 @@ ms.locfileid: "91812279"
 提示：第一次設定此測試時，您可以嘗試較短的測試期間以更快獲得回饋。 在工具如預期般運作之後，請將測試期間延長到 300 秒以獲得最精確的結果。
 
 > [!NOTE]
-> 傳送端**和**接收端必須指定**相同的**測試持續時間參數 (-t)。
+> 傳送端 **和** 接收端必須指定 **相同的** 測試持續時間參數 (-t)。
 
 測試單一 TCP 串流 10 秒：
 
@@ -65,7 +65,7 @@ ms.locfileid: "91812279"
 
 netsh advfirewall firewall add rule program = \<PATH\> \\ntttcp.exe name = "ntttcp" protocol = any dir = in action = allow enable = yes PROFILE = any
 
-例如，如果您將 ntttcp.exe 複製到 "c:\\tools" 資料夾，則命令會是這樣： 
+例如，如果您將 ntttcp.exe 複製到 "c:\\tools" 資料夾，則命令會是這樣： 
 
 netsh advfirewall firewall add rule program=c:\\tools\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
@@ -82,7 +82,7 @@ ntttcp -r –m 8,\*,10.0.0.4 -t 300
 
 啟動「傳送端」上的 NTTTCP (**從 CMD 執行**，不是從 PowerShell)：
 
-ntttcp -s –m 8,\*,10.0.0.4 -t 300 
+ntttcp -s –m 8,\*,10.0.0.4 -t 300 
 
 等候結果。
 
@@ -95,19 +95,19 @@ ntttcp -s –m 8,\*,10.0.0.4 -t 300 
 
 CentOS - 安裝 Git：
 ``` bash
-  yum install gcc -y  
-  yum install git -y
+  yum install gcc -y  
+  yum install git -y
 ```
 Ubuntu - 安裝 Git：
 ``` bash
- apt-get -y install build-essential  
- apt-get -y install git
+ apt-get -y install build-essential  
+ apt-get -y install git
 ```
 在兩部機器上都建立並安裝：
 ``` bash
- git clone https://github.com/Microsoft/ntttcp-for-linux
- cd ntttcp-for-linux/src
- make && make install
+ git clone https://github.com/Microsoft/ntttcp-for-linux
+ cd ntttcp-for-linux/src
+ make && make install
 ```
 
 與 Windows 範例中相同，我們假設 Linux「接收端」的 IP 為 10.0.0.4
@@ -123,7 +123,7 @@ ntttcp -r -t 300
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
- 
+ 
 如果未提供時間參數，則測試時間長度預設為 60 秒
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>在執行 Windows 和 LINUX 的 VM 之間進行測試：
@@ -167,5 +167,5 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 
 ## <a name="next-steps"></a>後續步驟
 * 視結果而定，可能有將您案例的[網路輸送量機器最佳化](virtual-network-optimize-network-bandwidth.md)的空間。
-* 了解如如何[將頻寬配置給虛擬機器](virtual-machine-network-throughput.md)
+* 瞭解如何 [將頻寬配置給虛擬機器](virtual-machine-network-throughput.md)
 * 深入了解 [Azure 虛擬網路常見問題集 (FAQ)](virtual-networks-faq.md)

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 14c71d5888aefc11485c03935c5d8c7ff7d17045
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7462c78ecad718c30980a98ff7659a2a4d2ea020
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995874"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222151"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>快速入門：連線至適用於 Azure Cosmos DB 的 Azure Synapse Link
 
@@ -24,8 +24,8 @@ ms.locfileid: "95995874"
 
 要將 Azure Cosmos DB 帳戶連線至您的工作區，必須符合幾項先決條件。
 
-* 現有的 Azure Cosmos DB 帳戶，或依照此[快速入門](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)的指示建立新帳戶
-* 現有的 Synapse 工作區，或依照此[快速入門](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)的指示建立新的工作區 
+* 現有的 Azure Cosmos DB 帳戶，或依照此[快速入門](../cosmos-db/how-to-manage-database-account.md)的指示建立新帳戶
+* 現有的 Synapse 工作區，或依照此[快速入門](./quickstart-create-workspace.md)的指示建立新的工作區 
 
 ## <a name="enable-azure-cosmos-db-analytical-store"></a>啟用 Azure Cosmos DB 分析存放區
 

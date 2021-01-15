@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 65985e05be1061bb69eb160cf5be559cb271d5cd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 89a437504394797b8cbed5325210186248082c33
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202924"
+ms.locfileid: "98218225"
 ---
 # <a name="azure-security-baseline-for-azure-synapse-analytics"></a>適用于 Azure Synapse Analytics 的 Azure 安全性基準
 
 適用于 Azure Synapse Analytics 的 Azure 安全性基準包含可協助您改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱 [Azure 安全性基準概觀](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) (機器翻譯)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md) (機器翻譯)。
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱 [安全性控制：網路安全性](/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱 [安全性控制：網路安全性](../security/benchmarks/security-control-network-security.md)。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路內的 Azure 資源
 
@@ -33,13 +33,13 @@ ms.locfileid: "98202924"
 
 或者，當您連接到 Synapse SQL 集區時，請使用網路安全性群組，將傳出連線的範圍縮小到 SQL database。 藉由將 [允許 Azure 服務] 設為 [關閉]，以停用透過公用端點的所有 Azure 服務流量至 SQL database。 確定防火牆規則中不允許公用 IP 位址。
 
-* [瞭解 Azure Private Link](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [瞭解 Azure Private Link](../private-link/private-link-overview.md)
 
-* [瞭解 Azure Synapse SQL 的 Private Link](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
+* [瞭解 Azure Synapse SQL 的 Private Link](../azure-sql/database/private-endpoint-overview.md)
 
-* [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
-* [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何建立具有安全性設定的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -51,13 +51,13 @@ ms.locfileid: "98202924"
 
 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
-* [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [如何啟用 NSG 流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [瞭解 Azure 資訊安全中心所提供的網路安全性](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [瞭解 Azure 資訊安全中心所提供的網路安全性](../security-center/security-center-network-recommendations.md)
 
-* [如何啟用及使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [如何啟用及使用流量分析](../network-watcher/traffic-analytics.md)
 
-* [瞭解 Azure 資訊安全中心所提供的網路安全性](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [瞭解 Azure 資訊安全中心所提供的網路安全性](../security-center/security-center-network-recommendations.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -77,15 +77,15 @@ ms.locfileid: "98202924"
 
 在與 Azure Synapse SQL 相關聯的虛擬網路上啟用 DDoS 保護標準，以防止分散式阻絕服務攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
 
-* [瞭解 Azure Synapse SQL 的 ATP](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [瞭解 Azure Synapse SQL 的 ATP](../azure-sql/database/threat-detection-overview.md)
 
-* [如何啟用 Azure SQL Database 的 Advanced Data Security](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [如何啟用 Azure SQL Database 的 Advanced Data Security](../azure-sql/database/azure-defender-for-sql.md)
 
-* [ADS 總覽](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [ADS 總覽](../azure-sql/database/azure-defender-for-sql.md)
 
-* [如何設定 DDoS 保護](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
-* [了解 Azure 資訊安全中心的整合式威脅情報](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -95,9 +95,9 @@ ms.locfileid: "98202924"
 
 **指導** 方針：當您連線到專用的 SQL 集區，且已啟用網路安全性群組 (NSG) 流量記錄，將記錄傳送到 Azure 儲存體帳戶以進行流量審核。 您也可以將流量記錄傳送至 Log Analytics 工作區，或將它們串流至事件中樞。 如果需要調查異常活動，請啟用網路監看員封包捕獲。
 
-* [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [如何啟用 NSG 流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [如何啟用網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [如何啟用網路監看員](../network-watcher/network-watcher-create.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -107,7 +107,7 @@ ms.locfileid: "98202924"
 
 **指導** 方針：使用 AZURE Synapse SQL 的 Advanced 威脅防護 (ATP) 。 ATP 會偵測異常活動，指出有不尋常且可能有害的存取或惡意探索資料庫，而且可能會觸發各種警示，例如「潛在的 SQL 插入式」和「從不尋常的位置存取」。 ATP 是 Advanced data security (ADS) 供應專案的一部分，可透過中央 SQL ADS 入口網站存取及管理。 ATP 也會整合警示與 Azure 資訊安全中心。
 
-* [瞭解 Azure Synapse SQL 的 ATP](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [瞭解 Azure Synapse SQL 的 ATP](../azure-sql/database/threat-detection-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -127,9 +127,9 @@ ms.locfileid: "98202924"
 
 針對您專用的 SQL 集區使用服務端點時，需要輸出至 Azure SQL database 公用 IP 位址：必須開啟 (Nsg) 的網路安全性群組，才能 Azure SQL Database Ip 以允許連線。 您可以使用 NSG 服務標記進行 Azure SQL Database。
 
-* [瞭解 Azure SQL Database 的服務端點服務標記](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
+* [瞭解 Azure SQL Database 的服務端點服務標記](../azure-sql/database/vnet-service-endpoint-rule-overview.md#limitations)
 
-* [瞭解和使用服務標記](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [瞭解和使用服務標記](../virtual-network/service-tags-overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -141,9 +141,9 @@ ms.locfileid: "98202924"
 
 使用 Azure 藍圖，藉由在單一藍圖定義中封裝關鍵環境成品（例如 Azure 資源管理範本、azure 角色型存取控制 (Azure RBAC) 和原則）來簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何建立 Azure 藍圖](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [如何建立 Azure 藍圖](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -157,7 +157,7 @@ ms.locfileid: "98202924"
 
 您可使用 Azure PowerShell 或 Azure CLI，根以據資源的標籤對資源進行查詢或執行動作。
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -167,9 +167,9 @@ ms.locfileid: "98202924"
 
 **指導** 方針：使用 Azure 活動記錄監視網路資源設定，並偵測與您專用的 SQL 集區相關的網路資源變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
-* [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure 監視器中建立警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -177,13 +177,13 @@ ms.locfileid: "98202924"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱 [安全性控制：記錄和監視](/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱 [安全性控制：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
 **指導** 方針： Microsoft 會維護 Azure 資源的時間來源。 您可以更新計算部署的時間同步處理。
 
-* [如何設定 Azure 計算資源的時間同步處理](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [如何設定 Azure 計算資源的時間同步處理](../virtual-machines/windows/time-sync.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -199,9 +199,9 @@ ms.locfileid: "98202924"
 
 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
 
-* [如何設定 Azure SQL 資源的審核](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview#server-vs-database-level)
+* [如何設定 Azure SQL 資源的審核](../azure-sql/database/auditing-overview.md#server-vs-database-level)
 
-* [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -213,11 +213,11 @@ ms.locfileid: "98202924"
 
 您可以在資料庫或伺服器層級上啟用審核，而且建議只能在伺服器層級上啟用，除非您需要為特定資料庫設定個別的資料接收或保留。
 
-* [如何啟用 Azure SQL Database 的審核](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)
+* [如何啟用 Azure SQL Database 的審核](../azure-sql/database/auditing-overview.md)
 
-* [如何啟用伺服器的審核](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview#setup-auditing)
+* [如何啟用伺服器的審核](../azure-sql/database/auditing-overview.md#setup-auditing)
 
-* [伺服器層級與資料庫層級稽核原則的差異](https://docs.microsoft.com/azure/sql-database/sql-database-auditing#server-vs-database-level)
+* [伺服器層級與資料庫層級稽核原則的差異](../azure-sql/database/auditing-overview.md#server-vs-database-level)
 
 **Azure 資訊安全中心監視**：是
 
@@ -235,11 +235,11 @@ ms.locfileid: "98202924"
 
 **指導** 方針：在儲存體帳戶、Log Analytics 工作區或事件中樞中儲存與您專用的 SQL 集區相關的記錄時，請根據您組織的合規性法規設定記錄保留期限。
 
-* [管理 Azure Blob 儲存體生命週期](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)
+* [管理 Azure Blob 儲存體生命週期](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)
 
-* [如何在 Log Analytics 工作區中設定記錄保留參數](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [如何在 Log Analytics 工作區中設定記錄保留參數](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-* [在事件中樞中捕獲串流事件](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)
+* [在事件中樞中捕獲串流事件](../event-hubs/event-hubs-capture-overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -251,13 +251,13 @@ ms.locfileid: "98202924"
 
 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
 
-* [瞭解 Azure SQL Database 的 Advanced 威脅防護和警示](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [瞭解 Azure SQL Database 的 Advanced 威脅防護和警示](../azure-sql/database/threat-detection-overview.md)
 
-* [如何啟用 Azure SQL Database 的 Advanced Data Security](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [如何啟用 Azure SQL Database 的 Advanced Data Security](../azure-sql/database/azure-defender-for-sql.md)
 
-* [如何設定 Azure SQL Database 的自訂警示](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal?view=azps-1.4.0&preserve-view=true)
+* [如何設定 Azure SQL Database 的自訂警示](../azure-sql/database/alerts-insights-configure-portal.md?preserve-view=true&view=azps-1.4.0)
 
-* [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -269,13 +269,13 @@ ms.locfileid: "98202924"
 
 或者，您也可以啟用和麵板上的資料以 Azure Sentinel。
 
-* [瞭解 Azure SQL Database 的 Advanced 威脅防護和警示](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [瞭解 Azure SQL Database 的 Advanced 威脅防護和警示](../azure-sql/database/threat-detection-overview.md)
 
-* [如何啟用 Azure SQL Database 的 Advanced Data Security](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [如何啟用 Azure SQL Database 的 Advanced Data Security](../azure-sql/database/azure-defender-for-sql.md)
 
-* [如何在 Azure 資訊安全中心中管理警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [如何在 Azure 資訊安全中心中管理警示](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -307,7 +307,7 @@ ms.locfileid: "98202924"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱 [安全性控制：身分識別與存取控制](/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱 [安全性控制：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
@@ -317,19 +317,19 @@ ms.locfileid: "98202924"
 
 針對管理作業，請使用必須明確指派的 Azure 內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-* [SQL Database 的驗證](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
+* [SQL Database 的驗證](../azure-sql/database/security-overview.md#authentication)
 
-* [為非系統管理使用者建立帳戶](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-accounts-for-non-administrator-users)
+* [為非系統管理使用者建立帳戶](../azure-sql/database/logins-create-manage.md#create-accounts-for-non-administrator-users)
 
-* [使用 Azure Active Directory 帳戶進行驗證](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#create-additional-logins-and-users-having-administrative-permissions)
+* [使用 Azure Active Directory 帳戶進行驗證](../azure-sql/database/logins-create-manage.md#create-additional-logins-and-users-having-administrative-permissions)
 
-* [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&preserve-view=true)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-* [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&preserve-view=true)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
-* [如何在 Azure SQL 中管理現有的登入和系統管理員帳戶](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [如何在 Azure SQL 中管理現有的登入和系統管理員帳戶](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Azure 內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Azure 內建角色](../role-based-access-control/built-in-roles.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -339,9 +339,9 @@ ms.locfileid: "98202924"
 
 **指導** 方針： Azure Active Directory 沒有預設密碼的概念。 布建專用的 SQL 集區時，建議您選擇整合驗證與 Azure Active Directory。 使用此驗證方法，使用者會提交使用者帳戶名稱，並要求服務使用儲存在 Azure Active Directory (Azure AD) 中的認證資訊。
 
-* [如何使用 Azure SQL 設定及管理 Azure Active Directory authentication](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#active-directory-password-authentication)
+* [如何使用 Azure SQL 設定及管理 Azure Active Directory authentication](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#active-directory-password-authentication)
 
-* [瞭解 Azure SQL 中的驗證](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [瞭解 Azure SQL 中的驗證](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -353,9 +353,9 @@ ms.locfileid: "98202924"
 
 若要識別資料庫的系統管理員帳戶，請開啟 Azure 入口網站，然後流覽至伺服器或受控實例的 [屬性] 索引標籤。
 
-* [瞭解 Azure 資訊安全中心身分識別和存取權](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [瞭解 Azure 資訊安全中心身分識別和存取權](../security-center/security-center-identity-access.md)
 
-* [如何在 Azure SQL 中管理現有的登入和系統管理員帳戶](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
+* [如何在 Azure SQL 中管理現有的登入和系統管理員帳戶](../azure-sql/database/logins-create-manage.md#existing-logins-and-user-accounts-after-creating-a-new-database)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -365,11 +365,11 @@ ms.locfileid: "98202924"
 
 **指導** 方針：使用 Azure 應用程式註冊 (服務主體) 來取得權杖，此權杖可在控制平面上用來與您的資料倉儲互動 (Azure 入口網站) 透過 API 呼叫。
 
-* [如何呼叫 Azure REST Api](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+* [如何呼叫 Azure REST Api](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [如何使用 Azure AD 向 (服務主體) 註冊用戶端應用程式](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [如何使用 Azure AD 向 (服務主體) 註冊用戶端應用程式](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-* [Azure Synapse SQL REST API 資訊](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api)
+* [Azure Synapse SQL REST API 資訊](./sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -379,11 +379,11 @@ ms.locfileid: "98202924"
 
 **指引**：啟用 Azure Active Directory (AD) 多重要素驗證 (MFA)，並遵循 Azure 資訊安全中心的身分識別與存取管理建議。
 
-* [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [如何在 Azure 資訊安全中心監視身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
-* [瞭解 Azure SQL 中的 MFA](https://docs.microsoft.com/azure/azure-sql/database/authentication-mfa-ssms-overview)
+* [瞭解 Azure SQL 中的 MFA](../azure-sql/database/authentication-mfa-ssms-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -395,7 +395,7 @@ ms.locfileid: "98202924"
 
 * [瞭解特殊權限存取工作站](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-* [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -409,15 +409,15 @@ ms.locfileid: "98202924"
 
 SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等級事件的伺服器稽核規格，以及資料庫等級事件的資料庫稽核規格。 稽核的事件可以寫入事件記錄或稽核檔案。
 
-* [如何識別已標示為有風險活動的 Azure AD 使用者](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [如何識別已標示為有風險活動的 Azure AD 使用者](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [如何在 Azure 資訊安全中心中監視使用者身分識別和存取活動](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 資訊安全中心中監視使用者身分識別和存取活動](../security-center/security-center-identity-access.md)
 
-* [查看 Advanced 威脅防護和潛在警示](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview#advanced-threat-protection-alerts)
+* [查看 Advanced 威脅防護和潛在警示](../azure-sql/database/threat-detection-overview.md#alerts)
 
-* [瞭解 Azure SQL 中的登入和使用者帳戶](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [瞭解 Azure SQL 中的登入和使用者帳戶](../azure-sql/database/logins-create-manage.md)
 
-* [瞭解 SQL Server 的審核](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-ver15&preserve-view=true)
+* [瞭解 SQL Server 的審核](/sql/relational-databases/security/auditing/sql-server-audit-database-engine?preserve-view=true&view=sql-server-ver15)
 
 **Azure 資訊安全中心監視**：是
 
@@ -427,7 +427,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：使用名為「位置」的條件式存取，只允許來自特定 IP 位址範圍或國家/地區之邏輯群組的入口網站和 Azure 資源管理存取權。
 
-* [如何在 Azure 中設定具名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [如何在 Azure 中設定具名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -437,9 +437,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：為您專用的 SQL 集區中的 Azure SQL Database 伺服器建立 AZURE ACTIVE DIRECTORY (AD) 系統管理員。
 
-* [如何使用 Azure SQL 設定及管理 Azure AD authentication](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+* [如何使用 Azure SQL 設定及管理 Azure AD authentication](../azure-sql/database/authentication-aad-configure.md)
 
-* [如何建立及設定 Azure AD 執行個體](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance)
+* [如何建立及設定 Azure AD 執行個體](../active-directory-domain-services/tutorial-create-instance.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -451,9 +451,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 使用 SQL 驗證時，請在資料庫中建立自主資料庫使用者。 確定您將一或多個資料庫使用者放入具有適合該使用者群組之特定許可權的自訂資料庫角色。
 
-* [如何使用存取權審核](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用存取權審核](../active-directory/governance/access-reviews-overview.md)
 
-* [瞭解 Azure SQL 中的登入和使用者帳戶](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [瞭解 Azure SQL 中的登入和使用者帳戶](../azure-sql/database/logins-create-manage.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -465,13 +465,13 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 使用 SQL 驗證時，請在資料庫中建立自主資料庫使用者。 確定您將一或多個資料庫使用者放入具有適合該使用者群組之特定許可權的自訂資料庫角色。
 
-* [如何使用存取權審核](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用存取權審核](../active-directory/governance/access-reviews-overview.md)
 
-* [如何使用 Azure SQL Database 來設定和管理 Azure AD authentication](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+* [如何使用 Azure SQL Database 來設定和管理 Azure AD authentication](../azure-sql/database/authentication-aad-configure.md)
 
-* [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [瞭解 Azure SQL 中的登入和使用者帳戶](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [瞭解 Azure SQL 中的登入和使用者帳戶](../azure-sql/database/logins-create-manage.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -483,13 +483,13 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 使用 SQL 驗證時，請在資料庫中建立自主資料庫使用者。 確定您將一或多個資料庫使用者放入具有適合該使用者群組之特定許可權的自訂資料庫角色。
 
-* [如何查看 Azure AD 的風險登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [如何查看 Azure AD 的風險登入](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [如何設定和啟用身分識別保護風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [如何讓 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
+* [如何讓 Azure Sentinel 上線](../sentinel/connect-data-sources.md)
 
-* [瞭解 Azure SQL 中的登入和使用者帳戶](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [瞭解 Azure SQL 中的登入和使用者帳戶](../azure-sql/database/logins-create-manage.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -499,7 +499,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：在 Microsoft 需要存取您專用 SQL 集區中 Azure SQL Database 相關資料的支援案例中，Azure 客戶加密箱會提供一個介面，讓您可以檢查和核准或拒絕資料存取要求。
 
-* [瞭解客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+* [瞭解客戶加密箱](../security/fundamentals/customer-lockbox-overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -507,7 +507,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱 [安全性控制：資料保護](/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱 [安全性控制：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
@@ -515,9 +515,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 資料探索 &amp; 分類已內建于 Azure SYNAPSE SQL 中。 其提供在資料庫中探索、分類、標記及報告敏感性資料的進階功能。
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-* [瞭解資料探索 &amp; 分類](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview)
+* [瞭解資料探索 &amp; 分類](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -527,13 +527,13 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 資源應以虛擬網路/子網分隔、正確標記，並在網路安全性群組或 Azure 防火牆內受到保護。 儲存或處理敏感性資料的資源應該是隔離的。 使用 Private Link;將您的 Azure SQL Server 部署在虛擬網路內，並使用 Private Link 安全地連線。
 
-* [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-* [如何設定適用於 Azure SQL Database 的 Private Link](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview#how-to-set-up-private-link-for-azure-sql-database)
+* [如何設定適用於 Azure SQL Database 的 Private Link](../azure-sql/database/private-endpoint-overview.md#how-to-set-up-private-link-for-azure-sql-database)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -547,11 +547,11 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制和功能。
 
-* [如何設定 Private Link 和 Nsg 以防止 Azure SQL Database 實例上的資料遭到外泄](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)
+* [如何設定 Private Link 和 Nsg 以防止 Azure SQL Database 實例上的資料遭到外泄](../azure-sql/database/private-endpoint-overview.md)
 
-* [瞭解 Azure SQL Database 的 Advanced 威脅防護](https://docs.microsoft.com/azure/azure-sql/database/threat-detection-overview)
+* [瞭解 Azure SQL Database 的 Advanced 威脅防護](../azure-sql/database/threat-detection-overview.md)
 
-* [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -561,7 +561,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針： Azure SQL Database 透過傳輸層安全性來加密移動中的資料，以保護您的資料。 SQL Server 針對所有連線強制執行加密 (SSL/TLS) 。 這可確保不論連接字串中的加密或 TrustServerCertificate 設定，所有資料都會在用戶端與伺服器之間加密「傳輸中」。
 
-* [瞭解傳輸中的 Azure SQL 加密](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview#information-protection-and-encryption)
+* [瞭解傳輸中的 Azure SQL 加密](../azure-sql/database/security-overview.md#information-protection-and-encryption)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -575,9 +575,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 此外，您可以在 Azure 入口網站中將動態資料遮罩設定 (DDM) 原則。 DDM 建議引擎會將您資料庫中的特定欄位標示為潛在的敏感性欄位，這可能是遮罩的理想候選項目。
 
-* [如何使用 Azure SQL Server 的資料探索和分類](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+* [如何使用 Azure SQL Server 的資料探索和分類](../azure-sql/database/data-discovery-and-classification-overview.md)
 
-* [瞭解 Azure Synapse SQL 的動態資料遮罩](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)
+* [瞭解 Azure Synapse SQL 的動態資料遮罩](../azure-sql/database/dynamic-data-masking-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -589,11 +589,11 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 授權是由使用者帳戶的資料庫角色成員資格和物件層級許可權所控制。 最好的作法是，您應該授與使用者所需的最低權限。
 
-* [如何整合 Azure SQL Server 與 Azure Active Directory 以進行驗證](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)
+* [如何整合 Azure SQL Server 與 Azure Active Directory 以進行驗證](../azure-sql/database/authentication-aad-overview.md)
 
-* [如何在 Azure SQL Server 中控制存取權](https://docs.microsoft.com/azure/sql-database/sql-database-control-access)
+* [如何在 Azure SQL Server 中控制存取權](../azure-sql/database/logins-create-manage.md)
 
-* [瞭解 Azure SQL 中的授權和驗證](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
+* [瞭解 Azure SQL 中的授權和驗證](../azure-sql/database/logins-create-manage.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -603,7 +603,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：不適用;Microsoft 會管理 Azure Synapse SQL 的基礎結構，並已實行嚴格的控制，以防止客戶資料遺失或洩漏。
 
-* [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -613,11 +613,11 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：透明資料加密 (TDE) 可透過加密待用資料，協助保護 AZURE Synapse SQL 免于惡意離線活動的威脅。 它會對資料庫、相關聯的備份和待用的交易記錄檔執行即時加密和解密，而不需變更應用程式。 在 Azure 中，TDE 的預設設定是由內建的伺服器憑證所保護的 DEK。 或者，您也可以使用客戶管理的 TDE，也稱為攜帶您自己的金鑰 (BYOK) 支援 TDE。 在此案例中，加密 DEK 的 TDE 保護裝置是由客戶管理的非對稱金鑰，該金鑰會儲存在客戶擁有及管理的 Azure Key Vault (Azure 的雲端式外部金鑰管理系統) ，且永遠不會離開金鑰保存庫。
 
-* [瞭解服務管理的透明資料加密](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal)
+* [瞭解服務管理的透明資料加密](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal)
 
-* [瞭解客戶管理的透明資料加密](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)
+* [瞭解客戶管理的透明資料加密](../azure-sql/database/transparent-data-encryption-tde-overview.md?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key)
 
-* [如何使用您自己的金鑰開啟 TDE](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-configure)
+* [如何使用您自己的金鑰開啟 TDE](../azure-sql/database/transparent-data-encryption-byok-configure.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -629,9 +629,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 此外，您也可以使用 Azure 入口網站設定 SQL Synapse 集區中的資料庫警示。 當某些計量 (例如，資料庫大小或 CPU 使用量) 閾值時，警示可傳送電子郵件給您或呼叫 Webhook。
 
-* [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何建立 Azure 活動記錄事件的警示](../azure-monitor/platform/alerts-activity-log.md)
 
-* [如何建立 Azure SQL Synapse 的警示](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)
+* [如何建立 Azure SQL Synapse 的警示](../azure-sql/database/alerts-insights-configure-portal.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -639,17 +639,17 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱 [安全性控制：弱點管理](/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱 [安全性控制：弱點管理](../security/benchmarks/security-control-vulnerability-management.md)。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
 **指導** 方針：啟用先進的資料安全性，並遵循 Azure 資訊安全中心在 Azure SQL 資料庫上執行弱點評定的建議。
 
-* [如何在 Azure SQL 資料庫上執行弱點評定](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [如何在 Azure SQL 資料庫上執行弱點評定](../azure-sql/database/sql-vulnerability-assessment.md)
 
-* [如何啟用 Advanced Data Security](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
+* [如何啟用 Advanced Data Security](../azure-sql/database/azure-defender-for-sql.md)
 
-* [如何實行 Azure 資訊安全中心弱點評定建議](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [如何實行 Azure 資訊安全中心弱點評定建議](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -675,7 +675,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：弱點評定是 AZURE Synapse SQL 內建的掃描服務。 此服務會採用規則的知識庫，以標示安全性弱點。 它會反白顯示與最佳作法的偏差，例如錯誤配置、過多的許可權，以及未受保護的敏感性資料。 您可以透過中央 SQL Advanced Data Security (ADS) 入口網站來存取和管理弱點評定。
 
-* [在 SQL ADS 入口網站中管理和匯出弱點評定掃描](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [在 SQL ADS 入口網站中管理和匯出弱點評定掃描](../azure-sql/database/sql-vulnerability-assessment.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -687,9 +687,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 資料探索 &amp; 分類已內建于 Azure SYNAPSE SQL 中。 其提供在資料庫中探索、分類、標記及報告敏感性資料的進階功能。
 
-* [瞭解 Azure 資訊安全中心安全分數](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
+* [瞭解 Azure 資訊安全中心安全分數](../security-center/secure-score-security-controls.md)
 
-* [瞭解資料探索 &amp; 分類](https://docs.microsoft.com/azure/azure-sql/database/data-discovery-and-classification-overview)
+* [瞭解資料探索 &amp; 分類](../azure-sql/database/data-discovery-and-classification-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -697,7 +697,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱 [安全性控制：清查和資產管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱 [安全性控制：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
@@ -705,11 +705,11 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 雖然可以透過 Azure Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
 
-* [如何使用 Azure Resource Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-* [如何查看您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0&preserve-view=true)
+* [如何查看您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-3.0.0)
 
-* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -719,7 +719,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指引**：將標籤套用至提供中繼資料的 Azure 資源，以邏輯方式依分類組織這些資源。
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -729,11 +729,11 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：使用標記、管理群組和個別訂用帳戶（如果適用）來組織和追蹤資產。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-* [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -755,9 +755,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。 確保已核准環境中的所有 Azure 資源。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Resource Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -795,9 +795,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 使用 Azure Resource Graph 來查詢/探索您的訂用帳戶 (s) 中的資源。 確保已核准環境中的所有 Azure 資源。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure 原則拒絕特定的資源類型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -815,7 +815,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指引**：使用 Azure 條件式存取，藉由對「Microsoft Azure 管理」應用程式設定「封鎖存取」，以限制使用者與 Azure Resource Manager 互動的能力。
 
-* [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [如何設定條件式存取以封鎖 Azure Resource Manager 的存取](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -833,9 +833,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：任何與您的專用 SQL 集區相關的資源，不論是商務營運所需的資源，但可能會對組織產生更高的風險，應該隔離在其自己的虛擬機器和（或）虛擬網路內，並使用 Azure 防火牆或網路安全性群組來充分保護。
 
-* [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
-* [如何使用安全性設定建立 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何使用安全性設定建立 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -843,7 +843,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱 [安全性控制：安全設定](/azure/security/benchmarks/security-control-secure-configuration)。*
+*如需詳細資訊，請參閱 [安全性控制：安全設定](../security/benchmarks/security-control-secure-configuration.md)。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -851,9 +851,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 - 在 SQL 伺服器上部署威脅偵測
 - SQL Server 應該使用虛擬網路服務端點
 
-* [如何檢視可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0&preserve-view=true)
+* [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-3.3.0)
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -871,9 +871,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指引**：使用 Azure 原則 [拒絕] 和 [在不存在時部署]，以對 Azure 資源強制使用安全設定。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [瞭解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -891,9 +891,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：如果使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
-* [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&preserve-view=true)
+* [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-* [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops&preserve-view=true)
+* [Azure Repos 文件](/azure/devops/repos/index?preserve-view=true&view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -927,7 +927,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：利用 Azure 資訊安全中心針對任何與您專用的 SQL 集區相關的資源執行基準掃描。
 
-* [如何修復 Azure 資訊安全中心中的建議](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
+* [如何修復 Azure 資訊安全中心中的建議](../security-center/security-center-remediate-recommendations.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -945,9 +945,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：在 Azure Key Vault 中透明資料加密 (TDE) 與客戶管理的金鑰，可讓您使用稱為 TDE 保護裝置的客戶管理非對稱金鑰，將自動產生的資料庫加密金鑰加密 (DEK) 。 這通常也稱為透明資料加密的攜帶您自己的金鑰 (BYOK) 支援。 在 BYOK 案例中，TDE 保護裝置會儲存在客戶擁有和受控 Azure Key Vault 中。 此外，請確定已在 Azure Key Vault 中啟用虛刪除。
 
-* [如何從 Azure Key Vault 使用客戶管理的金鑰啟用 TDE](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-configure?tabs=azure-powershell)
+* [如何從 Azure Key Vault 使用客戶管理的金鑰啟用 TDE](../azure-sql/database/transparent-data-encryption-byok-configure.md?tabs=azure-powershell)
 
-* [如何在 Azure Key Vault 中啟用虛刪除](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)
+* [如何在 Azure Key Vault 中啟用虛刪除](../key-vault/general/key-vault-recovery.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -957,9 +957,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：使用受控識別，在 AZURE ACTIVE DIRECTORY (AD) 中，為 Azure 服務提供自動管理的身分識別。 受控識別可讓您向任何支援 Azure AD 驗證的服務進行驗證，包括 Azure Key Vault，而不需要在您的程式碼中提供任何認證。
 
-* [教學課程：使用 Windows VM 系統指派的受控識別來存取 Azure SQL](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql)
+* [教學課程：使用 Windows VM 系統指派的受控識別來存取 Azure SQL](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)
 
-* [如何設定受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [如何設定受控識別](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -977,7 +977,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱 [安全性控制：惡意程式碼防禦](/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱 [安全性控制：惡意程式碼防禦](../security/benchmarks/security-control-malware-defense.md)。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -993,7 +993,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 預先掃描即將上傳至非計算 Azure 資源的任何內容，例如 App Service、Data Lake Storage、Blob 儲存體、Azure SQL Server 等等。Microsoft 無法在這些實例中存取您的資料。
 
-* [瞭解 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [瞭解 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1009,13 +1009,13 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱 [安全性控制：資料復原](/azure/security/benchmarks/security-control-data-recovery)。*
+*如需詳細資訊，請參閱 [安全性控制：資料復原](../security/benchmarks/security-control-data-recovery.md)。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確定定期自動備份
 
 **指導**：您可以在一天內自動取得專用 SQL 集區的快照集，以建立可供七天使用的還原點。 此保留期無法變更。 專用的 SQL 集區支援八小時的復原點目標 (RPO) 。 您可以透過過去七天內所建立的任一個快照集，在主要區域中還原資料倉儲。 請注意，您也可以視需要手動觸發快照集。
 
-* [專用 SQL 集區中的備份與還原](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [專用 SQL 集區中的備份與還原](./sql-data-warehouse/backup-and-restore.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1027,9 +1027,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 如果您使用客戶管理的金鑰來加密資料庫加密金鑰，請確定您的金鑰已備份。
 
-* [專用 SQL 集區中的備份與還原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [專用 SQL 集區中的備份與還原](./sql-data-warehouse/backup-and-restore.md)
 
-* [如何備份 Azure Key Vault 金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true)
+* [如何備份 Azure Key Vault 金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?preserve-view=true&view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1039,11 +1039,11 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：定期測試您的還原點，以確保您的快照集有效。 若要從還原點還原現有的專用 SQL 集區，您可以使用 Azure 入口網站或 PowerShell。 測試已備份之客戶管理金鑰的還原。
 
-* [如何還原 Azure Key Vault 金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0&preserve-view=true)
+* [如何還原 Azure Key Vault 金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?preserve-view=true&view=azurermps-6.13.0)
 
-* [專用 SQL 集區中的備份與還原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [專用 SQL 集區中的備份與還原](./sql-data-warehouse/backup-and-restore.md)
 
-* [如何還原現有的專用 SQL 集區](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
+* [如何還原現有的專用 SQL 集區](./sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1055,11 +1055,11 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 根據預設，儲存體帳戶中的資料會使用 Microsoft 管理的金鑰進行加密。 您可以依賴 Microsoft 管理的金鑰來加密您的資料，也可以使用您自己的金鑰管理加密。 如果您要使用 Key Vault 管理您自己的金鑰，請確定已啟用虛刪除。
 
-* [管理 Azure SQL Database 長期備份保留](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure)
+* [管理 Azure SQL Database 長期備份保留](../azure-sql/database/long-term-backup-retention-configure.md)
 
-* [待用資料的 Azure 儲存體加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [待用資料的 Azure 儲存體加密](../storage/common/storage-service-encryption.md)
 
-* [如何在 Key Vault 中啟用虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [如何在 Key Vault 中啟用虛刪除](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：N/A
 
@@ -1067,13 +1067,13 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱 [安全性控制：事件回應](/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱 [安全性控制：事件回應](../security/benchmarks/security-control-incident-response.md)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
 **指導** 方針：確定有撰寫的事件回應計畫，可定義人員角色以及事件處理/管理階段。
 
-* [如何設定 Azure 資訊安全中心內的工作流程自動化](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [如何設定 Azure 資訊安全中心內的工作流程自動化](../security-center/security-center-planning-and-operations-guide.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1083,7 +1083,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指導** 方針：資訊安全中心會將嚴重性指派給警示，以協助您優先處理每個警示的順序，如此一來，當資源遭到入侵時，您就可以立即取得。 嚴重性的依據，在於資訊安全中心對於據以發出警示的發現結果或分析結果有多少信心，以及認定導致警示的活動背後存在惡意意圖的把握程度。
 
-* [Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1103,7 +1103,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。
 
-* [如何設定 Azure 資訊安全中心的安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [如何設定 Azure 資訊安全中心的安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1113,9 +1113,9 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指引**：使用「連續匯出」功能來匯出 Azure 資訊安全中心的警示和建議。 「連續匯出」可供以手動或持續不斷的方式來匯出警示和建議。 您可以使用 Azure 資訊安全中心資料連線器，將警示串流至 Sentinel。
 
-* [如何設定連續匯出](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [如何設定連續匯出](../security-center/continuous-export.md)
 
-* [如何將警示串流至 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1125,7 +1125,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指引**：利用 Azure 資訊安全中心的工作流程自動化功能，透過「Logic Apps」自動觸發對安全性警示和建議的回應。
 
-* [如何設定工作流程自動化和 Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1133,7 +1133,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱 [安全性控制：滲透測試和 Red Team 練習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱 [安全性控制：滲透測試和 Red Team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
@@ -1147,5 +1147,5 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

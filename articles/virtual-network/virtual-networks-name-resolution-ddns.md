@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad91eb94aedcdd0e4e715162e3ae064a1d2fb1ea
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710944"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220417"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>在您自己的 DNS 伺服器中使用動態 DNS 來註冊主機名稱
 
@@ -28,7 +28,7 @@ Azure 會為虛擬機器 (VM) 及角色執行個體[提供名稱解析](virtual-
 當您的自訂 DNS 伺服器裝載為 Azure VM 時，您可以將主機名稱查詢 (適用於相同的虛擬網路) 轉送至 Azure，以解析主機名稱。 如果您不想使用此選項，則可以在您的 DNS 伺服器中使用動態 DNS (DDNS) 註冊您的 VM 主機名稱。 Azure 沒有可直接在您的 DNS 伺服器中建立記錄的認證，因此通常需要有其他的安排。 以下是一些常見案例與替代方案：
 
 ## <a name="windows-clients"></a>Windows 用戶端
-未加入網域的 Windows 用戶端在開機或在 IP 位址改變時，會嘗試進行不安全的 DDNS 更新。 DNS 名稱就是主機名稱加上主要 DNS 尾碼。 Azure 會讓主要 DNS 尾碼留白，但您可以在 VM 中透過[使用者介面](https://technet.microsoft.com/library/cc794784.aspx)或 [PowerShell](/powershell/module/dnsclient/set-dnsclient) 設定尾碼。
+未加入網域的 Windows 用戶端在開機或在 IP 位址改變時，會嘗試進行不安全的 DDNS 更新。 DNS 名稱就是主機名稱加上主要 DNS 尾碼。 Azure 會讓主要 DNS 尾碼留白，但您可以在 VM 中透過[使用者介面](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794784(v=ws.10))或 [PowerShell](/powershell/module/dnsclient/set-dnsclient) 設定尾碼。
 
 已加入網域的 Windows 用戶端會使用安全的 DDNS，向網域控制站註冊自己的 IP 位址。 網域加入程序會設定用戶端上的主要 DNS 尾碼，並建立和維護信任關係。
 

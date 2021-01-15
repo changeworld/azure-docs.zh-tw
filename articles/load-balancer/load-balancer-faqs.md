@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 2e559d574413b8eb0be2303798e0b16bfffad2cb
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e9f46b11d9c0b5251ee4d52f64d657926f6f9c5e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695396"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222984"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer 常見問題
 
@@ -36,8 +36,8 @@ NAT 規則可用來指定要路由傳送流量的後端資源。 例如，設定
 ## <a name="what-is-ip-1686312916"></a>什麼是 IP 168.63.129.16？
 標示為 Azure 基礎結構的主機虛擬 IP 位址，Load Balancer Azure 健康情況探查的來源。 設定後端實例時，它們必須允許來自此 IP 位址的流量成功回應健康情況探查。 此規則不會與您的 Load Balancer 前端存取進行互動。 如果您不是使用 Azure Load Balancer，可以覆寫此規則。 您可以在 [這裡](../virtual-network/service-tags-overview.md#available-service-tags)深入瞭解服務標記。
 
-## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>我可以搭配基本 Load Balancer 使用全域 VNET 對等互連嗎？
-否。 基本 Load Balancer 不支援全域 VNET 對等互連。 您可以改用 Standard Load Balancer。 如需順暢的升級，請參閱 [從基本升級至標準版](upgrade-basic-standard.md) 文章。
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>我可以搭配基本 Load Balancer 使用全域 VNet 對等互連嗎？
+不會。 基本 Load Balancer 不支援全域 VNET 對等互連。 您可以改用 Standard Load Balancer。 如需順暢的升級，請參閱 [從基本升級至標準版](upgrade-basic-standard.md) 文章。
 
 ## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>如何探索 Azure VM 使用的公用 IP？
 
@@ -45,6 +45,9 @@ NAT 規則可用來指定要路由傳送流量的後端資源。 例如，設定
 藉由使用 nslookup 命令，您便可以將名稱 myip.opendns.com 的 DNS 查詢傳送給 OpenDNS 解析程式。 服務會傳回用來傳送查詢的來源 IP 位址。 當您從 VM 執行下列查詢時，回應會是用於該 VM 的公用 IP：
 
  ```nslookup myip.opendns.com resolver1.opendns.com```
+ 
+## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>我可以從相同的可用性設定組，將 VM 新增至 Load Balancer 的不同後端集區嗎？
+不會，並不會發生這樣的事。
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>相同區域中 Azure 儲存體的連接如何運作？
 您不需要連線到與 VM 同區域的儲存體，即可透過上述案例獲得輸出連線。 如果不想此連線，請使用如前文所述的網路安全性群組 (NSG)。 如需其他區域的儲存體連線，則需要有輸出連線能力。 請注意，從同區域的 VM 連線到儲存體時，儲存體診斷記錄中來源 IP 位址會是內部提供者的位址，而不是 VM 的公用 IP 位址。 如果希望要將儲存體帳戶的存取，限制在同區域一或多個虛擬網路子網路中的 VM，請在設定儲存體帳戶防火牆時，使用[虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)，且不要使用公用 IP 位址。 設定好服務端點之後，您就會在儲存體診斷記錄中看到虛擬網路私人 IP 位址，而不是內部提供者的位址。

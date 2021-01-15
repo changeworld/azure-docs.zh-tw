@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0ec054d55432ad2680314b4ff91a067d37b629d4
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e99ee28460c1639a7f0b9dd989bbe5a287a9158c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734322"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221811"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>教學課程：使用 Azure CLI 建立 NAT 閘道並測試 NAT 服務
 
@@ -34,7 +34,7 @@ ms.locfileid: "94734322"
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
+使用 [az group create](/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 下列範例會在 **eastus2** 位置建立名為 myResourceGroupNAT 的資源群組：
 
@@ -49,7 +49,7 @@ ms.locfileid: "94734322"
 
 ### <a name="create-a-public-ip-address"></a>建立公用 IP 位址
 
-若要存取公用網際網路，您需要有一個或多個適用於 NAT 閘道的公用 IP 位址。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip)，在 **myResourceGroupNAT** 中建立名為 **myPublicIPsource** 的公用 IP 位址資源。
+若要存取公用網際網路，您需要有一個或多個適用於 NAT 閘道的公用 IP 位址。 使用 [az network public-ip create](/cli/azure/network/public-ip)，在 **myResourceGroupNAT** 中建立名為 **myPublicIPsource** 的公用 IP 位址資源。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -77,7 +77,7 @@ ms.locfileid: "94734322"
   - 公用 IP 集區和公用 IP 前置詞，將用於 NAT 閘道資源所轉譯的輸出流量。
   - 將閒置逾時時間從預設的 4 分鐘變更為 10 分鐘。
 
-使用 [az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) 建立全域 Azure NAT 閘道，其名稱為 **myNATgateway**。 此命令會使用公用 IP 位址 **myPublicIP** 和公用 IP 前置詞 **myPublicIPprefix**。 此命令也會將閒置逾時變更為 10 分鐘。
+使用 [az network nat gateway create](/cli/azure/network/nat?view=azure-cli-latest) 建立全域 Azure NAT 閘道，其名稱為 **myNATgateway**。 此命令會使用公用 IP 位址 **myPublicIP** 和公用 IP 前置詞 **myPublicIPprefix**。 此命令也會將閒置逾時變更為 10 分鐘。
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -99,7 +99,7 @@ ms.locfileid: "94734322"
 
 在您部署 VM 並可測試 NAT 閘道之前，我們必須先建立虛擬網路。
 
-使用 [az network Microsoft Azure Virtual Network create](https://docs.microsoft.com/cli/azure/network/vnet)，在 **myResourceGroupNAT** 中建立名為 **myVnetsource** 的虛擬網路，其具有名為 **mySubnetsource** 的子網路。  虛擬網路的 IP 位址空間為 **192.168.0.0/16**。 虛擬網路內的子網路為 **192.168.0.0/24**。
+使用 [az network Microsoft Azure Virtual Network create](/cli/azure/network/vnet)，在 **myResourceGroupNAT** 中建立名為 **myVnetsource** 的虛擬網路，其具有名為 **mySubnetsource** 的子網路。  虛擬網路的 IP 位址空間為 **192.168.0.0/16**。 虛擬網路內的子網路為 **192.168.0.0/24**。
 
 ```azurecli-interactive
   az network vnet create \
@@ -113,7 +113,7 @@ ms.locfileid: "94734322"
 
 ### <a name="configure-nat-service-for-source-subnet"></a>設定來源子網路的 NAT 服務
 
-在虛擬網路 **myVnetsource** 中設定來源子網路 **mySubnetsource**，以使用特定 NAT 閘道資源 **myNATgateway** 搭配 [az network Microsoft Azure Virtual Network subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet)。 此命令將會在指定的子網路上啟用 NAT 服務。
+在虛擬網路 **myVnetsource** 中設定來源子網路 **mySubnetsource**，以使用特定 NAT 閘道資源 **myNATgateway** 搭配 [az network Microsoft Azure Virtual Network subnet update](/cli/azure/network/vnet/subnet)。 此命令將會在指定的子網路上啟用 NAT 服務。
 
 ```azurecli-interactive
     az network vnet subnet update \
@@ -132,7 +132,7 @@ ms.locfileid: "94734322"
 
 ### <a name="create-public-ip-for-source-vm"></a>建立來源 VM 的公用 IP
 
-我們會建立用來存取來源 VM 的公用 IP。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip)，在 **myResourceGroupNAT** 中建立名為 **myPublicIPsourceVM** 的公用 IP 位址資源。
+我們會建立用來存取來源 VM 的公用 IP。 使用 [az network public-ip create](/cli/azure/network/public-ip)，在 **myResourceGroupNAT** 中建立名為 **myPublicIPsourceVM** 的公用 IP 位址資源。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -144,7 +144,7 @@ ms.locfileid: "94734322"
 
 ### <a name="create-an-nsg-for-source-vm"></a>建立來源 VM 的 NSG
 
-因為標準公用 IP 位址屬於「預設保護」，所以我們需要建立 NSG 來允許 SSH 的輸入存取。  Azure NAT 服務可感知流量方向。 如果 NAT 閘道設定在相同子網路上，則此 NSG 將不會用於輸出。 使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)，在 **myResourceGroupNAT** 中建立名為 **myNSGsource** 的 NSG 資源。
+因為標準公用 IP 位址屬於「預設保護」，所以我們需要建立 NSG 來允許 SSH 的輸入存取。  Azure NAT 服務可感知流量方向。 如果 NAT 閘道設定在相同子網路上，則此 NSG 將不會用於輸出。 使用 [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)，在 **myResourceGroupNAT** 中建立名為 **myNSGsource** 的 NSG 資源。
 
 ```azurecli-interactive
   az network nsg create \
@@ -155,7 +155,7 @@ ms.locfileid: "94734322"
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>公開來源 VM 上的 SSH 端點
 
-我們會在 NSG 中建立規則，以供對來源 VM 進行 SSH 存取。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立名為 **ssh** 的 NSG 規則。 此規則將會在 **myResourceGroupNAT** 資源群組中建立於名為 **myNSGsource** 的 NSG 中。
+我們會在 NSG 中建立規則，以供對來源 VM 進行 SSH 存取。 使用 [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立名為 **ssh** 的 NSG 規則。 此規則將會在 **myResourceGroupNAT** 資源群組中建立於名為 **myNSGsource** 的 NSG 中。
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -211,7 +211,7 @@ ms.locfileid: "94734322"
 
  我們需要建立將放置目的地虛擬機器的虛擬網路。  下列命令是與來源 VM 相同的步驟 (有些小變動)，用以公開目的地端點。
 
-使用 [az network Microsoft Azure Virtual Network create](https://docs.microsoft.com/cli/azure/network/vnet)，在 **myResourceGroupNAT** 中建立名為 **myVnetdestination** 的虛擬網路，其具有名為 **mySubnetdestination** 的子網路。  虛擬網路的 IP 位址空間為 **192.168.0.0/16**。 虛擬網路內的子網路為 **192.168.0.0/24**。
+使用 [az network Microsoft Azure Virtual Network create](/cli/azure/network/vnet)，在 **myResourceGroupNAT** 中建立名為 **myVnetdestination** 的虛擬網路，其具有名為 **mySubnetdestination** 的子網路。  虛擬網路的 IP 位址空間為 **192.168.0.0/16**。 虛擬網路內的子網路為 **192.168.0.0/24**。
 
 ```azurecli-interactive
   az network vnet create \
@@ -225,7 +225,7 @@ ms.locfileid: "94734322"
 
 ### <a name="create-public-ip-for-destination-vm"></a>建立目的地 VM 的公用 IP
 
-我們會建立用來存取來源 VM 的公用 IP。 使用 [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip)，在 **myResourceGroupNAT** 中建立名為 **myPublicIPdestinationVM** 的公用 IP 位址資源。 
+我們會建立用來存取來源 VM 的公用 IP。 使用 [az network public-ip create](/cli/azure/network/public-ip)，在 **myResourceGroupNAT** 中建立名為 **myPublicIPdestinationVM** 的公用 IP 位址資源。 
 
 ```azurecli-interactive
   az network public-ip create \
@@ -237,7 +237,7 @@ ms.locfileid: "94734322"
 
 ### <a name="create-an-nsg-for-destination-vm"></a>建立目的地 VM 的 NSG
 
-標準公用 IP 位址屬於「預設保護」，因此您需要建立 NSG 來允許 SSH 的輸入存取。 Azure NAT 服務可感知流量方向。 如果 NAT 閘道設定在相同子網路上，則此 NSG 將不會用於輸出。 使用 [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)，在 **myResourceGroupNAT** 中建立名為 **myNSGdestination** 的 NSG 資源。
+標準公用 IP 位址屬於「預設保護」，因此您需要建立 NSG 來允許 SSH 的輸入存取。 Azure NAT 服務可感知流量方向。 如果 NAT 閘道設定在相同子網路上，則此 NSG 將不會用於輸出。 使用 [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create)，在 **myResourceGroupNAT** 中建立名為 **myNSGdestination** 的 NSG 資源。
 
 ```azurecli-interactive
     az network nsg create \
@@ -248,7 +248,7 @@ ms.locfileid: "94734322"
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>公開目的地 VM 上的 SSH 端點
 
-我們會在 NSG 中建立規則，以供對目的地 VM 進行 SSH 存取。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立名為 **ssh** 的 NSG 規則。 此規則將會在 **myResourceGroupNAT** 資源群組中建立於名為 **myNSGdestination** 的 NSG 中。
+我們會在 NSG 中建立規則，以供對目的地 VM 進行 SSH 存取。 使用 [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) 建立名為 **ssh** 的 NSG 規則。 此規則將會在 **myResourceGroupNAT** 資源群組中建立於名為 **myNSGdestination** 的 NSG 中。
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -266,7 +266,7 @@ ms.locfileid: "94734322"
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>公開目的地 VM 上的 HTTP 端點
 
-我們會在 NSG 中建立規則，以供對目的地 VM 進行 HTTP 存取。 使用 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)，在 **myResourceGroupNAT** 中名為 **myNSGdestination** 的 NSG 中建立名為 **http** 的 NSG 規則。
+我們會在 NSG 中建立規則，以供對目的地 VM 進行 HTTP 存取。 使用 [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create)，在 **myResourceGroupNAT** 中名為 **myNSGdestination** 的 NSG 中建立名為 **http** 的 NSG 規則。
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -434,4 +434,3 @@ hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 - [使用 Azure 入口網站部署 NAT 閘道資源](./quickstart-create-nat-gateway-portal.md)的快速入門。
 
 > [!div class="nextstepaction"]
-

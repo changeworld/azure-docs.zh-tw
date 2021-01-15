@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 描述如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6e04551a2ef2f890844693fec71d2d3232a456f2
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883243"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220808"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -261,7 +261,7 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 
 ### <a name="conditions"></a>條件
 
-條件會評估 **field** 或 **value** 存取子是否符合特定條件。 支援的條件如下︰
+條件會評估值是否符合特定準則。 支援的條件如下︰
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -291,12 +291,9 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 
 使用 **match** 和 **notMatch** 條件時，請提供 `#` 來比對數字、`?` 來比對字母、`.` 來比對任何字元，以及任何其他字元來比對該實際字元。 **Match** 和 **notMatch** 會區分大小寫，但所有其他評估 _stringValue_ 的條件都不區分大小寫。 不會區分大小寫的替代項目，可在 **matchInsensitively** 和 **notMatchInsensitively** 中取得。
 
-在 **\[\*\] 別名** 陣列欄位值中，陣列中的每個元素都會搭配元素之間的邏輯 **and** 進行個別評估。 如需詳細資訊，請參閱 [參考陣列資源屬性](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)。
-
 ### <a name="fields"></a>欄位
 
-條件是透過欄位所形成。 欄位會比對資源要求裝載中的屬性，並描述資源的狀態。
-
+評估資源要求裝載中的屬性值是否符合特定準則的條件，可以使用 **欄位** 運算式來形成。
 支援下列欄位：
 
 - `name`
@@ -305,6 +302,7 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 - `kind`
 - `type`
 - `location`
+  - 位置欄位會正規化以支援各種格式。 例如， `East US 2` 視為等於 `eastus2` 。
   - 針對不受特定位置限制的資源，請使用 **global**。
 - `id`
   - 傳回正在評估之資源的資源識別碼。
@@ -324,6 +322,10 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 
 > [!NOTE]
 > `tags.<tagName>`、`tags[tagName]` 和 `tags[tag.with.dots]` 都仍是可接受的宣告標籤欄位方式。 不過，建議的運算式為上面所列的運算式。
+
+> [!NOTE]
+> 在參考 **\[ \* \] alias** 的 **欄位** 運算式中，陣列中的每個專案都會以邏輯 **and** between 元素來個別評估。
+> 如需詳細資訊，請參閱 [參考陣列資源屬性](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)。
 
 #### <a name="use-tags-with-parameters"></a>搭配參數使用標籤
 
@@ -355,7 +357,7 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 
 ### <a name="value"></a>值
 
-條件也可以使用 **value** 形成。 **value** 會檢查 [parameters](#parameters)、[支援的範本函式](#policy-functions)或常值的條件。 **value** 已和任何支援的 [condition](#conditions) 配對。
+評估值是否符合特定準則的條件，可以使用 **值** 運算式來形成。 值可以是常值、 [參數](#parameters)的值或任何 [支援的範本函數](#policy-functions)的傳回值。
 
 > [!WARNING]
 > 如果「範本函式」的結果為錯誤，則原則評估會失敗。 失敗的評估隱含著 **拒絕** 的意思。 如需詳細資訊，請參閱[避免範本錯誤](#avoiding-template-failures)。 使用 **DoNotEnforce** 的 [enforcementMode](./assignment-structure.md#enforcement-mode)，以防止在測試和驗證新的原則定義時，由於新的或更新的資源評估失敗而受到影響。
@@ -440,9 +442,11 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 
 ### <a name="count"></a>Count
 
-計算資源承載中陣列有多少成員符合條件運算式的條件，可以使用 **count** 運算式來構成。 常見的案例是檢查「其中至少一個」、「只有一個」、「全部」或「沒有一個」陣列成員符合條件。 **count** 會評估條件運算式的每個 [\[\*\] 別名](#understanding-the--alias) 陣列成員，並加總 _true_ 結果，然後再與運算式運算子進行比較。 **計數** 運算式最多可以加入至單一 **>policyrule.if** 定義的三次。
+計算陣列中有多少成員符合特定準則的條件，可以使用 **count** 運算式來形成。 常見的案例是檢查「至少有一個」、「完全」、「全部」或「無」陣列成員是否符合條件。 **Count** 會評估條件運算式的每個陣列成員並加總 _true_ 結果，然後再與運算式運算子比較。
 
-**count** 運算式的結構如下：
+#### <a name="field-count"></a>欄位計數
+
+計算要求承載中的陣列成員數目是否符合條件運算式。 **欄位計數** 運算式的結構為：
 
 ```json
 {
@@ -456,16 +460,62 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 }
 ```
 
-下列屬性與 **count** 搭配使用：
+下列屬性用於 **欄位計數**：
 
-- **count.field** (必要)：包含陣列的路徑，而且必須是陣列別名。 如果陣列遺漏，則會將運算式評估為 _false_，而不考慮條件運算式。
-- **count.where** (選擇性)：此條件運算式會個別評估 **count.field** 的每個 [\[\*\] 別名](#understanding-the--alias)陣列成員。 如果未提供此屬性，則會將路徑為 ' field ' 的所有陣列成員都評估為 _true_。 任何[條件](../concepts/definition-structure.md#conditions)都可以在此屬性內使用。
+- **count.field** (必要)：包含陣列的路徑，而且必須是陣列別名。
+- **count。其中** (選擇性) ：個別評估每個 [ \[ \* \] 別名](#understanding-the--alias)陣列成員的條件運算式 `count.field` 。 如果未提供此屬性，則會將路徑為 ' field ' 的所有陣列成員都評估為 _true_。 任何[條件](../concepts/definition-structure.md#conditions)都可以在此屬性內使用。
   [邏輯運算子](#logical-operators)可以在此屬性內使用，以建立複雜的評估需求。
 - **\<condition\>** (必要的) ：值與符合 count 的專案數進行比較 **。 where** 條件運算式。 應該使用數值[條件](../concepts/definition-structure.md#conditions)。
 
-如需如何在 Azure 原則中使用陣列屬性的詳細資訊，包括如何評估計數運算式的詳細說明，請參閱 [參考陣列資源屬性](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)。
+**欄位計數** 運算式可在單一 **>policyrule.if** 定義中，將相同的欄位陣列列舉最多三次。
 
-#### <a name="count-examples"></a>計數範例
+如需如何在 Azure 原則中使用陣列屬性的詳細資訊，包括如何評估 **欄位計數** 運算式的詳細說明，請參閱 [參考陣列資源屬性](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties)。
+
+#### <a name="value-count"></a>值計數
+計算陣列中有多少成員滿足條件。 陣列可以是常值陣列或 [陣列參數的參考](#using-a-parameter-value)。 **值計數** 運算式的結構為：
+
+```json
+{
+    "count": {
+        "value": "<literal array | array parameter reference>",
+        "name": "<index name>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+下列屬性用於 **值計數**：
+
+- **count. value** (required) ：要評估的陣列。
+- **count.name** (必要的) ：包含英文字母和數位的索引名稱。 定義在目前反復專案中評估之陣列成員值的名稱。 此名稱是用來參考條件內目前的值 `count.where` 。 如果 **count** 運算式不在另一個 **計數** 運算式的子系中，則為選擇性。 未提供時，索引名稱會隱含地設定為 `"default"` 。
+- **count。其中** (選擇性) ：個別評估每個陣列成員的條件運算式 `count.value` 。 如果未提供此屬性，則會將所有陣列成員都評估為 _true_。 任何[條件](../concepts/definition-structure.md#conditions)都可以在此屬性內使用。 [邏輯運算子](#logical-operators)可以在此屬性內使用，以建立複雜的評估需求。 藉由呼叫 [目前的函](#the-current-function) 式，可以存取目前列舉陣列成員的值。
+- **\<condition\>** (必要的) ：值會與符合條件運算式的專案數目進行比較 `count.where` 。 應該使用數值[條件](../concepts/definition-structure.md#conditions)。
+
+以下是強制執行的限制：
+- 單一 **>policyrule.if** 定義中最多隻能使用10個 **值計數** 運算式。
+- 每個 **值計數** 運算式最多可以執行100次反覆運算。 此數目包含任何父 **值計數** 運算式所執行的反覆運算次數。
+
+#### <a name="the-current-function"></a>目前的函式
+
+`current()`函數只能在條件內使用 `count.where` 。 它會傳回目前由 **計數** 運算式評估所列舉的陣列成員的值。
+
+**值計數使用量**
+
+- `current(<index name defined in count.name>)`. 例如：`current('arrayMember')`。
+- `current()`. 只有當 **值計數** 運算式不是另一個 **計數** 運算式的子系時，才允許使用。 傳回與上述相同的值。
+
+如果呼叫所傳回的值是物件，則支援屬性存取子。 例如：`current('objectArrayMember').property`。
+
+**欄位計數使用量**
+
+- `current(<the array alias defined in count.field>)`. 例如： `current('Microsoft.Test/resource/enumeratedArray[*]')` 。
+- `current()`. 只有當 **欄位計數** 運算式不是其他 **計數** 運算式的子系時，才允許使用。 傳回與上述相同的值。
+- `current(<alias of a property of the array member>)`. 例如： `current('Microsoft.Test/resource/enumeratedArray[*].property')` 。
+
+#### <a name="field-count-examples"></a>欄位計數範例
 
 範例 1：檢查陣列是否空白
 
@@ -550,18 +600,162 @@ Azure 原則內建和模式都是 [Azure 原則範例](../samples/index.md)。
 }
 ```
 
-範例6：在 `field()` 條件內使用函數 `where` ，以存取目前評估之陣列成員的常值。 此條件會檢查沒有任何安全性規則具有偶數的 _優先順序_ 值。
+範例6：在 `current()` 條件內使用函式 `where` ，以存取範本函式中目前列舉陣列成員的值。 此條件會檢查虛擬網路是否包含不在 10.0.0.0/24 CIDR 範圍內的位址首碼。
 
 ```json
 {
     "count": {
-        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
         "where": {
-          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
-          "equals": 0
+          "value": "[ipRangeContains('10.0.0.0/24', current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+          "equals": false
         }
     },
     "greater": 0
+}
+```
+
+範例7：在 `field()` 條件內使用函數 `where` 來存取目前列舉陣列成員的值。 此條件會檢查虛擬網路是否包含不在 10.0.0.0/24 CIDR 範圍內的位址首碼。
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+          "value": "[ipRangeContains('10.0.0.0/24', first(field(('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]')))]",
+          "equals": false
+        }
+    },
+    "greater": 0
+}
+```
+
+#### <a name="value-count-examples"></a>值計數範例
+
+範例1：檢查資源名稱是否符合任何指定的名稱模式。
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+範例2：檢查資源名稱是否符合任何指定的名稱模式。 `current()`函數未指定索引名稱。 結果與上一個範例相同。
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+範例3：檢查資源名稱是否符合陣列參數所提供的任何指定名稱模式。
+
+```json
+{
+    "count": {
+        "value": "[parameters('namePatterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+範例4：檢查是否有任何虛擬網路位址首碼未在核准的首碼清單下。
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+            "count": {
+                "value": "[parameters('approvedPrefixes')]",
+                "name": "approvedPrefix",
+                "where": {
+                    "value": "[ipRangeContains(current('approvedPrefix'), current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+                    "equals": true
+                },
+            },
+            "equals": 0
+        }
+    },
+    "greater": 0
+}
+```
+
+範例5：檢查所有保留的 NSG 規則都定義于 NSG 中。 保留 NSG 規則的屬性會定義在包含物件的陣列參數中。
+
+參數值：
+
+```json
+[
+    {
+        "priority": 101,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 22
+    },
+    {
+        "priority": 102,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 3389
+    }
+]
+```
+
+原則：
+```json
+{
+    "count": {
+        "value": "[parameters('reservedNsgRules')]",
+        "name": "reservedNsgRule",
+        "where": {
+            "count": {
+                "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+                "where": {
+                    "allOf": [
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].priority",
+                            "equals": "[current('reservedNsgRule').priority]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                            "equals": "[current('reservedNsgRule').access]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                            "equals": "[current('reservedNsgRule').direction]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                            "equals": "[current('reservedNsgRule').destinationPortRange]"
+                        }
+                    ]
+                }
+            },
+            "equals": 1
+        }
+    },
+    "equals": "[length(parameters('reservedNsgRules'))]"
 }
 ```
 
@@ -627,7 +821,6 @@ Azure 原則支援下列類型的效果：
   }
   ```
 
-
 - `ipRangeContains(range, targetRange)`
     - **範圍**： [必要] 字串-指定 IP 位址範圍的字串。
     - **targetRange**： [必要] 字串-指定 IP 位址範圍的字串。
@@ -639,6 +832,8 @@ Azure 原則支援下列類型的效果：
     - CIDR 範圍 (範例： `10.0.0.0/24` 、 `2001:0DB8::/110`) 
     - [開始] 和 [結束 IP 位址] 定義的範圍 (範例： `192.168.0.1-192.168.0.9` 、 `2001:0DB8::-2001:0DB8::3:FFFF`) 
 
+- `current(indexName)`
+    - 只能使用於 [計數運算式](#count)內的特殊函數。
 
 #### <a name="policy-function-example"></a>原則函式範例
 

@@ -10,13 +10,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501255"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222321"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database 的查詢效能深入解析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -155,7 +155,7 @@ ms.locfileid: "96501255"
 
 「查詢效能深入解析」有兩項計量可協助您找出潛在的瓶頸︰持續時間和執行計數。
 
-長時間執行的查詢最有可能會鎖定資源較長的時間、封鎖其他使用者，以及限制擴充性。 它們也是最適合進行最佳化的項目。
+長時間執行的查詢最有可能會鎖定資源較長的時間、封鎖其他使用者，以及限制擴充性。 它們也是最適合進行最佳化的項目。 如需詳細資訊，請參閱 [瞭解及解決 AZURE SQL 封鎖問題](understand-resolve-blocking.md)。
 
 若要識別長時間執行的查詢：
 

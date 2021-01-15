@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76f92b5da2331748fbbbfc68f1e456fd50dd71ee
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035462"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223018"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>將公用 IP 位址與虛擬機器產生關聯
 
@@ -44,7 +44,7 @@ ms.locfileid: "88035462"
    > [!NOTE]
    > 公用 IP 位址會與網路介面的 IP 設定相關聯。 在上圖中，網路介面具有一個 IP 設定。 如果網路介面具有多個 IP 設定，它們都會出現在清單中，您會選取要與公用 IP 位址產生關聯的 IP 設定。
 
-5. 選取 [ **已啟用**]，然後選取 [ **IP 位址] (*設定必要設定*) **。 選擇現有的公用 IP 位址，以自動關閉 [ **選擇公用 ip 位址** ] 方塊。 如果您沒有列出任何可用的公用 IP 位址，則必須建立一個。 若要深入瞭解，請參閱 [建立公用 IP 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 選取 [ **儲存**] （如下圖所示），然後關閉 IP 設定的方塊。
+5. 選取 [ **已啟用**]，然後選取 [ **IP 位址] (*設定必要設定*)**。 選擇現有的公用 IP 位址，以自動關閉 [ **選擇公用 ip 位址** ] 方塊。 如果您沒有列出任何可用的公用 IP 位址，則必須建立一個。 若要深入瞭解，請參閱 [建立公用 IP 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 選取 [ **儲存**] （如下圖所示），然後關閉 IP 設定的方塊。
 
    ![啟用公用 IP 位址](./media/associate-public-ip-address-vm/enable-public-ip-address.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "88035462"
 安裝 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) 或使用 Azure Cloud Shell。 Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 它具有預先安裝和設定的 Azure CLI，可與您的帳戶搭配使用。 在接下來的 CLI 命令中，選取 [試用] 按鈕。 選取 [試用]，會叫用可登入 Azure 帳戶的 Cloud Shell。
 
 1. 如果在 Bash 中使用本機 CLI，請使用 `az login` 登入 Azure。
-2. 公用 IP 位址會與連接至 VM 的網路介面 IP 設定建立關聯。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) 命令，將公用 ip 位址與 ip 設定產生關聯。 下列範例會將名為*myVMPublicIP* *的現有*公用 IP 位址，與存在名為*myResourceGroup*的資源群組中名為 *>myvmvmnic*的現有網路介面的 IP 設定產生關聯。
+2. 公用 IP 位址會與連接至 VM 的網路介面 IP 設定建立關聯。 使用 [az network nic-ip-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) 命令，將公用 ip 位址與 ip 設定產生關聯。 下列範例會將名為 *myVMPublicIP* *的現有* 公用 IP 位址，與存在名為 *myResourceGroup* 的資源群組中名為 *>myvmvmnic* 的現有網路介面的 IP 設定產生關聯。
   
    ```azurecli-interactive
    az network nic ip-config update \
@@ -75,7 +75,7 @@ ms.locfileid: "88035462"
      --public-ip-address myVMPublicIP
    ```
 
-   - 如果您沒有現有的公用 IP 位址，請使用 [az network public-IP create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 命令建立一個。 例如，下列命令會在名為*myResourceGroup*的資源群組中建立名為*MYVMPUBLICIP*的公用 IP 位址。
+   - 如果您沒有現有的公用 IP 位址，請使用 [az network public-IP create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) 命令建立一個。 例如，下列命令會在名為 *myResourceGroup* 的資源群組中建立名為 *MYVMPUBLICIP* 的公用 IP 位址。
   
      ```azurecli-interactive
      az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
@@ -104,7 +104,7 @@ ms.locfileid: "88035462"
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-3. 使用 [az vm list-ip-](/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) address 命令來查看指派給 IP 設定的公用 IP 位址。 下列範例會顯示在名為*myResourceGroup*的資源群組中，指派給名為*MYVM*之現有 VM 的 IP 位址。
+3. 使用 [az vm list-ip-](/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses) address 命令來查看指派給 IP 設定的公用 IP 位址。 下列範例會顯示在名為 *myResourceGroup* 的資源群組中，指派給名為 *MYVM* 之現有 VM 的 IP 位址。
 
    ```azurecli-interactive
    az vm list-ip-addresses --name myVM --resource-group myResourceGroup --out table
@@ -122,7 +122,7 @@ ms.locfileid: "88035462"
 1. 如果在本機使用 PowerShell，請使用 `Connect-AzAccount` 登入 Azure。
 2. 公用 IP 位址會與連接至 VM 的網路介面 IP 設定建立關聯。 使用 [new-azvirtualnetwork](/powershell/module/Az.Network/Get-AzVirtualNetwork) 和 [>new-azvirtualnetworksubnetconfig](/powershell/module/Az.Network/Get-AzVirtualNetworkSubnetConfig) 命令，取得網路介面所在的虛擬網路和子網。 接下來，使用 [get-aznetworkinterface](/powershell/module/Az.Network/Get-AzNetworkInterface) 命令來取得網路介面和 [>get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress) 命令，以取得現有的公用 IP 位址。 然後使用 [AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/Set-AzNetworkInterfaceIpConfig) 命令，將公用 ip 位址與 IP 設定建立關聯，並使用 [get-aznetworkinterface](/powershell/module/Az.Network/Set-AzNetworkInterface) 命令將新的 ip 設定寫入網路介面。
 
-   下列範例會將名為*myVMPublicIP*的現有公用 IP 位址與名為 *>myvmvmnic*的現有網路介面（存在於名為*myVMVNet*的虛擬網路中名為*myVMSubnet*的子網）名稱*ipconfigmyVM*的 IP 設定產生關聯。 所有資源都位於名為 *myResourceGroup* 的資源群組中。
+   下列範例會將名為 *myVMPublicIP* 的現有公用 IP 位址與名為 *>myvmvmnic* 的現有網路介面（存在於名為 *myVMVNet* 的虛擬網路中名為 *myVMSubnet* 的子網）名稱 *ipconfigmyVM* 的 IP 設定產生關聯。 所有資源都位於名為 *myResourceGroup* 的資源群組中。
   
    ```azurepowershell-interactive
    $vnet = Get-AzVirtualNetwork -Name myVMVNet -ResourceGroupName myResourceGroup
@@ -133,7 +133,7 @@ ms.locfileid: "88035462"
    $nic | Set-AzNetworkInterface
    ```
 
-   - 如果您沒有現有的公用 IP 位址，請使用 [>get-azpublicipaddress](/powershell/module/Az.Network/New-AzPublicIpAddress) 命令建立一個。 例如，下列命令會在*eastus*區域中名為*myResourceGroup*的資源群組中建立名為*myVMPublicIP*的*動態*公用 IP 位址。
+   - 如果您沒有現有的公用 IP 位址，請使用 [>get-azpublicipaddress](/powershell/module/Az.Network/New-AzPublicIpAddress) 命令建立一個。 例如，下列命令會在 *eastus* 區域中名為 *myResourceGroup* 的資源群組中建立名為 *myVMPublicIP* 的 *動態* 公用 IP 位址。
   
      ```azurepowershell-interactive
      New-AzPublicIpAddress -Name myVMPublicIP -ResourceGroupName myResourceGroup -AllocationMethod Dynamic -Location eastus
@@ -155,7 +155,7 @@ ms.locfileid: "88035462"
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic",
      ```
 
-   - 如果您不知道網路介面所在的虛擬網路或子網的名稱，請使用 `Get-AzNetworkInterface` 命令來查看資訊。 例如，下列命令會取得名為*myResourceGroup*的資源群組中名為 *>myvmvmnic*的網路介面之虛擬網路和子網資訊：
+   - 如果您不知道網路介面所在的虛擬網路或子網的名稱，請使用 `Get-AzNetworkInterface` 命令來查看資訊。 例如，下列命令會取得名為 *myResourceGroup* 的資源群組中名為 *>myvmvmnic* 的網路介面之虛擬網路和子網資訊：
 
      ```azurepowershell-interactive
      $nic = Get-AzNetworkInterface -Name myVMVMNic -ResourceGroupName myResourceGroup
@@ -182,7 +182,7 @@ ms.locfileid: "88035462"
      Id     : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic/ipConfigurations/ipconfigmyVM
      ```
 
-3. 使用 [>get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress) 命令來查看指派給 IP 設定的公用 IP 位址。 下列範例會顯示在名為*myResourceGroup*的資源群組中，指派給名為*MYVMPUBLICIP*之公用 IP 位址的位址。
+3. 使用 [>get-azpublicipaddress](/powershell/module/az.network/get-azpublicipaddress) 命令來查看指派給 IP 設定的公用 IP 位址。 下列範例會顯示在名為 *myResourceGroup* 的資源群組中，指派給名為 *MYVMPUBLICIP* 之公用 IP 位址的位址。
 
    ```azurepowershell-interactive
    Get-AzPublicIpAddress -Name myVMPublicIP -ResourceGroupName myResourceGroup | Select IpAddress
@@ -214,4 +214,4 @@ ms.locfileid: "88035462"
 
 ## <a name="next-steps"></a>後續步驟
 
-允許具有網路安全性群組的輸入網際網路流量進入您的 VM。 若要瞭解如何建立網路安全性群組，請參閱 [使用網路安全性群組](manage-network-security-group.md#work-with-network-security-groups)。 若要深入瞭解網路安全性群組，請參閱 [安全性群組](security-overview.md)。
+允許具有網路安全性群組的輸入網際網路流量進入您的 VM。 若要瞭解如何建立網路安全性群組，請參閱 [使用網路安全性群組](manage-network-security-group.md#work-with-network-security-groups)。 若要深入瞭解網路安全性群組，請參閱 [安全性群組](./network-security-groups-overview.md)。

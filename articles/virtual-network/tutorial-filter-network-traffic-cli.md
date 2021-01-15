@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7589b13dc517a23e8d9d65907fb3342e4e2490a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d2cabecfb2a70e6d325129335c066bb35aeb02ba
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000584"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221818"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>使用 Azure CLI 透過網路安全性群組篩選網路流量
 
@@ -37,7 +37,7 @@ ms.locfileid: "96000584"
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- 本文需要 Azure CLI 的版本2.0.28 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
+- 本文需要 2.0.28 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-network-security-group"></a>建立網路安全性群組
 
@@ -241,6 +241,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已建立網路安全性群組，並將其與虛擬網路子網路產生關聯。 若要深入了解網路安全性群組，請參閱[網路安全性群組概觀](security-overview.md)和[管理網路安全性群組](manage-network-security-group.md)。
+在本文中，您已建立網路安全性群組，並將其與虛擬網路子網路產生關聯。 若要深入了解網路安全性群組，請參閱[網路安全性群組概觀](./network-security-groups-overview.md)和[管理網路安全性群組](manage-network-security-group.md)。
 
 Azure 依預設會路由傳送子網路之間的流量。 您可以改採其他方式，例如，透過作為防火牆的 VM 路由傳送子網路之間的流量。 若要了解操作方式，請參閱[建立路由表](tutorial-create-route-table-cli.md)。

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882359"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218649"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>整合 Azure 服務與虛擬網路以進行網路隔離
 
@@ -66,7 +66,7 @@ VNet 服務端點透過 Azure 骨幹網路上的優化路由，提供對 Azure �
 
 ## <a name="service-tags"></a>服務標籤
 
-服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 使用服務標籤，您可以定義 [網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) 或 [Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)上的網路存取控制。 藉由指定服務標籤名稱 (例如，AzureEventGrid) 在規則的適當來源或目的地欄位中，您可以允許或拒絕對應服務的流量。
+服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 使用服務標籤，您可以定義 [網路安全性群組](./network-security-groups-overview.md#security-rules) 或 [Azure 防火牆](../firewall/service-tags.md)上的網路存取控制。 藉由指定服務標籤名稱 (例如，AzureEventGrid) 在規則的適當來源或目的地欄位中，您可以允許或拒絕對應服務的流量。
 
 ![使用服務標記來允許或拒絕流量](./media/network-isolation/service-tags.png)
 
@@ -78,4 +78,4 @@ VNet 服務端點透過 Azure 骨幹網路上的優化路由，提供對 Azure �
 
 - 瞭解如何 [整合您的應用程式與 Azure 網路](../app-service/web-sites-integrate-with-vnet.md)。
 - 瞭解如何 [使用服務標記來限制對資源的存取](tutorial-restrict-network-access-to-resources.md)。
-- 瞭解如何 [使用 Azure Private Link 私下連接至 Azure Cosmos 帳戶](../private-link/create-private-endpoint-cosmosdb-portal.md)。
+- 瞭解如何 [使用 Azure Private Link 私下連接至 Azure Cosmos 帳戶](../private-link/tutorial-private-endpoint-cosmosdb-portal.md)。

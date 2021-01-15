@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008075"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223681"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse 工作區的持續整合和傳遞
 
@@ -21,11 +21,11 @@ ms.locfileid: "97008075"
 
 持續整合 (CI) 是在每次小組成員將變更認可到版本控制時，自動化組建和測試程式碼的流程。 持續部署 (CD) 是在生產環境中建立、測試、設定和部署多個測試或預備環境的流程。
 
-針對 Azure Synapse 工作區，持續整合和傳遞 (CI/CD) 將 (開發、測試、生產) 等環境中的所有實體移至另一個環境。 若要將您的工作區升級為另一個工作區，有兩個部分：使用 [Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) 來建立或更新工作區資源 (集區和工作區) ;使用 Azure DevOps 中的 Synapse CI/CD 工具，將成品 (SQL 腳本、筆記本、Spark 作業定義、管線、資料集、資料流程等) 。 
+針對 Azure Synapse 工作區，持續整合和傳遞 (CI/CD) 將 (開發、測試、生產) 等環境中的所有實體移至另一個環境。 若要將您的工作區升級為另一個工作區，有兩個部分：使用 [Azure Resource Manager 範本](../../azure-resource-manager/templates/overview.md) 來建立或更新工作區資源 (集區和工作區) ;使用 Azure DevOps 中的 Synapse CI/CD 工具，將成品 (SQL 腳本、筆記本、Spark 作業定義、管線、資料集、資料流程等) 。 
 
 本文將概述如何使用 Azure 發行管線，將 Synapse 工作區的部署自動化至多個環境。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 -   用於開發的工作區已使用 Studio 中的 Git 儲存機制進行設定，請參閱 [Synapse Studio 中的原始檔控制](source-control.md)。
 -   已準備好執行發行管線的 Azure DevOps 專案。
@@ -46,7 +46,7 @@ ms.locfileid: "97008075"
 
 1.  在 [階段名稱] 中，輸入您的環境名稱。
 
-1.  選取 [ **新增** 成品]，然後選取您的開發 Synapse Studio 所設定的 git 存放庫。 選取您用來管理集區和工作區 ARM 範本的 git 存放庫。 如果您使用 GitHub 作為來源，您需要為您的 GitHub 帳戶和提取存放庫建立服務連線。 有關[服務連接](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints)的詳細資訊 
+1.  選取 [ **新增** 成品]，然後選取您的開發 Synapse Studio 所設定的 git 存放庫。 選取您用來管理集區和工作區 ARM 範本的 git 存放庫。 如果您使用 GitHub 作為來源，您需要為您的 GitHub 帳戶和提取存放庫建立服務連線。 有關[服務連接](/azure/devops/pipelines/library/service-endpoints)的詳細資訊 
 
     ![新增發佈分支](media/release-creation-github.png)
 
@@ -87,7 +87,7 @@ ms.locfileid: "97008075"
     ![授與許可權](media/release-creation-grant-permission.png)
 
  > [!WARNING]
-> 在完整部署模式中，存在於資源群組中但未在新的 Resource Manager 範本中指定的資源將會被 **刪除**。 如需詳細資訊，請參閱 [Azure Resource Manager 部署模式](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes)
+> 在完整部署模式中，存在於資源群組中但未在新的 Resource Manager 範本中指定的資源將會被 **刪除**。 如需詳細資訊，請參閱 [Azure Resource Manager 部署模式](../../azure-resource-manager/templates/deployment-modes.md)
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>設定構件部署的階段工作 
 
@@ -122,7 +122,7 @@ ms.locfileid: "97008075"
 
 ## <a name="create-release-for-deployment"></a>建立部署的發行 
 
-儲存所有變更之後，您可以選取 [ **建立發行** ] 以手動建立發行。 若要自動建立發行，請參閱 [Azure DevOps 發行觸發程序](https://docs.microsoft.com/azure/devops/pipelines/release/triggers)
+儲存所有變更之後，您可以選取 [ **建立發行** ] 以手動建立發行。 若要自動建立發行，請參閱 [Azure DevOps 發行觸發程序](/azure/devops/pipelines/release/triggers)
 
    ![建立建立發行](media/release-creation-manually.png)
 
@@ -133,6 +133,4 @@ ms.locfileid: "97008075"
 -   **Git 整合**。 使用 Git 整合來設定您的開發 Synapse 工作區。 測試和生產工作區的變更會透過 CI/CD 部署，而不需要 Git 整合。
 -   **在構件遷移之前準備** 集區。 如果您已將 SQL 腳本或筆記本附加至開發工作區中的集區，則需要在不同環境中使用相同的集區名稱。 
 -   **基礎結構即程式碼 (IaC)**。 基礎結構 (網路、虛擬機器、負載平衡器和連線拓撲的管理) 在描述性模型中，使用與 DevOps 小組用於原始程式碼的相同版本控制。 
--   **其他**。 查看 [ADF 構件的最佳作法](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
-
-
+-   **其他**。 查看 [ADF 構件的最佳作法](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)

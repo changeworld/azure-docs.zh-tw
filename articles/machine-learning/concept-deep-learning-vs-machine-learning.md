@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 12/15/2020
+ms.date: 01/14/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 61305e4f9ba45cb7c13a96bee9d1aab81108bb4d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617114"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220689"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning 中的深度學習與機器學習
 
@@ -57,7 +57,7 @@ ms.locfileid: "97617114"
 |  **執行時間** | 花一點時間來定型，範圍從幾秒鐘到幾個小時。 | 定型通常需要較長的時間，因為深度學習演算法牽涉到許多圖層。 |
 |  **輸出** | 輸出通常是數值，例如分數或分類。 | 輸出可以有多種格式，例如文字、分數或音效。 |
 
-## <a name="transfer-learning"></a>傳輸學習
+## <a name="what-is-transfer-learning"></a>何謂傳輸學習
 
 定型深度學習模型通常需要大量定型資料、高階計算資源 (GPU、TPU) 和較長的定型時間。 在您沒有上述任何一項可用的案例中，您可以使用稱為「*轉移學習*」的技術，以快捷方式訓練流程。
 
@@ -65,7 +65,7 @@ ms.locfileid: "97617114"
 
 因為類神經網路的結構，第一組圖層通常會包含較低層級的功能，而最後一組圖層會包含更接近問題領域的較高層級功能。 藉由重新調整要在新網域或問題中使用的最終層級，您可以大幅減少訓練新模型所需的時間、資料和計算資源量。 例如，如果您已經有可辨識車輛的模型，您可以使用「轉移學習」來調整該模型的用途，以同時辨識貨車、摩托車和其他類型的車輛。
 
-瞭解如何使用 Azure Machine Learning 中的開放原始碼架構來套用影像分類的轉移學習： [使用 Pytorch 模型將影像分類](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)。
+瞭解如何使用 Azure Machine Learning 中的開放原始碼架構來套用影像分類的轉移學習： [使用傳輸學習來定型深度學習 PyTorch 模型](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)。
 
 ## <a name="deep-learning-use-cases"></a>深度學習使用案例
 
