@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 2526fd60d6e07ecf43864945f2b05858b41ca567
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035201"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217357"
 ---
 # <a name="manage-your-function-app"></a>管理您的函數應用程式 
 
@@ -19,11 +19,6 @@ ms.locfileid: "98035201"
 函式應用程式中的個別函式會一起部署，並一起調整。 相同函式應用程式中的所有函式都會隨著函式應用程式的調整，共用每個實例的資源。 
 
 系統會為每個函數應用程式個別定義連接字串、環境變數和其他應用程式設定。 必須在函式應用程式之間共用的任何資料都應儲存在持續性存放區的外部。
-
-本文說明如何設定和管理函數應用程式。 
-
-> [!TIP]  
-> 您也可以使用 [Azure CLI]來管理許多設定選項。 
 
 ## <a name="get-started-in-the-azure-portal"></a>開始使用 Azure 入口網站
 
@@ -37,15 +32,17 @@ ms.locfileid: "98035201"
 
 ## <a name="work-with-application-settings"></a><a name="settings"></a>使用應用程式設定
 
-[ **應用程式設定** ] 索引標籤會維護函數應用程式所使用的設定。 這些設定會以加密方式儲存，您必須選取 [ **顯示值** ]，才能在入口網站中查看值。 您也可以使用 Azure CLI 來存取應用程式設定。
+您可以使用[Azure CLI](functions-how-to-use-azure-function-app-settings.md?tabs=azurecli#settings)和[Azure PowerShell](functions-how-to-use-azure-function-app-settings.md?tabs=powershell#settings)，從[Azure 入口網站](functions-how-to-use-azure-function-app-settings.md?tabs=portal#settings)管理應用程式設定。 您也可以從 [Visual Studio Code](functions-develop-vs-code.md#application-settings-in-azure) 和 [Visual Studio](functions-develop-vs.md#function-app-settings)管理應用程式設定。 
 
-### <a name="portal"></a>入口網站
+這些設定會以加密的儲存。 若要深入瞭解，請參閱 [應用程式設定安全性](security-concepts.md#application-settings)。
 
-若要在入口網站中新增設定，請選取 [ **新增應用程式設定** ]，並新增新的機碼值組。
+# <a name="portal"></a>[入口網站](#tab/portal)
+
+[ **應用程式設定** ] 索引標籤會維護函數應用程式所使用的設定。 您必須選取 [ **顯示值** ]，才能在入口網站中查看值。 若要在入口網站中新增設定，請選取 [ **新增應用程式設定** ]，並新增新的機碼值組。
 
 ![Azure 入口網站中的函數應用程式設定。](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
 此 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) 命令會傳回現有的應用程式設定，如下列範例所示：
 
@@ -62,6 +59,22 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME> \
 --settings CUSTOM_FUNCTION_APP_SETTING=12345
 ```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
+
+此 [`Get-AzFunctionAppSetting`](/powershell/module/az.functions/get-azfunctionappsetting) Cmdlet 會傳回現有的應用程式設定，如下列範例所示： 
+
+```azurepowershell-interactive
+Get-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME>
+```
+
+此 [`Update-AzFunctionAppSetting`](/powershell/module/az.functions/update-azfunctionappsetting) 命令會新增或更新應用程式設定。 下列範例會使用名為的索引鍵 `CUSTOM_FUNCTION_APP_SETTING` 和值來建立設定 `12345` ：
+
+```azurepowershell-interactive
+Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOURCE_GROUP_NAME> -AppSetting @{"CUSTOM_FUNCTION_APP_SETTING" = "12345"}
+```
+
+---
 
 ### <a name="use-application-settings"></a>使用應用程式設定
 
@@ -186,14 +199,14 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 
 使用 [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) 命令可列出目前允許的來源。
 
-### <a name="authentication"></a><a name="auth"></a>認證
+### <a name="authentication"></a><a name="auth"></a>驗證
 
 ![設定函數應用程式的驗證](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
 當函數使用 HTTP 觸發程序時，您可以要求呼叫必須先經過驗證。 App Service 支援 Azure Active Directory 驗證，以及使用社交提供者（例如 Facebook、Microsoft 和 Twitter）登入。 如需設定特定驗證提供者的詳細資訊，請參閱 [Azure App Service 驗證概觀](../app-service/overview-authentication-authorization.md)。 
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 + [設定 Azure App Service 設定](../app-service/configure-common.md)
 + [Azure Functions 的持續部署](functions-continuous-deployment.md)

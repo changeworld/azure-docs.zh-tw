@@ -9,21 +9,21 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 495300d677d6d898bfc916e5115b801c815bd587
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: fbc4f11b450a645002daedc800d4fed74ed37a3d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461486"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219567"
 ---
 # <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>將資料內嵌至 Azure Data Lake Storage Gen2 
 
 在本文中，您將瞭解如何使用 Azure Synapse Analytics，將資料從一個位置內嵌至 Azure Data Lake Gen 2 (Azure Data Lake Gen 2) 儲存體帳戶中的另一個位置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * **Azure 訂** 用帳戶：如果您沒有 azure 訂用帳戶，請在開始前建立 [免費的 azure 帳戶](https://azure.microsoft.com/free/) 。
-* **Azure 儲存體帳戶**：您使用 Azure Data Lake Gen 2 做為 *源* 資料存放區。 如果您沒有儲存體帳戶，請參閱 [建立 Azure 儲存體帳戶](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 以取得建立帳戶的步驟。
+* **Azure 儲存體帳戶**：您使用 Azure Data Lake Gen 2 做為 *源* 資料存放區。 如果您沒有儲存體帳戶，請參閱 [建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) 以取得建立帳戶的步驟。
 
 ## <a name="create-linked-services"></a>建立連結的服務
 

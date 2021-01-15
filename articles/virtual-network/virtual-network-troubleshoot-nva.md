@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 3a8982b5626e3c19dbd49a3d2e20542d44b1a1da
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368582"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219227"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的網路虛擬設備問題
 
@@ -87,15 +87,15 @@ ms.locfileid: "92368582"
 
 **檢查流量是否可路由傳送至 NVA**
 
-1. 在 [Azure 入口網站](https://portal.azure.com)上開啟 [網路監看員]****，然後選取 [下一個躍點]****。
+1. 在 [Azure 入口網站](https://portal.azure.com)上開啟 [網路監看員]，然後選取 [下一個躍點]。
 2. 指定設定為要將流量重新導向 NVA 的 VM，以及用來檢視下一個躍點的目的地 IP 位址。 
-3. 如果 NVA 未列為**下一個躍點**，請檢查和更新 Azure 路由表。
+3. 如果 NVA 未列為 **下一個躍點**，請檢查和更新 Azure 路由表。
 
 **檢查流量是否可到達 NVA**
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中開啟 [網路監看員]****，然後選取 [IP 流量驗證]****。 
+1. 在 [Azure 入口網站](https://portal.azure.com)中開啟 [網路監看員]，然後選取 [IP 流量驗證]。 
 2. 指定 VM 和 NVA 的 IP 位址，然後檢查是否有任何網路安全性群組 (NSG) 會封鎖流量。
-3. 如果有 NSG 規則會封鎖流量，請在**有效的安全性**規則中找出 NSG，然後將其更新為允許流量通過。 接著，再次執行 [IP 流量驗證]****，並使用 [連線疑難排解]**** 測試從 VM 到您內部或外部 IP 位址的 TCP 通訊。
+3. 如果有 NSG 規則會封鎖流量，請在 **有效的安全性** 規則中找出 NSG，然後將其更新為允許流量通過。 接著，再次執行 [IP 流量驗證]，並使用 [連線疑難排解] 測試從 VM 到您內部或外部 IP 位址的 TCP 通訊。
 
 **檢查 NVA 和 VM 是否接聽預期的流量**
 
@@ -127,7 +127,7 @@ ms.locfileid: "92368582"
 ## <a name="advanced-network-administrator-troubleshooting"></a>進階網路管理員疑難排解
 
 ### <a name="capture-network-trace"></a>擷取網路追蹤
-在您執行 **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** 或 **Nmap** 時，在來源 VM、NVA 和目的地 VM 上擷取同時網路追踨，然後停止追蹤。
+在您執行 **[PsPing](/sysinternals/downloads/psping)** 或 **Nmap** 時，在來源 VM、NVA 和目的地 VM 上擷取同時網路追踨，然後停止追蹤。
 
 1. 若要擷取同時網路追蹤，請執行下列命令：
 

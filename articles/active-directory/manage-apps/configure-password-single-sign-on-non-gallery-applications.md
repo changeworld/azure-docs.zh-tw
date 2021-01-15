@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 1b647e15d3fc99a7f15fbc24e2b6050fdfdc6e93
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7f9d29fee78c01dd3b1ee79d564297fa0cef14d3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654706"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219873"
 ---
 # <a name="understand-password-based-single-sign-on"></a>瞭解以密碼為基礎的單一登入
 
@@ -44,7 +44,7 @@ ms.locfileid: "94654706"
 > [!IMPORTANT] 
 > 在某些案例中，在 **企業應用** 程式中，**單一登入** 選項不會在應用程式的導覽中。 
 >
-> 如果應用程式是使用 **應用程式註冊** 註冊，則單一登入功能預設會設定為使用 OIDC OAuth。 在此情況下，[ **單一登入** ] 選項不會顯示在 [ **企業應用程式**] 下的導覽中。 當您使用 **應用程式註冊** 新增自訂應用程式時，您可以在資訊清單檔中設定選項。 若要深入瞭解資訊清單檔，請參閱 [Azure Active Directory 應用程式資訊清單](../develop/reference-app-manifest.md)。 若要深入瞭解 SSO 標準，請參閱 [使用 Microsoft 身分識別平臺的驗證與授權](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-microsoft-identity-platform)。 
+> 如果應用程式是使用 **應用程式註冊** 註冊，則單一登入功能預設會設定為使用 OIDC OAuth。 在此情況下，[ **單一登入** ] 選項不會顯示在 [ **企業應用程式**] 下的導覽中。 當您使用 **應用程式註冊** 新增自訂應用程式時，您可以在資訊清單檔中設定選項。 若要深入瞭解資訊清單檔，請參閱 [Azure Active Directory 應用程式資訊清單](../develop/reference-app-manifest.md)。 若要深入瞭解 SSO 標準，請參閱 [使用 Microsoft 身分識別平臺的驗證與授權](../develop/authentication-vs-authorization.md#authentication-and-authorization-using-the-microsoft-identity-platform)。 
 >
 > 當應用程式裝載于另一個租使用者時，或您的帳戶沒有必要許可權 (全域管理員、雲端應用程式系統管理員、應用程式系統管理員或服務主體的擁有者) 時，流覽中將遺失 **單一登入** 的情況。 許可權也可能會導致您無法開啟 **單一登入** ，但無法儲存的情況。 若要深入瞭解 Azure AD 系統管理角色，請參閱 (https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
 

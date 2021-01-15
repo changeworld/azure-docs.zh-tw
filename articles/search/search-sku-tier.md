@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 062bd41b0803cbb08f74fbcbcebb89bbddeb0d45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4c58968cb6a38a10433915ec8fa00336ccad301e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559798"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216405"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
 
@@ -88,15 +88,13 @@ ms.locfileid: "97559798"
 
 ### <a name="bandwidth-charges"></a>頻寬費用
 
-如果 Azure 資料來源與 Azure 認知搜尋位於不同的區域，則使用 [索引子](search-indexer-overview.md) 可能會影響計費。 在此案例中，這是將輸出資料從 Azure 資料來源移至 Azure 認知搜尋的費用。 
+如果 Azure 資料來源與 Azure 認知搜尋位於不同的區域，則使用 [索引子](search-indexer-overview.md) 可能會影響計費。 在此案例中，將輸出資料從 Azure 資料來源移至 Azure 認知搜尋可能會產生費用。 如需詳細資訊，請參閱 Azure 資料平臺的定價頁面。
 
 如果您在與資料相同的區域中建立 Azure 認知搜尋服務，則可以完全消除資料輸出費用。 以下是 [頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)的一些資訊：
 
-+ Microsoft 不會對 Azure 上的任何服務收取任何輸入資料的費用。
-+ Azure 認知搜尋沒有任何輸出資料費用。 例如，如果您的搜尋服務位於美國西部，而 Azure Web 應用程式在美國東部，則 Microsoft 不會對源自美國西部的查詢回應裝載收費。
-+ 在多服務解決方案中，當所有服務都位於相同區域時，網路上的資料就不會收費。
++ 輸入資料： Microsoft 不會對 Azure 上的任何服務收取任何輸入資料的費用。 
 
-如果服務位於不同的區域，則會收取輸出資料的費用。 這些費用實際上不是您 Azure 認知搜尋帳單的一部分。 這裡提及的是，因為如果您使用資料或 AI 擴充的索引子來從不同區域提取資料，您將會看到成本反映在整體帳單中。
++ 輸出資料：輸出資料是指查詢結果。 認知搜尋不會收取輸出資料的費用，但如果服務位於不同的區域，則可以從 Azure 傳出費用。 這些費用實際上不是您 Azure 認知搜尋帳單的一部分。 這裡提及的是，因為如果您要將結果傳送給其他區域或非 Azure 應用程式，您可以看到這些成本反映在整體帳單中。
 
 ### <a name="ai-enrichment-with-cognitive-services"></a>使用認知服務的 AI 擴充
 

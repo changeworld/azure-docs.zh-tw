@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f167a7947c42ce837ec83b336ae636f593f2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84687798"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219253"
 ---
 # <a name="test-vm-network-latency"></a>測試 VM 網路延遲
 
@@ -55,7 +55,7 @@ ms.locfileid: "84687798"
 當您建立 VM 設定時，請記住下列建議：
 - 使用最新版的 Windows 或 Linux。
 - 啟用加速網路以獲得最佳結果。
-- 使用 [Azure 鄰近放置群組](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)部署 vm。
+- 使用 [Azure 鄰近放置群組](../virtual-machines/co-location.md)部署 vm。
 - 較大的 Vm 通常執行的效能優於較小的 Vm。
 
 ### <a name="tips-for-analysis"></a>分析秘訣
@@ -77,7 +77,7 @@ ms.locfileid: "84687798"
 
 ### <a name="allow-latteexe-through-windows-defender-firewall"></a>允許 latte.exe 至 Windows Defender 防火牆
 
-在 *接收者*上，在 Windows Defender 防火牆上建立允許規則，讓 latte.exe 的流量抵達。 最簡單的方式是依名稱允許整個 latte.exe 程式，而不是允許特定的 TCP 埠輸入。
+在 *接收者* 上，在 Windows Defender 防火牆上建立允許規則，讓 latte.exe 的流量抵達。 最簡單的方式是依名稱允許整個 latte.exe 程式，而不是允許特定的 TCP 埠輸入。
 
 藉由執行下列命令，允許 latte.exe 至 Windows Defender 防火牆：
 
@@ -91,7 +91,7 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
 ### <a name="run-latency-tests"></a>執行延遲測試
 
-* 在 *接收者*上，啟動 latte.exe (從 CMD 視窗執行它，而不是從 PowerShell) ：
+* 在 *接收者* 上，啟動 latte.exe (從 CMD 視窗執行它，而不是從 PowerShell) ：
 
     ```cmd
     latte -a <Receiver IP address>:<port> -i <iterations>
@@ -105,13 +105,13 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
     `latte -a 10.0.0.4:5005 -i 65100`
 
-* *在傳送者上，啟動*latte.exe (從 CMD 視窗執行它，而不是從 PowerShell) ：
+* *在傳送者上，啟動* latte.exe (從 CMD 視窗執行它，而不是從 PowerShell) ：
 
     ```cmd
     latte -c -a <Receiver IP address>:<port> -i <iterations>
     ```
 
-    產生的命令與接收者上的相同，但加上 &nbsp; *-c*表示這是*用戶端*或傳送者： *sender*
+    產生的命令與接收者上的相同，但加上 &nbsp; *-c* 表示這是 *用戶端* 或傳送者： 
 
     `latte -c -a 10.0.0.4:5005 -i 65100`
 
@@ -123,7 +123,7 @@ netsh advfirewall firewall add rule program=<path>\latte.exe name="Latte" protoc
 
 ### <a name="install-sockperf-on-the-vms"></a>在 Vm 上安裝 SockPerf
 
-在 Linux Vm （傳送者*和**接收者*）上，執行下列命令以在 vm 上準備 SockPerf。 針對主要散發版本提供命令。
+在 Linux Vm （傳送者 *和**接收者*）上，執行下列命令以在 vm 上準備 SockPerf。 針對主要散發版本提供命令。
 
 #### <a name="for-red-hat-enterprise-linux-rhelcentos"></a>針對 Red Hat Enterprise Linux (RHEL) /Centos 作為基礎
 
@@ -176,7 +176,7 @@ sudo make install
 
 SockPerf 安裝完成之後，Vm 就可以開始執行延遲測試。 
 
-首先，在 *接收者*上啟動 SockPerf。
+首先，在 *接收者* 上啟動 SockPerf。
 
 任何可用的埠號碼都沒問題。 在此範例中，我們使用埠12345：
 
@@ -199,8 +199,8 @@ sockperf ping-pong -i 10.0.0.4 --tcp -m 350 -t 101 -p 12345  --full-rtt
 此 SockPerf 範例會使用350位元組的訊息大小，這對平均封包而言是正常的。 您可以調整較高或較低的大小，以達到更精確地表示在 Vm 上執行之工作負載的結果。
 
 
-## <a name="next-steps"></a>接下來的步驟
-* 使用 [Azure 鄰近位置群組](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)來改善延遲。
+## <a name="next-steps"></a>後續步驟
+* 使用 [Azure 鄰近位置群組](../virtual-machines/co-location.md)來改善延遲。
 * 瞭解如何針對您的案例將 [vm 的網路功能優化](../virtual-network/virtual-network-optimize-network-bandwidth.md) 。
 * 瞭解 [如何將頻寬配置給虛擬機器](../virtual-network/virtual-machine-network-throughput.md)。
 * 如需詳細資訊，請參閱 [Azure 虛擬網路常見問題](../virtual-network/virtual-networks-faq.md)。

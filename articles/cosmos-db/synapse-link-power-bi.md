@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: be2657d9606f260fcea06d2535be87fc6976577c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8a3142199502b912f20ebe05c625aa40be9fab11
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915669"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218666"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>使用 Power BI 和無伺服器 Synapse SQL 集區 (預覽) 透過 Synapse 連結來分析 Azure Cosmos DB 資料 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "97915669"
 
 ## <a name="create-a-database-and-views"></a>建立資料庫和 views
 
-在 [Synapse] 工作區中，移至 [ **開發** ] 索引標籤，選取 **+** 圖示，然後選取 [ **SQL 腳本**]。
+不建議或不支援在 master 或 default 資料庫中建立 views。 因此，您需要建立資料庫來啟動此步驟。 在 [Synapse] 工作區中，移至 [ **開發** ] 索引標籤，選取 **+** 圖示，然後選取 [ **SQL 腳本**]。
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="將 SQL 腳本新增至 Synapse Analytics 工作區":::
 

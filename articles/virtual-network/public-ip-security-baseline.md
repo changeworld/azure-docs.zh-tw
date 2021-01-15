@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 8dd49125dc54403328fe53ae1aa0112ab2005501
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d625cb8e0d0fa0f2fff55fbd41818057b7e9cb89
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201122"
+ms.locfileid: "98217646"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure 公用 IP 的 azure 安全性基準
 
@@ -30,7 +30,7 @@ ms.locfileid: "98201122"
 
 Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的動作。 
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags) 
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md) 
 
 - [如何建立 Azure 虛擬網路](quick-create-portal.md) 
 
@@ -64,7 +64,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 **指導** 方針：使用 Azure 活動記錄來監視設定，以及偵測公用 IP 實例的變更。 除了控制平面以外 (例如 Azure 入口網站) ，公用 IP 本身不會產生審核記錄。 公用 IP 提供的工具可監視、診斷、查看計量，以及啟用或停用 Azure 虛擬網路中的資源記錄。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure 資訊安全中心監視**：是
 
@@ -88,7 +88,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 公用 IP 本身不會產生與控制平面以外的網路流量相關的記錄 (例如 Azure 入口網站) 。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view)
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -114,9 +114,9 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 已清查或查詢預先定義的 Azure 內建角色，可透過 Azure CLI、Azure PowerShell 或 Azure 入口網站之類的工具，針對某些資源存在。
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -128,7 +128,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 和 Azure Resource Manager 啟用即時存取。 
 
-- [深入瞭解 Privileged Identity Management](/azure/active-directory/privileged-identity-management)
+- [深入瞭解 Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure 資訊安全中心監視**：是
 
@@ -164,9 +164,9 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 檢查和動作 Azure AD 有風險的使用者行為之警示和報告的風險偵測。
 
-- [如何部署 Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [了解 Azure AD 風險偵測](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [了解 Azure AD 風險偵測](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -198,7 +198,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 使用 Azure 身分識別存取審核來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確定使用者已核准並繼續存取。
 
-- [瞭解 Azure AD 報告](/azure/active-directory/reports-monitoring/)
+- [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
 - [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
@@ -211,7 +211,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 **指導** 方針：根據您對 Azure Active Directory (Azure AD) 登入活動、audit 和風險事件記錄檔來源的存取權，來執行與任何 SIEM/監視工具的整合。
 建立 Azure AD 使用者帳戶的診斷設定，並將審核記錄和登入記錄傳送至 Log Analytics 工作區，以簡化此程式。 在 Log Analytics 工作區中設定所需的警示。 
 
-- [如何整合 Azure 活動記錄與 Azure 監視器](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [如何整合 Azure 活動記錄與 Azure 監視器](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -220,7 +220,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
 **指導** 方針：使用 Azure Active Directory (Azure AD) Identity Protection 功能，以對偵測到與使用者身分識別相關的可疑動作設定自動回應。 視需要將資料內嵌到 Azure Sentinel，以供進一步調查並根據商務需求進行。
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -242,7 +242,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 - [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -254,7 +254,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 **指引**：將標籤套用至提供中繼資料的 Azure 資源，以邏輯方式依分類組織這些資源。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -269,11 +269,11 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 - 不允許的資源類型
 - 允許的資源類型
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -302,7 +302,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -350,9 +350,9 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 **指導** 方針：如果使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -408,7 +408,7 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 - [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md) 
 
-- [使用標記來組織 Azure 資源](/azure/azure-resource-manager/resource-group-using-tags)
+- [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -474,5 +474,5 @@ Azure PowerShell 或 Azure CLI 可用來根據其標記查閱或執行資源的�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c88371eb450d5b0e2e8b821cdec0e87190e291f8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572281"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218190"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>如何在 Synapse Studio 中管理 Synapse RBAC 角色指派
 
@@ -65,7 +65,7 @@ Synapse RBAC 會使用角色將許可權指派給使用者、群組和其他安�
 
 ![新增工作區專案角色指派-選取專案類型](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-選取要當做範圍使用的特定 **專案** ，然後從下拉式清單中選取要指派的 **角色** 。  下拉式清單只會列出針對所選取專案類型有效的角色。 [深入了解](https://go.microsoft.com/fwlink/?linkid=2148306)。  
+選取要當做範圍使用的特定 **專案** ，然後從下拉式清單中選取要指派的 **角色** 。  下拉式清單只會列出針對所選取專案類型有效的角色。 [深入了解](./synapse-workspace-synapse-rbac.md)。  
 
 ![新增工作區專案角色指派-選取角色](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  
@@ -81,4 +81,4 @@ Synapse RBAC 會使用角色將許可權指派給使用者、群組和其他安�
 
 ## <a name="next-steps"></a>後續步驟
 
-[瞭解執行一般工作所需的 Synapse RBAC 角色](./synapse-workspace-understand-what-role-you-need.md) 
+[瞭解執行一般工作所需的 Synapse RBAC 角色](./synapse-workspace-understand-what-role-you-need.md)

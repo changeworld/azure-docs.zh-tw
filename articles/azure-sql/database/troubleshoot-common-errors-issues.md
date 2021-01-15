@@ -9,13 +9,13 @@ ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: sstein,vanto
-ms.date: 01/14/2020
-ms.openlocfilehash: bcf11ef9b64a02383aad5175c19c5db58c3c39cf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/14/2021
+ms.openlocfilehash: 7c797c7e002f40a28e4be674c125c6ea5d60a13f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791336"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219057"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>針對 Azure SQL Database 和 Azure SQL 受控執行個體的連線能力問題和其他錯誤進行疑難排解
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "92791336"
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>暫時性錯誤訊息 (40197、40613和其他) 
 
-Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動態重新設定伺服器。  此動態行為可能會導致您的用戶端程式失去其與資料庫或實例的連接。 此類錯誤情況稱為「暫時性錯誤」  。 資料庫重新設定事件由於規劃的事件 (例如，軟體升級) 或未規劃的事件 (例如，處理序損毀或負載平衡) 而發生。 大部分的重新設定事件通常只是短期的，至多應在不到 60 秒的時間完成。 不過，這些事件可能偶爾會需要更長時間才能完成，例如當大型交易導致長時間執行的復原時。 下表列出當應用程式連接到 SQL Database 時，可能會收到的各種暫時性錯誤。
+Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動態重新設定伺服器。  此動態行為可能會導致您的用戶端程式失去其與資料庫或實例的連接。 此類錯誤情況稱為「暫時性錯誤」 。 資料庫重新設定事件由於規劃的事件 (例如，軟體升級) 或未規劃的事件 (例如，處理序損毀或負載平衡) 而發生。 大部分的重新設定事件通常只是短期的，至多應在不到 60 秒的時間完成。 不過，這些事件可能偶爾會需要更長時間才能完成，例如當大型交易導致長時間執行的復原時。 下表列出當應用程式連接到 SQL Database 時，可能會收到的各種暫時性錯誤。
 
 ### <a name="list-of-transient-fault-error-codes"></a>暫時性錯誤代碼的清單
 
@@ -32,11 +32,11 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 | ---:| ---:|:--- |
 | 4060 |16 |無法開啟登入所要求的資料庫 "%.&#x2a;ls"。 登入失敗。 如需詳細資訊，請參閱 [錯誤4000到 4999](/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |服務處理您的要求時發生錯誤。 請再試一次。 錯誤代碼 %d。<br/><br/>當服務因為軟體或硬體升級、硬體故障或任何其他容錯移轉問題而關閉時，您會收到這個錯誤。 內嵌在錯誤 40197 訊息中的錯誤代碼 (%d) 提供發生的失敗或容錯移轉種類的其他資訊。 錯誤代碼會內嵌在錯誤 40197 的訊息錯誤範例包括 40020、40143、40166 和 40540。<br/><br/>重新連接會自動將您連線到資料庫的狀況良好複本。 您的應用程式必須攔截錯誤 40197、記錄訊息中內嵌的錯誤碼 (%d) 以進行疑難排解，並嘗試重新連接到 SQL Database 直到資源可供使用，並再次建立您的連線。 如需詳細資訊，請參閱 [暫時性錯誤](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)。|
-| 40501 |20 |服務目前忙碌中。 在 10 秒後重試要求。 事件識別碼：%ls。 程式碼：%d。 如需詳細資訊，請參閱： <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。|
+| 40501 |20 |服務目前忙碌中。 在 10 秒後重試要求。 事件識別碼：%ls。 程式碼：%d。 如需詳細資訊，請參閱 <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。|
 | 40613 |17 |資料庫 '%.&#x2a;ls' (在伺服器 '%.&#x2a;ls' 上) 目前無法使用。 請稍後重試連接。 如果問題持續發生，請連絡客戶支援服務，並提供工作階段追蹤識別碼 '%.&#x2a;ls'。<br/><br/> 如果已在資料庫中建立 (DAC) 的現有專用管理員連接，則可能會發生這個錯誤。 如需詳細資訊，請參閱 [暫時性錯誤](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)。|
-| 49918 |16 |無法處理要求。 資源不足，無法處理要求。<br/><br/>服務目前忙碌中。 請稍後再重試要求。 如需詳細資訊，請參閱： <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 |
-| 49919 |16 |無法處理建立或更新要求。 訂用帳戶 "%ld" 太多建立或更新作業進行中。<br/><br/>服務正忙於處理多個建立或更新您訂用帳戶或伺服器的要求。 要求目前已封鎖以求資源最佳化。 查詢 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 以查看暫止的作業。 等待直到暫止的建立或更新要求完成，或刪除您的其中一個暫止要求，稍後再重試您的要求。 如需詳細資訊，請參閱： <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 |
-| 49920 |16 |無法處理要求。 訂用帳戶 "%ld" 太多作業進行中。<br/><br/>服務正忙於處理這個訂用帳戶的多個要求。 要求目前已封鎖以求資源最佳化。 查詢 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 以查看作業狀態。 等候直到暫止的要求已完成，或刪除您其中一個暫止要求，稍後再重試您的要求。 如需詳細資訊，請參閱： <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 |
+| 49918 |16 |無法處理要求。 資源不足，無法處理要求。<br/><br/>服務目前忙碌中。 請稍後再重試要求。 如需詳細資訊，請參閱 <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 |
+| 49919 |16 |無法處理建立或更新要求。 訂用帳戶 "%ld" 太多建立或更新作業進行中。<br/><br/>服務正忙於處理多個建立或更新您訂用帳戶或伺服器的要求。 要求目前已封鎖以求資源最佳化。 查詢 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 以查看暫止的作業。 等待直到暫止的建立或更新要求完成，或刪除您的其中一個暫止要求，稍後再重試您的要求。 如需詳細資訊，請參閱 <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 |
+| 49920 |16 |無法處理要求。 訂用帳戶 "%ld" 太多作業進行中。<br/><br/>服務正忙於處理這個訂用帳戶的多個要求。 要求目前已封鎖以求資源最佳化。 查詢 [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) 以查看作業狀態。 等候直到暫止的要求已完成，或刪除您其中一個暫止要求，稍後再重試您的要求。 如需詳細資訊，請參閱 <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 |
 | 4221 |16 |登入 read-secondary 失敗，因為 'HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING' 上的等候時間很長。 無法使用複本進行登入，因為在複本回收時執行中之交易的資料列版本已遺失。 將主要複本上的使用中交易復原或認可，就可以解決問題。 避免在主要伺服器上的冗長寫入交易，就可讓此條件發生率降至最低。 |
 
 ### <a name="steps-to-resolve-transient-connectivity-issues"></a>解決暫時性連線問題的步驟
@@ -44,7 +44,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 1. 檢查 [Microsoft Azure 服務儀表板](https://azure.microsoft.com/status) ，以取得應用程式報告錯誤期間發生的任何已知中斷。
 2. 連接到雲端服務的應用程式 (例如 Azure SQL Database) 應該預期定期的重新設定事件，並實作應用程式重試邏輯來處理這些錯誤，而不是將這些錯誤當做應用程式錯誤呈現給使用者。
 3. 由於資料庫接近其資源限制，因此似乎是暫時性連線問題。 請參閱[資源限制](resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached)。
-4. 如果連線問題繼續發生，或如果您的應用程式發生錯誤的持續時間超過 60 秒，或如果您在一天當中，看到錯誤多次發生，請在  ，來提出 Azure 支援要求。
+4. 如果連線問題繼續發生，或如果您的應用程式發生錯誤的持續時間超過 60 秒，或如果您在一天當中，看到錯誤多次發生，請在 [Azure 支援](https://azure.microsoft.com/support/options)網站上選取 [取得支援]，來提出 Azure 支援要求。
 
 #### <a name="implementing-retry-logic"></a>實作重試邏輯
 
@@ -119,19 +119,19 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 4. 如果 SQL 登入使用者名稱不存在，請依照下列步驟建立它：
 
    1. 在 SSMS 中，按兩下 [ **安全性** ] 將其展開。
-   2. 以滑鼠右鍵 **按一下** [登入]，然後選取 **[新增登** 入]。
+   2. 以滑鼠右鍵 **按一下**[登入]，然後選取 **[新增登** 入]。
    3. 在使用預留位置產生的腳本中，編輯並執行下列 SQL 查詢：
 
    ```sql
    CREATE LOGIN <SQL_login_name, sysname, login_name>
-   WITH PASSWORD = ‘<password, sysname, Change_Password>’
+   WITH PASSWORD = '<password, sysname, Change_Password>'
    GO
    ```
 
-5. 按兩下 [ **資料庫** ]。
+5. 按兩下 [ **資料庫**]。
 6. 選取您要授與使用者許可權的資料庫。
-7. 按兩下 [ **安全性** ]。
-8. 以滑鼠右鍵按一下 [ **使用者** ]，然後選取 [ **新增使用者** ]。
+7. 按兩下 [ **安全性**]。
+8. 以滑鼠右鍵按一下 [ **使用者**]，然後選取 [ **新增使用者**]。
 9. 在使用預留位置產生的腳本中，編輯並執行下列 SQL 查詢：
 
    ```sql
@@ -141,7 +141,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
    GO
    -- Add user to the database owner role
 
-   EXEC sp_addrolemember N’db_owner’, N’<user_name, sysname, user_name>’
+   EXEC sp_addrolemember N'db_owner', N'<user_name, sysname, user_name>'
    GO
    ```
 
@@ -183,22 +183,20 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 - 確認是否有長時間執行的查詢。
 
   > [!NOTE]
-  > 這是可能無法解決問題的極簡方法。
+  > 這是可能無法解決問題的極簡方法。 如需疑難排解查詢封鎖的詳細資訊，請參閱 [瞭解及解決 AZURE SQL 封鎖問題](understand-resolve-blocking.md)。
 
 1. 執行下列 SQL 查詢來檢查 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 視圖，以查看任何封鎖要求：
 
    ```sql
-   SELECT * FROM dm_exec_requests
+   SELECT * FROM sys.dm_exec_requests;
    ```
 
 2. 判斷 head 封鎖程式的 **輸入緩衝區** 。
 3. 調整標頭封鎖程式查詢。
 
-   如需深入的疑難排解程式，請參閱 [我的查詢是否在雲端中正常運作？](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)。
+   如需深入的疑難排解程式，請參閱 [我的查詢是否在雲端中正常運作？](/archive/blogs/sqlblog/is-my-query-running-fine-in-the-cloud)。 
 
 如果資料庫在解決封鎖和長時間執行的查詢時一直達到其限制，請考慮升級至具有) 資源 [版本](https://azure.microsoft.com/pricing/details/sql-database/) 的版本。
-
-如需動態管理檢視的詳細資訊，請參閱 [系統動態管理檢視](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)。
 
 如需資料庫限制的詳細資訊，請參閱  [SQL Database 伺服器的資源限制](./resource-limits-logical-server.md)。
 
@@ -234,7 +232,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
    FROM sys.objects o
    JOIN sys.dm_db_partition_stats p on p.object_id = o.object_id
    GROUP BY o.name
-   ORDER BY [Table Size (MB)] DESC
+   ORDER BY [Table Size (MB)] DESC;
    ```
 
 2. 如果目前的大小未超過您的版本所支援的大小上限，您可以使用 ALTER DATABASE 來增加 MAXSIZE 設定。
@@ -253,7 +251,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 1. 核取 [sys.dm_exec_requests] 視圖，查看 total_elapsed_time 資料行具有高值的任何開啟的會話。 執行下列 SQL 腳本來執行這項檢查：
 
    ```sql
-   SELECT * FROM dm_exec_requests
+   SELECT * FROM sys.dm_exec_requests;
    ```
 
 2. 判斷長時間執行之查詢的輸入緩衝區。
@@ -299,7 +297,7 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 | 錯誤碼 | 嚴重性 | 描述 |
 | ---:| ---:|:--- |
 | 10928 |20 |資源識別碼：%d。 資料庫的 %s 限制是 %d，且已達到。 如需詳細資訊，請參閱[單一和集區資料庫的 SQL Database 資源限制](resource-limits-logical-server.md)。<br/><br/>資源識別碼可指出已達到限制的資源。 對於背景工作執行緒，資源識別碼 = 1。 對於工作階段，資源識別碼 = 2。<br/><br/>如需有關此錯誤以及其解決方法的詳細資訊，請參閱： <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 |
-| 10929 |20 |資源識別碼：%d。 %s 最小保證是 %d，最大限制是 %d，而資料庫的目前使用量是 %d。 但伺服器目前太忙碌，無法針對此資料庫支援大於 %d 的要求。 資源識別碼可指出已達到限制的資源。 對於背景工作執行緒，資源識別碼 = 1。 對於工作階段，資源識別碼 = 2。 如需詳細資訊，請參閱： <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 <br/>或者，請稍後再試一次。 |
+| 10929 |20 |資源識別碼：%d。 %s 最小保證是 %d，最大限制是 %d，而資料庫的目前使用量是 %d。 但伺服器目前太忙碌，無法針對此資料庫支援大於 %d 的要求。 資源識別碼可指出已達到限制的資源。 對於背景工作執行緒，資源識別碼 = 1。 對於工作階段，資源識別碼 = 2。 如需詳細資訊，請參閱 <br/>&bull;&nbsp;[邏輯 SQL server 資源限制](resource-limits-logical-server.md)<br/>&bull;&nbsp;[單一資料庫的以 DTU 為基礎的限制](service-tiers-dtu.md)<br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp;[單一資料庫以 vCore 為基礎的限制](resource-limits-vcore-single-databases.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Azure SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。 <br/>或者，請稍後再試一次。 |
 | 40544 |20 |資料庫已達到大小配額。 資料分割或刪除資料、卸除索引，或參閱可能解決方式的文件。 針對資料庫調整，請參閱 [調整單一資料庫資源](single-database-scale.md) 及 [調整彈性集區資源](elastic-pool-scale.md)。|
 | 40549 |16 |工作階段已終止，因為您有長時間執行的交易。 請嘗試縮短您的交易。 如需批次處理的詳細資訊，請參閱 [如何使用批次處理來改善 SQL Database 的應用程式效能](../performance-improve-use-batching.md)。|
 | 40550 |16 |已終止工作階段，因為它取得太多鎖定。 請嘗試在單一交易中讀取或修改較少的資料列。 如需批次處理的詳細資訊，請參閱 [如何使用批次處理來改善 SQL Database 的應用程式效能](../performance-improve-use-batching.md)。|
@@ -315,12 +313,12 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |彈性集區已達到其儲存體限制。 彈性集區的儲存體使用量不能超過 (%d) MB。 當彈性集區達到儲存體限制時，嘗試將資料寫入資料庫。 如需資源限制的詳細資訊，請參閱： <br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)。 <br/> |請考慮盡可能增加彈性集區的 DTU 及/或儲存體，以提高其儲存體限制、減少彈性集區中個別資料庫所使用的儲存體量，或是從彈性集區移除資料庫。 如需彈性集區的調整，請參閱 [調整彈性集區資源](elastic-pool-scale.md)。|
 | 10929 | 16 |%s 最小保證是 %d，最大限制是 %d，而資料庫的目前使用量是 %d。 但伺服器目前太忙碌，無法針對此資料庫支援大於 %d 的要求。 如需資源限制的詳細資訊，請參閱： <br/>&bull;彈性集區 &nbsp; [以 DTU 為基礎的限制](resource-limits-dtu-elastic-pools.md)<br/>&bull;彈性集區 &nbsp; [以 vCore 為基礎的限制](resource-limits-vcore-elastic-pools.md)。 <br/> 或者，請稍後再試一次。 每個資料庫的最小 DTU / vCore；每個資料庫的最大 DTU / vCore。 彈性集區中的所有資料庫並行背景工作 (要求) 總數試圖超過集區限制。 |請考慮盡可能增加彈性集區的 DTU 或 vCore，以提高其背景工作數的限制，或是從彈性集區移除資料庫。 |
-| 40844 | 16 |伺服器 '%ls' 上的資料庫 '%ls' 是彈性集區中的 '%ls' 版資料庫，且無法有連續複製關聯性。  |N/A |
+| 40844 | 16 |伺服器 '%ls' 上的資料庫 '%ls' 是彈性集區中的 '%ls' 版資料庫，且無法有連續複製關聯性。  |不適用 |
 | 40857 | 16 |找不到伺服器 '%ls' 的彈性集區，彈性集區名稱: '%ls'。 指定的彈性集區不存在於指定的伺服器中。 | 請提供有效的彈性集區名稱。 |
 | 40858 | 16 |彈性集區 '%ls' 已存在於伺服器 '%ls' 中。 指定的彈性集區已存在於指定的伺服器中。 | 請提供新的彈性集區名稱。 |
 | 40859 | 16 |彈性集區不支援服務層級 '%ls'。 指定的服務層級不支援彈性集區佈建。 |請提供正確的版本，或者將服務層級保留空白，以使用預設的服務層級。 |
 | 40860 | 16 |彈性集區 '%ls' 和服務目標 '%ls' 的組合無效。 如果資源類型指定為 'ElasticPool'，才能同時指定彈性集區和服務層級。 |請指定正確的彈性集區和服務層級組合。 |
-| 40861 | 16 |資料庫版本 '%.ls' 不能和彈性集區服務層級 ('%.ls') 不同  。 資料庫版本和彈性集區服務層級不同。 |請勿指定與彈性集區服務層級不同的資料庫版本。  請注意，不需要指定資料庫版本。 |
+| 40861 | 16 |資料庫版本 '%.ls' 不能和彈性集區服務層級 ('%.ls') 不同。 資料庫版本和彈性集區服務層級不同。 |請勿指定與彈性集區服務層級不同的資料庫版本。  請注意，不需要指定資料庫版本。 |
 | 40862 | 16 |指定彈性集區服務目標時，必須指定彈性集區名稱。 彈性集區服務目標不是彈性集區的唯一識別依據。 |使用彈性集區服務目標時，請指定彈性集區名稱。 |
 | 40864 | 16 |服務層級 '%.*ls' 的彈性集區 DTU 數必須至少為 (%d) 個 DTU。 試圖將彈性集區的 DTU 數設為低於最小限制。 |請重試將彈性集區的 DTU 數至少設為等於最小限制。 |
 | 40865 | 16 |服務層級 '%.*ls' 的彈性集區 DTU 數不可超過 (%d) 個 DTU。 試圖將彈性集區的 DTU 數設為高於最大限制。 |請重試將彈性集區的 DTU 數設為低於最大限制。 |
@@ -340,8 +338,8 @@ Azure 基礎結構能夠在 SQL Database 服務出現繁重的工作負載時動
 
 若要解決此問題，請遵循下列步驟：
 
-1. 在 SSMS 的 [登入] 畫面上，選取 [ **選項** ]，然後選取 [ **連接屬性** ]。
-2. 在 [ **連接到資料庫]** 欄位中，輸入使用者的預設資料庫名稱做為預設的登入資料庫，然後選取 **[連接]** 。
+1. 在 SSMS 的 [登入] 畫面上，選取 [ **選項**]，然後選取 [ **連接屬性**]。
+2. 在 [ **連接到資料庫]** 欄位中，輸入使用者的預設資料庫名稱做為預設的登入資料庫，然後選取 **[連接]**。
 
    ![連線內容](./media/troubleshoot-common-errors-issues/cannot-open-database-master.png)
 

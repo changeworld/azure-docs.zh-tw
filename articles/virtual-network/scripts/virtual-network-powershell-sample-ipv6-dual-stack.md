@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 829741430f8a94442a0bd4cba300c1bb67b9cee1
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 772eb8d436a3ff870caa8fd4bc4e4e2b56672690
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95992979"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217510"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>使用 Azure PowerShell 腳本範例，在虛擬網路中設定 IPv6 端點 (preview) 
 
@@ -28,7 +28,7 @@ ms.locfileid: "95992979"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 在 Azure 中部署雙重堆疊應用程式之前，您必須使用下列 Azure PowerShell，只針對此預覽功能設定您的訂用帳戶一次：
 
 註冊方式如下：
@@ -270,6 +270,6 @@ Remove-AzResourceGroup -Name <resourcegroupname> -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure 網路概觀文件](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)中找到其他網路 PowerShell 指令碼範例。

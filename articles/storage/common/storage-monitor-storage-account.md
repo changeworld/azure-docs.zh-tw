@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e5495b466bf9b16319b788ec32c7b3a03100f505
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782003"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218137"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>在 Azure 入口網站中監視儲存體帳戶
 
@@ -31,6 +31,8 @@ ms.locfileid: "92782003"
 >
 > 如需使用儲存體分析和其他工具來識別、診斷及疑難排解 Azure 儲存體相關問題的深入指南，請參閱 [監視、診斷及疑難排解 Microsoft Azure 儲存體](storage-monitoring-diagnosing-troubleshooting.md)。
 >
+
+<a id="modify-retention-policy"></a>
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>設定儲存體帳戶的監視
 

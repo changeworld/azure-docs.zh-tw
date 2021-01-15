@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004971"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216745"
 ---
 # <a name="virtual-network-peering"></a>虛擬網路對等互連
 
@@ -48,7 +48,7 @@ Azure 支援下列類型的對等互連：
 對等互連之虛擬網路中的虛擬機器之間的流量，會透過 Microsoft 骨幹基礎結構直接路由傳送，而不會透過閘道或透過公用網際網路來傳送。
 
 您可以在任一個虛擬網路中套用網路安全性群組，以封鎖對其他虛擬網路或子網的存取。
-設定虛擬網路對等互連時，請開啟或關閉虛擬網路之間的網路安全性群組規則。 如果您開啟對等互連虛擬網路之間的完整連線，您可以套用網路安全性群組以封鎖或拒絕特定的存取。 [完全連接] 是預設選項。 若要深入瞭解網路安全性群組，請參閱 [安全性群組](security-overview.md)。
+設定虛擬網路對等互連時，請開啟或關閉虛擬網路之間的網路安全性群組規則。 如果您開啟對等互連虛擬網路之間的完整連線，您可以套用網路安全性群組以封鎖或拒絕特定的存取。 [完全連接] 是預設選項。 若要深入瞭解網路安全性群組，請參閱 [安全性群組](./network-security-groups-overview.md)。
 
 ## <a name="service-chaining"></a>服務鏈結
 

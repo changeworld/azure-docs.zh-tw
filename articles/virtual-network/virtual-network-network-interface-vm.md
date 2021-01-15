@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480128"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216944"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>在虛擬機器中新增網路介面或移除網路介面
 
@@ -50,7 +50,7 @@ ms.locfileid: "85480128"
 
 建立 VM 之前，請先 [建立網路介面](virtual-network-network-interface.md#create-a-network-interface)。
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-network-nic-create)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -61,16 +61,16 @@ ms.locfileid: "85480128"
 
 1. 移至 [Azure 入口網站](https://portal.azure.com) 尋找現有的虛擬機器。 搜尋並選取 [虛擬機器]。
 
-2. 選取您的 VM 名稱。 VM 必須支援您想要新增的網路介面數目。 若要瞭解每個 VM 大小所支援的網路介面數目，請參閱 Azure 中適用于 [Linux vm](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows vm](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的大小。
+2. 選取您的 VM 名稱。 VM 必須支援您想要新增的網路介面數目。 若要瞭解每個 VM 大小所支援的網路介面數目，請參閱 Azure 中適用于 [Linux vm](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows vm](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的大小。
 
-3. 在 VM 命令列中，選取 [ **停止**]，然後在確認對話方塊中選取 **[確定** ]。 然後等到 VM 的 **狀態** 變更為 [ **已停止]， (解除配置) **。
+3. 在 VM 命令列中，選取 [ **停止**]，然後在確認對話方塊中選取 **[確定** ]。 然後等到 VM 的 **狀態** 變更為 [ **已停止]， (解除配置)**。
 
 4. 從 VM 功能表列中，選擇 [**網路**  >  **連接網路介面**]。 然後，在 [ **連接現有的網路介面**] 中，選擇您想要連結的網路介面，然後選取 **[確定]**。
 
     >[!NOTE]
     >您選取的網路介面無法啟用加速網路、無法指派 IPv6 位址，而且必須存在於與目前連接至 VM 的網路介面相同的虛擬網路中。
 
-    如果您沒有現有的網路介面，則必須先建立一個。 若要這樣做，請選取 [建立網路介面]****。 若要深入了解如何建立網路介面的詳細資訊，請參閱[建立網路介面](virtual-network-network-interface.md#create-a-network-interface)。 若要深入了解將網路介面新增至虛擬機器時的其他條件約束，請參閱[條件約束](#constraints)。
+    如果您沒有現有的網路介面，則必須先建立一個。 若要這樣做，請選取 [建立網路介面]。 若要深入了解如何建立網路介面的詳細資訊，請參閱[建立網路介面](virtual-network-network-interface.md#create-a-network-interface)。 若要深入了解將網路介面新增至虛擬機器時的其他條件約束，請參閱[條件約束](#constraints)。
 
 5. 從 VM 功能表列中，選擇 [**總覽**  >  **開始**] 以重新開機虛擬機器。
 
@@ -78,7 +78,7 @@ ms.locfileid: "85480128"
 
 ### <a name="commands"></a>命令
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-add) (reference) ; [詳細步驟](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
 |PowerShell|[新增->add-azvmnetworkinterface](/powershell/module/az.compute/add-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (參考) ; [詳細步驟](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
@@ -100,7 +100,7 @@ ms.locfileid: "85480128"
 
 ### <a name="commands"></a>命令
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az vm nic list](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-list)|
 |PowerShell|[Get-AzVM](/powershell/module/az.compute/get-azvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -113,18 +113,18 @@ ms.locfileid: "85480128"
 
 3. 在 VM 工具列中，選擇 [ **停止**]。
 
-4. 等到 VM 的 [狀態]**** 變成 [已停止 (已取消配置)]**** 為止。
+4. 等到 VM 的 [狀態] 變成 [已停止 (已取消配置)] 為止。
 
-5. 從 VM 功能表列中，選擇 [**網路**卸  >  **離網路介面**]。
+5. 從 VM 功能表列中，選擇 [**網路** 卸  >  **離網路介面**]。
 
-6. 在 [卸 **離網路介面** ] 對話方塊中，選取您要卸離的網路介面。 然後選取 [確定]。
+6. 在 [卸 **離網路介面** ] 對話方塊中，選取您要卸離的網路介面。 然後選取 [確定]  。
 
     >[!NOTE]
     >如果只列出一個網路介面，您就無法卸離它，因為虛擬機器至少必須有一個連接的網路介面。
 
 ### <a name="commands"></a>命令
 
-|工具|Command|
+|工具|命令|
 |---|---|
 |CLI|[az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az-vm-nic-remove) (參考) ; [詳細步驟](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
 |PowerShell|[移除->add-azvmnetworkinterface](/powershell/module/az.compute/remove-azvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (參考) ; [詳細步驟](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
@@ -133,17 +133,17 @@ ms.locfileid: "85480128"
 
 - VM 至少必須擁有一個連結的網路介面。
 
-- VM 可連結的網路介面數量受限於 VM 大小所支援的數量。 若要深入瞭解每個 VM 大小所支援的網路介面數目，請參閱 Azure 中適用于 [Linux vm](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows vm](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的大小。 所有大小都至少支援兩個網路介面。
+- VM 可連結的網路介面數量受限於 VM 大小所支援的數量。 若要深入瞭解每個 VM 大小所支援的網路介面數目，請參閱 Azure 中適用于 [Linux vm](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 [Windows vm](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的大小。 所有大小都至少支援兩個網路介面。
 
 - 您新增至 VM 的網路介面目前無法連接至另一個 VM。 若要深入了解如何建立網路介面的詳細資訊，請參閱[建立網路介面](virtual-network-network-interface.md#create-a-network-interface)。
 
 - 在過去，您只能將網路介面新增至支援多個網路介面的 Vm，並使用至少兩個網路介面來建立。 您無法將網路介面新增至使用一個網路介面建立的 VM，即使 VM 大小支援一個以上的網路介面。 相反地，由於以至少兩個網路介面所建立的 VM 一定要有至少兩個網路介面，因此您只能從至少具有三個網路介面的 VM 中移除網路介面。 這些條件約束不再適用。 您現在可以建立具有數量不拘 (以 VM 大小可支援的數目為限) 網路介面的 VM。
 
-- 依預設，連接至 VM 的第一個網路介面是 *主要* 網路介面。 VM 中的所有其他網路介面均為「次要」** 網路介面。
+- 依預設，連接至 VM 的第一個網路介面是 *主要* 網路介面。 VM 中的所有其他網路介面均為「次要」網路介面。
 
 - 您可以控制要將輸出流量傳送至哪個網路介面。 不過，VM 預設會將所有輸出流量傳送到指派給主要網路介面之主要 IP 設定的 IP 位址。
 
-- 在過去，相同可用性設定組中的所有 VM 都必須具有單一或多個網路介面。 具有任意多個 (最多可達 VM 大小所支援的數目) 網路介面的 VM 現在可存在於相同的可用性設定組中。 您只有在建立 VM 時，才能將 VM 新增到可用性設定組。 若要深入了解可用性設定組，請參閱[在 Azure 中管理 VM 的可用性](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。
+- 在過去，相同可用性設定組中的所有 VM 都必須具有單一或多個網路介面。 具有任意多個 (最多可達 VM 大小所支援的數目) 網路介面的 VM 現在可存在於相同的可用性設定組中。 您只有在建立 VM 時，才能將 VM 新增到可用性設定組。 若要深入了解可用性設定組，請參閱[在 Azure 中管理 VM 的可用性](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。
 
 - 您可以將相同 VM 中的網路介面連線到虛擬網路內的不同子網。 不過，網路介面必須全都連接到相同的虛擬網路。
 
@@ -153,7 +153,7 @@ ms.locfileid: "85480128"
 
 - 所記載的最佳效能需要加速網路。 在某些情況下，您必須明確啟用 [Windows](create-vm-accelerated-networking-powershell.md) 或 [Linux](create-vm-accelerated-networking-cli.md) 虛擬機器的加速網路。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要建立具有多個網路介面或 IP 位址的 VM，請參閱：
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 93feaef01b234eeb7ac363c18d8e9d8f52b009de
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004937"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216524"
 ---
 # <a name="virtual-network-service-endpoints"></a>虛擬網路服務端點
 
@@ -33,14 +33,14 @@ ms.locfileid: "96004937"
 - **[Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Sql*) ：已在所有 Azure 區域正式推出。
 - **[適用於 PostgreSQL 的 Azure 資料庫 server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Sql*) ：在可使用資料庫服務的 Azure 區域中正式推出。
 - **[適用於 MySQL 的 Azure 資料庫 server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Sql*) ：在可使用資料庫服務的 Azure 區域中正式推出。
-- **[適用於 MariaDB 的 Azure 資料庫](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft Sql*) ：已在可使用資料庫服務的 Azure 區域中正式推出。
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*AzureCosmosDB*) ：已在所有 Azure 區域正式推出。
+- **[適用於 MariaDB 的 Azure 資料庫](../mariadb/concepts-data-access-security-vnet.md)** (*Microsoft Sql*) ：已在可使用資料庫服務的 Azure 區域中正式推出。
+- **[Azure Cosmos DB](../cosmos-db/how-to-configure-vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*AzureCosmosDB*) ：已在所有 Azure 區域正式推出。
 - **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** (*KeyVault*) ：已在所有 Azure 區域正式推出。
 - **[Azure 服務匯流排](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*的*) ：已在所有 Azure 區域正式推出。
 - **[Azure 事件中樞](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft EventHub*) ：已在所有 Azure 區域正式推出。
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*AzureActiveDirectory*) ：已在可使用 ADLS Gen1 的所有 Azure 區域中正式推出。
-- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (的 *Microsoft*) ：已在可使用 App Service 的所有 Azure 區域中正式推出。
-- **[Azure 認知服務](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)** (*CognitiveServices*) ：在所有可使用認知服務的 azure 區域中正式推出。
+- **[Azure App Service](../app-service/app-service-ip-restrictions.md)** (的 *Microsoft*) ：已在可使用 App Service 的所有 Azure 區域中正式推出。
+- **[Azure 認知服務](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** (*CognitiveServices*) ：在所有可使用認知服務的 azure 區域中正式推出。
 
 **公開預覽**
 
@@ -98,7 +98,7 @@ ms.locfileid: "96004937"
 
 - 具有服務端點的網路安全性群組 (NSG)：
   - 根據預設，Nsg 允許輸出網際網路流量，也允許從 VNet 到 Azure 服務的流量。 此流量會繼續以相同方式使用服務端點。 
-  - 如果您想要拒絕所有輸出網際網路流量，並且只允許特定 Azure 服務的流量，您可以使用 Nsg 中的 [服務](security-overview.md#service-tags) 標籤來進行。 您可以將支援的 Azure 服務指定為 NSG 規則中的目的地，而 Azure 也會提供每個標記基礎的 IP 位址維護。 如需詳細資訊，請參閱 [Azure 服務標籤](security-overview.md#service-tags)。 
+  - 如果您想要拒絕所有輸出網際網路流量，並且只允許特定 Azure 服務的流量，您可以使用 Nsg 中的 [服務](./network-security-groups-overview.md#service-tags) 標籤來進行。 您可以將支援的 Azure 服務指定為 NSG 規則中的目的地，而 Azure 也會提供每個標記基礎的 IP 位址維護。 如需詳細資訊，請參閱 [Azure 服務標籤](./network-security-groups-overview.md#service-tags)。 
 
 ### <a name="scenarios"></a>案例
 
@@ -138,11 +138,11 @@ ms.locfileid: "96004937"
 
 ## <a name="vnet-service-endpoint-policies"></a>VNet 服務端點原則 
 
-VNet 服務端點原則可讓您篩選 Azure 服務的虛擬網路流量。 此篩選器只允許特定的 Azure 服務資源通過服務端點。 服務端點原則可針對流向 Azure 服務的虛擬網路流量提供更細微的存取控制。 如需詳細資訊，請參閱 [虛擬網路服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)。
+VNet 服務端點原則可讓您篩選 Azure 服務的虛擬網路流量。 此篩選器只允許特定的 Azure 服務資源通過服務端點。 服務端點原則可針對流向 Azure 服務的虛擬網路流量提供更細微的存取控制。 如需詳細資訊，請參閱 [虛擬網路服務端點原則](./virtual-network-service-endpoint-policies-overview.md)。
 
 ## <a name="faqs"></a>常見問題集
 
-如需常見問題，請參閱 [虛擬網路服務端點常見問題](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)。
+如需常見問題，請參閱 [虛擬網路服務端點常見問題](./virtual-networks-faq.md#virtual-network-service-endpoints)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -151,5 +151,5 @@ VNet 服務端點原則可讓您篩選 Azure 服務的虛擬網路流量。 此�
 - [保護虛擬網路的 Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [保護虛擬網路的 Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [虛擬網路中的 Azure 服務整合](virtual-network-for-azure-services.md)
-- [虛擬網路服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [虛擬網路服務端點原則](./virtual-network-service-endpoint-policies-overview.md)
 - [Azure Resource Manager 範本](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

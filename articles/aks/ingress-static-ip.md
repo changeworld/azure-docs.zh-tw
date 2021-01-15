@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，使用�
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: eb58bbe127349aaebed3b1eb00281cf2938c1933
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 14835f7d332b1fcc6e1afabec9a6ee6e55d699e7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681579"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219856"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用靜態公用 IP 位址建立輸入控制器
 
@@ -169,8 +169,12 @@ spec:
 若要建立簽發者，請使用 `kubectl apply` 命令。
 
 ```
-$ kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+```
 
+輸出應該類似此範例：
+
+```
 clusterissuer.cert-manager.io/letsencrypt-staging created
 ```
 
@@ -307,8 +311,12 @@ spec:
 使用 `kubectl apply` 命令建立輸入資源。
 
 ```
-$ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+```
 
+輸出應該類似此範例：
+
+```
 ingress.extensions/hello-world-ingress created
 ```
 

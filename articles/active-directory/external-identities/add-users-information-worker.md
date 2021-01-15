@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352d5218f91fa55134a7515b6aeee49857847468
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173204"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219907"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>組織中的使用者如何將來賓使用者邀請到應用程式
 
@@ -28,8 +28,8 @@ ms.locfileid: "96173204"
  - 設定應用程式以進行自助服務，並將群組指派給應用程式
 
 > [!NOTE]
-> 本文描述如何設定自助管理，來管理資源庫及新增至 Azure AD 租用戶的 SAML 應用程式。 您也可以 [設定自助 Microsoft 365 群組](../enterprise-users/groups-self-service-management.md) ，讓使用者可以管理自己的 Microsoft 365 群組的存取權。 如需更多使用者可以與來賓使用者共用 Office 檔案和應用程式的方式，請參閱 [Microsoft 365 群組中的來賓存取權](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) ，以及 [共用 SharePoint 檔案或資料夾](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)。
-
+> * 本文描述如何設定自助管理，來管理資源庫及新增至 Azure AD 租用戶的 SAML 應用程式。 您也可以 [設定自助 Microsoft 365 群組](../enterprise-users/groups-self-service-management.md) ，讓使用者可以管理自己的 Microsoft 365 群組的存取權。 如需更多使用者可以與來賓使用者共用 Office 檔案和應用程式的方式，請參閱 [Microsoft 365 群組中的來賓存取權](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) ，以及 [共用 SharePoint 檔案或資料夾](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)。
+> * 只有當使用者擁有 **來賓邀請者** 角色時，才能夠邀請來賓。
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>從存取面板將來賓使用者邀請到應用程式
 
 設定應用程式以進行自助服務之後，應用程式擁有者就可以使用自己的存取面板，將來賓使用者邀請到他們想要共用的應用程式。 不一定要事先將來賓使用者新增到 Azure AD。 
@@ -73,7 +73,7 @@ ms.locfileid: "96173204"
 7. 選取 [新增] 即可自動傳送邀請給來賓使用者。 在傳送邀請之後，系統就會自動將使用者帳戶以來賓身分新增至目錄。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 自助應用程式管理需要由全域系統管理員和 Azure AD 系統管理員進行一些初始設定。 在此設定過程中，您將會設定應用程式來進行自助服務，並將群組指派給應用程式擁有者可管理的應用程式。 您也可以設定群組以允許每個人都可要求成員資格，但需要群組擁有者的核准 (深入了解[自助群組管理](../enterprise-users/groups-self-service-management.md))。 
 

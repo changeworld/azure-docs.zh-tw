@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: f6c8272f736e2f83b4d33f3d61ce83356aa40e5d
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c79367ca8cf9e4a4884c829c675d794b2e734737
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126751"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220260"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>使用串流分析、Azure Functions 和 SendGrid 的自訂規則擴充 Azure IoT Central
 
@@ -24,11 +24,11 @@ ms.locfileid: "92126751"
 
 在本操作指南中，您將瞭解如何：
 
-* 使用 *連續資料匯出*從 IoT Central 應用程式串流遙測資料。
+* 使用 *連續資料匯出* 從 IoT Central 應用程式串流遙測資料。
 * 建立串流分析查詢，以偵測裝置停止傳送資料的時間。
 * 使用 Azure Functions 和 SendGrid 服務傳送電子郵件通知。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成此操作指南中的步驟，您必須具備有效的 Azure 訂用帳戶。
 
@@ -54,7 +54,7 @@ ms.locfileid: "92126751"
 
 ### <a name="resource-group"></a>資源群組
 
-使用 Azure 入口網站建立名為**DetectStoppedDevices**的[資源群組](https://portal.azure.com/#create/Microsoft.ResourceGroup)，以包含您所建立的其他資源。 在與您的 IoT Central 應用程式相同的位置中建立您的 Azure 資源。
+使用 Azure 入口網站建立名為 **DetectStoppedDevices** 的 [資源群組](https://portal.azure.com/#create/Microsoft.ResourceGroup)，以包含您所建立的其他資源。 在與您的 IoT Central 應用程式相同的位置中建立您的 Azure 資源。
 
 ### <a name="event-hubs-namespace"></a>事件中樞命名空間
 
@@ -63,7 +63,7 @@ ms.locfileid: "92126751"
 | 設定 | 值 |
 | ------- | ----- |
 | 名稱    | 選擇您的命名空間名稱 |
-| 定價層 | 基本 |
+| 定價層 | Basic |
 | 訂用帳戶 | 您的訂用帳戶 |
 | 資源群組 | DetectStoppedDevices |
 | 位置 | 美國東部 |
@@ -82,7 +82,7 @@ ms.locfileid: "92126751"
 | 裝載環境 | Cloud |
 | 串流單位 | 3 |
 
-### <a name="function-app"></a>函式應用程式
+### <a name="function-app"></a>函數應用程式
 
 使用 [Azure 入口網站來建立](https://portal.azure.com/#create/Microsoft.FunctionApp) 具有下列設定的函式應用程式：
 
@@ -134,19 +134,19 @@ ms.locfileid: "92126751"
 
     ![建立 SendGrid API 金鑰](media/howto-create-custom-rules/sendgrid-api-keys.png)
 
-1. 在 [**建立 API 金鑰**] 頁面上，使用 [**完整訪問**許可權] 建立名為**AzureFunctionAccess**的金鑰。
+1. 在 [**建立 API 金鑰**] 頁面上，使用 [**完整訪問** 許可權] 建立名為 **AzureFunctionAccess** 的金鑰。
 1. 請記下 API 金鑰，您在設定函數應用程式時需要用到它。
 
 ## <a name="define-the-function"></a>定義函數
 
 當串流分析作業偵測到已停止的裝置時，此解決方案會使用 Azure Functions 應用程式傳送電子郵件通知。 若要建立您的函數應用程式：
 
-1. 在 Azure 入口網站中，流覽至**DetectStoppedDevices**資源群組中的**App Service**實例。
+1. 在 Azure 入口網站中，流覽至 **DetectStoppedDevices** 資源群組中的 **App Service** 實例。
 1. 選取 **+** 即可建立新的函式。
 1. 在 [ **選擇開發環境** ] 頁面上，選擇 [ **入口網站** ]，然後選取 [ **繼續**]。
 1. 在 [ **建立函數** ] 頁面上，選擇 [ **Webhook + API** ]，然後選取 [ **建立**]。
 
-入口網站會建立名為 **>HTTPtrigger1**的預設函數：
+入口網站會建立名為 **>HTTPtrigger1** 的預設函數：
 
 ![預設 HTTP 觸發程式函式](media/howto-create-custom-rules/default-function.png)
 
@@ -154,10 +154,10 @@ ms.locfileid: "92126751"
 
 若要使用 SendGrid 傳送電子郵件，您需要設定函數的系結，如下所示：
 
-1. 選取 [ **整合**]，選擇輸出 **HTTP ($return) **，然後選取 [ **刪除**]。
+1. 選取 [ **整合**]，選擇輸出 **HTTP ($return)**，然後選取 [ **刪除**]。
 1. 選擇 [ **+ 新增輸出**]，然後選擇 [ **SendGrid**]，再選擇 [ **選取**]。 選擇 [ **安裝** ] 以安裝 SendGrid 延伸模組。
 1. 當安裝完成時，請選取 [ **使用函數傳回值**]。 新增有效的 **位址** 以接收電子郵件通知。  新增有效 **的發** 件人位址，以做為電子郵件寄件者使用。
-1. 選取 [ **SENDGRID API 金鑰應用程式設定**] 旁的 [**新增**]。 輸入 **SendGridAPIKey** 做為金鑰，並輸入您先前記下的 SendGrid API 金鑰作為值。 然後選取 [建立]  。
+1. 選取 [ **SENDGRID API 金鑰應用程式設定**] 旁的 [**新增**]。 輸入 **SendGridAPIKey** 做為金鑰，並輸入您先前記下的 SendGrid API 金鑰作為值。 然後選取 [建立]。
 1. 選擇 [ **儲存** ] 以儲存您函式的 SendGrid 系結。
 
 整合設定看起來會像下列螢幕擷取畫面：
@@ -256,7 +256,7 @@ test-device-3    2019-05-02T14:24:28.919Z
     | ------- | ----- |
     | 輸出別名 | emailnotification |
     | 訂用帳戶 | 您的訂用帳戶 |
-    | 函式應用程式 | 您的函數應用程式 |
+    | 函數應用程式 | 您的函數應用程式 |
     | 函式  | >HTTPtrigger1 |
 
 1. 在 [ **作業拓撲**] 下，選取 [ **查詢** ]，並將現有的查詢取代為下列 SQL：
@@ -347,11 +347,11 @@ test-device-3    2019-05-02T14:24:28.919Z
 
 您可以從應用程式內的 **管理** 頁面刪除 IoT Central 應用程式。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在此操作指南中，您已了解如何：
 
-* 使用 *連續資料匯出*從 IoT Central 應用程式串流遙測資料。
+* 使用 *連續資料匯出* 從 IoT Central 應用程式串流遙測資料。
 * 建立串流分析查詢，以偵測裝置停止傳送資料的時間。
 * 使用 Azure Functions 和 SendGrid 服務傳送電子郵件通知。
 

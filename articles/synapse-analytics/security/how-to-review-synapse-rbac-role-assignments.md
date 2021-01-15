@@ -8,16 +8,16 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9ebbe54dd41cd7d7b83ef12f465326db3ef2b9ab
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: ee3b2c69d7782dca10b16a3b1726b75bfd99326e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572179"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218120"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>如何審核 Synapse RBAC 角色指派
 
-Synapse RBAC 角色是用來將許可權指派給使用者、群組和其他安全性主體，以啟用 Synapse 資源的存取和使用。  [深入了解](https://go.microsoft.com/fwlink/?linkid=2148306)
+Synapse RBAC 角色是用來將許可權指派給使用者、群組和其他安全性主體，以啟用 Synapse 資源的存取和使用。  [深入了解](./synapse-workspace-synapse-rbac.md)
 
 本文說明如何檢查工作區目前的角色指派。
 

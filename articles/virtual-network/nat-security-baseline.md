@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4ab71138f110df19ec84fa8707b480ad1bc6e72c
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 9276ce07c68afa6f229dbc32198bc624d8887ace
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255110"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217816"
 ---
 # <a name="azure-security-baseline-for-virtual-network-nat"></a>虛擬網路 NAT 的 Azure 安全性基準
 
-此安全性基準會將來自 [Azure 安全性基準測試版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview-v1) 的指引套用至 Microsoft 虛擬網路 NAT。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。
+此安全性基準會將來自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview-v1.md) 的指引套用至 Microsoft 虛擬網路 NAT。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。
 內容會依 Azure 安全性基準測試所定義的 **安全性控制** ，以及適用于虛擬網路 NAT 的相關指引來分組。 已排除不適用虛擬網路 NAT 的 **控制項**。
 
  
@@ -24,7 +24,7 @@ ms.locfileid: "95255110"
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
+如需詳細資訊，請參閱 [Azure 安全性效能評定：網路安全性](../security/benchmarks/security-control-network-security.md)。
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
 
@@ -34,15 +34,15 @@ ms.locfileid: "95255110"
 
 使用 Azure 資訊安全中心，並遵循網路保護建議來協助保護您的 Azure 網路資源。 啟用網路安全性群組流量記錄，並將記錄傳送至 Azure 儲存體帳戶進行審核。 您也可以將流量記錄傳送至 Log Analytics 工作區，然後使用流量分析來提供 Azure 雲端中的流量模式見解。 流量分析的一些優點是能夠將網路活動視覺化、找出熱點和安全性威脅、瞭解流量流程模式，以及找出網路錯誤配置。 
 
-- [虛擬網路 NAT 總覽](https://docs.microsoft.com/azure/virtual-network/nat-overview)
+- [虛擬網路 NAT 總覽](./nat-overview.md)
 
-- [NAT 閘道資源](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource)
+- [NAT 閘道資源](./nat-gateway-resource.md)
 
-- [如何啟用網路安全性群組流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal) 
+- [如何啟用網路安全性群組流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md) 
 
-- [如何啟用和使用流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+- [如何啟用和使用流量分析](../network-watcher/traffic-analytics.md)
 
-- [瞭解 Azure 資訊安全中心所提供的網路安全性](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+- [瞭解 Azure 資訊安全中心所提供的網路安全性](../security-center/security-center-network-recommendations.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -52,7 +52,7 @@ ms.locfileid: "95255110"
 
 **指導** 方針：啟用網路監看員封包捕捉以調查異常活動。 
 
-- [如何建立網路監看員實例](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+- [如何建立網路監看員實例](../network-watcher/network-watcher-create.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -62,9 +62,9 @@ ms.locfileid: "95255110"
 
 **指導** 方針：使用內建或自訂的 Azure 原則定義和指派，定義並執行使用 NAT 閘道資源設定之子網的標準安全性設定。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [適用于網路的 Azure 原則範例](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [適用于網路的 Azure 原則範例](../governance/policy/samples/built-in-policies.md#network)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -74,9 +74,9 @@ ms.locfileid: "95255110"
 
 **指導** 方針：使用 Azure 活動記錄來監視資源設定，以及偵測 NAT 閘道資源和虛擬網路資源的變更。 在 Azure 監視器中建立警示，以在重大資源變更時通知您。
 
-- [如何查看和取出 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+- [如何查看和取出 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-- [如何在 Azure 監視器中建立警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -84,7 +84,7 @@ ms.locfileid: "95255110"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
@@ -92,9 +92,9 @@ ms.locfileid: "95255110"
 
 或者，您可以將此資料啟用並在面板上 Azure Sentinel 或協力廠商 SIEM。
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard) 
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md) 
 
-- [如何使用 Azure 監視器收集平臺記錄和計量](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 
+- [如何使用 Azure 監視器收集平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md) 
 
 - [如何開始使用 Azure 監視器和第三方 SIEM 整合](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -106,9 +106,9 @@ ms.locfileid: "95255110"
 
 **指導** 方針：自動提供的活動記錄會包含 (PUT、POST、DELETE) 適用于 NAT 閘道資源的所有寫入作業， () 的讀取作業除外。 當您進行疑難排解時，可以使用活動記錄來尋找錯誤，或是監視組織中的使用者修改資源的方式。
 
-- [如何使用 Azure 監視器收集平臺記錄和計量](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) 
+- [如何使用 Azure 監視器收集平臺記錄和計量](../azure-monitor/platform/diagnostic-settings.md) 
 
-- [瞭解 Azure 中的記錄和不同的記錄類型](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview) 
+- [瞭解 Azure 中的記錄和不同的記錄類型](../azure-monitor/platform/platform-logs-overview.md) 
 
 虛擬網路 NAT 目前未產生任何額外的診斷記錄，這些記錄可由客戶進行設定。
 
@@ -120,11 +120,11 @@ ms.locfileid: "95255110"
 
 **指導** 方針：搭配使用 Azure 資訊安全中心與 Log Analytics 工作區來監視和警示在安全性記錄和事件中找到的異常活動。 相反地，您可以啟用和麵板上的資料以 Azure Sentinel。
 
-- [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard) 
+- [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md) 
 
-- [如何在 Azure 資訊安全中心中管理警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) 
+- [如何在 Azure 資訊安全中心中管理警示](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [如何對 log analytics 記錄資料發出警示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+- [如何對 log analytics 記錄資料發出警示](../azure-monitor/learn/tutorial-response.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -132,7 +132,7 @@ ms.locfileid: "95255110"
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
@@ -142,7 +142,7 @@ ms.locfileid: "95255110"
 
 雖然可以透過 Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
 
-- [Azure Resource Graph 查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [Azure Resource Graph 查詢](../governance/resource-graph/first-query-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -160,11 +160,11 @@ ms.locfileid: "95255110"
 
 **指導** 方針：套用 Azure 資源管理的標記。
 
-- [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription) 
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md) 
 
-- [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create) 
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md) 
 
-- [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -183,8 +183,8 @@ ms.locfileid: "95255110"
 **指導** 方針：使用 Azure 原則對可在訂用帳戶中建立的資源類型（ (s) ）施加限制。
 使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。 確保已核准環境中的所有 Azure 資源。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage) 
-- [如何使用 Azure Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md) 
+- [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -194,9 +194,9 @@ ms.locfileid: "95255110"
 
 **指導** 方針：使用 Azure 原則來限制您可以在環境中布建的服務。
 
-- [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+- [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/built-in-policies.md#general)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -204,7 +204,7 @@ ms.locfileid: "95255110"
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)設定。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：安全](../security/benchmarks/security-control-secure-configuration.md)設定。*
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
@@ -218,9 +218,9 @@ ms.locfileid: "95255110"
 
 **指導** 方針：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂 Azure 原則定義、Azure Resource Manager 範本和 desired state configuration 腳本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中定義的群組，或與 TFS 整合的 Active Directory。 
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops) 
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops) 
 
-- [關於 Azure DevOps 中的許可權和群組](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
+- [關於 Azure DevOps 中的許可權和群組](/azure/devops/organizations/security/about-permissions)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -236,7 +236,7 @@ ms.locfileid: "95255110"
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+如需詳細資訊，請參閱 [Azure 安全性效能評定：事件回應](../security/benchmarks/security-control-incident-response.md)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -288,15 +288,15 @@ ms.locfileid: "95255110"
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱 [Azure 安全性基準測試：滲透測試和 Red Team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：進行 Azure 資源的定期滲透測試，並確保修復所有重要的安全性結果
 
-**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對受 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 的策略和執行的 Red 小組和即時網站滲透測試。 
+**指導** 方針：遵循 Microsoft Cloud 滲透測試的參與規則，以確保您的滲透測試不違反 Microsoft 原則。 針對 Microsoft 管理的雲端基礎結構、服務和應用程式，使用 Microsoft 對於紅隊和即時網站滲透測試的策略和執行方法。 
 
 - [滲透測試運作規則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1) 
 
-- [Microsoft Cloud Red 小組](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+- [Microsoft Cloud Red Teaming](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -304,5 +304,5 @@ ms.locfileid: "95255110"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性基準測試 V2 總覽](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定 V2 概觀](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

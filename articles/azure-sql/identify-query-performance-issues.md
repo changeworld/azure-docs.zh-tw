@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 6ea17f04538e3444b1baddaa8862add2cfbbaa9c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493418"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217221"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL Database 中可偵測的查詢效能瓶頸類型
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -90,7 +90,7 @@ SQL 查詢最佳化工具所產生的次佳計畫可能是查詢效能變慢的�
 ```sql
 SELECT *
 FROM t1 JOIN t2 ON t1.c1 = t2.c1
-WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F';
 ```
 
 在此範例中， `t1.c1` 會採用 `@p1` ，但會 `t2.c2` 繼續以 GUID 作為常值。 在此情況下，如果您變更的值 `c2` ，系統會將查詢視為不同的查詢，並會發生新的編譯。 為了減少此範例中的編譯，您也會將 GUID 參數化。
@@ -115,7 +115,7 @@ WHERE
   rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
   AND query_parameterization_type_desc IN ('User', 'None')
 GROUP BY q.query_hash
-ORDER BY count (distinct p.query_id) DESC
+ORDER BY count (distinct p.query_id) DESC;
 ```
 
 ### <a name="factors-that-affect-query-plan-changes"></a>影響查詢計劃變更的因素
@@ -187,7 +187,7 @@ ORDER BY count (distinct p.query_id) DESC
 
 - **封鎖**：
 
-  一個查詢可能會保存資料庫中物件的鎖定，而其他則嘗試存取相同的物件。 您可以使用 [dmv](database/monitoring-with-dmvs.md#monitoring-blocked-queries) 或 [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking)來識別封鎖查詢。
+  一個查詢可能會保存資料庫中物件的鎖定，而其他則嘗試存取相同的物件。 您可以使用 [dmv](database/monitoring-with-dmvs.md#monitoring-blocked-queries) 或 [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking)來識別封鎖查詢。 如需詳細資訊，請參閱 [瞭解及解決 AZURE SQL 封鎖問題](database/understand-resolve-blocking.md)。
 - **IO 問題**
 
   查詢可能正在等待頁面寫入資料或記錄檔。 在此情況下，請 `INSTANCE_LOG_RATE_GOVERNOR` 檢查 `WRITE_LOG` DMV 中的、或 `PAGEIOLATCH_*` 等候統計資料。 請參閱使用 Dmv [找出 IO 效能問題](database/monitoring-with-dmvs.md#identify-io-performance-issues)。

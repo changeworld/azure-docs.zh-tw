@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739292"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216643"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure 儲存體的虛擬網路服務端點原則
 
@@ -32,7 +32,7 @@ ms.locfileid: "97739292"
 
 - __提升虛擬網路流量的安全性以 Azure 儲存體__
 
-  [適用于網路安全性群組的 Azure 服務](https://aka.ms/servicetags) 標籤可讓您將虛擬網路輸出流量限制為特定的 Azure 儲存體區域。 不過，這可允許所選 Azure 儲存體區域內任何帳戶的流量。
+  [適用于網路安全性群組的 Azure 服務](./network-security-groups-overview.md) 標籤可讓您將虛擬網路輸出流量限制為特定的 Azure 儲存體區域。 不過，這可允許所選 Azure 儲存體區域內任何帳戶的流量。
   
   端點原則可讓您指定允許虛擬網路輸出存取的 Azure 儲存體帳戶，並限制所有其他儲存體帳戶的存取權。 這可提供更細微的安全性控制，以保護從虛擬網路遭到外泄的資料。
 
@@ -58,7 +58,7 @@ ms.locfileid: "97739292"
 ]
 ```
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 -   您可以設定端點原則來限制特定 Azure 儲存體帳戶的虛擬網路流量。
 -   您可在虛擬網路的子網路上設定端點原則。 您應在子網上啟用 Azure 儲存體的服務端點，以套用原則。

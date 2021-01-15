@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f09d2050617cbda539eee9fcda1ecfb204a015a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: bc8ec364380fc5cb9f6e33a29cd8dac96ea1fb69
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059274"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219822"
 ---
 # <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>保護 Azure Active Directory 和 Microsoft 365 的外部協同作業
 
@@ -38,7 +38,7 @@ Microsoft 提供完整的工具套件，以安全地進行外部存取。  Azure
 
 本檔集的設計目的是要讓您從臨機操作或鬆散管理的外部共同作業移至更安全的狀態。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 請參閱下列文章，以保護對資源的外部存取。 建議您依列出的循序執行動作。
 

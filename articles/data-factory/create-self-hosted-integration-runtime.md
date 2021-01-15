@@ -11,12 +11,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 76d53458154a7e66589c16f955373975bb04b25b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: fd56ef74a7641a01eae2354f149f45e84ff56833
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121576"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217425"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>建立和設定自我裝載整合執行階段
 
@@ -58,7 +58,7 @@ ms.locfileid: "98121576"
 5. 自我裝載整合執行時間會在內部部署存放區與雲端儲存體之間複製資料。 複製的方向取決於在資料管線中如何設定複製活動。 在此步驟中，自我裝載整合執行時間會透過安全的 HTTPS 通道，直接與雲端式儲存體服務（例如 Azure Blob 儲存體）進行通訊。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 支援的 Windows 版本為：
   + Windows 8.1
@@ -157,21 +157,21 @@ dmgcmd ACTION args...
 
 |ACTION|args|描述|
 |------|----|-----------|
-|rn<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|使用指定的驗證金鑰和節點名稱註冊自我裝載的整合執行時間節點。|
-|日曆<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|啟用目前節點上的遠端存取，以設定高可用性叢集。 或直接針對自我裝載 IR 啟用設定認證，而不需要 Azure Data Factory。 您可以從相同網路中的遠端電腦使用 **AzDataFactoryV2LinkedServiceEncryptedCredential 指令程式** ，以進行後者。|
-|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|當節點在容器中執行時，啟用對目前節點的遠端存取。|
-|dra<br/>-DisableRemoteAccess||停用對目前節點的遠端存取。 多節點設定需要遠端存取。 即使已停用遠端存取， **AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell Cmdlet 仍可運作。 只要 Cmdlet 是在與自我裝載 IR 節點相同的電腦上執行，這種行為就是如此。|
-|千<br/>-Key|"`<AuthenticationKey>`"|覆寫或更新先前的驗證金鑰。 請小心使用此動作。 如果金鑰是新的整合執行時間，您先前的自我裝載 IR 節點可能會離線。|
-|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|產生目前節點的備份檔案。 備份檔案包含節點金鑰和資料存放區認證。|
-|-ibf,<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|從備份檔案還原節點。|
-|桌上型電腦主機板<br/>-Restart||重新開機自我裝載 integration runtime 主機服務。|
-|！<br/>-Start||啟動自我裝載 integration runtime 主機服務。|
-|10gbase-t<br/>-停止||停止自我裝載 integration runtime 主機服務。|
-|su<br/>-StartUpgradeService||啟動自我裝載整合執行時間升級服務。|
-|tu<br/>-StopUpgradeService||停止自我裝載整合執行時間升級服務。|
-|-tonau,<br/>-TurnOnAutoUpdate||開啟自我裝載整合執行時間自動更新。|
-|-toffau,<br/>-TurnOffAutoUpdate||關閉自我裝載整合執行時間自動更新。|
-|ssa<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|將 DIAHostService 設定為以新帳戶執行。 針對系統帳戶和虛擬帳戶，請使用空白密碼 ""。|
+|`-rn`,<br/>`-RegisterNewNode`|"`<AuthenticationKey>`" ["`<NodeName>`"]|使用指定的驗證金鑰和節點名稱註冊自我裝載的整合執行時間節點。|
+|`-era`,<br/>`-EnableRemoteAccess`|"`<port>`" ["`<thumbprint>`"]|啟用目前節點上的遠端存取，以設定高可用性叢集。 或直接針對自我裝載 IR 啟用設定認證，而不需要 Azure Data Factory。 您可以從相同網路中的遠端電腦使用 **AzDataFactoryV2LinkedServiceEncryptedCredential 指令程式** ，以進行後者。|
+|`-erac`,<br/>`-EnableRemoteAccessInContainer`|"`<port>`" ["`<thumbprint>`"]|當節點在容器中執行時，啟用對目前節點的遠端存取。|
+|`-dra`,<br/>`-DisableRemoteAccess`||停用對目前節點的遠端存取。 多節點設定需要遠端存取。 即使已停用遠端存取， **AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell Cmdlet 仍可運作。 只要 Cmdlet 是在與自我裝載 IR 節點相同的電腦上執行，這種行為就是如此。|
+|`-k`,<br/>`-Key`|"`<AuthenticationKey>`"|覆寫或更新先前的驗證金鑰。 請小心使用此動作。 如果金鑰是新的整合執行時間，您先前的自我裝載 IR 節點可能會離線。|
+|`-gbf`,<br/>`-GenerateBackupFile`|"`<filePath>`" "`<password>`"|產生目前節點的備份檔案。 備份檔案包含節點金鑰和資料存放區認證。|
+|`-ibf`,<br/>`-ImportBackupFile`|"`<filePath>`" "`<password>`"|從備份檔案還原節點。|
+|`-r`,<br/>`-Restart`||重新開機自我裝載 integration runtime 主機服務。|
+|`-s`,<br/>`-Start`||啟動自我裝載 integration runtime 主機服務。|
+|`-t`,<br/>`-Stop`||停止自我裝載 integration runtime 主機服務。|
+|`-sus`,<br/>`-StartUpgradeService`||啟動自我裝載整合執行時間升級服務。|
+|`-tus`,<br/>`-StopUpgradeService`||停止自我裝載整合執行時間升級服務。|
+|`-tonau`,<br/>`-TurnOnAutoUpdate`||開啟自我裝載整合執行時間自動更新。|
+|`-toffau`,<br/>`-TurnOffAutoUpdate`||關閉自我裝載整合執行時間自動更新。|
+|`-ssa`,<br/>`-SwitchServiceAccount`|"`<domain\user>`" ["`<password>`"]|將 DIAHostService 設定為以新帳戶執行。 針對系統帳戶和虛擬帳戶，請使用空白密碼 ""。|
 
 
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>從 Microsoft 下載中心安裝和註冊自我裝載 IR
@@ -205,9 +205,9 @@ dmgcmd ACTION args...
 
 請確定帳戶具有 [以服務方式登入] 的許可權。 否則，自我裝載整合執行時間無法成功啟動。 您可以在 [ **本機安全性原則-> 安全性設定] 中檢查許可權-> 本機原則-> 使用者權限指派-> 以服務方式登入**
 
-![服務帳戶許可權](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+![本機安全性原則-使用者權限指派的螢幕擷取畫面](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
 
-![服務帳戶許可權](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+![[以服務方式登入] 使用者權限指派的螢幕擷取畫面](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
 
 
 ## <a name="notification-area-icons-and-notifications"></a>通知區域圖示和通知

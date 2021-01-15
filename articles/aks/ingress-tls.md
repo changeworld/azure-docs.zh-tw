@@ -5,12 +5,12 @@ description: 瞭解如何安裝和設定 NGINX 輸入控制器，以使用 Let's
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 3cf7b069d6f010a4461b22c5326589ad3ec31204
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0b0e26262f75ba8030188a2bffbce8282b38bca8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186255"
+ms.locfileid: "98219635"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器
 
@@ -262,7 +262,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 這兩個應用程式現在都已在您的 Kubernetes 叢集上執行。 不過，它們是以類型的服務所設定 `ClusterIP` ，且無法從網際網路存取。 若要使其可公開使用，請建立 Kubernetes 輸入資源。 輸入資源會設定將流量路由至這兩個應用程式之一的規則。
 
-在下列範例中，位址為 hello world 輸入的流量 *。MY_CUSTOM_DOMAIN* 會路由傳送至 *aks helloworld* 服務。 位址為 hello world 輸入的流量 *。MY_CUSTOM_DOMAIN/hello-world-two* 會路由傳送至 *aks-helloworld-兩個* 服務。 對 *hello-world 輸入的流量。MY_CUSTOM_DOMAIN/靜態* 會路由至靜態資產的 *aks-helloworld* 服務。
+在下列範例中，位址為 hello world 輸入的流量 *。MY_CUSTOM_DOMAIN* 會路由傳送至 *aks-helloworld* 單一服務。 位址為 hello world 輸入的流量 *。MY_CUSTOM_DOMAIN/hello-world-two* 會路由傳送至 *aks-helloworld-兩個* 服務。 對 *hello-world 輸入的流量。MY_CUSTOM_DOMAIN/靜態* 會路由傳送至名為 *aks 的服務-helloworld-一個* 用於靜態資產。
 
 > [!NOTE]
 > 如果您為輸入控制器 IP 位址設定 FQDN，而不是自訂網域，請使用 FQDN，而不是 *hello world 輸入。MY_CUSTOM_DOMAIN*。 例如，如果您的 FQDN 是 *demo-aks-ingress.eastus.cloudapp.azure.com*，請取代 *hello world 輸入。* 使用中的 *demo-aks-ingress.eastus.cloudapp.azure.com* MY_CUSTOM_DOMAIN `hello-world-ingress.yaml` 。

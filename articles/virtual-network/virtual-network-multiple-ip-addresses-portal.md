@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0dab64aac8bc5fa68a53fad6cd8e6f6bb4bac03
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87543481"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217136"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>使用 Azure 入口網站將多個 IP 位址指派給虛擬機器
 
 > [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 > 
-> 本文說明如何使用 Azure 入口網站透過 Azure Resource Manager 部署模型建立虛擬機器 (VM)。 無法將多個 IP 位址指派給透過傳統部署模型建立的資源。 若要深入了解 Azure 部署模型，請參閱[了解部署模型](../resource-manager-deployment-model.md)文章。
+> 本文說明如何使用 Azure 入口網站透過 Azure Resource Manager 部署模型建立虛擬機器 (VM)。 無法將多個 IP 位址指派給透過傳統部署模型建立的資源。 若要深入了解 Azure 部署模型，請參閱[了解部署模型](../azure-resource-manager/management/deployment-models.md)文章。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
@@ -39,27 +39,27 @@ ms.locfileid: "87543481"
 ### <a name="core-steps"></a><a name="coreadd"></a>核心步驟
 
 1. 瀏覽至 Azure 入口網站 (https://portal.azure.com) 並視需要進行登入。
-2. 在 Azure 入口網站中，按一下 [更多服務]****，接著在篩選方塊中輸入「虛擬機器」**，然後按一下 [虛擬機器]****。
-3. 在 [虛擬機器]**** 窗格中，按一下您想要新增 IP 位址的 VM。 流覽至 [ **網路** ] 索引標籤。按一下頁面上的 [ **網路介面** ]。 如下圖所示： 
+2. 在 Azure 入口網站中，按一下 [更多服務]，接著在篩選方塊中輸入「虛擬機器」，然後按一下 [虛擬機器]。
+3. 在 [虛擬機器] 窗格中，按一下您想要新增 IP 位址的 VM。 流覽至 [ **網路** ] 索引標籤。按一下頁面上的 [ **網路介面** ]。 如下圖所示： 
 
 
     ![在 VM 中新增公用 IP 位址](./media/virtual-network-multiple-ip-addresses-portal/figure200319.png)
-4. 在 [ **網路介面** ] 窗格中，按一下 [ **IP**設定]。
+4. 在 [ **網路介面** ] 窗格中，按一下 [ **IP** 設定]。
 
-5. 在針對所選 NIC 顯示的窗格中，按一下 [IP 組態]****。 按一下 [ **新增**]，根據您要新增的 IP 位址類型，完成下列其中一個區段中的步驟，然後按一下 **[確定]**。 
+5. 在針對所選 NIC 顯示的窗格中，按一下 [IP 組態]。 按一下 [ **新增**]，根據您要新增的 IP 位址類型，完成下列其中一個區段中的步驟，然後按一下 **[確定]**。 
 
 ### <a name="add-a-private-ip-address"></a>新增私人 IP 位址
 
 完成下列步驟，以新增私人 IP 位址：
 
 1. 完成本文的 [核心步驟](#coreadd) 一節中的步驟，並確定您位於 VM 網路介面的 [ **IP** 設定] 區段。  檢查顯示為預設 (的子網，例如 10.0.0.0/24) 。
-2. 按一下 [新增] 。 在出現的 [**新增 ip**設定] 窗格中，使用新的*靜態*私人 IP 位址來建立名為*IPConfig-4*的 ip 設定，方法是為最後八位挑選新的號碼，然後按一下 **[確定]**。   (10.0.0.0/24 子網的範例 IP 會是 *10.0.0.7*。 ) 
+2. 按一下 [新增] 。 在出現的 [**新增 ip** 設定] 窗格中，使用新的 *靜態* 私人 IP 位址來建立名為 *IPConfig-4* 的 ip 設定，方法是為最後八位挑選新的號碼，然後按一下 **[確定]**。   (10.0.0.0/24 子網的範例 IP 會是 *10.0.0.7*。 ) 
 
     > [!NOTE]
     > 新增靜態 IP 位址時，您必須在 NIC 所連接的子網路上指定未使用的有效位址。 如果您選取的位址無法使用，入口網站會針對 IP 位址顯示 X，而您必須選取不同的位址。
 
-3. 按一下 [確定] 後，窗格便會關閉，而您會看到新的 IP 組態列出。 按一下 [確定]****，以關閉 [新增 IP 組態]**** 窗格。
-4. 您可以按一下 [新增]**** 來新增其他 IP 組態，或關閉所有開啟的刀鋒視窗以完成 IP 位址新增。
+3. 按一下 [確定] 後，窗格便會關閉，而您會看到新的 IP 組態列出。 按一下 [確定]，以關閉 [新增 IP 組態] 窗格。
+4. 您可以按一下 [新增] 來新增其他 IP 組態，或關閉所有開啟的刀鋒視窗以完成 IP 位址新增。
 5. 完成本文的[將 IP 位址新增至 VM 作業系統](#os-config)一節中的步驟，將私人 IP 位址新增至 VM 作業系統。
 
 ### <a name="add-a-public-ip-address"></a>新增公用 IP 位址
@@ -76,7 +76,7 @@ ms.locfileid: "87543481"
 
 1. 瀏覽至 Azure 入口網站 (https://portal.azure.com) 並視需要進行登入。
 3. 在入口網站中，按一下 [**建立資源**  >  **網路**  >  **公用 IP 位址**]。
-4. 在顯示的 [建立公用 IP 位址]**** 窗格中，輸入 [名稱]****，選取 [IP 位址指派]**** 類型、[訂用帳戶]****、[資源群組]**** 和 [位置]****，然後按一下 [建立]****，如下圖所示︰
+4. 在顯示的 [建立公用 IP 位址] 窗格中，輸入 [名稱]，選取 [IP 位址指派] 類型、[訂用帳戶]、[資源群組] 和 [位置]，然後按一下 [建立]，如下圖所示︰
 
     ![建立公用 IP 位址資源](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 
@@ -85,23 +85,23 @@ ms.locfileid: "87543481"
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>將公用 IP 位址資源與新的 IP 組態產生關聯
 
 1. 完成本文的[核心步驟](#coreadd)一節中的步驟。
-2. 按一下 [新增] 。 在顯示的 [新增 IP 組態]**** 窗格中，建立名為 IPConfig-4** 的 IP 組態。 啟用 [公用 IP 位址]****，然後從顯示的 [選擇公用 IP 位址]**** 窗格中，選取現有的可用公用 IP 位址資源。
+2. 按一下 [新增] 。 在顯示的 [新增 IP 組態] 窗格中，建立名為 IPConfig-4 的 IP 組態。 啟用 [公用 IP 位址]，然後從顯示的 [選擇公用 IP 位址] 窗格中，選取現有的可用公用 IP 位址資源。
 
-    選取公用 IP 位址資源後，請按一下 [確定]****，窗格便會關閉。 如果您沒有現有的公用 IP 位址，您可以完成[建立公用 IP 位址資源](#create-public-ip)一節中的步驟，加以建立。 
+    選取公用 IP 位址資源後，請按一下 [確定]，窗格便會關閉。 如果您沒有現有的公用 IP 位址，您可以完成[建立公用 IP 位址資源](#create-public-ip)一節中的步驟，加以建立。 
 
 3. 檢閱新的 IP 組態。 即使未明確指派私人 IP 位址，但已自動指派一個給 IP 組態，因為所有 IP 組態都必須有一個私人 IP 位址。
-4. 您可以按一下 [新增]**** 來新增其他 IP 組態，或關閉所有開啟的刀鋒視窗以完成 IP 位址新增。
+4. 您可以按一下 [新增] 來新增其他 IP 組態，或關閉所有開啟的刀鋒視窗以完成 IP 位址新增。
 5. 完成本文的[將 IP 位址新增至 VM 作業系統](#os-config)一節中適用於您的作業系統的步驟，將私人 IP 位址新增至 VM 作業系統。 請勿將公用 IP 位址新增至作業系統。
 
 #### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>將公用 IP 位址資源與現有的 IP 組態產生關聯
 
 1. 完成本文的[核心步驟](#coreadd)一節中的步驟。
 2. 按一下您想要新增公用 IP 位址資源的 IP 組態。
-3. 在顯示的 [IPConfig] 窗格中，按一下 [IP 位址]****。
-4. 在顯示的 [選擇公用 IP 位址]**** 窗格中，選取一個公用 IP 位址。
-5. 按一下 [儲存]****，這些窗格便會關閉。 如果您沒有現有的公用 IP 位址，您可以完成[建立公用 IP 位址資源](#create-public-ip)一節中的步驟，加以建立。
+3. 在顯示的 [IPConfig] 窗格中，按一下 [IP 位址]。
+4. 在顯示的 [選擇公用 IP 位址] 窗格中，選取一個公用 IP 位址。
+5. 按一下 [儲存]，這些窗格便會關閉。 如果您沒有現有的公用 IP 位址，您可以完成[建立公用 IP 位址資源](#create-public-ip)一節中的步驟，加以建立。
 3. 檢閱新的 IP 組態。
-4. 您可以按一下 [新增]**** 來新增其他 IP 組態，或關閉所有開啟的刀鋒視窗以完成 IP 位址新增。 請勿將公用 IP 位址新增至作業系統。
+4. 您可以按一下 [新增] 來新增其他 IP 組態，或關閉所有開啟的刀鋒視窗以完成 IP 位址新增。 請勿將公用 IP 位址新增至作業系統。
 
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

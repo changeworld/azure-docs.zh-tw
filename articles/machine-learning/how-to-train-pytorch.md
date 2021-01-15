@@ -8,25 +8,25 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 12/10/2020
+ms.date: 01/14/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 962054943a68aa61ac681de97eeebc10fe3f2b0a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795932"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216626"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 大規模定型 PyTorch 模型
 
 在本文中，您將瞭解如何使用 Azure Machine Learning，以企業規模執行您的 [PyTorch](https://pytorch.org/) 訓練腳本。
 
-本文中的範例腳本可用來將雞和土耳其映射分類，以根據 PyTorch 的轉移學習 [教學](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)課程，建立深度學習神經網路 (DNN) 。 轉移學習是一種技術，可從解決一個問題到不同但相關的問題，來運用所獲得的知識。 這種定型流程的快捷方式，是要求比從頭訓練更少的資料、時間和計算資源。
+本文中的範例腳本可用來將雞和土耳其映射分類，以根據 PyTorch 的轉移學習 [教學](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)課程，建立深度學習神經網路 (DNN) 。 轉移學習是一種技術，可從解決一個問題到不同但相關的問題，來運用所獲得的知識。 這種定型流程的快捷方式，是要求比從頭訓練更少的資料、時間和計算資源。 若要深入瞭解轉移學習，請參閱 [深度學習與機器學習](./concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning) 文章。
 
 無論您是從頭開始訓練深度學習 PyTorch 模型，或是將現有的模型帶到雲端，您都可以使用 Azure Machine Learning，利用彈性的雲端計算資源來擴充開放原始碼訓練作業。 您可以使用 Azure Machine Learning 來建立、部署、版本和監視生產等級的模型。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在下列任一環境中執行此程式碼：
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: 5cd050c88fbc954a211c3a75cdabcb557ae998c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d86d4248b449ad3961a7798fd36a320eb6a74009
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073924"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217068"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>使用 PowerShell 對虛擬機器指派多個 IP 位址
 
@@ -26,7 +26,7 @@ ms.locfileid: "87073924"
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-本文說明如何使用 PowerShell 透過 Azure Resource Manager 部署模型建立虛擬機器 (VM)。 無法將多個 IP 位址指派給透過傳統部署模型建立的資源。 若要深入了解 Azure 部署模型，請參閱[了解部署模型](../resource-manager-deployment-model.md)文章。
+本文說明如何使用 PowerShell 透過 Azure Resource Manager 部署模型建立虛擬機器 (VM)。 無法將多個 IP 位址指派給透過傳統部署模型建立的資源。 若要深入了解 Azure 部署模型，請參閱[了解部署模型](../azure-resource-manager/management/deployment-models.md)文章。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
@@ -242,7 +242,7 @@ ms.locfileid: "87073924"
 
    **新增私人 IP 位址**
 
-   若要將私人 IP 位址新增至 NIC，您必須建立 IP 組態。 下列命令會建立具有靜態 IP 位址 10.0.0.7 的組態。 指定靜態 IP 位址時，它必須是子網路未使用的位址。 建議您先輸入 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` 命令來測試地址，確定它為可用。 如果 IP 位址可用，則輸出會傳回 *True*。 如果無法使用，則輸出會傳回 False** 和可用位址的清單。
+   若要將私人 IP 位址新增至 NIC，您必須建立 IP 組態。 下列命令會建立具有靜態 IP 位址 10.0.0.7 的組態。 指定靜態 IP 位址時，它必須是子網路未使用的位址。 建議您先輸入 `Test-AzPrivateIPAddressAvailability -IPAddress 10.0.0.7 -VirtualNetwork $myVnet` 命令來測試地址，確定它為可用。 如果 IP 位址可用，則輸出會傳回 *True*。 如果無法使用，則輸出會傳回 False 和可用位址的清單。
 
    ```powershell
    Add-AzNetworkInterfaceIpConfig -Name IPConfig-4 -NetworkInterface `
@@ -302,7 +302,7 @@ ms.locfileid: "87073924"
    IpConfig-3 10.0.0.6                                                                     False
    ```
 
-   由於 IpConfig 3** 的 **PublicIpAddress** 欄是空白，目前沒有與其相關聯的公用 IP 位址資源。 您可以將現有的公用 IP 位址資源新增至 IpConfig-3，或輸入下列命令以建立一個︰
+   由於 IpConfig 3 的 **PublicIpAddress** 欄是空白，目前沒有與其相關聯的公用 IP 位址資源。 您可以將現有的公用 IP 位址資源新增至 IpConfig-3，或輸入下列命令以建立一個︰
 
    ```powershell
    $MyPublicIp3 = New-AzPublicIpAddress `
@@ -311,7 +311,7 @@ ms.locfileid: "87073924"
    -Location $Location -AllocationMethod Static
    ```
 
-   輸入下列命令，將公用 IP 位址資源與名為 *IpConfig-3*的現有 IP 設定產生關聯：
+   輸入下列命令，將公用 IP 位址資源與名為 *IpConfig-3* 的現有 IP 設定產生關聯：
 
    ```powershell
    Set-AzNetworkInterfaceIpConfig `

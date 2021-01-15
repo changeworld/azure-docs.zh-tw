@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service (AKS) 中使用 AAD pod �
 services: container-service
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 150e2e71a4db8ab07caad479ae098d5b9eb746da
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d992c5c5384c04fe39511481550ab7b0ea47069e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96466363"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217867"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>在 Azure Kubernetes Service (Preview 中使用 Azure Active Directory pod 管理的身分識別) 
 
@@ -56,7 +56,7 @@ az extension update --name aks-preview
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
-az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity
+az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity --network-plugin azure
 ```
 
 使用 [az aks get 認證][az-aks-get-credentials] 登入您的 aks 叢集。 此命令也會 `kubectl` 在您的開發電腦上下載並設定用戶端憑證。

@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 101b3a05591a7815ba28756bb5b07e855b64e769
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505541"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217833"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虛擬桌面使用 Microsoft 小組
 
 >[!IMPORTANT]
->Microsoft 365 政府 (GCC) 環境支援小組的媒體優化。 GCC-High 或 DoD 不支援小組的媒體優化。
+>Microsoft 365 政府 (GCC) 和 GCC-High 環境都支援適用于小組的媒體優化。 GCC-High 或 DoD 不支援小組的媒體優化。
 
 >[!NOTE]
 >Microsoft 小組的媒體優化僅適用于 Windows 10 電腦上的 Windows 桌面用戶端。 媒體優化需要 Windows 桌面用戶端版本1.2.1026.0 或更新版本。
@@ -25,7 +25,7 @@ Windows 虛擬桌面的 Microsoft 小組支援聊天與協同作業。 使用媒
 
 使用 Microsoft 團隊的媒體優化，Windows 桌面用戶端會在本機處理適用于小組通話和會議的音訊和影片。 您仍然可以搭配其他用戶端使用 Windows 虛擬桌面的 Microsoft 小組，而不需要優化通話和會議。 所有平臺都支援小組聊天和共同作業功能。 若要重新導向遠端會話中的本機裝置，請參閱 [自訂主機集區的遠端桌面通訊協定屬性](#customize-remote-desktop-protocol-properties-for-a-host-pool)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在 Windows 虛擬桌面電腦上使用 Microsoft 小組之前，您必須執行下列動作：
 
@@ -41,7 +41,7 @@ Windows 虛擬桌面的 Microsoft 小組支援聊天與協同作業。 使用媒
 
 若要為小組啟用媒體優化，請在主機上設定下列登錄機碼：
 
-1. 從 [開始] 功能表，以系統管理員身分執行 **RegEdit** 。 流覽至 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams** 。 建立小組金鑰（如果尚未存在）。
+1. 從 [開始] 功能表，以系統管理員身分執行 **RegEdit** 。 流覽至 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams**。 建立小組金鑰（如果尚未存在）。
 
 2. 為小組金鑰建立下列值：
 
@@ -94,7 +94,7 @@ Windows 虛擬桌面的 Microsoft 小組支援聊天與協同作業。 使用媒
 
         這會將團隊安裝至32位作業系統上的 Program Files (x86) 資料夾，以及64位作業系統上的 Program Files 資料夾。 到目前為止，黃金映射設定已完成。 非持續性的安裝需要針對每部電腦安裝團隊。
 
-        安裝小組時可以設定兩個旗標， **ALLUSER = 1** 和 **ALLUSERS = 1** 。 請務必瞭解這些參數之間的差異。 **ALLUSER = 1** 參數只能用於 VDI 環境中，以指定每部電腦安裝。 **ALLUSERS = 1** 參數可以用於非 VDI 和 vdi 環境。 當您設定此參數時，team **Machine-Wide 安裝程式** 會顯示在主控台的 [程式和功能] 中，以及 Windows 設定中 & 功能的應用程式。 在電腦上具有系統管理員認證的所有使用者都可以卸載團隊。
+        安裝小組時可以設定兩個旗標， **ALLUSER = 1** 和 **ALLUSERS = 1**。 請務必瞭解這些參數之間的差異。 **ALLUSER = 1** 參數只能用於 VDI 環境中，以指定每部電腦安裝。 **ALLUSERS = 1** 參數可以用於非 VDI 和 vdi 環境。 當您設定此參數時，team **Machine-Wide 安裝程式** 會顯示在主控台的 [程式和功能] 中，以及 Windows 設定中 & 功能的應用程式。 在電腦上具有系統管理員認證的所有使用者都可以卸載團隊。
 
         > [!NOTE]
         > 在此時登入期間，使用者和系統管理員無法停用小組的自動啟動。
@@ -116,19 +116,19 @@ Windows 虛擬桌面的 Microsoft 小組支援聊天與協同作業。 使用媒
 
 1. 結束並重新啟動小組應用程式。
 
-2. 選取您的使用者設定檔影像，然後選取 [ **關於** ]。
+2. 選取您的使用者設定檔影像，然後選取 [ **關於**]。
 
-3. 選取 [ **版本** ]。
+3. 選取 [ **版本**]。
 
-      如果已載入媒體優化，橫幅會顯示已 **優化的 WVD 媒體** 。 如果橫幅顯示 **未連線的 WVD 媒體** ，請結束小組應用程式，然後再試一次。
+      如果已載入媒體優化，橫幅會顯示已 **優化的 WVD 媒體**。 如果橫幅顯示 **未連線的 WVD 媒體**，請結束小組應用程式，然後再試一次。
 
-4. 選取您的使用者設定檔影像，然後選取 [ **設定** ]。
+4. 選取您的使用者設定檔影像，然後選取 [ **設定**]。
 
-      如果已載入媒體優化，則會在裝置功能表中列舉在本機可用的音訊裝置和攝影機。 如果功能表顯示 **遠端音訊** ，請結束小組應用程式，然後再試一次。 如果裝置仍未出現在功能表中，請檢查您本機電腦上的隱私權設定。 確定已開啟 **[設定**  >  **隱私權**  >  **應用程式] 許可權** 設定 [ **允許應用程式存取您的麥克風** ]。 **On** 中斷與遠端會話的連線，然後重新連線，然後再次檢查音訊和影片裝置。 若要使用影片加入通話和會議，您也必須授與應用程式存取相機的許可權。
+      如果已載入媒體優化，則會在裝置功能表中列舉在本機可用的音訊裝置和攝影機。 如果功能表顯示 **遠端音訊**，請結束小組應用程式，然後再試一次。 如果裝置仍未出現在功能表中，請檢查您本機電腦上的隱私權設定。 確定已開啟 **[設定**  >  **隱私權**  >  **應用程式] 許可權** 設定 [**允許應用程式存取您的麥克風**]。  中斷與遠端會話的連線，然後重新連線，然後再次檢查音訊和影片裝置。 若要使用影片加入通話和會議，您也必須授與應用程式存取相機的許可權。
 
       如果未載入優化，請卸載，然後重新安裝小組，然後再檢查一次。
 
-## <a name="known-issues-and-limitations"></a>已知問題和限制
+## <a name="known-issues-and-limitations"></a>已知的問題及限制
 
 在虛擬化環境中使用小組與在非虛擬化環境中使用小組不同。 如需有關虛擬化環境中小組限制的詳細資訊，請參閱 [虛擬化桌面基礎結構的團隊](/microsoftteams/teams-for-vdi#known-issues-and-limitations)。
 
@@ -140,7 +140,7 @@ Windows 虛擬桌面的 Microsoft 小組支援聊天與協同作業。 使用媒
 
 ### <a name="calls-and-meetings"></a>通話和會議
 
-- Windows 虛擬桌面環境中的小組桌面用戶端不支援實況活動。 目前，建議您改為從遠端會話中的 [小組 web 用戶端](https://teams.microsoft.com) 加入實況活動。
+- Windows 虛擬桌面環境中的小組桌面用戶端不支援建立實況活動，但您可以加入實況活動。 目前，建議您改為從遠端會話的 [小組 web 用戶端](https://teams.microsoft.com) 建立實況活動。
 - 通話或會議目前不支援應用程式共用。 桌面會話支援桌面共用。
 - 目前不支援提供控制項和取得控制項。
 - Windows 虛擬桌面的團隊一次只支援一個傳入的影片輸入。 這表示每當有人嘗試共用其畫面時，就會顯示其畫面，而不是會議領導人的畫面。

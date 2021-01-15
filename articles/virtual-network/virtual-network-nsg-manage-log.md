@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 221f7577b3181b1535ab9f544073dac4d031fe66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d06c251ce16aff56a3645f5032cce4e27d5fc9e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89319435"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216881"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>網路安全性群組的資源記錄
 
@@ -26,7 +26,7 @@ ms.locfileid: "89319435"
 * **事件︰** 記錄要根據 MAC 位址，將哪些 NSG 規則套用至 VM 的項目。
 * **規則計數器：** 包含套用每個 NSG 規則以拒絕或允許流量之次數的項目。 這些規則的狀態會每隔300秒收集一次。
 
-資源記錄僅適用于透過 Azure Resource Manager 部署模型部署的 Nsg。 您無法針對透過傳統部署模型部署的 Nsg 啟用資源記錄。 若要深入了解這兩個模型，請參閱[了解 Azure 部署模型](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+資源記錄僅適用于透過 Azure Resource Manager 部署模型部署的 Nsg。 您無法針對透過傳統部署模型部署的 Nsg 啟用資源記錄。 若要深入了解這兩個模型，請參閱[了解 Azure 部署模型](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 針對您想要收集診斷資料的 *每個* NSG，會另外啟用資源記錄。 如果您對活動 (操作) 記錄檔有興趣，請參閱 Azure [活動記錄](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
@@ -37,18 +37,18 @@ ms.locfileid: "89319435"
 ### <a name="azure-portal"></a>Azure 入口網站
 
 1. 登入[入口網站](https://portal.azure.com)。
-2. 選取 [所有服務]****，然後輸入*網路安全性群組*。 當 [網路安全性群組]**** 出現在搜尋結果中時，請選取它。
+2. 選取 [所有服務]，然後輸入 *網路安全性群組*。 當 [網路安全性群組] 出現在搜尋結果中時，請選取它。
 3. 選取您想要啟用記錄功能的 NSG。
-4. 在 [監視]**** 下方，選取 [診斷記錄]****，然後選取 [開啟診斷]****，如下圖所示：
+4. 在 [監視] 下方，選取 [診斷記錄]，然後選取 [開啟診斷]，如下圖所示：
 
    ![開啟診斷](./media/virtual-network-nsg-manage-log/turn-on-diagnostics.png)
 
-5. 在 [診斷設定]**** 下方，輸入或選取下列資訊，然後選取 [儲存]****：
+5. 在 [診斷設定] 下方，輸入或選取下列資訊，然後選取 [儲存]：
 
     | 設定                                                                                     | 值                                                          |
     | ---------                                                                                   |---------                                                       |
     | 名稱                                                                                        | 您選擇的名稱。  例如：*myNsgDiagnostics*      |
-    | **封存至儲存體帳戶**，**串流至事件中樞**，以及**傳送至 Log Analytics** | 您可以任意選取多個目的地。 若要深入了解每個目的地，請參閱[記錄目的地](#log-destinations)。                                                                                                                                           |
+    | **封存至儲存體帳戶**，**串流至事件中樞**，以及 **傳送至 Log Analytics** | 您可以任意選取多個目的地。 若要深入了解每個目的地，請參閱[記錄目的地](#log-destinations)。                                                                                                                                           |
     | 記錄                                                                                         | 選取任一或兩個記錄類別。 若要深入了解針對每個類別所記錄的資料，請參閱[記錄類別](#log-categories)。                                                                                                                                             |
 6. 檢視及分析記錄。 如需詳細資訊，請參閱[檢視及分析記錄](#view-and-analyze-logs)。
 
@@ -68,7 +68,7 @@ $Nsg=Get-AzNetworkSecurityGroup `
   -ResourceGroupName myResourceGroup
 ```
 
-您可以將資源記錄寫入三個目的地類型。 如需詳細資訊，請參閱[記錄目的地](#log-destinations)。 舉例來說，本文中的內容會將記錄傳送到 *Log Analytics* 目的地。 使用 [AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)取得現有的 Log Analytics 工作區。 例如，若要在名為 myWorkspaces** 的資源群組中擷取名為 myWorkspace** 的現有工作區，請輸入下列命令：
+您可以將資源記錄寫入三個目的地類型。 如需詳細資訊，請參閱[記錄目的地](#log-destinations)。 舉例來說，本文中的內容會將記錄傳送到 *Log Analytics* 目的地。 使用 [AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)取得現有的 Log Analytics 工作區。 例如，若要在名為 myWorkspaces 的資源群組中擷取名為 myWorkspace 的現有工作區，請輸入下列命令：
 
 ```azurepowershell-interactive
 $Oms=Get-AzOperationalInsightsWorkspace `
@@ -87,7 +87,7 @@ Set-AzDiagnosticSetting `
   -Enabled $true
 ```
 
-如果您只想針對其中一個類別 (而非兩者) 記錄資料，請將 `-Categories` 選項加入至先前的命令，後面接著輸入 *NetworkSecurityGroupEvent* 或 *NetworkSecurityGroupRuleCounter*。 如果您想要記錄到 Log Analytics 工作區以外的不同[目的地](#log-destinations)，請使用適用於 Azure [儲存體帳戶](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的適當參數。
+如果您只想針對其中一個類別 (而非兩者) 記錄資料，請將 `-Categories` 選項加入至先前的命令，後面接著輸入 *NetworkSecurityGroupEvent* 或 *NetworkSecurityGroupRuleCounter*。 如果您想要記錄到 Log Analytics 工作區以外的不同[目的地](#log-destinations)，請使用適用於 Azure [儲存體帳戶](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)或[事件中樞](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)的適當參數。
 
 檢視及分析記錄。 如需詳細資訊，請參閱[檢視及分析記錄](#view-and-analyze-logs)。
 
@@ -109,7 +109,7 @@ nsgId=$(az network nsg show \
 
 您可以將資源記錄寫入三個目的地類型。 如需詳細資訊，請參閱[記錄目的地](#log-destinations)。 舉例來說，本文中的內容會將記錄傳送到 *Log Analytics* 目的地。 如需詳細資訊，請參閱[記錄類別](#log-categories)。
 
-使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create)來啟用 NSG 的資源記錄。 下列範例會將事件和計數器類別資料都記錄到名為 myWorkspace** 的現有工作區，該工作區存在於名為 myWorkspaces** 的資源群組中，NSG 識別碼則是您先前所擷取的：
+使用 [az monitor 診斷-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create)來啟用 NSG 的資源記錄。 下列範例會將事件和計數器類別資料都記錄到名為 myWorkspace 的現有工作區，該工作區存在於名為 myWorkspaces 的資源群組中，NSG 識別碼則是您先前所擷取的：
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \
@@ -122,16 +122,16 @@ az monitor diagnostic-settings create \
 
 如果您目前沒有工作區，可以使用 [Azure 入口網站](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或 [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) 來建立一個工作區。 您可以啟用記錄的記錄類別有兩種。
 
-如果您只想要記錄某個類別或其他類別的資料，請在上一個命令中移除您不想要記錄資料的類別。 如果您想要記錄到 Log Analytics 工作區以外的不同[目的地](#log-destinations)，請使用適用於 Azure [儲存體帳戶](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)或[事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)的適當參數。
+如果您只想要記錄某個類別或其他類別的資料，請在上一個命令中移除您不想要記錄資料的類別。 如果您想要記錄到 Log Analytics 工作區以外的不同[目的地](#log-destinations)，請使用適用於 Azure [儲存體帳戶](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)或[事件中樞](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)的適當參數。
 
 檢視及分析記錄。 如需詳細資訊，請參閱[檢視及分析記錄](#view-and-analyze-logs)。
 
 ## <a name="log-destinations"></a>記錄目的地
 
 診斷資料可以：
-- [寫入至 Azure 儲存體帳戶](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以利稽核或手動檢查。 您可以使用資源診斷設定來指定保留時間 (以天為單位)。
-- [串流至事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以供第三方服務或自訂的分析解決方案 (如 PowerBI) 擷取。
-- [寫入 Azure 監視器記錄](../azure-monitor/platform/resource-logs-collect-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)檔。
+- [寫入至 Azure 儲存體帳戶](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)，以利稽核或手動檢查。 您可以使用資源診斷設定來指定保留時間 (以天為單位)。
+- [串流至事件中樞](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs)，以供第三方服務或自訂的分析解決方案 (如 PowerBI) 擷取。
+- [寫入 Azure 監視器記錄](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage)檔。
 
 ## <a name="log-categories"></a>記錄類別
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296620"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218360"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>從受限制的網路連接到工作區資源
 
@@ -40,7 +40,7 @@ ms.locfileid: "96296620"
 
 當您建立其他三個規則時，請將 **目的地服務標記** 的值取代為清單中的 **AzureFrontDoor 前端**、 **AzureActiveDirectory** 或 **AzureMonitor** 。
 
-如需詳細資訊，請參閱 [服務標記總覽](/azure/virtual-network/service-tags-overview)。
+如需詳細資訊，請參閱 [服務標記總覽](../../virtual-network/service-tags-overview.md)。
 
 ## <a name="step-2-create-private-link-hubs"></a>步驟2：建立私人連結中樞
 
@@ -153,7 +153,7 @@ ms.locfileid: "96296620"
 ![建立 Synapse 私人 DNS 區域5的螢幕擷取畫面。](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-5.png)
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解 [受控工作區虛擬網路](./synapse-workspace-managed-vnet.md)。
 

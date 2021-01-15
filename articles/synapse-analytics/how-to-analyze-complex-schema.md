@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43e4027c9d88b209ed0606e045dd5b4d47d3ff6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a35cdebe5ff4db562b19dc4ceed069a831af4305
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088511"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219992"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>分析 Azure Synapse Analytics 中的複雜資料類型
 
@@ -28,7 +28,7 @@ ms.locfileid: "92088511"
 
 ## <a name="what-are-arrays-and-nested-structures"></a>什麼是陣列和嵌套結構？
 
-以下是來自 [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)的物件。 在此物件中，有包含嵌套結構的嵌套結構和陣列。
+以下是來自 [Application Insights](../azure-monitor/app/app-insights-overview.md)的物件。 在此物件中，有包含嵌套結構的嵌套結構和陣列。
 
 ```json
 {
@@ -221,4 +221,4 @@ with ( ProfileType varchar(50) '$.customerInfo.ProfileType',
 ## <a name="next-steps"></a>後續步驟
 
 * [瞭解如何使用 Spark 查詢 Azure Cosmos DB 的 Synapse 連結](./synapse-link/how-to-query-analytical-store-spark.md)
-* [查詢 Parquet 巢狀型別](./sql/query-parquet-nested-types.md) 
+* [查詢 Parquet 巢狀型別](./sql/query-parquet-nested-types.md)

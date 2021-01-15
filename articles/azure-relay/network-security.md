@@ -3,17 +3,17 @@ title: Azure 轉送的網路安全性
 description: 本文說明如何搭配 Azure 轉送使用 IP 防火牆規則和私人端點。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134461"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217238"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure 轉送的網路安全性 
 本文說明如何搭配 Azure 轉送使用下列安全性功能： 
 
-- IP 防火牆規則 (預覽) 
+- IP 防火牆規則
 - 私人端點 
 
 > [!NOTE]
@@ -28,9 +28,6 @@ ms.locfileid: "98134461"
 IP 防火牆規則會套用於轉送命名空間層級。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 從不符合轉送命名空間上允許之 IP 規則的 IP 位址嘗試進行的任何連線，都會被拒絕為未經授權。 回應則不涉及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
 
 如需詳細資訊，請參閱 [如何設定轉送命名空間的 IP 防火牆](ip-firewall-virtual-networks.md)
-
-> [!NOTE]
-> 此功能目前為 **預覽** 狀態。 
 
 ## <a name="private-endpoints"></a>私人端點
 

@@ -11,18 +11,18 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 04/19/2020
-ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493634"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219125"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>使用動態管理檢視來監視 Microsoft Azure SQL Database 和 Azure SQL 受控執行個體效能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Microsoft Azure SQL Database 和 Azure SQL 受控執行個體啟用動態管理檢視的子集，以診斷效能問題，這些問題可能是因為封鎖或長時間執行的查詢、資源瓶頸、不佳的查詢計劃等所造成。 本主題提供有關如何使用動態管理檢視來偵測常見效能問題的資訊。
+Microsoft Azure SQL Database 和 Azure SQL 受控執行個體啟用動態管理檢視的子集，以診斷效能問題，這些問題可能是因為封鎖或長時間執行的查詢、資源瓶頸、不佳的查詢計劃等所造成。 本文提供有關如何使用動態管理檢視來偵測常見效能問題的資訊。
 
 Microsoft Azure SQL Database 和 Azure SQL 受控執行個體部分支援動態管理檢視的三種類別：
 
@@ -254,12 +254,12 @@ GO
 
 識別 IO 效能問題時，與 `tempdb` 問題相關聯的常見等候類型為 `PAGELATCH_*` (而非 `PAGEIOLATCH_*`)。 不過，`PAGELATCH_*` 等候不一定表示您有 `tempdb` 爭用。  這個等候也表示您有使用者物件資料頁面爭用，因為針對相同的資料頁面進行並行要求。 若要進一步確認 `tempdb` 爭用，請使用 [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) 來確認 wait_resource 值的開頭為 `2:x:y` ：2是 `tempdb` 資料庫識別碼、檔案 `x` 識別碼和 `y` 頁面識別碼。  
 
-對於 tempdb 爭用，常見的方法是減少或重新撰寫依賴 `tempdb` 的應用程式程式碼。  常見的 `tempdb` 使用區域包括：
+針對 tempdb 爭用，常見的方法是減少或重寫依賴的應用程式程式碼 `tempdb` 。  常見的 `tempdb` 使用區域包括：
 
 - 暫存資料表
 - 資料表變數
 - 資料表值參數
-- 版本存放區使用量 (特別是與長時間執行的交易相關聯)
+- 版本存放區使用量 (與長時間執行的交易相關聯) 
 - 具有使用排序、雜湊聯結和多工緩衝處理之查詢計劃的查詢
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>使用資料表變數和暫存資料表的常見查詢
@@ -563,14 +563,14 @@ SELECT resource_name, AVG(avg_cpu_percent) AS Average_Compute_Utilization
 FROM sys.server_resource_stats
 WHERE start_time BETWEEN @s AND @e  
 GROUP BY resource_name  
-HAVING AVG(avg_cpu_percent) >= 80
+HAVING AVG(avg_cpu_percent) >= 80;
 ```
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
 
 **Master** 資料庫中的 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) view 具有其他資訊，可協助您監視資料庫的特定服務層級和計算大小的效能。 這項資料每隔 5 分鐘就會收集一次，並且會維持大約 14 天。 此視圖適用于資料庫如何使用資源的長期歷程記錄分析。
 
-下圖顯示在一週中 P2 計算大小之高階資料庫每小時的 CPU 資源使用量。 此圖從星期一開始，顯示 5 個工作天，然後顯示較少發生在應用程式的週末。
+下圖顯示在一週中 P2 計算大小之高階資料庫每小時的 CPU 資源使用量。 此圖形從星期一開始，顯示五個工作天，然後顯示在應用程式上較少發生的週末。
 
 ![資料庫資源使用](./media/monitoring-with-dmvs/sql_db_resource_utilization.png)
 
@@ -589,7 +589,7 @@ HAVING AVG(avg_cpu_percent) >= 80
 SELECT TOP 10 *
 FROM sys.resource_stats
 WHERE database_name = 'resource1'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ![sys.resource_stats 目錄檢視](./media/monitoring-with-dmvs/sys_resource_stats.png)
@@ -624,7 +624,7 @@ ORDER BY start_time DESC
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. 利用這項有關各資源度量平均值和最大值的資訊，您可以評估您的工作負載與您所選之計算大小的符合程度。 通常，來自 **sys.resource_stats** 的平均值可提供您對目標大小所使用的理想基準。 它應該是您主要的量尺。 例如，您可能使用標準服務層級搭配 S2 計算大小。 CPU 以及 IO 讀取和寫入的平均使用量百分比低於 40%，背景工作角色平均數目低於 50，而且工作階段平均數目低於 200。 您的工作負載可能符合 S1 計算大小。 要看到您的資料庫是否符合背景工作和工作階段限制範圍內非常容易。 若要查看資料庫在 CPU、讀取和寫入方面是否符合較低的計算大小，請將較低計算大小的 DTU 數目除以目前計算大小的 DTU 數目，然後將結果乘以 100：
+3. 利用這項有關各資源度量平均值和最大值的資訊，您可以評估您的工作負載與您所選之計算大小的符合程度。 通常，來自 **sys.resource_stats** 的平均值可提供您對目標大小所使用的理想基準。 它應該是您主要的量尺。 例如，您可能使用標準服務層級搭配 S2 計算大小。 CPU 以及 IO 讀取和寫入的平均使用量百分比低於 40%，背景工作角色平均數目低於 50，而且工作階段平均數目低於 200。 您的工作負載可能符合 S1 計算大小。 要看到您的資料庫是否符合背景工作和工作階段限制範圍內非常容易。 若要查看資料庫在 CPU、讀取和寫入方面是否符合較低的計算大小，請將較低計算大小的 DTU 數目除以目前計算大小的 DTU 數目，然後將結果乘以100：
 
     `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
@@ -699,7 +699,7 @@ AND D.name = 'MyDatabase';
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
-FROM sys.dm_exec_connections
+FROM sys.dm_exec_connections;
 ```
 
 如果您要分析 SQL Server 的工作負載，請修改查詢以專注于特定的資料庫。 如果您考慮將資料庫移至 Azure，此查詢可協助您判斷資料庫的可能會話需求。
@@ -709,7 +709,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections C
 INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
 INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-WHERE D.name = 'MyDatabase'
+WHERE D.name = 'MyDatabase';
 ```
 
 同樣地，這些查詢傳回的是某一時間點的計數。 如果您收集一段時間的多個範例，您將能充分瞭解您的會話使用方式。
@@ -743,7 +743,7 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>監視封鎖的查詢
 
-速度慢或長時間執行的查詢會造成過度的資源耗用，並且會導致封鎖查詢的後果。 導致封鎖的原因可能是不佳的應用程式設計、不良的查詢計畫、缺乏有用的索引等等。 您可以使用 sys.dm_tran_locks view 來取得資料庫中目前鎖定活動的相關資訊。 如需範例程式碼，請參閱 [sys.dm_tran_locks (transact-sql) ](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)。
+速度慢或長時間執行的查詢會造成過度的資源耗用，並且會導致封鎖查詢的後果。 導致封鎖的原因可能是不佳的應用程式設計、不良的查詢計畫、缺乏有用的索引等等。 您可以使用 sys.dm_tran_locks view 來取得資料庫中目前鎖定活動的相關資訊。 如需範例程式碼，請參閱 [sys.dm_tran_locks (transact-sql) ](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql)。 如需疑難排解封鎖的詳細資訊，請參閱 [瞭解及解決 AZURE SQL 封鎖問題](understand-resolve-blocking.md)。
 
 ### <a name="monitoring-query-plans"></a>監視查詢計畫
 
@@ -769,6 +769,6 @@ CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [Azure SQL Database 和 Azure SQL 受控執行個體簡介](sql-database-paas-overview.md)

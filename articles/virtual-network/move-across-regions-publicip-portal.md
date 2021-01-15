@@ -7,18 +7,18 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b00fca8cf39bc44e0e53a112a332e6f6c5f0194e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711471"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218598"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>使用 Azure 入口網站將 Azure 公用 IP 設定移至另一個區域
 
 有許多情況會讓您想要將現有的 Azure 公用 IP 設定從某個區域移至另一個。 例如，您可能會希望使用相同的設定和 SKU 來建立公用 IP 以進行測試。 基於災害復原規劃，您可能也會想要將公用 IP 設定移至另一個區域。
 
-**Azure 公用 IP 特定於區域，且無法從某個區域移至另一個區域。** 不過，您可使用 Azure Resource Manager 範本來匯出公用 IP 的現有設定。  接著，您可將公用 IP 匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域，藉此將資源放在另一個區域中。  如需有關 Resource Manager 和範本的詳細資訊，請參閱[快速入門：使用 Azure 入口網站建立及部署 Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+**Azure 公用 IP 特定於區域，且無法從某個區域移至另一個區域。** 不過，您可使用 Azure Resource Manager 範本來匯出公用 IP 的現有設定。  接著，您可將公用 IP 匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域，藉此將資源放在另一個區域中。  如需有關 Resource Manager 和範本的詳細資訊，請參閱[快速入門：使用 Azure 入口網站建立及部署 Azure Resource Manager 範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 
 ## <a name="prerequisites"></a>必要條件
@@ -33,7 +33,7 @@ ms.locfileid: "84711471"
 
 - 請驗證 Azure 訂用帳戶允許在所使用目標區域中建立 VM。 請連絡支援人員啟用所需的配額。
 
-- 請確認訂用帳戶具有足夠資源，能支援新增公用 IP 以用於此程序。  請參閱 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
+- 請確認訂用帳戶具有足夠資源，能支援新增公用 IP 以用於此程序。  請參閱 [Azure 訂用帳戶和服務限制、配額與限制](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)。
 
 
 ## <a name="prepare-and-move"></a>準備及移動
@@ -41,12 +41,12 @@ ms.locfileid: "84711471"
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>匯出範本並從指令碼部署
 
-1. 登入[Azure 入口網站](https://portal.azure.com)  >  **資源群組**。
+1. 登入 [Azure 入口網站](https://portal.azure.com)  >  **資源群組**。
 2. 找出包含來源公用 IP 的資源群組，然後按一下它。
 3. 選取 >**設定**  >  **匯出範本**。
 4. 選擇 [**匯出範本**] 分頁中的 [**部署**]。
-5. 按一下 [**範本**  >  **編輯參數**]，在線上編輯器中開啟檔案**parameters.js** 。
-8. 若要編輯公用 IP 名稱的參數，請將 [**參數**值] 下的 [  >  **value**來源公用 ip 名稱] 屬性變更為目標公用 ip 的名稱，並確定名稱是以引號括住：
+5. 按一下 [**範本**  >  **編輯參數**]，在線上編輯器中開啟檔案 **parameters.js** 。
+8. 若要編輯公用 IP 名稱的參數，請將 [**參數** 值] 下的 [  >  來源公用 ip 名稱] 屬性變更為目標公用 ip 的名稱，並確定名稱是以引號括住：
 
     ```json
             {
@@ -62,7 +62,7 @@ ms.locfileid: "84711471"
     ```
 8.  在編輯器中按一下 [ **儲存** ]。
 
-9.  按一下 [**範本**  >  **編輯範本**]，在線上編輯器中開啟檔案**template.js** 。
+9.  按一下 [**範本**  >  **編輯範本**]，在線上編輯器中開啟檔案 **template.js** 。
 
 10. 若要編輯將移動公用 IP 的目的地區域，請變更 [**資源**] 底下的 [**位置**] 屬性：
 
@@ -94,7 +94,7 @@ ms.locfileid: "84711471"
 
 12. 您也可以根據需求而選擇變更範本中的其他參數：
 
-    * **Sku** -您可以變更 [template.json] 檔案中的 [ **sku**  >  **名稱**] 屬性，將設定中的公用 IP sku 從 standard 變更為 basic **template.json**或 basic，以變更為標準：
+    * **Sku** -您可以變更 [template.json] 檔案中的 [ **sku**  >  **名稱**] 屬性，將設定中的公用 IP sku 從 standard 變更為 basic 或 basic，以變更為標準：
 
         ```json
           "resources": [
@@ -109,9 +109,9 @@ ms.locfileid: "84711471"
             },
         ```
 
-        如需基本和標準 sku 公用 ip 之間差異的詳細資訊，請參閱 [建立、變更或刪除公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)：
+        如需基本和標準 sku 公用 ip 之間差異的詳細資訊，請參閱 [建立、變更或刪除公用 IP 位址](./virtual-network-public-ip-address.md)：
 
-    * **公用 IP 配置方法**和**閒置逾時** - 您可將 **publicIPAllocationMethod** 屬性從**動態**變更為**靜態**，或從**靜態**變更為**動態**，以在範本中變更這兩個選項。 將 **idleTimeoutInMinutes** 屬性變更為所要的數量，即可變更閒置時間。  預設值為 **4**：
+    * **公用 IP 配置方法** 和 **閒置逾時** - 您可將 **publicIPAllocationMethod** 屬性從 **動態** 變更為 **靜態**，或從 **靜態** 變更為 **動態**，以在範本中變更這兩個選項。 將 **idleTimeoutInMinutes** 屬性變更為所要的數量，即可變更閒置時間。  預設值為 **4**：
 
         ```json
           "resources": [
@@ -135,16 +135,16 @@ ms.locfileid: "84711471"
 
         ```
 
-        如需配置方法和閒置逾時值的詳細資訊，請參閱[建立、變更或刪除公用 IP 位址](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address) (機器翻譯)。
+        如需配置方法和閒置逾時值的詳細資訊，請參閱[建立、變更或刪除公用 IP 位址](./virtual-network-public-ip-address.md) (機器翻譯)。
 
 
 13. 在線上編輯器中按一下 [ **儲存** ]。
 
-14. 按一下 [**基本**]  >  **訂**用帳戶，選擇將部署目標公用 IP 的訂用帳戶。
+14. 按一下 [**基本**]  >  **訂** 用帳戶，選擇將部署目標公用 IP 的訂用帳戶。
 
 15. 按一下 [**基本**  >  **資源群組**]，選擇將部署目標公用 IP 的資源群組。  您可以按一下 [ **建立新** 的]，為目標公用 IP 建立新的資源群組。  請確定名稱與現有來源公用 IP 的來源資源群組不相同。
 
-16. 確認**基本**  >  **位置**已設為您想要部署公用 IP 的目標位置。
+16. 確認 **基本**  >  **位置** 已設為您想要部署公用 IP 的目標位置。
 
 17. 在 [ **設定** ] 底下，確認名稱符合您在上述 [參數編輯器] 中輸入的名稱。
 
@@ -165,5 +165,5 @@ ms.locfileid: "84711471"
 在本教學課程中，您已將 Azure 公用 IP 從某區域移至另一個區域，並清除了來源資源。  若要深入了解如何在 Azure 中的區域之間移動資源和災害復原，請參閱：
 
 
-- [將資源移至新的資源群組或訂用帳戶](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [將 Azure VM 移至其他區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [將資源移至新的資源群組或訂用帳戶](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [將 Azure VM 移至其他區域](../site-recovery/azure-to-azure-tutorial-migrate.md)

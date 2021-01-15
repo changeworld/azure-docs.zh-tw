@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dbbe3afb2a5eb19b5c4893bd73eddbf11e788d4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109261"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218071"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>如何設定 Synapse 工作區的存取控制 
 
@@ -73,8 +73,8 @@ ms.locfileid: "97109261"
 針對基本設定，這五個群組就已足夠。 稍後，您可以新增安全性群組來處理需要更特製化存取權的使用者，或只授與使用者特定資源的存取權。
 
 > [!NOTE]
->- 從[此文章](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)可了解如何建立安全性群組。
->- 從[此文章](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal)可了解如何從另一個安全性群組新增安全性群組。
+>- 從[此文章](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)可了解如何建立安全性群組。
+>- 從[此文章](../../active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)可了解如何從另一個安全性群組新增安全性群組。
 
 >[!Tip]
 >個別的 Synapse 使用者可以使用 Azure 入口網站中的 Azure Active Directory 來查看其群組成員資格，以判斷他們被授與的角色。
@@ -101,7 +101,7 @@ Synapse 工作區會使用的預設儲存體容器：
 
 在 Azure 入口網站中，建立 Synapse 工作區：
 
-- 選取訂用帳戶
+- 選取您的訂用帳戶
 - 選取或建立您擁有 Azure **擁有** 者角色的資源群組。
 - 命名工作區 `workspace1`
 - 選擇 `storage1` 儲存體帳戶

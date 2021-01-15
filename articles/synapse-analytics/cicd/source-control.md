@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008147"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219737"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio 中的原始檔控制
 
@@ -77,7 +77,7 @@ ms.locfileid: "97008147"
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>使用不同的 Azure Active Directory 租用戶
 
-Azure Repos Git 存放庫可以位於不同的 Azure Active Directory 租用戶中。 若要指定不同的 Azure AD 租用戶，您必須擁有所用 Azure 訂用帳戶的系統管理員權限。 如需詳細資訊，請參閱 [變更訂用帳戶管理員](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator)
+Azure Repos Git 存放庫可以位於不同的 Azure Active Directory 租用戶中。 若要指定不同的 Azure AD 租用戶，您必須擁有所用 Azure 訂用帳戶的系統管理員權限。 如需詳細資訊，請參閱 [變更訂用帳戶管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator)
 
 > [!IMPORTANT]
 > 若要連接到其他 Azure Active Directory，登入的使用者必須是該 Active Directory 的一部分。 
@@ -86,7 +86,7 @@ Azure Repos Git 存放庫可以位於不同的 Azure Active Directory 租用戶�
 
 若要使用個人 Microsoft 帳戶進行 Git 整合，您可以將個人的 Azure Repos 連結至貴組織的 Active Directory。
 
-1. 以來賓身分將您的個人 Microsoft 帳戶新增到貴組織的 Active Directory。 如需詳細資訊，請參閱[在 Azure 入口網站中新增 Azure Active Directory B2B 共同作業使用者](https://docs.microsoft.com/azure/active-directory/external-identities/add-users-administrator)。
+1. 以來賓身分將您的個人 Microsoft 帳戶新增到貴組織的 Active Directory。 如需詳細資訊，請參閱[在 Azure 入口網站中新增 Azure Active Directory B2B 共同作業使用者](../../active-directory/external-identities/add-users-administrator.md)。
 
 2. 使用您的個人 Microsoft 帳戶登入 Azure 入口網站。 然後切換到貴組織的 Active Directory。
 

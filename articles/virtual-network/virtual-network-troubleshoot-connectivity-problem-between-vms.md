@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: eb94b67b026ed108f31f6cd802010577665ec0d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ece3e639e0ef3516696e2a0bad7deeb833433a6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87286082"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219193"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>為 Azure VM 之間的連線問題疑難排解
 
@@ -49,7 +49,7 @@ ms.locfileid: "87286082"
 
 ### <a name="step-1-check-whether-nic-is-misconfigured"></a>步驟 1：檢查 NIC 是否設定不正確
 
-請遵循[如何重設 Azure Windows VM 的網路介面](../virtual-machines/windows/reset-network-interface.md)中的步驟。 
+請遵循[如何重設 Azure Windows VM 的網路介面](../virtual-machines/troubleshooting/reset-network-interface.md)中的步驟。 
 
 如果修改網路介面 (NIC) 後發生問題，請遵循下列步驟：
 
@@ -62,8 +62,8 @@ ms.locfileid: "87286082"
 
 **單一 NIC VM** 
 
-- [重新部署 Windows VM](../virtual-machines/windows/redeploy-to-new-node.md)
-- [重新部署 Linux VM](../virtual-machines/linux/redeploy-to-new-node.md)
+- [重新部署 Windows VM](../virtual-machines/troubleshooting/redeploy-to-new-node-windows.md)
+- [重新部署 Linux VM](../virtual-machines/troubleshooting/redeploy-to-new-node-linux.md)
 
 ### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>步驟 2：檢查 NSG 或 UDR 是否封鎖網路流量
 
@@ -103,7 +103,7 @@ netstat -l
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>步驟 7：檢查是否已為傳統 VM 建立端點
 
-您在 Azure 中使用傳統部署模型建立的所有虛擬機器，都可以自動透過私人網路通道與同一雲端服務或虛擬網路中的其他虛擬機器通訊。 不過，其他虛擬網路上的電腦需要端點，才能將傳入網路流量導向至虛擬機器。 如需詳細資訊，請參閱[如何設定端點](../virtual-machines/windows/classic/setup-endpoints.md)。
+您在 Azure 中使用傳統部署模型建立的所有虛擬機器，都可以自動透過私人網路通道與同一雲端服務或虛擬網路中的其他虛擬機器通訊。 不過，其他虛擬網路上的電腦需要端點，才能將傳入網路流量導向至虛擬機器。 如需詳細資訊，請參閱[如何設定端點](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints)。
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>步驟 8：嘗試連線至 VM 網路共用
 

@@ -8,20 +8,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9782cce4165487b612c0295dc893d120ed043225
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461330"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218258"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>使用私人連結連線到您的 Azure Synapse 工作區
 
-本文將告訴您如何建立私人端點至 Azure Synapse 工作區。 深入了解[私人連結和私人端點](https://docs.microsoft.com/azure/private-link/)。
+本文將告訴您如何建立私人端點至 Azure Synapse 工作區。 深入了解[私人連結和私人端點](../../private-link/index.yml)。
 
 ## <a name="step-1-register-network-resource-provider"></a>步驟 1:註冊網路資源提供者
 
-如果您尚未這麼做，請註冊網路資源提供者。 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 當您[註冊](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types) \(部分機器翻譯\) 時，請從資源提供者清單中選擇 [Microsoft.Network]。 如果網路資源提供者已註冊，請繼續進行步驟 2。
+如果您尚未這麼做，請註冊網路資源提供者。 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。 當您[註冊](../../azure-resource-manager/management/resource-providers-and-types.md) \(部分機器翻譯\) 時，請從資源提供者清單中選擇 [Microsoft.Network]。 如果網路資源提供者已註冊，請繼續進行步驟 2。
 
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>步驟 2:在 Azure 入口網站中開啟您的 Azure Synapse 工作區
 
