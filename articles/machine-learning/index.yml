@@ -13,12 +13,12 @@ metadata:
   author: BlackMist
   ms.date: 09/21/2020
   ms.custom: contperf-fy21q1
-  ms.openlocfilehash: ddf39e9822d55f8e7bec8a0e36659757ac9b4770
-  ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+  ms.openlocfilehash: 015dcc240d75500e7c145ba2544f27c13c0c3493
+  ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/11/2021
-  ms.locfileid: "98071981"
+  ms.lasthandoff: 01/13/2021
+  ms.locfileid: "98165377"
 landingContent:
 - title: 開始使用：程式碼優先
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
     links:
     - text: 將您的模型部署到雲端
       url: how-to-deploy-existing-model.md
-    - text: 追蹤和部署 MLflow 模型
+    - text: 追蹤 MLflow 模型
       url: how-to-use-mlflow.md
 - title: 部署和管理模型 (MLOps)
   linkLists:
@@ -68,6 +68,8 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: 部署方式和位置
       url: how-to-deploy-and-where.md
+    - text: 部署 MLflow 模型
+      url: how-to-deploy-mlflow-models.md
   - linkListType: reference
     links:
     - text: Python SDK

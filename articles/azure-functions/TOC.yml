@@ -248,7 +248,7 @@
             - name: HTTP 觸發程序
               items:
                 - name: Azure 入口網站
-                  href: functions-create-first-azure-function.md
+                  href: functions-create-function-app-portal.md
                 - name: 命令列
                   href: ./create-first-function-cli-csharp.md
                 - name: Visual Studio

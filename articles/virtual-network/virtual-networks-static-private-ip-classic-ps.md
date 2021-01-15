@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 669b8427f13efcc55a69bc7c970b6658a6719cd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e798f81102017b4d34c4b1b219a9f23035b0359
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86134727"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222831"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>使用 PowerShell 設定虛擬機器 (傳統) 的私人 IP 位址
 
@@ -35,10 +35,10 @@ ms.locfileid: "86134727"
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-以下的範例 PowerShell 命令會預期已經建立簡單的環境。 如果您想要執行這份檔中所顯示的命令，請先建立「 [建立 VNet](virtual-networks-create-vnet-classic-netcfg-ps.md)」中所述的測試環境。
+以下的範例 PowerShell 命令會預期已經建立簡單的環境。 如果您想要執行這份檔中所顯示的命令，請先建立「 [建立 VNet](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-netcfg-ps)」中所述的測試環境。
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>如何驗證特定 IP 位址是否可用
-若要驗證 IP 位址 192.168.1.101** 在名為 TestVnet** 的 VNet 中是否可用，請執行下列 PowerShell 命令，並驗證 IsAvailable** 的值：
+若要驗證 IP 位址 192.168.1.101 在名為 TestVnet 的 VNet 中是否可用，請執行下列 PowerShell 命令，並驗證 IsAvailable 的值：
 
 ```azurepowershell
 Test-AzureStaticVNetIP –VNetName TestVNet –IPAddress 192.168.1.101 
@@ -55,7 +55,7 @@ OperationStatus      : Succeeded
 ```
 
 ## <a name="how-to-specify-a-static-private-ip-address-when-creating-a-vm"></a>建立 VM 時如何指定靜態私人 IP 位址
-下方 PowerShell 指令碼會建立名為 TestService** 的新雲端服務，接著從 Azure 中擷取映像，然後在新的雲端服務中使用擷取的映像建立名為 DNS01** 的 VM，接下來設定 VM 位於 FrontEnd** 子網路中，並設定 192.168.1.7** 作為 VM 的靜態私人 IP：
+下方 PowerShell 指令碼會建立名為 TestService 的新雲端服務，接著從 Azure 中擷取映像，然後在新的雲端服務中使用擷取的映像建立名為 DNS01 的 VM，接下來設定 VM 位於 FrontEnd 子網路中，並設定 192.168.1.7 作為 VM 的靜態私人 IP：
 
 ```azurepowershell
 New-AzureService -ServiceName TestService -Location "Central US"
@@ -78,7 +78,7 @@ New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded
 ```
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>如何擷取 VM 的靜態私人 IP 位址資訊
-若要檢視使用上述指令碼建立之 VM 的私人 IP 位址資訊，請執行下列 PowerShell 命令，並觀察 *IpAddress*的值：
+若要檢視使用上述指令碼建立之 VM 的私人 IP 位址資訊，請執行下列 PowerShell 命令，並觀察 *IpAddress* 的值：
 
 ```azurepowershell
 Get-AzureVM -Name DNS01 -ServiceName TestService
@@ -153,8 +153,7 @@ Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded
 
 除非必要，建議您不要靜態指派虛擬機器作業系統內已指派給 Azure 虛擬機器的私人 IP。 如果您確實手動設定作業系統內的私人 IP 位址，請確保該位址與指派給 Azure VM 的私人 IP 位址相同，否則可能會失去與虛擬機器的連線。 請勿手動指派在虛擬機器作業系統內已指派給 Azure 虛擬機器的公用 IP 位址。
 
-## <a name="next-steps"></a>接下來的步驟
-* 深入了解 [保留的公用 IP](virtual-networks-reserved-public-ip.md) 位址。
-* 深入了解 [執行個體層級公用 IP (ILPIP)](virtual-networks-instance-level-public-ip.md) 位址。
-* 請參閱 [保留 IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)。
-
+## <a name="next-steps"></a>後續步驟
+* 深入了解 [保留的公用 IP](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) 位址。
+* 深入了解 [執行個體層級公用 IP (ILPIP)](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) 位址。
+* 請參閱 [保留 IP REST API](/previous-versions/azure/reference/dn722420(v=azure.100))。

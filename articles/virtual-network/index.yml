@@ -11,12 +11,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 08/28/2019
-  ms.openlocfilehash: a6c0bee32fbeb50c1eef0a9625706bcee9e1ae17
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 7bf639fb7bc89ec218b280bcf7d02c76c7bde277
+  ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "82086465"
+  ms.lasthandoff: 01/14/2021
+  ms.locfileid: "98223596"
 landingContent:
 - title: 關於虛擬網路
   linkLists:
@@ -45,9 +45,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: 網路安全性群組
-      url: security-overview.md
+      url: ./network-security-groups-overview.md
     - text: 應用程式安全性群組
-      url: security-overview.md#application-security-groups
+      url: ./network-security-groups-overview.md#application-security-groups
     - text: 虛擬網路服務端點
       url: virtual-network-service-endpoints-overview.md
     - text: 虛擬網路安全性常見問題集
@@ -63,7 +63,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: 保護及隔離對 Azure 資源的存取
-      url: https://docs.microsoft.com/learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
+      url: /learn/modules/secure-and-isolate-with-nsg-and-service-endpoints
   - linkListType: video
     links:
     - text: 使用 Azure 私人連結安全地存取您的 Azure PaaS 資源
@@ -93,7 +93,7 @@ landingContent:
   - linkListType: learn
     links:
     - text: 透過對等互連跨虛擬網路進行通訊
-      url: https://docs.microsoft.com/learn/modules/integrate-vnets-with-vnet-peering
+      url: /learn/modules/integrate-vnets-with-vnet-peering
 - title: 路由網路流量
   linkLists:
   - linkListType: concept
@@ -109,7 +109,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP 位址類型及配置方法
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
   - linkListType: how-to-guide
     links:
     - text: 建立、變更或刪除公用 IP 位址
@@ -151,7 +151,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP 位址類型及配置方法
-      url: virtual-network-ip-addresses-overview-arm.md
+      url: ./public-ip-addresses.md
     - text: 什麼是 Azure 虛擬網路的 IPv6？
       url: ipv6-overview.md
     - text: 公用 IP 位址首碼

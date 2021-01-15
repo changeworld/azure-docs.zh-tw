@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 49a9917d925ebc7a36d14ff6679ad4b1737f9627
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: defcce3a00a38c88e1bff944075f0987fbdedd4b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86515842"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98225164"
 ---
  下列限制適用於 Azure 私人連結：
 
@@ -26,4 +26,6 @@ ms.locfileid: "86515842"
 |相同私人連結服務上的私人端點數目   |  1000       |
 |每個金鑰保存庫的私人端點數目 | 64 |
 |每個訂用帳戶具有私人端點的金鑰保存庫數目 | 400 |
+|可連結至私人端點的私人 DNS 區域群組數目 | 1 |
+|每個群組中的 DNS 區域數目 | 5 |
 
