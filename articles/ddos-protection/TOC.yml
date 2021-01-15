@@ -12,6 +12,9 @@
       href: manage-ddos-protection-powershell.md
     - name: 建立 DDoS 保護計劃 - CLI
       href: manage-ddos-protection-cli.md
+    - name: 建立 DDoS 保護計劃 - ARM 範本
+      displayName: Resource Manager
+      href: manage-ddos-protection-template.md
 - name: 教學課程
   items:
     - name: 檢視和設定 DDoS 保護遙測
