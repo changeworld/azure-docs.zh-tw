@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2cdd02ef6ff67f14dbf99e40a254f2c214e23afb
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 646c47920d87fe1d11bc991838ba767b8569a6c9
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165411"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246752"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -790,6 +790,7 @@ SCIM 服務必須具有 HTTP 位址，而其伺服器驗證憑證的根憑證授
 * Go Daddy
 * VeriSign
 * WoSign
+* DST Root CA X3
 
 .NET Core SDK 包含可在開發期間使用的 HTTPS 開發憑證，此憑證會在第一次執行期間進行安裝。 ASP.NET Core Web 應用程式根據其執行方式，會接聽不同的連接埠：
 

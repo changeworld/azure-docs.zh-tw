@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 31b96f03a8519b068eaa816443be0a0f374a4a8c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368574"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247024"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>關於 Azure Cosmos DB 中自動調整佈建輸送量的常見問題集
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "97368574"
 針對自動調整和標準 (手動) 布建的輸送量，多重寫入區域保留容量的運作方式相同。 請參閱 [Azure Cosmos DB 保留容量](cosmos-db-reserved-capacity.md)
 
 ### <a name="does-autoscale-work-with-free-tier"></a>自動調整是否會使用免費層？
-是。 在免費層中，您可以在容器上使用自動調整輸送量。 尚未提供具有自訂最大 RU/秒的自動調整共用輸送量資料庫。 請參閱[免費層如何與自動調整搭配運作](understand-your-bill.md#billing-examples-with-free-tier-accounts)。
+是。 在免費層中，您可以在容器上使用自動調整輸送量。 尚未提供具有自訂最大 RU/秒的自動調整共用輸送量資料庫。 請參閱[免費層如何與自動調整搭配運作](understand-your-bill.md#azure-free-tier)。
 
 ### <a name="is-autoscale-supported-for-all-apis"></a>所有 API 是否皆支援自動調整？
 是，所有 API 皆支援自動調整：核心 (SQL)、Gremlin、資料表、Cassandra，以及適用於 MongoDB 的 API。

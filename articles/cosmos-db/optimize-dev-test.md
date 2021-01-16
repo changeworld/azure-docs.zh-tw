@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: b0e2cc3f23a8c39e51523e6f6fd974ebf46f7322
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ddae808fbb2e3dcfe20909c8b3d0c5a20bb04bd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097442"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247517"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化開發與測試成本
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -37,7 +37,7 @@ Azure Cosmos DB 免費層可讓您輕鬆地開始使用、開發及測試應用�
 
 ## <a name="azure-free-account"></a>Azure 免費帳戶
 
-Azure Cosmos DB 已包含在 [Azure 免費帳戶](https://azure.microsoft.com/free)中，此帳戶會在特定期間內提供 Azure 點數和免費資源。 此免費帳戶會特別針對 Azure Cosmos DB，在為期一年的時間內提供 5-GB 的儲存體，以及 400 RU 的已佈建輸送量。 此體驗能讓任何開發人員在不產生任何成本的情況下輕鬆測試 Azure Cosmos DB 的功能，或將它與其他 Azure 服務進行整合。 透過 Azure 免費帳戶，您可以取得美金 $200 元的點數，可供您在前 30 天內使用。 即使您開始使用服務也不會向您收費，直到您選擇升級為止。 若要開始使用，請造訪 [Azure 免費帳戶](https://azure.microsoft.com/free)頁面。
+Azure Cosmos DB 已包含在 [Azure 免費帳戶](https://azure.microsoft.com/free)中，此帳戶會在特定期間內提供 Azure 點數和免費資源。 具體而言，此免費帳戶為 Azure Cosmos DB 提供 25 GB 的儲存空間和 400 ru 的已布建輸送量供整個年度之用。 此體驗能讓任何開發人員在不產生任何成本的情況下輕鬆測試 Azure Cosmos DB 的功能，或將它與其他 Azure 服務進行整合。 透過 Azure 免費帳戶，您可以取得美金 $200 元的點數，可供您在前 30 天內使用。 即使您開始使用服務也不會向您收費，直到您選擇升級為止。 若要開始使用，請造訪 [Azure 免費帳戶](https://azure.microsoft.com/free)頁面。
 
 ## <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB 無伺服器
 
@@ -49,7 +49,7 @@ Azure Cosmos DB 已包含在 [Azure 免費帳戶](https://azure.microsoft.com/fr
 
 例如，假設您的開發或測試帳戶有四個容器。 如果您建立具有專用輸送量的四個容器 (最少 400 RU/秒) ，則 RU/秒總數將會是 1600 RU/秒。 相反地，如果您建立共用輸送量資料庫 (最小 400 RU/秒) 並將容器放在該處，則 RU/秒總數將只會是 400 RU/秒。 一般情況下，共用輸送量資料庫很適合用於您不需要在任何個別容器上保證輸送量的案例。  深入瞭解 [共用輸送量資料庫。](set-throughput.md#set-throughput-on-a-database)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 您可以透過下列文章來開始使用模擬器或免費的 Azure Cosmos DB 帳戶：
 

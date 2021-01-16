@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
-ms.openlocfilehash: fc82d046caa3663cffcda585258642813ab3a7d8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 76bb9d289e984dd8c229bdaaab09e679e11283fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207252"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246276"
 ---
 # <a name="camera"></a>相機
 
@@ -32,7 +32,7 @@ ms.locfileid: "92207252"
 
 **近和遠的平面：**
 
-為確保無法設定不正確範圍， **NearPlane** 和 **FarPlane** 屬性是唯讀的，而且有個別的函式 **SetNearAndFarPlane** 可變更範圍。 此資料將會傳送至框架結尾的伺服器。
+為確保無法設定不正確範圍， **NearPlane** 和 **FarPlane** 屬性是唯讀的，而且有個別的函式 **SetNearAndFarPlane** 可變更範圍。 此資料將會傳送至框架結尾的伺服器。 設定這些值時， **NearPlane** 必須小於 **FarPlane**。 否則將會發生錯誤。
 
 > [!IMPORTANT]
 > 在 Unity 中，這會在變更主要相機接近或遠的平面時自動處理。
@@ -44,6 +44,21 @@ ms.locfileid: "92207252"
 > [!TIP]
 > 在 Unity 中，提供稱為 **EnableDepthComponent** 的 debug 元件，可用來在編輯器 UI 中切換這項功能。
 
+**InverseDepth**：
+
+> [!NOTE]
+> 只有當設定為時，此設定才會很重要 `EnableDepth` `true` 。 否則，此設定不會有任何影響。
+
+深度緩衝區通常會在 [0; 1] 的浮點範圍中記錄 z 值，0表示近平面深度，1表示最遠的深度。 您也可以反轉此範圍，並在範圍 [1; 0] 中記錄深度值，也就是說，接近平面的深度會變成1，而最遠的深度則會變成0。 一般來說，後者會改善跨非線性 z 範圍的浮點精確度分佈。
+
+> [!WARNING]
+> 常見的方法是將相機物件上的接近平面和遠平面值反轉。 在上嘗試這種情況時，Azure 遠端轉譯發生錯誤，這將會失敗 `CameraSettings` 。
+
+Azure 遠端轉譯 API 必須知道本機轉譯器的深度緩衝區慣例，才能正確地將遠端深度組成本機深度緩衝區。 如果您的深度緩衝區範圍是 [0，1]，請將此旗標保留為 `false` 。 如果您使用具有 [1; 0] 範圍的反向深度緩衝區，請將旗標設定 `InverseDepth` 為 `true` 。
+
+> [!NOTE]
+> 針對 Unity，已套用正確的設定，因此不 `RemoteManager` 需要手動介入。
+
 您可以依照下列方式來變更相機設定：
 
 ```cs
@@ -53,6 +68,7 @@ void ChangeCameraSetting(AzureSession session)
 
     settings.SetNearAndFarPlane(0.1f, 20.0f);
     settings.EnableDepth = false;
+    settings.InverseDepth = false;
 }
 ```
 
@@ -63,6 +79,7 @@ void ChangeStageSpace(ApiHandle<AzureSession> session)
 
     settings->SetNearAndFarPlane(0.1f, 20.0f);
     settings->SetEnableDepth(false);
+    settings->SetInverseDepth(false);
 }
 ```
 

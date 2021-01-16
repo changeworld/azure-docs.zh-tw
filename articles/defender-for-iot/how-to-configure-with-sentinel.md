@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/28/2020
 ms.author: shhazam
-ms.openlocfilehash: d4686f1d7192d1469e52e653185f1fc9389764de
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2d82aaadf158e45cb8faaeee0b9b4e0fc80a3420
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832313"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247330"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel"></a>將您的資料從 Defender for IoT 連接到 Azure Sentinel 
 
@@ -65,5 +65,5 @@ SecurityAlert | where ProductName == "Azure Security Center for IoT"
 
 在本檔中，您已瞭解如何將 Defender for IoT 連線至 Azure Sentinel。 若要深入瞭解威脅偵測和安全性資料存取，請參閱下列文章：
 
-- 瞭解如何使用 Azure Sentinel 來 [查看您的資料和潛在的威脅](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)。
+- 瞭解如何使用 Azure Sentinel 來 [查看您的資料和潛在的威脅](../sentinel/quickstart-get-visibility.md)。
 - 瞭解如何 [存取您的 IoT 安全性資料](how-to-security-data-access.md)

@@ -4,15 +4,15 @@ description: 瞭解適用于 IoT 感應器和內部部署管理主控台之已�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b22f880eee1b691b6b50b8151a64a2d501b891b3
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838975"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246565"
 ---
 # <a name="identify-required-appliances"></a>識別所需的設備
 
@@ -40,7 +40,7 @@ ms.locfileid: "97838975"
 
 | 部署類型 | 公司 | Enterprise | SMB |
 |--|--|--|--|
-| 影像 | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="公司層級模型。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="企業層級模型。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB 層級模型。"::: |
+| 映像 | :::image type="content" source="media/how-to-prepare-your-network/corporate-hpe-proliant-dl360-v2.png" alt-text="公司層級模型。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="企業層級模型。"::: | :::image type="content" source="media/how-to-prepare-your-network/enterprise-and-smb-hpe-proliant-dl20-v2.png" alt-text="SMB 層級模型。"::: |
 | 型號 | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 |
 | 監視埠 | 最多15個 RJ45 或8個選擇 | 最多8個 RJ45 或6個選擇 | 4個 RJ45 |
 | 最大頻寬 [1](#anchortext) | 每秒 3 Gb | 每秒 1 Gb | 每秒 200 Mb |
@@ -102,14 +102,14 @@ ms.locfileid: "97838975"
 | 記憶體 | 32 GB = 2 x 16 GB 2666MT/s DDR4 ECC UDIMM |
 | 儲存體 | 6 x 1.2-TB SAS 12G Enterprise 10K SFF (2.5 in) 的 Hot-Plug 硬碟-RAID 5 |
 | 網路控制卡 | 在面板上： 2 x 1 Gb 的 Broadcom BCM5720<br>板載 LOM： iDRAC 埠卡 1-Gb 的 Broadcom BCM5720<br><br>External： 1 x Intel Ethernet i350 QP 1-Gb 的伺服器配接器，低設定檔 |
-| 管理 | HPE iLO Advanced |
+| 管理性 | HPE iLO Advanced |
 | 裝置存取 | 兩個後置 USB 3。0<br>一個前端 USB 2。0<br>一個內部 USB 3。0 |
 | 電源 | 2 x HPE 500 W 彈性位置白金級熱插即插低 Halogen 電源供應套件 |
 | 機架支援 | HPE 1U Gen10 SFF Easy Install 鐵路套件 |
 
 ### <a name="appliance-bom"></a>設備 BOM
 
-| Pn | 描述 | 數量 |
+| Pn | 說明 | 數量 |
 |--|--|--|
 | P19766-B21 | HPE DL360 Gen10 8SFF NC CTO Server | 1 |
 | P19766-B21 | 歐洲-多語系當地語系化 | 1 |
@@ -138,7 +138,7 @@ ms.locfileid: "97838975"
 | 記憶體 | 2 x 16 GB 雙排名 x8 DDR4-2666 |
 | 儲存體 | 3 x 1 TB SATA 6G 中線 7.2 K SFF (2.5 in) –具有智慧型陣列 P408i 的 RAID 5--SR 控制器 |
 | 網路控制卡 | 板載： 2 x 1 Gb <br>板載： iLO 埠卡 1 Gb <br>External： 1 x HPE Ethernet 1-g 4-port 366FLR Adapter |
-| 管理 | HPE iLO Advanced |
+| 管理性 | HPE iLO Advanced |
 | 裝置存取 | Front： 1 x USB 3.0，1 x USB iLO 服務埠 <br>後方： 2 x USB 3。0 <br>內部： 1 x USB 3。0 |
 | 電源 | 雙熱插即用電源供應器 500 W |
 | 機架支援 | HPE 1U 的短暫摩擦軌套件 |
@@ -173,14 +173,14 @@ ms.locfileid: "97838975"
 | 記憶體 | 1 x 8 GB 雙排名 x8 DDR4-2666 |
 | 儲存體 | 2 x 1 TB SATA 6G 中線 7.2 K SFF (2.5 in) –具有智慧型陣列 P208i 的 RAID 1-a |
 | 網路控制卡 | 板載： 2 x 1 Gb <br>板載： iLO 埠卡 1 Gb <br>External： 1 x HPE Ethernet 1-g 4-port 366FLR Adapter |
-| 管理 | HPE iLO Advanced |
+| 管理性 | HPE iLO Advanced |
 | 裝置存取 | Front： 1 x USB 3.0，1 x USB iLO 服務埠 <br>後方： 2 x USB 3。0 <br>內部： 1 x USB 3。0 |
 | 電源 | 熱插即用電源供應器 290 W |
 | 機架支援 | HPE 1U 的短暫摩擦軌套件 |
 
 ### <a name="appliance-bom"></a>設備 BOM
 
-| Pn | 描述 | 數量 |
+| Pn | 說明 | 數量 |
 |--|--|--|
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO Server | 1 |
 | P06961-B21 | HPE DL20 Gen10 NHP 2LFF CTO Server | 1 |
@@ -209,7 +209,7 @@ ms.locfileid: "97838975"
 
 | 類型 | Enterprise |
 |--|--|
-| 描述 | 適用于企業部署類型的虛擬裝置 |
+| 說明 | 適用于企業部署類型的虛擬裝置 |
 | vCPU | 8 |
 | 記憶體 | 32 GB |
 | 儲存體 | 1.8 TB |
@@ -222,7 +222,7 @@ ms.locfileid: "97838975"
 
 | 部署類型 | Enterprise |
 |--|--|
-| 影像 | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="企業部署類型。"::: |
+| 映像 | :::image type="content" source="media/how-to-prepare-your-network/deployment-type-enterprise-for-azure-defender-for-iot-v2.png" alt-text="企業部署類型。"::: |
 | 型號 | Dell PowerEdge R340 XL |
 | 監視埠 | 最多9個 RJ45 或六個選擇 |
 | 最大頻寬 [1](#anchortext2)| 1G Mb/秒 |
@@ -246,7 +246,7 @@ ms.locfileid: "97838975"
 | 記憶體 | 32 GB = 2 x 16 GB 2666MT/s DDR4 ECC UDIMM |
 | 儲存體 | 3 x 2 TB 7.2 K RPM SATA 6-Gbps 512n 3.5-in Hot-Plug 硬碟-RAID 5 |
 | 網路控制卡 | 在面板上： 2 x 1 Gb 的 Broadcom BCM5720<br>板載 LOM： iDRAC 埠卡 1-Gb 的 Broadcom BCM5720 <br><br>External： 1 x Intel Ethernet i350 QP 1-Gb 的伺服器配接器，低設定檔 |
-| 管理 | iDRAC 九企業版 |
+| 管理性 | iDRAC 九企業版 |
 | 裝置存取 | 兩個後置 USB 3。0 <br> 一個前端 USB 3。0 |
 | 電源 | 雙熱插即用電源供應器 350 W |
 | 機架支援 | ReadyRails II 滑滑軌，可在4個 post 機架中使用正方形或 unthreaded 圓形孔或工具式掛接的4個後置機架，並支援選擇性無工具纜線管理 arm。 |
@@ -255,30 +255,8 @@ ms.locfileid: "97838975"
 
 :::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 BOM。":::
 
-## <a name="smb-deployment-neousys-nuvo-5006lp"></a>SMB 部署： Neousys Nuvo-5006LP
-
-| 元件 | 技術規格 |
-|--|--|
-| 營造 | 鋁、fanless 和灰塵設計 |
-| 維度 | 240 mm (W) x 225 mm (D) x 77 mm (H)  |
-| Weight | 3.1 公斤 (包括 CPU、記憶體和 HDD)  |
-| CPU | Intel Core i5-6500TE (>6 分鐘 Cache，最高 3.30 GHz) S1151 |
-| 晶片組 | Intel Q170 Platform Controller Hub |
-| 記憶體 | 8 GB DDR4 2133 MHz 寬溫度 SODIMM |
-| 儲存體 | 128-GB 3ME3 Wide 溫度 mSATA SSD |
-| 網路控制卡 | 由 Intel I219 6x Gigabit 乙太網路埠 |
-| 裝置存取 | 4 USBs：兩個正面，兩個 rears，一個內部 |
-| 電源配接器 | 120/240VAC-20VDC/6A |
-| 安裝 | 裝載套件，中線滑軌 |
-| 操作溫度 | \-25° C ~ 70 ° C |
-| 儲存體溫度 | \-40° C ~ 85 ° C |
-| 溼度 | 10% ~ 90%，非冷凝 |
-| 震動 | 操作、5 Grms、5-500 Hz、3軸 <br>根據 IEC60068-2-64 的 (w/SSD)  |
-| 休克 | 根據 IEC60068-2-27)  (的操作、50 Grms、半正弦值 11-毫秒持續時間 w/SSD |
-| EMC | CE/FCC 類別 A，根據 EN 55022、EN 55024 和 EN 55032 |
-
 ## <a name="next-steps"></a>後續步驟
 
 [關於適用于 IoT 的 Azure Defender 安裝](how-to-install-software.md)
 
-[關於適用于 IoT 的 Azure Defender 網路設定](how-to-set-up-your-network.md)
+[關於適用於 IoT 的 Azure Defender 網路設定](how-to-set-up-your-network.md)

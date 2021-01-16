@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b0d27cb2f941db374a144cbd5c026444730e24e8
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938625"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247483"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解您的 Azure Cosmos DB 帳單
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -215,8 +215,12 @@ Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的�
 | | |2 個額外區域的輸送量計費：美國東部、北歐 (所有區域都可寫入)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |$224  |
 || |**每月總成本**  | |**$38,688**   |
 
-## <a name="billing-examples-with-free-tier-accounts"></a>免費層帳戶的計費範例
+## <a name="billing-examples-with-azure-cosmos-db-free-tier-accounts"></a><a id="azure-free-tier"></a>Azure Cosmos DB 免費層帳戶的計費範例
+
 使用 Azure Cosmos DB 免費層，您將可在帳戶中免費取得前 400 RU/秒和 5 GB 的儲存體，套用於帳戶層級。 除了這 400 個 RU/秒和 5 GB 以外的任何 RU/秒和儲存體，將會依定價頁面的一般定價費率計費。 您在帳單上不會看到免費的 400 個 RU/秒和 5 GB 的收費或明細項目，只會看到免費層涵蓋範圍以外的 RU/秒和儲存體。 400 RU/秒適用于任何類型的 RU/秒-布建的輸送量、自動調整和多重區域寫入。  
+
+> [!NOTE]
+> Azure Cosmos DB 免費層與 Azure 免費帳戶不同。 Azure 免費帳戶會在有限的時間免費提供 Azure 點數和資源。 使用 Azure Cosmos DB 作為此免費帳戶的一部分時，您會取得 25 GB 的儲存體和 400 RU/秒的布建輸送量（12個月）。
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>計費範例 - 具有已佈建輸送量的容器或資料庫
 - 假設我們在免費層帳戶中，建立具有 400 RU/秒和 5 GB 儲存體的資料庫或容器。

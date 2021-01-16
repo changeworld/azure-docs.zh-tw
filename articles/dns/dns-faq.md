@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 01/11/2021
 ms.author: rohink
-ms.openlocfilehash: c468b1216670ce7e6b5d252a7f7fee807199d20c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: cb14cb95ec1362782a634b0e62cfa2f8237a5852
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131486"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246377"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS 常見問題集
 
@@ -68,25 +68,25 @@ Azure DNS 僅支援裝載靜態 DNS 網域，其中所指定 DNS 記錄的每個
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Azure DNS 是否支援網域名稱註冊？
 
-不會。 Azure DNS 目前不支援購買網域名稱的選項。 若要購買網域，您必須使用第三方網域名稱註冊機構。 註冊機構通常會收取些微年費。 然後，您就可以在 Azure DNS 裝載這些網域來管理 DNS 記錄。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](dns-domain-delegation.md)。
+否。 Azure DNS 目前不支援購買網域名稱的選項。 若要購買網域，您必須使用第三方網域名稱註冊機構。 註冊機構通常會收取些微年費。 然後，您就可以在 Azure DNS 裝載這些網域來管理 DNS 記錄。 如需詳細資訊，請參閱[將網域委派給 Azure DNS](dns-domain-delegation.md)。
 
 系統會在 Azure 待辦項目中，追蹤用來購買網域名稱的功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar) \(英文\)。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS 是否支援 DNSSEC？
 
-不會。 Azure DNS 目前不支援網域名稱系統安全性延伸模組 (DNSSEC)。
+否。 Azure DNS 目前不支援網域名稱系統安全性延伸模組 (DNSSEC)。
 
 系統會在 Azure DNS 待辦項目中追蹤 DNSSEC 功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support) \(英文\)。
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS 是否支援區域傳輸 (AXFR/IXFR)？
 
-不會。 Azure DNS 目前不支援區域傳輸。 您可以[使用 Azure CLI 將 DNS 區域匯入到 Azure DNS 中](dns-import-export.md)。 透過 [Azure DNS 管理入口網站](dns-operations-recordsets-portal.md)、[REST API](/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell Cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)，即可管理 DNS 記錄。
+否。 Azure DNS 目前不支援區域傳輸。 您可以[使用 Azure CLI 將 DNS 區域匯入到 Azure DNS 中](dns-import-export.md)。 透過 [Azure DNS 管理入口網站](dns-operations-recordsets-portal.md)、[REST API](/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell Cmdlet](dns-operations-recordsets.md) 或 [CLI 工具](dns-operations-recordsets-cli.md)，即可管理 DNS 記錄。
 
 系統會在 Azure DNS 待辦項目中追蹤區域傳輸功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c) \(英文\)。
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Azure DNS 是否支援 URL 重新導向？
 
-不會。 URL 重新導向服務不是 DNS 服務。 它們是在 HTTP 層級運作，而不是在 DNS 層級。 有些 DNS 提供者會將 URL 重新導向服務結合成其整體供應項目的一部分。 但 Azure DNS 目前不支援此服務。
+否。 URL 重新導向服務不是 DNS 服務。 它們是在 HTTP 層級運作，而不是在 DNS 層級。 有些 DNS 提供者會將 URL 重新導向服務結合成其整體供應項目的一部分。 但 Azure DNS 目前不支援此服務。
 
 系統會在 Azure DNS 待辦項目中追蹤 URL 重新導向功能。 請使用意見反應網站來[註冊此功能的支援](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape) \(英文\)。
 
@@ -194,10 +194,6 @@ Azure DNS 的管理是使用 Azure Resource Manager 來進行的。 Azure DNS �
 國際網域名稱 (IDN) 會使用 [Punycode](https://en.wikipedia.org/wiki/Punycode) 將每個 DNS 名稱編碼。 建立 DNS 查詢時，會使用這些以 Punycode 編碼的名稱來建立。
 
 若要設定 Azure DNS 中的 IDN，請將區域名稱或記錄集名稱轉換成 Punycode。 Azure DNS 目前不支援以 Punycode 作為轉換目標或來源的內建轉換。
-
-### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Azure DNS 私人區域是否會儲存任何客戶內容？
-
-否，Azure DNS 私人區域不會儲存任何客戶內容。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,14 +5,14 @@ services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: article
-ms.date: 10/05/2019
+ms.date: 01/15/2021
 ms.author: rohink
-ms.openlocfilehash: 24f2ca238288854b99160a25c3d4dcedf8ce3368
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3272f4fea4169fd5e91b1ba2b97ad72dfbb49080
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952381"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247381"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 私人 DNS 常見問題集
 
@@ -88,6 +88,10 @@ Azure DHCP 服務在註冊私人 DNS 區域時，會忽略任何 DNS 尾碼。 �
 ## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>如何? 將現有的私人 DNS 區域遷移至新的模型？
 
 強烈建議您儘快遷移至新的資源模型。 但會支援舊版資源模型，但不會在此模型之上開發進一步的功能。 未來，我們想要以新的資源模型來取代它。 如需有關如何將您現有的私人 DNS 區域遷移至新的資源模型的指引，請參閱[Azure DNS 私人區域的遷移指南](private-dns-migration-guide.md)。
+
+### <a name="does-azure-dns-private-zones-store-any-customer-content"></a>Azure DNS 私人區域是否會儲存任何客戶內容？
+
+否，Azure DNS 私人區域不會儲存任何客戶內容。
 
 ## <a name="next-steps"></a>後續步驟
 

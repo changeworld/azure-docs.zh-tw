@@ -3,12 +3,12 @@ title: Azure Event Grid 傳遞與重試
 description: 說明 Azure Event Grid 如何傳遞事件，以及如何處理未傳遞的訊息。
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 51473cf457a1c713e6694edd23c344be8c4d439e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463240"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247364"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid 訊息傳遞與重試
 
@@ -57,7 +57,7 @@ az eventgrid event-subscription create \
 
 當 EventGrid 收到事件傳遞嘗試的錯誤時，EventGrid 會決定是否應該重試傳遞或寄不出的信件，或根據錯誤的類型來卸載事件。 
 
-如果訂用的端點所傳回的錯誤是設定相關的錯誤，但無法以重試修正 (例如，如果) 刪除端點，EventGrid 會在事件中執行無效信件，如果未設定寄不出的信件，則會捨棄事件。
+如果訂用的端點所傳回的錯誤是無法使用重試修正的設定相關錯誤 (例如，如果刪除端點) ，EventGrid 會在未設定寄不出的信件時，對事件執行無效信件，或卸載事件。
 
 以下是不會進行重試的端點類型：
 
@@ -67,7 +67,7 @@ az eventgrid event-subscription create \
 | Webhook | 400不正確的要求、413要求實體太大、403禁止、找不到404、401未經授權 |
  
 > [!NOTE]
-> 如果未針對端點設定 Dead-Letter，則在發生上述錯誤時就會捨棄事件，因此，如果您不想要卸載這類事件，請考慮設定死信。
+> 如果未針對端點設定 Dead-Letter，則會在發生上述錯誤時卸載事件。 如果您不想要卸載這類事件，請考慮設定寄不出的信件。
 
 如果訂用的端點所傳回的錯誤不在上述清單中，EventGrid 會使用如下所述的原則來執行重試：
 
@@ -80,7 +80,10 @@ az eventgrid event-subscription create \
 - 10 分鐘
 - 30 分鐘
 - 1 小時
-- 每小時最多24小時
+- 3 個小時
+- 6 小時
+- 每12小時，最多24小時
+
 
 如果端點在3分鐘內回應，事件方格會嘗試以最佳方式從重試佇列中移除事件，但仍會收到重複的專案。
 
@@ -104,7 +107,7 @@ az eventgrid event-subscription create \
 
 如果符合其中一個條件，就會捨棄事件或寄不出的信件。  根據預設，事件方格不會開啟無效信件處理。 若要啟用它，您必須指定儲存體帳戶在建立事件訂用帳戶時保留未傳遞事件。 您可從這個儲存體帳戶提取事件，以解析傳遞項目。
 
-事件方格在試過所有重試嘗試後，會將事件傳送至無效信件位置。 如果事件方格收到 400 (錯誤的要求) 或 413 (要求實體太大) 回應碼，則會立即將事件傳送至無效信件端點。 這些回應碼表示事件傳遞會永遠不會成功。
+事件方格在試過所有重試嘗試後，會將事件傳送至無效信件位置。 如果事件方格收到 400 (錯誤的要求) 或 413 (要求實體太大) 回應碼，則會立即排程無效信件的事件。 這些回應碼表示事件傳遞會永遠不會成功。
 
 只有在下次排程的傳遞嘗試時，才會檢查存留時間到期日。 因此，即使在下一次排程的傳遞嘗試之前，存留時間會過期，但只有在下一次傳遞時，才會檢查事件到期時間。 
 

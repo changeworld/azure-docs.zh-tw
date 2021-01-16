@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 678b50ffb2df2cd16312548109b93f6f1a7f08ff
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835018"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247460"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>適用于 IoT 的 Azure Defender 常見問題
 
@@ -38,7 +38,7 @@ ms.locfileid: "97835018"
 此獨特的解決方案可用於開發作為外掛程式的通訊協定，不需要專用的開發人員小組或版本發行，就能支援新的通訊協定。 開發人員、合作夥伴和客戶可以安全地開發通訊協定，並使用範圍共用見解和知識。 
 
 ## <a name="do-i-have-to-purchase-hardware-appliances-from-microsoft-partners"></a>我必須向 Microsoft 合作夥伴購買硬體設備嗎？
-適用于 IoT 的 Azure Defender 感應器會依照 [硬體規格指南](https://aka.ms/AzureDefenderforIoTBareMetalAppliance)中所述，在特定硬體規格上執行，客戶可以向 Microsoft 合作夥伴購買經認證的硬體，或使用所提供的物料清單 (BOM) 並自行購買。 
+適用于 IoT 的 Azure Defender 感應器會依照 [硬體規格指南](./how-to-identify-required-appliances.md)中所述，在特定硬體規格上執行，客戶可以向 Microsoft 合作夥伴購買經認證的硬體，或使用所提供的物料清單 (BOM) 並自行購買。 
 
 經認證的硬體已在我們的實驗室中測試，以進行驅動程式穩定性、封包捨棄和網路調整大小。
 

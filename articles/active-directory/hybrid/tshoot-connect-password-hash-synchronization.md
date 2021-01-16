@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317560"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247347"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>針對使用 Azure AD Connect 同步執行的密碼雜湊同步處理進行疑難排解
 
@@ -58,7 +58,7 @@ ms.locfileid: "91317560"
 
 針對未同步任何密碼的問題進行疑難排解：
 
-1. 在您的 Azure AD Connect 伺服器上，使用 [以系統管理員身分執行]**** 選項開啟新的 Windows PowerShell 工作階段。
+1. 在您的 Azure AD Connect 伺服器上，使用 [以系統管理員身分執行] 選項開啟新的 Windows PowerShell 工作階段。
 
 2. 執行 `Set-ExecutionPolicy RemoteSigned` 或 `Set-ExecutionPolicy Unrestricted`。
 
@@ -141,7 +141,7 @@ ms.locfileid: "91317560"
 
 若要針對特定使用者物件的問題進行疑難排解：
 
-1. 在您的 Azure AD Connect 伺服器上，使用 [以系統管理員身分執行]**** 選項開啟新的 Windows PowerShell 工作階段。
+1. 在您的 Azure AD Connect 伺服器上，使用 [以系統管理員身分執行] 選項開啟新的 Windows PowerShell 工作階段。
 
 2. 執行 `Set-ExecutionPolicy RemoteSigned` 或 `Set-ExecutionPolicy Unrestricted`。
 
@@ -153,7 +153,7 @@ ms.locfileid: "91317560"
 
 6. 在主功能表中，選取 [針對 **密碼雜湊同步處理進行疑難排解**]。
 
-7. 在子功能表中，選取 [未同步特定使用者帳戶的密碼]****。
+7. 在子功能表中，選取 [未同步特定使用者帳戶的密碼]。
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>了解疑難排解工作的結果
 
@@ -179,7 +179,7 @@ ms.locfileid: "91317560"
 
 #### <a name="user-has-a-temporary-password"></a>使用者有暫時密碼
 
-目前，Azure AD Connect 不支援與 Azure AD 同步暫時密碼。 如果對內部部署 Active Directory 使用者設定 [在下次登入時變更密碼]**** 選項，密碼就視為暫時。 系統會傳回下列錯誤：
+目前，Azure AD Connect 不支援與 Azure AD 同步暫時密碼。 如果對內部部署 Active Directory 使用者設定 [在下次登入時變更密碼] 選項，密碼就視為暫時。 系統會傳回下列錯誤：
 
 ![未匯出暫時密碼](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
 
@@ -202,7 +202,7 @@ ms.locfileid: "91317560"
 
 針對未同步任何密碼的問題進行疑難排解：
 
-1. 在您的 Azure AD Connect 伺服器上，使用 [以系統管理員身分執行]**** 選項開啟新的 Windows PowerShell 工作階段。
+1. 在您的 Azure AD Connect 伺服器上，使用 [以系統管理員身分執行] 選項開啟新的 Windows PowerShell 工作階段。
 
 2. 執行 `Set-ExecutionPolicy RemoteSigned` 或 `Set-ExecutionPolicy Unrestricted`。
 
@@ -223,7 +223,7 @@ ms.locfileid: "91317560"
 
 針對未同步任何使用者密碼的問題進行疑難排解：
 
-1. 在您的 Azure AD Connect 伺服器上，使用 [以系統管理員身分執行]**** 選項開啟新的 Windows PowerShell 工作階段。
+1. 在您的 Azure AD Connect 伺服器上，使用 [以系統管理員身分執行] 選項開啟新的 Windows PowerShell 工作階段。
 
 2. 執行 `Set-ExecutionPolicy RemoteSigned` 或 `Set-ExecutionPolicy Unrestricted`。
 
@@ -272,11 +272,11 @@ ms.locfileid: "91317560"
     
 1. 若要尋找 Active Directory 連接器所使用的帳戶，請啟動 **Synchronization Service Manager**。 
  
-2. 移至 [連接器]****，然後尋找您要進行疑難排解的內部部署 Active Directory 樹系。 
+2. 移至 [連接器]，然後尋找您要進行疑難排解的內部部署 Active Directory 樹系。 
  
-3. 選取 [連接器]，然後按一下 [屬性]****。 
+3. 選取 [連接器]，然後按一下 [屬性]。 
  
-4. 前往 [連線至 Active Directory 樹系] ****。  
+4. 前往 [連線至 Active Directory 樹系] 。  
     
     ![Active Directory 連接器所使用的帳戶](./media/tshoot-connect-password-hash-synchronization/connectoraccount.png)  
     記下使用者名稱和帳戶所在的網域。
@@ -285,13 +285,13 @@ ms.locfileid: "91317560"
     * 複寫目錄變更
     * 複寫目錄變更 (全部)
 
-6. Azure AD Connect 是否可以連線到網域控制站？ 如果 Connect 伺服器無法連線到所有網域控制站，請設定 [只使用慣用的網域控制站]****。  
+6. Azure AD Connect 是否可以連線到網域控制站？ 如果 Connect 伺服器無法連線到所有網域控制站，請設定 [只使用慣用的網域控制站]。  
     
     ![Active Directory 連接器所使用的網域控制站](./media/tshoot-connect-password-hash-synchronization/preferreddc.png)  
 
-7. 返回 **Synchronization Service Manager**，並**設定目錄磁碟分割**。 
+7. 返回 **Synchronization Service Manager**，並 **設定目錄磁碟分割**。 
  
-8. 在 [選取目錄分割]**** 中選取您的網域，選取 [只使用慣用的網域控制站]**** 核取方塊，然後按一下 [設定]****。 
+8. 在 [選取目錄分割] 中選取您的網域，選取 [只使用慣用的網域控制站] 核取方塊，然後按一下 [設定]。 
 
 9. 在清單中，輸入 Connect 應該用來進行密碼同步的網域控制站。相同的清單也會用於匯入和匯出。 針對您的所有網域執行這些步驟。
 
@@ -304,7 +304,7 @@ ms.locfileid: "91317560"
 
 您可以藉由檢閱物件的狀態，輕鬆地針對密碼雜湊同步處理問題進行疑難排解。
 
-1. 在 **Active Directory 使用者和電腦**中，搜尋使用者，然後確認已清除 [使用者必須在下次登入時變更密碼]**** 核取方塊。  
+1. 在 **Active Directory 使用者和電腦** 中，搜尋使用者，然後確認已清除 [使用者必須在下次登入時變更密碼] 核取方塊。  
 
     ![Active Directory 生產力密碼](./media/tshoot-connect-password-hash-synchronization/adprodpassword.png)  
 
@@ -314,29 +314,29 @@ ms.locfileid: "91317560"
 
     a. 啟動 [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md)。
 
-    b. 按一下 [連接器] ****。
+    b. 按一下 [連接器] 。
 
     c. 選取使用者所在的 **Active Directory 連接器**。
 
     d. 選取 [搜尋連接器空間] 。
 
-    e. 在 [範圍]**** 方塊中，選取 [DN 或錨點]****，然後輸入您要進行疑難排解之使用者的完整 DN。
+    e. 在 [範圍] 方塊中，選取 [DN 或錨點]，然後輸入您要進行疑難排解之使用者的完整 DN。
 
     ![在連接器空間中依 DN 搜尋使用者](./media/tshoot-connect-password-hash-synchronization/searchcs.png)  
 
-    f. 找出您要搜尋的使用者，然後按一下 [屬性]**** 來查看所有屬性。 如果該使用者不在搜尋結果中，請確認您的[篩選規則](how-to-connect-sync-configure-filtering.md)，且務必執行[套用並驗證變更](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes)，如此 Connect 中才會顯示該使用者。
+    f. 找出您要搜尋的使用者，然後按一下 [屬性] 來查看所有屬性。 如果該使用者不在搜尋結果中，請確認您的[篩選規則](how-to-connect-sync-configure-filtering.md)，且務必執行[套用並驗證變更](how-to-connect-sync-configure-filtering.md#apply-and-verify-changes)，如此 Connect 中才會顯示該使用者。
 
-    g. 若要查看物件在過去一週的密碼同步詳細資料，請按一下 [記錄]****。  
+    g. 若要查看物件在過去一週的密碼同步詳細資料，請按一下 [記錄]。  
 
     ![物件記錄詳細資料](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    如果物件記錄是空的，則表示 Azure AD Connect 無法從 Active Directory 讀取密碼雜湊。 請繼續進行連線錯誤疑難排解。 如果您看到 [成功]**** 以外的任何其他值，請參考[密碼同步記錄](#password-sync-log)中的表格。
+    如果物件記錄是空的，則表示 Azure AD Connect 無法從 Active Directory 讀取密碼雜湊。 請繼續進行連線錯誤疑難排解。 如果您看到 [成功] 以外的任何其他值，請參考[密碼同步記錄](#password-sync-log)中的表格。
 
-    h. 選取 [歷程]**** 索引標籤，並確認至少有一個同步規則的 [PasswordSync]**** 資料行是 **True**。 在預設組態中，同步規則的名稱是 **In from AD - User AccountEnabled**。  
+    h. 選取 [歷程] 索引標籤，並確認至少有一個同步規則的 [PasswordSync] 資料行是 **True**。 在預設組態中，同步規則的名稱是 **In from AD - User AccountEnabled**。  
 
     ![使用者的相關歷程資訊](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
 
-    i. 按一下 [Metaverse 物件屬性]**** 來顯示使用者屬性清單。  
+    i. 按一下 [Metaverse 物件屬性] 來顯示使用者屬性清單。  
 
     ![顯示元組物件屬性之使用者屬性清單的螢幕擷取畫面。](./media/tshoot-connect-password-hash-synchronization/mvpasswordsync.png)  
 
@@ -356,8 +356,8 @@ ms.locfileid: "91317560"
 
 | 狀態 | 描述 |
 | --- | --- |
-| 成功 |已成功同步處理密碼。 |
-| FilteredByTarget |密碼會設為 [使用者必須在下次登入時變更密碼] ****。 未同步處理密碼。 |
+| Success |已成功同步處理密碼。 |
+| FilteredByTarget |密碼會設為 [使用者必須在下次登入時變更密碼] 。 未同步處理密碼。 |
 | NoTargetConnection |Metaverse 或 Azure AD 連接器空間中沒有任何物件。 |
 | SourceConnectorNotPresent |在內部部署 Active Directory 連接器空間中找不到任何物件。 |
 | TargetNotExportedToDirectory |尚未匯出 Azure AD 連接器空間中的物件。 |
@@ -380,7 +380,7 @@ if ($aadConnectors -ne $null -and $adConnectors -ne $null)
 {
     if ($aadConnectors.Count -eq 1)
     {
-        $features = Get-ADSyncAADCompanyFeature -ConnectorName $aadConnectors[0].Name
+        $features = Get-ADSyncAADCompanyFeature
         Write-Host
         Write-Host "Password sync feature enabled in your Azure AD directory: "  $features.PasswordHashSync
         foreach ($adConnector in $adConnectors)

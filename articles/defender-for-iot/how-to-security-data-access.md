@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: c4f65da4f9a4f7ade94d76e99d57439e62b3c808
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 495f9d568760421c7f42df3acf74217c15b01a05
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092052"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246334"
 ---
 # <a name="access-your-security-data"></a>存取您的安全性資料
 
@@ -37,7 +37,7 @@ ms.locfileid: "97092052"
 1. 為 IoT 選擇 Defender 中的警示或建議。
 1. 按一下 [ **進一步調查**]，然後按一下 **以查看哪些裝置有此警示，請按一下這裡並查看 DeviceId 資料行**。
 
-如需從 Log Analytics 查詢資料的詳細資訊，請參閱 [開始使用 Log analytics 中的查詢](/azure/azure-monitor/log-query/get-started-queries)。
+如需從 Log Analytics 查詢資料的詳細資訊，請參閱 [開始使用 Log analytics 中的查詢](../azure-monitor/log-query/get-started-queries.md)。
 
 ## <a name="security-alerts"></a>安全性警示
 
@@ -64,7 +64,7 @@ SecurityAlert
 | take 3
 ```
 
-| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | 描述                                             | ExtendedProperties                                                                                                                                                             |
+| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | 說明                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-11-18T18：10：29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 暴力密碼破解攻擊成功           | 裝置上的暴力密碼破解攻擊成功        |    {"Full Source Address"： "[ \" 10.165.12.18： \" ]"，"User Names"： "[ \" \" ]"，"DeviceId"： "IoT-Device-Linux"}                                                                       |
 | 2018-11-19T12：40：31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 裝置上的本機登入成功      | 偵測到裝置的本機登入成功     | {"Remote Address"： "？"、"Remote Port"： ""、"Local Port"： ""、"Login Shell"： "/bin/su"、"Login Process Id"： "28207"、"User Name"： "攻擊者"、"DeviceId"： "IoT-Device-Linux"} |
@@ -87,7 +87,7 @@ SecurityAlert
     DisplayName
 ```
 
-| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | 計數 |
+| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 暴力密碼破解攻擊成功           | 9   |
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中        | 裝置上的本機登入嘗試失敗  | 242 |
@@ -144,7 +144,7 @@ SecurityRecommendation
 | take 2
 ```
 
-| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | 描述 | RecommendationAdditionalData |
+| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | 說明 | RecommendationAdditionalData |
 |---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
 | 2019-03-22T10：21：06.060 |    /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中 | 使用中 | 在輸入鏈中找到寬鬆的防火牆規則 | 在防火牆中找到一個規則，其中包含廣泛 IP 位址或埠的寬鬆模式 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
 | 2019-03-22T10：50：27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中 | 使用中 | 在輸入鏈中找到寬鬆的防火牆規則 | 在防火牆中找到一個規則，其中包含廣泛 IP 位址或埠的寬鬆模式 | {"Rules"： "[{ \" SourceAddress \" ： \" \" ， \" SourcePort \" ： \" \" ， \" DestinationAddress \" ： \" \" ， \" DestinationPort \" ： \" 1337 \" }]"} |
@@ -164,7 +164,7 @@ SecurityRecommendation
 | summarize Cnt=count() by IoTHubId, DeviceId, RecommendationSeverity
 ```
 
-| IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | 計數 |
+| IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 2   |
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中        | 1 |

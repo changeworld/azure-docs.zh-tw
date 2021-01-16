@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6c8be064ade8182355c320e948b3b60b846033d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7454733233f1fd487d774d52a6f46187354ae05c
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348053"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246701"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步處理：函式參考
 在 Azure AD Connect 中，函數是用來在同步處理期間操作屬性值。  
@@ -122,10 +122,10 @@ ms.locfileid: "96348053"
   * [分割](#split)
 * **程式流程**
   * [錯誤](#error)
-  * [Iif](#iif)
+  * [IIF](#iif)
   * [選取](#select)
   * [開關](#switch)
-  * [其中](#where)
+  * [Where](#where)
   * [並](#with)
 * **Text**
   * [GUID](#guid)
@@ -509,7 +509,7 @@ Azure Active Directory 會使用此函式的輸出格式做為 DN 屬性格式�
  傳回 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>計數
+### <a name="count"></a>Count
 **描述：**  
 Count 函式會傳回多重值屬性中的元素個數
 
@@ -664,7 +664,7 @@ FormatDateTime 函式可用來將 DateTime 格式化為具有指定格式的字�
 
 **範例︰**  
 
-`FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
+`FormatDateTime(CDate("12/25/2007"),"yyyy-MM-dd")`  
  結果是 "2007-12-25"。
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
@@ -868,7 +868,7 @@ IsNumeric 函式會傳回布林值，指出運算式是否可評估為數字類�
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
-### <a name="item"></a>項目
+### <a name="item"></a>Item
 **描述：**  
 Item 函式會從多重值字串/屬性傳回一個項目。
 

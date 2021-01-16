@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 8843bc803cdad07d8b66f9aeb87688c816158200
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202264"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246242"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>您的商業市集權益
 
@@ -26,7 +26,7 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 
 此方案會建立正向的意見反應循環：每個業務成長階段的權益都是為了讓您邁入下一個階段而設計，讓您利用商業市集作為平台，將業務拓展至 Microsoft 的客戶，配合 Microsoft 擅長領域及 Microsoft 的通路。
 
-您的權益會視供應項目是[上市、試用或交易](determine-your-listing-type.md#available-listing-options-by-offer-type)而有所不同。
+您的權益會視供應項目是[上市、試用或交易](determine-your-listing-type.md)而有所不同。
 
 當供應項目上線時，我們會根據您符合的資格，請 Rewards 小組成員與您聯繫。
 

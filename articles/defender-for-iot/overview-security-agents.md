@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2019
 ms.author: shhazam
-ms.openlocfilehash: d3b50d909fb167ee123b548603628bae7d844c5b
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2b1cd131e578b1d16fabee99b8de536e4a48ece0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839430"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247296"
 ---
 # <a name="get-started-with-azure-defender-for-iot-device-security-agents"></a>開始使用適用于 IoT 的 Azure Defender 裝置安全性代理程式
 
@@ -31,7 +31,7 @@ ms.locfileid: "97839430"
 使用下列工作流程來部署及測試適用于 IoT 安全性代理程式的 Defender：
 
 1. [為 iot 中樞啟用適用于 IoT 的 Defender 服務](quickstart-onboard-iot-hub.md)
-1. 如果您的 IoT 中樞沒有已註冊的裝置，請 [註冊新的裝置](../iot-accelerators/quickstart-device-simulation-deploy.md)。
+1. 如果您的 IoT 中樞沒有已註冊的裝置，請 [註冊新的裝置](../iot-accelerators/iot-accelerators-device-simulation-overview.md)。
 1. 為您的裝置[建立 azureiotsecurity 安全性模組](quickstart-create-security-twin.md)。
 1. 若要在 Azure 模擬裝置上安裝代理程式，而不是安裝在實際的裝置上，請在可用區域中 [啟動新的 Azure 虛擬機器 (VM) ](../virtual-machines/linux/quick-create-portal.md) 。
 1. 在您的 IoT 裝置或新的 VM 上[部署適用于 iot 的 Defender 安全性代理程式](how-to-deploy-linux-cs.md)。

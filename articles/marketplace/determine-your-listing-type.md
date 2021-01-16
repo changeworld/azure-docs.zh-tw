@@ -6,21 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 12/18/2020
-ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.date: 01/14/2021
+ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107390"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247537"
 ---
 # <a name="introduction-to-listing-options"></a>清單選項簡介
-
-您可以使用商業 marketplace 中的可用 _清單選項_ ，以各種方式與潛在客戶互動。 發佈您的供應專案之後，您為供應專案選擇的清單選項 (s) 會顯示為線上商店 () 中供應專案清單頁面左上角的按鈕。 例如，下列螢幕擷取畫面顯示 Microsoft AppSource 線上商店的供應專案清單頁面，並顯示 [ **Contact Me** ] 和 [ **試用** 產品] 按鈕。
-
-:::image type="content" source="./media/listing-options.png" alt-text="說明供應專案的清單頁面。[Contact Me] 和 [試用產品] 按鈕會顯示。":::
-
-## <a name="available-listing-options-by-offer-type"></a>依供應專案類型列出的可用清單選項
 
 當您建立供應專案類型時，您可以選擇一或多個清單選項。 這些選項會決定客戶在線上商店的供應專案清單頁面上看到的按鈕。 清單選項包括 _免費試用版、試用產品_、_連絡人_ _，並__立即取得_。
 
@@ -42,7 +36,7 @@ ms.locfileid: "98107390"
 | 軟體即服務 | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
 
-`*` [立即取得] 選項包括立即取得 (免費) 、自備授權 (BYOL) 、訂用帳戶和以使用量為基礎的定價。 如需詳細資訊，請參閱 [立即取得](#get-it-now)。
+&#42; [立即取得] 清單選項包括立即取得 (免費) 、攜帶您自己的授權 (BYOL) 、訂用帳戶和以使用量為基礎的定價。 如需詳細資訊，請參閱 [立即取得](#get-it-now)。
 
 ### <a name="free-trial"></a>免費試用
 
@@ -102,9 +96,15 @@ ms.locfileid: "98107390"
 
 使用此清單選項可免費提供您的應用程式。 客戶使用 [ _立即取得_ ] 按鈕來取得您的免費供應專案。
 
-#### <a name="byol"></a>BYOL
+> [!NOTE]
+> 立即取得 (免費) 優惠不符合可交易優惠 Marketplace Rewards 權益的資格。 由於店面沒有交易，因此這些分類為「試用版」。 請參閱下面的 [Marketplace Rewards](#marketplace-rewards) 。
 
-使用商用 marketplace 增強探索、自動布建您的解決方案，以及完成與 marketplace 分開的財務交易。 「自備授權」 (BYOL) 清單選項適用于內部部署到雲端的遷移。 客戶可使用 [ _立即取得_ ] 按鈕，使用由您預先購買的授權購買您的供應專案。
+#### <a name="bring-your-own-license-byol"></a>自備授權 (BYOL)
+
+使用此清單選項可讓客戶使用在商業 marketplace 外部購買的授權來部署您的供應專案。 此選項適用于內部部署到雲端的遷移。 客戶使用 [ _立即取得_ ] 按鈕，使用由您預先購買的授權購買您的供應專案。
+
+> [!NOTE]
+> BYOL 供應專案不符合可交易優惠 Marketplace Rewards 權益的資格。 因為這些需要客戶從合作夥伴取得授權，而不是透過商業 marketplace 店面進行交易，所以這些會分類為「清單」。 請參閱下面的 [Marketplace Rewards](#marketplace-rewards) 。
 
 #### <a name="subscription"></a>訂用帳戶
 
@@ -117,11 +117,17 @@ ms.locfileid: "98107390"
 
 下列供應專案類型支援以使用量為基礎的定價：
 
-- Azure 應用程式 (受控應用程式) 供應專案支援計量付費。 如需詳細資訊，請參閱 [受控應用程式計量付費帳單](./partner-center-portal/azure-app-metered-billing.md)。
-- SaaS 供應專案支援計量付費，以及每位使用者 () 定價。 如需計量計費的詳細資訊，請參閱 [使用商用 marketplace 計量服務的 SaaS](./partner-center-portal/saas-metered-billing.md)計費。
+- Azure 應用程式 (受控應用程式) 供應專案支援計量付費。 如需詳細資訊，請參閱 [受控應用程式計量付費帳單](partner-center-portal/azure-app-metered-billing.md)。
+- SaaS 供應專案支援計量付費，以及每位使用者 () 定價。 如需計量計費的詳細資訊，請參閱 [使用商用 marketplace 計量服務的 SaaS](partner-center-portal/saas-metered-billing.md)計費。
 - Azure 虛擬機器提供每個核心的支援、每個核心大小，以及每一市場和核心大小的定價。 這些定價選項是每小時定價，每月計費。
 
 建立可交易供應專案時，請務必先瞭解定價、計費、發票和付款考慮，然後再選取供應專案類型和建立供應專案。 若要深入瞭解，請參閱 [商用 marketplace 線上商店](overview.md#commercial-marketplace-online-stores)。
+
+## <a name="sample-offer"></a>範例供應專案
+
+發佈您的供應專案之後，您選擇的清單選項 (s) 會顯示為線上商店 () 中 [清單] 頁面左上角的按鈕。 例如，下列畫面顯示 Microsoft AppSource 線上商店的供應專案清單頁面，並顯示 [ **立即取得** ] 和 [ **試用** 產品] 按鈕：
+
+:::image type="content" source="media/listing-options.png" alt-text="說明具有 [Contact Me] 和 [試用產品] 按鈕的供應專案清單頁面。":::
 
 ## <a name="listing-and-pricing-options-by-online-store"></a>線上商店的清單和定價選項
 
@@ -149,10 +155,14 @@ AppSource 中的 &#42; SaaS 可交易供應專案目前僅供信用卡之用。
 
 &#42;&#42; Microsoft 365 增益集可免費安裝，而且可以使用 SaaS 供應專案販賣。 如需詳細資訊，請參閱[透過 Microsoft 商業市集販售 Office 365 增益集](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
-## <a name="marketplace-rewards"></a>Marketplace 獎勵
+## <a name="marketplace-rewards"></a>Marketplace Rewards
 
 您的 Marketplace Rewards 會根據您選擇的清單選項來區分。 若要深入瞭解，請參閱 [您的商業 marketplace 權益](gtm-your-marketplace-benefits.md)。
 
+如果您的供應專案可交易，您會在增加計費的銷售時獲得權益。
+
+非可交易提供的權益是根據是否已附加免費試用版而獲得。
+
 ## <a name="next-steps"></a>後續步驟
 
-- 若要選擇要建立的供應專案類型，請參閱 [發佈指南（依供應專案類型](./publisher-guide-by-offer-type.md)）。
+- 若要選擇要建立的供應專案類型，請參閱 [發佈指南（依供應專案類型](publisher-guide-by-offer-type.md)）。

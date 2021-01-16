@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 793ff9eedb747da0edcbbf2df50b62f06f407892
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368732"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247418"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -256,7 +256,8 @@ Cosmos DB 針對依據 MongoDB 撰寫的應用程式支援 MongoDB 有線通訊�
 
 試用 Cosmos DB 僅支援「美國中部」、「北歐」和「東南亞」區域中的「全域散發」。 無法為試用 Azure Cosmos DB 的帳戶建立 Azure 支援票證。 不過，支援可提供給具有現有支援方案的訂閱者。
 
-## <a name="free-tier-account-limits"></a>免費層帳戶限制
+## <a name="azure-cosmos-db-free-tier-account-limits"></a>Azure Cosmos DB 免費層帳戶限制
+
 下表列出 [Azure Cosmos DB 免費試用帳戶](optimize-dev-test.md#azure-cosmos-db-free-tier)的限制。
 
 | 資源 | 預設限制 |
@@ -268,7 +269,10 @@ Cosmos DB 針對依據 MongoDB 撰寫的應用程式支援 MongoDB 有線通訊�
 | 共用輸送量資料庫的數目上限 | 5 |
 | 共用輸送量資料庫中的容器數目上限 | 25 <br>在免費層帳戶中，具有最多 25 個容器的共用輸送量資料庫其 RU/秒下限為 400 個 RU/秒。 |
 
-  除了上述內容以外，[每個帳戶的限制](#per-account-limits)也適用於免費層帳戶。
+除了上述內容以外，[每個帳戶的限制](#per-account-limits)也適用於免費層帳戶。
+
+> [!NOTE]
+> Azure Cosmos DB 免費層與 Azure 免費帳戶不同。 Azure 免費帳戶會在有限的時間免費提供 Azure 點數和資源。 使用 Azure Cosmos DB 作為此免費帳戶的一部分時，您會取得 25 GB 的儲存體和 400 RU/秒的布建輸送量（12個月）。
 
 ## <a name="next-steps"></a>後續步驟
 

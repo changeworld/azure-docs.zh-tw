@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bf446c858e40014a4085721d646f819e08542064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 97741423fa8b689a92bd9db78b810e6b86aefcbd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87497880"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247058"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>使用 PowerShell 在 Azure Kubernetes Service (AKS) 叢集上建立 Windows Server 容器
 
@@ -24,7 +24,11 @@ Azure Kubernetes Service (AKS) 是受控 Kubernetes 服務，可讓您快速部�
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
-如果您選擇在本機使用 PowerShell，本文會要求您安裝 Az PowerShell 模組，並使用 [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) Cmdlet 連線到您的 Azure 帳戶。 如需安裝 Az PowerShell 模組的詳細資訊，請參閱[安裝 Azure PowerShell][install-azure-powershell]。
+如果您選擇在本機使用 PowerShell，本文會要求您安裝 Az PowerShell 模組，並使用 [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) Cmdlet 連線到您的 Azure 帳戶。 如需安裝 Az PowerShell 模組的詳細資訊，請參閱[安裝 Azure PowerShell][install-azure-powershell]。 您也必須安裝 Az. Aks PowerShell 模組： 
+
+```azurepowershell-interactive
+Install-Module Az.Aks
+```
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -80,7 +84,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ```azurepowershell-interactive
 $Password = Read-Host -Prompt 'Please enter your password' -AsSecureString
-New-AzAKS -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -KubernetesVersion 1.16.7 -NetworkPlugin azure -NodeVmSetType VirtualMachineScaleSets -WindowsProfileAdminUserName akswinuser -WindowsProfileAdminUserPassword $Password
 ```
 
 > [!Note]
@@ -96,7 +100,7 @@ New-AzAKS -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 2 -Ku
 New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -OsType Windows -Name npwin -KubernetesVersion 1.16.7
 ```
 
-上述命令會建立名為 **npwin** 的新節點集區，並將此新增至 **myAKSCluster**。 建立節點集區以執行 Windows Server 容器時，**VmSize** 的預設值是 **Standard_D2s_v3**。 如果您選擇設定 **VmSize** 參數，請檢查[限制的 VM 大小][restricted-vm-sizes]清單。 最小的建議大小是 **Standard_D2s_v3**。 上一個命令也會使用執行 `New-AzAks` 時，預設 vnet 中所建立的預設子網路。
+上述命令會建立名為 **npwin** 的新節點集區，並將此新增至 **myAKSCluster**。 建立節點集區以執行 Windows Server 容器時，**VmSize** 的預設值是 **Standard_D2s_v3**。 如果您選擇設定 **VmSize** 參數，請檢查 [限制的 VM 大小][restricted-vm-sizes]清單。 最小的建議大小是 **Standard_D2s_v3**。 上一個命令也會使用執行 `New-AzAks` 時，預設 vnet 中所建立的預設子網路。
 
 ## <a name="connect-to-the-cluster"></a>連線至叢集
 
@@ -118,7 +122,7 @@ Import-AzAksCredential -ResourceGroupName myResourceGroup -Name myAKSCluster
 kubectl get nodes
 ```
 
-下列範例輸出顯示叢集中的所有節點。 請確定所有節點的狀態為**就緒**：
+下列範例輸出顯示叢集中的所有節點。 請確定所有節點的狀態為 **就緒**：
 
 ```plaintext
 NAME                                STATUS   ROLES   AGE    VERSION

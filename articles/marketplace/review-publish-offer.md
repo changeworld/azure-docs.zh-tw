@@ -8,12 +8,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/27/2020
-ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8b63dfb015c7337e36dac3812e92ddc53914206d
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188746"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247160"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>如何審查供應專案並將其發佈至商用 marketplace
 
@@ -52,7 +52,7 @@ ms.locfileid: "96188746"
 | [認證](#certification-phase) | 我們會進行手動驗證。 |
 | [建立預覽](#preview-creation-phase) | 提供預覽連結的任何人都可以使用供應專案預覽的 [清單] 頁面。 如果您的供應專案將透過 Microsoft (可交易) 銷售，則只有您在供應專案的 [ **預覽物件** ] 頁面上指定的物件可以購買及存取供應專案以進行測試。 |
 | [發佈者登出](#publisher-sign-off-phase) | 我們會傳送一封電子郵件給您，要求您預覽並核准您的供應專案。 |
-| [Publish](#publish-phase) | 我們會執行一系列的步驟，以確認預覽供應專案已即時發佈到商用 marketplace。 |
+| [發佈](#publish-phase) | 我們會執行一系列的步驟，以確認預覽供應專案已即時發佈到商用 marketplace。 |
 |||
 
 ## <a name="automated-validation-phase"></a>自動化驗證階段
@@ -150,7 +150,7 @@ ms.locfileid: "96188746"
 ### <a name="previewing-and-approving-your-offer"></a>預覽並核准您的供應專案
 
 > [!IMPORTANT]
-> 若要驗證端對端購買和設定流程，請在預覽期間購買您的供應專案。 先向 Microsoft 通知 [支援票證](https://aka.ms/marketplacesupport) ，以確保我們不會處理費用。
+> 若要驗證端對端購買和設定流程，請在預覽期間購買您的供應專案。 先向 Microsoft 通知 [支援票證](https://aka.ms/marketplacesupport) ，以確保我們不會處理費用。 如果您的供應專案是連絡人的連絡人清單，請在預覽期間提供 Contact Me 詳細資料，以測試是否已如預期般建立潛在客戶。
 
 在 [ **供應專案總覽** ] 頁面上，您會在 [ **上線** ] 按鈕底下看到 [預覽] 連結。 根據您在建立供應專案時所選擇的選項而定，AppSource preview、Azure Marketplace preview 或兩者都會有一個連結。 如果您選擇透過 Microsoft 銷售您的供應專案，任何已新增至預覽物件的人都可以測試您的供應專案取得和部署，以確保它符合您在此階段的需求。
 
@@ -225,8 +225,8 @@ ms.locfileid: "96188746"
 有四個篩選準則：
 * 事件
 * 使用者
-* 日期
-* Pages
+* Date
+* 頁面
 
 當您選擇 [ **頁面** ] 篩選準則時，可以選取任何適用于供應專案類型的合作夥伴中心頁面。 套用時， **頁面** 篩選會顯示所有已 **提交的供應** 專案，以在您選取的頁面變更時預覽事件。
 

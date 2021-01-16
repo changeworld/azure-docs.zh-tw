@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/10/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b61bef89d53da280961b818425d11a6f81bbf5ea
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 25f47be98b11f05ee6ac27018152ece05c0de4e4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210234"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246684"
 ---
 # <a name="manage-individual-sensors"></a>管理個別感應器
 
@@ -84,7 +84,7 @@ ms.locfileid: "98210234"
 
 - **針對本機連線的感應器**：啟用檔案無效。 如果檔案無效，請移至適用于 IoT 的 Defender 入口網站。 在 [ **感應器管理** ] 頁面上，選取具有無效檔案的感應器，並下載新的啟用檔案。
 
-- **針對已連線到雲端的感應器**：感應器無法連線到網際網路。 檢查感應器的網路設定。 如果您的感應器需要透過 web proxy 連線來存取網際網路，請確認已在 **感應器網路** 設定畫面上正確設定您的 proxy 伺服器。 確認 \* 防火牆和/或 proxy 中允許 azure-devices.net:443。 如果不支援萬用字元，或您想要更多控制，您應在防火牆和/或 proxy 中開啟特定 Defender for IoT 中樞的 FQDN。 如需詳細資訊，請參閱 [參考-IoT 中樞端點](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints)。  
+- **針對已連線到雲端的感應器**：感應器無法連線到網際網路。 檢查感應器的網路設定。 如果您的感應器需要透過 web proxy 連線來存取網際網路，請確認已在 **感應器網路** 設定畫面上正確設定您的 proxy 伺服器。 確認 \* 防火牆和/或 proxy 中允許 azure-devices.net:443。 如果不支援萬用字元，或您想要更多控制，您應在防火牆和/或 proxy 中開啟特定 Defender for IoT 中樞的 FQDN。 如需詳細資訊，請參閱 [參考-IoT 中樞端點](../iot-hub/iot-hub-devguide-endpoints.md)。  
 
 - **針對已連線到雲端的感應器**：啟用檔案有效，但 Defender for IoT 拒絕它。 如果您無法解決此問題，您可以從適用于 IoT 的 Defender 入口網站的 [ **感應器管理** ] 頁面下載另一個啟用。 如果無法運作，請聯絡 Microsoft 支援服務。
 
@@ -282,7 +282,7 @@ Pem (或罕見的 der) 具有不同副檔名的格式檔案。 Windows 檔案總
 
 3. 設定參數，如下所示：
 
-    | 參數 | 描述 |
+    | 參數 | 說明 |
     |--|--|
     | IP 位址 | 感應器 IP 位址 |
     | 子網路遮罩 | 遮罩位址 |
@@ -299,7 +299,7 @@ Pem (或罕見的 der) 具有不同副檔名的格式檔案。 Windows 檔案總
 
 :::image type="content" source="media/how-to-manage-individual-sensors/time-and-region.png" alt-text="設定時間和區域。":::
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 |--|--|
 | 時區 | 時區定義：<br />-警示<br />-趨勢和統計資料小工具<br />-資料採礦報表<br />   -風險評量報告<br />-攻擊媒介 |
 | 日期格式 | 選取下列其中一個格式選項：<br />-dd/MM/yyyy HH： MM： ss<br />-MM/dd/yyyy HH： MM： ss<br />-yyyy/MM/dd HH： MM： ss |
@@ -455,7 +455,7 @@ Pem (或罕見的 der) 具有不同副檔名的格式檔案。 Windows 檔案總
 
 3. 從 [**一般**] 區段中選取 [**系統屬性**]。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [威脅情報研究和套件](how-to-work-with-threat-intelligence-packages.md)
 

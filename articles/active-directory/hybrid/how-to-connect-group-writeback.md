@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e24246c749978cd2bbb5b3d0821eea6d7dfb4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c506c87ad5901754175f18e6b50bc6ed46a3c19
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660876"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246905"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect 群組回寫
 
@@ -34,10 +34,10 @@ ms.locfileid: "89660876"
 
 1. 開啟 Azure AD Connect wizard、選取 [ **設定** ]，然後按 **[下一步**]。
 2. 選取 [ **自訂同步處理選項** ]，然後按 **[下一步]**。
-3. 在 [ **連接到 Azure AD]** 頁面上，輸入您的認證。 按一下 [下一步]。
+3. 在 [ **連接到 Azure AD]** 頁面上，輸入您的認證。 按 [下一步] 。
 4. 在 [ **選用功能** ] 頁面上，確認仍然選取您先前設定的選項。
 5. 選取 [ **群組回寫** ]，然後按一下 **[下一步]**。
-6. 在 [ **回寫] 頁面**上，選取 (OU) 的 Active Directory 組織單位，以將從 Microsoft 365 同步處理的物件儲存到您的內部部署組織，然後按 **[下一步]**。
+6. 在 [ **回寫] 頁面** 上，選取 (OU) 的 Active Directory 組織單位，以將從 Microsoft 365 同步處理的物件儲存到您的內部部署組織，然後按 **[下一步]**。
 7. 在 [ **準備** 設定] 頁面上，按一下 [ **設定**]。
 8. 當嚮導完成時，請按一下 [設定完成] 頁面 **上的 [** 結束]。
 9. 在 Azure Active Directory Connect 伺服器上以系統管理員身分開啟 Windows PowerShell，然後執行下列命令。
@@ -45,7 +45,13 @@ ms.locfileid: "89660876"
 ```Powershell
 $AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>
 Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncConfig\AdSyncConfig.psm1"
+
+# To grant the <MSOL_account> permission to all domains in the forest:
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
+
+# To grant the <MSOL_account> permission to specific OU (eg. the OU chosen to writeback Office 365 Groups to):
+$GroupWritebackOU = <DN of OU where groups are to be written back to>
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN -ADObjectDN $GroupWritebackOU
 ```
 
 如需設定 Microsoft 365 群組的詳細資訊，請參閱 [使用內部部署 Exchange 混合設定 Microsoft 365 群組](/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect)。
@@ -61,7 +67,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnect
 
    ![取消核取方塊](media/how-to-connect-group-writeback/group2.png)
   
-3. 按一下 [下一步]。
+3. 按 [下一步] 。
 4. 按一下 [設定]  。
 
  >[!NOTE]

@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 853c71ed4803f717188568ec051c40c4f73afe95
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cefd00609062c30b036f87a0a01a75dc2afb868b
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92202866"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246140"
 ---
 # <a name="graphics-binding"></a>圖形繫結
 
@@ -28,8 +28,8 @@ ms.locfileid: "92202866"
 在 Unity 中，整個繫結程序是由傳遞至 `RemoteManagerUnity.InitializeManager` 的 `RemoteUnityClientInit` 結構處理。 若要設定圖形模式，`GraphicsApiType` 欄位必須設定為所選的繫結。 系統會依據 XRDevice 是否存在而自動填入欄位。 您可以使用下列行為來手動覆寫行為：
 
 * **HoloLens 2**：一律使用 [Windows Mixed Reality](#windows-mixed-reality) 圖形繫結。
-* **平面 UWP 傳統型應用程式**：一律使用[模擬](#simulation)。
-* **Unity 編輯器**：除非連接 WMR VR 頭戴式裝置，否則一律使用[模擬](#simulation)。在前述情況下會停用 ARR，以允許對應用程式的非 ARR 相關部分進行偵錯。 並請參閱[全像攝影遠端處理](../how-tos/unity/holographic-remoting.md)。
+* **平面 UWP 傳統型應用程式**：一律使用 [模擬](#simulation)。
+* **Unity 編輯器**：除非連接 WMR VR 頭戴式裝置，否則一律使用 [模擬](#simulation)。在前述情況下會停用 ARR，以允許對應用程式的非 ARR 相關部分進行偵錯。 並請參閱[全像攝影遠端處理](../how-tos/unity/holographic-remoting.md)。
 
 Unity 另外唯一相關的部分是存取[基本繫結](#access)，至於以下所有其他章節則可略過。
 
@@ -150,13 +150,13 @@ wmrBinding->BlitRemoteFrame();
 
 這裡的基本方法是，使用 proxy 攝影機將遠端影像和本機內容轉譯成非畫面的目標。 然後 proxy 映射會 reprojected 到本機相機空間中，並在 [reprojection 的晚期](../overview/features/late-stage-reprojection.md)解說中進一步說明。
 
-這種設定方式較為複雜，運作方式如下：
+`GraphicsApiType.SimD3D11` 也支援 stereoscopic 轉譯，在 `InitSimulation` 下面的安裝程式呼叫期間必須加以啟用。 這種設定方式較為複雜，運作方式如下：
 
 #### <a name="create-proxy-render-target"></a>建立 Proxy 轉譯目標
 
 必須使用 `GraphicsBindingSimD3d11.Update` 函式提供的 Proxy 相機資料，將遠端和本機內容轉譯成螢幕上不可見的色彩/深度轉譯目標，稱為「Proxy」。
 
-Proxy 必須符合後端緩衝區的解析，而且必須是 *DXGI_FORMAT_R8G8B8A8_UNORM* 或 *DXGI_FORMAT_B8G8R8A8_UNORM* 格式的 int。 工作階段準備就緒後，需先呼叫 `GraphicsBindingSimD3d11.InitSimulation`，才能與其連線：
+Proxy 必須符合後端緩衝區的解析，而且必須是 *DXGI_FORMAT_R8G8B8A8_UNORM* 或 *DXGI_FORMAT_B8G8R8A8_UNORM* 格式的 int。 在 stereoscopic 轉譯的案例中，色彩 proxy 材質和（如果使用 depth），深度 proxy 材質必須有兩個數組圖層，而不是一個。 工作階段準備就緒後，需先呼叫 `GraphicsBindingSimD3d11.InitSimulation`，才能與其連線：
 
 ```cs
 AzureSession currentSession = ...;
@@ -166,8 +166,9 @@ IntPtr depth = ...; // native pointer to ID3D11Texture2D
 float refreshRate = 60.0f; // Monitor refresh rate up to 60hz.
 bool flipBlitRemoteFrameTextureVertically = false;
 bool flipReprojectTextureVertically = false;
+bool stereoscopicRendering = false;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
-simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
+simBinding.InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically, stereoscopicRendering);
 ```
 
 ```cpp
@@ -178,8 +179,9 @@ void* depth = ...; // native pointer to ID3D11Texture2D
 float refreshRate = 60.0f; // Monitor refresh rate up to 60hz.
 bool flipBlitRemoteFrameTextureVertically = false;
 bool flipReprojectTextureVertically = false;
+bool stereoscopicRendering = false;
 ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
-simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically);
+simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteFrameTextureVertically, flipReprojectTextureVertically, stereoscopicRendering);
 ```
 
 需要搭配指標將 init 函式提供給原生 D3D 裝置，以及 Proxy 轉譯目標的色彩及深度紋理。 初始化之後可以呼叫多次 `AzureSession.ConnectToRuntime` 和 `DisconnectFromRuntime`，但切換至不同的工作階段時，需先在舊的工作階段上呼叫 `GraphicsBindingSimD3d11.DeinitSimulation`，然後才能在另一個工作階段上呼叫 `GraphicsBindingSimD3d11.InitSimulation`。
@@ -196,13 +198,14 @@ simBinding->InitSimulation(d3dDevice, depth, color, refreshRate, flipBlitRemoteF
 ```cs
 AzureSession currentSession = ...;
 GraphicsBindingSimD3d11 simBinding = (currentSession.GraphicsBinding as GraphicsBindingSimD3d11);
-SimulationUpdate update = new SimulationUpdate();
+SimulationUpdateParameters updateParameters = new SimulationUpdateParameters();
 // Fill out camera data with current camera data
+// (see "Simulation Update structures" section below)
 ...
-SimulationUpdate proxyUpdate = new SimulationUpdate();
-simBinding.Update(update, out proxyUpdate);
+SimulationUpdateResult updateResult = new SimulationUpdateResult();
+simBinding.Update(updateParameters, out updateResult);
 // Is the frame data valid?
-if (proxyUpdate.frameId != 0)
+if (updateResult.frameId != 0)
 {
     // Bind proxy render target
     simBinding.BlitRemoteFrameToProxy();
@@ -223,13 +226,14 @@ else
 ApiHandle<AzureSession> currentSession;
 ApiHandle<GraphicsBindingSimD3d11> simBinding = currentSession->GetGraphicsBinding().as<GraphicsBindingSimD3d11>();
 
-SimulationUpdate update;
+SimulationUpdateParameters updateParameters;
 // Fill out camera data with current camera data
+// (see "Simulation Update structures" section below)
 ...
-SimulationUpdate proxyUpdate;
-simBinding->Update(update, &proxyUpdate);
+SimulationUpdateResult updateResult;
+simBinding->Update(updateParameters, &updateResult);
 // Is the frame data valid?
-if (proxyUpdate.frameId != 0)
+if (updateResult.frameId != 0)
 {
     // Bind proxy render target
     simBinding->BlitRemoteFrameToProxy();
@@ -245,6 +249,112 @@ else
     ...
 }
 ```
+
+#### <a name="simulation-update-structures"></a>模擬更新結構
+
+每個框架（從上一節的轉譯 **迴圈更新** ）都會要求您輸入對應至本機相機的一系列相機參數，並傳回一組對應至下一個可用框架相機的相機參數。 這兩個集合會分別在 `SimulationUpdateParameters` 和結構中捕獲 `SimulationUpdateResult` ：
+
+```cs
+public struct SimulationUpdateParameters
+{
+    public UInt32 frameId;
+    public StereoMatrix4x4 viewTransform;
+    public StereoCameraFOV fieldOfView;
+};
+
+public struct SimulationUpdateResult
+{
+    public UInt32 frameId;
+    public float nearPlaneDistance;
+    public float farPlaneDistance;
+    public StereoMatrix4x4 viewTransform;
+    public StereoCameraFOV fieldOfView;
+};
+```
+
+結構成員具有下列意義：
+
+| member | 描述 |
+|--------|-------------|
+| frameId | 連續框架識別碼。 SimulationUpdateParameters 輸入的必要項，而且必須針對每個新的框架持續遞增。 如果沒有可用的框架資料，SimulationUpdateResult 中的會是0。 |
+| viewTransform | 框架的相機視圖轉換矩陣的左右-身歷聲配對。 針對 monoscopic 轉譯，只有 `left` 成員有效。 |
+| fieldOfView | 在 [視圖慣例](https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#angles)的 [OpenXR] 欄位中，以左至左的框架相機配對。 針對 monoscopic 轉譯，只有 `left` 成員有效。 |
+| System.windows.media.media3d.projectioncamera.nearplanedistance | 用於目前遠端框架投射矩陣的近平面距離。 |
+| System.windows.media.media3d.projectioncamera.farplanedistance | 目前遠端框架的投射矩陣所用的平面距離。 |
+
+如果啟用了 stereoscopic 轉譯，則身歷聲配對 `viewTransform` 和 `fieldOfView` 允許設定這兩種攝影機值。 否則， `right` 將會忽略成員。 如您所見，在沒有指定投射矩陣的情況下，只有相機的轉換會以純4x4 轉換矩陣的形式傳遞。 實際的矩陣是在內部使用指定的 CameraSettings，以及在 [API](../overview/features/camera.md)上設定的目前最接近平面和最上層平面 Azure 遠端轉譯來計算。
+
+由於您可以視需要在執行時間變更 [CameraSettings](../overview/features/camera.md) 的近乎平面和最接近的平面，而服務會以非同步方式套用這些設定，因此每個 SimulationUpdateResult 也會在轉譯對應的框架期間，攜帶特定的近平面和最遠的平面。 您可以使用這些平面值來調整用來轉譯本機物件的投射矩陣，以符合遠端畫面格呈現。
+
+最後，雖然 **模擬更新** 呼叫需要 OpenXR 慣例中的欄位，但基於標準化和演算法的安全考慮，您可以利用下列結構擴展範例中所示的轉換函式：
+
+```cs
+public SimulationUpdateParameters CreateSimulationUpdateParameters(UInt32 frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
+{
+    SimulationUpdateParameters parameters;
+    parameters.frameId = frameId;
+    parameters.viewTransform.left = viewTransform;
+    if(parameters.fieldOfView.left.fromProjectionMatrix(projectionMatrix) != Result.Success)
+    {
+        // Invalid projection matrix
+        return null;
+    }
+    return parameters;
+}
+
+public void GetCameraSettingsFromSimulationUpdateResult(SimulationUpdateResult result, out Matrix4x4 projectionMatrix, out Matrix4x4 viewTransform, out UInt32 frameId)
+{
+    if(result.frameId == 0)
+    {
+        // Invalid frame data
+        return;
+    }
+    
+    // Use the screenspace depth convention you expect for your projection matrix locally
+    if(result.fov.left.toProjectionMatrix(result.nearPlaneDistance, result.farPlaneDistance, DepthConvention.ZeroToOne, projectionMatrix) != Result.Success)
+    {
+        // Invalid field-of-view
+        return;
+    }
+    viewTransform = result.viewTransform.left;
+    frameId = result.frameId;
+}
+```
+
+```cpp
+SimulationUpdateParameters CreateSimulationUpdateParameters(uint32_t frameId, Matrix4x4 viewTransform, Matrix4x4 projectionMatrix)
+{
+    SimulationUpdateParameters parameters;
+    parameters.frameId = frameId;
+    parameters.viewTransform.left = viewTransform;
+    if(FovFromProjectionMatrix(projectionMatrix, parameters.fieldOfView.left) != Result::Success)
+    {
+        // Invalid projection matrix
+        return {};
+    }
+    return parameters;
+}
+
+void GetCameraSettingsFromSimulationUpdateResult(const SimulationUpdateResult& result, Matrix4x4& projectionMatrix, Matrix4x4& viewTransform, uint32_t& frameId)
+{
+    if(result.frameId == 0)
+    {
+        // Invalid frame data
+        return;
+    }
+    
+    // Use the screenspace depth convention you expect for your projection matrix locally
+    if(FovToProjectionMatrix(result.fieldOfView.left, result.nearPlaneDistance, result.farPlaneDistance, DepthConvention::ZeroToOne, projectionMatrix) != Result::Success)
+    {
+        // Invalid field-of-view
+        return;
+    }
+    viewTransform = result.viewTransform.left;
+    frameId = result.frameId;
+}
+```
+
+這些轉換函式可讓您快速切換現場規格和一般4x4 透視圖投影矩陣，視您對本機轉譯的需求而定。 這些轉換函式包含驗證邏輯，而且會傳回錯誤，而不會設定有效的結果，以防輸入投射矩陣或輸入欄位無效。
 
 ## <a name="api-documentation"></a>API 文件
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: b4dabee6a725fd02b7be6dd12c8a032e3d816835
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489364"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247177"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>使用 HTTPS 端點來管理商業市集潛在客戶
 
@@ -43,7 +43,7 @@ ms.locfileid: "94489364"
 
     ![展開流程步驟](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-1. 使用下列其中一個方法來設定 **要求本文 JSON 結構描述** ：
+1. 使用下列其中一個方法來設定 **要求本文 JSON 結構描述**：
 
     - 將 JSON 結構描述複製到 [要求本文 JSON 結構描述] 文字方塊中。
     - 選取 [使用範例承載來產生結構描述]。 在 [輸入或貼上範例 JSON 承載] 文字方塊中，貼上 JSON 範例。 選取 [完成] 以建立結構描述。
@@ -66,6 +66,10 @@ ms.locfileid: "94489364"
         },
         "LeadSource": {
           "id": "/properties/LeadSource",
+          "type": "string"
+        },
+        "Description": {
+          "id": "/properties/Description",
           "type": "string"
         },
         "UserDetails": {
@@ -162,15 +166,15 @@ ms.locfileid: "94489364"
 
 1. 在 [傳送電子郵件] 視窗中，設定下列必要欄位：
 
-   - **收件者** ：請輸入至少一個有效的電子郵件地址，以供作為潛在客戶的傳送目的地。
-   - **主體** ：Power Automate 可讓您選擇新增動態內容，像是下列畫面所顯示的 **LeadSource** 。 輸入欄位名稱來開始。 然後從快顯視窗中選取動態內容挑選清單。 
+   - **收件者**：請輸入至少一個有效的電子郵件地址，以供作為潛在客戶的傳送目的地。
+   - **主體**：Power Automate 可讓您選擇新增動態內容，像是下列畫面所顯示的 **LeadSource**。 輸入欄位名稱來開始。 然後從快顯視窗中選取動態內容挑選清單。 
 
         >[!NOTE] 
         > 當您新增欄位名稱時，可以在每個名稱後面加上冒號 (:)，然後選取 **Enter** 來建立新的資料列。 欄位名稱新增好之後，您便可以從動態挑選清單新增每個相關聯的參數。
 
         ![使用動態內容新增電子郵件動作](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **主體** ：從動態內容挑選清單中，新增您在電子郵件本文中想要的資訊。 例如，使用 LastName、FirstName、Email 和 Company。 當您完成電子郵件通知的設定時，其看起來會類似下列畫面中的範例。
+   - **主體**：從動態內容挑選清單中，新增您在電子郵件本文中想要的資訊。 例如，使用 LastName、FirstName、Email 和 Company。 當您完成電子郵件通知的設定時，其看起來會類似下列畫面中的範例。
 
 
        ![電子郵件通知範例](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)

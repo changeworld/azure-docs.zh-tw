@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b3e1bb3f418f21c75e29b5a1cad337c6f3c10145
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562594"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246633"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>搭配 Kubernetes 和 Helm 使用電腦視覺容器
 
@@ -42,7 +42,7 @@ ms.locfileid: "97562594"
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="connect-to-the-kubernetes-cluster"></a>連接到 Kubernetes 叢集
+## <a name="connect-to-the-kubernetes-cluster"></a>連線至 Kubernetes 叢集
 
 主機電腦預期會有可用的 Kubernetes 叢集。 請參閱本教學課程以瞭解如何部署 [Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md) 叢集，以瞭解如何將 Kubernetes 叢集部署到主機電腦。 您可以在 [Kubernetes 檔](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)中找到有關部署的詳細資訊。
 
@@ -168,7 +168,7 @@ spec:
 在相同的 *範本* 資料夾中，複製下列 helper 函式並貼到中 `helpers.tpl` 。 `helpers.tpl` 定義有助於產生 Helm 範本的實用函數。
 
 > [!NOTE]
-> 本文包含詞彙從屬的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
+> 本文包含「從屬」一詞的參考，Microsoft 已不再使用該字詞。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ```yaml
 {{- define "rabbitmq.hostname" -}}
@@ -258,6 +258,8 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 
 接收要求的容器可以將工作分割成單一頁面子工作，並將它們新增至通用佇列。 任何來自較不忙碌容器的辨識背景工作，都可以從佇列取用單一頁面子工作、執行辨識，然後將結果上傳至儲存體。 視部署的容器數目而定，輸送量可以提升至最多 `n` 時間。
 
+V3 容器會公開路徑底下的活動探查 API `/ContainerLiveness` 。 使用下列部署範例來設定 Kubernetes 的活動探查。 
+
 將下列 YAML 複製並貼到名為的檔案中 `deployment.yaml` 。 `# {ENDPOINT_URI}` `# {API_KEY}` 以您自己的值取代和批註。 將 `# {AZURE_STORAGE_CONNECTION_STRING}` 批註取代為您 Azure 儲存體的連接字串。 將 `replicas` 設定為您想要的數位，其會 `3` 在下列範例中設定為。
 
 ```yaml
@@ -293,6 +295,13 @@ spec:
           value: # {AZURE_STORAGE_CONNECTION_STRING}
         - name: Queue__Azure__ConnectionString
           value: # {AZURE_STORAGE_CONNECTION_STRING}
+        livenessProbe:
+          httpGet:
+            path: /ContainerLiveness
+            port: 5000
+          initialDelaySeconds: 60
+          periodSeconds: 60
+          timeoutSeconds: 20
 --- 
 apiVersion: v1
 kind: Service

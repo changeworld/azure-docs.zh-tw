@@ -2,15 +2,15 @@
 title: 針對 Azure 自動化更新管理問題進行疑難排解
 description: 本文說明如何針對 Azure 自動化更新管理進行疑難排解及解決問題。
 services: automation
-ms.date: 12/04/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: f00002c7374e0c35c7bb91c28b2dd87ad71e3350
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 55e58c92004f4f4cf4ba6a96620b4f037c80cdb4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184912"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246259"
 ---
 # <a name="troubleshoot-update-management-issues"></a>針對更新管理問題進行疑難排解
 
@@ -144,13 +144,11 @@ Error details: Failed to enable the Update solution
    | summarize by Computer, Solutions
    ```
 
-4. 如果您在查詢結果中看不到您的電腦，則其最近未簽入。 可能是本機設定問題，您應該[重新安裝代理程式](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
+    如果您在查詢結果中看不到您的電腦，則其最近未簽入。 可能是本機設定問題，您應該[重新安裝代理程式](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。
 
-5. 如果您的電腦顯示在查詢結果中，請檢查是否有範圍設定問題。 [範圍設定](../update-management/scope-configuration.md)會判斷哪些電腦已針對更新管理進行設定。
+    如果您的電腦已列在查詢結果中，請在 [ **方案** ] 屬性底下，確認已列出 **更新** 。 這會確認它已向更新管理註冊。 如果不是，請檢查範圍設定問題。 [範圍設定](../update-management/scope-configuration.md)會判斷哪些電腦已針對更新管理進行設定。 若要設定電腦目標的範圍設定，請參閱在 [工作區中啟用電腦](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)。
 
-6. 如果您的電腦顯示在您的工作區中，但是不在更新管理中，您必須將範圍設定設為以電腦為目標。 若要了解如何執行這項操作，請參閱[在工作區中啟用電腦](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace)。
-
-7. 在您的工作區中，執行此查詢。
+4. 在您的工作區中，執行此查詢。
 
    ```kusto
    Operation
@@ -158,9 +156,9 @@ Error details: Failed to enable the Update solution
    | sort by TimeGenerated desc
    ```
 
-8. 如果您收到 `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` 的結果，表示已達到在您的工作區上定義的配額，因而停止儲存資料。 在您的工作區中，移至 [使用量和估計成本] 底下的 [資料量管理]，然後變更或移除配額。
+   如果您收到 `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` 的結果，表示已達到在您的工作區上定義的配額，因而停止儲存資料。 在您的工作區中，移至 [使用量和估計成本] 底下的 [資料量管理]，然後變更或移除配額。
 
-9. 如果您的問題仍然未解決，請遵循[部署 Windows 混合式 Runbook 背景工作角色](../automation-windows-hrw-install.md)中的步驟，重新安裝適用於 Windows 的混合式背景工作角色。 針對 Linux，請遵循[部署 Linux 混合式 Runbook 背景工作角色](../automation-linux-hrw-install.md)中的步驟。
+5. 如果您的問題仍然未解決，請遵循[部署 Windows 混合式 Runbook 背景工作角色](../automation-windows-hrw-install.md)中的步驟，重新安裝適用於 Windows 的混合式背景工作角色。 針對 Linux，請遵循[部署 Linux 混合式 Runbook 背景工作角色](../automation-linux-hrw-install.md)中的步驟。
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>案例：無法為訂用帳戶註冊自動化資源提供者
 
