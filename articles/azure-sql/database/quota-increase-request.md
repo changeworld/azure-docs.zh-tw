@@ -9,17 +9,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967696"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251842"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體的要求配額增加
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-本文說明如何要求 Azure SQL Database 和 Azure SQL 受控執行個體的配額增加。 此外，也會說明如何啟用區域的訂用帳戶存取。
+本文說明如何要求 Azure SQL Database 和 Azure SQL 受控執行個體的配額增加。 此外，也會說明如何啟用區域的訂用帳戶存取，以及如何要求在區域中啟用特定硬體。
 
 ## <a name="create-a-new-support-request"></a><a id="newquota"></a> 建立新的支援要求
 
@@ -62,8 +62,7 @@ ms.locfileid: "97967696"
 
 - 每一伺服器的資料庫交易單位 (Dtu) 
 - 每個訂用帳戶的伺服器
-- M 系欄區域存取
-- 區域存取
+- 訂用帳戶或特定硬體的區域存取權
 
 ### <a name="database-transaction-units-dtus-per-server"></a>每一伺服器的資料庫交易單位 (Dtu) 
 
@@ -109,30 +108,15 @@ ms.locfileid: "97967696"
 
    ![要求區域存取](./media/quota-increase-request/quota-request.png)
 
-<!--
-### <a id="mseries"></a> Enable M-series access to a region
+### <a name="request-enabling-specific-hardware-in-a-region"></a>要求在區域中啟用特定硬體
 
-To enable M-series hardware for a subscription and region, a support request must be opened.
+如果您想要使用的 [硬體世代](service-tiers-vcore.md#hardware-generations) 在您的區域中無法使用 (查看 [硬體可用性](service-tiers-vcore.md#hardware-availability)) ，您可以使用下列步驟來要求它。
 
-1. Select the **M-series region access** quota type.
+1. 選取 **其他配額要求** 配額類型。
 
-1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
+1. 在 [ **描述** ] 欄位中，陳述您的要求，包括硬體世代的名稱和您所需的區功能變數名稱稱。
 
-
-   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
--->
-
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> SQL 受控執行個體配額類型
-
-針對 **SQL 受控執行個體** 配額類型，請使用下列步驟：
-
-1. 在 [ **區域** ] 清單中，選取要設為目標的 Azure 區域。
-
-1. 輸入您針對 **子網** 和 **vCore** 要求的新限制。
-
-   ![SQL 受控執行個體配額詳細資料](./media/quota-increase-request/quota-details-managed-instance.png)
-
-如需詳細資訊，請參閱 [總覽 AZURE SQL 受控執行個體資源限制](../managed-instance/resource-limits.md)。
+   ![要求新區域中的硬體](./media/quota-increase-request/hardware-in-new-region.png)
 
 ## <a name="submit-your-request"></a>提交您的要求
 

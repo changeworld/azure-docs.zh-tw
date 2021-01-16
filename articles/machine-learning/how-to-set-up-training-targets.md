@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127646"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251109"
 ---
 # <a name="configure-and-submit-training-runs"></a>設定和提交定型執行
 
@@ -26,7 +26,7 @@ ms.locfileid: "98127646"
 
 您只需要在 **腳本執行** 設定內定義每個計算目標的環境。  然後，當您想要在不同的計算目標上執行定型實驗時，為該計算指定回合組態。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)
 * [適用于 Python 的 AZURE MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) ( # B0 = 1.13.0) 
@@ -75,6 +75,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 選取您的定型腳本將在其上執行的計算目標。 如果 ScriptRunConfig 中未指定任何計算目標，或者 `compute_target='local'` ，AZURE ML 會在本機執行您的腳本。 
 
 本文中的範例程式碼假設您已從「必要條件」一節中建立計算目標 `my_compute_target` 。
+
+>[!Note]
+>Azure Databricks 不支援做為模型定型的計算目標。 您可以使用 Azure Databricks 進行資料準備和部署工作。 
 
 ## <a name="create-an-environment"></a>建立環境
 Azure Machine Learning [環境](concept-environments.md) 是您機器學習訓練發生所在環境的封裝。 他們會指定您訓練和評分腳本周圍的 Python 套件、Docker 映射、環境變數和軟體設定。 它們也會指定 (Python、Spark 或 Docker) 的執行時間。

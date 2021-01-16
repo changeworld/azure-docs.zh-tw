@@ -3,12 +3,12 @@ title: Azure 轉送常見問題集 | Microsoft Docs
 description: 本文提供 Azure 轉送服務的一些常見問題的解答。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131826"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250041"
 ---
 # <a name="azure-relay-faqs"></a>Azure 轉送常見問題集
 
@@ -70,7 +70,7 @@ ms.locfileid: "98131826"
 ## <a name="quotas"></a>配額
 | 配額名稱 | 影響範圍 |  注意 | 值 |
 | --- | --- | --- | --- |
-| 轉送上的並行接聽程式 |單位 |後續對更多連線的要求將會遭到拒絕，而且呼叫端程式碼將會收到例外狀況。 |25 |
+| 轉送上的並行接聽程式 |Entity (混合式連接或 WCF 轉送)  |後續對更多連線的要求將會遭到拒絕，而且呼叫端程式碼將會收到例外狀況。 |25 |
 | 服務命名空間中所有轉送端點的並行轉送連線 |命名空間 |- |5,000 |
 | 每個服務命名空間的轉送端點 |命名空間 |- |10,000 |
 | [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) 和 [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) 轉送的訊息大小 |命名空間 |超出這些配額的內送訊息將會遭到拒絕，而且呼叫端程式碼將會收到例外狀況。 |64 KB |

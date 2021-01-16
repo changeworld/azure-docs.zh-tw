@@ -3,12 +3,12 @@ title: 從 ACR 工作進行跨登錄驗證
 description: 使用 Azure 資源的受控識別來設定 Azure Container Registry 工作 (ACR 工作)，以存取另一個私人 Azure 容器登錄
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 9a460102eafa5c1eda2f37330887d985387d5df5
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 0e8e2690113167ad68ef1fc0bbef322491997c76
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026253"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251143"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>在 ACR 工作中使用 Azure 受控識別進行跨登錄驗證 
 
@@ -43,8 +43,8 @@ ms.locfileid: "93026253"
 
 ```azurecli
 az acr import --name mybaseregistry \
-  --source docker.io/library/node:9-alpine \
-  --image baseimages/node:9-alpine 
+  --source docker.io/library/node:15-alpine \
+  --image baseimages/node:15-alpine 
 ```
 
 ## <a name="define-task-steps-in-yaml-file"></a>定義 YAML 檔案中的工作步驟
@@ -190,8 +190,8 @@ Waiting for an agent...
 2019/06/14 22:47:45 Launching container with name: acb_step_0
 Sending build context to Docker daemon   25.6kB
 Step 1/6 : ARG REGISTRY_NAME
-Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
-9-alpine: Pulling from baseimages/node
+Step 2/6 : FROM ${REGISTRY_NAME}/baseimages/node:15-alpine
+15-alpine: Pulling from baseimages/node
 [...]
 Successfully built 41b49a112663
 Successfully tagged myregistry.azurecr.io/hello-world:cf10
@@ -211,7 +211,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
   runtime-dependency:
     registry: mybaseregistry.azurecr.io
     repository: baseimages/node
-    tag: 9-alpine
+    tag: 15-alpine
     digest: sha256:e8e92cffd464fce3be9a3eefd1b65dc9cbe2484da31c11e813a4effc6105c00f
   git:
     git-head-revision: 0f988779c97fe0bfc7f2f74b88531617f4421643

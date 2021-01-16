@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/19/2019
-ms.openlocfilehash: 9a4b57f3813adfeee53891f733dd4d303dbbef8d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/15/2021
+ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497124"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249428"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>使用對應資料流程安全地轉換資料
 
@@ -34,6 +34,7 @@ ms.locfileid: "96497124"
 > * 監視「資料流程」活動。
 
 ## <a name="prerequisites"></a>必要條件
+
 * **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
 * **Azure 儲存體帳戶**。 您可以使用 Data Lake Storage 作為 *來源* 和 *接收* 資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)，按照步驟建立此帳戶。 請確定儲存體帳戶只允許從選取的網路存取。 
 
@@ -64,12 +65,14 @@ ms.locfileid: "96497124"
 1. 選取 [編寫與監視]，以在個別索引標籤中啟動 Data Factory 使用者介面。
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>在 Data Factory 受控虛擬網路中建立 Azure IR
+
 在此步驟中，您會建立 Azure IR，並啟用 Data Factory 受控虛擬網路。
 
 1. 在 Data Factory 入口網站中，移至 [ **管理**]，然後選取 [ **新增** ] 以建立新的 Azure IR。
 
    ![顯示建立新 Azure IR 的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. 選取 **Azure** IR 選項。
+1. 在 [ **整合執行時間設定** ] 頁面上，根據所需的功能選擇要建立的整合執行時間。 在本教學課程中，選取 [ **Azure]、[自我** 裝載]，然後按一下 [ **繼續**]。 
+1. 選取 [ **azure** ]，然後按一下 [ **繼續** ] 建立 azure 整合執行時間。
 
    ![顯示新 Azure IR 的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/azure-ir.png)
 
@@ -233,7 +236,7 @@ ms.locfileid: "96497124"
 
 1. 在 [ **選取格式** ] 頁面上，選取 [ **DelimitedText** ]，然後選取 [ **繼續**]。
 
-1. 將接收資料集命名為 **MoviesSink**。 針對 [已連結的服務]，選擇您為來源轉換所建立的相同 **ADLSGen2** 連結服務。 輸入要寫入資料的輸出檔案夾。 在本教學課程中，我們會寫入容器 **範例資料** 中的資料夾 **輸出**。 資料夾不需要事先存在，而且可以動態建立。 選取 [ **第一個資料列做為標頭** ] 核取方塊，然後選取 [ **無** 匯 **入架構**]。 選取 [確定]  。
+1. 將接收資料集命名為 **MoviesSink**。 針對 [已連結的服務]，選擇您為來源轉換所建立的相同 **ADLSGen2** 連結服務。 輸入要寫入資料的輸出檔案夾。 在本教學課程中，我們會寫入容器 **範例資料** 中的資料夾 **輸出**。 資料夾不需要事先存在，而且可以動態建立。 選取 [ **第一個資料列做為標頭** ] 核取方塊，然後選取 [ **無** 匯 **入架構**]。 選取 [確定]。
 
     ![顯示接收路徑的螢幕擷取畫面。](media/tutorial-data-flow-private/sink-file-path.png)
 
@@ -254,6 +257,6 @@ ms.locfileid: "96497124"
 
 如果您已正確遵循本教學課程，您應該將83個數據列和2個數據行寫入至您的接收資料夾。 您可以藉由檢查 blob 儲存體來確認資料是否正確。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 在本教學課程中，您已使用 Data Factory UI 來建立管線，以將資料從 Data Lake Storage Gen2 來源複製和轉換成 Data Lake Storage Gen2 接收 (兩者都只允許使用 [) 受控虛擬網路](managed-virtual-network-private-endpoint.md)中的對應資料流程來存取選取的網路 Data Factory。

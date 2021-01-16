@@ -3,12 +3,12 @@ title: 使用 Advisor 改善 Azure 應用程式的效能
 description: 使用 Azure Advisor 中的效能建議來改善業務關鍵應用程式的速度和回應能力。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 8937272f8b6ef945d80076732ea38523f7b475a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: d7d4e87670ca529f38465e928c4067daec802b8f
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802536"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248423"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure Advisor 來改善 Azure 應用程式的效能
 
@@ -177,7 +177,7 @@ Advisor 會識別未散發資料，但仍留在協調器上的伺服器群組。
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>藉由變更最大會話限制來改善 VM 效能
 
-Advisor 偵測到您有一部主機集區，該主機集區的深度先設定為負載平衡演算法，且主機集區的最大會話限制大於或等於99999。 深度的第一次負載平衡使用最大工作階段限制，來判斷單一工作階段主機上，可擁有並行工作階段的使用者數目上限。 如果最大會話限制太高，則所有使用者會話都會導向至相同的工作階段主機，而這會導致效能和可靠性問題。 因此，將主機集區設定為具有深度優先負載平衡時，您必須根據您的部署和 Vm 的容量設定，設定適當的最大會話限制。 
+Advisor 偵測到您有一部主機集區，該主機集區的深度先設定為負載平衡演算法，且主機集區的最大會話限制大於或等於999999。 深度的第一次負載平衡使用最大工作階段限制，來判斷單一工作階段主機上，可擁有並行工作階段的使用者數目上限。 如果最大會話限制太高，則所有使用者會話都會導向至相同的工作階段主機，而這會導致效能和可靠性問題。 因此，將主機集區設定為具有深度優先負載平衡時，您必須根據您的部署和 Vm 的容量設定，設定適當的最大會話限制。 
 
 若要深入瞭解 Windows 虛擬桌面中的負載平衡，請參閱 [設定 Windows 虛擬桌面負載平衡方法](/azure/virtual-desktop/troubleshoot-set-up-overview)。
 

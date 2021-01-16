@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 11/06/2020
-ms.openlocfilehash: 2fabf75f74ccf57f57e7b47720ceda8885420842
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 35134f3ee4946d294ba6c6f71bd3953823d6d138
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460902"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250023"
 ---
 # <a name="monitoring-azure-iot-hub"></a>監視 Azure IoT 中樞
 
@@ -87,7 +87,7 @@ Azure IoT 中樞會收集與 [azure 資源監視資料](../azure-monitor/insight
 
 針對以計數單位收集的 IoT 中樞平臺計量，某些匯總可能無法使用或無法使用。 若要深入瞭解，請參閱 [監視 Azure IoT 中樞資料參考中支援的](monitor-iot-hub-reference.md#supported-aggregations)匯總。
 
-某些 IoT 中樞計量（例如 [路由計量](monitor-iot-hub-reference.md#routing-metrics)）是多維度。 針對這些計量，您可以根據維度將 [篩選](../azure-monitor/platform/metrics-charts.md#apply-filters-to-charts) 和 [分割](../azure-monitor/platform/metrics-charts.md#apply-splitting-to-a-chart) 套用至您的圖表。
+某些 IoT 中樞計量（例如 [路由計量](monitor-iot-hub-reference.md#routing-metrics)）是多維度。 針對這些計量，您可以根據維度將 [篩選](../azure-monitor/platform/metrics-charts.md#filters) 和 [分割](../azure-monitor/platform/metrics-charts.md#apply-splitting) 套用至您的圖表。
 
 ## <a name="analyzing-logs"></a>分析記錄
 
@@ -119,7 +119,7 @@ IoT 中樞資源記錄中的某些作業會傳回 `sdkVersion` 其物件中的�
 
 下表顯示用於不同 Azure IoT Sdk 的 SDK 名稱：
 
-| SdkVersion 屬性中的 SDK 名稱 | Language |
+| SdkVersion 屬性中的 SDK 名稱 | 語言 |
 |----------|----------|
 | .NET | .NET (C#) |
 | microsoft azure. 裝置 | .NET (c # ) service SDK |

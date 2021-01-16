@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0bb0a7833e9ee3b499ae013b665ecf137c667005
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968582"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250990"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>使用 Azure 入口網站部署適用于 SAP 解決方案的 Azure 監視器
 
@@ -59,7 +59,7 @@ ms.locfileid: "94968582"
 
 6. 輸入您想要使用的資料庫使用者名稱。 確定資料庫使用者已指派 **監視** 和 **目錄讀取** 角色。 
 
-7. 完成時，選取 [ **新增提供者**]。 視需要繼續新增其他提供者，或選取 [ **審核 + 建立** ] 以完成部署。
+7. 完成時，選取 [ **新增提供者**]。 視需要繼續新增更多提供者，或選取 [ **審核 + 建立** ] 以完成部署。
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="新增提供者資訊時的設定選項影像。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
@@ -74,14 +74,26 @@ ms.locfileid: "94968582"
  
 3. 輸入系統識別碼 (SID) 、主機名稱和叢集名稱。
 
-4. 完成時，選取 [ **新增提供者**]。 視需要繼續新增其他提供者，或選取 [ **審核 + 建立** ] 以完成部署。
+4. 完成時，選取 [ **新增提供者**]。 視需要繼續新增更多提供者，或選取 [ **審核 + 建立** ] 以完成部署。
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="映射會顯示與 HA 叢集 Pacemaker 提供者相關的選項。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
 
 
+### <a name="os-linux-provider"></a>作業系統 (Linux) 提供者 
+
+1. 從下拉式清單中選取 OS (Linux)  
+
+> [!IMPORTANT]
+> 若要設定 OS (Linux) 提供者，請確定已在每個 BareMetal 實例中安裝 Node_Exporter。 如需詳細資訊，請參閱 [Node_Exporter](https://github.com/prometheus/node_exporter)
+
+2. 輸入名稱，此名稱將會是 BareMetal 實例的識別碼。
+3. 以的形式輸入節點匯出程式端點 http://IP:9100/metrics 。
+4. 完成時，選取 [ **新增提供者**]。 視需要繼續新增更多提供者，或選取 [ **審核 + 建立**]   以完成部署。 
+
+
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server 提供者
 
-1. 在新增 Microsoft SQL Server 提供者之前，您應該在 SQL Server Management Studio 中執行下列腳本，以建立具有設定提供者所需之適當許可權的使用者。
+1. 新增 Microsoft SQL Server 提供者之前，請先在 SQL Server Management Studio 中執行下列腳本，以建立具有設定提供者所需之適當許可權的使用者。
 
    ```sql
    USE [<Database to monitor>]
@@ -112,7 +124,7 @@ ms.locfileid: "94968582"
 
 3. 使用與您 Microsoft SQL Server 相關聯的資訊來填寫欄位。 
 
-4. 完成時，選取 [ **新增提供者**]。 視需要繼續新增其他提供者，或選取 [ **審核 + 建立** ] 以完成部署。
+4. 完成時，選取 [ **新增提供者**]。 視需要繼續新增更多提供者，或選取 [ **審核 + 建立** ] 以完成部署。
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="影像會顯示新增 Microsoft SQL Server 提供者的相關資訊。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
 

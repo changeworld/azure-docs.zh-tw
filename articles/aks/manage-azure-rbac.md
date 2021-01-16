@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: af8d0300b533d9f25cddf225f4ffbe78ca6bf2cb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684214"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249630"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用適用於 Kubernetes 的 Azure RBAC 授權 (預覽)
 
@@ -27,7 +27,7 @@ ms.locfileid: "94684214"
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>先決條件 
+### <a name="prerequisites"></a>必要條件 
 - 確定您有 Azure CLI 2.9.0 版版或更新版本
 - 確定已 `EnableAzureRBACPreview` 啟用功能旗標。
 - 確定您已安裝 `aks-preview` [CLI 擴充][az-extension-add] 功能 v 0.4.55 或更高版本
@@ -115,7 +115,7 @@ AKS 提供下列四個內建角色：
 
 | 角色                                | 描述  |
 |-------------------------------------|--------------|
-| Azure Kubernetes Service RBAC 檢視器  | 允許唯讀存取，以查看命名空間中的大部分物件。 它不允許查看角色或角色系結。 此角色不允許 `Secrets` 進行查看，因為讀取秘密的內容可讓您存取命名空間中的 ServiceAccount 認證，這會允許 API 存取做為命名空間中的任何 ServiceAccount (形式的許可權擴大)   |
+| Azure Kubernetes Service RBAC 讀者  | 允許唯讀存取，以查看命名空間中的大部分物件。 它不允許查看角色或角色系結。 此角色不允許 `Secrets` 進行查看，因為讀取秘密的內容可讓您存取命名空間中的 ServiceAccount 認證，這會允許 API 存取做為命名空間中的任何 ServiceAccount (形式的許可權擴大)   |
 | Azure Kubernetes Service RBAC 寫入器 | 允許對命名空間中大部分物件的讀取/寫入存取。 此角色不允許查看或修改角色或角色系結。 不過，此角色可讓您存取和執行 pod `Secrets` 作為命名空間中的任何 ServiceAccount，因此可以用來取得命名空間中任何 ServiceAccount 的 API 存取層級。 |
 | Azure Kubernetes Service RBAC 管理員  | 允許系統管理員存取權，可在命名空間中授與。 允許對命名空間中大部分資源的讀取/寫入存取 (或叢集範圍) ，包括在命名空間內建立角色和角色系結的能力。 此角色不允許寫入資源配額或命名空間本身的存取權。 |
 | Azure Kubernetes Service RBAC 叢集管理員  | 允許超級使用者存取在任何資源上執行任何動作。 它可讓您完整控制叢集中的每個資源，以及所有命名空間中的資源。 |
@@ -245,7 +245,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 ### <a name="clean-role-assignment"></a>清除角色指派
 

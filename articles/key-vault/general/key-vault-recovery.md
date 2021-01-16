@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933977"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250786"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>使用虛刪除和清除保護 Azure Key Vault 復原管理
 
@@ -23,12 +23,14 @@ ms.locfileid: "97933977"
 - [Key Vault 總覽](overview.md)
 - [Azure Key Vault 金鑰、秘密和憑證總覽](about-keys-secrets-certificates.md)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/dotnet)
 * [PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 * [Azure CLI](/cli/azure/install-azure-cli)
 * Key Vault - 您可以使用 [Azure 入口網站](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md) 或 [Azure PowerShell](../general/quick-create-powershell.md) 建立
+* 使用者將需要在訂用帳戶層級 (下列許可權，) 才能在虛刪除的保存庫上執行作業： |KeyVault/位置/deletedVaults/讀取 |查看已虛刪除之金鑰保存庫的屬性 | |KeyVault/位置/deletedVaults/清除/動作 |清除虛刪除的金鑰保存庫 |
+
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>什麼是虛刪除和清除保護
 

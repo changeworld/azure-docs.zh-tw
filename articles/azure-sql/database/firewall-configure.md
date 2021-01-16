@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: ce528e268e0ed1e34f53e32196bceef5ad8a2fcb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9fe0c79a2f65b27b35aa5029d0a53de62ef08078
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452491"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251653"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database 和 Azure Synapse IP 防火牆規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -270,7 +270,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 ## <a name="next-steps"></a>後續步驟
 
 - 確認您的公司網路環境允許來自計算 IP 位址範圍的輸入通訊 (包括 Azure 資料中心所使用的 SQL 範圍) 。 您可能必須將這些 IP 位址新增至允許清單。 請參閱 [Microsoft Azure DATACENTER IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。  
-- 如需有關建立伺服器層級 IP 防火牆規則的快速入門，請參閱 [在 Azure SQL Database 中建立單一資料庫](single-database-create-quickstart.md)。
+- 請參閱我們的快速入門，瞭解如何 [在 Azure SQL Database 中建立單一資料庫](single-database-create-quickstart.md)。
 - 如需從開放原始碼或協力廠商應用程式連接到 Azure SQL Database 中資料庫的說明，請參閱 [用戶端快速入門程式碼範例，以 Azure SQL Database](connect-query-content-reference-guide.md#libraries)。
 - 如需其他可能需要開啟之埠的詳細資訊，請參閱[ADO.NET 4.5 和 SQL Database 之埠超過 1433](adonet-v12-develop-direct-route-ports.md)的「SQL Database：在 vs 內部」區段
 - 如需 Azure SQL Database 安全性的總覽，請參閱 [保護您的資料庫](security-overview.md)。

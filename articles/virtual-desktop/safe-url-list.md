@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 872a67d8d9f41c0c809df54304352b2a5f58e011
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621071"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251755"
 ---
 # <a name="required-url-list"></a>必要的 URL 清單
 
@@ -32,6 +32,7 @@ ms.locfileid: "96621071"
 |* xt.blob.core.windows.net|443|代理程式流量|AzureCloud|
 |* eh.servicebus.windows.net|443|代理程式流量|AzureCloud|
 |* xt.table.core.windows.net|443|代理程式流量|AzureCloud|
+|* xt.queue.core.windows.net|443|代理程式流量|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows 啟用|Internet|
 |mrsglobalsteus2prod.blob.core.windows.net|443|代理程式和 SXS 堆疊更新|AzureCloud|
@@ -72,8 +73,8 @@ ms.locfileid: "96621071"
 |login.windows.net|443|登入 Microsoft Online Services、Microsoft 365|login.microsoftonline.us|
 |*.sfx.ms|443|OneDrive 用戶端軟體的更新|oneclient.sfx.ms|
 |*.digicert.com|443|憑證撤銷檢查|None|
-|*. azure-dns.com|443|Azure DNS 解析|None|
-|*. azure-dns.net|443|Azure DNS 解析|None|
+|*. azure-dns.com|443|Azure DNS 解析|無|
+|*. azure-dns.net|443|Azure DNS 解析|無|
 
 >[!NOTE]
 >Windows 虛擬桌面目前沒有 IP 位址範圍的清單，您可以將其解除封鎖以允許網路流量。 我們目前僅支援解除封鎖特定的 Url。
@@ -96,11 +97,11 @@ ms.locfileid: "96621071"
 |---|---|---|---|---|
 |*.wvd.microsoft.com|443|服務流量|全部|*. wvd.microsoft.us|
 |*.servicebus.windows.net|443|疑難排解資料|全部|*.servicebus.usgovcloudapi.net|
-|go.microsoft.com|443|Microsoft FWLinks|全部|None|
-|aka.ms|443|Microsoft URL 縮短器|全部|None|
-|docs.microsoft.com|443|文件|全部|None|
-|privacy.microsoft.com|443|隱私權聲明|全部|None|
-|query.prod.cms.rt.microsoft.com|443|用戶端更新|Windows 桌面|None|
+|go.microsoft.com|443|Microsoft FWLinks|全部|無|
+|aka.ms|443|Microsoft URL 縮短器|全部|無|
+|docs.microsoft.com|443|文件|全部|無|
+|privacy.microsoft.com|443|隱私權聲明|全部|無|
+|query.prod.cms.rt.microsoft.com|443|用戶端更新|Windows 桌面|無|
 
 >[!IMPORTANT]
 >開啟這些 URL 是擁有可靠用戶端體驗所必需的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。

@@ -4,12 +4,12 @@ description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2921c6379b34e002013b5f0087cefd502ab0ab84
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904528"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249103"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -69,7 +69,7 @@ ms.locfileid: "96904528"
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.13.1" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.16.0" />
         </ItemGroup>
     ```
 
@@ -232,7 +232,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>適用于 ApplicationInsights. AspNetCore SDK 2.15.0 & 的設定建議
 
-從 ApplicationInsights. AspNetCore SDK 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) ，建議您設定中提供的每項設定 `ApplicationInsightsServiceOptions` ，包括使用應用程式實例的 instrumentationkey `IConfiguration` 。 設定必須在 "ApplicationInsights" 區段底下，如下列範例所示。 appsettings.js的下一節會設定檢測金鑰，也會停用調適型取樣和效能計數器集合。
+從 ApplicationInsights. AspNetCore SDK 版本 [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0)開始，建議您設定中提供的每項設定 `ApplicationInsightsServiceOptions` ，包括使用應用程式實例的 instrumentationkey `IConfiguration` 。 設定必須在 "ApplicationInsights" 區段底下，如下列範例所示。 appsettings.js的下一節會設定檢測金鑰，也會停用調適型取樣和效能計數器集合。
 
 ```json
 {
@@ -485,7 +485,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-不會。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
+否。 [狀態監視器](./monitor-performance-live-website-now.md) 和 [狀態監視器 v2](./status-monitor-v2-overview.md) 目前只支援 ASP.NET 4.x。
 
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>如果我在 Linux 中執行我的應用程式，是否支援所有功能？
 

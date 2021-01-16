@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2021
 ms.custom: references_regions
-ms.openlocfilehash: f4a97f5534e4fd3847bf1cce6874de0f006cce38
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: c380a3edb556adb72d067cb2910c8afbf66b99a0
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201003"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250259"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>讀取「適用於 MySQL 的 Azure 資料庫」中的複本
 
@@ -23,9 +23,7 @@ ms.locfileid: "98201003"
 若要深入了解 MySQL 複寫功能與問題，請參閱 [MySQL 複寫文件](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) \(英文\)。
 
 > [!NOTE]
-> 無偏差通訊
->
-> Microsoft 支援多元和包容性的環境。 本文包含「 _主要_ 」和「 _從屬_」這些單字的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這些視為排他性行為單字。 本文中使用的單字是為了保持一致性，因為它們目前是出現在軟體中的單字。 當軟體更新為移除這些字組時，將會更新本文以進行調整。
+> 本文包含詞彙 _從屬_ 的參考，這是 Microsoft 不再使用的詞彙。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 >
 
 ## <a name="when-to-use-a-read-replica"></a>何時應該使用讀取複本
@@ -94,7 +92,7 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 
 ## <a name="monitor-replication"></a>監視複寫
 
-適用於 MySQL 的 Azure 資料庫會在 Azure 監視器中提供 **複寫延遲 (秒)** 計量。 此計量僅適用於複本。 在計算此計量時，會使用可於 MySQL 的 `SHOW SLAVE STATUS` 命令中取得的 `seconds_behind_master` 計量。 請設定警示，以在複寫延遲時間接近您工作負載無法接受的值時通知您。
+適用於 MySQL 的 Azure 資料庫會在 Azure 監視器中提供 **複寫延遲 (秒)** 計量。 此計量僅適用於複本。 在計算此計量時，會使用可於 MySQL 的 `SHOW SLAVE STATUS` 命令中取得的 `seconds_behind_master` 計量。 設定警示，以在複寫延隔時間達到您的工作負載無法接受的值時通知您。
 
 如果您看到複寫延遲增加，請參閱 [疑難排解複寫延遲](howto-troubleshoot-replication-latency.md) ，以疑難排解並瞭解可能的原因。
 

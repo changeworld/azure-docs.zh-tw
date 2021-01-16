@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: references_regions
-ms.openlocfilehash: 576ff68961a68a8b54037d661a51a9d2de7a56df
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c91aab2bf59f93cf897f9a1b9109172523ae4e57
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231786"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251398"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>「適用於 MariaDB 的 Azure 資料庫」中的讀取複本
 
@@ -23,10 +23,7 @@ ms.locfileid: "98231786"
 若要深入瞭解 GTID 複寫，請參閱 [適用于 mariadb replication 檔](https://mariadb.com/kb/en/library/gtid/)集。
 
 > [!NOTE]
-> 無偏差通訊
->
-> Microsoft 支援多元和包容性的環境。 本文包含「 _主要_ 」和「 _從屬_」這些單字的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這些視為排他性行為單字。 本文中使用的單字是為了保持一致性，因為它們目前是出現在軟體中的單字。 當軟體更新為移除這些字組時，將會更新本文以進行調整。
->
+> 本文包含詞彙 _從屬_ 的參考，這是 Microsoft 不再使用的詞彙。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ## <a name="when-to-use-a-read-replica"></a>何時應該使用讀取複本
 
@@ -123,8 +120,11 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 確定您想要容錯移轉至複本之後，
 
 1. 停止複寫至複本<br/>
+
    您必須執行此步驟，讓複本伺服器能夠接受寫入。 作為此程式的一部分，複本伺服器將會從主伺服器 delinked。 在您起始停止複寫後，後端進程通常需要大約2分鐘才能完成。 請參閱本文的「 [停止](#stop-replication) 複寫」一節，以瞭解此動作的含意。
-2. 將您的應用程式指向 (之前的) 複本<br/>
+
+2. 將您的應用程式指向 (之前的) 複本
+
    每一部伺服器都有唯一的連接字串。 更新您的應用程式，使其指向 (之前的) 複本，而不是主要複本。
 
 在您的應用程式成功處理讀取和寫入之後，您已完成容錯移轉。 當您偵測到問題並完成上述步驟1和2時，您的應用程式所經歷的停機時間將會取決於您的情況。

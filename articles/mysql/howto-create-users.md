@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: de4e7959a5778c7275427450ead876338f052882
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9a6346a2b62c81dd74cf0ebe9a85df12d3488679
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196770"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251245"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中建立資料庫和使用者
 
@@ -20,9 +20,7 @@ ms.locfileid: "98196770"
 本文說明如何在適用於 MySQL 的 Azure 資料庫中建立使用者。
 
 > [!NOTE]
-> 無偏差通訊
->
-> Microsoft 支援多元和包容性的環境。 本文包含「 _主要_ 」和「 _從屬_」這些單字的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這些視為排他性行為單字。 本文中使用的單字是為了保持一致性，因為它們目前是出現在軟體中的單字。 當軟體更新為移除這些字組時，將會更新本文以進行調整。
+> 本文包含詞彙 _從屬_ 的參考，這是 Microsoft 不再使用的詞彙。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 >
 
 當您第一次建立適用於 MySQL 的 Azure 資料庫伺服器時，會提供伺服器系統管理員使用者名稱和密碼。 如需詳細資訊，請參閱本 [快速入門](quickstart-create-mysql-server-database-using-azure-portal.md)。 您可以在 Azure 入口網站中判斷您的伺服器管理員使用者名稱。

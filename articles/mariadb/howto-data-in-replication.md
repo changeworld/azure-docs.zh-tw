@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: fb7d9f78ac5498affa10521e17cff4348eecb5eb
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 5ebae41e68633eb10959c56011dd71952f9564bd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231939"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250412"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>設定適用於 MariaDB 的 Azure 資料庫中的資料輸入複寫
 
@@ -23,12 +23,6 @@ ms.locfileid: "98231939"
 
 > [!NOTE]
 > 如果您的來源伺服器是10.2 版或更新版本，建議您使用 [全域交易識別碼](https://mariadb.com/kb/en/library/gtid/)設定資料輸入複寫。
-
-> [!NOTE]
-> 無偏差通訊
->
-> Microsoft 支援多元和包容性的環境。 本文包含「 _主要_ 」和「 _從屬_」這些單字的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這些視為排他性行為單字。 本文中使用的單字是為了保持一致性，因為它們目前是出現在軟體中的單字。 當軟體更新為移除這些字組時，將會更新本文以進行調整。
->
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>建立要做為複本使用的適用于 mariadb 伺服器
 
@@ -46,6 +40,10 @@ ms.locfileid: "98231939"
 3. 將來源伺服器的 IP 位址新增至複本的防火牆規則。 
 
    使用 [Azure 入口網站](howto-manage-firewall-portal.md)或 [Azure CLI](howto-manage-firewall-cli.md) 更新防火牆規則。
+
+> [!NOTE]
+> 本文包含詞彙 _從屬_ 的參考，這是 Microsoft 不再使用的詞彙。 從軟體中移除該字詞時，我們也會將其從本文中移除。
+>
 
 ## <a name="configure-the-source-server"></a>設定來源伺服器
 

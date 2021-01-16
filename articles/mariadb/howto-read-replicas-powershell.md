@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a5921026c8f260683f091870850350fcc4619f6b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 713f99f67706caded0694d88ece220373920e555
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538609"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250514"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>如何使用 PowerShell 在適用於 MariaDB 的 Azure 資料庫中建立及管理讀取複本
 
@@ -57,7 +57,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resourceGroupName |  myresourcegroup |  建立複本伺服器的資源群組。  |
-| 名稱 | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
+| Name | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 
 若要建立跨區域讀取複本，請使用 **Location** 參數。 下列範例會在 **美國西部** 區域建立複本。
 

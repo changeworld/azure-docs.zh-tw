@@ -2,13 +2,13 @@
 title: 使用 PowerShell 和範本部署資源
 description: 使用 Azure Resource Manager 和 Azure PowerShell 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 40ee659f5892c983f84409a10634c6a8d6d78cc5
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 01/15/2021
+ms.openlocfilehash: d895c6e029b0b4a70333dde987706549609c8bd3
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028484"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251007"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>使用 ARM 範本與 Azure PowerShell 來部署資源
 
@@ -135,7 +135,7 @@ $deploymentName="ExampleDeployment"+"$today"
 
 您可以建立 [範本規格](template-specs.md)，而不是部署本機或遠端範本。範本規格是您的 Azure 訂用帳戶中包含 ARM 範本的資源。 這可讓您輕鬆安全地與組織中的使用者共用範本。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來授與範本規格的存取權。這項功能目前為預覽狀態。
 
-下列範例示範如何建立和部署範本規格。只有當您已 [註冊預覽版](https://aka.ms/templateSpecOnboarding)時，才能使用這些命令。
+下列範例示範如何建立和部署範本規格。
 
 首先，提供 ARM 範本來建立範本規格。
 

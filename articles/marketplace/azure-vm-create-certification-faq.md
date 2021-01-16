@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 61bd23c74fd7960317dff17175b355b473cd6dc7
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 921c05b76640935a1bd9e65d556933c23093e5b2
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233826"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251432"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>針對虛擬機器認證進行疑難排解
 
@@ -23,19 +23,6 @@ ms.locfileid: "98233826"
 > [!NOTE]
 > 如果您對本文有任何問題或改進建議，請聯絡 [合作夥伴中心支援服務](https://aka.ms/marketplacepublishersupport)。
 
-## <a name="approved-base-image"></a>核准的基底映射
-
-當您提交以更新重新發佈映射的要求時，元件編號驗證測試案例可能會失敗。 如果失敗，您的映射將不會被核准。
-
-當您使用屬於另一個發行者的基底映射，而且已更新映射時，就會發生此失敗。 在此情況下，將不會允許您發佈映射。
-
-若要修正此問題，請從 Azure Marketplace 取出映射，並對其進行變更。 如需詳細資訊，請參閱下列文章：
-
-- [Linux 映像](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows 映像](azure-vm-create-using-approved-base.md)
-
-> [!Note]
-> 如果您使用不是取自 Azure Marketplace 的 Linux 基底映射，請確定每個磁區 (的前2048個磁區都是空的 512) 位元組，因此 Azure 會繼續將您的 VM 發佈到 Azure Marketplace。  
 
 ## <a name="vm-extension-failure"></a>VM 延伸模組失敗
 
@@ -91,7 +78,7 @@ VHD 格式化 blob 的格式應為512位元組頁尾：
 |硬碟頁尾欄位|大小 (位元組)|
 |---|---|
 Cookie|8
-特性|4
+功能|4
 檔案格式版本|4
 資料位移|8
 時間戳記|4
@@ -140,7 +127,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將執行的 Linux 測試案例。 [描述] 中會陳述測試驗證。
 
-|狀況|測試案例|描述|
+|狀況|測試案例|說明|
 |---|---|---|
 |1|Bash 歷程記錄|您應先清除 Bash 記錄檔，再建立 VM 映射。|
 |2|Linux 代理程式版本|應安裝 Azure Linux 代理程式2.2.41 或更新版本。|
@@ -169,8 +156,8 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將執行的 Windows 測試案例，以及測試驗證的描述：
 
-|狀況 |測試案例|描述|
-|---|---|---|---|
+|狀況 |測試案例|說明|
+|---|---|---|
 |1|作業系統架構|Azure 僅支援64位作業系統。|
 |2|使用者帳戶相依性|應用程式執行不應依存于系統管理員帳戶。|
 |3|容錯移轉叢集|尚未支援 Windows Server 容錯移轉叢集功能。 應用程式不應該相依于這項功能。|
@@ -250,7 +237,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 |作業系統系列|版本|核心|
 |---|---|---|
 |Ubuntu|14.04 LTS|4.4.0-151| 
-||14.04 LTS|4.15.0-1049-*-azure|
+||14.04 LTS|4.15.0-1049- \* -azure|
 ||16.04 LTS|4.15.0-1049|
 ||18.04 LTS|4.18.0-1023|
 ||18.04 LTS|5.0.0-1025|
@@ -283,9 +270,9 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 |Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35。2<br>RHCK 2.6.32-754.15。3 
 ||7.0-7。5|UEK3 3.8.13-118.35。2<br>UEK4 4.1.12-124.28。3<br>RHCK 遵循 RHEL|
 ||7.6|RHCK 3.10.0-957.21。3<br>UEK5 4.14.35-1902.2.0|
-|CoreOS 穩定2079.6。0|4.19.43*|
-||Beta 2135.3。1|4.19.50*|
-||Alpha 2163.2。1|4.19.50*|
+|CoreOS 穩定2079.6。0|4.19.43\*|
+||Beta 2135.3。1|4.19.50\*|
+||Alpha 2163.2。1|4.19.50\*|
 |Debian|jessie (安全性) |3.16.68-2|
 ||jessie 反向移植|4.9.168-1 + deb9u3|
 ||stretch (安全性) |4.9.168-1 + deb9u3|
@@ -328,14 +315,11 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 |6|HTTP 條件式標頭|SAS URL 無效。|取得正確的 SAS URL。|
 |7|VHD 名稱無效|查看 VHD 名稱中是否有任何特殊字元，例如百分比符號 `%` 或引號 `"` 。|藉由移除特殊字元來重新命名 VHD 檔案。|
 
-## <a name="first-1mb-2048-sectors-each-sector-of-512-bytes-partition-linux-only"></a>第一個 1MB (2048 磁區，每個512位元組的磁區只) 分割 (Linux) 
+## <a name="first-1-mb-partition-2048-sectors-each-sector-of-512-bytes"></a>前 1 MB 分割區 (2048 磁區，每個512位元組的磁區) 
 
-當您提交 VHD 時，請確定 VHD 的前2048個磁區 (1MB) 是空的。 否則，您的要求將會失敗。請注意，這會適用于開機/OS 磁片，而不是任何其他資料磁片。
+如果您要 [建立自己的映射](azure-vm-create-using-own-image.md)，請確定作業系統磁片的前2048個磁區 (1 MB) 是空的。 否則，您的發行將會失敗。 這項需求只適用于 OS 磁片， (不會) 資料磁片。 如果您是 [從已核准的基底](azure-vm-create-using-approved-base.md)建立映射，則可以略過這項需求。 
 
->[!NOTE]
->針對特定的映射（例如，以從 Azure Marketplace 取得的 Azure Windows 基礎映射之上建的映射），請確定 VHD 的前 1MB (2048 磁區) 是空的。 
-
-### <a name="create-a-first-1mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>建立前 1 MB (2048 磁區，每個512位元組的磁區) 磁碟分割的空白 VHD
+### <a name="create-a-1-mb-partition-2048-sectors-each-sector-of-512-bytes-on-an-empty-vhd-linux-only-steps"></a>建立 1 MB 的磁碟分割 (2048 個磁區，每個512位元組的磁區) 于空白 VHD (僅限 Linux 步驟) 
 
 這些步驟僅適用于 Linux。
 
@@ -400,7 +384,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 
 1. 從 VM 卸離 VHD 並刪除 VM。
 
-### <a name="create-a-first-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>藉由移動 VHD 上現有的資料，建立第一個 MB (2048 個磁區，每個512位元組的磁區) 分割區
+### <a name="create-a-first-1-mb-partition-2048-sectors-each-sector-of-512-bytes-by-moving-existing-data-on-vhd"></a>藉由在 VHD 上移動現有資料，建立前 1 MB 的磁碟分割 (2048 個磁區，每個512位元組的磁區) 
 
 這些步驟僅適用于 Linux。
 

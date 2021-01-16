@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec900f0537030d3ed0d1c875e8125806159bd51
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667158"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251449"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 建立 Windows 虛擬桌面主機集區
 
@@ -124,7 +124,7 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
 如果您是下列其中一種情況，您必須更新代理程式：
 
-- 您想要將先前註冊的會話遷移至新的主機集區
+- 您想要將先前註冊的工作階段主機遷移至新的主機集區
 - 更新之後，工作階段主機未出現在您的主機集區中
 
 若要更新代理程式：

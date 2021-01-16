@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/09/2020
+ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928319"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251500"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>常見問題 (有關 Microsoft Authenticator 應用程式的常見問題) 
 
@@ -33,13 +33,17 @@ Microsoft Authenticator 的應用程式已取代 Azure 驗證器應用程式，�
 
 **答**：註冊裝置可讓您的裝置存取貴組織的服務，而不允許您的組織存取您的裝置。
 
-## <a name="too-many-app-permissions"></a>太多應用程式許可權
+### <a name="too-many-app-permissions"></a>太多應用程式許可權
 
 **問**：為什麼應用程式要求這麼多的許可權？
 
-**答**：以下是可能要求的完整許可權清單，以及應用程式使用它們的方式。 您看到的特定權限會隨您的手機類型而異。
+**答**：以下是可能要求的完整許可權清單，以及應用程式使用它們的方式。 您看到的特定權限會隨您的手機類型而異。 有時候您的組織想要在允許您存取特定資源之前，先知道 **您的位置** 。 只有當您的組織有需要位置的原則時，應用程式才會要求此許可權。
 
-- **位置**。 有時候您的組織想要在允許您存取特定資源之前，先知道您的位置。 只有當您的組織有需要位置的原則時，應用程式才會要求此許可權。 
+### <a name="error-adding-account"></a>新增帳戶時發生錯誤
+
+**問**：當我嘗試新增我的帳戶時，出現錯誤訊息，指出「您嘗試新增的帳戶目前無效。 請洽詢您的系統管理員，以修正此問題 (唯一性驗證) 」。 我該怎麼辦？
+
+**答**：請洽詢您的系統管理員，讓他們知道您因為唯一性驗證問題而無法將您的帳戶新增至驗證器。 您必須提供登入使用者名稱，讓您的系統管理員可以在您的組織中查看您的身分。
 
 ### <a name="legacy-apns-support-deprecated"></a>舊版 APNs 支援已淘汰
 
@@ -232,7 +236,7 @@ Microsoft Authenticator 的應用程式已取代 Azure 驗證器應用程式，�
 
 1. 開啟驗證器 **設定**，**然後在 [** 搶鮮 **版（Beta** ）] 下開啟
 1. 在應用程式內的 [ **密碼** ] 索引標籤上，使用 [您的 Microsoft 帳戶](https://account.microsoft.com/account)登入。
-1. 請執行下列其中一項：
+1. 執行下列其中一個動作：
 
    - 在 iOS 上的 [ **設定**] 底下，選取 [自動填滿設定] 區段 **中的 [** 自動填滿]，以瞭解如何將驗證器設定為預設自動填入提供者。
    - 在 Android 上的 [設定] 底下，選取 [自動填滿設定] 區段中的 [**設為** 自動填滿提供者 **]，將** 驗證器設定為預設

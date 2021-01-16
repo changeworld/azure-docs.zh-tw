@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ec3892c5e47c372d9f54d4a4224e94183e31f181
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009529"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251126"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的執行個體
 
@@ -24,7 +24,7 @@ ms.locfileid: "96009529"
 
 務必要能夠啟動協調流程的實例。 當您在另一個函式的觸發程式中使用 Durable Functions 系結時，通常會進行這項工作。
 
-`StartNewAsync`協調流程用戶端系結上的 ( .net) 、 `startNew` (JavaScript) 或 `start_new` (Python) 方法會啟動新的實例。 [orchestration client binding](durable-functions-bindings.md#orchestration-client) 就內部而言，這個方法會將訊息將到控制佇列中，然後使用 [協調流程觸發](durable-functions-bindings.md#orchestration-trigger)程式系結的指定名稱來觸發函式的開頭。
+`StartNewAsync`協調流程用戶端系結上的 ( .net) 、 `startNew` (JavaScript) 或 `start_new` (Python) 方法會啟動新的實例。 [](durable-functions-bindings.md#orchestration-client) 就內部而言，這個方法會將訊息將到控制佇列中，然後使用 [協調流程觸發](durable-functions-bindings.md#orchestration-trigger)程式系結的指定名稱來觸發函式的開頭。
 
 協調流程程序已成功排定時，此非同步作業會完成。
 
@@ -177,7 +177,7 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 在您管理協調流程的過程中，您很可能需要收集協調流程實例狀態的相關資訊 (例如，是否已正常完成或) 失敗。
 
-`GetStatusAsync`協調流程用戶端系結上的 ( .net) 、 `getStatus` (JavaScript) 或 `get_status` ([orchestration client binding](durable-functions-bindings.md#orchestration-client) Python) 方法會查詢協調流程實例的狀態。
+`GetStatusAsync`協調流程用戶端系結上的 ( .net) 、 `getStatus` (JavaScript) 或 `get_status` ([](durable-functions-bindings.md#orchestration-client) Python) 方法會查詢協調流程實例的狀態。
 
 它會以 `instanceId` (必要)、`showHistory` (選用)、`showHistoryOutput` (選用) 和 `showInput` (選用) 作為參數。
 
@@ -300,6 +300,10 @@ public static async Task Run(
     {
         log.LogInformation(JsonConvert.SerializeObject(instance));
     }
+    
+    // Note: ListInstancesAsync only returns the first page of results.
+    // To request additional pages provide the result.ContinuationToken
+    // to the OrchestrationStatusQueryCondition's ContinuationToken property.
 }
 ```
 
@@ -526,7 +530,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-您也可以使用 Azure Functions Core Tools 命令，直接終止協調流程實例[Azure Functions Core Tools](../functions-run-local.md) `durable terminate` 。 它需要以下參數：
+您也可以使用 Azure Functions Core Tools 命令，直接終止協調流程實例[](../functions-run-local.md) `durable terminate` 。 它需要以下參數：
 
 * **`id` (所需的)**：要終止之協調流程實例的識別碼。
 * **`reason` (選擇性)**：終止原因。
@@ -602,7 +606,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-您也可以使用 Azure Functions Core Tools 命令，直接將事件引發至協調流程實例[Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` 。 它需要以下參數：
+您也可以使用 Azure Functions Core Tools 命令，直接將事件引發至協調流程實例[](../functions-run-local.md) `durable raise-event` 。 它需要以下參數：
 
 * **`id` (必要的)**：協調流程實例的識別碼。
 * **`event-name`**：要引發的事件名稱。
@@ -800,7 +804,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.co
 > [!NOTE]
 > 此 API 並非要取代適當的錯誤處理和重試原則。 相反地，它只是要用於協調流程執行個體因非預期原因而失敗的情況。 如需有關錯誤處理和重試原則的詳細資訊，請參閱 [錯誤處理](durable-functions-error-handling.md) 文章。
 
-使用 `RewindAsync` ( .net) 或 `rewind` ([協調流程用戶端](durable-functions-bindings.md#orchestration-client)系結的 JavaScript) 方法，讓協調流程恢復執行 *Running* 中狀態。 這個方法也會重新執行造成協調流程失敗的活動或子協調流程執行失敗。
+使用 `RewindAsync` ( .net) 或 `rewind` ([協調流程用戶端](durable-functions-bindings.md#orchestration-client)系結的 JavaScript) 方法，讓協調流程恢復執行中狀態。 這個方法也會重新執行造成協調流程失敗的活動或子協調流程執行失敗。
 
 例如，假設您有一個工作流程牽涉到一系列的 [人工核准](durable-functions-overview.md#human)。 假設有一系列的活動函式會通知某人需要他們的核准，並等候即時回應。 在所有核准活動都收到回應或計時之後，假設另一個活動因為應用程式設定錯誤而失敗，例如不正確資料庫連接字串。 結果就是深入工作流程的協調流程失敗。 透過 `RewindAsync` ( .net) 或 `rewind` (JAVASCRIPT) API，應用程式系統管理員可以修正設定錯誤，並將失敗的協調流程倒轉回失敗之前的狀態。 任何人為互動的步驟都不需要重新核准，而且協調流程現在可以順利完成。
 

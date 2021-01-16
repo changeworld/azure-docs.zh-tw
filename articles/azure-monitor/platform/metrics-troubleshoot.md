@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 7c3af0865282475ded0172d18aecad1dfb61721b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 5219553fe300d607212af1ef6cedf72ce6506762
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814256"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250327"
 ---
 # <a name="troubleshooting-metrics-charts"></a>對計量圖表進行疑難排解
 
@@ -48,7 +48,7 @@ ms.locfileid: "97814256"
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>所有計量值都在鎖定的 y 軸範圍外
 
-在[鎖定圖表 y 軸的界限](metrics-charts.md#lock-boundaries-of-chart-y-axis)後，您可能會在無意中讓圖表顯示區域未顯示圖表線條。 例如，如果 y 軸鎖定於 0% 到 50% 的範圍間，而計量的常數值為 100%，則該行一律會顯示在可見的區域以外，使得圖表呈現為空白。
+在[鎖定圖表 y 軸的界限](metrics-charts.md#locking-the-range-of-the-y-axis)後，您可能會在無意中讓圖表顯示區域未顯示圖表線條。 例如，如果 y 軸鎖定於 0% 到 50% 的範圍間，而計量的常數值為 100%，則該行一律會顯示在可見的區域以外，使得圖表呈現為空白。
 
 **解決方案：** 確認圖表的 y 軸界限不會在度量值範圍之外鎖定。 如果 y 軸界限已鎖定，您可以暫時重設其界限，以確保計量值不會落在圖表範圍以外。 對於具有 **總和**、**最小值** 和 **最大值** 彙總的圖表，建議不要使用自動細微性鎖定 y 軸範圍，因為其值將會在調整瀏覽器視窗大小或切換為不同的螢幕解析度後，隨著細微性而變更。 切換細微性可能會使圖表的顯示區域呈現為空白。
 

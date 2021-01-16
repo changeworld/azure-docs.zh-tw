@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614575"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250395"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>開始使用 Azure 計量瀏覽器
 
@@ -38,7 +38,7 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
     > ![選取計量](./media/metrics-getting-started/metrics-dropdown.png)
 
-4. （選擇性）您可以 [變更計量匯總](metrics-charts.md#changing-aggregation)。 例如，您可能想要讓圖表顯示度量的最小值、最大值或平均值。
+4. （選擇性）您可以 [變更計量匯總](metrics-charts.md#aggregation)。 例如，您可能想要讓圖表顯示度量的最小值、最大值或平均值。
 
 > [!TIP]
 > 如果您想要查看在相同圖表中繪製的多個計量，請使用 [新增計量]  按鈕，並重複前述步驟。 針對單一視圖中的多個圖表，選取頂端的 [ **新增圖表** ] 按鈕。
@@ -57,7 +57,7 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
 ## <a name="apply-dimension-filters-and-splitting"></a>套用維度篩選和分割
 
-[篩選](metrics-charts.md#apply-filters-to-charts) 和 [分割](metrics-charts.md#apply-splitting-to-a-chart) 是具有維度之計量的強大診斷工具。 這些功能會顯示不同的度量區段 ( 「維度值」 ) 如何影響度量的整體值，並可讓您找出可能的極端值。
+[篩選](metrics-charts.md#filters) 和 [分割](metrics-charts.md#apply-splitting) 是具有維度之計量的強大診斷工具。 這些功能會顯示不同的度量區段 ( 「維度值」 ) 如何影響度量的整體值，並可讓您找出可能的極端值。
 
 - **篩選** 可讓您選擇要包含在圖表中的維度值。 例如，您可能會想要在製作 *伺服器回應時間* 度量圖表時，顯示成功的要求。 您必須在 [要求] 維度 *成功* 時套用篩選。 
 

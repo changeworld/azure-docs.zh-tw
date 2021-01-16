@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/15/2020
-ms.openlocfilehash: 4ffe663c1a1651891af5f6e65ee231cbe3e8d650
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.date: 01/15/2021
+ms.openlocfilehash: db3b168826223e4eb958f7700e65623a115e5779
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882287"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251466"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>使用虛擬核心購買模型的單一資料庫資源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -225,7 +225,38 @@ ms.locfileid: "97882287"
 
 \* 除了本機 SSD IO，工作負載會使用遠端 [頁面伺服器](service-tier-hyperscale.md#page-server) io。 有效的 IOPS 將視工作負載而定。 如需詳細資訊，請參閱 [資料 Io 治理](resource-limits-logical-server.md#resource-governance)和 [資源使用量統計資料中的資料 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
 
-#### <a name="notes"></a>注意
+#### <a name="notes"></a>備註
+
+**附注 1**：超大規模是具有個別計算和儲存元件的多層式架構： [超大規模服務層架構](service-tier-hyperscale.md#distributed-functions-architecture)
+
+**附注 2**：本機計算複本 SSD 上資料的延遲為1-2 毫秒，可快取最常使用的資料頁。 從頁面伺服器抓取資料的延遲較高。
+
+## <a name="hyperscale---provisioned-compute---dc-series"></a>超大規模-布建的計算-DC 系列
+
+|計算大小 (服務目標)|HS_DC_2|HS_DC_4|HS_DC_6|HS_DC_8|
+|:--- | --: |--: |--: |--: |---: | 
+|計算世代|DC 系列|DC 系列|DC 系列|DC 系列|
+|虛擬核心|2|4|6|8|
+|記憶體 (GB)|9|18|27|36|
+|[RBPEX](service-tier-hyperscale.md#compute) 大小|3倍記憶體|3倍記憶體|3倍記憶體|3倍記憶體|
+|資料行存放區支援|是|是|是|是|
+|OLTP 記憶體內部儲存體 (GB)|N/A|N/A|N/A|N/A|
+|資料大小上限 (TB)|100 |100 |100 |100 |
+|記錄大小上限 (TB)|無限制 |無限制 |無限制 |無限制 |
+|TempDB 資料大小上限 (GB) |64|128|192|256|
+|儲存體類型| [附注1](#notes) |[附注1](#notes)|[附注1](#notes) |[附注1](#notes) |
+|最大本機 SSD IOPS *|8000 |16000 |24000 |32000 |
+|最大記錄速率 (MBps) |100 |100 |100 |100 |
+|IO 延遲 (大約)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|[附注2](#notes)|
+|並行背景工作 (要求) 數上限|160|320|480|640|
+|並行工作階段數上限|30,000|30,000|30,000|30,000|
+|您應該|0-4|0-4|0-4|0-4|
+|多重 AZ|N/A|N/A|N/A|N/A|
+|讀取向外延展|是|是|是|是|
+|備份儲存體保留期|7 天|7 天|7 天|7 天|
+|||
+
+### <a name="notes"></a>備註
 
 **附注 1**：超大規模是具有個別計算和儲存元件的多層式架構： [超大規模服務層架構](service-tier-hyperscale.md#distributed-functions-architecture)
 
@@ -389,6 +420,32 @@ ms.locfileid: "97882287"
 |多重 AZ|N/A|N/A|N/A|N/A|N/A|N/A|
 |讀取向外延展|N/A|N/A|N/A|N/A|N/A|N/A|
 |內含備份儲存體|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|
+
+\* IO 大小的最大值，範圍介於 8 KB 到 64 KB 之間。 實際的 IOPS 取決於工作負載。 如需詳細資訊，請參閱 [資料 IO 治理](resource-limits-logical-server.md#resource-governance)。
+
+## <a name="general-purpose---provisioned-compute---dc-series"></a>一般用途-布建的計算-DC 系列
+
+|計算大小 (服務目標)|GP_DC_2|GP_DC_4|GP_DC_6|GP_DC_8| 
+|:---| ---:|---:|---:|---:|
+|計算世代|DC 系列|DC 系列|DC 系列|DC 系列|
+|虛擬核心|2|4|6|8|
+|記憶體 (GB)|9|18|27|36|
+|資料行存放區支援|是|是|是|是|
+|OLTP 記憶體內部儲存體 (GB)|N/A|N/A|N/A|N/A|
+|資料大小上限 (GB)|1024|1536|3072|3072|
+|記錄大小上限 (GB)|307|461|922|922|
+|TempDB 資料大小上限 (GB) |64|128|192|256|
+|儲存體類型|遠端 SSD|遠端 SSD|遠端 SSD|遠端 SSD|
+|IO 延遲 (大約)|5-7 毫秒 (寫入)<br>5-10 毫秒 (讀取)|5-7 毫秒 (寫入)<br>5-10 毫秒 (讀取)|5-7 毫秒 (寫入)<br>5-10 毫秒 (讀取)|5-7 毫秒 (寫入)<br>5-10 毫秒 (讀取)|
+|最大資料 IOPS *|640|1280|1920|2560|
+|最大記錄速率 (MBps) |9|18|27|36|
+|並行背景工作 (要求) 數上限|160|320|480|640|
+|並行工作階段數上限|30,000|30,000|30,000|30,000|
+|複本數目|1|1|1|1|
+|多重 AZ|N/A|N/A|N/A|N/A|
+|讀取向外延展|N/A|N/A|N/A|N/A|
+|內含備份儲存體|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|
+
 
 \* IO 大小的最大值，範圍介於 8 KB 到 64 KB 之間。 實際的 IOPS 取決於工作負載。 如需詳細資訊，請參閱 [資料 IO 治理](resource-limits-logical-server.md#resource-governance)。
 
@@ -563,6 +620,31 @@ ms.locfileid: "97882287"
 > [!IMPORTANT]
 > 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱 [管理 Azure SQL Database 中](file-space-manage.md)的檔案空間。
 
+## <a name="business-critical---provisioned-compute---dc-series"></a>商務關鍵性-布建的計算-DC 系列
+
+|計算大小 (服務目標)|BC_DC_2|BC_DC_4|BC_DC_6|BC_DC_8|
+|:--- | --: |--: |--: |--: |
+|計算世代|DC 系列|DC 系列|DC 系列|DC 系列|
+|虛擬核心|2|4|6|8|
+|記憶體 (GB)|9|18|27|36|
+|資料行存放區支援|是|是|是|是|
+|OLTP 記憶體內部儲存體 (GB)|1.7|3.7|5.9|8.2|
+|資料大小上限 (GB)|768|768|768|768|
+|記錄大小上限 (GB)|230|230|230|230|
+|TempDB 資料大小上限 (GB) |64|128|192|256|
+|儲存體類型|本機 SSD|本機 SSD|本機 SSD|本機 SSD|
+|IO 延遲 (大約)|1-2 毫秒 (寫入)<br>1-2 毫秒 (讀取)|1-2 毫秒 (寫入)<br>1-2 毫秒 (讀取)|1-2 毫秒 (寫入)<br>1-2 毫秒 (讀取)|1-2 毫秒 (寫入)<br>1-2 毫秒 (讀取)|
+|最大資料 IOPS *|14000|28000|42000|56000|
+|最大記錄速率 (MBps) |24|48|72|96|
+|並行背景工作 (要求) 數上限|200|400|600|800|
+|並行登入數上限|200|400|600|800|
+|並行工作階段數上限|30,000|30,000|30,000|30,000|
+|複本數目|4|4|4|4|
+|多重 AZ|否|否|否|否|
+|讀取向外延展|否|否|否|否|
+|內含備份儲存體|1X DB 大小|1X DB 大小|1X DB 大小|1X DB 大小|
+
+\* IO 大小的最大值，範圍介於 8 KB 到 64 KB 之間。 實際的 IOPS 取決於工作負載。 如需詳細資訊，請參閱 [資料 IO 治理](resource-limits-logical-server.md#resource-governance)。
 
 
 ## <a name="next-steps"></a>後續步驟

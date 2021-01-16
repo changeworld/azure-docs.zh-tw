@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: adec2a85373d33d08fe9aa16895d03229e40f475
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 886db905008af94b66a902cc551e4d55b36572a8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825830"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250123"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件方格觸發程序
 
@@ -603,7 +603,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ### <a name="manually-post-the-request"></a>手動發佈要求
 
-在本機執行您的 Event Grid 函式。
+在本機執行您的 Event Grid 函式。 `Content-Type`和 `aeg-event-type` 標頭必須以手動方式設定，而其他所有值則可以保留為預設值。
 
 使用 [Postman](https://www.getpostman.com/) 或 [curl](https://curl.haxx.se/docs/httpscripting.html) 之類的工具建立 HTTP POST 要求：
 

@@ -3,15 +3,15 @@ title: 保障存取和資料的安全性
 description: 在 Azure Logic Apps 中保護對於輸入、輸出、以要求為基礎的觸發程序、執行歷程記錄、管理工作及其他資源的存取
 services: logic-apps
 ms.suite: integration
-ms.reviewer: rarayudu, logicappspm
+ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 5ad01e31cb9af18fa018d99424b25dee338981d7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.date: 01/15/2021
+ms.openlocfilehash: c889498d6341875682055e9d67b8d2b958bac70a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034504"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251058"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure Logic Apps 中保護存取和資料
 
@@ -911,6 +911,10 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫�
 > 若要保護邏輯應用程式處理的機密資訊，請視需要使用安全的參數並編碼資料。
 > 如需使用及保護參數的詳細資訊，請參閱[存取參數輸入](#secure-action-parameters)。
 
+<a name="authentication-types-supported-triggers-actions"></a>
+
+#### <a name="authentication-types-for-triggers-and-actions-that-support-authentication"></a>支援驗證之觸發程式和動作的驗證類型
+
 下表識別可在觸發程式和動作上使用的驗證類型，您可以在其中選取驗證類型：
 
 | 驗證類型 | 支援的觸發程式和動作 |
@@ -919,12 +923,12 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫�
 | [用戶端憑證](#client-certificate-authentication) | Azure API 管理、Azure App Service、HTTP、HTTP + Swagger、HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API 管理、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
 | [原始](#raw-authentication) | Azure API 管理、Azure App Service、Azure Functions、HTTP、HTTP + Swagger、HTTP Webhook |
-| [受控身分識別](#managed-identity-authentication) | Azure API 管理，Azure App 服務，Azure Functions，HTTP，HTTP Webhook |
+| [受控身分識別](#managed-identity-authentication) | **內建觸發程式和動作** <p><p>Azure API 管理，Azure App 服務，Azure Functions，HTTP，HTTP Webhook <p><p>**受控連接器** <p><p>Azure AD Identity Protection，Azure 自動化，Azure 容器實例，Azure 資料總管，Azure Data Factory，Azure Data Lake，Azure 事件方格，Azure IoT Central V3，Azure Key Vault，Azure Log Analytics，Azure 監視器記錄，Azure Resource Manager，Azure Sentinel，HTTP 與 Azure AD <p><p>**注意**：受控連接器的支援目前為預覽狀態。 |
 |||
 
 <a name="basic-authentication"></a>
 
-### <a name="basic-authentication"></a>基本驗證
+#### <a name="basic-authentication"></a>基本驗證
 
 如果有[基本](../active-directory-b2c/secure-rest-api.md)選項可用，請指定下列屬性值：
 
@@ -955,7 +959,7 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫�
 
 <a name="client-certificate-authentication"></a>
 
-### <a name="client-certificate-authentication"></a>用戶端憑證驗證
+#### <a name="client-certificate-authentication"></a>用戶端憑證驗證
 
 如果有[用戶端憑證](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)選項可用，請指定下列屬性值：
 
@@ -994,7 +998,7 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫�
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
-### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory 開放式驗證
+#### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory 開放式驗證
 
 在要求觸發程式上，您可以在設定邏輯應用程式的[Azure AD 授權原則](#enable-oauth)之後，使用[Azure Active Directory 的 Open Authentication (Azure AD OAuth) ](../active-directory/develop/index.yml)）來驗證傳入的呼叫。 對於有 **Active Directory OAuth** 驗證類型可供您選擇的其他所有觸發程序和動作，請指定下列屬性值：
 
@@ -1034,7 +1038,7 @@ HTTP 和 HTTPS 端點支援各種類型的驗證。 在您用來將輸出呼叫�
 
 <a name="raw-authentication"></a>
 
-### <a name="raw-authentication"></a>原始驗證
+#### <a name="raw-authentication"></a>原始驗證
 
 如果有 [原始] 選項可用，當您必須使用未遵循 [OAuth 2.0 通訊協定](https://oauth.net/2/)的[驗證配置](https://iana.org/assignments/http-authschemes/http-authschemes.xhtml)時，您可以使用此驗證類型。 使用此類型時，您可以手動建立授權標頭值以隨著傳出要求一起傳送，並在觸發程序或動作中指定該標頭值。
 
@@ -1077,15 +1081,17 @@ Authorization: OAuth realm="Photos",
 
 <a name="managed-identity-authentication"></a>
 
-### <a name="managed-identity-authentication"></a>受控識別驗證
+#### <a name="managed-identity-authentication"></a>受控識別驗證
 
-如果 [特定觸發程式或動作](#add-authentication-outbound)可使用 [受控識別](../active-directory/managed-identities-azure-resources/overview.md)選項，您的邏輯應用程式可以使用系統指派的身分識別或 *單一* 手動建立的使用者指派身分識別，來驗證受 Azure Active Directory (Azure AD) 保護之其他資源的存取權，而不需登入。 Azure 會為您管理此身分識別，並協助保護您的認證，因為您不需要提供或輪替秘密。 深入了解[支援使用受控識別進行 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+當 [受控識別](../active-directory/managed-identities-azure-resources/overview.md) 選項可在 [支援受控識別驗證的觸發程式或動作](#add-authentication-outbound)上使用時，您的邏輯應用程式可以使用系統指派的身分識別或 *單一* 手動建立的使用者指派身分識別，來驗證受 Azure Active Directory (Azure AD) 保護的 Azure 資源，而不是認證、秘密或 Azure AD 權杖的存取權。 Azure 會為您管理此身分識別，並協助您保護您的認證，因為您沒有管理秘密或直接使用 Azure AD 權杖。 深入了解[支援使用受控識別進行 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
 1. 若要讓邏輯應用程式使用受控識別，請遵循[在 Azure Logic Apps 中使用受控識別來驗證對 Azure 資源的存取](../logic-apps/create-managed-service-identity.md)中的步驟。 這些步驟會在邏輯應用程式上啟用受控識別，並設定該身分識別對目標 Azure 資源的存取權。
 
 1. 請先[啟用 Azure 函式的驗證](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions)，Azure 函式才能使用受控識別。
 
-1. 在您要使用受控識別的觸發程序或動作中，請指定下列屬性值：
+1. 在支援使用受控識別的觸發程式或動作中，提供下列資訊：
+
+   **內建觸發程式和動作**
 
    | 屬性 (設計工具) | 屬性 (JSON) | 必要 | 值 | 描述 |
    |---------------------|-----------------|----------|-------|-------------|
@@ -1094,7 +1100,7 @@ Authorization: OAuth realm="Photos",
    | **目標對象** | `audience` | 是 | <*target-resource-ID*> | 資源識別碼，代表您想要存取的目標資源。 <p>例如，`https://storage.azure.com/` 為所有儲存體帳戶提供有效的驗證[存取權杖](../active-directory/develop/access-tokens.md)。 不過，您也可以為特定儲存體帳戶指定根服務 URL，例如 `https://fabrikamstorageaccount.blob.core.windows.net`。 <p>**注意**：某些觸發程序或動作中，可能會隱藏 [對象] 屬性。 若要顯示此屬性，請在觸發程序或動作中開啟 [新增參數] 清單，然後選取 [對象]。 <p><p>**重要**：請確定目標資源識別碼 *完全符合* Azure AD 所預期的值，包括任何必要的尾端斜線。 因此，所有 Azure Blob 儲存體帳戶的 `https://storage.azure.com/` 資源識別碼需要有尾端斜線。 不過，特定儲存體帳戶的資源識別碼不需要尾端斜線。 若要尋找這些資源識別碼，請參閱[支援 Azure AD 的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |
    |||||
 
-   當您使用[受保護的參數](#secure-action-parameters)來處理和保護敏感性資訊時，例如，在[用於自動化部署的 Azure Resource Manager 範本](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中，您可以使用運算式在執行階段存取這些參數值。 這個 HTTP 動作定義範例將驗證 `type` 指定為 `ManagedServiceIdentity`，並使用 [parameters() 函式](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 來取得參數值：
+   當您使用[受保護的參數](#secure-action-parameters)來處理和保護敏感性資訊時，例如，在[用於自動化部署的 Azure Resource Manager 範本](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)中，您可以使用運算式在執行階段存取這些參數值。 例如，這個 HTTP 動作定義會將驗證指定 `type` 為 `ManagedServiceIdentity` ，並使用 [參數 ( # A1 函數](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 來取得參數值：
 
    ```json
    "HTTP": {
@@ -1111,6 +1117,15 @@ Authorization: OAuth realm="Photos",
       "runAfter": {}
    }
    ```
+
+   **受控連接器觸發程式和動作**
+
+   | 屬性 (設計工具) | 必要 | 值 | 說明 |
+   |---------------------|----------|-------|-------------|
+   | **連線名稱** | Yes | <*連接-名稱*> ||
+   | **受控識別** | Yes | **系統指派的受控識別** <br>或 <br> <*使用者指派的受控-身分識別名稱*> | 要使用的驗證類型 |
+   |||||
+
 
 <a name="block-connections"></a>
 
@@ -1147,7 +1162,7 @@ Authorization: OAuth realm="Photos",
 * [Azure 公用雲端中的隔離](../security/fundamentals/isolation-choices.md)
 * [Azure 中高度機密的 IaaS 應用程式安全性](/azure/architecture/reference-architectures/n-tier/high-security-iaas)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [適用于 Azure Logic Apps 的 Azure 安全性基準](../logic-apps/security-baseline.md)
 * [Azure Logic Apps 的自動化部署](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

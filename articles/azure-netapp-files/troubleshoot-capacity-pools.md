@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/06/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505455"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251534"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>針對容量集區問題進行疑難排解
 
@@ -34,9 +34,6 @@ ms.locfileid: "97505455"
 | 磁片區建立或修改失敗，發生 `Requested throughput not available` 錯誤 | 磁片區的可用輸送量取決於其容量集區的大小和服務層級。 如果沒有足夠的輸送量，您應該增加集區大小或調整現有的磁片區輸送量。 | 
 
 ## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>變更磁片區的容量集區時發生的問題 
-
-> [!IMPORTANT] 
-> 以動態方式變更磁片區公開預覽註冊 [的服務層級](dynamic-change-volume-service-level.md) ，直到進一步通知為止。
 
 |     錯誤狀況    |     解決方案    |
 |-|-|

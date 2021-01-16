@@ -1,14 +1,14 @@
 ---
 title: 了解查詢語言
 description: 描述 Resource Graph 資料表，以及可與 Azure Resource Graph 搭配使用的可用 Kusto 資料類型、運算子和函式。
-ms.date: 11/18/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3023991c76d94dc8aa87cfe950c18ab5d6a07ba9
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: f94023d47153dc64ca78e0386edd87a9821515be
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883056"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251721"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查詢語言
 
@@ -26,17 +26,20 @@ Azure Resource Graph 查詢語言支援多個運算子與函式。 每個都是�
 
 Resource Graph 針對其儲存的資料，提供數個數據表，Azure Resource Manager 資源類型和其屬性。 有些資料表可搭配 `join` 或運算子使用 `union` ，以取得相關資源類型的屬性。 以下是 Resource Graph 中可用的資料表清單：
 
-|Resource Graph 資料表 |可以 `join` ？ |描述 |
+|Resource Graph 資料表 |可以是 `join` 其他資料表嗎？ |描述 |
 |---|---|
-|資源 |是 |如果未在查詢中定義任何資料表，則使用預設資料表。 大部分的 Resource Manager 資源類型和屬性都在這裡。 |
-|ResourceContainers |是 |包含訂用帳戶 (預覽狀態 -- `Microsoft.Resources/subscriptions`) 和資源群組 (`Microsoft.Resources/subscriptions/resourcegroups`) 資源類型和資料。 |
-|AdvisorResources |否 |包含與 `Microsoft.Advisor`「相關」的資源。 |
-|AlertsManagementResources |否 |包含與 `Microsoft.AlertsManagement`「相關」的資源。 |
-|GuestConfigurationResources |否 |包含與 `Microsoft.GuestConfiguration`「相關」的資源。 |
-|MaintenanceResources |否 |包含與 `Microsoft.Maintenance`「相關」的資源。 |
-|PolicyResources |否 |包含與 `Microsoft.PolicyInsights`「相關」的資源。  (**預覽**) |
-|SecurityResources |否 |包含與 `Microsoft.Security`「相關」的資源。 |
-|ServiceHealthResources |否 |包含與 `Microsoft.ResourceHealth`「相關」的資源。 |
+|資源 |Yes |如果未在查詢中定義任何資料表，則使用預設資料表。 大部分的 Resource Manager 資源類型和屬性都在這裡。 |
+|ResourceContainers |Yes |包含訂用帳戶 (預覽狀態 -- `Microsoft.Resources/subscriptions`) 和資源群組 (`Microsoft.Resources/subscriptions/resourcegroups`) 資源類型和資料。 |
+|AdvisorResources |是 (預覽) |包含與 `Microsoft.Advisor`「相關」的資源。 |
+|AlertsManagementResources |是 (預覽) |包含與 `Microsoft.AlertsManagement`「相關」的資源。 |
+|GuestConfigurationResources |No |包含與 `Microsoft.GuestConfiguration`「相關」的資源。 |
+|MaintenanceResources |部分，僅聯結 _至_ 。 (預覽) |包含與 `Microsoft.Maintenance`「相關」的資源。 |
+|PatchAssessmentResources|No |包含與 Azure 虛擬機器修補評量 _相關_ 的資源。 |
+|PatchInstallationResources|No |包含與 Azure 虛擬機器修補安裝 _相關_ 的資源。 |
+|PolicyResources |No |包含與 `Microsoft.PolicyInsights`「相關」的資源。  (**預覽**) |
+|RecoveryServicesResources |部分，僅聯結 _至_ 。 (預覽) |包含與和 _相關_ 的資源 `Microsoft.DataProtection` `Microsoft.RecoveryServices` 。 |
+|SecurityResources |部分，僅聯結 _至_ 。 (預覽) |包含與 `Microsoft.Security`「相關」的資源。 |
+|ServiceHealthResources |No |包含與 `Microsoft.ResourceHealth`「相關」的資源。 |
 
 如需包含資源類型的完整清單，請參閱[參考：支援的資料表和資源類型](../reference/supported-tables-resources.md)。
 
@@ -45,7 +48,7 @@ Resource Graph 針對其儲存的資料，提供數個數據表，Azure Resource
 
 使用入口網站中的 Resource Graph Explorer，探索每個資料表中可用的資源類型。 或者，使用 `<tableName> | distinct type` 之類的查詢來取得給定 Resource Graph 資料表所支援的資源類型清單，而該清單存在於您的環境中。
 
-下列查詢顯示簡單的 `join`。 查詢結果會將這些資料行結合在一起，而聯結資料表中任何重複的資料行名稱 (此範例中的 _ResourceContainers_) 都會附加 **1**。 當 _ResourceContainers_ 資料表同時具有訂用帳戶和資源群組的類型，這兩種類型都可能用來從 _resources_ 資料表聯結至資源。
+下列查詢顯示簡單的 `join`。 查詢結果會將這些資料行結合在一起，而聯結資料表中任何重複的資料行名稱 (此範例中的 _ResourceContainers_) 都會附加 **1**。 由於 _>resourcecontainers_ 資料表具有訂用帳戶和資源群組的型別，因此可能會使用這兩種類型來聯結 _資源_ 資料表中的資源。
 
 ```kusto
 Resources
@@ -53,13 +56,14 @@ Resources
 | limit 1
 ```
 
-下列查詢顯示 `join` 的更複雜用法。 此查詢會將聯結的資料表限制為訂用帳戶資源，並利用 `project` 使其僅包含原始欄位 _subscriptionId_ 和已重新命名為 _SubName_ 的 _name_ 欄位。 欄位重新命名可避免 `join` 將其新增為 _name1_，因為此欄位已經存在於 _Resources_ 中。 原始資料表會使用 `where` 進行篩選，而下列 `project` 包含兩個資料表的資料行。 查詢結果是單一金鑰保存庫顯示類型、金鑰保存庫的名稱，以及其所在的訂用帳戶名稱。
+下列查詢顯示 `join` 的更複雜用法。 首先，查詢會使用 `project` 從 Azure Key Vault 保存庫資源類型的 _資源_ 取得欄位。 下一步是使用 `join` 來合併結果與 _>resourcecontainers_ ，其中類型是在第一個資料表 `project` 和聯結資料表之屬性的訂閱 `project` 。 欄位重新命名 `join` 可避免將它新增為 _name1_ ，因為屬性已從 _資源_ 投射。 查詢結果是單一金鑰保存庫，其中顯示類型、名稱、位置和金鑰保存庫的資源群組，以及其所在的訂用帳戶名稱。
 
 ```kusto
 Resources
 | where type == 'microsoft.keyvault/vaults'
+| project name, type, location, subscriptionId, resourceGroup
 | join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
-| project type, name, SubName
+| project type, name, location, resourceGroup, SubName
 | limit 1
 ```
 
@@ -125,7 +129,7 @@ Resource Graph 支援 KQL [資料類型](/azure/kusto/query/scalar-data-types/)�
 |[計數](/azure/kusto/query/countoperator) |[計算金鑰保存庫數目](../samples/starter.md#count-keyvaults) | |
 |[distinct](/azure/kusto/query/distinctoperator) |[顯示包含儲存體的資源](../samples/starter.md#show-storage) | |
 |[extend](/azure/kusto/query/extendoperator) |[依作業系統類型計算的虛擬機器計數](../samples/starter.md#count-os) | |
-|[join](/azure/kusto/query/joinoperator) |[金鑰保存庫與訂用帳戶名稱](../samples/advanced.md#join) |支援的聯結類別：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 單一查詢中限制 3 個`join`。 不允許自訂聯結策略 (例如廣播聯結)。 如需可使用的資料表 `join` ，請參閱 [Resource Graph 資料表](#resource-graph-tables)。 |
+|[join](/azure/kusto/query/joinoperator) |[金鑰保存庫與訂用帳戶名稱](../samples/advanced.md#join) |支援的聯結類別：[innerunique](/azure/kusto/query/joinoperator#default-join-flavor)、[inner](/azure/kusto/query/joinoperator#inner-join)、[leftouter](/azure/kusto/query/joinoperator#left-outer-join)。 單一查詢中的限制為 3 `join` ，其中1個可能是一個交叉資料表 `join` 。 如果所有跨資料表 `join` 使用都在 _資源_ 和 _>resourcecontainers_ 之間，則允許3個交叉資料表 `join` 。 不允許自訂聯結策略 (例如廣播聯結)。 如需可使用的資料表 `join` ，請參閱 [Resource Graph 資料表](#resource-graph-tables)。 |
 |[limit](/azure/kusto/query/limitoperator) |[列出所有公用 IP 位址](../samples/starter.md#list-publicip) |的同義字 `take` 。 無法使用 [Skip](./work-with-data.md#skipping-records)。 |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | 舊版運算子，請改用 `mv-expand`。 _RowLimit_ 的上限為 400。 預設值為 128。 |
 |[mv-expand](/azure/kusto/query/mvexpandoperator) |[列出具有特定寫入位置的 Cosmos DB](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ 的上限為 400。 預設值為 128。 |

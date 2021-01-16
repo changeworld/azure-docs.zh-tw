@@ -4,14 +4,14 @@ description: 使用 Helm 搭配 AKS 和 Azure Container Registry，在叢集中�
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 07/28/2020
+ms.date: 01/12/2021
 ms.author: zarhoads
-ms.openlocfilehash: 2c4e39ae664c89e4f6d49f2941115e5a7d44cf7b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5656051ecd6e3fd39b051d2d0288e9762c83d9ad
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929168"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249919"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入門：使用 Helm 在 Azure Kubernetes Service (AKS) 上進行開發
 
@@ -144,7 +144,7 @@ helm create webfrontend
 replicaCount: 1
 
 image:
-  repository: *myhelmacr.azurecr.io*/webfrontend
+  repository: myhelmacr.azurecr.io/webfrontend
   pullPolicy: IfNotPresent
 ...
 service:
