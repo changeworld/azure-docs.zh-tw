@@ -12,12 +12,12 @@ metadata:
   ms.author: kumud
   manager: mtillman
   ms.date: 09/28/2020
-  ms.openlocfilehash: efc78307a4b03c9b5a7546dd899f83b0eed76457
-  ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+  ms.openlocfilehash: 0f0536c259bb8b4168ab5fcf3e05016a281b05d5
+  ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/10/2021
-  ms.locfileid: "98059733"
+  ms.lasthandoff: 01/15/2021
+  ms.locfileid: "98233945"
 highlightedContent:
   items:
   - title: 什麼是 Azure 網路？
@@ -28,10 +28,10 @@ highlightedContent:
     url: https://azure.microsoft.com/updates/?category=networking
   - title: Azure 中的負載平衡選項
     itemType: architecture
-    url: https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview
+    url: /azure/architecture/guide/technology-choices/load-balancing-overview
   - title: Azure 中的中樞輪輻網路拓撲
     itemType: architecture
-    url: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+    url: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
   - title: 什麼是 Azure Orbital？
     itemType: concept
     url: azure-orbital-overview.md
@@ -62,7 +62,7 @@ conceptualContent:
     - url: ../vpn-gateway/vpn-gateway-about-vpngateways.md
       itemType: overview
       text: 什麼是 Azure VPN 閘道？
-    - url: ../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md
+    - url: ../vpn-gateway/tutorial-site-to-site-portal.md
       itemType: tutorial
       text: 站對站連線
     - url: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
@@ -115,7 +115,7 @@ conceptualContent:
       text: 什麼是 Azure Load Balancer？
     - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
       itemType: whats-new
-      text: 新功能
+      text: 最新消息
     - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
       itemType: quickstart
       text: VM 的負載平衡網際網路流量
@@ -209,7 +209,7 @@ conceptualContent:
     - url: ../bastion/bastion-overview.md
       itemType: overview
       text: 何謂 Azure Bastion？
-    - url: ../bastion/bastion-create-host-portal.md
+    - url: ../bastion/tutorial-create-host-portal.md
       itemType: how-to-guide
       text: 建立 Azure Bastion 主機
     - url: ../bastion/troubleshoot.md
@@ -333,10 +333,10 @@ additionalContent:
   - items:
     - title: 適用於 Azure 網路的 Azure PowerShell 命令
       summary: 了解 Azure 網路 Cmdlet。
-      url: https://docs.microsoft.com/en-us/powershell/module/az.network/?view=azps-3.5.0#networking
+      url: /powershell/module/az.network/?view=azps-3.5.0#networking
     - title: 適用於 Azure 網路的 Azure CLI 命令
       summary: 在 CLI 參考中尋找 Azure 網路命令。
-      url: https://docs.microsoft.com/en-us/cli/azure/network?view=azure-cli-latest
+      url: /cli/azure/network?view=azure-cli-latest
     - title: Azure 網路部落格
       summary: 檢視 Azure 網路中最新的部落格。
       url: https://azure.microsoft.com/blog/topics/networking/
