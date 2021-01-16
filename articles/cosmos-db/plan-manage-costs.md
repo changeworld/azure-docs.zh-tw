@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: 3632c098f865b1e5c4e76709a83176035be7abc2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 07e165382608f4fde5433de0f4436cb86f5083af
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351822"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251891"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>規劃和管理 Azure Cosmos DB 的成本
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -71,7 +71,7 @@ Azure Cosmos DB 支援兩種類型的容量模式：布 [建的輸送量](set-th
 
    :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Azure 入口網站中的成本預估":::
 
-如果您的 Azure 訂用帳戶有消費限制，Azure 會讓您無法消費于您的點數金額。 當您建立和使用 Azure 資源時，會使用您的點數。 當您達到點數限制時，就會在該計費期間的剩餘時間內停用您所部署的資源。 您無法變更點數限制，但可以將它移除。 如需消費限制的詳細資訊，請參閱 [Azure 消費限制](../cost-management-billing/manage/spending-limit.md)。
+如果您的 Azure 訂用帳戶有消費限制，Azure 會讓您無法消費于您的點數金額。 當您建立和使用 Azure 資源時，會使用您的點數。 當您達到點數限制時，就會在該計費期間的剩餘時間內停用您所部署的資源。 您無法變更點數限制，但可以將它移除。 如需消費限制的詳細資訊，請參閱 [Azure 消費限制](../cost-management-billing/manage/spending-limit.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 您可以使用 Azure Enterprise 合約預付金點數來支付 Azure Cosmos DB 費用。 不過，您無法使用預付金點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 85172e2430a3e65edb0c5ec119c920e2c7d20217
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234757"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251823"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>適用于現有 Operations Manager 客戶的 Azure 監視器
 本文提供的指導方針適用于目前使用 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) 且正在規劃將商務應用程式和其他資源遷移至 Azure 的 [Azure 監視器](overview.md) 。 它會假設您的終極目標是完整轉換至雲端，以 Azure 監視器盡可能地取代 Operations Manager 功能，而不會危及您的業務和 IT 營運需求。 
@@ -63,7 +63,7 @@ ms.locfileid: "98234757"
 當您熟悉 Azure 監視器時，您會開始建立能夠取代某些管理元件功能的警示規則，並開始發展您的商務程式，以使用新的監視平臺。 這可讓您從 Operations Manager 管理群組開始移除電腦和管理套件。 您可以繼續使用關鍵伺服器軟體和內部部署基礎結構的管理元件，但繼續留意 Azure 監視器中的新功能，讓您淘汰額外的功能。
 
 ## <a name="monitor-azure-services"></a>監視 Azure 服務
-Azure 服務實際上需要 Azure 監視器來收集遙測資料，而且會在您建立 Azure 訂用帳戶的時候啟用。 系統會自動收集訂用帳戶的 [活動記錄](platform/activity-log.md) ，並會自動從您建立的任何 Azure 資源收集 [平臺計量](platform/data-platform-metrics.md) 。 您可以立即開始使用 [計量瀏覽器](platform/metrics-getting-started.md)，這類似于 Operations 主控台中的效能流覽，但可提供互動式分析和資料的 [advanced](platform/metrics-charts.md) 匯總。 [建立計量警示](platform/alerts-metric.md) ，以在值超過閾值時收到通知，或 [將圖表新增至 Azure 儀表板](platform/metrics-charts.md#pin-charts-to-dashboards) 以供可見度。
+Azure 服務實際上需要 Azure 監視器來收集遙測資料，而且會在您建立 Azure 訂用帳戶的時候啟用。 系統會自動收集訂用帳戶的 [活動記錄](platform/activity-log.md) ，並會自動從您建立的任何 Azure 資源收集 [平臺計量](platform/data-platform-metrics.md) 。 您可以立即開始使用 [計量瀏覽器](platform/metrics-getting-started.md)，這類似于 Operations 主控台中的效能流覽，但可提供互動式分析和資料的 [advanced](platform/metrics-charts.md) 匯總。 [建立計量警示](platform/alerts-metric.md) ，以在值超過閾值時收到通知，或 [將圖表新增至 Azure 儀表板](platform/metrics-charts.md#pinning-to-dashboards) 以供可見度。
 
 [![計量瀏覽器](media/azure-monitor-operations-manager/metrics-explorer.png)](media/azure-monitor-operations-manager/metrics-explorer.png#lightbox)
 

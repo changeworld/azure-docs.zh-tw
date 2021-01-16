@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 9751bd082947e66b3fc5ea47448857558301a1e7
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 59329fccda77f16e4a595e9b1789ef684c5cbf95
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366390"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256424"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>網路限制 - Azure Resource Manager
 下列限制僅適用於透過每個訂用帳戶每一區域的 **Azure Resource Manager** 所管理的網路資源。 深入了解如何[根據您的訂用帳戶限制檢視目前資源使用量](../articles/networking/check-usage-against-limits.md)。
@@ -34,7 +34,7 @@ ms.locfileid: "97366390"
 | 每個虛擬機器的私人 IP 位址 |256 |
 | 每個網路介面的公用 IP 位址 |256 |
 | 每個虛擬機器的公用 IP 位址 |256 |
-| [虛擬機器或角色執行個體之每個 NIC 的並行 TCP 或 UDP 流程](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
+| [虛擬機器或角色執行個體之每個 NIC 的並行 TCP 或 UDP 流程](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) |500,000 |
 | 網路介面卡 |65,536 |
 | 網路安全性群組 |5,000 |
 | 每一 NSG 的 NSG 規則 |1,000 |

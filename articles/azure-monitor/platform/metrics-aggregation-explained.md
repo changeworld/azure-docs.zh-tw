@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.subservice: metrics
-ms.openlocfilehash: 79728e53c1d53a8a4463fc0bd1ddee5db89fc013
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 1d83ef07714e0ce69f01aa240cc3058195c7b1af
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234728"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251976"
 ---
 # <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure 監視器度量計量匯總和顯示說明
 
@@ -125,7 +125,7 @@ ms.locfileid: "98234728"
 
 :::image type="content" source="media/metrics-aggregation-explained/split-filter-total-disk write-bytes-all-VMs.png" alt-text="螢幕擷取畫面：顯示 Contoso 飯店資源群組中所有虛擬機器的磁片寫入位元組，並依虛擬機器名稱進行分割和篩選" border="true" lightbox="media/metrics-aggregation-explained/split-filter-total-disk write-bytes-all-VMs.png":::
 
-如需有關如何在計量瀏覽器圖表上顯示分割維度資料的詳細資訊，請參閱 [計量瀏覽器的 Advanced 功能-篩選和分割](metrics-charts.md#apply-filters-to-charts)。
+如需有關如何在計量瀏覽器圖表上顯示分割維度資料的詳細資訊，請參閱 [計量瀏覽器的 Advanced 功能-篩選和分割](metrics-charts.md#filters)。
 
 ### <a name="null-and-zero-values"></a>Null 和零值
 

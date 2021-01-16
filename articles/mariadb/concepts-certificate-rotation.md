@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 376a4941ac767b670bd2706cb3af63d139b0c3a3
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: b0f0ee9477a84dc198ea3fb48b2ed81be10ea9c5
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233486"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251874"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫的根 CA 變更變更
 
@@ -19,12 +19,6 @@ ms.locfileid: "98233486"
 
 >[!NOTE]
 > 根據客戶的意見反應，我們已從2020年10月15日到2021年10月15日之前，為現有的巴爾的摩根 CA 延伸根憑證取代。 我們希望此延伸模組可提供足夠的前置時間，讓使用者在受到影響時，執行用戶端變更。
-
-> [!NOTE]
-> 無偏差通訊
->
-> Microsoft 支援多元和包容性的環境。 本文包含「 _主要_ 」和「 _從屬_」這些單字的參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)會將這些視為排他性行為單字。 本文中使用的單字是為了保持一致性，因為它們目前是出現在軟體中的單字。 當軟體更新為移除這些字組時，將會更新本文以進行調整。
->
 
 ## <a name="what-update-is-going-to-happen"></a>即將發生什麼更新？
 
@@ -79,15 +73,17 @@ ms.locfileid: "98233486"
 
   - 針對使用 SSL_CERT_DIR 的 Linux 上的 .NET 使用者，請確定 SSL_CERT_DIR 所指出的目錄中都有 **baltimorecybertrustroot.crt** 和 **DigiCertGlobalRootG2** 。 如果有任何憑證不存在，請建立遺失的憑證檔案。
 
-  - 針對其他 (適用于 mariadb 用戶端/適用于 mariadb 工作臺/C/c + +/Go/Python/Ruby/PHP/NodeJS/Perl/Swift) 使用者，您可以合併兩個 CA 憑證檔案，如下所示：以下格式：</b>
+  - 針對其他 (適用于 mariadb 用戶端/適用于 mariadb 工作臺/C/c + +/Go/Python/Ruby/PHP/NodeJS/Perl/Swift) 使用者，您可以合併兩個 CA 憑證檔案，如下所示：以下格式：
 
-    </br>-----開始憑證-----
-    </br> (根 CA1： Baltimorecybertrustroot.crt .crt) 
-    </br>-----終端憑證-----
-    </br>-----開始憑證-----
-    </br> (根 CA2： DigiCertGlobalRootG2 .crt) 
-    </br>-----終端憑證-----
-
+   ```
+   -----BEGIN CERTIFICATE-----
+   (Root CA1: BaltimoreCyberTrustRoot.crt.pem)
+   -----END CERTIFICATE-----
+   -----BEGIN CERTIFICATE-----
+    (Root CA2: DigiCertGlobalRootG2.crt.pem)
+   -----END CERTIFICATE-----
+   ```
+   
 - 將原始的根 CA pem 檔案取代為合併的根 CA 檔案，然後重新開機您的應用程式/用戶端。
 - 未來，在伺服器端部署新的憑證之後，您可以將 CA pem 檔案變更為 DigiCertGlobalRootG2。
 
@@ -134,7 +130,7 @@ ms.locfileid: "98233486"
 
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. 我是否需要為此變更規劃資料庫伺服器維護停機時間？
 
-不會。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這種變更。
+否。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這種變更。
 
 ### <a name="8--what-if-i-cant-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. 如果我無法在2021年2月15日之前，于年2月15日之前變更排程的停機時間， (02/15/2021) ？
 
@@ -154,6 +150,21 @@ ms.locfileid: "98233486"
 
 ### <a name="12-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. 如果我使用資料輸入複寫，是否需要執行任何動作？
 
+> [!NOTE]
+> 本文包含詞彙 _從屬_ 的參考，這是 Microsoft 不再使用的詞彙。 從軟體中移除該字詞時，我們也會將其從本文中移除。
+>
+
+*   如果資料複寫是來自 (內部內部部署或 Azure 虛擬機器) 到適用於 MySQL 的 Azure 資料庫的虛擬機器，則您必須檢查是否使用 SSL 來建立複本。 執行 **顯示從屬狀態** 並檢查下列設定。
+
+    ```azurecli-interactive
+    Master_SSL_Allowed            : Yes
+    Master_SSL_CA_File            : ~\azure_mysqlservice.pem
+    Master_SSL_CA_Path            :
+    Master_SSL_Cert               : ~\azure_mysqlclient_cert.pem
+    Master_SSL_Cipher             :
+    Master_SSL_Key                : ~\azure_mysqlclient_key.pem
+    ```
+
 如果您使用 [資料傳入](concepts-data-in-replication.md) 複寫來連接適用於 MySQL 的 Azure 資料庫，則需要考慮兩件事：
 
 - 如果資料複寫是來自 (內部內部部署或 Azure 虛擬機器) 到適用於 MySQL 的 Azure 資料庫的虛擬機器，則您必須檢查是否使用 SSL 來建立複本。 執行 **顯示從屬狀態** 並檢查下列設定。 
@@ -166,8 +177,7 @@ ms.locfileid: "98233486"
   Master_SSL_Cipher             :
   Master_SSL_Key                : ~\azure_mysqlclient_key.pem
   ```
-
-    如果您看到憑證是針對 CA_file 所提供，SSL_Cert 和 SSL_Key，則必須新增 [新憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)來更新檔案。
+  如果您看到憑證是針對 CA_file 所提供，SSL_Cert 和 SSL_Key，則必須新增 [新憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)來更新檔案。
 
 - 如果資料複寫是在兩個適用於 MySQL 的 Azure 資料庫之間，則您必須執行 **CALL mysql.az_replication_change_master** 來重設複本，並提供新的雙重根憑證做為最後一個參數 [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication)。
 
@@ -177,7 +187,7 @@ ms.locfileid: "98233486"
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. 如果我的憑證檔案中已經有 DigiCertGlobalRootG2，是否需要採取動作？
 
-不會。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
+否。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. 如果我有其他問題，該怎麼辦？
 

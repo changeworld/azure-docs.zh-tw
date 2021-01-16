@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 5a06a0663601c221dd456b9cf4437cb9f32a18f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99bc49dfe7b3f7b6a9d49c2947d8d8c01ad98dac
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81399980"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256430"
 ---
 :::row:::
     :::column span="3":::
@@ -30,20 +30,6 @@ ms.locfileid: "81399980"
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech
 ```
-
-#### <a name="c-binaries-and-header-files"></a>C + + 二進位檔和標頭檔
-
-或者，您可以從二進位檔安裝 c + + 語音 SDK。 將 SDK 下載為<a href="https://aka.ms/csspeech/linuxbinary" target="_blank">tar 套件 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> ，並在您選擇的目錄中解壓縮檔案。 此封裝的內容 (，其中包含 x86 和 x64 目標架構的標頭檔) 結構如下：
-
-  | Path                   | 描述                                          |
-  |------------------------|------------------------------------------------------|
-  | `license.md`           | 授權                                              |
-  | `ThirdPartyNotices.md` | 協力廠商通知                                  |
-  | `include`              | C + + 的標頭檔                                 |
-  | `lib/x64`              | 與應用程式連結的原生 x64 程式庫 |
-  | `lib/x86`              | 與應用程式連結的原生 x86 程式庫 |
-
-  若要建立應用程式，請將所需的二進位檔 (和程式庫) 複製或移至您的開發環境。 視需要將它們包含在您的建置程序中。
 
 #### <a name="additional-resources"></a>其他資源
 
