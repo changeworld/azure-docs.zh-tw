@@ -2,14 +2,14 @@
 title: 使用 Azure 服務匯流排改善效能的最佳作法
 description: 描述如何使用服務匯流排來在交換代理訊息時將效能最佳化。
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 01/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7bfff1a31365724ed1d1cb6ff1956a4e2ef4f4c0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655623"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539440"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服務匯流排傳訊的效能改進最佳作法
 
@@ -24,22 +24,27 @@ ms.locfileid: "97655623"
 2. 服務匯流排傳訊通訊協定 (SBMP)
 3. 超文字傳輸通訊協定 (HTTP)
 
-AMQP 是最有效率的，因為它會維護服務匯流排的連接。 它也會實作批次處理和預先擷取作業。 除非明確提到，否則本文中的所有內容都假設為使用 AMQP 和 SBMP。
+AMQP 是最有效率的，因為它會維護服務匯流排的連接。 它也會實行 [批次處理](#batching-store-access) 和預先 [提取](#prefetching)。 除非明確提到，否則本文中的所有內容都假設為使用 AMQP 和 SBMP。
 
 > [!IMPORTANT]
 > SBMP 僅適用于 .NET Framework。 AMQP 是 .NET Standard 的預設值。
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>選擇適當的服務匯流排 .NET SDK
-有兩個支援的 .NET Sdk Azure 服務匯流排。 它們的 Api 很類似，而且可能會讓您覺得要選擇哪一種。 請參閱下表以協助引導您進行決策。 我們建議使用的是，因為它的現代化、效能更高，且可跨平臺相容。 此外，它支援透過 Websocket 的 AMQP，而且是開放原始碼專案的 Azure .NET SDK 集合的一部分。
+有三個支援的 .NET Sdk Azure 服務匯流排。 它們的 Api 很類似，而且可能會讓您覺得要選擇哪一種。 請參閱下表以協助引導您進行決策。 Azure. 服務匯流排是最新的，我們建議您在其他 Sdk 上使用它。 這兩種架構都是新式、高效能和跨平臺相容。 此外，它們支援透過 Websocket 的 AMQP，而且是開放原始碼專案的 Azure .NET SDK 集合的一部分。
 
 | NuGet 封裝 | 主要命名空間 (s)  | 最低平臺 (s)  | 通訊協定 |
 |---------------|----------------------|---------------------|-------------|
-| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Azure。 <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>通用 Windows 平台 10.0.16299 | AMQP<br>HTTP |
-| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| [Azure. 服務匯流排](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>通用 Windows 平台 10.0.16299 | AMQP<br>HTTP |
+| [Azure。](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>通用 Windows 平台 10.0.16299 | AMQP<br>HTTP |
+| [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 如需最小 .NET Standard 平臺支援的詳細資訊，請參閱 [.net 執行支援](/dotnet/standard/net-standard#net-implementation-support)。
 
 ## <a name="reusing-factories-and-clients"></a>重複使用處理站和用戶端
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. 服務匯流排](#tab/net-standard-sdk-2)
+與服務互動的服務匯流排物件（例如 [>servicebusclient](/dotnet/api/azure.messaging.servicebus.servicebusclient)、 [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender)、 [ServiceBusReceiver](/dotnet/api/azure.messaging.servicebus.servicebusreceiver)和 [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)）應該註冊為) 的相依性 (插入，或是具現化一次或共用。 >servicebusclient 可以使用 [ServiceBusClientBuilderExtensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs)註冊相依性插入。 
+
+在傳送或接收每則訊息之後，建議您不要關閉或處置這些物件。 關閉或處置實體特定物件 (ServiceBusSender/接收器/處理器) 會導致中斷服務匯流排服務的連結。 處置 >servicebusclient 會導致服務匯流排服務的連接中斷。 建立連接是一項昂貴的作業，您可以藉由重複使用相同的 >servicebusclient 並從相同的 >servicebusclient 實例建立必要的實體特定物件來避免。 您可以安全地使用這些用戶端物件，從多個執行緒進行並行的非同步作業。
 
 # <a name="microsoftazureservicebus-sdk"></a>[Node.js SDK](#tab/net-standard-sdk)
 
@@ -55,6 +60,27 @@ AMQP 是最有效率的，因為它會維護服務匯流排的連接。 它也�
 傳送、接收、刪除等作業需要一些時間。 這段時間包括服務匯流排服務處理作業所花費的時間，以及要求和回應的延遲時間。 若要增加每次的作業數目，就必須並行執行作業。
 
 用戶端會透過執行 **非同步** 操作來排定並行作業。 下一個要求會在前一個要求完成之前啟動。 非同步傳送作業的程式碼片段範例如下：
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. 服務匯流排](#tab/net-standard-sdk-2)
+```csharp
+var messageOne = new ServiceBusMessage(body);
+var messageTwo = new ServiceBusMessage(body);
+
+var sendFirstMessageTask =
+    sender.SendMessageAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    sender.SendMessageAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Node.js SDK](#tab/net-standard-sdk)
 
@@ -101,6 +127,35 @@ Console.WriteLine("All messages sent");
 ---
 
 非同步接收作業的程式碼範例如下。
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. 服務匯流排](#tab/net-standard-sdk-2)
+
+```csharp
+var client = new ServiceBusClient(connectionString);
+var options = new ServiceBusProcessorOptions 
+{
+
+      AutoCompleteMessages = false,
+      MaxConcurrentCalls = 20
+};
+await using ServiceBusProcessor processor = client.CreateProcessor(queueName,options);
+processor.ProcessMessageAsync += MessageHandler;
+processor.ProcessErrorAsync += ErrorHandler;
+
+static Task ErrorHandler(ProcessErrorEventArgs args)
+{
+    Console.WriteLine(args.Exception);
+    return Task.CompletedTask;
+};
+
+static async Task MessageHandler(ProcessMessageEventArgs args)
+{
+Console.WriteLine("Handle message");
+      await args.CompleteMessageAsync(args.Message);
+}
+
+await processor.StartProcessingAsync();
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Node.js SDK](#tab/net-standard-sdk)
 
@@ -168,6 +223,9 @@ receiver.OnMessageAsync(
 
 用戶端批次處理可讓佇列或主題用戶端將訊息的傳送延遲一段時間。 如果用戶端在此期間傳送其他訊息，它將以單一批次傳輸訊息。 用戶端批次處理也會導致佇列或訂用帳戶用戶端將多個 **完成** 要求整批放入單一要求中處理。 批次處理僅適用於非同步 **傳送** 及 **完成** 作業。 同步作業會立即傳送至服務匯流排服務。 查看或接收作業不會進行批次處理，也不會在用戶端上進行批次處理。
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. 服務匯流排](#tab/net-standard-sdk-2)
+.NET Standard SDK 的批次處理功能尚未公開要操作的屬性。
+
 # <a name="microsoftazureservicebus-sdk"></a>[Node.js SDK](#tab/net-standard-sdk)
 
 .NET Standard SDK 的批次處理功能尚未公開要操作的屬性。
@@ -217,6 +275,19 @@ var factory = MessagingFactory.Create(namespaceUri, settings);
 在此間隔期間進行的其他存放區作業都會加入至批次。 批次存放區存取只會影響 **傳送** 和 **完成** 作業;接收作業不受影響。 批次處理的存放區存取是實體上的屬性。 批次處理會在啟用批次處理存放區存取的所有實體進行。
 
 建立新佇列、主題或訂用帳戶時，預設會啟用批次處理的存放區存取。
+
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. 服務匯流排](#tab/net-standard-sdk-2)
+若要停用批次存放區存取，您將需要的實例 `ServiceBusAdministrationClient` 。 `CreateQueueOptions`從將屬性設為的佇列描述建立 `EnableBatchedOperations` `false` 。
+
+```csharp
+var options = new CreateQueueOptions(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = await administrationClient.CreateQueueAsync(options);
+```
+
 
 # <a name="microsoftazureservicebus-sdk"></a>[Node.js SDK](#tab/net-standard-sdk)
 
@@ -270,6 +341,12 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 
 預先提取不會影響可計費的訊息作業數目，而且僅適用于服務匯流排用戶端通訊協定。 HTTP 通訊協定不支援預先提取。 同步和非同步接收作業皆可使用預先擷取。
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure. 服務匯流排](#tab/net-standard-sdk-2)
+如需詳細資訊，請參閱下列 `PrefetchCount` 屬性：
+
+- [ServiceBusReceiver. >queueclient.prefetchcount](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.prefetchcount)
+- [ServiceBusProcessor. >queueclient.prefetchcount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount)
+
 # <a name="microsoftazureservicebus-sdk"></a>[Node.js SDK](#tab/net-standard-sdk)
 
 如需詳細資訊，請參閱下列 `PrefetchCount` 屬性：
@@ -287,10 +364,6 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 ---
 
 ## <a name="prefetching-and-receivebatch"></a>預先提取和 ReceiveBatch
-
-> [!NOTE]
-> 本節僅適用于 WindowsAzure，因為 Azure 中的會將批次函數公開。
-
 雖然預先提取多個訊息的概念具有類似的語法來處理批次 () 中的訊息 `ReceiveBatch` ，但在搭配使用這些方法時，必須記住一些小差異。
 
 預先提取是用戶端上的設定 (或模式)  (`QueueClient` 和 `SubscriptionClient`) ，而且 `ReceiveBatch` 是具有要求-回應語義 (的作業) 。
@@ -309,7 +382,7 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 ## <a name="development-and-testing-features"></a>開發與測試功能
 
 > [!NOTE]
-> 本節僅適用于 WindowsAzure，因為 Azure 中的會不公開此功能。
+> 這一節僅適用于 WindowsAzure。服務匯流排和 Azure。服務匯流排不會公開此功能。
 
 服務匯流排有一項專門用於開發的功能， **不應在生產環境設定中使用**： [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] 。
 
@@ -372,9 +445,9 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 * 讓批次處理的存放區存取保持啟用。 此存取會減少實體的整體負載。 它也會減少訊息寫入至佇列或主題的整體速率。
 * 將預先擷取計數設為較小的值 (例如，PrefetchCount = 10)。 此計數可以避免接收者在其他接收者具有大量快取的訊息時閒置。
 
-### <a name="topic-with-a-small-number-of-subscriptions"></a>具有少量訂用帳戶的主題
+### <a name="topic-with-a-few-subscriptions"></a>有幾個訂閱的主題
 
-目標：最大化具有少量訂用帳戶之主題的輸送量。 許多訂用帳戶收到一則訊息，表示所有訂用帳戶的合併接收速率高於傳送速率。 傳送者的數目很少。 每個訂用帳戶的接收者數目很少。
+目標：最大化具有幾個訂用帳戶之主題的輸送量。 許多訂用帳戶收到一則訊息，表示所有訂用帳戶的合併接收速率高於傳送速率。 傳送者的數目很少。 每個訂用帳戶的接收者數目很少。
 
 若要將輸送量最大化，請遵循下列指導方針：
 

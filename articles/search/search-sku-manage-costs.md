@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: a708fb76b5a3d0fd0683cdb8915d1a5e1824a57c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251663"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539560"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>如何預估和管理 Azure 認知搜尋服務的成本
 
@@ -25,7 +25,12 @@ Azure 認知搜尋中的擴充性架構是以彈性的複本和資料分割組�
 
 搜尋服務所使用的資源數量乘以服務層所建立的計費費率，會決定執行服務的成本。 成本和容量會緊密地系結。 估計成本時，瞭解執行索引和查詢工作負載所需的容量，可讓您最好瞭解預計的成本。
 
-基於計費目的，認知搜尋具有 *搜尋單位* (SU) 的概念。 SU 是服務 *所用**複本* 和資料分割的乘積： **(R x P = SU)**。 SU 數目乘以計費費率 **(SU * rate = 每月費用)** 是搜尋相關成本的主要行列式。 
+基於計費目的，有兩個簡單的公式要注意：
+
+| Formula | 描述 |
+|---------|-------------|
+| **R x P = SU** | 使用的複本數目乘以使用的資料分割數目，等於服務所使用的 *搜尋單位* 數量 (SU) 。 SU 是資源的單位，它可以是分割區或複本。 |
+| **SU * 帳單費率 = 每月費用** | Su 乘以您布建服務之階層的計費費率，是整體每月帳單的主要行列式。 某些功能或工作負載相依于其他 Azure 服務，這可能會增加您解決方案在訂用帳戶層級的成本。 下列可計費事件區段會識別可新增至帳單的功能。 |
 
 每個服務都以一個 SU (一個複本乘以一個分割區) 作為最小值。 任何服務的最大值為 36 su。 您可以透過多種方式來達到此上限：6個分割區 x 6 個複本，或3個分割區 x 12 個複本（例如）。 使用的容量通常會低於總容量 (例如，3個複本、3個分割區服務，以9個 SUs) 計費。 請參閱 [分割區和複本組合](search-capacity-planning.md#chart) 圖表，以取得有效的組合。
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 327dce053c38fdb7b03e7ceb0d7a62ec8b8e7248
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 87af99d5136a8bed93854e9396895cddeb22549a
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96992991"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540468"
 ---
 ## <a name="download-and-install"></a>下載並安裝
 
@@ -59,11 +59,11 @@ ms.locfileid: "96992991"
 
 1. 為您的平台<a href="https://www.docker.com/get-started" target="_blank">安裝 Docker Desktop<span class="docon docon-navigate-external x-hidden-focus"></span></a> (如果尚未安裝)。
 2. 在新的命令提示字元或終端機中，輸入下列命令：
-   ```shell   
+   ```console   
    docker pull msftspeech/spx
    ```
 3. 輸入此命令。 您應該會看到語音 CLI 的說明資訊：
-   ```shell 
+   ```console 
    docker run -it --rm msftspeech/spx help
    ```
 
@@ -93,27 +93,27 @@ pwd
 
 在 Windows 上，命令的開頭會如下所示：
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
 在 Linux 或 macOS 上，您的命令看起來會如下列範例所示。 以掛接目錄的絕對路徑取代 `ABSOLUTE_PATH`。 上一節的 `pwd` 命令已傳回此路徑。 
 
 如果您在設定金鑰和區域之前執行此命令，則會收到錯誤，告知您要設定金鑰和區域：
-```shell   
+```console   
 sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 ```
 
 若要使用容器中安裝的 `spx` 命令，請一律輸入如上所示的完整命令，後面接著您的要求參數。
 例如，在 Windows 上，此命令會設定您的金鑰：
 
-```shell
+```console
 docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
 ```
 
 若要使用命令列工具進行更多延伸的互動，您可以藉由新增 entrypoint 參數來啟動具有互動式 Bash 殼層的容器。
 在 Windows 上，輸入此命令來啟動會公開互動式命令列介面的容器，您可以在其中輸入多個 `spx` 命令：
-```shell
+```console
 docker run -it --entrypoint=/bin/bash -v c:\spx-data:/data --rm msftspeech/spx
 ```
 
@@ -160,7 +160,7 @@ Follow these instructions to create a shortcut:
 若要開始使用語音 CLI，您必須輸入語音訂用帳戶金鑰和區域識別碼。 請依照[免費試用語音服務](../overview.md#try-the-speech-service-for-free)中的步驟，來取得這些認證。
 一旦您擁有訂用帳戶金鑰和區域識別碼 (例如， `eastus`、`westus`)，請執行下列命令。
 
-```shell
+```console
 spx config @key --set SUBSCRIPTION-KEY
 spx config @region --set REGION
 ```

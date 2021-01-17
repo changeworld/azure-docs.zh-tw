@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 12/16/2020
+ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 9318ea9d811f2fd490ed6e796b9719c5c482d513
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: 36f266a8402721dffecc9e80c4f769bd51b0e172
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707634"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539096"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
@@ -32,11 +32,11 @@ ms.locfileid: "97707634"
 | [Microsoft.MarketplaceOrdering](#microsoftmarketplaceordering) |
 | [Microsoft.ResourceHealth](#microsoftresourcehealth) |
 | [Microsoft 支援](#microsoftsupport) |
-| **計算** |
+| **Compute** |
 | [Microsoft.ClassicCompute](#microsoftclassiccompute) |
 | [Microsoft.Compute](#microsoftcompute) |
 | [Microsoft.ServiceFabric](#microsoftservicefabric) |
-| **網路功能** |
+| **網路** |
 | [Microsoft.Cdn](#microsoftcdn) |
 | [Microsoft.ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
@@ -80,6 +80,7 @@ ms.locfileid: "97707634"
 | [Microsoft.HDInsight](#microsofthdinsight) |
 | [Microsoft.Kusto](#microsoftkusto) |
 | [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated) |
+| [Microsoft.Purview](#microsoftpurview) |
 | [Microsoft.StreamAnalytics](#microsoftstreamanalytics) |
 | **區塊鏈** |
 | [Microsoft.Blockchain](#microsoftblockchain) |
@@ -88,7 +89,7 @@ ms.locfileid: "97707634"
 | [Microsoft.CognitiveServices](#microsoftcognitiveservices) |
 | [Microsoft.MachineLearning](#microsoftmachinelearning) |
 | [Microsoft.MachineLearningServices](#microsoftmachinelearningservices) |
-| **物聯網** |
+| **Internet of things** |
 | [Microsoft.Devices](#microsoftdevices) |
 | [Microsoft.IoTCentral](#microsoftiotcentral) |
 | [Microsoft.NotificationHubs](#microsoftnotificationhubs) |
@@ -144,6 +145,7 @@ ms.locfileid: "97707634"
 | [Microsoft.Features](#microsoftfeatures) |
 | [Microsoft.GuestConfiguration](#microsoftguestconfiguration) |
 | [Microsoft.HybridCompute](#microsofthybridcompute) |
+| [Microsoft.Kubernetes](#microsoftkubernetes) |
 | [Microsoft.ManagedServices](#microsoftmanagedservices) |
 | [Microsoft.Management](#microsoftmanagement) |
 | [Microsoft.PolicyInsights](#microsoftpolicyinsights) |
@@ -402,6 +404,12 @@ Azure 服務： [虛擬機器](../virtual-machines/index.yml)、 [虛擬機器�
 > | Microsoft.Compute/availabilitySets/write | 建立新的可用性設定組，或更新現有的可用性設定組 |
 > | Microsoft.Compute/availabilitySets/delete | 刪除可用性設定組 |
 > | Microsoft.Compute/availabilitySets/vmSizes/read | 列出在可用性設定組中建立或更新虛擬機器時可以使用的大小 |
+> | Microsoft. Compute/capacityReservationGroups/read | 取得容量保留群組的屬性 |
+> | Microsoft. Compute/capacityReservationGroups/write | 建立新的容量保留群組，或更新現有的容量保留群組 |
+> | Microsoft. Compute/capacityReservationGroups/delete | 刪除容量保留群組 |
+> | Microsoft. Compute/capacityReservationGroups/capacityReservations/read | 取得容量保留的屬性 |
+> | Microsoft. Compute/capacityReservationGroups/capacityReservations/write | 建立新的容量保留，或更新現有的容量保留 |
+> | Microsoft. Compute/capacityReservationGroups/capacityReservations/delete | 刪除容量保留 |
 > | Microsoft. Compute/cloudServices/read | 取得 CloudService 的屬性。 |
 > | Microsoft. Compute/cloudServices/write | 建立新的 CloudService 或更新現有的。 |
 > | Microsoft. Compute/cloudServices/delete | 刪除 CloudService。 |
@@ -600,7 +608,7 @@ Azure 服務： [虛擬機器](../virtual-machines/index.yml)、 [虛擬機器�
 > | Microsoft. Compute/virtualMachineScaleSets/virtualMachines/runCommands/write | 為虛擬機器擴展集中的虛擬機器建立新的執行命令，或更新現有的執行命令 |
 > | Microsoft. Compute/virtualMachineScaleSets/virtualMachines/runCommands/delete | 刪除虛擬機器擴展集中虛擬機器的 run 命令 |
 > | Microsoft. Compute/virtualMachineScaleSets/Vmsize/read | 列出在虛擬機器擴展集中建立或更新虛擬機器的可用大小 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Compute/virtualMachines/login/action | 以一般使用者身分登入虛擬機器 |
 > | Microsoft.Compute/virtualMachines/loginAsAdmin/action | 以 Windows 系統管理員或 Linux 根使用者權限登入虛擬機器 |
 
@@ -638,7 +646,7 @@ Azure 服務： [Service Fabric](../service-fabric/index.yml)
 > | Microsoft.ServiceFabric/locations/operations/read | 依位置讀取任何作業 |
 > | Microsoft.ServiceFabric/operations/read | 讀取任何可用的作業 |
 
-## <a name="networking"></a>網路功能
+## <a name="networking"></a>網路
 
 ### <a name="microsoftcdn"></a>Microsoft.Cdn
 
@@ -1441,7 +1449,7 @@ Azure 服務： [Azure 資料箱](../databox/index.yml)
 > | 資料箱/位置/availableSkus/讀取 | 列出或取得可用的 Sku |
 > | Microsoft.DataBox/locations/operationResults/read | 列出或取得作業結果 |
 > | 資料箱/operations/read | 列出或取得作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.DataBox/register/action | 註冊提供者 Microsoft.Databox |
 > | 資料箱/取消註冊/動作 | Un-Register 提供者資料箱 |
 > | Microsoft.DataBox/jobs/cancel/action | 取消進行中的訂單。 |
@@ -1504,7 +1512,6 @@ Azure 服務： [Azure NetApp Files](../azure-netapp-files/index.yml)
 > | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/AuthorizeReplication/動作 | 授權來源磁片區複寫 |
 > | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/ResyncReplication/動作 | 重新同步處理目的地磁片區上的複寫 |
 > | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/DeleteReplication/動作 | 刪除目的地磁片區上的複寫 |
-> | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/InternalAction/動作 | 資源的內部作業。 |
 > | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/備份/讀取 | 讀取備份資源。 |
 > | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/備份/寫入 | 寫入備份資源。 |
 > | Microsoft NetApp/netAppAccounts/capacityPools/磁片區/備份/刪除 | 刪除備份資源。 |
@@ -1558,6 +1565,7 @@ Azure 服務： [儲存體](../storage/index.yml)
 > | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | 傳回 Blob 服務的使用者委派金鑰 |
 > | Microsoft.Storage/storageAccounts/blobServices/write | 傳回放置 Blob 服務屬性的結果 |
 > | Microsoft.Storage/storageAccounts/blobServices/read | 傳回 Blob 服務屬性或統計資料 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/write | 傳回修補 Blob 容器的結果 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | 傳回刪除容器的結果 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | 傳回容器 |
@@ -1571,6 +1579,8 @@ Azure 服務： [儲存體](../storage/index.yml)
 > | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/write | 放置 Blob 容器不變性原則 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/lock/action | 鎖定 Blob 容器不變性原則 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/immutabilityPolicies/read | 取得 Blob 容器不變性原則 |
+> | Microsoft. Storage/storageAccounts/consumerDataSharePolicies/read |  |
+> | Microsoft. Storage/storageAccounts/consumerDataSharePolicies/write |  |
 > | Microsoft. Storage/storageAccounts/dataSharePolicies/delete |  |
 > | Microsoft. Storage/storageAccounts/dataSharePolicies/read |  |
 > | Microsoft. Storage/storageAccounts/dataSharePolicies/read |  |
@@ -1632,7 +1642,7 @@ Azure 服務： [儲存體](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/tableServices/tables/read |  |
 > | Microsoft. Storage/storageAccounts/tableServices/tables/write |  |
 > | Microsoft.Storage/usages/read | 傳回指定訂用帳戶資源的限制和目前的使用量計數 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 傳回 Blob 或 Blob 清單 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | 傳回寫入 Blob 的結果 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 傳回刪除 Blob 的結果 |
@@ -1965,7 +1975,7 @@ Azure 服務： [Azure 地圖服務](../azure-maps/index.yml)
 > | Microsoft. Maps/accounts/privateAtlases/read | 取得私人的塔。 |
 > | Microsoft. Maps/accounts/privateAtlases/delete | 刪除私人的塔。 |
 > | Microsoft. Maps/operations/read | 讀取提供者作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft. Maps/accounts/services/data/read | 允許讀取資料上傳服務和私用的資料。 |
 > | Microsoft. Maps/accounts/services/data/delete | 允許刪除資料上傳服務和私用的資料 |
 > | Microsoft. Maps/accounts/services/data/write | 允許寫入或更新資料上傳服務和私用的資料。 |
@@ -2148,7 +2158,7 @@ Azure 服務： [Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/write | 核准或拒絕私人端點連線 |
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/read | 讀取私人端點連線 |
 > | Microsoft.signalrservice/SignalR/privateLinkResources/read | 列出所有 SignalR Private Link 資源 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.signalrservice/SignalR/auth/accessKey/action | 產生暫時 AccessKey 來簽署 ClientTokens。 |
 > | Microsoft.signalrservice/SignalR/auth/clientToken/action | 產生用來啟動用戶端連接的 ClientToken。 |
 > | Microsoft.signalrservice/SignalR/clientConnection/send/action | 將訊息直接傳送至用戶端連接。 |
@@ -2253,6 +2263,10 @@ Azure 服務： [App Service](../app-service/index.yml)、 [Azure Functions](../
 > | microsoft.web/hostingenvironments/multirolepools/usages/read | 取得裝載環境 MultiRole 集區使用量。 |
 > | microsoft.web/hostingenvironments/operations/read | 取得裝載環境作業。 |
 > | microsoft.web/hostingenvironments/outboundnetworkdependenciesendpoints/read | 取得所有輸出相依性的網路端點。 |
+> | Microsoft Web/hostingEnvironments/privateEndpointConnections/Write | 核准或拒絕私人端點連接。 |
+> | Microsoft Web/hostingEnvironments/privateEndpointConnections/Read | 取得私人端點連線或私人端點連接清單。 |
+> | Microsoft Web/hostingEnvironments/privateEndpointConnections/Delete | 刪除私人端點連接。 |
+> | Microsoft Web/hostingEnvironments/privateLinkResources/Read | 取得 Private Link 資源。 |
 > | microsoft.web/hostingenvironments/serverfarms/read | 取得裝載環境 App Service 方案。 |
 > | microsoft.web/hostingenvironments/sites/read | 取得裝載環境 Web Apps。 |
 > | microsoft.web/hostingenvironments/usages/read | 取得裝載環境使用量。 |
@@ -2265,6 +2279,11 @@ Azure 服務： [App Service](../app-service/index.yml)、 [Azure Functions](../
 > | microsoft.web/ishostingenvironmentnameavailable/read | 取得裝載環境名稱是否可供使用。 |
 > | microsoft.web/ishostnameavailable/read | 檢查主機名稱是否可供使用。 |
 > | microsoft.web/isusernameavailable/read | 檢查使用者名稱是否可供使用。 |
+> | Microsoft Web/kubeEnvironments/read | 取得 Kubernetes 環境的屬性 |
+> | Microsoft Web/kubeEnvironments/write | 建立 Kubernetes 環境或更新現有環境 |
+> | Microsoft. Web/kubeEnvironments/delete | 刪除 Kubernetes 環境 |
+> | Microsoft Web/kubeEnvironments/join/action | 加入 Kubernetes 環境 |
+> | Microsoft Web/kubeEnvironments/operations/read | 取得 Kubernetes 環境的作業 |
 > | Microsoft.Web/listSitesAssignedToHostName/Read | 取得指派給主機名稱之網站的名稱。 |
 > | microsoft.web/locations/extractapidefinitionfromwsdl/action | 針對位置從 WSDL 中擷取 API 定義。 |
 > | microsoft.web/locations/listwsdlinterfaces/action | 列出適用於位置的 WSDL 介面。 |
@@ -2651,6 +2670,10 @@ Azure 服務： [App Service](../app-service/index.yml)、 [Azure Functions](../
 > | Microsoft Web/staticSites/customdomains/Read | 列出靜態網站的自訂網域 |
 > | Microsoft. Web/staticSites/customdomains/validate/Action | 驗證自訂網域可以新增至靜態網站 |
 > | Microsoft Web/staticSites/函數/Read | 列出靜態網站的功能 |
+> | Microsoft Web/staticSites/privateEndpointConnections/Write | 核准或拒絕靜態網站的私人端點連線 |
+> | Microsoft Web/staticSites/privateEndpointConnections/Read | 取得私人端點連線或靜態網站的私人端點連接清單 |
+> | Microsoft Web/staticSites/privateEndpointConnections/Delete | 刪除靜態網站的私人端點連接 |
+> | Microsoft Web/staticSites/privateLinkResources/Read | 取得 Private Link 資源 |
 
 ## <a name="containers"></a>容器
 
@@ -2817,7 +2840,7 @@ Azure 服務： [Azure Kubernetes Service (AKS) ](../aks/index.yml)
 > | Microsoft.ContainerService/openShiftManagedClusters/write | 建立新的或更新現有的 Open Shift 受控叢集 |
 > | Microsoft.ContainerService/openShiftManagedClusters/delete | 刪除 Open Shift 受控叢集 |
 > | Microsoft.ContainerService/operations/read | 列出 Microsoft.ContainerService 資源提供者的可用作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/read | 讀取 initializerconfigurations |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/write | 寫入 initializerconfigurations |
 > | >microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/delete | 刪除/DeletesCollection initializerconfigurations 資源 |
@@ -3271,6 +3294,8 @@ Azure 服務： [Data Factory](../data-factory/index.yml)
 > | Microsoft.DataFactory/factories/integrationruntimes/linkedIntegrationRuntime/action | 在指定的共用 Integration Runtime 上建立連結的 Integration Runtime 參考。 |
 > | Microsoft.DataFactory/factories/integrationruntimes/getObjectMetadata/action | 取得所指定 Integration Runtime 的 SSIS Integration Runtime 中繼資料。 |
 > | Microsoft.DataFactory/factories/integrationruntimes/refreshObjectMetadata/action | 重新整理所指定 Integration Runtime 的 SSIS Integration Runtime 中繼資料。 |
+> | DataFactory/factory/integrationruntimes/enableInteractiveQuery/action | 啟用互動式撰寫會話。 |
+> | DataFactory/factory/integrationruntimes/disableInteractiveQuery/action | 停用互動式撰寫會話。 |
 > | Microsoft.DataFactory/factories/integrationruntimes/getstatus/read | 讀取 Integration Runtime 狀態。 |
 > | Microsoft.DataFactory/factories/integrationruntimes/monitoringdata/read | 取得任何 Integration Runtime 的監視資料。 |
 > | Microsoft.DataFactory/factories/integrationruntimes/nodes/read | 讀取所指定 Integration Runtime 的節點。 |
@@ -3317,6 +3342,8 @@ Azure 服務： [Data Factory](../data-factory/index.yml)
 > | DataFactory/factory/觸發程式/subscribetoevents/動作 | 訂閱事件。 |
 > | DataFactory/factory/觸發程式/geteventsubscriptionstatus/動作 | 事件訂閱狀態。 |
 > | DataFactory/factory/觸發程式/unsubscribefromevents/動作 | 取消訂閱事件。 |
+> | DataFactory/factory/觸發程式/querysubscriptionevents/動作 | 查詢訂閱事件。 |
+> | DataFactory/factory/觸發程式/deletequeuedsubscriptionevents/動作 | 刪除佇列的訂閱事件。 |
 > | Microsoft.DataFactory/factories/triggers/start/action | 啟動任何觸發程序。 |
 > | Microsoft.DataFactory/factories/triggers/stop/action | 停止任何觸發程序。 |
 > | Microsoft.DataFactory/factories/triggers/triggerruns/read | 讀取觸發程序執行。 |
@@ -4548,7 +4575,7 @@ Azure 服務： [事件中樞](../event-hubs/index.yml)
 > | Microsoft.EventHub/operations/read | 取得作業 |
 > | Microsoft.EventHub/sku/read | 取得 SKU 資源描述的清單 |
 > | Microsoft.EventHub/sku/regions/read | 取得 SkuRegions 資源描述的清單 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft EventHub/命名空間/訊息/傳送/動作 | 傳送訊息 |
 > | Microsoft EventHub/命名空間/訊息/接收/動作 | 接收訊息 |
 > | Microsoft EventHub/命名空間/架構/讀取 | 取出架構 |
@@ -4663,6 +4690,38 @@ Azure 服務： [Power BI Embedded](/azure/power-bi-embedded/)
 > | Microsoft.PowerBIDedicated/operations/read | 擷取作業的資訊 |
 > | Microsoft.PowerBIDedicated/skus/read | 擷取 SKU 的資訊 |
 
+### <a name="microsoftpurview"></a>Microsoft.Purview
+
+Azure 服務： [Azure 範疇](../purview/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | 範疇/註冊/動作 | 註冊 Microsoft 範疇提供者的訂用帳戶。 |
+> | 範疇/取消註冊/動作 | 取消註冊 Microsoft 範疇提供者的訂用帳戶。 |
+> | 範疇/setDefaultAccount/action | 設定範圍的預設帳戶。 |
+> | 範疇/帳戶/讀取 | 讀取 Microsoft 範疇提供者的帳戶資源。 |
+> | Microsoft. 範疇/accounts/write | 為 Microsoft 範疇提供者撰寫帳戶資源。 |
+> | 範疇/帳戶/刪除 | 刪除 Microsoft 範疇提供者的帳戶資源。 |
+> | Microsoft. 範疇/accounts/move/action | 移動 Microsoft 範疇提供者的帳戶資源。 |
+> | 範疇/accounts/PrivateEndpointConnectionsApproval/action | 核准私人端點連接。 |
+> | 範疇/accounts/privateEndpointConnectionProxies/read | 讀取帳戶私人端點連線 Proxy。 |
+> | 範疇/accounts/privateEndpointConnectionProxies/write | 寫入帳戶私人端點連線 Proxy。 |
+> | 範疇/accounts/privateEndpointConnectionProxies/delete | 刪除帳戶私人端點連線 Proxy。 |
+> | 範疇/accounts/privateEndpointConnectionProxies/validate/action | 驗證帳戶私人端點連線 Proxy。 |
+> | 範疇/accounts/privateEndpointConnectionProxies/operationResults/read | 監視私人端點連接 Proxy 非同步作業。 |
+> | 範疇/accounts/privateEndpointConnections/read | 讀取私人端點連接。 |
+> | 範疇/accounts/privateEndpointConnections/write | 建立或更新私人端點連接。 |
+> | 範疇/accounts/privateEndpointConnections/delete | 刪除私人端點連接。 |
+> | 範疇/getDefaultAccount/read | 取得範圍的預設帳戶。 |
+> | 範疇/位置/operationResults/讀取 | 監視非同步作業。 |
+> | 範疇/operations/read | 讀取 Microsoft 範疇提供者的所有可用作業。 |
+> | **DataAction** | **描述** |
+> | 範疇/accounts/data/read | 讀取資料物件。 |
+> | Microsoft 範疇/accounts/data/write | 建立、更新和刪除資料物件。 |
+> | 範疇/帳戶/掃描/讀取 | 讀取資料來源和掃描。 |
+> | 範疇/帳戶/掃描/寫入 | 建立、更新和刪除資料來源，以及管理掃描。 |
+
 ### <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 
 Azure 服務： [串流分析](../stream-analytics/index.yml)
@@ -4731,7 +4790,7 @@ Azure 服務： [Azure 區塊鏈服務](../blockchain/workbench/index.yml)
 > | 區塊鏈/位置/checkNameAvailability/動作 | 檢查資源名稱是否有效且不在使用中。 |
 > | 區塊鏈/位置/blockchainMemberOperationResults/讀取 | 取得區塊鏈成員的作業結果。 |
 > | 區塊鏈/operations/read | 列出 Microsoft 區塊鏈資源提供者中的所有作業。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | 連線至區塊鏈成員交易節點。 |
 
 ## <a name="ai--machine-learning"></a>AI + 機器學習
@@ -4813,7 +4872,7 @@ Azure 服務： [認知服務](../cognitive-services/index.yml)
 > | CognitiveServices/位置/deleteVirtualNetworkOrSubnets/動作 | 正在刪除 VirtualNetworks 或子網的 Microsoft 通知。 |
 > | CognitiveServices/位置/operationresults/讀取 | 讀取非同步作業的狀態。 |
 > | Microsoft.CognitiveServices/Operations/read | 列出所有可用的作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/changepoint/偵測/action | 這項作業會使用整個數列產生模型，且每個點都會使用相同的模型來偵測。<br>使用這個方法時，會使用特定點前後的點來判斷它是否為趨勢變更點。<br>整個偵測可以偵測到時間序列的所有趨勢變更點。 |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/整個/偵測/動作 | 這項作業會使用整個數列產生模型，且每個點都會使用相同的模型來偵測。<br>使用這個方法時，會使用特定點前後的點來判斷它是否為異常。<br>整個偵測可為使用者提供時間序列的整體狀態。 |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/last/偵測/action | 這項作業會使用最新的點來產生模型。 使用這個方法時，只有歷程記錄點會用來判斷目標點是否為異常。 偵測到的最新點會符合即時監視商務計量的案例。 |
@@ -4828,8 +4887,8 @@ Azure 服務： [認知服務](../cognitive-services/index.yml)
 > | CognitiveServices/accounts/ComputerVision/偵測/動作 | 此作業會在指定的映射上執行物件偵測。  |
 > | CognitiveServices/accounts/ComputerVision/模型/讀取 | 這項作業會傳回電腦視覺 API 所支援的特定領域模型清單。  目前，API 支援下列特定領域模型：名人辨識器、地標辨識器。 |
 > | CognitiveServices/accounts/ComputerVision/模型/分析/動作 | 這項作業會套用特定領域的模型，以辨識影像中的內容。<br> 您可以使用/models GET 要求來抓取電腦視覺 API 所支援的特定領域模型清單。<br> 目前，API 提供下列特定領域模型：名人、地標。 |
-> | CognitiveServices/accounts/ComputerVision/read/分析/動作 | 您可以使用此介面來執行讀取作業，採用最先進的光學字元辨識 (OCR) 演算法針對大量文字檔進行優化。<br>它可以處理手寫、列印或混合檔。<br>當您使用讀取介面時，回應會包含名為「作業-位置」的標頭。<br>「作業-位置」標頭包含您必須用於「取得讀取」結果作業以存取 OCR 結果的 URL。 |
-> | CognitiveServices/accounts/ComputerVision/read/analyzeresults/read | 您可以使用此介面來取得讀取作業的狀態和 OCR 結果。  讀取作業的 ' Operation-Location ' 回應標頭中會傳回包含 ' operationId ' 的 URL。 |
+> | CognitiveServices/accounts/ComputerVision/read/分析/動作 | 您可以使用此介面來執行讀取作業，採用最先進的光學字元辨識 (OCR) 演算法針對大量文字檔進行優化。<br>它可以處理手寫、列印或混合檔。<br>當您使用讀取介面時，回應會包含名為「作業-位置」的標頭。<br>「作業位置」標頭包含您必須用於取得讀取結果作業以存取 OCR 結果的 URL。 * |
+> | CognitiveServices/accounts/ComputerVision/read/analyzeresults/read | 您可以使用此介面來取得讀取作業的狀態和 OCR 結果。  讀取作業的 ' Operation-Location ' 回應標頭中會傳回包含 ' operationId ' 的 URL。 * |
 > | CognitiveServices/accounts/ComputerVision/read/core/asyncbatchanalyze/action | 使用此介面來取得批次讀取檔案作業的結果，並採用最先進的光學字元 |
 > | CognitiveServices/accounts/ComputerVision/read/operations/read | 這個介面是用來取得讀取作業的 OCR 結果。 您應從批次讀取檔介面所傳回的 <b>[作業-位置]</b> 欄位中，取出此介面的 URL。 |
 > | CognitiveServices/accounts/ComputerVision/textoperations/read | 這個介面是用來取得辨識文字作業結果。 您應從辨識文字介面所傳回的 <b>[作業-位置]</b> 欄位中，抓取此介面的 URL。 |
@@ -5099,6 +5158,126 @@ Azure 服務： [認知服務](../cognitive-services/index.yml)
 > | CognitiveServices/accounts/ImmersiveReader/getcontentmodelforreader/action | 建立沈浸式閱讀程式會話 |
 > | CognitiveServices/accounts/InkRecognizer/辨識/動作 | 假設有一組筆觸資料會分析內容，並產生可辨識的實體清單，包括已辨識的文字。 |
 > | CognitiveServices/accounts/LUIS/predict/action | 取得指定查詢的已發行端點預測。 |
+> | CognitiveServices/accounts/LUIS/apps/write | 建立新的 LUIS 應用程式。 更新應用程式的名稱或描述。 |
+> | CognitiveServices/accounts/LUIS/apps/azureaccounts/action | 將 Azure 帳戶指派給應用程式。 |
+> | CognitiveServices/accounts/LUIS/apps/delete | 刪除應用程式。 |
+> | CognitiveServices/accounts/LUIS/apps/read | 取得應用程式資訊。 列出所有使用者應用程式。 |
+> | CognitiveServices/accounts/LUIS/apps/import/action | 將應用程式匯入至 LUIS，應用程式的 JSON 應該包含在要求主體中。 傳回新的應用程式識別碼。 |
+> | CognitiveServices/accounts/LUIS/apps/publish/action | 發佈應用程式的特定版本。 |
+> | CognitiveServices/accounts/LUIS/apps/querylogsasync/action | 針對應用程式的上個月的查詢記錄，啟動下載要求。 |
+> | CognitiveServices/accounts/LUIS/apps/azureaccounts/read | 使用他的 Azure Resource Manager 權杖，取得為使用者指派給應用程式的 LUIS Azure 帳戶。 |
+> | CognitiveServices/accounts/LUIS/apps/azureaccounts/delete | 使用他的 Azure Resource Manager 權杖，取得使用者的 LUIS Azure 帳戶。 |
+> | CognitiveServices/accounts/LUIS/apps/文化特性/讀取 | 取得支援的 LUIS 應用程式文化特性。 |
+> | CognitiveServices/accounts/LUIS/apps/customprebuiltdomains/write | 新增預建網域及其模型作為新的應用程式。 傳回新的應用程式識別碼。 |
+> | CognitiveServices/accounts/LUIS/apps/customprebuiltdomains/read | 取得特定文化特性的所有可用自訂預建網域，取得所有文化特性的所有可用自訂預建網域 |
+> | CognitiveServices/accounts/LUIS/apps/網域/讀取 | 取得可用的應用程式域。 |
+> | CognitiveServices/accounts/LUIS/apps/端點/read | 傳回可用的端點部署區域和 url |
+> | CognitiveServices/accounts/LUIS/apps/.publishsettings/read | 取得應用程式的發行設定。 |
+> | CognitiveServices/accounts/LUIS/apps/.publishsettings/write | 更新應用程式發行設定。 |
+> | CognitiveServices/accounts/LUIS/apps/querylogs/read | 取得應用程式過去一個月的查詢記錄。 |
+> | CognitiveServices/accounts/LUIS/apps/querylogsasync/read | 取得查詢記錄檔下載要求的狀態。 |
+> | CognitiveServices/accounts/LUIS/apps/settings/read | 取得應用程式設定 |
+> | CognitiveServices/accounts/LUIS/apps/settings/write | 更新應用程式設定 |
+> | CognitiveServices/accounts/LUIS/apps/usagescenarios/read | 取得應用程式可用的使用案例。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/訓練/動作 | 針對某個版本的指定 LUIS 應用程式傳送定型要求。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/clone/action | 建立新的應用程式版本，相當於所選應用程式版本的目前快照集。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/刪除 | 刪除應用程式版本。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/讀取 | 取得應用程式版本資訊。 取得應用程式版本清單的資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/匯入/動作 | 將新版本匯入 LUIS 應用程式中，版本的 JSON 應該包含在要求主體中。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/寫入 | 更新應用程式版本的名稱或描述。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/closedlists/write | 將清單實體新增至 LUIS 應用程式。 將清單子批次新增至現有的 closedlist。 * 更新已關閉的清單模型。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/closedlists/delete | 從應用程式刪除已關閉的清單實體。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/closedlists/read | 取得封閉清單模型的資訊。 取得 closedlist 模型的相關資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/closedlists/role/write | 加入隱藏清單實體模型的角色會更新封閉式清單實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/closedlists/角色/刪除 | 刪除封閉清單實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/closedlists/role/read | 取得封閉清單實體模型的角色。 取得封閉清單實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/closedlists/清單子/write | 將清單新增至現有的已關閉清單會更新其中一個已關閉清單的清單子 |
+> | CognitiveServices/accounts/LUIS/apps/版本/closedlists/清單子/delete | 刪除指定清單實體的子清單。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/compositeentities/write | 將複合實體解壓縮程式新增至應用程式。 更新複合實體解壓縮程式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/compositeentities/delete | 從應用程式版本刪除複合實體解壓縮程式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/compositeentities/read | 取得複合實體模型的相關資訊。 取得應用程式版本之複合實體模型的相關資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/compositeentities/子女/write | 在現有的複合實體模型中加入單一子系。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/compositeentities/子女/delete | 從應用程式版本刪除複合實體解壓縮程式子系。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/compositeentities/role/write | 加入複合實體模型的角色。 更新複合實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/compositeentities/角色/刪除 | 刪除複合實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/compositeentities/role/read | 取得複合實體模型的角色。 取得複合實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/customprebuiltdomains/write | 將可自訂的預建網域及其所有模型加入此應用程式版本。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/customprebuiltdomains/delete | 從應用程式版本中刪除預建網域的模型。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/customprebuiltentities/write | 將自訂預建網域實體模型加入至應用程式版本。 使用 [刪除實體](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c1f) 與實體識別碼來移除此實體。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/customprebuiltentities/read | 取得此應用程式版本的所有自訂預建網域實體資訊 |
+> | CognitiveServices/accounts/LUIS/apps/版本/customprebuiltentities/role/write | 加入自訂預建網域實體模型的角色會更新自訂預建網域實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/customprebuiltentities/角色/刪除 | 刪除自訂預建實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/customprebuiltentities/role/read | 取得自訂預建網域實體模型的角色。 取得自訂預建網域實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/customprebuiltintents/write | 將自訂預建網域意圖模型新增至應用程式。 使用具有意圖識別碼的 [delete 意圖](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c1c) 來移除此意圖。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/customprebuiltintents/read | 取得此應用程式版本的自訂預先建立意圖資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/customprebuiltmodels/read | 取得此應用程式版本的所有自訂預建網域模型資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/實體/寫入 | 將簡單的實體解壓縮程式新增至應用程式版本。 更新實體解壓縮程式的名稱。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/實體/刪除 | 從應用程式版本中刪除簡單的實體解壓縮程式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/實體/讀取 | 取得簡單實體模型的相關資訊。 取得應用程式版本中簡單實體模型的相關資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/實體/角色/寫入 | 新增簡單實體模型的角色會更新簡單實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/實體/角色/刪除 | 刪除簡單實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/實體/角色/讀取 | 取得簡單實體模型的角色。 取得簡單實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/實體/建議/讀取 | 建議可改善實體模型精確度的範例。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/範例/write | 將加上標籤的範例新增至應用程式版本。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/範例/撰寫 | 將一批未重複標記的範例新增至指定的應用程式。 Batch 不能包含階層式子系實體。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/範例/刪除 | 刪除具有指定識別碼的標籤。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/範例/讀取 | 傳回要檢查的端點範例子集。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/匯出/讀取 | 將 LUIS 應用程式版本匯出為 JSON 格式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/功能/讀取 | 取得所有應用程式版本功能。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/hierarchicalentities/write | 將階層式實體解壓縮程式新增至應用程式版本。 更新階層式實體解壓縮程式模型的名稱和子系。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/hierarchicalentities/delete | 從應用程式版本刪除階層式實體解壓縮程式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/hierarchicalentities/read | 取得階層式實體模型的相關資訊。 取得應用程式版本中階層式實體模型的相關資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/hierarchicalentities/子女/write | 在現有的階層式實體模型中建立單一子系。 重新命名現有階層式實體模型中的單一子系。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/hierarchicalentities/子女/delete | 從應用程式版本刪除階層式實體解壓縮程式子系。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/hierarchicalentities/子女/read | 取得階層式實體子模型的相關資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/hierarchicalentities/role/write | 新增階層式實體模型的角色會更新階層式實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/hierarchicalentities/角色/刪除 | 刪除階層式實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/hierarchicalentities/role/read | 取得階層式實體模型的角色。 取得階層式實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/意圖/寫入 | 將意圖分類器新增至應用程式版本。 更新意圖分類器的名稱。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/意圖/刪除 | 從應用程式版本刪除意圖分類器。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/意圖/讀取 | 取得意圖模型的相關資訊。 取得應用程式版本中意圖模型的相關資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/意圖/patternrules/read | 取得特定意圖的模式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/意圖/建議/讀取 | 建議可改善意圖模型精確度的範例。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/listprebuilts/read | 根據應用程式的文化特性，取得應用程式的所有可用預建實體。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/模型/讀取 | 取得應用程式版本模型的相關資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternanyentities/write | 新增模式。任何實體解壓縮程式至應用程式版本。 更新模式。任何實體解壓縮程式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternanyentities/delete | 刪除模式。應用程式版本中的任何實體解壓縮程式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternanyentities/read | 取得模式的相關資訊。任何實體模型。 取得模式的相關資訊。應用程式版本中的任何實體模型。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternanyentities/explicitlist/write | 將專案加入至模式。任何明確的清單。 更新模式的明確清單專案。任何實體模型。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternanyentities/explicitlist/delete | 從模式刪除專案。任何明確的清單。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternanyentities/explicitlist/read | 取得模式的明確清單。任何實體模型。 取得模式的明確清單專案。任何實體模型。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternanyentities/role/write | 加入模式的角色。任何實體模型都會更新模式的角色。任何實體模型。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternanyentities/角色/刪除 | 刪除模式的角色。任何實體模型。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternanyentities/role/read | 取得模式的角色。任何實體模型。 取得模式的角色。任何實體模型。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternrule/write | 將模式新增至指定的應用程式版本。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternrules/write | 將模式清單新增至應用程式版本。 更新應用程式版本中的模式。 更新應用程式版本中的模式清單。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternrules/delete | 從應用程式版本刪除模式清單。 從應用程式版本刪除模式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/patternrules/read | 取得應用程式版本中的模式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/模式/寫入 | **此 API 已被取代。** |
+> | CognitiveServices/accounts/LUIS/apps/版本/模式/刪除 | **此 API 已被取代。** |
+> | CognitiveServices/accounts/LUIS/apps/版本/模式/讀取 | **此 API 已被取代。** |
+> | CognitiveServices/accounts/LUIS/apps/版本/phraselists/write | 建立新的 phraselist 功能。 更新 phraselist 功能的片語、狀態和名稱。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/phraselists/delete | 從應用程式中刪除 phraselist 功能。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/phraselists/read | 取得 phraselist 功能資訊。 取得應用程式版本的所有 phraselist 功能。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/prebuilts/write | 將預先建立的實體擷取器清單新增至應用程式版本。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/prebuilts/delete | 從應用程式版本中刪除預建的實體解壓縮程式。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/prebuilts/read | 取得預建實體模型的相關資訊。 取得應用程式版本中預建實體模型的相關資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/prebuilts/role/write | 加入預建實體模型的角色會更新預建實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/prebuilts/角色/刪除 | 刪除預建實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/prebuilts/role/read | 取得預建實體模型的角色。 取得預建實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/RegExentities/write | 將正則運算式實體解壓縮程式新增至應用程式版本。 更新正則運算式實體模型。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/RegExentities/delete | 從應用程式版本刪除正則運算式實體模型。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/RegExentities/read | 取得正則運算式實體模型的相關資訊。 取得應用程式版本中正則運算式實體模型的相關資訊。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/RegExentities/role/write | 新增正則運算式實體模型的角色會更新正則運算式實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/RegExentities/角色/刪除 | 刪除正則運算式實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/RegExentities/role/read | 取得正則運算式實體模型的角色。 取得正則運算式實體模型的角色。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/設定/讀取 | 取得應用程式版本設定。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/設定/寫入 | 更新應用程式版本設定。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/建議/刪除 | 已刪除端點語句。 此語句位於「審核端點語句」清單中。 |
+> | CognitiveServices/accounts/LUIS/apps/版本/訓練/讀取 | 針對指定的應用程式版本，取得所有模型的定型狀態 (意圖和實體) 。 您必須先呼叫定型 API 來定型 LUIS 應用程式，才能呼叫此 API 來取得定型狀態。 |
+> | CognitiveServices/accounts/LUIS/azureaccounts/read | 使用他的 Azure Resource Manager 權杖，取得使用者的 LUIS Azure 帳戶。 |
+> | CognitiveServices/accounts/LUIS/package/插槽/gzip/read | 封裝已發佈 LUIS 應用程式為 GZip |
+> | CognitiveServices/accounts/LUIS/package/版本/gzip/read | 將已定型的 LUIS 應用程式封裝為 GZip |
 > | CognitiveServices/accounts/MetricsAdvisor/alert/異常/設定/寫入 | 建立或更新異常警示設定 |
 > | CognitiveServices/accounts/MetricsAdvisor/alert/異常/設定/刪除 | 刪除異常警示設定 |
 > | CognitiveServices/accounts/MetricsAdvisor/alert/異常/設定/讀取 | 查詢單一異常警示設定 |
@@ -5228,7 +5407,7 @@ Azure 服務： [Machine Learning 服務](../machine-learning/index.yml)
 > | Microsoft.MachineLearningServices/locations/usages/read | 訂用帳戶中的 aml 計算資源的使用量報告 |
 > | Microsoft.MachineLearningServices/locations/vmsizes/read | 取得支援的 VM 大小 |
 > | MachineLearningServices/operations/read | 取得 Machine Learning Services 資源提供者的所有作業 |
-> | MachineLearningServices/workspace/checkComputeNameAvailability/action | 在 Machine Learning Services 工作區 (s 中，檢查 batch 端點中計算的名稱)  |
+> | Microsoft.MachineLearningServices/workspaces/checkComputeNameAvailability/action | 在 Machine Learning Services 工作區 (s 中，檢查 batch 端點中計算的名稱)  |
 > | Microsoft.MachineLearningServices/workspaces/read | 取得機器學習服務工作區 |
 > | Microsoft.MachineLearningServices/workspaces/write | 建立或更新機器學習服務工作區 |
 > | Microsoft.MachineLearningServices/workspaces/delete | 刪除機器學習服務工作區 |
@@ -5306,6 +5485,9 @@ Azure 服務： [Machine Learning 服務](../machine-learning/index.yml)
 > | MachineLearningServices/工作區/標籤/專案/寫入 | 在 Machine Learning Services 工作區 (s 中建立或更新標籤專案)  |
 > | MachineLearningServices/工作區/標籤/專案/刪除 | 刪除 Machine Learning Services 工作區 (s 中的標籤專案)  |
 > | MachineLearningServices/工作區/標籤/專案/摘要/讀取 | 取得 Machine Learning Services 工作區 (s 中的標籤專案摘要)  |
+> | MachineLearningServices/workspace/Linkedservices.json 和 datasets.json/read | 取得 Machine Learning 服務工作區的所有連結服務 |
+> | MachineLearningServices/workspace/Linkedservices.json 和 datasets.json/write | 建立或更新 Machine Learning Services 工作區連結服務 (s)  |
+> | MachineLearningServices/workspace/Linkedservices.json 和 datasets.json/delete | 刪除 Machine Learning Services 工作區連結服務 (s)  |
 > | MachineLearningServices/workspace/metadata/構件/read | 取得 Machine Learning Services 工作區中的構件 (s)  |
 > | MachineLearningServices/workspace/metadata/構件/write | 在 Machine Learning Services 工作區 (s 中建立或更新構件)  |
 > | MachineLearningServices/workspace/metadata/構件/delete | 刪除 Machine Learning Services 工作區 (s 中的成品)  |
@@ -5571,6 +5753,9 @@ Azure 服務：[時間序列深入](../time-series-insights/index.yml)解析
 > | Microsoft.TimeSeriesInsights/environments/eventsources/read | 取得事件來源的屬性。 |
 > | Microsoft.TimeSeriesInsights/environments/eventsources/write | 針對環境建立新的事件來源，或更新現有的事件來源。 |
 > | Microsoft.TimeSeriesInsights/environments/eventsources/delete | 刪除事件來源。 |
+> | >201-timeseriesinsights-environment-with-eventhub/環境/privateendpointConnections/read | 取得私人端點連接的屬性。 |
+> | >201-timeseriesinsights-environment-with-eventhub/環境/privateendpointConnections/write | 為環境建立新的私人端點連接，或更新現有的連接。 |
+> | >201-timeseriesinsights-environment-with-eventhub/環境/privateendpointConnections/delete | 刪除私人端點連接。 |
 > | Microsoft.TimeSeriesInsights/environments/referencedatasets/read | 取得參考資料集的屬性。 |
 > | Microsoft.TimeSeriesInsights/environments/referencedatasets/write | 針對環境建立新的參考資料集，或更新現有的參考資料集。 |
 > | Microsoft.TimeSeriesInsights/environments/referencedatasets/delete | 刪除參考資料集。 |
@@ -5620,7 +5805,7 @@ Azure 服務： [Azure 空間錨點](../spatial-anchors/index.yml)
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/diagnosticSettings/read | 取得 MixedReality/spatialAnchorsAccounts 的診斷設定 |
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/diagnosticSettings/write | 建立或更新 MixedReality/spatialAnchorsAccounts 的診斷設定 |
 > | MixedReality/spatialAnchorsAccounts/providers/Microsoft. Insights/metricDefinitions/read | 取得 MixedReality/spatialAnchorsAccounts 的可用計量 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | MixedReality/ObjectUnderstandingAccounts/內嵌/動作 | 建立模型內嵌作業 |
 > | MixedReality/ObjectUnderstandingAccounts/內嵌/讀取 | 取得模型內嵌作業狀態 |
 > | MixedReality/RemoteRenderingAccounts/convert/action | 開始資產轉換 |
@@ -5883,9 +6068,6 @@ Azure 服務：核心
 > | AppConfiguration/configurationStores/eventGridFilters/read | 取得指定之設定存放區事件方格篩選的屬性，或列出指定設定存放區下的所有設定存放區事件方格篩選。 |
 > | AppConfiguration/configurationStores/eventGridFilters/write | 使用指定的參數建立或更新設定存放區事件方格篩選。 |
 > | AppConfiguration/configurationStores/eventGridFilters/delete | 刪除設定存放區事件方格篩選。 |
-> | AppConfiguration/configurationStores/keyValues/read | 從設定存放區讀取機碼值。 |
-> | AppConfiguration/configurationStores/keyValues/write | 建立或更新設定存放區中的索引鍵/值。 |
-> | AppConfiguration/configurationStores/keyValues/delete | 從設定存放區刪除現有的索引鍵/值。 |
 > | AppConfiguration/configurationStores/privateEndpointConnectionProxies/validate/action | 驗證指定的設定存放區下的私人端點連線 proxy。 |
 > | AppConfiguration/configurationStores/privateEndpointConnectionProxies/read | 取得指定設定存放區下的私人端點連線 proxy。 |
 > | AppConfiguration/configurationStores/privateEndpointConnectionProxies/write | 在指定的設定存放區下建立或更新私人端點連線 proxy。 |
@@ -5900,6 +6082,10 @@ Azure 服務：核心
 > | AppConfiguration/configurationStores/providers/Microsoft. Insights/metricDefinitions/read | 取得 Microsoft 應用程式設定的所有度量定義。 |
 > | AppConfiguration/位置/operationsStatus/讀取 | 取得作業的狀態。 |
 > | AppConfiguration/operations/read | 列出 Microsoft 應用程式設定所支援的所有作業。 |
+> | **DataAction** | **描述** |
+> | AppConfiguration/configurationStores/keyValues/read | 從設定存放區讀取機碼值。 |
+> | AppConfiguration/configurationStores/keyValues/write | 建立或更新設定存放區中的索引鍵/值。 |
+> | AppConfiguration/configurationStores/keyValues/delete | 從設定存放區刪除現有的索引鍵/值。 |
 
 ### <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
@@ -6408,7 +6594,7 @@ Azure 服務： [服務匯流排](../service-bus-messaging/index.yml)
 > | Microsoft.ServiceBus/operations/read | 取得作業 |
 > | Microsoft.ServiceBus/sku/read | 取得 SKU 資源描述的清單 |
 > | Microsoft.ServiceBus/sku/regions/read | 取得 SkuRegions 資源描述的清單 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft. 執行空間/命名空間/訊息/傳送/動作 | 傳送訊息 |
 > | Microsoft. 執行空間/命名空間/訊息/接收/動作 | 接收訊息 |
 
@@ -6610,7 +6796,7 @@ Azure 服務： [Key Vault](../key-vault/index.yml)
 > | KeyVault/保存庫/金鑰/版本/讀取 | 列出指定之金鑰的版本，或讀取指定的金鑰版本。 |
 > | Microsoft.KeyVault/vaults/secrets/read | 查看秘密的屬性，而非其值。 |
 > | Microsoft.KeyVault/vaults/secrets/write | 建立新的秘密，或更新現有秘密的值。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | KeyVault/保存庫/certificatecas/刪除 | 刪除憑證簽發者 |
 > | KeyVault/保存庫/certificatecas/read | 讀取憑證簽發者 |
 > | KeyVault/保存庫/certificatecas/寫入 | 寫入憑證簽發者 |
@@ -6698,6 +6884,7 @@ Azure 服務： [安全性中心](../security-center/index.yml)
 > | Microsoft. Security/iotDefenderSettings/write | 建立或更新 IoT Defender 設定 |
 > | Microsoft. Security/iotDefenderSettings/delete | 刪除 IoT Defender 設定 |
 > | Microsoft. Security/iotDefenderSettings/PackageDownloads/action | 取得可下載的 IoT Defender 套件資訊 |
+> | Microsoft. Security/iotDefenderSettings/DownloadManagerActivation/action | 下載管理員啟用檔案與訂用帳戶配額資料 |
 > | Microsoft. Security/iotSecuritySolutions/write | 建立或更新 IoT 安全性解決方案 |
 > | Microsoft. Security/iotSecuritySolutions/delete | 刪除 IoT 安全性解決方案 |
 > | Microsoft. Security/iotSecuritySolutions/read | 取得 IoT 安全性解決方案 |
@@ -6718,6 +6905,8 @@ Azure 服務： [安全性中心](../security-center/index.yml)
 > | Microsoft. Security/iotSensors/write | 建立或更新 IoT 感應器 |
 > | Microsoft. Security/iotSensors/delete | 刪除 IoT 感應器 |
 > | Microsoft. Security/iotSensors/DownloadActivation/action | 下載 IoT 感應器的啟用檔案 |
+> | Microsoft. Security/iotSensors/TriggerTiPackageUpdate/action | 觸發威脅情報套件更新 |
+> | Microsoft. Security/iotSensors/DownloadResetPassword/action | 下載 IoT 感應器的重設密碼檔案 |
 > | Microsoft. Security/iotSite/read | 取得 IoT 網站 |
 > | Microsoft. Security/iotSite/write | 建立或更新 IoT 網站 |
 > | Microsoft. Security/iotSite/delete | 刪除 IoT 網站 |
@@ -7066,7 +7255,7 @@ Azure 服務： [Azure DevOps](/azure/devops/)
 > | Microsoft.VisualStudio/Project/Delete | 刪除專案 |
 > | Microsoft.VisualStudio/Project/Read | 讀取專案 |
 
-## <a name="migrate"></a>遷移
+## <a name="migrate"></a>移轉
 
 ### <a name="microsoftmigrate"></a>Microsoft.Migrate
 
@@ -7076,6 +7265,7 @@ Azure 服務： [Azure Migrate](../migrate/migrate-services-overview.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | Microsoft.Migrate/register/action | 向 Microsoft.Migrate 資源提供者註冊訂用帳戶 |
+> | Microsoft. 遷移/取消註冊/動作 | 使用 Microsoft 取消註冊訂用帳戶。遷移資源提供者 |
 > | Microsoft. 遷移/assessmentprojects/讀取 | 取得評量專案的屬性 |
 > | Microsoft. 遷移/assessmentprojects/write | 建立新的評定專案或更新現有的評定專案 |
 > | Microsoft. 遷移/assessmentprojects/刪除 | 刪除評量專案 |
@@ -7158,6 +7348,7 @@ Azure 服務： [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. 遷移/moveCollections/moveResources/read | 從移動集合取得所有移動資源或移動資源 |
 > | Microsoft. 遷移/moveCollections/moveResources/write | 建立或更新移動資源 |
 > | Microsoft. 遷移/moveCollections/moveResources/delete | 從移動集合中刪除移動資源 |
+> | Microsoft. 遷移/moveCollections/作業/讀取 | 取得作業的狀態 |
 > | Microsoft. 遷移/moveCollections/unresolvedDependencies/read | 取得移動集合中未解析的相依性清單 |
 > | Microsoft.Migrate/Operations/read | 列出可對 Microsoft.Migrate 資源提供者進行的作業 |
 > | Microsoft.Migrate/projects/read | 取得專案的屬性 |
@@ -7539,7 +7730,7 @@ Azure 服務： [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft.OffAzure/VMwareSites/vcenters/read | 取得 VMware vCenter 的屬性 |
 > | Microsoft.OffAzure/VMwareSites/vcenters/write | 建立或更新 VMware vCenter |
 
-## <a name="monitor"></a>監視
+## <a name="monitor"></a>監視器
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
@@ -8033,7 +8224,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft Insights/活頁簿/撰寫 | 建立或更新活頁簿 |
 > | Microsoft Insights/活頁簿/刪除 | 刪除活頁簿 |
 > | Microsoft Insights/活頁簿/讀取 | 讀取活頁簿 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft Insights/DataCollectionRules/資料/寫入 | 將資料傳送至資料收集規則 |
 > | Microsoft.Insights/Metrics/Write | 寫入計量 |
 
@@ -8788,7 +8979,7 @@ Azure 服務： [批次](../batch/index.yml)
 > | Microsoft.Batch/locations/accountOperationResults/read | 取得長時間執行 Batch 帳戶作業的結果 |
 > | Microsoft.Batch/locations/quotas/read | 取得指定訂用帳戶在指定 Azure 區域內的 Batch 配額 |
 > | Microsoft.Batch/operations/read | 列出可對 Microsoft.Batch 資源提供者進行的作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Batch/batchAccounts/jobs/read | 列出 Batch 帳戶的作業或取得作業的屬性 |
 > | Microsoft.Batch/batchAccounts/jobs/write | 在 Batch 帳戶上建立新的作業，或更新現有的作業 |
 > | Microsoft.Batch/batchAccounts/jobs/delete | 從 Batch 帳戶刪除作業 |
@@ -9040,13 +9231,331 @@ Azure 服務： [Azure Arc](../azure-arc/index.yml)
 > | HybridCompute/取消註冊/動作 | 取消註冊 HybridCompute 資源提供者的訂用帳戶 |
 > | HybridCompute/位置/operationresults/讀取 | 讀取 HybridCompute 資源提供者上的作業狀態 |
 > | HybridCompute/位置/>operationstatus/讀取 | 讀取 HybridCompute 資源提供者上的作業狀態 |
+> | HybridCompute/位置/updateCenterOperationResults/讀取 | 讀取電腦上的更新中心操作狀態 |
 > | Microsoft.HybridCompute/machines/read | 讀取任何 Azure Arc 機器 |
 > | Microsoft.HybridCompute/machines/write | 寫入 Azure Arc 機器 |
 > | Microsoft.HybridCompute/machines/delete | 刪除 Azure Arc 機器 |
+> | HybridCompute/機器/assessPatches/動作 | 評估任何 Azure Arc 電腦以取得遺漏的軟體修補程式 |
+> | HybridCompute/機器/installPatches/動作 | 在任何 Azure Arc 電腦上安裝修補程式 |
 > | HybridCompute/電腦/擴充功能/讀取 | 讀取任何 Azure Arc 擴充功能 |
 > | Microsoft.HybridCompute/machines/extensions/write | 安裝或更新 Azure Arc 擴充 |
 > | HybridCompute/電腦/擴充/刪除 | 刪除 Azure Arc 擴充功能 |
+> | HybridCompute/機器/patchAssessmentResults/讀取 | 讀取任何 Azure Arc patchAssessmentResults |
+> | HybridCompute/機器/patchAssessmentResults/softwarePatches/read | 讀取任何 Azure Arc patchAssessmentResults/softwarePatches |
+> | HybridCompute/機器/patchInstallationResults/讀取 | 讀取任何 Azure Arc patchInstallationResults |
+> | HybridCompute/機器/patchInstallationResults/softwarePatches/read | 讀取任何 Azure Arc patchInstallationResults/softwarePatches |
 > | HybridCompute/operations/read | 讀取伺服器 Azure Arc 的所有作業 |
+
+### <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
+
+Azure 服務： [Azure Arc 啟用 Kubernetes](../azure-arc/kubernetes/overview.md)
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | Kubernetes/connectedClusters/Read | 讀取 connectedClusters |
+> | Kubernetes/connectedClusters/Write | 寫入 connectedClusters |
+> | Kubernetes/connectedClusters/Delete | 刪除 connectedClusters |
+> | Kubernetes/connectedClusters/listClusterUserCredentials/action | 列出 clusterUser 認證 |
+> | Kubernetes/RegisteredSubscriptions/read | 讀取已註冊的訂閱 |
+> | **DataAction** | **描述** |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/read | 讀取 initializerconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/write | 寫入 initializerconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/delete | 刪除 initializerconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/mutatingwebhookconfigurations/read | 讀取 mutatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/mutatingwebhookconfigurations/write | 寫入 mutatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/mutatingwebhookconfigurations/delete | 刪除 mutatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/validatingwebhookconfigurations/read | 讀取 validatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/validatingwebhookconfigurations/write | 寫入 validatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/validatingwebhookconfigurations/delete | 刪除 validatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/api/read | 讀取 api |
+> | Kubernetes/connectedClusters/api/v1/read | 讀取 api/v1 |
+> | Kubernetes/connectedClusters/apiextensions. k8s. io/customresourcedefinitions/read | 讀取 customresourcedefinitions |
+> | Kubernetes/connectedClusters/apiextensions. k8s. io/customresourcedefinitions/write | 寫入 customresourcedefinitions |
+> | Kubernetes/connectedClusters/apiextensions. k8s. io/customresourcedefinitions/delete | 刪除 customresourcedefinitions |
+> | Kubernetes/connectedClusters/apiregistration. k8s. io/apiservices/read | 讀取 apiservices |
+> | Kubernetes/connectedClusters/apiregistration. k8s. io/apiservices/write | 寫入 apiservices |
+> | Kubernetes/connectedClusters/apiregistration. k8s. io/apiservices/delete | 刪除 apiservices |
+> | Kubernetes/connectedClusters/api/read | 讀取 api |
+> | Kubernetes/connectedClusters/api/admissionregistration. k8s. io/read | 讀取 admissionregistration.k8s.io |
+> | Kubernetes/connectedClusters/api/admissionregistration. k8s. io/v1/read | 讀取 admissionregistration.k8s.io/v1 |
+> | Kubernetes/connectedClusters/api/admissionregistration. k8s. io/v1Beta1/read | 讀取 admissionregistration.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/apiextensions. k8s. io/read | 讀取 apiextensions.k8s.io |
+> | Kubernetes/connectedClusters/api/apiextensions. k8s. io/v1/read | 讀取 apiextensions.k8s.io/v1 |
+> | Kubernetes/connectedClusters/api/apiextensions. k8s. io/v1Beta1/read | 讀取 apiextensions.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/apiregistration. k8s. io/read | 讀取 apiregistration.k8s.io |
+> | Kubernetes/connectedClusters/api/apiregistration. k8s. io/v1/read | 讀取 apiregistration.k8s.io/v1 |
+> | Kubernetes/connectedClusters/api/apiregistration. k8s. io/v1Beta1/read | 讀取 apiregistration.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/apps/read | 讀取應用程式 |
+> | Kubernetes/connectedClusters/api/apps/v1Beta1/read | 讀取應用程式/v1Beta1 |
+> | Kubernetes/connectedClusters/api/apps/v1Beta2/read | 讀取 v1Beta2 |
+> | Kubernetes/connectedClusters/api/authentication. k8s. io/read | 讀取 authentication.k8s.io |
+> | Kubernetes/connectedClusters/api/authentication. k8s. io/v1/read | 讀取 authentication.k8s.io/v1 |
+> | Kubernetes/connectedClusters/api/authentication. k8s. io/v1Beta1/read | 讀取 authentication.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/authorization. k8s. io/read | 讀取 authorization.k8s.io |
+> | Kubernetes/connectedClusters/api/authorization. k8s. io/v1/read | 讀取 authorization.k8s.io/v1 |
+> | Kubernetes/connectedClusters/api/authorization. k8s. io/v1Beta1/read | 讀取 authorization.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/自動調整/讀取 | 讀取自動調整 |
+> | Kubernetes/connectedClusters/api/自動調整/v1/read | 讀取自動調整/v1 |
+> | Kubernetes/connectedClusters/api/自動調整/v2Beta1/read | 讀取自動調整/v2Beta1 |
+> | Kubernetes/connectedClusters/api/自動調整/v2Beta2/read | 讀取自動調整/v2Beta2 |
+> | Kubernetes/connectedClusters/api/batch/read | 讀取批次 |
+> | Kubernetes/connectedClusters/api/batch/v1/read | 讀取批次/v1 |
+> | Kubernetes/connectedClusters/api/batch/v1Beta1/read | 讀取批次/v1Beta1 |
+> | Kubernetes/connectedClusters/api/certificate. k8s. io/read | 讀取 certificates.k8s.io |
+> | Kubernetes/connectedClusters/api/certificate. k8s. io/v1Beta1/read | 讀取 certificates.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/協調. k8s. io/read | 讀取 coordination.k8s.io |
+> | Kubernetes/connectedClusters/api/協調. k8s. io/v1/read | 讀取協調/v1 |
+> | Kubernetes/connectedClusters/api/協調. k8s. io/v1Beta1/read | 讀取 coordination.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/events. k8s. io/read | 讀取 events.k8s.io |
+> | Kubernetes/connectedClusters/api/events. k8s. io/v1Beta1/read | 讀取 events.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/extensions/read | 讀取延伸模組 |
+> | Kubernetes/connectedClusters/api/extensions/v1Beta1/read | 讀取延伸模組/v1Beta1 |
+> | Kubernetes/connectedClusters/api/k8s. io/read | 讀取 metrics.k8s.io |
+> | Kubernetes/connectedClusters/api/計量. k8s. io/v1Beta1/read | 讀取 metrics.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/網路. k8s. io/read | 讀取 networking.k8s.io |
+> | Kubernetes/connectedClusters/api/網路。 k8s. io/v1/read | 讀取網路/v1 |
+> | Kubernetes/connectedClusters/api/網路。 k8s. io/v1Beta1/read | 讀取 networking.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/k8s. io/read | 讀取 node.k8s.io |
+> | Kubernetes/connectedClusters/api/node. k8s. io/v1Beta1/read | 讀取 node.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/policy/read | 讀取原則 |
+> | Kubernetes/connectedClusters/api/policy/v1Beta1/read | 讀取原則/v1Beta1 |
+> | Kubernetes/connectedClusters/api/rbac. k8s. io/read | 讀取 rbac.authorization.k8s.io |
+> | Kubernetes/connectedClusters/api/rbac. k8s.. io/v1/read | 讀取 rbac. 授權/v1 |
+> | Kubernetes/connectedClusters/api/rbac. k8s.. io/v1Beta1/read | 讀取 rbac.authorization.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/k8s. io/read | 讀取 scheduling.k8s.io |
+> | Kubernetes/connectedClusters/api/k8s. io/v1/read | 讀取排程/v1 |
+> | Kubernetes/connectedClusters/api/k8s. io/v1Beta1/read | 讀取 scheduling.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/k8s. io/read | 讀取 storage.k8s.io |
+> | Kubernetes/connectedClusters/api/儲存體. k8s. io/v1/read | 讀取儲存體/v1 |
+> | Kubernetes/connectedClusters/api/儲存體. k8s. io/v1Beta1/read | 讀取 storage.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/apps/controllerrevisions/read | 讀取 controllerrevisions |
+> | Kubernetes/connectedClusters/apps/controllerrevisions/write | 寫入 controllerrevisions |
+> | Kubernetes/connectedClusters/apps/controllerrevisions/delete | 刪除 controllerrevisions |
+> | Kubernetes/connectedClusters/apps/daemonset/read | 讀取 daemonset |
+> | Kubernetes/connectedClusters/apps/daemonset/write | 寫入 daemonset |
+> | Kubernetes/connectedClusters/apps/daemonset/delete | 刪除 daemonset |
+> | Kubernetes/connectedClusters/apps/部署/讀取 | 讀取部署 |
+> | Kubernetes/connectedClusters/apps/部署/寫入 | 寫入部署 |
+> | Kubernetes/connectedClusters/apps/部署/刪除 | 刪除部署 |
+> | Kubernetes/connectedClusters/apps/replicaset/read | 讀取 replicaset |
+> | Kubernetes/connectedClusters/apps/replicaset/write | 寫入 replicaset |
+> | Kubernetes/connectedClusters/apps/replicaset/delete | 刪除 replicaset |
+> | Kubernetes/connectedClusters/apps/statefulset/read | 讀取 statefulset |
+> | Kubernetes/connectedClusters/apps/statefulset/write | 寫入 statefulset |
+> | Kubernetes/connectedClusters/apps/statefulset/delete | 刪除 statefulset |
+> | Kubernetes/connectedClusters/authentication. k8s. io/tokenreviews/write | 寫入 tokenreviews |
+> | Kubernetes/connectedClusters/authentication. k8s. io/userextras/模擬/action | 模擬 userextras |
+> | Kubernetes/connectedClusters/authorization. k8s. io/localsubjectaccessreviews/write | 寫入 localsubjectaccessreviews |
+> | Kubernetes/connectedClusters/authorization. k8s. io/selfsubjectaccessreviews/write | 寫入 selfsubjectaccessreviews |
+> | Kubernetes/connectedClusters/authorization. k8s. io/selfsubjectrulesreviews/write | 寫入 selfsubjectrulesreviews |
+> | Kubernetes/connectedClusters/authorization. k8s. io/subjectaccessreviews/write | 寫入 subjectaccessreviews |
+> | Kubernetes/connectedClusters/自動調整/horizontalpodautoscalers/read | 讀取 horizontalpodautoscalers |
+> | Kubernetes/connectedClusters/自動調整/horizontalpodautoscalers/write | 寫入 horizontalpodautoscalers |
+> | Kubernetes/connectedClusters/自動調整/horizontalpodautoscalers/刪除 | 刪除 horizontalpodautoscalers |
+> | Kubernetes/connectedClusters/batch/cronjobs/read | 讀取 cronjobs |
+> | Kubernetes/connectedClusters/batch/cronjobs/write | 寫入 cronjobs |
+> | Kubernetes/connectedClusters/batch/cronjobs/delete | 刪除 cronjobs |
+> | Kubernetes/connectedClusters/batch/jobs/read | 讀取作業 |
+> | Kubernetes/connectedClusters/batch/jobs/write | 寫入作業 |
+> | Kubernetes/connectedClusters/batch/jobs/delete | 刪除作業 |
+> | Kubernetes/connectedClusters/bindings/write | 寫入系結 |
+> | Kubernetes/connectedClusters/certificate. k8s. io/certificatesigningrequests/read | 讀取 certificatesigningrequests |
+> | Kubernetes/connectedClusters/certificate. k8s. io/certificatesigningrequests/write | 寫入 certificatesigningrequests |
+> | Kubernetes/connectedClusters/certificate. k8s. io/certificatesigningrequests/delete | 刪除 certificatesigningrequests |
+> | Kubernetes/connectedClusters/>clusterconfig.json。 azure .com/azureclusteridentityrequests/read | 讀取 azureclusteridentityrequests |
+> | Kubernetes/connectedClusters/>clusterconfig.json。 azure .com/azureclusteridentityrequests/write | 寫入 azureclusteridentityrequests |
+> | Kubernetes/connectedClusters/>clusterconfig.json。 azure .com/azureclusteridentityrequests/delete | 刪除 azureclusteridentityrequests |
+> | Kubernetes/connectedClusters/componentstatuses/read | 讀取 componentstatuses |
+> | Kubernetes/connectedClusters/componentstatuses/write | 寫入 componentstatuses |
+> | Kubernetes/connectedClusters/componentstatuses/delete | 刪除 componentstatuses |
+> | Kubernetes/connectedClusters/configmaps/read | 讀取 configmaps |
+> | Kubernetes/connectedClusters/configmaps/write | 寫入 configmaps |
+> | Kubernetes/connectedClusters/configmaps/delete | 刪除 configmaps |
+> | Kubernetes/connectedClusters/k8s. io/租借/read | 讀取租用 |
+> | Kubernetes/connectedClusters/k8s. io/租借/write | 寫入租用 |
+> | Kubernetes/connectedClusters/k8s. io/租借/delete | 刪除租用 |
+> | Kubernetes/connectedClusters/端點/讀取 | 讀取端點 |
+> | Kubernetes/connectedClusters/端點/寫入 | 寫入端點 |
+> | Kubernetes/connectedClusters/端點/刪除 | 刪除端點 |
+> | Kubernetes/connectedClusters/events/read | 讀取事件 |
+> | Kubernetes/connectedClusters/events/write | 寫入事件 |
+> | Kubernetes/connectedClusters/events/delete | 刪除事件 |
+> | Kubernetes/connectedClusters/events. k8s. io/events/read | 讀取事件 |
+> | Kubernetes/connectedClusters/events. k8s. io/events/write | 寫入事件 |
+> | Kubernetes/connectedClusters/events. k8s. io/events/delete | 刪除事件 |
+> | Kubernetes/connectedClusters/extensions/daemonset/read | 讀取 daemonset |
+> | Kubernetes/connectedClusters/extensions/daemonset/write | 寫入 daemonset |
+> | Kubernetes/connectedClusters/extensions/daemonset/delete | 刪除 daemonset |
+> | Kubernetes/connectedClusters/extensions/部署/讀取 | 讀取部署 |
+> | Kubernetes/connectedClusters/extensions/部署/寫入 | 寫入部署 |
+> | Kubernetes/connectedClusters/extensions/部署/刪除 | 刪除部署 |
+> | Kubernetes/connectedClusters/extensions/ingresses/read | 讀取 ingresses |
+> | Kubernetes/connectedClusters/extensions/ingresses/write | 寫入 ingresses |
+> | Kubernetes/connectedClusters/extensions/ingresses/delete | 刪除 ingresses |
+> | Kubernetes/connectedClusters/extensions/networkpolicies/read | 讀取 networkpolicies |
+> | Kubernetes/connectedClusters/extensions/networkpolicies/write | 寫入 networkpolicies |
+> | Kubernetes/connectedClusters/extensions/networkpolicies/delete | 刪除 networkpolicies |
+> | Kubernetes/connectedClusters/extensions/podsecuritypolicies/read | 讀取 podsecuritypolicies |
+> | Kubernetes/connectedClusters/extensions/podsecuritypolicies/write | 寫入 podsecuritypolicies |
+> | Kubernetes/connectedClusters/extensions/podsecuritypolicies/delete | 刪除 podsecuritypolicies |
+> | Kubernetes/connectedClusters/extensions/replicaset/read | 讀取 replicaset |
+> | Kubernetes/connectedClusters/extensions/replicaset/write | 寫入 replicaset |
+> | Kubernetes/connectedClusters/extensions/replicaset/delete | 刪除 replicaset |
+> | Kubernetes/connectedClusters/groups/模擬/動作 | 模擬群組 |
+> | Kubernetes/connectedClusters/healthz/read | 讀取 healthz |
+> | Kubernetes/connectedClusters/healthz/autoregister-完成/讀取 | 讀取 autoregister-完成 |
+> | Kubernetes/connectedClusters/healthz/etcd/read | 讀取 etcd |
+> | Kubernetes/connectedClusters/healthz/log/read | 讀取記錄檔 |
+> | Kubernetes/connectedClusters/healthz/ping/read | 讀取 ping |
+> | Kubernetes/connectedClusters/healthz/poststarthook/apiservice-openapi-controller/read | 讀取 apiservice-openapi-控制器 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/apiservice-註冊-控制器/讀取 | 讀取 apiservice-註冊-控制器 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/apiservice-狀態-可用-控制器/讀取 | 讀取 apiservice-狀態-可用-控制器 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/啟動程式-控制器/讀取 | 讀取啟動程式-控制器 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/ca-註冊/讀取 | 讀取 ca-註冊 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/.crd-informer-已同步/讀取 | 讀取 .crd-informer-已同步 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/generic-apiserver-start-洩密者/read | 讀取泛型-apiserver-start-洩密者 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/kube-apiserver-自動註冊/read | 讀取 kube-apiserver-自動註冊 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/rbac/啟動程式-角色/讀取 | 讀取啟動程式-角色 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/排程/啟動程式-系統優先順序-類別/讀取 | 讀取啟動程式-系統優先順序-類別 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/開始-apiextensions-控制器/讀取 | 讀取開始-apiextensions-控制器 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/start-apiextensions-洩密者/read | 讀取開始-apiextensions-洩密者 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/start-kube-匯總工具-洩密者/read | 讀取開始-kube-匯總工具-洩密者 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/開始-kube-apiserver-許可-初始化運算式/讀取 | 讀取開始-kube-apiserver-許可-初始化運算式 |
+> | Kubernetes/connectedClusters/limitranges/read | 讀取 limitranges |
+> | Kubernetes/connectedClusters/limitranges/write | 寫入 limitranges |
+> | Kubernetes/connectedClusters/limitranges/delete | 刪除 limitranges |
+> | Kubernetes/connectedClusters/livez/read | 讀取 livez |
+> | Kubernetes/connectedClusters/livez/autoregister-完成/讀取 | 讀取 autoregister-完成 |
+> | Kubernetes/connectedClusters/livez/etcd/read | 讀取 etcd |
+> | Kubernetes/connectedClusters/livez/log/read | 讀取記錄檔 |
+> | Kubernetes/connectedClusters/livez/ping/read | 讀取 ping |
+> | Kubernetes/connectedClusters/livez/poststarthook/apiservice-openapi-controller/read | 讀取 apiservice-openapi-控制器 |
+> | Kubernetes/connectedClusters/livez/poststarthook/apiservice-註冊-控制器/讀取 | 讀取 apiservice-註冊-控制器 |
+> | Kubernetes/connectedClusters/livez/poststarthook/apiservice-狀態-可用-控制器/讀取 | 讀取 apiservice-狀態-可用-控制器 |
+> | Kubernetes/connectedClusters/livez/poststarthook/啟動程式-控制器/讀取 | 讀取啟動程式-控制器 |
+> | Kubernetes/connectedClusters/livez/poststarthook/ca-註冊/讀取 | 讀取 ca-註冊 |
+> | Kubernetes/connectedClusters/livez/poststarthook/.crd-informer-已同步/讀取 | 讀取 .crd-informer-已同步 |
+> | Kubernetes/connectedClusters/livez/poststarthook/generic-apiserver-start-洩密者/read | 讀取泛型-apiserver-start-洩密者 |
+> | Kubernetes/connectedClusters/livez/poststarthook/kube-apiserver-自動註冊/read | 讀取 kube-apiserver-自動註冊 |
+> | Kubernetes/connectedClusters/livez/poststarthook/rbac/啟動程式-角色/讀取 | 讀取啟動程式-角色 |
+> | Kubernetes/connectedClusters/livez/poststarthook/排程/啟動程式-系統優先順序-類別/讀取 | 讀取啟動程式-系統優先順序-類別 |
+> | Kubernetes/connectedClusters/livez/poststarthook/開始-apiextensions-控制器/讀取 | 讀取開始-apiextensions-控制器 |
+> | Kubernetes/connectedClusters/livez/poststarthook/start-apiextensions-洩密者/read | 讀取開始-apiextensions-洩密者 |
+> | Kubernetes/connectedClusters/livez/poststarthook/start-kube-匯總工具-洩密者/read | 讀取開始-kube-匯總工具-洩密者 |
+> | Kubernetes/connectedClusters/livez/poststarthook/開始-kube-apiserver-許可-初始化運算式/讀取 | 讀取開始-kube-apiserver-許可-初始化運算式 |
+> | Kubernetes/connectedClusters/logs/read | 讀取記錄 |
+> | Kubernetes/connectedClusters/計量/讀取 | 讀取計量 |
+> | Kubernetes/connectedClusters/k8s。 io/節點/read | 讀取節點 |
+> | Kubernetes/connectedClusters/k8s. io/pod/read | 讀取 pod |
+> | Kubernetes/connectedClusters/命名空間/讀取 | 讀取命名空間 |
+> | Kubernetes/connectedClusters/命名空間/寫入 | 寫入命名空間 |
+> | Kubernetes/connectedClusters/命名空間/刪除 | 刪除命名空間 |
+> | Kubernetes/connectedClusters/網路. k8s. io/ingresses/read | 讀取 ingresses |
+> | Kubernetes/connectedClusters/網路. k8s. io/ingresses/write | 寫入 ingresses |
+> | Kubernetes/connectedClusters/網路. k8s. io/ingresses/delete | 刪除 ingresses |
+> | Kubernetes/connectedClusters/網路. k8s. io/networkpolicies/read | 讀取 networkpolicies |
+> | Kubernetes/connectedClusters/網路. k8s. io/networkpolicies/write | 寫入 networkpolicies |
+> | Kubernetes/connectedClusters/網路. k8s. io/networkpolicies/delete | 刪除 networkpolicies |
+> | Kubernetes/connectedClusters/k8s. io/runtimeclasses/read | 讀取 runtimeclasses |
+> | Kubernetes/connectedClusters/k8s. io/runtimeclasses/write | 寫入 runtimeclasses |
+> | Kubernetes/connectedClusters/k8s. io/runtimeclasses/delete | 刪除 runtimeclasses |
+> | Kubernetes/connectedClusters/節點/讀取 | 讀取節點 |
+> | Kubernetes/connectedClusters/節點/寫入 | 寫入節點 |
+> | Kubernetes/connectedClusters/節點/刪除 | 刪除節點 |
+> | Kubernetes/connectedClusters/openapi/v2/read | 讀取 v2 |
+> | Kubernetes/connectedClusters/persistentvolumeclaims/read | 讀取 persistentvolumeclaims |
+> | Kubernetes/connectedClusters/persistentvolumeclaims/write | 寫入 persistentvolumeclaims |
+> | Kubernetes/connectedClusters/persistentvolumeclaims/delete | 刪除 persistentvolumeclaims |
+> | Kubernetes/connectedClusters/persistentvolumes/read | 讀取 persistentvolumes |
+> | Kubernetes/connectedClusters/persistentvolumes/write | 寫入 persistentvolumes |
+> | Kubernetes/connectedClusters/persistentvolumes/delete | 刪除 persistentvolumes |
+> | Kubernetes/connectedClusters/pod/read | 讀取 pod |
+> | Kubernetes/connectedClusters/pod/write | 寫入 pod |
+> | Kubernetes/connectedClusters/pod/delete | 刪除 pod |
+> | Kubernetes/connectedClusters/podtemplates/read | 讀取 podtemplates |
+> | Kubernetes/connectedClusters/podtemplates/write | 寫入 podtemplates |
+> | Kubernetes/connectedClusters/podtemplates/delete | 刪除 podtemplates |
+> | Kubernetes/connectedClusters/policy/poddisruptionbudgets/read | 讀取 poddisruptionbudgets |
+> | Kubernetes/connectedClusters/policy/poddisruptionbudgets/write | 寫入 poddisruptionbudgets |
+> | Kubernetes/connectedClusters/policy/poddisruptionbudgets/delete | 刪除 poddisruptionbudgets |
+> | Kubernetes/connectedClusters/policy/podsecuritypolicies/read | 讀取 podsecuritypolicies |
+> | Kubernetes/connectedClusters/policy/podsecuritypolicies/write | 寫入 podsecuritypolicies |
+> | Kubernetes/connectedClusters/policy/podsecuritypolicies/delete | 刪除 podsecuritypolicies |
+> | Kubernetes/connectedClusters/policy/podsecuritypolicies/use/action | Podsecuritypolicies 上的使用動作 |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterrolebindings/read | 讀取 clusterrolebindings |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterrolebindings/write | 寫入 clusterrolebindings |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterrolebindings/delete | 刪除 clusterrolebindings |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterroles/read | 讀取 clusterroles |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterroles/write | 寫入 clusterroles |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterroles/delete | 刪除 clusterroles |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterroles/bind/action | 系結 clusterroles |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterroles/呈報/action | 升級 |
+> | Kubernetes/connectedClusters/rbac. k8s. io/rolebindings/read | 讀取 rolebindings |
+> | Kubernetes/connectedClusters/rbac. k8s. io/rolebindings/write | 寫入 rolebindings |
+> | Kubernetes/connectedClusters/rbac. k8s. io/rolebindings/delete | 刪除 rolebindings |
+> | Kubernetes/connectedClusters/rbac. k8s. io/role/read | 讀取角色 |
+> | Kubernetes/connectedClusters/rbac. k8s. io/role/write | 寫入角色 |
+> | Kubernetes/connectedClusters/rbac. k8s. io/role/delete | 刪除角色 |
+> | Kubernetes/connectedClusters/rbac. k8s. io/role/bind/action | 系結角色 |
+> | Kubernetes/connectedClusters/rbac. k8s. io/roles/呈報/action | 升級角色 |
+> | Kubernetes/connectedClusters/readyz/read | 讀取 readyz |
+> | Kubernetes/connectedClusters/readyz/autoregister-完成/讀取 | 讀取 autoregister-完成 |
+> | Kubernetes/connectedClusters/readyz/etcd/read | 讀取 etcd |
+> | Kubernetes/connectedClusters/readyz/log/read | 讀取記錄檔 |
+> | Kubernetes/connectedClusters/readyz/ping/read | 讀取 ping |
+> | Kubernetes/connectedClusters/readyz/poststarthook/apiservice-openapi-controller/read | 讀取 apiservice-openapi-控制器 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/apiservice-註冊-控制器/讀取 | 讀取 apiservice-註冊-控制器 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/apiservice-狀態-可用-控制器/讀取 | 讀取 apiservice-狀態-可用-控制器 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/啟動程式-控制器/讀取 | 讀取啟動程式-控制器 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/ca-註冊/讀取 | 讀取 ca-註冊 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/.crd-informer-已同步/讀取 | 讀取 .crd-informer-已同步 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/generic-apiserver-start-洩密者/read | 讀取泛型-apiserver-start-洩密者 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/kube-apiserver-自動註冊/read | 讀取 kube-apiserver-自動註冊 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/rbac/啟動程式-角色/讀取 | 讀取啟動程式-角色 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/排程/啟動程式-系統優先順序-類別/讀取 | 讀取啟動程式-系統優先順序-類別 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/開始-apiextensions-控制器/讀取 | 讀取開始-apiextensions-控制器 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/start-apiextensions-洩密者/read | 讀取開始-apiextensions-洩密者 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/start-kube-匯總工具-洩密者/read | 讀取開始-kube-匯總工具-洩密者 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/開始-kube-apiserver-許可-初始化運算式/讀取 | 讀取開始-kube-apiserver-許可-初始化運算式 |
+> | Kubernetes/connectedClusters/readyz/shutdown/read | 讀取關機 |
+> | Kubernetes/connectedClusters/replicationcontrollers/read | 讀取 replicationcontrollers |
+> | Kubernetes/connectedClusters/replicationcontrollers/write | 寫入 replicationcontrollers |
+> | Kubernetes/connectedClusters/replicationcontrollers/delete | 刪除 replicationcontrollers |
+> | Kubernetes/connectedClusters/resetMetrics/read | 讀取 resetMetrics |
+> | Kubernetes/connectedClusters/resourcequotas/read | 讀取 resourcequotas |
+> | Kubernetes/connectedClusters/resourcequotas/write | 寫入 resourcequotas |
+> | Kubernetes/connectedClusters/resourcequotas/delete | 刪除 resourcequotas |
+> | Kubernetes/connectedClusters/k8s. io/priorityclasses/read | 讀取 priorityclasses |
+> | Kubernetes/connectedClusters/k8s. io/priorityclasses/write | 寫入 priorityclasses |
+> | Kubernetes/connectedClusters/k8s. io/priorityclasses/delete | 刪除 priorityclasses |
+> | Kubernetes/connectedClusters/秘密/讀取 | 讀取秘密 |
+> | Kubernetes/connectedClusters/秘密/寫入 | 寫入秘密 |
+> | Kubernetes/connectedClusters/秘密/刪除 | 刪除秘密 |
+> | Kubernetes/connectedClusters/serviceaccounts/read | 讀取 serviceaccounts |
+> | Kubernetes/connectedClusters/serviceaccounts/write | 寫入 serviceaccounts |
+> | Kubernetes/connectedClusters/serviceaccounts/delete | 刪除 serviceaccounts |
+> | Kubernetes/connectedClusters/serviceaccounts/模擬/動作 | 模擬 serviceaccounts |
+> | Kubernetes/connectedClusters/services/read | 讀取服務 |
+> | Kubernetes/connectedClusters/services/write | 寫入服務 |
+> | Kubernetes/connectedClusters/services/delete | 刪除服務 |
+> | Kubernetes/connectedClusters/k8s. io/csidrivers/read | 讀取 csidrivers |
+> | Kubernetes/connectedClusters/k8s. io/csidrivers/write | 寫入 csidrivers |
+> | Kubernetes/connectedClusters/k8s. io/csidrivers/delete | 刪除 csidrivers |
+> | Kubernetes/connectedClusters/k8s. io/csinodes/read | 讀取 csinodes |
+> | Kubernetes/connectedClusters/k8s. io/csinodes/write | 寫入 csinodes |
+> | Kubernetes/connectedClusters/k8s. io/csinodes/delete | 刪除 csinodes |
+> | Kubernetes/connectedClusters/k8s. io/storageclass/read | 讀取 storageclass |
+> | Kubernetes/connectedClusters/k8s. io/storageclass/write | 寫入 storageclass |
+> | Kubernetes/connectedClusters/k8s. io/storageclass/delete | 刪除 storageclass |
+> | Kubernetes/connectedClusters/k8s. io/volumeattachments/read | 讀取 volumeattachments |
+> | Kubernetes/connectedClusters/k8s. io/volumeattachments/write | 寫入 volumeattachments |
+> | Kubernetes/connectedClusters/k8s. io/volumeattachments/delete | 刪除 volumeattachments |
+> | Microsoft. Kubernetes/connectedClusters/swagger-api/read | 讀取 swagger-api |
+> | Microsoft. Kubernetes/connectedClusters/swagger-ui/read | 讀取 swagger ui |
+> | Microsoft. Kubernetes/connectedClusters/ui/read | 讀取 ui |
+> | Kubernetes/connectedClusters/users/模擬/動作 | 模擬使用者 |
+> | Kubernetes/connectedClusters/version/read | 讀取版本 |
 
 ### <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
@@ -9120,7 +9629,7 @@ Azure 服務： [Azure 原則](../governance/policy/index.yml)
 > | Microsoft.PolicyInsights/remediations/delete | 刪除原則補救。 |
 > | Microsoft.PolicyInsights/remediations/cancel/action | 取消進行中的 Microsoft 原則補救。 |
 > | Microsoft.PolicyInsights/remediations/listDeployments/read | 列出原則補救所需的部署。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.PolicyInsights/checkDataPolicyCompliance/action | 根據資料原則檢查給定元件的合規性狀態。 |
 > | Microsoft.PolicyInsights/policyEvents/logDataEvents/action | 記錄資源元件原則事件。 |
 
@@ -9153,76 +9662,76 @@ Azure 服務： [Site Recovery](../site-recovery/index.yml)
 > | 動作 | 描述 |
 > | --- | --- |
 > | Microsoft.RecoveryServices/register/action | 為指定的資源提供者註冊訂用帳戶 |
-> | Microsoft.RecoveryServices/Locations/backupPreValidateProtection/action |  |
-> | Microsoft.RecoveryServices/Locations/backupStatus/action | 檢查復原服務保存庫的備份狀態 |
-> | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | 驗證功能 |
+> | az.recoveryservices/位置/backupCrossRegionRestore/動作 | 觸發跨區域還原。 |
+> | az.recoveryservices/位置/backupCrrJob/動作 | 在復原服務保存庫的次要區域中取得跨區域還原作業詳細資料。 |
+> | az.recoveryservices/位置/backupCrrJobs/動作 | 列出復原服務保存庫次要區域中的跨區域還原作業。 |
+> | az.recoveryservices/位置/backupPreValidateProtection/動作 |  |
+> | az.recoveryservices/位置/backupStatus/動作 | 檢查復原服務保存庫的備份狀態 |
+> | az.recoveryservices/位置/backupValidateFeatures/動作 | 驗證功能 |
 > | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp 是服務所使用的內部作業 |
 > | Microsoft.RecoveryServices/locations/checkNameAvailability/action | 檢查資源名稱可用性是 API，以檢查是否有可用的資源名稱 |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp 是服務所使用的內部作業 |
-> | Az.recoveryservices/位置/backupProtectedItem/寫入 | 建立備用的受保護項目 |
-> | Az.recoveryservices/位置/backupProtectedItems/讀取 | 傳回所有受保護項目的清單。 |
+> | az.recoveryservices/位置/backupAadProperties/讀取 | 取得用於跨區域還原的第三個區域中進行驗證的 AAD 屬性。 |
+> | az.recoveryservices/位置/backupCrrOperationResults/讀取 | 傳回復原服務保存庫的 CRR 操作結果。 |
+> | az.recoveryservices/位置/backupCrrOperationsStatus/讀取 | 傳回復原服務保存庫的 CRR 操作狀態。 |
+> | az.recoveryservices/位置/backupProtectedItem/寫入 | 建立備用的受保護項目 |
+> | az.recoveryservices/位置/backupProtectedItems/讀取 | 傳回所有受保護項目的清單。 |
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 取得給定作業的作業狀態 |
 > | Microsoft.RecoveryServices/operations/read | 作業會傳回資源提供者的作業清單 |
-> | Az.recoveryservices/保存庫/backupCrossRegionRestore/動作 | 受保護專案的跨區域還原復原點。 |
-> | Az.recoveryservices/保存庫/backupCrrJob/動作 | 在復原服務保存庫的次要區域中取得跨區域還原作業詳細資料。 |
-> | Az.recoveryservices/保存庫/backupCrrJobs/動作 | 列出復原服務保存庫次要區域中的跨區域還原作業。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | 匯出作業 |
-> | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/action | 傳回復原服務保存庫的安全性 PIN 碼資訊。 |
-> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 驗證受保護項目上的作業 |
+> | az.recoveryservices/保存庫/backupJobsExport/動作 | 匯出作業 |
+> | az.recoveryservices/保存庫/backupSecurityPIN/動作 | 傳回復原服務保存庫的安全性 PIN 碼資訊。 |
+> | az.recoveryservices/保存庫/backupValidateOperation/動作 | 驗證受保護項目上的作業 |
 > | Microsoft.RecoveryServices/Vaults/write | 「建立保存庫」作業會建立 'vault' 類型的 Azure 資源 |
 > | Microsoft.RecoveryServices/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
 > | Microsoft.RecoveryServices/Vaults/delete | 「刪除保存庫」作業會刪除 'vault' 類型的指定 Azure 資源 |
-> | Az.recoveryservices/保存庫/backupAadProperties/read | 取得用於跨區域還原的第三個區域中進行驗證的 AAD 屬性。 |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/read | 傳回復原服務保存庫的組態。 |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/write | 更新復原服務保存庫的組態。 |
-> | Az.recoveryservices/保存庫/backupCrrOperationResults/read | 傳回復原服務保存庫的 CRR 操作結果。 |
-> | Az.recoveryservices/保存庫/backupCrrOperationsStatus/read | 傳回復原服務保存庫的 CRR 操作狀態。 |
-> | Az.recoveryservices/保存庫/backupEncryptionConfigs/read | 取得備份資源加密設定。 |
-> | Az.recoveryservices/保存庫/backupEncryptionConfigs/寫入 | 更新備份資源加密設定 |
-> | Microsoft.RecoveryServices/Vaults/backupEngines/read | 傳回已向保存庫註冊的所有備份管理伺服器。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | 重新整理容器清單 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/delete | 刪除備份保護用途 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | 取得備份保護用途 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | 建立備份保護用途 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 傳回作業的狀態 |
-> | Az.recoveryservices/保存庫/backupFabrics/operationsStatus/read | 傳回作業的狀態 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | 取得所有可保護的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/delete | 刪除已註冊的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | 執行容器內工作負載的查詢 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | 傳回所有已註冊的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | 建立已註冊的容器 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | 取得容器中的所有項目 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 取得對保護容器執行之作業的結果。 |
-> | Az.recoveryservices/保存庫/backupFabrics/protectionContainers/operationsStatus/read | 取得保護容器上所執行之作業的狀態。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 對受保護的項目執行備份。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | 刪除受保護的項目 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 傳回受保護項目的物件詳細資料 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | 建立備用的受保護項目 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 取得對受保護項目執行之作業的結果。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 傳回對受保護項目執行之作業的狀態。 |
-> | Az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/action | 取得跨區域還原的 AccessToken。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 為受保護的項目佈建即時項目復原 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 取得受保護項目的復原點。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 還原受保護項目的復原點。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 為受保護的項目撤銷即時項目復原 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | 取消作業 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/read | 傳回所有作業物件 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | 傳回作業的作業結果。 |
-> | Az.recoveryservices/保存庫/>backupjobs/operationsStatus/read | 傳回工作作業的狀態。 |
-> | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | 傳回復原服務保存庫的備份作業結果。 |
-> | Microsoft.RecoveryServices/Vaults/backupOperations/read | 傳回復原服務保存庫的備份作業狀態。 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/delete | 刪除保護原則 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | 傳回所有保護原則 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | 建立保護原則 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | 取得原則作業的結果。 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | 取得原則作業的狀態。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | 傳回所有可保護項目的清單。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | 傳回所有受保護項目的清單。 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | 傳回屬於訂用帳戶的所有容器 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | 列出所有的備份保護用途 |
-> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | 傳回復原服務保存庫的儲存體組態。 |
-> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/write | 更新復原服務保存庫的儲存體組態。 |
-> | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | 傳回復原服務之受保護項目和受保護伺服器的摘要。 |
+> | az.recoveryservices/保存庫/backupconfig/read | 傳回復原服務保存庫的組態。 |
+> | az.recoveryservices/保存庫/backupconfig/寫入 | 更新復原服務保存庫的組態。 |
+> | az.recoveryservices/保存庫/backupEncryptionConfigs/read | 取得備份資源加密設定。 |
+> | az.recoveryservices/保存庫/backupEncryptionConfigs/寫入 | 更新備份資源加密設定 |
+> | az.recoveryservices/保存庫/backupEngines/read | 傳回已向保存庫註冊的所有備份管理伺服器。 |
+> | az.recoveryservices/保存庫/backupFabrics/refreshContainers/action | 重新整理容器清單 |
+> | az.recoveryservices/保存庫/backupFabrics/backupProtectionIntent/delete | 刪除備份保護用途 |
+> | az.recoveryservices/保存庫/backupFabrics/backupProtectionIntent/read | 取得備份保護用途 |
+> | az.recoveryservices/保存庫/backupFabrics/backupProtectionIntent/write | 建立備份保護用途 |
+> | az.recoveryservices/保存庫/backupFabrics/operationResults/read | 傳回作業的狀態 |
+> | az.recoveryservices/保存庫/backupFabrics/operationsStatus/read | 傳回作業的狀態 |
+> | az.recoveryservices/保存庫/backupFabrics/protectableContainers/read | 取得所有可保護的容器 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/delete | 刪除已註冊的容器 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/inquire/action | 執行容器內工作負載的查詢 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/read | 傳回所有已註冊的容器 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/write | 建立已註冊的容器 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/items/read | 取得容器中的所有項目 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/operationResults/read | 取得對保護容器執行之作業的結果。 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/operationsStatus/read | 取得保護容器上所執行之作業的狀態。 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/protectedItems/備份/動作 | 對受保護的項目執行備份。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/delete | 刪除受保護的項目 |
+> | az.recoveryservices/保存庫/backupFabrics/protectionContainers/protectedItems/read | 傳回受保護項目的物件詳細資料 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/write | 建立備用的受保護項目 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/operationResults/read | 取得對受保護項目執行之作業的結果。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 傳回對受保護項目執行之作業的狀態。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/action | 取得跨區域還原的 AccessToken。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 為受保護的項目佈建即時項目復原 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 取得受保護項目的復原點。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 還原受保護項目的復原點。 |
+> | az.recoveryservices/vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 為受保護的項目撤銷即時項目復原 |
+> | az.recoveryservices/保存庫/>backupjobs/取消/動作 | 取消作業 |
+> | az.recoveryservices/保存庫/>backupjobs/read | 傳回所有作業物件 |
+> | az.recoveryservices/保存庫/>backupjobs/operationResults/read | 傳回作業的作業結果。 |
+> | az.recoveryservices/保存庫/>backupjobs/operationsStatus/read | 傳回工作作業的狀態。 |
+> | az.recoveryservices/保存庫/backupOperationResults/read | 傳回復原服務保存庫的備份作業結果。 |
+> | az.recoveryservices/保存庫/backupOperations/read | 傳回復原服務保存庫的備份作業狀態。 |
+> | az.recoveryservices/保存庫/backupPolicies/刪除 | 刪除保護原則 |
+> | az.recoveryservices/保存庫/backupPolicies/read | 傳回所有保護原則 |
+> | az.recoveryservices/保存庫/backupPolicies/寫入 | 建立保護原則 |
+> | az.recoveryservices/保存庫/backupPolicies/operationResults/read | 取得原則作業的結果。 |
+> | az.recoveryservices/保存庫/backupPolicies/作業/讀取 | 取得原則作業的狀態。 |
+> | az.recoveryservices/保存庫/backupProtectableItems/read | 傳回所有可保護項目的清單。 |
+> | az.recoveryservices/保存庫/backupProtectedItems/read | 傳回所有受保護項目的清單。 |
+> | az.recoveryservices/保存庫/backupProtectionContainers/read | 傳回屬於訂用帳戶的所有容器 |
+> | az.recoveryservices/保存庫/backupProtectionIntents/read | 列出所有的備份保護用途 |
+> | az.recoveryservices/保存庫/backupstorageconfig/read | 傳回復原服務保存庫的儲存體組態。 |
+> | az.recoveryservices/保存庫/backupstorageconfig/寫入 | 更新復原服務保存庫的儲存體組態。 |
+> | az.recoveryservices/保存庫/backupUsageSummaries/read | 傳回復原服務之受保護項目和受保護伺服器的摘要。 |
 > | Microsoft.RecoveryServices/Vaults/certificates/write | 「更新資源憑證」作業會更新資源/保存庫的認證憑證。 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/read | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/write | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
@@ -9231,14 +9740,14 @@ Azure 服務： [Site Recovery](../site-recovery/index.yml)
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | 解決警示。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/read | 取得復原服務保存庫通知組態。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/write | 設定復原服務保存庫的電子郵件通知。 |
-> | Az.recoveryservices/保存庫/privateEndpointConnectionProxies/刪除 | 等候幾分鐘的時間，然後再次嘗試操作。 如果問題持續發生， 請連絡 Microsoft 支援服務。 |
-> | Az.recoveryservices/保存庫/privateEndpointConnectionProxies/read | 取得所有可保護的容器 |
-> | Az.recoveryservices/保存庫/privateEndpointConnectionProxies/驗證/動作 | 取得所有可保護的容器 |
-> | Az.recoveryservices/保存庫/privateEndpointConnectionProxies/寫入 | 取得所有可保護的容器 |
-> | Az.recoveryservices/保存庫/privateEndpointConnectionProxies/operationsStatus/read | 取得所有可保護的容器 |
-> | Az.recoveryservices/保存庫/privateEndpointConnections/刪除 | 刪除私人端點要求。 此呼叫是由備份管理員進行。 |
-> | Az.recoveryservices/保存庫/privateEndpointConnections/寫入 | 核准或拒絕私人端點要求。 此呼叫是由備份管理員進行。 |
-> | Az.recoveryservices/保存庫/privateEndpointConnections/operationsStatus/read | 傳回私人端點連接的作業狀態。 |
+> | az.recoveryservices/保存庫/privateEndpointConnectionProxies/刪除 | 等候幾分鐘的時間，然後再次嘗試操作。 如果問題持續發生， 請連絡 Microsoft 支援服務。 |
+> | az.recoveryservices/保存庫/privateEndpointConnectionProxies/read | 取得所有可保護的容器 |
+> | az.recoveryservices/保存庫/privateEndpointConnectionProxies/驗證/動作 | 取得所有可保護的容器 |
+> | az.recoveryservices/保存庫/privateEndpointConnectionProxies/寫入 | 取得所有可保護的容器 |
+> | az.recoveryservices/保存庫/privateEndpointConnectionProxies/operationsStatus/read | 取得所有可保護的容器 |
+> | az.recoveryservices/保存庫/privateEndpointConnections/刪除 | 刪除私人端點要求。 此呼叫是由備份管理員進行。 |
+> | az.recoveryservices/保存庫/privateEndpointConnections/寫入 | 核准或拒絕私人端點要求。 此呼叫是由備份管理員進行。 |
+> | az.recoveryservices/保存庫/privateEndpointConnections/operationsStatus/read | 傳回私人端點連接的作業狀態。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | 「註冊服務容器」作業可用來向復原服務註冊容器。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/delete | 「取消註冊容器」作業可用來取消註冊容器。 |
@@ -9294,7 +9803,7 @@ Azure 服務： [Site Recovery](../site-recovery/index.yml)
 > | Az.recoveryservices/vault/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/addDisks/action | 新增磁碟 |
 > | Az.recoveryservices/vault/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/removeDisks/action | 移除磁片 |
 > | Az.recoveryservices/vault/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/ResolveHealthErrors/action |  |
-> | Az.recoveryservices/vault/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCancel/action |  |
+> | Az.recoveryservices/vault/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCancel/action | 取消容錯移轉 |
 > | Az.recoveryservices/vault/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/operationresults/read | 追蹤資源受保護專案上非同步作業的結果 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | 讀取任何複寫復原點 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/targetComputeSizes/read | 讀取任何目標計算大小 |
@@ -9345,6 +9854,7 @@ Azure 服務： [Site Recovery](../site-recovery/index.yml)
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailoverCleanup/action | 測試容錯移轉清理復原方案 |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | 容錯移轉認可復原方案 |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | 重新保護復原方案 |
+> | Az.recoveryservices/保存庫/replicationRecoveryPlans/failoverCancel/action | 取消容錯移轉復原計畫 |
 > | Az.recoveryservices/保存庫/replicationRecoveryPlans/operationresults/read | 追蹤資源復原方案上非同步作業的結果 |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryServicesProviders/read | 讀取任何復原服務提供者 |
 > | Microsoft.RecoveryServices/vaults/replicationStorageClassificationMappings/read | 讀取任何存放裝置分類對應 |
@@ -9357,7 +9867,7 @@ Azure 服務： [Site Recovery](../site-recovery/index.yml)
 > | Az.recoveryservices/保存庫/replicationVaultSettings/read | 讀取任何  |
 > | Az.recoveryservices/保存庫/replicationVaultSettings/寫入 | 建立或更新任何  |
 > | Microsoft.RecoveryServices/vaults/replicationvCenters/read | 讀取任何 vCenter |
-> | Microsoft.RecoveryServices/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
+> | az.recoveryservices/保存庫/使用量/讀取 | 傳回復原服務保存庫的使用量詳細資料。 |
 > | Microsoft.RecoveryServices/vaults/usages/read | 讀取任何保存庫使用量 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | 「保存庫權杖」作業可用來取得保存庫層級後端作業的保存庫權杖。 |
 
@@ -9537,10 +10047,20 @@ Azure 服務： [Azure 數位 Twins](../digital-twins/index.yml)
 > | DigitalTwins/digitalTwinsInstances/logDefinitions/read | 取得資源 Azure 監視器的記錄檔設定 |
 > | DigitalTwins/digitalTwinsInstances/metricDefinitions/read | 取得資源 Azure 監視器的度量設定 |
 > | DigitalTwins/digitalTwinsInstances/operationsResults/read | 讀取任何作業結果 |
+> | DigitalTwins/digitalTwinsInstances/privateEndpointConnectionProxies/validate/action | 驗證 PrivateEndpointConnectionProxies 資源 |
+> | DigitalTwins/digitalTwinsInstances/privateEndpointConnectionProxies/read | 讀取 PrivateEndpointConnectionProxies 資源 |
+> | DigitalTwins/digitalTwinsInstances/privateEndpointConnectionProxies/write | 寫入 PrivateEndpointConnectionProxies 資源 |
+> | DigitalTwins/digitalTwinsInstances/privateEndpointConnectionProxies/delete | 刪除 PrivateEndpointConnectionProxies 資源 |
+> | DigitalTwins/digitalTwinsInstances/privateEndpointConnectionProxies/operationResults/read | 取得私人端點連線 proxy 上非同步作業的結果 |
+> | DigitalTwins/digitalTwinsInstances/privateEndpointConnections/read | 讀取 PrivateEndpointConnection 資源 |
+> | DigitalTwins/digitalTwinsInstances/privateEndpointConnections/write | 寫入 PrivateEndpointConnection 資源 |
+> | DigitalTwins/digitalTwinsInstances/privateEndpointConnections/delete | 刪除 PrivateEndpointConnection 資源 |
+> | DigitalTwins/digitalTwinsInstances/privateEndpointConnections/operationResults/read | 取得私人端點連接上非同步作業的結果 |
+> | DigitalTwins/digitalTwinsInstances/privateLinkResources/read | 讀取數位 Twins 的 PrivateLinkResources |
 > | DigitalTwins/位置/checkNameAvailability/動作 | 檢查數位 Twins 資源提供者中的資源名稱可用性 |
 > | DigitalTwins/位置/operationsResults/讀取 | 讀取任何作業結果 |
 > | DigitalTwins/operations/read | 讀取所有作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | DigitalTwins/query/action | 查詢任何數位 Twins 圖形 |
 > | DigitalTwins/DigitalTwins/read | 讀取任何數位對應項 |
 > | DigitalTwins/DigitalTwins/write | 建立或更新任何數位對應項 |

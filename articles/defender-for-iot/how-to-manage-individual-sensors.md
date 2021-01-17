@@ -4,15 +4,15 @@ description: 瞭解如何管理個別的感應器，包括管理啟用檔案、�
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 01/10/2021
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 25f47be98b11f05ee6ac27018152ece05c0de4e4
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246684"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539571"
 ---
 # <a name="manage-individual-sensors"></a>管理個別感應器
 
@@ -90,7 +90,7 @@ ms.locfileid: "98246684"
 
 ## <a name="manage-certificates"></a>管理憑證
 
-在感應器安裝之後，會產生本機自我簽署憑證，並使用此憑證來存取感應器 web 應用程式。 當第一次登入感應器時，系統管理員使用者會收到提供 SSL/TLS 憑證的提示。  如需第一次安裝的詳細資訊，請參閱登 [入並啟動感應器](how-to-activate-and-set-up-your-sensor.md)。
+在感應器安裝之後，會產生本機自我簽署憑證，並使用此憑證來存取感應器 web 應用程式。 當第一次登入感應器時，系統管理員使用者會收到提供 SSL/TLS 憑證的提示。  如需首次安裝的詳細資訊，請參閱登 [入並啟動感應器](how-to-activate-and-set-up-your-sensor.md)。
 
 本文提供有關更新憑證、使用憑證 CLI 命令，以及支援的憑證和憑證參數的資訊。
 
@@ -98,11 +98,34 @@ ms.locfileid: "98246684"
 
 適用于 IoT 的 Azure Defender 使用 SSL/TLS 憑證：
 
-1. 上傳 CA 簽署的憑證，以符合您組織所要求的特定憑證和加密需求。
+- 上傳 CA 簽署的憑證，以符合您組織所要求的特定憑證和加密需求。
 
-1. 允許在管理主控台和連線的感應器之間，以及在管理主控台與高可用性管理主控台之間進行驗證。 驗證會針對憑證撤銷清單和憑證到期日進行評估。 **如果驗證失敗，管理主控台和感應器之間的通訊會停止，並在主控台中顯示驗證錯誤。安裝之後，預設會啟用此選項。**
+- 允許在管理主控台和連線的感應器之間，以及在管理主控台與高可用性管理主控台之間進行驗證。 驗證會針對憑證撤銷清單和憑證到期日進行評估。 *如果驗證失敗，管理主控台和感應器之間的通訊會停止，並在主控台中顯示驗證錯誤*。 安裝之後，預設會啟用此選項。
 
  協力廠商轉送規則，例如傳送到 SYSLOG、Splunk 或 ServiceNow 的警示資訊;或與 Active Directory 的通訊不會經過驗證。
+
+#### <a name="ssl-certificates"></a>SSL 憑證
+
+適用于 IoT 的 Defender 感應器和內部部署管理主控台使用 SSL，以及適用于下列功能的 TLS 憑證： 
+
+ - 保護使用者和設備的 web 主控台之間的通訊安全。 
+ 
+ - 保護感應器和內部部署管理主控台上的 REST API 通訊。
+ 
+ - 在感應器和內部部署管理主控台之間進行安全通訊。 
+
+安裝之後，設備會產生本機自我簽署憑證，以允許初步存取 web 主控台。 您可以使用命令列工具來安裝企業 SSL 和 TLS 憑證 [`cyberx-xsense-certificate-import`](#cli-commands) 。 
+
+ > [!NOTE]
+ > 若為整合和轉送規則，其中設備是會話的用戶端和起始端，則會使用特定的憑證，而且與系統憑證無關。  
+ >
+ >在這些情況下，通常會從伺服器接收憑證，或使用將提供特定憑證來設定整合的非對稱式加密。
+
+設備可以使用唯一的憑證檔案。 如果您需要取代已上傳的憑證，
+
+- 從10.0 版開始，可以從 [系統設定] 功能表取代憑證。
+
+- 針對10.0 之前的版本，可以使用命令列工具來取代 SSL 憑證。
 
 ### <a name="update-certificates"></a>更新憑證
 
@@ -111,15 +134,19 @@ ms.locfileid: "98246684"
 若要更新憑證：  
 
 1. 選取 [ **系統設定**]。
+
 1. 選取 [ **SSL/TLS 憑證]。**
 1. 刪除或編輯憑證，並新增一個新憑證。
+
     - 新增憑證名稱。
+    
     - 上傳 CRT 檔案和金鑰檔，然後輸入複雜密碼。
     - 視需要上傳 PEM 檔案。
 
 若要變更驗證設定：
 
 1. 啟用或停用 [ **啟用憑證驗證** ] 切換。
+
 1. 選取 [儲存]。
 
 如果啟用此選項且驗證失敗，管理主控台和感應器之間的通訊會停止，並在主控台中顯示驗證錯誤。
@@ -128,87 +155,167 @@ ms.locfileid: "98246684"
 
 以下是支援的憑證：
 
-- 私人/企業金鑰基礎結構 (私用 PKI)  
-- 公開金鑰基礎結構 (公開 PKI)  
-- 在本機產生的設備 (本機自我簽署) 。 **不建議使用自我簽署憑證。** 此連接不 *安全* ，而且只能用於測試環境。 憑證的擁有者無法驗證，而且無法維護系統的安全性。 自我簽署憑證永遠不能用於生產網路。  
+- 私用和企業金鑰基礎結構 (私用 PKI) 
 
-支援下列參數。 憑證 CRT
+- 公開金鑰基礎結構 (公開 PKI)  
+
+- 在本機產生的設備 (本機自我簽署) 。 
+
+> [!IMPORTANT]
+> 我們不建議使用自我簽署憑證。 這種類型的連線不安全，而且只能用於測試環境。 因為無法驗證憑證的擁有者，而且無法維護系統的安全性，所以不應該將自我簽署憑證用於生產網路。
+
+### <a name="supported-ssl-certificates"></a>支援的 SSL 憑證 
+
+支援下列參數。 
+
+**憑證 CRT**
 
 - 您功能變數名稱的主要憑證檔案
+
 - 簽名演算法 = SHA256RSA
 - 簽章雜湊演算法 = SHA256
 - 有效期自 = 有效的過去日期
 - 有效期限 = 有效的未來日期
-- Public Key = RSA 2048bits () 或4096bits 的最小值
+- 公開金鑰 = RSA 2048 位 (最低) 或4096位
 - CRL 發佈點 = crl 檔案的 URL
-- 主體 CN = URL，可以是萬用字元憑證，例如 example.contoso.com 或  *. contoso.com**
+- 主體 CN = URL，可以是萬用字元憑證;例如，node.js。 <span>com 或 *. contoso。 <span>Com
 - Subject (C) ountry = 已定義，例如 US
 - 主體 (OU) 組織單位 = 已定義，例如 Contoso Labs
 - Subject (O) rganization = 已定義，例如 Contoso Inc.。
 
-金鑰檔
+**金鑰檔**
 
-- 建立 CSR 時產生的金鑰檔
-- RSA 2048bits (最小) 或4096bits
+- 建立 CSR 時產生的金鑰檔。
 
-憑證鏈結
+- RSA 2048 位 (最低) 或4096位。
+
+ > [!Note]
+ > 使用金鑰長度4096bits：
+ > - 每個連線開始時的 SSL 交握將會變慢。  
+ > - 在交握期間，CPU 使用率也會增加。 
+
+**憑證鏈**
 
 - 如果您的 CA 所提供的任何) ，中繼憑證檔案 (
+
 - 發行伺服器憑證的 CA 憑證應該是檔案中的第一個，後面接著任何其他專案，跟根目錄一樣。 
 - 可以包含包屬性。
 
-複雜密碼
+**密碼**
 
-- 支援1個金鑰
-- 在匯入憑證時設定
+- 支援一個金鑰。
 
-具有其他參數的憑證可能會運作，但 Microsoft 無法支援。
+- 當您匯入憑證時設定。
+
+具有其他參數的憑證可能會運作，但 Microsoft 不支援它們。
 
 #### <a name="encryption-key-artifacts"></a>加密金鑰構件
 
 **pem –憑證容器檔案**
 
-此名稱是來自隱私權增強的郵件 (PEM) 、安全電子郵件的歷程記錄方法，以及它所使用的容器格式存留在上，是 x509 asn.1 金鑰的 base64 轉譯。  
+隱私權增強郵件 (PEM) 檔是用來保護電子郵件的一般檔案類型。 現今，PEM 檔案會與憑證搭配使用，並使用 x509 ASN1 金鑰。  
 
-定義于 Rfc 1421 至1424：容器格式可能只包含公開憑證 (例如使用 Apache 安裝，以及 CA 憑證檔案/etc/ssl/certs) ，或可能包含公開金鑰、私密金鑰和根憑證在內的整個憑證鏈。  
+容器檔案定義于 Rfc 1421 至1424，這是一種可能只包含公用憑證的容器格式。 例如，Apache 安裝、CA 憑證、檔案等、SSL 或憑證。 這可能包含整個憑證鏈，包括公開金鑰、私密金鑰和根憑證。  
 
-它也可以將 CSR 編碼，因為 PKCS10 格式可以轉譯成 PEM。
+它也可以將 CSR 編碼為 PKCS10 格式，以轉譯成 PEM。
 
-**.crt – Certificate Container File**
+**.crt – certificate container file**
 
-Pem (或罕見的 der) 具有不同副檔名的格式檔案。 Windows 檔案總管會將它辨識為憑證。 Windows 檔案總管不能辨識 pem 檔案。
+`.pem` `.der` 具有不同副檔名的或格式化檔案。 Windows 檔案總管將檔案辨識為憑證。 `.pem`   Windows 檔案總管不能辨識檔案。
 
 **. 金鑰-私密金鑰檔案**
 
-金鑰檔與 PEM 檔案的格式相同，但副檔名不同。
-##### <a name="use-cli-commands-to-deploy-certificates"></a>使用 CLI 命令部署憑證
+金鑰檔的格式與 PEM 檔案的格式相同，但副檔名不同。
 
-使用 *cyberx-xsense-certificate-import* CLI 命令匯入憑證。 若要使用此工具，您必須使用 winscp 或) wget 等工具，將憑證檔案上傳到裝置 (。
+#### <a name="additional-commonly-available-key-artifacts"></a>其他常用的主要構件
+
+**。 csr-憑證簽署要求**。  
+
+此檔案會用來提交給憑證授權單位單位。 實際的格式為 PKCS10 （定義于 RFC 2986 中），其中可能包含所要求憑證的部分或所有重要詳細資料。 例如，主體、組織和狀態。 它是由 CA 簽署的憑證公開金鑰，並會接收傳回的憑證。  
+
+傳回的憑證是公開憑證，其中包含公開金鑰，但不包含私密金鑰。 
+
+**pkcs12 .pfx – password 容器**。 
+
+最初是由 RSA 在 Public-Key 加密標準 (PKCS) 中定義，這是 Microsoft 最初增強的12個變數，並在稍後提交為 RFC 7292。  
+
+此容器格式需要同時包含公開和私用憑證組的密碼。 與檔案不同 `.pem`   的是，此容器已完全加密。  
+
+您可以使用 OpenSSL 將它轉換成 `.pem`   具有公開和私密金鑰的檔案： `openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes`  
+
+**der –二進位編碼的 PEM**。
+
+以二進位格式編碼 asn.1 語法的方法是透過檔案 `.pem`   ，這只是一個 Base64 編碼的檔案 `.der` 。 
+
+OpenSSL 可將這些檔案轉換成 `.pem` ：  `openssl x509 -inform der -in to-convert.der -out converted.pem` 。  
+
+Windows 會將這些檔案辨識為憑證檔案。 根據預設，Windows 會將憑證匯出為 `.der` 具有不同副檔名的格式化檔案。  
+
+**crl-憑證撤銷清單**。  
+憑證授權單位單位會產生這些檔案，以在憑證到期之前將憑證解除授權。
+ 
+##### <a name="cli-commands"></a>CLI 命令
+
+使用 `cyberx-xsense-certificate-import` CLI 命令匯入憑證。 若要使用此工具，您必須使用 WinSCP 或 Wget 等工具，將憑證檔案上傳至裝置。
 
 此命令支援下列輸入旗標：
 
--h 顯示命令列說明語法
+- `-h`：顯示命令列説明語法。
 
---憑證檔案的 crt 路徑 (CRT 延伸模組) 
+- `--crt`：憑證檔案的路徑 ( .crt 副檔名) 。
 
---key *. key 檔案，金鑰長度應為最低2048位
+- `--key`：  \* 金鑰檔。 金鑰長度至少應為2048位。
 
---憑證鏈檔案的鏈路徑 (選用) 
+- `--chain`：憑證鏈檔案的路徑 (選擇性) 。
 
---傳遞用來加密憑證的複雜密碼 (選擇性) 
+- `--pass`：用來加密憑證 (選用) 的複雜密碼。
 
---複雜密碼設定預設值 = False，未使用。 設定為 [TRUE] 以使用先前憑證提供的先前的複雜密碼 (選擇性) 
+- `--passphrase-set`： Default = `False` 、未使用。 將設定為， `True` 以使用先前憑證提供的先前複雜密碼 (選擇性) 。
 
-使用 CLI 命令時：
+當您使用 CLI 命令時：
 
 - 確認憑證檔案在設備上是可讀取的。
 
-- 確認憑證中的功能變數名稱和 IP 符合 IT 部門所規劃的設定。
+- 確認憑證中的功能變數名稱和 IP 符合 IT 部門已規劃的設定。
 
+### <a name="use-openssl-to-manage-certificates"></a>使用 OpenSSL 管理憑證
+
+使用下列命令來管理您的憑證：
+
+| 描述 | CLI 命令 |
+|--|--|
+| 產生新的私密金鑰和憑證簽署要求 | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
+| 產生自我簽署的憑證 | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
+| 針對現有的私密金鑰 (CSR) 產生憑證簽署要求 | `openssl req -out CSR.csr -key privateKey.key -new` |
+| 根據現有的憑證產生憑證簽署要求 | `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key` |
+| 從私密金鑰移除複雜密碼 | `openssl rsa -in privateKey.pem -out newPrivateKey.pem` |
+
+如果您需要檢查憑證、CSR 或私密金鑰內的資訊，請使用下列命令：
+
+| 描述 | CLI 命令 |
+|--|--|
+| 檢查 (CSR) 的憑證簽署要求 | `openssl req -text -noout -verify -in CSR.csr` |
+| 檢查私密金鑰 | `openssl rsa -in privateKey.key -check` |
+| 檢查憑證 | `openssl x509 -in certificate.crt -text -noout`  |
+
+如果您收到錯誤，指出私密金鑰與憑證不符，或您安裝到網站的憑證不受信任，請使用下列命令來修正錯誤：
+
+| 描述 | CLI 命令 |
+|--|--|
+| 檢查公開金鑰的 MD5 雜湊，以確保它符合 CSR 或私密金鑰中的內容 | 單. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
+
+若要將憑證和金鑰轉換成不同的格式，以使其與特定類型的伺服器或軟體相容，請使用下列命令：
+
+| 描述 | CLI 命令 |
+|--|--|
+| 將 DER 檔案 ( .crt) 轉換為 PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
+| 將 PEM 檔案轉換成 DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
+| 將 PKCS # 12 檔案 ( .pfx. p12) 包含私密金鑰和憑證轉換為 PEM | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />您可以新增 `-nocerts` 至只輸出私密金鑰，或新增 `-nokeys` 至只輸出憑證。 |
+| 將 PEM 憑證檔案和私密金鑰轉換成 PKCS # 12 ( .pfx. p12)  | `openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt` |
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>將感應器連線到管理主控台
 
-本節說明如何確保感應器和內部部署管理主控台之間的連接。 如果您是在有空調的網路中工作，而且想要從感應器將資產和警示資訊傳送到管理主控台，就必須這樣做。 此連接也可讓管理主控台將系統設定推送至感應器，並在感應器上執行其他管理工作。
+本節說明如何確保感應器和內部部署管理主控台之間的連接。 如果您是在有空調的網路中工作，而且想要從感應器將資產和警示資訊傳送到管理主控台，請執行這項操作。 此連接也可讓管理主控台將系統設定推送至感應器，並在感應器上執行其他管理工作。
 
 連接：
 
@@ -282,7 +389,7 @@ Pem (或罕見的 der) 具有不同副檔名的格式檔案。 Windows 檔案總
 
 3. 設定參數，如下所示：
 
-    | 參數 | 說明 |
+    | 參數 | 描述 |
     |--|--|
     | IP 位址 | 感應器 IP 位址 |
     | 子網路遮罩 | 遮罩位址 |
@@ -299,7 +406,7 @@ Pem (或罕見的 der) 具有不同副檔名的格式檔案。 Windows 檔案總
 
 :::image type="content" source="media/how-to-manage-individual-sensors/time-and-region.png" alt-text="設定時間和區域。":::
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |--|--|
 | 時區 | 時區定義：<br />-警示<br />-趨勢和統計資料小工具<br />-資料採礦報表<br />   -風險評量報告<br />-攻擊媒介 |
 | 日期格式 | 選取下列其中一個格式選項：<br />-dd/MM/yyyy HH： MM： ss<br />-MM/dd/yyyy HH： MM： ss<br />-yyyy/MM/dd HH： MM： ss |

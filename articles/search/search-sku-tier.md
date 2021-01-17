@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 38ddfc2d3940bb9267edd6c5c683918c1fb5dc58
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251690"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539604"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
 
@@ -71,7 +71,7 @@ ms.locfileid: "98251690"
 
 ## <a name="billing-rates"></a>帳單費率
 
-階層具有不同的計費費率，以較高的費率在較昂貴的硬體上執行，或提供更昂貴的功能。 您在 [Azure 定價頁面](https://azure.microsoft.com/pricing/details/search/) 中看到的每個服務層級 Azure 認知搜尋的計費費率。
+階層具有不同的計費費率，以較高的費率在較昂貴的硬體上執行，或提供更昂貴的功能。 您可以在適用于 Azure 認知搜尋的 [Azure 定價頁面](https://azure.microsoft.com/pricing/details/search/) 中找到各層的計費費率。
 
 一旦您建立服務之後，計費費率會成為在時鐘周圍執行服務的 *固定成本* ，而如果您選擇增加更多容量，則會產生 *遞增成本* 。
 
