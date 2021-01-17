@@ -5,13 +5,13 @@ author: mksuni
 ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: b0f0ee9477a84dc198ea3fb48b2ed81be10ea9c5
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/18/2021
+ms.openlocfilehash: ac7019abab1aefaee95c155e34fbc0cb551b4d94
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251874"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538427"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫的根 CA 變更變更
 
@@ -19,6 +19,9 @@ ms.locfileid: "98251874"
 
 >[!NOTE]
 > 根據客戶的意見反應，我們已從2020年10月15日到2021年10月15日之前，為現有的巴爾的摩根 CA 延伸根憑證取代。 我們希望此延伸模組可提供足夠的前置時間，讓使用者在受到影響時，執行用戶端變更。
+
+> [!NOTE]
+> 本文包含詞彙 _從屬_ 的參考，這是 Microsoft 不再使用的詞彙。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ## <a name="what-update-is-going-to-happen"></a>即將發生什麼更新？
 
@@ -69,7 +72,7 @@ ms.locfileid: "98251874"
 
   - 針對 .NET (適用于 mariadb Connector/NET，MariaDBConnector) 使用者，請確定 Windows 憑證存放區、受信任的根憑證授權單位都有 **baltimorecybertrustroot.crt** 和 **DigiCertGlobalRootG2** 。 如果有任何憑證不存在，請匯入遺失的憑證。
 
-    ![適用於 MariaDB 的 Azure 資料庫 .net 憑證](media/overview/netconnecter-cert.png)
+    [![適用於 MariaDB 的 Azure 資料庫 .net 憑證](media/overview/netconnecter-cert.png)](media/overview/netconnecter-cert.png#lightbox)
 
   - 針對使用 SSL_CERT_DIR 的 Linux 上的 .NET 使用者，請確定 SSL_CERT_DIR 所指出的目錄中都有 **baltimorecybertrustroot.crt** 和 **DigiCertGlobalRootG2** 。 如果有任何憑證不存在，請建立遺失的憑證檔案。
 
@@ -80,10 +83,10 @@ ms.locfileid: "98251874"
    (Root CA1: BaltimoreCyberTrustRoot.crt.pem)
    -----END CERTIFICATE-----
    -----BEGIN CERTIFICATE-----
-    (Root CA2: DigiCertGlobalRootG2.crt.pem)
+   (Root CA2: DigiCertGlobalRootG2.crt.pem)
    -----END CERTIFICATE-----
    ```
-   
+
 - 將原始的根 CA pem 檔案取代為合併的根 CA 檔案，然後重新開機您的應用程式/用戶端。
 - 未來，在伺服器端部署新的憑證之後，您可以將 CA pem 檔案變更為 DigiCertGlobalRootG2。
 
@@ -150,11 +153,7 @@ ms.locfileid: "98251874"
 
 ### <a name="12-if-im-using-data-in-replication-do-i-need-to-perform-any-action"></a>12. 如果我使用資料輸入複寫，是否需要執行任何動作？
 
-> [!NOTE]
-> 本文包含詞彙 _從屬_ 的參考，這是 Microsoft 不再使用的詞彙。 從軟體中移除該字詞時，我們也會將其從本文中移除。
->
-
-*   如果資料複寫是來自 (內部內部部署或 Azure 虛擬機器) 到適用於 MySQL 的 Azure 資料庫的虛擬機器，則您必須檢查是否使用 SSL 來建立複本。 執行 **顯示從屬狀態** 並檢查下列設定。
+- 如果資料複寫是來自 (內部內部部署或 Azure 虛擬機器) 到適用於 MySQL 的 Azure 資料庫的虛擬機器，則您必須檢查是否使用 SSL 來建立複本。 執行 **顯示從屬狀態** 並檢查下列設定。
 
     ```azurecli-interactive
     Master_SSL_Allowed            : Yes
@@ -177,6 +176,7 @@ ms.locfileid: "98251874"
   Master_SSL_Cipher             :
   Master_SSL_Key                : ~\azure_mysqlclient_key.pem
   ```
+
   如果您看到憑證是針對 CA_file 所提供，SSL_Cert 和 SSL_Key，則必須新增 [新憑證](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)來更新檔案。
 
 - 如果資料複寫是在兩個適用於 MySQL 的 Azure 資料庫之間，則您必須執行 **CALL mysql.az_replication_change_master** 來重設複本，並提供新的雙重根憑證做為最後一個參數 [master_ssl_ca](howto-data-in-replication.md#link-the-source-and-replica-servers-to-start-data-in-replication)。

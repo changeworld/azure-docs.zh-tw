@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 12/16/2020
+ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: f22b74b16594419b0eff33f0c73d6e9c3a62ac15
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655028"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538531"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -119,6 +119,9 @@ ms.locfileid: "97655028"
 > | [HDInsight 網域服務參與者](#hdinsight-domain-services-contributor) | 可讀取、建立、修改和刪除 HDInsight 企業安全性套件所需的網域服務相關作業 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics 參與者](#log-analytics-contributor) | 「Log Analytics 參與者」角色可以讀取所有監視資料和編輯監視設定。 編輯監視設定包括將 VM 延伸模組新增至 VM、讀取儲存體帳戶金鑰以便能夠設定從「Azure 儲存體」收集記錄、建立及設定「自動化」帳戶、新增解決方案，以及設定所有 Azure 資源上的 Azure 診斷。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics 讀者](#log-analytics-reader) | 「Log Analytics 讀者」可以檢視和搜尋所有監視資料，以及檢視監視設定，包括檢視所有 Azure 資源上的 Azure 診斷設定。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [範疇資料編者](#purview-data-curator) | 範疇資料編者可以建立、讀取、修改和刪除目錄資料物件，以及建立物件之間的關聯性。 此角色目前為預覽狀態，可能會變更。 | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
+> | [範疇資料讀取器](#purview-data-reader) | 範疇資料讀取器可以讀取目錄資料物件。 此角色目前為預覽狀態，可能會變更。 | ff100721-1b9d-43d8-af52-42b69c1272db |
+> | [範疇資料來源管理員](#purview-data-source-administrator) | 範疇資料來源管理員可以管理資料來源和資料掃描。 此角色目前為預覽狀態，可能會變更。 | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [結構描述登錄參與者 (預覽)](#schema-registry-contributor-preview) | 讀取、寫入及刪除結構描述登錄群組和結構描述。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [結構描述登錄讀取器 (預覽)](#schema-registry-reader-preview) | 讀取並列出結構描述登錄群組和結構描述。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **區塊鏈** |  |  |
@@ -4888,6 +4891,133 @@ ACR 隔離資料寫入者
 }
 ```
 
+### <a name="purview-data-curator"></a>範疇資料編者
+
+範疇資料編者可以建立、讀取、修改和刪除目錄資料物件，以及建立物件之間的關聯性。 此角色目前為預覽狀態，可能會變更。
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | [Microsoft. 範疇](resource-provider-operations.md#microsoftpurview)/accounts/read | 讀取 Microsoft 範疇提供者的帳戶資源。 |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | [Microsoft. 範疇](resource-provider-operations.md#microsoftpurview)/accounts/data/read | 讀取資料物件。 |
+> | [Microsoft. 範疇](resource-provider-operations.md#microsoftpurview)/accounts/data/write | 建立、更新和刪除資料物件。 |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data curator can create, read, modify and delete catalog data objects and establish relationships between objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "name": "8a3c2885-9b38-4fd2-9d99-91af537c1347",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read",
+        "Microsoft.Purview/accounts/data/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Curator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-reader"></a>範疇資料讀取器
+
+範疇資料讀取器可以讀取目錄資料物件。 此角色目前為預覽狀態，可能會變更。
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | [Microsoft. 範疇](resource-provider-operations.md#microsoftpurview)/accounts/read | 讀取 Microsoft 範疇提供者的帳戶資源。 |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | [Microsoft. 範疇](resource-provider-operations.md#microsoftpurview)/accounts/data/read | 讀取資料物件。 |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data reader can read catalog data objects. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ff100721-1b9d-43d8-af52-42b69c1272db",
+  "name": "ff100721-1b9d-43d8-af52-42b69c1272db",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/data/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="purview-data-source-administrator"></a>範疇資料來源管理員
+
+範疇資料來源管理員可以管理資料來源和資料掃描。 此角色目前為預覽狀態，可能會變更。
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | [Microsoft. 範疇](resource-provider-operations.md#microsoftpurview)/accounts/read | 讀取 Microsoft 範疇提供者的帳戶資源。 |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | [Microsoft. 範疇](resource-provider-operations.md#microsoftpurview)/accounts/scan/read | 讀取資料來源和掃描。 |
+> | [Microsoft. 範疇](resource-provider-operations.md#microsoftpurview)/accounts/scan/write | 建立、更新和刪除資料來源，以及管理掃描。 |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "The Microsoft.Purview data source administrator can manage data sources and data scans. This role is in preview and subject to change.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/200bba9e-f0c8-430f-892b-6f0794863803",
+  "name": "200bba9e-f0c8-430f-892b-6f0794863803",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Purview/accounts/read"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Purview/accounts/scan/read",
+        "Microsoft.Purview/accounts/scan/write"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Purview Data Source Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="schema-registry-contributor-preview"></a>結構描述登錄參與者 (預覽)
 
 讀取、寫入及刪除結構描述登錄群組和結構描述。
@@ -7015,7 +7145,9 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | 無 |  |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/write | 建立或更新 eventSubscription |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/read | 讀取 eventSubscription |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/delete | 刪除 eventSubscription |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -7035,7 +7167,11 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
   "name": "e147488a-f6f5-4113-8e2d-b22465e65bf6",
   "permissions": [
     {
-      "actions": [],
+      "actions": [
+        "Microsoft.EventGrid/eventSubscriptions/write",
+        "Microsoft.EventGrid/eventSubscriptions/read",
+        "Microsoft.EventGrid/eventSubscriptions/delete"
+      ],
       "notActions": [],
       "dataActions": [
         "Microsoft.KeyVault/vaults/keys/read",
@@ -7438,6 +7574,9 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/read | 讀取安全性元件和原則 |
 > | [Microsoft. Support](resource-provider-operations.md#microsoftsupport)/*/read |  |
+> | [Microsoft. 安全性](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/packageDownloads/action | 取得可下載的 IoT Defender 套件資訊 |
+> | [Microsoft. 安全性](resource-provider-operations.md#microsoftsecurity)/iotDefenderSettings/downloadManagerActivation/action | 下載管理員啟用檔案與訂用帳戶配額資料 |
+> | [Microsoft. 安全性](resource-provider-operations.md#microsoftsecurity)/iotSensors/downloadResetPassword/action | 下載 IoT 感應器的重設密碼檔案 |
 > | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -7464,6 +7603,9 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
         "Microsoft.Support/*/read",
+        "Microsoft.Security/iotDefenderSettings/packageDownloads/action",
+        "Microsoft.Security/iotDefenderSettings/downloadManagerActivation/action",
+        "Microsoft.Security/iotSensors/downloadResetPassword/action",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -8611,8 +8753,8 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
 > | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
 > | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
-> | Kubernetes/connectedClusters/Write |  |
-> | Kubernetes/connectedClusters/read |  |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | 寫入 connectedClusters |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/read | 讀取 connectedClusters |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |

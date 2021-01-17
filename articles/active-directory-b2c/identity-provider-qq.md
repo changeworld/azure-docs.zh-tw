@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b497176deff896e785387f4b64a8e66ff4d6d58e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 5b7c6a229cfee5b543d1169b30be336cc97ba7ed
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654314"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538083"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 QQ 帳戶登入
 
@@ -25,13 +25,13 @@ ms.locfileid: "97654314"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-qq-application"></a>建立 QQ 應用程式
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 QQ 帳戶做為識別提供者，您需要在代表該帳戶的租使用者中建立應用程式。 如果您還沒有 QQ 帳戶，可以在中註冊 [https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) 。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中讓具有 QQ 帳戶的使用者登入，您需要在 [QQ 開發人員入口網站](http://open.qq.com)中建立應用程式。 如果您還沒有 QQ 帳戶，可以在中註冊 [https://ssl.zc.qq.com](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) 。
 
 ### <a name="register-for-the-qq-developer-program"></a>註冊 QQ 開發人員計劃
 
@@ -43,7 +43,7 @@ ms.locfileid: "97654314"
 
 ### <a name="register-a-qq-application"></a>註冊 QQ 應用程式
 
-1. 前往 [https://connect.qq.com/index.html](https://connect.qq.com/index.html)。
+1. 移至 [https://connect.qq.com/index.html](https://connect.qq.com/index.html)。
 1. 選取 [应用管理]\(應用程式管理\)。
 1. 選取 [创建应用]\(建立應用程式\)，然後輸入所需的資訊。
 1. 在 [授权回调域]\(回呼 URL\) 中，輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp`。 例如，如果您的 `tenant_name` 是 contoso，請將 URL 設為 `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
@@ -64,7 +64,7 @@ ms.locfileid: "97654314"
 1. 輸入 [名稱]。 例如， *QQ*。
 1. 針對 [ **用戶端識別碼**]，輸入您稍早建立的 QQ 應用程式的應用程式識別碼。
 1. 針對 **用戶端密碼**，請輸入您記錄的應用程式金鑰。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ::: zone-end
 
@@ -83,7 +83,7 @@ ms.locfileid: "97654314"
 7. 輸入原則金鑰的 [名稱]。 例如： `QQSecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 在 [祕密] 中，輸入您先前記錄的用戶端密碼。
 9. 針對 [金鑰使用方法]，選取 `Signature`。
-10. 按一下 [建立]。
+10. 按一下頁面底部的 [新增] 。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -189,9 +189,9 @@ ms.locfileid: "97654314"
 ## <a name="add-qq-identity-provider-to-a-user-flow"></a>將 QQ 身分識別提供者新增至使用者流程 
 
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
-1. 按一下您想要使用 QQ 身分識別提供者的使用者流程。
+1. 按一下您想要新增 QQ 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **QQ**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

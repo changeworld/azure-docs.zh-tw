@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6877a82d81b46ac2ffda8d0f0bf3fb0d7b337ff3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c7d43a55878a07e424ce1b6f55782502c244239c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663576"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537936"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-idme-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 ID.me 帳戶登入
 
@@ -32,14 +32,14 @@ ms.locfileid: "97663576"
 ::: zone pivot="b2c-custom-policy"
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 
 
 ## <a name="create-an-idme-application"></a>建立 ID.me 應用程式
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 ID.me 帳戶做為識別提供者，您需要在 [API & SDK 的 ID.me 開發人員資源](https://developers.id.me/)中建立應用程式。 如果您還沒有 ID.me 的開發人員帳戶，可以註冊 [https://developers.id.me/registration/new](https://developers.id.me/registration/new) 。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中讓具有 ID.me 帳戶的使用者登入，您必須在 [API & SDK 的 ID.me 開發人員資源](https://developers.id.me/)中建立應用程式。 如需詳細資訊，請參閱 [OAuth 整合指南](https://developers.id.me/documentation/oauth/overview/kyc)。 如果您還沒有 ID.me 的開發人員帳戶，可以註冊 [https://developers.id.me/registration/new](https://developers.id.me/registration/new) 。
 
 1. 使用您的 ID.me 帳號憑證登入 [API & SDK 的 ID.me 開發人員資源](https://developers.id.me/) 。
 1. 選取 [ **查看我的應用程式**]，然後選取 [ **繼續**]。
@@ -62,7 +62,7 @@ ms.locfileid: "97663576"
 7. 輸入原則金鑰的 [名稱]。 例如： `IdMeSecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 在 [祕密] 中，輸入您先前記錄的用戶端密碼。
 9. 針對 [金鑰使用方法]，選取 `Signature`。
-10. 按一下 [建立]。
+10. 按一下頁面底部的 [新增] 。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 

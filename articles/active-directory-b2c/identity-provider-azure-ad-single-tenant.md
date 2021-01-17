@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 05c4d36f266fb526a1d0232cc32f0408e4322c80
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 2b640730bac410136ef8fdd4ea8e0261f68a3284
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654382"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538143"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中設定特定 Azure Active Directory 組織的登入
 
@@ -32,13 +32,13 @@ ms.locfileid: "97654382"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="register-an-azure-ad-app"></a>註冊 Azure AD 應用程式
 
-若要讓特定 Azure AD 組織的使用者登入，您需要在組織 Azure AD 租用戶內註冊應用程式。
+若要讓具有特定 Azure AD 組織 Azure AD 帳戶的使用者登入，請在 Azure Active Directory B2C (Azure AD B2C) 中，以 [Azure 入口網站](https://portal.azure.com)建立應用程式。 如需詳細資訊，請參閱 [使用 Microsoft 身分識別平臺註冊應用程式](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 請確定您使用的目錄包含您組織 Azure AD 租使用者 (例如 contoso.com) 。 在頂端功能表中選取 [ **目錄 + 訂** 用帳戶] 篩選，然後選擇包含您 Azure AD 租使用者的目錄。
@@ -101,7 +101,7 @@ ms.locfileid: "97654382"
     - **姓氏**：family_name
     - **電子郵件**： *preferred_username*
 
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ::: zone-end
 
@@ -172,7 +172,7 @@ ms.locfileid: "97654382"
     </ClaimsProvider>
     ```
 
-4. 在 **ClaimsProvider** 元素底下，將 **Domain** 的值更新成可用來與其他識別提供者做區別的唯一值。 例如 `Contoso` 。 您不應在此網域設定的結尾放置 `.com`。
+4. 在 **ClaimsProvider** 元素底下，將 **Domain** 的值更新成可用來與其他識別提供者做區別的唯一值。 例如 `Contoso`。 您不應在此網域設定的結尾放置 `.com`。
 5. 在 **ClaimsProvider** 元素下，將 **DisplayName** 的值更新成可用來與其他識別提供者區別的唯一值。 目前不使用此值。
 
 ### <a name="update-the-technical-profile"></a>更新技術設定檔
@@ -238,9 +238,9 @@ ms.locfileid: "97654382"
 ## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>將 Azure AD 身分識別提供者新增至使用者流程 
 
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
-1. 按一下您想要 Azure AD 識別提供者的使用者流程。
+1. 按一下您要新增 Azure AD 識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **Contoso Azure AD**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

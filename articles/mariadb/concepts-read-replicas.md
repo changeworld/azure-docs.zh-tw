@@ -5,14 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 01/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: c91aab2bf59f93cf897f9a1b9109172523ae4e57
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 39547e3156a684293a0624f974a8b0930f656485
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251398"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540011"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>「適用於 MariaDB 的 Azure 資料庫」中的讀取複本
 
@@ -27,13 +27,13 @@ ms.locfileid: "98251398"
 
 ## <a name="when-to-use-a-read-replica"></a>何時應該使用讀取複本
 
-讀取複本功能可針對需大量讀取的工作負載，協助改善效能及調整能力。 讀取工作負載可隔離到複本，而寫入工作負載可以導向到主要伺服器。
+讀取複本功能可針對需大量讀取的工作負載，協助改善效能及調整能力。 讀取工作負載可隔離到複本，而寫入工作負載可以導向至主要工作負載。
 
 常見的案例是讓 BI 與分析工作負載使用讀取複本做為報告的資料來源。
 
-由於複本是唯讀狀態，因此不會直接降低主要伺服器上的寫入容量負擔。 這項功能不是以寫入密集的工作負載為目標。
+由於複本是唯讀的，因此不會直接降低主要複本的寫入容量負擔。 這項功能不是以寫入密集的工作負載為目標。
 
-讀取複本功能會使用非同步複寫。 此功能不適用於同步複寫案例。 來源與複本之間會有可測量的延遲。 複本上的資料最終仍會與主要伺服器上的資料保持一致。 請針對可接受此延遲的工作負載使用此功能。
+讀取複本功能會使用非同步複寫。 此功能不適用於同步複寫案例。 來源與複本之間會有可測量的延遲。 複本上的資料最終會與主資料庫上的資料一致。 請針對可接受此延遲的工作負載使用此功能。
 
 ## <a name="cross-region-replication"></a>跨區域複寫
 
@@ -44,11 +44,13 @@ ms.locfileid: "98251398"
 [![讀取複本區域](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>全球的複本區域
+
 您可以在下列任何區域中建立讀取複本，而不論來源伺服器的所在位置為何。 支援的全球複本區域包括：
 
 澳大利亞東部、澳大利亞東南部、巴西南部、加拿大中部、加拿大東部、美國中部、東亞、美國東部、美國東部2、日本東部、日本西部、韓國中部、南韓南部、美國中北部、歐洲北部、美國中南部、東南亞、英國南部、英國西部、西歐、美國西部、美國西部2、美國中西部。
 
 ### <a name="paired-regions"></a>配對的區域
+
 除了通用複本區域，您也可以在來源伺服器的 Azure 配對區域中建立讀取複本。 如果您不知道所在區域的配對，則可以從 [Azure 配對區域](../best-practices-availability-paired-regions.md)一文深入了解。
 
 如果您使用跨區域複本來規劃災害復原，建議您在配對區域中建立複本，而不要在其他區域之一建立。 配對區域可避免同時更新，並排定實體隔離和資料落地的優先順序。  
@@ -56,7 +58,7 @@ ms.locfileid: "98251398"
 不過，其中有一些限制需要考慮： 
 
 * 區域可用性：法國中部、阿拉伯聯合大公國北部和德國中部都有提供適用於 MariaDB 的 Azure 資料庫。 不過，卻沒有提供其配對區域。
-    
+
 * 單向配對：某些 Azure 區域只會單向配對。 這些區域包括印度西部、巴西南部和 US Gov 維吉尼亞州。 
    這表示印度西部的來源伺服器可以在印度南部中建立複本。 不過，印度南部中的來源伺服器無法在印度西部建立複本。 其原因是印度西部的次要區域是印度南部，但印度南部的次要區域卻不是印度西部。
 
@@ -110,7 +112,7 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 
 ## <a name="failover"></a>容錯移轉
 
-來源與複本伺服器之間沒有自動容錯移轉。 
+來源與複本伺服器之間沒有自動容錯移轉。
 
 由於複寫是非同步，因此來源與複本之間會有延遲。 延遲量可能會受到一些因素的影響，例如，在來源伺服器上執行的工作負載的繁重程度，以及資料中心之間的延遲。 在大部分的情況下，複本延遲的範圍是幾秒鐘到幾分鐘。 您可以使用計量 *複本延遲*（可用於每個複本）來追蹤實際的複寫延遲。 此計量會顯示上次重新執行交易之後的時間。 我們建議您在一段時間內觀察您的複本延遲，以找出您的平均延遲。 您可以設定複本延遲的警示，如此一來，如果超出預期的範圍，您可以採取動作。
 
@@ -119,11 +121,11 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 
 確定您想要容錯移轉至複本之後，
 
-1. 停止複寫至複本<br/>
+1. 停止複寫至複本。
 
-   您必須執行此步驟，讓複本伺服器能夠接受寫入。 作為此程式的一部分，複本伺服器將會從主伺服器 delinked。 在您起始停止複寫後，後端進程通常需要大約2分鐘才能完成。 請參閱本文的「 [停止](#stop-replication) 複寫」一節，以瞭解此動作的含意。
+   您必須執行此步驟，讓複本伺服器能夠接受寫入。 作為此程式的一部分，複本伺服器將會從主要複本 delinked。 在您起始停止複寫後，後端進程通常需要大約2分鐘才能完成。 請參閱本文的「 [停止](#stop-replication) 複寫」一節，以瞭解此動作的含意。
 
-2. 將您的應用程式指向 (之前的) 複本
+2. 將您的應用程式指向 (之前的) 複本。
 
    每一部伺服器都有唯一的連接字串。 更新您的應用程式，使其指向 (之前的) 複本，而不是主要複本。
 
@@ -148,10 +150,10 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 
 ### <a name="replica-configuration"></a>複本設定
 
-系統會使用與主要伺服器相同的伺服器設定來建立複本。 建立複本之後，您可以從來源伺服器個別變更數個設定：計算世代、虛擬核心、儲存體、備份保留期限，以及適用于 mariadb 引擎版本。 定價層也可以個別變更，但不能變更為基本層，或從基本層變更為別的層。
+使用與主伺服器相同的伺服器設定來建立複本。 建立複本之後，您可以從來源伺服器個別變更數個設定：計算世代、虛擬核心、儲存體、備份保留期限，以及適用于 mariadb 引擎版本。 定價層也可以個別變更，但不能變更為基本層，或從基本層變更為別的層。
 
 > [!IMPORTANT]
-> 在將來源伺服器設定更新為新值之前，應將複本的設定更新為相等或更大的值。 此動作可確保複本可以跟上主要伺服器上所做的變更。
+> 在將來源伺服器設定更新為新值之前，應將複本的設定更新為相等或更大的值。 此動作可確保複本能夠跟上對主要複本所做的任何變更。
 
 建立複本時，防火牆規則和參數設定會從來源伺服器繼承至複本。 之後，複本的規則就已獨立。
 
@@ -172,20 +174,21 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 若要防止資料不同步，以及避免潛在的資料遺失或損毀，則會在使用讀取複本時，有些伺服器參數會被鎖定而無法更新。
 
 來源伺服器和複本伺服器上的下列伺服器參數都已鎖定：
-- [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
-- [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
+
+* [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
+* [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
 複本伺服器上會鎖定 [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) 參數。
 
-若要更新來源伺服器上的上述其中一個參數，請刪除複本伺服器，更新主機上的參數值，然後重新建立複本。
+若要更新來源伺服器上的上述其中一個參數，請刪除複本伺服器、更新主要複本的參數值，然後重新建立複本。
 
 ### <a name="other"></a>其他
 
-- 不支援建立複本的複本。
-- 記憶體中的資料表可能會導致複本不同步。這是適用于 mariadb 複寫技術的限制。
-- 確定來源伺服器資料表具有主鍵。 缺少主鍵可能會導致來源與複本之間的複寫延遲。
+* 不支援建立複本的複本。
+* 記憶體中的資料表可能會導致複本不同步。這是適用于 mariadb 複寫技術的限制。
+* 確定來源伺服器資料表具有主鍵。 缺少主鍵可能會導致來源與複本之間的複寫延遲。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何[使用 Azure 入口網站來建立及管理讀取複本](howto-read-replicas-portal.md)
-- 了解如何[使用 Azure CLI 和 REST API 來建立及管理讀取複本](howto-read-replicas-cli.md)
+* 了解如何[使用 Azure 入口網站來建立及管理讀取複本](howto-read-replicas-portal.md)
+* 了解如何[使用 Azure CLI 和 REST API 來建立及管理讀取複本](howto-read-replicas-cli.md)

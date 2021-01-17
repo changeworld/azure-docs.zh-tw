@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 129809a83bcebdcf80b05a7300dd9acf862e5886
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 92c5850c3e8c6db63bb5f6287078d2b0345a051c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900394"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538033"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Salesforce 帳戶登入
 
@@ -30,14 +30,14 @@ ms.locfileid: "97900394"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 
 ## <a name="create-a-salesforce-application"></a>建立 Salesforce 應用程式
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 Salesforce 帳戶，您需要在您的 Salesforce **App Manager** 中建立應用程式。 如需詳細資訊，請參閱 [設定基本連線應用程式設定](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)，以及 [啟用 API 整合的 OAuth 設定](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
+若要在 Azure Active Directory B2C (Azure AD B2C) 中讓具有 Salesforce 帳戶的使用者登入，您需要在 Salesforce [App Manager](https://login.salesforce.com/)中建立應用程式。 如需詳細資訊，請參閱 [設定基本連線應用程式設定](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)，以及 [啟用 API 整合的 OAuth 設定](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
 1. [登入 Salesforce](https://login.salesforce.com/)。
 1. 從功能表選取 [ **設定**]。
@@ -54,7 +54,7 @@ ms.locfileid: "97900394"
 1. 選取 [**設定識別碼權杖**] 
     1. 設定5分鐘 **有效的權杖** 。
     1. 選取 [ **包含標準宣告**]。
-1. 按一下 [儲存]。
+1. 按一下 [檔案] 。
 1. 複製 [取用 **者金鑰** ] 和 [取用 **者密碼**] 的值。 您將需要這兩個設定，以將 Salesforce 設定為租使用者中的身分識別提供者。 **用戶端密碼** 是重要的安全性認證。
 
 ::: zone pivot="b2c-user-flow"
@@ -84,7 +84,7 @@ ms.locfileid: "97900394"
     - **姓氏**：family_name
     - **電子** 郵件： *電子郵件*
 
-1. 選取 [Save] \(儲存\)。
+1. 選取 [儲存]。
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -102,7 +102,7 @@ ms.locfileid: "97900394"
 7. 輸入原則金鑰的 [名稱]。 例如： `SalesforceSecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 在 [祕密] 中，輸入您先前記錄的用戶端密碼。
 9. 針對 [金鑰使用方法]，選取 `Signature`。
-10. 按一下 [建立]。
+10. 按一下頁面底部的 [新增] 。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -210,9 +210,9 @@ ms.locfileid: "97900394"
 ## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>將 Salesforce 身分識別提供者新增至使用者流程 
 
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
-1. 按一下您想要加入 Salesforce 身分識別提供者的使用者流程。
+1. 按一下您想要新增 Salesforce 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **Salesforce**]。
-1. 選取 [Save] \(儲存\)。
+1. 選取 [儲存]。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

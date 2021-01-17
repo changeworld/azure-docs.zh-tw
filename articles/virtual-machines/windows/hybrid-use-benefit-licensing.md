@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 43784fe2bb94d5abd012f22ed530e4631a304614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c13203c076378e1ff8f213971466eb5f63dfc4f4
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335981"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539163"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>適用於 Windows Server 的 Azure Hybrid Benefit
 對於擁有軟體保證的客戶，適用於 Windows Server 的 Azure Hybrid Benefit 讓您能夠以較低的成本來使用內部部署 Windows Server 授權，以及在 Azure 上執行 Windows 虛擬機器。 您可以使用適用於 Windows Server 的 Azure Hybrid Benefit 部署具有 Windows OS 的新虛擬機器。 本文章會詳述使用適用於 Windows Server 的 Azure Hybrid Benefit 來部署新 VM 的步驟，以及您如何更新現有的執行中 VM。 如需有關適用於 Windows Server 之 Azure Hybrid Benefit 的授權和節省成本詳細資訊，請參閱[適用於 Windows Server 的 Azure Hybrid Benefit 授權頁面](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
@@ -42,10 +42,9 @@ ms.locfileid: "91335981"
 適用於 Windows Server 的 Azure Hybrid Benefit 支援所有 Windows Server OS 型映像。 您可以使用 Azure 平台支援映像，或上傳您自己的自訂 Windows Server 映像。 
 
 ### <a name="portal"></a>入口網站
-若要使用適用於 Windows Server 的 Azure Hybrid Benefit 建立 VM，請使用 [省錢] 區段底下的切換開關。
+若要使用適用于 Windows Server 的 Azure Hybrid Benefit 來建立 VM，請在建立程式期間，在 [ **基本** ] 索引標籤的底部，選取 [ **授權** ] 核取方塊，以使用現有的 windows Server 授權。 
 
 ### <a name="powershell"></a>PowerShell
-
 
 ```powershell
 New-AzVm `

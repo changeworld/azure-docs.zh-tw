@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
-ms.date: 01/15/2021
-ms.openlocfilehash: 5ebae41e68633eb10959c56011dd71952f9564bd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/18/2021
+ms.openlocfilehash: 67e4da13d6954342b9979eb57a35c812cb63bb3e
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250412"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539989"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>設定適用於 MariaDB 的 Azure 資料庫中的資料輸入複寫
 
@@ -23,6 +23,9 @@ ms.locfileid: "98250412"
 
 > [!NOTE]
 > 如果您的來源伺服器是10.2 版或更新版本，建議您使用 [全域交易識別碼](https://mariadb.com/kb/en/library/gtid/)設定資料輸入複寫。
+
+> [!NOTE]
+> 本文包含詞彙 _從屬_ 的參考，這是 Microsoft 不再使用的詞彙。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>建立要做為複本使用的適用于 mariadb 伺服器
 
@@ -40,10 +43,6 @@ ms.locfileid: "98250412"
 3. 將來源伺服器的 IP 位址新增至複本的防火牆規則。 
 
    使用 [Azure 入口網站](howto-manage-firewall-portal.md)或 [Azure CLI](howto-manage-firewall-cli.md) 更新防火牆規則。
-
-> [!NOTE]
-> 本文包含詞彙 _從屬_ 的參考，這是 Microsoft 不再使用的詞彙。 從軟體中移除該字詞時，我們也會將其從本文中移除。
->
 
 ## <a name="configure-the-source-server"></a>設定來源伺服器
 
@@ -95,7 +94,7 @@ ms.locfileid: "98250412"
 
 3. 開啟二進位記錄。
 
-    若要查看是否已在主伺服器上啟用二進位記錄，請輸入下列命令：
+    若要查看是否已在主要複本上啟用二進位記錄，請輸入下列命令：
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';

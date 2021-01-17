@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 37fc33ae8084a2b4e99e7b5dc417eac70060eef5
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 02c3890a9aca03d9d79b55098297174401cab37d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516199"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537952"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Facebook 帳戶登入
 
@@ -36,7 +36,7 @@ ms.locfileid: "97516199"
 
 ## <a name="create-a-facebook-application"></a>建立 Facebook 應用程式
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 Facebook 帳戶作為身分 [識別提供者](authorization-code-flow.md) ，您需要在代表該帳戶的租使用者中建立應用程式。 如果您還沒有 Facebook 帳戶，可以在 [https://www.facebook.com/](https://www.facebook.com/) 註冊。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中讓具有 Facebook 帳戶的使用者登入，您需要在 [Facebook 應用程式儀表板](https://developers.facebook.com/)中建立應用程式。 如需詳細資訊，請參閱 [應用程式開發](https://developers.facebook.com/docs/development)。 如果您還沒有 Facebook 帳戶，可以在 [https://www.facebook.com/](https://www.facebook.com/) 註冊。
 
 1. 請以您的 Facebook 帳戶認證登入 [Facebook for developers (開發人員專用的 Facebook)](https://developers.facebook.com/)。
 1. 如果您尚未這麼做，您需要註冊為 Facebook 開發人員。 若要這樣做，請選取頁面右上角的 [開始]，接受 Facebook 的原則，然後完成註冊步驟。
@@ -93,9 +93,9 @@ ms.locfileid: "97516199"
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>將 Facebook 身分識別提供者新增至使用者流程 
 
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
-1. 按一下您想要使用 Facebook 身分識別提供者的使用者流程。
+1. 按一下您想要新增 Facebook 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 **Facebook**。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

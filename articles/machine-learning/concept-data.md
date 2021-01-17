@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360168"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539897"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 中的安全資料存取
 
@@ -42,7 +42,7 @@ Azure Machine Learning 可讓您輕鬆地連接到雲端中的資料。  它提�
 
     1. 直接在 Azure Machine Learning 的解決方案中使用，例如自動化機器學習 (自動化 ML) 實驗回合、機器學習管線或 [Azure Machine Learning 設計](concept-designer.md)工具。
 
-4. 為您的模型輸出資料集建立資料 [集監視器](#data-drift) ，以偵測資料漂移。 
+4. 為您的模型輸出資料集建立資料 [集監視器](#drift) ，以偵測資料漂移。 
 
 5. 如果偵測到資料漂移，請更新您的輸入資料集，並據以重新定型您的模型。
 
@@ -50,7 +50,8 @@ Azure Machine Learning 可讓您輕鬆地連接到雲端中的資料。  它提�
 
 ![圖表顯示 Azure 儲存體服務，該服務會流入資料存放區，以流入資料集。 此資料集會流入模型定型，而這些定型會流入資料的漂移，進而流動回資料集。](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>資料存放區
+<a name="datastores"></a>
+## <a name="connect-to-storage-with-datastores"></a>使用資料存放區連接到儲存體
 
 Azure Machine Learning 資料存放區會安全地將連線資訊保留在您的 Azure 儲存體中，因此您不需要在腳本中撰寫程式碼。 [註冊並建立資料](how-to-access-data.md) 存放區，以輕鬆地連接到您的儲存體帳戶，並存取基礎 Azure 儲存體服務中的資料。 
 
@@ -65,7 +66,8 @@ Azure 中支援的雲端式儲存體服務可註冊為數據存放區：
 + Databricks 檔案系統
 + 適用於 MySQL 的 Azure 資料庫
 
-## <a name="datasets"></a>資料集
+<a name="datasets"></a>
+## <a name="reference-data-in-storage-with-datasets"></a>使用資料集的儲存體中參考資料
 
 Azure Machine Learning 資料集不是您的資料複本。 藉由建立資料集，您可以在其儲存體服務中建立資料的參考，以及其中繼資料的複本。 
 
@@ -105,7 +107,7 @@ Azure Machine Learning 資料集不是您的資料複本。 藉由建立資料�
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>資料標記
+## <a name="label-data-with-data-labeling-projects"></a>標記資料加上標籤專案
 
 在機器學習專案中，該如何為大量資料加上標籤往往是令人頭痛的問題。 具有電腦視覺元件（例如影像分類或物件偵測）的人，通常需要數千個影像和對應的標籤。
 
@@ -115,7 +117,7 @@ Azure Machine Learning 可讓您在集中的位置建立、管理及監視標籤
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>資料漂移
+## <a name="monitor-model-performance-with-data-drift"></a>使用資料漂移監視模型效能
 
 在機器學習的內容中，資料漂移是模型輸入資料中導致模型效能降低的變更。 這是一段時間內的其中一個主要原因：模型精確度會降低，因此監視資料漂移有助於偵測模型效能問題。
 

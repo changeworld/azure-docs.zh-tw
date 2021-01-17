@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c6083dbcc270c0e9dde1da45ed01369d03146237
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 097c97d16cf62793d03ac42662267e0553383bc1
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108961"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539615"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>疑難排解遠端桌面用戶端
 
@@ -94,7 +94,7 @@ nslookup rdweb.wvd.microsoft.com
 如果您在清單中找不到 [應用程式識別碼] 9cdead84-a844-4324-93f2-b2e6bb768d07，您將需要註冊 Windows 虛擬桌面資源提供者。 註冊資源提供者：
 
 1. 登入 Azure 入口網站。
-2. 移至 [ **訂**用帳戶]，然後選取您的訂用帳戶。
+2. 移至 [ **訂** 用帳戶]，然後選取您的訂用帳戶。
 3. 在頁面左側的功能表中，選取 [ **資源提供者**]。
 4. 尋找並選取 [ **DesktopVirtualization**]，然後選取 [ **重新註冊**]。
 
@@ -103,5 +103,6 @@ nslookup rdweb.wvd.microsoft.com
 - 如需 Windows 虛擬桌面疑難排解和擴大追蹤的概觀，請參閱[疑難排解概觀、意見反應和支援](troubleshoot-set-up-overview.md)。
 - 若要針對在 Windows 虛擬桌面環境中建立 Windows 虛擬桌面環境和主機集區時的問題進行疑難排解，請參閱[環境和主機集區建立](troubleshoot-set-up-issues.md)。
 - 若要針對在 Windows 虛擬桌面中設定虛擬機器 (VM) 時的問題進行疑難排解，請參閱[工作階段主機虛擬機器設定](troubleshoot-vm-configuration.md)。
+- 若要針對與 Windows 虛擬桌面代理程式或會話連線相關的問題進行疑難排解，請參閱針對 [常見的 Windows 虛擬桌面代理程式問題進行疑難排解](troubleshoot-agent.md)。
 - 若要針對使用 PowerShell 搭配 Windows 虛擬桌面時的問題進行疑難排解，請參閱 [Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)。
 - 若要進行疑難排解教學課程，請參閱[教學課程：針對 Resource Manager 範本部署進行疑難排解](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)。

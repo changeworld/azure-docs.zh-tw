@@ -1,7 +1,7 @@
 ---
 title: 資料集版本控制
 titleSuffix: Azure Machine Learning
-description: 瞭解如何最佳版本的資料集，以及如何使用機器學習管線來處理版本控制。
+description: 瞭解如何設定機器學習資料集的版本，以及如何搭配機器學習管線使用版本控制。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3290574b26abe544c8c749165e22bef41a83ecf3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133441"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538165"
 ---
-# <a name="version-and-track-datasets-in-experiments"></a>實驗中的版本和追蹤資料集
+# <a name="version-and-track-azure-machine-learning-datasets"></a>版本和追蹤 Azure Machine Learning 資料集
 
 在本文中，您將瞭解如何針對重現性版本和追蹤 Azure Machine Learning 資料集。 資料集版本控制是將資料的狀態設為書簽的一種方式，讓您可以套用特定版本的資料集，以供未來實驗之用。
 
@@ -27,7 +27,7 @@ ms.locfileid: "98133441"
 * 當新資料可供重新訓練時
 * 當您要套用不同的資料準備或特徵工程方法時
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 在本教學課程中，您需要：
 

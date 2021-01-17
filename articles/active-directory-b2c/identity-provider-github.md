@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 68ffde11059de4809e519c1ac4f79503f25b0004
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 38eee59ecffa0c09403f47678e588b678e038413
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653736"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537968"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 GitHub 帳戶登入
 
@@ -32,15 +32,15 @@ ms.locfileid: "97653736"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-github-oauth-application"></a>建立 GitHub OAuth 應用程式
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 GitHub 帳戶做為 [識別提供者](authorization-code-flow.md) ，您需要在代表該帳戶的租使用者中建立應用程式。 如果您還沒有 GitHub 帳戶，可以在中註冊 [https://www.github.com/](https://www.github.com/) 。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中啟用使用 GitHub 帳戶登入，您必須在 [GitHub 開發人員](https://github.com/settings/developers) 入口網站中建立應用程式。 如需詳細資訊，請參閱 [建立 OAuth 應用程式](https://docs.github.com/en/free-pro-team@latest/developers/apps/creating-an-oauth-app)。 如果您還沒有 GitHub 帳戶，可以在中註冊 [https://www.github.com/](https://www.github.com/) 。
 
-1. 使用您的 GitHub 認證登入 [GitHub 開發人員](https://github.com/settings/developers)網站。
+1. 使用您的 GitHub 認證登入 [Github 開發人員](https://github.com/settings/developers) 。
 1. 選取 [OAuth 應用程式]，然後選取 [新增 OAuth 應用程式]。
 1. 輸入 [Application name] \(應用程式名稱\) 和您的 [Homepage URL] \(首頁 URL\)。
 1. 在 [授權回呼 URL] 中輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 將 `your-tenant-name` 取代為您的 Azure AD B2C 租用戶名稱。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，仍請在輸入租用戶名稱時，全部使用小寫字母。
@@ -58,7 +58,7 @@ ms.locfileid: "97653736"
 1. 輸入 [名稱]。 例如， *GitHub*。
 1. 針對 [ **用戶端識別碼**]，輸入您稍早建立之 GitHub 應用程式的用戶端識別碼。
 1. 針對 **用戶端密碼**，請輸入您所記錄的用戶端密碼。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 
 ::: zone-end
 
@@ -77,7 +77,7 @@ ms.locfileid: "97653736"
 1. 輸入原則金鑰的 [名稱]。 例如： `GitHubSecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 1. 在 [祕密] 中，輸入您先前記錄的用戶端密碼。
 1. 針對 [金鑰使用方法]，選取 `Signature`。
-1. 按一下 [建立]。
+1. 按一下頁面底部的 [新增] 。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -218,9 +218,9 @@ GitHub 技術設定檔需要將 **CreateIssuerUserId** 宣告轉換新增至 Cla
 ## <a name="add-github-identity-provider-to-a-user-flow"></a>將 GitHub 身分識別提供者新增至使用者流程 
 
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
-1. 按一下您想要使用 GitHub 身分識別提供者的使用者流程。
+1. 按一下您想要新增 GitHub 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **GitHub**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

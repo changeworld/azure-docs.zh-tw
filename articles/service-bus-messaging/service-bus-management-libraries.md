@@ -5,24 +5,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/13/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 97d89db17af9cde3afadee430b3d0c2a434e12c9
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 57192ab2ee1624cb18de832ac91c95290da727df
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210132"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539875"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>動態布建服務匯流排命名空間和實體 
 Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空間和實體。 這適合複雜的部署和傳訊案例，且可讓您以程式設計方式決定要佈建的實體。 這些程式庫目前適用於 .NET。
 
-## <a name="supported-functionality"></a>支援的功能
+## <a name="overview"></a>概觀
+您可以使用三個管理程式庫來建立和管理服務匯流排實體。 分別是：
 
-* 建立、更新、刪除命名空間
-* 建立、更新、刪除佇列
-* 建立、更新、刪除主題
-* 建立、更新、刪除訂用帳戶
+- [Azure. 管理系統管理](#azuremessagingservicebusadministration)
+- [Azure 管理](#microsoftazureservicebusmanagement)
+- [Microsoft.Azure.Management.ServiceBus](#microsoftazuremanagementservicebus)
 
-## <a name="azuremessagingservicebusadministration-recommended"></a>Azure. 管理 (建議的) 
+所有這些封裝都支援 **佇列、主題和** 訂用帳戶的建立、取得、列出、刪除、更新、刪除和更新作業。 但是，只有 [Azure. 管理元件](#microsoftazuremanagementservicebus) 支援在 **命名空間** 上建立、更新、列出、取得及刪除作業、列出和重新產生 SAS 金鑰等等。 
+
+Azure Active Directory 的 (Azure AD) 驗證，且不支援使用連接字串，就能使用該程式庫。 另外兩個程式庫 (的兩個程式庫) 支援使用連接字串來向服務進行驗證，而且更容易使用。 在這些程式庫之間，Azure 訊息匯流排是最新的，因此我們建議您使用。
+
+下列各節提供有關這些程式庫的詳細資料。 
+
+## <a name="azuremessagingservicebusadministration"></a>Azure. 管理系統管理
 您可以使用[Azure. 管理](/dotnet/api/azure.messaging.servicebus.administration)命名空間中的[ServiceBusAdministrationClient](/dotnet/api/azure.messaging.servicebus.administration.servicebusadministrationclient)類別來管理命名空間、佇列、主題和訂閱。 以下是範例程式碼。 如需完整範例，請參閱 [CRUD 範例](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/tests/Samples/Sample07_CrudOperations.cs)。
 
 ```csharp
@@ -89,7 +95,7 @@ namespace adminClientTrack2
 您可以使用 [ManagementClient](/dotnet/api/microsoft.azure.servicebus.management.managementclient) 類別來管理命名 [空間、](/dotnet/api/microsoft.azure.servicebus.management) 佇列、主題和訂用帳戶。 以下是範例程式碼： 
 
 > [!NOTE]
-> 建議您從程式庫使用 `ServiceBusAdministrationClient` 類別 `Azure.Messaging.ServiceBus.Administration` ，這是最新的 SDK。 如需詳細資訊，請參閱 [第一節](#azuremessagingservicebusadministration-recommended)。 
+> 建議您從程式庫使用 `ServiceBusAdministrationClient` 類別 `Azure.Messaging.ServiceBus.Administration` ，這是最新的 SDK。 如需詳細資訊，請參閱 [第一節](#azuremessagingservicebusadministration)。 
 
 ```csharp
 using System;
@@ -150,13 +156,13 @@ namespace SBusManagementClient
 ## <a name="microsoftazuremanagementservicebus"></a>Microsoft.Azure.Management.ServiceBus 
 此程式庫是以 Azure Resource Manager 為基礎的控制平面 SDK 的一部分。 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 若要開始使用此程式庫，您必須使用 Azure Active Directory (Azure AD) service 進行驗證。 Azure AD 會要求您以提供 Azure 資源存取權的服務主體來進行驗證。 如需建立服務主體的詳細資訊，請參閱以下其中一篇文章：  
 
 * [使用 Azure 入口網站來建立可存取資源 Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)
 * [使用 Azure PowerShell 建立用來存取資源的服務主體](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [使用 Azure CLI 建立用來存取資源的服務主體](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [使用 Azure CLI 建立用來存取資源的服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 這些教學課程會提供您 `AppId` (用戶端識別碼)、`TenantId` 和 `ClientSecret` (驗證金鑰)，全部由管理程式庫用於驗證。 您必須至少擁有要執行之資源群組的 [**Azure 服務匯流排資料擁有**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 者或 [**參與者**](../role-based-access-control/built-in-roles.md#contributor) 許可權。
 

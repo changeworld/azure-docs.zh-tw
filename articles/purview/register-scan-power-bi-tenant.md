@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 3370215e9a69e62596f214ba4330fc4914a2837f
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696239"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539687"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>註冊並掃描 Power BI 租使用者 (preview) 
 
@@ -55,7 +55,7 @@ ms.locfileid: "97696239"
     > [!Important]
     > 您必須是 Power BI 系統管理員，才能看到 [租使用者設定] 頁面。
 
-1. 選取 [**開發人員設定**]  >  **可讓服務主體使用唯讀 Power BI 管理員 api (Preview)**。
+1. 選取 [**管理員 api 設定**]  >  **可讓服務主體使用唯讀 Power BI 管理員 api (Preview)**。
 1. 選取 **特定的安全性群組**。
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="顯示如何允許服務主體取得唯讀 Power BI 管理員 API 許可權的影像":::

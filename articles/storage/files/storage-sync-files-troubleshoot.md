@@ -4,15 +4,15 @@ description: 針對 Azure 檔案同步中部署的常見問題進行疑難排解
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 1/13/2021
+ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a262c2b4351c96217001ba42e8c745f7d71c7d45
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233894"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539246"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -916,6 +916,22 @@ PerItemErrorCount: 1006.
 | **需要補救** | 否 |
 
 當資料擷取作業逾時，就會發生此錯誤。 如果正在進行同步作業 (AppliedItemCount 大於 0)，則可忽略此錯誤。 請參閱[如何監視目前同步工作階段的進度？](#how-do-i-monitor-the-progress-of-a-current-sync-session)。
+
+<a id="-2134375814"></a>**因為在伺服器上找不到伺服器端點路徑，所以同步失敗。**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027a |
+| **HRESULT (十進位)** | -2134375814 |
+| **錯誤字串** | ECS_E_SYNC_ROOT_DIRECTORY_NOT_FOUND |
+| **需要補救** | 是 |
+
+如果當做伺服器端點路徑使用的目錄已重新命名或刪除，就會發生此錯誤。 如果目錄已重新命名，請將目錄重新命名為原始名稱，然後重新開機儲存體同步代理程式服務 (FileSyncSvc) 。
+
+如果已刪除目錄，請執行下列步驟來移除現有的伺服器端點，並使用新路徑建立新的伺服器端點：
+
+1. 遵循 [移除伺服器端點](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint)中記載的步驟，移除同步群組中的伺服器端點。
+2. 遵循 [新增伺服器端點](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint)中所述的步驟，在同步群組中建立新的伺服器端點。
 
 ### <a name="common-troubleshooting-steps"></a>常用的疑難排解步驟
 <a id="troubleshoot-storage-account"></a>**確認儲存體帳戶確實存在。**  

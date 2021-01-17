@@ -14,17 +14,17 @@ ms.topic: how-to
 ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bbd54ed68863a4704319a25af96b6463ad2377b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021957"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539705"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>建立 Azure CDN 端點
 此文章說明在現有 CDN 設定檔中建立 [Azure 內容傳遞網路 (CDN)](cdn-overview.md) 端點的所有設定。 建立設定檔與端點之後，即可開始將內容傳遞給您的客戶。 如需建立設定檔與端點的快速入門，請參閱[快速入門：建立 Azure CDN 設定檔和端點](cdn-create-new-endpoint.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 建立 CDN 端點之前，您必須至少建立一個 CDN 設定檔，其中可包含一或多個 CDN 端點。 若要依網際網路網域、Web 應用程式或其他準則來組織您的 CDN 端點，您可以使用多個設定檔。 由於 CDN 定價會套用於 CDN 設定檔層級，因此，如果您想要使用混合的 Azure CDN 定價層，就必須建立多個 CDN 設定檔。 若要建立 CDN 設定檔，請查看[建立新的 CDN 設定檔](cdn-create-new-endpoint.md#create-a-new-cdn-profile)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登入 Azure 入口網站
@@ -97,7 +97,7 @@ ms.locfileid: "96021957"
     因為需要一段時間才能傳播註冊，所以端點不會立即可供使用： 
     - 若為 **來自 Microsoft 的標準 Azure CDN** 設定檔，通常會在 10 分鐘內完成傳播。 
     - 若為 **來自 Akamai 的標準 Azure CDN** 設定檔，通常會在一分鐘內完成傳播。 
-    - 若為 **來自 Verizon 的標準 Azure CDN** 和 **來自 Verizon 的進階 Azure CDN** 設定檔，通常會在 90 分鐘內完成傳播。 
+    - 針對 **來自 Verizon 的 AZURE Cdn 標準** 和來自 Verizon 設定檔的 **azure cdn Premium** ，傳播通常會在30分鐘內完成。 
    
     如果您嘗試在端點設定傳播到存在點 (POP) 伺服器之前使用 CDN 網域名稱，您可能會收到 HTTP 404 回應狀態。 如果您在端點建立之後過了好幾個小時，仍會收到 404 回應狀態，請參閱[針對傳回 404 狀態碼的 Azure CDN 端點進行疑難排解](cdn-troubleshoot-endpoint.md)。
 

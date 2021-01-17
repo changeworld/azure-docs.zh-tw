@@ -1,20 +1,20 @@
 ---
-title: 啟用並設定您的感應器
+title: 啟用和設定感應器
 description: 本文說明如何登入並啟動感應器主控台。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/26/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9305609b624a96e4d785657dfb63af6639e132c4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838967"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538558"
 ---
-# <a name="activate-and-set-up-your-sensor"></a>啟用並設定您的感應器
+# <a name="activate-and-set-up-your-sensor"></a>啟用和設定感應器
 
 本文說明如何啟用感應器並執行初始設定。
 
@@ -65,10 +65,13 @@ ms.locfileid: "97838967"
 主控台支援下列憑證類型：
 
 - 私用和企業金鑰基礎結構 (私用 PKI) 
+
 - 公開金鑰基礎結構 (公開 PKI) 
+
 - 在本機產生的設備 (本機自我簽署)  
 
-  > 須知我們建議您不要使用預設的自我簽署憑證。 憑證並非安全的，且只能用於測試環境。 憑證的擁有者無法驗證，而且無法維護系統的安全性。 請勿將此選項用於生產網路。
+  > [!IMPORTANT]
+  > 我們建議您不要使用預設的自我簽署憑證。 憑證並非安全的，且只能用於測試環境。 憑證的擁有者無法驗證，而且無法維護系統的安全性。 請勿將此選項用於生產網路。
 
 ### <a name="sign-in-and-activate-the-sensor"></a>登入並啟動感應器
 
@@ -211,10 +214,10 @@ ms.locfileid: "97838967"
 |----|---|---|
 | 支援 | :::image type="icon" source="media/concept-sensor-console-overview/support-icon-azure.png" border="false"::: | 請聯絡 [Microsoft 支援服務](https://support.microsoft.com/) 尋求協助。 |
 
-### <a name="see-also"></a>請參閱
+### <a name="see-also"></a>另請參閱
 
 [將感應器上線](getting-started.md#4-onboard-a-sensor)
 
 [管理感應器啟用檔案](how-to-manage-individual-sensors.md#manage-sensor-activation-files)
 
-[控制監視的流量](how-to-control-what-traffic-is-monitored.md)
+[控制監視到的流量](how-to-control-what-traffic-is-monitored.md)

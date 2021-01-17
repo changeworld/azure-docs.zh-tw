@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 01/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: b8be516051f8eed0649064ae0f7c29a4dde85675
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 8a0d69ea57eb5b8b2a074c37d4798a99c576ce95
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224443"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538173"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>使用來自另一個 Azure AD B2C 租使用者的 Azure AD B2C 帳戶設定註冊和登入
 
@@ -37,13 +37,13 @@ ms.locfileid: "98224443"
 ![Azure AD B2C 與另一個 Azure AD B2C 租使用者的同盟](./media/identity-provider-azure-ad-b2c/azure-ad-b2c-federation.png)
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-an-azure-ad-b2c-application"></a>建立 Azure AD B2C 應用程式
 
-若要使用 Azure AD B2C 帳戶作為 Azure AD B2C 租使用者中的身分 [識別提供者](openid-connect.md) (例如，Contoso) ，在其他 Azure AD B2C 中 (例如 Fabrikam) ：
+若要讓具有來自另一個 Azure AD B2C (租使用者之帳戶的使用者登入（例如，Fabrikam) ），請在 Azure AD B2C (例如，Contoso) ：
 
 1. 建立 [使用者流程](tutorial-create-user-flows.md)或 [自訂原則](custom-policy-get-started.md)。
 1. 然後，在 Azure AD B2C 中建立應用程式，如本節中的描述。 

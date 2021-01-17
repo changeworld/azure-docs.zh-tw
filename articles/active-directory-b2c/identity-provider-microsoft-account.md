@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 123b36ba854bec8b363d59bbed5e70f18da1e578
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d9cba08e5b6650edc0decd3ff9df4060e9ad815c
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653702"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538006"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Microsoft 帳戶登入
 
@@ -30,13 +30,13 @@ ms.locfileid: "97653702"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-microsoft-account-application"></a>建立 Microsoft 帳戶應用程式
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 Microsoft 帳戶作為[識別提供者](openid-connect.md)，您必須在 Azure AD 租用戶中建立應用程式。 此 Azure AD 租用戶與您的 Azure AD B2C 租用戶不同。 如果您還沒有 Microsoft 帳戶，可以在 [https://www.live.com/](https://www.live.com/) 取得。
+若要讓具有 Microsoft 帳戶 Azure Active Directory B2C (Azure AD B2C) 中的使用者登入，您需要在 [Azure 入口網站](https://portal.azure.com)中建立應用程式。 如需詳細資訊，請參閱 [使用 Microsoft 身分識別平臺註冊應用程式](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)。 如果您還沒有 Microsoft 帳戶，可以在 [https://www.live.com/](https://www.live.com/) 取得。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您 Azure AD 租用戶的目錄，以確定您使用的是包含 Azure AD 租用戶的目錄。
@@ -97,7 +97,7 @@ ms.locfileid: "97653702"
 1. 輸入原則金鑰的 [名稱]。 例如： `MSASecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 1. 在 [祕密] 中，輸入您在上一節記下的用戶端密碼。
 1. 針對 [金鑰使用方法]，選取 `Signature`。
-1. 按一下 [建立]。
+1. 按一下頁面底部的 [新增] 。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -210,9 +210,9 @@ ms.locfileid: "97653702"
 ## <a name="add-microsoft-identity-provider-to-a-user-flow"></a>將 Microsoft 身分識別提供者新增至使用者流程 
 
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
-1. 按一下您想要使用 Microsoft 身分識別提供者的使用者流程。
+1. 按一下您想要新增 Microsoft 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **Microsoft 帳戶**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

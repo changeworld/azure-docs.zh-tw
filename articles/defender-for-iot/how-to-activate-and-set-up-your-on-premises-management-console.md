@@ -1,20 +1,20 @@
 ---
-title: 啟用並設定您的內部部署管理主控台
+title: 啟用和設定內部部署管理主控台
 description: 管理主控台啟用和設定可確保感應器已向 Azure 註冊，並將資訊傳送至內部部署管理主控台，而且內部部署管理主控台會在連線的感應器上執行管理工作。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/24/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56092d61e1eed4e4ebe4f8cb7f97d01e91e8543e
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839475"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538588"
 ---
-# <a name="activate-and-set-up-your-on-premises-management-console"></a>啟用並設定您的內部部署管理主控台 
+# <a name="activate-and-set-up-your-on-premises-management-console"></a>啟用和設定內部部署管理主控台 
 
 啟用和設定內部部署管理主控台可確保：
 
@@ -51,7 +51,7 @@ ms.locfileid: "97839475"
 
 ## <a name="set-up-a-certificate"></a>設定憑證
 
-管理主控台安裝之後，會產生本機自我簽署憑證，並使用此憑證來存取主控台。 當系統管理員第一次登入管理主控台時，系統會提示該使用者上架 SSL/TLS 憑證。 建議您使用受信任的 CA 簽署憑證，而不要使用本機產生的自我簽署憑證。
+管理主控台安裝之後，會產生本機自我簽署憑證，並使用此憑證來存取主控台。 當系統管理員第一次登入管理主控台時，系統會提示該使用者上架 SSL/TLS 憑證。 
 
 有兩種安全性層級可用：
 
@@ -61,7 +61,9 @@ ms.locfileid: "97839475"
 主控台支援下列類型的憑證：
 
 - 私用和企業金鑰基礎結構 (私用 PKI) 
+
 - 公開金鑰基礎結構 (公開 PKI) 
+
 - 在本機產生的設備 (本機自我簽署)  
 
   > [!IMPORTANT]
@@ -106,7 +108,7 @@ ms.locfileid: "97839475"
 
 3. 在 [ **位址** ] 文字方塊中，輸入您要連線的內部部署管理主控台的 IP 位址。
 
-4. 選取 [連接]。 狀態會變更：
+4. 選取 [連線]。 狀態會變更：
 
    :::image type="content" source="media/how-to-activate-and-set-up-your-on-premises-management-console/connection-status-window-connected.png" alt-text="內部部署管理主控台的 [狀態] 視窗的螢幕擷取畫面，其中顯示 [已連線]。":::
 
@@ -223,7 +225,7 @@ ms.locfileid: "97839475"
 
 | 參數 | 描述 |
 |--|--|
-| 名稱 | 感應器的名稱。 您只能從感應器變更此名稱。 如需詳細資訊，請參閱 Defender for IoT 使用者指南。 |
+| Name | 感應器的名稱。 您只能從感應器變更此名稱。 如需詳細資訊，請參閱 Defender for IoT 使用者指南。 |
 | IP | 感應器 IP 位址。 |
 | 版本 | 感應器版本。 |
 | 連線能力 | 感應器連接狀態。 狀態可以是 [ **已連線** ] 或 [已 **中斷** 連線]。 |
@@ -314,6 +316,6 @@ ms.locfileid: "97839475"
 
 3. 若要從網站刪除未指派的感應器，請從未指派的感應器清單中選取感應器，然後選取 [] :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: 。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-[針對感應器和內部部署管理主控台進行疑難排解](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)
+[對感應器和內部部署管理主控台進行疑難排解](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

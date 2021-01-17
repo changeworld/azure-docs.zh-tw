@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
-ms.openlocfilehash: 06a06d275ba6f5ded475ffd693ee61e7a72b9516
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 26097408d0b83b043f4a25183146c892fc4b48ad
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127697"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538547"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>針對 Azure Cosmos DB 的 MongoDB API 常見問題進行疑難排解
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "98127697"
 | 67 | CannotCreateIndex | 無法完成建立索引的要求。 | 最多可在容器中建立500個單一欄位索引。 多達八個欄位可以包含在複合索引中， (3.6 +) 支援複合索引。 |
 | 115 | CommandNotSupported | 不支援所嘗試的要求。 | 錯誤中應提供其他詳細資料。 如果這項功能對您的部署很重要，請在 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)中建立支援票證，讓我們知道。 |
 | 11000 | DuplicateKey | 分區索引鍵 (您要插入之檔的 Azure Cosmos DB 資料分割索引鍵) 已經存在於集合中，或違反了唯一的索引欄位條件約束。 | 使用 update ( # A1 函數來更新現有的檔。 如果違反了唯一索引欄位條件約束，請使用尚未存在於分區/分割區中的域值來插入或更新檔。 |
-| 16500 | TooManyRequests  | 取用的要求單位總數已超過針對集合佈建的要求單位率並已進行節流。 | 請考慮從 Azure 入口網站調整指派給容器或容器集的輸送量，或重試作業。 如果您啟用 SSR (伺服器端重試) ，Azure Cosmos DB 會自動重試因為此錯誤而失敗的要求。 |
+| 16500 | TooManyRequests  | 取用的要求單位總數已超過針對集合佈建的要求單位率並已進行節流。 | 請考慮從 Azure 入口網站調整指派給容器或容器集的輸送量，或重試作業。 如果您 [啟用 SSR](prevent-rate-limiting-errors.md) (伺服器端重試) ，Azure Cosmos DB 會自動重試因為此錯誤而失敗的要求。 |
 | 16501 | ExceededMemoryLimit | 做為多租用戶服務，作業已超出用戶端的記憶體配額。 | 透過更嚴格的查詢準則來縮小作業的範圍，或經由 [Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)連絡支援人員。 範例： `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | 40324 | 無法辨識的管線階段名稱。 | 無法辨識匯總管線要求中的階段名稱。 | 確定所有匯總管線名稱在您的要求中都是有效的。 |
 | - | MongoDB 線路版本問題 | 舊版 MongoDB 驅動程式無法在連接字串中偵測 Azure Cosmos 帳戶的名稱。 | 在 MongoDB 連接字串的 Cosmos DB API 結尾附加 *appName = @**accountName** @* ，其中 ***accountName*** 是您的 Cosmos DB 帳戶名稱。 |

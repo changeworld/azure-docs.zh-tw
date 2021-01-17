@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c54b5b785f6da1bb651d8b1f508da42ab0fb802d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656049"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538386"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>從 Azure DDoS 保護連接資料
 
@@ -24,7 +24,7 @@ ms.locfileid: "94656049"
 
 分散式阻斷服務 (DDoS) 攻擊嘗試耗盡應用程式的資源，讓合法使用者無法使用該應用程式。 DDoS 攻擊可以鎖定可透過網際網路公開觸達的任何端點。 結合應用程式設計最佳做法的[Azure DDoS 保護](../ddos-protection/ddos-protection-overview.md)，可針對 DDoS 攻擊提供穩固的防禦。 您可以將 Azure DDoS 保護記錄連接到 Azure Sentinel，讓您可以在活頁簿中查看記錄資料、使用它來建立自訂警示，並加以合併以改善您的調查。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須擁有 Azure Sentinel 工作區的讀取和寫入權限。
 
@@ -38,7 +38,7 @@ ms.locfileid: "94656049"
 
 1. 從資料連線器資源庫中選取 **Azure DDoS 保護** ，然後選取 [預覽] 窗格上的 [ **開啟連接器] 頁面** 。
 
-1. 在您想要連接其記錄的所有防火牆上啟用 **診斷記錄** ：
+1. 在您想要連接其記錄的所有公用 IP 位址上啟用 **診斷記錄** ：
 
     1. 選取 [ **開啟診斷設定] >** 連結，然後從清單中選擇 **公用 IP 位址** 資源。
 

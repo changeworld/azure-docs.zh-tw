@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 24e267b66d11cb3c5ca2b70ed09b7acb3653da99
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 36b7618fbacc18ec506f12eabc642246d3148ce0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653600"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98537912"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以微博帳戶登入
 
@@ -26,13 +26,13 @@ ms.locfileid: "97653600"
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-weibo-application"></a>建立 Weibo 應用程式
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中使用 Weibo 帳戶做為識別提供者，您需要在代表該帳戶的租使用者中建立應用程式。 如果您還沒有 Weibo 帳戶，您可以在中註冊 [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us) 。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中讓具有 Weibo 帳戶的使用者登入，您必須在 [Weibo 開發人員入口網站](https://open.weibo.com/)中建立應用程式。 如果您還沒有 Weibo 帳戶，您可以在中註冊 [https://weibo.com](https://weibo.com/signup/signup.php?lang=en-us) 。
 
 1. 使用您的微博帳戶認證登入[微博開發人員入口網站](https://open.weibo.com/)。
 1. 登入之後，在右上角選取您的顯示名稱。
@@ -85,7 +85,7 @@ ms.locfileid: "97653600"
 7. 輸入原則金鑰的 [名稱]。 例如： `WeiboSecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 在 [祕密] 中，輸入您先前記錄的用戶端密碼。
 9. 針對 [金鑰使用方法]，選取 `Signature`。
-10. 按一下 [建立]。
+10. 按一下頁面底部的 [新增] 。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -263,9 +263,9 @@ GitHub 技術設定檔需要將 **CreateIssuerUserId** 宣告轉換新增至 Cla
 ## <a name="add-weibo-identity-provider-to-a-user-flow"></a>將 Weibo 身分識別提供者新增至使用者流程 
 
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
-1. 按一下您想要 Weibo 身分識別提供者的使用者流程。
+1. 按一下您想要新增 Weibo 身分識別提供者的使用者流程。
 1. 在 **社交識別提供者** 底下，選取 [ **Weibo**]。
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
 1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
 1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
 1. 按一下 [**執行使用者流程**]

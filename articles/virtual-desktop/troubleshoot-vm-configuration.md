@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a49ea2f6ce4a5119af024ab3de67fa2b89c02e
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005225"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539738"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>設定工作階段主機虛擬機器
 
@@ -73,8 +73,8 @@ ms.locfileid: "88005225"
 **原因3：** 網路介面的 DNS 伺服器設定沒有指向虛擬網路上適當的 DNS 伺服器。
 
 **修正3：** 遵循 [變更 DNS 伺服器] 中的步驟，採取下列其中一個動作來解決問題。
-- 使用[變更 dns 伺服器](../virtual-network/virtual-network-network-interface.md#change-dns-servers)的步驟，將網路介面的 DNS 伺服器設定變更為**自訂**，並指定虛擬網路上 DNS 伺服器的私人 IP 位址。
-- 變更網路介面的 DNS 伺服器設定，以從 [[變更 dns 伺服器](../virtual-network/virtual-network-network-interface.md#change-dns-servers)] 的步驟**繼承虛擬網路**，然後變更虛擬網路的 dns 伺服器設定，以及變更[dns 伺服器](../virtual-network/manage-virtual-network.md#change-dns-servers)的步驟。
+- 使用 [變更 dns 伺服器](../virtual-network/virtual-network-network-interface.md#change-dns-servers)的步驟，將網路介面的 DNS 伺服器設定變更為 **自訂**，並指定虛擬網路上 DNS 伺服器的私人 IP 位址。
+- 變更網路介面的 DNS 伺服器設定，以從 [[變更 dns 伺服器](../virtual-network/virtual-network-network-interface.md#change-dns-servers)] 的步驟 **繼承虛擬網路**，然後變更虛擬網路的 dns 伺服器設定，以及變更 [dns 伺服器](../virtual-network/manage-virtual-network.md#change-dns-servers)的步驟。
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>未安裝 windows 虛擬桌面代理程式和 Windows 虛擬桌面開機載入器
 
@@ -82,7 +82,7 @@ ms.locfileid: "88005225"
 
 遵循這些指示來確認已安裝元件，並檢查錯誤訊息。
 
-1. 簽入**主控台**  >  **程式**的  >  **程式和功能**，確認已安裝這兩個元件。 如果看不到 **Windows 虛擬桌面代理程式** 和 **Windows 虛擬桌面代理程式開機載入** 器，則它們不會安裝在 VM 上。
+1. 簽入 **主控台**  >  **程式** 的  >  **程式和功能**，確認已安裝這兩個元件。 如果看不到 **Windows 虛擬桌面代理程式** 和 **Windows 虛擬桌面代理程式開機載入** 器，則它們不會安裝在 VM 上。
 2. 開啟 **檔案總管** 並流覽至 **C:\Windows\Temp\ScriptLog.log**。 如果遺失該檔案，則表示安裝這兩個元件的 PowerShell DSC 無法在提供的安全性內容中執行。
 3. 如果檔案 **C:\Windows\Temp\ScriptLog.log** 存在，請將它開啟，並檢查錯誤訊息。
 
@@ -178,7 +178,7 @@ ms.locfileid: "88005225"
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>針對 Windows 虛擬桌面並存堆疊的問題進行疑難排解
 
-Windows 虛擬桌面並存堆疊會隨 Windows Server 2019 自動安裝。 使用 Microsoft Installer (MSI) ，在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安裝並存堆疊。 若為 Microsoft Windows 10，則會使用 **enablesxstackrs.ps1**啟用 Windows 虛擬桌面並存堆疊。
+Windows 虛擬桌面並存堆疊會隨 Windows Server 2019 自動安裝。 使用 Microsoft Installer (MSI) ，在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安裝並存堆疊。 若為 Microsoft Windows 10，則會使用 **enablesxstackrs.ps1** 啟用 Windows 虛擬桌面並存堆疊。
 
 有三種主要方式可在工作階段主機集區 Vm 上安裝或啟用並存堆疊：
 
@@ -310,7 +310,7 @@ Windows 虛擬桌面並存堆疊會隨 Windows Server 2019 自動安裝。 使�
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>停用遠端桌面授權模式群組原則設定
 
-在 VM 中開啟群組原則編輯器，並流覽至**系統管理範本**  >  **Windows 元件**  >  **遠端桌面服務**  >  **遠端桌面工作階段主機**  >  **授權**  >  **設定遠端桌面授權模式**，以檢查群組原則設定。 如果 **已啟用**群組原則設定，請將其變更為 [ **已停用**]。 如果已停用，則保持原狀。
+在 VM 中開啟群組原則編輯器，並流覽至 **系統管理範本**  >  **Windows 元件**  >  **遠端桌面服務**  >  **遠端桌面工作階段主機**  >  **授權**  >  **設定遠端桌面授權模式**，以檢查群組原則設定。 如果 **已啟用** 群組原則設定，請將其變更為 [ **已停用**]。 如果已停用，則保持原狀。
 
 >[!NOTE]
 >如果您透過網域設定群組原則，請在以這些 Windows 10 企業版多重會話 Vm 為目標的原則上停用此設定。
@@ -348,6 +348,7 @@ Windows 虛擬桌面並存堆疊會隨 Windows Server 2019 自動安裝。 使�
 - 如需 Windows 虛擬桌面疑難排解和擴大追蹤的概觀，請參閱[疑難排解概觀、意見反應和支援](troubleshoot-set-up-overview.md)。
 - 若要針對在 Windows 虛擬桌面環境中建立主機集區時所發生的問題進行疑難排解，請參閱 [環境和主機集區建立](troubleshoot-set-up-issues.md)。
 - 若要針對在 Windows 虛擬桌面中設定虛擬機器 (VM) 時的問題進行疑難排解，請參閱[工作階段主機虛擬機器設定](troubleshoot-vm-configuration.md)。
+- 若要針對與 Windows 虛擬桌面代理程式或會話連線相關的問題進行疑難排解，請參閱針對 [常見的 Windows 虛擬桌面代理程式問題進行疑難排解](troubleshoot-agent.md)。
 - 若要對 Windows 虛擬桌面用戶端連線問題進行疑難排解，請參閱 [Windows 虛擬桌面服務連接](troubleshoot-service-connection.md)。
 - 若要疑難排解遠端桌面用戶端的問題，請參閱 [遠端桌面用戶端疑難排解](troubleshoot-client.md)
 - 若要針對使用 PowerShell 搭配 Windows 虛擬桌面時的問題進行疑難排解，請參閱 [Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)。

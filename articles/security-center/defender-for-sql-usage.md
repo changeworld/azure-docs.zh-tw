@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: 3899b00038f3c12add4dbf49a7f05e07141d8606
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: c9d11f1ddc3e1dd2239bdfce9c41f58fe9e20497
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755849"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539952"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>電腦上適用于 SQL server 的 Azure Defender 
 
@@ -79,7 +79,7 @@ ms.locfileid: "97755849"
 
 
 1. （選擇性）設定安全性警示的電子郵件通知。 
-    您可以設定要在產生安全性中心警示時收到電子郵件通知的收件者清單。 電子郵件包含 Azure 資訊安全中心中警示的直接 sk，以及所有相關的詳細資料。 如需詳細資訊，請參閱 [設定安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)。
+    您可以設定要在產生安全性中心警示時收到電子郵件通知的收件者清單。 電子郵件包含 Azure 資訊安全中心中警示的直接連結，其中包含所有相關的詳細資料。 如需詳細資訊，請參閱 [設定安全性警示的電子郵件通知](security-center-provide-security-contact-details.md)。
 
 
 
