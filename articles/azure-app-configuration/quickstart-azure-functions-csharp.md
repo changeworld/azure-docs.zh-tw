@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: 4197891949062123042736e578cfbcc5def4e1f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: b5c659a673ece8fd7fbb9566d8bb84201a668a7f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930784"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964077"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式組態建立 Azure Functions 應用程式
 
@@ -44,45 +44,75 @@ ms.locfileid: "96930784"
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
+此專案會[在 .NET Azure Functions 中使用相依性插入](/azure/azure-functions/functions-dotnet-dependency-injection)，並新增 Azure 應用程式組態作為額外的組態來源。
 
-1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽] 索引標籤上，搜尋 `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet 套件並新增至您的專案。 如果您找不到該套件，請選取 [包含發行前版本] 核取方塊。
+1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽] 索引標籤上，搜尋下列 NuGet 套件並新增至您的專案。
+   - [Microsoft.Extensions.Configuration.AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) 4.1.0 版或更新版本
+   - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) 1.1.0 版或更新版本 
 
-2. 開啟 *Function1.cs*，並新增 .NET Core 組態和應用程式組態設定提供者的命名空間。
+2. 使用下列程式碼，新增 Startup.cs 檔案。 其會定義名為 `Startup` 的類別，以實作 `FunctionsStartup` 抽象類別。 元件屬性用來指定 Azure Functions 啟動期間所使用的類型名稱。
+
+    藉由呼叫 `AddAzureAppConfiguration()`，覆寫 `ConfigureAppConfiguration` 方法，並將 Azure 應用程式組態提供者新增為額外的組態來源。 `Configure` 方法會保留空白，因為您目前不需要註冊任何服務。
+    
+    ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Configuration;
+
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
+
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
+        {
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+                string cs = Environment.GetEnvironmentVariable("ConnectionString");
+                builder.ConfigurationBuilder.AddAzureAppConfiguration(cs);
+            }
+
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
+        }
+    }
+    ```
+
+3. 開啟 Function1.cs，並新增下列命名空間。
 
     ```csharp
     using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. 新增名為 `Configuration`的 `static` 屬性，以建立 `IConfiguration` 的單一執行個體。 然後，藉由呼叫 `AddAzureAppConfiguration()` 來新增 `static` 建構函式，以連線至應用程式組態。 這會在應用程式啟動時載入組態一次。 稍後將會使用相同的組態執行個體進行所有 Functions 呼叫。
+   新增用於透過相依性插入取得 `IConfiguration` 執行個體的建構函式。
 
     ```csharp
-    private static IConfiguration Configuration { set; get; }
+    private readonly IConfiguration _configuration;
 
-    static Function1()
+    public Function1(IConfiguration configuration)
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(Environment.GetEnvironmentVariable("ConnectionString"));
-        Configuration = builder.Build();
+        _configuration = configuration;
     }
     ```
 
 4. 更新 `Run` 方法，以讀取組態中的值。
 
     ```csharp
-    public static async Task<IActionResult> Run(
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
         string keyName = "TestApp:Settings:Message";
-        string message = Configuration[keyName];
+        string message = _configuration[keyName];
 
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
     }
     ```
+
+   `Function1` 類別和 `Run` 方法不得為靜態。 如果已自動產生 `static` 修飾元，請予以移除。
 
 ## <a name="test-the-function-locally"></a>在本機測試函式
 
@@ -120,7 +150,7 @@ ms.locfileid: "96930784"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立新的應用程式組態存放區，並透過[應用程式組態提供者](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)將其與 Azure Functions 應用程式搭配使用。 若要了解如何將 Azure Functions 應用程式設定為以動態方式重新整理組態設定，請繼續進行下一個教學課程。
+在本快速入門中，您已建立新的應用程式組態存放區，並透過[應用程式組態提供者](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)將其與 Azure Functions 應用程式搭配使用。 若要了解如何將 Azure Functions 應用程式更新為以動態方式重新整理組態，請繼續進行下一個教學課程。
 
 > [!div class="nextstepaction"]
-> [啟用動態組態](./enable-dynamic-configuration-azure-functions-csharp.md)
+> [啟用 Azure Functions 中的動態組態](./enable-dynamic-configuration-azure-functions-csharp.md)

@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454609"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120218"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Azure Synapse Analytics 中的專用 SQL 集區 (先前稱為 SQL DW) 的功能提要
 
@@ -37,7 +37,7 @@ ms.locfileid: "96454609"
 
 ## <a name="data-migration"></a>資料移轉
 
-首先，請將資料載入 [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 Azure Blob 儲存體。 接下來，使用 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (預覽) 將資料載入暫存表格中。 請使用下列組態︰
+首先，請將資料載入 [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 Azure Blob 儲存體。 接下來，使用 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)將資料載入暫存資料表中。 請使用下列組態︰
 
 | 設計 | 建議 |
 |:--- |:--- |
@@ -46,7 +46,7 @@ ms.locfileid: "96454609"
 | 資料分割 | None |
 | 資源類別 | largerc 或 xlargerc |
 
-深入了解[資料移轉](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/)、[資料載入](design-elt-data-loading.md)及[擷取、載入和轉換 (ELT) 的流程](design-elt-data-loading.md)。
+深入了解[資料移轉](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice)、[資料載入](design-elt-data-loading.md)及[擷取、載入和轉換 (ELT) 的流程](design-elt-data-loading.md)。
 
 ## <a name="distributed-or-replicated-tables"></a>分散式或複寫資料表
 
@@ -137,7 +137,7 @@ Azure Synapse 的主要功能就是能夠[管理計算資源](sql-data-warehouse
 
 建議您考量中樞架構和支點架構中的 SQL 資料庫和 Azure Analysis Services。 該解決方案可以隔離不同使用者群組之間的工作負載，也可以使用 SQL Database 和 Azure Analysis Services 的進階安全性功能。 這也是將無限制的並行處理提供給您的使用者的一種方法。
 
-深入了解[利用 Azure Synapse Analytics 中的專用 SQL 集區 (先前稱為 SQL DW) 的一般架構](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)。
+深入了解[利用 Azure Synapse Analytics 中的專用 SQL 集區 (先前稱為 SQL DW) 的一般架構](/archive/blogs/sqlcat/common-isv-application-patterns-using-azure-sql-data-warehouse)。
 
 按一下 SQL 資料庫中的支點，從專用 SQL 集區 (先前稱為 SQL DW) 進行部署：
 

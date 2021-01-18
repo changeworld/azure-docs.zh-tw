@@ -308,10 +308,10 @@
       items:
         - name: 選擇階層。
           href: search-sku-tier.md
-        - name: 估計容量和成本
-          href: search-sku-manage-costs.md
-        - name: 調整容量
+        - name: 預估和管理容量
           href: search-capacity-planning.md
+        - name: 預估成本
+          href: search-sku-manage-costs.md
         - name: 服務限制
           href: search-limits-quotas-capacity.md
         - name: 效能級別

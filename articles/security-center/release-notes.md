@@ -1,6 +1,6 @@
 ---
 title: Azure 資訊安全中心版本資訊
-description: Azure 資訊安全中心新增項目和變更內容的相關描述。
+description: Azure 資訊安全中心新增項目和變更內容的相關描述
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2021
+ms.date: 01/17/2021
 ms.author: memildin
-ms.openlocfilehash: 86da6c0a3393dd3f47143355597cd9ccdec9928d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539948"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541373"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -32,6 +32,24 @@ ms.locfileid: "98539948"
 
 
 ## <a name="january-2021"></a>2021 年 1 月
+
+12 月的更新包括：
+
+- [已篩選建議清單的 CSV 匯出](#csv-export-of-filtered-list-of-recommendations)
+- [內部部署和多雲端電腦的弱點評量已正式推出](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>已篩選建議清單的 CSV 匯出 
+
+在 2020 年 11 月，我們在建議頁面中新增了篩選器 ([建議清單現在包含篩選器](#recommendations-list-now-includes-filters))。 在 12 月，我們擴充了這些篩選器 ([建議頁面具有環境、嚴重性和可用回應](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses))。 
+
+根據此公告，我們會變更 [下載至 CSV] 按鈕的行為，讓 CSV 僅匯出包含目前顯示在已篩選清單中的建議。 
+
+例如，在下圖中，您可以看到清單已篩選為兩個建議。 產生的 CSV 檔案包含受這兩個建議影響的每個資源的狀態詳細資料。   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="將篩選的建議匯出至 CSV 檔案":::
+
+深入了解 [Azure 資訊安全中心的安全性建議](security-center-recommendations.md)。
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>內部部署和多雲端電腦的弱點評量已正式推出
 

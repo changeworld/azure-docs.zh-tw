@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: fe82b03c4a8c71f84de02245b075ff30da31b45b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 2967476d06b8f6f88b740f811a94c5fdb4284b4d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031092"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011861"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>快速入門：呼叫受 Azure 身分識別平台保護的 ASP.NET Web API
 
@@ -48,13 +48,13 @@ ms.locfileid: "97031092"
 
 若要手動註冊您的應用程式，請選擇您要在其中建立應用程式的 Azure Active Directory (Azure AD) 租用戶。
 
-1. 使用公司、學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 使用公司、學校帳戶或個人的 Microsoft 帳戶登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您的帳戶存在於多個 Azure AD 租用戶中，請在右上方選取您的設定檔，然後選取 [切換目錄]。
 1. 將您的入口網站工作階段變更為您想要的 Azure AD 租用戶。
 
 ### <a name="register-the-todolistservice-app"></a>註冊 TodoListService 應用程式
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 [管理] 底下，選取 [應用程式註冊] > [新增註冊]。

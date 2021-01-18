@@ -8,23 +8,23 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: d1dc843ff676429f202c0b9077057d067294f738
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076159"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046068"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>快速入門：將功能旗標新增至 Azure Functions 應用程式
 
-在本快速入門中，您會使用 Azure 應用程式組態，在 Azure Functions 應用程式中建立功能管理的實作。 您將使用應用程式組態服務來集中儲存所有功能旗標及控制其狀態。 
+在本快速入門中，您會建立 Azure Functions 應用程式並在其中使用功能旗標。 您會使用 Azure 應用程式組態的管理功能來集中儲存所有功能旗標及控制其狀態。
 
 .NET 功能功能管理程式庫可透過功能旗標支援來擴充架構。 這些程式庫會建置在 .NET 組態系統之上。 透過其 .NET 組態提供者與應用程式組態密切整合。
 
 ## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-- 包含 **Azure 開發**工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
+- 包含 **Azure 開發** 工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/vs)。
 - [Azure Functions 工具](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
 ## <a name="create-an-app-configuration-store"></a>建立應用程式組態存放區
@@ -46,66 +46,113 @@ ms.locfileid: "92076159"
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 
-1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽]  索引標籤上，搜尋下列 NuGet 套件並新增至您的專案。 查看 `Microsoft.Extensions.DependencyInjection`，確認您使用的是最新的穩定組建。 
+此專案將[在 .NET Azure Functions 中使用相依性插入](/azure/azure-functions/functions-dotnet-dependency-injection)。 其會將 Azure 應用程式組態新增為您的功能旗標儲存所在的額外組態來源。
 
-    ```
-    Microsoft.Extensions.DependencyInjection
-    Microsoft.Extensions.Configuration
-    Microsoft.FeatureManagement
-    ```
+1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽] 索引標籤上，搜尋下列 NuGet 套件並新增至您的專案。
+   - [Microsoft.Extensions.Configuration.AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) 4.1.0 版或更新版本
+   - [Microsoft.FeatureManagement](https://www.nuget.org/packages/Microsoft.FeatureManagement/) 2.2.0 版或更新版本
+   - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/) 1.1.0 版或更新版本 
 
-
-1. 開啟 *Function1.cs*，並新增這些套件的命名空間。
+2. 使用下列程式碼，新增 Startup.cs 檔案。 其會定義名為 `Startup` 的類別，以實作 `FunctionsStartup` 抽象類別。 元件屬性用來指定 Azure Functions 啟動期間所使用的類型名稱。
 
     ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
     using Microsoft.Extensions.Configuration;
     using Microsoft.FeatureManagement;
-    using Microsoft.Extensions.DependencyInjection;
-    ```
 
-1. 新增下列 `Function1` 靜態建構函式，以啟動 Azure 應用程式組態提供者。 接著，新增兩個 `static` 成員：一個名為 `ServiceProvider` 的欄位用以建立 `ServiceProvider` 的單一執行個體，和一個在 `Function1` 下名為 `FeatureManager` 的屬性，用以建立 `IFeatureManager` 的單一執行個體。 然後，呼叫 `AddAzureAppConfiguration()` 以連線至 `Function1` 中的應用程式組態。 此程序會在應用程式啟動時載入設定。 稍後將會使用相同的組態執行個體進行所有 Functions 呼叫。 
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
 
-    ```csharp
-        // Implements IDisposable, cached for life time of function
-        private static ServiceProvider ServiceProvider; 
-
-        static Function1()
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .AddAzureAppConfiguration(options =>
-                {
-                    options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
-                           .UseFeatureFlags();
-                }).Build();
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+            }
 
-            var services = new ServiceCollection();                                                                             
-            services.AddSingleton<IConfiguration>(configuration).AddFeatureManagement();
-
-            ServiceProvider = services.BuildServiceProvider(); 
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
         }
-
-        private static IFeatureManager FeatureManager => ServiceProvider.GetRequiredService<IFeatureManager>();
+    }
     ```
 
-1. 更新 `Run` 方法，以根據功能旗標的狀態變更顯示的訊息值。
+
+3. 藉由呼叫 `AddAzureAppConfiguration()`，更新 `ConfigureAppConfiguration` 方法，並將 Azure 應用程式組態提供者新增為額外的組態來源。 
+
+   `UseFeatureFlags()` 方法會指示提供者載入功能旗標。 在重新檢查變更之前，所有功能旗標的預設快取到期時間均為 30 秒。 設定傳遞給 `UseFeatureFlags` 方法的 `FeatureFlagsOptions.CacheExpirationInterval` 屬性，即可更新到期間隔。 
 
     ```csharp
-        [FunctionName("Function1")]
-        public static async Task<IActionResult> Run(
-                [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-                ILogger log)
-            {
-                string message = await FeatureManager.IsEnabledAsync("Beta")
-                     ? "The Feature Flag 'Beta' is turned ON"
-                     : "The Feature Flag 'Beta' is turned OFF";
-                
-                return (ActionResult)new OkObjectResult(message); 
-            }
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+    {
+        builder.ConfigurationBuilder.AddAzureAppConfiguration(options =>
+        {
+            options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                   .Select("_")
+                   .UseFeatureFlags();
+        });
+    }
+    ```
+   > [!TIP]
+   > 如果不想將功能旗標以外的任何組態載入您的應用程式中，您可呼叫 `Select("_")`，只載入不存在的虛擬機碼 "_"。 根據預設，如果沒有呼叫 `Select` 方法，就會載入您應用程式組態存放區中的所有組態機碼值。
+
+4. 更新 `Configure` 方法，使 Azure 應用程式組態服務和功能管理員可透過相依性插入來提供。
+
+    ```csharp
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddAzureAppConfiguration();
+        builder.Services.AddFeatureManagement();
+    }
+    ```
+
+5. 開啟 Function1.cs，並新增下列命名空間。
+
+    ```csharp
+    using System.Linq;
+    using Microsoft.FeatureManagement;
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
+
+   新增用於透過相依性插入取得 `_featureManagerSnapshot` 和 `IConfigurationRefresherProvider` 執行個體的建構函式。 從 `IConfigurationRefresherProvider`，您可取得 `IConfigurationRefresher` 的執行個體。
+
+    ```csharp
+    private readonly IFeatureManagerSnapshot _featureManagerSnapshot;
+    private readonly IConfigurationRefresher _configurationRefresher;
+
+    public Function1(IFeatureManagerSnapshot featureManagerSnapshot, IConfigurationRefresherProvider refresherProvider)
+    {
+        _featureManagerSnapshot = featureManagerSnapshot;
+        _configurationRefresher = refresherProvider.Refreshers.First();
+    }
+    ```
+
+6. 更新 `Run` 方法，以根據功能旗標的狀態變更顯示的訊息值。
+
+   `TryRefreshAsync` 方法會在 Functions 呼叫的開頭進行呼叫，以重新整理功能旗標。 如果未達到快取到期時間範圍，這就不會有任何作用。 如果您想要在不封鎖目前函式呼叫的情況下重新整理功能旗標，請移除 `await` 運算子。 在此情況下，較新的函式呼叫將會取得更新的值。
+
+    ```csharp
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        log.LogInformation("C# HTTP trigger function processed a request.");
+
+        await _configurationRefresher.TryRefreshAsync();
+
+        string message = await _featureManagerSnapshot.IsEnabledAsync("Beta")
+                ? "The Feature Flag 'Beta' is turned ON"
+                : "The Feature Flag 'Beta' is turned OFF";
+
+        return (ActionResult)new OkObjectResult(message);
+    }
     ```
 
 ## <a name="test-the-function-locally"></a>在本機測試函式
 
-1. 設定名為 **ConnectionString** 的環境變數，其值為您先前在應用程式組態存放區中的 [存取金鑰] 下擷取的存取金鑰。 如果您使用 Windows 命令提示字元，請執行下列命令，然後重新啟動命令提示字元以讓變更生效：
+1. 設定名為 **ConnectionString** 的環境變數，其值為您先前在應用程式組態存放區中的 [存取金鑰] 下擷取的連接字串。 如果您使用 Windows 命令提示字元，請執行下列命令，然後重新啟動命令提示字元以讓變更生效：
 
     ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
@@ -133,15 +180,16 @@ ms.locfileid: "92076159"
 
     ![已停用快速入門函式功能旗標](./media/quickstarts/functions-launch-ff-disabled.png)
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [所有資源]，然後選取您先前建立的應用程式組態存放區執行個體。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [所有資源]，然後選取您先前建立的應用程式組態存放區。
 
-1. 選取 [功能管理員]  ，然後將 Beta  金鑰的狀態變更為 [開啟]  。
+1. 選取 [功能管理員]，然後將 **Beta** 金鑰的狀態變更為 [開啟]。
 
-1. 返回您的命令提示字元，然後按 `Ctrl-C` 取消執行中的程序。  按 F5 重新啟動您的應用程式。 
-
-1. 使用步驟 3 中的相同程序，從 Azure Functions 執行階段輸出複製函式的 URL。 將 HTTP 要求的 URL 貼到瀏覽器的網址列。 瀏覽器回應應已變更，指出已開啟功能旗標 `Beta`，如下圖所示。
+1. 重新整理瀏覽器數次。 當快取的功能旗標在 30 秒後到期時，頁面應已變更，指出功能旗標 `Beta` 已開啟，如下圖所示。
  
     ![已啟用快速入門函式功能旗標](./media/quickstarts/functions-launch-ff-enabled.png)
+
+> [!NOTE]
+> 本教學課程中使用的範例程式碼，可從 [Azure 應用程式組態 GitHub 存放庫](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction)下載取得。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -149,8 +197,10 @@ ms.locfileid: "92076159"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已建立功能旗標，並透過[應用程式組態提供者](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)將其與 Azure Functions 應用程式搭配使用。
+在本快速入門中，您已建立功能旗標，並透過 [Microsoft.FeatureManagement](/dotnet/api/microsoft.featuremanagement) 程式庫將其與 Azure Functions 應用程式搭配使用。
 
-- 深入了解[功能管理](./concept-feature-management.md)。
-- [管理功能旗標](./manage-feature-flags.md)。
+- 深入了解[功能管理](./concept-feature-management.md)
+- [編輯功能旗標](./manage-feature-flags.md)
+- [使用條件式功能旗標](./howto-feature-filters-aspnet-core.md)
+- [針對目標受眾啟用分段推出功能](./howto-targetingfilter-aspnet-core.md)
 - [在 Azure Functions 應用程式中使用動態組態](./enable-dynamic-configuration-azure-functions-csharp.md)

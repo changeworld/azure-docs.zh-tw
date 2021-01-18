@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/24/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 242e0e4614994c30d0a14b8fe3d7a5c2b217bb5a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033335"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955394"
 ---
 # <a name="what-is-identity-protection"></a>什麼是 Identity Protection？
 
@@ -49,13 +49,16 @@ Identity Protection 會識別下列分類的風險：
 
 | 風險偵測類型 | 描述 |
 | --- | --- |
-| 非慣用登入位置 | 以使用者最近的登入為準，從非慣用的位置登入。 |
 | 匿名 IP 位址 | 從匿名 IP 位址登入 (例如：Tor 瀏覽器、Anonymizer VPN)。 |
-| 不熟悉的登入屬性 | 以給定使用者近期未出現過的屬性登入。 |
+| 非慣用登入位置 | 以使用者最近的登入為準，從非慣用的位置登入。 |
 | 已連結惡意程式碼的 IP 位址 | 從已連結惡意程式碼的 IP 位址登入。 |
+| 不熟悉的登入屬性 | 以給定使用者近期未出現過的屬性登入。 |
 | 認證外洩 | 指出使用者的有效認證已外洩。 |
 | 密碼噴灑 | 指出有攻擊者正以一致的暴力密碼破解方式，使用常見的密碼來攻擊多個使用者名稱。 |
 | Azure AD 威脅情報 | Microsoft 的內部和外部威脅情報來源已識別出已知的攻擊模式。 |
+| 新國家/地區 | [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) 會探索此偵測。 |
+| 來自匿名 IP 位址的活動 | [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) 會探索此偵測。 |
+| 可疑的收件匣轉寄 | [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) 會探索此偵測。 |
 
 如需這些風險的詳細資訊及其計算方式/時機，請參閱[什麼是風險](concept-identity-protection-risks.md)一文。
 

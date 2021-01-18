@@ -223,14 +223,12 @@
           items:
             - name: 使用 Azure 進行轉譯
               href: batch-rendering-service.md
-            - name: 轉譯虛擬機器映像
+            - name: Batch 轉譯 VM 映像
               href: batch-rendering-applications.md
             - name: Batch 轉譯功能
               href: batch-rendering-functionality.md
             - name: 使用 Batch 轉譯
               href: batch-rendering-using.md
-            - name: 使用轉譯管理員
-              href: batch-rendering-render-managers.md
             - name: 轉譯應用程式參考
               href: batch-rendering-application-reference.md
             - name: 儲存體和資料移動

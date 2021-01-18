@@ -188,16 +188,6 @@
               href: manage/pay-by-invoice.md
             - name: 建立其他訂用帳戶
               href: manage/create-subscription.md
-            - name: 以程式設計方式建立 EA 訂用帳戶
-              href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: 以程式設計方式建立 MCA 訂用帳戶
-              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: 以程式設計方式建立 MPA 訂用帳戶
-              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: 建立訂用帳戶 - ARM 範本
-              href: manage/create-subscription-template.md
-            - name: 以程式設計方式建立訂用帳戶 - 預覽
-              href: manage/programmatically-create-subscription-preview.md
             - name: 授與存取權以建立 EA 訂用帳戶
               href: manage/grant-access-to-create-subscription.md
             - name: 匯出訂用帳戶資訊
@@ -214,6 +204,20 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: 取消訂用帳戶
               href: manage/cancel-azure-subscription.md
+        - name: 以程式設計方式建立訂用帳戶
+          items:
+            - name: 以程式設計方式建立訂用帳戶
+              href: manage/programmatically-create-subscription.md
+            - name: 以程式設計方式建立 EA 訂用帳戶
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: 以程式設計方式建立 MCA 訂用帳戶
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: 以程式設計方式建立 MPA 訂用帳戶
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: 建立訂用帳戶 - ARM 範本
+              href: manage/create-subscription-template.md
+            - name: 以程式設計方式建立訂用帳戶 - 預覽 API
+              href: manage/programmatically-create-subscription-preview.md
         - name: 管理 Enterprise 合約訂用帳戶
           items:
             - name: Azure 中的 EA 角色

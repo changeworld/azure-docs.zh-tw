@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: f43cb80a148f5dadb409f506f237cb1210a2000a
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 869b37aea823cf91dc59211b23fcaccd7646afb9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933994"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012014"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入門：設定租用戶
 
@@ -47,7 +47,7 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 
 許多開發人員都已透過繫結至 Azure AD 租用戶的服務或訂用帳戶 (例如 Microsoft 365 或 Azure 訂用帳戶) 的方式取得租用戶。
 
-1. 若要檢查租用戶，請使用您要用來管理應用程式的帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 如果要檢查租用戶，請使用您要用來管理應用程式的帳戶登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 請檢查右上角。 如果您有租用戶，系統會自動將您登入，而且您會在您帳戶名稱正下方看到租用戶名稱。
    * 將滑鼠停留在 Azure 入口網站右上方的帳戶名稱上，以查看您的姓名、電子郵件、目錄/租用戶識別碼 (一個 GUID) 與您的網域。
    * 如果帳戶與多個租用戶相關聯，您可以選取帳戶名稱開啟功能表，以切換租用戶。 每個租用戶都有自己的租用戶識別碼。

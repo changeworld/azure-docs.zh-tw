@@ -3,17 +3,17 @@ title: Windows 虛擬桌面的新增功能？ - Azure
 description: Windows 虛擬桌面的新功能和產品更新。
 author: Heidilohr
 ms.topic: overview
-ms.date: 12/02/2020
+ms.date: 01/06/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: df3dd8b5b18ec2997ee20ad4955ffd7bc1dc573d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617352"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955003"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虛擬桌面的新增功能？
 
@@ -25,6 +25,44 @@ Windows 虛擬桌面會定期更新。 本文可讓您了解：
 - 錯誤修正
 
 本文每月更新。 務必經常回到這裡查看，以掌握新的更新。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+以下是 2020 年 12 月的變更： 
+
+### <a name="azure-monitor-for-windows-virtual-desktop"></a>適用於 Windows 虛擬桌面的 Azure 監視器
+
+現已推出適用於 Windows 虛擬桌面的 Azure 監視器公開預覽。 這項新功能包含以 Azure 監視器活頁簿為基礎的健全儀表板，可協助 IT 專業人員了解其 Windows 虛擬桌面環境。 如需詳細資訊，請參閱[我們部落格上的公告](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587)。 
+
+### <a name="azure-resource-manager-template-change"></a>Azure Resource Manager 範本變更 
+
+在最新的更新中，我們移除了 Azure Resource Manager 範本中可供建立和佈建主機集區的所有公用 IP 位址參數。 我們強烈建議您避免將公用 IP 使用於 Windows 虛擬桌面，以確保您的部署安全。 如果您的部署依賴公用 IP，則必須將其重新設定為使用私人 IP，否則您的部署將無法正常運作。
+
+### <a name="msix-app-attach-public-preview"></a>MSIX 應用程式連結公開預覽 
+
+MSIX 應用程式連結是另一項在本月開始公開預覽的服務。 MSIX 應用程式連結是一項服務，可將 MSIX 應用程式動態呈現給 Windows 虛擬桌面工作階段主機 VM。 如需詳細資訊，請參閱[我們部落格上的公告](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231)。 
+
+### <a name="screen-capture-protection"></a>螢幕擷取保護 
+
+這個月也開始提供螢幕擷取保護的公開預覽。 您可使用這項功能來防止在用戶端端點上擷取敏感性資訊。 請前往[此頁面](https://aka.ms/WVDScreenCaptureProtection)來試用螢幕擷取保護。  
+
+### <a name="built-in-roles"></a>內建角色
+
+我們已針對系統管理員權限新增 Windows 虛擬桌面的新內建角色。 如需詳細資訊，請參閱 [Azure 資源的內建角色](rbac.md)。 
+
+### <a name="application-group-limit-increase"></a>應用程式群組限制增加
+
+我們已將每個 Azure Active Directory 租用戶的預設應用程式群組限制增加到 200 個群組。
+
+### <a name="client-updates-for-december-2020"></a>2020 年 12 月的用戶端更新
+
+我們發行了下列新版的用戶端： 
+
+- Android
+- macOS
+- Windows
+
+如需用戶端更新的詳細資訊，請參閱[用戶端更新](whats-new.md#client-updates)。
 
 ## <a name="november-2020"></a>2020 年 11 月
 

@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 08/19/2020
-  ms.openlocfilehash: 772fa134eabc45dcbaa9e9b05c573aec493dd57b
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 01/15/2020
+  ms.openlocfilehash: 3aaf42935e292bda64d9227d01f498c83f4c9f7a
+  ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "89438153"
+  ms.lasthandoff: 01/16/2021
+  ms.locfileid: "98250769"
 landingContent:
 - title: 關於虛擬 WAN
   linkLists:
@@ -75,12 +75,14 @@ landingContent:
       url: about-virtual-hub-routing.md
     - text: 案例 - 透過 NVA 路由傳送流量
       url: scenario-route-through-nva.md
-    - text: 案例 - 任意對任意
+    - text: 案例 - 任何輪輻至任何輪輻
       url: scenario-any-to-any.md
     - text: 案例 - 隔離 VNet
       url: scenario-isolate-vnets.md
-    - text: 案例 - 共用服務 VNet
+    - text: 案例 - 路由傳送至共用服務 VNet
       url: scenario-shared-services-vnet.md
+    - text: 案例 - 透過 Azure 防火牆自訂路由
+      url: scenario-route-between-vnets-firewall.md
   - linkListType: how-to-guide
     links:
     - text: 設定虛擬中樞路由

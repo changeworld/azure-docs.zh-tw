@@ -7,17 +7,17 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 60e806be85a36c2e8a64d731c8794d806a4fcae4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d9e01ee8b1f6c1cd04e665ad9f7bc57155abfaab
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096518"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028976"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>適用於 MongoDB (3.2 版) 的 Azure Cosmos DB API：支援的功能和語法
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以使用任何開放原始碼 MongoDB 用戶端[驅動程式](https://docs.mongodb.org/ecosystem/drivers)來與 Azure Cosmos DB 適用於 MongoDB 的 API 通訊。 Azure Cosmos DB 適用於 MongoDB 的 API 需遵循 MongoDB [有線通訊協定](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)，才能使用現有的用戶端驅動程式。
+Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您可以使用任何開放原始碼 MongoDB 用戶端[驅動程式](https://docs.mongodb.org/ecosystem/drivers)與適用於 MongoDB 的 Azure Cosmos DB API 通訊。 Azure Cosmos DB 適用於 MongoDB 的 API 需遵循 MongoDB [有線通訊協定](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)，才能使用現有的用戶端驅動程式。
 
 藉由使用 Azure Cosmos DB 適用於 MongoDB 的 API，您除了可享有慣用的 MongoDB 權益外，還可使用 Cosmos DB 提供的所有企業功能：[全域發佈](distribute-data-globally.md)、[自動分區](partitioning-overview.md)、可用性和延遲保證、每個欄位的自動編製索引、待用加密、備份等功能。
 
@@ -32,11 +32,14 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="query-language-support"></a>查詢語言支援
 
-Azure Cosmos DB 適用於 MongoDB 的 API 可完整支援 MongoDB 查詢語言結構。 目前支援的作業、運算子、階段、命令和選項詳細清單如下所示。
+Azure Cosmos DB 適用於 MongoDB 的 API 可完整支援 MongoDB 查詢語言結構。 以下詳細列出目前支援的作業、運算子、階段、命令和選項。
 
 ## <a name="database-commands"></a>資料庫命令
 
 Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
+
+> [!NOTE]
+> 本文只會列出支援的伺服器命令，並排除用戶端包裝函式。 `deleteMany()` 和 `updateMany()` 等用戶端包裝函式會在內部利用 `delete()` 和 `update()` 伺服器命令。 利用支援伺服器命令的函式與適用於 MongoDB 的 Azure Cosmos DB API 相容。
 
 ### <a name="query-and-write-operation-commands"></a>查詢和寫入作業命令
 
@@ -309,7 +312,7 @@ $polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon",
 
 使用 `findOneAndUpdate` 作業時，支援單一欄位的排序作業，但不支援多個欄位的排序作業。
 
-## <a name="additional-operators"></a>其他運算子
+## <a name="other-operators"></a>其他運算子
 
 運算子 | 範例 | 注意
 --- | --- | --- |

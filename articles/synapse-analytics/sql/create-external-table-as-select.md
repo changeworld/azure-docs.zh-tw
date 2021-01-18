@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: dd989d5925da864728e944e84962086c0cfb08ea
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12841c747116cc9e14f348dfcf81acaa5da5e8c9
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462326"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165360"
 ---
 # <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區將查詢結果儲存至儲存體
 
@@ -74,6 +74,9 @@ FROM
 
 ```
 
+> [!NOTE]
+> 您必須修改此指令碼並變更目標位置，以便再次執行。 在您已經有一些資料的位置上，無法建立外部資料表。
+
 ## <a name="use-the-external-table"></a>使用外部資料表
 
 您可以像一般外部資料表一樣地使用透過 CETAS 所建立的外部資料表。
@@ -93,6 +96,14 @@ WHERE
 ORDER BY
     [population] DESC;
 ```
+
+## <a name="remarks"></a>備註
+
+儲存結果後，就無法修改外部資料表中的資料。 您不能重複此指令碼，因為 CETAS 不會覆寫在先前執行中建立的基礎資料。 如果您的案例中需要其中一些項目，請贊成下列意見反應項目，或在 Azure 意見反應網站上提出新的意見反應：
+- [能夠將新資料插入外部資料表中](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/32981347-polybase-allow-insert-new-data-to-existing-exteran)
+- [能夠從外部資料表中刪除資料](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/15158034-polybase-delete-from-external-tables)
+- [在 CETAS 中指定分割區](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
+- [指定檔案大小和計數](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
 
 ## <a name="next-steps"></a>後續步驟
 

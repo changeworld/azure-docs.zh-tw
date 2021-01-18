@@ -9,12 +9,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–377467–A/B– Quickstarts/Python App–12.11
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-python-1
-ms.openlocfilehash: 058d64d8b34a47101517273ebd17a09d9ca51197
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f60534f7d319bfe0b9e8e7bd4447770bcd6d45e3
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936187"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134427"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux"></a>快速入門：在 Linux 上使用 Azure App Service 建立 Python 應用程式
 
@@ -158,13 +158,13 @@ git clone https://github.com/Azure-Samples/python-docs-hello-django
 使用 `az webapp up` 命令，將程式碼部署在本機資料夾 (python-docs-hello-world) 中：
 
 ```azurecli
-az webapp up --sku F1 --name <app-name>
+az webapp up --sku B1 --name <app-name>
 ```
 
 - 如果無法辨識 `az` 命令，請確定您已安裝 Azure CLI，如[設定初始環境](#set-up-your-initial-environment)所說明。
 - 如果無法辨識 `webapp` 命令，是因為您的 Azure CLI 版本為 2.0.80 或更高版本。 否則，請[安裝最新版本](/cli/azure/install-azure-cli)。
 - 以 Azure 中的唯一名稱 (有效字元為 `a-z`、`0-9` 和`-`) 取代 `<app_name>`。 良好的模式是使用您的公司名稱和應用程式識別碼的組合。
-- `--sku F1` 引數會在免費定價層上建立 Web 應用程式。 省略這個引數並使用進階層，如此會產生每小時成本。
+- `--sku B1` 引數會在基本定價層上建立 Web 應用程式，而這會產生少量的每小時成本。 省略這個引數並使用進階層。
 - 您可以選擇性地加入引數 `--location <location-name>`，其中 `<location_name>` 是可用的 Azure 區域。 您可執行 [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) 命令，擷取 Azure 帳戶的允許區域清單。
 - 如果您看到「無法自動偵測您應用程式的執行階段堆疊」錯誤，請確定您正在含有 *requirements.txt* 檔案的 *python-docs-hello-world* 資料夾 (Flask) 或 *python-docs-hello-django* 資料夾 (Django) 中執行命令。 (請參閱 [使用 az webapp up 針對自動偵測問題進行疑難排解](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) (GitHub)。)
 
@@ -268,7 +268,7 @@ App Service 功能表提供不同的頁面來設定您的應用程式。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-在前述步驟中，您在資源群組中建立了 Azure 資源。 視您的位置而定，資源群組的名稱類似於 "appsvc_rg_Linux_CentralUS"。 如果您使用免費 F1 層以外的 App Service SKU，這些資源會產生持續成本 (請參閱 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/linux/))。
+在前述步驟中，您在資源群組中建立了 Azure 資源。 視您的位置而定，資源群組的名稱類似於 "appsvc_rg_Linux_CentralUS"。 如果您讓 Web 應用程式保持執行狀態，將會產生一些持續成本 (請參閱 [App Service 定價](https://azure.microsoft.com/pricing/details/app-service/linux/))。
 
 如果您在未來不需使用這些資源，請執行下列命令來刪除資源群組：
 

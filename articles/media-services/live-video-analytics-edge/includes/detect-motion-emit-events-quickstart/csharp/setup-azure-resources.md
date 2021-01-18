@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 5fa8377b3cdddb2818c04c5a75e347ff73dc07d8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 40d2f957ce115b43a1dcc138b86e05ec9cc47384
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509501"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060559"
 ---
 本教學課程需要下列 Azure 資源：
 
@@ -26,12 +26,15 @@ ms.locfileid: "96509501"
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-    如果指令碼成功完成，您應該會在訂用帳戶中看到所有所需資源。
+    指令碼成功完成時，您應該會在訂用帳戶中看到所有所需資源。
 1. 在指令碼完成後，選取大括弧以公開資料夾結構。 您會在 *~/clouddrive/lva-sample* 目錄下看到一些檔案。 與本快速入門相關的項目包括：
 
      * * **~/clouddrive/lva-sample/edge-deployment/.env** - 此檔案包含 Visual Studio Code 用來將模組部署至邊緣裝置的屬性。
-     ***~/clouddrive/lva-sample/appsetting.json*** - Visual Studio Code 會使用此檔案來執行範例程式碼。
+     _ * **~/clouddrive/lva-sample/appsetting.json** _ - Visual Studio Code 會使用此檔案來執行範例程式碼。
      
     在下一節的 Visual Studio Code 中設定開發環境時，您將需要這些檔案。 目前，您可以將這些檔案複製到本機檔案。
     
     ![應用程式設定](../../../media/quickstarts/clouddrive.png)
+
+> [!TIP]
+> 如果您遇到已建立的 Azure 資源問題，請檢視我們的_ *[疑難排解指南](../../../troubleshoot-how-to.md#common-error-resolutions)* *，以解決一些經常發生的問題。

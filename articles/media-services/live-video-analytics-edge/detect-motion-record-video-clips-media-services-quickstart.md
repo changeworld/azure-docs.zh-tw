@@ -3,12 +3,12 @@ title: 偵測動作、將影片錄製到 Azure 媒體服務
 description: 本快速入門說明如何在 IoT Edge 上使用 Live Video Analytics，以偵測即時影片串流中的動作，並將視訊剪輯錄製到 Azure 媒體服務。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511887"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060413"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>快速入門：偵測動作、將影片錄製到媒體服務
 
@@ -24,12 +24,14 @@ ms.locfileid: "97511887"
     * [設定 Azure 資源](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [部署模組](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
     * [設定 Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
-
+    > [!TIP]
+    > 如果您遇到已建立的 Azure 資源問題，請檢視我們的 **[疑難排解指南](troubleshoot-how-to.md#common-error-resolutions)** ，以解決一些經常發生的問題。
 ## <a name="review-the-sample-video"></a>檢閱範例影片
 
 在設定 Azure 資源的上述步驟中，會將停車場的 (簡短) 影片複製到 Azure 中作為 IoT Edge 裝置使用的 Linux VM。 此影片檔案將用來模擬本教學課程的即時串流。
 
 您可以使用 [VLC Player](https://www.videolan.org/vlc/) 之類的應用程式、加以啟動、按 `Ctrl+N`，然後貼上[停車場影片範例](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)連結以開始播放。 在大約 5 秒標記處，一輛白色汽車駛進停車場。
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 當您完成下列步驟時，將在 IoT Edge 上使用 Live Video Analytics 來偵測汽車的移動，並從大約 5 秒標記處開始錄製影片剪輯。 下圖是整體流程的視覺表示法。
 

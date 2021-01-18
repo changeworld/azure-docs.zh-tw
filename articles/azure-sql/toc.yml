@@ -10,7 +10,7 @@
   items:
     - name: 購買模型
       items:
-        - name: 總覽
+        - name: 概觀
           href: database/purchasing-models.md
         - name: 虛擬核心模型概觀
           href: database/service-tiers-vcore.md
@@ -20,7 +20,7 @@
           href: database/reserved-capacity-overview.md
     - name: 計算和儲存體
       items:
-        - name: 總覽
+        - name: 概觀
           href: database/service-tiers-general-purpose-business-critical.md
           displayName: provisioned compute tier
         - name: 一般目的/標準
@@ -45,7 +45,7 @@
           href: database/elastic-transactions-overview.md
         - name: 安全性
           items:
-            - name: 總覽
+            - name: 概觀
               href: database/security-overview.md
               displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
             - name: 最佳作法
@@ -55,6 +55,8 @@
               href: ./database/security-controls-policy.md
             - name: 安全性基準
               href: database/security-baseline.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: 適用於 SQL 的 Azure Defender
               href: database/azure-defender-for-sql.md
             - name: 進階威脅防護
@@ -203,7 +205,7 @@
               href: ../data-factory/connector-azure-sql-database.md?toc=/azure/azure-sql/toc.json
         - name: 開發資料應用程式
           items:
-            - name: 總覽
+            - name: 概觀
               href: database/develop-overview.md
             - name: 使用 JSON 資料
               href: database/json-features.md
@@ -255,6 +257,8 @@
               href: database/service-tier-hyperscale.md
             - name: 超大規模資料庫常見問題集
               href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+        - name: 規劃和管理成本
+          href: database/cost-management.md
     - name: 快速入門
       href: database/quickstart-content-reference-guide.md
       items:
@@ -293,14 +297,16 @@
               href: database/active-geo-replication-configure-portal.md
         - name: 安全性
           items:
+            - name: 具有安全記憶體保護區的 Always Encrypted
+              href: database/always-encrypted-enclaves-getting-started.md
             - name: 設定安全性
               href: database/secure-database-tutorial.md
+            - name: 使用服務主體建立使用者
+              href: database/authentication-aad-service-principal-tutorial.md
             - name: 旋轉 TDE BYOK 金鑰
               href: database/transparent-data-encryption-byok-key-rotation.md
             - name: 移除 TDE 保護裝置
               href: database/transparent-data-encryption-byok-remove-tde-protector.md
-            - name: 使用服務主體建立使用者
-              href: database/authentication-aad-service-principal-tutorial.md
         - name: 移動資料
           items:
             - name: 使用 DMS 來移轉
@@ -371,6 +377,19 @@
               href: database/sql-data-sync-troubleshoot.md
         - name: 安全性
           items:
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
+            - name: 具有安全記憶體保護區的 Always Encrypted
+              href: database/always-encrypted-with-secure-enclaves-landing.yml
+              items:
+                - name: 設定和使用具有安全記憶體保護區的 Always Encrypted >
+                  href: /sql/relational-databases/security/encryption/configure-always-encrypted-enclaves
+                - name: 規劃 Intel SGX 記憶體保護區和證明
+                  href: database/always-encrypted-enclaves-plan.md
+                - name: 啟用 Intel SGX
+                  href: database/always-encrypted-enclaves-enable-sgx.md
+                - name: 設定 Azure 證明
+                  href: database/always-encrypted-enclaves-configure-attestation.md
             - name: Azure SQL 稽核
               href: database/auditing-overview.md
             - name: 稽核記錄檔格式
@@ -922,10 +941,12 @@
               href: /sql/relational-databases/database-mail/database-mail?toc=%2fazure%2fazure-sql%2ftoc.json
         - name: 安全性
           items:
-            - name: 保護公用端點
-              href: managed-instance/public-endpoint-overview.md
+            - name: Always Encrypted
+              href: database/always-encrypted-landing.yml
             - name: 稽核
               href: managed-instance/auditing-configure.md
+            - name: 保護公用端點
+              href: managed-instance/public-endpoint-overview.md
             - name: 伺服器信任群組
               href: managed-instance/server-trust-group-overview.md
     - name: 如何
@@ -982,7 +1003,7 @@
       href: virtual-machines/index.yml
     - name: Windows
       items:
-        - name: 總覽
+        - name: 概觀
           items:
             - name: 什麼是 SQL Server 虛擬機器？
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md

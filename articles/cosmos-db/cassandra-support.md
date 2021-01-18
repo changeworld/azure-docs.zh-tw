@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 8c51450fb6ce5c381784e6aaf9b1a66c3c4ff153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188542"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134223"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 支援的 Apache Cassandra 功能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -84,10 +84,11 @@ Azure Cosmos DB Cassandra API 支援下列 CQL 函式：
 | Token * | 是 |
 | ttl | 是 |
 | writetime | 是 |
-| 轉換 | 否 |
+| cast ** | 是 |
 
-> [!NOTE]
-> \* Cassandra API 支援使用 Token 作為投影/選取器，而且只允許 token (pk) 位在 where 子句的左側。 例如，支援 `WHERE token(pk) > 1024`，但 **不** 支援 `WHERE token(pk) > token(100)`。
+> [!NOTE] 
+> \* Cassandra API 支援使用 Token 作為投影/選取器，而且只允許 token (pk) 位在 where 子句的左側。 例如，支援 `WHERE token(pk) > 1024`，但 **不** 支援 `WHERE token(pk) > token(100)`。  
+> \*\* `cast()` 函式不可在 Cassandra API 中進行巢狀處理。 例如，支援 `SELECT cast(count as double) FROM myTable`，但 **不** 支援 `SELECT avg(cast(count as double)) FROM myTable`。
 
 
 
@@ -183,6 +184,30 @@ Azure Cosmos DB 支援在 Cassandra API 帳戶上使用下列資料庫命令。
 | UPDATE (使用 IF CONDITION 的輕量交易)| 否 |
 | TRUNCATE | 否 |
 | USE | 是 |
+
+## <a name="cql-shell-commands"></a>CQL Shell 命令
+
+Azure Cosmos DB 支援在 Cassandra API 帳戶上使用下列資料庫命令。
+
+|Command  |支援 |
+|---------|---------|
+| 擷取 | 是 |
+| CLEAR | 是 |
+| CONSISTENCY * | 不適用 |
+| 複製 | 否 |
+| DESCRIBE | 是 |
+| cqlshExpand | 否 |
+| EXIT | 是 |
+| LOGIN | N/A (不支援 CQL 函式 `USER`，因此 `LOGIN` 是多餘的) |
+| PAGING | 是 |
+| SERIAL CONSISTENCY * | 不適用 |
+| SHOW | 是 |
+| 來源 | 是 |
+| TRACING | N/A (由 Azure Cosmos DB 提供技術支援的 Cassandra API - 使用[診斷記錄](cosmosdb-monitor-resource-logs.md)進行疑難排解) |
+
+> [!NOTE] 
+> \* Azure Cosmos DB 中的一致性運作方式不同，請參閱[這裡](cassandra-consistency.md)以取得詳細資訊。  
+
 
 ## <a name="json-support"></a>JSON 支援
 |Command  |支援 |

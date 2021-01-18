@@ -3,18 +3,18 @@ title: 了解 Azure 成本管理資料
 description: 本文將協助您深入了解 Azure 成本管理所包含的資料，及其處理、收集、顯示、關閉的頻率。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032570"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964145"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理資料
 
@@ -114,11 +114,11 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
 - 某些已部署的資源可能不支援標記，或是可能無法在使用量資料中包含標記。
 - 資源標記只會在套用標記時，包含在使用量資料中 – 標記不會套用至歷史記錄資料。
 - 只有在重新整理資料後，您才能在成本管理中使用資源標記。
-- 資源標記只有在資源為作用中/執行中，以及正在產生使用量記錄時 (例如，未將 VM 解除配置時)，才可在成本管理中使用。
+- 資源標記只有在資源為作用中/執行中，以及正在產生使用量記錄時，才可在成本管理中使用。 例如，當 VM 解除配置時。
 - 管理標記需要每個資源的參與者存取權。
 - 管理標記原則需要管理群組、訂用帳戶或資源群組的擁有者或原則參與者存取權。
     
-如果您在成本管理中看不到特定標記，請考量下列事項：
+如果您在成本管理中看不到特定標記，請考量下列問題：
 
 - 標記是否已直接套用至資源？
 - 標記套用的時間是否已超過 24 小時？
@@ -137,10 +137,9 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
     
 以下是使用標記的一些秘訣：
 
-- 請先行規劃並定義標記策略，以便您依據組織、應用程式、環境等項目來細分成本。
+- 請先行規劃並定義標記策略，以便您依據組織、應用程式、環境等來細分成本。
 - 使用 Azure 原則將資源群組標記複製到個別資源，並強制執行您的標記策略。
 - 將標記 API 與 Query 或 UsageDetails 搭配使用，以根據目前的標記取得所有成本。
-
 
 ## <a name="cost-and-usage-data-updates-and-retention"></a>成本和使用量資料更新與保留
 
@@ -151,6 +150,7 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
 - 目前計費期間的預估費用可能隨著您產生更多使用量而變更。
 - 每次更新將持續累積，包含前次更新的所有明細項目和資訊。
 - Azure 會在計費期間結束後的 72 小時 (三個日曆天) 內終止或 _關閉_ 目前計費期間。
+- 在未結月份 (未開立發票) 期間，成本管理資料應該僅視為估計值。 在某些情況下，費用可能會在實際發生使用量之後延遲抵達系統。
 
 下列範例說明計費期間的結束方式：
 
@@ -184,6 +184,6 @@ Azure 成本管理會在個別服務提交的每個使用記錄中接收標記�
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P、MS-AZR-0059P、MS-AZR-0060P、MS-AZR-0063P、MS-AZR-0064P)
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
 
 - 如果您尚未完成成本管理的第一個快速入門，請在[開始分析成本](./quick-acm-cost-analysis.md)閱讀它。

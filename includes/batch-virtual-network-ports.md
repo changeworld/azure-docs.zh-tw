@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 06/16/2020
+ms.date: 01/13/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: e4f17fbfad1e7e550b3a1e95c93e4b061d0f1c3c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08e7463f4657b2ae5d6da1017c14226e97af7605
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993412"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165734"
 ---
 ### <a name="general-requirements"></a>一般需求
 
@@ -29,6 +29,8 @@ ms.locfileid: "95993412"
 * 針對集區指定的子網路必須有足夠的未指派 IP 位址，可容納目標設為集區的 VM 數目；也就是集區之 `targetDedicatedNodes` 和 `targetLowPriorityNodes` 屬性的總和。 如果子網路沒有足夠的未指派 IP 位址，集區會局部配置計算節點，並發生調整大小錯誤。
 
 * 為 VNet 提供服務的任何自訂 DNS 服務，都必須能解析您的 Azure 儲存體端點。 具體而言，`<account>.table.core.windows.net`、`<account>.queue.core.windows.net` 和 `<account>.blob.core.windows.net` 形式的 URL 應該可解析。
+
+* 您可在相同的 VNet 或相同的子網路中建立多個集區 (只要有足夠的位址空間即可)。 單一集區不能存在於多個 VNet 或子網路。
 
 其他的 VNet 需求不盡相同，這取決於 Batch 集區是位於虛擬機器組態還是雲端服務組態中。 對於部署至 VNet 的新集區，建議使用虛擬機器組態。
 
@@ -65,7 +67,7 @@ ms.locfileid: "95993412"
 
 只有在需要允許對來源以外的計算節點進行遠端存取時，才必須設定連接埠 3389 (Windows) 或 22 (Linux) 上的輸入流量。 如果您需要支援某些 MPI 執行階段的多執行個體工作，建議您在 Linux 上啟用連接埠 22 規則。 對於可使用的集區計算節點，不一定要允許這些連接埠上的流量。
 
-<bpt id="p1">**</bpt>Inbound security rules<ept id="p1">**</ept>
+**輸入安全性規則**
 
 | 來源 IP 位址 | 來源服務標籤 | 來源連接埠 | Destination | 目的地連接埠 | 通訊協定 | 動作 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -99,7 +101,7 @@ ms.locfileid: "95993412"
 
 在需要允許對集區節點的 RDP 存取時，才必須設定連接埠 3389 (Windows) 上的輸入流量。 集區節點不需要此設定即可使用。
 
-<bpt id="p1">**</bpt>Inbound security rules<ept id="p1">**</ept>
+**輸入安全性規則**
 
 | 來源 IP 位址 | 來源連接埠 | Destination | 目的地連接埠 | 通訊協定 | 動作 |
 | --- | --- | --- | --- | --- | --- |

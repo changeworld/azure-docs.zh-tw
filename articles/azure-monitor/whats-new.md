@@ -5,17 +5,75 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 12/04/2020
-ms.openlocfilehash: 91aa76fd3d9dbb54316f32fdb319e92ca2283b1d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 01/11/2021
+ms.openlocfilehash: 6347bd3710a4727b9d3f820072ffff21cb57752d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745769"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071862"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
 本文提供新增或已大幅更新的 Azure 監視器文章清單。 該清單會在每個月的第一週重新整理，以納入上個月的文章更新。
+
+## <a name="december-2020"></a>2020 年 12 月
+
+### <a name="general"></a>一般
+- [Azure 監視器客戶自控金鑰](platform/customer-managed-keys.md) - 新增了錯誤訊息。
+- [與 Azure 監視器整合的合作夥伴](platform/partners.md) - 在事件中樞整合上新增了區段。
+
+### <a name="agents"></a>代理程式
+- [使用 Azure 監視器跨資源查詢 Azure 資料總管](platform/azure-monitor-data-explorer-proxy.md) - 新文章。
+- [Azure 監視代理程式概觀](platform/agents-overview.md) - 新增了 Oracle 8 支援。
+
+### <a name="alerts"></a>警示
+- [針對 Azure 計量警示進行疑難排解](platform/alerts-troubleshoot-metric.md) - 新增了動態閾值的疑難排解。
+- [Log Analytics 中的 IT 服務管理連接器](platform/itsmc-definition.md) - 新文章。
+- [IT 服務管理連接器概觀](platform/itsmc-overview.md) - 已重構疑難排解資訊。
+- [將 Cherwell 與 IT 服務管理連接器連線](platform/itsmc-connections-cherwell.md) - 新文章。
+- [將 Provance 與 IT 服務管理連接器連線](platform/itsmc-connections-provance.md) - 新文章。
+- [將 SCSM 與 IT 服務管理連接器連線](platform/itsmc-connections-scsm.md) - 新文章。
+- [將 ServiceNow 與 IT 服務管理連接器連線](platform/itsmc-connections-servicenow.md) - 新文章。
+- [如何手動修正 ServiceNow 同步問題](platform/itsmc-resync-servicenow.md) - 已重構疑難排解資訊。
+
+
+
+
+### <a name="application-insights"></a>Application Insights
+- [適用於 JavaScript Web 應用程式的 Azure Application Insights](app/javascript.md) - 新增了連接字串設定。
+- [Azure Application Insights 標準計量](app/standard-metrics.md) - 新文章。
+- [Azure 監視器 Application Insights Java](app/java-in-process-agent.md) - 從您的應用程式傳送自訂遙測的其他資訊。
+- [從 Application Insights 連續匯出遙測](app/export-telemetry.md) - 新增了以診斷設定為基礎的匯出。
+- [在 Azure Functions 中啟用適用於 .NET 和 .NET Core 應用程式的快照偵錯工具](app/snapshot-debugger-function-app.md) - 新文章。
+- [Application Insights 和 Log Analytics 所使用的 IP 位址](app/ip-addresses.md) - 新增了 Azure Government 的 IP 位址。
+- [針對 Azure Application Insights Profiler 問題進行疑難排解](app/profiler-troubleshooting.md) - 在診斷服務網站擴充功能的狀態頁面上新增了資訊。
+- [針對您的 Azure Application Insights 可用性測試進行疑難排解](app/troubleshoot-availability.md) - 針對 ping 測試進行疑難排解的更新。
+- [針對適用於 Java 的 Azure 監視器 Application Insights 進行疑難排解](app/java-standalone-troubleshoot.md) - 新文章。
+
+### <a name="containers"></a>容器
+- [Azure 監視器中適用於容器的報告](insights/container-insights-reports.md) - 新文章。
+
+### <a name="logs"></a>記錄
+- [Azure 監視器記錄專用叢集](log-query/logs-dedicated-clusters.md) - 新增了自動化命令、取消連結和移除的方法，以及疑難排解。
+- [Azure 監視器與 Azure 資料總管之間的跨服務查詢 (預覽)](platform/azure-data-explorer-monitor-cross-service-query.md) - 新文章。
+- [Azure 監視器中的 Log Analytics 工作區資料匯出 (預覽)](platform/logs-data-export.md) - 新增了 ARM 範本。
+
+### <a name="metrics"></a>計量
+- [Azure 計量瀏覽器的進階功能](platform/metrics-charts.md) - 新增了資源範圍選擇器的資訊。
+- [在計量瀏覽器中檢視多個資源](platform/metrics-dynamic-scope.md) - 新文章。
+
+### <a name="networks"></a>網路
+- [Azure 監視器中的 Azure 網路分析解決方案](insights/azure-networking-analytics.md) - 新增了 Network Insights 活頁簿的資訊。
+
+### <a name="virtual-machines"></a>虛擬機器
+- [針對混合式環境啟用 Azure 監視器](insights/vminsights-enable-hybrid.md) - 新版的相依性代理程式。
+
+
+### <a name="visualizations"></a>視覺效果
+- [Azure 監視器活頁簿地圖視覺效果](platform/workbooks-map-visualizations.md) - 新文章。
+- [Azure 監視器活頁簿自備儲存體](platform/workbooks-bring-your-own-storage.md) - 新文章。
+
 
 ## <a name="november-2020"></a>2020 年 11 月
 

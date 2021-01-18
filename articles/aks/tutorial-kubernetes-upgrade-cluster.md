@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教學課程 - 升級叢集
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何將現有的 AKS 叢集升級至最新的可用 Kubernetes 版本。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 517172b919552a24e9cb12bbaad14eb8cb71b3fd
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 8efb381562a5c55fa2c29b8379312dc41ef6a046
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007529"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251330"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>教學課程：在 Azure Kubernetes Service (AKS) 中升級 Kubernetes
 
@@ -37,22 +37,22 @@ ms.locfileid: "97007529"
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-在下列範例中，目前版本是 1.15.11，可用版本則顯示在 [升級] 之下。
+在下列範例中，目前版本是 *1.18.10*，可用版本則顯示在 [升級] 之下。
 
 ```json
 {
   "agentPoolProfiles": null,
   "controlPlaneProfile": {
-    "kubernetesVersion": "1.15.11",
+    "kubernetesVersion": "1.18.10",
     ...
     "upgrades": [
       {
         "isPreview": null,
-        "kubernetesVersion": "1.16.8"
+        "kubernetesVersion": "1.19.1"
       },
       {
         "isPreview": null,
-        "kubernetesVersion": "1.16.9"
+        "kubernetesVersion": "1.19.3"
       }
     ]
   },
@@ -82,7 +82,7 @@ az aks upgrade \
 > [!NOTE]
 > 您一次只能升級一個次要版本。 例如，您可以從 1.14.x 升級至 1.15.x，但無法直接從 1.14.x 升級至 1.16.x。 若要從 1.14.x 升級至 1.16.x，必須先從 1.14.x 升級至 1.15.x，然後再執行從 1.15.x 到 1.16.x 的升級。
 
-下列扼要的範例輸出顯示升級至 *1.16.8* 的結果。 請注意，*kubernetesVersion* 現在回報 *1.16.8*：
+下列扼要的範例輸出顯示升級至 *1.19.1* 的結果。 請注意，*kubernetesVersion* 現在回報 *1.19.1*：
 
 ```json
 {
@@ -100,7 +100,7 @@ az aks upgrade \
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.16.8",
+  "kubernetesVersion": "1.19.1",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -115,12 +115,12 @@ az aks upgrade \
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-下列範例輸出顯示 AKS 叢集執行的是 KubernetesVersion 1.16.8：
+下列範例輸出顯示 AKS 叢集執行的是 *KubernetesVersion 1.19.1*：
 
-```
+```output
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.16.8               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.19.1               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>選取叢集

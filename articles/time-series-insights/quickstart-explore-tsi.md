@@ -9,13 +9,13 @@ manager: diviso
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/02/2020
-ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 01/11/2021
+ms.openlocfilehash: cb5bac06ab6eeaa00e72ba6068328a972b8ac37b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016219"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119312"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>快速入門：探索 Azure 時間序列深入解析 Gen2 示範環境
 
@@ -38,12 +38,27 @@ Azure 時間序列深入解析 Gen2 總管會顯示歷史資料和根本原因�
 
 ## <a name="work-with-historical-data"></a>使用歷史資料
 
-1. 在 **Contoso Plant 1** 中，觀察風力渦輪機 **W7**。  
+1. 選取 [Contoso WindFarm 階層]。
+
+   [![Contoso WindFarm 階層](media/quickstart-explore/quick-start-contoso-1.png)](media/quickstart-explore/quick-start-contoso-1.png#lightbox)
+
+1. 在 **Contoso Plant 1** 中，觀察風力渦輪機 **W7**。
+
+   [![Contoso Plant 1 中的 W7](media/quickstart-explore/quick-start-contoso-2.png)](media/quickstart-explore/quick-start-contoso-2.png#lightbox)
 
    1. 將檢視範圍變更為 **1/1/17 20:00:00.00 至 3/10/17 20:00:00.00 (UTC)** 。
+
+      [![範圍檢視](media/quickstart-explore/range-setting-1.png)](media/quickstart-explore/range-setting-1.png#lightbox)
+
+      [![範圍檢視設定](media/quickstart-explore/range-setting-2.png)](media/quickstart-explore/range-setting-2.png#lightbox)
+
+   1. 使用放大 **(+)** 和縮小 **(-)** 並移動滑桿列，以調整範圍檢視。
+
+      [![調整範圍檢視](media/quickstart-explore/view-range-setting.png)](media/quickstart-explore/view-range-setting.png#lightbox)
+
    1. 若要選取感應器，選取 [Contoso Plant 1] > [W7] > [發電機系統] > [GeneratorSpeed]。 接著，檢閱所顯示的值。
 
-      [![Contoso Plant 1 中的 W7](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
+      [![產生器速度](media/quickstart-explore/quick-start-generator-speed-1.png)](media/quickstart-explore/quick-start-generator-speed-1.png#lightbox)
 
 1. 近期，Contoso 發現風力發電機 **W7** 曾經起火。 對於起火原因的相關意見不同。 在 Azure 時間序列深入解析 Gen2 中，顯示了在火災期間啟動的火災警示感應器。
 

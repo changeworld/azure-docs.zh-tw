@@ -3,12 +3,12 @@ title: Azure 事件中樞是什麼？ - 巨量資料擷取服務 | Microsoft Doc
 description: 深入了解 Azure 事件中樞，這是一個每秒可內嵌數百萬個事件的巨量資料串流服務。
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 6669760bceee558a058878fbb89342aedda80117
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b0124f023eab6638c986beb2305b1c4c375b47ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927896"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954340"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中樞 — 巨量資料串流平台和事件擷取服務
 Azure 事件中樞是巨量資料串流平台和事件擷取服務。 其每秒可接收和處理數百萬個事件。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。
@@ -52,10 +52,9 @@ Azure 事件中樞也整合了 [Azure Functions](../azure-functions/index.yml) �
 
 ## <a name="rich-ecosystem"></a>豐富的生態系統
 
-[Apache Kafka 生態系統的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)可讓 [Apache Kafka (1.0 版和更新版本)](https://kafka.apache.org/) 用戶端和應用程式與事件中樞通訊。 您不需要設定、配置及管理您自己的 Kafka 叢集。
+透過以業界標準 AMQP 1.0 通訊協定為基礎且適用於各種語言 [.NET](https://github.com/Azure/azure-sdk-for-net/)、[Java](https://github.com/Azure/azure-sdk-for-java/)、[Python](https://github.com/Azure/azure-sdk-for-python/)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/) 的廣大生態系統，您可以輕鬆地開始處理來自事件中樞的串流。 所有支援的用戶端語言皆提供低階整合。 生態系統也可讓您緊密整合 Azure 串流分析和 Azure Functions 等 Azure 服務，進而讓您建置無伺服器的架構。
 
-透過適用於各種語言 [.NET](https://github.com/Azure/azure-sdk-for-net/)、[Java](https://github.com/Azure/azure-sdk-for-java/)、[Python](https://github.com/Azure/azure-sdk-for-python/)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/) 的廣大生態系統，您可以輕鬆地開始處理來自事件中樞的串流。 所有支援的用戶端語言皆提供低階整合。 生態系統也可讓您緊密整合 Azure 串流分析和 Azure Functions 等 Azure 服務，進而讓您建置無伺服器的架構。
-
+此外，[Apache Kafka 生態系統的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)可讓 [Apache Kafka (1.0 版和更新版本)](https://kafka.apache.org/) 用戶端和應用程式與事件中樞通訊。 您不需要安裝、設定及管理自己的 Kafka 和 Zookeeper 叢集，或使用非 Azure 原生的一些 Kafka 即服務供應項目。
 ## <a name="key-architecture-components"></a>重要架構元件
 事件中樞包含下列[重要元件](event-hubs-features.md)：
 
@@ -79,7 +78,7 @@ Azure Stack Hub 上的事件中樞可讓您實現混合式雲端情況。 針對
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用事件中樞，請參閱**傳送及接收事件**教學課程：
+若要開始使用事件中樞，請參閱 **傳送及接收事件** 教學課程：
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)

@@ -7,23 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
-ms.openlocfilehash: be45292552a7ac62c7131c637b044edc477328e2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.date: 01/12/2021
+ms.openlocfilehash: 8151c9ce177d0cd54826603d1a395a8d5828b623
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396785"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133815"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 認知搜尋的認知技能集
 
-技能是一個 AI 功能，可從大型的無明顯特徵文字或影像檔案中擷取資訊與結構，並讓內容可在 Azure 認知搜尋中編製索引及搜尋。 
+技能是一個 AI 功能，可使用深度學習模型從大型的無明顯特徵文字或影像檔案中擷取資訊與結構，並讓內容可在 Azure 認知搜尋中編製索引及搜尋。 
 
 在本快速入門中，您將結合 Azure 雲端中的服務和資料以建立技能集。 一切都備妥之後，您即可在 Azure 入口網站中執行 [匯入資料] 精靈，以將其全部提取。 其最終結果將是可搜尋的索引，其中填入在 AI 處理後建立、可在入口網站 ([搜尋總管](search-explorer.md)) 中查詢的資料。
 
 ## <a name="prerequisites"></a>必要條件
 
-開始之前，您必須具備下列條件：
+開始之前，請先建立下列服務：
 
 + 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/)。
 
@@ -60,13 +60,13 @@ ms.locfileid: "91396785"
 
 1. [尋找您的搜尋服務](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)，然後在 [概觀] 頁面上，按一下命令列上的 [匯入資料]，以四個步驟設定認知擴充。
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="匯入資料命令" border="false":::
 
 ### <a name="step-1---create-a-data-source"></a>步驟 1 - 建立資料來源
 
 1. 在 [連線到您的資料] 中，選擇 [Azure Blob 儲存體]，然後選取您建立的儲存體帳戶和容器。 指定資料來源的名稱，其餘部分則使用預設值。 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/blob-datasource.png" alt-text="Azure Blob 組態" border="false":::
 
     繼續進行下一頁。
 
@@ -74,9 +74,9 @@ ms.locfileid: "91396785"
 
 接下來，設定 AI 擴充來叫用 OCR、影像分析和自然語言處理。 
 
-1. 在本快速入門中，我們將使用**免費**的認知服務資源。 範例資料包含 14 個檔案，因此認知服務20 筆交易的免費配額就足以供本快速入門使用。 
+1. 在本快速入門中，我們將使用 **免費** 的認知服務資源。 範例資料包含 14 個檔案，因此認知服務20 筆交易的免費配額就足以供本快速入門使用。 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/cog-search-attach.png" alt-text="附加認知服務附加基底服務" border="false":::
 
 1. 展開 [新增擴充]，然後進行四項選擇。 
 
@@ -86,13 +86,13 @@ ms.locfileid: "91396785"
 
    選擇實體辨識 (人員、組織、位置) 和影像分析技能。
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/skillset.png" alt-text="附加認知服務選取技能集的服務" border="false":::
 
    繼續進行下一頁。
 
 ### <a name="step-3---configure-the-index"></a>步驟 3 - 設定索引
 
-索引會包含可搜尋的內容，而**匯入資料**精靈通常可藉由資料來源的取樣為您建立結構描述。 在此步驟中，請檢閱產生的結構描述，並視需要修改任何設定。 以下是針對示範 Blob 資料集而建立的預設結構描述。
+索引會包含可搜尋的內容，而 **匯入資料** 精靈通常可藉由資料來源的取樣為您建立結構描述。 在此步驟中，請檢閱產生的結構描述，並視需要修改任何設定。 以下是針對示範 Blob 資料集而建立的預設結構描述。
 
 在本快速入門中，精靈會妥善地設定好合理的預設值：  
 
@@ -102,7 +102,7 @@ ms.locfileid: "91396785"
 
 + 預設屬性為 [可擷取] 和 [可搜尋]。 [可搜尋] 會允許對欄位進行全文檢索搜尋。 [可擷取] 表示可在結果中傳回欄位值。 精靈假設您希望這些欄位為可擷取並可搜尋，因為您是透過技能集來建立欄位。
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/index-fields.png" alt-text="索引欄位" border="false":::
 
 請注意，[可擷取] 屬性上 `content` 欄位旁邊的刪除線和問號。 在大量文字的 Blob 文件中，`content` 欄位包含檔案主體，有可能遇到數千行。 這類欄位在搜尋結果中會很難處理，因此請在此示範中予以排除。 
 
@@ -114,11 +114,11 @@ ms.locfileid: "91396785"
 
 ### <a name="step-4---configure-the-indexer"></a>步驟 4 - 設定索引子
 
-索引子是會驅動索引編製程序的高階資源。 它會指定資料來源名稱、目標索引和執行頻率。 **匯入資料**精靈會建立數個物件，且一定是您可以重複執行的索引子。
+索引子是會驅動索引編製程序的高階資源。 它會指定資料來源名稱、目標索引和執行頻率。 **匯入資料** 精靈會建立數個物件，且一定是您可以重複執行的索引子。
 
 1. 在 [索引子] 頁面上，您可以接受預設名稱，並按一下 [一次] 排程選項立即加以執行。 
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
+   :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-def.png" alt-text="索引子定義" border="false":::
 
 1. 按一下 [提交] 以建立並同時執行索引子。
 
@@ -126,7 +126,7 @@ ms.locfileid: "91396785"
 
 認知技能的索引編製需要比一般文字的索引編製更長的時間來完成，OCR 和影像分析更是如此。 若要監視進度，請移至 [概觀] 頁面，然後按一下頁面中央的 [索引子]。
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-notification.png" alt-text="Azure 認知搜尋通知" border="false":::
 
 由於內容類型的種類繁多，所以出現警告是很正常的事。 有些並不是特定技能的有效內容類型，而且在較低的層級中，常常會遇到[索引子限制](search-limits-quotas-capacity.md#indexer-limits)。 例如，32,000 個字元的截斷通知就是免費層的索引子限制。 如果您在較高的層級執行此示範，許多截斷警告便會消失。
 
@@ -134,15 +134,15 @@ ms.locfileid: "91396785"
 
 在該頁面上，再次按一下 [警告] 狀態，以檢視類似下面所示警告的清單。 
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/indexer-warnings.png" alt-text="索引子警告清單" border="false":::
 
 當您按一下特定狀態行時，就會顯示詳細資料。 此警告指出在達到最大閾值 (這個特殊的 PDF 很大) 後，合併作業已停止。
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/warning-detail.png" alt-text="警告詳細資料" border="false":::
 
 ## <a name="query-in-search-explorer"></a>在搜尋總管中查詢
 
-索引建立完成後，您就可以執行查詢以傳回結果。 在入口網站中，使用**搜尋總管**來進行這項工作。 
+索引建立完成後，您就可以執行查詢以傳回結果。 在入口網站中，使用 **搜尋總管** 來進行這項工作。 
 
 1. 在搜尋服務儀表板頁面上，按一下命令列上的 [搜尋總管]。
 
@@ -157,7 +157,7 @@ ms.locfileid: "91396785"
 
 查詢字串會區分大小寫，因此如果您收到「未知的欄位」訊息，請檢查 [欄位] 或 [索引定義 (JSON)] 以確認名稱和大小寫。 
 
-  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="Azure Blob 儲存體中的來源檔案" border="false":::
+  :::image type="content" source="media/cognitive-search-quickstart-blob/search-explorer.png" alt-text="搜尋總管範例" border="false":::
 
 ## <a name="takeaways"></a>重要心得
 

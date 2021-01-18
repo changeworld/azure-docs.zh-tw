@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: f0620c4d373ee96c87b575ae7eb173b2f16eecb2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013646"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178240"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教學課程：將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
@@ -361,7 +361,7 @@ ms.locfileid: "98013646"
 
 若要快速註冊您的應用程式，請遵循下列步驟：
 
-1. 移至新的 [Azure 入口網站 - 應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)窗格。
+1. 移至 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure 入口網站 - 應用程式註冊<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入門體驗。  
 1. 輸入應用程式的名稱，並選取 [註冊]  。
 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 

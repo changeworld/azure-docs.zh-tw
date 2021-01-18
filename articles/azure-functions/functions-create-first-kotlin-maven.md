@@ -1,18 +1,18 @@
 ---
-title: 使用 Kotlin 和 Maven 在 Azure 中建立第一個函式
-description: 使用 Kotlin 和 Maven 建立 HTTP 觸發函式並將其發佈至 Azure。
+title: 使用 Maven 在 Azure Functions 中建立 Kotlin 函式
+description: 使用 Kotlin 和 Maven 建立 HTTP 觸發的函式應用程式並將其發佈至 Azure Functions。
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 167e7c447fe43851255677a44043c508cbdc4239
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 6f7b79b6e3e72b34a27e5b4f0e1fb5426c539699
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934827"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035235"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>快速入門：使用 Kotlin 和 Maven 建立您的第一個函式
 
@@ -32,9 +32,9 @@ ms.locfileid: "97934827"
 > [!IMPORTANT]
 > JAVA_HOME 環境變數必須設定為 JDK 的安裝位置，才能完成本快速入門。
 
-## <a name="generate-a-new-functions-project"></a>產生新的 Functions 專案
+## <a name="generate-a-new-azure-functions-project"></a>產生新的 Azure Functions 專案
 
-在空的資料夾中，執行下列命令以從 [Maven 原型](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) \(英文\) 產生 Functions 專案。
+在空的資料夾中，執行下列命令以從 [Maven 原型](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) \(英文\) 產生 Azure Functions 專案。
 
 # <a name="bash"></a>[bash](#tab/bash)
 ```bash
@@ -173,7 +173,7 @@ az login
 mvn azure-functions:deploy
 ```
 
-部署完成時，您會看到可用來存取 Azure 函式應用程式的 URL：
+部署完成時，您會看到可用來存取函式應用程式的 URL：
 
 <pre>
 [INFO] Successfully deployed Function App with package.
@@ -198,7 +198,7 @@ Hello AzureFunctions!
 
 ## <a name="make-changes-and-redeploy"></a>進行變更並重新部署
 
-在產生的專案中編輯 `src/main.../Function.java` 來源檔案，以改變您的 Function 應用程式所傳回的文字。 將這一行：
+在產生的專案中編輯 `src/main.../Function.java` 來源檔案，以改變您的函式應用程式所傳回的文字。 將這一行：
 
 ```kotlin
 return request
@@ -231,7 +231,7 @@ Hi, AzureFunctionsTest
 
 ## <a name="reference-bindings"></a>參考繫結
 
-若要使用 HTTP 觸發程序和 Timer 觸發程序以外的 [Functions 觸發程序和繫結](functions-triggers-bindings.md)，您必須安裝繫結擴充功能。 雖然本文並不要求，但您必須知道如何在使用其他繫結類型時啟用擴充功能。
+若要使用 HTTP 觸發程序和 Timer 觸發程序以外的 [Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)，您必須安裝繫結擴充功能。 雖然本文並不要求，但您必須知道如何在使用其他繫結類型時啟用擴充功能。
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -239,7 +239,7 @@ Hi, AzureFunctionsTest
 
 您已經建立一個包含簡單 HTTP 觸發程序的 Kotlin 函式應用程式，並部署到 Azure Functions。
 
-- 檢閱 [Java 函式開發人員指南](functions-reference-java.md)，以了解開發 Java 和 Kotlin 函式的詳細資訊。
+- 檢閱 [Azure Functions Java 開發人員指南](functions-reference-java.md)，以了解開發 Java 和 Kotlin 函式的詳細資訊。
 - 使用 `azure-functions:add`Maven 目標，將具有不同觸發程序的其他函式新增至您的專案。
 - 使用 [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions) (英文)、[IntelliJ](functions-create-maven-intellij.md) 和 [Eclipse](functions-create-maven-eclipse.md)，在本機撰寫函式並進行偵錯。 
 - 使用 Visual Studio Code 對部署在 Azure 中的函式進行偵錯。 請參閱 Visual Studio Code [無伺服器 Java 應用程式](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) (英文) 文件中的指示。

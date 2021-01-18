@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 21f05363ed3d3aa3e9c1f1156425a6026eb21b71
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: be3f199b1b8442da38b4ad0b6b6495b533c6dfe1
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97582539"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256490"
 ---
 本指南提供指示和範例程式碼，可協助您開始使用適用於 Node.js 的自訂視覺用戶端程式庫來建置物件偵測模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -124,6 +124,9 @@ npm install @azure/cognitiveservices-customvision-prediction
 ## <a name="upload-and-tag-images"></a>上傳和標記影像
 
 首先，下載此專案的範例影像。 將[範例影像資料夾](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ObjectDetection/Images)的內容儲存到您的本機裝置。
+
+> [!NOTE]
+> Trove 是 Microsoft Garage 專案，可讓您收集和購買影像集以供訓練使用。 收集影像之後，您可以下載影像，然後以一般方式將其匯入至自訂視覺專案。 如需深入了解，請造訪 [Trove 頁面](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)。
 
 若要將範例影像新增到專案，在標記建立之後插入下列程式碼。 此程式碼會上傳每個影像及其對應標記。 為物件偵測專案中的影像加上標記時，您必須使用標準化座標來識別每個加上標記的物件所屬的區域。 本教學課程中的區域是以硬式編碼內嵌於程式碼中。 這些區域會在標準化座標中指定週框方塊，且座標會以下列順序指定：左、上、寬度、高度。 您最多可以在單一批次中上傳 64 個影像。
 

@@ -3,17 +3,17 @@ title: 使用自動化管理 Azure 成本
 description: 此文章說明如何使用自動化來管理 Azure 成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 11/19/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956087"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051780"
 ---
 # <a name="manage-costs-with-automation"></a>使用自動化管理成本
 
@@ -56,6 +56,22 @@ Power BI 可用來內嵌及處理大量資料。 如果您是 Enterprise 合約�
 **以最上層範圍為目標但不篩選**
 
 使用 API 可取得您在最高層級範圍所需的所有資料。 等到所有需要的資料都內嵌之後，再執行任何篩選、群組或彙總分析。 API 已特別針對提供大量未彙總的原始成本資料最佳化。 若要深入了解成本管理中可用的範圍，請參閱[了解並使用範圍](./understand-work-scopes.md)。 當您下載了某個範圍需要的資料之後，請使用 Excel 搭配篩選條件與樞紐分析表進一步分析資料。
+
+### <a name="notes-about-pricing"></a>關於定價的注意事項
+
+如果您想要調節使用量和費用與價位表或發票，請記下下列資訊。
+
+價位表價格行為 - 價位表上顯示的價格是您從 Azure 收到的價格。 這些價格會調整為特定的測量單位。 可惜的是，測量單位不一定會與發出實際資源使用量和費用的測量單位一致。
+
+使用量詳細資料價格行為 - 使用量檔案會顯示已調整的資訊，其可能不會精確地與價位表相符。 具體來說：
+
+- 單價 - 價格會調整為符合 Azure 資源實際發出費用的測量單位。 如果發生調整，則價格不會符合價位表中顯示的價格。
+- 測量單位 - 代表 Azure 資源實際發出費用的測量單位。
+- 有效的價格/資源費率 - 價格代表您在將折扣納入考慮之後，最終每單位支付的實際費率。 這是應該與「數量」搭配使用的價格，用以進行價格 * 數量計算來調節費用。 此價格會將下列案例和同時出現在檔案中的已調整單價納入考慮。 因此，其可能與已調整的單價不同。
+  - 階層式定價 - 例如：前 100 個單位 $10 美元，下一 100 個單位 $8 美元。
+  - 包含的數量 - 例如：前 100 個單位是免費的，而後每單位 $10 美元。
+  - Reservations
+  - 在計算期間發生的進位 – 進位會將取用的數量、階層式/包含的數量定價和已調整的單價納入考慮。
 
 ## <a name="example-usage-details-api-requests"></a>使用量詳細資料 API 要求範例
 
@@ -325,7 +341,7 @@ GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDe
 
 ## <a name="data-latency-and-rate-limits"></a>資料延遲與速率限制
 
-我們建議您每天呼叫 API 的次數不要超過一次。 成本管理資料會在每四小時從 Azure 資源提供者處接收新使用量資料時重新整理一次。 較頻繁地呼叫並不會提供任何額外的資料。 這樣反而會加重負載。 若要深入了解資料變更頻率，以及資料延遲的處理方式，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。
+我們建議您每天呼叫 API 的次數不要超過一次。 成本管理資料會在每四小時從 Azure 資源提供者處接收新使用量資料時重新整理一次。 呼叫較頻繁並不會提供更多資料。 這樣反而會加重負載。 若要深入了解資料變更頻率，以及資料延遲的處理方式，請參閱[了解成本管理資料](understand-cost-mgt-data.md)。
 
 ### <a name="error-code-429---call-count-has-exceeded-rate-limits"></a>錯誤碼 429 - 呼叫計數已超過速率限制
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/30/2020
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: d73a8d743a948cbd94a3af81fe2e77c45c0eeb67
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c6352ee9d29e4e45aa4be449046a0715fee06047
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82996198"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165904"
 ---
 ## <a name="create-a-new-cdn-profile"></a>建立新的 CDN 設定檔
 
@@ -35,7 +35,7 @@ CDN 設定檔是 CDN 端點的容器，會指定定價層。
     | **訂用帳戶** | 從下拉式清單中，選取 Azure 訂用帳戶。 |
     | **資源群組** | 選取 [新建]，並輸入 *CDNQuickstart-rg* 作為您的資源群組名稱，或選取 [使用現有項目]，然後選擇 [CDNQuickstart-rg] (如果您已有群組)。 | 
     | **資源群組位置** | 從下拉式清單中選取您附近的位置。 |
-    | **定價層** | 從下拉式清單中選取 [標準 Akamai] 選項。 (Akamai 層的部署時間約為一分鐘。 部署 Microsoft 層大約需要 10 分鐘，而 Verizon 層大約需要 90 分鐘。) |
+    | **定價層** | 從下拉式清單中選取 [標準 Akamai] 選項。 (Akamai 層的部署時間約為一分鐘。 部署 Microsoft 層大約需要 10 分鐘，而 Verizon 層大約需要 30 分鐘。) |
     | **立即建立新的 CDN 端點** | 保留為未選取。 |  
    
     ![新增 CDN 設定檔](./media/cdn-create-profile/cdn-new-profile.png)

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bb9efa3fde0ed840589b66db7b28392de67ee8dd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0ca1f1222881a2b4ca640fa31192bd1c151ebd9f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635580"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028840"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>適用於 MongoDB (3.6 版) 的 Azure Cosmos DB API：支援的功能和語法
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,7 +27,10 @@ Azure Cosmos DB 是 Microsoft 的全域分散式多模型資料庫服務。 您�
 
 ## <a name="query-language-support"></a>查詢語言支援
 
-Azure Cosmos DB 適用於 MongoDB 的 API 可完整支援 MongoDB 查詢語言結構。 以下詳細列出目前支援的作業、運算子、階段、命令和選項。
+Azure Cosmos DB 適用於 MongoDB 的 API 可完整支援 MongoDB 查詢語言結構。 下列各節顯示 Azure Cosmos DB 目前支援的伺服器作業、運算子、階段、命令和選項詳細清單。
+
+> [!NOTE]
+> 本文只會列出支援的伺服器命令，並排除用戶端包裝函式。 `deleteMany()` 和 `updateMany()` 等用戶端包裝函式會在內部利用 `delete()` 和 `update()` 伺服器命令。 利用支援伺服器命令的函式與適用於 MongoDB 的 Azure Cosmos DB API 相容。
 
 ## <a name="database-commands"></a>資料庫命令
 
@@ -409,7 +412,7 @@ Azure Cosmos DB 適用於 MongoDB 的 API 支援下列資料庫命令：
 
 當需要包含 '$' 或 '|' 時，最好先建立兩個 (或以上) regex 查詢。 例如，假設原始查詢如下：```find({x:{$regex: /^abc$/})```，則必須修改為：
 
-第 1 課：建立 Windows Azure 儲存體物件```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```。
+```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
 
 第一個部分會使用索引來僅限搜尋以 ^abc 開頭的文件，而第二個部分會比對完整項目。 垂直線運算子 '|' 的作用如同 "or" 函式 - ```find({x:{$regex: /^abc|^def/})``` 查詢會比對 'x' 欄位值以 "abc" 或 "def" 開頭的文件。 若要利用索引，則建議將查詢分成兩個以 $or 運算子聯結的不同查詢：```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```。
 

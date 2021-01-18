@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9aa73767fcb9d57ada11f5830fec00b10eee812
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169404"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017335"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>快速入門：將使用 OpenID Connect 的登入新增至 Node.js Web 應用程式
 
@@ -29,38 +29,29 @@ ms.locfileid: "96169404"
 - [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>註冊您的應用程式
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com/)。
-1. 如果您的帳戶出現在多個 Azure AD 租用戶中：
-    - 從頁面右上角的功能表中選取您的設定檔，然後 **切換目錄**。
-    - 將工作階段變更為要在其中建立應用程式的 Azure AD 租用戶。
 
-1. 瀏覽至 [[Azure Active Directory] > [應用程式註冊]](https://go.microsoft.com/fwlink/?linkid=2083908) 來註冊您的應用程式。
-
-1. 選取 [新增註冊]。
-
-1. 當 [註冊應用程式] 頁面出現時，輸入您應用程式的註冊資訊：
-    - 在 [名稱] 區段中，輸入將對應用程式使用者顯示、且有意義的名稱。 例如：MyWebApp
-    - 在 [支援的帳戶類型] 區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com)]。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+1. 搜尋並選取 [Azure Active Directory]  。
+1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
+1. 輸入應用程式的 [名稱]，例如 `MyWebApp`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
+1. 在 [支援的帳戶類型] 區段中，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com)]。
 
     如果有多個重新導向 URI，您稍後必須在應用程式建立成功之後，從 [驗證] 索引標籤新增這些 URI。
 
 1. 選取 [註冊] 以建立應用程式。
-
 1. 在應用程式的 [概觀] 頁面上，尋找 [應用程式 (用戶端) 識別碼] 值並將它記下供稍後使用。 稍後在此專案中，您會需要用這個值來設定應用程式。
+1. 在 [管理] 底下，選取 [驗證]。
+1. 選取 [新增平台] > [Web]。 
+1. 在 [重新導向 URI] 區段中，輸入 `http://localhost:3000/auth/openid/return`。
+1. 輸入 [登出 URL] `https://localhost:3000`。
+1. 在 [隱含授與] 區段中，核取 [識別碼權杖]，因為此範例需要啟用[隱含授與流程](./v2-oauth2-implicit-grant-flow.md)才能將使用者登入。
+1. 選取 [設定] 。
+1. 在 **管理** 下，選取 [憑證與秘密] > [新增用戶端密碼]。
+1. 輸入 (執行個體應用程式祕密的) 金鑰描述。
+1. 選取金鑰持續時間，此值可為 [1 年]、[2 年] 或 [永不過期]。
+1. 選取 [新增]。 將會顯示金鑰值。 複製金鑰值，並將此值儲存在安全的位置，以便稍後使用。
 
-1. 在應用程式頁面清單中，選取 [驗證]。
-    - 在 [重新導向 URI] 區段中，選取下拉式方塊中的 [Web]，然後輸入下列重新導向 URI：`http://localhost:3000/auth/openid/return`
-    - 在 [進階設定] 區段中，將 [登出 URL]設定為 `https://localhost:3000`。
-    - 在 [進階設定] > [隱含授與] 區段中，核取 [識別碼權杖]，因為此範例需要啟用 [[隱含授與流程](./v2-oauth2-implicit-grant-flow.md)] 才能將使用者登入。
-
-1. 選取 [儲存]。
-
-1. 從 [憑證和祕密] 頁面的 [用戶端密碼] 區段中，選擇 [新增用戶端密碼]。
-    - 輸入 (執行個體應用程式祕密的) 金鑰描述。
-    - 選取金鑰持續時間，此值可為 [1 年]、[2 年] 或 [永不過期]。
-    - 當您按一下 [新增] 按鈕時，將會顯示金鑰值。 複製金鑰值，並將此值儲存在安全的位置。
-
-    稍後您需要用此金鑰來設定應用程式。 此金鑰值不會再次顯示，也無法透過任何其他方式來擷取，因此，請於此值出現在 Azure 入口網站後就立即記錄下來。
 
 ## <a name="download-the-sample-application-and-modules"></a>下載應用程式範例和模組
 

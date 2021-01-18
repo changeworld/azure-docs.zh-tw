@@ -4,16 +4,16 @@ description: 了解 Azure Analysis Services，此為完全受控的平台即服�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/07/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: e70d02c02ba9a3f14d1659851919fbccf71776d1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c4a14ab1e5b52eb36a532c6d69713d588864d288
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487349"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019069"
 ---
 # <a name="what-is-azure-analysis-services"></a>什麼是 Azure Analysis Services？
 
@@ -91,6 +91,7 @@ Azure Analysis Services 會以 **開發人員**、**基本** 及 **標準** 層�
 |美國中部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中部     |    S8v2、S9v2     |    1     |
 |美國中南部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|美國中南部     |    S8v2、S9v2     |    1     |
 |美國中西部   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |美國西部     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |美國西部     |    S8v2、S9v2   |    2  |
@@ -115,6 +116,7 @@ Azure Analysis Services 會以 **開發人員**、**基本** 及 **標準** 層�
 |澳大利亞東部     |    S8v2、S9v2    |    1     |
 |澳大利亞東南部     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |日本東部     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|日本東部     |    S8v2、S9v2    |    1     |
 |東南亞     |     B1, B2, S0, S1, S2, S4, D1     |   1      |
 |東南亞     |     S8v2、S9v2     |   1      |
 |印度西部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
@@ -211,7 +213,7 @@ Azure Analysis Services 受 [Microsoft Online Services 條款](https://www.micro
 
 Microsoft Analysis Services 專案會以免費的可安裝 VSIX 套件來提供。 [從 Marketplace 下載](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)。 此擴充功能適用於任何版本的 Visual Studio 2017 和更新版本 (包括免費的 Community 版本)。
 
-### <a name="sql-server-management-studio"></a>Sql Server Management Studio
+### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 
 使用 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) 來管理伺服器及建立資料庫模型。 連線到您在雲端中的伺服器。 從 XMLA 查詢視窗執行 TMSL 指令碼，並使用 TMSL 指令碼和 PowerShell 自動執行工作。 快速提供新特性與功能 - 每個月更新 SSMS。
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: adc08e978be699ea6ea3dd00beae1762d48644c0
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 3c03a207e91ae969836e208f4e6bf4ea32086c7d
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781057"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121308"
 ---
 # <a name="what-is-azure-private-link"></a>什麼是 Azure Private Link？ 
 Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存體和 SQL Database)，並透過虛擬網路中的[私人端點](private-endpoint-overview.md)裝載 Azure 的客戶擁有/合作夥伴服務。
@@ -22,6 +22,8 @@ Azure Private Link 可讓您存取各項 Azure PaaS 服務 (例如 Azure 儲存�
 
 > [!IMPORTANT]
 > Azure Private Link 現已正式推出。 私人端點和 Private Link 服務 (標準負載平衡器後方的服務) 均已正式推出。 不同的 Azure PaaS 會以不同的排程上架至 Azure Private Link。 如需 Private Link 上 Azure PaaS 的精確狀態，請查看本文中的[可用性](#availability)一節。 如需了解已知的限制，請參閱[私人端點](private-endpoint-overview.md#limitations)和 [Private Link服務](private-link-service-overview.md#limitations)。 
+
+:::image type="content" source="./media/private-link-overview/private-link-center.png" alt-text="Azure 入口網站中的 Azure Private Link 中心" border="false":::
 
 ## <a name="key-benefits"></a>主要權益
 Azure Private Link 提供下列優點：  

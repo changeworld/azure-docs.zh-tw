@@ -3,12 +3,12 @@ title: 開始使用 IoT Edge 上的 Live Video Analytics - Azure
 description: 本快速入門說明如何在 IoT Edge 上開始使用 Live Video Analytics。 了解如何偵測即時影片串流中的動作。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: db48183e918fcb1096734f912f02c091ddac1d74
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511870"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060396"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入門：開始使用 - IoT Edge 上的 Live Video Analytics
 
@@ -21,7 +21,7 @@ ms.locfileid: "97511870"
 
 您可以觀看下列影片，其中包含如何在 IoT Edge 上開始使用即時影片分析的詳細步驟：
 
-<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax]
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -43,7 +43,7 @@ ms.locfileid: "97511870"
 
 在本快速入門中，我們建議您使用 [Live Video Analytics 資源設定指令碼](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)，在您的 Azure 訂用帳戶中部署所需的資源。 若要這樣做，請依照下列步驟執行：
 
-1. 移至 [Azure Cloud Shell](https://shell.azure.com)。
+1. 移至 [Azure 入口網站](https://portal.azure.com)，然後選取 Cloud Shell 圖示。
 1. 如果您第一次使用 Cloud Shell，系統會提示您選取用來建立儲存體帳戶和 Microsoft Azure 檔案共用的訂用帳戶。 選取 [建立儲存體]，以建立可供儲存 Cloud Shell 工作階段資訊的儲存體帳戶。 此儲存體帳戶與指令碼將建立來搭配您 Azure 媒體服務帳戶使用的帳戶不同。
 1. 在 Cloud Shell 視窗左側的下拉式功能表中，選取 [Bash] 作為您的環境。
 
@@ -55,9 +55,13 @@ ms.locfileid: "97511870"
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-如果指令碼成功完成，您應該會在訂用帳戶中看到所有所需資源。 在指令碼輸出中，資源資料表會列出 IoT 中樞名稱。 請尋找 `Microsoft.Devices/IotHubs` 資源類型，並記下該名稱。 在下一個步驟中，您將需要此名稱。 
+指令碼成功完成時，您應該會在訂用帳戶中看到所有所需資源。 在指令碼輸出中，資源資料表會列出 IoT 中樞名稱。 請尋找 **`Microsoft.Devices/IotHubs`** 資源類型，並記下該名稱。 在下一個步驟中，您將需要此名稱。  
 
-此指令碼也會在 *~/clouddrive/lva-sample/* 目錄中產生幾個設定檔。 在快速入門稍後的地方會需要這些檔案。
+> [!NOTE]
+> 此指令碼也會在 **_~/clouddrive/lva-sample/_* _ 目錄中產生幾個組態檔。 在快速入門稍後的地方會需要這些檔案。
+
+> [!TIP]
+> 如果您遇到已建立的 Azure 資源問題，請檢視我們的_ *[疑難排解指南](troubleshoot-how-to.md#common-error-resolutions)* *，以解決一些經常發生的問題。
 
 ## <a name="deploy-modules-on-your-edge-device"></a>將模組部署到邊緣裝置
 
@@ -417,8 +421,8 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 請注意，此承載：
 
 * 會指定需要為其建立執行個體的拓撲名稱 (`MotionDetection`)。
-* 會包含 `rtspUrl` 的參數值，其在圖表拓撲承載中沒有預設值。
-
+* 會包含 `rtspUrl` 的參數值，其在圖表拓撲承載中沒有預設值。 這個值是下列範例影片的連結：
+    > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 在幾秒內，您會在 [輸出] 視窗中看到下列回應：
 
 ```

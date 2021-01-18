@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: fe83425230a157be245e3aa1ad088c32596ea5ed
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 6aeb4e29390b5b456d3aa820e4b3b8be762dbddd
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693367"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98115781"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure Purview 帳戶
 
