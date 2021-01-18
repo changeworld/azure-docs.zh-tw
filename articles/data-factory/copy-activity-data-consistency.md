@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 3591bfe046fa1c3e1e55aa49a0ae3ad698bc57b3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 274250fecdf69b6a488c33ff25df3728a1c90af0
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593666"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556370"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>複製活動中的資料一致性驗證
 
@@ -81,7 +81,7 @@ linkedServiceName | 可儲存工作階段記錄檔的 [Azure Blob 儲存體](con
 path | 記錄檔的路徑。 | 指定您想要儲存記錄檔的路徑。 如不提供路徑，服務會為您建立容器。 | 否
 
 >[!NOTE]
->- 將二進位檔案從複製或複製到 Azure Blob 或 Azure Data Lake Storage Gen2 時，ADF 會利用 [Azure BLOB API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) 和 [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)來封鎖層級的 MD5 總和檢查碼驗證。 如果 ContentMD5 檔案上的檔案存在於 Azure Blob 上，或 Azure Data Lake Storage Gen2 作為資料來源，則 ADF 也會在讀取檔案之後，進行檔案層級的 MD5 總和檢查碼驗證。 將檔案複製到 Azure Blob 或 Azure Data Lake Storage Gen2 為數據目的地之後，ADF 會將 ContentMD5 寫入 Azure Blob 或 Azure Data Lake Storage Gen2，以供下游應用程式進一步取用以進行資料一致性驗證。
+>- 將二進位檔案從複製或複製到 Azure Blob 或 Azure Data Lake Storage Gen2 時，ADF 會利用 [Azure BLOB API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) 和 [Azure Data Lake Storage Gen2 API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers)來封鎖層級的 MD5 總和檢查碼驗證。 如果 ContentMD5 檔案上的檔案存在於 Azure Blob 上，或 Azure Data Lake Storage Gen2 作為資料來源，則 ADF 也會在讀取檔案之後，進行檔案層級的 MD5 總和檢查碼驗證。 將檔案複製到 Azure Blob 或 Azure Data Lake Storage Gen2 為數據目的地之後，ADF 會將 ContentMD5 寫入 Azure Blob 或 Azure Data Lake Storage Gen2，以供下游應用程式進一步取用以進行資料一致性驗證。
 >- ADF 會在任何存放區間複製二進位檔案時進行檔案大小驗證。
 
 ## <a name="monitoring"></a>監視
@@ -109,14 +109,14 @@ path | 記錄檔的路徑。 | 指定您想要儲存記錄檔的路徑。 如不
 您可以從 [dataConsistencyVerification 屬性] 查看資料一致性驗證的詳細資料。
 
 **VerificationResult** 的值： 
--   **已驗證** ：已確認您複製的資料在來源與目的地存放區之間是一致的。 
--   **NotVerified** ：您複製的資料尚未驗證為一致，因為您尚未在複製活動中啟用 validateDataConsistency。 
--   **不支援** ：您複製的資料尚未驗證為一致，因為此特定的複製組不支援資料一致性驗證。 
+-   **已驗證**：已確認您複製的資料在來源與目的地存放區之間是一致的。 
+-   **NotVerified**：您複製的資料尚未驗證為一致，因為您尚未在複製活動中啟用 validateDataConsistency。 
+-   **不支援**：您複製的資料尚未驗證為一致，因為此特定的複製組不支援資料一致性驗證。 
 
 **InconsistentData** 的值： 
--   **已找到** ：ADF 複製活動發現不一致的資料。 
--   **已略過** ：ADF 複製活動已找到不一致的資料並加以略過。 
--   **無** ：ADF 複製活動尚未找到任何不一致的資料。 這可能是因為您在來源與目的地存放區之間的資料已驗證為一致，或因為您已在複製活動中停用 validateDataConsistency。 
+-   **已找到**：ADF 複製活動發現不一致的資料。 
+-   **已略過**：ADF 複製活動已找到不一致的資料並加以略過。 
+-   **無**：ADF 複製活動尚未找到任何不一致的資料。 這可能是因為您在來源與目的地存放區之間的資料已驗證為一致，或因為您已在複製活動中停用 validateDataConsistency。 
 
 ### <a name="session-log-from-copy-activity"></a>複製活動的工作階段記錄
 

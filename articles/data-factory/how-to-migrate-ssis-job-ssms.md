@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 5566717387f6da375129a0e70c9ad825198d66b7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1072f915c5d8483676874422703820dc75719256
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005702"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555741"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>使用 SSMS 將 SQL Server Agent 作業遷移至 ADF
 
@@ -41,7 +41,7 @@ ms.locfileid: "96005702"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本文所述的功能需要 SQL Server Management Studio 18.5 版或更高版本。 若要取得最新版的 SSMS，請參閱[下載 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)。
+本文所述的功能需要 SQL Server Management Studio 18.5 版或更高版本。 若要取得最新版的 SSMS，請參閱[下載 SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 ## <a name="migrate-ssis-jobs-to-adf"></a>將 SSIS 作業遷移至 ADF
 

@@ -1,0 +1,78 @@
+---
+title: Azure 磁片備份總覽
+description: 瞭解 Azure 磁片備份解決方案。
+ms.topic: conceptual
+ms.date: 01/07/2021
+ms.openlocfilehash: fea0dd9d01bdc7c31d724cedd89d1fe6891c650a
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98557532"
+---
+# <a name="overview-of-azure-disk-backup-in-preview"></a>預覽中的 Azure 磁片備份 (總覽) 
+
+>[!IMPORTANT]
+>Azure 磁片備份處於預覽狀態，不含服務等級協定，因此不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 如需區域可用性，請參閱 [支援矩陣](disk-backup-support-matrix.md)。
+>
+>[填寫此表單](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) 以註冊預覽。
+
+Azure 磁片備份是以雲端為基礎的原生備份解決方案，可保護您在受控磁片中的資料。 它是一種簡單、安全且符合成本效益的解決方案，可讓您在幾個步驟中設定受控磁片的保護。 它可確保您可以在損毀案例中復原您的資料。
+
+Azure 磁片備份提供了一種可為受控磁片提供快照集生命週期管理的現成解決方案，方法是自動建立快照集，並使用備份原則將其保留在設定的持續時間內。 您可以管理沒有基礎結構成本的磁片快照集，也不需要自訂腳本或任何管理額外負荷。 這是損毀一致的備份解決方案，會使用 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) 集進行受控磁片的時間點備份，且每天支援多個備份。 它也是無代理程式的解決方案，並不會影響生產應用程式的效能。 它支援 OS 和資料磁片的備份和還原 (包括) 的共用磁片，不論它們目前是否已連接到執行中的 Azure 虛擬機器。
+
+如果您需要虛擬機器的應用程式一致備份（包括資料磁片），或是從備份還原整個虛擬機器、還原檔案或資料夾，或還原至次要區域的選項，請使用 [AZURE VM 備份](backup-azure-vms-introduction.md) 解決方案。 除了 [AZURE VM 備份](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) 解決方案之外，Azure 備份也提供使用磁片備份來備份受控磁片的並存支援。 當您需要一天的應用程式一致的虛擬機器備份，以及更頻繁的 OS 磁片備份或損毀一致的特定資料磁片，而不會影響生產應用程式效能時，這會很有用。
+
+Azure 磁片備份已整合到備份中心，可在 Azure 中提供 **單一整合的管理體驗** ，讓企業能夠大規模管理、監視、操作及分析備份。
+
+## <a name="key-benefits-of-disk-backup"></a>磁片備份的主要優點
+
+Azure 磁片備份是無代理程式和損毀一致的解決方案，其使用 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) 集，並提供下列優點：
+
+- 更頻繁且快速的備份，而不會中斷虛擬機器。
+- 不會影響實際執行應用程式的效能。
+- 沒有安全性考慮，因為它不需要執行自訂腳本或安裝代理程式。
+- 一種符合成本效益的解決方案，可在相較于備份整個虛擬機器的情況下備份特定磁片。
+
+Azure 磁片備份解決方案在下列案例中很有用：
+
+- 每天需要經常備份，不需要應用程式靜止
+- 在叢集案例中執行的應用程式： Windows Server 容錯移轉叢集和 Linux 叢集都會寫入共用磁片
+- 無代理程式備份的特殊需求，因為應用程式的安全性或效能考慮
+- 因為企業營運應用程式不支援磁碟區陰影複製服務 (VSS) ，所以 VM 的應用程式一致備份並不可行。
+
+在下列情況下，請考慮 Azure 磁片備份：
+
+- 要徑任務應用程式是在 Azure 虛擬機器上執行，每日要求多個備份以符合復原點目標，但不會影響生產環境或應用程式效能
+- 基於安全性考慮，您的組織或產業法規會限制安裝代理程式
+- 在 Linux 虛擬機器上執行自訂的前置或後置腳本，以及叫用凍結和解除凍結以取得應用程式一致的備份，在生產工作負載可用性上會造成過度負擔
+- 在 Azure Kubernetes Service (AKS 叢集) 上執行的容器化應用程式會使用受控磁片作為持續性儲存體。 現在您必須透過難以管理的自動化腳本來備份受控磁片。
+- 受控磁片持有重要的商務資料，用來做為檔案共用或包含資料庫備份檔案，而您想要藉由不投資 Azure VM 備份來優化備份成本
+- 您有許多 Linux 和 Windows 單一磁片虛擬機器 (也就是，只有作業系統磁片的虛擬機器，而且沒有任何連接到伺服器的資料磁片) 裝載 web 伺服器或無狀態的電腦，或做為具有應用程式設定設定的預備環境，而您需要符合成本效益的備份解決方案，以保護作業系統磁片。 例如，在升級或修補虛擬機器之前觸發快速隨選備份
+- 虛擬機器正在執行 Azure VM 備份解決方案不支援的 OS 設定 (例如，Windows 2008 32 位伺服器) 
+
+## <a name="how-the-backup-and-restore-process-works"></a>備份和還原程式的運作方式
+
+- 設定 Azure 檔案共用備份的第一步是建立備份保存 [庫](backup-vault-overview.md)。 保存庫可讓您匯總跨不同工作負載設定的備份。
+
+- 然後建立備份原則，讓您設定備份頻率和保留期間。
+
+- 若要設定備份，請移至備份保存庫、指派備份原則、選取需要備份的受控磁片，以及提供要儲存及管理快照集的資源群組。 Azure 備份會自動觸發排程的備份作業，以根據備份頻率建立磁片的增量快照集。 較舊的快照集會根據備份原則所指定的保留期間來刪除。
+
+- Azure 備份使用受控磁片的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 集。 增量快照集是一種符合成本效益的受控磁片時間點備份，會針對自上一個快照集以來磁片的差異變更收費。 無論父磁片的儲存體類型為何，它們一律會儲存在最符合成本效益的儲存體、標準 HDD 儲存體上。 磁片的第一個快照集會佔用磁片的使用大小，而連續的增量快照集會將差異變更儲存到自上一個快照集之後的磁片。
+
+- 一旦您設定受控磁片的備份，就會在備份保存庫中建立備份實例。 您可以使用備份實例找出備份作業的健全狀況、觸發隨選備份，以及執行還原作業。 您也可以使用備份中心來查看多個保存庫和備份實例的備份健康情況，這可提供單一的半透明視圖。
+
+- 若要還原，請只選取您想要從中復原磁碟的復原點。 提供要從快照集建立還原之磁片的資源群組。 Azure 備份提供立即還原體驗，因為快照集會儲存在您的訂用帳戶本機。
+
+- 備份保存庫會使用受控識別來存取其他 Azure 資源。 若要設定受控磁片的備份，並從過去的備份還原，備份保存庫的受控識別需要來源磁片上的一組許可權、建立及管理快照集的快照集資源群組，以及您想要還原備份的目標資源群組。 您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與受控識別。 受控識別是特殊類型的服務主體，只可搭配 Azure 資源使用。 深入瞭解 [受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
+
+- Azure 磁片備份目前支援受控磁片的操作備份，且不會將備份複製到備份保存庫儲存體。 如需支援和不支援的案例，以及區域可用性的詳細清單，請參閱 [支援矩陣](disk-backup-support-matrix.md)。
+
+## <a name="pricing"></a>定價
+
+Azure 備份提供可保護 Azure 磁片的快照集生命週期管理解決方案。 Azure 備份所建立的磁片快照集會儲存在您 Azure 訂用帳戶內的資源群組中，並產生 **快照儲存體** 費用。 如需快照集價格的詳細資訊，您可以流覽 [受控磁片定價](https://azure.microsoft.com/pricing/details/managed-disks/) 。 因為不會將快照集複製到備份保存庫，Azure 備份不會收取 **受保護實例** 的費用，也不會套用 **備份儲存體** 成本。 此外，增量快照集會在上一次快照集之後佔用差異變更，而且一律儲存在標準儲存體上，不論父系受控磁片的儲存體類型為何，並根據標準儲存體的定價收費。 這可讓 Azure 磁片備份成為符合成本效益的解決方案。
+
+## <a name="next-steps"></a>後續步驟
+
+- [Azure 磁片備份支援矩陣](disk-backup-support-matrix.md)

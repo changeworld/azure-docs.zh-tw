@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
 ms.date: 12/03/2020
-ms.openlocfilehash: d5cf39cf91b69574fc1423cfe0942b567cf9a278
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e5e1a4ff676a6677357638dc4b67dc94926adbd2
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548200"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556302"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>針對 ADF 中的 CI-CD、Azure DevOps 和 GitHub 問題進行疑難排解 
 
@@ -72,7 +72,7 @@ CI/CD 發行管線因下列錯誤而失敗：
 2020-07-06T09:50:50.8771655Z ##[error]Details:
 2020-07-06T09:50:50.8772837Z ##[error]DataFactoryPropertyUpdateNotSupported: Updating property type is not supported.
 2020-07-06T09:50:50.8774148Z ##[error]DataFactoryPropertyUpdateNotSupported: Updating property type is not supported.
-2020-07-06T09:50:50.8775530Z ##[error]Check out the troubleshooting guide to see if your issue is addressed: https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops#troubleshooting
+2020-07-06T09:50:50.8775530Z ##[error]Check out the troubleshooting guide to see if your issue is addressed: https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment#troubleshooting
 2020-07-06T09:50:50.8776801Z ##[error]Task failed while creating or updating the template deployment.
 `
 
@@ -107,7 +107,7 @@ CI/CD 發行管線因下列錯誤而失敗：
 
 您已卸離 Git 設定，並使用選取的 [匯入資源] 旗標再次設定，這會將 Data Factory 設定為「同步」。 這表示沒有要發行的變更。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 卸離 Git 設定並再次設定，並確定不要勾選 [匯入現有資源] 核取方塊。
 
@@ -131,7 +131,7 @@ CI/CD 發行管線因下列錯誤而失敗：
 }
 `
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 您必須刪除 SSIS IR 和共用的 IRs，才能允許移動作業。 如果您不想要刪除 IRs，最好的方式是遵循複製和複製檔來進行複製，完成之後，請刪除舊的 Data factory。
 
@@ -147,7 +147,7 @@ CI/CD 發行管線因下列錯誤而失敗：
 
 您已建立客戶角色作為使用者，而且沒有必要的許可權。 在 UI 中載入 factory 時，會檢查工廠的一系列公開控制值。 在此情況下，使用者的存取角色沒有存取 *queryFeaturesValue* API 的許可權。 若要存取此 API，全域參數功能會關閉。 ARM 匯出程式碼路徑部分依賴全域參數功能。
 
-#### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方案
 
 為了解決此問題，您必須將下列許可權新增至您的角色： *DataFactory/factory/queryFeaturesValue/action*。 依預設，此許可權應該包含在「Data Factory 參與者」角色中。
 

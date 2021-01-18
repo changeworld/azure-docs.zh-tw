@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bde8bc11a959bea4bd2c05c5ae75db81192aad6a
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352213"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555860"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>將自我裝載 IR 設定為 Azure Data Factory 中 Azure-SSIS IR 的 proxy
 
@@ -54,7 +54,7 @@ ms.locfileid: "96352213"
 
 ### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>啟用內部部署預備工作的 Windows 驗證
 
-如果您的自我裝載 IR 上的內部部署預備工作需要 Windows 驗證，請 [將 SSIS 套件設定為使用相同的 Windows 驗證](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15)。 
+如果您的自我裝載 IR 上的內部部署預備工作需要 Windows 驗證，請 [將 SSIS 套件設定為使用相同的 Windows 驗證](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)。 
 
 您的內部部署預備工作將會使用自我裝載 IR 服務帳戶來叫用 (*NT SERVICE\DIAHostService* 預設為) ，而您的資料存放區將會使用 Windows 驗證帳戶存取。 這兩個帳戶都需要指派特定安全性原則。 在自我裝載的 IR 機器上，移至 [**本機安全性原則**  >  **本機原則**  >  **使用者權限指派**]，然後執行下列動作：
 
@@ -70,7 +70,7 @@ ms.locfileid: "96352213"
 - 針對 [ **驗證方法**]，選取 [ **帳戶金鑰**]、[ **SAS URI**]、[ **服務主體**] 或 [ **受控識別**]。  
 
 >[!TIP]
->如果您選取 **服務主體** 方法，請至少將 *儲存體 Blob 資料參與者* 角色授與服務主體。 如需詳細資訊，請參閱 [Azure Blob 儲存體連接器](connector-azure-blob-storage.md#linked-service-properties)。 如果您選取 [ **受控識別** ] 方法，請將您的 ADF 受控識別授與適當的角色，以存取 Azure Blob 儲存體。 如需詳細資訊，請參閱 [使用 Azure Active Directory 驗證搭配 ADF 受控身分識別存取 Azure Blob 儲存體](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
+>如果您選取 **服務主體** 方法，請至少將 *儲存體 Blob 資料參與者* 角色授與服務主體。 如需詳細資訊，請參閱 [Azure Blob 儲存體連接器](connector-azure-blob-storage.md#linked-service-properties)。 如果您選取 [ **受控識別** ] 方法，請將您的 ADF 受控識別授與適當的角色，以存取 Azure Blob 儲存體。 如需詳細資訊，請參閱 [使用 Azure Active Directory 驗證搭配 ADF 受控身分識別存取 Azure Blob 儲存體](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)。
 
 ![準備 Azure Blob 儲存體連結服務以進行預備](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "96352213"
 
    1. 在 [ **暫存路徑** ] 方塊中，指定您所選 Azure blob 儲存體帳戶中的 blob 容器，或將其保留空白，以使用預設值來進行暫存。
 
-   1. 選取 [繼續]  。
+   1. 選取 [繼續]。
 
    ![使用自我裝載 IR 的 Advanced 設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
@@ -132,7 +132,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 藉由使用最新的 SSDT 做為 Visual Studio 或獨立安裝程式的 SSIS 專案擴充功能，您可以 `ConnectByProxy` 在連線管理員中找到已針對支援的資料流程元件新增的新屬性。
 * [下載 Visual Studio 的 SSIS 專案擴充功能](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
-* [下載獨立安裝程式](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
+* [下載獨立安裝程式](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)   
 
 當您使用可存取內部部署資料的元件來設計包含資料流程工作的新封裝時，您可以在相關連接管理員的 [**屬性**] 窗格中，將此屬性設定為 [ *True* ]，以啟用此屬性。
 

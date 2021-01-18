@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/18/2020
-ms.openlocfilehash: 9003366ec0d64057ca7426d5b6b99986bc21fc9d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d282ee805ac61ba17ceb3ecc6a3d8179ea7b319
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920292"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555894"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>註冊和掃描內部部署 SQL server
 
@@ -32,17 +32,17 @@ SQL server 內部部署資料來源支援：
 
 - 驗證方法： SQL 驗證
 
-### <a name="known-limitations"></a>已知限制
+### <a name="known-limitations"></a>已知的限制
 
-Azure 範疇不支援在 SQL Server 中掃描 [視圖](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) 。 
+Azure 範疇不支援在 SQL Server 中掃描 [視圖](/sql/relational-databases/views/views) 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 註冊資料來源之前，請先建立 Azure 範疇帳戶。 如需有關建立範疇帳戶的詳細資訊，請參閱 [快速入門：建立 Azure 範疇帳戶](create-catalog-portal.md)。
 
 - 設定自我裝載 [整合運行](manage-integration-runtimes.md) 時間來掃描資料來源。
 
-## <a name="setting-up-authentication-for-a-scan"></a>設定掃描的驗證
+## <a name="setting-up-authentication-for-a-scan"></a>設定掃描驗證
 
 有一種方式可以設定 SQL server 內部部署的驗證：
 
@@ -80,7 +80,7 @@ SQL 身分識別必須具有主資料庫的存取權。 這個位置是 `sys.dat
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="使用者對應。":::
 
-4. 按一下 [確定] 來進行儲存。
+4. 按一下 [確定]  以儲存。
 
 5. 以滑鼠右鍵按一下並選取 [ **屬性**]，再次流覽至您所建立的使用者。 輸入新密碼並加以確認。 選取 [指定舊密碼]，然後輸入舊密碼。 **一旦您建立新的登入，就必須立即變更您的密碼。**
 
@@ -88,20 +88,20 @@ SQL 身分識別必須具有主資料庫的存取權。 這個位置是 `sys.dat
 
 #### <a name="storing-your-sql-login-password-in-a-key-vault-and-creating-a-credential-in-purview"></a>將您的 SQL 登入密碼儲存在金鑰保存庫中，並在範疇中建立認證
 
-1. 在 Azure 入口網站中流覽至您的金鑰保存庫
-1. 選取 **設定 > 秘密**
+1. 在 Azure 入口網站中瀏覽至您的金鑰保存庫
+1. 選取 [設定] > [秘密]
 1. 選取 [ **+ 產生/匯入**]，並輸入 **名稱** 和 **值** 做為您的 SQL server 登入的 *密碼*
-1. 選取 [ **建立** ] 以完成
-1. 如果您的金鑰保存庫尚未連線到範疇，您將需要 [建立新的金鑰保存庫連接](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
-1. 最後，使用使用者 **名稱** 和 **密碼** 來 [建立新的認證](manage-credentials.md#create-a-new-credential)，以設定您的掃描
+1. 選取 [建立] 以完成作業
+1. 如果您的金鑰保存庫尚未連線至 Purview，您將需要[建立新的金鑰保存庫連線](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)
+1. 最後，使用 **使用者名稱** 和 **密碼**[建立新的認證](manage-credentials.md#create-a-new-credential)，以設定您的掃描
 
 ## <a name="register-a-sql-server-data-source"></a>註冊 SQL server 資料來源
 
-1. 流覽至您的範疇帳戶
+1. 瀏覽至您的 Purview 帳戶
 
-1. 在左側導覽中的 [來源] 和 [掃描] 下，選取 [ **整合運行** 時間]。 請確定已設定自我裝載整合執行時間。 如果未設定，請依照 [此處](manage-integration-runtimes.md) 所述的步驟來建立自我裝載整合執行時間，以便在可存取內部部署網路的內部部署或 Azure VM 上進行掃描。
+1. 在左側導覽中的 [來源] 和 [掃描] 下，選取 [ **整合運行** 時間]。 確定已設定自我裝載的整合執行階段。 如果未設定，請依照 [此處](manage-integration-runtimes.md) 所述的步驟來建立自我裝載整合執行時間，以便在可存取內部部署網路的內部部署或 Azure VM 上進行掃描。
 
-1. 選取左側導覽列上的 **來源**
+1. 在左側導覽列中選取 [來源]
 
 1. 選取 [註冊]
 
@@ -115,5 +115,5 @@ SQL 身分識別必須具有主資料庫的存取權。 這個位置是 `sys.dat
 
 ## <a name="next-steps"></a>後續步驟
 
-- [流覽 Azure 範疇資料目錄](how-to-browse-catalog.md)
-- [搜尋 Azure 範疇資料目錄](how-to-search-catalog.md)
+- [瀏覽 Azure Purview 資料目錄](how-to-browse-catalog.md)
+- [搜尋 Azure Purview 資料目錄](how-to-search-catalog.md)

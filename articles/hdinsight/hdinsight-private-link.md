@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 219f8728eb90101e7437cbb82b44a1f7124ef14d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915618"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556421"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>使用 Private Link (preview 保護和隔離 Azure HDInsight 叢集) 
 
@@ -60,7 +60,7 @@ Private Link （預設為停用）需要廣泛的網路知識，才能在建立�
 
 ### <a name="prepare-your-environment"></a>準備您的環境
 
-針對私人連結服務的 successgfull 建立，您必須明確 [停用私人連結服務的網路原則](../private-link/disable-private-link-service-network-policy.md)。
+若要成功建立私人連結服務，您必須明確 [停用私人連結服務的網路原則](../private-link/disable-private-link-service-network-policy.md)。
 
 下圖顯示建立叢集之前所需的網路設定範例。 在此範例中，會使用 UDR 將所有輸出流量 [強制](../firewall/forced-tunneling.md) 傳送至 Azure 防火牆，並在建立叢集之前，在防火牆上應「允許」所需的輸出相依性。 針對企業安全性套件叢集，可透過 VNet 對等互連來提供 Azure Active Directory Domain Services 的網路連線能力。
 
@@ -100,12 +100,12 @@ networkProperties: {
 
 如需包含許多 HDInsight 企業安全性功能（包括 Private Link）的完整範本，請參閱 [HDInsight 企業安全性範本](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template)。
 
-### <a name="use-azure-powershell"></a>使用 Azure Powershell
+### <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
-若要使用 powershell，請參閱 [這裡](/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)的範例。
+若要使用 PowerShell，請參閱 [這裡](/powershell/module/az.hdinsight/new-azhdinsightcluster#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature)的範例。
 
 ### <a name="use-azure-cli"></a>使用 Azure CLI
-若要使用 Azure CLI，請參閱 [這裡](/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples)的範例。
+若要使用 Azure CLI，請參閱 [這裡](/cli/azure/hdinsight#az_hdinsight_create-examples)的範例。
 
 ## <a name="next-steps"></a>後續步驟
 

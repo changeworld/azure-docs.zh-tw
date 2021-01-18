@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/06/2020
-ms.openlocfilehash: bc5d2cad7b4fbf1871d2c02dc91db30daf55e855
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b9dc88c5773d1329ad4fb4d1c45a0cbc88737423
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600705"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556574"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自訂 Azure-SSIS Integration Runtime 的安裝
 
@@ -345,7 +345,7 @@ ms.locfileid: "96600705"
 
       * *Tls 1.2* 資料夾，其中包含自訂安裝腳本 (*主要 .cmd*) 使用強式密碼編譯以及更安全的網路通訊協定 (TLS 1.2) 在 Azure-SSIS IR 的每個節點上。 腳本也會停用較舊的 SSL/TLS 版本。
 
-      * [ZULU OPENJDK] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*) 和 PowerShell 檔案 (*install_openjdk.ps1*)，用以在 Azure-SSIS IR 的每個節點上安裝 Zulu OpenJDK。 此安裝可讓您使用 Azure Data Lake Store 和彈性檔案連接器處理 ORC 和 Parquet 檔案。 如需詳細資訊，請參閱 [Azure Feature Pack for Integration Services](/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java)。 
+      * [ZULU OPENJDK] 資料夾，其中包含自訂安裝指令碼 (*main.cmd*) 和 PowerShell 檔案 (*install_openjdk.ps1*)，用以在 Azure-SSIS IR 的每個節點上安裝 Zulu OpenJDK。 此安裝可讓您使用 Azure Data Lake Store 和彈性檔案連接器處理 ORC 和 Parquet 檔案。 如需詳細資訊，請參閱 [Azure Feature Pack for Integration Services](/sql/integration-services/azure-feature-pack-for-integration-services-ssis#dependency-on-java)。 
       
         首先，[下載最新的 Zulu OpenJDK](https://www.azul.com/downloads/zulu/zulu-windows/) (例如，*zulu8.33.0.1-jdk8.0.192-win_x64.zip*)，然後將其與 *main.cmd* 和 *install_openjdk.ps1* 一起上傳至您的容器。
 

@@ -11,12 +11,12 @@ author: dcstwh
 ms.author: weetok
 manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: e7b435080fda48e1df0bb31d16dafed30ac3d3db
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b5d1f0c0d6aa848e590e68e1f18abf7861674483
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497855"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556557"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>以程式設計方式監視 Azure Data Factory
 
@@ -68,7 +68,7 @@ Data Factory 只會儲存管線執行資料 45 天。 當您以程式設計方�
     Console.ReadKey();
     ```
 
-如需有關 .NET SDK 的完整文件，請參閱 [Data Factory .NET SDK 參考](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)。
+如需有關 .NET SDK 的完整文件，請參閱 [Data Factory .NET SDK 參考](/dotnet/api/microsoft.azure.management.datafactory)。
 
 ## <a name="python"></a>Python
 如需有關使用 Python SDK 來建立和監視管線的完整逐步解說，請參閱[使用 Python 建立資料處理站和管線](quickstart-create-data-factory-python.md)。
@@ -86,7 +86,7 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-如需有關 Python SDK 的完整文件，請參閱 [Data Factory Python SDK 參考](/python/api/overview/azure/datafactory?view=azure-python)。
+如需有關 Python SDK 的完整文件，請參閱 [Data Factory Python SDK 參考](/python/api/overview/azure/datafactory)。
 
 ## <a name="rest-api"></a>REST API
 如需有關使用 REST API 來建立和監視管線的完整逐步解說，請參閱[使用 REST API 建立資料處理站和管線](quickstart-create-data-factory-rest-api.md)。

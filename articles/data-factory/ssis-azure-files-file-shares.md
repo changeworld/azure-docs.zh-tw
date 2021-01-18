@@ -8,12 +8,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: a2b95e0de642dc17865643ec569e7220fe5581b2
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 97ed9b6f3f21b6d9e220c1f4e17d4ba6b0d8b485
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637491"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555503"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>在 SSIS 套件部署於 Azure 的情況下，於內部部署與 Azure 中開啟和儲存檔案
 
@@ -27,7 +27,7 @@ ms.locfileid: "92637491"
 
 ## <a name="use-on-premises-file-shares"></a>使用內部部署檔案共用
 
-當您將使用本機檔案系統的套件隨即轉移至 Azure 中的 SSIS 時，若要繼續使用 **內部部署檔案共用** ，請執行下列動作：
+當您將使用本機檔案系統的套件隨即轉移至 Azure 中的 SSIS 時，若要繼續使用 **內部部署檔案共用**，請執行下列動作：
 
 1. 將檔案從本機檔案系統轉送至內部部署檔案共用。
 
@@ -41,7 +41,7 @@ ms.locfileid: "92637491"
 
 ## <a name="use-azure-file-shares"></a>使用 Azure 檔案共用
 
-當您將使用本機檔案系統的套件隨即轉移至 Azure 中的 SSIS 時，若要使用 **Azure 檔案服務** ，請執行下列動作：
+當您將使用本機檔案系統的套件隨即轉移至 Azure 中的 SSIS 時，若要使用 **Azure 檔案服務**，請執行下列動作：
 
 1. 將檔案從本機檔案系統轉送至 Azure 檔案服務。 如需詳細資訊，請參閱 [Azure 檔案服務](https://azure.microsoft.com/services/storage/files/)。
 
@@ -53,4 +53,4 @@ ms.locfileid: "92637491"
 
 - 部署您的套件。 如需詳細資訊，請參閱[使用 SSMS 將 SSIS 專案部署到 Azure](/sql/integration-services/ssis-quickstart-deploy-ssms)。
 - 執行您的套件。 如需詳細資訊，請參閱[在 Azure 中使用 SSMS 執行 SSIS 套件](/sql/integration-services/ssis-quickstart-run-ssms)。
-- 排程您的套件。 如需詳細資訊，請參閱 [在 Azure 中排程 SSIS 套件](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)。
+- 排程您的套件。 如需詳細資訊，請參閱 [在 Azure 中排程 SSIS 套件](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。

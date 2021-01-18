@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8dfe9a23e5c6697323142212156006cb65d2f9b
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338124"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556523"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight 識別碼代理程式 (HIB) 
 
@@ -126,9 +126,9 @@ HDInsight 工具會進行更新，以原生方式支援 OAuth。 使用這些工
 
 在 HDInsight 識別碼代理程式安裝中，可更新連線至閘道的自訂應用程式和用戶端，以先取得必要的 OAuth 權杖。 依照 [本檔](../../storage/common/storage-auth-aad-app.md) 中的步驟取得權杖，並提供下列資訊：
 
-*   OAuth 資源 uri： `https://hib.azurehdinsight.net` 
+*    OAuth 資源 uri： `https://hib.azurehdinsight.net` 
 *   AppId：7865c1d2-f040-46cc-875f-831a1ef6a28a
-*   許可權： (名稱： Cluster. ReadWrite，id： 8f89faa0-ffef-4007-974d-4989b39ad77d) 
+*    許可權： (名稱： Cluster. ReadWrite，id： 8f89faa0-ffef-4007-974d-4989b39ad77d) 
 
 取得 OAuth 權杖之後，請將它用於叢集閘道之 HTTP 要求的授權標頭 (例如 HTTPs:// <clustername> -int.azurehdinsight.net) 。 Apache Livy API 的範例捲曲命令可能看起來像這個範例：
     
@@ -146,7 +146,7 @@ curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application
 在 AAD 中，所有協力廠商應用程式都需要同意，才能驗證使用者或存取資料。
 
 ### <a name="can-the-consent-be-approved-programatically"></a>同意會以程式設計方式核准嗎？
-Microsoft Graph api 可讓您將同意自動化，請參閱 [api 檔](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) ，以將同意自動化的順序如下：
+Microsoft Graph api 可讓您將同意自動化，請參閱 [api 檔](/graph/api/resources/oauth2permissiongrant) ，以將同意自動化的順序如下：
 
 * 註冊應用程式，並將應用程式的擁有權限授與應用程式，以存取 Microsoft Graph
 * 建立叢集之後，請根據識別碼 uri 查詢叢集應用程式

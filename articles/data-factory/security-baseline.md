@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4e82b4adbfde7623de9497c94e56a9ae303131ad
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ff777f079116942eba32e49f359c7f7e0b99f65d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202771"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555775"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>適用于 Azure Data Factory 的 Azure 安全性基準
 
@@ -335,9 +335,9 @@ ms.locfileid: "98202771"
 
 * [特殊許可權身分識別管理員的資訊](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 * [本機帳戶的資訊](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
@@ -744,7 +744,7 @@ ms.locfileid: "98202771"
 
 * [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-* [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription)
 
 * [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -880,7 +880,7 @@ ms.locfileid: "98202771"
 
 **指導** 方針：如果您是在 Azure 虛擬機器中執行執行時間整合，則根據腳本的類型，您可能會使用作業系統特定設定或協力廠商資源，以限制使用者在 azure 計算資源內執行腳本的能力。 您也可以運用 Azure 資訊安全中心的自我調整應用程式控制，以確保只有授權的軟體會執行，而且所有未經授權的軟體都會在 Azure 虛擬機器上遭到封鎖而無法執行。
 
-* [如何在 Windows 環境中控制 PowerShell 腳本執行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [如何在 Windows 環境中控制 PowerShell 腳本執行](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [如何使用 Azure 資訊安全中心適應性應用程式控制](../security-center/security-center-adaptive-application.md)
 
@@ -918,7 +918,7 @@ ms.locfileid: "98202771"
 
 **指導** 方針：使用 Azure 原則定義和實行 Azure Data Factory 的標準安全性設定。 使用 "DataFactory" 命名空間中 Azure 原則別名來建立自訂原則，以對 Azure Data Factory 實例的設定進行審核或強制執行。
 
-* [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何檢視可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias)
 
 * [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -964,7 +964,7 @@ ms.locfileid: "98202771"
 
 * [建立 Azure Resource Manager 範本的資訊](../virtual-machines/windows/ps-template.md)
 
-* [如何將自訂 VM VHD 上傳至 Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [如何將自訂 VM VHD 上傳至 Azure](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure 資訊安全中心監視**：是
 
@@ -974,9 +974,9 @@ ms.locfileid: "98202771"
 
 **指導** 方針：如果使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
-* [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow)
 
-* [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos 文件](/azure/devops/repos/index)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1150,7 +1150,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 * [Azure VM 備份的總覽](../backup/backup-azure-vms-introduction.md)
 
-* [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1164,7 +1164,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 * [如何從 Azure 虛擬機器備份復原檔案](../backup/backup-azure-restore-files-from-vm.md)
 
-* [如何在 Azure 中還原金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中還原金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1214,7 +1214,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 ### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程序
 
-**指引**：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
+**指導** 方針：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
 
 * [請參閱 NIST 的發行集：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
@@ -1264,7 +1264,7 @@ Data Factory 參與者角色可以用來建立和管理 Data factory，以及其
 
 * [遵循 Microsoft 的參與規則，以確保您的滲透測試不違反 Microsoft 原則](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [對於 Microsoft 管理的雲端基礎結構、服務和應用程式，您可在此找到 Microsoft 對於 Red Teaming 和即時網站滲透測試的策略與執行詳細資訊：](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [您可以在這裡找到有關 Microsoft 所管理的雲端基礎結構、服務和應用程式的 Microsoft 策略和執行紅色小組和即時網站滲透測試的詳細資訊](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure 資訊安全中心監視**：不適用
 

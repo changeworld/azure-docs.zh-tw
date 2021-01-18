@@ -10,12 +10,12 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 545f698f444e99d3f3807f22b308963172018fcb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 77283596e4b0d7e25d757c9de76c284ca4f5d4f2
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746653"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556387"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>在 Azure 中從 SSIS 套件使用 Windows 驗證來存取資料存放區和檔案共用
 
@@ -99,7 +99,7 @@ ms.locfileid: "92746653"
 
 3. 從 SSMS 中，檢查您是否可以連線至內部部署 SQL Server。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要從在 Azure 中執行的套件存取內部部署 SQL Server，請執行下列動作：
 
@@ -126,7 +126,7 @@ ms.locfileid: "92746653"
 
 3. 檢查是否會針對內部部署檔案共用傳回目錄清單。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要從 Azure 中執行的套件存取內部部署檔案共用，請執行下列動作：
 
@@ -170,4 +170,4 @@ ms.locfileid: "92746653"
 
 - 部署您的套件。 如需詳細資訊，請參閱[使用 SSMS 將 SSIS 專案部署到 Azure](/sql/integration-services/ssis-quickstart-deploy-ssms)。
 - 執行您的套件。 如需詳細資訊，請參閱[在 Azure 中使用 SSMS 執行 SSIS 套件](/sql/integration-services/ssis-quickstart-run-ssms)。
-- 排程您的套件。 如需詳細資訊，請參閱 [在 Azure 中排程 SSIS 套件](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)。
+- 排程您的套件。 如需詳細資訊，請參閱 [在 Azure 中排程 SSIS 套件](/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。

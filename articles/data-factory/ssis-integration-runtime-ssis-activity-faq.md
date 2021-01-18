@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9609c382161514611ddc41af040e8fb438431fdf
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844177"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555996"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>針對 SSIS 整合執行時間中的封裝執行進行疑難排解
 
@@ -28,7 +28,7 @@ ms.locfileid: "94844177"
 
 使用 Azure Data Factory 入口網站來檢查 SSIS 套件執行活動的輸出。 輸出會包含執行結果、錯誤訊息和作業識別碼。 如需詳細資訊，請參閱 [監視管線](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline)。
 
-使用 (SSISDB) 的 SSIS 目錄來檢查執行的詳細記錄。 如需詳細資訊，請參閱 [監視正在執行的封裝和其他作業](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017)。
+使用 (SSISDB) 的 SSIS 目錄來檢查執行的詳細記錄。 如需詳細資訊，請參閱 [監視正在執行的封裝和其他作業](/sql/integration-services/performance/monitor-running-packages-and-other-operations)。
 
 ## <a name="common-errors-causes-and-solutions"></a>常見錯誤、原因和解決方案
 
@@ -91,7 +91,7 @@ ms.locfileid: "94844177"
 當封裝執行在 SSIS integration runtime 的本機磁片中找不到檔案時，就會發生此錯誤。 請嘗試下列動作：
 * 請勿在 SSIS integration runtime 中執行的封裝中使用絕對路徑。 請改用目前的執行工作目錄 ( ) 或暫存資料夾 (% TEMP% ) 。
 * 如果您需要將某些檔案保存在 SSIS integration runtime 節點上，請依照 [自訂安裝程式](how-to-configure-azure-ssis-ir-custom-setup.md)中所述的方式來準備檔案。 執行完成之後，工作目錄中的所有檔案都會清除。
-* 使用 Azure 檔案儲存體而不是將檔案儲存在 SSIS integration runtime 節點中。 如需詳細資訊，請參閱 [使用 Azure 檔案共用](/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares)。
+* 使用 Azure 檔案儲存體而不是將檔案儲存在 SSIS integration runtime 節點中。 如需詳細資訊，請參閱 [使用 Azure 檔案共用](/sql/integration-services/lift-shift/ssis-azure-files-file-shares#use-azure-file-shares)。
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>錯誤訊息：「資料庫 ' SSISDB ' 已達到其大小配額」
 
@@ -154,7 +154,7 @@ ms.locfileid: "94844177"
 
 * 可能的原因和建議的動作：
   * 如果在執行記錄中還有警告訊息「元件不支援使用具有 ConnectByProxy 值的連線管理員」設定 true」，這表示連接管理員會用於尚未支援「ConnectByProxy」的元件。 您可以在[設定 Self-Hosted IR 作為 ADF 中 Azure-SSIS IR 的 proxy](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy) ，找到支援的元件
-  * 您可以在 [SSMS 報告](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) 或您于 SSIS 封裝執行活動中指定的記錄資料夾中找到執行記錄。
+  * 您可以在 [SSMS 報告](/sql/integration-services/performance/monitor-running-packages-and-other-operations#reports) 或您于 SSIS 封裝執行活動中指定的記錄資料夾中找到執行記錄。
   * vNet 也可以用來存取內部部署資料，以做為替代方案。 您可以在將[AZURE SSIS 整合執行時間加入虛擬網路](join-azure-ssis-integration-runtime-virtual-network.md)中找到更多詳細資料
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>錯誤訊息：「暫存工作狀態：失敗。 臨時工作錯誤：錯誤碼：2906，ErrorMessage：封裝執行失敗。，輸出： {"OperationErrorMessages"： "SSIS 執行程式結束代碼：-1. \ n"，"LogLocation"： "... \\SSISTelemetry \\ ExecutionLog \\ ... "，" effectiveIntegrationRuntime "：" ... "，" executionDuration "： ...，" durationInQueue "： {" integrationRuntimeQueue "： ...}}"

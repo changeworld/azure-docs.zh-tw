@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d624f2dd2c0c9b4c7e99d5628a1d47e4303da7f
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014140"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555588"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>使用受控識別來存取 Azure 串流分析作業的 Azure SQL Database 或 Azure Synapse Analytics (預覽) 
 
@@ -123,7 +123,7 @@ Azure 串流分析支援 Azure SQL Database 和 Azure Synapse Analytics 輸出�
 
 當您在入口網站中建立自主資料庫使用者並授與 Azure 服務的存取權（如上一節所述）時，您的串流分析作業具有受控 **識別的許可權，可透過** 受控識別連線至您的 azure Synapse 資料庫資源。 建議您進一步將「選取」、「插入」和「管理資料庫大量作業」許可權授與串流分析作業，因為稍後會在串流分析工作流程中需要這些許可權。 **SELECT** 許可權可讓作業測試其與 Azure Synapse 資料庫中資料表的連接。 當您設定輸入和 Azure Synapse 資料庫輸出之後， **插入** 和 **管理資料庫大量作業** 許可權可讓您測試端對端串流分析查詢。
 
-若要授與「管理資料庫大量作業」許可權，您必須將標示為「資料庫」許可權所 [隱含](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest#remarks)的擁有權限 **授與串流** 分析作業。 您需要此許可權，因為串流分析作業會執行 COPY 語句，這需要 [管理資料庫大量作業和插入](/sql/t-sql/statements/copy-into-transact-sql)。
+若要授與「管理資料庫大量作業」許可權，您必須將標示為「資料庫」許可權所 [隱含](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks)的擁有權限 **授與串流** 分析作業。 您需要此許可權，因為串流分析作業會執行 COPY 語句，這需要 [管理資料庫大量作業和插入](/sql/t-sql/statements/copy-into-transact-sql)。
 
 ---
 
