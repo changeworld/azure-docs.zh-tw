@@ -2,7 +2,7 @@
   href: index.yml
 - name: 切換至專用 SQL 集區 (先前稱為 SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
-- name: 總覽
+- name: 概觀
   items:
     - name: 什麼是 Azure Synapse？
       href: overview-what-is.md
@@ -263,7 +263,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
@@ -1094,25 +1094,26 @@
     - name: 教學課程
       items:
         - name: 使用 Apache Spark 將資料視覺化
+          displayname: machine learning
           href: ./spark/apache-spark-data-visualization-tutorial.md
-          displayname: machine learning
         - name: 針對專用 SQL 集區使用評分精靈
-          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
+          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
         - name: 使用自動化 ML 訓練任意程式碼的模型
+          displayname: machine learning
           href: ./machine-learning/tutorial-automl.md
         - name: 使用自動化 ML 在 Python 中訓練模型
+          displayname: machine learning
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
-          displayname: machine learning
         - name: 使用 Apache Spark MLlib 建立模型
-          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: 設定 Azure Synapse 的認知服務
+          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
         - name: 使用認知服務進行情感分析
           href: ./machine-learning/tutorial-cognitive-services-sentiment.md
         - name: 使用認知服務的異常偵測
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-        - name: 設定 Azure Synapse 的認知服務
-          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
 - name: 資料目錄和管理
   items:
     - name: 快速入門
@@ -1174,7 +1175,7 @@
       href: /answers/questions/topics/single/25423.html
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
-    - name: Stack Overflow
+    - name: 堆疊溢位
       href: 'https://stackoverflow.com/questions/tagged/azure-synapse/'
     - name: 支援
       href: ./sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
