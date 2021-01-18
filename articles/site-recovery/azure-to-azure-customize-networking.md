@@ -8,18 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: sideeksh
-ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426362"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541185"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>自訂目標 Azure 虛擬機器的網路設定
 
 本文提供在使用 [Azure Site Recovery](site-recovery-overview.md)將 azure vm 從一個區域複寫及復原到另一個區域時，自訂目標 Azure 虛擬機器上的網路設定 (VM) 的指引。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 了解 Site Recovery 如何針對[這種情況](azure-to-azure-architecture.md)提供災害復原。
 
@@ -31,7 +31,7 @@ ms.locfileid: "89426362"
 - [公用 IP](../virtual-network/public-ip-addresses.md)
 - 子網和 NIC 的[網路安全性群組](../virtual-network/manage-network-security-group.md)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 確定您事先規劃復原端設定。
 - 事先建立網路資源。 提供它做為輸入，讓 Azure Site Recovery 服務可以接受這些設定，並確定容錯移轉 VM 遵守這些設定。
@@ -44,12 +44,12 @@ ms.locfileid: "89426362"
 
      ![自訂容錯移轉網路設定](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. 選取測試容錯移轉虛擬網路。 您可以選擇將其保留空白，並在測試容錯移轉時選取其中一個。
+4. 選取測試容錯移轉虛擬網路。
 5. 在您想要設定的 **NIC 附近，** 選取 [容錯移轉網路]。 在開啟的下一個分頁中，在測試容錯移轉和容錯移轉位置中選取對應的預先建立資源。
 
     ![編輯 NIC 設定](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-6. 選取 [確定]  。
+6. 選取 [確定]。
 
 Site Recovery 現在會接受這些設定，並確保容錯移轉上的 VM 會透過對應的 NIC 連線到選取的資源。
 

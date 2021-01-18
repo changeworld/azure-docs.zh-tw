@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 432104c7e2cb9486dfb47a793ae73829d8705b60
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e294423e3f078253984dc4fcd8695c2676abb236
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655811"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541252"
 ---
 # <a name="connect-data-sources"></a>連線資料來源
 
@@ -69,6 +69,8 @@ Azure Sentinel 支援下列資料連線方法：
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
     - [Barracuda CloudGen Firewall](connect-barracuda-cloudgen-firewall.md)
+    - [更好的行動裝置威脅防護](connect-better-mtd.md)
+    - [Beyond Security beSECURE](connect-besecure.md)
     - [Citrix Analytics (Security)](connect-citrix-analytics.md)
     - [F5 BIG-IP](connect-f5-big-ip.md)
     - [Forcepoint DLP](connect-forcepoint-dlp.md)
@@ -93,6 +95,8 @@ Azure Sentinel 支援下列資料連線方法：
         - [AI Vectra Detect](connect-ai-vectra-detect.md)
         - [Check Point](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [Citrix WAF](connect-citrix-waf.md)
+        - [CyberArk Enterprise Password Vault](connect-cyberark.md)
         - [ExtraHop Reveal(x)](connect-extrahop.md)
         - [F5 ASM](connect-f5.md)
         - [Forcepoint 產品](connect-forcepoint-casb-ngfw.md)
@@ -101,6 +105,8 @@ Azure Sentinel 支援下列資料連線方法：
         - [One Identity Safeguard](connect-one-identity.md)
         - [Palo Alto Networks](connect-paloalto.md)
         - [趨勢科技 Deep Security](connect-trend-micro.md)
+        - [趨勢微 TippingPoint](connect-trend-micro-tippingpoint.md)
+        - [WireX 網路辯論平臺](connect-wirex-systems.md)
         - [Zscaler](connect-zscaler.md)
         - [其他以 CEF 為基礎的設備](connect-common-event-format.md)
     - **防火牆、proxy 和端點-Syslog：**
