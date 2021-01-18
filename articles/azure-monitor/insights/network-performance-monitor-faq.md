@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: dd6c6248fcdf30350daecaa4857a81447bbdb7a8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8e26a4d996e4c1767856b3dd98ae318d8992a89b
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280320"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562687"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>網路效能監控解決方案常見問題集
 
@@ -34,7 +34,7 @@ ms.locfileid: "93280320"
 - NPM 的 ExpressRoute 監控功能僅支援 Windows 伺服器 (2008 SP1 或更高版本) 作業系統。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>我可以在 NPM 中使用 Linux 機器作為監視節點嗎？
-使用以 Linux 為基礎的節點來監視網路的功能目前為預覽狀態。 在 [這裡](../../virtual-machines/extensions/oms-linux.md)存取代理程式。 若要深入了解，請連絡您的帳戶管理員。 Linux 代理程式的監控能力僅限於 NPM 的效能監控功能，不適用於「服務連線能力監視」和「ExpressRoute 監視」功能
+使用以 Linux 為基礎的節點來監視網路的功能現已正式推出。 在 [這裡](../../virtual-machines/extensions/oms-linux.md)存取代理程式。 Linux 代理程式的監控能力僅限於 NPM 的效能監控功能，不適用於「服務連線能力監視」和「ExpressRoute 監視」功能
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM 做為監控之用的節點的大小需求如何？
 若要在節點虛擬機器上執行 NPM 解決方案以監控網路，節點至少需要具有 500 MB 記憶體和一個核心。 您不需要使用個別節點來執行 NPM。 執行該解決方案的節點同時也可以執行其他工作負載。 如果解決方案使用超過5% 的 CPU，則解決方案有能力停止監視程式。
@@ -149,7 +149,7 @@ NetworkMonitoring
 NPM 只會識別來源 IP 和目的地 IP 之間的基礎網路躍點 (交換器、路由器、伺服器等) 的 IP 和主機名稱， 也也會識別這些已識別躍點之間的延遲， 但不會個別監控這些基礎躍點。
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>NPM 是否可用來監控 Azure 與 AWS 之間的網路連線？
-是。 如需詳細資料，請參閱[使用 NPM 監控 Azure、AWS 和內部部署網路](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)一文 (英文)。
+可以。 如需詳細資料，請參閱[使用 NPM 監控 Azure、AWS 和內部部署網路](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor)一文 (英文)。
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute 頻寬的用量是傳入還是傳出？
 頻寬用量是傳入和傳出頻寬的總和， 以位元/秒表示。

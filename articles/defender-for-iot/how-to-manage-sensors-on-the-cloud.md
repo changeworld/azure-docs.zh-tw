@@ -7,16 +7,16 @@ ms.author: shhazam
 ms.date: 12/27/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: a763d8b65049cd9f301379c2c038a1d799114653
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 427ea3884a3db6ba33405014435cf1f962670064
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838707"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562704"
 ---
 # <a name="onboard-and-manage-sensors-in-the-defender-for-iot-portal"></a>在 Defender for IoT 入口網站中上架及管理感應器
 
-本文說明如何在適用于 IoT 的 Defender 入口網站中上架、查看及管理感應器。
+本文說明如何在 [適用于 IoT 的 Defender 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)中上架、查看及管理感應器。
 
 ## <a name="onboard-sensors"></a>上線感應器
 
@@ -26,9 +26,9 @@ ms.locfileid: "97838707"
 
 註冊：
 
-1. 移至適用于 IoT 的 Defender 入口網站中的 [ **歡迎使用** ] 頁面。
+1. 移至 [適用于 IoT 的 Defender 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)中的 [**歡迎使用**] 頁面。
 1. 選取 [上 **架] 感應器**。
-1. 建立感應器名稱。 建議您將安裝的感應器 IP 位址納入為名稱的一部分，或使用容易辨識的名稱。 這可確保在適用于 IoT 的 Azure Defender 入口網站中的註冊名稱與感應器主控台中顯示的已部署感應器 IP 之間進行更輕鬆的追蹤和一致的命名。
+1. 建立感應器名稱。 建議您將安裝的感應器 IP 位址納入為名稱的一部分，或使用容易辨識的名稱。 這可確保在適用于 IoT 的 Azure [Defender 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) 中的註冊名稱與感應器主控台中顯示的已部署感應器 IP 之間進行更輕鬆的追蹤和一致的命名。
 1. 將感應器與 Azure 訂用帳戶產生關聯。
 1. 使用 [ **雲端連線** ] 切換來選擇感應器管理模式。 如果切換為開啟狀態，則感應器會連接到雲端。 如果切換為關閉，則感應器會在本機管理。
 
@@ -52,7 +52,7 @@ ms.locfileid: "97838707"
 
 ## <a name="view-onboarded-sensors"></a>查看上線感應器
 
-在適用于 IoT 的 Defender 入口網站上，您可以查看上線感應器的基本資訊。 
+在 [適用于 IoT 的 Defender 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)上，您可以查看上線感應器的基本資訊。 
 
 1. 選取 [ **網站和感應器**]。
 1. 在 [ **網站和感應器** ] 頁面上，使用篩選和搜尋工具來尋找您所需的感應器資訊。
@@ -66,7 +66,7 @@ ms.locfileid: "97838707"
 
 ## <a name="manage-onboarded-sensors"></a>管理上線感應器
 
-您可以使用適用于 IoT 的 Defender 入口網站進行與感應器相關的管理工作。
+您可以使用適用于 [IoT 的 Defender 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started) 進行與感應器相關的管理工作。
 
 ### <a name="export"></a>匯出
 
@@ -89,7 +89,7 @@ ms.locfileid: "97838707"
 
 您可能會想要更新您的感應器管理所在的模式。 例如：
 
-- **在連線到雲端的模式下工作，而不是在本機管理模式**：若要這樣做，請使用雲端連線感應器的啟用檔案，更新本機連線感應器的啟用檔。 重新啟用之後，感應器偵測會顯示在 IoT 入口網站的感應器和 Defender 中。 順利上傳重新啟用檔案之後，會將新偵測到的警示資訊傳送至 Azure。
+- **在連線到雲端的模式下工作，而不是在本機管理模式**：若要這樣做，請使用雲端連線感應器的啟用檔案，更新本機連線感應器的啟用檔。 重新啟用之後，感應器偵測會顯示在 [IoT 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)的感應器和 Defender 中。 順利上傳重新啟用檔案之後，會將新偵測到的警示資訊傳送至 Azure。
 
 - **在本機連線模式下工作，而不是連線到雲端的模式**：若要這樣做，請使用本機受管理感應器的啟用檔案，更新連線到雲端的感應器的啟用檔案。 重新啟用之後，感應器偵測資訊只會顯示在感應器中。
 
@@ -97,7 +97,7 @@ ms.locfileid: "97838707"
 
 若要重新啟用感應器：
 
-1. 前往 IoT 入口網站 Defender 上的 [ **網站和感應器** ] 頁面。
+1. 前往 [IoT 入口網站 Defender](https://portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)上的 [**網站和感應器**] 頁面。
 
 2. 選取您要上傳新啟用檔案的感應器。
 
@@ -119,4 +119,4 @@ ms.locfileid: "97838707"
 
 ## <a name="see-also"></a>請參閱
 
-[啟用並設定您的感應器](how-to-activate-and-set-up-your-sensor.md)
+[啟用和設定感應器](how-to-activate-and-set-up-your-sensor.md)

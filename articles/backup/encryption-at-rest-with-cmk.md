@@ -3,12 +3,12 @@ title: 使用客戶管理的金鑰來加密備份資料
 description: 瞭解 Azure 備份如何讓您使用客戶管理的金鑰 (CMK) 來加密備份資料。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: cc6ad2f67b84bcd62bcc18566a4ac5d159ea32c4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197731"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562755"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
 
@@ -37,7 +37,10 @@ Azure 備份可讓您使用客戶管理的金鑰 (CMK) 來加密備份資料，�
 
 - 目前不支援在資源群組和訂用帳戶之間移動 CMK 加密的復原服務保存庫。
 
-- 這項功能目前僅可從 Azure 入口網站設定。
+- 這項功能可以透過 Azure 入口網站和 PowerShell 來設定。
+
+    >[!NOTE]
+    >使用 Az module 5.3.0 或更高版本，將客戶管理的金鑰用於復原服務保存庫中的備份。
 
 如果您尚未建立並設定您的復原服務保存庫，您可以在 [這裡閱讀如何進行](backup-create-rs-vault.md)。
 
@@ -62,6 +65,8 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 >[!NOTE]
 >啟用之後，就 **不** 能 (停用受控識別，即使暫時) 也是如此。 停用受控身分識別可能會導致不一致的行為。
 
+**在入口網站中：**
+
 1. 移至您的復原服務保存庫-> 身分 **識別**
 
     ![身分識別設定](./media/encryption-at-rest-with-cmk/managed-identity.png)
@@ -70,9 +75,33 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 1. 系統會產生物件識別碼，也就是系統指派的保存庫受控識別。
 
+**使用 PowerShell：**
+
+使用 [>new-azrecoveryservicesvault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) 命令為復原服務保存庫啟用系統指派的受控識別。
+
+範例：
+
+```AzurePowerShell
+$vault=Get-AzRecoveryServicesVault -ResourceGroupName "testrg" -Name "testvault"
+
+Update-AzRecoveryServicesVault -IdentityType SystemAssigned -VaultId $vault.ID
+
+$vault.Identity | fl
+```
+
+輸出：
+
+```output
+PrincipalId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Type        : SystemAssigned
+```
+
 ### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>將許可權指派給復原服務保存庫，以存取 Azure Key Vault 中的加密金鑰
 
 您現在需要允許復原服務保存庫存取包含加密金鑰的 Azure Key Vault。 這是藉由允許復原服務保存庫的受控識別來存取 Key Vault 來完成。
+
+**在入口網站中**：
 
 1. 移至您的 Azure Key Vault > **存取原則**。 繼續前往 **+ 新增存取原則**。
 
@@ -89,6 +118,32 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 1. 完成之後，請 **選取 [新增]** 以新增新的存取原則。
 
 1. 選取 [ **儲存** ] 以儲存對 Azure Key Vault 存取原則所做的變更。
+
+**使用 PowerShell**：
+
+使用 [AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) 命令可使用客戶管理的金鑰來啟用加密，以及指派或更新要使用的加密金鑰。
+
+範例：
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+輸出：
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>啟用 Azure Key Vault 的虛刪除和清除保護
 
@@ -220,6 +275,8 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 #### <a name="select-a-disk-encryption-set-while-restoring-from-vault-recovery-point"></a>從保存庫復原點還原時，請選取磁片加密集
 
+**在入口網站中**：
+
 磁片加密集是在 [還原] 窗格的 [加密設定] 下指定，如下所示：
 
 1. 在 [ **加密磁片 (s]) 使用您的金鑰**，請選取 **[是]**。
@@ -230,6 +287,21 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 >如果您要還原使用 Azure 磁碟加密的 VM，就無法在還原時選擇 DES。
 
 ![使用您的金鑰將磁片加密](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
+
+**使用 PowerShell**：
+
+使用 [>backup-azrecoveryservicesbackupitem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) 命令搭配參數 [ `-DiskEncryptionSetId <string>` ]，以 [指定](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) 要用來加密復原磁碟的 DES。 如需從 VM 備份復原磁碟的詳細資訊，請參閱 [這篇文章](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm)。
+
+範例：
+
+```azurepowershell
+$namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
+$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
+$startDate = (Get-Date).AddDays(-7)
+$endDate = Get-Date
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $vault.ID
+$restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -DiskEncryptionSetId “testdes1” -VaultId $vault.ID
+```
 
 #### <a name="restoring-files"></a>還原檔案
 

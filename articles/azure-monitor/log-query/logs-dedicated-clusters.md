@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831766"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562670"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure 監視器記錄專用叢集
 
@@ -29,7 +29,7 @@ Azure 監視器記錄專用叢集是部署選項，可為 Azure 監視器記錄�
 > [!IMPORTANT]
 > 專用叢集已獲得核准，而且可在生產環境部署中完全支援。 不過，由於暫時的容量限制，我們需要預先註冊才能使用此功能。 請透過 Microsoft 連絡人提供訂用帳戶識別碼。
 
-## <a name="management"></a>管理 
+## <a name="management"></a>管理性 
 
 專用叢集是透過代表 Azure 監視器記錄叢集的 Azure 資源來管理。 所有作業都是使用 PowerShell 或 REST API 在此資源上完成。
 
@@ -58,7 +58,7 @@ Log Analytics 專用叢集會使用至少 1000 GB/天的容量保留定價模型
 
 ## <a name="asynchronous-operations-and-status-check"></a>非同步作業和狀態檢查
 
-部分設定步驟會以非同步方式執行，因為它們無法快速完成。 回應中的狀態可以是下列其中一項：「InProgress」、「更新」、「刪除」、「成功」或「失敗」，包括錯誤碼。 使用 REST 時，回應一開始會傳回 HTTP 狀態碼 200 (確定) 和標頭，並在接受時使用 Azure-AsyncOperation 屬性：
+部分設定步驟會以非同步方式執行，因為它們無法快速完成。 回應中的狀態可以是下列其中一項：「InProgress」、「更新」、「刪除」、「成功」或「失敗」，包括錯誤碼。 使用 REST 時，回應一開始會傳回 HTTP 狀態碼 202 (接受的) 和標頭與 Azure-AsyncOperation 屬性：
 
 ```JSON
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -125,7 +125,7 @@ Content-type: application/json
 
 *回應*
 
-應該是 200 OK 和標頭。
+應為 202 (接受的) 和標頭。
 
 ### <a name="check-cluster-provisioning-status"></a>檢查叢集布建狀態
 
@@ -229,7 +229,7 @@ Content-type: application/json
 
 *回應*
 
-200 確定和標頭。
+202 (已接受) 和標頭。
 
 ### <a name="check-workspace-link-status"></a>檢查工作區連結狀態
   

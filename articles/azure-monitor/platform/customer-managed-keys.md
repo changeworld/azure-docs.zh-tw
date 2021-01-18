@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127204"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562738"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -83,11 +83,11 @@ Azure 監視器使用受控識別將存取權授與您的 Azure Key Vault。 叢
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-不適用
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-不適用
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -95,7 +95,7 @@ N/A
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-使用 REST 時，回應一開始會傳回 HTTP 狀態碼 200 (確定) 和標頭，並在接受時使用 *Azure AsyncOperation* 屬性：
+使用 REST 時，回應一開始會傳回 HTTP 狀態碼 202 (接受的) 和標頭與 *Azure AsyncOperation* 屬性：
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -160,7 +160,7 @@ Authorization: Bearer <token>
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-不適用
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -200,7 +200,7 @@ Content-type: application/json
 1. 從回應複製 Azure-AsyncOperation URL 值，並遵循[非同步作業狀態檢查](#asynchronous-operations-and-status-check)。
 2. 在叢集中傳送 GET 要求，並查看 *KeyVaultProperties* 屬性。 您最近更新的金鑰應該會在回應中傳回。
 
-當金鑰更新完成時，GET 要求的回應應該如下所示：200確定和標頭
+當金鑰更新完成時，GET 要求的回應應該如下所示： 202 (接受) 和標頭
 ```json
 {
   "identity": {
@@ -283,7 +283,7 @@ Log Analytics 中使用的查詢語言是可表達的，且可以包含您新增
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-不適用
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -327,7 +327,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-不適用
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
