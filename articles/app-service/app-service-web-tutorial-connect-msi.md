@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 1f6757a9f78e3c400d92fd65a0795ceae7570c99
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f043f7ed63353dcb9cf9fd26690da97b902f32a6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347569"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108614"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
@@ -229,6 +229,9 @@ GO
 > [!NOTE]
 > 受控識別的後端服務也會[維護權杖快取](overview-managed-identity.md#obtain-tokens-for-azure-resources)，只有當目標資源過期時，才會更新其權杖。 如果您在設定 SQL Database 權限時發生錯誤，並在嘗試透過應用程式取得權杖 *之後* 嘗試修改權限，則在快取的權杖過期前，您實際上不會取得具有更新權限的新權杖。
 
+> [!NOTE]
+> 內部部署 SQL Server 不支援 AAD，這包括 MSI。 
+
 ### <a name="modify-connection-string"></a>修改連接字串
 
 請記住，您在 Web.config 或 appsettings.json 中所做的相同變更也適用於受控識別，因此您唯一要做的，就是在 App Service 中移除現有的連接字串，也就是 Visual Studio 在第一次部署您的應用程式時建立的字串。 使用下列命令，但將 *\<app-name>* 取代為您的應用程式名稱。
@@ -251,7 +254,7 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 當新的網頁顯示待辦事項清單時，表示應用程式正使用受控識別連線到資料庫。

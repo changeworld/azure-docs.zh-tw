@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 4531d68c2fbd0698c33d70a75bb82ac9c7f52f49
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 944d867ef888e70faa659adcc0e2d4c02f003c97
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752238"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567404"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>探索、評量和相依性分析-常見問題
 
@@ -46,7 +46,8 @@ ms.locfileid: "96752238"
 進行「以效能為基礎的」評量時，當 Azure Migrate 設備無法收集內部部署 VM 的效能資料時，評量報告匯出會顯示 'PercentageOfCoresUtilizedMissing' 或 'PercentageOfMemoryUtilizedMissing'。 請檢查：
 
 - VM 在您建立評量的持續時間內是否開啟電源
-- 如果只有記憶體計數器遺失，而且您想要評估 Hyper-V VM，那麼請檢查您是否已在這些 VM 上啟用動態記憶體。 目前有已知問題導致 Azure Migrate 設備無法對此類 VM 收集記憶體使用量。
+- 如果只遺失記憶體計數器，而您想要評估 Hyper-v Vm。 在此案例中，請在 Vm 上啟用動態記憶體，然後「重新計算」評量以反映最新的變更。 只有當 VM 已啟用動態記憶體時，設備才能收集 Hyper-v Vm 的記憶體使用量值。
+
 - 如果所有的效能計數器都遺失，請確定允許埠 443 (HTTPS) 的輸出連線。
 
 注意：如果遺漏任何效能計數器，則 Azure Migrate：伺服器評量會回復為已配置的內部部署核心/記憶體，並據此建議 VM 大小。
@@ -57,7 +58,12 @@ ms.locfileid: "96752238"
 
 - 您未針對正在建立評量的持續時間剖析環境。 例如，如果您要建立將效能持續時間設定為一週的評量，您需要至少等待一週後再開始探索，才能收集到所有資料點。 如果您無法等待該持續時間，請將效能持續時間變更為較短的期間，並「重新計算」評量。
  
-- 伺服器評定無法收集評定期間內部分或所有 Vm 的效能資料。 請檢查 VM 在評估期間內是否開啟電源，並允許連接埠 443 上的輸出連線。 針對 Hyper-V VM，如果啟用了動態記憶體，記憶體計數器將會遺失，因而導致信賴評等偏低。 請「重新計算」評量，以反映信賴評等的最新變更。 
+- 伺服器評定無法收集評定期間內部分或所有 Vm 的效能資料。 如需高信賴評等，請確定： 
+    - Vm 在評量期間已開啟電源
+    - 允許埠443上的輸出連接
+    - 若為 Hyper-v Vm，則會啟用動態記憶體 
+
+    請「重新計算」評量，以反映信賴評等的最新變更。
 
 - 有少數 VM 是在伺服器評量中的探索啟動後建立的。 例如，如果您要建立過去一個月的效能記錄評量，但是少數虛擬機器在一週前才建立在環境中。 在此情況下，將無法取得新的 VM 在這整段期間內的效能資料，且信賴評等將會偏低。
 
@@ -145,7 +151,7 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 --- | --- | ---
 支援 | 此選項目前為預覽狀態，且僅適用于 VMware Vm。 [檢查](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 支援的作業系統。 | 公開上市 (GA) 。
 代理程式 | 不需要在您想要交叉檢查的機器上安裝代理程式。 | 要在每個您想要分析的內部部署機器上安裝的代理程式： [Microsoft Monitoring agent (MMA) ](../azure-monitor/platform/agent-windows.md)和 [Dependency agent](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
-先決條件 | [檢查](concepts-dependency-visualization.md#agentless-analysis) 必要條件和部署需求。 | [檢查](concepts-dependency-visualization.md#agent-based-analysis) 必要條件和部署需求。
+Prerequisites | [檢查](concepts-dependency-visualization.md#agentless-analysis) 必要條件和部署需求。 | [檢查](concepts-dependency-visualization.md#agent-based-analysis) 必要條件和部署需求。
 Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)中的[服務對應](../azure-monitor/insights/service-map.md)解決方案來實現相依性視覺效果。 [深入了解](concepts-dependency-visualization.md#agent-based-analysis)。
 運作方式 | 在啟用相依性視覺效果的電腦上捕獲 TCP 連接資料。 探索之後，會依五分鐘的間隔收集資料。 | 電腦上安裝的服務對應代理程式會收集有關每個處理常式的 TCP 程式和輸入/輸出連接的資料。
 資料 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集並提供 Log Analytics 查詢的連線、延遲和資料傳輸資訊的數目。 
@@ -159,7 +165,7 @@ Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](.
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>相依性視覺效果需要付費嗎？
 
-不會。 深入瞭解 [Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
+否。 深入瞭解 [Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>我要針對以代理程式為基礎的相依性視覺效果安裝什麼？
 

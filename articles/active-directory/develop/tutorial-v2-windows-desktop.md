@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5fb7c0df653048adcffceda4d8a384be823b5c3a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0d759b3af097067ba0c9215b65b212d50474d571
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507688"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178342"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>教學課程：從 Windows 傳統型應用程式呼叫 Microsoft 圖形 API
 
@@ -97,14 +97,14 @@ MSAL 會為您管理快取和重新整理存取權杖，因此您的應用程式
 ### <a name="option-1-express-mode"></a>選項 1：快速模式
 
 執行下列動作，即可快速註冊您的應用程式：
-1. 移至 [Azure 入口網站 - 應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs)。
+1. 移至 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure 入口網站 - 應用程式註冊<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入門體驗。
 1. 輸入應用程式的名稱，並選取 [註冊]  。
 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 
 ### <a name="option-2-advanced-mode"></a>選項 2：進階模式
 
 若要註冊您的應用程式並將應用程式註冊資訊新增到您的解決方案，請執行下列作業：
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。

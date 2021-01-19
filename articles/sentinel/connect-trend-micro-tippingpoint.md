@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 549b4e1e5e1aef3f6957fa52d69d252c55934286
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: 989520e079988e1821d8bb9a936f857e1f62c11a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541551"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567766"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>將您的趨勢微 TippingPoint 解決方案連線至 Azure Sentinel
 
@@ -32,7 +32,7 @@ ms.locfileid: "98541551"
 > [!NOTE]
 > 資料會儲存在您執行 Azure Sentinel 之工作區的地理位置。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 您必須擁有 Azure Sentinel 工作區的讀取和寫入權限。
 
@@ -48,15 +48,15 @@ ms.locfileid: "98541551"
 
 1. 遵循 [**說明**] 索引標籤的 [**設定：**
 
-    1. **1. Linux Syslog 代理程式** 設定-如果您還沒有執行中的記錄轉寄站，或需要另一個記錄轉寄站，請執行此步驟。 如需詳細的指示和說明，請參閱 Azure Sentinel 檔中的 [步驟1：部署記錄](connect-cef-agent.md) 轉寄站。
+    1. 小於 **1。Linux Syslog 代理程式** 設定-如果您還沒有執行中的記錄轉寄站，或您需要另一個記錄轉寄站，請執行此步驟。 如需詳細的指示和說明，請參閱 Azure Sentinel 檔中的 [步驟1：部署記錄](connect-cef-agent.md) 轉寄站。
 
-    1. **2. 轉寄 Trend 微 TIPPINGPOINT SMS 記錄到 Syslog 代理** 程式-此設定應包含下列元素：
+    1. 在 **2。將 Trend 微 TippingPoint SMS 記錄轉送到 Syslog 代理** 程式-此設定應包含下列元素：
         - 記錄目的地–記錄轉送伺服器的主機名稱和/或 IP 位址
         - 通訊協定和埠– **TCP 514** (如果另有建議，請務必在記錄轉送伺服器上的 syslog daemon 進行平行變更) 
         - 記錄格式– **ARCSIGHT CEF 格式 4.2**
         - 記錄檔類型–全部可用
 
-    1. **3. 驗證連接** -在 [連接器] 頁面上複製命令並在記錄轉寄站上執行命令，以驗證資料內嵌。 如需詳細的指示和說明，請參閱 Azure Sentinel 檔中的 [步驟3：驗證連接](connect-cef-verify.md) 。
+    1. 在 **3。驗證連接** ：在 [連接器] 頁面上複製命令並在記錄轉寄站上執行命令，以驗證資料內嵌。 如需詳細的指示和說明，請參閱 Azure Sentinel 檔中的 [步驟3：驗證連接](connect-cef-verify.md) 。
 
         最多可能需要20分鐘的時間，記錄才會出現在 Log Analytics 中。
 

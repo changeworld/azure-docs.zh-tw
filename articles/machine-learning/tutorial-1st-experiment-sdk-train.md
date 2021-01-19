@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: df511e79b73256833ec54c5906bb6acbc852bc46
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: b1fa4d3e6c017232922e500352558e34726b90cc
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739615"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183076"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>教學課程：訓練您的第一個機器學習模型 (第 3 部分，共 4 個部分)
 
@@ -40,10 +40,8 @@ ms.locfileid: "97739615"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 完成系列的[第 2 部分](tutorial-1st-experiment-hello-world.md)。
-* Python 語言和機器學習工作流程的簡介知識。
-* Visual Studio Code、Jupyter 或 PyCharm 等本機開發環境。
-* Python (版本 3.5 至 3.7)。
+- 管理 Python 虛擬環境及安裝套件的 [Anaconda](https://www.anaconda.com/download/) 或 [Miniconda](https://www.anaconda.com/download/)。
+- 完成系列的[第 1 部分](tutorial-1st-experiment-sdk-setup-local.md)和[第 2 部分](tutorial-1st-experiment-hello-world.md)。
 
 ## <a name="create-training-scripts"></a>建立訓練指令碼
 
@@ -77,9 +75,7 @@ tutorial
 > [!div class="nextstepaction"]
 > [我已建立訓練指令碼](?success=create-scripts#environment) [我遇到問題](https://www.research.net/r/7CTJQQN?issue=create-scripts)
 
-## <a name="create-a-python-environment"></a><a name="environment"></a> 建立 Python 環境
-
-基於示範目的，我們即將使用 Conda 環境。 (Pip 虛擬環境的步驟幾乎完全相同。)
+## <a name="create-a-new-python-environment"></a><a name="environment"></a> 建立新 Python 環境
 
 在 `.azureml` 隱藏目錄中，建立稱為 `pytorch-env.yml` 的檔案：
 
@@ -92,18 +88,19 @@ tutorial
 
 ## <a name="test-locally"></a><a name="test-local"></a> 本機測試
 
-使用下列程式碼，在此環境中測試您在本機執行的程式碼：
+在終端機或 Anaconda 提示字元視窗中，使用下列程式碼，在新環境中測試您的指令碼。  
 
 ```bash
-conda env create -f .azureml/pytorch-env.yml    # create conda environment
-conda activate pytorch-env                      # activate conda environment
+conda deactivate                                # If you are still using the tutorial environment, exit it
+conda env create -f .azureml/pytorch-env.yml    # create the new Conda environment
+conda activate pytorch-env                      # activate new Conda environment
 python src/train.py                             # train model
 ```
 
 執行此指令碼之後，您會看到資料下載到名為 `tutorial/data` 的目錄中。
 
 > [!div class="nextstepaction"]
-> [我已建立環境檔案](?success=test-local#create-local) [我遇到問題](https://www.research.net/r/7CTJQQN?issue=test-local)
+> [我已在本機執行程式碼](?success=test-local#create-local) [我遇到問題](https://www.research.net/r/7CTJQQN?issue=test-local)
 
 ## <a name="create-the-control-script"></a><a name="create-local"></a> 建立控制項指令碼
 
@@ -163,11 +160,11 @@ if __name__ == "__main__":
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> 將執行提交至 Azure Machine Learning
 
-如果您已切換本機環境，請務必切回已安裝 Azure Machine Learning SDK for Python 的環境。
-
-然後執行：
+請務必切回已安裝 Azure Machine Learning SDK for Python 的「教學課程」環境。 因為訓練程式碼不是在您的電腦上執行，所以不需要安裝 PyTorch。  但是，您需要「教學課程」環境中的 `azureml-sdk`。
 
 ```bash
+conda deactivate
+conda activate tutorial
 python 04-run-pytorch.py
 ```
 

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: fb1ec55bc68ccc323f8dee90982a9169e3085219
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752068"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567648"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>建立 (AVS) 評量的 Azure VMware 解決方案
 
@@ -19,7 +19,7 @@ ms.locfileid: "96752068"
 
 [Azure Migrate](migrate-services-overview.md) 可協助您遷移至 Azure。 Azure Migrate 能提供集中式的中樞，以追蹤針對 Azure 的內部部署基礎結構、應用程式與資料的探索、評量及移轉。 該中樞能提供 Azure 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 供應項目。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 請確定您已 [建立](./create-manage-projects.md) Azure Migrate 專案。
 - 如果您已建立專案，請確定您已 [新增](how-to-assess.md) Azure Migrate：伺服器評定工具。
@@ -58,27 +58,29 @@ ms.locfileid: "96752068"
 
     ![螢幕擷取畫面顯示在 [評量工具] 底下選取 [評定] Azure Migrate 伺服器。](./media/how-to-create-assessment/assess.png)
 
-3. 在 [ **評估伺服器**] 中，選取 [Azure VMware SOLUTION (AVS) ] 的評量類型，選取探索來源並指定評定名稱。
+3. 在 [ **評估伺服器**] 中，選取 [Azure VMware SOLUTION (AVS) ] 的評量類型，然後選取 [探索來源]。
 
-    ![評量基本概念](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/assess-servers-avs.png" alt-text="新增評量基本概念":::
 
-4. 按一下 [檢視全部] 來檢閱評估屬性。
+4. 按一下 [ **編輯** ] 以檢查評量屬性。
 
-    ![AVS 評量屬性](./media/how-to-create-avs-assessment/avs-view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="查看評量屬性的 [編輯] 按鈕位置":::
 
-5. 按一下 [下一步] 以 **選取要評量的機器**。 在 [選取或建立群組] 中，選取 [新建]，然後指定群組名稱。 群組會將一或多個 VM 收集在一起以進行評估。
+1. 在 [**選取要評估** 評量的電腦]  >   > 指定評量的名稱。 
+ 
+1. 在 [ **選取或建立群組** ] > 選取 [ **建立新** 的]，並指定組名。 群組會將一或多個 VM 收集在一起以進行評估。
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="將 VM 新增至群組":::
 
-6. 在 [將機器新增至群組] 中，選取要新增至群組的 VM。
+1. 在 [將機器新增至群組] 中，選取要新增至群組的 VM。
 
-7. 按一下 下一步 以 **檢閱+ 建立評量** 來檢閱評量詳細資料。
+1. 按一下 下一步 以 **檢閱+ 建立評量** 來檢閱評量詳細資料。
 
-8. 按一下 [建立評估] 以建立群組，然後執行評估。
+1. 按一下 [建立評估] 以建立群組，然後執行評估。
 
-    ![建立 AVS 評量](./media/how-to-create-avs-assessment/avs-assessment-create.png)
+1. 評量建立好之後，可在 [伺服器] >  **[Azure Migrate：伺服器評量]**  > [評量] 中加以檢視。
 
-9. 評量建立好之後，可在 [伺服器] >  **[Azure Migrate：伺服器評量]**  > [評量] 中加以檢視。
-
-10. 按一下 [匯出評估]，將其下載為 Excel 檔案。
+1. 按一下 [匯出評估]，將其下載為 Excel 檔案。
 
 
 ## <a name="review-an-azure-vmware-solution-avs-assessment"></a>複習 (AVS) 評量的 Azure VMware 解決方案
@@ -88,6 +90,8 @@ ms.locfileid: "96752068"
 - **Azure VMware 解決方案 (avs) 準備**：內部部署 vm 是否適合遷移至 Azure VMware SOLUTION (AVS) 。
 - **Avs 節點數目**：執行 vm 所需的最少 avs 節點數目。
 - **跨 AVS 節點的使用率**：所有節點的預計 CPU、記憶體和儲存體使用率。
+    - 使用方式包括在下列叢集管理負荷（例如 vCenter Server、NSX Manager (大型) 、NSX Edge）中預先分解，如果 HCX 也部署，則 HCX 管理員和 IX 設備耗用 ~ 44vCPU (11 CPU) 、75GB RAM 和在壓縮和重復資料刪除之前的儲存722GB。
+    - 記憶體、重複配置和壓縮目前設定為100% 的記憶體使用率和1.5 重複使用和壓縮，這會是未來版本中使用者定義的輸入，讓使用者能夠微調其所需的大小。
 - **每月成本估計**：所有 Azure VMware 解決方案的每月預估成本 (AVS) 執行內部部署 vm 的節點。
 
 
@@ -97,7 +101,7 @@ ms.locfileid: "96752068"
 
 2. 在 [評量] 中，按一下評量來加以開啟。
 
-    ![AVS 評估摘要](./media/how-to-create-avs-assessment/avs-assessment-summary.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/avs-assessment-summary.png" alt-text="AVS 評估摘要":::
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>複習 Azure VMware Solution (AVS) 準備
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509422"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015941"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>教學課程：建置會使用 Microsoft 身分識別平台的多租用戶精靈
 
@@ -93,7 +93,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="choose-the-azure-ad-tenant"></a>選擇 Azure AD 租用戶
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 
 
@@ -203,7 +203,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>建立 dotnet-web-daemon-v2 並將其發佈至 Azure 網站
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 在左上角，選取 [建立資源]。
 1. 選取 [Web] > [Web 應用程式]，然後為網站提供名稱。 例如，將網站命名為 **dotnet-web-daemon-v2-contoso.azurewebsites.net**。
 1. 選取 [訂用帳戶]、[資源群組] 和 [App Service 方案和位置] 的資訊。 [OS] 是 [Windows]，[發佈] 則是 [程式碼]。
@@ -224,7 +224,7 @@ Visual Studio 會發佈專案，並自動開啟瀏覽器並導向至專案的 UR
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>更新 dotnet-web-daemon-v2 的 Azure AD 租用戶應用程式註冊
 
-1. 回到 [Azure 入口網站](https://portal.azure.com)。
+1. 回到 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 在左窗格中，選取 [Azure Active Directory] 服務，然後選取 [應用程式註冊]。
 1. 選取 **dotnet-web-daemon-v2** 應用程式。
 1. 在您應用程式的 [驗證] 頁面上，以您的服務位址更新 [登出 URL] 欄位。 例如，使用 `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`。

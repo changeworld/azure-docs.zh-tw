@@ -4,12 +4,12 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b4bd64fb00c2f341e474ecb96738fab47d717474
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831664"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567139"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -188,7 +188,7 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 如果在執行檔案還原腳本之後，檔案復原程式停止回應 (例如，如果磁片從未裝載或已掛接，但磁片區未出現) ，請執行下列步驟：
 
 1. 在檔案 /etc/iscsi/iscsid.conf 中，將設定從：
-    - `node.conn[0].timeo.noop_out_timeout = 5`  自 `node.conn[0].timeo.noop_out_timeout = 30`
+    - `node.conn[0].timeo.noop_out_timeout = 5`  自 `node.conn[0].timeo.noop_out_timeout = 120`
 2. 進行上述變更之後，請重新執行腳本。 如果發生暫時性失敗，請確定重新執行時間之間有20到30分鐘的間隔，以避免連續的要求激增，進而影響目標準備。 重新執行之間的間隔可確保目標已準備好從腳本連接。
 3. 在檔案復原之後，請務必返回入口網站，並針對無法裝載磁片區的復原點選取 [ **卸載磁片** ]。 基本上，此步驟將會清除任何現有的程序/工作階段，並增加復原的機會。
 

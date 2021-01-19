@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509456"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064414"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>教學課程：自通用 Windows 平台 (UWP) 應用程式呼叫 Microsoft Graph API
 
@@ -50,7 +50,7 @@ ms.locfileid: "97509456"
 
 |程式庫|描述|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft 驗證程式庫|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft 驗證程式庫|
 |[Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph 用戶端程式庫|
 
 ## <a name="set-up-your-project"></a>設定專案
@@ -71,7 +71,7 @@ ms.locfileid: "97509456"
 
    ![最低和目標版本](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>將 Microsoft 驗證程式庫新增至您的專案
+### <a name="add-the-microsoft-authentication-library-to-your-project"></a>將 Microsoft 驗證程式庫新增至您的專案
 
 1. 在 Visual Studio 中，選取 [工具] >  [NuGet 套件管理員] >  [套件管理員主控台]。
 1. 在 [套件管理器主控台] 視窗中，複製並貼上下列命令：
@@ -103,7 +103,7 @@ Visual Studio 會在專案範本中建立 *MainPage.xaml*。 開啟此檔案，�
 </Grid>
 ```
 
-### <a name="use-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft Authentication Library 取得 Microsoft Graph API 的權杖
+### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft Authentication Library 取得 Microsoft Graph API 的權杖
 
 本節說明如何使用 Microsoft Authentication Library 取得 Microsoft Graph API 的權杖。 變更 *MainPage.xaml.cs* 檔案。
 
@@ -346,7 +346,7 @@ private async Task DisplayMessageAsync(string message)
 
 您現在需要註冊您的應用程式：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
 1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
@@ -357,7 +357,7 @@ private async Task DisplayMessageAsync(string message)
 
 設定應用程式的驗證：
 
-1. 回到 [Azure 入口網站](https://portal.azure.com)，在 **管理** 底下，選取 [驗證] > [新增平台]，然後選取 [行動和桌面應用程式]。
+1. 回到 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站 <span class="docon docon-navigate-external x-hidden-focus"></span></a>，在 **管理** 底下，選取 [驗證] > [新增平台]，然後選取 [行動和桌面應用程式]。
 1. 在 [重新導向 URI] 區段中檢查 **https://login.microsoftonline.com/common/oauth2/nativeclient** 。
 1. 選取 [設定] 。
 

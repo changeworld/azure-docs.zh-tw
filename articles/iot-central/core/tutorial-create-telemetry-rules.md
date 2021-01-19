@@ -3,16 +3,16 @@ title: 教學課程 - 在 Azure IoT Central 應用程式中建立和管理規則
 description: 本教學課程說明 Azure IoT Central 規則如何讓您近乎即時地監視裝置，以及在觸發規則時自動叫用動作，例如傳送電子郵件。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/16/2020
+ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6d49e3585460c95ca931f497a63cbc281aed1db1
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 6be49ec3777b4bcaa033a60546e95711090662a4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990967"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065281"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>教學課程：在 Azure IoT Central 應用程式中建立規則和設定通知
 
@@ -39,6 +39,9 @@ ms.locfileid: "94990967"
 
 若要建立遙測規則，裝置範本必須至少包含一個遙測值。 本教學課程會使用模擬的 **感應器控制器** 裝置，傳送溫度和濕度遙測資料。 在[將模擬裝置新增至 IoT Central 應用程式](./quick-create-simulated-device.md)快速入門中，會新增此裝置範本，並建立模擬裝置。 此規則會監視裝置所報告的遙測，並在裝置溫度超過 70 度時傳送電子郵件。
 
+> [!NOTE]
+> 每個應用程式有 50 個規則的限制。
+
 1. 在左側窗格中，選取 [規則]  。
 
 1. 如果尚未建立任何規則，則會看到下列畫面：
@@ -47,7 +50,7 @@ ms.locfileid: "94990967"
 
 1. 選取 [+ 新增] 以新增規則。
 
-1. 輸入「溫度監視器」  作為用以識別規則的的名稱，並按下 Enter。
+1. 輸入「溫度監視器」作為用以識別規則的名稱，並按下 Enter。
 
 1. 選取 [感應器控制器] 裝置範本。 此規則預設會自動套用到與裝置範本建立關聯的所有裝置。 若要篩選裝置的子集，請選取 [+ 篩選]  並利用裝置屬性來識別裝置。 若要停用規則，請切換 [啟用/停用] 按鈕：
 
@@ -115,4 +118,4 @@ ms.locfileid: "94990967"
 現在，您已定義以臨界值為基礎的規則，建議您接下來學習：
 
 > [!div class="nextstepaction"]
-> [設定連續資料匯出](./howto-export-data.md)。
+> [建立規則的 Webhook](./howto-create-webhooks.md)。

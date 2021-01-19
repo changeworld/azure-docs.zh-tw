@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 79fe821e2da494ab8c9e4cb407e2c2b025f75568
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b7d14ee321a1160420d106151276ae6aef513c5b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169098"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064397"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>教學課程：使用授權碼流程來登入使用者，並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
@@ -360,7 +360,7 @@ graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
 graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages"
 ```
 
-## <a name="use-microsoft-authentication-library-msal-to-sign-in-user"></a>使用 Microsoft 驗證程式庫 (MSAL) 來登入使用者
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-user"></a>使用 Microsoft 驗證程式庫 (MSAL) 來登入使用者
 
 ### <a name="pop-up"></a>快顯
 

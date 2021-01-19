@@ -1,7 +1,7 @@
 ---
 title: 教學課程：使用筆記本建立預測模型 (第 1 部分，共 2 部分)
 titleSuffix: Azure Machine Learning
-description: 了解如何在 Jupyter Notebook 中使用程式碼來建置和部署機器學習模型。 您可以使用模型來預測 Microsoft Power BI 中的結果。
+description: 了解如何在 Jupyter Notebook 中使用程式碼來建置和部署機器學習模型。 此外，建立評分指令碼來定義輸入和輸出，以便與 Microsoft Power BI 輕鬆整合。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 29b340448f3ce3e18a649065bdcd0b335bab8b73
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814766"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108240"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>教學課程：Power BI 整合 - 使用 Jupyter Notebook 建立預測模型 (第 1 部分，共 2 部分)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>教學課程：Power BI 整合 - 使用 Jupyter Notebook 建立預測模型 (第 1 部分，共 2 部分)
 
-在本教學課程的第 1 部分中，您會使用 Jupyter Notebook 中的程式碼來訓練和部署預測性機器學習模型。 在第 2 部分中，您將使用模型來預測 Microsoft Power BI 中的結果。
+在本教學課程的第 1 部分中，您會使用 Jupyter Notebook 中的程式碼來訓練和部署預測性機器學習模型。 您也會建立評分指令碼來定義模型的輸入和輸出架構，以便整合到 Power BI 中。  在第 2 部分中，您將使用模型來預測 Microsoft Power BI 中的結果。
 
 在本教學課程中，您：
 
@@ -27,6 +27,7 @@ ms.locfileid: "97814766"
 > * 建立 Jupyter Notebook。
 > * 建立 Azure Machine Learning 計算執行個體。
 > * 使用 scikit-learn 訓練迴歸模型。
+> * 寫入評分指令碼來定義輸入和輸出，以便與 Microsoft Power BI 輕鬆整合。
 > * 將模型部署到即時評分端點。
 
 有三種方式可用來建立及部署您將在 Power BI 中使用的模型。  本文將說明「選項 A：使用筆記本來定型和部署模型。」  此選項需要程式碼撰寫經驗， 此選項會使用 Azure Machine Learning Studio 中裝載的 Jupyter Notebooks。 
@@ -157,7 +158,7 @@ print('Version:', model.version)
 
 :::image type="content" source="media/tutorial-power-bi/model.png" alt-text="顯示如何檢視模型的螢幕擷取畫面。":::
 
-### <a name="define-the-scoring-script"></a>定義評分指令碼
+## <a name="define-the-scoring-script"></a>定義評分指令碼
 
 部署要整合到 Power BI 的模型時，您必須定義 Python「評分指令碼」和自訂環境。 評分指令碼包含兩個函式：
 
@@ -165,7 +166,7 @@ print('Version:', model.version)
 - 當服務的呼叫包含需要計分的輸入資料時，就會執行 `run(data)` 函式。 
 
 >[!NOTE]
-> 本文使用 Python 裝飾項目來定義輸入和輸出資料的結構描述。 此設定對 Power BI 整合而言很重要。
+> 下方程式碼中的 Python 裝飾項目會定義輸入和輸出資料的結構描述，這對於 Microsoft Power BI 整合來說很重要。
 
 請將下列程式碼複製並貼到您筆記本中的新「程式碼資料格」。 下列程式碼片段具有資料格魔術功能，會將程式碼寫入名為 score.py 的檔案。
 

@@ -4,12 +4,12 @@ description: 在本教學課程中，您將使用 Intel 提供的 AI 模型伺�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 82906111e64bd278d4371d1c3497fefc4510bbbd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9fb2f533d433c89d13ee0c29058f87aab3521a78
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401199"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060192"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教學課程：使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server 來分析即時影片 - Intel 提供的 AI 擴充功能 
 
@@ -37,6 +37,8 @@ ms.locfileid: "97401199"
 當您設定 Azure 資源時，系統會將停車場的短片複製到 Azure 中您要作為 IoT Edge 裝置的 Linux VM。 本快速入門會使用影片檔案來模擬即時串流。
 
 開啟應用程式，例如 [VLC media player](https://www.videolan.org/vlc/)。 選取 Ctrl+N，然後貼上[影片](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)的連結以開始播放。 您會看到停車場中的車輛的影像，其中大部分車輛都是停住的，而其中一輛正在移動。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 在本快速入門中，您將會在 IoT Edge 上使用即時影片分析，並搭配 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server，以偵測車輛之類的物件或進行分類。 您會推斷事件的結果發佈到 IoT Edge 中樞。
 
@@ -97,7 +99,7 @@ Intel® 發佈的 [OpenVINO™ 工具組](https://software.intel.com/content/www
 1. 編輯 *operations.json* 檔案：
     * 變更圖表拓撲的連結：
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/2.0/topology.json"`
 
     * 在 `GraphInstanceSet` 底下，編輯圖表拓撲的名稱，使其符合前一個連結中的值：
 
@@ -160,7 +162,7 @@ Intel® 發佈的 [OpenVINO™ 工具組](https://software.intel.com/content/www
 
          ```
          {
-           "@apiVersion": "1.0",
+           "@apiVersion": "2.0",
            "name": "Sample-Graph-1",
            "properties": {
              "topologyName": "InferencingWithOpenVINO",
@@ -203,7 +205,7 @@ Intel® 發佈的 [OpenVINO™ 工具組](https://software.intel.com/content/www
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished 事件
 
-具現化媒體圖表時，RTSP 來源節點會嘗試連線到在 rtspsim-live555 容器中執行的 RTSP 伺服器。 如果連線成功，則會列印下列事件。 事件類型是 `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished`。
+具現化媒體圖表時，RTSP 來源節點會嘗試連線到在 rtspsim-live555 容器中執行的 RTSP 伺服器。 如果連線成功，則會列印下列事件。 事件類型為 **Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished**。
 
 ```
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:

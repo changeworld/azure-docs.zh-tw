@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3943caba5249432b3a0a4b7c2e63b2b818e2b7a1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575698"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968482"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>教學課程：準備部署 Azure Stack Edge Pro  
 
@@ -150,11 +150,11 @@ ms.locfileid: "96575698"
 
 在 Azure Stack Edge 資源已啟動並執行之後，您將必須取得啟用金鑰。 此金鑰可用來啟動 Azure Stack Edge Pro 裝置，並將其與資源連線。 您現在可以在 Azure 入口網站中取得此金鑰。
 
-1. 選取您建立的資源。 選取[概觀]，然後選取 [裝置設定]。
+1. 移至您所建立的資源，然後選取 [概觀]。 您會看到訂單處理結果的通知。
 
-    ![選取 [裝置設定]](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![選取 [概觀]](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. 在 [啟用] 圖格上，選取 [產生金鑰] 以建立啟用金鑰。 選取 [複製] 圖示以複製金鑰，並儲存金鑰以供日後使用。
+2. 在處理訂單且裝置已在運送途中後，**概觀** 內容會更新。 接受預設 **Azure Key Vault 名稱** 或輸入新名稱。 選取 [產生啟用金鑰]。 選取 [複製] 圖示以複製金鑰，並儲存金鑰以供日後使用。
 
     ![取得啟用金鑰](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 

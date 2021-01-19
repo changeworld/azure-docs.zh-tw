@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 43a483f49a9e9004a4f487e82195198f2600a919
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570955"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071148"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>教學課程：執行 "Hello world!" Python 指令碼 (第 2 部分，共 4 部分)
 
@@ -36,9 +36,6 @@ ms.locfileid: "96570955"
 ## <a name="prerequisites"></a>必要條件
 
 - 如果您還沒有 Azure Machine Learning 工作區，請完成[第 1 部分](tutorial-1st-experiment-sdk-setup-local.md)。
-- Python 語言和機器學習工作流程的簡介知識。
-- Visual Studio Code、Jupyter 或 PyCharm 等本機開發環境。
-- Python (版本 3.5 至 3.7)。
 
 ## <a name="create-and-run-a-python-script-locally"></a>在本機建立及執行 Python 指令碼
 
@@ -64,7 +61,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a><a name="test"></a>在本機測試您的指令碼
 
-您可以使用您最愛的 IDE 或終端機，在本機執行您的程式碼。 在本機執行程式碼具有互動式程式碼偵錯的優點。
+您可以使用您最愛的 IDE 或終端機，在本機執行您的程式碼。 在本機執行程式碼具有互動式程式碼偵錯的優點。  在已啟用 tutorial1 Conda 環境的視窗中，執行 Python 檔案：
 
 ```bash
 cd <path/to/tutorial>
@@ -93,8 +90,6 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
-
-
 
 ### <a name="understand-the-code"></a>了解程式碼
 
@@ -148,13 +143,6 @@ print(aml_url)
 
 執行您的控制指令碼，該程式碼會在您於[設定教學課程](tutorial-1st-experiment-sdk-setup-local.md)中建立的計算叢集上執行 `hello.py`。
 
-第一次執行需要 5-10 分鐘的時間才能完成。 這是因為會發生下列情形：
-
-* Docker 映像建置於雲端
-* 計算叢集的大小從 0 調整為 1 個節點
-* Docker 映像會下載至計算。 
-
-當 Docker 映像在計算上快取時，後續執行的速度會更快 (~15 秒)，您可以在第一次執行完成之後，重新提交下列程式碼來測試此作業。
 
 ```bash
 python 03-run-hello.py
@@ -168,9 +156,17 @@ python 03-run-hello.py
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>使用 Studio 在雲端中監視您的程式碼
 
-輸出會包含 Studio 的連結，看起來像這樣：`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`。
+指令碼輸出會包含 Studio 的連結，看起來像這樣：`https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`。
 
-遵循連結，然後移至 [輸出 + 記錄] 索引標籤。您可以看到如下所示的 `70_driver_log.txt` 檔案：
+依照連結指示進行。  一開始，您會看到狀態為 **準備中**。  第一次執行需要 5-10 分鐘的時間才能完成。 這是因為會發生下列情形：
+
+* Docker 映像建置於雲端
+* 計算叢集的大小從 0 調整為 1 個節點
+* Docker 映像會下載至計算。 
+
+隨著系統在計算上快取 Docker 映像，後續執行的速度會更快 (約 15 秒)。 您可以在第一次執行完成之後重新提交下列程式碼來進行測試。
+
+作業完成後，請移至 **輸出 + 記錄** 索引標籤。您可以看到如下所示的 `70_driver_log.txt` 檔案：
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.

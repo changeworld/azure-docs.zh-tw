@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07acd71eb1a77592c82b80aa574d79b98c48f60e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608294"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567629"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect sync V2 端點 API 
 Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure Active Directory 同步處理服務作業的效能。 藉由使用新的 V2 端點，您將會在匯出和匯入至 Azure AD 時，遇到顯著的效能提升。 這個新的端點支援下列項目：
@@ -28,7 +28,7 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
 > [!NOTE]
 > 目前，新的端點對於回寫的 Microsoft 365 群組沒有設定的群組大小限制。 這可能會對您的 Active Directory 和同步處理週期延遲有所影響。 建議您以累加方式增加群組大小。  
 
-## <a name="pre-requisites"></a>必要條件  
+## <a name="prerequisites"></a>Prerequisites  
 若要使用新的 V2 端點，您必須使用 [Azure AD Connect 1.5.30.0 版](https://www.microsoft.com/download/details.aspx?id=47594)或更新版本，並遵循下面提供的部署步驟，為您的 Azure AD Connect 伺服器啟用 V2 端點。   
 
 ## <a name="deployment-guidance"></a>部署指導 
@@ -176,7 +176,7 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
 ## <a name="frequently-asked-questions"></a>常見問題集  
  
 **新的結束點何時會成為升級和新安裝的預設值？**  
-</br>我們打算在2021年1月發行新版的 AADConnect 以供下載。 此版本預設會使用 V2 端點，而且會啟用大於50K 的群組 withuot 任何其他設定。 此版本後續將會發行，以自動升級為合格的伺服器。
+</br>我們打算在2021年1月發行新版的 AADConnect 以供下載。 此版本預設會使用 V2 端點，並且可讓您同步處理大於50K 的群組，而不需要任何額外的設定。 此版本後續將會發行，以自動升級為合格的伺服器。
  
 ## <a name="next-steps"></a>後續步驟
 

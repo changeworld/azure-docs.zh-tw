@@ -1,35 +1,35 @@
 ---
 title: 整合 Azure Key Vault 與 Kubernetes
 description: 在本教學課程中，您將使用祕密存放區容器儲存體介面 (CSI) 驅動程式從 Azure 金鑰保存庫存取及擷取祕密，以便掛接至 Kubernetes Pod。
-author: ShaneBala-keyvault
-ms.author: sudbalas
+author: msmbaldwin
+ms.author: mbaldwin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 2645842130b83fe7b4cfb33b9389b19a1306506d
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: f0699ed065da4c63bc88945d75a866abcfbb9053
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97756019"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121357"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
 
 > [!IMPORTANT]
-> CSI Driver 是一項開放原始碼專案，不受 Azure 技術支援。 請在頁面底部的 github 連結中，回報有關 CSI Driver Key Vault 整合的所有意見反應和問題。 此工具可供使用者自行安裝到叢集，並從社群收集意見反應。
+> CSI Driver 是一項開放原始碼專案，不受 Azure 技術支援。 請在[這裡](https://github.com/Azure/secrets-store-csi-driver-provider-azure/issues)的 github 連結中，回報有關 CSI Driver Key Vault 整合的所有意見反應和問題。 此工具可供使用者自行安裝到叢集，並從社群收集意見反應。
+
 
 在本教學課程中，您將使用祕密存放區容器儲存體介面 (CSI) 驅動程式從 Azure 金鑰保存庫存取及擷取祕密，以便將祕密掛接至 Kubernetes Pod。
 
 在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 建立服務主體，或使用受控識別。
+> * 使用受控識別。
 > * 使用 Azure CLI 部署 Azure Kubernetes Service (AKS) 叢集。
 > * 安裝 Helm 與祕密存放區 CSI 驅動程式。
 > * 建立 Azure 金鑰保存庫並設定祕密。
 > * 建立您自己的 SecretProviderClass 物件。
-> * 指派您的服務主體，或使用受控識別。
 > * 使用從金鑰保存庫掛接而來的祕密部署您的 Pod。
 
 ## <a name="prerequisites"></a>必要條件
@@ -38,22 +38,7 @@ ms.locfileid: "97756019"
 
 * 開始本教學課程之前，請先安裝 [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。
 
-## <a name="create-a-service-principal-or-use-managed-identities"></a>建立服務主體，或使用受控識別
-
-若要使用受控識別，請直接跳至下一節。
-
-建立服務主體，以控制可從您 Azure 金鑰保存庫存取的資源。 此服務主體的存取範圍，取決於其獲派的角色。 此功能可讓您控制服務主體如何管理您的祕密。 在下列範例中，服務主體的名稱為 *contosoServicePrincipal*。
-
-```azurecli
-az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
-```
-此作業會傳回一系列的金鑰/值組：
-
-![螢幕擷取畫面，顯示 contosoServicePrincipal 的 appId 和密碼](../media/kubernetes-key-vault-1.png)
-
-請複製 **appId** 和 **password** 認證以供稍後使用。
-
-## <a name="flow-for-using-managed-identity"></a>使用受控識別的流程
+## <a name="use-managed-identities"></a>使用受控識別
 
 下圖說明受控識別的 AKS–Key Vault 整合流程：
 
@@ -66,7 +51,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 完成[使用 Azure CLI 部署 Azure Kubernetes Service 叢集](../../aks/kubernetes-walkthrough.md)中的＜建立資源群組＞、＜建立 AKS 叢集＞和＜連線到叢集＞等節。 
 
 > [!NOTE] 
-> 如果您打算使用 Pod 身分識別而非務主體，請務必在建立 Kubernetes 叢集時加以啟用，如下列命令所示：
+> 如果您打算使用 Pod 身分識別，請務必在建立 Kubernetes 叢集時加以啟用，如下列命令所示：
 >
 > ```azurecli
 > az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
@@ -121,7 +106,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 
 在範例 SecretProviderClass YAML 檔案中，填入遺漏的參數。 必要參數如下：
 
-* **userAssignedIdentityID**：# [必要] 如果您要使用服務主體，請使用用戶端識別碼來指定要使用的使用者指派受控識別。 如果您是使用使用者指派的身分識別作為 VM 的受控識別，請指定身分識別的用戶端識別碼。 如果值是空的，則預設為在 VM 上使用系統指派的身分識別 
+* **userAssignedIdentityID**: # [REQUIRED] 如果值是空的，則預設為在 VM 上使用系統指派的身分識別 
 * **keyvaultName**：金鑰保存庫的名稱
 * **objects**：您想要掛接的所有秘密內容所屬的容器
     * **objectName**：秘密內容的名稱
@@ -147,9 +132,8 @@ spec:
   parameters:
     usePodIdentity: "false"                   # [REQUIRED] Set to "true" if using managed identities
     useVMManagedIdentity: "false"             # [OPTIONAL] if not provided, will default to "false"
-    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED] If you're using a service principal, use the client id to specify which user-assigned managed identity to use. If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
-                                                             #     az ad sp show --id http://contosoServicePrincipal --query appId -o tsv
-                                                             #     the preceding command will return the client ID of your service principal
+    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED]  If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
+                                                         
     keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the key vault
                                               #     az keyvault show --name contosoKeyVault5
                                               #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
@@ -174,58 +158,18 @@ spec:
 
 ![顯示 "az keyvault show --name contosoKeyVault5" 主控台輸出的螢幕擷取畫面](../media/kubernetes-key-vault-4.png)
 
-## <a name="assign-your-service-principal-or-use-managed-identities"></a>指派您的服務主體，或使用受控識別
+## <a name="assign-managed-identity"></a>指派受控識別
 
-### <a name="assign-a-service-principal"></a>指派服務主體
-
-如果您要使用服務主體，請授與權限以使其能夠存取您的金鑰保存庫並擷取秘密。 執行下列命令，以指派 *讀者* 角色，並向服務主體授與可從金鑰保存庫 *取得* 祕密的權限：
-
-1. 將服務主體指派給現有的金鑰保存庫。 **$AZURE_CLIENT_ID** 參數是您在建立服務主體之後複製的 **應用程式識別碼**。
-    ```azurecli
-    az role assignment create --role Reader --assignee $AZURE_CLIENT_ID --scope /subscriptions/$SUBID/resourcegroups/$KEYVAULT_RESOURCE_GROUP/providers/Microsoft.KeyVault/vaults/$KEYVAULT_NAME
-    ```
-
-    下圖顯示命令的輸出： 
-
-    ![顯示 principalId 值的螢幕擷取畫面](../media/kubernetes-key-vault-5.png)
-
-1. 向服務主體授與可供取得祕密的權限：
-    ```azurecli
-    az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
-    az keyvault set-policy -n $KEYVAULT_NAME --key-permissions get --spn $AZURE_CLIENT_ID
-    ```
-
-1. 您現在已為服務主體設定可從金鑰保存庫讀取祕密的權限。 **$AZURE_CLIENT_SECRET** 為您服務主體的密碼。 ’將您的服務主體認證，新增為祕密存放區 CSI 驅動程式能夠存取 Kubernetes 祕密：
-    ```azurecli
-    kubectl create secret generic secrets-store-creds --from-literal clientid=$AZURE_CLIENT_ID --from-literal clientsecret=$AZURE_CLIENT_SECRET
-    ```
-
-> [!NOTE] 
-> 如果您要部署 Kubernetes Pod，並收到有關用戶端密碼識別碼無效的錯誤，則可能是您的用戶端密碼識別碼較舊，所以已過期或遭到重設。 若要解決此問題，請刪除您的 *secrets-store-creds* 祕密，然後使用目前的用戶端密碼識別碼建立新的祕密。 若要刪除 *secrets-store-creds*，請執行下列命令：
->
-> ```azurecli
-> kubectl delete secrets secrets-store-creds
-> ```
-
-若忘記服務主體的用戶端密碼識別碼，可以使用下列命令重設：
-
-```azurecli
-az ad sp credential reset --name contosoServicePrincipal --credential-description "APClientSecret" --query password -o tsv
-```
-
-### <a name="use-managed-identities"></a>使用受控識別
-
-若要使用受控識別，請為您建立的 AKS 叢集，指派特定的角色。 
+請為您建立的 AKS 叢集，指派特定的角色。 
 
 1. 若要建立、列出或讀取使用者指派的受控識別，您必須為 AKS 叢集指派[受控識別操作員](../../role-based-access-control/built-in-roles.md#managed-identity-operator)角色。 請確定 **$clientId** 是 Kubernetes 叢集的 clientId。 至於範圍，其會在您的 Azure 訂用帳戶服務下，特別是建立 AKS 叢集時所建立的節點資源群組。 此範圍會確保只有該群組內的資源會受到下列指派角色所影響。 
 
     ```azurecli
     RESOURCE_GROUP=contosoResourceGroup
-    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$RESOURCE_GROUP
     
-    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
     
-    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/<SUBID>/resourcegroups/$RESOURCE_GROUP
     ```
 
 1. 為 AKS 安裝 Azure Active Directory (Azure AD) 身分識別。
@@ -242,7 +186,7 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 1. 將 *讀者* 角色指派給您在上一個步驟中為金鑰保存庫建立的 Azure AD 身分識別，然後向身分識別授與可從金鑰保存庫取得秘密的權限。 使用 Azure AD 身分識別中的 **clientId** 和 **principalId**。
     ```azurecli
-    az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
+    az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/<SUBID>/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
     az keyvault set-policy -n contosoKeyVault5 --key-permissions get --spn $clientId
@@ -253,16 +197,6 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 若要設定您的 SecretProviderClass 物件，請執行下列命令：
 ```azurecli
 kubectl apply -f secretProviderClass.yaml
-```
-
-### <a name="use-a-service-principal"></a>使用服務主體
-
-如果您使用的是服務主體，請使用下列命令，利用您稍早設定的 SecretProviderClass 和 secrets-store-creds 來部署 Kubernetes Pod。 以下是部署範本：
-* 若為 [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-inline-volume-service-principal.yaml)
-* 若為 [Windows](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/windows-pod-secrets-store-inline-volume-secret-providerclass.yaml)
-
-```azurecli
-kubectl apply -f updateDeployment.yaml
 ```
 
 ### <a name="use-managed-identities"></a>使用受控識別
@@ -318,8 +252,6 @@ spec:
         readOnly: true
         volumeAttributes:
           secretProviderClass: azure-kvname
-        nodePublishSecretRef:           # Only required when using service principal mode
-          name: secrets-store-creds     # Only required when using service principal mode
 ```
 
 執行下列命令，以部署您的 Pod：

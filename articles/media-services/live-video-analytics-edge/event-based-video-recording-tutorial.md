@@ -3,12 +3,12 @@ title: 將以事件為基礎的影片錄製到雲端並從雲端播放的教學�
 description: 在本教學課程中，您將了解如何在 Azure IoT Edge 上使用 Azure Live Video Analytics，將以事件為基礎的影片錄製到雲端並從雲端播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: cfb4648d991565470133d603194c07b797f89311
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401659"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060430"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教學課程：將以事件為基礎的影片錄製到雲端並從雲端播放
 
@@ -53,6 +53,9 @@ ms.locfileid: "97401659"
 * Azure 儲存體帳戶
 * Azure 媒體服務帳戶
 * Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge.md)
+
+> [!TIP]
+> 如果您遇到已建立的 Azure 資源問題，請檢視我們的 **[疑難排解指南](troubleshoot-how-to.md#common-error-resolutions)** ，以解決一些經常發生的問題。
 
 ## <a name="concepts"></a>概念
 
@@ -230,7 +233,7 @@ ms.locfileid: "97401659"
      
         ```
         {
-          "@apiVersion": "1.0",
+          "@apiVersion": "2.0",
           "name": "Sample-Graph-1",
           "properties": {
             "topologyName": "EVRtoAssetsOnObjDetect",
@@ -277,7 +280,7 @@ ms.locfileid: "97401659"
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished 事件 
 
-當媒體圖表具現化時，RTSP 來源節點會嘗試連接到在 RTSP 模擬器容器上執行的 RTSP 伺服器。 如果成功，則會列印此事件。 事件類型為 Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished。
+當媒體圖表具現化時，RTSP 來源節點會嘗試連接到在 RTSP 模擬器容器上執行的 RTSP 伺服器。 如果成功，則會列印此事件。 事件類型為 **Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished**。
 
 ```
 [IoTHubMonitor] [5:53:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -325,7 +328,7 @@ applicationProperties 區段包含事件時間。 這是 objectCounter 模組觀
 
 ### <a name="recordingstarted-event"></a>RecordingStarted 事件
 
-緊接在物件計數器傳送事件之後，您會看到類型為 Microsoft.Media.Graph.Operational.RecordingStarted 的事件：
+緊接在物件計數器傳送事件之後，您會看到類型為 **Microsoft.Media.Graph.Operational.RecordingStarted** 的事件：
 
 ```
 [IoTHubMonitor] [5:53:46 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -348,7 +351,7 @@ applicationProperties 中的 subject 區段會參考圖表中產生此訊息的�
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable 事件
 
-當資產接收節點將影片上傳到資產時，會發出類型為 Microsoft.Media.Graph.Operational.RecordingAvailable 的這個事件：
+當資產接收節點將影片上傳到資產時，會發出類型為 **Microsoft.Media.Graph.Operational.RecordingAvailable** 的這個事件：
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -371,7 +374,7 @@ applicationProperties 中的 subject 區段會參考圖表中產生此訊息的�
 
 ### <a name="recordingstopped-event"></a>RecordingStopped 事件
 
-如果您檢查[拓撲](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)中訊號閘道處理器節點的啟用設定 (maximumActivationTime)，您會看到閘道已設定為在傳送 30 秒的影片之後關閉。 在 RecordingStarted 事件後大約 30 秒，您應該會看到類型為 Microsoft.Media.Graph.Operational.RecordingStopped 的事件。 此事件表示資產接收節點已停止將影片記錄到資產。
+如果您檢查[拓撲](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json)中訊號閘道處理器節點的啟用設定 (maximumActivationTime)，您會看到閘道已設定為在傳送 30 秒的影片之後關閉。 在 RecordingStarted 事件後大約 30 秒，您應該會看到類型為 **Microsoft.Media.Graph.Operational.RecordingStopped** 的事件。 此事件表示資產接收節點已停止將影片記錄到資產。
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:

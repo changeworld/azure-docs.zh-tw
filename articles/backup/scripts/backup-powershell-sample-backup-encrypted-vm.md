@@ -4,16 +4,16 @@ description: 在本文中，您將了解如何使用 Azure PowerShell 指令碼�
 ms.topic: sample
 ms.date: 03/05/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 6e3af44284acdc96f6f0197c4153c6f7538570d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73dc119e8db34aed04ce8926bfa85f557027c8e2
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069458"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967305"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>使用 PowerShell 備份已加密的 Azure 虛擬機器
 
-此指令碼會針對已加密的 Azure 虛擬機器，建立具有異地備援儲存體 (GRS) 的復原服務保存庫。 預設保護原則會套用到保存庫。 此原則會產生虛擬機器的每日備份，並將每個備份保留 30 天。 此指令碼也會觸發虛擬機器的初始復原點，並將該復原點保留 365 天。
+此指令碼會針對已加密的 Azure 虛擬機器，建立具有異地備援儲存體 (GRS) 的復原服務保存庫。 預設保護原則會套用到保存庫。 此原則會產生虛擬機器的每日備份，並將每個備份保留 365 天。 此指令碼也會觸發虛擬機器的初始復原點，並將該復原點保留 30 天。
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 

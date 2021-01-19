@@ -3,12 +3,12 @@ title: 將連續影片錄製到雲端並從雲端播放的教學課程 - Azure
 description: 在本教學課程中，您將了解如何在Azure IoT Edge 上使用 Azure Live Video Analytics，以持續將影片錄製到雲端，並使用 Azure 媒體服務串流該影片的任何部分。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c38ab1f32d1ef4e54cd8568ff17d325fabdefc31
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8fa2b65416499e58235fa312ffdcd2d71c3cfb39
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498365"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060141"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教學課程：將連續影片錄製移到雲端並從雲端播放
 
@@ -51,6 +51,9 @@ ms.locfileid: "96498365"
 * Azure 媒體服務帳戶
 * Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge.md)
 
+> [!TIP]
+> 如果您遇到已建立的 Azure 資源問題，請檢視我們的 **[疑難排解指南](troubleshoot-how-to.md#common-error-resolutions)** ，以解決一些經常發生的問題。
+
 ## <a name="concepts"></a>概念
 
 如[媒體圖表概念](media-graph-concept.md)文章中所述，媒體圖表可讓您定義：
@@ -64,7 +67,9 @@ ms.locfileid: "96498365"
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="媒體圖表":::
 
-在本教學課程中，您將使用以 [Live555 媒體伺服器](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)建置的一個邊緣模組來模擬 RTSP 攝影機。 在媒體圖表內，您將使用 [RTSP 來源](media-graph-concept.md#rtsp-source)節點來取得即時摘要，並將該影片傳送至[資產接收節點](media-graph-concept.md#asset-sink)，其會將影片錄製到資產中。
+在本教學課程中，您將使用以 [Live555 媒體伺服器](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555)建置的一個邊緣模組來模擬 RTSP 攝影機。 在媒體圖表內，您將使用 [RTSP 來源](media-graph-concept.md#rtsp-source)節點來取得即時摘要，並將該影片傳送至[資產接收節點](media-graph-concept.md#asset-sink)，其會將影片錄製到資產中。 本教學課程使用的影片是[高速公路交流道範例影片](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv)。
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 
 ## <a name="set-up-your-development-environment"></a>設定開發環境
 
@@ -169,14 +174,14 @@ ms.locfileid: "96498365"
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="顯示詳細資訊訊息":::
-1. <!--In Visual Studio Code, go-->移至 src/cloud-to-device-console-app/operations.json。
+1. 移至 src/cloud-to-device-console-app/operations.json。
 1. 在 **GraphTopologySet** 節點底下，編輯下列內容：
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
 1. 接下來，在 **GraphInstanceSet** 和 **GraphTopologyDelete** 節點下，確定 **topologyName** 的值符合上述圖表拓撲中的 **name** 屬性值：
 
     `"topologyName" : "CVRToAMSAsset"`  
-1. 在瀏覽器中開啟[拓撲](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json)，並查看 assetNamePattern。 若要確定您有一個具有唯一名稱的資產，您可能需要變更 operations.json 檔案中的圖表執行個體名稱 (從預設值 Sample-Graph-1 變更)。
+1. 在瀏覽器中開啟[拓撲](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json)，並查看 assetNamePattern。 若要確定您有一個具有唯一名稱的資產，您可能需要變更 operations.json 檔案中的圖表執行個體名稱 (從預設值 Sample-Graph-1 變更)。
 
     `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
 1. 選取 F5 來啟動偵錯工作階段。 您會在 [終端機] 視窗中看到一些列印的訊息。
@@ -187,7 +192,7 @@ ms.locfileid: "96498365"
     Executing operation GraphTopologyList
     -----------------------  Request: GraphTopologyList  --------------------------------------------------
     {
-      "@apiVersion": "1.0"
+      "@apiVersion": "2.0"
     }
     ---------------  Response: GraphTopologyList - Status: 200  ---------------
     {
@@ -204,7 +209,7 @@ ms.locfileid: "96498365"
      
      ```
      {
-       "@apiVersion": "1.0",
+       "@apiVersion": "2.0",
        "name": "Sample-Graph-1",
        "properties": {
          "topologyName": "CVRToAMSAsset",
@@ -277,7 +282,7 @@ ms.locfileid: "96498365"
 
 ### <a name="recordingstarted-event"></a>RecordingStarted 事件
 
-當資產接收節點開始錄製影片時，其會發出類型為 Microsoft.Media.Graph.Operational.RecordingStarted 的這個事件：
+當資產接收節點開始錄製影片時，其會發出類型為 **Microsoft.Media.Graph.Operational.RecordingStarted** 的這個事件：
 
 ```
 [IoTHubMonitor] [9:42:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -302,7 +307,7 @@ body 區段包含輸出位置的相關資訊。 在此案例中，指的是將�
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable 事件
 
-如其名所示，RecordingStarted 事件會在錄製開始時傳送，但影片資料可能尚未上傳到資產。 當資產接收節點將影片資料上傳到資產時，其會發出類型為 Microsoft.Media.Graph.Operational.RecordingAvailable 的這個事件：
+如其名所示，RecordingStarted 事件會在錄製開始時傳送，但影片資料可能尚未上傳到資產。 當資產接收節點將影片資料上傳到資產時，其會發出類型為 **Microsoft.Media.Graph.Operational.RecordingAvailable** 的這個事件：
 
 ```
 [IoTHubMonitor] [[9:43:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -329,7 +334,7 @@ body 區段包含輸出位置的相關資訊。 在此案例中，指的是將�
 
 ### <a name="recordingstopped-event"></a>RecordingStopped 事件
 
-當您停用圖表執行個體時，資產接收節點會停止將影片錄製到資產。 其會發出 Microsoft.Media.Graph.Operational.RecordingStopped 類型的這個事件：
+當您停用圖表執行個體時，資產接收節點會停止將影片錄製到資產。 其會發出 **Microsoft.Media.Graph.Operational.RecordingStopped** 類型的這個事件：
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [lva-sample-device/lvaEdge]:

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683490"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963958"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>教學課程：使用部署指令碼建立自我簽署憑證
 
@@ -329,13 +329,13 @@ ms.locfileid: "97683490"
 
     ![Resource Manager 範本部署指令碼資源](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    這兩個檔案都具有 **azscripts** 尾碼。 其中一個是儲存體帳戶，另一個則是容器執行個體。
+    這兩個檔案都具有 _azscripts_ 尾碼。 其中一個是儲存體帳戶，另一個則是容器執行個體。
 
     請選取 [顯示隱藏的類型]，以列出 `deploymentScripts` 資源。
 
-1. 選取具有 **azscripts** 尾碼的儲存體帳戶。
-1. 選取 [檔案共用] 磚。 您應該會看到 **azscripts** 資料夾。 此資料夾包含部署指令碼執行檔案。
-1. 選取 [azscripts]。 您應該會看到兩個資料夾：**azscriptinput** 和 **azscriptoutput**。 輸入資料夾包含系統 PowerShell 指令檔和使用者部署指令檔。 輸出檔案夾包含 _executionresult.json_ 和指令碼輸出檔案。 您可以在 _executionresult.json_ 中查看錯誤訊息。 輸出檔案不存在，因為執行失敗。
+1. 選取具有 _azscripts_ 尾碼的儲存體帳戶。
+1. 選取 [檔案共用] 磚。 您會看到包含部署指令碼執行檔案的 azscripts 資料夾。
+1. 選取 [azscripts]。 您應該會看到兩個資料夾：_azscriptinput_ 和 _azscriptoutput_。 輸入資料夾包含系統 PowerShell 指令檔和使用者部署指令檔。 輸出檔案夾包含 _executionresult.json_ 和指令碼輸出檔案。 您可以在 _executionresult.json_ 中查看錯誤訊息。 輸出檔案不存在，因為執行失敗。
 
 移除 `Write-Output1` 行，並重新部署範本。
 

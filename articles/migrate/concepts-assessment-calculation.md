@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: f8a4f29114f7e0a2ed7868f01e05e25c8a0d0ce1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 9bdf907ede2c09f7e314df619cd81059956f17dc
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752221"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567751"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>伺服器評定總覽 (遷移至 Azure Vm) 
 
@@ -157,7 +157,7 @@ ms.locfileid: "96752221"
 **核心** | 每部電腦都不能有超過128個核心，這是 Azure VM 支援的最大數目。<br/><br/> 如果有提供效能記錄，則 Azure Migrate 會將已使用的核心納入考量，進行比較。 如果評估設定指定了緩和因素，則會將使用的核心數目乘以緩和因數。<br/><br/> 如果沒有效能歷程記錄，Azure Migrate 會使用配置的核心來套用緩和因數。 | 如果核心數目超過限制，即為就緒
 **RAM** | 每部電腦都必須有超過 3892 GB 的 RAM，也就是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支援的大小上限。 [深入了解](../virtual-machines/sizes.md)。<br/><br/> 如果有可用的效能歷程記錄，Azure Migrate 會考慮使用的 RAM 進行比較。 如果指定了緩和因素，則會將使用的 RAM 乘以緩和因數。<br/><br/> 如果沒有記錄，則會使用配置的 RAM 來套用緩和因數。<br/><br/> | 如果 RAM 的數量超過限制，則為就緒
 **存放磁碟** | 配置的磁片大小不得超過 32 TB。 雖然 Azure 支援 64-TB 磁片與 Azure Ultra SSD 磁片，但 Azure Migrate：伺服器評量目前會檢查 32 TB 的磁片大小限制，因為它還不支援 Ultra SSD。 <br/><br/> 連接至電腦的磁片數目（包括 OS 磁片）必須是65或更少。 | 如果磁片大小和數目在限制內，則為就緒
-**網路** | 電腦上 (Nic) 不能超過32個網路介面。 | 如果 Nic 數目超過限制，即準備就緒
+**網路功能** | 電腦上 (Nic) 不能超過32個網路介面。 | 如果 Nic 數目超過限制，即準備就緒
 
 ### <a name="guest-operating-system"></a>客體作業系統
 
@@ -268,8 +268,14 @@ Azure Migrate 中每個以效能為基礎的 Azure VM 評量都與信賴評等�
 以下是評估可能獲得低信賴評等的一些原因：
 
 - 您未在建立評量的期間分析您的環境。 例如，如果您建立的評量將效能持續時間設定為一天，則在開始探索所有資料點之後，您必須至少等候一天才能收集。
-- 部分 Vm 會在計算評估的時間內關機。 如果有一段時間關閉任何 Vm，伺服器評量就無法收集該期間的效能資料。
-- 某些 Vm 是在計算評估的時間內建立的。 例如，假設您已建立上個月效能歷程記錄的評量，但有些 Vm 只在一周前建立。 新 Vm 的效能歷程記錄將不會存在於完整的持續時間內。
+- 評定無法收集評估期間內部分或所有 Vm 的效能資料。 如需高信賴評等，請確定： 
+    - Vm 在評量期間已開啟電源
+    - 允許埠443上的輸出連接
+    - 若為 Hyper-v Vm，則會啟用動態記憶體 
+    
+    請「重新計算」評量，以反映信賴評等的最新變更。
+
+- 某些 Vm 是在計算評估的時間內建立的。 例如，假設您已建立上個月效能歷程記錄的評量，但有些 Vm 只在一周前建立。 在此情況下，將無法取得新的 VM 在這整段期間內的效能資料，且信賴評等將會偏低。
 
 > [!NOTE]
 > 如果任何評量的信賴評等少於五顆星，建議您至少等候一天，讓設備分析環境，然後重新計算評量。 否則，以效能為基礎的大小調整可能不可靠。 在此情況下，我們建議您將評量切換至內部部署調整大小。
@@ -285,7 +291,7 @@ Azure Migrate 中每個以效能為基礎的 Azure VM 評量都與信賴評等�
     - 軟體保證
     - 保留執行個體
     - VM 運作時間
-    - Location
+    - 位置
     - 貨幣設定
 
     伺服器評量會匯總所有機器的成本，以計算每月總計算成本。

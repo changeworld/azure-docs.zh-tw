@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2020
+ms.date: 01/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 090bb632f45169a732a93606dae06693c6ac5c63
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ef23fb932ec8a81ba149a6449650ccca6dab60f9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182201"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020633"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-skedda"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Skedda 整合
 
@@ -73,22 +73,17 @@ ms.locfileid: "96182201"
 
 1. 在 Azure 入口網站的 [Skedda] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的鉛筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [基本 SAML 設定]  區段上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
 
-     在 [回覆 URL] 文字方塊中，輸入下列其中一個 URL：
+     在 [回覆 URL] 文字方塊中，輸入 URL：`https://app.skedda.com/saml2/acs`
 
-    | 回覆 URL|
-    |----------|
-    | `https://www.skedda.com/saml2/acs` |
-    | `https://app.skedda.com/saml2/acs` |
+1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]  ，然後執行下列步驟：
 
-1. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
-
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://www.skedda.com/account/externallogin?returnUrl=<CUSTOM_URL>`
+    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://app.skedda.com/account/externallogin?returnUrl=<CUSTOM_URL>`
 
     > [!NOTE]
     > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Skedda 用戶端支援小組](mailto:info@skedda.com)以取得此值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
@@ -112,7 +107,7 @@ ms.locfileid: "96182201"
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下 [建立]。
+   1. 按一下頁面底部的 [新增] 。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -148,7 +143,7 @@ ms.locfileid: "96182201"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Skedda 
 
-您也可以使用 Microsoft 存取面板，以任何模式測試應用程式。 當您按一下存取面板中的 [Skedda] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果是在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Skedda。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
+您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下我的應用程式中的 [Skedda] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果是在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Skedda。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

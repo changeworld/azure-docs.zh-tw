@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: e6582443ddc56b315c1c666c81a596fa71b1d54f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02757477ca4a07f4526df0339291122eda57c9b5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753972"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567422"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -23,7 +23,7 @@ ms.locfileid: "96753972"
 
 ## <a name="limitations"></a>限制
 
-**支援** | **詳細資料**
+**需求** | **詳細資料**
 --- | ---
 **專案限制** | 您可以在 Azure 訂用帳戶中建立多個專案。<br/><br/> 您可以在單一[專案](migrate-support-matrix.md#azure-migrate-projects)中探索及評估最多 35,000 個 VMware VM。 專案中也可以包含實體伺服器和 Hyper-V VM，每個最多都可以達到評估限制。
 **探索** | Azure Migrate 設備可以在 vCenter Server 上探索最多 10,000 個 VMware VM。
@@ -43,7 +43,7 @@ ms.locfileid: "96753972"
 **VMware** | **詳細資料**
 --- | ---
 **VMware VM** | 所有作業系統都可以進行評估以進行遷移。 
-**Storage** | 支援連接至 SCSI、IDE 和以 SATA 為基礎之控制器的磁片。
+**儲存體** | 支援連接至 SCSI、IDE 和以 SATA 為基礎之控制器的磁片。
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 設備需求
@@ -81,9 +81,9 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 
 ## <a name="dependency-analysis-requirements-agentless"></a> (無代理程式) 的相依性分析需求
 
-[相依性分析](concepts-dependency-visualization.md)可協助您識別所要評估並遷移至 Azure 的內部部署機器之間的相依性。 下表摘要說明用於設定無代理程式相依性分析的需求。
+[相依性分析](concepts-dependency-visualization.md)可協助您識別所要評估並遷移至 Azure 的內部部署機器之間的相依性。 下表摘要說明用於設定無代理程式相依性分析的需求。 
 
-**需求** | **詳細資料**
+**支援** | **詳細資料**
 --- | --- 
 **支援的機器** | 目前僅支援 VMware VM。
 **Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 位元)。<br/>Microsoft Windows Server 2008 (32 位) 。 

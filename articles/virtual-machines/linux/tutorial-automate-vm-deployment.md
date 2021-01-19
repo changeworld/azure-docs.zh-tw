@@ -5,21 +5,18 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 456c42dc0b25e168744ce283cddbd63b877813ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ebff49db895468549a7abd420e7b74292b742eab
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747153"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108631"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教學課程 - 如何使用 cloud-init 在首次開機時於 Azure 中自訂 Linux 虛擬機器
 
@@ -39,17 +36,7 @@ ms.locfileid: "92747153"
 
 Cloud-init 也適用於散發套件。 例如，您不使用 **apt-get install** 或 **yum install** 來安裝套件。 您可以改為定義要安裝的套件清單。 Cloud-init 會針對您選取的散發套件自動使用原生的套件管理工具。
 
-我們正在與合作夥伴合作，以期在他們提供給 Azure 的映像中包含和使用 cloud-init。 下表概述 cloud-init 目前在 Azure 平台映像上的可用性：
-
-| 發行者 | 供應項目 | SKU | 版本 | cloud-init 就緒 |
-|:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |18.04-LTS |最新 |是 | 
-|Canonical |UbuntuServer |16.04-LTS |最新 |是 | 
-|Canonical |UbuntuServer |14.04.5-LTS |最新 |是 |
-|CoreOS |CoreOS |穩定 |最新 |是 |
-|OpenLogic 7.6 |CentOS |7-CI |最新 |preview |
-|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |是 |
-|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
+我們正在與合作夥伴合作，以期在他們提供給 Azure 的映像中包含和使用 cloud-init。 如需每個發佈的 cloud-init 支援詳細資訊，請參閱 [Azure中 VM 的 cloud-init 支援](using-cloud-init.md)。
 
 
 ## <a name="create-cloud-init-config-file"></a>建立 Cloud-init 組態檔
@@ -147,7 +134,7 @@ Azure Key Vault 會保護密碼編譯金鑰和祕密，像是憑證或密碼。 
 - 建立 VM 並插入憑證
 
 ### <a name="create-an-azure-key-vault"></a>建立 Azure Key Vault
-首先，使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) 建立 Key Vault，並加以啟用以供您在部署 VM 時使用。 每個 Key Vault 需要唯一的名稱，而且應該全部小寫。 使用您自己唯一的 Key Vault 名稱來取代下列範例中的 mykeyvault  ：
+首先，使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) 建立 Key Vault，並加以啟用以供您在部署 VM 時使用。 每個 Key Vault 需要唯一的名稱，而且應該全部小寫。 使用您自己唯一的 Key Vault 名稱來取代下列範例中的 `mykeyvault`：
 
 ```azurecli-interactive
 keyvault_name=mykeyvault

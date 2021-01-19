@@ -3,12 +3,12 @@ title: 使用適用於空間分析的電腦視覺來分析即時影片 - Azure
 description: 本教學課程說明如何使用即時影片分析搭配 Azure 認知服務的電腦視覺空間分析 AI 功能，分析來自 (模擬) IP 攝影機的即時影片摘要。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400502"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060175"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>使用適用於空間分析 (預覽) 的電腦視覺來分析即時影片
 
@@ -166,7 +166,7 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 請遵循下列步驟，從範本檔案產生資訊清單，然後將其部署到邊緣裝置。
 
 1. 開啟 Visual Studio Code。
-1. 在 [Azure IoT 中樞] 窗格旁，選取 [其他動作] 圖示，以設定 IoT 中樞的連接字串。 您可以從 src/cloud-to-device-console-app/appsettings.json 檔案複製字串。
+1. 在 [Azure IoT 中樞] 窗格旁，選取 [其他動作] 圖示，以設定 IoT 中樞的連接字串。 您可以從 `src/cloud-to-device-console-app/appsettings.json` 檔案複製字串。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="空間分析：連接字串":::
@@ -222,13 +222,13 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 
 在 operations.json 中：
 
-* 設定如下的拓撲 (topologyFile 用於本機拓撲，topologyUrl 用於線上拓撲)：
+* 設定拓撲，如下所示：
 
 ```json
 {
     "opName": "GraphTopologySet",
     "opParams": {
-        "topologyFile": "../edge/spatialAnalysisTopology.json"
+        "topologyUrl": "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/2.0/topology.json"
     }
 },
 ```
@@ -261,17 +261,6 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
     }
 },
 ```
-* 變更圖表拓撲的連結：
-
-`topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
-
-在 **GraphInstanceSet** 底下，編輯圖表拓撲的名稱，使其符合上述連結中的值：
-
-`topologyName`：InferencingWithCVExtension
-
-在 **GraphTopologyDelete** 底下，編輯名稱：
-
-`name`：InferencingWithCVExtension
 
 >[!Note]
 查看如何使用 MediaGraphRealTimeComputerVisionExtension 來與空間分析模組連接。 將 ${grpcUrl} 設定為 **tcp://spatialAnalysis:<PORT_NUMBER>** ，例如 tcp://spatialAnalysis:50051
@@ -281,40 +270,51 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
     "@type": "#Microsoft.Media.MediaGraphCognitiveServicesVisionExtension",
     "name": "computerVisionExtension",
     "endpoint": {
-    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
-    "url": "${grpcUrl}",
-    "credentials": {
-        "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
-        "username": "${spatialanalysisusername}",
-        "password": "${spatialanalysispassword}"
-    }
+        "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+        "url": "${grpcUrl}",
+        "credentials": {
+            "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+            "username": "${spatialanalysisusername}",
+            "password": "${spatialanalysispassword}"
+        }
     },
     "image": {
-    "scale": {
-        "mode": "pad",
-        "width": "1408",
-        "height": "786"
+        "scale": {
+            "mode": "pad",
+            "width": "1408",
+            "height": "786"
+        },
+        "format": {
+            "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
+            "pixelFormat": "bgr24"
+        }
     },
-    "format": {
-        "@type": "#Microsoft.Media.MediaGraphImageFormatRaw",
-        "pixelFormat": "bgr24"
-    }
+    "samplingOptions": {
+        "skipSamplesWithoutAnnotation": "false",
+        "maximumSamplesPerSecond": "20"
     },
     "inputs": [
-    {
-        "nodeName": "frameRateFilter"
-    }
+        {
+            "nodeName": "rtspSource",
+            "outputSelectors": [
+                {
+                    "property": "mediaType",
+                    "operator": "is",
+                    "value": "video"
+                }
+            ]
+        }
     ]
 }
 ```
 
-執行偵錯工作階段並遵循終端機指示，其會設定拓撲、設定圖表執行個體、啟動圖表執行個體，最後刪除資源。
+執行偵錯工作階段並遵循 **TERMINAL** 指示，其會設定拓撲、設定圖表執行個體、啟動圖表執行個體，最後刪除資源。
 
 ## <a name="interpret-results"></a>解譯結果
 
 當媒體圖表具現化時，您應該會看到「MediaSessionEstablished」事件，在這裡是[範例 MediaSessionEstablished 事件](detect-motion-emit-events-quickstart.md#mediasessionestablished-event)。
 
-空間分析模組也會將 AI 深入解析事件傳送至即時影片分析，然後再傳送至 IoTHub，其也會顯示在輸出中。 實體是偵測物件，事件則是 spaceanalytics 事件。 此輸出將會傳遞至即時影片分析。
+空間分析模組也會將 AI 深入解析事件傳送至即時影片分析，然後再傳送至 IoTHub，其也會顯示在 **OUTPUT** 中。 實體是偵測物件，事件則是 spaceanalytics 事件。 此輸出將會傳遞至即時影片分析。
 
 personZoneEvent 的範例輸出 (來自 cognitiveservices.vision.spatialanalysis-personcrossingpolygon.livevideoanalytics 作業)：
 

@@ -11,16 +11,14 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: b0b415cce37e464abcba9fab5ad4c1196b1b2e1b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8222f88f5118c4ac8f489bb05ee5ca2724dbf067
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033471"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184079"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>教學課程：建置 Azure Machine Learning 管線進行批次評分
-
-
 
 在此進階教學課程中，您將了解如何建置 [Azure Machine Learning 管線](concept-ml-pipelines.md) 以執行批次評分作業。 機器學習管線會以速度、可攜性和重複使用性來將工作流程最佳化，讓您能夠專注於機器學習，而不是基礎結構和自動化。 在建置和發佈管線之後，您可以設定可讓您從任何平台上的任何 HTTP 程式庫觸發管線的 REST 端點。 
 
@@ -79,26 +77,24 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-dataset-objects"></a>建立資料集物件
 
-在建置管線時，系統會使用 `Dataset` 物件從工作區的資料存放區讀取資料，並使用 `PipelineData` 物件在管線步驟之間傳輸中繼資料。
+在建置管線時，系統會使用 `Dataset` 物件從工作區的資料存放區讀取資料，並使用 `OutputFileDatasetConfig` 物件在管線步驟之間傳輸中繼資料。
 
 > [!Important]
 > 本教學課程中的批次評分範例只會使用一個管線步驟。 在具有多個步驟的使用案例中，一般的流程會包含下列步驟：
 >
-> 1. 使用 `Dataset` 物件作為 *輸入* 以擷取原始資料、執行一些轉換，然後 *輸出*`PipelineData` 物件。
+> 1. 使用 `Dataset` 物件作為「輸入」以擷取原始資料、執行一些轉換，然後以 `OutputFileDatasetConfig` 物件「輸出」。
 >
-> 2. 使用上一個步驟中的 `PipelineData` *輸出物件* 作為 *輸入物件*。 請在後續步驟中重複執行前述步驟。
+> 2. 使用上一個步驟中的 `OutputFileDatasetConfig` *輸出物件* 作為 *輸入物件*。 請在後續步驟中重複執行前述步驟。
 
-在此案例中，您會針對輸入影像和分類標籤 (y-測試值) 建立對應至資料存放區目錄的 `Dataset` 物件。 您也會為批次評分輸出資料建立 `PipelineData` 物件。
+在此案例中，您會針對輸入影像和分類標籤 (y-測試值) 建立對應至資料存放區目錄的 `Dataset` 物件。 您也會為批次評分輸出資料建立 `OutputFileDatasetConfig` 物件。
 
 ```python
 from azureml.core.dataset import Dataset
-from azureml.pipeline.core import PipelineData
+from azureml.data import OutputFileDatasetConfig
 
 input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
 label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/"))
-output_dir = PipelineData(name="scores", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="batchscoring/results")
+output_dir = OutputFileDatasetConfig(name="scores")
 ```
 
 如果您想要在稍後重複使用資料集，請將其註冊到工作區。 此為選用步驟。
@@ -345,7 +341,7 @@ from azureml.core import Experiment
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline)
+pipeline_run = Experiment(ws, 'Tutorial-Batch-Scoring').submit(pipeline)
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
@@ -409,7 +405,7 @@ import requests
 rest_endpoint = published_pipeline.endpoint
 response = requests.post(rest_endpoint, 
                          headers=auth_header, 
-                         json={"ExperimentName": "batch_scoring",
+                         json={"ExperimentName": "Tutorial-Batch-Scoring",
                                "ParameterAssignments": {"process_count_per_node": 6}})
 run_id = response.json()["Id"]
 ```
@@ -422,7 +418,7 @@ run_id = response.json()["Id"]
 from azureml.pipeline.core.run import PipelineRun
 from azureml.widgets import RunDetails
 
-published_pipeline_run = PipelineRun(ws.experiments["batch_scoring"], run_id)
+published_pipeline_run = PipelineRun(ws.experiments["Tutorial-Batch-Scoring"], run_id)
 RunDetails(published_pipeline_run).show()
 ```
 

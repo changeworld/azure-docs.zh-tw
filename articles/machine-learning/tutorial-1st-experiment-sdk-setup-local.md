@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 5df8b478c550522d4602398afd208c1e001c96a2
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 2f33fe4fafbe194238fcfbd4942807ed2fc4d6ff
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883294"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183535"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教學課程：開始在開發環境中使用 Azure Machine Learning (第 1 部分，共 4 部分)
 
@@ -32,30 +32,49 @@ ms.locfileid: "97883294"
 > * 設定計算叢集。
 
 > [!NOTE]
-> 本教學課程系列著重於適用於 Python *作業型* 機器學習工作的 Azure Machine Learning 概念，而這些工作需要大量計算和/或重現性。 如果您對探索性工作流程比較有興趣，則可以改為[在 Azure Machine Learning 計算執行個體上使用 Jupyter 或 RStudio](tutorial-1st-experiment-sdk-setup.md)。
+> 本教學課程系列著重提交 **批次工作** 所需的 Azure Machine Learning 概念，也就是將程式碼提交至雲端以在背景中執行，而不需要任何使用者互動。 這適用於想要重複執行的指令碼或程式碼，或用於計算密集型機器學習工作的作業。 如果您對探索性工作流程比較有興趣，則可以改為[在 Azure Machine Learning 計算執行個體上使用 Jupyter 或 RStudio](tutorial-1st-experiment-sdk-setup.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 嘗試 [Azure Machine Learning](https://aka.ms/AMLFree)。
-- 熟悉 Python 和 [Machine Learning 概念](concept-azure-machine-learning-architecture.md)。 範例包括環境、訓練和評分。
-- Visual Studio Code、Jupyter 或 PyCharm 等本機開發環境。
-- Python (版本 3.5 至 3.7)。
-
+- 管理 Python 虛擬環境及安裝套件的 [Anaconda](https://www.anaconda.com/download/) 或 [Miniconda](https://www.anaconda.com/download/)。
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>安裝 Azure Machine Learning SDK
 
-在本教學課程中，我們將使用 Azure Machine Learning SDK for Python。
+在本教學課程中，我們將使用 Azure Machine Learning SDK for Python。 為了避免發生 Python 相依性問題，您將建立隔離的環境。 本教學課程系列使用 Conda 來建立該環境。 如果要使用其他解決方案，例如 `venv`、`virtualenv` 或 Docker，請確定您使用的是3.5 以上但低於 3.9 的 Python 版本。
 
-您可以使用最熟悉的工具 (例如：Conda 和 pip) 來設定要在整個教學課程中使用的 Python 環境。 透過 pip 將 Azure Machine Learning SDK for Python 安裝到 Python 環境：
+檢查系統上是否已安裝 Conda：
+    
+```bash
+conda --version
+```
+    
+如果此命令傳回 `conda not found` 錯誤，請[下載並安裝 Miniconda](https://docs.conda.io/en/latest/miniconda.html)。 
+
+安裝 Conda 後，請使用終端機或 Anaconda 提示視窗建立新的環境：
 
 ```bash
-pip install azureml-sdk
+conda create -n tutorial python=3.8
 ```
+
+接下來，將 Azure Machine Learning SDK 安裝到您所建立的 Conda 環境中：
+
+```bash
+conda activate tutorial
+pip install azureml-core
+```
+    
+> [!NOTE]
+> Azure Machine Learning SDK 需要大約 2 分鐘才能完成安裝。
+>
+> 如果遇到逾時錯誤，請改為嘗試 `pip install --default-timeout=100 azureml-core`。
+
 
 > [!div class="nextstepaction"]
 > [我已安裝 SDK](?success=install-sdk#dir) [我遇到問題](https://www.research.net/r/7C8Z3DN?issue=install-sdk)
 
 ## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>建立程式碼的目錄結構
+
 我們建議您為本教學課程設定下列簡單的目錄結構：
 
 ```markdown
@@ -68,8 +87,9 @@ tutorial
 
 > [!TIP]
 > 您可以在終端機視窗中建立隱藏的 .azureml 子目錄。  或使用下列方式：
+>
 > * 在 Mac 的 Finder 視窗中，使用 **Command + Shift + .** 切換功能以查看並建立以點 (.) 開頭的目錄。  
-> * 在 Windows 10 中，請參閱 [如何檢視隱藏的檔案和資料夾](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)。 
+> * 在 Windows 10 檔案總管中，請參閱 [如何檢視隱藏的檔案和資料夾](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5)。 
 > * 在 Linux 圖形化介面中，使用 **Ctrl + h** 或 [檢視] 功能表，然後勾選 [顯示隱藏的檔案] 方塊。
 
 > [!div class="nextstepaction"]
@@ -104,7 +124,7 @@ ws = Workspace.create(name='<my_workspace_name>', # provide a name for your work
 ws.write_config(path='.azureml')
 ```
 
-從 `tutorial` 目錄執行此程式碼：
+在已啟用 tutorial1 Conda 環境的視窗中，從 `tutorial` 目錄執行此程式碼。
 
 ```bash
 cd <path/to/tutorial>
@@ -163,7 +183,7 @@ except ComputeTargetException:
 cpu_cluster.wait_for_completion(show_output=True)
 ```
 
-執行 Python 檔案：
+在已啟用 tutorial1 Conda 環境的視窗中，執行 Python 檔案：
 
 ```bash
 python ./02-create-compute.py
@@ -185,6 +205,19 @@ tutorial
 
 > [!div class="nextstepaction"]
 > [我已建立計算叢集](?success=create-compute-cluster#next-steps) [我遇到問題](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster)
+
+## <a name="view-in-the-studio"></a>在 Studio 中檢視
+
+登入 [Azure Machine Learning Studio](https://ml.azure.com)，檢視您所建立的工作區和計算執行個體。
+
+1. 選取用來建立工作區的 [訂用帳戶]。
+1. 選取您建立的 **Machine Learning 工作區**，tutorial-ws。
+1. 載入工作區後，在左側選取 [計算]。
+1. 在頂端，選取 [計算叢集] 索引標籤。
+
+:::image type="content" source="media/tutorial-1st-experiment-sdk-local/compute-instance-in-studio.png" alt-text="螢幕擷取畫面：在工作區中檢視計算執行個體。":::
+
+此檢視會顯示已佈建的計算叢集，以及閒置節點的數目、忙碌節點，以及取消佈建的節點。  由於您尚未使用叢集，因此目前已取消佈建所有節點。
 
 ## <a name="next-steps"></a>後續步驟
 

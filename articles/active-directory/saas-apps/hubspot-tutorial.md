@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 12/27/2020
 ms.author: jeedes
-ms.openlocfilehash: c53b7fed17ba4ef2000b905b202286338cd461ed
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b60ab21bb1e8f5270512d3f1e77aeab2baedc31
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442894"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>教學課程：Azure Active Directory 與 HubSpot 整合
 
-在本教學課程中，您將了解如何整合 HubSpot 與 Azure Active Directory (Azure AD)。
+在本教學課程中，您將了解如何整合 HubSpot 與 Azure Active Directory (Azure AD)。 在整合 HubSpot 與 Azure AD 時，您可以︰
 
-HubSpot 與 Azure AD 整合提供下列優點：
-
-* 您可以使用 Azure AD 來控制可存取 HubSpot 的人員。
-* 使用者可以使用其 Azure AD 帳戶自動登入 HubSpot (單一登入)。
-* 您可以在 Azure 入口網站中集中管理您的帳戶。
-
-如需軟體即服務 (SaaS) 應用程式與 Azure AD 的整合詳細資訊，請參閱 [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)。
+* 在 Azure AD 中控制可存取 HubSpot 的人員。
+* 讓使用者使用其 Azure AD 帳戶自動登入 HubSpot。
+* 在 Azure 入口網站集中管理您的帳戶。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -46,29 +42,18 @@ HubSpot 支援下列功能︰
 * **SP 起始的單一登入**
 * **由 IDP 起始的單一登入**
 
-## <a name="add-hubspot-in-the-azure-portal"></a>在 Azure 入口網站中新增 HubSpot
+## <a name="adding-hubspot-from-the-gallery"></a>從資源庫新增 HubSpot
 
-若要整合 HubSpot 與 Azure AD，您必須將 HubSpot 新增到受控 SaaS 應用程式清單。
+若要設定 HubSpot 與 Azure AD 整合，您需要從資源庫將 HubSpot 新增至受控 SaaS 應用程式清單。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
-
-1. 在左側功能表中，選取 [Azure Active Directory]  。
-
-    ![Azure Active Directory 選項](common/select-azuread.png)
-
-1. 選取 [企業應用程式]   > [所有應用程式]  。
-
-    ![[企業應用程式] 窗格](common/enterprise-applications.png)
-
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 Azure 入口網站。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
+1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **HubSpot**。
+1. 從結果面板中選取 [HubSpot]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-    ![新增應用程式選項](common/add-new-app.png)
-
-1. 在搜尋方塊中，輸入 **HubSpot** 。 在搜尋結果中，選取 [HubSpot]  ，然後選取 [新增]  。
-
-    ![結果清單中的 HubSpot](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-hubspot"></a>設定和測試 HubSpot 的 Azure AD SSO
 
 在本節中，您會以名為 **Britta Simon** 的測試使用者為基礎，設定及測試與 HubSpot 搭配運作的 Azure AD 單一登入。 若要讓單一登入能夠運作，您必須建立 Azure AD 使用者與 HubSpot 中相關使用者之間的連結關聯性。
 
@@ -85,19 +70,11 @@ HubSpot 支援下列功能︰
 
 ### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
-在本節中，您會在 Azure 入口網站中設定與 HubSpot 搭配運作的 Azure AD 單一登入。
+1. 在 Azure 入口網站的 [HubSpot] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
+1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的鉛筆圖示，以編輯設定。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/) 的 [HubSpot]  應用程式整合窗格中，選取 [單一登入]  。
-
-    ![設定單一登入選項](common/select-sso.png)
-
-1. 在 [選取單一登入方法]  窗格中，選取 [SAML]  或 [SAML/WS-Fed]  模式以啟用單一登入。
-
-    ![單一登入選取模式](common/select-saml-option.png)
-
-1. 在 [以 SAML 設定單一登入]  窗格中選取 [編輯]  (鉛筆圖示)，以開啟 [基本 SAML 組態]  窗格。
-
-    ![編輯基本 SAML 組態](common/edit-urls.png)
+   ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 若要在 [基本 SAML 組態]  窗格中設定「IDP 起始模式」  ，請完成下列步驟：
 
@@ -114,7 +91,7 @@ HubSpot 支援下列功能︰
 
     1. 選取 [設定其他 URL]  。
 
-    1. 在 [登入 URL]  方塊中，輸入 **https:\//app.hubspot.com/login** 。
+    1. 在 [登入 URL]  方塊中，輸入 **https:\//app.hubspot.com/login**。
 
     ![[設定其他 URL] 選項](common/metadata-upload-additional-signon.png)
 
@@ -164,53 +141,27 @@ HubSpot 支援下列功能︰
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
-在本節中，您會在 Azure 入口網站中建立名為 Britta Simon 的測試使用者。
+在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站中，選取 [Azure Active Directory]   > [使用者]   > [所有使用者]  。
-
-    ![[使用者] 和 [所有使用者] 選項](common/users.png)
-
-1. 選取 [新增使用者]  。
-
-    ![[新增使用者] 選項](common/new-user.png)
-
-1. 在 [使用者]  窗格中，完成下列步驟：
-
-    1. 在 [名稱]  方塊中，輸入 **BrittaSimon** 。
-  
-    1. 在 [使用者名稱] 方塊中，輸入 **brittasimon\@\<your-company-domain>.\<extension\>** 。 例如， **brittasimon\@contoso.com** 。
-
-    1. 選取 [顯示密碼]  核取方塊。 記下 [密碼]  方塊中顯示的值。
-
-    1. 選取 [建立]  。
-
-    ![[使用者] 窗格](common/user-properties.png)
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在畫面頂端選取 [新增使用者]  。
+1. 在 [使用者]  屬性中，執行下列步驟：
+    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
+    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
+    1. 按一下頁面底部的 [新增] 。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
-在本節中，您會將 HubSpot 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
+在本節中，您會將 HubSpot 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]   > [所有應用程式]   > [HubSpot]  。
-
-    ![[企業應用程式] 窗格](common/enterprise-applications.png)
-
+1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [HubSpot]  。
-
-    ![應用程式清單中的 HubSpot](common/all-applications.png)
-
-1. 在功能表中，選取 [使用者和群組]  。
-
-    ![[使用者和群組] 選項](common/users-groups-blade.png)
-
-1. 選取 [新增使用者]  。 然後在 [新增指派]  窗格中，選取 [使用者和群組]  。
-
-    ![新增指派窗格](common/add-assign-user.png)
-
-1. 在 [使用者和群組]  窗格中，選取使用者清單中的 [Britta Simon]  。 選擇 [選取]  。
-
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  窗格的清單中選取相關的使用者角色。 選擇 [選取]  。
-
-1. 在 [新增指派]  窗格中，選取 [指派]  。
+1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
+1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
+1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ### <a name="create-a-hubspot-test-user"></a>建立 HubSpot 測試使用者
 
@@ -249,14 +200,21 @@ HubSpot 支援下列功能︰
 
 ### <a name="test-single-sign-on"></a>測試單一登入
 
-在本節中，您會使用 MyApps 入口網站來測試您的 Azure AD 單一登入組態。
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
 
-設定單一登入之後，當您在「我的應用程式」入口網站中選取 [HubSpot]  時，您會自動登入 HubSpot。 如需「我的應用程式」入口網站的詳細資訊，請參閱[在「我的應用程式」入口網站中存取和使用應用程式](../user-help/my-apps-portal-end-user-access.md)。
+#### <a name="sp-initiated"></a>SP 起始：
+
+* 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向至您可以在其中起始登入流程的 HubSpot 登入 URL。  
+
+* 直接移至 HubSpot 登入 URL，然後從該處起始登入流程。
+
+#### <a name="idp-initiated"></a>IDP 起始：
+
+* 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 HubSpot 
+
+您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [HubSpot] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 HubSpot。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解，請檢閱下列文章：
-
-- [用於整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](./tutorial-list.md)
-- [Azure Active Directory 中的應用程式單一登入](../manage-apps/what-is-single-sign-on.md)
-- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
+設定 HubSpot 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)。

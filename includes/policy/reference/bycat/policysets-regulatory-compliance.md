@@ -2,20 +2,21 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: dc4ec31a307d559fad84392522e6847aab1e3873
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3b537ad0100e285fe02f557b92d67e09ae615def
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986912"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046363"
 ---
 |名稱 |描述 |原則 |版本 |
 |---|---|---|---|
 |[澳大利亞政府受保護的 ISM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRAP_Audit.json) |此方案包含的稽核與虛擬機器擴充功能部署原則，可處理一部分的澳洲政府資訊安全手冊 (ISM) 控制。 其他原則將會新增在即將推出的版本中。 如需詳細資訊，請瀏覽 [https://aka.ms/AustralianGovernmentISM-blueprint](https://aka.ms/AustralianGovernmentISM-blueprint)。 |62 |3.0.0-preview |
-|[Azure 安全性效能評定](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |此方案包含可處理部分 Azure 安全性效能評定建議的稽核與虛擬機器擴充功能部署原則。 其他原則將會新增在即將推出的版本中。 如需詳細資訊，請瀏覽 [https://aka.ms/azsecbm](https://aka.ms/azsecbm)。 |136 |6.1.0-preview |
+|[Azure 安全性效能評定 v1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_audit.json) |此方案包含可處理部分 Azure 安全性效能評定 v1建議的稽核與虛擬機器擴充功能部署原則。 其他原則將會新增在即將推出的版本中。 如需詳細資訊，請瀏覽 [https://aka.ms/azsecbm](https://aka.ms/azsecbm)。 |136 |6.1.1-preview |
+|[Azure 安全性效能評定 v2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/asb_v2.json) |此方案包含處理一部分 Azure 安全性效能評定 v2 建議的原則。 其他原則將會新增在即將推出的版本中。 如需詳細資訊，請瀏覽 [https://aka.ms/azsecbm](https://aka.ms/azsecbm)。 |181 |1.0.0-preview |
 |[加拿大聯邦 PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |此方案包含可處理部分 Canada Federal PBMM 控制的稽核與虛擬機器擴充功能部署原則。 其他原則將會新增在即將推出的版本中。 如需詳細資訊，請瀏覽 [https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint)。 |60 |3.0.0 |
 |[CIS Microsoft Azure Foundations Benchmark 1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |此方案包含可處理部分 CIS Microsoft Azure Foundations Benchmark 建議的稽核原則。 其他原則將會新增在即將推出的版本中。 如需詳細資訊，請瀏覽 [https://aka.ms/cisazure-blueprint](https://aka.ms/cisazure-blueprint)。 |87 |7.1.0 |
 |[FedRAMP 高等級](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |此方案包含可處理部分 FedRAMP H 控制的稽核與虛擬機器擴充功能部署原則。 其他原則將會新增在即將推出的版本中。 如需詳細資訊，請瀏覽 [https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint)。 |72 |3.0.1 |

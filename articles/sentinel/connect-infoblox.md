@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: c8af1c32607e5fc7bf548b40069e18923c666303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28abb9f09e3bca2522b959c6a9b890de5320b17a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87089646"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567443"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>將您的 Infoblox NIOS 連線至 Azure Sentinel
 
@@ -34,7 +34,7 @@ ms.locfileid: "87089646"
 
 ## <a name="forward-infoblox-logs-to-the-syslog-agent"></a>將 Infoblox 記錄轉送到 Syslog 代理程式  
 
-將 Infoblox 設定為透過 Syslog 代理程式將 Syslog 訊息轉送至您的 Azure 工作區。
+設定 Infoblox 以透過 Syslog 代理程式將 Syslog 訊息轉寄至 Azure Sentinel 工作區。
 
 1. 在 Azure Sentinel 入口網站中，按一下 [ **資料連線器** ]，然後選取 [ **Infoblox NIOS** 連接器]。
 
@@ -48,9 +48,9 @@ ms.locfileid: "87089646"
 
 ## <a name="validate-connectivity"></a>驗證連線能力
 
-可能需要20分鐘的時間，記錄才會開始出現在 Log Analytics 中。 
+最多可能需要20分鐘的時間，記錄才會出現在 Log Analytics 中。 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本檔中，您已瞭解如何將 Infoblox NIOS 連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 

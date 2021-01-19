@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2020
 ms.author: jeedes
-ms.openlocfilehash: b2a6b902f1c6b7e06b1a72b183007fbb9fe05c3c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5577b0cb480b372b64a9cb25f52617edfca3f2e0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515945"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108138"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-single-sign-on-for-skytap"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Single Sign-on for Skytap 整合
 
@@ -50,7 +50,7 @@ ms.locfileid: "92515945"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Single Sign-on for Skytap** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Single Sign-on for Skytap**。
 1. 從結果面板中選取 [Single Sign-on for Skytap]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-single-sign-on-for-skytap"></a>設定及測試 Single Sign-on for Skytap 的 Azure AD 單一登入
@@ -74,7 +74,7 @@ ms.locfileid: "92515945"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Single Sign-on for Skytap]  應用程式整合頁面上，尋找 [管理]  區段。 選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的鉛筆圖示，以編輯設定。
 
    ![以 SAML 設定單一登入頁面的螢幕擷取畫面，醒目提示鉛筆圖示](common/edit-urls.png)
@@ -85,7 +85,7 @@ ms.locfileid: "92515945"
 
     b. 在 [回覆 URL]  文字方塊中，以下列模式輸入 URL︰`https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`
 
-1. 如果您想要以 **SP** 起始的模式設定應用程式，請選取 [設定其他 URL]  ，然後執行下列步驟：
+1. 您可選擇性地選取 [設定其他 URL]，然後執行下列步驟，以 **SP** 起始的模式設定應用程式：
 
     a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>`
 
@@ -95,7 +95,7 @@ ms.locfileid: "92515945"
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「識別碼」、「回覆 URL」、「登入 URL」及「轉送狀態」來更新這些值。 請連絡 [Single Sign-on for Skytap 用戶端支援小組](mailto:support@skytap.com)，以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 **同盟中繼資料 XML** 。 選取 [下載]  以下載中繼資料檔案，並將其儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 **同盟中繼資料 XML**。 選取 [下載]  以下載中繼資料檔案，並將其儲存在您的電腦上。
 
     ![憑證下載連結的螢幕擷取畫面](common/metadataxml.png)
 

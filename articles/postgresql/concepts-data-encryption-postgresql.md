@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: c2a6a88e9f730e17c929cf7949352448903435f6
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 730d12558e413d96909914d06187d0d5f89ec661
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118450"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567527"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器會使用客戶管理的金鑰進行資料加密
 
-Azure 于 postgresql 會利用 Microsoft 管理的金鑰，利用 [Azure 儲存體加密](../storage/common/storage-service-encryption.md) 來加密待用資料。 對於 Azure 于 postgresql 使用者而言，它非常類似于其他資料庫中的透明資料 Encruption (TDE) ，例如 SQL Server。 許多組織都需要使用客戶管理的金鑰來完全掌控資料的存取權。 適用於 PostgreSQL 單一伺服器的 Azure 資料庫會使用客戶管理金鑰的資料加密，可讓您攜帶自己的金鑰 (BYOK) 來保護待用資料。 此外也可讓組織在金鑰和資料的管理中實作職責區分。 使用客戶管理的加密時，您將負責處理並全權掌控金鑰的生命週期、金鑰使用權限，以及金鑰的作業稽核。
+Azure 于 postgresql 會利用 Microsoft 管理的金鑰，利用 [Azure 儲存體加密](../storage/common/storage-service-encryption.md) 來加密待用資料。 對於 Azure 于 postgresql 使用者而言，它與其他資料庫（例如 SQL Server）中的透明資料加密 (TDE) 非常類似。 許多組織都需要使用客戶管理的金鑰來完全掌控資料的存取權。 適用於 PostgreSQL 單一伺服器的 Azure 資料庫會使用客戶管理金鑰的資料加密，可讓您攜帶自己的金鑰 (BYOK) 來保護待用資料。 此外也可讓組織在金鑰和資料的管理中實作職責區分。 使用客戶管理的加密時，您將負責處理並全權掌控金鑰的生命週期、金鑰使用權限，以及金鑰的作業稽核。
 
 適用於 PostgreSQL 單一伺服器的 Azure 資料庫會使用客戶管理金鑰加密資料，定設定於伺服器層級。 針對指定的伺服器，系統會使用客戶管理的金鑰 (稱為「金鑰加密金鑰」(KEK)) 來加密服務所使用的資料加密金鑰 (DEK)。 KEK 是儲存在客戶擁有及客戶所管理 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) 執行個體中的非對稱金鑰。 金鑰加密金鑰 (KEK) 和資料加密金鑰 (DEK) 稍後會在此文章中詳細說明。
 

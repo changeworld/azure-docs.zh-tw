@@ -1,21 +1,21 @@
 ---
 title: 建立和管理 Azure Migrate 專案
 description: 在 Azure Migrate 中尋找、建立、管理和刪除專案。
-author: ms-psharma
-ms.author: panshar
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 445e08b255e5b4dd67dd1c6a47c8df6ce59df5bd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753819"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567788"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>建立和管理 Azure Migrate 專案
 
-本文說明如何建立、管理和刪除 [Azure Migrate](migrate-services-overview.md) 專案。
+本文說明如何建立、管理和刪除 [Azure Migrate](migrate-services-overview.md) 專案。 如果您使用的是傳統 Azure Migrate 專案，請刪除這些專案，然後遵循步驟來建立新的 Azure Migrate 專案。 您無法將傳統 Azure Migrate 專案或元件升級為 Azure Migrate。
 
 Azure Migrate 專案可用來儲存從您評估或遷移的環境中收集到的探索、評量和移轉中繼資料。 在專案中，您可以追蹤探索到的資產、建立評量，以及協調遷移至 Azure。  
 

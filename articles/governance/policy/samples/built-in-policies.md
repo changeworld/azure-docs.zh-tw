@@ -1,15 +1,15 @@
 ---
 title: 內建原則定義的清單
 description: 列出 Azure 原則的內建原則定義。 分類包括標籤、法規合規性、Key Vault、Kubernetes、來賓設定等等。
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 66563a4754d706f2c73e90ad3c2e8e0f4fe7d3a0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: ccd310583f003fd381b9ddd48333644f2241ea88
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "96007596"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98047126"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure 原則的內建原則定義
 
@@ -49,6 +49,10 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 
 [!INCLUDE [azure-policy-reference-policies-azure-data-explorer](../../../../includes/policy/reference/bycat/policies-azure-data-explorer.md)]
 
+## <a name="azure-stack-edge"></a>Azure Stack Edge
+
+[!INCLUDE [azure-policy-reference-policies-azure-stack-edge](../../../../includes/policy/reference/bycat/policies-azure-stack-edge.md)]
+
 ## <a name="backup"></a>Backup
 
 [!INCLUDE [azure-policy-reference-policies-backup](../../../../includes/policy/reference/bycat/policies-backup.md)]
@@ -56,6 +60,10 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 ## <a name="batch"></a>Batch
 
 [!INCLUDE [azure-policy-reference-policies-batch](../../../../includes/policy/reference/bycat/policies-batch.md)]
+
+## <a name="bot-services"></a>Bot Service
+
+[!INCLUDE [azure-policy-reference-policies-bot-services](../../../../includes/policy/reference/bycat/policies-bot-services.md)]
 
 ## <a name="cache"></a>快取
 
@@ -80,6 +88,10 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 ## <a name="custom-provider"></a>自訂提供者
 
 [!INCLUDE [azure-policy-reference-policies-custom-provider](../../../../includes/policy/reference/bycat/policies-custom-provider.md)]
+
+## <a name="data-box"></a>資料箱
+
+[!INCLUDE [azure-policy-reference-policies-data-box](../../../../includes/policy/reference/bycat/policies-data-box.md)]
 
 ## <a name="data-lake"></a>資料湖
 
