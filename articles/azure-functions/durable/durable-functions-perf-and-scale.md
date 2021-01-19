@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c94218248f1122cdb60ab8124bc9d9365fe8947b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 120335a7bce83bc3d4771ea64f665d67c7d1079a
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97931733"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572794"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 中的效能和級別
 
@@ -103,7 +103,7 @@ Durable Functions 所使用的佇列、資料表和 blob 會在已設定的 Azur
   "extensions": {
     "durableTask": {
       "storageProvider": {
-          "partitionCount": 3
+        "partitionCount": 3
       }
     }
   }
@@ -264,7 +264,7 @@ Azure Functions 支援在單一應用程式執行個體中同時執行多個函�
 
 下表顯示先前所述案例的預期「最大」輸送量數字。 「執行個體」是指在 Azure App Service 中單一小型 ([A1](../../virtual-machines/sizes-previous-gen.md)) VM 上執行之協調器函式的單一執行個體。 在所有情況下，假設已啟用[擴充工作階段](#orchestrator-function-replay)。 實際結果可能會因函式程式碼所執行的 CPU 或 I/O 工作而有所不同。
 
-| 案例 | 最大輸送量 |
+| 狀況 | 最大輸送量 |
 |-|-|
 | 循序活動執行 | 每個執行個體每秒 5 個活動 |
 | 平行活動執行 (展開傳送) | 每個執行個體每秒 100 個活動 |

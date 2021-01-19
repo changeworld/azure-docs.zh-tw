@@ -11,18 +11,18 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 2e26bfa484d573c0158e518b31087fb10bdcdfb9
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185677"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573287"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自動化機器學習中設定資料分割和交叉驗證
 
 在本文中，您將瞭解不同的選項，讓您針對自動化機器學習服務、自動化 ML、實驗設定定型/驗證資料分割和交叉驗證。
 
-在 Azure Machine Learning 中，當您使用自動化 ML 來建立多個 ML 模型時，每個子系執行都必須藉由計算該模型的品質計量（例如精確度或 AUC 加權）來驗證相關的模型。 這些計量的計算方式是比較每個模型所做的預測與驗證資料中過去觀察的真實標籤。 
+在 Azure Machine Learning 中，當您使用自動化 ML 來建立多個 ML 模型時，每個子系執行都必須藉由計算該模型的品質計量（例如精確度或 AUC 加權）來驗證相關的模型。 這些計量的計算方式是比較每個模型所做的預測與驗證資料中過去觀察的真實標籤。 [深入瞭解如何根據驗證類型計算度量](#metric-calculation-for-cross-validation-in-machine-learning)。 
 
 自動化 ML 實驗會自動執行模型驗證。 下列各節說明如何使用 [Azure Machine Learning PYTHON SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py)來進一步自訂驗證設定。 
 
@@ -31,7 +31,7 @@ ms.locfileid: "98185677"
 > [!NOTE]
 > Studio 目前支援定型/驗證資料分割和交叉驗證選項，但不支援針對您的驗證集指定個別的資料檔案。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 針對本文，您需要
 
@@ -43,9 +43,9 @@ ms.locfileid: "98185677"
 
     * [關於 Machine Learning 中的訓練、驗證和測試集](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
-    * [瞭解機器學習中的交叉驗證](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd)
+    * [瞭解機器學習中的交叉驗證](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
-## <a name="default-data-splits-and-cross-validation"></a>預設資料分割和交叉驗證
+## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>機器學習中的預設資料分割和交叉驗證
 
 使用 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) 物件來定義您的實驗和定型設定。 在下列程式碼片段中，請注意，只會定義必要的參數，也就是 `n_cross_validation` `validation_ data` **不** 包含或的參數。
 
@@ -155,6 +155,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 > [!NOTE]
 > 若要搭配使用 `cv_split_column_names` 與 `training_data` `label_column_name` ，請升級您的 Azure Machine Learning Python SDK 1.6.0 版或更新版本。 針對先前的 SDK 版本，請參閱使用 `cv_splits_indices` ，但請注意，它只會搭配 `X` 和 `y` 資料集輸入使用。 
+
+
+## <a name="metric-calculation-for-cross-validation-in-machine-learning"></a>機器學習中的交叉驗證度量計算
+
+使用 k 折迭或 Monte Carlo 交叉驗證時，系統會在每個驗證折迭上計算計量，然後匯總。 匯總運算是純量計量和圖表的總和。 交叉驗證期間計算的計量是以所有折迭為基礎，因此是來自定型集的所有樣本。 [深入瞭解自動化機器學習中的計量](how-to-understand-automated-ml.md)。
+
+使用自訂驗證集或自動選取的驗證集時，只會從該驗證集計算模型評估度量，而不是從定型資料計算。
 
 ## <a name="next-steps"></a>後續步驟
 

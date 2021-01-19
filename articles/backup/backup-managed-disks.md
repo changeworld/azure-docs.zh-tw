@@ -3,12 +3,12 @@ title: 備份 Azure 受控磁碟
 description: 瞭解如何從 Azure 入口網站備份 Azure 受控磁碟。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: c4e2d4e649d59389ac3f8bd115e43acabc792eb2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557505"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573117"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>在預覽中備份 Azure 受控磁碟 () 
 
@@ -129,6 +129,8 @@ ms.locfileid: "98557505"
    >輸入備份保存庫名稱，以選取保存庫的受控識別。
 
    ![新增磁片快照集參與者角色](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
+
+1. 如果要備份的磁片使用 [客戶管理的金鑰進行加密 (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal)或使用 [以平臺管理的金鑰和客戶管理的金鑰進行雙重加密](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)，然後在 **磁片加密集** 資源上，將「**讀取** 者」角色許可權指派給備份保存庫的受控識別。
 
 1. 確認備份保存庫的受控識別在來源磁片和資源群組上有一組正確的角色指派，作為快照資料存放區。
 

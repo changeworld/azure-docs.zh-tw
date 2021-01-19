@@ -6,18 +6,18 @@ ms.service: site-recovery
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 19a98b5786f35839d84e1e969c29e45e2b5e8dea
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616604"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573389"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>讓 VMware VM 能夠複寫至 Azure
 
 本文說明如何啟用將內部部署 VMware 虛擬機器 (VM) 複寫至 Azure 的複寫。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本文假設您的系統符合下列準則：
 
@@ -34,7 +34,7 @@ ms.locfileid: "97616604"
 - 作業系統磁片應該是基本磁碟，而非動態磁碟。
 - 針對第2代已啟用 UEFI 的虛擬機器，作業系統系列應為 Windows，而且開機磁片應小於 300 GB。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 當您複寫 VMware 虛擬機器時，請記住下列資訊：
 
@@ -75,12 +75,12 @@ ms.locfileid: "97616604"
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-rep3.png" alt-text="啟用複寫目標視窗":::
 
-1. 針對 **虛擬機器**  >  ，**選取 [虛擬機器**]，選取您要複寫的每部虛擬機器。 您只能選取可以啟用複寫的虛擬機器。 然後選取 [確定]。 如果您看不到或無法選取任何特定的虛擬機器，請參閱 [Azure 入口網站中未列出來源電腦](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) 以解決此問題。
+1. 針對 **虛擬機器**  >  ，**選取 [虛擬機器**]，選取您要複寫的每部虛擬機器。 您只能選取可以啟用複寫的虛擬機器。 然後選取 [確定]  。 如果您看不到或無法選取任何特定的虛擬機器，請參閱 [Azure 入口網站中未列出來源電腦](vmware-azure-troubleshoot-replication.md#step-3-troubleshoot-source-machines-that-arent-available-for-replication) 以解決此問題。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="啟用複寫選取虛擬機器視窗":::
 
 1. 在 [設定屬性 **] 屬性**  >  中，選取進程伺服器用來自動在 VM 上安裝 Site Recovery 行動服務的帳戶。 此外，請根據您的資料變換模式，選擇要用於複寫的目標受控磁片類型。
-1. 根據預設，會複寫來源 VM 的所有磁片。 若要排除磁片不要複寫，請清除任何您不想要複寫之磁片的 [ **包含** ] 核取方塊。 然後選取 [確定]。 您可以稍後再設定其他屬性。 [深入了解](vmware-azure-exclude-disk.md)排除磁碟。
+1. 根據預設，會複寫來源 VM 的所有磁片。 若要排除磁片不要複寫，請清除任何您不想要複寫之磁片的 [ **包含** ] 核取方塊。 然後選取 [確定]  。 您可以稍後再設定其他屬性。 [深入了解](vmware-azure-exclude-disk.md)排除磁碟。
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="啟用複寫設定屬性視窗":::
 
@@ -141,7 +141,7 @@ ms.locfileid: "97616604"
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="[計算和網路屬性] 視窗":::
 
    - **AZURE VM 名稱**：如有必要，請修改名稱以符合 Azure 需求。
-   - **目標 vm 大小或 VM 類型**：根據在目標 Azure 區域中包含磁片計數、NIC 計數、CPU 核心計數、記憶體和可用 VM 角色大小的參數，選擇預設的 vm 大小。 Azure Site Recovery 會挑選符合所有準則的第一個可用 VM 大小。 您可以在容錯移轉之前的任何時間，根據需求選取不同的 VM 大小。 VM 磁片大小也是根據來源磁片大小，而且只能在容錯移轉後變更。 深入瞭解 [Windows 上 VM 磁片的擴充性和效能目標的](../virtual-machines/windows/disk-scalability-targets.md)磁片大小和 IOPS 速率。
+   - **目標 vm 大小或 VM 類型**：根據在目標 Azure 區域中包含磁片計數、NIC 計數、CPU 核心計數、記憶體和可用 VM 角色大小的參數，選擇預設的 vm 大小。 Azure Site Recovery 會挑選符合所有準則的第一個可用 VM 大小。 您可以在容錯移轉之前的任何時間，根據需求選取不同的 VM 大小。 VM 磁片大小也是根據來源磁片大小，而且只能在容錯移轉後變更。 深入瞭解 [VM 磁片的擴充性和效能目標上的](../virtual-machines/disks-scalability-targets.md)磁片大小和 IOPS 速率。
    - **資源群組**：您可以選取一個 [資源群組](../azure-resource-manager/management/overview.md#resource-groups)，讓虛擬機器成為容錯移轉後的一部分。 您可以在容錯移轉之前隨時變更此設定。 在容錯移轉之後，如果您將虛擬機器遷移至不同的資源群組，該虛擬機器的保護設定就會中斷。
    - **可用性設定組**：如果虛擬機器必須是容錯移轉後的一部分，您可以選取 [可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md) 。 當您選取可用性設定組時，請記住下列資訊：
      - 只會列出屬於指定之資源群組的可用性設定組。

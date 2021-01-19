@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a09a2083c1258a3120f8696aa39a0252dbfcf2d
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 83a4a2aa8328a6e3de9eab44bbf19fc76921b128
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209677"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573342"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 儲存體備援
 
@@ -35,11 +35,15 @@ Azure 儲存體帳戶中的資料一律會在主要區域內複寫三次。 Azur
 
 ### <a name="locally-redundant-storage"></a>本地備援儲存體
 
-本地備援儲存體 (LRS) 會在主要區域中將資料於單一實體位置內複寫三次。 LRS 可提供在指定一年中至少 99.999999999% (11 個九) 的物件持久性。
+本地 LRS 儲存體 () 在主要區域中的單一資料中心內複寫您的資料三次。 LRS 可提供在指定一年中至少 99.999999999% (11 個九) 的物件持久性。
 
 相較於其他選項，LRS 是成本最低的備援選項，且提供的持久性最弱。 LRS 可保護資料以避免伺服器機架和磁碟機失敗。 但是，若在資料中心內發生火災或洪水之類的災害，則所有使用 LRS 的儲存體帳戶複本可能都會遺失或無法復原。 若要降低此風險，Microsoft 建議使用[區域備援儲存體](#zone-redundant-storage) (ZRS)、[異地備援儲存體](#geo-redundant-storage) (GRS)，或[異地區域備援儲存體](#geo-zone-redundant-storage) (GZRS)。
 
 對使用 LRS 儲存體帳戶發出的寫入要求會以同步方式進行。 只有在將資料寫入三個複本之後，寫入作業才會成功傳回。
+
+下圖顯示使用 LRS 在單一資料中心內複寫資料的方式：
+
+:::image type="content" source="media/storage-redundancy/locally-redundant-storage.png" alt-text="顯示如何使用 LRS 在單一資料中心內複寫資料的圖表":::
 
 針對下列案例，LRS 是良好的選擇：
 
@@ -54,7 +58,11 @@ Azure 儲存體帳戶中的資料一律會在主要區域內複寫三次。 Azur
 
 對使用 ZRS 儲存體帳戶發出的寫入要求會以同步方式進行。 只有在將資料寫入三個可用區域的所有複本之後，寫入作業才會成功傳回。
 
-針對需要一致性、持久性和高可用性的案例，Microsoft 建議在主要區域中使用 ZRS。 如果您想要限制應用程式只在國家或地區內複寫資料，因為資料治理需求，我們也建議使用 ZRS。
+針對需要一致性、持久性和高可用性的案例，Microsoft 建議在主要區域中使用 ZRS。 此外，也建議將資料複寫到國家或區域內，以符合資料治理需求的 ZRS。
+
+下圖顯示使用 ZRS 在主要區域中的可用性區域之間複寫資料的方式：
+
+:::image type="content" source="media/storage-redundancy/zone-redundant-storage.png" alt-text="顯示如何使用 ZRS 在主要區域中複寫資料的圖表":::
 
 ZRS 可為資料提供優秀的效能、低延遲以及復原，即使其暫時無法使用也一樣。 但是，ZRS 本身可能無法保護資料不受永久影響多個區域的區域性災害影響。 針對區域性災害的保護，Microsoft 建議使用[異地區域備援儲存體](#geo-zone-redundant-storage) (GZRS)，這種儲存體會在主要區域內使用 ZRS，但也會將資料異地複寫至次要區域。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 9bee5fa6b76aad9305947ebe460f37c399340038
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: d858474eca34243a007d0d0ac1e023a4a0fab8ec
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033438"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572335"
 ---
 # <a name="text-to-speech-rest-api"></a>文字轉換語音 REST API
 
@@ -59,10 +59,12 @@ ms.locfileid: "98033438"
 | 日本東部 | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 南韓中部 | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國中北部 | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| 歐洲北部 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 北歐 | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 南非北部 | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國中南部 | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 東南亞 | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 英國南部 | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| 美國中西部 | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 西歐 | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國西部 | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | 美國西部 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -274,7 +276,7 @@ Authorization: Bearer [Base64 access_token]
 
 如果 HTTP 狀態為 `200 OK`，則回應主體會包含所要求格式的音訊檔案。 會在將此檔案傳輸、儲存到緩衝區或儲存到檔案時播放。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 - [適用于長格式音訊的非同步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4da707ab698599c8ea5dd8e1ea8647f543eb2a68
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95524244"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572182"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>支援在 Azure 區域之間移動 Azure Vm
 
@@ -61,7 +61,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 
 ### <a name="supported-ubuntu-kernel-versions"></a>支援的 Ubuntu 核心版本
 
-**版本** | **核心版本** 
+**發行** | **核心版本** 
 --- | --- 
 14.04 LTS |  3.13.0-24-generic 至 3.13.0-170-generic、<br/>3.16.0-25-generic 至 3.16.0-77-generic、<br/>3.19.0-18-generic 至 3.19.0-80-generic、<br/>4.2.0-18-generic 至 4.2.0-42-generic、<br/>4.4.0-21-generic 至 4.4.0-148-generic、<br/>4.15.0-1023-azure 至 4.15.0-1045-azure 
 16.04 LTS |  4.4.0-21-generic 至 4.4.0-171-generic、<br/>4.8.0-34-generic 至 4.8.0-58-generic、<br/>4.10.0-14-generic 至 4.10.0-42-generic、<br/>4.11.0-13-generic 至 4.11.0-14-generic、<br/>4.13.0-16-generic 至 4.13.0-45-generic、<br/>4.15.0-13-generic 至 4.15.0-74-generic<br/>4.11.0-1009-azure 至 4.11.0-1016-azure、<br/>4.13.0-1005-azure 至 4.13.0-1018-azure <br/>4.15.0-1012-azure 至 4.15.0-1066-azure
@@ -70,7 +70,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 
 ### <a name="supported-debian-kernel-versions"></a>支援的 Debian 核心版本 
 
-**版本** |  **核心版本** 
+**發行** |  **核心版本** 
 --- |  --- 
 Debian 7 |  3.2.0-4-amd64 至 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 
 Debian 8 |  3.16.0-4-amd64 至 3.16.0-10-amd64、4.9.0-0.bpo.4-amd64 至 4.9.0-0.bpo.11-amd64 
@@ -78,14 +78,14 @@ Debian 8 |  3.16.0-4-amd64 至 3.16.0-10-amd64、4.9.0-0.bpo.4-amd64 至 4.9.0-0
 
 ### <a name="supported-suse-linux-enterprise-server-12-kernel-versions"></a>支援的 SUSE Linux Enterprise Server 12 核心版本 
 
-**版本** | **核心版本** 
+**發行** | **核心版本** 
 --- |  --- 
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4)  |  支援所有 [股票 SUSE 12 SP1、SP2、SP3、SP4](https://www.suse.com/support/kb/doc/?id=000019587) 核心。</br></br> 4.4.138-4.7-azure 至 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 至 4.12.14-6.34-azure  
 
 
 ### <a name="supported-suse-linux-enterprise-server-15-kernel-versions"></a>支援 SUSE Linux Enterprise Server 15 核心版本
 
-**版本** | **核心版本** |
+**發行** | **核心版本** |
 --- |  --- |
 SUSE Linux Enterprise Server 15 和 15 SP1 |  支援所有股票 SUSE 15 和15核心。</br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure |
 
@@ -106,14 +106,14 @@ SUSE Linux Enterprise Server 15 和 15 SP1 |  支援所有股票 SUSE 15 和15�
 Microsoft)  (發佈的 Azure 資源庫影像 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 協力廠商)  (發佈的 Azure 資源庫影像  | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 協力廠商)  (發佈的自訂映射| 支援 | 只要 VM 在支援的作業系統上執行即支援。
-使用 Site Recovery 的 Vm | 不受支援 | 使用後端上的 Site Recovery，跨區域為 Vm 移動資源。 如果您已經在使用 Site Recovery，請停用複寫，然後開始準備程式。
-Azure RBAC 原則 | 不受支援 | Azure 角色型存取控制 (Vm 上的 Azure RBAC) 原則不會複製到目的地區域中的 VM。
+使用 Site Recovery 的 Vm | 不支援 | 使用後端上的 Site Recovery，跨區域為 Vm 移動資源。 如果您已經在使用 Site Recovery，請停用複寫，然後開始準備程式。
+Azure RBAC 原則 | 不支援 | Azure 角色型存取控制 (Vm 上的 Azure RBAC) 原則不會複製到目的地區域中的 VM。
 延伸模組 | 不支援 | 延伸模組不會複製到目的地區域中的 VM。 在移動完成之後，手動安裝這些專案。
 
 
 ## <a name="supported-vm-storage-settings"></a>支援的 VM 儲存體設定
 
-下表摘要說明 Azure VM OS 磁碟、資料磁碟和暫存磁碟的支援。 請務必注意 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 和 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁碟限制和目標，以避免發生任何效能問題。
+下表摘要說明 Azure VM OS 磁碟、資料磁碟和暫存磁碟的支援。 請務必觀察 [受控磁片](../virtual-machines/disks-scalability-targets.md) 的 VM 磁片限制和目標，以避免任何效能問題。
 
 > [!NOTE]
 > 目標 VM 大小應等於或大於來源 VM。 用於驗證的參數包括：資料磁片計數、Nic 計數、可用的 Cpu、記憶體（以 GB 為單位）。 如果不是，則會發出錯誤。
@@ -128,12 +128,12 @@ OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/managed-
 資料磁碟的數目上限 | 最多 64 個 (根據特定的 Azure VM 大小支援) | [深入了解](../virtual-machines/sizes.md) VM 大小。
 資料磁碟的變更率 | 進階儲存體的每個磁碟最多 10 MBps。 標準儲存體的每個磁碟最多 2 MBps。 | 如果磁片上的平均資料變更率持續高於最大值，則準備將無法趕上。<br/><br/>  但是，如果最大值是偶發性的，則準備可以趕上，但您可能會看到稍微延遲的復原點。
 資料磁片 (標準儲存體帳戶)  | 不支援。 | 將儲存體類型變更為受控磁片，然後嘗試移動 VM。
-資料磁片 (Premium 儲存體帳戶)  | 不受支援 | 將儲存體類型變更為受控磁片，然後嘗試移動 VM。
+資料磁片 (Premium 儲存體帳戶)  | 不支援 | 將儲存體類型變更為受控磁片，然後嘗試移動 VM。
 受控磁片 (標準)  | 支援  |
 受控磁片 (Premium)  | 支援 |
 標準 SSD | 支援 |
 第2代 (UEFI 開機) | 支援
-開機診斷儲存體帳戶 | 不受支援 | 將 VM 移至目的地區域之後，將它重新啟用。
+開機診斷儲存體帳戶 | 不支援 | 將 VM 移至目的地區域之後，將它重新啟用。
 
 ### <a name="limits-and-data-change-rates"></a>限制與資料變更率
 

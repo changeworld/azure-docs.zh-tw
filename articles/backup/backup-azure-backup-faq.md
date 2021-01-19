@@ -3,12 +3,12 @@ title: 常見問題的解答
 description: '有關以下常見問題的解答：包括復原服務保存庫、可以備份的項目、其運作方式、加密和限制等 Azure 備份功能。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: d85866e490b2c56abb7de1e94cd0ffaa8f714615
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327146"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572522"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 備份 - 常見問題集
 
@@ -18,7 +18,7 @@ ms.locfileid: "96327146"
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>每個 Azure 訂用帳戶中可以建立的保存庫數目是否有任何限制？
 
-是。 您可以為每個訂用帳戶的 Azure 備份支援區域，最多建立 500 個復原服務保存庫。 如果您需要其他保存庫，請建立其他訂用帳戶。
+可以。 您可以為每個訂用帳戶的 Azure 備份支援區域，最多建立 500 個復原服務保存庫。 如果您需要其他保存庫，請建立其他訂用帳戶。
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>針對每個保存庫註冊的伺服器/電腦具有數目限制嗎？
 
@@ -39,11 +39,11 @@ ms.locfileid: "96327146"
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>我是否可以在訂用帳戶之間移動保存庫？
 
-是。 若要移動復原服務保存庫，請參閱此[文章](backup-azure-move-recovery-services-vault.md)
+可以。 若要移動復原服務保存庫，請參閱此[文章](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>我是否可以將備份資料移至另一個保存庫？
 
-否。 儲存在保存庫中的備份資料無法移至不同的保存庫。
+不會。 儲存在保存庫中的備份資料無法移至不同的保存庫。
 
 ### <a name="can-i-change-the-storage-redundancy-setting-after-a-backup"></a>我可以在備份之後變更儲存體冗余設定嗎？
 
@@ -62,6 +62,10 @@ ms.locfileid: "96327146"
 
 不支援使用資料箱將資料直接從復原服務保存庫匯出至內部部署。 資料必須還原至儲存體帳戶，然後可以透過 [資料箱](../databox/data-box-overview.md) 或匯 [入/匯出](../storage/common/storage-import-export-service.md)移至內部部署。
 
+### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>異地複寫儲存體 (GRS) 保存庫之間的差異為何，以及是否未啟用跨區域還原 (CRR) 功能？
+
+如果 [GRS](azure-backup-glossary.md#grs) 保存庫未啟用 [CRR](azure-backup-glossary.md#cross-region-restore-crr) 功能，則在 Azure 于主要區域中宣告嚴重損壞之前，無法存取次要區域中的資料。 在這種情況下，會從次要區域進行還原。 啟用 CRR 時，即使主要區域已啟動且正在執行，您也可以在次要區域中觸發還原。
+
 ## <a name="azure-backup-agent"></a>Azure 備份代理程式
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>哪裡可以找到有關適用於 Azure VM 備份之 Azure 備份代理程式的常見問題？
@@ -73,7 +77,7 @@ ms.locfileid: "96327146"
 
 ### <a name="are-there-limits-on-backup-scheduling"></a>在備份排程方面是否有任何限制？
 
-是。
+可以。
 
 - 您一天最多可以備份 Windows Server 或 Windows 機器三次。 您可以將排程原則設定為每天或每週排程。
 - 您一天最多可以備份 DPM 兩次。 您可以將排程原則設定為每天、每週、每月及每年。
@@ -143,7 +147,7 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果我在備份作業開始後取消作業，是否會刪除已傳輸的備份資料？
 
-否。 所有在備份作業取消前傳輸到保存庫的資料都會保留在保存庫中。
+不會。 所有在備份作業取消前傳輸到保存庫的資料都會保留在保存庫中。
 
 - Azure 備份會使用檢查點機制，在備份期間偶爾將檢查點加入至備份資料。
 - 因為備份資料中有檢查點，所以下一個備份程序才可驗證檔案的完整性。
@@ -163,13 +167,13 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>我是否可以針對備份排程和保留原則使用不同的時間？
 
-否。 保留原則僅能套用在復原點上。 例如，下圖顯示在上午 12:00 和下午 6:00 進行之備份的保留原則。
+不會。 保留原則僅能套用在復原點上。 例如，下圖顯示在上午 12:00 和下午 6:00 進行之備份的保留原則。
 
 ![排程備份和保留](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>如果備份保留了很長一段時間，是否需要較多時間才能復原較舊的資料點？
 
-否。 復原最舊或最新時間點所需的時間都相同。 每個復原點的功能就像一個完整的復原點。
+不會。 復原最舊或最新時間點所需的時間都相同。 每個復原點的功能就像一個完整的復原點。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>若每個復原點就像一個完整的復原點，則其是否會影響可計費的備份儲存體總數？
 
@@ -192,7 +196,7 @@ Azure 備份的復原數量沒有任何限制。
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>還原資料時，我需要支付來自 Azure 的輸出流量嗎？
 
-否。 復原是免費的，不會向您收取輸出流量的費用。
+不會。 復原是免費的，不會向您收取輸出流量的費用。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>變更我的備份原則時會發生什麼狀況？
 
@@ -209,11 +213,11 @@ Azure 備份的復原數量沒有任何限制。
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>傳送至 Azure 的資料會經過加密嗎？
 
-是。 資料會在內部部署機器上以 AES256 加密。 資料會透過安全的 HTTPS 連結來傳送。 在雲端中傳輸的資料僅受到儲存體和復原服務之間的 HTTPS 連結保護。 iSCSI 通訊協定保護復原服務和使用者電腦之間傳輸的資料。 安全通道用於保護 iSCSI 通道。
+可以。 資料會在內部部署機器上以 AES256 加密。 資料會透過安全的 HTTPS 連結來傳送。 在雲端中傳輸的資料僅受到儲存體和復原服務之間的 HTTPS 連結保護。 iSCSI 通訊協定保護復原服務和使用者電腦之間傳輸的資料。 安全通道用於保護 iSCSI 通道。
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>位於 Azure 的備份資料也會經過加密嗎？
 
-是。 在 Azure 中的資料會進行靜態加密。
+可以。 在 Azure 中的資料會進行靜態加密。
 
 - 針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。
 - 針對 Azure VM，會使用「儲存體服務加密」(SSE) 對資料進行靜態加密。

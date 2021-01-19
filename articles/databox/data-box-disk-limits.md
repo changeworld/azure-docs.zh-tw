@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: fb0e56c5eeebb4f3a869feacb996d690ea7dde86
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e003d0121721838bd5ae038a3a8b4d1b8cd9d1eb
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124164"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573185"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure 資料箱磁碟限制
 
@@ -44,7 +44,7 @@ ms.locfileid: "92124164"
 
 ## <a name="data-upload-caveats"></a>資料上傳注意事項
 
-- 請勿直接將資料複製到磁碟中。 將資料複製到預先建立的 *BlockBlob*、*PageBlob*和 *AzureFile* 資料夾。
+- 請勿直接將資料複製到磁碟中。 將資料複製到預先建立的 *BlockBlob*、*PageBlob* 和 *AzureFile* 資料夾。
 - *BlockBlob* 和 *PageBlob* 下的資料夾是容器。 例如，容器會建立為 *BlockBlob/container* 和 *PageBlob/container*。
 - 如果您有現有的 Azure 物件 (（例如雲端中的 blob) ，其名稱與要複製的物件相同），資料箱磁碟會將該檔案重新命名為雲端中的 file (1) 。
 - 寫入 *BlockBlob* 和 *PageBlob* 共用中的每個檔案，分別會以區塊 Blob 和分頁 Blob 的形式上傳。
@@ -76,7 +76,7 @@ ms.locfileid: "92124164"
 | 區塊 Blob        | ~ 4.75 TiB                                                 |
 | 分頁 Blob         | 8 TiB <br>  (以分頁 Blob 格式上傳的每個檔案都必須對齊512個位元組，否則上傳會失敗。 <br> VHD 和 VHDX 的對齊方式為512個位元組。 )  |
 |Azure 檔案        | 1 TiB <br> 最大 共用的大小為 5 TiB     |
-| 受控磁碟     |4 TiB <br> 如需大小和限制的詳細資訊，請參閱： <li>[受控磁片的擴充性目標](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| 受控磁碟     |4 TiB <br> 如需大小和限制的詳細資訊，請參閱： <li>[受控磁片的擴充性目標](../virtual-machines/disks-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure 區塊 Blob、分頁 Blob 和檔案命名慣例
@@ -93,6 +93,6 @@ ms.locfileid: "92124164"
 |-------------------|-----------------------------------------------------------|
 | 受控磁片名稱       | <li> 名稱的長度必須介於1到80個字元之間。 </li><li> 名稱必須以字母或數位開頭，以字母、數位或底線結尾。 </li><li> 名稱只可包含字母、數位、底線、句點或連字號。 </li><li>   名稱不能有空格或 `/` 。                                              |
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 審核 [資料箱磁碟系統需求](data-box-disk-system-requirements.md)

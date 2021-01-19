@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: fdd5b8f9cea549f64c4857d1c45b95b0d9b9ec53
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 2dbd7cd756e386b44c6933697ff50180021ac035
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569958"
+ms.locfileid: "98572301"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -213,7 +213,7 @@ Azure RBAC 原則 | 不支援 | Azure 角色型存取控制 (Vm 上的 Azure RBA
 
 下表摘要說明 Azure VM OS 磁碟、資料磁碟和暫存磁碟的支援。
 
-- 請務必注意 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 和 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁碟限制和目標，以避免發生任何效能問題。
+- 請務必觀察 [受控磁片](../virtual-machines/disks-scalability-targets.md) 的 VM 磁片限制和目標，以避免任何效能問題。
 - 如果您使用預設設定來部署，Site Recovery 會以來源設定作為基礎，自動建立磁碟與儲存體帳戶。
 - 如果您使用自訂的設定，請務必遵循指導方針。
 
@@ -261,7 +261,7 @@ Azure 共用磁碟 | 不支援
 標籤  | 使用者產生的標記會每隔24小時複寫一次。
 
 >[!IMPORTANT]
-> 若要避免發生效能問題，請務必遵循 [Linux](../virtual-machines/linux/disk-scalability-targets.md) 或 [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 的 VM 磁碟可擴縮性和效能目標。 如果您使用預設設定，Site Recovery 會根據來源組態建立必要的磁碟和儲存體帳戶。 如果您自訂並選取您自己的設定，請遵循來源 VM 的磁碟可擴縮性和效能目標。
+> 若要避免效能問題，請確定您遵循 VM 磁片的擴充性和 [受控磁片](../virtual-machines/disks-scalability-targets.md)的效能目標。 如果您使用預設設定，Site Recovery 會根據來源組態建立必要的磁碟和儲存體帳戶。 如果您自訂並選取您自己的設定，請遵循來源 VM 的磁碟可擴縮性和效能目標。
 
 ## <a name="limits-and-data-change-rates"></a>限制與資料變更率
 

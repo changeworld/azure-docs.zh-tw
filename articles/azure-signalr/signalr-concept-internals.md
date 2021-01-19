@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 3fc6971c66d06ae9f25584f5be28b051075bfa49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afb63b76666f47217f9c19376d81aa4ed73991bf
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88921965"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572556"
 ---
 # <a name="azure-signalr-service-internals"></a>Azure SignalR Service 內部項目
 
@@ -42,7 +42,7 @@ Azure SignalR Service 建置在 ASP.NET Core SignalR 架構之上。 它也支�
 - 如果是 ASP.NET Core SignalR，Azure SignalR Service SDK 會針對每一個中樞開啟 5 個連往 SignalR Service 的 WebSocket 連線。 
 - 如果是 ASP.NET SignalR，Azure SignalR Service SDK 會針對每一個中樞開啟 5 個連往 SignalR Service 的 WebSocket 連線，並針對每一個應用程式開啟 1 個 WebSocket 連線。
 
-5 個 WebSocket 連線是預設值，如需變更，可於[組態](https://github.com/Azure/azure-signalr/blob/dev/docs/use-signalr-service.md#connectioncount)中進行。
+5 個 WebSocket 連線是預設值，如需變更，可於[組態](https://github.com/Azure/azure-signalr/blob/dev/docs/run-asp-net-core.md#connectioncount)中進行。
 
 進出用戶端的訊息會以多工方式傳送至這些連線。
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 6ae164b1300119481e495e647dd491beafdd5241
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e48dfd224a9656c7d8327dd77f1b55e9a744f3af
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025073"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573083"
 ---
 # <a name="get-started-with-custom-voice"></a>開始使用自訂語音
 
@@ -39,10 +39,10 @@ ms.locfileid: "95025073"
 
 ## <a name="custom-neural-voices"></a>自訂神經語音
 
-類神經語音自訂功能目前處於公開預覽狀態，僅限選取的客戶。 填寫此 [應用程式表單](https://go.microsoft.com/fwlink/?linkid=2108737) 以開始使用。
+自訂語音目前支援標準層和類神經層。 自訂神經語音可讓使用者建立更高品質的語音模型，同時需要較少的資料，並提供可協助您負責任地部署 AI 的量值。 建議您應使用自訂神經語音開發更真實的語音，以取得更自然的對話式介面，並讓您的客戶和使用者以負責任的方式從最新的文字轉換語音技術中獲益。 [深入瞭解自訂神經語音](https://aka.ms/CNV-Transparency-Note)。 
 
 > [!NOTE]
-> 做為 Microsoft 對設計負責任 AI 的承諾，我們的目的是要保護個人和社會的權利，並促進透明的人類電腦互動。 基於這個理由，自訂神經語音尚未提供給所有客戶。 只有在您的應用程式經過審核之後，且您已致力於配合我們的道德原則時，您才能獲得技術的存取權。 深入瞭解我們的 [應用程式管制流程](./concepts-gating-overview.md)。
+> 在 Microsoft 承諾設計負責任 AI 的過程中，我們已限制使用自訂神經語音。 只有在您的應用程式經過審核之後，且您已致力於與我們的負責任 AI 準則配合使用之後，您才可以存取該技術。 若要深入瞭解我們 [的限制存取原則](https://aka.ms/gating-overview) ，請參閱 [這裡](https://aka.ms/customneural)。 自訂語音的標準和類神經版本所支援的 [語言](language-support.md#customization) 和 [區域](regions.md#custom-voices) 不同。 開始之前，請先檢查詳細資料。  
 
 ## <a name="set-up-your-azure-account"></a>設定您的 Azure 帳戶
 
@@ -56,7 +56,7 @@ ms.locfileid: "95025073"
 4. 如果您想要切換到其他語音訂用帳戶，請使用位於頂端導覽中的齒輪圖示。
 
 > [!NOTE]
-> 您必須先在 Azure 中建立 F0 或 S0 金鑰，才能使用服務。
+> 您必須先在 Azure 中建立 F0 或 S0 語音服務金鑰，才能使用服務。 自訂神經語音只支援 S0 層。 
 
 ## <a name="how-to-create-a-project"></a>如何建立專案
 
@@ -67,7 +67,7 @@ ms.locfileid: "95025073"
 > [!IMPORTANT]
 > [自訂語音的入口網站](https://aka.ms/custom-voice)最近已更新！ 如果您已在 CRIS.ai 入口網站或 Api 中建立先前的資料、模型、測試和已發佈的端點，您需要在新的入口網站中建立新的專案，以連接這些舊的實體。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [準備自訂語音資料](how-to-custom-voice-prepare-data.md)
 - [建立自訂語音](how-to-custom-voice-create-voice.md)

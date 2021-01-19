@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: 瞭解如何使用 Azure Functions 建立可使用對應項圖形和 Azure 數位 Twins 通知的函式，以更新 Azure 地圖服務室內地圖。
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 6/3/2020
+ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 24487d3028b90d28f302a6f259096ba68c964541
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6a654f74ff6a32ad37646021d504359c84942c12
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222117"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573032"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 數位 Twins 來更新 Azure 地圖服務室內地圖
 
@@ -25,7 +25,7 @@ ms.locfileid: "98222117"
 2. 建立可更新 Azure 地圖服務室內地圖功能 stateset 的函式。
 3. 如何在 Azure 數位 Twins 圖形中儲存地圖識別碼和功能 stateset 識別碼。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 * 遵循 Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)。
     * 您將會使用額外的端點和路由來擴充此對應項。 您也會從該教學課程將另一個函式新增至函數應用程式。 
@@ -72,7 +72,7 @@ ms.locfileid: "98222117"
 
 ## <a name="create-a-function-to-update-maps"></a>建立函式以更新對應
 
-您將從端對端教學課程中，在函式應用程式內建立 *事件方格觸發的函式* ([*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)) 。 此函式會將這些通知解壓縮，並將更新傳送至 Azure 地圖服務的功能 stateset，以更新一個房間的溫度。 
+您將從端對端教學課程中，在函式應用程式內建立 **事件方格觸發的函式** ([*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)) 。 此函式會將這些通知解壓縮，並將更新傳送至 Azure 地圖服務的功能 stateset，以更新一個房間的溫度。
 
 請參閱下列檔以取得參考資訊： [*適用于 Azure Functions 的 Azure 事件方格觸發程式*](../azure-functions/functions-bindings-event-grid-trigger.md)。
 

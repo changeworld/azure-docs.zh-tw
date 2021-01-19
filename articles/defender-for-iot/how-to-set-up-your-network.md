@@ -1,20 +1,20 @@
 ---
-title: 設定您的網路
+title: 設定網路
 description: 瞭解解決方案架構、網路準備、必要條件和其他所需的資訊，以確保您已成功設定網路以使用適用于 IoT 的 Azure Defender 裝置。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/06/2020
+ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839227"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573134"
 ---
-# <a name="about-azure-defender-for-iot-network-setup"></a>關於適用于 IoT 的 Azure Defender 網路設定
+# <a name="about-azure-defender-for-iot-network-setup"></a>關於適用於 IoT 的 Azure Defender 網路設定
 
 適用于 IoT 的 Azure Defender 提供持續的 ICS 威脅監視和裝置探索。 此平臺包含下列元件：
 
@@ -54,7 +54,7 @@ ms.locfileid: "97839227"
 
 - 設定工作站。
 
-- SSL 憑證 (選擇性) 。
+- SSL 憑證 (選擇性，但建議使用) 。
 
 - SMTP 驗證 (選擇性) 。 若要使用具有驗證的 SMTP 伺服器，請準備您的伺服器所需的認證。
 
@@ -94,7 +94,7 @@ ms.locfileid: "97839227"
 
 確認您的組織安全性原則允許存取下列各項：
 
-| **目的** | **通訊協定** | **傳輸** | **內或外** | **通訊埠** | **類別** |
+| **目的** | **通訊協定** | **傳輸** | **內或外** | **通訊埠** | **類別目錄** |
 | ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
 | **存取 web 主控台** | HTTPS | TCP | 內或外 | 443 | 適用于 Defender for IoT 平臺的內部部署管理主控台 |
 | **存取 CLI** | SSH | TCP | 內或外 | 22 | CLI |
@@ -103,7 +103,7 @@ ms.locfileid: "97839227"
 | **連線到外部 NTP 伺服器的感應器 (是否相關)** | NTP | UDP | 內或外| 123 | 時間同步 |
 | **適用于 IoT 平臺的 Defender 與管理平臺和郵件伺服器之間的連線 (（如果相關）)** | SMTP | TCP | 超出感應器管理 | 25 | 電子郵件 |
 | **從內部部署管理主控台傳送到 Syslog 伺服器的記錄 (（如果相關）)** | syslog | UDP | 超出感應器管理| 514 | LEEF |
-| **DNS 伺服器埠 (是否相關)** | DNS | N/A | 內或外| 53 | DNS |
+| **DNS 伺服器埠 (是否相關)** | DNS | 不適用 | 內或外| 53 | DNS |
 | **適用于 IoT 平臺的 Defender 和內部部署管理主控台之間的連線，可 Active Directory (（如果相關) ）** | LDAPS | TCP | 內或外 | 636 <br />389 | Active Directory |
 | **遠端 SNMP 收集器 (是否相關)** | SNMP | UDP | 超出感應器管理| 161 | 監視 |
 | **Windows 端點監視 (是否相關)** | WMI | UDP | 超出感應器管理| 135 | 監視 |
@@ -223,7 +223,7 @@ ms.locfileid: "97839227"
 
 以下是部署多個感應器的一些建議：
 
-| * * 數位 * *| **米** | **相依性** | **感應器數目** |
+| **Number** | **米** | **相依性** | **感應器數目** |
 |--|--|--|--|
 | 切換開關之間的最大距離 | 80計量 | 準備的乙太網路纜線 | 超過1個 |
 | OT 網路數目 | 超過1個 | 沒有實體連線能力 | 超過1個 |
@@ -363,7 +363,7 @@ RSPAN：根據 Cisco catalyst 2960 (24 埠) 。
 
 這些模型已針對相容性進行測試。 其他廠商和型號也可能相容。
 
-| 影像 | 型號 |
+| 映像 | 型號 |
 | -- | -- |
 | :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS 的螢幕擷取畫面。":::  | Garland P1GCCAS  |
 | :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 的螢幕擷取畫面。":::  | IXIA TPA2-CU3  |
@@ -569,11 +569,11 @@ Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
     > [!NOTE]
     > 適用于 IoT 的 Defender 設備應連接到較低層級的交換器，以查看交換器上端口之間的流量。  
 
-2. 在網路中提供大約數量的裝置 (選擇性) 。
+2. 提供將受監視的大約網路裝置數目。 將訂用帳戶上線至適用于 IoT 的 Azure Defender 入口網站時，您將需要此資訊。 在上線過程中，系統會提示您輸入裝置數目（以1000為增量單位）。
 
 3. 提供生產網路的子網清單和描述 (選擇性) 。 
 
-    |  **#**  | **子網路名稱** | **說明** |
+    |  **#**  | **子網路名稱** | **描述** |
     |--| --------------- | --------------- |
     | 1  | |
     | 2  | |
@@ -582,7 +582,7 @@ Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
 
 4. 提供生產網路的 VLAN 清單。
 
-    | **#** | **VLAN 名稱** | **說明** |
+    | **#** | **VLAN 名稱** | **描述** |
     |--|--|--|
     | 1 |  |  |
     | 2 |  |  |
@@ -632,7 +632,7 @@ Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
 
 提供將在公司網路中連線之感應器 NIC 的位址詳細資料： 
 
-|  Item               | 設備1 | 設備2 | 設備3 |
+|  項目               | 設備1 | 設備2 | 設備3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 設備 IP 位址    |               |               |               |
 | 子網路          |               |               |               |
@@ -642,7 +642,7 @@ Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
 
 #### <a name="idraciloserver-management"></a>iDRAC/iLO/伺服器管理
 
-|       Item          | 設備1 | 設備2 | 設備3 |
+|       項目          | 設備1 | 設備2 | 設備3 |
 | --------------- | ------------- | ------------- | ------------- |
 | 設備 IP 位址     |               |               |               |
 | 子網路          |               |               |               |
@@ -651,7 +651,7 @@ Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
 
 #### <a name="on-premises-management-console"></a>內部部署管理主控台  
 
-|       Item          | 使用中 | 使用 HA) 的被動 ( |
+|       項目          | 使用中 | 使用 HA) 的被動 ( |
 | --------------- | ------ | ----------------------- |
 | IP 位址             |        |                         |
 | 子網路          |        |                         |
@@ -660,7 +660,7 @@ Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
 
 #### <a name="snmp"></a>SNMP  
 
-|   Item              | 詳細資料 |
+|   項目              | 詳細資料 |
 | --------------- | ------ |
 | IP              |        |
 | IP 位址 | |
@@ -694,6 +694,6 @@ Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
 | 相機 | |
 | X 光機 | |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [關於適用于 IoT 的 Defender 安裝](how-to-install-software.md)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839940"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573321"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>使用 GPU Azure Stack Edge Pro 的技術規格和合規性 
 
@@ -26,7 +26,7 @@ Azure Stack Edge Pro 裝置具有下列計算和記憶體的規格：
 | 規格           | 值                  |
 |-------------------------|----------------------------|
 | CPU                     | 2 X Intel 以上的銀級 4214 (串聯 Lake) CPU            |
-| Memory                  | 128 (8x16 GB) GB RAM                     |
+| 記憶體                  | 128 (8x16 GB) GB RAM <br> Dell 相容的 16 GB PC4-23400 DDR4-2933Mhz 2Rx8 1.2 v ECC 已註冊 RDIMM       |
 
 
 ## <a name="compute-acceleration-specifications"></a>計算加速規格
@@ -56,7 +56,7 @@ Azure Stack Edge Pro 裝置有兩個 100-240 V 電源供應器單位 (Psu) 具�
 
 | 規格           | 描述                 |
 |-------------------------|----------------------------|
-|  網路介面    | **2 X 1 GbE 介面** -1 管理介面埠1用於初始設定，預設為靜態。 初始設定完成後，您可以將介面用於具有任何 IP 位址的資料。 不過，在重設時，介面會還原回靜態 IP。 <br>另一個介面埠2是使用者可設定的，可用於資料傳輸，且預設為 DHCP。 <br>**4 X 25 GbE 介面** -這些資料介面（埠3到埠6）可由使用者設定為 DHCP (預設) 或靜態。 這些也可以當作 10 GbE 介面來運作。  | 
+|  網路介面    | **2 X 1 GbE 介面** -1 管理介面埠1用於初始設定，預設為靜態。 初始設定完成後，您可以將介面用於具有任何 IP 位址的資料。 不過，在重設時，介面會還原回靜態 IP。 <br>另一個介面埠2是使用者可設定的，可用於資料傳輸，且預設為 DHCP。 <br>**4 X 25 GbE 介面** -這些資料介面（埠3到埠6）可由使用者設定為 DHCP (預設) 或靜態。 它們也可以做為 10 GbE 介面來運作。  | 
 
 您的 Azure Stack Edge Pro 裝置具有下列網路硬體：
 
@@ -67,8 +67,8 @@ Azure Stack Edge Pro 裝置有兩個 100-240 V 電源供應器單位 (Psu) 具�
 
 | 參數           | 描述                 |
 |-------------------------|----------------------------|
-| 模型    | ConnectX®-4 Lx EN 網路介面卡                      |
-| 模型描述               | 25GbE 雙埠 SFP28;PCIe 3.0 x8;ROHS R6                    |
+| 型號    | ConnectX®-4 Lx EN 網路介面卡                      |
+| 模型描述               | 25 GbE 雙埠 SFP28;PCIe 3.0 x8;ROHS R6                    |
 | 裝置零件編號 (R640)  | MCX4121A-ACAT  |
 | PSID (R640)            | MT_2420110034                         |
 
@@ -88,11 +88,9 @@ Azure Stack Edge Pro 裝置有五個 2.5 "NVMe DC P4610 Ssd，每個都有 1.6 T
 |    開機 SATA 固態硬碟 (SSD)       |    1                  |
 |    開機 SSD 容量                       |    240 GB             |
 |    容量總計                          |    8.0 TB             |
-|    可用容量總計*                  |    ~ 4.19 TB          |
+|    可用容量總計                   |    ~ 4.19 TB          |
+|    RAID 設定                      |    使用鏡像和同位組合的儲存空間直接存取  |
 |    SAS 控制器                          |    HBA330 12 Gbps     |
-
-
-**在同位恢復和保留空間供內部使用之後。*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
@@ -150,7 +148,8 @@ Your Azure Stack Edge Pro device also contains the following hardware:
 |     機箱                           |     運作規格                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    氣流                              |    系統氣流是從前面到後面。 系統必須以低壓、尾段排氣安裝操作。 <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
-|    最高高度，可運作        |    3048 公尺 (10000 英呎)，其最高操作溫度降額是由[操作溫度降額規格](#operating-temperature-de-rating-specifications)決定。                                                                                |
+|  (IP) 的輸入保護                 |    這種適用于室內的機架掛接設備通常不會測試輸入保護， (保護電機箱) 的實體和液體。 製造商的安全性評量顯示 IPXO (沒有輸入保護) 。  |
+|    最高高度，可運作        |    3048計量 (10000 英尺) ，其最高的操作溫度已由 [操作溫度的低評等規格](#operating-temperature-de-rating-specifications)決定。                                                                                |
 |    最高高度，無法運作    |    12,000 公尺 (39,370 英呎)                                                                                                                                                                                         |
 |    可運作的震盪                   |    6 G，持續 11 毫秒 (6 個方向)                                                                                                                                                                         |
 |    無法運作的震盪               |    71 G，持續 2 毫秒 (6 個方向)                                                                                                                                                                           |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526651"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573304"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>針對 Linux 或 Windows 上的 Azure 虛擬機器效能進行疑難排解
 
@@ -44,7 +44,7 @@ ms.locfileid: "86526651"
 
    ![按一下 [設定]，然後按一下 [診斷]](media/troubleshoot-performance-virtual-machine-linux-windows/2-virtual-machines-diagnostics.png)
 
-您可以在 [**診斷設定**] 下的 [**代理**程式] 索引標籤中，檢查用於診斷設定的儲存體帳戶。
+您可以在 [**診斷設定**] 下的 [**代理** 程式] 索引標籤中，檢查用於診斷設定的儲存體帳戶。
 
 ![檢查儲存體帳戶](media/troubleshoot-performance-virtual-machine-linux-windows/3-check-storage-account.png)
 
@@ -73,7 +73,7 @@ ms.locfileid: "86526651"
 2.  選取 **資源** (儲存體帳戶) 。
 3.  選取 **命名空間**
 4.  選取 [ **度量**]。
-5.  選取**匯總**類型
+5.  選取 **匯總** 類型
 6.  您可以在儀表板上釘選此視圖。
 
 ## <a name="observing-bottlenecks"></a>觀察瓶頸
@@ -198,7 +198,7 @@ AverageE2ELatency 代表用戶端延遲。 確認應用程式如何執行 IOPS�
 
 #### <a name="check-for-azure-storage-throttling---add-the-storage-account-metrics-throttlingerror"></a>檢查 Azure 儲存體節流設定-新增儲存體帳戶計量： ThrottlingError
 
-節流的值表示您會在儲存體帳戶層級進行節流處理，這表示您已達到帳戶的 IOPS 限制。 您可以藉由檢查計量 **TotalRequests**來判斷是否達到 IOPs 閾值。
+節流的值表示您會在儲存體帳戶層級進行節流處理，這表示您已達到帳戶的 IOPS 限制。 您可以藉由檢查計量 **TotalRequests** 來判斷是否達到 IOPs 閾值。
 
 請注意，每個 VHD 的限制為 500 IOPS 或 60 Mb，但受限於每個儲存體帳戶 20000 IOPS 的累計限制。
 
@@ -208,9 +208,9 @@ AverageE2ELatency 代表用戶端延遲。 確認應用程式如何執行 IOPS�
 
 使用標準儲存體下的新磁片供應專案時，IOPS 和輸送量限制可能不同，但標準儲存體帳戶的累計限制為 20000 IOPS (Premium 儲存體的帳戶或磁片層級) 有不同的限制。 深入瞭解不同的標準儲存體磁片供應專案，以及每個磁片的限制：
 
-* [Windows 上 VM 磁片的擴充性和效能目標](../windows/disk-scalability-targets.md)。
+* [Windows 上 VM 磁片的擴充性和效能目標](../disks-scalability-targets.md)。
 
-#### <a name="references"></a>參考
+#### <a name="references"></a>參考資料
 
 * [Premium 頁面 blob 儲存體帳戶的擴充性和效能目標](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
@@ -224,7 +224,7 @@ AverageE2ELatency 代表用戶端延遲。 確認應用程式如何執行 IOPS�
 
 標準儲存體下的新磁片供應專案具有不同的 IOPS 和輸送量限制 (IOPS 不會針對每個 VHD) 公開。 查看資料，以查看您是否使用磁片讀取和寫入來達到 VHD (s) 的合併輸送量 MB 限制，然後將 VM 儲存體設定優化以調整超過單一 VHD 限制。 深入瞭解不同的標準儲存體磁片供應專案，以及每個磁片的限制：
 
-* [Windows 上 VM 磁片的擴充性和效能目標](../windows/disk-scalability-targets.md)。
+* [Windows 上 VM 磁片的擴充性和效能目標](../disks-scalability-targets.md)。
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>高磁片使用量/延遲補救
 
@@ -248,7 +248,7 @@ AverageE2ELatency 代表用戶端延遲。 確認應用程式如何執行 IOPS�
 
 * [搭配使用 Azure 進階儲存體與 SQL Server](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您在本文的任何時間點需要更多協助，請洽詢 [MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。
 
