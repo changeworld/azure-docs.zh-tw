@@ -4,12 +4,12 @@ description: '深入瞭解使用長期保留 (預覽版適用於 PostgreSQL 的 
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734635"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569482"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>使用長期保留的適用於 PostgreSQL 的 Azure 資料庫備份 (預覽) 
 
@@ -135,7 +135,7 @@ Azure 備份與 Azure 資料庫服務共同建立了企業級的備份解決方�
 
 1. 定義 **保留** 設定。 您可以新增一或多個保留規則。 每個保留規則都會假設特定備份的輸入，以及這些備份的資料存放區和保留期間。
 
-1. 您可以選擇將備份儲存在兩個數據存放區的其中一個 (或層) ： **備份資料存放區** (經常性存取層) 或封存 **資料存放區** (在預覽) 中。 您可以選擇 **兩個階層選項** 來定義在兩個數據存放區之間分層備份的時間：
+1. 您可以選擇將備份儲存在兩個數據存放區的其中一個 (或層) ： **備份資料存放區** (標準層) 或封存 **資料存放區** (預覽) 。 您可以選擇 **兩個階層選項** 來定義在兩個數據存放區之間分層備份的時間：
 
     - 如果您想要同時在備份和封存資料存放區中同時具有備份副本，請選擇 **立即** 複製。
     - 如果您想要在備份資料存放區中將備份移至封存資料存放區，請選擇移至 **到期日** 。

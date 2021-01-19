@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/20/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97be7fef09287e6c4f8696e217702b97853fa6a
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969523"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569448"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory 布建如何與 SAP SuccessFactors 整合 
 
@@ -28,7 +28,7 @@ ms.locfileid: "90969523"
 本文說明整合的運作方式，以及如何針對不同的 HR 案例自訂布建行為。 
 
 ## <a name="establishing-connectivity"></a>建立連線能力 
-Azure AD 布建服務會使用基本驗證來連接到 Employee Central OData API 端點。 設定 SuccessFactors 布建應用程式時，請使用 [系統*管理員認證*] 區段中的 [*租使用者 url* ] 參數來設定[API 資料中心 URL](https://apps.support.sap.com/sap/support/knowledge/en/2215682)。 
+Azure AD 布建服務會使用基本驗證來連接到 Employee Central OData API 端點。 設定 SuccessFactors 布建應用程式時，請使用 [系統 *管理員認證*] 區段中的 [*租使用者 url* ] 參數來設定 [API 資料中心 URL](https://apps.support.sap.com/sap/support/knowledge/en/2215682)。 
 
 若要進一步保護 Azure AD 布建服務和 SuccessFactors 之間的連線，您可以使用以下所述的步驟，在 SuccessFactors IP 允許清單中新增 Azure AD 的 IP 範圍：
 
@@ -55,27 +55,28 @@ Azure AD 布建服務會使用基本驗證來連接到 Employee Central OData AP
 | 6  | User                                   | employmentNav/userNav        | 一律           |
 | 7  | EmpJob                                 | employmentNav/jobInfoNav     | 一律           |
 | 8  | EmpEmploymentTermination               | activeEmploymentsCount       | 一律           |
-| 9  | FOCompany                              | employmentNav/jobInfoNav/companyNav | 只有當 `company` 或 `companyId` 屬性已對應時 |
-| 10 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | 只有當 `department` 或 `departmentId` 屬性已對應時 |
-| 11 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | 只有當 `businessUnit` 或 `businessUnitId` 屬性已對應時 |
-| 12 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | 只有當 `costCenter` 或 `costCenterId` 屬性已對應時 |
-| 13 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | 只有當 `division` 或 `divisionId` 屬性已對應時 |
-| 14 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | 只有當 `jobCode` 或 `jobCodeId` 屬性已對應時 |
-| 15 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | 只有當 `payGrade` 屬性已對應時 |
-| 16 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | 只有當 `location` 屬性已對應時 |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | 如果對應包含下列其中一個屬性： `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
-| 18 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | 只有當 `eventReason` 屬性已對應時 |
-| 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | 只有在 `assignmentType` 對應時 |
-| 20 | EmploymentType 挑選清單                | employmentNav/jobInfoNav/employmentTypeNav | 只有在 `employmentType` 對應時 |
-| 21 | EmployeeClass 挑選清單                 | employmentNav/jobInfoNav/employeeClassNav | 只有在 `employeeClass` 對應時 |
-| 22 | EmplStatus 挑選清單                    | employmentNav/jobInfoNav/emplStatusNav | 只有在 `emplStatus` 對應時 |
-| 23 | AssignmentType 挑選清單                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | 只有在 `assignmentType` 對應時 |
+| 9  | 使用者的經理                         | employmentNav/userNav/manager/empInfo | 一律  |
+| 10 | FOCompany                              | employmentNav/jobInfoNav/companyNav | 只有當 `company` 或 `companyId` 屬性已對應時 |
+| 11 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | 只有當 `department` 或 `departmentId` 屬性已對應時 |
+| 12 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | 只有當 `businessUnit` 或 `businessUnitId` 屬性已對應時 |
+| 13 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | 只有當 `costCenter` 或 `costCenterId` 屬性已對應時 |
+| 14 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | 只有當 `division` 或 `divisionId` 屬性已對應時 |
+| 15 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | 只有當 `jobCode` 或 `jobCodeId` 屬性已對應時 |
+| 16 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | 只有當 `payGrade` 屬性已對應時 |
+| 17 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | 只有當 `location` 屬性已對應時 |
+| 18 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | 如果對應包含下列其中一個屬性： `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 19 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | 只有當 `eventReason` 屬性已對應時 |
+| 20 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | 只有在 `assignmentType` 對應時 |
+| 21 | EmploymentType 挑選清單                | employmentNav/jobInfoNav/employmentTypeNav | 只有在 `employmentType` 對應時 |
+| 22 | EmployeeClass 挑選清單                 | employmentNav/jobInfoNav/employeeClassNav | 只有在 `employeeClass` 對應時 |
+| 23 | EmplStatus 挑選清單                    | employmentNav/jobInfoNav/emplStatusNav | 只有在 `emplStatus` 對應時 |
+| 24 | AssignmentType 挑選清單                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | 只有在 `assignmentType` 對應時 |
 
 ## <a name="how-full-sync-works"></a>完整同步處理的運作方式
 根據屬性對應，在完整同步處理期間 Azure AD 布建服務會傳送下列 "GET" OData API 查詢，以提取所有作用中使用者的有效資料。 
 
 > [!div class="mx-tdCol2BreakAll"]
->| 參數 | 描述 |
+>| 參數 | 說明 |
 >| ----------|-------------|
 >| OData API 主機 | 將 HTTPs 附加至 *租使用者 URL*。 範例： `https://api4.successfactors.com` |
 >| OData API 端點 | `/odata/v2/PerPerson` |
@@ -113,12 +114,12 @@ employmentNav/jobInfoNav/employmentTypeNav,employmentNav/jobInfoNav/employeeClas
 
 若要取得其他屬性，請遵循下列步驟：
     
-1. 流覽至**企業應用程式**  ->  **SuccessFactors 應用程式**布  ->  **Provisioning**  ->  建的 [**編輯**布  ->  **建屬性-對應] 頁面**。
+1. 流覽至 **企業應用程式**  ->  **SuccessFactors 應用程式** 布  ->    ->  建的 [**編輯** 布  ->  **建屬性-對應] 頁面**。
 1. 向下鍵，然後按一下 [ **顯示 advanced options**]。
-1. 按一下 [ **SuccessFactors 的編輯屬性清單**]。 
+1. 按一下 [編輯 SuccessFactors 的屬性清單]。 
 
    > [!NOTE] 
-   > 如果 [SuccessFactors] 選項的 [ **編輯屬性清單** ] 未顯示在 Azure 入口網站中，請使用 URL *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* 存取頁面。 
+   > 如果 [編輯 SuccessFactors 的屬性清單] 選項未顯示在 Azure 入口網站中，請使用 URL *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* 來存取頁面。 
 
 1. 此視圖中的 [ **API 運算式** ] 欄會顯示連接器使用的 JSONPath 運算式。
 
@@ -167,7 +168,7 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 就像 XPath 一�
    * 如果屬性是 *EmpJob* 實體的一部分，請在 [employmentNav]/[ *jobInfoNav* ] 節點底下尋找屬性。 
 1. 建立與屬性相關聯的 JSON 路徑，並將這個新屬性加入至 SuccessFactors 屬性清單。 
    * 範例1：假設您想要新增屬性 *okToRehire*，這是 *employmentNav* 實體的一部分，然後使用 JSONPath  `$.employmentNav.results[0].okToRehire`
-   * 範例2：假設您想要新增屬於*userNav*實體一部分的屬性*時區*，然後使用 JSONPath`$.employmentNav.results[0].userNav.timeZone`
+   * 範例2：假設您想要新增屬於 *userNav* 實體一部分的屬性 *時區*，然後使用 JSONPath`$.employmentNav.results[0].userNav.timeZone`
    * 範例3：假設您想要新增屬性 *flsaStatus*，這是 *jobInfoNav* 實體的一部分，然後使用 JSONPath `$.employmentNav.results[0].jobInfoNav.results[0].flsaStatus`
 1. 儲存結構描述。 
 1. 重新開機布建。
@@ -179,21 +180,21 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 就像 XPath 一�
 * *customString1-customString15* 自 EmpEmployment (employmentNav) 實體，稱為 *empNavCustomString1-empNavCustomString15*
 * *customString1-customString15* 自 EmpJobInfo (jobInfoNav) 實體，稱為 *empJobNavCustomString1-empNavJobCustomString15*
 
-假設在您的員工中央實例中， *EmpJobInfo*中的*customString35*屬性會儲存位置描述。 您想要將此值傳送給 Active Directory 的 *physicalDeliveryOfficeName* 屬性。 若要設定此案例的屬性對應，請使用以下提供的步驟： 
+假設在您的員工中央實例中， *EmpJobInfo* 中的 *customString35* 屬性會儲存位置描述。 您想要將此值傳送給 Active Directory 的 *physicalDeliveryOfficeName* 屬性。 若要設定此案例的屬性對應，請使用以下提供的步驟： 
 
-1. 編輯 [SuccessFactors 屬性] 清單，加入名為 *empJobNavCustomString35*的新屬性。
+1. 編輯 [SuccessFactors 屬性] 清單，加入名為 *empJobNavCustomString35* 的新屬性。
 1. 將這個屬性的 JSONPath API 運算式設為： `$.employmentNav.results[0].jobInfoNav.results[0].customString35`
 1. 儲存並重載 Azure 入口網站中的對應變更。  
 1. 在 [屬性對應] 分頁中，將 *empJobNavCustomString35* 對應至 *physicalDeliveryOfficeName*。
 1. 儲存對應。
 
 擴充此案例： 
-* 如果您想要從*使用者*實體對應*custom35*屬性，請使用 JSONPath`$.employmentNav.results[0].userNav.custom35`
-* 如果您想要從*EmpEmployment*實體對應*customString35*屬性，請使用 JSONPath`$.employmentNav.results[0].customString35`
+* 如果您想要從 *使用者* 實體對應 *custom35* 屬性，請使用 JSONPath`$.employmentNav.results[0].userNav.custom35`
+* 如果您想要從 *EmpEmployment* 實體對應 *customString35* 屬性，請使用 JSONPath`$.employmentNav.results[0].customString35`
 
 ### <a name="handling-worker-conversion-scenario"></a>處理背景工作轉換案例
 
-背景工作轉換是指將現有全職員工轉換成承包商或承包商進行全時間的程式。 在此案例中，員工中心會將新的*EmpEmployment*實體與相同*Person*實體的新*使用者*實體一併加入。 在先前的*EmpEmployment*實體下嵌套的*使用者*實體會設定為 null。 若要處理此案例，以便在進行轉換時顯示新的雇用資料，您可以使用下列步驟大量更新布建應用程式架構：  
+背景工作轉換是指將現有全職員工轉換成承包商或承包商進行全時間的程式。 在此案例中，員工中心會將新的 *EmpEmployment* 實體與相同 *Person* 實體的新 *使用者* 實體一併加入。 在先前的 *EmpEmployment* 實體下嵌套的 *使用者* 實體會設定為 null。 若要處理此案例，以便在進行轉換時顯示新的雇用資料，您可以使用下列步驟大量更新布建應用程式架構：  
 
 1. 開啟 SuccessFactors 布建應用程式的屬性對應 blade。 
 1. 向下鍵，然後按一下 [ **顯示 advanced options**]。
@@ -221,7 +222,7 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 就像 XPath 一�
 * 選項1：在員工中部建立新的個人設定檔
 * 選項2：在員工中部重複使用現有的人員設定檔
 
-如果您的 HR 流程使用選項1，則不需要變更布建架構。 如果您的 HR 流程使用選項2，則員工中心會將新的*EmpEmployment*實體連同相同*Person*實體的新*使用者*實體一起新增。 與轉換案例不同的是，先前*EmpEmployment*實體中的*使用者*實體不會設定為 null。 
+如果您的 HR 流程使用選項1，則不需要變更布建架構。 如果您的 HR 流程使用選項2，則員工中心會將新的 *EmpEmployment* 實體連同相同 *Person* 實體的新 *使用者* 實體一起新增。 與轉換案例不同的是，先前 *EmpEmployment* 實體中的 *使用者* 實體不會設定為 null。 
 
 若要處理此 rehire 案例 (選項 2) ，以便針對 rehire 設定檔顯示最新的雇用資料，您可以使用下列步驟大量更新布建應用程式架構：  
 
@@ -244,8 +245,8 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 就像 XPath 一�
 ### <a name="handling-global-assignment-scenario"></a>處理全域指派案例
 
 當員工中心內的使用者針對全域指派進行處理時，SuccessFactors 會新增一個新的 *EmpEmployment* 實體，並將 *assignmentClass* 設定為「GA」。 它也會建立新的 *使用者* 實體。 因此，使用者現在有：
-* 一個*EmpEmployment*  +  對應至 home 指派的 EmpEmployment*使用者*實體， *assignmentClass*設定為 "ST" 和 
-* 另*EmpEmployment*一個  +  對應至全域指派的 EmpEmployment*使用者*實體， *assignmentClass*設定為「GA」
+* 一個  +  對應至 home 指派的 EmpEmployment *使用者* 實體， *assignmentClass* 設定為 "ST" 和 
+* 另一個  +  對應至全域指派的 EmpEmployment *使用者* 實體， *assignmentClass* 設定為「GA」
 
 若要提取屬於標準指派和全域指派使用者設定檔的屬性，請使用下列步驟： 
 
@@ -263,7 +264,7 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 就像 XPath 一�
    * 新 JSONPath： `$.employmentNav.results[?(@.assignmentClass == 'ST')].jobInfoNav.results[0].departmentNav.name_localized`
 1. 重載應用程式的屬性對應 blade。 
 1. 向下鍵，然後按一下 [ **顯示 advanced options**]。
-1. 按一下 [ **SuccessFactors 的編輯屬性清單**]。
+1. 按一下 [編輯 SuccessFactors 的屬性清單]。
 1. 新增屬性以提取全域指派資料。 例如：如果您想要提取與全域指派設定檔相關聯的部門名稱，您可以將 JSONPath 運算式設定為的屬性 *globalAssignmentDepartment* `$.employmentNav.results[?(@.assignmentClass == 'GA')].jobInfoNav.results[0].departmentNav.name_localized` 。 
 1. 您現在可以將兩個部門值流向 Active Directory 屬性，或選擇性地使用運算式對應來傳送值。 範例：下列運算式會將 AD *部門* 屬性的值設定為 *globalAssignmentDepartment* （如果有的話），否則它會將值設定為與標準指派相關聯的 *部門* 。 
    * `IIF(IsPresent([globalAssignmentDepartment]),[globalAssignmentDepartment],[department])`
@@ -277,7 +278,7 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 就像 XPath 一�
 
 1. 開啟 SuccessFactors 布建應用程式的屬性對應 blade。 
 1. 向下鍵，然後按一下 [ **顯示 advanced options**]。
-1. 按一下 [ **SuccessFactors 的編輯屬性清單**]。
+1. 按一下 [編輯 SuccessFactors 的屬性清單]。
 1. 假設您想要提取與作業1和作業2相關聯的部門。 預先定義的屬性 *部門* 已經為第一個工作提取部門的價值。 您可以定義名為 *secondJobDepartment* 的新屬性，並將 JSONPath 運算式設定為 `$.employmentNav.results[1].jobInfoNav.results[0].departmentNav.name_localized`
 1. 您現在可以將兩個部門值流向 Active Directory 屬性，或選擇性地使用運算式對應來傳送值。 
 1. 儲存對應。 
@@ -310,7 +311,7 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 就像 XPath 一�
 
 * [瞭解如何設定 SuccessFactors 以 Active Directory 布建](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 * [瞭解如何設定回寫至 SuccessFactors](../saas-apps/sap-successfactors-writeback-tutorial.md)
-* [深入瞭解輸入布建的支援 SuccessFactors 屬性](sap-successfactors-attribute-reference.md)
+* [深入了解輸入佈建支援的 SuccessFactors 屬性](sap-successfactors-attribute-reference.md)
 
 
 

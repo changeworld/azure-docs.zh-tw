@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b4cf2e79acf4cd58ff94a2e90f07202341672a1d
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965250"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569431"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>適用于 SAP 工作負載的 Azure 虛擬機器 Oracle DBMS 部署
 
@@ -390,12 +390,12 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 
 | 元件 | 磁碟 | Caching | 儲存體集區 |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | Premium 或 Ultra 磁片 | None | 可用於 Premium  |
-| \oracle\<SID>\origlogaB | Premium 或 Ultra 磁片 | None | 可用於 Premium |
-| \oracle\<SID>\mirrlogAB | Premium 或 Ultra 磁片 | None | 可用於 Premium |
-| \oracle\<SID>\mirrlogBA | Premium 或 Ultra 磁片 | None | 可用於 Premium |
+| \oracle\<SID>\origlogaA | Premium 或 Ultra 磁片 | 無 | 可用於 Premium  |
+| \oracle\<SID>\origlogaB | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| \oracle\<SID>\mirrlogAB | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
+| \oracle\<SID>\mirrlogBA | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
 | \oracle\<SID>\sapdata1...n | Premium 或 Ultra 磁片 | 唯讀 | 適用于 premium 的建議  |
-| \oracle\SID\sapdata(n+1)* | Premium 或 Ultra 磁片 | None | 可用於 Premium |
+| \oracle\SID\sapdata(n+1)* | Premium 或 Ultra 磁片 | 無 | 可用於 Premium |
 | \oracle\<SID>\oraarch* | Premium 或 Ultra 磁片 | None | 不需要 |
 | Oracle `saptrace` Home、.。。 | OS 磁片 (Premium)  | 不需要 |
 
@@ -445,15 +445,19 @@ Oracle 支援 Oracle 軟體在以 Oracle Linux 為客體 OS 的 Microsoft Azure 
 
 ### <a name="storage-configuration"></a>儲存體組態
 
-針對 Azure 上的 Oracle Database 檔案，支援 ext4、xfs 或 Oracle ASM 檔案系統。 所有的資料庫檔案都必須儲存於以 VHD 或受控磁碟為基礎的這些檔案系統上。 這些磁碟會掛接到 Azure VM，並且以 [Azure 分頁 Blob 儲存體](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) \(英文\) 或 [Azure 受控磁碟](../../managed-disks-overview.md)為基礎。
+Ext4、xfs、Nfsv4.1 4.1 的檔案系統只 (在 Azure NetApp Files (ANF) # A3 或 Oracle ASM (請參閱 SAP Note [#2039619](https://launchpad.support.sap.com/#/notes/2039619) 中的) 檔案支援的版本/版本需求 Oracle Database。 所有資料庫檔案都必須儲存在這些以 Vhd、受控磁碟或 ANF 為基礎的檔案系統上。 這些磁片會掛接到 Azure VM，並以 [azure 分頁 blob 儲存體](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)、 [Azure 受控磁碟](../../managed-disks-overview.md)或 [azure NetApp Files](https://azure.microsoft.com/services/netapp/)為基礎。
 
-針對 Oracle Linux UEK 核心，UEK 必須至少為第 4 版，才能支援 [Azure 進階 SSD](../../premium-storage-performance.md#disk-caching)。
+最低需求清單，例如： 
+
+- 針對 Oracle Linux UEK 核心，UEK 必須至少為第 4 版，才能支援 [Azure 進階 SSD](../../premium-storage-performance.md#disk-caching)。
+- 針對 Oracle with ANF，支援的最低 Oracle Linux 為8.2。
+- 針對 Oracle with ANF，最小支援的 Oracle 版本為 19c (19.8.0.0) 
 
 簽出 [Azure 儲存體類型的 SAP 工作負載](./planning-guide-storage.md) ，以取得適用于 DBMS 工作負載的特定 Azure 區塊儲存體類型的詳細資料。
 
-我們非常建議使用 [Azure 受控磁碟](../../managed-disks-overview.md)。 我們也非常建議針對 Oracle Database 部署使用 [Azure 進階 SSD](../../disks-types.md)。
+使用 Azure 區塊儲存體時，強烈建議您在 Oracle Database 部署中使用 [azure 受控磁片](../../managed-disks-overview.md) 和 [azure premium ssd](../../disks-types.md) 。
 
-Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔案服務)。 如需詳細資訊，請參閱下列： 
+除了 Azure NetApp Files、其他共用磁片、網路磁碟機機或遠端共用（例如 Azure 檔案服務） (AFS) 不支援 Oracle Database 檔。 如需詳細資訊，請參閱下列： 
 
 - [Microsoft Azure 檔案服務簡介](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -469,10 +473,10 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 
 | 元件 | 磁碟 | Caching | 移除* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA & mirrlogB | Premium 或 Ultra 磁片 | None | 不需要 |
-| /oracle/\<SID>/origlogaB & mirrlogA | Premium 或 Ultra 磁片 | None | 不需要 |
-| /oracle/\<SID>/sapdata1...n | Premium 或 Ultra 磁片 | 唯讀 | 可用於 Premium |
-| /oracle/\<SID>/oraarch | 標準 | None | 不需要 |
+| /oracle/\<SID>/origlogaA & mirrlogB | Premium、Ultra 磁片或 ANF | None | 不需要 |
+| /oracle/\<SID>/origlogaB & mirrlogA | Premium、Ultra 磁片或 ANF | None | 不需要 |
+| /oracle/\<SID>/sapdata1...n | Premium、Ultra 磁片或 ANF | 唯讀 | 可用於 Premium |
+| /oracle/\<SID>/oraarch | 標準或 ANF | None | 不需要 |
 | Oracle `saptrace` Home、.。。 | OS 磁片 (Premium)  | | 不需要 |
 
 *移除：使用 RAID0 的 LVM stripe 或 MDADM
@@ -483,13 +487,13 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 
 | 元件 | 磁碟 | Caching | 移除* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/origlogaA | Premium 或 Ultra 磁片 | None | 可用於 Premium  |
-| /oracle/\<SID>/origlogaB | Premium 或 Ultra 磁片 | None | 可用於 Premium |
-| /oracle/\<SID>/mirrlogAB | Premium 或 Ultra 磁片 | None | 可用於 Premium |
-| /oracle/\<SID>/mirrlogBA | Premium 或 Ultra 磁片 | None | 可用於 Premium |
-| /oracle/\<SID>/sapdata1...n | Premium 或 Ultra 磁片 | 唯讀 | 適用于 Premium 的建議  |
-| /oracle/\<SID>/sapdata(n+1)* | Premium 或 Ultra 磁片 | None | 可用於 Premium |
-| /oracle/\<SID>/oraarch* | Premium 或 Ultra 磁片 | None | 不需要 |
+| /oracle/\<SID>/origlogaA | Premium、Ultra 磁片或 ANF | 無 | 可用於 Premium  |
+| /oracle/\<SID>/origlogaB | Premium、Ultra 磁片或 ANF | 無 | 可用於 Premium |
+| /oracle/\<SID>/mirrlogAB | Premium、Ultra 磁片或 ANF | 無 | 可用於 Premium |
+| /oracle/\<SID>/mirrlogBA | Premium、Ultra 磁片或 ANF | 無 | 可用於 Premium |
+| /oracle/\<SID>/sapdata1...n | Premium、Ultra 磁片或 ANF | 唯讀 | 適用于 Premium 的建議  |
+| /oracle/\<SID>/sapdata(n+1)* | Premium、Ultra 磁片或 ANF | 無 | 可用於 Premium |
+| /oracle/\<SID>/oraarch* | Premium、Ultra 磁片或 ANF | None | 不需要 |
 | Oracle `saptrace` Home、.。。 | OS 磁片 (Premium)  | 不需要 |
 
 *移除：使用 RAID0 的 LVM stripe 或 MDADM
@@ -500,6 +504,10 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 
 
 如果使用 Azure premium 儲存體時需要更多 IOPS，建議使用 LVM (邏輯磁片區管理員) 或 MDADM，在多個已掛接的磁片上建立一個大型邏輯磁片區。 如需詳細資訊，請參閱[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)文件，以取得利用 LVM 或 MDADM 的指導方針和指示。 這種方法可以簡化管理磁碟空間的系統管理負荷，並使您無需手動將檔案分散到多個掛接的磁碟。
+
+如果您打算使用 Azure NetApp Files，請確定已正確設定 dNFS 用戶端。 使用 dNFS 必須有支援的環境。 DNFS 的設定記載于在 [DIRECT NFS 上建立 Oracle Database 一](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA)文中。
+
+此範例將示範如何使用 azure netapp Files，將 [SAP AnyDB (oracle 19c) ](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)中的 Azure netapp FILES 型 NFS 用途。
 
 
 #### <a name="write-accelerator"></a>寫入加速器

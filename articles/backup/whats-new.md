@@ -3,12 +3,12 @@ title: Azure 備份的新功能
 description: 瞭解 Azure 備份中的新功能。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309659"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569414"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure 備份的新功能
 
@@ -18,6 +18,9 @@ Azure 備份不斷地改進和釋出新功能，以增強 Azure 中資料的保�
 
 ## <a name="updates-summary"></a>更新摘要
 
+- 2021 年 1 月
+  - [Azure 磁片備份 (預覽版) ](disk-backup-overview.md)
+  - [使用客戶管理的金鑰進行待用加密現已正式推出](encryption-at-rest-with-cmk.md)
 - 2020 年 11 月
   - [適用于 Azure 檔案共用 (AFS) 備份的 Azure Resource Manager 範本](#azure-resource-manager-template-for-afs-backup)
   - [Azure Vm 上的 SAP Hana 資料庫增量備份](#incremental-backups-for-sap-hana-databases)
@@ -32,9 +35,21 @@ Azure 備份不斷地改進和釋出新功能，以增強 Azure 中資料的保�
   - [適用于備份資料的區域冗余儲存體 (ZRS) ](#zone-redundant-storage-zrs-for-backup-data)
   - [Azure Vm 中 SQL Server 和 SAP Hana 工作負載的虛刪除](#soft-delete-for-sql-server-and-sap-hana-workloads)
 
+## <a name="azure-disk-backup-in-preview"></a>Azure 磁片備份 (預覽版) 
+
+Azure 磁片備份提供了一種現成的解決方案，可讓您藉由使用備份原則來自動建立快照集，並將其保留在設定的持續時間內，為 [Azure 受控磁碟](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) 提供快照集生命週期管理 您可以管理沒有基礎結構成本的磁片快照集，也不需要自訂腳本或任何管理額外負荷。 這是損毀一致的備份解決方案，會使用 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) 集進行受控磁片的時間點備份，且每天支援多個備份。 它也是無代理程式的解決方案，並不會影響生產應用程式的效能。 它支援 OS 和資料磁片的備份和還原 (包括) 的共用磁片，不論它們目前是否已連接到執行中的 Azure 虛擬機器。
+
+如需詳細資訊，請參閱 [預覽版中的 Azure 磁片備份 () ](disk-backup-overview.md)。
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>使用客戶管理的金鑰進行待用加密
+
+使用客戶管理的金鑰進行待用加密的支援現已正式推出。 這可讓您使用儲存在 Azure 金鑰保存庫中的金鑰，來加密復原服務保存庫中的備份資料。 在復原服務保存庫中用來加密備份的加密金鑰可能與用於加密來源的加密金鑰不同。 使用 AES 256 型資料加密金鑰來保護資料 (DEK) ，也就是使用儲存在 Key Vault 中的金鑰加以保護。 相較于使用平臺管理的金鑰進行加密， (預設為) ，這可讓您更充分掌控您的金鑰，並可協助您更符合您的合規性需求。
+
+如需詳細資訊，請參閱 [使用客戶管理的金鑰加密備份資料](encryption-at-rest-with-cmk.md)。
+
 ## <a name="azure-resource-manager-template-for-afs-backup"></a>適用于 AFS 備份的 Azure Resource Manager 範本
 
-Azure 備份現在支援使用 Azure Resource Manager (ARM) 範本來設定現有 Azure 檔案共用的備份。 此範本會針對復原服務保存庫和備份原則指定適當的詳細資料，以設定現有 Azure 檔案共用的保護。 它會選擇性地建立新的復原服務保存庫和備份原則，並將包含檔案共用的儲存體帳戶註冊到復原服務保存庫。
+Azure 備份現在支援使用 Azure Resource Manager (ARM) 範本來設定現有 Azure 檔案共用的備份。 此範本會針對復原服務保存庫和備份原則指定適當的詳細資料，以設定現有 Azure 檔案共用的保護。 範本可以選擇性地建立新的復原服務保存庫和備份原則，並將包含檔案共用的儲存體帳戶註冊到復原服務保存庫。
 
 如需詳細資訊，請參閱 [Azure 備份的 Azure Resource Manager 範本](backup-rm-template-samples.md)。
 

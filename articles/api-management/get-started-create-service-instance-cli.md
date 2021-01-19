@@ -67,7 +67,7 @@ NAME         RESOURCE GROUP    LOCATION    GATEWAY ADDR    PUBLIC IP    PRIVATE 
 myapim       myResourceGroup   Central US                                             Activating  Developer  1
 ```
 
-啟用之後，狀態會是 `Online`，而服務執行個體會有閘道位址和公用 IP 位址。 目前，這些位址不會公開任何內容。 例如：\
+啟用之後，狀態會是 `Online`，而服務執行個體會有閘道位址和公用 IP 位址。 目前，這些位址不會公開任何內容。 例如：
 
 ```console
 NAME         RESOURCE GROUP    LOCATION    GATEWAY ADDR                       PUBLIC IP     PRIVATE IP    STATUS    TIER       UNITS

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630610"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569839"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>將2.0 版的程式碼遷移至 REST API 的 v3。0
 
@@ -24,11 +24,51 @@ ms.locfileid: "97630610"
 
 ## <a name="forward-compatibility"></a>往後相容性
 
-您也可以在 v3 API 中的相同身分識別，找到 v2 的所有實體。 如果結果的架構已變更， (例如轉譯) ，則在 v3 版 API 中 GET 的結果會使用 v3 架構。 API v2 版本中 GET 的結果會使用相同的 v2 架構。 V2 Api 的結果中 **無法** 使用 v3 上新建立的實體。
+V2 中的所有實體也都可以在 v3 API 中的相同身分識別下找到。 如果結果的架構已變更， (例如轉譯) ，則在 v3 版 API 中 GET 的結果會使用 v3 架構。 API v2 版本中 GET 的結果會使用相同的 v2 架構。 V2 Api 的回應中 **無法** 使用 v3 上新建立的實體   。 
+
+## <a name="migration-steps"></a>移轉步驟
+
+當您準備進行遷移時，這是您需要注意的專案摘要清單。 詳細資料可在個別連結中找到。 視您目前使用的 API 而定，此處所列的所有步驟都不適用。 只有少數變更需要呼叫程式碼中的非簡單變更。 大部分的變更只需要變更專案名稱。 
+
+一般變更： 
+
+1. [變更主機名稱](#host-name-changes)
+
+1. [在您的用戶端程式代碼中將屬性識別碼重新命名為 self](#identity-of-an-entity) 
+
+1. [變更程式碼以反復查看實體集合](#working-with-collections-of-entities)
+
+1. [將屬性名稱重新命名為您用戶端程式代碼中的 displayName](#name-of-an-entity)
+
+1. [調整參考實體的中繼資料抓取](#accessing-referenced-entities)
+
+1. 如果您使用批次轉譯： 
+
+    * [調整程式碼以建立 batch 轉譯](#creating-transcriptions) 
+
+    * [將程式碼調整為新的轉譯結果架構](#format-of-v3-transcription-results)
+
+    * [調整如何取得結果的程式碼](#getting-the-content-of-entities-and-the-results)
+
+1. 如果您使用自訂模型定型/測試 Api： 
+
+    * [將修改套用至自訂模型定型](#customizing-models)
+
+    * [變更基礎和自訂模型的取出方式](#retrieving-base-and-custom-models)
+
+    * [在用戶端程式代碼中將路徑區段 accuracytests 重新命名以進行評估](#accuracy-tests)
+
+1. 如果您使用端點 Api：
+
+    * [變更如何取出端點記錄](#retrieving-endpoint-logs)
+
+1. 其他次要變更： 
+
+    * [將所有自訂屬性傳遞為 customProperties，而不是 POST 要求中的屬性](#using-custom-properties)
+
+    * [從回應標頭位置讀取位置，而不是操作位置](#response-headers)
 
 ## <a name="breaking-changes"></a>重大變更
-
-中斷性變更清單已依調整所需的變更量來排序。 只有少數變更需要呼叫程式碼中的非簡單變更。 大部分的變更只需要變更專案名稱。
 
 ### <a name="host-name-changes"></a>主機名稱變更
 
@@ -476,7 +516,7 @@ v3 `Operation-Location` 除了 `Location` 要求上的標頭之外，不會再�
 >`accuracytests` `evaluations` 在您的用戶端程式代碼中，將路徑區段重新命名為。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 檢查語音服務所提供的這些常用 REST Api 的所有功能：
 

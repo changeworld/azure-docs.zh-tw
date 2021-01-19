@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: f0c7e23e45a84fa73c7e63b5aaa6280177cf8b27
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.openlocfilehash: fdd5b8f9cea549f64c4857d1c45b95b0d9b9ec53
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541303"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569958"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -44,13 +44,13 @@ ms.locfileid: "98541303"
 **地理叢集** | **Azure 區域**
 -- | --
 America | 加拿大東部、加拿大中部、美國中南部、美國中西部、美國東部、美國東部 2、美國西部、美國西部 2、美國中部、美國中北部
-歐洲 | 英國西部、英國南部、北歐、西歐、南非西部、南非北部、挪威東部、法國中部、瑞士北部
+歐洲 | 英國西部、英國南部、北歐、西歐、南非西部、南非北部、挪威東部、法國中部、瑞士北部、德國中西部
 Asia | 印度南部、印度中部、印度西部、東南亞、東亞、日本東部、日本西部、南韓中部、南韓南部
 澳大利亞    | 澳大利亞東部、澳大利亞東南部、澳大利亞中部、澳大利亞中部 2
 Azure Government    | US Gov 維吉尼亞州、US Gov 愛荷華州、US Gov 亞利桑那州、US Gov 德克薩斯州、US DoD 東部、US DoD 中部
 德國    | 德國中部、德國東北部
 中國 | 中國東部、中國北部、中國北部 2、中國東部 2
-保留給國內災害復原的受限制區域 |德國北部保留給德國中西部、瑞士西部保留給瑞士北部、法國南部保留給法國中部、阿拉伯聯合大公國中部客戶限制阿拉伯聯合大公國北部挪威西部客戶
+保留給國內災害復原的受限制區域 |瑞士西部保留給瑞士北部、法國南部保留給法國中部、阿拉伯聯合大公國中部阿拉伯聯合大公國北部客戶挪威西部，挪威東部客戶
 
 >[!NOTE]
 >

@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 95993b35174b80dae8c878c22554ee60afeb8a14
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 57a9f6f11283e020efc25f55f1df473a6cb2d321
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206215"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569992"
 ---
 # <a name="server-side-performance-queries"></a>伺服器端效能查詢
 
@@ -64,10 +64,10 @@ void QueryFrameData(ApiHandle<AzureSession> session)
 
 | member | 說明 |
 |:-|:-|
-| latencyPoseToReceive | 在用戶端裝置上從觀景窗姿勢預估，直到此姿勢的伺服器畫面完全可供用戶端應用程式使用為止的延遲。 此值包括網路來回行程、伺服器轉譯時間、影片解碼和抖動補償。 請參閱**上圖中的間隔 1。**|
-| latencyReceiveToPresent | 從接收的遠端框架可用，直到用戶端應用程式對 CPU 呼叫 PresentFrame 的延遲。 |
-| latencyPresentToDisplay  | 從在 CPU 上呈現畫面直到顯示器亮起的延遲。 此值包括用戶端 GPU 時間、OS 所執行的任何畫面緩衝、硬體重新投影，以及與裝置相依顯示掃描時間。 請參閱**上圖中的間隔 2。**|
-| timeSinceLastPresent | 對 CPU 上的 PresentFrame 進行後續呼叫之間的時間。 大於顯示持續時間的值 (例如 60-Hz 用戶端裝置上為 16.6 毫秒) 表示用戶端應用程式未及時完成其 CPU 工作負載所造成的問題。 請參閱**上圖中的間隔 3。**|
+| latencyPoseToReceive | 在用戶端裝置上從觀景窗姿勢預估，直到此姿勢的伺服器畫面完全可供用戶端應用程式使用為止的延遲。 此值包括網路來回行程、伺服器轉譯時間、影片解碼和抖動補償。 請參閱 **上圖中的間隔 1。**|
+| latencyReceiveToPresent | 從接收的遠端框架可用，直到用戶端應用程式對 CPU 呼叫 PresentFrame 的延遲。 請參閱 **上圖中的間隔 2。**|
+| latencyPresentToDisplay  | 從在 CPU 上呈現畫面直到顯示器亮起的延遲。 此值包括用戶端 GPU 時間、OS 所執行的任何畫面緩衝、硬體重新投影，以及與裝置相依顯示掃描時間。 請參閱 **上圖中的間隔 3。**|
+| timeSinceLastPresent | 對 CPU 上的 PresentFrame 進行後續呼叫之間的時間。 大於顯示持續時間的值 (例如 60-Hz 用戶端裝置上為 16.6 毫秒) 表示用戶端應用程式未及時完成其 CPU 工作負載所造成的問題。|
 | videoFramesReceived | 最後一秒從伺服器接收的畫面數。 |
 | videoFrameReusedCount | 最後一秒接收且在裝置上已使用多次的畫面數。 非零值，表示因網路抖動或伺服器轉譯時間過久而必須重複使用或重新投影的畫面。 |
 | videoFramesSkipped | 最後一秒接收且已解碼，但因為較新的畫面已到達而未顯示在顯示器上顯示的畫面數。 非零值，表示網路抖動造成多個畫面延遲，然後以高載方式同時抵達用戶端裝置。 |
@@ -132,7 +132,7 @@ void QueryPerformanceAssessment(ApiHandle<AzureSession> session)
 | networkLatency | z大約的平均來回行程網路延遲 (毫秒)。 在上面的圖解中，這會對應到紅色箭號的總和。 值的計算方式是將實際伺服器轉譯時間從 `FrameStatistics` 的 `latencyPoseToReceive` 值減去。 雖然此近似值不精確，但其提供網路延遲 (從用戶端上計算的延遲值分離出) 的一些指示。 |
 | polygonsRendered | 在一個畫面格中轉譯的三角形數目。 此數目也包括在轉譯期間稍後挑選的三角形。 這表示，這個數目在不同觀景窗位置上不會差異很大，但效能可能會有大幅差異，視三角形的挑選率而定。|
 
-為了協助您評估這些值，每個部分都附帶品質分類，例如**絕佳**、**良好**、**中等**或**不良**。
+為了協助您評估這些值，每個部分都附帶品質分類，例如 **絕佳**、**良好**、**中等** 或 **不良**。
 此評量計量可提供伺服器健康情況的粗略指示，但不應視為絕對。 例如，假設您看到 GPU 時間分數為「中等」。 將其視為中等是因為其接近整體畫面時間預算的限制。 不過，在您的案例中，其可能是良好的值，因為您正在轉譯複雜模型。
 
 ## <a name="statistics-debug-output"></a>統計資料偵錯輸出
