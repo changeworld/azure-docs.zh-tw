@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 886d6ff1d3437a9d45bdabc68b2bf3ab8cdaa3ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5f49d2c918164fa529b12313e000aff5f8893a65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349968"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201839"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>教學課程：設定 Blink 來自動佈建使用者
 
@@ -97,7 +97,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![[管理] 選項的螢幕擷取畫面，並已指出 [佈建] 選項。](common/provisioning.png)
 
-4. 將 [佈建模式]  設定為 [自動]  。
+4. 將 [佈建模式] 設定為 [自動]。
 
     ![[佈建模式] 下拉式清單的螢幕擷取畫面，並已指出 [自動] 選項。](common/provisioning-automatic.png)
 
@@ -117,7 +117,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 9. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 Blink 的使用者屬性。 選取為 [比對] 屬性 (Property) 的屬性 (Attribute) 會用來比對 Blink 中的使用者帳戶以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
 
-    ![Blink 使用者屬性](media/blink-provisioning-tutorial/user-attributes.png)
+    ![Blink 使用者屬性](media/blink-provisioning-tutorial/new-user-attributes.png)
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
@@ -129,13 +129,17 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![佈建範圍](common/provisioning-scope.png)
 
-15. 當您準備好要佈建時，按一下 [儲存]  。
+15. 當您準備好要佈建時，按一下 [儲存]。
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
 針對 [設定] 區段的 [範圍] 中定義的所有使用者，此作業會啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料] 區段來監視進度，並遵循連結來佈建活動報告，當中會描述 Blink 上的 Azure AD 佈建服務所執行之所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
+
+## <a name="change-log"></a>變更記錄
+
+* 2021/01/14 - 已新增 **公司**、**描述** 和 **位置** 的自訂擴充屬性。
 
 ## <a name="additional-resources"></a>其他資源
 

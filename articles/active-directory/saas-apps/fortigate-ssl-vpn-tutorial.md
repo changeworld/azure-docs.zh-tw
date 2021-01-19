@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 FortiGate SSL VPN 整合 | Microsoft Docs
 description: 了解您整合 FortiGate SSL VPN 與 Azure Active Directory (Azure AD) 所需執行的步驟。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 18a3d9d5-d81c-478c-be7e-ef38b574cb88
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/11/2020
+ms.date: 12/26/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021550598452516d45ae67c1139c2f891629a875
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: b9a22025f124e7639aa1b9a157dbbd020e2ff966
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296568"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020259"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 FortiGate SSL VPN 整合
 
@@ -29,8 +25,6 @@ ms.locfileid: "96296568"
 * 使用 Azure AD 來控制可以存取 FortiGate SSL VPN 的人員。
 * 讓使用者使用其 Azure AD 帳戶自動登入 FortiGate SSL VPN。
 * 在 Azure 入口網站中集中管理您的帳戶。
-
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -45,13 +39,12 @@ ms.locfileid: "96296568"
 
 FortiGate SSL VPN 支援由 SP 起始的 SSO。
 
-設定 FortiGate SSL VPN 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-fortigate-ssl-vpn-from-the-gallery"></a>從資源庫新增 FortiGate SSL VPN
 
 若要進行將 FortiGate SSL VPN 整合到 Azure AD 中的設定，您必須從資源庫將 FortiGate SSL VPN 新增至受控 SaaS 應用程式清單：
 
-1. 使用公司或學校帳戶或使用個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 使用公司或學校帳戶或使用個人的 Microsoft 帳戶登入 Azure 入口網站。
 1. 在左窗格中，選取 [Azure Active Directory]。
 1. 移至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]。
@@ -69,13 +62,13 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
     1. **[將存取權授予測試使用者](#grant-access-to-the-test-user)** ，讓該使用者能夠使用 Azure AD 單一登入。
 1. 在應用程式端 **[設定 FortiGate SSL VPN SSO](#configure-fortigate-ssl-vpn-sso)** 。
     1. **建立 FortiGate SSL VPN 測試使用者** 作為 Azure AD 中出現的使用者對應項。
-1. **[測試 SSO](#test-single-sign-on)** ，以驗證組態是否能運作。
+1. **[測試 SSO](#test-sso)** ，以驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
 
 依照下列步驟，在 Azure 入口網站中啟用 Azure AD SSO：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [FortiGate SSL VPN] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
+1. 在 Azure 入口網站的 **FortiGate SSL VPN** 應用程式整合頁面上，尋找 **管理** 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入] 頁面上，選取 [基本 SAML 組態] 的鉛筆按鈕，以編輯設定：
 
@@ -106,17 +99,26 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
    | 群組 | user.groups |
    
    若要建立這些額外的宣告：
+
+   a. 在 [使用者屬性與宣告] 旁，選取 [編輯]。
+
+   b. 選取 [新增宣告]。
+
+   c. 針對 [名稱]，輸入 **username**。
+
+   d. 針對 [來源屬性]，選取 [user.userprincipalname]。
+
+   e. 選取 [儲存]  。
+
+   f. 選取 [新增群組宣告]。
+
+   g. 選取 [所有群組]。
+
+   h. 選取 [自訂群組宣告的名稱] 核取方塊。
+
+   i. 針對 [名稱]，輸入 **group**。
    
-   1. 在 [使用者屬性與宣告] 旁，選取 [編輯]。
-   1. 選取 [新增宣告]。
-   1. 針對 [名稱]，輸入 **username**。
-   1. 針對 [來源屬性]，選取 [user.userprincipalname]。
-   1. 選取 [儲存]。
-   1. 選取 [新增群組宣告]。
-   1. 選取 [所有群組]。
-   1. 選取 [自訂群組宣告的名稱] 核取方塊。
-   1. 針對 [名稱]，輸入 **group**。
-   1. 選取 [儲存]。   
+   j. 選取 [儲存]。   
 
 1. 在 [設定使用 SAML 的單一登入] 頁面的 [SAML 簽署憑證] 區段中，選取 [憑證 (Base64)] 旁的 [下載] 連結，以下載憑證並將其儲存在電腦上：
 
@@ -144,14 +146,8 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
 1. 在應用程式清單中，選取 [FortiGate SSL VPN]。
-1. 在應用程式的概觀頁面上，請在 [管理] 區段中，選取 [使用者和群組]：
-
-   ![顯示 [使用者和群組] 選項的螢幕擷取畫面。](common/users-groups-blade.png)
-
-1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]：
-
-    ![顯示 [新增使用者] 按鈕的螢幕擷取畫面。](common/add-assign-user.png)
-
+1. 在應用程式的概觀頁面上，請在 [管理] 區段中，選取 [使用者和群組]。
+1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當的使用者角色。 按一下畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，選取 [指派]  。
@@ -256,22 +252,17 @@ FortiGate SSL VPN 支援由 SP 起始的 SSO。
 
 請與 [FortiGate 支援小組](mailto:tac_amer@fortinet.com)合作，將 VPN 入口網站和防火牆原則新增至 FortiGate VPN 平台。 您必須先完成此步驟，才能使用單一登入。
 
-### <a name="test-single-sign-on"></a>測試單一登入 
+## <a name="test-sso"></a>測試 SSO 
 
-在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
 
-當您在存取面板中選取 [FortiGate SSL VPN] 圖格時，應該會自動登入您已設定 SSO 的 FortiGate SSL VPN。 如需存取面板的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
+* 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向至您可以在其中起始登入流程的 FortiGate VPN 登入 URL。 
 
-Microsoft 和 FortiGate 建議您使用 Fortinet VPN 用戶端 FortiClient，以獲得最佳的使用者體驗。
+* 直接移至 FortiGate VPN 登入 URL，然後從該處起始登入流程。
 
-## <a name="additional-resources"></a>其他資源
+* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [FortiGate VPN] 圖格時，將會重新導向至 FortiGate VPN 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [如何整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>後續步驟
 
-- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
-
-- [嘗試搭配 Azure AD 使用 FortiGate SSL VPN](https://aad.portal.azure.com/)
-
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
+設定 FortiGate VPN 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)

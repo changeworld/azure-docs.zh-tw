@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: de89f9d87b010dc3710e7d82f4d846de12303905
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739428"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072151"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>教學課程：使用您自己的資料 (第 4 部，共 4 部)
 
@@ -40,9 +40,6 @@ ms.locfileid: "97739428"
 ## <a name="prerequisites"></a>Prerequisites
 
 * 完成系列的[第 3 部分](tutorial-1st-experiment-sdk-train.md)。
-* Python 語言和機器學習工作流程的簡介知識。
-* Visual Studio Code、Jupyter 或 PyCharm 等本機開發環境。
-* Python (版本 3.5 至 3.7)。
 
 ## <a name="adjust-the-training-script"></a>調整訓練指令碼
 
@@ -130,7 +127,7 @@ python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
 >[!TIP] 
 > 雖然您使用 Azure Machine Learning 來上傳資料，但您可以使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)來上傳特定檔案。 如果您需要 ETL 工具，可以使用 [Azure Data Factory](../data-factory/introduction.md) 將您的資料內嵌到 Azure 中。
 
-執行 Python 檔案以上傳資料。 (上傳應快速且小於 60 秒。)
+在已啟用 tutorial1 Conda 環境的視窗中，執行 Python 檔案以上傳資料。 (上傳應快速且小於 60 秒。)
 
 ```bash
 python 05-upload-data.py

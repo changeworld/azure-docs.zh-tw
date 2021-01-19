@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: bcad165f5d0ba2cf652cff35091e05b4414193c8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951786"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968110"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>教學課程：使用 Azure Stack Edge Pro 轉換資料以進行進階部署
 
@@ -52,32 +52,34 @@ ms.locfileid: "91951786"
 
 若要設定 Azure Stack Edge Pro 上的計算，您將建立 IoT 中樞資源。
 
-1. 在 Azure Stack Edge 資源的 Azure 入口網站中，移至 [概觀]。 在右窗格的 [計算] 圖格上，選取 [開始使用]。
+1. 在 Azure Stack Edge 資源的 Azure 入口網站中，移至 [概觀]。 在右側窗格中，選取 [IoT Edge] 圖格。
 
     ![開始使用計算](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-1.png)
 
-2. 在 [設定 Edge 計算] 圖格上，選取 [設定計算]。
+2. 在 **啟用 IoT Edge 服務** 圖格中，選取 [新增]。 此動作會啟用 IoT Edge 服務，讓您在本機裝置上部署 IoT Edge 模組。
 
     ![開始使用計算 2](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
-3. 在 [設定 Edge 計算] 刀鋒視窗上，輸入下列資訊：
+3. 在 **建立 IoT Edge 服務** 上，輸入下列內容：
 
    
     |欄位  |值  |
     |---------|---------|
-    |IoT 中樞     | 選擇 [新增] 或 [現有]。 <br> 根據預設，標準層 (S1) 用來建立 IoT 資源。 若要使用免費層 IoT 資源，請建立一個資源，然後選取現有的資源。 <br> 在每個案例中，IoT 中樞資源會使用 Azure Stack Edge 資源所用的相同訂用帳戶和資源群組。     |
-    |名稱     |輸入 IoT 中樞資源的名稱。         |
+    |訂用帳戶     |選取您 IoT 中樞資源的訂用帳戶。 您可以選取與 Azure Stack Edge 資源所用相同的訂用帳戶。        |
+    |資源群組     |輸入 IoT 中樞資源資源群組的名稱。 您可以選取與 Azure Stack Edge 資源所用相同的資源群組。         |
+    |IoT 中樞     | 選擇 [新增]  或 [現有]  。 <br> 根據預設，標準層 (S1) 用來建立 IoT 資源。 若要使用免費層 IoT 資源，請建立一個資源，然後選取現有的資源。      |
+    |名稱     |接受預設值，或輸入 IoT 中樞資源的名稱。         |
 
     ![開始使用計算 3](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. 選取 [建立]。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，[設定 Edge 計算] 圖格會更新以顯示計算組態。 若要確認已設定 Edge 計算角色，請選取 [設定計算] 圖格上的 [檢視設定]。
-    
+4. 選取 [檢閱 + 建立]  。 建立 IoT 中樞資源需要幾分鐘的時間。 建立 IoT 中樞資源之後，**概觀** 更新會指出目前正在執行 IoT Edge 服務。 
+
+    在 Edge 裝置上設定 IoT Edge 服務時，會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 IoT Edge 執行階段也是在此 IoT Edge 裝置上執行。 目前只有 Linux 平台適用於您的 IoT Edge 裝置。
+
+    若要確認已設定 Edge 計算角色，請選取 [IoT Edge 服務] > [屬性] 並檢視 IoT 裝置和 IoT Edge 裝置。 
+
     ![開始使用計算 4](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
-
-    在 Edge 裝置上設定 Edge 計算角色時，其會建立兩個裝置：一個 IoT 裝置和一個 IoT Edge 裝置。 這兩個裝置都可以在 IoT 中樞資源中檢視。 IoT Edge 執行階段也是在此 IoT Edge 裝置上執行。
-
-    目前只有 Linux 平台適用於您的 IoT Edge 裝置。
-
+    
 
 ## <a name="add-shares"></a>新增共用
 
@@ -85,19 +87,13 @@ ms.locfileid: "91951786"
 
 1. 執行下列步驟，在裝置上新增 Edge 共用：
 
-    1. 在您的 Azure Stack Edge 資源中，移至 [Edge 計算] > [開始使用]。
-    2. 在 [新增共用] 圖格上，選取 [新增]。
+    1. 在您的 Azure Stack Edge 資源中，移至 [IoT Edge] > [共用]。
+    2. 在 **共用** 頁面上，從命令列中選取 [+ 新增共用]。
     3. 在 [新增共用] 刀鋒視窗上，提供共用名稱並選取共用類型。
-    4. 若要掛接 Edge 共用，請選取 [使用共用搭配 Edge 計算] 核取方塊。
-    5. 選取 [儲存體帳戶]、[儲存體服務]現有使用者，然後選取 [建立]。
+    4. 若要掛接 Edge 共用，請選取 [使用共用搭配 Edge 計算]  核取方塊。
+    5. 選取 [儲存體帳戶]  、[儲存體服務]  現有使用者，然後選取 [建立]  。
 
         ![新增 Edge 共用](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-1.png)
-
-    <!--If you created a local NFS share, use the following remote sync (rsync) command option to copy files onto the share:
-
-    `rsync <source file path> < destination file path>`
-
-    For more information about the rsync command, go to [Rsync documentation](https://www.computerhope.com/unix/rsync.htm).-->
 
     Edge 共用建立後，您會收到成功建立通知。 共用清單會更新以反映新的共用。
 
@@ -124,7 +120,7 @@ ms.locfileid: "91951786"
 
 ## <a name="add-a-trigger"></a>新增觸發程序
 
-1. 移至 [Edge 計算] > [觸發程序]。 選取 [+ 新增觸發程序]。
+1. 移至您的 Azure Stack Edge 資源，然後移至 [IoT Edge] > [觸發程序]。 選取 [+ 新增觸發程序]。
 
     ![新增觸發程序](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-1.png)
 
@@ -154,7 +150,7 @@ ms.locfileid: "91951786"
 
 在本節中，您會將自訂模組新增至您在[為您的 Azure Stack Edge Pro 開發 C# 模組](azure-stack-edge-create-iot-edge-module.md)中建立的 IoT Edge 裝置。 此自訂模組會從 Edge 裝置上的 Edge 本機共用中取用檔案，並將其移至裝置上的 Edge (雲端) 共用。 接著，雲端共用會將檔案推送至與該雲端共用相關聯的 Azure 儲存體帳戶。
 
-1. 移至 [Edge 計算] > [開始使用]。 在 [新增模組] 圖格上，選取 [進階] 案例類型。 選取 [移至 IoT 中樞]。
+1. 移至您的 Azure Stack Edge 資源，然後移至 [IoT Edge] > [概觀]。 在 **模組** 圖格上，選取 [移至 Azure IoT 中樞]。
 
     ![選取進階部署](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-1.png)
 
@@ -231,7 +227,7 @@ ms.locfileid: "91951786"
 
    ![設定模組頁面 2](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-9.png)
  
-    此動作會啟動模組部署。 部署完成後，模組的**執行階段狀態**將是**執行中**。
+    此動作會啟動模組部署。 部署完成後，模組的 **執行階段狀態** 將是 **執行中**。
 
     ![新增自訂模組 3](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-10.png)
 

@@ -791,7 +791,7 @@
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.datafactory/allversions
     - name: Python
-      href: /python/api/overview/azure/datafactory?view=azure-python
+      href: /python/api/overview/azure/datafactory
 - name: 資源
   items:
     - name: 白皮書

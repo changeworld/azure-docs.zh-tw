@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9ad96bdb632e134cf3e3a0f82bb97f88c87e72e9
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 937b5ebb13bfbf27ff04b6944f2de7e32e7e656c
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033437"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185847"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>使用 Azure Machine Learning Visual Studio Code 擴充功能來定型和部署影像分類 TensorFlow 模型 (預覽)
 
@@ -78,7 +78,7 @@ ms.locfileid: "97033437"
     > [!div class="mx-imgBorder"]
     > ![建立實驗](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. 將您的實驗命名為 "MNIST"，然後按 **Enter** 以建立新的實驗。 
+1. 將您的實驗命名為 "Tutorial-VSCode-MNIST"，然後按 **Enter** 以建立新的實驗。 
 
 就像工作區一樣，要求會傳送至 Azure，以使用所提供的組態來建立實驗。 幾分鐘後，新的實驗就會出現在工作區的 [Experiments] 節點中。 
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/04/2020
+ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: bd62855aef59439ed476a13770f79ce6d3cf68f8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d4f8e71a0afbb1b00313d5e100ba8b3fd2b4e2ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180787"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185745"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>教學課程：Azure Active Directory 與 Marketo 整合
 
@@ -40,6 +40,9 @@ Marketo 與 Azure AD 整合提供下列優點：
 
 * Marketo 支援由 **IDP** 起始的 SSO
 
+> [!NOTE]
+> 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
+
 ## <a name="adding-marketo-from-the-gallery"></a>從資源庫新增 Marketo
 
 若要設定 Marketo 與 Azure AD 整合，您需要從資源庫將 Marketo 新增到受控 SaaS 應用程式清單。
@@ -51,7 +54,7 @@ Marketo 與 Azure AD 整合提供下列優點：
 1. 在 [從資源庫新增] 區段的搜尋方塊中，輸入 **Marketo**。
 1. 從結果面板中選取 [Marketo]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
+## <a name="configure-and-test-azure-ad-sso-for-marketo"></a>設定和測試 Marketo 的 Azure AD SSO
 
 在本節中，您將以名為 **Britta Simon** 的測試使用者身分，設定及測試與 Marketo 搭配運作的 Azure AD 單一登入。
 若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 Marketo 中相關使用者之間的連結關聯性。
@@ -59,10 +62,10 @@ Marketo 與 Azure AD 整合提供下列優點：
 若要設定及測試與 Marketo 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
-    * **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 以 Britta Simon 測試 Azure AD SSO。
-    * **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓使用者 Britta Simon 能夠使用 Azure AD SSO。
+    1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 以 Britta Simon 測試 Azure AD SSO。
+    1. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓使用者 Britta Simon 能夠使用 Azure AD SSO。
 2. **[設定 Marketo SSO](#configure-marketo-sso)** - 在應用程式端設定 SSO 設定。
-    * **[建立 Marketo 測試使用者](#create-marketo-test-user)** - 使 Marketo 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
+    1. **[建立 Marketo 測試使用者](#create-marketo-test-user)** - 使 Marketo 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
 3. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
 
 ### <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
@@ -71,20 +74,20 @@ Marketo 與 Azure AD 整合提供下列優點：
 
 1. 在 Azure 入口網站的 [Marketo] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的鉛筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://saml.marketo.com/sp`
+    a. 在 [識別碼]  文字方塊中，輸入 URL：`https://saml.marketo.com/sp`
 
-    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://login.marketo.com/saml/assertion/\<munchkinid\>`
+    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://login.marketo.com/saml/assertion/\<munchkinid\>`
 
     c. 在 [轉送狀態]  文字方塊中，使用下列模式輸入 URL：`https://<munchkinid>.marketo.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「識別碼」、「回覆 URL」及「轉送狀態」來更新這些值。 請連絡[Marketo 用戶端支援小組](https://investors.marketo.com/contactus.cfm)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「回覆 URL」和「轉送狀態」來更新這些值。 請連絡[Marketo 用戶端支援小組](https://investors.marketo.com/contactus.cfm)以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
@@ -104,7 +107,7 @@ Marketo 與 Azure AD 整合提供下列優點：
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下 [建立]。
+   1. 按一下頁面底部的 [新增] 。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -120,7 +123,17 @@ Marketo 與 Azure AD 整合提供下列優點：
 
 ## <a name="configure-marketo-sso"></a>設定 Marketo SSO
 
-1. 若要取得您應用程式的 Munchkin 識別碼，請使用管理員認證登入 Marketo，並執行以下動作︰
+1. 若要自動執行 Marketo 內的設定，您必須按一下 [安裝擴充功能] 來安裝「我的應用程式安全登入瀏覽器擴充功能」。
+
+    ![我的應用程式擴充功能](common/install-myappssecure-extension.png)
+
+2. 將擴充功能新增至瀏覽器之後，按一下 [設定 Marketo] 便會將您導向到 Marketo 應用程式。 請從該處提供用以登入 Marketo 的管理員認證。 瀏覽器擴充功能會自動為您設定應用程式，並自動執行步驟 3 到 6。
+
+    ![設定組態](common/setup-sso.png)
+
+3. 如果您想要手動設定 Marketo，請在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Marketo 公司網站。
+
+1. 若要取得應用程式的 Munchkin 識別碼，請執行下列動作：
    
     a. 使用管理員認證登入 Marketo 應用程式。
    
@@ -233,13 +246,13 @@ Marketo 與 Azure AD 整合提供下列優點：
 
 8. 使用者會收到電子郵件通知，他必須按一下連結，並變更密碼才能啟動帳戶。 
 
-### <a name="test-sso"></a>測試 SSO 
+### <a name="test-sso"></a>測試 SSO
 
 在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。
 
-1. 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Marketo
+* 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Marketo
 
-1. 您可以使用 Microsoft 存取面板。 當您在存取面板中按一下 Marketo 圖格時，應該會自動登入您已設定 SSO 的 Marketo。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 Marketo 圖格時，應該會自動登入您已設定 SSO 的 Marketo。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="next-steps"></a>後續步驟
 

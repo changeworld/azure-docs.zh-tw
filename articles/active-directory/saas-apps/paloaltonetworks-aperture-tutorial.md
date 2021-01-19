@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: a70d075ae25b0059e4e1ab75c44907f584e15350
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7b4c8ab55a9b2afc9c1a215236fa1276a630a5cf
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92512795"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963616"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>教學課程：Azure Active Directory 與 Palo Alto Networks - Aperture 整合
 
@@ -48,7 +48,7 @@ ms.locfileid: "92512795"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
 1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Palo Alto Networks - Aperture** 。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Palo Alto Networks - Aperture**。
 1. 從結果面板中選取 [Palo Alto Networks - Aperture]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
@@ -70,8 +70,8 @@ ms.locfileid: "92512795"
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
 1. 在 Azure 入口網站的 **Palo Alto Networks - Aperture** 應用程式整合頁面上，找到 [管理] 區段並選取 [單一登入]。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
-1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的鉛筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
@@ -79,9 +79,9 @@ ms.locfileid: "92512795"
 
     ![顯示 [基本 SAML 設定] 的螢幕擷取畫面，其中已反白顯示 [識別碼] 和 [回覆 U R L] 文字方塊，並已選取 [儲存] 動作。](common/idp-intiated.png)
 
-    a. 在 [識別碼] 文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
+    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/metadata`
 
-    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
+    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
@@ -92,11 +92,11 @@ ms.locfileid: "92512795"
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Palo Alto Networks - Aperture 用戶端支援小組](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (Base64)]，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
-7. 在 [設定 Palo Alto Networks - Aperture]  區段上，依據您的需求複製適當的 URL。
+7. 在 [設定 Palo Alto Networks - Aperture] 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -105,21 +105,21 @@ ms.locfileid: "92512795"
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]。
-1. 在 [使用者] 屬性中，執行下列步驟：
-   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+1. 在畫面頂端選取 [新增使用者]  。
+1. 在 [使用者]  屬性中，執行下列步驟：
+   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
-   1. 按一下 [建立]。
+   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
+   1. 按一下頁面底部的 [新增] 。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會把 Palo Alto Networks - Aperture 的存取權授與 B.Simon，讓她能夠使用 Azure 單一登入。
 
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [Palo Alto Networks - Aperture]  。
+1. 在應用程式清單中，選取 [Palo Alto Networks - Aperture]。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
+1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
 1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
@@ -128,11 +128,11 @@ ms.locfileid: "92512795"
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入 Palo Alto Networks - Aperture。
 
-2. 按一下頂端功能表列上的 [SETTINGS] \(設定\)  。
+2. 按一下頂端功能表列上的 [SETTINGS] \(設定\)。
 
     ![[SETTINGS] \(設定\) 索引標籤](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
 
-3. 瀏覽至 [APPLICATION] \(應用程式\)  區段，然後從功能表左側按一下 [Authentication] \(驗證\)  。
+3. 瀏覽至 [APPLICATION] \(應用程式\) 區段，然後從功能表左側按一下 [Authentication] \(驗證\)。
 
     ![[Authentication] \(驗證\) 索引標籤](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
     
@@ -140,15 +140,15 @@ ms.locfileid: "92512795"
     
     ![[Authentication] \(驗證\) 索引標籤](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
 
-    a. 從 [單一登入]  欄位中，選取 [啟用單一登入 (支援的 SSP 提供者為 Okta、One login)]  。
+    a. 從 [單一登入] 欄位中，選取 [啟用單一登入 (支援的 SSP 提供者為 Okta、One login)]。
 
-    b. 在 [識別提供者識別碼]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
+    b. 在 [識別提供者識別碼] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
 
-    c. 按一下 [Identity Provider Certificate] \(身分識別提供者憑證\)  欄位中的 [Choose File] \(選擇檔案\)  ，以上傳從 Azure AD 下載的憑證。
+    c. 按一下 [Identity Provider Certificate] \(身分識別提供者憑證\) 欄位中的 [Choose File] \(選擇檔案\)，以上傳從 Azure AD 下載的憑證。
 
     d. 在 [識別提供者 SSO URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
-    e. 檢閱來自 [Aperture Info] \(Aperture 資訊\)  區段的 IdP 資訊，然後從 [Aperture Key] \(Aperture 金鑰\)  欄位下載憑證。
+    e. 檢閱來自 [Aperture Info] \(Aperture 資訊\) 區段的 IdP 資訊，然後從 [Aperture Key] \(Aperture 金鑰\) 欄位下載憑證。
 
     f. 按一下 [檔案] 。
 
@@ -171,7 +171,7 @@ ms.locfileid: "92512795"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Palo Alto Networks - Aperture 
 
-您也可以使用 Microsoft 存取面板，以任何模式測試應用程式。 當您按一下存取面板中的 Palo Alto Networks - Aperture 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果是在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Palo Alto Networks - Aperture。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/my-apps-portal-end-user-access.md)。
+您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您在 [我的應用程式] 中按一下 Palo Alto Networks - Aperture 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果是在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Palo Alto Networks - Aperture。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

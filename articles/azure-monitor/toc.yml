@@ -571,7 +571,11 @@
             - name: 從 ITSM 產品同步的資料
               href: platform/itsmc-synced-data.md
             - name: 針對 ITSM 連接器中的問題進行疑難排解
-              href: platform/itsmc-resync-servicenow.md
+              items:
+                - name: 概觀
+                  href: platform/itsmc-resync-servicenow.md
+                - name: 儀表板調查
+                  href: platform/itsmc-dashboard.md
             - name: 與安全匯出整合
               items:
                 - name: 總覽

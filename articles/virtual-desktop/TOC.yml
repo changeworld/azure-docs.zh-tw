@@ -128,6 +128,8 @@
       href: authentication.md
     - name: Windows 虛擬桌面環境
       href: environment-setup.md
+    - name: Windows 虛擬桌面代理程式
+      href: agent-overview.md
     - name: 網路連線
       items:
         - name: 了解網路連線
@@ -180,6 +182,8 @@
       href: troubleshoot-vm-configuration.md
     - name: 遠端桌面服務連線
       href: troubleshoot-service-connection.md
+    - name: Windows 虛擬桌面代理程式
+      href: troubleshoot-agent.md
     - name: 遠端桌面用戶端問題
       href: troubleshoot-client.md
     - name: Windows 虛擬桌面 PowerShell

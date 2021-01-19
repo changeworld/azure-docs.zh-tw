@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 35bb05eb019a1284a8a418df0197960130e8d013
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897291"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968427"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP Fiori 整合
 
@@ -26,9 +26,8 @@ ms.locfileid: "92897291"
 * 讓使用者使用其 Azure AD 帳戶自動登入 SAP Fiori。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要下列項目：
 
@@ -42,24 +41,24 @@ ms.locfileid: "92897291"
 * SAP Fiori 支援由 **SP** 起始的 SSO
 
 > [!NOTE]
-> 針對 SAP Fiori 起始的 iFrame 驗證，建議您在 SAML AuthnRequest 中使用 **IsPassive** 參數來進行無訊息驗證。 如需 **IsPassive** 參數的詳細資訊，請參閱 [Azure AD SAML 單一登入](../develop/single-sign-on-saml-protocol.md) \(部分機器翻譯\) 資訊
+> 針對 SAP Fiori 起始的 iFrame 驗證，建議您在 SAML AuthnRequest 中使用 **IsPassive** 參數來進行無訊息驗證。 如需 **IsPassive** 參數的詳細資訊，請參閱 [Azure AD SAML 單一登入](../develop/single-sign-on-saml-protocol.md) \(部分機器翻譯\) 資訊。
 
 ## <a name="adding-sap-fiori-from-the-gallery"></a>從資源庫新增 SAP Fiori
 
 若要進行將 SAP Fiori 整合到 Azure AD 中的設定，您必須從資源庫將 SAP Fiori 新增至受控 SaaS 應用程式清單。
 
-1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 Azure 入口網站。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
 1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 [SAP Fiori]  。
 1. 從結果面板選取 [SAP Fiori]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-fiori"></a>設定及測試 SAP Fiori 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-sap-fiori"></a>設定和測試 SAP Fiori 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 SAP Fiori 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 SAP Fiori 中相關使用者之間的連結關聯性。
 
-若要設定及測試與 SAP Fiori 搭配運作的 Azure AD SSO，請完成下列建置組塊：
+若要設定及測試與 SAP Fiori 搭配運作的 Azure AD SSO，請執行下列步驟：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
     1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 B.Simon 測試 Azure AD 單一登入。
@@ -74,11 +73,11 @@ ms.locfileid: "92897291"
 
 1. 開啟新的 Web 瀏覽器視窗，以系統管理員身分登入您的 SAP Fiori 公司網站。
 
-1. 確定 **http** 和 **https** 服務為作用中，且相關連接埠已指派給交易代碼 **SMICM** 。
+1. 確定 **http** 和 **https** 服務為作用中，且相關連接埠已指派給交易代碼 **SMICM**。
 
 1. 登入 SAP 系統 **T01** 的 SAP 商務用戶端，此為需要單一登入之處。 接著，啟用 HTTP 安全性工作階段管理。
 
-    1. 移至交易代碼 **SICF_SESSIONS** 。 此處會顯示所有的相關設定檔參數及其目前的值。 其內容如下範例所示：
+    1. 移至交易代碼 **SICF_SESSIONS**。 此處會顯示所有的相關設定檔參數及其目前的值。 其內容如下範例所示：
 
         ```
         login/create_sso2_ticket = 2
@@ -110,7 +109,7 @@ ms.locfileid: "92897291"
         /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
         ```
 
-1. 在 SAP 系統 [ **T01/122** ] 的商務用戶端中，移至交易代碼 **SAML2** 。 設定 UI 會在新的瀏覽器視窗中開啟。 在此範例中，我們使用 SAP 系統 122 的商務用戶端。
+1. 在 SAP 系統 [**T01/122**] 的商務用戶端中，移至交易代碼 **SAML2**。 設定 UI 會在新的瀏覽器視窗中開啟。 在此範例中，我們使用 SAP 系統 122 的商務用戶端。
 
     ![SAP Fiori 商務用戶端登入頁面](./media/sapfiori-tutorial/tutorial-sapnetweaver-sapbusinessclient.png)
 
@@ -118,7 +117,7 @@ ms.locfileid: "92897291"
 
     ![SAP 中的 [ABAP 系統 T01/122] 頁面的 SAML 2.0 組態](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
 
-1. 在 [提供者名稱]  方塊中，將 **T01122** 取代為 **http:\//T01122** ，然後選取 [儲存]  。
+1. 在 [提供者名稱]  方塊中，將 **T01122** 取代為 **http:\//T01122**，然後選取 [儲存]  。
 
     > [!NOTE]
     > 根據預設，提供者名稱會採用 \<sid>\<client> 的格式。 Azure AD 預期該名稱應採用 \<protocol>://\<name> 的格式。 建議您保留 https\://\<sid>\<client> 格式的提供者名稱，以便在 Azure AD 中設定多個 SAP Fiori ABAP 引擎。
@@ -131,13 +130,13 @@ ms.locfileid: "92897291"
 
     ![SAP SAML 2.0 中繼資料對話方塊中的下載中繼資料連結](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SAP Fiori]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 Azure 入口網站的 **SAP Fiori** 應用程式整合頁面上，尋找 **管理** 區段並選取 [單一登入]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的鉛筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 如果您有 **服務提供者中繼資料檔案** ，請在 [基本 SAML 設定]  區段上執行下列步驟：
+1. 如果您有 **服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
@@ -194,7 +193,7 @@ ms.locfileid: "92897291"
    1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+   1. 按一下頁面底部的 [新增] 。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -203,20 +202,14 @@ ms.locfileid: "92897291"
 1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 在應用程式清單中，選取 [SAP Fiori]  。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-   ![[使用者和群組] 連結](common/users-groups-blade.png)
-
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
-
-    ![[新增使用者] 連結](common/add-assign-user.png)
-
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ## <a name="configure-sap-fiori-sso"></a>設定 SAP Fiori SSO
 
-1. 登入 SAP 系統並移至交易代碼 **SAML2** 。 此時會開啟含有 SAML 組態頁面的新瀏覽器視窗。
+1. 登入 SAP 系統並移至交易代碼 **SAML2**。 此時會開啟含有 SAML 組態頁面的新瀏覽器視窗。
 
 1. 若要設定信任的識別提供者 (Azure AD) 的端點，請選取 [信任的提供者]  索引標籤。
 
@@ -230,11 +223,11 @@ ms.locfileid: "92897291"
 
     ![選取要在 SAP 中上傳的中繼資料檔案](./media/sapfiori-tutorial/tutorial-sapnetweaver-metadatafile.png)
 
-1. 在下一個頁面的 [別名]  方塊中，輸入別名名稱。 例如 **aadsts** 。 選取 [下一步]  。
+1. 在下一個頁面的 [別名]  方塊中，輸入別名名稱。 例如 **aadsts**。 選取 [下一步]  。
 
     ![SAP 中的 [別名] 方塊](./media/sapfiori-tutorial/tutorial-sapnetweaver-aliasname.png)
 
-1. 確定 [演算法]  方塊中的值為 **SHA-256** 。 選取 [下一步]  。
+1. 確定 [演算法]  方塊中的值為 **SHA-256**。 選取 [下一步]  。
 
     ![確認 SAP 中的摘要演算法值](./media/sapfiori-tutorial/tutorial-sapnetweaver-identityprovider.png)
 
@@ -268,7 +261,7 @@ ms.locfileid: "92897291"
 
     [使用者識別碼來源]  和 [使用者識別碼對應模式]  的值會決定 SAP 使用者與 Azure AD 宣告之間的連結。  
 
-    **案例 1** ：SAP 使用者與 Azure AD 使用者的對應
+    **案例 1**：SAP 使用者與 Azure AD 使用者的對應
 
     1. 在 SAP 中的 [NameID 格式「未指定」的詳細資料]  下方，記下詳細資料：
 
@@ -278,7 +271,7 @@ ms.locfileid: "92897291"
 
         ![螢幕擷取畫面：顯示 [使用者屬性和宣告] 對話方塊。](./media/sapfiori-tutorial/claimsaad1.png)
 
-    **案例 2** ：根據 SU01 中已設定的電子郵件地址選取 SAP 使用者識別碼。 在此情況下，應針對每個需要 SSO 的使用者在 SU01 中設定電子郵件識別碼。
+    **案例 2**：根據 SU01 中已設定的電子郵件地址選取 SAP 使用者識別碼。 在此情況下，應針對每個需要 SSO 的使用者在 SU01 中設定電子郵件識別碼。
 
     1.  在 SAP 中的 [NameID 格式「未指定」的詳細資料]  下方，記下詳細資料：
 
@@ -316,12 +309,6 @@ ms.locfileid: "92897291"
 
 1. 如果系統提示您輸入使用者名稱和密碼，請啟用追蹤以利診斷問題。 請使用下列 URL 進行追蹤：https:\//\<sapurl\>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#。
 
-## <a name="additional-resources"></a>其他資源
+## <a name="next-steps"></a>後續步驟
 
-- [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](./tutorial-list.md)
-
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
-
-- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
-
-- [嘗試搭配 Azure AD 使用 SAP Fiori](https://aad.portal.azure.com/)
+設定 SAP Fiori 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

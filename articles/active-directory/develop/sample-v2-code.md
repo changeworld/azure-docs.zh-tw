@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 169a8dba979571a5f4b8c8056737fce72db1d058
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3baeb87bf3fe1cdcd5e9f27aed2587eed060c5a8
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629862"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064516"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft 身分識別平台程式碼範例 (v2.0 端點)
 
@@ -69,7 +69,7 @@ ms.locfileid: "97629862"
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>桌上型與行動裝置公開用戶端應用程式
 
-下列範例的公開用戶端應用程式 (桌上型或行動裝置應用程式) 會以使用者名稱存取 Microsoft Graph API 或您自己的 Web API。 除了 *桌上型 (主控台) 搭配 WAM* 範例以外，這些用戶端應用程式全都會使用 Microsoft 驗證程式庫 (MSAL)。
+下列範例的公開用戶端應用程式 (桌上型或行動裝置應用程式) 會以使用者名稱存取 Microsoft Graph API 或您自己的 Web API。 除了桌上型 (主控台) 搭配 WAM 範例以外，這些用戶端應用程式全都會使用 Microsoft 驗證程式庫 (MSAL)。
 
 | 用戶端應用程式 | 平台 | 流程/授與 | 呼叫 Microsoft Graph | 呼叫 ASP.NET Core Web API |
 | ------------------ | -------- |  ----------| ---------- | ------------------------- |
@@ -140,7 +140,7 @@ ms.locfileid: "97629862"
 | ![此圖顯示 ASP.NET Core 標誌](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core | [dotnet-native-aspnetcore-v2](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions) 的 Azure 函式 ASP.NET Core Web API (服務)  |
 | ![此圖顯示 Python 標誌](media/sample-v2-code/logo_python.png)</p>Python | [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) 的 Web API (服務) |
 | ![此圖顯示 Node.js 標誌](media/sample-v2-code/logo_nodejs.png)</p>Node.js | [Node.js 和 passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions) 的 Web API (服務) |
-| ![此圖顯示 Node.js 標誌](media/sample-v2-code/logo_nodejs.png)</p>NodeJS | [NodeJS 和代替下列項目使用 passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) 的 Web API (服務) |
+| ![此圖顯示 Node.js 標誌](media/sample-v2-code/logo_nodejs.png)</p>Node.js | [Node.js 和代替下列項目使用 passport-azure-ad](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions) 的 Web API (服務) |
 
 ## <a name="other-microsoft-graph-samples"></a>其他 Microsoft Graph 範例
 

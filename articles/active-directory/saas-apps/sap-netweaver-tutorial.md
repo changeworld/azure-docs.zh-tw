@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: a282e1be019c697ad15d86df56ad191043ab4ae9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: b6b8dab3472473082562f1e4c0216886191e4a59
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935832"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962800"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP NetWeaver 整合
 
@@ -138,7 +138,7 @@ ms.locfileid: "97935832"
 
 1. 在 Azure 入口網站的 [SAP NetWeaver] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [選取單一登入方法]  頁面上，選取 [SAML]  。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的鉛筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
@@ -206,7 +206,7 @@ ms.locfileid: "97935832"
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-sap-netweaver-using-saml"></a>使用 SAML 設定 SAP NetWeaver
@@ -339,7 +339,7 @@ ms.locfileid: "97935832"
     ![設定 OAuth](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
-    > `soft state status is not supported` 訊息 – 可以忽略，並不會有問題。 如需詳細資訊，請參閱[這裡](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true)
+    > `soft state status is not supported` 訊息 – 可以忽略，並不會有問題。 如需詳細資訊，請參閱[這裡](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true)。
 
 ### <a name="create-a-service-user-for-the-oauth-20-client"></a>建立 OAuth 2.0 用戶端的服務使用者
 
@@ -348,7 +348,7 @@ ms.locfileid: "97935832"
 2. 註冊 OAuth 用戶端時，我們會使用 `SAML Bearer Grant type`。
 
     >[!NOTE]
-    >如需詳細資訊，請從[這裡](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type)參閱 SAML 持有人權杖授與類型的 OAuth 2.0 用戶端註冊
+    >如需詳細資訊，請從[這裡](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type)參閱 SAML 持有人權杖授與類型的 OAuth 2.0 用戶端註冊。
 
 3. tcod：SU01 / 將使用者 CLIENT1 建立為 `System type` 並指派密碼，然後將其儲存，因為需將認證提供給 API 程式設計人員，他們會將密碼和使用者名稱寫入呼叫程式碼。 不應指派設定檔或角色。
 

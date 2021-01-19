@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.date: 01/12/2021
+ms.openlocfilehash: 2fcb8f6d22e93f3a95be26b7bc61f3b5226ba090
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508878"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117107"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure Data Factory 大量複製多份資料表
 
@@ -51,20 +51,8 @@ ms.locfileid: "97508878"
 
 ## <a name="prerequisites"></a>必要條件
 * **Azure 儲存體帳戶**。 Azure 儲存體帳戶會在大量複製作業中用做暫存 Blob 儲存體。 
-* **Azure SQL Database**。 此資料庫包含來源資料。 
-* **Azure Synapse Analytics**。 此資料倉儲保存從 SQL Database 複製的資料。 
-
-### <a name="prepare-sql-database-and-azure-synapse-analytics"></a>準備 SQL Database 和 Azure Synapse Analytics 
-
-**準備來源 Azure SQL Database**：
-
-遵循[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，在 SQL Database 中建立具有 Adventure Works LT 範例資料的資料庫。 本教學課程會將此範例資料庫中的所有資料表複製到 Azure Synapse Analytics。
-
-**準備接收 Azure Synapse Analytics**：
-
-1. 如果您沒有 Azure Synapse Analytics 工作區，請參閱[開始使用 Azure Synapse Analytics](..\synapse-analytics\get-started.md) 一文，以取得其建立步驟。
-
-1. 在 Azure Synapse Analytics 中建立對應的資料表結構描述。 在稍後步驟中，您可以使用 Azure Data Factory 來移轉/複製資料。
+* **Azure SQL Database**。 此資料庫包含來源資料。 遵循[在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文，在 SQL Database 中建立具有 Adventure Works LT 範例資料的資料庫。 本教學課程會將此範例資料庫中的所有資料表複製到 Azure Synapse Analytics。
+* **Azure Synapse Analytics**。 此資料倉儲保存從 SQL Database 複製的資料。 如果您沒有 Azure Synapse Analytics 工作區，請參閱[開始使用 Azure Synapse Analytics](..\synapse-analytics\get-started.md) 一文，以取得其建立步驟。
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure 服務存取 SQL Server
 
@@ -241,6 +229,7 @@ ms.locfileid: "97508878"
     ![Foreach 參數產生器](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
     d. 切換至 [活動] 索引標籤，按一下 **鉛筆圖示**，將子活動新增至 [ForEach] 活動。
+    
     ![ForEach 活動產生器](./media/tutorial-bulk-copy-portal/for-each-activity-builder.png)
 
 1. 在 [活動] 工具箱中展開 [移動和傳輸]，並將 [資料複製] 活動拖放到管線設計工具介面中。 請注意頂端的階層連結功能表。 **IterateAndCopySQLTable** 是管線名稱，**IterateSQLTables** 是 ForEach 活動名稱。 設計工具是在活動範圍內。 若要從 ForEach 編輯器切換回「管線」編輯器，您可以按一下階層連結功能表中的連結。 
@@ -257,7 +246,6 @@ ms.locfileid: "97508878"
         SELECT * FROM [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]
         ``` 
 
-
 1. 切換至 [接收] 索引標籤，執行下列步驟： 
 
     1. 選取 [AzureSqlDWDataset] 作為 [接收資料集]。
@@ -265,6 +253,7 @@ ms.locfileid: "97508878"
     1. 按一下 DWSchema 參數的 [值] 輸入方塊 -> 選取下方的 [新增動態內容]，輸入 `@item().TABLE_SCHEMA` 運算式作為指令碼 -> 選取 [完成]。
     1. 針對 [複製方法]，選取 [PolyBase]。 
     1. 清除 [使用類型預設值] 選項。 
+    1. 若為 [資料表] 選項，預設設定為 [無]。 如果您沒有在接收 Azure Synapse Analytics 中預先建立的資料表，請啟用 [自動建立資料表] 選項，然後複製活動會根據來源資料自動為您建立資料表。 如需詳細資訊，請參閱[自動建立接收資料表](copy-activity-overview.md#auto-create-sink-tables)。 
     1. 按一下 [預先複製指令碼] 輸入方塊 -> 選取下方的 [新增動態內容] -> 輸入下列運算式作為指令碼 -> 選取 [完成]。 
 
         ```sql
@@ -272,6 +261,8 @@ ms.locfileid: "97508878"
         ```
 
         ![複製接收設定](./media/tutorial-bulk-copy-portal/copy-sink-settings.png)
+
+
 1. 切換至 [設定] 索引標籤，並執行下列步驟： 
 
     1. 選取 [啟用暫存] 的核取方塊。
