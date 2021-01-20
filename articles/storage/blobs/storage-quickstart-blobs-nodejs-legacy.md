@@ -3,17 +3,17 @@ title: 快速入門：適用於 JavaScript 的 Azure Blob 儲存體用戶端程�
 description: 使用適用於 JavaScript 的 Azure 儲存體用戶端程式庫 v10，在 Node.js 中建立、上傳及刪除 Blob 和容器
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1f47c35997fe060fd3c318602bcad17de83b530c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
-ms.translationtype: HT
+ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249615"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599456"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>快速入門：使用 Node.js 中的 JavaScript v10 SDK 來管理 Blob
 
@@ -139,7 +139,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-由 API 所提出的要求可以設定為在一段指定時間間隔之後逾時。 [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) 類別負責管理要求的逾時方式，而後續的常數則可用來定義此範例中所使用的逾時。
+由 API 所提出的要求可以設定為在一段指定時間間隔之後逾時。 [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy&preserve-view=true) 類別負責管理要求的逾時方式，而後續的常數則可用來定義此範例中所使用的逾時。
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -178,13 +178,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 
 這個程式碼區塊中會使用下列類別：
 
-- [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy) 類別負責包裝儲存體帳戶認證，以將其提供給要求管線。
+- [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy&preserve-view=true) 類別負責包裝儲存體帳戶認證，以將其提供給要求管線。
 
-- [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy) 類別負責建立新的管線。
+- [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy&preserve-view=true) 類別負責建立新的管線。
 
-- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy) 會為 REST API 中所使用的 URL 設定模型。 此類別的執行個體可讓您執行如下的動作：列出容器，並提供內容資訊來產生容器 URL。
+- [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy&preserve-view=true) 會為 REST API 中所使用的 URL 設定模型。 此類別的執行個體可讓您執行如下的動作：列出容器，並提供內容資訊來產生容器 URL。
 
-*ServiceURL* 的執行個體可與 [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy) 和 [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy) 執行個體搭配使用，以管理儲存體帳戶中的容器和 Blob。
+*ServiceURL* 的執行個體可與 [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy&preserve-view=true) 和 [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy&preserve-view=true) 執行個體搭配使用，以管理儲存體帳戶中的容器和 Blob。
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);

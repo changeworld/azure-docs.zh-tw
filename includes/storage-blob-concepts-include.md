@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 11/05/2019
+ms.date: 01/19/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 09b120838c27f8fa6b4f7bdf8617ce806f740e3c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.openlocfilehash: 0914cf9515930e23e4134181ffe8332e36eacffe
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007288"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612894"
 ---
 Azure Blob 儲存體是 Microsoft 針對雲端推出的物件儲存體解決方案。 Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資料。 非結構化資料是指不遵守特定資料模型或定義的資料，例如文字或二進位資料。
 
@@ -30,7 +30,7 @@ Blob 儲存體設計用來：
 
 使用者或用戶端應用程式可以從世界各地透過 HTTP/HTTPS 存取 Blob 儲存體中的物件。 Blob 儲存體中的物件可透過 [Azure 儲存體 REST API](/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](/powershell/module/az.storage)、[Azure CLI](/cli/azure/storage) 或 Azure 儲存體用戶端程式庫存取。 用戶端程式庫適用於不同的語言，包括：
 
-* [.NET](/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [.NET](/dotnet/api/overview/azure/storage)
 * [Java](/java/api/overview/azure/storage)
 * [Node.js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage)
 * [Python](../articles/storage/blobs/storage-quickstart-blobs-python.md)

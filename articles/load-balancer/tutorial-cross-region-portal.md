@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ee203595a796529ae0aefe8b0c52a689ac29968
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
-ms.translationtype: HT
+ms.openlocfilehash: d94736656f691da9e893e4619a2299a061acd8e8
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762324"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611197"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立跨區域 Azure Load Balancer
 
@@ -41,7 +41,7 @@ ms.locfileid: "96762324"
 
 ## <a name="sign-in-to-azure-portal"></a>登入 Azure 入口網站
 
-[登入](https://preview.portal.azure.com) Azure 預覽入口網站。
+[登入](https://portal.azure.com) Azure 預覽入口網站。
 
 ## <a name="create-cross-region-load-balancer"></a>建立跨區域負載平衡器
 
