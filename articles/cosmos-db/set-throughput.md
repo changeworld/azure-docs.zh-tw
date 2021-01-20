@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/19/2021
+ms.openlocfilehash: a03ad1eb893c97671d7ab60cc38708115a73d260
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170815"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602400"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>簡介 Azure Cosmos DB 中的佈建輸送量
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -109,7 +109,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 實際的最小 RU/秒可能會依您的帳戶設定而有所不同。 但一般而言，它的最大值是：
 
 * 400 RU/秒 
-* 目前的儲存體（GB） * 10 RU/秒 (除非您的容器或資料庫包含超過 1 TB 的資料，請參閱我們的 [高儲存體/低輸送量程式](#high-storage-low-throughput-program)) 
+* 目前的儲存體（GB） * 10 RU/秒 (此條件約束在某些情況下可能會放寬，請參閱我們的 [高儲存體/低輸送量程式](#high-storage-low-throughput-program)) 
 * 在資料庫或容器上布建的最高 RU/秒/100
 
 ### <a name="changing-the-provisioned-throughput"></a>變更布建的輸送量
@@ -139,7 +139,7 @@ Azure Cosmos 資料庫是一組容器的管理單位。 資料庫是由一組無
 
 這可能會在您需要儲存大量資料，但比較中有低輸送量需求的情況下考慮。 為了更妥善配合這些案例，Azure Cosmos DB 引進了「 **高儲存體/低輸送量」程式** ，可減少符合資格之帳戶的每 GB RU/秒。
 
-您目前必須至少有1個容器或共用輸送量資料庫，且您的帳戶中必須包含超過 1 TB 的資料才能符合資格。 若要加入此計畫並評估您的完整資格，您只需要填寫 [這份問卷](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)。 然後，Azure Cosmos DB 的小組會跟進並繼續進行上線。
+若要加入此計畫並評估您的完整資格，您只需要填寫 [這份問卷](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)。 然後，Azure Cosmos DB 的小組會跟進並繼續進行上線。
 
 ## <a name="comparison-of-models"></a>模型的比較
 下表顯示在資料庫上與在容器上佈建標準 (手動) 輸送量之間的比較。 

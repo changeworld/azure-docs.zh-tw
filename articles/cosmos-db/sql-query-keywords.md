@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 35232f95bc18432db05775807d95f23ceab66aea
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333761"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599355"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的關鍵字
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -107,6 +107,73 @@ FROM f
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+## <a name="like"></a>LIKE
+
+根據特定字元字串是否符合指定的模式，傳回布林值。 模式中可以包含一般字元及萬用字元。 您可以使用 `LIKE` 關鍵字或 [RegexMatch](sql-query-regexmatch.md) 系統函數撰寫邏輯相等的查詢。 無論您選擇哪一種，您都會觀察到相同的索引使用率。 因此， `LIKE` 如果您偏好使用比正則運算式更多的語法，則應該使用。
+
+> [!NOTE]
+> 因為 `LIKE` 可以利用索引，所以您應該針對要使用比較的屬性 [建立範圍索引](indexing-policy.md) `LIKE` 。
+
+您可以使用下列萬用字元，如下所示：
+
+| 萬用字元 | 描述                                                  | 範例                                     |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| %                    | 任何零或多個字元的字串                      | 其中 c. 描述，例如 "% SO% PS%"      |
+| _ (底線)      | 任何單一字元                                       | 其中 c. 描述，例如 "% SO_PS%"      |
+| [ ]                  | 指定範圍內的任何單一字元 ( [a-f] ) 或設定 ( [abcdef] ) 。 | 其中 c. 描述，例如 "% SO [t z] PS%"  |
+| [^]                  | 不在指定範圍內的任何單一字元 ( [^ a-f] ) 或設定 ( [^ abcdef] ) 。 | 其中 c. 描述，例如 "% SO [^ abc] PS%" |
+
+
+### <a name="using-like-with-the--wildcard-character"></a>使用 LIKE 搭配 % 萬用字元
+
+`%`字元符合零或多個字元的任何字串。 例如，將放 `%` 在模式的開頭和結尾，下列查詢會傳回包含下列其中一個描述的所有專案 `fruit` ：
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "%fruit%"
+```
+
+如果您只使用 `%` 模式開頭的字元，則只會傳回具有開頭為之描述的專案 `fruit` ：
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "fruit%"
+```
+
+
+### <a name="using-not-like"></a>使用不贊
+
+下列範例會傳回描述不包含的所有專案 `fruit` ：
+
+```sql
+SELECT *
+FROM c
+WHERE c.description NOT LIKE "%fruit%"
+```
+
+### <a name="using-the-escape-clause"></a>使用 escape 子句
+
+您可以使用 ESCAPE 子句來搜尋包含一或多個萬用字元的模式。 例如，如果您想要搜尋包含字串的描述 `20-30%` ，您不會想要將 `%` 作為萬用字元來解讀。
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE '%20-30!%%' ESCAPE '!'
+```
+
+### <a name="using-wildcard-characters-as-literals"></a>使用萬用字元做為常值
+
+您可以用括弧括住萬用字元，將這些字元視為常值字元。 當您以括弧括住萬用字元時，就會移除所有的特殊屬性。 以下是一些範例：
+
+| 模式           | 意義 |
+| ----------------- | ------- |
+| 例如 "20-30 [%]" | 20-30%  |
+| 例如 "[_] n"     | _n      |
+| 例如 "[[]"    | [       |
+| 例如 "]"        | ]       |
 
 ## <a name="in"></a>IN
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ffc5bafca305086b0c524c76eb91b8aec2e2655d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842017"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602443"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>可保護身分識別基礎結構的五個步驟
 
@@ -81,7 +81,7 @@ Microsoft 建議採用下列根據 [NIST 指導方針](https://pages.nist.gov/80
 
 如果您的組織使用搭配傳遞驗證或同盟的混合式身分識別解決方案，則基於下列兩個原因，您應該啟用密碼雜湊同步處理：
 
-* Azure AD 管理中的[認證外洩的使用者](../../active-directory/identity-protection/overview-identity-protection.md)報告會就「暗網 (Dark Web)」上已公開的使用者名稱和密碼組向您發出警告。 數量驚人的密碼是透過網路釣魚、惡意程式碼，以及在第三方網站上重複使用密碼並於之後遭到入侵而外洩的。 Microsoft 已發現許多這樣的外洩認證，並會在此報告中告訴您它們是否與您組織的認證相符，但前提是您必須[啟用密碼雜湊同步處理](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)！
+* Azure AD 管理中的[認證外洩的使用者](../../active-directory/identity-protection/overview-identity-protection.md)報告會就「暗網 (Dark Web)」上已公開的使用者名稱和密碼組向您發出警告。 數量驚人的密碼是透過網路釣魚、惡意程式碼，以及在第三方網站上重複使用密碼並於之後遭到入侵而外洩的。 Microsoft 發現許多這些洩漏的認證，在這份報告中，如果它們符合您組織中的認證，則會告訴您-但只有在您 [啟用密碼雜湊同步](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) 或只有雲端身分識別時
 * 如果發生內部部署中斷 (例如，在勒索軟體攻擊中) 您可以 [使用密碼雜湊同步](../../active-directory/hybrid/choose-ad-authn.md)處理來切換到使用雲端驗證。這種備份驗證方法可讓您繼續存取設定為使用 Azure Active Directory 進行驗證的應用程式，包括 Microsoft 365。 在此情況下，在解決內部部署中斷之前，IT 員工將不需要被迫使用個人電子郵件帳戶來共用資料。
 
 深入了解[密碼雜湊同步處理](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)的運作方式。

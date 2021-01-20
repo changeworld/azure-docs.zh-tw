@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0f0d94dbc7b2c720faa1da41a88e3c3313dac377
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680756"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601596"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure 地圖服務共同體-開放原始碼專案
 
@@ -65,6 +65,12 @@ ms.locfileid: "97680756"
 | [Azure 地圖服務 .NET UWP IoT 遠端控制](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | 這是範例應用程式，示範如何使用 Azure 地圖服務和 IoT 中樞服務建立遠端控制的地圖。 |
 | [使用 Azure 地圖服務執行 IoT 空間分析](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | 追蹤和擷取在空間和時間中發生的相關事件，是常見的 IoT 案例。 |
 
+**協力廠商地圖控制項外掛程式**
+
+| 專案名稱 | 描述 |
+|-|-|
+| [Azure 地圖服務 Leaflet 外掛程式](https://github.com/azure-samples/azure-maps-leaflet) | [Leaflet](https://leafletjs.com/) JavaScript 外掛程式，可讓您輕鬆地從[Azure 地圖服務圖格服務](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)重迭圖格圖層。 |
+ 
 **工具和資源**
 
 | 專案名稱 | 描述 |

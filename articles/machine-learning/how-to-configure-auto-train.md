@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134359"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600067"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>在 Python 中設定自動化 ML 實驗
 
@@ -37,7 +37,7 @@ ms.locfileid: "98134359"
 
 如果您不想使用程式碼，您也可以[在 Azure Machine Learning Studio 中建立自動化機器學習實驗](how-to-use-automated-ml-for-ml-models.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 針對本文，您需要 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
@@ -65,7 +65,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 自動化機器學習支援位於本機桌面或雲端中 (例如 Azure Blob 儲存體) 所包含的資料。 資料可以讀入 **Pandas DataFrame** 或 **Azure Machine Learning TabularDataset** 中。 [深入了解資料集](how-to-create-register-datasets.md)。
 
-定型資料的需求：
+在機器學習中定型資料的需求：
 - 資料必須是表格形式。
 - 要預測的值 (目標資料行) 必須位於資料中。
 
@@ -96,9 +96,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>訓練、驗證和測試資料
 
-您可以直接在函式中指定個別的 **定型和驗證集** `AutoMLConfig` 。 深入瞭解如何設定 AutoML 實驗的 [資料分割和交叉驗證](how-to-configure-cross-validation-data-splits.md) 。 
+您可以直接在函式中指定個別的 **定型資料和驗證資料集** `AutoMLConfig` 。 深入瞭解如何設定 AutoML 實驗的 [資料分割和交叉驗證](how-to-configure-cross-validation-data-splits.md) 。 
 
-如果您未明確指定 `validation_data` 或 `n_cross_validation` 參數，AutoML 會套用預設的技巧，以決定如何執行驗證。 這項決定取決於資料集內指派給您的參數的資料列數目 `training_data` 。 
+如果您未明確指定 `validation_data` 或 `n_cross_validation` 參數，則自動化 ML 會套用預設技術，以決定驗證的執行方式。 這項決定取決於資料集內指派給您的參數的資料列數目 `training_data` 。 
 
 |定型 &nbsp; 資料 &nbsp; 大小| 驗證技術 |
 |---|-----|

@@ -1,18 +1,18 @@
 ---
-title: 在合作夥伴中心中取得商用 marketplace 入口網站的支援
-description: 瞭解合作夥伴中心中的支援選項，包括如何提出支援要求。
+title: 取得合作夥伴中心中的商業 marketplace 方案支援
+description: 您可以在合作夥伴中心中瞭解商用 marketplace 方案的支援選項，包括如何提出支援要求。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 01/14/2020
-ms.openlocfilehash: 8979a94ee63ef50c0a3abacd5ab3515226200131
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.date: 01/19/2020
+ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183433"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602573"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>合作夥伴中心中的商業 marketplace 方案支援
 
@@ -22,60 +22,43 @@ Microsoft 提供各式各樣的產品和服務支援。 尋找正確的支援小
 - 如果您是發行者，而且偵測到在 Azure 上執行的應用程式有安全性問題，請參閱 [如何記錄安全性事件支援票證](/azure/security/fundamentals/event-support-ticket)。 發行者一旦發現可疑的安全性事件，必須立即報告，包括其 Azure Marketplace 軟體和服務供應項目的安全性事件和弱點。
 - 如果您是發行者，並且有與您的應用程式或服務相關的問題，請參閱下列支援選項。
 
-## <a name="support-options-for-publishers"></a>發行者的支援選項
+## <a name="get-help-or-open-a-support-ticket"></a>取得協助或開啟支援票證
 
-1. 使用您的工作帳戶登入 [合作夥伴中心上的商用 marketplace 方案](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) (如果您尚未這麼做，您將需要 [建立合作夥伴中心帳戶](partner-center-portal/create-account.md)。
+1. 使用您的工作帳戶登入。 如果您尚未這麼做，您將需要 [建立合作夥伴中心帳戶](partner-center-portal/create-account.md)。
 
-2. 在頁面右側的上方功能表中，選取 [ **支援** ] 圖示。
+1. 在頁面右上角的功能表中，選取 [ **支援** ] 圖示。 [說明 **及支援** ] 窗格會出現在頁面的右側。
 
-3. [說明 **及支援** ] 窗格會出現在頁面的右側。
+1. 若要取得商用 marketplace 的協助，請選取 [ **商用 marketplace**]。
 
    ![支援下拉式功能表](./media/support/commercial-marketplace-support-pane.png)
 
-    或移至 **首頁** 窗格，然後選取 [說明 **及支援**]。
+1. 在 [ **問題摘要** ] 方塊中，輸入問題的簡短描述。
 
-   ![首頁的 [說明及支援]](./media/support/homepage-help-support.png)
+1. 在 [ **問題類型** ] 方塊中，執行下列其中一項：
 
-4. 選取 **[檔](../index.yml)** 以檢查問題和資源的完整解答。
+    - **選項 1**：輸入關鍵字，例如： Marketplace、Azure 應用程式、SaaS 供應專案、帳戶管理、潛在客戶管理、部署問題、付款或共同銷售供應專案的遷移。 然後從出現的建議清單中選取問題類型。
 
-5. 請選取 **[Marketplace 合作夥伴的社區論壇](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** ，利用其他 Microsoft 發行者的知識回答您的問題。
+    - **選項 2**：選取 [**類別**] 清單中的 **[流覽主題]** ，然後選取 [**商業 Marketplace**]。 然後選取適當的 **主題** 和 **子主題。**
 
-6. 選取 [ **[其他協助](https://aka.ms/marketplacepublishersupport)** ] 以開啟 **新的支援要求** 票證。  
+1. 找到您所選擇的主題之後，請選取 [ **審核方案**]。
 
-## <a name="how-to-open-a-support-ticket"></a>如何開啟支援票證
+    ![後續步驟](./media/support/next-step.png)
 
-現在您已經準備好在 [說明 **及支援** ] 畫面上開啟支援票證。
+下列選項如下所示：
 
-![說明及支援](./media/support/help-and-support.png)
+- 若要選取不同的主題，請按一下 [ **選取不同的問題**]。
+- 若要協助解決此問題，請參閱建議的步驟和檔（如果有的話）。
 
->[!Note]
->如果您已登入合作夥伴中心，將會獲得更佳的支援體驗。
+    ![建議的解決方案](./media/support/recommended-solutions.png)
 
-**選項1：** 輸入關鍵字，例如： Marketplace、Azure 應用程式、SaaS 供應專案、帳戶管理、潛在客戶管理、部署問題、支出等。
-
-**選項2：** 流覽主題-> 選取 **類別** = 商業 marketplace-> 選取適當的 **主題** ， **然後選取**[子主題]。
-
-一旦找到您選擇的主題，請選取 [ **審核方案**]。
-
-![後續步驟](./media/support/next-step.png)
-
-下列選項將會變成可用：
-
-- 若要選取不同的主題，請在 [選取的 **問題**] 下方選取不同的主題連結。
-- 請檢查此問題的描述（如果有的話）。  這是在 **建議步驟** 中顯示的文字。
-- 查看 **建議的步驟**（如果有的話）。
-- 查看 **建議的檔**（如果有的話）。
-
-![建議的解決方案](./media/support/recommended-solutions.png)
-
-如果您在 **建議的解決方案** 中找不到您的答案，請選取 [ **提供問題詳細資料**]。 完成所有必要欄位，以加速解決流程，然後選取 [ **提交**]。
+如果您在自助的 [說明] 中找不到答案，請選取 [ **提供問題詳細資料**]。 完成所有必要欄位，以加速解決流程，然後選取 [ **提交**]。
 
 >[!Note]
->如果您尚未登入合作夥伴中心且主題需要驗證，您將會要求您登入，才能繼續進行。  若為公用主題，則不需要驗證。
+>如果您尚未登入合作夥伴中心，您可能需要先登入，才能建立票證。
 
 ## <a name="track-your-existing-support-requests"></a>追蹤您現有的支援要求
 
-若要檢查所有開啟和關閉的票證，請移至左側導覽列上的 [ **商用 Marketplace** ]，然後選取 [ **支援**]。
+若要檢查開啟和關閉的票證，請在左側導覽功能表中選取 [**商業 Marketplace**  >  **支援**]。
 
 ## <a name="record-issue-details-with-a-har-file"></a>使用 HAR 檔案記錄問題詳細資料
 

@@ -11,16 +11,16 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: 8e749e5f6ea6bcf76a1b4f143bce03ceb41cbb07
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573287"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599071"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>在自動化機器學習中設定資料分割和交叉驗證
 
-在本文中，您將瞭解不同的選項，讓您針對自動化機器學習服務、自動化 ML、實驗設定定型/驗證資料分割和交叉驗證。
+在本文中，您將瞭解設定定型資料和驗證資料分割的不同選項，以及自動化機器學習服務、自動化 ML、實驗的交叉驗證設定。
 
 在 Azure Machine Learning 中，當您使用自動化 ML 來建立多個 ML 模型時，每個子系執行都必須藉由計算該模型的品質計量（例如精確度或 AUC 加權）來驗證相關的模型。 這些計量的計算方式是比較每個模型所做的預測與驗證資料中過去觀察的真實標籤。 [深入瞭解如何根據驗證類型計算度量](#metric-calculation-for-cross-validation-in-machine-learning)。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "98573287"
 如需低程式碼或無程式碼的體驗，請參閱 [在 Azure Machine Learning studio 中建立自動化機器學習實驗](how-to-use-automated-ml-for-ml-models.md)。 
 
 > [!NOTE]
-> Studio 目前支援定型/驗證資料分割和交叉驗證選項，但不支援針對您的驗證集指定個別的資料檔案。 
+> Studio 目前支援定型和驗證資料分割以及交叉驗證選項，但不支援針對您的驗證集指定個別的資料檔案。 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -41,7 +41,7 @@ ms.locfileid: "98573287"
 
 * 瞭解定型/驗證資料分割和交叉驗證，以做為機器學習概念。 如需概要說明，
 
-    * [關於 Machine Learning 中的訓練、驗證和測試集](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
+    * [關於機器學習中的訓練、驗證和測試資料](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7)
 
     * [瞭解機器學習中的交叉驗證](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) 
 
@@ -62,7 +62,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-如果您未明確指定 `validation_data` 或 `n_cross_validation` 參數，AutoML 會根據提供的單一資料集中的資料列數目，套用預設的技術 `training_data` ：
+如果您未明確指定 `validation_data` 或 `n_cross_validation` 參數，則自動化 ML 會根據單一資料集中提供的資料列數目，套用預設的技術 `training_data` ：
 
 |定型 &nbsp; 資料 &nbsp; 大小| 驗證技術 |
 |---|-----|
@@ -71,7 +71,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="provide-validation-data"></a>提供驗證資料
 
-在此情況下，您可以從單一資料檔開始，然後將它分割成定型集和驗證集，也可以為驗證集提供個別的資料檔案。 無論使用哪種方式， `validation_data` 物件中的參數都會 `AutoMLConfig` 指派要作為驗證集的資料。 此參數只接受 [Azure Machine Learning 資料集](how-to-create-register-datasets.md) 或 pandas 資料框架格式的資料集。   
+在此情況下，您可以從單一資料檔開始，然後將它分割成定型資料和驗證資料集，也可以為驗證集提供個別的資料檔案。 無論使用哪種方式， `validation_data` 物件中的參數都會 `AutoMLConfig` 指派要作為驗證集的資料。 此參數只接受 [Azure Machine Learning 資料集](how-to-create-register-datasets.md) 或 pandas 資料框架格式的資料集。   
 
 下列程式碼範例會明確定義中所提供資料的哪個部分用於 `dataset` 定型和驗證。
 

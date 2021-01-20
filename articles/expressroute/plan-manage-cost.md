@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 72068e5b0af35adce4188a8922cb2415d1f5f71f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 9b74f6e82e39955554c13f6ce3490bc3c22c2b98
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250721"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600465"
 ---
 # <a name="plan-and-manage-costs-for-azure-expressroute"></a>規劃和管理 Azure ExpressRoute 的成本
 
@@ -76,9 +76,9 @@ ExpressRoute 會在 Azure 基礎結構上執行，此基礎結構會在您部署
 
 如果您在刪除 ExpressRoute 線路之後有 ExpressRoute 閘道，您仍需支付成本的費用，直到您將其刪除為止。
 
-### <a name="using-monetary-credit"></a>使用貨幣點數
+### <a name="using-azure-prepayment-credit"></a>使用 Azure 預付點數
 
-您可以使用 EA 預付金點數來支付 ExpressRoute 費用。 不過，您無法使用 EA 預付金點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
+您可以使用 Azure 預付金來支付 ExpressRoute 費用 (先前稱為預付金) 點數。 不過，您無法使用 Azure 預付點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
 
 ## <a name="monitor-costs"></a>監視成本
 

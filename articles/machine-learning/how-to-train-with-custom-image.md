@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: cb8e71d9f94441f79dd7ce2fd5ee6458987563c3
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: ad86ebdbef8bf8c8ec00e54e15b751fd2285ad68
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795915"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601333"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>使用自訂 Docker 映射將模型定型
 
@@ -101,6 +101,12 @@ fastai_env.docker.base_dockerfile = dockerfile
 fastai_env.docker.base_image = None
 fastai_env.docker.base_dockerfile = "./Dockerfile"
 ```
+
+>[!IMPORTANT]
+> Azure Machine Learning 僅支援提供下列軟體的 Docker 映射：
+> * Ubuntu 16.04 或更新版本。
+> * Conda 4.5. # 或更高的版本。
+> * Python 3.5 +。
 
 如需有關建立和管理 Azure Machine Learning 環境的詳細資訊，請參閱 [建立和使用軟體環境](how-to-use-environments.md)。 
 

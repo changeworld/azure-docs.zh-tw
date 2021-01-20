@@ -1,5 +1,5 @@
 ---
-title: '從 VM (預覽版建立映射) '
+title: 從 VM 建立映像
 description: 瞭解如何使用 Azure PowerShell 從 Azure 中現有的 VM，在共用映射庫中建立映射。
 author: cynthn
 ms.topic: how-to
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3a7ca8236307bbf8a419d2988e1a6dc1e4c40597
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964859"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601661"
 ---
-# <a name="preview-create-an-image-from-a-vm"></a>預覽：從 VM 建立映射
+# <a name="create-an-image-from-a-vm"></a>從 VM 建立映像
 
 如果您有想要用來建立多個相同 Vm 的現有 VM，您可以使用該 VM，以 Azure PowerShell 在共用映射庫中建立映射。 您也可以使用 [Azure CLI](image-version-vm-cli.md)從 VM 建立映射。
 

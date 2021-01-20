@@ -3,12 +3,12 @@ title: 使用 Azure VMware 解決方案保留實例節省成本
 description: 瞭解如何購買 Azure VMware 解決方案的保留實例。
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 80780e9718001893b6960220b5004c1c29b2fec5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 74344889cd107350e5026c4a0369382fb9c7ef51
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327392"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600867"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>使用 Azure VMware 解決方案節省成本
 
@@ -18,7 +18,7 @@ ms.locfileid: "96327392"
 
 保留實例可供使用，但有一些例外狀況。
 
--   **Clouds** 雲端保留僅適用于 [[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)] 頁面所列的區域。
+-   雲端保留僅適用于 [[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)] 頁面所列的區域。
 
 -   **配額不足** -訂用帳戶範圍為單一/共用訂用帳戶的保留範圍，必須在新的保留實例的訂用帳戶中有可用的主機配額。 您可以 [建立配額增加要求](enable-azure-vmware-solution.md) 以解決此問題。
 
@@ -54,7 +54,7 @@ ms.locfileid: "96327392"
 
    | 欄位        |  描述 |
    | ------------ | ------------ |
-   | 訂用帳戶 | 用來支付保留項目的訂用帳戶。 保留項目的費用會透過訂用帳戶的付款方式收取。 訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 、Microsoft 客戶合約，或是採用隨用隨付費率的個別訂用帳戶 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 費用會從承諾用量金額餘額 (如果有的話) 扣除或作為超額部分收費。 針對具有隨用隨付費率的訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。 |
+   | 訂用帳戶 | 用來支付保留項目的訂用帳戶。 保留項目的費用會透過訂用帳戶的付款方式收取。 訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 、Microsoft 客戶合約，或是採用隨用隨付費率的個別訂用帳戶 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 費用會從 Azure 預付款扣除 (先前稱為預付金) 餘額（如果有的話），或作為超額部分收費。 針對具有隨用隨付費率的訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。 |
    | 影響範圍        | 保留範圍可以涵蓋一個訂用帳戶或多個訂用帳戶 (共用範圍) 。 如果您選取：<br><ul><li><b>單一資源群組範圍</b> -只會將保留折扣套用至所選資源群組中的相符資源。</li><li><b>單一訂</b> 用帳戶範圍-將保留折扣套用至所選訂用帳戶中的相符資源。</li><li><b>共用範圍</b> -將保留折扣套用至計費內容中合格訂用帳戶的相符資源。 若是 EA 客戶，計費內容為註冊。 針對使用隨用隨付費率的個別訂用帳戶，計費範圍是帳戶管理員所建立的所有合格訂用帳戶。</li></ul>       |
    | 區域       | 保留所涵蓋的 Azure 區域。   |
    | 主機大小    | AV36    |

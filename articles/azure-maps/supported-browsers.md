@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896917"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601146"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支援的瀏覽器
 
@@ -36,7 +36,7 @@ Azure 地圖服務 Web SDK 支援下列桌面瀏覽器：
 - Microsoft Edge (目前版本和舊版) 
 - Google Chrome (目前版本和舊版) 
 - Mozilla Firefox (目前版本和舊版) 
-- Apple Safari (Mac OS X)  (最新版本和舊版) 
+- Apple Safari (macOS X)  (目前版本和舊版) 
 
 請參閱本文稍後的將目標設為 [舊版瀏覽器](#Target-Legacy-Browsers) 。
 
@@ -63,7 +63,7 @@ Node.js 中也支援下列 Web SDK 模組：
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>以舊版瀏覽器為目標
 
-您可能想要以不支援 WebGL 或只有有限支援的舊版瀏覽器為目標。 在這種情況下，我們建議您搭配使用 Azure 地圖服務服務與開放原始碼的地圖控制項（例如 [Leaflet](https://leafletjs.com/)）。 以下為範例：
+您可能想要以不支援 WebGL 或只有有限支援的舊版瀏覽器為目標。 在這種情況下，我們建議您搭配使用 Azure 地圖服務服務與開放原始碼的地圖控制項（例如 [Leaflet](https://leafletjs.com/)）。 以下是利用開放原始碼 [Azure 地圖服務 Leaflet 外掛程式](https://github.com/azure-samples/azure-maps-leaflet)的範例。
 
 <br/>
 
@@ -71,6 +71,7 @@ Node.js 中也支援下列 Web SDK 模組：
 請參閱 >codepen 上的 <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure 地圖服務 + Leaflet</a> ，Azure 地圖服務 (<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>) 。
 </iframe>
 
+您可以在 [這裡](https://azuremapscodesamples.azurewebsites.net/?search=leaflet)找到使用 Leaflet 中 Azure 地圖服務的其他程式碼範例。
 
 ## <a name="next-steps"></a>後續步驟
 

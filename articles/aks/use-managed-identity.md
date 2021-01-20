@@ -4,12 +4,12 @@ description: '瞭解如何在 Azure Kubernetes Service (AKS 中使用受控識�
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fe11170b1cdf18aacf832f4c8171bfc082339395
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607281"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599613"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用受控識別
 
@@ -131,7 +131,7 @@ az feature register --namespace Microsoft.ContainerService -n UserAssignedIdenti
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> 當系統指派或使用者指派的身分識別更新為受控識別之後，請 `az nodepool upgrade --node-image-only` 在您的節點上執行，以完成受控識別的更新。
+> 當系統指派或使用者指派的身分識別更新為受控識別之後，請 `az aks nodepool upgrade --node-image-only` 在您的節點上執行，以完成受控識別的更新。
 
 ## <a name="bring-your-own-control-plane-mi"></a>攜帶您自己的控制平面 MI
 自訂控制平面身分識別可讓您在建立叢集之前，將存取權授與現有的身分識別。 這項功能可讓您使用自訂 VNET 或 UDR outboundType 搭配預先建立的受控識別等案例。

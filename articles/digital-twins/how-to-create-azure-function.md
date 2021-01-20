@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6c4f23406c97d647002fbb3ab4a3544866303cf4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051338"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602697"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>連接 Azure 中的函數應用程式以處理資料
 
@@ -63,24 +63,20 @@ ms.locfileid: "98051338"
 您可以在專案上按一下滑鼠右鍵，然後從清單中選取 [ _管理 NuGet 套件_ ]，來完成這項作業。 然後，在開啟的視窗中，選取 _[流覽_ ] 索引標籤，並搜尋下列套件。 選取 [ _安裝_ 並 _接受_ 授權合約] 以安裝套件。
 
 * `Azure.DigitalTwins.Core`
-* `Azure.Identity` 
-
-針對 Azure Functions 設定適當的 Azure SDK 管線，您也需要下列套件。 重複上述相同程式來安裝所有套件。
-
+* `Azure.Identity`
 * `System.Net.Http`
-* `Azure.Core.Pipeline`
+* `Azure.Core`
 
 **選項2。使用 `dotnet` 命令列工具新增套件：**
 
 或者，您可以 `dotnet add` 在命令列工具中使用下列命令：
-```cmd/sh
-dotnet add package System.Net.Http
-dotnet add package Azure.Core.Pipeline
-```
 
-然後，將其他兩個相依性加入至您的專案，以使用 Azure 數位 Twins。 您可以使用下列連結瀏覽至 NuGet 上的套件，在其中找到主控台命令 (包括 .NET CLI 可用的命令)，將每個套件的最新版本新增至您的專案。
- * [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 這是適用於[適用於 .NET 的 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的套件。
- * [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 此程式庫會提供協助驗證 Azure 的工具。
+```cmd/sh
+dotnet add package Azure.DigitalTwins.Core
+dotnet add package Azure.Identity
+dotnet add package System.Net.Http
+dotnet add package Azure.Core
+```
 
 接下來，在 Visual Studio 方案總管中，開啟您擁有範例程式碼的 _function.cs_ 檔案，然後將下列 _using_ 語句新增至您的函式。 
 
@@ -154,7 +150,7 @@ dotnet add package Azure.Core.Pipeline
 ```azurecli-interactive 
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>   
 ```
-使用下列命令中的 _principalId_ 值，將函數應用程式的身分識別指派給 Azure 數位 Twins 實例的 _Azure 數位 Twins 資料擁有_ 者角色。
+使用下列命令中的 _principalId_ 值，將函數應用程式的身分識別指派給您 Azure Digital Twins 執行個體的「Azure Digital Twins 資料擁有者」角色。
 
 ```azurecli-interactive 
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
@@ -246,7 +242,7 @@ _值_ ： HTTPs：//{您的 azure-twins-hostname}
 
 :::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure 入口網站：更新應用程式設定的通知":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已遵循在 Azure 中設定函數應用程式以搭配 Azure 數位 Twins 使用的步驟。 接下來，您可以將函式訂閱至事件方格，以在端點上接聽。 此端點可能是：
 * 附加至 Azure 數位 Twins 的事件方格端點，可處理來自 Azure 數位 Twins 本身的訊息 (例如屬性變更訊息、對應項圖形中 [數位 Twins](concepts-twins-graph.md) 所產生的遙測訊息，或是生命週期訊息) 

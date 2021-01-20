@@ -6,26 +6,26 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 5e12ca3bf626ae212f44fe0378ccb6649738753c
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562846"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602198"
 ---
 # <a name="errors-in-the-connector-status"></a>連接器狀態中的錯誤
 
-在 [連接器狀態] 清單中，您可以找到可協助您修正 ITSM 連接器的錯誤。
+在 [連接器狀態] 清單中，您可以找到可協助您修正 ITSM 連接器問題的錯誤。
 
 ## <a name="status-common-errors"></a>狀態常見錯誤
 
-在本節中，您可以在 [狀態] 清單中找到您可以找到的常見錯誤，以及您應該如何解決此錯誤：
+在本節中，您可以找到 [連接器狀態] 區段中顯示的常見錯誤，以及您應該如何解決此問題：
 
-*  **錯誤**：「來自 ServiceNow 的非預期回應，以及成功狀態碼。 回應： {"import_set"： "{import_set_id}"，"staging_table"： "x_mioms_microsoft_oms_incident"，"result"： [{"transform_map"： "OMS Incident"，"table"： "incident"，"status"： "error"，"error_message"： "{找不到目標記錄 |不正確資料表 |臨時表 "}" 無效
+* **錯誤**：「來自 ServiceNow 的非預期回應，以及成功狀態碼。 回應： {"import_set"： "{import_set_id}"，"staging_table"： "x_mioms_microsoft_oms_incident"，"result"： [{"transform_map"： "OMS Incident"，"table"： "incident"，"status"： "error"，"error_message"： "{找不到目標記錄 |不正確資料表 |臨時表 "}" 無效
 
     **原因**：當下列情況時，ServiceNow 會傳回這類錯誤：
-    * 在 ServiceNow 實例中部署的自訂腳本會導致事件被忽略。
-    * 「OMS 整合器應用程式」程式碼本身是在 ServiceNow 端修改的，例如 onBefore 腳本。
+  * 在 ServiceNow 實例中部署的自訂腳本會導致事件被忽略。
+  * 「OMS 整合器應用程式」程式碼本身是在 ServiceNow 端修改的，例如 onBefore 腳本。
 
     **解決方法**：停用資料匯入路徑的所有自訂腳本或程式碼修改。
 
@@ -43,7 +43,7 @@ ms.locfileid: "98562846"
 
 * **錯誤**： "ServiceDeskHttpBadRequestException： StatusCode = 429"
 
-    **原因**： ServiceNow 速率限制太低。
+    **原因**： ServiceNow 速率限制太高/低。
 
     **解決** 方式：增加或取消 ServiceNow 實例中的速率限制，[如下所述。](https://docs.servicenow.com/bundle/london-application-development/page/integrate/inbound-rest/task/investigate-rate-limit-violations.html)
 
@@ -57,14 +57,14 @@ ms.locfileid: "98562846"
 
     **原因**：已刪除 ITSM 連接器。
 
-    **解決** 方式： ITSM 連接器已刪除，但仍有定義 ITSM 動作可供使用。 有2個選項可解決此問題：
+    **解決** 方式： ITSM 連接器已刪除，但仍有定義與其相關聯的 ITSM 動作群組。 有2個選項可解決此問題：
   * 尋找並停用或刪除這類動作
   * [重新設定動作群組](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) ，以使用現有的 ITSM 連接器。
   * [建立新的 ITSM 連接器](./itsmc-definition.md#create-an-itsm-connection) ，並 [重新設定動作群組以使用它](itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 
 ## <a name="ui-common-errors"></a>UI 常見錯誤
 
-* **錯誤**：「發生錯誤。 無法取得連接詳細資料。」
+* **錯誤**：「發生錯誤。 無法取得連接詳細資料。」 當客戶定義 ITSM 動作群組時，就會出現此錯誤。
 
     **原因**：新建立的 ITSM 連接器尚未完成初始同步處理。
 

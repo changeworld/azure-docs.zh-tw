@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 3f8e497fb21b3fac6a2bc5842e6bc56c47444c8b
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: e51354b1c2905d0532ce4eb49236dda8550f98a4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572488"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600083"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -128,6 +128,8 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 ## <a name="text-to-speech"></a>文字轉換語音
 
 Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區設定所識別的特定語言和方言。 您也可以透過[語音/清單 API](rest-text-to-speech.md#get-a-list-of-voices)，取得每個特定區域/端點所支援的語言和語音完整清單。 
+
+若要瞭解如何設定及調整說話樣式（包括類神經語音），請參閱語音合成標記語言的 [how-to](speech-synthesis-markup.md#adjust-speaking-styles) （英文）。
 
 > [!IMPORTANT]
 > 標準、自訂和神經語音的定價各不相同。 如需其他資訊，請瀏覽[定價](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)頁面。
@@ -286,8 +288,6 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 > 公開預覽中的語音僅適用于三個服務區域：美國東部、西歐和東南亞。
 
 如需區域可用性的詳細資訊，請參閱[區域](regions.md#standard-and-neural-voices)。
-
-若要瞭解如何設定及調整類神經語音，例如說話樣式，請參閱 [語音合成標記語言](speech-synthesis-markup.md#adjust-speaking-styles)。
 
 > [!IMPORTANT]
 > `en-US-JessaNeural` 的語音已變更為 `en-US-AriaNeural`。 如果您之前使用過「Jessa」，請轉換為「Aria」。

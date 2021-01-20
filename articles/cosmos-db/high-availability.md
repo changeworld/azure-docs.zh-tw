@@ -4,22 +4,22 @@ description: 這篇文章說明 Azure Cosmos DB 如何提供高可用性
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 01/18/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 58507703ca3440e73dbc41757e0bc70f56e886c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: d827011c4f831433a7446c90eed0c30c7b1e94d7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360151"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600565"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB 如何提供高可用性
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB 以兩種主要方式提供高可用性。 首先，Azure Cosmos DB 會在 Cosmos 帳戶內設定的區域間複寫資料。 其次，Azure Cosmos DB 會維護區域內的4個數據複本。
 
-Azure Cosmos DB 是全域散發的資料庫服務，而且是 Azure 中的基礎服務。 根據預設，適用于 [Azure 可用的所有區域](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all)皆可使用。 您可以將任意數目的 Azure 區域與您的 Azure Cosmos 帳戶相關聯，而且您的資料會自動且透明地複寫。 您可以隨時在 Azure Cosmos 帳戶中新增或移除區域。 在提供給客戶的五個不同 Azure 雲端環境中，全都有提供 Cosmos DB：
+Azure Cosmos DB 是全域散發的資料庫服務，而且是可在 [Azure 的所有區域](https://azure.microsoft.com/global-infrastructure/services/?products=cosmos-db&regions=all)中使用的基礎服務。 您可以將任意數目的 Azure 區域與您的 Azure Cosmos 帳戶相關聯，而且您的資料會自動且透明地複寫。 您可以隨時在 Azure Cosmos 帳戶中新增或移除區域。 在提供給客戶的五個不同 Azure 雲端環境中，全都有提供 Cosmos DB：
 
 * **Azure 公用** 雲端，全球皆有提供。
 
@@ -39,15 +39,15 @@ Azure Cosmos DB 是全域散發的資料庫服務，而且是 Azure 中的基礎
 
 * 分割集是多個複本集的集合。 在每個區域內，每個分割區都會受到一個複本集所保護，而且所有寫入都會由大多數複本所複寫且永久認可。 複本會分散到多達 10-20 個容錯網域中。
 
-* 所有區域中的每個分割區都會複寫。 每個區域都包含 Azure Cosmos 容器的所有資料分割區，而且可以接受寫入和服務讀取。  
+* 所有區域中的每個分割區都會複寫。 每個區域都包含 Azure Cosmos 容器的所有資料分割區，而且可以在啟用多區域寫入時提供讀取以及服務寫入。  
 
 如果您的 Azure Cosmos 帳戶分散在 *N* 個 azure 區域中，則所有資料至少會有 *N* x 4 個複本。 在2個以上的區域中擁有 Azure Cosmos 帳戶，可改善應用程式的可用性，並在相關聯的區域之間提供低延遲。
 
 ## <a name="slas-for-availability"></a>用於提供可用性的 SLA
 
-做為全域散發的資料庫，Azure Cosmos DB 提供涵蓋輸送量、第99個百分位數的延遲、一致性和高可用性的完整 Sla。 下表顯示單一和多重區域帳戶 Azure Cosmos DB 所提供的高可用性保證。 為了達到高可用性，請一律將您的 Azure Cosmos 帳戶設定為具有多個寫入區域。
+Azure Cosmos DB 提供涵蓋輸送量、第99百分位數的延遲、一致性和高可用性的完整 Sla。 下表顯示單一和多重區域帳戶 Azure Cosmos DB 所提供的高可用性保證。 如需更高的寫入可用性，請將您的 Azure Cosmos 帳戶設定為具有多個寫入區域。
 
-|作業類型  | 單一區域 |多重區域 (單一區域寫入)|多重區域 (多重區域寫入) |
+|作業類型  | 單一區域 |多重區域 (單一區域寫入) |多重區域 (多重區域寫入) |
 |---------|---------|---------|-------|
 |寫入    | 99.99    |99.99   |99.999|
 |讀取     | 99.99    |99.999  |99.999|
@@ -74,7 +74,7 @@ Azure Cosmos DB 是全域散發的資料庫服務，而且是 Azure 中的基礎
 * 一旦先前受影響的寫入區域復原，它將自動作為讀取區域使用。 您可以切換回已復原的區域做為寫入區域。 您可以使用 [PowerShell、Azure CLI 或 Azure 入口網站](how-to-manage-database-account.md#manual-failover)來切換區域。 在切換寫入區域之前、或之後，您的應用程式會持續成為高可用性之前，不會 **遺失任何資料或可用性** 。
 
 > [!IMPORTANT]
-> 強烈建議您設定用於生產工作負載的 Azure Cosmos 帳戶，以 **啟用自動容錯移轉** 。 手動容錯移轉需要次要和主要寫入區域之間的連線才能完成一致性檢查，以確保容錯移轉期間不會遺失任何資料。 如果主要區域無法使用，則此一致性檢查無法完成，且手動容錯移轉將不會成功，因而導致區域中斷期間遺失寫入可用性。
+> 強烈建議您設定用於生產工作負載的 Azure Cosmos 帳戶，以 **啟用自動容錯移轉**。 手動容錯移轉需要次要和主要寫入區域之間的連線才能完成一致性檢查，以確保容錯移轉期間不會遺失任何資料。 如果主要區域無法使用，則此一致性檢查無法完成，且手動容錯移轉將不會成功，因而導致區域中斷期間遺失寫入可用性。
 
 ### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>具有單一寫入區域 (讀取區域中斷) 的多重區域帳戶
 
@@ -90,41 +90,37 @@ Azure Cosmos DB 是全域散發的資料庫服務，而且是 Azure 中的基礎
 
 * 無須對您應用程式的程式碼進行任何變更，後續的讀取就會重新導向到已復原的區域。 在先前失敗的區域進行容錯移轉和重新加入期間，Azure Cosmos DB 可繼續接受 read 一致性保證。
 
-* 即使在 Azure 區域永久無法復原的罕見事件中，如果您的多重區域 Azure Cosmos 帳戶設定了 *強* 式一致性，則不會遺失資料。 如果有永久無法復原的寫入區域，以限定過期一致性設定的多重區域 Azure Cosmos 帳戶，可能的資料遺失時間範圍會限制為過期時段 ( *k* 或 *t* ) 其中 k = 100000 更新和 t = 5 分鐘。 針對會話、一致前置詞和最終一致性層級，可能的資料遺失時間範圍會限制為最多15分鐘。 如需 Azure Cosmos DB 的 RTO 和 RPO 目標的詳細資訊，請參閱 [一致性層級和資料持久性](./consistency-levels.md#rto)
+* 即使在 Azure 區域永久無法復原的罕見事件中，如果您的多重區域 Azure Cosmos 帳戶設定了 *強* 式一致性，則不會遺失資料。 如果有永久無法復原的寫入區域，以限定過期一致性設定的多重區域 Azure Cosmos 帳戶，可能的資料遺失時間範圍會限制為過期時間範圍 (*k* 或 *t*) 其中 k = 100000 更新或 t = 5 分鐘（這是先發生）。 針對會話、一致前置詞和最終一致性層級，可能的資料遺失時間範圍會限制為最多15分鐘。 如需 Azure Cosmos DB 的 RTO 和 RPO 目標的詳細資訊，請參閱 [一致性層級和資料持久性](./consistency-levels.md#rto)
 
 ## <a name="availability-zone-support"></a>可用性區域支援
 
-除了跨區域復原之外，您現在可以在選取要與 Azure Cosmos 資料庫建立關聯的區域時啟用 **區域冗余** 。
+除了跨區域復原之外，當選取要與 Azure Cosmos 帳戶建立關聯的區域時，Azure Cosmos DB 也支援支援區域中的 **區域冗余** 。
 
-有了可用性區域支援，Azure Cosmos DB 將可確保將複本放在指定區域內的多個區域，以在區域性失敗期間提供高可用性和復原功能。 此設定中的延遲和其他 Sla 沒有任何變更。 在單一區域失敗的情況下，區域冗余會提供具有 RPO = 0 且可用性與 RTO = 0 的完整資料持久性。
+使用可用性區域 (AZ) 支援時，Azure Cosmos DB 可確保將複本放在指定區域內的多個區域，以提供高可用性和區域性失敗的復原能力。 可用性區域提供99.995% 的可用性 SLA，且沒有延遲的變更。 在單一區域失敗的情況下，區域冗余會提供具有 RPO = 0 且可用性與 RTO = 0 的完整資料持久性。 區域冗余是區域複寫的補充功能。 您無法依賴區域冗余來達成區域復原。
 
-區域冗余是 [多重區域寫入功能中](how-to-multi-master.md)複寫的 *補充功能* 。 您無法依賴區域冗余來達成區域復原。 例如，在區域中斷或跨區域的低延遲存取的情況下，建議您除了區域冗余之外，還有多個寫入區域。
+只有將新區域新增至 Azure Cosmos 帳戶時，才能設定區域冗余。 針對現有的區域，您可以藉由移除區域，然後在啟用區域冗余後將其新增回去來啟用區域冗余。 針對單一區域帳戶，這需要新增一個額外的區域以暫時容錯移轉至，然後移除並新增已啟用區域冗余的所需區域。
 
-為您的 Azure Cosmos 帳戶設定多區域寫入時，您可以加入宣告區域冗余，而不需要額外費用。 否則，請參閱以下關于區域冗余支援定價的附注。 您可以藉由移除區域並將其新增回已啟用區域冗余的方式，在 Azure Cosmos 帳戶的現有區域上啟用區域冗余。 如需支援可用性區域的區域清單，請參閱「 [可用性區域](../availability-zones/az-region.md) 」檔。
+為您的 Azure Cosmos 帳戶設定多區域寫入時，您可以加入宣告區域冗余，而不需要額外費用。 否則，請參閱下表，以瞭解區域冗余支援的定價。 如需可用性區域可用的區域清單，請參閱 [可用性區域](../availability-zones/az-region.md)。
 
 下表摘要說明各種帳戶設定的高可用性功能：
 
-|KPI  |沒有可用性區域 (非 AZ) 的單一區域  |具有可用性區域 (AZ) 的單一區域  |使用可用性區域 (AZ、2個區域) 的多重區域寫入–最建議的設定 |
-|---------|---------|---------|---------|
-|寫入可用性 SLA | 99.99% | 99.99% | 99.999% |
-|讀取可用性 SLA  | 99.99% | 99.99% | 99.999% |
-|價格 | 單一區域計費費率 | 單一區域可用性區域計費費率 | 多區域計費費率 |
-|區域失敗–資料遺失 | 資料遺失 | 沒有資料遺失 | 沒有資料遺失 |
-|區域失敗-可用性 | 可用性損失 | 無可用性損失 | 無可用性損失 |
-|讀取延遲 | 跨區域 | 跨區域 | 低 |
-|寫入延遲 | 跨區域 | 跨區域 | 低 |
-|區域中斷-資料遺失 | 資料遺失 |  資料遺失 | 資料遺失 <br/><br/> 搭配多個寫入區域和多個區域使用限定過期一致性時，資料遺失會限制在您帳戶上設定的限定過期 <br /><br />您可以設定多個區域的強式一致性，以避免在區域性中斷期間發生資料遺失。 此選項會產生影響可用性和效能的取捨。 只能在針對單一區域寫入設定的帳戶上設定。 |
-|區域中斷-可用性 | 可用性損失 | 可用性損失 | 無可用性損失 |
-|輸送量 | X RU/秒布建的輸送量 | X RU/秒布建的輸送量 * 1.25 | 2X RU/秒布建的輸送量 <br/><br/> 相較于具有可用性區域的單一區域，此設定模式需要兩倍的輸送量（因為有兩個區域）。 |
+|KPI|單一區域而不 Az|使用 Az 的單一區域|使用 Az 的多重區域、單一區域寫入|使用 Az 的多重區域、多重區域寫入|
+|---------|---------|---------|---------|---------|
+|寫入可用性 SLA | 99.99% | 99.995% | 99.995% | 99.999% |
+|讀取可用性 SLA  | 99.99% | 99.995% | 99.995% | 99.999% |
+|區域失敗–資料遺失 | 資料遺失 | 沒有資料遺失 | 沒有資料遺失 | 沒有資料遺失 |
+|區域失敗-可用性 | 可用性損失 | 無可用性損失 | 無可用性損失 | 無可用性損失 |
+|區域中斷-資料遺失 | 資料遺失 |  資料遺失 | 相依于一致性層級。 如需詳細資訊，請參閱 [一致性、可用性和效能權衡取捨](consistency-levels-tradeoffs.md) 。 | 相依于一致性層級。 如需詳細資訊，請參閱 [一致性、可用性和效能權衡取捨](consistency-levels-tradeoffs.md) 。
+|區域中斷-可用性 | 可用性損失 | 可用性損失 | 讀取區域失敗沒有可用性遺失，寫入區域失敗的暫存 | 無可用性損失 |
+|價格 ( **_1_* _)  | 不適用 | 布建的 RU/秒 x 1.25 速率 | 布建的 RU/秒 x 1.25 速率 (_*_2_*_)  | 多區域寫入速率 |
 
-> [!NOTE]
-> 若要啟用多區域 Azure Cosmos 帳戶的可用性區域支援，帳戶必須啟用多重區域寫入。
+_*_1_*_ 針對無伺服器帳戶要求單位 (RU) 乘以係數1.25。
 
-將區域新增至新的或現有的 Azure Cosmos 帳戶時，您可以啟用區域冗余。 若要在您的 Azure Cosmos 帳戶上啟用區域冗余，您應該將旗標設為 `isZoneRedundant` `true` 特定的位置。 您可以在 [位置] 屬性內設定這個旗標。 例如，下列 PowerShell 程式碼片段會啟用「東南亞」區域的區域冗余：
+_*_2_*_ 1.25 的費率只適用于已啟用 AZ 的區域。
 
 您可以透過下列方式啟用可用性區域：
 
-* [Azure 入口網站](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+_ [Azure 入口網站](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 
 * [Azure PowerShell](manage-with-powershell.md#create-account)
 

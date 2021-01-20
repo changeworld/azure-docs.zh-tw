@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694195"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601758"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>使用自訂命令建立語音助理
 
-在本快速入門中，您會使用語音 Studio 來建立及測試基本的自訂命令應用程式。 您也可以從 Windows 用戶端應用程式存取此應用程式。 **自訂命令** 可讓您輕鬆地建立針對語音優先互動體驗優化的豐富語音命令應用程式。 它提供統一的撰寫體驗、自動化的裝載模型，以及較低的複雜度，協助您專注于為語音命令的案例建立最佳解決方案。
+在本快速入門中，您會使用語音 Studio 來建立及測試基本的自訂命令應用程式。 您也可以從 Windows 用戶端應用程式存取此應用程式。
 
 ## <a name="region-availability"></a>區域可用性
 目前，自訂命令支援在這些區域中建立的語音訂用帳戶：
@@ -104,7 +104,7 @@ ms.locfileid: "97694195"
 
 1. 選取左窗格中的 [ **設定** ]，然後選取中間窗格中的 [  **LUIS 資源** ]。
 1. 選取預測資源，或選取 [ **建立新資源**] 建立一個。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
     
     > [!div class="mx-imgBorder"]
     > ![設定 LUIS 資源](media/custom-commands/set-luis-resources.png)

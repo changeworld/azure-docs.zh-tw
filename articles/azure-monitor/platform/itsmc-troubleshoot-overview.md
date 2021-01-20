@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 14f1056bf761eb7b591d04db34610468058bc255
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 2ffe7c8994d32917a08896c7d25f20d4adf09066
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562843"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601900"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>針對 ITSM 連接器中的問題進行疑難排解
 
@@ -53,11 +53,36 @@ ITSM 可讓您選擇將警示傳送至外部票證系統，例如 ServiceNow。
      - 確定已成功部署 web 應用程式，且已建立混合式連接。 若要確認是否已成功建立與內部部署 Service Manager 電腦的連線，請移至 web 應用程式 URL，如建立 [混合](./itsmc-connections-scsm.md#configure-the-hybrid-connection)式連線的檔中所述。  
 
 - 如果記錄分析警示引發但未在 ITSM 產品中建立工作專案，如果設定專案未建立/連結至工作專案，或其他資訊，請參閱下列資源：
-   -  ITSMC：解決方案會顯示連線、工作專案、電腦等的摘要。 選取具有 **連接器狀態** 標籤的磚。 這樣做會讓您使用相關查詢來 **記錄搜尋** 。 查看記錄檔記錄，以 `LogType_S` `ERROR` 取得詳細資訊。
+   -  ITSMC：解決方案會顯示連線、工作專案、電腦等的 [摘要](itsmc-dashboard.md)。 選取具有 **連接器狀態** 標籤的磚。 這樣做會讓您使用相關查詢來 **記錄搜尋** 。 查看記錄檔記錄，以 `LogType_S` `ERROR` 取得詳細資訊。
+   您可以在此查看資料表中有關訊息的詳細[資料。](itsmc-dashboard-errors.md)
    - **記錄搜尋** 頁面：使用查詢直接查看錯誤和相關資訊 `*ServiceDeskLog_CL*` 。
 
-### <a name="troubleshoot-service-manager-web-app-deployment"></a>Service Manager web 應用程式部署進行疑難排解
+## <a name="common-symptoms---how-it-should-be-resolved"></a>常見的徵兆-如何解決此問題？
 
--   如果您有 web 應用程式部署的問題，請確定您有權在訂用帳戶中建立/部署資源。
--   如果您在執行 [腳本](itsmc-service-manager-script.md)時取得 **未設定為物件錯誤實例的物件參考**，請確定您已在 [**使用者** 設定] 區段中輸入有效的值。
--   如果您無法建立服務匯流排轉送命名空間，請確定已在訂用帳戶中註冊必要的資源提供者。 如果未註冊，請從 Azure 入口網站手動建立服務匯流排轉送命名空間。 您也可以在 Azure 入口網站中 [建立混合](./itsmc-connections-scsm.md#configure-the-hybrid-connection) 式連線時建立它。
+下列清單包含常見的徵兆，以及如何解決此問題：
+
+* **徵兆**：已建立重複的工作專案
+
+    **原因**：原因可以是下列兩個選項之一：
+    * 針對警示定義了一個以上的 ITSM 動作。
+    * 警示已解決。
+
+    **解決** 方式：可以有兩種解決方案：
+    * 請確定每個警示都有一個 ITSM 動作群組。
+    * 當警示已解決時，ITSM 連接器不支援相符的工作專案狀態更新。 已建立新的已解決工作專案。
+* **徵兆**：未建立工作專案
+
+    **原因**：此徵兆可能有幾個原因：
+    * ServiceNow 端的程式碼修改
+    * 許可權設定錯誤
+    * ServiceNow 速率限制太高/低
+    * 重新整理權杖已過期
+    * ITSM 連接器已刪除
+
+    **解決** 方式：您可以查看 [儀表板](itsmc-dashboard.md) ，並在 [連接器狀態] 區段中檢查錯誤。 請參閱 [常見的錯誤](itsmc-dashboard-errors.md) ，並瞭解如何解決此錯誤。
+
+* **徵兆**：無法建立動作群組的 ITSM 動作
+
+    **原因**：新建立的 ITSM 連接器尚未完成初始同步處理。
+
+    **解決** 方式：您可以檢查 [常見的 UI 錯誤](itsmc-dashboard-errors.md#ui-common-errors) ，並瞭解如何解決此錯誤。

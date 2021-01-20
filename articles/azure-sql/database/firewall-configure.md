@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 9fe0c79a2f65b27b35aa5029d0a53de62ef08078
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251653"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602217"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database 和 Azure Synapse IP 防火牆規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -43,6 +43,9 @@ ms.locfileid: "98251653"
 
 - 若要使用入口網站或 PowerShell，您必須是訂用帳戶擁有者或訂用帳戶參與者。
 - 若要使用 Transact-sql，您必須以伺服器層級主體登入或 Azure Active Directory 系統管理員的身分，連接到 *master* 資料庫。  (伺服器層級 IP 防火牆規則必須先由具有 Azure 層級許可權的使用者建立。 ) 
+
+> [!NOTE]
+> 根據預設，從 Azure 入口網站建立新的邏輯 SQL server 時，[ **允許 Azure 服務和資源存取此伺服器** ] 設定會設定為 [ **否**]。
 
 ### <a name="database-level-ip-firewall-rules"></a>資料庫層級 IP 防火牆規則
 
@@ -83,7 +86,7 @@ ms.locfileid: "98251653"
 
 *我可以混合使用伺服器層級和資料庫層級 IP 防火牆規則嗎？*
 
-是。 某些使用者（例如系統管理員）可能需要伺服器層級 IP 防火牆規則。 其他使用者 (例如資料庫應用程式的使用者) 可能需要資料庫層級 IP 防火牆規則。
+可以。 某些使用者（例如系統管理員）可能需要伺服器層級 IP 防火牆規則。 其他使用者 (例如資料庫應用程式的使用者) 可能需要資料庫層級 IP 防火牆規則。
 
 ### <a name="connections-from-the-internet"></a>從網際網路的連接
 

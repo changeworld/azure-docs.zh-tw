@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 01/18/2021
-ms.openlocfilehash: f802292d9723179b36d5291993bd4e07487fe6a8
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567395"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600984"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>針對虛擬機器認證進行疑難排解
 
@@ -32,7 +32,7 @@ ms.locfileid: "98567395"
 1. 選取您的 Linux VM。
 1. 移至 [ **診斷設定**]。
 1. 藉由更新 **儲存體帳戶** 來啟用基底矩陣。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
    ![顯示如何啟用來賓層級監視的螢幕擷取畫面。](./media/create-vm/vm-certification-issues-solutions-1.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "98567395"
 
 布建問題可能包含下列失敗案例：
 
-|案例|[錯誤]|原因|解決方案|
+|狀況|[錯誤]|原因|解決方案|
 |---|---|---|---|
 |1| (VHD) 的虛擬硬碟無效|如果 VHD 頁尾中指定的 cookie 值不正確，VHD 將會視為無效。|重新建立映射並提交要求。|
 |2|不正確 blob 類型|VM 布建失敗，因為使用的區塊是 blob 類型，而不是頁面類型。|重新建立映射並提交要求。|
@@ -126,7 +126,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將執行的 Linux 測試案例。 [描述] 中會陳述測試驗證。
 
-|案例|測試案例|描述|
+|狀況|測試案例|描述|
 |---|---|---|
 |1|Bash 歷程記錄|您應先清除 Bash 記錄檔，再建立 VM 映射。|
 |2|Linux 代理程式版本|應安裝 Azure Linux 代理程式2.2.41 或更新版本。|
@@ -144,7 +144,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 請參閱下表，以瞭解執行測試案例時可能會看到的常見錯誤：
 
-| 案例 | 測試案例 | 錯誤 | 解決方法 |
+| 狀況 | 測試案例 | 錯誤 | 解決方法 |
 | --- | --- | --- | --- |
 | 1 | Linux 代理程式版本測試案例 | Linux 代理程式的最低版本是2.2.41 或更新版本。 自2020年5月1日起，這項需求是強制的。 | 更新 Linux 代理程式版本。 它應該是2.241 或更新版本。 如需詳細資訊，請造訪 [Linux 代理程式版本更新頁面](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)。 |
 | 2 | Bash 歷程記錄測試案例 | 如果您提交的映射中 Bash 歷程記錄的大小超過 1 kb (KB) ，就會發生錯誤。 大小會限制為 1 KB，以確保您的 Bash 歷程記錄檔不會包含任何可能的機密資訊。 | 解決方法是將 VHD 掛接到另一個工作中的 VM，並進行變更，將大小縮減為 1 KB 或更少。 例如，刪除記錄檔 `.bash` 。 |
@@ -156,7 +156,7 @@ Microsoft 認證工具組可協助您執行測試案例，並確認您的 VHD �
 
 下表列出工具組將執行的 Windows 測試案例，以及測試驗證的描述：
 
-|案例 |測試案例|描述|
+|狀況 |測試案例|描述|
 |---|---|---|
 |1|作業系統架構|Azure 僅支援64位作業系統。|
 |2|使用者帳戶相依性|應用程式執行不應依存于系統管理員帳戶。|
@@ -321,7 +321,7 @@ Azure 上的所有 Vhd 必須具有與 1 mb (MB) 的倍數相符的虛擬大小�
 |VHD 名稱無效|查看 VHD 名稱中是否有任何特殊字元，例如百分比符號 `%` 或引號 `"` 。|藉由移除特殊字元來重新命名 VHD 檔案。|
 |
 
-## <a name="first-1-mb-2048-sectors-each-sector-of-512-bytes-partition"></a>前 1 MB (2048 磁區，每個512位元組的磁區) 分割區
+## <a name="first-partition-starts-at-1-mb-2048-sectors"></a>第一個分割區從 1 MB 開始 (2048 磁區) 
 
 如果您要 [建立自己的映射](azure-vm-create-using-own-image.md)，請確定作業系統磁片的前2048個磁區 (1 MB) 是空的。 否則，您的發行將會失敗。 這項需求只適用于 OS 磁片， (不是資料磁片) 。 如果您是 [從已核准的基底](azure-vm-create-using-approved-base.md)建立映射，則可以略過這項需求。
 

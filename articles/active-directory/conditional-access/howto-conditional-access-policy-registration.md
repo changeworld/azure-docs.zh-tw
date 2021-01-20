@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61f655d459592022a2e34b87adc50e3d49b03dc9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0e99f7466bd3b7ed5517157ca3fa45e7c3241217
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935762"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599760"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>條件式存取：保護安全性資訊註冊
 
@@ -34,6 +34,8 @@ ms.locfileid: "97935762"
    > [!WARNING]
    > 使用者必須能使用[合併註冊](../authentication/howto-registration-mfa-sspr-combined.md)。
 
+   1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
+   1. 選取 [完成] 。
 1. 在 [雲端應用程式或動作] 底下選取 [使用者動作]，然後勾選 [註冊安全性資訊]。
 1. 在 [條件] > [位置] 底下。
    1. 設定 [是]。
@@ -65,7 +67,7 @@ ms.locfileid: "97935762"
 
 ## <a name="next-steps"></a>後續步驟
 
-[條件式存取的一般原則](concept-conditional-access-policy-common.md)
+[條件式存取一般原則](concept-conditional-access-policy-common.md)
 
 [使用條件式存取報告專用模式判斷影響](howto-conditional-access-insights-reporting.md)
 

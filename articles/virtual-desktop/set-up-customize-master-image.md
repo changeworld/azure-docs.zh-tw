@@ -3,19 +3,22 @@ title: 準備和自訂主要 VHD 映射-Azure
 description: 如何準備、自訂 Windows 虛擬桌面主要映射，並將其上傳至 Azure。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/14/2019
+ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9e4cb4fe8a701600290d24c055e2be5187a711c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 33af83934e8ecc5745f2edad3a7832a870406452
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023389"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602381"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>準備和自訂主要 VHD 映像
 
 本文說明如何準備主要虛擬硬碟 (VHD) 映射以上傳至 Azure，包括如何 (Vm 建立虛擬機器) 和在其上安裝軟體。 這些指示適用於可搭配您組織現有程序使用的 Windows 虛擬桌面特定設定。
+
+>[!IMPORTANT]
+>建議您使用 Azure 映射庫中的映射。 但是，如果您需要使用自訂映射，請確定您的裝置上尚未安裝 WIndows 虛擬桌面代理程式。 將自訂映射與 Windows 虛擬桌面代理程式搭配使用，可能會導致映射發生問題。  
 
 ## <a name="create-a-vm"></a>建立 VM
 
@@ -114,7 +117,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoam
 1. 在 Active Directory 伺服器上，開啟 **群組原則管理主控台**。
 2. 展開您的網域，並群組原則物件。
 3. 以滑鼠右鍵按一下您為群組原則設定建立的 **群組原則物件** ，然後選取 [ **編輯**]。
-4. 在 **群組原則管理編輯器** 中，流覽至 [Windows 元件] 系統管理範本的 [**電腦** 設定  >  **原則**]  >  **Administrative Templates**  >  **Windows Components**  >  **遠端桌面服務**  >  **遠端桌面工作階段主機**  >  **裝置和資源** 重新導向]。
+4. 在 **群組原則管理編輯器** 中，流覽至 [Windows 元件] 系統管理範本的 [**電腦** 設定  >  **原則**]  >    >    >  **遠端桌面服務**  >  **遠端桌面工作階段主機**  >  **裝置和資源** 重新導向]。
 5. 啟用 [ **允許** 時區重新導向] 設定。
 
 您也可以在主要映射上執行此命令，以重新導向時區：
@@ -204,7 +207,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
     > [!div class="mx-imgBorder"]
     > ![[已成功建立的映射] 通知的螢幕擷取畫面。](media/1f41b7192824a2950718a2b7bb9e9d69.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 現在您已有映射，您可以建立或更新主機集區。 若要深入瞭解如何建立和更新主機集區，請參閱下列文章：
 

@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 70aecc2613fbe21d34e36f9487d7ba383e140bc8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217357"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598477"
 ---
 # <a name="manage-your-function-app"></a>管理您的函數應用程式 
 
@@ -84,7 +84,7 @@ Update-AzFunctionAppSetting -Name <FUNCTION_APP_NAME> -ResourceGroupName <RESOUR
 
 ## <a name="hosting-plan-type"></a>主控方案類型
 
-當您建立函數應用程式時，您也會建立應用程式執行所在的 App Service 主控方案。 方案可以有一或多個函數應用程式。 函數的功能、規模調整和定價取決於方案的類型。 若要深入瞭解，請參閱 [Azure Functions 定價頁面](https://azure.microsoft.com/pricing/details/functions/)。
+當您建立函數應用程式時，您也會建立應用程式執行所在的主控方案。 方案可以有一或多個函數應用程式。 函數的功能、規模調整和定價取決於方案的類型。 若要深入瞭解，請參閱 [Azure Functions 裝載選項](functions-scale.md)。
 
 您可以從 Azure 入口網站、使用 Azure CLI 或 Azure PowerShell Api，判斷函數應用程式所使用的方案類型。 
 
@@ -131,6 +131,75 @@ $PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionAp
 
 ---
 
+## <a name="plan-migration"></a>規劃移轉
+
+您可以使用 Azure CLI 命令，在 Windows 上的耗用量方案和高階方案之間遷移函數應用程式。 特定的命令取決於遷移的方向。 目前不支援直接遷移至專用 (App Service) 方案。
+
+Linux 不支援這種遷移。
+
+### <a name="consumption-to-premium"></a>Premium 的耗用量
+
+使用下列程式，從取用方案遷移至 Windows 上的高階方案：
+
+1. 執行下列命令，以在與現有函式應用程式相同的區域和資源群組中，建立新的 App Service 方案 (彈性 Premium) 。  
+
+    ```azurecli-interactive
+    az functionapp plan create --name <NEW_PREMIUM_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP> --location <REGION> --sku EP1
+    ```
+
+1. 執行下列命令，將現有的函式應用程式遷移至新的 Premium 方案
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_PREMIUM_PLAN>
+    ```
+
+1. 如果您不再需要先前的耗用量函式應用程式方案，請在確認您已成功遷移至新的函式應用程式計畫之後，刪除原始函式應用程式方案。 執行下列命令，以取得資源群組中所有使用量方案的清單。
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='Y'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+    您可以安全地刪除具有零個網站的方案，也就是您從中遷移的網站。
+
+1. 執行下列命令，以刪除您從遷移的耗用量方案。
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <CONSUMPTION_PLAN_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+### <a name="premium-to-consumption"></a>Premium 至耗用量
+
+使用下列程式，從高階方案遷移至 Windows 上的耗用量方案：
+
+1. 執行下列命令，以在與現有函式應用程式相同的區域和資源群組中建立新的函數應用程式 (耗用量) 。 此命令也會建立函數應用程式執行所在的新取用方案。
+
+    ```azurecli-interactive
+    az functionapp create --resource-group <MY_RESOURCE_GROUP> --name <NEW_CONSUMPTION_APP_NAME> --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --storage-account <STORAGE_NAME>
+    ```
+
+1. 執行下列命令，將現有的函式應用程式遷移至新的耗用量方案。
+
+    ```azurecli-interactive
+    az functionapp update --name <MY_APP_NAME> --resource-group <MY_RESOURCE_GROUP> --plan <NEW_CONSUMPTION_PLAN>
+    ```
+
+1. 刪除您在步驟1中建立的函式應用程式，因為您只需要為了執行現有的函數應用程式所建立的計畫。
+
+    ```azurecli-interactive
+    az functionapp delete --name <NEW_CONSUMPTION_APP_NAME> --resource-group <MY_RESOURCE_GROUP>
+    ```
+
+1. 如果您不再需要先前的高階函式應用程式方案，請在確認您已成功遷移至新的函式應用程式計畫之後，刪除原始函數應用程式方案。 請注意，如果未刪除方案，您仍需支付 Premium 方案的費用。 執行下列命令，以取得資源群組中所有 Premium 方案的清單。
+
+    ```azurecli-interactive
+    az functionapp plan list --resource-group <MY_RESOURCE_GROUP> --query "[?sku.family=='EP'].{PlanName:name,Sites:numberOfSites}" -o table
+    ```
+
+1. 執行下列命令，以刪除您從遷移的高階方案。
+
+    ```azurecli-interactive
+    az functionapp plan delete --name <PREMIUM_PLAN> --resource-group <MY_RESOURCE_GROUP>
+    ```
 
 ## <a name="platform-features"></a>平台功能
 

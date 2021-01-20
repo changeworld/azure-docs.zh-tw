@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.date: 12/09/2020
-ms.openlocfilehash: ab772043c681684836e3c488419584d94dd0b45a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: c7a0be6f1d402cc994532ab4bc5a5d0ea39bc8b7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220638"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599043"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>規劃和管理 Azure Synapse Analytics 的成本
 
@@ -20,7 +20,7 @@ ms.locfileid: "98220638"
 
 在您開始使用 Azure Synapse 資源之後，請使用成本管理功能來設定預算和監視成本。 您也可以查看預測成本，並找出花費趨勢來識別您可能想要採取行動的領域。Azure Synapse 的成本只是您 Azure 帳單中每月成本的一部分。 雖然本文說明如何規劃和管理 Azure Synapse 的成本，但您必須支付 Azure 訂用帳戶中使用的所有 Azure 服務和資源的費用，包括協力廠商服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 成本管理中的成本分析支援大部分的 Azure 帳戶類型，但並非全部。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本資料，您至少需要 Azure 帳戶的讀取存取權。 如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
@@ -48,9 +48,9 @@ Azure Synapse 有各種不同費用的資源，如下列成本預估中所示。
 
 - Data Lake Storage Gen2
 
-### <a name="using-monetary-credit-with-azure-synapse"></a>使用 Azure Synapse 的貨幣點數 
+### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>使用 azure Synapse 的 Azure 預付款點數 
 
-您可以使用 EA 預付金點數來支付 Azure Synapse 費用。 不過，您無法使用 EA 預付金點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
+您可以使用 Azure 預付金支付 Azure Synapse 費用 (先前稱為預付金) 點數。 不過，您無法使用 Azure 預付點數來支付協力廠商產品和服務（包括來自 Azure Marketplace 的產品和服務）的費用。
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>在 Azure 入口網站中檢閱預估成本
 

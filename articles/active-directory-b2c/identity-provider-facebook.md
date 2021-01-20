@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 02c3890a9aca03d9d79b55098297174401cab37d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537952"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598868"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定註冊，並以 Facebook 帳戶登入
 
@@ -60,7 +60,7 @@ ms.locfileid: "98537952"
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-facebook-account-as-an-identity-provider"></a>將 Facebook 帳戶設為識別提供者
+## <a name="configure-facebook-as-an-identity-provider"></a>將 Facebook 設定為身分識別提供者
 
 1. 以 Azure AD B2C 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 選取頂端功能表中的 [目錄 + 訂用帳戶] 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
@@ -71,11 +71,21 @@ ms.locfileid: "98537952"
 1. 在 [用戶端密碼] 中，輸入您記下的應用程式祕密。
 1. 選取 [儲存]。
 
+## <a name="add-facebook-identity-provider-to-a-user-flow"></a>將 Facebook 身分識別提供者新增至使用者流程 
+
+1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
+1. 按一下您想要新增 Facebook 身分識別提供者的使用者流程。
+1. 在 **社交識別提供者** 底下，選取 **Facebook**。
+1. 選取 [儲存]  。
+1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
+1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
+1. 按一下 [**執行使用者流程**]
+
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
 
-## <a name="add-facebook-as-an-identity-provider"></a>將 Facebook 新增為識別提供者
+## <a name="configure-a-facebook-account-as-an-identity-provider"></a>將 Facebook 帳戶設為識別提供者
 
 1. 在 `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** 檔案中，將 `client_id` 的值取代為 Facebook 應用程式識別碼：
 
@@ -85,24 +95,6 @@ ms.locfileid: "98537952"
      <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
        <Item Key="client_id">00000000000000</Item>
    ```
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-facebook-identity-provider-to-a-user-flow"></a>將 Facebook 身分識別提供者新增至使用者流程 
-
-1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
-1. 按一下您想要新增 Facebook 身分識別提供者的使用者流程。
-1. 在 **社交識別提供者** 底下，選取 **Facebook**。
-1. 選取 [儲存]。
-1. 若要測試您的原則，請選取 [ **執行使用者流程**]。
-1. 針對 [ **應用程式**]，選取您先前註冊的 web 應用程式（名為 *testapp1-pre-production* ）。 **Reply URL** 應顯示 `https://jwt.ms`。
-1. 按一下 [**執行使用者流程**]
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="upload-and-test-the-policy"></a>上傳並測試原則
 

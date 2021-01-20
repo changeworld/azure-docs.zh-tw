@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 14e53efb7be9eef3ca388e6524e5ffd678671cd0
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251636"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601299"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>規劃和管理 Azure Blob 儲存體的成本
 
@@ -41,7 +41,7 @@ ms.locfileid: "98251636"
 4. 修改其餘的選項以查看其對您預估的影響。
 
    > [!NOTE]
-   > 您可以使用 Azure Enterprise 合約預付金點數來支付 Azure Blob 儲存體費用。 不過，您無法使用預付金點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
+   > 您可以使用 Azure 預付金來支付 Azure Blob 儲存體費用， (先前稱為預付金) 點數。 不過，您無法使用 Azure 預付點數來支付協力廠商產品和服務（包括來自 Azure Marketplace 的產品和服務）的費用。
 
 ## <a name="optimize-costs"></a>將成本優化
 

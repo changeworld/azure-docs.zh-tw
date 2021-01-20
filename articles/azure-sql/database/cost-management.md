@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: sql-database
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 19531b9d0019fb000efe5aeb2d1b9fed34ce23f1
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d36166a67e683dd7f15eef18d589562b39ba568
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253326"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600629"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>規劃和管理 Azure SQL Database 的成本
 
@@ -67,7 +67,7 @@ Azure SQL Database 會在 Azure 基礎結構上執行，此基礎結構會在您
 
 ### <a name="using-monetary-credit-with-azure-sql-database"></a>搭配 Azure SQL Database 使用貨幣點數
 
-您可以使用 EA 預付金點數來支付 Azure SQL Database 費用。 不過，您無法使用 EA 預付金點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
+您可以使用 Azure 預付金支付 Azure SQL Database 費用 (之前稱為預付金) 點數。 不過，您無法使用 Azure 預付點數來支付協力廠商產品和服務（包括來自 Azure Marketplace 的產品和服務）的費用。
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>在 Azure 入口網站中檢閱預估成本
 

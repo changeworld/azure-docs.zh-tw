@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/03/2019
 author: christopheranderson
 ms.author: chrande
-ms.openlocfilehash: 3f5996b281c1985747f754e3796e9fb84f90fdd3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0442d21aebe1cf577c50d14a5aeff40bd1f6cd9c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356955"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600526"
 ---
 # <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin 伺服器回應標頭
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -36,13 +36,12 @@ ms.locfileid: "93356955"
 
 ## <a name="status-codes"></a>狀態碼
 
-伺服器傳回的最常見狀態碼如下所示。
+伺服器針對 status 屬性所傳回的最常見程式碼如下所 `x-ms-status-code` 示。
 
 | 狀態 | 說明 |
 | --- | --- |
 | **401** | `"Unauthorized: Invalid credentials provided"`當驗證密碼不符合 Cosmos DB 帳戶金鑰時，就會傳回錯誤訊息。 流覽至您在 Azure 入口網站中的 Cosmos DB Gremlin 帳戶，並確認金鑰正確無誤。|
 | **404** | 嘗試同時刪除和更新相同邊緣或頂點的平行作業。 錯誤訊息 `"Owner resource does not exist"` 表示在 `/dbs/<database name>/colls/<collection or graph name>` 格式的連線參數中，指定的資料庫或集合不正確。|
-| **408** | `"Server timeout"` 指出遍歷花費的時間超過 **30 秒** ，且伺服器已取消。 藉由在每個回合躍點上篩選頂點或邊緣來縮小搜尋範圍，以優化您的周遊以快速執行。|
 | **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."`通常，當頂點或邊緣的識別碼已存在圖形中時，就會發生這種情形。| 
 | **412** | 狀態碼會以錯誤訊息來求 `"PreconditionFailedException": One of the specified pre-condition is not met` 。 此錯誤表示讀取邊緣或頂點，並在修改後將其寫回存放區之間的開放式並行存取控制違規。 例如，在發生此錯誤時，最常見的情況是屬性修改 `g.V('identifier').property('name','value')` 。 Gremlin 引擎會讀取頂點、加以修改，並將其寫回。 如果有另一個在平行嘗試寫入相同頂點或邊緣的執行中，則會收到此錯誤。 應用程式應該再次將遍歷提交到伺服器。| 
 | **429** | 要求已節流處理，並且應該在 **x-ms-retry-after-ms** 的值之後重試| 
@@ -53,6 +52,7 @@ ms.locfileid: "93356955"
 | **1004** | 此狀態碼表示圖形要求格式不正確。 當要求無法還原序列化、非實值型別正在還原序列化為實數值型別或未受支援的 gremlin 作業時，要求可能會格式不正確。 應用程式不應該重試要求，因為它將不會成功。 | 
 | **1007** | 通常會傳回此狀態碼，並顯示錯誤訊息 `"Could not process request. Underlying connection has been closed."` 。 如果用戶端驅動程式嘗試使用由伺服器關閉的連線，就可能發生這種情況。 應用程式應該在不同的連接上重試此操作。
 | **1008** | Cosmos DB Gremlin server 可以終止連線，以重新平衡叢集中的流量。 用戶端驅動程式應該會處理這種情況，並只使用即時連線將要求傳送至伺服器。 有時用戶端驅動程式可能不會偵測到連接已關閉。 當應用程式遇到錯誤時， `"Connection is too busy. Please retry after sometime or open more connections."` 應該在不同的連接上重試遍歷。
+| **1009** | 作業未在分配的時間內完成，且伺服器已取消。 藉由在每個回合躍點上篩選頂點或邊緣來縮小搜尋範圍，以優化您的周遊以快速執行。 要求超時預設值為 **60 秒**。 |
 
 ## <a name="samples"></a>範例
 

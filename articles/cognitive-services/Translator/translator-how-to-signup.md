@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6773c6b29ecfd8354c54a6214cfe0b4050edcd38
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244307"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602655"
 ---
 # <a name="how-to-sign-up-for-translator"></a>如何註冊翻譯工具
 
@@ -30,18 +30,18 @@ ms.locfileid: "88244307"
 
 1. 選取 [+ 建立資源]。
 1. 在 [ **搜尋 Marketplace** 搜尋] 方塊中，輸入 **Translator** ，然後從結果中選取。
-1. 選取 [建立]**** 定義訂用帳戶的詳細資料。
-1. 從 [定價層]**** 清單中，選取最符合您需求的定價層。
+1. 選取 [建立] 定義訂用帳戶的詳細資料。
+1. 從 [定價層] 清單中，選取最符合您需求的定價層。
     1. 每個訂用帳戶都有一個免費層。 免費層與付費方案的特色與功能都相同，但是不會過期。
     1. 您的帳戶只能有一個免費的訂用帳戶。
-1. 選取 [建立]**** 即可完成建立訂用帳戶。
+1. 選取 [建立] 即可完成建立訂用帳戶。
 
 ## <a name="authentication-key"></a>驗證金鑰
 
 當您註冊翻譯工具時，您會取得訂用帳戶獨有的個人化存取金鑰。 每次呼叫翻譯工具都需要此金鑰。
 
 1. 先選取適當的訂用帳戶，擷取驗證金鑰。
-1. 在訂用帳戶詳細資料的 [資源管理]**** 區段中，選取 [金鑰]****。
+1. 在訂用帳戶詳細資料的 **資源管理** 區段中，選取 **金鑰和端點**。
 1. 複製訂用帳戶所列的其中一個金鑰。
 
 ## <a name="learn-test-and-get-support"></a>了解、測試和取得支援

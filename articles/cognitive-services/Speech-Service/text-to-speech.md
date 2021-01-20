@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: 文字轉換語音
-ms.openlocfilehash: af0c9338cb9661402c3a76bab55f34b01304c7b6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54db794d4e9cf0cd2a049a865f2e7bb52698a4bd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024512"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599545"
 ---
 # <a name="what-is-text-to-speech"></a>什麼是文字轉換語音？
 
@@ -39,7 +39,7 @@ ms.locfileid: "95024512"
 
 * 類神經語音-深度類神經網路是用來克服傳統語音合成的限制，以及說出語言的壓力和聲調。 韻律預測和語音合成會同時執行，這會導致更流暢且自然的輸出。 類神經語音可以用來與聊天機器人和語音助理互動，使其更自然且吸引人，將數位文字（例如電子書）轉換成有聲書;，以及增強汽車內的導覽系統。 使用類似人類的自然韻律和清楚表達的單字，類神經語音可大幅減少在與 AI 系統互動時的聆聽疲勞。 如需神經語音的完整清單，請參閱 [支援的語言](language-support.md#text-to-speech)。
 
-* 語音合成標記語言 (SSML) -用來自訂語音轉換文字輸出的 XML 標記語言。 有了 SSML，您可以調整音調、新增暫停、改善發音、加速或減緩說話率、增加或減少音量，以及將多個聲音屬性設定為單一檔。 請參閱 [SSML](speech-synthesis-markup.md)。
+* 使用 SSML 語音合成標記語言來調整說話樣式 (SSML) 是用來自訂語音轉換文字輸出的 XML 標記語言。 有了 SSML，您可以調整音調、新增暫停、改善發音、加速或減緩說話率、增加或減少音量，以及將多個聲音屬性設定為單一檔。 請參閱 [如何](speech-synthesis-markup.md) 調整說話樣式。
 
 ## <a name="get-started"></a>開始使用
 
@@ -75,7 +75,7 @@ ms.locfileid: "95024512"
 - [語音 SDK](speech-sdk.md)
 - [REST API：文字轉語音](rest-text-to-speech.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [取得免費的語音服務訂用帳戶](overview.md#try-the-speech-service-for-free)
 - [取得語音 SDK](speech-sdk.md)

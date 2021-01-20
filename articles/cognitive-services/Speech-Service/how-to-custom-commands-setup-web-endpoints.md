@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025886"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602154"
 ---
 # <a name="set-up-web-endpoints"></a>設定 Web 端點
 
@@ -23,7 +23,7 @@ ms.locfileid: "95025886"
 
 - 在自訂命令應用程式中設定 Web 端點
 - 在自訂命令應用程式中呼叫 Web 端點
-- 接收 Web 端點回應 
+- 接收 Web 端點回應
 - 將 Web 端點回應整合到自訂 JSON 承載、進行傳送，並從 C# UWP 語音 SDK 用戶端應用程式將其視覺化
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -35,7 +35,7 @@ ms.locfileid: "95025886"
 
 ## <a name="setup-web-endpoints"></a>設定 Web 端點
 
-1. 開啟您先前建立的自訂命令應用程式。 
+1. 開啟您先前建立的自訂命令應用程式。
 1. 移至 [Web 端點]，然後按一下 [新增 Web 端點]。
 
    > [!div class="mx-imgBorder"]
@@ -61,7 +61,7 @@ ms.locfileid: "95025886"
 1. 移至 [TurnOnOff] 命令、選取 [完成規則] 底下的 [ConfirmationResponse]，然後選取 [新增動作]。
 1. 在 [新增動作 - 類型] 底下，選取 [呼叫 Web 端點]
 1. 在 [編輯動作 - 端點] 中，選取 [UpdateDeviceState]，這是我們所建立的 Web 端點。  
-1. 在 [設定] 中，輸入下列值： 
+1. 在 [設定] 中，輸入下列值：
    > [!div class="mx-imgBorder"]
    > ![呼叫 Web 端點動作參數](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
@@ -75,16 +75,16 @@ ms.locfileid: "95025886"
     > - 只有範例端點才需要建議的查詢參數
 
 1. 在 [成功時 - 要執行的動作] 中，選取 [傳送語音回應]。
-    
+
     在 [簡單編輯器] 中，輸入 `{SubjectDevice} is {OnOff}`。
-   
+
    > [!div class="mx-imgBorder"]
    > ![顯示 [執行中] 動作的螢幕擷取畫面。](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | 設定 | 建議的值 | 描述 |
    | ------- | --------------- | ----------- |
    | 要執行的動作 | 傳送語音回應 | 針對 Web 端點的要求成功時所要執行的動作 |
-   
+
    > [!NOTE]
    > - 您也可以使用 `{YourWebEndpointName.FieldName}` 直接存取 HTTP 回應中的欄位。 例如：`{UpdateDeviceState.TV}`
 
@@ -101,7 +101,7 @@ ms.locfileid: "95025886"
 
    > [!NOTE]
    > - `{WebEndpointErrorMessage}` 是選擇性的。 如果您不想要公開任何錯誤訊息，則可以將其移除。
-   > - 在我們的範例端點內，我們會傳回 HTTP 回應，以及常見錯誤的詳細錯誤訊息，例如遺漏標頭參數。 
+   > - 在我們的範例端點內，我們會傳回 HTTP 回應，以及常見錯誤的詳細錯誤訊息，例如遺漏標頭參數。
 
 ### <a name="try-it-out-in-test-portal"></a>在測試入口網站中試用
 - 成功時的回應\
@@ -119,7 +119,7 @@ ms.locfileid: "95025886"
 不過，在大部分的情況下，您只想要在 Web 端點呼叫成功時，才將活動傳送至用戶端應用程式。 在此範例中，這是當裝置的狀態成功更新時。
 
 1. 刪除您先前新增的 **將活動傳送至用戶端** 動作。
-1. 編輯呼叫 Web 端點： 
+1. 編輯呼叫 Web 端點：
     1. 在 [設定] 中，確定 [查詢參數] 是 `item={SubjectDevice}&&value={OnOff}`
     1. 在 [成功時] 中，將 [要執行的動作] 變更為 [將活動傳送至用戶端]
     1. 將下列 JSON 複製到 [活動內容]
@@ -133,7 +133,6 @@ ms.locfileid: "95025886"
       }
     }
    ```
-   
 現在，只有當針對 Web 端點的要求成功時，您才會將活動傳送至用戶端。
 
 ### <a name="create-visuals-for-syncing-device-state"></a>建立用於同步裝置狀態的視覺效果
@@ -147,7 +146,7 @@ ms.locfileid: "95025886"
         .........../>
 ```
 
-### <a name="sync-device-state"></a>同步裝置狀態 
+### <a name="sync-device-state"></a>同步裝置狀態
 
 在 `MainPage.xaml.cs` 中，新增參考 `using Windows.Web.Http;`。 將下列程式碼新增至 `MainPage` 類別。 這個方法會將 GET 要求傳送至範例端點，並擷取應用程式目前的裝置狀態。 請務必將 `<your_app_name>` 變更為您在自訂命令 Web 端點的 **標頭** 中所使用的內容
 
@@ -157,7 +156,7 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
     //Create an HTTP client object
     var httpClient = new HttpClient();
 
-    //Add a user-agent header to the GET request. 
+    //Add a user-agent header to the GET request.
     var your_app_name = "<your-app-name>";
 
     Uri endpoint = new Uri("https://webendpointexample.azurewebsites.net/api/DeviceState");

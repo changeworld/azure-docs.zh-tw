@@ -5,12 +5,12 @@ ms.custom: subject-cost-optimization
 ms.service: app-service
 ms.topic: how-to
 ms.date: 01/01/2021
-ms.openlocfilehash: f92b766fc1122456fda70d2deff81fa80a02d159
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 85035ff894127df4e9eb8334702fd9546d7a63c3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250106"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598707"
 ---
 # <a name="plan-and-manage-costs-for-azure-app-service"></a>規劃和管理 Azure App Service 的成本
 
@@ -61,7 +61,7 @@ App Service 的其他成本資源 (請參閱 [App Service 定價](https://azure.
 
 ### <a name="using-monetary-credit-with-azure-app-service"></a>搭配 Azure App Service 使用貨幣點數
 
-您可以使用 EA 預付金點數來支付 Azure App Service 費用。 不過，您無法使用 EA 預付金點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
+您可以使用 Azure 預付金支付 Azure App Service 費用 (之前稱為預付金) 點數。 不過，您無法使用 Azure 預付點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
 
 ## <a name="estimate-costs"></a>預估成本
 

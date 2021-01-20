@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822381"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600388"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商業市集交易功能
 
@@ -160,7 +160,7 @@ BYOL 具有下列成本結構：
 
 **信用卡和每月發票** - 客戶也可以使用信用卡和每月發票來付款。 在此情況下，您的軟體授權費用的計費方式會如同 Enterprise 合約案例，作為分項成本獨立於任何 Azure 特定的使用量成本。
 
-**免費點數與金錢履約承諾** - 有些客戶選擇要使用金錢履約承諾，在 Enterprise 合約中預付給 Azure，或已收到用於 Azure 的免費點數。 雖然可以使用這些點數來支付 Azure 使用量，但不能用它們支付發行者軟體授權費用。
+**免費點數和 Azure 預付** 金–某些客戶選擇預付 Azure 的 azure 預付款 (先前稱為「預付金) 」 Enterprise 合約或已提供免費信用額度供 azure 使用。 雖然可以使用這些點數來支付 Azure 使用量，但不能用它們支付發行者軟體授權費用。
 
 **帳單和集合** –發行者軟體授權計費會使用客戶選取的發票方法來顯示，並遵循發票付費時間軸。 系統會針對市集軟體授權，向沒有 Enterprise 合約的客戶每月計費。 系統會透過每季呈現的發票，向有 Enterprise 合約的客戶計費。
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 81d9a6bcbd910a60e1f659e430bbe527eb3077c6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5be02ff698dac02d702e47f8929c6f8ddf2adbb7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251738"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602542"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>規劃和管理 Azure Machine Learning 的成本
 
@@ -57,7 +57,7 @@ Azure Machine Learning 會在 Azure 基礎結構上執行，此基礎結構會�
 
 ### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>通常會隨 Azure Machine Learning 累積的成本
 
-當您建立 Azure Machine Learning 工作區的資源時，也會建立其他 Azure 服務的資源。 分別是：
+當您建立 Azure Machine Learning 工作區的資源時，也會建立其他 Azure 服務的資源。 這些包括：
 
 * [Azure Container Registry](https://azure.microsoft.com/pricing/details/container-registry?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 基本帳戶
 * [Azure 區塊 Blob 儲存體](https://azure.microsoft.com/pricing/details/storage/blobs?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) (一般用途 v1) 
@@ -81,9 +81,9 @@ ws.delete(delete_dependent_resources=True)
 
 如果您在工作區中建立 Azure Kubernetes Service (AKS) ，或是將任何計算資源附加到您的工作區，則必須在 [Azure 入口網站](https://portal.azure.com)中個別刪除它們。
 
-### <a name="using-monetary-credit-with-azure-machine-learning"></a>搭配 Azure Machine Learning 使用貨幣點數
+### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>使用 Azure Machine Learning 的 Azure 預付款點數
 
-您可以使用 EA 預付金點數來支付 Azure Machine Learning 費用。 不過，您無法使用 EA 預付金點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
+您可以使用 Azure 預付金支付 Azure Machine Learning 費用 (之前稱為預付金) 點數。 不過，您無法使用 Azure 預付款來支付協力廠商產品和服務（包括來自 Azure Marketplace 的產品）的費用。
 
 
 ## <a name="create-budgets"></a>建立預算

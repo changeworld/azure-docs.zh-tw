@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/15/2021
-ms.openlocfilehash: 9291689b362b5cbe651a72220196dd30b40745cf
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 9a43318ed935dd1e71b6da75c9f078fbebbd29eb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540550"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599019"
 ---
 # <a name="error-investigation-using-the-dashboard"></a>使用儀表板進行錯誤調查
 
@@ -53,6 +53,9 @@ ms.locfileid: "98540550"
     ![顯示受影響電腦的螢幕擷取畫面。](media/itsmc-resync-servicenow/itsm-dashboard-impacted-comp.png)
 3. 連接器狀態：圖形和下表包含連接器狀態的相關訊息。 按一下資料表中的資料列上的圖表，即可取得有關連接器狀態之訊息的進一步詳細資料。
     如果您想要查看所有清單，且您可以按一下 [查看全部]，資料表會包含有限的資料列數目。
+
+    您可以在此查看資料表中有關訊息的詳細[資料。](itsmc-dashboard-errors.md)
+
     ![顯示連接器狀態的螢幕擷取畫面。](media/itsmc-resync-servicenow/itsm-dashboard-connector-status.png)
 4. 警示規則：表格包含偵測到的警示規則數目的資訊。
     藉由按一下資料表中的資料列，您可以取得所偵測到之規則的進一步詳細資料。

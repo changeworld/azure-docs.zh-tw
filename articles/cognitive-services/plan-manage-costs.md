@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 4fe06edbb3e02f23ef56a3e7fff848682e36e3af
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 925a092eb67fa459213a37df0fc6b3f7a1b8a0fb
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251313"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602353"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>規劃和管理 Azure 認知服務的成本
 
@@ -60,9 +60,9 @@ ms.locfileid: "98251313"
 - [執行時間的 Azure App Service () ](https://azure.microsoft.com/pricing/details/app-service/)
 - [Azure 認知搜尋 (資料) ](https://azure.microsoft.com/pricing/details/search/)
 
-### <a name="using-monetary-credit-with-cognitive-services"></a>使用認知服務的貨幣點數
+### <a name="using-azure-prepayment-credit-with-cognitive-services"></a>使用認知服務的 Azure 預付款點數
 
-您可以使用 EA 預付金點數支付認知服務費用。 不過，您無法使用 EA 預付金點數來支付協力廠商產品和服務的費用，包括來自 Azure Marketplace 的產品和服務。
+您可以使用 Azure 預付金支付認知服務費用， (先前稱為預付金) 點數。 不過，您無法使用 Azure 預付點數來支付協力廠商產品和服務（包括來自 Azure Marketplace 的產品和服務）的費用。
 
 ## <a name="create-budgets"></a>建立預算
 

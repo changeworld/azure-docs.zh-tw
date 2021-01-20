@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628283"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600402"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>如何規劃虛擬機器供應專案
 
@@ -73,7 +73,7 @@ VM 供應專案至少需要一個方案。 方案會定義方案範圍和限制�
 使用隨用隨付或自備授權 (BYOL) 授權模型，即可完全啟用商務的 Vm。 Microsoft 會主控商務交易，並代表您向客戶收費。 您獲得的好處是，可以使用客戶與 Microsoft 之間慣用的付款關係，包括任何 Enterprise 合約。 如需詳細資訊，請參閱 [商業 marketplace 交易功能](./marketplace-commercial-transaction-capabilities-and-considerations.md)。
 
 > [!NOTE]
-> 與 Enterprise 合約相關聯的貨幣承諾可用於 VM 的 Azure 使用量，但不能用於您的軟體授權費用。
+> 先前稱為「預付金」 () 與 Enterprise 合約相關聯的 Azure 預付款，可用於 VM 的 Azure 使用量，但不能用於您的軟體授權費用。
 
 ### <a name="licensing-options"></a>授權選項
 

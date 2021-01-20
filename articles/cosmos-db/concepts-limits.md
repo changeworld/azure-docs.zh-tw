@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.openlocfilehash: 793ff9eedb747da0edcbbf2df50b62f06f407892
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.date: 01/19/2021
+ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247418"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598679"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -37,7 +37,7 @@ ms.locfileid: "98247418"
 | 每個容器的儲存體上限 | 無限制 |
 | 每個資料庫的儲存體上限 | 無限制 |
 | 每個帳戶的附件大小上限 (附件功能即將淘汰)  | 2 GB |
-| 每 1 GB 需要的最小 RU/秒 | 10 RU/秒<br>**注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能符合「[高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格 |
+| 每 1 GB 需要的最小 RU/秒 | 10 RU/秒<br>**注意：** 如果您的帳戶符合「[高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格，此最小值就會降低 |
 
 > [!NOTE]
 > 若要了解管理工作負載 (所含分割區索引鍵需要更高儲存體或輸送量限制) 的最佳做法，請參閱[建立綜合分割區索引鍵](synthetic-partition-keys.md)。
@@ -60,7 +60,7 @@ Cosmos 容器 (或共用輸送量資料庫) 的最小輸送量必須為 400 RU/�
 
 範例：假設您的容器布建了 400 RU/秒和 0 GB 的儲存體。 您會將輸送量增加到 50000 RU/秒，並匯入 20 GB 的資料。 最小 RU/秒現在 `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 ru/秒。 經過一段時間後，儲存體會成長至 200 GB。 最小 RU/秒現在 `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 ru/秒。 
 
-**注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能會符合「 [高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格。
+**注意：** 如果您的帳戶符合「 [高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格，則每 GB 儲存空間的最小輸送量為 10 RU/秒。
 
 #### <a name="minimum-throughput-on-shared-throughput-database"></a>共用輸送量資料庫的最小輸送量 
 若要以手動輸送量估計共用輸送量資料庫所需的最小輸送量，請尋找最大值：
@@ -72,7 +72,7 @@ Cosmos 容器 (或共用輸送量資料庫) 的最小輸送量必須為 400 RU/�
 
 範例：假設您的資料庫布建了 400 RU/秒、15 GB 的儲存體，以及10個容器。 最小 RU/秒為 `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/秒。 如果資料庫中有30個容器，則最小 RU/秒會是 `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/秒。 
 
-**注意：** 如果您的容器或資料庫包含超過 1 TB 的資料，您的帳戶可能會符合「 [高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格。
+**注意：** 如果您的帳戶符合「 [高儲存體/低輸送量」計畫](set-throughput.md#high-storage-low-throughput-program)的資格，則每 GB 儲存空間的最小輸送量為 10 RU/秒。
 
 總而言之，以下是佈建的 RU 下限。 
 
