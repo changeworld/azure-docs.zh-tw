@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 434917c1cee26a4a8eeb7f27808e3fcb487f3f55
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: aac0139e09866ce44d25989119b2eafb31e76961
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350036"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610449"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>存取 Azure Data Lake Storage Gen1 的診斷記錄
 了解如何啟用 Azure Data Lake Storage Gen1 帳戶的診斷記錄，以及如何檢視針對您帳戶收集的記錄。
@@ -50,7 +50,7 @@ ms.locfileid: "96350036"
      
    * 指定要取得稽核記錄、要求記錄或兩者。
    * 指定的資料的保留天數。 只有在您使用 Azure 儲存體帳戶來封存記錄資料時，才適用保留期。
-   * 按一下 [儲存]。
+   * 按一下 [檔案] 。
 
 一旦您啟用了診斷設定，即可在 [診斷記錄]  索引標籤中查看記錄。
 
@@ -136,6 +136,8 @@ ms.locfileid: "96350036"
 | ClientRequestId |String |可唯一識別此要求的識別碼 |
 | StartTime |String |伺服器接收到要求的時間 |
 | EndTime |String |伺服器傳送回應的時間 |
+| StoreIngressSize |long |輸入至 Data Lake Store 的大小（以位元組為單位） |
+| StoreEgressSize |long |從 Data Lake Store 輸出的位元組大小 |
 
 ### <a name="audit-logs"></a>稽核記錄
 以下是採用 JSON 格式之稽核記錄中的範例項目。 每個 blob 都有一個名為「 **記錄** 」的根物件，其中包含記錄物件的陣列。

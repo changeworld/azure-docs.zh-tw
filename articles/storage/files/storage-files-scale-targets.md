@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e10f45af89e19f6fe62ff729f96d870e008c96ec
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995440"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611095"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure 檔案服務延展性和效能目標
 
@@ -69,7 +69,7 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 
 在下列兩個階段中，Azure 檔案同步必須達到高效能：
 
-1. **初始一次性佈建**：若要讓初始佈建達到最佳效能，請參閱[透過 Azure 檔案同步上架](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync)以取得最佳部署的詳細資料。
+1. **初始一次性佈建**：若要讓初始佈建達到最佳效能，請參閱 [透過 Azure 檔案同步上架](storage-sync-files-deployment-guide.md#onboarding-with-azure-file-sync)以取得最佳部署的詳細資料。
 2. **持續同步**：在 Azure 檔案共用中初次植入資料之後，Azure 檔案同步會將多個端點保持在同步狀態。
 
 為了協助您規劃每個階段的部署，以下提供在採用某種組態的系統上進行內部測試期間所觀察到的結果
@@ -87,16 +87,16 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 | 物件數目 | 2500 萬個物件 |
 | 資料集大小| ~ 4.7 TiB |
 | 平均檔案大小 | ~ 200 KiB (最大的檔案： 100 GiB)  |
-| 初始雲端變更列舉 | 每秒7個物件  |
+| 初始雲端變更列舉 | 每秒 20 個物件  |
 | 上傳輸送量 | 每個同步處理群組每秒20個物件 |
 | 命名空間下載輸送量 | 每秒 400 個物件 |
 
 ### <a name="initial-one-time-provisioning"></a>初始一次性佈建
 
 **初始雲端變更列舉**：建立新的同步群組時，初始雲端變更列舉是將執行的第一個步驟。 在此程式中，系統會列舉 Azure 檔案共用中的所有專案。 在此過程中，將不會有任何同步活動，也就是沒有任何專案會從雲端端點下載到伺服器端點，而且不會從伺服器端點上傳任何專案到雲端端點。 完成初次雲端變更列舉之後，將會繼續同步活動。
-效能的速率是每秒7個物件。 客戶可以透過判斷雲端共用中的專案數，並使用下列 homebrew 公式來取得時間（以天為單位），以預估完成初始雲端變更列舉所需要的時間。 
+效能的速率是每秒20個物件。 客戶可以透過判斷雲端共用中的專案數，並使用下列 homebrew 公式來取得時間（以天為單位），以預估完成初始雲端變更列舉所需要的時間。 
 
-   **初始雲端列舉的時間 (天) = 雲端端點中的物件 (數目) / (7 * 60 * 60 * 24) **
+   **初始雲端列舉的時間 (天) = 雲端端點中的物件 (數目) / (20 * 60 * 60 * 24)**
 
 **命名空間下載輸送量** 當新的伺服器端點新增至現有的同步處理群組時，Azure 檔案同步代理程式不會從雲端端點下載任何檔案內容。 它會先同步完整命名空間，然後再觸發背景回復以下載檔案；有可能是下載完整檔案，或者，如果已啟用雲端分層處理，則會根據伺服器端點上設定的雲端分層處理原則進行下載。
 
@@ -121,5 +121,5 @@ Azure 檔案同步的設計目標是無限制的使用方式，但無限制的�
 
 ## <a name="see-also"></a>另請參閱
 
-- [規劃 Azure 檔案部署](storage-files-planning.md)
+- [規劃 Azure 檔案服務部署](storage-files-planning.md) (機器翻譯)
 - [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)

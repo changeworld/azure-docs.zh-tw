@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: b53501bf5aa4bafb0229158edfe0cb244116b909
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 89685d1b8c3a57fa142bbbfd1114f9aa0ff0c400
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600845"
+ms.locfileid: "98611112"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS 保護標準常見問題
 
@@ -79,4 +79,7 @@ DDoS 保護計劃每月固定收取每月 $2944 的費用，最多可涵蓋100�
 
 ## <a name="how-long-does-it-take-for-the-metrics-to-load-on-portal"></a>在入口網站上載入計量需要多久的時間？
 在5分鐘內，應會在入口網站上顯示度量。 如果您的資源受到攻擊，則在5-7 分鐘內，會在入口網站上開始顯示其他計量。 
+
+## <a name="does-the-service-store-customer-data"></a>服務是否會儲存客戶資料？
+否，Azure DDoS 保護不會儲存客戶資料。
     

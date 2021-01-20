@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ecea9dcd28aede92ef255bf002b9195ded43c68b
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 53093edb1d3c142336f06ec8544aaa7b55e37477
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296109"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611248"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
@@ -138,13 +138,14 @@ az aks get-versions --location eastus --output table
 
 |  K8s 版本 | 上游版本  | AKS 預覽  | AKS GA  | 生命週期結束 |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | Sep-19-19  | Jan 2019   | 三月2020  | Jan 2021 * | 
+| 1.16  | Sep-19-19  | Jan 2019   | 三月2020  | Jan 2021| 
 | 1.17  | Dec-09-19  | Jan 2019   | 2020年7月  | 1.20 GA | 
 | 1.18  | Mar-23-20  | 2020 年 5 月   | 2020年8月  | 1.21 GA | 
 | 1.19  | 8月-04-20  | Sep 2020   | 11月2020  | 1.22 GA | 
 | 1.20  | Dec-08-20  | Jan 2021   | 三月2021  | 1.23 GA |
+| 1.21  | Apr-08-21 * | 2021 年 5 月   | 2021年7月  | 1.24 GA |
 
-\* 由於假日季節的緣故，AKS 將從11月2020日到1月2021，延長1.16 的存留期。 [閱讀其他資訊](https://github.com/Azure/AKS/releases/tag/2020-10-12)。
+\* Kubernetes 1.21 上游版本可能會隨著上游行事曆的變更而變更。
 
 
 ## <a name="faq"></a>常見問題集
@@ -186,7 +187,7 @@ az aks get-versions --location eastus --output table
 
 略過多個版本只能在從不支援的版本升級回支援的版本時進行。 例如，從不支援的 *1.10. x* 升級 > 支援的 *1.15。 x* 可以完成。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需如何升級叢集的相關資訊，請參閱[升級 Azure Kubernetes Service (AKS) 叢集][aks-upgrade]。
 

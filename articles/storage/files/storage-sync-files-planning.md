@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 29f7f241f119ca7fab50409881b517961b00cf20
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492087"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610466"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>規劃 Azure 檔案同步部署
 
@@ -50,6 +50,9 @@ Azure 檔案同步部署有三個基礎管理物件：
 您必須先向儲存體同步服務註冊 Windows Server，才能在儲存體同步服務中建立同步群組。 這會建立 **已註冊的伺服器物件**，代表您的伺服器或叢集與儲存體同步服務之間的信任關係。 若要註冊儲存體同步服務，您必須先在伺服器上安裝 Azure 檔案同步代理程式。 一次只能向單一儲存體同步服務註冊個別伺服器或叢集。
 
 同步群組包含一個雲端端點或 Azure 檔案共用，以及至少一個伺服器端點。 伺服器端點物件所包含的設定，可設定 **雲端階層處理** 功能，以提供 Azure 檔案同步的快取功能。為了與 Azure 檔案共用同步，包含 Azure 檔案共用的儲存體帳戶必須與儲存體同步服務位於相同的 Azure 區域中。
+
+> [!Important]  
+> 您可以對同步群組中的任何雲端端點或伺服器端點進行變更，您的檔案將會與同步群組中的其他端點同步。 如果直接對雲端端點 (Azure 檔案共用) 進行變更，則必須先由 Azure 檔案同步變更偵測作業探索到該變更。 針對雲端端點的變更偵測作業，每隔 24 小時才會起始一次。 如需詳細資訊，請參閱 [Azure 檔案服務常見問題集](storage-files-faq.md#afs-change-detection)。
 
 ### <a name="management-guidance"></a>管理指導方針
 部署 Azure 檔案同步時，我們建議：

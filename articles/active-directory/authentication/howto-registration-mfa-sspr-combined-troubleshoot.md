@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 04/15/2020
+ms.date: 01/19/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ba1e280e3c14a24e33246799ca0d7ef8221294f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: db87887fc2b51c7cb8cb300eb8e711d3ae9b6ac8
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741689"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610774"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>疑難排解結合的安全性資訊註冊
 
@@ -24,7 +24,7 @@ ms.locfileid: "96741689"
 
 ## <a name="audit-logs"></a>稽核記錄
 
-記錄用於合併註冊的事件會在 Azure AD audit 記錄檔的 [驗證方法] 分類中。
+記錄用於合併註冊的事件，會在 Azure AD audit 記錄檔的驗證方法服務中。
 
 ![顯示註冊事件的 Azure AD Audit logs 介面](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "96741689"
 
 接下來的步驟可協助您復原使用者或使用者群組。
 
-#### <a name="prerequisites"></a>先決條件
+#### <a name="prerequisites"></a>必要條件
 
 1. 安裝適當的 Azure AD PowerShell 模組。 在 PowerShell 視窗中，執行下列命令來安裝模組：
 

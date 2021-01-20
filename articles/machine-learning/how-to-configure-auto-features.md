@@ -11,26 +11,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134410"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610296"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自動化機器學習中的資料特徵化
 
-
-
-瞭解 Azure Machine Learning 中的資料特徵化設定，以及如何針對 [自動化 ML 實驗](concept-automated-ml.md)自訂這些功能。
+瞭解 Azure Machine Learning 中的資料特徵化設定，以及如何針對 [自動化機器學習實驗](concept-automated-ml.md)自訂這些功能。
 
 ## <a name="feature-engineering-and-featurization"></a>功能工程和特徵化
 
-*特徵工程* 是使用資料的領域知識來建立功能的程式，以協助機器學習服務 (ML) 演算法來學習更好的學習。 在 Azure Machine Learning 中，會套用資料調整和正規化技術，讓特徵設計更容易。 這些技術和此功能工程統稱統稱在自動化機器學習或 *autoML* 實驗中 *特徵化*。
+定型資料包含資料列和資料行。 每個資料列都是觀察或記錄，而每個資料列的資料行都是描述每筆記錄的功能。 通常會選取最能將資料中的模式特性描述為建立預測模型的功能。
 
-## <a name="prerequisites"></a>Prerequisites
+雖然許多原始資料欄位都可以直接用來定型模型，但通常需要建立額外的 (設計) 功能，以提供更能區分資料模式的資訊。 此程式稱為 **特徵工程**，其中使用資料的領域知識來建立功能，進而協助機器學習服務演算法更好的學習。 
 
-本文假設您已經知道如何設定 AutoML 實驗。 如需設定的相關資訊，請參閱下列文章：
+在 Azure Machine Learning 中，會套用資料調整和正規化技術，讓特徵設計更容易。 在自動化 ML 實驗中，這些技術和此功能工程統稱稱為 **特徵化** 。
+
+## <a name="prerequisites"></a>必要條件
+
+本文假設您已經知道如何設定自動化 ML 實驗。 如需設定的相關資訊，請參閱下列文章：
 
 - 針對程式碼優先體驗： [使用適用于 Python 的 AZURE MACHINE LEARNING SDK 來設定自動化 ML 實驗](how-to-configure-auto-train.md)。
 - 針對低程式碼或無程式碼體驗： [使用 Azure Machine Learning Studio 建立、檢查和部署自動化機器學習模型](how-to-use-automated-ml-for-ml-models.md)。
@@ -46,7 +48,7 @@ ms.locfileid: "98134410"
 
 下表顯示 `featurization` [AutoMLConfig 類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中的已接受設定：
 
-|特徵化設定 | 描述|
+|特徵化設定 | 說明|
 ------------- | ------------- |
 |`"featurization": 'auto'`| 指定在前置處理過程中，會自動執行 [資料護欄](#data-guardrails) 和 [特徵化步驟](#featurization) 。 這是預設設定。|
 |`"featurization": 'off'`| 指定不會自動執行特徵化步驟。|
@@ -59,9 +61,9 @@ ms.locfileid: "98134410"
 下表摘要說明自動套用至您資料的技術。 這些技術適用于使用 SDK 或 studio 設定的實驗。 若要停用此行為，請 `"featurization": 'off'` 在物件中設定 `AutoMLConfig` 。
 
 > [!NOTE]
-> 如果您打算將 AutoML 建立的模型匯出至 [ONNX 模型](concept-onnx.md)，則 ONNX 格式僅支援以星號表示的特徵化選項 ( "*" ) 。 深入了解[將模型轉換為 ONNX](concept-automated-ml.md#use-with-onnx)。
+> 如果您打算將 AutoML 建立的模型匯出至 [ONNX 模型](concept-onnx.md)，則 ONNX 格式僅支援以星號表示的特徵化選項 ( "*" ) 。 深入了解[將模型轉換為 ONNX](how-to-use-automl-onnx-model-dotnet.md)。
 
-|特徵化 &nbsp; 步驟| 描述 |
+|特徵化 &nbsp; 步驟| 說明 |
 | ------------- | ------------- |
 |卸載 **高基數或沒有** 變異數功能 _ |從定型和驗證集卸載這些功能。 適用于所有遺漏值的功能，在所有資料列中都具有相同的值，或是具有高基數 (例如，雜湊、識別碼或 Guid) 。|
 |_*插補遺漏值**_ |若為數值特徵，則會以資料行中的平均值來插補。<br/><br/>針對類別功能，以最頻繁的值插補。|

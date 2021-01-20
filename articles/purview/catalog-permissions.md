@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e87c9efc910d08307d40d42e58f8272a01902a41
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96552060"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610364"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Azure 範疇資料平面中的角色型存取控制
 
@@ -23,7 +23,7 @@ ms.locfileid: "96552060"
 
 ## <a name="azure-purviews-pre-defined-data-plane-roles"></a>Azure 範疇的預先定義資料平面角色
 
-Azure 範疇會定義一組預先定義的資料平面角色，可用來控制誰可以存取 Azure 範疇中的內容。 這些角色包括：
+Azure 範疇會定義一組預先定義的資料平面角色，可用來控制誰可以存取 Azure 範疇中的內容。 這些角色如下：
 
 * **範疇資料讀取器角色** -擁有範疇入口網站的存取權，而且可以讀取 Azure 範疇中的所有內容（掃描系結除外）
 * **範疇資料編者角色** -擁有範疇入口網站的存取權，而且可以讀取 Azure 範疇中的所有內容（掃描系結除外）、可以編輯資產的相關資訊、編輯分類定義和詞彙，以及將分類和詞彙條款套用至資產。
@@ -31,9 +31,9 @@ Azure 範疇會定義一組預先定義的資料平面角色，可用來控制�
 
 ## <a name="understanding-how-to-use-azure-purviews-data-plane-roles"></a>瞭解如何使用 Azure 範疇的資料平面角色
 
-建立 Azure 範疇帳戶時，系統會將建立者視為同時位於範疇資料編者和範疇資料來源管理員角色中。 但是帳戶建立者未在角色存放區中指派給這些角色。 Azure 範疇會辨識主體是帳戶的建立者，並根據其身分識別將這些功能延伸至這些帳戶。
+建立 Azure 範疇帳戶時，系統會將建立者視為同時位於範疇資料編者和範疇資料來源管理員角色中。 不過，帳戶建立者並不會指派給角色存放區中的這些角色。 Azure Purview 會辨識主體是帳戶的建立者，並根據其身分識別將這些功能延伸至建立者。
 
-所有其他使用者只要放在其中一個角色內，就只能使用 Azure 範疇帳戶。 這表示在建立 Azure 範疇帳戶時，不會有帳戶，但建立者可以存取帳戶或使用其 Api，直到它們放入一或多個先前定義的角色。
+所有其他使用者至少需指派到至少其中一個角色，才能使用 Azure Purview 帳戶。 這表示在建立 Azure 範疇帳戶時，不會有帳戶，但建立者可以存取帳戶或使用其 Api，直到它們放入一或多個先前定義的角色。
 
 請注意，範疇資料來源管理員角色有兩種支援的案例。 第一個案例是針對已經範疇資料讀取器或範疇資料 Curators 的使用者，也需要能夠建立掃描。 這些使用者必須有兩個角色：至少一個範疇資料讀取器或範疇資料編者，並放入範疇資料來源管理員角色。
 
@@ -77,8 +77,8 @@ Azure 範疇會定義一組預先定義的資料平面角色，可用來控制�
 |我需要啟用服務主體或其他程式設計身分識別，以在 Azure 範疇中設定及監視掃描，而不允許程式設計身分識別存取目錄的資訊 |範疇資料來源管理員角色|
 |我需要將使用者放入 Azure 範疇中的角色 | 擁有者或使用者存取系統管理員 |
 
-請前進到下一篇文章，以瞭解如何將安全性主體新增至角色。
+如需如何將安全性主體新增至角色的詳細資訊，請參閱 [快速入門：建立 Azure 範疇帳戶](create-catalog-portal.md) 。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [快速入門：建立 Azure 範疇帳戶](create-catalog-portal.md)
+* [資料見解](concept-insights.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 30c13adfebb911e443fb042821e09628da3b9405
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968529"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610976"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用 Spark & Hive Tools for Visual Studio Code
 
@@ -211,31 +211,30 @@ ms.locfileid: "97968529"
 
    ![已成功安裝 pyspark](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. 請使用命令提示字元來執行 **pip install numpy = = 1.19.3**，然後再次重載 VSCode 視窗。
 
-8. 從功能表列中瀏覽至 [檢視] > [命令選擇區...]，或使用 **Shift + Ctrl + P** 鍵盤快速鍵，然後輸入 **Python:Select Interpreter to start Jupyter Server**。
+7. 從功能表列中瀏覽至 [檢視] > [命令選擇區...]，或使用 **Shift + Ctrl + P** 鍵盤快速鍵，然後輸入 **Python:Select Interpreter to start Jupyter Server**。
 
    ![選取解譯器以啟動 Jupyter 伺服器](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-9. 選取下列 Python 選項。
+8. 選取下列 Python 選項。
 
    ![選擇下列選項](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-10. 從功能表列中瀏覽至 [檢視] > [命令選擇區...]，或使用 **Shift + Ctrl + P** 鍵盤快速鍵，然後輸入 [Developer:重新載入視窗]。
+9. 從功能表列中瀏覽至 [檢視] > [命令選擇區...]，或使用 **Shift + Ctrl + P** 鍵盤快速鍵，然後輸入 [Developer:重新載入視窗]。
 
     ![重新載入視窗](./media/hdinsight-for-vscode/reload-window.png)
 
-11. [連接](#connect-to-an-azure-account) 到您的 Azure 帳戶，或連結叢集（如果您尚未這樣做）。
+10. [連接](#connect-to-an-azure-account) 到您的 Azure 帳戶，或連結叢集（如果您尚未這樣做）。
 
-12. 選取所有程式碼，以滑鼠右鍵按一下腳本編輯器，然後選取 [ **Spark： PySpark interactive/Synapse： PySpark interactive** ] 提交查詢。 
+11. 選取所有程式碼，以滑鼠右鍵按一下腳本編輯器，然後選取 [ **Spark： PySpark interactive/Synapse： PySpark interactive** ] 提交查詢。 
 
     ![[PySpark 互動式] 內容功能表](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-13. 如果您尚未指定預設叢集，請選取叢集。 經過幾分鐘之後， **Python 互動式** 結果會出現在新的索引標籤中。按一下 [PySpark] 將核心切換到 **PySpark/Synapse PySpark**，程式碼將會成功執行。 如果您想要切換到 Synapse Pyspark 核心，建議您在 Azure 入口網站中停用自動設定。 否則，喚醒叢集並設定 Synapse 核心以供首次使用，可能需要很長的時間。 如果工具也可讓您使用內容功能表來提交程式碼區塊，而非整個腳本檔案：
+12. 如果您尚未指定預設叢集，請選取叢集。 經過幾分鐘之後， **Python 互動式** 結果會出現在新的索引標籤中。按一下 [PySpark] 將核心切換到 **PySpark/Synapse PySpark**，程式碼將會成功執行。 如果您想要切換到 Synapse Pyspark 核心，建議您在 Azure 入口網站中停用自動設定。 否則，喚醒叢集並設定 Synapse 核心以供首次使用，可能需要很長的時間。 如果工具也可讓您使用內容功能表來提交程式碼區塊，而非整個腳本檔案：
 
     ![PySpark 互動式 Python 互動式視窗](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-14. 輸入 **%% info**，然後按 Shift + Enter 以查看作業資訊 (選擇性) ：
+13. 輸入 **%% info**，然後按 Shift + Enter 以查看作業資訊 (選擇性) ：
 
     ![pyspark 互動視圖作業資訊](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -355,7 +354,7 @@ ms.locfileid: "97968529"
 
   | 名稱 | description | 類型 |
   | --- | --- | --- |
-  | 檔案 | 包含要執行之應用程式的檔案 | 需要 (路徑)  |
+  | file | 包含要執行之應用程式的檔案 | 需要 (路徑)  |
   | proxyUser | 執行作業時要模擬的使用者 | String |
   | className | 應用程式 Java/Spark 主要類別 | String |
   | args | 應用程式的命令列引數 | 字串清單 |
@@ -380,7 +379,7 @@ ms.locfileid: "97968529"
   | appId | 此會話的應用程式識別碼 | String |
   | appInfo | 詳細的應用程式資訊 | key=val 的對應 |
   | log | 記錄行 | 字串清單 |
-  | state |批次狀態 | String |
+  | 狀態 |批次狀態 | String |
 
   > [!NOTE]
   > 當您提交腳本時，[輸出] 窗格中會顯示指派的 Livy 設定。

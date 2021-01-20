@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 52872175eb799785674c331ad4d687ff8ef427a4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e53bf377a7ef8f2293debd288ba25ef8f04ff4fc
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134274"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610993"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>如何在 Azure IoT Central 解決方案中使用命令
 
@@ -37,13 +37,13 @@ ms.locfileid: "98134274"
 
 下表顯示命令功能的組態設定：
 
-| 欄位             |描述|
+| 欄位             |說明|
 |-------------------|-----------|
 |顯示名稱       |儀表板和表單上使用的命令值。|
 | 名稱            | 命令的名稱。 IoT Central 會從顯示名稱產生此欄位的值，但如有必要，您也可以選擇自己所要使用的值。 此欄位必須是英數位元。 裝置程式碼會使用此 **名稱** 值。|
 | 功能類型 | 命令。|
 | 離線時佇列 | 是否要讓此命令成為 *離線* 命令。 |
-| 描述     | 命令功能的說明。|
+| 說明     | 命令功能的說明。|
 | 註解     | 有關命令功能的任何註解。|
 | 要求     | 裝置命令的承載。|
 | 回應     | 裝置命令回應的承載。|
@@ -248,6 +248,9 @@ client.on('message', function (msg) {
 Body: {"StartTime":"2021-01-06T06:00:00.000Z","Bank":2}
 Properties: {"propertyList":[{"key":"iothub-ack","value":"none"},{"key":"method-name","value":"GenerateDiagnostics"}]}
 ```
+
+> [!NOTE]
+> 離線命令的預設存留時間為24小時，之後訊息會過期。
 
 ## <a name="next-steps"></a>後續步驟
 

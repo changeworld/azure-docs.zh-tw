@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602198"
+ms.locfileid: "98610347"
 ---
 # <a name="errors-in-the-connector-status"></a>連接器狀態中的錯誤
 
@@ -27,7 +27,7 @@ ms.locfileid: "98602198"
   * 在 ServiceNow 實例中部署的自訂腳本會導致事件被忽略。
   * 「OMS 整合器應用程式」程式碼本身是在 ServiceNow 端修改的，例如 onBefore 腳本。
 
-    **解決方法**：停用資料匯入路徑的所有自訂腳本或程式碼修改。
+  **解決方法**：停用資料匯入路徑的所有自訂腳本或程式碼修改。
 
 * **錯誤**： "{" Error "： {" message "：" Operation Failed "，" detail "：" ACL 例外狀況更新失敗，因為安全性條件約束 "}"
 

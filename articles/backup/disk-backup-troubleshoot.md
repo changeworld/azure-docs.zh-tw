@@ -3,12 +3,12 @@ title: 針對 Azure 磁片備份中的備份失敗進行疑難排解
 description: 瞭解如何針對 Azure 磁片備份中的備份失敗進行疑難排解
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 0a2ef1ea20ee8d6b7a3f32e244d3e00f3add80a2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557693"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611231"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>針對 Azure 磁片備份中的備份失敗進行疑難排解 (預覽版) 
 
@@ -153,12 +153,30 @@ ms.locfileid: "98557693"
 
 建議動作：考慮使用其他復原點進行還原。 如需詳細資訊，請參閱 [還原檔](restore-managed-disks.md)。
 
+### <a name="error-code-backupagentpluginhostvalidateprotectionerror"></a>錯誤碼： BackupAgentPluginHostValidateProtectionError
+
+錯誤訊息：在嘗試設定保護的備份保存庫區域中，尚未提供磁片備份。
+
+建議的動作：備份保存庫必須位於預覽支援的區域中。 如需區域可用性，請參閱 [支援矩陣](disk-backup-support-matrix.md)。
+
+### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>錯誤碼： UserErrorDppDatasourceAlreadyHasBackupInstance
+
+錯誤訊息：您嘗試設定備份的磁片已受到保護。 磁片已與備份保存庫中的備份實例相關聯。
+
+建議動作：此磁片已經與備份保存庫中的備份實例相關聯。 如果您想要重新保護此磁片，請從備份保存庫中刪除目前受保護的備份實例，並在任何其他保存庫中重新保護該磁片。
+
+### <a name="error-code-usererrordppdatasourcealreadyprotected"></a>錯誤碼： UserErrorDppDatasourceAlreadyProtected
+
+錯誤訊息：您嘗試設定備份的磁片已受到保護。 磁片已與備份保存庫中的備份實例相關聯。
+
+建議動作：此磁片已經與備份保存庫中的備份實例相關聯。 如果您想要重新保護此磁片，請從目前受保護的備份保存庫中刪除備份實例，然後在任何其他保存庫中重新保護該磁片。
+
 ### <a name="error-code-usererrormaxconcurrentoperationlimitreached"></a>錯誤碼： UserErrorMaxConcurrentOperationLimitReached
 
-錯誤訊息：無法啟動作業，因為此作業類型已達到允許的並行作業數目上限。
+錯誤訊息：無法啟動作業，因為已達到允許的並行備份數目上限。
 
-建議動作：等候先前的作業完成。
+建議動作：等候前一個執行中的備份完成。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 磁片備份支援矩陣](disk-backup-support-matrix.md)
+- [Azure 磁碟備份支援矩陣](disk-backup-support-matrix.md)

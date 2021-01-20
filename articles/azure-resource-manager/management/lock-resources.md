@@ -4,12 +4,12 @@ description: 藉由套用鎖定給所有使用者和角色，防止使用者更�
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7efeb8a073a04f78f77046c07c107abf0c7526f4
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 53054f89c992139fbbd4f087d2a0344e26d97efc
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602212"
+ms.locfileid: "98610194"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>鎖定資源以防止非預期的變更
 
@@ -254,10 +254,17 @@ Get-AzResourceLock -ResourceName examplesite -ResourceType Microsoft.Web/sites -
 Get-AzResourceLock -ResourceGroupName exampleresourcegroup
 ```
 
-若要將鎖定刪除，請使用：
+若要刪除資源的鎖定，請使用：
 
 ```azurepowershell-interactive
 $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceName examplesite -ResourceType Microsoft.Web/sites).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+若要刪除資源群組的鎖定，請使用：
+
+```azurepowershell-interactive
+$lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup).LockId
 Remove-AzResourceLock -LockId $lockId
 ```
 
@@ -295,10 +302,17 @@ az lock list --resource-group exampleresourcegroup --resource-name examplesite -
 az lock list --resource-group exampleresourcegroup
 ```
 
-若要將鎖定刪除，請使用：
+若要刪除資源的鎖定，請使用：
 
 ```azurecli
 lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --resource-type Microsoft.Web/sites --resource-name examplesite --output tsv --query id)
+az lock delete --ids $lockid
+```
+
+若要刪除資源群組的鎖定，請使用：
+
+```azurecli
+lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup  --output tsv --query id)
 az lock delete --ids $lockid
 ```
 

@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: d944512e5f6126920ab4fba99fb70513b93177ba
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936816"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610262"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium 方案
 
@@ -142,7 +142,7 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 建立或調整您的方案時，您可以選擇三種實例大小。 您將會依每秒配置給您的核心和記憶體總數來計費。 您的應用程式可以視需要自動相應放大至多個實例。
 
-|SKU|核心|記憶體|儲存體|
+|SKU|核心|記憶體|存放裝置|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7 GB|250GB|
@@ -153,6 +153,8 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 在具有更多記憶體的電腦上執行時，不一定表示您的函數應用程式會使用所有可用的記憶體。
 
 例如，JavaScript 函數應用程式受限於 Node.js 中的預設記憶體限制。 若要增加此固定記憶體限制，請新增 `languageWorkers:node:arguments` 具有值的應用程式設定 `--max-old-space-size=<max memory in MB>` 。
+
+對於具有超過 4 GB 記憶體的方案，請確定 [位平臺] 設定 `64 Bit` 在 [[一般設定](/azure/app-service/configure-common#configure-general-settings)] 下設定為。
 
 ## <a name="region-max-scale-out"></a>區域最大 Scale Out
 

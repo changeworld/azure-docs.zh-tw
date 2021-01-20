@@ -8,16 +8,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: e69d5cc76f8f4b14ab87e13546c98859bb801418
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234753"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610075"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>按一下適用于 Application Insights JavaScript SDK 的 Analytics 自動收集外掛程式
 
-按一下 [適用于 Application Insights JavaScript SDK 的分析自動集合外掛程式]，可讓您根據中繼標籤，自動追蹤網頁上的 click 事件 `data-*` 。 此外掛程式會使用 `data-*` 全域屬性來捕捉點擊事件並填入遙測資料。
+此外掛程式會自動追蹤網頁上的 click 事件，並使用 HTML 元素上的 data-* 屬性來填入事件遙測。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -101,21 +101,21 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| 名稱                      | 類型    | 預設   | 描述                                                                                       |
-|---------------------------|---------|-----------|---------------------------------------------------------------------------------------------------|
-| useDefaultContentNameOrId | boolean | false     | 當特定元素未標記為預設 customDataPrefix，或使用者未提供 customDataPrefix 時，此旗標會用來收集 contentName 的標準 HTML 屬性。 |
-| customDataPrefix          | 字串  | `data-`   | 自動捕捉內容名稱，以及以提供的前置詞標記的元素值。       |
-| aiBlobAttributeTag        | 字串  | `ai-blob` | 外掛程式支援 JSON blob 內容元資料標記，而不是個別的 `data-*` 屬性。 |
-| metaDataPrefix            | 字串  | null      | 自動捕獲 HTML 標頭的中繼元素名稱和具有所提供前置詞的內容。 |
-| captureAllMetaDataContent | 字串  | null      | 自動捕捉所有 HTML 標頭的中繼元素名稱和內容。 預設值為 false。 若已啟用，將會覆寫提供的 metaDataPrefix。 |
-| parentDataTag             | 字串  | null      | 當遇到此標記時，會停止遍歷 DOM 來捕捉專案的內容名稱和值。|
-| dntDataTag                | 字串  | `ai-dnt`  | 使用這個屬性的 HTML 元素將會被外掛程式忽略，以供用來捕捉遙測資料。|
+| 名稱                      | 類型    | 預設   | 要在 HTML 中使用的預設標記 |   說明                                                                                |
+|---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
+| useDefaultContentNameOrId | boolean | false     | N/A         |當特定元素未標記為預設 customDataPrefix，或使用者未提供 customDataPrefix 時，收集 contentName 的標準 HTML 屬性。 |
+| customDataPrefix          | 字串  | `data-`   | `data-*`| 自動捕捉內容名稱，以及以提供的前置詞標記的元素值。 例如， `data-*-id` `data-<yourcustomattribute>` 可以在 HTML 標籤中使用。   |
+| aiBlobAttributeTag        | 字串  | `ai-blob` |  `data-ai-blob`| 外掛程式支援 JSON blob 屬性，而不是個別的 `data-*` 屬性。 |
+| metaDataPrefix            | 字串  | null      | 不適用  | 自動捕獲 HTML 標頭的中繼元素名稱和內容，並在 capture 時提供前置詞。 例如， `custom-` 可以在 HTML 中繼標記中使用。 |
+| captureAllMetaDataContent | boolean | false     | N/A   | 自動捕捉所有 HTML 標頭的中繼元素名稱和內容。 預設值為 false。 若已啟用，將會覆寫提供的 metaDataPrefix。 |
+| parentDataTag             | 字串  | null      |  不適用  | 當遇到此標記時，會停止遍歷 DOM 來捕捉專案的內容名稱和值。 例如， `data-<yourparentDataTag>` 可以在 HTML 標籤中使用。|
+| dntDataTag                | 字串  | `ai-dnt`  |  `data-ai-dnt`| 使用這個屬性的 HTML 元素將會被外掛程式忽略，以供用來捕捉遙測資料。|
 
 ### <a name="behaviorvalidator"></a>behaviorValidator
 
-當您想要確保資料一致性時，您可以使用 behaviorValidator 函式，但會自動檢查程式碼中標記的行為是否符合企業內已知和接受之分類法的預先定義清單。 大部分的 Azure 監視器客戶都不需要或預期會使用這項功能，但可用於 advanced 案例。 有三個不同的 behaviorValidator 回呼函式會公開為此擴充功能的一部分。 但是，如果公開的函式無法解決您的需求，則使用者可以使用自己的回呼函式。 其目的是要攜帶您自己的行為資料結構，此外掛程式會在從資料標記中解壓縮行為時使用這個驗證程式函式。
+BehaviorValidator 函式會在程式碼中自動檢查標記的行為是否符合預先定義的清單。 這可確保標記的行為與您企業所建立的分類法一致。 大部分的 Azure 監視器客戶都不需要或預期會使用這項功能，但可用於 advanced 案例。 有三個不同的 behaviorValidator 回呼函式會公開為此擴充功能的一部分。 但是，如果公開的函式無法解決您的需求，則使用者可以使用自己的回呼函式。 其目的是要攜帶您自己的行為資料結構，此外掛程式會在從資料標記中解壓縮行為時使用這個驗證程式函式。
 
-| Name                   | 描述                                                                        |
+| 名稱                   | 說明                                                                        |
 | ---------------------- | -----------------------------------------------------------------------------------|
 | BehaviorValueValidator | 如果您的行為資料結構是字串陣列，請使用此回呼函數。|
 | BehaviorMapValidator   | 如果您的行為資料結構是字典，請使用此回呼函數。       |
@@ -312,6 +312,7 @@ appInsights.loadAppInsights();
 
 ## <a name="next-steps"></a>後續步驟
 
+- 查看 GitHub 存放 [庫](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) 和 [NPM 套件](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) ，以取得 Click Analytics 自動收集外掛程式。
 - 使用 [使用量體驗中的事件分析](usage-segmentation.md) ，依可用的維度來分析點擊次數和配量。
 - 在 [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)的 CustomEvents 資料表中，于 [內容] 欄位底下的 [customDimensions 屬性] 中尋找 [按一下資料]
 - 建立活頁 [簿](../platform/workbooks-overview.md) 以建立點擊資料的自訂視覺效果。

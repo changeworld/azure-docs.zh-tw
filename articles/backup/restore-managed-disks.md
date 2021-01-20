@@ -3,12 +3,12 @@ title: 還原 Azure 受控磁碟
 description: 瞭解如何從 Azure 入口網站還原 Azure 受控磁碟。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 043a10a7359c95529ff1c4dcc181ea4aba75cb5f
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557509"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611129"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>還原預覽版中的 Azure 受控磁碟 () 
 
@@ -65,6 +65,8 @@ ms.locfileid: "98557509"
     >當角色指派在入口網站上正確反映時，可能需要大約15分鐘的時間，才會在備份保存庫的受控識別上套用許可權。
     >
     >在排程備份或隨選備份作業期間，Azure 備份會將磁片增量快照集儲存在設定磁片備份期間所提供的快照集資源群組中。 Azure 備份在還原作業期間使用這些增量快照集。 如果快照集已從快照集資源群組中刪除或移動，或在快照集資源群組上撤銷備份保存庫角色指派，則還原作業會失敗。
+
+1. 如果要還原的磁片使用 [客戶管理的金鑰進行加密 (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal)或使用 [以平臺管理的金鑰和客戶管理的金鑰進行雙重加密](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)，然後在 **磁片加密集** 資源上，將「**讀取** 者」角色許可權指派給備份保存庫的受控識別。
 
 一旦符合必要條件，請遵循下列步驟來執行還原作業。
 

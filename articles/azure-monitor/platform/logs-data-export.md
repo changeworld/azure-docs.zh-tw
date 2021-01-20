@@ -7,17 +7,17 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8e310ea487818f6d82869fe1973c8e9ed0b04195
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: d9ae9cae1a0a8014f007cd7c4a3d1f97f27128bb
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797106"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610959"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 針對您的 Log Analytics 工作區設定資料匯出後，任何傳送至工作區中所選資料表的新資料都會以近乎即時的方式自動匯出到您的儲存體帳戶，或您的事件中樞。
 
 ![資料匯出總覽](media/logs-data-export/data-export-overview.png)
@@ -35,13 +35,16 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 
 ## <a name="current-limitations"></a>目前的限制
 
-- 目前只能使用 CLI 或 REST 要求來執行設定。 您無法使用 Azure 入口網站或 PowerShell。
+- 您目前可以使用 CLI 或 REST 要求來執行設定。 尚不支援 Azure 入口網站或 PowerShell。
 - ```--export-all-tables```CLI 和 REST 中的選項不受支援，將會移除。 您應該明確地提供匯出規則中的資料表清單。
-- 支援的資料表目前僅限於以下支援的 [資料表](#supported-tables) 區段中的特定資料表。 如果資料匯出規則包含不支援的資料表，作業將會成功，但不會針對該資料表匯出任何資料。 如果資料匯出規則包含不存在的資料表，它將會失敗並出現錯誤 ```Table <tableName> does not exist in the workspace.```
+- 支援的資料表目前僅限於以下支援的 [資料表](#supported-tables) 區段中的特定資料表。 
+- 如果資料匯出規則包含不支援的資料表，作業將會成功，但在支援資料表之前，將不會匯出該資料表的任何資料。 
+- 如果資料匯出規則包含不存在的資料表，則會因為錯誤而失敗 ```Table <tableName> does not exist in the workspace``` 。
 - 您的 Log Analytics 工作區可以位於下列任何區域中：
   - 瑞士北部
   - 瑞士西部
   - zure Government 區域
+- 您可以在工作區中建立兩個匯出規則--在「事件中樞」和「儲存體帳戶」中可以有一個規則。
 - 目的地儲存體帳戶或事件中樞必須位於與 Log Analytics 工作區相同的區域中。
 - 儲存體帳戶的資料表名稱不能超過60個字元，且事件中樞不可超過47個字元。 系統將不會匯出名稱較長的資料表。
 
@@ -58,7 +61,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 ## <a name="data-completeness"></a>資料完整性
 當目的地無法使用時，資料匯出會繼續重試傳送資料最多30分鐘。 如果在30分鐘後仍無法使用，則會捨棄資料，直到目的地變成可用為止。
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>成本
 資料匯出功能目前沒有額外的費用。 未來將會宣佈資料匯出的定價，以及開始計費之前所提供的通知。 如果您選擇在通知期間之後繼續使用資料匯出，將會以適用的費率向您收費。
 
 ## <a name="export-destinations"></a>匯出目的地
@@ -115,12 +118,12 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 
 
 ### <a name="create-or-update-data-export-rule"></a>建立或更新資料匯出規則
-資料匯出規則會定義要針對一組資料表匯出到單一目的地的資料。 您可以為每個目的地建立規則。
+資料匯出規則會定義要針對一組資料表匯出到單一目的地的資料。 您可以為每個目的地建立單一規則。
 
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -402,7 +405,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -426,7 +429,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="template"></a>[範本](#tab/json)
 
-N/A
+不適用
 
 ---
 
@@ -434,7 +437,7 @@ N/A
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -481,7 +484,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -505,7 +508,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="template"></a>[範本](#tab/json)
 
-N/A
+不適用
 
 ---
 
@@ -513,7 +516,7 @@ N/A
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -537,7 +540,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="template"></a>[範本](#tab/json)
 
-N/A
+不適用
 
 ---
 
@@ -551,7 +554,7 @@ N/A
 支援的資料表目前僅限於以下指定的資料表。 除非指定了限制，否則將匯出資料表中的所有資料。 這份清單會隨著加入其他資料表的支援而更新。
 
 
-| Table | 限制 |
+| 資料表 | 限制 |
 |:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 6061980ec556fccde3de882a291bc390b88c5a24
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562738"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611078"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -83,11 +83,11 @@ Azure 監視器使用受控識別將存取權授與您的 Azure Key Vault。 叢
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-N/A
+不適用
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -160,7 +160,7 @@ Authorization: Bearer <token>
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -283,7 +283,7 @@ Log Analytics 中使用的查詢語言是可表達的，且可以包含您新增
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -327,7 +327,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
-N/A
+不適用
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -386,15 +386,11 @@ Content-type: application/json
 
 ## <a name="limitations-and-constraints"></a>限制和條件約束
 
-- 專用的 Log Analytics 叢集支援客戶管理的金鑰，適用于每天傳送1TB 或更多的客戶。
-
 - 每個區域和訂用帳戶的叢集數目上限為2
 
-- 連結的工作區到叢集的最大值是1000
+- 可以連結至叢集的工作區數目上限為1000
 
 - 您可以將工作區連結至您的叢集，然後將它取消連結。 在30天的期間內，特定工作區的工作區連結作業數限制為2。
-
-- 只有在您確認 Log Analytics 叢集布建完成後，才應將工作區連結傳送至叢集。  在完成之前傳送至工作區的資料將會遭到捨棄且無法復原。
 
 - 客戶管理的金鑰加密會在設定時間之後套用至新內嵌的資料。 在設定之前所內嵌的資料，會以 Microsoft 金鑰維持加密狀態。 您可以順暢地查詢客戶管理的金鑰設定之前和之後的資料內嵌。
 
@@ -404,14 +400,12 @@ Content-type: application/json
 
 - 目前不支援將叢集移至另一個資源群組或訂用帳戶。
 
-- 您的 Azure Key Vault、叢集和連結的工作區必須位於相同的區域中，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。
-
-- 如果叢集連結至另一個叢集，則工作區連結將會失敗。
+- 您的 Azure Key Vault、叢集和工作區必須位於相同的區域，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。
 
 - 目前中國未提供加密箱。 
 
-- 針對在支援區域中從2020年10月建立的叢集，會自動設定[雙重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 您可以透過叢集上的 GET 要求，確認您的叢集是否已設定雙精度加密，並觀察 `"isDoubleEncryptionEnabled"` 屬性值- `true` 適用于已啟用雙重加密的叢集。 
-  - 如果您建立叢集並收到錯誤「<的區功能變數名稱稱> 不支援叢集的雙重加密」，您仍然可以建立不含雙重加密的叢集。 將 `"properties": {"isDoubleEncryptionEnabled": false}` 屬性新增至 REST 要求主體。
+- 針對在支援區域中從2020年10月建立的叢集，會自動設定[雙重加密](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。 您可以在叢集上傳送 GET 要求，並觀察 `isDoubleEncryptionEnabled` 值是否 `true` 為已啟用雙重加密的叢集，藉此確認您的叢集是否已設定為進行雙重加密。 
+  - 如果您建立叢集並收到錯誤「<的區功能變數名稱稱> 不支援叢集的雙重加密」，您仍然可以 `"properties": {"isDoubleEncryptionEnabled": false}` 在 REST 要求本文中新增，而不需要雙重加密即可建立叢集。
   - 建立叢集之後，就無法變更雙重加密設定。
 
   - 如果您的叢集是以使用者指派的受控識別來設定，則設定會 `UserAssignedIdentities` `None` 暫停叢集並防止存取您的資料，但您無法在不開啟支援要求的情況下還原撤銷並啟用叢集。 這項限制不適用於系統指派的受控識別。
@@ -429,13 +423,15 @@ Content-type: application/json
 
   - Key Vault 存取率 -- Azure 監視器儲存體存取 Key Vault 以進行包裝和解除包裝作業的頻率介於 6 到 60 秒之間。
 
-- 如果您建立叢集並立即指定 KeyVaultProperties，此作業可能會失敗，因為在將系統身分識別指派給叢集之前無法定義存取原則。
-
-- 如果您使用 KeyVaultProperties 來更新現有的叢集，但 Key Vault 中缺少 ' Get ' 金鑰存取原則，此作業將會失敗。
+- 如果您在叢集處於布建或更新狀態時，更新叢集，則更新將會失敗。
 
 - 如果您在建立叢集時收到衝突錯誤，可能是因為您在過去14天內刪除了您的叢集，而且它是在虛刪除期間。 在虛刪除期間，叢集名稱仍保持保留，且您無法使用該名稱建立新的叢集。 當您永久刪除叢集時，此名稱會在虛刪除期限之後釋放。
 
-- 如果您在作業進行時更新您的叢集，此作業將會失敗。
+- 如果叢集連結至另一個叢集，則工作區連結將會失敗。
+
+- 如果您建立叢集並立即指定 KeyVaultProperties，此作業可能會失敗，因為在將系統身分識別指派給叢集之前無法定義存取原則。
+
+- 如果您使用 KeyVaultProperties 來更新現有的叢集，但 Key Vault 中缺少 ' Get ' 金鑰存取原則，此作業將會失敗。
 
 - 如果您無法部署叢集，請確認您的 Azure Key Vault、叢集和連結的 Log Analytics 工作區位於相同的區域中。 但其可位於不同的訂用帳戶中。
 

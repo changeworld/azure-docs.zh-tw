@@ -4,12 +4,12 @@ description: 使用 Application Insights 監視 Node.js 服務的效能和診斷
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d414ce44a8d6ab308bd31f7372bb1c146fac9f5
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920581"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611010"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 監視 Node.js 服務和應用程式
 
@@ -335,6 +335,12 @@ server.on("listening", () => {
 });
 ```
 
+### <a name="flush"></a>清除
+
+根據預設，遙測會在傳送到內嵌伺服器之前，先經過15秒的時間進行緩衝處理。 如果您的應用程式有短暫的存留期 (例如 CLI 工具) ，當應用程式終止時，可能需要手動排清緩衝的遙測 `appInsights.defaultClient.flush()` 。
+
+如果 SDK 偵測到您的應用程式損毀，就會為您呼叫 flush `appInsights.defaultClient.flush({ isAppCrashing: true })` 。 使用 flush 選項 `isAppCrashing` 時，您的應用程式會假設為異常狀態，不適合用于傳送遙測。 相反地，SDK 會將所有緩衝的遙測儲存至 [持續性儲存體](./data-retention-privacy.md#nodejs) ，並讓您的應用程式終止。 當您重新開機應用程式時，它會嘗試傳送任何已儲存至持續性儲存體的遙測。
+
 ### <a name="preprocess-data-with-telemetry-processors"></a>使用遙測處理器來前置處理資料
 
 您可以處理並篩選收集的資料，然後再使用 *遙測處理器* 來傳送保留的資料。 遙測處理器會依其新增的順序逐一呼叫，然後才會將遙測專案傳送至雲端。
@@ -400,7 +406,7 @@ client.config.PROPERTYNAME = VALUE;
 
 這些是用戶端專屬的屬性，因此您可以 `appInsights.defaultClient` 與使用建立的用戶端分開設定 `new appInsights.TelemetryClient()` 。
 
-| 屬性                        | 描述                                                                                                |
+| 屬性                        | 說明                                                                                                |
 | ------------------------------- |------------------------------------------------------------------------------------------------------------|
 | instrumentationKey              | Application Insights 資源的識別碼。                                                      |
 | endpointUrl                     | 要傳送遙測承載的內嵌端點。                                                      |

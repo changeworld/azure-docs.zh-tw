@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 5d160c46b235c6890426cab9de52ec7b827efe4a
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 37753265afa7e76e87dbcdc5893595bea66798f4
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750708"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610245"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>準備要在 Azure 中部署的應用程式（春季雲端）
 
@@ -146,40 +146,14 @@ Azure Spring Cloud 僅支援 Spring Boot 應用程式 (Spring Boot 2.1 版或 2.
 
 Spring Boot 版本 | Spring Cloud 版本
 ---|---
-2.1 | Greenwich.RELEASE
 2.2 | Hoxton.SR8
 2.3 | Hoxton.SR8
+2.4.1 + | 2020.0.0
 
 > [!NOTE]
-> 我們發現您的應用程式與 Eureka 之間的 TLS 驗證有開機2.4 的問題，目前正在與春季團體合作來解決問題。 請參閱我們的 [常見問題](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) 以取得解決方法。
+> 我們已識別出您的應用程式與 Eureka 之間的 TLS 驗證的 Boot Boot 2.4.0 問題，請使用2.4.1 或更新版本。 如果您堅持使用2.4.0，請參閱我們的 [常見問題](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) 以取得因應措施。
 
-### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot 2.1 版的相依性
-
-針對 Spring Boot 2.1 版，請將下列相依性新增至應用程式 POM 檔案。
-
-```xml
-    <!-- Spring Boot dependencies -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.12.RELEASE</version>
-    </parent>
-
-    <!-- Spring Cloud dependencies -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
-
-### <a name="dependencies-for-spring-boot-version-22"></a>Spring Boot 2.2 版的相依性
+### <a name="dependencies-for-spring-boot-version-2223"></a>春季 Boot 2.2/2.3 版的相依性
 
 針對 Spring Boot 2.2 版，請將下列相依性新增至應用程式 POM 檔案。
 
@@ -204,16 +178,17 @@ Spring Boot 版本 | Spring Cloud 版本
         </dependencies>
     </dependencyManagement>
 ```
-### <a name="dependencies-for-spring-boot-version-23"></a>彈簧開機版本2.3 的相依性
 
-針對彈簧開機版本2.3，請將下列相依性新增至應用程式 POM 檔案。
+### <a name="dependencies-for-spring-boot-version-24"></a>彈簧開機版本2.4 的相依性
+
+針對 Spring Boot 2.2 版，請將下列相依性新增至應用程式 POM 檔案。
 
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.4.1.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -222,34 +197,14 @@ Spring Boot 版本 | Spring Cloud 版本
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR8</version>
+                <version>2020.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 ```
-## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud 用戶端相依性
 
-Azure Spring Cloud 會裝載和管理 Spring Cloud 元件。 這些元件包含 Spring Cloud Service Registry 和 Spring Cloud Config Server。 建議使用彈簧開機2.2 或2.3。 針對彈簧開機2.1，您必須在您的相依性中包含 Azure 春季 Cloud 用戶端程式庫，以允許與您的 Azure 春季雲端服務實例進行通訊。
-
-下表列出適用於應用程式且使用 Spring Boot 和 Spring Cloud 的正確 Azure Spring Cloud 版本。
-
-Spring Boot 版本 | Spring Cloud 版本 | Azure 春季 Cloud 用戶端入門版
----|---|---
-2.1.x | Greenwich.RELEASE | 2.1.2
-2.2. x | Hoxton.SR8 | 不需要
-2.3. x | Hoxton.SR8 | 不需要
-
-如果您使用的是春季開機2.1，請在 pom.xml 檔案中包含下列 dependenciy。
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.2</version>
-</dependency>
-```
 > [!WARNING]
 > 請勿 `server.port` 在您的設定中指定。 Azure 春季雲端會將此設定覆寫為固定的埠號碼。 也請遵循這項設定，而不要在您的程式碼中指定伺服器埠。
 
@@ -329,6 +284,9 @@ public class GatewayApplication {
 
 ### <a name="distributed-tracing"></a>分散式追蹤
 
+您也需要啟用 Azure Application Insights 執行個體，以搭配您的 Azure Spring Cloud 服務執行個體運作。 如需有關如何搭配 Azure 春季雲端使用 Application Insights 的詳細資訊，請參閱 [分散式追蹤的相關檔](spring-cloud-tutorial-distributed-tracing.md)。
+
+#### <a name="spring-boot-2223"></a>春季開機 2.2/2。3
 請在 pom.xml 檔案的 [相依性] 區段中包含下列 `spring-cloud-starter-sleuth` 和 `spring-cloud-starter-zipkin` 相依性：
 
 ```xml
@@ -342,7 +300,15 @@ public class GatewayApplication {
 </dependency>
 ```
 
- 您也需要啟用 Azure Application Insights 執行個體，以搭配您的 Azure Spring Cloud 服務執行個體運作。 如需有關如何搭配 Azure 春季雲端使用 Application Insights 的詳細資訊，請參閱 [分散式追蹤的相關檔](spring-cloud-tutorial-distributed-tracing.md)。
+#### <a name="spring-boot-24"></a>彈簧開機2。4
+在 pom.xml 檔案 `spring-cloud-sleuth-zipkin` 的 [相依性] 區段中包含下列相依性：
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+</dependency>
+```
 
 ## <a name="see-also"></a>另請參閱
 * [分析應用程式記錄和計量](./diagnostic-services.md)

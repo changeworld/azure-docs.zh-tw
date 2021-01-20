@@ -1,5 +1,5 @@
 ---
-title: 資料科學中的特徵工程設計 - Team Data Science Process
+title: 機器學習中的特徵工程-Team Data 科學流程
 description: 了解在機器學習增強資料過程中的特徵工程及其角色。
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
-ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b20a6744644678879fedf44e960854f558eb0f03
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031856"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610432"
 ---
-# <a name="feature-engineering-in-data-science"></a>資料科學特徵工程設計
+# <a name="feature-engineering-in-machine-learning"></a>Machine learning 中的特徵工程
 
 在本文中，您將了解在機器學習中增強資料時的特徵工程及其角色。 從 [Azure Machine Learning Studio (傳統版)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) 實驗中取出的說明範例中學習。 
 
