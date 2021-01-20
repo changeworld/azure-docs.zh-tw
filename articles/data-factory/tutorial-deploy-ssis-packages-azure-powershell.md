@@ -14,12 +14,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: afc2f05d61c888e50ec9de5edaa7806e6c6b5d3c
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
-ms.translationtype: HT
+ms.openlocfilehash: e2ace9a8d7d9c0229e7e06847c2ce56bea11c138
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636233"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555792"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>使用 PowerShell 在 Azure Data Factory 中設定 Azure SSIS IR
 
@@ -30,7 +30,7 @@ ms.locfileid: "92636233"
 - 執行已部署到 SSIS 目錄 (SSISDB) 的套件，此目錄由 Azure SQL Database 伺服器/受控執行個體 (專案部署模型) 裝載
 - 執行已部署到 Azure SQL 受控執行個體 (套件部署模型) 所裝載檔案系統、Azure 檔案儲存體或 SQL Server 資料庫 (MSDB) 中的套件
 
-佈建 Azure-SSIS IR 之後，您就可以使用熟悉的工具在 Azure 中部署和執行套件。 這些工具已針對 Azure 啟用，且包括 SQL Server Data Tools (SSDT)、SQL Server Management Studio (SSMS) 與命令列公用程式，例如 [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) 和 [AzureDTExec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md)。
+佈建 Azure-SSIS IR 之後，您就可以使用熟悉的工具在 Azure 中部署和執行套件。 這些工具已針對 Azure 啟用，且包括 SQL Server Data Tools (SSDT)、SQL Server Management Studio (SSMS) 與命令列公用程式，例如 [dtutil](/sql/integration-services/dtutil-utility) 和 [AzureDTExec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md)。
 
 如需 Azure-SSIS IR 的概念資訊，請參閱 [Azure-SSIS 整合執行階段概觀](concepts-integration-runtime.md#azure-ssis-integration-runtime)。
 
@@ -49,7 +49,7 @@ ms.locfileid: "92636233"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure 訂用帳戶** 。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+- **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 - **Azure SQL Database 伺服器或受控執行個體 (選擇性)** 。 如果您還沒有資料庫伺服器，請在 Azure 入口網站中建立一個，然後再開始。 Data Factory 接著會在此資料庫伺服器上建立 SSISDB 執行個體。 
 
@@ -69,7 +69,7 @@ ms.locfileid: "92636233"
 
   - 請確認您的資料庫伺服器尚未有 SSISDB 執行個體。 Azure-SSIS IR 的佈建不支援使用現有的 SSISDB 執行個體。
 
-- **Azure PowerShell** (英文)。 若要執行 PowerShell 指令碼來設定 Azure-SSIS IR，請遵循[安裝和設定 Azure PowerShell](/powershell/azure/install-Az-ps) 中的指示。
+- **Azure PowerShell**(英文)。 若要執行 PowerShell 指令碼來設定 Azure-SSIS IR，請遵循[安裝和設定 Azure PowerShell](/powershell/azure/install-Az-ps) 中的指示。
 
 > [!NOTE]
 > 如需目前有提供 Azure Data Factory 和 Azure-SSIS IR 的 Azure 區域清單，請參閱[各區域的 Azure Data Factory 和 Azure-SSIS IR 可用性](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory&regions=all)。 
@@ -595,9 +595,9 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 - 針對具有私人端點的受控執行個體，伺服器端點的格式為 `<server name>.<dns prefix>.database.windows.net`。
 - 針對具有公用端點的受控執行個體，伺服器端點的格式為 `<server name>.public.<dns prefix>.database.windows.net,3342`。 
 
-如果您不使用 SSISDB，則可以將套件部署到 Azure SQL 受控執行個體所裝載的檔案系統、Azure 檔案儲存體或 MSDB 中，然後使用 [dtutil](/sql/integration-services/dtutil-utility?view=sql-server-2017) 和 [AzureDTExec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md) 命令列公用程式，在 Azure-SSIS IR 上加以執行。 
+如果您不使用 SSISDB，則可以將套件部署到 Azure SQL 受控執行個體所裝載的檔案系統、Azure 檔案儲存體或 MSDB 中，然後使用 [dtutil](/sql/integration-services/dtutil-utility) 和 [AzureDTExec](./how-to-invoke-ssis-package-azure-enabled-dtexec.md) 命令列公用程式，在 Azure-SSIS IR 上加以執行。 
 
-如需詳細資訊，請參閱[部署 SSIS 專案/套件](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-ver15)。
+如需詳細資訊，請參閱[部署 SSIS 專案/套件](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages)。
 
 在這兩種狀況中，您也可以使用 Data Factory 管線中的「執行 SSIS 套件」活動，在 Azure-SSIS IR 上執行已部署的套件。 如需詳細資訊，請參閱[以第一級 Data Factory 活動的形式來叫用 SSIS 套件執行](./how-to-invoke-ssis-package-ssis-activity.md)。
 

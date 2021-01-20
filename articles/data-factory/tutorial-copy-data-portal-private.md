@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
+ms.date: 01/15/2021
 ms.author: jingwang
-ms.openlocfilehash: 4f5d691ef99ac4647d2031d6588d0b3922edd8cf
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
-ms.translationtype: HT
+ms.openlocfilehash: dfd2ed47c3fd963d7e119d235719771b25bdaf34
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505983"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249495"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>使用私人端點將資料從 Azure Blob 儲存體安全地複製到 SQL 資料庫
 
@@ -35,9 +35,9 @@ ms.locfileid: "94505983"
 
 
 ## <a name="prerequisites"></a>必要條件
-* **Azure 訂用帳戶** 。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
-* **Azure 儲存體帳戶** 。 您會使用 Blob 儲存體作為 *來源* 資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)，按照步驟建立此帳戶。 請確定儲存體帳戶只允許從選取的網路存取。 
-* **Azure SQL Database** 。 您會使用資料庫作為 *接收* 資料存放區。 如果您沒有 Azure SQL 資料庫，請參閱[建立 SQL 資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。 請確定 SQL Database 帳戶只允許從選取的網路進行存取。 
+* **Azure 訂用帳戶**。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費 Azure 帳戶](https://azure.microsoft.com/free/)。
+* **Azure 儲存體帳戶**。 您會使用 Blob 儲存體作為 *來源* 資料存放區。 如果您沒有儲存體帳戶，請參閱[建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)，按照步驟建立此帳戶。 請確定儲存體帳戶只允許從選取的網路存取。 
+* **Azure SQL Database**。 您會使用資料庫作為 *接收* 資料存放區。 如果您沒有 Azure SQL 資料庫，請參閱[建立 SQL 資料庫](../azure-sql/database/single-database-create-quickstart.md)，按照步驟來建立 SQL 資料庫。 請確定 SQL Database 帳戶只允許從選取的網路進行存取。 
 
 ### <a name="create-a-blob-and-a-sql-table"></a>建立 Blob 和 SQL 資料表
 
@@ -78,11 +78,11 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 在左側功能表上，選取 [建立資源] > [分析] > [資料處理站]。
 
-1. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory** 。
+1. 在 [新增資料處理站] 頁面的 [名稱] 下，輸入 **ADFTutorialDataFactory**。
 
-   Azure Data Factory 的名稱必須是 *全域唯一的* 。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱 (例如 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](./naming-rules.md)。
+   Azure Data Factory 的名稱必須是 *全域唯一的*。 如果您收到有關名稱值的錯誤訊息，請輸入不同的資料處理站名稱 (例如 yournameADFTutorialDataFactory)。 如需 Data Factory 成品的命名規則，請參閱 [Data Factory 命名規則](./naming-rules.md)。
 
-1. 選取您要在其中建立資料處理站的 Azure **訂用帳戶** 。
+1. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
 
 1. 針對 [資源群組]，採取下列其中一個步驟︰
 
@@ -104,10 +104,11 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 ## <a name="create-an-azure-integration-runtime-in-data-factory-managed-virtual-network"></a>在 Data Factory 受控虛擬網路中建立 Azure 整合執行階段
 在此步驟中，您會在 Data Factory 受控虛擬網路中建立 Azure Integration Runtime。
 
-1. 在 Data Factory 入口網站中，移至 **管理** ，然後選取 [新增] 以建立新的 Azure Integration Runtime。
+1. 在 Data Factory 入口網站中，移至 **管理**，然後選取 [新增] 以建立新的 Azure Integration Runtime。
 
    ![顯示建立新 Azure 整合執行階段的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. 選擇建立 **Azure** 整合執行階段。
+1. 在 [ **整合執行時間設定** ] 頁面上，根據所需的功能選擇要建立的整合執行時間。 在本教學課程中，選取 [ **Azure]、[自我** 裝載]，然後按一下 [ **繼續**]。 
+1. 選取 [ **azure** ]，然後按一下 [ **繼續** ] 建立 azure 整合執行時間。
 
    ![顯示新 Azure 整合執行階段的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/azure-ir.png)
 1. 在 [虛擬網路設定 (預覽)] 中，選取 [啟用]。
@@ -136,7 +137,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 ### <a name="configure-a-source"></a>設定來源
 
 >[!TIP]
->在本教學課程中，您會使用 **帳戶金鑰** 作為來源資料存放區的驗證類型。 如有需要，您也可以選擇其他支援的驗證方法，例如 **SAS URI** 、 **服務主體** 和 **受控識別** 。 如需詳細資訊，請參閱[使用 Azure Data Factory 複製和轉換 Azure Blob 儲存體中的資料](./connector-azure-blob-storage.md#linked-service-properties)中對應的章節。
+>在本教學課程中，您會使用 **帳戶金鑰** 作為來源資料存放區的驗證類型。 如有需要，您也可以選擇其他支援的驗證方法，例如 **SAS URI**、**服務主體** 和 **受控識別**。 如需詳細資訊，請參閱[使用 Azure Data Factory 複製和轉換 Azure Blob 儲存體中的資料](./connector-azure-blob-storage.md#linked-service-properties)中對應的章節。
 >
 >若要安全地儲存資料存放區的祕密，也建議您使用 Azure Key Vault。 如需詳細資訊和圖例，請參閱[在 Azure Key Vault 中儲存認證](./store-credentials-in-key-vault.md)。
 
@@ -148,11 +149,11 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 在 [選取格式] 對話方塊中，選取您資料的格式類型，然後選取 [繼續]。
 
-1. 在 [設定屬性] 對話方塊中，輸入 **SourceBlobDataset** 作為 **名稱** 。 選取 **第一個資料列作為標頭** 的核取方塊。 在 [已連結的服務] 文字方塊下，選取 [+ 新增]。
+1. 在 [設定屬性] 對話方塊中，輸入 **SourceBlobDataset** 作為 **名稱**。 選取 **第一個資料列作為標頭** 的核取方塊。 在 [已連結的服務] 文字方塊下，選取 [+ 新增]。
 
-1. 在 [新增已連結的服務 (Azure Blob 儲存體)] 對話方塊中輸入 **AzureStorageLinkedService** 作為 **名稱** ，然後從 [儲存體帳戶名稱] 清單中選取您的儲存體帳戶。 
+1. 在 [新增已連結的服務 (Azure Blob 儲存體)] 對話方塊中輸入 **AzureStorageLinkedService** 作為 **名稱**，然後從 [儲存體帳戶名稱] 清單中選取您的儲存體帳戶。 
 
-1. 請務必啟用 **互動式製作** 。 可能需要約一分鐘的時間才能啟用。
+1. 請務必啟用 **互動式製作**。 可能需要約一分鐘的時間才能啟用。
 
     ![顯示互動式製作的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
 
@@ -202,7 +203,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ![顯示受控私人端點窗格的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png) 
 
 #### <a name="approval-of-a-private-link-in-a-storage-account"></a>在儲存體帳戶中核准私人連結
-1. 在儲存體帳戶中，移至 **設定** 區段下的 **私人端點連線** 。
+1. 在儲存體帳戶中，移至 **設定** 區段下的 **私人端點連線**。
 
 1. 選取您建立的私人端點核取方塊，然後選取 [核准]。
 
@@ -215,7 +216,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 ### <a name="configure-a-sink"></a>設定接收
 >[!TIP]
->在本教學課程中，您會使用 **SQL 驗證** 作為接收資料存放區的驗證類型。 如有需要，您也可以選擇其他支援的驗證方法，例如 **服務主體** 和 **受控識別** 。 如需詳細資訊，請參閱[使用 Azure Data Factory 複製和轉換 Azure SQL Database 中的資料](./connector-azure-sql-database.md#linked-service-properties)中對應的章節。
+>在本教學課程中，您會使用 **SQL 驗證** 作為接收資料存放區的驗證類型。 如有需要，您也可以選擇其他支援的驗證方法，例如 **服務主體** 和 **受控識別**。 如需詳細資訊，請參閱[使用 Azure Data Factory 複製和轉換 Azure SQL Database 中的資料](./connector-azure-sql-database.md#linked-service-properties)中對應的章節。
 >
 >若要安全地儲存資料存放區的祕密，也建議您使用 Azure Key Vault。 如需詳細資訊和圖例，請參閱[在 Azure Key Vault 中儲存認證](./store-credentials-in-key-vault.md)。
 
@@ -224,13 +225,13 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 在 **新增資料集** 對話方塊的搜尋方塊中，輸入 **SQL** 以篩選連接器。 選取 [Azure SQL Database]，然後選取 [繼續]。 在本教學課程中，您會將資料複製到 SQL 資料庫。
 
-1. 在 [設定屬性] 對話方塊中，輸入 **OutputSqlDataset** 作為 **名稱** 。 從 [已連結的服務] 下拉式清單中，選取 [+ 新增]。 資料集必須與連結的服務相關聯。 連結服務具有連接字串，可供 Data Factory 在執行階段中用來連線到 SQL 資料庫。 資料集會指定要作為資料複製目的地的容器、資料夾和檔案 (選擇性)。
+1. 在 [設定屬性] 對話方塊中，輸入 **OutputSqlDataset** 作為 **名稱**。 從 [已連結的服務] 下拉式清單中，選取 [+ 新增]。 資料集必須與連結的服務相關聯。 連結服務具有連接字串，可供 Data Factory 在執行階段中用來連線到 SQL 資料庫。 資料集會指定要作為資料複製目的地的容器、資料夾和檔案 (選擇性)。
 
 1. 在 [新增已連結的服務 (Azure SQL Database)] 對話方塊中，執行下列步驟：
 
-    1. 在 [名稱] 下，輸入 **AzureSqlDatabaseLinkedService** 。
+    1. 在 [名稱] 下，輸入 **AzureSqlDatabaseLinkedService**。
     1. 在 [伺服器名稱] 下，選取您的 SQL Server 執行個體。
-    1. 請務必啟用 **互動式製作** 。
+    1. 請務必啟用 **互動式製作**。
     1. 在 [資料庫名稱] 下，選取您的 SQL 資料庫。
     1. 在 [使用者名稱] 下，輸入使用者名稱。
     1. 在 [密碼] 下，輸入使用者的密碼。
@@ -241,7 +242,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 如此會自動前往 **設定屬性** 對話方塊。 在 [資料表] 中，選取 **[dbo].[emp]** 。 然後選取 [確定]。
 
-1. 移至含有管線的索引標籤，然後在 **接收資料集** 中確認已選取 **OutputSqlDataset** 。
+1. 移至含有管線的索引標籤，然後在 **接收資料集** 中確認已選取 **OutputSqlDataset**。
 
     ![顯示管線索引標籤的螢幕擷取畫面。](./media/tutorial-copy-data-portal-private/pipeline-tab-2.png)
 
@@ -265,7 +266,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 
 #### <a name="approval-of-a-private-link-in-sql-server"></a>在 SQL Server 中核准私人連結
-1. 在 SQL 伺服器中，移至 **設定** 區段下的 **私人端點連線** 。
+1. 在 SQL 伺服器中，移至 **設定** 區段下的 **私人端點連線**。
 1. 選取您建立的私人端點核取方塊，然後選取 [核准]。
 1. 新增描述，然後選取 [是]。
 1. 回到 Data Factory 中 **管理** 索引標籤的 **受控私人端點** 區段。

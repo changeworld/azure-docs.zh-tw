@@ -3,17 +3,17 @@ title: 使用 Azure 監視器 Application Insights 監視行動應用程式
 description: 提供指示說明如何快速設定行動應用程式，以透過 Azure 監視器 Application Insights 和 App Center 進行監視
 ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 27b74f99d926bf72bc22f153a8d76deb56646987
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
-ms.translationtype: HT
+ms.openlocfilehash: 34c35baf1bd958058bec6642434464711f5e79f6
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993881"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210302"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>開始使用 App Center 和 Application Insights 分析您的行動應用程式
 

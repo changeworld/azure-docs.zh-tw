@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: efd9730123f7427e97d5494d9790bff2a26c4c4e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: 91aa6c96c714bff26ea7e0df5b2b6971c68edec0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011844"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178563"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式
 
@@ -38,7 +38,7 @@ ms.locfileid: "98011844"
 >
 > ### <a name="option-1-register-and-automatically-configure-your-app-and-then-download-the-code-sample"></a>選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例
 >
-> 1. 移至 [Azure 入口網站 > [註冊應用程式]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs) 快速入門體驗。
+> 1. 移至 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs" target="_blank">Azure 入口網站 - 應用程式註冊<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入門體驗。
 > 1. 輸入應用程式的名稱，然後選取 [註冊]。
 > 1. 遵循入口網站快速入門體驗中的指示，下載自動設定的應用程式程式碼。
 >

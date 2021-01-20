@@ -2,24 +2,24 @@
 title: 訂購 Azure 資料箱的教學課程 | Microsoft Docs
 description: 在本教學課程中，了解 Azure 資料箱 (這是一種混合式解決方案，可讓您將內部部署資料匯入至 Azure)，以及如何訂購 Azure 資料箱。
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: HT
+ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186153"
+ms.locfileid: "98210336"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教學課程：訂購 Azure 資料箱
 
-Azure 資料箱是一項混合式解決方案，可讓您以快速、簡便而可靠的方式，將內部部署資料匯入 Azure 中。 您可將資料傳輸至 Microsoft 提供的 80 TB (可用容量) 儲存裝置，然後將裝置寄回。 這項資料隨後會上傳至 Azure。
+Azure 資料箱是一項混合式解決方案，可讓您以快速、簡便而可靠的方式，將內部部署資料匯入 Azure 中。 您將資料傳輸至 Microsoft 提供的 80-TB (可用容量) 儲存裝置，然後將裝置寄回。 這項資料隨後會上傳至 Azure。
 
-本教學課程說明如何訂購 Azure 資料箱。 在本教學課程中，您會了解：
+本教學課程說明如何訂購 Azure 資料箱。 在本教學課程中，您會了解：  
 
 > [!div class="checklist"]
 >
@@ -245,7 +245,7 @@ PS C:\Windows\System32>
     |資源群組    | 您先前選取的資源群組。 |
     |匯入訂單名稱 | 提供用來追蹤訂單的易記名稱。 <br> 名稱長度可介於 3 到 24 個字元之間，且可以是字母、數字和連字號。 <br> 名稱必須以字母或數字為開頭或結尾。    |
 
-    ![已填入正確資訊的資料箱匯入訂單精靈，基本畫面](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
+    ![已填入正確資訊的資料箱匯入訂單精靈，基本畫面](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
 7. 在 [資料目的地] 畫面上，選取 [資料目的地] - 儲存體帳戶或受控磁碟。
 
@@ -254,6 +254,10 @@ PS C:\Windows\System32>
     ![已選取儲存體帳戶的資料箱匯入訂單精靈，資料目的地畫面](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
     根據指定的 Azure 區域，從現有儲存體帳戶的篩選清單中選取一或多個儲存體帳戶。 資料箱可以與最多 10 個儲存體帳戶連結。 您也可以建立新的 **一般用途 v1**、**一般用途 v2** 或 **Blob 儲存體帳戶**。
+
+   > [!NOTE]
+   > - 如果您選取 Azure Premium FileStorage 帳戶，儲存體帳戶共用上的布建配額將會增加至複製到檔案共用的資料大小。 配額增加之後，就不會再次調整，例如，如果基於某些原因，資料箱無法複製您的資料。
+   > - 此配額用於計費。 將資料上傳到資料中心之後，您應該調整配額以符合您的需求。 如需詳細資訊，請參閱 [瞭解帳單](../../articles/storage/files/understanding-billing.md)。
 
     支援具有虛擬網路的儲存體帳戶。 若要允許資料箱服務使用受保護的儲存體帳戶來運作，請在儲存體帳戶網路防火牆設定內啟用受信任的服務。 如需詳細資訊，請參閱如何[新增 Azure 資料箱作為受信任的服務](../storage/common/storage-network-security.md#exceptions)。
 
@@ -419,7 +423,7 @@ PS C:\Windows\System32>
    |sku| 您訂購的特定資料箱裝置。 有效值為："DataBox"、"DataBoxDisk" 和 "DataBoxHeavy"| "DataBox" |
    |email-list| 與訂單相關聯的電子郵件地址。| "gusp@contoso.com" |
    |street-address1| 訂單送達的街道位址。 | "15700 NE 39th St" |
-   |street-address2| 次要位址資訊，例如公寓號碼或建築物編號。 | "Bld 123" |
+   |street-address2| 次要位址資訊，例如公寓號碼或建築物編號。 | 「建築物123」 |
    |city| 裝置送達的城市。 | "Redmond" |
    |state-or-province| 裝置送達的州/省。| "WA" |
    |country| 裝置送達的國家/地區。 | "United States" |
@@ -538,7 +542,7 @@ PS C:\Windows\System32>
     |DataBoxType [必要]| 您訂購的特定資料箱裝置。 有效值為："DataBox"、"DataBoxDisk" 和 "DataBoxHeavy"| "DataBox" |
     |EmailId [必要]| 與訂單相關聯的電子郵件地址。| "gusp@contoso.com" |
     |StreetAddress1 [必要]| 訂單送達的街道位址。 | "15700 NE 39th St" |
-    |StreetAddress2| 次要位址資訊，例如公寓號碼或建築物編號。 | "Bld 123" |
+    |StreetAddress2| 次要位址資訊，例如公寓號碼或建築物編號。 | 「建築物123」 |
     |StreetAddress3| 第三個地址資訊。 | |
     |City [必要]| 裝置送達的城市。 | "Redmond" |
     |StateOrProvinceCode [必要]| 裝置送達的州/省。| "WA" |
@@ -601,7 +605,7 @@ PS C:\Windows\System32>
 
 ### <a name="track-a-single-order"></a>追蹤單一訂單
 
-若要取得單一現有 Azure 資料箱訂單的追蹤資訊，請執行 [az databox job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true)。 此命令會顯示訂單的相關資訊，例如 (但不限於)：名稱、資源群組、追蹤資訊、訂用帳戶識別碼、連絡人資訊、出貨類型，以及裝置 SKU。
+若要取得單一、現有 Azure 資料箱訂單的追蹤資訊，請執行 [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) 。 此命令會顯示訂單的相關資訊，例如 (但不限於)：名稱、資源群組、追蹤資訊、訂用帳戶識別碼、連絡人資訊、出貨類型，以及裝置 SKU。
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -642,7 +646,7 @@ PS C:\Windows\System32>
 
 ### <a name="list-all-orders"></a>列出所有訂單
 
-如果您已訂購多個裝置，可以執行 [az databox job list](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) 來檢視所有 Azure 資料箱訂單。 此命令會列出屬於特定資源群組的所有訂單。 同時也會顯示在輸出中顯示以下資訊：訂單名稱、運送狀態、Azure 區域、交貨類型、訂單狀態。 已取消的訂單也會包含在清單中。
+如果您已訂購多個裝置，您可以執行 [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) 來查看您所有的 Azure 資料箱訂單。 此命令會列出屬於特定資源群組的所有訂單。 同時也會顯示在輸出中顯示以下資訊：訂單名稱、運送狀態、Azure 區域、交貨類型、訂單狀態。 已取消的訂單也會包含在清單中。
 此命令也會顯示每個訂單的時間戳記。
 
 ```azurecli
@@ -718,7 +722,7 @@ az databox job list --resource-group <resource-group>
 
 ### <a name="list-all-orders"></a>列出所有訂單
 
-如果您已訂購多個裝置，則可以執行 [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) \(英文\) 來檢視您的所有 Azure 資料箱訂單。 此命令會列出屬於特定資源群組的所有訂單。 同時也會顯示在輸出中顯示以下資訊：訂單名稱、運送狀態、Azure 區域、交貨類型、訂單狀態。 已取消的訂單也會包含在清單中。
+如果您已訂購多個裝置，您可以執行 [`Get-AzDataBoxJob`](/powershell/module/az.databox/Get-AzDataBoxJob) 來查看您所有的 Azure 資料箱訂單。 此命令會列出屬於特定資源群組的所有訂單。 同時也會顯示在輸出中顯示以下資訊：訂單名稱、運送狀態、Azure 區域、交貨類型、訂單狀態。 已取消的訂單也會包含在清單中。
 此命令也會顯示每個訂單的時間戳記。
 
 ```azurepowershell
@@ -761,7 +765,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="cancel-an-order"></a>取消訂單
 
-若要取消 Azure 資料箱訂單，請執行 [az databox job cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true)。 您必須指定取消訂單的原因。
+若要取消 Azure 資料箱順序，請執行 [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) 。 您必須指定取消訂單的原因。
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -798,7 +802,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>順序訂單
 
-如果您已取消 Azure 資料箱訂單，可以執行 [az databox job delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) 以刪除訂單。
+如果您已取消 Azure 資料箱訂單，您可以執行 [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) 以刪除訂單。
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -871,7 +875,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>順序訂單
 
-如果您已取消 Azure 資料箱訂單，則可以執行 [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) \(英文\) 以刪除訂單。
+如果您已取消 Azure 資料箱訂單，您可以執行 [`Remove-AzDataBoxJob`](/powershell/module/az.databox/remove-azdataboxjob) 以刪除訂單。
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

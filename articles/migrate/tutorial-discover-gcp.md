@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 181f645540a267d65b15a0345a61752a8a5f78fa
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
-ms.translationtype: HT
+ms.openlocfilehash: 079f176a741fa3423081cb96503691f0f2e2e7b2
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704721"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541422"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>教學課程：使用伺服器評估來探索 Google Cloud Platform (GCP) 執行個體
 
@@ -40,7 +40,7 @@ ms.locfileid: "97704721"
 
 **需求** | **詳細資料**
 --- | ---
-**設備** | 您需要用來執行 Azure Migrate 設備的 GCP VM 執行個體。 機器應具有：<br/><br/> - 已安裝的 Windows Server 2016。 不支援在使用 Windows Server 2019 的電腦上執行設備。<br/><br/> - 16 GB RAM、8 個 vCPU、約 80 GB 的磁碟儲存體和外部虛擬交換器。<br/><br/> - 靜態或動態 IP 位址，以及網際網路存取 (直接或透過 Proxy)。
+**設備** | 您需要用來執行 Azure Migrate 設備的 GCP VM 執行個體。 機器應具有：<br/><br/> - 已安裝的 Windows Server 2016。<br/> _不支援在 Windows Server 2019 電腦上執行設備_。<br/><br/> -16 GB RAM、8個 vcpu、大約 80 GB 的磁片儲存體，以及外部虛擬交換器。<br/><br/> - 靜態或動態 IP 位址，以及網際網路存取 (直接或透過 Proxy)。
 **Windows VM 執行個體** | 允許 WinRM 連接埠 5985 上的輸入連線 (HTTP)，讓設備可以提取設定和效能中繼資料。
 **Linux VM 執行個體** | 允許連接埠 22 上的輸入連線 (TCP)。
 
@@ -48,7 +48,7 @@ ms.locfileid: "97704721"
 
 若要建立 Azure Migrate 專案並註冊 Azure Migrate 設備，您需要具有下列權限的帳戶：
 - Azure 訂用帳戶的參與者或擁有者權限。
-- 註冊 Azure Active Directory 應用程式的權限。
+- 註冊 Azure Active Directory (AAD) 應用程式的許可權。
 
 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。 如果您不是訂用帳戶擁有者，請與擁有者合作以指派權限，如下所示：
 
@@ -67,22 +67,24 @@ ms.locfileid: "97704721"
 
     ![開啟 [新增角色指派] 頁面，將角色指派給帳戶](./media/tutorial-discover-gcp/assign-role.png)
 
-7. 在入口網站中搜尋使用者，然後在 [服務] 底下選取 [使用者]。
-8. 在 [使用者設定] 中，確認 Azure AD 使用者可以註冊應用程式 (預設為 [是])。
+1. 若要註冊設備，您的 Azure 帳戶需要 **註冊 AAD 應用程式的許可權。**
+1. 在 Azure 入口網站中，流覽至 **Azure Active Directory**  >  **使用者** 的  >  **使用者設定**。
+1. 在 [使用者設定] 中，確認 Azure AD 使用者可以註冊應用程式 (預設為 [是])。
 
     ![在 [使用者設定] 中確認使用者可以註冊 Active Directory 應用程式](./media/tutorial-discover-gcp/register-apps.png)
 
+1. 如果 [應用程式註冊] 設定設為 [否]，請要求租使用者/全域管理員指派必要的許可權。 或者，租使用者/全域管理員可以將 **應用程式開發人員** 角色指派給帳戶，以允許註冊 AAD 應用程式。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-gcp-instances"></a>準備 GCP 執行個體
 
 設定可供設備用來存取 GCP VM 執行個體的帳戶。
 
-- 針對 Windows 伺服器
+- 針對 **Windows 伺服器**：
     - 在未加入網域的電腦上設定本機使用者帳戶，並在您想要包含在探索中的未加入網域電腦上設定網域帳戶。 將使用者帳戶新增至下列群組： 
         - 遠端管理使用者
         - 效能監視器使用者
         - 效能記錄使用者。
-- 針對 Linux 伺服器：
+- 針對 **Linux 伺服器**：
     - 您在要探索的 Linux 伺服器上必須要有根帳戶。 如果您無法提供根帳號，請參閱[支援矩陣](migrate-support-matrix-physical.md#physical-server-requirements)中的指示，以取得替代方案。
     - Azure Migrate 在探索 AWS 執行個體時，會使用密碼驗證。 依預設，AWS 執行個體不支援密碼驗證。 您必須先啟用密碼驗證，才可以探索執行個體。
         1. 登入每一部 Linux 電腦。
@@ -108,11 +110,12 @@ ms.locfileid: "97704721"
    ![專案名稱和區域的方塊](./media/tutorial-discover-gcp/new-project.png)
 
 7. 選取 [建立]。
-8. 等候幾分鐘讓 Azure Migrate 專案完成部署。
-
-**Azure Migrate：伺服器評量** 工具依預設會新增至新專案中。
+8. 請等候幾分鐘，讓 Azure Migrate 專案部署。預設會將 **Azure Migrate： Server 評定** 工具新增至新專案。
 
 ![顯示依預設新增伺服器評量工具的頁面](./media/tutorial-discover-gcp/added-tool.png)
+
+> [!NOTE]
+> 如果您已建立專案，您可以使用相同的專案註冊其他設備，以找出並評估更多伺服器。[深入瞭解](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>設定設備
 
@@ -123,17 +126,14 @@ Azure Migrate 設備是輕量型設備，可供 Azure Migrate 伺服器評量用
 
 [深入了解](migrate-appliance.md) Azure Migrate 設備的相關資訊。
 
-
-## <a name="appliance-deployment-steps"></a>設備部署步驟
-
 若要設定設備，請：
-- 提供設備名稱，並在入口網站中產生 Azure Migrate 專案金鑰。
-- 從 Azure 入口網站下載含有 Azure Migrate 安裝程式指令碼的 ZIP 壓縮檔案。
-- 從 ZIP 壓縮檔案解壓縮內容。 以系統管理權限啟動 PowerShell 主控台。
-- 執行 PowerShell 指令碼以啟動設備 Web 應用程式。
-- 進行設備的第一次設定，並使用 Azure Migrate 專案金鑰將其註冊至 Azure Migrate 專案。
+1. 提供設備名稱，並在入口網站中產生 Azure Migrate 專案金鑰。
+1. 從 Azure 入口網站下載含有 Azure Migrate 安裝程式指令碼的 ZIP 壓縮檔案。
+1. 從 ZIP 壓縮檔案解壓縮內容。 以系統管理權限啟動 PowerShell 主控台。
+1. 執行 PowerShell 指令碼以啟動設備 Web 應用程式。
+1. 進行設備的第一次設定，並使用 Azure Migrate 專案金鑰將其註冊至 Azure Migrate 專案。
 
-### <a name="generate-the-azure-migrate-project-key"></a>產生 Azure Migrate 專案金鑰
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. 產生 Azure Migrate 專案金鑰
 
 1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]。
 2. 在 **探索電腦** > **電腦是否已虛擬化？** 中，選取 [實體或其他 (AWS、GCP、Xen 等。)]。
@@ -142,10 +142,9 @@ Azure Migrate 設備是輕量型設備，可供 Azure Migrate 伺服器評量用
 5. 成功建立 Azure 資源之後，系統會產生 **Azure Migrate 專案金鑰**。
 6. 複製金鑰，您在設定期間需要此金鑰才能完成設備的註冊。
 
-### <a name="download-the-installer-script"></a>下載安裝程式指令碼
+### <a name="2-download-the-installer-script"></a>2. 下載安裝程式腳本
 
 在 **2：下載 Azure Migrate 設備** 中，按一下 [下載]。
-
 
 ### <a name="verify-security"></a>確認安全性
 
@@ -170,7 +169,7 @@ Azure Migrate 設備是輕量型設備，可供 Azure Migrate 伺服器評量用
         實體： (85 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>執行 Azure Migrate 安裝程式指令碼
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. 執行 Azure Migrate 安裝程式腳本
 此安裝程式指令碼會執行下列作業︰
 
 - 安裝用於 GCP 伺服器探索及評定的代理程式與 Web 應用程式。
@@ -199,13 +198,11 @@ Azure Migrate 設備是輕量型設備，可供 Azure Migrate 伺服器評量用
 
 如果發生任何問題，您可以存取位於 C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>時間戳記</em>.log 的指令碼記錄，以進行疑難排解。
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>確認設備是否能存取 Azure
 
 確定設備 VM 可以連線至[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端的 Azure URL。
 
-### <a name="configure-the-appliance"></a>設定設備
+### <a name="4-configure-the-appliance"></a>4. 設定設備
 
 第一次設定設備。
 
@@ -237,7 +234,6 @@ Azure Migrate 設備是輕量型設備，可供 Azure Migrate 伺服器評量用
 1. 成功登入之後，請回到設備組態管理員的上一個索引標籤。
 4. 如果用於記錄的 Azure 使用者針對在金鑰產生期間建立的 Azure 資源帳戶具有正確的[權限](#prepare-an-azure-user-account)，就會起始設備註冊。
 5. 成功註冊設備之後，您可以按一下 [檢視詳細資料]查看註冊詳細資料。
-
 
 ## <a name="start-continuous-discovery"></a>開始連續探索
 

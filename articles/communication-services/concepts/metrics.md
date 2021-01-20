@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: HT
+ms.openlocfilehash: e7ed4ba181d3730ebbea7725451567c93433afb8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97105998"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251092"
 ---
 # <a name="metrics-overview"></a>計量概觀
 
@@ -30,7 +30,7 @@ Azure 通訊服務中的聊天和簡訊服務會發出 API 要求的計量。 �
 
 聊天和簡訊 API 要求計量都包含三個可供您用來篩選計量資料的維度。 這些維度可使用 `Count` 彙總類型來彙總在一起，並支援所有標準的 Azure 彙總時間序列，包括 `Sum`、`Average`、`Min` 和 `Max`。
 
-如需所支援彙總類型和時間序列彙總的詳細資訊，請參閱 [Azure 計量瀏覽器的進階功能](../../azure-monitor/platform/metrics-charts.md#changing-aggregation)
+如需所支援彙總類型和時間序列彙總的詳細資訊，請參閱 [Azure 計量瀏覽器的進階功能](../../azure-monitor/platform/metrics-charts.md#aggregation)
 
 - **作業** - 可在 ACS 聊天閘道上呼叫的所有作業或路由。
 - **狀態碼** - 要求之後所傳送的狀態碼回應。

@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 08399c1b2d930abfdd5832cb102a789844931d61
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: 22bfef17f68b2e83e4f7462d8e9af6fb8aacc284
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027691"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246735"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>什麼是 Azure AD 存取權檢閱？
 
@@ -103,7 +103,7 @@ Azure AD 來賓使用者存取是以每月作用中使用者 (MAU) 計費模型�
 | 管理員會建立群組 B (其中包含 500 個使用者和 3 個群組擁有者) 的存取權檢閱，並將 3 個群組擁有者指派為檢閱者。 | 每個做為檢閱者的群組擁有者 3 個授權 | 3 |
 | 管理員會建立群組 B (其中包含 500 個使用者) 的存取權檢閱。 讓其成為自我檢閱。 | 每個做為自我檢閱者的使用者 500 個授權 | 500 |
 | 管理員會建立群組 C (其中包含 50 個成員使用者和 25 個來賓使用者) 的存取權檢閱。 讓其成為自我檢閱。 | 每個作為自我檢閱者的使用者 50 個授權。* | 50 |
-| 管理員會建立群組 D (其中包含 6 個成員使用者和 108 個來賓使用者) 的存取權檢閱。 讓其成為自我檢閱。 | 每個作為自我檢閱者的使用者 6 個授權。 來賓使用者會以每月活躍使用者 (MAU) 為基礎來計費。 不需要其他授權。 *  | - |
+| 管理員會建立群組 D (其中包含 6 個成員使用者和 108 個來賓使用者) 的存取權檢閱。 讓其成為自我檢閱。 | 每個作為自我檢閱者的使用者 6 個授權。 來賓使用者會以每月活躍使用者 (MAU) 為基礎來計費。 不需要其他授權。 *  | 6 |
 
 \*Azure AD 外部身分識別 (來賓使用者) 定價是以每月的活躍使用者 (MAU) 為基礎，這是在日曆月份內進行驗證活動的唯一使用者計數。 此模型會以 1:5 的比例取代計費模型，在您的租用戶中，每個 Azure AD Premium 授權最多允許五位來賓使用者。 當租用戶結至訂用帳戶，而且您使用外部身分識別功能與來賓使用者共同作業時，將會使用以 MAU 為基礎的計費模型自動計費。 如需詳細資訊，請參閱 Azure AD 外部身分識別的計費模型。
 

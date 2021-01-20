@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 0ba72754362d5a0d9e1b6c95dcc2e1ff7f452207
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: HT
+ms.openlocfilehash: b5e6a0cd58fca954646640e43a81155822cdba04
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753309"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567001"
 ---
 # <a name="tutorial-assess-google-cloud-platform-gcp-vm-instances-for-migration-to-azure"></a>教學課程：評估 Google Cloud Platform (GCP) VM 執行個體是否可移轉至 Azure
 
@@ -51,43 +51,47 @@ ms.locfileid: "96753309"
 
 1. 在 [伺服器] 頁面 > [Windows 和 Linux 伺服器] 上，按一下 [評估和遷移伺服器]。
 
-   ![評估和遷移伺服器按鈕的位置](./media/tutorial-assess-gcp/assess.png)
+   ![評估和遷移伺服器按鈕的位置](./media/tutorial-assess-vmware-azure-vm/assess.png)
 
-2. 在 [**Azure Migrate：伺服器評量] 中，按一下 [評估]。
+2. 在 [**Azure Migrate：伺服器評量]** 中，按一下 [評估]。
 
-    ![[評估] 按鈕的位置](./media/tutorial-assess-gcp/assess-servers.png)
+    ![[評估] 按鈕的位置](./media/tutorial-assess-vmware-azure-vm/assess-servers.png)
 
 3. 在 [評估伺服器]  >  [評量類型] 中，請選取 [Azure VM]。
 4. 在 [探索來源] 中：
 
     - 如果您使用設備探索到機器，請選取 [從 Azure Migrate 設備探索到的機器]。
     - 如果您使用匯入的 CSV 檔案探索到機器，請選取 [匯入的機器]。 
-5. 指定評量的名稱。 
-6. 按一下 [檢視全部] 來檢閱評估屬性。
+    
+1. 按一下 [ **編輯** ] 以檢查評量屬性。
 
-    ![[檢視全部] 按鈕的位置，該按鈕是用來檢閱評量屬性](./media/tutorial-assess-gcp/assessment-name.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vm/assessment-name.png" alt-text="查看評量屬性的 [編輯] 按鈕位置":::
 
-7. 在 [評量屬性]  >  [目標屬性] 中：
+1. 在 [評量屬性] > [目標屬性] 中：
     - 在 [目標位置] 中，指定您要將機器遷移到其中的 Azure 區域。
-        - 大小和成本建議是根據您指定的位置。
+        - 大小和成本建議是根據您指定的位置。 從預設值變更目標位置之後，系統會提示您指定 **保留實例** 和 **VM 系列**。
         - 在 Azure Government 中，您可以將評量的目標設定為[這些區域](migrate-support-matrix.md#supported-geographies-azure-government)
     - 在 [儲存體類型] 中，
         - 如果您想要在評量中使用以效能為基礎的資料，請針對 Azure Migrate 選取 [自動]，以根據磁碟 IOPS 和輸送量來建議儲存體類型。
         - 或者，選取您想要在遷移 VM 時使用的儲存體類型。
     - 在 [保留執行個體] 中，指定是否要在遷移 VM 時使用保留執行個體。
-        - 如果您選取使用保留執行個體，則無法指定 **折扣 (%)** 或 **VM 執行時間**。 
+        - 如果您選取使用保留執行個體，則無法指定 [折扣 (%)] 或 [VM 執行時間]。 
         - [深入了解](https://aka.ms/azurereservedinstances)。
-8. 在 [VM 大小] 中：
- 
-    - 在 [調整大小準則] 中，選取是否要根據電腦設定資料/中繼資料或以效能為基礎的資料進行評量。 如果您使用效能資料：
+ 1. 在 [VM 大小] 中：
+     - 在 [調整大小準則] 中，選取是否要根據電腦設定資料/中繼資料或以效能為基礎的資料進行評量。 如果您使用效能資料：
         - 在 [效能歷程記錄] 中，指出您想要作為評量基礎的資料持續時間
         - 在 [百分位數使用率] 中，指定您想要用於效能範例的百分位數值。 
     - 在 [VM 系列] 中，指定您想要考量的 Azure VM 系列。
         - 如果您使用的是以效能為基礎的評量，Azure Migrate 會為您建議值。
         - 視需要調整設定。 例如，如果您沒有實際執行環境需要 Azure 中的 A 系列 VM，則可以從系列清單中排除 A 系列。
-    - 在 [緩和因數] 中，指出您想要在評量期間使用的緩衝區。 這會考量各個問題，例如季節性使用量、簡短的效能歷程記錄，以及未來可能增加的使用量。 例如，如果您使用兩個緩和因數：**詳細資料** | **使用率** | **新增緩和因數 (2.0)** 讀取 IOPS |100 |200 寫入 IOPS |100 |200 讀取輸送量 |100 Mbps |200 Mbps 寫入輸送量 |100 Mbps |200 Mbps
+    - 在 [緩和因數] 中，指出您想要在評量期間使用的緩衝區。 這會考量各個問題，例如季節性使用量、簡短的效能歷程記錄，以及未來可能增加的使用量。 例如，如果您使用兩個緩和因數：
+    
+        **元件** | **有效使用率** | **新增緩和因數 (2.0)**
+        --- | --- | ---
+        核心 | 2  | 4
+        記憶體 | 8 GB | 16 GB
    
-9. 在 [價格] 中：
+1. 在 [價格] 中：
     - 如果您已註冊，請在 [供應項目] 中指定 [Azure 供應項目](https://azure.microsoft.com/support/legal/offer-details/)。 伺服器評量會評估該供應項目的成本。
     - 在 [貨幣] 中，選取您帳戶的帳單貨幣。
     - 在 [折扣 (%)] 中，在 Azure 供應項目上新增您獲得的任何訂用帳戶特定折扣。 預設設定為 0%。
@@ -95,20 +99,30 @@ ms.locfileid: "96753309"
         - 這適用於不會連續執行的 Azure VM。
         - 成本預估是根據指定的持續時間。
         - 預設值是每月 31 天/每天 24 小時。
-
     - 在 [EA 訂用帳戶] 中，指定是否要將 Enterprise 合約 (EA) 訂用帳戶折扣納入考量，以預估成本。 
     - 在 [Azure Hybrid Benefit] 中，指定您是否已經有 Windows Server 授權。 如果您有授權，且授權涵蓋 Windows Server 訂用帳戶的作用中軟體保證，您可以在將授權帶入 Azure 時，針對 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) 套用。
 
-10. 如果您進行變更，請按一下 [儲存]。
+1. 如果您進行變更，請按一下 [儲存]。
 
-    ![評量屬性](./media/tutorial-assess-gcp/assessment-properties.png)
+    ![評量屬性](./media/tutorial-assess-vmware-azure-vm/assessment-properties.png)
 
-11. 在 [評估伺服器] 中，按 [下一步]。
-12. 在 [選取要評估的機器] 中，選取 [新建]，然後指定群組名稱。 
-13. 選取設備，然後選取您想要新增至群組的 VM。 然後按一下 [下一步]  。
-14. 在 [**檢閱 + 建立評量] 中，檢閱評量詳細資料，然後按一下 [建立評量] 以建立群組並執行評量。
+1. 在 [ **評估伺服器** ] > 按 **[下一步]**。
+
+1. 在 [**選取要評估** 評量的電腦]  >   > 指定評量的名稱。 
+
+1. 在 [ **選取或建立群組** ] > 選取 [ **建立新** 的]，並指定組名。 
+    
+    :::image type="content" source="./media/tutorial-assess-physical/assess-group.png" alt-text="將 VM 新增至群組":::
 
 
+1. 選取設備，然後選取您想要新增至群組的 VM。 然後按一下 [下一步]  。
+
+
+1. 在 [檢閱 + 建立評量] 中，檢閱評量詳細資料，然後按一下 [建立評量] 以建立群組並執行評量。
+
+1. 評量建立好之後，可在 [伺服器] >  **[Azure Migrate：伺服器評量]**  > [評量] 中加以檢視。
+
+1. 按一下 [匯出評估]，將其下載為 Excel 檔案。
     > [!NOTE]
     > 針對以效能為基礎的評量，建議您在建立評量之前，先等待至少一天後再開始探索。 這可提供更高的信賴度來收集效能資料。 在理想的情況下，在您開始探索之後，請等候您指定的效能持續時間 (天/週/月)，以取得高信賴度。
 

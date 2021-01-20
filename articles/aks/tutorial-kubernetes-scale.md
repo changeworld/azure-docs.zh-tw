@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教學課程 - 調整應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何在 Kubernetes 中調整節點和 Pod，以及實作水平 Pod 自動調整。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 7f16ba3ffe6b6f96f17df540eb67e9cec0bfea8c
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
-ms.translationtype: HT
+ms.openlocfilehash: dfebb6561e83c51063515ec655153aaaa7a09c0c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825685"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251364"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教學課程：調整 Azure Kubernetes Service (AKS) 中的應用程式
 
@@ -21,7 +21,7 @@ ms.locfileid: "97825685"
 > * 手動調整執行應用程式的 Kubernetes Pod
 > * 設定執行應用程式前端的自動調整 Pod
 
-在其他教學課程中，Azure 投票應用程式會更新為新版本。
+在稍後的教學課程中，Azure 投票應用程式會更新為新版本。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -39,7 +39,7 @@ kubectl get pods
 
 下列範例輸出會顯示一個前端 Pod 和一個後端 Pod：
 
-```
+```output
 NAME                               READY     STATUS    RESTARTS   AGE
 azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
@@ -51,7 +51,7 @@ azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-再次執行 [kubectl get pods][kubectl-get]，以確認 AKS 是否建立其他 Pod。 大約一分鐘後，其他 Pod 就會成為叢集中的可用項目：
+再次執行 [kubectl 取得][kubectl-get] pod，以確認 AKS 成功建立其他 pod。 在一分鐘之後，您的叢集中可以使用 pod：
 
 ```console
 kubectl get pods
@@ -131,7 +131,7 @@ spec:
 
 使用 `kubectl apply` 來套用 `azure-vote-hpa.yaml` 資訊清單檔中定義的自動調整程式。
 
-```
+```console
 kubectl apply -f azure-vote-hpa.yaml
 ```
 
@@ -158,7 +158,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 
 成功調整叢集後，輸出會類似下列範例：
 
-```
+```output
 "agentPoolProfiles": [
   {
     "count": 3,

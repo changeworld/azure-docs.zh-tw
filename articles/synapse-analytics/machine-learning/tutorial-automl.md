@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: e219531a88787f19197a2e8c2a80040497c6dc1e
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
-ms.translationtype: HT
+ms.openlocfilehash: f3b0c5f1487951d05bc83973e5b4b9f3634a694b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901414"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222253"
 ---
 # <a name="tutorial-train-a-machine-learning-model-without-code"></a>教學課程：不使用程式碼將機器學習模型定型
 
-您可以使用 [自動化機器學習](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)定型的新機器學習模型，擴充 Spark 資料表中的資料。 在 Azure Synapse Analytics 中，您可以直接在工作區中選取 Spark 資料表，作為用來在無需程式碼體驗中建立機器學習模型的訓練資料集。
+您可以使用 [自動化機器學習](../../machine-learning/concept-automated-ml.md)定型的新機器學習模型，擴充 Spark 資料表中的資料。 在 Azure Synapse Analytics 中，您可以直接在工作區中選取 Spark 資料表，作為用來在無需程式碼體驗中建立機器學習模型的訓練資料集。
 
 在本教學課程中，您將了解如何在 Azure Synapse Analytics studio 中不使用程式碼將機器學習模型定型。 您會在 Azure Machine Learning 中使用自動化機器學習，無需手動編碼。 您所定型的模型類型取決於您嘗試解決的問題。
 

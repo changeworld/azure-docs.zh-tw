@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
-ms.translationtype: HT
+ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739785"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555945"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>註冊和掃描 Azure SQL Database
 
@@ -28,7 +28,7 @@ Azure SQL Database 資料來源支援下列功能：
 
 ### <a name="known-limitations"></a>已知限制
 
-Azure Purview 不支援掃描 Azure SQL Database 中的[檢視](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true)。 
+Azure Purview 不支援掃描 Azure SQL Database 中的[檢視](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -50,7 +50,7 @@ Azure Purview 不支援掃描 Azure SQL Database 中的[檢視](https://docs.mic
 > [!Note]
 > 只有 master 資料庫中的伺服器層級主體登入 (由佈建程序所建立) 或 `loginmanager` 資料庫角色成員，才能建立新登入。 授與權限之後大約需要 **15 分鐘**，Purview 帳戶才會有適當的權限可掃描資源。
 
-您可以依照[建立登入](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)中的指示，建立 Azure SQL Database 的登入 (如果您沒有可用的登入)。 您在後續步驟將需要 **使用者名稱** 和 **密碼**。
+您可以依照[建立登入](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1)中的指示，建立 Azure SQL Database 的登入 (如果您沒有可用的登入)。 您在後續步驟將需要 **使用者名稱** 和 **密碼**。
 
 1. 在 Azure 入口網站中瀏覽至您的金鑰保存庫
 1. 選取 [設定] > [秘密]
@@ -100,7 +100,7 @@ Azure Purview 不支援掃描 Azure SQL Database 中的[檢視](https://docs.mic
     ```
 
     > [!Note]
-    > `Username` 是您本身的服務主體或 Purview 的受控識別。 您可以閱讀更多有關[固定資料庫角色及其功能](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)的詳細資訊。
+    > `Username` 是您本身的服務主體或 Purview 的受控識別。 您可以閱讀更多有關[固定資料庫角色及其功能](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)的詳細資訊。
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>將服務主體新增至金鑰保存庫和 Purview 的認證
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 26905b746efb0bfcc877e0fa8fad797672bb6447
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: HT
+ms.openlocfilehash: d0973682a62b17a21557727a8d5eb8fcb7ec7ef1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483210"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203366"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure 中的 Windows 虛擬機器
 
@@ -45,12 +45,12 @@ Azure 中所建立的所有資源分散在世界各地的多個[地理區域](ht
 
 下表顯示一些您可以取得可用位置清單的方式。
 
-| 方法 | 描述 |
+| 方法 | 說明 |
 | --- | --- |
 | Azure 入口網站 |當您建立 VM 時，請從清單中選取位置。 |
 | Azure PowerShell |使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 命令。 |
 | REST API |使用[列出位置](/rest/api/resources/subscriptions)作業。 |
-| Azure CLI |使用 [az account list-locations](/cli/azure/account?view=azure-cli-latest) 作業。 |
+| Azure CLI |使用 [az account list-locations](/cli/azure/account) 作業。 |
 
 ### <a name="singapore-data-residency"></a>新加坡資料落地
 
@@ -61,7 +61,7 @@ Azure 已宣布推出業界領先的單一執行個體虛擬機器 99.9% 服務�
 
 
 ## <a name="vm-size"></a>VM 大小
-您使用的 VM [大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)是由所您要執行的工作負載所決定。 您所選的大小會決定例如處理電源、記憶體和儲存體容量等因素。 Azure 提供了各種不同的大小，以支援許多類型的用法。
+您使用的 VM [大小](../sizes.md)是由所您要執行的工作負載所決定。 您所選的大小會決定例如處理電源、記憶體和儲存體容量等因素。 Azure 提供了各種不同的大小，以支援許多類型的用法。
 
 Azure 可依據 VM 的大小和作業系統，以[每小時](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)價格方式收費。 針對不足一小時的部分，Azure 只會收取已使用分鐘數的費用。 儲存體是個別定價與收費。
 
@@ -69,18 +69,18 @@ Azure 可依據 VM 的大小和作業系統，以[每小時](https://azure.micro
 您的訂用帳戶都有預設[配額限制](../../azure-resource-manager/management/azure-subscription-service-limits.md)，而此限制會在您要部署多個 VM 以供專案使用時造成影響。 每一訂用帳戶目前的限制是每一區域 20 個 VM。 只要[提出支援票證來要求增加](../../azure-portal/supportability/resource-manager-core-quotas-request.md)，即可提高配額限制
 
 ### <a name="operating-system-disks-and-images"></a>作業系統磁碟和映像
-虛擬機器是使用[虛擬硬碟 (VHD)](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 來儲存其作業系統 (OS) 和資料。 VHD 也能夠使用於您可以選擇用來安裝 OS 的映像。 
+虛擬機器是使用[虛擬硬碟 (VHD)](../managed-disks-overview.md) 來儲存其作業系統 (OS) 和資料。 VHD 也能夠使用於您可以選擇用來安裝 OS 的映像。 
 
 Azure 提供許多 [Marketplace 映像](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images%3Bwindows&page=1)來與不同版本和類型的 Windows Server 作業系統搭配使用。 Marketplace 映像是依映像發行者、供應項目、SKU 和版本 (版本通常會指定為最新版本) 來識別。 僅支援 64 位元作業系統。 如需所支援客體作業系統、角色和功能的詳細資訊，請參閱 [Microsoft Azure 虛擬機器的 Microsoft 伺服器軟體支援](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)。
 
 下表顯示您可找到映像資訊的一些方法。
 
-| 方法 | 描述 |
+| 方法 | 說明 |
 | --- | --- |
 | Azure 入口網站 |當您選取要使用的影像時，會自動為您指定值。 |
 | Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
 | REST API |[列出映像發行者](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[列出映像供應項目](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[列出映像 SKU](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
+| Azure CLI |[az vm image list-publishers](/cli/azure/vm/image) --location *location*<BR>[az vm image list-offers](/cli/azure/vm/image) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](/cli/azure/vm) --location *location* --publisher *publisherName* --offer *offerName*|
 
 您可以選擇[上傳並使用您自己的映像](upload-generalized-managed.md)，當您這麼做時，不會使用發行者名稱、供應項目和 SKU。
 
@@ -103,7 +103,7 @@ VM [擴充](../extensions/features-windows.md?toc=/azure/virtual-machines/window
 | [虛擬網路](../../virtual-network/virtual-networks-overview.md) |是 |VM 必須是虛擬網路的成員。 |
 | [公用 IP 位址](../../virtual-network/public-ip-addresses.md) |否 |可以有公用 IP 位址指派給 VM，以從遠端存取它。 |
 | [網路介面](../../virtual-network/virtual-network-network-interface.md) |是 |VM 需要網路介面以在網路中進行通訊。 |
-| [資料磁碟](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |否 |VM 可以包含資料磁碟來擴充儲存體功能。 |
+| [資料磁碟](attach-managed-disk-portal.md) |否 |VM 可以包含資料磁碟來擴充儲存體功能。 |
 
 
 ## <a name="data-residency"></a>資料存留處

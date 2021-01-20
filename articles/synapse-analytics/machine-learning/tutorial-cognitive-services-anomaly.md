@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 4052d6a0773aa27e0a378ee04975c7946f1ffbfe
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: HT
+ms.openlocfilehash: 5e7b914d459d2452704f93987ce1bf91bfba988c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463634"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222202"
 ---
 # <a name="tutorial-anomaly-detection-with-cognitive-services-preview"></a>教學課程：使用認知服務的異常偵測 (預覽)
 
-在本教學課程中，您將了解如何使用[認知服務](https://go.microsoft.com/fwlink/?linkid=2147492)，輕鬆地擴充 Azure Synapse 中的資料。 我們將使用[異常偵測器](https://go.microsoft.com/fwlink/?linkid=2147493)來執行異常偵測。 Azure Synapse 中的使用者可以直接選取資料表來進行異常偵測。
+在本教學課程中，您將了解如何使用[認知服務](../../cognitive-services/index.yml)，輕鬆地擴充 Azure Synapse 中的資料。 我們將使用[異常偵測器](../../cognitive-services/anomaly-detector/index.yml)來執行異常偵測。 Azure Synapse 中的使用者可以直接選取資料表來進行異常偵測。
 
 本教學課程涵蓋下列項目：
 
@@ -94,7 +94,7 @@ ms.locfileid: "96463634"
 
 您所提供的 Azure Key Vault 詳細資料，可讓您從這項體驗安全地參考祕密，而無洩漏之虞。
 
-您現在可以 **全部執行** 資料格，以執行異常偵測。 深入了解[認知服務 - 異常偵測器](https://go.microsoft.com/fwlink/?linkid=2147493)。
+您現在可以 **全部執行** 資料格，以執行異常偵測。 深入了解[認知服務 - 異常偵測器](../../cognitive-services/anomaly-detector/index.yml)。
 
 ![執行異常偵測](media/tutorial-cognitive-services/tutorial-cognitive-services-anomaly-00f.png)
 

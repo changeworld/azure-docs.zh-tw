@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: alehall
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 005e3a3b717d4b1b8e5eb02b77a1d228908f8707
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
-ms.translationtype: HT
+ms.openlocfilehash: 0537d2353d6b372ed19127101c488b872bbc5224
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210567"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218853"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立 Azure Synapse 工作區
 
@@ -30,9 +30,9 @@ Azure PowerShell 是一組 Cmdlet，可直接從 PowerShell 管理 Azure 資源�
 - [Azure Data Lake Storage Gen2 儲存體帳戶](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
     > [!IMPORTANT]
-    > Azure Synapse 工作區必須能夠讀取和寫入選取的 ADLS Gen2 帳戶。 對於您連結為主要儲存體帳戶的任何儲存體帳戶，您必須在建立儲存體帳戶時啟用 [階層式命名空間]，如[建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell#create-a-storage-account)所述。
+    > Azure Synapse 工作區必須能夠讀取和寫入選取的 ADLS Gen2 帳戶。 對於您連結為主要儲存體帳戶的任何儲存體帳戶，您必須在建立儲存體帳戶時啟用 [階層式命名空間]，如[建立儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-powershell#create-a-storage-account)所述。
 
-如果您選擇使用 Cloud Shell，請參閱 [Azure Cloud Shell 的概觀](https://docs.microsoft.com/azure/cloud-shell/overview)以取得詳細資訊。
+如果您選擇使用 Cloud Shell，請參閱 [Azure Cloud Shell 的概觀](../cloud-shell/overview.md)以取得詳細資訊。
 
 ### <a name="install-the-azure-powershell-module-locally"></a>在本機安裝 Azure PowerShell 模組
 

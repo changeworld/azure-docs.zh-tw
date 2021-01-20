@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 11c479c6cc8f330a2b3b1edd25bad39321d6ed1c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017539"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178578"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>快速入門：將 Microsoft 身分識別平台登入新增至 ASP.NET Web 應用程式
 
@@ -38,7 +38,7 @@ ms.locfileid: "98017539"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例
 >
-> 1. 移至新的 [Azure 入口網站 - 應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)窗格。
+> 1. 移至 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs" target="_blank">Azure 入口網站 - 應用程式註冊<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入門體驗。
 > 1. 輸入應用程式的名稱，並選取 [註冊]  。
 > 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 >
@@ -53,7 +53,7 @@ ms.locfileid: "98017539"
 > 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
 > 1. 輸入應用程式的 [名稱]，例如 `ASPNET-Quickstart`。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
 > 1. 在 **重新導向 URL** 中新增 `https://localhost:44368/`，然後選取 [註冊]。
-> 1. 從左側流覽窗格的 [管理] 區段下，選取 [驗證]
+> 1. 在 [管理] 底下，選取 [驗證]。
 > 1. 在 [隱含授與] 子區段底下，選取 [識別碼權杖]。
 > 1. 選取 [儲存]。
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: HT
+ms.openlocfilehash: 4e19991de20b130b878a230313d87ca09d31a84e
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496614"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556438"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建置您的第一個資料處理站
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "96496614"
 > 本文適用於第 1 版 Azure Data Factory (正式運作版)。 如果您使用目前版本的 Data Factory 服務，請參閱[快速入門：使用 Data Factory 建立資料處理站](../quickstart-create-data-factory-dot-net.md)。
 
 > [!WARNING]
-> Azure 入口網站中用於撰寫及部署 ADF v1 管線的 JSON 編輯器將於 2019 年 7 月 31 日關閉。 2019 年 7 月 31 日之後，您可以繼續使用 [ADF v1 Powershell Cmdlet](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)、[ADF v1 .Net SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)、[ADF v1 REST API](/rest/api/datafactory/) 來撰寫及部署您的 ADF v1 管線。
+> Azure 入口網站中用於撰寫及部署 ADF v1 管線的 JSON 編輯器將於 2019 年 7 月 31 日關閉。 2019 年 7 月 31 日之後，您可以繼續使用 [ADF v1 Powershell Cmdlet](/powershell/module/az.datafactory/)、[ADF v1 .Net SDK](/dotnet/api/microsoft.azure.management.datafactories.models)、[ADF v1 REST API](/rest/api/datafactory/) 來撰寫及部署您的 ADF v1 管線。
 
 在本文中，您會了解如何使用 [Azure 入口網站](https://portal.azure.com/) 來建立您的第一個資料處理站。 若要使用其他工具/SDK 進行本教學課程，請選取下拉式清單的其中一個選項。 
 

@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教學課程 - 更新應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何使用新版的應用程式程式碼來更新對 AKS 的現有應用程式部署。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: HT
+ms.date: 01/12/2021
+ms.custom: mvc
+ms.openlocfilehash: b969e3ec1c670c0a12129289c8ff7eb81df51ff9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833906"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250650"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>教學課程：更新 Azure Kubernetes Service (AKS) 中的應用程式
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 若要確認更新的容器映像已顯示您的變更，請開啟本機網頁瀏覽器並進入 `http://localhost:8080`。
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="螢幕擷取畫面，顯示已使用本機網頁瀏覽器和本機主機所開啟已更新容器映像 Azure 投票應用程式的範例。":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="螢幕擷取畫面，顯示在本機網頁瀏覽器中以本機方式開啟的已更新容器映射 Azure 投票應用程式範例":::
 
 *config_file.cfg* 檔案中提供的更新值會顯示於執行中的應用程式上。
 
@@ -143,9 +143,9 @@ azure-vote-front-1297194256-zktw9  1/1       Terminating   0          1m
 kubectl get service azure-vote-front
 ```
 
-現在，開啟本機網頁瀏覽器並前往您服務的 IP 位址：
+現在，將網頁瀏覽器開啟至服務的 IP 位址：
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="螢幕擷取畫面，顯示在本機網頁瀏覽器中所開啟已更新應用程式 Azure 投票應用程式的範例。":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="螢幕擷取畫面，顯示在本機網頁瀏覽器中開啟的 AKS 叢集中執行的更新映射 Azure 投票應用程式範例。":::
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,14 +3,14 @@ title: 快速入門：使用 PowerShell 部署 AKS 叢集
 description: 了解如何使用 PowerShell 快速建立 Kubernetes 叢集、部署應用程式，以及監視 Azure Kubernetes Service (AKS) 中的效能。
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 01/13/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e5abcf9bfbf661abf5212d94d849d27c25fe9a8d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
-ms.translationtype: HT
+ms.openlocfilehash: 41412a4ec95bb9b89df5fded6962965594e823fc
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91461048"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248508"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>快速入門：使用 PowerShell 部署 Azure Kubernetes Service 叢集
 
@@ -66,7 +66,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 > 建立 AKS 叢集時，系統會自動建立第二個資源群組來儲存 AKS 資源。 如需詳細資訊，請參閱[為何會使用 AKS 建立兩個資源群組？](./faq.md#why-are-two-resource-groups-created-with-aks)
 
 ```azurepowershell-interactive
-New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
+New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
 ```
 
 在幾分鐘之後，此命令就會完成，並傳回叢集的相關資訊。

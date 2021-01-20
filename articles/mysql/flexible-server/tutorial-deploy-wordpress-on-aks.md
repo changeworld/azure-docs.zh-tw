@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: a02cb30b0f00f732fa0c4ac9319a652ef5cb6fc1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
-ms.translationtype: HT
+ms.openlocfilehash: b82bb9b7684d1119b6b62216b52210845d8f4c67
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657051"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "98199626"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>教學課程：使用「適用於 MySQL 的 Azure 資料庫 - 彈性伺服器」在 AKS 上部署 WordPress
 
@@ -63,7 +63,7 @@ az group create --name wordpress-project --location eastus
 使用 [az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-create) 命令來建立 AKS 叢集。 下列範例會建立名為 myAKSCluster  並包含一個節點的叢集。 這需要數分鐘的時間才能完成。
 
 ```azurecli-interactive
-az aks create --resource-group wordpress-project --name wordpresscluster--node-count 1 --generate-ssh-keys
+az aks create --resource-group wordpress-project --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
 在幾分鐘之後，此命令就會完成，並以 JSON 格式傳回叢集的相關資訊。
@@ -82,7 +82,7 @@ az aks install-cli
 若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials) 命令。 此命令會下載憑證並設定 Kubernetes CLI 以供使用。
 
 ```azurecli-interactive
-az aks get-credentials --resource-group wordpress-project --name wordpresscluster
+az aks get-credentials --resource-group wordpress-project --name myAKSCluster
 ```
 
 > [!NOTE]

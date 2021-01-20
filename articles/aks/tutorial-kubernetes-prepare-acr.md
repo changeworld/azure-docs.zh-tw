@@ -3,14 +3,14 @@ title: Azure 上的 Kubernertes 教學課程 - 建立容器登錄
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您會建立 Azure Container Registry 執行個體，並上傳範例應用程式容器映像。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b0f78c3969f3d02c19824fdb6d1e3b786dceb43c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
-ms.translationtype: HT
+ms.openlocfilehash: d1dce1c59c4bf40eaead89e4a8a088e9a8ea4f76
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747076"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250616"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教學課程：部署和使用 Azure Container Registry
 
@@ -22,7 +22,7 @@ Azure Container Registry (ACR) 是適用於容器映像的私人登錄。 私人
 > * 將映像上傳至 ACR
 > * 檢視登錄中的映像
 
-在其他教學課程中，此 ACR 執行個體會與 AKS 中的 Kubernetes 叢集整合，並從該映像部署應用程式。
+在稍後的教學課程中，此 ACR 實例會與 AKS 中的 Kubernetes 叢集整合，並從映射部署應用程式。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -60,12 +60,12 @@ az acr login --name <acrName>
 
 若要查看目前的本機映像清單，請使用 [docker images][docker-images] 命令：
 
-```azurecli
+```console
 $ docker images
 ```
-上述命令輸出會顯示您目前的本機映像清單：
+上述命令的輸出會顯示您目前的本機映射清單：
 
-```
+```output
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
 mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
 mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
@@ -74,13 +74,13 @@ tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863 
 
 若要將 *azure-vote-front* 容器映像用於 ACR，該映像必須標記登錄的登入伺服器位址。 將容器映像推送到映像登錄時，此標籤可用於路由傳送。
 
-若要取得登入伺服器位址，請使用 [az acr list][az-acr-list] 命令並查詢 *loginServer* ，如下所示：
+若要取得登入伺服器位址，請使用 [az acr list][az-acr-list] 命令並查詢 *loginServer*，如下所示：
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-現在，請以容器登錄的 *acrLoginServer* 位址標記您的本機 *azure-vote-front* 映像。 若要指出映像版本，請在映像名稱結尾處加上 *:v1* ：
+現在，請以容器登錄的 *acrLoginServer* 位址標記您的本機 *azure-vote-front* 映像。 若要指出映像版本，請在映像名稱結尾處加上 *:v1*：
 
 ```console
 docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v1
@@ -122,7 +122,7 @@ az acr repository list --name <acrName> --output table
 
 下列範例輸出會將 *azure-vote-front* 映像列為登錄中的可用映像：
 
-```
+```output
 Result
 ----------------
 azure-vote-front
@@ -136,7 +136,7 @@ az acr repository show-tags --name <acrName> --repository azure-vote-front --out
 
 下列範例輸出會顯示在先前的步驟中標記的 *v1* 映像：
 
-```
+```output
 Result
 --------
 v1

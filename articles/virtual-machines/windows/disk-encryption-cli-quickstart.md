@@ -8,12 +8,12 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0156a1d7cea477a1725b60a5e1de229e76d2664c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
-ms.translationtype: HT
+ms.openlocfilehash: 90c2584ef56922fc2cd57f445201b63550c485c1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517983"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200663"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>快速入門：使用 Azure CLI 建立和加密 Windows 虛擬機器
 
@@ -27,7 +27,7 @@ Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
+使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
 
-使用 [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立 VM。 下列範例會建立名為 myVM  的 VM。 此範例會以 azureuser  作為系統管理使用者名稱並以 myPassword12  作為密碼。
+使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 下列範例會建立名為 myVM  的 VM。 此範例會以 azureuser  作為系統管理使用者名稱並以 myPassword12  作為密碼。
 
 ```azurecli-interactive
 az vm create \
@@ -63,7 +63,7 @@ az vm create \
 
 ## <a name="create-a-key-vault-configured-for-encryption-keys"></a>建立為加密金鑰設定的金鑰保存庫
 
-Azure 磁碟加密會將其加密金鑰儲存在 Azure Key Vault 中。 使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 建立金鑰保存庫。 若要啟用金鑰保存庫來儲存加密金鑰，請使用 --enabled-for-disk-encryption 參數。
+Azure 磁碟加密會將其加密金鑰儲存在 Azure Key Vault 中。 使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) 建立金鑰保存庫。 若要啟用金鑰保存庫來儲存加密金鑰，請使用 --enabled-for-disk-encryption 參數。
 > [!Important]
 > 每個金鑰保存庫必須有唯一的名稱。 下列範例會建立名為 *myKV* 的金鑰保存庫，但您必須為自己的金鑰保存庫命名不同名稱。
 
@@ -73,7 +73,7 @@ az keyvault create --name "myKV" --resource-group "myResourceGroup" --location e
 
 ## <a name="encrypt-the-virtual-machine"></a>將虛擬機器加密
 
-使用 [az vm encryption](/cli/azure/vm/encryption?view=azure-cli-latest) 加密您的 VM，提供您唯一的金鑰保存庫名稱給 --disk-encryption-keyvault 參數。
+使用 [az vm encryption](/cli/azure/vm/encryption) 加密您的 VM，提供您唯一的金鑰保存庫名稱給 --disk-encryption-keyvault 參數。
 
 ```azurecli-interactive
 az vm encryption enable -g MyResourceGroup --name MyVM --disk-encryption-keyvault myKV

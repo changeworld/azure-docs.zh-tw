@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: fd9e78b6bc3513f79b05c9522e891d346e3d31a0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
-ms.translationtype: HT
+ms.openlocfilehash: 754f58fe7ee9bc8d10ba1fa973615781ce4d6dce
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637508"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555911"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>使用異動資料擷取 (CDC)，以累加方式從 Azure SQL 受控執行個體將資料載入 Azure 儲存體
 
@@ -47,18 +47,18 @@ ms.locfileid: "92637508"
 
    1. 建立 **查閱活動** 以計算 SQL Database CDC 資料表中已變更記錄的數目，並將其傳遞給 IF 條件活動。
    2. 建立 **If 條件** 以檢查是否有變更的記錄，如果有，則叫用複製活動。
-   3. 建立 **複製活動** ，將 CDC 資料表之間所插入/更新/刪除的資料複製到 Azure Blob 儲存體。
+   3. 建立 **複製活動**，將 CDC 資料表之間所插入/更新/刪除的資料複製到 Azure Blob 儲存體。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>必要條件
-* **Azure SQL Database 受控執行個體** 。 您需要使用資料庫作為 **來源** 資料存放區。 如果您沒有 Azure SQL Database 受控執行個體，請參閱 [建立 Azure SQL Database 受控執行個體](../azure-sql/managed-instance/instance-create-quickstart.md) 一文，以瞭解建立的步驟。
-* **Azure 儲存體帳戶** 。 您需要使用 Blob 儲存體作為 **接收** 資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)一文，按照步驟來建立帳戶。 建立名為 **raw** 的容器。 
+* **Azure SQL Database 受控執行個體**。 您需要使用資料庫作為 **來源** 資料存放區。 如果您沒有 Azure SQL Database 受控執行個體，請參閱 [建立 Azure SQL Database 受控執行個體](../azure-sql/managed-instance/instance-create-quickstart.md) 一文，以瞭解建立的步驟。
+* **Azure 儲存體帳戶**。 您需要使用 Blob 儲存體作為 **接收** 資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../storage/common/storage-account-create.md)一文，按照步驟來建立帳戶。 建立名為 **raw** 的容器。 
 
 ### <a name="create-a-data-source-table-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料來源資料表
 
-1. 啟動 **SQL Server Management Studio** ，並連線到您的 Azure SQL 受控執行個體伺服器。
-2. 在 **伺服器總管** 中，以滑鼠右鍵按一下您的 **資料庫** ，然後選擇 [新增查詢]。
+1. 啟動 **SQL Server Management Studio**，並連線到您的 Azure SQL 受控執行個體伺服器。
+2. 在 **伺服器總管** 中，以滑鼠右鍵按一下您的 **資料庫**，然後選擇 [新增查詢]。
 3. 針對您的 Azure SQL 受控執行個體資料庫執行下列 SQL 命令，藉此建立名為 `customers` 的資料表做為資料來源存放區。  
 
     ```sql
@@ -75,7 +75,7 @@ ms.locfileid: "92637508"
 
     > [!NOTE]
     > - 以具有 customers 資料表之 Azure SQL MI 的結構描述取代 &lt;您的來源結構描述名稱&gt;。
-    > - 異動資料擷取不會在變更要追蹤之資料表的交易中執行任何動作。 而是會將插入、更新和刪除作業寫入交易記錄中。 如果您沒有定期且有系統地清除儲放在變更資料表中的資料，這項資料將無限制地成長。 如需詳細資訊，請參閱 [啟用資料庫的異動資料擷取](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?enable-change-data-capture-for-a-database=&view=sql-server-ver15)
+    > - 異動資料擷取不會在變更要追蹤之資料表的交易中執行任何動作。 而是會將插入、更新和刪除作業寫入交易記錄中。 如果您沒有定期且有系統地清除儲放在變更資料表中的資料，這項資料將無限制地成長。 如需詳細資訊，請參閱 [啟用資料庫的異動資料擷取](/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server#enable-change-data-capture-for-a-database)
 
     ```sql
     EXEC sys.sp_cdc_enable_db 
@@ -111,11 +111,11 @@ ms.locfileid: "92637508"
 
      ![新增資料處理站頁面](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-azure-data-factory.png)
 
-   Azure Data Factory 的名稱必須是 **全域唯一的** 。 如果您收到錯誤，請變更 Data Factory 名稱 (例如 yournameADFTutorialDataFactory)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
+   Azure Data Factory 的名稱必須是 **全域唯一的**。 如果您收到錯誤，請變更 Data Factory 名稱 (例如 yournameADFTutorialDataFactory)，然後試著重新建立。 請參閱 [Data Factory - 命名規則](naming-rules.md)一文，以了解 Data Factory 成品的命名規則。
 
     *Data factory 名稱 "ADFTutorialDataFactory" 無法使用。*
 3. 針對 [版本] 選取 [V2]。
-4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶** 。
+4. 選取您要在其中建立資料處理站的 Azure **訂用帳戶**。
 5. 針對 [資源群組]，請執行下列其中一個步驟︰
 
    1. 選取 [使用現有的] ，然後從下拉式清單選取現有的資源群組。
@@ -167,7 +167,7 @@ ms.locfileid: "92637508"
 2. 在 [新增連結服務] 視窗中，選取 [Azure SQL Database 受控執行個體]，然後按一下 [繼續]。
 3. 在 [新增連結服務] 視窗中，執行下列步驟：
 
-   1. 在 [名稱] 欄位中，輸入 **AzureSqlMI1** 。
+   1. 在 [名稱] 欄位中，輸入 **AzureSqlMI1**。
    2. 在 [伺服器名稱] 欄位中選取您的 SQL server。
    4. 在 [資料庫名稱] 欄位中選取您的 SQL 資料庫。
    5. 在 [使用者名稱] 欄位輸入使用者的名稱。
@@ -186,14 +186,14 @@ ms.locfileid: "92637508"
 1. 在樹狀檢視中，按一下 [+] (加號)，然後按一下 [資料集]。
 
    ![新增資料集功能表](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-dataset-menu.png)
-2. 選取 **Azure SQL Database 受控執行個體** ，然後按一下 [繼續]。
+2. 選取 **Azure SQL Database 受控執行個體**，然後按一下 [繼續]。
 
    ![來源資料集類型 - Azure SQL Database](./media/tutorial-incremental-copy-change-data-capture-feature-portal/select-azure-sql-database.png)
    
 3. 在 [設定屬性] 索引標籤中，設定資料集名稱和連線資訊：
  
    1. 針對 **連結服務** 選取 [AzureSqlMI1]。
-   2. 選取 **[dbo].[dbo_customers_CT] **做為** 資料表名稱** 。  注意：當 [customers] 資料表上啟用 CDC 時，會自動建立此資料表。 變更的資料永遠不會直接從這個資料表查詢，而是透過 [CDC 函式](/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql?view=sql-server-ver15) 進行解壓縮。
+   2. 選取 **[dbo].[dbo_customers_CT] **做為** 資料表名稱**。  注意：當 [customers] 資料表上啟用 CDC 時，會自動建立此資料表。 變更的資料永遠不會直接從這個資料表查詢，而是透過 [CDC 函式](/sql/relational-databases/system-functions/change-data-capture-functions-transact-sql) 進行解壓縮。
 
    ![來源連線](./media/tutorial-incremental-copy-change-data-capture-feature-portal/source-dataset-configuration.png)
 
@@ -212,22 +212,22 @@ ms.locfileid: "92637508"
 4. 在 [設定屬性] 索引標籤中，設定資料集名稱和連線資訊：
 
    1. 選取 [AzureStorageLinkedService] 作為 [連結服務]。
-   2. 針對 **filePath** 的 **容器** 部分，輸入 **原始資料** 。
+   2. 針對 **filePath** 的 **容器** 部分，輸入 **原始資料**。
    3. 啟用 **以第一個資料列做為標題**
    4. 按一下 [確定]。
 
    ![接收資料集 - 連線](./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration.png)
 
 ## <a name="create-a-pipeline-to-copy-the-changed-data"></a>建立管道以複製變更的資料
-在此步驟中，您會建立管道，而且管道會先使用 **查閱活動** ，檢查變更資料表中變更的記錄數目。 IF 條件活動會檢查已變更記錄的數目是否大於零，並執行 **複製活動** ，將插入/更新/刪除的資料從 Azure SQL Database 複製到 Azure Blob 儲存體。 最後，會設定輪轉視窗觸發程序，而且開始和結束時間會傳遞至活動做為開始和結束視窗參數。 
+在此步驟中，您會建立管道，而且管道會先使用 **查閱活動**，檢查變更資料表中變更的記錄數目。 IF 條件活動會檢查已變更記錄的數目是否大於零，並執行 **複製活動**，將插入/更新/刪除的資料從 Azure SQL Database 複製到 Azure Blob 儲存體。 最後，會設定輪轉視窗觸發程序，而且開始和結束時間會傳遞至活動做為開始和結束視窗參數。 
 
 1. 在 [Data Factory] 使用者介面中，切換至 [編輯] 索引標籤。按一下左窗格中的 [+] (加號)，然後按一下 [管線]。
 
     ![新增管線功能表](./media/tutorial-incremental-copy-change-data-capture-feature-portal/new-pipeline-menu.png)
-2. 您會看到用於設定管線的新索引標籤。 你也會在樹狀檢視中看到該管線。 在 [屬性] 視窗中，將管線的名稱變更為 **IncrementalCopyPipeline** 。
+2. 您會看到用於設定管線的新索引標籤。 你也會在樹狀檢視中看到該管線。 在 [屬性] 視窗中，將管線的名稱變更為 **IncrementalCopyPipeline**。
 
     ![管線名稱](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-name.png)
-3. 在 [活動] 工具箱中展開 [一般]，並將 [查閱] 活動拖放至管線設計工具介面。 將活動的名稱設定為 **GetChangeCount** 。 此活動會指定的時間範圍內取得變更資料表中的記錄數目。
+3. 在 [活動] 工具箱中展開 [一般]，並將 [查閱] 活動拖放至管線設計工具介面。 將活動的名稱設定為 **GetChangeCount**。 此活動會指定的時間範圍內取得變更資料表中的記錄數目。
 
     ![查閱活動 - 名稱](./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-name.png)
 4. 切換至 [屬性] 視窗中的 [設定]：
@@ -245,7 +245,7 @@ ms.locfileid: "92637508"
 5. 按一下 [預覽資料] 按鈕，確認查閱活動可以取得有效的輸出
 
     ![查閱活動 - 預覽](./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-preview.png)
-6. 在 [活動]  工具箱中展開 [反覆項目和條件式]，然後將 **If 條件** 活動拖放至管道設計工具介面。 將活動的名稱設定為 **HasChangedRows** 。 
+6. 在 [活動]  工具箱中展開 [反覆項目和條件式]，然後將 **If 條件** 活動拖放至管道設計工具介面。 將活動的名稱設定為 **HasChangedRows**。 
 
     ![If 條件活動 - 名稱](./media/tutorial-incremental-copy-change-data-capture-feature-portal/if-condition-activity-name.png)
 7. 切換至 [屬性] 視窗中的 [活動]：
@@ -269,7 +269,7 @@ ms.locfileid: "92637508"
 8. 在 **偵錯** 模式中執行管道以確認管道執行成功。 
 
    ![管道 - 偵錯](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug.png)
-9. 接下來，返回 True 條件步驟，並刪除 **等候** 活動。 在 [活動] 工具箱中，展開 [移動與轉換]，然後將 [複製] 活動拖放至管道設計工具介面。 將活動的名稱設定為 **IncrementalCopyActivity** 。 
+9. 接下來，返回 True 條件步驟，並刪除 **等候** 活動。 在 [活動] 工具箱中，展開 [移動與轉換]，然後將 [複製] 活動拖放至管道設計工具介面。 將活動的名稱設定為 **IncrementalCopyActivity**。 
 
    ![複製活動 - 名稱](./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-source-name.png)
 10. 在 [屬性] 視窗中切換至 [來源] 索引標籤，並執行下列步驟：
@@ -309,7 +309,7 @@ ms.locfileid: "92637508"
 ### <a name="configure-the-tumbling-window-trigger-and-cdc-window-parameters"></a>設定輪轉視窗觸發程序和 CDC 視窗參數 
 在此步驟中，您會建立輪轉視窗觸發程序，以頻繁的排程執行作業。 您將使用輪轉視窗觸發程序的 WindowStart 和 WindowEnd 系統變數，並將它們當做參數傳遞至管道，以便用於 CDC 查詢中。
 
-1. 瀏覽至 **IncrementalCopyPipeline** 管道的 [參數] 索引標籤，然後使用 [+ 新增] 按鈕，將兩個參數 ( **triggerStartTime** 和 **triggerEndTime** ) 新增至管道，這將代表輪轉視窗的開始和結束時間。 為了進行偵錯，請以 **YYYY-MM-DD HH24:MI:SS.FFF** 的格式來新增預設值，但請確認資料表上的 triggerStartTime 並未在 CDC 之前啟用，否則會導致錯誤發生。
+1. 瀏覽至 **IncrementalCopyPipeline** 管道的 [參數] 索引標籤，然後使用 [+ 新增] 按鈕，將兩個參數 (**triggerStartTime** 和 **triggerEndTime**) 新增至管道，這將代表輪轉視窗的開始和結束時間。 為了進行偵錯，請以 **YYYY-MM-DD HH24:MI:SS.FFF** 的格式來新增預設值，但請確認資料表上的 triggerStartTime 並未在 CDC 之前啟用，否則會導致錯誤發生。
 
     ![立即觸發功能表](./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-parameters.png)
 2. 按一下 [查閱] 活動的 [設定] 索引標籤，並將查詢設定為使用開始和結束參數。 將下列內容複製到查詢中：

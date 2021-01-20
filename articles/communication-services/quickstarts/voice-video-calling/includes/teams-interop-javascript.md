@@ -5,26 +5,18 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c72083f205fae77de366125e666cee479fd46805
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
-ms.translationtype: HT
+ms.openlocfilehash: dbba87be839d7f172d42827698a8e485c2edddd8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97692022"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256240"
 ---
 ## <a name="prerequisites"></a>先決條件
 
 - 運作中的[通訊服務通話應用程式](../getting-started-with-calling.md)。
 - [Teams 部署](/deployoffice/teams-install)。
 
-## <a name="enable-teams-interoperability"></a>啟用 Teams 互通性
-
-Teams 互通性功能目前為個人預覽版。 若要為您的通訊服務資源啟用這項功能，請傳送電子郵件到 [acsfeedback@microsoft.com](mailto:acsfeedback@microsoft.com)，並附上：
-
-1. 通訊服務資源所在 Azure 訂用帳戶的訂用帳戶識別碼。
-2. Teams 租用戶識別碼。 若要取得此識別碼，最簡單的方式是[取得並分享小組的連結](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f)。
-
-您必須是這兩個實體的擁有組織成員，才能使用這項功能。
 
 ## <a name="add-the-teams-ui-controls"></a>新增 Teams UI 控制項
 

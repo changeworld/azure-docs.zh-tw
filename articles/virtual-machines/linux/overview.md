@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 54982189a5da584c7daf66855ffb655e403a455a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: HT
+ms.openlocfilehash: a2145c217c19e80c2ca70880e0f9b01ae2ba140e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500507"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202567"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虛擬機器
 
@@ -45,12 +45,12 @@ Azure 中所建立的所有資源分散在世界各地的多個[地理區域](ht
 
 下表顯示一些您可以取得可用位置清單的方式。
 
-| 方法 | 描述 |
+| 方法 | 說明 |
 | --- | --- |
 | Azure 入口網站 |當您建立 VM 時，請從清單中選取位置。 |
 | Azure PowerShell |使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 命令。 |
 | REST API |使用[列出位置](/rest/api/resources/subscriptions)作業。 |
-| Azure CLI |使用 [az account list-locations](/cli/azure/account?view=azure-cli-latest) 作業。 |
+| Azure CLI |使用 [az account list-locations](/cli/azure/account) 作業。 |
 
 ### <a name="singapore-data-residency"></a>新加坡資料落地
 
@@ -60,7 +60,7 @@ Azure 中所建立的所有資源分散在世界各地的多個[地理區域](ht
 Azure 已宣布推出業界領先的單一執行個體虛擬機器 99.9% 服務等級協定 (前提是您部署的所有磁碟都是進階儲存體的 VM)。  為了讓您的部署符合標準的 99.95% VM 服務等級協定資格，您還必須在可用性設定組內部署兩個或更多執行工作負載的 VM。 可用性設定組可確保您的 VM 會分散在 Azure 資料中心內的多個容錯網域，以及部署至具有不同維護期間的主機。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 說明保證的 Azure 整體可用性。
 
 ## <a name="vm-size"></a>VM 大小
-您使用的 VM [大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)是由所您要執行的工作負載所決定。 您所選的大小會決定例如處理電源、記憶體和儲存體容量等因素。 Azure 提供了各種不同的大小，以支援許多類型的用法。
+您使用的 VM [大小](../sizes.md)是由所您要執行的工作負載所決定。 您所選的大小會決定例如處理電源、記憶體和儲存體容量等因素。 Azure 提供了各種不同的大小，以支援許多類型的用法。
 
 Azure 可依據 VM 的大小和作業系統，以[每小時](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)價格方式收費。 針對不足一小時的部分，Azure 只會收取已使用分鐘數的費用。 儲存體是個別定價與收費。
 

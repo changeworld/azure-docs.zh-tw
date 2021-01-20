@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: ddde352df5fc6063dbe04aa05fe01fca9747f8fa
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: HT
+ms.openlocfilehash: 892b731f662af57916d067c562d48f4ec25e2210
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752833"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233044"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>探索和評估 Google Cloud Platform (GCP) VM 並將其遷移至 Azure
 
@@ -246,13 +246,22 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     -  可用性區域，將已遷移的機器釘選到該區域中特定的可用性區域。 使用此選項可將形成多節點應用程式層的伺服器散發到可用性區域。 如果選取此選項，則必須在計算索引標籤中指定要用於每部所選電腦的可用性區域。只有選取要移轉的目的地區域支援可用性區域時，才可以使用此選項
     -  可用性設定組，可將遷移的電腦放在可用性設定組中。 選取的目標資源群組必須有一或多個可用性設定組，才能使用此選項。
     - 如果您不需要為已遷移的電腦提供任何一種可用性設定，則不需要任何基礎結構備援選項。
-11. 在 [Azure Hybrid Benefit] 中：
+11. 在 **磁碟加密類型** 中，選取：
+    - 使用平台代控金鑰加密待用資料
+    - 使用客戶自控金鑰加密待用資料
+    - 使用平台管理和客戶管理的金鑰進行雙重加密
+
+   > [!NOTE]
+   > 若要使用 CMK 複寫 VM，您必須在目標資源群組下[建立磁碟加密集](https://go.microsoft.com/fwlink/?linkid=2151800)。 磁碟加密設定物件會將受控磁碟對應至包含要用於 SSE 之 CMK 的 Key Vault。
+  
+12. 在 [Azure Hybrid Benefit] 中：
+
     - 如果您不想套用 Azure Hybrid Benefit，請選取 [否]。 然後按一下 [下一步]  。
     - 如果您有 Windows Server 機器涵蓋於有效的軟體保證或 Windows Server 訂用帳戶下，且您想要將權益套用至要移轉的機器，請選取 [是]。 然後按一下 [下一步]  。
 
-    ![目標設定](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
+    ![目標設定](./media/tutorial-migrate-vmware/target-settings.png)
 
-12. 請檢閱 **計算** 中的 VM 名稱、大小、OS 磁碟類型和可用性設定 (如果有在上一個步驟中選取)。 VM 必須符合 [Azure 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
+13. 請檢閱 **計算** 中的 VM 名稱、大小、OS 磁碟類型和可用性設定 (如果有在上一個步驟中選取)。 VM 必須符合 [Azure 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 
     - **VM 大小**：如果您使用評估建議，[VM 大小] 下拉式清單會顯示建議的大小。 否則，Azure Migrate 會根據 Azure 訂用帳戶中最接近的相符項來選擇大小。 或者，您可以在 [Azure VM 大小] 中手動選擇大小。
     - **OS 磁碟**：指定 VM 的 OS (開機) 磁碟。 OS 磁碟是具有作業系統開機載入器和安裝程式的磁碟。
@@ -261,13 +270,13 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
 ![計算設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. 在 [磁碟] 中，指定是否應將 VM 磁碟複寫至 Azure，並選取 Azure 中的磁碟類型 (標準 SSD/HDD 或進階受控磁碟)。 然後按一下 [下一步]  。
+14. 在 [磁碟] 中，指定是否應將 VM 磁碟複寫至 Azure，並選取 Azure 中的磁碟類型 (標準 SSD/HDD 或進階受控磁碟)。 然後按一下 [下一步]  。
     - 您可以從複寫排除磁碟。
     - 如果您排除磁碟，則在移轉後磁碟將不會出現在 Azure VM 上。 
 
     ![磁碟設定](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-14. 在 [檢閱並啟動複寫] 中檢閱設定，然後按一下 [複寫] 以啟動伺服器的初始複寫。
+15. 在 [檢閱並啟動複寫] 中檢閱設定，然後按一下 [複寫] 以啟動伺服器的初始複寫。
 
 > [!NOTE]
 > 您可以在複寫開始之前隨時更新複寫設定 (經由 [管理] > [複寫機器])。 在複寫啟動後，就無法變更設定。

@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 892dad3963e9da3560acc2c782c3d14db246ea78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 13130a7ea473b260ddc4f0ebca2ef5b496b34c66
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500584"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202979"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>教學課程：使用 Azure CLI 和 Azure 入口網站設定 IoT 中樞訊息路由
 
@@ -140,22 +140,22 @@ az servicebus queue create --name $sbQueueName \
 
 2. 選取資源清單下方的 IoT 中樞。 本教學課程使用 **ContosoTestHub**。
 
-3. 選取 [訊息路由]  。 在 [訊息路由]  窗格中，選取 [+新增]  。 在 [新增路由]  窗格中，選取 [端點] 欄位旁的 [+新增]  以顯示支援的端點，如下圖所示：
+3. 選取 [訊息路由]  。 在 [訊息路由]  窗格中，選取 [+新增]  。 在 [ **新增路由** ] 窗格中，選取 [端點] 欄位旁的 [+**新增端點** ] 以顯示支援的端點，如下圖所示：
 
-   ![開始新增路由的端點](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+   ![開始新增路由的端點](./media/tutorial-routing/message-routing-add-a-route-with-storage-endpoint-ver2.png)
 
-4. 選取 [Blob 儲存體]  。 您會看到 [新增儲存體端點]  窗格。
+4. 選取 [儲存體] 。 您會看到 [新增儲存體端點]  窗格。
 
-   ![新增端點](./media/tutorial-routing/message-routing-add-storage-ep.png)
+   ![新增端點](./media/tutorial-routing/message-routing-add-storage-endpoint-ver2.png)
 
 5. 輸入端點的名稱。 本教學課程使用 **ContosoStorageEndpoint**。
 
-6. 選取 [挑選容器]  。 這會帶您前往儲存體帳戶清單。 選取您在準備步驟中設定的帳戶。 本教學課程使用 **contosostorage**。 它會顯示該儲存體帳戶中的容器清單。 **選取**您在準備步驟中設定的容器。 本教學課程使用 **contosoresults**。 您會回到 [新增儲存體端點]  窗格，查看您所選取的項目。
+6. 選取 [挑選容器]  。 這會帶您前往儲存體帳戶清單。 選取您在準備步驟中設定的帳戶。 本教學課程使用 **contosostorage**。 它會顯示該儲存體帳戶中的容器清單。 **選取** 您在準備步驟中設定的容器。 本教學課程使用 **contosoresults**。 您會回到 [新增儲存體端點]  窗格，查看您所選取的項目。
 
 7. 將編碼設定為 AVRO 或 JSON。 基於本教學課程的目的，其他欄位可使用預設值。 如果選取的區域不支援 JSON 編碼，則此欄位會呈現灰色。
 
    > [!NOTE]
-   > 您可以使用 **Blob 檔案名稱格式**來設定 Blob 名稱的格式。 預設值為 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`。 格式必須包含 {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH} 和 {mm} (順序不拘)。
+   > 您可以使用 **Blob 檔案名稱格式** 來設定 Blob 名稱的格式。 預設值為 `{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}`。 格式必須包含 {iothub}、{partition}、{YYYY}、{MM}、{DD}、{HH} 和 {mm} (順序不拘)。
    >
    > 例如，如果中樞名稱是 ContosoTestHub，且日期/時間是 2018 年 10 月 30 日上午 10:56，請使用預設 Blob 檔案名稱格式，Blob 名稱看起來像這樣：`ContosoTestHub/0/2018/10/30/10/56`。
    > 

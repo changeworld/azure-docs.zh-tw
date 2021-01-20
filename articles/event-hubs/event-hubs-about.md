@@ -2,13 +2,13 @@
 title: Azure 事件中樞是什麼？ - 巨量資料擷取服務 | Microsoft Docs
 description: 深入了解 Azure 事件中樞，這是一個每秒可內嵌數百萬個事件的巨量資料串流服務。
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: b0124f023eab6638c986beb2305b1c4c375b47ee
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
-ms.translationtype: HT
+ms.date: 01/13/2021
+ms.openlocfilehash: 36eeb38d9ed1696c9524ae9b346065756ce49c46
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97954340"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98195752"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure 事件中樞 — 巨量資料串流平台和事件擷取服務
 Azure 事件中樞是巨量資料串流平台和事件擷取服務。 其每秒可接收和處理數百萬個事件。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。
@@ -66,7 +66,7 @@ Azure 事件中樞也整合了 [Azure Functions](../azure-functions/index.yml) �
 
 下圖顯示事件中樞串流處理架構︰
 
-![事件中樞](./media/event-hubs-about/event_hubs_architecture.png)
+![事件中樞](./media/event-hubs-about/event_hubs_architecture.svg)
 
 ## <a name="event-hubs-on-azure-stack-hub"></a>Azure Stack Hub 上的事件中樞
 Azure Stack Hub 上的事件中樞可讓您實現混合式雲端情況。 針對內部部署和 Azure 雲端處理，支援串流和事件型解決方案。 無論是混合式 (已連線) 或已中斷連線，您的解決方案都可以支援大規模的事件/資料流處理。 您的情況只會受到事件中樞叢集大小的限制，此限制可以根據自己的需求佈建。 

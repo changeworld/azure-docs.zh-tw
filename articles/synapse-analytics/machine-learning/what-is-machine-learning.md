@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
-ms.translationtype: HT
+ms.openlocfilehash: 68b113de63cfefde805c1c46e9303829c4eb33a7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092154"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222134"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的機器學習功能
 
@@ -40,7 +40,7 @@ Azure Synapse Analytics 提供各種機器學習功能。 本文概述如何在 
 
 #### <a name="data-source-and-pipelines"></a>資料來源和管線
 
-由於 [Azure Data Factory](/azure/data-factory/introduction) (這是 Azure Synapse 的原生整合部分)，有一組強大的工具可供資料內嵌和資料協調流程管線使用。 這可讓您輕鬆地建置資料管線以存取資料，並將資料轉換為可用於機器學習的格式。 [深入了解 Synapse 中的資料管線](/azure/data-factory/concepts-pipelines-activities?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 
+由於 [Azure Data Factory](../../data-factory/introduction.md) (這是 Azure Synapse 的原生整合部分)，有一組強大的工具可供資料內嵌和資料協調流程管線使用。 這可讓您輕鬆地建置資料管線以存取資料，並將資料轉換為可用於機器學習的格式。 [深入了解 Synapse 中的資料管線](../../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)。 
 
 #### <a name="data-preparation-and-explorationvisualization"></a>資料準備和探索/視覺效果
 
@@ -64,13 +64,13 @@ Azure Synapse Analytics 提供各種機器學習功能。 本文概述如何在 
 
 #### <a name="train-models-with-azure-machine-learning-automated-ml"></a>使用 Azure Machine Learning 自動化 ML 來訓練模型
 
-另一種不需要事先熟悉機器學習即可訓練機器學習模型的方法是使用自動化 ML。 [自動化 ML](/azure/machine-learning/concept-automated-ml) 是一項功能，可自動訓練一組機器學習模型，並可讓使用者根據特定計量來選取最佳模型。 由於與 Azure Synapse Notebooks 的 Azure Machine Learning 緊密整合，使用者可以利用傳遞 Azure Active Directory 驗證，輕鬆地在 Synapse 中運用自動化 ML。  這表示您只需要指向您的 Azure Machine Learning 工作區，而不需要輸入任何認證。 以下是[自動化 ML 教學課程](../spark/apache-spark-azure-machine-learning-tutorial.md)，會說明如何使用 Synapse Spark 集區上的 Azure Machine Learning 自動化 ML 來訓練模型。
+另一種不需要事先熟悉機器學習即可訓練機器學習模型的方法是使用自動化 ML。 [自動化 ML](../../machine-learning/concept-automated-ml.md) 是一項功能，可自動訓練一組機器學習模型，並可讓使用者根據特定計量來選取最佳模型。 由於與 Azure Synapse Notebooks 的 Azure Machine Learning 緊密整合，使用者可以利用傳遞 Azure Active Directory 驗證，輕鬆地在 Synapse 中運用自動化 ML。  這表示您只需要指向您的 Azure Machine Learning 工作區，而不需要輸入任何認證。 以下是[自動化 ML 教學課程](../spark/apache-spark-azure-machine-learning-tutorial.md)，會說明如何使用 Synapse Spark 集區上的 Azure Machine Learning 自動化 ML 來訓練模型。
 
 ### <a name="model-deployment-and-scoring"></a>模型部署和評分
 
 已在 Azure Synapse 或外部 Azure Synapse 中定型的模型，可以輕鬆地用於批次評分。 目前在 Synapse 中，有兩種方式可執行批次評分。
 
-* 您可以使用 Synapse SQL 集區中的 [TSQL PREDICT 函式](../sql-data-warehouse/sql-data-warehouse-predict.md)，在您的資料所在的位置執行預測。 這個功能強大且可擴充的函式可讓您擴充資料，而不需要將任何資料從資料倉儲中移出。 [Synapse Studio 中引進了新的引導式機器學習模型體驗](https://aka.ms/synapse-ml-ui)，您可以在其中從 Synapse SQL 集區中的 Azure Machine Learning 模型登錄部署 ONNX 模型，以使用 PREDICT 進行批次評分。
+* 您可以使用 Synapse SQL 集區中的 [TSQL PREDICT 函式](../sql-data-warehouse/sql-data-warehouse-predict.md)，在您的資料所在的位置執行預測。 這個功能強大且可擴充的函式可讓您擴充資料，而不需要將任何資料從資料倉儲中移出。 [Synapse Studio 中引進了新的引導式機器學習模型體驗](./tutorial-sql-pool-model-scoring-wizard.md)，您可以在其中從 Synapse SQL 集區中的 Azure Machine Learning 模型登錄部署 ONNX 模型，以使用 PREDICT 進行批次評分。
 
 * Azure Synapse 中批次評分機器學習模型的另一個選項是利用 Azure Synapse 的 Apache Spark 集區。 視用來定型模型的程式庫而定，您可以使用程式碼體驗來執行批次評分。
 

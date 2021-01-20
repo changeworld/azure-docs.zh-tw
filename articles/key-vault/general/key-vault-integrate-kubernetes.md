@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f0699ed065da4c63bc88945d75a866abcfbb9053
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: f4981036ca92f6efe2d3e23ea1f507a3a1f3c70a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121357"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234251"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
 
@@ -37,6 +37,8 @@ ms.locfileid: "98121357"
 * 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * 開始本教學課程之前，請先安裝 [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)。
+
+本教學課程假設您不足 Linux 節點上的 Azure Kubernetes Service。
 
 ## <a name="use-managed-identities"></a>使用受控識別
 
@@ -77,6 +79,8 @@ ms.locfileid: "98121357"
     ![Azure CLI 的螢幕擷取畫面，其中醒目提示了 principalId 和 clientId 值](../media/kubernetes-key-vault-2.png) ![Azure CLI 的螢幕擷取畫面，其中醒目提示了 subscriptionId 和 nodeResourceGroup 值](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-the-secrets-store-csi-driver"></a>安裝 Helm 與祕密存放區 CSI 驅動程式
+> [!NOTE]
+> 下列安裝只適用于 Linux 上的 AKS。 如需有關秘密存放區 CSI 驅動程式安裝的詳細資訊，請參閱 [秘密存放區 Csi 驅動程式 Azure Key Vault 提供者](https://github.com/Azure/secrets-store-csi-driver-provider-azure) 
 
 若要安裝祕密存放區 CSI 驅動程式，您必須先安裝 [Helm](https://helm.sh/docs/intro/install/)。
 

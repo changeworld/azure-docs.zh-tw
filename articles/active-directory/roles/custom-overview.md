@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0876478d638963e7157f7a16a263000eec634db0
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
-ms.translationtype: HT
+ms.openlocfilehash: f4b443265047edfadb449582483dba3c463d927d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005114"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232738"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory 中角色型存取控制概觀
 
@@ -38,7 +38,7 @@ Azure AD 支援 2 種類型的角色定義 -
 
 建立自訂角色定義 (或使用內建角色) 之後，您可以藉由建立角色指派來將其指派給使用者。 角色指派會為使用者授與角色定義中的權限 (限於指定範圍)。 兩個步驟的程序可讓您建立單一角色定義，並分為多次指派於不同範圍。 範圍會定義角色成員可存取的一組 Azure AD 資源。 最常見的範圍是整個組織 (全組織) 範圍。 自訂角色可指派於全組織範圍，這表示角色成員具有組織中所有資源的角色權限。 自訂角色也可指派於物件範圍。 舉例來說，單一應用程式即為物件範圍。 同一個角色可先後指派給範圍涵蓋組織中所有應用程式的一個使用者，以及另一個範圍僅限於 Contoso Expense Reports 應用程式的使用者。  
 
-Azure AD 內建和自訂角色的運作概念與 [Azure 角色型存取控制 (Azure RBAC)](../../active-directory-b2c/overview.md) 類似。 [這兩種角色型存取控制系統的差異](../../role-based-access-control/rbac-and-directory-admin-roles.md)在於，Azure RBAC 會使用 Azure 資源管理來控制對 Azure 資源 (例如虛擬機器或儲存體) 的存取，而 Azure AD 自訂角色則會使用圖形 API 來控制對 Azure AD 資源的存取。 這兩個系統都運用了角色定義和角色指派的概念。 Azure AD RBAC 權限不可包含在 Azure 角色中，反之亦然。
+Azure AD 內建和自訂角色的運作概念與 [Azure 角色型存取控制 (Azure RBAC)](https://docs.microsoft.com/azure/active-directory/develop/access-tokens#payload-claims) 類似。 [這兩種角色型存取控制系統的差異](../../role-based-access-control/rbac-and-directory-admin-roles.md)在於，Azure RBAC 會使用 Azure 資源管理來控制對 Azure 資源 (例如虛擬機器或儲存體) 的存取，而 Azure AD 自訂角色則會使用圖形 API 來控制對 Azure AD 資源的存取。 這兩個系統都運用了角色定義和角色指派的概念。 Azure AD RBAC 權限不可包含在 Azure 角色中，反之亦然。
 
 ### <a name="how-azure-ad-determines-if-a-user-has-access-to-a-resource"></a>Azure AD 如何判斷使用者是否有權存取資源
 

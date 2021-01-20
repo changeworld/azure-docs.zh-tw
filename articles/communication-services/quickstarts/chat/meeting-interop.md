@@ -7,12 +7,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ea66e4295e8228aa382aa29a46fcca8147dcbc98
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 1ad6b7241c7167c6da8952e7db2797fa275b7246
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577997"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251911"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>快速入門：將聊天應用程式加入至 Teams 會議
 
@@ -29,11 +29,7 @@ ms.locfileid: "97577997"
 
 以來賓使用者身分加入 Teams 會議的通訊服務使用者，只有在加入 Teams 會議通話時，才能存取會議的交談內容。 請參閱 [Teams 互通性](../voice-video-calling/get-started-teams-interop.md)文件，以了解如何將通訊服務使用者新增至 Teams 會議通話。
 
-Teams 互通性功能目前為個人預覽版。 若要為您的通訊服務資源啟用這項功能，請傳送電子郵件到 acsfeedback@microsoft.com，並附上： 
-1. 通訊服務資源所在 Azure 訂用帳戶的訂用帳戶識別碼。 
-2. Teams 租用戶識別碼。 若要取得此識別碼，最簡單的方式是取得並分享小組的連結。 
-
-您必須是這兩個實體的擁有組織成員，才能使用這項功能。 
+您必須是這兩個實體的擁有組織成員，才能使用這項功能。
 
 [!INCLUDE [Join Teams meetings](./includes/meeting-interop-javascript.md)]
 

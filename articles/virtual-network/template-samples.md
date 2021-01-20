@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: e6e759fa75e1957e726dc9f6f3d0035869f35e3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: c269831c391390d120f769d2c1da3fa39afed1cf
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707815"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217901"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>虛擬網路的 Azure Resource Manager 範本範例
 
-下表包含 Azure Resource Manager 範本範例的連結。 您可以使用 Azure [入口網站](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、Azure [CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 Azure [PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 來部署範本。 若要了解如何撰寫您自己的範本，請參閱[建立您的第一個範本](../azure-resource-manager/resource-manager-create-first-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[了解 Azure Resource Manager 範本的結構和語法](../azure-resource-manager/templates/template-syntax.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+下表包含 Azure Resource Manager 範本範例的連結。 您可以使用 Azure [入口網站](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、Azure [CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 或 Azure [PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 來部署範本。 若要了解如何撰寫您自己的範本，請參閱[建立您的第一個範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[了解 Azure Resource Manager 範本的結構和語法](../azure-resource-manager/templates/template-syntax.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 如需要在範本中使用的 JSON 語法和屬性，請參閱 [Microsoft.Network 資源類型](/azure/templates/microsoft.network/allversions)。
 

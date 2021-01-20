@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 11/17/2020
-ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: HT
+ms.date: 12/31/2020
+ms.openlocfilehash: 683da659dcfa07c0a105382f4cc93d1f4dfb21b5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455167"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219527"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>使用專用 SQL 集區來分析資料
 
@@ -23,8 +23,8 @@ Azure Synapse Analytics 可為您提供使用專用 SQL 集區分析資料的功
 
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>將 NYC 計程車資料載入 SQLPOOL1 中
 
-1. 在 Synapse Studio 中，瀏覽至 [開發] 中樞，然後建立新的 SQL 指令碼
-1. 在指令碼的 [連線至] 區段中，選取集區 'SQLPOOL1' (在本教學課程的[步驟 1](https://docs.microsoft.com/azure/synapse-analytics/get-started-create-workspace#create-a-sql-pool) 建立的集區)。
+1. 在 Synapse Studio 中，流覽至 [ **開發** 中樞]，按一下 **+** 按鈕以新增資源，然後建立新的 SQL 腳本。
+1. 選取在本教學課程的 [步驟 1](./get-started-create-workspace.md) 中建立的集區 ' SQLPOOL1 ' (集區，) 腳本上方的 [連接到] 下拉式清單中。
 1. 輸入下列程式碼：
     ```
     CREATE TABLE [dbo].[Trip]
@@ -71,12 +71,13 @@ Azure Synapse Analytics 可為您提供使用專用 SQL 集區分析資料的功
     )
     OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
-1. 此指令碼將在大約 60 秒內完成。 其會將 200 萬列的 NYC 計程車資料載入名為 **dbo.Trip** 的表格
+1. 按一下 [執行] 按鈕以執行腳本。
+1. 此腳本會在60秒內完成。 它會將2000000資料列的 NYC 計程車資料載入到名為 dbo 的資料表中 **。旅程**。
 
 ## <a name="explore-the-nyc-taxi-data-in-the-dedicated-sql-pool"></a>探索專用 SQL 集區中的紐約市計程車資料
 
 1. 在 Synapse Studio 中，移至 [資料] 中樞。
-1. 移至 [SQLPOOL1] > [資料表]。 您會看到數個已載入的資料表。
+1. 移至 [SQLPOOL1] > [資料表]。 
 1. 以滑鼠右鍵按一下 [dbo.Trip] 資料表，然後選取 [新增 SQL 指令碼] > [選取前 100 個資料列]。
 1. 請等到新 SQL 指令碼建立完成並開始執行。
 1. 請注意，在 SQL 指令碼頂端，[連線至] 會自動設定成名為 **SQLPOOL1** 的 SQL 集區。
@@ -89,7 +90,7 @@ Azure Synapse Analytics 可為您提供使用專用 SQL 集區分析資料的功
     FROM  dbo.Trip
     WHERE TripDistanceMiles > 0 AND PassengerCount > 0
     GROUP BY PassengerCount
-    ORDER BY PassengerCount
+    ORDER BY PassengerCount;
     ```
 
     此查詢會顯示總行程距離和平均路程距離與乘客數的關聯。
@@ -102,4 +103,3 @@ Azure Synapse Analytics 可為您提供使用專用 SQL 集區分析資料的功
 
 > [!div class="nextstepaction"]
 > [使用 Spark 進行分析](get-started-analyze-spark.md)
-

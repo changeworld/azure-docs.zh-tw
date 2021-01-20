@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: f71bcc1fd3b92a32a3e6d9fa056bae7131a663bd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: HT
+ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492602"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567790"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure Database for MySQL 伺服器
 
@@ -45,7 +45,7 @@ ms.locfileid: "96492602"
    伺服器名稱 | **mydemoserver** | 輸入唯一名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 其必須包含 3 到 63 個字元。
    資料來源 |**None** | 選取 [無]  從頭建立新的伺服器。 只有在從現有伺服器的異地備份還原時，才需選取 [備份]。
    位置 |您所需的位置 | 從清單中選取位置。
-   版本 | 最新的主要版本| 使用最新的主要版本。 請參閱[所有支援的版本](../postgresql/concepts-supported-versions.md)。
+   版本 | 最新的主要版本| 使用最新的主要版本。 請參閱[所有支援的版本](concepts-supported-versions.md)。
    計算 + 儲存體 | 使用預設值| 預設定價層是 **一般用途** 搭配 **4 個虛擬核心** 以及 **100 GB** 的儲存體。 備份保留期設定為 **7 天**，且具備 **異地備援** 備份選項。<br/>檢閱 [[定價](https://azure.microsoft.com/pricing/details/mysql/)] 頁面，並視需要更新預設值。
    系統管理員使用者名稱 | **mydemoadmin** | 輸入您的伺服器管理使用者名稱。 您不可使用 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public** 作為管理使用者名稱。
    密碼 | 密碼 | 伺服器管理使用者的新密碼。 密碼的長度必須為 8 到 128 個字元，且包含大寫或小寫字母、數字和非英數字元 (!、$、#、% 等等) 的組合。

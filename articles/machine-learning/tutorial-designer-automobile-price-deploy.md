@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: HT
+ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575953"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246463"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>教學課程：透過設計工具部署機器學習模型
 
@@ -97,11 +97,30 @@ ms.locfileid: "96575953"
 
 1. 選取您建立的 AKS 叢集。
 
-1. 選取 [部署]。
-    
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="顯示如何設定新即時端點的螢幕擷取畫面":::
 
+    您也可以變更即時端點的 **Advanced** 設定。
+    
+    |Advanced 設定|說明|
+    |---|---|
+    |啟用 Application Insights 診斷和資料收集| 是否要啟用 Azure 應用程式 Ingishts，以便從已部署的端點收集資料。 </br> 預設值： false |
+    |評分超時| 對 web 服務評分呼叫強制執行的超時（以毫秒為單位）。</br>預設值：60000|
+    |自動調整已啟用|   是否為 Web 服務啟用自動調整。</br>預設值： true|
+    |最小複本| 自動調整此 Web 服務時，要使用的容器數目下限。</br>預設值：1|
+    |最大複本| 自動調整此 Web 服務時，要使用的容器數目上限。</br> 預設值：10|
+    |目標使用率|自動調整器應嘗試為此 Web 服務維持的目標使用率 (以百分比為單位，最高 100)。</br> 預設值：70|
+    |重新整理期間|自動調整程式嘗試調整此 web 服務的 (頻率，以秒為單位) 。</br> 預設值：1|
+    |CPU 保留容量|要為此 Web 服務配置的 CPU 核心數目。</br> 預設值：0。1|
+    |記憶體保留容量|要為此 Web 服務配置的記憶體 (GB) 數量。</br> 預設值：0。5|
+        
+
+1. 選取 [部署]。 
+
     完成部署之後，畫布上方會出現成功通知。 這可能需要幾分鐘的時間。
+
+> [!TIP]
+> 如果您在 [即時端點設定] 方塊中選取 [**計算類型** 的 **azure 容器實例**]，您也可以將 **AZURE 容器實例** 部署 (ACI) 。
+> Azure 容器實例用於測試或開發。 針對需要少於 48 GB RAM 的低規模 CPU 工作負載，請使用 ACI。
 
 ## <a name="view-the-real-time-endpoint"></a>檢視即時端點
 

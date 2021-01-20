@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2f33fe4fafbe194238fcfbd4942807ed2fc4d6ff
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: HT
+ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183535"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250684"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>教學課程：開始在開發環境中使用 Azure Machine Learning (第 1 部分，共 4 部分)
 
@@ -37,13 +37,14 @@ ms.locfileid: "98183535"
 ## <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 嘗試 [Azure Machine Learning](https://aka.ms/AMLFree)。
-- 管理 Python 虛擬環境及安裝套件的 [Anaconda](https://www.anaconda.com/download/) 或 [Miniconda](https://www.anaconda.com/download/)。
+- 管理 Python 虛擬環境及安裝套件的 [Anaconda](https://www.anaconda.com/download/) 或 [Miniconda](https://www.anaconda.com/download/)。  
+- 如果您不熟悉如何使用 conda，請參閱 [開始使用 conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html)。
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>安裝 Azure Machine Learning SDK
 
-在本教學課程中，我們將使用 Azure Machine Learning SDK for Python。 為了避免發生 Python 相依性問題，您將建立隔離的環境。 本教學課程系列使用 Conda 來建立該環境。 如果要使用其他解決方案，例如 `venv`、`virtualenv` 或 Docker，請確定您使用的是3.5 以上但低於 3.9 的 Python 版本。
+在本教學課程中，我們將使用 Azure Machine Learning SDK for Python。 為了避免發生 Python 相依性問題，您將建立隔離的環境。 本教學課程系列使用 conda 來建立該環境。 如果要使用其他解決方案，例如 `venv`、`virtualenv` 或 Docker，請確定您使用的是3.5 以上但低於 3.9 的 Python 版本。
 
-檢查系統上是否已安裝 Conda：
+檢查您的系統上是否已安裝 conda：
     
 ```bash
 conda --version

@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 766035490c96d42de33d0b27d976b8e56ba50993
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: 2fbff2abeb454fe02aa4bd50615033b9a0b7f27b
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017488"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178597"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入門：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -46,7 +46,7 @@ ms.locfileid: "98017488"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>選項 1：註冊和自動設定您的應用程式，然後下載程式碼範例
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 > 若要註冊您的應用程式，
-> 1. 移至新的 [Azure 入口網站 - 應用程式註冊](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs)窗格。
+> 1. 移至 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs" target="_blank">Azure 入口網站 - 應用程式註冊<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入門體驗。
 > 1. 輸入應用程式的名稱，並選取 [註冊]  。
 > 1. 依照指示按一下滑鼠，即可下載並自動設定新的應用程式。
 >

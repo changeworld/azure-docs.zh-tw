@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 5e3fbd1868cc1216cb7b9d02b2aa8e690af33952
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
-ms.translationtype: HT
+ms.date: 12/31/2020
+ms.openlocfilehash: ad16b63360364acd88ab12fb4715d1fd3115c0fb
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917676"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209367"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>分析儲存體帳戶中的資料
 
@@ -30,7 +30,7 @@ ms.locfileid: "94917676"
 
 ### <a name="create-csv-and-parquet-files-in-your-storage-account"></a>在您的儲存體帳戶中建立 CSV 和 Parquet 檔案
 
-在筆記本資料格中執行下列命令。 其會在儲存體帳戶中建立 CSV 檔案和 Parquet 檔案。
+在新的程式碼資料格中，于筆記本中執行下列程式碼。 其會在儲存體帳戶中建立 CSV 檔案和 Parquet 檔案。
 
 ```py
 %%pyspark
@@ -48,26 +48,27 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 1. 移至 [儲存體帳戶] > [myworkspace (主要 - contosolake)]。
 1. 選取 [使用者 (主要)]。 您應該會看到 [NYCTaxi] 資料夾。 在其中，您應該會看到兩個名為 **PassengerCountStats_csvformat** 和 **PassengerCountStats_parquetformat** 的資料夾。
 1. 開啟 **PassengerCountStats_parquetformat** 資料夾。 您將在其中看到名稱像是 `part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` 的 parquet 檔案。
-1. 在 **.parquet** 上按一下滑鼠右鍵，然後選取 [新增筆記本]。 其會建立具有資料格的筆記本，如下所示：
+1. 以滑鼠右鍵按一下 **parquet**，然後選取 [ **新增筆記本**]，再選取 [ **載入至資料框架**]。 使用如下的儲存格建立新的筆記本：
 
     ```py
     %%pyspark
-    data_path = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
-    data_path.show(100)
+    df = spark.read.load('abfss://users@contosolake.dfs.core.windows.net/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet', format='parquet')
+    display(df.limit(10))
     ```
 
-1. 執行資料格。
-1. 以滑鼠右鍵按一下其中的 Parquet 檔案，然後選取 [新增指令碼] > [選取前 100 個資料列]。 其會建立如下所示的 SQL 指令碼：
+1. 附加至名為 **Spark1** 的 Spark 集區。 執行資料格。
+1. 按一下 [返回 **使用者** ] 資料夾。 再以滑鼠右鍵按一下 **parquet** 檔案，然後選取 [**新增 SQL 腳本**] 選取 [  >  **前 100** 個數據列]。 其會建立如下所示的 SQL 指令碼：
 
     ```sql
-    SELECT TOP 100 *
+    SELECT 
+        TOP 100 *
     FROM OPENROWSET(
         BULK 'https://contosolake.dfs.core.windows.net/users/NYCTaxi/PassengerCountStats.parquet/part-00000-1f251a58-d8ac-4972-9215-8d528d490690-c000.snappy.parquet',
         FORMAT='PARQUET'
-    ) AS [r];
+    ) AS [result]
     ```
 
-    在指令碼視窗中，[連線至] 欄位會設定為 [無伺服器 SQL 集區]。
+    在腳本視窗中，確定 [ **連接到]** 欄位設定為 **內建** 的無伺服器 SQL 集區。
 
 1. 執行指令碼。
 

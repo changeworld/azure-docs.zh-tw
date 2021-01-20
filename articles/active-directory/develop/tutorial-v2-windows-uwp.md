@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
-ms.translationtype: HT
+ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064414"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232330"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>教學課程：自通用 Windows 平台 (UWP) 應用程式呼叫 Microsoft Graph API
 
@@ -59,8 +59,8 @@ ms.locfileid: "98064414"
 
 本指南所建立的應用程式會顯示一個可查詢 Microsoft Graph API 的按鈕，以及一個用來登出的按鈕。它也會顯示包含呼叫結果的文字方塊。
 
-> [!NOTE]
-> 您想要下載此範例的 Visual Studio 專案而非加以建立嗎？ [下載專案](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)，並跳到[應用程式註冊](#register-your-application "應用程式註冊步驟")步驟，以在執行之前先設定程式碼範例。
+> [!Tip]
+> 若要查看您在本教學課程中建立之專案的完整版本，您可以 [從 GitHub 下載](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)。
 
 ### <a name="create-your-application"></a>建立您的應用程式
 
@@ -292,8 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-> [!NOTE]
-> MSAL.NET 會使用非同步方法來取得權杖或管理帳戶。 您必須在 UI 執行緒中支援 UI 動作。 這就是 `Dispatcher.RunAsync` 呼叫的原因，以及呼叫 `ConfigureAwait(false)` 的預防措施。
+MSAL.NET 會使用非同步方法來取得權杖或管理帳戶。 您必須在 UI 執行緒中支援 UI 動作。 這就是 `Dispatcher.RunAsync` 呼叫的原因，以及呼叫 `ConfigureAwait(false)` 的預防措施。
 
 #### <a name="more-information-about-signing-out"></a>有關登出的詳細資訊<a name="more-information-on-sign-out"></a>
 
@@ -477,8 +476,7 @@ Microsoft Graph API 需要 `user.read` 範圍以讀取使用者的設定檔。 �
 
 為了在應用程式內容中存取使用者的行事曆，請將 `Calendars.Read` 委派權限新增至應用程式註冊資訊。 接著，將 `Calendars.Read` 範圍新增至 `acquireTokenSilent` 呼叫。
 
-> [!NOTE]
-> 系統可能會在您增加範圍數目時，提示使用者同意其他事項。
+系統可能會在您增加範圍數目時，提示使用者同意其他事項。
 
 ## <a name="known-issues"></a>已知問題
 

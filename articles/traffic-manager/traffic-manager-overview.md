@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: duau
-ms.openlocfilehash: 830700fb4a5ac57405877364e9cc4828e5d1a5a4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
-ms.translationtype: HT
+ms.openlocfilehash: e2a4db1404709dadb2500df29f3f7acf8787c2b2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89392539"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185726"
 ---
 # <a name="what-is-traffic-manager"></a>什麼是流量管理員？
 Azure 流量管理員是 DNS 型流量負載平衡器，可讓您跨全球的 Azure 區域將流量最佳分散至服務，同時提供高可用性和回應性。
@@ -25,9 +25,9 @@ Azure 流量管理員是 DNS 型流量負載平衡器，可讓您跨全球的 Az
 流量管理員會使用 DNS，根據流量路由方法和端點的健康情況，將用戶端要求導向最適當的服務端點。 端點是裝載於 Azure 內部或外部的任何網際網路對向服務。 流量管理員提供[流量路由方法](traffic-manager-routing-methods.md)和[端點監視選項](traffic-manager-monitoring.md)的範圍，以符合不同的應用程式需求和自動容錯移轉模型。 流量管理員可針對失敗彈性應變，包括整個 Azure 區域失敗。
 
 >[!NOTE]
-> Azure 會為您的案例提供一套完整受控的負載平衡解決方案。 如果您要尋找傳輸層安全性 (TLS) 通訊協定終止 (「SSL 卸載」) 或每一 HTTP/HTTPS 要求的應用程式層處理，請檢閱[應用程式閘道](../application-gateway/application-gateway-introduction.md)。 如果您要尋求區域性負載平衡，請檢閱[負載平衡器](../load-balancer/load-balancer-overview.md)。 視需要結合這些解決方案，可能有益於您的端對端案例。
+> Azure 會為您的案例提供一套完整受控的負載平衡解決方案。 如果您要尋找傳輸層安全性 (TLS) 通訊協定終止 (「SSL 卸載」) 或每一 HTTP/HTTPS 要求的應用程式層處理，請檢閱[應用程式閘道](../application-gateway/overview.md)。 如果您要尋求區域性負載平衡，請檢閱[負載平衡器](../load-balancer/load-balancer-overview.md)。 視需要結合這些解決方案，可能有益於您的端對端案例。
 >
-> 如需 Azure 負載平衡選項的比較，請參閱 [Azure 中的負載平衡選項概觀](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)。
+> 如需 Azure 負載平衡選項的比較，請參閱 [Azure 中的負載平衡選項概觀](/azure/architecture/guide/technology-choices/load-balancing-overview)。
 
 流量管理員提供下列功能︰
 
@@ -58,10 +58,6 @@ Azure 可讓您在世界各地的資料中心內執行雲端服務或網站。 �
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何 [建立流量管理員設定檔](traffic-manager-create-profile.md)。
+- 了解如何 [建立流量管理員設定檔](./quickstart-create-traffic-manager-profile.md)。
 - 了解[流量管理員的運作方式](traffic-manager-how-it-works.md)。
 - 檢視關於流量管理員的[常見問題集](traffic-manager-FAQs.md)。
-
-
-
-

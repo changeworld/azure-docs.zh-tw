@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: f6d3c6f77b062939a88e7277cb7f0ab6ecff9fcb
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
-ms.translationtype: HT
+ms.openlocfilehash: e57084dab00210802edbd46e3380313e034eb036
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753071"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566800"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>教學課程：評估 VMware VM 以移轉至 AVS
 
@@ -58,58 +58,63 @@ ms.locfileid: "96753071"
 
    ![評估和遷移伺服器按鈕的位置](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
 
-2. 在 [**Azure Migrate：伺服器評量]** 中，按一下 [評估]。
+1. 在 [**Azure Migrate：伺服器評量]** 中，按一下 [評估]。
 
-3. 在 [評估伺服器]  >  [評量類型] 中，請選取 [Azure VMware 解決方案 (AVS) (預覽)]。
-4. 在 [探索來源] 中：
+1. 在 [評估伺服器]  >  [評量類型] 中，請選取 [Azure VMware 解決方案 (AVS) (預覽)]。
+
+1. 在 [探索來源] 中：
 
     - 如果您使用設備探索到機器，請選取 [從 Azure Migrate 設備探索到的機器]。
     - 如果您使用匯入的 CSV 檔案探索到機器，請選取 [匯入的機器]。 
     
-5. 指定評量的名稱。 
-6. 按一下 [檢視全部] 來檢閱評估屬性。
+1. 按一下 [ **編輯** ] 以檢查評量屬性。
 
-    ![用於選取評量設定的頁面](./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="用於選取評量設定的頁面":::
+ 
 
-
-7. 在 [評量屬性]  >  [目標屬性] 中：
+1. 在 [評量屬性] > [目標屬性] 中：
 
     - 在 [目標位置] 中，指定您要將機器遷移到其中的 Azure 區域。
        - 大小和成本建議是根據您指定的位置。
-       - 您目前可以評估三個區域 (美國東部、美國西部、西歐)
-   - 在 [儲存體類型] 中，保留 [vSAN]。 這是適用於 AVS 私人雲端的預設儲存體類型。
+       - 您目前可以評定四個區域 (澳大利亞東部、美國東部、西歐、美國西部) 
+   - **儲存體類型** 預設為 **vSAN**。 這是適用於 AVS 私人雲端的預設儲存體類型。
    - AVS 節點目前不支援 [保留執行個體]。
-8. 在 [VM 大小] 中：
-    - 在 [節點類型] 中，根據內部部署 VM 上執行的工作負載來選取節點類型。
-        - Azure Migrate 會建議將 VM 遷移至 AVS 所需節點中的節點。
-        - 預設節點類型為 AV36。
-    - **FTT 設定，RAID 層級**，選取 [無法容忍] 和 [RAID] 組合。  選取的 FTT 選項 (結合內部部署 VM 磁片需求) 會決定 AVS 中所需的 vSAN 儲存空間總計。
+1. 在 [VM 大小] 中：
+    - **節點類型** 預設為 **AV36**。 Azure Migrate 會建議將 VM 遷移至 AVS 所需節點中的節點。
+    - 在 [FTT 設定] 的 [ **raid 等級**] 中，選取 [容錯和 Raid 組合失敗]。  選取的 FTT 選項 (結合內部部署 VM 磁片需求) 會決定 AVS 中所需的 vSAN 儲存空間總計。
     - 在 [CPU 超額訂閱] 中，指定與 AVS 節點中的一個實體核心相關聯虛擬核心的比率。 大於 4:1 的超額訂閱可能會導致效能降低，但可用於網頁伺服器類型工作負載。
 
-9. 在 [節點大小] 中： 
+1. 在 [節點大小] 中： 
     - 在 [調整大小準則] 中，選取是否要根據靜態中繼資料或以效能為基礎的資料進行評量。 如果您使用效能資料：
         - 在 [效能歷程記錄] 中，指出您想要作為評量基礎的資料持續時間
         - 在 [百分位數使用率] 中，指定您想要用於效能範例的百分位數值。 
     - 在 [緩和因數] 中，指出您想要在評量期間使用的緩衝區。 這會考量各個問題，例如季節性使用量、簡短的效能歷程記錄，以及未來可能增加的使用量。 例如，如果您使用兩個緩和因數：
     
         **元件** | **有效使用率** | **新增緩和因數 (2.0)**
-        --- | --- | ---  
-        核心 | 2 | 4
-        記憶體 | 8 GB | 16 GB     
+        --- | --- | ---
+        核心 | 2  | 4
+        記憶體 | 8 GB | 16 GB  
 
-10. 在 [價格] 中：
+1. 在 [價格] 中：
     - 在 [供應項目] 中，會顯示您所註冊的 [Azure 供應項目](https://azure.microsoft.com/support/legal/offer-details/)，伺服器評量會評估該供應項目的成本。
     - 在 [貨幣] 中，選取您帳戶的帳單貨幣。
     - 在 [折扣 (%)] 中，在 Azure 供應項目上新增您獲得的任何訂用帳戶特定折扣。 預設設定為 0%。
 
-11. 如果您進行變更，請按一下 [儲存]。
+1. 如果您進行變更，請按一下 [儲存]。
 
-    ![評量屬性](./media/tutorial-assess-vmware-azure-vmware-solution/view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-view-all.png" alt-text="評量屬性":::
 
-12. 在 [評估伺服器] 中，按 [下一步]。
-13. 在 [評估伺服器] > [選取要評估的電腦] 中，若要建立新的伺服器群組進行評估，請選取 [新建]，然後指定群組名稱。 
-14. 選取設備，然後選取您想要新增至群組的 VM。 然後按一下 [下一步]  。
-15. 在 [檢閱 + 建立評量] 中，檢閱評量詳細資料，然後按一下 [建立評量] 以建立群組並執行評量。
+1. 在 [評估伺服器] 中，按 [下一步]。
+
+1. 在 [**選取要評估** 評量的電腦]  >   > 指定評量的名稱。 
+ 
+1. 在 [ **選取或建立群組** ] > 選取 [ **建立新** 的]，並指定組名。 
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="將 VM 新增至群組":::
+ 
+1. 選取設備，然後選取您想要新增至群組的 VM。 然後按一下 [下一步]  。
+
+1. 在 [檢閱 + 建立評量] 中，檢閱評量詳細資料，然後按一下 [建立評量] 以建立群組並執行評量。
 
     > [!NOTE]
     > 針對以效能為基礎的評量，建議您在建立評量之前，先等待至少一天後再開始探索。 這可提供更高的信賴度來收集效能資料。 在理想的情況下，在您開始探索之後，請等候您指定的效能持續時間 (天/週/月)，以取得高信賴度。
@@ -121,6 +126,8 @@ AVS 評量會說明：
 - AVS 整備程度：內部部署 VM 是否適合移轉至 Azure VMware 解決方案 (AVS)。
 - AVS 節點數目：執行 VM 所需的估計 AVS 節點數目。
 - 各種 AVS 節點的使用率：跨所有節點的預估 CPU、記憶體和儲存體使用率。
+    - 使用率包括在下列叢集管理負荷中預先進行的分解，例如 vCenter Server、NSX Manager (大型) 、NSX Edge、如果部署 HCX，同時也會使用 HCX 管理員和 IX 設備，在壓縮和重復資料刪除之前耗用 44vCPU (11 CPU) 、75GB RAM 和722GB 儲存體。 
+    - 記憶體、重複配置和壓縮目前設定為100% 的記憶體使用率和1.5 重複使用和壓縮，這會是未來版本中使用者定義的輸入，讓使用者能夠微調其所需的大小。
 - 每月成本預估：執行內部部署 VM 的所有 Azure VMware 解決方案 (AVS) 節點的預估每月成本。
 
 ## <a name="view-an-assessment"></a>檢視評估
@@ -128,8 +135,12 @@ AVS 評量會說明：
 若要檢視評估：
 
 1. 在 伺服器 > **Azure Migrate：伺服器評量** 中，按一下 評量 旁邊的數字。
-2. 在 [評估] 中，選取評估來加以開啟。 
-3. 檢閱評量摘要。 您也可以編輯評量屬性，或重新計算評量。
+
+1. 在 [評估] 中，選取評估來加以開啟。 作為範例 (估計和成本僅供範例使用)： 
+
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-assessment-summary.png" alt-text="AVS 評估摘要":::
+
+1. 檢閱評量摘要。 您也可以編輯評量屬性，或重新計算評量。
  
 
 ### <a name="review-readiness"></a>檢閱整備程度

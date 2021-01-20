@@ -3,14 +3,14 @@ title: Azure 上的 Kubernetes 教學課程 - 準備應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您將了解如何透過 Docker Compose 來準備和建置後續可部署至 AKS 的多容器應用程式。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 15bf29c676c4ca41fc2d005f3500a89ed6b9c380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 349bf90ea0b344d5232c885358814f39fba4c19f
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576331"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251944"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>教學課程：準備 Azure Kubernetes Service (AKS) 的應用程式
 
@@ -23,9 +23,9 @@ ms.locfileid: "91576331"
 
 完成後，就可在本機開發環境中執行下列應用程式：
 
-![Azure 上 Kubernetes 叢集的影像](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote-local.png" alt-text="螢幕擷取畫面，顯示在本機網頁瀏覽器中以本機方式開啟的容器映射 Azure 投票應用程式" lightbox="./media/container-service-kubernetes-tutorials/azure-vote-local.png":::
 
-在其他教學課程中，會將此容器映像上傳至 Azure Container Registry，然後部署到 AKS 叢集。
+在稍後的教學課程中，會將容器映射上傳至 Azure Container Registry，然後部署到 AKS 叢集中。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -33,11 +33,12 @@ ms.locfileid: "91576331"
 
 若要完成此教學課程，您需要一個執行 Linux 容器的本機 Docker 開發環境。 Docker 提供可在 [Mac][docker-for-mac]、[Windows][docker-for-windows] 或 [Linux][docker-for-linux] 系統上設定 Docker 的套件。
 
-Azure Cloud Shell 不含完成這些教學課程中各個步驟所需的 Docker 元件。 因此，我們建議使用完整的 Docker 開發環境。
+> [!NOTE]
+> Azure Cloud Shell 不含完成這些教學課程中各個步驟所需的 Docker 元件。 因此，我們建議使用完整的 Docker 開發環境。
 
 ## <a name="get-application-code"></a>取得應用程式程式碼
 
-本教學課程中使用的應用程式的範例是基本投票應用程式。 應用程式是由前端 Web 元件和後端 Redis 執行個體所組成。 Web 元件會封裝至自訂容器映像。 Redis 執行個體會從 Docker Hub 使用未修改的映像。
+本教學課程中使用的 [範例應用程式][sample-application] 是由前端 web 元件和後端 Redis 實例所組成的基本投票應用程式。 Web 元件會封裝至自訂容器映像。 Redis 執行個體會從 Docker Hub 使用未修改的映像。
 
 使用 [git][] 將應用程式的範例複製到您的開發環境：
 
@@ -51,7 +52,35 @@ git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 cd azure-voting-app-redis
 ```
 
-目錄內有應用程式原始程式碼、預先建立的 Docker Compose 檔案和 Kubernetes 資訊清單檔。 整套教學課程都會使用到這些檔案。
+目錄內有應用程式原始程式碼、預先建立的 Docker Compose 檔案和 Kubernetes 資訊清單檔。 整套教學課程都會使用到這些檔案。 目錄的內容和結構如下所示：
+
+```output
+azure-voting-app-redis
+│   azure-vote-all-in-one-redis.yaml
+│   docker-compose.yaml
+│   LICENSE
+│   README.md
+│
+├───azure-vote
+│   │   app_init.supervisord.conf
+│   │   Dockerfile
+│   │   Dockerfile-for-app-service
+│   │   sshd_config
+│   │
+│   └───azure-vote
+│       │   config_file.cfg
+│       │   main.py
+│       │
+│       ├───static
+│       │       default.css
+│       │
+│       └───templates
+│               index.html
+│
+└───jenkins-tutorial
+        config-jenkins.sh
+        deploy-jenkins-vm.sh
+```
 
 ## <a name="create-container-images"></a>建立容器映像
 
@@ -88,11 +117,11 @@ d10e5244f237        mcr.microsoft.com/azuredocs/azure-vote-front:v1   "/entrypoi
 
 若要查看執行中的應用程式，請在本機網頁瀏覽器中輸入 `http://localhost:8080`。 系統會載入範例應用程式，如下列範例所示：
 
-![Azure 上 Kubernetes 叢集的影像](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote-local.png" alt-text="螢幕擷取畫面，顯示在本機網頁瀏覽器中以本機方式開啟的容器映射 Azure 投票應用程式" lightbox="./media/container-service-kubernetes-tutorials/azure-vote-local.png":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
-應用程式的功能已完成驗證，因此可以停止並移除執行中的容器。 請勿刪除容器映像 - 在下一個教學課程中，會將 azure-vote-front  映像上傳至 Azure Container Registry 執行個體。
+應用程式的功能已完成驗證，因此可以停止並移除執行中的容器。 ***請勿刪除容器映射** _-在下一個教學課程中，_azure 投票-front * 影像會上傳至 Azure Container Registry 實例。
 
 使用 [docker-compose down][docker-compose-down] 命令停止並移除容器執行個體和資源：
 
@@ -126,6 +155,7 @@ docker-compose down
 [docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
 [docker-compose-down]: https://docs.docker.com/compose/reference/down
 [git]: https://git-scm.com/downloads
+[sample-application]: https://github.com/Azure-Samples/azure-voting-app-redis
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

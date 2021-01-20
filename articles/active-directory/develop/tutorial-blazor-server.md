@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: d499a0e7d3ca7933632b52d5edbd8094a29dbcaa
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
-ms.translationtype: HT
+ms.openlocfilehash: b67d75ac99f247659723ac0b5a90fd32ebf627e3
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979890"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569873"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>教學課程：建立使用 Microsoft 身分識別平台進行驗證的 Blazor Server 應用程式
 
@@ -71,7 +71,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-i
 現在，在您的編輯器中瀏覽至新的 Blazor 應用程式，並將用戶端密碼新增至 appsettings.json 檔案，以取代 "secret-from-app-registration" 文字。
 
 ```json
-"ClientSecret": "xkAlNiG70000000_UI~d.OS4Dl.-Cy-1m3",
+"ClientSecret": "secret-from-app-registration",
 ```
 
 ## <a name="test-the-app"></a>測試應用程式

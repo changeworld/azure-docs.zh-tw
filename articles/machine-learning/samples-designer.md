@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: a27e18d9b6f6307f1cc8ed48ca897dd4d1f0f1f3
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
-ms.translationtype: HT
+ms.openlocfilehash: 4d594115139321c8a4ad2b3aa6b065474bd426fa
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555493"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556166"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Azure Machine Learning 設計工具的範例管線和資料集
 
@@ -72,7 +72,7 @@ ms.locfileid: "94555493"
 
 ## <a name="classification"></a>分類
 
-探索這些內建的分類範例。 您可以開啟範例並改為檢視模組註解，以深入了解沒有文件連結的範例。
+探索這些內建的分類範例。 您可以開啟範例，並在設計工具中查看模組批註，以深入瞭解範例。
 
 | 範例標題 | 描述 | 
 | --- | --- |
@@ -84,13 +84,15 @@ ms.locfileid: "94555493"
 
 ## <a name="computer-vision"></a>電腦視覺
 
-探索這些內建的電腦視覺範例。 您可以開啟範例並改為檢視模組註解，以深入了解沒有文件連結的範例。
+探索這些內建的電腦視覺範例。 您可以開啟範例，並在設計工具中查看模組批註，以深入瞭解範例。
 
+| 範例標題 | 描述 | 
+| --- | --- |
 | 使用 DenseNet 進行影像分類 | 使用電腦視覺模組來建立以 PyTorch DenseNet 為基礎的影像分類模型。| 
 
 ## <a name="recommender"></a>推薦程式
 
-探索這些內建的推薦程式範例。 您可以開啟範例並改為檢視模組註解，以深入了解沒有文件連結的範例。
+探索這些內建的推薦程式範例。 您可以開啟範例，並在設計工具中查看模組批註，以深入瞭解範例。
 
 | 範例標題 | 描述 | 
 | --- | --- |
@@ -99,7 +101,7 @@ ms.locfileid: "94555493"
 
 ## <a name="utility"></a>公用程式
 
-深入了解示範機器學習公用程式和功能的範例。 您可以開啟範例並改為檢視模組註解，以深入了解沒有文件連結的範例。
+深入了解示範機器學習公用程式和功能的範例。 您可以開啟範例，並在設計工具中查看模組批註，以深入瞭解範例。
 
 | 範例標題 | 描述 | 
 | --- | --- |

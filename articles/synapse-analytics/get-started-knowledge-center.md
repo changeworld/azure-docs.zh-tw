@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 611d2163e242d7851398821344c3ed595df364cb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: HT
+ms.openlocfilehash: 59364a0a2c1d1e411f41dc35dee812c8e920b72d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460267"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209197"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>探索 Synapse 知識中心
 
@@ -26,7 +26,7 @@ ms.locfileid: "96460267"
 有兩種方式可找到 Synapse Studio 中的知識中心：
 
   1. 在 [首頁] 中樞的頁面右上方，按一下 [學習]。
-  2. 在頂端的功能表列上，按一下 [？] 然後按一下 [知識中心]。
+  2. 在頂端的功能表列上，按一下 [？] 然後 **知識中心**。
 
 挑選其中一個方法並開啟 [知識中心]。
 
@@ -39,22 +39,22 @@ ms.locfileid: "96460267"
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>使用無伺服器 SQL 集區探索 Blob 儲存體
 
-1. 移至 **知識中心**，按一下 [立即使用範例]
-1. 選取 [使用 SQL 查詢來查詢資料] 
-1. 按一下 [立即使用範例]
-1. 其會建立新的 SQL 指令碼。
-1. 捲動到第一個查詢 (第 28 行到第 32 行)，然後選取查詢文字
-1. 按一下 [執行]。 其將會執行您選取的文字。
+1. 移至 **知識中心**，按一下 [ **立即使用範例**]。
+1. 選取 **[使用 SQL 查詢資料**]。
+1. 按一下 [ **使用範例**]。
+1. 將會開啟新的範例 SQL 腳本。
+1. 滾動至第一個查詢 (第28行到 32) ，然後選取查詢文字。
+1. 按一下 [執行]。 它只會執行您所選取的程式碼。
 
 ## <a name="loading-more-nyc-taxi-data"></a>載入更多 NYC 計程車資料
-1. 移至 [知識中心]，然後按一下 [瀏覽資源庫] 
-1. 選取頂端的 [SQL 指令碼] 索引標籤
-1. 選取 [載入紐約計程車資料集]
-1. 在 [輸入] 底下，選擇 [選取現有集區]，然後選取 [SQLDB1]
-1. 按一下 [開啟指令碼]
-1. 新的 SQL 指令碼會隨即出現。
+1. 移至 **知識中心**，按一下 **[流覽資源庫]**。
+1. 選取頂端的 [ **SQL 腳本** ] 索引標籤。
+1. 選取 **[載入紐約計程車資料集** 資料內嵌範例]，然後按一下 [ **繼續**]。
+1. 在 **[SQL 集** 區] 下，選擇 [ **選取現有的集** 區] 並選取 [ **SQLPOOL1**]，然後選取您稍早建立的 **SQLPOOL1** 資料庫。
+1. 按一下 [ **開啟腳本**]。
+1. 將會開啟新的範例 SQL 腳本。
 1. 按一下 [執行] 
-1. 這會為所有 NYC 計程車資料建立數個資料表，並使用 T-SQL COPY 命令來載入這些資料表。
+1. 這會為所有 NYC 計程車資料建立數個資料表，並使用 T-SQL COPY 命令來載入這些資料表。 如果您已在先前的快速入門步驟中建立這些資料表，請選取並只執行程式碼，以針對不存在的資料表建立和複製。
 
     > [!NOTE] 
     > 對專用 SQL 集區 (先前稱為 SQL DW) 使用 SQL 指令碼的範例庫時，您將只能使用現有的專用 SQL 集區 (先前稱為 SQL DW)。

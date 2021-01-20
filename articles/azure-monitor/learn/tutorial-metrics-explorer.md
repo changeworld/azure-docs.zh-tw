@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: HT
+ms.openlocfilehash: 121de67ddb251e7431873c76e379eb223ceacd0d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881288"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250667"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>教學課程：在 Azure 監視器中建立計量圖表
 計量瀏覽器是 Azure 入口網站中 Azure 監視器的功能之一，可讓您從計量值建立圖表、以視覺化方式將趨勢相互關聯，以及調查計量值的遽增和滑落。 使用計量瀏覽器可調查 Azure 資源的健康情況和使用量，或是從自訂計量繪製圖表。 
@@ -70,20 +70,20 @@ ms.locfileid: "97881288"
 ## <a name="apply-dimension-filters-and-splitting"></a>套用維度篩選和分割
 請參閱下列適用於進階功能的參考，以利對計量執行額外的分析，並找出資料中可能的極端值。
 
-- [篩選](../platform/metrics-charts.md#apply-filters-to-charts)可讓您選擇要包含在圖表中的維度值。 例如，在繪製 *伺服器回應時間* 計量的圖表時，您可以僅顯示成功的要求。 
+- [篩選](../platform/metrics-charts.md#filters)可讓您選擇要包含在圖表中的維度值。 例如，在繪製 *伺服器回應時間* 計量的圖表時，您可以僅顯示成功的要求。 
 
-- [分割](../platform/metrics-charts.md#apply-splitting-to-a-chart)可控制圖表是要針對維度的每個值顯示個別的線條，還是將值彙總成單一線條。 例如，您可以將所有伺服器執行個體的平均回應時間顯示為單一線條，或是讓每個伺服器有各自的線條。 
+- [分割](../platform/metrics-charts.md#apply-splitting)可控制圖表是要針對維度的每個值顯示個別的線條，還是將值彙總成單一線條。 例如，您可以將所有伺服器執行個體的平均回應時間顯示為單一線條，或是讓每個伺服器有各自的線條。 
 
 請參閱已套用篩選和分割的[圖表範例](../platform/metric-chart-samples.md)。
 
 ## <a name="advanced-chart-settings"></a>進階圖表設定
 
-您可以自訂圖表樣式、標題，以及修改進階圖表設定。 完成自訂後，請將其釘選到儀表板，以儲存您的工作。 您也可以設定計量警示。 請參閱 [Azure 計量瀏覽器的進階功能](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis)，以了解 Azure 監視器計量瀏覽器的前述和其他進階功能。
+您可以自訂圖表樣式、標題，以及修改進階圖表設定。 完成自訂後，請將其釘選到儀表板，以儲存您的工作。 您也可以設定計量警示。 請參閱 [Azure 計量瀏覽器的進階功能](../platform/metrics-charts.md#locking the-range-of-the-y-axis)，以了解 Azure 監視器計量瀏覽器的前述和其他進階功能。
 
 
 ## <a name="next-steps"></a>後續步驟
 現在您已了解如何在 Azure 監視器中使用計量，接下來請了解如何使用計量來傳送主動式警示。
 
 > [!div class="nextstepaction"]
-> [使用 Azure 監視器建立、檢視及管理計量警示](../platform/metrics-charts.md#create-alert-rules)
+> [使用 Azure 監視器建立、檢視及管理計量警示](../platform/metrics-charts.md#alert-rules)
 

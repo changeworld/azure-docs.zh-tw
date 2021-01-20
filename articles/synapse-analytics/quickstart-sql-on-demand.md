@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: HT
+ms.openlocfilehash: ffa9e7b5685f9a200f6a403045687626f67f66f4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450509"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218292"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>快速入門：使用無伺服器 SQL 集區
 
@@ -26,7 +26,7 @@ Synapse 無伺服器 SQL 集區是一項無伺服器查詢服務，可讓您對�
 
 選擇要發出查詢的 SQL 用戶端：
 
-- [Azure Synapse Studio](quickstart-synapse-studio.md) 是一種 Web 工具，可用來瀏覽儲存體中的檔案並建立 SQL 查詢。
+- [Azure Synapse Studio](./get-started-create-workspace.md) 是一種 Web 工具，可用來瀏覽儲存體中的檔案並建立 SQL 查詢。
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) 是一種用戶端工具，可讓您在隨選資料庫上執行 SQL 查詢和筆記本。
 - [SQL Server Management Studio](sql/get-started-ssms.md) 是一種用戶端工具，可讓您在隨選資料庫上執行 SQL 查詢。
 

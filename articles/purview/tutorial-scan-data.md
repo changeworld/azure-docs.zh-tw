@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: eafa2187308c0324b85596ce25e8310fd8506a97
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559959"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249597"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>教學課程：使用 Azure Purview (預覽) 掃描資料
 
@@ -189,6 +189,8 @@ PowerShell 最多可能需要一分鐘才能將必要的模組安裝完成。
 1. 針對 Azure Data Lake Storage Gen2 重複上述步驟。
 
 ### <a name="scan-your-data-sources"></a>掃描您的資料來源
+
+1. 在 [Azure 入口網站](https://portal.azure.com) 中流覽至您的 Azure 範疇資源，然後選取 [ *開啟範疇 Studio*]。 您會自動進入 Purview Studio 的首頁。
 
 1. 選取目錄網頁上的 [來源]，然後選取 [註冊]。 然後，選取 [Azure Blob 儲存體]，並選取 [繼續]。
 

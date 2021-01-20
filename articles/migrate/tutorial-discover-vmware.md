@@ -5,20 +5,20 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: tutorial
-ms.date: 09/14/2020
+ms.date: 9/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e11c3277ffa07fe0a8d5fc7495e2c09152ce585f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
-ms.translationtype: HT
+ms.openlocfilehash: 0e06d82c30743a4084cfc5ff856b4a9c8d548146
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704279"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566948"
 ---
 # <a name="tutorial-discover-vmware-vms-with-server-assessment"></a>教學課程：使用伺服器評量來探索 VMware VM
 
-在遷移至 Azure 的過程中，您會探索內部部署清查和工作負載。 
+在遷移至 Azure 的過程中，您會探索內部部署清查和工作負載。
 
-本教學課程說明如何透過「Azure Migrate：伺服器評量工具」探索內部部署 VMware 虛擬機器 (VM)：(使用輕量型 Azure Migrate 設備)。 您會將設備部署為 VMware VM，以持續探索 VM 和效能中繼資料、在 VM 上執行的應用程式，以及 VM 相依性。
+本教學課程說明如何透過「Azure Migrate：伺服器評量工具」探索內部部署 VMware 虛擬機器 (VM)：(使用輕量型 Azure Migrate 設備)。 您會將設備部署為 VMware VM，以持續探索 Vm 及其效能中繼資料、在 Vm 上執行的應用程式，以及 VM 相依性。
 
 在本教學課程中，您會了解如何：
 
@@ -42,16 +42,17 @@ ms.locfileid: "97704279"
 
 **需求** | **詳細資料**
 --- | ---
-**vCenter Server/ESXi 主機** | 您需要執行 5.5、6.0、6.5 或 6.7 版的 vCenter Server。<br/><br/> 必須在執行 5.5 版或更新版本的 ESXi 主機上裝載 VM。<br/><br/> 在 vCenter Server 上，允許 TCP 連接埠 443 上的輸入連線，讓設備可以收集評量資料。<br/><br/> 根據預設，設備會連線到連接埠 443 上的 vCenter。 如果 vCenter 伺服器在不同的連接埠上接聽，您可以在從設備連線至伺服器以進行探索時修改連接埠。<br/><br/> 在裝載 VM 的 EXSi 伺服器上，請確定 TCP 連接埠 443 允許輸入存取，以進行應用程式探索。
-**設備** | vCenter Server 需要用來為 Azure Migrate 設備配置 VM 的資源：<br/><br/> - Windows Server 2016<br/><br/> - 32 GB 的 RAM、八個 vCPU，以及大約 80 GB 的磁碟儲存體。<br/><br/> - 外部虛擬交換器，以及 VM 的網際網路存取 (直接或透過 Proxy)。
-**VM** | 若要使用本教學課程，Windows VM 必須執行 Windows Server 2016、2012 R2、2012 或 2008 R2。<br/><br/> Linux VM 必須執行 Red Hat Enterprise Linux 7/6/5、Ubuntu Linux 14.04/16.04、Debian 7/8、Oracle Linux 6/7 或 CentOS 5/6/7。<br/><br/> VM 需要已安裝並執行中的 VMware 工具 (高於 10.2.0 的版本)。<br/><br/> 在 Windows VM 上，應安裝 Windows PowerShell 2.0 或更新版本。
+**vCenter Server/ESXi 主機** | 您需要執行 5.5、6.0、6.5 或 6.7 版的 vCenter Server。<br/><br/> 必須在執行 5.5 版或更新版本的 ESXi 主機上裝載 VM。<br/><br/> 在 vCenter Server 上，允許 TCP 埠443上的輸入連線，讓設備可以收集設定和效能中繼資料。<br/><br/> 根據預設，設備會連線到連接埠 443 上的 vCenter。 如果 vCenter Server 接聽不同的埠，當您在設備設定管理員上提供 vCenter Server 詳細資料時，可以修改埠。<br/><br/> 在裝載 Vm 的 ESXi 伺服器上，請確定 TCP 埠443上允許輸入存取，以探索 Vm 和 VM 相依性上所安裝的應用程式。
+**設備** | vCenter Server 需要用來為 Azure Migrate 設備配置 VM 的資源：<br/><br/> -32 GB 的 RAM、8個 vcpu，以及大約 80 GB 的磁片儲存體。<br/><br/> -直接或透過 proxy 存取設備 VM 上的外部虛擬交換器和網際網路。
+**VM** | 所有 Windows 和 Linux 作業系統版本都支援探索設定和效能中繼資料，以及探索安裝在 Vm 上的應用程式。 <br/><br/> 請在 [這裡](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) 查看是否支援無代理程式相依性分析的 OS 版本。<br/><br/> 若要探索已安裝的應用程式和 VM 相依性，您必須在 Vm 上安裝並執行 VMware 工具 (晚于 10.2.0) ，而且 Windows Vm 必須安裝 PowerShell 2.0 版或更新版本。
 
 
 ## <a name="prepare-an-azure-user-account"></a>準備 Azure 使用者帳戶
 
 若要建立 Azure Migrate 專案並註冊 Azure Migrate 設備，您需要具有下列權限的帳戶：
-- Azure 訂用帳戶的參與者或擁有者權限。
-- 註冊 Azure Active Directory 應用程式的權限。
+- Azure 訂用帳戶上的參與者或擁有者許可權
+- 註冊 Azure Active Directory (AAD) 應用程式的許可權
+- 擁有者或參與者，以及 Azure 訂用帳戶的使用者存取系統管理員許可權，以建立在無代理程式 VMware 遷移期間使用的 Key Vault
 
 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。 如果您不是訂用帳戶擁有者，請與擁有者合作以指派權限，如下所示：
 
@@ -70,16 +71,19 @@ ms.locfileid: "97704279"
 
     ![開啟 [新增角色指派] 頁面，將角色指派給帳戶](./media/tutorial-discover-vmware/assign-role.png)
 
-7. 在入口網站中搜尋使用者，然後在 [服務] 底下選取 [使用者]。
-8. 在 [使用者設定] 中，確認 Azure AD 使用者可以註冊應用程式 (預設為 [是])。
+1. 若要註冊設備，您的 Azure 帳戶需要 **註冊 AAD 應用程式的許可權。**
+1. 在 Azure 入口網站中，流覽至 **Azure Active Directory**  >  **使用者** 的  >  **使用者設定**。
+1. 在 [使用者設定] 中，確認 Azure AD 使用者可以註冊應用程式 (預設為 [是])。
 
     ![在 [使用者設定] 中確認使用者可以註冊 Active Directory 應用程式](./media/tutorial-discover-vmware/register-apps.png)
 
-9. 或者，租用戶/全域管理員可為帳戶指派 **應用程式開發人員** 角色，以允許註冊 AAD 應用程式。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+9. 如果 [應用程式註冊] 設定設為 [否]，請要求租使用者/全域管理員指派必要的許可權。 或者，租使用者/全域管理員可以將 **應用程式開發人員** 角色指派給帳戶，以允許註冊 AAD 應用程式。 [深入了解](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
 
 ## <a name="prepare-vmware"></a>準備 VMware
 
-在 vCenter Server 上，建立可供設備用來存取 vCenter Server 的帳戶，並確認所需的連接埠已開啟。 您也需要可供設備用來存取 VM 的帳戶。 
+在 vCenter Server 上，確認您的帳戶有權使用 OVA 檔案建立 VM。 當您使用 OVA 檔案，將 Azure Migrate 設備部署為 VMware VM 時，這是必要條件。
+
+伺服器評定需要 vCenter Server 的唯讀帳戶，才能探索和評定 VMware Vm。 如果您也想要探索已安裝的應用程式和 VM 相依性，帳戶必須啟用 **虛擬機器 > 來賓作業** 的許可權。
 
 ### <a name="create-an-account-to-access-vcenter"></a>建立帳戶以存取 vCenter
 
@@ -90,20 +94,20 @@ ms.locfileid: "97704279"
 3. 在 [使用者] 中，新增新的使用者。
 4. 在 [新增使用者] 中，輸入帳戶詳細資料。 然後按一下 [確定] 。
 5. 在 [全域權限] 中選取使用者帳戶，然後將 [唯讀] 角色指派給該帳戶。 然後按一下 [確定] 。
-6. 在 [角色] 中選取 [唯讀] 角色，然後在 [權限] 中選取 [來賓作業]。 需要這些權限，才能探索在 VM 上執行的應用程式，以及分析 VM 相依性。
+6. 如果您也想要探索已安裝的應用程式和 VM 相依性，請移至 [ **角色** ] > 選取 [ **唯讀** ] 角色，然後在 [ **許可權**] 中選取 [ **來賓操作**]。 您可以選取 [傳播至子系] 核取方塊，將許可權傳播至 vCenter Server 下的所有物件。
  
     ![允許對唯讀角色進行來賓作業的核取方塊](./media/tutorial-discover-vmware/guest-operations.png)
 
 
 ### <a name="create-an-account-to-access-vms"></a>建立帳戶以存取 VM
 
-設備會存取 VM 以探索應用程式，並分析 VM 相依性。 設備不會在 VM 上安裝任何代理程式。
+您需要具有 Vm 必要許可權的使用者帳戶，才能探索已安裝的應用程式和 VM 相依性。 您可以在設備的 configuration manager 上提供使用者帳戶。 設備不會在 Vm 上安裝任何代理程式。
 
-1. 建立可供設備用來探索 Windows VM 上的應用程式和相依性的本機管理員帳戶。
-2. 針對 Linux 機器，請建立具有根權限的使用者帳戶，或建立對 /bin/netstat 和 /bin/ls 檔案具有下列權限的使用者帳戶：CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
+1. 針對 Windows Vm，請使用 Vm 上的系統管理許可權，建立 (本機或網域) 帳戶。
+2. 針對 Linux Vm，請建立具有根許可權的帳戶。 或者，您可以在/bin/netstat 和/bin/ls 檔案上建立具有這些許可權的帳戶： CAP_DAC_READ_SEARCH 和 CAP_SYS_PTRACE。
 
 > [!NOTE]
-> Azure Migrate 支援對所有 Windows 伺服器上的應用程式探索使用單一認證，以及對所有 Linux 機器上的應用程式探索使用單一認證。
+> 目前 Azure Migrate 支援一個適用于 Windows Vm 的使用者帳戶，以及一個可在設備上提供之 Linux Vm 的使用者帳戶，以供探索已安裝的應用程式和 VM 相依性。
 
 
 ## <a name="set-up-a-project"></a>設定專案
@@ -119,34 +123,30 @@ ms.locfileid: "97704279"
    ![專案名稱和區域的方塊](./media/tutorial-discover-vmware/new-project.png)
 
 7. 選取 [建立]。
-8. 等候幾分鐘讓 Azure Migrate 專案完成部署。
-
-**Azure Migrate：伺服器評量** 工具依預設會新增至新專案中。
+8. 請等候幾分鐘，讓 Azure Migrate 專案部署。預設會將 **Azure Migrate： Server 評定** 工具新增至新專案。
 
 ![顯示依預設新增伺服器評量工具的頁面](./media/tutorial-discover-vmware/added-tool.png)
 
+> [!NOTE]
+> 如果您已建立專案，您可以使用相同的專案來註冊其他設備，以探索及評估更多 Vm。[深入瞭解](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>設定設備
 
-若要使用 OVA 範本來設定設備，您可以：
-- 提供設備名稱，並在入口網站中產生 Azure Migrate 專案金鑰
-- 下載 OVA 範本檔案，並將其匯入 vCenter Server。
-- 建立設備，並確認其可以連線至 Azure Migrate 伺服器評估。
-- 進行設備的第一次設定，並使用 Azure Migrate 專案金鑰將其註冊至 Azure Migrate 專案。
+Azure Migrate：伺服器評量會使用輕量 Azure Migrate 設備。 設備會執行 VM 探索，並將 VM 設定和效能中繼資料傳送至 Azure Migrate。 您可以藉由部署可從 Azure Migrate 專案下載的 OVA 範本來設定設備。
 
 > [!NOTE]
-> 如果您因故無法使用範本設定設備，可以使用 PowerShell 指令碼進行設定。 [深入了解](deploy-appliance-script.md#set-up-the-appliance-for-vmware)。
+> 如果基於某些原因而無法使用範本設定設備，您可以在現有的 Windows Server 2016 伺服器上使用 PowerShell 腳本進行設定。 [深入了解](deploy-appliance-script.md#set-up-the-appliance-for-vmware)。
 
 
 ### <a name="deploy-with-ova"></a>使用 OVA 進行部署
 
 若要使用 OVA 範本來設定設備，您可以：
-- 提供設備名稱，並在入口網站中產生 Azure Migrate 專案金鑰
-- 下載 OVA 範本檔案，並將其匯入 vCenter Server。
-- 建立設備，並確認其可以連線至 Azure Migrate 伺服器評估。
-- 進行設備的第一次設定，並使用 Azure Migrate 專案金鑰將其註冊至 Azure Migrate 專案。
+1. 提供設備名稱，並在入口網站中產生 Azure Migrate 專案金鑰
+1. 下載 OVA 範本檔案，並將其匯入 vCenter Server。 確認 OVA 是安全的。
+1. 建立設備，並確認其可以連線至 Azure Migrate 伺服器評估。
+1. 進行設備的第一次設定，並使用 Azure Migrate 專案金鑰將其註冊至 Azure Migrate 專案。
 
-### <a name="generate-the-azure-migrate-project-key"></a>產生 Azure Migrate 專案金鑰
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. 產生 Azure Migrate 專案金鑰
 
 1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]。
 2. 在 [探索機器] > [機器是否已虛擬化?] 中，選取 [是，使用 VMware vSphere Hypervisor]。
@@ -155,10 +155,9 @@ ms.locfileid: "97704279"
 1. 成功建立 Azure 資源之後，系統會產生 **Azure Migrate 專案金鑰**。
 1. 複製金鑰，您在設定期間需要此金鑰才能完成設備的註冊。
 
-### <a name="download-the-ova-template"></a>下載 OVA 範本
+### <a name="2-download-the-ova-template"></a>2. 下載 OVA 範本
 
-在 **2：下載 Azure Migrate 設備** 中，選取 .OVA 檔案，然後按一下 [下載]。 
-
+在 **2：下載 Azure Migrate 設備** 中，選取 .OVA 檔案，然後按一下 [下載]。
 
 ### <a name="verify-security"></a>確認安全性
 
@@ -185,10 +184,7 @@ ms.locfileid: "97704279"
         --- | --- | ---
         VMware (85.8 MB) | [最新版本](https://go.microsoft.com/fwlink/?linkid=2140337) | 2daaa2a59302bf911e8ef195f8add7d7c8352de77a9af0b860e2a627979085ca
 
-
-
-
-### <a name="create-the-appliance-vm"></a>建立設備 VM
+### <a name="3-create-the-appliance-vm"></a>3. 建立設備 VM
 
 匯入所下載的檔案，並建立 VM。
 
@@ -207,7 +203,7 @@ ms.locfileid: "97704279"
 確定設備 VM 可以連線至[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端的 Azure URL。
 
 
-### <a name="configure-the-appliance"></a>設定設備
+### <a name="4-configure-the-appliance"></a>4. 設定設備
 
 第一次設定設備。
 
@@ -263,15 +259,16 @@ ms.locfileid: "97704279"
 1. 您可以在啟動探索之前，隨時 **重新驗證** vCenter Server 的連線功能是否正常。
 1. 在 **步驟 3：提供 VM 認證以探索已安裝的應用程式，並執行無代理程式相依性對應** 中，按一下 [新增認證]，並指定要提供認證的作業系統、認證的自訂名稱以及 **使用者名稱** 和 **密碼**。 然後按一下 [儲存]。
 
-    - 如果您已建立可用於[應用程式探索功能](how-to-discover-applications.md)，或[無代理程式相依性分析功能](how-to-create-group-machine-dependencies-agentless.md)的認證，您可以選擇性地在此新增認證。
+    - 如果您已建立要用於 [應用程式探索](how-to-discover-applications.md)或 [無代理](how-to-create-group-machine-dependencies-agentless.md)程式相依性分析的帳戶，您可以在這裡選擇性地新增認證。
     - 如果不想使用這些功能，可以按一下滑桿來略過步驟。 您之後可以隨時改變心意。
-    - 請檢閱[應用程式探索](migrate-support-matrix-vmware.md#application-discovery-requirements)或[無代理程式相依性分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)所需的認證。
+    - 請檢查帳戶的 [應用程式探索](migrate-support-matrix-vmware.md#application-discovery-requirements)所需的許可權，或 [無代理](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)程式相依性分析。
 
 5. 按一下 [開始探索]，即可啟動 VM 探索。 成功起始探索之後，您可以在資料表中檢查 vCenter Server IP 位址/FQDN 的探索狀態。
 
 探索的運作方式如下：
 - 所探索到的 VM 中繼資料會在大約 15 分鐘後出現在入口網站中。
 - 探索已安裝的應用程式、角色和功能需要花一點時間。 時間長短取決於所探索的 VM 數目。 針對 500 部 VM，應用程式清查大約需要一小時才會出現在 Azure Migrate 入口網站中。
+- Vm 的探索完成之後，您可以從入口網站啟用所需 Vm 的無代理程式相依性分析。
 
 
 ## <a name="next-steps"></a>後續步驟

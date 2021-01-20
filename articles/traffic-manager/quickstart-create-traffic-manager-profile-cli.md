@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7dabf94c711972f9fe543edac0d7b95469fc2d35
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
-ms.translationtype: HT
+ms.openlocfilehash: 07fadd7b3129b3ca3351e0416c8aa6f49de82212
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661098"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201224"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>快速入門：使用 Azure CLI 建立流量管理員設定檔以獲得高可用性的 Web 應用程式
 
@@ -33,7 +33,7 @@ ms.locfileid: "94661098"
 - 本文需要 2.0.28 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
-使用 [az group create](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
+使用 [az group create](/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
@@ -47,7 +47,7 @@ ms.locfileid: "94661098"
 
 ## <a name="create-a-traffic-manager-profile"></a>建立流量管理員設定檔
 
-使用 [az network traffic-manager profile create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) 建立流量管理員設定檔，以根據端點優先順序引導使用者流量。
+使用 [az network traffic-manager profile create](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) 建立流量管理員設定檔，以根據端點優先順序引導使用者流量。
 
 在下列範例中，以唯一的流量管理員設定檔名稱取代 **<profile_name>** 。
 
@@ -70,7 +70,7 @@ az network traffic-manager profile create \
 在本快速入門中，您必須在不同的 Azure 區域 (美國東部  和西歐  ) 中部署 Web 應用程式的兩個執行個體。 每個執行個體都會作為流量管理員的主要和容錯移轉端點。
 
 ### <a name="create-web-app-service-plans"></a>建立 Web App Service 方案
-針對您將在兩個不同 Azure 區域中部署的兩個 Web 應用程式執行個體，使用 [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 建立 Web App Service 方案。
+針對您將在兩個不同 Azure 區域中部署的兩個 Web 應用程式執行個體，使用 [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) 建立 Web App Service 方案。
 
 在下列範例中，以唯一的 App Service 方案名稱取代 **<appspname_eastus>** 和 **<appspname_westeurope>**
 
@@ -91,7 +91,7 @@ az appservice plan create \
 ```
 
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>在 App Service 方案中建立 Web 應用程式
-使用 [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)，在「美國東部」  和「西歐」  Azure 區域的 App Service 方案中建立 Web 應用程式的兩個執行個體。
+使用 [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)，在「美國東部」  和「西歐」  Azure 區域的 App Service 方案中建立 Web 應用程式的兩個執行個體。
 
 在下列範例中，以唯一的應用程式名稱取代 **<app1name_eastus>** 和 **<app2name_westeurope>** ，並以上一節中用來建立 App Service 方案的名稱取代 **<appspname_eastus>** 和 **<appspname_westeurope>** 。
 
@@ -110,7 +110,7 @@ az webapp create \
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>新增流量管理員端點
-使用 [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)，將兩個 Web 應用程式當作流量管理員端點新增到流量管理員設定檔，如下所示：
+使用 [az network traffic-manager endpoint create](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)，將兩個 Web 應用程式當作流量管理員端點新增到流量管理員設定檔，如下所示：
 
 - 決定 Web 應用程式識別碼，並將位於「美國東部」Azure 區域的 Web 應用程式新增為主要端點，以便路由傳送所有的使用者流量。 
 - 決定 Web 應用程式識別碼，並將位於「西歐」Azure 區域的 Web 應用程式新增為容錯移轉端點。 
@@ -178,7 +178,7 @@ az network traffic-manager endpoint create \
 
 ### <a name="determine-the-dns-name"></a>確定 DNS 名稱
 
-使用 [az network traffic-manager profile show](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-show)，判斷流量管理員設定檔的 DNS 名稱。
+使用 [az network traffic-manager profile show](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-show)，判斷流量管理員設定檔的 DNS 名稱。
 
 ```azurecli-interactive
 
@@ -196,7 +196,7 @@ az network traffic-manager profile show \
 
     > [!NOTE]
     > 在此快速入門案例中，所有要求都會路由傳送至主要端點。 它會設定為 [優先順序 1]。
-2. 若要檢視進行中的流量管理員容錯移轉，請使用 [az network traffic-manager endpoint update](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) 來停用主要網站。
+2. 若要檢視進行中的流量管理員容錯移轉，請使用 [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) 來停用主要網站。
 
    ```azurecli-interactive
 
@@ -214,7 +214,7 @@ az network traffic-manager profile show \
 
 ## <a name="clean-up-resources"></a>清除資源
 
-完成時，請使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 刪除資源群組、Web 應用程式和所有相關資源。
+完成時，請使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 刪除資源群組、Web 應用程式和所有相關資源。
 
 ```azurecli-interactive
 

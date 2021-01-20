@@ -9,12 +9,12 @@ ms.subservice: business-intelligence
 ms.date: 10/27/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
-ms.openlocfilehash: 996233e2526b8b69c13abd4340ead4c5e2175916
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: HT
+ms.openlocfilehash: 9c63e5e24495f373f288d2789780a6c671a7cc24
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450682"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218394"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>快速入門：將 Power BI 工作區連結至 Synapse 工作區
 
@@ -25,7 +25,7 @@ ms.locfileid: "96450682"
 ## <a name="prerequisites"></a>必要條件
 
 - [建立 Azure Synapse 工作區和相關聯的儲存體帳戶](quickstart-create-workspace.md)
-- [Power BI Professional 或 Premium 工作區](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)
+- [Power BI Professional 或 Premium 工作區](/power-bi/service-create-the-new-workspaces)
 
 ## <a name="link-power-bi-workspace-to-your-synapse-workspace"></a>將 Power BI 工作區連結至您的 Synapse 工作區
 

@@ -3,14 +3,14 @@ title: Azure 上的 Kubernertes 教學課程 - 部署應用程式
 description: 在本 Azure Kubernetes Service (AKS) 教學課程中，您會使用 Azure Container Registry 中儲存的自訂映像，將多容器應用程式部署至您的叢集。
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 8114aa0b6c2483d543376727a44d14041ed02b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576484"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250174"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>教學課程：執行 Azure Kubernetes Service (AKS) 中的應用程式
 
@@ -21,7 +21,7 @@ Kubernetes 會提供容器化應用程式的分散式平台。 您會建置自�
 > * 在 Kubernetes 中執行應用程式
 > * 測試應用程式
 
-在其他教學課程中，此應用程式會相應放大並且更新。
+在稍後的教學課程中，此應用程式會相應放大和更新。
 
 本快速入門假設您已有 Kubernetes 概念的基本知識。 如需詳細資訊，請參閱 [Azure Kubernetes Services (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
@@ -49,7 +49,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-將 *microsoft* 取代為您的 ACR 登入伺服器名稱。 您可以在資訊清單檔的第 51 行找到映像名稱。 下列範例顯示預設映像名稱：
+將 *microsoft* 取代為您的 ACR 登入伺服器名稱。 在資訊清單檔的第60行找到映射名稱。 下列範例顯示預設映像名稱：
 
 ```yaml
 containers:
@@ -77,7 +77,7 @@ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 下列範例輸出顯示在 AKS 叢集中成功建立的資源：
 
-```
+```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 deployment "azure-vote-back" created
@@ -98,19 +98,19 @@ kubectl get service azure-vote-front --watch
 
 一開始，*azure-vote-front* 服務的 *EXTERNAL-IP* 會顯示為 *pending*：
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 當 *EXTERNAL-IP* 位址從 *pending* 變成實際的公用 IP 位址時，請使用 `CTRL-C` 停止 `kubectl` 監看式流程。 下列範例輸出會顯示已指派給服務的有效公用 IP 位址：
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 若要查看應用程式的實際運作情況，請開啟網頁瀏覽器並瀏覽至服務的外部 IP 位址：
 
-![Azure 上 Kubernetes 叢集的影像](media/container-service-kubernetes-tutorials/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote.png" alt-text="螢幕擷取畫面，顯示在本機網頁瀏覽器中開啟的 AKS 叢集中執行的容器映射 Azure 投票應用程式" lightbox="./media/container-service-kubernetes-tutorials/azure-vote.png":::
 
 如果應用程式並未載入，可能是因為您的映像登錄發生授權問題。 若要檢視容器的狀態，請使用 `kubectl get pods` 命令。 如果無法提取容器映像，請參閱[從 Azure Kubernetes Service 對 Azure Container Registry 進行驗證](cluster-container-registry-integration.md)。
 

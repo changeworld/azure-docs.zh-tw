@@ -9,12 +9,12 @@ ms.custom: devx-track-csharp, contperf-fy21q1
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.author: alkemper
-ms.openlocfilehash: d1582cda4b083623daf7bb756d0bc8aa3e74eae8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: d0e564b98ab6331677451afd32a0848e7f5594dd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033641"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598732"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式設定建立 ASP.NET Core 應用程式
 
@@ -70,7 +70,7 @@ dotnet new mvc --no-https --output TestAppConfig
     ```
 
     > [!IMPORTANT]
-    > 除非以引號括住連接字串，否則某些殼層會截斷連接字串。 請確定 `dotnet user-secrets` 命令的輸出會顯示整個連接字串。 如果不是，請重新執行命令，並以引號括住連接字串。
+    > 除非以引號括住連接字串，否則某些殼層會截斷連接字串。 請確定 `dotnet user-secrets list` 命令的輸出會顯示整個連接字串。 如果不是，請重新執行命令，並以引號括住連接字串。
 
     祕密管理員僅可用於在本機測試 Web 應用程式。 當應用程式部署至 [Azure App Service](https://azure.microsoft.com/services/app-service/web) 時，請使用 App Service 中的 **連接字串** 應用程式設定 (而不是秘密管理員) 來儲存連接字串。
 

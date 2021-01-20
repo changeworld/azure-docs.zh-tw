@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: e047f46e110e1f7b1d544545c80bd1097ae65167
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079644"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221913"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站以路由表路由傳送網路流量
 
@@ -120,7 +120,7 @@ ms.locfileid: "86079644"
 
 1. 從 [Azure 入口網站](https://portal.azure.com)功能表或 [首頁] 頁面，選取 [建立資源]。
 
-2. 在搜尋方塊中，輸入「路由表」。 當搜尋結果中出現**路由表**出時加以選取。
+2. 在搜尋方塊中，輸入「路由表」。 當搜尋結果中出現 **路由表** 出時加以選取。
 
 3. 在 [路由表] 頁面中，選取 [建立]。
 
@@ -361,4 +361,4 @@ ms.locfileid: "86079644"
 > [限制對 PaaS 資源的網路存取](tutorial-restrict-network-access-to-resources.md)
 
 > [!NOTE] 
-> Azure 服務成本費用。 Azure 成本管理可協助您設定預算和設定警示以控制費用。 使用成本管理來分析、管理和最佳化您的 Azure 成本。 若要深入了解，請參閱[分析成本的快速入門](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+> Azure 服務成本費用。 Azure 成本管理可協助您設定預算和設定警示以控制費用。 使用成本管理來分析、管理和最佳化您的 Azure 成本。 若要深入了解，請參閱[分析成本的快速入門](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。

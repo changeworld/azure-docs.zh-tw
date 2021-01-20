@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: HT
+ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455497"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219448"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>快速入門：在 Synapse 中建立新的 Azure Machine Learning 連結服務
 
@@ -22,7 +22,7 @@ ms.locfileid: "96455497"
 
 例如，這會連結到 Azure Machine Learning 的工作區，可實現下列體驗：
 
-- 在 Synapse 管線中，以步驟的方式執行您的 Azure Machine Learning 管線。 若要深入了解，請參閱[執行 Azure Machine Learning 管線](/azure/data-factory/transform-data-machine-learning-service)。
+- 在 Synapse 管線中，以步驟的方式執行您的 Azure Machine Learning 管線。 若要深入了解，請參閱[執行 Azure Machine Learning 管線](../../data-factory/transform-data-machine-learning-service.md)。
 
 - 從 Azure Machine Learning 模型登錄中引入機器學習模型，並對 Synapse SQL 集區中的模型進行評分，藉此透過預測來擴充資料。 如需詳細資訊，請參閱[教學課程：適用於 Synapse SQL 集區的機器學習模型評分精靈](tutorial-sql-pool-model-scoring-wizard.md)。
 
@@ -30,7 +30,7 @@ ms.locfileid: "96455497"
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。
 - [Synapse Analytics 工作區](../get-started-create-workspace.md)，並將 ADLS Gen2 儲存體帳戶設定為預設儲存體。 您必須是所要使用 ADLS Gen2 檔案系統的 **儲存體 Blob 資料參與者**。
-- [Azure Machine Learning 工作區](/azure/machine-learning/how-to-manage-workspace)。
+- [Azure Machine Learning 工作區](../../machine-learning/how-to-manage-workspace.md)。
 - 您需要權限 (或具有權限使用者的要求) 來建立服務主體和祕密，讓您可以用來建立連結的服務。 請注意，必須在 Azure Machine Learning 工作區中將「參與者」角色指派給此服務主體。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站

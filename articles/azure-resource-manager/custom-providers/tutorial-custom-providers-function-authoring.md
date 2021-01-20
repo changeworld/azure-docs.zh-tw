@@ -3,14 +3,14 @@ title: 建立 RESTful 端點
 description: 本教學課程將說明如何撰寫自訂提供者的 RESTful 端點。 文中會詳述如何處理所支援 RESTful HTTP 方法的要求和回應。
 author: jjbfour
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: d7f6c51211ce0572797ade659b9316003502da1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75648725"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200204"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>撰寫自訂提供者的 RESTful 端點
 
@@ -132,7 +132,7 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 }
 ```
 
-**CreateCustomResource** 方法會更新傳入要求，以納入 Azure 的特定欄位：**id**、**name**和 **type**。 這些欄位是 Azure 上所有服務所使用的最上層屬性。 其可讓自訂提供者與其他服務交互操作，例如 Azure 原則、Azure Resource Manager 範本和 Azure 活動記錄等服務。
+**CreateCustomResource** 方法會更新傳入要求，以納入 Azure 的特定欄位：**id**、**name** 和 **type**。 這些欄位是 Azure 上所有服務所使用的最上層屬性。 其可讓自訂提供者與其他服務交互操作，例如 Azure 原則、Azure Resource Manager 範本和 Azure 活動記錄等服務。
 
 屬性 | 範例 | 描述
 ---|---|---
@@ -347,7 +347,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.WindowsAzure.Storage"
-#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent.dll"
+#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent"
 
 using System;
 using System.Net;

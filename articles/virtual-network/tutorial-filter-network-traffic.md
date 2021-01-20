@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 97690618de5d58fa4022d01fa36a872f9d220083
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75350146"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221675"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站透過網路安全性群組篩選網路流量
 
@@ -205,7 +205,7 @@ ms.locfileid: "75350146"
 
 8. 完成 IIS 安裝之後，請將 myVmWeb  VM 中斷連線，以留在 myVmMgmt  VM 遠端桌面連線中。
 9. 從 myVmMgmt  VM 中斷連線。
-10. 在 Azure 入口網站頂端的「搜尋資源、服務和文件」  方塊中，開始從您的電腦輸入 myVmWeb  。 當 **myVmWeb** 出現在搜尋結果中時，選取它。 請記下您 VM 的**公用 IP 位址**。 下圖中所示的位址是 137.135.84.74，但您的地址並不同：
+10. 在 Azure 入口網站頂端的「搜尋資源、服務和文件」  方塊中，開始從您的電腦輸入 myVmWeb  。 當 **myVmWeb** 出現在搜尋結果中時，選取它。 請記下您 VM 的 **公用 IP 位址**。 下圖中所示的位址是 137.135.84.74，但您的地址並不同：
 
     ![公用 IP 位址](./media/tutorial-filter-network-traffic/public-ip-address.png)
   
@@ -221,7 +221,7 @@ ms.locfileid: "75350146"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已建立網路安全性群組，並將其與虛擬網路子網路產生關聯。 若要深入了解網路安全性群組，請參閱[網路安全性群組概觀](security-overview.md)和[管理網路安全性群組](manage-network-security-group.md)。
+在本教學課程中，您已建立網路安全性群組，並將其與虛擬網路子網路產生關聯。 若要深入了解網路安全性群組，請參閱[網路安全性群組概觀](./network-security-groups-overview.md)和[管理網路安全性群組](manage-network-security-group.md)。
 
 Azure 依預設會路由傳送子網路之間的流量。 您可以改採其他方式，例如，透過作為防火牆的 VM 路由傳送子網路之間的流量。 若想了解如何建立路由表，請移至下一個教學課程。
 

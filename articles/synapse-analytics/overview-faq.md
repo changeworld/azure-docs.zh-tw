@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d833c32000eb91511782184ef4455bc1973a714
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
-ms.translationtype: HT
+ms.openlocfilehash: a7ee4e205851a751f7a50ac0ddadfb4e4c7eb81a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807904"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247398"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics 的常見問題
 
@@ -138,11 +138,6 @@ A：並沒有「移動」或「移轉」功能。 您可以選擇在現有的集
 ### <a name="q-what-is-the-default-deployment-of-dedicated-sql-pools-now"></a>問：專用 SQL 集區現在的預設部署為何？ 
 
 A：根據預設，所有新的專用 SQL 集區都會部署至工作區；但若您有需要，仍可建立獨立形式的專用 SQL 集區 (先前稱為 SQL DW)。 
-
-
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>問：專用 SQL 集區與無伺服器 SQL 集區的功能有何差異？
-
-A：您可以在 [Synapse SQL 中的 T-SQL 功能差異](./sql/overview-features.md)中找到差異的完整清單。
 
 ## <a name="next-steps"></a>後續步驟
 

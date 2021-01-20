@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 07/20/2020
-ms.openlocfilehash: 4ca9ababbeb7843f1a014a4bd51a5e24a74acbae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: HT
+ms.date: 12/31/2020
+ms.openlocfilehash: c9f8760bd1a7b5d3700f3fdf03331fe7013e116f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322943"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209401"
 ---
 # <a name="analyze-data-with-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的無伺服器 SQL 集區來分析資料
 
@@ -23,10 +23,11 @@ ms.locfileid: "93322943"
 
 ## <a name="analyze-nyc-taxi-data-in-blob-storage-using-serverless-sql-pool"></a>使用無伺服器 SQL 集區分析 Blob 儲存體中的 NYC 計程車資料
 
-1. 在 [連結] 下的 [資料] 中樞中，以滑鼠右鍵按一下 [Azure Blob 儲存體 > 範例資料集 > nyc_tlc_yellow] 並選取 [選取前 100 個資料列]
+1. 在 [已 **連結**] 下的 **資料** 中樞內，以滑鼠右鍵按一下 **Azure Blob 儲存體 > 範例資料集 > Nyc_tlc_yellow**、**新的 SQL 腳本**，然後選取 [**選取前 100** 個數據列]。
 1. 這會使用下列程式碼建立新的 SQL 指令碼：
 
     ```
+    -- This is auto-generated code
     SELECT
         TOP 100 *
     FROM
@@ -42,7 +43,7 @@ ms.locfileid: "93322943"
 Spark 資料庫中的資料表會自動顯示，且可由無伺服器 SQL 集區進行查詢。
 
 1. 在 Synapse Studio 中，移至 [開發] 中樞，然後建立新的 SQL 指令碼。
-1. 將 [連線到] 設為 [無伺服器 SQL 集區]。
+1. 將 **Connect** 設定為 **內建** 的無伺服器 SQL 集區。
 1. 將下列文字貼到指令碼中，然後執行指令碼。
 
     ```sql
