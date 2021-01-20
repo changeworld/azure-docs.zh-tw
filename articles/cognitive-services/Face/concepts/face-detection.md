@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 92b19941f34b9bf5656c9beb188a68d2cf01f674
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 68d1e9744d937cf80327c3f41cc69f4af97d3400
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504124"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600192"
 ---
 # <a name="face-detection-and-attributes"></a>臉部偵測和屬性
 
@@ -43,7 +43,7 @@ ms.locfileid: "92504124"
 * **模糊**。 影像中的臉部 blurriness。 這個屬性會傳回介於0和1之間的值，以及低、中或高的非正式評等。
 * **表情**。 表情的清單，其偵測到對指定臉部的信賴度。 信賴分數會正規化，而且所有表情的分數最多可新增一個。 傳回的表情為快樂、悲傷、中性、生氣、藐視、厭惡、驚喜和恐懼。
 * **公開**。 影像中臉部的曝光。 這個屬性會傳回介於0和1之間的值，以及 underExposure、goodExposure 或 overExposure 的非正式評等。
-* 臉部**表情**。 預估的臉部線顯示和指定臉部的長度。
+* 臉部 **表情**。 預估的臉部線顯示和指定臉部的長度。
 * **性別**。 指定臉部的估計性別。 可能的值為男性、女性和 genderless。
 * **眼鏡**。 指定的臉部是否有眼鏡。 可能的值為 NoGlasses、ReadingGlasses、太陽眼鏡和游泳 Goggles。
 * **頭髮**。 臉部的頭髮型別。 這個屬性會顯示是否會顯示頭髮、是否偵測到 baldness，以及偵測到哪些頭髮色。
@@ -64,7 +64,9 @@ ms.locfileid: "92504124"
 
 * 支援的輸入影像格式包括 JPEG、PNG、第一個框架的 GIF 和 BMP。
 * 影像檔案大小應大於 6 MB。
-* 可偵測的臉部大小範圍為 36 x 36 至 4096 x 4096 像素。 未偵測到此範圍之外的臉部。
+* 最小可偵測的臉部大小是影像中不超過 1920 x 1080 圖元的 36 x 36 圖元。 大於 1920 x 1080 圖元的影像具有按比例調整的最小臉部大小。 減少臉部尺寸可能會導致無法偵測到某些臉部，即使它們大於可偵測的臉部大小下限。
+* 可偵測的臉部大小上限為 4096 x 4096 圖元。
+* 將不會偵測到大小範圍 36 x 36 到 4096 x 4096 圖元之外的臉部。
 * 某些臉部可能因技術挑戰而無法偵測到。 極端臉部 (頭部姿勢) 或臉部遮蔽 (物件（例如太陽眼鏡或臉部部分) 的或手）可能會影響偵測。 正面和近正面的臉部能提供最佳結果。
 
 如果您要偵測影片摘要中的臉部，可以藉由調整攝影機上的特定設定來改善效能：

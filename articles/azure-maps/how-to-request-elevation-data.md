@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094194"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602431"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>使用 Azure 地圖服務提高許可權服務 (預覽來要求提高許可權資料) 
 
@@ -471,7 +471,7 @@ URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
 
 ### <a name="get-elevation-data-by-polyline-path"></a>依聚合線條路徑取得提升許可權資料
 
-下列範例網頁會示範如何使用地圖控制項，沿著路徑顯示提高許可權資料。 使用者可以按一下 `PolyLine` 左上角的圖示，然後在地圖上繪製聚合線條來定義路徑。 然後，地圖控制項會以在右上角的索引鍵中指定的色彩轉譯提高許可權的資料。
+下列範例網頁會示範如何使用地圖控制項，沿著路徑顯示提高許可權資料。 使用者可以按一下 `Polyline` 左上角的圖示，然後在地圖上繪製聚合線條來定義路徑。 然後，地圖控制項會以在右上角的索引鍵中指定的色彩轉譯提高許可權的資料。
 
 <br/>
 

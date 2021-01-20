@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/28/2020
+ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803522"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600750"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報表 (預覽) 
 
@@ -87,7 +87,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 選取清單檢視中的項目，即可取得更詳細的資訊。
 
-![詳細資訊](./media/concept-provisioning-logs/steps.png "Filter")
+![詳細資訊](./media/concept-provisioning-logs/steps.png "篩選")
 
 
 ## <a name="filter-provisioning-activities"></a>篩選布建活動
@@ -101,7 +101,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 - 動作
 
 
-![新增篩選條件](./media/concept-provisioning-logs/default-filter.png "Filter")
+![新增篩選條件](./media/concept-provisioning-logs/default-filter.png "篩選")
 
 身分 **識別** 篩選器可讓您指定您關心的名稱或身分識別。 此身分識別可以是使用者、群組、角色或其他物件。 您可以依物件的名稱或識別碼進行搜尋。 此識別碼會因案例而異。 例如，從 Azure AD 將物件布建到 SalesForce 時，來源識別碼是 Azure AD 中使用者的物件識別碼，而 TargetID 是 Salesforce 中使用者的識別碼。 從 Workday 布建至 Active Directory 時，來源識別碼是 Workday 背景工作員工識別碼。 請注意，使用者的名稱不一定會出現在識別欄位中。 一律會有一個識別碼。 
 
@@ -174,10 +174,10 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 修改的屬性
 
-- 總結
+- 摘要
 
 
-![布建詳細資料](./media/concept-provisioning-logs/provisioning-tabs.png "索引標籤")
+![布建詳細資料](./media/concept-provisioning-logs/provisioning-tabs.png "定位點")
 
 
 
@@ -192,7 +192,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 
 
-![螢幕擷取畫面顯示 [步驟] 索引標籤，其中顯示布建步驟。](./media/concept-provisioning-logs/steps.png "Filter")
+![螢幕擷取畫面顯示 [步驟] 索引標籤，其中顯示布建步驟。](./media/concept-provisioning-logs/steps.png "篩選")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>疑難排解和建議
@@ -206,7 +206,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 **修改過的屬性** 會顯示舊值和新值。 在沒有舊值的情況下，舊的值資料行是空白的。 
 
 
-### <a name="summary"></a>總結
+### <a name="summary"></a>摘要
 
 [ **摘要** ] 索引標籤提供來源和目標系統中物件的發生狀況和識別碼的總覽。 
 
@@ -215,8 +215,6 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 - 如果您有 premium edition，Azure 入口網站會將回報的布建資料儲存30天，而如果您有免費版本，則會儲存7天。布建記錄可以發佈至 [log analytics](../app-provisioning/application-provisioning-log-analytics.md) ，以保留超過30天的時間。 
 
 - 您可以使用 [變更識別碼] 屬性做為唯一識別碼。 例如，當與產品支援互動時，這會很有説明。
-
-- 目前沒有任何選項可將布建資料下載為 CSV 檔案，但您可以使用 [Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta)來匯出資料。
 
 - 您可能會看到不在範圍中的使用者略過的事件。 這是預期的情況，特別是當同步處理範圍設定為 [所有使用者和群組] 時。 我們的服務會評估租使用者中的所有物件，甚至是超出範圍的物件。 
 

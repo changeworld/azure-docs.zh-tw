@@ -9,22 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: ec7459a356221fb7b599cbbc02f1cb825920b5b3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890661"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599552"
 ---
 # <a name="show-traffic-on-the-map"></a>在地圖上顯示路況
 
 Azure 地圖服務可用的路況資料類型有兩種：
 
 - 事件資料 - 包含以點和線為基礎的資料，用於施工、道路封閉和事故等事項。
-- 車流資料 - 提供有關道路路況車流的計量。 車流資料通常用來為道路上色。 這些色彩是以有多少路況正在減慢車流為基礎 (相對於速度限制或另一個計量)。 Azure 地圖服務中的路況車流資料有三種不同度量計量：
-    - `relative` - 相對於道路的自由車流速度。
-    - `absolute` - 是道路上所有車輛的絕對速度。
-    - `relative-delay` - 顯示比平均預期延遲還慢的區域。
+- 車流資料 - 提供有關道路路況車流的計量。 車流資料通常用來為道路上色。 這些色彩是以有多少路況正在減慢車流為基礎 (相對於速度限制或另一個計量)。 有四個值可傳遞至地圖的流量 `flow` 選項。
+
+    |流程值 | 描述|
+    | :-- | :-- |
+    | `none` | 不顯示地圖上的交通資料 |
+    | `relative` | 顯示相對於道路的自由流動速度的流量資料 |
+    | `relative-delay` | 顯示比平均預期延遲更慢的區域 |
+    | `absolute` | 顯示所有車輛在道路上的絕對速度 |
 
 下列程式碼顯示如何在地圖上顯示路況資料。
 
@@ -71,7 +75,7 @@ map.controls.add(new atlas.control.TrafficLegendControl(), { position: 'bottom-l
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="流量控制" src="https://codepen.io/azuremaps/embed/ZEWaeLJ?height500&theme-id=0&default-tab=js,result&embed-version=2&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
-查看 >codepen 上 Azure 地圖服務 () 的畫筆<a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>流量控制</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+查看 >codepen 上 Azure 地圖服務 () 的畫筆<a href='https://codepen.io/azuremaps/pen/ZEWaeLJ'>流量控制</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'></a>
 </iframe>
 
 

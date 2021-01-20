@@ -1,7 +1,7 @@
 ---
-title: 如何在工作區中執行 Jupyter Notebook
+title: 如何在您的工作區中執行 Jupyter 筆記本
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure Machine Learning Studio 中執行 Jupyter Notebook，而不需離開您的工作區。
+description: 瞭解如何在 Azure Machine Learning studio 中執行 Jupyter 筆記本，而不需要離開您的工作區。
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -10,27 +10,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 06/27/2020
-ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 01/19/2021
+ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325404"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599235"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 
+瞭解如何在 Azure Machine Learning studio 中，直接在您的工作區中執行 Jupyter 筆記本。 您可以啟動 [Jupyter](https://jupyter.org/) 或 [JupyterLab](https://jupyterlab.readthedocs.io)，也可以在不離開工作區的情況下編輯和執行您的筆記本。
 
-瞭解如何在您的 Azure Machine Learning Studio 工作區中直接執行您的 Jupyter Notebook。 您可以啟動 [Jupyter](https://jupyter.org/) 或 [JupyterLab](https://jupyterlab.readthedocs.io)，也可以在不離開工作區的情況下編輯和執行您的筆記本。
-
-看看您如何：
-
-* 在工作區中建立 Jupyter Notebook
-* 從筆記本執行實驗
-* 變更筆記本環境
-* 尋找用來執行筆記本的計算執行個體詳細資料
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://aka.ms/AMLFree)。
 * Machine Learning 工作區。 請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
@@ -48,7 +40,7 @@ ms.locfileid: "93325404"
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="建立新檔案":::
 
 1. 為檔案命名。 
-1. 針對 Jupyter Notebook 檔案，請選取 [ **筆記本** ] 作為檔案類型。
+1. 針對 Jupyter 筆記本檔案，選取 [ **筆記本** ] 作為檔案類型。
 1. 選取檔案目錄。
 1. 選取 [建立]。
 
@@ -107,7 +99,7 @@ ms.locfileid: "93325404"
 
 當計算實例正在執行時，您也可以在任何 Python 筆記本中使用 [Intellisense](https://code.visualstudio.com/docs/editor/intellisense)支援的程式碼完成。
 
-您也可以從 [筆記本] 工具列啟動 Jupyter 或 JupyterLab。  Azure Machine Learning 不會提供 Jupyter 或 JupyterLab 的更新和修正錯誤，因為它們是 Microsoft 支援服務界限外的開放原始碼產品。
+您也可以從筆記本工具列啟動 Jupyter 或 JupyterLab。  Azure Machine Learning 不會提供 Jupyter 或 JupyterLab 的更新和修正錯誤，因為它們是 Microsoft 支援服務界限外的開放原始碼產品。
 
 ### <a name="focus-mode"></a>焦點模式
 
@@ -153,18 +145,6 @@ ms.locfileid: "93325404"
  
 選取 [筆記本] 功能表中的 [ **檢查點** ]，以建立命名檢查點，並將筆記本還原至已儲存的檢查點。
 
-
-### <a name="useful-keyboard-shortcuts"></a>實用的鍵盤快速鍵
-
-|鍵盤  |動作  |
-|---------|---------|
-|Shift+Enter     |  執行儲存格       |
-|Ctrl+空格鍵 | 啟用 IntelliSense |
-|Ctrl+M (Windows)     |  啟用/停用筆記本中的 Tab 鍵捕捉。       |
-|Ctrl+Shift+M (Mac 和 Linux)     |    啟用/停用筆記本中的 Tab 鍵捕捉。     |
-|Tab 鍵 (啟用 Tab 鍵捕捉時) | 新增 ' \t ' 字元 (縮排)
-|Tab 鍵 (停用 Tab 鍵捕捉時) | 將焦點變更至下一個可設定焦點的項目 (刪除儲存格按鈕、執行按鈕等)
-
 ## <a name="delete-a-notebook"></a>刪除筆記本
 
 您「無法」刪除 **Samples** 筆記本。  這些筆記本是 Studio 的一部分，而且會在每次發佈新的 SDK 時更新。  
@@ -172,27 +152,45 @@ ms.locfileid: "93325404"
 您「可以」透過下列任何方式刪除 **使用者檔案** 筆記本：
 
 * 在 Studio 中，選取資料夾或檔案後面的 [...]。  請務必使用支援的瀏覽器 (Microsoft Edge、Chrome 或 Firefox)。
-* 從任何 [筆記本] 工具列中，選取 [**開啟終端機**](#terminal)以存取計算執行個體的終端機視窗。
+* 從任何筆記本工具列中，選取 [ [**開啟終端**](#terminal)  機] 以存取計算實例的終端機視窗。
 * 使用 Jupyter 或 JupyterLab 各自的工具。
 
-## <a name="run-an-experiment"></a>執行實驗
+## <a name="run-a-notebook-or-python-script"></a>執行筆記本或 Python 腳本
 
-若要從筆記本執行實驗，您必須先連線到執行中的[計算執行個體](concept-compute-instance.md)。 如果您沒有計算執行個體，請使用下列步驟建立一個： 
+若要執行筆記本或 Python 腳本，您必須先連接到執行中的 [計算實例](concept-compute-instance.md)。 如果您沒有計算執行個體，請使用下列步驟建立一個： 
 
-1. 選取 [筆記本] 工具列中的 **+** 。 
+1. **+** 在筆記本或腳本工具列中選取。 
 2. 為計算命名，然後選擇 [虛擬機器大小]。 
 3. 選取 [建立]。
-4. 計算執行個體會自動連線到筆記本，您現在可以執行儲存格了。
+4. 計算實例會自動連接到檔案。  您現在可以使用計算實例左邊的工具來執行筆記本儲存格或 Python 腳本
 
 只有您可以查看和使用您所建立的計算執行個體。  您的 **使用者檔案** 會與 VM 分開儲存，而且由工作區中的所有計算執行個體共用。
 
 ### <a name="view-logs-and-output"></a>檢視記錄和輸出
 
-使用[筆記本小工具](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)檢視執行進度和記錄。 小工具沒有同步，會一直提供更新直到定型完成。 Jupyter 和 JupterLab 也支援 Azure Machine Learning 小工具。
+使用 [筆記本](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) widget 來查看執行和記錄的進度。 小工具沒有同步，會一直提供更新直到定型完成。 Jupyter 和 JupterLab 也支援 Azure Machine Learning 小工具。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="螢幕擷取畫面： Jupyter 筆記本 widget ":::
+
+## <a name="explore-variables-in-the-notebook"></a>探索筆記本中的變數
+
+在筆記本工具列上，使用 [ **變數瀏覽器** ] 工具來顯示已在筆記本中建立之所有變數的名稱、類型、長度和範例值。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer.png" alt-text="螢幕擷取畫面： Variable explorer 工具":::
+
+選取工具以顯示 [變數瀏覽器] 視窗。
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer-window.png" alt-text="螢幕擷取畫面：變數瀏覽器視窗":::
+
+## <a name="navigate-with-a-toc"></a>使用 TOC 流覽
+
+在筆記本工具列上，使用 [  **目錄** ] 工具來顯示或隱藏目錄。  啟動具有標題的 markdown 資料格，以將其新增至目錄。 按一下資料表中的專案，以滾動到筆記本中的該資料格。  
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/table-of-contents.png" alt-text="螢幕擷取畫面：筆記本中的目錄":::
 
 ## <a name="change-the-notebook-environment"></a>變更筆記本環境
 
-[筆記本] 工具列可讓您變更您的筆記本執行所在的環境。  
+筆記本工具列可讓您變更您的筆記本執行所在的環境。  
 
 以下這些動作不會變更筆記本狀態或筆記本中任何變數的值：
 
@@ -213,9 +211,9 @@ ms.locfileid: "93325404"
 
 ### <a name="add-new-kernels"></a>加入新的核心程序
 
-筆記本會自動尋找連線的計算執行個體上安裝的所有 Jupyter 核心程序。  將核心程序加入計算執行個體：
+筆記本會自動尋找已連線的計算實例上安裝的所有 Jupyter 核心。  將核心程序加入計算執行個體：
 
-1. 選取 [筆記本] 工具列中的 [**開啟終端機**](#terminal)。
+1. 選取筆記本工具列中的 [ [**開啟終端**](#terminal) 機]。
 1. 使用終端機視窗建立新的環境。  例如，下列程式碼會建立 `newenv` ：
     ```shell
     conda create -y --name newenv
@@ -257,7 +255,90 @@ ms.locfileid: "93325404"
 |  綠色 |核心程序已連線、閒置、忙碌中|
 |  灰色 |核心程序未連線 |
 
-## <a name="find-compute-details"></a>尋找計算詳細資料 
+## <a name="shortcut-keys"></a>快速鍵
+類似于 Jupyter 筆記本，Azure Machine Learning Studio 筆記本具有模式使用者介面。 鍵盤會根據筆記本儲存格所在的模式來執行不同的動作。 Azure Machine Learning Studio 筆記本支援指定程式碼資料格的下列兩種模式：命令模式和編輯模式。
+
+### <a name="command-mode-shortcuts"></a>命令模式快速鍵
+
+沒有文字游標提示您輸入時，儲存格就會處於命令模式。 儲存格處於命令模式時，您可以將筆記本當做整體編輯，但無法輸入個別的儲存格。 按下 `ESC` 或使用滑鼠選取資料格的編輯器區域以外的地方，進入命令模式。  作用中資料格的左邊框線為藍色和實線，而其 [ **執行** ] 按鈕為藍色。
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="命令模式中的筆記本儲存格 ":::
+
+| 快速鍵                      | 描述                          |
+| ----------------------------- | ------------------------------------|
+| Enter                         | 進入編輯模式             |        
+| Shift + Enter                 | 執行儲存格，選取下方         |     
+| 控制/命令 + Enter       | 執行儲存格                            |
+| Alt + Enter                   | 執行資料格，插入下方的程式碼資料格    |
+| 控制/命令 + Alt + Enter | 執行資料格，插入下方的 markdown 資料格|
+| Alt + R                       | 全部執行      |                       
+| Y                             | 將儲存格轉換成程式碼    |                         
+| M                             | 將資料格轉換成 markdown  |                       
+| 向上/K                          | 選取上方儲存格    |               
+| 下/J                        | 選取下方儲存格    |               
+| A                             | 在上方插入程式碼儲存格  |            
+| B                             | 在下方插入程式碼資料格   |           
+| 控制/命令 + Shift + A   | 在上方插入 markdown 資料格    |      
+| Control/Command + Shift + B   | 在下方插入 markdown 資料格   |       
+| X                             | 剪下選取的資料格    |               
+| C                             | 複製選取的資料格   |               
+| Shift + V                     | 貼上選取的儲存格           |
+| V                             | 貼上選取的儲存格    |       
+| D D                           | 刪除選取的資料格|                
+| O                             | TextWriter         |              
+| Shift + O                     | 切換輸出滾動   |          
+| 我                           | 中斷核心 |                   
+| 0 0                           | 重新開機核心 |                     
+| Shift + 空格鍵                 | 向上捲動  |                         
+| Space                         | 向下捲動|
+| 索引標籤                           | 將焦點變更為下一個可設定焦點的專案 (停用索引標籤停用) |
+| 控制/命令 + S           | 儲存筆記本 |                      
+| 1                             | 變更為 h1|                       
+| 2                             | 變更為 h2|                        
+| 3                             | 變更為 h3|                        
+| 4                             | 變更為 h4 |                       
+| 5                             | 變更為 h5 |                       
+| 6                             | 變更為 h6 |                       
+
+### <a name="edit-mode-shortcuts"></a>編輯模式快速鍵
+
+編輯模式會以文字游標指示，提示您在編輯器區域中輸入。 當儲存格處於編輯模式時，您可以在資料格中輸入資料格。 按下 `Enter` 或使用滑鼠選取儲存格的編輯器區域，進入編輯模式。 現用儲存格的左邊框線為綠色和影線，而其 **執行** 按鈕為綠色。 您也會在編輯模式中的儲存格看到游標提示。
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="編輯模式中的筆記本儲存格":::
+
+使用下列擊鍵快速鍵，在編輯模式下，您可以更輕鬆地在 Azure Machine Learning 筆記本中流覽並執行程式碼。
+
+| 快速鍵                      | 描述|                                     
+| ----------------------------- | ----------------------------------------------- |
+| 逸出                        | 進入命令模式|  
+| 控制/命令 + 空間       | 啟用 IntelliSense |
+| Shift + Enter                 | 執行儲存格，選取下方 |                         
+| 控制/命令 + Enter       | 執行儲存格  |                                      
+| Alt + Enter                   | 執行資料格，插入下方的程式碼資料格  |              
+| 控制/命令 + Alt + Enter | 執行資料格，插入下方的 markdown 資料格  |          
+| Alt + R                       | 執行所有儲存格     |                              
+| Up                            | 移動資料指標向上或上一個儲存格    |             
+| Down                          | 向下移動游標或下一個資料格 |                  
+| 控制/命令 + S           | 儲存筆記本   |                                
+| 控制/命令 + 向上鍵          | 移至儲存格開端   |                             
+| 控制/命令 + 向下鍵        | 移至儲存格末端 |                                 
+| 索引標籤                           | 程式碼完成或縮排 (如果已啟用 tab 鍵補漏)  |
+| 控制/命令 + M           | 啟用/停用索引標籤陷阱  |                       
+| Control/Command +]           | 縮排 |                                         
+| Control/Command + [           | Dedent  |                                        
+| 控制/命令 + A           | 全選|                                      
+| 控制/命令 + Z           | 復原 |                                           
+| Control/Command + Shift + Z   | 取消復原 |                                           
+| Control/Command + Y           | 取消復原 |                                           
+| 控制/命令 + 首頁        | 移至儲存格開端|                                
+| 控制/命令 + End         | 移至儲存格末端   |                               
+| 控制/命令 + 左方        | 往左移一個單字 |                               
+| Control/Command + Right       | 往右移一個單字 |                              
+| 控制/命令 + 倒退鍵   | 刪除此前的文字 |                             
+| 控制/命令 + 刪除      | 刪除此後的文字 |                              
+| 控制/命令 +/           | 在 cu 上切換批註
+
+## <a name="find-compute-details"></a>尋找計算詳細資料
 
 在 [Studio](https://ml.azure.com)中的 [計算] 頁面上，尋找計算執行個體的詳細資料。
 

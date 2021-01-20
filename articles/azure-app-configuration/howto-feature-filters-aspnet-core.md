@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 13857580d434736fbf0b12f52d39537ca864a497
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 39455c4bc193cce036bd169c702b5c020d53d2f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203115"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602242"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>使用功能篩選來啟用條件式功能旗標
 
@@ -31,7 +31,7 @@ ms.locfileid: "98203115"
 
 ## <a name="registering-a-feature-filter"></a>註冊功能篩選
 
-您可以藉由呼叫方法來註冊功能篩選器 `AddFeatureFilter` ，並指定功能篩選器的名稱。 例如，下列程式碼會註冊 `PercentageFilter` ：
+您可以藉由呼叫方法來註冊功能篩選器 `AddFeatureFilter` ，指定所需功能篩選器的類型名稱。 例如，下列程式碼會註冊 `PercentageFilter` ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -56,14 +56,14 @@ public void ConfigureServices(IServiceCollection services)
     > [!div class="mx-imgBorder"]
     > ![編輯 Beta 功能旗標](./media/edit-beta-feature-flag.png)
 
-1. 在 **編輯** 畫面中，選取 [ **啟用功能旗** 標] 按鈕（如果尚未選取）。 然後，按一下 [ **使用功能篩選** ] 按鈕，然後選取 [ **自訂**]。 
+1. 在 **編輯** 畫面中，核取 [ **啟用功能旗** 標] 核取方塊（如果尚未啟用）。 然後選取 [ **使用功能篩選** ] 核取方塊，然後選取 [ **自訂**]。 
 
-1. 在 [索引 **鍵** ] 欄位中，輸入 [ *Microsoft. 百分比*]。
+1. 在 [ **名稱** ] 欄位中，選取 [ *Microsoft*]。
 
     > [!div class="mx-imgBorder"]
     > ![新增功能篩選](./media/feature-flag-add-filter.png)
 
-1. 按一下功能篩選索引鍵旁的內容功能表。 按一下 [ **編輯篩選參數**]。
+1. 按一下功能篩選器名稱旁邊的內容功能表。 按一下 [ **編輯篩選參數**]。
 
     > [!div class="mx-imgBorder"]
     > ![編輯功能篩選參數](./media/feature-flags-edit-filter-parameters.png)
@@ -75,10 +75,10 @@ public void ConfigureServices(IServiceCollection services)
 
 1. 按一下 **[** 套用] 返回 **編輯功能旗** 標畫面。 然後按一下 **[** 套用] 以儲存功能旗標設定。
 
-1. 功能旗標的 **狀態** 現在會顯示為 [ *條件*]。 此狀態表示根據功能篩選準則所強制執行的條件，會根據每個要求來啟用或停用功能旗標。
+1. 在 [**功能管理員**] 頁面上，功能旗標現在具有 [*自訂*]**功能篩選** 值。 
 
     > [!div class="mx-imgBorder"]
-    > ![條件式功能旗標](./media/feature-flag-filter-enabled.png)
+    > ![以「自訂」功能篩選值列出的功能旗標](./media/feature-flag-filter-custom.png)
 
 ## <a name="feature-filters-in-action"></a>作用中的功能篩選
 
@@ -90,4 +90,4 @@ public void ConfigureServices(IServiceCollection services)
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [針對目標物件啟用功能的分段推出](./howto-targetingfilter-aspnet-core.md)
+> [針對目標受眾啟用分段推出功能](./howto-targetingfilter-aspnet-core.md)

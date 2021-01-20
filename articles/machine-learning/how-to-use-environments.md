@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f464664737ab56b43ca0c0a159837487494a1eaa
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 2da90a2c8950d85d8db2a414bbe63dfc7b94cf01
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826043"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601320"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure Machine Learning 中建立 & 使用軟體環境
 
@@ -131,6 +131,8 @@ myenv.docker.base_image_registry="your_registry_location"
 #### <a name="use-your-own-dockerfile"></a>使用您自己的 Dockerfile 
 
 您也可以指定自訂 Dockerfile。 使用 Docker 命令從 Azure Machine Learning 的基底映射開始最簡單 ```FROM``` ，然後新增您自己的自訂步驟。 如果您需要安裝非 Python 套件作為相依性，請使用此方法。 請記得將基礎映射設定為 [無]。
+
+請注意，Python 是 Azure Machine Learning 中的隱含相依性，因此自訂 dockerfile 必須安裝 Python。
 
 ```python
 # Specify docker steps as a string. 

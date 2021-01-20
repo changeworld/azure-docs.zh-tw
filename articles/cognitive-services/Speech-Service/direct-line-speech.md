@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 501a0e954efbdbc9a0396fd94c915efaf0fde9fc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021876"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601119"
 ---
 # <a name="what-is-direct-line-speech"></a>什麼是 Direct Line Speech？
 
@@ -23,7 +23,7 @@ ms.locfileid: "95021876"
 
 [語音助理](voice-assistants.md) 會接聽使用者，並採取動作來回應，通常會說回來。 他們使用 [語音轉換文字](speech-to-text.md) 來轉譯使用者的語音，然後對文字的自然語言理解採取行動。 此動作通常會包含從 [文字轉換語音](text-to-speech.md)所產生之助理的語音輸出。
 
-Direct Line Speech 為語音助理提供最高層級的自訂和複雜的功能。 它是專為使用工作完成或命令和控制所使用的兩個已結束、自然或混合式的對話案例所設計。 這種高度的彈性帶來更複雜的情況，而且範圍限定在使用自然語言輸入之妥善定義工作的案例，可能會想要考慮使用 [自訂命令 (預覽) ](custom-commands.md) ，以簡化解決方案體驗。
+Direct Line Speech 為語音助理提供最高層級的自訂和複雜的功能。 它是專為使用工作完成或命令和控制所使用的兩個已結束、自然或混合式的對話案例所設計。 這種高度的彈性帶來更複雜的情況，而使用自然語言輸入之定義完善工作範圍的案例，可能會想要考慮使用 [自訂命令](custom-commands.md) 以簡化解決方案體驗。
 
 ## <a name="getting-started-with-direct-line-speech"></a>開始使用 Direct Line 語音
 
@@ -45,7 +45,7 @@ Direct Line Speech 為語音助理提供最高層級的自訂和複雜的功能�
 
 您可以在 GitHub 上取得用來建立語音助理的範例程式碼。 這些範例涵蓋了用戶端應用程式，可讓您以數種熱門的程式設計語言連接到您的助理。
 
-* [語音助理範例 (SDK)](https://aka.ms/csspeech/samples) \(英文\)
+* [語音助理範例 (SDK)](https://aka.ms/csspeech/samples/#voice-assistants-quickstarts) \(英文\)
 * [教學課程：使用語音 SDK （C）來啟用您的助理#](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>自訂
@@ -60,7 +60,7 @@ Direct Line Speech 為語音助理提供最高層級的自訂和複雜的功能�
 ## <a name="reference-docs"></a>參考文件
 
 * [語音 SDK](./speech-sdk.md)
-* [Azure Bot Service](/azure/bot-service/?view=azure-bot-service-4.0)
+* [Azure Bot 服務](/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>後續步驟
 

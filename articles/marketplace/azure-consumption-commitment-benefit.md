@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 748b6c3506127de8fce153a77571664ea531ffa1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814426"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601357"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure 使用量承諾權益
 
@@ -24,7 +24,7 @@ ms.locfileid: "97814426"
 
 我們會驗證參與此計畫的所有供應專案，以確保您能獲得高品質的解決方案。
 
-若要利用這項權益，只要使用與 Azure 合約相關的訂用帳戶，就能在 Azure Marketplace 上購買合格的供應專案。 Azure 預付金和承諾用量不符合這項權益的資格。
+若要利用這項權益，只要使用與 Azure 合約相關的訂用帳戶，就能在 Azure Marketplace 上購買合格的供應專案。 Azure 預付 (先前稱為「預付金) 不符合這項權益的資格。
 
 > [!IMPORTANT]
 > 排除專案可能適用于此 marketplace 權益之前簽署的 .Ctc 協定。 如果您對資格有任何疑問，請洽詢您的 Microsoft 帳戶主管。

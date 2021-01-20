@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 9931dd9acb51e74c34a57b0475bca79fb9ba79cf
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2f3472aa495042749410bc0b9635f0924a02e1fd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184173"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598556"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>預付具有保留容量的 Azure Cache for Redis 計算資源
 
@@ -52,7 +52,7 @@ ms.locfileid: "96184173"
 
 | 欄位 | 描述 |
 | :------------ | :------- |
-| 訂用帳戶   | 用來支付 Azure Cache for Redis 保留容量保留的訂用帳戶。 訂用帳戶上的付款方法會收取 Azure Cache for Redis 保留容量保留的預付成本。 訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 或具有隨用隨付定價的個別合約 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 針對企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。 針對具有隨用隨付定價的個別訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。
+| 訂用帳戶   | 用來支付 Azure Cache for Redis 保留容量保留的訂用帳戶。 訂用帳戶上的付款方法會收取 Azure Cache for Redis 保留容量保留的預付成本。 訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 或具有隨用隨付定價的個別合約 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 若為企業訂用帳戶，費用會從註冊的 Azure 預付款扣除 (先前稱為預付金) 餘額或收取超額部分的費用。 針對具有隨用隨付定價的個別訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。
 | 影響範圍 | 保留項目範圍可以涵蓋一個訂用帳戶或多個訂用帳戶 (共用範圍)。 如果您選取： </br></br> **共用**，保留折扣會套用至計費內容內任何訂用帳戶中執行的 Azure Cache for Redis 實例。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 針對隨用隨付客戶，共用範圍是帳戶系統管理員所建立的所有隨用隨付訂用帳戶。</br></br> **單一訂** 用帳戶，保留折扣會套用到此訂用帳戶中的 Azure Cache for Redis 實例。 </br></br> **單一資源群組**，保留折扣會套用至所選訂用帳戶中的 Azure Cache for Redis 實例，以及該訂用帳戶內選取的資源群組。
 | 區域 | Azure Cache for Redis 保留容量保留所涵蓋的 Azure 區域。
 | 定價層 | Azure Cache for Redis 伺服器的服務層級。

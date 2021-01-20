@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 33c2617a22945ecb11586bc282e7f9f61b6e49ca
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b1f51cd9e9f310c68834c16f83c182250a1a4eaf
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008543"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598031"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>預付具有保留容量的適用於 MySQL 的 Azure 資料庫計算資源
 
@@ -50,7 +50,7 @@ ms.locfileid: "96008543"
 
 | 欄位 | 描述 |
 | :------------ | :------- |
-| 訂用帳戶   | 用來支付適用於 MySQL 的 Azure 資料庫保留容量保留的訂用帳戶。 訂用帳戶上的付款方法會收取適用於 MySQL 的 Azure 資料庫保留容量保留的預付成本。 訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 或具有隨用隨付定價的個別合約 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 針對企業訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或作為超額部分收費。 針對具有隨用隨付定價的個別訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。
+| 訂用帳戶   | 用來支付適用於 MySQL 的 Azure 資料庫保留容量保留的訂用帳戶。 訂用帳戶上的付款方法會收取適用於 MySQL 的 Azure 資料庫保留容量保留的預付成本。 訂用帳戶類型必須是 enterprise 合約 (供應專案號碼： MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) 或具有隨用隨付定價的個別合約 (供應專案號碼： MS-MS-AZR-0003P-Ms-azr-0003p 或 MS-MS-AZR-0003P-Ms-azr-0023p) 。 若為企業訂用帳戶，費用會從註冊的 Azure 預付款扣除 (先前稱為預付金) 餘額或收取超額部分的費用。 針對具有隨用隨付定價的個別訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。
 | 影響範圍 | VCore 保留的範圍可以涵蓋一個訂用帳戶或多個訂用帳戶 (共用範圍) 。 如果您選取： </br></br> **共用**，vCore 保留折扣會套用至計費內容內任何訂用帳戶中執行的適用於 MySQL 的 Azure 資料庫伺服器。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 針對隨用隨付客戶，共用範圍是帳戶系統管理員所建立的所有隨用隨付訂用帳戶。</br></br> **單一訂** 用帳戶，vCore 保留折扣會套用到此訂用帳戶中適用於 MySQL 的 Azure 資料庫的伺服器。 </br></br> **單一資源群組**，保留折扣會套用至所選訂用帳戶中的適用於 MySQL 的 Azure 資料庫伺服器，以及該訂用帳戶內選取的資源群組。
 | 區域 | 適用於 MySQL 的 Azure 資料庫保留容量保留所涵蓋的 Azure 區域。
 | 部署類型 | 您要為其購買保留的適用於 MySQL 的 Azure 資料庫資源類型。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 6450b44e5c7281f0a24fd5000c9feec6e61fa29c
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540556"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601246"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>開始使用 Windows 虛擬桌面代理程式
 
@@ -44,5 +44,4 @@ Windows 虛擬桌面代理程式一開始是以兩種方式來安裝。 如果�
 
 既然您已經更瞭解 Windows 虛擬桌面代理程式，以下是一些可能有助於您的資源：
 
-- 查看 [ [Windows 虛擬桌面代理程式更新](whats-new.md) ] 區段，以查看新的代理程式更新每個月的相關資訊。
 - 如果您遇到代理程式或連線能力相關的問題，請參閱 [Windows 虛擬桌面代理程式問題疑難排解指南](troubleshoot-agent.md)。

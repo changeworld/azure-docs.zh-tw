@@ -4,16 +4,16 @@ description: 藉由套用鎖定給所有使用者和角色，防止使用者更�
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 7efeb8a073a04f78f77046c07c107abf0c7526f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555663"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602212"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>鎖定資源以防止非預期的變更
 
-身為系統管理員，您可能需要鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改重要資源。 您可以將鎖定層級設定為 **CanNotDelete** 或 **ReadOnly** 。 在入口網站中，鎖定分別名為 [刪除] 和 [唯讀]。
+身為系統管理員，您可能需要鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改重要資源。 您可以將鎖定層級設定為 **CanNotDelete** 或 **ReadOnly**。 在入口網站中，鎖定分別名為 [刪除] 和 [唯讀]。
 
 * **CanNotDelete** 表示經過授權的使用者仍然可以讀取和修改資源，但無法刪除資源。
 * **ReadOnly** 表示經過授權的使用者可以讀取資源，但無法刪除或更新資源。 套用這個鎖定類似於限制所有經過授權使用者的權限是由「讀取者」角色所授與。
@@ -28,7 +28,7 @@ Resource Manager 鎖定只會套用於管理平面發生的作業，亦即要傳
 
 ## <a name="considerations-before-applying-locks"></a>套用鎖定前的考量
 
-套用鎖可能導致意外的結果，因為某些看來不會修改資源的作業實際上需要執行被鎖定阻止的動作。 鎖定阻止的動作常見範例像是：
+套用鎖可能導致意外的結果，因為某些看來不會修改資源的作業實際上需要執行被鎖定阻止的動作。 鎖定會防止任何需要對 Azure Resource Manager API 進行 POST 要求的作業。 鎖定阻止的動作常見範例像是：
 
 * **儲存體帳戶** 上的唯讀鎖定會防止所有使用者列出金鑰。 清單金鑰作業是透過 POST 要求進行處理，因為傳回的金鑰可用於寫入作業。
 
@@ -312,7 +312,7 @@ az lock delete --ids $lockid
 PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 ```
 
-範圍可以是訂用帳戶、資源群組或資源。 lock-name 是您想要命名鎖定的任何名稱。 api-version 請使用 **2016-09-01** 。
+範圍可以是訂用帳戶、資源群組或資源。 lock-name 是您想要命名鎖定的任何名稱。 api-version 請使用 **2016-09-01**。
 
 在要求中，包含指定鎖定屬性的 JSON 物件。
 

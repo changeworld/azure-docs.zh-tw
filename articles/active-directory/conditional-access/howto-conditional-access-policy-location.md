@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a531692264a768e4f6cb8e6475807789df049d03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e257ab39257b23c52aaadbe32f0325e8d71a8409
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049141"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597971"
 ---
 # <a name="conditional-access-block-access-by-location"></a>條件式存取：依位置封鎖存取
 
@@ -28,7 +28,7 @@ ms.locfileid: "89049141"
 1. 瀏覽至 [Azure Active Directory] > [安全性] > [條件式存取] > [具名位置]。
 1. 選擇 [新增位置]。
 1. 為您的位置命名。
-1. 如果您知道構成該位置或**國家/地區**的特定外部可存取 IPv4 位址範圍，請選擇 [IP 範圍]。
+1. 如果您知道構成該位置或 **國家/地區** 的特定外部可存取 IPv4 位址範圍，請選擇 [IP 範圍]。
    1. 提供 **IP 範圍**，或選取您要指定之位置的 [國家/地區]。
       * 如果您選擇 [國家/地區]，則可以選擇是否要包含未知的區域。
 1. 選擇 [儲存]
@@ -43,19 +43,21 @@ ms.locfileid: "89049141"
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
 1. 在 [指派] 下，選取 [使用者和群組]
    1. 在 [包含] 下，選取 [所有使用者]。
-1. 在 [**雲端應用程式] 或 [動作**] 下  >  ** **，選取 [**所有雲端應用程式**]。
+   1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
+   1. 選取 [完成] 。
+1. 在 [**雲端應用程式] 或 [動作**] 下  >  ****，選取 [**所有雲端應用程式**]。
 1. 在 [條件] > [位置] 底下。
    1. 將 [設定] 設定為 [是]
-   1. 在 [**包含**] 下，選取 [選取的**位置**]
+   1. 在 [**包含**] 下，選取 [選取的 **位置**]
    1. 選取您為組織建立的已封鎖位置。
-   1. 按一下 [選取]。 
+   1. 按一下 [選取]。
 1. 在 [ **存取控制** ] 底下 > 選取 [ **封鎖存取**]，然後選取 [ **選取**]。
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [ **建立** ] 以建立條件式存取原則。
 
 ## <a name="next-steps"></a>後續步驟
 
-[條件式存取一般原則](concept-conditional-access-policy-common.md)
+[條件式存取的一般原則](concept-conditional-access-policy-common.md)
 
 [使用條件式存取報告專用模式判斷影響](howto-conditional-access-insights-reporting.md)
 

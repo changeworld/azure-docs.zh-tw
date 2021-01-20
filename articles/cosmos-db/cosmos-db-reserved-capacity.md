@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 27725b1a3dd6059010ce67977c39891a012c037e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5c2d1d286572b21879742a1a9c6ab3975441373d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995775"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602683"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中獲得最低的保留容量費用
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -72,7 +72,7 @@ Azure Cosmos DB 保留容量可涵蓋針對資源所佈建的輸送量。 它未
    |欄位  |描述  |
    |---------|---------|
    |影響範圍   |   控制多少訂用帳戶可以使用與保留容量相關聯的計費權益選項。 它也會控制保留容量套用至特定訂用帳戶的方式。 <br/><br/>  如果您選取 [共用]，保留容量折扣會套用至計費內容內任何訂用帳戶中執行的 Azure Cosmos DB 執行個體。 計費內容取是以您註冊 Azure 的方式為基礎。 針對企業客戶，共用範圍是註冊，並包含註冊中的所有訂用帳戶。 針對隨用隨付客戶，共用範圍是由帳戶管理員所建立的所有個別訂用帳戶與隨用隨付費率。  <br/><br/>  如果您選取 [單一訂用帳戶]，保留容量折扣會套用至所選訂用帳戶中的 Azure Cosmos DB 執行個體。 <br/><br/> 如果您選取 [ **單一資源群組**]，保留折扣會套用至所選訂用帳戶中的 Azure Cosmos DB 實例，以及該訂用帳戶內選取的資源群組。 <br/><br/> 您可以在購買保留容量之後變更保留範圍。  |
-   |訂用帳戶  |   用來支付 Azure Cosmos DB 保留容量費用的訂用帳戶。 所選訂用帳戶上的付款方法會用來收費成本。 訂用帳戶必須是下列其中一種類型： <br/><br/>  Enterprise 合約 (供應專案號碼： MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) ：針對 Enterprise 訂用帳戶，費用會從註冊的承諾用量金額餘額扣除或以超額部分收費。 <br/><br/> 採用隨用隨付費率的個別訂用帳戶 (供應專案號碼： MS-AZR-0003P-Ms-azr-0003p 或 MS-AZR-0003P-Ms-azr-0023p) ：對於採用隨用隨付費率的個別訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。    |
+   |訂用帳戶  |   用來支付 Azure Cosmos DB 保留容量費用的訂用帳戶。 所選訂用帳戶上的付款方法會用來收費成本。 訂用帳戶必須是下列其中一種類型： <br/><br/>  Enterprise 合約 (供應專案號碼： MS-AZR-0003P->ms-azr-0017p 或 MS-AZR-0003P-Ms-azr-0148p) ：針對 Enterprise 訂用帳戶，費用會從註冊的 Azure 預付款扣除， (先前稱為預付金) 餘額或收費。 <br/><br/> 採用隨用隨付費率的個別訂用帳戶 (供應專案號碼： MS-AZR-0003P-Ms-azr-0003p 或 MS-AZR-0003P-Ms-azr-0023p) ：對於採用隨用隨付費率的個別訂用帳戶，費用會以訂用帳戶的信用卡或發票付款方法計費。    |
    | 資源群組 | 套用保留容量折扣的資源群組。 |
    |詞彙  |   一年或三年。   |
    |輸送量類型   |  輸送量會以要求單位的形式布建。 您可以針對布建的輸送量（單一區域寫入以及多個區域寫入）購買保留。 輸送量類型具有兩個可供選擇的值：每小時 100 RU/秒和100多區域寫入每小時 RU/秒。|
