@@ -573,9 +573,13 @@
             - name: 針對 ITSM 連接器中的問題進行疑難排解
               items:
                 - name: 概觀
+                  href: platform/itsmc-troubleshoot-overview.md
+                - name: Sync ITSM 連接器
                   href: platform/itsmc-resync-servicenow.md
                 - name: 儀表板調查
                   href: platform/itsmc-dashboard.md
+                - name: 一般錯誤
+                  href: platform/itsmc-dashboard-errors.md
             - name: 與安全匯出整合
               items:
                 - name: 總覽

@@ -159,6 +159,20 @@
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: 設定 SNMP MIB 監視
           href: how-to-set-up-snmp-mib-monitoring.md
+        - name: 與合作夥伴整合
+          items:
+            - name: Cisco ISE pxGrid 整合
+              href: integration-cisco-ise-pxgrid.md
+            - name: Forescout 整合
+              href: integration-forescout.md
+            - name: Fortinet 整合
+              href: integration-fortinet.md
+            - name: Palo Alto 整合
+              href: integration-palo-alto.md
+            - name: ServiceNow 整合
+              href: integration-servicenow.md
+            - name: Splunk 整合
+              href: integration-splunk.md
     - name: 裝置建立器的代理程式解決方案
       items:
         - name: 使用 Azure RTOS 的安全性模組

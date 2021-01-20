@@ -66,6 +66,8 @@
           href: sap-hana-backup-support-matrix.md
         - name: Azure 檔案共用備份支援矩陣
           href: azure-file-share-support-matrix.md
+        - name: Azure 磁碟備份支援矩陣
+          href: disk-backup-support-matrix.md
         - name: Active Directory 網域控制站
           href: active-directory-backup-restore.md
         - name: Azure 原則支援的 VM SKU
@@ -82,6 +84,8 @@
           href: backup-azure-file-folder-backup-faq.md
         - name: 常見問題集 - 備份 Azure 檔案儲存體
           href: backup-azure-files-faq.md
+        - name: 常見問題集 - Azure 磁碟備份
+          href: disk-backup-faq.md
         - name: 常見問題集 - 將 SQL Server 資料庫備份到 Azure VM
           href: faq-backup-sql-server.md
         - name: 常見問題集 - 將 SAP Hana 資料庫備份到 Azure VM
@@ -210,6 +214,14 @@
               href: backup-azure-restore-system-state.md
         - name: 管理
           href: backup-azure-manage-mars.md
+    - name: Azure 磁碟備份
+      items:
+        - name: 概觀
+          href: disk-backup-overview.md
+        - name: Backup
+          href: backup-managed-disks.md
+        - name: 還原
+          href: restore-managed-disks.md
     - name: Azure 檔案共用備份
       items:
         - name: 概觀
@@ -441,6 +453,8 @@
           href: backup-azure-scdpm-troubleshooting.md
         - name: Azure 檔案共用
           href: troubleshoot-azure-files.md
+        - name: Azure 磁碟備份
+          href: disk-backup-troubleshoot.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
         - name: Azure VM 中的 SAP Hana 備份

@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 12/09/2020
 ms.topic: include
-ms.openlocfilehash: a53b316f6d942f070ef925b369bcea8476fbfffd
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 8890a0132e5f510a0af2862c483206fd025a68d8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97853702"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256248"
 ---
 開始使用自訂視覺 REST API。 請遵循這些步驟來呼叫 API，並建置影像分類模型。 您將建立專案、新增標籤、將專案定型，並使用專案的預測端點 URL 以程式設計方式加以測試。 請使用此範例作為自行建置影像辨識應用程式的範本。
 
@@ -102,6 +102,9 @@ ms.locfileid: "97853702"
 ## <a name="upload-and-tag-images"></a>上傳和標記影像
 
 接下來，下載此專案的範例影像。 將[範例影像資料夾](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images)的內容儲存到您的本機裝置。
+
+> [!NOTE]
+> Trove 是 Microsoft Garage 專案，可讓您收集和購買影像集以供訓練使用。 收集影像之後，您可以下載影像，然後以一般方式將其匯入至自訂視覺專案。 如需深入了解，請造訪 [Trove 頁面](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)。
 
 使用下列命令來上傳影像並套用標籤，一次用於「鐵杉」的影像，而其他分別用於「日本櫻花」的影像。 如需更多選項，請參閱[從資料建立影像](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb5) API。
 

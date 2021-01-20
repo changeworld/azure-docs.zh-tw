@@ -18,7 +18,7 @@ ms.locfileid: "92202408"
 
 ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft 資源的電訊公司私人網路連線能力。 換句話說，在 Microsoft 網路內的 ExpressRoute 路徑中不會有單一失敗點。 如需將 ExpressRoute 線路的可用性最大化的設計考慮，請參閱 [使用 Expressroute 設計高可用性][HA]。
 
-不過，Murphy 的熱門」古訓-- *如果有任何錯誤，就會* 在本文中考慮到，在本文中，我們將焦點放在可使用單一 ExpressRoute 線路來解決失敗的解決方案之外。 換句話說，在本文中，我們將探討網路架構考慮，以使用異地冗余 ExpressRoute 線路來建立強大的後端網路連線，以進行嚴重損壞修復。
+不過，Murphy 的熱門」古訓--*如果有任何錯誤，就會* 在本文中考慮到，在本文中，我們將焦點放在可使用單一 ExpressRoute 線路來解決失敗的解決方案之外。 換句話說，在本文中，我們將探討網路架構考慮，以使用異地冗余 ExpressRoute 線路來建立強大的後端網路連線，以進行嚴重損壞修復。
 
 >[!NOTE]
 >本文所述的概念同樣適用于在虛擬 WAN 或其外部建立 ExpressRoute 線路時。
@@ -88,7 +88,7 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 
 下圖說明使用作為路徑開頭的方式來影響 ExpressRoute 路徑選取專案。 在圖表中，透過 ExpressRoute 1 的路由通告表示 eBGP 的預設行為。 在透過 ExpressRoute 2 的路由通告上，內部部署網路的 ASN 會在路由的 AS 路徑上額外加上。 當透過多個 ExpressRoute 線路收到相同的路由時，根據 eBGP 路由選取進程，VNet 會偏好使用最短路徑的路由。 
 
-[![.5]][5]
+[![5]][5]
 
 如果兩個 ExpressRoute 1 的連線都停止運作，則 VNet 只會看到透過 ExpressRoute 2 的 10.1.11.0/24 路由通告。 因此，較長的路徑會變成不相關。 因此，待命電路會在此失敗狀態中使用。
 
@@ -114,7 +114,7 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 
 下圖說明案例1。 在圖表中，綠色線表示 VNet1 和內部部署網路之間流量的路徑。 藍線表示 VNet2 和內部部署網路之間流量的路徑。 實線表示在穩定狀態中所需的路徑，而虛線表示具有穩定狀態流量的對應 ExpressRoute 線路失敗時的流量路徑。 
 
-[![型]][7]
+[![7]][7]
 
 您可以使用連線權數來設計案例，以對內部部署網路系結流量的本機對等互連位置 ExpressRoute 進行 Vnet 影響。 若要完成此解決方案，您必須確保對稱的反向流量。 您可以在 BGP 路由器之間的 iBGP 會話使用本機喜好設定 (在內部部署端) 的 ExpressRoute 線路，以優先使用 ExpressRoute 線路。 下圖說明此解決方案。 
 
@@ -139,11 +139,11 @@ ExpressRoute 的設計目的是為了提供高可用性，以提供對 Microsoft
 - [使用 Azure Site Recovery 的 SMB 災害復原][SMB DR]
 
 <!--Image References-->
-[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png個 "小型到中型的內部部署網路考慮"
-[ ]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "使用更明確的路由選取2個影響路徑"
-[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png透過 "Azure 入口網站設定連接權數"
-使用連接權數的[4 個]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "影響路徑選取專案"
-[ ]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "使用 AS 路徑前置的5個影響路徑選取專案"
+[1]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/one-region.png "中小型內部部署網路考慮"
+[2]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/specificroute.png "使用更明確的路由影響路徑選取"
+[3]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/configure-weight.png "透過 Azure 入口網站設定連接權數"
+[4]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/connectionweight.png "使用連接權數影響路徑選取"
+[5]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/aspath.png "使用 AS 路徑前置影響路徑選取"
 [6]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region.png "大型分散式內部部署網路考慮"
 [7]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-arch1.png "案例 1"
 [8 個]: ./media/designing-for-disaster-recovery-with-expressroute-pvt/multi-region-sol1.png "主動-主動 ExpressRoute 線路解決方案 1"
