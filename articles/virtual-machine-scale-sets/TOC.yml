@@ -182,7 +182,7 @@
         - name: 暫時性 OS 磁碟
           href: ../virtual-machines/ephemeral-os-disks.md
         - name: 磁碟適用的延展性目標
-          href: ../virtual-machines/windows/disk-scalability-targets.md
+          href: ../virtual-machines/disks-scalability-targets.md
           maintainContext: true
         - name: 磁碟備份和災害復原
           href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md

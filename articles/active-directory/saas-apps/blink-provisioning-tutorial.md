@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5f49d2c918164fa529b12313e000aff5f8893a65
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d691807f673dcd6c8147c9ff18a95c6ce0c88ae6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201839"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247415"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>教學課程：設定 Blink 來自動佈建使用者
 
@@ -50,7 +50,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 ## <a name="setup-blink-for-provisioning"></a>設定 Blink 以進行佈建
 
-1. 建立 [支援案例](https://support.joinblink.com)，或傳送電子郵件至 support@joinblink.com 來取得 **Blink 支援**，以要求 SCIM 權杖。 .
+1. 建立 [支援案例](https://support.joinblink.com)，或傳送電子郵件至 support@joinblink.com 來取得 **Blink 支援**，以要求 SCIM 權杖。
 
 2.  複製 **SCIM 驗證權杖**。 此值會輸入到 Azure 入口網站中 Blink 應用程式 [佈建] 索引標籤中的 [祕密權杖] 欄位。
 
@@ -115,9 +115,25 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![Blink 使用者對應](media/blink-provisioning-tutorial/User_mappings.png)
 
-9. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 Blink 的使用者屬性。 選取為 [比對] 屬性 (Property) 的屬性 (Attribute) 會用來比對 Blink 中的使用者帳戶以進行更新作業。 選取 [儲存]  按鈕以認可所有變更。
+9. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 Blink 的使用者屬性。 選取為 [比對] 屬性 (Property) 的屬性 (Attribute) 會用來比對 Blink 中的使用者帳戶以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Blink 使用者屬性](media/blink-provisioning-tutorial/new-user-attributes.png)
+   |屬性|類型|支援篩選|
+   |---|---|---|
+   |userName|String|&check;|
+   |作用中|Boolean|
+   |title|String|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |phoneNumbers[type eq "work"].value|String|
+   |phoneNumbers[type eq "mobile"].value|String|
+   |externalId|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
+   |urn:ietf:params:scim:schemas:extension:blink:2.0:User:company|String|
+   urn:ietf:params:scim:schemas:extension:blink:2.0:User:description|String|
+   urn:ietf:params:scim:schemas:extension:blink:2.0:User:location|String|
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
@@ -137,15 +153,23 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
+## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
+設定佈建後，請使用下列資源來監視您的部署：
+
+* 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)來判斷哪些使用者已佈建成功或失敗
+* 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)來查看佈建週期的狀態，以及其接近完成的程度
+* 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。  
+
+
 ## <a name="change-log"></a>變更記錄
 
 * 2021/01/14 - 已新增 **公司**、**描述** 和 **位置** 的自訂擴充屬性。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
