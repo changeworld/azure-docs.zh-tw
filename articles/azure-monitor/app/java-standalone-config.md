@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 98499961f55b55b15687d5742b4d593e3d461e49
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 397c650d1d7a593a855c8f26e61dbf12ec6360fa
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625325"
+ms.locfileid: "98631316"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>設定選項-適用于 JAVA 的 Azure 監視器 Application Insights
 
@@ -296,7 +296,9 @@ Log4j、Logback 和 util 會自動檢測記錄，並且會自動收集透過這�
 }
 ```
 
-[//]: # "請注意，在我們支援0.10.0 的情況下，不會提供 OpenTelemetry 支援的通知，這會導致0.9.0 的重大變更"
+Application Insights JAVA 3.0 也會遵守全域 `-Dhttps.proxyHost` 和 `-Dhttps.proxyPort` 是否已設定。
+
+[//]: # "注意 OpenTelemetry 支援處於私人預覽狀態，直到 OpenTelemetry API 抵達1。0"
 
 [//]: # "# # OpenTelemetry API 1.0 之前版本的支援"
 
@@ -343,6 +345,8 @@ Log4j、Logback 和 util 會自動檢測記錄，並且會自動收集透過這�
 `maxSizeMb` 這是記錄檔變換之前的大小上限。
 
 `maxHistory` 這是除了目前的記錄檔) 之外， (保留的記錄檔數目。
+
+從版本3.0.2 開始，您也可以使用環境變數來設定自我診斷 `level` `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` 。
 
 ## <a name="an-example"></a>範例
 

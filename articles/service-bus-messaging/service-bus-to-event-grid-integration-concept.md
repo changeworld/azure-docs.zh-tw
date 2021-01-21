@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5cc112767b2204d019cb1b7bd23b1603cefdf416
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 71ee21c971b71c4000a123d1561e7e93d21203e1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882512"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629142"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服務匯流排與 Event Grid 的整合概觀
 
@@ -186,7 +186,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 
 ## <a name="azure-cli-instructions"></a>Azure CLI 指示
 
-首先，確定已安裝 Azure CLI 2.0 版或更新版本。 [下載安裝程式](/cli/azure/install-azure-cli?view=azure-cli-latest)。 選取 [ **Windows + X**]，然後使用系統管理員許可權開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
+首先，確定已安裝 Azure CLI 2.0 版或更新版本。 [下載安裝程式](/cli/azure/install-azure-cli)。 選取 [ **Windows + X**]，然後使用系統管理員許可權開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
 
 執行以下程式碼：
 
@@ -222,7 +222,7 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 
 從這裡，您可以瀏覽其他安裝程式選項或測試事件是否流動。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 取得服務匯流排和 Event Grid [範例](service-bus-to-event-grid-integration-example.md)。
 * 深入了解 [Event Grid](../event-grid/index.yml)。

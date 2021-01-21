@@ -4,16 +4,16 @@ description: 了解哪些作業系統可以執行 Azure IoT Edge 精靈和執行
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/12/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b1bd437da50ae5989e46ac5c5f881b28b0e99703
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: b17f1f32a3e49e9161afe92d62b85a162affcd9f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539916"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630525"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支援的系統
 
@@ -50,27 +50,46 @@ Azure IoT Edge 可以在能夠執行容器的大部分作業系統上執行，�
 
 主機 OS 的系列必須一律與用於模組容器中之客體 OS 的系列相符。 換句話說，您只能在 Linux 上使用 Linux 容器和在 Windows 上使用 Windows 容器。 使用 Windows 時，只支援處理程序隔離的容器，不支援 Hyper-V 隔離的容器。  
 
-<br>
-<center>
-
-![主機 OS 符合客體 OS](./media/support/edge-on-device.png)
-</center>
+Windows 上適用于 Linux 的 IoT Edge 會在 Windows 主機上執行的 Linux 虛擬機器中使用 IoT Edge。 如此一來，您就可以在 Windows 裝置上執行 Linux 模組。
 
 ### <a name="tier-1"></a>第 1 層
 
-下表所列的系統受到 Microsoft 的支援，其為正式推出或處於公開預覽狀態，並已針對每個新版本進行測試。 
+下表所列的系統受到 Microsoft 的支援（已正式推出或處於公開預覽狀態），並會使用每個新版本進行測試。
+
+Azure IoT Edge 支援以 Linux 或 Windows 容器形式建立的模組。 Linux 容器可以部署至 Linux 裝置，或使用 Windows 上的 IoT Edge for Linux 部署到 Windows 裝置。 Windows 容器只能部署到 Windows 裝置。
+
+#### <a name="linux-containers"></a>Linux 容器
+
+以 Linux 容器形式建立的模組可以部署到 Linux 或 Windows 裝置。 若是 Linux 裝置，則會直接在主機裝置上安裝 IoT Edge 執行時間。 針對 Windows 裝置，以 IoT Edge 執行時間預建的 Linux 虛擬機器會在主機裝置上執行。
+
+Windows 上適用于 Linux 的 IoT Edge 目前處於公開預覽狀態，但建議您在 Windows 裝置上執行 IoT Edge。
 
 | 作業系統 | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Raspberry Pi OS 延展 |  | ![Raspberry Pi OS Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公開預覽  |
-| [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公開預覽 |
-| [Windows 10 IoT 企業版](/windows/iot-core/windows-iot-enterprise)，組建 17763 | ![Windows 10 IoT 企業版 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows 10 IoT 核心版](/windows/iot-core/windows-iot-core)，組建 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows Server 2019](/windows-server/get-started-19/rel-notes-19)，組建 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-| [Windows Server IoT 2019](/windows/iot-core/windows-server)，組建 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
+| Ubuntu Server 16.04 | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公開預覽  |
+| Ubuntu Server 18.04 | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | 公開預覽 |
+| Windows 10 Pro | 公開預覽 |  |  |
+| Windows 10 Enterprise | 公開預覽 |  |  |
+| Windows 10 IoT 企業版 | 公開預覽 |  |  |
+| Windows Server 2019 | 公開預覽 |  |  |
 
-以上所列的 Windows 作業系統是在 Windows 上執行 Windows 容器的裝置需求，這是唯一支援的生產環境設定。 適用於 Windows 的 Azure IoT Edge 安裝套件可讓您在 Windows 上使用 Linux 容器，但此設定僅適用於開發及測試。 
+所有 Windows 作業系統都必須是1809版 (組建 17763) 或更新版本。
+
+#### <a name="windows-containers"></a>Windows 容器
+
+以 Windows 容器形式建立的模組只能部署到 Windows 裝置。
+
+| 作業系統 | AMD64 | ARM32v7 | ARM64 |
+| ---------------- | ----- | ------- | ----- |
+| Windows 10 IoT 企業版 | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows 10 IoT 核心版<sup>1</sup><br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server 2019  | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+| Windows Server IoT 2019<br> | ![check1](./media/tutorial-c-module/green-check.png) |  |  |
+
+<sup>1</sup> Windows 10 IoT 核心版在版本1.0.10 之後將不受支援
+
+所有 Windows 作業系統都必須是1809版 (組建 17763) 。 Windows 上的 IoT Edge 需要特定的 Windows 組建，因為 Windows 容器的版本必須完全符合主機 Windows 裝置的版本。 Windows 容器目前只使用組建17763。
 
 ### <a name="tier-2"></a>第 2 層
 

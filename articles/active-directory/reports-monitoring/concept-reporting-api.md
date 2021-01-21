@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af448d5d28c5add39176500b988824b17f85b9fb
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 2027f713baf2b8039187e933ffc7bb0b68b5cc5f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861964"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631956"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>開始使用 Azure Active Directory 報告 API
 
@@ -49,8 +49,10 @@ Azure Active Directory 會向您提供各種[報告](overview-reports.md)，內�
 
 稽核記錄的 Microsoft Graph API 端點是 `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`，登入的 Microsoft Graph API 端點則是 `https://graph.microsoft.com/v1.0/auditLogs/signIns`。 如需詳細資訊，請參閱[稽核 API 參考](/graph/api/resources/directoryaudit)和[登入 API 參考](/graph/api/resources/signIn)。
 
-此外，您可使用 [Identity Protection 風險偵測 API](/graph/api/resources/identityriskevent?view=graph-rest-beta) 來透過 Microsoft Graph 以程式設計方式存取安全性偵測。 如需詳細資訊，請參閱[開始使用 Azure Active Directory Identity Protection 和 Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md)。 
+您可以使用 [Identity Protection 風險偵測 API](/graph/api/resources/identityriskevent?view=graph-rest-beta) ，利用 Microsoft Graph 以程式設計方式存取安全性偵測。 如需詳細資訊，請參閱[開始使用 Azure Active Directory Identity Protection 和 Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md)。 
   
+您也可以使用布建 [記錄 API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 來取得以程式設計方式存取您租使用者中的布建事件。 
+
 ## <a name="apis-with-microsoft-graph-explorer"></a>具有 Microsoft Graph 總管的 API
 
 您可使用 [Microsoft Graph 總管](https://developer.microsoft.com/graph/graph-explorer)來確認登入並稽核 API 資料。 請務必同時使用 Graph 總管 UI 中的兩個登入按鈕來登入帳戶，並如下所示地設定租用戶的 **AuditLog.Read.All** 和 **Directory.ReadAll** 權限。   

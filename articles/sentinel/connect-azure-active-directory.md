@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 9700e5d9179f7c1e33b2371eea89be9bb1c8d08f
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e84484990725b0c39b132aead51e9b01dbb7e7ef
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621357"
+ms.locfileid: "98632286"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>將資料從 Azure Active Directory 的 (Azure AD) 
 
@@ -28,7 +28,7 @@ ms.locfileid: "98621357"
 
 ## <a name="prerequisites"></a>必要條件
 
-- 您必須有 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 訂用帳戶，才能將登入記錄內嵌至 Azure Sentinel。 Azure 監視器 (Log Analytics) 和 Azure Sentinel 可能會收取額外的每 gb 費用。
+- 任何 Azure AD 授權 (Free/O365/P1/P2) 都足以將登入記錄內嵌至 Azure Sentinel。 Azure 監視器 (Log Analytics) 和 Azure Sentinel 可能會收取額外的每 gb 費用。
 
 - 您的使用者必須被指派工作區上的 Azure Sentinel 參與者角色。
 
@@ -42,13 +42,29 @@ ms.locfileid: "98621357"
 
 1. 從資料連線器資源庫中，選取 **Azure Active Directory** 然後選取 [ **開啟連接器] 頁面**。
 
-1. 將您想要串流的記錄旁的核取方塊標示為 Azure Sentinel，然後按一下 [連線 **]**。
+1. 將您想要串流至 Azure Sentinel 的記錄檔類型旁的核取方塊標記，然後按一下 **[連接]**。 以下是您可以選擇的記錄類型：
 
-1. 您可以選取是否要 Azure AD 中的警示自動產生 Azure Sentinel 的事件。 在 [ **建立事件** ] 底下，選取 [ **啟用** ] 以啟用預設分析規則，此規則會自動從已連線的安全性服務中產生的警示建立事件。 接著，您可以在 [分析] 下編輯此規則，然後編輯 [有效規則]。
+    - 登入記錄
+    - 稽核記錄
+    - 非互動式使用者登入記錄
+    - 服務主體登入記錄
+    - 受控識別登入記錄
+    - 佈建記錄
 
-1. 若要在 Log Analytics 中使用相關的架構來查詢 Azure AD 警示，請 `SigninLogs` `AuditLogs` 在查詢視窗中輸入或。
+## <a name="find-your-data"></a>尋找您的資料
 
-## <a name="next-steps"></a>後續步驟
+建立成功的連接之後，資料會顯示在 [ **記錄**] 中的 [ **LogManagement** ] 區段下，如下表所示：
+
+- `SigninLogs`
+- `AuditLogs`
+- `AADNonInteractiveUserSignInLogs`
+- `AADServicePrincipalSignInLogs`
+- `AADManagedIdentitySignInLogs`
+- `AADProvisioningLogs`
+
+若要查詢 Azure AD 記錄，請在查詢視窗的頂端輸入相關的資料表名稱。
+
+## <a name="next-steps"></a>下一步
 在本檔中，您已瞭解如何將 Azure Active Directory 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。

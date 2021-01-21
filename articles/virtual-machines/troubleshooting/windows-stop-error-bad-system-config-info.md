@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977026"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631980"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows 停止錯誤-0x00000074 錯誤的系統組態資訊
 
@@ -38,7 +38,7 @@ ms.locfileid: "91977026"
 
 ## <a name="cause"></a>原因
 
-如果**系統**註冊表 hive 似乎已損毀，就會發生**BAD_SYSTEM_CONFIG_INFO**停止程式碼。 此錯誤可能是由下列任何原因所造成：
+如果 **系統** 註冊表 hive 似乎已損毀，就會發生 **BAD_SYSTEM_CONFIG_INFO** 停止程式碼。 此錯誤可能是由下列任何原因所造成：
 
 - 登錄 hive 未正確關閉。
 - 登錄區已損毀。
@@ -48,7 +48,10 @@ ms.locfileid: "91977026"
 
 ### <a name="process-overview"></a>程序概觀：
 
-1. 建立和存取修復 VM。
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
+
+1. 建立及存取修復 VM。
 1. 檢查 hive 是否損毀。
 1. 啟用序列主控台與記憶體傾印收集。
 1. 重建 VM。
@@ -71,7 +74,7 @@ ms.locfileid: "91977026"
 下列指示將協助您判斷原因是因為 hive 損毀，或 hive 未正確關閉。 如果 hive 未正確關閉，您將能夠解除鎖定檔案並修正您的 VM。
 
 1. 在修復 VM 上，開啟 [ **登錄編輯程式** ] 應用程式。 在 Windows 搜尋列中輸入 "REGEDIT" 來尋找它。
-1. 在 [登錄編輯程式] 中，選取**HKEY_LOCAL_MACHINE**將其反白顯示，然後選取 [檔案] **> [載入 Hive ...** ]。 。
+1. 在 [登錄編輯程式] 中，選取 **HKEY_LOCAL_MACHINE** 將其反白顯示，然後選取 [檔案] **> [載入 Hive ...** ]。 。
 1. 流覽 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM` 並選取 [ **開啟**]。
 1. 當系統提示您輸入名稱時，請輸入 **BROKENSYSTEM**。
 
@@ -81,7 +84,7 @@ ms.locfileid: "91977026"
 
    1. 如果 hive 正常開啟，則 hive 未正確關閉。 繼續進行步驟5。
 
-1. 若要修正未正確關閉的 hive，請反白顯示**BROKENSYSTEM** ，然後選取 **[檔案 > 卸載 hive ...** ] 解除鎖定檔案。
+1. 若要修正未正確關閉的 hive，請反白顯示 **BROKENSYSTEM** ，然後選取 **[檔案 > 卸載 hive ...** ] 解除鎖定檔案。
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>啟用序列主控台與記憶體傾印收集
 

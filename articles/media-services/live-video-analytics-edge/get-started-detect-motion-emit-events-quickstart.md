@@ -3,12 +3,12 @@ title: 開始使用 IoT Edge 上的 Live Video Analytics - Azure
 description: 本快速入門說明如何在 IoT Edge 上開始使用 Live Video Analytics。 了解如何偵測即時影片串流中的動作。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
-ms.translationtype: HT
+ms.openlocfilehash: cbe4b1280897064938222680fc932cfe289d2f32
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060396"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631931"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入門：開始使用 - IoT Edge 上的 Live Video Analytics
 
@@ -26,6 +26,10 @@ ms.locfileid: "98060396"
 ## <a name="prerequisites"></a>必要條件
 
 * 具有有效訂用帳戶的 Azure 帳戶。 如果您還未擁有帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+  > [!NOTE]
+  > 您將需要 Azure 訂用帳戶，具有建立服務主體的許可權 (**擁有者角色** 提供此) 。 如果您沒有正確的許可權，請洽詢您的帳戶管理員，授與您正確的許可權。  
+
 * 開發電腦上有 [Visual Studio Code](https://code.visualstudio.com/)。 請確定您有 [Azure IoT Tools 延伸模組](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)。
 * 確定開發電腦所連線的網路允許透過連接埠 5671 的進階訊息佇列通訊協定 (AMQP)。 此設定可讓 Azure IoT Tools 與 Azure IoT 中樞通訊。
 
@@ -43,7 +47,7 @@ ms.locfileid: "98060396"
 
 在本快速入門中，我們建議您使用 [Live Video Analytics 資源設定指令碼](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)，在您的 Azure 訂用帳戶中部署所需的資源。 若要這樣做，請依照下列步驟執行：
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)，然後選取 Cloud Shell 圖示。
+1. 移至 [Azure 入口網站](https://portal.azure.com) ，然後選取 Cloud Shell 圖示。
 1. 如果您第一次使用 Cloud Shell，系統會提示您選取用來建立儲存體帳戶和 Microsoft Azure 檔案共用的訂用帳戶。 選取 [建立儲存體]，以建立可供儲存 Cloud Shell 工作階段資訊的儲存體帳戶。 此儲存體帳戶與指令碼將建立來搭配您 Azure 媒體服務帳戶使用的帳戶不同。
 1. 在 Cloud Shell 視窗左側的下拉式功能表中，選取 [Bash] 作為您的環境。
 

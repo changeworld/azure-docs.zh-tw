@@ -8,12 +8,12 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a082ccb62103ab5bd027bf49b9ee05bc48c63115
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979430"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630611"
 ---
 # <a name="powershell-scripts-for-iot-edge-on-windows"></a>Windows 上適用于 IoT Edge 的 PowerShell 腳本
 
@@ -69,11 +69,11 @@ Initialize-IoTEdge 命令會使用您的裝置連接字串和操作詳細資料�
 | **DeviceConnectionString** | 此連接字串來自 IoT 中樞註冊的 IoT Edge 裝置，以單引號括住 | **需要** 使用連接字串進行手動布建。 如果您未在腳本參數中提供連接字串，系統會提示您輸入一個。 |
 | **IotHubHostName** | 裝置連接的 IoT 中樞主機名稱。 | **需要** 使用 x.509 憑證進行手動布建。 採用格式 *{hub name}. azure-devices.net*。 |
 | **DeviceId** | IoT 中樞內已註冊裝置身分識別的裝置識別碼。 | **需要** 使用 x.509 憑證進行手動布建。 |
-| **ScopeId** | 此範圍識別碼來自與您 IoT 中樞相關聯之裝置佈建服務的執行個體。 | DPS 布建**所需**。 如果您未在腳本參數中提供範圍識別碼，系統會提示您輸入一個。 |
-| **RegistrationId** | 由您裝置產生的註冊識別碼 | 如果使用 TPM 或對稱金鑰證明，則為 DPS 布建**所需**。 如果使用 x.509 憑證證明，則為**選擇性**。 |
-| **X509IdentityCertificate** | 裝置上 x.509 裝置身分識別憑證的 URI 路徑。 | 如果使用 x.509 憑證證明，手動或 DPS 布建都**需要**。 |
-| **X509IdentityPrivateKey** | 裝置上 x.509 裝置身分識別憑證金鑰的 URI 路徑。 | 如果使用 x.509 憑證證明，手動或 DPS 布建都**需要**。 |
-| **SymmetricKey** | 使用 DPS 時，用來布建 IoT Edge 裝置身分識別的對稱金鑰 | 如果使用對稱金鑰證明，則為 DPS 布建**所需**。 |
+| **ScopeId** | 此範圍識別碼來自與您 IoT 中樞相關聯之裝置佈建服務的執行個體。 | DPS 布建 **所需**。 如果您未在腳本參數中提供範圍識別碼，系統會提示您輸入一個。 |
+| **RegistrationId** | 由您裝置產生的註冊識別碼 | 如果使用 TPM 或對稱金鑰證明，則為 DPS 布建 **所需**。 如果使用 x.509 憑證證明，則為 **選擇性**。 |
+| **X509IdentityCertificate** | 裝置上 x.509 裝置身分識別憑證的 URI 路徑。 | 如果使用 x.509 憑證證明，手動或 DPS 布建都 **需要**。 |
+| **X509IdentityPrivateKey** | 裝置上 x.509 裝置身分識別憑證金鑰的 URI 路徑。 | 如果使用 x.509 憑證證明，手動或 DPS 布建都 **需要**。 |
+| **SymmetricKey** | 使用 DPS 時，用來布建 IoT Edge 裝置身分識別的對稱金鑰 | 如果使用對稱金鑰證明，則為 DPS 布建 **所需**。 |
 | **ContainerOs** | **Windows** 或 **Linux** | 如果未指定任何容器作業系統，Windows 會是預設值。<br><br>針對 Windows 容器，IoT Edge 使用安裝所包含的 Moby 容器引擎。 對於 Linux 容器，您需要先安裝容器引擎，再開始安裝。 |
 | **DeviceCACertificate** | 裝置上 x.509 裝置 CA 憑證的 URI 路徑。 | 也可以在檔案中設定 `C:\ProgramData\iotedge\config.yaml` 。 如需詳細資訊，請參閱 [管理 IoT Edge 裝置上的憑證](how-to-manage-device-certificates.md)。 |
 | **DeviceCAPrivateKey** | 裝置上 x.509 裝置 CA 私密金鑰的 URI 路徑。 | 也可以在檔案中設定 `C:\ProgramData\iotedge\config.yaml` 。 如需詳細資訊，請參閱 [管理 IoT Edge 裝置上的憑證](how-to-manage-device-certificates.md)。 |
@@ -99,10 +99,8 @@ Initialize-IoTEdge 命令會使用您的裝置連接字串和操作詳細資料�
 | **力** | 無 | 此旗標會強制卸載，以防先前嘗試卸載失敗。
 | **RestartIfNeeded** | 無 | 必要時，此旗標可讓卸載腳本重新開機電腦，而不需要提示。 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在下列文章中瞭解如何使用這些命令：
 
-* [安裝或卸載 Azure IoT Edge 執行時間](how-to-install-iot-edge.md)
-* [使用對稱金鑰驗證布建 Azure IoT Edge 裝置](how-to-manual-provision-symmetric-key.md)
-* [使用 x.509 憑證驗證布建 Azure IoT Edge 裝置](how-to-manual-provision-x509.md)
+* [安裝或卸載 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)

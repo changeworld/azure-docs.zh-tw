@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: overview
 ms.author: larryfr
 author: BlackMist
-ms.date: 11/04/2019
+ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 9b4cb3117464bfd32e17df4a1dbfdf7efd4ecbe6
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
-ms.translationtype: HT
+ms.openlocfilehash: 618b7b9cef5ec78cd53247faea2797e9fc897833
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127765"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630212"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -25,8 +25,6 @@ Azure Machine Learning 可用於任何一種機器學習，從傳統 ML 到深�
 開始訓練您的本機電腦，然後向外擴增到雲端。 
 
 此服務也會與熱門的深度學習和增強式開放原始碼工具 (例如 PyTorch、TensorFlow、scikit-learn 和 Ray RLlib) 交互操作。 
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
 > [!Tip]
 > **免費試用！**  如果您沒有 Azure 訂用帳戶，請在開始前先建立一個免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。 即可取得用於 Azure 服務的點數。 信用額度用完之後，您可以保留帳戶並使用[免費的 Azure 服務](https://azure.microsoft.com/free/)。 除非您明確變更您的設定且同意付費，否則我們絕對不會從您的信用卡收取任何費用。

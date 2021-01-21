@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d14ef742c19556a9df2bd193a54bfaa1672d5964
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0e044e8102308fce4145d4aa6c887cefaa99be34
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044219"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629957"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虛擬機器上執行 Azure IoT Edge
 
@@ -42,17 +42,17 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
     > [!div class="mx-imgBorder"]
     > [![顯示 iotedge-vm-deploy 範本的螢幕擷取畫面](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
 
-    **訂**用帳戶：要在其中部署虛擬機器的作用中 Azure 訂用帳戶。
+    **訂** 用帳戶：要在其中部署虛擬機器的作用中 Azure 訂用帳戶。
 
     **資源群組**：現有或新建立的資源群組，以包含虛擬機器和其相關聯的資源。
 
     **DNS 標籤首碼**：您選擇的必要值，用來將虛擬機器的主機名稱設為首碼。
 
-    系統**管理員使用者名稱**：使用者名稱，將會在部署時提供根許可權。
+    系統 **管理員使用者名稱**：使用者名稱，將會在部署時提供根許可權。
 
-    **裝置連接字串**：在您預定的[IoT 中樞](../iot-hub/about-iot-hub.md)內建立之裝置的[裝置連接字串](./how-to-manual-provision-symmetric-key.md)。
+    **裝置連接字串**：在您預定的 [IoT 中樞](../iot-hub/about-iot-hub.md)內建立之裝置的 [裝置連接字串](./how-to-register-device.md)。
 
-    **VM 大小**：要部署的虛擬機器[大小](../cloud-services/cloud-services-sizes-specs.md)
+    **VM 大小**：要部署的虛擬機器 [大小](../cloud-services/cloud-services-sizes-specs.md)
 
     **UBUNTU Os 版本**：要安裝在基底虛擬機器上的 ubuntu os 版本。
 
@@ -66,7 +66,7 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 
 1. 確認部署已成功完成。  虛擬機器資源應該已部署到選取的資源群組中。  記下電腦名稱稱，格式應為 `vm-0000000000000` 。 此外，請記下相關聯的 **DNS 名稱**，其格式應該是 `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com。
 
-    **DNS 名稱**可從 Azure 入口網站內新部署虛擬機器的 [概觀] 區段取得。
+    **DNS 名稱** 可從 Azure 入口網站內新部署虛擬機器的 [概觀] 區段取得。
 
     > [!div class="mx-imgBorder"]
     > [![顯示 iotedge vm dns 名稱的螢幕擷取畫面](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
@@ -109,7 +109,7 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 
 1. 建立新的虛擬機器：
 
-    若要使用**authenticationType**的 authenticationType `password` ，請參閱下列範例：
+    若要使用的 authenticationType `password` ，請參閱下列範例：
 
    ```azurecli-interactive
    az deployment group create \
@@ -152,14 +152,14 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
     }
     ```
 
-    您也可以從 Azure 入口網站中新部署虛擬機器的 [**總覽**] 區段取得**DNS 名稱**。
+    您也可以從 Azure 入口網站中新部署虛擬機器的 [**總覽**] 區段取得 **DNS 名稱**。
 
     > [!div class="mx-imgBorder"]
     > [![顯示 iotedge vm dns 名稱的螢幕擷取畫面](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
 
 1. 如果您想要在安裝後透過 SSH 連線到此 VM，請使用相關聯的 **DNS 名稱** 與下列命令：  `ssh <adminUsername>@<DNS_Name>`
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在您已佈建 IoT Edge 裝置並安裝執行階段，接下來您可以[部署 IoT Edge 模組](how-to-deploy-modules-portal.md)。
 

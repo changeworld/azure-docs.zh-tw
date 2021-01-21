@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 62793e0551c914b77310a0e9b72fea31ec621848
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 1b5ced7038f692046d1ce4ba2f4599cae3962510
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683381"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632456"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和檢查結果
 
@@ -144,6 +144,7 @@ ms.locfileid: "97683381"
 
 若要查看部署所傳回的任何錯誤詳細資訊，請選取 [錯誤]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-若要瞭解如何建立警示來通知您有關更新部署的結果，請參閱 [建立更新管理的警示](configure-alerts.md)。
+* 若要瞭解如何建立警示來通知您有關更新部署的結果，請參閱 [建立更新管理的警示](configure-alerts.md)。
+* 若要針對一般更新管理錯誤進行疑難排解，請參閱[針對更新管理問題進行疑難排解](../troubleshoot/update-management.md)。

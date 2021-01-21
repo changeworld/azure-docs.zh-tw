@@ -4,22 +4,22 @@ description: 瞭解如何解讀 Azure 檔案共用的已布建和隨用隨付計
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/1/2020
+ms.date: 01/20/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 880ec90ce1cf0efffce0cfd6800bdbaed23f8dd0
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831460"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632473"
 ---
 # <a name="understanding-azure-files-billing"></a>瞭解 Azure 檔案儲存體計費
 Azure 檔案儲存體提供兩個不同的計費模型：已布建和隨用隨付。 布建的模型僅適用于 premium 檔案共用，也就是部署在 **FileStorage** 儲存體帳戶類型中的檔案共用。 隨用隨付模型僅適用于標準檔案共用，也就是在 **一般用途第2版 (GPv2)** 儲存體帳戶類型中部署的檔案共用。 本文說明這兩種模型的運作方式，以協助您瞭解每月的 Azure 檔案儲存體帳單。
 
 Azure 檔案儲存體的目前定價可在 [ [Azure 檔案儲存體定價] 頁面](https://azure.microsoft.com/pricing/details/storage/files/)上找到。
 
-## <a name="provisioned-billing"></a>已布建帳單
+## <a name="provisioned-model"></a>布建的模型
 Azure 檔案儲存體使用 premium 檔案共用的布建模型。 在已布建的商務模型中，您會主動指定 Azure 檔案儲存體服務的儲存體需求，而不是根據您使用的內容計費。 這類似于在內部部署環境中購買硬體，因為當您布建具有特定儲存體數量的 Azure 檔案共用時，無論您是否使用該儲存體，您都必須支付該儲存體的費用，就像您在開始使用空間時，不會開始支付實體媒體內部部署的成本。 不同于在內部部署環境中購買實體媒體，布建的檔案共用可以根據您的儲存體和 IO 效能特性，動態地相應增加或減少。
 
 當您布建 premium 檔案共用時，您會指定工作負載所需的 Gib 數目。 您布建的每個 GiB 都可讓您以固定的比率提供額外的 IOPS 和輸送量。 除了您保證的基準 IOPS，每個 premium 檔案共用都能以最佳的方式來支援高載。 IOPS 和輸送量的公式如下：
@@ -63,7 +63,7 @@ Azure 檔案儲存體使用 premium 檔案共用的布建模型。 在已布建�
 
 新檔案共用的開頭為其高載值區中的完整點數。 如果共用 IOPS 低於基準 IOPS （因為伺服器進行節流），將不會產生高載信用額度。
 
-## <a name="pay-as-you-go-billing"></a>隨用隨付計費
+## <a name="pay-as-you-go-model"></a>隨用隨付模型
 Azure 檔案儲存體使用標準檔案共用的隨用隨付商務模型。 在隨用隨付商務模型中，您支付的金額取決於實際使用的數量，而不是根據布建的金額。 概括而言，您需支付儲存在磁片上的資料量費用，然後根據您的資料使用方式來支付一組額外的交易。 隨用隨付模型可符合成本效益，因為您不需要過度布建，以考慮未來的成長或效能需求，或取消布建您的工作負載是否會隨著時間而改變。 另一方面，隨用隨付計費模型是由使用者耗用量所驅動，因此隨用隨付的計費模型也可能很難規劃為預算流程的一部分。
 
 ### <a name="differences-in-standard-tiers"></a>標準層的差異
@@ -92,7 +92,7 @@ Azure 檔案儲存體使用標準檔案共用的隨用隨付商務模型。 在�
 > [!Note]  
 > NFS 4.1 僅適用于使用已布建計費模型的 premium 檔案共用，交易不會影響 premium 檔案共用的計費。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 - [Azure 檔案儲存體定價] 頁面](https://azure.microsoft.com/pricing/details/storage/files/)。
 - [規劃 Azure 檔案儲存體部署](./storage-files-planning.md) 以及 [規劃 Azure 檔案同步部署](./storage-sync-files-planning.md)。
 - [建立檔案共用](./storage-how-to-create-file-share.md) 並 [部署 Azure 檔案同步](./storage-sync-files-deployment-guide.md)。

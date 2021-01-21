@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 22db9c7966b6f988ca0ea799104275f3f86c77ea
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969597"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629567"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows 開機管理程式錯誤-0xC0000428 狀態不正確映射雜湊
 
@@ -64,7 +64,10 @@ ms.locfileid: "91969597"
 
 - 在 Azure 中，所有預覽版本的 Windows 映像都會在其描述中包含備註，這些映射不適合用于生產環境，而且僅適用于指定的試用期或「預覽版本」。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 如果您的映射是預覽影像，則無法延長所用映射的到期日，您將需要使用非預覽映射來 [部署新的 VM](../windows/quick-create-portal.md) 。 下列步驟可協助您識別您是否已使用預覽映射，以及提供資源來協助您將資料從此 VM 傳送至新的 VM。 如果您已將影像識別為預覽影像，則映射無法復原，因為它現在已過期。
 

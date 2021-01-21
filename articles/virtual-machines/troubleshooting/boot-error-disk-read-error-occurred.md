@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d1cf8638f922bb0275322568eb1399db4f49e8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069143"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629720"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>針對開機錯誤進行疑難排解 - 發生磁碟讀取錯誤
 
@@ -38,6 +38,9 @@ ms.locfileid: "87069143"
 ## <a name="solution"></a>解決方法
 
 ### <a name="process-overview"></a>程序概觀
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 1. 建立及存取修復 VM。
 1. 選取解決方案：

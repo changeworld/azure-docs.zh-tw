@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f55af61a061bf3a3897569058aace728f7465b64
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: HT
+ms.openlocfilehash: ec3f53e6f69614028c013efa5f0e6852cbc3f8ae
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862117"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631635"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>在 Azure 服務匯流排佇列 (.NET) 中傳送和接收訊息
 在本教學課程中，您會建立 .NET Core 應用程式並使用 **Azure.Messaging.ServiceBus** 套件對服務匯流排佇列傳送和接收訊息。 
@@ -272,4 +272,4 @@ Stopped receiving messages
 
 - [適用於 .NET 的 Azure 服務匯流排用戶端程式庫 - 讀我檔案](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
 - [GitHub 範例](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
-- [.NET API 參考](/dotnet/api/azure.messaging.servicebus?preserve-view=true&view=azure-dotnet-preview)
+- [.NET API 參考](/dotnet/api/azure.messaging.servicebus?preserve-view=true)

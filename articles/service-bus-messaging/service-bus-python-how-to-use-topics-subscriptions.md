@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: devx-track-python
-ms.openlocfilehash: 43f633e427e20cfb0b044bd42b77f866e4cc0c61
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: HT
+ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489406"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630042"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>將訊息傳送到 Azure 服務匯流排主題，並從訂用帳戶接收來自主題的訊息 (Python)
 本文示範如何使用 Python 將訊息傳送至服務匯流排主題，並從訂用帳戶接收來自主題的訊息。 
@@ -217,4 +217,4 @@ Received: Message inside a ServiceBusMessageBatch
 - [範例](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples)。 
     - **sync_samples** 資料夾中有範例，示範如何以同步方式與服務匯流排互動。 在本快速入門中，您使用了這個方法。 
     - **sync_samples** 資料夾中有範例，示範如何以同步方式與服務匯流排互動。 
-- [ 參考文件](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
+- [ 參考文件](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)

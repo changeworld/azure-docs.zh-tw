@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/19/2021
+ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196583"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630271"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>在 Azure 範疇中自動標示您的資料
 
@@ -32,10 +32,9 @@ ms.locfileid: "98196583"
 
 範疇會使用相同的分類，也稱為敏感性資訊類型，Microsoft 365。  MIP 敏感度標籤是在 Microsoft 365 的安全性與合規性中心 (SCC) 建立。 這可讓您在 Azure 範疇資產之間擴充現有的敏感度標籤。
 
-> [!NOTE]
-> 分類會直接比對，例如社會安全號碼，其具有身分證 **號碼** 的分類。 
->
-> 相反地，當同時找到一或多個分類和條件時，便會套用敏感度標籤。 在此內容中， [條件](/microsoft-365/compliance/apply-sensitivity-label-automatically) 會參考您可以為非結構化資料定義的所有參數，例如與 **另一個分類的相近度**，以及 **% 信賴度**。 
+**分類** 會直接比對，例如社會安全號碼，其具有身分證 **號碼** 的分類。 
+
+相反地，當同時找到一或多個分類和條件時，便會套用 **敏感度標籤** 。 在此內容中， [條件](/microsoft-365/compliance/apply-sensitivity-label-automatically) 會參考您可以為非結構化資料定義的所有參數，例如與 *另一個分類的相近度*，以及 *% 信賴度*。 
 
 Azure 範疇中的敏感度標籤可以用來自動將標籤套用至檔案和資料庫資料行。
 
@@ -44,6 +43,7 @@ Azure 範疇中的敏感度標籤可以用來自動將標籤套用至檔案和�
 - 瞭解 Microsoft 365 檔中的[敏感度標籤](/microsoft-365/compliance/sensitivity-labels)
 - [什麼是 pdf 規則？](#what-are-autolabeling-rules)
 - [Azure 範疇中的敏感度標籤支援的資料類型](#supported-data-types-for-sensitivity-labels-in-azure-purview)
+- [SQL database 資料行的標籤](#labeling-for-sql-database-columns)
 
 #### <a name="what-are-autolabeling-rules"></a>什麼是 pdf 規則？
 
@@ -54,7 +54,6 @@ Pdf 規則是您指定的條件，說明何時應該套用特定標籤。 當符
 當您建立標籤時，請務必為檔案和[資料庫資料行](#define-autolabeling-rules-for-database-columns)定義 pdf[規則，以](#define-autolabeling-rules-for-files)在每次資料掃描時自動套用標籤。 
 
 掃描範疇中的資料之後，您可以在範疇類別目錄和見解報表中，看到自動套用的標籤。
-
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Azure 範疇中的敏感度標籤支援的資料類型
 
 Azure 範疇中支援下列資料類型的敏感度標籤：
@@ -62,8 +61,16 @@ Azure 範疇中支援下列資料類型的敏感度標籤：
 |資料類型  |來源  |
 |---------|---------|
 |檔案的自動標記     |      - Azure Blob 儲存體  </br>-Azure Data Lake Storage Gen 1 和 Gen 2  |
-|資料庫資料行的自動標籤     |  -SQL server </br>-Azure SQL database </br>-Azure SQL Database 受控執行個體   <br> -Azure Synapse  <br> - Azure Cosmos DB   |
+|資料庫資料行的自動標籤     |  -SQL server </br>-Azure SQL database </br>-Azure SQL Database 受控執行個體   <br> -Azure Synapse  <br> - Azure Cosmos DB <br><br>如需詳細資訊，請參閱下方 [SQL database 資料行](#labeling-for-sql-database-columns) 的標籤。  |
 | | |
+
+#### <a name="labeling-for-sql-database-columns"></a>SQL database 資料行的標籤
+
+除了適用于資料庫資料行的範疇標籤之外，Microsoft 也支援在 [SQL Server Management Studio (SSMS) ](/sql/ssms/sql-server-management-studio-ssms)中使用 sql 資料分類來標記 sql database 資料行。 當範疇使用全域 [MIP 敏感度標籤](/microsoft-365/compliance/sensitivity-labels)時，SSMS 只會使用在本機定義的標籤。
+
+在 SSMS 中範疇和標記的標記，是目前不會彼此互動的個別進程。 因此，在 SSMS 中套用的標籤不會顯示于範疇中，反之亦然。 我們建議使用 Azure 範疇來標記 SQL 資料庫，因為它會使用可跨多個平臺套用的全域 MIP 標籤。
+
+如需詳細資訊，請參閱 [SQL 資料探索和分類檔](/sql/relational-databases/security/sql-data-discovery-and-classification)。
 
 ## <a name="how-to-create-sensitivity-labels-in-microsoft-365"></a>如何在 Microsoft 365 中建立敏感度標籤
 
@@ -123,7 +130,7 @@ MIP 敏感度標籤是在 Microsoft 365 安全性與合規性中心建立和管�
 
     如需有關 wizard 選項的詳細資訊，請參閱 Microsoft 365 檔中的 [敏感度標籤](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do) 。
 
-1. 重複上面所列的步驟，以建立其他標籤。 
+1. 重複上面所列的步驟，以建立更多標籤。 
 
     若要建立子標籤，請選取父標籤 **> ...**  > **更多動作**  > **新增子標籤**。
 
@@ -181,7 +188,7 @@ MIP 敏感度標籤是在 Microsoft 365 安全性與合規性中心建立和管�
 
 如需有關如何在 Azure 範疇中設定各種資產掃描的詳細資訊，請參閱：
 
-|來源  |參考資料  |
+|來源  |參考  |
 |---------|---------|
 |**Azure Blob 儲存體**     |[註冊並掃描 Azure Blob 儲存體](register-scan-azure-blob-storage-source.md)         |
 |**Azure Data Lake 儲存體**     |[註冊並掃描 Azure Data Lake Storage Gen1](register-scan-adls-gen1.md) </br>[註冊並掃描 Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)         |

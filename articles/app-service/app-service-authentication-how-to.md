@@ -4,12 +4,12 @@ description: 瞭解如何針對不同的案例自訂 App Service 中的驗證和
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 85fd7fdba4c62f4837a419af44c83f7e46cb9e39
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 4f2f43b142b290d29a4a90e504422b6c9ba2739c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601776"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630322"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -178,7 +178,7 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 - **Microsoft 帳戶**：當您 [設定 Microsoft 帳戶驗證設定](configure-authentication-provider-microsoft.md)時，請選取 `wl.offline_access` 範圍。
 - **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中，執行下列步驟：
     1. 在頁面的頂端，選取 [讀取/寫入]。
-    2. 在左側瀏覽器中，流覽至 [訂用帳戶 **] > *** *_\<subscription\_name_** > **resourceGroups** > *_* * * [ \<resource\_group\_name> _>**提供者**]  >  **Microsoft.Web**  >  **sites** > * *_ \<app\_name> _ * * > 設定 **config**  >  **[authsettings**。 
+    2. 在左側瀏覽器中，流覽至 [訂用帳戶 **] > *** *_\<subscription\_name_** > **resourceGroups** > *_* * * [ \<resource\_group\_name> _>**提供者**]  >    >   > * *_ \<app\_name> _ * * > 設定  >  **[authsettings**。 
     3. 按一下 **[編輯]** 。
     4. 修改下列屬性。 取代 _\<app\_id>_ 為您要存取之服務的 Azure Active Directory 應用程式識別碼。
 
@@ -225,7 +225,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 例如，Microsoft 帳戶允許 _outlook.com_、_live.com_ 和 _hotmail.com_ 帳戶。 Azure AD 允許登入帳戶有任意數目的自訂網域。 不過，您可能會想要將使用者直接帶到您自己的品牌 Azure AD 登入頁面 (例如 `contoso.com`) 。 若要建議登入帳戶的功能變數名稱，請遵循下列步驟。
 
-在中，流覽至 [訂用帳戶] [https://resources.azure.com](https://resources.azure.com) > * *_\<subscription\_name_** > **resourceGroups** > *_* * * [ **subscriptions** \<resource\_group\_name> _>**提供者**]  >  **Microsoft.Web**  >  > * *****_ \<app\_name> _ * * > 設定 **config**  >  **[authsettings**。 
+在中，流覽至 [訂用帳戶] [https://resources.azure.com](https://resources.azure.com) > * *_\<subscription\_name_** > **resourceGroups** > *_* * * [  \<resource\_group\_name> _>**提供者**]  >    >  > * *****_ \<app\_name> _ * * > 設定  >  **[authsettings**。 
 
 按一下 [編輯]、修改下列屬性，然後按一下 [放置]。 請務必將取代為 _\<domain\_name>_ 您想要的網域。
 
@@ -280,7 +280,151 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 如果其中一個層級未提供您所需的授權，或您的平臺或身分識別提供者不受支援，則您必須撰寫自訂程式碼，以根據 [使用者宣告](#access-user-claims)來授權使用者。
 
-## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>使用檔案 (預覽設定) 
+## <a name="updating-the-configuration-version-preview"></a>正在更新 configuration 版本 (預覽) 
+
+有兩個版本的管理 API 適用于驗證/授權功能。 Azure 入口網站中的「驗證 (預覽) 」體驗需要 preview V2 版本。 已使用 V1 API 的應用程式只要進行一些變更，就可以升級至 V2 版本。 具體而言，秘密設定必須移至位置-粘滯應用程式設定。 V2 目前也不支援 Microsoft 帳戶提供者的設定。
+
+> [!WARNING]
+> 遷移至 V2 preview 將會停用您的應用程式透過部分用戶端的 App Service 驗證/授權功能的管理，例如其現有的 Azure 入口網站、Azure CLI 和 Azure PowerShell 體驗。 這無法反轉。 在預覽期間，不建議或不支援遷移生產工作負載。 您應該只針對測試應用程式遵循本節中的步驟。
+
+### <a name="moving-secrets-to-application-settings"></a>將秘密移至應用程式設定
+
+1. 使用 V1 API 來取得您現有的設定：
+
+   ```azurecli
+   # For Web Apps
+   az webapp auth show -g <group_name> -n <site_name>
+
+   # For Azure Functions
+   az functionapp auth show -g <group_name> -n <site_name>
+   ```
+
+   在產生的 JSON 承載中，記下您已設定的每個提供者所使用的秘密值：
+
+   * 加入 `clientSecret`
+   * 谷歌： `googleClientSecret`
+   * Facebook： `facebookAppSecret`
+   * Twitter： `twitterConsumerSecret`
+   * Microsoft 帳戶： `microsoftAccountClientSecret`
+
+   > [!IMPORTANT]
+   > 秘密值是重要的安全性認證，應謹慎處理。 請勿共用這些值或將它們保存在本機電腦上。
+
+1. 建立每個秘密值的位置-粘滯應用程式設定。 您可以選擇每個應用程式設定的名稱。 它的值應該符合您在上一個步驟中取得的值，或參考您以該值建立的 [Key Vault 秘密](./app-service-key-vault-references.md?toc=/azure/azure-functions/toc.json) 。
+
+   若要建立此設定，您可以使用 Azure 入口網站，或針對每個提供者執行下列各項的變化：
+
+   ```azurecli
+   # For Web Apps, Google example    
+   az webapp config appsettings set -g <group_name> -n <site_name> --slot-settings GOOGLE_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+
+   # For Azure Functions, Twitter example
+   az functionapp config appsettings set -g <group_name> -n <site_name> --slot-settings TWITTER_PROVIDER_AUTHENTICATION_SECRET=<value_from_previous_step>
+   ```
+
+   > [!NOTE]
+   > 這種設定的應用程式設定應該標示為位置的位置，這表示它們不會在位置 [交換操作](./deploy-staging-slots.md)期間于環境之間移動。 這是因為您的驗證設定本身系結至環境。 
+
+1. 建立新的 JSON 檔案，名為 `authsettings.json` 。取得您先前收到的輸出，並將每個秘密值從中移除。 將剩餘的輸出寫入檔案，確定不包含任何秘密。 在某些情況下，設定可能具有包含空字串的陣列。 請確定沒有 `microsoftAccountOAuthScopes` ，如果有的話，請將該值切換為 `null` 。
+
+1. 新增屬性，指向 `authsettings.json` 您稍早為每個提供者建立的應用程式設定名稱：
+ 
+   * 加入 `clientSecretSettingName`
+   * 谷歌： `googleClientSecretSettingName`
+   * Facebook： `facebookAppSecretSettingName`
+   * Twitter： `twitterConsumerSecretSettingName`
+   * Microsoft 帳戶： `microsoftAccountClientSecretSettingName`
+
+   這項作業之後的範例檔案看起來可能如下所示，在此案例中，只會針對 AAD 進行設定：
+
+   ```json
+   {
+       "id": "/subscriptions/00d563f8-5b89-4c6a-bcec-c1b9f6d607e0/resourceGroups/myresourcegroup/providers/Microsoft.Web/sites/mywebapp/config/authsettings",
+       "name": "authsettings",
+       "type": "Microsoft.Web/sites/config",
+       "location": "Central US",
+       "properties": {
+           "enabled": true,
+           "runtimeVersion": "~1",
+           "unauthenticatedClientAction": "AllowAnonymous",
+           "tokenStoreEnabled": true,
+           "allowedExternalRedirectUrls": null,
+           "defaultProvider": "AzureActiveDirectory",
+           "clientId": "3197c8ed-2470-480a-8fae-58c25558ac9b",
+           "clientSecret": null,
+           "clientSecretSettingName": "MICROSOFT_IDENTITY_AUTHENTICATION_SECRET",
+           "clientSecretCertificateThumbprint": null,
+           "issuer": "https://sts.windows.net/0b2ef922-672a-4707-9643-9a5726eec524/",
+           "allowedAudiences": [
+               "https://mywebapp.azurewebsites.net"
+           ],
+           "additionalLoginParams": null,
+           "isAadAutoProvisioned": true,
+           "aadClaimsAuthorization": null,
+           "googleClientId": null,
+           "googleClientSecret": null,
+           "googleClientSecretSettingName": null,
+           "googleOAuthScopes": null,
+           "facebookAppId": null,
+           "facebookAppSecret": null,
+           "facebookAppSecretSettingName": null,
+           "facebookOAuthScopes": null,
+           "gitHubClientId": null,
+           "gitHubClientSecret": null,
+           "gitHubClientSecretSettingName": null,
+           "gitHubOAuthScopes": null,
+           "twitterConsumerKey": null,
+           "twitterConsumerSecret": null,
+           "twitterConsumerSecretSettingName": null,
+           "microsoftAccountClientId": null,
+           "microsoftAccountClientSecret": null,
+           "microsoftAccountClientSecretSettingName": null,
+           "microsoftAccountOAuthScopes": null,
+           "isAuthFromFile": "false"
+       }   
+   }
+   ```
+
+1. 提交此檔案作為應用程式的新驗證/授權設定：
+
+   ```azurecli
+   az rest --method PUT --url "/subscriptions/<subscription_id>/resourceGroups/<group_name>/providers/Microsoft.Web/sites/<site_name>/config/authsettings?api-version=2020-06-01" --body @./authsettings.json
+   ```
+
+1. 驗證您的應用程式在此手勢之後仍如預期般運作。
+
+1. 刪除先前步驟中所使用的檔案。
+
+您現在已遷移應用程式，以將身分識別提供者秘密儲存為應用程式設定。
+
+### <a name="support-for-microsoft-account-registrations"></a>支援 Microsoft 帳戶註冊
+
+V2 API 目前不支援以 Microsoft 帳戶作為不同的提供者。 相反地，它會利用交集的 [microsoft 身分識別平臺](../active-directory/develop/v2-overview.md) ，以個人 microsoft 帳戶登入使用者。 切換至 V2 API 時，會使用 V1 Azure Active Directory 設定來設定 Microsoft 身分識別平臺提供者。
+
+如果您現有的設定包含 Microsoft 帳戶提供者，但不包含 Azure Active Directory 提供者，您可以將設定切換至 Azure Active Directory 提供者，然後執行遷移。 若要這樣做：
+
+1. 移至 Azure 入口網站中的 [**應用程式註冊**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ，並尋找與您的 Microsoft 帳戶提供者相關聯的註冊。 它可能位於 [來自個人帳戶的應用程式] 標題下。
+1. 流覽至註冊的 [驗證] 頁面。 在 [重新導向 Uri] 下，您應該會看到結尾為的專案 `/.auth/login/microsoftaccount/callback` 。 複製此 URI。
+1. 新增符合您剛複製的 URI，但改為結束 `/.auth/login/aad/callback` 。 這可讓 App Service 的驗證/授權設定使用註冊。
+1. 流覽至您應用程式的 App Service Authentication/授權設定。
+1. 收集 Microsoft 帳戶提供者的設定。
+1. 使用「Advanced」管理模式設定 Azure Active Directory 提供者，提供您在上一個步驟中收集的用戶端識別碼和用戶端密碼值。 若為簽發者 URL，請使用 [使用] `<authentication-endpoint>/<tenant-id>/v2.0` ，並 *\<authentication-endpoint>* 以 [雲端環境的驗證端點](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) 取代 (例如 " https://login.microsoftonline.com " 適用于全域 Azure) ，也會 *\<tenant-id>* 以您的 **目錄 (租使用者) 識別碼** 取代。
+1. 儲存設定之後，請在瀏覽器中流覽至 `/.auth/login/aad` 網站上的端點並完成登入流程，以測試登入流程。
+1. 至此，您已成功複製設定，但仍會保留現有的 Microsoft 帳戶提供者設定。 在移除之前，請確定您的應用程式的所有元件都透過登入連結來參考 Azure Active Directory 提供者等。確認您應用程式的所有元件都如預期般運作。
+1. 一旦您已驗證該專案是否適用于 AAD Azure Active Directory 提供者，您可以移除 Microsoft 帳戶提供者設定。
+
+某些應用程式可能已經有 Azure Active Directory 和 Microsoft 帳戶的個別註冊。 目前無法遷移這些應用程式。 
+
+> [!WARNING]
+> 您可以藉由修改 AAD 應用程式註冊支援的 [帳戶類型](../active-directory/develop/supported-accounts-validation.md) ，來融合這兩個註冊。 不過，這會為 Microsoft 帳戶使用者強制新的同意提示，而且這些使用者的身分識別宣告在結構上可能不同， `sub` 因為使用新的應用程式識別碼之後，就會變更值。 除非徹底瞭解，否則不建議使用此方法。 您應改為在 V2 API 介面中等候兩個註冊的支援。
+
+### <a name="switching-to-v2"></a>切換至 V2
+
+執行上述步驟之後，請流覽至 Azure 入口網站中的應用程式。 選取 [Authentication (preview) ] 區段。 
+
+或者，您也可以對 `config/authsettingsv2` 網站資源下的資源提出 PUT 要求。 裝載的架構與使用檔案進行 [設定](#config-file) 一節中所捕捉的架構相同。
+
+## <a name="configure-using-a-file-preview"></a><a name="config-file"></a>使用檔案 (預覽設定) 
 
 您可以選擇性地透過部署所提供的檔案來設定您的驗證設定。 App Service 驗證/授權的某些預覽功能可能需要這項功能。
 
@@ -547,7 +691,7 @@ az webapp auth update --name <my_app_name> \
 
 您可以選擇上述程式碼範例中的 [試試看]，從 [Azure Cloud Shell](../cloud-shell/overview.md) 執行此命令。 在執行 [az login](/cli/azure/reference-index#az-login) 登入之後，您也可以使用[本機 Azure CLI](/cli/azure/install-azure-cli) 來執行此命令。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [教學課程：端對端驗證和授權使用者](tutorial-auth-aad.md)

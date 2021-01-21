@@ -3,12 +3,12 @@ title: IoT Edge 版本資訊的即時影片分析-Azure
 description: 本主題提供有關 IoT Edge 版本、增強功能、bug 修正和已知問題的即時影片分析版本資訊。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121238"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629771"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 版本資訊的即時影片分析
 
@@ -23,7 +23,7 @@ ms.locfileid: "98121238"
 
 <hr width=100%>
 
-## <a name="january-12-2021"></a>2021年1月12日
+## <a name="january-12-2021"></a>2021 年 1 月 12 日
 
 此版本標籤適用于2021年1月的重新整理模組：
 
@@ -51,9 +51,12 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 * 已新增接收節點的磁碟空間管理支援。
 * `MediaGraphGrpcExtension` 節點現在支援在單一 gRPC 伺服器內使用多個 AI 模型的 [extensionConfiguration](grpc-extension-protocol.md) 屬性。
 * 已新增以 [Prometheus 格式](https://prometheus.io/docs/practices/naming/)收集即時影片分析模組計量的支援。 深入瞭解如何 [在 Azure 監視器中收集計量和觀點。](monitoring-logging.md#azure-monitor-collection-via-telegraf) 
+* 新增篩選輸出選取專案的功能。 您可以使用任何圖形節點的 [說明]，將 **僅限音訊** 或全 **影片** 或 **音訊和影片** 傳遞給 `outputSelectors` 。 
 * 畫面播放速率篩選處理器已被 **取代**。  
     * 圖形擴充處理器節點本身內現在可使用畫面播放速率管理。
 
+### <a name="visual-studio-code-extension"></a>Visual Studio Code 擴充功能
+* [IoT Edge 上發行的實況影片分析](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge)-A Visual Studio Code 延伸模組，可協助您管理 LVA 媒體圖形。 此延伸模組適用于 **LVA 2.0 模組** ，並可讓您使用極精緻且便於使用的圖形化介面，來編輯和管理媒體圖表。
 ## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
 此版本戳記適用于2020年9月的重新整理：

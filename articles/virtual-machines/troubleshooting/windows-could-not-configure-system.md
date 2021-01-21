@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6cb3467fec99bd12810ed058a61de1be7b39cdd0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977043"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629584"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>針對 Windows 無法完成系統設定進行疑難排解
 
@@ -38,6 +38,9 @@ ms.locfileid: "91977043"
 
 當作業系統 (OS) 無法完成 [Sysprep](/windows-hardware/manufacture/desktop/sysprep-process-overview)程式時，就會導致此錯誤。 當您嘗試進行一般化 VM 的初始開機時，將會發生此錯誤。 如果您遇到此問題，請重新建立一般化映射，因為映射處於無法部署的狀態，且無法復原。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 若要修正此問題，請遵循 [Azure 有關準備/捕獲映射的指引](../windows/upload-generalized-managed.md) ，並準備新的一般化映射。

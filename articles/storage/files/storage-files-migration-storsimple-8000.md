@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 76a244810042adf3cec64b15fe847c5b684527c2
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134342"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631179"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>將 StorSimple 8100 和8600遷移至 Azure 檔案同步
 
@@ -160,7 +160,7 @@ StorSimple 會在磁片區層級上提供差異備份。 Azure 檔案共用也�
 
 仍不確定嗎？
 
-* 如果您需要 [Premium Azure 檔案共用的效能](understanding-billing.md#provisioned-billing)，請選擇 premium 儲存體。
+* 如果您需要 [Premium Azure 檔案共用的效能](understanding-billing.md#provisioned-model)，請選擇 premium 儲存體。
 * 針對一般用途的檔案伺服器工作負載選擇標準儲存體，包括經常性存取資料和封存資料。 如果雲端中的共用上唯一的工作負載將會 Azure 檔案同步，也請選擇標準儲存體。
 
 #### <a name="account-kind"></a>帳戶種類
@@ -578,7 +578,7 @@ Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <So
 > 仍有問題或遇到任何問題嗎？</br>
 > 我們在此提供協助 AzureFilesMigration@microsoft.com 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入瞭解 [Azure 檔案同步： aka.ms/AFS](./storage-sync-files-planning.md)。
 * 瞭解 [雲端分層](storage-sync-cloud-tiering.md) 原則的彈性。

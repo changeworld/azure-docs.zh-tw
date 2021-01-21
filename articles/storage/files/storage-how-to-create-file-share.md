@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 705910a9e2f4ebc80a63ab22ac4edecc5ae03cd0
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 7f72d703e5377f725addc4aa8c52e1cdb0fa571d
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724794"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630746"
 ---
 # <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
 若要建立 Azure 檔案共用，您需要回答三個有關您將如何使用它的問題：
@@ -172,7 +172,7 @@ az storage account create \
 
 - 針對標準檔案共用，它是 Azure 檔案共用的上限，但使用者無法前往。 標準檔案共用配額的主要用途是預算：「我不希望這個檔案共用成長超過這個時間點」。 如果未指定配額，標準檔案共用最多可以跨越 100 TiB (或 5 TiB 如果未針對儲存體帳戶) 設定大型檔案共用屬性。
 
-- 針對 premium 檔案共用，配額會超載為平均布 **建大小**。 布建的大小是您將計費的金額，不論實際使用量為何。 當您布建 premium 檔案共用時，您會想要考慮兩個因素： 1) 共用的未來成長從空間使用量的觀點來看，2) 工作負載所需的 IOPS。 每個布建的 GiB 可享有額外的保留和高載 IOPS。 如需有關如何規劃 premium 檔案共用的詳細資訊，請參閱布建 [premium](understanding-billing.md#provisioned-billing)檔案共用。
+- 針對 premium 檔案共用，配額會超載為平均布 **建大小**。 布建的大小是您將計費的金額，不論實際使用量為何。 當您布建 premium 檔案共用時，您會想要考慮兩個因素： 1) 共用的未來成長從空間使用量的觀點來看，2) 工作負載所需的 IOPS。 每個布建的 GiB 可享有額外的保留和高載 IOPS。 如需有關如何規劃 premium 檔案共用的詳細資訊，請參閱布建 [premium](understanding-billing.md#provisioned-model)檔案共用。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 如果您剛才建立儲存體帳戶，您可以選取 [ **移至資源**]，從部署畫面流覽至該帳戶。 如果您先前已建立儲存體帳戶，您可以透過包含該帳戶的資源群組來流覽至該帳戶。 一旦在儲存體帳戶中，選取標示為 [檔案 **共用** ] 的磚 (您也可以透過儲存體帳戶) 的瀏覽目錄至檔案 **共用** 。
@@ -295,7 +295,7 @@ az storage share-rm update \
 
 ---
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - [規劃 Azure 檔案儲存體部署](storage-files-planning.md) 或 [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)。 
 - [網路功能總覽](storage-files-networking-overview.md)。
 - 在 [Windows](storage-how-to-use-files-windows.md)、 [macOS](storage-how-to-use-files-mac.md)和 [Linux](storage-how-to-use-files-linux.md)上連接並掛接檔案共用。

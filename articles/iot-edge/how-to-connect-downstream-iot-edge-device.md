@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187828"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629398"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>將下游 IoT Edge 裝置連線至 Azure IoT Edge 閘道 (預覽) 
 
@@ -39,7 +39,7 @@ ms.locfileid: "96187828"
 * **閘道探索**：確定子裝置可以在區域網路上找到其父裝置。
 * **安全** 連線：使用屬於相同鏈的受信任憑證建立安全連線。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 免費或標準的 IoT 中樞。
 * 至少兩部 **IoT Edge 裝置**，一個是最上層裝置和一或多個較低層的裝置。 如果您沒有可用的 IoT Edge 裝置，可以 [在 Ubuntu 虛擬機器上執行 Azure IoT Edge](how-to-install-iot-edge-ubuntuvm.md)。
@@ -118,7 +118,7 @@ ms.locfileid: "96187828"
 
 若要啟用安全連線，閘道案例中的每個 IoT Edge 裝置都必須使用唯一的裝置 CA 憑證，以及閘道階層中所有裝置共用的根 CA 憑證複本進行設定。
 
-您應該已在裝置上安裝 IoT Edge。 如果不是，請遵循下列步驟來 [安裝 Azure IoT Edge 運行](how-to-install-iot-edge.md) 時間，然後使用 [對稱金鑰驗證](how-to-manual-provision-symmetric-key.md) 或 [x.509 憑證驗證](how-to-manual-provision-x509.md)來布建您的裝置。
+您應該已在裝置上安裝 IoT Edge。 如果沒有，請遵循下列步驟 [在 IoT 中樞註冊 IoT Edge 裝置](how-to-register-device.md) ，然後 [安裝 Azure IoT Edge 運行](how-to-install-iot-edge.md)時間。
 
 本節中的步驟會參考本文稍早所討論的 **根 CA 憑證** 和 **裝置 CA 憑證和私密金鑰** 。 如果您在不同的裝置上建立這些憑證，請在此裝置上提供這些憑證。 您可以使用像是 [Azure Key Vault](../key-vault/general/overview.md)的服務，或使用像是 [安全檔案複製](https://www.ssh.com/ssh/scp/)的功能，在實際的情況下傳輸檔案，例如使用 USB 磁片磁碟機。
 
@@ -206,7 +206,7 @@ ms.locfileid: "96187828"
 
 1. 設定 edgeHub 模組的下列環境變數：
 
-   | 名稱 | 值 |
+   | Name | 值 |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
@@ -302,7 +302,7 @@ API proxy 模組的設計目的是要自訂以處理最常見的閘道案例。 
    1. 在 [ **模組設定** ] 索引標籤上， **映射 URI**： `registry:latest`
    1. 在 [ **環境變數** ] 索引標籤上，新增下列環境變數：
 
-      * **Name**： `REGISTRY_PROXY_REMOTEURL` **Value**：您希望這個登錄模組對應的容器登錄 URL。 例如 `https://myregistry.azurecr`。
+      * **Name**： `REGISTRY_PROXY_REMOTEURL` **Value**：您希望這個登錄模組對應的容器登錄 URL。 例如： `https://myregistry.azurecr` 。
 
         登錄模組只能對應至一個容器登錄，因此建議您將所有容器映射都包含在單一私人容器登錄中。
 
@@ -441,7 +441,7 @@ API proxy 模組的設計目的是要自訂以處理最常見的閘道案例。 
 1. 選取 [ **審核 + 建立** ] 以移至最後一個步驟。
 1. 選取 [ **建立** ] 以部署至您的裝置。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [如何使用 IoT Edge 裝置作為閘道](iot-edge-as-gateway.md)
 

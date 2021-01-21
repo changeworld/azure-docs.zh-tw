@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 0c06cb11d916b417cf577b7b8f3578749feddd62
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3d1e0eb90005abf69d90b46acc59e0258c9914c6
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092222"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630025"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>將 App Service 或 Azure Functions 應用程式設定為使用 Azure AD 登入
 
@@ -78,7 +78,7 @@ ms.locfileid: "97092222"
 1. 選取 [Azure Active Directory] > [應用程式註冊] > [新註冊]。
 1. 在 [註冊應用程式] 頁面上，輸入您應用程式註冊的 [名稱]。
 1. 在 [重新導向 URI] 中，選取 [Web]，然後輸入 `<app-url>/.auth/login/aad/callback`。 例如： `https://contoso.azurewebsites.net/.auth/login/aad/callback` 。
-1. 選取 [建立]。
+1. 選取 [註冊]。
 1. 建立應用程式註冊之後，請複製 [應用程式 (用戶端) 識別碼] 和 [目錄 (租用戶) 識別碼] 以供稍後使用。
 1. 選取 [驗證]。 在 [隱含授與] 底下，啟用 [識別碼權杖] 以允許 OpenID Connect 使用者從 App Service 登入。
 1. (選用) 選取 [品牌]。 在 [首頁 URL] 中，輸入您的 App Service 應用程式 URL，然後選取 [儲存]。

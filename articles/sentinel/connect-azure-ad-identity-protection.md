@@ -9,22 +9,21 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 69ab76bf213653ea10db8dfd181b615a7e0f47b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f420e80f10072c440f5401c042d6370a061b1a7f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564477"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632236"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>將資料從 Azure Active Directory (Azure AD) Identity Protection
 
 您可以將 [Azure AD Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) 中的記錄串流至 Azure Sentinel，將警示串流至 Azure Sentinel 以查看儀表板、建立自訂警示，以及改進調查。 Azure Active Directory Identity Protection 提供風險使用者、風險偵測和弱點的匯總視圖，並能夠立即補救風險，並設定原則以自動補救未來的事件。 這項服務是以 Microsoft 的經驗為基礎，可保護取用者身分識別，並從每日超過13000000000的登入信號獲得極高的精確度。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 您必須有 [Azure AD Premium P2 訂](https://azure.microsoft.com/pricing/details/active-directory/)用帳戶。
 - 您必須擁有具有全域管理員或安全性系統管理員許可權的使用者。
-
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>連接到 Azure AD Identity Protection
 
@@ -38,7 +37,7 @@ ms.locfileid: "85564477"
 
 如果您想要測試連接器，您可以 [模擬](../active-directory/identity-protection/howto-identity-protection-simulate-risk.md) 偵測，以產生將串流至 Azure Sentinel 的範例警示。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 在本檔中，您已瞭解如何將 Azure AD Identity Protection 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。

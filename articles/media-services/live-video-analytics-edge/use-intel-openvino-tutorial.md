@@ -4,12 +4,12 @@ description: 在本教學課程中，您將使用 Intel 提供的 AI 模型伺�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: 9fb2f533d433c89d13ee0c29058f87aab3521a78
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
-ms.translationtype: HT
+ms.openlocfilehash: 4ef0b919384839108c003488b0697054ebfa14a0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060192"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629159"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>教學課程：使用 Intel 提供的 AI 擴充功能 OpenVINO™ Model Server 來分析即時影片 - Intel 提供的 AI 擴充功能 
 
@@ -23,6 +23,8 @@ ms.locfileid: "98060192"
 ## <a name="prerequisites"></a>必要條件
 
 * 包含有效訂用帳戶的 Azure 帳戶。 如果您還未擁有帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+  > [!NOTE]
+  > 您將需要 Azure 訂用帳戶，具有建立服務主體的許可權 (**擁有者角色** 提供此) 。 如果您沒有正確的許可權，請洽詢您的帳戶管理員，授與您正確的許可權。 
 * 具有下列擴充功能的 [Visual Studio Code](https://code.visualstudio.com/)：
     * [Azure IoT 工具組](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)

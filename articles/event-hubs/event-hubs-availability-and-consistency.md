@@ -4,12 +4,12 @@ description: 如何使用分割區，以便透過 Azure 事件中樞提供最大
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7b97d76f29ee8b7e44373c865baa09ba5ea4dd23
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902896"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631914"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中樞的可用性和一致性
 
@@ -30,10 +30,10 @@ Brewer 的理論會定義一致性和可用性，如下所示：
 開始使用事件中樞的最簡單方式是使用預設行為。 
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[EventHubs (5.0.0 或更新版本) ](#tab/latest)
-如果您建立新的 **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** 物件並使用 **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** 方法，則會在事件中樞的分割區之間自動散發您的事件。 此行為可讓運作時間達到最長。
+如果您建立新的 **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient)** 物件並使用 **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync)** 方法，則會在事件中樞的分割區之間自動散發您的事件。 此行為可讓運作時間達到最長。
 
 #### <a name="microsoftazureeventhubs-410-or-earlier"></a>[EventHubs (4.1.0 或更早的版本) ](#tab/old)
-如果您建立新的 **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** 物件並使用 **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** 方法，系統就會在事件中樞的分割區之間自動分配事件。 此行為可讓運作時間達到最長。
+如果您建立新的 **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** 物件並使用 **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** 方法，系統就會在事件中樞的分割區之間自動分配事件。 此行為可讓運作時間達到最長。
 
 ---
 

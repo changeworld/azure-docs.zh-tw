@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 0365a60317538ba31f39928cd30a57e2c969c832
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ea21a56249c8eaa7c6b329b755e96b21b91ebaa1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723028"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632303"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支援可用性區域的 Azure 服務
 
@@ -52,7 +52,7 @@ ms.locfileid: "97723028"
 
 | **產品** | **Central US** | 美國東部 | **美國東部 2** | **美國西部 2** | **加拿大中部** |
 |--|--|--|--|--|--|
-| **計算** |  |  |  |  |  |
+| **Compute** |  |  |  |  |  |
 | [App Service 環境 (ILB) ](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -97,7 +97,7 @@ ms.locfileid: "97723028"
 
 | **產品** | **法國中部** | **北歐** | **英國南部** | 歐洲西部 |
 |--|--|--|--|--|
-| **計算** |  |  |  |  |
+| **Compute** |  |  |  |  |
 | [App Service 環境 (ILB) ](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -124,7 +124,7 @@ ms.locfileid: "97723028"
 | [Azure 資料總管](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [適用於 MySQL 的 Azure 資料庫彈性的伺服器](../mysql/flexible-server/concepts-high-availability.md) | :x: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器](../postgresql/flexible-server/overview.md) | :x: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (一般用途層) ](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | :x: | ： heavy_check_mark： (Preview)  | :x: | ： heavy_check_mark： (Preview)  |
+| [Azure SQL Database (一般用途層) ](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | ： heavy_check_mark： (Preview)  | ： heavy_check_mark： (Preview)  | :x: | ： heavy_check_mark： (Preview)  |
 | [Azure SQL Database (Premium & 業務關鍵層) ](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **分析** |  |  |  |  |
 | [事件中樞](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -142,7 +142,7 @@ ms.locfileid: "97723028"
 
 | **產品** | **日本東部** | **東南亞** | **澳大利亞東部** |
 |--|--|--|--|
-| **計算** |  |  |  |
+| **Compute** |  |  |  |
 | [App Service 環境 (ILB) ](../app-service/environment/zone-redundancy.md#how-to-deploy-an-app-service-environment-in-an-availability-zone) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Kubernetes Service (AKS)](../aks/availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Service Fabric](../service-fabric/service-fabric-cross-availability-zones.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -169,7 +169,7 @@ ms.locfileid: "97723028"
 | [Azure 資料總管](/azure/data-explorer/create-cluster-database-portal) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [適用於 MySQL 的 Azure 資料庫彈性的伺服器](../mysql/flexible-server/concepts-high-availability.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [適用於 PostgreSQL 的 Azure 資料庫 - 彈性伺服器](../postgresql/flexible-server/overview.md) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure SQL Database (一般用途層) ](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | :x: | ： heavy_check_mark： (Preview)  | ： heavy_check_mark： (Preview)  |
+| [Azure SQL Database (一般用途層) ](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | ： heavy_check_mark： (Preview)  | ： heavy_check_mark： (Preview)  | ： heavy_check_mark： (Preview)  |
 | [Azure SQL Database (Premium & 業務關鍵層) ](../azure-sql/database/high-availability-sla.md#premium-and-business-critical-service-tier-zone-redundant-availability) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | **分析** |  |  |  |
 | [事件中樞](../event-hubs/index.yml) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -213,12 +213,12 @@ Azure 提供下欄區域可用性區域支援：
 - [服務匯流排異地災害復原](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
 - [建立區域備援虛擬網路閘道](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 - [新增 Azure Cosmos DB 的區域多餘區域](../cosmos-db/high-availability.md#availability-zone-support)
-- [消費者入門 Azure Cache for Redis 可用性區域](https://gist.github.com/JonCole/92c669ea482bbb7996f6428fb6c3eb97#file-redisazgettingstarted-md)
+- [開始使用 Azure Cache for Redis 可用性區域](https://gist.github.com/JonCole/92c669ea482bbb7996f6428fb6c3eb97#file-redisazgettingstarted-md)
 - [建立 Azure Active Directory Domain Services 執行個體](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance)
 - [建立 Azure Kubernetes Service (AKS) 使用可用性區域的叢集](../aks/availability-zones.md)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [Azure 中的區域和可用性區域](az-overview.md) \(部分機器翻譯\)

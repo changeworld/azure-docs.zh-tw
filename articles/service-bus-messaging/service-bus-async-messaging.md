@@ -3,12 +3,12 @@ title: 服務匯流排非同步傳訊 |Microsoft Docs
 description: 瞭解 Azure 服務匯流排如何透過使用佇列、主題和訂閱的儲存和轉送機制來支援 asynchronism。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0ea2a2f51d29f1a65926509581df49b453bde59f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea09b809a19cfe7c7f024b059589748ff9e297d4
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067540"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631618"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同步傳訊模式和高可用性
 
@@ -34,7 +34,7 @@ ms.locfileid: "88067540"
 * Azure 資料中心內的服務匯流排失敗。 這就是「災難性失敗」，系統有數分鐘或數小時的時間無法連線。
 
 > [!NOTE]
-> **儲存體**這個詞可以代表 Azure 儲存體和 SQL Azure。
+> **儲存體** 這個詞可以代表 Azure 儲存體和 SQL Azure。
 > 
 > 
 
@@ -53,11 +53,11 @@ Azure 中的其他元件可能會不時出現服務問題。 例如，當服務�
 
 在這些情況下，用戶端應用程式會產生 [System.TimeoutException][System.TimeoutException] 或 [MessagingException][MessagingException] 例外狀況。 服務匯流排包含此問題的緩和措施 (採用自動用戶端重試邏輯形式)。 一旦重試期間期滿又未傳遞訊息，您便可以使用[處理中斷與災害][handling outages and disasters]中提到的其他功能來進行探索。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 既然您已了解服務匯流排中非同步傳訊的基本概念，請閱讀[處理中斷與災害][handling outages and disasters]以取得更多詳細資料。
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
-[System.TimeoutException]: /dotnet/api/system.timeoutexception?view=netcore-3.1
+[System.TimeoutException]: /dotnet/api/system.timeoutexception
 [MessagingException]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
 [Microsoft.ServiceBus.Messaging.MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
@@ -70,8 +70,8 @@ Azure 中的其他元件可能會不時出現服務問題。 例如，當服務�
 [NamespaceManager]: /dotnet/api/microsoft.servicebus.namespacemanager
 [PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
 [EnableSyphon]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
-[System.TimeSpan.Zero]: /dotnet/api/system.timespan.zero?view=netcore-3.1
+[System.TimeSpan.Zero]: /dotnet/api/system.timespan.zero
 [IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
-[UnauthorizedAccessException]: /dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1
+[UnauthorizedAccessException]: /dotnet/api/system.unauthorizedaccessexception
 [BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN
 [handling outages and disasters]: service-bus-outages-disasters.md

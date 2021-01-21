@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: b012da0b2aea4a50002e9adbc0876396ddd4b5e7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 2503355a24a7452ca1ff9886a80f2956897889c4
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368724"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630390"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>建立沈浸式閱讀程式資源並設定 Azure Active Directory authentication
 
@@ -143,21 +143,27 @@ ms.locfileid: "94368724"
     }
     ```
 
-1. 執行函數 `Create-ImmersiveReaderResource` ，並適當地提供參數。
+1. 執行函式 `Create-ImmersiveReaderResource` ，視需要提供您自己的值給下面的 ' <PARAMETER_VALUES> ' 預留位置。
 
     ```azurepowershell-interactive
+    Create-ImmersiveReaderResource -SubscriptionName '<SUBSCRIPTION_NAME>' -ResourceName '<RESOURCE_NAME>' -ResourceSubdomain '<RESOURCE_SUBDOMAIN>' -ResourceSKU '<RESOURCE_SKU>' -ResourceLocation '<RESOURCE_LOCATION>' -ResourceGroupName '<RESOURCE_GROUP_NAME>' -ResourceGroupLocation '<RESOURCE_GROUP_LOCATION>' -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>' -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_EXPIRATION>'
+    ```
+
+    完整的命令看起來會像下面這樣。 為了清楚起見，我們將每個參數放在自己的行上，讓您可以看到整個命令。 請勿依原樣複製或使用此命令。 使用您自己的值複製並使用上述命令。 此範例具有上述「<PARAMETER_VALUES>」的虛擬值。 您將會有不同的值，因為您會看到這些值的名稱。
+
+    ```
     Create-ImmersiveReaderResource
-      -SubscriptionName '<SUBSCRIPTION_NAME>' `
-      -ResourceName '<RESOURCE_NAME>' `
-      -ResourceSubdomain '<RESOURCE_SUBDOMAIN>' `
-      -ResourceSKU '<RESOURCE_SKU>' `
-      -ResourceLocation '<RESOURCE_LOCATION>' `
-      -ResourceGroupName '<RESOURCE_GROUP_NAME>' `
-      -ResourceGroupLocation '<RESOURCE_GROUP_LOCATION>' `
-      -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
-      -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
-      -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
-      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_EXPIRATION>'
+        -SubscriptionName 'MyOrganizationSubscriptionName'
+        -ResourceName 'MyOrganizationImmersiveReader'
+        -ResourceSubdomain 'MyOrganizationImmersiveReader'
+        -ResourceSKU 'S0'
+        -ResourceLocation 'westus2'
+        -ResourceGroupName 'MyResourceGroupName'
+        -ResourceGroupLocation 'westus2'
+        -AADAppDisplayName 'MyOrganizationImmersiveReaderAADApp'
+        -AADAppIdentifierUri 'https://MyOrganizationImmersiveReaderAADApp'
+        -AADAppClientSecret 'SomeStrongPassword'
+        -AADAppClientSecretExpiration '2021-12-31'
     ```
 
     | 參數 | 註解 |
@@ -165,12 +171,12 @@ ms.locfileid: "94368724"
     | SubscriptionName |要用於沈浸式閱讀程式資源的 Azure 訂用帳戶名稱。 您必須擁有訂用帳戶，才能建立資源。 |
     | ResourceName |  必須是英數位元，而且可以包含 '-'，只要 '-' 不是第一個或最後一個字元。 長度不得超過63個字元。|
     | ResourceSubdomain |沈浸式閱讀程式資源需要自訂子域。 當呼叫沈浸式閱讀程式服務來啟動讀取器時，SDK 會使用子域。 子域必須是全域唯一的。 子域必須是英數位元，而且可以包含 '-'，只要 '-' 不是第一個或最後一個字元。 長度不得超過63個字元。 如果資源已經存在，則此參數是選擇性的。 |
-    | ResourceSKU |選項： `S0` 。 請造訪我們的 [認知服務定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) ，以深入瞭解每個可用的 SKU。 如果資源已經存在，則此參數是選擇性的。 |
+    | ResourceSKU |選項： `S0` (標準層) 或 `S1` (教育/非贏利組織) 。 請造訪我們的 [認知服務定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) ，以深入瞭解每個可用的 SKU。 如果資源已經存在，則此參數是選擇性的。 |
     | ResourceLocation |選項： `eastus` 、 `eastus2` 、 `southcentralus` 、 `westus` 、 `westus2` 、 `australiaeast` 、 `southeastasia` 、 `centralindia` 、 `japaneast` 、 `northeurope` `uksouth` `westeurope` 、、。 如果資源已經存在，則此參數是選擇性的。 |
     | resourceGroupName |資源會建立在訂用帳戶內的資源群組中。 提供現有資源群組的名稱。 如果資源群組不存在，則會建立具有此名稱的新資源群組。 |
     | ResourceGroupLocation |如果您的資源群組不存在，則必須提供要在其中建立群組的位置。 若要尋找位置清單，請執行 `az account list-locations` 。 在傳回的結果中，使用 *name* 屬性 (沒有空格) 。 如果您的資源群組已經存在，則此參數是選擇性的。 |
     | AADAppDisplayName |Azure Active Directory 的應用程式顯示名稱。 如果找不到現有的 Azure AD 應用程式，則會建立具有此名稱的新應用程式。 如果 Azure AD 應用程式已經存在，這個參數是選擇性的。 |
-    | AADAppIdentifierUri |Azure AD 應用程式的 URI。 如果找不到現有的 Azure AD 應用程式，則會建立具有此 URI 的新應用程式。 例如 `https://immersivereaderaad-mycompany`。 |
+    | AADAppIdentifierUri |Azure AD 應用程式的 URI。 如果找不到現有的 Azure AD 應用程式，則會建立具有此 URI 的新應用程式。 例如： `https://immersivereaderaad-mycompany` 。 |
     | AADAppClientSecret |您所建立的密碼，稍後會在取得權杖以啟動沈浸式閱讀程式時用來進行驗證。 密碼長度必須至少有16個字元、至少包含1個特殊字元，而且至少包含1個數字字元。 若要在建立此資源之後管理 Azure AD 的應用程式用戶端密碼，請流覽 https://portal.azure.com 並移至 Home-> Azure Active Directory-> 應用程式註冊-> `[AADAppDisplayName]` 的憑證與秘密] > > 的 [用戶端密碼] 區段 (如以下的 [管理您的 Azure AD 應用程式秘密] 螢幕擷取畫面所示) 。 |
     | AADAppClientSecretExpiration |您將到期的日期或日期時間 `[AADAppClientSecret]` (例如 ' 2020-12-31T11：59： 59 + 00： 00 ' 或 ' 2020-12-31 ' ) 。 |
 
@@ -189,7 +195,7 @@ ms.locfileid: "94368724"
     }
     ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 檢視 [Node.js 快速入門](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)，以查看您還可以使用 Node.js 透過沈浸式閱讀程式 SDK 執行哪些作業
 * 檢視 [Android 教學課程](./tutorial-android.md)，以查看您還可以使用適用於 Android 的 Java 或 Kotlin 透過沈浸式閱讀程式 SDK 執行哪些作業

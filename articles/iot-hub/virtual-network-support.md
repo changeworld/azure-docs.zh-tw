@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: 08f033cbe121135e281379a013e11a33ae962dfb
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 1e28c7767868904fb20ae6d27c6aea9e7077eb62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703801"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630288"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中樞利用 Private Link 和受控識別支援虛擬網路
 
@@ -70,6 +70,9 @@ IoT 中樞功能 (包括[訊息路由](./iot-hub-devguide-messages-d2c.md)、[�
 
 :::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="顯示每個 IoT 中樞私用連結所提供的兩個私人端點的影像":::
 
+IoT 中樞的 [IP 篩選器](iot-hub-ip-filtering.md) 可以選擇性地控制內建端點的公用存取。 
+
+若要完全封鎖 IoT 中樞的公用網路存取，請關閉 [公用網路存取](iot-hub-public-network-access.md) ，或使用 IP 篩選器來封鎖所有 IP，然後選取將規則套用至內建端點的選項。
 
 ### <a name="pricing-for-private-link"></a>Private Link 的定價
 

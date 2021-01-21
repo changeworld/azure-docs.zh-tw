@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6c139398182ca9d875de0d3b21c58afe503bd8a5
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963120"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632269"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>應用預設網域控制站原則時，VM 沒有回應
 
@@ -28,7 +28,7 @@ ms.locfileid: "91963120"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 OS 在使用 [訊息 **預設網域控制站] 原則**開機時，會變成沒有回應。
+當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 OS 在使用 [訊息 **預設網域控制站] 原則** 開機時，會變成沒有回應。
 
   ![[圖 1] 顯示作業系統卡在訊息「預設網域控制站原則」](./media/vm-unresponsive-domain-controllers-policy/1-default-domain-controllers-policy.png)
 
@@ -36,7 +36,10 @@ ms.locfileid: "91963120"
 
 此問題可能是因為對預設網域控制站原則所做的最新變更所造成。 否則，將需要執行記憶體傾印檔案分析，以判斷根本原因。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 如果您最近對預設網域控制站原則進行了變更，您可能會想要復原這些變更以修正問題。 如果您不確定造成問題的原因，請收集記憶體傾印，然後提交支援票證。
 

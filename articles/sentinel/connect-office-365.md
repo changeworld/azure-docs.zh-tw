@@ -14,22 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 4d3e3615ede7406a3b581171ae759ec0ec53f13e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 05848eb2761284669e659b3875e96acdfa71f90f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655365"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632177"
 ---
-# <a name="connect-office-365-logs-to-azure-sentinel"></a>將 Office 365 記錄連線至 Azure Sentinel
+# <a name="connect-office-365-logs-to-azure-sentinel"></a>將 Office 365 記錄連線到 Azure Sentinel (機器翻譯)
 
 [Office 365](/office/)記錄連接器將 Azure Sentinel 資訊帶入 **Exchange** 和 **SharePoint** 中進行中的使用者和系統管理活動 (包括 **OneDrive**) ，現在也是在 **小組** 中。 這項資訊包含動作的詳細資料，例如檔案下載、傳送的存取要求、群組事件的變更、信箱作業、小組事件 (例如聊天、小組、成員和頻道事件) ，以及執行動作之使用者的詳細資料。 將 Office 365 記錄檔連接到 Azure Sentinel 可讓您在活頁簿中查看和分析此資料、查詢它以建立自訂警示，並將其納入以改善您的調查流程，讓您更深入瞭解 Office 365 安全性。
 
-> [!IMPORTANT]
-> Office 365 記錄連接器的 **Microsoft 團隊記錄延伸** 模組目前處於公開預覽狀態。
-> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須擁有 Azure Sentinel 工作區的讀取和寫入權限。
 

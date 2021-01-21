@@ -5,17 +5,18 @@ description: 瞭解 Azure Machine Learning 資源的配額和限制，以及如�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: nishankgu
-ms.author: nigup
+ms.reviewer: jmartens
+author: SimranArora904
+ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 3f08f401f24d95431bcd3bba48976641cebb28e9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 78cc0aa6beb9ab83fea2039b271b071de1662fc1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072202"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629175"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>使用 Azure Machine Learning 管理和提高資源配額
 
@@ -208,7 +209,7 @@ Azure Machine Learning 會在 (客戶) 訂用帳戶中建立資源，但在某�
 
 :::image type="content" source="media/how-to-manage-quotas/quota-increase-private-endpoint.png" alt-text="私人端點和私人 DNS 配額增加要求的螢幕擷取畫面。":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 + [規劃和管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)
 + [Azure Machine Learning 中的服務限制](resource-limits-quotas-capacity.md)

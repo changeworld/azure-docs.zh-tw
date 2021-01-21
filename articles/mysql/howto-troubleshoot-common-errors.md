@@ -7,16 +7,28 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
-ms.translationtype: HT
+ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510957"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631362"
 ---
 # <a name="common-errors"></a>常見錯誤
 
 適用於 MySQL 的 Azure 資料庫是完全受控的服務，由 MySQL 的社群版本提供技術支援。 在受管理的服務環境中，MySQL 體驗可能與您在自己環境中執行 MySQL 的體驗不同。 在本文中，您會看到使用者第一次在適用於 MySQL 的 Azure 資料庫服務上進行移轉或開發時，可能會遇到的一些常見錯誤。
+
+## <a name="common-connection-errors"></a>常見的連接錯誤
+
+#### <a name="error-1184-08s01-aborted-connection-22-to-db-db-name-user-user-host-hostip-init_connect-command-failed"></a>錯誤 1184 (08S01) ：已中止連接22至 db： ' 資料庫名稱 ' 使用者： ' user ' 主機： ' hostIP ' (init_connect 命令失敗) 
+上述錯誤會在成功登入之後，但在建立會話時執行任何命令之前發生。 上述訊息指出您設定了不正確的 init_connect server 參數值，這會導致會話初始化失敗。
+
+有些伺服器參數（例如 require_secure_transport）在工作階段層級不受支援，因此嘗試使用 init_connect 來變更這些參數的值時，可能會在連接到 MySQL 伺服器時導致錯誤1184，如下所示
+
+mysql> 顯示資料庫;錯誤 2006 (HY000) ： MySQL server 已消失。 正在嘗試重新連接 .。。連接識別碼：64897目前資料庫： * * * 無 * * _ 錯誤 1184 (08S01) ：已中止連接22至 db： ' db-name ' 使用者： ' user ' 主機： ' hostIP ' (init_connect 命令失敗) 
+
+_ *解析**：您應該在 Azure 入口網站的 [伺服器參數] 索引標籤中重設 init_connect 值，並使用 init_connect 參數只設定支援的伺服器參數。 
+
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>因缺少 SUPER 權限和 DBA 角色而產生的錯誤
 

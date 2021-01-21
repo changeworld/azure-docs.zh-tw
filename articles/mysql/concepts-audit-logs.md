@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: aac8e6e04b8bac7a1d27fefc780fb9fadb3122dc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fa845e7c402073a64f51d75b1da51f56142eee2e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534172"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630493"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的 Audit 記錄
 
@@ -33,7 +33,7 @@ ms.locfileid: "94534172"
 > [!NOTE]
 > `audit_log_include_users` 的優先順序高於 `audit_log_exclude_users` 。 例如，如果 `audit_log_include_users`  =  `demouser` 和 `audit_log_exclude_users`  =  `demouser` ，使用者將會包含在 audit 記錄中，因為 `audit_log_include_users` 優先順序較高。
 
-| **事件** | **說明** |
+| **事件** | **描述** |
 |---|---|
 | `CONNECTION` | -連接初始 (成功或失敗)  <br> -會話期間使用不同使用者/密碼重新驗證使用者 <br> -連接終止 |
 | `DML_SELECT`| SELECT 查詢 |
@@ -43,7 +43,7 @@ ms.locfileid: "94534172"
 | `DCL` | 像是「授與許可權」的查詢 |
 | `ADMIN` | "SHOW STATUS" 之類的查詢 |
 | `GENERAL` | All in DML_SELECT、DML_NONSELECT、DML、DDL、DCL 和 ADMIN |
-| `TABLE_ACCESS` | -僅適用于 MySQL 5。7 <br> -Table read 語句，例如 SELECT 或 INSERT INTO .。。選擇 <br> -資料表 delete 語句，例如 DELETE 或 TRUNCATE TABLE <br> -資料表 insert 語句，例如 INSERT 或 REPLACE <br> -資料表 update 語句，例如 UPDATE |
+| `TABLE_ACCESS` | -適用于 MySQL 5.7 和 MySQL 8。0 <br> -Table read 語句，例如 SELECT 或 INSERT INTO .。。選擇 <br> -資料表 delete 語句，例如 DELETE 或 TRUNCATE TABLE <br> -資料表 insert 語句，例如 INSERT 或 REPLACE <br> -資料表 update 語句，例如 UPDATE |
 
 ## <a name="access-audit-logs"></a>存取稽核記錄
 
@@ -194,6 +194,6 @@ ms.locfileid: "94534172"
     | order by TimeGenerated asc nulls last
     ``` 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [如何在 Azure 入口網站中設定 audit 記錄](howto-configure-audit-logs-portal.md)

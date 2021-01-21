@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: HT
+ms.openlocfilehash: ebd07990767d91c88f245b4ed7f8a66f93de0b85
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723961"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>教學課程：Azure Active Directory 與 Citrix ShareFile 整合
 
@@ -31,8 +31,8 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 
 若要設定 Azure AD 與 Citrix ShareFile 整合，您需要下列項目：
 
-* Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以在[這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月的試用帳戶
-* 已啟用 Citrix ShareFile 單一登入的訂用帳戶
+* Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，可以在 [這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月的試用版。
+* 已啟用 Citrix ShareFile 單一登入的訂用帳戶。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -126,7 +126,7 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
 1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
 1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
-如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
+1. 如果您需要將角色指派給使用者，您可以從 [選取角色] 下拉式清單中選取。 如果未設定此應用程式的角色，您會看到已選取 [預設存取] 角色。
 1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-citrix-sharefile-sso"></a>設定 Citrix ShareFile SSO
@@ -141,7 +141,7 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
 
 3. 如果您想要手動設定 Citrix ShareFile，請在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Citrix ShareFile 公司網站。
 
-1. 在 [儀表板] 中按一下 [設定]，然後選取 [管理員設定]
+1. 在 **儀表板** 中，按一下 [ **設定** ]，然後選取 [系統 **管理設定**]。
 
     ![系統管理](./media/sharefile-tutorial/settings.png)
 
@@ -165,7 +165,9 @@ Citrix ShareFile 與 Azure AD 整合提供下列優點：
     
     f. 在 [登出 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL] 值。
 
-5. 按一下 Citrix ShareFile 管理入口網站上的 **[儲存]**。
+    g. 在 [ **選用設定**] 中，選擇 [ **SP 起始的驗證內容** ] 做為 **使用者名稱和密碼** ，並選擇 [ **精確**]。
+
+5. 按一下 [儲存]。
 
 ## <a name="create-citrix-sharefile-test-user"></a>建立 Citrix ShareFile 測試使用者
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 03d52611c89012d1132b4a27820f7f47e6cdd512
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 83635b732318a4ada76d1d71c1ce419cae8b35e9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242019"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630136"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>適用於 PostgreSQL 的 Azure 資料庫基礎結構雙重加密
 
@@ -59,12 +59,6 @@ ms.locfileid: "93242019"
 針對適用於 PostgreSQL 的 Azure 資料庫，使用服務管理的金鑰的基礎結構雙重加密支援有下列限制：
 
 * 這項功能的支援僅限於 **一般用途** 和 **記憶體優化** 定價層。
-* 您可以在下欄區域中建立已啟用基礎結構雙重加密的適用於 PostgreSQL 的 Azure 資料庫：
-
-   * 美國東部
-   * 美國中南部
-   * 美國西部 2
-   
 * 這項功能只在支援儲存體最多 16 TB 的區域和伺服器上受到支援。 如需支援儲存體最多 16 TB 的 Azure 區域清單，請參閱 [儲存體檔](concepts-pricing-tiers.md#storage)。
 
     > [!NOTE]

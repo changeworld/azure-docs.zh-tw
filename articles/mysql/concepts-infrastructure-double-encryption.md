@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 233dcbeee0bccc714e3b4fe93e7c8b19aa9f2df0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e9182a2a0b88f85af5305f5794fec2ffe7935701
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242444"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631728"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>適用於 MySQL 的 Azure 資料庫基礎結構雙重加密
 
@@ -20,7 +20,7 @@ ms.locfileid: "93242444"
 基礎結構雙重加密會使用服務管理的金鑰來新增第二層的加密。 它使用 FIPS 140-2 驗證的密碼編譯模組，但使用不同的加密演算法。 這可為您的待用資料提供額外一層保護。 基礎結構雙重加密中使用的金鑰也是由適用於 MySQL 的 Azure 資料庫服務所管理。 預設不會啟用基礎結構雙重加密，因為額外的加密層級可能會對效能造成影響。
 
 > [!NOTE]
-> 只有適用於 PostgreSQL 的 Azure 資料庫中的「一般用途」和「記憶體優化」定價層才支援這項功能。
+> 只有適用於 MySQL 的 Azure 資料庫中的「一般用途」和「記憶體優化」定價層才支援這項功能。
 
 基礎結構層加密具有在最接近存放裝置或網路線路的層級上執行的優點。 適用於 MySQL 的 Azure 資料庫使用服務管理的金鑰來執行兩層加密。 雖然在技術上仍是服務層級，但很接近儲存待用資料的硬體。 您仍然可以選擇使用 [客戶管理的金鑰](concepts-data-encryption-mysql.md) ，為布建的 MySQL 伺服器啟用資料加密。 
 
@@ -59,13 +59,7 @@ ms.locfileid: "93242444"
 針對適用於 MySQL 的 Azure 資料庫，使用服務管理的金鑰的基礎結構雙重加密支援有下列限制：
 
 * 這項功能的支援僅限於 **一般用途** 和 **記憶體優化** 定價層。
-* 您可以在下欄區域中建立已啟用基礎結構加密的適用於 MySQL 的 Azure 資料庫：
-
-   * 美國東部
-   * 美國中南部
-   * 美國西部 2
-   
-* * 這項功能只在支援儲存體最多 16 TB 的區域和伺服器上受到支援。 如需支援儲存體最多 16 TB 的 Azure 區域清單，請參閱 [儲存體檔](concepts-pricing-tiers.md#storage)。
+* 這項功能只在支援儲存體最多 16 TB 的區域和伺服器上受到支援。 如需支援儲存體最多 16 TB 的 Azure 區域清單，請參閱 [儲存體檔](concepts-pricing-tiers.md#storage)。
 
     > [!NOTE]
     > - 上述區域中所建立的所有 **新** MySQL 伺服器也支援使用客戶管理金鑰進行資料加密。 在此情況下，透過時間點還原所建立的伺服器 (PITR) 或讀取複本不符合「新增」的資格。

@@ -3,12 +3,12 @@ title: 在 Azure 中使用函式作為 Azure 事件方格事件的事件處理�
 description: 描述如何使用 Azure Functions 中建立的函式，做為事件方格事件的事件處理常式。
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 5a1ec575b58829a422e4d263ae0324e0343d5ad3
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: beddc35f2dd8db974492d14aec27ce754a74737c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034963"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632507"
 ---
 # <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>使用函式做為事件方格事件的事件處理常式
 
@@ -75,7 +75,7 @@ ms.locfileid: "98034963"
 您可以在 Azure Resource Manager 範本中設定 **maxEventsPerBatch** 和 **preferredBatchSizeInKilobytes** 。 如需詳細資訊，請參閱 [EventGrid eventSubscriptions 範本參考](/azure/templates/microsoft.eventgrid/eventsubscriptions)。
 
 ### <a name="azure-cli"></a>Azure CLI
-您可以使用 [az eventgrid event-訂](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create&preserve-view=true) 用帳戶建立或 [az eventgrid 事件訂](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update&preserve-view=true) 用帳戶更新命令，以使用下列參數來設定批次相關設定： `--max-events-per-batch` 或 `--preferred-batch-size-in-kilobytes` 。
+您可以使用 [az eventgrid event-訂](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create&preserve-view=true) 用帳戶建立或 [az eventgrid 事件訂](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_update&preserve-view=true) 用帳戶更新命令，以使用下列參數來設定批次相關設定： `--max-events-per-batch` 或 `--preferred-batch-size-in-kilobytes` 。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 您可以使用 [AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) 或 [AzEventGridSubscription](/powershell/module/az.eventgrid/update-azeventgridsubscription) Cmdlet，利用下列參數來設定批次相關設定： `-MaxEventsPerBatch` 或 `-PreferredBatchSizeInKiloBytes` 。

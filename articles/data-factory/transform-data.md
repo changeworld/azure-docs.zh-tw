@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 37eac4acab7232e44f94e852b1c04c5549447b09
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 43a035662cc76dc6de1de3fa990e06f2e00cfd66
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637678"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632320"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory 中的資料轉換
 
@@ -47,9 +47,9 @@ Data Factory 支援下列可個別或與其他活動鏈結而加入至 [管線](
 
 對應資料流程是以視覺化方式設計 Azure Data Factory 中的資料轉換。 資料流程可讓資料工程師開發圖形化資料轉換邏輯，而不需要撰寫程式碼。 產生的資料流程會執行為使用相應放大 Spark 叢集 Azure Data Factory 管線內的活動。 您可以透過現有的 Data Factory 排程、控制、流程和監視功能來實際運作資料流程活動。 如需詳細資訊，請參閱 [對應資料流程](concepts-data-flow-overview.md)。
 
-### <a name="wrangling-data-flows"></a>整頓資料流程
+### <a name="data-wrangling"></a>資料整頓
 
-Azure Data Factory 中的整頓資料流程可讓您反復進行雲端規模的無程式碼資料準備。 整頓資料流程與 [Power Query Online](/power-query/) 整合，讓 Power Query M 函式可供透過 spark 執行以雲端規模整頓的資料。 如需詳細資訊，請參閱 [整頓資料流程](wrangling-data-flow-overview.md)。
+Azure Data Factory 中的 Power Query 可提供雲端規模的資料整頓，可讓您反復地以雲端規模進行無程式碼的資料準備。 資料整頓與 [Power Query Online](/power-query/) 整合，讓 Power Query M 函式可供透過 spark 執行以雲端規模整頓的資料。 如需詳細資訊，請參閱 [ADF 中的資料整頓](wrangling-overview.md)。
 
 ## <a name="external-transformations"></a>外部轉換
 
@@ -78,7 +78,7 @@ Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的 Azure Mac
 如需這些 Studio (傳統) 活動的詳細資訊，請參閱 [使用 Azure Machine Learning Studio (傳統) 活動](transform-data-using-machine-learning.md) 。 
 
 ### <a name="stored-procedure-activity"></a>預存程序活動
-您可以在 Data Factory 管線中使用 SQL Server 預存程式活動，以叫用下列其中一個資料存放區中的預存程式： Azure SQL Database、Azure Synapse Analytics (先前的 SQL 資料倉儲) ，SQL Server 您的企業或 Azure VM 中的資料庫。 如需詳細資料，請參閱[預存程序活動](transform-data-using-stored-procedure.md)一文。  
+您可以在 Data Factory 管線中使用 SQL Server 預存程式活動，以叫用下列其中一個資料存放區中的預存程式： Azure SQL Database、Azure Synapse Analytics、SQL Server 企業或 Azure VM 中的資料庫。 如需詳細資料，請參閱[預存程序活動](transform-data-using-stored-procedure.md)一文。  
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL 活動
 Data Lake Analytics U-SQL 活動會在 Azure Data Lake Analytics 叢集上執行 U-SQL 指令碼。 如需詳細資料，請參閱 [Data Analytics U-SQL 活動](transform-data-using-data-lake-analytics.md)一文。 
@@ -103,10 +103,10 @@ Data Factory 管線中的 Azure Databricks Python 活動會在 Azure Databricks 
 ### <a name="compute-environments"></a>計算環境
 您需要為計算環境建立連結服務，然後在定義轉換活動時使用該連結服務。 Data Factory 支援兩種類型的資計算環境。 
 
-- **隨選** ：在此情況下，運算環境完全由 Data Factory 管理。 Data Factory 服務會在工作提交前自動建立運算環境以處理資料，而在工作完成時予以移除。 您可以針對工作執行、叢集管理及啟動載入動作，設定和控制隨選計算環境的細微設定。 
-- **攜帶您自己的裝置** ：在此情況下，您可以註冊自己的運算環境 (例如 HDInsight 叢集)，做為 Data Factory 中的連結服務。 運算環境由您自行管理，而 Data Factory 會使用它來執行活動。 
+- **隨選**：在此情況下，運算環境完全由 Data Factory 管理。 Data Factory 服務會在工作提交前自動建立運算環境以處理資料，而在工作完成時予以移除。 您可以針對工作執行、叢集管理及啟動載入動作，設定和控制隨選計算環境的細微設定。 
+- **攜帶您自己的裝置**：在此情況下，您可以註冊自己的運算環境 (例如 HDInsight 叢集)，做為 Data Factory 中的連結服務。 運算環境由您自行管理，而 Data Factory 會使用它來執行活動。 
 
 如需了解 Data Factory 所支援的計算服務，請參閱 [計算連結服務](compute-linked-services.md) 一文。 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 如需使用轉換活動的範例，請參閱下列教學課程：[教學課程：使用 Spark 轉換資料](tutorial-transform-data-spark-powershell.md)

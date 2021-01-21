@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a91add684d7b7aaee67e7dd4f4f2d0c6df078132
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657119"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632219"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>針對 Windows 開機管理程式錯誤進行疑難排解 - 0xC0000225「找不到狀態」
  
@@ -79,6 +79,9 @@ ms.locfileid: "97657119"
 ## <a name="solution"></a>解決方法
 
 ### <a name="process-overview"></a>程序概觀
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 1. 建立和存取修復 VM。
 1. 選取解決方案：
@@ -267,13 +270,13 @@ ms.locfileid: "97657119"
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
    ```
 
-1. 確認作業系統磁碟上的可用空間大於 VM 上的記憶體大小 (RAM)。
+1. 確認 OS 磁碟上的可用空間大於 VM 上的記憶體大小 (RAM)。
 
-   如果作業系統磁碟上沒有足夠的空間，請變更記憶體傾印檔案的建立位置，並將其指向任何已與具有足夠可用空間 VM 連結的資料磁碟位置。 若要變更位置，請使用下列命令，將 **%SystemRoot%** 取代為資料磁碟的磁碟機代號 (例如 **F:** )。
+   如果 OS 磁碟上沒有足夠的空間，請變更記憶體傾印檔案的建立位置，並將該位置指向任何已與 VM 連結且具有足夠可用空間的資料磁碟位置。 若要變更位置，請使用下列命令，將 **%SystemRoot%** 取代為資料磁碟的磁碟機代號 (例如 **F:** )。
 
-   啟用作業系統傾印的建議設定：
+   啟用 OS 傾印的建議設定：
 
-   **從中斷的作業系統磁碟載入登錄 Hive：**
+   **從中斷的 OS 磁碟載入登錄區：**
 
    ```
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
@@ -295,7 +298,7 @@ ms.locfileid: "97657119"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
    ```
 
-   **卸載中斷的作業系統磁碟：**
+   **卸載中斷的 OS 磁碟：**
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM
@@ -303,4 +306,4 @@ ms.locfileid: "97657119"
    
 ### <a name="rebuild-the-vm"></a>重建 VM
 
-使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) 重建 VM。
+使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example)\(部分機器翻譯\)重建 VM。

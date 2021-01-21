@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: 0057a4671dbc63bf53bafa8d2d742d4edcda1e5e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 01/20/2021
+ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741043"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629669"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>設定客戶管理的金鑰，以在 Azure Logic Apps 中 (Ise) 為整合服務環境加密待用資料
 
 Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](../storage/common/storage-service-encryption.md)。 此加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。 根據預設，Azure 儲存體會使用 Microsoft 管理的金鑰來加密您的資料。 如需 Azure 儲存體加密如何運作的詳細資訊，請參閱 [Azure 儲存體待用資料加密](../storage/common/storage-service-encryption.md) 和 [Azure 資料靜態](../security/fundamentals/encryption-atrest.md)加密。
 
-當您建立 [整合服務環境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 來裝載您的邏輯應用程式，而且您想要更充分掌控 Azure 儲存體所使用的加密金鑰時，可以使用 [Azure Key Vault](../key-vault/general/overview.md)來設定、使用和管理您自己的金鑰。 這項功能也稱為「攜帶您自己的金鑰」 (BYOK) ，而您的金鑰稱為「客戶管理的金鑰」。
+當您建立 [整合服務環境 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 來裝載您的邏輯應用程式，而且您想要更充分掌控 Azure 儲存體所使用的加密金鑰時，可以使用 [Azure Key Vault](../key-vault/general/overview.md)來設定、使用和管理您自己的金鑰。 這項功能稱為「攜帶您自己的金鑰」 (BYOK) ，而您的金鑰稱為「客戶管理的金鑰」。 利用這項功能，Azure 儲存體可針對金鑰 [使用平臺管理的金鑰，自動啟用雙重加密或 *基礎結構加密*](../security/fundamentals/double-encryption.md) 。 若要深入瞭解，請參閱 [使用基礎結構加密的雙向加密資料](../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)。
 
 本主題說明如何設定和指定您自己的加密金鑰，以在使用 Logic Apps REST API 建立 ISE 時使用。 如需透過 Logic Apps REST API 建立 ISE 的一般步驟，請參閱 [使用 Logic Apps REST API 建立整合服務環境 (ISE) ](../logic-apps/create-integration-service-environment-rest-api.md)。
 
@@ -37,7 +37,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
   * **使用者指派的受控識別**：在您傳送建立 ISE 的 HTTPS PUT 要求之前，請先將 [金鑰保存庫的存取權授與 ise 的受控識別](#identity-access-to-key-vault)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [啟用 ise 存取權](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)的相同[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和需求，如同當您在 Azure 入口網站中建立 ise 時
 
@@ -51,7 +51,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
   |----------|-------|
   | **索引鍵類型** | RSA |
   | **RSA 金鑰大小** | 2048 |
-  | **啟用** | 是 |
+  | **Enabled** | Yes |
   |||
 
   ![建立客戶管理的加密金鑰](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -88,7 +88,7 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
 * `Authorization`：將此屬性值設定為可存取您想要使用之 Azure 訂用帳戶或資源群組之客戶的持有人權杖。
 
-### <a name="request-body"></a>Request body
+### <a name="request-body"></a>要求本文
 
 在要求主體中，藉由在 ISE 定義中提供這些額外專案的資訊來啟用支援：
 
@@ -248,6 +248,6 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存和自動 [加密待用資料](.
 
 如需詳細資訊，請參閱 [如何驗證 Key Vault](../key-vault/general/authentication.md) 並 [指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入了解 [Azure Key Vault](../key-vault/general/overview.md)
