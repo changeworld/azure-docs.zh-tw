@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
-ms.translationtype: HT
+ms.openlocfilehash: 3772988e9bf4f733323adae6c0527c8b811c4d04
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566345"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624451"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教學課程：使用 Logic Apps 和 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知
 
@@ -242,4 +242,7 @@ Azure Event Grid 可讓您在下游商務應用程式中觸發動作，進而回
 * [了解如何排序裝置連線和中斷連線事件](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * 了解您可使用 [Event Grid](overview.md) 執行哪些作業。
 
-如需支援的完整邏輯應用程式連接器清單，請參閱[連接器概觀](/connectors/)。
+如需支援的邏輯應用程式連接器完整清單，請參閱 
+
+> [!div class="nextstepaction"]
+> [連接器總覽](/connectors/)。

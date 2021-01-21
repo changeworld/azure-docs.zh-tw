@@ -103,6 +103,8 @@
               href: ../../site-recovery/move-vaults-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: 虛擬網路
               href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
+            - name: 網路介面 (NIC)
+              href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: 適用於 PostgreSQL 的 Azure 資料庫伺服器
               href: ../../postgresql/howto-move-regions-portal.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: 適用於 MariaDB 的 Azure 資料庫伺服器

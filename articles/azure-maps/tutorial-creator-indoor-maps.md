@@ -8,20 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eab8a2729209bb0023662b652f862b4fa678470e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: HT
+ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905718"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625010"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>教學課程：使用 Creator (預覽) 建立工具建立室內地圖
 
 > [!IMPORTANT]
 > Azure Maps Creator 服務目前為公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
-
 
 本教學課程說明如何建立室內地圖。 在本教學課程中，您將了解如何使用 API 執行下列動作：
 
@@ -411,6 +409,10 @@ ms.locfileid: "96905718"
 [功能取得狀態 API](/rest/api/maps/featurestate/getstatespreview) 可讓您使用功能 `ID` 擷取功能的狀態。 您也可以使用[功能狀態刪除 API](/rest/api/maps/featurestate/deletestatesetpreview) 來刪除狀態集及其資源。
 
 若要深入了解本文中討論的不同 Azure Maps Creator 服務 (預覽)，請參閱 [Creator 室內地圖](creator-indoor-maps.md)。
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有任何資源需要清除。
 
 ## <a name="next-steps"></a>後續步驟
 

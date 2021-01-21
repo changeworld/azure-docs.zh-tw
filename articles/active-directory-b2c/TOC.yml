@@ -140,10 +140,14 @@
           href: phone-authentication-user-flows.md
     - name: 識別提供者
       items:
+        - name: 本機帳戶識別提供者
+          href: identity-provider-local.md
+          displayName: 'Username, Email, Phone authorization, Phone sing-in'
         - name: 加入身分識別提供者
           href: add-identity-provider.md
         - name: AD FS
           href: identity-provider-adfs.md
+          displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
         - name: Azure AD (單一租用戶)

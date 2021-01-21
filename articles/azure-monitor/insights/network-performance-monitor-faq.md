@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 8e26a4d996e4c1767856b3dd98ae318d8992a89b
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 8047e340f3262ba84484f5a8b57c17bf34a4af73
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562687"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625160"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>網路效能監控解決方案常見問題集
 
@@ -34,7 +34,7 @@ ms.locfileid: "98562687"
 - NPM 的 ExpressRoute 監控功能僅支援 Windows 伺服器 (2008 SP1 或更高版本) 作業系統。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>我可以在 NPM 中使用 Linux 機器作為監視節點嗎？
-使用以 Linux 為基礎的節點來監視網路的功能現已正式推出。 在 [這裡](../../virtual-machines/extensions/oms-linux.md)存取代理程式。 Linux 代理程式的監控能力僅限於 NPM 的效能監控功能，不適用於「服務連線能力監視」和「ExpressRoute 監視」功能
+使用以 Linux 為基礎的節點來監視網路的功能現已正式推出。 在 [這裡](../../virtual-machines/extensions/oms-linux.md)存取代理程式。 
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM 做為監控之用的節點的大小需求如何？
 若要在節點虛擬機器上執行 NPM 解決方案以監控網路，節點至少需要具有 500 MB 記憶體和一個核心。 您不需要使用個別節點來執行 NPM。 執行該解決方案的節點同時也可以執行其他工作負載。 如果解決方案使用超過5% 的 CPU，則解決方案有能力停止監視程式。

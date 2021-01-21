@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605068"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624720"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>App Service 環境的可用性區域支援
 
@@ -30,14 +30,12 @@ App Service (ASE) 的環境可部署到可用性區域 (AZ) 。  客戶可以將
 您可以在下列任何區域中建立區域性 ILB Ase：
 
 - 澳大利亞東部
-- 巴西南部
 - 加拿大中部
 - 美國中部
 - 美國東部
 - 美國東部 2
 - 美國東部 2 (EUAP) 
 - 法國中部 
-- 德國中西部
 - 日本東部
 - 北歐
 - 西歐
@@ -51,9 +49,9 @@ App Service (ASE) 的環境可部署到可用性區域 (AZ) 。  客戶可以將
 
 您必須使用 ARM 範本建立區域性 ILB Ase。 透過 ARM 範本建立區域性 ILB ASE 之後，您可以透過 Azure 入口網站和 CLI 來查看和互動。  只有在第一次建立區域性 ILB ASE 時，才需要 ARM 範本。
 
-ARM 範本中唯一需要用來指定區域性 ILB ASE 的變更是 [新增 ***區域*** ] 屬性。 [ ***區域*** ] 屬性應設定為 "1"、"2" 或 "3" 的值，取決於應將 ILB ASE 釘選到的邏輯可用性區域。
+ARM 範本中唯一需要用來指定區域性 ILB ASE 的變更為新的 ***zone** _ 屬性。 [ _*_區域_*_ ] 屬性應設定為 "1"、"2" 或 "3" 的值，取決於應將 ILB ASE 釘選到的邏輯可用性區域。
 
-下方的範例 ARM 範本會顯示新的 [ ***區域*** ] 屬性，指定 ILB ASE 應釘選到區域2。
+下方的範例 ARM 範本會顯示新的 [ _*_區域_*_ ] 屬性，指定 ILB ASE 應釘選到區域2。
 
 ```
    "resources": [
@@ -91,6 +89,6 @@ ARM 範本中唯一需要用來指定區域性 ILB ASE 的變更是 [新增 ***�
 
 客戶可以依照下列步驟，驗證是否已正確設定 App Service 環境，以將資料儲存在單一區域中： 
 
-1. 使用 [資源總管](https://resources.azure.com)，流覽至 APP SERVICE 環境的 ARM 資源。  Ase 列在 [ *提供者/Microsoft. Web/hostingEnvironments*] 之下。
+1. 使用 [資源總管](https://resources.azure.com)，流覽至 APP SERVICE 環境的 ARM 資源。  Ase 會列在 _providers/Microsoft.Web/hostingEnvironments * 底下。
 2. 如果 ARM JSON 語法的觀點中有 *區域* 屬性存在，而且它包含單一值的 json 陣列，其值為 "1"、"2" 或 "3"，則會 ZONALLY 部署 ASE，而客戶資料會保留在相同的區域中。
 2. 如果 *區域* 屬性不存在，或屬性沒有如先前指定的有效區域值，則不會 ZONALLY 部署 ASE，而且客戶資料不會以獨佔方式儲存在相同的區域中。

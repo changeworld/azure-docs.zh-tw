@@ -6,16 +6,16 @@ ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 8d01f43dd6e404bb8f8ae0898625ae1ea9d09fd6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dc590593b9bff8f646ee6155d32a2ce3f9790f6e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020429"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625243"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>串流分析地理空間函式簡介
 
-Azure 串流分析中的地理空間函式可即時分析串流地理空間資料。 只要撰寫幾行程式碼，就能開發適用於複雜案例的生產等級解決方案。 
+Azure 串流分析中的地理空間函式可即時分析串流地理空間資料。 只要撰寫幾行程式碼，就能開發適用於複雜案例的生產等級解決方案。 這些函式支援所有的 WKT 類型和 GeoJSON 點、多邊形和 LineString。
 
 可受益於地理空間函式的案例範例包括：
 
@@ -110,7 +110,7 @@ FROM input
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-`ST_DISTANCE` 函式會傳回兩點之間的距離 (以公尺為單位)。 
+函數會傳回 `ST_DISTANCE` 兩個幾何之間的距離（以量為單位）。 
 
 下列查詢使用 `ST_DISTANCE` 以在加油站與車輛的距離小於 10 公里時產生事件。
 
@@ -123,7 +123,7 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 若要深入了解，請瀏覽 [ST_DISTANCE](/stream-analytics-query/st-distance) 參考。
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-`ST_OVERLAPS` 函式會比較兩個多邊形。 如果多邊形重疊，函數會傳回 1。 如果多邊形未重疊，則函數會傳回 0。 
+`ST_OVERLAPS`函數會比較兩個幾何。 如果幾何重迭，函數會傳回1。 如果幾何不重迭，函數會傳回0。 
 
 下列查詢使用 `ST_OVERLAPS` 以在大樓位於可能淹水的區域內時產生事件。
 
@@ -144,7 +144,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 若要深入了解，請瀏覽 [ST_OVERLAPS](/stream-analytics-query/st-overlaps) 參考。
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-`ST_INTERSECTS` 函式會比較兩個 LineString。 如果 LineString 相交，函式會傳回 1。 如果 LineString 未相交，則函式會傳回 0。
+`ST_INTERSECTS`函數會比較兩個幾何。 如果幾何相交，則函數會傳回1。 如果幾何彼此不相交，則函數會傳回0。
 
 下列查詢範例使用 `ST_INTERSECTS` 來判斷柏油路是否與泥土路相交。
 
@@ -170,7 +170,7 @@ FROM input
 若要深入了解，請瀏覽 [ST_INTERSECTS](/stream-analytics-query/st-intersects) 參考。
 
 ## <a name="st_within"></a>ST_WITHIN
-`ST_WITHIN` 函式可判斷某個點或多邊形是否在某個多邊形內。 如果該多邊形包含點或多邊形，函式會傳回 1。 如果點或多邊形未在所宣告的多邊形內，則函式會傳回 0。
+此 `ST_WITHIN` 函數會決定幾何是否在另一個幾何內。 如果第一個是包含在最後一個，則函數會傳回1。 如果第一個幾何不在最後一個幾何內，則函式會傳回0。
 
 下列查詢範例使用 `ST_WITHIN` 來判斷交貨目的地所在點是否位於指定的倉儲多邊形內。
 

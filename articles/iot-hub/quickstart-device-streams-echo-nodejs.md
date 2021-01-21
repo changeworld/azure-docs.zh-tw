@@ -1,5 +1,5 @@
 ---
-title: 透過 Azure IoT 中樞裝置串流與使用 Node.js 的裝置應用程式進行通訊
+title: 快速入門-使用 Azure IoT 中樞裝置串流在 Node.js 中與裝置應用程式通訊
 description: 在本快速入門中，您將會執行透過裝置串流與 IoT 裝置進行通訊的 Node.js 服務端應用程式。
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 678955970f3eeb87a10c43cd43effc3464db7794
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: HT
+ms.openlocfilehash: 335014f032162866e4780bf1294ddcd108b4fd03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832002"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624383"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入門：透過 IoT 中樞裝置串流與使用 Node.js 的裝置應用程式進行通訊 (預覽)
 
@@ -79,7 +79,7 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
     **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+    az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
     ```
 
     請記下所傳回的服務連接字串，以供稍後在本快速入門中使用。 看起來會像下列範例：
@@ -154,4 +154,4 @@ Microsoft Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://a
 使用以下連結深入了解裝置串流：
 
 > [!div class="nextstepaction"]
-> [裝置串流概觀](./iot-hub-device-streams-overview.md) 
+> [裝置串流概觀](./iot-hub-device-streams-overview.md)

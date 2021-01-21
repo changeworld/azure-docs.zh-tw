@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 0004a250173ce6707462b852016d205782479717
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: HT
+ms.openlocfilehash: d8aaf093a7e2a0ad1470d72d815e919f5b4e2d05
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896675"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624978"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>教學課程：如何使用 Azure 地圖服務路線規劃服務和地圖控制項顯示路線方向
 
@@ -39,7 +39,7 @@ ms.locfileid: "92896675"
 
 下列步驟示範如何在網頁中建立和顯示地圖控制項。
 
-1. 在您的本機機器上建立新檔案，並將其命名為 **MapRoute.html** 。
+1. 在您的本機機器上建立新檔案，並將其命名為 **MapRoute.html**。
 2. 複製下列 HTML 標記並貼到檔案中。
 
     ```HTML
@@ -174,7 +174,7 @@ ms.locfileid: "92896675"
 
 3. 儲存 **MapRoute.html** 並重新整理瀏覽器。 現在地圖會以西雅圖作為中心。 淚珠形藍色圖釘會標示起點。 圓形藍色圖釘會標示終點。
 
-    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="地圖控制項的基本地圖呈現":::
+    :::image type="content" source="./media/tutorial-route-location/map-pins.png" alt-text="在地圖上檢視路線的起點和終點":::
 
 <a id="getroute"></a>
 
@@ -183,7 +183,7 @@ ms.locfileid: "92896675"
 本節說明如何使用 Azure 地圖服務路線指示 API 來取得路線指示，以及從某個點到達另一個點的預估時間。
 
 >[!TIP]
->Azure 地圖服務路線服務提供 API 以根據不同的路線類型 (例如「最快速」、「最短」、「最環保」或「驚心動魄」 *thrilling* 的路線) 以及根據距離、交通流量條件和使用的運輸模式，來規劃路線。 服務也可讓使用者根據歷程記錄交通流量條件來規劃未來的路由。 使用者可以查看任何指定時間的路由持續期間預測。 如需詳細資訊，請參閱[取得路線方向 API](/rest/api/maps/route/getroutedirections)。
+>Azure 地圖服務路線服務提供 API 以根據不同的路線類型 (例如「最快速」、「最短」、「最環保」或「驚心動魄」*thrilling* 的路線) 以及根據距離、交通流量條件和使用的運輸模式，來規劃路線。 服務也可讓使用者根據歷程記錄交通流量條件來規劃未來的路由。 使用者可以查看任何指定時間的路由持續期間預測。 如需詳細資訊，請參閱[取得路線方向 API](/rest/api/maps/route/getroutedirections)。
 
 1. 在 `GetMap` 函式之控制項的 `ready` 事件處理常式內，將下列內容新增至 JavaScript 程式碼。
 
@@ -216,9 +216,13 @@ ms.locfileid: "92896675"
 
 3. 儲存 **MapRoute.html** 檔案並重新整理網頁瀏覽器。 地圖現在應該會顯示從起點到終點的路線。
 
-     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="地圖控制項的基本地圖呈現":::
+     :::image type="content" source="./media/tutorial-route-location/map-route.png" alt-text="Azure 地圖控制項和路線規劃服務":::
 
 您可以在[這裡](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/route.html)取得範例的完整原始程式碼。 您可以在[這裡](https://azuremapscodesamples.azurewebsites.net/?sample=Route%20to%20a%20destination)找到即時範例。
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有任何資源需要清除。
 
 ## <a name="next-steps"></a>後續步驟
 

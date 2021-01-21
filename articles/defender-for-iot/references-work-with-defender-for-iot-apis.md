@@ -1,5 +1,5 @@
 ---
-title: 使用 Defender for IoT Api
+title: 使用適用於 IoT API 的 Defender
 description: 使用外部 REST API 存取感應器和管理主控台所探索到的資料，並使用該資料執行動作。
 author: shhazam-ms
 manager: rkarlin
@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: d49aa50b1b8843dfb5c3d32983ff0bb129543bb0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 44ea6e8343203a9cb18947f31f45aa0b023178b0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839422"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624569"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>適用于 IoT 的 Defender 感應器和管理主控台 Api
 
@@ -44,7 +44,7 @@ ms.locfileid: "97839422"
 
 5. 選取 [完成]。 您所建立的權杖會出現在 [ **存取權杖** ] 對話方塊中。
    
-   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="具有已填寫權杖之資產權杖對話方塊的螢幕擷取畫面":::
+   :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-token-window.png" alt-text="具有已填寫權杖的 [裝置權杖] 對話方塊螢幕擷取畫面":::
 
    [已 **使用**] 表示最後一次收到此權杖的外部呼叫。
 
@@ -2364,7 +2364,7 @@ JSON 物件的陣列，表示維護時間範圍作業。
 | **發動機** | 字串陣列 | - | 是 |
 | **sensorIds** | 字串陣列 | - | 是 |
 | **網** | 字串陣列 | - | 是 |
-| **Ttl** | 數值 | - | 是 |
+| **ttl** | 數值 | - | 是 |
 | **operationType** | String | 值為 "OPEN"、"UPDATE" 和 "CLOSE" | 不可以 |
 
 ### <a name="authenticate-user-credentials"></a>驗證使用者認證

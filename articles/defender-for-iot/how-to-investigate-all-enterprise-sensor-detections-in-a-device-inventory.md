@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 47e3833fe9f35467c1d16945a9b336d4014b2efd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838691"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625459"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>調查裝置清查中的所有企業感應器偵測
 
@@ -67,7 +67,7 @@ ms.locfileid: "97838691"
 
 - 已登入裝置的使用者
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="資產清查畫面上的資料表。":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="裝置清查畫面上的資料表。":::
 
 您可以透過下列任一方式來整合資料：
 
@@ -131,13 +131,13 @@ ms.locfileid: "97838691"
 
 您可以篩選裝置清查以顯示感興趣的資料行。 例如，您可以查看 PLC 裝置資訊。
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="資產清查的螢幕擷取畫面。":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="裝置清查的螢幕擷取畫面。":::
 
 當您離開視窗時，就會清除篩選。
 
 若要多次使用相同的篩選準則，您可以儲存篩選或您所需的篩選器組合。 您可以開啟左窗格，並查看您已儲存的篩選器：
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="資產清查畫面。":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="裝置清查畫面。":::
 
 若要篩選裝置清查：
 
@@ -187,7 +187,7 @@ ms.locfileid: "97838691"
 
 - **查看裝置屬性**：例如，監視裝置的感應器和基本裝置屬性。 以滑鼠右鍵按一下裝置以查看裝置屬性。
 
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="資產屬性視圖的螢幕擷取畫面。":::
+  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="裝置屬性視圖的螢幕擷取畫面。":::
 
 - **與裝置相關聯的警示：** 以滑鼠右鍵按一下裝置以查看相關的警示。
 
@@ -225,6 +225,6 @@ ms.locfileid: "97838691"
 
 - **更新進度**：如果已連線的感應器正在升級，則會出現升級狀態。 在升級期間，內部部署管理主控台不會接收來自感應器的裝置資訊。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [調查裝置清查中的感應器偵測](how-to-investigate-sensor-detections-in-a-device-inventory.md)

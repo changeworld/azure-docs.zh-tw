@@ -1,20 +1,20 @@
 ---
-title: 適用於 SSH 和 RDP 的 Azure IoT 中樞裝置串流 C 快速入門
+title: 快速入門-Azure IoT 中樞 SSH 和 RDP 的裝置串流 C 快速入門
 description: 在本快速入門中，您會執行範例 C 應用程式，作為透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送的 Proxy。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 037ff64f4811515e7ce64d66a36e08e71de54058
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: HT
+ms.openlocfilehash: 2305a87b91160b5de90f4cbfbc9418adc50bb92a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831985"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624400"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>快速入門：使用 C Proxy 應用程式透過 IoT 中樞裝置串流進行 SSH 和 RDP 輸送 (預覽)
 
@@ -25,6 +25,22 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 [IoT 中樞裝置串流](./iot-hub-device-streams-overview.md)可讓服務和裝置應用程式以安全且便於設定防火牆的方式進行通訊。 如需設定的概觀，請參閱[本機 Proxy 範例頁面](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。
 
 本快速入門說明透過裝置串流來輸送安全殼層 (SSH) 流量 (使用連接埠 22) 的設定。 遠端桌面通訊協定 (RDP) 流量的設定也相類似，但需要稍微變更組態。 因為裝置串流與應用程式或通訊協定無關，因此您可以修改本快速入門，以用於其他類型的應用程式流量。
+
+## <a name="prerequisites"></a>先決條件
+
+* 裝置串流的預覽版目前僅支援在下列區域建立的 IoT 中樞：
+
+  * 美國中部
+  * 美國中部 EUAP
+  * 北歐
+  * 東南亞
+
+* 安裝 [Visual Studio 2019](https://www.visualstudio.com/vs/) 並啟用[使用 C++ 的桌面開發](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作負載。
+* 安裝最新版的 [Git](https://git-scm.com/download/)。
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="how-it-works"></a>運作方式
 
@@ -47,22 +63,6 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 > 透過裝置串流傳送的 SSH 流量會經由 IoT 中樞的串流端點進行輸送，而不是直接在服務與裝置之間傳送。 如需詳細資訊，請參閱[使用 IoT 中樞裝置串流的優點](iot-hub-device-streams-overview.md#benefits)。 此外，圖中也說明在與裝置本機 Proxy 相同的裝置 (或機器) 上執行的 SSH 精靈。 在本快速入門中，提供 SSH 精靈的 IP 位址也可讓裝置本機 Proxy 與精靈在不同的機器上執行。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>先決條件
-
-* 裝置串流的預覽版目前僅支援在下列區域建立的 IoT 中樞：
-
-  * 美國中部
-  * 美國中部 EUAP
-  * 北歐
-  * 東南亞
-
-* 安裝 [Visual Studio 2019](https://www.visualstudio.com/vs/) 並啟用[使用 C++ 的桌面開發](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)工作負載。
-* 安裝最新版的 [Git](https://git-scm.com/download/)。
-
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prepare-the-development-environment"></a>準備開發環境
 
@@ -120,7 +120,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 
 ## <a name="register-a-device"></a>註冊裝置
 
-裝置必須向的 IoT 中樞註冊，才能進行連線。 在本節中，您會使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來註冊模擬裝置。
+裝置必須向的 IoT 中樞註冊，才能進行連線。 在本節中，您會使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)來註冊模擬裝置。
 
 1. 若要建立裝置身分識別，請在 Cloud Shell 中執行下列命令：
 
@@ -138,7 +138,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
    > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName 預留位置。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     請記下所傳回的裝置連接字串，以供稍後在本快速入門中使用。 看起來會像下列範例：

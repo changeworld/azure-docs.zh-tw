@@ -4,12 +4,12 @@ description: 本文摘要說明 Azure 轉送混合式連線 .NET Standard API �
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 44d5800c08b49118e99a678e31d02e5b7a1f550c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 724fb1a62b82036b4a0fa8b9f4f3608293f608a9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935665"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625126"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 轉送混合式連線 .NET Standard API 概觀
 
@@ -83,7 +83,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>接收資料
 
-[HybridConnectionStream][HCStream] 類別允許雙向通訊。 在大部分的案例中，您會持續接收來自串流的資料。 如果您從串流讀取文字，建議您使用 [StreamReader](/dotnet/api/system.io.streamreader?view=netcore-3.1) 物件，這可讓您更容易剖析資料。 例如，您可以讀取文字 (而非`byte[]`) 格式的資料。
+[HybridConnectionStream][HCStream] 類別允許雙向通訊。 在大部分的案例中，您會持續接收來自串流的資料。 如果您從串流讀取文字，建議您使用 [StreamReader](/dotnet/api/system.io.streamreader) 物件，這可讓您更容易剖析資料。 例如，您可以讀取文字 (而非`byte[]`) 格式的資料。
 
 下列程式碼會從串流讀取個別的文字行，直到要求取消：
 
@@ -110,14 +110,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>傳送資料
 
-一旦建立連線，您可以傳送訊息到轉送端點。 因為連線物件會繼承[串流](/dotnet/api/system.io.stream?view=netcore-3.1)，請傳送 `byte[]` 格式的資料。 下列範例示範如何執行：
+一旦建立連線，您可以傳送訊息到轉送端點。 因為連線物件會繼承[串流](/dotnet/api/system.io.stream)，請傳送 `byte[]` 格式的資料。 下列範例示範如何執行：
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-不過，如果您想要直接傳送文字，不需每次都將字串編碼，您可以使用 [StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1) 物件來包裝 `hybridConnectionStream` 物件。
+不過，如果您想要直接傳送文字，不需每次都將字串編碼，您可以使用 [StreamWriter](/dotnet/api/system.io.streamwriter) 物件來包裝 `hybridConnectionStream` 物件。
 
 ```csharp
 // The StreamWriter object only needs to be created once
@@ -125,7 +125,7 @@ var textWriter = new StreamWriter(hybridConnectionStream);
 await textWriter.WriteLineAsync("hello");
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入了解 Azure 轉送，請造訪下列連結：
 

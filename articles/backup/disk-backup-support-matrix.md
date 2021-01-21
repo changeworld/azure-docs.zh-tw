@@ -1,15 +1,15 @@
 ---
-title: Azure 磁片備份支援矩陣
+title: Azure 磁碟備份支援矩陣
 description: 提供支援設定的摘要，以及 Azure 磁片備份的限制。
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 950651148237c7b9374c378e27ef5cd76697ae9e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 099e83d8a2fb109da862657265dad8be8143f608
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557528"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624929"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>預覽版中的 Azure 磁片備份支援矩陣 () 
 
@@ -55,6 +55,8 @@ Azure 磁片備份于下欄區域提供預覽：美國中西部。
 - 目前無法修改備份原則，而且當您設定磁片備份時，指派給備份實例的快照集資源群組無法變更。
 
 - 目前，設定磁片備份的 Azure 入口網站體驗，最多可有20個來自相同訂用帳戶的磁片。
+
+- 目前 (在預覽) 期間，不支援使用 PowerShell 和 Azure CLI 設定磁片的備份和還原。
 
 - 設定備份時，選取要備份的磁片，以及要儲存快照集的快照集資源群組必須屬於相同的訂用帳戶。 您無法為該磁片訂用帳戶以外的特定磁片建立增量快照集。 深入瞭解受控磁片的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 集。 如需如何選擇快照集資源群組的詳細資訊，請參閱  [設定備份](backup-managed-disks.md#configure-backup)。
 

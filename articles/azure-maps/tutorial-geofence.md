@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997268"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625027"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務設定地理柵欄
 
@@ -471,6 +471,10 @@ Azure 地圖服務支援[三種事件類型](../event-grid/event-schema-azure-ma
 
 
 您也可以[使用事件方格和 Logic Apps 來傳送電子郵件通知](../event-grid/publish-iot-hub-events-to-logic-apps.md)，並使用 Azure 地圖服務來檢查[事件方格中支援的事件處理常式](../event-grid/event-handlers.md)。
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有任何資源需要清除。
 
 ## <a name="next-steps"></a>後續步驟
 

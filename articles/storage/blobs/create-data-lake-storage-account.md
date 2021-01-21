@@ -8,12 +8,12 @@ ms.date: 08/31/2020
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6b63933fc625079bb490942cf3a32232a484fe38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 712f1dc0679ee49791831e782fb68c39a757870a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89270075"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624332"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>建立要與 Azure Data Lake Storage Gen2 搭配使用的儲存體帳戶
 
@@ -30,9 +30,9 @@ ms.locfileid: "89270075"
 
 ## <a name="create-a-storage-account-with-a-hierarchical-namespace"></a>建立具有階層命名空間的儲存體帳戶
 
-建立[一般用途 V2 帳戶](../common/storage-account-create.md)或已啟用**階層命名空間**設定的[BlockBlobStorage](storage-blob-create-account-block-blob.md)帳戶。
+建立 [一般用途 V2 帳戶](../common/storage-account-create.md)或已啟用 **階層命名空間** 設定的 [BlockBlobStorage](storage-blob-create-account-block-blob.md)帳戶。
 
-當您建立帳戶時，請在 [**建立儲存體帳戶** **] 頁面的 [** 設定] 索引標籤中啟用**階層式命名空間**設定，以解除鎖定 Data Lake Storage 功能。 當您建立帳戶時，必須啟用此設定。 您之後無法啟用它。
+當您建立帳戶時，請在 [**建立儲存體帳戶** **] 頁面的 [** 設定] 索引標籤中啟用 **階層式命名空間** 設定，以解除鎖定 Data Lake Storage 功能。 當您建立帳戶時，必須啟用此設定。 您之後無法啟用它。
 
 下圖顯示 [ **建立儲存體帳戶** ] 頁面中的這項設定。
 
@@ -40,6 +40,9 @@ ms.locfileid: "89270075"
 > ![階層命名空間設定](./media/create-data-lake-storage-account/hierarchical-namespace-feature.png)
 
 如果您有想要與 Data Lake Storage 搭配使用的現有儲存體帳戶，且已停用階層命名空間設定，則必須將資料移轉至已啟用設定的新儲存體帳戶。
+
+> [!NOTE]
+> 無法同時啟用 **資料保護** 和 **階層命名空間**。
 
 ## <a name="next-steps"></a>後續步驟
 

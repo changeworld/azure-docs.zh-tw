@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/08/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: de3ff6ead1f0dd86e07c86b992a720a676a2095c
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 399eee06d472204eaf6dbc333f15cee7c4373739
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97839267"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624637"
 ---
 # <a name="define-global-access-control"></a>定義全域存取控制
 
@@ -20,7 +20,7 @@ ms.locfileid: "97839267"
 
 為了支援全域且更複雜的使用者存取權限需求，您可以建立以商務單位、區域和網站為基礎的全球商務拓朴。 然後您可以定義這些實體的使用者存取權限。
 
-使用商務拓朴的存取工具可協助組織透過更妥善地控制使用者在 Azure Defender for IoT 平臺中管理及分析資產的位置，來實行零信任策略。
+使用商務拓朴的存取工具可協助組織透過更妥善地控制使用者在 Azure Defender for IoT 平臺中管理和分析裝置的位置，來實行零信任策略。
 
 ## <a name="about-access-groups"></a>關於存取群組
 
@@ -88,6 +88,6 @@ ms.locfileid: "97839267"
 
 - 如果未選取任何業務單位或區域，使用者將可存取所有已定義的業務單位和區域。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [關於適用于 IoT 主控台使用者的 Defender](how-to-create-and-manage-users.md)

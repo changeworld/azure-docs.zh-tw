@@ -35,6 +35,8 @@
       href: Face-API-How-to-Topics/specify-recognition-model.md
     - name: 指定臉部偵測模式
       href: Face-API-How-to-Topics/specify-detection-model.md
+    - name: 降低使用臉部服務時的延遲
+      href: Face-API-How-to-Topics/how-to-mitigate-latency.md
     - name: 使用大型功能
       href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: 即時分析影片

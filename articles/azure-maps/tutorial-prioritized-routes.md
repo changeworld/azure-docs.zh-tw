@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 125ca501dbad74263f32632db44eebd097c3b0a1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: HT
+ms.openlocfilehash: dbf2331dc6bcd3187175554b61d347e8bb2c04a4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896696"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624994"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>教學課程：使用 Azure 地圖服務尋找並顯示不同移動模式的路線
 
@@ -39,7 +39,7 @@ ms.locfileid: "92896696"
 
 下列步驟示範如何在網頁中建立和顯示地圖控制項。
 
-1. 在您的本機機器上建立新檔案，並將其命名為 **MapTruckRoute.html** 。
+1. 在您的本機機器上建立新檔案，並將其命名為 **MapTruckRoute.html**。
 2. 複製下列 HTML 標記並貼到檔案中。
 
     ```HTML
@@ -121,7 +121,7 @@ ms.locfileid: "92896696"
 
 2. 儲存 **MapTruckRoute.html** 檔案，並重新整理瀏覽器頁面。 如果您放大任何城市 (例如洛杉磯)，您會看到街道顯示目前的交通流量資料。
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="地圖控制項的基本地圖呈現":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="在地圖上檢視交通情況":::
 
 <a id="queryroutes"></a>
 
@@ -197,7 +197,7 @@ ms.locfileid: "92896696"
 
 3. 儲存 **TruckRoute.html** 並重新整理瀏覽器。 現在地圖會以西雅圖作為中心。 淚珠形藍色圖釘會標示起點。 圓形藍色圖釘會標示終點。
 
-   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="地圖控制項的基本地圖呈現":::
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="檢視有起點和終點的地圖":::
 
 <a id="multipleroutes"></a>
 
@@ -277,7 +277,7 @@ ms.locfileid: "92896696"
 
 4. 儲存 **TruckRoute.html** 檔案並重新整理網頁瀏覽器。 地圖現在應該會顯示卡車和汽車路線。
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="地圖控制項的基本地圖呈現":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="使用 Azure 路線規劃服務在地圖上顯示私人和商用車輛路線":::
 
     卡車路線會使用粗的藍色線條顯示。 汽車路線會使用細的紫色線條顯示。 汽車路線會透過 I-90 穿越華盛頓湖，期間會經由隧道穿過住宅區底下。 因為隧道接近居住區域，因此不得載運有害廢棄物。 卡車路線 (指定了 `USHazmatClass2` 貨物類型) 則會引導使用不同的高速公路。
 
@@ -285,7 +285,9 @@ ms.locfileid: "92896696"
 
 您也可以[使用資料驅動樣式運算式](data-driven-style-expressions-web-sdk.md)
 
+## <a name="clean-up-resources"></a>清除資源
 
+沒有任何資源需要清除。
 
 ## <a name="next-steps"></a>後續步驟
 

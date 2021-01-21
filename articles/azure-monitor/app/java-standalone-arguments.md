@@ -6,12 +6,12 @@ ms.date: 04/16/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 21465305e635cba7d8d4f912bcca2b0306b294e9
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: bd6ed2e5c848b39ad946209d5ea92fcf6ce3b438
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233690"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625359"
 ---
 # <a name="adding-the-jvm-arg---azure-monitor-application-insights-for-java"></a>新增 JVM arg-適用于 JAVA 的 Azure 監視器 Application Insights
 
@@ -23,24 +23,24 @@ ms.locfileid: "98233690"
 
 ## <a name="spring-boot"></a>Spring Boot
 
-將 JVM 引數新增至 `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` 之前的位置 `-jar` ，例如：
+將 JVM 引數新增至 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` 之前的位置 `-jar` ，例如：
 
 ```
-java -javaagent:path/to/applicationinsights-agent-3.0.1.jar -jar <myapp.jar>
+java -javaagent:path/to/applicationinsights-agent-3.0.2.jar -jar <myapp.jar>
 ```
 
 ## <a name="spring-boot-via-docker-entry-point"></a>透過 Docker 進入點的彈簧開機
 
-如果您使用 *exec* 表單，請將參數加入參數清單中的參數 `"-javaagent:path/to/applicationinsights-agent-3.0.1.jar"` 清單 `"-jar"` ，例如：
+如果您使用 *exec* 表單，請將參數加入參數清單中的參數 `"-javaagent:path/to/applicationinsights-agent-3.0.2.jar"` 清單 `"-jar"` ，例如：
 
 ```
-ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.1.jar", "-jar", "<myapp.jar>"]
+ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.2.jar", "-jar", "<myapp.jar>"]
 ```
 
-如果您使用 *shell* 表單，請 `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` 在之前的某個位置新增 JVM 參數 `-jar` ，例如：
+如果您使用 *shell* 表單，請 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` 在之前的某個位置新增 JVM 參數 `-jar` ，例如：
 
 ```
-ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.1.jar -jar <myapp.jar>
+ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.2.jar -jar <myapp.jar>
 ```
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux) 
@@ -50,7 +50,7 @@ ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.1.jar -jar <mya
 如果您是透過或安裝 Tomcat `apt-get` `yum` ，您應該會有一個檔案 `/etc/tomcat8/tomcat8.conf` 。  將這一行新增至該檔案的結尾：
 
 ```
-JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.1.jar"
+JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
 ```
 
 ### <a name="tomcat-installed-via-download-and-unzip"></a>透過下載和解壓縮安裝 Tomcat
@@ -58,10 +58,10 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.1.jar"
 如果您是透過下載並解壓縮來安裝 Tomcat [https://tomcat.apache.org](https://tomcat.apache.org) ，您應該會有一個檔案 `<tomcat>/bin/catalina.sh` 。  使用下列內容，在名為的相同目錄中建立新檔案 `<tomcat>/bin/setenv.sh` ：
 
 ```
-CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.1.jar"
+CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
 ```
 
-如果檔案 `<tomcat>/bin/setenv.sh` 已存在，則修改該檔案並新增 `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` 至 `CATALINA_OPTS` 。
+如果檔案 `<tomcat>/bin/setenv.sh` 已存在，則修改該檔案並新增 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` 至 `CATALINA_OPTS` 。
 
 
 ## <a name="tomcat-8-windows"></a>Tomcat 8 (Windows) 
@@ -71,36 +71,36 @@ CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.1
 找出 `<tomcat>/bin/catalina.bat` 檔案。  使用下列內容，在名為的相同目錄中建立新檔案 `<tomcat>/bin/setenv.bat` ：
 
 ```
-set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.1.jar
+set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.2.jar
 ```
 
 引號並非必要，但如果您想要包含引號，適當的位置如下：
 
 ```
-set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.1.jar"
+set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
 ```
 
-如果檔案 `<tomcat>/bin/setenv.bat` 已存在，只要修改該檔案並新增 `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` 至 `CATALINA_OPTS` 。
+如果檔案 `<tomcat>/bin/setenv.bat` 已存在，只要修改該檔案並新增 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` 至 `CATALINA_OPTS` 。
 
 ### <a name="running-tomcat-as-a-windows-service"></a>以 Windows 服務的形式執行 Tomcat
 
-找出 `<tomcat>/bin/tomcat8w.exe` 檔案。  執行該可執行檔，並將加入至索引標籤 `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` `Java Options` 下的 `Java` 。
+找出 `<tomcat>/bin/tomcat8w.exe` 檔案。  執行該可執行檔，並將加入至索引標籤 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` `Java Options` 下的 `Java` 。
 
 
 ## <a name="jboss-eap-7"></a>JBoss EAP 7
 
 ### <a name="standalone-server"></a>獨立伺服器
 
-將檔案 `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` 中的現有 `JAVA_OPTS` 環境變數新增 `JBOSS_HOME/bin/standalone.conf` (Linux) 或 `JBOSS_HOME/bin/standalone.conf.bat` (Windows) ：
+將檔案 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` 中的現有 `JAVA_OPTS` 環境變數新增 `JBOSS_HOME/bin/standalone.conf` (Linux) 或 `JBOSS_HOME/bin/standalone.conf.bat` (Windows) ：
 
 ```java    ...
-    JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.1.jar</b> -Xms1303m -Xmx1303m ..."
+    JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.2.jar</b> -Xms1303m -Xmx1303m ..."
     ...
 ```
 
 ### <a name="domain-server"></a>網域伺服器
 
-新增 `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` 至現有的 `jvm-options` `JBOSS_HOME/domain/configuration/host.xml` ：
+新增 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` 至現有的 `jvm-options` `JBOSS_HOME/domain/configuration/host.xml` ：
 
 ```xml
 ...
@@ -110,7 +110,7 @@ set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-
         <jvm-options>
             <option value="-server"/>
             <!--Add Java agent jar file here-->
-            <option value="-javaagent:path/to/applicationinsights-agent-3.0.1.jar"/>
+            <option value="-javaagent:path/to/applicationinsights-agent-3.0.2.jar"/>
             <option value="-XX:MetaspaceSize=96m"/>
             <option value="-XX:MaxMetaspaceSize=256m"/>
         </jvm-options>
@@ -150,20 +150,20 @@ set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-
 
 ```
 --exec
--javaagent:path/to/applicationinsights-agent-3.0.1.jar
+-javaagent:path/to/applicationinsights-agent-3.0.2.jar
 ```
 
 
 ## <a name="payara-5"></a>Payara 5
 
-新增 `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` 至現有的 `jvm-options` `glassfish/domains/domain1/config/domain.xml` ：
+新增 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` 至現有的 `jvm-options` `glassfish/domains/domain1/config/domain.xml` ：
 
 ```xml
 ...
 <java-config ...>
     <!--Edit the JVM options here-->
     <jvm-options>
-        -javaagent:path/to/applicationinsights-agent-3.0.1.jar>
+        -javaagent:path/to/applicationinsights-agent-3.0.2.jar>
     </jvm-options>
         ...
 </java-config>
@@ -179,7 +179,7 @@ Java and Process Management > Process definition >  Java Virtual Machine
 ```
 在 [一般 JVM 引數] 中，新增下列各項：
 ```
--javaagent:path/to/applicationinsights-agent-3.0.1.jar
+-javaagent:path/to/applicationinsights-agent-3.0.2.jar
 ```
 之後，儲存並重新啟動應用程式伺服器。
 
@@ -188,5 +188,5 @@ Java and Process Management > Process definition >  Java Virtual Machine
 
 `jvm.options`在伺服器目錄中建立新檔案 (例如 `<openliberty>/usr/servers/defaultServer`) ，然後新增這一行：
 ```
--javaagent:path/to/applicationinsights-agent-3.0.1.jar
+-javaagent:path/to/applicationinsights-agent-3.0.2.jar
 ```

@@ -3,12 +3,12 @@ title: 設定您自己的金鑰來加密待用 Azure 事件中樞資料
 description: 本文提供有關如何設定您自己的金鑰來加密 Azure 事件中樞資料 rest 的資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1b0469a2f25b7f2bec2668b6ab33ff99eb1df809
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 095def84c5ab5e4dac7802027468b67eefb3161f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348206"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625376"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密 Azure 事件中樞待用資料
 Azure 事件中樞使用 Azure 儲存體的服務加密 (Azure SSE) 提供待用資料加密。 事件中樞依賴 Azure 儲存體儲存資料，而以 Azure 儲存體儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 
@@ -42,12 +42,12 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或由客戶管理
 啟用客戶管理的金鑰之後，您必須將客戶管理的金鑰與您的 Azure 事件中樞命名空間建立關聯。 事件中樞僅支援 Azure Key Vault。 如果您在上一節中 **使用客戶管理的金鑰啟用加密** ，您必須將金鑰匯入 Azure Key Vault。 此外，索引鍵必須具有虛 **刪除** ，且不 **會清除** 為金鑰設定。 您可以使用 [PowerShell](../key-vault/general/key-vault-recovery.md) 或 [CLI](../key-vault/general/key-vault-recovery.md)來設定這些設定。
 
 1. 若要建立新的金鑰保存庫，請遵循 Azure Key Vault [快速入門](../key-vault/general/overview.md)。 如需有關匯入現有金鑰的詳細資訊，請參閱 [關於金鑰、秘密和憑證](../key-vault/general/about-keys-secrets-certificates.md)。
-1. 若要在建立保存庫時開啟虛刪除和清除保護，請使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令。
+1. 若要在建立保存庫時開啟虛刪除和清除保護，請使用 [az keyvault create](/cli/azure/keyvault#az-keyvault-create) 命令。
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. 若要將清除保護新增至已啟用虛刪除的現有保存庫 () ，請使用 [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) 命令。
+1. 若要將清除保護新增至已啟用虛刪除的現有保存庫 () ，請使用 [az keyvault update](/cli/azure/keyvault#az-keyvault-update) 命令。
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
@@ -102,7 +102,7 @@ Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或由客戶管理
 | resourceId | Azure Resource Manager 資源識別碼 |
 | keyVault | 金鑰保存庫的完整名稱。 |
 | 索引鍵 | 用來加密事件中樞命名空間的索引鍵名稱。 |
-| 版本 | 所使用的金鑰版本。 |
+| version | 所使用的金鑰版本。 |
 | 作業 | 在金鑰保存庫中的金鑰上執行的作業。 例如，停用/啟用金鑰、包裝或解除包裝 |
 | code | 與作業相關聯的程式碼。 範例：錯誤碼（404）表示找不到索引鍵。 |
 | message | 與作業相關聯的任何錯誤訊息 |

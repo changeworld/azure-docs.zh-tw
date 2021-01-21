@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: d475c76d338270cb9b8e34ea8563cdfd8fdf5122
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: a3481830a09b183213e84490b5300f2fb38f8d19
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563053"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625060"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 
@@ -283,6 +283,10 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 若要取得 Azure 認證的 IoT 裝置清單，請造訪：
 
 * [Azure 認證裝置](https://catalog.azureiotsolutions.com/)
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有任何資源需要清除。
 
 ## <a name="next-steps"></a>下一步
 

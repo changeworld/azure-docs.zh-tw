@@ -3,12 +3,12 @@ title: Azure 服務匯流排和事件中樞的 AMQP 1.0 通訊協定指南 | Mic
 description: Azure 服務匯流排和事件中樞的 AMQP 1.0 運算式和說明的通訊協定指南
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736709"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624484"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服務匯流排和事件中樞的 AMQP 1.0 通訊協定指南
 
@@ -73,7 +73,7 @@ Azure 服務匯流排目前只對每個連線使用一個工作階段。 服務�
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP 輸出埠需求
 
-透過 TCP 使用 AMQP 連接的用戶端需要在本機防火牆中開啟埠5671和5672。 除了這些埠，如果已啟用 [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) 功能，則可能需要開啟其他埠。 `EnableLinkRedirect` 是一項新的訊息功能，可在接收訊息時協助略過一個躍點，藉此提高輸送量。 用戶端會透過埠範圍104XX 直接與後端服務通訊，如下列影像所示。 
+透過 TCP 使用 AMQP 連接的用戶端需要在本機防火牆中開啟埠5671和5672。 除了這些埠，如果已啟用 [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) 功能，則可能需要開啟其他埠。 `EnableLinkRedirect` 是一項新的訊息功能，可在接收訊息時協助略過一個躍點，藉此提高輸送量。 用戶端會透過埠範圍104XX 直接與後端服務通訊，如下列影像所示。 
 
 ![目的地埠清單][4]
 
@@ -142,49 +142,49 @@ AMQP 1.0 規格會定義稱為「已接收」的進一步處置狀態稱，其�
 
 #### <a name="create-message-receiver"></a>建立訊息接收者
 
-| Client | 服務匯流排 |
+| 用戶端 | 服務匯流排 |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link ID}<br/>) |用戶端會以接收者身分附加至實體 |
 | 附加至連結結尾的服務匯流排回覆 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link ID}<br/>) |
 
 #### <a name="create-message-sender"></a>建立訊息傳送者
 
-| Client | 服務匯流排 |
+| 用戶端 | 服務匯流排 |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>) |沒有動作 |
 | 沒有動作 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link ID},<br/>target={entity name}<br/>) |
 
 #### <a name="create-message-sender-error"></a>建立訊息傳送者 (錯誤)
 
-| Client | 服務匯流排 |
+| 用戶端 | 服務匯流排 |
 | --- | --- |
 | --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>) |沒有動作 |
 | 沒有動作 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>) |
 
 #### <a name="close-message-receiversender"></a>將訊息接收者/傳送者關閉
 
-| Client | 服務匯流排 |
+| 用戶端 | 服務匯流排 |
 | --- | --- |
 | --> detach(<br/>handle={numeric handle},<br/>closed =**true**<br/>) |沒有動作 |
 | 沒有動作 |<-- detach(<br/>handle={numeric handle},<br/>closed =**true**<br/>) |
 
 #### <a name="send-success"></a>傳送 (成功)
 
-| Client | 服務匯流排 |
+| 用戶端 | 服務匯流排 |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |沒有動作 |
 | 沒有動作 |<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>狀態 = 已 **接受**<br/>) |
 
 #### <a name="send-error"></a>傳送 (錯誤)
 
-| Client | 服務匯流排 |
+| 用戶端 | 服務匯流排 |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |沒有動作 |
 | 沒有動作 |<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>) |
 
 #### <a name="receive"></a>接收
 
-| Client | 服務匯流排 |
+| 用戶端 | 服務匯流排 |
 | --- | --- |
 | --> flow(<br/>link-credit=1<br/>) |沒有動作 |
 | 沒有動作 |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
@@ -192,7 +192,7 @@ AMQP 1.0 規格會定義稱為「已接收」的進一步處置狀態稱，其�
 
 #### <a name="multi-message-receive"></a>多訊息接收
 
-| Client | 服務匯流排 |
+| 用戶端 | 服務匯流排 |
 | --- | --- |
 | --> flow(<br/>link-credit=3<br/>) |沒有動作 |
 | 沒有動作 |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
@@ -240,14 +240,14 @@ AMQP 1.0 規格會定義稱為「已接收」的進一步處置狀態稱，其�
 
 | 註解對應索引鍵 | 使用方式 | API 名稱 |
 | --- | --- | --- |
-| x-opt-scheduled-enqueue-time | 宣告訊息應出現在實體上的時間 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x-opt-partition-key | 應用程式定義的索引鍵，指出訊息應落在哪個資料分割中。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-opt-via-partition-key | 當交易用於透過傳輸佇列傳送訊息時，應用程式所定義的資料分割索引鍵值。 | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-opt-enqueued-time | 由服務定義的 UTC 時間，表示將訊息加入佇列的實際時間。 輸入時忽略。 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-opt-sequence-number | 由服務定義並指派給訊息的唯一編號。 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x-opt-offset | 由服務定義並已加入佇列的訊息序號。 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x-opt-locked-until | 由服務定義。 訊息在佇列/訂用帳戶中鎖定的日期和時間。 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-opt-deadletter-source | 由服務定義。 從無效信件佇列收到訊息時，原始訊息的來源。 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-scheduled-enqueue-time | 宣告訊息應出現在實體上的時間 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc) |
+| x-opt-partition-key | 應用程式定義的索引鍵，指出訊息應落在哪個資料分割中。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey) |
+| x-opt-via-partition-key | 當交易用於透過傳輸佇列傳送訊息時，應用程式所定義的資料分割索引鍵值。 | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey) |
+| x-opt-enqueued-time | 由服務定義的 UTC 時間，表示將訊息加入佇列的實際時間。 輸入時忽略。 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) |
+| x-opt-sequence-number | 由服務定義並指派給訊息的唯一編號。 | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
+| x-opt-offset | 由服務定義並已加入佇列的訊息序號。 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
+| x-opt-locked-until | 由服務定義。 訊息在佇列/訂用帳戶中鎖定的日期和時間。 | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
+| x-opt-deadletter-source | 由服務定義。 從無效信件佇列收到訊息時，原始訊息的來源。 | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>交易功能
 
@@ -323,7 +323,7 @@ AMQP 管理規格是本文討論的第一個延伸模組草稿。 此規格會�
 
 上述所有軌跡都需要用戶端與傳訊基礎結構之間的要求/回應互動，因此此規格會定義如何製作 AMQP 上互動模式的模型︰用戶端會連線到傳訊基礎結構、起始工作階段，然後建立一組連結。 在某一個連結上，用戶端會扮演傳送者，而在其他連結上扮演接收者，因此建立一組可做為雙向通道的連結。
 
-| 邏輯作業 | Client | 服務匯流排 |
+| 邏輯作業 | 用戶端 | 服務匯流排 |
 | --- | --- | --- |
 | 建立要求回應路徑 |--> attach(<br/>name={*link name*},<br/>handle={*numeric handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>) |沒有動作 |
 | 建立要求回應路徑 |沒有動作 |\<-- attach(<br/>名稱 = {*連結名稱*}，<br/>handle={*numeric handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>) |
@@ -366,7 +366,7 @@ CBS 會定義由傳訊基礎結構所提供的虛擬管理節點 (名為 *$cbs*)
 
 *name* 屬性會識別應與權杖相關聯的實體。 在服務匯流排中，這是佇列或主題/訂用帳戶的路徑。 *type* 屬性會識別權杖類型︰
 
-| 權杖類型 | 權杖描述 | 主體類型 | 備忘稿 |
+| 權杖類型 | 權杖描述 | 主體類型 | 附註 |
 | --- | --- | --- | --- |
 | amqp:jwt |JSON Web 權杖 (JWT) |AMQP 值 (字串) |尚未提供。 |
 | amqp:swt |簡單 Web 權杖 (SWT) |AMQP 值 (字串) |僅支援 AAD/ACS 所簽發的 SWT 權杖 |
@@ -399,7 +399,7 @@ CBS 會定義由傳訊基礎結構所提供的虛擬管理節點 (名為 *$cbs*)
 
 > 注意：建立這個連結之前，必須對 via-entity 和 destination-entity 執行驗證。
 
-| Client | 方向 | 服務匯流排 |
+| 用戶端 | 方向 | 服務匯流排 |
 | :--- | :---: | :--- |
 | attach(<br/>name={link name},<br/>role=sender,<br/>source={client link ID},<br/>target =**{via entity}**，<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
 | | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |

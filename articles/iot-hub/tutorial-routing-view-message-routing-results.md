@@ -1,6 +1,6 @@
 ---
-title: 檢視 Azure IoT 中樞訊息路由結果 (.NET) | Microsoft Docs
-description: 使用本教學課程的第 1 部分設定所有資源之後，請新增將訊息路由至 Azure 串流分析的功能，並在 PowerBI 中檢視結果。
+title: 教學課程-觀看 Azure IoT 中樞訊息路由結果 ( .NET) |Microsoft Docs
+description: 教學課程-使用教學課程的第1部分設定所有資源之後，請新增將訊息路由至 Azure 串流分析的功能，並在 Power BI 中查看結果。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: HT
+ms.openlocfilehash: 0db05c8caae8483de3b55448bfbe6b2bcfc23187
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149212"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625277"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教學課程：第 2 部分 - 檢視路由的訊息
 
@@ -38,7 +38,7 @@ ms.locfileid: "92149212"
 
 服務匯流排佇列會用來接收指定為 critical 的訊息。 設定邏輯應用程式來監視服務匯流排佇列，並在訊息新增至佇列時傳送電子郵件。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [+ 建立資源]  。 在 [搜尋] 方塊中輸入**邏輯應用程式**，然後按一下 Enter。 從顯示的搜尋結果中選取邏輯應用程式，然後選取 [建立]  繼續前往 [建立邏輯應用程式]  窗格。 填寫欄位。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [+ 建立資源]  。 在 [搜尋] 方塊中輸入 **邏輯應用程式**，然後按一下 Enter。 從顯示的搜尋結果中選取邏輯應用程式，然後選取 [建立]  繼續前往 [建立邏輯應用程式]  窗格。 填寫欄位。
 
    **Name**：此欄位是邏輯應用程式的名稱。 本教學課程使用 **ContosoLogicApp**。
 
@@ -46,7 +46,7 @@ ms.locfileid: "92149212"
 
    **資源群組**：選取 [使用現有的]  並選取您的資源群組。 本教學課程使用 **ContosoResources**。
 
-   **位置**：使用您的位置。 本教學課程使用**美國西部**。
+   **位置**：使用您的位置。 本教學課程使用 **美國西部**。
 
    **Log Analytics**：此切換應為關閉狀態。
 
@@ -106,7 +106,7 @@ ms.locfileid: "92149212"
 
    **資源群組**：使用 IoT 中樞所用的相同資源群組。 本教學課程使用 **ContosoResources**。
 
-   **位置**：使用安裝指令碼中使用的相同位置。 本教學課程使用**美國西部**。
+   **位置**：使用安裝指令碼中使用的相同位置。 本教學課程使用 **美國西部**。
 
    ![建立串流分析作業](./media/tutorial-routing-view-message-routing-results/stream-analytics-create-job.png)
 
@@ -232,7 +232,7 @@ ms.locfileid: "92149212"
 
 1. 登入您的 [Power BI](https://powerbi.microsoft.com/) 帳戶。
 
-2. 請移至**工作區**，然後選取建立串流分析作業輸出時所設定的工作區。 本教學課程使用 **My Workspace**。 
+2. 請移至 **工作區**，然後選取建立串流分析作業輸出時所設定的工作區。 本教學課程使用 **My Workspace**。 
 
 3. 選取 [資料集]  。 如果沒有資料集，請稍候幾分鐘，然後再檢查一次。
 
@@ -280,7 +280,7 @@ ms.locfileid: "92149212"
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 來清除資源
 
-若要移除資源群組，請使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 在本教學課程剛開始時，`$resourceGroup` 已設回 **ContosoResources**。
+若要移除資源群組，請使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) 命令。 在本教學課程剛開始時，`$resourceGroup` 已設回 **ContosoResources**。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

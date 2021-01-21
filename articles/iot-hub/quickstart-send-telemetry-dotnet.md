@@ -1,5 +1,5 @@
 ---
-title: 將遙測傳送至 Azure IoT 中樞快速入門 (C#) | Microsoft Docs
+title: '快速入門-將遙測資料傳送至 Azure IoT 中樞快速入門 (c # ) |Microsoft Docs'
 description: 本快速入門中，您會執行兩個範例 C# 應用程式，以將模擬的遙測資料傳送至 IoT 中樞以及從 IoT 中樞讀取遙測資料，以便在雲端中處理。
 author: robinsh
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: b515274ef4bcf494c071ddb487590ff9cdccf4c0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 914df5b80dee7da041b268a3aaf25ac493d0cf5b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121465"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624434"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用服務應用程式讀取遙測 (.NET)
 

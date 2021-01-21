@@ -1,5 +1,5 @@
 ---
-title: 透過 Azure IoT 中樞裝置串流與使用 C 的裝置應用程式進行通訊
+title: 快速入門-使用 Azure IoT 中樞裝置串流，與 C 中的裝置應用程式進行通訊
 description: 在本快速入門中，您會執行透過裝置串流與 IoT 裝置進行通訊的 C 裝置端應用程式。
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: de310846ad0449a0dac7eccd60d82d4c68ef519b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: HT
+ms.openlocfilehash: 403fe82c46c90c5f8efb48ce0a394a2f63488fed
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832196"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624620"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>快速入門：透過 IoT 中樞裝置串流與使用 C 的裝置應用程式進行通訊 (預覽)
 
@@ -114,7 +114,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
 
 ## <a name="register-a-device"></a>註冊裝置
 
-您必須向 IoT 中樞註冊裝置，才能進行連線。 在本節中，您會使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來註冊模擬裝置。
+您必須向 IoT 中樞註冊裝置，才能進行連線。 在本節中，您會使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)來註冊模擬裝置。
 
 1. 若要建立裝置身分識別，請在 Cloud Shell 中執行下列命令：
 
@@ -132,7 +132,7 @@ Azure IoT 中樞目前支援裝置串流作為[預覽功能](https://azure.micro
    > 以您為 IoT 中樞選擇的名稱取代 YourIoTHubName 預留位置。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     請記下所傳回的裝置連接字串，以供稍後在本快速入門中使用。 看起來會像下列範例：

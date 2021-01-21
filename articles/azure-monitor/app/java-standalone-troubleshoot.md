@@ -4,12 +4,12 @@ description: 瞭解如何針對 Azure 監視器 Application Insights 的 JAVA �
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2876abd3749c9e56cef462e41b8268135f82cd12
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 788eea17cabbea46578d0f59919ae95a59f2223f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232211"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625342"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>疑難排解指南：適用于 JAVA 的 Azure 監視器 Application Insights
 
@@ -17,7 +17,7 @@ ms.locfileid: "98232211"
 
 ## <a name="check-the-self-diagnostic-log-file"></a>檢查自我診斷記錄檔
 
-根據預設，Application Insights 的 JAVA 3.0 代理程式會產生一個記錄檔， `applicationinsights.log` 該檔案會在保存該檔案的相同目錄中命名 `applicationinsights-agent-3.0.1.jar` 。
+根據預設，Application Insights 的 JAVA 3.0 代理程式會產生一個記錄檔， `applicationinsights.log` 該檔案會在保存該檔案的相同目錄中命名 `applicationinsights-agent-3.0.2.jar` 。
 
 此記錄檔是檢查提示是否有您可能遇到之任何問題的第一個位置。
 

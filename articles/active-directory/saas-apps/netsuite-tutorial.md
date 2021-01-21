@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/09/2020
+ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 9272114dd472717e59680b40c07d8435dea19682
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: HT
+ms.openlocfilehash: d99a19efcef0cae518d8d21d3371adaf37d32ff7
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181963"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625476"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>教學課程：整合 Azure AD 單一登入 (SSO) 與 NetSuite
 
@@ -41,7 +41,6 @@ NetSuite 支援：
 
 * IDP 起始的 SSO。
 * JIT (just-in-time) 使用者佈建。
-* [自動的使用者佈建](NetSuite-provisioning-tutorial.md)。
 
 > [!NOTE]
 > 由於此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977062"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624679"
 ---
 # <a name="control-what-traffic-is-monitored"></a>控制監視到的流量
 
@@ -186,11 +186,11 @@ ms.locfileid: "97977062"
 
 ## <a name="configure-dns-servers-for-reverse-lookup-resolution"></a>設定 DNS 伺服器以進行反向查閱解析
 
-若要增強資產擴充，您可以設定多部 DNS 伺服器來 carryout 反向查閱。 您可以解析與網路子網中偵測到的 IP 位址相關聯的主機名稱或 Fqdn。 例如，如果感應器探索到 IP 位址，它可能會查詢多部 DNS 伺服器來解析主機名稱。
+若要增強裝置擴充，您可以設定多部 DNS 伺服器來 carryout 反向查閱。 您可以解析與網路子網中偵測到的 IP 位址相關聯的主機名稱或 Fqdn。 例如，如果感應器探索到 IP 位址，它可能會查詢多部 DNS 伺服器來解析主機名稱。
 
 支援所有 CIDR 格式。
 
-主機名稱會出現在資產清查和資產對應中，也會出現在報表中。
+主機名稱會出現在裝置清查、裝置對應和報告中。
 
 您可以針對特定的每小時間隔排程反向查閱解析排程，例如每12小時。 或者，您可以排程特定的時間。
 
@@ -212,7 +212,7 @@ ms.locfileid: "97977062"
 
 5. 在 [ **Dns 伺服器埠** ] 欄位中，輸入 dns 埠。
 
-6. 將網路 IP 位址解析為資產 Fqdn。 在 [ **標籤數目** ] 欄位中，新增要顯示的網域標籤數目。 從左至右顯示最多30個字元。
+6. 將網路 IP 位址解析為裝置 Fqdn。 在 [ **標籤數目** ] 欄位中，新增要顯示的網域標籤數目。 從左至右顯示最多30個字元。
 
 7. 在 [ **子網** ] 欄位中，輸入您要 DNS 伺服器查詢的子網。
 
@@ -220,7 +220,7 @@ ms.locfileid: "97977062"
 
 ### <a name="test-the-dns-configuration"></a>測試 DNS 設定 
 
-使用測試資產，確認您所定義的設定是否正常運作：
+使用測試裝置，確認您所定義的設定運作正常：
 
 1. 啟用 **DNS 查閱** 切換。
 
@@ -295,7 +295,7 @@ ms.locfileid: "97977062"
 
 1. 當掃描完成時，請在 [ **動作** ] 窗格中選取 [ **View scan Results**]。 具有掃描結果的 CSV 檔案會下載到您的電腦。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [調查裝置清查](how-to-investigate-sensor-detections-in-a-device-inventory.md) 
  中的感應器偵測[調查裝置對應中的感應器](how-to-work-with-the-sensor-device-map.md)偵測

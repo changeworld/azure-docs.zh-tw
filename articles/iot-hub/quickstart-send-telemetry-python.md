@@ -1,5 +1,5 @@
 ---
-title: 將遙測傳送至 Azure IoT 中樞快速入門 (Python) | Microsoft Docs
+title: 快速入門-將遙測資料傳送至 Azure IoT 中樞的快速入門 (Python) |Microsoft Docs
 description: 本快速入門中，您可以執行範例 Python 應用程式，將模擬的遙測資料傳送到 IoT 中樞，並使用公用程式從 IoT 中樞讀取遙測資料。
 author: wesmc7777
 manager: philmea
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/16/2020
-ms.openlocfilehash: 71d91ceba48158d2abc688af572dabfc258a2e94
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: c1ea343a2674346e1028f8bb1f3d8ee61cb7e20e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121426"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624870"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用後端應用程式讀取遙測 (Python)
 

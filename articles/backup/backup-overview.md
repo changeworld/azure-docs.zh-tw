@@ -4,12 +4,12 @@ description: 提供 Azure 備份服務的概觀，並說明如何將它提供給
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 805fa81362b9f90c1d6ba468caaf4b6745e42c62
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: HT
+ms.openlocfilehash: 6a30e31dd1462e427faf64966a38c94f9fa56df6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746109"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624467"
 ---
 # <a name="what-is-the-azure-backup-service"></a>什麼是 Azure 備份服務？
 
@@ -21,6 +21,7 @@ Azure 備份服務提供簡單、安全且符合成本效益的解決方案來�
 
 - **內部部署** - 使用 [Microsoft Azure 復原服務 (MARS) 代理程式](backup-support-matrix-mars-agent.md)來備份檔案、資料夾、系統狀態。 或者，使用 DPM 或 Azure 備份伺服器 (MABS) 代理程式來保護內部部署 VM ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) 和 [VMware](backup-azure-backup-server-vmware.md)) 和其他[內部部署工作負載](backup-mabs-protection-matrix.md)
 - **Azure VM** - [備份整個 Windows/Linux VM](backup-azure-vms-introduction.md) (使用備份擴充功能)，或使用 [MARS 代理程式](backup-azure-manage-mars.md)來備份檔案、資料夾和系統狀態。
+- **Azure 受控磁碟**  - [在預覽中備份 Azure 受控磁碟 ()](backup-managed-disks.md)
 - **Azure 檔案共用** - [將 Azure 檔案共用備份至儲存體帳戶](backup-afs.md)
 - **Azure VM 中的 SQL Server** -  [備份在 Azure VM 上執行的 SQL Server 資料庫](backup-azure-sql-database.md)
 - **Azure VM 中的 SAP HANA 資料庫** - [備份在 Azure VM 上執行的 SAP HANA 資料庫](backup-azure-sap-hana-database.md)

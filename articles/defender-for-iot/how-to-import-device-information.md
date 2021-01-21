@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0a443ba7b41615fc62882bd8de6bf077c6b5a137
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838955"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625409"
 ---
 # <a name="import-device-information-to-a-sensor"></a>將裝置資訊匯入感應器
 
@@ -67,7 +67,7 @@ ms.locfileid: "97838955"
 
 匯入 IP 位址、OS 和修補程式等級：
 
-1. 從說明[中心](https://cyberx-labs.zendesk.com/hc/en-us)下載[assets_info_2 2.8 和 up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data)檔案，然後輸入資訊，如下所示：
+1. 從說明[中心](https://cyberx-labs.zendesk.com/hc/en-us)下載[devices_info_2 2.8 和 up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data)檔案，然後輸入資訊，如下所示：
 
    - **Ip 位址**：輸入裝置 ip 位址。
 
@@ -85,7 +85,7 @@ ms.locfileid: "97838955"
 
 若要匯入授權狀態：
 
-1. 從 Defender for IoT 說明中心下載並儲存 [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) 檔案。 確認您已將檔案儲存為 CSV。
+1. 從 Defender for IoT 說明中心下載並儲存 [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) 檔案。 確認您已將檔案儲存為 CSV。
 
 2. 輸入下列資訊：
 
@@ -154,7 +154,7 @@ ms.locfileid: "97838955"
 
 匯入 IP 位址、OS 和修補程式等級：
 
-1. 從說明[中心](https://cyberx-labs.zendesk.com/hc/en-us)下載[assets_info_2 2.8 和 up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data)檔案，然後輸入資訊，如下所示：
+1. 從說明[中心](https://cyberx-labs.zendesk.com/hc/en-us)下載[devices_info_2 2.8 和 up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data)檔案，然後輸入資訊，如下所示：
 
    - **Ip 位址**：裝置 ip 位址。
 
@@ -172,7 +172,7 @@ ms.locfileid: "97838955"
 
 若要匯入授權狀態：
 
-1. 從 Defender for IoT 說明中心下載並儲存 [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) 檔案。 確認您已將檔案儲存為 CSV。
+1. 從 Defender for IoT 說明中心下載並儲存 [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) 檔案。 確認您已將檔案儲存為 CSV。
 
 2. 輸入下列資訊：
 
@@ -188,8 +188,8 @@ ms.locfileid: "97838955"
 
 匯入資訊時，您會收到未授權裝置的相關警示，指出未出現在此清單中的所有裝置。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
-[控制監視的流量](how-to-control-what-traffic-is-monitored.md)
+[控制監視到的流量](how-to-control-what-traffic-is-monitored.md)
 
 [調查裝置清查中的感應器偵測](how-to-investigate-sensor-detections-in-a-device-inventory.md)

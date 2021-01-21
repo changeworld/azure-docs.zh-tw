@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: f3058953e702f40fa1500441e382898b0314ddbb
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c868685ad943c1ab9ab263a164111e46294c042
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838675"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625426"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>調查裝置清查中的感應器偵測
 
@@ -223,7 +223,7 @@ ms.locfileid: "97838675"
 
 - 在裝置清查的右上方功能表上，選取 :::image type="icon" source="media/how-to-work-with-asset-inventory-information/csv-excel-export-icon.png" border="false"::: 。 會產生並下載 CSV 報表。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [調查裝置清查中的所有企業感應器偵測](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
 

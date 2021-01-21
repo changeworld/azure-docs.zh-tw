@@ -3,12 +3,12 @@ title: 在 Azure 事件中樞以動態方式將分割區新增至事件中樞
 description: 本文說明如何在 Azure 事件中樞以動態方式將分割區新增至事件中樞。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 4ebe4491338c24a331812041f4d3e6d37b934117
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e6efdc7bab309f825032555c97f1e1128f5addd6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132166"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625260"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>在 Azure 事件中樞以動態方式將分割區新增至事件中樞 (Apache Kafka 主題)
 事件中樞透過分割取用者模式來提供訊息串流，每位取用者只會讀取訊息串流的特定子集 (即資料分割)。 此模式能水平擴充事件處理規模，並提供佇列和主題缺少的其他串流導向功能。 資料分割是經過排序且保存在事件中樞內的事件序列。 當較新的事件送達時，系統會將其新增至序列的結尾。 如需關於分割區的一般詳細資訊，請參閱[分割區](event-hubs-scalability.md#partitions)
@@ -26,14 +26,14 @@ ms.locfileid: "98132166"
 本節說明如何以不同的方式 (PowerShell、CLI 等等) 更新事件中樞的分割區計數。
 
 ### <a name="powershell"></a>PowerShell
-使用 [Set-AzureRmEventHub](/powershell/module/azurerm.eventhub/Set-AzureRmEventHub?view=azurermps-6.13.0) PowerShell 命令更新事件中樞內的分割區。 
+使用 [Set-AzureRmEventHub](/powershell/module/azurerm.eventhub/Set-AzureRmEventHub) PowerShell 命令更新事件中樞內的分割區。 
 
 ```azurepowershell-interactive
 Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName -partitionCount 12
 ```
 
 ### <a name="cli"></a>CLI
-使用 [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update) CLI 命令來更新事件中樞內的磁碟分割。 
+使用 [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az-eventhubs-eventhub-update) CLI 命令來更新事件中樞內的磁碟分割。 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12

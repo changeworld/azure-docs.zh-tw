@@ -1,6 +1,6 @@
 ---
-title: 搭配 Azure IoT 中樞來設定及使用計量和記錄
-description: 了解如何搭配 Azure IoT 中樞來設定及使用計量和記錄。 這會提供要分析的資料，以協助診斷您中樞可能發生的問題。
+title: 教學課程-使用 Azure IoT 中樞來設定及使用計量和記錄
+description: 教學課程-瞭解如何使用 Azure IoT 中樞來設定及使用計量和記錄。 這會提供要分析的資料，以協助診斷您中樞可能發生的問題。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: a16dbeedc2362f4a263d59a673dbb4358f7ba034
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-ms.translationtype: HT
+ms.openlocfilehash: bf834a6dd648ffc8f4b1633dbb383f33cd99335f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436482"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625194"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>教學課程：搭配 IoT 中樞來設定及使用計量和記錄
 

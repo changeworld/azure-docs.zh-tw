@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 8cc7c1e0b776574ec7908557108e2cda49bb2a11
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
-ms.translationtype: HT
+ms.openlocfilehash: 31dd1c06b0f17b469454593131ccdc93b45b2446
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896655"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624962"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教學課程：使用 Azure 地圖服務來搜尋附近景點
 
@@ -41,7 +41,7 @@ ms.locfileid: "92896655"
 
 地圖控制項 API 是一個方便的用戶端程式庫。 此 API 可讓您輕鬆地將地圖服務整合到 Web 應用程式中。 它會隱藏裸機 REST 服務呼叫的複雜度，並使用可自訂的元件提升您的生產力。 下列步驟顯示如何建立內嵌地圖控制項 API 的靜態 HTML 網頁。
 
-1. 在您的本機機器上建立新檔案，並將其命名為 **MapSearch.html** 。
+1. 在您的本機機器上建立新檔案，並將其命名為 **MapSearch.html**。
 2. 在檔案中新增下列 HTML 元件：
 
    ```HTML
@@ -246,6 +246,10 @@ ms.locfileid: "92896655"
     ![Azure 地圖控制項和搜尋服務](./media/tutorial-search-location/popup-map.png)
 
 若要檢視本教學課程的完整程式碼，請按一下[這裡](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)。 若要檢視即時範例，請按一下[這裡](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有任何資源需要清除。
 
 ## <a name="next-steps"></a>後續步驟
 

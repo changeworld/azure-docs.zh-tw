@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 953a9cfeed558291fba1cb517039f26860444904
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 98499961f55b55b15687d5742b4d593e3d461e49
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233656"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625325"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>設定選項-適用于 JAVA 的 Azure 監視器 Application Insights
 
@@ -39,14 +39,14 @@ ms.locfileid: "98233656"
 
 ## <a name="configuration-file-path"></a>設定檔案路徑
 
-根據預設，Application Insights JAVA 3.0 會要求將設定檔命名為 `applicationinsights.json` ，而且位於與相同的目錄中 `applicationinsights-agent-3.0.1.jar` 。
+根據預設，Application Insights JAVA 3.0 會要求將設定檔命名為 `applicationinsights.json` ，而且位於與相同的目錄中 `applicationinsights-agent-3.0.2.jar` 。
 
 您可以使用下列其中一項來指定您自己的設定檔路徑
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE` 環境變數，或
 * `applicationinsights.configuration.file` JAVA 系統屬性
 
-如果指定相對路徑，則會將其解析為相對於所在的目錄 `applicationinsights-agent-3.0.1.jar` 。
+如果指定相對路徑，則會將其解析為相對於所在的目錄 `applicationinsights-agent-3.0.2.jar` 。
 
 ## <a name="connection-string"></a>連接字串
 
@@ -170,7 +170,7 @@ ms.locfileid: "98233656"
 `${...}` 可以在啟動時用來從指定的環境變數中讀取值。
 
 > [!NOTE]
-> 從3.0.1 版開始，如果您加入名為的自訂維度， `service.version` 該值將會儲存在 `application_Version` Application Insights Logs 資料表的資料行中，而不是做為自訂維度。
+> 從版本3.0.2 開始，如果您加入名為的自訂維度 `service.version` ，該值將會儲存在 `application_Version` Application Insights Logs 資料表的資料行中，而不是做為自訂維度。
 
 ## <a name="telemetry-processors-preview"></a> (預覽版的遙測處理器) 
 
@@ -241,7 +241,7 @@ Log4j、Logback 和 util 會自動檢測記錄，並且會自動收集透過這�
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>隱藏特定的自動收集遙測
 
-從3.0.1 版開始，您可以使用下列設定選項來抑制特定的自動收集遙測：
+從版本3.0.2 開始，您可以使用下列設定選項來抑制特定自動收集的遙測：
 
 ```json
 {
@@ -338,7 +338,7 @@ Log4j、Logback 和 util 會自動檢測記錄，並且會自動收集透過這�
 
 `level` 可以是、、、、或其中之一 `OFF` `ERROR` `WARN` `INFO` `DEBUG` `TRACE` 。
 
-`path` 可以是絕對或相對路徑。 相對路徑是針對所在的目錄來解析 `applicationinsights-agent-3.0.1.jar` 。
+`path` 可以是絕對或相對路徑。 相對路徑是針對所在的目錄來解析 `applicationinsights-agent-3.0.2.jar` 。
 
 `maxSizeMb` 這是記錄檔變換之前的大小上限。
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: HT
+ms.openlocfilehash: 7a33cf4e66ce31f8fb8534de25d7564a5784ca3a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905735"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625044"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線
 
@@ -398,6 +398,10 @@ display(Image(staticMapImage))
 * [Post 路線矩陣](/rest/api/maps/route/postroutematrix)
 * [取得路線指示](/rest/api/maps/route/getroutedirections)
 * [Azure 地圖服務 REST API](./consumption-model.md)
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有任何資源需要清除。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 11/09/2020
+ms.date: 01/20/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 636f63b3f7e43bd8f27d1df58ab82d24bd19a616
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033743"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624535"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理對 Azure Machine Learning 工作區的存取
 
@@ -161,7 +161,11 @@ az role definition update --role-definition update_def.json --subscription <sub-
 > [!NOTE]
 > 角色更新可能需要15分鐘到一小時的時間，才能套用到該範圍內的所有角色指派。
 
-## <a name="common-scenarios"></a>常見的案例
+## <a name="use-azure-resource-manager-templates-for-repeatability"></a>使用 Azure Resource Manager 重複性範本
+
+如果您預期需要重新建立複雜的角色指派，Azure Resource Manager 範本可能是很大的説明。 [201-機器學習服務-相依性-角色指派範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment)會顯示如何在原始程式碼中指定角色指派以供重複使用。 
+
+## <a name="common-scenarios"></a>常見案例
 
 下表是 Azure Machine Learning 活動的摘要，以及在最少的範圍執行這些活動所需的許可權。 例如，如果可以使用工作區範圍執行活動 (資料行 4) ，則具有該許可權的所有較高範圍也會自動運作：
 

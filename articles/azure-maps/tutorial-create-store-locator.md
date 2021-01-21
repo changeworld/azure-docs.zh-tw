@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
-ms.translationtype: HT
+ms.openlocfilehash: 801c2fe1710952a12584bf10dd8e5c77de3b839c
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905769"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625093"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務建立商店定位器
 
@@ -935,6 +935,10 @@ ms.locfileid: "96905769"
  * 將資料儲存在資料庫中和搜尋附近的位置。 若要深入了解，請參閱 [SQL Server 空間資料類型概觀](/sql/relational-databases/spatial/spatial-data-types-overview?preserve-view=true&view=sql-server-2017)和[查詢最接近像素的空間資料](/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?preserve-view=true&view=sql-server-2017)。
 
 您可以[檢視完整的原始程式碼](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)、[檢視即時範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)，以及使用[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)深入了解 Azure 地圖服務的涵蓋範圍和功能。 您也可以[使用資料驅動的樣式運算式](data-driven-style-expressions-web-sdk.md) ，將其套用至您的商務邏輯。
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有任何資源需要清除。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 97741423fa8b689a92bd9db78b810e6b86aefcbd
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 56fc11583bcdd271d0225de90ef7ab06bcf87cbf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247058"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625109"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>使用 PowerShell 在 Azure Kubernetes Service (AKS) 叢集上建立 Windows Server 容器
 
@@ -97,7 +97,7 @@ New-AzAksCluster -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCoun
 根據預設，系統會使用可執行 Linux 容器的節點集區來建立 AKS 叢集。 使用 `New-AzAksNodePool` Cmdlet 來新增可在 Linux 節點集區旁執行 Windows Server 容器的節點集區。
 
 ```azurepowershell-interactive
-New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -OsType Windows -Name npwin -KubernetesVersion 1.16.7
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin -KubernetesVersion 1.16.7
 ```
 
 上述命令會建立名為 **npwin** 的新節點集區，並將此新增至 **myAKSCluster**。 建立節點集區以執行 Windows Server 容器時，**VmSize** 的預設值是 **Standard_D2s_v3**。 如果您選擇設定 **VmSize** 參數，請檢查 [限制的 VM 大小][restricted-vm-sizes]清單。 最小的建議大小是 **Standard_D2s_v3**。 上一個命令也會使用執行 `New-AzAks` 時，預設 vnet 中所建立的預設子網路。

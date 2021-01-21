@@ -2,13 +2,13 @@
 title: 連結範本以進行部署
 description: 描述如何在 Azure Resource Manager 範本中使用連結的範本 (ARM 範本) 來建立模組化範本方案。 示範如何傳遞參數值、指定參數檔案，以及動態建立 URL。
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: cac63ccdd13e245baf97695e9b138c29d3db4958
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/20/2021
+ms.openlocfilehash: dd810167e07f1bb23f9563936cb481652953ccd1
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760617"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624853"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 資源時使用連結和巢狀的範本
 
@@ -162,7 +162,7 @@ ms.locfileid: "97760617"
 
 `exampleVar`根據中的屬性值，變更的值 `scope` `expressionEvaluationOptions` 。 下表顯示這兩個範圍的結果。
 
-| `expressionEvaluationOptions` 範圍 | 輸出 |
+| 評估範圍 | 輸出 |
 | ----- | ------ |
 | inner | 從嵌套的範本 |
 | 外部 (或預設)  | 從父範本 |
@@ -277,6 +277,129 @@ ms.locfileid: "97760617"
 }
 ```
 
+在嵌套的範本中使用安全參數值時，請務必小心。 如果您將範圍設定為 [外部]，安全值就會以純文字的形式儲存在部署歷程記錄中。 在部署歷程記錄中查看範本的使用者，可以看到安全的值。 相反地，請使用內部範圍，或將需要安全值的資源加入父範本中。
+
+下列摘錄顯示哪些是安全且不安全的值。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "Username for the Virtual Machine."
+      }
+    },
+    "adminPasswordOrKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+      }
+    }
+  },
+  ...
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2020-06-01",
+      "name": "mainTemplate",
+      "properties": {
+        ...
+        "osProfile": {
+          "computerName": "mainTemplate",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in parent template
+        }
+      }
+    },
+    {
+      "name": "outer",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "outer"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "outer",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "outer",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // No, not secure because resource is in nested template with outer scope
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "inner",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "adminPasswordOrKey": {
+              "value": "[parameters('adminPasswordOrKey')]"
+          },
+          "adminUsername": {
+              "value": "[parameters('adminUsername')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "adminUsername": {
+              "type": "string",
+              "metadata": {
+                "description": "Username for the Virtual Machine."
+              }
+            },
+            "adminPasswordOrKey": {
+              "type": "securestring",
+              "metadata": {
+                "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "inner",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "inner",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in nested template and scope is inner
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
 > [!NOTE]
 >
 > 當範圍設定為時 `outer` ，您不能 `reference` 在已在嵌套範本中部署的資源之嵌套範本的輸出區段中使用函數。 若要在嵌套的範本中傳回已部署之資源的值，請使用 `inner` 範圍，或將您的嵌套範本轉換成連結的範本。
@@ -377,7 +500,7 @@ ms.locfileid: "97760617"
 
 您可以建立 [範本規格](template-specs.md) ，將主要範本和其連結的範本封裝到您可以部署的單一實體，而不是在可存取的端點上維護連結的範本。 範本規格是您 Azure 訂用帳戶中的資源。 這可讓您輕鬆安全地與組織中的使用者共用範本。 您可以使用 Azure 角色型存取控制 (Azure RBAC) 來授與範本規格的存取權。這項功能目前為預覽狀態。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 - [教學課程：使用連結的範本建立範本規格](./template-specs-create-linked.md)。
 - [教學課程：將範本規格部署為連結的範本](./template-specs-deploy-linked-template.md)。

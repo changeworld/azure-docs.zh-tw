@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4c3b5095da4e55dc8f881a610f80f1150422e739
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: c67b0bab554f363b8389c5557eadeac6e4c577a2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119912"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625226"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>無伺服器 SQL 集區的自助服務
 
@@ -29,7 +29,9 @@ ms.locfileid: "98119912"
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>查詢因為無法開啟檔案而失敗
 
-如果您的查詢失敗，並出現「無法開啟檔案，因為檔案不存在或其他程序正在使用該檔案」錯誤，而且您確定檔案既存在，也沒有其他程序正在使用，則表示無伺服器 SQL 集區無法存取該檔案。 此問題通常發生在 Azure Active Directory 身分識別沒有可供存取檔案的權限時。 根據預設，無伺服器 SQL 集區會嘗試使用 Azure Active Directory 身分識別來存取檔案。 若要解決此問題，您必須具有可存取該檔案的適當權限。 最簡單的方式是在您嘗試查詢的儲存體帳戶上對自己授與「儲存體 Blob 資料參與者」角色。 [請瀏覽關於儲存體的 Azure Active Directory 存取控制完整指南以取得詳細資訊](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 
+如果您的查詢失敗，並出現「無法開啟檔案，因為檔案不存在或其他程序正在使用該檔案」錯誤，而且您確定檔案既存在，也沒有其他程序正在使用，則表示無伺服器 SQL 集區無法存取該檔案。 此問題通常發生在 Azure Active Directory 身分識別沒有可供存取檔案的權限時。 根據預設，無伺服器 SQL 集區會嘗試使用 Azure Active Directory 身分識別來存取檔案。 若要解決此問題，您必須具有可存取該檔案的適當權限。 最簡單的方式是在您嘗試查詢的儲存體帳戶上對自己授與「儲存體 Blob 資料參與者」角色。 
+- [請瀏覽關於儲存體的 Azure Active Directory 存取控制完整指南以取得詳細資訊](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 
+- [造訪 Azure Synapse Analytics 中無伺服器 SQL 集區的控制儲存體帳戶存取權](develop-storage-files-storage-access-control.md)
 
 ## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>查詢失敗，因為目前的資源條件約束導致其無法執行 
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a63c309c8e728e3f76ad904d479557b368388954
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913397"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624770"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 Azure 儲存體總管來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 ACL (機器翻譯)
 
@@ -80,7 +80,7 @@ ms.locfileid: "95913397"
 
 您可以在容器根目錄設定權限。 若要這樣做，您必須使用有權執行此動作的個別帳戶 (而非使用連接字串) 登入 Azure 儲存體總管。 以滑鼠右鍵按一下容器，然後選取 [管理權限]，顯示 [管理權限] 對話方塊。
 
-![Microsoft Azure 儲存體總管 - 管理目錄存取](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Microsoft Azure 儲存體總管 - 管理目錄存取](media/storage-quickstart-blobs-storage-explorer/manageperms.png)
 
 [管理權限] 對話方塊可讓您管理擁有者和擁有者群組的權限。 它也可以讓您將新的使用者和群組新增到存取控制清單，方便之後管理他們的權限。
 
@@ -105,6 +105,10 @@ ms.locfileid: "95913397"
 > 在這裡選取的項目並不會在目錄內部目前現有的任何項目上設定使用權限。 如果檔案已經存在，必須移至每個項目手動設定使用權限。
 
 您可以管理個別目錄及個別檔案的使用權限，也就是允許您進行更細部的存取控制。 管理目錄和檔案使用權限的程序與上面的描述相同。 以滑鼠右鍵按一下您想要管理使用權限的檔案或目錄，然後依照相同程序進行作業。
+
+## <a name="private-endpoints-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的私人端點
+
+儲存體總管在使用 Data Lake Storage Gen2 時，會使用 Blob (blob) & () dfs Azure Data Lake Storage Gen2 [端點](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) 。 如果使用私人端點設定 Azure Data Lake Storage Gen2 的存取權，請確定已為儲存體帳戶建立兩個私人端點：一個具有目標子資源 `blob` ，另一個則具有目標子資源 `dfs` 。
 
 ## <a name="next-steps"></a>後續步驟
 

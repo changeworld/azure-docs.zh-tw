@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 36db1b23d8fb17cec4fe981c938f8c7003543b4d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838722"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624586"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>從管理主控台管理感應器
 
@@ -72,7 +72,7 @@ ms.locfileid: "97838722"
 
 若要更新數個感應器：
 
-1. 移至 [Azure 入口網站](https://portal.azure.com/)。
+1. 前往 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 移至適用于 IoT 的 Azure Defender。
 
@@ -150,7 +150,7 @@ ms.locfileid: "97838722"
 | 原則違規引擎 | 發生原則違規時，與學習或設定的原則中所定義的基準行為差異。 | 「未經授權的 HTTP 使用者代理程式」警示。 此警示表示原則未學習或核准的應用程式，會用來做為裝置上的 HTTP 用戶端。 這可能是新的網頁瀏覽器或該裝置上的應用程式。 |
 | 惡意程式碼引擎 | 惡意程式碼引擎會偵測惡意的網路活動。 | 「可疑的惡意活動 (Stuxnet) 」警示。 此警示表示感應器找到已知與 Stuxnet 惡意程式碼相關的可疑網路活動，這是以產業控制和 SCADA 網路為目標的先進持續性威脅。 |
 | 異常引擎 | 惡意程式碼引擎偵測到網路行為異常。 | 「通道中的定期行為」。 這是一項元件，可檢查網路連線，並尋找資料傳輸的定期或迴圈行為，這在產業網路中很常見。 |
-| 操作引擎 | 此引擎會偵測到操作事件或有故障的實體。 | 「懷疑資產已中斷連線 (沒有回應) 」警示。 當裝置未回應預先定義期間內的任何要求時，就會觸發此警示。 這可能表示裝置關機、中斷連線或故障。
+| 操作引擎 | 此引擎會偵測到操作事件或有故障的實體。 | `Device is Suspected to be Disconnected (Unresponsive)` 警報。 當裝置未回應預先定義期間內的任何要求時，就會觸發此警示。 這可能表示裝置關機、中斷連線或故障。
 |
 
 若要啟用或停用已連線感應器的引擎：
@@ -215,7 +215,7 @@ ms.locfileid: "97838722"
 
 當您超過所定義的備份保留數目時，會刪除最舊的備份檔案以容納新的備份檔案。
 
-感應器備份檔案會自動以下列格式命名： `<sensor name>-backup-version-<version>-<date>.tar` 。 例如： `Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar` 。 
+感應器備份檔案會自動以下列格式命名： `<sensor name>-backup-version-<version>-<date>.tar` 。 例如：`Sensor_1-backup-version-2.6.0.102-2019-06-24_09:24:55.tar`。 
 
 若要備份感應器：
 
@@ -315,6 +315,6 @@ ms.locfileid: "97838722"
 
 9. 將 `Backup.shared_location` 設定為 `<backup_folder_name_on_cyberx_server>`。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [管理個別感應器](how-to-manage-individual-sensors.md)

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: cdd8783daf9e1e1458f47e773eb3b6ccedfbae83
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599235"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624552"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 
@@ -342,7 +342,14 @@ ms.locfileid: "98599235"
 
 在 [Studio](https://ml.azure.com)中的 [計算] 頁面上，尋找計算執行個體的詳細資料。
 
+## <a name="troubleshooting"></a>疑難排解
+
+* 如果您無法連接到筆記本，請確定 **未** 停用 web 通訊端通訊。 若要讓計算實例 Jupyter 功能正常運作，必須啟用 web 通訊端通訊。 請確定您的網路允許 websocket 連接到 *. instances.azureml.net 和 *. instances.azureml.ms。 
+
+* 當計算實例部署在私人連結工作區時，只能從虛擬網路中存取。 如果您使用的是自訂 DNS 或 hosts 檔案，請新增 <實例名稱> 的專案 <region> 。使用工作區私人端點的私人 IP 位址 instances.azureml.ms。 如需詳細資訊，請參閱 [自訂 DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli) 文章。
+    
 ## <a name="next-steps"></a>後續步驟
 
 * [執行您的第一個實驗](tutorial-1st-experiment-sdk-train.md)
 * [使用快照集備份檔案儲存體](../storage/files/storage-snapshots-files.md)
+* [在安全的環境中工作](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)

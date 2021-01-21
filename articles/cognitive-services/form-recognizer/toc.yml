@@ -20,6 +20,8 @@
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: 使用表單辨識器搭配 AI Builder
       href: tutorial-ai-builder.md
+    - name: 大量擷取表單資料
+      href: tutorial-bulk-processing.md
 - name: 概念
   items:
     - name: 版面配置擷取

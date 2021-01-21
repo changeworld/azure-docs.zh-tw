@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 259db10aa8f5cd2b711eca001bc6d48057d5280d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
-ms.translationtype: HT
+ms.openlocfilehash: 32ce875600bb948e7c3e8479f712e99d25eb6367
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683214"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624946"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料
 
@@ -196,6 +196,10 @@ windsPlot.set_ylabel("Wind direction")
 * [轉譯 - 取得地圖影像](/rest/api/maps/render/getmapimage)
 
 如需 Azure 地圖服務 REST API 的完整清單，請參閱 [Azure 地圖服務 REST API](./consumption-model.md) \(部分機器翻譯\)。
+
+## <a name="clean-up-resources"></a>清除資源
+
+沒有任何資源需要清除。
 
 ## <a name="next-steps"></a>後續步驟
 

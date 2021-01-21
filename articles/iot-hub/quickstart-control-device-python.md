@@ -1,5 +1,5 @@
 ---
-title: 從 Azure IoT 中樞控制裝置快速入門 (Python) | Microsoft Docs
+title: 快速入門-從 Azure IoT 中樞快速入門 (Python) 來控制裝置 |Microsoft Docs
 description: 在此快速入門中，您會執行兩個範例 Python 應用程式。 其中一個應用程式是後端應用程式，可以從遠端控制連線到中樞的裝置。 另一個應用程式則是模擬可以從遠端控制且連線到中樞的裝置。
 author: wesmc7777
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ms.date: 09/14/2020
-ms.openlocfilehash: 5db51e78a6770a642728cc058f425baf7c7e095b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: HT
+ms.openlocfilehash: 7ee30398ccfdad3ea7b28f277e45c2224de827e8
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832155"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624654"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>快速入門：控制連線到 IoT 中樞的裝置 (Python)
 
@@ -68,7 +68,7 @@ ms.locfileid: "94832155"
     **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
     記下裝置連接字串，它看起來如下：

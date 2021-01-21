@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 63184a623c6f0a8c53e09e6af92c05e45c5e0794
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b530fc320f6c29dd7a86a39c5a7019265bb6b724
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185968"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624417"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析作業
 
@@ -23,7 +23,7 @@ ms.locfileid: "98185968"
 
 空間分析容器會執行下列作業：
 
-| 作業識別碼| Description|
+| 作業識別碼| 描述|
 |---------|---------|
 | cognitiveservices，spatialanalysis-personcount | 在相機的視圖欄位中，計算指定區域內的人員。 此區域必須由單一攝影機完全涵蓋，才能讓 PersonCount 記錄精確的總計。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices，spatialanalysis-personcrossingline | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
@@ -32,7 +32,7 @@ ms.locfileid: "98185968"
 
 您也可以在版本中使用上述所有作業 `.debug` ，這可讓您在處理影片框架時將其視覺化。 您必須 `xhost +` 在主機電腦上執行，才能啟用影片框架和事件的視覺效果。
 
-| 作業識別碼| Description|
+| 作業識別碼| 描述|
 |---------|---------|
 | cognitiveservices spatialanalysis-personcount. debug | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices spatialanalysis-personcrossingline. debug | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
@@ -43,7 +43,7 @@ ms.locfileid: "98185968"
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| 作業識別碼| Description|
+| 作業識別碼| 描述|
 |---------|---------|
 | cognitiveservices，spatialanalysis-personcount. livevideoanalytics | 在相機的視圖欄位中，計算指定區域內的人員。 <br> 發出初始 _personCountEvent_ 事件，然後在計數變更時 _personCountEvent_ 事件。  |
 | cognitiveservices，spatialanalysis-personcrossingline. livevideoanalytics | 追蹤某位人員如何在相機的視圖欄位中，跨越指定的行。 <br>當人員跨越該行並提供方向資訊時，發出 _personLineEvent_ 事件。 
@@ -57,7 +57,7 @@ ms.locfileid: "98185968"
 
 這些是每個空間分析作業所需的參數。
 
-| 作業參數| Description|
+| 作業參數| 描述|
 |---------|---------|
 | 作業識別碼 | 上表中的運算識別碼。|
 | 已啟用 | 布林值： true 或 false|
@@ -69,6 +69,38 @@ ms.locfileid: "98185968"
 | DETECTOR_NODE_CONFIG | JSON，指出要在哪個 GPU 上執行偵測器節點。 應採用下列格式： `"{ \"gpu_index\": 0 }",`|
 | SPACEANALYTICS_CONFIG | 區域和行的 JSON 設定，如下所述。|
 | ENABLE_FACE_MASK_CLASSIFIER | `True` 若要啟用偵測影片串流中的臉部遮罩，請 `False` 將其停用。 預設為停用。 臉部遮罩偵測需要輸入影片寬度參數為 1920 `"INPUT_VIDEO_WIDTH": 1920` 。 如果偵測到的人沒有面對相機或太遠，就不會傳回臉部遮罩屬性。 如需詳細資訊，請參閱 [攝影機放置](spatial-analysis-camera-placement.md) 指南 |
+
+這是所有空間分析作業的 DETECTOR_NODE_CONFIG 參數範例。
+
+```json
+{
+"gpu_index": 0,
+"do_calibration": true,
+"enable_recalibration": true,
+"calibration_quality_check_frequency_seconds":86400,
+"calibration_quality_check_sampling_num": 80,
+"calibration_quality_check_sampling_times": 5,
+"calibration_quality_check_sample_collect_frequency_seconds": 300,
+"calibration_quality_check_one_round_sample_collect_num":10,
+"calibration_quality_check_queue_max_size":1000,
+"recalibration_score": 75
+}
+```
+
+| 名稱 | 類型| 描述|
+|---------|---------|---------|
+| `gpu_index` | 字串| 將執行此作業的 GPU 索引。|
+| `do_calibration` | 字串 | 表示已開啟校正。 `do_calibration` cognitiveservices 必須是 true， **spatialanalysis-persondistance** 才能正常運作。 預設會將 do_calibration 設定為 True。 |
+| `enable_recalibration` | bool | 指出是否開啟自動 recalibration。 預設為 `true`。|
+| `calibration_quality_check_frequency_seconds` | int | 每次品質檢查之間的最小秒數，以判斷是否需要 recalibration。 預設值為 `86400` (24 小時) 。 只有在使用時才會使用 `enable_recalibration=True` 。|
+| `calibration_quality_check_sampling_num` | int | 依品質檢查錯誤量值，所要使用的隨機選取預存資料範例數目。 預設為 `80`。 只有在使用時才會使用 `enable_recalibration=True` 。|
+| `calibration_quality_check_sampling_times` | int | 每次品質檢查的不同隨機選取資料樣本集合上，會執行錯誤測量的次數。 預設為 `5`。 只有在使用時才會使用 `enable_recalibration=True` 。|
+| `calibration_quality_check_sample_collect_frequency_seconds` | int | 收集 recalibration 和品質檢查的新資料樣本之間的最小秒數。 預設值為 `300` (5 分鐘) 。 只有在使用時才會使用 `enable_recalibration=True` 。|
+| `calibration_quality_check_one_round_sample_collect_num` | int | 每一回合樣本集合所要收集的新資料樣本數目下限。 預設為 `10`。 只有在使用時才會使用 `enable_recalibration=True` 。|
+| `calibration_quality_check_queue_max_size` | int | 校正相機模型時要儲存的最大資料樣本數。 預設為 `1000`。 只有在使用時才會使用 `enable_recalibration=True` 。|
+| `recalibration_score` | int | 開始 recalibration 的最高品質閾值。 預設為 `75`。 只有在使用時才會使用 `enable_recalibration=True` 。 校正品質的計算方式是根據與影像目標 reprojection 錯誤的反向關聯性。 如果在2D 影像框架中偵測到目標，則會將目標投射在3D 空間中，並使用現有的相機校正參數重新投射回2D 影像框架。 Reprojection 錯誤是以偵測到的目標和重新投射目標之間的平均距離來測量。|
+| `enable_breakpad`| bool | 指出您是否想要啟用 breakpad，以用來產生用來進行 debug 的損毀傾印。 它 `false` 預設為。 如果您將它設定為 `true` ，您也需要加入 `"CapAdd": ["SYS_PTRACE"]` 容器的 `HostConfig` 部分 `createOptions` 。 根據預設，損毀傾印會上傳至 [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter 應用程式，如果您想要將損毀傾印上傳至您自己的 AppCenter 應用程式，您可以 `RTPT_APPCENTER_APP_SECRET` 使用應用程式的應用程式秘密覆寫環境變數。
+
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Cognitiveservices 的區域設定-spatialanalysis-personcount
 
@@ -90,7 +122,7 @@ ms.locfileid: "98185968"
 }
 ```
 
-| 名稱 | 類型| Description|
+| 名稱 | 類型| 描述|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -135,17 +167,17 @@ ms.locfileid: "98185968"
 }
 ```
 
-| 名稱 | 類型| Description|
+| 名稱 | 類型| 描述|
 |---------|---------|---------|
 | `lines` | list| 行的清單。|
 | `name` | 字串| 這一行的易記名稱。|
 | `line` | list| 行的定義。 這是一條方向線，可讓您瞭解「輸入」與「結束」。|
 | `start` | 值組| 線條起點的 x，y 座標。 Float 值代表頂點相對於左上角的位置。 若要計算絕對 x，y 值，您可以將這些值乘以框架大小。 |
 | `end` | 值組| x，y 軸座標，代表線條的結束點。 Float 值代表頂點相對於左上角的位置。 若要計算絕對 x，y 值，您可以將這些值乘以框架大小。 |
-| `threshold` | FLOAT| 當 AI 模型的信賴度大於或等於此值時，就會輸出事件。 |
+| `threshold` | FLOAT| 當 AI 模型的信賴度大於或等於此值時，就會輸出事件。 預設值為 16。 這是達到最大精確度的建議值。 |
 | `type` | 字串| 針對 **cognitiveservices spatialanalysis-personcrossingline** 這應該是 `linecrossing` 。|
 |`trigger`|字串|傳送事件的觸發程式類型。<br>支援的值：「事件」：當有人跨越該行時引發。|
-| `focus` | 字串| 用來計算事件的人員周框方塊內的點位置。 焦點的價值可以 `footprint` (人員) 的使用量， (人員的周框方塊) 的正 `bottom_center` 下方， `center` (人員的周框方塊) 的中心。|
+| `focus` | 字串| 用來計算事件的人員周框方塊內的點位置。 焦點的價值可以 `footprint` (人員) 的使用量， (人員的周框方塊) 的正 `bottom_center` 下方， `center` (人員的周框方塊) 的中心。 預設值為 [使用量]。|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingpolygon"></a>Cognitiveservices 的區域設定-spatialanalysis-personcrossingpolygon
 
@@ -181,15 +213,15 @@ ms.locfileid: "98185968"
 }
 ```
 
-| 名稱 | 類型| Description|
+| 名稱 | 類型| 描述|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
 | `polygon` | list| 每個值組都代表多邊形頂點的 x，y。 多邊形代表追蹤或計算人員的區域。 Float 值代表頂點相對於左上角的位置。 若要計算絕對 x，y 值，您可以將這些值乘以框架大小。 
-| `threshold` | FLOAT| 當 AI 模型的信賴度大於或等於此值時，就會輸出事件。 |
+| `threshold` | FLOAT| 當 AI 模型的信賴度大於或等於此值時，就會輸出事件。 當類型為 zonecrossing 時，預設值為48，而當 DwellTime 時，預設值為16。 這些是建議的值，可達到最大精確度。  |
 | `type` | 字串| 若為 **cognitiveservices，spatialanalysis-personcrossingpolygon** 應該是 `zonecrossing` 或 `zonedwelltime` 。|
 | `trigger`|字串|傳送事件的觸發程式類型<br>支援的值：「事件」：當有人進入或離開區域時引發。|
-| `focus` | 字串| 用來計算事件的人員周框方塊內的點位置。 焦點的價值可以 `footprint` (人員) 的使用量， (人員的周框方塊) 的正 `bottom_center` 下方， `center` (人員的周框方塊) 的中心。|
+| `focus` | 字串| 用來計算事件的人員周框方塊內的點位置。 焦點的價值可以 `footprint` (人員) 的使用量， (人員的周框方塊) 的正 `bottom_center` 下方， `center` (人員的周框方塊) 的中心。 預設值為 [使用量]。|
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>Cognitiveservices 的區域設定-spatialanalysis-persondistance
 
@@ -215,7 +247,7 @@ ms.locfileid: "98185968"
 }
 ```
 
-| 名稱 | 類型| Description|
+| 名稱 | 類型| 描述|
 |---------|---------|---------|
 | `zones` | list| 區域清單。 |
 | `name` | 字串| 此區域的易記名稱。|
@@ -228,29 +260,6 @@ ms.locfileid: "98185968"
 | `minimum_distance_threshold` | FLOAT| 當使用者小於該距離時，將會觸發「TooClose」事件的距離（以英尺為間隔）。|
 | `maximum_distance_threshold` | FLOAT| 當使用者大於該距離時，將會觸發「TooFar」事件的距離（以英尺為間隔）。|
 | `focus` | 字串| 用來計算事件的人員周框方塊內的點位置。 焦點的價值可以 `footprint` (人員) 的使用量， (人員的周框方塊) 的正 `bottom_center` 下方， `center` (人員的周框方塊) 的中心。|
-
-這是 DETECTOR_NODE_CONFIG 參數的 JSON 輸入範例，可設定 **cognitiveservices spatialanalysis-persondistance** 區域。
-
-```json
-{ 
-"gpu_index": 0, 
-"do_calibration": true
-}
-```
-
-| 名稱 | 類型| Description|
-|---------|---------|---------|
-| `gpu_index` | 字串| 將執行此作業的 GPU 索引。|
-| `do_calibration` | 字串 | 表示已開啟校正。 `do_calibration` cognitiveservices 必須是 true， **spatialanalysis-persondistance** 才能正常運作。|
-| `enable_recalibration` | bool | 指出是否開啟自動 recalibration。 預設為 `true`。|
-| `calibration_quality_check_frequency_seconds` | int | 每次品質檢查之間的最小秒數，以判斷是否需要 recalibration。 預設值為 `86400` (24 小時) 。 只有在使用時才會使用 `enable_recalibration=True` 。|
-| `calibration_quality_check_sampling_num` | int | 依品質檢查錯誤量值，所要使用的隨機選取預存資料範例數目。 預設為 `80`。 只有在使用時才會使用 `enable_recalibration=True` 。|
-| `calibration_quality_check_sampling_times` | int | 每次品質檢查的不同隨機選取資料樣本集合上，會執行錯誤測量的次數。 預設為 `5`。 只有在使用時才會使用 `enable_recalibration=True` 。|
-| `calibration_quality_check_sample_collect_frequency_seconds` | int | 收集 recalibration 和品質檢查的新資料樣本之間的最小秒數。 預設值為 `300` (5 分鐘) 。 只有在使用時才會使用 `enable_recalibration=True` 。|
-| `calibration_quality_check_one_round_sample_collect_num` | int | 每一回合樣本集合所要收集的新資料樣本數目下限。 預設為 `10`。 只有在使用時才會使用 `enable_recalibration=True` 。|
-| `calibration_quality_check_queue_max_size` | int | 校正相機模型時要儲存的最大資料樣本數。 預設為 `1000`。 只有在使用時才會使用 `enable_recalibration=True` 。|
-| `recalibration_score` | int | 開始 recalibration 的最高品質閾值。 預設為 `75`。 只有在使用時才會使用 `enable_recalibration=True` 。 校正品質的計算方式是根據與影像目標 reprojection 錯誤的反向關聯性。 如果在2D 影像框架中偵測到目標，則會將目標投射在3D 空間中，並使用現有的相機校正參數重新投射回2D 影像框架。 Reprojection 錯誤是以偵測到的目標和重新投射目標之間的平均距離來測量。|
-| `enable_breakpad`| bool | 指出您是否想要啟用 breakpad，以用來產生用來進行 debug 的損毀傾印。 它 `false` 預設為。 如果您將它設定為 `true` ，您也需要加入 `"CapAdd": ["SYS_PTRACE"]` 容器的 `HostConfig` 部分 `createOptions` 。 根據預設，損毀傾印會上傳至 [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) AppCenter 應用程式，如果您想要將損毀傾印上傳至您自己的 AppCenter 應用程式，您可以 `RTPT_APPCENTER_APP_SECRET` 使用應用程式的應用程式秘密覆寫環境變數。
 
 請參閱 [攝影機放置](spatial-analysis-camera-placement.md) 指導方針，以瞭解區域和線路設定。
 
@@ -353,7 +362,7 @@ ms.locfileid: "98185968"
 }
 ```
 
-| 事件功能變數名稱 | 類型| Description|
+| 事件功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 事件識別碼|
 | `type` | 字串| 事件類型|
@@ -363,7 +372,7 @@ ms.locfileid: "98185968"
 | `zone` | 字串 | 多邊形的「名稱」欄位，代表超過的區域|
 | `trigger` | 字串| 觸發程式類型為「事件」或「間隔」，視 SPACEANALYTICS_CONFIG 中的值而定。 `trigger`|
 
-| 偵測功能變數名稱 | 類型| Description|
+| 偵測功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 偵測識別碼|
 | `type` | 字串| 偵測類型|
@@ -374,7 +383,7 @@ ms.locfileid: "98185968"
 | `face_Mask` | FLOAT | 範圍 (0-1 的屬性信賴值) 指出偵測到的人員正在佩戴臉部遮罩 |
 | `face_noMask` | FLOAT | 範圍 (0-1 的屬性信賴值) 指出偵測到的人員 **未** 戴上臉部遮罩 |
 
-| SourceInfo 功能變數名稱 | 類型| Description|
+| SourceInfo 功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 相機識別碼|
 | `timestamp` | date| 發出 JSON 承載時的 UTC 日期|
@@ -387,7 +396,7 @@ ms.locfileid: "98185968"
 | `focalLength` | FLOAT | 攝影機的焦距長度（以圖元為單位）。 這是從自動校正推斷而來。 |
 | `tiltUpAngle` | FLOAT | 攝影機從垂直傾斜角度。 這是從自動校正推斷而來。|
 
-| SourceInfo 功能變數名稱 | 類型| Description|
+| SourceInfo 功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 相機識別碼|
 | `timestamp` | date| 發出 JSON 承載時的 UTC 日期|
@@ -452,7 +461,7 @@ ms.locfileid: "98185968"
     "schemaVersion": "1.0"
 }
 ```
-| 事件功能變數名稱 | 類型| Description|
+| 事件功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 事件識別碼|
 | `type` | 字串| 事件類型|
@@ -462,7 +471,7 @@ ms.locfileid: "98185968"
 | `status` | 字串| 直線交點的方向，也就是 ' CrossLeft ' 或 ' CrossRight '|
 | `zone` | 字串 | 超過的行的 [名稱] 欄位|
 
-| 偵測功能變數名稱 | 類型| Description|
+| 偵測功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 偵測識別碼|
 | `type` | 字串| 偵測類型|
@@ -473,7 +482,7 @@ ms.locfileid: "98185968"
 | `face_Mask` | FLOAT | 範圍 (0-1 的屬性信賴值) 指出偵測到的人員正在佩戴臉部遮罩 |
 | `face_noMask` | FLOAT | 範圍 (0-1 的屬性信賴值) 指出偵測到的人員 **未** 戴上臉部遮罩 |
 
-| SourceInfo 功能變數名稱 | 類型| Description|
+| SourceInfo 功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 相機識別碼|
 | `timestamp` | date| 發出 JSON 承載時的 UTC 日期|
@@ -597,7 +606,7 @@ ms.locfileid: "98185968"
 }
 ```
 
-| 事件功能變數名稱 | 類型| Description|
+| 事件功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 事件識別碼|
 | `type` | 字串| 事件類型。 值可以是 _personZoneDwellTimeEvent_ 或 _personZoneEnterExitEvent_|
@@ -606,10 +615,10 @@ ms.locfileid: "98185968"
 | `trackinId` | 字串| 偵測到的人員唯一識別碼|
 | `status` | 字串| 多邊形交叉的方向，也就是「Enter」或「Exit」|
 | `side` | int| 該人員所交叉多邊形的邊數。 每一端都是多邊形的兩個頂點之間的編號邊緣，代表您的區域。 多邊形前兩個頂點之間的邊緣代表第一端|
-| `durationMs` | int | 代表人員在區域中所花費時間的毫秒數。 當事件種類為 _personZoneDwellTimeEvent_ 時，就會提供此欄位。|
+| `durationMs` | FLOAT | 代表人員在區域中所花費時間的毫秒數。 當事件種類為 _personZoneDwellTimeEvent_ 時，就會提供此欄位。|
 | `zone` | 字串 | 多邊形的「名稱」欄位，代表超過的區域|
 
-| 偵測功能變數名稱 | 類型| Description|
+| 偵測功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 偵測識別碼|
 | `type` | 字串| 偵測類型|
@@ -712,7 +721,7 @@ ms.locfileid: "98185968"
 }
 ```
 
-| 事件功能變數名稱 | 類型| Description|
+| 事件功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 事件識別碼|
 | `type` | 字串| 事件類型|
@@ -727,7 +736,7 @@ ms.locfileid: "98185968"
 | `zone` | 字串 | 多邊形的「名稱」欄位，代表在人員之間 distancing 監視的區域|
 | `trigger` | 字串| 觸發程式類型為「事件」或「間隔」，視 SPACEANALYTICS_CONFIG 中的值而定。 `trigger`|
 
-| 偵測功能變數名稱 | 類型| Description|
+| 偵測功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 偵測識別碼|
 | `type` | 字串| 偵測類型|
@@ -744,7 +753,7 @@ ms.locfileid: "98185968"
 在此範例中，`centerGroundPoint` 是 `{x: 4, y: 5}`。 這表示有一個人從相機移到4英尺，右邊有5英尺，查看空間由上而下。
 
 
-| SourceInfo 功能變數名稱 | 類型| Description|
+| SourceInfo 功能變數名稱 | 類型| 描述|
 |---------|---------|---------|
 | `id` | 字串| 相機識別碼|
 | `timestamp` | date| 發出 JSON 承載時的 UTC 日期|
@@ -955,7 +964,7 @@ ms.locfileid: "98185968"
       }
   }
   ```
-| 名稱 | 類型| Description|
+| 名稱 | 類型| 描述|
 |---------|---------|---------|
 | `batch_size` | int | 指出將在作業中使用的相機數目。 |
 
