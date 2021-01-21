@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Kubernetes Service (AKS) 叢集節點建�
 services: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.openlocfilehash: 50a52584618e505aa2ae7bd9ed7e0a9f6bc330a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c044b552cd0c28a7073364c48b9572045a290331
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015607"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662870"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>使用 SSH 連線到 Azure Kubernetes Service (AKS) 叢集節點以進行維護或疑難排解
 
@@ -25,7 +25,7 @@ ms.locfileid: "87015607"
 
 本文也假設您擁有 SSH 金鑰。 您可以使用 [macOS 或 Linux][ssh-nix] 或 [Windows][ssh-windows]建立 SSH 金鑰。 如果您使用 PuTTY Gen 來建立金鑰組，請將金鑰組儲存為 OpenSSH 格式，而不是預設的 PuTTy 私用金鑰格式， (. ppk 檔案) 。
 
-您也需要安裝並設定 Azure CLI 2.0.64 版版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也需要安裝並設定 Azure CLI 2.0.64 版版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>針對 SSH 存取設定以虛擬機器擴展集為基礎的 AKS 叢集
 
@@ -35,10 +35,10 @@ ms.locfileid: "87015607"
 
 ```azurecli-interactive
 CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
-SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
+SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query '[0].name' -o tsv)
 ```
 
-上述範例會將*myResourceGroup*中*myAKSCluster*的叢集資源組名指派給*CLUSTER_RESOURCE_GROUP*。 然後，此範例會使用 *CLUSTER_RESOURCE_GROUP* 來列出擴展集名稱，並將它指派給 *SCALE_SET_NAME*。
+上述範例會將 *myResourceGroup* 中 *myAKSCluster* 的叢集資源組名指派給 *CLUSTER_RESOURCE_GROUP*。 然後，此範例會使用 *CLUSTER_RESOURCE_GROUP* 來列出擴展集名稱，並將它指派給 *SCALE_SET_NAME*。
 
 > [!IMPORTANT]
 > 目前，您應該只使用 Azure CLI 更新以虛擬機器擴展集為基礎的 AKS 叢集的 SSH 金鑰。
@@ -97,7 +97,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-上述範例會將*myResourceGroup*中*myAKSCluster*的叢集資源組名指派給*CLUSTER_RESOURCE_GROUP*。 然後，此範例會使用 *CLUSTER_RESOURCE_GROUP* 來列出虛擬機器名稱。 範例輸出會顯示虛擬機器的名稱：
+上述範例會將 *myResourceGroup* 中 *myAKSCluster* 的叢集資源組名指派給 *CLUSTER_RESOURCE_GROUP*。 然後，此範例會使用 *CLUSTER_RESOURCE_GROUP* 來列出虛擬機器名稱。 範例輸出會顯示虛擬機器的名稱：
 
 ```
 Name                      ResourceGroup                                  Location
@@ -198,7 +198,7 @@ aks-nodepool1-79590246-0  10.240.0.4
 
 完成時，`exit` SSH 工作階段，然後 `exit` 互動式容器工作階段。 這個容器工作階段關閉時，會刪除用來從 AKS 叢集存取 SSH 的 Pod。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如需其他疑難排解資料，您可以[檢視 kubelet 記錄][view-kubelet-logs]或[檢視 Kubernetes 主要節點記錄][view-master-logs]。
 

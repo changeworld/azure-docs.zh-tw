@@ -3,17 +3,17 @@ title: 快速入門：建立伺服器 - Azure PowerShell - 適用於 MariaDB 的
 description: 本快速入門說明如何使用 PowerShell，在 Azure 資源群組中建立適用於 MariaDB 的 Azure 資料庫伺服器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 05082ffa891b72b472ed5433282198c61080f073
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.openlocfilehash: 91472d3f3cb39d34f560715f511f666079b1d1c0
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999479"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664659"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-using-powershell"></a>快速入門：使用 PowerShell 建立適用於 MariaDB 的 Azure 資料庫伺服器
 

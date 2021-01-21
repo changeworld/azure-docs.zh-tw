@@ -3,17 +3,17 @@ title: 快速入門：建立伺服器 - Azure CLI - 適用於 MariaDB 的 Azure 
 description: 本快速入門說明如何使用 Azure CLI，在 Azure 資源群組中建立適用於 MariaDB 的 Azure 資料庫伺服器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
-ms.translationtype: HT
+ms.openlocfilehash: 2242b0842bda9587915fc949046b8fa7effb725c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435734"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662155"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立適用於 MariaDB 的 Azure 資料庫伺服器
 

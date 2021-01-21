@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 07/13/2020
+ms.date: 01/20/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f85b78480e7258780f8dd396431edeb968189e4c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
-ms.translationtype: HT
+ms.openlocfilehash: ae7ae239493c999d98100bf9dee4f4f0183addf2
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741247"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660808"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>什麼是 Azure Active Directory 驗證？
 
@@ -27,6 +27,8 @@ ms.locfileid: "96741247"
 * 將密碼變更寫回內部部署環境的混合式整合
 * 對內部部署環境強制執行密碼保護原則的混合式整合
 * 無密碼驗證
+
+若要深入瞭解這些驗證元件，請參閱我們的短片。
 
 ## <a name="improve-the-end-user-experience"></a>改善使用者體驗
 
@@ -80,7 +82,7 @@ Azure AD Multi-Factor Authentication 的運作需要下列二種或更多的驗�
 
 ![無密碼驗證程序的安全性與便利性](./media/concept-authentication-passwordless/passwordless-convenience-security.png)
 
-當您使用無密碼方法登入時，將會透過 Windows Hello 企業版或 FIDO2 安全性金鑰的生物識別特徵之類的方法來提供認證。 攻擊者無法輕易複製這些驗證方法。
+當您使用無密碼方法登入時，會使用與 Windows Hello 企業版的生物特徵辨識或 FIDO2 安全性金鑰之類的方法來提供認證。 攻擊者無法輕易複製這些驗證方法。
 
 Azure AD 提供了使用無密碼方法進行原生驗證的方式，以簡化使用者的登入體驗，並降低遭受攻擊的風險。
 

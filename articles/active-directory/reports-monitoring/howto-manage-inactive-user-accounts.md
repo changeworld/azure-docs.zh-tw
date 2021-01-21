@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/07/2020
+ms.date: 01/21/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fb517f8c50ad2c32f23542e60069a0e0a496a2d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89244716"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660659"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>作法：管理 Azure AD 中的非使用中使用者帳戶
 
@@ -85,7 +85,7 @@ ms.locfileid: "89244716"
 
 若要產生 lastSignInDateTime 時間戳記，您必須成功登入。 由於 lastSignInDateTime 屬性是一項新功能，因此如果發生下列情況，lastSignInDateTime 屬性的值可能為空白：
 
-- 使用者的上次成功登入發生在此功能發行之前 (2019 年 12 月 1 日)。
+- 最後一次成功登入的使用者發生在2020年4月之前。
 - 受影響的使用者帳戶從未成功登入過。
 
 ## <a name="next-steps"></a>後續步驟

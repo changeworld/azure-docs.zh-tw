@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30b7788419695db7ee5d4b81714bf55248a41b4a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108717"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660279"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C：常見問題集 (FAQ)
 
@@ -49,7 +49,7 @@ Azure AD B2C 也支援 [自訂原則](custom-policy-overview.md)。 自訂原則
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>我可以設定範圍，以便從各種社交身分識別提供者收集取用者的詳細資訊嗎？
 
-否。 我們支援的一組社交身分識別提供者所使用的預設範圍如下：
+不會。 我們支援的一組社交身分識別提供者所使用的預設範圍如下：
 
 * Facebook: email
 * Google+: email
@@ -96,7 +96,7 @@ Azure AD B2C 的本機帳戶密碼使用者流程是以 Azure AD 的原則為基
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>我可以使用 Azure AD Connect，將儲存於內部部署 Active Directory 的取用者身分識別移轉至 Azure AD B2C 嗎？
 
-否，Azure AD Connect 不是設計來搭配 Azure AD B2C 一起使用。 請考慮使用 [MICROSOFT GRAPH API](manage-user-accounts-graph-api.md) 來進行使用者遷移。 如需詳細資訊，請參閱[使用者移轉指南](user-migration.md)。
+否，Azure AD Connect 不是設計來搭配 Azure AD B2C 一起使用。 請考慮使用 [MICROSOFT GRAPH API](microsoft-graph-operations.md) 來進行使用者遷移。 如需詳細資訊，請參閱[使用者移轉指南](user-migration.md)。
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>我的應用程式是否能在 iFrame 內開啟 Azure AD B2C 頁面？
 
@@ -145,7 +145,7 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 1. 選取 **應用程式註冊**，然後選取 [ **所有應用程式** ] 索引標籤。
 1. 刪除您註冊的所有應用程式。
 1. 刪除 **b2c 擴充功能-應用程式**。
-1. 在 [管理]  底下選取 [使用者]  。
+1. 在 [管理] 下，選取 [使用者]。
 1. 依次選取每個使用者 (將您目前登入的 *訂用帳戶系統管理員* 使用者排除為) 。 選取頁面底部的 [ **刪除** ]，然後在出現提示時選取 **[是]** 。
 1. 選取左側功能表上的 **Azure Active Directory** 。
 1. 在 [ **管理**] 底下，選取 [ **使用者設定**]。
@@ -163,9 +163,9 @@ Azure AD B2C 不適用於 SharePoint 外部夥伴共用的情節。請改以參�
 1. 刪除 Azure AD B2C 租 **使用者中)  (原則的所有使用者流程** 。
 1. 刪除您在 Azure AD B2C 租使用者中註冊 **(舊版) 的所有應用程式** 。
 1. 選取左側功能表上的 **Azure Active Directory** 。
-1. 在 [管理]  底下選取 [使用者]  。
+1. 在 [管理] 下，選取 [使用者]。
 1. 依次選取每個使用者 (將您目前登入的 *訂用帳戶系統管理員* 使用者排除為) 。 選取頁面底部的 [ **刪除** ]，然後在出現提示時選取 **[是]** 。
-1. 在 [管理] 底下，選取 [應用程式註冊]。
+1. 在 [管理]  底下選取 [應用程式註冊]  。
 1. 選取 [ **View all applications** ]
 1. 選取名為 **b2c-extensions-app** 的應用程式，選取 [ **刪除**]，然後在出現提示時選取 **[是]** 。
 1. 在 [ **管理**] 底下，選取 [ **使用者設定**]。

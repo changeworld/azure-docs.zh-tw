@@ -1,14 +1,35 @@
 ---
-ms.openlocfilehash: c3c5b8ef94b507cad433e587c9ebfc2ec16c0ff9
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
-ms.translationtype: HT
+ms.openlocfilehash: b1be5e903994f0a2c4a3d457f0c2bb5572a889c3
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91440413"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663024"
 ---
 ## <a name="add-secret-manager"></a>新增祕密管理員
 
 名為祕密管理員的工具能儲存專案樹狀結構外開發工作的敏感性資料。 此作法能協助避免於原始程式碼內意外共用應用程式祕密。 請完成下列步驟，以啟用在 ASP.NET Core 專案中使用秘密管理員：
+
+#### <a name="net-5x"></a>[.NET 5。x](#tab/core5x)
+
+瀏覽至專案的根目錄，然後執行下列命令以啟用專案中的秘密儲存體：
+
+```dotnetcli
+dotnet user-secrets init
+```
+
+包含 GUID 的 `UserSecretsId` 元素會新增至 .csproj 檔案：
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+    </PropertyGroup>
+
+</Project>
+```
 
 #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 

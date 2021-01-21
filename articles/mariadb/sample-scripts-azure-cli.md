@@ -3,17 +3,17 @@ title: Azure CLI 範例 - 適用於 MariaDB 的 Azure 資料庫
 description: 本文列出與「適用於 MariaDB 的 Azure 資料庫」進行互動的 Azure CLI 程式碼範例。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 3/18/2020
-ms.openlocfilehash: aa9efba1c49063d40b4df0444fb3bc63b124a0a0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: HT
+ms.openlocfilehash: 5218d087a622c1f651785afd1ab7cb418732b093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536767"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664594"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-mariadb"></a>「適用於 MariaDB 的 Azure 資料庫」的 Azuer CLI 範例 
 下表包含「適用於 MariaDB 的 Azure 資料庫」的範例 Azure CLI 指令碼連結。

@@ -3,17 +3,17 @@ title: 使用受控解決方案在 Azure 與 AWS 之間建立 VPN
 description: 如何使用受控解決方案（而不是 Vm 或設備）建立 Azure 與 AWS 之間的 VPN 連線。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
-author: cherylmc
+author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.author: cherylmc
-ms.openlocfilehash: c1bc263ca67a7d05dbb0d40bb07ba1ae43c2db5c
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.author: ricmart
+ms.openlocfilehash: 3b9e60eb037182318e9d1ef7336565908a9c8f32
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605442"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664778"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>使用受控解決方案建立 Azure 與 AWS 之間的 VPN 連線
 
@@ -217,6 +217,6 @@ AWS 會建立兩個 IPsec 通道以供高可用性之用。 下列範例會顯�
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-ping.png" alt-text="從 AWS 進行 Ping 測試":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需有關 AWS 支援 IKEv2 的詳細資訊，請參閱 [AWS 文章](https://aws.amazon.com/about-aws/whats-new/2019/02/aws-site-to-site-vpn-now-supports-ikev2/)。

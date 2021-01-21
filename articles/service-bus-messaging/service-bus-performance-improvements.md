@@ -4,12 +4,12 @@ description: 描述如何使用服務匯流排來在交換代理訊息時將效�
 ms.topic: article
 ms.date: 01/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7bfff1a31365724ed1d1cb6ff1956a4e2ef4f4c0
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 70f2fe88cf363572bcbca71115ba08dc0ed10e6d
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539440"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664693"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服務匯流排傳訊的效能改進最佳作法
 
@@ -150,8 +150,8 @@ static Task ErrorHandler(ProcessErrorEventArgs args)
 
 static async Task MessageHandler(ProcessMessageEventArgs args)
 {
-Console.WriteLine("Handle message");
-      await args.CompleteMessageAsync(args.Message);
+    Console.WriteLine("Handle message");
+    await args.CompleteMessageAsync(args.Message);
 }
 
 await processor.StartProcessingAsync();
@@ -346,6 +346,8 @@ var queue = namespaceManager.CreateQueue(queueDescription);
 
 - [ServiceBusReceiver. >queueclient.prefetchcount](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.prefetchcount)
 - [ServiceBusProcessor. >queueclient.prefetchcount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount)
+
+您可以在 [ServiceBusReceiverOptions](/dotnet/api/azure.messaging.servicebus.servicebusreceiveroptions) 或 [ServiceBusProcessorOptions](/dotnet/api/azure.messaging.servicebus.servicebusprocessoroptions)中設定這些屬性的值。
 
 # <a name="microsoftazureservicebus-sdk"></a>[Node.js SDK](#tab/net-standard-sdk)
 

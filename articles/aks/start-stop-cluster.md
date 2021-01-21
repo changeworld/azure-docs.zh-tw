@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: bc756994cf0f6e12af1c1ad5a6c8db304b4253e3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 026da4237fe14726766b265e55930346293c71df
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968776"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662892"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>停止並啟動 Azure Kubernetes Service (AKS) 叢集 (預覽) 
 
@@ -28,14 +28,13 @@ ms.locfileid: "91968776"
 使用叢集啟動/停止功能時，適用下列限制：
 
 - 只有虛擬機器擴展集支援的叢集才支援這項功能。
-- 在預覽期間，私人叢集不支援這項功能。
 - 已停止 AKS 叢集的叢集狀態最多會保留12個月。 如果您的叢集已停止超過12個月，則無法復原叢集狀態。 如需詳細資訊，請參閱 [AKS 支援原則](support-policies.md)。
 - 在預覽期間，您必須在嘗試停止叢集之前，先停止叢集自動調整程式 (CA) 。
 - 您只能啟動或刪除已停止的 AKS 叢集。 若要執行任何作業（例如調整規模或升級），請先啟動您的叢集。
 
 ### <a name="install-the-aks-preview-azure-cli"></a>安裝 `aks-preview` Azure CLI 
 
-您也需要 *aks-preview* Azure CLI 擴充功能版本0.4.64 或更新版本。 使用[az extension add][az-extension-add]命令安裝*aks-preview* Azure CLI 擴充功能。 或使用 [az extension update][az-extension-update] 命令安裝任何可用的更新。
+您也需要 *aks-preview* Azure CLI 擴充功能版本0.4.64 或更新版本。 使用 [az extension add][az-extension-add]命令安裝 *aks-preview* Azure CLI 擴充功能。 或使用 [az extension update][az-extension-update] 命令安裝任何可用的更新。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -55,13 +54,13 @@ az extension update --name aks-preview
 az feature register --namespace "Microsoft.ContainerService" --name "StartStopPreview"
 ```
 
-狀態需要幾分鐘的時間才會顯示「已註冊」**。 使用 [az feature list][az-feature-list] 命令來確認註冊狀態：
+狀態需要幾分鐘的時間才會顯示「已註冊」。 使用 [az feature list][az-feature-list] 命令來確認註冊狀態：
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/StartStopPreview')].{Name:name,State:properties.state}"
 ```
 
-當您準備好時，請使用[az provider register][az-provider-register]命令重新整理 *>microsoft.containerservice*資源提供者的註冊：
+當您準備好時，請使用 [az provider register][az-provider-register]命令重新整理 *>microsoft.containerservice* 資源提供者的註冊：
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -69,7 +68,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="stop-an-aks-cluster"></a>停止 AKS 叢集
 
-您可以使用 `az aks stop` 命令來停止正在執行的 AKS 叢集節點和控制平面。 下列範例會停止名為 *myAKSCluster*的叢集：
+您可以使用 `az aks stop` 命令來停止正在執行的 AKS 叢集節點和控制平面。 下列範例會停止名為 *myAKSCluster* 的叢集：
 
 ```azurecli-interactive
 az aks stop --name myAKSCluster --resource-group myResourceGroup
@@ -100,7 +99,7 @@ az aks stop --name myAKSCluster --resource-group myResourceGroup
 ## <a name="start-an-aks-cluster"></a>啟動 AKS 叢集
 
 您可以使用 `az aks start` 命令來啟動已停止的 AKS 叢集節點和控制平面。 重新開機叢集時，會使用先前的控制平面狀態和代理程式節點的數目。  
-下列範例會啟動名為 *myAKSCluster*的叢集：
+下列範例會啟動名為 *myAKSCluster* 的叢集：
 
 ```azurecli-interactive
 az aks start --name myAKSCluster --resource-group myResourceGroup
@@ -125,7 +124,7 @@ az aks start --name myAKSCluster --resource-group myResourceGroup
 如果 `provisioningState` 顯示 `Starting` ，表示您的叢集尚未完全啟動。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要瞭解如何將集區調整 `User` 為0，請參閱將集區 [調整 `User` 為 0](scale-cluster.md#scale-user-node-pools-to-0)。
 - 若要瞭解如何使用「找不到」實例來節省成本，請參閱 [將點節點集區新增至 AKS](spot-node-pool.md)。

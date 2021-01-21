@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/1/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 1fd495083f5f9be367dd0f125883b181e3bed27b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: HT
+ms.openlocfilehash: 7072720e2600221e7b8ad8d2337577b65b079afb
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930546"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660678"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用動態設定
 
@@ -68,28 +68,27 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
 
 1. 開啟 Program.cs  ，然後更新 `CreateWebHostBuilder` 方法以新增 `config.AddAzureAppConfiguration()` 方法。
 
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+   #### <a name="net-5x"></a>[.NET 5。x](#tab/core5x)
 
     ```csharp
-    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                var settings = config.Build();
-
-                config.AddAzureAppConfiguration(options =>
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    options.Connect(settings["ConnectionStrings:AppConfig"])
-                           .ConfigureRefresh(refresh =>
-                                {
-                                    refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
-                                           .SetCacheExpiration(new TimeSpan(0, 5, 0));
-                                });
-                });
-            })
-            .UseStartup<Startup>();
-    ```
-
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(settings["ConnectionStrings:AppConfig"])
+                               .ConfigureRefresh(refresh =>
+                                    {
+                                        refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
+                                               .SetCacheExpiration(new TimeSpan(0, 5, 0));
+                                    });
+                    });
+                })
+            .UseStartup<Startup>());
+    ```   
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
@@ -111,6 +110,27 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
                 })
             .UseStartup<Startup>());
     ```
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                var settings = config.Build();
+
+                config.AddAzureAppConfiguration(options =>
+                {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                           .ConfigureRefresh(refresh =>
+                                {
+                                    refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
+                                           .SetCacheExpiration(new TimeSpan(0, 5, 0));
+                                });
+                });
+            })
+            .UseStartup<Startup>();
+    ```
     ---
 
     `ConfigureRefresh` 方法可用來指定相關設定，以用來在系統觸發重新整理作業時，使用應用程式組態存放區來更新組態資料。 `Register` 方法的 `refreshAll` 參數表示當 Sentinel 金鑰變更時，應該重新整理所有設定值。
@@ -122,7 +142,7 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
 
     若要實際觸發重新整理作業，您必須設定重新整理中介軟體，才能讓應用程式在發生任何變更時，重新整理組態資料。 您會在稍後的步驟中了解如何執行此動作。
 
-2. 新增 Settings.cs  檔案，以定義及實作新的 `Settings` 類別。
+2. 在定義和執行新類別的控制器目錄中新增 *Settings.cs* 檔案 `Settings` 。 將命名空間取代為您的專案名稱。 
 
     ```csharp
     namespace TestAppConfig
@@ -139,6 +159,26 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
 
 3. 開啟 Startup.cs  ，然後在 `ConfigureServices` 方法中使用 `IServiceCollection.Configure<T>`，以將組態資料繫結至 `Settings` 類別。
 
+    #### <a name="net-5x"></a>[.NET 5。x](#tab/core5x)
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddControllersWithViews();
+        services.AddAzureAppConfiguration();
+    }
+    ```
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddControllersWithViews();
+        services.AddAzureAppConfiguration();
+    }
+    ```
     #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
@@ -148,16 +188,6 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
         services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
     ```
-
-    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-    ```csharp
-    public void ConfigureServices(IServiceCollection services)
-    {
-        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
-        services.AddControllersWithViews();
-    }
-    ```
     ---
     > [!Tip]
     > 若要深入了解讀取組態值時的選項模式，請參閱 [ASP.NET Core 中的選項模式](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)。
@@ -165,23 +195,41 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
 4. 更新 `Configure` 方法以新增 `UseAzureAppConfiguration` 中介軟體，讓已註冊要重新整理的組態設定可以進行更新，同時讓 ASP.NET Core Web 應用程式繼續接收要求。
 
 
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-5x"></a>[.NET 5。x](#tab/core5x)
 
     ```csharp
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        app.UseAzureAppConfiguration();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
 
-        services.Configure<CookiePolicyOptions>(options =>
-        {
-            options.CheckConsentNeeded = context => true;
-            options.MinimumSameSitePolicy = SameSiteMode.None;
-        });
+            // Add the following line:
+            app.UseAzureAppConfiguration();
 
-        app.UseMvc();
+            app.UseHttpsRedirection();
+            
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
     }
     ```
-
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
@@ -217,6 +265,22 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
             });
     }
     ```
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
+
+        services.Configure<CookiePolicyOptions>(options =>
+        {
+            options.CheckConsentNeeded = context => true;
+            options.MinimumSameSitePolicy = SameSiteMode.None;
+        });
+
+        app.UseMvc();
+    }
+    ```
     ---
     
     中介軟體會使用 `Program.cs` 內的 `AddAzureAppConfiguration` 方法所指定的重新整理組態，來針對 ASP.NET Core Web 應用程式所收到的每個要求觸發重新整理。 每個要求都會觸發一個重新整理作業，而且用戶端程式庫會檢查已註冊的組態設定是否有已過期的快取值。 如果已過期，則會重新整理。
@@ -234,32 +298,9 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
 
 2. 將 `HomeController` 類別更新為透過相依性插入來接收 `Settings`，並使用其值。
 
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+ #### <a name="net-5x"></a>[.NET 5。x](#tab/core5x)
 
-    ```csharp
-    public class HomeController : Controller
-    {
-        private readonly Settings _settings;
-        public HomeController(IOptionsSnapshot<Settings> settings)
-        {
-            _settings = settings.Value;
-        }
-
-        public IActionResult Index()
-        {
-            ViewData["BackgroundColor"] = _settings.BackgroundColor;
-            ViewData["FontSize"] = _settings.FontSize;
-            ViewData["FontColor"] = _settings.FontColor;
-            ViewData["Message"] = _settings.Message;
-
-            return View();
-        }
-    }
-    ```
-
-    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-    ```csharp
+```csharp
     public class HomeController : Controller
     {
         private readonly Settings _settings;
@@ -283,8 +324,57 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
 
         // ...
     }
-    ```
-    ---
+```
+#### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+```csharp
+    public class HomeController : Controller
+    {
+        private readonly Settings _settings;
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger, IOptionsSnapshot<Settings> settings)
+        {
+            _logger = logger;
+            _settings = settings.Value;
+        }
+
+        public IActionResult Index()
+        {
+            ViewData["BackgroundColor"] = _settings.BackgroundColor;
+            ViewData["FontSize"] = _settings.FontSize;
+            ViewData["FontColor"] = _settings.FontColor;
+            ViewData["Message"] = _settings.Message;
+
+            return View();
+        }
+
+        // ...
+    }
+```
+#### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+
+```csharp
+    public class HomeController : Controller
+    {
+        private readonly Settings _settings;
+        public HomeController(IOptionsSnapshot<Settings> settings)
+        {
+            _settings = settings.Value;
+        }
+
+        public IActionResult Index()
+        {
+            ViewData["BackgroundColor"] = _settings.BackgroundColor;
+            ViewData["FontSize"] = _settings.FontSize;
+            ViewData["FontColor"] = _settings.FontColor;
+            ViewData["Message"] = _settings.Message;
+
+            return View();
+        }
+    }
+```
+---
 
 
 
@@ -340,7 +430,7 @@ Sentinel 金鑰  是用來在設定變更時發出信號的特殊金鑰。 您�
     | TestApp:Settings:Message | Azure 應用程式設定的值 - 現在可以即時更新了！ |
     | TestApp:Settings:Sentinel | 2 |
 
-1. 重新整理瀏覽器頁面，以查看新的組態設定。 您可能需要重新整理一次以上，才能反映變更。
+1. 重新整理瀏覽器頁面，以查看新的組態設定。 您可能需要重新整理一次以上才能反映變更，或將自動重新整理頻率變更為不到5分鐘。 
 
     ![在本機啟動更新的快速入門應用程式](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 

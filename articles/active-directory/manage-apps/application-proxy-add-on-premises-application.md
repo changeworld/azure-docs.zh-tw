@@ -8,20 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: HT
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 6b46a5ea71bf8c9705ffc3bc51ea48f4b0c28502
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587548"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660759"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
 Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使用者使用其 Azure AD 帳戶登入來存取內部部署應用程式。 本教學課程會準備環境以便與應用程式 Proxy 搭配使用。 環境準備就緒後，您會使用 Azure 入口網站將內部部署應用程式新增至 Azure AD 租用戶。
+
+:::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="應用程式 Proxy 總覽圖表" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
 
 連接器是應用程式 Proxy 的重要部分。 若要深入了解連接器的相關資訊，請參閱[了解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)。
 
@@ -126,7 +128,11 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |連接器會在註冊程序進行期間使用這些 URL。 |
 | ctldl.windowsupdate.com | 80/HTTP |連接器會在註冊程序進行期間使用此 URL。 |
 
-如果防火牆或 Proxy 可讓您設定 DNS 允許清單，您便可以允許連往 &ast;.msappProxy.net、&ast;.servicebus.windows.net 和上述其他 URL 的連線。 如果不是，您需要允許存取 [Azure IP 範圍和服務標籤 - 公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 範圍會每週更新。
+&ast; &ast; 如果您的防火牆或 proxy 可讓您根據網域尾碼來設定存取規則，您可以允許 msappproxy.net、. servicebus.windows.net 和其他 url 的連接。 如果不是，您需要允許存取 [Azure IP 範圍和服務標籤 - 公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 範圍會每週更新。
+
+### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>Azure AD 應用程式 Proxy 端點的 DNS 名稱解析
+
+Azure AD 應用程式 Proxy 端點的公用 DNS 記錄是指向 A 記錄的連結 CNAME 記錄。 這可確保容錯和彈性。 保證 Azure AD 的應用程式 Proxy 連接器一律會存取具有網域尾碼 _*. msappproxy.net_ 或 _*. servicebus.windows.net_ 的主機名稱。 不過，在名稱解析期間，CNAME 記錄可能包含具有不同主機名稱和尾碼的 DNS 記錄。  基於這個原因，您必須確定裝置 (，視您的設定連接器伺服器、防火牆、輸出 proxy) 可以解析鏈中的所有記錄，並允許連線到已解析的 IP 位址。 因為鏈中的 DNS 記錄可能會在一段時間內變更，所以我們無法提供您任何清單 DNS 記錄。
 
 ## <a name="install-and-register-a-connector"></a>安裝並註冊連接器
 

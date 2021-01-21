@@ -3,17 +3,17 @@ title: CLI 指令碼 - 建立伺服器 - 適用於 MariaDB 的 Azure 資料庫
 description: 此範例 CLI 指令碼會建立「適用於 MariaDB 的 Azure 資料庫」伺服器，並設定伺服器等級防火牆規則。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 11/28/2018
-ms.openlocfilehash: a9a0ce595da1aecc3cd2ebdc071c99e42944ef9f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: HT
+ms.openlocfilehash: 8b414b5d483f4662bf8fdeb144a9cc8ef99d02dd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536790"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664610"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>使用 Azure CLI 建立 MariaDB 伺服器並設定防火牆規則
 此範例 CLI 指令碼會建立「適用於 MariaDB 的 Azure 資料庫」伺服器，並設定伺服器等級防火牆規則。 成功執行指令碼後，即可從所有 Azure 服務和已設定的 IP 位址存取 MariaDB 伺服器。

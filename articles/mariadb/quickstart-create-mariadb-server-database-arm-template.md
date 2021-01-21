@@ -3,16 +3,16 @@ title: 快速入門：建立適用於 MariaDB 的 Azure DB - ARM 範本
 description: 在本快速入門中，您將了解如何使用 Azure Resource Manager 範本，建立「適用於 MariaDB 的 Azure 資料庫」伺服器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/14/2020
-ms.openlocfilehash: de6df8349025c3e87e5b005196008053039fa49f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: HT
+ms.openlocfilehash: b40aa30121bf98e756e26d70b44bc74a500de79f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537119"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662068"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>快速入門：使用 ARM 範本來建立適用於 MariaDB 的 Azure 資料庫伺服器
 

@@ -1,31 +1,28 @@
 ---
 title: Azure Active Directory 的 SMS 型使用者登入
-description: 了解如何使用 SMS，設定及啟用 Azure Active Directory 的使用者登入 (預覽)
+description: 瞭解如何設定和允許使用者使用 SMS 登入 Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 01/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10bac65fa8b1ed192e2ece1682f22e7feb528431
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 43573b54be6884e01121e404370d2e1d85a3c4e8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743338"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660876"
 ---
-# <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>使用 Azure Active Directory 設定及啟用使用者的 SMS 型驗證 (預覽)
+# <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>使用 Azure Active Directory 設定及啟用 SMS 驗證的使用者 
 
-為了降低使用者登入應用程式和服務的複雜性和安全性風險，Azure Active Directory (Azure AD) 提供多個驗證選項。 SMS 型驗證 (目前處於預覽狀態) 可讓使用者登入，而不需要提供 (或甚至知道) 他們的使用者名稱和密碼。 在身分識別系統管理員建立他們的帳戶之後，他們可以在登入提示中輸入其電話號碼，並提供透過文字簡訊傳送給他們的驗證碼。 此驗證方法會簡化對應用程式和服務的存取，特別是針對前線的員工。
+為了簡化及保護登入應用程式和服務的安全，Azure Active Directory (Azure AD) 提供多個驗證選項。 以 SMS 為基礎的驗證可讓使用者登入，而不需提供（甚至是知道）其使用者名稱和密碼。 身分識別系統管理員建立帳戶之後，即可在登入提示字元中輸入其電話號碼。 他們會透過可提供的文字訊息接收驗證碼，以完成登入。 此驗證方法會簡化對應用程式和服務的存取，特別是針對前線的員工。
 
 本文說明如何針對 Azure AD 中選取的使用者或群組啟用 SMS 型驗證。
-
-> [!NOTE]
-> 適用於使用者的 SMS 型驗證是 Azure Active Directory 的一項公開預覽功能。 如需有關預覽版的詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -43,10 +40,10 @@ ms.locfileid: "96743338"
 
 ## <a name="limitations"></a>限制
 
-在 SMS 型驗證的公開預覽期間，適用下列限制：
+下列限制適用于 SMS 驗證：
 
 * SMS 驗證目前不相容 Azure AD Multi-Factor Authentication。
-* 除了 Teams 以外，SMS 型驗證目前與原生 Office 應用程式不相容。
+* 除了團隊以外，SMS 驗證與原生 Office 應用程式不相容。
 * 不建議針對 B2B 帳戶使用 SMS 型驗證。
 * 同盟使用者不會在主租用戶中進行驗證。 他們只會在雲端中進行驗證。
 
@@ -57,15 +54,15 @@ ms.locfileid: "96743338"
 * 啟用驗證方法原則。
 * 選取可以使用 SMS 型驗證方法的使用者或群組。
 * 為每個使用者帳戶指派電話號碼。
-    * 此電話號碼可以在 Azure 入口網站中指派 (如本文所示)，以及在 [我的員工] 或 [我的設定檔] 中指派。
+    * 您可以在這篇文章中所示的 Azure 入口網站 (中指派此電話號碼) 以及 [ *我的員工* ] 或 [ *我的帳戶*]。
 
 首先，讓我們為您的 Azure AD 租用戶啟用 SMS 型驗證。
 
 1. 以「全域管理員」身分登入 [Azure 入口網站][azure-portal]。
 1. 搜尋並選取 [Azure Active Directory]。
-1. 從 Azure Active Directory 視窗左側的導覽功能表中，選取 [安全性 > 驗證方法 > 驗證方法原則 (預覽)]。
+1. 從 Azure Active Directory 視窗左側的導覽功能表中，選取 [ **安全性 > 驗證方法] > 驗證方法原則**。
 
-    [![在 Azure 入口網站中流覽並選取 [驗證方法] 原則 (預覽) 視窗。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![在 Azure 入口網站中，流覽並選取 [驗證方法原則] 視窗。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. 從可用驗證方法的清單中，選取 [文字簡訊]。
 1. 將 [啟用] 設定為 [是]。
@@ -89,7 +86,7 @@ ms.locfileid: "96743338"
 
 ## <a name="set-a-phone-number-for-user-accounts"></a>為使用者帳戶設定電話號碼
 
-使用者現在已啟用 SMS 型驗證，但是其電話號碼必須與 Azure AD 中的使用者設定檔建立關聯，才能登入。 使用者可以在 [我的設定檔] 中[自行設定此電話號碼](../user-help/sms-sign-in-explainer.md)，或者您可以使用 Azure 入口網站指派電話號碼。 電話號碼可以由「全域管理員」、「驗證管理員」，或「特殊權限驗證管理員」來設定。
+使用者現在已啟用 SMS 型驗證，但是其電話號碼必須與 Azure AD 中的使用者設定檔建立關聯，才能登入。 使用者可以在 *我的帳戶* 中 [自行設定此電話號碼](../user-help/sms-sign-in-explainer.md)，或者您可以使用 Azure 入口網站指派電話號碼。 電話號碼可以由「全域管理員」、「驗證管理員」，或「特殊權限驗證管理員」來設定。
 
 設定 SMS 簽署的電話號碼之後，也可以搭配 [Azure AD Multi-Factor Authentication][tutorial-azure-mfa] 和 [自助式密碼重設][tutorial-sspr]使用。
 
@@ -136,13 +133,13 @@ ms.locfileid: "96743338"
 
 系統會針對其帳戶已設定電話號碼的使用者，在其 [我的設定檔] 頁面中顯示 [針對 SMS 登入啟用] 按鈕。 選取此按鈕，並啟用帳戶以用於 SMS 登入和先前的 Azure AD Multi-Factor Authentication 或 SSPR 註冊。
 
-如需使用者體驗的詳細資訊，請參閱[電話號碼的 SMS 登入使用者體驗 (預覽)](../user-help/sms-sign-in-explainer.md)。
+如需終端使用者體驗的詳細資訊，請參閱 [SMS 登入使用者體驗的電話號碼](../user-help/sms-sign-in-explainer.md)。
 
 ### <a name="error-when-trying-to-set-a-phone-number-on-a-users-account"></a>嘗試在使用者帳戶上設定電話號碼時發生錯誤
 
 當您嘗試在 Azure 入口網站中為使用者帳戶設定電話號碼時，如果收到錯誤，請參閱下列疑難排解步驟：
 
-1. 請確定您已啟用 SMS 型登入預覽。
+1. 請確定您已啟用 SMS 登入。
 1. 確認使用者帳戶已在「文字簡訊」驗證方法原則中啟用。
 1. 請確定您設定的電話號碼具有適當格式，如 Azure 入口網站中所驗證 (例如「+1 4251234567」)。
 1. 請確定您的租用戶中其他地方未使用此電話號碼。

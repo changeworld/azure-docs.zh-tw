@@ -3,12 +3,12 @@ title: Azure 備份詞彙
 description: 本文定義有助於搭配 Azure 備份使用的術語。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 121258665ab275fdcffd618e7c0cf1b3e0537e70
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935065"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661471"
 ---
 # <a name="azure-backup-glossary"></a>Azure 備份詞彙
 
@@ -320,7 +320,7 @@ Azure 中存放備份資料的儲存實體。 它也是 RBAC 和帳單的單位�
 
 請參閱 [VSS 檔](https://docs.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [Azure 備份總覽](backup-overview.md)
 - [Azure 備份的架構與元件](backup-architecture.md)

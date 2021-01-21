@@ -4,15 +4,15 @@ description: 了解如何處理「適用於 MariaDB 的 Azure 資料庫」的暫
 keywords: mysql 連線, 連接字串, 連線問題, 暫時性錯誤, 連線錯誤
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 2a651d87411654f1a52c4a097f115ba848ce569c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 43dd83142832e6582c3014e761b91b9245d68e9e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541669"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660033"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mariadb"></a>處理適用於 MariaDB 的 Azure 資料庫的暫時性連線錯誤
 
@@ -44,6 +44,6 @@ ms.locfileid: "94541669"
 
 請務必測試您的重試邏輯。 例如，相應增加或減少「適用於 MariaDB 的 Azure 資料庫」伺服器的計算資源時，請嘗試執行您的程式碼。 您的應用程式應該要能夠毫無問題地處理在此作業期間發生的短暫停機情況。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [針對適用於 MariaDB 的 Azure 資料庫的連線問題進行疑難排解](howto-troubleshoot-common-connection-issues.md)

@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c4db7bf989a0062f87a5c3e6303ba64224996554
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2956f0ffb562214477249da3198ebbe42ef9bb45
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224442"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660364"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中設定登入流程
 
@@ -30,11 +30,11 @@ ms.locfileid: "98224442"
 * 使用者可以使用 Azure AD B2C 本機帳戶登入
 * 使用社交帳戶註冊或登入
 * 密碼重設
-* 使用者無法註冊 Azure AD B2C 本機帳戶-若要建立帳戶，系統管理員可以使用 [MS 圖形 API](manage-user-accounts-graph-api.md)。
+* 使用者無法註冊 Azure AD B2C 本機帳戶-若要建立帳戶，系統管理員可以使用 [MS 圖形 API](microsoft-graph-operations.md)。
 
 ![設定檔編輯流程](./media/add-sign-in-policy/sign-in-user-flow.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 如果您尚未這麼做，請 [在 Azure Active Directory B2C 中註冊 web 應用程式](tutorial-register-applications.md)。
 
@@ -109,7 +109,7 @@ ms.locfileid: "98224442"
 
 ::: zone-end
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 新增 [具有社交識別提供者](add-identity-provider.md)的登入。
 * 設定 [密碼重設流程](add-password-reset-policy.md)。

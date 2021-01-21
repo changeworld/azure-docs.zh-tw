@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912649"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661928"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>教學課程：使用 Azure HDInsight 擷取、轉換和載入資料
 
@@ -40,7 +40,7 @@ ms.locfileid: "95912649"
 
 * **Azure SQL Database**：您會使用 Azure SQL Database 做為目的地資料存放區。 如果您在 SQL Database 中沒有資料庫，請參閱[在 Azure 入口網站的 Azure SQL Database 中建立資料庫](../../azure-sql/database/single-database-create-quickstart.md)。
 
-* **Azure CLI**：如果您未安裝 Azure CLI，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* **Azure CLI**：如果您未安裝 Azure CLI，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 * **安全殼層 (SSH) 用戶端**：如需詳細資訊，請參閱 [使用 SSH 連線至 HDInsight (Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
 

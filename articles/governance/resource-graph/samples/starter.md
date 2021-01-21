@@ -1,14 +1,14 @@
 ---
 title: 入門查詢範例
 description: 使用 Azure Resource Graph 來執行某些起始查詢，包括計算資源、排序資源或依特定標記。
-ms.date: 10/14/2020
+ms.date: 01/21/2021
 ms.topic: sample
-ms.openlocfilehash: 287de47fff8c76bf05aeacd9ddfca0c48e55f5a0
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: HT
+ms.openlocfilehash: f751481a1596e78a2e04a7cb65403b72924768cd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882920"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663845"
 ---
 # <a name="starter-resource-graph-query-samples"></a>入門 Resource Graph 查詢範例
 
@@ -27,6 +27,7 @@ ms.locfileid: "97882920"
 - [計算具有按訂用帳戶設定之 IP 位址的資源計數](#count-resources-by-ip)
 - [列出具有特定標籤值的資源](#list-tag)
 - [列出具有特定標籤值的所有儲存體帳戶](#list-specific-tag)
+- [列出所有標記及其值](#list-all-tag-values)
 - [顯示沒有關聯的網路安全性群組](#unassociated-nsgs)
 - [從 Azure Advisor 取得節省成本摘要](#advisor-savings)
 - [計算來賓設定原則範圍中的電腦計數](#count-gcmachines)
@@ -460,6 +461,52 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 > [!NOTE]
 > 此範例會使用 `==` 進行比對，而非使用 `=~` 條件。 `==` 是區分大小寫的比對。
+
+## <a name="list-all-tags-and-their-values"></a><a name="list-all-tag-values"></a>列出所有標記及其值
+
+此查詢會列出管理群組、訂用帳戶和資源的標籤，以及它們的值。
+此查詢會先限制標籤的資源 `isnotempty()` ，並限制包含的欄位只包含中的 _標記_ ，以及 `project` `mvexpand` 以及 `extend` 從屬性包取得配對的資料。 然後，它會使用 `union` 將來自 _>resourcecontainers_ 的結果結合成與 _資源_ 相同的結果，讓您廣泛涵蓋要提取的標記。 最後，它會將結果限制為 `distinct` 配對的資料，並排除系統隱藏的標記。
+
+```kusto
+ResourceContainers 
+| where isnotempty(tags)
+| project tags
+| mvexpand tags
+| extend tagKey = tostring(bag_keys(tags)[0])
+| extend tagValue = tostring(tags[tagKey])
+| union (
+    resources
+    | where isnotempty(tags)
+    | project tags
+    | mvexpand tags
+    | extend tagKey = tostring(bag_keys(tags)[0])
+    | extend tagValue = tostring(tags[tagKey])
+)
+| distinct tagKey, tagValue
+| where tagKey !startswith "hidden-"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "ResourceContainers | where isnotempty(tags) | project tags | mvexpand tags | extend tagKey = tostring(bag_keys(tags)[0]) | extend tagValue = tostring(tags[tagKey]) | union (resources | where notempty(tags) | project tags | mvexpand tags | extend tagKey = tostring(bag_keys(tags)[0]) | extend tagValue = tostring(tags[tagKey]) ) | distinct tagKey, tagValue | where tagKey !startswith "hidden-""
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "ResourceContainers | where isnotempty(tags) | project tags | mvexpand tags | extend tagKey = tostring(bag_keys(tags)[0]) | extend tagValue = tostring(tags[tagKey]) | union (resources | where notempty(tags) | project tags | mvexpand tags | extend tagKey = tostring(bag_keys(tags)[0]) | extend tagValue = tostring(tags[tagKey]) ) | distinct tagKey, tagValue | where tagKey !startswith "hidden-""
+```
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
+
+:::image type="icon" source="../media/resource-graph-small.png":::在 Azure Resource Graph 總管中試用此查詢：
+
+- Azure 入口網站：<a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%0A%7C%20where%20isnotempty%28tags%29%0A%7C%20project%20tags%0A%7C%20mvexpand%20tags%0A%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%7C%20union%20%28%0A%20%20%20%20resources%0A%20%20%20%20%7C%20where%20isnotempty%28tags%29%0A%20%20%20%20%7C%20project%20tags%0A%20%20%20%20%7C%20mvexpand%20tags%0A%20%20%20%20%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%20%20%20%20%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%29%0A%7C%20distinct%20tagKey%2C%20tagValue%0A%7C%20where%20tagKey%20%21startswith%20%22hidden-%22" target="_blank">portal.azure.com <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- Azure Government 入口網站：<a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%0A%7C%20where%20isnotempty%28tags%29%0A%7C%20project%20tags%0A%7C%20mvexpand%20tags%0A%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%7C%20union%20%28%0A%20%20%20%20resources%0A%20%20%20%20%7C%20where%20isnotempty%28tags%29%0A%20%20%20%20%7C%20project%20tags%0A%20%20%20%20%7C%20mvexpand%20tags%0A%20%20%20%20%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%20%20%20%20%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%29%0A%7C%20distinct%20tagKey%2C%20tagValue%0A%7C%20where%20tagKey%20%21startswith%20%22hidden-%22" target="_blank">portal.azure.us <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- Azure China 21Vianet 入口網站：<a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%0A%7C%20where%20isnotempty%28tags%29%0A%7C%20project%20tags%0A%7C%20mvexpand%20tags%0A%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%7C%20union%20%28%0A%20%20%20%20resources%0A%20%20%20%20%7C%20where%20isnotempty%28tags%29%0A%20%20%20%20%7C%20project%20tags%0A%20%20%20%20%7C%20mvexpand%20tags%0A%20%20%20%20%7C%20extend%20tagKey%20%3D%20tostring%28bag_keys%28tags%29%5B0%5D%29%0A%20%20%20%20%7C%20extend%20tagValue%20%3D%20tostring%28tags%5BtagKey%5D%29%0A%29%0A%7C%20distinct%20tagKey%2C%20tagValue%0A%7C%20where%20tagKey%20%21startswith%20%22hidden-%22" target="_blank">portal.azure.cn <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+
+---
 
 ## <a name="show-unassociated-network-security-groups"></a><a name="unassociated-nsgs"></a>顯示沒有關聯的網路安全性群組
 

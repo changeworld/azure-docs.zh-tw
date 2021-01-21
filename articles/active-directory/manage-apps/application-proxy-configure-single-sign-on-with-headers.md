@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c30d8a66cf9deffaa32e5ec0356a9067575b77e8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503187"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660697"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>使用 Azure AD App Proxy (Preview 的內部部署應用程式以標頭為基礎的單一登入) 
 
@@ -88,8 +88,12 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 原本就支援使用標頭
 1. 開啟新的瀏覽器或私用瀏覽器視窗，確認已清除先前快取的標頭。 然後，流覽至 [應用程式 Proxy] 設定中的 [ **外部 URL**]   。
 2. 使用您指派給應用程式的測試帳戶來登入。 如果您可以使用 SSO 載入並登入應用程式，那麼您就很好！ 
 
+## <a name="considerations"></a>考量
 
-## <a name="next-steps"></a>後續步驟
+- 應用程式 Proxy 是用來提供遠端存取內部部署或私人雲端上的應用程式。 不建議應用程式 Proxy 處理源自公司網路內部的流量。
+- 以標頭為基礎的驗證應用程式的存取權應該限制為僅限來自連接器的流量或其他允許的標頭型驗證解決方案。 這通常是透過使用應用程式伺服器上的防火牆或 IP 限制來限制對應用程式的網路存取而完成。
+
+## <a name="next-steps"></a>下一步
 
 - [什麼是單一登入？](what-is-single-sign-on.md)
 - [什麼是應用程式 proxy？](what-is-application-proxy.md)

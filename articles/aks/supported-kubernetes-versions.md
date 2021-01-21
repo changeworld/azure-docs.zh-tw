@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 53093edb1d3c142336f06ec8544aaa7b55e37477
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 138e3ee5272d790130cebfd8a1f61da7bed970d8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611248"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663963"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
@@ -143,7 +143,7 @@ az aks get-versions --location eastus --output table
 | 1.18  | Mar-23-20  | 2020 年 5 月   | 2020年8月  | 1.21 GA | 
 | 1.19  | 8月-04-20  | Sep 2020   | 11月2020  | 1.22 GA | 
 | 1.20  | Dec-08-20  | Jan 2021   | 三月2021  | 1.23 GA |
-| 1.21  | Apr-08-21 * | 2021 年 5 月   | 2021年7月  | 1.24 GA |
+| 1.21  | Apr-08-21 * | 2021 年 5 月   | 6月2021  | 1.24 GA |
 
 \* Kubernetes 1.21 上游版本可能會隨著上游行事曆的變更而變更。
 
@@ -187,7 +187,7 @@ az aks get-versions --location eastus --output table
 
 略過多個版本只能在從不支援的版本升級回支援的版本時進行。 例如，從不支援的 *1.10. x* 升級 > 支援的 *1.15。 x* 可以完成。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需如何升級叢集的相關資訊，請參閱[升級 Azure Kubernetes Service (AKS) 叢集][aks-upgrade]。
 

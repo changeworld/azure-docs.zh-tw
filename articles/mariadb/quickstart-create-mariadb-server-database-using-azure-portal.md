@@ -3,16 +3,16 @@ title: 快速入門：建立伺服器 - Azure 入口網站 - 適用於 MariaDB �
 description: 本文說明如何使用 Azure 入口網站在五分鐘內快速建立「適用於 MariaDB 的 Azure 資料庫」範例伺服器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/19/2020
-ms.openlocfilehash: 7b27bff50b4e2cfa57e41919552086ba1d31f217
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: HT
+ms.openlocfilehash: d7ec7a2c70ae860a54b3771927a79449953e8569
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188729"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662104"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立適用於 MariaDB 的 Azure 資料庫伺服器
 

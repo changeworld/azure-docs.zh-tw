@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: d465f3c44ede8b4df56ef0da08c5bbbcd477d93f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: HT
+ms.openlocfilehash: a4890dd93cf77e20aff09ca6fd33ec3434a45a4b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932130"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663041"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入門：將功能旗標新增至 ASP.NET Core 應用程式
 
@@ -75,6 +75,21 @@ dotnet new mvc --no-https --output TestFeatureFlags
     > [!IMPORTANT]
     > `CreateHostBuilder` 會取代 .NET Core 3.x 中的 `CreateWebHostBuilder`。 根據您的環境選取正確的語法。
 
+     #### <a name="net-5x"></a>[.NET 5。x](#tab/core5x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration(config =>
+                {
+                    var settings = config.Build();
+                    var connection = settings.GetConnectionString("AppConfig");
+                    config.AddAzureAppConfiguration(options =>
+                        options.Connect(connection).UseFeatureFlags());
+                }).UseStartup<Startup>());
+    ```
+
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
@@ -116,6 +131,15 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 1. 藉由呼叫 `AddFeatureManagement` 方法更新 `Startup.ConfigureServices` 方法，以新增功能旗標支援。 (選擇性) 您可以呼叫 `AddFeatureFilter<FilterType>()`，以納入要用於功能旗標的任何篩選條件：
 
+     #### <a name="net-5x"></a>[.NET 5。x](#tab/core5x)
+
+    ```csharp    
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews();
+        services.AddFeatureManagement();
+    }
+    ```
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp    
