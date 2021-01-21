@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 設定 Azure IoT 中樞的訊息路由
-description: 使用 Azure CLI 設定 Azure IoT 中樞的訊息路由。 根據訊息中的屬性，路由至儲存體帳戶或服務匯流排佇列。
+title: 教學課程-使用 Azure CLI 為 Azure IoT 中樞設定訊息路由
+description: 教學課程-使用 Azure CLI 為 Azure IoT 中樞設定訊息路由。 根據訊息中的屬性，路由至儲存體帳戶或服務匯流排佇列。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 239d8f2bcc1422a1098fb8f6cb3fba6706d671f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 25c3ff7582ed408776c0ae6904e4bacddd89e40b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500192"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624166"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>教學課程：使用 Azure CLI 設定 IoT 中樞訊息路由
 
@@ -147,7 +147,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-若要建立路由端點，請使用 [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create)。 若要建立端點的訊息路由，請使用 [az iot hub route create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create)。
+若要建立路由端點，請使用 [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create&preserve-view=true)。 若要建立端點的訊息路由，請使用 [az iot hub route create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create&preserve-view=true)。
 
 ### <a name="route-to-a-storage-account"></a>路由傳送至儲存體帳戶
 

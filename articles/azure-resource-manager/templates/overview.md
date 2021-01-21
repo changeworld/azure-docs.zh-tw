@@ -2,13 +2,13 @@
 title: 範本概觀
 description: 說明使用 Azure Resource Manager 範本的優點， (ARM 範本) 用來部署資源。
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/20/2021
+ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657306"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621834"
 ---
 # <a name="what-are-arm-templates"></a>什麼是 ARM 範本？
 
@@ -126,10 +126,16 @@ REQUEST BODY
 
 如需巢狀範本的相關資訊，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
 
+## <a name="share-templates"></a>共用範本
+
+建立範本之後，您可能會想要與組織中的其他使用者共用它。 [範本規格](template-specs.md) 可讓您將範本儲存為資源類型。 您可以使用以角色為基礎的存取控制來管理對範本規格的存取。具有範本規格之讀取權限的使用者可以進行部署，但不能變更範本。
+
+這種方法表示您可以安全地共用符合組織標準的範本。
+
 ## <a name="next-steps"></a>後續步驟
 
 * 如需可引導您完成建立範本程序的逐步教學課程，請參閱[教學課程：建立及部署您的第一個 ARM 範本](template-tutorial-create-first-template.md)。
-* 若要透過 Microsoft Learn 上的一組指引來瞭解 ARM 範本，請參閱 [使用 ARM 範本部署和管理 Azure 中的資源](/learn/paths/deploy-manage-resource-manager-templates/)。
+* 若要透過 Microsoft Learn 的一組引導式模組來了解 ARM 範本，請參閱[使用 ARM 範本來部署和管理 Azure 中的資源](/learn/paths/deploy-manage-resource-manager-templates/)。
 * 如需範本檔案中屬性的詳細資訊，請參閱 [瞭解 ARM 範本的結構和語法](template-syntax.md)。
 * 若要瞭解如何匯出範本，請參閱 [快速入門：使用 Azure 入口網站建立和部署 ARM 範本](quickstart-create-templates-use-the-portal.md)。
 * 如需常見問題的解答，請參閱 [ARM 範本的常見問題](frequently-asked-questions.md)。

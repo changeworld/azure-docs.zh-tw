@@ -11,12 +11,12 @@ ms.date: 09/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0daca8b19f9a712253bc231cba9a0245553b0adb
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 6ac186d4b460165605ccf0fc53bdb0b691348bf3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613123"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622519"
 ---
 # <a name="azure-ad-connect-cloud-sync-on-demand-provisioning"></a>Azure AD Connect 雲端同步隨選布建
 
@@ -32,9 +32,9 @@ Azure AD Connect cloud sync 推出了一項新功能，可讓您藉由將這些�
 
 1.  在 Azure 入口網站中，選取 [Azure Active Directory]  。
 2.  選取 [Azure AD Connect]。
-3.  選取 [ **管理** 布建]。
+3.  選取 [ **管理雲端同步**]。
 
-    ![管理布建](media/how-to-configure/manage-1.png)
+    ![管理布建](media/how-to-install/install-6.png)
 4. 在 [設定] **底下，選取您的設定**。
 5. 在 [ **驗證** ] 下，按一下 [布建 **使用者** ] 按鈕。 
 

@@ -4,16 +4,16 @@ description: 本教學課程顯示如何使用 message 擴充 Azure IoT 中樞�
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 60bd416cf330676485f83720be4365b56c56baaf
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436703"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624050"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>教學課程：使用 Azure IoT 中樞 message 擴充
 
@@ -386,7 +386,7 @@ az iot hub route create \
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 來清除資源
 
-若要移除資源群組，請使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 回想一下， `$resourceGroup` 在本教學課程的開頭已設定為 **ContosoResourcesMsgEn** 。
+若要移除資源群組，請使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) 命令。 回想一下， `$resourceGroup` 在本教學課程的開頭已設定為 **ContosoResourcesMsgEn** 。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -397,6 +397,7 @@ az group delete --name $resourceGroup
 在本教學課程中，您已使用下列步驟來設定及測試將訊息擴充新增至 IoT 中樞訊息：
 
 **使用 IoT 中樞訊息擴充**
+
 > [!div class="checklist"]
 > * 第一個方法：使用 Azure CLI 建立資源和設定訊息路由。 使用 [Azure 入口網站](https://portal.azure.com)手動設定 message 擴充。
 > * 第二種方法：使用 Azure Resource Manager 範本建立資源和設定訊息路由和訊息擴充。
@@ -407,5 +408,8 @@ az group delete --name $resourceGroup
 
 如需有關訊息路由的詳細資訊，請參閱下列文章：
 
-* [使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點](iot-hub-devguide-messages-d2c.md)
-* [教學課程： IoT 中樞路由](tutorial-routing.md)
+> [!div class="nextstepaction"]
+> [使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點](iot-hub-devguide-messages-d2c.md)
+
+> [!div class="nextstepaction"]
+> [教學課程： IoT 中樞路由](tutorial-routing.md)

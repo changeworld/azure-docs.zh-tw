@@ -1,5 +1,5 @@
 ---
-title: 將遙測傳送至 Azure IoT 中樞的快速入門 (Android) | Microsoft Docs
+title: 快速入門-將遙測傳送至 Azure IoT 中樞快速入門 (Android) |Microsoft Docs
 description: 本快速入門中，您可以執行 Android 應用程式範例，將模擬的遙測傳送到 IoT 中樞以及從 IoT 中樞讀取遙測，以便在雲端中處理。
 author: wesmc7777
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: d9598f7a0bc8e4a8b92ac53612023585eb19f4c4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: dd622f0d55be000e2318c53f200bebf49c373724
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121510"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624315"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>快速入門：從 Android 裝置傳送 IoT 遙測
 
@@ -100,7 +100,7 @@ ms.locfileid: "98121510"
 
 ## <a name="read-the-telemetry-from-your-hub"></a>從您的中樞讀取遙測
 
-在此節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來監視由 Android 裝置傳送的裝置訊息。
+在此節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)來監視由 Android 裝置傳送的裝置訊息。
 
 1. 使用 Azure Cloud Shell，執行下列命令以連線到您的 IoT 中樞並讀取訊息：
 

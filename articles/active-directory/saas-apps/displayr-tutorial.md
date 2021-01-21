@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 13edc0280f1a6f7e962e8e4593d8a17990dd9e6f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
-ms.translationtype: HT
+ms.openlocfilehash: 3cb6ee3162c70d2d07c4868ae90ecc54bd489966
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454740"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622486"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>教學課程：整合 Displayr 與 Azure Active Directory
 
@@ -47,7 +47,7 @@ ms.locfileid: "92454740"
 1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
 1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Displayr** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **Displayr**。
 1. 從結果面板選取 [Displayr]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
@@ -78,6 +78,10 @@ ms.locfileid: "92454740"
     a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<YOURDOMAIN>.displayr.com`
 
     b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`<YOURDOMAIN>.displayr.com`
+    
+    c. 在 [ **回復 URL** ] 文字方塊中，輸入 `https://app.displayr.com/Login/ProcessSamlResponse` 。
+    
+    d. 按一下 [檔案]  。
 
     >[!NOTE]
     >這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Displayr 用戶端支援小組](mailto:support@displayr.com)以取得這些值。 您也可以參考 Azure 入口網站中 [基本 SAML 設定] 區段所示的模式。
@@ -88,25 +92,23 @@ ms.locfileid: "92454740"
 
 1. Displayr 應用程式需要特定格式的 SAML 判斷提示，需要您加入自訂屬性對應到您的 SAML token 屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。 按一下 [編輯]  圖示以開啟 [使用者屬性] 對話方塊。
 
-    ![顯示 [使用者屬性] 區段的螢幕擷取畫面，其中醒目提示 [編輯] 圖示。](common/edit-attribute.png)
+   ![顯示 [使用者屬性] 區段的螢幕擷取畫面，其中醒目提示 [編輯] 圖示。](common/edit-attribute.png)
 
 1. 除了以上屬性外，Displayr 應用程式還需要在 SAML 回應中傳回更多屬性。 在 [群組宣告 (預覽)]  對話方塊的 [使用者屬性與宣告]  區段中，執行下列步驟：
 
-    a. 按一下 [宣告中傳回的群組]  旁的 **筆** 。
+   a. 按一下 [ **新增群組** 宣告]。
 
-    ![顯示 [使用者屬性和宣告] 區段的螢幕擷取畫面，其中已選取 [宣告中傳回的群組] 旁邊的「筆」圖示。](./media/displayr-tutorial/config04.png)
+      ![螢幕擷取畫面，顯示已選取設定的 [群組宣告 (預覽)] 視窗。](./media/displayr-tutorial/config05.png)
 
-    ![螢幕擷取畫面，顯示已選取設定的 [群組宣告 (預覽)] 視窗。](./media/displayr-tutorial/config05.png)
+   b. 選取選項按鈕清單中的 [所有群組]  。
 
-    b. 選取選項按鈕清單中的 [所有群組]  。
+   c. 選取 [群組識別碼]  的 [來源屬性]  。
 
-    c. 選取 [群組識別碼]  的 [來源屬性]  。
+   d. 勾選 [自訂群組宣告的名稱]  。
 
-    d. 勾選 [自訂群組宣告的名稱]  。
+   e. 勾選 [以角色宣告名義發出群組]  。
 
-    e. 勾選 [以角色宣告名義發出群組]  。
-
-    f. 按一下 [檔案]  。
+   f. 按一下 [檔案]  。
 
 1. 在 [設定 Displayr]  區段上，依據您的需求複製適當的 URL。
 
@@ -148,7 +150,7 @@ ms.locfileid: "92454740"
 
     f. [群組對應]  為選擇性。
 
-    g. 按一下 [檔案]  。  
+    g. 按一下 [檔案] 。  
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -176,8 +178,8 @@ ms.locfileid: "92454740"
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon** ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組]  對話方塊中，從使用者清單選取 **Britta Simon**，然後按一下畫面底部的 [選取]  按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ### <a name="create-displayr-test-user"></a>建立 Displayr 測試使用者
@@ -200,7 +202,7 @@ ms.locfileid: "92454740"
 
     ![Displayr 設定](./media/displayr-tutorial/config06.png)
 
-    a. 在 [名稱]  文字方塊中，輸入使用者的姓名，例如 **Brittasimon** 。
+    a. 在 [名稱]  文字方塊中，輸入使用者的姓名，例如 **Brittasimon**。
 
     b. 在 [電子郵件]  文字方塊中，輸入使用者的電子郵件，例如 `Brittasimon@contoso.com`。
 

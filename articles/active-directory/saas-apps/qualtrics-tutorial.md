@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/03/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: 1c15b693ecbcb4557fb5ec9ceca8436316f33747
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
-ms.translationtype: HT
+ms.openlocfilehash: 07340cb66fe9ef2f22e1f3e9b201e46dd07254bb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522099"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622306"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP Qualtrics 整合
 
@@ -26,9 +26,7 @@ ms.locfileid: "92522099"
 * 讓使用者使用其 Azure AD 帳戶自動登入 SAP Qualtrics。
 * 在 Azure 入口網站中集中管理您的帳戶。
 
-若要深入了解軟體即服務 (SaaS) 應用程式與 Azure AD 的整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
-
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要開始，您需要：
 
@@ -41,17 +39,16 @@ ms.locfileid: "92522099"
 
 * SAP Qualtrics 支援由 **SP** 和 **IDP** 起始的 SSO。
 * SAP Qualtrics 支援 **Just In Time** 使用者佈建。
-* 設定 SAP Qualtrics 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 如需詳細資訊，請參閱[了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="add-sap-qualtrics-from-the-gallery"></a>從資源庫新增 SAP Qualtrics
 
 若要設定將 SAP Qualtrics 整合到 Azure AD 中，您需要從資源庫將 SAP Qualtrics 新增到受控 SaaS 應用程式清單。
 
-1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左窗格上，選取 [Azure Active Directory]  。
+1. 使用公司或學校帳戶或個人 Microsoft 帳戶登入 Azure 入口網站。
+1. 在左窗格上，選取 [Azure Active Directory]。
 1. 移至 [企業應用程式]  ，然後選取 [所有應用程式]  。
 1. 若要新增新的應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SAP Qualtrics** 。
+1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **SAP Qualtrics**。
 1. 從結果中選取 [SAP Qualtrics]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-qualtrics"></a>設定及測試 SAP Qualtrics的 Azure AD 單一登入
@@ -71,11 +68,11 @@ ms.locfileid: "92522099"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [SAP Qualtrics]  應用程式整合頁面上，尋找 [管理]  區段。 選取 [單一登入]  。
-1. 在 [ **選取單一登入方法** ] 頁面上，選取 [ **SAML** ]。
+1. 在 [ **SAP Qualtrics** 應用程式整合] 頁面的 [Azure 入口網站] 中，尋找 [ **管理** ] 區段。 選取 [單一登入]  。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
 1. 在 [以 SAML 設定單一登入]  頁面上，選取 [基本 SAML 組態]  的鉛筆圖示，以編輯設定。
 
-   ![以 SAML 設定單一登入頁面的螢幕擷取畫面，醒目提示鉛筆圖示](common/edit-urls.png)
+   ![編輯基本 SAML 組態](common/edit-urls.png)
 
 1. 在 [以 SAML 設定單一登入]  頁面上，如果您想要以 **IDP** 起始模式設定應用程式，請輸入下列欄位的值：
     
@@ -100,9 +97,9 @@ ms.locfileid: "92522099"
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的登入 URL、識別碼、回覆 URL 和轉送狀態來更新這些值。 若要取得這些值，請連絡 [Qualtrics 用戶端支援小組](https://www.qualtrics.com/support/)。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [複製] 圖示以複製 **應用程式同盟中繼資料 URL** ，並儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，選取 [複製] 圖示以複製 **應用程式同盟中繼資料 URL**，並儲存在您的電腦上。
 
-    ![SAML 簽署憑證的螢幕擷取畫面，並醒目提示複製圖示](common/copy-metadataurl.png)
+    ![憑證下載連結](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
@@ -123,13 +120,7 @@ ms.locfileid: "92522099"
 1. 在 Azure 入口網站中，選取 [企業應用程式]   > [所有應用程式]  。
 1. 在應用程式清單中，選取 [SAP Qualtrics]  。
 1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
-
-   ![管理區段的螢幕擷取畫面，醒目提示使用者和群組](common/users-groups-blade.png)
-
 1. 選取 [新增使用者]  。 然後，在 [新增指派]  對話方塊中，選取 [使用者和群組]  。
-
-    ![使用者和群組使用者及群組頁面的螢幕擷取畫面，其中已醒目提示 [新增使用者]](common/add-assign-user.png)
-
 1. 在 [使用者和群組]  對話方塊的使用者清單中，選取 [B.Simon]  。 然後，選擇畫面底部的 [選取]  按鈕。
 1. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當的使用者角色。 然後，選擇畫面底部的 [選取]  按鈕。
 1. 在 [新增指派]  對話方塊中，選取 [指派]  。
@@ -144,20 +135,20 @@ SAP Qualtrics 支援依預設啟用的 Just-In-Time 使用者佈建。 沒有您
 
 ## <a name="test-sso"></a>測試 SSO 
 
-在本節中，您會使用存取面板來測試您的 Azure AD 單一登入組態。
+在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組態。 
 
-當您在存取面板中選取 [SAP Qualtrics] 圖格時，您應該會自動登入已設定 SSO 的 SAP Qualtrics。 如需詳細資訊，請參閱[登入我的應用程式入口網站並啟動應用程式](../user-help/my-apps-portal-end-user-access.md)。
+#### <a name="sp-initiated"></a>SP 起始：
 
-## <a name="additional-resources"></a>其他資源
+* 在 Azure 入口網站中按一下 [測試此應用程式]。 這會重新導向至 SAP Qualtrics 登入 URL，您可以在其中起始登入流程。  
 
-- [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](./tutorial-list.md)
+* 直接移至 SAP Qualtrics 登入 URL，並從該處起始登入流程。
 
-- [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP 起始：
 
-- [什麼是 Azure Active Directory 中的條件式存取？](../conditional-access/overview.md)
+* 按一下 [在 Azure 入口網站 **測試此應用程式** ]，您應該會自動登入您已設定 SSO 的 SAP Qualtrics。
 
-- [嘗試搭配 Azure AD 使用 SAP Qualtrics](https://aad.portal.azure.com/)
+您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您在我的應用程式中按一下 [SAP Qualtrics] 圖格時，如果在 SP 模式中設定，系統會將您重新導向至應用程式登入頁面以起始登入流程，如果是在 IDP 模式中設定，您應該會自動登入您已設定 SSO 的 SAP Qualtrics。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>後續步驟
 
-- [使用進階可見性和控制項保護 SAP Qualtrics](/cloud-app-security/proxy-intro-aad)
+設定 SAP Qualtrics 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 如需詳細資訊，請參閱[了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。

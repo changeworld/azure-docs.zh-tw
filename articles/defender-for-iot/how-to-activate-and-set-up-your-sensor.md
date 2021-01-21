@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538558"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623584"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>啟用和設定感應器
 
@@ -134,9 +134,9 @@ ms.locfileid: "98538558"
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>系統管理員) 的初始安裝和學習 (
 
-在您第一次登入之後，適用于 IoT 的 Azure Defender 感應器會開始自動監視您的網路。 網路資產將會出現在資產地圖和資產清查區段中。 適用于 IoT 的 Azure Defender 將開始偵測並警示您在網路中發生的所有安全性和操作事件。 然後，您可以根據偵測到的資訊來建立報表和查詢。
+在您第一次登入之後，適用于 IoT 的 Azure Defender 感應器會開始自動監視您的網路。 網路裝置將會出現在裝置對應和裝置清查區段中。 適用于 IoT 的 Azure Defender 將開始偵測並警示您在網路中發生的所有安全性和操作事件。 然後，您可以根據偵測到的資訊來建立報表和查詢。
 
-此活動一開始會在學習模式中執行，這會指示您的感應器瞭解您網路的一般活動。 例如，感應器會學習在您的網路中探索到的資產、在網路中偵測到的通訊協定，以及在特定資產之間進行的檔案傳輸。 此活動會成為您網路的基準活動。
+此活動一開始會在學習模式中執行，這會指示您的感應器瞭解您網路的一般活動。 例如，感應器會學習網路中探索到的裝置、在網路中偵測到的通訊協定，以及在特定裝置之間進行的檔案傳輸。 此活動會成為您網路的基準活動。
 
 ### <a name="review-and-update-basic-system-settings"></a>檢查和更新基本系統設定
 

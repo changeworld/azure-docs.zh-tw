@@ -11,12 +11,12 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f1b1d792891b3ab8dabff42757d0e705e512879
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 80a035f30294449a024bbde76df2d42ddc23396e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613398"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622706"
 ---
 # <a name="azure-ad-connect-cloud-sync-attribute-mapping"></a>Azure AD Connect 雲端同步屬性對應
 
@@ -57,9 +57,9 @@ Azure AD Connect cloud sync 推出了一項新功能，可讓您輕鬆地對應�
 
 1.  在 Azure 入口網站中，選取 [Azure Active Directory]  。
 2.  選取 [Azure AD Connect]。
-3.  選取 [ **管理** 布建]。
+3.  選取 [ **管理雲端同步**]。
 
-    ![管理布建](media/how-to-configure/manage-1.png)
+    ![管理布建](media/how-to-install/install-6.png)
 
 4. 在 [設定] **底下，選取您的設定**。
 5. 選取 [ **按一下以編輯** 對應]。  這會開啟 [屬性對應] 畫面。

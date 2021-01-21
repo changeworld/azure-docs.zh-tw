@@ -1,5 +1,5 @@
 ---
-title: 從 Azure IoT 中樞控制裝置的快速入門 (Android) | Microsoft Docs
+title: 快速入門-從 Azure IoT 中樞快速入門 (Android) 控制裝置 |Microsoft Docs
 description: 在此快速入門中，您會執行兩個範例 Java 應用程式。 其中一個應用程式是服務應用程式，可以從遠端控制連線到中樞的裝置。 另一個應用程式則是在可從遠端控制且連線到中樞的實體或模擬裝置上執行。
 author: wesmc7777
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 969ae6dc1e3667bc360890c292371a0a9b1ba2dc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
-ms.translationtype: HT
+ms.openlocfilehash: 345b82d8120be52066ce6f834b7f2338b6c3bfd0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844586"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623293"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入門：控制連線到 IoT 中樞的裝置 (Android)
 
@@ -73,7 +73,7 @@ ms.locfileid: "94844586"
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show\
       --hub-name {YourIoTHubName} \
       --device-id MyAndroidDevice \
       --output table
@@ -133,7 +133,7 @@ az iot hub show-connection-string --policy-name service --name {YourIoTHubName} 
 
 ## <a name="read-the-telemetry-from-your-hub"></a>從您的中樞讀取遙測
 
-在此節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來監視由 Android 裝置傳送的訊息。
+在此節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)來監視由 Android 裝置傳送的訊息。
 
 1. 使用 Azure Cloud Shell，執行下列命令以連線到您的 IoT 中樞並讀取訊息：
 

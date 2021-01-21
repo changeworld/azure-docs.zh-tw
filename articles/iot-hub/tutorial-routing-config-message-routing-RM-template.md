@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Resource Manager 範本設定 Azure IoT 中樞的訊息路由
-description: 使用 Azure Resource Manager 範本設定 Azure IoT 中樞的訊息路由
+title: 教學課程-使用 Azure Resource Manager 範本為 Azure IoT 中樞設定訊息路由
+description: 教學課程-使用 Azure Resource Manager 範本為 Azure IoT 中樞設定訊息路由
 author: robinsh
 manager: philmeagit st
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e5ae5948c8baf1573393c73026c84d0f62e8693e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
-ms.translationtype: HT
+ms.openlocfilehash: 53217340b0d91f3de77e5e0d8c0a82e30599d6ed
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480100"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621423"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>教學課程：使用 Azure Resource Manager 範本設定 IoT 中樞的訊息路由
 
@@ -30,7 +30,7 @@ ms.locfileid: "92480100"
 
 在本教學課程的第二個部分中，您會下載並執行 Visual Studio 應用程式以將訊息傳送至 IoT 中樞。 該下載中有一個資料夾，內含 Azure Resource Manager 範本和參數檔案，以及 Azure CLI 和 PowerShell 指令碼。
 
-請繼續進行，並立即下載 [Azure IoT C# 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 將 master.zip 檔案解壓縮。 Resource Manager 範本和參數檔案位於 /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ 中，名稱分別是 **template_iothub.json** 和 **template_iothub_parameters.json** 。
+請繼續進行，並立即下載 [Azure IoT C# 範例](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)。 將 master.zip 檔案解壓縮。 Resource Manager 範本和參數檔案位於 /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ 中，名稱分別是 **template_iothub.json** 和 **template_iothub_parameters.json**。
 
 ## <a name="create-your-resources"></a>建立資源
 
@@ -46,49 +46,49 @@ ms.locfileid: "92480100"
 
 這些參數大多具有預設值。 以 **_in** 結尾的參數會串連 randomValue  以便成為全域唯一的值。 
 
-**randomValue** ：這個值會從部署範本當下的日期/時間來產生。 此欄位不在參數檔案內，因為其會在範本當中產生。
+**randomValue**：這個值會從部署範本當下的日期/時間來產生。 此欄位不在參數檔案內，因為其會在範本當中產生。
 
-**subscriptionId** ：此欄位會為您設定為範本部署目的地的訂用帳戶。 此欄位不在參數檔案內，因為會由系統為您設定。
+**subscriptionId**：此欄位會為您設定為範本部署目的地的訂用帳戶。 此欄位不在參數檔案內，因為會由系統為您設定。
 
-**IoTHubName_in** ：此欄位是基底 IoT 中樞名稱，會串連 randomValue 以便成為全域唯一的值。
+**IoTHubName_in**：此欄位是基底 IoT 中樞名稱，會串連 randomValue 以便成為全域唯一的值。
 
-**location** ：此欄位是您要作為部署目的地的 Azure 區域，例如「westus」。
+**location**：此欄位是您要作為部署目的地的 Azure 區域，例如「westus」。
 
-**consumer_group** ：此欄位是針對通過路由端點而來的訊息所設定的取用者群組。 其可用來篩選 Azure 串流分析中的結果。 例如，其中有可以取得所有項目的整個資料流，如果您有將 consumer_group 設定為 **Contoso** 的傳入資料，也可以將 Azure 串流分析資料流 (和 Power BI 報告) 設定為只顯示這些項目。 本教學課程的第 2 部分會使用到此欄位。
+**consumer_group**：此欄位是針對通過路由端點而來的訊息所設定的取用者群組。 其可用來篩選 Azure 串流分析中的結果。 例如，其中有可以取得所有項目的整個資料流，如果您有將 consumer_group 設定為 **Contoso** 的傳入資料，也可以將 Azure 串流分析資料流 (和 Power BI 報告) 設定為只顯示這些項目。 本教學課程的第 2 部分會使用到此欄位。
 
-**sku_name** ：此欄位是 IoT 中樞的規模。 此值必須為 S1 以上；免費層不允許多個端點，因此不適用於本教學課程。
+**sku_name**：此欄位是 IoT 中樞的規模。 此值必須為 S1 以上；免費層不允許多個端點，因此不適用於本教學課程。
 
-**sku_units** ：此欄位會與 **sku_name** 一同出現，其為可使用的 IoT 中樞單位數目。
+**sku_units**：此欄位會與 **sku_name** 一同出現，其為可使用的 IoT 中樞單位數目。
 
-**d2c_partitions** ：此欄位是用於事件資料流的分割區數目。
+**d2c_partitions**：此欄位是用於事件資料流的分割區數目。
 
-**storageAccountName_in** ：此欄位是所要建立儲存體帳戶的名稱。 訊息會路由傳送至這個儲存體帳戶中的容器。 此欄位會串連 randomValue 以便成為全域唯一的值。
+**storageAccountName_in**：此欄位是所要建立儲存體帳戶的名稱。 訊息會路由傳送至這個儲存體帳戶中的容器。 此欄位會串連 randomValue 以便成為全域唯一的值。
 
-**storageContainerName** ：此欄位是路由傳送至儲存體帳戶的訊息儲存所在容器的名稱。
+**storageContainerName**：此欄位是路由傳送至儲存體帳戶的訊息儲存所在容器的名稱。
 
-**storage_endpoint** ：此欄位是訊息路由所使用儲存體帳戶端點的名稱。
+**storage_endpoint**：此欄位是訊息路由所使用儲存體帳戶端點的名稱。
 
-**service_bus_namespace_in** ：此欄位是所要建立服務匯流排命名空間的名稱。 此值會串連 randomValue 以便成為全域唯一的值。
+**service_bus_namespace_in**：此欄位是所要建立服務匯流排命名空間的名稱。 此值會串連 randomValue 以便成為全域唯一的值。
 
-**service_bus_queue_in** ：此欄位是用於路由傳送訊息的服務匯流排佇列名稱。 此值會串連 randomValue 以便成為全域唯一的值。
+**service_bus_queue_in**：此欄位是用於路由傳送訊息的服務匯流排佇列名稱。 此值會串連 randomValue 以便成為全域唯一的值。
 
-**AuthRules_sb_queue** ：此欄位是服務匯流排佇列的授權規則，可用來擷取佇列的連接字串。
+**AuthRules_sb_queue**：此欄位是服務匯流排佇列的授權規則，可用來擷取佇列的連接字串。
 
 ### <a name="variables"></a>變數
 
 這些值會在範本中用到，且大多衍生自參數。
 
-**queueAuthorizationRuleResourceId** ：此欄位是服務匯流排佇列授權規則的 ResourceId。 ResourceId 會再用來擷取佇列的連接字串。
+**queueAuthorizationRuleResourceId**：此欄位是服務匯流排佇列授權規則的 ResourceId。 ResourceId 會再用來擷取佇列的連接字串。
 
-**iotHubName** ：此欄位是串連 randomValue 後的 IoT 中樞名稱。 
+**iotHubName**：此欄位是串連 randomValue 後的 IoT 中樞名稱。 
 
-**storageAccountName** ：此欄位是串連 randomValue 後的儲存體帳戶名稱。 
+**storageAccountName**：此欄位是串連 randomValue 後的儲存體帳戶名稱。 
 
-**service_bus_namespace** ：此欄位是串連 randomValue 後的命名空間。
+**service_bus_namespace**：此欄位是串連 randomValue 後的命名空間。
 
-**service_bus_queue** ：此欄位是串連 randomValue 後的服務匯流排佇列名稱。
+**service_bus_queue**：此欄位是串連 randomValue 後的服務匯流排佇列名稱。
 
-**sbVersion** ：所要使用服務匯流排 API 的版本。 在此例為「2017-04-01」。
+**sbVersion**：要使用之服務匯流排 API 的版本。 在此例為「2017-04-01」。
 
 ### <a name="resources-storage-account-and-container"></a>資源：儲存體帳戶和容器
 
@@ -364,7 +364,7 @@ ms.locfileid: "92480100"
 
 檔案上傳之後，會有結果對話方塊顯示如下圖所示的內容。
 
-![Cloud Shell 功能表列，已醒目提示 [上傳/下載檔案]](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![已反白顯示上傳/下載結果的 Cloud Shell 功能表列](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
 檔案會上傳至 Cloud Shell 執行個體所使用的共用。 
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/19/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8dce284c0fffe10fe077fcb6c6713ba65c45751
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 9442489efd2a84ac8a31dfb2efb5718e1fd4f594
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743899"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621788"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 總覽的結合安全性資訊註冊
 
@@ -30,18 +30,18 @@ ms.locfileid: "96743899"
 > [!div class="nextstepaction"]
 > [啟用結合的安全性註冊](howto-registration-mfa-sspr-combined.md)
 
-![顯示使用者已註冊之安全性資訊的設定檔](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![我的帳戶顯示使用者的已註冊安全性資訊](media/concept-registration-mfa-sspr-combined/combined-security-info-defaults-registered.png)
 
 在啟用新的體驗之前，請先查看以系統管理員為主的檔和以使用者為主的檔，以確保您瞭解這項功能的功能和效果。 根據 [使用者檔](../user-help/security-info-setup-signin.md) 的訓練，讓您的使用者能夠獲得新的體驗，並協助確保成功推出。
 
 Azure AD 組合的安全性資訊註冊目前無法供國家雲端使用，例如 Azure 德國或 Azure 中國的世紀。 適用于 Azure 美國政府。
 
 > [!IMPORTANT]
-> 針對原始預覽和增強的組合註冊體驗啟用的使用者，會看到新的行為。 同時啟用這兩種體驗的使用者只會看到新的「我的設定檔」體驗。 新的「 *我的個人資料* 」符合合併註冊的外觀和風格，並為使用者提供順暢的體驗。 使用者可以查看我的設定檔，方法是前往 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。
+> 針對原始預覽和增強的組合註冊體驗啟用的使用者，會看到新的行為。 啟用這兩種體驗的使用者只會看到我的帳戶體驗。 *我的帳戶* 與合併註冊的外觀和風格一致，並為使用者提供順暢的體驗。 使用者可以查看我的帳戶，方法是前往 [https://myaccount.microsoft.com](https://myaccount.microsoft.com) 。
 >
 > 當您嘗試存取安全性資訊選項時，可能會遇到錯誤訊息，例如「抱歉，我們無法將您登入」。 確認您沒有任何設定或群組原則物件會在網頁瀏覽器上封鎖協力廠商 cookie。
 
-*我的設定檔* 頁面會根據存取頁面之電腦的語言設定來當地語系化。 Microsoft 會儲存在瀏覽器快取中使用的最新語言，所以後續存取頁面的嘗試會繼續以最後使用的語言呈現。 如果您清除快取，頁面就會重新呈現。
+*我的帳戶* 頁面會根據存取頁面之電腦的語言設定來當地語系化。 Microsoft 會儲存在瀏覽器快取中使用的最新語言，所以後續存取頁面的嘗試會繼續以最後使用的語言呈現。 如果您清除快取，頁面就會重新呈現。
 
 如果您想要強制執行特定語言，您可以新增 `?lng=<language>` 至 URL 的結尾，其中 `<language>` 是您想要轉譯之語言的程式碼。
 
@@ -116,7 +116,7 @@ Azure AD 組合的安全性資訊註冊目前無法供國家雲端使用，例�
 
 ### <a name="manage-mode"></a>管理模式
 
-使用者可以前往 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 或選取 [我的設定檔] 中的 [ **安全性資訊** ]，以存取 [管理] 模式。 使用者可以從該處新增方法、刪除或變更現有的方法、變更預設方法等等。
+使用者可以前往 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 或選取 [我的帳戶] 中的 [ **安全性資訊** ]，以存取 [管理] 模式。 使用者可以從該處新增方法、刪除或變更現有的方法、變更預設方法等等。
 
 ## <a name="key-usage-scenarios"></a>主要使用案例
 
@@ -126,17 +126,17 @@ Azure AD 組合的安全性資訊註冊目前無法供國家雲端使用，例�
 
 使用者尚未設定所有必要的安全性資訊，並移至 Azure 入口網站。 輸入使用者名稱和密碼之後，系統會提示使用者設定安全性資訊。 然後，使用者會遵循嚮導中所示的步驟來設定所需的安全性資訊。 如果您的設定允許，使用者可以選擇設定非預設顯示的方法。 完成嚮導之後，使用者會檢查他們所設定的方法，以及其 Multi-Factor Authentication 的預設方法。 若要完成安裝程式，使用者會確認資訊，並繼續進行 Azure 入口網站。
 
-### <a name="set-up-security-info-from-my-profile"></a>從我的設定檔設定安全性資訊
+### <a name="set-up-security-info-from-my-account"></a>從我的帳戶設定安全性資訊
 
 系統管理員未強制執行註冊。
 
-尚未設定所有必要安全性資訊的使用者會進入 [https://myprofile.microsoft.com](https://myprofile.microsoft.com) 。 使用者會在左窗格中選取 [ **安全性資訊** ]。 使用者可以從該處選擇新增方法、選取任何可用的方法，並遵循設定該方法的步驟。 完成之後，使用者會看到在 [安全性資訊] 頁面上設定的方法。
+尚未設定所有必要安全性資訊的使用者會進入 [https://myaccount.microsoft.com](https://myaccount.microsoft.com) 。 使用者會在左窗格中選取 [ **安全性資訊** ]。 使用者可以從該處選擇新增方法、選取任何可用的方法，並遵循設定該方法的步驟。 完成之後，使用者會看到在 [安全性資訊] 頁面上設定的方法。
 
-### <a name="delete-security-info-from-my-profile"></a>從我的設定檔刪除安全性資訊
+### <a name="delete-security-info-from-my-account"></a>從我的帳戶刪除安全性資訊
 
 先前已設定至少一個方法的使用者會流覽至 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 。 使用者選擇刪除其中一個先前註冊的方法。 完成之後，使用者就不會再于 [安全性資訊] 頁面上看到該方法。
 
-### <a name="change-the-default-method-from-my-profile"></a>從我的設定檔變更預設方法
+### <a name="change-the-default-method-from-my-account"></a>從我的帳戶變更預設方法
 
 先前已設定至少一個方法的使用者，可用於 Multi-Factor Authentication 流覽至 [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) 。 使用者將目前的預設方法變更為不同的預設方法。 完成時，使用者會在 [安全性資訊] 頁面上看到新的預設方法。
 

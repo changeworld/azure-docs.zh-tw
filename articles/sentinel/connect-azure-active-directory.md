@@ -13,32 +13,28 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2020
+ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 279f54c3de964580cc37d1288a6e1b7726348e10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9700e5d9179f7c1e33b2371eea89be9bb1c8d08f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208612"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621357"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>將資料從 Azure Active Directory 的 (Azure AD) 
-
-
 
 您可以使用 Azure Sentinel 的內建連接器，從 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) 收集資料，並將其串流至 Azure Sentinel。 連接器可讓您串流登 [入記錄](../active-directory/reports-monitoring/concept-sign-ins.md) 和 [審核記錄](../active-directory/reports-monitoring/concept-audit-logs.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
-
-- 任何 Azure AD 授權 (Free/O365/P1/P2) 都足以將登入記錄內嵌至 Azure Sentinel。 Azure 監視器 (Log Analytics) 和 Azure Sentinel 可能會收取額外的每 gb 費用。
+- 您必須有 [Azure AD Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) 訂用帳戶，才能將登入記錄內嵌至 Azure Sentinel。 Azure 監視器 (Log Analytics) 和 Azure Sentinel 可能會收取額外的每 gb 費用。
 
 - 您的使用者必須被指派工作區上的 Azure Sentinel 參與者角色。
 
 - 您必須將您想要從中串流記錄的租使用者上的全域管理員或安全性系統管理員角色指派給您的使用者。
 
 - 您的使用者必須具有 Azure AD 診斷設定的 [讀取] 和 [寫入] 許可權，才能夠看到線上狀態。 
-
 
 ## <a name="connect-to-azure-active-directory"></a>連接至 Azure Active Directory
 

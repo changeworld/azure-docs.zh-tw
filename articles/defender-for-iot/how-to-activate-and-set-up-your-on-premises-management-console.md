@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 94a1db30419e5d7e52f369392d94b817d0dc273a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538588"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623749"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>啟用和設定內部部署管理主控台 
 
@@ -147,13 +147,13 @@ ms.locfileid: "98538588"
 
 ## <a name="set-up-a-site"></a>設定網站
 
-預設的企業地圖會根據數個層級的地理位置來提供資產的整體觀點。
+預設的企業地圖會根據數個層級的地理位置來提供裝置的整體觀點。
 
-在組織結構和使用者權限很複雜的情況下，您可能需要資產的觀點。 在這些情況下，除了標準網站或區域結構之外，網站設定可能是由通用群組織結構所決定。
+在組織結構和使用者權限很複雜的情況下，可能需要您的裝置視圖。 在這些情況下，除了標準網站或區域結構之外，網站設定可能是由通用群組織結構所決定。
 
 若要支援此環境，您需要建立以您組織的業務單位、區域、網站和區域為基礎的全球商務拓朴。 您也需要使用存取群組來定義這些實體的使用者存取權限。
 
-存取群組可讓您更有效地控制使用者在 Defender for IoT 平臺中管理及分析資產的位置。
+存取群組可讓您更有效地控制使用者在 Defender for IoT 平臺中管理和分析裝置的位置。
 
 ### <a name="how-it-works"></a>運作方式
 
@@ -215,7 +215,7 @@ ms.locfileid: "98538588"
 
 ## <a name="create-enterprise-zones"></a>建立企業區域
 
-區域是邏輯實體，可讓您根據各種特性，將網站中的資產分割成群組。 例如，您可以建立產品線、變電站、網站區域或資產類型的群組。 您可以根據適合您組織的任何特性來定義區域。
+區域是邏輯實體，可讓您根據各種特性，將網站內的裝置分割成群組。 例如，您可以建立產品線、變電站、網站區域或裝置類型的群組。 您可以根據適合您組織的任何特性來定義區域。
 
 您可以將區域設定為網站設定流程的一部分。
 
@@ -225,13 +225,13 @@ ms.locfileid: "98538588"
 
 | 參數 | 描述 |
 |--|--|
-| Name | 感應器的名稱。 您只能從感應器變更此名稱。 如需詳細資訊，請參閱 Defender for IoT 使用者指南。 |
+| 名稱 | 感應器的名稱。 您只能從感應器變更此名稱。 如需詳細資訊，請參閱 Defender for IoT 使用者指南。 |
 | IP | 感應器 IP 位址。 |
 | 版本 | 感應器版本。 |
 | 連線能力 | 感應器連接狀態。 狀態可以是 [ **已連線** ] 或 [已 **中斷** 連線]。 |
 | 上次升級 | 上次升級的日期。 |
 | 升級進度 | 進度列會顯示升級程式的狀態，如下所示：<br />-上傳套件<br />-正在準備安裝<br />-正在停止進程<br />-備份資料<br />-拍攝快照集<br />-正在更新設定<br />-正在更新相依性<br />-更新程式庫<br />-修補資料庫<br />-正在啟動進程<br />-正在驗證系統的健全<br />-驗證成功<br />-Success<br />-失敗<br />-已開始升級<br />-正在啟動安裝ogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >如需升級的詳細資訊，請參閱 [Microsoft 支援服務](https://support.microsoft.com/) 尋求協助。 |
-| Assets | 感應器所監視的 OT 資產數目。 |
+| 裝置 | 感應器所監視的 OT 裝置數目。 |
 | 警示 | 感應器上的警示數目。 |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: | 可將感應器指派至區域。 |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false":::| 可從網站刪除已中斷連線的感應器。 |

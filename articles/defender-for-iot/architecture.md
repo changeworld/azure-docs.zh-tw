@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201465"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621092"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>適用于 IoT 的 Azure Defender 架構
 
@@ -81,7 +81,7 @@ Defender for IoT 感應器會探索和持續監視網路裝置。 感應器會�
 - Azure 入口網站
 
 ### <a name="sensor-console"></a>感應器主控台
-感應器偵測會顯示在感應器主控台中，可供您在網路地圖、資產清查和廣泛的報表中進行查看、調查及分析，例如風險評量報告、資料採礦查詢和攻擊媒介。 您也可以使用主控台來查看和處理感應器引擎偵測到的威脅、將資訊轉送至夥伴系統、管理使用者等等。
+感應器偵測會顯示在感應器主控台中，可供您在網路地圖、裝置清查和廣泛的報表中進行查看、調查及分析，例如風險評量報告、資料採礦查詢和攻擊媒介。 您也可以使用主控台來查看和處理感應器引擎偵測到的威脅、將資訊轉送至夥伴系統、管理使用者等等。
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="適用于 IoT 的 Defender 感應器主控台":::
 
@@ -96,7 +96,7 @@ Defender for IoT 感應器會探索和持續監視網路裝置。 感應器會�
 
 與 SOC 工作流程和執行手冊緊密整合，可讓您輕鬆地排定風險降低的風險和跨網站的相互關聯。
 
-- 透過單一整合的平臺進行資產管理、風險和弱點管理，以及使用事件回應進行威脅監視，來全面降低複雜度。
+- 透過單一整合的平臺進行裝置管理、風險和弱點管理，以及使用事件回應進行威脅監視，來全面降低複雜性。
 
 - 匯總和相互關聯–顯示、匯總及分析從所有網站收集的資料和警示。
 
@@ -136,7 +136,7 @@ Azure 中的 Defender for IoT 入口網站可用來協助您：
 
 :::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="微代理程式架構。":::
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [適用于 IoT 的 Defender 常見問題](resources-frequently-asked-questions.md)
 

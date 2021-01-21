@@ -1,6 +1,6 @@
 ---
-title: 將遙測資料傳送至 Azure IoT 中樞的快速入門 (iOS)
-description: 執行範例 iOS 應用程式，將模擬的遙測傳送到 IoT 中樞以及從 IoT 中樞讀取遙測，以便在雲端中處理。
+title: '快速入門-將遙測傳送至 Azure IoT 中樞的快速入門 (iOS) '
+description: 本快速入門中，您可以執行範例 iOS 應用程式，將模擬的遙測傳送到 IoT 中樞以及從 IoT 中樞讀取遙測，以便在雲端中處理。
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 ms.date: 04/03/2019
-ms.openlocfilehash: 6699015a3c8939f012eb837da3d8b0c3d49527d5
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 4af985d93c5b02ab20df97abd5fa0371edf889f5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121463"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624247"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>快速入門：將遙測資料從裝置傳送到 IoT 中樞 (iOS)
 

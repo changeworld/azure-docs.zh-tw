@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 1ac87f98af555aae155a201cc20692c950fc7924
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97838638"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621923"
 ---
 # <a name="basic-concepts"></a>基本概念 
 
@@ -22,7 +22,7 @@ ms.locfileid: "97838638"
 
 Defender for IoT 感應器會連線至 SPAN 埠或網路點，並立即開始透過被動 (無代理程式) 監視來收集 ICS 網路流量。 深層封包檢查 (DPI) 用來仔細分析來自串列和 Ethernet 控制網路設備的流量。 適用于 IoT 的 Defender 對對等網路沒有任何影響，因為它不是放在資料路徑中，而且不會主動掃描 OT 裝置。 
 
-為了提供詳細資產資訊的即時快照，Defender for IoT 感應器會使用選擇性的作用中元件來補充被動監視。 此元件使用安全、廠商核准的命令，盡可能地查詢 Windows 和控制器裝置的資產詳細資料，或盡可能不常使用。
+為了提供詳細裝置資訊的即時快照，Defender for IoT 感應器會使用選擇性的作用中元件來補充被動監視。 此元件使用安全的廠商核准命令，盡可能地查詢 Windows 和控制器裝置，以取得裝置詳細資料。
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>ICS 通訊協定、裝置和應用程式的內嵌知識
 
@@ -34,7 +34,7 @@ DPI 本身不足以找出通訊協定異常，並在細微層級識別裝置。 
 
 - **通訊協定違規偵測**：識別如何使用違反 ICS 通訊協定規格的封包結構和域值。
 
-- **原則違規偵測**：識別原則違規，例如未授權的函式程式碼使用、特定物件的存取權，或資產設定的變更。
+- **原則違規偵測**：識別原則違規，例如未授權使用函式程式碼、存取特定物件，或變更裝置設定。
 
 - **產業惡意程式碼偵測**：識別指出已知惡意程式碼（例如 Conficker、黑色能源、Havex、WannaCry 和 NotPetya）存在的行為。
 

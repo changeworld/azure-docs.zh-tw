@@ -1,5 +1,5 @@
 ---
-title: 將遙測傳送至 Azure IoT 中樞快速入門 (C) | Microsoft Docs
+title: 快速入門-將遙測傳送至 Azure IoT 中樞快速入門 (C) |Microsoft Docs
 description: 在此快速入門中，您會執行兩個範例 C 應用程式，以將模擬的遙測資料傳送至 IoT 中樞以及從 IoT 中樞讀取遙測資料，以便在雲端中處理。
 author: wesmc7777
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 175ec6766f7cad96c2cc386894f01e5e9fb393fc
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 89b872557275db8651f3b55502d340ff55b7e626
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121464"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624281"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>快速入門：將遙測從裝置傳送至 IoT 中樞，並使用後端應用程式讀取遙測 (C)
 
@@ -114,7 +114,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 ## <a name="register-a-device"></a>註冊裝置
 
-裝置必須向的 IoT 中樞註冊，才能進行連線。 在本節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來註冊模擬裝置。
+裝置必須向的 IoT 中樞註冊，才能進行連線。 在本節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)來註冊模擬裝置。
 
 1. 在 Azure Cloud Shell 中執行下列命令，以建立裝置身分識別。
 
@@ -183,7 +183,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 ## <a name="read-the-telemetry-from-your-hub"></a>從您的中樞讀取遙測
 
-在本節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)來監視由模擬裝置傳送的裝置訊息。
+在本節中，您將使用 Azure Cloud Shell 搭配 [IoT 擴充功能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)來監視由模擬裝置傳送的裝置訊息。
 
 1. 使用 Azure Cloud Shell，執行下列命令以連線到您的 IoT 中樞並讀取訊息：
 

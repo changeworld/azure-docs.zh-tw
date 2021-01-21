@@ -4,12 +4,12 @@ description: 本文提供有關如何使用 Azure .NET SDK 為「Azure 事件中
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131231"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623043"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>Azure 事件中樞 (舊版 EventHubs 套件的 .NET 程式設計指南) 
 本文會討論一些使用 Azure 事件中樞來撰寫程式碼的常見案例。 它假設使用者對事件中樞已有初步了解。 如需事件中樞的概念概觀，請參閱 [事件中樞概觀](./event-hubs-about.md)。
@@ -97,7 +97,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>以非同步方式傳送和大規模傳送
 
-您可以用非同步方式將事件傳送到事件中樞。 以非同步方式傳送會增加用戶端傳送事件的速率。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 會傳回 [Task](/dotnet/api/system.threading.tasks.task?view=netcore-3.1) 物件。 您可以在用戶端上使用 [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) 類別來控制用戶端重試選項。
+您可以用非同步方式將事件傳送到事件中樞。 以非同步方式傳送會增加用戶端傳送事件的速率。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 會傳回 [Task](/dotnet/api/system.threading.tasks.task) 物件。 您可以在用戶端上使用 [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) 類別來控制用戶端重試選項。
 
 ## <a name="event-consumers"></a>事件取用者
 [EventProcessorHost][] 類別能處理來自事件中樞的資料。 在 .NET 平台上建置事件讀取器時，您應該使用這項實作。 [EventProcessorHost][] 能為事件處理器實作提供安全執行緒、多處理序、安全的執行階段環境，進而提供檢查點和資料分割租用管理。

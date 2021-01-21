@@ -1,6 +1,6 @@
 ---
-title: 從 Azure IoT 中樞同步處理裝置狀態 | Microsoft Docs
-description: 了解如何使用裝置對應項設定您的雲端裝置，並從裝置接收狀態和合規性資料。
+title: 教學課程-從 Azure IoT 中樞同步處理裝置狀態 |Microsoft Docs
+description: 教學課程-瞭解如何使用裝置 twins 從雲端設定您的裝置，以及從您的裝置接收狀態和合規性資料。
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: HT
+ms.openlocfilehash: 912e59197970e60f57a13c049ffadbd2ad938a9b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572519"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621407"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 

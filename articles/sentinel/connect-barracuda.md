@@ -15,19 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: f28243be6b4f998e8bdea0ce02da3ceedde23e02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1131c8e79d9df2883dcf7e975af9732c21318a49
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85559121"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621159"
 ---
-# <a name="connect-your-barracuda-appliance"></a>連接您的 Barracuda 設備 
-
-
+# <a name="connect-your-barracuda-waf-appliance"></a>連接您的 Barracuda WAF 設備 
 
 Barracuda Web 應用程式防火牆 (WAF) 連接器可讓您輕鬆地將 Barracuda 記錄與 Azure Sentinel 連線、查看儀表板、建立自訂警示，以及改進調查。 這可讓您深入瞭解組織的網路，並改善安全性作業功能。 Azure Sentinel 利用 **Barracuda** 與 Log Analytics 代理程式之間的原生整合，以提供順暢的整合。 
-
 
 > [!NOTE]
 > 資料會儲存在您執行 Azure Sentinel 之工作區的地理位置。
@@ -46,7 +43,7 @@ Barracuda Web 應用程式防火牆可以透過 Log Analytics 代理程式，將
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Barracuda 設備連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。

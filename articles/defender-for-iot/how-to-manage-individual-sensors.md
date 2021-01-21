@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539571"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621209"
 ---
 # <a name="manage-individual-sensors"></a>管理個別感應器
 
@@ -315,7 +315,7 @@ Windows 會將這些檔案辨識為憑證檔案。 根據預設，Windows 會將
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>將感應器連線到管理主控台
 
-本節說明如何確保感應器和內部部署管理主控台之間的連接。 如果您是在有空調的網路中工作，而且想要從感應器將資產和警示資訊傳送到管理主控台，請執行這項操作。 此連接也可讓管理主控台將系統設定推送至感應器，並在感應器上執行其他管理工作。
+本節說明如何確保感應器和內部部署管理主控台之間的連接。 如果您是在有空調的網路中工作，而且想要從感應器將裝置和警示資訊傳送到管理主控台，就必須這樣做。 此連接也可讓管理主控台將系統設定推送至感應器，並在感應器上執行其他管理工作。
 
 連接：
 
@@ -504,7 +504,7 @@ Windows 會將這些檔案辨識為憑證檔案。 根據預設，Windows 會將
 
 下列程式說明如何使用感應器主控台來更新獨立感應器。 更新程式大約需要30分鐘的時間。
 
-1. 移至 [Azure 入口網站](https://portal.azure.com/)。
+1. 前往 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 前往 Defender for IoT。
 

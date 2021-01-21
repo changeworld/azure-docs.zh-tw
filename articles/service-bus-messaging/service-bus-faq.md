@@ -3,12 +3,12 @@ title: Azure 服務匯流排常見問題集 (FAQ) | Microsoft Docs
 description: 本文提供一些常見問題的解答 (常見問題) Azure 服務匯流排。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: ec79b6988fdbc78dc4f45e504f84179e617589cc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 576df12a9d53ec3585f8691016cd250bf1ba4be3
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518750"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623102"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排-常見問題 (常見問題) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "92518750"
 [服務匯流排佇列](service-bus-queues-topics-subscriptions.md)是訊息儲存所在的實體。 如果您有多個應用程式，或多個需要彼此通訊的分散式應用程式部分，佇列很有用。 佇列和配送中心的類似之處在於，兩者都會接收多個產品 (訊息)，再從該處送出。
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>什麼是 Azure 服務匯流排主題和訂用帳戶？
-主題可視覺化為佇列，而且在使用多個訂用帳戶時，主題會變成更豐富的訊息模型；基本上是一對多的通訊工具。 此發佈/訂閱模型 (或「pub/sub」**) 可讓應用程式將訊息傳送至具有多個訂用帳戶的主題，以便讓多個應用程式接收該訊息。
+主題可視覺化為佇列，而且在使用多個訂用帳戶時，主題會變成更豐富的訊息模型；基本上是一對多的通訊工具。 此發佈/訂閱模型 (或「pub/sub」) 可讓應用程式將訊息傳送至具有多個訂用帳戶的主題，以便讓多個應用程式接收該訊息。
 
 ### <a name="what-is-a-partitioned-entity"></a>什麼是分割的實體？
 傳統的佇列或主題由單一訊息代理程式處理並儲存在一個訊息存放區中。 只有在基本和標準通訊層、 [分割的佇列或主題](service-bus-partitioning.md) 中才支援，它是由多個訊息代理程式處理，並儲存在多個訊息存放區中。 這項功能表示分割佇列或主題的整體輸送量不會再受到單一訊息代理程式或訊息存放區的效能所限制。 此外，訊息存放區暫時中斷也不會轉譯分割的佇列或主題無法使用。
@@ -41,17 +41,23 @@ Azure 服務匯流排儲存客戶資料。 服務匯流排會自動將此資料�
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上開啟哪些連接埠？ 
 您可以使用下列通訊協定搭配 Azure 服務匯流排來傳送和接收訊息：
 
-- 進階訊息佇列通訊協定 (AMQP)
-- 服務匯流排傳訊通訊協定 (SBMP)
-- HTTP
+- Advanced Message 佇列 Protocol 1.0 (AMQP) 
+- 使用 TLS (HTTPS) 的超文字傳輸通訊協定1。1
 
-請參閱下表，了解您需要開啟哪些輸出連接埠，以使用這些通訊協定與 Azure 事件中樞進行通訊。 
+請參閱下表，以瞭解您需要開啟的輸出 TCP 埠，以使用這些通訊協定與 Azure 服務匯流排通訊：
 
-| 通訊協定 | 連接埠 | 詳細資料 | 
+| 通訊協定 | Port | 詳細資料 | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 與 5672 | 請參閱 [AMQP 通訊協定指南](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350至9354 | 查看 [連接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet&preserve-view=true) |
-| HTTP、HTTPS | 80、443 | 
+| AMQP | 5671 | 使用 TLS AMQP。 請參閱 [AMQP 通訊協定指南](service-bus-amqp-protocol-guide.md) | 
+| HTTPS | 443 | 此埠用於 HTTP/REST API 和 AMQP over Websocket |
+
+當透過埠5671使用 AMQP 時，通常需要使用 HTTPS 埠來進行輸出通訊，因為用戶端 Sdk 會執行數個管理作業，並在使用) 透過 HTTPS 執行時從 Azure Active Directory (取得權杖。 
+
+正式的 Azure Sdk 通常會使用 AMQP 通訊協定來從服務匯流排傳送和接收訊息。 
+
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+
+.NET Framework 的舊版 WindowsAzure，可選擇使用舊版「服務匯流排訊息通訊協定」 (SBMP) ，也稱為「NetMessaging」。 此通訊協定使用 TCP 埠9350-9354。 此套件的預設模式是自動偵測這些埠是否可用於通訊，並且會透過埠443切換至具有 TLS 的 Websocket （如果不是這種情況）。 您可以覆寫此設定 `Https` ，並在設定上設定 [connectivitymode.autodetect](/dotnet/api/microsoft.servicebus.connectivitymode) 來強制執行此模式，此 [`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity) 設定會全域套用至應用程式。
 
 ### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>我需要在允許清單中新增哪些 IP 位址？
 若要尋找要新增至連線允許清單的正確 IP 位址，請遵循下列步驟：

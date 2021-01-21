@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 444e7c9ad06c6f2ad584c0701fa652b901a4c3e7
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
-ms.translationtype: HT
+ms.openlocfilehash: 3bb0aadf81ba501070ce0c734847bb16c0378896
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680770"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624033"
 ---
 # <a name="tutorial-migrate-web-service-from-google-maps"></a>教學課程：從 Google Maps 遷移 Web 服務
 
@@ -22,6 +22,7 @@ Azure 地圖服務和 Google Maps 都提供透過 REST Web 服務來存取空間
 
 在本教學課程中，您將學會如何：
 
+> [!div class="checklist"]
 > * 正向和反向地理編碼
 > * 搜尋景點
 > * 計算路線和方線

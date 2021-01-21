@@ -7,20 +7,16 @@ ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: how-to
-ms.date: 09/01/2020
+ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: c54b5b785f6da1bb651d8b1f508da42ab0fb802d
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 8089b1e74e88db81c1c15ad2cbf2072abcfff241
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538386"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621340"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>從 Azure DDoS 保護連接資料
-
-> [!IMPORTANT]
-> Azure Sentinel 中的 Azure DDoS 保護資料連線器目前處於公開預覽狀態。
-> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 分散式阻斷服務 (DDoS) 攻擊嘗試耗盡應用程式的資源，讓合法使用者無法使用該應用程式。 DDoS 攻擊可以鎖定可透過網際網路公開觸達的任何端點。 結合應用程式設計最佳做法的[Azure DDoS 保護](../ddos-protection/ddos-protection-overview.md)，可針對 DDoS 攻擊提供穩固的防禦。 您可以將 Azure DDoS 保護記錄連接到 Azure Sentinel，讓您可以在活頁簿中查看記錄資料、使用它來建立自訂警示，並加以合併以改善您的調查。 
 

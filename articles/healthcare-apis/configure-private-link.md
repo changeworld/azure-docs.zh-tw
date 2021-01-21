@@ -8,17 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398210"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621873"
 ---
 # <a name="configure-private-link"></a>設定 private link
-
-> [!IMPORTANT]
-> 此公開預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Private link 可讓您透過私人端點存取 Azure API for FHIR，這是一種網路介面，可讓您以私人且安全的方式使用虛擬網路中的私人 IP 位址連接到您的網路介面。 您可以使用 private link，以第一方服務的形式安全地從您的 Vnet 存取我們的服務，而不需要經過公用 DNS。 本文將逐步引導您瞭解如何建立、測試及管理 Azure API for FHIR 的私人端點。
 
@@ -90,6 +87,6 @@ Private link 可讓您透過私人端點存取 Azure API for FHIR，這是一種
 
 ### <a name="delete"></a>刪除
 
-私人端點只能透過 [總覽] 分頁 (從 Azure 入口網站中刪除，如下所示) 或透過 [網路 (預覽] 下的 [刪除] 選項，) 的 [私人端點連線] 索引標籤。按一下 [刪除] 按鈕將會刪除私人端點和相關聯的 NIC。 如果您刪除 FHIR 資源的所有私人端點，且公用網路存取已停用，則沒有任何要求會將它設為您的 FHIR 伺服器。 在刪除或移動 FHIR 資源之前，必須先從 FHIR 資源刪除所有私人端點。
+私人端點只能透過 [總覽] 分頁 (從 Azure 入口網站中刪除，如下所示) 或透過 [網路 (預覽] 下的 [刪除] 選項，) 的 [私人端點連線] 索引標籤。按一下 [刪除] 按鈕將會刪除私人端點和相關聯的 NIC。 如果您刪除 FHIR 資源的所有私人端點，且公用網路存取已停用，則沒有任何要求會將它設為您的 FHIR 伺服器。
 
 ![刪除私人端點](media/private-link/private-link-delete.png)

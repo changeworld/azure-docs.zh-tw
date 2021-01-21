@@ -1,5 +1,5 @@
 ---
-title: 從 Azure IoT 中樞控制裝置快速入門 (.NET) | Microsoft Docs
+title: 快速入門-從 Azure IoT 中樞快速入門 ( .NET) 來控制裝置 |Microsoft Docs
 description: 在此快速入門中，您會執行兩個範例 C# 應用程式。 其中一個應用程式是服務應用程式，可以從遠端控制連線到中樞的裝置。 另一個應用程式則是模擬可以從遠端控制且連線到中樞的裝置。
 author: robinsh
 manager: philmea
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: 39cfa64b756ef6bf20f8cbf3d6e8f8a25e81c674
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
-ms.translationtype: HT
+ms.openlocfilehash: 88b818a25a0888cc74783a210cc7a1c0acb455ac
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092868"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623259"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>快速入門：控制連線到 IoT 中樞的裝置 (.NET)
 
@@ -82,7 +82,7 @@ IoT 中樞是一項 Azure 服務，可讓您從雲端管理您的 IoT 裝置，�
    **YourIoTHubName**：以您為 IoT 中樞選擇的名稱取代此預留位置。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show \
       --hub-name {YourIoTHubName} \
       --device-id MyDotnetDevice \
       --output table

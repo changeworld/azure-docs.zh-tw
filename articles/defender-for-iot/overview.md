@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 13f9e2271dd18121ba740c843e99fae86c76821d
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 5b4ab207462955be3876dc1a25fae491e48a9cd2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845408"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621705"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>歡迎使用適用于 IoT 的 Azure Defender
 
 營運技術 (的) 網路可為社會的許多最重要層面提供許多功能。 但是這些技術中有許多都不是以安全性為考慮而設計，而且無法使用傳統的 IT 安全性控制來保護。 同時，物聯網 (IoT) 會透過數十億個連接的裝置來啟用新的創新浪潮，進而增加受攻擊面和風險。  
 
-適用于 IoT 的 Azure Defender 是統一的安全性解決方案，用來識別 IoT/OT 資產、弱點和威脅。 無論您是否需要保護現有的 IoT/OT 裝置，或建立新 IoT 創新的安全性，都可讓您保護整個 IoT/OT 環境。  
+適用于 IoT 的 Azure Defender 是統一的安全性解決方案，用來識別 IoT/OT 裝置、弱點和威脅。 無論您是否需要保護現有的 IoT/OT 裝置，或建立新 IoT 創新的安全性，都可讓您保護整個 IoT/OT 環境。  
 
 適用于 IoT 的 Azure Defender 提供兩組功能，以符合您的環境需求。
 
@@ -47,7 +47,7 @@ ms.locfileid: "97845408"
 
 ### <a name="automatic-device-discovery"></a>自動裝置探索  
 
-使用被動、無代理程式網路監視，以完整清查所有的 IoT/OT 資產、其詳細資料，以及它們的通訊方式，對 IoT/OT 網路的影響不會產生任何影響。  
+使用被動、無代理程式網路監視，以完整清查所有 IoT/OT 裝置、其詳細資料，以及它們的通訊方式，對 IoT/OT 網路的影響不會產生任何影響。  
 
 ### <a name="proactive-visibility-into-risk-and-vulnerabilities"></a>主動查看風險和弱點
  
@@ -61,7 +61,7 @@ ms.locfileid: "97845408"
 
 整合至 Azure Sentinel，以取得整個組織的鳥觀點。 透過整合到您現有的工作流程（包括 Splunk、IBM QRadar 和 ServiceNow 等協力廠商工具），來實行整合的 IoT/OT 安全性治理。 
 
-## <a name="agent-based-solution-for-device-builders"></a>以代理程式為基礎的裝置產生器解決方案 
+## <a name="agent-based-solution-for-device-builders"></a>裝置建立器的代理程式解決方案 
 
 安全性是 IoT 實施者近乎普遍的考慮。 IoT 裝置具有端點監視、安全性狀態管理和威脅偵測的獨特需求，這些都具有高度特定的效能需求。 
 
@@ -81,6 +81,6 @@ ms.locfileid: "97845408"
 
 適用于 IoT 的 Azure Defender 微型代理套裝程式含原始程式碼，因此您可以將微代理程式併入至固件或自訂它，使其只包含您需要的內容。 它也可作為二進位封裝，或直接整合至其他 Azure IoT 解決方案。 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [適用于 IoT 的 Azure Defender 架構](architecture.md)

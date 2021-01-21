@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573134"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621307"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>關於適用於 IoT 的 Azure Defender 網路設定
 
@@ -94,35 +94,36 @@ ms.locfileid: "98573134"
 
 確認您的組織安全性原則允許存取下列各項：
 
-| **目的** | **通訊協定** | **傳輸** | **內或外** | **通訊埠** | **類別目錄** |
-| ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
-| **存取 web 主控台** | HTTPS | TCP | 內或外 | 443 | 適用于 Defender for IoT 平臺的內部部署管理主控台 |
-| **存取 CLI** | SSH | TCP | 內或外 | 22 | CLI |
-| **Defender for IoT 平臺和內部部署管理主控台之間的連線** | SSL | TCP | 內或外 | 443 | 感應器和內部部署管理主控台|
-| **內部部署管理主控台，用來做為感應器的 NTP** | NTP | UDP| 到 CM | 123 | 時間同步 | 
-| **連線到外部 NTP 伺服器的感應器 (是否相關)** | NTP | UDP | 內或外| 123 | 時間同步 |
-| **適用于 IoT 平臺的 Defender 與管理平臺和郵件伺服器之間的連線 (（如果相關）)** | SMTP | TCP | 超出感應器管理 | 25 | 電子郵件 |
-| **從內部部署管理主控台傳送到 Syslog 伺服器的記錄 (（如果相關）)** | syslog | UDP | 超出感應器管理| 514 | LEEF |
-| **DNS 伺服器埠 (是否相關)** | DNS | 不適用 | 內或外| 53 | DNS |
-| **適用于 IoT 平臺的 Defender 和內部部署管理主控台之間的連線，可 Active Directory (（如果相關) ）** | LDAPS | TCP | 內或外 | 636 <br />389 | Active Directory |
-| **遠端 SNMP 收集器 (是否相關)** | SNMP | UDP | 超出感應器管理| 161 | 監視 |
-| **Windows 端點監視 (是否相關)** | WMI | UDP | 超出感應器管理| 135 | 監視 |
-| **Windows 端點監視 (是否相關)** | WMI | TCP | 超出感應器管理| 1024和更新版本 | 監視 |
-| **如果相關)  (通道** | 隧道 | TCP | 到 CM | 9000<br />除了埠443之外<br />從終端使用者到內部部署管理主控台 <br />從感應器到內部部署管理主控台的埠22 | 監視 |
-| **輸出至適用于 IoT 中樞的 Defender** | HTTPS | TCP | 超出感應器管理| **URL**<br />*. azure-devices.net:443<br />或如果不支援萬用字元<br />{您的 IoT 中樞名稱}。 azure-devices.net:443 |
+| 通訊協定 | 傳輸 | 輸入/輸出 | Port | 已使用 | 目的 | 來源 | Destination |
+|--|--|--|--|--|--|--|--|
+| HTTPS | TCP | IN/OUT | 443 | 感應器和內部部署管理主控台 Web 主控台 | 存取 Web 主控台 | 用戶端 | 感應器和內部部署管理主控台 |
+| SSH | TCP | IN/OUT | 22 | CLI | 存取 CLI | 用戶端 | 感應器和內部部署管理主控台 |
+| SSL | TCP | IN/OUT | 443 | 感應器和內部部署管理主控台 | CyberX platform 與中央管理平臺之間的連接 | 感應器 | 內部部署管理主控台 |
+| NTP | UDP | IN | 123 | 時間同步 | 內部部署管理主控台使用作為 NTP 至感應器 | 感應器 | 內部部署管理主控台 |
+| NTP | UDP | IN/OUT | 123 | 時間同步 | 未安裝任何內部部署管理主控台時，連線至外部 NTP 伺服器的感應器 | 感應器 | NTP |
+| SMTP | TCP | OUT | 25 | 電子郵件 | CyberX platform 與管理平臺和郵件伺服器之間的連接 | 感應器和內部部署管理主控台 | 電子郵件伺服器 |
+| syslog | UDP | OUT | 514 | LEEF | 從內部部署管理主控台傳送至 Syslog 伺服器的記錄 | 內部部署管理主控台和感應器 | Syslog 伺服器 |
+| DNS |  | IN/OUT | 53 | DNS | DNS 伺服器埠 | 內部部署管理主控台和感應器 | DNS 伺服器 |
+| LDAP | TCP | IN/OUT | 389 | Active Directory | CyberX platform 與管理平臺之間的連接 Active Directory | 內部部署管理主控台和感應器 | LDAP 伺服器 |
+| LDAPS | TCP | IN/OUT | 636 | Active Directory | CyberX platform 與管理平臺之間的連接 Active Directory | 內部部署管理主控台和感應器 | LDAPS 伺服器 |
+| SNMP | UDP | OUT | 161 | 監視 | 遠端 SNMP 收集器。 | 內部部署管理主控台和感應器 | SNMP 伺服器 |
+| WMI | UDP | OUT | 135 | 監視 | Windows 端點監視 | Sensor | 相關的網路元素 |
+| 隧道 | TCP | IN | 9000 <br /><br />-在埠443頂端 <br /><br />從終端使用者到內部部署管理主控台。 <br /><br />-從感應器到內部部署管理主控台的埠22  | 監視 | 隧道 | Sensor | 內部部署管理主控台 |
 
 ### <a name="planning-rack-installation"></a>規劃機架安裝
 
 規劃機架安裝：
 
 1. 為您的設備網路設定準備監視器和鍵盤。
-2. 配置設備的機架空間。
-3. 具有適用于設備的 AC 電源。
-4. 準備 LAN 纜線以將管理連接至網路交換器。
-5. 準備區域網路纜線，以連接交換器 SPAN (鏡像) 埠，或網路點擊至適用于 IoT 的 Defender 裝置。 
-6. 設定、連接和驗證鏡像交換器中的 SPAN 埠，如架構審核會話中所述。
-7. 將設定的範圍埠連接到執行 Wireshark 的電腦，並確認埠已正確設定。
-8. 開啟所有相關的防火牆埠。
+
+1. 配置設備的機架空間。
+
+1. 具有適用于設備的 AC 電源。
+1. 準備 LAN 纜線以將管理連接至網路交換器。
+1. 準備區域網路纜線，以連接交換器 SPAN (鏡像) 埠，或網路點擊至適用于 IoT 的 Defender 裝置。 
+1. 設定、連接和驗證鏡像交換器中的 SPAN 埠，如架構審核會話中所述。
+1. 將設定的範圍埠連接到執行 Wireshark 的電腦，並確認埠已正確設定。
+1. 開啟所有相關的防火牆埠。
 
 ## <a name="about-passive-network-monitoring"></a>關於被動網路監視
 
@@ -141,6 +142,7 @@ ms.locfileid: "98573134"
 層級0是由基本製造過程中牽涉到的各種感應器、傳動器和裝置所組成。 這些裝置會執行產業自動化和控制系統的基本功能，例如：
 
 - 推動馬達。
+
 - 測量變數。
 - 設定輸出。
 - 執行按鍵功能，例如繪製、焊接和折彎。
@@ -227,7 +229,7 @@ ms.locfileid: "98573134"
 |--|--|--|--|
 | 切換開關之間的最大距離 | 80計量 | 準備的乙太網路纜線 | 超過1個 |
 | OT 網路數目 | 超過1個 | 沒有實體連線能力 | 超過1個 |
-| 參數數目 | 可以使用 RSPAN 設定 | 最多8個參數，以接近感應器的區域（依纜線距離） | 超過1個 |
+| 參數數目 | 可以使用 RSPAN 設定 | 最多8個交換器，以接近感應器的間隔距離 | 超過1個 |
 
 #### <a name="traffic-mirroring"></a>流量鏡像  
 
@@ -364,10 +366,10 @@ RSPAN：根據 Cisco catalyst 2960 (24 埠) 。
 這些模型已針對相容性進行測試。 其他廠商和型號也可能相容。
 
 | 映像 | 型號 |
-| -- | -- |
-| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS 的螢幕擷取畫面。":::  | Garland P1GCCAS  |
-| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 的螢幕擷取畫面。":::  | IXIA TPA2-CU3  |
-| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="美國機器人 USR 4503 的螢幕擷取畫面。":::  | 美國機器人 USR 4503  |
+|--|--|
+| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS 的螢幕擷取畫面。"::: | Garland P1GCCAS |
+| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 的螢幕擷取畫面。"::: | IXIA TPA2-CU3 |
+| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="美國機器人 USR 4503 的螢幕擷取畫面。"::: | 美國機器人 USR 4503 |
 
 ##### <a name="special-tap-configuration"></a>特殊分點設定
 
@@ -425,7 +427,7 @@ RSPAN：根據 Cisco catalyst 2960 (24 埠) 。
 
 - 如果 IoT 設備的 Defender 應該連接到該交換器，該封包中是否有實體可用的機架空間？
 
-#### <a name="additional-considerations"></a>其他考量
+#### <a name="other-considerations"></a>其他考量
 
 Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
 
@@ -547,7 +549,7 @@ Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
 | 14 | 機架並連接設備。 | ☐ |  |
 | 15 | 配置網站資源以支援部署。 | ☐ |  |
 | 16 | 建立 Active Directory 群組或本機使用者。 | ☐ |  |
-| 17 | 設定訓練 (的自我學習) 。 | ☐ |  |
+| 17 |  (自我學習) 的設定定型。 | ☐ |  |
 | 18 | 移至或不進入。 | ☐ |  |
 | 19 | 排程部署日期。 | ☐ |  |
 
@@ -671,7 +673,7 @@ Defender for IoT 設備的目的是要監視來自第1層和第2層的流量。
 | 祕密金鑰 | |
 | SNMP v2 社區字串 |
 
-### <a name="cm-ssl-certificate"></a>CM SSL 憑證
+### <a name="on-premises-management-console-ssl-certificate"></a>內部部署管理主控台 SSL 憑證
 
 您是否打算使用 SSL 憑證？ [是] 或 [否]
 

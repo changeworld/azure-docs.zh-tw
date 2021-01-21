@@ -1,6 +1,6 @@
 ---
-title: 手動容錯移轉 Azure IoT 中樞 | Microsoft Docs
-description: 了解如何將 IoT 中樞手動容錯移轉至不同區域的，並確認它可正常運作，然後將其移轉回原始區域並再次加以檢查。
+title: 教學課程-Azure IoT 中樞的手動容錯移轉 |Microsoft Docs
+description: 教學課程-瞭解如何手動執行 IoT 中樞至不同區域的容錯移轉，並確認它是否正常運作，然後將它傳回原始區域，然後再次檢查。
 author: robinsh
 manager: timlt
 ms.service: iot-hub
@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 3b6bc972f5c26c78ffff81f5bab8c2812cf2cb11
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013940"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622908"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>教學課程：執行手動容錯移轉 IoT 中樞
 

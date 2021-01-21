@@ -17,19 +17,19 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4c7d02b48d30fa558f8fd12f92705046dab74057
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600750"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624230"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報表 (預覽) 
 
 Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - **活動** 
-    - **登入** – 受控應用程式和使用者登入活動的使用情況相關資訊。
+    - 登 **入**-使用受控應用程式和使用者登入活動的相關資訊。
     - **審核記錄**  - [Audit 記錄](concept-audit-logs.md)檔提供有關使用者和群組管理、受控應用程式和目錄活動的系統活動資訊。
     - 布建 **記錄**：提供 Azure AD 布建服務所布建之使用者、群組和角色的相關系統活動。 
 
@@ -37,7 +37,11 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
     - 有 **風險** 的登入：有 [風險](../identity-protection/overview-identity-protection.md)的登入是指登入嘗試的指標，該嘗試可能是使用者帳戶的合法擁有者所執行。
     - **標示為有風險的使用者** -有 [風險的使用者](../identity-protection/overview-identity-protection.md) 是指可能遭到盜用的使用者帳戶指標。
 
-本主題提供布建報告的總覽。
+本主題提供布建記錄的總覽。 它們提供下列問題的答案： 
+
+* ServiceNow 中成功建立了哪些群組？
+* 哪些使用者已成功從 Adobe 移除？
+* 已成功在 Active Directory 中建立 Workday 的使用者？ 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -52,14 +56,16 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 您的租使用者必須有與其相關聯的 Azure AD Premium 授權，才能看到 [所有布建活動] 報告。 請參閱[開始使用 Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) 來升級 Azure Active Directory 版本。 
 
-## <a name="provisioning-logs"></a>佈建記錄
 
-布建記錄提供下列問題的答案：
+## <a name="ways-of-interacting-with-the-provisioning-logs"></a>與布建記錄進行互動的方式 
+客戶有四種方式可以與布建記錄互動：
 
-* ServiceNow 中成功建立了哪些群組？
-* 哪些使用者已成功從 Adobe 移除？
-* 哪些使用者在 DropBox 中建立失敗？
+1. 從 Azure 入口網站存取記錄，如下所述。
+1. 將布建記錄串流至 [Azure 監視器](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)，以允許延伸資料保留、建立自訂儀表板、警示和查詢。
+1. 查詢適用于布建記錄的 [MICROSOFT GRAPH API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) 。
+1. 將布建記錄下載為 CSV 檔案或 json。
 
+## <a name="access-the-logs-from-the-azure-portal"></a>從 Azure 入口網站存取記錄
 您可以在 [Azure 入口網站](https://portal.azure.com)的 **Azure Active Directory** 分頁的 [**監視**] 區段中選取 [布建 **記錄**]，以存取布建記錄。 某些布建記錄最多可能需要兩個小時才會顯示在入口網站中。
 
 ![佈建記錄](./media/concept-provisioning-logs/access-provisioning-logs.png "佈建記錄")
@@ -205,10 +211,57 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 **修改過的屬性** 會顯示舊值和新值。 在沒有舊值的情況下，舊的值資料行是空白的。 
 
-
 ### <a name="summary"></a>摘要
 
 [ **摘要** ] 索引標籤提供來源和目標系統中物件的發生狀況和識別碼的總覽。 
+
+## <a name="download-logs-as-csv-or-json"></a>將記錄下載為 CSV 或 JSON
+
+您可以流覽至 Azure 入口網站中的記錄，然後按一下 [下載]，以下載布建記錄以供稍後使用。 系統會根據您選取的篩選準則來篩選檔案。 您可能會想要盡可能將篩選準則設為特定的，以縮短下載的時間和下載的大小。 CSV 下載分為三個檔案：
+
+* ProvisioningLogs：下載所有記錄，除了布建步驟和修改過的屬性。
+* ProvisioningLogs_ProvisioningSteps：包含布建步驟和變更識別碼。 變更識別碼可以用來將事件加入其他兩個檔案。
+* ProvisioningLogs_ModifiedProperties：包含已變更的屬性和變更識別碼。 變更識別碼可以用來將事件加入其他兩個檔案。
+
+#### <a name="opening-the-json-file"></a>開啟 JSON 檔案
+若要開啟 Json 檔案，請使用文字編輯器，例如 [Microsoft Visual Studio 程式碼](https://aka.ms/vscode)。 Visual Studio Code 可提供語法醒目提示，讓您更容易閱讀。 Json 檔案也可以使用無法編輯格式的瀏覽器來開啟，例如 [Microsoft Edge](https://aka.ms/msedge) 
+
+#### <a name="prettifying-the-json-file"></a>Prettifying JSON 檔案
+JSON 檔案會以縮減格式下載，以縮減下載的大小。 如此一來，就可以使承載難以讀取。 查看修飾檔案的兩個選項：
+
+1. 使用 Visual Studio Code 來格式化 JSON
+
+依照 [此處](https://code.visualstudio.com/docs/languages/json#_formatting) 所定義的指示，使用 VISUAL STUDIO CODE 將 JSON 檔案格式化。
+
+2. 使用 PowerShell 來格式化 JSON
+
+此腳本會以具有定位字元和空格的美化格式輸出 json。 
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+`$JSONContent | ConvertTo-Json > <PATH TO OUTPUT THE JSON FILE>`
+
+#### <a name="parsing-the-json-file"></a>剖析 JSON 檔案
+
+以下是使用 PowerShell 來處理 JSON 檔案的一些範例命令。 您可以使用任何您熟悉的程式設計語言。  
+
+首先，執行下列程式來 [讀取 JSON](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) 檔案：
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+您現在可以根據您的案例來剖析資料。 以下是一些範例︰ 
+
+1. 輸出 JsonFile 中的所有 jobIDs
+
+`foreach ($provitem in $JSONContent) { $provitem.jobId }`
+
+2. 輸出動作為「建立」之事件的所有 changeIds
+
+`foreach ($provitem in $JSONContent) { `
+`   if ($provItem.action -eq 'Create') {`
+`       $provitem.changeId `
+`   }`
+`}`
 
 ## <a name="what-you-should-know"></a>您應該知道的事情
 
@@ -234,14 +287,14 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 |InsufficientRights、MethodNotAllowed、NotPermitted、未經授權| Azure AD 可以向目標應用程式進行驗證，但未獲授權執行更新。 請參閱目標應用程式所提供的任何指示，以及個別的應用程式 [教學](../saas-apps/tutorial-list.md)課程。|
 |UnprocessableEntity|目標應用程式傳回未預期的回應。 目標應用程式的設定可能不正確，或目標應用程式可能發生服務問題，導致無法運作。|
 |WebExceptionProtocolError |連接到目標應用程式時發生 HTTP 通訊協定錯誤。 不需要執行任何動作。 這項嘗試會在40分鐘內自動淘汰。|
-|InvalidAnchor|先前由布建服務所建立或比對的使用者已不存在。 檢查以確定使用者存在。 若要強制重新符合所有的使用者，請使用 MS 圖形 API [重新開機作業](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 請注意，重新開機布建將會觸發初始迴圈，這可能需要一些時間才能完成。 它也會刪除布建服務用來操作的快取，這表示租使用者中的所有使用者和群組都必須重新評估，而且可能會卸載某些布建事件。|
-|NotImplemented | 目標應用程式傳回未預期的回應。 應用程式的設定可能不正確，或目標應用程式可能發生服務問題，導致無法運作。 請參閱目標應用程式所提供的任何指示，以及個別的應用程式 [教學](../saas-apps/tutorial-list.md)課程。 |
+|InvalidAnchor|先前由布建服務所建立或比對的使用者已不存在。 檢查以確定使用者存在。 若要強制重新符合所有的使用者，請使用 MS 圖形 API [重新開機作業](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 重新開機布建將會觸發初始迴圈，這可能需要一些時間才能完成。 它也會刪除布建服務用來操作的快取，這表示租使用者中的所有使用者和群組都必須重新評估，而且可能會卸載某些布建事件。|
+|NotImplemented | 目標應用程式傳回未預期的回應。 應用程式的設定可能不正確，或目標應用程式可能發生服務問題，導致無法運作。 請檢查目標應用程式所提供的任何指示，以及個別的應用程式 [教學](../saas-apps/tutorial-list.md)課程。 |
 |MandatoryFieldsMissing, MissingValues |因為遺漏必要的值，所以無法建立使用者。 更正來源記錄中遺漏的屬性值，或檢查相符的屬性設定，以確保不會省略必要的欄位。 [深入瞭解](../app-provisioning/customize-application-attributes.md) 如何設定相符的屬性。|
 |SchemaAttributeNotFound |無法執行作業，因為指定了不存在於目標應用程式中的屬性。 請參閱有關屬性自訂的 [檔](../app-provisioning/customize-application-attributes.md) ，並確保您的設定正確無誤。|
 |InternalError |Azure AD 布建服務內發生內部服務錯誤。 不需要執行任何動作。 這次嘗試將會在40分鐘內自動重試。|
 |InvalidDomain |因為屬性值包含不正確功能變數名稱，所以無法執行作業。 更新使用者的功能變數名稱，或將其新增至目標應用程式中的允許清單。 |
 |逾時 |無法完成作業，因為目標應用程式花費的時間太長而無法回應。 不需要執行任何動作。 這次嘗試將會在40分鐘內自動重試。|
-|LicenseLimitExceeded|因為沒有此使用者的可用授權，所以無法在目標應用程式中建立使用者。 針對目標應用程式購買額外的授權，或查看您的使用者指派和屬性對應設定，以確保已使用正確的屬性來指派正確的使用者。|
+|LicenseLimitExceeded|因為沒有此使用者的可用授權，所以無法在目標應用程式中建立使用者。 針對目標應用程式購買更多授權，或查看您的使用者指派和屬性對應設定，以確保已使用正確的屬性來指派正確的使用者。|
 |DuplicateTargetEntries  |無法完成作業，因為找不到目標應用程式中有一個以上的使用者具有設定的相符屬性。 請從目標應用程式中移除重複的使用者，或重新設定屬性對應，[如下所述。](../app-provisioning/customize-application-attributes.md)|
 |DuplicateSourceEntries | 無法完成作業，因為發現多個使用者具有設定的相符屬性。 請移除重複的使用者，或重新設定您的屬性對應[，如下所述。](../app-provisioning/customize-application-attributes.md)|
 |ImportSkipped | 評估每位使用者時，我們會嘗試從來源系統匯入使用者。 當匯入的使用者缺少屬性對應中定義的相符屬性時，通常會發生這個錯誤。 在使用者物件上沒有符合屬性的值時，我們無法評估範圍、比對或匯出變更。 請注意，此錯誤是否存在，不表示使用者在範圍內，但尚未評估使用者的範圍。|

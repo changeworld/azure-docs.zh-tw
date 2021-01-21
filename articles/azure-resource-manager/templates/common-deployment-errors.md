@@ -3,13 +3,13 @@ title: 針對一般部署錯誤進行疑難排解
 description: 說明如何解決使用 Azure Resource Manager 將資源部署至 Azure 時的常見錯誤。
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 09/09/2020
-ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/20/2021
+ms.openlocfilehash: bb701baf164cfd6ba1dd5c670a406343e83c5c70
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185822"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622806"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解
 
@@ -19,7 +19,7 @@ ms.locfileid: "96185822"
 
 ## <a name="error-codes"></a>錯誤碼
 
-| 錯誤碼 | 降低 | 更多資訊 |
+| 錯誤碼 | 降低 | 詳細資訊 |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | 遵循儲存體帳戶的命名限制。 | [解析儲存體帳戶名稱](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | 檢查可用儲存體帳戶屬性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
@@ -34,7 +34,7 @@ ms.locfileid: "96185822"
 | DeploymentNameLengthLimitExceeded | 部署名稱的限制為64個字元。  | |
 | DeploymentFailed | DeploymentFailed 錯誤是一般錯誤，不會提供您解決錯誤所需的詳細資料。 尋找錯誤碼的錯誤詳細資料，以提供更多資訊。 | [尋找錯誤碼](#find-error-code) |
 | DeploymentQuotaExceeded | 如果每個資源群組的部署達到 800 個數量限制，請從歷程記錄中刪除不再需要的部署。 | [解決部署計數超過800時的錯誤](deployment-quota-exceeded.md) |
-| DeploymentSizeExceeded | 簡化您的範本以縮減大小。 | [解決範本大小錯誤](error-job-size-exceeded.md) |
+| DeploymentJobSizeExceeded | 簡化您的範本以縮減大小。 | [解決範本大小錯誤](error-job-size-exceeded.md) |
 | DnsRecordInUse | DNS 記錄名稱必須是唯一的。 輸入不同的名稱。 | |
 | ImageNotFound | 檢查 VM 映像設定。 |  |
 | InUseSubnetCannotBeDeleted | 當您嘗試更新資源時，可能會收到此錯誤，並藉由刪除和建立資源來處理要求。 請務必指定所有不變的值。 | [更新資源](/azure/architecture/building-blocks/extending-templates/update-resource) |

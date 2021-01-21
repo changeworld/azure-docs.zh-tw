@@ -1,5 +1,5 @@
 ---
-title: 將遙測資料傳送至 Azure IoT 中樞 (CLI) 的快速入門
+title: 快速入門-將遙測傳送至 Azure IoT 中樞 (CLI) 快速入門
 description: 本快速入門會為初學的開發人員說明如何使用 Azure CLI 建立 IoT 中樞、傳送遙測資料，以及檢視裝置與中樞之間的訊息，以開始使用 IoT 中樞。
 ms.service: iot-hub
 ms.topic: quickstart
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: ffcdf8d2baf7a449234ca14d603583f62949159d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
-ms.translationtype: HT
+ms.openlocfilehash: 20e7998b4d0ec5a36f8fb8f1ddb04d591c54542b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150617"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624264"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>快速入門：使用 Azure CLI 將遙測資料從裝置傳送至 IoT 中樞並加以監視
 
@@ -45,7 +45,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
     > [!NOTE]
     > 如果這是您第一次使用 Cloud Shell，它將會提示您建立使用 Cloud Shell 所需的儲存體。  選取用來建立儲存體帳戶和 Microsoft Azure 檔案共用的訂用帳戶。 
 
-2. 在 [選取環境]  下拉式清單中，選取您慣用的 CLI 環境。 本快速入門會使用 **Bash** 環境。 下列所有 CLI 命令也都可在 Powershell 環境中運作。 
+2. 在 [選取環境]  下拉式清單中，選取您慣用的 CLI 環境。 本快速入門會使用 **Bash** 環境。 下列所有 CLI 命令也會在 PowerShell 環境中運作。 
 
     ![選取 CLI 環境](media/quickstart-send-telemetry-cli/cloud-shell-environment.png)
 
@@ -55,7 +55,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 
 使用 Azure CLI 時，您必須登入 Azure 帳戶。 您的 Azure CLI Shell 工作階段與 IoT 中樞之間的所有通訊都會經過驗證和加密。 因此，本快速入門不需要您用於實際裝置的其他驗證，例如連接字串。
 
-*  執行 [az extension add](/cli/azure/extension?view=azure-cli-latest#az-extension-add) 命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 CLI Shell。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
+*  執行 [az extension add](/cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true) 命令，將適用於 Azure CLI 的 Microsoft Azure IoT 擴充功能新增至您的 CLI Shell。 IoT 擴充功能可將 IoT 中樞、IoT Edge 和 IoT 裝置佈建服務的特定命令新增至 Azure CLI。
 
    ```azurecli
    az extension add --name azure-iot
@@ -76,13 +76,13 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 > [!TIP]
 > (選擇性) 您可以使用 [Azure 入口網站](iot-hub-create-through-portal.md)、[Visual Studio Code](iot-hub-create-use-iot-toolkit.md) 或其他程式設計方法，來建立 Azure 資源群組、IoT 中樞和其他資源。  
 
-1. 執行 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 命令以建立資源群組。 下列命令會在 eastus  位置中建立名為 MyResourceGroup  的資源群組。 
+1. 執行 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) 命令以建立資源群組。 下列命令會在 eastus  位置中建立名為 MyResourceGroup  的資源群組。 
 
     ```azurecli
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. 使用 [az iot hub create](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create) 命令建立 IoT 中樞。 建立 IoT 中樞可能需要幾分鐘的時間。 
+1. 使用 [az iot hub create](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create&preserve-view=true) 命令建立 IoT 中樞。 建立 IoT 中樞可能需要幾分鐘的時間。 
 
     *YourIotHubName*。 以您為 IoT 中樞選擇的名稱取代此預留位置。 IoT 中樞名稱在 Azure 中必須是全域唯一的。 本快速入門的其餘部分都會使用此預留位置來代表您的 IoT 中樞名稱。
 
@@ -94,7 +94,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
 在本節中，您將在第一個 CLI 工作階段中建立模擬裝置。 模擬裝置會將裝置遙測資料傳送至您的 IoT 中樞。 在第二個 CLI 工作階段中，您會監視事件和遙測，並將雲端到裝置的訊息傳送至模擬裝置。
 
 若要建立並啟動模擬裝置：
-1. 在第一個 CLI 工作階段中，執行 [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create) 命令。 這會建立模擬裝置身分識別。 
+1. 在第一個 CLI 工作階段中，執行 [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create&preserve-view=true) 命令。 這會建立模擬裝置身分識別。 
 
     *YourIotHubName*。 以您為 IoT 中樞選擇的名稱取代此預留位置。 
 
@@ -104,7 +104,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. 在第一個 CLI 工作階段中，執行 [az iot device simulate](/cli/azure/ext/azure-iot/iot/device?view=azure-cli-latest#ext-azure-iot-az-iot-device-simulate) 命令。  這會啟動模擬裝置。 裝置會將遙測資料傳送至您的 IoT 中樞，並接收來自該處的訊息。  
+1. 在第一個 CLI 工作階段中，執行 [az iot device simulate](/cli/azure/ext/azure-iot/iot/device?view=azure-cli-latest#ext-azure-iot-az-iot-device-simulate&preserve-view=true) 命令。  這會啟動模擬裝置。 裝置會將遙測資料傳送至您的 IoT 中樞，並接收來自該處的訊息。  
 
     *YourIotHubName*。 以您為 IoT 中樞選擇的名稱取代此預留位置。 
 
@@ -113,7 +113,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
     ```
 
 若要監視裝置：
-1. 在第二個 CLI 工作階段中，執行 [az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) 命令。 這會開始監視模擬裝置。 輸出會顯示模擬裝置傳送至 IoT 中樞的遙測資料。
+1. 在第二個 CLI 工作階段中，執行 [az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events&preserve-view=true) 命令。 這會開始監視模擬裝置。 輸出會顯示模擬裝置傳送至 IoT 中樞的遙測資料。
 
     *YourIotHubName*。 以您為 IoT 中樞選擇的名稱取代此預留位置。 
 
@@ -136,7 +136,7 @@ IoT 中樞是一項 Azure 服務，可讓您從 IoT 裝置將大量的遙測擷�
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. 在第二個 CLI 工作階段中，執行 [az iot device c2d-message send](/cli/azure/ext/azure-iot/iot/device/c2d-message?view=azure-cli-latest#ext-azure-iot-az-iot-device-c2d-message-send) 命令。 這會將雲端到裝置的訊息從您的 IoT 中樞傳送至模擬裝置。 訊息中包含字串和兩個索引鍵/值組。  
+1. 在第二個 CLI 工作階段中，執行 [az iot device c2d-message send](/cli/azure/ext/azure-iot/iot/device/c2d-message?view=azure-cli-latest#ext-azure-iot-az-iot-device-c2d-message-send&preserve-view=true) 命令。 這會將雲端到裝置的訊息從您的 IoT 中樞傳送至模擬裝置。 訊息中包含字串和兩個索引鍵/值組。  
 
     *YourIotHubName*。 以您為 IoT 中樞選擇的名稱取代此預留位置。 
 
@@ -173,7 +173,7 @@ Azure 入口網站可讓您管理 IoT 中樞和裝置的所有層面。 在從�
 
     ![檢視 Azure IoT 中樞計量](media/quickstart-send-telemetry-cli/iot-hub-portal-view-metrics.png)
 
-5. (選擇性) 使用 [計量]  下拉式清單，顯示模擬裝置的其他計量。 例如，*已完成 C2D 訊息傳遞數*或*裝置總計 (預覽)* 。 
+5. (選擇性) 使用 [計量]  下拉式清單，顯示模擬裝置的其他計量。 例如，*已完成 C2D 訊息傳遞數* 或 *裝置總計 (預覽)* 。 
 
 ## <a name="clean-up-resources"></a>清除資源
 如果您不再需要在本快速入門中建立的 Azure 資源，您可以使用 Azure CLI 將其刪除。
@@ -184,12 +184,12 @@ Azure 入口網站可讓您管理 IoT 中樞和裝置的所有層面。 在從�
 > 刪除資源群組是無法回復的動作。 資源群組和其中包含的所有資源都將永久刪除。 請確定您不會不小心刪除錯誤的資源群組或資源。 
 
 若要依名稱刪除資源群組：
-1. 執行 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 這會移除資源群組、IoT 中樞，和您建立的裝置註冊。
+1. 執行 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) 命令。 這會移除資源群組、IoT 中樞，和您建立的裝置註冊。
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. 執行 [az group list](/cli/azure/group?view=azure-cli-latest#az-group-list) 命令，以確認資源群組已刪除。  
+1. 執行 [az group list](/cli/azure/group?view=azure-cli-latest#az-group-list&preserve-view=true) 命令，以確認資源群組已刪除。  
 
     ```azurecli
     az group list

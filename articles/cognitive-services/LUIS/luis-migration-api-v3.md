@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018781"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624298"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 的預測端點變更
 
@@ -56,7 +56,7 @@ V3 在移至 GA 時做了下列變更：
 如果您不知道您的用戶端應用程式或整合 (Bot Framework，而且 Bing 拼寫檢查 V7) 會受到影響，且您很熟悉 LUIS 應用程式撰寫和預測端點的遷移，請開始使用 V3 預測端點。 V2 預測端點仍然可供使用，而且是不錯的回溯策略。
 
 
-## <a name="not-supported"></a>不受支援
+## <a name="not-supported"></a>不支援
 
 ### <a name="bing-spell-check"></a>Bing 拼字檢查
 
@@ -66,9 +66,6 @@ V3 預測端點不支援此 API-請繼續使用 V2 API 預測端點進行拼寫�
 
 繼續使用 V2 API 預測端點，直到釋放 Bot Framework 的4.7 為止。
 
-## <a name="v2-api-deprecation"></a>V2 API 淘汰
-
-V2 預測 API 在 V3 preview （2020年6月8日）後至少有9個月不會被取代。
 
 ## <a name="endpoint-url-changes"></a>端點 URL 變更
 
@@ -268,10 +265,7 @@ const associatedMetadata = entities.$instance.my_list_entity[item];
 
 瞭解如何在預測執行時間延伸應用程式的 [概念](schema-change-prediction-runtime.md) 。
 
-## <a name="deprecation"></a>淘汰
 
-V2 API 在 V3 預覽後至少有9個月不會被取代。
-
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 使用 V3 API 檔將現有的 REST 呼叫更新至 LUIS [端點](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/operations/5cb0a9459a1fe8fa44c28dd8) api。

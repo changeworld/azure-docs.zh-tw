@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 72b2ba0ea444fb14ef9fc1bc3ea6aea3654677df
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0db4e0fe0472c75f1eae392980ae697f53007244
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655522"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623361"
 ---
 # <a name="connect-alerts-from-microsoft-defender-for-endpoint-formerly-microsoft-defender-atp"></a>將 microsoft Defender for Endpoint (的警示連線到先前的 Microsoft Defender ATP) 
 
@@ -28,10 +28,6 @@ ms.locfileid: "94655522"
 > - **Microsoft Defender For Endpoint** 先前稱為 **Microsoft Defender 進階威脅防護** 或 **MDATP**。
 >
 >     您可能會在產品 (中看到舊名稱仍在使用中，包括 Azure Sentinel) 的資料連線器一段時間。
->
-> - 適用于端點警示的 Microsoft Defender 內嵌目前處於公開預覽狀態。
-> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 [Microsoft defender For endpoint](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) connector 可讓您將來自 Microsoft Defender for endpoint 的警示串流至 Azure Sentinel。 這可讓您更全面地分析組織內的安全性事件，並建立腳本，以提供有效且立即的回應。
 
@@ -39,7 +35,7 @@ ms.locfileid: "94655522"
 >
 > 若要從 Microsoft Defender 針對端點的 [advanced 搜尋](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview)內嵌新的原始資料記錄檔，請使用新的連接器來 Microsoft 365 Defender (先前 Microsoft 威脅防護， [請參閱檔](./connect-microsoft-365-defender.md)) 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須擁有適用于 Microsoft Defender for Endpoint 的有效授權，如 [安裝 Microsoft defender 以進行端點部署](/windows/security/threat-protection/microsoft-defender-atp/licensing)中所述。 
 
@@ -51,7 +47,7 @@ ms.locfileid: "94655522"
 
 1. 在 Azure Sentinel 中，選取 [ **資料連線器**]，從資源庫中選取 [ **Endpoint (的 Microsoft Defender** ] *Microsoft Defender 進階威脅防護*) ，然後選取 [ **開啟連接器] 頁面**。
 
-1. 按一下 [ **連接**]。 
+1. 按一下 [連線]。 
 
 1. 若要在 **記錄** 中查詢 Microsoft Defender 的端點警示，請在查詢視窗中輸入 **SecurityAlert** ，然後新增篩選器，其中 **提供者名稱** 為 **MDATP**。
 

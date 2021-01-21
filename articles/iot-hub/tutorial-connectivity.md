@@ -1,6 +1,6 @@
 ---
-title: 檢查裝置對 Azure IoT 中樞的連線能力
-description: 在開發期間使用 IoT 中樞工具，排解將裝置連線至您的 IoT 中樞時所發生的問題。
+title: 教學課程-檢查裝置與 Azure IoT 中樞的連線能力
+description: 教學課程-使用 IoT 中樞工具，在開發期間對 IoT 中樞的裝置連線能力問題進行疑難排解。
 services: iot-hub
 author: wesmc7777
 manager: philmea
@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: HT
+ms.openlocfilehash: 060ed8bfc424fcb9dab8fc12faf5e3822fa86a31
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572672"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621439"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>教學課程：使用模擬裝置來測試與您 IoT 中樞的連線能力
 

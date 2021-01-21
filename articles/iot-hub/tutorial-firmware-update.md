@@ -1,6 +1,6 @@
 ---
-title: 透過 Azure IoT 中樞更新裝置韌體 | Microsoft Docs
-description: 了解如何實作可從連線至 IoT 中樞的後端應用程式觸發的裝置韌體更新程序。
+title: 教學課程-透過 Azure IoT 中樞更新裝置固件 |Microsoft Docs
+description: 教學課程-瞭解如何執行可從連線至 IoT 中樞的後端應用程式觸發的裝置固件更新程式。
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: HT
+ms.openlocfilehash: 807de3c41ec8026edd2b2d8859eb70863ae5697b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572332"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621391"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教學課程：實作裝置韌體更新程序
 

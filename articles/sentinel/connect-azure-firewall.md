@@ -7,20 +7,16 @@ ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: how-to
-ms.date: 08/30/2020
+ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: 4dffaac329f1581d9082fd8ab2c314f52b1730ab
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b21ce75bfb33b5a8869c63b7d3f71fb9f0c93768
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656015"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621290"
 ---
 # <a name="connect-data-from-azure-firewall"></a>從 Azure 防火牆連接資料
-
-> [!IMPORTANT]
-> Azure Sentinel 中的 Azure 防火牆資料連線器目前處於公開預覽狀態。
-> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 Azure 虛擬網路資源。 它是完全具狀態的防火牆即服務，具有內建的高可用性和不受限制的雲端延展性。 
 
@@ -28,7 +24,7 @@ Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 A
 
 深入瞭解如何 [監視 Azure 防火牆記錄](../firewall/firewall-diagnostics.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您必須擁有 Azure Sentinel 工作區的讀取和寫入權限。
 

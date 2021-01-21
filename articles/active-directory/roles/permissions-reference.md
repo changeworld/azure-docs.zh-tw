@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62fb239fd9cb8c1817dea5ab5c22684a65955ed5
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3a66ad61afe1439a80d750097d3c90d010547539
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555724"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622403"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -1971,6 +1971,7 @@ Graph displayName | Azure 入口網站顯示名稱 | directoryRoleTemplateId
 驗證系統管理員 | 驗證管理員 | c4e39bd9-1100-46d3-8c65-fb160da0071f
 攻擊承載作者 | 攻擊承載作者 | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
 攻擊模擬系統管理員 | 攻擊模擬系統管理員 | c430b396-e693-46cc-96f3-db01bf8bb62a
+Azure AD 加入的裝置本機系統管理員 | Azure AD 加入的裝置本機系統管理員 | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 Azure DevOps 管理員 | Azure DevOps 管理員 | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure 資訊保護管理員 | Azure 資訊保護管理員 | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C IEF 金鑰集管理員 | B2C IEF 金鑰集管理員 | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1978,24 +1979,23 @@ B2C IEF 原則管理員 | B2C IEF 原則管理員 | 3edaf663-341e-4475-9f94-5c39
 計費管理員 | 計費管理員 | b0f54661-2d74-4c50-afa3-1ec803f12efe
 雲端應用程式系統管理員 | 雲端應用程式系統管理員 | 158c047a-c907-4556-b7ef-446551a6b5f7
 雲端裝置管理員 | 雲端裝置管理員 | 7698a772-787b-4ac8-901f-60d6b08affd2
-公司系統管理員 | 全域管理員 | 62e90394-69f5-4237-9190-012177145e10
 規範管理員 | 規範管理員 | 17315797-102d-40b4-93e0-432062caca18
 合規性資料管理員 | 合規性資料管理員 | e6d1a23a-da11-4be4-9570-befc86d067a7
 條件式存取系統管理員 | 條件式存取系統管理員 | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
-CRM 服務管理員 | Dynamics 365 管理員 | 44367163-eba1-44c3-98af-f5787879f96a
 客戶 LockBox 存取核准者 | 客戶加密箱存取核准者 | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 電腦分析系統管理員 | 電腦分析系統管理員 | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
-裝置系統管理員 | 裝置管理員 | 9f06204d-73c1-4d4c-880a-6edb90606fd8
 加入裝置 | 已被取代 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
 裝置管理員 | 已被取代 | 2b499bcd-da44-4968-8aec-78e1674fa64d
 裝置使用者 | 已被取代 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 目錄讀取器 | 目錄讀取器 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 目錄同步處理帳戶 | 未顯示，因為不得使用 | d29b2b05-8046-44ba-8758-1e26182fcf32
 目錄撰寫者 | 目錄撰寫者 | 9360feb5-f418-4baa-8175-e2a00bac4301
-Exchange 服務管理員 | Exchange 系統管理員 | 29232cdf-9323-42fd-ade2-1d097af3e4de
+Dynamics 365 系統管理員 | Dynamics 365 管理員 | 44367163-eba1-44c3-98af-f5787879f96a
+Exchange 系統管理員 | Exchange 系統管理員 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部識別碼使用者流程管理員 | 外部識別碼使用者流程管理員 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 外部識別碼使用者流程屬性管理員 | 外部識別碼使用者流程屬性管理員 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
 外部識別提供者管理員 | 外部識別提供者管理員 | be2f45a1-457d-42af-a067-6ec1fa63bc45
+全域管理員 | 全域管理員 | 62e90394-69f5-4237-9190-012177145e10
 全域讀取者 | 全域讀取者 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 群組管理員 | 群組管理員 | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 來賓邀請者 | 來賓邀請者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
@@ -2003,10 +2003,9 @@ Exchange 服務管理員 | Exchange 系統管理員 | 29232cdf-9323-42fd-ade2-1d
 混合式身分識別管理員 | 混合式身分識別管理員 | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
 Insights 管理員 | 見解管理員 | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
 Insights 商務領導人 | Insights 商務領導人 | 31e939ad-9672-4796-9c2e-873181342d2d
-Intune 服務管理員 | Intune 管理員 | 3a2c62db-5318-420d-8d74-23affee5d9d5
+Intune 管理員 | Intune 管理員 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理員 | Kaizala 管理員 | 74ef975b-6605-40af-a5d2-b9539d836353
 授權管理員 | 授權管理員 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
-Lync 服務管理員 | 商務用 Skype 的管理員 | 75941009-915a-4869-abe7-691bff18279e
 訊息中心隱私權讀取者 | 訊息中心隱私權讀取者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 訊息中心讀取者 | 訊息中心讀取者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 現代化商務使用者 | 現代化商務使用者 | d24aef57-1500-4070-84db-2666f29cf966
@@ -2015,7 +2014,7 @@ Office 應用程式管理員 | Office 應用程式管理員 | 2b745bdf-0803-4d80
 合作夥伴第 1 層支援 | 未顯示，因為不得使用 | 4ba39ca4-527c-499a-b93d-d9b492c50246
 合作夥伴第 2 層支援 | 未顯示，因為不得使用 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 密碼管理員 | 密碼管理員 | 966707d0-3269-4727-9be2-8c3a10f19b9d
-Power BI 服務管理員 | Power BI 管理員 | a9ea8996-122f-4c74-9520-8edcd192826c
+Power BI 管理員 | Power BI 管理員 | a9ea8996-122f-4c74-9520-8edcd192826c
 Power Platform 管理員 | Power Platform 管理員 | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 印表機管理員 | 印表機管理員 | 644ef478-e28f-4e28-b9dc-3fdde9aa0b1f
 印表機技術人員 | 印表機技術人員 | e8cef6f1-e4bd-4ea8-bc07-4b8d950f4477
@@ -2028,15 +2027,16 @@ Power Platform 管理員 | Power Platform 管理員 | 11648597-926c-4cf3-9c36-bc
 安全性操作員 | 安全性操作員 | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
 安全性讀取者 | 安全性讀取者 | 5d6b6bb7-de71-4623-b4af-96380a352509
 服務支援管理員 | 服務支援管理員 | f023fd81-a637-4b56-95fd-791ac0226033
-SharePoint 服務管理員 | SharePoint 管理員 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+SharePoint 管理員 | SharePoint 管理員 | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
+商務用 Skype 的管理員 | 商務用 Skype 的管理員 | 75941009-915a-4869-abe7-691bff18279e
 Microsoft Teams 通訊系統管理員 | Microsoft Teams 通訊系統管理員 | baf37b3a-610e-45da-9e62-d9d1e5e8914b
 Microsoft Teams 通訊支援工程師 | Microsoft Teams 通訊支援工程師 | f70938a0-fc10-4177-9e90-2178f8765737
 Microsoft Teams 通訊支援專家 | Microsoft Teams 通訊支援專家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams 裝置管理員 | Teams 裝置管理員 | 3d762c5a-1b6c-493f-843e-55a3b42923d4
-Microsoft Teams 服務管理員 | Microsoft Teams 服務管理員 | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Microsoft Teams 管理員 | Microsoft Teams 管理員 | 69091246-20e8-4a56-aa4d-066075b2a7a8
 使用量摘要報表讀者 | 使用量摘要報表讀者 | 75934031-6c7e-415a-99d7-48dbd49e875e
 User | 未顯示，因為不能使用 | a0b1b346-4d3e-4e8b-98f8-753987be4970
-使用者帳戶管理員 | 使用者管理員 | fe930be7-5e62-47db-91af-98c3a49a38b1
+使用者管理員 | 使用者管理員 | fe930be7-5e62-47db-91af-98c3a49a38b1
 加入工作場所裝置 | 已被取代 | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>已被取代的角色
@@ -2057,15 +2057,11 @@ User | 未顯示，因為不能使用 | a0b1b346-4d3e-4e8b-98f8-753987be4970
 
 API 名稱 | Azure 入口網站名稱 | 注意
 -------- | ------------------- | -------------
-公司系統管理員 | 全域管理員 | [名稱已變更，變得更清楚明瞭](permissions-reference.md#role-template-ids)
-CRM 服務管理員 | Dynamics 365 管理員 | [反映目前的產品品牌](permissions-reference.md#role-template-ids)
 加入裝置 | 已被取代 | [已淘汰的角色文件](permissions-reference.md#deprecated-roles)
 裝置管理員 | 已被取代 | [已淘汰的角色文件](permissions-reference.md#deprecated-roles)
 裝置使用者 | 已被取代 | [已淘汰的角色文件](permissions-reference.md#deprecated-roles)
 目錄同步處理帳戶 | 未顯示，因為不得使用 | [目錄同步處理帳戶文件](permissions-reference.md#directory-synchronization-accounts)
-目錄撰寫者 | 未顯示，因為不得使用 | [目錄寫入者文件](permissions-reference.md#directory-writers)
 來賓使用者 | 未顯示，因為不能使用  | NA
-Lync 服務管理員 | 商務用 Skype 的管理員 | [反映目前的產品品牌](permissions-reference.md#role-template-ids)
 合作夥伴第 1 層支援 | 未顯示，因為不得使用 | [合作夥伴第 1 層支援文件](permissions-reference.md#partner-tier1-support)
 合作夥伴第 2 層支援 | 未顯示，因為不得使用 | [合作夥伴第 2 層支援文件](permissions-reference.md#partner-tier2-support)
 受限制的來賓使用者 | 未顯示，因為不能使用 | NA
