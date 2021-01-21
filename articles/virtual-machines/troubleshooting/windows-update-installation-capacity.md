@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0c0ec45eee86031e1533b97ccf352de0ecf70e38
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635700"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633149"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>針對 OS 啟動進行疑難排解 - Windows Update 安裝容量
 
@@ -27,7 +27,7 @@ ms.locfileid: "94635700"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用開機診斷來檢視 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows Update (KB) 進行中，但是失敗且具有以下錯誤碼： **C01A001D** 。 下圖顯示 Windows Update (KB) 卡在下列訊息，「套用更新作業 ##### 之 ##### (######) 時發生錯誤 C01A001D」：
+當您使用開機診斷來檢視 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows Update (KB) 進行中，但是失敗且具有以下錯誤碼：**C01A001D**。 下圖顯示 Windows Update (KB) 卡在下列訊息，「套用更新作業 ##### 之 ##### (######) 時發生錯誤 C01A001D」：
 
 ![Windows Update (KB) 卡在下列訊息，「套用更新作業 Y 之 X (Z) 時發生錯誤 C01A001D」。](./media/troubleshoot-windows-update-installation-capacity/1.png)
 
@@ -38,6 +38,9 @@ ms.locfileid: "94635700"
 ## <a name="solution"></a>解決方法
 
 ### <a name="process-overview"></a>程序概觀：
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 1. 建立和存取修復 VM。
 1. 磁碟上的可用空間。
@@ -73,12 +76,12 @@ ms.locfileid: "94635700"
 
 ### <a name="enable-the-serial-console-and-memory-dump-collection"></a>啟用序列主控台和記憶體傾印集合
 
-**建議** ：重建 VM 之前，請先藉由執行下列指令碼來啟用序列主控台和記憶體傾印集合：
+**建議**：重建 VM 之前，請先藉由執行下列指令碼來啟用序列主控台和記憶體傾印集合：
 
 1. 以系統管理員身分開啟提升權限的命令提示字元工作階段。
 1. 執行下列命令：
 
-   **啟用序列主控台** ：
+   **啟用序列主控台**：
    
    ```
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
@@ -97,7 +100,7 @@ ms.locfileid: "94635700"
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM 
    ```
    
-   **在 ControlSet001 上啟用** ：
+   **在 ControlSet001 上啟用**：
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -105,7 +108,7 @@ ms.locfileid: "94635700"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **在 ControlSet002 上啟用** ：
+   **在 ControlSet002 上啟用**：
 
    ```
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
@@ -113,7 +116,7 @@ ms.locfileid: "94635700"
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
    ```
    
-   **卸載中斷的作業系統磁碟** ：
+   **卸載中斷的作業系統磁碟**：
 
    ```
    REG UNLOAD HKLM\BROKENSYSTEM

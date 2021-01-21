@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 06/15/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 6b50bffd1a44c0cf53f15650f5ff4d938f45df4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047c8afbfe7b489e5c3ac0ccb677f6fc021443a8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84907975"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632634"
 ---
 # <a name="azure-vm-is-unresponsive-while-applying-security-policy-to-the-system"></a>將安全性原則套用至系統時，Azure VM 沒有回應
 
@@ -33,7 +33,7 @@ ms.locfileid: "84907975"
 
 :::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy.png" alt-text="Windows Server 2012 R2 啟動畫面的螢幕擷取畫面已停滯。":::
 
-:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="Windows Server 2012 R2 啟動畫面的螢幕擷取畫面已停滯。":::
+:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="作業系統啟動畫面的螢幕擷取畫面已停滯。":::
 
 ## <a name="cause"></a>原因
 
@@ -42,6 +42,9 @@ ms.locfileid: "84907975"
 ## <a name="resolution"></a>解決方案
 
 ### <a name="process-overview"></a>程序概觀
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 1. [建立及存取修復 VM](#create-and-access-a-repair-vm)
 2. [啟用序列主控台和記憶體傾印收集](#enable-serial-console-and-memory-dump-collection)
@@ -68,7 +71,54 @@ ms.locfileid: "84907975"
 
         在命令中， \<BOOT PARTITON> 將取代為連接磁片中包含開機資料夾之磁碟分割的字母。
 
-        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="Windows Server 2012 R2 啟動畫面的螢幕擷取畫面已停滯。" /v NMICrashDump /t REG_DWORD /d 1 /f
+        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="下圖顯示在第1代 VM 中列出 BCD 存放區的輸出，這些 VM 會列示在 Windows 開機載入器的識別碼號碼。":::
+
+     2. 針對第2代 VM，請輸入下列命令，並記下列出的識別碼：
+
+        ```console
+        bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum
+        ```
+
+        - 在命令中，以 \<LETTER OF THE EFI SYSTEM PARTITION> EFI 系統磁碟分割的字母取代。
+        - 啟動磁片管理主控台來識別標示為「EFI 系統磁碟分割」的適當系統磁碟分割可能很有説明。
+        - 識別碼可以是唯一的 GUID，也可以是預設值 "bootmgr"。
+3. 執行下列命令以啟用序列主控台：
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
+    ```
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+
+    - 在命令中， \<VOLUME LETTER WHERE THE BCD FOLDER IS> 將取代為 BCD 資料夾的字母。
+    - 在命令中，以 \<BOOT LOADER IDENTIFIER> 您在上一個步驟中找到的識別碼取代。
+4. 確認 OS 磁片上的可用空間大於 VM 上 (RAM) 的記憶體大小。
+
+    1. 如果 OS 磁片上沒有足夠的空間，您應該變更將建立記憶體傾印檔案的位置。 除了在作業系統磁片上建立檔案，您也可以將它參考至連結至 VM 且有足夠可用空間的任何其他資料磁片。 若要變更位置，請將 "% SystemRoot%" 取代為磁碟機號 (例如 "F：" ) 在下列命令中的資料磁片。
+    2. 輸入下列命令， (建議的傾印設定) ：
+
+        載入中斷的 OS 磁碟：
+
+        ```console
+        REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
+        ```
+
+        在 ControlSet001 上啟用：
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+        ```
+
+        在 ControlSet002 上啟用：
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
         ```
 
         卸載中斷的 OS 磁碟：
@@ -96,6 +146,6 @@ ms.locfileid: "84907975"
     - 找出記憶體 dmp 檔案，然後使用記憶體傾印檔案來 [提交支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。
     - 如果您找不到找出記憶體 dmp 檔案的問題，您可能會想要改為 [在序列主控台中使用非遮罩式插斷 (NMI) 呼叫](serial-console-windows.md#use-the-serial-console-for-nmi-calls) 。 您可以遵循本指南， [使用 NMI 呼叫來產生損毀](/windows/client-management/generate-kernel-or-complete-crash-dump)傾印檔案。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如果您在套用本機使用者和群組原則時遇到問題，請參閱套用 [群組原則本機使用者和群組原則時，VM 沒有回應](unresponsive-vm-apply-group-policy.md)

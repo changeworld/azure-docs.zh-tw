@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 1131c8e79d9df2883dcf7e975af9732c21318a49
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e1462246b95da67591cbdfd1f9ed819220de5764
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621159"
+ms.locfileid: "98633056"
 ---
 # <a name="connect-your-barracuda-waf-appliance"></a>連接您的 Barracuda WAF 設備 
 
@@ -30,20 +30,24 @@ Barracuda Web 應用程式防火牆 (WAF) 連接器可讓您輕鬆地將 Barracu
 > 資料會儲存在您執行 Azure Sentinel 之工作區的地理位置。
 
 ## <a name="configure-and-connect-barracuda-waf"></a>設定並連接 Barracuda WAF
-Barracuda Web 應用程式防火牆可以透過 Log Analytics 代理程式，將記錄直接整合和匯出至 Azure Sentinel。
-1. 移至 [BARRACUDA WAF 設定流程](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)，並依照指示使用下列參數來設定連接：
-    - **工作區識別碼**：從 Azure Sentinel Barracuda 連接器頁面複製工作區識別碼的值。
-    - **主鍵**：從 Azure Sentinel Barracuda 連接器頁面複製您的主要金鑰值。
-1. 若要在 Log Analytics 中針對 Barracuda 事件使用相關的架構，請搜尋 **CommonSecurityLog** 和 **barracuda_CL**。
 
+Barracuda Web 應用程式防火牆可以透過 Log Analytics 代理程式，將記錄直接整合和匯出至 Azure Sentinel。
+
+1. 移至 [BARRACUDA WAF 設定流程](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)，並依照指示使用下列參數來設定連接：
+
+    - **工作區識別碼**：從 Azure Sentinel Barracuda 連接器頁面複製工作區識別碼的值。
+
+    - **主鍵**：從 Azure Sentinel Barracuda 連接器頁面複製您的主要金鑰值。
+
+1. 若要在 Log Analytics 中針對 Barracuda 事件使用相關的架構，請搜尋 **CommonSecurityLog** 和 **barracuda_CL**。
 
 ## <a name="validate-connectivity"></a>驗證連線能力
 
-可能需要20分鐘的時間，記錄才會開始出現在 Log Analytics 中。 
+最多可能需要20分鐘的時間，記錄才會出現在 Log Analytics 中。 
 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 在本檔中，您已瞭解如何將 Barracuda 設備連線至 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。

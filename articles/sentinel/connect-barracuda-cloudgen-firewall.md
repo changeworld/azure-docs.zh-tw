@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: dd0115fa34b10805570b6e9d8d09ae96fc169dfc
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 9e0aa186e742318ab5793fa8390251d94327bf08
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621126"
+ms.locfileid: "98632702"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>連線 Barracuda CloudGen Firewall
 
@@ -35,15 +35,14 @@ Barracuda CloudGen Firewall (CGFW) connector 可讓您輕鬆地將您的 Barracu
 
 1. 在 Azure 入口網站中，流覽至 **Azure Sentinel**  >  **資料連線器**，然後選取 **Barracuda CloudGen 防火牆** 連接器。
 
-2. 選取 [ **開啟連接器] 頁面**。
+1. 選取 [ **開啟連接器] 頁面**。
 
-3. 依照 **Barracuda CloudGen 防火牆** 頁面上的指示進行。
+1. 依照 **Barracuda CloudGen 防火牆** 頁面上的指示進行。
 
+## <a name="next-steps"></a>下一步
 
-## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Barracuda CloudGen 防火牆連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
 - [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
-
-

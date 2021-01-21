@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/22/2020
+ms.date: 01/20/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 797b5f569f081065eb950f7c10bf6449002f733b
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 9a739736182713b35c3a5e9e25742aa39c5d1122
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436975"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633132"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全性精靈和執行階段
 
@@ -30,7 +30,7 @@ IoT Edge 安全性精靈是一項原生元件，必須在 IoT Edge 裝置上使�
 
 請使用 `iotedge version` 命令檢查在您的裝置上執行的安全性精靈版本。
 
-### <a name="linux-devices"></a>Linux 裝置
+# <a name="linux"></a>[Linux](#tab/linux)
 
 在 Linux x64 裝置上，使用 apt 取得或您適當的套件管理員，將安全性背景程式更新為最新版本。
 
@@ -48,7 +48,7 @@ IoT Edge 安全性精靈是一項原生元件，必須在 IoT Edge 裝置上使�
    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
-* **Raspberry PI 作業系統延展**：
+* **Raspberry Pi OS Stretch**：
 
    ```bash
    curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
@@ -98,26 +98,18 @@ curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-st
 curl -L <iotedge link> -o iotedge.deb && sudo dpkg -i ./iotedge.deb
 ```
 
-### <a name="windows-devices"></a>Windows 裝置
+# <a name="windows"></a>[Windows](#tab/windows)
 
-在 Windows 裝置上，使用 PowerShell 腳本來更新安全性守護程式。 腳本會自動提取最新版本的安全 daemon。
+<!-- 1.0.10 -->
+::: moniker range="iotedge-2018-06"
 
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
-```
+針對 Windows 上的 Linux IoT Edge，IoT Edge 會在 Windows 裝置上裝載的 Linux 虛擬機器中執行。 此虛擬機器已預先安裝 IoT Edge，並使用 Microsoft Update 進行管理，讓元件保持在最新狀態。 目前沒有可用的更新。
 
-執行 Update-IoTEdge 命令會從您的裝置移除並更新安全性守護程式，以及兩個執行時間容器映射。 Yaml 檔案會保留在裝置上，以及 Moby 容器引擎的資料 (如果您是使用 Windows 容器) 。 保留設定資訊表示您不需要在更新程式期間，再次提供裝置的連接字串或裝置布建服務資訊。
+::: moniker-end
 
-如果您想要更新為特定版本的安全 daemon，請從 [IoT Edge](https://github.com/Azure/azure-iotedge/releases)版本中尋找您想要作為目標的版本。 在該版本中，下載 **Microsoft-Azure-IoTEdge.cab** 檔案。 然後，使用 `-OfflineInstallationPath` 參數指向本機檔案位置。 例如：
+使用適用于 Windows 的 IoT Edge，IoT Edge 會直接在 Windows 裝置上執行。 如需使用 PowerShell 腳本的更新指示，請參閱 [安裝和管理 Windows 的 Azure IoT Edge](how-to-install-iot-edge-windows-on-windows.md)。
 
-```powershell
-. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
-```
-
->[!NOTE]
->`-OfflineInstallationPath`參數會在提供的目錄中尋找名為 **Microsoft-Azure-IoTEdge.cab** 的檔案。 從 IoT Edge 版本 1.0.9-rc4 開始，有兩個 .cab 檔案可供使用，一個用於 AMD64 裝置，另一個用於 ARM32。 為您的裝置下載正確的檔案，然後將檔案重新命名以移除架構尾碼。
-
-如需更新選項的詳細資訊，請使用命令 `Get-Help Update-IoTEdge -full` 或參考 [Windows 上 IoT Edge 的 PowerShell 腳本](reference-windows-scripts.md)。
+---
 
 ## <a name="update-the-runtime-containers"></a>更新執行階段容器
 
@@ -172,35 +164,6 @@ IoT Edge 服務將會提取執行階段映像的最新版本，並自動在您�
 
 1. 選取 [ **審核 + 建立**]、[檢查部署]，然後選取 [ **建立**]。
 
-## <a name="update-offline-or-to-a-specific-version"></a>離線更新或更新為特定版本
-
-如果您想要離線更新裝置，或更新為特定版本的 IoT Edge 而不是最新版本，您可以使用參數來進行 `-OfflineInstallationPath` 。
-
-使用兩個元件來更新 IoT Edge 裝置：
-
-* PowerShell 腳本，其中包含安裝指示
-* Microsoft Azure IoT Edge cab，其中包含 IoT Edge 的安全 daemon (iotedged) 、Moby 容器引擎和 Moby CLI
-
-1. 如需最新的 IoT Edge 安裝檔案及舊版，請參閱 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
-
-2. 尋找您想要安裝的版本，並從版本資訊的 [ **資產** ] 區段中，將下列檔案下載到您的 IoT 裝置：
-
-   * IoTEdgeSecurityDaemon.ps1
-   * Microsoft-Azure-IoTEdge-amd64.cab 版本1.0.9 或更新版本，或從1.0.8 和較舊版本中的 Microsoft-Azure-IoTEdge.cab。
-
-   基於測試目的，Microsoft-Azure-IotEdge-arm32.cab 也可以從1.0.9 開始使用。 Windows ARM32 裝置上目前不支援 IoT Edge。
-
-   請務必使用與您所使用之 .cab 檔案相同版本的 PowerShell 腳本，因為功能會變更以支援每個版本中的功能。
-
-3. 如果您下載的 .cab 檔案中有架構尾碼，請將檔案重新命名為只 **Microsoft-Azure-IoTEdge.cab**。
-
-4. 若要使用離線元件進行更新，請使用 [點來源](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) 作為 PowerShell 腳本的本機複本。 然後，使用 `-OfflineInstallationPath` 參數做為命令的一部分， `Update-IoTEdge` 並提供檔案目錄的絕對路徑。 例如，
-
-   ```powershell
-   . <path>\IoTEdgeSecurityDaemon.ps1
-   Update-IoTEdge -OfflineInstallationPath <path>
-   ```
-
 ## <a name="update-to-a-release-candidate-version"></a>更新為發行候選版本
 
 Azure IoT Edge 定期發行新版本的 IoT Edge 服務。 在每個穩定版本之前，有一或多個候選版 (RC) 版本。 RC 版本包含所有已規劃的發行功能，但仍在進行測試和驗證。 如果您想要提早測試新的功能，您可以安裝 RC 版本，並透過 GitHub 提供意見反應。
@@ -213,9 +176,9 @@ IoT Edge 代理程式和中樞模組都有以相同慣例標記的 RC 版本。 
 
 使用本文中的各節，瞭解如何將 IoT Edge 裝置更新為特定版本的安全 daemon 或執行時間模組。
 
-如果您要安裝 IoT Edge，而不是升級現有的安裝，請使用 [離線或特定版本安裝](how-to-install-iot-edge.md#offline-or-specific-version-installation)中的步驟。
+如果您要安裝 IoT Edge，而不是升級現有的安裝，請使用 [離線或特定版本安裝](how-to-install-iot-edge.md#offline-or-specific-version-installation-optional)中的步驟。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 檢視最新的 [Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 

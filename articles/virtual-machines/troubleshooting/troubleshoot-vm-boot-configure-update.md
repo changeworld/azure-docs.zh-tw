@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3e4d51b4d41fa0dc23e9b12ac0251c14215de5c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079837"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633005"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM 啟動在 Azure 中停滯在「Windows 正在就緒。 請勿關閉電腦」的狀態
 
@@ -39,6 +39,9 @@ Windows VM 無法開機。 當您使用 **開機診斷** 來取得 VM 的螢幕�
 這個問題通常發生在伺服器正在進行設定變更之後的最後重新啟動。 設定變更可能是由 Windows 更新或伺服器的角色/功能變更起始。 對於 Windows Update，如果更新的大小較大，作業系統會需要更多時間設定變更。
 
 ## <a name="collect-an-os-memory-dump"></a>收集 OS 記憶體傾印
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 如果在等待變更之後問題未解決，您就必須收集記憶體傾印檔案並聯系支援人員。 若要收集傾印檔案，請遵循下列步驟：
 
@@ -101,7 +104,7 @@ Windows VM 無法開機。 當您使用 **開機診斷** 來取得 VM 的螢幕�
 
 3. [卸離 OS 磁碟，然後將 OS 磁碟重新連結至受影響的 VM](./troubleshoot-recovery-disks-portal-windows.md)。
 4. 啟動 VM 並存取序列主控台。
-5. 選取 [ **傳送非遮罩式插斷 (NMI) ** 以觸發記憶體傾印。
+5. 選取 [ **傳送非遮罩式插斷 (NMI)** 以觸發記憶體傾印。
     ![有關要傳送不可遮罩中斷之位置的映射](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)
 6. 請再次將 OS 磁片連結至復原 VM，並收集傾印檔案。
 

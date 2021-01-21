@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da41815e177ece64c72ac27a7cb126e69fdc62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509030"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633183"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>開機錯誤-這不是可開機的磁片
 
@@ -41,6 +41,9 @@ ms.locfileid: "86509030"
 
 ### <a name="process-overview"></a>程序概觀
 
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
+
 1. 建立及存取修復 VM。
 2. 將資料分割狀態設定為作用中。
 3. 修正磁碟分割。
@@ -57,9 +60,9 @@ ms.locfileid: "86509030"
 
 ### <a name="set-partition-status-to-active"></a>將資料分割狀態設定為作用中
 
-第1代 Vm 應先確認保存 BCD 存放區的作業系統分割區已標示為使用*中。* 如果您有第2代 VM，請直接跳到 [修正磁碟分割](#fix-the-disk-partition)，因為 *狀態* 旗標在之後的版本中已淘汰。
+第1代 Vm 應先確認保存 BCD 存放區的作業系統分割區已標示為使用 *中。* 如果您有第2代 VM，請直接跳到 [修正磁碟分割](#fix-the-disk-partition)，因為 *狀態* 旗標在之後的版本中已淘汰。
 
-1. 開啟提升許可權的命令提示字元 * ( # A0) *。
+1. 開啟提升許可權的命令提示字元 *( # A0)*。
 2. 輸入 *diskpart* 以啟動 DISKPART 工具。
 3. 輸入 *清單磁片* 以列出系統上的磁片，並識別連接的 OS VHD。
 4. 找到連結的 OS VHD 之後，請輸入 *sel disk #* 以選取磁碟。  請參閱圖2，其中 Disk 1 是連接的 OS VHD。
@@ -85,7 +88,7 @@ ms.locfileid: "86509030"
 
    ![[圖 5] 顯示當分割區1設定為 * Active： Yes * 時，具有 * detail partition * 命令輸出的 * DISKPART * 視窗。](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
-8. 如果分割區 **不**在使用中，請輸入 *active* 以變更使用 *中的旗* 標。
+8. 如果分割區 **不** 在使用中，請輸入 *active* 以變更使用 *中的旗* 標。
 9. 輸入 *詳細資料分割*，檢查狀態變更是否已正確完成。
 
    圖 6

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7160ec9564ede21eab0a205b2d66a7d566639506
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526005"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632651"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>套用群組原則本機使用者和群組原則時，VM 沒有回應
 
@@ -31,7 +31,7 @@ ms.locfileid: "86526005"
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="載入套用群組原則本機使用者與群組原則 (Windows Server 2012 R2) 的螢幕擷取畫面。":::
 
-:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="載入套用群組原則本機使用者與群組原則 (Windows Server 2012 R2) 的螢幕擷取畫面。":::
+:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="載入套用群組原則本機使用者與群組原則 (Windows Server 2012) 的螢幕擷取畫面。":::
 
 ## <a name="cause"></a>原因
 
@@ -47,6 +47,9 @@ ms.locfileid: "86526005"
 ## <a name="resolution"></a>解決方案
 
 ### <a name="process-overview"></a>程序概觀
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 1. [建立和存取修復 VM](#step-1-create-and-access-a-repair-vm)
 1. [停用原則](#step-2-disable-the-policy)
@@ -64,9 +67,25 @@ ms.locfileid: "86526005"
 ### <a name="step-2-disable-the-policy"></a>步驟 2:停用原則
 
 1. 在修復 VM 上，開啟 [登錄編輯程式]。
-1. 找出**HKEY_LOCAL_MACHINE**的金鑰， **File**然後  >  從功能表中選取 [檔案**載入 Hive** ]。
+1. 找出 **HKEY_LOCAL_MACHINE** 的金鑰， 然後  >  從功能表中選取 [檔案 **載入 Hive** ]。
 
-    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="載入套用群組原則本機使用者與群組原則 (Windows Server 2012 R2) 的螢幕擷取畫面。" /v CleanupProfiles /f
+    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="螢幕擷取畫面，其中顯示 HKEY_LOCAL_MACHINE (已醒目提示的) 與包含載入登錄區的功能表。":::
+
+    - 您可以使用 Load Hive 從離線系統載入登錄機碼。 在此情況下，系統是連接至修復 VM 的已中斷磁片。
+    - 全系統的設定會儲存在上 `HKEY_LOCAL_MACHINE` ，而且可以縮寫為 "HKLM"。
+1. 在連接的磁碟中，前往 `\windows\system32\config\SOFTWARE` 檔案，並將其開啟。
+
+    1. 當系統提示您輸入名稱時，請輸入 BROKENSOFTWARE。
+    1. 若要確認是否已載入 BROKENSOFTWARE，請展開 **HKEY_LOCAL_MACHINE** 並尋找新增的 BROKENSOFTWARE 機碼。
+1. 移至 BROKENSOFTWARE，並檢查已載入的 hive 中是否有 Cleanupprofile 機索引鍵。
+
+    1. 如果索引鍵存在，則會設定 Cleanupprofile 機原則。 其值代表以天為單位的保留原則。 繼續刪除機碼。
+    1. 如果機碼不存在，則不會設定 CleanupProfile 原則。 [提交支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)，包含 memory.dmp 檔案，位於已連結 OS 磁碟的 Windows 目錄中。
+
+1. 使用下列命令來刪除 CleanupProfiles 金鑰：
+
+    ```
+    reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f
     ```
 1.  使用下列命令來卸載 BROKENSOFTWARE hive：
 

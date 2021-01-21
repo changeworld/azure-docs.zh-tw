@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 8af8d7695c48c6ac682109bb38935e98921fa9e4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: fc3bd5d2590e969db07e9dffa61b4902ea4604c3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681902"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632541"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager-service"></a>在等候本機會話管理員服務時，VM 沒有回應
 
@@ -35,6 +35,9 @@ ms.locfileid: "94681902"
 
 ## <a name="solution"></a>解決方案
 
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
+
 在某些情況下，只要等候完成的程式就能解決問題。 如果您的 VM 沒有回應，並在等候畫面上保持超過一小時，您應該收集記憶體傾印，然後聯絡 Microsoft 支援服務。
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>將 OS 磁片連結至新的修復 VM
@@ -50,7 +53,7 @@ ms.locfileid: "94681902"
 
 如需有關 NMI 呼叫的詳細資訊，請參閱 [Azure 序列主控台使用者指南中的 nmi 呼叫](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [針對 Azure 虛擬機器開機錯誤進行疑難排解](boot-error-troubleshoot.md)

@@ -3,12 +3,12 @@ title: Azure 服務匯流排中的 AMQP 1.0 總覽
 description: 瞭解 Azure 服務匯流排如何 (AMQP) （開放式標準通訊協定）支援先進訊息佇列通訊協定。
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: 241a6b7fb9f9055ce610e44e5cd37dba87c77554
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 58c2cc8e9d92fff31a286b6e9bd63b63bee26aee
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709277"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632879"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服務匯流排中的 AMQP 1.0 支援
 Azure 服務匯流排的雲端服務會使用 [Advanced Message 佇列通訊協定 (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) 作為其主要的通訊方式。 Microsoft 已與產業、客戶和競爭訊息代理人的廠商合作，在過去十年來開發及發展 AMQP，並在 [OASIS AMQP 技術委員會](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)中開發新的延伸模組。 AMQP 1.0 是 ISO 和 IEC 標準 ([iso 19464:20149](https://www.iso.org/standard/64955.html)) 。 
@@ -64,11 +64,11 @@ Azure 服務匯流排中的 AMQP 1.0 支援表示您可以使用有效率的二�
 
 所有透過 Azure SDK 提供的支援服務匯流排用戶端程式庫都會使用 AMQP 1.0。
 
-- [適用於 .NET 的 Azure 服務匯流排](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [適用於 Java 的 Azure 服務匯流排程式庫](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [適用於 .NET 的 Azure 服務匯流排](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [適用於 Java 的 Azure 服務匯流排程式庫](/java/api/overview/azure/servicebus?preserve-view=true)
 - [Java JMS 2.0 的 Azure 服務匯流排提供者](how-to-use-java-message-service-20.md)
-- [適用於 JavaScript 和 TypeScript 的 Azure 服務匯流排模組](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [適用於 Python 的 Azure 服務匯流排程式庫](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [適用於 JavaScript 和 TypeScript 的 Azure 服務匯流排模組](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [適用於 Python 的 Azure 服務匯流排程式庫](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
 
@@ -76,10 +76,10 @@ Azure 服務匯流排中的 AMQP 1.0 支援表示您可以使用有效率的二�
 
 [!INCLUDE [messaging-oss-amqp-stacks.md](../../includes/messaging-oss-amqp-stacks.md)]
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>[摘要]
 * AMQP 1.0 是一個既開放又可靠的訊息通訊協定，可以用來建置跨平台的混合應用程式。 AMQP 1.0 是一項 OASIS 標準。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 準備好進行深入了解嗎？ 請造訪下列連結：
 
 * [搭配使用 .NET 的服務匯流排與 AMQP]

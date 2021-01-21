@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f286542c91ba473d13595d8e8299b1bbd8c93856
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977947"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632600"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>套用稽核原則設定原則時，虛擬機器沒有回應
 
@@ -27,7 +27,7 @@ ms.locfileid: "91977947"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示作業系統 (OS) 在開機期間沒有回應，並顯示套用 **稽核原則設定原則**的訊息。
+當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示作業系統 (OS) 在開機期間沒有回應，並顯示套用 **稽核原則設定原則** 的訊息。
 
   ![OS 開機時，會顯示下列訊息：「套用稽核原則設定原則」](./media/vm-unresponsive-applying-audit-configuration-policy/1.png)
 
@@ -45,6 +45,9 @@ ms.locfileid: "91977947"
 ## <a name="solution"></a>解決方法
 
 ### <a name="process-overview"></a>程序概觀
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 1. 建立及存取修復 VM。
 1. 停用原則。
@@ -105,7 +108,7 @@ ms.locfileid: "91977947"
       `bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum`
 
       - 在命令中，以 `<LETTER OF THE EFI SYSTEM PARTITION>` EFI 系統磁碟分割的字母取代。
-      - 啟動磁片管理主控台來識別標示為 **EFI 系統磁碟分割**的適當系統磁碟分割可能很有説明。
+      - 啟動磁片管理主控台來識別標示為 **EFI 系統磁碟分割** 的適當系統磁碟分割可能很有説明。
       - 識別碼可以是唯一的 GUID，也可以是預設的 **bootmgr**。
 
 1. 執行下列命令：

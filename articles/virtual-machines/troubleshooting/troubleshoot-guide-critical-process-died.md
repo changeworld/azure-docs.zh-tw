@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8279aee4a0df8155b23e6f984d259bf92555dc95
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509098"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632828"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows 停止錯誤-#0x000000EF "Critical Process 壞掉"
 
@@ -38,6 +38,9 @@ ms.locfileid: "86509098"
 ## <a name="solution"></a>解決方法
 
 ### <a name="process-overview"></a>程序概觀：
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 1. 建立及存取修復 VM。
 2. 修正任何作業系統損毀。

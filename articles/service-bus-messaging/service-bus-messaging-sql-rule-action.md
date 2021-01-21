@@ -3,16 +3,16 @@ title: Azure 服務匯流排訂用帳戶規則 SQL 動作語法 |Microsoft Docs
 description: 本文提供 SQL 規則動作語法的參考。 這些動作是以以 SQL 語言為基礎的語法撰寫，以針對訊息執行。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 7ce3332fb1a2025e89135e5e42e72d4afe1e7a5e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489389"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632806"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>訂用帳戶規則 SQL 動作語法
 
-當訂用帳戶規則的篩選選取訊息之後，會使用 *SQL 動作* 來操作訊息中繼資料。 它是仰賴在 SQL-92 標準子集上的文字運算式。 動作運算式會搭配 `sqlExpression` Azure Resource Manager 範本中服務匯流排的 ' action ' 屬性元素 `Rule` 或 Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) 引數，以及數個允許管理訂用帳戶規則的 SDK 函數使用。
+當訂用帳戶規則的篩選選取訊息之後，會使用 *SQL 動作* 來操作訊息中繼資料。 它是仰賴在 SQL-92 標準子集上的文字運算式。 動作運算式會搭配 `sqlExpression` Azure Resource Manager 範本中服務匯流排的 ' action ' 屬性元素 `Rule` 或 Azure CLI [](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` 命令的 [`--action-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 引數，以及數個允許管理訂用帳戶規則的 SDK 函數使用。
   
   
 ```  
@@ -208,7 +208,7 @@ ms.locfileid: "96489389"
 - 如果參考不存在的使用者屬性，動作就不會失敗。
 - 不存在的使用者屬性會內部評估為「不明」，評估運算子時遵循與 [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 相同的語意。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [SQLRuleAction 類別 ( .NET Framework) ](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 - [SQLRuleAction 類別 ( .NET Standard) ](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)

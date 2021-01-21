@@ -3,17 +3,19 @@ title: 將流程從 Power Automate 匯出至 Azure Logic Apps
 description: 以 Azure Resource Manager 範本的形式匯出，將流程從 Power Automate 遷移至 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/20/2021
+ms.openlocfilehash: 2192ae5f3de551cb8ff2b6c36e233804c3c56bf1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014409"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633242"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>從 Power Automate 匯出流程，並部署至 Azure Logic Apps
+
+> 若為2020年10月之後建立的流程，您將無法再從 Power Automate 匯出並部署至 Azure Logic Apps。
 
 若要擴充和展開流程的功能，您可以將該流程從 [Power Automate](https://flow.microsoft.com) 遷移至 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)。 您可以將流程匯出為邏輯應用程式的 Azure Resource Manager 範本、將該邏輯應用程式範本部署至 Azure 資源群組，然後在邏輯應用程式設計工具中開啟該邏輯應用程式。
 
@@ -24,7 +26,7 @@ ms.locfileid: "96014409"
 >
 > * 若要找出哪些 Logic Apps 連接器沒有 Power Automate 對等專案，請參閱 [Logic Apps 連接器](/connectors/connector-reference/connector-reference-powerautomate-connectors)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -172,7 +174,7 @@ ms.locfileid: "96014409"
 
 如需這些部署步驟的詳細資訊，請參閱 [快速入門：使用 Azure Logic Apps Visual Studio 建立自動化工作、進程和工作流程](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-to-Azure)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入瞭解 [Azure Logic Apps 的連接器](../connectors/apis-list.md)
 * 深入瞭解 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)

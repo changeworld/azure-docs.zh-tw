@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8d2ab2bb3f24e1faa4791ebdc1ce3852f6a790e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512132"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632685"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>作業系統啟動-電腦意外重新開機或發生未預期的錯誤
 
@@ -53,6 +53,9 @@ ms.locfileid: "96512132"
 
 ### <a name="do-not-use-unattendxml"></a>請勿使用 Unattend.xml
 
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
+
 若要修正此問題，請遵循 [Azure 有關準備/捕獲映射的指引](../windows/upload-generalized-managed.md) ，並準備新的一般化映射。 在 sysprep 期間， **請勿使用 `/unattend:<your file’s name>` 旗** 標。 相反地，請只使用下列旗標：
 
 `sysprep /oobe /generalize /shutdown`
@@ -63,6 +66,6 @@ ms.locfileid: "96512132"
 
 - 進入全新體驗
 - 一般化
-- Shutdown
+- 關機
  
 ![已選取 OOBE、一般化和關機選項的系統準備工具視窗。](./media/unexpected-restart-error-during-vm-boot/3.png)

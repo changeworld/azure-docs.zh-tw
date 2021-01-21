@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f83f4871d5cde23194ff51a90a22031b526cf91
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526533"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632558"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows VM 無法開機，因為 Windows 開機管理程式
 
@@ -39,7 +39,10 @@ ms.locfileid: "86526533"
 
 此錯誤是因為 Windows 開機管理程式中的 BCD 旗標 *displaybootmenu* 所造成。 啟用旗標之後，Windows 開機管理員會在開機過程中提示使用者，以選取要執行的載入器，而導致開機延遲。 在 Azure 中，這項功能可以新增到啟動 VM 所需的時間。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 程序概觀：
 
@@ -85,11 +88,11 @@ ms.locfileid: "86526533"
 1. 開啟提升權限的命令提示字元。
 2. 輸入下列內容以啟用 DisplayBootMenu：
 
-   針對 **第1代 vm**使用此命令：
+   針對 **第1代 vm** 使用此命令：
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes`
 
-   針對 **第2代 vm**使用此命令：
+   針對 **第2代 vm** 使用此命令：
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} displaybootmenu yes`
 
@@ -97,11 +100,11 @@ ms.locfileid: "86526533"
 
 3. 將 timeout 值變更為5秒：
 
-   針對 **第1代 vm**使用此命令：
+   針對 **第1代 vm** 使用此命令：
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5`
 
-   針對 **第2代 vm**使用此命令：
+   針對 **第2代 vm** 使用此命令：
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} timeout 5`
 

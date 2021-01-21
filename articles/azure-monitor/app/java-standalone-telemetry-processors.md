@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165785"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632575"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>適用于 JAVA 的遙測處理器 (預覽) -Azure 監視器 Application Insights
 
@@ -26,7 +26,7 @@ ms.locfileid: "98165785"
  * 更新用於匯總並顯示在 Azure 入口網站中的名稱
  * 捨棄範圍屬性以控制內嵌成本
 
-## <a name="terminology"></a>詞彙
+## <a name="terminology"></a>術語
 
 在我們跳到遙測處理器之前，請務必先瞭解「範圍」（span）所參考的內容。
 
@@ -38,7 +38,7 @@ ms.locfileid: "98165785"
 
 針對遙測處理器用途，範圍的重要元件如下：
 
-* 名稱
+* Name
 * 屬性
 
 範圍名稱是用於 Azure 入口網站中的要求和相依性的主要顯示。
@@ -241,7 +241,7 @@ Span 屬性代表給定要求或相依性的標準和自訂屬性。
 ### `extract`
 
 > [!NOTE]
-> 這項功能僅適用于3.0.1 和更新版本
+> 這項功能僅適用于3.0.2 和更新版本
 
 使用來自輸入索引鍵的正則運算式規則，將值解壓縮至規則中指定的目標索引鍵。 如果目標索引鍵已經存在，則會覆寫它。 其行為類似于[](#extract-attributes-from-span-name) `toAttributes` 使用現有屬性作為來源的範圍處理器設定。
 
@@ -330,7 +330,7 @@ Span 屬性代表給定要求或相依性的標準和自訂屬性。
 
 ### <a name="http-spans"></a>HTTP 範圍
 
-| 屬性  | 類型 | 描述 | 
+| 屬性  | 類型 | Description | 
 |---|---|---|
 | `http.method` | 字串 | HTTP 要求方法。|
 | `http.url` | 字串 | 表單中的完整 HTTP 要求 URL `scheme://host[:port]/path?query[#fragment]` 。 通常不會透過 HTTP 傳輸片段，但如果已知，則應該包含此片段。|
@@ -340,7 +340,7 @@ Span 屬性代表給定要求或相依性的標準和自訂屬性。
 
 ### <a name="jdbc-spans"></a>JDBC 範圍
 
-| 屬性  | 類型 | 描述  |
+| 屬性  | 類型 | Description  |
 |---|---|---|
 | `db.system` | 字串 | 使用的資料庫管理系統 (DBMS) 產品的識別碼。 |
 | `db.connection_string` | 字串 | 用來連接到資料庫的連接字串。 建議您移除內嵌認證。|

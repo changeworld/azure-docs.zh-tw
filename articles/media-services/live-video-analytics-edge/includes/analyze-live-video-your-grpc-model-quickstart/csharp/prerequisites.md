@@ -1,12 +1,14 @@
 ---
-ms.openlocfilehash: f8c43602e722231d0e5bd31bbc6b94d04c4d225c
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
-ms.translationtype: HT
+ms.openlocfilehash: 077c2fb25c4e765cec5976da3428f483da890d17
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98061054"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633317"
 ---
 * 包含有效訂用帳戶的 Azure 帳戶。 如果您還未擁有帳戶，請[建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+  > [!NOTE]
+  > 您將需要 Azure 訂用帳戶，具有建立服務主體的許可權 (**擁有者角色** 提供此) 。 如果您沒有正確的許可權，請洽詢您的帳戶管理員，授與您正確的許可權。 
 * 具有下列擴充功能的 [Visual Studio Code](https://code.visualstudio.com/)：
     * [Azure IoT 工具組](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
         > [!TIP]

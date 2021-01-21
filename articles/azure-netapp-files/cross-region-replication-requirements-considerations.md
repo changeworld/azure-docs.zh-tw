@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 01/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 4a4fff18d21ccb0c729ecb1f79df17225c8086bc
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243132"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632668"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>使用跨區域複寫的需求和考慮 
 
@@ -31,6 +31,7 @@ ms.locfileid: "95243132"
 * Azure NetApp Files 複寫僅適用于特定固定區域配對。 請參閱 [支援的區域配對](cross-region-replication-introduction.md#supported-region-pairs)。 
 * SMB 磁片區支援和 NFS 磁片區。 SMB 磁片區的複寫需要來源和目的地 NetApp 帳戶的 Active Directory 連接。 目的地 AD 連線必須具有 DNS 伺服器的存取權，或新增可從目的地區域中委派子網連線的網域控制站。 如需詳細資訊，請參閱 [Active Directory 連接的需求](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)。 
 * 目的地帳戶必須與來源磁片區區域位於不同的區域。 您也可以在不同的區域中選取現有的 NetApp 帳戶。  
+* 複寫目的地磁片區在您 [容錯移轉至目的地區域](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume) 之前是唯讀的，以便讓目的地磁片區可供讀取和寫入。 
 * Azure NetApp Files 複寫目前不支援多個訂用帳戶;所有的複寫都必須在單一訂用帳戶下執行。
 * 您最多可以在每個區域的單一訂用帳戶中，設定最多五個磁片區進行複寫。 您可以開啟支援票證，以要求 (每個訂用帳戶中每個訂用帳戶的預設配額增加預設配額) 。 
 * 介面可能會有最多五分鐘的延遲，以反映來源磁片區上新加入的快照集。  
@@ -40,12 +41,12 @@ ms.locfileid: "95243132"
 * 當複寫關聯性為作用中或已中斷，以及刪除複寫關聯性之後，您可以在複寫關聯性的來源磁片區上刪除手動快照集。 在複寫關聯性中斷之前，您無法刪除目的地磁片區的手動快照。
 * 您無法還原至建立複寫目的地磁片區之前所建立的快照集。
 
-## <a name="next-steps"></a>後續步驟
-* [建立磁片區複寫](cross-region-replication-create-peering.md)
+## <a name="next-steps"></a>下一步
+* [建立磁碟區複寫](cross-region-replication-create-peering.md)
 * [顯示複寫關聯性的健全狀態](cross-region-replication-display-health-status.md)
 * [管理災害復原](cross-region-replication-manage-disaster-recovery.md)
 * [磁片區複寫計量](azure-netapp-files-metrics.md#replication)
-* [刪除磁片區複製或磁片區](cross-region-replication-delete.md)
+* [刪除磁碟區複寫或磁碟區](cross-region-replication-delete.md)
 * [針對跨區域複寫進行疑難排解](troubleshoot-cross-region-replication.md)
 
 

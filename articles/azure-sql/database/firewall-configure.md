@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: bbad7dcaa1d92df4969c88e4ba86a62987509e39
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602217"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632794"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL Database 和 Azure Synapse IP 防火牆規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -101,7 +101,9 @@ ms.locfileid: "98602217"
 
 ### <a name="connections-from-inside-azure"></a>從 Azure 內部連接
 
-若要允許在 Azure 中裝載的應用程式連線到您的 SQL server，必須啟用 Azure 連接。 當來自 Azure 的應用程式嘗試連線到您的伺服器時，防火牆會驗證是否允許 Azure 連接。 您可以設定防火牆規則，並在 [**防火牆和虛擬網路**] 設定中，將 [**允許 Azure 服務和資源存取此伺服器**] 設定為 [**開啟**]，直接從 Azure 入口網站的分頁器開啟此選項。 如果不允許連接，則要求不會到達伺服器。
+若要允許在 Azure 中裝載的應用程式連線到您的 SQL server，必須啟用 Azure 連接。 若要啟用 Azure 連線，必須有一個防火牆規則，其中的 [開始] 和 [結束 IP 位址] 設定為0.0.0.0。
+
+當來自 Azure 的應用程式嘗試連線至伺服器時，防火牆會確認此防火牆規則是否存在，以檢查是否允許 Azure 連線。 您可以在 [**防火牆和虛擬網路**] 設定中，將 [**允許 Azure 服務和資源存取此伺服器**] 設定為 [**開啟**]，直接從 Azure 入口網站的 blade 開啟。 設定為 ON 時，會建立名為 **AllowAllWindowsIP** 的 IP 0.0.0.0-0.0.0.0 的輸入防火牆規則。 如果您不是使用入口網站，請使用 PowerShell 或 Azure CLI 來建立防火牆規則，並將 [開始] 和 [結束 IP 位址] 設為0.0.0.0。 
 
 > [!IMPORTANT]
 > 此選項會將防火牆設定為允許所有來自 Azure 的連線，包括來自其他客戶之訂用帳戶的連接。 如果您選取此選項，請確定您的登入和使用者權限會限制只有授權的使用者才能存取。
@@ -270,7 +272,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
   - 要求您的網際網路服務提供者輸入指派給存取伺服器之用戶端電腦的 IP 位址範圍。 將該 IP 位址範圍新增為 IP 防火牆規則。
   - 改為針對您的用戶端電腦取得靜態 IP 位址。 將 IP 位址新增為 IP 防火牆規則。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 確認您的公司網路環境允許來自計算 IP 位址範圍的輸入通訊 (包括 Azure 資料中心所使用的 SQL 範圍) 。 您可能必須將這些 IP 位址新增至允許清單。 請參閱 [Microsoft Azure DATACENTER IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。  
 - 請參閱我們的快速入門，瞭解如何 [在 Azure SQL Database 中建立單一資料庫](single-database-create-quickstart.md)。

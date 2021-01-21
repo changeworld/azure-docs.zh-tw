@@ -3,12 +3,12 @@ title: Azure 服務匯流排傳訊概觀 | Microsoft Docs
 description: 本文提供 Azure 服務匯流排的高階總覽，其為完全受控的企業整合訊息代理程式。
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: 70e9d966a14f78866d72865eed4cbb2dfd6c18dd
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
-ms.translationtype: HT
+ms.openlocfilehash: d9103557eb7b32f376ba6590bbca5f557bf32764
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755730"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632862"
 ---
 # <a name="what-is-azure-service-bus"></a>什麼是 Azure 服務匯流排？
 Microsoft Azure 服務匯流排是完全受控的企業訊息代理程式，具有訊息佇列和發佈/訂閱主題。 服務匯流排可用來將應用程式和服務彼此分離，而提供下列優點：
@@ -138,11 +138,11 @@ Microsoft Azure 服務匯流排是完全受控的企業訊息代理程式，具�
 
 完整支援的服務匯流排用戶端程式庫可透過 Azure SDK 來使用。
 
-- [適用於 .NET 的 Azure 服務匯流排](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
-- [適用於 Java 的 Azure 服務匯流排程式庫](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
+- [適用於 .NET 的 Azure 服務匯流排](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [適用於 Java 的 Azure 服務匯流排程式庫](/java/api/overview/azure/servicebus?preserve-view=true)
 - [Java JMS 2.0 的 Azure 服務匯流排提供者](how-to-use-java-message-service-20.md)
-- [適用於 JavaScript 和 TypeScript 的 Azure 服務匯流排模組](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
-- [適用於 Python 的 Azure 服務匯流排程式庫](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
+- [適用於 JavaScript 和 TypeScript 的 Azure 服務匯流排模組](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [適用於 Python 的 Azure 服務匯流排程式庫](/python/api/overview/azure/servicebus?preserve-view=true)
 
 [Azure 服務匯流排的主要通訊協定是 AMQP 1.0](service-bus-amqp-overview.md)，可從任何 AMQP 1.0 相容的通訊協定用戶端使用。 數個開放原始碼 AMQP 用戶端有範例可明確示範服務匯流排互通性。 請參閱 [AMQP 1.0 通訊協定指南](service-bus-amqp-protocol-guide.md)，以了解如何將服務匯流排的功能直接用於 AMQP 1.0 用戶端。
 

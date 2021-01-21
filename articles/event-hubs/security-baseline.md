@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3f56fc1b321396c5cc6aa93e3f47fcaafcbe4ae4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 0fbd7cda4723b62863d7d9bb0fe6aa2fac32dcd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202329"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633098"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>適用于事件中樞的 Azure 安全性基準
 
@@ -293,9 +293,9 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **指導** 方針： AZURE ACTIVE DIRECTORY (AD) 具有必須明確指派且可供查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。 
 
-如何使用 PowerShell 在 Azure AD 中取得目錄角色： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+如何使用 PowerShell 在 Azure AD 中取得目錄角色： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole
 
-如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員： https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember
 
 **Azure 資訊安全中心監視**：是
 
@@ -633,7 +633,7 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 如何使用 Azure Resource Graph 建立查詢： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-如何檢視 Azure 訂用帳戶： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+如何檢視 Azure 訂用帳戶： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
 
 了解 Azure RBAC： https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -779,7 +779,7 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 適用于事件中樞命名空間的 Azure 內建原則： https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
-如何檢視可用的 Azure 原則別名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+如何檢視可用的 Azure 原則別名： https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -820,9 +820,9 @@ Microsoft 會管理事件中樞的基礎結構，並已實行嚴格的控制，�
 
 **指導** 方針：如果針對您的事件中樞或相關資源使用自訂 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
-如何在 Azure DevOps 中儲存程式碼： https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+如何在 Azure DevOps 中儲存程式碼： https://docs.microsoft.com/azure/devops/repos/git/gitworkflow
 
-Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -986,7 +986,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
  
 
-如何在 Azure 中還原金鑰保存庫金鑰： https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+如何在 Azure 中還原金鑰保存庫金鑰： https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
 
 **Azure 資訊安全中心監視**：不適用
 

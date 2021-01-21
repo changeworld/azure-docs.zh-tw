@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: f80fbd803cbe4ae5c4ac381c8cdb2f72d0ede316
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 196f49a72932906e0a21b3c6c534c79d291a845f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86132927"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632988"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Azure 虛擬機器開機時 Windows 顯示「正在檢查檔案系統」
 
@@ -35,7 +35,10 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](boot-diagnostics.md)
 
 如果在檔案系統中發現 NTFS 錯誤，則 Windows 會在下一次重新啟動時檢查與修復磁碟的一致性。 這通常發生在虛擬機器有任何未預期的重新啟動，或如果虛擬機器關機處理序突然中斷時。
 
-## <a name="solution"></a>解決方法 
+## <a name="solution"></a>解決方案 
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 在「檢查磁碟」處理序完成時，Windows 將正常開機。 如果虛擬機器卡在「檢查磁碟」處理序，請嘗試在虛擬機器離線時執行「磁碟檢查」：
 1. 擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。

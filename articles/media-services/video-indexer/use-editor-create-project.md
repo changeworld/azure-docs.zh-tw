@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/28/2020
 ms.author: juliako
-ms.openlocfilehash: b25341fb58c1e758d807e3c7b4345fd0ab1baa53
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 07e4b05e12a5994c707a171c5736aea04a9c9723
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610415"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632921"
 ---
 # <a name="add-video-clips-to-your-projects"></a>將影片剪輯新增至專案
 
-[影片索引子](https://www.videoindexer.ai/)網站可讓您使用影片的深入見解：尋找正確的媒體內容、找出您感興趣的元件，並使用結果來建立全新的專案。 
+[影片索引子](https://www.videoindexer.ai/)網站可讓您使用影片的深入見解：尋找正確的媒體內容、找出您感興趣的元件，以及使用結果來建立全新的專案。 
 
 一旦建立之後，就可以從影片索引子轉譯和下載專案，並將其用於您自己的編輯應用程式或下游工作流程。
 

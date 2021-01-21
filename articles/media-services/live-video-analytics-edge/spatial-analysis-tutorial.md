@@ -3,12 +3,12 @@ title: 使用適用於空間分析的電腦視覺來分析即時影片 - Azure
 description: 本教學課程說明如何使用即時影片分析搭配 Azure 認知服務的電腦視覺空間分析 AI 功能，分析來自 (模擬) IP 攝影機的即時影片摘要。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
-ms.translationtype: HT
+ms.openlocfilehash: 1c6fe6e10a91034d794437f31d495b85ef086848
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060175"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632938"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>使用適用於空間分析 (預覽) 的電腦視覺來分析即時影片
 
@@ -23,7 +23,8 @@ ms.locfileid: "98060175"
 > * 監視事件。
  
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
+  > [!NOTE]
+  > 您將需要 Azure 訂用帳戶，具有建立服務主體的許可權 (**擁有者角色** 提供此) 。 如果您沒有正確的許可權，請洽詢您的帳戶管理員，授與您正確的許可權。 
 ## <a name="suggested-pre-reading"></a>建議的閱讀準備事項
 
 開始之前，請先閱讀下列文章：
@@ -136,10 +137,10 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
 1. LvaEdge 中的 `IpcMode` 和空間分析模組 createOptions 應該相同，而且設定為 [主機]。
 1. 若要讓 RTSP 模擬器正常運作，請確定您已設定磁碟區界限。 如需詳細資訊，請參閱[設定 Docker 磁碟區掛接](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts)。
 
-    1. [連線至 SMB 共用](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)，並將[範例 bulldozer 影片檔案](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)複製到本機共用。
+    1. [連線至 SMB 共用](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)，並將[範例 bulldozer 影片檔案](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)複製到本機共用。  
+        > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Mesi]  
     1. 您會看到 rtspsim 模組具有下列設定：
-        
-        ```json
+        ```
         "createOptions": {
                             "HostConfig": {
                               "Mounts": [
@@ -159,6 +160,8 @@ MediaGraphCognitiveServicesVisionExtension 節點扮演 Proxy 的角色。 其�
                             }
                           }
         ```
+        
+
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>產生和部署部署資訊清單
 
 部署資訊清單會定義要將哪些模組部署至邊緣裝置。 其也會定義這些模組的組態設定。

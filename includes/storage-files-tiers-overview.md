@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d3ba7baf79ee972ed7289a1aab93484108da70cf
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: HT
+ms.openlocfilehash: 6d06a46d2eaaad362890f1e3e44dbc746fa10898
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724219"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633497"
 ---
 Azure 檔案儲存體提供了四種不同的儲存體，分別是進階、交易最佳化、經常性存取和非經常性存取，使您可以根據案例的效能和價格需求來量身打造檔案共用：
 
@@ -22,7 +22,7 @@ Azure 檔案儲存體提供了四種不同的儲存體，分別是進階、交�
 - **經常性**：經常性檔案共用可針對一般用途的檔案共用案例 (例如小組共用) 提供儲存體最佳化。 在 HDD 支援的標準儲存體硬體上提供經常性存取檔案共用。
 - **非經常性**：非經常性檔案共用可針對線上封存儲存案例提供符合成本效益的儲存體最佳化。 在 HDD 支援的標準儲存體硬體上提供非經常性存取檔案共用。
 
-進階檔案共用以 **FileStorage 儲存體帳戶** 類型進行部署，而且僅適用於已佈建的計費模型。 如需進階檔案共用佈建計費模型的詳細資訊，請參閱[了解如何佈建進階檔案共用](../articles/storage/files/understanding-billing.md#provisioned-billing)。 標準檔案共用 (包括交易最佳化、經常性存取和非經常性存取檔案共用) 以 **一般用途版本 2 (GPv2) 儲存體帳戶** 類型進行部署，並可透過「隨用隨付」計費來取得。 經常性存取和非經常性存取檔案共用適用於所有的 Azure 公用區域和 Azure Government 區域。 交易最佳化檔案共用適用於所有 Azure 區域，包括 Azure 中國和 Azure 德國區域。
+進階檔案共用以 **FileStorage 儲存體帳戶** 類型進行部署，而且僅適用於已佈建的計費模型。 如需進階檔案共用佈建計費模型的詳細資訊，請參閱[了解如何佈建進階檔案共用](../articles/storage/files/understanding-billing.md#provisioned-model)。 標準檔案共用 (包括交易最佳化、經常性存取和非經常性存取檔案共用) 以 **一般用途版本 2 (GPv2) 儲存體帳戶** 類型進行部署，並可透過「隨用隨付」計費來取得。 經常性存取和非經常性存取檔案共用適用於所有的 Azure 公用區域和 Azure Government 區域。 交易最佳化檔案共用適用於所有 Azure 區域，包括 Azure 中國和 Azure 德國區域。
 
 為您的工作負載選取儲存層時，請考慮效能和使用需求。 如果您的工作負載需要個位數的延遲，或者您正在使用 SSD 儲存體媒體內部部署，則進階層可能是最適合的。 如果低延遲不是最重要的考慮 (例如，從 Azure 裝載了內部部署的小組共用，或使用 Azure 檔案同步在內部部署環境中進行快取)，則以成本的觀點來看，標準儲存體可能更適合。
 
