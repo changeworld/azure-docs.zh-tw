@@ -3,15 +3,15 @@ title: 適用於 MariaDB 的 Azure 資料庫的憑證輪替
 description: 瞭解即將變更的根憑證變更將會影響適用於 MariaDB 的 Azure 資料庫
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: ac7019abab1aefaee95c155e34fbc0cb551b4d94
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 66db443c4c52e4994e62a9f83f8a624319b349ab
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538427"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659881"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫的根 CA 變更變更
 
@@ -133,7 +133,7 @@ ms.locfileid: "98538427"
 
 ### <a name="7-do-i-need-to-plan-a-database-server-maintenance-downtime-for-this-change"></a>7. 我是否需要為此變更規劃資料庫伺服器維護停機時間？
 
-否。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這種變更。
+不會。 因為這裡的變更只在用戶端連接到資料庫伺服器，所以資料庫伺服器不需要維護停機時間來進行這種變更。
 
 ### <a name="8--what-if-i-cant-get-a-scheduled-downtime-for-this-change-before-february-15-2021-02152021"></a>8. 如果我無法在2021年2月15日之前，于年2月15日之前變更排程的停機時間， (02/15/2021) ？
 
@@ -187,7 +187,7 @@ ms.locfileid: "98538427"
 
 ### <a name="14-is-there-an-action-needed-if-i-already-have-the-digicertglobalrootg2-in-my-certificate-file"></a>14. 如果我的憑證檔案中已經有 DigiCertGlobalRootG2，是否需要採取動作？
 
-否。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
+不會。 如果您的憑證檔案已經有 **DigiCertGlobalRootG2**，就不需要採取任何動作。
 
 ### <a name="15-what-if-i-have-further-questions"></a>15. 如果我有其他問題，該怎麼辦？
 

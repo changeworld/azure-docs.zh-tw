@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 01/21/2021
 ms.author: memildin
-ms.openlocfilehash: 0656000a1d6449306e8afe538f846c55c79a31a2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: 6d656dbb3fb50091fc8721ba40431b37f77c4ad6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915281"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662942"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>未來 Azure 資訊安全中心的重要變更
 
@@ -31,16 +31,35 @@ ms.locfileid: "97915281"
 
 ## <a name="planned-changes"></a>規劃的變更
 
-- [「不適用」資源將在 Azure 原則評量中回報為「符合規範」](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
+- [「套用系統更新」安全性控制已被取代的兩個建議](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
+- [SQL 資料分類建議的增強功能](#enhancements-to-sql-data-classification-recommendation)
 - [已新增 35 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
-### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>「不適用」資源將在 Azure 原則評量中回報為「符合規範」
 
-**變更的預估日期：** 2021 年 1 月
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>「套用系統更新」安全性控制已被取代的兩個建議 
 
-目前，針對建議進行評估且識別為 **不適用** 的資源，在 Azure 原則中會顯示為「不符合規範」。 使用者動作無法將其狀態變更為「符合規範」。 在此規劃的變更中，為了讓人更容易理解，這些資源會回報為「符合規範」。
+**變更的預估日期：** 2021年2月
 
-唯一的影響將會出現在 Azure 原則，其中符合規範的資源數目將會增加。 並不會對 Azure 資訊安全中心的安全分數產生影響。
+下列兩項建議已排程在2021年2月淘汰：
+
+- **您的機器應重新開機以套用系統更新**。 這可能會對您的安全分數造成些許影響。
+- **監視代理程式應該安裝在您的電腦上**。 此建議僅適用于內部部署機器，而其中的一些邏輯將會轉移至另一個建議，而 **Log Analytics 代理程式健康情況問題應在您的電腦上解決**。 這可能會對您的安全分數造成些許影響。
+
+建議您檢查連續匯出和工作流程自動化設定，以查看這些建議是否包含在其中。 此外，任何可能使用這些儀表板的儀表板或其他監視工具，都應隨之更新。
+
+請在 [安全性建議參考頁面](recommendations-reference.md)中深入瞭解這些建議。
+
+
+### <a name="enhancements-to-sql-data-classification-recommendation"></a>SQL 資料分類建議的增強功能
+
+**變更的預估日期：** 2021季
+
+**您 SQL 資料庫中的建議機密資料** 的最新版本應該分類為「套用 **資料分類**」安全性控制項將被取代，並以與 Microsoft 資料分類策略更一致的新版本取代。 因此：
+
+- 建議將不再影響您的安全分數
+- 安全性控制 ( [套用資料分類] ) 將不再影響您的安全分數
+- 建議的識別碼也會變更 (目前 b0df6f56-862d-4730-8597-38c0fd4ebd59) 
+
 
 ### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>將新增 35 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍
 

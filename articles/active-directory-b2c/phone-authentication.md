@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2600ea3488c643bcf215b058425de42cd439dcff
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178937"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660262"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>使用 Azure AD B2C 中的自訂原則設定電話註冊和登入
 
@@ -39,12 +39,12 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 >
 > *&lt;插入：隱私權聲明的連結&gt;*<br/>*&lt;插入：服務條款的連結&gt;*
 
-若要新增您自己的同意資訊，請自訂下列範例，並將它包含在 LocalizedResources 中，以供自我判斷頁面的 ContentDefinition 使用，並將其顯示在 [電話註冊和登入入門套件][starter-pack-phone]) 中的 *Phone_Email_Base.xml* 檔案 (：
+若要新增您自己的同意資訊，請自訂下列範例。 將它包含在的 ContentDefinition 中，以 `LocalizedResources` 供自我判斷提示頁面使用的，以及 [電話註冊和登入入門套件][starter-pack-phone]) 中 *Phone_Email_Base.xml* 檔案的顯示控制項 (：
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
     <LocalizedStrings>
-    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard message and data rates may apply.</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
@@ -64,7 +64,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 
 ![使用者在電話註冊期間驗證程式代碼](media/phone-authentication/phone-signup-verify-code.png)
 
- 使用者會在註冊頁面上輸入任何其他所要求的資訊，例如 **顯示名稱**、 **名字** 和 **姓氏** (國家/地區與電話號碼仍會填入) 。 如果使用者想要使用不同的電話號碼，可以選擇 [ **變更號碼** ] 重新開機註冊。 完成時，使用者會選取 [ **繼續**]。
+使用者輸入在註冊頁面上要求的任何其他資訊。 例如，[ **顯示名稱**]、[ **名字**] 和 [ **姓氏** ] (國家/地區及電話號碼仍會填入) 。 如果使用者想要使用不同的電話號碼，可以選擇 [ **變更號碼** ] 重新開機註冊。 完成時，使用者會選取 [ **繼續**]。
 
 ![使用者提供其他資訊](media/phone-authentication/phone-signup-additional-info.png)
 
@@ -88,7 +88,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 設定 OTP 之前，您需要有下列資源。
 
@@ -99,8 +99,6 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>取得電話註冊 & 登入入門套件
 
 首先，更新電話註冊和登入自訂原則檔案，以搭配您的 Azure AD B2C 租使用者使用。
-
-下列步驟假設您已完成 [必要條件](#prerequisites) ，並已將 [自訂原則入門套件][starter-pack] 存放庫複製到您的本機電腦。
 
 1. 在您的「入門套件」存放庫的本機複製中尋找 [電話註冊和登入自訂原則][starter-pack-phone] 檔案，或直接下載。 XML 原則檔位於下列目錄：
 
@@ -136,9 +134,9 @@ Azure Active Directory B2C (Azure AD B2C) 中的手機註冊和登入，可讓�
 
 ## <a name="get-user-account-by-phone-number"></a>依電話號碼取得使用者帳戶
 
-使用電話號碼註冊但未提供復原電子郵件地址的使用者，會記錄在您的 Azure AD B2C 目錄中，並以其電話號碼作為其登入名稱。 如果使用者接著想要變更他們的電話號碼，您的支援人員或支援小組必須先找出他們的帳戶，然後更新他們的電話號碼。
+使用電話號碼註冊的使用者，如果沒有復原電子郵件地址，則會記錄在您的 Azure AD B2C 目錄中，並以其電話號碼作為其登入名稱。 若要變更電話號碼，您的支援人員或支援小組必須先尋找他們的帳戶，然後更新他們的電話號碼。
 
-您可以使用 [Microsoft Graph](manage-user-accounts-graph-api.md)來尋找使用者的電話號碼 (登入名稱) ：
+您可以使用 [Microsoft Graph](microsoft-graph-operations.md)來尋找使用者的電話號碼 (登入名稱) ：
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')

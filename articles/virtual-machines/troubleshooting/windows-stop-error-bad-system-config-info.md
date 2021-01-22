@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: cbfdb9a73f53e194b43010c0b2d84357aa3e2e5b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 8d501bcc745ef19d15564951b8c0f29f9e2678ab
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631980"
+ms.locfileid: "98661301"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows 停止錯誤-0x00000074 錯誤的系統組態資訊
 
@@ -34,7 +34,7 @@ ms.locfileid: "98631980"
 *如果您致電支援人員，請提供下列資訊：* 
 *停止程式碼： BAD_SYSTEM_CONFIG_INFO*
 
-  ![Windows stop code 0x00000074，也會顯示為「BAD_SYSTEM_CONFIG_INFO」。 Windows 會通知使用者其電腦已發生問題，需要重新開機。](./media/windows-stop-error-bad-system-config-info/1.png)
+  ![Windows stop code 0x00000074，也會顯示為「BAD_SYSTEM_CONFIG_INFO」。 Windows 會通知使用者其電腦已發生問題，需要重新開機。](./media/windows-stop-error-bad-system-config-info/stop-code-0x00000074.png)
 
 ## <a name="cause"></a>原因
 
@@ -56,8 +56,8 @@ ms.locfileid: "98631980"
 1. 啟用序列主控台與記憶體傾印收集。
 1. 重建 VM。
 
-> [!NOTE]
-> 遇到此錯誤時，客體作業系統 (OS) 無法運作。 您將會在離線模式中進行疑難排解以解決此問題。
+   > [!NOTE]
+   > 遇到此錯誤時，客體作業系統 (OS) 無法運作。 您將會在離線模式中進行疑難排解以解決此問題。
 
 ### <a name="create-and-access-a-repair-vm"></a>建立及存取修復 VM
 
@@ -66,8 +66,8 @@ ms.locfileid: "98631980"
 1. 使用遠端桌面連線連接到修復 VM。
 1. 複製 `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` 資料夾，並將它儲存在您狀況良好的磁碟分割或另一個安全的位置。 因為您將編輯重要的登錄檔，所以請將此資料夾備份為預防措施。 
 
-> [!NOTE]
-> `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config`如果您需要復原您對登錄所做的任何變更，請複製資料夾的複本作為備份。
+   > [!NOTE]
+   > `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config`如果您需要復原您對登錄所做的任何變更，請複製資料夾的複本作為備份。
 
 ### <a name="check-for-hive-corruption"></a>檢查 hive 損毀
 
@@ -80,7 +80,7 @@ ms.locfileid: "98631980"
 
    1. 如果 hive 無法開啟，或如果是空的，則 hive 已損毀。 如果 hive 已損毀，請 [開啟支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-     ![發生錯誤，指出登錄編輯程式無法載入 hive。](./media/windows-stop-error-bad-system-config-info/2.png)
+      ![發生錯誤，指出登錄編輯程式無法載入 hive。](./media/windows-stop-error-bad-system-config-info/cannot-load-hive-error.png)
 
    1. 如果 hive 正常開啟，則 hive 未正確關閉。 繼續進行步驟5。
 
@@ -95,7 +95,7 @@ ms.locfileid: "98631980"
 
    **啟用序列主控台**：
    
-   ```
+   ```ps
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
    ```
@@ -108,13 +108,13 @@ ms.locfileid: "98631980"
 
    **從中斷的 OS 磁碟載入登錄區：**
 
-   ```
+   ```ps
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
    ```
 
    **在 ControlSet001 上啟用：**
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -122,7 +122,7 @@ ms.locfileid: "98631980"
 
    **在 ControlSet002 上啟用：**
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -130,7 +130,7 @@ ms.locfileid: "98631980"
 
    **卸載中斷的 OS 磁碟：**
 
-   ```
+   ```ps
    REG UNLOAD HKLM\BROKENSYSTEM
    ```
    

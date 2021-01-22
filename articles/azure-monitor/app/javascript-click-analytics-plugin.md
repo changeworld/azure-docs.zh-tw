@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: 7af26be91ff129e4c968bcb131cc98290cd8d7b9
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610075"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660448"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>按一下適用于 Application Insights JavaScript SDK 的 Analytics 自動收集外掛程式
 
@@ -69,7 +69,7 @@ appInsights.loadAppInsights();
     2. 為了提高效率，外掛程式會使用這個標記做為旗標，當遇到時，它將會阻止自己進一步處理 DOM (檔物件模型) 向上。
     
     > [!CAUTION]
-    > 一旦 `parentDataTag` 使用之後，它會在整個應用程式中持續作用，而不只是您在中使用的 HTML 元素。
+    > 一旦 `parentDataTag` 使用之後，SDK 就會開始尋找整個應用程式中的父標記，而不只是您使用它的 HTML 元素。
 4. `customDataPrefix` 例如，使用者所提供的應該一律以開頭 `data-` `data-sample-` 。 在 HTML 中， `data-*` 全域屬性會形成一種稱為自訂資料屬性的屬性類別，可讓您以腳本在 HTML 與其 DOM 標記法之間交換專屬資訊。 舊版瀏覽器 (Internet Explorer，Safari) 會捨棄它不了解的屬性，除非開頭為 `data-` 。
 
     `*`在 `data-*` [XML 名稱的生產規則](https://www.w3.org/TR/REC-xml/#NT-Name)之後，可能會以任何名稱取代，但有下列限制：
@@ -101,7 +101,7 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| 名稱                      | 類型    | 預設   | 要在 HTML 中使用的預設標記 |   說明                                                                                |
+| 名稱                      | 類型    | 預設   | 要在 HTML 中使用的預設標記 |   Description                                                                                |
 |---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
 | useDefaultContentNameOrId | boolean | false     | N/A         |當特定元素未標記為預設 customDataPrefix，或使用者未提供 customDataPrefix 時，收集 contentName 的標準 HTML 屬性。 |
 | customDataPrefix          | 字串  | `data-`   | `data-*`| 自動捕捉內容名稱，以及以提供的前置詞標記的元素值。 例如， `data-*-id` `data-<yourcustomattribute>` 可以在 HTML 標籤中使用。   |
@@ -115,7 +115,7 @@ appInsights.loadAppInsights();
 
 BehaviorValidator 函式會在程式碼中自動檢查標記的行為是否符合預先定義的清單。 這可確保標記的行為與您企業所建立的分類法一致。 大部分的 Azure 監視器客戶都不需要或預期會使用這項功能，但可用於 advanced 案例。 有三個不同的 behaviorValidator 回呼函式會公開為此擴充功能的一部分。 但是，如果公開的函式無法解決您的需求，則使用者可以使用自己的回呼函式。 其目的是要攜帶您自己的行為資料結構，此外掛程式會在從資料標記中解壓縮行為時使用這個驗證程式函式。
 
-| 名稱                   | 說明                                                                        |
+| Name                   | 描述                                                                        |
 | ---------------------- | -----------------------------------------------------------------------------------|
 | BehaviorValueValidator | 如果您的行為資料結構是字串陣列，請使用此回呼函數。|
 | BehaviorMapValidator   | 如果您的行為資料結構是字典，請使用此回呼函數。       |
@@ -310,9 +310,9 @@ appInsights.loadAppInsights();
 
 [已啟用 Click Analytics 自動收集外掛程式的簡單 web 應用程式](https://go.microsoft.com/fwlink/?linkid=2152871)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 查看 GitHub 存放 [庫](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js) 和 [NPM 套件](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js) ，以取得 Click Analytics 自動收集外掛程式。
 - 使用 [使用量體驗中的事件分析](usage-segmentation.md) ，依可用的維度來分析點擊次數和配量。
-- 在 [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)的 CustomEvents 資料表中，于 [內容] 欄位底下的 [customDimensions 屬性] 中尋找 [按一下資料]
+- 在 [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query)的 CustomEvents 資料表中，于 [內容] 欄位底下的 [customDimensions 屬性] 中尋找 [按一下資料] 如需其他指引，請參閱 [範例應用程式](https://go.microsoft.com/fwlink/?linkid=2152871) 。
 - 建立活頁 [簿](../platform/workbooks-overview.md) 以建立點擊資料的自訂視覺效果。

@@ -3,17 +3,17 @@ title: 設定伺服器參數 - Azure CLI - 適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure CLI 命令列公用程式，在適用於 MariaDB 的 Azure 資料庫中設定服務參數。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4009d8047dae7bf8d9ba66566ff8797fa09a8878
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c2c9d87c153563e2c33d15eda668469674f75494
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538133"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662299"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-cli"></a>使用 Azure CLI 在適用於 MariaDB 的 Azure 資料庫中設定伺服器參數
 您可以使用 Azure CLI (Azure 命令列公用程式)，來列出、顯示和更新適用於 MariaDB 的 Azure 資料庫伺服器的設定參數。 有一部分的引擎設定會在伺服器層級公開而且可供修改。
@@ -29,7 +29,7 @@ ms.locfileid: "94538133"
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mariadb-server"></a>列出適用於 MariaDB 的 Azure 資料庫伺服器的伺服器設定參數
 若要列出伺服器中所有可修改的參數及其值，請執行 [az mariadb server configuration list](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) 命令。
 
-您可以針對資源群組 **myresourcegroup** 下的伺服器 **mydemoserver.mariadb.database.azure.com** ，列出伺服器組態參數。
+您可以針對資源群組 **myresourcegroup** 下的伺服器 **mydemoserver.mariadb.database.azure.com**，列出伺服器組態參數。
 ```azurecli-interactive
 az mariadb server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
@@ -39,7 +39,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="show-server-configuration-parameter-details"></a>顯示伺服器設定參數的詳細資料
 若要顯示有關伺服器特定設定參數的詳細資訊，請執行 [az mariadb server configuration show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) 命令。
 
-此範例會針對資源群組 **myresourcegroup** 下的伺服器 **mydemoserver.mariadb.database.azure.com** ，顯示 **slow\_query\_log** 伺服器組態參數的詳細資料。
+此範例會針對資源群組 **myresourcegroup** 下的伺服器 **mydemoserver.mariadb.database.azure.com**，顯示 **slow\_query\_log** 伺服器組態參數的詳細資料。
 ```azurecli-interactive
 az mariadb server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
@@ -57,7 +57,7 @@ az mariadb server configuration set --name slow_query_log --resource-group myres
 az mariadb server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 
-此程式碼會將 **slow\_query\_log** 設定重設為預設值 **OFF** 。 
+此程式碼會將 **slow\_query\_log** 設定重設為預設值 **OFF**。 
 
 ## <a name="setting-parameters-not-listed"></a>未列出設定參數
 如果您要更新的伺服器參數未列在 Azure 入口網站中，您可以選擇性地使用在連接層級設定參數 `init_connect` 。 這會為每個連接到伺服器的用戶端設定伺服器參數。 
@@ -93,7 +93,7 @@ SELECT name FROM mysql.time_zone_name;
 
 全域層級時區可以使用 [az mariadb server configuration set](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) 命令來設定。
 
-以下命令會將資源群組 **myresourcegroup** 下的伺服器 **mydemoserver.mariadb.database.azure.com** 的 **time\_zone** 伺服器設定參數更新為 **US/Pacific** 。
+以下命令會將資源群組 **myresourcegroup** 下的伺服器 **mydemoserver.mariadb.database.azure.com** 的 **time\_zone** 伺服器設定參數更新為 **US/Pacific**。
 
 ```azurecli-interactive
 az mariadb server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"

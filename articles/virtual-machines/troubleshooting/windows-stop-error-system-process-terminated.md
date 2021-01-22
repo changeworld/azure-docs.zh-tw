@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8af656e00c457dfa3d438f0cb104d85ccc687745
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976992"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661233"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows 停止錯誤-0xC000021A 狀態系統進程已終止
 
@@ -44,16 +44,20 @@ ms.locfileid: "91976992"
 - 用來還原硬碟的備份程式未正確還原可能已在使用中的檔案。
 - 已安裝不相容的協力廠商程式。
 
-## <a name="solution"></a>解決方法
+## <a name="solution"></a>解決方案
 
 ### <a name="collect-the-memory-dump-file"></a>收集記憶體傾印檔案
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
+
 
 若要解決這個問題，將需要分析損毀傾印。 收集損毀和連絡人支援的記憶體傾印檔案。 若要收集傾印檔案，請遵循下列步驟：
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>將 OS 磁片連結至新的修復 VM
 
 1.  使用 [VM 修復命令](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) \(部分機器翻譯\) 的步驟 1-3 準備修復 VM。
-2.  使用 **遠端桌面連線**連接到修復 VM。
+2.  使用 **遠端桌面連線** 連接到修復 VM。
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>找出傾印檔案並提交支援票證
 

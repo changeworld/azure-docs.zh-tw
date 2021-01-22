@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/04/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 1ce594d9e3ffddf781c61717ae4534f0c7bd40f8
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: beb658474e49f9b47900d8481dab0424dae8c5be
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681885"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661386"
 ---
 # <a name="windows-stop-error---0x0000007e-system-thread-exception-not-handled"></a>Windows 停止錯誤-無法處理0x0000007E 系統執行緒例外狀況
 
@@ -35,6 +35,10 @@ ms.locfileid: "94681885"
 
 ## <a name="solution"></a>解決方案
 
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
+
+
 若要解決此問題，您必須先收集損毀的記憶體傾印檔案，然後將檔案傳送給 Microsoft 支援服務。 若要收集傾印檔案，請遵循接下來兩節中的指示。
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>將 OS 磁片連結至新的修復 VM
@@ -50,7 +54,7 @@ ms.locfileid: "94681885"
 
 如需有關 NMI 呼叫的詳細資訊，請參閱 [Azure 序列主控台使用者指南中的 nmi 呼叫](./serial-console-windows.md#use-the-serial-console-for-nmi-calls) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [針對 Azure 虛擬機器開機錯誤進行疑難排解](./boot-error-troubleshoot.md)

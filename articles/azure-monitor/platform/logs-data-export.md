@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: d9ae9cae1a0a8014f007cd7c4a3d1f97f27128bb
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 4ae69ddeb46d484a64edc4ccabfa6740b36c4264
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610959"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663259"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure 監視器 (預覽中的 Log Analytics 工作區資料匯出) 
 Azure 監視器中的 Log Analytics 工作區資料匯出可讓您從 Log Analytics 工作區中選取的資料表持續將資料匯出到 Azure 儲存體帳戶，或在收集時 Azure 事件中樞。 本文提供這項功能的詳細資料，以及在工作區中設定資料匯出的步驟。
@@ -33,7 +33,7 @@ Log Analytics 工作區資料匯出會持續從 Log Analytics 工作區匯出資
 - 使用 PowerShell 腳本一次匯出到本機電腦。 請參閱 [AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)。
 
 
-## <a name="current-limitations"></a>目前的限制
+## <a name="limitations"></a>限制
 
 - 您目前可以使用 CLI 或 REST 要求來執行設定。 尚不支援 Azure 入口網站或 PowerShell。
 - ```--export-all-tables```CLI 和 REST 中的選項不受支援，將會移除。 您應該明確地提供匯出規則中的資料表清單。
@@ -554,7 +554,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 支援的資料表目前僅限於以下指定的資料表。 除非指定了限制，否則將匯出資料表中的所有資料。 這份清單會隨著加入其他資料表的支援而更新。
 
 
-| 資料表 | 限制 |
+| Table | 限制 |
 |:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |
@@ -728,6 +728,6 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 | WVDManagement | |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [從 Azure 資料總管查詢匯出的資料](azure-data-explorer-query-storage.md)。

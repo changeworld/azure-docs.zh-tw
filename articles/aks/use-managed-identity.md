@@ -4,12 +4,12 @@ description: '瞭解如何在 Azure Kubernetes Service (AKS 中使用受控識�
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: fe11170b1cdf18aacf832f4c8171bfc082339395
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e991f7313bae5aa67478043b4f9306dbc274e1e7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599613"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659983"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用受控識別
 
@@ -25,7 +25,6 @@ ms.locfileid: "98599613"
 
 ## <a name="limitations"></a>限制
 
-* 在叢集 **升級** 作業期間，受控識別暫時無法使用。
 * 不支援租使用者移動/遷移受控識別啟用的叢集。
 * 如果叢集已 `aad-pod-identity` 啟用，Node-Managed 身分識別 (NMI) pod 會修改節點的 iptables 來攔截對 Azure 實例中繼資料端點的呼叫。 這項設定表示即使 pod 不使用，對中繼資料端點所提出的任何要求都會被 NMI 攔截 `aad-pod-identity` 。 您可以設定 AzurePodIdentityException .CRD，以通知 `aad-pod-identity` 來自符合 .crd 中所定義標籤之中繼資料端點的任何要求，都應該是 proxy，而不需要在 NMI 中處理。 在 `kubernetes.azure.com/managedby: aks` _kube_ 系統命名空間中具有標籤的系統 pod，應設定 `aad-pod-identity` AzurePodIdentityException .crd 來排除。 如需詳細資訊，請參閱 [停用 aad-pod-特定 pod 或應用程式](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)的身分識別。
   若要設定例外狀況，請安裝 [mic 例外狀況 YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)。
@@ -34,20 +33,20 @@ ms.locfileid: "98599613"
 
 AKS 針對內建服務和附加元件使用了數個受控識別。
 
-| 身分識別                       | 名稱    | 使用案例 | 預設許可權 | 攜帶您自己的身分識別
+| 身分識別                       | Name    | 使用案例 | 預設許可權 | 攜帶您自己的身分識別
 |----------------------------|-----------|----------|
 | 控制平面 | 看不到 | 由 AKS 控制平面元件用來管理叢集資源，包括輸入負載平衡器、AKS 受控公用 Ip 和叢集自動調整程式作業 | 節點資源群組的參與者角色 | 支援
 | Kubelet | AKS 叢集名稱-agentpool | 使用 Azure Container Registry (ACR) 進行驗證 | NA 適用于 kubernetes v 1.15 +) 的 ( | 目前不支援
-| 附加元件 | AzureNPM | 不需要身分識別 | NA | 否
-| 附加元件 | AzureCNI 網路監視 | 不需要身分識別 | NA | 否
-| 附加元件 | azure-原則 (閘道管理員)  | 不需要身分識別 | NA | 否
-| 附加元件 | azure-原則 | 不需要身分識別 | NA | 否
-| 附加元件 | Calico | 不需要身分識別 | NA | 否
-| 附加元件 | 儀表板 | 不需要身分識別 | NA | 否
-| 附加元件 | HTTPApplicationRouting | 管理必要的網路資源 | 節點資源群組的讀取者角色，DNS 區域的參與者角色 | 否
-| 附加元件 | 輸入應用程式閘道 | 管理必要的網路資源| 節點資源群組的參與者角色 | 否
-| 附加元件 | omsagent | 用來將 AKS 計量傳送給 Azure 監視器 | 監視計量發行者角色 | 否
-| 附加元件 | Virtual-Node (ACIConnector)  | 管理 Azure 容器實例 (ACI) 所需的網路資源 | 節點資源群組的參與者角色 | 否
+| 附加元件 | AzureNPM | 不需要身分識別 | NA | No
+| 附加元件 | AzureCNI 網路監視 | 不需要身分識別 | NA | No
+| 附加元件 | azure-原則 (閘道管理員)  | 不需要身分識別 | NA | No
+| 附加元件 | azure-原則 | 不需要身分識別 | NA | No
+| 附加元件 | Calico | 不需要身分識別 | NA | No
+| 附加元件 | 儀表板 | 不需要身分識別 | NA | No
+| 附加元件 | HTTPApplicationRouting | 管理必要的網路資源 | 節點資源群組的讀取者角色，DNS 區域的參與者角色 | No
+| 附加元件 | 輸入應用程式閘道 | 管理必要的網路資源| 節點資源群組的參與者角色 | No
+| 附加元件 | omsagent | 用來將 AKS 計量傳送給 Azure 監視器 | 監視計量發行者角色 | No
+| 附加元件 | Virtual-Node (ACIConnector)  | 管理 Azure 容器實例 (ACI) 所需的網路資源 | 節點資源群組的參與者角色 | No
 | OSS 專案 | aad-pod-身分識別 | 可讓應用程式使用 Azure Active Directory (AAD 來安全地存取雲端資源)  | NA | 授與許可權的步驟 https://github.com/Azure/aad-pod-identity#role-assignment 。
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>使用受控識別建立 AKS 叢集
@@ -201,7 +200,7 @@ az aks create \
  },
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 使用 [Azure Resource Manager (ARM) 範本 ][aks-arm-template] 來建立受控識別啟用的叢集。
 
 <!-- LINKS - external -->

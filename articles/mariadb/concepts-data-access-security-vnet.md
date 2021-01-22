@@ -3,15 +3,15 @@ title: VNet 服務端點-適用於 MariaDB 的 Azure 資料庫
 description: 說明 VNet 服務端點如何針對適用於 MariaDB 的 Azure 資料庫伺服器運作。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: bd7d08e4f65612b9a76b63e8153603d043209ad3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0f90e64f2a20b6455d5a169025230b78e64287cc
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453379"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662673"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>針對適用於 MariaDB 的 Azure 資料庫使用虛擬網路服務端點和規則
 
@@ -138,7 +138,7 @@ ms.locfileid: "96453379"
 - [Azure 虛擬網路][vm-virtual-network-overview]
 - [Azure 虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 如需建立 VNet 規則的文章，請參閱：
 - [使用 Azure 入口網站建立及管理適用於 MariaDB 的 Azure 資料庫 VNet 規則](howto-manage-vnet-portal.md)
  

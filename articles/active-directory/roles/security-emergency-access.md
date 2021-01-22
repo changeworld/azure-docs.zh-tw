@@ -1,5 +1,5 @@
 ---
-title: 管理緊急存取管理員帳戶 - Azure AD | Microsoft Docs
+title: 管理緊急存取管理員帳戶-Azure AD
 description: 本文說明如何使用緊急存取帳戶，幫助防止不慎鎖定 Azure Active Directory (Azure AD) 組織。
 services: active-directory
 author: markwahl-msft
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ef8e7ed662d8c0acfc7c43112d6d7edb1cb9a94
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834433"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660642"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理緊急存取帳戶
 
@@ -60,7 +60,7 @@ ms.locfileid: "94834433"
 
 ## <a name="federation-guidance"></a>同盟指引
 
-適用於使用 AD Domain Services 和 ADFS 或類似識別提供者以建立同盟到 Azure AD 之組織的另一個選項是，設定可由該識別提供者提供其 MFA 宣告的緊急存取帳戶。  例如，緊急存取帳戶可由憑證和金鑰組 (例如儲存在智慧卡上的憑證和金鑰組) 支援。  當該使用者通過 AD 驗證時，ADFS 可以向 Azure AD 提供宣告，指出使用者已符合 MFA 需求。  即使採用這種方法，組織仍必須擁有雲端式的緊急存取帳戶，以避免無法建立同盟。 
+某些組織會使用 AD 網域服務和 ADFS 或類似的身分識別提供者，與 Azure AD 的同盟。 [應該沒有具有系統管理許可權的內部部署帳戶](../fundamentals/protect-m365-from-on-premises-attacks.md)。 在 Azure AD 外部具有系統管理許可權之帳戶的主控和或來源驗證，會在) 發生中斷或危及這些系統 (時，增加不必要的風險。
 
 ## <a name="store-account-credentials-safely"></a>安全地儲存帳戶認證
 

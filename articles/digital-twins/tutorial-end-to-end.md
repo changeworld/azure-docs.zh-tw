@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 09ce611b5bca6c04d55da95a82a8fcd7ae348db3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: 4f68eba8106a20d357fe6d3fb2baac1d1661aa1e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049211"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660533"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>教學課程：建置端對端解決方案
 
@@ -167,11 +167,13 @@ Query
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
-在 Azure Cloud Shell 中，使用下列命令，設定函式應用程式將用以參考 Azure Digital Twins 執行個體的應用程式設定。
+在 Azure Cloud Shell 中，使用下列命令，設定函式應用程式將用以參考 Azure Digital Twins 執行個體的應用程式設定。 在預留位置中填入資源的詳細資料 (請記住，您的 Azure 數位 Twins 實例 URL 是其主機名稱，之前是 *HTTPs://*) 。
 
 ```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
+
+輸出是 Azure 函式的設定清單，現在應該會包含稱為 *ADT_SERVICE_URL* 的專案。
 
 使用下列命令建立系統管理的身分識別。 記下輸出中的 *principalId* 欄位。
 

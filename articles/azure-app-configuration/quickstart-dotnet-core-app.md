@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: 1a5e756e05543d9f19775f4e2d1abcee82794f9e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: HT
+ms.openlocfilehash: 0ff80287971365b1477be319dc7a04760687f6a9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932059"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663395"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入門：使用應用程式設定建立 .NET Core 應用程式
 
@@ -104,7 +104,7 @@ ms.locfileid: "96932059"
     export ConnectionString='connection-string-of-your-app-configuration-store'
     ```
 
-    重新啟動命令提示字元，讓變更生效。 輸出環境變數的值，以驗證其設定是否正確。
+    重新啟動命令提示字元，讓變更生效。 列印環境變數的值，以驗證是否已正確設定。
 
 2. 執行下列命令來建置主控台應用程式：
 

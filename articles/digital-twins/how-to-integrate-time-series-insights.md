@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 24b4f56e5798acc4d9bd0962be7059a359958645
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573236"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661583"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>整合 Azure 數位 Twins 與 Azure 時間序列深入解析
 
@@ -65,7 +65,7 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
 4. 建立 Azure 數位 Twins [端點](concepts-route-events.md#create-an-endpoint) ，將您的事件中樞連結至您的 Azure 數位 Twins 實例。
 
     ```azurecli-interactive
-    az dt endpoint create eventhub --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above> -n <your Azure Digital Twins instance name>
+    az dt endpoint create eventhub -n <your Azure Digital Twins instance name> --endpoint-name <name for your Event Hubs endpoint> --eventhub-resource-group <resource group name> --eventhub-namespace <Event Hubs namespace from above> --eventhub <Twins event hub name from above> --eventhub-policy <Twins auth rule from above>
     ```
 
 5. 在 Azure Digital Twins 中建立[路由](concepts-route-events.md#create-an-event-route)，以將對應項更新事件傳送至您的端點。 此路由中的篩選器只允許將對應項更新訊息傳遞至您的端點。
@@ -89,11 +89,16 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
 
 如需使用事件中樞搭配 Azure Functions 的詳細資訊，請參閱 [*Azure Functions 的 Azure 事件中樞觸發程式*](../azure-functions/functions-bindings-event-hubs-trigger.md)。
 
-在您已發佈的函式應用程式中，以下列程式碼取代函式程式碼。
+在您已發佈的函式應用程式中，使用下列程式碼新增名為 **ProcessDTUpdatetoTSI** 的新函式。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/updateTSI.cs":::
 
-接著，此函式會將它所建立的 JSON 物件傳送至第二個事件中樞，而您將連接到時間序列深入解析。
+>[!NOTE]
+>您可能需要使用 `dotnet add package` 命令或 Visual Studio NuGet 套件管理員，將套件新增至您的專案。
+
+接下來， **發佈** 新的 Azure 函數。 如需如何執行此作業的指示，請參閱作法 [*：設定 Azure 函式來處理資料*](how-to-create-azure-function.md#publish-the-function-app-to-azure)。
+
+在此之前，此函式會將它所建立的 JSON 物件傳送至第二個事件中樞，而您將連接到時間序列深入解析。 您將在下一節建立該事件中樞。
 
 稍後，您也會設定此函式將用來連線到您自己的事件中樞的某些環境變數。
 
@@ -130,7 +135,7 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <Twins event hub name from earlier> --name <Twins auth rule from earlier>
     ```
 
-2. 使用您取得的連接字串結果，在您的函數應用程式中建立包含連接字串的應用程式設定：
+2. 使用結果中的 *primaryConnectionString* 值，在包含您的連接字串的函式應用程式中建立應用程式設定：
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-Twins=<Twins event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -152,15 +157,15 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>建立及連接時間序列深入解析執行個體
 
-接下來，您將設定時間序列深入解析實例，以接收第二個事件中樞的資料。 請遵循下列步驟，如需此程式的詳細資訊，請參閱 [*教學課程：設定 Azure 時間序列深入解析 GEN2 PAYG 環境*](../time-series-insights/tutorials-set-up-tsi-environment.md)。
+接下來，您將設定時間序列深入解析實例，以接收第二個 (TSI) 事件中樞的資料。 請遵循下列步驟，如需此程式的詳細資訊，請參閱 [*教學課程：設定 Azure 時間序列深入解析 GEN2 PAYG 環境*](../time-series-insights/tutorials-set-up-tsi-environment.md)。
 
-1. 在 Azure 入口網站中，開始建立時間序列深入解析資源。 
+1. 在 Azure 入口網站中，開始建立時間序列深入解析環境。 
     1. 選取 **Gen2 (L1)** 定價層。
     2. 您將需要為此環境選擇 **時間序列識別碼** 。 您的時間序列識別碼最多可以有三個值，您將在時間序列深入解析中用來搜尋資料。 在本教學課程中，您可以使用 **$dtId**。 在 [*選擇時間序列識別碼的最佳做法中，*](../time-series-insights/how-to-select-tsid.md)深入瞭解如何選取識別碼值。
     
         :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="時間序列深入解析環境的建立入口網站 UX。已選取 Gen2 (L1) 定價層，且時間序列識別碼屬性名稱為 $dtId" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
 
-2. 選取 **[下一步：事件來源]** ，然後選取上述的事件中樞資訊。 您也需要建立新的事件中樞取用者群組。
+2. 選取 **[下一步：事件來源]** ，然後選取稍早的 TSI 事件中樞資訊。 您也需要建立新的事件中樞取用者群組。
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/event-source-twins.png" alt-text="時間序列深入解析環境事件來源的建立入口網站 UX。您正在使用上述的事件中樞資訊來建立事件來源。您也會建立新的取用者群組。" lightbox="media/how-to-integrate-time-series-insights/event-source-twins.png":::
 
@@ -174,7 +179,7 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
 
 現在，資料應該流入您的時間序列深入解析實例，並準備好進行分析。 請遵循下列步驟來探索即將推出的資料。
 
-1. 在 [Azure 入口網站](https://portal.azure.com) 中開啟您的時間序列深入解析實例 (您可以在入口網站的搜尋列中搜尋您的實例名稱) 。 造訪執行個體概觀中所顯示的「時間序列深入解析總管 URL」。
+1. 在 [Azure 入口網站](https://portal.azure.com) 中開啟您的時間序列深入解析環境 (您可以在入口網站的搜尋列中搜尋您的環境名稱) 。 造訪執行個體概觀中所顯示的「時間序列深入解析總管 URL」。
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/view-environment.png" alt-text="在時間序列深入解析環境的 [總覽] 索引標籤中，選取時間序列深入解析 explorer URL":::
 
@@ -190,7 +195,7 @@ Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end
     
     :::image type="content" source="media/how-to-integrate-time-series-insights/day-data.png" alt-text="每個對應項的溫度資料會以不同色彩的三個平行線繪製。":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 預設會在時間序列深入解析中將數位 twins 儲存為一般階層，但是可以使用模型資訊和組織的多層級階層進行擴充。 若要深入瞭解此程式，請參閱： 
 

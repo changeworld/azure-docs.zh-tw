@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fea8d93121fcb5622f86257febcc7d834b444098
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178801"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661148"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>將使用者遷移至 Azure AD B2C
 
-從另一個識別提供者遷移至 Azure Active Directory B2C (Azure AD B2C) 可能也需要遷移現有的使用者帳戶。 這裡會討論兩個遷移方法， *預先遷移* 和 *流暢的遷移*。 無論使用哪一種方法，您都必須撰寫使用 [MICROSOFT GRAPH API](manage-user-accounts-graph-api.md) 的應用程式或腳本，以在 Azure AD B2C 中建立使用者帳戶。
+從另一個識別提供者遷移至 Azure Active Directory B2C (Azure AD B2C) 可能也需要遷移現有的使用者帳戶。 這裡會討論兩個遷移方法， *預先遷移* 和 *流暢的遷移*。 無論使用哪一種方法，您都必須撰寫使用 [MICROSOFT GRAPH API](microsoft-graph-operations.md) 的應用程式或腳本，以在 Azure AD B2C 中建立使用者帳戶。
 
 ## <a name="pre-migration"></a>預先遷移
 
@@ -34,7 +34,7 @@ ms.locfileid: "98178801"
 - 您可以存取使用者的純文字認證 (其使用者名稱和密碼) 。
 - 認證會經過加密，但您可以將它們解密。
 
-如需以程式設計方式建立使用者帳戶的詳細資訊，請參閱 [使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶](manage-user-accounts-graph-api.md)。
+如需以程式設計方式建立使用者帳戶的詳細資訊，請參閱 [使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶](microsoft-graph-operations.md)。
 
 ## <a name="seamless-migration"></a>無縫遷移
 

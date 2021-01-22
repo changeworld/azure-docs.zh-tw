@@ -1,14 +1,14 @@
 ---
 title: 管理已啟用 Azure Arc 的伺服器代理程式
 description: 本文說明在啟用 Azure Arc 的伺服器連線的機器代理程式生命週期期間，您通常會執行的不同管理工作。
-ms.date: 12/21/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724369"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662121"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和維護 Connected Machine 代理程式
 
@@ -34,7 +34,74 @@ ms.locfileid: "97724369"
 
     * 使用 [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) 或 [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource)。 供 `ResourceType` 參數使用 `Microsoft.HybridCompute/machines` 。
 
-3. 從電腦或伺服器卸載代理程式。 請依照下面的步驟執行。
+3. 依照下列步驟，從電腦或伺服器[卸載代理程式](#remove-the-agent)。
+
+## <a name="renaming-a-machine"></a>重新命名電腦
+
+當您將連線到已啟用 Azure Arc 之伺服器的 Linux 或 Windows 電腦名稱稱變更時，因為 Azure 中的資源名稱是固定的，所以無法自動辨識新的名稱。 如同其他 Azure 資源，您必須刪除資源並重新建立，才能使用新的名稱。
+
+針對已啟用 Arc 的伺服器，在您重新命名電腦之前，必須先移除 VM 擴充功能，然後再繼續進行。
+
+> [!NOTE]
+> 雖然安裝的擴充功能會繼續執行，並在完成此程式後執行其正常操作，但您將無法管理它們。 如果您嘗試在電腦上重新部署擴充功能，您可能會遇到無法預期的行為。
+
+> [!WARNING]
+> 建議您避免重新命名電腦的電腦名稱稱，並且只在絕對必要時才執行此程式。
+
+下列步驟摘要說明電腦重新命名程式。
+
+1. 使用 [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) 或使用 [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed)，在電腦上審核安裝的 VM 擴充功能，並記下其設定。
+
+2. 使用 PowerShell、Azure CLI 或從 Azure 入口網站移除 VM 擴充功能。
+
+    > [!NOTE]
+    > 如果您使用 Azure 原則來賓設定原則部署適用於 VM 的 Azure 監視器 (insights) 代理程式或 Log Analytics 代理程式，則代理程式會在下一次 [評估週期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) 之後，以及在已重新命名的電腦註冊已啟用 Arc 的伺服器之後重新部署。
+
+3. 使用 PowerShell、Azure CLI，或從入口網站中斷電腦與已啟用 Arc 的伺服器的連線。
+
+4. 重新命名電腦。
+
+5. 使用 `Azcmagent` 工具，在 Azure 中註冊並建立新的資源，以將電腦連線到已啟用 Arc 的伺服器。
+
+6. 部署先前安裝在目的電腦上的 VM 擴充功能。
+
+使用下列步驟來完成這項工作。
+
+1. 使用[Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension)或使用[Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension)，從[Azure 入口網站](manage-vm-extensions-portal.md#uninstall-extension)移除安裝的 VM 擴充功能。
+
+2. 您可以使用下列其中一種方法，將電腦與 Azure Arc 中斷連線。將電腦從已啟用 Arc 的伺服器中斷連線時，不會移除連線的機器代理程式，因此您不需要在此程式中移除代理程式。 部署至機器的任何 VM 擴充功能在此程式期間都會繼續運作。
+
+    # <a name="azure-portal"></a>[Azure 入口網站](#tab/azure-portal)
+
+    1. 在瀏覽器中，移至 [Azure 入口網站](https://portal.azure.com)。
+    1. 在入口網站中，流覽至 [ **伺服器-Azure Arc** ]，然後從清單中選取您的混合式電腦。
+    1. 從選取的已啟用 Arc 的伺服器中，選取頂端列中的 [ **刪除** ]，以刪除 Azure 中的資源。
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    ```azurecli
+    az resource delete \
+      --resource-group ExampleResourceGroup \
+      --name ExampleArcMachine \
+      --resource-type "Microsoft.HybridCompute/machines"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+    ```powershell
+    Remove-AzResource `
+     -ResourceGroupName ExampleResourceGroup `
+     -ResourceName ExampleArcMachine `
+     -ResourceType Microsoft.HybridCompute/machines
+    ```
+
+3. 重新命名電腦的電腦名稱稱。
+
+### <a name="after-renaming-operation"></a>重新命名作業之後
+
+重新命名電腦之後，必須使用已啟用 Arc 的伺服器重新註冊已連線的機器代理程式。 `azcmagent`使用[Connect](#connect)參數執行工具，完成此步驟。
+
+將最初部署至電腦的 VM 延伸模組，從已啟用 Arc 的伺服器重新部署。 如果您使用 Azure 原則來賓設定原則來部署適用於 VM 的 Azure 監視器 (insights) 代理程式或 Log Analytics 代理程式，則代理程式會在下一次 [評估週期](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)之後重新部署。
 
 ## <a name="upgrading-agent"></a>升級代理程式
 

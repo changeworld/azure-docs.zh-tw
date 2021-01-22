@@ -3,15 +3,15 @@ title: Advanced 威脅防護-適用於 MariaDB 的 Azure 資料庫
 description: 「進階威脅防護」會偵測出暗示對資料庫有潛在安全性威脅的異常資料庫活動。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 018ba33271f8a3a81c3b7109607334b076d8609c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 98eacad1b8a10be175846401eaa733c888f765e1
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95977021"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661614"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>適用於 MariaDB 的 Azure 資料庫 Advanced 威脅防護
 
@@ -40,7 +40,7 @@ ms.locfileid: "95977021"
 - **從可能有害的應用程式存取**：使用可能有害的應用程式用存取資料庫時，會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測使用常見攻擊工具的攻擊。
 - **暴力密碼破解適用於 MariaDB 的 Azure 資料庫認證**：當有異常大量的失敗登入具有不同的認證時，就會觸發此警示。 在某些情況下，警示會偵測到執行中的滲透測試。 在其他情況下，警示則是偵測暴力攻擊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入了解 [Azure 資訊安全中心](../security-center/security-center-introduction.md)
 * 如需定價的詳細資訊，請參閱 [適用於 MariaDB 的 Azure 資料庫定價頁面](https://azure.microsoft.com/pricing/details/mariadb/) 

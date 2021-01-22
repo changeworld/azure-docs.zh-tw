@@ -10,12 +10,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: f3af2b7839465f886d1edba01eb9988419761dac
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 71e38059aceb7da63f3545610b9acfe48c5d3150
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630890"
+ms.locfileid: "98663208"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device-preview"></a>快速入門：將您的第一個 IoT Edge 模組部署至 Windows 裝置 (Preview) 
 
@@ -108,58 +108,69 @@ IoT Edge 裝置：
 ![圖表-在裝置上啟動 IoT Edge 執行時間](./media/quickstart/start-runtime.png)
 
 1. [下載 Windows Admin Center](https://aka.ms/WACDownloadEFLOW)。
-2. 依照安裝精靈的指示，在您的裝置上設定 Windows Admin Center。
-3. 一旦您進入 Windows Admin Center，請在畫面右上方選取 **設定齒輪圖示**  
-4. 從 [設定] 功能表的 [閘道] 底下，選取 [**擴充** 功能]
-5. 從 **可用的擴充** 功能清單中選取 **Azure IoT Edge**
-6. **安裝** 延伸模組
 
-7. 安裝延伸模組之後，請在畫面的左上角選取 **Windows Admin Center** ，以流覽至主要儀表板頁面。
+1. 依照安裝精靈的指示，在您的裝置上設定 Windows Admin Center。
 
-8. 您會看到本機主機連接，代表您執行 Windows Admin Center 的電腦。
+1. 一旦您進入 Windows Admin Center，請在畫面右上方選取 **設定齒輪圖示**
+
+1. 從 [設定] 功能表的 [閘道] 底下，選取 [**擴充** 功能]
+
+1. 選取 [ **摘要** ] 索引標籤，然後選取 [ **新增**]。
+
+1. https://aka.ms/wac-insiders-feed在文字方塊中輸入，然後選取 [**加入**]。
+
+1. 新增摘要之後，請流覽至 [可用的 **擴充** 功能] 索引標籤。更新擴充功能清單可能需要一些時間。
+
+1. 從 **可用的擴充** 功能清單中選取 **Azure IoT Edge**
+
+1. **安裝** 延伸模組
+
+1. 安裝延伸模組之後，請在畫面的左上角選取 **Windows Admin Center** ，以流覽至主要儀表板頁面。
+
+1. 您會看到本機主機連接，代表您執行 Windows Admin Center 的電腦。
 
    :::image type="content" source="media/quickstart/windows-admin-center-start-page.png" alt-text="螢幕擷取畫面-Windows 系統管理員起始頁面":::
 
-9. 選取 [新增]  。
+1. 選取 [新增]  。
 
    :::image type="content" source="media/quickstart/windows-admin-center-start-page-add.png" alt-text="螢幕擷取畫面-Windows 系統管理員起始頁新增按鈕":::
 
-10. 找出 Azure IoT Edge 磚，然後選取 [ **建立新** 的]。 這將會啟動安裝精靈。
+1. 找出 Azure IoT Edge 磚，然後選取 [ **建立新** 的]。 這將會啟動安裝精靈。
 
     :::image type="content" source="media/quickstart/select-tile-screen.png" alt-text="螢幕擷取畫面-Windows 磚上的 Linux Azure IoT Edge":::
 
-11. 繼續執行安裝精靈以接受 EULA，然後選擇 **[下一步]**
+1. 繼續執行安裝精靈以接受 EULA，然後選擇 **[下一步]**
 
     :::image type="content" source="media/quickstart/wizard-welcome-screen.png" alt-text="螢幕擷取畫面-歡迎使用 Wizard":::
 
-12. 選擇 **選用的診斷資料** 來提供擴充的診斷資料，以協助 Microsoft 監視和維護服務品質，然後按 **[下一步：部署]**
+1. 選擇 **選用的診斷資料** 來提供擴充的診斷資料，以協助 Microsoft 監視和維護服務品質，然後按 **[下一步：部署]**
 
     :::image type="content" source="media/quickstart/diagnostic-data-screen.png" alt-text="螢幕擷取畫面-診斷資料":::
 
-13. 在 [ **選取目標裝置** ] 畫面上，選取所需的目標裝置以驗證其是否符合最低需求。 在本快速入門中，我們要將 IoT Edge 安裝在本機裝置上，因此請選擇 localhost 連線。 確認後，選擇 **[下一步]** 以繼續
+1. 在 [ **選取目標裝置** ] 畫面上，選取所需的目標裝置以驗證其是否符合最低需求。 在本快速入門中，我們要將 IoT Edge 安裝在本機裝置上，因此請選擇 localhost 連線。 確認後，選擇 **[下一步]** 以繼續
 
     :::image type="content" source="media/quickstart/wizard-select-target-device-screen.png" alt-text="螢幕擷取畫面-選取目標裝置":::
 
-14. 選擇 **[下一步]** 接受預設設定。
+1. 選擇 **[下一步]** 接受預設設定。
 
-15. 部署畫面會顯示下載套件、安裝套件、設定主機和最後設定 Linux VM 的流程。  成功的部署看起來會如下所示：
+1. 部署畫面會顯示下載套件、安裝套件、設定主機和最後設定 Linux VM 的流程。  成功的部署看起來會如下所示：
 
     :::image type="content" source="media/quickstart/wizard-deploy-success-screen.png" alt-text="螢幕擷取畫面-Wizard 部署成功":::
 
-16. 按一下 **[下一步]：連接** 以繼續進行最後一個步驟，以從您的 IoT 中樞實例布建您的 Azure IoT Edge 裝置及其裝置識別碼。
+1. 按一下 **[下一步]：連接** 以繼續進行最後一個步驟，以從您的 IoT 中樞實例布建您的 Azure IoT Edge 裝置及其裝置識別碼。
 
-17. 在 Azure IoT 中樞中複製您裝置的連接字串，並將它貼到 [裝置連接字串] 欄位中。 然後選擇 **[使用選取的方法** 布建]。
+1. 在 Azure IoT 中樞中複製您裝置的連接字串，並將它貼到 [裝置連接字串] 欄位中。 然後選擇 **[使用選取的方法** 布建]。
 
     > [!NOTE]
     > 請參閱上一節中的步驟3： [註冊 IoT Edge 的裝置](#register-an-iot-edge-device)，以取得您的連接字串。
 
     :::image type="content" source="media/quickstart/wizard-provision.png" alt-text="螢幕擷取畫面-提供嚮導布建":::
 
-18. 布建完成後，請選取 **[完成]** 以完成，並返回 Windows Admin Center 開始畫面。 您現在應該能夠看到您的裝置列為 IoT Edge 裝置。
+1. 布建完成後，請選取 **[完成]** 以完成，並返回 Windows Admin Center 開始畫面。 您現在應該能夠看到您的裝置列為 IoT Edge 裝置。
 
     :::image type="content" source="media/quickstart/windows-admin-center-device-screen.png" alt-text="螢幕擷取畫面-Windows Admin Center Azure IoT Edge 裝置":::
 
-19. 選取您的 Azure IoT Edge 裝置以查看其儀表板。 您應該會看到 Azure IoT 中樞中的裝置對應項的工作負載已部署。 **IoT Edge 模組清單** 應該會顯示一個模組執行中 **、edgeAgent**，而且 **IoT Edge 狀態** 應該會顯示作用中的 (執行中的 **)**。
+1. 選取您的 Azure IoT Edge 裝置以查看其儀表板。 您應該會看到 Azure IoT 中樞中的裝置對應項的工作負載已部署。 **IoT Edge 模組清單** 應該會顯示一個模組執行中 **、edgeAgent**，而且 **IoT Edge 狀態** 應該會顯示作用中的 (執行中的 **)**。
 
 IoT Edge 裝置現已設定完成。 並已準備好執行雲端部署的模組。
 

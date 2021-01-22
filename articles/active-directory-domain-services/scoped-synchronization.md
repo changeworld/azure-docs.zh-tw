@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 01/20/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e65b47b2a1fd71c69ecb350f60df1fedff66b74
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 34692f5e563e4931a27ea59db84d9c88f27817da
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618904"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660893"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>使用 Azure 入口網站設定從 Azure AD 到 Azure Active Directory Domain Services 的限域同步處理
 
@@ -43,15 +43,14 @@ ms.locfileid: "96618904"
 
 根據預設，Azure AD 目錄中的所有使用者和群組都會同步至受控網域。 如果只有少數使用者需要存取受控網域，您只能同步處理這些使用者帳戶。 此範圍的同步處理是以群組為基礎。 當您設定以群組為基礎的限域同步處理時，只會將屬於您所指定群組的使用者帳戶同步至受控網域。 嵌套群組不會進行同步處理，只會同步處理您選取的特定群組。
 
-當您建立受控網域或部署之後，您可以變更同步處理範圍。 您現在也可以在現有的受控網域上變更同步處理的範圍，而不需要重新建立。
+您可以在建立受控網域之前或之後變更同步處理範圍。 同步處理的範圍是由具有應用程式識別碼2565bd9d-da50-47d4-8b85-4c97f669dc36 的服務主體所定義。 若要避免範圍遺失，請勿刪除或變更服務主體。 如果不小心刪除，則無法復原同步處理範圍。 
+
+如果您變更同步處理範圍，請記住下列注意事項：
+
+- 進行完整的同步處理。
+- 受控網域中不再需要的物件會被刪除。 系統會在受控網域中建立新物件。
 
 若要深入瞭解同步處理常式，請參閱 [瞭解 Azure AD Domain Services 中的同步][concepts-sync]處理。
-
-> [!WARNING]
-> 變更同步處理的範圍會導致受控網域重新同步處理所有資料。 您必須考量下列事項：
->
->  * 當您變更受控網域的同步處理範圍時，會進行完整重新同步處理。
->  * 受控網域中不再需要的物件會被刪除。 系統會在受控網域中建立新物件。
 
 ## <a name="enable-scoped-synchronization"></a>啟用限域同步處理
 
@@ -87,7 +86,7 @@ ms.locfileid: "96618904"
 
 變更同步處理的範圍會導致受控網域重新同步處理所有資料。 受控網域中不再需要的物件會被刪除，而重新同步處理可能需要一些時間才能完成。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解同步處理常式，請參閱 [瞭解 Azure AD Domain Services 中的同步][concepts-sync]處理。
 

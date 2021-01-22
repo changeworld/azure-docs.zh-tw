@@ -3,21 +3,21 @@ title: Private Link-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解如何從 Azure 入口網站設定適用於 MariaDB 的 Azure 資料庫的 private link
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 79b3c3f8eca2fa4442a7845ca4aa3921d0302453
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 127a1c83525c4a9c457f551c05045a63a3c4347a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005039"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659619"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>使用入口網站建立和管理適用於 MariaDB 的 Azure 資料庫的 Private Link
 
 私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。  在本文中，您將瞭解如何使用 Azure 入口網站來建立 Azure 虛擬網路中的 VM，以及具有 Azure 私人端點的適用於 MariaDB 的 Azure 資料庫伺服器。
 
-如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始進行。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
 > 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MariaDB 的 Azure 資料庫伺服器。 確定資料庫伺服器是在其中一個定價層。
@@ -41,7 +41,7 @@ ms.locfileid: "96005039"
     | 位址空間 | 輸入 *10.1.0.0/16*。 |
     | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
-    | Location | 選取 [西歐]。|
+    | 位置 | 選取 [西歐]。|
     | 子網路 - 名稱 | 輸入 *>mysubnet*。 |
     | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
     |||
@@ -166,7 +166,7 @@ ms.locfileid: "96005039"
     | 虛擬網路| 選取 [MyVirtualNetwork]。 |
     | 子網路 | 選取 [mySubnet] **。 |
     |**私人 DNS 整合**||
-    |與私人 DNS 區域整合 |選取 [是]。 |
+    |與私人 DNS 區域整合 |選取 [是]  。 |
     |私人 DNS 區域 |選取 *(新增) privatelink.mariadb.database.azure.com* |
     |||
 
@@ -245,11 +245,11 @@ ms.locfileid: "96005039"
 ## <a name="clean-up-resources"></a>清除資源
 當您完成使用私人端點、適用于 mariadb 伺服器和 VM 時，請刪除資源群組及其包含的所有資源：
 
-1.  *myResourceGroup*   在入口網站頂端的 [**搜尋**] 方塊中輸入 myResourceGroup，然後  *myResourceGroup*   從搜尋結果中選取 [myResourceGroup]。
+1.  **   在入口網站頂端的 [**搜尋**] 方塊中輸入 myResourceGroup，然後  **   從搜尋結果中選取 [myResourceGroup]。
 2. 選取 [刪除資源群組]。
 3. 輸入 **資源組名類型的** myResourceGroup，然後選取 [ **刪除**]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在此操作說明中，您已在虛擬網路、適用於 MariaDB 的 Azure 資料庫和私人端點上建立 VM 以進行私人存取。 您已從網際網路連線到其中一個 VM，並使用 Private Link 安全地與適用于 mariadb 伺服器通訊。 若要深入瞭解私人端點，請參閱 [什麼是 Azure 私人端點](../private-link/private-endpoint-overview.md)。
 

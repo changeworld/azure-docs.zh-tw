@@ -3,15 +3,15 @@ title: 防火牆規則-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解如何使用防火牆規則來啟用適用於 MariaDB 的 Azure 資料庫 server 的連接。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: 452ef4787812dbdf88eb541cf5a164f2888dddcc
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2a200f25a42bc10b2e986fb710d1e7bc27a48880
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905429"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662554"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>適用於 MariaDB 的 Azure 資料庫伺服器防火牆規則
 防火牆會防止對您資料庫伺服器的所有存取，直到您指定哪些電腦擁有權限。 此防火牆會根據每一個要求的來源 IP 位址來授與伺服器存取權。
@@ -74,7 +74,7 @@ ms.locfileid: "96905429"
 
 * **IPv6 格式無法使用防火牆規則：** 防火牆規則必須是 IPv4 格式。 如果您指定 IPv6 格式的防火牆規則，則會顯示驗證錯誤。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - [使用 Azure 入口網站建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則](./howto-manage-firewall-portal.md)
 - [使用 Azure CLI 建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則](./howto-manage-firewall-cli.md)
 - [適用於 MariaDB 的 Azure 資料庫中的 VNet 服務端點](./concepts-data-access-security-vnet.md)

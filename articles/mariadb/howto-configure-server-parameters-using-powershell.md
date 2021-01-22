@@ -3,17 +3,17 @@ title: 設定伺服器參數-Azure PowerShell-適用於 MariaDB 的 Azure 資料
 description: 本文說明如何使用 PowerShell 在適用於 MariaDB 的 Azure 資料庫中設定服務參數。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 10/1/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ace6306bec4c79cbce0a1572360db1acd2cea97
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 891cb5c6e570269d0414e7b7cece760af143927f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538218"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662452"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-powershell"></a>使用 PowerShell 在適用於 MariaDB 的 Azure 資料庫中設定伺服器參數
 
@@ -53,7 +53,7 @@ Get-AzMariaDbConfiguration -ResourceGroupName myresourcegroup -ServerName mydemo
 
 若要顯示有關伺服器特定設定參數的詳細資料，請執行 `Get-AzMariaDbConfiguration` Cmdlet 並指定 **Name** 參數。
 
-此範例顯示 [資源群組 **myresourcegroup** ] 下的 [伺服器 **mydemoserver** ] **慢速 \_ 查詢 \_ 記錄** 伺服器設定參數的詳細資料。
+此範例顯示 [資源群組 **myresourcegroup**] 下的 [伺服器 **mydemoserver** ]**慢速 \_ 查詢 \_ 記錄** 伺服器設定參數的詳細資料。
 
 ```azurepowershell-interactive
 Get-AzMariaDbConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -63,13 +63,13 @@ Get-AzMariaDbConfiguration -Name slow_query_log -ResourceGroupName myresourcegro
 
 您也可以修改特定伺服器設定參數的值，以更新適用於 MariaDB 伺服器引擎的基礎設定值。 若要更新設定，請使用 `Update-AzMariaDbConfiguration` Cmdlet。
 
-更新 [資源群組 **myresourcegroup** ] 下 [伺服器 **mydemoserver** ] 的 **慢速 \_ 查詢 \_ 記錄** 伺服器設定參數。
+更新 [資源群組 **myresourcegroup**] 下 [伺服器 **mydemoserver** ] 的 **慢速 \_ 查詢 \_ 記錄** 伺服器設定參數。
 
 ```azurepowershell-interactive
 Update-AzMariaDbConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver -Value On
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [使用 PowerShell 在適用於 MariaDB 的 Azure 資料庫伺服器中自動成長儲存體](howto-auto-grow-storage-powershell.md)。

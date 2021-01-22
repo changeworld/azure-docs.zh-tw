@@ -3,15 +3,15 @@ title: 使用保留容量預付計算-適用於 MariaDB 的 Azure 資料庫
 description: 預付具有保留容量的適用於 MariaDB 的 Azure 資料庫計算資源
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 462ba0ccbd5d7e7048c2c7fcb9c5bece04adaebe
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 0acdf09da081ee179fb4edc8f2608068fc081dee
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600891"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661758"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>預付具有保留容量的適用於 MariaDB 的 Azure 資料庫計算資源
 

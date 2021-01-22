@@ -3,15 +3,15 @@ title: 備份和還原-適用於 MariaDB 的 Azure 資料庫
 description: 了解自動備份及還原您適用於 MariaDB 的 Azure 資料庫伺服器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: 68605a22dd0d0b2b716b148399c8406a1ea8d89e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1d5fc158d2e37223e048c4106206ddba4602fabb
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541737"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659932"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中備份與還原
 
@@ -69,7 +69,7 @@ ms.locfileid: "94541737"
 有兩種類型的還原可使用：
 
 - **時間點還原** 適用于備份冗余選項，並且會在與您的源伺服器相同的區域中建立新的伺服器，並使用完整和交易記錄備份的組合。
-- 只有當您將伺服器設定為異地多餘的儲存體，並可讓您將伺服器還原至採用最近建立之備份的不同區域時，才可使用 **異地還原** 。
+- 只有當您將伺服器設定為異地多餘的儲存體，並可讓您將伺服器還原至採用最近建立之備份的不同區域時，才可使用 **異地還原**。
 
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 
@@ -106,7 +106,7 @@ ms.locfileid: "94541737"
 - 確定有適當的登入和資料庫層級權限
 - 依適當情況設定警示
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要深入了解商務持續性，請參閱 [商務持續性概觀](concepts-business-continuity.md)。
 - 若要使用 Azure 入口網站還原到某個時間點，請參閱 [使用 Azure 入口網站將伺服器還原至某個時間點](howto-restore-server-portal.md)。

@@ -1,5 +1,5 @@
 ---
-title: 電話號碼的 SMS 登入使用者體驗 (預覽) - Azure AD
+title: 電話號碼的 SMS 登入使用者體驗-Azure AD
 description: 深入了解新的或現有電話號碼的 SMS 登入使用者體驗
 services: active-directory
 author: curtand
@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 04/14/2020
+ms.date: 01/21/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a50f2032a978a552205d1bba602249f34f0478a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536880"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661582"
 ---
-# <a name="use-your-phone-number-as-a-user-name-preview"></a>使用您的電話號碼做為使用者名稱 (預覽)
+# <a name="use-your-phone-number-as-a-user-name"></a>使用您的電話號碼作為使用者名稱
 
 註冊裝置可讓您的手機存取貴組織的服務，而不允許貴組織存取您的手機。 如果您是系統管理員，可以在[設定及啟用 SMS 型驗證的使用者](../authentication/howto-authentication-sms-signin.md)中找到詳細資訊。
 
@@ -36,7 +36,7 @@ ms.locfileid: "91536880"
 1. 您會看到提示指出「SMS 已驗證。 已成功註冊您的手機。」
 
 > [!Important]
-> 由於預覽版中的已知問題，在短時間內，新增電話號碼不會註冊 SMS 登入的號碼。 您必須使用已新增的號碼登入，然後遵循提示來註冊 SMS 登入的號碼。
+> 由於已知的問題，在短時間內新增電話號碼不會註冊 SMS 登入的號碼。 您必須使用已新增的號碼登入，然後遵循提示來註冊 SMS 登入的號碼。
 
 ### <a name="when-the-phone-number-is-in-use"></a>當電話號碼有人使用時
 

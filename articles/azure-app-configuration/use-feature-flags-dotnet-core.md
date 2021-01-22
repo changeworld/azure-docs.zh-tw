@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
-ms.translationtype: HT
+ms.openlocfilehash: 1794d5b15c724008d95cfc59b16960b7ae6a0783
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929186"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661564"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教學課程：在 ASP.NET Core 應用程式中使用功能旗標
 
@@ -37,7 +37,6 @@ ms.locfileid: "96929186"
 ## <a name="set-up-feature-management"></a>設定功能管理
 
 新增 `Microsoft.FeatureManagement.AspNetCore` 和 `Microsoft.FeatureManagement` NuGet 套件的參考，以利用 .NET Core 功能管理員。
-    
 .NET Core 功能管理員 `IFeatureManager` 會從架構的原生組態系統取得功能旗標。 因此，您可以使用 .NET Core 所支援的組態來源 (包括本機 appsettings.json  檔或環境變數)，來定義應用程式的功能旗標。 `IFeatureManager` 會仰賴 .NET Core 相依性插入。 您可以使用標準慣例來註冊功能管理服務：
 
 ```csharp
@@ -109,7 +108,7 @@ public class Startup
 2. 開啟 *Startup.cs* 並更新 `Configure` 方法，以新增名為 `UseAzureAppConfiguration` 的內建中介軟體。 此中介軟體可讓功能旗標值依週期性間隔重新整理，同時讓 ASP.NET Core Web 應用程式繼續接收要求。
 
    ```csharp
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
        app.UseAzureAppConfiguration();
        app.UseMvc();
@@ -189,6 +188,8 @@ if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 在 ASP.NET Core MVC 中，您可以透過相依性插入來存取功能管理員 `IFeatureManager`：
 
 ```csharp
+using Microsoft.FeatureManagement;
+
 public class HomeController : Controller
 {
     private readonly IFeatureManager _featureManager;

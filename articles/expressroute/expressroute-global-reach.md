@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/18/2020
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: e3f9105037c049a53f1b7b99da96dd857070fcc7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50679e11697a4227af69b8568c5f3cd23fe26cbe
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987608"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662792"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute 是將內部部署網路連線到 Microsoft 雲端的私用和具彈性的方式。 您可以從您的私人資料中心或公司網路存取許多 Microsoft 雲端服務（例如 Azure 和 Microsoft 365）。 例如，您在舊金山分公司的 ExpressRoute 線路可能在美國矽谷，而另一家倫敦分公司的 ExpressRoute 線路則位於同一座城市。 這兩個分公司都具有對美國西部和英國南部的 Azure 資源的高速連線能力。 不過，分公司無法彼此直接連接及傳送資料。 換句話說，10.0.1.0/24 可以將資料傳送至 10.0.3.0/24 和 10.0.4.0/24 網路，但不能傳送至 10.0.2.0/24 網路。
@@ -47,12 +47,13 @@ ExpressRoute Global Reach 是設計來補充您服務提供者的 WAN 實作，�
 * 紐西蘭
 * 挪威
 * 新加坡
+* 南非 (僅限約翰尼斯堡) 
 * 瑞典
 * 瑞士
 * 英國
 * 美國
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 觀看 [全球接觸的常見問題](expressroute-faqs.md#globalreach)。
 - 瞭解如何 [實現全球接觸](expressroute-howto-set-global-reach.md)。
 - 瞭解如何將 [ExpressRoute 線路連結至您的虛擬網路](expressroute-howto-linkvnet-arm.md)。

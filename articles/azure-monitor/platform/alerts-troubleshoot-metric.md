@@ -4,14 +4,14 @@ description: Azure 監視器計量警示和可能解決方案的常見問題。
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/11/2021
+ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070723"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661792"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -24,7 +24,8 @@ ms.locfileid: "98070723"
 如果您認為計量警示應已引發但未引發，而且在 Azure 入口網站中找不到，請嘗試下列步驟：
 
 1. 設定 **-檢查** 計量警示規則設定，以確定其已正確設定：
-    - 檢查 **匯總類型**、 **匯總細微性 (期間)**，以及 **臨界值** 或 **敏感度** 是否已如預期般設定
+    - 檢查是否已如預期般設定 **匯總類型** 和 **匯總細微性 (期間)** 。 匯總 **類型** 可決定如何匯總計量值 (深入瞭解 [) ，](./metrics-aggregation-explained.md#aggregation-types)而匯總 **細微性 (期間)** 控制每次執行警示規則時，評估匯總度量值的頻率。
+    -  檢查是否已如預期般設定 **臨界值** 或 **敏感度** 。
     - 若為使用動態閾值的警示規則，請檢查是否已設定 [advanced] 設定，因為 **違規次數** 可能會篩選警示，並 **忽略資料，才** 會影響閾值的計算方式。
 
        > [!NOTE] 
@@ -283,6 +284,6 @@ ms.locfileid: "98070723"
 
 當下限的值為負值時，這表示它的合理是根據度量的異常行為，達到零值。 您可以考慮選擇較高的敏感度或較大的 *匯總細微性 (期間)* 來使模型較不敏感，或使用 [ *略過資料* ] 選項，從用來建立模型的歷程記錄資料中排除最近的 irregulaity。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需有關警示和通知的一般疑難排解資訊，請參閱 [Azure 監視器警示中的疑難排解問題](alerts-troubleshoot.md)。

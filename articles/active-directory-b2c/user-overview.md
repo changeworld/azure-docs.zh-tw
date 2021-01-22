@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a8e08d0045d0520241341cc08fb800468ed6897
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c3e6c1d6bfa83ef238ef38b25b189510cf142a38
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928608"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661080"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的使用者帳戶概觀
 
@@ -38,7 +38,7 @@ ms.locfileid: "96928608"
 
 - **名稱** 和 **使用者名稱** - **名稱** 屬性包含使用者的姓名。 **使用者名稱** 是使用者為了登入所輸入的識別碼。 使用者名稱包括完整網域。 使用者名稱的網域名稱部分必須是初始預設網域名稱「your-domain.onmicrosoft.com」，或是已驗證的非同盟[自訂網域](../active-directory/fundamentals/add-custom-domain.md)名稱，例如 contoso.com。
 - **設定檔** - 帳戶會使用使用者資料設定檔來進行設定。 您可以輸入名字、姓氏、職稱和部門名稱。 您可以在建立帳戶之後編輯設定檔。
-- **群組** - 您可以使用群組來執行管理工作，例如將授權或權限一次指派給數個使用者或裝置。 您可以將新的帳戶放到租用戶中的現有[群組](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+- **群組** -使用群組來執行管理工作，例如將授權或許可權一次指派給許多使用者或裝置。 您可以將新的帳戶放到租用戶中的現有[群組](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 - **目錄角色** - 您需要指定使用者帳戶所具有的租用戶資源存取權層級。 可用的權限層級如下：
 
     - **使用者** - 使用者可存取受指派的資源，但無法管理多數租用戶資源。
@@ -70,7 +70,7 @@ ms.locfileid: "96928608"
 
 您可以邀請外部使用者成為租用戶的來賓使用者。 將來賓使用者邀請到 Azure AD B2C 租用戶的典型案例是為了分擔管理責任。 如需使用來賓帳戶的範例，請參閱 [Azure Active Directory B2B 共同作業使用者的屬性](../active-directory/external-identities/user-properties.md)。
 
-將來賓使用者邀請到租用戶時，您必須提供收件者的電子郵件地址和描述邀請詳情的訊息。 邀請連結會將使用者帶往同意頁面，該頁面已選取 [開始使用] 按鈕，並已接受權限檢閱。 如果收件匣並未連結至電子郵件地址，使用者可以使用受邀認證移至 Microsoft 頁面以瀏覽至同意頁面。 接著，系統會強制使用者兌換邀請，方式和在電子郵件中按一下連結時相同。 例如：`https://myapps.microsoft.com/B2CTENANTNAME`。
+將來賓使用者邀請到租用戶時，您必須提供收件者的電子郵件地址和描述邀請詳情的訊息。 邀請連結會將使用者帶到同意頁面。 如果收件匣並未連結至電子郵件地址，使用者可以使用受邀認證移至 Microsoft 頁面以瀏覽至同意頁面。 接著，系統會強制使用者兌換邀請，方式和在電子郵件中按一下連結時相同。 例如：`https://myapps.microsoft.com/B2CTENANTNAME`。
 
 您也可以使用 [Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) 邀請來賓使用者。
 
@@ -78,7 +78,7 @@ ms.locfileid: "96928608"
 
 取用者使用者可以登入 Azure AD B2C 所保護的應用程式，但無法存取 Azure 資源，例如 Azure 入口網站。 取用者使用者可以使用本機帳戶或同盟帳戶，例如 Facebook 或 Twitter。 取用者帳戶的建立方式是使用 [註冊或登入使用者流程](user-flow-overview.md)、使用 Microsoft Graph API，或使用 Azure 入口網站。
 
-您可以指定使用自訂使用者屬性建立取用者使用者帳戶時所要收集的資料。 如需詳細資訊，請參閱[在 Azure Active Directory B2C 中定義自訂屬性](user-flow-custom-attributes.md)。
+您可以指定建立取用者使用者帳戶時所收集的資料。 如需詳細資訊，請參閱 [新增使用者屬性和自訂使用者輸入](configure-user-input.md)。
 
 如需管理取用者帳戶的詳細資訊，請參閱 [使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶](manage-user-accounts-graph-api.md)。
 

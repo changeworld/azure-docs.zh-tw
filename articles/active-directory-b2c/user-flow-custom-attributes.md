@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9759c1109c7be279520fa187bd3366bcac505d46
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5552c93c1c65f08f70ed8929d81126035aa2a357
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503738"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661199"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中定義自訂屬性
 
@@ -31,9 +31,9 @@ ms.locfileid: "97503738"
 * 身分識別提供者必須保存唯一的使用者識別碼 **uniqueUserGUID**。
 * 自訂使用者旅程圖必須保存使用者的狀態（ **>migrationstatus**），以供其他邏輯運作。
 
-Azure AD B2C 可讓您擴充儲存在每個使用者帳戶上的屬性集。 您也可以使用 [Microsoft Graph API](manage-user-accounts-graph-api.md) 來讀取和寫入這些屬性。
+Azure AD B2C 可讓您擴充儲存在每個使用者帳戶上的屬性集。 您也可以使用 [Microsoft Graph API](microsoft-graph-operations.md) 來讀取和寫入這些屬性。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -56,11 +56,11 @@ Azure AD B2C 可讓您擴充儲存在每個使用者帳戶上的屬性集。 您
 
 1. 在 Azure AD B2C 租用戶中，選取 [使用者流程]。
 1. 選取您的原則 (例如「B2C_1_SignupSignin」) 以開啟之。
-1. 選取 [使用者屬性]，然後選取自訂屬性 (例如 "ShoeSize")。 按一下 **[儲存]** 。
+1. 選取 [使用者屬性]，然後選取自訂屬性 (例如 "ShoeSize")。 按一下 [儲存]。
 1. 選取 [應用程式宣告]，然後選取自訂屬性。
-1. 按一下 **[儲存]** 。
+1. 按一下 [儲存]。
 
-當您使用使用者流程建立新的使用者，而該使用者流程使用新建立的自訂屬性時，就可以在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)中查詢物件。 或者，您可以使用使用者流程上的「 [執行使用者流程](./tutorial-create-user-flows.md) 」功能來確認客戶體驗。 現在您應該會在註冊期間收集的屬性清單中看到 **ShoeSize** ，其亦會在傳回至您應用程式的權杖中出現。
+一旦您使用使用者流程建立新的使用者，而該使用者流程使用新建立的自訂屬性，就可以在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)中查詢物件。 或者，您可以使用使用者流程上的「 [執行使用者流程](./tutorial-create-user-flows.md) 」功能來確認客戶體驗。 現在您應該會在註冊期間收集的屬性清單中看到 **ShoeSize** ，其亦會在傳回至您應用程式的權杖中出現。
 
 ::: zone-end
 
@@ -132,10 +132,10 @@ Microsoft Graph API 支援以擴充屬性建立和更新使用者。 圖形 API 
 
 您可以在自訂原則中使用入口網站 UI 之前或之後，使用入口網站 UI 建立這些屬性。 當您在入口網站中建立屬性 **loyaltyId** 時，您必須參考它，如下所示：
 
-|名稱     |使用於 |
+|Name     |使用於 |
 |---------|---------|
 |`extension_loyaltyId`  | 自訂原則|
-|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|
+|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](microsoft-graph-operations.md)|
 
 下列範例示範如何在 Azure AD B2C 自訂原則宣告定義中使用自訂屬性。
 
@@ -168,6 +168,6 @@ Microsoft Graph API 支援以擴充屬性建立和更新使用者。 圖形 API 
 
 ::: zone-end
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 遵循如何 [使用自訂原則新增宣告和自訂使用者輸入](configure-user-input.md)的指引。 此範例會使用內建的宣告「city」。 若要使用自訂屬性，請將 ' city ' 取代為您自己的自訂屬性。

@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 9c9f5972cdd2690b86610ea585bdd82d736ed163
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 76f9fb4ed5c3b88b3a1f69e352f50079586ec336
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792135"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663327"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-sql (T-sql) 來建立和管理彈性資料庫工作 (preview) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,11 +25,11 @@ ms.locfileid: "92792135"
 
 這些範例使用 [*作業資料庫*](job-automation-overview.md#job-database)中提供的 [預存程序](#job-stored-procedures)和 [檢視](#job-views)。
 
-Transact-SQL (T-SQL) 可用來建立、設定、執行和管理作業。 目前不支援以 T-SQL 建立彈性作業代理程式，因此您必須先使用入口網站或 [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent) 建立 *彈性作業代理程式* 。
+Transact-SQL (T-SQL) 可用來建立、設定、執行和管理作業。 目前不支援以 T-SQL 建立彈性作業代理程式，因此您必須先使用入口網站或 [PowerShell](elastic-jobs-powershell-create.md#create-the-elastic-job-agent) 建立 *彈性作業代理程式*。
 
 ## <a name="create-a-credential-for-job-execution"></a>建立執行作業所需的認證
 
-認證可用來連線至執行指令碼的目標資料庫。 認證必須具有適當權限 (對於目標群組所指定的資料庫)，才能成功執行指令碼。 使用 [邏輯 SQL server](logical-servers.md) 和/或集區目標群組成員時，強烈建議您建立主要認證，以便在執行作業時，在伺服器和/或集區展開之前重新整理認證。 資料庫範圍認證會建立在作業代理程式資料庫中。 相同的認證必須用來在目標資料庫上 *建立登入* 和 *從登入建立要授與登入資料庫權限的使用者* 。
+認證可用來連線至執行指令碼的目標資料庫。 認證必須具有適當權限 (對於目標群組所指定的資料庫)，才能成功執行指令碼。 使用 [邏輯 SQL server](logical-servers.md) 和/或集區目標群組成員時，強烈建議您建立主要認證，以便在執行作業時，在伺服器和/或集區展開之前重新整理認證。 資料庫範圍認證會建立在作業代理程式資料庫中。 相同的認證必須用來在目標資料庫上 *建立登入* 和 *從登入建立要授與登入資料庫權限的使用者*。
 
 ```sql
 --Connect to the job database specified when creating the job agent
@@ -63,8 +63,8 @@ EXEC jobs.sp_add_target_group 'ServerGroup1'
 EXEC jobs.sp_add_target_group_member
 'ServerGroup1',
 @target_type = 'SqlServer',
-@refresh_credential_name='mymastercred', --credential required to refresh the databases in a server
-@server_name='server1.database.windows.net'
+@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
+@server_name = 'server1.database.windows.net'
 
 --View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name='ServerGroup1';
@@ -87,16 +87,16 @@ GO
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in a server
-@server_name=N'London.database.windows.net'
+@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
+@server_name = N'London.database.windows.net'
 GO
 
 -- Add a server target member
 EXEC [jobs].sp_add_target_group_member
 @target_group_name = N'ServerGroup',
 @target_type = N'SqlServer',
-@refresh_credential_name=N'mymastercred', --credential required to refresh the databases in a server
-@server_name='server2.database.windows.net'
+@refresh_credential_name = N'mymastercred', --credential required to refresh the databases in a server
+@server_name = 'server2.database.windows.net'
 GO
 
 --Exclude a database target member from the server target group
@@ -105,7 +105,7 @@ EXEC [jobs].sp_add_target_group_member
 @membership_type = N'Exclude',
 @target_type = N'SqlDatabase',
 @server_name = N'server1.database.windows.net',
-@database_name =N'MappingDB'
+@database_name = N'MappingDB'
 GO
 
 --View the recently created target group and target group members
@@ -128,9 +128,9 @@ EXEC jobs.sp_add_target_group 'PoolGroup'
 EXEC jobs.sp_add_target_group_member
 'PoolGroup',
 @target_type = 'SqlElasticPool',
-@refresh_credential_name='mymastercred', --credential required to refresh the databases in a server
-@server_name='server1.database.windows.net',
-@elastic_pool_name='ElasticPool-1'
+@refresh_credential_name = 'mymastercred', --credential required to refresh the databases in a server
+@server_name = 'server1.database.windows.net',
+@elastic_pool_name = 'ElasticPool-1'
 
 -- View the recently created target group and target group members
 SELECT * FROM jobs.target_groups WHERE target_group_name = N'PoolGroup';
@@ -146,14 +146,14 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name = N'PoolGroup';
 --Connect to the job database specified when creating the job agent
 
 --Add job for create table
-EXEC jobs.sp_add_job @job_name='CreateTableTest', @description='Create Table Test'
+EXEC jobs.sp_add_job @job_name = 'CreateTableTest', @description = 'Create Table Test'
 
 -- Add job step for create table
-EXEC jobs.sp_add_jobstep @job_name='CreateTableTest',
-@command=N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
+EXEC jobs.sp_add_jobstep @job_name = 'CreateTableTest',
+@command = N'IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = object_id(''Test''))
 CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
-@credential_name='myjobcred',
-@target_group_name='PoolGroup'
+@credential_name = 'myjobcred',
+@target_group_name = 'PoolGroup'
 ```
 
 ## <a name="data-collection-using-built-in-parameters"></a>使用內建參數的資料收集
@@ -169,7 +169,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 - $(job_execution_create_time)
 - $(target_group_name)
 
-例如，若要將執行相同作業所產生的所有結果分為同一群組，請使用 *$(job_execution_id)* ，如下列命令所示：
+例如，若要將執行相同作業所產生的所有結果分為同一群組，請使用 *$(job_execution_id)*，如下列命令所示：
 
 ```sql
 @command= N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());'
@@ -198,15 +198,15 @@ EXEC jobs.sp_add_job @job_name ='ResultsJob', @description='Collection Performan
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
-@job_name='ResultsJob',
-@command= N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
-@credential_name='myjobcred',
-@target_group_name='PoolGroup',
-@output_type='SqlDatabase',
-@output_credential_name='myjobcred',
-@output_server_name='server1.database.windows.net',
-@output_database_name='<resultsdb>',
-@output_table_name='<resutlstable>'
+@job_name = 'ResultsJob',
+@command = N' SELECT DB_NAME() DatabaseName, $(job_execution_id) AS job_execution_id, * FROM sys.dm_db_resource_stats WHERE end_time > DATEADD(mi, -20, GETDATE());',
+@credential_name = 'myjobcred',
+@target_group_name = 'PoolGroup',
+@output_type = 'SqlDatabase',
+@output_credential_name = 'myjobcred',
+@output_server_name = 'server1.database.windows.net',
+@output_database_name = '<resultsdb>',
+@output_table_name = '<resutlstable>'
 Create a job to monitor pool performance
 --Connect to the job database specified when creating the job agent
 
@@ -215,17 +215,17 @@ EXEC jobs.sp_add_target_group 'MasterGroup'
 
 -- Add a server target member
 EXEC jobs.sp_add_target_group_member
-@target_group_name='MasterGroup',
-@target_type='SqlDatabase',
-@server_name='server1.database.windows.net',
-@database_name='master'
+@target_group_name = 'MasterGroup',
+@target_type = 'SqlDatabase',
+@server_name = 'server1.database.windows.net',
+@database_name = 'master'
 
 -- Add a job to collect perf results
 EXEC jobs.sp_add_job
-@job_name='ResultsPoolsJob',
-@description='Demo: Collection Performance data from all pools',
-@schedule_interval_type='Minutes',
-@schedule_interval_count=15
+@job_name = 'ResultsPoolsJob',
+@description = 'Demo: Collection Performance data from all pools',
+@schedule_interval_type = 'Minutes',
+@schedule_interval_count = 15
 
 -- Add a job step w/ schedule to collect results
 EXEC jobs.sp_add_jobstep
@@ -246,13 +246,13 @@ SELECT elastic_pool_name , end_time, elastic_pool_dtu_limit, avg_cpu_percent, av
         avg_storage_percent, elastic_pool_storage_limit_mb FROM sys.elastic_pool_resource_stats
         WHERE end_time > @poolStartTime and end_time <= @poolEndTime;
 '),
-@credential_name='myjobcred',
-@target_group_name='MasterGroup',
-@output_type='SqlDatabase',
-@output_credential_name='myjobcred',
-@output_server_name='server1.database.windows.net',
-@output_database_name='resultsdb',
-@output_table_name='resutlstable'
+@credential_name = 'myjobcred',
+@target_group_name = 'MasterGroup',
+@output_type = 'SqlDatabase',
+@output_credential_name = 'myjobcred',
+@output_server_name = 'server1.database.windows.net',
+@output_database_name = 'resultsdb',
+@output_table_name = 'resutlstable'
 ```
 
 ## <a name="view-job-definitions"></a>檢視作業定義
@@ -306,10 +306,10 @@ exec jobs.sp_start_job 'CreateTableTest', 1
 --Connect to the job database specified when creating the job agent
 
 EXEC jobs.sp_update_job
-@job_name='ResultsJob',
+@job_name = 'ResultsJob',
 @enabled=1,
-@schedule_interval_type='Minutes',
-@schedule_interval_count=15
+@schedule_interval_type = 'Minutes',
+@schedule_interval_count = 15
 ```
 
 ## <a name="monitor-job-execution-status"></a>監視作業執行狀態
@@ -433,7 +433,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 已啟用 [ **\@ 啟用 =** ]  
 指定是否啟用作業的排程。 Enabled 是位元，預設值是 0 (停用)。 如果為 0，則不會啟用作業，且不會依據排程執行作業；但您可以手動執行作業。 如果為 1，則會依據排程執行作業，且您可以手動執行作業。
 
-[ **\@ schedule_interval_type =** ] schedule_interval_type  
+[ **\@ schedule_interval_type =**] schedule_interval_type  
 此值表示要執行作業的時機。 schedule_interval_type 是 nvarchar(50)，預設值為 [單次]，而其值可以是下列其中之一：
 
 - 「單次」、
@@ -1220,7 +1220,7 @@ GO
 
 顯示作業執行歷程記錄。
 
-|欄名 | 資料類型 | 描述 |
+|資料行名稱 | 資料類型 | 描述 |
 |---------|---------|---------|
 |**job_execution_id** | UNIQUEIDENTIFIER | 作業執行的執行個體唯一識別碼。
 |**job_name** | nvarchar(128) | 作業的名稱。
@@ -1247,7 +1247,7 @@ GO
 
 顯示所有作業。
 
-|欄名 | 資料類型 |描述|
+|資料行名稱 | 資料類型 |描述|
 |------|------|-------|
 |**job_name** | nvarchar(128) | 作業的名稱。|
 |**job_id**| UNIQUEIDENTIFIER |作業的唯一識別碼。|
@@ -1264,7 +1264,7 @@ GO
 
 顯示所有作業版本。
 
-|欄名|資料類型|描述|
+|資料行名稱|資料類型|描述|
 |------|------|-------|
 |**job_name**|nvarchar(128)|作業的名稱。|
 |**job_id**|UNIQUEIDENTIFIER|作業的唯一識別碼。|
@@ -1276,7 +1276,7 @@ GO
 
 顯示每項作業的目前版本中包含的所有步驟。
 
-|欄名|資料類型|描述|
+|資料行名稱|資料類型|描述|
 |------|------|-------|
 |**job_name**|nvarchar(128)|作業的名稱。|
 |**job_id**|UNIQUEIDENTIFIER|作業的唯一識別碼。|
@@ -1316,7 +1316,7 @@ GO
 
 列出所有目標群組。
 
-|欄名|資料類型|描述|
+|資料行名稱|資料類型|描述|
 |-----|-----|-----|
 |**target_group_name**|nvarchar(128)|要刪除的目標群組 (資料庫集合) 的名稱。
 |**target_group_id**|UNIQUEIDENTIFIER|目標群組的唯一識別碼。
@@ -1327,7 +1327,7 @@ GO
 
 顯示所有目標群組的所有成員。
 
-|欄名|資料類型|描述|
+|資料行名稱|資料類型|描述|
 |-----|-----|-----|
 |**target_group_name**|nvarchar(128|要刪除的目標群組 (資料庫集合) 的名稱。 |
 |**target_group_id**|UNIQUEIDENTIFIER|目標群組的唯一識別碼。|
@@ -1346,7 +1346,7 @@ GO
 
 - ![主題連結圖示](/sql/database-engine/configure-windows/media/topic-link.gif "主題連結圖示") [Transact-SQL 語法慣例](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [使用 PowerShell 建立及管理彈性作業](elastic-jobs-powershell-create.md)
 - [授權與權限](/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)

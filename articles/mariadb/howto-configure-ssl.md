@@ -3,16 +3,16 @@ title: 設定 SSL-適用於 MariaDB 的 Azure 資料庫
 description: 有關如何適當設定「適用於 MariaDB 的 Azure 資料庫」及相關聯應用程式以適當使用 SSL 連線的指示
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f541e2302bc1f1de132de76e0638f9843d7003f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bda9c54fa344d44da01fba75d3f814d8f311fd48
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592476"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662265"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MariaDB 的 Azure 資料庫
 適用於 MariaDB 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將適用於 MariaDB 的 Azure 資料庫伺服器連線至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
@@ -73,7 +73,7 @@ az mariadb server update --resource-group myresource --name mydemoserver --ssl-e
 ```sql
 status
 ```
-藉由檢閱輸出確認連線已加密，顯示結果應類似： **SSL: Cipher in use is AES256-SHA** 
+藉由檢閱輸出確認連線已加密，顯示結果應類似：**SSL: Cipher in use is AES256-SHA** 
 
 ## <a name="sample-code"></a>範例程式碼
 若要從您的應用程式透過 SSL 對「適用於 MariaDB 的 Azure 資料庫」建立安全連線，請參閱下列程式碼範例：

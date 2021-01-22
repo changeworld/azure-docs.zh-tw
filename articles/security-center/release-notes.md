@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/17/2021
+ms.date: 01/21/2021
 ms.author: memildin
-ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
-ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
-ms.translationtype: HT
+ms.openlocfilehash: d171e3a7f1f0d63d0a5d130c6e19b246bf0cd795
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98541373"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661809"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -35,27 +35,17 @@ ms.locfileid: "98541373"
 
 12 月的更新包括：
 
+- [適用于內部部署和多雲端電腦的弱點評定已正式推出 (GA) ](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
+- [安全分數 API 已正式推出 (GA) ](#secure-score-api-is-released-for-general-availability-ga)
 - [已篩選建議清單的 CSV 匯出](#csv-export-of-filtered-list-of-recommendations)
-- [內部部署和多雲端電腦的弱點評量已正式推出](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+- [「不適用」資源現在在 Azure 原則評量中回報為「符合規範」](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 
 
-### <a name="csv-export-of-filtered-list-of-recommendations"></a>已篩選建議清單的 CSV 匯出 
-
-在 2020 年 11 月，我們在建議頁面中新增了篩選器 ([建議清單現在包含篩選器](#recommendations-list-now-includes-filters))。 在 12 月，我們擴充了這些篩選器 ([建議頁面具有環境、嚴重性和可用回應](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses))。 
-
-根據此公告，我們會變更 [下載至 CSV] 按鈕的行為，讓 CSV 僅匯出包含目前顯示在已篩選清單中的建議。 
-
-例如，在下圖中，您可以看到清單已篩選為兩個建議。 產生的 CSV 檔案包含受這兩個建議影響的每個資源的狀態詳細資料。   
-
-:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="將篩選的建議匯出至 CSV 檔案":::
-
-深入了解 [Azure 資訊安全中心的安全性建議](security-center-recommendations.md)。
-
-### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>內部部署和多雲端電腦的弱點評量已正式推出
+### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>適用于內部部署和多雲端電腦的弱點評定已正式推出 (GA) 
 
 我們在十月宣佈了一個預覽版，該版本使用 [適用於伺服器的 Azure Defender](defender-for-servers-introduction.md) 整合式弱點評量掃描器 (由 Qualys 提供技術支援)，來掃描已啟用 Azure Arc 的伺服器。
 
-現已正式推出。 
+現在已正式推出 (GA) 正式運作。
 
 當您在非 Azure 機器上啟用 Azure Arc 時，資訊安全中心將可供手動且大規模地部署整合式弱點掃描器。
 
@@ -71,6 +61,36 @@ ms.locfileid: "98541373"
 [深入了解如何將整合式弱點掃描器部署到混合式機器](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
 
 [深入了解已啟用 Azure Arc 的伺服器](../azure-arc/servers/index.yml)。
+
+
+### <a name="secure-score-api-is-released-for-general-availability-ga"></a>安全分數 API 已正式推出 (GA) 
+
+您現在可以透過 [安全分數 API](/rest/api/securitycenter/securescores/)來存取您的分數。 API 方法可讓您靈活地查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用 **安全分數** API 來取得特定訂用帳戶的分數。 此外，您可以使用 **安全分數控制項** API 來列出您訂用帳戶的安全性控制項和目前分數。
+
+如需安全分數 API 搭配使用外部工具的範例，請參閱 [GitHub 社群的安全分數區域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
+
+深入了解 [Azure 資訊安全中心內的安全分數和安全性控制項](secure-score-security-controls.md)。
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>已篩選建議清單的 CSV 匯出 
+
+在 2020 年 11 月，我們在建議頁面中新增了篩選器 ([建議清單現在包含篩選器](#recommendations-list-now-includes-filters))。 在 12 月，我們擴充了這些篩選器 ([建議頁面具有環境、嚴重性和可用回應](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses))。 
+
+根據此公告，我們會變更 [下載至 CSV] 按鈕的行為，讓 CSV 僅匯出包含目前顯示在已篩選清單中的建議。 
+
+例如，在下圖中，您可以看到清單已篩選為兩個建議。 產生的 CSV 檔案包含受這兩個建議影響的每個資源的狀態詳細資料。   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="將篩選的建議匯出至 CSV 檔案":::
+
+深入了解 [Azure 資訊安全中心的安全性建議](security-center-recommendations.md)。
+
+
+### <a name="not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments"></a>「不適用」資源現在在 Azure 原則評量中回報為「符合規範」
+
+先前，針對建議進行評估且發現 **不適用** 的資源，在 Azure 原則中會顯示為「不符合規範」。 使用者動作無法將其狀態變更為「符合規範」。 這種變更會回報為「符合規範」，以改善清晰度。
+
+唯一的影響將會出現在 Azure 原則，其中符合規範的資源數目將會增加。 並不會對 Azure 資訊安全中心的安全分數產生影響。
+
 
 
 ## <a name="december-2020"></a>2020 年 12 月

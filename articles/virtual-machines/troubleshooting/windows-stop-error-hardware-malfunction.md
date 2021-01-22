@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/13/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 18622d60f3a33658fadfd28c53c93a07b4b438a9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 89faa5b29e0a972f31ad51a7354635a53176541a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488641"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661352"
 ---
 # <a name="windows-stop-error---hardware-malfunction"></a>Windows 停止錯誤 - 硬體故障
 
 本文提供的步驟可解決 Windows Server 2008 虛擬機器損毀的問題，並顯示錯誤訊息，指出發生硬體故障。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
 當您使用 [開機診斷](./boot-diagnostics.md) 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示含有下列訊息的藍色畫面：
 
@@ -48,6 +48,9 @@ ms.locfileid: "96488641"
 ## <a name="solution"></a>解決方法
 
 ### <a name="process-overview"></a>程序概觀 
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 1. 將非遮罩式插斷 (NMI) 登錄機碼 
 2. 建立和存取修復 VM 
@@ -165,7 +168,7 @@ ms.locfileid: "96488641"
 
 * 使用 [VM 修復命令的步驟 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example)\(部分機器翻譯\)重建 VM。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [針對 Azure 虛擬機器開機錯誤進行疑難排解](./boot-error-troubleshoot.md)

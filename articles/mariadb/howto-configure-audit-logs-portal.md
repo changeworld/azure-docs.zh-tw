@@ -3,15 +3,15 @@ title: 存取 audit 記錄檔-Azure 入口網站-適用於 MariaDB 的 Azure 資
 description: 本文說明如何從 Azure 入口網站設定和存取適用於 MariaDB 的 Azure 資料庫中的 audit 記錄。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: f1f3cda4ed9cdac6f6e03e88601b0a35d5c53faf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ec0791b169f667a2828087c37ea8f01fc3351bf7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021158"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663140"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>設定及存取 Azure 入口網站中的 audit 記錄
 
@@ -67,7 +67,7 @@ ms.locfileid: "96021158"
 
 1. 藉由在您設定的資料接收器中探索來存取審核記錄。 最多可能需要10分鐘的時間才會顯示記錄。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解適用於 MariaDB 的 Azure 資料庫中的[audit 記錄](concepts-audit-logs.md)
 - 瞭解如何在[Azure CLI](howto-configure-audit-logs-cli.md)中設定 audit 記錄

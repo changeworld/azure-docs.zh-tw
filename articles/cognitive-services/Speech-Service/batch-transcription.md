@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: e48fead4d4364fd84f178388dbfb9158296e687b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755764"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659966"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批次轉譯
 
@@ -30,7 +30,7 @@ ms.locfileid: "97755764"
 |    抓取已驗證訂閱的轉譯清單。    |    GET       |    speechtotext/v3.0/轉譯            |
 |    取得支援的離線轉譯地區設定清單。              |    GET       |    speechtotext/v3.0/轉譯/地區設定    |
 |    更新識別碼所識別之轉譯的可變詳細資料。    |    PATCH     |    speechtotext/v3.0/轉譯/{id}       |
-|    刪除指定的轉譯工作。                                 |    DELETE    |    speechtotext/v3.0/轉譯/{id}       |
+|    刪除指定的轉譯工作。                                 |    刪除    |    speechtotext/v3.0/轉譯/{id}       |
 |    取得指定之識別碼所識別的轉譯。                        |    GET       |    speechtotext/v3.0/轉譯/{id}       |
 |    取得指定之識別碼所識別之轉譯的結果檔。    |    GET       |    speechtotext/v3.0/轉譯/{id}/files |
 
@@ -55,7 +55,7 @@ ms.locfileid: "97755764"
 
 批次轉譯 API 支援下列格式：
 
-| [格式] | 轉碼器 | 每個樣本的位數 | 採樣速率             |
+| 格式 | 轉碼器 | 每個樣本的位數 | 採樣速率             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16 位元  | 8 kHz 或 16 kHz （mono 或身歷聲） |
 | MP3    | PCM   | 16 位元  | 8 kHz 或 16 kHz （mono 或身歷聲） |
@@ -64,7 +64,7 @@ ms.locfileid: "97755764"
 針對身歷聲音訊串流，會在轉譯期間分割左邊和右邊的通道。 正在為每個通道建立 JSON 結果檔。
 若要建立已排序的最終文字記錄，請使用每個語句所產生的時間戳記。
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 設定參數會以 JSON 形式提供。 
 
@@ -208,7 +208,8 @@ ms.locfileid: "97755764"
   ],
   "recognizedPhrases": [                // results for each phrase and each channel individually
     {
-      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"
+      "recognitionStatus": "Success",   // recognition state, e.g. "Success", "Failure"          
+      "speaker": 1,                     // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
       "channel": 0,                     // channel number of the result
       "offset": "PT0.07S",              // offset in audio of this phrase, ISO 8601 encoded duration 
       "duration": "PT1.59S",            // audio duration of this phrase, ISO 8601 encoded duration
@@ -219,7 +220,6 @@ ms.locfileid: "97755764"
       "nBest": [
         {
           "confidence": 0.898652852,    // confidence value for the recognition of the whole phrase
-          "speaker": 1,                 // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
           "lexical": "hello world",
           "itn": "hello world",
           "maskedITN": "hello world",
@@ -416,6 +416,6 @@ while (completed < 1)
 > [!NOTE]
 > 針對基準轉譯，您不需要宣告基準模型的識別碼。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [語音轉換文字 v3 API 參考](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

@@ -3,15 +3,15 @@ title: 商務持續性-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解使用適用於 MariaDB 的 Azure 資料庫 service 時， (時間點還原、資料中心中斷、異地還原) 的商務持續性。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: e164930736f7b93e56d9bd4187e72a9c8eb76202
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6439a63b74b6f627b62741c145f763dc3d9552d3
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541720"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98659847"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>瞭解適用於 MariaDB 的 Azure 資料庫中的商務持續性
 
@@ -26,7 +26,7 @@ ms.locfileid: "94541720"
 | **功能** | **基本** | **一般用途** | **記憶體最佳化** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | 從備份進行時間點還原 | 保留期間內的任何還原點 | 保留期間內的任何還原點 | 保留期間內的任何還原點 |
-| 從異地複寫備份進行異地還原 | 不受支援 | ERT < 12 小時<br/>RPO < 1 小時 | ERT < 12 小時<br/>RPO < 1 小時 |
+| 從異地複寫備份進行異地還原 | 不支援 | ERT < 12 小時<br/>RPO < 1 小時 | ERT < 12 小時<br/>RPO < 1 小時 |
 
 > [!IMPORTANT]
 > 如果您刪除伺服器，該伺服器中包含的所有資料庫也會一併刪除，且無法復原。 您無法還原已刪除的伺服器。
@@ -56,7 +56,7 @@ ms.locfileid: "94541720"
 ### <a name="where-does-azure-database-for-mariadb-store-customer-data"></a>適用於 MariaDB 的 Azure 資料庫儲存客戶資料的位置為何？
 根據預設，適用於 MariaDB 的 Azure 資料庫不會在其部署所在的區域中移動或儲存客戶資料。 不過，客戶可以選擇性地選擇啟用 [異地複寫備份](concepts-backup.md#backup-redundancy-options) ，或建立 [跨區域讀取複本](concepts-read-replicas.md#cross-region-replication) ，以便將資料儲存在另一個區域中。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 深入瞭解 [適用於 MariaDB 的 Azure 資料庫中的自動備份](concepts-backup.md)。
 - 了解如何使用 [Azure 入口網站](howto-restore-server-portal.md)或 [Azure CLI](howto-restore-server-cli.md) 來進行還原。

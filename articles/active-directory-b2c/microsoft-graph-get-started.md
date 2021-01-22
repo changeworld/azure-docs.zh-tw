@@ -1,5 +1,5 @@
 ---
-title: 使用 Microsoft Graph 管理資源
+title: 註冊 Microsoft Graph 應用程式
 titleSuffix: Azure AD B2C
 description: 藉由註冊已授與必要圖形 API 許可權的應用程式，準備使用 Microsoft Graph 來管理 Azure AD B2C 資源。
 services: B2C
@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/14/2020
+ms.date: 01/21/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 61e32f50e02e45487830c5ea7ff476a0571960f6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1886a0308f32ed53a1c9f0974715f20823e8bdd5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953996"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660347"
 ---
-# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
+# <a name="register-a-microsoft-graph-application"></a>註冊 Microsoft Graph 應用程式
 
 [Microsoft Graph][ms-graph] 可讓您管理 Azure AD B2C 租使用者內的許多資源，包括客戶使用者帳戶和自訂原則。 藉由撰寫呼叫 [MICROSOFT GRAPH API][ms-graph-api]的腳本或應用程式，您可以自動化租使用者管理工作，例如：
 
@@ -51,7 +51,7 @@ ms.locfileid: "94953996"
 1. 在 Azure 入口網站中，搜尋並選取 [Azure AD B2C]。
 1. 選取 [應用程式註冊]，然後選取 [新增註冊]。
 1. 輸入應用程式的 [名稱]。 例如， *managementapp1*。
-1. **只選取此組織目錄中的帳戶**。
+1. 選取 [僅此組織目錄中的帳戶]。
 1. 在 [ **許可權**] 底下，清除 [將 *管理員同意授與 openid 和 offline_access 許可權* ] 核取方塊。
 1. 選取 [註冊]。
 1. 記錄應用程式 **(用戶端) 識別碼** 出現在應用程式總覽頁面上。 您會在稍後的步驟中使用此值。
@@ -82,13 +82,14 @@ ms.locfileid: "94953996"
 1. 在 [ **選取** ] 文字方塊中，輸入您稍早註冊的應用程式名稱，例如 *managementapp1*。 當您的應用程式出現在搜尋結果中時，請加以選取。
 1. 選取 [新增]  。 可能需要幾分鐘的時間才能完全傳播許可權。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
+
 既然您已註冊管理應用程式，並已授與它必要的許可權，您的應用程式和服務 (例如 Azure Pipelines) 可以使用其認證和許可權來與 Microsoft Graph API 互動。 
 
 * [從 Azure AD 取得存取權杖](/graph/auth-v2-service#4-get-an-access-token)
 * [使用存取權杖來呼叫 Microsoft Graph](/graph/auth-v2-service#4-get-an-access-token)
 * [Microsoft Graph 支援的 B2C 作業](microsoft-graph-operations.md)
-* [使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶](manage-user-accounts-graph-api.md)
+* [使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶](microsoft-graph-operations.md)
 * [使用 Azure AD 報告 API 取得審核記錄](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
 
 <!-- LINKS -->

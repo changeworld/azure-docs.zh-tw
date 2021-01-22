@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
-ms.translationtype: HT
+ms.openlocfilehash: a49258208f7a5945ac71c8f17db56fccfdcd6515
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607876"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661995"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教學課程：設定 MediusFlow 來自動佈建使用者
 
@@ -155,17 +155,25 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 
 9. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步處理至 MediusFlow 的使用者屬性。 選取為 [比對] 屬性的屬性會用來比對 MediusFlow 中的使用者帳戶，以進行更新作業。 如果您選擇變更[比對目標屬性](../app-provisioning/customize-application-attributes.md)，則必須確保 MediusFlow API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
-   |屬性|類型|
-   |---|---|
-   |userName|String|
+   |屬性|類型|支援篩選|
+   |---|---|---|
+   |userName|String|&check;|
    |emails[type eq "work"].value|String|
    |name.displayName|String|
    |作用中|Boolean|
    |name.givenName|String|
    |name.familyName|String|
    |name.formatted|String|
-   |externalID|String|
+   |externalId|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
+   |urn： ietf： params： scim：架構： extension： medius：2.0： User：為 configurationfilter|String|
+   |urn： ietf： params： scim：架構： extension： medius：2.0： User： identityProvider|String|
+   |urn： ietf： params： scim：架構： extension： medius：2.0： User： nameIdentifier|String|
+   |urn： ietf： params： scim：架構： extension： medius：2.0： User： customFieldText1|String|
+   |urn： ietf： params： scim：架構： extension： medius：2.0： User： customFieldText2|String|
+   |urn： ietf： params： scim：架構： extension： medius：2.0： User： customFieldText3|String|
+   |urn： ietf： params： scim：架構： extension： medius：2.0： User： customFieldText4|String|
+   |urn： ietf： params： scim：架構： extension： medius：2.0： User： customFieldText5|String|
 
 
 10. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 群組至 MediusFlow]。
@@ -200,6 +208,10 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md)來判斷哪些使用者已佈建成功或失敗
 2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)來查看佈建週期的狀態，以及其接近完成的程度
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。
+
+## <a name="change-log"></a>變更記錄
+
+* 01/21/2021-已新增自訂延伸模組屬性 **為 configurationfilter**、 **identityProvider**、 **nameIdentifier**、 **customFieldText1**、 **customFieldText2**、 **customFieldText3**、 **customFieldText3** 和 **customFieldText5** 。
 
 ## <a name="additional-resources"></a>其他資源
 

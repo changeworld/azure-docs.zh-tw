@@ -3,17 +3,17 @@ title: 存取慢速查詢記錄-Azure CLI-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure CLI 命令列公用程式，存取適用於 MariaDB 的 Azure 資料庫中的慢速記錄。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cea1571a48afe00350dde247c3c10e222a446247
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9c8f69f00ed4314fbe8b3fd1958b52c82ce55d99
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539867"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662384"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 來設定和存取適用于 Maria 資料庫慢速查詢記錄的 Azure 資料庫
 
@@ -27,8 +27,8 @@ ms.locfileid: "94539867"
 ## <a name="configure-logging"></a>設定記錄
 您可以採取下列步驟，設定伺服器以存取 MySQL 慢速查詢記錄檔：
 1. 藉由將 **慢速 \_ 查詢 \_** 記錄參數設定為 on，開啟慢速查詢記錄。
-2. 選取要使用 **記錄 \_ 輸出** 輸出記錄檔的位置。 若要將記錄傳送至本機儲存體和 Azure 監視器診斷記錄， **請選取 [** 檔案]。 若只要將記錄傳送至 Azure 監視器記錄檔，請選取 [ **無** ]
-3. 調整其他參數，例如 **long\_query\_time** 和 **log\_slow\_admin\_statements** 。
+2. 選取要使用 **記錄 \_ 輸出** 輸出記錄檔的位置。 若要將記錄傳送至本機儲存體和 Azure 監視器診斷記錄， **請選取 [** 檔案]。 若只要將記錄傳送至 Azure 監視器記錄檔，請選取 [**無**]
+3. 調整其他參數，例如 **long\_query\_time** 和 **log\_slow\_admin\_statements**。
 
 若要了解如何透過 Azure CLI 設定這些參數的值，請參閱[如何設定伺服器參數](howto-configure-server-parameters-cli.md)。
 
@@ -51,10 +51,10 @@ az mariadb server-logs list --resource-group myresourcegroup --server mydemoserv
 ## <a name="download-logs-from-the-server"></a>從伺服器下載記錄
 如果 **log_output** 設定為 "File"，您可以使用 [az 適用于 mariadb server-logs 下載](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-download) 命令，從您的伺服器下載個別的記錄檔。
 
-使用下列範例，針對資源群組 **myresourcegroup** 下的伺服器 **mydemoserver.mariadb.database.azure.com** ，將特定的記錄檔下載至您的本機環境。
+使用下列範例，針對資源群組 **myresourcegroup** 下的伺服器 **mydemoserver.mariadb.database.azure.com**，將特定的記錄檔下載至您的本機環境。
 ```azurecli-interactive
 az mariadb server-logs download --name mysql-slow-mydemoserver-2018110800.log --resource-group myresourcegroup --server mydemoserver
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 瞭解 [適用於 MariaDB 的 Azure 資料庫中的慢速查詢記錄](concepts-server-logs.md)。

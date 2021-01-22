@@ -11,17 +11,17 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 2adca03a820d02731bca252dee99c76debc85e2e
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
-ms.translationtype: HT
+ms.openlocfilehash: 9ba9fe7ca73e874fb55c228e22b884a86de736cf
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028126"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661454"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>文字分析 API 的資料和速率限制
 <a name="data-limits"></a>
 
-請使用本文來尋找可將資料傳送至文字分析 API 的大小和速率限制。 
+請使用本文來尋找可將資料傳送至文字分析 API 的大小和速率限制。 請注意，定價不會受到資料限制或速率限制所影響。 定價取決於您文字分析資源的 [定價詳細資料](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)。
 
 ## <a name="data-limits"></a>資料限制
 
