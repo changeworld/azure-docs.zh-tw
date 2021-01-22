@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 60da61d094316b29c8fbc5454472bb898d693937
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882410"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681578"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -195,24 +195,38 @@ Translator 會偵測下列翻譯和音譯語言。
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯文 | `ar` | 阿拉伯文 `Arab` | <--> | 拉丁文 `Latn` |
 | 孟加拉文  | `bn` | 孟加拉文 `Beng` | <--> | 拉丁文 `Latn` |
+|白俄羅斯文| `be` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
+|保加利亞文| `bg` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
 | 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 拉丁文 `Latn` |
 | 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 繁體中文 `Hant`|
 | 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
 | 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 簡體中文 `Hans` |
+|希臘文| `el` | 希臘文 `Grek`  | <--> | 拉丁文 `Latn` |
 | 古吉拉特文 | `gu`  | 古吉拉特文 `Gujr` | <--> | 拉丁文 `Latn` |
 | Hebrew | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
 | Hindi | `hi` | 梵文字母 `Deva` | <--> | 拉丁文 `Latn` |
 | 日文 | `ja` | 日文 `Jpan` | <--> | 拉丁文 `Latn` |
 | 坎那達文 | `kn` | 坎那達文 `Knda` | <--> | 拉丁文 `Latn` |
+|哈薩克文| `kk` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
+|吉爾吉斯文| `ky` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
+|馬其頓文| `mk` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
 | 馬來亞拉姆文 | `ml` | 馬來亞拉姆文 `Mlym` | <--> | 拉丁文 `Latn` |
 | 馬拉地文 | `mr` | 梵文字母 `Deva` | <--> | 拉丁文 `Latn` |
+|蒙古文| `mn` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
 | 歐迪亞文 | `or` | 歐利亞文 `Orya` | <--> | 拉丁文 `Latn` |
+|波斯文| `fa` | 阿拉伯文 `Arab`  | <--> | 拉丁文 `Latn` |
 | 旁遮普文 | `pa` | 古木基文 `Guru`  | <--> | 拉丁文 `Latn`  |
+|俄文| `ru` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
 | 塞爾維亞文 (斯拉夫) | `sr-Cyrl` | 斯拉夫文 `Cyrl`  | --> | 拉丁文 `Latn` |
 | 塞爾維亞文 (拉丁) | `sr-Latn` | 拉丁文 `Latn` | --> | 斯拉夫文 `Cyrl`|
+|信德文| `sd` | 阿拉伯文 `Arab`  | <--> | 拉丁文 `Latn` |
+|塔吉克文| `tg` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
 | 坦米爾文 | `ta` | 坦米爾文 `Taml` | <--> | 拉丁文 `Latn` |
+|韃靼文| `tt` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
 | 泰盧固文 | `te` | 泰盧固文 `Telu` | <--> | 拉丁文 `Latn` |
 | 泰文 | `th` | 泰文 `Thai` | --> | 拉丁文 `Latn` |
+|烏克蘭文| `uk` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
+|烏都文| `ur` | 阿拉伯文 `Arab`  | <--> | 拉丁文 `Latn` |
 
 ### <a name="dictionary"></a>Dictionary
 
@@ -352,7 +366,7 @@ Translator 會偵測下列翻譯和音譯語言。
 ### <a name="speech-to-text"></a>語音轉文字
 將語音轉換成文字，以轉譯成您選擇的文字語言。 語音轉換文字用於語音轉換文字翻譯，或用於與語音合成搭配使用的語音轉換語音翻譯。
 
-| Language    |
+| 語言    |
 |:----------- |
 |阿拉伯文|
 |粵語 (繁體中文)|
@@ -387,7 +401,7 @@ Translator 會偵測下列翻譯和音譯語言。
 ### <a name="text-to-speech"></a>文字轉換語音
 將文字轉換成語音。 文字轉換語音是用來在搭配語音轉換文字使用時，新增聲音轉換結果的聲音輸出，或語音轉換語音翻譯的輸出。 
 
-| Language |
+| 語言 |
 |:-|
 | 阿拉伯文 |
 | 保加利亞文 |

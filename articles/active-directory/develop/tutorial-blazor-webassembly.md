@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
-ms.translationtype: HT
+ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895966"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680260"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>教學課程：從 Blazor WebAssembly 應用程式登入使用者並呼叫受保護的 API
 
@@ -26,7 +26,7 @@ ms.locfileid: "97895966"
 > * 建立新的 Blazor WebAssembly 應用程式，並設定為使用 Azure Active Directory (Azure AD) 來透過 Microsoft 身分識別平台進行[驗證和授權](authentication-vs-authorization.md)
 > * 從受保護的 Web API 擷取資料，在此案例中為 [Microsoft Graph](/graph/overview)
 
-本教學課程使用 .NET Core 3.1。 .NET 文件包含[如何使用 ASP.NET Core 5.0 保護 Blazor WebAssembly 應用程式](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api)的指示。 
+本教學課程使用 .NET Core 3.1。 .NET 文件包含[如何使用 ASP.NET Core 5.0 保護 Blazor WebAssembly 應用程式](/aspnet/core/blazor/security/webassembly/graph-api)的指示。 
 
 我們也提供 [Blazor Server 的教學課程](tutorial-blazor-server.md)。 
 
@@ -80,7 +80,7 @@ dotnet run --framework netstandard2.1
 
 [Microsoft Graph](/graph/overview) 包含可為您的使用者提供 Microsoft 365 資料存取權的 API，並支援 Microsoft 身分識別平台所發行的權杖，是非常適合用來當作範例的受保護 API。 在本節中，您會新增程式碼以呼叫 Microsoft Graph，並在應用程式的「提取資料」頁面上顯示使用者的電子郵件。
 
-本節依使用具名用戶端呼叫受保護 API 的常見方法撰寫。 相同的方法也可用於您要呼叫的其他受保護 API。 不過，如果您希望應用程式呼叫 Microsoft Graph，可以使用 Graph SDK 增添一些變化。 .NET 文件包含[如何使用 Graph SDK](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0) 的指示。
+本節依使用具名用戶端呼叫受保護 API 的常見方法撰寫。 相同的方法也可用於您要呼叫的其他受保護 API。 不過，如果您希望應用程式呼叫 Microsoft Graph，可以使用 Graph SDK 增添一些變化。 .NET 文件包含[如何使用 Graph SDK](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0) 的指示。
 
 開始之前，請先登出您的應用程式，因為您將會變更必要的權限，而目前的權杖將無法使用。 如果您還沒有這麼做，請再次執行您的應用程式並選取 [登出]，然後再更新下面的程式碼。
 

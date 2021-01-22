@@ -1,7 +1,7 @@
 ---
-title: '如何使用 SmartNoise 套件將資料隱私權保留 (預覽版) '
+title: '差異隱私權 SmartNoise (預覽版) '
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 SmartNoise 套件將差異隱私權最佳作法套用至 Azure Machine Learning 模型。
+description: 瞭解如何使用 SmartNoise 的開放原始碼程式庫，將差異隱私權最佳作法套用至 Azure Machine Learning 模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 12/21/2020
-ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 01/21/2020
+ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221930"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681399"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning (preview 中使用差異隱私權) 
 
-瞭解如何使用 SmartNoise Python 套件將差異隱私權最佳作法套用至 Azure Machine Learning 模型。
+瞭解如何使用 SmartNoise Python 開放原始碼程式庫，將差異隱私權最佳作法套用至 Azure Machine Learning 模型。
 
-差異隱私權是隱私權的金級標準定義。 遵守這項隱私權定義的系統可針對廣範圍的資料重建和重新識別攻擊提供強大的保證，包括擁有輔助資訊的敵人攻擊。 深入了解[差異隱私權如何運作](./concept-differential-privacy.md)。
+差異隱私權是隱私權的金級標準定義。 遵守這項隱私權定義的系統可針對廣範圍的資料重建和重新識別攻擊提供強大的保證，包括擁有輔助資訊的敵人攻擊。 深入瞭解 [差異隱私權的運作方式](./concept-differential-privacy.md)。
 
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -30,7 +30,7 @@ ms.locfileid: "98221930"
 - 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 - [Python 3](https://www.python.org/downloads/) \(英文\)
 
-## <a name="install-smartnoise-packages"></a>安裝 SmartNoise 套件
+## <a name="install-smartnoise-python-libraries"></a>安裝 SmartNoise Python 程式庫
 
 ### <a name="standalone-installation"></a>獨立式安裝
 
@@ -51,7 +51,7 @@ import opendp.smartnoise.sql
 
 如果匯入成功，則會安裝程式庫並備妥可供使用。
 
-### <a name="docker-image"></a>Docker 映像
+### <a name="docker-image-installation"></a>Docker 映射安裝
 
 您也可以搭配使用 SmartNoise 套件與 Docker。
 

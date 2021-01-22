@@ -9,20 +9,20 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2ebff0d86c27bcdbc11d23e18116b33b4ea838a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4ca28efce28933eed9be5cca7bd412f2d9505aa
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89300250"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679529"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>使用 PowerShell 在共用映射庫中的受控磁片或快照集建立映射
 
 如果您想要將現有的快照集或受控磁片遷移到共用映射庫，您可以直接從受控磁片或快照集建立共用映射庫映射。 測試新映射之後，您可以刪除來源受控磁片或快照集。 您也可以使用 [Azure CLI](image-version-snapshot-cli.md)，從共用映射庫中的受控磁片或快照集建立映射。
 
 映射庫中的影像有兩個元件，我們將在此範例中建立這些元件：
-- **映射定義**會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
-- **映射版本**是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
+- **映射定義** 會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
+- **映射版本** 是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
 
 
 ## <a name="before-you-begin"></a>開始之前
@@ -75,7 +75,7 @@ $source = Get-AzDisk `
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table
 ```
 
-找到正確的圖庫之後，請建立變數以供稍後使用。 此範例會取得*myResourceGroup*資源群組中名為 *>mygalleryrg*的資源庫。
+找到正確的圖庫之後，請建立變數以供稍後使用。 此範例會取得 *myResourceGroup* 資源群組中名為 *>mygalleryrg* 的資源庫。
 
 ```azurepowershell-interactive
 $gallery = Get-AzGallery `
@@ -90,7 +90,7 @@ $gallery = Get-AzGallery `
 
 進行映射定義時，請確定已有所有正確的資訊。 在此範例中，我們假設快照集或受控磁片來自使用中的 VM，但尚未進行一般化。 如果受控磁片或快照集是在執行 Windows、 [waagent](https://github.com/Azure/WALinuxAgent)或 Linux) 的 Sysprep 之後 (， `-deprovision` 請將 `-deprovision+user` 變更 `-OsState` 為 `generalized` 。 
 
-若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./windows/shared-image-galleries.md#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 在此範例中，映射定義名為 *myImageDefinition*，適用于專用的 Windows 作業系統。 若要使用 Linux OS 建立映射的定義，請使用 `-OsType Linux` 。 
 
@@ -120,7 +120,7 @@ $imageDefinition = New-AzGalleryImageDefinition `
 
 如果您想要讓映射包含資料磁片，除了 OS 磁片，請新增 `-DataDiskImage` 參數並將它設定為數據磁片快照集或受控磁片的識別碼。
 
-在此範例中，映像版本為 *1.0.0*，且它會被複寫到「美國中西部」** 和「美國中南部」** 資料中心。 選擇要複寫的目的地區域時，請記住，您也必須包含 *來源* 區域做為複寫目標。
+在此範例中，映像版本為 *1.0.0*，且它會被複寫到「美國中西部」和「美國中南部」資料中心。 選擇要複寫的目的地區域時，請記住，您也必須包含 *來源* 區域做為複寫目標。
 
 
 ```azurepowershell-interactive
@@ -156,7 +156,7 @@ $job.State
 一旦您確認新的映射版本可以正常運作，您就可以使用 [>new-azsnapshot](/powershell/module/Az.Compute/Remove-AzSnapshot) 或 [>get-azdisk](/powershell/module/az.compute/remove-azdisk)來刪除映射的來源。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 確認複寫完成之後，您就可以從 [特製化映射](vm-specialized-image-version-powershell.md)建立 VM。
 

@@ -1,15 +1,15 @@
 ---
 title: NIST SP 800-53 R4 的法規合規性詳細資料
 description: NIST SP 800-53 R4 法規合規性內建方案的詳細資料。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 7e74acf11316cb736651241388b8c975d790799a
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: 14e5e6918557f11cf2e3058c75087a646c2916ff
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98047853"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682117"
 ---
 # <a name="details-of-the-nist-sp-800-53-r4-regulatory-compliance-built-in-initiative"></a>NIST SP 800-53 R4 法規合規性內建方案的詳細資料
 

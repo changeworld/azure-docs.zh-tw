@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 547f697c4f8ffb903006e48e94086433d64225c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116070"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681331"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>快速入門：使用 COPY 陳述式大量載入資料
 
-在本快速入門中，您會使用簡單且彈性的 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，將資料大量載入至專屬的 SQL 集區，以進行高輸送量的資料內嵌。 COPY 陳述式是建議的載入公用程式，因為其可讓您透過提供下列功能，順暢且靈活地載入資料：
+在本快速入門中，您會使用簡單且彈性的 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)，將資料大量載入至專屬的 SQL 集區，以進行高輸送量的資料內嵌。 COPY 陳述式是建議的載入公用程式，因為其可讓您透過提供下列功能，順暢且靈活地載入資料：
 
 - 允許較低權限的使用者載入，無需對資料倉儲設定嚴格的控制權限
 - 只利用單一 T-SQL 陳述式，無需建立任何額外的資料庫物件

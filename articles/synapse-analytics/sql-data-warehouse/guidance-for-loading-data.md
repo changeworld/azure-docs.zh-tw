@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c91310d9d1e67dd77098ee13a87190ee6d411607
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 10e43332728ea70d27c08cf4d3dfe116c83b3f1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120099"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679799"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用專用的 SQL 集區載入資料的最佳作法
 
@@ -47,7 +47,7 @@ ms.locfileid: "98120099"
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-連接到專用的 SQL 集區，並建立使用者。 下列程式碼假設您已連接到名為 mySampleDataWarehouse 的資料庫。 它會示範如何建立名為 loader 的使用者，並為使用者提供使用 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)建立資料表和載入的許可權。 然後，它會將使用者分類為具有最大資源的 DataLoads 工作負載群組。 
+連接到專用的 SQL 集區，並建立使用者。 下列程式碼假設您已連接到名為 mySampleDataWarehouse 的資料庫。 它會示範如何建立名為 loader 的使用者，並為使用者提供使用 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)建立資料表和載入的許可權。 然後，它會將使用者分類為具有最大資源的 DataLoads 工作負載群組。 
 
 ```sql
    -- Connect to the dedicated SQL pool
@@ -79,7 +79,7 @@ ms.locfileid: "98120099"
 
 ## <a name="allowing-multiple-users-to-load-polybase"></a>允許多個使用者載入 (PolyBase) 
 
-通常需要讓多個使用者將資料載入專用的 SQL 集區。 以 [SELECT (transact-sql) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (PolyBase) 中的 CREATE TABLE 載入，需要資料庫的 CONTROL 許可權。  CONTROL 權限可控制所有結構描述的存取。
+通常需要讓多個使用者將資料載入專用的 SQL 集區。 以 [SELECT (transact-sql) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (PolyBase) 中的 CREATE TABLE 載入，需要資料庫的 CONTROL 許可權。  CONTROL 權限可控制所有結構描述的存取。
 
 您可能不希望所有的載入使用者都能控制所有結構描述的存取。 若要限制權限，請使用 DENY CONTROL 陳述式。
 
@@ -114,7 +114,7 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SqLBulkCopy API 或 bcp 時，增加批次大小
 
-使用 COPY 語句載入將會提供具有專用 SQL 集區的最高輸送量。 如果您無法使用此複製來載入，而且必須使用 [SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，您應該考慮增加批次大小，以獲得更好的輸送量。
+使用 COPY 語句載入將會提供具有專用 SQL 集區的最高輸送量。 如果您無法使用此複製來載入，而且必須使用 [SQLBULKCOPY API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，您應該考慮增加批次大小，以獲得更好的輸送量。
 
 > [!TIP]
 > 介於 100 K 到1百萬個數據列之間的批次大小是判斷最佳批次大小容量的建議基準。
@@ -130,11 +130,11 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 若要修正「錯誤」記錄，請確定您的外部資料表及外部檔案格式定義皆正確，且這些定義與您的外部資料相符。
 
-如果外部資料記錄的子集有變更，您可以使用 [CREATE EXTERNAL TABLE (transact-sql) ](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)中的拒絕選項，選擇拒絕查詢的這些記錄。
+如果外部資料記錄的子集有變更，您可以使用 [CREATE EXTERNAL TABLE (transact-sql) ](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)中的拒絕選項，選擇拒絕查詢的這些記錄。
 
 ## <a name="inserting-data-into-a-production-table"></a>將資料插入生產資料表中
 
-使用 [INSERT 陳述式](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)單次載入小型資料表，或甚至定期重新載入查閱，可能會與使用 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 之類的陳述式有一樣好的效果。  不過，單一插入的效率不如執行大量載入。
+使用 [INSERT 陳述式](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)單次載入小型資料表，或甚至定期重新載入查閱，可能會與使用 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 之類的陳述式有一樣好的效果。  不過，單一插入的效率不如執行大量載入。
 
 如果您整天有數千個或更多單一插入，請將插入分批，以便進行大量載入。  開發將單一插入附加至檔案的程序，然後建立另一個可定期載入檔案的程序。
 
@@ -158,7 +158,7 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 若要輪替 Azure 儲存體帳戶金鑰：
 
-對於金鑰已變更的每個儲存體帳戶，發出 [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+對於金鑰已變更的每個儲存體帳戶，發出 [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 範例：
 
@@ -176,7 +176,7 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 不需要對基礎外部資料來源進行其他變更。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 若要在設計 (ELT) 進程的解壓縮、載入和轉換時，深入瞭解 COPY 語句或 PolyBase，請參閱 [為 Azure Synapse Analytics 設計 ELT](design-elt-data-loading.md)。
 - 如需載入教學課程，請 [使用 COPY 語句將資料從 Azure blob 儲存體載入至 SYNAPSE SQL](./load-data-from-azure-blob-storage-using-copy.md)。

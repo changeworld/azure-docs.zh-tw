@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 00892b61cd23ee38ff3d63f8b61391ff1bffdc90
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
-ms.translationtype: HT
+ms.openlocfilehash: eec893321dd39511e1cfc20cb5a6713377ff5167
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616400"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680615"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立您的第一個靜態網站
 
@@ -25,7 +25,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 - [GitHub](https://github.com) 帳戶
 - [GitHub 個人存取權杖](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
 - [Azure](https://portal.azure.com) 帳戶
-- 已安裝 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (2.8.0 版或更新版本)
+- 已安裝 [Azure CLI](/cli/azure/install-azure-cli) (2.8.0 版或更新版本)
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 
@@ -46,7 +46,7 @@ cd my-first-static-web-app
 
 1. 使用下列命令來登入 Azure CLI。
 
-    ```bash
+    ```azurecli
     az login
     ```
 
@@ -54,7 +54,7 @@ cd my-first-static-web-app
 
     # <a name="no-framework"></a>[無架構](#tab/vanilla-javascript)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
@@ -66,7 +66,7 @@ cd my-first-static-web-app
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
@@ -79,7 +79,7 @@ cd my-first-static-web-app
 
     # <a name="react"></a>[React](#tab/react)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
@@ -92,7 +92,7 @@ cd my-first-static-web-app
 
     # <a name="vue"></a>[Vue](#tab/vue)
 
-    ```bash
+    ```azurecli
     az staticwebapp create \
         -n my-first-static-web-app \
         -g <RESOURCE_GROUP_NAME> \
@@ -127,7 +127,7 @@ cd my-first-static-web-app
 
 如果您不打算繼續使用此應用程式，您可以執行下列命令來刪除 Azure Static Web Apps 執行個體：
 
-```bash
+```azurecli
 az staticwebapp delete \
     --name my-first-static-web-app \
     --resource-group my-first-static-web-app

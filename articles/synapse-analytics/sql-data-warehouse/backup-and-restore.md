@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: b033fd9c0a7f752cf08d6e679facc9fa27b44037
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d8c680ec30dcecc56c064f08e4690cbbde9c2377
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120201"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679908"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse 專用 SQL 集區中的備份與還原
 
@@ -88,7 +88,7 @@ order by run_id desc
 
 每個快照都會建立一個代表快照開始時間的還原點。 若要還原資料倉儲，您需選擇一個還原點並發出還原命令。  
 
-您可以保留已還原的資料倉儲和目前的資料倉儲，或是刪除它們其中之一。 如果您想要以還原的資料倉儲取代目前的資料倉儲，您可以使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 搭配 MODIFY NAME 選項將其重新命名。
+您可以保留已還原的資料倉儲和目前的資料倉儲，或是刪除它們其中之一。 如果您想要以還原的資料倉儲取代目前的資料倉儲，您可以使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 搭配 MODIFY NAME 選項將其重新命名。
 
 若要還原資料倉儲，請參閱 [還原專用的 SQL 集](sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-the-azure-portal)區。
 
@@ -105,6 +105,6 @@ order by run_id desc
 > [!NOTE]
 > 若要執行異地備援還原，您不可選擇退出這項功能。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需還原點的詳細資訊，請參閱 [使用者定義的還原點](sql-data-warehouse-restore-points.md)

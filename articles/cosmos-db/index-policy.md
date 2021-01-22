@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tisande
-ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019171"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681645"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引編製原則
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,17 @@ Azure Cosmos DB 支援兩種索引編制模式：
 > Azure Cosmos DB 也支援延遲編制索引模式。 當引擎並未執行任何其他工作時，延遲索引會以較低的優先順序層級對更新執行索引。 這可能會導致 **不一致或不完整的** 查詢結果。 如果您打算查詢 Cosmos 容器，則不應該選取延遲索引。 新的容器無法選取延遲索引。 除非您在[無伺服器](serverless.md)模式下使用不支援延遲索引) 的 Azure Cosmos 帳戶，否則您可以藉由[Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) (來要求豁免。
 
 依預設，編制索引原則是設定為 `automatic` 。 將 `automatic` 索引編制原則中的屬性設定為，即可達成此目的 `true` 。 將此屬性設定為可 `true` 讓 Azure CosmosDB 在檔寫入時自動編制索引。
+
+## <a name="index-size"></a><a id="index-size"></a>索引大小
+
+在 Azure Cosmos DB 中，已使用的總儲存體空間為資料大小和索引大小的加總。 以下是索引大小的部分功能：
+
+* 索引大小取決於索引編制原則。 如果所有屬性都已編制索引，則索引大小可能會大於資料大小。
+* 刪除資料時，會以近乎連續的方式壓縮索引。 不過，對於小型資料刪除，您可能不會立即觀察到索引大小的下降。
+* 在下列情況下，索引大小可能會增加：
+
+  * 分割區分割持續時間-索引空間會在分割區分割完成之後釋放。
+  * 分割分割區時，索引空間會在分割區分割期間暫時增加。 
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>包含和排除屬性路徑
 
@@ -125,7 +136,7 @@ Azure Cosmos DB 支援兩種索引編制模式：
 
 * Point
 
-* 多邊形
+* Polygon
 
 * MultiPolygon
 
@@ -294,7 +305,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 
 針對不需要為屬性路徑編制索引，但需要 TTL 的情況下，您可以使用索引編制模式，並將索引編制模式設定為 `consistent` 、沒有包含的路徑，以及 `/*` 做為唯一排除的路徑。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在下列文章中深入了解編製索引：
 

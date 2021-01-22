@@ -3,18 +3,20 @@ title: 與其他人共同作業-LUIS
 titleSuffix: Azure Cognitive Services
 description: 應用程式擁有者可以將參與者新增至撰寫資源。 這些參與者可以修改模型、定型及發佈應用程式。
 services: cognitive-services
+author: aahill
+ms.author: aahi
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 12/08/2020
-ms.openlocfilehash: d4bde21dd13b562ffbb51b27ef083ee53685397a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 01/21/2021
+ms.openlocfilehash: ea95b2097c611635eb937498c6f1d87cb544bcd1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007956"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681089"
 ---
 # <a name="add-contributors-to-your-app"></a>將參與者新增至您的應用程式
 
@@ -66,9 +68,7 @@ LUIS 使用標準 Azure Active Directory (Azure AD) 同意流程。
 租用戶系統管理員應該與需要被授權允許在 Azure AD 中使用 LUIS 的使用者直接合作。
 
 * 首先，使用者登入 LUIS，然後看到一個需要系統管理員核准的快顯對話方塊。 使用者會先連絡租用戶系統管理員，然後才能繼續後面的步驟。
-* 第二，租用戶系統管理員登入 LUIS，然後看到一個同意流程快顯對話方塊。 系統管理員必須在這個對話方塊中授與權限給使用者。 當系統管理員接受權限後，使用者便能繼續使用 LUIS。 如果租用戶管理員將不會登入 LUIS，該管理員就可以存取 LUIS 的[同意](https://account.activedirectory.windowsazure.com/r#/applications) (如下列螢幕擷取畫面所示)。 請注意，會將此清單篩選出包含 `LUIS` 名稱的項目。
-
-![依應用程式網站分類的 Azure Active Directory 權限](./media/luis-how-to-collaborate/tenant-permissions.png)
+* 第二，租用戶系統管理員登入 LUIS，然後看到一個同意流程快顯對話方塊。 系統管理員必須在這個對話方塊中授與權限給使用者。 當系統管理員接受權限後，使用者便能繼續使用 LUIS。 如果租用戶系統管理員將不會登入 LUIS，系統管理員可以存取 LUIS 的[同意](https://account.activedirectory.windowsazure.com/r#/applications)。 在此頁面上，您可以將清單篩選為包含該名稱的專案 `LUIS` 。
 
 如果租用戶系統管理員只希望特定使用者使用 LUIS，則有一些可能的解決方式：
 * 提供「管理員同意」(同意 Azure AD 的所有使用者)，然後將 [企業應用程式屬性] 之下的 [需要使用者指派] 設定為 [是]，最後只將想要的使用者指派/新增至應用程式。 使用此方法，系統管理員仍提供應用程式的「管理員同意」，不過，能夠控制可以存取該應用程式的使用者。
@@ -77,7 +77,7 @@ LUIS 使用標準 Azure Active Directory (Azure AD) 同意流程。
 深入了解 Azure Active Directory 使用者和同意：
 * 將[您的應用程式限制](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)為一組使用者
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解 [如何使用版本](luis-how-to-manage-versions.md) 來控制您的應用程式生命週期。
 * 瞭解包括在該資源上 [撰寫資源](luis-how-to-azure-subscription.md#authoring-key) 和 [參與者](luis-how-to-azure-subscription.md#contributions-from-other-authors) 的概念。

@@ -1,16 +1,16 @@
 ---
 title: 適用於 Azure Kubernetes Service (AKS) 的 Azure 原則法規合規性控制措施
 description: 列出適用於 Azure Kubernetes Service (AKS) 的 Azure 原則法規合規性控制措施。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 398702d0110b9430d55a0c90f751e8cf14eb33f7
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: 5d9f7797923cf47811f6726a2e3cd7957950b080
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049454"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681896"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>適用於 Azure Kubernetes Service (AKS) 的 Azure 原則法規合規性控制措施
 

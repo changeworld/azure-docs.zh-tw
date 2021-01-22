@@ -4,12 +4,12 @@ description: 透過自訂計量即時監視您的 Web 應用程式，並透過�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c50f7e57c520321d752d6d46e36c45c615b5e785
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803573"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679461"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>即時計量資料流︰以 1 秒的延遲進行監視與診斷
 
@@ -36,8 +36,8 @@ ms.locfileid: "97803573"
    * 預設會啟用[ASP.NET Core](./asp-net-core.md)即時計量。
    * [.Net/.Net Core 主控台/背景工作](./worker-service.md)-即時計量預設為啟用。
    * [.Net 應用程式-使用程式碼啟用](#enable-livemetrics-using-code-for-any-net-application)。
-    * [JAVA](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) -即時計量預設為啟用。
-   * [Node.js](./nodejs.md#live-metrics) \(英文\)
+    * [JAVA](./java-in-process-agent.md) -即時計量預設為啟用。
+   * [Node.js](./nodejs.md#live-metrics)
 
 2. 在 [Azure 入口網站](https://portal.azure.com)中，開啟您應用程式的 Application Insights 資源，然後開啟 [即時資料流]。
 
@@ -239,7 +239,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 ## <a name="supported-features-table"></a>支援的功能資料表
 
-| Language                         | 基本計量       | 效能度量 | 自訂篩選    | 範例遙測    | 依進程分割的 CPU |
+| 語言                         | 基本計量       | 效能度量 | 自訂篩選    | 範例遙測    | 依進程分割的 CPU |
 |----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
 | .NET Framework                   | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)   |
 | .NET Core (target = .NET Framework) | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)   |
@@ -260,7 +260,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 即時計量資料流會使用與其他 Application Insights 遙測不同的 IP 位址。 請確定[這些 IP 位址](./ip-addresses.md)在您的防火牆中為開啟狀態。 此外，請檢查 [即時計量資料流的傳出埠](./ip-addresses.md#outgoing-ports) 是否已在您伺服器的防火牆中開啟。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [使用 Application Insights 監視使用情況](./usage-overview.md)
 * [使用診斷搜尋](./diagnostic-search.md)

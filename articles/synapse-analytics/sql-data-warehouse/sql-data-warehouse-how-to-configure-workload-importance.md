@@ -11,12 +11,12 @@ ms.date: 05/15/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 067551d198f717dd40995cb8bc3e1345e82f078f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 38fb842cf90c110266f53b79a9ab2ef6157025b4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461910"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681280"
 ---
 # <a name="configure-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>針對 Azure Synapse Analytics 設定專用 SQL 集區中的工作負載重要性
 
@@ -24,7 +24,7 @@ ms.locfileid: "96461910"
 
 ## <a name="create-a-workload-classifier-with-importance"></a>建立具有重要性的工作負載分類器
 
-通常在資料倉儲案例中，您的使用者在忙碌的系統上需要快速執行其查詢。  使用者可能是需要執行報表的公司主管，或使用者可能是執行臨機操作查詢的分析師。 若要指派重要性，您必須建立工作負載分類器，並將重要性指派給查詢。  下列範例使用[建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語法來建立兩個分類器。 `Membername` 可以是單一使用者或群組。  若要尋找現有的專用 SQL 集區使用者，請執行：
+通常在資料倉儲案例中，您的使用者在忙碌的系統上需要快速執行其查詢。  使用者可能是需要執行報表的公司主管，或使用者可能是執行臨機操作查詢的分析師。 若要指派重要性，您必須建立工作負載分類器，並將重要性指派給查詢。  下列範例使用[建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)語法來建立兩個分類器。 `Membername` 可以是單一使用者或群組。  若要尋找現有的專用 SQL 集區使用者，請執行：
 
 ```sql
 Select name from sys.sysusers

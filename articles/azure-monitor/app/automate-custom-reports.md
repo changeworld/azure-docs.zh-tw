@@ -4,12 +4,12 @@ description: 將含有 Azure Application Insights 資料的自訂每天/每週/�
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010600"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680445"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>將含有 Azure Application Insights 資料的自訂報表自動化
 
@@ -33,7 +33,7 @@ ms.locfileid: "96010600"
 
 * [使用 Power Automate 將報表自動化](../platform/logicapp-flow-connector.md)
 * [透過 Logic Apps 進行報表自動化](automate-with-logic-apps.md)
-* 在監視案例中使用 "Application Insights 排程摘要" [Azure 函式](../../azure-functions/functions-create-first-azure-function.md)範本。 此函式會使用 SendGrid 來傳送電子郵件。 
+* 在監視案例中使用 "Application Insights 排程摘要" [Azure 函式](../../azure-functions/functions-get-started.md)範本。 此函式會使用 SendGrid 來傳送電子郵件。 
 
     ![Azure 函式範本](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. 建立 Azure 函數應用程式。只有當您想要使用 Application Insights 監視新的函式應用程式時，才需要 (_的_ Application Insights) 
 
-   流覽 Azure Functions 檔，瞭解如何建立函式 [應用程式](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)
+   流覽 Azure Functions 檔，瞭解如何建立函式 [應用程式](../../azure-functions/functions-get-started.md)
 
 2. 新「函數應用程式」完成部署之後，選取 [前往資源]。
 
@@ -148,10 +148,9 @@ availabilityResults
 
    ![複製 API 金鑰螢幕擷取畫面](./media/automate-custom-reports/function-app-17.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入了解建立 [Analytics 查詢](../log-query/get-started-queries.md)。
 * 深入了解[以程式設計方式查詢 Application Insights 資料](https://dev.applicationinsights.io/)
 * 深入瞭解 [Logic Apps](../../logic-apps/logic-apps-overview.md)。
 * 深入瞭解 [Microsoft Power Automate](https://ms.flow.microsoft.com)。
-

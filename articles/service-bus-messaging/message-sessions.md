@@ -2,16 +2,16 @@
 title: Azure 服務匯流排訊息工作階段 | Microsoft Docs
 description: 本文說明如何使用工作階段來聯結和依序處理未繫結的相關訊息序列。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/20/2021
+ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511291"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680748"
 ---
 # <a name="message-sessions"></a>訊息工作階段
-Microsoft Azure 服務匯流排工作階段能夠聯合和依序處理未繫結的相關訊息序列。 工作階段可在**先進先出 (FIFO)** 和**要求-回應**模式中使用。 本文說明如何在利用服務匯流排時，使用工作階段來實作這些模式。 
+Microsoft Azure 服務匯流排工作階段能夠聯合和依序處理未繫結的相關訊息序列。 工作階段可在 **先進先出 (FIFO)** 和 **要求-回應** 模式中使用。 本文說明如何在利用服務匯流排時，使用工作階段來實作這些模式。 
 
 > [!NOTE]
 > 基本層的服務匯流排並不支援工作階段。 標準層和高階層則支援工作階段。 如需這些階層之間的差異，請參閱[服務匯流排定價](https://azure.microsoft.com/pricing/details/service-bus/)。
@@ -34,9 +34,9 @@ Microsoft Azure 服務匯流排工作階段能夠聯合和依序處理未繫結�
 ![[建立佇列] 對話方塊的螢幕擷取畫面，其中已選取 [啟用會話] 選項，並以紅色框住。][2]
 
 > [!NOTE]
-> 在佇列或訂用帳戶上啟用工作階段後，用戶端應用程式「無法再」傳送/接收一般訊息。 所有訊息都必須作為工作階段的一部分傳送 (藉由設定工作階段識別碼)，並透過接收工作階段來接收。
+> 當佇列或訂用帳戶上啟用會話時，用戶端應用程式可以 *** 不再** 是傳送/接收一般訊息。 所有訊息都必須作為工作階段的一部分傳送 (藉由設定工作階段識別碼)，並透過接收工作階段來接收。
 
-適用於工作階段的 API 會存在於佇列和訂用帳戶用戶端上。 有一個命令式模型可供控制接收工作階段與訊息的時間，還有一個以處理常式為基礎的模型，類似於 *OnMessage*，其可隱藏管理接收迴圈的複雜度。
+適用於工作階段的 API 會存在於佇列和訂用帳戶用戶端上。 有一個命令式模型可控制何時收到會話和訊息，以及一個以處理常式為基礎的模型（類似于 _OnMessage *），以隱藏管理接收迴圈的複雜度。
 
 ### <a name="session-features"></a>工作階段功能
 

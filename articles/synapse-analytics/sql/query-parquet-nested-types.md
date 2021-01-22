@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6df8c3238ed6dfeb37fd10d0a7e97aa839e7bf26
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118756"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681072"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用無伺服器 SQL 集區來查詢 Parquet 和 JSON 檔案中的巢狀型別
 
@@ -47,7 +47,7 @@ FROM
 > [!IMPORTANT]
 > 此範例會使用 COVID-19-19 Open Research 資料集的檔案。 [請參閱此處的授權和資料結構](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 第一個步驟是建立將建立資料來源的資料庫。 然後，您將在資料庫上執行 [安裝腳本](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) 來初始化物件。 安裝腳本會建立範例中所使用的資料來源、資料庫範圍的認證，以及外部檔案格式。
 
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>從重複的資料行存取元素
 
-下列查詢會讀取 justSimpleArray parquet 檔案，並使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 從重複的資料行內取出純量元素，例如陣列或對應：
+下列查詢會讀取 justSimpleArray parquet 檔案，並使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 從重複的資料行內取出純量元素，例如陣列或對應：
 
 ```sql
 SELECT
@@ -172,7 +172,7 @@ FROM
 
 ## <a name="access-sub-objects-from-complex-columns"></a>從複雜資料行存取子物件
 
-下列查詢會讀取 mapExample. parquet 檔案，並使用 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 從重複的資料行（例如陣列或地圖）中取出非純量元素：
+下列查詢會讀取 mapExample. parquet 檔案，並使用 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 從重複的資料行（例如陣列或地圖）中取出非純量元素：
 
 ```sql
 SELECT

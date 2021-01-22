@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 3fd1e644d69fe1d721526afcacb362adca48bf7a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 77a32872726e3c67f0d3c542ca699271846a193b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831800"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680665"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>收集春季 Cloud Resilience4J 斷路器計量 (預覽) 
 
@@ -41,7 +41,7 @@ cd spring-cloud-circuitbreaker-demo && mvn clean package -DskipTests
 
 2. 建立具有端點的應用程式
 
-```azcli
+```azurecli
 az spring-cloud app create --name resilience4j --is-public \
     -s ${asc-service-name} -g ${asc-resource-group}
 az spring-cloud app create --name reactive-resilience4j --is-public \
@@ -50,7 +50,7 @@ az spring-cloud app create --name reactive-resilience4j --is-public \
 
 3. 部署應用程式。
 
-```azcli
+```azurecli
 az spring-cloud app deploy -n resilience4j \
     --jar-path ./spring-cloud-circuitbreaker-demo-resilience4j/target/spring-cloud-circuitbreaker-demo-resilience4j-0.0.1.BUILD-SNAPSHOT.jar \
     -s ${service_name} -g ${resource_group}
@@ -91,7 +91,7 @@ az spring-cloud app deploy -n reactive-resilience4j \
 >
 > 流覽至閘道應用程式所提供的 URL，然後從 [春天雲端斷路器-示範](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) 存取端點，如下所示：
 >
->   ```
+>   ```console
 >   /get
 >   /get/delay/{seconds}
 >   /get/fluxdelay/{seconds}
@@ -123,7 +123,7 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
    [![resilience4J 5](media/spring-cloud-resilience4j/resilience4j-5.png)](media/spring-cloud-resilience4j/resilience4j-5.PNG)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Application insights](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-application-insights)
 * [分散式追蹤](spring-cloud-tutorial-distributed-tracing.md)

@@ -4,17 +4,17 @@ titleSuffix: Azure Cognitive Services
 description: 您可以完全掌控其資料的觀看、匯出及刪除。 刪除客戶資料，以確保隱私權和合規性。
 services: cognitive-services
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, references_regions
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/08/2020
-ms.openlocfilehash: cd9b353300b88c69efb0c458245a86963c579064
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 12/10/2020
+ms.openlocfilehash: 0a2d0ce683261ca3460c7aeaa0d7a42152b81a1e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007733"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680159"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在認知服務的 Language Understanding (LUIS) 中匯出和刪除客戶資料
 
@@ -58,34 +58,41 @@ LUIS 使用者具有完整控制權，可在入口網站上查看資料，但必
 
 除了使用中的學習資料之外 (詳細說明) ，LUIS 會遵循 [區域服務的資料儲存作法](https://azuredatacentermap.azurewebsites.net/)。
 
+[!INCLUDE [portal consolidation](includes/portal-consolidation.md)]
+
+
 ### <a name="europe"></a>歐洲
 
-[Eu.luis.ai](https://eu.luis.ai) Portal 和歐洲撰寫 (也稱為程式設計 api ) 裝載于 Azure 的歐洲地理位置。 Eu.luis.ai portal 和歐洲撰寫 (也稱為程式設計 Api) 支援將端點部署到下列 Azure 地理位置：
+歐洲撰寫 (也稱為程式設計 Api) 資源裝載于 Azure 的歐洲地區，並支援將端點部署至下列 Azure 地理位置：
 
 * 歐洲
 * 法國
 * 英國
 
-部署至這些 Azure 地理位置時，端點從您應用程式的終端使用者收到的語句將會儲存在 Azure 的歐洲地理位置，以供主動學習之用。 您可以停用主動式學習，請參閱 [停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理儲存的語句，請參閱 [刪除語句](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
+部署至這些 Azure 地理位置時，端點從您應用程式的終端使用者收到的語句將會儲存在 Azure 的歐洲地理位置，以供主動學習之用。
 
 ### <a name="australia"></a>澳洲
 
-[Au.luis.ai](https://au.luis.ai) Portal 和澳大利亞撰寫 (也稱為程式設計 api) 裝載于 Azure 的澳大利亞地理位置。 Au.luis.ai portal 和澳大利亞撰寫 (也稱為程式設計 Api) 支援將端點部署到下列 Azure 地理位置：
+澳大利亞撰寫 (也稱為程式設計 Api) 資源裝載于 Azure 的澳大利亞地理位置，並支援將端點部署到下列 Azure 地理位置：
 
 * 澳洲
 
-部署至這些 Azure 地理位置時，端點從您應用程式的終端使用者收到的語句將會儲存在 Azure 的澳大利亞地理位置，以供主動學習之用。 您可以停用主動式學習，請參閱 [停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理儲存的語句，請參閱 [刪除語句](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
+部署至這些 Azure 地理位置時，端點從您應用程式的終端使用者收到的語句將會儲存在 Azure 的澳大利亞地理位置，以供主動學習之用。
 
 ### <a name="united-states"></a>美國
 
-[Luis.ai](https://www.luis.ai)入口網站和美國撰寫 (也稱為程式設計 api) 裝載于 Azure 的美國地區。 Luis.ai portal 和美國撰寫 (也稱為程式設計 Api) 支援將端點部署至下列 Azure 地理位置：
+美國撰寫 (也稱為程式設計 Api) 資源裝載在 Azure 的美國地區，並支援將端點部署到下列 Azure 地理位置：
 
 * 歐洲或澳大利亞 authoring 區域不支援的 Azure 地理位置
 
-部署至這些 Azure 地理位置時，端點從您應用程式的終端使用者收到的語句將會儲存在 Azure 的美國地區，以供主動學習之用。 您可以停用主動式學習，請參閱 [停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理儲存的語句，請參閱 [刪除語句](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
+部署至這些 Azure 地理位置時，端點從您應用程式的終端使用者收到的語句將會儲存在 Azure 的美國地區，以供主動學習之用。 
+
+## <a name="disable-active-learning"></a>停用主動式學習
+
+若要停用主動式學習，請參閱 [停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 若要管理儲存的語句，請參閱 [刪除語句](luis-how-to-review-endpoint-utterances.md#delete-utterance)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [LUIS 區域參考](./luis-reference-regions.md)

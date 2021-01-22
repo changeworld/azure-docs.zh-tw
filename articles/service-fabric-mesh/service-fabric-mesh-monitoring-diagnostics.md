@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: eda0b62729343b0a138d027548d8750b1e0fc74f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63c79169646f05cddc7c605c764398bdef7492d4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844398"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682066"
 ---
 # <a name="monitoring-and-diagnostics"></a>監視和診斷
 Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員能夠部署微服務應用程式，而不需管理虛擬機器、儲存體或網路功能。 Service Fabric Mesh 的監視和診斷可歸類為三種主要診斷資料類型：
@@ -26,7 +26,7 @@ Azure Service Fabric Mesh 是一個受到完整管理的服務，讓開發人員
 
 您可以從您已部署的容器，依照容器檢視 Docker 記錄。 在 Service Fabric Mesh 應用程式模型中，每個容器都是您應用程式中的程式碼封裝。 若要查看相關聯的記錄與程式碼封裝，請使用下列命令：
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> --service-name <nameOfService> --replica-name <nameOfReplica> --code-package-name <nameOfCodePackage>
 ```
 
@@ -35,7 +35,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 
 從投票應用程式的 VotingWeb.Code 容器查看記錄時，其外觀如下所示：
 
-```cli
+```azurecli
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code
 ```
 
@@ -74,7 +74,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 ### <a name="azure-monitor-cli"></a>Azure 監視器 CLI
 
-[AZURE 監視器 CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)檔中有提供完整的命令清單，但我們已在下面包含一些實用的範例 
+[AZURE 監視器 CLI](/cli/azure/monitor/metrics#az-monitor-metrics-list)檔中有提供完整的命令清單，但我們已在下面包含一些實用的範例 
 
 在每個範例中，資源識別碼都會遵循此模式
 
@@ -83,21 +83,21 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 * 應用程式中容器的 CPU 使用率
 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization"
 ```
 * 每個服務複本的記憶體使用量
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "MemoryUtilization" --dimension "ServiceReplicaName"
 ``` 
 
 * 1小時的時間範圍內每個容器的重新開機 
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "RestartCount" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z
 ``` 
 
 * 1小時內名為 "VotingWeb" 之服務的平均 CPU 使用率
-```cli
+```azurecli
     az monitor metrics list --resource <resourceId> --metric "CpuUtilization" --start-time 2019-02-01T00:00:00Z --end-time 2019-02-01T01:00:00Z --aggregation "Average" --filter "ServiceName eq 'VotingWeb'"
 ``` 
 
@@ -116,6 +116,6 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 ![Container Insights](./media/service-fabric-mesh-monitoring-diagnostics/containerinsights.png)
 -->
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 若要深入了解 Service Fabric Mesh，請閱讀 [Service Fabric Mesh 概觀](service-fabric-mesh-overview.md)。
-* 若要深入瞭解 Azure 監視器計量命令，請參閱 [AZURE 監視器 CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)檔。
+* 若要深入瞭解 Azure 監視器計量命令，請參閱 [AZURE 監視器 CLI](/cli/azure/monitor/metrics#az-monitor-metrics-list)檔。

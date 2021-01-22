@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 646c47920d87fe1d11bc991838ba767b8569a6c9
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
-ms.translationtype: HT
+ms.openlocfilehash: 63bd44140ea5c355c3bb1a891a21e6c2e73ab041
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246752"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679495"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>教學課程 - 建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -56,7 +56,7 @@ SCIM 是兩個端點的標準化定義：/Users 端點和 /Groups 端點。 它�
 |loginName|userName|userPrincipalName|
 |firstName|name.givenName|givenName|
 |lastName|name.lastName|lastName|
-|workMail|Emails[type eq “work”].value|Mail|
+|workMail|電子郵件 [type eq "work"]。值|Mail|
 |manager|manager|manager|
 |tag|urn:ietf:params:scim:schemas:extension:2.0:CustomExtension:tag|extensionAttribute1|
 |status|作用中|isSoftDeleted (未儲存使用者的計算值)|

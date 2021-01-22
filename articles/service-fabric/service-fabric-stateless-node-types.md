@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683192"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680598"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>部署具有無狀態節點類型的 Azure Service Fabric 叢集 (Preview) 
 Service Fabric 節點類型隨附固有的假設，在某個時間點，可設定狀態的服務可能會放在節點上。 無狀態節點類型可放寬此假設的節點類型，因此可讓節點類型使用其他功能（例如更快速的 scale out 作業）、支援以銅級持久性進行自動 OS 升級，以及在單一虛擬機器擴展集中相應放大至100個以上的節點。
@@ -253,8 +253,10 @@ Service Fabric 節點類型隨附固有的假設，在某個時間點，可設�
 
 資源完成部署之後，您就可以開始停用節點類型中想要從原始叢集移除的節點。
 
+>[!NOTE]
+> 使用具有銅牌耐久性的無狀態 nodetypes 進行自動調整時，在縮小作業之後，節點狀態不會自動清除。 為了在自動調整期間清除節點的 NodeState，建議使用 [Service Fabric 自動調整 Helper](https://github.com/Azure/service-fabric-autoscale-helper) 。
 
-## <a name="next-steps"></a>後續步驟 
+## <a name="next-steps"></a>下一步 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)
 * [節點類型和虛擬機器擴展集](service-fabric-cluster-nodetypes.md)
 

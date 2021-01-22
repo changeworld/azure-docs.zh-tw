@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 8fa2e1ee4e42619a30a8af419c539df8e9e4399c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: acaa87f44fbd496aea843de673c0b2d7652fe542
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98634450"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681038"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-an-angular-spa-using-the-auth-code-flow"></a>快速入門：使用驗證碼流程登入並取得角 SPA 中的存取權杖
 
@@ -65,6 +65,15 @@ ms.locfileid: "98634450"
 > 1. 按一下 [ **設定** ] 按鈕以套用變更。
 > 1. 在 [ **平臺** 設定] 下，展開 [ **單一頁面應用程式**]。
 > 1. 確認在 **[授與類型**] 下 ![ 已設定您的重新 ](media/quickstart-v2-javascript/green-check.png) 導向 URI 符合使用 PKCE 授權碼流程的資格。
+
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步驟 1:在 Azure 入口網站中設定您的應用程式
+> 若要讓此快速入門中的程式碼範例正常運作，您必須將 `redirectUri` 新增為 `http://localhost:4200/`。
+> > [!div renderon="portal" id="makechanges" class="nextstepaction"]
+> > [為我進行這些變更]()
+>
+> > [!div id="appconfigured" class="alert alert-info"]
+> > ![已設定](media/quickstart-v2-javascript/green-check.png) 您的應用程式已設定了這些屬性。
 
  #### <a name="step-2-download-the-project"></a>步驟 2:下載專案
 

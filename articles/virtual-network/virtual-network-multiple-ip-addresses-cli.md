@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: allensu
-ms.openlocfilehash: a1d94166c6c56a3652dc0ad532bd481c6e792c52
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0b5e8f28be9960a2bb4e1406a293ab5e03962681
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217085"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680564"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>使用 Azure CLI 對虛擬機器指派多個 IP 位址
 
@@ -38,7 +38,7 @@ ms.locfileid: "98217085"
 3. 從命令殼層使用命令 `az login` 進行登入，然後選取您使用的訂用帳戶。
 4. 在 Linux 或 Mac 電腦上執行後續的指令碼以建立 VM。 該指令碼會建立資源群組、一個虛擬網路 (VNet)、一個具有三個 IP 組態的 NIC，以及連接了兩個 NIC 的 VM。 NIC、公用 IP 位址、虛擬網路和 VM 資源必須全都位於相同的位置和訂用帳戶。 雖然資源不需要全都位於相同的資源群組中，但在下列指令碼中，它們卻是如此。
 
-```bash
+```azurecli
     
 #!/bin/sh
     

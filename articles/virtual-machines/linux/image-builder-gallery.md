@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: bab5a86cdf8e3fa6b17866fe4088b28ed3ece6f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cf081fb7723972013d61f385c823a3b0c4d2aee
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307291"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679512"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>預覽：建立 Linux 映像並將其發佈到共用映像庫 
 
-此文章說明如何使用 Azure Image Builder 及 Azure CLI 在[共用映像庫](../windows/shared-image-galleries.md)中建立映像版本，然後以全域方式發佈該映像。 您也可以使用 [Azure PowerShell](../windows/image-builder-gallery.md) 來執行這項工作。
+此文章說明如何使用 Azure Image Builder 及 Azure CLI 在[共用映像庫](../shared-image-galleries.md)中建立映像版本，然後以全域方式發佈該映像。 您也可以使用 [Azure PowerShell](../windows/image-builder-gallery.md) 來執行這項工作。
 
 
 我們將會使用樣本 .json 範本來設定映像。 我們要使用的 .json 檔案位於這裡：[helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json)。 
@@ -217,7 +217,7 @@ SSH 連線 至VM。
 ssh aibuser@<publicIpAddress>
 ```
 
-當您建立 SSH 連線時，您應該會看到映像是以*當天的訊息*進行自訂！
+當您建立 SSH 連線時，您應該會看到映像是以 *當天的訊息* 進行自訂！
 
 ```console
 *******************************************************
@@ -298,4 +298,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 [Azure 共用映像資源庫](shared-image-galleries.md)。
+深入瞭解 [Azure 共用映像資源庫](../shared-image-galleries.md)。

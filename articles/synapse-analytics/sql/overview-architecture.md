@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: da6c9f6df0e9e74de297cf6c8f655b62e3446bad
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462710"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679613"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL 架構 
 
@@ -67,7 +67,7 @@ Synapse SQL 會利用 Azure 儲存體來保護您使用者資料的安全。 因
 
 計算節點提供計算能力。 
 
-在專用的 SQL 集區中，發行版本會對應到計算節點以進行處理。 當您需要支付更多計算資源的費用時，集區會將散發重新對應到可用的計算節點。 計算節點的數目範圍從1到60，由專用 SQL 集區的服務層級決定。 每個計算節點都有會在系統檢視中顯示的節點識別碼。 您可以在名稱開頭為 sys.pdw_nodes 的系統檢視中尋找 node_id 資料行，以查看計算節點識別碼。 如需這些系統檢視的清單，請參閱 [SYNAPSE SQL 系統檢視](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest)。
+在專用的 SQL 集區中，發行版本會對應到計算節點以進行處理。 當您需要支付更多計算資源的費用時，集區會將散發重新對應到可用的計算節點。 計算節點的數目範圍從1到60，由專用 SQL 集區的服務層級決定。 每個計算節點都有會在系統檢視中顯示的節點識別碼。 您可以在名稱開頭為 sys.pdw_nodes 的系統檢視中尋找 node_id 資料行，以查看計算節點識別碼。 如需這些系統檢視的清單，請參閱 [SYNAPSE SQL 系統檢視](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest&preserve-view=true)。
 
 在無伺服器 SQL 集區中，每個計算節點都會被指派一項工作和一組檔案來執行工作。 工作是分散式查詢執行單位，實際上是使用者已提交查詢的一部分。 自動調整會生效，以確保使用足夠的計算節點來執行使用者查詢。
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 46d2c039806e4e6a72e091458d44e7b21b3dfa70
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3f90d5a95d153405f9257258fba6ab9cc1ce9a35
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843514"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681297"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>設定加密裝置上的 LVM 和 RAID
 
@@ -77,7 +77,7 @@ New-AzVm -ResourceGroupName ${RGNAME} `
 ```
 Azure CLI：
 
-```bash
+```azurecli
 az vm create \
 -n ${VMNAME} \
 -g ${RGNAME} \
@@ -105,7 +105,7 @@ Update-AzVM -VM ${VM} -ResourceGroupName ${RGNAME}
 
 Azure CLI：
 
-```bash
+```azurecli
 az vm disk attach \
 -g ${RGNAME} \
 --vm-name ${VMNAME} \
@@ -125,7 +125,7 @@ $VM.StorageProfile.DataDisks | Select-Object Lun,Name,DiskSizeGB
 
 Azure CLI：
 
-```bash
+```azurecli
 az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.dataDisks -o table
 ```
 ![Azure CLI 中的已連接磁片清單](./media/disk-encryption/lvm-raid-on-crypt/002-lvm-raid-check-disks-cli.png)
@@ -207,7 +207,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGNAME `
 
 使用 KEK 的 Azure CLI：
 
-```bash
+```azurecli
 az vm encryption enable \
 --resource-group ${RGNAME} \
 --name ${VMNAME} \
@@ -231,7 +231,7 @@ Get-AzVmDiskEncryptionStatus -ResourceGroupName ${RGNAME} -VMName ${VMNAME}
 
 Azure CLI：
 
-```bash
+```azurecli
 az vm encryption show -n ${VMNAME} -g ${RGNAME} -o table
 ```
 ![Azure CLI 中的加密狀態](./media/disk-encryption/lvm-raid-on-crypt/009-lvm-raid-verify-encryption-status-cli.png)
@@ -458,7 +458,7 @@ shutdown -r now
 lsblk
 df -h
 ```
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [調整以 Azure 磁碟加密加密的邏輯磁片區管理裝置大小](how-to-resize-encrypted-lvm.md)
 - [Azure 磁碟加密的疑難排解](disk-encryption-troubleshooting.md)

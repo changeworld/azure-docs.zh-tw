@@ -13,12 +13,12 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: a8c7ae8de41a01cb07a4bbbcd5943fb6290eced8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f87f2e79bd9439fddb52fad82c7ab4712fc68fb9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131639"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680360"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>使用 MSAL for Android 搭配 B2C
 
@@ -36,7 +36,7 @@ Microsoft 驗證程式庫 (MSAL) 可讓應用程式開發人員使用 [Azure Act
 
 應用程式的設定檔會宣告兩個 `authorities` 。 每個原則都有一個。 `type`每個授權單位的屬性為 `B2C` 。
 
->注意： `account_mode` B2C 應用程式的必須設定為 [ **多** ]。 如需 [多個帳戶公用用戶端應用程式](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account#multiple-account-public-client-application)的詳細資訊，請參閱檔。
+>注意： `account_mode` B2C 應用程式的必須設定為 [ **多** ]。 如需 [多個帳戶公用用戶端應用程式](./single-multi-account.md#multiple-account-public-client-application)的詳細資訊，請參閱檔。
 
 ### `app/src/main/res/raw/msal_config.json`
 ```json
@@ -240,6 +240,6 @@ B2C 會將每個原則視為個別的授權單位。 因此，每個原則所傳
 
 當您使用更新原則的權杖時 `acquireTokenSilent` ，請提供 `IAccount` 從先前的原則調用傳回的相同  `AcquireTokenSilentParameters` 。 提供另一個原則所傳回的帳戶將會產生錯誤。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入瞭解 Azure Active Directory B2C (Azure AD B2C) [Azure Active Directory B2C 是什麼？](../../active-directory-b2c/overview.md)

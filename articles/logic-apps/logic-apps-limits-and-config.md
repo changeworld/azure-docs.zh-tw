@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: 7122c960dc7921e833329d528f96f0efe0347bda
-ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
+ms.openlocfilehash: 00cd97ada1a458f13225961566a99aa79d724558
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97707464"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679975"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps 的限制和設定資訊
 
@@ -115,8 +115,8 @@ ms.locfileid: "97707464"
 | 名稱 | 限制 | 注意 |
 | ---- | ----- | ----- |
 | Foreach 陣列項目 | 100,000 | 此限制描述 "for each" 迴圈可以處理的陣列項目數目上限。 <p><p>若要篩選較大的陣列，您可以使用[查詢動作](logic-apps-perform-data-operations.md#filter-array-action)。 |
-| Foreach 並行 | 並行關閉：20 <p><p>平行存取于： <p><p>-預設值：20 <br>-最小值：1 <br>-最大值：50 | 此限制是可以同時 (或平行) 執行的 "for each" 迴圈反覆項目數目上限。 <p><p>若要變更此限制，請參閱 [變更 "for each" 並行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) 或 [依序執行 "for each" 迴圈](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 |
-| 反覆運算之前 | - 預設值：60 <br>-最小值：1 <br>-最大值：5000 | 在邏輯應用程式執行期間，"Until" 迴圈可以有的最高迴圈數目。 <p><p>若要變更此限制，請在「Until」循環圖表形中選取 [ **變更限制**]，並指定 [ **計數** ] 屬性的值。 |
+| Foreach 並行 | 並行關閉：20 <p><p>平行存取于： <p><p>-預設值：20 <br>-最小值：1 <br>-最大值：50 | 這項限制是可同時執行或平行執行的 "for each" 迴圈反復專案數目上限。 <p><p>若要變更此限制，請參閱 [變更 "for each" 並行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) 或 [依序執行 "for each" 迴圈](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)。 |
+| 反覆運算之前 | - 預設值：60 <br>-最小值：1 <br>-最大值：5000 | 在邏輯應用程式執行期間，"Until" 迴圈可以有的迴圈數上限。 <p><p>若要變更此限制，請在「Until」循環圖表形中選取 [ **變更限制**]，並指定 [ **計數** ] 屬性的值。 |
 | 直到 timeout | -Default： PT1H (1 小時)  | 「Until」迴圈在結束之前可以執行的最長時間，而且是以 [ISO 8601 格式](https://en.wikipedia.org/wiki/ISO_8601)指定。 逾時值的評估會以每個迴圈循環為基礎。 如果迴圈中有任何動作所花費的時間超過逾時限制，目前的循環並不會停止。 但不會啟動下一個循環，因為不符合限制條件。 <p><p>若要變更此限制，請在「Until」循環圖表形中選取 [ **變更限制**]，並指定 **Timeout** 屬性的值。 |
 ||||
 
@@ -125,7 +125,7 @@ ms.locfileid: "97707464"
 | 名稱 | 限制 | 注意 |
 | ---- | ----- | ----- |
 | 觸發程序並行 | 使用平行存取：無限制 <p><p>在啟用平行存取的情況下，您無法在啟用之後復原： <p><p>-預設值：25 <br>-最小值：1 <br>-最大值：50 | 這項限制是可同時執行或平行執行的邏輯應用程式實例數目上限。 <p><p>**注意**：當並行開啟時，[解除批次處理陣列](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)的 SplitOn 限制會減少至 100 個項目。 <p><p>若要變更此限制，請參閱[依序](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)[變更觸發程式並行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或觸發程式實例。 |
-| 最大等候執行數 | 使用 concurrency off： <p><p>-最小值：1 <br>-最大值：50 <p><p>平行存取于： <p><p>-Min：10加上並存執行數目 (觸發並行)  <br>-最大值：100 | 當您的邏輯應用程式已在執行並行實例數目上限時，此限制是可等候執行的邏輯應用程式實例數目上限。 <p><p>若要變更此限制，請參閱 [變更等候執行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
+| 最大等候執行數 | 使用 concurrency off： <p><p>-最小值：1 <br>-最大值：50 <p><p>平行存取于： <p><p>-Min：10加上並存執行數目 (觸發並行)  <br>-最大值：100 | 這項限制是當您的邏輯應用程式已執行最大並行實例時，可以等候執行的邏輯應用程式實例數目上限。 <p><p>若要變更此限制，請參閱 [變更等候執行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
 | SplitOn 項目 | 並行關閉：100000 <p><p>平行存取于：100 | 對於傳回陣列的觸發程序，您可以指定使用 'SplitOn' 屬性的運算式，將[陣列項目分割或解除批次為多個工作流程執行個體](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)以供處理，而非使用 "Foreach" 迴圈。 這個運算式會參考要用於建立及執行每個陣列項目的工作流程執行個體的陣列。 <p><p>**注意**：當並行開啟時，SplitOn 限制會減少至 100 個項目。 |
 ||||
 

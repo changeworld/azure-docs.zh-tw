@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7a33cf4e66ce31f8fb8534de25d7564a5784ca3a
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 7341d1f07e8814edcad7b84f6b3b46c7bece3159
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625044"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680327"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線
 
@@ -27,7 +27,7 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 在本教學課程中，您將：
 
 > [!div class="checklist"]
-> * 在雲端的 [Azure Notebooks](../notebooks/index.yml) \(部分機器翻譯\) 上建立並執行 Jupyter Notebook 檔案。
+> * 在雲端的 [Azure Notebooks](https://notebooks.azure.com) \(部分機器翻譯\) 上建立並執行 Jupyter Notebook 檔案。
 > * 在 Python 中呼叫 Azure 地圖服務 REST API。
 > * 根據電動車的耗電量模型搜尋可達範圍。
 > * 搜尋位於可抵達範圍或等時線內的電動車充電站。
@@ -49,7 +49,7 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 
 若要遵循此教學課程，您必須建立 Azure Notebooks 專案，並下載及執行 Jupyter Notebook 檔案。 此 Jupyter Notebook 檔案包含 Python 程式碼，可實作本教學課程中的案例。 若要建立 Azure Notebooks 專案，並將 Jupyter Notebook 文件上傳到其中，請執行下列步驟：
 
-1. 前往 [Azure Notebooks](https://notebooks.azure.com) 並登入。 如需詳細資訊，請參閱[快速入門：登入並設定使用者識別碼](../notebooks/quickstart-sign-in-azure-notebooks.md)。
+1. 前往 [Azure Notebooks](https://notebooks.azure.com) 並登入。 如需詳細資訊，請參閱[快速入門：登入並設定使用者識別碼](https://notebooks.azure.com)。
 1. 在您的公用設定檔頁面上，選取 [我的專案]  。
 
     ![[我的專案] 按鈕](./media/tutorial-ev-routing/myproject.png)
@@ -403,9 +403,9 @@ display(Image(staticMapImage))
 
 沒有任何資源需要清除。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入了解 Azure Notebooks，請參閱
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

@@ -8,24 +8,24 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 53fb11216e65ebead43c02a7153d937c37b841a0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655164"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681055"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>如何建立虛擬機器或 VHD 的受控映像
 
 若要建立虛擬機器 (VM) 的多個複本以在 Azure 中用於開發和測試，請擷取 VM 或 OS VHD 的受控映像。 若要大規模建立、儲存和共用映像，請參閱[共用映像資源庫](../shared-images-cli.md)。
 
-一個受控映像最多可支援 20 個同時部署。 嘗試從相同的受控映像同時建立 20 個以上的虛擬機器時，因為單一 VHD 的儲存體效能限制之故，可能會導致佈建逾時。 若要同時建立 20 個以上的 VM，請使用[共用映像資源庫](shared-image-galleries.md)中設定為每 20 個並行虛擬機器部署 1 個複本的映像。
+一個受控映像最多可支援 20 個同時部署。 嘗試從相同的受控映像同時建立 20 個以上的虛擬機器時，因為單一 VHD 的儲存體效能限制之故，可能會導致佈建逾時。 若要同時建立 20 個以上的 VM，請使用[共用映像資源庫](../shared-image-galleries.md)中設定為每 20 個並行虛擬機器部署 1 個複本的映像。
 
 若要建立受控映像，您必須移除個人帳戶資訊。 在下列步驟中，您將取消佈建現有的 VM、將它解除配置，然後建立映像。 您可以使用此映像，在您訂用帳戶的任何資源群組中建立 VM。
 
 若要建立一份現有 Linux VM 的副本以進行備份或偵錯，或是從內部部署 VM 上傳特定的 Linux VHD，請參閱[從自訂的磁碟映像上傳及建立 Linux VM](upload-vhd.md)。  
 
-您可以使用 **Azure VM Image Builder (公開預覽)** 服務來建立自訂映像，而不需要學習任何工具或設定組建管道，只要提供映像設定，映像產生器就會建立映像。 如需詳細資訊，請參閱[開始使用 Azure VM Image Builder](./image-builder-overview.md)。
+您可以使用 **Azure VM Image Builder (公開預覽)** 服務來建立自訂映像，而不需要學習任何工具或設定組建管道，只要提供映像設定，映像產生器就會建立映像。 如需詳細資訊，請參閱[開始使用 Azure VM Image Builder](../image-builder-overview.md)。
 
 建立映像之前，您需要下列項目：
 

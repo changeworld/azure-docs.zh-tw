@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 4d6a7150c854ba89c3cd8eacd6b553c4b8e97343
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 883a06bdffcd0afcbc1be6f2c761d6a1c2c2ea2a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963344"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681870"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a> (預覽版設定權杖存留期原則) 
 您可以指定 Microsoft 身分識別平臺所發出的存取、SAML 或識別碼權杖的存留期。 不論是針對組織中所有的應用程式、針對多租用戶 (多組織) 應用程式，還是針對組織中特定的服務主體，都可以設定權杖存留期。 如需詳細資訊，請參閱可設定的 [權杖存留期](active-directory-configurable-token-lifetimes.md)。
@@ -87,7 +87,7 @@ ms.locfileid: "97963344"
 > [!IMPORTANT]
 > 從2020到5月，新租使用者無法設定重新整理和會話權杖存留期。  具有現有設定的租使用者可以修改重新整理和會話權杖原則，直到2021年1月30日為止。  Azure Active Directory 將會在2021年1月30日之後停止接受現有的重新整理和會話權杖設定。 您仍然可以在淘汰之後設定存取、SAML 和識別碼權杖存留期。
 >
-> 如果您需要在要求使用者再次登入之前，繼續定義時間週期，請在條件式存取中設定登入頻率。 若要深入瞭解條件式存取，請參閱 [使用條件式存取設定驗證會話管理](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)。
+> 如果您需要在要求使用者再次登入之前，繼續定義時間週期，請在條件式存取中設定登入頻率。 若要深入瞭解條件式存取，請參閱 [使用條件式存取設定驗證會話管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
 >
 > 如果您不想在停用日期之後使用條件式存取，您的重新整理和會話權杖將會在該日期設定為 [預設](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement) 設定，而且您將無法再變更其存留期。
 
@@ -210,5 +210,5 @@ ms.locfileid: "97963344"
 
     現在，原始原則已連結至您的服務主體，且新原則已設定為您的組織預設原則。 請務必記住，套用至服務主體的原則優先順序會高於組織預設原則。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 瞭解 Azure AD 條件式存取中的 [驗證會話管理功能](../conditional-access/howto-conditional-access-session-lifetime.md) 。

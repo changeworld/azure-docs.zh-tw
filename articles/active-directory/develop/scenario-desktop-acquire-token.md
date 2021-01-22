@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 040f9fa67617b058138926310706f4bc56c4ff62
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232296"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680968"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 Web API 的傳統型應用程式：取得權杖
 
@@ -1181,7 +1181,7 @@ if not result:
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>簡單權杖快取序列化 (僅限 MSAL)
 
-以下是適用於傳統型應用程式自訂權杖快取序列化的單純實作範例。 在此，使用者權杖快取位於與應用程式相同的資料夾中，或在應用程式是已 [封裝桌面應用程式](https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)的每個應用程式資料夾中的每個使用者。 如需完整的程式碼，請參閱下列範例： [active-dotnet-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2)。
+以下是適用於傳統型應用程式自訂權杖快取序列化的單純實作範例。 在此，使用者權杖快取位於與應用程式相同的資料夾中，或在應用程式是已 [封裝桌面應用程式](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)的每個應用程式資料夾中的每個使用者。 如需完整的程式碼，請參閱下列範例： [active-dotnet-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2)。
 
 建置應用程式之後，您可以呼叫 ``TokenCacheHelper.EnableSerialization()`` 並傳遞應用程式 `UserTokenCache` 來啟用序列化。
 
@@ -1405,6 +1405,6 @@ namespace CommonCacheMsalV3
 
 [!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 移至本案例的下一篇文章， [從桌面應用程式呼叫 WEB API](scenario-desktop-call-api.md)。
