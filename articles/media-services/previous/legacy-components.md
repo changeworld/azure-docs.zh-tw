@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d85cbeb99264b5b730fe585fd39f658e6448467f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 495b6bc68e79e50a0bda773e7229225595236fac
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515758"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694337"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure 媒體服務舊版元件
 
@@ -28,7 +28,7 @@ ms.locfileid: "92515758"
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>舊版元件和遷移指引的淘汰計畫
 
-*Windows Azure 媒體編碼器* (WAME) 和*Azure 媒體編碼器* (AME) 媒體處理器已淘汰。
+*Windows Azure 媒體編碼器* (WAME) 和 *Azure 媒體編碼器* (AME) 媒體處理器已淘汰。
 
 * [從 Windows Azure 媒體編碼器遷移至媒體編碼器標準](migrate-windows-azure-media-encoder.md)
 * [從 Azure 媒體編碼器遷移至媒體編碼器標準](migrate-azure-media-encoder.md)
@@ -45,8 +45,8 @@ ms.locfileid: "92515758"
 | 影片摘要 |2020年6月1日|目前沒有取代方案。|
 | 影片光學字元辨識 | 2020年6月1日 |此媒體處理器已由 [Azure 媒體服務影片索引子](../video-indexer/index.yml)取代。 此外，請考慮使用 [Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱 [比較 Azure 媒體服務 v3 預設和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 |
 | 臉部偵測 | 2020年6月1日 | 此媒體處理器已由 [Azure 媒體服務影片索引子](../video-indexer/index.yml)取代。 此外，請考慮使用 [Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱 [比較 Azure 媒體服務 v3 預設和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 |
-| 內容仲裁 | 2020年6月1日 |此媒體處理器已由 [Azure 媒體服務影片索引子](../video-indexer/index.yml)取代。 此外，請考慮使用 [Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱 [比較 Azure 媒體服務 v3 預設和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 |
+| 內容仲裁者 | 2020年6月1日 |此媒體處理器已由 [Azure 媒體服務影片索引子](../video-indexer/index.yml)取代。 此外，請考慮使用 [Azure 媒體服務 V3 API](../latest/analyzing-video-audio-files-concept.md)。 <br/>請參閱 [比較 Azure 媒體服務 v3 預設和影片索引子](../video-indexer/compare-video-indexer-with-media-services-presets.md)。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-[從媒體服務 v2 移動至 v3 的移轉指導](../latest/migrate-from-v2-to-v3.md)
+[從媒體服務 v2 移動至 v3 的移轉指導](../latest/migrate-v-2-v-3-migration-introduction.md)

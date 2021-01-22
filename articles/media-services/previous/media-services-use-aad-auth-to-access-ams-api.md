@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9dae3b1adc1f7fecf6a34fc51d2a35bf4c98ea65
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a26359c46caa8085384313f1c385c5740abc0b32
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425917"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694528"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>使用 Azure AD 驗證存取 Azure 媒體服務 API 
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)] 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Azure 媒體服務 API 是一種 RESTful API。 您可以使用 REST API 或使用可用的用戶端 SDK 來執行媒體資源的作業。 Azure 媒體服務提供適用於 Microsoft .NET 的媒體服務用戶端 SDK。 在獲得存取媒體服務資源和媒體服務 API 的授權之前，您必須先進行驗證。 
 
-媒體服務支援 [Azure Active Directory (Azure AD) 型驗證](../../active-directory/fundamentals/active-directory-whatis.md)。 Azure 媒體 REST 服務規定，發出 REST API 要求的使用者或應用程式需具備**參與者**或**擁有者**角色才能存取資源。 如需詳細資訊，請參閱 [什麼是 azure (AZURE RBAC) 的 azure 角色型存取控制 ](../../role-based-access-control/overview.md)。  
+媒體服務支援 [Azure Active Directory (Azure AD) 型驗證](../../active-directory/fundamentals/active-directory-whatis.md)。 Azure 媒體 REST 服務規定，發出 REST API 要求的使用者或應用程式需具備 **參與者** 或 **擁有者** 角色才能存取資源。 如需詳細資訊，請參閱 [什麼是 azure (AZURE RBAC) 的 azure 角色型存取控制 ](../../role-based-access-control/overview.md)。  
 
 本文件提供如何使用 REST 或 .NET API 來存取媒體服務 API 的概觀。
 
@@ -40,7 +40,7 @@ Azure 媒體服務 API 是一種 RESTful API。 您可以使用 REST API 或使�
 
 Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存取之媒體服務帳戶的「參與者」或「擁有者」角色。  
 只有具備「擁有者」角色的使用者，可以授與媒體資源 (帳戶) 的存取權給新的使用者或應用程式。 「參與者」角色只能存取媒體資源。
-未經授權的要求會失敗，狀態碼為 401。 如果您看到此錯誤碼，請確認您的使用者是否具有針對該使用者的媒體服務帳戶指派的「參與者」或「擁有者」角色。 您可以在 Azure 入口網站查看。 搜尋您的媒體帳戶，然後按一下 [Access control] \(存取控制\)**** 索引標籤。 
+未經授權的要求會失敗，狀態碼為 401。 如果您看到此錯誤碼，請確認您的使用者是否具有針對該使用者的媒體服務帳戶指派的「參與者」或「擁有者」角色。 您可以在 Azure 入口網站查看。 搜尋您的媒體帳戶，然後按一下 [Access control] \(存取控制\) 索引標籤。 
 
 ![[Access control] \(存取控制\) 索引標籤](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
 

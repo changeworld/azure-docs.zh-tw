@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: b7029c5cdd004910caa83425536bbe481e4b01f3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 61858a478ead93b3709bb3e05c26335c9acbc24d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95557540"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98698102"
 ---
 ## <a name="for-users-in-your-directory"></a>適用于您目錄中的使用者
 
@@ -192,6 +192,8 @@ ms.locfileid: "95557540"
 
     ![存取套件-原則-新增替代核准者](./media/active-directory-entitlement-management-request-policy/alternate-approvers-add.png)
 
+    如果您選取管理員做為第一個核准者的核准者，您將會有另一個選項，也就是 **第二個層級管理員作為替代核准者**，可在替代核准者欄位中選擇。 如果您選取此選項，則必須新增回溯核准者以將要求轉送至，以防系統找不到第二個層級管理員。
+
 1. 在 [ **轉寄給替代核准者 (s]) [天數** ] 方塊之後，放入核准者核准或拒絕要求的天數。 如果沒有核准者在要求期間之前核准或拒絕要求，則要求會過期 (超時) ，而且使用者必須提交其他存取套件的要求。 
 
     要求在要求持續時間達到半生命週期後，一天只能轉送給替代核准者，且 () 的主要核准者決定必須在至少4天后到期。 如果要求超時時間小於或等於3，則沒有足夠的時間將要求轉寄給替代核准者 (s) 。 在此範例中，要求的持續時間為14天。 因此，要求持續時間會在第7天到達半生命週期。 因此，無法在第8天之前轉送要求。 此外，您無法在要求持續時間的最後一天轉寄要求。 因此，在此範例中，可轉送的最新要求是第13天。
@@ -206,7 +208,7 @@ ms.locfileid: "95557540"
 
     ![顯示啟用新要求和指派之選項的螢幕擷取畫面。](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
-1. 按 [下一步] 。
+1. 按一下 [下一步] 。
 
 ## <a name="add-requestor-information-preview-to-an-access-package"></a>將要求者資訊 (預覽) 新增至存取套件
 

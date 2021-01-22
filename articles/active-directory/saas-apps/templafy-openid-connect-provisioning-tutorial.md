@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: f9e462d66e438e42c40b16ba9b818ddd330e9e5a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 7afcf6c5814917b3356d86e7288fd2920a04cad7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98612062"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695987"
 ---
 # <a name="tutorial-configure-templafy-openid-connect-for-automatic-user-provisioning"></a>教學課程：設定 Templafy OpenID Connect 來自動布建使用者
 
@@ -133,7 +133,26 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Templafy OpenID Connect 的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對 Templafy OpenID Connect 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Templafy OpenID Connect 使用者屬性](media/templafy-openid-connect-provisioning-tutorial/user-attribute.png)
+   |屬性|類型|支援篩選|
+   |---|---|---|
+   |userName|String|&check;|
+   |作用中|Boolean|
+   |displayName|String|
+   |title|String|
+   |preferredLanguage|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |phoneNumbers[type eq "work"].value|String|
+   |phoneNumbers[type eq "mobile"].value|String|
+   |phoneNumbers[type eq "fax"].value|String|
+   |externalId|String|
+   |addresses[type eq "work"].locality|String|
+   |addresses[type eq "work"].postalCode|String|
+   |addresses[type eq "work"].region|String|
+   |addresses[type eq "work"].streetAddress|String|
+   |addresses[type eq "work"].country|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
 
 10. 在 [對應] 區段中，選取 [將 Azure Active Directory 群組同步至 Templafy]。
 
@@ -141,7 +160,11 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 11. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Templafy OpenID Connect 的群組屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對 Templafy OpenID Connect 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Templafy OpenID Connect 群組屬性](media/templafy-openid-connect-provisioning-tutorial/group-attribute.png)
+      |屬性|類型|支援篩選|
+      |---|---|---|
+      |displayName|String|&check;|
+      |members|參考|
+      |externalId|String|      
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

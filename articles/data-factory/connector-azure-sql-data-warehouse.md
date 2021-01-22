@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/11/2021
-ms.openlocfilehash: a411f4ce261ee6d203e274efe3cf23ca23203453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 01/22/2021
+ms.openlocfilehash: 48450218975f2c6ee14e12af8d722942e8db1347
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070876"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695843"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Synapse Analytics 中複製和轉換資料
 
@@ -76,6 +76,9 @@ ms.locfileid: "98070876"
 - [SQL 驗證](#sql-authentication)
 - Azure AD 應用程式權杖驗證：[服務主體](#service-principal-authentication)
 - Azure AD 應用程式權杖驗證：[適用於 Azure 資源的受控識別](#managed-identity)
+
+>[!TIP]
+>從 UI 建立 Azure Synapse **無伺服器** SQL 集區的連結服務時，請選擇 [手動輸入]，而不要從訂用帳戶流覽。
 
 >[!TIP]
 >如果您遇到錯誤，其錯誤碼為 "UserErrorFailedToConnectToSqlServer"，以及「資料庫的工作階段限制為 XXX 並已達到。」訊息，請將 `Pooling=false` 新增至您的連接字串並再試一次。
@@ -391,7 +394,7 @@ Azure Data Factory 支援將資料載入 Azure Synapse Analytics 的三種方式
 | writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/><br/>允許的值為 **時間範圍**。 範例：「00:30:00」(30 分鐘)。 | 否。<br/>使用 bulk insert 時套用。        |
 | preCopyScript     | 指定在每次執行中將資料寫入 Azure Synapse Analytics 之前，要執行的複製活動的 SQL 查詢。 使用此屬性來清除預先載入的資料。 | 否                                            |
 | tableOption | 指定是否要根據來源架構， [自動建立接收資料表](copy-activity-overview.md#auto-create-sink-tables) （如果不存在的話）。 允許的值包為：`none` (預設) 或 `autoCreate`。 |否 |
-| disableMetricsCollection | Data Factory 會收集諸如複製效能優化和建議的 Azure Synapse Analytics Dwu 之類的度量，其中導入了額外的 master DB 存取權。 如果您擔心此行為，請指定 `true` 將其關閉。 | 否 (預設值為 `false`) |
+| disableMetricsCollection | Data Factory 會收集諸如複製效能優化和建議的 Azure Synapse Analytics Dwu 之類的計量，而這會引進額外的 master DB 存取權。 如果您擔心此行為，請指定 `true` 將其關閉。 | 否 (預設值為 `false`) |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure Synapse Analytics 接收器範例
 
@@ -780,6 +783,7 @@ Azure Synapse Analytics [COPY 語句](/sql/t-sql/statements/copy-into-transact-s
 
 - 當您將受控識別驗證用於儲存體連結服務時，請分別瞭解 [Azure Blob](connector-azure-blob-storage.md#managed-identity) 和 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) 所需的設定。
 - 如果您的 Azure 儲存體設定了 VNet 服務端點，您必須使用在儲存體帳戶上啟用「允許信任的 Microsoft 服務」的受控識別驗證，請參閱 [使用 VNet 服務端點搭配 Azure 儲存體的影響](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)。
+- 當您使用 Azure Synapse **無伺服器** SQL 集區作為來源時，不支援啟用暫存。
 
 **查詢**：如果您在 [輸入] 欄位中選取 [查詢]，請對於您的來源輸入 SQL 查詢。 此設定會覆寫您在資料集中選擇的任何資料表。 這裡不支援 **Order By** 子句，但您可以設定完整的 SELECT FROM 陳述式。 您也可使用使用者定義的資料表函數。 **select * from udfGetData()** 是 SQL 中傳回資料表的 UDF。 此查詢會產生您可以在資料流程中使用的來源資料表。 使用查詢也是縮減資料列以進行測試或查閱的絕佳方式。
 

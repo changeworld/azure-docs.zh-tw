@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2020
+ms.date: 01/22/2021
 ms.author: jingwang
-ms.openlocfilehash: a48ac86e8f9814adef9be2360b2446335d368447
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 430b9a1e567d9a79093f50ae388b4b69119c057d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296551"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695868"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Teradata 有利複製資料
 
@@ -44,11 +44,11 @@ ms.locfileid: "96296551"
 - 使用 **基本**、 **Windows** 或 **LDAP** 驗證來複製資料。
 - 從 Teradata 來源進行平行複製。 如需詳細資訊，請參閱 [Teradata 的平行複製](#parallel-copy-from-teradata) 一節。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-如果您使用自我裝載的 Integration Runtime，請注意，它會提供從3.18 版開始的內建 Teradata 驅動程式。 您不需要手動安裝任何驅動程式。 驅動程式在自我裝載整合執行時間電腦上需要 "C++ 可轉散發套件 2012 Update 4"。 如果您尚未安裝，請從 [這裡](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)下載。
+如果您使用自我裝載的 Integration Runtime，請注意，它會提供從3.18 版開始的內建 Teradata 驅動程式。 您不需要手動安裝任何驅動程式。 驅動程式在自我裝載整合執行時間電腦上需要 "C++ 可轉散發套件 2012 Update 4"。 如果尚未安裝，請從[這裡](https://www.microsoft.com/en-sg/download/details.aspx?id=30679)下載。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -72,6 +72,7 @@ Teradata 連結服務支援下列屬性：
 
 | 屬性 | 描述 | 預設值 |
 |:--- |:--- |:--- |
+| TdmstPortNumber | 用來存取 Teradata 資料庫的埠號碼。<br>請勿變更此值，除非是由技術支援人員指示。 | 1025 |
 | UseDataEncryption | 指定是否要加密與 Teradata 資料庫的所有通訊。 允許的值為0或1。<br><br/>- **0 (停用，預設)**：僅加密驗證資訊。<br/>- **1 (啟用)**：加密在驅動程式與資料庫之間傳遞的所有資料。 | `0` |
 | CharacterSet | 要用於會話的字元集。 例如， `CharacterSet=UTF16` 。<br><br/>這個值可以是使用者定義的字元集，也可以是下列其中一個預先定義的字元集： <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-SHIFT-JIS (Windows、DOS 相容、KANJISJIS_0S) <br/>-EUC (Unix 相容、KANJIEC_0U) <br/>-IBM 大型主機 (KANJIEBCDIC5035_0I) <br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0) <br/>-GB (SCHGB2312_1T0) <br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4) <br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | `ASCII` |
 | MaxRespSize |SQL 要求的回應緩衝區大小上限，以 kb (Kb) 。 例如， `MaxRespSize=‭10485760‬` 。<br/><br/>針對 Teradata 資料庫16.00 版或更新版本，最大值為7361536。 若是使用舊版的連接，最大值為1048576。 | `65536` |
@@ -229,7 +230,7 @@ Teradata 連結服務支援下列屬性：
 | partitionSettings | 指定資料分割的設定群組。 <br>當分割選項不是 `None` 時套用。 | 否 |
 | partitionColumnName | 指定要由範圍分割區或雜湊資料分割用於平行複製的來源資料行名稱。 如果未指定，則會 autodetected 資料表的主要索引，並將其當做資料分割資料行使用。 <br>當資料分割選項為或時套用 `Hash` `DynamicRange` 。 如果您使用查詢來取出來源資料，請攔截 `?AdfHashPartitionCondition` 或  `?AdfRangePartitionColumnName` 在 WHERE 子句中。 請參閱 [從 Teradata 並行複製的](#parallel-copy-from-teradata) 範例一節。 | 否 |
 | partitionUpperBound | 從分割資料行複製出資料時的最大值。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfRangePartitionUpbound`。 如需範例，請參閱 [Teradata 一節中的平行複製](#parallel-copy-from-teradata) 。 | 否 |
-| partitionLowerBound | 從分割資料行複製出資料時的最小值。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfRangePartitionLowbound`。 如需範例，請參閱 [Teradata 一節中的平行複製](#parallel-copy-from-teradata) 。 | No |
+| partitionLowerBound | 從分割資料行複製出資料時的最小值。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfRangePartitionLowbound`。 如需範例，請參閱 [Teradata 一節中的平行複製](#parallel-copy-from-teradata) 。 | 否 |
 
 > [!NOTE]
 >
@@ -341,7 +342,7 @@ Data Factory Teradata 連接器提供內建的資料分割，以平行方式從 
 | Interval Second |不支援。 在來源查詢中套用明確轉換。 |
 | Interval Year |不支援。 在來源查詢中套用明確轉換。 |
 | 間隔年至月 |不支援。 在來源查詢中套用明確轉換。 |
-| 數字 |Double |
+| Number |Double |
 | 期間 (日期)  |不支援。 在來源查詢中套用明確轉換。 |
 | 期間 (時間)  |不支援。 在來源查詢中套用明確轉換。 |
 | 使用時區) 的期間 (時間 |不支援。 在來源查詢中套用明確轉換。 |

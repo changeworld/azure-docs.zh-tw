@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: 057b437c5d88c4f292e08828482e5dca0d2ca5b4
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 0e7275ee92431e791fec7bd2c9ec07dd623b0f9e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611893"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696003"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>教學課程：設定 Templafy SAML2 來自動布建使用者
 
@@ -133,7 +133,26 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 9. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步處理至 Templafy SAML2 的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對 Templafy SAML2 中的使用者帳戶，以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Templafy SAML2 使用者屬性](media/templafy-saml-2-provisioning-tutorial/user-attribute.png)
+   |屬性|類型|支援篩選|
+   |---|---|---|
+   |userName|String|&check;|
+   |作用中|Boolean|
+   |displayName|String|
+   |title|String|
+   |preferredLanguage|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |phoneNumbers[type eq "work"].value|String|
+   |phoneNumbers[type eq "mobile"].value|String|
+   |phoneNumbers[type eq "fax"].value|String|
+   |externalId|String|
+   |addresses[type eq "work"].locality|String|
+   |addresses[type eq "work"].postalCode|String|
+   |addresses[type eq "work"].region|String|
+   |addresses[type eq "work"].streetAddress|String|
+   |addresses[type eq "work"].country|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
 
 10. 在 [對應] 區段中，選取 [將 Azure Active Directory 群組同步至 Templafy]。
 
@@ -141,7 +160,12 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 11. 在 [ **屬性** 對應] 區段中，檢查從 Azure AD 同步處理至 Templafy SAML2 的群組屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對 Templafy SAML2 中的群組以進行更新作業。 選取 [儲存] 按鈕以認可所有變更。
 
-    ![Templafy SAML2 群組屬性](media/templafy-saml-2-provisioning-tutorial/group-attribute.png)
+      |屬性|類型|支援篩選|
+      |---|---|---|
+      |displayName|String|&check;|
+      |members|參考|
+      |externalId|String|      
+
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
