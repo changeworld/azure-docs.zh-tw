@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: cdd8783daf9e1e1458f47e773eb3b6ccedfbae83
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: d6832238b0c76059079e2a1330d31eed3212b242
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624552"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685573"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 
@@ -230,6 +230,7 @@ ms.locfileid: "98624552"
     conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
+1. 安裝核心之後，請重新整理頁面，然後開啟筆記本。 您現在會在核心清單中看到新的核心。
 
 > [!NOTE]
 > 針對筆記本內的套件管理，請使用 **% pip** 或 **% conda** 魔術函式將套件自動安裝 **到目前** 執行中的核心，而不是代表所有套件的 **！ pip** 或 **！ conda** ， (包括目前執行中核心以外的套件) 
@@ -264,7 +265,7 @@ ms.locfileid: "98624552"
 
    :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="命令模式中的筆記本儲存格 ":::
 
-| 快速鍵                      | 描述                          |
+| 快速鍵                      | Description                          |
 | ----------------------------- | ------------------------------------|
 | Enter                         | 進入編輯模式             |        
 | Shift + Enter                 | 執行儲存格，選取下方         |     
@@ -308,7 +309,7 @@ ms.locfileid: "98624552"
 
 使用下列擊鍵快速鍵，在編輯模式下，您可以更輕鬆地在 Azure Machine Learning 筆記本中流覽並執行程式碼。
 
-| 快速鍵                      | 描述|                                     
+| 快速鍵                      | Description|                                     
 | ----------------------------- | ----------------------------------------------- |
 | 逸出                        | 進入命令模式|  
 | 控制/命令 + 空間       | 啟用 IntelliSense |

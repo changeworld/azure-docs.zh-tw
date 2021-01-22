@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 11/19/2020
+ms.date: 01/21/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 44afd8ea4ef2ab06ec31b7528e9776faebc3b4dc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97978834"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98690046"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上開啟哪些連接埠？ 
 您可以使用下列通訊協定搭配 Azure 事件中樞來傳送和接收事件：
@@ -36,10 +36,10 @@ ms.locfileid: "97978834"
 
 | 語言 | 選項   |
 | -------- | ----- |
-| .NET     | 具有[EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true)或[EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true)的[EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true)屬性 |
-| Java     | [eventhubs. EventProcessorClientBuilder. transporttype](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) with [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) or [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| 節點  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) 具有 `webSocketOptions` 屬性。 |
-| Python | 使用[TransportType. Amqp](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python)或 TransportType 的[EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) [。 AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
+| .NET     | 具有[EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype)或[EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype)的[EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype)屬性 |
+| Java     | [eventhubs. EventProcessorClientBuilder. transporttype](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype) with [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype) or [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype) |
+| 節點  | [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions) 具有 `webSocketOptions` 屬性。 |
+| Python | 使用[TransportType. Amqp](/python/api/azure-eventhub/azure.eventhub.transporttype)或 TransportType 的[EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient) [。 AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype) |
 
 ### <a name="what-ip-addresses-do-i-need-to-allow"></a>我需要允許哪些 IP 位址？
 當您使用 Azure 時，有時您必須允許公司防火牆或 proxy 中的特定 IP 位址範圍或 Url 存取您使用的所有 Azure 服務，或嘗試使用的所有服務。 確認事件中樞所使用的 IP 位址上允許流量。 針對 Azure 事件中樞所使用的 IP 位址：請參閱 [AZURE Ip 範圍和服務標籤-公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。

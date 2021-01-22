@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: b19fb3f86be46a5db60fb87f9c7f5c3e28ac6428
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965135"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689691"
 ---
 ## <a name="install-the-container"></a>安裝容器
 
@@ -84,7 +84,7 @@ Azure [用於容器的 Web App](https://azure.microsoft.com/services/app-service
 
 使用 Azure CLI 來執行此 PowerShell 腳本，以使用您的訂用帳戶和透過 HTTPS 的容器映射來建立用於容器的 Web App。 請先等候腳本完成 (大約25-30 分鐘) ，然後再提交第一個要求。
 
-```bash
+```azurecli
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            #    and AppSerivce to be attached to.
@@ -118,7 +118,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 > [!NOTE] 
 > Azure 容器實例不包含內建網域的 HTTPS 支援。 如果您需要 HTTPS，您將需要手動設定它，包括建立憑證和註冊網域。 您可以使用下面的 NGINX 找到相關指示。
 
-```bash
+```azurecli
 $subscription_name = ""                    # The name of the subscription you want you resource to be created on.
 $resource_group_name = ""                  # The name of the resource group you want the AppServicePlan
                                            # and AppService to be attached to.

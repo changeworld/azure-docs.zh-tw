@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 117bc71ba304445e3186b4e633f5888647be9223
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127612"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685624"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -895,7 +895,7 @@ ms.locfileid: "98127612"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
     
-| 以 Web 為基礎的工具  |     描述  |
+| 以 Web 為基礎的工具  |     Description  |
 |---|---|
 | Azure ML Studio 筆記本   |     第一次針對筆記本檔案進行類別撰寫，並支援 Azure ML Python SDK 中所有可用的作業。 | 
 
@@ -1407,7 +1407,7 @@ ms.locfileid: "98127612"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
 
-| 以 Web 為基礎的工具 | 描述 | 
+| 以 Web 為基礎的工具 | Description | 
 |-|-|-|
 | 筆記本 VM (預覽)  | 完全受控的雲端式工作站 | 
 | [自動化機器學習](tutorial-first-experiment-automated-ml.md) (預覽)  | 自動化機器學習模型開發的程式碼體驗 | 
@@ -1421,7 +1421,7 @@ ms.locfileid: "98127612"
 
 ### <a name="r-sdk"></a>R SDK 
  
-資料科學家和 AI 開發人員使用 [適用于 R 的 AZURE MACHINE LEARNING SDK](tutorial-1st-r-experiment.md) ，以 Azure Machine Learning 建立及執行機器學習工作流程。
+資料科學家和 AI 開發人員使用 [適用于 R 的 AZURE MACHINE LEARNING SDK](https://github.com/Azure/azureml-sdk-for-r) ，以 Azure Machine Learning 建立及執行機器學習工作流程。
 
 適用于 R 的 Azure Machine Learning SDK 會使用 `reticulate` 套件來系結至 PYTHON SDK。 藉由直接系結至 Python，適用于 R 的 SDK 可讓您從任何您選擇的 R 環境，存取 Python SDK 中所執行的核心物件和方法。
 
@@ -1597,13 +1597,13 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
   + **azureml-定型-automl**
     + 建立 [實驗](/python/api/azureml-core/azureml.core.experiment.experiment) 物件會取得或建立 Azure Machine Learning 工作區中的實驗，以進行執行歷程記錄追蹤。 實驗識別碼和封存時間會在建立時填入實驗物件中。 範例：
 
-        ```py
+        ```python
         experiment = Experiment(workspace, "New Experiment")
         experiment_id = experiment.id
         ```
         封存[ ( # B1](/python/api/azureml-core/azureml.core.experiment.experiment#archive--)和[重新開機 ( # B3](/python/api/azureml-core/azureml.core.experiment.experiment#reactivate-new-name-none-)是可在實驗上呼叫的函式，可隱藏和還原實驗，使其不會顯示在 UX 中，或依預設在清單實驗的呼叫中傳回。 如果使用與封存實驗相同的名稱建立新的實驗，您可以藉由傳遞新名稱重新啟用封存的實驗。 只能有一個使用中的實驗具有指定的名稱。 範例：
 
-        ```py
+        ```python
         experiment1 = Experiment(workspace, "Active Experiment")
         experiment1.archive()
         # Create new active experiment with the same name as the archived.
@@ -1612,7 +1612,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
         ```
         實驗上 [ ( # B1 ](/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly---tags-none-) 的靜態方法清單可以採用名稱篩選和 ViewType 篩選。 ViewType 值為 "ACTIVE_ONLY"、"ARCHIVED_ONLY" 和 "ALL"。 範例：
 
-        ```py
+        ```python
         archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY")
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
@@ -1768,7 +1768,7 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
     + 已在估算器中新增參數的 dockerfile 支援 `environment_definition` 。
     + 簡化了估算器中的分散式訓練參數。
 
-         ```py
+         ```python
         from azureml.train.dnn import TensorFlow, Mpi, ParameterServer
         ```
 
@@ -1820,14 +1820,14 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
   + **azureml-core**
     + 引進 Dataset.get_all (工作區) ，它會傳回以 `TabularDataset` 其註冊名稱做為索引鍵的和物件的字典 `FileDataset` 。
 
-    ```py
+    ```python
     workspace = Workspace.from_config()
     all_datasets = Dataset.get_all(workspace)
     mydata = all_datasets['my-data']
     ```
 
     + 引進 `parition_format` 和的自 `Dataset.Tabular.from_delimited_files` 變數 `Dataset.Tabular.from_parquet.files` 。 系統會根據指定的格式，將每個資料路徑的分割區資訊解壓縮至資料行中。 ' {column_name} ' 建立了字串資料行，而 ' {column_name： yyyy/MM/dd/HH/MM/ss} ' 建立了 datetime 資料行，其中 ' yyyy '、' MM '、' dd '、' HH '、' mm ' 和 ' ss ' 是用來將 datetime 類型的年、月、日、小時、分鐘和秒解壓縮。 Partition_format 應從第一個分割區索引鍵的位置開始，直到檔路徑結束為止。 例如，假設有路徑 '。/USA/2019/01/01/data.csv '，其中的資料分割依 country 和 time，partition_format = '/{Country}/{PartitionDate： yyyy/MM/dd}/data.csv ' 會以值 ' USA ' 和值為 ' 2019-01-01 ' 的日期時間資料行 ' PartitionDate ' 建立字串資料行 ' Country '。
-        ```py
+        ```python
         workspace = Workspace.from_config()
         all_datasets = Dataset.get_all(workspace)
         mydata = all_datasets['my-data']
@@ -2278,6 +2278,6 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
   + 新記錄檔檢視器
   + [活動] 索引標籤中的實驗執行、計算、模型、映射和部署的連結
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 閱讀 [Azure Machine Learning](overview-what-is-azure-ml.md) 概觀。

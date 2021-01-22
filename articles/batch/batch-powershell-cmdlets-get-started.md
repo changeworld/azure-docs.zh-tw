@@ -2,34 +2,34 @@
 title: 開始使用 PowerShell
 description: 您可以用來管理 Batch 資源的 Azure PowerShell Cmdlet 快速簡介。
 ms.topic: how-to
-ms.date: 01/15/2019
+ms.date: 01/21/2021
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 3c152733ee3a75732d119db16f7db7c266740fdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b51a2a7852df82625fb342bbbbc4a3a1cbf72a3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89079841"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685505"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>使用 PowerShell Cmdlet 管理 Batch 資源
 
-使用 Azure Batch PowerShell Cmdlet，您可以執行您使用 Batch API、Azure 入口網站和 Azure 命令列介面 (CLI) 執行的許多工作，並撰寫其指令碼。 本文會快速介紹可用來管理 Batch 帳戶和使用批次資源 (例如集區、作業和和工作) 的 Cmdlet。
+使用 Azure Batch PowerShell Cmdlet，您可以執行許多常見的 Batch 工作並編寫其腳本。 本文會快速介紹可用來管理 Batch 帳戶和使用批次資源 (例如集區、作業和和工作) 的 Cmdlet。
 
 如需批次 Cmdlet 和詳細 Cmdlet 語法的完整清單，請參閱 [Azure 批次 Cmdlet 參考資料](/powershell/module/az.batch)。
 
-本文是根據 Az Batch 模組 1.0.0 中的 Cmdlet 而撰寫的。 建議您經常更新 Azure PowerShell 模組，以充分運用服務更新和增強功能。
+建議您經常更新 Azure PowerShell 模組，以充分運用服務更新和增強功能。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* [安裝及設定 Azure PowerShell 模組](/powershell/azure/)。 若要安裝特定的 Azure Batch 模組 (例如發行前版本模組)，請參閱 [PowerShell 資源庫](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)。
+- [安裝及設定 Azure PowerShell 模組](/powershell/azure/)。 若要安裝特定的 Azure Batch 模組 (例如發行前版本模組)，請參閱 [PowerShell 資源庫](https://www.powershellgallery.com/packages/Az.Batch/)。
 
-* 執行 **Connect-AzAccount** Cmdlet 以連線到訂用帳戶 (Azure Batch Cmdlet 隨附在 Azure Resource Manager 模組中)：
+- 執行 **Connect-AzAccount** Cmdlet 以連線到訂用帳戶 (Azure Batch Cmdlet 隨附在 Azure Resource Manager 模組中)：
 
   ```powershell
   Connect-AzAccount
   ```
 
-* **註冊 Batch 提供者命名空間**。 每個訂用帳戶只需要執行這項作業**一次**。
+- **註冊 Batch 提供者命名空間**。 每個訂用帳戶只需要執行這項作業 **一次**。
   
   ```powershell
   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -114,9 +114,9 @@ $context = Get-AzBatchAccount -AccountName <account_name>
 
 ### <a name="create-a-batch-pool"></a>建立 Batch 集區
 
-建立或更新 Batch 集區時，請為計算節點上的作業系統選取雲端服務設定或虛擬機器設定 (請參閱[節點和集區](nodes-and-pools.md#configurations))。 如果您指定雲端服務設定，則會使用其中一個 [Azure 客體 OS 版本](../cloud-services/cloud-services-guestos-update-matrix.md#releases)來製作計算節點的映像。 如果指定虛擬機器設定，則可指定 [Azure 虛擬機器 Marketplace][vm_marketplace] 所列其中一個支援的 Linux 或 Windows VM 映像，或提供已準備的自訂映像。
+當 [您建立或](nodes-and-pools.md#configurations)更新 Batch 集區時，您會指定一個設定。 集區通常應該使用虛擬機器設定進行設定，這可讓您指定 [Azure 虛擬機器 Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1)中所列的其中一個支援的 Linux 或 Windows VM 映射，或提供您已備妥的自訂映射。 雲端服務設定集區僅提供 Windows 計算節點，不支援所有批次功能。
 
-當您執行 **New-AzBatchPool** 時，請將作業系統設定傳入 PSCloudServiceConfiguration 或 PSVirtualMachineConfiguration 物件中。 例如，下列程式碼片段會使用虛擬機器組態中的 Standard_A1 計算節點建立 Batch 集區，並以 Ubuntu Server 18.04-LTS 製作映像。 在此，**VirtualMachineConfiguration** 參數會將 $configuration 變數指定為 PSVirtualMachineConfiguration 物件。 **BatchContext** 參數會將先前定義的變數 $context 指定為 BatchAccountContext 物件。
+當您執行 **>new-azbatchpool** 時，請在 PSVirtualMachineConfiguration 或 PSCloudServiceConfiguration 物件中傳遞作業系統設定。 例如，下列程式碼片段會使用虛擬機器組態中的 Standard_A1 計算節點建立 Batch 集區，並以 Ubuntu Server 18.04-LTS 製作映像。 在此，**VirtualMachineConfiguration** 參數會將 $configuration 變數指定為 PSVirtualMachineConfiguration 物件。 **BatchContext** 參數會將先前定義的變數 $context 指定為 BatchAccountContext 物件。
 
 ```powershell
 $imageRef = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("UbuntuServer","Canonical","18.04-LTS")
@@ -134,7 +134,7 @@ New-AzBatchPool -Id "mypspool" -VirtualMachineSize "Standard_a1" -VirtualMachine
 
 ### <a name="query-for-data"></a>查詢資料
 
-例如，使用 **Get-AzBatchPools** 尋找您的集區。 依預設，這將查詢您帳戶下的所有集區，並假設您已經將 BatchAccountContext 物件儲存在 *$context*中：
+例如，使用 **Get-AzBatchPools** 尋找您的集區。 依預設，這將查詢您帳戶下的所有集區，並假設您已經將 BatchAccountContext 物件儲存在 *$context* 中：
 
 ```powershell
 Get-AzBatchPool -BatchContext $context
@@ -190,7 +190,10 @@ Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatch
 
 ## <a name="application-package-management"></a>應用程式封裝管理
 
-應用程式封裝提供了簡化的方式，可將應用程式部署至您集區中的計算節點。 利用 Batch PowerShell Cmdlet，您可以上傳和管理 Batch 帳戶中的應用程式套件，並將套件版本部署至計算節點。
+[應用程式封裝](batch-application-packages.md) 可讓您以簡化的方式，將應用程式部署到集區中的計算節點。 利用 Batch PowerShell Cmdlet，您可以上傳和管理 Batch 帳戶中的應用程式套件，並將套件版本部署至計算節點。
+
+> [!IMPORTANT]
+> 您必須先將 Azure 儲存體帳戶連結到您的 Batch 帳戶，才能使用應用程式套件。
 
 **建立** 應用程式：
 
@@ -204,13 +207,13 @@ New-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group
 New-AzBatchApplicationPackage -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -ApplicationVersion "1.0" -Format zip -FilePath package001.zip
 ```
 
-設定應用程式的**預設版本**︰
+設定應用程式的 **預設版本**︰
 
 ```powershell
 Set-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -DefaultVersion "1.0"
 ```
 
-**列出**應用程式的套件
+**列出** 應用程式的套件
 
 ```powershell
 $application = Get-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
@@ -218,13 +221,13 @@ $application = Get-AzBatchApplication -AccountName <account_name> -ResourceGroup
 $application.ApplicationPackages
 ```
 
-**刪除**應用程式套件
+**刪除** 應用程式套件
 
 ```powershell
 Remove-AzBatchApplicationPackage -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -ApplicationVersion "1.0"
 ```
 
-**刪除**應用程式
+**刪除** 應用程式
 
 ```powershell
 Remove-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
@@ -247,17 +250,13 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-現在建立設定和集區。 此範例搭配 `$configuration` 中初始化的 `PSCloudServiceConfiguration` 類型物件使用 **CloudServiceConfiguration** 參數，這會將 **OSFamily** 設定為 `6` 以表示 'Windows Server 2019'，並將 **OSVersion** 設定為 `*`。 指定套件參考物件作為 `ApplicationPackageReferences` 選項的引數：
+現在建立集區，並指定套件參考物件做為 `ApplicationPackageReferences` 選項的引數︰
 
 ```powershell
-$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
-New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
+New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -VirtualMachineConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 
 您可以在[使用 Batch 應用程式套件將應用程式部署至計算節點](batch-application-packages.md)中找到應用程式套件的詳細資訊。
-
-> [!IMPORTANT]
-> 您必須先將 Azure 儲存體帳戶連結到您的 Batch 帳戶，才能使用應用程式套件。
 
 ### <a name="update-a-pools-application-packages"></a>更新集區的應用程式封裝
 
@@ -272,7 +271,7 @@ $appPackageReference.Version = "2.0"
 
 ```
 
-接下來，從 Batch 取得集區、清除任何現有的套件、新增我們新的套件參考，以及使用新的集區設定更新 Batch 服務︰
+接下來，從 Batch 取得集區、清除任何現有的套件、新增套件參考，然後使用新的集區設定來更新 Batch 服務：
 
 ```powershell
 $pool = Get-AzBatchPool -BatchContext $context -Id "PoolWithAppPackage"
@@ -291,11 +290,9 @@ Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Res
 ```
 
 > [!TIP]
-> 您可以將多個應用程式套件部署至集區中的計算節點。 如果您想要新增應用程式套件，而非取代目前部署的套件，請省略上面的 `$pool.ApplicationPackageReferences.Clear()` 一行。
+> 您可以將多個應用程式套件部署至集區中的計算節點。 如果您想要新增應用程式封裝，而不是取代目前部署的封裝，請省略 `$pool.ApplicationPackageReferences.Clear()` 上述那一行。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-* 如需詳細的 Cmdlet 語法和範例，請參閱 [Azure Batch Cmdlet 參考資料](/powershell/module/az.batch)。
-* 如需 Batch 中應用程式和應用程式套件的詳細資訊，請參閱[使用 Batch 應用程式套件將應用程式部署至計算節點](batch-application-packages.md)。
-
-[vm_marketplace]: https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images&page=1
+- 如需詳細的 Cmdlet 語法和範例，請參閱 [Azure Batch Cmdlet 參考](/powershell/module/az.batch) 。
+- 瞭解如何 [使用 Batch 應用程式套件將應用程式部署至計算節點](batch-application-packages.md)。

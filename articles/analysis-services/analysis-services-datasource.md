@@ -4,15 +4,15 @@ description: 描述 Azure Analysis Services 中表格式 1200 和更高資料模
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 01/21/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 61efc7719b071ff4e8e5c0e07534b72a2883aff1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458869"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685590"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支援的資料來源
 
@@ -117,6 +117,14 @@ ms.locfileid: "96458869"
 對於雲端資料來源：
 
 * 如果使用 SQL 驗證，模擬應為服務帳戶。
+
+## <a name="service-principal-authentication"></a>服務主體驗證
+
+當指定為 *提供者* 資料來源時，azure Analysis Services 支援 Azure SQL Database 和 Azure Synapse 資料來源的 [msoledbsql.h](/sql/connect/oledb/release-notes-for-oledb-driver-for-sql-server) Azure Active Directory 服務主體驗證。
+
+`
+Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authentication=ActiveDirectoryServicePrincipal;User ID=[Application (client) ID];Password=[Application (client) secret];Use Encryption for Data=true
+`
 
 ## <a name="oauth-credentials"></a>OAuth 認證
 

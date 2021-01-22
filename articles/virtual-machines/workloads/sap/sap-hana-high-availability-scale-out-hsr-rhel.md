@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 23a5ea2d3ffc1511bea66bb8bc3c4282b6d16cc2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c97975d6920cd0f04a7d2d4e73c00104a2b13235
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489117"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685607"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上 SAP Hana 相應放大系統的高可用性 
 
@@ -139,7 +139,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
    > 請確定您選取的作業系統已通過 SAP 認證，可 SAP Hana 您所使用的特定 VM 類型。 如需這些類型的 SAP Hana 認證的 VM 類型和作業系統版本清單，請移至 [SAP Hana 認證的 IaaS 平臺](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 網站。 按一下所列 VM 類型的詳細資料，取得該類型的 SAP Hana 支援 OS 版本的完整清單。  
   
 
-2. 建立六個網路介面，一個適用于虛擬網路子網中的每個 HANA DB 虛擬機器， `inter` (在此範例中為 **hana-s1-db1-**) **db3**、hana- **s1**--- **hana-s2-db3-inter** ------------------------ **--**--------- **--**-  
+2. 建立六個網路介面，一個適用于虛擬網路子網中的每個 HANA DB 虛擬機器， `inter` (在此範例中為 **hana-s1-db1-**) **db3**、hana- **s1**---  ------------------------ **--**--------- **--**-  
 
 3. 建立六個網路介面，其中一個用於虛擬網路子網中的每個 HANA DB 虛擬機器， `hsr` (在此範例中為 **db1-hsr**、 **hana-s1-db2-hsr**、 **hana-s1-db3-hsr**、 **hana-s2-db1-hsr**、 **hana-s2-db2-** hsr 和 **hana-s2-db3-hsr**) 。  
 
@@ -165,7 +165,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
     b. 執行下列命令，以針對附加至 `inter` 和子網的其他網路介面啟用加速網路 `hsr` 。  
 
-    ```
+    ```azurecli
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db1-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db2-inter --accelerated-networking true
     az network nic update --id /subscriptions/your subscription/resourceGroups/your resource group/providers/Microsoft.Network/networkInterfaces/hana-s1-db3-inter --accelerated-networking true
@@ -256,7 +256,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 1. **[A]** 維護虛擬機器上的主機檔案。 包含所有子網的專案。 此範例已新增下列專案 `/etc/hosts` 。  
 
-    ```
+    ```bash
      # Client subnet
      10.23.0.11 hana-s1-db1
      10.23.0.12 hana-s1-db1
@@ -303,7 +303,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 1. **[AH]** 建立 HANA 資料庫磁片區的掛接點。  
 
-    ```
+    ```bash
     mkdir -p /hana/shared
     ```
 
@@ -313,7 +313,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     > [!IMPORTANT]
     > 確認在 VM 上的 `/etc/idmapd.conf` 內設定 NFS 網域，使其與 Azure NetApp Files 上的預設網域設定相符： **`defaultv4iddomain.com`** 。 若 NFS 用戶端 (即 VM) 上網域設定和 NFS 伺服器的網域設定 (即 Azure NetApp 設定) 不相符，則掛接在 VM 上 Azure NetApp 磁碟區上檔案的權限將會顯示為 `nobody`。  
 
-    ```
+    ```bash
     sudo cat /etc/idmapd.conf
     # Example
     [General]
@@ -326,7 +326,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 3. **[AH]** 確認 `nfs4_disable_idmapping` 。 其應設為 **Y**。若要建立 `nfs4_disable_idmapping` 所在的目錄結構，請執行掛接命令。 您將無法手動在 /sys/modules 下建立目錄，因為其存取已保留給核心/驅動程式。  
    只有在使用 Azure NetAppFiles Nfsv4.1 4.1 時，才需要此步驟。  
 
-    ```
+    ```bash
     # Check nfs4_disable_idmapping 
     cat /sys/module/nfs/parameters/nfs4_disable_idmapping
     # If you need to set nfs4_disable_idmapping to Y
@@ -342,20 +342,20 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 4. **[AH1]** 將共用的 Azure NetApp Files 磁片區掛接至 SITE1 HANA DB Vm。  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s1 /hana/shared
     ```
 
 5. **[AH2]** 將共用的 Azure NetApp Files 磁片區掛接至 SITE2 HANA DB Vm。  
 
-    ```
+    ```bash
     sudo mount -o rw,vers=4,minorversion=1,hard,timeo=600,rsize=262144,wsize=262144,intr,noatime,lock,_netdev,sec=sys 10.23.1.7:/HN1-shared-s2 /hana/shared
     ```
 
 
 10. **[AH]** 確認對應的 `/hana/shared/` 檔案系統已裝載在所有具有 NFS 通訊協定版本 **NFSV4** 的 HANA DB vm 上。  
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -372,25 +372,25 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 使用邏輯磁片區管理員設定磁片配置  **(LVM)**。 下列範例假設每個 HANA 虛擬機器都有三個連接的資料磁片，可用來建立兩個磁片區。
 
 1. **[AH]** 列出所有可用的磁片：
-    ```
+    ```bash
     ls /dev/disk/azure/scsi1/lun*
     ```
 
    範例輸出︰
 
-    ```
+    ```bash
     /dev/disk/azure/scsi1/lun0  /dev/disk/azure/scsi1/lun1  /dev/disk/azure/scsi1/lun2 
     ```
 
 2. **[AH]** 為您要使用的所有磁片建立實體磁片區：
-    ```
+    ```bash
     sudo pvcreate /dev/disk/azure/scsi1/lun0
     sudo pvcreate /dev/disk/azure/scsi1/lun1
     sudo pvcreate /dev/disk/azure/scsi1/lun2
     ```
 
 3. **[AH]** 建立資料檔案的磁片區群組。 一個磁碟區群組用於記錄檔，一個用於 SAP HANA 的共用目錄：
-    ```
+    ```bash
     sudo vgcreate vg_hana_data_HN1 /dev/disk/azure/scsi1/lun0 /dev/disk/azure/scsi1/lun1
     sudo vgcreate vg_hana_log_HN1 /dev/disk/azure/scsi1/lun2
     ```
@@ -402,7 +402,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
    > `-i`當您針對每個資料或記錄磁片區使用一個以上的實體磁片區時，請使用參數並將它設定為基礎實體磁片區的數目。 建立等量磁碟區時，請使用 `-I` 參數來指定等量大小。  
    > 請參閱 [SAP Hana VM 儲存體設定](./hana-vm-operations-storage.md)，以取得建議的儲存體設定，包括等量大小和磁碟數目。  
 
-    ```
+    ```bash
     sudo lvcreate -i 2 -I 256 -l 100%FREE -n hana_data vg_hana_data_HN1
     sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_HN1
     sudo mkfs.xfs /dev/vg_hana_data_HN1/hana_data
@@ -410,7 +410,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     ```
 
 5. **[AH]** 建立掛接目錄，並複製所有邏輯磁片區的 UUID：
-    ```
+    ```bash
     sudo mkdir -p /hana/data/HN1
     sudo mkdir -p /hana/log/HN1
     # Write down the ID of /dev/vg_hana_data_HN1/hana_data and /dev/vg_hana_log_HN1/hana_log
@@ -418,20 +418,20 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     ```
 
 6. **[AH]** 建立 `fstab` 邏輯磁片區和掛接的專案：
-    ```
+    ```bash
     sudo vi /etc/fstab
     ```
 
    在 `/etc/fstab` 檔案中插入下列行：
 
-    ```
+    ```bash
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_data_HN1-hana_data /hana/data/HN1 xfs  defaults,nofail  0  2
     /dev/disk/by-uuid/UUID of /dev/mapper/vg_hana_log_HN1-hana_log /hana/log/HN1 xfs  defaults,nofail  0  2
     ```
 
    掛接新的磁碟區：
 
-    ```
+    ```bash
     sudo mount -a
     ```
 
@@ -444,27 +444,27 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 1. **[AH]** 在安裝 HANA 之前，請先設定根密碼。 您可以在安裝完成之後停用根密碼。 Execute as `root` 命令 `passwd` 。  
 
 2. **[1，2]** 變更的許可權 `/hana/shared` 
-    ```
+    ```bash
     chmod 775 /hana/shared
     ```
 
 3. **[1]** 確認您可以透過 SSH 登入此網站 **hana-s1-db2** 和 **hana-S1-Db3** 中的 HANA DB vm，而不會提示您輸入密碼。  
    如果不是這種情況，請 [使用以金鑰為基礎的驗證](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)所述的方式來交換 ssh 金鑰。  
-    ```
+    ```bash
     ssh root@hana-s1-db2
     ssh root@hana-s1-db3
     ```
 
 4. **[2]** 確認您可以透過 SSH 登入此網站 **hana-s2-db2** 和 **hana-S2-Db3** 中的 HANA DB vm，而不會提示您輸入密碼。  
    如果不是這種情況，請 [使用以金鑰為基礎的驗證](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s2-ssh-configuration-keypairs)所述的方式來交換 ssh 金鑰。  
-    ```
+    ```bash
     ssh root@hana-s2-db2
     ssh root@hana-s2-db3
     ```
 
 5. **[AH]** 安裝 HANA 2.0 SP4 所需的其他套件。 如需詳細資訊，請參閱 SAP Note [2593824](https://launchpad.support.sap.com/#/notes/2593824) （適用于 RHEL 7）。 
 
-    ```
+    ```bash
     # If using RHEL 7
     yum install libgcc_s1 libstdc++6 compat-sap-c++-7 libatomic1
     # If using RHEL 8
@@ -473,7 +473,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 
 6. **[A]** 暫時停用防火牆，使其不會干擾 HANA 安裝。 完成 HANA 安裝之後，您可以重新啟用它。 
-    ```
+    ```bash
     # Execute as root
     systemctl stop firewalld
     systemctl disable firewalld
@@ -483,9 +483,9 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 1. **[1]** 依照 [SAP Hana 2.0 安裝和更新指南](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html)中的指示來安裝 SAP Hana。 在接下來的指示中，我們會在網站1上的第一個節點上顯示 SAP Hana 安裝。   
 
-   a. **hdblcm** `root` 從 HANA 安裝軟體目錄啟動 hdblcm 程式。 使用 `internal_network` 參數並傳遞子網的位址空間（用於內部 HANA 節點間通訊）。  
+   a.  `root` 從 HANA 安裝軟體目錄啟動 hdblcm 程式。 使用 `internal_network` 參數並傳遞子網的位址空間（用於內部 HANA 節點間通訊）。  
 
-    ```
+    ```bash
     ./hdblcm --internal_network=10.23.1.128/26
     ```
 
@@ -522,7 +522,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
    顯示 global.ini，並確定內部 SAP Hana 節點間通訊的設定已就緒。 確認 [ **通訊** ] 區段。 它應該要有子網的位址空間 `inter` ，而且 `listeninterface` 應該設定為 `.internal` 。 確認 **internal_hostname_resolution** 區段。 它應該有屬於子網的 HANA 虛擬機器的 IP 位址 `inter` 。  
 
-   ```
+   ```bash
      sudo cat /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
      # Example from SITE1 
      [communication]
@@ -536,7 +536,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 4. **[1，2]** `global.ini` 在非共用環境中準備安裝，如 SAP 附注 [2080991](https://launchpad.support.sap.com/#/notes/0002080991)所述。  
 
-   ```
+   ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     [persistence]
     basepath_shared = no
@@ -544,14 +544,14 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 4. **[1，2]** 重新開機 SAP Hana 以啟用變更。  
 
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem
    ```
 
 6. **[1，2]** 確認用戶端介面將使用子網中的 IP 位址 `client` 進行通訊。  
 
-    ```
+    ```bash
     # Execute as hn1adm
     /usr/sap/HN1/HDB03/exe/hdbsql -u SYSTEM -p "password" -i 03 -d SYSTEMDB 'select * from SYS.M_HOST_INFORMATION'|grep net_publicname
     # Expected result - example from SITE 2
@@ -562,13 +562,13 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 7. **[AH]** 變更資料和記錄檔目錄的許可權，以避免 HANA 安裝錯誤。  
 
-   ```
+   ```bash
     sudo chmod o+w -R /hana/data /hana/log
    ```
 
 8. **[1]** 安裝次要 HANA 節點。 此步驟中的範例指示適用于網站1。  
    a. 將常駐 **hdblcm** 程式啟動為 `root` 。    
-    ```
+    ```bash
      cd /hana/shared/HN1/hdblcm
      ./hdblcm 
     ```
@@ -602,21 +602,21 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
    將資料庫備份為 **hn1** adm：
 
-    ```
+    ```bash
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
     hdbsql -d HN1 -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupHN1')"
     ```
 
    將系統 PKI 檔案複製到次要網站：
 
-    ```
+    ```bash
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/data/SSFS_HN1.DAT hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/data/
     scp /usr/sap/HN1/SYS/global/security/rsecssfs/key/SSFS_HN1.KEY  hana-s2-db1:/usr/sap/HN1/SYS/global/security/rsecssfs/key/
     ```
 
    建立主要網站：
 
-    ```
+    ```bash
     hdbnsutil -sr_enable --name=HANA_S1
     ```
 
@@ -624,7 +624,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     
    註冊第二個網站以啟動系統複寫。 以 <hanasid\>adm 身分執行下列命令：
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopWait 600 10
     hdbnsutil -sr_register --remoteHost=hana-s1-db1 --remoteInstance=03 --replicationMode=sync --name=HANA_S2
     sapcontrol -nr 03 -function StartSystem
@@ -634,7 +634,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
    檢查複寫狀態，並等到所有資料庫都同步為止。
 
-    ```
+    ```bash
     sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
     # | Database | Host          | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary | Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
     # |          |               |       |              |           |         |           | Host          | Port      | Site ID   | Site Name | Active Status | Mode        | Status      | Status Details |
@@ -657,12 +657,12 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 4. **[1，2]** 變更 hana 設定，以便在透過 hana 系統複寫虛擬網路介面導向 hana 系統複寫時進行通訊。   
    - 在兩個網站上停止 HANA
-    ```
+    ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StopSystem HDB
     ```
 
    - 編輯 global.ini 以新增 HANA 系統複寫的主機對應：使用子網中的 IP 位址 `hsr` 。  
-    ```
+    ```bash
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
     #Add the section
     [system_replication_hostname_resolution]
@@ -675,7 +675,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     ```
 
    - 在兩個網站上啟動 HANA
-   ```
+   ```bash
     sudo -u hn1adm /usr/sap/hostctrl/exe/sapcontrol -nr 03 -function StartSystem HDB
    ```
 
@@ -683,7 +683,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 5. **[AH]** 重新啟用防火牆。  
    - 重新啟用防火牆
-       ```
+       ```bash
        # Execute as root
        systemctl start firewalld
        systemctl enable firewalld
@@ -694,7 +694,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
        > [!IMPORTANT]
        > 建立防火牆規則，以允許 HANA 節點間通訊和用戶端流量。 [所有 SAP 產品的 TCP/IP 通訊埠](https://help.sap.com/viewer/ports)會列出必要的連接埠。 下列命令只是一個範例。 在此案例中，使用了系統編號03。
 
-       ```
+       ```bash
         # Execute as root
         sudo firewall-cmd --zone=public --add-port=30301/tcp --permanent
         sudo firewall-cmd --zone=public --add-port=30301/tcp
@@ -753,19 +753,19 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 1. **[1，2]** 停止兩個複寫網站上的 SAP Hana。 以 <sid adm 的形式執行 \> 。  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StopSystem
     ```
 
 2. **[AH]** 卸載檔案系統 `/hana/shared` ，這會暫時掛接到所有 HANA DB vm 上的安裝。 您必須停止任何使用檔案系統的進程和會話，才能取消掛接。 
  
-    ```
+    ```bash
     umount /hana/shared 
     ```
 
 3. **[1]** 建立 `/hana/shared` 處於停用狀態的檔案系統叢集資源。 系統會使用選項來建立資源 `--disabled` ，因為您必須先定義位置條件約束，才能啟用裝載。  
 
-    ```
+    ```bash
     # /hana/shared file system for site 1
     pcs resource create fs_hana_shared_s1 --disabled ocf:heartbeat:Filesystem device=10.23.1.7:/HN1-shared-s1  directory=/hana/shared \
     fstype=nfs options='defaults,rw,hard,timeo=600,rsize=262144,wsize=262144,proto=tcp,intr,noatime,sec=sys,vers=4.1,lock,_netdev' op monitor interval=20s on-fail=fence timeout=40s OCF_CHECK_LEVEL=20 \
@@ -787,7 +787,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 4. **[1]** 設定並確認節點屬性。 複寫網站1上的所有 SAP Hana DB 節點都會被指派屬性 `S1` ，而複寫網站2上的所有 SAP HANA db 節點都會被指派屬性 `S2` 。  
 
-    ```
+    ```bash
     # HANA replication site 1
     pcs node attribute hana-s1-db1 NFS_SID_SITE=S1
     pcs node attribute hana-s1-db2 NFS_SID_SITE=S1
@@ -801,7 +801,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     ```
 
 5. **[1]** 設定條件約束，以決定裝載 NFS 檔案系統的位置，並啟用檔案系統資源。  
-    ```
+    ```bash
     # Configure the constraints
     pcs constraint location fs_hana_shared_s1-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S1
     pcs constraint location fs_hana_shared_s2-clone rule resource-discovery=never score=-INFINITY NFS_SID_SITE ne S2
@@ -814,7 +814,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
  
 6. **[AH]** 確認 ANF 磁片區已裝載在 `/hana/shared` 兩個網站上的所有 HANA DB vm 下。
 
-    ```
+    ```bash
     sudo nfsstat -m
     # Verify that flag vers is set to 4.1 
     # Example from SITE 1, hana-s1-db1
@@ -827,7 +827,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 7. **[1]** 設定屬性資源。 設定條件約束， `true` 如果裝載的 NFS 裝載，則會將屬性設定為 `hana/shared` 。  
 
-    ```
+    ```bash
     # Configure the attribure resources
     pcs resource create hana_nfs_s1_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s1_active
     pcs resource create hana_nfs_s2_active ocf:pacemaker:attribute active_value=true inactive_value=false name=hana_nfs_s2_active
@@ -843,7 +843,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
    > 如果您的設定包含其他檔案系統（除了/ `hana/shared` ，也就是裝載 NFS），則包含 `sequential=false` 選項，因此檔案系統之間沒有順序相依性。 所有 NFS 掛接的檔案系統在對應的屬性資源之前都必須先啟動，但不需要以相對於彼此的任何順序啟動。 如需詳細資訊，請參閱 [當 HANA 檔案系統為 NFS 共用時，如何? 在 pacemaker 叢集中設定 SAP Hana Scale-Out HSR](https://access.redhat.com/solutions/5423971)。  
 
 8. **[1]** 將 pacemaker 置於維護模式，以準備建立 HANA 叢集資源。  
-    ```
+    ```bash
     pcs property set maintenance-mode=true
     ```
 
@@ -851,7 +851,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 1. **[A]** 在所有叢集節點上安裝 HANA 相應放大資源代理程式，包括多數 maker。    
 
-    ```
+    ```bash
     yum install -y resource-agents-sap-hana-scaleout 
     ```
 
@@ -862,14 +862,14 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 2. **[1，2]** 安裝 HANA 「系統複寫攔截」。 您必須在每個系統複寫網站上的一個 HANA DB 節點上安裝攔截。 SAP Hana 應該仍會關閉。        
 
    1. 準備掛勾 `root` 
-    ```
+    ```bash
      mkdir -p /hana/shared/myHooks
      cp /usr/share/SAPHanaSR-ScaleOut/SAPHanaSR.py /hana/shared/myHooks
      chown -R hn1adm:sapsys /hana/shared/myHooks
     ```
 
    2. 調整 `global.ini`
-    ```
+    ```bash
     # add to global.ini
     [ha_dr_provider_SAPHanaSR]
     provider = SAPHanaSR
@@ -881,7 +881,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     ```
 
 3. **[AH]** 叢集需要 <sid adm 的叢集節點上的 sudoers 設定 \> 。 在此範例中，您可以藉由建立新的檔案來達成。 以執行命令 `root` 。    
-    ``` 
+    ```bash
     cat << EOF > /etc/sudoers.d/20-saphana
     # SAPHanaSR-ScaleOut needs for srHook
      Cmnd_Alias SOK = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SOK -t crm_config -s SAPHanaSR
@@ -892,13 +892,13 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
 4. **[1，2]** 在兩個複寫網站上啟動 SAP Hana。 以 <sid adm 的形式執行 \> 。  
 
-    ```
+    ```bash
     sapcontrol -nr 03 -function StartSystem 
     ```
 
 5. **[1]** 確認攔截安裝。 在作用中 \> 的 HANA 系統複寫網站上以 <sid adm 的形式執行。   
 
-    ```
+    ```bash
     cdtrace
      awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
      { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
@@ -917,7 +917,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
     
    2. 接下來，建立 HANA 拓撲資源。  
       如果 **建立 RHEL 7.x** 叢集，請使用下列命令：  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopologyScaleOut \
        SID=HN1 InstanceNumber=03 \
        op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600
@@ -926,7 +926,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
       ```
 
       如果 **建立 RHEL 8.x** 叢集，請使用下列命令：  
-      ```
+      ```bash
       pcs resource create SAPHanaTopology_HN1_HDB03 SAPHanaTopology \
        SID=HN1 InstanceNumber=03 meta clone-node-max=1 interleave=true \
        op methods interval=0s timeout=5 \
@@ -937,10 +937,10 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
    3. 接下來，建立 HANA 實例資源。  
       > [!NOTE]
-      > 本文包含詞彙 *從屬* 的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。  
+      > 本文包含詞彙 *從屬* 的參考，這是 Microsoft 不再使用的詞彙。 從軟體中移除該字詞時，我們也會將其從本文中移除。  
  
       如果 **建立 RHEL 7.x** 叢集，請使用下列命令：    
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op start interval=0 timeout=3600 op stop interval=0 timeout=3600 op promote interval=0 timeout=3600 \
@@ -951,7 +951,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
       ```
 
       如果 **建立 RHEL 8.x** 叢集，請使用下列命令：  
-      ```
+      ```bash
       pcs resource create SAPHana_HN1_HDB03 SAPHanaController \
        SID=HN1 InstanceNumber=03 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
        op demote interval=0s timeout=320 op methods interval=0s timeout=5 \
@@ -965,7 +965,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
       > 建議您最好在執行徹底的容錯移轉測試時，只將 AUTOMATED_REGISTER 設定為 [ **否**]，以防止失敗的主要實例自動註冊為次要。 當容錯移轉測試成功完成後，請將 AUTOMATED_REGISTER 設定為 **[是]**，如此一來，接管系統複寫之後就可以自動繼續。 
 
    4. 建立虛擬 IP 和相關聯的資源。  
-      ```
+      ```bash
       pcs resource create vip_HN1_03 ocf:heartbeat:IPaddr2 ip=10.23.0.18 op monitor interval="10s" timeout="20s"
       sudo pcs resource create nc_HN1_03 azure-lb port=62503
       sudo pcs resource group add g_ip_HN1_03 nc_HN1_03 vip_HN1_03
@@ -973,7 +973,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
    5. 建立叢集條件約束  
       如果 **建立 RHEL 7.x** 叢集，請使用下列命令：  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then msl_SAPHana_HN1_HDB03
 
@@ -983,7 +983,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
       ```
  
       如果 **建立 RHEL 8.x** 叢集，請使用下列命令：  
-      ```
+      ```bash
       #Start HANA topology, before the HANA instance
       pcs constraint order SAPHanaTopology_HN1_HDB03-clone then SAPHana_HN1_HDB03-clone
 
@@ -993,7 +993,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
       ```
 
 7. **[1]** 將叢集移出維護模式。 請確定叢集狀態正常，且所有資源皆已啟動。  
-    ```
+    ```bash
     sudo pcs property set maintenance-mode=false
     #If there are failed cluster resources, you may need to run the next command
     pcs resource cleanup
@@ -1007,7 +1007,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 1. 開始測試之前，請先檢查叢集並 SAP Hana 系統複寫狀態。  
 
    a. 確認沒有任何失敗的叢集動作  
-     ```
+     ```bash
      #Verify that there are no failed cluster actions
      pcs status
      # Example
@@ -1044,7 +1044,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
    b. 確認 SAP Hana 系統複寫是否同步
 
-      ```
+      ```bash
       # Verify HANA HSR is in sync
       sudo su - hn1adm -c "python /usr/sap/HN1/HDB03/exe/python_support/systemReplicationStatus.py"
       #| Database | Host        | Port  | Service Name | Volume ID | Site ID | Site Name | Secondary     | Secondary| Secondary | Secondary | Secondary     | Replication | Replication | Replication    |
@@ -1074,7 +1074,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
    **預期的結果**：當您重新掛接 `/hana/shared` 為 *唯讀* 時，在檔案系統上執行讀取/寫入作業的監視作業將會失敗，因為它無法寫入檔案系統，而且將會觸發 HANA 資源容錯移轉。 當您的 HANA 節點失去 NFS 共用的存取權時，預期會有相同的結果。  
      
    您可以藉由執行或來檢查叢集資源的 `crm_mon` 狀態 `pcs status` 。 開始測試之前的資源狀態：
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured
@@ -1103,7 +1103,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
       ```
 
    若要 `/hana/shared` 在其中一個主要複寫網站 vm 上模擬失敗，請執行下列命令：
-      ```
+      ```bash
       # Execute as root 
       mount -o ro /hana/shared
       # Or if the above command returns an error
@@ -1114,7 +1114,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
          
    如果已重新開機的 VM 上未啟動叢集，請執行下列動作來啟動叢集： 
 
-      ```
+      ```bash
       # Start the cluster 
       pcs cluster start
       ```
@@ -1122,7 +1122,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
    當叢集啟動時，檔案系統 `/hana/shared` 將會自動載入。     
    如果您設定 AUTOMATED_REGISTER = "false"，您將需要在次要網站上設定 SAP Hana 系統複寫。 在此情況下，您可以執行這些命令，將 SAP Hana 重新設定為次要。   
 
-      ```
+      ```bash
       # Execute on the secondary 
       su - hn1adm
       # Make sure HANA is not running on the secondary site. If it is started, stop HANA
@@ -1135,7 +1135,7 @@ Azure NetApp 磁片區會部署在個別的子網中，[委派給 Azure NetApp F
 
    測試之後的資源狀態： 
 
-      ```
+      ```bash
       # Output of crm_mon
       #7 nodes configured
       #45 resources configured

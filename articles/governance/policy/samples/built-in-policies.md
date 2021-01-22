@@ -1,15 +1,15 @@
 ---
 title: 內建原則定義的清單
 description: 列出 Azure 原則的內建原則定義。 分類包括標籤、法規合規性、Key Vault、Kubernetes、來賓設定等等。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: ccd310583f003fd381b9ddd48333644f2241ea88
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: 3b29a4c86ee61247fa3caeb542e08a4ac24ff8c4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98047126"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685802"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure 原則的內建原則定義
 
@@ -93,7 +93,11 @@ Azure 入口網站中原則定義的每個內建連結名稱。 使用 [來源] 
 
 [!INCLUDE [azure-policy-reference-policies-data-box](../../../../includes/policy/reference/bycat/policies-data-box.md)]
 
-## <a name="data-lake"></a>資料湖
+## <a name="data-factory"></a>Data Factory
+
+[!INCLUDE [azure-policy-reference-policies-data-factory](../../../../includes/policy/reference/bycat/policies-data-factory.md)]
+
+## <a name="data-lake"></a>Data Lake
 
 [!INCLUDE [azure-policy-reference-policies-data-lake](../../../../includes/policy/reference/bycat/policies-data-lake.md)]
 

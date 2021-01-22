@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 72caeb60fc058b88158979d211a0bc38985975c7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 444b514dfb1798ff810e84fc4e9d50001dbaee1c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968852"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685783"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 
@@ -164,6 +164,7 @@ ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](./itsmc-overvi
 
 > [!NOTE]
 > 使用 webhook 動作需要目標 webhook 端點不需要警示的詳細資料就能順利運作，或是可以剖析 POST 作業中提供的警示內容資訊。 如果 webhook 端點無法自行處理警示內容資訊，您可以使用類似 [邏輯應用程式動作](./action-groups-logic-app.md) 的解決方案來自訂警示內容資訊的操作，以符合 webhook 的預期資料格式。
+> 使用者應該是 webhook 服務主體的 **擁有** 者，才能確保不會違反安全性。 因為任何 azure 客戶都可以透過入口網站存取所有物件識別碼，而不檢查擁有者，所以任何人都可以將安全 webhook 新增至他們自己的 azure 監視器警示通知的動作群組，這會違反安全性。
 
 動作群組 Webhook 動作可讓您利用 Azure Active Directory 來保護您的動作群組與受保護 Web API (Webhook 端點) 之間的連線。 利用這項功能的整體工作流程說明如下。 如需 Azure AD 應用程式和服務主體的概觀，請參閱 [Microsoft 身分識別平台 (v2.0) 概觀](../../active-directory/develop/v2-overview.md)。
 
@@ -318,11 +319,7 @@ Write-Host $myApp.AppRoles
 ### <a name="webhook"></a>Webhook
 
 > [!NOTE]
-> 使用 webhook 動作需要目標 webhook 端點不需要警示的詳細資料就能順利運作，或是可以剖析 POST 作業中提供的警示內容資訊。 
-
-> 使用者應該是 webhook 服務主體的 **擁有** 者，才能確保不會違反安全性。 因為任何 azure 客戶都可以透過入口網站存取所有物件識別碼，而不檢查擁有者，所以任何人都可以將安全 webhook 新增至他們自己的 azure 監視器警示通知的動作群組，這會違反安全性。
-
-> 如果 webhook 端點無法自行處理警示內容資訊，您可以使用類似 [邏輯應用程式動作](./action-groups-logic-app.md) 的解決方案來自訂警示內容資訊的操作，以符合 webhook 的預期資料格式。
+> 使用 webhook 動作需要目標 webhook 端點不需要警示的詳細資料就能順利運作，或是可以剖析 POST 作業中提供的警示內容資訊。 如果 webhook 端點無法自行處理警示內容資訊，您可以使用類似 [邏輯應用程式動作](./action-groups-logic-app.md) 的解決方案來自訂警示內容資訊的操作，以符合 webhook 的預期資料格式。
 
 Webhook 會使用下列規則來處理
 - 最多嘗試3次 webhook 呼叫。
@@ -461,7 +458,7 @@ Webhook 會使用下列規則來處理
 4. 新視窗會在右窗格中開啟。
     1.  選取來源： **服務標記**
     1.  來源服務標記： **ActionGroup**
-    1.  按一下 [新增] 。
+    1.  按一下 **[新增]** 。
     
     :::image type="content" source="media/action-groups/action-group-service-tag.png" alt-text="如何新增服務標記的範例。"border="true":::
 

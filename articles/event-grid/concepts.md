@@ -2,13 +2,13 @@
 title: Azure Event Grid 概念
 description: 說明 Azure Event Grid 與其概念。 定義 Event Grid 的數個重要元件。
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 01/21/2021
+ms.openlocfilehash: 6edc8a3980bfea15f28cfb7114bb9f8350a47a3f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075104"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685698"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid 中的概念
 
@@ -18,10 +18,7 @@ ms.locfileid: "93075104"
 
 事件是完整說明系統中發生內容的最小量資訊。 每個事件都有一般資訊，例如：事件來源、事件發生的時間，以及唯一識別碼。 每個事件也有只與特定事件類型相關的特定資訊。 例如，在 Azure 儲存體中建立新檔案的相關事件含有該檔案相關詳細資料，例如 `lastTimeModified` 值。 或者，事件中樞事件含有「擷取」檔案的 URL。 
 
-正式運作 (GA) 服務等級協定 (SLA) 涵蓋大小上限為 64 KB 的事件。 大小上限為 1 MB 之事件的支援目前為預覽狀態。 超過 64 KB 的事件會依 64-KB 的遞增計費。 
-
-
-關於事件中傳送的屬性，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
+事件的允許大小上限是 1 MB。 超過 64 KB 的事件會依 64-KB 的遞增計費。 關於事件中傳送的屬性，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
 ## <a name="publishers"></a>發行者
 
@@ -41,7 +38,7 @@ Event Grid 主題提供來源傳送事件的端點。 發行者會建立 Event G
 
 **自訂主題** 是應用程式和協力廠商主題。 當您建立或獲指派可存取自訂主題時，您會在訂用帳戶中看見該自訂主題。 如需詳細資訊，請參閱 [自訂主題](custom-topics.md)。 在設計應用程式時，您將有足夠的彈性可決定要建立多少個主題。 對於大型解決方案，請為每個類別的相關事件建立一個自訂主題。 例如，請考慮使用應用程式來傳送與修改使用者帳戶和處理訂單有關的事件。 任何事件處理常式不太需要兩種類別的事件。 建立兩個自訂主題，並讓事件處理常式訂閱其感興趣的自訂主題。 對於小型解決方案，您可能會想要將所有事件傳送至單一主題。 事件訂閱者可以篩選出他們想要的事件類型。
 
-還有另一種主題： **合作夥伴主題** 。 「 [夥伴事件](partner-events-overview.md) 」功能可讓協力廠商 SaaS 提供者從其服務發佈事件，讓可訂閱這些事件的取用者可以使用這些事件。 SaaS 提供者會公開主題類型，也就是「訂閱者」用來取用事件的 **夥伴主題** 。 它也提供乾淨的 pub sub 模型，方法是分隔事件發行者和訂閱者所使用之資源的考慮和擁有權。
+還有另一種主題： **合作夥伴主題**。 「 [夥伴事件](partner-events-overview.md) 」功能可讓協力廠商 SaaS 提供者從其服務發佈事件，讓可訂閱這些事件的取用者可以使用這些事件。 SaaS 提供者會公開主題類型，也就是「訂閱者」用來取用事件的 **夥伴主題**。 它也提供乾淨的 pub sub 模型，方法是分隔事件發行者和訂閱者所使用之資源的考慮和擁有權。
 
 ## <a name="event-subscriptions"></a>事件訂閱
 
@@ -76,10 +73,7 @@ Event Grid 提供訂閱主題和發佈主題的安全性。 訂閱時，您必�
 
 ## <a name="batching"></a>批次處理
 
-在使用自訂主題時，事件必須一律發佈在陣列中。 在低輸送量的案例中，這可以是單一批次，但在大量使用案例中，建議您在每次發佈時一併批次處理數個事件，以達到更高的效率。 批次最多可達 1 MB。 每個事件都不應超過 64 KB (正式運作) 或 1 MB (預覽) 。
-
-> [!NOTE]
-> 正式運作 (GA) 服務等級協定 (SLA) 涵蓋大小上限為 64 KB 的事件。 大小上限為 1 MB 之事件的支援目前為預覽狀態。 超過 64 KB 的事件會以 64 KB 的遞增計費。 
+在使用自訂主題時，事件必須一律發佈在陣列中。 在低輸送量的案例中，這可以是單一批次，但在大量使用案例中，建議您在每次發佈時一併批次處理數個事件，以達到更高的效率。 批次最多可達 1 MB，而事件的大小上限為 1 MB。 
 
 ## <a name="next-steps"></a>後續步驟
 

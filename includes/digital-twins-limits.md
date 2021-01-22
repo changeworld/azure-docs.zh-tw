@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 183d12b5e9d32c777c8acf01177c8cbbe1b6ca00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08ae189253c6141a6b84035b71016ff5099ec162
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025723"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689855"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -19,16 +19,16 @@ ms.locfileid: "96025723"
 | 區域 | 功能 | 預設限制 | 調？ |
 | --- | --- | --- | --- |
 | Azure 資源 | 每個訂用帳戶的區域中的 Azure 數位 Twins 實例數目 | 10 | 是 |
-| Digital Twins | Azure 數位 Twins 實例中的 twins 數目 | 200,000 | 是 |
-| Digital Twins | 單一對應項的連入關聯性數目 | 5,000 | 否 |
-| Digital Twins | 來自單一對應項的傳出關聯性數目 | 5,000 | 否 |
-| Digital Twins | 單一對應項的大小上限 | 32 KB | 否 |
-| Digital Twins | 要求承載大小上限 | 32 KB | 否 | 
-| 路由 | 單一 Azure 數位 Twins 實例的端點數目 | 6 | 否 |
+| Digital Twins | Azure 數位 Twins 實例中的 twins 數目 | 200,000 | Yes |
+| Digital Twins | 單一對應項的連入關聯性數目 | 5,000 | No |
+| Digital Twins | 來自單一對應項的傳出關聯性數目 | 5,000 | No |
+| Digital Twins | 單一對應項的 PUT 或 PATCH 要求) 中，JSON 主體的大小上限 ( | 32 KB | No |
+| Digital Twins | 要求承載大小上限 | 32 KB | No | 
+| 路由 | 單一 Azure 數位 Twins 實例的端點數目 | 6 | No |
 | 路由 | 單一 Azure 數位 Twins 實例的路由數目 | 6 | 是 |
-| 模型 | 單一 Azure 數位 Twins 實例內的模型數目 | 10,000 | 是 |
-| 模型 | 可在單一 API 呼叫中上傳的模型數目 | 250 | 否 |
-| 模型 | 在單一頁面中傳回的專案數 | 100 | 否 |
+| 模型 | 單一 Azure 數位 Twins 實例內的模型數目 | 10,000 | Yes |
+| 模型 | 可在單一 API 呼叫中上傳的模型數目 | 250 | No |
+| 模型 | 在單一頁面中傳回的專案數 | 100 | No |
 | 查詢 | 在單一頁面中傳回的專案數 | 100 | 是 |
 | 查詢 | `AND`  /  `OR` 查詢中的運算式數目 | 50 | 是 |
 | 查詢 | 子句中的陣列專案數目 `IN`  /  `NOT IN` | 50 | 是 |
@@ -42,11 +42,11 @@ ms.locfileid: "96025723"
 | API | 功能 | 預設限制 | 調？ |
 | --- | --- | --- | --- |
 | 模型 API | 每秒要求數 | 100 | 是 |
-| 數位 Twins API | 每秒要求數 | 2,000 | 是 |
+| 數位 Twins API | 每秒要求數 | 2,000 | Yes |
 | 數位 Twins API | 每秒在 **所有 twins 和關聯** 性中的建立/刪除作業數目 | 50 | 是 |
 | 數位 Twins API | **單一** 對應項或其關聯性每秒的建立/更新/刪除作業數目 | 10 | 否 |
-| 查詢 API | 每秒要求數 | 500 | 是 |
-| 查詢 API | 每秒[查詢單位](../articles/digital-twins/concepts-query-units.md)數 | 4,000 | 是 |
+| 查詢 API | 每秒要求數 | 500 | Yes |
+| 查詢 API | 每秒[查詢單位](../articles/digital-twins/concepts-query-units.md)數 | 4,000 | Yes |
 | 事件路由 API | 每秒要求數 | 100 | 是 |
 
 ### <a name="other-limits"></a>其他限制

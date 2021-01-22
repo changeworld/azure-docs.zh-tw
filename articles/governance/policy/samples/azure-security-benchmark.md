@@ -1,25 +1,25 @@
 ---
-title: Azure Security Benchmark 的法規合規性詳細資料
-description: Azure Security Benchmark 法規合規性內建方案的詳細資料。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
-ms.date: 01/08/2021
+title: Azure 安全性基準測試 v1 的法規合規性詳細資料
+description: Azure 安全性基準測試 v1 法規合規性內建計畫的詳細資料。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
+ms.date: 01/21/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 3768db8662f84cf33aac54be61ba1cdd7f885c84
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: 4bfef8f3cf0e3b001834dc28e990b24c0ae3ac78
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046289"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685674"
 ---
-# <a name="details-of-the-azure-security-benchmark-regulatory-compliance-built-in-initiative"></a>Azure Security Benchmark 法規合規性內建方案的詳細資料
+# <a name="details-of-the-azure-security-benchmark-v1-regulatory-compliance-built-in-initiative"></a>Azure 安全性基準測試 v1 法規合規性內建計畫的詳細資料
 
-下列文章詳細說明 Azure 原則法規合規性內建方案定義如何對應至 Azure Security Benchmark 中的 **合規性領域** 與 **控制項**。
-如需此合規性標準的詳細資訊，請參閱 [Azure Security Benchmark](../../../security/benchmarks/overview.md)。 若要了解「擁有權」，請參閱 [Azure 原則原則定義](../concepts/definition-structure.md#type)與[雲端中共同承擔的責任](../../../security/fundamentals/shared-responsibility.md)。
+下列文章將詳細說明 Azure 原則法規合規性內建方案定義如何對應至 Azure 安全性效能評定 v1 中的 **合規性網域** 和 **控制項** 。
+如需此合規性標準的詳細資訊，請參閱 [Azure 安全性基準測試 v1](../../../security/benchmarks/overview.md)。 若要了解「擁有權」，請參閱 [Azure 原則原則定義](../concepts/definition-structure.md#type)與[雲端中共同承擔的責任](../../../security/fundamentals/shared-responsibility.md)。
 
-以下是 **Azure 安全性效能評定** 控制項的對應。 使用右側的導覽區可直接跳到特定的 **合規性領域**。 許多控制措施都是以 [Azure 原則](../overview.md)方案定義實作的。 若要檢閱完整方案定義，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。
+以下是 **Azure 安全性基準測試 v1** 控制項的對應。 使用右側的導覽區可直接跳到特定的 **合規性領域**。 許多控制措施都是以 [Azure 原則](../overview.md)方案定義實作的。 若要檢閱完整方案定義，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。
 然後，尋找並選取 **Azure Security Benchmark v1** 法規合規性內建方案的定義。
 
-此內建方案會部署為 [Azure Security Benchmark 藍圖範例](../../blueprints/samples/azure-security-benchmark.md)的一部分。
+此內建方案會部署為 [Azure 安全性基準測試 v1 藍圖範例](../../blueprints/samples/azure-security-benchmark.md)的一部分。
 
 > [!IMPORTANT]
 > 下列每個控制措施都與一或多個 [Azure 原則](../overview.md)定義相關聯。

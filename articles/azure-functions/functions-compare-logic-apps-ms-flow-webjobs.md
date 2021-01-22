@@ -4,12 +4,12 @@ description: 比較已針對整合工作最佳化的 Microsoft 雲端服務：Po
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 81b143219fd0b53d4cd00761af6b767c173ed88d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: HT
+ms.openlocfilehash: 95167791efe13526b0a70c28fa89771542a9d220
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934861"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685556"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中選擇正確的整合和自動化服務
 
@@ -79,7 +79,7 @@ Azure Functions 是以 WebJobs SDK 為基礎，因此其共用許多相同的事
 |  | 函式 | 搭配 WebJobs SDK 的 WebJobs |
 | --- | --- | --- |
 |**[無伺服器應用程式模型](https://azure.microsoft.com/solutions/serverless/)與 [自動調整](event-driven-scaling.md)**|✔||
-|**[在瀏覽器中開發與測試](functions-create-first-azure-function.md)** |✔||
+|**[在瀏覽器中開發與測試](./functions-get-started.md)** |✔||
 |**[按使用次數付費的定價方式](consumption-plan.md)**|✔||
 |**[與 Logic Apps 整合](functions-twitter-email.md)**|✔||
 | **觸發程序事件** |[計時器](functions-bindings-timer.md)<br>[Azure 儲存體佇列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服務匯流排佇列和主題](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中樞](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[事件格線](functions-bindings-event-grid.md)|[計時器](functions-bindings-timer.md)<br>[Azure 儲存體佇列和 Blob](functions-bindings-storage-blob.md)<br>[Azure 服務匯流排佇列和主題](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure 事件中樞](functions-bindings-event-hubs.md)<br>[檔案系統](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
@@ -124,4 +124,4 @@ Power Automate、Logic Apps 和 Functions 之間的整合會隨時間持續改�
 
 * [開始使用 Power Automate](/power-automate/getting-started)
 * [建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [建立您的第一個 Azure 函式](functions-create-first-azure-function.md)
+* [建立您的第一個 Azure 函式](./functions-get-started.md)

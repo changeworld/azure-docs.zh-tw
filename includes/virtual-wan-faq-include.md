@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: HT
+ms.openlocfilehash: 8cd6f6a32071dc7bbd4aaccb92168cda009933a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612655"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98689706"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure 虛擬 WAN 是否正式發行？
 
@@ -198,6 +198,9 @@ ms.locfileid: "97612655"
 ### <a name="what-is-the-total-vpn-throughput-of-a-vpn-tunnel-and-a-connection"></a>一個 VPN 通道和一個連線的 VPN 輸送量總計是多少？
 
 根據所選的 VPN 閘道縮放單位，一個中樞的 VPN 輸送量總計最多可達 20 Gbps。 輸送量會由所有現有的連線共用。 連線中的每個通道最多可支援 1 Gbps。
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>我可以在 VPN 連線上使用 NAT 嗎？
+是，支援 nat 的 (NAT-T) 。 虛擬 WAN VPN 閘道不會在來自 IPsec 通道的內部封包上執行任何類似 NAT 的功能。 在此設定中，請確定內部部署裝置會起始 IPSec 通道。
 
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>我在入口網站中看不到虛擬中樞的 20 Gbps 設定。 我要如何設定？
 
