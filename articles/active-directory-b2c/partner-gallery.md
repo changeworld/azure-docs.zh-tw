@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 9aca01bae7911d2b6234d48bedc14b116e911a79
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070859"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675367"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作夥伴
 
@@ -40,6 +40,7 @@ Microsoft 與下列 Isv 進行身分識別驗證和驗證的合作夥伴。
 |![Experian 標誌的螢幕擷取畫面。](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) 是身分識別驗證和證明提供者，可根據使用者屬性來執行風險評定，以防止詐騙。 |
 |![IDology 標誌的螢幕擷取畫面。](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) 是身分識別驗證和證明提供者，具有識別碼驗證解決方案、詐騙防護解決方案、合規性解決方案及其他資訊。|
 |![Jumio 標誌的螢幕擷取畫面。](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) 是一種識別碼驗證服務，可啟用即時自動化識別碼驗證，保護客戶資料。 |
+|![無索引鍵標誌的螢幕擷取畫面。](./media/partner-gallery/keyless-logo.png) | [無索引鍵](./partner-keyless.md) 是一項識別碼驗證服務，以臉部生物特徵辨識掃描的形式提供驗證，並免除詐騙、網路釣魚和認證的重複使用。
 | ![LexisNexis 標誌的螢幕擷取畫面。](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) 是一種分析和身分識別驗證提供者，可驗證使用者的身分識別，並根據使用者的裝置提供完整的風險評估。 |
 | ![Onfido 標誌的螢幕擷取畫面](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) 是一種檔識別碼和臉部生物特徵辨識驗證解決方案，可讓公司即時符合 *您的客戶* 和身分識別需求。  |
 
@@ -78,10 +79,10 @@ Microsoft 與下列 Isv 合作提供安全性。
 
 ## <a name="additional-information"></a>其他資訊
 
-- [Azure AD B2C 中的自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自訂原則](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自訂原則入門](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自訂原則入門](./custom-policy-get-started.md?tabs=applications)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在所述的表格中選取合作夥伴，以瞭解如何將解決方案與 Azure AD B2C 整合。

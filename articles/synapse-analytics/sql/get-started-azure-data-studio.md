@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: ff7b07cb1a4f480907bb51e741a05deeaae8e66b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: cfd0476d3462fc902acb7238fcc1947c85af041f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116478"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676174"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>使用 Azure Data Studio 連線至 Synapse SQL
 
@@ -26,7 +26,7 @@ ms.locfileid: "98116478"
 > * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-您可以使用使用 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 連線及查詢 Azure Synapse Analytics 中的 Synapse SQL。 
+您可以使用使用 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 連線及查詢 Azure Synapse Analytics 中的 Synapse SQL。 
 
 ## <a name="connect"></a>連線
 
@@ -73,7 +73,7 @@ ms.locfileid: "98116478"
 
 ## <a name="query"></a>查詢
 
-連線之後，您就可以使用支援的 [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 陳述式來針對執行個體查詢 Synapse SQL。 從 [儀表板] 檢視中選取 [新增查詢]  ，即可開始進行查詢。
+連線之後，您就可以使用支援的 [Transact-SQL (T-SQL)](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 陳述式來針對執行個體查詢 Synapse SQL。 從 [儀表板] 檢視中選取 [新增查詢]  ，即可開始進行查詢。
 
 ![新增查詢](./media/get-started-azure-data-studio/5-new-query.png)
 

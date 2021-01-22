@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0b32efe3738dedbe8178889b3e9008964d485b00
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 3e99b156d220b4c24a368886b1c0ca0813ffdc51
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034912"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674128"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 開發人員指南
 
@@ -18,7 +18,7 @@ ms.locfileid: "98034912"
 
 Express.js、Node.js 或 JavaScript 開發人員，如果您不熟悉 Azure Functions，請考慮先閱讀下列其中一篇文章：
 
-| 使用者入門 | 概念| 引導式學習 |
+| 開始使用 | 概念| 引導式學習 |
 | -- | -- | -- | 
 | <ul><li>[ 使用 Visual Studio CodeNode.js 函數](./create-first-function-vs-code-node.md)</li><li>[ 使用終端機/命令提示字元Node.js 函式](./create-first-function-cli-node.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[TypeScript 函數](#typescript)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> | <ul><li>[建立無伺服器應用程式](/learn/paths/create-serverless-applications/)</li><li>[重構 Node.js 和 Express Api 到無伺服器 Api](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
@@ -567,7 +567,7 @@ module.exports = function(context) {
 
 ### <a name="in-local-development-environment"></a>在本機開發環境中
 
-在本機執行時，您的函式專案會包含[ `local.settings.json` 檔案，您](/azure/azure-functions/functions-run-local)可以在其中將環境變數儲存在 `Values` 物件中。 
+在本機執行時，您的函式專案會包含[ `local.settings.json` 檔案，您](./functions-run-local.md)可以在其中將環境變數儲存在 `Values` 物件中。 
 
 ```json
 {

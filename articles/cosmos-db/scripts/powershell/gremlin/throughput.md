@@ -7,19 +7,22 @@ ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: 53e427b77066d1f1833ce12f856e4157a51ec530
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: HT
+ms.openlocfilehash: 50f3f05bd06101caa096b8126225c7b49ef1f3fa
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075529"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675483"
 ---
 # <a name="throughput-rus-operations-with-powershell-for-a-database-or-graph-for-azure-cosmos-db---gremlin-api"></a>使用 PowerShell 對 Azure Cosmos DB - Gremlin API 的資料庫或圖表執行輸送量 (RU/秒) 作業
 [!INCLUDE[appliesto-gremlin-api](../../../includes/appliesto-gremlin-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
-[!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
+此範例需要 Azure PowerShell Az 5.4.0 或更新版本。 執行 `Get-Module -ListAvailable Az` 可查看已安裝的版本。
+如果您需要安裝，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
+
+執行 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 來登入 Azure。
 
 ## <a name="get-throughput"></a>取得輸送量
 

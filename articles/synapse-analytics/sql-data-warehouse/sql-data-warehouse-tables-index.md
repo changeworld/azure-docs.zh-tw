@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: fea314d595fb39a1e35dec8ab24533ad4b893f98
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: fabbdf330d43737ffa85379f9cc4d5ac59c4a734
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448066"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673513"
 ---
 # <a name="indexing-dedicated-sql-pool-tables-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中編制專用 SQL 集區資料表的索引
 
@@ -24,9 +24,9 @@ ms.locfileid: "96448066"
 
 ## <a name="index-types"></a>索引類型
 
-專用的 SQL 集區提供數個索引選項，包括叢集資料行存放區 [索引](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、叢集 [索引和非叢集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，以及非索引選項（也稱為 [堆積](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）。  
+專用的 SQL 集區提供數個索引選項，包括叢集資料行存放區 [索引](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、叢集 [索引和非叢集索引](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，以及非索引選項（也稱為 [堆積](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)）。  
 
-若要建立含有索引的資料表，請參閱 [CREATE TABLE (專用 SQL 集區) ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 檔。
+若要建立含有索引的資料表，請參閱 [CREATE TABLE (專用 SQL 集區) ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 檔。
 
 ## <a name="clustered-columnstore-indexes"></a>叢集資料行存放區索引
 
@@ -230,7 +230,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 以步驟1的使用者登入 (例如 LoadUser) ，現在使用較高的資源類別，然後執行 ALTER INDEX 語句。 請確定這個使用者對於重建索引的資料表擁有 ALTER 權限。 這些範例示範如何重建整個資料行存放區索引或如何重建單一資料分割。 在大型資料表上，比較適合一次重建單一資料分割的索引。
 
-或者，您可以 [使用 CTAS](sql-data-warehouse-develop-ctas.md)將資料表複製到新資料表，而不需要重建索引。 哪一種方式最好？ 針對大量的資料，CTAS 的速度通常比 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 來得快。 針對較小量的資料，ALTER INDEX 較為容易使用，且您不需要交換出資料表。
+或者，您可以 [使用 CTAS](sql-data-warehouse-develop-ctas.md)將資料表複製到新資料表，而不需要重建索引。 哪一種方式最好？ 針對大量的資料，CTAS 的速度通常比 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 來得快。 針對較小量的資料，ALTER INDEX 較為容易使用，且您不需要交換出資料表。
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-在專用的 SQL 集區中重建索引是一項離線作業。  如需重建索引的詳細資訊，請參閱[資料行存放區索引重組](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中的 ALTER INDEX REBUILD 區段。
+在專用的 SQL 集區中重建索引是一項離線作業。  如需重建索引的詳細資訊，請參閱[資料行存放區索引重組](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)和 [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中的 ALTER INDEX REBUILD 區段。
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>步驟 3︰確認已改善叢集資料行存放區區段品質
 
@@ -260,7 +260,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>使用 CTAS 和分割切換重建索引
 
-此範例會使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 陳述式與資料分割切換來重建資料表資料分割。
+此範例會使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 陳述式與資料分割切換來重建資料表資料分割。
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -285,6 +285,6 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 如需使用 CTAS 重新建立資料分割的詳細資訊，請參閱 [使用專用 SQL 集區中的](sql-data-warehouse-tables-partition.md)資料分割。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需開發資料表的詳細資訊，請參閱[開發資料表](sql-data-warehouse-tables-overview.md)。

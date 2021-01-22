@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ea0db1faf8c452958b8d95c193d45506057777c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888780"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673327"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>在 GitHub Actions 中使用 Key Vault 驗證 Azure Spring Cloud
 
@@ -22,13 +22,14 @@ Key vault 是儲存金鑰的安全位置。 企業使用者需要在其控制的
 
 ## <a name="generate-credential"></a>產生認證
 若要產生金鑰以存取金鑰保存庫，請在本機電腦上執行下列命令：
-```
+
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
 參數指定的範圍會 `--scopes` 限制資源的金鑰存取權。  它只能存取強式箱。
 
 結果：
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -46,25 +47,25 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 ## <a name="add-access-policies-for-the-credential"></a>新增認證的存取原則
 您在上面建立的認證只能取得 Key Vault 的一般資訊，而不是它所儲存的內容。  若要取得 Key Vault 中儲存的秘密，您需要設定認證的存取原則。
 
-移至 Azure 入口網站中的**Key Vault**儀表板，按一下 [**存取控制**] 功能表，然後開啟 [**角色指派**] 索引標籤。選取 [**類型**] 和 [範圍] 的**應用程式** `This resource` 。 **scope**  您應該會看到您在上一個步驟中建立的認證：
+移至 Azure 入口網站中的 **Key Vault** 儀表板，按一下 [**存取控制**] 功能表，然後開啟 [**角色指派**] 索引標籤。選取 [**類型**] 和 [範圍] 的 **應用程式** `This resource` 。   您應該會看到您在上一個步驟中建立的認證：
 
  ![設定存取原則](./media/github-actions/key-vault1.png)
 
-複製認證名稱，例如 `azure-cli-2020-01-19-04-39-02` 。 開啟 [ **存取原則** ] 功能表，然後按一下 [ **+ 新增存取原則** ] 連結。  選取 `Secret Management` [ **範本**]，然後選取 [ **主體**]。 在 [**主體** / **選取**輸入] 方塊中貼上認證名稱：
+複製認證名稱，例如 `azure-cli-2020-01-19-04-39-02` 。 開啟 [ **存取原則** ] 功能表，然後按一下 [ **+ 新增存取原則** ] 連結。  選取 `Secret Management` [ **範本**]，然後選取 [ **主體**]。 在 [**主體** / **選取** 輸入] 方塊中貼上認證名稱：
 
- ![Select](./media/github-actions/key-vault2.png)
+ ![選取](./media/github-actions/key-vault2.png)
 
  按一下 [**新增存取原則**] 對話方塊中的 [**新增**] 按鈕，然後按一下 [**儲存**]。
 
 ## <a name="generate-full-scope-azure-credential"></a>產生完整範圍的 Azure 認證
 這是用來開啟建築物中所有大門的主要金鑰。 此程式與上一個步驟類似，但我們會變更範圍來產生主要金鑰：
 
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
 ```
 
 同樣地，結果：
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -84,7 +85,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 ## <a name="combine-credentials-in-github-actions"></a>合併 GitHub Actions 中的認證
 設定 CICD 管線執行時所使用的認證：
 
-```
+```console
 on: [push]
 
 jobs:
@@ -112,5 +113,5 @@ jobs:
 
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [春季雲端 GitHub Actions](./spring-cloud-howto-github-actions.md)

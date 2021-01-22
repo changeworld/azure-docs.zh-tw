@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9520196c8dce9ea511c2f3b799bd12b34c6f988f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ad3a2ae9fd9a99398b384ef4e4a44820faccf8c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499742"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675880"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>在 Linux VM 中新增磁碟
 
@@ -181,5 +181,5 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,nofail  
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要確保您的 Linux VM 已正確設定，請檢閱 [最佳化您的 Linux 機器效能](optimization.md) 建議。
+* 若要確保您的 Linux VM 已正確設定，請檢閱 [最佳化您的 Linux 機器效能](/previous-versions/azure/virtual-machines/linux/optimization) 建議。
 * 新增其他磁碟以擴充儲存體容量，並 [設定 RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) 以提升效能。

@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8a59c24100b433719ccfd3a9ea1b6a676695d381
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448029"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673429"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>在專用的 SQL 集區中分割資料表
 
@@ -58,9 +58,9 @@ ms.locfileid: "96448029"
 
 專用的 SQL 集區引進了一種方式，可定義比 SQL Server 更簡單的資料分割。 分割函數和配置不會在專用的 SQL 集區中使用，因為它們在 SQL Server 中。 相反地，您只需要識別已分割的資料行和邊界點。 
 
-雖然資料分割的語法與 SQL Server 稍有不同，但基本概念是一樣的。 SQL Server 和專用的 SQL 集區支援每個資料表一個分割區資料行，這可以是範圍資料分割。 若要深入了解資料分割，請參閱[分割資料表和索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+雖然資料分割的語法與 SQL Server 稍有不同，但基本概念是一樣的。 SQL Server 和專用的 SQL 集區支援每個資料表一個分割區資料行，這可以是範圍資料分割。 若要深入了解資料分割，請參閱[分割資料表和索引](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
-使用 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 陳述式的下列範例，依據 OrderDateKey 資料行分割 FactInternetSales 資料表︰
+使用 [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 陳述式的下列範例，依據 OrderDateKey 資料行分割 FactInternetSales 資料表︰
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -90,8 +90,8 @@ WITH
 
 若要將 SQL Server 分割區定義遷移到專用的 SQL 集區，只需：
 
-- 刪除 SQL Server [資料分割配置](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
-- 將[資料分割函式](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)定義新增至您的 CREATE TABLE。
+- 刪除 SQL Server [資料分割配置](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
+- 將[資料分割函式](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)定義新增至您的 CREATE TABLE。
 
 如果您從 SQL Server 執行個體移轉分割資料表，下列 SQL 可協助您找出每個分割區中的資料列數目。 請記住，如果在專用的 SQL 集區中使用相同的資料分割資料細微性，則每個資料分割的資料列數目會以60的因數減少。  
 
@@ -131,7 +131,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>分割切換
 
-專用的 SQL 集區支援分割區分割、合併和切換。 這些功能是使用 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 陳述式執行。
+專用的 SQL 集區支援分割區分割、合併和切換。 這些功能是使用 [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 陳述式執行。
 
 若要切換兩個資料表間的分割區，您必須確定分割區對齊其各自的界限，而且資料表定義相符。 因為檢查條件約束不適用於強制資料表中的值範圍，來源資料表必須包含與目標資料表相同的分割區界限。 如果分割區界限不同，則分割區切換將會失敗，因為分割區中繼資料不會同步處理。
 
@@ -357,6 +357,6 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 
 使用這個方法時，原始檔控制中的程式碼會保持靜態，而分割區界限值則允許動態;隨著時間使用 SQL 集區不斷演進。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需開發資料表的詳細資訊，請參閱[資料表概觀](sql-data-warehouse-tables-overview.md)一文。

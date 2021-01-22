@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 1551e85bd45d4d64861b43bf53dd0c155520861f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120983"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673632"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地載入資料
 
-本文主要說明 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)的安全驗證機制，並提供相關範例。 在 Synapse SQL 中大量載入資料時，COPY 陳述式是最具彈性且安全的方式。
+本文主要說明 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)的安全驗證機制，並提供相關範例。 在 Synapse SQL 中大量載入資料時，COPY 陳述式是最具彈性且安全的方式。
 ## <a name="supported-authentication-mechanisms"></a>支援的驗證機制
 
 下列矩陣說明每個檔案類型和儲存體帳戶支援的驗證方法。 這適用於來源儲存位置和錯誤檔案位置。
@@ -176,5 +176,5 @@ WITH (
 
 ## <a name="next-steps"></a>後續步驟
 
-- 參閱 [COPY 陳述式文章](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)以了解詳細語法
+- 參閱 [COPY 陳述式文章](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)以了解詳細語法
 - 參閱[資料載入概觀](./design-elt-data-loading.md#what-is-elt)一文以了解載入的最佳做法

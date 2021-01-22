@@ -8,12 +8,12 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.custom: device-developer, devx-track-azurecli
-ms.openlocfilehash: 2bbf400840c968587de3a0a0951d28c7c35b210f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d1a7c94152b611ea0dbea249156add617178d7ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990885"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673229"
 ---
 # <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>針對裝置中的資料未顯示在 Azure IoT Central 的原因進行疑難排解
 
@@ -35,11 +35,11 @@ ms.locfileid: "94990885"
 
 如果您尚未這麼做，請安裝 `az cli` 工具和擴充功能 `azure-iot` 。
 
-若要瞭解如何安裝 `az cli` ，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+若要瞭解如何安裝 `az cli` ，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-若[install](/cli/azure/azure-cli-reference-for-IoT?view=azure-cli-latest#extension-reference-installation)要安裝 `azure-iot` 擴充功能，請執行下列命令：
+若[](/cli/azure/azure-cli-reference-for-IoT#extension-reference-installation)要安裝 `azure-iot` 擴充功能，請執行下列命令：
 
-```cmd/bash
+```azurecli
 az extension add --name azure-iot
 ```
 
@@ -50,20 +50,20 @@ az extension add --name azure-iot
 
 使用下列命令來登入您的 IoT Central 應用程式所在的訂用帳戶：
 
-```cmd/bash
+```azurecli
 az login
 az set account --subscription <your-subscription-id>
 ```
 
 若要監視裝置所傳送的遙測，請使用下列命令：
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-events --app-id <app-id> --device-id <device-name>
 ```
 
 如果裝置已成功連線到 IoT Central，您會看到類似下列的輸出：
 
-```cmd/bash
+```output
 Monitoring telemetry.
 Filtering on device: device-001
 {
@@ -82,13 +82,13 @@ Filtering on device: device-001
 
 若要監視您的裝置與 IoT Central 交換的屬性更新，請使用下列預覽命令：
 
-```cmd/bash
+```azurecli
 az iot central diagnostics monitor-properties --app-id <app-id> --device-id <device-name>
 ```
 
 如果裝置成功傳送屬性更新，您會看到類似下列的輸出：
 
-```cmd/bash
+```output
 Changes in reported properties:
 version : 32
 {'state': 'true', 'name': {'value': {'value': 'Contoso'}, 'status': 'completed', 'desiredVersion': 7, 'ad': 'completed', 'av': 7, 'ac
@@ -106,7 +106,7 @@ rocessorArchitecture': 'ARM', 'swVersion': '1.0.0'}
 
 如果您的資料未顯示在監視器上，請執行下列命令來檢查裝置的布建狀態：
 
-```cmd/bash
+```azurecli
 az iot central device registration-info --app-id <app-id> --device-id <device-name>
 ```
 
@@ -132,7 +132,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 | 裝置布建狀態 | Description | 可能的緩和措施 |
 | - | - | - |
-| 已佈建 | 沒有立即可辨識的問題。 | N/A |
+| 已佈建 | 沒有立即可辨識的問題。 | 不適用 |
 | 已登錄 | 裝置尚未連線到 IoT Central。 | 檢查您的裝置記錄是否有連線問題。 |
 | 封鎖 | 裝置遭到封鎖而無法連接到 IoT Central。 | 裝置遭到封鎖而無法連接到 IoT Central 應用程式。 請在 IoT Central 中解除封鎖裝置，然後重試。 若要深入瞭解，請參閱 [封鎖裝置](concepts-get-connected.md#device-status-values)。 |
 | 未經 批准 | 裝置未通過核准。 | 裝置未獲核准，無法連接至 IoT Central 應用程式。 請在 IoT Central 中核准裝置，然後重試。 若要深入瞭解，請參閱 [核准裝置](concepts-get-connected.md#device-registration) |
@@ -176,13 +176,13 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 - 若要驗證遙測，請使用預覽命令：
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-messages --app-id <app-id> --device-id <device-name>
     ```
 
 - 若要驗證屬性更新，請使用預覽命令
 
-    ```cmd/bash
+    ```azurecli
     az iot central diagnostics validate-properties --app-id <app-id> --device-id <device-name>
     ```
 
@@ -190,7 +190,7 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 
 下列輸出顯示來自 validate 命令的範例錯誤和警告訊息：
 
-```cmd/bash
+```output
 Validating telemetry.
 Filtering on device: v22upeoqx6.
 Exiting after 300 second(s), or 10 message(s) have been parsed (whichever happens first).

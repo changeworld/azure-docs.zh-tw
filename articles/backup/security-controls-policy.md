@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 備份的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure 備份的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 author: dcurwin
 ms.author: dacurwin
 ms.service: backup
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: fe1e2deebd5b02b2dc7fd73ca774efc48a6033f8
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: a02425176ad834e770585a98fe0ae54a365e56f5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049029"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673265"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-backup"></a>適用於 Azure 備份的 Azure 原則法規合規性控制項
 

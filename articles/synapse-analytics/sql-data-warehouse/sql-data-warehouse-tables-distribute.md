@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3b61df954e913671eafff4b739e0f53a4d420c28
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 5aefe869041d9fff8112b6aa380961ca6568ae0b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117294"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673564"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的專用 SQL 集區來設計分散式資料表的指引
 
@@ -96,7 +96,7 @@ WITH
 
 選擇散發資料行是很重要的設計決策，因為此資料行中的值會決定資料列的散發方式。 最佳選擇取決於許多因素，通常需要權衡取捨。 選擇散發資料行之後，就無法變更。  
 
-如果您未在第一次就選擇最佳資料行，您可以使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 來重建具有不同散發資料行的資料表。
+如果您未在第一次就選擇最佳資料行，您可以使用 [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 來重建具有不同散發資料行的資料表。
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>選擇資料平均散發的散發資料行
 
@@ -133,7 +133,7 @@ WITH
 
 ### <a name="determine-if-the-table-has-data-skew"></a>判斷資料表是否有資料扭曲
 
-快速檢查資料扭曲的方法是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 下列 SQL 程式碼會傳回在 60 個散發的每個散發中儲存的資料表資料列數目。 為了達到平衡的效能，分散式資料表中的資料列應平均散發於所有散發。
+快速檢查資料扭曲的方法是使用 [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 下列 SQL 程式碼會傳回在 60 個散發的每個散發中儲存的資料表資料列數目。 為了達到平衡的效能，分散式資料表中的資料列應平均散發於所有散發。
 
 ```sql
 -- Find data skew for a distributed table
@@ -183,7 +183,7 @@ order by two_part_name, row_count
 
 ### <a name="re-create-the-table-with-a-new-distribution-column"></a>重建具有新散發資料行的資料表
 
-此範例會使用 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 來重建具有不同雜湊散發資料行的資料表。
+此範例會使用 [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 來重建具有不同雜湊散發資料行的資料表。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]
@@ -225,5 +225,5 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 若要建立分散式資料表，請使用下列其中一個陳述式：
 
-- [CREATE TABLE (專用 SQL 集區) ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [CREATE TABLE 選取 (專用 SQL 集區) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (專用 SQL 集區) ](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+- [CREATE TABLE 選取 (專用 SQL 集區) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

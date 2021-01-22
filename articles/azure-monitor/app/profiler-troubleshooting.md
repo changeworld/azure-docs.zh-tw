@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 47a452377c8fed9808957f45fcc4ec686fcef87d
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 05a2eaeb3b716988a8ae1eddcaa5a5a58cc3776a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561030"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675691"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>針對啟用或檢視 Application Insights Profiler 的問題進行疑難排解
 
@@ -214,7 +214,7 @@ Profiler 會在 Web 應用程式中以連續 WebJob 的形式執行。 您可以
 
 如果您的應用程式透過 proxy 或防火牆連接到網際網路，您可能需要更新規則，以與分析工具服務進行通訊。
 
-Application Insights Profiler 所使用的 Ip 會包含在 Azure 監視器服務標記中。 如需詳細資訊，請參閱 [服務標記檔](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+Application Insights Profiler 所使用的 Ip 會包含在 Azure 監視器服務標記中。 如需詳細資訊，請參閱 [服務標記檔](../../virtual-network/service-tags-overview.md)。
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png

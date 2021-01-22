@@ -4,18 +4,18 @@ description: 了解 Kubernetes 的基本叢集和工作負載元件，及其與 
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 17203123ceb0c196bd8f9011e2962f5022e54698
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 54d6f4529c236c7ff9f6258122b5b49d6d3723e8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901296"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674921"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 的 Kubernetes 核心概念
 
 隨著應用程式開發移往以容器為基礎的方法，協調和管理資源的需求很重要。 Kubernetes 是領先的平台，可用來提供容錯應用程式工作負載的可靠排程。 Azure Kubernetes Service (AKS) 是受管理的 Kubernetes 供應項目，可進一步簡化容器型應用程式的部署和管理。
 
-本文介紹核心 Kubernetes 基礎結構元件，例如 *控制平面* 、 *節點* 和 *節點* 集區。 此外也介紹 *Pod* 、 *部署* 和 *集合* 等工作負載資源，並說明如何將資源分組到 *命名空間* 中。
+本文介紹核心 Kubernetes 基礎結構元件，例如 *控制平面*、 *節點* 和 *節點* 集區。 此外也介紹 *Pod*、*部署* 和 *集合* 等工作負載資源，並說明如何將資源分組到 *命名空間* 中。
 
 ## <a name="what-is-kubernetes"></a>什麼是 Kubernetes？
 
@@ -57,7 +57,7 @@ AKS 提供單一租使用者控制平面，具有專用的 API 伺服器、排�
 
 ## <a name="nodes-and-node-pools"></a>節點和節點集區
 
-若要執行應用程式和支援的服務，您必須要有 Kubernetes *節點* 。 AKS 叢集中有一或多個節點，而此類節點是可執行 Kubernetes 節點元件和容器執行階段的 Azure 虛擬機器 (VM)：
+若要執行應用程式和支援的服務，您必須要有 Kubernetes *節點*。 AKS 叢集中有一或多個節點，而此類節點是可執行 Kubernetes 節點元件和容器執行階段的 Azure 虛擬機器 (VM)：
 
 - `kubelet`是 Kubernetes 代理程式，可處理來自控制平面的協調流程要求，以及排程執行要求的容器。
 - 虛擬網路由每個節點上的 *kube-proxy* 負責處理。 Proxy 會路由網路流量，以及管理服務和 Pod 的 IP 定址。
@@ -78,7 +78,6 @@ AKS 會使用節點資源，讓節點功能成為叢集的一部分。 此使用
 若要尋找節點的 allocatable 資源，請執行：
 ```kubectl
 kubectl describe node [NODE_NAME]
-
 ```
 
 為了維持節點的效能和功能，AKS 會在每個節點上保留資源。 當節點成長到更大的資源時，資源保留會因為需要管理的使用者部署的 pod 數量增加而增加。
@@ -86,22 +85,24 @@ kubectl describe node [NODE_NAME]
 >[!NOTE]
 > 使用 AKS 附加元件（例如容器深入解析 (OMS) 將會耗用額外的節點資源。
 
+保留兩種類型的資源：
+
 - **Cpu** 保留的 cpu 取決於節點類型和叢集設定，因為執行其他功能，這可能會導致較少的 allocatable CPU
 
-| 主機上的 CPU 核心 | 1    | 2    | 4    | 8    | 16 | 32|64|
-|---|---|---|---|---|---|---|---|
-|Kube-reserved (millicore) |60|100|140|180|260|420|740|
+   | 主機上的 CPU 核心 | 1    | 2    | 4    | 8    | 16 | 32|64|
+   |---|---|---|---|---|---|---|---|
+   |Kube-reserved (millicore) |60|100|140|180|260|420|740|
 
 - **記憶體** -AKS 使用的記憶體包括兩個值的總和。
 
-1. Kubelet daemon 會安裝在所有 Kubernetes 代理程式節點上，以管理容器建立和終止。 根據預設，在 AKS 上，此背景程式具有下列收回規則： *記憶體。可用<750Mi* ，這表示節點必須一律至少有 750 Mi allocatable。  當主機低於可用記憶體的閾值時，kubelet 會終止其中一個執行中的 pod 以釋出主機電腦上的記憶體，並加以保護。 當可用記憶體減少超過750Mi 臨界值時，就會觸發此動作。
+   1. Kubelet daemon 會安裝在所有 Kubernetes 代理程式節點上，以管理容器建立和終止。 根據預設，在 AKS 上，此背景程式具有下列收回規則： *記憶體。可用<750Mi*，這表示節點必須一律至少有 750 Mi allocatable。  當主機低於可用記憶體的閾值時，kubelet 會終止其中一個執行中的 pod 以釋出主機電腦上的記憶體，並加以保護。 當可用記憶體減少超過750Mi 臨界值時，就會觸發此動作。
 
-2. 第二個值是 kubelet daemon (的記憶體保留率的回歸率，可正常運作 kube 保留) 。
-    - 前 4 GB 記憶體的25%
-    - 20% 的 (下 4 GB 的記憶體，最多 8 GB) 
-    - 下 8 GB 記憶體的 10% (高達 16 GB) 
-    - 下 112 GB 記憶體的 6% (高達 128 GB) 
-    - 128 GB 以上記憶體的2%
+   2. 第二個值是 kubelet daemon (的記憶體保留率的回歸率，可正常運作 kube 保留) 。
+      - 前 4 GB 記憶體的25%
+      - 20% 的 (下 4 GB 的記憶體，最多 8 GB) 
+      - 下 8 GB 記憶體的 10% (高達 16 GB) 
+      - 下 112 GB 記憶體的 6% (高達 128 GB) 
+      - 128 GB 以上記憶體的2%
 
 上述的記憶體和 CPU 配置規則可用來讓代理程式節點保持良好狀態，包括一些對叢集健全狀況很重要的裝載系統 pod。 如果節點不是 Kubernetes 叢集的一部分，則這些配置規則也會讓節點回報較不常 allocatable 的記憶體和 CPU。 無法變更上述資源保留。
 
@@ -115,7 +116,7 @@ kubectl describe node [NODE_NAME]
 
 ### <a name="node-pools"></a>節點集區
 
-相同設定的節點會一起分組到 *節點集區* 中。 Kubernetes 叢集包含一或多個節點集區。 您在建立 AKS 叢集時會定義初始的節點數目和大小，而建立 *預設節點集區* 。 AKS 中的這個預設節點集區包含用來執行代理程式節點的基礎 VM。
+相同設定的節點會一起分組到 *節點集區* 中。 Kubernetes 叢集包含一或多個節點集區。 您在建立 AKS 叢集時會定義初始的節點數目和大小，而建立 *預設節點集區*。 AKS 中的這個預設節點集區包含用來執行代理程式節點的基礎 VM。
 
 > [!NOTE]
 > 若要確保叢集能夠可靠地運作，您應該在預設節點集區中執行至少 2 個 (兩個) 節點。
@@ -153,7 +154,7 @@ Kubernetes 會使用 *Pod* 執行您的應用程式執行個體。 一個 Pod �
 
 如需詳細資訊，請參閱 [Kubernetes Pod][kubernetes-pods] 和 [Kubernetes Pod 生命週期][kubernetes-pod-lifecycle]。
 
-Pod 是邏輯資源，但應用程式工作負載執行的所在之處是容器。 Pod 通常是暫時性、可處置的資源，且個別排程的 Pod 會無法獲益於 Kubernetes 所提供的一些高可用性和備援功能。 取而代之的是，pod 是由 Kubernetes *控制器* （例如部署控制器）所部署和管理。
+Pod 是邏輯資源，但應用程式工作負載執行的所在之處是容器。 Pod 通常是暫時性、可處置的資源，且個別排程的 Pod 會無法獲益於 Kubernetes 所提供的一些高可用性和備援功能。 取而代之的是，pod 是由 Kubernetes *控制器*（例如部署控制器）所部署和管理。
 
 ## <a name="deployments-and-yaml-manifests"></a>部署和 YAML 資訊清單
 
@@ -163,7 +164,7 @@ Pod 是邏輯資源，但應用程式工作負載執行的所在之處是容器�
 
 AKS 中的多數無狀態應用程式均應使用部署模型，而不是排程個別的 Pod。 Kubernetes 可監視部署的健康情況和狀態，以確定有所需數量的複本執行於叢集內。 當您只排程個別 pod 時，如果 pod 遇到問題，就不會重新開機，而且如果其目前節點發生問題，則不會重新排程狀況良好的節點。
 
-如果應用程式需要執行個體仲裁以便隨時可供管理決策擬定之用，您就不應讓更新程序中斷該項功能。 您可以使用 *Pod 中斷預算* ，定義在更新或節點升級期間可在部署中停止多少個複本。 例如，如果您的部署中有 *五個 (5)* 的複本，您可以將 pod 中斷定義為 *4* ，一次只允許一個複本遭到刪除/重新排程。 與 Pod 資源限制相同，最佳做法是為需要有最少量複本持續存在的應用程式定義 Pod 中斷預算。
+如果應用程式需要執行個體仲裁以便隨時可供管理決策擬定之用，您就不應讓更新程序中斷該項功能。 您可以使用 *Pod 中斷預算*，定義在更新或節點升級期間可在部署中停止多少個複本。 例如，如果您的部署中有 *五個 (5)* 的複本，您可以將 pod 中斷定義為 *4* ，一次只允許一個複本遭到刪除/重新排程。 與 Pod 資源限制相同，最佳做法是為需要有最少量複本持續存在的應用程式定義 Pod 中斷預算。
 
 部署通常可透過 `kubectl create` 或 `kubectl apply` 來建立和管理。 若要建立部署，您可以定義 YAML (YAML 不是標記語言) 格式的資訊清單檔。 下列範例會建立 NGINX Web 伺服器的基本部署。 部署會指定要建立的 *三個 (3)* 複本，而且需要在容器上開啟埠 *80* 。 此外也會定義 CPU 和記憶體的資源要求和限制。
 
@@ -202,7 +203,7 @@ spec:
 
 ### <a name="package-management-with-helm"></a>使用 Helm 管理套件
 
-[Helm][helm] 是在 Kubernetes 中管理應用程式的常見方法。 您可以建置和使用現有的公用 Helm *圖表* ，其中包含封裝版的應用程式程式碼，和用來部署資源的 Kubernetes YAML 資訊清單。 這些 Helm 圖表可儲存於本機，或通常儲存在遠端存放庫中，例如 [Azure Container Registry Helm 圖表存放庫][acr-helm]。
+[Helm][helm] 是在 Kubernetes 中管理應用程式的常見方法。 您可以建置和使用現有的公用 Helm *圖表*，其中包含封裝版的應用程式程式碼，和用來部署資源的 Kubernetes YAML 資訊清單。 這些 Helm 圖表可儲存於本機，或通常儲存在遠端存放庫中，例如 [Azure Container Registry Helm 圖表存放庫][acr-helm]。
 
 若要使用 Helm，請在您的電腦上安裝 Helm 用戶端，或使用 [Azure Cloud Shell][azure-cloud-shell]中的 Helm 用戶端。 您可以使用用戶端搜尋或建立 Helm 圖表，然後將其安裝至 Kubernetes 叢集。 如需詳細資訊，請參閱 [在 AKS 中使用 Helm 安裝現有的應用程式][aks-helm]。
 

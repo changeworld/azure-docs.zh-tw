@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88ee95789bdc1c6ee9884a021067318caab203d4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: HT
+ms.openlocfilehash: b78c2d5c03c95249c7f708f2d660d32c834f123e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451642"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676090"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>使用 sqlcmd 連線到 Synapse SQL
 
@@ -25,10 +25,10 @@ ms.locfileid: "96451642"
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-您可以使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 命令列公用程式來連線及查詢 Synapse SQL 內的無伺服器 SQL 集區和專用 SQL 集區。  
+您可以使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 命令列公用程式來連線及查詢 Synapse SQL 內的無伺服器 SQL 集區和專用 SQL 集區。  
 
 ## <a name="1-connect"></a>1.連線
-若要開始使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，請開啟命令提示字元，然後輸入 **sqlcmd** 並在後面加上 Synapse SQL 資料庫的連接字串。 連接字串需要下列參數：
+若要開始使用 [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，請開啟命令提示字元，然後輸入 **sqlcmd** 並在後面加上 Synapse SQL 資料庫的連接字串。 連接字串需要下列參數：
 
 * **伺服器 (-S)：** 採用 `<`Server Name`>`.database.windows.net 格式的伺服器
 * **資料庫 (-d)：** 資料庫名稱
@@ -78,7 +78,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 
 ### <a name="use-dedicated-sql-pool"></a>使用專用 SQL 集區
 
-連線之後，您可以對執行個體發出任何支援的 [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL) 陳述式。 此範例會在互動模式中提交查詢：
+連線之後，您可以對執行個體發出任何支援的 [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (T-SQL) 陳述式。 此範例會在互動模式中提交查詢：
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -99,7 +99,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ### <a name="use-serverless-sql-pool"></a>使用無伺服器 SQL 集區
 
-連線之後，您可以對執行個體發出任何支援的 [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (T-SQL) 陳述式。  下列範例會以互動模式提交查詢：
+連線之後，您可以對執行個體發出任何支援的 [Transact-SQL](/sql/t-sql/language-reference?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (T-SQL) 陳述式。  下列範例會以互動模式提交查詢：
 
 ```sql
 C:\>sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P Enter_Your_Password_Here -I
@@ -120,4 +120,4 @@ sqlcmd -S partyeunrt.database.windows.net -d demo -U Enter_Your_Username_Here -P
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 sqlcmd 選項的詳細資訊，請參閱 [sqlcmd 文件](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+如需 sqlcmd 選項的詳細資訊，請參閱 [sqlcmd 文件](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。

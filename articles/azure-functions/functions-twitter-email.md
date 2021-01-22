@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: feb6b36f8e5e7bbec83d8882552484f68abfd56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 5750597d7d4d372be975aa64ce8db11859791da2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537747"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674313"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>建立與 Azure Logic Apps 整合的函式
 
@@ -40,7 +40,7 @@ Azure Functions 與 Logic Apps 設計工具中的 Azure Logic Apps 進行整合�
 > [!NOTE]
 > 如果您想要使用 Gmail 連接器，只有 G-Suite 的商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用 Gmail 連接器搭配特定的 Google 核准應用程式及服務，或者您可以[建立 Google 用戶端應用程式，以用來在 Gmail 連接器中進行驗證](/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
-+ 本文使用[從 Azure 入口網站建立您的第一個函式](functions-create-first-azure-function.md)中所建立的資源作為起點。
++ 本文使用[從 Azure 入口網站建立您的第一個函式](./functions-get-started.md)中所建立的資源作為起點。
 如果您尚未這麼做，請立即完成這些步驟，才能建立函式應用程式。
 
 ## <a name="create-a-cognitive-services-resource"></a>建立認知服務資源
@@ -68,7 +68,7 @@ Azure Functions 與 Logic Apps 設計工具中的 Azure Logic Apps 進行整合�
 
     ![認知服務設定](media/functions-twitter-email/02-cognitive-services.png)
 
-6. 在左側瀏覽欄位中按一下 [金鑰]，然後複製**金鑰 1** 的值，並放置在文字編輯器中。 您可以使用此金鑰將邏輯應用程式連線至認知服務 API。 
+6. 在左側瀏覽欄位中按一下 [金鑰]，然後複製 **金鑰 1** 的值，並放置在文字編輯器中。 您可以使用此金鑰將邏輯應用程式連線至認知服務 API。 
  
     ![認知服務金鑰](media/functions-twitter-email/03-cognitive-serviecs-keys.png)
 
@@ -188,7 +188,7 @@ Azure Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中�
 
     ![選取 [新增步驟]，然後選取 [新增動作]](media/functions-twitter-email/12-connection-settings.png)
 
-4. 接著，在文字方塊中輸入**推文文字**，然後按一下 [新增步驟]。
+4. 接著，在文字方塊中輸入 **推文文字**，然後按一下 [新增步驟]。
 
     ![定義要分析的文字](media/functions-twitter-email/13-analyze-tweet-text.png)
 
@@ -208,7 +208,7 @@ Azure Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中�
 
     ![選取函式](media/functions-twitter-email/16-select-function.png)
 
-4. 在**要求本文**中，依序按一下 [分數] 和 [儲存]。
+4. 在 **要求本文** 中，依序按一下 [分數] 和 [儲存]。
 
     ![Score](media/functions-twitter-email/17-function-input-score.png)
 
@@ -233,7 +233,7 @@ Azure Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中�
     > [!NOTE]
     > 如果您沒有 Outlook.com 帳戶，可以選擇另一個連接器，例如 Gmail 或 Office 365 Outlook
 
-4. 在**傳送電子郵件**動作，使用資料表中指定的電子郵件設定。 
+4. 在 **傳送電子郵件** 動作，使用資料表中指定的電子郵件設定。 
 
     ![設定傳送電子郵件動作的電子郵件。](media/functions-twitter-email/21-configure-email.png)
     

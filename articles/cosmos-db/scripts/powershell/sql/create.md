@@ -7,19 +7,22 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 3a803ef8c85769e8995602b980ee3249f4edcce8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: HT
+ms.openlocfilehash: 2a098d3eff7bc4a8a78a880386145457b80b42d4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074568"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675541"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-api"></a>建立 Azure Cosmos DB 資料庫和容器 - SQL API
 [!INCLUDE[appliesto-sql-api](../../../includes/appliesto-sql-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
-[!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
+此範例需要 Azure PowerShell Az 5.4.0 或更新版本。 執行 `Get-Module -ListAvailable Az` 可查看已安裝的版本。
+如果您需要安裝，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
+
+執行 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 來登入 Azure。
 
 ## <a name="sample-script"></a>範例指令碼
 

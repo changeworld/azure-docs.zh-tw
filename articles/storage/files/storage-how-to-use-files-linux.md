@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c271107b85e4903153c29b58aadadd37fb051b76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5161d8e169a7eb9e757dfbfa71fa697880e1806e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022559"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673682"
 ---
 # <a name="use-azure-files-with-linux"></a>搭配 Linux 使用 Azure 檔案
 [Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 可以使用 [SMB 核心用戶端](https://wiki.samba.org/index.php/LinuxCIFS)將 Azure 檔案共用裝載在 Linux 發行版本中。 本文將說明掛接 Azure 檔案共用的兩種方式：使用 `mount` 命令的隨選掛接，以及建立項目 `/etc/fstab` 的開機掛接。
@@ -34,7 +34,7 @@ ms.locfileid: "96022559"
 uname -r
 ```
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**確定已安裝 cifs 公用程式套件。**  
@@ -67,7 +67,7 @@ uname -r
 
     在其他發行版本上，請使用適當的封裝管理員或[從來源編譯](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **最新版本的 Azure 命令列介面 (CLI) 。** 如需有關如何安裝 Azure CLI 的詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 並選取您的作業系統。 如果您想要在 PowerShell 6 + 中使用 Azure PowerShell 模組，您可能會看到下列的 Azure CLI 的指示。
+* **最新版本的 Azure 命令列介面 (CLI) 。** 如需有關如何安裝 Azure CLI 的詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli) 並選取您的作業系統。 如果您想要在 PowerShell 6 + 中使用 Azure PowerShell 模組，您可能會看到下列的 Azure CLI 的指示。
 
 * **請確定已開啟連接埠 445**：SMB 透過 TCP 通訊埠 445 進行通訊 - 請檢查您的防火牆不會將 TCP 通訊埠 445 從用戶端電腦封鎖。  取代 `<your-resource-group>` ， `<your-storage-account>` 然後執行下列腳本：
     ```bash
@@ -87,7 +87,7 @@ uname -r
 
     如果連接成功，您應該會看到類似下列輸出的內容：
 
-    ```
+    ```ouput
     Connection to <your-storage-account> 445 port [tcp/microsoft-ds] succeeded!
     ```
 
@@ -250,22 +250,22 @@ uname -r
 
 | 散發 | 可以停用 SMB 1 |
 |--------------|-------------------|
-| Ubuntu 14.04-16.04 | 否 |
-| Ubuntu 18.04 | 是 |
-| Ubuntu 19.04 + | 是 |
-| Debian 8-9 | 否 |
-| Debian 10 + | 是 |
-| Fedora 29 + | 是 |
-| CentOS 7 | 否 | 
-| CentOS 8 + | 是 |
-| Red Hat Enterprise Linux 6.x-7。x | 否 |
-| Red Hat Enterprise Linux 8 + | 是 |
-| openSUSE 閏15。0 | 否 |
-| openSUSE Leap 15.1 + | 是 |
-| openSUSE Tumbleweed | 是 |
-| SUSE Linux Enterprise 11. x-12. x | 否 |
-| SUSE Linux Enterprise 15 | 否 |
-| SUSE Linux Enterprise 15。1 | 否 |
+| Ubuntu 14.04-16.04 | No |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
+| Debian 8-9 | No |
+| Debian 10 + | Yes |
+| Fedora 29 + | Yes |
+| CentOS 7 | No | 
+| CentOS 8 + | Yes |
+| Red Hat Enterprise Linux 6.x-7。x | No |
+| Red Hat Enterprise Linux 8 + | Yes |
+| openSUSE 閏15。0 | No |
+| openSUSE Leap 15.1 + | Yes |
+| openSUSE Tumbleweed | Yes |
+| SUSE Linux Enterprise 11. x-12. x | No |
+| SUSE Linux Enterprise 15 | No |
+| SUSE Linux Enterprise 15。1 | No |
 
 您可以透過下列命令查看您的 Linux 散發套件是否支援 `disable_legacy_dialects` module 參數。
 

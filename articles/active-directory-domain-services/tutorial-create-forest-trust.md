@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 01/21/2021
 ms.author: justinha
-ms.openlocfilehash: faa46178262777454d4d67d23bbd0bb013974ab5
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: e381c80dddc4484d541f5f81de6b5df712cff69b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208483"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673463"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>教學課程：在 Azure Active Directory Domain Services 中建立內部部署網域的輸出樹系信任
 
-在無法同步處理密碼雜湊的環境中，或您有使用智慧卡以獨佔方式登入，因此不知道密碼的使用者，可以使用 Azure Active Directory Domain Services (Azure AD DS) 中的資源樹系。 資源樹系會使用從 Azure AD DS 到一或多個內部部署 AD DS 環境的單向輸出信任。 此信任關係可讓使用者、應用程式和電腦向 Azure AD DS 受控網域中的內部部署網域進行驗證。 在資源樹系中，內部部署密碼雜湊永遠不會進行同步處理。
+在無法同步處理密碼雜湊的環境中，或使用者使用智慧卡以獨佔方式登入，但不知道其密碼的環境中，您可以使用 Azure Active Directory Domain Services (Azure AD DS) 中的資源樹系。 資源樹系會使用從 Azure AD DS 到一或多個內部部署 AD DS 環境的單向輸出信任。 此信任關係可讓使用者、應用程式和電腦向 Azure AD DS 受控網域中的內部部署網域進行驗證。 在資源樹系中，內部部署密碼雜湊永遠不會進行同步處理。
 
 ![從 Azure AD DS 到內部部署 AD DS 的樹系信任圖表](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "98208483"
 
 * 使用私人 IP 位址。 不要依賴具有動態 IP 位址指派的 DHCP。
 * 避免重疊的 IP 位址空間，讓虛擬網路對等互連和路由能夠成功地在 Azure 與內部部署之間通訊。
-* Azure 虛擬網路需要閘道子網路來設定 [Azure 站對站 (S2S) VPN][vpn-gateway] 或 [ExpressRoute][expressroute] 連線
+* Azure 虛擬網路需要閘道子網，才能設定 [azure 站對站 (S2S) VPN][vpn-gateway] 或 [ExpressRoute][expressroute] 連線。
 * 建立具有足夠 IP 位址的子網路，以支援您的案例。
 * 請確定 Azure AD DS 有自己的子網路，請勿與應用程式 VM 和服務共用此虛擬網路子網路。
 * 對等互連虛擬網路「不可」轉移。
@@ -84,8 +84,8 @@ ms.locfileid: "98208483"
 
 若要在內部部署 AD DS 網域設定輸入信任，請從內部部署 AD DS 網域的管理工作站完成下列步驟：
 
-1. 選取 [ **開始] |系統管理工具 |Active Directory 網域和信任**。
-1. 以滑鼠右鍵選取 [網域]，例如 [ *onprem.contoso.com*]，然後選取 [ **屬性**]。
+1. 選取 [**啟動** 系統  >  **管理工具**  >  **Active Directory 網域和信任**]。
+1. 以滑鼠右鍵按一下網域，例如 [ *onprem.contoso.com*]，然後選取 [ **屬性**]。
 1. 選擇 [ **信任** ] 索引標籤，然後選擇 [ **新增信任**]。
 1. 輸入 Azure AD DS 功能變數名稱（例如 *aaddscontoso.com*）的名稱，然後選取 **[下一步]**。
 1. 選取選項以建立 **樹系信任**，然後建立 **單向: 連入** 信任。
@@ -93,6 +93,14 @@ ms.locfileid: "98208483"
 1. 選擇使用 **全樹系驗證**，然後輸入並確認信任密碼。 在下一節中，也需要在 Azure 入口網站中輸入相同的密碼。
 1. 使用預設選項逐步執行接下來的幾個視窗，然後選擇 [否，不要確認外寄信任] 的選項。
 1. 選取 [完成]。
+
+如果環境不再需要樹系信任，請完成下列步驟，將其從內部部署網域中移除：
+
+1. 選取 [**啟動** 系統  >  **管理工具**  >  **Active Directory 網域和信任**]。
+1. 以滑鼠右鍵按一下網域，例如 [ *onprem.contoso.com*]，然後選取 [ **屬性**]。
+1. 選擇 [ **信任** ] 索引標籤，然後 **信任此網域的網域 (連入信任])**，按一下要移除的信任，然後按一下 [ **移除**]。
+1. 在 [信任] 索引標籤的 [ **此網域信任的網域] (外寄信任])** 中，按一下要移除的信任，然後按一下 [移除]。
+1. 按一下 [否，只將信任從本機網域移除]。
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>在 Azure AD DS 中建立輸出樹系信任
 
@@ -107,11 +115,17 @@ ms.locfileid: "98208483"
    > 如果您沒有看到 [信任] 功能表選項，請在 [樹系類型] 下，勾選 [屬性]。 只有「資源」樹系可以建立信任。 如果樹系類型為「使用者」，您就無法建立信任。 目前沒有任何方法可變更受控網域的樹系類型。 您必須刪除並重新建立受控網域作為資源樹系。
 
 1. 輸入識別您信任的顯示名稱，然後輸入內部部署的信任樹系 DNS 名稱，例如 *onprem.contoso.com*。
-1. 提供在上一節中設定內部部署 AD DS 網域的輸入樹系信任時，所使用的相同信任密碼。
+1. 提供在上一節中用來設定內部部署 AD DS 網域之輸入樹系信任的相同信任密碼。
 1. 為內部部署 AD DS 網域至少提供兩部 DNS 伺服器，例如 *10.1.1.4* 和 *10.1.1.5*。
 1. 當您準備好時，請 **儲存** 輸出樹系信任。
 
     ![在 Azure 入口網站中建立輸出樹系信任](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
+
+如果環境不再需要樹系信任，請完成下列步驟，將其從 Azure AD DS 中移除：
+
+1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure AD Domain Services**]，然後選取您的受控網域，例如 *aaddscontoso.com*。
+1. 從受控網域左側的功能表中，選取 [ **信任**]，選擇信任，然後按一下 [ **移除**]。
+1. 提供用來設定樹系信任的相同信任密碼，然後按一下 **[確定]**。
 
 ## <a name="validate-resource-authentication"></a>驗證資源驗證
 

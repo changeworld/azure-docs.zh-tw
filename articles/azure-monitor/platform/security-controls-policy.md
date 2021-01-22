@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure 監視器的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure 監視器的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 author: rboucher
 ms.author: robb
 ms.service: azure-monitor
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 1340aca36d3ca8c9fc54ec925dbf81c7c95b993b
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: 31929cbb27cfbfba0d76e417609d98bc29664bfd
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044065"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673297"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-monitor"></a>適用於 Azure 監視器的 Azure 原則法規合規性控制項
 

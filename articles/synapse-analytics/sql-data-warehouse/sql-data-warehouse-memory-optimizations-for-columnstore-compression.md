@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6984ad41c07f7790a746dbd197c18dce2aa83e2f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d668c3e505d6849d3cde52d52698a95c1c5647d9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453725"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676157"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>最大化專用 SQL 集區中資料行存放區索引的資料列群組品質 
 
@@ -28,7 +28,7 @@ ms.locfileid: "96453725"
 
 當資料列群組會有大量的資料列時，可改善資料壓縮，這表示從磁碟讀取的資料比較少。
 
-如需關於資料列群組的詳細資訊，請參閱[資料行存放區索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+如需關於資料列群組的詳細資訊，請參閱[資料行存放區索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="target-size-for-rowgroups"></a>資料列群組的目標大小
 
@@ -42,11 +42,11 @@ ms.locfileid: "96453725"
 
 如果記憶體不足，無法將至少10000個數據列壓縮到每個資料列群組中，則會產生錯誤。
 
-如需有關大量載入的詳細資訊，請參閱[大量載入叢集資料行存放區索引](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+如需有關大量載入的詳細資訊，請參閱[大量載入叢集資料行存放區索引](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何監視資料列群組品質
 
-DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 包含符合 SQL db) 的視圖定義，可公開有用的資訊，例如資料列群組中的資料列數目，以及修剪的原因（如果有修剪的話）。
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 包含符合 SQL db) 的視圖定義，可公開有用的資訊，例如資料列群組中的資料列數目，以及修剪的原因（如果有修剪的話）。
 
 您可以建立下列檢視，並將其作為查詢這個 DMV 以取得有關資料列群組修剪資訊的便利方法。
 
@@ -163,6 +163,6 @@ DWU 大小和使用者資源類別會共同判斷有多少記憶體可供使用�
 - 若要增加 DWU，請參閱[如何調整效能？](quickstart-scale-compute-portal.md)
 - 若要變更查詢的資源類別，請參閱[變更使用者資源類別的範例](resource-classes-for-workload-management.md#change-a-users-resource-class)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要尋找更多改善專用 SQL 集區效能的方法，請參閱 [效能總覽](cheat-sheet.md)。

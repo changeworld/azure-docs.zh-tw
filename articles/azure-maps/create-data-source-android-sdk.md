@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 2f383876963e3e1d310e7d93f7dc99bb58b189d3
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681463"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674638"
 ---
 # <a name="create-a-data-source-android-sdk"></a>建立資料來源 (Android SDK) 
 
@@ -136,7 +136,7 @@ Feature feature = Feature.fromJson(GeoJSON_STRING);
 String featureString = feature.toJson();
 ```
 
-### <a name="import-geojson-data-from-web-or-assets-folder"></a>從 web 或資產資料夾匯入 GeoJSON 資料
+### <a name="import-geojson-data-from-web-or-assets-folder"></a>從 Web 或資產資料夾匯入 GeoJSON 資料
 
 大部分的 GeoJSON 檔案都包含 FeatureCollection。 以字串形式讀取 GeoJSON 檔，並使用 `FeatureCollection.fromJson` 方法將其還原序列化。
 
@@ -355,10 +355,10 @@ Utils.importData("URL_or_FilePath_to_GeoJSON_data",
 
 Azure 地圖服務遵守 [Mapbox 向量圖格規格](https://github.com/mapbox/vector-tile-spec)，也就是開放式標準。 Azure 地圖服務提供下列向量圖格服務作為平臺的一部分：
 
-- 道路磚[檔](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [資料格式詳細資料](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
-- 流量事件[檔](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
-- 交通流程[檔](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- Azure 地圖服務 Creator 也可讓您透過[取得圖](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)格轉譯 V2 來建立和存取自訂向量磚
+- 道路磚[檔](/rest/api/maps/renderv2/getmaptilepreview)  |  [資料格式詳細資料](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- 流量事件[檔](/rest/api/maps/traffic/gettrafficincidenttile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- 交通流程[檔](/rest/api/maps/traffic/gettrafficflowtile)  |  [資料格式詳細資料](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- Azure 地圖服務 Creator 也可讓您透過[取得圖](/rest/api/maps/renderv2/getmaptilepreview)格轉譯 V2 來建立和存取自訂向量磚
 
 若要在地圖上顯示向量圖格來源的資料，請將來源連接到其中一個資料轉譯圖層。 使用向量來源的所有圖層都必須 `sourceLayer` 在選項中指定值。 下列程式碼會將 Azure 地圖服務交通流程向量圖格服務載入為向量圖格來源，然後使用線條圖層將它顯示在地圖上。 此向量圖格來源在來源層中有一組稱為「流量流程」的資料。 此資料集中的行資料具有一個名為 `traffic_level` 的屬性，此程式碼會使用此屬性來選取色彩並調整線條大小。
 
@@ -500,7 +500,7 @@ map.layers.add(new Layer[] { polygonLayer, lineLayer, bubbleLayer });
 > - `"labels"` -在地圖標籤圖層下方插入新圖層。
 > - `"transit"` -在地圖道路和傳輸層下方插入新的圖層。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 
@@ -523,4 +523,4 @@ map.layers.add(new Layer[] { polygonLayer, lineLayer, bubbleLayer });
 > [新增熱度圖](map-add-heat-map-layer-android.md)
 
 > [!div class="nextstepaction"]
-> [Web SDK 程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Web SDK 程式碼範例](/samples/browse/?products=azure-maps)

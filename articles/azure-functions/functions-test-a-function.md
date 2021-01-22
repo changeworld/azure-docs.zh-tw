@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601385"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674145"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中測試程式碼的策略
 
@@ -32,12 +32,12 @@ ms.locfileid: "96601385"
 
 ![使用 Visual Studio 中的 C# 測試 Azure Functions](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
-### <a name="setup"></a>設定
+### <a name="setup"></a>安裝程式
 
 若要設定您的環境，請建立函式並測試應用程式。 下列步驟協助您建立支援測試所需的應用程式和函式：
 
-1. [建立新的 Functions 應用程式](./functions-create-first-azure-function.md)，並將它命名為 **Functions**
-2. [從範本建立 HTTP 函式](./functions-create-first-azure-function.md) ，並將它命名為 **MyHttpTrigger**。
+1. [建立新的 Functions 應用程式](./functions-get-started.md)，並將它命名為 **Functions**
+2. [從範本建立 HTTP 函式](./functions-get-started.md) ，並將它命名為 **MyHttpTrigger**。
 3. [從範本建立計時器](./functions-create-scheduled-function.md) 函式，並將它命名為 **MyTimerTrigger**。
 4. 在方案中 [建立 XUnit 測試應用程式](https://xunit.net/docs/getting-started/netcore/cmdline)，並將其命名為「**測試**」。
 5. 使用 NuGet 將參考從測試應用程式新增至 [AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
@@ -251,7 +251,7 @@ namespace Functions.Tests
 
 - **Timer_should_log_message**：此測試會建立的實例 `ListLogger` ，並將它傳遞給計時器函數。 一旦函式執行之後，便會檢查記錄以確保是否存在預期的訊息。
 
-如果您想要存取測試中的應用程式設定，您[inject](./functions-dotnet-dependency-injection.md)可以將 `IConfiguration` 具有模擬環境變數值的實例插入函數中。
+如果您想要存取測試中的應用程式設定，您[](./functions-dotnet-dependency-injection.md)可以將 `IConfiguration` 具有模擬環境變數值的實例插入函數中。
 
 ### <a name="run-tests"></a>執行測試
 
@@ -269,7 +269,7 @@ namespace Functions.Tests
 
 ![使用 VS Code 中的 JavaScript 測試 Azure Functions](./media/functions-test-a-function/azure-functions-test-vs-code-jest.png)
 
-### <a name="setup"></a>設定
+### <a name="setup"></a>安裝程式
 
 若要設定您的環境，請執行 `npm init`，在空資料夾中初始化新的 Node.js 應用程式。
 
@@ -381,7 +381,7 @@ npm test
 
 接下來，在測試中設定中斷點，然後按 **F5**。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 現在既然您已經了解如何為您的函式撰寫自動化測試，請繼續使用這些資源：
 

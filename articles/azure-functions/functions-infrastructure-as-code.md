@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbb380dca231f75f6d6e77676c9059ef3762dac5
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4b649942a52c51aef0d6edd17b913f75e1fb247b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050930"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674162"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
 
@@ -114,7 +114,7 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 * [進階方案](#premium)
 * [App Service 計劃](#app-service-plan)
 
-### <a name="function-app"></a>函式應用程式
+### <a name="function-app"></a>函數應用程式
 
 函數應用程式資源是 **使用類型為** **functionapp** 的資源所定義：
 
@@ -692,7 +692,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 * [Azure Functions 開發人員參考](functions-reference.md)
 * [如何設定 Azure 函數應用程式設定](functions-how-to-use-azure-function-app-settings.md)
-* [建立您的第一個 Azure 函式](functions-create-first-azure-function.md)
+* [建立您的第一個 Azure 函式](./functions-get-started.md)
 
 <!-- LINKS -->
 

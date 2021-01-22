@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7ffd7b4db39e6a9ced4cee37cadfc6b3cfc87301
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 764a60ada2484a58382cc1b9539686fa72ee1203
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98537904"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674345"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定多租用戶 Azure Active Directory 的登入
 
@@ -32,7 +32,7 @@ ms.locfileid: "98537904"
 
 ::: zone pivot="b2c-custom-policy"
 
-本文說明如何使用 Azure Active Directory (Azure AD) 的多租使用者端點，讓使用者能夠登入。 這可讓多個 Azure AD 租使用者中的使用者使用 Azure AD B2C 登入，而不需要為每個租使用者設定身分識別提供者。 不過，所有這些租用戶中的來賓成員並 **不能** 登入。 因此，您必須[個別設定每個租用戶](identity-provider-azure-ad-single-tenant.md)。
+本文說明如何使用 Azure Active Directory (Azure AD) 的多租使用者端點，讓使用者能夠登入。 允許來自多個 Azure AD 租使用者的使用者使用 Azure AD B2C 登入，而不需要為每個租使用者設定身分識別提供者。 不過，所有這些租用戶中的來賓成員並 **不能** 登入。 因此，您必須[個別設定每個租用戶](identity-provider-azure-ad-single-tenant.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -40,7 +40,7 @@ ms.locfileid: "98537904"
 
 ## <a name="register-an-application"></a>註冊應用程式
 
-若要在 Azure Active Directory B2C (Azure AD B2C) 中讓具有 Azure AD 帳戶的使用者登入，您需要在 [Azure 入口網站](https://portal.azure.com)中建立應用程式。 如需詳細資訊，請參閱 [使用 Microsoft 身分識別平臺註冊應用程式](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)。
+若要在 Azure Active Directory B2C (Azure AD B2C) 中讓具有 Azure AD 帳戶的使用者登入，您需要在 [Azure 入口網站](https://portal.azure.com)中建立應用程式。 如需詳細資訊，請參閱 [使用 Microsoft 身分識別平臺註冊應用程式](../active-directory/develop/quickstart-register-app.md)。
 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
@@ -63,7 +63,7 @@ ms.locfileid: "98537904"
 
 ## <a name="configuring-optional-claims"></a>設定選擇性宣告
 
-如果您想要從 Azure AD 取得 `family_name` 和 `given_name` 宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何為 Azure AD 應用程式提供選擇性宣告](../active-directory/develop/active-directory-optional-claims.md)。
+如果您想要 `family_name` 從 Azure AD 取得和 `given_name` 宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何為 Azure AD 應用程式提供選擇性宣告](../active-directory/develop/active-directory-optional-claims.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory]。
 1. 從 [管理] 區段中，選取 [應用程式註冊]。
@@ -71,7 +71,7 @@ ms.locfileid: "98537904"
 1. 從 [管理] 區段中，選取 [權杖設定]。
 1. 選取 [新增選擇性宣告]。
 1. 針對 **Token 類型**，選取 [ **識別碼**]。
-1. 選取要新增的選擇性宣告， `family_name` 以及 `given_name` 。
+1. 選取選擇性的宣告以新增、 `family_name` 和 `given_name` 。
 1. 按一下 [新增] 。
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
@@ -88,9 +88,9 @@ ms.locfileid: "98537904"
 1. 針對 [金鑰使用方法]，選取 `Signature`。
 1. 選取 [建立]。
 
-## <a name="add-a-claims-provider"></a>新增宣告提供者
+## <a name="configure-azure-ad-as-an-identity-provider"></a>將 Azure AD 設定成識別提供者
 
-如果想要讓使用者使用 Azure AD 進行登入，您必須將 Azure AD 定義成 Azure AD B2C 能夠透過端點與之通訊的宣告提供者。 此端點會提供一組宣告，由 Azure AD B2C 用來確認特定使用者已驗證。
+若要讓使用者使用 Azure AD 帳戶登入，您必須將 Azure AD 定義為 Azure AD B2C 可透過端點與之通訊的宣告提供者。 此端點會提供一組宣告，由 Azure AD B2C 用來確認特定使用者已驗證。
 
 您可以藉由將 Azure AD 新增至原則擴充檔中的 **ClaimsProvider** 元素，將 Azure AD 定義成宣告提供者。
 
@@ -103,7 +103,7 @@ ms.locfileid: "98537904"
       <Domain>commonaad</Domain>
       <DisplayName>Common AAD</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Common-AAD">
+        <TechnicalProfile Id="AADCommon-OpenIdConnect">
           <DisplayName>Multi-Tenant AAD</DisplayName>
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
@@ -153,10 +153,7 @@ ms.locfileid: "98537904"
 
 ### <a name="restrict-access"></a>限制存取
 
-> [!NOTE]
-> 使用 `https://login.microsoftonline.com/` 作為 **ValidTokenIssuerPrefixes** 的值時，可允許所有 Azure AD 使用者登入您的應用程式。
-
-您必須更新有效權杖簽發者清單，並將存取權僅限於能夠登入的特定 Azure AD 租用戶使用者清單。
+使用 `https://login.microsoftonline.com/` 作為 **ValidTokenIssuerPrefixes** 的值時，可允許所有 Azure AD 使用者登入您的應用程式。 更新有效權杖簽發者的清單，並限制只能存取可登入 Azure AD 租使用者使用者的特定清單。
 
 若要取得值，請查看您想要讓使用者從中登入的每個 Azure AD 租使用者的 OpenID Connect 探索中繼資料。 中繼資料 URL 的格式類似于 `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration` ，其中 `your-tenant` 是您的 Azure AD 租使用者名稱。 例如：
 
@@ -167,69 +164,31 @@ ms.locfileid: "98537904"
 1. 開啟您的瀏覽器，並移至租使用者的 OpenID Connect 中繼資料 URL。 尋找 **簽發者** 物件，並記錄其值。 它看起來應該像這樣 `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/` 。
 1. 將此值複製並貼到 **>validtokenissuerprefixes** 索引鍵中。 以逗號分隔多個簽發者。 先前的 XML 範例中會顯示具有兩個簽發者的範例 `ClaimsProvider` 。
 
-### <a name="upload-the-extension-file-for-verification"></a>上傳擴充檔案準備驗證
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-現在，您已設定原則，讓 Azure AD B2C 知道如何與您的 Azure AD 目錄進行通訊。 嘗試上傳原則的擴充檔案，這只是為了確認它到目前為止沒有任何問題。
 
-1. 在 Azure AD B2C 租用戶的 [自訂原則] 頁面上，選取 [上傳原則]。
-2. 啟用 [覆寫現有的原則]，然後瀏覽並選取 *TrustFrameworkExtensions.xml* 檔案。
-3. 選取 [上傳] 。
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
+    <ClaimsProviderSelection TargetClaimsExchangeId="AzureADCommonExchange" />
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-## <a name="register-the-claims-provider"></a>註冊宣告提供者
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="AzureADCommonExchange" TechnicalProfileReferenceId="AADCommon-OpenIdConnect" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-此時，身分識別提供者已設定，但在任何註冊/登入畫面中都無法使用。 若要讓它可供使用，您必須建立現有範本使用者旅程圖的複本，然後修改它，讓它也包含 Azure AD 識別提供者。
+[!INCLUDE [active-directory-b2c-create-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. 從 Starter Pack 開啟 TrustFrameworkBase.xml 檔案。
-2. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
-3. 開啟 *TrustFrameworkExtensions.xml*，並尋找 **UserJourneys** 元素。 如果此元素不存在，請新增。
-4. 貼上您複製的整個 **UserJourney** 元素內容作為 **UserJourneys** 元素的子系。
-5. 重新命名使用者旅程圖的識別碼。 例如： `SignUpSignInContoso` 。
+若要測試多租使用者登入功能，請使用存在另一個 Azure AD 租使用者的使用者認證，執行最後兩個步驟。 複製 [ **立即執行] 端點** ，然後在私用瀏覽器視窗中開啟它，例如 Google Chrome 中的 Incognito 模式或 Microsoft Edge 中的 InPrivate 視窗。 在私用瀏覽器視窗中開啟，可讓您藉由不使用目前快取的 Azure AD 認證來測試完整的使用者旅程圖。
 
-### <a name="display-the-button"></a>顯示按鈕
-
-**ClaimsProviderSelection** 元素類似於註冊/登入畫面上的識別提供者按鈕。 如果您為 Azure AD 新增 **ClaimsProviderSelection** 元素，當使用者登陸頁面時，就會出現新按鈕。
-
-1. 在 `Order="1"` 您于 *TrustFrameworkExtensions.xml* 中建立的使用者旅程圖中，尋找包含的 >orchestrationstep 元素。
-1. 在 **ClaimsProviderSelects** 底下新增下列元素。 將 **TargetClaimsExchangeId** 的值設定成適當的值，例如 `AzureADExchange`：
-
-    ```xml
-    <ClaimsProviderSelection TargetClaimsExchangeId="AzureADExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>將按鈕連結至動作
-
-現在已備妥按鈕，您需要將它連結至動作。 在此案例中，動作是讓 Azure AD B2C 與 Azure AD 通訊以接收權杖。 藉由連結 Azure AD 宣告提供者的技術設定檔，將按鈕連結至動作。
-
-1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
-2. 新增下列 **ClaimsExchange** 元素，以確定您針對 **>targetclaimsexchangeid** 所使用的 **識別碼** 使用相同的值：
-
-    ```xml
-    <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
-    ```
-
-    將 **>technicalprofilereferenceid** 的值更新為您稍早建立之技術設定檔的 **識別碼** 。 例如： `Common-AAD` 。
-
-3. 儲存 TrustFrameworkExtensions.xml 檔案，並再次上傳它以供驗證。
-
-## <a name="update-and-test-the-relying-party-file"></a>更新並測試信賴憑證者檔案
-
-更新信賴憑證者 (RP) 檔案，此檔案會起始您所建立的使用者旅程圖：
-
-1. 在您的工作目錄中建立一份 SignUpOrSignIn.xml 複本，並將它重新命名。 例如，將它重新命名為 *SignUpSignContoso.xml*。
-1. 開啟新檔案，並將 **TrustFrameworkPolicy** 的 **PolicyId** 屬性更新成唯一值。 例如： `SignUpSignInContoso` 。
-1. 將 **PublicPolicyUri** 的值更新成原則的 URI。 例如： `http://contoso.com/B2C_1A_signup_signin_contoso` 。
-1. 更新 **>referenceid** 中 **ReferenceId** 屬性的值，以符合您稍早建立之使用者旅程圖的識別碼。 例如， *SignUpSignInContoso*。
-1. 儲存變更並上傳檔案。
-1. 從上傳的 **自訂原則** 中，從清單中選取新建立的原則。
-1. 在 [ **選取應用程式** ] 下拉式清單中，選取您稍早建立的 Azure AD B2C 應用程式。 例如 *testapp1*。
-1. 複製 [ **立即執行] 端點** ，然後在私用瀏覽器視窗中開啟它，例如 Google Chrome 中的 Incognito 模式或 Microsoft Edge 中的 InPrivate 視窗。 在私用瀏覽器視窗中開啟，可讓您藉由不使用目前快取的 Azure AD 認證來測試完整的使用者旅程圖。
-1. 選取 [Azure AD 登入] 按鈕（例如 *Contoso Employee*），然後在其中一個 Azure AD 組織租使用者中輸入使用者的認證。 系統會要求您授與應用程式的授權，然後輸入您的設定檔資訊。
-
-如果登入程式成功，則會將瀏覽器重新導向至 `https://jwt.ms` ，以顯示 Azure AD B2C 所傳回的權杖內容。
-
-若要測試多租使用者登入功能，請使用存在另一個 Azure AD 租使用者的使用者認證，執行最後兩個步驟。
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 使用自訂原則時，您有時可能需要在其開發期間針對原則進行疑難排解時需要額外的資訊。
 

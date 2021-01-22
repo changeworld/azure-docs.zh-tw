@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fea82c376a178de0be8ede6c0393e1de21de614
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86494508"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675799"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>停用或移除 Vm 和映射中的 Linux 代理程式
 
@@ -31,9 +31,9 @@ Azure 平台裝載許多擴充功能，包括 VM 設定、監視、安全性和�
 
 ## <a name="disabling-extension-processing"></a>停用擴充功能處理
 
-有幾種方式可以根據您的需求停用擴充程式處理，但在繼續之前，您 **必須** 移除所有部署至 VM 的延伸模組，例如使用 AZ CLI，您可以 [列出](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) 和 [刪除](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)：
+有幾種方式可以根據您的需求停用擴充程式處理，但在繼續之前，您 **必須** 移除所有部署至 VM 的延伸模組，例如使用 Azure CLI，您可以 [列出](/cli/azure/vm/extension#az-vm-extension-list) 和 [刪除](/cli/azure/vm/extension#az-vm-extension-delete)：
 
-```bash
+```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
 > [!Note]
@@ -43,7 +43,7 @@ az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ### <a name="disable-at-the-control-plane"></a>在控制平面停用
 如果您不確定未來是否需要延伸模組，可以將 Linux 代理程式安裝在 VM 上，然後從平臺停用擴充功能處理功能。 這是在 `Microsoft.Compute` api 版本或更高版本中提供的選項 `2018-06-01` ，而且沒有安裝的 Linux 代理程式版本的相依性。
 
-```bash
+```azurecli
 az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
 ```
 您可以使用上述命令，輕鬆地從平臺重新啟用此擴充功能處理，但是將它設定為 ' true '。
@@ -132,7 +132,7 @@ Linux 代理程式能夠清除某些現有的映射中繼資料，並使用步�
 
 
 **建立一般受控映射**
-```bash
+```azurecli
 az vm deallocate -g <resource_group> -n <vm_name>
 az vm generalize -g <resource_group> -n <vm_name>
 az image create -g <resource_group> -n <image_name> --source <vm_name>
@@ -140,7 +140,7 @@ az image create -g <resource_group> -n <image_name> --source <vm_name>
 
 **在共用映射庫中建立映射版本**
 
-```bash
+```azurecli
 az sig image-version create \
     -g $sigResourceGroup 
     --gallery-name $sigName 
@@ -157,7 +157,7 @@ az sig image-version create \
 
 若要部署已停用擴充功能的 VM，您可以使用 Azure CLI 搭配 [--enable 代理程式](/cli/azure/vm#az-vm-create)。
 
-```bash
+```azurecli
 az vm create \
     --resource-group $resourceGroup \
     --name $prodVmName \
@@ -183,6 +183,6 @@ az vm create \
                     "keyData": "[parameters('adminPublicKey')]"
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 如需詳細資訊，請參閱布建 [Linux](provisioning.md)。

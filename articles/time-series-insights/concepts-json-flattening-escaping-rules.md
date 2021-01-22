@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/28/2020
-ms.openlocfilehash: 0839d2c734418824952f37cb177490e56e1133c5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/21/2021
+ms.openlocfilehash: 9f768982e69f785c146f026040a91f7a63eef64c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017962"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673446"
 ---
 # <a name="json-flattening-escaping-and-array-handling"></a>JSON 壓平合併、逸出和陣列處理
 
@@ -182,6 +182,6 @@ ms.locfileid: "96017962"
 | ---- | ---- | ---- |
 | `2020-11-01T10:00:00.000Z` | `800500054755`| ``[{"value": 120},{"value":124}]`` |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 瞭解您環境的 [輸送量限制](./concepts-streaming-ingress-throughput-limits.md)

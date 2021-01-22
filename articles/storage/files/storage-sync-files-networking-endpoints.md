@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 64d66e1b9eab225b38ee21306fea6f9534a708f3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921712"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673838"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>設定 Azure 檔案同步網路端點
 Azure 檔案儲存體和 Azure 檔案同步提供兩種主要類型的端點，用來存取 Azure 檔案共用： 
@@ -52,13 +52,13 @@ Azure 檔案儲存體和 Azure 檔案同步提供兩種主要類型的端點，�
 
 如果您的虛擬網路中有虛擬機器，或已依照 [設定 Azure 檔案儲存體的 DNS 轉送](storage-files-networking-dns.md) 其中所述來設定 DNS 轉送，您便可透過 PowerShell、命令列或終端機 (適用於 Windows、Linux 或 macOS) 執行下列命令，藉此測試您的私人端點是否已正確設定。 您必須將 `<storage-account-name>` 取代為適當的儲存體帳戶名稱：
 
-```
+```console
 nslookup <storage-account-name>.file.core.windows.net
 ```
 
 如果一切都已成功運作，您應該會看到下列輸出，其中 `192.168.0.5` 是虛擬網路中私人端點的私人 IP 位址 (Windows 版的輸出)：
 
-```Output
+```output
 Server:  UnKnown
 Address:  10.2.4.4
 
@@ -73,7 +73,7 @@ Aliases:  storageaccount.file.core.windows.net
 
 如果您的虛擬網路內有虛擬機器，或已如 [設定 Azure 檔案儲存體的 DNS 轉送](storage-files-networking-dns.md) 其中所述來設定 DNS 轉送，您便可藉由下列命令來測試您的私人端點是否已正確設定：
 
-```PowerShell
+```powershell
 $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
@@ -82,7 +82,7 @@ Resolve-DnsName -Name $storageAccountHostName
 
 如果一切都已成功運作，您應該會看到下列輸出，其中 `192.168.0.5` 是虛擬網路中私人端點的私人 IP 位址：
 
-```Output
+```output
 Name                             Type   TTL   Section    NameHost
 ----                             ----   ---   -------    --------
 storageaccount.file.core.windows CNAME  60    Answer     storageaccount.privatelink.file.core.windows.net
@@ -113,7 +113,7 @@ nslookup $hostName
 
 如果一切都已成功運作，您應該會看到下列輸出，其中 `192.168.0.5` 是虛擬網路中私人端點的私人 IP 位址：
 
-```Output
+```output
 Server:         127.0.0.53
 Address:        127.0.0.53#53
 
@@ -168,7 +168,7 @@ Get-AzPrivateEndpoint `
 
 如果一切都正常運作，您應該會看到下列輸出，其中 `192.168.1.4`、`192.168.1.5`、`192.168.1.6`和 `192.168.1.7` 是指派給私人端點的私人 IP 位址：
 
-```Output
+```output
 Name     : mysssmanagement.westus2.afs.azure.net
 Type     : CNAME
 TTL      : 60
@@ -244,7 +244,7 @@ if ($null -eq $storageSyncService) {
 
 若要建立私人端點，您必須建立儲存體同步服務的私人連結服務連線。 私人連結連線是建立私人端點的輸入項目。
 
-```PowerShell 
+```powershell 
 # Disable private endpoint network policies
 $subnet.PrivateEndpointNetworkPolicies = "Disabled"
 $virtualNetwork = $virtualNetwork | `
@@ -325,7 +325,7 @@ if ($null -eq $dnsZone) {
 ```
 現在您已有私人 DNS 區域的參考，接下來您必須為儲存體同步服務建立 A 記錄。
 
-```PowerShell 
+```powershell 
 $privateEndpointIpFqdnMappings = $privateEndpoint | `
     Select-Object -ExpandProperty NetworkInterfaces | `
     Select-Object -ExpandProperty Id | `
@@ -607,7 +607,8 @@ $storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Forc
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Azure CLI 不支援在 `incomingTrafficPolicy` 儲存體同步服務上設定屬性。 請選取 [Azure PowerShell] 索引標籤，以取得如何停用儲存體同步服務公用端點的指示。
+Azure CLI 不支援在 `incomingTrafficPolicy` 儲存體同步服務上設定屬性。 請選取 [Azure PowerShell] 索引標籤，以取得如何停用儲存體同步服務公用端點的指示。
+
 ---
 
 ## <a name="see-also"></a>另請參閱

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 644192de74a888daa0391b31dd42eb6028403fd8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387032"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674469"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C 自訂原則總覽
 
@@ -53,7 +53,7 @@ Azure AD B2C 自訂原則 [入門套件](custom-policy-get-started.md#get-the-st
 
 ### <a name="customize-and-localize-your-ui"></a>自訂和當地語系化您的 UI
 
-當您想要在網頁瀏覽器中呈現頁面時，從使用者收集資訊時，請使用 [自我判斷技術設定檔](self-asserted-technical-profile.md)。 您可以編輯自行判斷提示的技術設定檔，以 [新增宣告並自訂使用者輸入](custom-policy-configure-user-input.md)。
+當您想要在網頁瀏覽器中呈現頁面時，從使用者收集資訊時，請使用 [自我判斷技術設定檔](self-asserted-technical-profile.md)。 您可以編輯自行判斷提示的技術設定檔，以 [新增宣告並自訂使用者輸入](./configure-user-input.md)。
 
 若要自訂自我判斷技術設定檔 [的使用者介面](customize-ui-with-html.md) ，您可以使用自訂的 HTML 內容，在 [內容定義](contentdefinitions.md) 元素中指定 URL。 在自我判斷技術設定檔中，您會指向此內容定義識別碼。
 
@@ -133,11 +133,11 @@ Azure AD B2C 自訂原則 [入門套件](custom-policy-get-started.md#get-the-st
 
 - 在 **擴充原則** 或轉送合作物件 **原則** 內建立您的邏輯。 您可以藉由參考相同的識別碼來新增新的元素，這會覆寫基底原則。 這可讓您向外延展您的專案，並在 Microsoft 發行新的入門套件之後，更輕鬆地升級基底原則。
 - 在 **基本原則** 中，我們強烈建議避免進行任何變更。  必要時，請建立變更的批註。
-- 當您要覆寫元素（例如技術設定檔中繼資料）時，請避免從基本原則複製整個技術設定檔。 相反地，請只複製元素的必要區段。 如需如何進行變更的範例，請參閱 [停用電子郵件驗證](custom-policy-disable-email-verification.md) 。
+- 當您要覆寫元素（例如技術設定檔中繼資料）時，請避免從基本原則複製整個技術設定檔。 相反地，請只複製元素的必要區段。 如需如何進行變更的範例，請參閱 [停用電子郵件驗證](./disable-email-verification.md) 。
 - 若要減少與核心功能共用的技術設定檔重複，請使用 [技術設定檔包含](technicalprofiles.md#include-technical-profile)。
 - 避免在登入期間寫入 Azure AD 目錄，這可能會導致節流問題。
 - 如果您的原則具有外部相依性，例如 REST API 可確保它們具有高可用性。
-- 若要獲得更好的使用者體驗，請確定您的自訂 HTML 範本是使用 [線上內容傳遞](https://docs.microsoft.com/azure/cdn/)來全域部署。 Azure 內容傳遞網路 (CDN) 可讓您縮短載入時間、節省頻寬和加快回應速度。
+- 若要獲得更好的使用者體驗，請確定您的自訂 HTML 範本是使用 [線上內容傳遞](../cdn/index.yml)來全域部署。 Azure 內容傳遞網路 (CDN) 可讓您縮短載入時間、節省頻寬和加快回應速度。
 - 如果您想要對使用者旅程作變更。 將整個使用者旅程從基本原則複製到延伸原則。 將唯一的使用者旅程圖識別碼提供給您所複製的使用者旅程圖。 然後，在 [信賴](relyingparty.md)憑證者原則中，將 [預設使用者旅程](relyingparty.md#defaultuserjourney) 圖元素變更為指向新的使用者旅程圖。
 
 ## <a name="troubleshooting"></a>疑難排解
@@ -164,13 +164,13 @@ Azure AD B2C 自訂原則 [入門套件](custom-policy-get-started.md#get-the-st
 1. 建議您下載並安裝 [Visual Studio Code](https://code.visualstudio.com/) (VS Code) 。 Visual Studio Code 是輕巧但功能強大的原始程式碼編輯器，可在桌面執行，適用於 Windows、macOS 和 Linux。 您可以使用 VS Code 編輯 Azure AD B2C 自訂原則 XML 檔案。
 1. 若要快速流覽 Azure AD B2C 自訂原則，建議您安裝 [Azure AD B2C 擴充功能以進行 VS Code](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)
  
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 設定並測試您的 Azure AD B2C 原則之後，您就可以開始自訂原則。 請流覽下列文章，以瞭解如何：
 
-- 使用自訂原則[新增宣告並自訂使用者輸入](custom-policy-configure-user-input.md)。 瞭解如何定義宣告、自訂一些入門套件技術設定檔，以將宣告新增至使用者介面。
+- 使用自訂原則[新增宣告並自訂使用者輸入](./configure-user-input.md)。 瞭解如何定義宣告、自訂一些入門套件技術設定檔，以將宣告新增至使用者介面。
 - 使用自訂原則來自訂應用程式的[使用者介面](customize-ui-with-html.md)。 瞭解如何建立您自己的 HTML 內容，並自訂內容定義。
-- 使用自訂原則來當地語系化您應用程式的[使用者介面](custom-policy-localization.md)。 瞭解如何藉由新增當地語系化的資源元素，來設定支援的語言清單，以及提供語言特定標籤。
-- 在您的原則開發和測試期間，您可以 [停用電子郵件驗證](custom-policy-disable-email-verification.md)。 瞭解如何覆寫技術設定檔中繼資料。
-- 使用自訂原則來[設定以 Google 帳戶登入](identity-provider-google-custom.md)。 瞭解如何使用 OAuth2 技術設定檔來建立新的宣告提供者。 然後自訂使用者旅程圖，以包含 Google 登入選項。
+- 使用自訂原則來當地語系化您應用程式的[使用者介面](./language-customization.md)。 瞭解如何藉由新增當地語系化的資源元素，來設定支援的語言清單，以及提供語言特定標籤。
+- 在您的原則開發和測試期間，您可以 [停用電子郵件驗證](./disable-email-verification.md)。 瞭解如何覆寫技術設定檔中繼資料。
+- 使用自訂原則來[設定以 Google 帳戶登入](./identity-provider-google.md)。 瞭解如何使用 OAuth2 技術設定檔來建立新的宣告提供者。 然後自訂使用者旅程圖，以包含 Google 登入選項。
 - 若要診斷自訂原則的問題，您可以 [使用 Application Insights 收集 Azure Active Directory B2C 記錄](troubleshoot-with-application-insights.md)檔。 瞭解如何新增技術設定檔，以及設定您的轉送合作物件原則。

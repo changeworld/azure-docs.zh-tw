@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 12/18/2020
-ms.openlocfilehash: 3060bd6ea8d7fbc4a4bf005b84cd07d420987ab6
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: d86455eae0834f29099c7d5c96f8326408daf519
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696349"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675524"
 ---
 # <a name="enable-snapshot-debugger-for-net-and-net-core-apps-in-azure-functions"></a>在 Azure Functions 中啟用適用于 .NET 和 .NET Core 應用程式的快照偵錯工具
 
@@ -22,7 +22,7 @@ ms.locfileid: "97696349"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [在您的函數應用程式中啟用 Application Insights 監視](https://docs.microsoft.com/azure/azure-functions/configure-monitoring#add-to-an-existing-function-app)
+* [在您的函數應用程式中啟用 Application Insights 監視](../../azure-functions/configure-monitoring.md#add-to-an-existing-function-app)
 
 ## <a name="enable-snapshot-debugger"></a>啟用快照偵錯工具
 
@@ -143,9 +143,9 @@ namespace SnapshotCollectorAzureFunction
 
 建議您在所有應用程式上都已啟用快照偵錯工具，以簡化應用程式例外狀況的診斷。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 產生可觸發例外狀況的應用程式流量。 然後，等候10到15分鐘，將快照集傳送至 Application Insights 實例。
 - [查看](snapshot-debugger.md?toc=/azure/azure-monitor/toc.json#view-snapshots-in-the-portal) Azure 入口網站中的快照集。
-- 根據您的函數應用程式的使用案例自訂快照偵錯工具設定。 如需詳細資訊，請參閱 [host.js中的快照](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsightssnapshotconfiguration)集設定。
+- 根據您的函數應用程式的使用案例自訂快照偵錯工具設定。 如需詳細資訊，請參閱 [host.js中的快照](../../azure-functions/functions-host-json.md#applicationinsightssnapshotconfiguration)集設定。
 - 如需疑難排解快照偵錯工具問題的協助，請參閱 [快照偵錯工具疑難排解](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)。

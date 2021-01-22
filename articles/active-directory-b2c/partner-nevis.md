@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629386"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674988"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>使用無密碼 authentication 的 Azure Active Directory B2C 設定尼維斯的教學課程
 
@@ -30,9 +30,9 @@ ms.locfileid: "97629386"
 
 - Azure AD 訂用帳戶。 如果您沒有帳戶，請取得 [免費帳戶](https://azure.microsoft.com/free/)。
 
-- 連結至 Azure 訂用帳戶的 [Azure AD B2C 租](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) 使用者。
+- 連結至 Azure 訂用帳戶的 [Azure AD B2C 租](./tutorial-create-tenant.md) 使用者。
 
-- 如果您想要將尼維斯整合到您的註冊原則流程中，請使用 [自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)設定 Azure AD B2C 環境。
+- 如果您想要將尼維斯整合到您的註冊原則流程中，請使用 [自訂原則](./custom-policy-get-started.md)設定 Azure AD B2C 環境。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -134,9 +134,9 @@ ms.locfileid: "97629386"
 
 4. **將變更儲存** 至檔案。
 
-5. 遵循 [指示](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account) ，並將 **nevis.html** 檔案上傳至您的 Azure blob 儲存體。
+5. 遵循 [指示](./customize-ui-with-html.md#2-create-an-azure-blob-storage-account) ，並將 **nevis.html** 檔案上傳至您的 Azure blob 儲存體。
 
-6. 依照 [指示](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors) 執行，並啟用此檔案的跨原始來源資源分享 (CORS) 。
+6. 依照 [指示](./customize-ui-with-html.md#3-configure-cors) 執行，並啟用此檔案的跨原始來源資源分享 (CORS) 。
 
 7. 上傳完成並啟用 CORS 之後，請選取清單中的 **nevis.html** 檔案。
 
@@ -202,7 +202,7 @@ ms.locfileid: "97629386"
 4. 選取您修改的 **TrustFrameworkBase.xml** 檔案。
 
 5. 選取 [ **覆寫自訂原則（如果已存在** ）] 核取方塊。
-6. 選取 [上傳] 。
+6. 選取 [上傳]。
 
 7. 針對 **TrustFrameworkExtensions.xml** 重複步驟5和6。
 
@@ -228,7 +228,7 @@ ms.locfileid: "97629386"
 
 8. 複製電子郵件中的驗證碼。
 
-9. 選取 [驗證]。
+9. 選取 [驗證]  。
 
 10. 在表單中填入新的密碼和顯示名稱。
 
@@ -268,6 +268,6 @@ ms.locfileid: "97629386"
 
 如需詳細資訊，請參閱下列文章
 
-- [Azure AD B2C 中的自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C 中的自訂原則](./custom-policy-overview.md)
 
-- [Azure AD B2C 中的自訂原則入門](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C 中的自訂原則入門](./custom-policy-get-started.md?tabs=applications)

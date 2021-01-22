@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b213954dde6ca4eaa0a69ddf0e40398fc09b9063
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b142c88b0003281237dad125080930c0dd4d3bee
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115764"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673598"
 ---
 # <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS，連接到 Azure Synapse Analytics 中的專用 SQL 集區 (先前的 SQL DW) ) 
 
@@ -30,12 +30,12 @@ ms.locfileid: "98115764"
 
 使用 SQL Server Management Studio (SSMS) 來連接和查詢先前 SQL DW)  (的專用 SQL 集區。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要使用本教學課程，您需要：
 
 * 現有的專用 SQL 集區。 若要建立一個，請參閱 [ (先前的 SQL DW) 建立專用的 sql 集 ](create-data-warehouse-portal.md)區。
-* SQL Server Management Studio (SSMS) 已安裝。 如果您還沒有 SSMS，可免費[下載](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+* SQL Server Management Studio (SSMS) 已安裝。 如果您還沒有 SSMS，可免費[下載](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 * 完整的 SQL 伺服器名稱。 若要尋找此資訊，請參閱 [先前的 SQL DW (專用的 sql 集區) ](sql-data-warehouse-connect-overview.md)。
 
 ## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. 連接到您先前的 SQL DW (專用的 SQL 集區) 

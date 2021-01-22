@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/13/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7b134c4e9e980104a54f6a96d45445ee114556a5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: f76aecc80537e6db55c8c4f2e5a7a240be6b1415
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178716"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675741"
 ---
 # <a name="user-profile-attributes"></a>使用者設定檔屬性
 
@@ -160,7 +160,7 @@ Microsoft Graph 也支援大部分可與 Azure AD B2C 使用者設定檔搭配�
 
 ## <a name="mfa-phone-number-attribute"></a>MFA 電話號碼屬性
 
-使用電話進行多重要素驗證 (MFA) 時，會使用行動電話來驗證使用者身分識別。 若 [要](https://docs.microsoft.com/graph/api/authentication-post-phonemethods) 以程式設計方式新增電話號碼，請 [更新](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)、 [取得](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)或 [刪除](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete) 電話號碼，使用 MS 圖形 API [電話驗證方法](https://docs.microsoft.com/graph/api/resources/phoneauthenticationmethod)。
+使用電話進行多重要素驗證 (MFA) 時，會使用行動電話來驗證使用者身分識別。 若 [要](/graph/api/authentication-post-phonemethods) 以程式設計方式新增電話號碼，請 [更新](/graph/api/b2cauthenticationmethodspolicy-update)、 [取得](/graph/api/b2cauthenticationmethodspolicy-get)或 [刪除](/graph/api/phoneauthenticationmethod-delete) 電話號碼，使用 MS 圖形 API [電話驗證方法](/graph/api/resources/phoneauthenticationmethod)。
 
 在 Azure AD B2C [自訂原則](custom-policy-overview.md)中，可透過宣告類型取得電話號碼 `strongAuthenticationPhoneNumber` 。
 

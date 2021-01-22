@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e8aabcd1c68272a78b3c1fe88913c5a62496f681
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 753e7503612502cde12f821ea331625406daa7a8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225830"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675972"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>使用 Azure CLI 從另一個資源庫複製映射
 
@@ -42,7 +42,7 @@ ms.locfileid: "88225830"
 az sig list -o table
 ```
 
-使用 [az sig 映射定義清單](/cli/azure/sig/image-definition#az-sig-image-definition-list)，列出資源庫中的映射定義。 在此範例中，我們會在*myGalleryRG*資源群組中搜尋名為 *>mygalleryrg*的資源庫中的映射定義。
+使用 [az sig 映射定義清單](/cli/azure/sig/image-definition#az-sig-image-definition-list)，列出資源庫中的映射定義。 在此範例中，我們會在 *myGalleryRG* 資源群組中搜尋名為 *>mygalleryrg* 的資源庫中的映射定義。
 
 ```azurecli-interactive 
 az sig image-definition list \
@@ -157,10 +157,10 @@ az sig image-version create \
 > 您也可以在 `--storage-account-type  premium_lrs` 建立映射版本時新增或 [區域多餘的儲存體](../storage/common/storage-redundancy.md) ，藉以將映射儲存在 Premium 儲存體中 `--storage-account-type  standard_zrs` 。
 >
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 從 [一般化](vm-generalized-image-version-cli.md) 或 [特製](vm-specialized-image-version-cli.md) 化映射版本建立 VM。
 
-此外，試用 [Azure 映射產生器 (preview) ](./linux/image-builder-overview.md) 可協助自動建立映射版本，您甚至可以使用它來更新和 [建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
+此外，試用 [Azure 映射產生器 (preview) ](./image-builder-overview.md) 可協助自動建立映射版本，您甚至可以使用它來更新和 [建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
 
 如需有關如何提供採購方案資訊的詳細資訊，請參閱 [在建立映射時提供 Azure Marketplace 採購方案資訊](marketplace-images.md)。

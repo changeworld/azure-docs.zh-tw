@@ -5,12 +5,12 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2821a16e0b72b32cc392b7ae626d782734458a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982023"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674196"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>使用 Functions 在 Azure 儲存體佇列中新增訊息
 
@@ -22,13 +22,13 @@ ms.locfileid: "90982023"
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-- 請遵循[從 Azure 入口網站建立您的第一個函式](functions-create-first-azure-function.md)中的指示，但是不要進行**清除資源**步驟。 該快速入門會建立您可以在這裡使用的函式應用程式和函式。
+- 請遵循 [從 Azure 入口網站建立您的第一個函式](./functions-get-started.md)中的指示，但是不要進行 **清除資源** 步驟。 該快速入門會建立您可以在這裡使用的函式應用程式和函式。
 
 ## <a name="add-an-output-binding"></a><a name="add-binding"></a>新增輸出繫結
 
 在本節中，您會使用入口網站 UI 來將佇列儲存體輸出繫結新增至您稍早建立的函式。 這個繫結可供撰寫最少的程式碼，即可在佇列中建立訊息。 您不需要為以下工作撰寫程式碼，例如開啟儲存體連線、建立佇列，或取得佇列的參考。 Azure Functions 執行階段和佇列輸出繫結會為您進行這些工作。
 
-1. 在 Azure 入口網站中，針對您在[從 Azure 入口網站建立您的第一個函式](functions-create-first-azure-function.md)中建立的函式應用程式，開啟函式應用程式分頁。 若要開啟此頁面，請搜尋並選取**函數應用程式**。 接著，選取函數應用程式。
+1. 在 Azure 入口網站中，針對您在[從 Azure 入口網站建立您的第一個函式](./functions-get-started.md)中建立的函式應用程式，開啟函式應用程式分頁。 若要開啟此頁面，請搜尋並選取 **函數應用程式**。 接著，選取函數應用程式。
 
 1. 選取函數應用程式，然後選取在稍早的快速入門中所建立函式。
 
@@ -38,7 +38,7 @@ ms.locfileid: "90982023"
 
 1. 選取 [Azure 佇列儲存體輸出] 繫結類型，然後新增此螢幕擷取畫面後續表格中所指定的設定： 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="建立函式的輸出繫結。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="在 Azure 入口網站中對函式新增佇列儲存體輸出繫結。" border="true":::
     
     | 設定      |  建議的值   | 描述                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,11 +94,11 @@ ms.locfileid: "90982023"
 1. 儲存程式碼的變更後，選取 [測試]。
 1. 確認測試符合下列影像，然後選取 [執行]。 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="建立函式的輸出繫結。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="在 Azure 入口網站中測試佇列儲存體繫結。" border="true":::
 
-    請注意，**要求本文**包含 `name` 值：Azure。 這個值會出現在叫用函式時建立的佇列訊息中。
+    請注意，**要求本文** 包含 `name` 值：Azure。 這個值會出現在叫用函式時建立的佇列訊息中。
     
-    除了在這裡選取 [執行] 之外，您可以呼叫函式，方法是在瀏覽器中輸入 URL，並且在查詢字串中指定 `name` 值。 瀏覽器方法會顯示在[先前的快速入門](functions-create-first-azure-function.md#test-the-function)中。
+    除了在這裡選取 [執行] 之外，您可以呼叫函式，方法是在瀏覽器中輸入 URL，並且在查詢字串中指定 `name` 值。 瀏覽器方法會顯示在[先前的快速入門](./functions-get-started.md)中。
 
 1. 檢查記錄以確定函式已成功。 
 
@@ -111,11 +111,11 @@ ms.locfileid: "90982023"
 
 1. 在 [應用程式設定] 下選取 [AzureWebJobsStorage]。
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="建立函式的輸出繫結。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="螢幕擷取畫面顯示已選取 AzureWebJobsStorage 的設定頁面。" border="true":::
 
 1. 找出並記下帳戶名稱。
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="建立函式的輸出繫結。" border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="找出連線至 AzureWebJobsStorage 的儲存體帳戶。" border="true":::
 
 ### <a name="examine-the-output-queue"></a>檢查輸出佇列
 

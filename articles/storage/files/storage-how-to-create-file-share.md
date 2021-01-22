@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 7f72d703e5377f725addc4aa8c52e1cdb0fa571d
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 3ff7b3cd29740461a4f94f3c1d433086db119a09
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630746"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673801"
 ---
 # <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
 若要建立 Azure 檔案共用，您需要回答三個有關您將如何使用它的問題：
@@ -129,7 +129,7 @@ $storAcct = New-AzStorageAccount `
 
 為了簡化儲存體帳戶和後續檔案共用的建立，我們會將數個參數儲存在變數中。 您可以將變數內容取代為您想要的任何值，但請注意，儲存體帳戶名稱必須是全域唯一的。
 
-```bash
+```azurecli
 resourceGroupName="myResourceGroup"
 storageAccountName="mystorageacct$RANDOM"
 region="westus2"
@@ -137,7 +137,7 @@ region="westus2"
 
 若要建立能夠儲存標準 Azure 檔案共用的儲存體帳戶，我們將使用下列命令。 此 `--sku` 參數與所需的冗余類型相關，如果您想要異地冗余或地理區域冗余的儲存體帳戶，您也必須移除 `--enable-large-file-share` 參數。
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -149,7 +149,7 @@ az storage account create \
 
 若要建立能夠儲存 premium Azure 檔案共用的儲存體帳戶，我們將使用下列命令。 請注意， `--sku` 參數已變更為包含 `Premium` 本地 () 所需的本機冗余層級 `LRS` 。 `--kind`參數是， `FileStorage` 而不是 `StorageV2` 因為必須在 FileStorage 儲存體帳戶中建立 premium 檔案共用，而不是 GPv2 儲存體帳戶。
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -233,7 +233,7 @@ New-AzRmStorageShare `
 > [!Important]  
 > 若是 premium 檔案共用， `--quota` 參數會參考檔案共用的布建大小。 檔案共用的布建大小是您將收取的費用，而不論使用量為何。 標準檔案共用的計費依據是使用方式，而不是布建的大小。
 
-```bash
+```azurecli
 shareName="myshare"
 
 az storage share-rm create \
@@ -285,7 +285,7 @@ Update-AzRmStorageShare `
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 下列 Azure CLI 命令假設您已設定 `$resourceGroupName` 、 `$storageAccountName` 和 `$shareName` 變數，如本檔稍早的章節所述。
 
-```bash
+```azurecli
 az storage share-rm update \
     --resource-group $resourceGroupName \
     --storage-account $storageAccountName \

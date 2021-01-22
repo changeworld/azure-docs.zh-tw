@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 629a063d80c9f1bb1a9ae3d56783e07491149f24
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 55966173c7ab16e605e9d97a2631c2224745ff7a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118236"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676006"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL 中支援的 Transact-SQL 功能
 
@@ -55,7 +55,7 @@ Synapse SQL 中使用的查詢語言會根據耗用量模型而支援不同的�
 | **INSERT 陳述式** | 是 | 否 |
 | **UPDATE 陳述式** | 是 | 否 |
 | **DELETE 陳述式** | 是 | 否 |
-| **MERGE 陳述式** | 否 | 否 |
+| **MERGE 陳述式** | 是 ([預覽](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15))  | 否 |
 | **[交易](develop-transactions.md)** | 是 | 是，適用於中繼資料物件。 |
 | **[標籤](develop-label.md)** | 是 | 否 |
 | **資料載入** | 是。 慣用的公用程式是 [COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 陳述式，但是系統同時支援使用 BULK 載入 (BCP) 和 [CETAS](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 來載入資料。 | 否 |
@@ -84,7 +84,7 @@ Synapse SQL 可讓您使用內建的安全性功能來保護您的資料和控�
 | **儲存體 Azure Active Directory (Azure AD) 通道驗證** | 是 | 是 |
 | **儲存體 SAS 權杖驗證** | 否 | 是，使用 [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中的 [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 或執行個體層級的 [CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 |
 | **儲存體存取金鑰驗證** | 是，使用 [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中的 [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 否 |
-| **儲存體 [受控識別](../security/synapse-workspace-managed-identity.md)驗證** | 是，使用[受控服務識別認證](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&preserve-view=true&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=azure-sqldw-latest) | 是，使用 `Managed Identity` 認證。 |
+| **儲存體 [受控識別](../security/synapse-workspace-managed-identity.md)驗證** | 是，使用[受控服務識別認證](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&preserve-view=true&toc=%2fazure%2fsynapse-analytics%2ftoc.json&view=azure-sqldw-latest&preserve-view=true) | 是，使用 `Managed Identity` 認證。 |
 | **儲存體應用程式身分識別驗證** | [是](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) | 否 |
 | **權限 - 物件層級** | 是，包括針對使用者 GRANT、DENY 和 REVOKE 權限的能力 | 是，包括在支援的系統物件上針對使用者/登入 GRANT、DENY 和 REVOKE 權限的能力 |
 | **權限 - 結構描述層級** | 是，包括在結構描述上針對使用者/登入 GRANT、DENY 和 REVOKE 權限的能力 | 是，包括在結構描述上針對使用者/登入 GRANT、DENY 和 REVOKE 權限的能力 |
