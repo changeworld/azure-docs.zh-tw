@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016993"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678818"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>在 Azure IoT 中樞中驗證下游裝置
 
@@ -71,7 +71,7 @@ ms.locfileid: "96016993"
 
 您也可以使用 [Azure CLI 的 IoT 擴充](https://github.com/Azure/azure-iot-cli-extension) 功能來完成相同的操作。 下列範例會使用 [az iot hub device identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令來建立具有對稱金鑰驗證的新 iot 裝置，並指派父裝置：
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
@@ -126,7 +126,7 @@ az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {exis
 
 您也可以使用 [適用于 Azure CLI 的 IoT 擴充](https://github.com/Azure/azure-iot-cli-extension) 功能來完成相同的裝置建立操作。 下列範例會使用 [az iot hub device identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令，以 x.509 自我簽署驗證來建立新的 iot 裝置，並指派父裝置：
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
@@ -170,7 +170,7 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
 您也可以使用 [適用于 Azure CLI 的 IoT 擴充](https://github.com/Azure/azure-iot-cli-extension) 功能來完成相同的裝置建立操作。 下列範例會使用 [az iot hub device identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) 命令來建立具有 x.509 CA 簽署驗證的新 iot 裝置，並指派父裝置：
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
@@ -191,25 +191,25 @@ az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway 
 
 結合所有元件的完整連接字串如下所示：
 
-```
+```console
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
 或：
 
-```
+```console
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
 由於有父子式關聯性，您可以直接以連線主機的形式呼叫閘道，以簡化連接字串。 例如：
 
-```
+```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 
 您將在「透明閘道」系列的下一篇文章中使用這個修改過的連接字串。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 此時，您會有向 IoT 中樞註冊的 IoT Edge 裝置，並已設定為透明閘道。 您也有向 IoT 中樞註冊的下游裝置，並指向其閘道裝置。
 

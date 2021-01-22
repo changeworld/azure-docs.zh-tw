@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 6a24713a6027c38d2b9817928f3a82161bd37314
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: e4a5803b3d04b59316f71e50af24945efc87cb69
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936721"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677558"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>防止 Azure 儲存體帳戶的共用金鑰授權 (預覽) 
 
@@ -240,8 +240,6 @@ resources
 
 Azure 公用雲端中提供不允許共用金鑰授權的預覽。 只有使用 Azure Resource Manager 部署模型的儲存體帳戶才支援此功能。 如需哪些儲存體帳戶使用 Azure Resource Manager 部署模型的相關資訊，請參閱 [儲存體帳戶類型](storage-account-overview.md#types-of-storage-accounts)。
 
-若要註冊預覽，請參閱 [Azure 儲存體允許共用金鑰存取有限的公開預覽](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUN1o4TUtUUzZBV0JYVlhKQ1FITDlVUUU0Ui4u)。
-
 > [!IMPORTANT]
 > 此預覽僅適用於非生產環境。
 
@@ -256,7 +254,7 @@ Azure 監視器中的 Azure 計量和記錄不會在預覽中區分不同類型�
 
 當您評估儲存體帳戶的流量時，請記住，如「偵測 [用戶端應用程式所使用的授權類型](#detect-the-type-of-authorization-used-by-client-applications) 」中所述的計量和記錄，可能會包含使用者委派 SAS 所提出的要求。 如需 **AllowSharedKeyAccess** 屬性設定為 **false** 時，Azure 儲存體如何回應 sas 的詳細資訊，請參閱瞭解不允許 [共用金鑰如何影響 sas 權杖](#understand-how-disallowing-shared-key-affects-sas-tokens)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [授權存取 Azure 儲存體中的資料](storage-auth.md)
 - [使用 Azure Active Directory 授權存取 blob 和佇列](storage-auth-aad.md)

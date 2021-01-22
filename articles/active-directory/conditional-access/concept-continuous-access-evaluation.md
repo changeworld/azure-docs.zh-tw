@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860298"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678199"
 ---
 # <a name="continuous-access-evaluation"></a>持續存取評估
 
@@ -28,7 +28,7 @@ ms.locfileid: "96860298"
 
 連續存取評估的初始實行著重于 Exchange、小組和 SharePoint Online。
 
-若要準備您的應用程式以使用 CAE，請參閱 [如何在您的應用程式中使用持續存取評估啟用的 api](/azure/active-directory/develop/app-resilience-continuous-access-evaluation)。
+若要準備您的應用程式以使用 CAE，請參閱 [如何在您的應用程式中使用持續存取評估啟用的 api](../develop/app-resilience-continuous-access-evaluation.md)。
 
 ### <a name="key-benefits"></a>主要權益
 
@@ -185,6 +185,6 @@ Exchange 和 SharePoint 可以同步處理重要的條件式存取原則，以�
 
 登入頻率將會接受或不使用 CAE。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 [宣佈持續存取評估](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)

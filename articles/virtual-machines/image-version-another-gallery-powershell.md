@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2f26716a4d04b574bf393f502758a725948419da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85bc6f4468e0365d247b0adc204bd53ce9fa3006
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299944"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676711"
 ---
 # <a name="copy-an-image-from-another-gallery-using-powershell"></a>使用 PowerShell 從另一個資源庫複製映射
 
@@ -103,7 +103,7 @@ Get-AzGalleryImageDefinition `
 使用 [AzGalleryImageDefinition 指令程式](/powershell/module/az.compute/new-azgalleryimageversion) 和上述輸出中的資訊，在您的目的地資源庫中建立新的映射定義。
 
 
-在此範例中，映射定義在名為*myDestinationGallery*的資源庫中命名為*myDestinationImgDef* 。
+在此範例中，映射定義在名為 *myDestinationGallery* 的資源庫中命名為 *myDestinationImgDef* 。
 
 
 ```azurepowershell-interactive
@@ -127,7 +127,7 @@ $destinationImgDef  = New-AzGalleryImageDefinition `
 
 映像版本允許的字元是數字及句點。 數字必須在 32 位元整數的範圍內。 格式：*MajorVersion*.*MinorVersion*.*Patch*。
 
-在此範例中，目的地資源庫名為*myDestinationGallery*，位於*美國西部*位置的*myDestinationRG*資源群組中。 映射的版本為 *1.0.0* ，我們將在 *美國中南部* 區域中建立1個複本，並在 *美國西部* 區域建立2個複本。 
+在此範例中，目的地資源庫名為 *myDestinationGallery*，位於 *美國西部* 位置的 *myDestinationRG* 資源群組中。 映射的版本為 *1.0.0* ，我們將在 *美國中南部* 區域中建立1個複本，並在 *美國西部* 區域建立2個複本。 
 
 
 ```azurepowershell-interactive
@@ -160,10 +160,10 @@ $job.State
 >
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 從 [一般化](vm-generalized-image-version-powershell.md) 或 [特製](vm-specialized-image-version-powershell.md) 化映射版本建立 VM。
 
-[Azure 映射產生器 (預覽版) ](./linux/image-builder-overview.md) 可協助自動建立映射版本，您甚至可以使用它來更新和 [建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
+[Azure 映射產生器 (預覽版) ](./image-builder-overview.md) 可協助自動建立映射版本，您甚至可以使用它來更新和 [建立現有映射版本的新映射版本](./linux/image-builder-gallery-update-image-version.md)。 
 
 如需有關如何提供採購方案資訊的詳細資訊，請參閱 [在建立映射時提供 Azure Marketplace 採購方案資訊](marketplace-images.md)。

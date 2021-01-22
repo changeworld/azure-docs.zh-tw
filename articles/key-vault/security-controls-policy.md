@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Key Vault 的 Azure 原則法規合規性控制項
 description: 列出適用於 Azure Key Vault 的 Azure 原則法規合規性控制項。 這些內建原則定義提供管理 Azure 資源合規性的常見方法。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: b2d5be41efcef7050079227104955cafd520c254
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: a9ac32da432c359c61156d349e3bdc6b69ad520a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98047817"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679022"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-key-vault"></a>適用於 Azure Key Vault 的 Azure 原則法規合規性控制項
 

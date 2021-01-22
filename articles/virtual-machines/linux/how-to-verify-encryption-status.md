@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7f51aae39c2cb60d8b60d4fb496f74eadb91b33b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 42b1aed2f6c66dbfc0f04759b232855f3b7f0a2a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487648"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676813"
 ---
 # <a name="verify-encryption-status-for-linux"></a>驗證 Linux 加密狀態 
 
@@ -31,7 +31,7 @@ ms.locfileid: "92487648"
 
 ## <a name="portal"></a>入口網站
 
-在 Azure 入口網站中的 [延伸模組] 區段內，選取清單中的 Azure 磁碟加密延伸模組。 **狀態訊息**的資訊會指出目前的加密狀態：
+在 Azure 入口網站中的 [延伸模組] 區段內，選取清單中的 Azure 磁碟加密延伸模組。 **狀態訊息** 的資訊會指出目前的加密狀態：
 
 ![反白顯示入口網站檢查的狀態、版本及狀態訊息](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "92487648"
 
 ![JSON 格式的詳細狀態](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
 
-另一種驗證加密狀態的方法，就是查看**磁碟設定**區段。
+另一種驗證加密狀態的方法，就是查看 **磁碟設定** 區段。
 
 ![OS 磁碟和資料磁碟的加密狀態](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "92487648"
 ### <a name="single-pass"></a>單一傳遞
 在單一傳遞中，加密設定會在每個磁碟 (OS 和資料) 上加上戳記。 您可以在單一傳遞中擷取 OS 磁碟的加密設定，如下所示：
 
-``` powershell
+```powershell
 $RGNAME = "RGNAME"
 $VMNAME = "VMNAME"
 
@@ -160,7 +160,7 @@ Write-Host "====================================================================
 
 您可以使用下列 Azure CLI 命令來驗證已加密 VM 的 [一般] 加密狀態：
 
-```bash
+```azurecli
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -170,14 +170,14 @@ az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "subst
 ### <a name="single-pass"></a>單一傳遞
 您可以使用下列 Azure CLI 命令來驗證每個磁碟的加密狀態：
 
-```bash
+```azurecli
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
 ```
 
 ![資料加密設定](./media/disk-encryption/verify-encryption-linux/data-encryption-settings-2.png)
 
 >[!IMPORTANT]
-> 如果磁碟沒有加上戳記的加密設定，您會看到**磁碟未加密**的文字。
+> 如果磁碟沒有加上戳記的加密設定，您會看到 **磁碟未加密** 的文字。
 
 使用下列命令以取得詳細的狀態和加密設定。
 
@@ -203,7 +203,7 @@ done
 
 資料磁碟：
 
-```bash
+```azurecli
 RGNAME="RGNAME"
 VMNAME="VMNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
@@ -223,7 +223,7 @@ done
 
 ### <a name="dual-pass"></a>雙重傳遞
 
-``` bash
+```azurecli
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
@@ -276,7 +276,7 @@ echo "==========================================================================
 
 此命令會列出所有儲存體帳戶的所有識別碼：
 
-```bash
+```azurecli
 az storage account list --query [].[id] -o tsv
 ```
 儲存體帳戶識別碼會以下列形式列出：
@@ -295,7 +295,7 @@ ConnectionString=$(az storage account show-connection-string --ids $id --query c
 ```
 
 下列命令會列出儲存體帳戶底下的所有容器：
-```bash
+```azurecli
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 用於磁碟的容器通常會命名為「VHD」。
@@ -306,7 +306,7 @@ ContainerName="name of the container"
 ```
 
 使用此命令來列出特定容器上的所有 Blob：
-```bash 
+```azurecli 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
 選擇您想要查詢的磁碟，並將其名稱儲存在變數上：
@@ -314,7 +314,7 @@ az storage blob list -c ${ContainerName} --connection-string $ConnectionString -
 DiskName="diskname.vhd"
 ```
 查詢磁碟加密設定：
-```bash
+```azurecli
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
@@ -323,7 +323,7 @@ az storage blob show -c ${ContainerName} --connection-string ${ConnectionString}
 
 當進行分割或磁碟加密時，它會顯示為 **crypt** 類型。 磁碟未加密時，則會顯示為 **part/disk** 類型。
 
-``` bash
+```bash
 lsblk
 ```
 
@@ -340,11 +340,11 @@ lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 
 另一個步驟是，您可以驗證資料磁碟是否已載入任何金鑰：
 
-``` bash
+```bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
 ```
 
-``` bash
+```bash
 cryptsetup luksDump /dev/sdd1
 ```
 

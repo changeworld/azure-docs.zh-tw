@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 43f33093010aa6a70d02c58e9faa34f7f0e2dfee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ae477dd04237e285915157615dcb6a6b841ca99
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307274"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678250"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
 
@@ -154,7 +154,7 @@ API 需要可定義映像建置來源的 'SourceType'，目前有三種類型：
 > 使用現有的 Windows 自訂映射時，您可以在單一 Windows 映像上執行最多8次的 Sysprep 命令。如需詳細資訊，請參閱 [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) 檔。
 
 ### <a name="platformimage-source"></a>PlatformImage 來源 
-Azure Image Builder 支援 Windows Server 和用戶端，以及 Linux Azure Marketplace 映像，請參閱[這裡](../windows/image-builder-overview.md#os-support)以取得完整清單。 
+Azure Image Builder 支援 Windows Server 和用戶端，以及 Linux Azure Marketplace 映像，請參閱[這裡](../image-builder-overview.md#os-support)以取得完整清單。 
 
 ```json
         "source": {

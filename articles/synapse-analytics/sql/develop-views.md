@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fb75257a86e9e46d6c180a2a38193adecb2b36a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: de04be2495c6e81e9c5f8d32f9d876b49482c5fe
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451670"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678367"
 ---
 # <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中具有專用 SQL 集區和無伺服器 SQL 集區的 t-sql 視圖
 
@@ -27,11 +27,11 @@ ms.locfileid: "96451670"
 ### <a name="sql-pool---create-view"></a>SQL 集區-建立視圖
 
 > [!NOTE]
-> 本文中不會討論 CREATE VIEW 的語法。 如需詳細資訊，請參閱 [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 文件。
+> 本文中不會討論 CREATE VIEW 的語法。 如需詳細資訊，請參閱 [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 文件。
 
 ## <a name="architectural-abstraction"></a>架構抽象概念
 
-常見的應用程式模式是使用 CREATE TABLE 重新建立資料表， [以選取](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) ，在載入資料時，會接著物件重新命名模式。
+常見的應用程式模式是使用 CREATE TABLE 重新建立資料表， [以選取](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (CTAS) ，在載入資料時，會接著物件重新命名模式。
 
 下列範例會將新的日期記錄加入至日期維度。 請注意新的資料表 DimDate_New 最初是如何建立，然後重新命名，以取代原始版本的資料表。
 

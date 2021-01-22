@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
-ms.translationtype: HT
+ms.openlocfilehash: 4212c76d052fe1f272963003e836425b50d6f105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740499"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677609"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什麼是 Azure Machine Learning Studio？
 
@@ -90,7 +90,7 @@ ms.locfileid: "97740499"
 | 功能 | ML Studio (傳統) | Azure Machine Learning |
 |---| --- | --- |
 | 拖放介面 | 傳統體驗 | 更新體驗 - [Azure Machine Learning 設計工具](concept-designer.md)| 
-| 程式碼 SDK | 不支援 | 與 [Azure Machine Learning Python](/python/api/overview/azure/ml/) 和 [R](tutorial-1st-r-experiment.md) SDK 完全整合 |
+| 程式碼 SDK | 不支援 | 與 [Azure Machine Learning Python](/python/api/overview/azure/ml/) 和 [R](https://github.com/Azure/azureml-sdk-for-r) SDK 完全整合 |
 | 實驗 | 可調整規模 (有 10 GB 的定型資料限制) | 使用計算目標進行調整 |
 | 定型計算目標 | 專屬計算目標，僅限 CPU 支援 | 各種可自訂的[訓練計算目標](concept-compute-target.md#train)。 包括 GPU 和 CPU 支援 | 
 | 部署計算目標 | 專屬 Web 服務格式 (不可自訂) | 各種可自訂的[部署計算目標](concept-compute-target.md#deploy)。 包括 GPU 和 CPU 支援 |

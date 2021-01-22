@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a3481830a09b183213e84490b5300f2fb38f8d19
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: b5c65035f8b51b53f617d4562fe1982f53f0deec
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625060"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678267"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 
@@ -161,15 +161,15 @@ IoT 中樞可保障 IoT 應用程式和其所管理裝置之間雙向通訊的�
 > [!NOTE]
 > 在事件方格上發佈裝置遙測事件的功能目前處於公開預覽狀態。 除了下列區域以外，所有區域皆可使用此功能：美國東部、美國西部、西歐、Azure Government、Azure China 21Vianet 和 Azure 德國。
 
-若要在 ContosoRental 資源群組中建立 IoT 中樞，請依照[建立 IoT 中樞](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet#create-an-iot-hub)中的步驟進行。
+若要在 ContosoRental 資源群組中建立 IoT 中樞，請依照[建立 IoT 中樞](../iot-hub/quickstart-send-telemetry-dotnet.md#create-an-iot-hub)中的步驟進行。
 
 ## <a name="register-a-device-in-your-iot-hub"></a>在 IoT 中樞註冊您的裝置
 
-請先在 IoT 中樞身分識別登錄中註冊裝置，否則無法連線到 IoT 中樞。 您會在這裡建立名稱為 InVehicleDevice 的單一裝置。 若要在 IoT 中樞內建立和註冊裝置，請依照[在 IoT 中樞中註冊新裝置](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal#register-a-new-device-in-the-iot-hub)中的步驟進行。 請務必複製您裝置的主要連接字串。 稍後您將會用到此資訊。
+請先在 IoT 中樞身分識別登錄中註冊裝置，否則無法連線到 IoT 中樞。 您會在這裡建立名稱為 InVehicleDevice 的單一裝置。 若要在 IoT 中樞內建立和註冊裝置，請依照[在 IoT 中樞中註冊新裝置](../iot-hub/iot-hub-create-through-portal.md#register-a-new-device-in-the-iot-hub)中的步驟進行。 請務必複製您裝置的主要連接字串。 稍後您將會用到此資訊。
 
 ## <a name="create-a-function-and-add-an-event-grid-subscription"></a>建立函式並新增事件方格訂用帳戶
 
-Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 (稱為「函式」)，而無須明確佈建或管理計算基礎結構。 若要深入了解，請參閱 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)。
+Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 (稱為「函式」)，而無須明確佈建或管理計算基礎結構。 若要深入了解，請參閱 [Azure Functions](../azure-functions/functions-overview.md)。
 
 函式會由特定事件觸發。 您會在這裡建立由事件方格觸發程序觸發的函式。 建立 IoT 中樞裝置遙測事件的事件訂用帳戶，以建立觸發程序和功能之間的關聯性。 發生裝置遙測事件時，系統會將您的函式呼叫為端點，此端點會接收先前在 IoT 中樞中所註冊裝置的相關資料。
 
@@ -223,7 +223,7 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>使用 IoT 中樞訊息路由來篩選事件
 
-當您將事件方格訂用帳戶新增至 Azure 函式時，系統會在指定的 IoT 中樞內自動建立訊息路由。 訊息路由可讓您將不同的資料類型路由至不同的端點。 例如，您可以路由裝置遙測訊息、裝置生命週期事件和裝置對應項變更事件。 如需詳細資訊，請參閱[使用 IoT 中樞訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)。
+當您將事件方格訂用帳戶新增至 Azure 函式時，系統會在指定的 IoT 中樞內自動建立訊息路由。 訊息路由可讓您將不同的資料類型路由至不同的端點。 例如，您可以路由裝置遙測訊息、裝置生命週期事件和裝置對應項變更事件。 如需詳細資訊，請參閱[使用 IoT 中樞訊息路由](../iot-hub/iot-hub-devguide-messages-d2c.md)。
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="IoT 中樞內訊息路由的螢幕擷取畫面。":::
 
@@ -232,7 +232,7 @@ Azure Functions 是無伺服器計算服務，可讓您執行一小段程式碼 
 :::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="篩選路由訊息的螢幕擷取畫面。":::
 
 >[!TIP]
->有各種方式可查詢 IoT 裝置到雲端的訊息。 若要深入了解訊息路由語法，請參閱 [IoT 中樞訊息路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax)。
+>有各種方式可查詢 IoT 裝置到雲端的訊息。 若要深入了解訊息路由語法，請參閱 [IoT 中樞訊息路由](../iot-hub/iot-hub-devguide-routing-query-syntax.md)。
 
 ## <a name="send-telemetry-data-to-iot-hub"></a>將遙測資料傳送至 IoT 中樞
 

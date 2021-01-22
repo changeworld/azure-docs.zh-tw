@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 8db1825e7abfaaeca4650cbd03dd05eec4777c21
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9b2fc61054c40f52f7e638117109ec556cc63a78
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121272"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678452"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中針對專用 SQL 集區 (先前的 SQL DW) 進行疑難排解
 
@@ -30,13 +30,13 @@ ms.locfileid: "98121272"
 | 伺服器主體 "MyUserName" 在目前的資訊安全內容下無法存取「主要」資料庫。 無法開啟使用者預設資料庫。 登入失敗。 使用者 'MyUserName' 登入失敗。 (Microsoft SQL Server，錯誤：916) | 當 Azure AD 使用者嘗試連線到主要資料庫，但主要資料庫中沒有使用者時，就會發生此錯誤。  若要更正這個問題，請指定您要在連接時連接到的專用 SQL 集區 (先前的 SQL DW) ，或將使用者新增至 master 資料庫。  如需詳細資訊，請參閱 [安全性概觀](sql-data-warehouse-overview-manage-security.md) 一文。 |
 | CTAIP 錯誤                                                  | 在 SQL Database master 資料庫上建立登入，但未在特定 SQL 資料庫中建立登入時，就會發生這個錯誤。  如果您遇到這個錯誤，請查看 [安全性概觀](sql-data-warehouse-overview-manage-security.md) 一文。  本文說明如何在 master 資料庫中建立登入和使用者，以及如何在 SQL 資料庫中建立使用者。 |
 | 遭到防火牆封鎖                                          | 專用的 SQL 集區 (先前的 SQL DW) 會受到防火牆保護，以確保只有已知的 IP 位址可以存取資料庫。 防火牆預設將會受到保護，因此您在可以連線之前，必須明確啟用單一 IP 位址或位址範圍。  若要設定防火牆的存取，請遵循[佈建指示](create-data-warehouse-portal.md)中[設定用戶端 IP 的伺服器防火牆存取](create-data-warehouse-portal.md)的步驟。 |
-| 無法與工具或驅動程式連線                           |  (先前為 SQL DW 的專用 SQL 集區) 建議您使用 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、 [SSDT for Visual Studio](sql-data-warehouse-install-visual-studio.md)或 [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 來查詢您的資料。 如需驅動程式和連接到 Azure Synapse 的詳細資訊，請參閱 [Azure Synapse 的驅動程式](sql-data-warehouse-connection-strings.md)和[連線到 Azure Synapse](sql-data-warehouse-connect-overview.md)文章。 |
+| 無法與工具或驅動程式連線                           |  (先前為 SQL DW 的專用 SQL 集區) 建議您使用 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、 [SSDT for Visual Studio](sql-data-warehouse-install-visual-studio.md)或 [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 來查詢您的資料。 如需驅動程式和連接到 Azure Synapse 的詳細資訊，請參閱 [Azure Synapse 的驅動程式](sql-data-warehouse-connection-strings.md)和[連線到 Azure Synapse](sql-data-warehouse-connect-overview.md)文章。 |
 
 ## <a name="tools"></a>工具
 
 | 問題                                                        | 解決方案                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Visual Studio 物件總管中遺漏 Azure AD 使用者           | 這是已知的問題。  解決方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中檢視使用者。  請參閱 [Azure Synapse 的驗證](sql-data-warehouse-authentication.md) ，以深入瞭解如何使用具有專用 sql 集區的 Azure Active Directory， (先前的 sql DW) 。 |
+| Visual Studio 物件總管中遺漏 Azure AD 使用者           | 這是已知的問題。  解決方法是在 [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中檢視使用者。  請參閱 [Azure Synapse 的驗證](sql-data-warehouse-authentication.md) ，以深入瞭解如何使用具有專用 sql 集區的 Azure Active Directory， (先前的 sql DW) 。 |
 | 手動撰寫指令碼、使用指令碼精靈，或透過 SSMS 連線很緩慢、無回應或產生錯誤 | 請確定已在主要資料庫中建立使用者。 在腳本選項中，也請確認引擎版本設定為 "Microsoft Azure Synapse Analytics Edition"，且引擎類型為 "Microsoft Azure SQL Database"。 |
 | 無法在 SSMS 中產生指令碼                               | 如果 [產生相依物件的腳本] 選項設定為 "True"，則產生專用 SQL 集區的腳本 (先前的 SQL DW) 會失敗。 因應措施是，使用者必須手動移至 **[工具] -> [選項] -> [SQL Server 物件總管] -> [產生相依物件的指令碼] 選項，並設定為 false** |
 
@@ -75,7 +75,7 @@ ms.locfileid: "98121272"
 | 不支援的 SQL Database 功能     | 請參閱 [不支援的資料表功能](sql-data-warehouse-tables-overview.md#unsupported-table-features)。 |
 | 不支援的 SQL Database 資料類型   | 請參閱 [不支援的資料類型](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types)。        |
 | 預存程序限制          | 請參閱 [預存程序限制](sql-data-warehouse-develop-stored-procedures.md#limitations) ，以了解預存程序的一些限制。 |
-| UDF 不支援 SELECT 陳述式 | 這是 UDF 目前的限制。  關於我們支援的語法，請參閱 [CREATE FUNCTION](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 。 |
+| UDF 不支援 SELECT 陳述式 | 這是 UDF 目前的限制。  關於我們支援的語法，請參閱 [CREATE FUNCTION](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 。 |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 531c423e42338b72b41c54466d5bfe8a89cd3c45
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e69781bf6d33c176d27c16a7f3cf38539ec28f07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969632"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678233"
 ---
 # <a name="azure-image-builder-service-networking-options"></a>Azure 映射產生器服務網路功能選項
 
@@ -87,6 +87,6 @@ Private Link 服務需要指定的 VNET 和子網中的 IP。 Azure 目前不支
 5. 確定您在與 Azure 映射產生器服務區域相同的區域中使用 VNET。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-如需詳細資訊，請參閱 [Azure 映射](image-builder-overview.md)建立器總覽。
+如需詳細資訊，請參閱 [Azure 映射](../image-builder-overview.md)建立器總覽。

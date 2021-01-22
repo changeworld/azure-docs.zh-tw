@@ -16,12 +16,12 @@ ms.subservice: hybrid
 ms.reviewer: chmutali
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4cdda52271bc7b9e9d854e0af181e2c8f22ad9a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1f39ef611e2ea15ef3bc3dbfcf09e9624cbcf8b3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98613131"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678216"
 ---
 # <a name="manage-agent-registry-options"></a>管理代理程式登錄選項
 
@@ -34,7 +34,7 @@ ms.locfileid: "98613131"
 System.DirectoryServices.Protocols.LdapException: The operation was aborted because the client side timeout limit was exceeded.
 `
 
-如果搜尋屬性未建立索引，LDAP 搜尋作業可能需要較長的時間。 第一個步驟是，如果您收到上述錯誤，請先檢查搜尋/查閱屬性是否已 [編制索引](https://docs.microsoft.com/windows/win32/ad/indexed-attributes)。 如果搜尋屬性已編制索引，但錯誤持續發生，您可以使用下列步驟來增加 LDAP 連接逾時： 
+如果搜尋屬性未建立索引，LDAP 搜尋作業可能需要較長的時間。 第一個步驟是，如果您收到上述錯誤，請先檢查搜尋/查閱屬性是否已 [編制索引](/windows/win32/ad/indexed-attributes)。 如果搜尋屬性已編制索引，但錯誤持續發生，您可以使用下列步驟來增加 LDAP 連接逾時： 
 
 1. 在執行 Azure AD Connect 布建代理程式的 Windows server 上，以系統管理員身分登入。
 1. 使用 [ *執行* ] 功能表項目開啟 [登錄編輯程式] ( # A0)  
@@ -48,7 +48,7 @@ System.DirectoryServices.Protocols.LdapException: The operation was aborted beca
 1. 如果您已部署多個布建代理程式，請將此登錄變更套用至所有代理程式的一致性。 
 
 ## <a name="configure-referral-chasing"></a>設定參考追蹤
-根據預設，Azure AD Connect 布建代理程式不會執行 [參考](https://docs.microsoft.com/windows/win32/ad/referrals)。 您可能會想要啟用參考追蹤，以支援特定的 HR 輸入布建案例，例如： 
+根據預設，Azure AD Connect 布建代理程式不會執行 [參考](/windows/win32/ad/referrals)。 您可能會想要啟用參考追蹤，以支援特定的 HR 輸入布建案例，例如： 
 * 檢查跨多個網域的 UPN 唯一性
 * 解析跨網域管理員參考
 

@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 404103caf376b792d363996664a69f655d5bd202
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2ed19846209d098d9eba8dba991e08d1fc57f185
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326007"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678004"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>使用 Azure Key Vault 和受控身分識別為您的 Azure Batch 帳戶設定客戶管理的金鑰
 
@@ -39,7 +39,7 @@ ms.locfileid: "96326007"
 
 當您建立新的 Batch 帳戶時，請 `SystemAssigned` 為 `--identity` 參數指定。
 
-```powershell
+```azurecli
 resourceGroupName='myResourceGroup'
 accountName='mybatchaccount'
 
@@ -52,7 +52,7 @@ az batch account create \
 
 建立帳戶之後，您可以確認此帳戶已啟用系統指派的受控識別。 請務必記下 `PrincipalId` ，因為必須有此值，才能將 Key Vault 的存取權授與此 batch 帳戶。
 
-```powershell
+```azurecli
 az batch account show \
     -n $accountName \
     -g $resourceGroupName \
@@ -100,7 +100,7 @@ az batch account show \
 
 使用系統指派的受控識別建立 Batch 帳戶，並授與對 Key Vault 的存取權之後，請使用 [參數] 下的 URL 更新 Batch 帳戶 `{Key Identifier}` `keyVaultProperties` 。 也請將 **encryption_key_source** 設定為 `Microsoft.KeyVault` 。
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
@@ -118,7 +118,7 @@ az batch account set \
 
 您也可以使用 Azure CLI 來更新版本。
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
@@ -134,14 +134,14 @@ az batch account set \
 
 您也可以使用 Azure CLI 來使用不同的金鑰。
 
-```powershell
+```azurecli
 az batch account set \
     -n $accountName \
     -g $resourceGroupName \
     --encryption_key_identifier {YourNewKeyIdentifier} 
 ```
 ## <a name="frequently-asked-questions"></a>常見問題集
-  * **現有 Batch 帳戶是否支援客戶管理的金鑰？** 否。 只有新的 Batch 帳戶支援客戶管理的金鑰。
+  * **現有 Batch 帳戶是否支援客戶管理的金鑰？** 不會。 只有新的 Batch 帳戶支援客戶管理的金鑰。
   * **我可以選取大於2048位的 RSA 金鑰大小嗎？** 是，也支援 RSA 金鑰大小 `3072` 和 `4096` 位。
   * **客戶管理的金鑰撤銷後，可以執行哪些作業？** 如果 Batch 無法存取客戶管理的金鑰，則唯一允許的作業是刪除帳戶。
   * **如果我不小心刪除了 Key Vault 金鑰，該如何還原 Batch 帳戶的存取權？** 由於已啟用清除保護和虛刪除，因此您可以還原現有的金鑰。 如需詳細資訊，請參閱 [復原 Azure Key Vault](../key-vault/general/key-vault-recovery.md)。
@@ -149,5 +149,5 @@ az batch account set \
   * **如何輪替我的金鑰？** 客戶管理的金鑰不會自動輪替。 若要輪替金鑰，請更新與帳戶相關聯的金鑰識別碼。
   * **在還原存取權之後，Batch 帳戶再次運作需要多久的時間？** 一旦還原存取權之後，最多可能需要10分鐘的時間才能存取帳戶。
   * **當 Batch 帳戶無法使用時，我的資源會發生什麼事？** 當 Batch 存取客戶管理的金鑰時，任何正在執行的集區將會繼續執行。 不過，節點將會轉換為無法使用的狀態，而且工作將會停止執行 (，並) 重新排入佇列。 一旦還原存取權，節點就會再次變成可用，而工作將會重新開機。
-  * **此加密機制是否適用于 Batch 集區中的 VM 磁片？** 否。 若為雲端服務設定集區，則不會對作業系統和暫存磁片套用任何加密。 針對虛擬機器設定集區，作業系統和任何指定的資料磁片預設會使用 Microsoft 平臺管理金鑰進行加密。 您目前無法為這些磁片指定自己的金鑰。 若要使用 Microsoft 平臺管理金鑰為 Batch 集區的 Vm 暫存磁片加密，您必須啟用[虛擬機器](/rest/api/batchservice/pool/add#virtualmachineconfiguration)設定集區中的[diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration)屬性。 針對高度敏感的環境，建議您啟用暫存磁片加密，並避免將機密資料儲存在 OS 和資料磁片上。 如需詳細資訊，請參閱[建立已啟用磁片加密的集](./disk-encryption.md)區
-  * **Batch 帳戶上的系統指派受控識別是否可在計算節點上使用？** 否。 此受控識別目前僅用來存取客戶管理金鑰的 Azure Key Vault。
+  * **此加密機制是否適用于 Batch 集區中的 VM 磁片？** 不會。 若為雲端服務設定集區，則不會對作業系統和暫存磁片套用任何加密。 針對虛擬機器設定集區，作業系統和任何指定的資料磁片預設會使用 Microsoft 平臺管理金鑰進行加密。 您目前無法為這些磁片指定自己的金鑰。 若要使用 Microsoft 平臺管理金鑰為 Batch 集區的 Vm 暫存磁片加密，您必須啟用[虛擬機器](/rest/api/batchservice/pool/add#virtualmachineconfiguration)設定集區中的[diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration)屬性。 針對高度敏感的環境，建議您啟用暫存磁片加密，並避免將機密資料儲存在 OS 和資料磁片上。 如需詳細資訊，請參閱[建立已啟用磁片加密的集](./disk-encryption.md)區
+  * **Batch 帳戶上的系統指派受控識別是否可在計算節點上使用？** 不會。 此受控識別目前僅用來存取客戶管理金鑰的 Azure Key Vault。

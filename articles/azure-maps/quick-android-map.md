@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: mvc
-ms.openlocfilehash: 874da5ffcd2777648bb06c6e702932d64a32e59c
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
-ms.translationtype: HT
+ms.openlocfilehash: 740563935e12d5a7418bada2a18b48fb573f6e7d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681870"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679002"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-maps"></a>快速入門：使用 Azure 地圖服務建立 Android 應用程式
 
@@ -59,7 +59,7 @@ ms.locfileid: "97681870"
 3. 將 [主索引鍵] 複製到剪貼簿。 將其儲存在本機，以供本教學課程稍後使用。
 
 >[!NOTE]
-> 如果您使用 Azure 訂用帳戶金鑰而非 Azure 地圖服務主要金鑰，您的地圖將無法正確轉譯。 此外，為了安全起見，建議您在主要和次要金鑰之間輪替。 若要輪替金鑰，將您的應用程式更新為使用次要金鑰，部署，然後按下主要金鑰旁的循環/重新整理按鈕，以產生新的主要金鑰。 舊的主要金鑰將會停用。 如需金鑰輪替的詳細資訊，請參閱[使用金鑰輪替和稽核來設定 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)
+> 如果您使用 Azure 訂用帳戶金鑰而非 Azure 地圖服務主要金鑰，您的地圖將無法正確轉譯。 此外，為了安全起見，建議您在主要和次要金鑰之間輪替。 若要輪替金鑰，將您的應用程式更新為使用次要金鑰，部署，然後按下主要金鑰旁的循環/重新整理按鈕，以產生新的主要金鑰。 舊的主要金鑰將會停用。 如需金鑰輪替的詳細資訊，請參閱[使用金鑰輪替和稽核來設定 Azure Key Vault](../key-vault/secrets/tutorial-rotation-dual.md)
 
 ![在 Azure 入口網站中取得主要金鑰 Azure 地圖服務金鑰](media/quick-android-map/get-key.png)
 

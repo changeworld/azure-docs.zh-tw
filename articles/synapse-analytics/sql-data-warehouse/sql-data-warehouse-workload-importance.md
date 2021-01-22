@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 07c781672874bff306c9d25a464ec66414ebc9f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06d1957d182f2cabc336afcfc47a790442a3cb9a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322130"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678401"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics 工作負載重要性
 
@@ -38,7 +38,7 @@ ms.locfileid: "93322130"
 
 ### <a name="locking"></a>鎖定
 
-讀取和寫入活動的鎖定存取是自然爭用的一個區域。 [分割切換](sql-data-warehouse-tables-partition.md)或[重新命名物件](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)等活動需要較高的鎖定。  若沒有工作負載重要性，Azure Synapse 中的專用 SQL 集區可針對輸送量進行優化。 針對輸送量進行優化表示當執行中和佇列的要求具有相同的鎖定需求，而且有資源可用時，佇列的要求可以略過要求佇列中抵達要求佇列的要求。 一旦工作負載重要性套用至具有較高鎖定需求的要求。 具有較高重要性的要求會在具有較低重要性的要求之前執行。
+讀取和寫入活動的鎖定存取是自然爭用的一個區域。 [分割切換](sql-data-warehouse-tables-partition.md)或[重新命名物件](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)等活動需要較高的鎖定。  若沒有工作負載重要性，Azure Synapse 中的專用 SQL 集區可針對輸送量進行優化。 針對輸送量進行優化表示當執行中和佇列的要求具有相同的鎖定需求，而且有資源可用時，佇列的要求可以略過要求佇列中抵達要求佇列的要求。 一旦工作負載重要性套用至具有較高鎖定需求的要求。 具有較高重要性的要求會在具有較低重要性的要求之前執行。
 
 請考慮下列範例：
 
@@ -60,10 +60,10 @@ ms.locfileid: "93322130"
 
 因為 Q5 是 mediumrc，所以它需要兩個平行存取插槽。 Q5 需要等候兩個正在執行的查詢完成。  不過，當其中一個正在執行的查詢 (Q1-Q4) 完成時，Q6 會立即排程，因為執行查詢的資源存在。  如果 Q5 的重要性高於 Q6，則 Q6 會等到 Q5 正在執行，才能開始執行。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-- 如需建立分類器的詳細資訊，請參閱 [建立工作負載分類器 (transact-sql) ](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  
+- 如需建立分類器的詳細資訊，請參閱 [建立工作負載分類器 (transact-sql) ](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。  
 - 如需工作負載分類的詳細資訊，請參閱[工作負載分類](sql-data-warehouse-workload-classification.md)。  
 - 請參閱快速入門 [建立工作負載分類器](quickstart-create-a-workload-classifier-tsql.md) ，以瞭解如何建立工作負載分類器。
 - 請參閱[設定工作負載的重要性](sql-data-warehouse-how-to-configure-workload-importance.md)的操作說明文章，以及如何[管理並監視工作負載管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)。
-- 請參閱 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 以檢視查詢和所指派的重要性。
+- 請參閱 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 以檢視查詢和所指派的重要性。

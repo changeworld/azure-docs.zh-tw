@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/19/2021
 ms.custom: seodec18
-ms.openlocfilehash: eeb3de2fc3f0e3e0be9c98002f11e470eaf04f8c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: HT
+ms.openlocfilehash: 912dbf48254a8d68b9bf76db04734fd791a3edb9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020924"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677049"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>教學課程：設定 Azure 時間序列深入解析 Gen2 環境
 
@@ -109,7 +109,7 @@ ms.locfileid: "95020924"
 
    | 參數 | 動作 |
    | --- | --- |
-   | **建立事件來源?** | 選取 [是]。|
+   | **建立事件來源?** | 選取 [是]  。|
    | **名稱** | 為事件來源名稱輸入唯一值。 |
    | **來源類型** | 選取 [IoT 中樞]。 |
    | **選取中樞** | 選擇 [選取現有的]。 |
@@ -233,7 +233,7 @@ ms.locfileid: "95020924"
         | **ReplTest1** | 從預設中選取：選取 [溫度 (雙精準數)]。 <br /> 注意:在 Azure 時間序列深入解析 Gen2 開始接收事件之後，可能需要幾分鐘的時間，才會自動填入 **值**。|
         | **彙總作業** | 展開 [進階選項]。 <br /> 選取 [AVG]。 |
 
-    1. 選取 [套用]  。 接著，再次選取 [+ 新增變數]，然後設定下列值：
+    1. 選取 [套用]。 接著，再次選取 [+ 新增變數]，然後設定下列值：
 
         | 參數 | 動作 |
         | --- | --- |
@@ -242,7 +242,7 @@ ms.locfileid: "95020924"
         | **ReplTest1** | 從預設中選取：選取 [震動 (雙精確度)]。 <br /> 注意:在 Azure 時間序列深入解析 Gen2 開始接收事件之後，可能需要幾分鐘的時間，才會自動填入 **值**。|
         | **彙總作業** | 展開 [進階選項]。 <br /> 選取 [AVG]。 |
 
-    1. 選取 [套用]  。 接著，再次選取 [+ 新增變數]，然後為第三個和最後一個變數設定下列值：
+    1. 選取 [套用]。 接著，再次選取 [+ 新增變數]，然後為第三個和最後一個變數設定下列值：
 
         | 參數 | 動作 |
         | --- | --- |
@@ -254,8 +254,8 @@ ms.locfileid: "95020924"
 
         [![新增類型變數。](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
-    1. 選取 [套用]  。 
-    1. 選取 [儲存]  。 系統會建立並顯示三個變數。
+    1. 選取 [套用]。 
+    1. 選取 [儲存]。 系統會建立並顯示三個變數。
 
         [![新增類別之後，請在 [模型] 檢視中加以檢視。](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
@@ -268,7 +268,7 @@ ms.locfileid: "95020924"
         | **名稱** | 輸入 **位置階層**。 |
         |**層級**| 輸入「國家/地區」作為第一個層級的名稱 <br /> 選取 [+ 新增層級] <br /> 輸入「城市」作為第二個層級，然後選取 [+ 新增層級] <br /> 輸入「建築物」作為第三個和最後一個層級的名稱 |
 
-   1. 選取 [儲存]  。
+   1. 選取 [儲存]。
 
         [![在模型檢視中顯示新階層。](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
@@ -291,7 +291,7 @@ ms.locfileid: "95020924"
         | **城市** | 輸入 **西雅圖** |
         | **建築物** | 輸入 **太空針塔** |
 
-    1. 選取 [儲存]  。
+    1. 選取 [儲存]。
 
 1. 使用下列值時，以其他兩個執行個體重複上一個步驟：
 

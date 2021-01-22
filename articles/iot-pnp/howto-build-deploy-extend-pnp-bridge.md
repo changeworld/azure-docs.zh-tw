@@ -7,12 +7,12 @@ ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ece9f62e64eb64b1f34af46b42d57ec583f8f214
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675834"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678571"
 ---
 # <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>建立、部署及擴充 IoT 隨插即用橋接器
 
@@ -188,7 +188,7 @@ typedef struct _PNP_ADAPTER {
 
 將 [IoT 隨插即用橋接器](https://github.com/Azure/iot-plug-and-play-bridge) 儲存機制複製到您的本機電腦：
 
-```cmd/sh
+```console
 git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 
 cd iot-plug-and-play-bridge
@@ -205,7 +205,7 @@ git submodule update --init --recursive
 
 開啟 **VS 2019 的開發人員命令提示字元** ，然後流覽至包含您所複製之存放庫的資料夾，然後執行下列命令：
 
-```cmd
+```console
 cd pnpbridge\scripts\windows
 
 build.cmd
@@ -279,7 +279,7 @@ cd scripts/linux
 
 藉由在命令提示字元中執行橋接器來啟動橋接器：
 
-```cmd
+```console
 cd iot-plug-and-play-bridge\pnpbridge\cmake\pnpbridge_x86\src\pnpbridge\samples\console
 
 Debug\pnpbridge_bin.exe
@@ -330,13 +330,13 @@ Debug\pnpbridge_bin.exe
 
 若要在 IoT 中樞內建立 IoT Edge 裝置註冊，請在您的 WSL 2 環境中執行下列命令。 使用 `az login` 命令來登入您的 Azure 訂用帳戶：
 
-```bash
+```azurecli
 az iot hub device-identity create --device-id bridge-edge-device --edge-enabled true --hub-name {your IoT hub name}
 ```
 
 若要建立已安裝 IoT Edge 執行時間的 Azure 虛擬機器，請執行下列命令。 以適當的值更新預留位置：
 
-```bash
+```azurecli
 az group create --name bridge-edge-resources --location eastus
 az deployment group create \
 --resource-group bridge-edge-resources \
@@ -350,7 +350,7 @@ az deployment group create \
 
 您現在已有在虛擬機器中執行的 IoT Edge 執行時間。 您可以使用下列命令來確認 **$edgeAgent** 和 **$edgeHub** 正在裝置上執行：
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -405,7 +405,7 @@ IoT Edge 裝置會從容器登錄下載其模組映射。 此範例會使用 Azu
 
 在 **bridge-edge 資源** 資源群組中建立 Azure container registry。 然後，啟用容器登錄的系統管理員存取權，並取得您的 IoT Edge 裝置下載模組映射所需的認證：
 
-```bash
+```azurecli
 az acr create -g bridge-edge-resources --sku Basic -n {your container registry name}
 az acr update --admin-enabled true -n {your container registry name}
 az acr credential show -n {your container registry name}
@@ -517,7 +517,7 @@ IoT Edge 部署資訊清單會指定要部署到 IoT Edge 裝置的模組和設�
 
 若要查看裝置上的模組狀態，請執行下列命令：
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -527,7 +527,7 @@ az iot hub module-identity list --device-id bridge-edge-device -o table --hub-na
 
 若要從您的 Azure 訂用帳戶移除虛擬機器和 container registry，請執行下列命令：
 
-```bash
+```azurecli
 az group delete -n bridge-edge-resources
 ```
 
@@ -541,6 +541,6 @@ az group delete -n bridge-edge-resources
 
 *pnpbridge\src\adapters*：各種 IoT 隨插即用 bridge 介面卡的原始程式碼。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解 IoT 隨插即用橋接器，請造訪 [IoT 隨插即用 bridge](https://github.com/Azure/iot-plug-and-play-bridge) GitHub 存放庫。

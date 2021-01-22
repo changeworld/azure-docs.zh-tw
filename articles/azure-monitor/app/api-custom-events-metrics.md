@@ -4,12 +4,12 @@ description: 在您的裝置或桌面應用程式、網頁或服務中插入幾�
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 8fecca4875ba291da093bf1eea596eef290f80c8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233741"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678107"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
@@ -534,7 +534,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 您可以使用 TrackDependency 呼叫來追蹤回應時間以及呼叫外部程式碼片段的成功率。 結果會出現在入口網站中的相依性圖表中。 在進行相依性呼叫的任何地方，都必須新增下列程式碼片段。
 
 > [!NOTE]
-> 針對 .NET 和 .NET Core，您也可以使用 `TelemetryClient.StartOperation` (擴充功能) 方法，以填滿 `DependencyTelemetry` 相互關聯所需的屬性，以及一些其他屬性（例如開始時間和持續時間），因此您不需要建立自訂計時器，如下列範例所示。 如需詳細資訊，請參閱這篇文章中有關連出相依性 [追蹤的章節](https://docs.microsoft.com/azure/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking)。
+> 針對 .NET 和 .NET Core，您也可以使用 `TelemetryClient.StartOperation` (擴充功能) 方法，以填滿 `DependencyTelemetry` 相互關聯所需的屬性，以及一些其他屬性（例如開始時間和持續時間），因此您不需要建立自訂計時器，如下列範例所示。 如需詳細資訊，請參閱這篇文章中有關連出相依性 [追蹤的章節](./custom-operations-tracking.md#outgoing-dependencies-tracking)。
 
 *C#*
 

@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: HT
+ms.openlocfilehash: 9500d682a99e6345289a83b4b3b2fc29ffe18457
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462660"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676879"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的無伺服器 SQL 集區來查詢儲存體資料
 
 無伺服器 SQL 集區可讓您查詢資料湖中的資料。 其提供可搭載半結構化和非結構化資料查詢的 T-SQL 查詢介面區。 在查詢方面，可支援下列 T-SQL 層面：
 
-- 完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 介面區，包括大部分的 [SQL 函式及運算子](overview-features.md)。
+- 完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 介面區，包括大部分的 [SQL 函式及運算子](overview-features.md)。
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) 會建立[外部資料表](develop-tables-external-tables.md)，然後將 Transact-SQL SELECT 陳述式的結果以平行方式匯出至 Azure 儲存體。
 
 如需有關目前支援及不支援的功能詳細資訊，請參閱[無伺服器 SQL 集區概觀](on-demand-workspace-overview.md)一文，或參閱下列文章：
@@ -190,15 +190,15 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 
 #### <a name="access-elements-from-repeated-columns"></a>從重複的資料行存取元素
 
-若要從重複的資料行存取元素 (例如陣列或對應的元素)，請針對您需要投影和提供的每個純量元素，使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 函式：
+若要從重複的資料行存取元素 (例如陣列或對應的元素)，請針對您需要投影和提供的每個純量元素，使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 函式：
 
 - 使用巢狀或重復資料行作為第一個參數
-- 第二個參數則使用 [JSON 路徑](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，該路徑會指定要存取的元素或屬性
+- 第二個參數則使用 [JSON 路徑](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，該路徑會指定要存取的元素或屬性
 
-若要從重複的資料行存取非純量元素，請針對您需要投影和提供的每個非純量元素，使用 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 函式：
+若要從重複的資料行存取非純量元素，請針對您需要投影和提供的每個非純量元素，使用 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 函式：
 
 - 使用巢狀或重復資料行作為第一個參數
-- 第二個參數則使用 [JSON 路徑](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，該路徑會指定要存取的元素或屬性
+- 第二個參數則使用 [JSON 路徑](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，該路徑會指定要存取的元素或屬性
 
 請參閱下面的語法片段：
 

@@ -8,17 +8,15 @@ ms.topic: quickstart
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: f85a76a7ce01c11255f54c6b956088f9328dfc9f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: cb6a63e4ead45d7751d1d3442793478cfdcd71c0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918459"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676335"
 ---
 # <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>快速入門： 將 Azure Purview 帳戶連線至 Synapse 工作區 
 
-> [!IMPORTANT]
-> Azure Synapse Analytics 與 Azure Purview 之間的整合目前為預覽狀態。 如果您有興趣試用 Synapse 中的 Azure Purview，請與您的 Microsoft 業務代表聯繫。
 
 在本快速入門中，您會將 Azure Purview 帳戶註冊到 Synapse 工作區。 該連線可讓您探索 Azure Purview 資產，並透過 Synapse 功能與其互動。 
 
@@ -34,7 +32,7 @@ ms.locfileid: "97918459"
 
 ## <a name="signin-toa-synapse-workspace"></a>登入 Synapse 工作區 
 
-移至 https://web.azuresynapse.net 並登入您的工作區。 
+移至  [https://web.azuresynapse.net](https://web.azuresynapse.net) 您的工作區並登入。 
 
 ## <a name="permissions-for-connecting-an-azure-purview-account"></a>連線 Azure Purview 帳戶的權限 
 

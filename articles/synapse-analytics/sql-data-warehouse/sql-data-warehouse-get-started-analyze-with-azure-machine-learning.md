@@ -12,12 +12,12 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 5348c0ed5d80e2738bb865ca3ec1ddf5aaed009a
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 76a154d3a137017f374247308a3980d598698246
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118042"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678654"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>使用 Azure Machine Learning 分析資料
 
@@ -104,7 +104,7 @@ Azure Data Lake Storage 中的資料可供使用之後，Azure Machine Learning 
 
 1. 按一下模組以開啟 [屬性] 窗格。 按一下 [編輯資料行] 以指定您想要捨棄的資料行。
 
-1. 排除兩個資料行：CustomerAlternateKey 和 GeographyKey。 按一下 [儲存]
+1. 排除兩個資料行：CustomerAlternateKey 和 GeographyKey。 按一下 [儲存] 
 
     :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="螢幕擷取畫面，顯示已卸載的資料行。":::
 
@@ -157,8 +157,8 @@ Azure Data Lake Storage 中的資料可供使用之後，Azure Machine Learning 
 
 比較資料行 BikeBuyer (實際) 與評分標籤 (預測) ，以查看模型執行的程度。 接下來，您可以使用此模型對新客戶進行預測。 您可以 [將此模型發佈為 web 服務](../../machine-learning/tutorial-designer-automobile-price-deploy.md) ，或將結果寫回 Azure Synapse。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解 Azure Machine Learning，請參閱 [Azure 上的 Machine Learning 簡介](../../machine-learning/overview-what-is-azure-ml.md)。
 
-在 [這裡](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)瞭解資料倉儲內建的評分。
+在 [這裡](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)瞭解資料倉儲內建的評分。

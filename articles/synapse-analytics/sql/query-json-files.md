@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5703e4ac3d4a545041c7d258f0b1f0e7c79a33b5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8dc07a3aa954a74ba594eb99da1ea3ee59610c9b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462615"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678316"
 ---
 # <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的無伺服器 SQL 集區來查詢 JSON 檔案
 
@@ -60,7 +60,7 @@ from openrowset(
 
 上述範例查詢中的 JSON 檔包含物件的陣列。 此查詢會傳回每個物件，做為結果集中的個別資料列。 請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂身分識別的保護，您必須設定 [sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。 
 
-### <a name="data-source-usage"></a>資料來源使用量
+### <a name="data-source-usage"></a>資料來源使用方式
 
 上一個範例使用檔案的完整路徑。 或者，您可以使用指向儲存體根資料夾的位置來建立外部資料源，然後使用該資料來源以及函式中檔案的相對路徑 `OPENROWSET` ：
 
@@ -126,7 +126,7 @@ from openrowset(
 
 ### <a name="query-json-files-using-json_value"></a>使用 JSON_VALUE 查詢 JSON 檔案
 
-下列查詢示範如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ，從 JSON 檔 (標題、發行者) 取得純量值：
+下列查詢示範如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ，從 JSON 檔 (標題、發行者) 取得純量值：
 
 ```sql
 select
@@ -146,7 +146,7 @@ order by JSON_VALUE(doc, '$.geo_id') desc
 
 ### <a name="query-json-files-using-openjson"></a>使用 OPENJSON 查詢 JSON 檔案
 
-下列查詢使用 [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。 它會取出在塞爾維亞中回報的 COVID-19 統計資料：
+下列查詢使用 [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。 它會取出在塞爾維亞中回報的 COVID-19 統計資料：
 
 ```sql
 select

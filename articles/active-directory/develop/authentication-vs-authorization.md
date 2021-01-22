@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d4abc9e1bba151f46adf71dd0185ddddad916a38
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5087278e5c89514cd43b7ca871a58f18e0fa98f2
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216456"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678141"
 ---
 # <a name="authentication-vs-authorization"></a>驗證與授權
 
@@ -51,10 +51,10 @@ Microsoft 身分識別平臺會提供身分識別即服務，為應用程式開�
 以下是 Microsoft 身分識別平臺所使用的通訊協定比較：
 
 * **Oauth 與 OpenID Connect**：平臺會使用 OAuth 進行授權，並 OPENID CONNECT (OIDC) 進行驗證。 OpenID Connect 建置於 OAuth 2.0 之上，因此兩者的術語和流程都很類似。 您甚至可以透過 OpenID Connect) 來驗證使用者 (，以及取得存取受保護資源的授權，而使用者透過 OAuth 2.0) 在一個要求中擁有 (。 如需詳細資訊，請參閱 [OAuth 2.0 和 OpenID Connect 通訊協定](active-directory-v2-protocols.md)和 [OpenID Connect 通訊協定](v2-protocols-oidc.md)。
-* **Oauth 與 saml**：平臺會使用 OAuth 2.0 進行授權和 saml 以進行驗證。 如需有關如何搭配使用這些通訊協定來驗證使用者，以及取得存取受保護資源之授權的詳細資訊，請參閱 [Microsoft 身分識別平臺和 OAuth 2.0 SAML 持有](v2-saml-bearer-assertion.md)人判斷提示流程。
+* **Oauth 與 saml**：平臺會使用 OAuth 2.0 進行授權和 saml 以進行驗證。 如需有關如何搭配使用這些通訊協定來驗證使用者，以及取得存取受保護資源之授權的詳細資訊，請參閱 [Microsoft 身分識別平臺和 OAuth 2.0 SAML 持有](./scenario-token-exchange-saml-oauth.md)人判斷提示流程。
 * **OpenID Connect 與 saml**：平臺會使用 OPENID CONNECT 和 saml 來驗證使用者，並啟用單一登入。 SAML 驗證通常會與身分識別提供者搭配使用，例如 Active Directory 同盟服務 (AD FS) 同盟至 Azure AD，因此通常用於企業應用程式。 OpenID Connect 通常用於純雲端中的應用程式，例如行動應用程式、網站和 web Api。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 適用于其他涵蓋驗證和授權基本概念的主題：
 

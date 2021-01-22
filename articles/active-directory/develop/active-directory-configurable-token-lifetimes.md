@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 33dffa40e0236483d641c2e2bbe318bb62a7724d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232398"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678182"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft 身分識別平臺中可設定的權杖存留期 (預覽版) 
 
@@ -68,7 +68,7 @@ ms.locfileid: "98232398"
 
 如需範例，請參閱 [建立 web 登入的原則](configure-token-lifetimes.md#create-a-policy-for-web-sign-in)。
 
-| 屬性 | 原則屬性字串 | 影響 | 預設值 | 最小值 | 最大值 |
+| 屬性 | 原則屬性字串 | 影響 | 預設 | 最小值 | 最大值 |
 | --- | --- | --- | --- | --- | --- |
 | 存取權杖存留期 |AccessTokenLifetime |存取權杖、識別碼權杖、SAML2 權杖 |1 小時 |10 分鐘 |1 日 |
 
@@ -82,9 +82,11 @@ ms.locfileid: "98232398"
 > [!IMPORTANT]
 > 從2020到5月，新租使用者無法設定重新整理和會話權杖存留期。  具有現有設定的租使用者可以修改重新整理和會話權杖原則，直到2021年1月30日為止。   Azure Active Directory 將會在2021年1月30日之後停止接受現有的重新整理和會話權杖設定。 您仍然可以在淘汰之後設定存取、SAML 和識別碼權杖存留期。
 >
-> 如果您需要在要求使用者再次登入之前，繼續定義時間週期，請在條件式存取中設定登入頻率。 若要深入瞭解條件式存取，請參閱 [使用條件式存取設定驗證會話管理](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)。
+> 如果您需要在要求使用者再次登入之前，繼續定義時間週期，請在條件式存取中設定登入頻率。 若要深入瞭解條件式存取，請參閱 [使用條件式存取設定驗證會話管理](../conditional-access/howto-conditional-access-session-lifetime.md)。
 >
 > 如果您不想在停用日期之後使用條件式存取，您的重新整理和會話權杖將會在該日期設定為 [預設](#configurable-token-lifetime-properties-after-the-retirement) 設定，而且您將無法再變更其存留期。
+>
+> 現有權杖的存留期不會變更。 過期之後，將會根據預設值發出新的權杖。
 
 :::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="淘汰資訊":::
 
@@ -116,7 +118,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 權杖存留期原則是一種包含權杖存留期規則的原則物件。 使用原則的屬性來控制指定的權杖存留期。 如果未設定任何原則，系統就會強制執行預設存留期值。
 
 #### <a name="configurable-token-lifetime-properties"></a>可設定的權杖存留期屬性
-| 屬性 | 原則屬性字串 | 影響 | 預設值 | 最小值 | 最大值 |
+| 屬性 | 原則屬性字串 | 影響 | 預設 | 最小值 | 最大值 |
 | --- | --- | --- | --- | --- | --- |
 | 重新整理權杖最大閒置時間 |MaxInactiveTime |重新整理權杖 |90 天 |10 分鐘 |90 天 |
 | 單一要素重新整理權杖最大壽命 |MaxAgeSingleFactor |重新整理權杖 (適用於任何使用者) |直到撤銷為止 |10 分鐘 |直到撤銷為止<sup>1</sup> |
@@ -127,7 +129,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 * <sup>1</sup>針對這些屬性，可設定的明確時間長度上限為 365 天。
 
 #### <a name="exceptions"></a>例外狀況
-| 屬性 | 影響 | 預設值 |
+| 屬性 | 影響 | 預設 |
 | --- | --- | --- |
 | 重新整理權杖最大壽命 (針對沒有足夠撤銷資訊的同盟使用者簽發<sup>1</sup>) |重新整理權杖 (針對沒有足夠撤銷資訊的同盟使用者簽發<sup>1</sup>) |12 小時 |
 | 重新整理權杖最大閒置時間 (針對機密用戶端簽發) |重新整理權杖 (針對機密用戶端簽發) |90 天 |
@@ -195,7 +197,7 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 ## <a name="configurable-token-lifetime-properties-after-the-retirement"></a>停用後的可設定權杖存留期屬性
 重新整理和會話權杖設定會受到下列屬性和其各自的設定值所影響。 在2021年1月30日淘汰重新整理和會話權杖設定之後，Azure AD 只會接受如下所述的預設值。 如果您決定不使用條件式存取來管理登入頻率，您的重新整理和會話權杖將會在該日期設定為預設設定，而且您將無法再變更其存留期。  
 
-|屬性   |原則屬性字串    |影響 |預設值 |
+|屬性   |原則屬性字串    |影響 |預設 |
 |----------|-----------|------------|------------|
 |存取權杖存留期 |AccessTokenLifetime |存取權杖、識別碼權杖、SAML2 權杖 |1 小時 |
 |重新整理權杖最大閒置時間 |MaxInactiveTime  |重新整理權杖 |90 天  |
@@ -272,6 +274,6 @@ Microsoft 身分識別平臺會使用兩種 SSO 會話權杖：持續性和非�
 | [Get-AzureADServicePrincipalPolicy](/powershell/module/azuread/get-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 取得與指定的服務主體連結的任何原則。|
 | [Remove-AzureADServicePrincipalPolicy](/powershell/module/azuread/remove-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) | 從指定的服務主體移除原則。|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解，請參閱 [如何設定權杖存留期的範例](configure-token-lifetimes.md)。

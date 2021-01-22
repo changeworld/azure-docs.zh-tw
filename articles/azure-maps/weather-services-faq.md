@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b7726e4e8fee0044a7865c8c494ef6451425676
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903865"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678124"
 ---
 # <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Azure 地圖服務天氣服務 (預覽) 常見問題 (常見問題) 
 
 > [!IMPORTANT]
-> Azure 地圖服務天氣服務目前處於公開預覽狀態。
+> Azure 地圖服務的氣象服務目前為公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文將回答有關 Azure 地圖服務 [天氣服務](https://docs.microsoft.com/rest/api/maps/weather) 資料和功能的常見問題。 其中包含下列主題：
+本文將回答有關 Azure 地圖服務 [天氣服務](/rest/api/maps/weather) 資料和功能的常見問題。 其中包含下列主題：
 
 * 資料來源和資料模型
 * 氣象服務涵蓋範圍和可用性
@@ -59,7 +59,7 @@ AccuWeather 具有世界各地的即時天氣和環境資訊，主要是因為�
 
 **針對不同的國家/地區，我可以預期何種涵蓋範圍？**
 
-氣象服務涵蓋範圍會因國家/地區而異。 所有的功能在每個國家/地區都無法使用。 如需詳細資訊，請參閱 [涵蓋範圍檔](https://docs.microsoft.com/azure/azure-maps/weather-coverage)集。
+氣象服務涵蓋範圍會因國家/地區而異。 所有的功能在每個國家/地區都無法使用。 如需詳細資訊，請參閱 [涵蓋範圍檔](./weather-coverage.md)集。
 
 ## <a name="data-update-frequency"></a>資料更新頻率
 
@@ -79,7 +79,7 @@ Azure 地圖服務的預測 Api 會快取最多30分鐘。 若要查看快取的
 
 **Azure 地圖服務 Web SDK 原生支援氣象服務 (Preview) 整合嗎？**
 
-Azure 地圖服務 Web SDK 提供服務模組。 [服務] 模組是協助程式程式庫，可讓您輕鬆地在 web 或 Node.js 應用程式中使用 Azure 地圖服務 REST 服務。 使用 JavaScript 或 TypeScript。 若要開始使用，請參閱我們的 [檔](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)。
+Azure 地圖服務 Web SDK 提供服務模組。 [服務] 模組是協助程式程式庫，可讓您輕鬆地在 web 或 Node.js 應用程式中使用 Azure 地圖服務 REST 服務。 使用 JavaScript 或 TypeScript。 若要開始使用，請參閱我們的 [檔](./how-to-use-services-module.md)。
 
 **Azure 地圖服務 Android SDK 原生支援氣象服務 (預覽) 整合嗎？**
 
@@ -91,26 +91,26 @@ Azure 地圖服務 Android Sdk 支援 Mercator 圖格圖層，其可以有 x/y/�
 
 **Azure 地圖服務 Power BI 的視覺支援 Azure 地圖服務氣象圖格嗎？**
 
-是。 若要瞭解如何將雷達圖和紅外線附屬磚遷移至 Microsoft Power BI 視覺效果，請參閱 [將圖格圖層新增至 Power BI 視覺效果](https://docs.microsoft.com/azure/azure-maps/power-bi-visual-add-tile-layer)。 
+可以。 若要瞭解如何將雷達圖和紅外線附屬磚遷移至 Microsoft Power BI 視覺效果，請參閱 [將圖格圖層新增至 Power BI 視覺效果](./power-bi-visual-add-tile-layer.md)。 
 
 **如何? 解讀用於雷達圖和附屬磚的色彩？**
 
-Azure 地圖服務 [天氣概念文章](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#radar-and-satellite-imagery-color-scale) 包含可協助您解讀用於雷達圖和附屬磚之色彩的指南。 本文涵蓋色彩範例和十六進位色彩代碼。
+Azure 地圖服務 [天氣概念文章](./weather-services-concepts.md#radar-and-satellite-imagery-color-scale) 包含可協助您解讀用於雷達圖和附屬磚之色彩的指南。 本文涵蓋色彩範例和十六進位色彩代碼。
  
 **我可以建立雷達圖和附屬磚動畫嗎？**
 
-是。 除了即時雷達圖和附屬磚之外，Azure 地圖服務客戶還可以要求過去和未來的磚，利用地圖覆迭來增強資料視覺效果。 這可以藉由直接呼叫 [取得地圖底圖 V2 API](https://aka.ms/AzureMapsWeatherTiles ) ，或透過 AZURE 地圖服務 web SDK 來要求磚來完成。 最多可提供過去1.5 小時的雷達圖磚，未來最多可達2小時。 磚和可用時間間隔為5分鐘。 在過去最多可提供三個小時的紅外線磚，並以10分鐘的間隔提供。 如需詳細資訊，請參閱開放原始碼氣象圖磚動畫程式 [代碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)。  
+可以。 除了即時雷達圖和附屬磚之外，Azure 地圖服務客戶還可以要求過去和未來的磚，利用地圖覆迭來增強資料視覺效果。 這可以藉由直接呼叫 [取得地圖底圖 V2 API](/rest/api/maps/renderv2/getmaptilepreview) ，或透過 AZURE 地圖服務 web SDK 來要求磚來完成。 最多可提供過去1.5 小時的雷達圖磚，未來最多可達2小時。 磚和可用時間間隔為5分鐘。 在過去最多可提供三個小時的紅外線磚，並以10分鐘的間隔提供。 如需詳細資訊，請參閱開放原始碼氣象圖磚動畫程式 [代碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer)。  
 
 **您是否提供不同天氣狀況的圖示？**
 
-是。 您可以在 [這裡](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons)找到圖示及其各自的代碼。 請注意，只有部分氣象服務 (預覽) Api （例如「  [取得目前的條件」 api](https://aka.ms/azuremapsweathercurrentconditions)）會在回應中傳回 *iconCode* 。 如需詳細資訊，請參閱目前的 WeatherConditions 開放原始 [碼程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)。
+可以。 您可以在 [這裡](./weather-services-concepts.md#weather-icons)找到圖示及其各自的代碼。 請注意，只有部分氣象服務 (預覽) Api （例如「  [取得目前的條件」 api](/rest/api/maps/weather/getcurrentconditionspreview)）會在回應中傳回 *iconCode* 。 如需詳細資訊，請參閱目前的 WeatherConditions 開放原始 [碼程式碼範例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如果此常見問題未回答您的問題，您可以透過下列管道來聯繫我們， (按下訂單) ：
 
 * 本文的留言區。
-* [MSFT Q&頁面以進行 Azure 地圖服務](https://docs.microsoft.com/answers/topics/azure-maps.html)。
+* [MSFT Q&頁面以進行 Azure 地圖服務](/answers/topics/azure-maps.html)。
 * Microsoft 支援服務。 若要建立新的支援要求，請在 [Azure 入口網站](https://portal.azure.com/)的 [說明] 索引標籤上，選取 [說明 **+** 支援] 按鈕，然後選取 [ **新增支援要求**]。
 * [Azure 地圖服務 UserVoice](https://feedback.azure.com/forums/909172-azure-maps) 提交功能要求。
 
@@ -125,4 +125,4 @@ Azure 地圖服務天氣服務 (預覽) 概念文章：
 探索 Azure 地圖服務的氣象服務 (預覽) API 檔：
 
 > [!div class="nextstepaction"]
-> [Azure 地圖服務天氣服務](/rest/api/maps/weather)
+> [Azure 地圖服務氣象服務](/rest/api/maps/weather)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 32ce875600bb948e7c3e8479f712e99d25eb6367
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624946"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678158"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料
 
@@ -27,7 +27,7 @@ ms.locfileid: "98624946"
 在本教學課程中，您將：
 
 > [!div class="checklist"]
-> * 使用雲端中 [Azure Notebooks](../notebooks/index.yml) 的資料檔案。
+> * 使用雲端中 [Azure Notebooks](https://notebooks.azure.com) 的資料檔案。
 > * 從檔案載入示範資料。
 > * 在 Python 中呼叫 Azure 地圖服務 REST API。
 > * 在地圖上呈現位置資料。
@@ -201,9 +201,9 @@ windsPlot.set_ylabel("Wind direction")
 
 沒有任何資源需要清除。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入了解 Azure Notebooks，請參閱
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

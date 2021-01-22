@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: bf19e2d1674d0a0c2102280b28b5549505c1dfab
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7cd3619aa60f1bd8ac13ff767857b44348989285
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447773"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678418"
 ---
 # <a name="workload-classification-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的工作負載分類
 
@@ -36,7 +36,7 @@ ms.locfileid: "96447773"
 
 ## <a name="classification-process"></a>分類程序
 
-針對專用 SQL 集區的分類，現在是藉由將使用者指派給具有使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)指派給它的對應資源類別的角色。 在登入資源類別以外的情況下，對要求進行特性描述的能力，會受到這項功能的限制。 [建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語法現在提供更豐富的分類方法。  使用此語法時，專用的 SQL 集區使用者可以指派重要性，以及透過參數指派給要求的系統資源數量 `workload_group` 。
+針對專用 SQL 集區的分類，現在是藉由將使用者指派給具有使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)指派給它的對應資源類別的角色。 在登入資源類別以外的情況下，對要求進行特性描述的能力，會受到這項功能的限制。 [建立工作負載分類器](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)語法現在提供更豐富的分類方法。  使用此語法時，專用的 SQL 集區使用者可以指派重要性，以及透過參數指派給要求的系統資源數量 `workload_group` 。
 
 > [!NOTE]
 > 分類是根據每個要求來評估。 單一會話中的多個要求可以不同的分類。
@@ -76,7 +76,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 - 為了測試新的分類語法，資料庫角色 DBARole (哪個 DBAUser 是) 的成員，其已為其建立分類器，將它們對應到 mediumrc 和高重要性。
 - 當 DBAUser 登入並執行查詢時，會將查詢指派給 largerc。 因為使用者優先于角色成員資格。
 
-若要簡化分類誤判的疑難排解，建議您在建立工作負載分類器時，移除資源類別角色對應。  下列程式碼會傳回現有的資源類別角色成員資格。  針對從對應資源類別傳回的每個成員名稱執行 [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 。
+若要簡化分類誤判的疑難排解，建議您在建立工作負載分類器時，移除資源類別角色對應。  下列程式碼會傳回現有的資源類別角色成員資格。  針對從對應資源類別傳回的每個成員名稱執行 [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 。
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -90,9 +90,9 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','st
 sp_droprolemember '[Resource Class]', membername
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-- 如需建立分類器的詳細資訊，請參閱 [建立工作負載分類器 (transact-sql) ](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  
+- 如需建立分類器的詳細資訊，請參閱 [建立工作負載分類器 (transact-sql) ](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。  
 - 請參閱有關如何建立工作負載分類器 [建立工作負載分類器](quickstart-create-a-workload-classifier-tsql.md)的快速入門。
 - 請參閱操作說明文章，以 [設定工作負載的重要性](sql-data-warehouse-how-to-configure-workload-importance.md) ，以及如何 [管理和監視工作負載管理](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)。
-- 請參閱 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 以檢視查詢和所指派的重要性。
+- 請參閱 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 以檢視查詢和所指派的重要性。

@@ -7,12 +7,12 @@ ms.date: 05/06/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: f598ed3e2aef2f53b90b213d0bd1b002f56bd30c
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 19320b8b497202c473f72f4751daf2110a347080
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517745"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676745"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>使用 Azure CLI 設定 Azure 映射產生器服務許可權
 
@@ -41,7 +41,7 @@ Azure Image Builder 需要您建立 [azure 使用者指派的受控識別](../..
 
 下列範例說明如何建立 Azure 使用者指派的受控識別。 取代預留位置設定以設定您的變數。
 
-| 設定 | 描述 |
+| 設定 | Description |
 |---------|-------------|
 | \<Resource group\> | 要在其中建立使用者指派受控識別的資源群組。 |
 
@@ -110,7 +110,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 下列範例會從上一節所述的動作建立 Azure 角色定義。 這些範例會套用至資源群組層級。 評估並測試範例是否夠細微，以滿足您的需求。 針對您的案例，您可能需要將它精簡至特定的共用映射庫。
 
-影像動作允許讀取和寫入。 決定適合您環境的功能。 例如，建立角色以允許 Azure 映射產生器讀取資源群組 *範例-rg-1* 中的映射，並將影像寫入資源群組 *範例-rg-2* 。
+影像動作允許讀取和寫入。 決定適合您環境的功能。 例如，建立角色以允許 Azure 映射產生器讀取資源群組 *範例-rg-1* 中的映射，並將影像寫入資源群組 *範例-rg-2*。
 
 ### <a name="custom-image-azure-role-example"></a>自訂映射 Azure 角色範例
 
@@ -118,7 +118,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 為了簡化範例中的值取代，請先設定下列變數。 取代預留位置設定以設定您的變數。
 
-| 設定 | 描述 |
+| 設定 | Description |
 |---------|-------------|
 | \<Subscription ID\> | 您的 Azure 訂用帳戶 ID |
 | \<Resource group\> | 自訂映射的資源群組 |
@@ -160,7 +160,7 @@ az role assignment create \
 
 為了簡化範例中的值取代，請先設定下列變數。 取代預留位置設定以設定您的變數。
 
-| 設定 | 描述 |
+| 設定 | Description |
 |---------|-------------|
 | \<Subscription ID\> | 您的 Azure 訂用帳戶 ID |
 | \<Resource group\> | VNET 資源群組 |
@@ -227,7 +227,7 @@ az role assignment create \
 
 取代下列預留位置設定：
 
-| 設定 | 描述 |
+| 設定 | Description |
 |---------|-------------|
 | \<Region\> | 範本區域 |
 | \<Resource group\> | 資源群組 |
@@ -236,6 +236,6 @@ az role assignment create \
 
 如需使用使用者指派的受控識別的詳細資訊，請參閱 [建立將使用 Azure User-Assigned 受控識別來完美地存取檔案 Azure 儲存體的自訂映射](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage)。 本快速入門會逐步解說如何建立和設定使用者指派的受控識別，以存取儲存體帳戶。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-如需詳細資訊，請參閱 [Azure 映射](image-builder-overview.md)建立器總覽。
+如需詳細資訊，請參閱 [Azure 映射](../image-builder-overview.md)建立器總覽。

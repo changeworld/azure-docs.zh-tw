@@ -3,12 +3,12 @@ title: 在入口網站中建立 Azure Functions Premium 方案
 description: 瞭解如何使用 Azure 入口網站來建立在 Premium 方案中執行的函數應用程式。
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 20921423247dda3cbb39b58dcc805dac6d367390
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9cab67f096665c9333fa40bcb790896fcbebd8d5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937599"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676581"
 ---
 # <a name="create-a-premium-plan-function-app-in-the-azure-portal"></a>在 Azure 入口網站中建立高階方案函數應用程式
 
@@ -35,4 +35,4 @@ Azure Functions 提供可擴充的高階方案，可提供虛擬網路連線、�
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [新增由 HTTP 觸發的函式](functions-create-first-azure-function.md#create-function)
+> [新增 HTTP 觸發的函數] (./functions-get-started.md

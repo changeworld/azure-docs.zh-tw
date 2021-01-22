@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 343ddb109de41a0959533b16b11762841b5b1105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127136"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676754"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>針對 Azure Windows VM 擴充功能的失敗進行疑難排解
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,7 +85,7 @@ Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomS
 - 以滑鼠右鍵按一下，然後選取 [結束工作]。 此程式將會自動重新開機
 
 
-您也可以執行「重新套用 VM」，以觸發新的 Goalstate 設定至 VM。 VM [重新](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) 套用是在2020中引進的 API，可重新套用 vm 的狀態。 建議您一次執行此操作，以容許短暫的 VM 停機時間。 雖然重新套用本身並不會導致 VM 重新開機，且大部分的呼叫重新套用都不會重新開機 VM，但在重新套用觸發新的目標狀態，而且其他變更可能需要重新開機時，會有極小的風險。 
+您也可以執行「重新套用 VM」，以觸發新的 Goalstate 設定至 VM。 VM [重新](/rest/api/compute/virtualmachines/reapply) 套用是在2020中引進的 API，可重新套用 vm 的狀態。 建議您一次執行此操作，以容許短暫的 VM 停機時間。 雖然重新套用本身並不會導致 VM 重新開機，且大部分的呼叫重新套用都不會重新開機 VM，但在重新套用觸發新的目標狀態，而且其他變更可能需要重新開機時，會有極小的風險。 
 
 Azure 入口網站：
 

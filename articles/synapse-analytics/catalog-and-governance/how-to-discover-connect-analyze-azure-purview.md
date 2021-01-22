@@ -8,23 +8,20 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c6b25fd3615fa76bc76e6d360f4c76a21a9ad02
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 817f9a88bd3536e9c0ec8a1057098e6b4a96716e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918157"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676352"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>使用 Azure 範疇探索、連接及探索 Synapse 中的資料 
-
-> [!IMPORTANT]
-> Azure Synapse Analytics 與 Azure 範疇之間的整合目前為預覽狀態。 如果您想要在 Synapse 中試用 Azure 範疇，請與您的 Microsoft 業務代表交流。 
 
 在本檔中，您將瞭解向 Synapse 註冊 Azure 範疇帳戶時可執行檔互動類型。 
 
 ## <a name="prerequisites"></a>先決條件 
 
-- [Azure 範疇帳戶](../../purview/create-catalog-portal.md) 
+- [Azure Purview 帳戶](../../purview/create-catalog-portal.md) 
 - [Synapse 工作區](../quickstart-create-workspace.md) 
 - [將 Azure 範疇帳戶連線到 Synapse](quickstart-connect-azure-purview.md) 
 
@@ -71,5 +68,5 @@ ms.locfileid: "97918157"
 
 ##  <a name="nextsteps"></a>後續步驟 
 
-- [在 Azure 範疇中註冊和掃描 Azure Synapse 資產](../../purview/register-scan-azure-synapse-analytics.md)
+- [在 Azure Purview 中註冊及掃描 Azure Synapse 資產](../../purview/register-scan-azure-synapse-analytics.md)
 - [如何在 Azure 範疇資料目錄中搜尋資料](../../purview/how-to-search-catalog.md)

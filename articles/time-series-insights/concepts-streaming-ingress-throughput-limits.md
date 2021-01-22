@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 7496a7a40df49fa1b9f8410526cb9ec00c10478b
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 72b78f49ed8b7016b92262de7256492fa6d5d7d1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108767"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676796"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>串流內嵌輸送量限制
 
@@ -96,6 +96,6 @@ Azure 時間序列深入解析 Gen2 目前有 **每個資料分割限制 0.5 MBp
 * [事件中樞規模](../event-hubs/event-hubs-scalability.md#throughput-units)
 * [事件中樞分割區](../event-hubs/event-hubs-features.md#partitions)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入瞭解資料 [儲存體](./concepts-storage.md)

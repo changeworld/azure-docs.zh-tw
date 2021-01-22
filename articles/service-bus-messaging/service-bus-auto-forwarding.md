@@ -2,18 +2,21 @@
 title: 自動轉送 Azure 服務匯流排訊息實體
 description: 本文說明如何將 Azure 服務匯流排的佇列或訂用帳戶連結至另一個佇列或主題。
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/20/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91819574"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678983"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自動轉寄鏈結服務匯流排實體
 
-服務匯流排*自動轉寄*功能可讓您將佇列或訂用帳戶鏈結至另一個屬於相同命名空間的佇列或主題。 啟用自動轉寄後，服務匯流排會自動移除放在第一個佇列或訂用帳戶 (來源) 中的訊息，然後將它們放入第二個佇列或主題 (目的地) 中。 仍有可能將訊息直接傳送至目的地實體。
+服務匯流排 *自動轉寄* 功能可讓您將佇列或訂用帳戶鏈結至另一個屬於相同命名空間的佇列或主題。 啟用自動轉寄後，服務匯流排會自動移除放在第一個佇列或訂用帳戶 (來源) 中的訊息，然後將它們放入第二個佇列或主題 (目的地) 中。 仍有可能將訊息直接傳送至目的地實體。
+
+> [!NOTE]
+> 服務匯流排的基本層不支援自動轉寄功能。 標準層和進階層支援此功能。 如需這些階層之間的差異，請參閱[服務匯流排定價](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 ## <a name="using-autoforwarding"></a>使用自動轉寄
 
@@ -51,11 +54,11 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 服務匯流排會針對每一則轉寄的訊息向一個作業計費。 例如，如果所有第一層訂用帳戶都收到訊息的複本，將訊息傳送至有 20 個訂用帳戶的主題 (其中的每個訂用帳戶都會設定成將訊息自動轉寄至另一個佇列或主題) 會以 21 個作業計費。
 
-若要建立連結至另一個佇列或主題的訂用帳戶，訂用帳戶的建立者必須擁有來源和目的地實體的 **管理** 許可權。 將訊息傳送至來源主題只需要來源主題的**傳送**權限。
+若要建立連結至另一個佇列或主題的訂用帳戶，訂用帳戶的建立者必須擁有來源和目的地實體的 **管理** 許可權。 將訊息傳送至來源主題只需要來源主題的 **傳送** 權限。
 
 請勿建立超過4個躍點的鏈。 超過4個躍點的訊息是不正確字母。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需自動轉寄的詳細資訊，請參閱下列參考主題：
 

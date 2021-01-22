@@ -3,12 +3,12 @@ title: Azure 服務匯流排常見問題集 (FAQ) | Microsoft Docs
 description: 本文提供一些常見問題的解答 (常見問題) Azure 服務匯流排。
 ms.topic: article
 ms.date: 09/16/2020
-ms.openlocfilehash: 576df12a9d53ec3585f8691016cd250bf1ba4be3
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: e5bc9aae081868c92e0968c88c8cb6dcfb8ee57c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98623102"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676369"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排-常見問題 (常見問題) 
 
@@ -119,7 +119,7 @@ Azure 服務匯流排儲存客戶資料。 服務匯流排會自動將此資料�
 指定的 Azure 區域內的任何資料傳輸都是免費提供，以及任何輸入的資料傳輸。 區域外部的資料傳送需要出口流量費用，可以在[這裡](https://azure.microsoft.com/pricing/details/bandwidth/)找到。
 
 ### <a name="does-service-bus-charge-for-storage"></a>服務匯流排是否會收取儲存體費用？
-不可以。 服務匯流排不會收取儲存體費用。 不過，配額會限制每個佇列/主題可保存的最大資料量。 請參閱下一個常見問題。
+不會。 服務匯流排不會收取儲存體費用。 不過，配額會限制每個佇列/主題可保存的最大資料量。 請參閱下一個常見問題。
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有服務匯流排標準命名空間。 為什麼我會在資源群組 ' $system ' 下看見費用？
 Azure 服務匯流排最近升級計費元件。 由於這項變更，如果您有服務匯流排標準命名空間，您可能會在資源群組 ' $system ' 下看到資源 '/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' 的明細專案。
@@ -168,8 +168,10 @@ Select-AzSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
 $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
+## <a name="is-it-possible-to-disable-tls-10-or-11-on-service-bus-namespaces"></a>是否可以停用服務匯流排命名空間上的 TLS 1.0 或1.1？
+不會。 無法停用服務匯流排命名空間上的 TLS 1.0 或1.1。 在連接到服務匯流排的用戶端應用程式中，使用 TLS 1.2 或更新版本。 如需詳細資訊，請參閱 [強制搭配 Azure 服務匯流排使用 TLS 1.2-Microsoft Tech 社區](https://techcommunity.microsoft.com/t5/messaging-on-azure/enforcing-tls-1-2-use-with-azure-service-bus/ba-p/370912)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 若要深入了解服務匯流排，請參閱下列文章：
 
 * [Azure 服務匯流排進階簡介 (部落格文章)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
