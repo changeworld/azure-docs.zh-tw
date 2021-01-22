@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 37e90eeaef9cb8c8e0bd927dd4d733a737c0c47f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881900"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693870"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒體服務 v3 版本資訊
 
@@ -436,7 +436,7 @@ Azure CLI 2.0 模組即將推出，內含所有功能的操作 (包括即時、�
 
 ## <a name="see-also"></a>另請參閱
 
-[從媒體服務 v2 移至 v3 的遷移指導](migrate-from-v2-to-v3.md#known-issues)方針。
+[從媒體服務 v2 移至 v3 的遷移指導](migrate-v-2-v-3-migration-introduction.md)方針。
 
 ## <a name="next-steps"></a>後續步驟
 

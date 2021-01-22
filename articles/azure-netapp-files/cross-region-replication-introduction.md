@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: e51297e8fe5c3dccf43318a066ac5da4a7d24cb2
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937469"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696086"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files 磁片區的跨區域複寫
 
@@ -37,6 +37,7 @@ Azure NetApp Files 磁片區複寫目前提供下列固定區域配對：
 * 美國中南部和美國中部 
 * 美國中南部和美國東部
 * 美國中南部和美國東部2 
+* 美國東部和美國東部2  
 * 美國東部2和美國中部 
 * 澳大利亞東部和澳大利亞東南部
 * 加拿大中部和加拿大東部

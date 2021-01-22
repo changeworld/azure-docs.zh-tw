@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bc6dc5b385a39ddb1c4f1663649ea21e5ed14767
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-ms.translationtype: HT
+ms.openlocfilehash: 4affc2add2822702c1d5395f81efe01eeedf448b
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669307"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696019"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>教學課程：使用 ARM 範本中的條件
 
@@ -31,7 +31,7 @@ ms.locfileid: "97669307"
 本教學課程只會涵蓋使用條件的基本案例。 如需詳細資訊，請參閱
 
 * [範本檔案結構：條件](conditional-resource-deployment.md)。
-* [在 ARM 範本中有條件地部署資源](/azure/architecture/building-blocks/extending-templates/conditional-deploy)。
+* [在 ARM 範本中有條件地部署資源](/azure/architecture/guide/azure-resource-manager/advanced-templates/conditional-deploy)。
 * [範本函式：If](./template-functions-logical.md#if)。
 * [ARM 範本的比較函式](./template-functions-comparison.md)
 

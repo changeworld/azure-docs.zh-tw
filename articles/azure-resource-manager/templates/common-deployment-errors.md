@@ -4,12 +4,12 @@ description: 說明如何解決使用 Azure Resource Manager 將資源部署至 
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: bb701baf164cfd6ba1dd5c670a406343e83c5c70
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 61a306cd36c55a005ee9ebd897fcfc9a6c88d7c9
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622806"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696391"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解
 
@@ -37,7 +37,7 @@ ms.locfileid: "98622806"
 | DeploymentJobSizeExceeded | 簡化您的範本以縮減大小。 | [解決範本大小錯誤](error-job-size-exceeded.md) |
 | DnsRecordInUse | DNS 記錄名稱必須是唯一的。 輸入不同的名稱。 | |
 | ImageNotFound | 檢查 VM 映像設定。 |  |
-| InUseSubnetCannotBeDeleted | 當您嘗試更新資源時，可能會收到此錯誤，並藉由刪除和建立資源來處理要求。 請務必指定所有不變的值。 | [更新資源](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| InUseSubnetCannotBeDeleted | 當您嘗試更新資源時，可能會收到此錯誤，並藉由刪除和建立資源來處理要求。 請務必指定所有不變的值。 | [更新資源](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | 取得適當租用戶的存取權杖。 您只能從您的帳戶所屬的租用戶取得權杖。 | |
 | InvalidContentLink | 您最有可能嘗試連結至無法使用的嵌套範本。 再次確認您為巢狀範本提供的 URI。 如果儲存體帳戶中已有範本，請確定 URI 可存取。 您可能需要傳遞 SAS 權杖。 目前，您無法連結到位於 [Azure 儲存體防火牆](../../storage/common/storage-network-security.md)後方之儲存體帳戶中的範本。 請考慮將您的範本移至另一個存放庫，例如 GitHub。 | [連結的範本](linked-templates.md) |
 | InvalidDeploymentLocation | 在訂用帳戶層級進行部署時，您為先前使用的部署名稱提供不同的位置。 | [訂用帳戶層級部署](deploy-to-subscription.md) |
@@ -64,7 +64,7 @@ ms.locfileid: "98622806"
 | PasswordTooLong | 您可能選取了具有太多字元的密碼，或將密碼值轉換為安全字串，然後再將它當作參數傳遞。 如果範本包含 **安全字串** 參數，則不需要將值轉換為安全字串。 提供密碼值作為文字。 |  |
 | PrivateIPAddressInReservedRange | 指定的 IP 位址包含 Azure 所需的位址範圍。 變更 IP 位址以避免保留的範圍。 | [IP 位址](../../virtual-network/public-ip-addresses.md) |
 | PrivateIPAddressNotInSubnet | 指定的 IP 位址在子網路範圍之外。 變更 IP 位址，使其落在子網路範圍內。 | [IP 位址](../../virtual-network/public-ip-addresses.md) |
-| PropertyChangeNotAllowed | 某些屬性無法在已部署的資源上變更。 更新資源時，將您的變更限制為允許的屬性。 | [更新資源](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| PropertyChangeNotAllowed | 某些屬性無法在已部署的資源上變更。 更新資源時，將您的變更限制為允許的屬性。 | [更新資源](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
 | RequestDisallowedByPolicy | 您的訂用帳戶包含資源原則，可防止您在部署期間嘗試執行的動作。 尋找封鎖動作的原則。 可能的話，請變更您的部署，以符合原則的限制。 | [解析原則](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | 提供不包含保留名稱的資源名稱。 | [唯一的資源名稱](error-reserved-resource-name.md) |
 | ResourceGroupBeingDeleted | 等候刪除完成。 | |

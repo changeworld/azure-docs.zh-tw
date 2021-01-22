@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 9e48d14419e2cd24251f1b00a09fd0289c50c55f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426882"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693802"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>媒體服務 v3 的常見問題
 
@@ -38,7 +38,7 @@ ms.locfileid: "92426882"
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>如何? 串流至 Apple iOS 裝置？
 
-請確定在) URL 的 **/manifest**部分之後，路徑 (** (format = m3u8-m3u8-aapl-v3) ** ，以告知串流源伺服器傳回 HTTP 即時串流 (HLS) 內容以供在 Apple iOS 原生裝置上取用。 如需詳細資訊，請參閱 [傳遞內容](dynamic-packaging-overview.md)。
+請確定在) URL 的 **/manifest** 部分之後，路徑 (**(format = m3u8-m3u8-aapl-v3)** ，以告知串流源伺服器傳回 HTTP 即時串流 (HLS) 內容以供在 Apple iOS 原生裝置上取用。 如需詳細資訊，請參閱 [傳遞內容](dynamic-packaging-overview.md)。
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>如何設定編碼保留單元？
 
@@ -60,7 +60,7 @@ ms.locfileid: "92426882"
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure 媒體服務 v3 尚未提供哪些功能？
 
-如需詳細資訊，請參閱 [與 V2 api 相關的功能差距](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
+如需詳細資訊，請參閱 [遷移指南](migrate-v-2-v-3-migration-introduction.md)。
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>在訂用帳戶之間移動媒體服務帳戶的程式為何？  
 
@@ -109,7 +109,7 @@ PlayReady、Widevine 和 FairPlay 等 DRM 系統都會在用來解密內容的�
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>在使用 JWT 權杖來要求授權或金鑰之前，我該如何取得 JWT 權杖？
 
-在生產環境中，您必須擁有安全的權杖服務 (也就是 web 服務) ，它會在 HTTPS 要求時發出 JWT 權杖。 針對測試，您可以使用 Program.cs 中定義的方法所顯示的程式碼 `GetTokenAsync` 。 [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)
+在生產環境中，您必須擁有安全的權杖服務 (也就是 web 服務) ，它會在 HTTPS 要求時發出 JWT 權杖。 針對測試，您可以使用 Program.cs 中定義的方法所顯示的程式碼 `GetTokenAsync` 。 [](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)
 
 播放程式會在使用者通過驗證之後，對這類權杖提出要求，並將其指派為權杖的值。 您可以使用 [Azure 媒體播放器 API](https://amp.azure.net/libs/amp/latest/docs/)。
 
@@ -169,7 +169,7 @@ ASP.NET 播放器應用程式的最佳做法是使用 HTTPS，因此媒體播放
 
 `AssetFile`概念已從媒體服務 API 中移除，以將媒體服務與儲存體 SDK 相依性分開。 現在 Azure 儲存體（而不是媒體服務）會保留屬於儲存體 SDK 的資訊。 
 
-如需詳細資訊，請參閱[遷移至媒體服務 v3](media-services-v2-vs-v3.md)。
+如需詳細資訊，請參閱[遷移至媒體服務 v3](migrate-v-2-v-3-migration-introduction.md)。
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>用戶端儲存體加密怎麼不見了？
 
@@ -183,7 +183,7 @@ ASP.NET 播放器應用程式的最佳做法是使用 HTTPS，因此媒體播放
 
 #### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>為何在離線模式期間只播放音訊，但不會播放影片呢？
 
-這個行為似乎是範例應用程式的設計使然。 當有替代的音訊播放軌時 (在離線模式期間 HLS) 的情況下，iOS 10 和 iOS 11 都會預設為替代的音訊播放軌。若要彌補 FPS 離線模式的這種行為，請從資料流程中移除替代音訊播放軌。 若要在媒體服務上這麼做，請新增動態資訊清單篩選 **僅限音訊的 = false**。 換句話說，HLS URL 的結尾為 **. ism/資訊清單 (format = m3u8-m3u8-aapl-v3，僅限音訊 = false) **。 
+這個行為似乎是範例應用程式的設計使然。 當有替代的音訊播放軌時 (在離線模式期間 HLS) 的情況下，iOS 10 和 iOS 11 都會預設為替代的音訊播放軌。若要彌補 FPS 離線模式的這種行為，請從資料流程中移除替代音訊播放軌。 若要在媒體服務上這麼做，請新增動態資訊清單篩選 **僅限音訊的 = false**。 換句話說，HLS URL 的結尾為 **. ism/資訊清單 (format = m3u8-m3u8-aapl-v3，僅限音訊 = false)**。 
 
 #### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>當我新增 audio-only=false 之後，為什麼它在離線模式期間仍舊只播放音訊，而不會播放影片呢？
 

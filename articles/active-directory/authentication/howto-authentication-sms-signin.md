@@ -11,16 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43573b54be6884e01121e404370d2e1d85a3c4e8
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d9430066ad92b4d0b69bd07c763e3f7b5d6e889a
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660876"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693531"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>使用 Azure Active Directory 設定及啟用 SMS 驗證的使用者 
 
-為了簡化及保護登入應用程式和服務的安全，Azure Active Directory (Azure AD) 提供多個驗證選項。 以 SMS 為基礎的驗證可讓使用者登入，而不需提供（甚至是知道）其使用者名稱和密碼。 身分識別系統管理員建立帳戶之後，即可在登入提示字元中輸入其電話號碼。 他們會透過可提供的文字訊息接收驗證碼，以完成登入。 此驗證方法會簡化對應用程式和服務的存取，特別是針對前線的員工。
+為了簡化及保護登入應用程式和服務的安全，Azure Active Directory (Azure AD) 提供多個驗證選項。 以 SMS 為基礎的驗證可讓使用者登入，而不需提供（甚至是知道）其使用者名稱和密碼。 身分識別系統管理員建立帳戶之後，即可在登入提示字元中輸入其電話號碼。 他們會透過可提供的文字訊息接收驗證碼，以完成登入。 此驗證方法可簡化應用程式和服務的存取，特別是針對 Frontline 背景工作。
 
 本文說明如何針對 Azure AD 中選取的使用者或群組啟用 SMS 型驗證。
 

@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 061d66f08e79f935c778eb84dd47f71cab1a62d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ddd31f96ca88a02fa667f8809a00e2a4e3ecc50
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266624"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695419"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>使用 Azure 入口網站設定內容保護原則
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 媒體服務 v2 未新增任何新功能或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 媒體服務 v2 未新增任何新功能或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 >
 
  您可以透過 Azure 媒體服務來保護媒體從離開電腦到進行儲存、處理和傳遞時的安全。 您可以利用媒體服務傳遞，使用進階加密標準 (AES) (使用 128 位元加密金鑰) 所動態加密的內容。 您也可以將它與一般加密 (CENC) 搭配使用，方法是使用 PlayReady 和/或 Widevine 數位版權管理 (DRM) 和 Apple FairPlay。 
@@ -76,7 +76,7 @@ PlayReady 授權範本會設定已在您的 PlayReady 授權上啟用的功能�
 Widevine 授權範本會設定已在您 Widevine 授權上啟用的功能。
 
 ### <a name="basic"></a>基本
-當您選取 [基本] **** 時，會使用所有預設值來建立範本。
+當您選取 [基本] 時，會使用所有預設值來建立範本。
 
 ### <a name="advanced"></a>進階
 如需 Widevine 權限範本的詳細資訊，請參閱 [Widevine 授權範本概觀](media-services-widevine-license-template-overview.md)。
@@ -84,7 +84,7 @@ Widevine 授權範本會設定已在您 Widevine 授權上啟用的功能。
 ![進階內容保護](./media/media-services-portal-content-protection/media-services-content-protection005.png)
 
 ## <a name="fairplay-configuration"></a>FairPlay 組態
-若要啟用 FairPlay 加密，請選取 **FairPlay 設定**。 然後選取**應用程式憑證**，並輸入**應用程式秘密金鑰**。 如需 FairPlay 設定和需求的詳細資訊，請參閱[使用 Apple FairPlay 或 Microsoft PlayReady 保護 HLS 內容](media-services-protect-hls-with-FairPlay.md)。
+若要啟用 FairPlay 加密，請選取 **FairPlay 設定**。 然後選取 **應用程式憑證**，並輸入 **應用程式秘密金鑰**。 如需 FairPlay 設定和需求的詳細資訊，請參閱[使用 Apple FairPlay 或 Microsoft PlayReady 保護 HLS 內容](media-services-protect-hls-with-FairPlay.md)。
 
 ![FairPlay 組態](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
@@ -97,7 +97,7 @@ Widevine 授權範本會設定已在您 Widevine 授權上啟用的功能。
 ![資產選項](./media/media-services-portal-content-protection/media-services-content-protection007.png)
 
 ### <a name="encrypt-with-aes-or-drm"></a>使用 AES 或 DRM 加密
-當您針對資產選取 [加密]**** 時，會看到兩個選擇：**AES** 或 **DRM**。 
+當您針對資產選取 [加密] 時，會看到兩個選擇：**AES** 或 **DRM**。 
 
 #### <a name="aes"></a>AES
 AES 清除金鑰加密會在所有串流通訊協定上啟用︰Smooth Streaming、HLS 和 MPEG DASH。
@@ -117,11 +117,11 @@ AES 清除金鑰加密會在所有串流通訊協定上啟用︰Smooth Streaming
     
     e. **FairPlay 僅與 HLS** 會使用 FairPlay 將您的 HLS 串流動態加密。
 
-1. 若要啟用 FairPlay 加密，請在 [內容保護全域設定]**** 刀鋒視窗中選取 [FairPlay 設定]****。 然後選取應用程式 **憑證**，並輸入 **應用程式秘密金鑰**。
+1. 若要啟用 FairPlay 加密，請在 [內容保護全域設定] 刀鋒視窗中選取 [FairPlay 設定]。 然後選取應用程式 **憑證**，並輸入 **應用程式秘密金鑰**。
 
     ![加密類型](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
-1. 您進行加密選取後，請選取 [套用]****。
+1. 您進行加密選取後，請選取 [套用]。
 
 >[!NOTE] 
 >如果您計劃在 Safari 中播放 AES 加密的 HLS，請參閱 [Safari 中加密的 HLS](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)。

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f04e2aa97cafe2345918e433bcef5e719cee7483
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: eaba099725530f24dcd6aa5da7eb59cb233efd46
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610160"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695640"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 觸發程序
 
@@ -749,6 +749,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 }
 ```
 
+當您使用路由參數時，系統會 `invoke_URL_template` 自動為您的函式建立。 您的用戶端可以使用 URL 範本，來瞭解在使用 url 呼叫您的函式時，必須在 URL 中傳入的參數。 流覽至 [Azure 入口網站](https://portal.azure.com) 中的其中一個 HTTP 觸發函數，然後選取 [ **取得** 函式 URL]。
+
+您可以 `invoke_URL_template` 使用 [清單函數](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) 或 [Get 函數](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction)的 Azure Resource Manager api，以程式設計方式存取。
+
 ## <a name="working-with-client-identities"></a>使用用戶端身分識別
 
 如果您的函式應用程式使用 [App Service 驗證/授權](../app-service/overview-authentication-authorization.md)，您可以透過程式碼來檢視已驗證的用戶端相關資訊。 這項資訊是以[由平台插入的要求標頭](../app-service/app-service-authentication-how-to.md#access-user-claims)形式提供。
@@ -846,11 +850,17 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="obtaining-keys"></a>取得金鑰
 
-金鑰會當作您函數應用程式的一部分儲存於 Azure 中，並在加密後靜置。 若要檢視您的金鑰，請建立新的金鑰或將金鑰輪替為新的值，瀏覽至您在 [Azure 入口網站](https://portal.azure.com)中的其中一個 HTTP 觸發函式，然後選取 [管理]。
+金鑰會當作您函數應用程式的一部分儲存於 Azure 中，並在加密後靜置。 若要查看您的金鑰、建立新的金鑰或將金鑰輪替至新的值，請流覽至 [Azure 入口網站](https://portal.azure.com) 中的其中一個 HTTP 觸發函式，然後選取 [函式 **金鑰**]。
 
-![在入口網站中管理函式金鑰。](./media/functions-bindings-http-webhook/manage-function-keys.png)
+您也可以管理主機金鑰。 流覽至 [Azure 入口網站](https://portal.azure.com) 中的函數應用程式，然後選取 [ **應用程式金鑰**]。
 
-您可以使用[金鑰管理 API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)，以程式設計方式取得函式金鑰。
+您可以使用 Azure Resource Manager Api，以程式設計方式取得函數和主機金鑰。 有一些 Api 可 [列出](/rest/api/appservice/webapps/listfunctionkeys) 函式索引鍵和 [清單主機金鑰](/rest/api/appservice/webapps/listhostkeys)，而使用部署位置時，對等的 Api 是 [清單功能金鑰](/rest/api/appservice/webapps/listfunctionkeysslot) 位置和 [清單主機金鑰](/rest/api/appservice/webapps/listhostkeysslot)位置。
+
+您也可以使用 [Create 或 Update Function secret](/rest/api/appservice/webapps/createorupdatefunctionsecret)、create [或 update function secret](/rest/api/appservice/webapps/createorupdatefunctionsecretslot)位置、建立或更新 [主機密碼](/rest/api/appservice/webapps/createorupdatehostsecret) ，以及建立或 [更新主機秘密](/rest/api/appservice/webapps/createorupdatehostsecretslot) 位置 api，以程式設計方式建立新的函式和主機金鑰。
+
+您可以使用 [刪除功能秘密](/rest/api/appservice/webapps/deletefunctionsecret)、 [刪除函數秘密](/rest/api/appservice/webapps/deletefunctionsecretslot)位置、 [刪除主機密碼](/rest/api/appservice/webapps/deletehostsecret)，以及 [刪除主機秘密](/rest/api/appservice/webapps/deletehostsecretslot) 位置 api，以程式設計方式刪除函式和主機金鑰。
+
+您也可以使用 [舊版金鑰管理 api 來取得](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)函式金鑰，但建議改用 Azure Resource Manager api。
 
 ## <a name="api-key-authorization"></a>API 金鑰授權
 

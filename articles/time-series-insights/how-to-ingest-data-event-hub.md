@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 7d672da30a4d81ead9115fc6b829c35aeab3ee6a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f4b5d4915cd6520edd7a45af85a836c3360eee32
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016814"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696324"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>將事件中樞事件來源新增至您的 Azure 時間序列深入解析環境
 
@@ -50,7 +50,7 @@ ms.locfileid: "95016814"
 
 1. 在 [取用者群組] 頁面上，在 [名稱] 中輸入新的唯一值。  當您在 Azure 時間序列深入解析環境中建立新的事件來源時，請使用相同的名稱。
 
-1. 選取 [建立]。
+1. 選取 [建立]  。
 
 ## <a name="add-a-new-event-source"></a>新增事件來源
 
@@ -88,7 +88,7 @@ ms.locfileid: "95016814"
 
        下表說明 [手動提供事件中樞設定] 選項的必要屬性：
 
-       | 屬性 | 說明 |
+       | 屬性 | 描述 |
        | --- | --- |
        | 訂用帳戶識別碼 | 所需的事件中樞實例和命名空間所屬的訂用帳戶。 |
        | 資源群組 | 所需事件中樞實例和命名空間所屬的資源群組。 |
@@ -99,7 +99,7 @@ ms.locfileid: "95016814"
 
    - 這兩個選項都會共用下列設定選項：
 
-       | 屬性 | 說明 |
+       | 屬性 | 描述 |
        | --- | --- |
        | 事件中樞取用者群組 | 從事件中樞讀取事件的取用者群組。 強烈建議您使用專屬於您事件來源的取用者群組。 |
        | 事件序列化格式 | 目前，JSON 是目前唯一可用的序列化格式。 事件訊息必須是這種格式，否則無法讀取資料。 |
@@ -107,11 +107,11 @@ ms.locfileid: "95016814"
 
 1. 新增您新增至事件中樞的專用 Azure 時間序列深入解析取用者組名。
 
-1. 選取 [建立]。
+1. 選取 [建立]  。
 
    建立事件來源之後，Azure 時間序列深入解析會自動開始將資料串流至您的環境。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [定義資料存取原則](./concepts-access-policies.md)來保護資料。
 

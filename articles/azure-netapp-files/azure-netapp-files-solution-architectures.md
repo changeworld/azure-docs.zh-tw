@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: f50cde2fa67351552d1f31500da09a5f800b2bcc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4320222e02f3447dcdff280f04ad26115323e798
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600120"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696139"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp Files 的方案架構
 本文提供最佳作法的參考，可協助您瞭解使用 Azure NetApp Files 的解決方案架構。  
@@ -92,6 +92,10 @@ ms.locfileid: "98600120"
 * [Azure NetApp Files-SAP Hana 卸載雲端同步的備份](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [使用 Azure NetApp Files 加速 SAP Hana 系統複製](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [雲端磁片區 ONTAP 和 Azure NetApp Files：簡化了 SAP Hana 系統移轉](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+
+## <a name="azure-vmware-solutions"></a>Azure VMware 解決方案
+
+* [使用 Azure VMware 解決方案的 azure NetApp Files-來賓 OS 裝載](../azure-vmware/net-app-files-with-azure-vmware-solution.md)
 
 ## <a name="virtual-desktop-infrastructure-solutions"></a>虛擬桌面基礎結構解決方案
 

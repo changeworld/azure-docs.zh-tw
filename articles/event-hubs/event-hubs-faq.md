@@ -2,13 +2,13 @@
 title: 常見問題集 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供 Azure 事件中樞的常見問題集 (FAQ) 清單及其答案。
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/20/2021
+ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955411"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696103"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>事件中樞常見問題集
 
@@ -55,8 +55,8 @@ Azure 事件中樞的標準層提供比基本層更多的功能。 標準層包�
 ### <a name="how-do-i-monitor-my-event-hubs"></a>如何監視事件中樞？
 事件中樞會發出詳盡的計量，以便將您的資源狀態提供給 [Azure 監視器](../azure-monitor/overview.md)。 它們也可以讓您存取事件中樞服務的整體健康情況 (不僅是在命名空間層級，還包括在實體層級)。 了解針對 [Azure 事件中樞](event-hubs-metrics-azure-monitor.md)所提供的監視功能。
 
-### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure 事件中樞儲存客戶資料的位置為何？
-Azure 事件中樞儲存客戶資料。 事件中樞會自動將此資料儲存在單一區域中，因此這項服務會自動滿足區域資料落地需求，包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)內指定的需求。
+### <a name="where-does-azure-event-hubs-store-data"></a><a name="in-region-data-residency"></a>Azure 事件中樞將資料儲存在哪裡？
+Azure 事件中樞標準和專用層會將中繼資料和資料儲存在您選取的區域中。 針對 Azure 事件中樞命名空間設定異地災難復原時，中繼資料會複製到您選取的次要區域。 因此，此服務會自動滿足區域資料落地需求，包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)內指定的需求。
 
 [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 

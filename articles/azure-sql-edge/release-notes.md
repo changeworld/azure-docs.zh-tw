@@ -10,16 +10,31 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: c18cb1cef9b46b4b3cd2f614945f98abf9de7c58
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e078fb91b3279b6f4321cd51dfb094f82bbe5f14
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704345"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696374"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 版本資訊 
 
 本文說明新功能，以及 Azure SQL Edge 每個新組建的變更內容。
+
+## <a name="azure-sql-edge-102"></a>Azure SQL Edge 1.0。2
+
+SQL 引擎組建15.0.2000.1554
+
+### <a name="fixes"></a>修正
+
+- T-sql 串流  
+   - 修正串流物件的擁有權和許可權
+   - 記錄檔輪替和記錄前置記錄的改進
+   - Azure 串流分析：記錄改良功能，改善介面卡中的錯誤碼/錯誤訊息 
+
+- ONNX
+    - 平行查詢案例和模型清除失敗的 Bug 修正
+    - 已將 ONNX 執行時間升級至1.5。1
 
 ## <a name="azure-sql-edge-101"></a>Azure SQL Edge 1.0。1
 
@@ -93,7 +108,7 @@ SQL 引擎組建15.0.2000.1549
 ## <a name="ctp-22"></a>CTP 2.2
 SQL 引擎組建15.0.2000.1546
 ### <a name="whats-new"></a>新功能
-- 非根容器的支援 
+- 支援非根容器 
 - 使用方式和診斷資料收集的支援 
 - T-sql 串流更新：
    - 支援資料流程物件名稱的 Unicode 字元

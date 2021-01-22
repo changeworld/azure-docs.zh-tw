@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 83e9b0278e99867cafa7e633bc382e490ec273c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9f1dc0ce303b45ad2d43c0c9365edc197f7d8e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250518"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695589"
 ---
 # <a name="upload-files-into-a-media-services-account-using-net"></a>使用 .NET 將檔案上傳至媒體服務帳戶
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
-在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。 **資產**實體可包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案 (以及這些檔案的相關中繼資料。 ) 檔案上傳之後，您的內容就會安全地儲存在雲端，以供進一步處理和串流處理。
+在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。 **資產** 實體可包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案 (以及這些檔案的相關中繼資料。 ) 檔案上傳之後，您的內容就會安全地儲存在雲端，以供進一步處理和串流處理。
 
 資產中的檔案稱為 **資產檔案**。 **AssetFile** 執行個體和實際媒體檔是兩個不同的物件。 AssetFile 執行個體包含媒體檔案的相關中繼資料，而媒體檔案包含實際的媒體內容。
 
@@ -37,7 +37,7 @@ ms.locfileid: "91250518"
 
 您必須考量下列事項：
  
- * 當建立串流 (內容的 Url 時，媒體服務會使用 IAssetFile.Name 屬性的值，例如，HTTP：//{Amsaccount .origin.mediaservices.windows.net} windowsazure.mediaservices.. IAssetFile/{GUID}/{. Name}/streamingParameters。 ) 基於這個原因，不允許使用百分比編碼。 **Name** 屬性的值不能有下列任何[百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 而且，副檔名只能有一個 '.'。
+ * 當建立串流 (內容的 Url 時，媒體服務會使用 IAssetFile.Name 屬性的值，例如，HTTP：//{Amsaccount .origin.mediaservices.windows.net} windowsazure.mediaservices.. IAssetFile/{GUID}/{. Name}/streamingParameters。 ) 基於這個原因，不允許使用百分比編碼。 **Name** 屬性的值不能有下列任何 [百分比編碼保留字元](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 而且，副檔名只能有一個 '.'。
 * 名稱長度不應超過 260 個字元。
 * 對於在媒體服務處理檔案，支援的檔案大小有上限。 請參閱[這篇](media-services-quotas-and-limitations.md)文章，以取得有關檔案大小限制的詳細資料。
 * 對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 如需詳細資訊，請參閱[本篇文章](media-services-dotnet-manage-entities.md#limit-access-policies)。
@@ -56,7 +56,7 @@ ms.locfileid: "91250518"
 
 如果您指定使用 **CommonEncrypted** 選項或 **EnvelopeEncrypted** 選項加密資產，則需要建立資產與 **ContentKey** 的關聯。 如需詳細資訊，請參閱 [如何建立 ContentKey](media-services-dotnet-create-contentkey.md)。 
 
-如果您指定使用 **StorageEncrypted** 選項來加密資產，則 Media Services SDK for .NET 會建立資產的 **StorageEncrypted 和 ** **ContentKey**。
+如果您指定使用 **StorageEncrypted** 選項來加密資產，則 Media Services SDK for .NET 會建立資產的 **StorageEncrypted 和** **ContentKey**。
 
 本文顯示如何使用 Media Services .NET SDK 以及 Media Services .NET SDK 擴充功能，以將檔案上傳到媒體服務資產。
 
@@ -167,7 +167,7 @@ ms.locfileid: "91250518"
 上傳大量資產時，請考慮下列項目：
 
 * 為每個執行緒建立新的 **CloudMediaContext** 物件。 **CloudMediaContext** 類別不具備執行緒安全。
-* 將 NumberOfConcurrentTransfers 從預設值 2 增加為較高的值 (例如 5)。 設定此屬性會影響所有 **CloudMediaContext**執行個體。 
+* 將 NumberOfConcurrentTransfers 從預設值 2 增加為較高的值 (例如 5)。 設定此屬性會影響所有 **CloudMediaContext** 執行個體。 
 * 將 ParallelTransferThreadCount 保持為預設值 10。
 
 ## <a name="ingesting-assets-in-bulk-using-media-services-net-sdk"></a><a id="ingest_in_bulk"></a>使用媒體服務 .NET SDK 大量擷取資產
@@ -239,7 +239,7 @@ IngestManifestAsset 會建立資產與大量 IngestManifest 的關聯，以進�
 
 輪詢 **IngestManifest** 的 Statistics 屬性，即可判斷與 **IngestManifest** 相關聯之所有資產的大量內嵌進度。 若要更新進度資訊，每次輪詢 Statistics 屬性時，都必須使用新的 **CloudMediaContext** 。
 
-下列範例示範如何依 **Id**輪詢 IngestManifest。
+下列範例示範如何依 **Id** 輪詢 IngestManifest。
 
 ```csharp
     static void MonitorBulkManifest(string manifestID)

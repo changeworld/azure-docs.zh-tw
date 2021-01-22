@@ -6,12 +6,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 9fe1aaed58d6069cd583f8607f7bd6332f97674e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0b4356c74b2e0c1494456d5d1082efd7b8953a15
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019885"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693370"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 串流分析 CI/CD NuGet 套件進行整合和開發 
 本文說明如何使用 Azure 串流分析 CI/CD NuGet 套件來設定持續整合和部署程式。
@@ -51,7 +51,7 @@ parameters.json 檔案中的預設參數來自 Visual Studio 專案中的設定�
       "value": null
     },
 ```
-深入了解如何[使用 Resource Manager 範本檔案和 Azure PowerShell 部署](../azure-resource-manager/templates/deploy-powershell.md)。 深入了解如何[在 Resource Manager 範本中使用物件作為參數](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)。
+深入了解如何[使用 Resource Manager 範本檔案和 Azure PowerShell 部署](../azure-resource-manager/templates/deploy-powershell.md)。 深入了解如何[在 Resource Manager 範本中使用物件作為參數](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters)。
 
 若要使用 Azure Data Lake Store Gen1 的受控識別作為輸出接收端，您必須在部署至 Azure 之前，使用 PowerShell 提供服務主體的存取權。 深入了解如何[使用 Resource Manager 範本部署具有受控識別的 ADLS Gen1](stream-analytics-managed-identities-adls.md#resource-manager-template-deployment)。
 

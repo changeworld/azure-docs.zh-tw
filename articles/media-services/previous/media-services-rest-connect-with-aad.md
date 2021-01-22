@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 8bea4c049c3d7ea17e173f069a3e99cbcca1fe48
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 28719046c9a8ccc65d231244ef8b5b3f8e116282
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041990"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694725"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>使用 Azure AD 驗證搭配 REST 存取媒體服務 API
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 使用 Azure AD 驗證搭配 Azure 媒體服務時，您可以下列其中一種方式進行驗證：
 
@@ -36,7 +36,7 @@ ms.locfileid: "93041990"
     本教學課程會示範如何使用 Azure AD **服務主體** 驗證來存取使用 REST 的 AMS API。 
 
     > [!NOTE]
-    > 對於大部分連線到 Azure 媒體服務的應用程式， **服務主體** 是建議的最佳做法。 
+    > 對於大部分連線到 Azure 媒體服務的應用程式，**服務主體** 是建議的最佳做法。 
 
 在本教學課程中，您會了解如何：
 
@@ -49,14 +49,14 @@ ms.locfileid: "93041990"
 > [!IMPORTANT]
 > 目前，媒體服務支援 Azure 存取控制服務驗證模型。 不過，存取控制驗證將在 2018 年 6 月 1 日被取代。 建議您儘速移轉至 Azure AD 驗證模型。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - [使用 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
 - 請先複習[使用 Azure AD 驗證存取 Azure 媒體服務 API 概觀](media-services-use-aad-auth-to-access-ams-api.md)一文。
 - 安裝 [Postman](https://www.getpostman.com/) \(英文\) REST 用戶端，來執行在本文中示範的 REST API。 
 
-    在此教學課程中，我們使用的是 **Postman** ，但任何 REST 工具都適用。 其他替代方案為：搭配 REST 外掛程式的 **Visual Studio Code** ，或 **Telerik Fiddler** 。 
+    在此教學課程中，我們使用的是 **Postman**，但任何 REST 工具都適用。 其他替代方式為：搭配 REST 外掛程式的 **Visual Studio Code**，或 **Telerik Fiddler**。 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>從 Azure 入口網站取得驗證資訊
 
@@ -77,7 +77,7 @@ ms.locfileid: "93041990"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 瀏覽至您的 AMS 執行個體。
-3. 選取 [ **API 存取** ]。
+3. 選取 [ **API 存取**]。
 4. 按一下 [使用服務主體連線到 Azure 媒體服務 API]。
 
     ![顯示從右窗格中選取 [媒體服務] 功能表和 [連接到 Azure 媒體服務 A P I with service principal] 的螢幕擷取畫面。](./media/connect-with-rest/connect-with-rest01.png)
@@ -101,7 +101,7 @@ ms.locfileid: "93041990"
 6. 取得 **用戶端識別碼** (應用程式識別碼)。
     
    1. 選取應用程式。
-   2. 從右側視窗取得 **用戶端識別碼** 。 
+   2. 從右側視窗取得 **用戶端識別碼**。 
 
       ![顯示已選取 [Azure A D 應用程式] 和 [管理應用程式] 的螢幕擷取畫面，並在右窗格中反白顯示 [用戶端 I D]。](./media/connect-with-rest/existing-client-id.png)
 
@@ -111,7 +111,7 @@ ms.locfileid: "93041990"
    2. 按 [金鑰]。
     
        ![顯示已選取 [管理應用程式] 按鈕的螢幕擷取畫面，中間窗格中的 [應用程式 I D] 已反白顯示，並在右窗格中選取 [金鑰]。](./media/connect-with-rest/manage-app.png)
-   3. 產生應用程式金鑰 (用戶端秘密)，方法是填入 **DESCRIPTION** 和 **EXPIRES** ，然後按 [儲存]。
+   3. 產生應用程式金鑰 (用戶端秘密)，方法是填入 **DESCRIPTION** 和 **EXPIRES**，然後按 [儲存]。
     
        一旦按下 [儲存] 按鈕後，隨即出現金鑰值。 離開刀鋒視窗之前，請複製金鑰值。
 
@@ -124,11 +124,11 @@ ms.locfileid: "93041990"
 
 ## <a name="get-the-access-token-using-postman"></a>使用 Postman 取得存取權杖
 
-本節示範如何使用 **Postman** 來執行 REST API，從而傳回 JWT 持有人權杖 (存取權杖)。 若要呼叫任何媒體服務 REST API，您必須將「授權」標頭新增至呼叫，並將 "Bearer *your_access_token* " 的值新增至每個呼叫 (如本教學課程的下一節所示)。 
+本節示範如何使用 **Postman** 來執行 REST API，從而傳回 JWT 持有人權杖 (存取權杖)。 若要呼叫任何媒體服務 REST API，您必須將「授權」標頭新增至呼叫，並將 "Bearer *your_access_token*" 的值新增至每個呼叫 (如本教學課程的下一節所示)。 
 
-1. 開啟 **Postman** 。
+1. 開啟 **Postman**。
 2. 選取 [POST]  。
-3. 輸入 URL，其中包含您的租用戶名稱，且使用下列格式：租用戶名稱結尾應為 **.onmicrosoft.com** ，且 URL 結尾應為 **oauth2/token** ： 
+3. 輸入 URL，其中包含您的租用戶名稱，且使用下列格式：租用戶名稱結尾應為 **.onmicrosoft.com**，且 URL 結尾應為 **oauth2/token**： 
 
     `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
@@ -162,14 +162,14 @@ ms.locfileid: "93041990"
 
     ![顯示 [貼文] 文字方塊、[標頭] 和 [主體] 索引標籤和 [access_token] 的螢幕擷取畫面，並已偵測到 [傳送] 按鈕。](./media/connect-with-rest/connect-with-rest04.png)
 
-傳回的回應包含您存取任何 AMS API 時所需使用的 **存取權杖** 。
+傳回的回應包含您存取任何 AMS API 時所需使用的 **存取權杖**。
 
 ## <a name="test-the-assets-api-using-the-access-token"></a>使用存取權杖來測試 **資產** API
 
 本節示範如何使用 **Postman** 存取 **資產** API。
 
-1. 開啟 **Postman** 。
-2. 選取 [ **取得** ]。
+1. 開啟 **Postman**。
+2. 選取 [ **取得**]。
 3. 貼上 REST API 端點 (例如 https://amshelloworld.restv2.westus.media.azure.net/api/Assets)
 4. 選取 [授權] 索引標籤。 
 5. 選取 [持有人權杖]。

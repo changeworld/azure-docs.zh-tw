@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3d6c494232456b4819c9275d66fa6f7ab5de9b77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2ac03f600f57ae97cebb77e3b67bcd466955d0b
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89260725"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695402"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>利用 Azure 入口網站開始使用 Azure AD 驗證
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 了解如何使用 Azure 入口網站存取 Azure Active Directory (Azure AD) 驗證，以存取 Azure 媒體服務 API。
 
@@ -53,7 +53,7 @@ ms.locfileid: "89260725"
 
 ### <a name="manage-your-azure-ad-app-and-secret"></a>管理您的 Azure AD 應用程式及祕密
 
-**管理您的 AAD 應用程式和祕密**區段可讓您選取或建立新的 Azure AD 應用程式，並產生秘密。 基於安全性考量，關閉刀鋒視窗後即無法顯示祕密。 應用程式會使用應用程式識別碼和祕密來進行驗證，以取得媒體服務的有效權杖。
+**管理您的 AAD 應用程式和祕密** 區段可讓您選取或建立新的 Azure AD 應用程式，並產生秘密。 基於安全性考量，關閉刀鋒視窗後即無法顯示祕密。 應用程式會使用應用程式識別碼和祕密來進行驗證，以取得媒體服務的有效權杖。
 
 請確定您有足夠的權限，可以使用 Azure AD 租用戶註冊應用程式，並將應用程式指派至 Azure 訂用帳戶中的角色。 如需詳細資訊，請參閱[必要權限](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。
 
@@ -67,7 +67,7 @@ ms.locfileid: "89260725"
 
 ### <a name="connect-to-media-services-api"></a>連線到媒體服務 API
 
-複製您的認證，以將使用者應用程式從**連線到媒體服務 API**區段連線。 您可以取得文字值，或複製 JSON 或 XML 區塊。
+複製您的認證，以將使用者應用程式從 **連線到媒體服務 API** 區段連線。 您可以取得文字值，或複製 JSON 或 XML 區塊。
 
 ## <a name="next-steps"></a>後續步驟
 

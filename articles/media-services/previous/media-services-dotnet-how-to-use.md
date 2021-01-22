@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8eb45397b1941b9a6955066c22d6d9d00eeef4c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dda7849b6a5e22eea4891eacb2678b4c500dc1e1
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262085"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693658"
 ---
 # <a name="media-services-development-with-net"></a>使用 .NET 進行媒體服務開發
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 本文章討論如何使用 .NET 開始開發媒體服務應用程式。
 
@@ -56,19 +56,19 @@ ms.locfileid: "89262085"
 
     2. [管理 NuGet 封裝] 對話方塊隨即出現。
 
-    3. 在線上資源庫中，搜尋「Azure MediaServices 擴充功能」，選擇 [Azure Media Services .NET SDK 擴充功能]**** \(**windowsazure.mediaservices.extensions**)，然後按一下 [安裝]**** 按鈕。
+    3. 在線上資源庫中，搜尋「Azure MediaServices 擴充功能」，選擇 [Azure Media Services .NET SDK 擴充功能] \(**windowsazure.mediaservices.extensions**)，然後按一下 [安裝] 按鈕。
    
     4. 會修改專案，並新增 Media Services .NET SDK 延伸模組、Media Services .NET SDK 和其他相依組件的參考。
 4. 若要提升更乾淨的開發環境，請考慮啟用 [NuGet 封裝還原]。 如需詳細資訊，請參閱 [NuGet 封裝還原](https://docs.nuget.org/consume/package-restore)。
-5. 加入 **System.Configuration** 組件的參考。 此元件包含 System.Configuration。用來存取設定檔的**ConfigurationManager** 類別 (例如 App.config) 。
+5. 加入 **System.Configuration** 組件的參考。 此元件包含 System.Configuration。用來存取設定檔的 **ConfigurationManager** 類別 (例如 App.config) 。
    
-    1. 若要使用 [管理參考] 對話方塊新增參考，請以滑鼠右鍵按一下 [方案總管] 中的專案名稱。 接著，按一下 [新增]****，然後按一下 [參考]****。
+    1. 若要使用 [管理參考] 對話方塊新增參考，請以滑鼠右鍵按一下 [方案總管] 中的專案名稱。 接著，按一下 [新增]，然後按一下 [參考]。
    
     2. [管理參考] 對話方塊隨即出現。
-    3. 在 .NET Framework 組件底下，尋找並選取 System.Configuration 組件，然後按 [確定]****。
+    3. 在 .NET Framework 組件底下，尋找並選取 System.Configuration 組件，然後按 [確定]。
 6. 開啟 App.config 檔案並將 **appSettings** 區段新增至檔案。 設定連接媒體服務 API 時所需的值。 如需詳細資訊，請參閱[使用 Azure AD 驗證存取 Azure 媒體服務 API](media-services-use-aad-auth-to-access-ams-api.md)。 
 
-    設定使用**服務主體**驗證方法連接時所需的值。
+    設定使用 **服務主體** 驗證方法連接時所需的值。
 
     ```xml
     <configuration>

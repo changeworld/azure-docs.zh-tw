@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: dc08e23b6ef040ba5833ffa97f71d8cd1da3bb8a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 3f9fc9fd1bacce8733949969b496dc03d6c10901
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019795"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695812"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒體服務 v3 進行即時串流
 
@@ -56,13 +56,13 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 ## <a name="live-event-types"></a>即時事件類型
 
-[實況活動](/rest/api/media/liveevents) 負責擷取和處理即時影片摘要。 即時事件可設定為*傳遞* (內部部署即時編碼器會傳送多重位元速率串流) 或*即時編碼* (內部部署即時編碼器會傳送單一位元速率串流)。 如需媒體服務 v3 中即時串流的詳細資訊，請參閱 [即時事件和即時輸出](live-events-outputs-concept.md)。
+[實況活動](/rest/api/media/liveevents) 負責擷取和處理即時影片摘要。 即時事件可設定為 *傳遞* (內部部署即時編碼器會傳送多重位元速率串流) 或 *即時編碼* (內部部署即時編碼器會傳送單一位元速率串流)。 如需媒體服務 v3 中即時串流的詳細資訊，請參閱 [即時事件和即時輸出](live-events-outputs-concept.md)。
 
 ### <a name="pass-through"></a>傳遞
 
 ![此圖顯示如何內嵌和處理來自傳遞實況活動的影片和音訊摘要。](./media/live-streaming/pass-through.svg)
 
-使用傳遞 **實況**活動時，您會依賴內部部署即時編碼器來產生多位元率的影片串流，並使用 RTMP 或分散的輸入通訊協定) ，將該串流作為投稿摘要傳送給實況活動 (。 實況活動接著會透過連入影片串流傳送至動態封裝 (串流端點) ，而不需要任何進一步的轉碼。 這類的傳遞實況活動已針對長時間執行的即時活動或24x365 線性即時串流進行優化。 
+使用傳遞 **實況** 活動時，您會依賴內部部署即時編碼器來產生多位元率的影片串流，並使用 RTMP 或分散的輸入通訊協定) ，將該串流作為投稿摘要傳送給實況活動 (。 實況活動接著會透過連入影片串流傳送至動態封裝 (串流端點) ，而不需要任何進一步的轉碼。 這類的傳遞實況活動已針對長時間執行的即時活動或24x365 線性即時串流進行優化。 
 
 ### <a name="live-encoding"></a>即時編碼  
 
@@ -97,7 +97,7 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 6. 建立 **即時輸出** ，並使用您建立的資產名稱，讓串流可以封存到資產中。
 
     「實況輸出」會在建立時開始，並在刪除時結束。 當您刪除即時輸出時，不會刪除資產中的基礎資產和內容。
-7. 使用[內建的串流原則類型](streaming-policy-concept.md)建立**串流定位器**。
+7. 使用 [內建的串流原則類型](streaming-policy-concept.md)建立 **串流定位器**。
 
     若要發佈即時輸出，您必須建立相關聯資產的串流定位器。 
 8. 列出 **串流定位器** 上的路徑，以取得要使用的 url (這些都是具決定性的) 。
@@ -135,4 +135,4 @@ Azure 媒體服務可讓您在 Azure 雲端上將實況活動傳遞給客戶。 
 
 * [即時串流快速入門](live-events-wirecast-quickstart.md)
 * [即時串流教學課程](stream-live-tutorial-with-api.md)
-* [從媒體服務 v2 移動至 v3 的移轉指導](migrate-from-v2-to-v3.md)
+* [從媒體服務 v2 移動至 v3 的移轉指導](migrate-v-2-v-3-migration-introduction.md)

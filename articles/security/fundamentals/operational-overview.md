@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 9dcb1113bb37cb0f5f65c54ae9d6ca76a88330c1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c3674b6877438a0dd4fe53569cf6852e872334a7
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698660"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693607"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 作業安全性概觀
 
@@ -171,21 +171,21 @@ Microsoft 支援工程師只有在極少數的情況下 (例如對遠端存取�
 
 ## <a name="devops"></a>DevOps
 
-在[開發人員作業 (DevOps)](https://www.visualstudio.com/learn/what-is-devops/) \(英文\) 應用程式開發之前，小組會負責收集軟體程式的商務需求，並撰寫程式碼。 接著，個別的 QA 小組會在隔離的開發環境中測試程式。 如果已符合需求，QA 小組就會針對要部署的作業發行程式碼。 開發小組已進一步分割成諸如網路功能與資料庫等群組。 每次將軟體程式「扔過牆」給獨立的小組時，就會加上一個瓶頸。
+在[開發人員作業 (DevOps)](https://azure.microsoft.com/overview/what-is-devops/) \(英文\) 應用程式開發之前，小組會負責收集軟體程式的商務需求，並撰寫程式碼。 接著，個別的 QA 小組會在隔離的開發環境中測試程式。 如果已符合需求，QA 小組就會針對要部署的作業發行程式碼。 開發小組已進一步分割成諸如網路功能與資料庫等群組。 每次將軟體程式「扔過牆」給獨立的小組時，就會加上一個瓶頸。
 
 DevOps 可讓小組以更快速且成本較低的方式提供更安全、更高品質的解決方案。 使用軟體與服務時，客戶預期能獲得動態且可靠的經驗。 小組必須快速地逐一查看軟體更新，並衡量更新的影響。 他們必須使用新的開發反覆項目迅速回應，以解決問題或提供更多價值。  
 
 諸如 Microsoft Azure 的雲端平台已移除傳統的瓶頸，並協助基礎結構獲得更高價值。 在每一項業務中，都是以軟體支配作為業務成果的主要區分及要素。 沒有任何組織、開發人員或 IT 工作者可以或應該避免 DevOps 行動。
 
-成熟的 DevOps 從業人員會採用下列幾種做法。 這些做法[需要人員](https://www.visualstudio.com/learn/what-is-devops-culture/)以業務情節作為基礎來制定策略。 工具可協助將各種作法自動化。
+成熟的 DevOps 從業人員會採用下列幾種做法。 這些做法[需要人員](/azure/devops/learn/what-is-devops-culture)以業務情節作為基礎來制定策略。 工具可協助將各種作法自動化。
 
 - [靈活的規劃與專案管理](https://www.visualstudio.com/learn/what-is-agile/)技術，可用來規劃工作並加以隔離為短期衝刺、管理小組產能，並協助小組快速地適應瞬息萬變的業務需求。
-- [版本控制，通常搭配 Git](https://www.visualstudio.com/learn/what-is-git/)，可讓位於全球各地的小組共用來源，並與軟體開發工具整合，從而將發行管線自動化。
-- [持續整合](https://www.visualstudio.com/learn/what-is-continuous-integration/) \(英文\) 會驅動進行中的合併和程式碼測試，以便及早找出缺失。  其他優點包括減少對抗合併問題的時間，以及開發小組的快速意見反應。
-- [持續傳遞](https://www.visualstudio.com/learn/what-is-continuous-delivery/) \(英文\) 軟體解決方案到生產環境與測試環境，有助於組織快速修正錯誤 (Bug)，並回應日益變遷的商業需求。
-- [監視](https://www.visualstudio.com/learn/what-is-monitoring/) \(英文\) 執行中的應用程式 (包括監視生產環境以了解應用程式健康情況，以及監視客戶的使用狀況) 能協助組織產生假設並快速驗證或反駁策略。  擷取豐富的資料並以各種記錄格式加以儲存。
-- [基礎結構即程式碼 (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) \(英文\) 是一種作法，可用來將建立及卸除網路和虛擬機器的程序加以自動化並驗證，以協助提供安全且穩定的應用程式裝載平台。
-- [微服務](https://www.visualstudio.com/learn/what-are-microservices/) \(英文\) 架構可用來將商務使用案例隔離為小型的可重複使用服務。  此架構能提升延展性和效率。
+- [版本控制，通常搭配 Git](/azure/devops/learn/git/what-is-git)，可讓位於全球各地的小組共用來源，並與軟體開發工具整合，從而將發行管線自動化。
+- [持續整合](/azure/devops/learn/what-is-continuous-integration) \(英文\) 會驅動進行中的合併和程式碼測試，以便及早找出缺失。  其他優點包括減少對抗合併問題的時間，以及開發小組的快速意見反應。
+- [持續傳遞](/azure/devops/learn/what-is-continuous-delivery) \(英文\) 軟體解決方案到生產環境與測試環境，有助於組織快速修正錯誤 (Bug)，並回應日益變遷的商業需求。
+- [監視](/azure/devops/learn/what-is-monitoring) \(英文\) 執行中的應用程式 (包括監視生產環境以了解應用程式健康情況，以及監視客戶的使用狀況) 能協助組織產生假設並快速驗證或反駁策略。  擷取豐富的資料並以各種記錄格式加以儲存。
+- [基礎結構即程式碼 (IaC)](/azure/devops/learn/what-is-infrastructure-as-code) \(英文\) 是一種作法，可用來將建立及卸除網路和虛擬機器的程序加以自動化並驗證，以協助提供安全且穩定的應用程式裝載平台。
+- [微服務](/azure/devops/learn/what-are-microservices) \(英文\) 架構可用來將商務使用案例隔離為小型的可重複使用服務。  此架構能提升延展性和效率。
 
 ## <a name="next-steps"></a>後續步驟
 

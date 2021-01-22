@@ -3,12 +3,12 @@ title: 範本的最佳做法
 description: 描述 (ARM 範本撰寫 Azure Resource Manager 範本的建議方法) 。 提供建議來避免使用範本時的常見問題。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 85d58098508d5ac7cad6c1cb3cb68ad6c7f179f9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724981"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696341"
 ---
 # <a name="arm-template-best-practices"></a>ARM 範本的最佳作法
 
@@ -26,7 +26,7 @@ ms.locfileid: "97724981"
 * 64 個輸出值
 * 範本運算式中的 24,576 個字元
 
-使用巢狀範本，即可超出一些範本限制。 如需詳細資訊，請參閱 [在部署 Azure 資源時使用連結和嵌套範本](linked-templates.md)。 若要減少參數、變數或輸出數目，您可以將數個值合併成一個物件。 如需詳細資訊，請參閱[物件作為參數](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)。
+使用巢狀範本，即可超出一些範本限制。 如需詳細資訊，請參閱 [在部署 Azure 資源時使用連結和嵌套範本](linked-templates.md)。 若要減少參數、變數或輸出數目，您可以將數個值合併成一個物件。 如需詳細資訊，請參閱[物件作為參數](/azure/architecture/guide/azure-resource-manager/advanced-templates/objects-as-parameters)。
 
 ## <a name="resource-group"></a>資源群組
 

@@ -2,13 +2,13 @@
 title: Azure 服務匯流排常見問題集 (FAQ) | Microsoft Docs
 description: 本文提供一些常見問題的解答 (常見問題) Azure 服務匯流排。
 ms.topic: article
-ms.date: 09/16/2020
-ms.openlocfilehash: e5bc9aae081868c92e0968c88c8cb6dcfb8ee57c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.date: 01/20/2021
+ms.openlocfilehash: 3a96cf94ca4a7edd115f12b3e2eded11a5894e04
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676369"
+ms.locfileid: "98693390"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排-常見問題 (常見問題) 
 
@@ -35,8 +35,11 @@ ms.locfileid: "98676369"
 
  [Premium SKU](service-bus-premium-messaging.md) 不再支援分割的實體。 
 
-### <a name="where-does-azure-service-bus-store-customer-data"></a><a name="in-region-data-residency"></a>Azure 服務匯流排儲存客戶資料的位置為何？
-Azure 服務匯流排儲存客戶資料。 服務匯流排會自動將此資料儲存在單一區域中，因此這項服務會自動滿足區域資料落地需求（包括 [信任中心](https://azuredatacentermap.azurewebsites.net/)內指定的需求）。
+### <a name="where-does-azure-service-bus-store-data"></a><a name="in-region-data-residency"></a>Azure 服務匯流排將資料儲存在哪裡？
+Azure 服務匯流排標準層會利用其後端儲存層的 Azure SQL Database。 針對巴西南部和東南亞以外的所有區域，資料庫備份會裝載在不同的區域中， (通常是 Azure 配對的區域) 。 針對巴西南部和東南亞區域，資料庫備份會儲存在相同的區域中，以配合這些區域的資料存放區需求。
+
+Azure 服務匯流排 premium 層會將中繼資料和資料儲存在您選取的區域中。 針對 Azure 服務匯流排 premium 命名空間設定異地災難復原時，中繼資料會複製到您選取的次要區域。
+
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上開啟哪些連接埠？ 
 您可以使用下列通訊協定搭配 Azure 服務匯流排來傳送和接收訊息：
@@ -119,7 +122,7 @@ Azure 服務匯流排儲存客戶資料。 服務匯流排會自動將此資料�
 指定的 Azure 區域內的任何資料傳輸都是免費提供，以及任何輸入的資料傳輸。 區域外部的資料傳送需要出口流量費用，可以在[這裡](https://azure.microsoft.com/pricing/details/bandwidth/)找到。
 
 ### <a name="does-service-bus-charge-for-storage"></a>服務匯流排是否會收取儲存體費用？
-不會。 服務匯流排不會收取儲存體費用。 不過，配額會限制每個佇列/主題可保存的最大資料量。 請參閱下一個常見問題。
+否。 服務匯流排不會收取儲存體費用。 不過，配額會限制每個佇列/主題可保存的最大資料量。 請參閱下一個常見問題。
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有服務匯流排標準命名空間。 為什麼我會在資源群組 ' $system ' 下看見費用？
 Azure 服務匯流排最近升級計費元件。 由於這項變更，如果您有服務匯流排標準命名空間，您可能會在資源群組 ' $system ' 下看到資源 '/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' 的明細專案。
@@ -169,9 +172,9 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 ## <a name="is-it-possible-to-disable-tls-10-or-11-on-service-bus-namespaces"></a>是否可以停用服務匯流排命名空間上的 TLS 1.0 或1.1？
-不會。 無法停用服務匯流排命名空間上的 TLS 1.0 或1.1。 在連接到服務匯流排的用戶端應用程式中，使用 TLS 1.2 或更新版本。 如需詳細資訊，請參閱 [強制搭配 Azure 服務匯流排使用 TLS 1.2-Microsoft Tech 社區](https://techcommunity.microsoft.com/t5/messaging-on-azure/enforcing-tls-1-2-use-with-azure-service-bus/ba-p/370912)。
+否。 無法停用服務匯流排命名空間上的 TLS 1.0 或1.1。 在連接到服務匯流排的用戶端應用程式中，使用 TLS 1.2 或更新版本。 如需詳細資訊，請參閱 [強制搭配 Azure 服務匯流排使用 TLS 1.2-Microsoft Tech 社區](https://techcommunity.microsoft.com/t5/messaging-on-azure/enforcing-tls-1-2-use-with-azure-service-bus/ba-p/370912)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 若要深入了解服務匯流排，請參閱下列文章：
 
 * [Azure 服務匯流排進階簡介 (部落格文章)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

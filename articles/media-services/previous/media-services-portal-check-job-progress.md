@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3ba8ccf3534cbb4a93983f81095b4ef2c20d6498
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: ec14e59e748e74709b909b0590bc750cf5f075b8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042790"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695487"
 ---
 # <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>透過 Azure 入口網站監視編碼作業進度
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 ## <a name="overview"></a>概觀
 
 執行作業時，您通常需要設法追蹤作業進度。 
 
-若要監視編碼作業的進度，請按一下  。
+若要監視編碼作業的進度，請按一下 **[設定]** \(位於頁面頂端)，然後選取 [作業]。
 
 ![顯示從 [設定] 功能表中選取 [作業] 的螢幕擷取畫面。](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 

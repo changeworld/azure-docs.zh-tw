@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 09ee98bf8bbe0067f9c79ce4767f3cf68b83fb43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: bb13df0f87cd10719f33afe4ec080c4c785df720
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016797"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695555"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>將 IoT 中樞事件來源新增至您的 Azure 時間序列深入解析環境
 
@@ -83,7 +83,7 @@ ms.locfileid: "95016797"
 
       下表說明 [手動提供 Iot 中樞設定] 的必要屬性：
 
-       | 屬性 | 說明 |
+       | 屬性 | 描述 |
        | --- | --- |
        | 訂用帳戶識別碼 | 所要的 iot 中樞所屬的訂用帳戶。 |
        | 資源群組 | 建立 IoT 中樞所在的資源群組名稱。 |
@@ -93,7 +93,7 @@ ms.locfileid: "95016797"
 
    * 這兩個選項都會共用下列設定選項：
 
-       | 屬性 | 說明 |
+       | 屬性 | 描述 |
        | --- | --- |
        | IoT 中樞取用者群組 | 從 IoT 中樞讀取事件的取用者群組。 強烈建議您使用專屬於您事件來源的取用者群組。 |
        | 事件序列化格式 | 目前，JSON 是目前唯一可用的序列化格式。 事件訊息必須是這種格式，否則無法讀取任何資料。 |
@@ -101,11 +101,11 @@ ms.locfileid: "95016797"
 
 1. 新增您新增至 IoT 中樞的專用 Azure 時間序列深入解析取用者組名。
 
-1. 選取 [建立]。
+1. 選取 [建立]  。
 
 1. 建立事件來源之後，Azure 時間序列深入解析會自動開始將資料串流至您的環境。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [定義資料存取原則](./concepts-access-policies.md)來保護資料。
 

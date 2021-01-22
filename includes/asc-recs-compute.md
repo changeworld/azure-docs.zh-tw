@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 01/12/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 4146fbcf96b374167c466a3cb01b1099e4251680
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
-ms.translationtype: HT
+ms.openlocfilehash: cd1741730e964e134eb03ffc0ab4eb9d8d644a13
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133028"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98697953"
 ---
 此類別中有 **98** 項建議。
 
@@ -23,7 +23,7 @@ ms.locfileid: "98133028"
 |Kubernetes Services 上應定義授權 IP 範圍 |僅將 API 存取權授與特定範圍內的 IP 位址，以限制對 Kubernetes Service 管理 API 的存取。 建議僅限存取授權 IP 範圍，以確保只有來自允許網路的應用程式可以存取叢集。<br />(相關原則：[Kubernetes Services 上應定義授權 IP 範圍](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e246bcf-5f6f-4f87-bc6f-775d4712c7ea)) |高 |
 |應加密自動化帳戶變數 |儲存敏感性資料時，請務必為自動化帳戶變數資產啟用加密。<br />(相關原則：[應將自動化帳戶變數加密](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicydefinitions%2f3657f5a0-770e-44a3-b44e-9431ba1e9735)) |高 |
 |應該為虛擬機器啟用 Azure 備份 |使用 Azure 備份保護 Azure 虛擬機器上的資料。<br>Azure 備份是 Azure 原生、符合成本效益的資料保護解決方案。<br>其會建立復原點，並儲存在異地備援復原保存庫。<br>當您從復原點還原時，可以還原整個 VM 或特定檔案。<br />(相關原則：[應該為虛擬機器啟用 Azure 備份](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f013e242c-8828-4970-87b3-ab247555486d)) |低度 |
-|應啟用適用於 App Service 的 Azure Defender |適用於 App Service 的 Azure Defender 利用雲端的規模及雲端提供者 Azure 擁有的廣大視野，監視常見的 Web 應用程式攻擊。<br>適用於 App Service 的 Azure Defender 可以探索對於您應用程式的攻擊，並找出新興的攻擊。<br><br>重要：補救此建議會產生保護您 App Service 方案的費用。 如果您在此訂用帳戶中沒有任何 App Service 方案，則不會產生任何費用。<br>如果您未來會在此訂用帳戶上建立任何 App Service 方案，則這些方案會自動受到保護，並從該時間開始收費。<br> <a href='https://docs.microsoft.com/azure/security-center/security-center-app-services'>深入了解適用於 App Service 的 Azure Defender。</a><br />(相關原則：[應啟用適用於 App Service 的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)) |高 |
+|應啟用適用於 App Service 的 Azure Defender |適用於 App Service 的 Azure Defender 利用雲端的規模及雲端提供者 Azure 擁有的廣大視野，監視常見的 Web 應用程式攻擊。<br>適用於 App Service 的 Azure Defender 可以探索對於您應用程式的攻擊，並找出新興的攻擊。<br><br>重要：補救此建議會產生保護您 App Service 方案的費用。 如果您在此訂用帳戶中沒有任何 App Service 方案，則不會產生任何費用。<br>如果您未來會在此訂用帳戶上建立任何 App Service 方案，則這些方案會自動受到保護，並從該時間開始收費。<br> <a href='https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction'>深入了解適用於 App Service 的 Azure Defender。</a><br />(相關原則：[應啟用適用於 App Service 的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)) |高 |
 |應啟用適用於容器登錄的 Azure Defender |若要建立安全的容器化工作負載，請確定其所依據的映像沒有已知弱點。<br>適用於容器登錄的 Azure Defender 會掃描您的登錄，以判斷每個推送的容器映像是否有安全性弱點，並公開每個映像的詳細結果。<br>若要改善容器的安全性狀態並保護其免於遭受攻擊，請啟用適用於容器登錄的 Azure Defender。<br><br>重要：補救此建議會產生保護您容器登錄的費用。 如果您在此訂用帳戶中沒有任何容器登錄，則不會產生任何費用。<br>如果您未來會在此訂用帳戶上建立任何容器登錄，則這些登錄會自動受到保護，並從該時間開始收費。<br> <a href='https://docs.microsoft.com/azure/security-center/azure-container-registry-integration'>深入了解適用於容器登錄的 Azure Defender。</a><br />(相關原則：[應啟用適用於容器登錄的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)) |高 |
 |應啟用適用於 Kubernetes 的 Azure Defender |適用於 Kubernetes 的 Azure Defender 可為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。<br>您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。<br><br>重要：補救此建議會產生保護您 Kubernetes 叢集的費用。 如果您在此訂用帳戶中沒有任何 Kubernetes 叢集，則不會產生任何費用。<br>如果您未來會在此訂用帳戶上建立任何 Kubernetes 叢集，則這些叢集會自動受到保護，並從該時間開始收費。<br> <a href='https://docs.microsoft.com/azure/security-center/azure-kubernetes-service-integration'>深入了解 Azure Defender for Kubernetes。</a><br />(相關原則：[應啟用 Azure Defender for Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)) |高 |
 |應啟用適用於伺服器的 Azure Defender |適用於伺服器的 Azure Defender 會為伺服器工作負載提供即時的威脅防護，並產生強化建議與可疑活動警示。<br>您可以使用這項資訊來快速修復安全性問題，並改善您伺服器的安全性。<br><br>重要：補救此建議會產生保護您伺服器的費用。 如果您在此訂用帳戶中沒有任何伺服器，則不會產生任何費用。<br>如果您未來會在此訂用帳戶上建立任何伺服器，則這些伺服器會自動受到保護，並從該時間開始收費。<br> <a href='https://docs.microsoft.com/azure/security-center/threat-protection'>深入了解適用於伺服器的 Azure Defender。</a><br />(相關原則：[應啟用適用於伺服器的 Azure Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)) |高 |

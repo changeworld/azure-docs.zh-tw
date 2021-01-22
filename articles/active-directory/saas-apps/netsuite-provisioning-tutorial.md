@@ -10,21 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a5b995fd273fcfa231e101bc77b11d268be728fb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
-ms.translationtype: HT
+ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359130"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696484"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>教學課程：設定 NetSuite 來自動佈建使用者
 
 本教學課程旨在說明您需要在 NetSuite OneWorld 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 NetSuite。
 
-> [!NOTE]
-> 此整合目前使用基本驗證 (使用者名稱和密碼) 來進行驗證。 NetSuite 已實作多重要素驗證需求來防止客戶使用此整合 (除非其已豁免這項需求)。 我們正與 NetSuite 合作，將此整合更新為較新的驗證方法，以讓沒有豁免的客戶能夠再次使用。 我們將會使用 ETA (一旦可供使用時) 來更新此文件。
-
-建議的動作：請等候我們發行這項整合驗證行為的更新，或聯繫 NetSuite 支援人員，詢問要如何豁免多重要素驗證需求。
+> [!WARNING]
+> 此布建整合將在2020年2月停止運作，因為 NetSuite Api 的變更會讓 Microsoft 用來將使用者布建到 NetSuite。 如此一來，Azure Active Directory Enterprise App 資源庫中的 NetSuite 應用程式布建功能很快就會移除。 應用程式的 SSO 功能將保持不變。 Microsoft 正在使用 NetSuite 來建立新的現代化布建整合，但目前未提供任何 ETA。
 
 ## <a name="prerequisites"></a>Prerequisites
 

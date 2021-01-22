@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/21/2020
 ms.author: b-juche
-ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: f680b1ec76200cb4d3bfc90cd83a2c134f379245
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913493"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696120"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -29,7 +29,7 @@ ms.locfileid: "97913493"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 資料路徑是否經過網際網路？  
 
-不會。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
+否。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是部署至 Azure 虛擬網路的 azure 原生服務， (VNet) 可用的服務。 Azure NetApp Files 使用委派的子網，並直接在 VNet 上布建網路介面。 
 
 如需詳細資料，請參閱 [Azure NetApp Files 網路規劃的指導方針](./azure-netapp-files-network-topologies.md) 。  
 
@@ -48,7 +48,7 @@ ms.locfileid: "97913493"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>我可以為 Azure NetApp Files 磁片區設定或選取自己的 IP 位址嗎？  
 
-不會。 對 Azure NetApp Files 磁片區的 IP 指派是動態的。 不支援靜態 IP 指派。 
+否。 對 Azure NetApp Files 磁片區的 IP 指派是動態的。 不支援靜態 IP 指派。 
 
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp Files 是否支援 (IPv4 和 IPv6) VNet 的雙重 stack？
 
@@ -196,7 +196,7 @@ Azure NetApp Files 提供容量集區和磁片區使用計量。 您也可以使
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>我可以透過 Azure 儲存體總管管理 Azure NetApp Files 嗎？
 
-不會。 Azure 儲存體總管不支援 Azure NetApp Files。
+否。 Azure 儲存體總管不支援 Azure NetApp Files。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何? 判斷目錄是否接近限制大小？
 
@@ -253,11 +253,21 @@ NetApp 提供以 SaaS 為基礎的解決方案，也就是 [Netapp Cloud Sync](h
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>是否支援遷移 Azure 資料箱？
 
-不會。 Azure 資料箱目前不支援 Azure NetApp Files。 
+否。 Azure 資料箱目前不支援 Azure NetApp Files。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支援使用 Azure 匯入/匯出服務進行遷移？
 
-不會。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
+否。 Azure 匯入/匯出服務目前不支援 Azure NetApp Files。
+
+## <a name="product-faqs"></a>產品常見問題
+
+### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>我可以使用 Azure NetApp Files NFS 或 SMB 磁片區搭配 Azure VMware Solution (AVS) 嗎？
+
+您可以將 Azure NetApp Files NFS 磁片區掛接到 AVS Windows Vm 或 Linux Vm。 您可以將 Azure NetApp Files SMB 共用對應到 AVS Windows Vm。 如需詳細資訊，請參閱 [使用 Azure VMware 解決方案的 Azure NetApp Files]( ../azure-vmware/net-app-files-with-azure-vmware-solution.md)。  
+
+### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>使用 Azure NetApp Files NFS 或 SMB 磁片區搭配 Azure VMware Solution (AVS) 支援哪些區域？
+
+下欄區域支援使用 Azure NetApp Files NFS 或具有 AVS 的 SMB 磁片區：美國東部、美國西部、西歐及澳大利亞東部。
 
 ## <a name="next-steps"></a>後續步驟  
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 707c12cac6bbceee925c4710eff29482f687d47f
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 08d1e9cd281cf41a79d1b30d709062c01abbab33
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040726"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695436"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>使用 Azure 入口網站以內部部署編碼器執行即時串流
 
@@ -33,11 +33,11 @@ ms.locfileid: "93040726"
 > 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 本教學課程將逐步引導您使用 Azure 入口網站建立針對即時通行傳遞設定的 **通道** 。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 需要有下列項目，才能完成教學課程：
 
 * 一個 Azure 帳戶。 如需詳細資料，請參閱 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
@@ -55,7 +55,7 @@ ms.locfileid: "93040726"
 下列步驟描述當我們建立一般即時串流應用程式 (其使用針對即時通行傳遞設定的通道) 時，會涉及到的各種工作。 本教學課程示範如何建立及管理即時通行通道和即時事件。
 
 > [!NOTE]
-> 確定您想要串流內容的串流端點已處於 [執行中]  狀態。 
+> 確定您想要串流內容的串流端點已處於 [執行中] 狀態。 
     
 1. 將攝影機連接到電腦。 <br/>如需了解裝備，請參閱[簡單的可攜式活動視訊器材裝備]( https://link.medium.com/KNTtiN6IeT) \(英文\)。
 1. 啟動並設定內部部署即時編碼器，讓它輸出多位元速率 RTMP 或 Fragmented MP4 串流。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>另請參閱此 blog： [使用 OBS 的即時串流生產](https://link.medium.com/ttuwHpaJeT)。
@@ -112,7 +112,7 @@ ms.locfileid: "93040726"
 如需傳遞通道的詳細資訊，請參閱[使用會從建立多位元速率串流的內部部署編碼器執行即時串流](media-services-live-streaming-with-onprem-encoders.md)。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的 Azure 媒體服務帳戶。
-2. 在 [設定]  視窗中，按一下 [即時視訊串流]  。 
+2. 在 [設定] 視窗中，按一下 [即時視訊串流]。 
    
     ![開始使用](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
@@ -120,7 +120,7 @@ ms.locfileid: "93040726"
 3. 按一下 [快速建立]  ，使用 RTMP 內嵌通訊協定建立即時通行通道。
    
     [建立新的通道]  視窗隨即出現。
-4. 提供新通道的名稱，然後按一下 [建立]  。 
+4. 提供新通道的名稱，然後按一下 [建立] 。 
    
     這會使用 RTMP 內嵌通訊協定建立即時通行通道。
 
@@ -151,7 +151,7 @@ ms.locfileid: "93040726"
 ## <a name="view-archived-content"></a>檢視封存的內容
 只要您未刪除資產，即使在停止並刪除事件之後，使用者還是可以視需求將封存的內容串流為視訊。 如果事件使用資產，則無法刪除資產；必須先刪除事件。 
 
-若要管理您的資產，請選取 [設定]  ，然後按一下 [資產]  。
+若要管理您的資產，請選取 [設定]，然後按一下 [資產]。
 
 ![Assets](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 

@@ -6,12 +6,12 @@ ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: b9ad5347e146fc94b513180c591b00c4f449619f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9b29c9611359c97c4097ad0b90ee2673bb28f37c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98146436"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696307"
 ---
 # <a name="telemetry-processors-examples---azure-monitor-application-insights-for-java"></a>遙測處理器範例-適用于 JAVA 的 Azure 監視器 Application Insights
 
@@ -330,7 +330,7 @@ ms.locfileid: "98146436"
 ### <a name="extract"></a>Extract
 
 下列範例將示範如何使用 RegEx，根據另一個屬性的值來建立新的屬性。
-例如，假設有 HTTP. url = http://example.com/path?queryParam1=value1 ，queryParam2 = value2 將插入下列屬性：
+例如，假設有 HTTP. url = ' http://example.com/path?queryParam1=value1 ，queryParam2 = value2 '，將會插入下列屬性：
 * HTTPProtocol： HTTP
 * HTTPDomain： example.com
 * HTTPPath： path

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 99101f31ec955c822c784180dd8b04bfb8e5f73c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6f4cfcc07496179908c8349f4282a7633379cd3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291597"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695811"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure 媒體服務 v3 中的資產
 
@@ -28,9 +28,9 @@ ms.locfileid: "89291597"
 
 資產會對應到 [Azure 儲存體帳戶](storage-account-concept.md) 中的 blob 容器，而資產中的檔案會儲存為該容器中的區塊 blob。 資產包含儲存在 Azure 儲存體 (中的數位檔案的相關資訊，包括影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案) 。
 
-當帳戶使用一般用途 v2 (GPv2) 儲存體時，媒體服務支援 Blob 層。 您可以利用 GPv2，將檔案移至[非經常性存取儲存體或封存儲存體](../../storage/blobs/storage-blob-storage-tiers.md)。 封存**儲存體適合**用來封存原始程式檔（如果不再需要的話） (例如，在) 編碼之後。
+當帳戶使用一般用途 v2 (GPv2) 儲存體時，媒體服務支援 Blob 層。 您可以利用 GPv2，將檔案移至[非經常性存取儲存體或封存儲存體](../../storage/blobs/storage-blob-storage-tiers.md)。 封存 **儲存體適合** 用來封存原始程式檔（如果不再需要的話） (例如，在) 編碼之後。
 
-**封存**儲存層只建議用於經過編碼，且編碼作業輸出已放在輸出 Blob 容器的極大型來源檔案。 您要與資產產生關聯的輸出容器中的 blob，以及用來串流或分析內容的 blob，都必須存在 **于經常性存取或非** 經常性 **存取儲存層** 中。
+**封存** 儲存層只建議用於經過編碼，且編碼作業輸出已放在輸出 Blob 容器的極大型來源檔案。 您要與資產產生關聯的輸出容器中的 blob，以及用來串流或分析內容的 blob，都必須存在 **于經常性存取或非** 經常性 **存取儲存層** 中。
 
 ## <a name="naming"></a>命名 
 
@@ -48,4 +48,4 @@ ms.locfileid: "89291597"
 
 ## <a name="see-also"></a>另請參閱
 
-[媒體服務 v2 及 v3 之間的差異](migrate-from-v2-to-v3.md)
+[媒體服務 v2 及 v3 之間的差異](migrate-v-2-v-3-migration-introduction.md)

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 0041779abcd97901fb9315125a287a1d45cff133
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 02adb6f47b907fea402f8b312b3f4e8e117927ed
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350104"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693675"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教學課程：使用 DMS 將 SQL Server 線上移轉至 Azure SQL 受控執行個體
 
@@ -211,7 +211,7 @@ ms.locfileid: "96350104"
 
     | | |
     |--------|---------|
-    |**SMB 網路位置共用** | 本機 SMB 網路共用或 Azure 檔案共用包含完整資料庫備份檔案及交易記錄備份檔案，Azure 資料庫移轉服務可使用這些檔案來進行移轉。 執行來源 SQL Server 執行個體的服務帳戶在此網路共用上必須具有讀取\寫入權限。 在網路共用中提供伺服器的 FQDN 或 IP 位址，例如，'\\\servername.domainname.com\backupfolder' 或 '\\\IP address\backupfolder'。 為了改善效能，建議您針對要移轉的每個資料庫使用不同的資料夾。 您可以使用 [進階設定] 選項來提供資料庫層級的檔案共用路徑。 |
+    |**SMB 網路位置共用** | 本機 SMB 網路共用或 Azure 檔案共用包含完整資料庫備份檔案及交易記錄備份檔案，Azure 資料庫移轉服務可使用這些檔案來進行移轉。 執行來源 SQL Server 執行個體的服務帳戶在此網路共用上必須具有讀取\寫入權限。 在網路共用中提供伺服器的 FQDN 或 IP 位址，例如，'\\\servername.domainname.com\backupfolder' 或 '\\\IP address\backupfolder'。 為了改善效能，建議您針對要移轉的每個資料庫使用不同的資料夾。 您可以使用 [進階設定] 選項來提供資料庫層級的檔案共用路徑。 如果您在連線到 SMB 共用時遇到問題，請參閱 [smb 共用](known-issues-azure-sql-db-managed-instance-online.md#smb-file-share-connectivity)。 |
     |**使用者名稱** | 請確定 Windows 使用者對於您先前提供的網路共用具有完整控制權限。 Azure 資料庫移轉服務將會模擬該使用者認證，以便將備份檔案上傳至 Azure 儲存體容器以進行還原作業。 如果使用 Azure 檔案共用，請使用在前面加上 AZURE\ 的儲存體帳戶名稱，作為使用者名稱。 |
     |**密碼** | 使用者的密碼。 如果使用 Azure 檔案共用，請使用儲存體帳戶金鑰作為密碼。 |
     |**Azure 儲存體帳戶的訂用帳戶** | 選取包含 Azure 儲存體帳戶的訂用帳戶。 |

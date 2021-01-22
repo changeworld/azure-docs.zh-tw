@@ -14,19 +14,19 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f2e899a9d98d43f826bfa63e62458adf1601f071
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 77c68b3c17b8815c4858e1d73251975a7e00e6eb
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042999"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695699"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒體服務之即時串流的概觀
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 ## <a name="overview"></a>概觀
 
@@ -53,11 +53,11 @@ ms.locfileid: "93042999"
 
 ## <a name="streaming-endpoints-channels-programs"></a>串流端點、通道、程式
 
-在 Azure 媒體服務中， **通道** 、 **程式** 及 **StreamingEndpoints** 會處理所有的即時串流功能，包括內嵌、格式化、DVR、安全性、延展性和備援能力。
+在 Azure 媒體服務中，**通道**、**程式** 及 **StreamingEndpoints** 會處理所有的即時串流功能，包括內嵌、格式化、DVR、安全性、延展性和備援能力。
 
 在 Azure 媒體服務中， **通道** 代表處理即時串流內容的管線。 通道可以用下列方式接收即時輸入串流：
 
-* 內部部署即時編碼器會傳送多位元速率 **RTMP** 或 **Smooth Streaming** (分散的 MP4) 到針對 **即時通行** 傳遞所設定的通道。 **即時通行** 傳遞就是擷取的串流會通過 **通道** ，無需進一步的處理。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 下列即時編碼器會輸出 RTMP： Telestream Wirecast、Haivision、Teradek 轉錄器。  即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 接到要求時，媒體服務會傳遞串流給客戶。
+* 內部部署即時編碼器會傳送多位元速率 **RTMP** 或 **Smooth Streaming** (分散的 MP4) 到針對 **即時通行** 傳遞所設定的通道。 **即時通行** 傳遞就是擷取的串流會通過 **通道**，無需進一步的處理。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 下列即時編碼器會輸出 RTMP： Telestream Wirecast、Haivision、Teradek 轉錄器。  即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 接到要求時，媒體服務會傳遞串流給客戶。
 
   > [!NOTE]
   > 如果您在很長一段時間內進行多個事件，而且已投資內部部署編碼器時，使用傳遞方法是進行即時串流的最經濟實惠方式。 請參閱 [定價](https://azure.microsoft.com/pricing/details/media-services/) 詳細資料。
@@ -65,7 +65,7 @@ ms.locfileid: "93042999"
   > 
 * 內部部署即時編碼器會將單一位元速率串流傳送至通道，可以使用下列格式之一，以媒體服務執行即時編碼：RTMP 或 Smooth Streaming (分散的 MP4)。 下列具有 RTMP 輸出的即時編碼器已知可搭配此類型的通道使用： Telestream Wirecast。 通道接著會執行即時編碼，將連入的單一位元速率串流編碼成多位元速率 (自動調整) 視訊串流。 接到要求時，媒體服務會傳遞串流給客戶。
 
-自媒體服務 2.10 版起，當您建立通道時，您可以指定您希望通道接收輸入串流的方式，以及您是否想要通道執行串流的即時編碼。 您有兩個選項：
+自媒體服務 2.10 版起，當您建立通道時，您可以指定您希望通道接收輸入串流的方式，以及您是否想要通道執行串流的即時編碼。 您有兩個選擇：
 
 * **無** (傳遞) – 如果您想要使用會輸出多位元速率串流 (傳遞串流) 的內部部署即時編碼器，請指定這個值。 在此情況下，連入的串流會傳遞至輸出，無須任何編碼。 這是在 2.10 版以前的通道行為。  
 * **標準** – 如果您打算使用媒體服務將單一位元速率即時串流編碼成多位元速率串流，請選擇這個值。 對於快速相應增加的非頻繁事件來說，這是較為經濟的方法。 請注意即時編碼有計費影響，而且您應該記住將即時編碼通道保持在「執行中」狀態會產生費用。  建議您在即時串流事件完成之後立即停止執行的通道，以避免額外的每小時費用。
@@ -74,7 +74,7 @@ ms.locfileid: "93042999"
 
 下表提供了媒體服務所支援的兩種通道類型比較指南
 
-| 功能 | 傳遞通道 | 標準通道 |
+| 特徵 | 傳遞通道 | 標準通道 |
 | --- | --- | --- |
 | 單一位元速率輸入會在雲端編碼為多重位元速率 |否 |是 |
 | 最大解析度、分層數目 |1080p、8 層、60+fps |720p、6 層、30 fps |
@@ -84,9 +84,9 @@ ms.locfileid: "93042999"
 | 插入靜態圖像支援 |否 |是 |
 | 廣告訊號支援 |否 |是 |
 | 傳遞 CEA 608/708 字幕 |是 |是 |
-| 支援未統一輸入的 GOP |Yes |否 – 輸入必須為固定式 2 秒 GOP |
-| 支援變動畫面播放速率輸入 |Yes |否 – 輸入必須為固定畫面播放速率。<br/>輕微的差異可以接受，例如：處於高速動態場景的情況。 但編碼器無法降至 10 個畫面/秒的標準。 |
-| 在輸入摘要遺失時自動關閉通道 |No |經過 12 個小時，如果沒有程式仍在執行 |
+| 支援未統一輸入的 GOP |是 |否 – 輸入必須為固定式 2 秒 GOP |
+| 支援變動畫面播放速率輸入 |是 |否 – 輸入必須為固定畫面播放速率。<br/>輕微的差異可以接受，例如：處於高速動態場景的情況。 但編碼器無法降至 10 個畫面/秒的標準。 |
+| 在輸入摘要遺失時自動關閉通道 |否 |經過 12 個小時，如果沒有程式仍在執行 |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>使用可從內部部署編碼器接收多位元速率即時串流的通道 (傳遞)
 
@@ -142,11 +142,11 @@ ArchiveWindowLength 也指定用戶端可從目前即時位置往回搜尋的最
 ### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>通道狀態和狀態如何對應至計費模式
 通道的目前狀態。 可能的值包括：
 
-* **已停止** 。 這是通道建立後的初始狀態 (除非已在入口網站中選取 [自動啟動]。 ) 不會在此狀態下進行計費。 在此狀態下，通道屬性可以更新，但是不允許串流。
-* **正在啟動** 。 正在啟動通道。 此狀態中不會計費。 在此狀態期間允許任何更新或串流。 如果發生錯誤，通道會回到已停止狀態。
+* **已停止**。 這是通道建立後的初始狀態 (除非已在入口網站中選取 [自動啟動]。 ) 不會在此狀態下進行計費。 在此狀態下，通道屬性可以更新，但是不允許串流。
+* **正在啟動**。 正在啟動通道。 此狀態中不會計費。 在此狀態期間允許任何更新或串流。 如果發生錯誤，通道會回到已停止狀態。
 * **正在** 執行。 通道能夠處理即時串流。 現在針對使用量計費。 您必須停止通道來防止進一步計費。
-* **正在停止** 。 正在停止通道。 此暫時性狀態中不會計費。 在此狀態期間允許任何更新或串流。
-* **正在刪除** 。 正在刪除通道。 此暫時性狀態中不會計費。 在此狀態期間允許任何更新或串流。
+* **正在停止**。 正在停止通道。 此暫時性狀態中不會計費。 在此狀態期間允許任何更新或串流。
+* **正在刪除**。 正在刪除通道。 此暫時性狀態中不會計費。 在此狀態期間允許任何更新或串流。
 
 下表顯示通道狀態如何對應至計費模式。
 
@@ -155,7 +155,7 @@ ArchiveWindowLength 也指定用戶端可從目前即時位置往回搜尋的最
 | 啟動中 |啟動中 |無 (暫時性狀態) |
 | 執行中 |就緒 (沒有執行中的程式)<br/>或<br/>串流 (至少一個執行中的程式) |YES |
 | 停止中 |停止中 |無 (暫時性狀態) |
-| 已停止 |已停止 |No |
+| 已停止 |已停止 |否 |
 
 ## <a name="media-services-learning-paths"></a>媒體服務學習路徑
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 5b570efa54d99380f2beff5441dc40a3a10b902a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c4f099df071bccb8a74f29a98953fe1e0323b12
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269109"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695572"
 ---
 # <a name="dynamic-packaging"></a>動態封裝
 
@@ -29,7 +29,7 @@ ms.locfileid: "89269109"
 > * [第 2 版](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS、XBOX、Silverlight、Windows 8) 提供許多媒體來源檔案格式、媒體串流格式和內容保護格式。 這些用戶端各自使用不同的通訊協定，例如 iOS 需要 HTTP 即時串流 (HLS) V4 格式，而 Silverlight 與 Xbox 需要 Smooth Streaming。 如果您有一組自動調整位元速率 (多位元速率) MP4 (ISO Base Media 14496-12) 檔案或一組自動調整位元速率 Smooth Streaming 檔案，想要傳遞給了解 MPEG DASH、HLS 或 Smooth Streaming 的用戶端，應該利用媒體服務動態封裝。
 
@@ -60,7 +60,7 @@ Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS�
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>動態封裝支援的音訊轉碼器
 
-動態封裝支援的 AAC 檔案，其中包含以[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)編碼的音訊 (AAC-LC、AAC V1、AAC v2) 、[杜比數位加](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (增強的 AC-3 或電子 AC3) 、杜比性 ATMOS 或[DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (DTS EXPRESS、DTS LBR、dts hd、dts hd 無損) 。 使用一般串流格式的標準串流格式的標準串流格式 (CSF) 或通用媒體應用程式格式的標準媒體應用程式格式，都支援「杜比」 Atmos 內容的串流 (CMAF) 分散的數量，以及透過 CMAF HTTP 即時串流 HLS (
+動態封裝支援的 AAC 檔案，其中包含以[](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)編碼的音訊 (AAC-LC、AAC V1、AAC v2) 、[杜比數位加](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (增強的 AC-3 或電子 AC3) 、杜比性 ATMOS 或[DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) (DTS EXPRESS、DTS LBR、dts hd、dts hd 無損) 。 使用一般串流格式的標準串流格式的標準串流格式 (CSF) 或通用媒體應用程式格式的標準媒體應用程式格式，都支援「杜比」 Atmos 內容的串流 (CMAF) 分散的數量，以及透過 CMAF HTTP 即時串流 HLS (
 
 > [!NOTE]
 > 動態封裝不支援包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音訊的檔案 (它是舊版的轉碼器)。

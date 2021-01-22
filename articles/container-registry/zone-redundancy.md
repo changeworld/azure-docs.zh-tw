@@ -3,12 +3,12 @@ title: 適用于高可用性的區域冗余登錄
 description: 瞭解如何在 Azure Container Registry 中啟用區域冗余。 在 Azure 可用性區域中建立容器登錄或複寫。 區域冗余是 Premium 服務層的功能。
 ms.topic: article
 ms.date: 01/07/2021
-ms.openlocfilehash: 8c03b2bb093f8d0fa70ff5132f7448ce86e8779d
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 7de8ed101d2df9e491c475f522a56580798c49a9
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127342"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696273"
 ---
 # <a name="enable-zone-redundancy-in-azure-container-registry-for-resiliency-and-high-availability"></a>在 Azure Container Registry 中啟用區域冗余以復原及高可用性
 
@@ -39,7 +39,7 @@ Azure Container Registry 也支援 [異地](container-registry-geo-replication.m
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-如有需要，請執行 [az group create](/cli/az/group#az_group_create) 命令以建立登錄的資源群組。
+如有需要，請執行 [az group create](/cli/azure/group#az_group_create) 命令以建立登錄的資源群組。
 
 ```azurecli
 az group create --name <resource-group-name> --location <location>
@@ -47,7 +47,7 @@ az group create --name <resource-group-name> --location <location>
 
 ### <a name="create-zone-enabled-registry"></a>建立啟用區域的登錄
 
-執行 [az acr create](/cli/az/acr#az_acr_create) 命令，在 Premium 服務層中建立區域冗余登錄。 選擇 [支援可用性區域](../availability-zones/az-region.md) 的區域以進行 Azure Container Registry。 下列範例會在 *eastus* 區域中啟用區域冗余。 如需 `az acr create` 更多登錄選項，請參閱命令說明。
+執行 [az acr create](/cli/azure/acr?view=azure-cli-latest#az_acr_create) 命令，在 Premium 服務層中建立區域冗余登錄。 選擇 [支援可用性區域](../availability-zones/az-region.md) 的區域以進行 Azure Container Registry。 下列範例會在 *eastus* 區域中啟用區域冗余。 如需 `az acr create` 更多登錄選項，請參閱命令說明。
 
 ```azurecli
 az acr create \
@@ -69,7 +69,7 @@ az acr create \
 
 ### <a name="create-zone-redundant-replication"></a>建立區域冗余複寫
 
-執行 [az acr replication create](/cli/az/acr/replication#az_acr_replication_create) 命令，在 [支援可用性區域](../availability-zones/az-region.md) 的區域中，于 Azure Container Registry （例如 *westus2*）建立區域冗余的登錄複本。 
+執行 [az acr replication create](/cli/azure/acr/replication?view=azure-cli-latest#az_acr_replication_create) 命令，在 [支援可用性區域](../availability-zones/az-region.md) 的區域中，于 Azure Container Registry （例如 *westus2*）建立區域冗余的登錄複本。 
 
 ```azurecli
 az acr replication create \
@@ -113,7 +113,7 @@ az acr replication create \
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 
-如有需要，請執行 [az group create](/cli/az/group#az_group_create) 命令，在 [支援可用性區域](../availability-zones/az-region.md) 的區域中為登錄建立資源群組，以進行 Azure Container Registry，例如 *eastus*。 範本會使用此區域來設定登錄位置。
+如有需要，請執行 [az group create](/cli/azure/group#az_group_create) 命令，在 [支援可用性區域](../availability-zones/az-region.md) 的區域中為登錄建立資源群組，以進行 Azure Container Registry，例如 *eastus*。 範本會使用此區域來設定登錄位置。
 
 ```azurecli
 az group create --name <resource-group-name> --location eastus
@@ -219,7 +219,7 @@ az group create --name <resource-group-name> --location eastus
   }
 ```
 
-執行下列 [az deployment group create](/cli/az/deployment#az_group_deployment_create) 命令，使用上述範本檔案來建立登錄。 指出時，請提供：
+執行下列 [az deployment group create](/cli/azure/group/deployment?view=azure-cli-latest#az_group_deployment_create) 命令，使用上述範本檔案來建立登錄。 指出時，請提供：
 
 * 唯一的登錄名稱，或部署不含參數的範本，它會為您建立唯一的名稱。
 * 支援可用性區域之複本的位置，例如 *westus2*

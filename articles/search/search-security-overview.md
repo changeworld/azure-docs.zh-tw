@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ffb5a78c13413a46565a9c57c87dc8273742fd24
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 49364681f0c5b4b6cc4d5f20778edb61e9f6f5b3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563444"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695775"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 認知搜尋中的安全性-總覽
 
-本文說明 Azure 認知搜尋中可保護內容和作業的主要安全性功能。
+本文說明 Azure 認知搜尋中保護內容和作業的安全性功能。
 
-+ 在儲存層中，會針對儲存至磁片的所有服務管理內容內建待用加密，包括索引、同義字對應，以及索引子、資料來源和技能集的定義。 Azure 認知搜尋也支援新增客戶管理的金鑰 (CMK) 來補充加密索引內容。 針對在 1 2020 年8月之後建立的服務，CMK 加密可延伸至暫存磁片上的資料，以完整雙重加密索引內容。
++ 在儲存層中，會針對儲存至磁片的所有服務管理內容內建資料加密，包括索引、同義字對應，以及索引子、資料來源和技能集的定義。 （選擇性）您可以 (CMK) 新增客戶管理的金鑰，以補充加密索引內容。 針對在 1 2020 年8月之後建立的服務，CMK 加密可延伸至暫存磁片上的資料，以取得已編制索引之內容的完整「雙重加密」。
 
-+ 輸入安全性可保護搜尋服務端點在提高安全性層級：從要求上的 API 金鑰，到防火牆中的輸入規則，到從公用網際網路全面防護您的服務的私人端點。
++ 輸入安全性是指在提高安全性層級的搜尋服務端點上的保護：從要求上的 API 金鑰，到防火牆中的輸入規則，到從公用網際網路全面防護您的服務的私人端點。
 
-+ 輸出安全性適用于從外部來源提取內容的索引子。 針對輸出要求，請設定受控識別，以在存取來自 Azure 儲存體、Azure SQL、Cosmos DB 或其他 Azure 資料來源的資料時，讓搜尋成為受信任的服務。 受控識別會取代連接上的認證或存取金鑰。 本文未涵蓋輸出安全性。 如需這項功能的詳細資訊，請參閱 [使用受控識別連接到資料來源](search-howto-managed-identities-data-sources.md)。
++ 輸出安全性與從外部來源提取內容的索引子有關。 針對輸出要求，請設定受控識別，以在存取來自 Azure 儲存體、Azure SQL、Cosmos DB 或其他 Azure 資料來源的資料時，讓搜尋成為受信任的服務。 受控識別會取代連接上的認證或存取金鑰。 本文未涵蓋輸出安全性。 如需這項功能的詳細資訊，請參閱 [使用受控識別連接到資料來源](search-howto-managed-identities-data-sources.md)。
 
 觀賞這段快速的影片，瞭解安全性架構及每個功能類別的總覽。
 
@@ -126,7 +126,7 @@ Azure 認知搜尋的 [私人端點](../private-link/private-endpoint-overview.m
 
 如果您需要對搜尋結果進行細微的每個使用者控制，您可以在查詢上建立安全性篩選，並傳回與指定的安全性識別相關聯的檔。 身分識別型存取控制會實作為 *篩選* 條件，以根據身分識別來修剪檔和內容的搜尋結果，而不是預先定義的角色和角色指派。 下表說明兩個針對未經授權的內容縮減搜尋結果的方法。
 
-| 方法 | 說明 |
+| 方法 | 描述 |
 |----------|-------------|
 |[根據身分識別篩選進行安全性範圍縮減](search-security-trimming-for-azure-search.md)  | 記載實作使用者身分識別存取控制的基本工作流程。 其中涵蓋在索引中新增安全性識別碼，然後說明如何針對該欄位進行篩選來縮減所禁止內容的結果。 |
 |[根據 Azure Active Directory 身分識別進行安全性範圍縮減](search-security-trimming-for-azure-search-with-aad.md)  | 本文將擴充先前的文章，提供從 Azure 雲端平臺中的其中一項 [免費服務](https://azure.microsoft.com/free/) Azure Active Directory (Azure AD) 中取得身分識別的步驟。 |
@@ -150,7 +150,7 @@ Azure 原則是 Azure 內建的功能，可協助您管理多個標準的合規�
 
 針對 Azure 認知搜尋，目前有一個內建的定義。 它是用於診斷記錄。 使用此內建，您可以指派原則來識別缺少診斷記錄的任何搜尋服務，然後將其開啟。 如需詳細資訊，請參閱 [Azure 原則 Azure 認知搜尋的法規合規性控制](security-controls-policy.md)。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 + [Azure 安全性基本概念](../security/fundamentals/index.yml)
 + [Azure 安全性](https://azure.microsoft.com/overview/security)

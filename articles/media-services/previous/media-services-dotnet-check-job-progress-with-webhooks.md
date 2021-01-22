@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24e4bf9940de0f7b0e851bdfdbd2d788757034e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e99d2c2676d05772106296d8b960dd55fd30501c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89267729"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696467"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>使用 Azure Webhook 監視 .NET 的媒體服務作業通知
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本的[媒體服務 v3](../latest/index.yml)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 執行作業時，您通常需要設法追蹤作業進度。 您可以使用 Azure Webhook 或 [Azure 佇列儲存體](media-services-dotnet-check-job-progress-with-queues.md)來監視媒體服務作業通知。 本文說明如何使用 Webhook。
 
@@ -64,19 +64,19 @@ ms.locfileid: "89267729"
 
 [應用程式設定](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings)區段會定義用於本文所定義之 Webhook 的參數。 另外，請將下列參數新增至應用程式設定。 
 
-|名稱|定義|範例| 
+|Name|定義|範例| 
 |---|---|---|
 |SigningKey |簽署金鑰。| j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt|
-|WebHookEndpoint | 一個 webhook 端點位址。 建立您的 Webhook 函式之後，您就可以從 [取得函式 URL]**** 連結複製 URL。 | HTTPs： \/ /juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =。|
+|WebHookEndpoint | 一個 webhook 端點位址。 建立您的 Webhook 函式之後，您就可以從 [取得函式 URL] 連結複製 URL。 | HTTPs： \/ /juliakofuncapp.azurewebsites.net/api/Notification_Webhook_Function?code=iN2phdrTnCxmvaKExFWOTulfnm4C71mMLIy8tzLr7Zvf6Z22HHIK5g = =。|
 
 ## <a name="create-a-function"></a>建立函式
 
-部署函式應用程式之後，您可以在**應用程式服務** Azure Functions 中找到它。
+部署函式應用程式之後，您可以在 **應用程式服務** Azure Functions 中找到它。
 
-1. 選取您的函式應用程式，然後按一下 [新增函式]****。
-2. 選取 [C#]**** 程式碼以及 [API 與 Webhook]**** 案例。 
-3. 選取 [Generic Webhook - C#] \(泛型 Webhook - C#)****。
-4. 命名您的 Webhook，然後按 [建立]****。
+1. 選取您的函式應用程式，然後按一下 [新增函式]。
+2. 選取 [C#] 程式碼以及 [API 與 Webhook] 案例。 
+3. 選取 [Generic Webhook - C#] \(泛型 Webhook - C#)。
+4. 命名您的 Webhook，然後按 [建立]。
 
 ### <a name="files"></a>檔案儲存體
 
@@ -132,7 +132,7 @@ project.json 檔案包含相依性。
 
 Webhook 預期簽署金鑰 (認證) 會符合您在設定通知端點時所傳遞的金鑰。 簽署金鑰是 64 位元組的 Base64 編碼值，可用來保護來自 Azure 媒體服務之 WebHook 回呼的安全。 
 
-在下列 Webhook 定義程式碼中，**VerifyWebHookRequestSignature** 方法會進行通知訊息的驗證。 此驗證的目的是確定訊息是由 Azure 媒體服務所傳送，並且未遭到竄改。 簽章是 Azure Functions 的選擇性選項，因為它具有**程式碼**值，可透過傳輸層安全性 (TLS) 作為查詢參數。 
+在下列 Webhook 定義程式碼中，**VerifyWebHookRequestSignature** 方法會進行通知訊息的驗證。 此驗證的目的是確定訊息是由 Azure 媒體服務所傳送，並且未遭到竄改。 簽章是 Azure Functions 的選擇性選項，因為它具有 **程式碼** 值，可透過傳輸層安全性 (TLS) 作為查詢參數。 
 
 >[!NOTE]
 >對於不同的 AMS 原則 (例如 Locator 原則或 ContentKeyAuthorizationPolicy) 有 1,000,000 個原則的限制。 如果您一律使用相同的日期 / 存取權限，例如，要長時間維持就地 (非上載原則) 的定位器原則，您應該使用相同的原則識別碼。 如需詳細資訊，請參閱[此主題](media-services-dotnet-manage-entities.md#limit-access-policies)。

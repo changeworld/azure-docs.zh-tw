@@ -14,19 +14,19 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cf84e45ff43643c7e9a983b867194a7920aa1b57
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 458927afc78c46ad365d437a574d0b40b32fc11e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351876"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695792"
 ---
 # <a name="media-services-regional-availability"></a>媒體服務區域可用性
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 查看最新版本的[媒體服務 v3](../latest/media-services-overview.md)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 查看最新版本的[媒體服務 v3](../latest/media-services-overview.md)。 另請參閱[從 v2 變更為 v3 的移轉指導方針](../latest/migrate-v-2-v-3-migration-introduction.md)
 
 Microsoft Azure 媒體服務 (AMS) 可讓您安全地上傳、儲存、編碼和封裝視訊或音訊內容，以用於隨選和即時串流傳遞給各種用戶端 (例如電視、電腦和行動裝置)。
 
@@ -53,7 +53,7 @@ AMS 在世界各地的多個區域中運作，可讓您彈性地選擇要在何�
 
 ## <a name="encoding-media-processors"></a>編碼媒體處理器
 
-AMS 提供兩個隨選編碼器： **媒體編碼器標準** 和 **媒體編碼器進階工作流程** 。 如需詳細資訊，請參閱 [Azure 隨選媒體編碼器的概觀和比較](media-services-encode-asset.md)。
+AMS 提供兩個隨選編碼器：**媒體編碼器標準** 和 **媒體編碼器進階工作流程**。 如需詳細資訊，請參閱 [Azure 隨選媒體編碼器的概觀和比較](media-services-encode-asset.md)。
 
 |媒體處理器名稱|狀態|區域
 |---|---|---|

@@ -9,24 +9,27 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539604"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693446"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>選擇 Azure 認知搜尋的定價層
 
-當您 [建立搜尋服務](search-create-service-portal.md)時，您可以選擇在服務存留期內固定的定價層 (或 SKU) 。 預估的每月費用會顯示在入口網站的 [ **選取定價層** ] 頁面中。 如果您要透過 PowerShell 或 Azure CLI 來建立服務，則會透過參數指定層 **`-Sku`** 。
+[建立搜尋服務](search-create-service-portal.md)的一部分，表示選擇在服務存留期內固定的定價層 (或 SKU) 。 當您建立服務時，在入口網站的 [ **選取定價層** ] 頁面中，會顯示價格或執行服務的每月預估成本。 如果您是透過 PowerShell 或 Azure CLI 來布建，則會透過參數指定階層 **`-Sku`** ，您應該檢查 [服務定價](https://azure.microsoft.com/pricing/details/search/) 以瞭解預估成本。
 
 您選取的層會決定：
 
-+ 您可以在服務上建立的索引和其他物件的最大數目
++ 服務上允許的最大索引數目和其他物件
 + 分割區的大小和速度 (實體儲存體)
 + 以固定每月費用計費的計費費率，如果您增加容量，也會遞增成本
 
 在少數的情況下，您選擇的層會決定 [premium 功能](#premium-features)的可用性。
+
+> [!NOTE]
+> 正在尋找「Azure Sku」的相關資訊嗎？ 開始使用 [Azure 定價](https://azure.microsoft.com/pricing/) ，然後向下滾動以取得每個服務定價頁面的連結。
 
 ## <a name="tier-descriptions"></a>層描述
 
@@ -67,7 +70,7 @@ ms.locfileid: "98539604"
 
 ## <a name="partition-size-and-speed"></a>分割區大小和速度
 
-階層定價包含每個資料分割儲存體的詳細資料，範圍從 2 GB 到基本，最高可達 2 TB 的儲存體優化 (L2) 層。 其他硬體特性（例如作業速度、延遲和傳輸速率）則不會發佈，但針對特定解決方案架構設計的層級是以具有支援這些案例之功能的硬體為基礎。
+階層定價包含每個資料分割儲存體的詳細資料，範圍從 2 GB 到基本，最高可達 2 TB 的儲存體優化 (L2) 層。 其他硬體特性（例如作業速度、延遲和傳輸速率）則不會發佈，但針對特定解決方案架構設計的層級是以具有支援這些案例之功能的硬體為基礎。 如需有關資料分割的詳細資訊，請參閱[估計和管理](search-capacity-planning.md)[效能的](search-performance-optimization.md)容量和規模。
 
 ## <a name="billing-rates"></a>帳單費率
 

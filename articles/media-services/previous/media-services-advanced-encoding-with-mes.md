@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9713a2ad10d1edc9a79d475ed58a99b3b24b6483
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021141"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696035"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>自訂 MES 預設值來執行進階編碼
 
@@ -33,7 +33,7 @@ ms.locfileid: "96021141"
 如果使用 XML 預設值，請務必維持元素的順序，如下列 XML 範例所示 (例如，KeyFrameInterval 應在 SceneChangeDetection 之前)。
 
 > [!NOTE] 
-> 媒體編碼器標準的許多 advanced Media Services v2 功能目前無法在 v3 中使用。 如需詳細資訊，請參閱 [功能間距](../latest/media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)。
+> 媒體編碼器標準的許多 advanced Media Services v2 功能目前無法在 v3 中使用。 如需詳細資訊，請參閱 [遷移指南](../latest/migrate-v-2-v-3-migration-introduction.md)。
 
 ## <a name="support-for-relative-sizes"></a>支援相對大小
 
