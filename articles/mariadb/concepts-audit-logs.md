@@ -3,15 +3,15 @@ title: Audit 記錄檔-適用於 MariaDB 的 Azure 資料庫
 description: 描述適用於 MariaDB 的 Azure 資料庫中可用的 audit 記錄，以及可用來啟用記錄層級的參數。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: e66eaf62b54759222421b17ebc7e33b82e018338
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3032cb8f5ce399822de65c867d1f32da254c9948
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541754"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663752"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的 Audit 記錄
 
@@ -33,7 +33,7 @@ ms.locfileid: "94541754"
 > [!Note]
 > `audit_log_include_users` 的優先順序高於 `audit_log_exclude_users` 。 例如，如果 `audit_log_include_users`  =  `demouser` 和 `audit_log_exclude_users`  =  `demouser` ，使用者將會包含在 audit 記錄中，因為 `audit_log_include_users` 優先順序較高。
 
-| **事件** | **說明** |
+| **事件** | **描述** |
 |---|---|
 | `CONNECTION` | -連接初始 (成功或失敗)  <br> -會話期間使用不同使用者/密碼重新驗證使用者 <br> -連接終止 |
 | `DML_SELECT`| SELECT 查詢 |
@@ -164,6 +164,6 @@ ms.locfileid: "94541754"
     | order by TimeGenerated asc nulls last
     ``` 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [如何在 Azure 入口網站中設定 audit 記錄](howto-configure-audit-logs-portal.md)

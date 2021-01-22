@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1552401953a8cba9dda787a0f0e461adb7972920
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044300"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664447"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>設定 Azure 數位 Twins 實例和驗證 (腳本) 
 
@@ -29,11 +29,13 @@ ms.locfileid: "98044300"
 
 ## <a name="prerequisites-download-the-script"></a>必要條件：下載腳本
 
-範例腳本是以 PowerShell 撰寫的。 它是 [**Azure 數位 Twins 端對端範例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，您可以藉由流覽至該範例連結並選取標題底下的 [ *下載 ZIP* ] 按鈕，將其下載到您的電腦。
+範例腳本是以 PowerShell 撰寫的。 它是 [**Azure 數位 Twins 端對端範例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)的一部分，您可以藉由流覽至該範例連結並選取標題底下的 [ *流覽程式碼]* 按鈕，將其下載到您的電腦。 這會將您帶到範例的 GitHub 存放庫，您可以將其下載為 *。選取 [程式**代碼*] 按鈕並 *下載 zip* 壓縮。
 
-這會將範例專案下載到您的電腦，做為 _**Azure_Digital_Twins_end_to_end_samples.zip**_。 流覽至您電腦上的資料夾，並將其解壓縮以解壓縮檔案。
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="在 GitHub 上查看數位 twins 範例存放庫。已選取 [程式碼] 按鈕，並產生一個小對話方塊，其中會反白顯示 [下載 ZIP] 按鈕。" lightbox="media/includes/download-repo-zip.png":::
 
-在解壓縮的資料夾中，部署腳本位於 _Azure_Digital_Twins_end_to_end_samples > 腳本 > **deploy.ps1**_。
+這會下載 *。* 以 **digital-twins-samples-master.zip** 的方式將 ZIP 資料夾壓縮至您的電腦。 流覽至您電腦上的資料夾，並將其解壓縮以解壓縮檔案。
+
+在解壓縮的資料夾中，部署腳本位於 _數位 twins-範例-主要 > 腳本 > **deploy.ps1**_。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +58,7 @@ ms.locfileid: "98044300"
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="顯示所選上傳圖示的 Cloud Shell 視窗":::
 
-    流覽至您電腦上的 _**deploy.ps1**_ 檔案 (_Azure_Digital_Twins_end_to_end_samples > 腳本 > **deploy.ps1**_) 並點擊 [開啟]。 這會將檔案上傳至 Cloud Shell，以便您可以在 [Cloud Shell] 視窗中執行該檔案。
+    流覽至您電腦上的 _**deploy.ps1**_ 檔案， (在 _數位 twins-範例-主要 > 腳本 > **deploy.ps1**_) 並點擊 [開啟]。 這會將檔案上傳至 Cloud Shell，以便您可以在 [Cloud Shell] 視窗中執行該檔案。
 
 4. `./deploy.ps1`在 Cloud Shell 視窗中傳送命令，以執行腳本。 您可以複製下面的命令 (回想一下要貼到 Cloud Shell，您可以在 Windows 和 Linux 上使用 **Ctrl + shift + v** ，或在 macOS 上使用 **Cmd + shift + v** 。 您也可以使用滑鼠右鍵功能表) 。
 
@@ -102,7 +104,7 @@ ms.locfileid: "98044300"
 
 如果驗證失敗，您可以使用 [入口網站](how-to-set-up-instance-portal.md#create-the-azure-digital-twins-instance) 或 [CLI](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)重試建立實例。
 
-### <a name="collect-instance-values"></a>收集實例值
+### <a name="collect-instance-values"></a>取得執行個體值
 
 從 [Azure 數位 Twins 頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.DigitalTwins%2FdigitalTwinsInstances) 選取您實例的名稱，以開啟實例的 *[總覽* ] 頁面。 請記下其 *名稱*、 *資源群組* 和 *主機名稱*。 您稍後可能會需要這些以識別並連接到您的實例。
 

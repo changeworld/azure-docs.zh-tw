@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 68fdc29edfd41799e2628abf40efa6a9453a90b9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: e603e99c1aa9c49d20bdb281bbfd96131ae2efdd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633801"
+ms.locfileid: "98663616"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>在 Windows 裝置上安裝和布建適用于 Linux 的 Azure IoT Edge (Preview) 
 
@@ -61,6 +61,12 @@ Windows 上適用于 Linux 的 Azure IoT Edge 可讓您使用 Linux 虛擬機器
       ![選取儀表板右上方的齒輪圖示來存取設定。](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. 在 [ **設定** ] 功能表的 [ **閘道**] 底下，選取 [ **擴充** 功能]。
+
+   1. 選取 [ **摘要** ] 索引標籤，然後選取 [ **新增**]。
+
+   1. https://aka.ms/wac-insiders-feed在文字方塊中輸入，然後選取 [**加入**]。
+
+   1. 新增摘要之後，請流覽至 [可用的 **擴充** 功能] 索引標籤。更新擴充功能清單可能需要一些時間。
 
    1. 在 [ **可用的擴充** 功能] 索引標籤上，尋找擴充功能清單中的 **Azure IoT Edge** 。 選擇它，然後選取延伸模組清單上方的 [ **安裝** ] 提示。
 

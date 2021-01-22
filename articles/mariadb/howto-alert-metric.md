@@ -3,15 +3,15 @@ title: 設定計量警示-Azure 入口網站-適用於 MariaDB 的 Azure 資料�
 description: 本文描述如何從 Azure 入口網站，設定和存取「適用於 MariaDB 的 Azure 資料庫」的計量警示。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: e108ca3aa346af20b31ff446130014e1250f49c0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1e7dafaba6b6792afdec1f1866629fac9ba5a577
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541074"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664413"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 入口網站來設定適用於 MariaDB 之 Azure 資料庫的計量警示
 
@@ -48,7 +48,7 @@ ms.locfileid: "94541074"
    
    ![選取計量](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. 設定警示邏輯，包括 **條件** (例如， "Greater than")、 **閾值** (例如， 85 percent)、 **時間彙總** ，觸發警示之前，必須滿足計量規則的 **期間** (例如， 「過去30分鐘內」 ) 和 **頻率** 。
+7. 設定警示邏輯，包括 **條件** (例如， "Greater than")、**閾值** (例如， 85 percent)、**時間彙總**，觸發警示之前，必須滿足計量規則的 **期間** (例如， 「過去30分鐘內」 ) 和 **頻率**。
    
    完成時選取 [完成]。
 
@@ -81,9 +81,9 @@ ms.locfileid: "94541074"
 
 * 檢視圖表，其中顯示與此警示相關的計量臨界值及前一天的實際值。
 * **編輯** 或 **刪除** 警示規則。
-* 如果您想要暫時停止或恢復接收通知，可以將警示 **停用** 或 **啟用** 。
+* 如果您想要暫時停止或恢復接收通知，可以將警示 **停用** 或 **啟用**。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * 深入了解 [在警示中設定 webhook](../azure-monitor/platform/alerts-webhooks.md)。
 * 依照 [計量集合概觀](../azure-monitor/platform/data-platform.md) 中的做法，確保您的服務可使用且有回應。

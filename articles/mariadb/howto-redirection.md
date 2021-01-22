@@ -3,15 +3,15 @@ title: 使用重新導向進行連接-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何設定您的應用程式，以透過重新導向連接到適用於 MariaDB 的 Azure 資料庫。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: 3f26de72839fcaa39bff4d827aba757721736934
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 29f2ab8f70af2ca19cbffcbba6db39c5a93445fe
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537419"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664897"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>使用重新導向連接到適用於 MariaDB 的 Azure 資料庫
 
@@ -38,7 +38,7 @@ Mysqlnd_azure 延伸模組可透過 PECL 新增至 PHP 應用程式，因此強�
 ### <a name="redirection-logic"></a>重新導向邏輯
 
 >[!IMPORTANT]
-> 重新導向邏輯/行為開始版本 1.1.0 已更新， **建議使用版本 1.1.0+** 。
+> 重新導向邏輯/行為開始版本 1.1.0 已更新，**建議使用版本 1.1.0+** 。
 
 重新導向行為取決於 `mysqlnd_azure.enableRedirect` 的值。 下表根據此參數的值 (從 **版本 1.1.0+** 開始)，列出重新導向的行為。
 
@@ -47,7 +47,7 @@ Mysqlnd_azure 延伸模組可透過 PECL 新增至 PHP 應用程式，因此強�
 |**mysqlnd_azure.enableRedirect 值**| **行為**|
 |----------------------------------------|-------------|
 |`off` 或 `0`|將不會使用重新導向。 |
-|`on` 或 `1`|- 如果連線在驅動程式端不使用 SSL，則不會建立連線。 將傳回下列錯誤：[mysqlnd_azure.enableRedirect 是 on，但連接字串中未設定 SSL 選項。只有使用 SSL 才能重新導向。]<br>-如果在驅動程式端使用 SSL，但是伺服器上不支援重新導向，則第一個連接會中止，並傳回下列錯誤：「 *因為適用于 mariadb 伺服器上未啟用重新導向，或網路套件不符合重新導向通訊協定，所以連線已中止。* 」<br>-如果適用于 mariadb 伺服器支援重新導向，但重新導向的連接因任何原因而失敗，也請中止第一個 proxy 連線。 傳回重新導向連線的錯誤。|
+|`on` 或 `1`|- 如果連線在驅動程式端不使用 SSL，則不會建立連線。 將傳回下列錯誤：[mysqlnd_azure.enableRedirect 是 on，但連接字串中未設定 SSL 選項。只有使用 SSL 才能重新導向。]<br>-如果在驅動程式端使用 SSL，但是伺服器上不支援重新導向，則第一個連接會中止，並傳回下列錯誤：「*因為適用于 mariadb 伺服器上未啟用重新導向，或網路套件不符合重新導向通訊協定，所以連線已中止。* 」<br>-如果適用于 mariadb 伺服器支援重新導向，但重新導向的連接因任何原因而失敗，也請中止第一個 proxy 連線。 傳回重新導向連線的錯誤。|
 |`preferred` 或 `2`<br> (預設值)|- mysqlnd_azure 會盡可能使用重新導向。<br>- 如果連線在驅動程式端不使用 SSL，則伺服器不支援重新導向，或者當重新導向因任何不嚴重原因而無法連線，但 Proxy 連線仍然有效時，系統會切換回第一個 Proxy 連線。|
 
 文件的後續章節將會概述如何使用 PECL 安裝 `mysqlnd_azure` 延伸模組，並設定此參數的值。

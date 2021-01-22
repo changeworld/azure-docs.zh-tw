@@ -3,17 +3,17 @@ title: 管理 VNet 端點-Azure CLI-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure CLI 命令列，建立及管理適用於 MariaDB 的 Azure 資料庫的 VNet 服務端點和規則。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43d1b7700395bd06960737eae4f318d61aa03717
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bee4af12b30b64409812d6758521a9ec29b2b61f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635240"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665084"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>使用 Azure CLI 建立及管理適用於 MariaDB 的 Azure 資料庫的 VNet 服務端點
 
@@ -25,7 +25,7 @@ ms.locfileid: "94635240"
 
 - 您需要 [適用於 MariaDB 的 Azure 資料庫伺服器和資料庫](quickstart-create-mariadb-server-database-using-azure-cli.md)。
 
-- 本文需要 Azure CLI 2.0 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
+- 本文需要 2.0 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 > [!NOTE]
 > VNet 服務端點的支援僅適用於一般用途伺服器和記憶體最佳化伺服器。

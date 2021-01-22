@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 24fef1680c5660a70a20ae727833b045f6c5aa88
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97933926"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664345"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>如何使用 Resource Manager 範本建立 Azure key vault 和保存庫存取原則
 
@@ -23,7 +23,7 @@ ms.locfileid: "97933926"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文中的步驟：
 
@@ -150,7 +150,7 @@ ms.locfileid: "97933926"
             "permissions": {
               "keys": "[parameters('keysPermissions')]",
               "secrets": "[parameters('secretsPermissions')]",
-              "certificates": [parameters('certificatesPermissions')]
+              "certificates": "[parameters('certificatesPermissions')]"
             }
           }
         ]
@@ -160,6 +160,7 @@ ms.locfileid: "97933926"
 }
 
 ```
+
 如需 Key Vault 範本設定的詳細資訊，請參閱 [KEY VAULT ARM 範本參考](/azure/templates/microsoft.keyvault/vaults/accesspolicies)。
 
 ## <a name="more-key-vault-resource-manager-templates"></a>更多 Key Vault Resource Manager 範本
@@ -213,10 +214,10 @@ Write-Host "Press [ENTER] to continue..."
 
 - 閱讀 [Azure Key Vault 的總覽](../general/overview.md)。
 - 深入瞭解 [Azure Resource Manager](../../azure-resource-manager/management/overview.md)。
-- 複習 [Azure Key Vault 安全性總覽](security-overview.md)
+- 請參閱 [Azure Key Vault 安全性概觀](security-overview.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [針對金鑰保存庫的存取進行保護](secure-your-key-vault.md)
 - [對金鑰保存庫進行驗證](authentication.md)
-- [Azure 金鑰保存庫開發人員指南](developers-guide.md)
+- [Azure Key Vault 開發人員指南](developers-guide.md)

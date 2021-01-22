@@ -3,15 +3,15 @@ title: 規劃的維護通知-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明適用於 MariaDB 的 Azure 資料庫中的規劃維護通知功能
 author: ambhatna
 ms.author: ambhatna
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: c290236dfe7e88999847f8cb0d66b2d3c868c1ab
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a206d108b0935836fbc1cd5b7a1987dcf4e4725b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453285"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664260"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中規劃的維護通知
 
@@ -76,7 +76,7 @@ ms.locfileid: "96453285"
 暫時性錯誤 (也稱為暫時性故障) 係指會自行解決的錯誤。 維護期間可能會發生[暫時性錯誤](./concepts-connectivity.md#transient-errors)。 這些事件大多數都會由系統在 60 秒內自動解決。 暫時性錯誤應使用 [重試邏輯](./concepts-connectivity.md#handling-transient-errors)來處理。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如有關于使用適用於 MariaDB 的 Azure 資料庫的任何問題或建議，請傳送電子郵件給適用於 MariaDB 的 Azure 資料庫團隊，網址為： AskAzureDBforMariaDB@service.microsoft.com
 - 請參閱[如何設定警示](howto-alert-metric.md)，取得根據計量來建立警示的指引。

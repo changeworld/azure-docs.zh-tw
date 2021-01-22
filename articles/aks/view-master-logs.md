@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中啟用並檢視 K
 services: container-service
 ms.topic: article
 ms.date: 10/14/2020
-ms.openlocfilehash: 59e7259ae352491bddebe054f2c34bdc810ea48a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5f0a01adfabe59542fa999af3103a9394f4dd77b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183221"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664073"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中啟用並檢閱 Kubernetes 主要節點記錄
 
@@ -53,6 +53,8 @@ kind: Pod
 metadata:
   name: nginx
 spec:
+  nodeSelector:
+    "beta.kubernetes.io/os": linux
   containers:
   - name: mypod
     image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
@@ -151,7 +153,7 @@ AKS 會記錄下列事件：
 | *masterclient*           | MasterClientCertificate 的 audit 記錄檔中的顯示名稱，您從 az aks get 認證取得的憑證 |
 | *nodeclient*             | 代理程式節點所使用之 ClientCertificate 的顯示名稱 |
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已了解如何在 AKS 叢集中啟用並檢閱 Kubernetes 主要元件的記錄。 若要進行進一步的監視及疑難排解，您也可以[檢視 Kubelet 記錄][kubelet-logs]及[啟用 SSH 節點存取][aks-ssh]。
 

@@ -3,16 +3,16 @@ title: 重新開機伺服器-Azure PowerShell-適用於 MariaDB 的 Azure 資料
 description: 本文說明如何使用 PowerShell 來重新開機適用於 MariaDB 的 Azure 資料庫伺服器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 14cde5b1302c46b819bb7d841fb5b84a43c580c0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 0311111285d7dc0d60bc63ce9cef2be3f0ddfb19
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538932"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664863"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-powershell"></a>使用 PowerShell 重新開機適用於 MariaDB 的 Azure 資料庫伺服器
 
@@ -45,7 +45,7 @@ ms.locfileid: "94538932"
 Restart-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [使用 PowerShell 建立適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-powershell.md)

@@ -3,16 +3,16 @@ title: 教學課程：設計適用於 MariaDB 的 Azure 資料庫 - Azure 入口
 description: 本教學課程說明如何使用「Azure 入口網站」來建立和管理「適用於 MariaDB 的 Azure 資料庫」伺服器和資料庫。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: tutorial
 ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: fe503d0e579e30b0c355d3be3e8d02b2bd7a44a8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: HT
+ms.openlocfilehash: 9df151be99ba81af28f6b7b0cc012eae7db3ea1b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542434"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664464"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站來設計「適用於 MariaDB 的 Azure 資料庫」資料庫
 
@@ -51,11 +51,11 @@ ms.locfileid: "94542434"
 
     設定 | 建議的值 | 欄位描述
     ---|---|---
-    伺服器名稱 | 唯一的伺服器名稱  | 選擇可識別適用於 MariaDB 的 Azure 資料庫伺服器的唯一名稱。 例如， **mydemoserver** 。 網域名稱 *.mariadb.database.azure.com* 會附加至您輸入的伺服器名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 它必須包含 3 到 63 個字元。
+    伺服器名稱 | 唯一的伺服器名稱  | 選擇可識別適用於 MariaDB 的 Azure 資料庫伺服器的唯一名稱。 例如，**mydemoserver**。 網域名稱 *.mariadb.database.azure.com* 會附加至您輸入的伺服器名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 它必須包含 3 到 63 個字元。
     訂用帳戶 | *您的訂用帳戶* | 選取您要用於伺服器的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
     資源群組 | **myresourcegroup** | 輸入新的資源群組名稱，或選取現有資源群組。
     選取來源 | 空白  | 選取 [空白]  ，以建立新的伺服器。 (如果您要從現有「適用於 MariaDB 的 Azure 資料庫」伺服器的異地備份建立伺服器，請選取 [備份]  )。
-    伺服器管理員登入 | myadmin  | 連線至伺服器時所要使用的登入帳戶。 系統管理員登入名稱不能是 **azure_superuser** 、 **admin** 、 **administrator** 、 **root** 、 **guest** 或 **public** 。
+    伺服器管理員登入 | myadmin  | 連線至伺服器時所要使用的登入帳戶。 系統管理員登入名稱不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
     密碼 | 您的選擇  | 為伺服器管理帳戶輸入新密碼。 其必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0-9) 及非英數字元 (!、$、#、% 等等)。
     確認密碼 | 您的選擇 | 確認管理帳戶密碼。
     Location | 最接近使用者的區域 | 選取最靠近使用者或其他 Azure 應用程式的位置。
@@ -93,7 +93,7 @@ ms.locfileid: "94542434"
 
    ![伺服器屬性](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-在我們的範例中，伺服器名稱為 **mydemoserver.mariadb.database.azure.com** ，而伺服器管理員登入名稱為 **myadmin\@mydemoserver** 。
+在我們的範例中，伺服器名稱為 **mydemoserver.mariadb.database.azure.com**，而伺服器管理員登入名稱為 **myadmin\@mydemoserver**。
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>使用 mysql 來連線到伺服器
 
@@ -174,10 +174,10 @@ SELECT * FROM inventory;
 
    ![還原表單](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
-   - **還原點** ：從所列的時間範圍中，選取您想要還原的時間點。 務必將您的當地時區轉換成 UTC。
-   - **還原到新的伺服器** ：輸入要作為還原目的地的新伺服器名稱。
-   - **位置** ：此區域與來源伺服器相同且無法變更。
-   - **定價層** ：此定價層與來源伺服器相同且無法變更。
+   - **還原點**：從所列的時間範圍中，選取您想要還原的時間點。 務必將您的當地時區轉換成 UTC。
+   - **還原到新的伺服器**：輸入要作為還原目的地的新伺服器名稱。
+   - **位置**：此區域與來源伺服器相同且無法變更。
+   - **定價層**：此定價層與來源伺服器相同且無法變更。
    
 3. 選取 [確定]  ，將伺服器還原到資料表刪除之前的時間點[還原至某個時間點](./howto-restore-server-portal.md)。 還原伺服器可在您選取的時間點建立伺服器的新複本。 
 

@@ -3,17 +3,17 @@ title: CLI 指令碼 - 下載慢速查詢記錄 - 適用於 MariaDB 的 Azure �
 description: 此範例 Azure CLI 指令碼示範如何啟用並下載「適用於 MariaDB 的 Azure 資料庫」伺服器的慢速查詢記錄。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 2e185997f887e0fd90a7966087350f91aabee6d1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: HT
+ms.openlocfilehash: 150467a5770cd8d2fa0f1fabe562674b55711bcc
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541975"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664562"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 啟用並下載「適用於 MariaDB 的 Azure 資料庫」伺服器的伺服器慢速查詢記錄
 此範例 CLI 指令碼會啟用並下載單一「適用於 MariaDB 的 Azure 資料庫」伺服器的慢速查詢記錄。

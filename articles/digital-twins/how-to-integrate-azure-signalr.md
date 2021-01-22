@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 71e74789654d2df91d9a087eaaf8d8f2a2664f7b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051100"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664107"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>整合 Azure 數位 Twins 與 Azure SignalR Service
 
@@ -20,7 +20,7 @@ ms.locfileid: "98051100"
 
 本文所述的解決方案可讓您將數位對應項遙測資料推送至連線的用戶端，例如單一網頁或行動應用程式。 如此一來，用戶端就會從 IoT 裝置以即時計量和狀態進行更新，而不需要輪詢伺服器或提交新的 HTTP 要求以進行更新。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 以下是您在繼續之前應完成的必要條件：
 
@@ -40,7 +40,11 @@ ms.locfileid: "98051100"
 
 首先，下載所需的範例應用程式。 您將需要下列兩項：
 * [**Azure 數位 Twins 端對端範例**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)：此範例包含 *AdtSampleApp* ，其中包含兩個 azure 函式，可在 azure 數位 Twins 實例周圍移動資料 (您可以在 [*教學課程：連接端對端解決方案*](tutorial-end-to-end.md)) ，更詳細地瞭解此案例。 它也包含 *devicesimulator.exe* 範例應用程式，可模擬 IoT 裝置，每秒產生新的溫度值。 
-    - 流覽至範例連結並按 [ *下載 ZIP* ] 按鈕，將範例的複本下載到您的電腦，如 _**Azure_Digital_Twins_end_to_end_samples.zip**_。 將資料夾解壓縮。
+    - 如果您尚未在必要條件中將範例下載為教學 [*課程*](#prerequisites)的一部分，請流覽至範例連結，然後選取標題底下的 [ *流覽程式碼]* 按鈕。 這會將您帶到範例的 GitHub 存放庫，您可以將其下載為 *。選取 [程式**代碼*] 按鈕並 *下載 zip* 壓縮。
+
+    :::image type="content" source="media/includes/download-repo-zip.png" alt-text="在 GitHub 上查看數位 twins 範例存放庫。已選取 [程式碼] 按鈕，並產生一個小對話方塊，其中會反白顯示 [下載 ZIP] 按鈕。" lightbox="media/includes/download-repo-zip.png":::
+
+    這會將範例存放庫的複本下載到您的電腦， **digital-twins-samples-master.zip**。 將資料夾解壓縮。
 * [**SignalR 整合 web 應用程式範例**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/)：這是範例回應 web 應用程式，會從 azure SignalR 服務取用 Azure 數位 Twins 遙測資料。
     -  流覽至範例連結並按 [ *下載 ZIP* ] 按鈕，將範例的複本下載到您的電腦，如 _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_。 將資料夾解壓縮。
 
@@ -63,7 +67,7 @@ ms.locfileid: "98051100"
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="Azure 入口網站的螢幕擷取畫面，其中顯示 SignalR 實例的 [金鑰] 頁面。主要連接字串旁邊的 [複製到剪貼簿] 圖示已反白顯示。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-接著，啟動 Visual Studio (或您所選擇) 的其他程式碼編輯器，然後在 *Azure_Digital_Twins_end_to_end_samples > ADTSampleApp* 資料夾中開啟程式碼方案。 然後，執行下列步驟以建立函式：
+接下來，啟動 Visual Studio (或您選擇) 的其他程式碼編輯器，然後在 *twins-samples-master > ADTSampleApp* 資料夾中開啟程式碼方案。 然後，執行下列步驟以建立函式：
 
 1. 在 *SampleFunctionsApp* 專案中，建立名為 **SignalRFunctions.cs** 的新 c # 井類。
 
@@ -71,7 +75,7 @@ ms.locfileid: "98051100"
     
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
-1. 在 Visual Studio 的 *封裝管理員主控台* 視窗，或您電腦上 *Azure_Digital_Twins_end_to_end_samples \adtsampleapp\samplefunctionsapp* 資料夾中的任何命令視窗中，執行下列命令以將 `SignalRService` NuGet 套件安裝到專案中：
+1. 在 Visual Studio 的 *封裝管理員主控台* 視窗，或您電腦上 *digital-twins-samples-master\AdtSampleApp\SampleFunctionsApp* 資料夾中的任何命令視窗中，執行下列命令以將 `SignalRService` NuGet 套件安裝到專案中：
     ```cmd
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
@@ -126,7 +130,7 @@ ms.locfileid: "98051100"
 
 在端對端教學課程的必要條件中，您 [已將裝置模擬器設定](tutorial-end-to-end.md#configure-and-run-the-simulation) 為透過 IoT 中樞和 Azure 數位 Twins 實例來傳送資料。
 
-現在，您只需要啟動模擬器專案，它位於 *Azure_Digital_Twins_end_to_end_samples > devicesimulator.exe > devicesimulator.exe .sln*。 如果您是使用 Visual Studio，可以開啟專案，然後在工具列中使用這個按鈕來執行它：
+現在，您只需要啟動模擬器專案，也就是位於 *數位 twins-範例-master > devicesimulator.exe > devicesimulator.exe .sln*。 如果您是使用 Visual Studio，可以開啟專案，然後在工具列中使用這個按鈕來執行它：
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Visual Studio 的啟動按鈕 (DeviceSimulator 專案)":::
 
@@ -188,7 +192,7 @@ npm start
 az group delete --name <your-resource-group>
 ```
 
-最後，刪除您下載到本機電腦 (*Azure_Digital_Twins_end_to_end_samples.zip* 和 *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) 的專案範例資料夾。
+最後，刪除您下載到本機電腦 (*digital-twins-samples-master.zip* 和 *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) 的專案範例資料夾。
 
 ## <a name="next-steps"></a>下一步
 

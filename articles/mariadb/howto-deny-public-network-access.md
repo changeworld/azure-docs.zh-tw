@@ -3,21 +3,21 @@ title: 拒絕公用網路存取-Azure 入口網站-適用於 MariaDB 的 Azure �
 description: 瞭解如何使用適用於 MariaDB 的 Azure 資料庫的 Azure 入口網站設定拒絕公用網路存取
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 3117ebfd258c72bb97432871c2ea74d30c52f669
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 7925107f4334df7a844b3f3e029f3769eef51a9c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242185"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665067"
 ---
 # <a name="deny-public-network-access-in-azure-database-for-mariadb-using-azure-portal"></a>使用 Azure 入口網站拒絕適用於 MariaDB 的 Azure 資料庫中的公用網路存取
 
 本文說明如何設定適用於 MariaDB 的 Azure 資料庫伺服器拒絕所有的公用設定，並只允許透過私人端點的連線，以進一步增強網路安全性。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要完成本操作說明指南，您需要：
 
@@ -29,7 +29,7 @@ ms.locfileid: "93242185"
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您現有的適用於 MariaDB 的 Azure 資料庫伺服器。
 
-1. 在 [適用于 mariadb 伺服器] 頁面的 [ **設定** ] 底下，按一下 [連線 **安全性** ] 以開啟 [連接安全性設定] 頁面。
+1. 在 [適用于 mariadb 伺服器] 頁面的 [ **設定**] 底下，按一下 [連線 **安全性** ] 以開啟 [連接安全性設定] 頁面。
 
 1. 在 [拒絕公用網路存取] 中選取 **[是]** ，以啟用適用于 mariadb 伺服器的 [拒絕公用存取]。
 

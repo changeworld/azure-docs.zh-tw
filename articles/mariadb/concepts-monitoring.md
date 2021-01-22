@@ -3,16 +3,16 @@ title: 監視-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明適用於 MariaDB 的 Azure 資料庫之監視和警示的計量，包括 CPU、儲存體和連線統計資料。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: 7420a7c6355fbcd70ce57fbb36ab29d1241df31f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3d2cf88dba44a7f18f73fbafb66381d2ef8b29c5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453327"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664277"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中監視
 監視伺服器的相關資料，可協助您疑難排解並最佳化您的工作負載。 適用於 MariaDB 的 Azure 資料庫提供多種計量，可讓您深入了解您伺服器的行為。
@@ -25,7 +25,7 @@ ms.locfileid: "96453327"
 ### <a name="list-of-metrics"></a>計量清單
 這些計量可供適用於 MariaDB 的 Azure 資料庫使用：
 
-|計量|計量顯示名稱|單位|描述|
+|計量|計量顯示名稱|單位|Description|
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|
 |memory_percent|記憶體百分比|百分比|使用中記憶體的百分比。|
@@ -65,7 +65,7 @@ ms.locfileid: "96453327"
 
 深入瞭解如何在 [規劃的維護通知](./concepts-planned-maintenance-notification.md) 檔中設定通知。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需如何使用 Azure 入口網站、REST API 或 CLI 存取及匯出計量的詳細資訊，請參閱 [Azure 計量概觀](../azure-monitor/platform/data-platform.md)。
 - 請參閱[如何設定警示](howto-alert-metric.md)，取得根據計量來建立警示的指引。

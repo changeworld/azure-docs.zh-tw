@@ -3,15 +3,15 @@ title: 效能建議-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明適用於 MariaDB 的 Azure 資料庫中的效能建議功能
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: a20b8a43c8955e1afea7a7157e3e73425fb0d806
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5949c6ba1ed176a609d3ceed4150ac06855440e9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540462"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664311"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的效能建議
 
@@ -27,7 +27,7 @@ ms.locfileid: "94540462"
 
 [效能建議](concepts-performance-recommendations.md)功能可分析整部伺服器的工作負載，來找出可能可以改善效能的索引。
 
-在適用于 mariadb 伺服器的 [Azure 入口網站] 頁面上，從功能表列的 [ **智慧效能** ] 區段開啟 **效能建議** 。
+在適用于 mariadb 伺服器的 [Azure 入口網站] 頁面上，從功能表列的 [**智慧效能**] 區段開啟 **效能建議**。
 
 :::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="[效能建議] 登陸頁面":::
 

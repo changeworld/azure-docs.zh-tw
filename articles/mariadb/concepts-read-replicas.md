@@ -3,16 +3,16 @@ title: 讀取複本-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解適用於 MariaDB 的 Azure 資料庫中的讀取複本：選擇區域、建立複本、連接至複本、監視複寫，以及停止複寫。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 01/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: 39547e3156a684293a0624f974a8b0930f656485
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 375db7e5c113c2a48642365624207ce3acbde8a2
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98540011"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664209"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>「適用於 MariaDB 的 Azure 資料庫」中的讀取複本
 

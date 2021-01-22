@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d9a6eb572b1ab870fdb848f8b0989f88e6dbc3c0
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045949"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664039"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>瞭解數位 twins 及其對應項圖表
 
@@ -25,7 +25,9 @@ ms.locfileid: "98045949"
 
 您必須先將 *模型* 上傳至服務，才可以在 Azure 數位 Twins 實例中建立數位對應項。 模型描述特定對應項可以有的屬性、遙測訊息和關聯性集合，還有其他專案。 針對模型中所定義的資訊類型，請參閱 [*概念：自訂模型*](concepts-models.md)。
 
-建立並上傳模型之後，您的用戶端應用程式可以建立類型的實例;這是數位對應項。 例如，在建立 *樓層* 的模型之後，您可以建立一或多個使用此 (類型的數位 twins，例如名為 *GroundFloor*、另一個稱為 ) *Floor2* 等的 *樓層* 類型對應項。 
+建立並上傳模型之後，您的用戶端應用程式可以建立類型的實例;這是數位對應項。 例如，在建立 *樓層* 的模型之後，您可以建立一或多個使用此 (類型的數位 twins，例如名為 *GroundFloor*、另一個稱為 ) *Floor2* 等的 *樓層* 類型對應項。
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 ## <a name="relationships-a-graph-of-digital-twins"></a>關聯性：數位 twins 的圖形
 

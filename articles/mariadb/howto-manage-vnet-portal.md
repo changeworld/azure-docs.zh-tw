@@ -3,15 +3,15 @@ title: 管理 VNet 端點-Azure 入口網站-適用於 MariaDB 的 Azure 資料�
 description: 使用 Azure 入口網站建立及管理適用於 MariaDB 的 Azure 資料庫的 VNet 服務端點和規則
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5eaa7821c61010b322d8f9032c439df28c297f3d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e84d5d15073e7ff4f22b15556345e40b01a9c37b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540870"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665016"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 入口網站建立及管理適用於 MariaDB 的 Azure 資料庫的 VNet 服務端點和 VNet 規則
 
@@ -24,7 +24,7 @@ ms.locfileid: "94540870"
 
 1. 在 [MariaDB 伺服器] 頁面的 [設定] 標題下，按一下 [連線安全性]，以開啟適用於 MariaDB 的 Azure 資料庫的 [連線安全性] 窗格。
 
-2. 確定 [允許存取 Azure 服務] 控制項設定為 [ **關閉** ]。
+2. 確定 [允許存取 Azure 服務] 控制項設定為 [ **關閉**]。
 
 > [!Important]
 > 如果您將它設定為 ON，則您的 Azure 適用于 mariadb 資料庫伺服器會接受來自任何子網的通訊。 就安全性觀點而言，讓此控制項保持 [開啟] 可能使存取過多。 與適用於 MariaDB 的 Azure 資料庫的虛擬網路規則功能協調 Microsoft Azure 虛擬網路服務端點功能，可將您的安全性介面區降到一。
@@ -55,7 +55,7 @@ ms.locfileid: "94540870"
 
    ![VNet 服務端點已啟用且 VNet 規則已建立](./media/howto-manage-vnet-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 深入了解如何[在適用於 MariaDB 的 Azure 資料庫上設定 SSL](howto-configure-ssl.md)
 - 同樣地，您可以編寫指令碼，以[使用 Azure CLI 啟用 VNet 服務端點及建立適用於 MariaDB 的 Azure 資料庫的 VNET 規則](howto-manage-vnet-cli.md)。
 

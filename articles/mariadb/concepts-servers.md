@@ -3,15 +3,15 @@ title: 伺服器-適用於 MariaDB 的 Azure 資料庫
 description: 此主題提供使用適用於 MariaDB 的 Azure 資料庫伺服器的考量與指導方針。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 4d8293258083ea3e8d0172f510e5b41e91328736
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: abe17556d9ff62c44a33bfe4c4546a284785522e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541057"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664124"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的伺服器概念
 此文章提供使用適用於 MariaDB 的 Azure 資料庫伺服器的考量與指導方針。
@@ -61,7 +61,7 @@ ms.locfileid: "94541057"
 ## <a name="how-do-i-manage-a-server"></a>如何管理伺服器？
 您可以使用 Azure 入口網站或 Azure CLI 來管理「適用於 MariaDB 的 Azure 資料庫」伺服器。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 如需服務的概觀，請參閱[適用於 MariaDB 的 Azure 資料庫概觀](./overview.md)
 - 如需以您 **服務層級** 為依據之特定資源配額和限制的相關資訊，請參閱 [服務層級](./concepts-pricing-tiers.md)
 

@@ -3,15 +3,15 @@ title: 查詢效能深入解析-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明適用於 MariaDB 的 Azure 資料庫中的查詢效能深入解析功能
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: b643ba3305736480e06d7c10d594b2271839038f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9e8e4527ba1717b4d152f501a38c3c8f65faf70e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536327"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664226"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的查詢效能深入解析
 
@@ -43,7 +43,7 @@ ms.locfileid: "94536327"
 
 Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-insight.md)檢視會以視覺效果呈現來自查詢存放區的重要資訊。
 
-在適用於 MariaDB 的 Azure 資料庫伺服器的 [入口網站] 頁面中，選取功能表列的 [ **智慧型效能** ] 區段下的 **查詢效能深入解析** 。
+在適用於 MariaDB 的 Azure 資料庫伺服器的 [入口網站] 頁面中，選取功能表列的 [**智慧型效能**] 區段下的 **查詢效能深入解析**。
 
 ### <a name="long-running-queries"></a>長時間執行的查詢
 
@@ -56,7 +56,7 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 ### <a name="wait-statistics"></a>等候統計資料 
 
 > [!NOTE]
-> 等候統計資料的目的是為了針對查詢效能問題進行疑難排解。 建議您只針對疑難排解目的開啟此功能。 <br>如果您收到錯誤訊息，請 Azure 入口網站 " *DBforMariaDB ' 遇到的問題;無法完成要求。如果此問題持續發生或未預期，請洽詢支援人員以取得此資訊。* 」 在檢視等候統計資料時，請使用較短的時間週期。
+> 等候統計資料的目的是為了針對查詢效能問題進行疑難排解。 建議您只針對疑難排解目的開啟此功能。 <br>如果您收到錯誤訊息，請 Azure 入口網站 "*DBforMariaDB ' 遇到的問題;無法完成要求。如果此問題持續發生或未預期，請洽詢支援人員以取得此資訊。*」 在檢視等候統計資料時，請使用較短的時間週期。
 
 等候統計資料可讓您檢視執行特定查詢期間所發生的等候事件。 如需有關等候事件類型的詳細資訊，請參閱 [MySQL 引擎文件](https://go.microsoft.com/fwlink/?linkid=2098206)。
 

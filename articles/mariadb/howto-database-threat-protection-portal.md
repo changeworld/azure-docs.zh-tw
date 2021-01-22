@@ -3,15 +3,15 @@ title: Advanced 威脅防護-Azure 入口網站-適用於 MariaDB 的 Azure 資�
 description: 適用於 MariaDB 的 Azure 資料庫的威脅防護會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 7734feddabb1a4a86e7932da3ef4adc57352637e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 33bc93c62c32010e28cc8bb783bcef6f40700ca0
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542689"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665101"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的 Advanced 威脅防護
 
@@ -60,7 +60,7 @@ SQL Database 威脅偵測將自有的警示與 [Azure 資訊安全中心](https:
    ![威脅偵測警示](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入了解 [Azure 資訊安全中心](../security-center/security-center-introduction.md)
 * 如需定價的詳細資訊，請參閱 [適用於 MariaDB 的 Azure 資料庫定價頁面](https://azure.microsoft.com/pricing/details/mariadb/)

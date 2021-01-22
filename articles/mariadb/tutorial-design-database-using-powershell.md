@@ -3,17 +3,17 @@ title: 教學課程：設計伺服器 - Azure PowerShell - 適用於 MariaDB 的
 description: 本教學課程說明如何使用 PowerShell 來建立和管理「適用於 MariaDB 的 Azure 資料庫」伺服器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 9b4500df459e4d4ef67f97dc4fa923988f30401b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.openlocfilehash: 56d901ad05aa589ecf7f2ae97251be2b853f6c55
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023086"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664496"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-powershell"></a>教學課程：使用 PowerShell 來設計適用於 MariaDB 的 Azure 資料庫
 

@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: procha
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 88e9d83d7d7f9a139702d2af8142a43edc065f0d
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f207509baba2499adf5d5d00df0ccd0503a25491
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249377"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665186"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics 資料整合合作夥伴
 
@@ -38,8 +38,8 @@ ms.locfileid: "98249377"
 | ![Incorta](./media/sql-data-warehouse-partner-data-integration/incorta-logo.png) |**Incorta**<br>Incorta 可讓組織從原始資料開始，藉由自動化分析複雜資料時所需的各種資料準備步驟，在 Azure 中快速探索可操作的見解。 頻率. 利用稱為直接資料對應和 Incorta 藍圖的專屬技術 (預先建立的內容庫，以及從真實的客戶實作為所取得的最佳作法) ，客戶在存取、組織及呈現資料和深入解析時，都有前所未有的速度和簡單性，可進行重要的商務決策。|[產品頁面](https://www.incorta.com/solutions/microsoft-azure-synapse) \(英文\)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/incorta.incorta?tab=Overview)<br>|
 | ![Informatica](./media/sql-data-warehouse-partner-data-integration/informatica_logo.png) |**1. Informatica Cloud Services for Azure**<br> Informatica Cloud 能提供同級中最佳的自助資料移轉、整合和管理功能解決方案。 客戶可以從不同類型的來源快速且可靠地將數以 PB 計的資料針對 Azure 匯入及匯出。 Informatica Cloud Services for Azure 能針對 Azure Synapse、SQL Database、Blob 儲存體、Data Lake Store 和 Azure Cosmos DB 提供原生、大量且高效能的連線能力。 <br><br> **2. Informatica PowerCenter** PowerCenter 是中繼資料驅動的資料整合平台，可快速開始並加速資料整合專案，以比手動撰寫程式碼更快的速度為企業傳遞資料。 其可作為您資料整合投資的基礎 |**Informatica Cloud services for Azure**<br>[產品頁面](https://www.informatica.com/products/cloud-integration.html) \(英文\)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.iics-winter)<br><br> **Informatica PowerCenter**<br>[產品頁面](https://www.informatica.com/products/data-integration/powercenter.html) \(英文\)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/)<br>|
 | ![資訊建立器](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**資訊建立器 (全能資料管理)**<br>資訊建立器的全能資料管理平台提供資料整合、資料品質和主要資料管理解決方案。 不論格式、位置、磁碟區或延遲為何，都可以讓您輕鬆地存取、移動和混合所有資料。|[產品頁面](https://www.informationbuilders.com/3i-platform)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |
-| ![Loome](./media/sql-data-warehouse-partner-data-integration/loome-logo.png) |**Loome**<br>Loome 提供獨特的治理工作臺，可與 Azure Synapse 緊密整合。 它可讓您快速將資料上架到雲端，並以 Parquet 格式將整個資料來源載入 ADLS 中。 您可以跨資料工程、資料科學和大型計算工作負載來協調資料管線，包括與 Azure Data Factory、Python、SQL、Synapse Spark 及 Databricks 的原生整合。 Loome 可讓您輕鬆地監視資料品質例外狀況：啟用 Synapse 做為您的策略性資料品質中樞、維持已解決問題的審核記錄，並使用完全自動化的資料品質引擎主動管理資料品質，以產生物件導向的警示。| [產品頁面](https://www.loomesoftware.com ) \(英文\)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bizdataptyltd1592265042221.loome?tab=Overview) |
-| ![Lyftron](./media/sql-data-warehouse-partner-data-integration/lyftron-logo.png) |**Lyftron**<br>Lyftron 新式資料中樞結合了輕鬆的資料中樞與資料來源的敏捷式存取。 Lyftron 使用自動資料管線來消除傳統的 ETL/ELT 瓶頸，並使用 Azure Synapse、Spark & 雪花的新式雲端計算，讓 BI 使用者能立即存取資料。 Lyftron 連接器會自動將任何來源轉換成標準化、隨時可查詢的關聯式格式和複寫。 它透過簡單的 ANSI SQL 以及您企業資料目錄上的搜尋功能，提供了先進的安全性、資料治理和轉換。| [產品頁面](https://lyftron.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/lyftron.lyftronapp?tab=Overview) |
+| ![Loome](./media/sql-data-warehouse-partner-data-integration/loome-logo.png) |**Loome**<br>Loome 提供獨特的治理工作臺，可與 Azure Synapse 緊密整合。 它可讓您快速將資料上架到雲端，並以 Parquet 格式將整個資料來源載入 ADLS 中。 您可以跨資料工程、資料科學和 HPC 工作負載來協調資料管線，包括與 Azure Data Factory、Python、SQL、Synapse Spark 及 Databricks 的原生整合。 Loome 可讓您輕鬆地監視資料品質例外狀況，使 Synapse 成為策略性資料品質中樞。 Loome 會保留已解決問題的審核記錄，並使用完全自動化的資料品質引擎主動產生物件目標警示，以主動管理資料品質。| [產品頁面](https://www.loomesoftware.com) \(英文\)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/bizdataptyltd1592265042221.loome?tab=Overview) |
+| ![Lyftron](./media/sql-data-warehouse-partner-data-integration/lyftron-logo.png) |**Lyftron**<br>Lyftron 新式資料中樞結合了輕鬆的資料中樞與資料來源的敏捷式存取。 Lyftron 使用自動資料管線來消除傳統的 ETL/ELT 瓶頸，並使用 Azure Synapse、Spark & 雪花的新式雲端計算，讓 BI 使用者能立即存取資料。 Lyftron 連接器會自動將任何來源轉換成標準化、隨時可查詢的關聯式格式和複寫。 它透過簡單的 ANSI SQL 以及您企業資料目錄上的搜尋功能，提供了先進的安全性、資料治理和轉換。| [產品頁面](https://lyftron.com/) \(英文\)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/lyftron.lyftronapp?tab=Overview) |
 | ![Matillion](./media/sql-data-warehouse-partner-data-integration/matillion-logo.png) |**Matillion**<br>Matillion 是適用於雲端資料倉儲的資料轉換軟體。 只有 Matillion 是專為 Azure Synapse 建置，其能讓企業在簡化、速度、縮放和節省成本上達到全新的境界。 各種規模的公司對於 Matillion 產品滿足其資料整合和轉換需求的能力，都給予高度評價及信任。 深入了解如何使用 Matillion 的雲端式資料轉換方法，將資料的潛能發揮到最大。| [產品頁面](https://www.matillion.com/technology/cloud-data-warehouse/microsoft-azure-synapse/) \(英文\)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/matillion.matillion-etl-azure-synapse?tab=Overview) |
 | ![oh22 HEDDA.IO](./media/sql-data-warehouse-partner-data-integration/heddaiowhitebg-logo.png) |**oh22 HEDDA <span></span>.IO**<br>oh22 的 HEDDA<span></span>.IO 是專為 Microsoft Azure 建置的知識驅動資料品質產品。 它可讓您建立知識庫，並使用它來執行各種重要的資料品質工作，包括資料的更正、擴充和標準化。 HEDDA <span></span> 。IO 也可讓您使用參考資料提供者所提供或由您開發和提供的雲端式參考資料服務，進行資料清理。| [產品頁面](https://github.com/oh22is/HEDDA.IO) \(英文\)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/oh22.hedda-io) |
 | ![正是](./media/sql-data-warehouse-partner-data-integration/precisely-logo.png) |**正是**<br>精確地連接 ETL 可讓您從多個來源將資料的傳輸和載入 (ETL) 到 Azure 目標。 Connect ETL 是很容易設定的工具，不需要撰寫程式碼或微調。 ETL 轉換可以即時完成。 它不需要昂貴的資料庫預備區域或手動推送，可讓您建立自己的資料混合，並維持一致的持續性效能。 從多個來源（包括大型主機 DB2、VSAM、IMS、Oracle、SQL Server、Teradata）匯入舊版資料，並將它們寫入雲端目標，包括 Azure Databricks、Azure Synapse Analytics 和 Azure Data Lake Storage。 藉由使用高效能 Connect ETL 引擎，您可以預期最佳效能和一致性。|[產品頁面](https://www.precisely.com/solution/microsoft-azure) \(英文\)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/syncsort.dmx) |
@@ -55,5 +55,5 @@ ms.locfileid: "98249377"
 | ![Xplenty](./media/sql-data-warehouse-partner-data-integration/xplenty-logo.png) |**Xplenty**<br> Xplenty ELT 平臺可讓您使用簡單的雲端服務，快速且輕鬆地準備資料以進行分析和生產環境使用案例。 Xplenty 的點 & 按一下，拖曳 & drop 介面可進行資料整合、處理和準備，而不需要安裝、部署或維護任何軟體。 與一組廣泛的資料存放庫和 SaaS 應用程式（包括 Azure Synapse、Azure blob 儲存體及 SQL Server）進行連線及整合。 Xplenty 也支援可透過 Rest API 存取的所有 Web 服務。|[產品頁面](https://www.xplenty.com/integrations/azure-synapse-analytics/ ) \(英文\)<br> |
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 若要深入瞭解其他合作夥伴，請參閱 [商業智慧夥伴](sql-data-warehouse-partner-business-intelligence.md)、 [資料管理合作夥伴](sql-data-warehouse-partner-data-management.md)，以及 [Machine Learning 和 AI 合作夥伴](sql-data-warehouse-partner-machine-learning-ai.md)。

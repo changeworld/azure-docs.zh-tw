@@ -3,16 +3,16 @@ title: 管理讀取複本-Azure CLI、REST API 適用於 MariaDB 的 Azure 資�
 description: 本文說明如何使用 Azure CLI 和 REST API，在適用於 MariaDB 的 Azure 資料庫中設定和管理讀取複本。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 70da1e9c70bf80737065362c68781652dd9ab6e5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5ae413a1e0b5711a7c9c6bdec7317c62b4cb9733
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023630"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664948"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API，在適用於 MariaDB 的 Azure 資料庫中建立及管理讀取複本
 
@@ -21,7 +21,7 @@ ms.locfileid: "96023630"
 ## <a name="azure-cli"></a>Azure CLI
 您可以使用 Azure CLI 來建立及管理讀取複本。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
 - [安裝 Azure CLI 2.0](/cli/azure/install-azure-cli)
 - 將作為來源伺服器使用的 [適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md) 。 
@@ -45,7 +45,7 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
-| 名稱 | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
+| NAME | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 | source-server | mydemoserver | 要從中複寫之現有來源伺服器的名稱或識別碼。 |
 
 若要建立跨區域讀取複本，請使用 `--location` 參數。 
@@ -93,7 +93,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  複本伺服器所在的資源群組。  |
-| 名稱 | mydemoreplicaserver | 要停止複寫的複本伺服器名稱。 |
+| NAME | mydemoreplicaserver | 要停止複寫的複本伺服器名稱。 |
 
 ### <a name="delete-a-replica-server"></a>刪除複本伺服器
 

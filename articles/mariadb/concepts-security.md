@@ -3,15 +3,15 @@ title: 安全性-適用於 MariaDB 的 Azure 資料庫
 description: 概要說明適用於 MariaDB 的 Azure 資料庫中的安全性功能。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8a46f70e3089a8610fa8ca6362bcba6f624e2b1a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9e6ca797b1e982e1ef632ba99e9210e3c347a2f1
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541142"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664175"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫安全性
 
@@ -50,5 +50,5 @@ IP 防火牆規則會根據每個要求的原始 IP 位址來授與伺服器的�
 您可以使用[Audit 記錄](concepts-audit-logs.md)來追蹤資料庫中的活動。 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 啟用[ip](concepts-firewall-rules.md)或[虛擬網路](concepts-data-access-security-vnet.md)的防火牆規則

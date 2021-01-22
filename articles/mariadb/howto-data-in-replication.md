@@ -3,15 +3,15 @@ title: 設定資料-in Replication-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何在適用於 MariaDB 的 Azure 資料庫中設定資料輸入複寫。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/18/2021
-ms.openlocfilehash: 67e4da13d6954342b9979eb57a35c812cb63bb3e
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: ed1031bd45ca4f1223de9c0bce2053a393e3a2c6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539989"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665118"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>設定適用於 MariaDB 的 Azure 資料庫中的資料輸入複寫
 
@@ -315,6 +315,6 @@ CALL mysql.az_replication_remove_master;
 CALL mysql.az_replication_skip_counter;
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 深入了解「適用於 MariaDB 的 Azure 資料庫」的[資料輸入複寫](concepts-data-in-replication.md)。

@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7ddc13306f4adb1730169c4811b9d2227dedca33
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 481a4ff21c361e4cf82a21d9e98357a4c8b7b1b4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632761"
+ms.locfileid: "98663667"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>使用 SQL Server IaaS 代理程式擴充功能來自動化管理
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ SQL Server IaaS 代理程式延伸模組 (SqlIaasExtension) 會在 Azure 虛擬�
 
 ## <a name="overview"></a>概觀
 
-SQL Server IaaS 代理程式擴充功能可為 Azure Vm 上的 SQL Server 提供許多優點： 
+SQL Server IaaS 代理程式擴充功能可讓您與 Azure 入口網站整合，根據管理模式，會解除鎖定 Azure Vm 上 SQL Server 的許多功能優點： 
 
 - **功能優點**：此延伸模組會解除許多自動化功能的優點，例如入口網站管理、授權彈性、自動備份、自動修補等等。 如需詳細資訊，請參閱本文稍後的 [功能優勢](#feature-benefits) 。 
 
@@ -74,12 +74,13 @@ SQL Server IaaS 代理程式擴充功能會解除管理 SQL Server VM 的一些�
 
 | 功能 | 描述 |
 | --- | --- |
-| **連接埠管理** | 在 [入口網站](manage-sql-vm-portal.md)中解除鎖定管理，讓您可以在同一處查看所有 SQL Server vm，以便您可以直接從入口網站啟用和停用 SQL 特定功能。 
-| **自動備份** |為預設執行個體或在 VM 上[正確安裝](frequently-asked-questions-faq.md#administration)的 SQL Server 具名執行個體，自動化所有資料庫的備份排程。 如需詳細資訊，請參閱 [Azure 虛擬機器中的 SQL Server 自動備份 (Resource Manager)](automated-backup-sql-2014.md)。 |
-| **自動修補** |設定維護期間，在這段期間，您的 VM 有重要的 Windows 和 SQL Server 安全性更新可以進行，因此您可以在工作負載的尖峰時間內避免更新。 如需詳細資訊，請參閱 [Azure 虛擬機器中的 SQL Server 自動修補 (Resource Manager)](automated-patching.md)。 |
-| **Azure Key Vault 整合** |讓您在 SQL Server VM 上自動安裝和設定 Azure 金鑰保存庫。 如需詳細資訊，請參閱[在 Azure 虛擬機器上設定 SQL Server 的 Azure Key Vault 整合 (Resource Manager)](azure-key-vault-integration-configure.md)。 |
-| **彈性授權** | 從自備授權 (（也稱為「隨用隨付」授權模型的 Azure Hybrid Benefit) ） [順暢地轉換](licensing-model-azure-hybrid-benefit-ahb-change.md) ，以節省成本。 | 
-| **彈性版本/版本** | 如果您決定要變更[SQL Server 的](change-sql-server-edition.md)[版本](change-sql-server-version.md)，您可以更新 Azure 入口網站內的中繼資料，而不需要重新部署整個 SQL Server VM。  | 
+| **連接埠管理** | 在 [入口網站](manage-sql-vm-portal.md)中解除鎖定管理，讓您可以在同一處查看所有 SQL Server vm，以便您可以直接從入口網站啟用和停用 SQL 特定功能。 <br/> 管理模式：輕量 & 已滿|  
+| **自動備份** |為預設執行個體或在 VM 上[正確安裝](frequently-asked-questions-faq.md#administration)的 SQL Server 具名執行個體，自動化所有資料庫的備份排程。 如需詳細資訊，請參閱 [Azure 虛擬機器中的 SQL Server 自動備份 (Resource Manager)](automated-backup-sql-2014.md)。 <br/> 管理模式：完整|
+| **自動修補** |設定維護期間，在這段期間，您的 VM 有重要的 Windows 和 SQL Server 安全性更新可以進行，因此您可以在工作負載的尖峰時間內避免更新。 如需詳細資訊，請參閱 [Azure 虛擬機器中的 SQL Server 自動修補 (Resource Manager)](automated-patching.md)。 <br/> 管理模式：完整|
+| **Azure Key Vault 整合** |讓您在 SQL Server VM 上自動安裝和設定 Azure 金鑰保存庫。 如需詳細資訊，請參閱[在 Azure 虛擬機器上設定 SQL Server 的 Azure Key Vault 整合 (Resource Manager)](azure-key-vault-integration-configure.md)。 <br/> 管理模式：完整|
+| **在入口網站中查看磁片使用量** | 可讓您在 Azure 入口網站中，查看 SQL 資料檔案磁片使用量的圖形表示。  <br/> 管理模式：完整 | 
+| **彈性授權** | 從自備授權 (（也稱為「隨用隨付」授權模型的 Azure Hybrid Benefit) ） [順暢地轉換](licensing-model-azure-hybrid-benefit-ahb-change.md) ，以節省成本。 <br/> 管理模式：輕量 & 已滿| 
+| **彈性版本/版本** | 如果您決定要變更[SQL Server 的](change-sql-server-edition.md)[版本](change-sql-server-version.md)，您可以更新 Azure 入口網站內的中繼資料，而不需要重新部署整個 SQL Server VM。  <br/> 管理模式：輕量 & 已滿| 
 
 
 ## <a name="management-modes"></a>管理模式

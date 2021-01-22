@@ -3,15 +3,15 @@ title: 慢速查詢記錄-適用於 MariaDB 的 Azure 資料庫
 description: 描述適用於 MariaDB 的 Azure 資料庫中的可用記錄，以及啟用不同記錄層級的可用參數。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 11/6/2020
-ms.openlocfilehash: a5acf3b6447b2e3722a27951700138f756a99251
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 2d3c3c92cc4d0da38f18c7895f4f7f3f3385c653
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541108"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664158"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的查詢記錄緩慢
 在適用於 MariaDB 的 Azure 資料庫中，使用者可以使用慢速查詢記錄檔。 不支援存取交易記錄。 慢速查詢記錄檔可以用來找出效能瓶頸，以進行疑難排解。
@@ -25,11 +25,11 @@ ms.locfileid: "94541108"
 
 您可以調整的其他參數包含：
 
-- **long_query_time** ：如果查詢所需的時間比記錄該查詢的 long_query_time (秒) 還要久。 預設值是 10 秒。
-- **log_slow_admin_statements** ：如果 ON 在寫入至 slow_query_log 的陳述式中包含 ALTER_TABLE 和 ANALYZE_TABLE 這類管理陳述式。
-- **log_queries_not_using_indexes** ：決定是否將未使用索引的查詢記錄至 slow_query_log
-- **log_throttle_queries_not_using_indexes** ：這個參數會限制可寫入至慢速查詢記錄的非索引查詢次數。 log_queries_not_using_indexes 設為 ON 時，這個參數會生效。
-- **log_output** ：如果是 "File"，則會允許將慢速查詢記錄寫入本機伺服器儲存體和 Azure 監視器診斷記錄。 如果為「無」，則慢速查詢記錄只會寫入 Azure 監視器診斷記錄。 
+- **long_query_time**：如果查詢所需的時間比記錄該查詢的 long_query_time (秒) 還要久。 預設值是 10 秒。
+- **log_slow_admin_statements**：如果 ON 在寫入至 slow_query_log 的陳述式中包含 ALTER_TABLE 和 ANALYZE_TABLE 這類管理陳述式。
+- **log_queries_not_using_indexes**：決定是否將未使用索引的查詢記錄至 slow_query_log
+- **log_throttle_queries_not_using_indexes**：這個參數會限制可寫入至慢速查詢記錄的非索引查詢次數。 log_queries_not_using_indexes 設為 ON 時，這個參數會生效。
+- **log_output**：如果是 "File"，則會允許將慢速查詢記錄寫入本機伺服器儲存體和 Azure 監視器診斷記錄。 如果為「無」，則慢速查詢記錄只會寫入 Azure 監視器診斷記錄。 
 
 > [!IMPORTANT]
 > 如果您的資料表未編制索引，將 `log_queries_not_using_indexes` 和 `log_throttle_queries_not_using_indexes` 參數設定為 ON 可能會影響適用于 mariadb 效能，因為對這些非索引資料表執行的所有查詢都會寫入慢速查詢記錄中。<br><br>

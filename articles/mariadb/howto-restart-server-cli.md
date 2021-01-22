@@ -3,16 +3,16 @@ title: 重新開機伺服器-Azure CLI-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明如何使用 Azure CLI 來重新開機適用於 MariaDB 的 Azure 資料庫伺服器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ae69adfe83b871eb29c85fc4d03e817026ec006
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 50389c7c4e1f497e63c5221181713649a7b068c5
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541363"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664914"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>使用 Azure CLI 重新開機適用於 MariaDB 的 Azure 資料庫伺服器
 本主題說明如何重新啟動適用於 MariaDB 的 Azure 資料庫伺服器。 您可能會為了進行維護而需要重新啟動伺服器，進而在伺服器執行作業時導致短暫中斷。
@@ -31,7 +31,7 @@ ms.locfileid: "94541363"
  
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- 本文需要 Azure CLI 2.0 版或更新版本。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
+- 本文需要 2.0 版或更新版本的 Azure CLI。 如果您是使用 Azure Cloud Shell，就已安裝最新版本。
 
 
 ## <a name="restart-the-server"></a>重新啟動伺服器
@@ -42,6 +42,6 @@ ms.locfileid: "94541363"
 az mariadb server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 瞭解 [如何在適用於 MariaDB 的 Azure 資料庫中設定參數](howto-configure-server-parameters-cli.md)

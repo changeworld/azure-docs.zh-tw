@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 09/03/2020
-ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/20/2021
+ms.openlocfilehash: 5f9e7e1c96db2b60e41fe0ded69ea562cf8fcea6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790265"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663980"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>使用唯讀複本來卸載唯讀查詢工作負載
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -115,12 +115,12 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>唯讀複本上長時間執行的查詢
 
-在唯讀複本上執行的查詢需要存取查詢 (資料表中所參考物件的中繼資料，索引、統計資料等等 ) 在罕見的情況下，如果在主要複本上修改中繼資料物件，而查詢在唯讀複本上持有相同物件的鎖定，則查詢會 [封鎖](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) 將主要複本的變更套用至唯讀複本的進程。 如果這類查詢很長一段時間執行，就會導致唯讀複本與主要複本的同步處理明顯不同步。 
+在唯讀複本上執行的查詢需要存取查詢 (資料表中所參考物件的中繼資料，索引、統計資料等等 ) 在罕見的情況下，如果在主要複本上修改中繼資料物件，而查詢在唯讀複本上持有相同物件的鎖定，則查詢會 [封鎖](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK) 將主要複本的變更套用至唯讀複本的進程。 如果這類查詢很長一段時間執行，就會導致唯讀複本與主要複本的同步處理明顯不同步。
 
-如果唯讀複本上長時間執行的查詢導致這種封鎖，則會自動終止，而且會話將會收到錯誤1219：「您的會話因為高優先順序的 DDL 作業而中斷連線」。
+如果唯讀複本上長時間執行的查詢導致這種封鎖，則會自動終止。 此會話將會收到錯誤1219：「您的會話因為高優先順序的 DDL 作業而中斷連線」或錯誤3947」「交易已中止，因為次要計算無法趕上重做」。 請重試交易」。
 
 > [!NOTE]
-> 如果您在對唯讀複本執行查詢時收到錯誤3961或錯誤1219，請重試查詢。
+> 如果對唯讀複本執行查詢時收到錯誤3961、1219或3947，請重試查詢。
 
 > [!TIP]
 > 在 Premium 和業務關鍵服務層級中，當連接到唯讀複本時， `redo_queue_size` `redo_rate` [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) DMV 中的和資料行可用來監視資料同步處理常式，做為唯讀複本上的資料延遲指標。
@@ -195,6 +195,6 @@ Body: {
 > [!NOTE]
 > 異地複寫次要資料庫的複本之間沒有自動迴圈配置資源或任何其他負載平衡路由。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需 SQL Database 超大規模供應專案的詳細資訊，請參閱 [超大規模服務層級](service-tier-hyperscale.md)。

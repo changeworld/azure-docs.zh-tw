@@ -4,12 +4,12 @@ description: 了解如何建立私人 Azure Kubernetes Service (AKS) 叢集
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 2b0cc8a2fe9a45120bf0b74dbad5e107fd860845
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133390"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664362"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>建立私人 Azure Kubernetes Service 叢集
 
@@ -66,23 +66,23 @@ az aks create \
 > [!NOTE]
 > 如果 Docker 橋接器位址 CIDR (172.17.0.1/16) 與子網路 CIDR 衝突，請適當地變更 Docker 橋接器位址。
 
-### <a name="configure-private-dns-zone"></a>設定私人 DNS 區域
+## <a name="configure-private-dns-zone"></a>設定私人 DNS 區域
 
 您可以利用下列參數來設定私人 DNS 區域。
 
 1. "System" 是預設值。 如果省略--private-dns-zone 引數，AKS 會在 Node 資源群組中建立私人 DNS 區域。
 2. 「無」表示 AKS 將不會建立私人 DNS 區域。  這需要您攜帶自己的 DNS 伺服器，並設定私人 FQDN 的 DNS 解析。  如果您未設定 DNS 解析，則只能在代理程式節點內解析 DNS，並且在部署後會導致叢集問題。
-3. 「自訂私人 dns 區功能變數名稱稱」的格式應該適用于 azure 全球雲端： `privatelink.<region>.azmk8s.io` 。 使用者指派的身分識別或服務主體必須至少授 `private dns zone contributor` 與自訂私人 dns 區域的角色。
+3. 「自訂私人 dns 區功能變數名稱稱」的格式應該適用于 azure 全球雲端： `privatelink.<region>.azmk8s.io` 。 您將需要該私人 DNS 區域的資源識別碼。  此外，您還需要使用者指派的身分識別或服務主體，且至少 `private dns zone contributor` 要有自訂私人 dns 區域的角色。
 
-## <a name="no-private-dns-zone-prerequisites"></a>沒有私人 DNS 區域必要條件
+### <a name="prerequisites"></a>必要條件
 
-* Azure CLI 0.4.71 版或更新版本
+* AKS Preview 版本0.4.71 或更新版本
 * Api 版本2020-11-01 或更新版本
 
-## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>使用私人 DNS 區域建立私人 AKS 叢集
+### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>使用私人 DNS 區域建立私人 AKS 叢集
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>用來連線到私人叢集的選項
 

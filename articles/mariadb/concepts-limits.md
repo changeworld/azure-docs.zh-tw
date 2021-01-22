@@ -3,15 +3,15 @@ title: 限制 - 適用於 MariaDB 的 Azure 資料庫
 description: 本文說明適用於 MariaDB 的 Azure 資料庫有何限制，例如連線數量和儲存引擎選項。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 10/2/2020
-ms.openlocfilehash: d4546732f067988c9d7dd2d11c718a15fbe32d23
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: de561f0fdea7ea7085a4a1d3ec6f95071c36f57e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540649"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664294"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫相關限制
 下列各節說明資料庫服務中的容量、儲存引擎支援、權限支援、資料操作陳述式支援，以及功能限制。

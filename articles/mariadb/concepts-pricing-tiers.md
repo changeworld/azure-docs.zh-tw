@@ -3,15 +3,15 @@ title: 定價層 - 適用於 MariaDB 的 Azure 資料庫
 description: 瞭解適用於 MariaDB 的 Azure 資料庫的各種定價層，包括計算世代、儲存體類型、儲存體大小、虛擬核心、記憶體和備份保留期限。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: b5b5a506b2f932d20a617634ace7ebf02093fbfa
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6c786ea80ecbe2f174d8c3b701316791e1b6104f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536280"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664243"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>適用於 MariaDB 的 Azure 資料庫定價層
 
@@ -110,6 +110,6 @@ ms.locfileid: "94536280"
 
 如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/mariadb/)。 若要查看您所需的設定成本，[Azure 入口網站](https://portal.azure.com/#create/Microsoft.MariaDBServer)會根據您選取的選項，在 [定價層] 索引標籤中顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 價格計算機](https://azure.microsoft.com/pricing/calculator/)網站上選取 [新增項目]，展開 [資料庫] 類別，並選擇 [適用於 MariaDB 的 Azure 資料庫] 以自訂選項。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - 瞭解 [服務限制](concepts-limits.md)。
 - 了解如何[在 Azure 入口網站中建立 MariaDB 伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)。

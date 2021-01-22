@@ -3,16 +3,16 @@ title: 快速入門：連線至 MySQL Workbench - 適用於 MariaDB 的 Azure �
 description: 本快速入門提供的步驟，可讓您使用 MySQL Workbench 連線及查詢來自「適用於 MariaDB 的 Azure 資料庫」的資料。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.openlocfilehash: 209c793903f1f706fc27102a783aa76e65382fcd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: HT
+ms.openlocfilehash: f4426e1d1b22c521dc436dc7e304d57e57b1812c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541091"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664379"
 ---
 # <a name="quickstart-azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>快速入門：適用於 MariaDB 的 Azure 資料庫：使用 MySQL Workbench 連線並查詢資料
 

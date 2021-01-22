@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6e738152e542617046834980d3e7c58e497093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005900"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664676"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows 停止錯誤 - 狀態無記憶體
 
@@ -27,7 +27,7 @@ ms.locfileid: "87005900"
 
 ## <a name="symptom"></a>徵狀
 
-當您使用 [開機診斷](./boot-diagnostics.md) 來查看虛擬機器 (VM) 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示錯誤碼： `0xC0000017` 。 視您正在執行的 Windows 版本而定，您可能會看到此程式碼顯示在 **Windows 開機管理** 程式或 **修復畫面**中。
+當您使用 [開機診斷](./boot-diagnostics.md) 來查看虛擬機器 (VM) 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示錯誤碼： `0xC0000017` 。 視您正在執行的 Windows 版本而定，您可能會看到此程式碼顯示在 **Windows 開機管理** 程式或 **修復畫面** 中。
 
    **Windows 開機管理程式**
 
@@ -44,6 +44,9 @@ ms.locfileid: "87005900"
 ## <a name="solution"></a>解決方法
 
 ### <a name="process-overview"></a>程序概觀：
+
+> [!TIP]
+> 如果您有最新的 VM 備份，您可以嘗試 [從備份還原 vm](../../backup/backup-azure-arm-restore-vms.md) 以修正開機問題。
 
 1. 建立和存取修復 VM
 1. 釋放磁片上的空間
@@ -66,7 +69,7 @@ ms.locfileid: "87005900"
 
 1. 在 Windows 搜尋中，輸入 `diskmgmt` 並開啟 **磁片管理主控台**。
 1. 識別連接至修復 VM 的已中斷磁片。 一般而言，此磁片會在主控台中最後列出，而且具有最大的數值。
-1. 請注意，如果在該磁片中有一個保存 **EFI 系統磁碟分割**的磁碟分割，也就是沒有指派給它的字母值 (例如磁片磁碟機 *F：*) 。 如果已指派所有磁碟分割，您可以直接跳過以釋出磁片上的空間。 否則，請繼續將字母指派至此磁片。
+1. 請注意，如果在該磁片中有一個保存 **EFI 系統磁碟分割** 的磁碟分割，也就是沒有指派給它的字母值 (例如磁片磁碟機 *F：*) 。 如果已指派所有磁碟分割，您可以直接跳過以釋出磁片上的空間。 否則，請繼續將字母指派至此磁片。
 
    ![磁片管理主控台的連接磁片「磁片2」，以及 100 MB 的未指派磁碟分割，也是「EFI 系統磁碟分割」。](./media/troubleshoot-windows-stop-error/3.png)
 
@@ -93,7 +96,7 @@ ms.locfileid: "87005900"
 
 既然中斷的磁片已連接至修復 VM，您應該確認該磁片上的 OS 有足夠的空間可正常運作。 
 
-1. 以滑鼠右鍵按一下連接的磁片磁碟機，然後選取 [內容]，檢查磁片是否已**滿。**
+1. 以滑鼠右鍵按一下連接的磁片磁碟機，然後選取 [內容]，檢查磁片是否已 **滿。**
 1. 如果磁片的 **可用空間少於 300 Mb**，請 [使用 PowerShell 將它擴充到最大 1 Tb](../windows/expand-os-disk.md)。
 1. 一旦磁片大小為 **1 Tb**，您就必須執行磁片清理。 您可以使用 [ [磁片清理] 工具](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) 來釋放空間。
 1. 開啟提升許可權的命令提示字元 (以系統管理員身分) 實例執行，並在磁片磁碟機上執行還原片段：
@@ -141,7 +144,7 @@ ms.locfileid: "87005900"
    1. 展開 **HKEY_LOCAL_MACHINE** 以查看您已新增的新 BROKENSYSTEM 金鑰。
 1. 使用登錄編輯程式，判斷電腦的開機 ControlSet。
    1. 流覽至 **HKEY_LOCAL_MACHINE >> BROKENSYSTEM >> 選取**。
-   1. 在所列的索引鍵中，記下目前的資料值。 例如，如果這個值是 **1** 或 **0x00000001 (1) **，則會 ControlSet001 控制項集。
+   1. 在所列的索引鍵中，記下目前的資料值。 例如，如果這個值是 **1** 或 **0x00000001 (1)**，則會 ControlSet001 控制項集。
 1. 檢查已設定分頁檔建立的位置。
    1. 在 HKEY_LOCAL_MACHINE\BROKENSYSTEM 中，展開符合您在步驟4中所識別之 ControlSet 號碼的目錄，例如 **ControlSet001**。
    1. 流覽至 **控制項 >> 會話管理員 >> 記憶體管理** ，並記下 **ExistingPageFiles** 金鑰的位置。
@@ -174,7 +177,7 @@ ms.locfileid: "87005900"
       ``
    
    - 在命令中，以 `<LETTER OF THE EFI SYSTEM PARTITION>` EFI 系統磁碟分割的字母取代。
-   - 啟動磁片管理主控台來識別標示為 **EFI 系統磁碟分割**的適當系統磁碟分割可能很有説明。
+   - 啟動磁片管理主控台來識別標示為 **EFI 系統磁碟分割** 的適當系統磁碟分割可能很有説明。
    - 識別碼可以是唯一的 GUID，也可以是預設的 **bootmgr**。
 
 1. 執行下列命令以啟用序列主控台：
@@ -189,7 +192,7 @@ ms.locfileid: "87005900"
 
 1. 確認 OS 磁碟上的可用空間大於 VM 上的記憶體大小 (RAM)。
 
-   如果 OS 磁碟上沒有足夠的空間，請變更記憶體傾印檔案的建立位置，並將該位置指向任何已與 VM 連結且具有足夠可用空間的資料磁碟位置。 若要變更位置，請使用下列命令中的資料磁片磁碟機號（例如磁片磁碟機**F：**）來取代 **% SystemRoot%** 。
+   如果 OS 磁碟上沒有足夠的空間，請變更記憶體傾印檔案的建立位置，並將該位置指向任何已與 VM 連結且具有足夠可用空間的資料磁碟位置。 若要變更位置，請使用下列命令中的資料磁片磁碟機號（例如磁片磁碟機 **F：**）來取代 **% SystemRoot%** 。
 
    啟用 OS 傾印的建議設定：
 

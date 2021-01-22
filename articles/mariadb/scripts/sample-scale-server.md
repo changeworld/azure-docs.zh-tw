@@ -3,17 +3,17 @@ title: CLI 指令碼 - 調整伺服器 - 適用於 MariaDB 的 Azure 資料庫
 description: 此範例 CLI 指令碼會在查詢計量之後，將「適用於 MariaDB 的 Azure 資料庫」伺服器調整為不同的效能等級。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: 71a2ad5b8d09812eb999ab75a3522caf5a8dd20a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: HT
+ms.openlocfilehash: ac59ee30b75f4d6cab7d773b3561fcea542cb778
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536620"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664546"
 ---
 # <a name="monitor-and-scale-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 監視和調整適用於 MariaDB 的 Azure 資料庫伺服器
 此範例 CLI 指令碼會在查詢計量之後，對單一「適用於 MariaDB 的 Azure 資料庫」伺服器調整計算和儲存。 計算可以擴大或縮小。 儲存體只能擴大。

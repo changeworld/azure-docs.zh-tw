@@ -3,15 +3,15 @@ title: 伺服器參數-適用於 MariaDB 的 Azure 資料庫
 description: 本主題提供在適用於 MariaDB 的 Azure 資料庫中設定伺服器參數的指導方針。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 7797ee9d20b33a25c1b51289036651c7ad9f22a1
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: ca1acfd6891c9389363fceb7eccec6f460537399
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247493"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664141"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫中的伺服器參數
 
@@ -233,7 +233,7 @@ MariaDB 會根據在建立資料表期間所提供的設定，將 InnoDB 資料�
 
 未列在此的其他伺服器參數會設定為其 [MariaDB](https://mariadb.com/kb/en/server-system-variables/) 的 MariaDB 預設值。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 瞭解如何 [使用 Azure 入口網站設定伺服器參數](./howto-server-parameters.md)
 - 瞭解如何 [使用 Azure CLI 設定伺服器參數](./howto-configure-server-parameters-cli.md)

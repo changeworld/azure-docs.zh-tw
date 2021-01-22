@@ -3,15 +3,15 @@ title: Private Link-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解適用於 MariaDB 的 Azure 資料庫私用連結的運作方式。
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: ec43fa995fc9772964db399baa0b6f8c2a7db1db
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 12f52cd497d606fda6bbea9b54f467522373eeb7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241492"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665135"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的 Private Link
 
@@ -116,7 +116,7 @@ Private Link 可讓您為適用於 MariaDB 的 Azure 資料庫建立私人端點
 
 如果您想要完全依賴私人端點來存取其適用於 MariaDB 的 Azure 資料庫，您可以在資料庫伺服器上設定 **拒絕公用網路存取** 設定，以停用 [防火牆規則](concepts-firewall-rules.md)和 [VNet 服務) 端點](concepts-data-access-security-vnet.md) (的所有公用端點設定。 
 
-當此設定設為 *[是]* 時，只允許透過私人端點連線到您的適用於 MariaDB 的 Azure 資料庫。 當此設定設為 [ *否* ] 時，用戶端可以根據您的防火牆或 VNet 服務端點設定來連線到您的適用於 MariaDB 的 Azure 資料庫。 此外，一旦設定私人網路的值之後，客戶就無法新增及/或更新現有的「防火牆規則」和「VNet 服務端點規則」。
+當此設定設為 *[是]* 時，只允許透過私人端點連線到您的適用於 MariaDB 的 Azure 資料庫。 當此設定設為 [ *否*] 時，用戶端可以根據您的防火牆或 VNet 服務端點設定來連線到您的適用於 MariaDB 的 Azure 資料庫。 此外，一旦設定私人網路的值之後，客戶就無法新增及/或更新現有的「防火牆規則」和「VNet 服務端點規則」。
 
 > [!Note]
 > 這項功能適用于所有的 Azure 區域，其中適用於 PostgreSQL 的 Azure 資料庫單一伺服器支援一般用途和記憶體優化定價層。

@@ -3,16 +3,16 @@ title: 管理讀取複本-Azure PowerShell-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解如何使用 PowerShell 在適用於 MariaDB 的 Azure 資料庫中設定和管理讀取複本。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 713f99f67706caded0694d88ece220373920e555
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 43f0de153a19c0ee7ef44539407c0af4fda61c72
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250514"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664982"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>如何使用 PowerShell 在適用於 MariaDB 的 Azure 資料庫中建立及管理讀取複本
 
@@ -107,7 +107,7 @@ Remove-AzMariaDbServer -Name mydemoreplicaserver -ResourceGroupName myresourcegr
 Remove-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 > [!div class="nextstepaction"]
 > [使用 PowerShell 重新開機適用於 MariaDB 的 Azure 資料庫伺服器](howto-restart-server-powershell.md)

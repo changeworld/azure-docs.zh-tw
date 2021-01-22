@@ -3,17 +3,17 @@ title: CLI 指令碼 - 變更伺服器參數 - 適用於 MariaDB 的 Azure 資�
 description: 這個範例 CLI 指令碼會列出適用於 MariaDB 的 Azure 資料庫所有可用伺服器組態和更新。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 12/02/2019
-ms.openlocfilehash: c7a46f98f74648ccae9f9f9f94c218d42056decb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
-ms.translationtype: HT
+ms.openlocfilehash: 41b298b60377b8f6b3ad667157f8915876a0baa8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536800"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664643"
 ---
 # <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>使用 Azure CLI 列出及更新適用於 MariaDB 的 Azure 資料庫伺服器組態
 這個範例 CLI 指令碼會列出所有可用的組態參數，以及其對於「適用於 MariaDB 的 Azure 資料庫」伺服器的允許值，並將 innodb_lock_wait_timeout 設定為預設值以外的值。

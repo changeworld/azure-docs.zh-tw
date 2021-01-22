@@ -3,15 +3,15 @@ title: 選取正確的部署類型-適用於 MariaDB 的 Azure 資料庫
 description: 本文說明在您將適用於 MariaDB 的 Azure 資料庫部署為基礎結構即服務 (IaaS) 或平臺即服務 (PaaS) 之前應考慮的因素。
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: d8885e374142b3d916803fc472ae18351ca6d470
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 921ad8d187f6c2478bdf92aab0ee0ec3c9e75bce
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240268"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664513"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>在 Azure 中選擇正確的適用于 mariadb 伺服器選項
 
@@ -49,7 +49,7 @@ ms.locfileid: "93240268"
 
 有幾個因素會影響您的決定選擇 PaaS 或 IaaS 來裝載您的適用于 mariadb 資料庫。
 
-### <a name="cost"></a>Cost
+### <a name="cost"></a>成本
 
 有限的資金通常是決定裝載資料庫最佳解決方案的主要考慮。 無論是只有極少現金的新創公司，或是在有規模公司中受到嚴格的預算限制下運作的小組，都會以 TCO 作為主要考量。 本節說明 Azure 中適用于 Azure Vm 上適用於 MariaDB 的 Azure 資料庫和適用于 mariadb 的計費和授權基本概念。
 

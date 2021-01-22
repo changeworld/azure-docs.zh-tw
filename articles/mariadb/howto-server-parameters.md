@@ -3,15 +3,15 @@ title: 設定伺服器參數-Azure 入口網站-適用於 MariaDB 的 Azure 資�
 description: 此文章說明如何使用 Azure 入口網站，在適用於 MariaDB 的 Azure 資料庫中設定 MariaDB 伺服器參數。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 10/1/2020
-ms.openlocfilehash: 7081535bb709e6731a9a15436334e8742e7bdd08
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: cda6b2bd3d49bd71b4c57d5d459c07b61addb493
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539451"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664795"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>使用 Azure 入口網站在適用於 MariaDB 的 Azure 資料庫中設定伺服器參數
 

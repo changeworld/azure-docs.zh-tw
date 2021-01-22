@@ -3,15 +3,15 @@ title: 疑難排解連接問題-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解如何對適用於 MariaDB 的 Azure 資料庫的連接問題進行疑難排解，包括需要重試的暫時性錯誤、防火牆問題和中斷。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: b9a670472529dccd51cbfa71e385151bc63cff9b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 50bb6fc008e381855923da801b65198bf712f826
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020733"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664727"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>針對適用於 MariaDB 的 Azure 資料庫的連線問題進行疑難排解
 
@@ -56,6 +56,6 @@ ms.locfileid: "96020733"
 3. 請確認您的連接字串和其他連線設定。 請檢閱[如何將應用程式連線至適用於 MariaDB 的 Azure 資料庫](howto-connection-string.md)。
 4. 檢查儀表板中的服務健康情況。 如果您認為有區域中斷，請參閱 [使用適用於 MariaDB 的 Azure 資料庫的商務持續性總覽](concepts-business-continuity.md) ，以取得復原到新區域的步驟。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * [處理適用於 MariaDB 的 Azure 資料庫的暫時性連線錯誤](concepts-connectivity.md)

@@ -3,17 +3,17 @@ title: 備份和還原-Azure CLI-適用於 MariaDB 的 Azure 資料庫
 description: 了解如何使用 Azure CLI，在適用於 MariaDB 的 Azure 資料庫中備份和還原伺服器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a6e46efd7f998437c3998df9a989ef9e1500e888
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ceda6c99493818042aa281ab545465e91493a80e
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539578"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664829"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>如何使用 Azure CLI 在適用於 MariaDB 的 Azure 資料庫中備份和還原伺服器
 
@@ -100,7 +100,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
 
-此命令會在美國東部建立一個名為 *mydemoserver-georestored* 、將屬於 *myresourcegroup* 的新伺服器。 這是一般用途、具有 8 個 vCore 的第 5 代伺服器。 此伺服器是從 *mydemoserver* (同樣位於 *myresourcegroup* 資源群組) 的異地備援備份建立的
+此命令會在美國東部建立一個名為 *mydemoserver-georestored*、將屬於 *myresourcegroup* 的新伺服器。 這是一般用途、具有 8 個 vCore 的第 5 代伺服器。 此伺服器是從 *mydemoserver* (同樣位於 *myresourcegroup* 資源群組) 的異地備援備份建立的
 
 如果您想要在與現有伺服器不同的來源群組中建立新伺服器，則在 `--source-server` 參數中，您將限定伺服器名稱，如以下範例所示：
 

@@ -3,15 +3,15 @@ title: 管理伺服器-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 瞭解如何從 Azure 入口網站管理適用於 MariaDB 的 Azure 資料庫伺服器。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b492e04629f23c991c1c5d69dd5e2c472676d37a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005022"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664396"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>使用 Azure 入口網站管理適用於 MariaDB 的 Azure 資料庫伺服器
 本文說明如何管理您的適用於 MariaDB 的 Azure 資料庫伺服器。 管理工作包括計算和儲存體調整、管理員密碼重設，以及查看伺服器詳細資料。

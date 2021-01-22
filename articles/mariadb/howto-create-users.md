@@ -3,15 +3,15 @@ title: 建立使用者-適用於 MariaDB 的 Azure 資料庫
 description: 本文描述如何建立新的使用者帳戶，來與「適用於 MariaDB 的 Azure 資料庫」伺服器互動。
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 01/18/2021
-ms.openlocfilehash: 28ec060e95d09cb150fc699919dde6cc0e1eaf23
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 146495947ba06bd74fea6113e57d950d29e29286
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539969"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663701"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中建立使用者
 
@@ -98,7 +98,7 @@ ms.locfileid: "98539969"
 
 所有適用於 MySQL 的 Azure 資料庫伺服器都會以名為 "azure_superuser" 的使用者建立。 這是 Microsoft 所建立的系統帳戶，用來管理伺服器以進行監視、備份和其他定期維護。 待命工程師也可以使用此帳戶在具有憑證驗證的事件期間存取伺服器，而且必須使用即時 (JIT) 處理常式來要求存取權。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 針對新使用者電腦的 IP 位址開啟防火牆，讓使用者能夠連線：[使用 Azure 入口網站建立及管理適用於 MariaDB 的 Azure 資料庫防火牆規則](howto-manage-firewall-portal.md)  
 

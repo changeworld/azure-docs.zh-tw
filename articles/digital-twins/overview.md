@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: HT
+ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400602"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664022"
 ---
 # <a name="what-is-azure-digital-twins"></a>什麼是 Azure Digital Twins？
 
@@ -33,6 +33,8 @@ ms.locfileid: "97400602"
 在 Azure Digital Twins 中，您可以使用稱為 [**模型**](concepts-models.md) 的自訂對應項類型，來定義代表實體環境中人員、地點和事物的數位實體。 
 
 您可以將這些模型定義視為專門的詞彙來描述您的業務。 例如，針對建築物管理解決方案，您可以定義模型 (例如「建築物」、「樓層」和「電梯」)。 然後，您可以根據這些模型建立 **數位分身**，藉此代表您的特定環境。
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 模型是以類似 JSON 的語言定義，稱為 [數位分身定義語言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)，並以其狀態屬性、遙測事件、命令、元件和關聯性來描述對應項。
 * 模型會定義實體之間的語義 **關聯性**，讓您可以將對應項 連線至反映其互動的知識圖表。 您可以在現實環境的描述中，將模型視為名詞，並將關聯性視為動詞。
