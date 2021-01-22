@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 3b20773de62f036b507f1612f2b38d613d54ba2f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: HT
+ms.openlocfilehash: d3d9f41876cf1310fe25a275624f609031c05b00
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485190"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601890"
 ---
 # <a name="what-is-the-speech-service"></a>什麼是語音服務？
 
@@ -36,7 +36,7 @@ ms.locfileid: "96485190"
 | [文字轉換語音](text-to-speech.md) | 文字轉換語音 | 文字轉語音會使用[語音合成標記語言 (SSML)](speech-synthesis-markup.md) 將輸入文字轉換為仿真人的合成語音。 可選擇標準語音和類神經語音 (請參閱[語言支援](language-support.md))。 | [是](./speech-sdk.md) | [是](#reference-docs) |
 | | [建立自訂語音](#customize-your-speech-experience) | 建立您品牌或產品專有的自訂聲音音調。 | 否 | [是](#reference-docs) |
 | [語音翻譯](speech-translation.md) | 語音翻譯 | 語音翻譯可讓您在應用程式、工具和裝置上使用即時且多語言的語音翻譯。 此服務可用於語音轉語音及語音轉文字翻譯。 | [是](./speech-sdk.md) | 否 |
-| [語音助理](voice-assistants.md) | 語音助理 | 使用語音服務的語音助理能賦予開發人員建立自然、擬人的對話介面，供其應用程式和體驗之用。 語音助理服務能在裝置和助理實作之間提供迅速且可靠的互動；該助理實作會使用 Bot Framework 的 Direct Line 語音頻道，或是整合的自訂命令 (預覽) 服務來完成工作。 | [是](voice-assistants.md) | 否 |
+| [語音助理](voice-assistants.md) | 語音助理 | 使用語音服務的語音助理能賦予開發人員建立自然、擬人的對話介面，供其應用程式和體驗之用。 語音助理服務能在裝置和助理實作之間提供迅速且可靠的互動；該助理實作會使用 Bot Framework 的 Direct Line 語音頻道，或是整合的自訂命令服務來完成工作。 | [是](voice-assistants.md) | 否 |
 | [說話者辨識](speaker-recognition-overview.md) | 說話者驗證與識別 | 說話者辨識服務提供以唯一語音特性驗證和識別說話者的演算法。 說話者辨識是用來回答「誰在說話？」的問題。 | 是 | [是](/rest/api/speakerrecognition/) |
 
 

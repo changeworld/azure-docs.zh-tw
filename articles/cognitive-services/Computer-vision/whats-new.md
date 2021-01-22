@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 12/15/2020
+ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: 98b8cca95b8815b32fb5de6567adcf4f150551eb
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
-ms.translationtype: HT
+ms.openlocfilehash: 33987be39258adc74cf4f88dbb0544f7026f6086
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561965"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183348"
 ---
 # <a name="whats-new-in-computer-vision"></a>電腦視覺的新功能
 
 了解該服務的新功能。 這些項目可能是版本資訊、影片、部落格文章與其他類型的資訊。 將此頁面加入書籤，以掌握服務的最新狀態。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="spatial-analysis-container-update"></a>空間分析容器更新
+
+已發行具有新功能集的新版[空間分析容器](spatial-analysis-container.md)。 此 Docker 容器可讓您分析即時串流影片，透過實體環境了解人員之間的空間關聯性，以及移動情況。 
+
+* [空間分析作業](spatial-analysis-operations.md)現在可以設定為偵測某個人是否戴著面罩這類的臉部保護覆蓋物。 
+    * 您可以藉由設定 `ENABLE_FACE_MASK_CLASSIFIER` 參數，為 `personcount`、`personcrossingline` 和 `personcrossingpolygon` 作業啟用面罩分類器。
+    * `face_mask` 和 `face_noMask` 屬性會以中繼資料的形式傳回，且影片串流中所偵測到的每個人都會有信賴分數
+
 
 ## <a name="october-2020"></a>2020 年 10 月
 

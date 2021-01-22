@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
-ms.translationtype: HT
+ms.openlocfilehash: a5a44b9d27901fcd00f8813096de6bbae5f2310d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88796794"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179940"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>快速入門：將 Unity 範例部署至 HoloLens
 
@@ -48,7 +48,7 @@ ms.locfileid: "88796794"
 1. 如需專案的「快速入門」，請移至 [屬性] > [偵錯]
     1. 請確定 [版本] 設定為作用中
     1. 將 [要啟動的偵錯工具] 設定為 [遠端電腦]
-    1. 將 [電腦名稱] 變更為 [HoleLens 的 IP]
+    1. 將 [電腦名稱] 變更為 [HoloLens 的 IP]
 
 ## <a name="launch-the-sample-project"></a>啟動範例專案
 

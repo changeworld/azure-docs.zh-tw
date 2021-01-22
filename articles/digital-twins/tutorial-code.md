@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: fd958c09a14334d8230e52413c590febb2148851
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: 37bd7d91dfe9e4b9e620f89e7504331d8f631a6a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048943"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602131"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>教學課程：使用 Azure Digital Twins API 撰寫程式碼
 
@@ -57,9 +57,12 @@ dotnet new console
 
 讓命令視窗保持開啟，因為整個教學課程都要繼續使用。
 
-接下來，**將兩個相依性新增至您的專案**，以使用 Azure Digital Twins。 您可以使用下列連結瀏覽至 NuGet 上的套件，在其中找到主控台命令 (包括 .NET CLI 可用的命令)，將每個套件的最新版本新增至您的專案。
-* [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core)。 這是適用於[適用於 .NET 的 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的套件。
-* [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). 此程式庫會提供協助驗證 Azure 的工具。
+接下來，**將兩個相依性新增至您的專案**，以使用 Azure Digital Twins。 第一個是[適用於 .NET 的 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 的套件，第二個則會提供協助驗證 Azure 的工具。
+
+```cmd/sh
+dotnet add package Azure.DigitalTwins.Core
+dotnet add package Azure.Identity
+```
 
 ## <a name="get-started-with-project-code"></a>開始使用專案程式碼
 

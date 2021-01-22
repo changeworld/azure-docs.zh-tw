@@ -4,13 +4,13 @@ description: 本文會定期更新 Azure 認知服務 Language Understanding API
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/05/2021
-ms.openlocfilehash: 4591bc26c848032d1c0f8b96720c4ec66b9b064d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.date: 01/12/2021
+ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916349"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179124"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding 的新功能
 
@@ -18,10 +18,14 @@ ms.locfileid: "97916349"
 
 ## <a name="release-notes"></a>版本資訊
 
+### <a name="january-2021"></a>2021 年 1 月
+
+* V3 預測 API 現在支援 [Bing 拼字檢查 API](luis-how-to-publish-app.md#spelling-correction)。
+
 ### <a name="december-2020"></a>2020 年 12 月
 
 * 所有 LUIS 使用者都必須 [遷移至 LUIS 撰寫資源](luis-migration-authoring.md)
-* 新的 [評估端點](luis-how-to-batch-test.md#batch-testing-using-the-rest-api) 讓您可以使用 REST API 提交批次測試，並取得意圖和實體的正確性結果。 從 v3.0-preview LUIS 端點開始提供。
+* 新的[評估端點](luis-how-to-batch-test.md#batch-testing-using-the-rest-api)讓您可以使用 REST API 提交批次測試，並取得意圖和實體的正確性結果。 從 v3.0-preview LUIS 端點開始提供。
 
 ### <a name="june-2020"></a>2020 年 6 月
 
