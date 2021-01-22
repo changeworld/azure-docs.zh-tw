@@ -1,4 +1,4 @@
-- name: IoT 中樞文件
+- name: IoT 中樞檔
   href: index.yml
 - name: 概觀
   items:
@@ -481,6 +481,8 @@
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: TLS 1.0 和 1.1 淘汰
           href: iot-hub-tls-deprecating-1-0-and-1-1.md
+        - name: 傳統 IP 篩選器
+          href: iot-hub-ip-filter-classic.md
 - name: 資源
   items:
     - name: 支援和協助選項

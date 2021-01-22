@@ -1,6 +1,6 @@
 - name: Azure 防火牆文件
   href: index.yml
-- name: 總覽
+- name: 概觀
   items:
     - name: 何謂 Azure 防火牆？
       href: overview.md
@@ -58,6 +58,8 @@
       href: fqdn-filtering-network-rules.md
     - name: 安全性基準
       href: security-baseline.md
+    - name: 主動式 FTP 支援
+      href: active-ftp-support.md
 - name: 操作指南
   items:
     - name: 使用 Azure PowerShell 進行部署

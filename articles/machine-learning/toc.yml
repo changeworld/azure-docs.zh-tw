@@ -70,10 +70,6 @@
         - name: 標籤影像資料
           displayName: 'tag, tagging, images'
           href: tutorial-labeling.md
-    - name: R SDK
-      items:
-        - name: 建立第一個 ML 實驗 (R)
-          href: tutorial-1st-r-experiment.md
     - name: CLI
       items:
         - name: 使用 CLI 定型和部署

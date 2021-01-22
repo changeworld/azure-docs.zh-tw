@@ -1,19 +1,19 @@
 ---
 title: 適用於 FHIR 的 Azure API 之內建原則定義
 description: 列出適用於 FHIR 的 Azure API 之 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 author: matjazl
 ms.author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: dab9ff889db9665026090a6a470153e72a73768d
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: b7ab4a4c97b76d6775cf66138159d7c9b7ab4c14
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044014"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98699409"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-api-for-fhir"></a>適用於 FHIR 的 Azure API 之 Azure 原則內建定義
 

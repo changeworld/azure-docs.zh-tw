@@ -13,12 +13,12 @@ metadata:
   author: BlackMist
   ms.date: 09/21/2020
   ms.custom: contperf-fy21q1
-  ms.openlocfilehash: 015dcc240d75500e7c145ba2544f27c13c0c3493
-  ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
-  ms.translationtype: HT
+  ms.openlocfilehash: 44f260d5e336433c7366dcbe7ce6f1bb79f92c3c
+  ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+  ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/13/2021
-  ms.locfileid: "98165377"
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98707233"
 landingContent:
 - title: 開始使用：程式碼優先
   linkLists:
@@ -30,8 +30,6 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: 使用 ML 管線進行批次推斷 (Python)
       url: tutorial-pipeline-batch-scoring-classification.md
-    - text: 開始使用 R
-      url: tutorial-1st-r-experiment.md
 - title: 開始使用：低程式碼或無程式碼
   linkLists:
   - linkListType: overview

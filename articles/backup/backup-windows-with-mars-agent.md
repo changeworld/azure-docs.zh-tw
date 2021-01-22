@@ -3,12 +3,12 @@ title: 使用 MARS 代理程式備份 Windows 機器
 description: 使用 Microsoft Azure 復原服務 (MARS) 代理程式來備份 Windows 機器。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052217"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702763"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>將 Windows Server 檔案和資料夾備份至 Azure
 
@@ -22,7 +22,7 @@ ms.locfileid: "90052217"
 > * 建立備份原則和排程。
 > * 執行隨選備份。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 * 瞭解 [Azure 備份如何使用 MARS 代理程式來備份 Windows 機器](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)。
 * 瞭解在次要 MABS 或 Data Protection Manager 伺服器上執行 MARS 代理程式的 [備份架構](backup-architecture.md#architecture-back-up-to-dpmmabs) 。
@@ -38,12 +38,12 @@ Azure 備份不會自動將日光節約時間 (DST) 列入考慮。 此預設值
 
 若要建立備份原則：
 
-1. 下載並註冊 MARS 代理程式之後，請開啟代理程式主控台。 您可以透過在您的電腦中搜尋 **Microsoft Azure 備份**來找出備份。  
+1. 下載並註冊 MARS 代理程式之後，請開啟代理程式主控台。 您可以透過在您的電腦中搜尋 **Microsoft Azure 備份** 來找出備份。  
 
 1. 在 [ **動作**] 底下，選取 [ **排程備份**]。
 
     ![Windows Server 備份排程](./media/backup-configure-vault/schedule-first-backup.png)
-1. 在 [排程備份] 嚮導中，選取 [**開始**使用  >  **]**。
+1. 在 [排程備份] 嚮導中，選取 [**開始** 使用  >  **]**。
 1. 在 [ **選取要備份的專案**] 底下，選取 [ **加入專案**]。
 
     ![新增要備份的專案](./media/backup-azure-manage-mars/select-item-to-backup.png)
@@ -104,7 +104,7 @@ Azure 備份不會自動將日光節約時間 (DST) 列入考慮。 此預設值
 1. 將備份資料寫入至暫存位置。
 1. 使用 AzureOfflineBackupDiskPrep 工具，將資料從暫存位置複製到一或多個 SATA 磁片。
 
-    此工具會建立 Azure 匯入作業。 如需詳細資訊，請參閱 [什麼是 Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)。
+    此工具會建立 Azure 匯入作業。 如需詳細資訊，請參閱 [什麼是 Azure 匯入/匯出服務](../import-export/storage-import-export-service.md)。
 1. 將 SATA 磁片傳送至 Azure 資料中心。
 
     在資料中心，磁片資料會複製到 Azure 儲存體帳戶。 Azure 備份會將資料從儲存體帳戶複製到保存庫，並排程增量備份。
@@ -122,10 +122,10 @@ Azure 備份中的網路節流會使用本機作業系統上的 [服務品質 (Q
 若要啟用網路節流：
 
 1. 在 MARS 代理程式中，選取 [ **變更屬性**]。
-1. 在 [節流]**** 索引標籤上，選取 [啟用備份作業的網際網路頻寬使用節流功能]****。
+1. 在 [節流] 索引標籤上，選取 [啟用備份作業的網際網路頻寬使用節流功能]。
 
     ![設定備份作業的網路節流](./media/backup-configure-vault/throttling-dialog.png)
-1. 指定工作時間與非時允許的頻寬。 頻寬值的開始時間為 512 Kbps，最高可達 1023 Mbps。 然後選取 [確定]。
+1. 指定工作時間與非時允許的頻寬。 頻寬值的開始時間為 512 Kbps，最高可達 1023 Mbps。 然後選取 [確定]  。
 
 ## <a name="run-an-on-demand-backup"></a>執行隨選備份
 
@@ -150,8 +150,8 @@ Azure 備份中的網路節流會使用本機作業系統上的 [服務品質 (Q
 
 | 備份排程選項 | 資料保留期間
 | -- | --
-| 天 | **預設保留**：相當於「每日備份的保留天數」。 <br/><br/> **例外**狀況：如果針對長期保留設定的每日排程備份 (周、月或年) 失敗，則在失敗之後所觸發的隨選備份會被視為長期保留。 否則，會將下一個排定的備份視為長期保留。<br/><br/> **範例案例**：星期四上午8:00 的排程備份失敗。 這份備份被視為每週、每月或每年保留。 因此，第一個隨選備份會在下星期五上午8:00 執行之前的排程備份時，自動標記為每週、每月或每年保留。 這種備份替代于星期四上午8:00 的備份。
-| 週 | **預設保留期**：一天。 針對具有每週備份原則的資料來源所執行的隨選備份，會在下一天刪除。 即使它們是資料來源的最新備份，也會被刪除。 <br/><br/> **例外**狀況：如果針對長期保留設定的每週排程備份 (周、月或年) 失敗，則在失敗後立即觸發的隨選備份會被視為長期保留。 否則，會將下一個排定的備份視為長期保留。 <br/><br/> **範例案例**：星期四上午8:00 的排程備份失敗。 這是要考慮每月或每年保留的備份。 因此，在下一次排程備份于上午8:00 點之前觸發的第一個隨選備份會自動標記為每月或每年保留。 這種備份替代于星期四上午8:00 的備份。
+| 天 | **預設保留**：相當於「每日備份的保留天數」。 <br/><br/> **例外** 狀況：如果針對長期保留設定的每日排程備份 (周、月或年) 失敗，則在失敗之後所觸發的隨選備份會被視為長期保留。 否則，會將下一個排定的備份視為長期保留。<br/><br/> **範例案例**：星期四上午8:00 的排程備份失敗。 這份備份被視為每週、每月或每年保留。 因此，第一個隨選備份會在下星期五上午8:00 執行之前的排程備份時，自動標記為每週、每月或每年保留。 這種備份替代于星期四上午8:00 的備份。
+| 週 | **預設保留期**：一天。 針對具有每週備份原則的資料來源所執行的隨選備份，會在下一天刪除。 即使它們是資料來源的最新備份，也會被刪除。 <br/><br/> **例外** 狀況：如果針對長期保留設定的每週排程備份 (周、月或年) 失敗，則在失敗後立即觸發的隨選備份會被視為長期保留。 否則，會將下一個排定的備份視為長期保留。 <br/><br/> **範例案例**：星期四上午8:00 的排程備份失敗。 這是要考慮每月或每年保留的備份。 因此，在下一次排程備份于上午8:00 點之前觸發的第一個隨選備份會自動標記為每月或每年保留。 這種備份替代于星期四上午8:00 的備份。
 
 如需詳細資訊，請參閱 [建立備份原則](#create-a-backup-policy)。
 

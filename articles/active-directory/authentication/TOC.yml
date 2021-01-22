@@ -154,9 +154,9 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: 代理程式版本的記錄
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: 使用 SMS 式驗證 (預覽)
+    - name: 使用以 SMS 為基礎的驗證
       href: howto-authentication-sms-signin.md
-    - name: 使用電子郵件地址登入 (預覽)
+    - name: 使用電子郵件地址登入
       href: howto-authentication-use-email-signin.md
     - name: Azure AD 智慧鎖定
       href: howto-password-smart-lockout.md

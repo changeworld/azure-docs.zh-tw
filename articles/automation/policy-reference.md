@@ -1,15 +1,15 @@
 ---
 title: 適用於 Azure 自動化的內建原則定義
 description: 列出適用於 Azure 自動化的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 1e69f82ee48eb67b2b749d895483d35da91dbbde
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 0675ceffec064cac38e1a38a1dd68371df8c547e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049386"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700422"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-automation"></a>適用於 Azure 自動化的 Azure 原則內建定義
 

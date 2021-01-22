@@ -89,8 +89,10 @@
       items:
         - name: SQL Server 至 SQL Database
           href: howto-sql-server-to-azure-sql-powershell.md
-        - name: SQL Server 至 SQL 受控執行個體
-          href: howto-sql-server-to-azure-sql-mi-powershell.md
+        - name: 'SQL Server 至 SQL MI (online) '
+          href: howto-sql-server-to-azure-sql-managed-instance-powershell-online.md
+        - name: 'SQL Server 至 SQL MI (離線) '
+          href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
     - name: 將 SSIS 套件重新部署至
       items:
         - name: Azure SQL Database
@@ -137,17 +139,17 @@
               href: known-issues-dms-hybrid-mode.md
         - name: 潛在的移轉問題
           items:
-            - name: 至 SQL Database
+            - name: SQL Database
               href: known-issues-azure-sql-online.md
             - name: SQL 受控執行個體
               href: known-issues-azure-sql-db-managed-instance-online.md
-            - name: 至適用於 MySQL 的 Azure DB
+            - name: 適用於 MySQL 的 Azure DB
               href: known-issues-azure-mysql-online.md
-            - name: 從 PostgreSQL 至適用於 PostgreSQL 的 Azure DB
+            - name: 于 postgresql 至適用于于 postgresql 的 Azure DB
               href: known-issues-azure-postgresql-online.md
-            - name: 從 Oracle 至適用於 PostgreSQL 的 Azure DB
+            - name: Oracle 至 Azure DB for 于 postgresql
               href: known-issues-oracle-azure-postgresql-online.md
-            - name: 從 MongoDB 至 Azure Cosmos DB 的 MongoDB API
+            - name: Mongodb 以 Azure Cosmos DB 適用于 MongoDB 的 API
               href: known-issues-mongo-cosmos-db.md
     - name: 影片
       items:

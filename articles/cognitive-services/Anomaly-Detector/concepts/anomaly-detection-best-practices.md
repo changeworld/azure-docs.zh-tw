@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705144"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702721"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>使用異常偵測器 API 的最佳作法
 
@@ -87,7 +87,7 @@ ms.locfileid: "97705144"
 
 ### <a name="aggregate-distributed-data"></a>匯總分散式資料
 
-異常偵測器 API 最適合用於平均分佈的時間序列。 如果您的資料是隨機散發的，您應該依時間單位（例如，每分鐘、每小時或每日）進行匯總。
+異常偵測器 API 最適合用於平均分佈的時間序列。 如果您的資料是隨機散發的，您應該依時間單位（例如每分鐘、每小時或每日）進行匯總。
 
 ## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>使用季節性模式對資料進行異常偵測
 
@@ -95,7 +95,7 @@ ms.locfileid: "97705144"
 
 `period`當您在建立 JSON 要求時指定，可以將異常偵測延遲降至50%。 `period`是一個整數，可指定時間序列重複模式所需的資料點數目。 例如，每一天有一個資料點的時間序列會有 `period` as `7` ，且每小時有一個時間序列 (具有相同的每週模式，) 會有 `period` 的  `7*24` 。 如果您不確定資料的模式，則不需要指定此參數。
 
-為了獲得最佳結果，請提供4個 `period` 資料點的數量，再加上一個額外的資料點。 例如，如上面所述，每週的資料模式都應該在要求主體中提供673資料點 (`7 * 24 * 4 + 1`) 。
+為了獲得最佳結果，請提供四個 `period` 資料點，再加上一個額外的資料點。 例如，如上面所述，每週的資料模式都應該在要求主體中提供673資料點 (`7 * 24 * 4 + 1`) 。
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>即時監視的取樣資料
 
@@ -104,4 +104,4 @@ ms.locfileid: "97705144"
 ## <a name="next-steps"></a>後續步驟
 
 * [什麼是異常偵測器 API？](../overview.md)
-* [快速入門：使用異常偵測器偵測時間序列資料中的異常狀況](../quickstarts/client-libraries.md)
+* [快速入門：使用 Anomaly Detector 偵測時間序列資料中的異常狀況](../quickstarts/client-libraries.md)

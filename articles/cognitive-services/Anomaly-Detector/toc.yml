@@ -38,7 +38,7 @@
           href: ../containers/index.yml
 - name: 概念
   items:
-    - name: 異常偵測 API 最佳做法
+    - name: 異常偵測器 API 最佳作法
       href: concepts/anomaly-detection-best-practices.md
 - name: 參考
   items:

@@ -1,0 +1,71 @@
+### YamlMime:Landing
+title: Azure 匯入/匯出檔-線上傳輸
+summary: 使用 Azure 匯入/匯出，將磁片磁碟機寄送至 Azure 資料中心，以安全地將大量資料匯入至 Azure Blob 儲存體，並 Azure 檔案儲存體。
+metadata:
+  title: Azure 匯入/匯出檔
+  description: Azure 匯入/匯出檔可透過寄送實體磁片，安全地將大量資料匯入/匯出至 Azure 資料中心。
+  services: storage
+  ms.service: storage
+  ms.subservice: storage
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 01/08/201
+  ms.openlocfilehash: 5bccc4c64da4493e2f6d5e969949eb13df8bc1e7
+  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.translationtype: MT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 01/22/2021
+  ms.locfileid: "98707291"
+landingContent:
+- title: 關於 Azure 匯入/匯出
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是匯入/匯出？
+      url: storage-import-export-service.md
+  - linkListType: architecture
+    links:
+    - text: 選擇資料傳輸選項
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: 使用網路或離線傳輸
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+- title: 需求
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 需求
+      url: storage-import-export-requirements.md
+    - text: 常見問題集
+      url: storage-import-export-service-faq.md
+- title: 部署
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 將資料匯入至 Blob
+      url: storage-import-export-data-to-blobs.md
+    - text: 將資料匯入至檔案
+      url: storage-import-export-data-to-files.md
+    - text: 從 Blob 匯出資料
+      url: storage-import-export-data-from-blobs.md
+  - linkListType: learn
+    links:
+    - text: 使用匯入/匯出離線匯出資料
+      url: /learn/modules/export-data-with-azure-import-export/
+- title: 監視器
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 檢視磁碟機狀態
+      url: storage-import-export-view-drive-status.md
+    - text: 檢閱作業狀態
+      url: storage-import-export-tool-reviewing-job-status-v1.md
+- title: 疑難排解
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 疑難排解
+      url: storage-import-export-contact-microsoft-support.md
+    - text: 請連絡支援人員
+      url: storage-import-export-contact-microsoft-support.md

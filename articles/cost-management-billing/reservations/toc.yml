@@ -51,7 +51,7 @@
       href: reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: 個人訂用帳戶的使用量
       href: understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: 企業客戶的使用量資料
+    - name: 企業和 Microsoft 客戶合約使用量資料
       href: understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: 操作指南
   expanded: true

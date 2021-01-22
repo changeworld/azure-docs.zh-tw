@@ -25,6 +25,8 @@
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: 概念
   items:
+    - name: 概觀
+      href: concepts-overview.md
     - name: 比較影片索引器和媒體服務預設值
       href: compare-video-indexer-with-media-services-presets.md
     - name: 管理多個租用戶

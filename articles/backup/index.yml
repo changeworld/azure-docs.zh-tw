@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: e2afc60f6fa67c1dc0582839e2d3f7480907facc
-  ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
-  ms.translationtype: HT
+  ms.openlocfilehash: ea54d6e4a08ff5baa2a46051a8ec342128175de3
+  ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+  ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/18/2021
-  ms.locfileid: "98556489"
+  ms.lasthandoff: 01/21/2021
+  ms.locfileid: "98707187"
 landingContent:
 - title: 了解 Azure 備份
   linkLists:
@@ -40,8 +40,6 @@ landingContent:
       url: quick-backup-vm-cli.md
     - text: 使用 Resource Manager 範本備份 VM
       url: quick-backup-vm-template.md
-- title: 逐步嘗試教學課程
-  linkLists:
   - linkListType: tutorial
     links:
     - text: 備份 Azure VM
@@ -84,6 +82,20 @@ landingContent:
       url: backup-azure-vm-backup-faq.md
     - text: 管理 Azure VM 備份
       url: backup-azure-manage-vms.md
+- title: '在預覽中備份 Azure 受控磁碟 () '
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure 磁片備份總覽
+      url: disk-backup-overview.md
+    - text: Azure 磁片備份的支援矩陣
+      url: disk-backup-support-matrix.md
+    - text: 備份 Azure 受控磁碟
+      url: backup-managed-disks.md
+    - text: 常見問題-Azure 受控磁碟
+      url: disk-backup-faq.md
+    - text: 針對 Azure 受控磁碟備份進行疑難排解
+      url: disk-backup-troubleshoot.md
 - title: 在 Azure VM 上備份 SQL Server
   linkLists:
   - linkListType: concept

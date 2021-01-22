@@ -238,8 +238,10 @@
           items:
             - name: Mailjet
               href: custom-email-mailjet.md
+              displayName: 'Custom email, Custom verification email, Verification email'
             - name: SendGrid
               href: custom-email-sendgrid.md
+              displayName: 'Custom email, Custom verification email, Verification email'
           displayName: verification
         - name: 新增您自己的商務邏輯
           items:
@@ -381,6 +383,8 @@
           href: partner-itsme.md
         - name: Jumio
           href: partner-jumio.md
+        - name: 無索引鍵
+          href: partner-keyless.md
         - name: LexisNexis
           href: partner-lexisnexis.md
         - name: N8 Identity
@@ -415,9 +419,9 @@
         - name: Azure 監視器
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: 管理使用者 - Microsoft Graph
-          href: manage-user-accounts-graph-api.md
-          displayName: 'account, accounts'
+        - name: Microsoft Graph API
+          href: microsoft-graph-operations.md
+          displayName: 'account, accounts, msgraph, ms graph, graph'
         - name: 使用 Azure Pipelines 部署
           href: deploy-custom-policies-devops.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
@@ -461,8 +465,6 @@
       href: extensions-app.md
     - name: 自訂原則 (IEF) 版本資訊
       href: custom-policy-developer-notes.md
-    - name: Microsoft Graph API 作業
-      href: microsoft-graph-operations.md
     - name: 頁面配置版本
       href: page-layout.md
     - name: 區域可用性與資料落地

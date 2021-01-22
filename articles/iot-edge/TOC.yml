@@ -17,9 +17,9 @@
   items:
     - name: 設定開發環境
       items:
-        - name: 針對 Linux 裝置開發
+        - name: 使用 Linux 容器進行開發
           href: tutorial-develop-for-linux.md
-        - name: 針對 Windows 裝置開發
+        - name: 使用 Windows 容器進行開發
           href: tutorial-develop-for-windows.md
     - name: 開發自訂程式碼模組
       items:
@@ -77,6 +77,8 @@
   items:
     - name: IoT Edge 執行階段
       href: iot-edge-runtime.md
+    - name: Windows 上適用于 Linux 的 IoT Edge
+      href: iot-edge-for-linux-on-windows.md
     - name: IoT Edge 模組
       items:
         - name: 了解 Azure IoT Edge 模組
@@ -119,23 +121,25 @@
   items:
     - name: 建立 IoT Edge 裝置
       items:
-        - name: 安裝執行階段
-          href: how-to-install-iot-edge.md
-        - name: 註冊並驗證裝置
+        - name: 在 IoT 中樞註冊裝置
+          href: how-to-register-device.md
+        - name: 安裝和布建 IoT Edge
           items:
-            - name: 對稱金鑰驗證
-              href: how-to-manual-provision-symmetric-key.md
-            - name: X.509 憑證驗證
-              href: how-to-manual-provision-x509.md
+            - name: 安裝適用于 Linux 的 IoT Edge
+              href: how-to-install-iot-edge.md
+            - name: 在 Windows 上執行適用于 Linux 的 IoT Edge
+              href: how-to-install-iot-edge-on-windows.md
         - name: 更新執行階段
           href: how-to-update-iot-edge.md
         - name: 管理裝置憑證
           href: how-to-manage-device-certificates.md
-        - name: 建立測試憑證
-          href: how-to-create-test-certificates.md
-        - name: Kubernetes 上的 IoT Edge
+    - name: 替代裝置案例
+      items:
+        - name: 使用 Windows 容器執行 IoT Edge
+          href: how-to-install-iot-edge-windows-on-windows.md
+        - name: 在 Kubernetes 上執行 IoT Edge
           href: how-to-install-iot-edge-kubernetes.md
-        - name: 使用 ARM 範本的 IoT Edge 虛擬機器
+        - name: 使用 ARM 範本部署 IoT Edge VM
           href: how-to-install-iot-edge-ubuntuvm.md
     - name: 使用 DPS 自動佈建
       items:
@@ -243,6 +247,8 @@
           href: troubleshoot-common-errors.md
 - name: 參考
   items:
+    - name: 建立測試憑證
+      href: how-to-create-test-certificates.md
     - name: Windows 裝置管理指令碼
       href: reference-windows-scripts.md
     - name: Azure CLI

@@ -109,8 +109,8 @@
               href: tutorial-data-flow.md
             - name: 對應資料流程影片教學課程
               href: data-flow-tutorials.md
-        - name: 使用整頓資料流程來準備資料
-          href: wrangling-data-flow-tutorial.md
+        - name: 使用整頓準備資料
+          href: wrangling-tutorial.md
         - name: 使用外部服務
           items:
             - name: HDInsight Spark
@@ -197,12 +197,12 @@
               href: concepts-data-flow-expression-builder.md
             - name: 運算式語言
               href: data-flow-expression-functions.md
-        - name: 使用整頓資料流程來準備資料
+        - name: 使用 Power Query 資料整頓準備資料
           items:
-            - name: 整頓資料流程概觀
-              href: wrangling-data-flow-overview.md
+            - name: 資料整頓總覽
+              href: wrangling-overview.md
             - name: 支援的函數
-              href: wrangling-data-flow-functions.md
+              href: wrangling-functions.md
     - name: 角色和權限
       href: concepts-roles-permissions.md
     - name: 命名規則
@@ -464,6 +464,8 @@
       items:
         - name: 執行資料流程活動
           href: control-flow-execute-data-flow-activity.md
+        - name: 執行 Power Query 活動
+          href: control-flow-power-query-activity.md
         - name: Azure 函式活動
           href: control-flow-azure-function-activity.md
         - name: 自訂活動

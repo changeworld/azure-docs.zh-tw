@@ -258,14 +258,49 @@
               href: job-error-codes.md
         - name: 重設帳戶認證
           href: cli-reset-account-credentials.md
-    - name: 從 v2 移轉至 v3
+    - name: 移轉指南
+      displayName: migration
       items:
-        - name: v2 與 v3
-          displayName: 'migrate, v2 to v3'
-          href: media-services-v2-vs-v3.md
-        - name: 移轉指導
-          href: migrate-from-v2-to-v3.md
-          displayName: naming
+        - name: 遷移指南簡介
+          href: migrate-v-2-v-3-migration-introduction.md
+          displayName: migration
+        - name: 步驟 1-優點
+          href: migrate-v-2-v-3-migration-benefits.md
+          displayName: 'migration, benefits'
+        - name: 步驟 2-差異
+          items:
+            - name: API 存取
+              href: migrate-v-2-v-3-differences-api-access.md
+              displayName: 'migration, api'
+            - name: 功能間距
+              href: migrate-v-2-v-3-differences-feature-gaps.md
+              displayName: 'migration, features'
+            - name: 術語和實體變更
+              href: migrate-v-2-v-3-differences-terminology.md
+              displayName: 'migration, entity, api'
+        - name: 步驟 3-SDK 設定
+          href: migrate-v-2-v-3-migration-setup.md
+          displayName: 'migration, SDK`'
+        - name: 步驟 4-以案例為基礎的遷移指導方針
+          items:
+            - name: 編碼
+              href: migrate-v-2-v-3-migration-scenario-based-encoding.md
+              displayName: 'migration, encoding'
+            - name: 即時串流
+              href: migrate-v-2-v-3-migration-scenario-based-live-streaming.md
+              displayName: 'migration, live streaming'
+            - name: 封裝和交付
+              href: migrate-v-2-v-3-migration-scenario-based-publishing.md
+              displayName: 'migration, packaging, delivery, publishing'
+            - name: 內容保護
+              href: migrate-v-2-v-3-migration-scenario-based-content-protection.md
+              displayName: 'migration, content protection, DRM, digital rights management'
+            - name: '媒體保留單元 (MRU) '
+              href: migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md
+              displayName: 'migration, media reserved units'
+        - name: 樣本比較
+          href: migrate-v-2-v-3-migration-samples.md
+          displayName: 'migration, samples'
 - name: 操作指南
   items:
     - name: 建立資產並上傳媒體

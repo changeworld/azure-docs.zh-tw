@@ -6,16 +6,16 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d04a5c0e53e9a5db8bba03a5a9e9d95b87a8b5a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 940b7ac90f85e0254d59459b70ccc15312cd69f4
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85855684"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700834"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-storage-gen1"></a>使用 Azure 匯入/匯出服務將資料離線複製到 Data Lake Storage Gen1
 
-在本文中，您將瞭解如何使用離線複製方法（例如 [Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)），將大量資料集 ( # B0 200 GB) 到 Data Lake Storage Gen1 中。 具體來說，作為本文中範例的檔案是 339,420,860,416 個位元組，或在磁碟上大約是 319 GB。 讓我將此檔案稱為 319GB.tsv。
+在本文中，您將瞭解如何使用離線複製方法（例如 [Azure 匯入/匯出服務](../import-export/storage-import-export-service.md)），將大量資料集 ( # B0 200 GB) 到 Data Lake Storage Gen1 中。 具體來說，作為本文中範例的檔案是 339,420,860,416 個位元組，或在磁碟上大約是 319 GB。 讓我將此檔案稱為 319GB.tsv。
 
 Azure 匯入/匯出服務可讓您將硬碟運送到 Azure 資料中心，更安全地傳輸大量資料至 Azure Blob 儲存體。
 
@@ -29,7 +29,7 @@ Azure 匯入/匯出服務可讓您將硬碟運送到 Azure 資料中心，更安
 
 ## <a name="prepare-the-data"></a>準備資料
 
-開始使用「匯入/匯出服務」之前，請將要傳輸的資料檔分割成大小**小於 200 GB 的複本**。 匯入工具不適用於大於 200 GB 的檔案。 在本文中，我們會將檔案分割成每個 100 GB 的區塊。 您可以使用 [Cygwin](https://cygwin.com/install.html) 來達成此目的。 Cygwin 支援 Linux 命令。 在此情況下，請使用下列命令：
+開始使用「匯入/匯出服務」之前，請將要傳輸的資料檔分割成大小 **小於 200 GB 的複本**。 匯入工具不適用於大於 200 GB 的檔案。 在本文中，我們會將檔案分割成每個 100 GB 的區塊。 您可以使用 [Cygwin](https://cygwin.com/install.html) 來達成此目的。 Cygwin 支援 Linux 命令。 在此情況下，請使用下列命令：
 
 ```console
 split -b 100m 319GB.tsv
@@ -44,7 +44,7 @@ split -b 100m 319GB.tsv
 
 ## <a name="get-disks-ready-with-data"></a>備妥資料磁碟
 
-依照[使用 Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)的指示 (在**準備磁碟機**一節底下) 來準備您的硬碟。 以下是整體順序︰
+依照 [使用 Azure 匯入/匯出服務](../import-export/storage-import-export-service.md)的指示 (在 **準備磁碟機** 一節底下) 來準備您的硬碟。 以下是整體順序︰
 
 1. 取得符合 Auzre 匯入/匯出服務使用需求的硬碟。
 2. 識別當資料被送至 Azure 資料中心時，將用來複製資料的 Azure 儲存體帳戶。
@@ -53,12 +53,12 @@ split -b 100m 319GB.tsv
     ```
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ```
-    如需更多範例程式碼片段，請參閱[使用 Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)。
+    如需更多範例程式碼片段，請參閱[使用 Azure 匯入/匯出服務](../import-export/storage-import-export-service.md)。
 4. 前述命令會在指定的位置建立日誌檔案。 使用此日誌檔案從 [Azure 入口網站](https://portal.azure.com)建立匯入作業。
 
 ## <a name="create-an-import-job"></a>建立匯入作業
 
-您現在可以依照[使用 Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)的指示 (在**準備磁碟機**一節底下) 來建立匯入作業。 針對此匯入作業，除了其他詳細資料之外，也請提供在準備磁碟機時建立的日誌檔。
+您現在可以依照 [使用 Azure 匯入/匯出服務](../import-export/storage-import-export-service.md)的指示 (在 **準備磁碟機** 一節底下) 來建立匯入作業。 針對此匯入作業，除了其他詳細資料之外，也請提供在準備磁碟機時建立的日誌檔。
 
 ## <a name="physically-ship-the-disks"></a>實際寄送磁碟
 
@@ -218,7 +218,7 @@ Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 Join-AzDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)
 * [搭配 Data Lake Storage Gen1 使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

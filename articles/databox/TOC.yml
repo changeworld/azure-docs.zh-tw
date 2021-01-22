@@ -241,6 +241,9 @@
           href: /powershell/module/az.databox
         - name: .NET API
           href: /dotnet/api/overview/azure/databox/management
+        - name: Azure 原則內建
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
     - name: 資源
       items:
         - name: 資料箱產品

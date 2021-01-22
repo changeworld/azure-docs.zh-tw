@@ -4,15 +4,15 @@ description: QnA Maker 是一項雲端式 NLP 服務，可對您的資料輕鬆�
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 05/26/2020
+ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: qna maker, 低程式碼聊天機器人, 多回合交談
-ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 16f30801d52aa46184c4eb394f3d1cfebecd4be6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353131"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700710"
 ---
 # <a name="what-is-qna-maker"></a>什麼是 QnA Maker？
 
@@ -85,8 +85,6 @@ QnA Maker 提供撰寫、定型及發佈功能以及共同作業權限來整合�
 
 * [開始使用 QnA Maker 用戶端程式庫](../quickstarts/quickstart-sdk.md)
 * [開始使用 QnA Maker 入口網站](../quickstarts/create-publish-knowledge-base.md)
-* [開始使用 QnA Maker REST API](../quickstarts/quickstart-rest-curl.md)
-
 
 ## <a name="next-steps"></a>後續步驟
 QnA Maker 可提供建置、管理和部署自訂知識庫所需的所有項目。

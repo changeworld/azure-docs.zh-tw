@@ -59,8 +59,12 @@
   items:
     - name: C# 直接方法範例
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: 'C # SDK 範例'
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp-sdk'
     - name: Python 直接方法範例
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
+    - name: Python SDK 範例
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python-sdk'
 - name: 概念
   items:
     - name: 媒體圖表

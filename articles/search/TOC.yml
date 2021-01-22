@@ -5,9 +5,9 @@
   items:
     - name: 什麼是認知搜尋？
       href: search-what-is-azure-search.md
-    - name: 認知搜尋的功能
+    - name: 功能清單
       href: search-features-list.md
-    - name: 認知搜尋的新功能
+    - name: 搜尋中的新功能
       href: whats-new.md
 - name: 快速入門
   items:

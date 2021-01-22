@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8e3f0435d9856d2b602a4f2b6f604aee05e040ba
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
-ms.translationtype: HT
+ms.openlocfilehash: b55ea814214397e12e50e7bc5047988394623940
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505200"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703584"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 儲存體簡介
 
@@ -70,7 +70,7 @@ Azure 儲存體支援三種 blob 類型：
 - **Azure Data Factory** 支援使用「帳戶金鑰」、「共用存取簽章」、「服務主體」或「Azure 資源的受控識別」來複製資料至 Blob 儲存體，或從該處複製資料。 如需詳細資訊，請參閱[使用 Azure Data Factory 將資料複製到 Azure Blob 或從該處複製資料](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 - **Blobfuse** 是 Azure Blob 儲存體的虛擬檔案系統驅動程式。 您可以使用 Blobfuse 透過 Linux 檔案系統存取您儲存體帳戶中現有的區塊 Blob 資料。 如何詳細資訊，請參閱[如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統](storage-how-to-mount-container-linux.md)。
 - **Azure 資料箱** 服務可在因為要上傳大型資料集，或因網路限制而難以透過網路上傳資料時，將內部部署資料傳輸至 Blob 儲存體。 根據您的資料大小，您可以向 Microsoft 要求 [Azure 資料箱磁碟](../../databox/data-box-disk-overview.md)、[Azure 資料箱](../../databox/data-box-overview.md)或 [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md)。 接著，您可以將資料複製到這些裝置，並將其寄回給 Microsoft，以上傳至 Blob 儲存體。
-- **Azure 匯入/匯出服務** 提供一種方便的方式，可讓您使用自行提供的硬碟在儲存體帳戶中匯入或匯出大量資料。 如需詳細資訊，請參閱[使用 Microsoft Azure 匯入/匯出服務將資料移轉至 Blob 儲存體](../common/storage-import-export-service.md)。
+- **Azure 匯入/匯出服務** 提供一種方便的方式，可讓您使用自行提供的硬碟在儲存體帳戶中匯入或匯出大量資料。 如需詳細資訊，請參閱[使用 Microsoft Azure 匯入/匯出服務將資料移轉至 Blob 儲存體](../../import-export/storage-import-export-service.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

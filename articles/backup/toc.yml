@@ -210,6 +210,8 @@
           items:
             - name: 將檔案從 Azure 復原至 Windows Server
               href: backup-azure-restore-windows-server.md
+            - name: 復原磁碟區中的所有檔案
+              href: restore-all-files-volume-mars.md
             - name: 還原 Windows Server 系統狀態
               href: backup-azure-restore-system-state.md
         - name: 管理

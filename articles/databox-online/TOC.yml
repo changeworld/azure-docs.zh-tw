@@ -51,7 +51,7 @@
               href: azure-stack-edge-technical-specifications-power-cords-regional.md
 - name: Azure Stack Edge Pro R
   items:
-    - name: 總覽
+    - name: 概觀
       items:
         - name: Azure Stack Edge Pro R 是什麼？
           href: azure-stack-edge-j-series-overview.md
@@ -397,6 +397,11 @@
   items:
     - name: 安全性基準
       href: security-baseline.md
+- name: 參考資料
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: 資源
   items:
     - name: Azure Stack Edge Pro C# 模組範例 (.NET)

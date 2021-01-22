@@ -1,15 +1,15 @@
 ---
 title: 適用於 Azure Service Fabric 的內建原則定義
 description: 列出適用於 Azure Service Fabric 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8ca4f0b43962856c9bafc1654a732ae2c7783f5c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 95fd494430ac742f90b3c28dde97270cd0c2263a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043980"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700649"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-fabric"></a>適用於 Azure Service Fabric 的 Azure 原則內建定義
 

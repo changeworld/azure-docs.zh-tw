@@ -6,6 +6,8 @@
       href: automation-intro.md
     - name: 常見問題集
       href: automation-faq.md
+    - name: 新功能
+      href: whats-new.md
 - name: 快速入門
   items:
     - name: 建立自動化帳戶
