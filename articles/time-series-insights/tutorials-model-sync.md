@@ -8,14 +8,14 @@ ms.author: radhsrin
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 01/19/2021
 ms.custom: dpalled
-ms.openlocfilehash: 0d02a6e3eb2aef4a02c90360b2016e64af579081
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5e8e5367daa532fa0cc36a18cd28b382e7cd8f78
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014725"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682897"
 ---
 # <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Azure Digital Twins 與 Azure 時間序列深入解析 Gen2 之間的模型同步處理
 
@@ -66,7 +66,7 @@ ms.locfileid: "95014725"
 
 ### <a name="circular-relationship-in-azure-digital-twins-to-single-hierarchy-relationship-in-time-series-insights"></a>在時間序列深入解析中，Azure 數位 Twins 與單一階層關聯性的迴圈關聯性
 
-假設 TSID 必須是唯一的，而且只能在一個階層中表示，則此案例代表 _' FlowMtr '_ ，其遙測資料 _‘Flow’_ 位於對應項 _' Room21 '_ 下的遙測。 未來當時間序列深入解析可支援在 TSM 中多次表示時間序列時，遙測「_流程_」會以「_房間 21_ 」和「_房間 22_ 」表示
+假設 TSID 必須是唯一的，而且只能在一個階層中表示，則此案例代表 _' FlowMtr '_ ，其遙測資料位於對應項 _' Room21 '_ 下的遙測。 未來當時間序列深入解析可支援在 TSM 中多次表示時間序列時，遙測「_流程_」會以「_房間 21_ 」和「_房間 22_ 」表示
 
 下列螢幕擷取畫面顯示如何以手動方式將 Azure 數位 Twins 中的對應項識別碼對應至 TSM 中的實例欄位，以及在時間序列深入解析中產生的階層。
 

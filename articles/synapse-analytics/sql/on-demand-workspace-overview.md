@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
-ms.translationtype: HT
+ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463177"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682965"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的無伺服器 SQL 集區 
 
@@ -75,7 +75,7 @@ ms.locfileid: "96463177"
 
 支援的 T-SQL：
 
-- 支援完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 介面區，包括大部分的 SQL 函式
+- 支援完整的 [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 介面區，包括大部分的 SQL 函式
 - CETAS - CREATE EXTERNAL TABLE AS SELECT
 - 僅與檢視和安全性相關的 DDL 陳述式
 
@@ -89,7 +89,7 @@ ms.locfileid: "96463177"
 
 ### <a name="extensions"></a>延伸模組
 
-為了讓您能夠順暢地查詢位於資料湖檔案中的資料，無伺服器 SQL 集區藉由新增下列功能來擴充現有的 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 函式：
+為了讓您能夠順暢地查詢位於資料湖檔案中的資料，無伺服器 SQL 集區藉由新增下列功能來擴充現有的 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 函式：
 
 [查詢多個檔案或資料夾](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -125,7 +125,7 @@ ms.locfileid: "96463177"
 
 - **Azure Active Directory 驗證**：
 
-  此驗證方法會使用由 Azure Active Directory 管理的身分識別。 您可以為 Azure AD 使用者啟用多重要素驗證。 [盡可能](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)使用 Active Directory 驗證 (整合式安全性)。
+  此驗證方法會使用由 Azure Active Directory 管理的身分識別。 您可以為 Azure AD 使用者啟用多重要素驗證。 [盡可能](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)使用 Active Directory 驗證 (整合式安全性)。
 
 #### <a name="authorization"></a>授權
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: '使用 Gitops) 將來設定啟用 Azure Arc 的 Kubernetes 叢集 (預覽) '
 keywords: Gitops) 將、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、AKS、容器
-ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955326"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684752"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在已啟用 Arc 的 Kubernetes 叢集上使用 GitOps 部署設定 (預覽)
 
@@ -48,7 +48,7 @@ Git 存放庫可以包含 YAML 格式的資訊清單，以描述任何有效的 
 
 使用的 Azure CLI 延伸模組，將 `k8sconfiguration` 已連接的叢集連結至 [範例 Git 存放庫](https://github.com/Azure/arc-k8s-demo)。 我們會將此設定命名為 `cluster-config`、指示代理程式在 `cluster-config` 命名空間中部署操作員，並為該操作員授與 `cluster-admin` 權限。
 
-```console
+```azurecli
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
@@ -97,7 +97,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>使用私人 Git 存放庫搭配 SSH 和 Flux 建立的金鑰
 
-| 參數 | [格式] | 注意
+| 參數 | [格式] | 備註
 | ------------- | ------------- | ------------- |
 | --存放庫-url | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能取代為 `user@`
 
@@ -106,7 +106,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>使用私用 Git 存放庫搭配 SSH 和使用者提供的金鑰
 
-| 參數 | [格式] | 注意 |
+| 參數 | [格式] | 備註 |
 | ------------- | ------------- | ------------- |
 | --存放庫-url  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能取代為 `user@` |
 | --ssh-私用金鑰 | [PEM 格式](https://aka.ms/PEMformat)的 base64 編碼金鑰 | 直接提供金鑰 |
@@ -117,7 +117,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>使用私人 Git 主機搭配 SSH 和使用者提供的已知主機
 
-| 參數 | [格式] | 注意 |
+| 參數 | [格式] | 備註 |
 | ------------- | ------------- | ------------- |
 | --存放庫-url  | ssh://user@server/repo[git] 或 user@server:repo [git] | `git@` 可能取代為 `user@` |
 | --ssh-已知主機 | base64 編碼 | 直接提供的已知主機內容 |
@@ -129,7 +129,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 #### <a name="use-a-private-git-repo-with-https"></a>使用具有 HTTPS 的私人 Git 存放庫
 
-| 參數 | [格式] | 注意 |
+| 參數 | [格式] | 備註 |
 | ------------- | ------------- | ------------- |
 | --存放庫-url | https://server/repo[git] | 使用基本驗證的 HTTPS |
 | --HTTPs-使用者 | raw 或 base64 編碼 | HTTPS 使用者名稱 |
@@ -179,7 +179,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 使用 Azure CLI 來驗證是否已成功建立 `sourceControlConfiguration`。
 
-```console
+```azurecli
 az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
@@ -351,7 +351,7 @@ kubectl -n itops get all
 > 建立具有命名空間範圍的 sourceControlConfiguration 之後，在命名空間上具有角色系結的使用者就可以在 `edit` 此命名空間上部署工作負載。 當 `sourceControlConfiguration` 刪除具有命名空間範圍的此項時，命名空間會保持不變，且不會刪除，以避免破壞這些其他工作負載。  如有需要，您可以使用 kubectl 手動刪除此命名空間。
 > 當刪除時，不會刪除從追蹤的 Git 存放庫部署所產生之叢集的任何變更 `sourceControlConfiguration` 。
 
-```console
+```azurecli
 az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 

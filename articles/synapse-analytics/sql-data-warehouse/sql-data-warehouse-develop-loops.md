@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3477b3095414248afa9fbc7417ab707c94f35546
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a6c4eb98d77ece6e6ae130fd57cc263ee7e5ca64
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462720"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683217"
 ---
 # <a name="using-t-sql-loops-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>針對 Azure Synapse Analytics 中的專用 SQL 集區使用 T-sql 迴圈
 
@@ -24,7 +24,7 @@ ms.locfileid: "96462720"
 
 ## <a name="purpose-of-while-loops"></a>WHILE 迴圈的用途
 
-Azure Synapse 中的專用 SQL 集區可支援 [WHILE](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 迴圈，以重複執行語句區塊。 只要指定的條件都成立，或者在程式碼使用 BREAK 關鍵字特別終止迴圈之前，這個 WHILE 迴圈都會繼續下去。
+Azure Synapse 中的專用 SQL 集區可支援 [WHILE](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 迴圈，以重複執行語句區塊。 只要指定的條件都成立，或者在程式碼使用 BREAK 關鍵字特別終止迴圈之前，這個 WHILE 迴圈都會繼續下去。
 
 迴圈適用於取代 SQL 程式碼中定義的資料指標。 幸運的是，幾乎所有以 SQL 程式碼撰寫的資料指標都是向前快轉，並且只讀取多樣性。 因此，WHILE 迴圈是取代資料指標的絕佳替代方案。
 

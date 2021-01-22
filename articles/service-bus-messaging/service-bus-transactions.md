@@ -4,16 +4,19 @@ description: 本文提供您在 Azure 服務匯流排中處理交易處理和傳
 ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023596"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684786"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服務匯流排交易處理概觀
 
 本文討論 Microsoft Azure 服務匯流排的交易功能。 [使用服務匯流排範例的 AMQP 交易](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)會說明大部分的討論。 本文只包含交易處理概觀以及服務匯流排中的「傳送方式」功能，而「不可部分完成交易」範例的範圍更廣且更複雜。
+
+> [!NOTE]
+> 服務匯流排的基本層不支援交易。 標準層和進階層支援交易。 如需這些階層之間的差異，請參閱[服務匯流排定價](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 ## <a name="transactions-in-service-bus"></a>服務匯流排中的交易
 

@@ -6,18 +6,18 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: 08b18dae6cec3f30ba9ecc69a3537eec428cc9ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372717"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685084"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>建立 OpenBSD 磁碟映像並上傳至 Azure
 本文說明如何建立及上傳包含 OpenBSD 作業系統的虛擬硬碟 (VHD)。 上傳之後，您可以使用它作為您自己的映像，在 Azure 中透過 Azure CLI 建立虛擬機器 (VM)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 本文假設您具有下列項目：
 
 * **Azure 訂用帳戶** - 如果您沒有，只需要幾分鐘的時間就可以建立帳戶。 如果您有 MSDN 訂用帳戶，請參閱 [Visual Studio 訂閱者的每月 Azure 點數](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 否則，請參閱 [建立免費試用帳戶](https://azure.microsoft.com/pricing/free-trial/)。  
@@ -56,7 +56,7 @@ ms.locfileid: "87372717"
     ln -sf /usr/local/bin/python2.7 /usr/local/bin/python
     ln -sf /usr/local/bin/python2.7-2to3 /usr/local/bin/2to3
     ln -sf /usr/local/bin/python2.7-config /usr/local/bin/python-config
-    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
+    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
 6. 最新版的 Azure 代理程式一律可以在 [GitHub](https://github.com/Azure/WALinuxAgent/releases) 上找到。 安裝代理程式，如下所示：
@@ -100,7 +100,7 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 az group create --name myResourceGroup --location eastus
 ```
 
-若要上傳 VHD，請使用 [az storage account create](/cli/azure/storage/account) 建立儲存體帳戶。 儲存體帳戶名稱必須是唯一的，因此請提供您自己的名稱。 下列範例會建立名為 mystorageaccount** 的儲存體帳戶：
+若要上傳 VHD，請使用 [az storage account create](/cli/azure/storage/account) 建立儲存體帳戶。 儲存體帳戶名稱必須是唯一的，因此請提供您自己的名稱。 下列範例會建立名為 mystorageaccount 的儲存體帳戶：
 
 ```azurecli
 az storage account create --resource-group myResourceGroup \
@@ -140,7 +140,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>從 VHD 建立 VM
-您可以使用[範例指令碼](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) 或直接使用 [az vm create](/cli/azure/vm) 建立 VM。 若要指定您上傳的 OpenBSD VHD，請使用 `--image` 參數，如下所示：
+您可以使用[範例指令碼](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-vhd) 或直接使用 [az vm create](/cli/azure/vm) 建立 VM。 若要指定您上傳的 OpenBSD VHD，請使用 `--image` 參數，如下所示：
 
 ```azurecli
 az vm create \
@@ -165,7 +165,7 @@ ssh azureuser@<ip address>
 ```
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 如果您想要深入了解 OpenBSD6.1 上的 Hyper-V 支援，請參閱 [OpenBSD 6.1](https://www.openbsd.org/61.html) 和 [hyperv.4](https://man.openbsd.org/hyperv.4)。
 
-如果您想要從受控磁碟建立 VM，請參閱 [az 磁碟](/cli/azure/disk)。 
+如果您想要從受控磁碟建立 VM，請參閱 [az 磁碟](/cli/azure/disk)。

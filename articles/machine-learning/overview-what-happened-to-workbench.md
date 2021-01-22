@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: 812bbb2507310d088c42fa1cf2cad4c330755892
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ec99be6082e01ea49e75ff29b5fb3c37d56b6dd5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072321"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683369"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 發生什麼事？
 
@@ -91,7 +91,7 @@ run = exp.submit(source_directory=script_folder,
 + [部署模型的位置和方式](how-to-deploy-and-where.md)
 + [教學課程：使用 Azure Machine Learning 部署模型](tutorial-deploy-models-with-aml.md)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 了解 [Azure Machine Learning 的最新架構](concept-azure-machine-learning-architecture.md)。
 
@@ -101,7 +101,7 @@ run = exp.submit(source_directory=script_folder,
 
   + [使用您自己的環境](tutorial-1st-experiment-sdk-setup-local.md)
   + [使用 Python 筆記本](tutorial-1st-experiment-sdk-setup.md)
-  + [使用 R Markdown](tutorial-1st-r-experiment.md) 
+  + [使用 R Markdown](https://github.com/Azure/azureml-sdk-for-r) 
   + [使用自動化機器學習](tutorial-designer-automobile-price-train-score.md) 
   + [使用設計工具的拖放功能](tutorial-first-experiment-automated-ml.md) 
   + [使用 CLI 的 ML 擴充功能](tutorial-train-deploy-model-cli.md)

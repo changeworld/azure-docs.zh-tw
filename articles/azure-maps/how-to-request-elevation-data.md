@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602431"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684050"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>使用 Azure 地圖服務提高許可權服務 (預覽來要求提高許可權資料) 
 
@@ -22,7 +22,7 @@ ms.locfileid: "98602431"
 > Azure 地圖服務提升許可權服務目前處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-Azure 地圖服務提高 [許可權服務](https://docs.microsoft.com/rest/api/maps/elevation) 提供 api，可在地球表面上的任何位置查詢提升許可權資料。 您可以在路徑上、定義的周框方塊內或特定座標要求取樣的提高許可權資料。 此外，您也可以使用轉譯 [V2-Get Map 圖格 API](https://docs.microsoft.com/rest/api/maps/renderv2) ，以磚格式抓取提高許可權的資料。 圖格會以 GeoTIFF 的點陣格式傳遞。 本文說明如何使用 Azure 地圖服務提高許可權服務和「取得地圖磚」 API 來要求提高許可權資料。 GeoJSON 和 GeoTiff 兩種格式都可以要求提高許可權的資料。
+Azure 地圖服務提高 [許可權服務](/rest/api/maps/elevation) 提供 api，可在地球表面上的任何位置查詢提升許可權資料。 您可以在路徑上、定義的周框方塊內或特定座標要求取樣的提高許可權資料。 此外，您也可以使用轉譯 [V2-Get Map 圖格 API](/rest/api/maps/renderv2) ，以磚格式抓取提高許可權的資料。 圖格會以 GeoTIFF 的點陣格式傳遞。 本文說明如何使用 Azure 地圖服務提高許可權服務和「取得地圖磚」 API 來要求提高許可權資料。 GeoJSON 和 GeoTiff 兩種格式都可以要求提高許可權的資料。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -35,7 +35,7 @@ Azure 地圖服務提高 [許可權服務](https://docs.microsoft.com/rest/api/m
 
 ## <a name="request-elevation-data-in-raster-tiled-format"></a>以點陣磚格式要求提高許可權資料
 
-若要以點陣磚格式要求提高許可權資料，請使用轉譯 [V2-取得地圖磚 API](https://docs.microsoft.com/rest/api/maps/renderv2)。 如果可以找到磚，則 API 會以 GeoTIFF 傳回磚。 否則，API 會傳回0。 所有的點陣 DEM 磚都會使用 (海洋) 地球模式的 geoid。 在此範例中，我們會要求 Mt 的提高許可權資料。 珠穆朗瑪峰。
+若要以點陣磚格式要求提高許可權資料，請使用轉譯 [V2-取得地圖磚 API](/rest/api/maps/renderv2)。 如果可以找到磚，則 API 會以 GeoTIFF 傳回磚。 否則，API 會傳回0。 所有的點陣 DEM 磚都會使用 (海洋) 地球模式的 geoid。 在此範例中，我們會要求 Mt 的提高許可權資料。 珠穆朗瑪峰。
 
 >[!TIP]
 >若要在世界地圖上的特定區域抓取磚，您必須在適當的縮放層級找到正確的磚。 另外也請注意，WorldDEM 涵蓋了整個全球 landmass，但未涵蓋海洋。  如需詳細資訊，請參閱[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)。
@@ -58,9 +58,9 @@ Azure 地圖服務提高 [許可權服務](https://docs.microsoft.com/rest/api/m
 
 * [取得點數的資料](/rest/api/maps/elevation/getdataforpoints)
 * [張貼點資料](/rest/api/maps/elevation/postdataforpoints)
-* [取得聚合線條的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
-* [針對聚合線條張貼資料](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
-* [取得周框方塊的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+* [取得聚合線條的資料](/rest/api/maps/elevation/getdataforpolyline)
+* [針對聚合線條張貼資料](/rest/api/maps/elevation/postdataforpolyline)
+* [取得周框方塊的資料](/rest/api/maps/elevation/getdataforboundingbox)
 
 >[!IMPORTANT]
 > 當無法傳回任何資料時，所有 Api 都會傳回 `0` 。
@@ -126,11 +126,11 @@ Azure 地圖服務提高 [許可權服務](https://docs.microsoft.com/rest/api/m
 
 ### <a name="request-elevation-data-samples-along-a-polyline"></a>沿著聚合線條要求提高許可權的資料範例
 
-在此範例中，我們將使用資料行的 [ [取得資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline) ]，在 Mt 的座標之間，以直線來要求五個同樣間距的提高許可權資料樣本。 Everest 和 Chamlang 山脈。 這兩個座標都必須以長/Lat 格式來定義。 如果您未指定參數的值 `samples` ，樣本數預設為10。 樣本數上限為2000。
+在此範例中，我們將使用資料行的 [ [取得資料](/rest/api/maps/elevation/getdataforpolyline) ]，在 Mt 的座標之間，以直線來要求五個同樣間距的提高許可權資料樣本。 Everest 和 Chamlang 山脈。 這兩個座標都必須以長/Lat 格式來定義。 如果您未指定參數的值 `samples` ，樣本數預設為10。 樣本數上限為2000。
 
 然後，我們將使用「取得資料」的「取得資料」來要求沿著路徑的提高許可權資料的三個平均間距樣本。 我們會以三個長/Lat 座標組傳遞，來定義樣本的精確位置。
 
-最後，我們會使用聚合線條 [API 的 Post 資料](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) ，在相同的三個同樣間距的範例中要求提高許可權的資料。
+最後，我們會使用聚合線條 [API 的 Post 資料](/rest/api/maps/elevation/postdataforpolyline) ，在相同的三個同樣間距的範例中要求提高許可權的資料。
 
 URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
 
@@ -229,7 +229,7 @@ URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
     }
     ```
 
-7. 現在，我們會呼叫聚合 [程式 API 的 Post 資料](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) ，取得相同三個點的提高許可權資料。 在 [建立器] 索引標籤中選取 **POST** HTTP 方法，然後輸入下列 URL。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。
+7. 現在，我們會呼叫聚合 [程式 API 的 Post 資料](/rest/api/maps/elevation/postdataforpolyline) ，取得相同三個點的提高許可權資料。 在 [建立器] 索引標籤中選取 **POST** HTTP 方法，然後輸入下列 URL。 對於此要求以及本文中提及的其他要求，請將 `{Azure-Maps-Primary-Subscription-key}` 取代為您的主要訂用帳戶金鑰。
 
     ```http
     https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&samples=5
@@ -256,7 +256,7 @@ URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
 
 ### <a name="request-elevation-data-by-bounding-box"></a>依周框方塊要求提高許可權資料
 
-現在，我們將使用 [ [取得周框的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox) ] 方塊來要求在 Mt 附近提高許可權的資料。 尼爾山，WA。 提高許可權資料會在周框方塊中的相同位置傳回。  (2) 一組 lat/long 座標所定義的周框區域 (南部緯度、西部經度 |北美洲緯度、東部經度) 會分割成資料列和資料行。 兩個 (2) 資料列的周框方塊，以及兩個 (2) 資料行的邊緣。 針對在資料列和資料行交集處建立的方格頂點，會傳回提升許可權。 在單一要求中可傳回最高2000的提升。
+現在，我們將使用 [ [取得周框的資料](/rest/api/maps/elevation/getdataforboundingbox) ] 方塊來要求在 Mt 附近提高許可權的資料。 尼爾山，WA。 提高許可權資料會在周框方塊中的相同位置傳回。  (2) 一組 lat/long 座標所定義的周框區域 (南部緯度、西部經度 |北美洲緯度、東部經度) 會分割成資料列和資料行。 兩個 (2) 資料列的周框方塊，以及兩個 (2) 資料行的邊緣。 針對在資料列和資料行交集處建立的方格頂點，會傳回提升許可權。 在單一要求中可傳回最高2000的提升。
 
 在此範例中，我們會指定 rows = 3，而 columns = 6。 系統會在回應中傳回18個提高許可權的值。 在下圖中，提升許可權值的順序是以西南角為開頭，然後繼續向下西部和南至北。  提高許可權點會依傳回的順序編號。
 
@@ -480,7 +480,7 @@ URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
 </iframe>
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要進一步探索 Azure 地圖服務提升 (Preview) Api 的許可權，請參閱：
 
@@ -488,15 +488,15 @@ URL 中的緯度和經度預期會在 WGS84 (World Geodetic System) 小數度。
 > [提高許可權 (預覽) -取得 Lat 長座標的資料](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
-> [提高許可權 (預覽) -取得周框方塊的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [提高許可權 (預覽) -取得周框方塊的資料](/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [提高許可權 (預覽) -取得聚合線條的資料](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [提高許可權 (預覽) -取得聚合線條的資料](/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
-> [轉譯 V2 –取得地圖底圖](https://docs.microsoft.com/rest/api/maps/renderv2)
+> [轉譯 V2 –取得地圖底圖](/rest/api/maps/renderv2)
 
 如需 Azure 地圖服務 REST API 的完整清單，請參閱：
 
 > [!div class="nextstepaction"]
-> [Azure 地圖服務 REST API](https://docs.microsoft.com/rest/api/maps/)
+> [Azure 地圖服務 REST API](/rest/api/maps/)

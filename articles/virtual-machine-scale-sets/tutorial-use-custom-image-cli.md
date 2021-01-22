@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 62cf7c979be83454ae2433befcdbf4f5d8e5524f
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
-ms.translationtype: HT
+ms.openlocfilehash: b12715e299f523d7ace56a72b0098b5d7ffac0ab
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516538"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683025"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及使用虛擬機器擴展集的自訂映像
 當您建立擴展集時，您會指定部署 VM 執行個體時所要使用的映像。 若要減少部署 VM 執行個體後的工作數量，您可以使用自訂的 VM 映像。 此自訂 VM 映像包括任何必要的應用程式安裝或組態。 在擴展集中建立的任何 VM 執行個體都會使用自訂 VM 映像，並已可以處理您的應用程式流量。 在本教學課程中，您將了解如何：
@@ -35,7 +35,7 @@ ms.locfileid: "94516538"
 
 ## <a name="overview"></a>概觀
 
-[共用映像資源庫](shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動程序設定，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
+[共用映像資源庫](../virtual-machines/shared-image-galleries.md)可簡化跨組織共用自訂映像。 自訂映像類似 Marketplace 映像，但您要自行建立它們。 自訂映像可用於啟動程序設定，例如，預先載入應用程式、應用程式設定和其他 OS 設定。 
 
 共用映像庫可讓您與其他人共用您的自訂 VM 映像。 選擇您要共用的映像、您要開放使用的區域，以及您要共用的對象。 
 
@@ -92,11 +92,11 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 請確定您的映像定義是正確的類型。 如果您已一般化 VM (使用適用於 Windows 的 Sysprep，或適用於 Linux 的 waagent -deprovision)，則應該使用 `--os-state generalized` 建立一般化映像定義。 如果您想要在不移除現有使用者帳戶的情況下使用 VM，請使用 `--os-state specialized` 建立特製化映像定義。
 
-若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](../virtual-machines/linux/shared-image-galleries.md#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](../virtual-machines/shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。
 
-在此範例中，映像定義會命名為 myImageDefinition  ，而且適用於[特製化](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)的 Linux OS 映像。 若要使用 Windows OS 建立映像的定義，請使用 `--os-type Windows`。 
+在此範例中，映像定義會命名為 myImageDefinition  ，而且適用於[特製化](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)的 Linux OS 映像。 若要使用 Windows OS 建立映像的定義，請使用 `--os-type Windows`。 
 
 ```azurecli-interactive 
 az sig image-definition create \

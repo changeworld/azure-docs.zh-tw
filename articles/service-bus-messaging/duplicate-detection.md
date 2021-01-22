@@ -3,12 +3,12 @@ title: Azure 服務匯流排重複訊息偵測 | Microsoft 文件
 description: 本文說明如何偵測 Azure 服務匯流排訊息中的重複專案。 您可以忽略和捨棄重複的訊息。
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184674"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684803"
 ---
 # <a name="duplicate-detection"></a>重複偵測
 
@@ -17,6 +17,9 @@ ms.locfileid: "98184674"
 用戶端或網路層級上的錯誤也可能會在較早的時間發生，而傳送的訊息會認可到佇列中，而通知無法成功傳回給用戶端。 這個案例會讓用戶端對傳送作業的結果產生疑慮。
 
 透過讓寄件者重新傳送同樣的訊息，重複偵測能將這些情況下的疑慮排除，而佇列或主題則會捨棄任何重複的複本。
+
+> [!NOTE]
+> 服務匯流排的基本層不支援重複偵測。 標準和 premium 層支援重複偵測。 如需這些階層之間的差異，請參閱[服務匯流排定價](https://azure.microsoft.com/pricing/details/service-bus/)。
 
 ## <a name="how-it-works"></a>運作方式 
 對於在指定時間範圍內傳送到佇列或主題的所有訊息，啟用重複偵測有助於追蹤由應用程式控制的 *MessageId*。 對於任何已傳送的新訊息包含已在時間範圍內記錄下來的 *MessageId*，則系統便會將訊息回報為已接受 (傳送作業成功)，不過新傳送的訊息會立即遭到忽略或捨棄。 除了 *MessageId* 之外，系統不會考慮訊息的其他部分。
@@ -55,7 +58,7 @@ ms.locfileid: "98184674"
 
 維持較短的時間範圍，意味著要保留及比對的訊息識別碼比較少，對輸送量的影響也比較小。 對於需要重複偵測的高輸送量實體，您應盡可能縮短時間範圍。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入了解服務匯流排傳訊，請參閱下列主題：
 

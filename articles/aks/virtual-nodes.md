@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2dd91e5c506f229d653fdf98bc0549c173cec793
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1e5a53c80aed90e44ba594dcff3c8ca23afc2c4f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351864"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684769"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>建立並設定 Azure Kubernetes Services (AKS) 叢集以使用虛擬節點
 
@@ -48,8 +48,9 @@ ms.locfileid: "93351864"
 * 具有私人叢集的虛擬節點。
 * 使用 api 伺服器授權的 ip 範圍進行 AKS。
 * 磁片區掛接 Azure 檔案儲存體共用支援 [一般用途 V1](../storage/common/storage-account-overview.md#types-of-storage-accounts)。 遵循[使用 Azure 檔案儲存體共用載入磁片區](azure-files-volume.md)的指示
+* 不支援使用 IPv6。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 為您的叢集設定虛擬節點：
 

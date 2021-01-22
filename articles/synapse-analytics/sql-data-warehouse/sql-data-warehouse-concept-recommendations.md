@@ -11,12 +11,12 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: bd32b9690f8a9aef92eb1f2fbcc4ec926a65584e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6510a7143e78c054130a1f1dddba78342a6785fe
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121187"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685271"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的 Azure Advisor 建議
 
@@ -73,4 +73,4 @@ Advisor 會持續運用工作負載型啟發學習法 (例如資料表存取頻�
 
 ## <a name="data-loading-misconfiguration"></a>資料載入設定錯誤
 
-您應該一律從與您專用的 SQL 集區位於相同區域的儲存體帳戶載入資料，以將延遲降至最低。 [針對高輸送量資料內嵌使用 COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)，並將您的暫存檔案分割在儲存體帳戶中，以將輸送量最大化。 如果您無法使用 COPY 語句，您可以使用 SqlBulkCopy API 或 bcp 搭配高批次大小，以獲得更好的輸送量。 如需其他資料載入指引，請參閱下列 [檔](./guidance-for-loading-data.md)。
+您應該一律從與您專用的 SQL 集區位於相同區域的儲存體帳戶載入資料，以將延遲降至最低。 [針對高輸送量資料內嵌使用 COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true)，並將您的暫存檔案分割在儲存體帳戶中，以將輸送量最大化。 如果您無法使用 COPY 語句，您可以使用 SqlBulkCopy API 或 bcp 搭配高批次大小，以獲得更好的輸送量。 如需其他資料載入指引，請參閱下列 [檔](./guidance-for-loading-data.md)。

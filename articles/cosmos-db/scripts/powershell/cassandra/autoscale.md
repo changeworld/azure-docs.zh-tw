@@ -7,19 +7,22 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 07/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 631f689348f4fa99bc15209f81436a718df163b4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
-ms.translationtype: HT
+ms.openlocfilehash: a32ab1b411fd84d36ef6efefcb63f80efdaab301
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074639"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684447"
 ---
 # <a name="create-a-keyspace-and-table-with-autoscale-for-azure-cosmos-db---cassandra-api"></a>針對 Azure Cosmos DB，建立具有自動調整功能的 Keyspace 和資料表 - Cassandra API
 [!INCLUDE[appliesto-cassandra-api](../../../includes/appliesto-cassandra-api.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
-[!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
+此範例需要 Azure PowerShell Az 5.4.0 或更新版本。 執行 `Get-Module -ListAvailable Az` 可查看已安裝的版本。
+如果您需要安裝，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
+
+執行 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) 來登入 Azure。
 
 ## <a name="sample-script"></a>範例指令碼
 

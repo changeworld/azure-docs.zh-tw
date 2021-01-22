@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1f1100c27bb3c02e3d1a5040942509c24bab0e65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399361"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683983"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>將您的應用程式發佈至 Azure AD 應用程式資源庫
 
@@ -69,7 +69,7 @@ ms.locfileid: "97399361"
 - 共同客戶可取得逐步設定教學課程。
 - 使用系統進行跨網域身分識別管理的客戶 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 可以針對相同的應用程式使用布建。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 您需要一個永久的帳戶來進行測試，而且至少已註冊兩個使用者。
 
@@ -175,7 +175,7 @@ Microsoft 不會提供（或建議） SAML 執行的程式庫。 有許多可用
 若要深入瞭解客戶的 SCIM 標準和優點，請參閱布 [建 SCIM-快速入門](https://aka.ms/scimoverview)。
 
 ### <a name="understand-the-azure-ad-scim-implementation"></a>瞭解 Azure AD SCIM 的執行
-若要深入瞭解 Azure AD SCIM 的執行，請參閱 [建立 SCIM 端點，並使用 Azure AD 來設定使用者布建](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)。
+若要深入瞭解 Azure AD SCIM 的執行，請參閱 [建立 SCIM 端點，並使用 Azure AD 來設定使用者布建](../app-provisioning/use-scim-to-provision-users-and-groups.md)。
 
 ### <a name="implement-scim"></a>執行 SCIM
 Azure AD 提供可協助您建立 SCIM 端點的 [參考程式碼](https://aka.ms/scimoverview) 。 您也可以在 GitHub 上找到許多協力廠商程式庫/參考。  
@@ -186,7 +186,7 @@ Azure AD 提供可協助您建立 SCIM 端點的 [參考程式碼](https://aka.m
 
 或者，Azure AD 租使用者會隨附于每個 Microsoft 365 訂用帳戶。 若要設定免費的 Microsoft 365 開發環境，請參閱 [加入 Microsoft 365 開發人員計畫](/office/developer-program/microsoft-365-developer-program)。
 
-擁有租使用者之後，您需要測試單一登入和布[建。](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client) 
+擁有租使用者之後，您需要測試單一登入和布[建。](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client) 
 
 **針對 OIDC 或 Oath 應用** 程式，請將 [您的應用程式註冊](quickstart-register-app.md) 為多租使用者應用程式。 在 [支援的帳戶類型] 中，選取 [任何組織目錄中的帳戶及個人 Microsoft 帳戶] 選項。
 
@@ -274,7 +274,7 @@ Azure AD 提供可協助您建立 SCIM 端點的 [參考程式碼](https://aka.m
 
 ![在資源庫中列出密碼 SSO 應用程式](./media/howto-app-gallery-listing/passwordsso.png)
 
-如果您正在執行 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 端點以進行使用者布建，請選取如下所示的選項。 在上架要求中提供架構時，請遵循 [此處](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) 的指示來下載您的架構。 我們會使用您在測試非資源庫應用程式時所設定的架構來建立資源庫應用程式。 
+如果您正在執行 [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 端點以進行使用者布建，請選取如下所示的選項。 在上架要求中提供架構時，請遵循 [此處](../app-provisioning/export-import-provisioning-configuration.md) 的指示來下載您的架構。 我們會使用您在測試非資源庫應用程式時所設定的架構來建立資源庫應用程式。 
 
    ![要求使用者布建](./media/howto-app-gallery-listing/user-provisioning.png)
 
@@ -317,6 +317,6 @@ Azure AD 提供可協助您建立 SCIM 端點的 [參考程式碼](https://aka.m
 Microsoft 合作夥伴網路可讓您立即存取專屬資源、程式、工具和連接。 若要加入網路並建立您的「移至市場」方案，請參閱 [觸及商業客戶](https://partner.microsoft.com/explore/commercial#gtm)。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 * [建置 SCIM 端點和設定使用者佈建](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Azure AD 的驗證案例](authentication-flows-app-scenarios.md)

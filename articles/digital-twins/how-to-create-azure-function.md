@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6f74f973abc33d809624bd8abd5a514a52ccfe70
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 04ca8d515dbc5a28a7d3a30369d97877928c9dc1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602697"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683840"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>連接 Azure 中的函數應用程式以處理資料
 
@@ -36,7 +36,7 @@ ms.locfileid: "98602697"
 
 ## <a name="create-a-function-app-in-visual-studio"></a>在 Visual Studio 中建立函數應用程式
 
-在 Visual Studio 2019 中，選取 [檔案] _> 新的 > 專案_ ]，然後搜尋 _Azure Functions_ 範本，然後選取 _[下一步]_。
+在 Visual Studio 2019 中，選取 [檔案] _> 新的 > 專案_ ]，然後搜尋 _Azure Functions_ 範本。 選取 [下一步]  。
 
 :::image type="content" source="media/how-to-create-azure-function/create-azure-function-project.png" alt-text="Visual Studio：新增專案對話方塊":::
 
@@ -44,11 +44,11 @@ ms.locfileid: "98602697"
 
 :::image type="content" source="media/how-to-create-azure-function/configure-new-project.png" alt-text="Visual Studio：設定新的專案":::
 
-選取函數應用程式 *事件方格觸發* 程式的類型，然後選取 [ _建立_]。
+選取 [ *事件方格觸發* 程式] 的 [函數應用程式類型]，然後選取 [ _建立_]。
 
-:::image type="content" source="media/how-to-create-azure-function/eventgridtrigger-function.png" alt-text="Visual Studio： Azure Functions 專案觸發程式對話方塊":::
+:::image type="content" source="media/how-to-create-azure-function/event-grid-trigger-function.png" alt-text="Visual Studio： Azure Functions 專案觸發程式對話方塊":::
 
-建立函數應用程式之後，您的 visual studio 將會在您的專案資料夾中，于 **function.cs** 檔案中填入自動填入的程式碼範例。 這個 short 函數用來記錄事件。
+建立函數應用程式之後，Visual Studio 會在專案資料夾的 **Function1.cs** 檔案中產生程式碼範例。 這個 short 函數用來記錄事件。
 
 :::image type="content" source="media/how-to-create-azure-function/visual-studio-sample-code.png" alt-text="Visual Studio：含有範例程式碼的專案視窗":::
 
@@ -56,11 +56,11 @@ ms.locfileid: "98602697"
 
 您可以藉由將 SDK 新增至函式應用程式來撰寫函式。 函數應用程式會使用 [適用于 .net 的 Azure 數位 TWINS SDK (c # ) ](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)來與 Azure 數位 Twins 互動。 
 
-若要使用 SDK，您必須將下列套件包含在您的專案中。 您可以使用 visual studio NuGet 套件管理員來安裝套件，或使用 `dotnet` 命令列工具新增套件。 選擇下列其中一種方法： 
+若要使用 SDK，您必須將下列套件包含在您的專案中。 您可以使用 Visual Studio 的 NuGet 套件管理員來安裝套件，或 `dotnet` 在命令列工具中使用新增套件。 針對您慣用的方法，請遵循下列步驟。
 
 **選項1。使用 Visual Studio 套件管理員新增套件：**
     
-您可以在專案上按一下滑鼠右鍵，然後從清單中選取 [ _管理 NuGet 套件_ ]，來完成這項作業。 然後，在開啟的視窗中，選取 _[流覽_ ] 索引標籤，並搜尋下列套件。 選取 [ _安裝_ 並 _接受_ 授權合約] 以安裝套件。
+以滑鼠右鍵選取您的專案，然後從清單中選取 [ _管理 NuGet 套件_ ]。 然後，在開啟的視窗中，選取 [ _流覽_ ] 索引標籤，並搜尋下列套件。 選取 [ _安裝_ 並 _接受_ 授權合約] 以安裝套件。
 
 * `Azure.DigitalTwins.Core`
 * `Azure.Identity`
@@ -78,15 +78,15 @@ dotnet add package System.Net.Http
 dotnet add package Azure.Core
 ```
 
-接下來，在 Visual Studio 方案總管中，開啟您擁有範例程式碼的 _function.cs_ 檔案，然後將下列 _using_ 語句新增至您的函式。 
+接下來，在 Visual Studio 方案總管中，開啟您擁有範例程式碼的 _Function1.cs_ 檔案，然後將下列語句新增至您的函式 `using` 。 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
 ## <a name="add-authentication-code-to-the-function"></a>將驗證程式代碼新增至函式
 
-您現在會宣告類別層級變數，並新增可讓函式存取 Azure 數位 Twins 的驗證程式代碼。 您會將下列程式新增至 {您的函式名稱} .cs 檔案中的函式。
+您現在會宣告類別層級變數，並新增可讓函式存取 Azure 數位 Twins 的驗證程式代碼。 您會將下列程式新增至 _Function1.cs_ 檔案中的函式。
 
-* 將 ADT 服務 URL 讀取為環境變數。 從環境變數讀取服務 URL 是很好的作法，而不是在函式中進行硬式編碼。
+* 用來讀取 Azure 數位 Twins 服務 URL 作為環境變數的程式碼。 從環境變數讀取服務 URL 是很好的作法，而不是在函式中進行硬式編碼。
 
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ADT_service_URL":::
 
@@ -97,43 +97,24 @@ dotnet add package Azure.Core
 * 您可以在 Azure Functions 中使用受控識別認證。
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="ManagedIdentityCredential":::
 
-* 在您的函式內新增本機變數 _DigitalTwinsClient_ ，以將您的 Azure 數位 Twins 用戶端實例保存到函式專案。 請勿在您的類別內將此 *變數設為* 靜態。
+* 在您的函式內新增本機變數 _DigitalTwinsClient_ ，以保存您的 Azure 數位 Twins 用戶端實例。 請勿在您的類別內將此 *變數設為* 靜態。
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="DigitalTwinsClient":::
 
-* 針對 _adtInstanceUrl_ 新增 null 檢查，並將您的函式邏輯包裝在 try catch 區塊中，以攔截任何例外狀況。
+* 針對 _adtInstanceUrl_ 新增 null 檢查，並將您的函式邏輯包裝在 try/catch 區塊中，以攔截任何例外狀況。
 
 這些變更之後，您的函式程式碼將會如下所示：
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
+現在您的應用程式已寫入，您可以使用下一節中的步驟將它發佈至 Azure。
+
 ## <a name="publish-the-function-app-to-azure"></a>將函數應用程式發佈至 Azure
 
-若要將專案發佈至 Azure 中的函式應用程式，請在方案總管中，以滑鼠右鍵選取函式專案 (而不是 [方案) ]，然後選擇 [ **發行**]。
-
-> [!IMPORTANT] 
-> 在 Azure 中發佈至函式應用程式會在您的訂用帳戶上產生額外費用，與 Azure 數位 Twins 無關。
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function.png" alt-text="Visual Studio：將函式發佈至 Azure":::
-
-選取 **Azure** 作為發佈目標，然後選取 **[下一步]**。
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-1.png" alt-text="Visual Studio：發佈 Azure Functions] 對話方塊，選取 Azure ":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-2.png" alt-text="Visual Studio： [發佈函式] 對話方塊中，選取 (Windows) 的 Azure 函數應用程式，或根據您的電腦 (Linux) ":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-3.png" alt-text="Visual Studio：發佈函式對話方塊，建立新的 Azure 函數":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-4.png" alt-text="Visual Studio： [發行函數] 對話方塊、填寫欄位，然後選取 [建立]":::
-
-:::image type="content" source="media/how-to-create-azure-function/publish-azure-function-5.png" alt-text="Visual Studio：發佈函式對話方塊，從清單中選取您的函數應用程式，然後完成":::
-
-在下列頁面上，輸入新函數應用程式的所需名稱、資源群組和其他詳細資料。
-為了讓您的函式應用程式能夠存取 Azure 數位 Twins，它必須有系統管理的身分識別，而且有權存取您的 Azure 數位 Twins 實例。
-
-接下來，您可以使用 CLI 或 Azure 入口網站設定函數的安全性存取權。 選擇下列其中一種方法：
+[!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
 ## <a name="set-up-security-access-for-the-function-app"></a>設定函數應用程式的安全性存取
-您可以使用下列其中一個選項來設定函數應用程式的安全性存取：
+
+您可以使用 Azure CLI 或 Azure 入口網站來設定函數應用程式的安全性存取。 請遵循下列步驟，以瞭解您的慣用選項。
 
 ### <a name="option-1-set-up-security-access-for-the-function-app-using-cli"></a>選項1：使用 CLI 設定函數應用程式的安全性存取
 
@@ -169,7 +150,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 在 [Azure 入口網站](https://portal.azure.com/)中，使用您稍早建立的函式應用程式名稱，在搜尋列中搜尋 _函數應用程式_ 。 從清單中選取 *函數應用程式* 。 
 
-:::image type="content" source="media/how-to-create-azure-function/portal-search-for-functionapp.png" alt-text="Azure 入口網站：搜尋函數應用程式":::
+:::image type="content" source="media/how-to-create-azure-function/portal-search-for-function-app.png" alt-text="Azure 入口網站：搜尋函數應用程式":::
 
 在 [函式應用程式] 視窗中，選取左側導覽列中的 [ _識別_ ]，以啟用受控識別。
 在 [ _系統指派_ ] 索引標籤下，將 _狀態_ 切換至開啟並 _儲存_ 。 您將會看到快顯視窗，以 _啟用系統指派的受控識別_。
@@ -206,25 +187,23 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 
 您可以藉由設定環境變數，讓您的函式可以存取您的 Azure 數位 Twins 實例的 URL。 如需有關這個的詳細資訊，請參閱 [*環境變數*](/sandbox/functions-recipes/environment-variables)。 應用程式設定會公開為環境變數，以存取數位 twins 實例。 
 
-您將需要 ADT_INSTANCE_URL 來建立應用程式設定。
-
-您可以藉由將 **_HTTPs://_** 附加至實例主機名稱來取得 ADT_INSTANCE_URL。 在 Azure 入口網站中，您可以在搜尋列中搜尋您的實例，以找到您的數位 twins 實例主機名稱。 然後，選取左側導覽列上的 _[總覽_ ] 以查看 _主機名稱_。 複製此值以建立應用程式設定。
+若要使用實例的 URL 來設定環境變數，請先尋找您的 Azure 數位 Twins 實例的主機名稱來取得 URL。 在 [Azure 入口網站](https://portal.azure.com) 搜尋列中搜尋您的實例。 然後，選取左側導覽列上的 _[總覽_ ] 以查看 _主機名稱_。 複製這個值。
 
 :::image type="content" source="media/how-to-create-azure-function/adt-hostname.png" alt-text="Azure 入口網站：總覽-> 複製要在 _Value_ 欄位中使用的主機名稱。":::
 
 您現在可以依照下列步驟來建立應用程式設定：
 
-* 使用搜尋列中的函式應用程式名稱來搜尋應用程式，並從清單中選取函數應用程式
-* 選取 _左側導覽列上的_ [設定]，以建立新的應用程式設定
-* 在 [_應用程式設定_] 索引標籤中，選取 [ _+ 新增應用程式設定_]
+1. 使用搜尋列中的函式應用程式名稱來搜尋應用程式，並從清單中選取函數應用程式
+1. 選取 _左側導覽列上的_ [設定]，以建立新的應用程式設定
+1. 在 [_應用程式設定_] 索引標籤中，選取 [ _+ 新增應用程式設定_]
 
-:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure 入口網站：搜尋現有的函數應用程式":::
+:::image type="content" source="media/how-to-create-azure-function/search-for-azure-function.png" alt-text="Azure 入口網站：搜尋現有的函數應用程式" lightbox="media/how-to-create-azure-function/search-for-azure-function.png":::
 
 :::image type="content" source="media/how-to-create-azure-function/application-setting.png" alt-text="Azure 入口網站：設定應用程式設定":::
 
-在開啟的視窗中，使用從上面複製的值來建立應用程式設定。 \
-_名稱_  ： ADT_SERVICE_URL \
-_值_ ： HTTPs：//{您的 azure-twins-hostname}
+在開啟的視窗中，使用上面複製的主機名稱值來建立應用程式設定。
+* _名稱_ ： ADT_SERVICE_URL
+* _值_： HTTPs：//{您的-twins-主機名稱}
 
 選取 _[確定]_ 以建立應用程式設定。
 
@@ -242,12 +221,9 @@ _值_ ： HTTPs：//{您的 azure-twins-hostname}
 
 :::image type="content" source="media/how-to-create-azure-function/notifications-update-web-app-settings.png" alt-text="Azure 入口網站：更新應用程式設定的通知":::
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-在本文中，您已遵循在 Azure 中設定函數應用程式以搭配 Azure 數位 Twins 使用的步驟。 接下來，您可以將函式訂閱至事件方格，以在端點上接聽。 此端點可能是：
-* 附加至 Azure 數位 Twins 的事件方格端點，可處理來自 Azure 數位 Twins 本身的訊息 (例如屬性變更訊息、對應項圖形中 [數位 Twins](concepts-twins-graph.md) 所產生的遙測訊息，或是生命週期訊息) 
-* IoT 中樞用來傳送遙測和其他裝置事件的 IoT 系統主題
-* 接收來自其他服務之訊息的事件方格端點
+在本文中，您已遵循在 Azure 中設定函數應用程式以搭配 Azure 數位 Twins 使用的步驟。
 
 接下來，請參閱如何建立基本函式以將 IoT 中樞資料內嵌至 Azure 數位 Twins：
 * [*作法：從 IoT 中樞內嵌遙測*](how-to-ingest-iot-hub-data.md)

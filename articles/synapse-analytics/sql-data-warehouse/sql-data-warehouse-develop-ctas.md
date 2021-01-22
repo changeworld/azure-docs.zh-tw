@@ -11,12 +11,12 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 95158193a978702392106c8aa3347de211fd1a3e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6750f010e3992a2b76cc688449ad44efa7ec76d0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115441"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683268"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
 
@@ -24,11 +24,11 @@ ms.locfileid: "98115441"
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) 語句是其中一個最重要的 t-sql 功能。 CTAS 是一種平行作業，會根據 SELECT 語句的輸出來建立新的資料表。 CTAS 是使用單一命令來建立資料並將其插入資料表的最簡單且最快速的方式。
+[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (CTAS) 語句是其中一個最重要的 t-sql 功能。 CTAS 是一種平行作業，會根據 SELECT 語句的輸出來建立新的資料表。 CTAS 是使用單一命令來建立資料並將其插入資料表的最簡單且最快速的方式。
 
 ## <a name="selectinto-vs-ctas"></a>選擇。。。INTO 和 CTAS
 
-CTAS 是可自訂的 [SELECT .。。INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 語句。
+CTAS 是可自訂的 [SELECT .。。INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 語句。
 
 以下範例是簡單的 SELECT .。。到：
 
@@ -379,8 +379,8 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 您可以在 CTAS 上看到類型一致性和維護可 null 性屬性，是工程最佳做法。 它有助於維護計算中的完整性，也可以確保資料分割切換是可行的。
 
-CTAS 是 Synapse SQL 中最重要的其中一個語句。 請確定您已徹底了解。 請參閱 [CTAS 檔](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+CTAS 是 Synapse SQL 中最重要的其中一個語句。 請確定您已徹底了解。 請參閱 [CTAS 檔](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需更多開發祕訣，請參閱 [開發概觀](sql-data-warehouse-overview-develop.md)。

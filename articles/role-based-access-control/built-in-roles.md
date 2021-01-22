@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 39385a3ea9dc06875806ac85c06c0df6d5db2698
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538531"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683788"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -7413,7 +7413,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | 建立及管理原則指派 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | 建立及管理原則定義 |
-> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* |  |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* | 建立及管理原則豁免 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | 建立及管理原則集合 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
@@ -9171,7 +9171,7 @@ Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 > | */read | 讀取密碼以外的所有類型的資源。 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | 建立及管理原則指派 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | 建立及管理原則定義 |
-> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* |  |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* | 建立及管理原則豁免 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | 建立及管理原則集合 |
 > | [Microsoft.policyinsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |

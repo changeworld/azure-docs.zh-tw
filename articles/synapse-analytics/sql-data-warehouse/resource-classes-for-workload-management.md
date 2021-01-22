@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a557d4045b18b5c0ff71b3e47f0c189028702863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7714ce748eb172565357723924ab2212e9559e1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289526"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685322"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用資源類別進行的工作負載管理
 
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 資源類別會藉由將使用者指派給資料庫角色來實作。 當使用者執行查詢時，查詢會利用使用者的資源類別來執行。 例如，如果使用者為 staticrc10 資料庫角色的成員，則其查詢會利用少量記憶體來執行。 如果資料庫使用者為 xlargerc 或 staticrc80 資料庫角色的成員，則其查詢會利用大量記憶體來執行。
 
-若要增加使用者的資源類別，請使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)，將使用者新增至大型資源類別的資料庫角色。  下列程式碼會將使用者新增至 largerc 資料庫角色。  每個要求會取得系統記憶體的 22%。
+若要增加使用者的資源類別，請使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)，將使用者新增至大型資源類別的資料庫角色。  下列程式碼會將使用者新增至 largerc 資料庫角色。  每個要求會取得系統記憶體的 22%。
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-若要減少資源類別，使用 [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) \(英文\)。  如果 ' loaduser ' 不是成員或任何其他資源類別，則其會進入預設的 smallrc 資源類別，並授與 3% 的記憶體。  
+若要減少資源類別，使用 [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) \(英文\)。  如果 ' loaduser ' 不是成員或任何其他資源類別，則其會進入預設的 smallrc 資源類別，並授與 3% 的記憶體。  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';

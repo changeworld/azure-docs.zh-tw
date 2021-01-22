@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 9077ce35065b1bf45646496cc4c43d6def82d958
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115815"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685220"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的專用 SQL 集區 (先前稱為 SQL DW) 是什麼？
 
@@ -29,7 +29,7 @@ Azure Synapse Analytics 是一種分析服務，可將企業資料倉儲和巨�
 
 專用 SQL 集區 (先前稱為 SQL DW) 代表使用 Synapse SQL 時所佈建的分析資源集合。 專用 SQL 集區 (先前稱為 SQL DW) 的大小取決於資料倉儲單位 (DWU)。
 
-在您建立專用 SQL 集區後，您可以使用簡單的 [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 查詢匯入巨量資料，然後使用分散式查詢引擎功能來執行高效能分析。 當您整合及分析資料時，專用 SQL 集區 (先前稱為 SQL DW) 將成為您的企業可以信賴的真正單一版本，可為您提供更快速且更穩健的深入解析。
+在您建立專用 SQL 集區後，您可以使用簡單的 [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 查詢匯入巨量資料，然後使用分散式查詢引擎功能來執行高效能分析。 當您整合及分析資料時，專用 SQL 集區 (先前稱為 SQL DW) 將成為您的企業可以信賴的真正單一版本，可為您提供更快速且更穩健的深入解析。
 
 > [!NOTE]
 >探索 [Azure Synapse Analytics 文件](../overview-what-is.md)。

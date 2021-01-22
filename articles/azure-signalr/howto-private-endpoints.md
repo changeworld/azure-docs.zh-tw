@@ -8,12 +8,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
-ms.openlocfilehash: 80369883b84ca30cae475235d41addcfba7e52e1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 92e93c3746308d2d6c1a489efc6b5c866b0ad2d9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152344"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682625"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>使用私人端點進行 Azure SignalR Service
 
@@ -35,7 +35,7 @@ VNet 中的應用程式可以 **使用相同的連接字串和其使用的授權
 
 當您為 VNet 中的 Azure SignalR Service 建立私人端點時，會將同意要求傳送給 Azure SignalR Service 擁有者的核准。 如果要求建立私人端點的使用者也是 Azure SignalR Service 的擁有者，則會自動核准此同意要求。
 
-Azure SignalR Service 擁有者可以透過[Azure 入口網站](https://portal.azure.com)中 Azure SignalR Service 的 [*私人端點*] 索引標籤，來管理同意要求和私人端點。
+Azure SignalR Service 擁有者可以透過 [Azure 入口網站](https://portal.azure.com)中 Azure SignalR Service 的 [*私人端點*] 索引標籤，來管理同意要求和私人端點。
 
 > [!TIP]
 > 如果您想要限制只能透過私人端點存取您的 Azure SignalR Service，請 [設定網路存取控制](howto-network-access-control.md#managing-network-access-control) 以拒絕或控制透過公用端點的存取。
@@ -93,7 +93,7 @@ Azure SignalR Service 私人端點的建議 DNS 區功能變數名稱稱為： `
 
     ![建立 Azure SignalR Service-[網路] 索引標籤](media/howto-private-endpoints/portal-create-blade-networking-tab.png)
 
-1. 按一下 [新增]  。 填入新私人端點的訂用帳戶、資源群組、位置和名稱。 選擇虛擬網路和子網。
+1. 按一下 **[新增]** 。 填入新私人端點的訂用帳戶、資源群組、位置和名稱。 選擇虛擬網路和子網。
 
     ![建立 Azure SignalR Service-新增私人端點](media/howto-private-endpoints/portal-create-blade-add-private-endpoint.png)
 
@@ -103,7 +103,7 @@ Azure SignalR Service 私人端點的建議 DNS 區功能變數名稱稱為： `
 
 1. 移至 Azure SignalR Service。
 
-1. 按一下 [設定] 功能表，稱為 [ **私人端點**連線]。
+1. 按一下 [設定] 功能表，稱為 [ **私人端點** 連線]。
 
 1. 按一下頂端的按鈕 **+ 私人端點** 。
 
@@ -126,55 +126,55 @@ Azure SignalR Service 私人端點的建議 DNS 區功能變數名稱稱為： `
 ### <a name="create-a-private-endpoint-using-azure-cli"></a>使用 Azure CLI 建立私人端點
 
 1. 登入 Azure CLI
-    ```console
+    ```azurecli
     az login
     ```
 1. 選取您的 Azure 訂用帳戶
-    ```console
+    ```azurecli
     az account set --subscription {AZURE SUBSCRIPTION ID}
     ```
 1. 建立新的資源群組
-    ```console
+    ```azurecli
     az group create -n {RG} -l {AZURE REGION}
     ```
 1. 將 Microsoft.signalrservice 註冊為提供者
-    ```console
+    ```azurecli
     az provider register -n Microsoft.SignalRService
     ```
 1. 建立新的 Azure SignalR Service
-    ```console
+    ```azurecli
     az signalr create --name {NAME} --resource-group {RG} --location {AZURE REGION} --sku Standard_S1
     ```
 1. 建立虛擬網路
-    ```console
+    ```azurecli
     az network vnet create --resource-group {RG} --name {vNet NAME} --location {AZURE REGION}
     ```
 1. 新增子網路
-    ```console
+    ```azurecli
     az network vnet subnet create --resource-group {RG} --vnet-name {vNet NAME} --name {subnet NAME} --address-prefixes {addressPrefix}
     ```
 1. 停用虛擬網路原則
-    ```console
+    ```azurecli
     az network vnet subnet update --name {subnet NAME} --resource-group {RG} --vnet-name {vNet NAME} --disable-private-endpoint-network-policies true
     ```
 1. 建立私人 DNS 區域
-    ```console
+    ```azurecli
     az network private-dns zone create --resource-group {RG} --name privatelink.service.signalr.net
     ```
 1. 將私人 DNS 區域連結至虛擬網路
-    ```console
+    ```azurecli
     az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.service.signalr.net --name {dnsZoneLinkName} --registration-enabled true
     ```
 1. 建立私人端點 (自動核准)
-    ```console
+    ```azurecli
     az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.SignalRService/SignalR/{NAME}" --group-ids signalr --connection-name {Private Link Connection Name} --location {AZURE REGION}
     ```
 1. 建立私人端點 (手動要求核准)
-    ```console
+    ```azurecli
     az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.SignalRService/SignalR/{NAME}" --group-ids signalr --connection-name {Private Link Connection Name} --location {AZURE REGION} --manual-request
     ```
 1. 顯示連線狀態
-    ```console
+    ```azurecli
     az network private-endpoint show --resource-group {RG} --name {Private Endpoint Name}
     ```
 
@@ -200,6 +200,6 @@ Azure SignalR Service 私人端點的建議 DNS 區功能變數名稱稱為： `
 
 您目前無法設定 [網路安全性群組](../virtual-network/network-security-groups-overview.md) (NSG) 規則和私人端點的使用者定義路由。 套用至裝載私人端點之子網的 NSG 規則會套用至私人端點。 此問題的有限因應措施是針對來源子網上的私人端點實行存取規則，但是這種方法可能需要較高的管理負荷。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [設定網路存取控制](howto-network-access-control.md)

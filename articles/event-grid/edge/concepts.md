@@ -7,12 +7,12 @@ ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8314447e7d5d282eb428ec9316c4eef6844a7423
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171732"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682374"
 ---
 # <a name="event-grid-concepts"></a>Event Grid 概念
 
@@ -48,7 +48,7 @@ Event Grid 主題提供來源傳送事件的端點。 發行者會建立 Event G
 
 ## <a name="event-handlers"></a>事件處理常式
 
-從 Event Grid 的觀點而言，事件處理常式是傳送事件的位置。 處理常式會採取進一步的動作來處理事件。 事件方格支援數個處理常式類型。 您可以使用支援的 Azure 服務或您自己的 webhook 做為處理常式。 視處理常式類型而定，Event Grid 依照不同的機制來保證事件的傳遞。 如果目的地事件處理常式是 HTTP webhook，當處理常式傳回的狀態碼時，就會重試事件 `200 – OK` 。 針對 edge 中樞，如果在未發生任何例外狀況的情況下傳遞事件，則會將其視為成功。
+從 Event Grid 的觀點而言，事件處理常式是傳送事件的位置。 處理常式會採取進一步的動作來處理事件。 事件方格支援數個處理常式類型。 您可以使用支援的 Azure 服務或您自己的 webhook 做為處理常式。 視處理常式類型而定，Event Grid 依照不同的機制來保證事件的傳遞。 如果目的地事件處理常式是 HTTP webhook，則會重試此事件，直到處理程式傳回的狀態碼為止 `200 – OK` 。 針對 edge 中樞，如果在未發生任何例外狀況的情況下傳遞事件，則會將其視為成功。
 
 ## <a name="security"></a>安全性
 

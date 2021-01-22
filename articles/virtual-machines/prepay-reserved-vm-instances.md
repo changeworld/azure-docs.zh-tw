@@ -9,15 +9,14 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: ffc9c8f3143824dd099aaad3e743398eea4e0f43
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e6cf097e927c4606885dd3f885de6ab8235bf6be
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602529"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682578"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances"></a>使用 Azure 保留的 VM 執行個體節省成本
-
 
 
 當您認可至 Azure 保留的 VM 實例時，您可以節省成本。 保留項目折扣會自動套用到符合保留項目範圍和屬性之執行中虛擬機器的數目。 您不需要將保留指派給虛擬機器以取得折扣。 購買保留實例僅涵蓋 VM 使用量的計算部分。 針對 Windows Vm，使用量計量會分割成兩個不同的計量。 有一種計算計量，與 Linux 計量和 Windows IP 計量相同。 當您進行購買時所看到的費用，只會用於計算成本。 費用不包含 Windows 軟體成本。 如需軟體成本的詳細資訊，請參閱 [Azure 保留的 VM 執行個體未包含的軟體成本](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)。

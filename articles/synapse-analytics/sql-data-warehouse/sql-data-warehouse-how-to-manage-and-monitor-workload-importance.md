@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fb0a5fbf33b48521882646bf8fb5eb3fe5dacca6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12b75ad3746cd0f54e27e474e0fd13bb0bba0e05
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459202"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685237"
 ---
 # <a name="manage-and-monitor-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>管理及監視專用 SQL 集區中 Azure Synapse Analytics 的工作負載重要性
 
@@ -24,7 +24,7 @@ ms.locfileid: "96459202"
 
 ## <a name="monitor-importance"></a>監視重要性
 
-使用 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 動態管理檢視中的新 [重要性] 資料行來監視重要性。
+使用 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 動態管理檢視中的新 [重要性] 資料行來監視重要性。
 下列監視查詢會顯示查詢的提交時間和開始時間。 查看提交時間和開始時間以及重要性，以查看重要性如何影響排程。
 
 ```sql
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-目錄檢視（ [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)）包含建立分類器時所用參數的資訊。  下列查詢顯示 ExecReportsClassifier 是在 ```membername``` 具有 ExecutiveReports 值的參數上建立的：
+目錄檢視（ [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)）包含建立分類器時所用參數的資訊。  下列查詢顯示 ExecReportsClassifier 是在 ```membername``` 具有 ExecutiveReports 值的參數上建立的：
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -68,7 +68,7 @@ IF EXISTS (SELECT 1 FROM sys.workload_management_workload_classifiers WHERE name
 GO
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需分類的詳細資訊，請參閱 [工作負載分類](sql-data-warehouse-workload-classification.md)。
 - 如需重要性的詳細資訊，請參閱[工作負載重要性](sql-data-warehouse-workload-importance.md)

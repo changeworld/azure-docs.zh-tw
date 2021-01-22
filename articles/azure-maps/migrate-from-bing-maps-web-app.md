@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
-ms.translationtype: HT
+ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679404"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684820"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>教學課程：從 Bing 地圖服務遷移 Web 應用程式
 
@@ -85,7 +85,7 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
 
 以下是 Bing 地圖服務與 Azure 地圖服務 Web SDK 之間需要注意的一些主要差異：
 
-* 除了提供主控端點以供存取 Azure 地圖服務 Web SDK 外，如果您想要的話，也可使用 NPM 套件來將 Web SDK 內嵌至應用程式。 如需詳細資訊，請參閱[文件](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control)。 此套件也包含 TypeScript 定義。
+* 除了提供主控端點以供存取 Azure 地圖服務 Web SDK 外，如果您想要的話，也可使用 NPM 套件來將 Web SDK 內嵌至應用程式。 如需詳細資訊，請參閱[文件](./how-to-use-map-control.md)。 此套件也包含 TypeScript 定義。
 * Bing 地圖服務提供兩個其 SDK 的主控分支；「發行」和「實驗性」。 「實驗性」分支在進行新的開發時，可能會一天收到多個更新。 Azure 地圖服務只會主控發行分支，不過，實驗性功能會建立為開放原始碼 Azure 地圖服務程式碼範例專案中的自訂模組。 Bing 地圖服務也用來擁有已凍結的分支，但較不頻繁地更新，因而降低因發行而中斷變更的風險。 在 Azure 地圖服務中，您可以使用 NPM 模組並指向任何先前的次要版本發行。
 
 > [!TIP]
@@ -95,7 +95,7 @@ Azure 地圖服務也有許多[適用於 web SDK 的其他開放原始碼模組]
 * 這兩種平台都會針對基底地圖使用類似的地圖底圖系統，不過，Bing 地圖服務中的地圖底圖維度是 256 像素，而 Azure 地圖服務中的地圖底圖維度則是 512 像素。 因此，若要在 Azure 地圖服務中獲得和 Bing 地圖服務相同的地圖檢視，則 Bing 地圖服務中所使用的縮放層級，在 Azure 地圖服務中就必須減一。
 * Bing 地圖服務中的座標是 `latitude, longitude`，而 Azure 地圖服務是使用 `longitude, latitude`。 此格式與大多數 GIS 平台所遵循的標準 `[x, y]` 相符。
 
-* Azure 地圖服務 Web SDK 中的圖形依據的是 GeoJSON 結構描述。 協助程式類別則會透過 [atlas.data namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) 來公開。 另外還有 [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape) 類別可用來包裝 GeoJSON 物件，這可讓您以資料可繫結的方式來更新和維護這些物件。
+* Azure 地圖服務 Web SDK 中的圖形依據的是 GeoJSON 結構描述。 協助程式類別則會透過 [atlas.data namespace](/javascript/api/azure-maps-control/atlas.data) 來公開。 另外還有 [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape) 類別可用來包裝 GeoJSON 物件，這可讓您以資料可繫結的方式來更新和維護這些物件。
 * Azure 地圖服務中的座標會定義為 Position 物件，並可指定為 `[longitude, latitude]` 或 `new atlas.data.Position(longitude, latitude)` 格式的簡單數字陣列。
 
 > [!TIP]

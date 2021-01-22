@@ -3,12 +3,12 @@ title: Azure VMware 解決方案上的部署範圍
 description: 瞭解如何在 Azure VMware 解決方案上部署 VMware 的範圍。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 2cf6fc5cb7662188650365cb019774d6c778d405
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537436"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684870"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware 解決方案上的部署範圍 
 
@@ -130,15 +130,35 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 
 ### <a name="sizing-tables"></a>調整資料表大小
 
-這些表格顯示登入 .VSI 知識工作者工作負載和 Power Worker 工作負載的一般工作負載。
+範圍虛擬桌面的特定 vCPU/vRAM 需求取決於客戶的特定工作負載設定檔。   請與您的 MSFT 和 VMware sales 小組合作，以協助判斷您的虛擬桌面電腦的 vCPU/vRAM 需求。 
 
-#### <a name="knowledge-worker-workloads"></a>知識工作者工作負載
+| 每個 VM 的 vCPU | 每個 VM (GB) 的 vRAM | 執行個體 | 100 Vm | 200 Vm | 300 Vm | 400 Vm | 500 Vm | 600 Vm | 700 Vm | 800 Vm | 900 Vm | 1000 Vm | 2000 Vm | 3000 Vm | 4000 Vm | 5000 Vm | 6000 Vm | 6400 Vm |
+|:-----------:|:----------------:|:--------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+|      2      |        3.5       |    AVS   |    3    |    3    |    4    |    4    |    5    |    6    |    6    |    7    |    8    |     9    |    17    |    25    |    33    |    41    |    49    |    53    |
+|      2      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    6    |    7    |    8    |    9    |     9    |    18    |    26    |    34    |    42    |    51    |    54    |
+|      2      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      2      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      2      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      2      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      4      |        3.5       |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      4      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      4      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      4      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      6      |        3.5       |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         4        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      6      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      6      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      8      |        3.5       |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         4        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         6        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      8      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      8      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
 
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="適用于 VMware 的一般 VDI 設定檔（用於登入 .VSI 知識工作者工作負載）的表格" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
-
-#### <a name="power-worker-workloads"></a>Power worker 工作負載
-
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="針對登入 .VSI Power worker 工作負載，適用于 VMware 的一般 VDI 設定檔資料表" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="horizon-sizing-inputs"></a>水準調整大小輸入
 
@@ -189,24 +209,9 @@ Azure 私用雲端在概念上與 VMware SDDC 相同，此詞彙通常用於範�
 
 請與您的 VMware EUC 銷售小組合作，以根據您的需求判斷範圍授權成本。
 
-### <a name="cost-of-the-horizon-infrastructure-vms-on-azure-virtual-network"></a>Azure 虛擬網路上的範圍基礎結構 Vm 成本
+### <a name="azure-instance-types"></a>Azure 實例類型
 
-根據標準部署架構，範圍基礎結構 Vm 是由連接伺服器、UAGs、應用程式磁片區管理員所組成。 它們是部署在客戶的 Azure 虛擬網路中。 需要額外的 Azure 原生實例，才能在 Azure 上支援高可用性 (HA) 、Microsoft SQL 或 Microsoft Active Directory (AD) 服務。 資料表會根據 2000-桌面部署範例列出 Azure 實例。 
+若要瞭解範圍基礎結構所需的 Azure 虛擬機器大小，請參閱可在 [這裡](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)找到的 VMware 指導方針。
 
->[!NOTE]
->若要能夠處理失敗，請部署一部以上的伺服器，而不是 (n + 1) 的連接數目所需的伺服器。 連線伺服器、UAG 和應用程式磁片區管理員的最小建議實例數目為2，而所需的數目將根據環境將支援的使用者數量成長。  單一連線伺服器最多可支援4000個會話，但建議使用2000作為最佳作法。 每個 pod 最多可支援7個連接伺服器，每個 pod 的建議為12000個作用中會話。 如需最新數目的相關資訊，請參閱 vmware [知識庫文章： vmware 趨勢調整限制和建議](https://kb.vmware.com/s/article/2150348)。
-
-| 範圍基礎結構元件 | Azure 實例 | 2000-桌面) 所需的實例數 (    | 註解  |
-|----------------------------------|----------------|----------------------------------------------------|----------|
-| 連接伺服器                | D4sv3          | 2       | *請參閱上述注意事項*                         |    
-| UAG                              | F2sv2          | 2       | *請參閱上述注意事項*                         |
-| 應用程式磁片區管理員              | D4sv3          | 2       | *請參閱上述注意事項*                         |
-| 雲端連接器                  | D4sv3          | 1       |                                          |
-| AD 控制器                    | D4sv3          | 2       | *使用 Azure 上的 MSFT AD 服務的選項* |
-| MS SQL Database                  | D4sv3          | 2       | *在 Azure 上使用 SQL 服務的選項*     |
-| Windows 檔案共用               | D4sv3          |         | *選擇性*                               |
-
-在 \$ 上述範例中，每位使用者每個2000月每位使用者0.36 的基礎結構 VM 成本。 此範例會使用美國東部 Azure 實例2020年6月定價。 根據區域、選取的選項和時間，您的定價可能會有所不同。
-
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 若要深入瞭解 Azure VMware 解決方案上的 VMware 範圍，請閱讀 [Vmware 範圍常見問題](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)。

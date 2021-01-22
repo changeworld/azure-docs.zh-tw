@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763535"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684605"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 虛擬機器擴展集的 OS 映像自動升級
 
@@ -49,11 +49,11 @@ ms.locfileid: "97763535"
 >自動 OS 升級不會升級擴展集上的參考映射 Sku。 若要將 Sku (例如 Ubuntu 16.04-LTS 變更為 18.04 LTS) ，您必須使用所需的映射 Sku 直接更新 [擴展集模型](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) 。 無法變更現有擴展集的映射發行者和供應專案。  
 
 ## <a name="supported-os-images"></a>支援的作業系統映像
-目前僅支援特定的作業系統平台映像。 如果擴展集使用來自[共用映射庫](shared-image-galleries.md)的自訂映射，則[支援](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)自訂映射。
+目前僅支援特定的作業系統平台映像。 如果擴展集使用來自[共用映射庫](../virtual-machines/shared-image-galleries.md)的自訂映射，則[支援](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images)自訂映射。
 
 目前支援下列平臺 Sku (而且會定期新增更多) ：
 
-| 發行者               | OS 供應項目      |  SKU               |
+| Publisher               | OS 供應項目      |  SKU               |
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
@@ -89,11 +89,11 @@ ms.locfileid: "97763535"
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>自訂映射的自動 OS 映射升級
 
-透過 [共用映射庫](shared-image-galleries.md)部署的自訂映射支援自動 OS 映射升級。 系統不支援自動 OS 映射升級的其他自訂映射。
+透過 [共用映射庫](../virtual-machines/shared-image-galleries.md)部署的自訂映射支援自動 OS 映射升級。 系統不支援自動 OS 映射升級的其他自訂映射。
 
 ### <a name="additional-requirements-for-custom-images"></a>自訂映射的其他需求
 - 所有擴展集的安裝和設定程式都是相同的，如本頁的設定 [一節](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) 中所述。
-- 針對自動 OS 映射升級設定的擴展集實例，會在新版本的映射 [發行並複寫](shared-image-galleries.md#replication) 至該擴展集的區域時，升級為最新版本的共用映射庫映射。 如果新映射未複寫至部署規模的區域，擴展集實例將不會升級為最新版本。 區域映射複寫可讓您控制擴展集的新映射推出。
+- 針對自動 OS 映射升級設定的擴展集實例，會在新版本的映射 [發行並複寫](../virtual-machines/shared-image-galleries.md#replication) 至該擴展集的區域時，升級為最新版本的共用映射庫映射。 如果新映射未複寫至部署規模的區域，擴展集實例將不會升級為最新版本。 區域映射複寫可讓您控制擴展集的新映射推出。
 - 新的映射版本不應從該圖庫映射的最新版本中排除。 從資源庫映射的最新版本中排除的映射版本，不會透過自動 OS 映射升級推出至擴展集。
 
 > [!NOTE]
@@ -297,5 +297,5 @@ az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScale
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fvm-scale-sets%2Fmaster%2Fpreview%2Fupgrade%2Fautoupdate.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Azure." /></a>
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 如需如何搭配擴展集使用 OS 自動升級的其他範例，請檢閱 [GitHub 存放庫](https://github.com/Azure/vm-scale-sets/tree/master/preview/upgrade)。

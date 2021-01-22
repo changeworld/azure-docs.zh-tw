@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 6fb17ead2546875c0f334aae322f8fb070e8f1ea
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796290"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684898"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ SQL 受控執行個體內建[高可用性](../database/high-availability-sla.md)
 - [DROP AVAILABILITY GROUP](/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)語句的[SET HADR](/sql/t-sql/statements/alter-database-transact-sql-set-hadr)子句
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>備份
 
 SQL 受控執行個體具有自動備份，因此使用者可以建立完整的資料庫 `COPY_ONLY` 備份。 不支援差異、記錄和檔案快照集備份。
 
@@ -100,7 +100,7 @@ SQL 受控執行個體中的 XEvent 審核支援 Azure Blob 儲存體目標。 �
 - `TO URL`您可以使用新的語法，來指定放置檔案的 Azure Blob 儲存體容器的 URL `.xel` 。
 - `TO FILE`因為 SQL 受控執行個體無法存取 Windows 檔案共用，所以不支援語法。
 
-如需詳細資訊，請參閱： 
+如需詳細資訊，請參閱 
 
 - [CREATE SERVER AUDIT](/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [ALTER SERVER AUDIT](/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -191,7 +191,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - SQL Database 服務) 所管理的 (不支援[服務主要金鑰備份](/sql/t-sql/statements/backup-service-master-key-transact-sql)。
 - SQL Database 服務) 管理的 (不支援[服務主要金鑰還原](/sql/t-sql/statements/restore-service-master-key-transact-sql)。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ### <a name="buffer-pool-extension"></a>緩衝集區延伸
 
@@ -276,6 +276,8 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - `RESTRICTED_USER`
 - `SINGLE_USER`
 - `WITNESS`
+
+某些 `ALTER DATABASE` 語句 (例如， [設定](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql) 內含專案) 可能暫時失敗，例如在自動資料庫備份期間，或在建立資料庫之後。 在此情況下， `ALTER DATABASE` 應該重試語句。 如需相關錯誤訊息的詳細資訊和詳細資訊，請參閱「 [備註」一節](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)。
 
 如需詳細資訊，請參閱 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options)。
 
@@ -549,7 +551,7 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 SQL 受控執行個體將詳細資訊放在錯誤記錄檔中。 錯誤記錄檔中會記錄許多內部系統事件。 您可以使用自訂程式來讀取錯誤記錄檔，以篩選出一些不相關的專案。 如需詳細資訊，請參閱適用于) 的 [sql 受控執行個體-sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) 或 [sql 受控執行個體延伸模組 (preview Azure Data Studio ](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) 。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 如需 SQL 受控執行個體的詳細資訊，請參閱 [何謂 sql 受控執行個體？](sql-managed-instance-paas-overview.md)
 - 如需功能和比較清單，請參閱 [AZURE SQL 受控執行個體功能比較](../database/features-comparison.md)。

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 9f0309f4e8273c2ef19ea86636de8e3aa6b6c4bc
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: edbcabfe4d0b633a784163562f52b303120916ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435095"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685052"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>在沒有布建代理程式的情況下建立一般化映射
 
@@ -180,7 +180,7 @@ wireserver_conn.close()
 
 此示範會使用 systemd，這是新式 Linux 散發版本中最常見的 init 系統。 因此，最簡單且最原生的方式可確保此報表就緒機制在適當的時間執行，以建立 systemd 服務單位。 您可以新增下列單元檔來 `/etc/systemd/system` (此範例將單元檔案命名為 `azure-provisioning.service`) ：
 
-```
+```bash
 [Unit]
 Description=Azure Provisioning
 
@@ -204,7 +204,7 @@ WantedBy=multi-user.target
 
 在檔案系統上，執行下列步驟以啟用該單元：
 
-```
+```bash
 $ sudo systemctl enable azure-provisioning.service
 ```
 
@@ -214,14 +214,14 @@ $ sudo systemctl enable azure-provisioning.service
 
 回到您的開發電腦，執行下列程式來準備從基底 VM 建立映射：
 
-```
+```bash
 $ az vm deallocate --resource-group demo1 --name demo1
 $ az vm generalize --resource-group demo1 --name demo1
 ```
 
 並從這個 VM 建立映射：
 
-```
+```bash
 $ az image create \
     --resource-group demo1 \
     --source demo1 \
@@ -231,7 +231,7 @@ $ az image create \
 
 現在，我們已準備好從映射建立新的 VM (或多個 Vm) ：
 
-```
+```bash
 $ IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o tsv)
 $ az vm create \
     --resource-group demo12 \
@@ -249,7 +249,7 @@ $ az vm create \
 
 此 VM 應可成功布建。 若要登入新布建的 VM，您應該能夠看到 report ready systemd service 的輸出：
 
-```
+```bash
 $ sudo journalctl -u azure-provisioning.service
 -- Logs begin at Thu 2020-06-11 20:28:45 UTC, end at Thu 2020-06-11 20:31:24 UTC. --
 Jun 11 20:28:49 thstringnopa systemd[1]: Starting Azure Provisioning...
@@ -271,6 +271,6 @@ Jun 11 20:28:56 thstringnopa2 systemd[1]: Started Azure Provisioning.
 
 如果您執行自己的布建程式碼/代理程式，則您擁有此程式碼的支援，Microsoft 支援服務只會調查與無法使用的布建介面相關的問題。 我們會持續在此區域進行改進和變更，因此您必須監視雲端初始化和 Azure Linux 代理程式中的變更，以布建 API 變更。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需詳細資訊，請參閱 [Linux](provisioning.md)布建。

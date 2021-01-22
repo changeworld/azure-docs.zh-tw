@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a7b8cb10f75d7a99198ddfdc1a1bbef3c34a03da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601661"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685101"
 ---
 # <a name="create-an-image-from-a-vm"></a>從 VM 建立映像
 
 如果您有想要用來建立多個相同 Vm 的現有 VM，您可以使用該 VM，以 Azure PowerShell 在共用映射庫中建立映射。 您也可以使用 [Azure CLI](image-version-vm-cli.md)從 VM 建立映射。
 
-您可以使用 Azure PowerShell 從特製化 [和一般化](./windows/shared-image-galleries.md#generalized-and-specialized-images) vm 捕捉映射。 
+您可以使用 Azure PowerShell 從特製化 [和一般化](./shared-image-galleries.md#generalized-and-specialized-images) vm 捕捉映射。 
 
 映射庫中的影像有兩個元件，我們將在此範例中建立這些元件：
 - **映射定義** 會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
@@ -77,7 +77,7 @@ Stop-AzVM `
 
 進行映射定義時，請確定已有所有正確的資訊。 如果您將 VM (用於 Windows 的 Sysprep 或適用于 Linux 的 waagent-取消布建) 則您應該使用建立映射定義 `-OsState generalized` 。 如果您未將 VM 一般化，請使用建立映射定義 `-OsState specialized` 。
 
-若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./windows/shared-image-galleries.md#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 
 
@@ -136,7 +136,7 @@ $job.State
 > 您也可以在 `-StorageAccountType Premium_LRS` 建立映射版本時新增或 [區域多餘的儲存體](../storage/common/storage-redundancy.md) ，藉以將映射儲存在 Premium 儲存體中 `-StorageAccountType Standard_ZRS` 。
 >
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 一旦您確認新的映射版本可以正常運作，您就可以建立 VM。 從 [特製化映射版本](vm-specialized-image-version-powershell.md) 或 [一般化映射版本](vm-generalized-image-version-powershell.md)建立 VM。
 

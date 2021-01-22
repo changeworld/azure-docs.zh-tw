@@ -1,15 +1,15 @@
 ---
 title: HIPAA HITRUST 9.2 的法規合規性詳細資料
 description: HIPAA HITRUST 9.2 法規合規性內建方案的詳細資料。 每個控制措施都會對應至一或多個可協助評量的 Azure 原則定義。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: f6f5cbea8be7210c2121129e258b2eb2e0fc63eb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: a3b43ee64be49d9e71c709f8472d9c56435f8e0e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98047938"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683629"
 ---
 # <a name="details-of-the-hipaa-hitrust-92-regulatory-compliance-built-in-initiative"></a>HIPAA HITRUST 9.2 法規合規性內建方案的詳細資料
 

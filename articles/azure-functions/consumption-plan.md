@@ -3,12 +3,12 @@ title: Azure Functions 耗用量方案裝載
 description: 瞭解 Azure 函數取用方案裝載如何讓您在可動態調整規模的環境中執行程式碼，但您只需支付執行期間所使用的資源費用。
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: c0619def4687935cd9e403563966b35b84f13c7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937603"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684686"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions 耗用量方案裝載
 
@@ -33,16 +33,16 @@ ms.locfileid: "97937603"
 您可以使用下列連結來瞭解如何以程式設計方式或在 Azure 入口網站中，在取用方案中建立無伺服器函式應用程式：
 
 + [Azure CLI](./scripts/functions-cli-create-serverless.md)
-+ [Azure 入口網站](functions-create-first-azure-function.md)
++ [Azure 入口網站](./functions-get-started.md)
 + [Azure Resource Manager 範本](functions-create-first-function-resource-manager.md)
 
-當您從 [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) 或 [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure)發行函數專案時，也可以在取用方案中建立函數應用程式。
+當您從 [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) 或 [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure)發行函數專案時，也可以在取用方案中建立函數應用程式。
 
 ## <a name="multiple-apps-in-the-same-plan"></a>相同方案中的多個應用程式
 
 相同區域中的函數應用程式可以指派給相同的取用方案。 在相同的取用方案中執行多個應用程式不會造成任何不利或影響。 將多個應用程式指派給相同的取用方案，並不會影響每個應用程式的復原能力、擴充性或可靠性。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 + [Azure Functions 裝載選項](functions-scale.md)
 + [Azure Functions 中的事件驅動規模調整](event-driven-scaling.md)

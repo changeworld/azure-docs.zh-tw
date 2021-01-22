@@ -11,12 +11,12 @@ ms.date: 09/04/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e8826dff6d347f78625272a5620a1f168b8804db
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: bc101e6bb743b9290593937a4d1bac656430b438
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120031"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685305"
 ---
 # <a name="development-best-practices-for-synapse-sql-pool"></a>Synapse SQL 集區的開發最佳做法
 
@@ -80,7 +80,7 @@ SQL 集區可以設定為自動偵測資料行並建立統計資料。  最佳�
 
 針對未分割的資料表，請考慮使用 CTAS 將您想要保留的資料寫入資料表中，而不是使用 DELETE。  如果 CTAS 需要的時間一樣長，則較安全的作業，是在它具有最小交易記錄的條件下執行它，且必要時可以快速地取消。
 
-另請參閱[瞭解交易](sql-data-warehouse-develop-transactions.md)、[最佳化交易](sql-data-warehouse-develop-best-practices-transactions.md)、[資料表分](sql-data-warehouse-tables-partition.md)割、[TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 和 [Create table as select (CTAS)](sql-data-warehouse-develop-ctas.md)。
+另請參閱[瞭解交易](sql-data-warehouse-develop-transactions.md)、[最佳化交易](sql-data-warehouse-develop-best-practices-transactions.md)、[資料表分](sql-data-warehouse-tables-partition.md)割、[TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和 [Create table as select (CTAS)](sql-data-warehouse-develop-ctas.md)。
 
 ## <a name="use-the-smallest-possible-column-size"></a>使用最小的可能資料行大小
 
@@ -114,7 +114,7 @@ SQL 集區可以設定為自動偵測資料行並建立統計資料。  最佳�
 > [!TIP]
 > 查詢資料行存放區資料表時，如果您只選取您需要的資料行，查詢執行會更快速。  
 
-另請參閱[資料表索引](sql-data-warehouse-tables-index.md)、[資料行存放區索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[重建資料行存放區索引](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+另請參閱[資料表索引](sql-data-warehouse-tables-index.md)、[資料行存放區索引指南](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)和[重建資料行存放區索引](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
 
 ## <a name="next-steps"></a>後續步驟
 

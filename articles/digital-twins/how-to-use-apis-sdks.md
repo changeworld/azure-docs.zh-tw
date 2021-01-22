@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 29c05544b4291eb57215bb733eb3791ad3196b6c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 4a2667e4876682a6b0aa6d6b7a8cf67eaee376cc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049791"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683662"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure Digital Twins API 和 SDK
 
@@ -32,7 +32,7 @@ Azure 數位 Twins 隨附 **控制平面 api** 和 **資料平面 api** ，可�
 * 您可以參考 [控制平面 Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/stable)存放庫中最新的 Swagger 資料夾，直接呼叫 api。 此資料夾也包含顯示使用方式的範例資料夾。
 * 您目前可以在中存取控制項 Api 的 Sdk .。。
   - [**.Net (c # )**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([參考 [自動產生]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true))  ([來源](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins)) 
-  - [**JAVA**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([參考 [自動產生]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true))  ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31)) 
+  - [**JAVA**](https://search.maven.org/search?q=a:azure-mgmt-digitaltwins) ([參考 [自動產生]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true))  ([來源](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins)) 
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins)) 
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([來源](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins)) 
   - [**前往**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([來源](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins)) 

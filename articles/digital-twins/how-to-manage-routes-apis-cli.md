@@ -7,29 +7,31 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33b30f29146e446c5525b1bbcfd76af71c557702
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fa699163fdf445624c918e714fda890a41a67f07
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045306"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682642"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>管理 Azure 數位 Twins 中的端點和路由 (Api 和 CLI) 
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-在 Azure 數位 Twins 中，您可以將 [事件通知](how-to-interpret-event-data.md) 路由傳送至下游服務或已連線的計算資源。 這是藉由先設定可接收事件的 **端點** 來完成。 然後，您可以建立  [**事件路由**](concepts-route-events.md) ，以指定 Azure 數位 Twins 所產生的哪些事件會傳遞給哪些端點。
+在 Azure 數位 Twins 中，您可以將 [事件通知](how-to-interpret-event-data.md) 路由傳送至下游服務或已連線的計算資源。 這會透過先設定可接收事件的「端點」完成。 然後，您可以建立  [**事件路由**](concepts-route-events.md) ，以指定 Azure 數位 Twins 所產生的哪些事件會傳遞給哪些端點。
 
 本文將逐步引導您完成使用 [事件路由 api](/rest/api/digital-twins/dataplane/eventroutes)、 [.Net (c # ) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)和 [Azure 數位 Twins CLI](how-to-use-cli.md)建立端點和路由的流程。
 
 或者，您也可以使用 [Azure 入口網站](https://portal.azure.com)來管理端點和路由。 如需使用入口網站的文章版本，請參閱 [*如何： (入口網站) 管理端點和路由*](how-to-manage-routes-portal.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* 您將需要 **Azure 帳戶** (您可以在 [這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免費設定一個帳戶) 
-* 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-cli.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：
+- 您將需要 **Azure 帳戶** (您可以在 [這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 免費設定一個帳戶) 
+- 您將需要 azure 訂用帳戶中的 **Azure 數位 Twins 實例** 。 如果您還沒有實例，可以使用 how [*to：設定實例和驗證*](how-to-set-up-instance-cli.md)中的步驟來建立一個實例。 設定中的下列值可方便用於本文稍後：
     - 執行個體名稱
     - 資源群組
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
     
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>建立 Azure 數位 Twins 的端點
 
@@ -44,7 +46,7 @@ ms.locfileid: "98045306"
 
 ### <a name="create-an-event-grid-endpoint"></a>建立事件方格端點
 
-下列範例示範如何使用 Azure CLI 建立事件方格型別端點。 您可以使用 [Azure Cloud Shell](https://shell.azure.com)，或 [在本機安裝 CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+下列範例示範如何使用 Azure CLI 建立事件方格型別端點。
 
 首先，建立事件方格主題。 您可以使用下列命令，或是造訪事件方格 *自訂事件* 快速入門的 [[*建立自訂主題*] 區段](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)，更詳細地查看步驟。
 
@@ -185,7 +187,7 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 路由定義可以包含下列元素：
 * 您要使用的路由名稱
 * 您要使用的端點名稱
-* 定義要傳送至端點之事件的篩選準則 
+* 定義要將哪些事件傳送至端點的篩選 
 
 如果沒有路由名稱，則不會在 Azure 數位 Twins 外部路由傳送任何訊息。 如果有路由名稱且篩選為 `true` ，則會將所有訊息路由傳送至端點。 如果有已加入的路由名稱和不同的篩選準則，則會根據篩選準則來篩選訊息。
 

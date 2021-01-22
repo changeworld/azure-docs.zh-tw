@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d6bf4df1499d919cead0a184054e5ba0db9c06e
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0620304de1866d24719b137836419502cd25bee9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346595"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682232"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>針對 Azure Active Directory 中的自助式密碼重設回寫進行疑難排解
 
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 * *\*. passwordreset.microsoftonline.com*
 * *\*. servicebus.windows.net*
 
-Azure [GOV 端點](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#guidance-for-developers)：
+Azure [GOV 端點](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers)：
 
 * *\*. passwordreset.microsoftonline.us*
 * *\*. servicebus.usgovcloudapi.net*
@@ -235,6 +235,6 @@ Azure AD Connect 需要 AD DS **重設密碼** ] 許可權才能執行密碼回�
 * **授權**：使用者是否獲得指派 Azure AD 授權？
 * **應用程式事件記錄**：如果您使用密碼回寫，而且錯誤位於您的內部部署基礎結構中，請包含來自 Azure AD Connect 伺服器的應用程式事件記錄壓縮複本。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解 SSPR，請參閱 [運作方式： Azure AD 自助式密碼重設](concept-sspr-howitworks.md) ，或 [自助式密碼重設回寫在 Azure AD 中的運作](concept-sspr-writeback.md)方式。

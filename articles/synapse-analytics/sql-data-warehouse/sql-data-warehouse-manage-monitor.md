@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 1992c3d525fc1f5a098e1969887a752233d47990
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 62064eaae6aa7fb3438845170497035473227d30
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453796"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685203"
 ---
 # <a name="monitor-your-azure-synapse-analytics-dedicated-sql-pool-workload-using-dmvs"></a>使用 Dmv 監視您 Azure Synapse Analytics 專用的 SQL 集區工作負載
 
@@ -32,7 +32,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 
 ## <a name="monitor-connections"></a>監視連接
 
-資料倉儲的所有登入都會記錄至 [sys.dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  這個 DMV 會包含最後 10,000 筆登入。  Session_id 是主索引鍵，並依序指派給每個新的登入。
+資料倉儲的所有登入都會記錄至 [sys.dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。  這個 DMV 會包含最後 10,000 筆登入。  Session_id 是主索引鍵，並依序指派給每個新的登入。
 
 ```sql
 -- Other Active Connections
@@ -41,7 +41,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 
 ## <a name="monitor-query-execution"></a>監視查詢執行
 
-在 SQL 集區上執行的所有查詢都會記錄至 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。  這個 DMV 會包含最後 10,000 筆執行的查詢。  Request_id 可唯一識別每筆查詢，而且是此 DMV 的主索引鍵。  Request_id 會依序指派給每筆新查詢，並加上 QID 代表查詢識別碼。  查詢此 DMV 來尋找指定的 session_id，即會顯示指定登入的所有查詢。
+在 SQL 集區上執行的所有查詢都會記錄至 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。  這個 DMV 會包含最後 10,000 筆執行的查詢。  Request_id 可唯一識別每筆查詢，而且是此 DMV 的主索引鍵。  Request_id 會依序指派給每筆新查詢，並加上 QID 代表查詢識別碼。  查詢此 DMV 來尋找指定的 session_id，即會顯示指定登入的所有查詢。
 
 > [!NOTE]
 > 預存程序會使用多個要求 ID。  要求 ID 是依序指派。
@@ -67,9 +67,9 @@ ORDER BY total_elapsed_time DESC;
 
 從前述的查詢結果中，記下您想要調查之查詢的 **要求 ID** 。
 
-處於 **暫停** 狀態的查詢可能因為大量使用中的執行中查詢而排入佇列。 這些查詢也會出現在 UserConcurrencyResourceType 類型的 [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 等候查詢中。 如需並行限制的詳細資訊，請參閱 [記憶體和並行限制](memory-concurrency-limits.md) ，或 [工作負載管理的資源類別](resource-classes-for-workload-management.md)。 查詢也會因其他原因 (例如物件鎖定) 而等候。  如果您的查詢正在等候資源，請參閱本文稍後的[檢查正在等候資源的查詢](#monitor-waiting-queries)。
+處於 **暫停** 狀態的查詢可能因為大量使用中的執行中查詢而排入佇列。 這些查詢也會出現在 UserConcurrencyResourceType 類型的 [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 等候查詢中。 如需並行限制的詳細資訊，請參閱 [記憶體和並行限制](memory-concurrency-limits.md) ，或 [工作負載管理的資源類別](resource-classes-for-workload-management.md)。 查詢也會因其他原因 (例如物件鎖定) 而等候。  如果您的查詢正在等候資源，請參閱本文稍後的[檢查正在等候資源的查詢](#monitor-waiting-queries)。
 
-若要簡化 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 資料表中查詢的查閱，請使用 [LABEL](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 將批註指派給您的查詢，您可以在 sys.dm_pdw_exec_requests 視圖中查閱。
+若要簡化 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 資料表中查詢的查閱，請使用 [LABEL](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 將批註指派給您的查詢，您可以在 sys.dm_pdw_exec_requests 視圖中查閱。
 
 ```sql
 -- Query with Label
@@ -87,7 +87,7 @@ WHERE   [label] = 'My Query';
 
 ### <a name="step-2-investigate-the-query-plan"></a>步驟 2︰ 調查查詢計劃
 
-使用要求識別碼，從[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)取得查詢的分散式 SQL (DSQL) 方案
+使用要求識別碼，從[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)取得查詢的分散式 SQL (DSQL) 方案
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -107,7 +107,7 @@ ORDER BY step_index;
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>步驟3：調查分散式資料庫上的 SQL
 
-使用要求識別碼及步驟索引，從 [sys.dm_pdw_sql_requests](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 擷取詳細資料，其中包含所有分散式資料庫上查詢步驟的執行資訊。
+使用要求識別碼及步驟索引，從 [sys.dm_pdw_sql_requests](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 擷取詳細資料，其中包含所有分散式資料庫上查詢步驟的執行資訊。
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -117,7 +117,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-當查詢步驟正在執行時，可以使用 [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 針對正在特定散發上執行的步驟，從 SQL Server 計畫快取擷取 SQL Server 預估計畫。
+當查詢步驟正在執行時，可以使用 [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 針對正在特定散發上執行的步驟，從 SQL Server 計畫快取擷取 SQL Server 預估計畫。
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL pool or control node.
@@ -128,7 +128,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 
 ### <a name="step-4-investigate-data-movement-on-the-distributed-databases"></a>步驟4：調查分散式資料庫上的資料移動
 
-使用要求識別碼和步驟索引，從 [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 擷取在每個散發上執行之資料移動步驟的相關資訊。
+使用要求識別碼和步驟索引，從 [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 擷取在每個散發上執行之資料移動步驟的相關資訊。
 
 ```sql
 -- Find information about all the workers completing a Data Movement Step.
@@ -141,7 +141,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * 檢查 *total_elapsed_time* 資料行，查看是否有特定散發，在資料移動上比其他散發用了更多時間。
 * 如果是長時間執行的散發，請檢查 *rows_processed* 資料行，查看從該散發移動的資料列數是否遠多過其他散發。 若是如此，這個結果可能表示基礎資料的扭曲。 資料扭曲的其中一個原因是在具有許多 Null 值的資料行上散發 (其資料列將全都落在相同的散發) 中。 避免在這些類型的資料行上散發，或篩選您的查詢以在可能的情況下排除 Null，以防止查詢變慢。 
 
-如果查詢正在執行，您可以使用 [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ，從特定散發內目前執行中 SQL 步驟的 SQL Server 計畫快取中，取得 SQL Server 的預估計畫。
+如果查詢正在執行，您可以使用 [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ，從特定散發內目前執行中 SQL 步驟的 SQL Server 計畫快取中，取得 SQL Server 的預估計畫。
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL pool Compute or control node.
@@ -216,7 +216,7 @@ WHERE DB_NAME(ssu.database_id) = 'tempdb'
 ORDER BY sr.request_id;
 ```
 
-如果您的查詢正在耗用大量的記憶體，或收到與 tempdb 配置相關的錯誤訊息，可能是因為 [SELECT (CTAS) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 或在最後的資料移動作業中執行的 [插入 select](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 語句失敗所造成的 CREATE TABLE。 這通常可在分散式查詢計畫中識別為最後一個 INSERT SELECT 之前的 ShuffleMove 作業。  使用 [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 來監視 ShuffleMove 作業。
+如果您的查詢正在耗用大量的記憶體，或收到與 tempdb 配置相關的錯誤訊息，可能是因為 [SELECT (CTAS) ](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 或在最後的資料移動作業中執行的 [插入 select](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 語句失敗所造成的 CREATE TABLE。 這通常可在分散式查詢計畫中識別為最後一個 INSERT SELECT 之前的 ShuffleMove 作業。  使用 [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 來監視 ShuffleMove 作業。
 
 最常見的緩和措施是將您的 CTAS 或 INSERT SELECT 語句分割成多個 load 語句，如此一來，資料磁片區將不會超過每節點 tempdb 限制的1TB。 您也可以將叢集調整為較大的大小，以將 tempdb 大小分散到更多節點，以減少每個個別節點上的 tempdb。
 
@@ -307,6 +307,6 @@ ORDER BY
     gb_processed desc;
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需 DMV 的詳細資訊，請參閱[系統檢視](../sql/reference-tsql-system-views.md)。

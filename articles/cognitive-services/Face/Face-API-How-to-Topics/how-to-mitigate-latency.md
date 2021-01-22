@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 07c9bd12664a94c64a0d0b37d638b5668cc7f61e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605438"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682457"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>如何：在使用臉部辨識服務時降低延遲
 
@@ -42,7 +42,11 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 然後，臉部辨識服務必須從遠端伺服器下載映射。 如果從臉部服務到遠端伺服器的連線速度很慢，則會影響偵測方法的回應時間。
 
-若要減輕此問題，請考慮 [將映射儲存在 Azure Premium Blob 儲存體中](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)。
+若要減輕此問題，請考慮 [將映射儲存在 Azure Premium Blob 儲存體中](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)。 例如：
+
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 
 ### <a name="large-upload-size"></a>大上傳大小
 
@@ -58,7 +62,10 @@ System.Collections.Generic.IList<DetectedFace> faces = await client.Face.DetectW
 - 服務會花更長的時間來處理檔案，與檔案大小成正比。
 
 緩和措施：
-- 考慮 [將映射儲存在 Azure Premium Blob 儲存體中](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)。
+- 考慮 [將映射儲存在 Azure Premium Blob 儲存體中](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)。 例如：
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 - 請考慮上傳較小的檔案。
     - 請參閱關於臉部偵測和輸入資料的 [輸入資料](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data) 的指導方針， [以進行臉部](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data)辨識。
     - 針對臉部偵測，使用偵測模型時 `DetectionModel.Detection01` ，減少影像檔案大小會增加處理速度。 使用偵測模型時 `DetectionModel.Detection02` ，如果影像檔案小於1920x1080，減少影像檔案大小只會增加處理速度。
@@ -80,7 +87,7 @@ IEnumerable<DetectedFace> results = faces_1.Result.Concat (faces_2.Result);
 - 當您建立臉部訂用帳戶時，請務必選擇最接近應用程式託管位置的區域。
 - 如果您需要呼叫多個服務方法，請考慮在您的應用程式設計允許時，以平行方式呼叫它們。 如需範例，請參閱上一節。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本指南中，您已瞭解如何在使用臉部辨識服務時降低延遲。 接下來，瞭解如何將現有的 PersonGroup 和 FaceList 物件擴大至 LargePersonGroup 和 LargeFaceList 物件。
 

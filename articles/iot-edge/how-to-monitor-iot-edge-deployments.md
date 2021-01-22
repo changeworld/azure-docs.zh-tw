@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45df700cc1772250e42a0e007fb4ea91b49471ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450175"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684198"
 ---
 # <a name="monitor-iot-edge-deployments"></a>監視 IoT Edge 部署
 
@@ -41,7 +41,7 @@ IoT 中樞服務可讓您在 Azure 入口網站和 Azure CLI 中監視此資料�
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至 IoT 中樞。
 1. 從左側窗格功能表中選取 [IoT Edge]。
 1. 選取 [IoT Edge 部署] 索引標籤。
-1. 檢查部署清單。 針對每個部署，您可以檢視下列詳細資料：
+1. 檢查部署清單。  針對每個部署，您可以檢視下列詳細資料：
 
     | 資料行 | 描述 |
     | --- | --- |
@@ -54,7 +54,7 @@ IoT 中樞服務可讓您在 Azure 入口網站和 Azure CLI 中監視此資料�
     | 自訂計量 | 針對您為部署所定義的任何計量回報資料的 IoT Edge 裝置數目。 |
     | 建立時間 | 建立部署時的時間戳記。 當兩個部署具有相同的優先順序時，可使用此時間戳記來中斷繫結。 |
 
-1. 選取您想要監視的部署。  
+1. 選取您想要監視的部署。  
 1. 在 [部署詳細資料] 頁面上，向下捲動至最下方區段，然後選取 [目標條件] 索引標籤。選取 [檢視] 可列出符合目標條件的裝置。 您可以變更條件，也可以變更 [優先順序]。 如果您進行變更，請選取 [儲存]。
 
    ![檢視用於部署的目標裝置](./media/how-to-monitor-iot-edge-deployments/target-devices.png)
@@ -69,7 +69,7 @@ IoT 中樞服務可讓您在 Azure 入口網站和 Azure CLI 中監視此資料�
 
 使用 [az IoT Edge deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) 命令顯示單一部署的詳細資料：
 
-```cli
+```azurecli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
 ```
 
@@ -78,7 +78,7 @@ deployment show 命令接受下列參數︰
 * **--deployment-id** - 存在於 IoT 中樞的部署名稱。 必要參數。
 * **--hub-name** - 部署存在於其中的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用 `az account set -s [subscription name]` 命令切換到所需的訂用帳戶
 
-在命令視窗中檢查部署。 **metrics** 屬性會列出每個中樞所評估每個計量的計數：
+在命令視窗中檢查部署。  **metrics** 屬性會列出每個中樞所評估每個計量的計數：
 
 * **targetedCount** - 系統計量，指定 IoT 中樞內符合目標條件的裝置對應項數目。
 * **appliedCount** - 系統計量，指定已在 IoT 中樞內將部署內容套用到其模組對應項的裝置數目。
@@ -87,7 +87,7 @@ deployment show 命令接受下列參數︰
 
 您可以使用 [az IoT Edge deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) 命令，顯示每個計量的裝置識別碼或物件的清單：
 
-```cli
+```azurecli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
 ```
 

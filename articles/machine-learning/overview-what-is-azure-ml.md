@@ -9,12 +9,12 @@ ms.author: larryfr
 author: BlackMist
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 618b7b9cef5ec78cd53247faea2797e9fc897833
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: a9d471e81c348bfaa92c5d15774517f0d9e0e43f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630212"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683352"
 ---
 # <a name="what-is-azure-machine-learning"></a>什麼是 Azure Machine Learning？
 
@@ -128,7 +128,6 @@ Azure Machine Learning 可與 Azure 平台上的其他服務搭配運作，也�
 - 使用您慣用的方法建立您的第一個實驗：
 - + [在您自己的開發環境中著手進行](tutorial-1st-experiment-sdk-setup-local.md)
   + [在計算執行個體上使用 Jupyter Notebook 來定型並部署 ML 模型](tutorial-1st-experiment-sdk-setup.md)
-  + [使用 R Markdown 來定型和部署 ML 模型](tutorial-1st-r-experiment.md) 
   + [使用自動化機器學習來定型和部署 ML 模型](tutorial-first-experiment-automated-ml.md) 
   + [使用設計工具的拖放功能進行定型和部署](tutorial-designer-automobile-price-train-score.md) 
   + [使用機器學習 CLI 來定型和部署模型](tutorial-train-deploy-model-cli.md)

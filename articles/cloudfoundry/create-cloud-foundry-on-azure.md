@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
-ms.translationtype: HT
+ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040799"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682609"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>在 Azure 上建立 Pivotal Cloud Foundry 叢集
 
@@ -42,25 +42,31 @@ ssh-keygen -t rsa -b 2048
 
 > [!NOTE]
 >
-> 若要建立服務主體，您需要擁有者帳戶權限。 您也可以撰寫指令碼來自動建立服務主體。 例如，您可以使用 Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest)。
+> 若要建立服務主體，您需要擁有者帳戶權限。 您也可以撰寫指令碼來自動建立服務主體。 例如，您可以使用 Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp)。
 
 1. 登入您的 Azure 帳戶。
 
-    `az login`
+    ```azurecli
+    az login
+    ```
 
     ![Azure CLI 登入](media/deploy/az-login-output.png )
  
-    複製 "id" 值作為您的 **訂用帳戶識別碼** ，並複製 "tenantId" 值以供稍後使用。
+    複製 "id" 值作為您的 **訂用帳戶識別碼**，並複製 "tenantId" 值以供稍後使用。
 
 2. 設定此組態的預設訂用帳戶。
 
-    `az account set -s {id}`
+    ```azurecli
+    az account set -s {id}
+    ```
 
-3. 為您的 PCF 建立 Azure Active Directory 應用程式。 指定唯一的英數字元密碼。 儲存密碼作為 **clientSecret** ，以供稍後使用。
+3. 為您的 PCF 建立 Azure Active Directory 應用程式。 指定唯一的英數字元密碼。 儲存密碼作為 **clientSecret**，以供稍後使用。
 
-    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    ```azurecli
+    az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}
+    ```
 
-    複製輸出中的 "appId" 值作為 **ClientID** ，以供稍後使用。
+    複製輸出中的 "appId" 值作為 **ClientID**，以供稍後使用。
 
     > [!NOTE]
     >
@@ -68,23 +74,31 @@ ssh-keygen -t rsa -b 2048
 
 4. 使用新的應用程式識別碼建立服務主體。
 
-    `az ad sp create --id {appId}`
+    ```azurecli
+    az ad sp create --id {appId}
+    ```
 
 5. 將您服務主體的權限角色設為 [參與者]。
 
-    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"
+    ```
 
     或者，您也可以使用
 
-    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee {service-principal-name} --role "Contributor"
+    ```
 
     ![服務主體角色指派](media/deploy/svc-princ.png )
 
 6. 確認您可以使用應用程式識別碼、密碼和租用戶識別碼來成功登入服務主體。
 
-    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
+    ```azurecli
+    az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
+    ```
 
-7. 建立下列格式的 .json 檔案。 使用您先前複製的 **訂用帳戶識別碼** 、 **tenantID** 、 **clientID** 及 **clientSecret** 值。 儲存檔案。
+7. 建立下列格式的 .json 檔案。 使用您先前複製的 **訂用帳戶識別碼**、**tenantID**、**clientID** 及 **clientSecret** 值。 儲存檔案。
 
     ```json
     {

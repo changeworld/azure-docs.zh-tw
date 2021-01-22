@@ -5,19 +5,19 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 10/13/2020
+ms.date: 01/20/2021
 ms.author: mjbrown
-ms.openlocfilehash: 3b401aec29da8702e262e0e8e9467454e77bc16d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
-ms.translationtype: HT
+ms.openlocfilehash: 1ac3d6ac163723cea8980b3d23683d61bf102dea
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332928"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684463"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-api-for-mongodb"></a>適用於 Azure Cosmos DB API for MongoDB 的 Azure PowerShell 範例
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
-下表包含適用於 Azure Cosmos DB 的常用 Azure PowerShell 指令碼連結。 使用右側的連結瀏覽至 API 特定範例。 所有 API 的通用範例皆相同。 您可以在 [Azure PowerShell 參考](/powershell/module/az.cosmosdb)中取得所有 Azure Cosmos DB PowerShell Cmdlet 的參考頁面。 請定期檢查是否有 `Az.CosmosDB` 的更新。 您也可以從 GitHub 存放庫 ([GitHub 上的 Cosmos DB PowerShell 範例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb)) 的 Cosmos DB 派生這些 PowerShell 範例 。
+下表包含適用於 Azure Cosmos DB 的常用 Azure PowerShell 指令碼連結。 使用右側的連結瀏覽至 API 特定範例。 所有 API 的通用範例皆相同。 您可以在 [Azure PowerShell 參考](/powershell/module/az.cosmosdb)中取得所有 Azure Cosmos DB PowerShell Cmdlet 的參考頁面。 `Az.CosmosDB`模組現在是模組的一部分 `Az` 。 [下載並安裝](/powershell/azure/install-az-ps?preserve-view=true&view=azps-5.4.0) 最新版本的 Az 模組，以取得 Azure Cosmos DB Cmdlet。 您也可以從 [PowerShell 資源庫](https://www.powershellgallery.com/packages/Az/5.4.0)取得最新版本。 您也可以從 GitHub 存放庫 ([GitHub 上的 Cosmos DB PowerShell 範例](https://github.com/Azure/azure-docs-powershell-samples/tree/master/cosmosdb)) 的 Cosmos DB 派生這些 PowerShell 範例 。
 
 ## <a name="common-samples"></a>通用範例
 

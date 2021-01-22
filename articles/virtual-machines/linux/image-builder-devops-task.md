@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196498"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684537"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder 服務 DevOps 工作
 
@@ -26,7 +26,7 @@ ms.locfileid: "98196498"
 
 * 「不穩定」的[AIB](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary)工作，這讓我們能夠在將其升階為「穩定」工作之前，先放入最新的更新和功能，讓客戶進行測試。 如果沒有回報的問題，而且我們的遙測沒有顯示任何問題（大約1周），我們會將工作程式碼升階為「穩定」。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [從 Visual Studio Marketplace 安裝穩定的 DevOps](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)工作。
 * 您必須擁有 VSTS DevOps 帳戶，並已建立組建管線
@@ -57,7 +57,7 @@ ms.locfileid: "98196498"
 
 選取 **發行管線**  >  **編輯**
 
-在使用者代理程式上，選取 *+* 要新增的映射產生器，然後搜尋 **影像** 產生器。 選取 [新增]。
+在使用者代理程式上，選取 *+* 要新增的映射產生器，然後搜尋 **影像** 產生器。 選取 [新增]  。
 
 設定下列工作屬性：
 
@@ -69,12 +69,12 @@ ms.locfileid: "98196498"
 
 使用將儲存暫存影像範本成品的資源群組。 建立範本成品時，會建立額外的暫存映射產生器資源群組 `IT_<DestinationResourceGroup>_<TemplateName>_guid` 。 暫存資源群組會儲存影像中繼資料，例如腳本。 在工作結束時，會刪除映射範本成品和暫存映射產生器資源群組。
  
-### <a name="location"></a>Location
+### <a name="location"></a>位置
 
-位置是映射產生器將執行的區域。 只支援設定的 [區域](../windows/image-builder-overview.md#regions) 數量。 來源映射必須存在於此位置。 例如，如果您使用共用映射庫，則複本必須存在於該區域中。
+位置是映射產生器將執行的區域。 只支援設定的 [區域](../image-builder-overview.md#regions) 數量。 來源映射必須存在於此位置。 例如，如果您使用共用映射庫，則複本必須存在於該區域中。
 
 ### <a name="managed-identity-required"></a>需要 (受控識別) 
-影像產生器需要受控識別，它是用來讀取來源自訂映射、連接 Azure 儲存體，以及建立自訂映射。 詳細資訊請看[這裡](./image-builder-overview.md#permissions)。
+影像產生器需要受控識別，它是用來讀取來源自訂映射、連接 Azure 儲存體，以及建立自訂映射。 詳細資訊請看[這裡](../image-builder-overview.md#permissions)。
 
 ### <a name="vnet-support"></a>VNET 支援
 
@@ -333,6 +333,6 @@ template name:  t_1556938436xxx
 映射範本資源成品位於一開始在工作中指定的資源群組中。 當您完成疑難排解時，請刪除成品。 如果使用 Azure 入口網站刪除資源群組中的 [ **顯示隱藏的類型**]，則可查看成品。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
-如需詳細資訊，請參閱 [Azure 映射](image-builder-overview.md)建立器總覽。
+如需詳細資訊，請參閱 [Azure 映射](../image-builder-overview.md)建立器總覽。

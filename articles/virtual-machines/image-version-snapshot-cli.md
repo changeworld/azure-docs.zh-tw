@@ -9,20 +9,20 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e694630d8bcd7879d9405152c4141fb6e5bad4e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cfb1fe6d2050a63070e9c21e4b8c3ef59efcb15
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297088"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682676"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>使用 Azure CLI 在共用映射庫中建立受控磁片或快照集的映射
 
 如果您想要將現有的快照集或受控磁片遷移到共用映射庫，您可以直接從受控磁片或快照集建立共用映射庫映射。 測試新映射之後，您可以刪除來源受控磁片或快照集。 您也可以使用 [Azure PowerShell](image-version-snapshot-powershell.md)，從共用映射庫中的受控磁片或快照集建立映射。
 
 映射庫中的影像有兩個元件，我們將在此範例中建立這些元件：
-- **映射定義**會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
-- **映射版本**是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
+- **映射定義** 會攜帶映射的相關資訊，以及使用它的需求。 這包括映射是 Windows 或 Linux、特製化或一般化、版本資訊，以及最小和最大記憶體需求。 這是映像類型的定義。 
+- **映射版本** 是用來在使用共用映射庫時建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您建立 VM 時，映射版本會用來建立 VM 的新磁片。 映像版本可以使用多次。
 
 
 ## <a name="before-you-begin"></a>開始之前
@@ -69,11 +69,11 @@ az sig list -o table
 
 進行映射定義時，請確定已有所有正確的資訊。 在此範例中，我們假設快照集或受控磁片來自使用中的 VM，但尚未進行一般化。 如果受控磁片或快照集是在執行 Windows、 [waagent](https://github.com/Azure/WALinuxAgent)或 Linux) 的 Sysprep 之後 (， `-deprovision` 請將 `-deprovision+user` 變更 `-OsState` 為 `generalized` 。 
 
-若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./linux/shared-image-galleries.md#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。
 
-在此範例中，映像定義會命名為 myImageDefinition  ，而且適用於[特製化](./linux/shared-image-galleries.md#generalized-and-specialized-images)的 Linux OS 映像。 若要使用 Windows OS 建立映像的定義，請使用 `--os-type Windows`。 
+在此範例中，映像定義會命名為 myImageDefinition  ，而且適用於[特製化](./shared-image-galleries.md#generalized-and-specialized-images)的 Linux OS 映像。 若要使用 Windows OS 建立映像的定義，請使用 `--os-type Windows`。 
 
 在此範例中，資源庫名為 *>mygalleryrg*，它位於 *myGalleryRG* 資源群組中，而映射定義名稱將會是 *mImageDefinition*。
 
@@ -123,7 +123,7 @@ az sig image-version create \
 > 您也可以在建立映射版本時新增，以將所有的映射版本複本儲存在 [區域重複的儲存體](../storage/common/storage-redundancy.md) 中 `--storage-account-type standard_zrs` 。
 >
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 從 [特製化映射版本](vm-specialized-image-version-cli.md)建立 VM。
 

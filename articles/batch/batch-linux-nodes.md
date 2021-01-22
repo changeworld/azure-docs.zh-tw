@@ -2,14 +2,14 @@
 title: 在虛擬機器計算節點上執行 Linux
 description: 瞭解如何在 Azure Batch 的 Linux 虛擬機器集區上處理平行計算工作負載。
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 01/21/2021
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 0a9c801a13af05f077b87f296992da7f50742e4b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c711ec0d035b9b59ec7628a51fe3cff26de358bc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533492"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683695"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>在 Batch 集區中佈建 Linux 計算節點
 
@@ -17,9 +17,7 @@ ms.locfileid: "94533492"
 
 ## <a name="virtual-machine-configuration"></a>虛擬機器設定
 
-在 Batch 中建立計算節點集區時，有兩個選項可選取節點大小和作業系統︰雲端服務組態和虛擬機器組態。 大部分的 Windows 計算節點集區都會使用 [雲端服務](nodes-and-pools.md#cloud-services-configuration)設定，這會指定集區是由 Azure 雲端服務節點所組成。這些集區僅提供 Windows 計算節點。
-
-相反地， [虛擬機器](nodes-and-pools.md#virtual-machine-configuration) 設定會指定集區是由可從 Linux 或 Windows 映像建立的 Azure vm 所組成。 當您使用虛擬機器設定建立集區時，您必須指定 [可用的計算節點大小](../virtual-machines/sizes.md)、虛擬機器映射參考，以及 Batch-節點代理程式 SKU (在每個節點上執行的程式，並在節點與 Batch 服務) 之間提供介面，以及要安裝在節點上的虛擬機器映射參考。
+在 Batch 中建立計算節點集區時，有兩個選項可選取節點大小和作業系統︰雲端服務組態和虛擬機器組態。 [虛擬機器](nodes-and-pools.md#virtual-machine-configuration) 設定集區是由 Azure vm 所組成，可從 Linux 或 Windows 映像建立。 當您使用虛擬機器設定建立集區時，您會指定 [可用的計算節點大小](../virtual-machines/sizes.md)、要安裝在節點上的虛擬機器映射參考，以及 Batch-節點代理程式 SKU (在每個節點上執行的程式，並提供節點與 Batch 服務) 之間的介面。
 
 ### <a name="virtual-machine-image-reference"></a>虛擬機器映像參考
 
@@ -35,7 +33,11 @@ Batch 服務使用[虛擬機器擴展集](../virtual-machine-scale-sets/overview
 | 版本 |最新 |
 
 > [!TIP]
-> 您可以深入瞭解這些屬性，以及如何 [使用 Azure CLI 在 Azure Marketplace 的 Find LINUX VM 映射](../virtual-machines/linux/cli-ps-findimage.md)中指定 Marketplace 映射。 請注意，並非所有 Marketplace 映像目前都與 Batch 相容。
+> 您可以深入瞭解這些屬性，以及如何 [使用 Azure CLI 在 Azure Marketplace 的 Find LINUX VM 映射](../virtual-machines/linux/cli-ps-findimage.md)中指定 Marketplace 映射。 請注意，某些 Marketplace 映射目前不與 Batch 相容。
+
+### <a name="list-of-virtual-machine-images"></a>虛擬機器映像的清單
+
+並非所有 Marketplace 映射都與目前可用的 Batch-節點代理程式相容。 若要列出 Batch 服務及其對應節點代理程式 Sku 的所有支援的 Marketplace 虛擬機器映射，請使用 [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python) 、 [ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .net) ，或另一個語言 SDK 中的對應 API。
 
 ### <a name="node-agent-sku"></a>節點代理程式 SKU
 
@@ -44,10 +46,6 @@ Batch 服務使用[虛擬機器擴展集](../virtual-machine-scale-sets/overview
 - batch.node.ubuntu 18.04
 - batch.node.centos 7
 - batch.node.windows amd64
-
-### <a name="list-of-virtual-machine-images"></a>虛擬機器映像的清單
-
-並非所有 Marketplace 映射都與目前可用的 Batch-節點代理程式相容。 若要列出 Batch 服務及其對應節點代理程式 Sku 的所有支援的 Marketplace 虛擬機器映射，請使用 [list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python) 、 [ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .net) ，或另一個語言 SDK 中的對應 API。
 
 ## <a name="create-a-linux-pool-batch-python"></a>建立 Linux 集區：Batch Python
 

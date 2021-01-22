@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510986"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684554"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure Vm 的暫時作業系統磁片
 
@@ -26,7 +26,7 @@ ms.locfileid: "97510986"
 - 延遲較低，類似于暫存磁片。 
 - 暫時 OS 磁片是免費的，您不會因為 OS 磁片而產生任何儲存體成本。
 - 這些都可在所有 Azure 區域中使用。 
-- [共用映射庫](./linux/shared-image-galleries.md)支援暫時 OS 磁片。 
+- [共用映射庫](./shared-image-galleries.md)支援暫時 OS 磁片。 
  
 
  
@@ -245,5 +245,5 @@ foreach($vmSize in $vmSizes)
 - Azure Site Recovery  
 - OS 磁片交換 
  
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 您可以使用 [Azure CLI](/cli/azure/vm#az-vm-create)建立具有暫時 OS 磁片的 VM。

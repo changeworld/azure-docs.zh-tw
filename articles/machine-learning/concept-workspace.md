@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 7acb555ddde20d6512119af85a8db055bcd9eeed
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5211555102c0a8d29eb05abd7a680935d828f9dc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701648"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683435"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
@@ -134,6 +134,5 @@ ms.locfileid: "94701648"
 + [建立及管理工作區](how-to-manage-workspace.md)
 + [教學課程：開始在開發環境中使用 Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md)
 + [教學課程：開始在計算實例上建立您的第一個 ML 實驗](tutorial-1st-experiment-sdk-setup.md)
-+ [教學課程：開始使用 R SDK 的 Azure Machine Learning](tutorial-1st-r-experiment.md)
 + [教學課程：使用自動化機器學習建立第一個分類模型](tutorial-first-experiment-automated-ml.md) 
 + [教學課程：使用設計工具預測汽車價格](tutorial-designer-automobile-price-train-score.md)

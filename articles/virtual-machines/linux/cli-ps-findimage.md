@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 56d2aa9f7aa36808774876ac0f5cfc596887ff26
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 8954ad03bd5f539e9dcfbb4249f4e7cc1cf0bc7f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906381"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685118"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure Marketplace 中尋找 Linux VM 映像
 
@@ -19,10 +19,11 @@ ms.locfileid: "96906381"
 
 也請透過 [Azure Marketplace](https://azuremarketplace.microsoft.com/) 店面、[Azure 入口網站](https://portal.azure.com)或 [Azure PowerShell](../windows/cli-ps-findimage.md) 瀏覽可用的映像和供應項目。 
 
-請確定您已安裝最新的 [Azure CLI](/cli/azure/install-azure-cli) 並登入 Azure 帳戶 (`az login`)。
+請確定您已登入 Azure 帳戶 (`az login`) 。
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>使用採購方案參數從 VHD 部署
 
@@ -72,7 +73,7 @@ az vm image list --output table
 
 輸出會包含映像 URN ([Urn] 欄中的值)。 使用其中一個常用 Marketplace 映像建立 VM 時，您也可以指定 UrnAlias，例如 UbuntuLTS 的縮短格式。
 
-```
+```output
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
@@ -99,7 +100,7 @@ az vm image list --offer Debian --all --output table
 
 部分輸出： 
 
-```
+```output
 Offer              Publisher    Sku                  Urn                                                    Version
 -----------------  -----------  -------------------  -----------------------------------------------------  --------------
 Debian             credativ     7                    credativ:Debian:7:7.0.201602010                        7.0.201602010
@@ -149,7 +150,7 @@ az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 
 
 部分輸出：
 
-```
+```output
 Offer    Publisher    Sku                Urn                                              Version
 -------  -----------  -----------------  -----------------------------------------------  -------------
 Debian   credativ     8                  credativ:Debian:8:8.0.201602010                  8.0.201602010
@@ -197,7 +198,7 @@ az vm image list-publishers --location westus --output table
 
 部分輸出：
 
-```
+```output
 Location    Name
 ----------  ----------------------------------------------------
 westus      128technology
@@ -233,7 +234,7 @@ az vm image list-offers --location westus --publisher Canonical --output table
 
 輸出：
 
-```
+```output
 Location    Name
 ----------  -------------------------
 westus      Ubuntu15.04Snappy
@@ -250,7 +251,7 @@ az vm image list-skus --location westus --publisher Canonical --offer UbuntuServ
 
 輸出：
 
-```
+```output
 Location    Name
 ----------  -----------------
 westus      12.04.3-LTS
@@ -281,7 +282,7 @@ az vm image list --location westus --publisher Canonical --offer UbuntuServer --
 
 部分輸出：
 
-```
+```output
 Offer         Publisher    Sku        Urn                                               Version
 ------------  -----------  ---------  ------------------------------------------------  ---------------
 UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201804262  18.04.201804262
@@ -325,7 +326,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 
 輸出：
 
-```
+```output
 {
   "dataDiskImages": [],
   "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/18.04-LTS/Versions/18.04.201901220",
@@ -346,7 +347,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 ```
 輸出：
 
-```
+```output
 {
   "dataDiskImages": [],
   "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/bitnami/ArtifactTypes/VMImage/Offers/rabbitmq/Skus/rabbitmq/Versions/3.7.1901151016",
@@ -374,7 +375,7 @@ az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 
 輸出會包含授權條款的 `licenseTextLink`，並指出 `accepted` 的值為 `true`：
 
-```
+```output
 {
   "accepted": true,
   "additionalProperties": {},
@@ -391,5 +392,5 @@ az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 若要使用映像資訊來快速建立虛擬機器，請參閱[使用 Azure CLI 來建立和管理 Linux VM](tutorial-manage-vm.md)。

@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: ce09488e2323aada5f99494ef3920681b685ec0b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7e2d4b47f8f37a8e6d69a7846b8b0f92247121da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453635"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685186"
 ---
 # <a name="secure-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中 (先前的 SQL DW) 保護專用的 SQL 集區
 
@@ -81,9 +81,9 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 有幾種方式可以進一步限制使用者可在資料庫中執行的動作：
 
-* 細微的[權限](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)可讓您控制可對資料庫中的個別資料行、資料表、檢視、結構描述、程序和其他物件執行哪些作業。 使用細微權限，以擁有最大控制權，並授與所需的最小權限。
-* 除了 db_datareader 和 db_datawriter 以外，[資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)均可以用來建立權力較大的應用程式使用者帳戶，或權力較小的管理帳戶。 內建固定資料庫角色提供簡單的方式來授與權限，但可能會導致授與的權限多於所需的權限。
-* [預存程序](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 可用來限制對資料庫可採取的動作。
+* 細微的[權限](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)可讓您控制可對資料庫中的個別資料行、資料表、檢視、結構描述、程序和其他物件執行哪些作業。 使用細微權限，以擁有最大控制權，並授與所需的最小權限。
+* 除了 db_datareader 和 db_datawriter 以外，[資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)均可以用來建立權力較大的應用程式使用者帳戶，或權力較小的管理帳戶。 內建固定資料庫角色提供簡單的方式來授與權限，但可能會導致授與的權限多於所需的權限。
+* [預存程序](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 可用來限制對資料庫可採取的動作。
 
 下列範例會針對使用者定義結構描述授予讀取權限。
 
@@ -98,10 +98,10 @@ GRANT SELECT ON SCHEMA::Test to ApplicationUser
 
 透明資料加密 (TDE) 可透過加密和解密待用資料來協助防止惡意活動的威脅。 當您加密資料庫時，相關聯的備份和交易記錄檔就會加密，完全不需要變更您的應用程式。 TDE 會使用稱為資料庫加密金鑰的對稱金鑰來加密整個資料庫的儲存體。
 
-在 SQL Database 中，資料庫加密金鑰是由內建伺服器憑證保護。 每個伺服器的內建伺服器憑證都是唯一的。 Microsoft 會每隔 90 天自動輪換這些憑證。 使用的加密演算法是 AES-256。 如需 TDE 的一般描述，請參閱 [透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+在 SQL Database 中，資料庫加密金鑰是由內建伺服器憑證保護。 每個伺服器的內建伺服器憑證都是唯一的。 Microsoft 會每隔 90 天自動輪換這些憑證。 使用的加密演算法是 AES-256。 如需 TDE 的一般描述，請參閱 [透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。
 
 您可以使用 [Azure 入口網站](sql-data-warehouse-encryption-tde.md)或 [T-SQL](sql-data-warehouse-encryption-tde-tsql.md) 將資料庫加密。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 如需使用不同通訊協定連接到您的倉儲的詳細資訊和範例，請參閱 [ (先前的 SQL DW) 連接到專用的 sql 集 ](sql-data-warehouse-connect-overview.md)區。

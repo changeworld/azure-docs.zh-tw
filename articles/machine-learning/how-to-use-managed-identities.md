@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311029"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683335"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>使用受控識別搭配 Azure Machine Learning (preview) 
 
@@ -59,7 +59,7 @@ ms.locfileid: "93311029"
 [從 Azure CLI 建立 ACR](../container-registry/container-registry-get-started-azure-cli.md) 而不設定 ```--admin-enabled``` 引數，或從 Azure 入口網站建立，而不啟用系統管理使用者。 然後，在建立 Azure Machine Learning 工作區時，請指定 ACR 的 Azure 資源識別碼。 下列範例示範如何建立新的 Azure ML 工作區，以使用現有的 ACR：
 
 > [!TIP]
-> 若要取得參數的值 `--container-registry` ，請使用 [az acr show](/cli/azure/acr?view=azure-cli-latest#az_acr_show) 命令來顯示 acr 的資訊。 `id`欄位包含您 ACR 的資源識別碼。
+> 若要取得參數的值 `--container-registry` ，請使用 [az acr show](/cli/azure/acr#az_acr_show) 命令來顯示 acr 的資訊。 `id`欄位包含您 ACR 的資源識別碼。
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -90,7 +90,7 @@ az ml workspace create -w <workspace name> \
 
     此命令會傳回類似下列文字的值。 您只需要文字的最後部分，也就是 ACR 實例名稱：
 
-    ```text
+    ```output
     /subscriptions/<subscription id>/resourceGroups/<my resource group>/providers/MicrosoftContainerReggistry/registries/<ACR instance name>
     ```
 
@@ -174,7 +174,7 @@ env.python.user_managed_dependencies = True
 在此案例中，Azure Machine Learning 服務會在您從私用 ACR 提供的基底映射之上建立定型或推斷環境。 由於「映射組建」工作會在工作空間 ACR 上使用 ACR 工作執行，因此您必須執行其他步驟，才能允許存取。
 
 1. 建立 __使用者指派的受控識別__ ，並將 __私人 ACR__ 的存取權授與身分識別 ACRPull。  
-1. 從上一個步驟中的 __使用者指派受控識別__ ，將受控識別操作員角色授與工作區 __系統指派的受控識別__ 。 此角色可讓工作區將使用者指派的受控識別指派給 ACR 工作，以建立受控環境。 
+1. 從上一個步驟中的 __使用者指派受控識別__，將受控識別操作員角色授與工作區 __系統指派的受控識別__。 此角色可讓工作區將使用者指派的受控識別指派給 ACR 工作，以建立受控環境。 
 
     1. 取得工作區系統指派的受控識別的主體識別碼：
 
@@ -229,6 +229,6 @@ env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 > [!NOTE]
 > 如果您攜帶自己的 AKS 叢集，叢集必須啟用服務主體，而不是受控識別。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 * 深入瞭解 [Azure Machine Learning 中的企業安全性](concept-enterprise-security.md)。

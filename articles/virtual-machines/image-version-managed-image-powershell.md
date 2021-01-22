@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 92cae59978b172993c779e9a486ff67d82309800
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6bf2054a1b9d42529c3917994e5f446b3c50ecf7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349917"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682710"
 ---
 # <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>將受控映射複製到共用映射庫影像
 
@@ -54,7 +54,7 @@ $gallery = Get-AzGallery `
 
 進行映射定義時，請確定已有所有正確的資訊。 由於受控映射一律一般化，因此您應該設定 `-OsState generalized` 。 
 
-若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./windows/shared-image-galleries.md#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./shared-image-galleries.md#image-definitions)。
 
 使用 [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) 建立映像定義。 在此範例中，映射定義名為 *myImageDefinition*，適用于一般化 Windows 作業系統。 若要使用 Linux OS 建立映射的定義，請使用 `-OsType Linux` 。 
 
@@ -130,7 +130,7 @@ Remove-AzImage `
    -ResourceGroupName $managedImage.ResourceGroupName
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 確認複寫完成之後，您就可以從 [一般化映射](vm-generalized-image-version-powershell.md)建立 VM。
 

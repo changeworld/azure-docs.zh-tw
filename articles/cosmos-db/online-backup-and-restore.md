@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 43625a80df76ff35b8bb1804df5f5fd1524326c5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ba66013e37c196c58291a6bcd979be7fb5fa0130
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097527"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684571"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中進行線上備份及隨選資料還原
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -52,15 +52,15 @@ Azure Cosmos DB 會每隔4小時自動取得資料的完整備份，而且在任
 
    * **保留的資料副本** -根據預設，系統會免費提供兩份資料備份複本。 如果您需要兩個以上的複本，則會產生額外的費用。 請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)中的已使用儲存體一節，以了解額外複本的確切價格。
 
-   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份" border="true":::
+   :::image type="content" source="./media/online-backup-and-restore/configure-backup-interval-retention.png" alt-text="設定現有 Azure Cosmos 帳戶的備份間隔和保留期" border="true":::
 
-如果您在帳戶建立期間設定備份選項，就可以設定 **備份原則** ，也就是 **定期** 或 **連續** 。 定期原則可讓您設定備份間隔和備份保留期。 持續的原則目前僅供註冊之用。 Azure Cosmos DB 團隊將會評估您的工作負載，並核准您的要求。
+如果您在帳戶建立期間設定備份選項，就可以設定 **備份原則**，也就是 **定期** 或 **連續**。 定期原則可讓您設定備份間隔和備份保留期。 持續的原則目前僅供註冊之用。 Azure Cosmos DB 團隊將會評估您的工作負載，並核准您的要求。
 
-:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份" border="true":::
+:::image type="content" source="./media/online-backup-and-restore/configure-periodic-continuous-backup-policy.png" alt-text="針對新的 Azure Cosmos 帳戶設定定期或連續備份原則" border="true":::
 
 ## <a name="request-data-restore-from-a-backup"></a>從備份要求資料還原
 
-如果您不小心刪除資料庫或容器，您可以提出 [支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 或 [呼叫 Azure 支援](https://azure.microsoft.com/support/options/) ，以從自動線上備份還原資料。 Azure 支援僅適用于所選方案，例如 **標準** 、 **開發人員** 和方案（高於這些方案）。 Azure 支援不適用於 **基本** 方案。 若要深入了解不同的支援方案，請參閱 [Azure 支援方案](https://azure.microsoft.com/support/plans/)頁面。
+如果您不小心刪除資料庫或容器，您可以提出 [支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 或 [呼叫 Azure 支援](https://azure.microsoft.com/support/options/) ，以從自動線上備份還原資料。 Azure 支援僅適用于所選方案，例如 **標準**、 **開發人員** 和方案（高於這些方案）。 Azure 支援不適用於 **基本** 方案。 若要深入了解不同的支援方案，請參閱 [Azure 支援方案](https://azure.microsoft.com/support/plans/)頁面。
 
 若要還原特定的備份快照集，Azure Cosmos DB 需要該資料在該快照的備份週期持續時間內為可用狀態。
 要求還原之前，您應該有下列詳細資料：
@@ -81,7 +81,7 @@ Azure Cosmos DB 會每隔4小時自動取得資料的完整備份，而且在任
 
 下列螢幕擷取畫面說明如何使用 Azure 入口網站，為要還原資料的容器 (集合/圖表/資料表) 建立支援要求。 提供其他詳細資料，例如資料類型、還原目的和資料遭到刪除的時間，以協助我們優先處理此要求。
 
-:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="GRS Azure 儲存體中所有 Cosmos DB 實體的定期完整備份":::
+:::image type="content" source="./media/online-backup-and-restore/backup-support-request-portal.png" alt-text="使用 Azure 入口網站建立備份支援要求":::
 
 ## <a name="considerations-for-restoring-the-data-from-a-backup"></a>從備份還原資料的考慮
 
@@ -115,6 +115,13 @@ Azure Cosmos DB 可以在遇到上述所有情況時還原資料。 還原時，
 
 如果您在資料庫層級布建輸送量，此案例中的備份和還原程式會發生在整個資料庫層級，而不是在個別容器層級上。 在這種情況下，您無法選取要還原的一部分容器。
 
+## <a name="required-permissions-to-change-retention-or-restore-from-the-portal"></a>從入口網站變更保留或還原的必要許可權
+允許屬於角色 [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator)、擁有者或參與者的主體要求還原或變更保留期限。
+
+## <a name="understanding-costs-of-extra-backups"></a>瞭解額外備份的成本
+2個備份是免費提供的，而且會根據 [備份儲存體定價](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/)中所述的備份儲存體以區域為基礎的定價來收費額外的備份。 例如，如果備份保留設定為240小時，亦即10天和備份間隔為24小時。 這表示備份資料有10個複本。 假設美國西部2中有 1 TB 的資料，在指定的月份中，會是 1000 * 0.12 ~ $120 for backup storage。 
+
+
 ## <a name="options-to-manage-your-own-backups"></a>可用來管理自有備份的選項
 
 使用 Azure Cosmos DB SQL API 帳戶時，您也可以藉由下列其中一個方法，來維護您自己的備份：
@@ -140,11 +147,10 @@ Azure Cosmos DB 可以在遇到上述所有情況時還原資料。 還原時，
 
 建議您在完成資料遷移後立即刪除容器或資料庫。 如果沒有刪除已還原的資料庫或容器，則會產生要求單位、儲存體和輸出的成本。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 接下來，您可以了解如何從 Azure Cosmos 帳戶還原資料，或了解如何將資料遷移至 Azure Cosmos 帳戶
 
 * 若要提出還原要求，請[從 Azure 入口網站提出票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以連絡 Azure 支援
 * [使用 Cosmos DB 變更摘要](change-feed.md)將資料移至 Azure Cosmos DB。
 * [使用 Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) 將資料移至 Azure Cosmos DB。
-

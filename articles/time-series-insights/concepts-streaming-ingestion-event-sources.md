@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: ee13b2fbe4abbaf9bddf4975f8e25d746dc78f5e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/19/2021
+ms.openlocfilehash: 31398a49de871ad44499a796adfef1be618ccab9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232177"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685169"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 時間序列深入解析 Gen2 事件來源
 
@@ -45,7 +45,7 @@ ms.locfileid: "98232177"
 
 - 請勿超過您環境的 [輸送量速率限制](./concepts-streaming-ingress-throughput-limits.md) 或每個分割區的限制。
 
-- 如果您的環境在處理資料時遇到問題，請設定延遲 [警示](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) 。 請參閱下方的 [生產工作負載](./concepts-streaming-ingestion-event-sources.md#production-workloads) ，以取得建議的警示狀況。 
+- 如果您的環境在處理資料時遇到問題，請設定延遲 [警示](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) 。 請參閱下方的 [生產工作負載](./concepts-streaming-ingestion-event-sources.md#production-workloads) ，以取得建議的警示狀況。
 
 - 僅針對近乎即時和最近的資料使用串流擷取，不支援串流歷程記錄資料。
 
@@ -55,14 +55,14 @@ ms.locfileid: "98232177"
 
 ## <a name="production-workloads"></a>生產工作負載
 
-除了上述的最佳作法之外，建議您針對商務關鍵工作負載執行下列各項。 
+除了上述的最佳作法之外，建議您針對商務關鍵工作負載執行下列各項。
 
 - 將您的 IoT 中樞或事件中樞資料保留時間增加到最多7天。
 
 - 在 Azure 入口網站中建立環境警示。 以平臺 [計量](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics) 為基礎的警示可讓您驗證端對端管線行為。 [此處](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)提供建立和管理警示的指示。 建議的警示條件：
 
-     - IngressReceivedMessagesTimeLag 超過5分鐘
-     - IngressReceivedBytes 為0
+  - IngressReceivedMessagesTimeLag 超過5分鐘
+  - IngressReceivedBytes 為0
 - 在 IoT 中樞或事件中樞磁碟分割之間保持內嵌負載平衡。
 
 ### <a name="historical-data-ingestion"></a>歷程記錄資料擷取
@@ -92,7 +92,7 @@ Azure 時間序列深入解析的 Gen2 目前不支援使用串流管線來匯�
 ± HH： MM</br>
 ± HH： MMZ</br>
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - 閱讀 JSON 簡維 [和轉義規則](./concepts-json-flattening-escaping-rules.md) ，以瞭解事件的儲存方式。
 

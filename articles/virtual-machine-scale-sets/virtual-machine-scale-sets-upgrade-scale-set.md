@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358736"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684588"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>修改虛擬機器擴展集
 
@@ -350,7 +350,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 - **singlePlacementGroup** - 如果 singlePlacementGroup 為 true，則可以修改成 false。 不過，如果 singlePlacementGroup 為 false，則 **無法** 修改成 true。
 - **subnet** - 只要擴展集的原始子網路與新子網路位於相同的虛擬網路中，便可以修改擴展集的子網路。
-- **imageReferenceSku** -映射參考 SKU 可針對背書的 [Linux 散發版本](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)、Windows server/用戶端映射和沒有 [方案資訊](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties)的映射進行更新。 
+- **imageReferenceSku** -映射參考 SKU 可針對背書的 [Linux 散發版本](../virtual-machines/linux/endorsed-distros.md)、Windows server/用戶端映射和沒有 [方案資訊](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties)的映射進行更新。 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>必須解除配置才能變更的屬性
 有些屬性只有在已將擴展集內 VM 解除配置的情況下，才能變更成特定值。 這些屬性包括：
@@ -450,5 +450,5 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 > 這些命令會假設擴展集上只有一個 IP 設定和負載平衡器。 如果有多個，您可能需要使用 *0* 以外的清單索引。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 您也可以使用 [Azure CLI](virtual-machine-scale-sets-manage-cli.md) 或 [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md)，在擴展集上執行常見管理工作。

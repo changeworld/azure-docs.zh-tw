@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
 ms.custom: references_regions
-ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 902bcaa97658802b35fb523a1213e6bbd47f357f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740465"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684503"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>啟用適用於 VM 的 Azure 監視器來賓健康情況 (預覽)
 適用於 VM 的 Azure 監視器來賓健康狀態可讓您依定期取樣的一組效能測量所定義，來查看虛擬機器的健康情況。 本文說明如何在您的訂用帳戶中啟用這項功能，以及如何啟用每部虛擬機器的來賓監視。
@@ -127,9 +127,9 @@ POST https://management.azure.com/subscriptions/[subscriptionId]/providers/Micro
 New-AzResourceGroupDeployment -Name GuestHealthDataCollectionRule -ResourceGroupName my-resource-group -TemplateFile Health.DataCollectionRule.template.json -TemplateParameterFile Health.DataCollectionRule.template.parameters.json
 ```
 
-# <a name="cli"></a>[CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```cli
+```azurecli
 az deployment group create --name GuestHealthDataCollectionRule --resource-group my-resource-group --template-file Health.DataCollectionRule.template.json --parameters Health.DataCollectionRule.template.parameters.json
 ```
 
@@ -267,9 +267,9 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 New-AzResourceGroupDeployment -Name GuestHealthDeployment -ResourceGroupName my-resource-group -TemplateFile azure-monitor-deploy.json -TemplateParameterFile azure-monitor-deploy.parameters.json
 ```
 
-# <a name="cli"></a>[CLI](#tab/cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```cli
+```azurecli
 az deployment group create --name GuestHealthDeployment --resource-group my-resource-group --template-file Health.VirtualMachine.template.json --parameters Health.VirtualMachine.template.parameters.json
 ```
 
@@ -412,6 +412,6 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
 }
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 - [自訂適用於 VM 的 Azure 監視器所啟用的監視](vminsights-health-configure.md)

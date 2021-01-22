@@ -10,18 +10,18 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8aa2623722b5e75480e68324d76e4a1493501df
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533915"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685135"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 從 Azure 中的 VM 建立映射版本
 
 如果您有想要用來建立多個相同 Vm 的現有 VM，您可以使用該 VM，利用 Azure CLI 在共用映射庫中建立映射。 您也可以使用 [Azure PowerShell](image-version-vm-powershell.md)從 VM 建立映射。
 
-**映射版本**是您在使用共用映射庫時，用來建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您使用映射版本建立 VM 時，映射版本會用來建立新 VM 的磁片。 映像版本可以使用多次。
+**映射版本** 是您在使用共用映射庫時，用來建立 VM 的版本。 您可以視需要為環境準備多個映像版本。 當您使用映射版本建立 VM 時，映射版本會用來建立新 VM 的磁片。 映像版本可以使用多次。
 
 
 ## <a name="before-you-begin"></a>開始之前
@@ -57,11 +57,11 @@ az vm get-instance-view -g MyResourceGroup -n MyVm --query id
 
 請確定您的映像定義是正確的類型。 如果您已一般化 VM (使用適用於 Windows 的 Sysprep，或適用於 Linux 的 waagent -deprovision)，則應該使用 `--os-state generalized` 建立一般化映像定義。 如果您想要在不移除現有使用者帳戶的情況下使用 VM，請使用 `--os-state specialized` 建立特製化映像定義。
 
-若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./linux/shared-image-galleries.md#image-definitions)。
+若要深入了解您可以為映像定義指定哪些值，請參閱[映像定義](./shared-image-galleries.md#image-definitions)。
 
 使用 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create)，在資源庫中建立映像定義。
 
-在此範例中，映像定義會命名為 myImageDefinition  ，而且適用於[特製化](./linux/shared-image-galleries.md#generalized-and-specialized-images)的 Linux OS 映像。 若要使用 Windows OS 建立映像的定義，請使用 `--os-type Windows`。 
+在此範例中，映像定義會命名為 myImageDefinition  ，而且適用於[特製化](./shared-image-galleries.md#generalized-and-specialized-images)的 Linux OS 映像。 若要使用 Windows OS 建立映像的定義，請使用 `--os-type Windows`。 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -103,7 +103,7 @@ az sig image-version create \
 > 您也可以在 `--storage-account-type  premium_lrs` 建立映射版本時新增或 [區域多餘的儲存體](../storage/common/storage-redundancy.md) ，藉以將映射儲存在 Premium 儲存體中 `--storage-account-type  standard_zrs` 。
 >
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>下一步
 
 使用 Azure CLI 從 [一般化映射](vm-generalized-image-version-cli.md) 建立 VM。
 

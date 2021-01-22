@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: ae113b5870fb5e9c85530b0c73cecb49fd16b216
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 13cdb444046fd8d3138e1c33ed65495e9bfe5e98
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196311"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685053"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-linux"></a>預覽：在 Linux 中使用 Azure 映射建立器，從現有的映射版本建立新的 VM 映射版本
 
-本文說明如何在 [共用映射庫](shared-image-galleries.md)中取得現有的映射版本、更新它，並將其發佈為映射庫的新映射版本。
+本文說明如何在 [共用映射庫](../shared-image-galleries.md)中取得現有的映射版本、更新它，並將其發佈為映射庫的新映射版本。
 
 我們將會使用樣本 .json 範本來設定映像。 我們正在使用的 json 檔案如下： [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json)。 
 
@@ -183,6 +183,6 @@ az sig image-version list -g $sigResourceGroup -r $sigName -i $imageDefName -o t
 ```
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器 [範本參考](../linux/image-builder-json.md)。

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 249f124dc7d4d789ca4396a67fba63fbdd144ba6
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 6fbc4179bcfc36f094b36966c8e5dd0acac66075
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120048"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683016"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL 資源耗用量
 
@@ -38,7 +38,7 @@ Synapse SQL 集區代表所要佈建的分析資源集合。 分析資源會定�
 
 - 標準資料倉儲查詢能以多快的速度掃描大量資料列，然後執行複雜的彙總。 這個作業是 I/O 和 CPU 密集型作業。
 - 資料倉儲能以多快的速度從 Azure 儲存體 Blob 或 Azure Data Lake 擷取資料。 這個作業是網路和 CPU 密集型作業。
-- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 命令能以多快的速度複製資料表。 這個作業牽涉到從儲存體讀取資料、跨應用裝置的節點散發資料，以及重新寫入至儲存體。 這個作業是 CPU、IO 和網路密集型作業。
+- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) T-SQL 命令能以多快的速度複製資料表。 這個作業牽涉到從儲存體讀取資料、跨應用裝置的節點散發資料，以及重新寫入至儲存體。 這個作業是 CPU、IO 和網路密集型作業。
 
 增加 DWU：
 
@@ -98,7 +98,7 @@ SQL 集區是一個擴增系統，可以佈建大量的計算以及查詢相當�
 
 ### <a name="permissions"></a>權限
 
-變更資料倉儲單位需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 中所述的權限。
+變更資料倉儲單位需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 中所述的權限。
 
 Azure 內建角色 (例如 SQL DB Contributor 和 SQL Server Contributor) 可以變更 DWU 設定。
 
@@ -150,7 +150,7 @@ Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServi
 若要變更 DWU︰
 
 1. 連接到與您的伺服器相關聯的 master 資料庫。
-2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL 陳述式。 下例範例會將資料庫 MySQLDW 的服務等級目標設定為 DW1000c。
+2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) TSQL 陳述式。 下例範例會將資料庫 MySQLDW 的服務等級目標設定為 DW1000c。
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -160,7 +160,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 
 #### <a name="rest-apis"></a>REST API
 
-若要變更 DWU，請使用[建立或更新資料庫](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) REST API。 下例會將裝載在 MyServer 伺服器上的資料庫 MySQLDW 的服務等級目標設定為 DW1000c。 此伺服器位於 ResourceGroup1 這個 Azure 資源群組。
+若要變更 DWU，請使用[建立或更新資料庫](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) REST API。 下例會將裝載在 MyServer 伺服器上的資料庫 MySQLDW 的服務等級目標設定為 DW1000c。 此伺服器位於 ResourceGroup1 這個 Azure 資源群組。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1

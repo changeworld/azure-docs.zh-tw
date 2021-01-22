@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: ec577e2a70e2b354b8d2013fe259aa9ea622c50e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b305a07997ccd2cbab0d963ced2bd23ab7a97690
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120133"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683402"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>教學課程：載入紐約計程車資料集
 
-本教學課程會使用 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) ，從 Azure blob 儲存體帳戶載入紐約計程車資料集。 本教學課程是使用 [Azure 入口網站](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)：
+本教學課程會使用 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) ，從 Azure blob 儲存體帳戶載入紐約計程車資料集。 本教學課程是使用 [Azure 入口網站](https://portal.azure.com)和 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS)：
 
 > [!div class="checklist"]
 >
@@ -33,7 +33,7 @@ ms.locfileid: "98120133"
 
 ## <a name="before-you-begin"></a>開始之前
 
-開始本教學課程之前，請下載並安裝最新版的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS)。  
+開始本教學課程之前，請下載並安裝最新版的 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS)。  
 
 本教學課程假設您已在下列 [教學](./create-data-warehouse-portal.md#connect-to-the-server-as-server-admin)課程中建立 SQL 專用集區。
 
@@ -82,7 +82,7 @@ ms.locfileid: "98120133"
 
 2. 輸入完整伺服器名稱，以及輸入 **LoaderRC20** 作為登入。  輸入您 LoaderRC20 的密碼。
 
-3. 選取 [連接]  。
+3. 選取 [連線]。
 
 4. 您的連線就緒時，會在 [物件總管] 中看到兩個伺服器連線。 一個是以 ServerAdmin 連線，另一個是以 MedRCLogin 連線。
 
@@ -251,7 +251,7 @@ ms.locfileid: "98120133"
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>將資料載入資料倉儲
 
-本節使用 [COPY 語句，](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) 從 Azure 儲存體 Blob 載入範例資料。  
+本節使用 [COPY 語句，](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) 從 Azure 儲存體 Blob 載入範例資料。  
 
 > [!NOTE]
 > 本教學課程會將資料直接載入最終資料表。 您通常會載入生產工作負載的臨時表。 當資料位於暫存資料表時，您可以執行任何必要的轉換。 
@@ -393,7 +393,7 @@ ms.locfileid: "98120133"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何建立資料倉儲，以及建立載入資料的使用者。 您已使用簡單的 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples) 將資料載入資料倉儲。
+在本教學課程中，您已了解如何建立資料倉儲，以及建立載入資料的使用者。 您已使用簡單的 [COPY 語句](/sql/t-sql/statements/copy-into-transact-sql&preserve-view=true?view=azure-sqldw-latest&preserve-view=true#examples) 將資料載入資料倉儲。
 
 您進行了下列事項：
 > [!div class="checklist"]
@@ -413,6 +413,6 @@ ms.locfileid: "98120133"
 
 如需更多載入範例和參考，請參閱下列檔：
 
-- [COPY 語句參考檔](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [COPY 語句參考檔](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [複製每個驗證方法的範例](./quickstart-bulk-load-copy-tsql-examples.md)
 - [複製單一資料表的快速入門](./quickstart-bulk-load-copy-tsql.md)

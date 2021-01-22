@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 27dba675f82c4d34ec793cf492c18b293a6c8c77
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7983a80da8a5ca9d900e44515b5e078cc9d70d79
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544253"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684181"
 ---
 # <a name="what-is-azure-private-link-service"></a>什麼是 Azure Private Link 服務？
 
@@ -126,8 +126,8 @@ Private Link 服務會提供選項，讓您透過「可見度」設定來控制�
 以下是使用 Private Link 服務時的已知限制：
 - 僅 Standard Load Balancer 支援 
 - 僅支援 IPv4 流量
-- 僅支援 TCP 流量
+- 僅支援 TCP 和 UDP 流量
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 - [使用 Azure PowerShell 建立私人連結服務](create-private-link-service-powershell.md)
 - [使用 Azure CLI 建立私人連結服務](create-private-link-service-cli.md)

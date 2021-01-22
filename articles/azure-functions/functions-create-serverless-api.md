@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: d683ef92c4e8d11e9defbed5454e5849211bf8f7
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7375a46245fbe523ddf0512bb5a55371adff64e9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104745"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683737"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>在 Azure Functions 中自訂 HTTP 端點
 
@@ -31,7 +31,7 @@ ms.locfileid: "92104745"
 
 根據預設，您的 HTTP 觸發程式函數會設定為接受任何 HTTP 方法。 您也可以使用預設的 URL `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>` 。 在本節中，您會將函數修改為只回應 GET 要求 `/api/hello` 。 
 
-1. 在 Azure 入口網站中瀏覽至您的函式。 在左側功能表中選取 [**整合**]，然後選取 [**觸發**程式] 下的 [ **HTTP (要求) ** 。
+1. 在 Azure 入口網站中瀏覽至您的函式。 在左側功能表中選取 [**整合**]，然後選取 [**觸發** 程式] 下的 [ **HTTP (要求)** 。
 
     :::image type="content" source="./media/functions-create-serverless-api/customizing-http.png" alt-text="自訂 HTTP 函式":::
 
@@ -86,10 +86,10 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 
 ### <a name="setting-up-the-frontend-environment"></a>設定前端環境
 
-重複[建立函式應用程式](./functions-create-first-azure-function.md#create-a-function-app)的步驟建立新的函式應用程式，您將在其中建立您的 Proxy。 這個新的應用程式 URL 可作為我們 API 的前端，而您先前編輯的函式應用程式會做為後端。
+重複[建立函式應用程式](./functions-get-started.md)的步驟建立新的函式應用程式，您將在其中建立您的 Proxy。 這個新的應用程式 URL 可作為我們 API 的前端，而您先前編輯的函式應用程式會做為後端。
 
 1. 在入口網站中瀏覽至新的前端函式應用程式。
-1. 選取 [平台功能]****，然後選擇 [應用程式設定]****。
+1. 選取 [平台功能]，然後選擇 [應用程式設定]。
 1. 向下滾動至 **應用程式設定**，其中儲存機碼/值組，並使用索引鍵建立新的設定 `HELLO_HOST` 。 將值設定為後端函式應用程式的主機，例如 `<YourBackendApp>.azurewebsites.net`。 此值是您稍早在測試 HTTP 函式時複製的 URL 的一部分。 稍後，您將在設定中參考這項設定。
 
     > [!NOTE] 
@@ -107,12 +107,12 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 
     | 欄位 | 範例值 | 描述 |
     |---|---|---|
-    | 名稱 | HelloProxy | 僅用於管理的易記名稱 |
+    | Name | HelloProxy | 僅用於管理的易記名稱 |
     | 路由範本 | /api/remotehello | 決定使用什麼路由來叫用此 Proxy |
     | 後端 URL | https://%HELLO_HOST%/api/hello | 指定端點，而其要求應該透過代理 |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="自訂 HTTP 函式":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="建立 Proxy":::
 
     Azure Functions Proxy 不提供 `/api` 基底路徑前置詞，其必須包含在路由範本中。 此 `%HELLO_HOST%` 語法會參考您稍早建立的應用程式設定。 解析後的 URL 會指向您的原始函式。
 
@@ -184,7 +184,7 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 
 使用瀏覽器或您最愛的 REST 用戶端呼叫 `<YourProxyApp>.azurewebsites.net/api/users/{username}` 端點，以測試您的模擬 API。 請務必以代表使用者名稱的字串值取代 _{username}_。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>下一步
 
 在本文中，您已瞭解如何在 Azure Functions 上建立和自訂 API。 您也學到如何將多個 API (包括模擬) 組合成統一的 API 介面。 不論多麼複雜的 API 都可以使用這些技術來建置，而且都在 Azure Functions 提供的無伺服器計算模型上執行。
 
@@ -195,5 +195,5 @@ Proxy 可以指向任何 HTTP 資源，例如︰
 - [定義 Azure Functions API (預覽)](./functions-openapi-definition.md)
 
 
-[Create your first function]: ./functions-create-first-azure-function.md
+[Create your first function]: ./functions-get-started.md
 [使用 Azure Functions Proxy]: ./functions-proxies.md
