@@ -3,12 +3,12 @@ title: Azure 備份的新功能
 description: 瞭解 Azure 備份中的新功能。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 935c2a806ed3b08f19e680bf1522d98a9ad67666
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569414"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730284"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure 備份的新功能
 
@@ -37,7 +37,7 @@ Azure 備份不斷地改進和釋出新功能，以增強 Azure 中資料的保�
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure 磁片備份 (預覽版) 
 
-Azure 磁片備份提供了一種現成的解決方案，可讓您藉由使用備份原則來自動建立快照集，並將其保留在設定的持續時間內，為 [Azure 受控磁碟](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) 提供快照集生命週期管理 您可以管理沒有基礎結構成本的磁片快照集，也不需要自訂腳本或任何管理額外負荷。 這是損毀一致的備份解決方案，會使用 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) 集進行受控磁片的時間點備份，且每天支援多個備份。 它也是無代理程式的解決方案，並不會影響生產應用程式的效能。 它支援 OS 和資料磁片的備份和還原 (包括) 的共用磁片，不論它們目前是否已連接到執行中的 Azure 虛擬機器。
+Azure 磁片備份提供了一種現成的解決方案，可讓您藉由使用備份原則來自動建立快照集，並將其保留在設定的持續時間內，為 [Azure 受控磁碟](../virtual-machines/managed-disks-overview.md) 提供快照集生命週期管理 您可以管理沒有基礎結構成本的磁片快照集，也不需要自訂腳本或任何管理額外負荷。 這是損毀一致的備份解決方案，會使用 [增量快照](../virtual-machines/disks-incremental-snapshots.md) 集進行受控磁片的時間點備份，且每天支援多個備份。 它也是無代理程式的解決方案，並不會影響生產應用程式的效能。 它支援 OS 和資料磁片的備份和還原 (包括) 的共用磁片，不論它們目前是否已連接到執行中的 Azure 虛擬機器。
 
 如需詳細資訊，請參閱 [預覽版中的 Azure 磁片備份 () ](disk-backup-overview.md)。
 

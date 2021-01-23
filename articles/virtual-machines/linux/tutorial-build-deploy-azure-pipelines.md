@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
-ms.translationtype: HT
+ms.openlocfilehash: 4ca431290fe168f8fc073908bb3735ecb5992562
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739700"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731246"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>教學課程：使用 Azure DevOps Services 和 Azure Pipelines 在 Azure 中將應用程式部署至 Linux 虛擬機器
 
@@ -24,7 +24,7 @@ ms.locfileid: "97739700"
 
 Azure Pipelines 提供了一組完整且功能齊全的 CI/CD 自動化工具，可用來部署至內部部署或任何雲端上的虛擬機器。
 
-在本教學課程中，您將設定 YAML 型 CI/CD 管線，將您的應用程式部署至以 Linux 虛擬機器作為資源，且以各項資源作為 Web 伺服器以執行應用程式的 Azure Pipelines [環境](/azure/devops/pipelines/process/environments?view=azure-devops)。
+在本教學課程中，您將設定 YAML 型 CI/CD 管線，將您的應用程式部署至以 Linux 虛擬機器作為資源，且以各項資源作為 Web 伺服器以執行應用程式的 Azure Pipelines [環境](/azure/devops/pipelines/process/environments)。
 
 您會了解如何：
 
@@ -41,7 +41,7 @@ Azure Pipelines 提供了一組完整且功能齊全的 CI/CD 自動化工具，
   您可以取得[免費的 Azure DevOps Services 組織](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308)。
 
   > [!NOTE]
-  > 如需詳細資訊，請參閱[連線至 Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects?view=vsts)。
+  > 如需詳細資訊，請參閱[連線至 Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects)。
 
 *  若是部署目標，您需要 Linux 虛擬機器。  如需詳細資訊，請參閱[使用 Azure CLI 來建立和管理 Linux VM](./tutorial-manage-vm.md)。
 
@@ -222,7 +222,7 @@ jobs:
        tags: web
    ```
 2. 您可以藉由指定您為環境中的每個虛擬機器定義的 **標籤**，從環境中選取特定幾組虛擬機器來接收部署。
-[這裡](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job)提供部署作業的完整 YAML 結構描述。
+[這裡](/azure/devops/pipelines/yaml-schema?tabs=schema#deployment-job)提供部署作業的完整 YAML 結構描述。
 
 3. 您可以指定 `runOnce` 或 `rolling` 作為部署策略。 
 

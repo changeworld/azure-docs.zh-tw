@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c34ca08ae2ede9430804f6b8bb33f2bfcb0b39ab
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 70e1823b30814d7dc29fef69215fcb53a2a2ab96
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632610"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730865"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>使用 Azure 應用程式一致的快照集工具 (預覽) 的嚴重損壞修復
 
@@ -40,7 +40,7 @@ Azure 大型實例平臺也可以設定災難復原網站，以便將存放磁�
 - 您有可用的儲存體複寫。 Microsoft 營運團隊會在 DR 布建時，自動執行儲存體複寫設定。 您可以使用 DR 網站上的命令來監視儲存體複寫 `azacsnap -c details --details replication` 。
 - 您已在主要位置設定和設定儲存體快照集。
 - 您已在 DR 網站上安裝 HANA 實例，其具有與主要實例相同的 SID。
-- 您已閱讀並瞭解在[Azure 上 SAP Hana 大型實例高可用性和嚴重損壞修復](/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure)中所述的 DR 容錯移轉程式
+- 您已閱讀並瞭解在[Azure 上 SAP Hana 大型實例高可用性和嚴重損壞修復](../virtual-machines/workloads/sap/hana-failover-procedure.md)中所述的 DR 容錯移轉程式
 - 您已在 DR 位置設定和設定儲存體快照集。
 - 設定檔 (例如，已 `DR.json` 使用 dr 儲存體磁片區和 dr 伺服器上的相關資訊建立) 。
 - 您已完成 DR 網站上的步驟，以：
@@ -282,7 +282,7 @@ tmpfs 76G 0 76G 0% /run/user/0
 > [!IMPORTANT]
 > 執行 `azacsnap -c backup` 時，可以在 DR 網站上建立儲存體快照集，而不會自動將這些快照集複寫到另一個網站。  使用 Microsoft 作業，更清楚地瞭解將任何檔案或資料傳回原始生產網站。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [取得快照詳細資料](azacsnap-cmd-ref-details.md)
 - [進行備份](azacsnap-cmd-ref-backup.md)

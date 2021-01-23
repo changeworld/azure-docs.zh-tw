@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: 4f70cbacf686210c1188cb0a87e6116af8ed4b01
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: dee15977318eda7bcd0b1950286bb33f621221dd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763136"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731579"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR Service 的受控識別
 
@@ -44,7 +44,7 @@ ms.locfileid: "97763136"
 
 4. 在 [ **使用者指派** ] 索引標籤上，選取 [ **新增**]。
 
-5. 搜尋您稍早建立的身分識別，並選取它。 選取 [新增]。
+5. 搜尋您稍早建立的身分識別，並選取它。 選取 [新增]  。
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="在入口網站中新增使用者指派的身分識別":::
 
@@ -104,7 +104,7 @@ SignalR Service 可以存取 Key Vault，以使用受控識別取得秘密。
 
 1. 針對 Azure SignalR Service 新增系統指派的身分識別或使用者指派的身分識別。
 
-2. 在 Key Vault 的存取原則中，授與受控識別的密碼讀取權限。 請參閱 [使用 Azure 入口網站指派 Key Vault 存取原則](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+2. 在 Key Vault 的存取原則中，授與受控識別的密碼讀取權限。 請參閱 [使用 Azure 入口網站指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)
 
 目前，這項功能可用於下列案例：
 

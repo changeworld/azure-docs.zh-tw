@@ -51,8 +51,6 @@
           href: non-gallery-apps.md
         - name: 規劃我的應用程式部署
           href: access-panel-deployment-plan.md
-        - name: 開發人員指導方針
-          href: developer-guidance-for-integrating-applications.md
     - name: 單一登入
       items:
         - name: 規劃單一登入部署

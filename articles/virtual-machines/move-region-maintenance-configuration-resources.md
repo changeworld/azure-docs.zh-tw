@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 7c4d9f3a5f73e5832e9ff22ed2cd4c215811c845
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 88082c441dafdc7571f2b9775bfc07ebe3ca5aa4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197552"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730501"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>將維護控制設定中的資源移至另一個區域
 
@@ -23,7 +23,7 @@ ms.locfileid: "98197552"
 - 若要移動維護控制設定，而不是與設定相關聯的資源，請遵循下列 [指示](move-region-maintenance-configuration.md)。
 - 若要移動維護設定和與其相關聯的資源，請先遵循下列 [指示](move-region-maintenance-configuration.md)。 然後，依照本文中的指示進行。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始移動與維護控制設定相關聯的資源之前：
 
@@ -49,7 +49,7 @@ ms.locfileid: "98197552"
     $adh | 專用主機名稱 | Myhost 代表
     $adhParentName | 父資源名稱 | HostGroup
     
-2. 使用 PowerShell [AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0) 命令取得維護設定：
+2. 使用 PowerShell [AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment) 命令取得維護設定：
 
     - 針對 Azure 專用主機，請執行：
         ```

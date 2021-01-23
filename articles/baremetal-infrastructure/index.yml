@@ -10,12 +10,12 @@ metadata:
   author: shortpatti
   ms.author: v-patsho
   ms.date: 12/31/2020
-  ms.openlocfilehash: 496e995909b885e494ee289c436cda17f3d39367
-  ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
-  ms.translationtype: HT
+  ms.openlocfilehash: 285421d12b656290ef5ddbe21136345b718e0ca1
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 01/04/2021
-  ms.locfileid: "97861930"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98730267"
 landingContent:
 - title: 關於 BareMetal 基礎結構
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: BareMetal 工作負載類型
-      url: /azure/virtual-machines/workloads/sap/get-started?context=/azure/baremetal-infrastructure/workloads/sap/context/context
+      url: ../virtual-machines/workloads/sap/get-started.md?context=%2fazure%2fbaremetal-infrastructure%2fworkloads%2fsap%2fcontext%2fcontext
 - title: BareMetal 執行個體單位
   linkLists:
   - linkListType: how-to-guide

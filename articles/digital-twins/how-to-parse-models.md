@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ab2534e40bd6b324e94a91c6ac9c5f34fa6e6f31
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 44cee2b47ae8f96e2852dfdb5aefe73a7af67ed6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044198"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731329"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>使用 DTDL 剖析器程式庫剖析和驗證模型
 
@@ -83,7 +84,7 @@ DTDLValidator -i
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/parseModels.cs":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 當您完成撰寫模型之後，請參閱如何將它們上傳 (，以及使用 DigitalTwinsModels Api) 其他管理作業：
 * [操作說明：管理自訂模型](how-to-manage-model.md)

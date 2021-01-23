@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 1051859d514c77bad1aa5f14becc2218a923df44
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 17c29fdf88495f6ecc40963eda08858887173fd1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632648"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730933"
 ---
 # <a name="back-up-using-azure-application-consistent-snapshot-tool-preview"></a>使用 Azure 應用程式一致的快照集工具進行備份 (預覽) 
 
@@ -143,9 +143,9 @@ azacsnap -c backup --volume other --prefix boot_TEST --retention 9 --configfile 
 > 記錄檔名稱是由 [ (命令名稱- (`-c` 選項) - (設定檔案名) ] 所組成。  例如，如果使用記錄檔 `-c backup` 名稱的選項 `h80.json` ，則會通話記錄檔 `azacsnap-backup-h80.log` 。  或者，如果使用 `-c test` 具有相同設定檔的選項，則會通話記錄檔 `azacsnap-test-h80.log` 。
 
 - HANA 大型實例類型：有兩個有效的值， `TYPEI` 或 `TYPEII` 相依于 HANA 大型實例單位。
-- 請參閱適用 [于 HANA 大型實例的可用 sku](/azure/virtual-machines/workloads/sap/hana-available-skus) 來確認可用的 sku。
+- 請參閱適用 [于 HANA 大型實例的可用 sku](../virtual-machines/workloads/sap/hana-available-skus.md) 來確認可用的 sku。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [取得快照詳細資料](azacsnap-cmd-ref-details.md)
 - [刪除快照集](azacsnap-cmd-ref-delete.md)

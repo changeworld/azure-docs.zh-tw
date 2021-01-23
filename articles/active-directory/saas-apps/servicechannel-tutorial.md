@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 039f13838edf80f6f80c1821c868c8b99549f72f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: 413ffa54a7413ad9b2482a3a8b6c698b34116301
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916468"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729819"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicechannel"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ServiceChannel 整合
 
@@ -83,7 +83,7 @@ ms.locfileid: "97916468"
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的識別碼和回覆 URL 更新這些值。 在此建議您在 [識別碼] 中使用唯一的字串值。 請連絡 [ServiceChannel 用戶端支援小組](https://servicechannel.zendesk.com/hc/) \(英文\) 以取得這些值。 您也可以參考 Azure 入口網站中 **基本 SAML 組態** 區段所示的模式。
 
-1. 角色宣告已預先設定，因此您不需要進行設定，但您仍然需要使用[本文](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)在 Azure AD 中建立角色。 您可以參考[這裡](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example)的 ServiceChannel 指南，以取得宣告的詳細指引。
+1. 角色宣告已預先設定，因此您不需要進行設定，但您仍然需要使用[本文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)在 Azure AD 中建立角色。 您可以參考[這裡](https://servicechannel.zendesk.com/hc/articles/217514326-Azure-AD-Configuration-Example)的 ServiceChannel 指南，以取得宣告的詳細指引。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -131,7 +131,7 @@ ms.locfileid: "97916468"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 ServiceChannel
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 [ServiceChannel] 圖格時，應該會自動登入您已設定 SSO 的 ServiceChannel。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 [ServiceChannel] 圖格時，應該會自動登入您已設定 SSO 的 ServiceChannel。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -4,16 +4,16 @@ description: 自訂映射集區是設定計算節點以執行 Batch 工作負載
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 98dbb965d77da43d937dccbc0f99abf12c195929
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327299"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731356"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共用映射庫來建立自訂映射集區
 
-當您使用虛擬機器設定建立 Azure Batch 集區時，需指定 VM 映像，以提供集區中每個計算節點的作業系統。 您可以使用支援的 Azure Marketplace 映射來建立虛擬機器集區，或使用 [共用映射庫映射](../virtual-machines/windows/shared-image-galleries.md)建立自訂映射。
+當您使用虛擬機器設定建立 Azure Batch 集區時，需指定 VM 映像，以提供集區中每個計算節點的作業系統。 您可以使用支援的 Azure Marketplace 映射來建立虛擬機器集區，或使用 [共用映射庫映射](../virtual-machines/shared-image-galleries.md)建立自訂映射。
 
 ## <a name="benefits-of-the-shared-image-gallery"></a>共用映像庫的優點
 
@@ -31,7 +31,7 @@ ms.locfileid: "96327299"
 - **一次複製大量資料。** 藉由將靜態資料複製到受控映像的資料磁碟，使靜態資料成為受控共用映像的一部分。 這只需要執行一次，就能將資料提供給集區的每個節點。
 - **讓集區變大。** 使用共用映像庫時，您可以使用自訂映像及更多的共用映像複本來建立較大的集區。
 - **比僅使用受控映射作為自訂映射的效能更佳。** 針對共用映射自訂映射集區，達到穩定狀態的時間最多可快25%，而 VM 閒置延遲最多可達30%。
-- **對映像進行版本控制和分組，以便管理。** 映像群組定義包含建立映像的原因、目標作業系統，以及使用映像的相關資訊。 群組映像可讓您更輕鬆地管理映像。 如需詳細資訊，請參閱[映像定義](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
+- **對映像進行版本控制和分組，以便管理。** 映像群組定義包含建立映像的原因、目標作業系統，以及使用映像的相關資訊。 群組映像可讓您更輕鬆地管理映像。 如需詳細資訊，請參閱[映像定義](../virtual-machines/shared-image-galleries.md#image-definitions)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -226,4 +226,4 @@ client.pool.add(new_pool)
 ## <a name="next-steps"></a>後續步驟
 
 - 如需更深入的 Batch 概觀，請參閱 [Batch 服務工作流程和資源](batch-service-workflow-features.md)。
-- 深入了解[共用映像庫](../virtual-machines/windows/shared-image-galleries.md)。
+- 深入了解[共用映像庫](../virtual-machines/shared-image-galleries.md)。

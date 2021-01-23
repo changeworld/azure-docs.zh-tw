@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0fe9b3ddaee41802ced30e1898b46cefa2566771
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-ms.translationtype: HT
+ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023185"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730780"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？
 
@@ -130,7 +130,7 @@ Windows 虛擬桌面支援下列 x64 作業系統映像：
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows 虛擬桌面不支援 x86 (32 位元)、Windows 10 Enterprise N 或 Windows 10 Enterprise KN 作業系統映像。 由於磁區大小的限制，Windows 7 也不支援裝載於受控 Azure 儲存體上的任何 VHD 或 VHDX 型設定檔解決方案。
+Windows 虛擬桌面不支援 x86 (32 位) 、Windows 10 企業版 N、Windows 10 專業版或 Windows 10 企業版 KN 作業系統映射。 由於磁區大小的限制，Windows 7 也不支援裝載於受控 Azure 儲存體上的任何 VHD 或 VHDX 型設定檔解決方案。
 
 可用的自動化和部署選項取決於您所選的作業系統和版本，如下表所示：
 

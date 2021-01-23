@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 409ba7a954830bb2370ce83989b9e8b08b742fe7
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631171"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732042"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>使用 PowerShell 將受控識別存取權指派給應用程式角色
 
@@ -36,7 +36,7 @@ ms.locfileid: "97631171"
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
 - 若要執行範例指令碼，您有兩個選項：
     - 使用您可以使用程式碼區塊右上角的 [**試試看**] 按鈕開啟的 [Azure Cloud Shell](../../cloud-shell/overview.md)。
-    - 安裝最新版的 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)以在本機執行腳本。
+    - 安裝最新版的 [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)以在本機執行腳本。
 
 ## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>將受控識別存取權指派給另一個應用程式的應用程式角色
 
@@ -134,7 +134,7 @@ New-AzureADServiceAppRoleAssignment `
     -ResourceId $serverServicePrincipalObjectId
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [適用於 Azure 資源的受控識別概觀](overview.md)
 - 若要在 Azure VM 上啟用受控識別，請參閱[使用 PowerShell 在 Azure VM 上設定 Azure 資源的受控識別](qs-configure-powershell-windows-vm.md)。

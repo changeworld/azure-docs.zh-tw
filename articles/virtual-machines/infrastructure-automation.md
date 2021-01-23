@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: a20c19c3da89801570ca4d74a646e3cf0d8434b6
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7a702fbf405011a9df3e7e77936a9a37f0fdfad7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675897"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730633"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中使用基礎結構自動化工具搭配虛擬機器
 
@@ -126,7 +126,7 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 
 深入了解：
 
-- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts)。
+- [Azure DevOps Services](/azure/devops/user-guide/index)。
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -147,5 +147,5 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 - [下載 VM 的範本](/previous-versions/azure/virtual-machines/windows/download-template)。
 - [建立 Azure Image Builder 範本](./linux/image-builder-json.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 有許多不同的選項可供您在 Azure 中使用基礎結構自動化工具。 您可以自由使用最適合您需求和環境的解決方案。 若要開始使用並嘗試一些內建於 Azure 的工具，請參閱如何將自訂 [Linux](./linux/tutorial-automate-vm-deployment.md) 或 [Windows](./windows/tutorial-automate-vm-deployment.md) VM 自動化。

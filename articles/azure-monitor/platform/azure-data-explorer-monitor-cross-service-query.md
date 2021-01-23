@@ -7,17 +7,17 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: e60f77495cdb822a0c50be936c2b0d3ac31348f3
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 2b68afcb9d200970ca4ea29b13175223f52c77e0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116704"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730984"
 ---
 # <a name="cross-service-query---azure-monitor-and-azure-data-explorer-preview"></a>跨服務查詢-Azure 監視器和 Azure 資料總管 (Preview) 
-在 [Azure 資料總管](https://docs.microsoft.com/azure/data-explorer/)、 [Application Insights](/azure/azure-monitor/app/app-insights-overview)與 [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)之間建立跨服務查詢。
+在 [Azure 資料總管](/azure/data-explorer/)、 [Application Insights](../app/app-insights-overview.md)與 [Log Analytics](./data-platform-logs.md)之間建立跨服務查詢。
 ## <a name="azure-monitor-and-azure-data-explorer-cross-service-querying"></a>Azure 監視器和 Azure 資料總管跨服務查詢
-這種體驗可讓您在 [Azure 資料總管和 Azure 監視器之間建立跨服務查詢](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) ，以及在 [Azure 監視器和 Azure 資料總管之間建立跨服務查詢](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy)。
+這種體驗可讓您在 [Azure 資料總管和 Azure 監視器之間建立跨服務查詢](/azure/data-explorer/query-monitor-data) ，以及在 [Azure 監視器和 Azure 資料總管之間建立跨服務查詢](./azure-monitor-data-explorer-proxy.md)。
 
 例如， (從 Log Analytics) 查詢 Azure 資料總管：
 ```kusto
@@ -34,15 +34,15 @@ CustomEvents | where aField == 1
 
 將資料從 Azure 監視器匯出至 Azure 儲存體帳戶可提供低成本的保留，以及將記錄重新配置到不同區域的能力。
 
-使用 Azure 資料總管來查詢從 Log Analytics 工作區匯出的資料。 一旦設定之後，從您的工作區傳送到 Azure 儲存體帳戶的支援資料表將可作為 Azure 資料總管的資料來源。 [使用 Azure 資料總管 (preview) 從 Azure 監視器查詢匯出的資料 ](https://docs.microsoft.com/azure/azure-monitor/platform/azure-data-explorer-query-storage)。
+使用 Azure 資料總管來查詢從 Log Analytics 工作區匯出的資料。 一旦設定之後，從您的工作區傳送到 Azure 儲存體帳戶的支援資料表將可作為 Azure 資料總管的資料來源。 [使用 Azure 資料總管 (preview) 從 Azure 監視器查詢匯出的資料 ](./azure-data-explorer-query-storage.md)。
 
 :::image type="content" source="media\azure-data-explorer-query-storage\exported-data-query.png" alt-text="Azure 資料總管來自儲存體流程的查詢。":::
 
 >[!tip] 
-> * 若要將 Log Analytics 工作區中的所有資料匯出至 Azure 儲存體帳戶或事件中樞，請使用 Azure 監視器記錄的 Log Analytics 工作區資料匯出功能。 [請參閱 Azure 監視器 (preview) 中的 Log Analytics 工作區資料匯出 ](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。
+> * 若要將 Log Analytics 工作區中的所有資料匯出至 Azure 儲存體帳戶或事件中樞，請使用 Azure 監視器記錄的 Log Analytics 工作區資料匯出功能。 [請參閱 Azure 監視器 (preview) 中的 Log Analytics 工作區資料匯出 ](/azure/data-explorer/query-monitor-data)。
 
 ## <a name="next-steps"></a>後續步驟
 深入了解：
-* [在 Azure 資料總管和 Azure 監視器之間建立跨服務查詢](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。 從 Azure 資料總管查詢 Azure 監視器資料
-* [在 Azure 監視器和 Azure 資料總管之間建立跨服務查詢](https://docs.microsoft.com/azure/azure-monitor/platform/azure-monitor-data-explorer-proxy)。 從 Azure 監視器查詢 Azure 資料總管資料
-* [Azure 監視器 (preview) 中的 Log Analytics 工作區資料匯出 ](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)。 使用 Log Analytics 匯出的資料連結及查詢 Azure Blob 儲存體帳戶。
+* [在 Azure 資料總管和 Azure 監視器之間建立跨服務查詢](/azure/data-explorer/query-monitor-data)。 從 Azure 資料總管查詢 Azure 監視器資料
+* [在 Azure 監視器和 Azure 資料總管之間建立跨服務查詢](./azure-monitor-data-explorer-proxy.md)。 從 Azure 監視器查詢 Azure 資料總管資料
+* [Azure 監視器 (preview) 中的 Log Analytics 工作區資料匯出 ](/azure/data-explorer/query-monitor-data)。 使用 Log Analytics 匯出的資料連結及查詢 Azure Blob 儲存體帳戶。

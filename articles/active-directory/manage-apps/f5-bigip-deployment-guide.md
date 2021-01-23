@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095180"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730651"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>在 Azure IaaS 中部署 F5 大型 IP 虛擬 Edition VM 以進行安全混合式存取的教學課程
 
@@ -26,7 +26,7 @@ ms.locfileid: "97095180"
 
 - 用於測試新的大型 IP 系統更新和修補程式的預備實例
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 不過，我們不需要在前面加上 F5 的大型 IP 體驗或知識，而是建議您熟悉自己的 [F5 大型 ip 術語](https://www.f5.com/services/resources/glossary)。 在 Azure 中部署 SHA 的大型 IP 需要：
 
@@ -71,7 +71,7 @@ VM 部署和基本系統組態大約需要30分鐘的時間，此時您的大型
 
 5. 選取 [ **f5 BIG-ip Virtual Edition] (BYOL)**  >  **選取軟體方案**  >  **F5 BIG-ip VE-ALL (BYOL，2個開機位置)**
 
-6. 選取 [建立]。
+6. 選取 [建立]  。
 
 ![此影像顯示選取軟體方案的步驟](./media/f5ve-deployment-plan/software-plan.png)
 
@@ -216,7 +216,7 @@ VM 公用 IP 與私人 IP 之間的1對1對應可讓外部流量抵達 VM。 不
  |:-------|:-----------|
  |訂用帳戶| 與大型 IP VM 相同的訂用帳戶|
  |DNS 區域| 您已發佈的網站將會使用之已驗證網域尾碼的授權 DNS 區域，例如 www.contoso.com |
- |名稱 | 您指定的主機名稱會解析為與所選取次要 IP 相關聯的公用 IP。 請務必將正確的 DNS 定義為 IP 對應。 請參閱網路功能的 [內容] 區段中的最後一個影像，例如 intranet.contoso.com > 13.77.148.215|
+ |Name | 您指定的主機名稱會解析為與所選取次要 IP 相關聯的公用 IP。 請務必將正確的 DNS 定義為 IP 對應。 請參閱網路功能的 [內容] 區段中的最後一個影像，例如 intranet.contoso.com > 13.77.148.215|
  | TTL | 1 |
  |TTL 單位 | 小時 |
 
@@ -248,9 +248,9 @@ VM 公用 IP 與私人 IP 之間的1對1對應可讓外部流量抵達 VM。 不
  |目的地 IP 位址|所有大型 IP-VM 次要私人 Ip 的逗點分隔清單|
  |目的地連接埠| 80,443|
  |通訊協定| TCP |
- |動作| 允許|
+ |動作| Allow|
  |優先順序|介於 100-4096 之間的最小可用值|
- |名稱 | 描述性名稱，例如： `BIG-IP-VM_Web_Services_80_443`|
+ |Name | 描述性名稱，例如： `BIG-IP-VM_Web_Services_80_443`|
 
 3. 選取 [ **新增** ] 以認可變更，然後關閉 [ **網路** 功能] 功能表。
 
@@ -264,7 +264,7 @@ VM 公用 IP 與私人 IP 之間的1對1對應可讓外部流量抵達 VM。 不
 
 - 從連線到大 IP VM 內部網路的 VPN 用戶端
 
-- 透過[Azure AD 應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)發佈
+- 透過[Azure AD 應用程式 Proxy](./application-proxy-add-on-premises-application.md)發佈
 
 您必須決定最適合的方法，才能繼續進行其餘設定。 如有必要，您可以使用公用 IP 設定大型 IP 的主要 IP，從網際網路直接連線至 web 設定。 然後新增 NSG 規則，以允許該主要 IP 的8443流量。 請務必將來源限制在您自己的受信任 IP，否則任何人都可以連接。
 
@@ -276,7 +276,7 @@ VM 公用 IP 與私人 IP 之間的1對1對應可讓外部流量抵達 VM。 不
 
 您也可以透過其基礎 SSH 環境來管理大型 IP 系統，此環境通常用於命令列 (CLI) 工作和根層級存取。 有幾個選項可用來連接到 CLI，包括：
 
-- [Azure 防禦服務](https://docs.microsoft.com/azure/bastion/bastion-overview)：允許從任何位置對 vNET 內的任何 VM 進行快速且安全的連接
+- [Azure 防禦服務](../../bastion/bastion-overview.md)：允許從任何位置對 vNET 內的任何 VM 進行快速且安全的連接
 
 - 透過 JIT 方法直接透過 SSH 用戶端（例如 PuTTY）連接
 
@@ -423,7 +423,7 @@ VM 公用 IP 與私人 IP 之間的1對1對應可讓外部流量抵達 VM。 不
 
 6. 選擇備份的連結並選取 [ **下載**]，以將使用者設定集 (UCS) 封存在本機。
 
-選擇性步驟是，您也可以使用 [Azure 快照](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)集來備份整個系統磁片，這種方式與 web 設定備份會提供一些在 TMOS 版本之間進行測試或回復至全新系統的應變。
+選擇性步驟是，您也可以使用 [Azure 快照](../../virtual-machines/windows/snapshot-copy-managed-disk.md)集來備份整個系統磁片，這種方式與 web 設定備份會提供一些在 TMOS 版本之間進行測試或回復至全新系統的應變。
 
 ```PowerShell
 # Install modules

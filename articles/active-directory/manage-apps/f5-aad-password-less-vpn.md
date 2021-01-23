@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2961f3f01f6ea4398fab6144b34fcb4409cdd96f
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 84e177f1ce55d803f54bb2553078441557e5c191
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317957"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730882"
 ---
 # <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>適用于無密碼 VPN 的 Azure Active Directory 單一登入與 F5 BIG IP 整合的教學課程
 
@@ -24,13 +24,13 @@ ms.locfileid: "96317957"
 
 將 BIG IP SSL-VPN 與 Azure AD 整合提供 [許多重要的優點](f5-aad-integration.md)，包括：
 
-- 透過[Azure AD 預先驗證與授權，](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)改進了零信任治理
+- 透過[Azure AD 預先驗證與授權，](../../app-service/overview-authentication-authorization.md)改進了零信任治理
 
 - [對 VPN 服務進行無密碼驗證](https://www.microsoft.com/security/business/identity/passwordless)
 
 - 從單一控制平面管理身分識別和存取- [Azure 入口網站](https://portal.azure.com/#home)
 
-儘管新增了這些絕佳的價值，但傳統的 VPN 仍會前提網路周邊的概念，其中受信任的位於內部且不受信任的外部。 此模型在達成真正的零信任狀態時已不再有效，因為公司資產不再局限于企業資料中心的牆，而是在不含固定界限的多雲端環境中。 基於這個理由，我們鼓勵客戶考慮採用更多身分識別導向的方法來管理 [每個應用程式的存取權](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)。
+儘管新增了這些絕佳的價值，但傳統的 VPN 仍會前提網路周邊的概念，其中受信任的位於內部且不受信任的外部。 此模型在達成真正的零信任狀態時已不再有效，因為公司資產不再局限于企業資料中心的牆，而是在不含固定界限的多雲端環境中。 基於這個理由，我們鼓勵客戶考慮採用更多身分識別導向的方法來管理 [每個應用程式的存取權](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -41,15 +41,15 @@ ms.locfileid: "96317957"
 >[!NOTE]
 >本指南中所參考的所有範例字串或值都應取代為實際環境的字串或值。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 不過，您不需要對 F5 BIG IP 進行事先經驗或知識，您需要：
 
 - Azure AD [免費訂](https://azure.microsoft.com/trial/get-started-active-directory/) 用帳戶或更高版本
 
-- 使用者身分識別應該 [從其內部部署目錄同步](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) 處理至 Azure AD。
+- 使用者身分識別應該 [從其內部部署目錄同步](../hybrid/how-to-connect-sync-whatis.md) 處理至 Azure AD。
 
-- 具有 Azure AD 應用程式系統管理員[許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#application-administrator)的帳戶
+- 具有 Azure AD 應用程式系統管理員[許可權](../roles/permissions-reference.md#application-administrator)的帳戶
 
 - 現有的大型 IP 基礎結構，可將用戶端流量路由傳送至大型 IP，或將 [大型 Ip 虛擬版本部署至 Azure](f5-bigip-deployment-guide.md)。
 
@@ -64,7 +64,7 @@ ms.locfileid: "96317957"
 
 ## <a name="add-f5-big-ip-from-the-azure-ad-gallery"></a>從 Azure AD 資源庫新增 F5 BIG IP
 
-在大 IP 間設定 SAML 同盟信任，可讓 Azure AD 的大型 IP 將預先驗證及 [條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) 交給 Azure AD，然後再授與已發佈 VPN 服務的存取權。
+在大 IP 間設定 SAML 同盟信任，可讓 Azure AD 的大型 IP 將預先驗證及 [條件式存取](../conditional-access/overview.md) 交給 Azure AD，然後再授與已發佈 VPN 服務的存取權。
 
 1. 使用具有應用程式系統管理員許可權的帳戶登入 Azure AD 入口網站
 
@@ -105,7 +105,7 @@ ms.locfileid: "96317957"
 
 ![顯示使用者屬性宣告的影像](media/f5-sso-vpn/user-attributes-claims.png)
 
-您可以視需要新增您的大型 IP 已發佈服務所預期的任何其他特定宣告，但請注意，除了預設設定以外，任何定義的宣告都只會在 Azure AD 中，以填入的屬性來發出。 同樣地，目錄 [角色或群組](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-group-claims) 成員資格也需要針對 Azure AD 中的使用者物件進行定義，才能將它們當作宣告來發出。
+您可以視需要新增您的大型 IP 已發佈服務所預期的任何其他特定宣告，但請注意，除了預設設定以外，任何定義的宣告都只會在 Azure AD 中，以填入的屬性來發出。 同樣地，目錄 [角色或群組](../hybrid/how-to-connect-fed-group-claims.md) 成員資格也需要針對 Azure AD 中的使用者物件進行定義，才能將它們當作宣告來發出。
 
 ![影像顯示同盟中繼資料下載連結](media/f5-sso-vpn/saml-signing-certificate.png)
 
@@ -299,11 +299,11 @@ F5 [檔](https://techdocs.f5.com/kb/en-us/bigip-edge-apps.html) 提供用戶端�
 
 - [密碼結束時，請前往無密碼](https://www.microsoft.com/security/business/identity/passwordless)
 
-- [何謂條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [何謂條件式存取？](../conditional-access/overview.md)
 
 - [Microsoft 零信任 framework 來啟用遠端工作](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)
 
-- [完整應用程式與 Azure AD 整合的五個步驟](https://docs.microsoft.com/azure/active-directory/fundamentals/five-steps-to-full-application-integration-with-azure-ad)
+- [完整應用程式與 Azure AD 整合的五個步驟](../fundamentals/five-steps-to-full-application-integration-with-azure-ad.md)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -312,4 +312,4 @@ F5 [檔](https://techdocs.f5.com/kb/en-us/bigip-edge-apps.html) 提供用戶端�
 ![顯示 vpn 啟動器的影像](media/f5-sso-vpn/vpn-launcher.png)
 
 選取 [VPN] 磚將會安裝大型 IP Edge 用戶端，並建立為 SHA 設定的 VPN 連線。
-您也應該在 Azure AD 條件式存取中，以目標資源的形式顯示 F5 VPN 應用程式。 請參閱我們的 [指導](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policies) 方針來建立條件式存取原則，也可讓使用者 Azure AD 無 [密碼驗證](https://www.microsoft.com/security/business/identity/passwordless)。
+您也應該在 Azure AD 條件式存取中，以目標資源的形式顯示 F5 VPN 應用程式。 請參閱我們的 [指導](../conditional-access/concept-conditional-access-policies.md) 方針來建立條件式存取原則，也可讓使用者 Azure AD 無 [密碼驗證](https://www.microsoft.com/security/business/identity/passwordless)。

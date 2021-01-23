@@ -3,16 +3,16 @@ title: 將 Batch 集區設定從雲端服務遷移至虛擬機器
 description: 瞭解如何將您的集區設定更新為最新和建議的設定
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234302"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731494"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>將 Batch 集區設定從雲端服務遷移至虛擬機器
 
-您可以使用 [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) 或 [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)來建立 Batch 集區。 ' virtualMachineConfiguration ' 是建議的設定，因為它支援所有批次功能。 ' cloudServiceConfiguration ' 集區不支援所有功能，也未規劃任何新功能。
+您可以使用 [cloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) 或 [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)來建立 Batch 集區。 ' virtualMachineConfiguration ' 是建議的設定，因為它支援所有批次功能。 ' cloudServiceConfiguration ' 集區不支援所有功能，也未規劃任何新功能。
 
 如果您使用 ' cloudServiceConfiguration ' 集區，強烈建議您移至使用 ' virtualMachineConfiguration ' 集區。 這可讓您從所有批次功能獲益，例如，擴充 [的 VM 系列](batch-pool-vm-sizes.md)、Linux vm、 [容器](batch-docker-container-workloads.md)、 [Azure Resource Manager 虛擬網路](batch-virtual-network.md)和 [節點磁片加密](disk-encryption.md)選項。
 
@@ -41,4 +41,4 @@ ms.locfileid: "98234302"
 
 - 深入瞭解 [集](nodes-and-pools.md#configurations)區設定。
 - 深入瞭解集區的 [最佳做法](best-practices.md#pools)。
-- REST API 集區 [新增](https://docs.microsoft.com/rest/api/batchservice/pool/add) 和 [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)的參考。
+- REST API 集區 [新增](/rest/api/batchservice/pool/add) 和 [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration)的參考。

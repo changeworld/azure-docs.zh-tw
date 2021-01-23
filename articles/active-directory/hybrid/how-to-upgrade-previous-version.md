@@ -16,18 +16,18 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65fc0e84582c005c5796ceac86ee28fc46b2e1d8
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 36b7fce2e2ccb6f331e42e8052ef4fb75d35e831
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094211"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729985"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：從舊版升級到最新版本
 本主題說明各種可用於將 Azure Active Directory (Azure AD) Connect 安裝升級到最新版本的方法。  當您進行大幅組態變更時，也會使用[變換移轉](#swing-migration)一節中的步驟。
 
 >[!NOTE]
-> 請務必讓您的伺服器保持最新版本的 Azure AD Connect。 我們不斷地升級至 AADConnect，而這些升級包括修正安全性問題和 bug，以及提供的維修性、效能和擴充性改進。 若要查看最新版本，以及瞭解版本之間有哪些變更，請參閱 [發行版本歷程記錄](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history)
+> 請務必讓您的伺服器保持最新版本的 Azure AD Connect。 我們不斷地升級至 AADConnect，而這些升級包括修正安全性問題和 bug，以及提供的維修性、效能和擴充性改進。 若要查看最新版本，以及瞭解版本之間有哪些變更，請參閱 [發行版本歷程記錄](./reference-connect-version-history.md)
 
 >[!NOTE]
 > 目前支援從任何版本的 Azure AD Connect 升級到目前的版本。 不支援就地升級 DirSync 或 ADSync，且需要進行 swing 遷移。  如果您想要從 DirSync 升級，請參閱 [從 Azure AD 同步工具升級 (DirSync) ](how-to-dirsync-upgrade-get-started.md) 或 [變換 [遷移](#swing-migration) ] 區段。  </br>在實務上，極舊版本的客戶可能會遇到與 Azure AD Connect 沒有直接相關的問題。 在生產環境中的伺服器多年來，通常會套用數個修補程式，但並非全部都適用。  一般來說，在12-18 個月內未升級的客戶，應該考慮改為使用 swing 升級，因為這是最保守且最不具風險的選項。
@@ -145,7 +145,7 @@ ms.locfileid: "97094211"
 
 當您從舊版升級 Azure AD Connect 時，您可能會在升級開始時遇到下列錯誤 
 
-![[錯誤]](./media/how-to-upgrade-previous-version/error1.png)
+![錯誤](./media/how-to-upgrade-previous-version/error1.png)
 
 因為識別碼為 b891884f-051e-4a83-95af-2544101c9083 的 Azure Active Directory 連接器不存在於目前的 Azure AD Connect 設定中，所以發生此錯誤。 若要確認情況就是這樣，請開啟 PowerShell 視窗，並執行 Cmdlet `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 

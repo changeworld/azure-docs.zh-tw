@@ -3,12 +3,12 @@ title: 最佳作法
 description: 瞭解開發 Azure Batch 解決方案的最佳作法和實用秘訣。
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7e2a49c8307af89fb3898f5f2513fb493d0f5d90
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934283"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732406"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -149,7 +149,7 @@ Batch 可以自動重試工作。 重試的類型有兩種：使用者控制和�
 
 ### <a name="isolated-nodes"></a>隔離的節點
 
-針對具有合規性或法規需求的工作負載，請考慮使用隔離的 VM 大小。 虛擬機器配置模式中支援的隔離大小包括、、、 `Standard_E80ids_v4` `Standard_M128ms` `Standard_F72s_v2` `Standard_G5` 、 `Standard_GS5` 和 `Standard_E64i_v3` 。 如需隔離 VM 大小的詳細資訊，請參閱 [Azure 中的虛擬機器隔離](https://docs.microsoft.com/azure/virtual-machines/isolation)。
+針對具有合規性或法規需求的工作負載，請考慮使用隔離的 VM 大小。 虛擬機器配置模式中支援的隔離大小包括、、、 `Standard_E80ids_v4` `Standard_M128ms` `Standard_F72s_v2` `Standard_G5` 、 `Standard_GS5` 和 `Standard_E64i_v3` 。 如需隔離 VM 大小的詳細資訊，請參閱 [Azure 中的虛擬機器隔離](../virtual-machines/isolation.md)。
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>透過作業系統服務介面管理長時間執行的服務
 
