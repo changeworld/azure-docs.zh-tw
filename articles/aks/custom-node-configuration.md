@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1e9d65baacb9c712b92ef6f00abda169031b47e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581870"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735259"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>針對 Azure Kubernetes Service (AKS) 節點集區自訂節點設定 (預覽) 
 
@@ -132,7 +132,7 @@ az extension update --name aks-preview
 | `transparentHugePageDefrag` | `always`, `defer`, `defer+madvise`, `madvise`, `never` | `madvise` | 此值控制核心是否應主動使用記憶體壓縮以提供更多 `hugepages` 可用。 | 
 
 > [!IMPORTANT]
-> 為了方便搜尋和可讀性，OS 設定會以名稱顯示在這份檔中，但應該使用 [camelCase 大寫慣例](https://docs.microsoft.com/dotnet/standard/design-guidelines/capitalization-conventions)新增至設定 json 檔案或 AKS API。
+> 為了方便搜尋和可讀性，OS 設定會以名稱顯示在這份檔中，但應該使用 [camelCase 大寫慣例](/dotnet/standard/design-guidelines/capitalization-conventions)新增至設定 json 檔案或 AKS API。
 
 建立 `kubeletconfig.json` 具有下列內容的檔案：
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 138e3ee5272d790130cebfd8a1f61da7bed970d8
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 587078f1f084d002e4d725ca3be64bcec36b4c45
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663963"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734642"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
@@ -107,7 +107,7 @@ New Supported Version List
 1. AKS 會發佈預先公告，其中包含新版本發行的計畫日期，以及在移除之前至少30天 [AKS 版本](https://aka.ms/aks/releasenotes) 資訊的原始版本淘汰。
 2. AKS 會使用 AKS 和入口網站存取權，將 [服務健康狀態通知](../service-health/service-health-overview.md) 發佈給所有使用者，並傳送電子郵件給訂用帳戶管理員，並提供已規劃的版本移除日期。
 ````
-To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator).
+To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
 ````
 3. 使用者有 **30 天** 的自移除版本，升級至支援的次要版本版本，以繼續接收支援。
 
@@ -187,7 +187,7 @@ az aks get-versions --location eastus --output table
 
 略過多個版本只能在從不支援的版本升級回支援的版本時進行。 例如，從不支援的 *1.10. x* 升級 > 支援的 *1.15。 x* 可以完成。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需如何升級叢集的相關資訊，請參閱[升級 Azure Kubernetes Service (AKS) 叢集][aks-upgrade]。
 

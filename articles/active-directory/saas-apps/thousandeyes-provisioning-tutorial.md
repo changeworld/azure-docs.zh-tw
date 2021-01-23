@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.openlocfilehash: 885ee993748a0a571f396cc0dc28f2c0c1a4a0c3
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
-ms.translationtype: HT
+ms.openlocfilehash: fcb53dc22cfb4bf7308b92ee76e5aaaf3bb0dead
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792512"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735078"
 ---
 # <a name="tutorial-configure-thousandeyes-for-automatic-user-provisioning"></a>教學課程︰設定 ThousandEyes 來自動佈建使用者
 
@@ -86,7 +86,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 9. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 ThousandEyes]。
 
-10. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 ThousandEyes 的使用者屬性。 選取為 [比對] 屬性 (Property) 的屬性 (Attribute)，會用來比對 Parsable 中的使用者帳戶以進行更新作業。 如果您選擇變更[比對目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，則必須確保 Parsable API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
+10. 在 [屬性對應] 區段中，檢閱從 Azure AD 同步至 ThousandEyes 的使用者屬性。 選取為 [比對] 屬性 (Property) 的屬性 (Attribute)，會用來比對 Parsable 中的使用者帳戶以進行更新作業。 如果您選擇變更[比對目標屬性](../app-provisioning/customize-application-attributes.md)，則必須確保 Parsable API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
      |屬性|類型|支援篩選|
      |---|---|---|
@@ -98,7 +98,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
      |name.formatted|String|
 
 
-11. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
+11. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
 12. 若要啟用 ThousandEyes 的 Azure AD 佈建服務，請在 [設定]區段中，將 [佈建狀態] 變更為 [開啟]。
 
@@ -117,15 +117,15 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 ## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
 設定佈建後，請使用下列資源來監視您的部署：
 
-1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
-3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。  
+1. 使用[佈建記錄](../reports-monitoring/concept-provisioning-logs.md) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
+2. 檢查[進度列](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](../app-provisioning/application-provisioning-quarantine-status.md)深入了解隔離狀態。  
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用程式的使用者帳戶佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [瞭解如何針對佈建活動檢閱記錄和取得報告](../manage-apps/check-status-user-account-provisioning.md)
+* [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: e8cb423d4d700c4b6b6caa30a02eac3e7ef10cb6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253342"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733807"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>為您的 Azure SQL 邏輯伺服器設定 Azure 證明
 
@@ -27,7 +27,7 @@ ms.locfileid: "98253342"
 
 [Microsoft Azure 證明](../../attestation/overview.md) 是證明受信任的執行環境 (tee) 的解決方案，包括 Intel Software Guard Extension (intel SGX) 記憶體保護區。 
 
-若要使用 Always Encrypted 適用于證明的 Azure 證明搭配 Azure SQL Database 的 [安全記憶體保護區](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) 使用的 Intel SGX 記憶體保護區，您需要：
+若要使用 Always Encrypted 適用于證明的 Azure 證明搭配 Azure SQL Database 的 [安全記憶體保護區](/sql/relational-databases/security/encryption/always-encrypted-enclaves) 使用的 Intel SGX 記憶體保護區，您需要：
 
 1. 建立 [證明提供者](../../attestation/basic-concepts.md#attestation-provider) ，並使用建議的證明原則進行設定。
 
@@ -36,7 +36,7 @@ ms.locfileid: "98253342"
 > [!NOTE]
 > 設定證明是證明系統管理員的責任。 設定 [SGX 記憶體保護區和證明時，請參閱角色和責任](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation)。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 Azure SQL 邏輯伺服器和證明提供者必須屬於相同的 Azure Active Directory 租使用者。 不支援跨租使用者互動。 
 
@@ -114,7 +114,7 @@ Write-Host "Your attestation URL is: " $attestationUrl
 
 ### <a name="use-azure-portal-to-assign-permission"></a>使用 Azure 入口網站指派許可權
 
-若要將 Azure SQL server 的身分識別指派給證明提供者的證明讀者角色，請遵循 [使用 Azure 入口網站新增或移除 azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)中的一般指示。 當您在 [ **新增角色指派** ] 窗格時：
+若要將 Azure SQL server 的身分識別指派給證明提供者的證明讀者角色，請遵循 [使用 Azure 入口網站新增或移除 azure 角色指派](../../role-based-access-control/role-assignments-portal.md)中的一般指示。 當您在 [ **新增角色指派** ] 窗格時：
 
 1. 在 [ **角色** ] 下拉式清單中，選取 [ **證明讀取** 者] 角色。
 1. 在 [ **選取** ] 欄位中，輸入要搜尋的 Azure SQL 伺服器名稱。
@@ -143,11 +143,11 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-如需詳細資訊，請參閱 [使用 Azure PowerShell 新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#add-a-role-assignment)。
+如需詳細資訊，請參閱 [使用 Azure PowerShell 新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [為具有安全記憶體保護區的 Always Encrypted 管理金鑰](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
+- [為具有安全記憶體保護區的 Always Encrypted 管理金鑰](/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
 
 ## <a name="see-also"></a>另請參閱
 

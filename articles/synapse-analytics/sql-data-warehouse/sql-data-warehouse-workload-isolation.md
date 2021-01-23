@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce2451ddf775b7aff63b43ec02041ecd5440c580
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 506aed16f1b8a6c631a759bb1367aef8242859ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678384"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734775"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Azure Synapse Analytics 工作負載群組隔離
 
@@ -37,7 +37,7 @@ ms.locfileid: "98678384"
 [Guaranteed Concurrency] = [`MIN_PERCENTAGE_RESOURCE`] / [`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE]
-> Min_percentage_resource 有特定的服務層級最小可行值。  如需詳細資訊，請參閱[有效值](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values)以取得進一步的詳細資料。
+> Min_percentage_resource 有特定的服務層級最小可行值。  如需詳細資訊，請參閱[有效值](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values)以取得進一步的詳細資料。
 
 在沒有工作負載隔離的情況下，要求會在資源的[共用集區](#shared-pool-resources)中運作。  如此一來，系統不保證能夠存取共用集區中的資源，且會根據[重要性](sql-data-warehouse-workload-importance.md)來加以指派。
 

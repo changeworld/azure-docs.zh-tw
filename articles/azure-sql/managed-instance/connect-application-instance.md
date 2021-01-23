@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 965e765e22a4da8f2ac3b7151337cf62b65be4fe
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791251"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732606"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>將您的應用程式連線到 Azure SQL 受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ ms.locfileid: "92791251"
 
 有兩個選項可供您將內部部署連線至 Azure 虛擬網路：
 
-- 站對站 VPN 連線 ([Azure 入口網站](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)、 [PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、 [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) 
+- 站對站 VPN 連線 ([Azure 入口網站](../../vpn-gateway/tutorial-site-to-site-portal.md)、 [PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)、 [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)) 
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) 連線  
 
 如果您已成功建立內部部署至 Azure 的連線，而且無法建立 SQL 受控執行個體的連線，請檢查您的防火牆是否有 SQL 埠1433上的開啟輸出連線，以及可供重新導向的11000-11999 範圍埠。
@@ -71,10 +71,10 @@ ms.locfileid: "92791251"
 
 ![虛擬網路對等互連](./media/connect-application-instance/vnet-peering.png)
 
-設定好基本基礎結構之後，您必須修改某些設定，讓 VPN 閘道可以在裝載 SQL 受控執行個體的虛擬網路中看到 IP 位址。 若要這麼做，請在 [對等互連設定]  下方設定下列特定變更。
+設定好基本基礎結構之後，您必須修改某些設定，讓 VPN 閘道可以在裝載 SQL 受控執行個體的虛擬網路中看到 IP 位址。 若要這麼做，請在 [對等互連設定] 下方設定下列特定變更。
 
-1. 在裝載 VPN 閘道的虛擬網路中，移至 **對等互連** ，移至適用于 SQL 受控執行個體的對等互連虛擬網路連線，然後按一下 [ **允許閘道傳輸** ]。
-2. 在裝載 SQL 受控執行個體的虛擬網路中，移至 **對等互連** ，移至 VPN 閘道的對等互連虛擬網路連線，然後按一下 [ **使用遠端閘道** ]。
+1. 在裝載 VPN 閘道的虛擬網路中，移至 **對等互連**，移至適用于 SQL 受控執行個體的對等互連虛擬網路連線，然後按一下 [ **允許閘道傳輸**]。
+2. 在裝載 SQL 受控執行個體的虛擬網路中，移至 **對等互連**，移至 VPN 閘道的對等互連虛擬網路連線，然後按一下 [ **使用遠端閘道**]。
 
 ## <a name="connect-azure-app-service"></a>連接 Azure App Service 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 940915186176efcb39be03efe6673c138132ebd6
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: a8515920985c569df74b1e328d6bfe1c4ec97195
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916298"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735309"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>教學課程：Azure Active Directory 單一登入與 Catchpoint 整合
 
@@ -101,7 +101,7 @@ ms.locfileid: "97916298"
     | 命名空間 | user.assignedrole |
 
     > [!NOTE]
-    > `namespace` 宣告必須與帳戶名稱對應。 此帳戶名稱應設定為 Azure AD 中的角色，並會在 SAML 回應中傳回。 若要深入了解 Azure AD 中的角色，請參閱[針對企業應用程式設定 SAML 權杖中發出的角色宣告](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
+    > `namespace` 宣告必須與帳戶名稱對應。 此帳戶名稱應設定為 Azure AD 中的角色，並會在 SAML 回應中傳回。 若要深入了解 Azure AD 中的角色，請參閱[針對企業應用程式設定 SAML 權杖中發出的角色宣告](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
 
 1. 移至 **以 SAML 設定單一登入** 頁面。 在 [SAML 簽署憑證]  區段中，找到 [憑證 (Base64)]  。 選取 [下載]  以將憑證儲存到您的電腦。
 
@@ -176,7 +176,7 @@ Catchpoint 支援依預設啟用的 Just-In-Time 使用者佈建。 您在此區
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Catchpoint 
 
-您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [Catchpoint] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Catchpoint。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [Catchpoint] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Catchpoint。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 > [!NOTE]

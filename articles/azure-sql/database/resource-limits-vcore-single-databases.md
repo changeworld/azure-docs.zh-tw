@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 01/15/2021
-ms.openlocfilehash: db3b168826223e4eb958f7700e65623a115e5779
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/22/2021
+ms.openlocfilehash: a4be96d35116ed40ca61f00ed8f2ddd786760242
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251466"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735234"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>使用虛擬核心購買模型的單一資料庫資源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -411,7 +411,7 @@ ms.locfileid: "98251466"
 |TempDB 資料大小上限 (GB) |83.25|92.5|111|148|166.5|333|
 |儲存體類型|遠端 SSD|遠端 SSD|遠端 SSD|遠端 SSD|遠端 SSD|遠端 SSD|
 |IO 延遲 (大約)|5-7 毫秒 (寫入)<br>5-10 毫秒 (讀取)|5-7 毫秒 (寫入)<br>5-10 毫秒 (讀取)|5-7 毫秒 (寫入)<br>5-10 毫秒 (讀取)|5-7 毫秒 (寫入)<br>5-10 毫秒 (讀取)|5-7 毫秒 (寫入)<br>5-10 毫秒 (讀取)|5-7 毫秒 (寫入)<br>5-10 毫秒 (讀取)|
-|最大資料 IOPS *|5760|6400|7680|10240|11520|23040|
+|最大資料 IOPS *|5760|6400|7680|10240|11520|12800|
 |最大記錄速率 (MBps) |36|36|36|36|36|36|
 |並行背景工作 (要求) 數上限|900|1000|1200|1600|1800|3600|
 |並行登入數上限|1800|2000|2400|3200|3600|7200|

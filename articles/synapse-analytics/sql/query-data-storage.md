@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9500d682a99e6345289a83b4b3b2fc29ffe18457
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b5025aa322ae26f9dd7c683d0e54762fd33eb355
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676879"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735376"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的無伺服器 SQL 集區來查詢儲存體資料
 
@@ -184,7 +184,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 - 針對不在巢狀型別群組中的所有 Parquet 類型，函式會從指定的專案和指定的路徑傳回純量值 (例如 int、decimal 和 varchar)。
 - 如果路徑指向屬於巢狀型別的元素，則函式會從指定路徑的最上層元素開始傳回 JSON 片段。 JSON 片段的類型為 varchar(8000)。
 - 如果在指定的 column_name 中找不到屬性，則函數會傳回錯誤。
-- 如果在指定的 column_path 中找不到屬性，則視[路徑模式](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)而定，函式會在 strict 模式中傳回錯誤，而在 lax 模式中則會傳回 null。
+- 如果在指定的 column_path 中找不到屬性，則視[路徑模式](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#PATHMODE)而定，函式會在 strict 模式中傳回錯誤，而在 lax 模式中則會傳回 null。
 
 如需查詢範例，請參閱[查詢 Parquet 巢狀型別](query-parquet-nested-types.md#read-properties-from-nested-object-columns)一文中的＜從巢狀資料行存取元素＞一節。
 

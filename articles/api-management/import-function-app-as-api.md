@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 01ac59ec435b19f5da56ca345840628964263a47
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
-ms.translationtype: HT
+ms.openlocfilehash: f66395b1e0f45f1e80cd0ac93bf8c9ae8674a0f2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147023"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732940"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>在 Azure API 管理中匯入 Azure 函式應用程式作為 API
 
@@ -38,7 +38,7 @@ Azure API 管理支援將 Azure 函式應用程式匯入為新的 API，或將�
 ## <a name="prerequisites"></a>Prerequisites
 
 * 完成[建立 Azure API 管理執行個體](get-started-create-service-instance.md)快速入門。
-* 確定您的訂用帳戶中有 Azure Functions 應用程式。 如需詳細資訊，請參閱[建立 Azure 函式應用程式](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)。 其中必須包含具有 HTTP 觸發程序的函式，且授權層級設定必須設為 [匿名]  或 [函式]  。
+* 確定您的訂用帳戶中有 Azure Functions 應用程式。 如需詳細資訊，請參閱[建立 Azure 函式應用程式](../azure-functions/functions-get-started.md)。 其中必須包含具有 HTTP 觸發程序的函式，且授權層級設定必須設為 [匿名]  或 [函式]  。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -112,8 +112,8 @@ Azure API 管理支援將 Azure 函式應用程式匯入為新的 API，或將�
 
 匯入 Azure 函式應用程式後會自動產生：
 
-* 位於函式應用程式內、名為 apim-{ *您的 Azure API 管理服務執行個體名稱* } 的主機金鑰、
-* 位於 Azure API 管理執行個體內、名稱為 { *您的 Azure 函式應用程式執行個體名稱* }-key 的具名值，其中包含建立的主機金鑰。
+* 位於函式應用程式內、名為 apim-{*您的 Azure API 管理服務執行個體名稱*} 的主機金鑰、
+* 位於 Azure API 管理執行個體內、名稱為 {*您的 Azure 函式應用程式執行個體名稱*}-key 的具名值，其中包含建立的主機金鑰。
 
 對於在 2019 年 4 月 4 日之後建立的 API，主機金鑰會從 API 管理隨著 HTTP 要求傳至標頭中的函式應用程式。 舊版的 API 會以[查詢參數](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)的形式傳遞主機金鑰。 此行為可透過與函式應用程式相關聯的 *後端* 實體上的 `PATCH Backend`[REST API 呼叫](/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract)來變更。
 
@@ -150,7 +150,7 @@ Azure API 管理支援將 Azure 函式應用程式匯入為新的 API，或將�
 
 3. 選取作業。
 
-    頁面會顯示查詢參數的欄位和標頭的欄位。 其中一個標頭是 **Ocp-Apim-Subscription-Key** ，它適用於此 API 相關產品的訂用帳戶金鑰。 如果您建立了 API 管理執行個體，您就已經是系統管理員，因此會自動填入此金鑰。 
+    頁面會顯示查詢參數的欄位和標頭的欄位。 其中一個標頭是 **Ocp-Apim-Subscription-Key**，它適用於此 API 相關產品的訂用帳戶金鑰。 如果您建立了 API 管理執行個體，您就已經是系統管理員，因此會自動填入此金鑰。 
 
 4. 選取 [傳送]  。
 

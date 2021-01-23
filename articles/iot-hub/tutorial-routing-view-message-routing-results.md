@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 0db05c8caae8483de3b55448bfbe6b2bcfc23187
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: fdfb2470e83cefaeb6df35115f7bb46149d8ffe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625277"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733918"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教學課程：第 2 部分 - 檢視路由的訊息
 
@@ -48,7 +48,7 @@ ms.locfileid: "98625277"
 
    **位置**：使用您的位置。 本教學課程使用 **美國西部**。
 
-   **Log Analytics**：此切換應為關閉狀態。
+   **啟用 Log Analytics**：應關閉此切換開關。
 
    ![[建立邏輯應用程式] 畫面](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
@@ -151,6 +151,8 @@ ms.locfileid: "98625277"
    **資料集名稱**：Power BI 中要使用的資料集名稱。 本教學課程使用 **contosodataset**。 
 
    **資料表名稱**：Power BI 中要使用的資料表名稱。 本教學課程使用 **contosotable**。
+
+  **驗證模式**：選取要使用的模式。
 
    對於其餘欄位，請採用預設值。
 

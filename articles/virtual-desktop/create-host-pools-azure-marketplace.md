@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
+ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287384"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735176"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教學課程：透過 Azure 入口網站建立主機集區
 
@@ -106,11 +106,11 @@ ms.locfileid: "91287384"
     >[!NOTE]
     >設定程序可在設定主機集區時建立最多 400 部 VM，而每個 VM 設定程序會在您的資源群組中建立四個物件。 由於建立程序不會檢查您的訂用帳戶配額，因此請確定您輸入的 VM 數目在資源群組和訂用帳戶的 Azure VM 與 API 限制內。 完成建立主機集區之後，您可以新增更多 VM。
 
-5. 然後請提供**名稱首碼**來命名設定程序所建立的虛擬機器。 尾碼則會使用 `-` 與數字 (從 0 開始)。
+5. 然後請提供 **名稱首碼** 來命名設定程序所建立的虛擬機器。 尾碼則會使用 `-` 與數字 (從 0 開始)。
 
 6. 接下來，選擇用來建立虛擬機器所需的映像。 您可以選擇 [資源庫] 或 [儲存體 Blob]。
 
-    - 如果您選擇**資源庫**，請從下拉式功能表中選取其中一個建議的映像：
+    - 如果您選擇 **資源庫**，請從下拉式功能表中選取其中一個建議的映像：
 
       - Windows 10 企業版的多重工作階段 (1909 版)
       - Windows 10 企業版的多重工作階段 (1909 版) + Microsoft 365 Apps
@@ -118,7 +118,7 @@ ms.locfileid: "91287384"
       - Windows 10 企業版的多重工作階段 (2004 版)
       - Windows 10 企業版的多重工作階段 (2004 版) + Microsoft 365 Apps
 
-     如果您沒有看到想要的映像，請選取 [瀏覽所有映像和磁碟]，這可讓您選取資源庫中的另一個映像，或 Microsoft 及其他發行者所提供的映像。
+     如果您沒有看到想要的映像，請選取 [瀏覽所有映像和磁碟]，這可讓您選取資源庫中的另一個映像，或 Microsoft 及其他發行者所提供的映像。 請確定您選擇的映射是其中一個支援的 [OS 映射](overview.md#supported-virtual-machine-os-images)。
 
      > [!div class="mx-imgBorder"]
      > ![Marketplace 的螢幕擷取畫面，其中顯示來自 Microsoft 的映像清單。](media/marketplace-images.png)
@@ -136,7 +136,7 @@ ms.locfileid: "91287384"
 
 9. 接下來，選取您是否要讓虛擬機器使用公用 IP。 建議您選取 [否]，因為私人 IP 較安全。
 
-10. 選取您想要的安全性群組類型：**基本**、**進階**或**無**。
+10. 選取您想要的安全性群組類型：**基本**、**進階** 或 **無**。
 
     如果您選取 [基本]，則必須選取是否要開啟任何輸入連接埠。 如果您選取 [是]，請從標準連接埠清單中選擇，以允許對其進行輸入連線。
 

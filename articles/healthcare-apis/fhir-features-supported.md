@@ -8,14 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ad663b345d3d150b55e0e018afd1430775d77162
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452919"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733464"
 ---
-# <a name="features"></a>特性
+# <a name="features"></a>功能
 
 Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部署。 伺服器是 [FHIR](https://hl7.org/fhir) 標準的實作為。 本檔列出 FHIR 伺服器的主要功能。
 
@@ -40,13 +40,13 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 | history                        | 是       | 是       | 是       |                                                     |
 | 建立                         | 是       | 是       | 是       | 支援 POST/PUT                               |
 | 建立 (條件式)            | 是       | 是       | 是       | 問題 [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| 搜尋                         | Partial   | Partial   | Partial   | 請參閱下方                                           |
+| 搜尋                         | 部分   | 部分   | 部分   | 請參閱下方                                           |
 | 連鎖搜尋                 | 否        | 是       | 否        |                                           |
 | 反向連結搜尋         | 否        | 否        | 否        |                                            |
 | capabilities                   | 是       | 是       | 是       |                                                     |
 | 批次                          | 是       | 是       | 是       |                                                     |
 | 交易                    | 否        | 是       | 否        |                                                     |
-| 分頁                         | Partial   | Partial   | Partial   | `self``next`支援和                     |
+| 分頁                         | 部分   | 部分   | 部分   | `self``next`支援和                     |
 | 仲介                 | 否        | 否        | 否        |                                                     |
 
 ## <a name="search"></a>搜尋
@@ -55,10 +55,10 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 
 | 搜尋參數類型 | 支援-PaaS | 支援的作業系統 (SQL)  | 支援的-OSS (Cosmos DB)  | 註解 |
 |-----------------------|-----------|-----------|-----------|---------|
-| 數字                | 是       | 是       | 是       |         |
+| Number                | 是       | 是       | 是       |         |
 | Date/DateTime         | 是       | 是       | 是       |         |
 | String                | 是       | 是       | 是       |         |
-| Token                 | 是       | 是       | 是       |         |
+| 權杖                 | 是       | 是       | 是       |         |
 | 參考             | 是       | 是       | 是       |         |
 | 複合             | 是       | 是       | 是       |         |
 | 數量              | 是       | 是       | 是       |         |
@@ -86,7 +86,7 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 | `_id`                   | 是       | 是       | 是       |         |
 | `_lastUpdated`          | 是       | 是       | 是       |         |
 | `_tag`                  | 是       | 是       | 是       |         |
-| `_profile`              | 是       | 是       | 是       |         |
+| `_profile`              | 部分   | 部分   | 部分   | 僅在 STU3 中支援，不支援 R4 |
 | `_security`             | 是       | 是       | 是       |         |
 | `_text`                 | 否        | 否        | 否        |         |
 | `_content`              | 否        | 否        | 否        |         |
@@ -98,12 +98,12 @@ Azure API for FHIR 可為 Azure 提供完全受控的 Microsoft FHIR Server 部�
 
 | 搜尋結果參數 | 支援-PaaS | 支援的作業系統 (SQL)  | 支援的-OSS (Cosmos DB)  | 註解 |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_sort`                 | Partial        | Partial   | Partial        |   支援 `_sort=_lastUpdated`       |
+| `_sort`                 | 部分        | 部分   | 部分        |   支援 `_sort=_lastUpdated`       |
 | `_count`                | 是       | 是       | 是       | `_count` 的限制為100個字元。 如果設定為大於100，則只會傳回100，並會在組合中傳回警告。 |
 | `_include`              | 是       | 是       | 是       |包含的專案限制為100。 在 PaaS 和 OSS 上包含 Cosmos DB 不包括：反覆運算支援。|
 | `_revinclude`           | 是       | 是       | 是       | 包含的專案限制為100。 在 PaaS 和 OSS 上包含 Cosmos DB 不包括：反覆運算支援。|
-| `_summary`              | Partial   | Partial   | Partial   | 支援 `_summary=count` |
-| `_total`                | Partial   | Partial   | Partial   | _total = 非且 _total = 精確      |
+| `_summary`              | 部分   | 部分   | 部分   | 支援 `_summary=count` |
+| `_total`                | 部分   | 部分   | 部分   | _total = 非且 _total = 精確      |
 | `_elements`             | 是       | 是       | 是       |         |
 | `_contained`            | 否        | 否        | 否        |         |
 | `containedType`         | 否        | 否        | 否        |         |
@@ -137,7 +137,7 @@ FHIR 伺服器使用 [Azure Active Directory](https://azure.microsoft.com/servic
 
 * [**要求單位 (ru)**](../cosmos-db/concepts-limits.md) -您最多可以在入口網站中為 Azure API for FHIR 設定 10000 ru。 您至少需要 400 ru 或 10 ru/GB （以較大者為准）。 如果您需要超過 10000 ru，您可以放入支援票證，以增加這項功能。 可用的最大值為1000000。
 
-* **並行連接** 和 **實例** -dafault，您在叢集的兩個實例上有五個並行連線 (總共) 個並行要求。 如果您認為您需要更多的並行要求，請開啟支援票證，並提供您需求的詳細資料。
+* **並行連接** 和 **實例** -根據預設，在叢集中的兩個實例上有五個並行連線 (總共) 個並行要求。 如果您認為您需要更多的並行要求，請開啟支援票證，並提供您需求的詳細資料。
 
 * 套件組合 **大小**-每個套件組合僅限500個專案。
 

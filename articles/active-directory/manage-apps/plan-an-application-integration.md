@@ -1,26 +1,22 @@
 ---
-title: 開始將 Azure AD 與應用程式整合 | Microsoft Docs
+title: 開始整合 Azure AD 與應用程式
 description: 本文章是整合 Azure Active Directory (AD) 與在內部部署應用程式和雲端應用程式的入門指南。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
-ms.subservice: app-mgmt
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 913b7975de4598bba7240647c1d9e8c81cd1cec9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: db3d3623e175d582a2fe271d73aa452ca07b8e8d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659092"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735061"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>整合 Azure Active Directory 與應用程式入門指南
 
@@ -77,9 +73,7 @@ ms.locfileid: "94659092"
 透過 Microsoft Azure AD 應用程式 Proxy，您可以從任何地方及任何裝置上安全地為位於您的私人網路上的應用程式提供存取。 在您的環境中安裝應用程式 Proxy 連接器之後，可以輕鬆地使用 Azure AD 來加以設定。
 
 ### <a name="integrating-custom-applications"></a>整合自訂應用程式
-如果您正在撰寫新的應用程式，而且想要協助開發人員利用 Azure AD 的強大功能，請參閱 [指導開發人員](./developer-guidance-for-integrating-applications.md)。
-
-如果您想要加入您的自訂應用程式至 Azure 應用程式資源庫，請參閱 [使用 Azure AD 自助 SAML 組態「自備應用程式」](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)。
+如果您想要將自訂應用程式新增至 Azure 應用程式資源庫，請參閱將 [您的應用程式發佈至 Azure AD 應用](../develop/v2-howto-app-gallery-listing.md)程式資源庫。
 
 ## <a name="managing-access-to-applications"></a>管理應用程式的存取
 下列文章描述使用 Azure AD 連接器和 Azure AD 將應用程式與 Azure AD 整合之後，您可以管理對應用程式的存取的方式。

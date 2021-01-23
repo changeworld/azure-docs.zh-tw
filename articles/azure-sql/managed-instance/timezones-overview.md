@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a4c1b2ac53679153c8d9485443a231b817df77a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790622"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734574"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL 受控執行個體中的時區
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "92790622"
 
 受管理的實例的基礎作業系統會繼承一組支援的時區。 它會定期更新以取得新的時區定義，並反映現有的時區定義變更。
 
-[日光節約時間/時區變更原則](https://aka.ms/time) 可保證從2010轉寄的歷史精確度。
+[日光節約時間/時區變更原則](/troubleshoot/windows-client/system-management-components/daylight-saving-time-help-support) 可保證從2010轉寄的歷史精確度。
 
 系統會透過 [sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) 系統檢視，公開具有支援時區名稱的清單。
 
@@ -135,7 +135,7 @@ TimezoneId 屬性支援的值清單位於本文結尾。
 | 太平洋 SA 標準時間 |  (UTC-04:00) 聖地牙哥 |
 | 紐芬蘭標準時間 |  (UTC-03:30) 紐芬蘭 |
 | Tocantins 標準時間 |  (UTC-03:00) Araguaina |
-| E。 南美洲標準時間 |  (UTC-03:00) 巴西利亞 |
+| E. 南美洲標準時間 |  (UTC-03:00) 巴西利亞 |
 | 南美洲東部標準時間 |  (UTC-03:00) 開雲、Fortaleza |
 | 阿根廷標準時間 |  (UTC-03:00) 布宜諾斯艾利斯的城市 |
 | 格陵蘭標準時間 |  (UTC-03:00) 格陵蘭 |
@@ -161,7 +161,7 @@ TimezoneId 屬性支援的值清單位於本文結尾。
 | GTB 標準時間 |  (UTC + 02： 00) 雅典，布加勒斯特 |
 | 中東標準時間 |  (UTC + 02： 00) 貝魯特 |
 | 埃及標準時間 |  (UTC + 02： 00) Cairo |
-| E。 歐洲標準時間 |  (UTC + 02： 00) 奇西瑙 |
+| E. 歐洲標準時間 |  (UTC + 02： 00) 奇西瑙 |
 | 敘利亞標準時間 |  (UTC + 02： 00) 大馬士革 |
 | 西 Bank 標準時間 |  (UTC + 02： 00) 加薩，希伯侖 |
 | 南非標準時間 |  (UTC + 02： 00) 哈拉雷，普利托里亞 |
@@ -176,7 +176,7 @@ TimezoneId 屬性支援的值清單位於本文結尾。
 | 沙烏地阿拉伯標準時間 |  (UTC + 03： 00) 科威特，利雅德 |
 | 白俄羅斯標準時間 |  (UTC + 03： 00) 明斯克 |
 | 俄羅斯標準時間 |  (UTC + 03： 00) 莫斯科，聖聖彼德堡 |
-| E。 非洲標準時間 |  (UTC + 03： 00) 奈洛比 |
+| E. 非洲標準時間 |  (UTC + 03： 00) 奈洛比 |
 | 伊朗標準時間 |  (UTC + 03： 30) 德黑蘭 |
 | 沙烏地阿拉伯標準時間 |  (UTC + 04： 00) 阿布達比阿布達比，馬斯喀特 |
 | 阿斯特拉罕標準時間 |  (UTC + 04： 00) 阿斯特拉罕，Ulyanovsk |
@@ -218,7 +218,7 @@ TimezoneId 屬性支援的值清單位於本文結尾。
 | 亞庫茲克標準時間 |  (UTC + 09： 00) 雅茲克 |
 | 中部 澳大利亞標準時間 |  (UTC + 09： 30) 阿阿德 |
 | 澳洲中部標準時間 |  (UTC + 09： 30) Darwin |
-| E。 澳大利亞標準時間 |  (UTC + 10： 00) 布里斯班 |
+| E. 澳大利亞標準時間 |  (UTC + 10： 00) 布里斯班 |
 | 澳洲東部標準時間 |  (UTC + 10： 00) 坎培拉，墨爾本，悉尼 |
 | 西太平洋標準時間 |  (UTC + 10： 00) 關島，埠港 |
 | 塔斯馬尼亞標準時間 |  (UTC + 10： 00) 霍巴特 |
@@ -241,7 +241,7 @@ TimezoneId 屬性支援的值清單位於本文結尾。
 | 薩摩亞標準時間 |  (UTC + 13： 00) 薩摩亞 |
 | 行群島標準時間 |  (UTC + 14： 00) Kiritimati 島 |
 
-## <a name="see-also"></a>請參閱 
+## <a name="see-also"></a>另請參閱 
 
 - [CURRENT_TIMEZONE (Transact-SQL)](/sql/t-sql/functions/current-timezone-transact-sql)
 - [CURRENT_TIMEZONE_ID (Transact-SQL)](/sql/t-sql/functions/current-timezone-id-transact-sql)

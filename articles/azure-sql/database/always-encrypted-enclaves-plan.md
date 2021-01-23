@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: c41856c394166f2e3b8fd3bde794f0f294ef6af9
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 4448ce051b0c9e73865e8057cc4f224c9cbeb571
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253334"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732739"
 ---
 # <a name="plan-for-intel-sgx-enclaves-and-attestation-in-azure-sql-database"></a>在 Azure SQL Database 中規劃 Intel SGX 記憶體保護區和證明
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253334"
 > [!NOTE]
 > Always Encrypted 與 Azure SQL Database 的安全記憶體保護區目前處於 **公開預覽** 狀態。
 
-[Always Encrypted 使用 Azure SQL Database 的安全記憶體保護區](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) ，會使用 [Intel Software Guard 擴充功能 (intel SGX) ](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) 記憶體保護區，並且需要 [Microsoft Azure 證明](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation)。
+[Always Encrypted 使用 Azure SQL Database 的安全記憶體保護區](/sql/relational-databases/security/encryption/always-encrypted-enclaves) ，會使用 [Intel Software Guard 擴充功能 (intel SGX) ](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/) 記憶體保護區，並且需要 [Microsoft Azure 證明](/sql/relational-databases/security/encryption/always-encrypted-enclaves#secure-enclave-attestation)。
 
 ## <a name="plan-for-intel-sgx-in-azure-sql-database"></a>規劃 Azure SQL Database 中的 Intel SGX
 

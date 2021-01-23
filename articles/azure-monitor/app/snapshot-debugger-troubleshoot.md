@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673547"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732722"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> 針對啟用 Application Insights 快照偵錯工具或查看快照集的問題進行疑難排解
 如果您已為應用程式啟用 Application Insights 快照偵錯工具，但是未看到例外狀況的快照集，您可以使用這些指示來進行疑難排解。
@@ -135,7 +135,7 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 在上述範例中，檢測金鑰為 `c12a605e73c44346a984e00000000000`。 這個值應該符合您應用程式的檢測金鑰。
 小型傾印會與識別碼為 `139e411a23934dc0b9ea08a626db16c5` 的快照集相關聯。 您稍後可以使用此識別碼，在 Application Insights 分析中找出相關聯的例外狀況記錄。
 
-上載程式約每隔 15 分鐘掃描一次新的 PDB。 以下是範例：
+上載程式約每隔 15 分鐘掃描一次新的 PDB。 以下為範例：
 
 ```
 SnapshotUploader.exe Information: 0 : PDB rescan requested.
@@ -272,4 +272,4 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 如果您的應用程式透過 proxy 或防火牆連線到網際網路，您可能需要更新規則，以與快照偵錯工具服務進行通訊。
 
-Application Insights 快照偵錯工具所使用的 Ip 會包含在 Azure 監視器服務標記中。 如需詳細資訊，請參閱 [服務標記檔](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+Application Insights 快照偵錯工具所使用的 Ip 會包含在 Azure 監視器服務標記中。 如需詳細資訊，請參閱 [服務標記檔](../../virtual-network/service-tags-overview.md)。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 11aac69816714611c168cd05c2828dd1ae85786e
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
-ms.translationtype: HT
+ms.openlocfilehash: 794934e9c3e45f2aeed9310636a0f3ec30daf7de
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97813644"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735328"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 AWS ClientVPN 整合
 
@@ -156,11 +156,9 @@ ms.locfileid: "97813644"
 
 * 直接移至 AWS ClientVPN 登入 URL，然後從該處起始登入流程。
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [AWS ClientVPN] 圖格時，將會重新導向至 AWS ClientVPN 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [AWS ClientVPN] 圖格時，將會重新導向至 AWS ClientVPN 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 AWS ClientVPN 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+設定 AWS ClientVPN 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

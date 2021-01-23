@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: e4b555f4727d2d1fb5b64814ae07aa15b78da42c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510918"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734136"
 ---
 # <a name="azure-monitor-for-networks"></a>適用於網路的 Azure 監視器
 
-適用于網路的 Azure 監視器可針對所有已部署的網路資源全面查看 [健康](../../service-health/resource-health-checks-resource-types.md) 情況和計量，而不需要任何 [設定](../platform/metrics-supported.md) 。 它也可讓您存取網路監視功能，例如連線 [監視器](../../network-watcher/connection-monitor-preview.md)、 [網路安全性群組的流量記錄 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)和使用 [分析](../../network-watcher/traffic-analytics.md)。 它還提供其他網路 [診斷](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
+適用于網路的 Azure 監視器可針對所有已部署的網路資源全面查看 [健康](../../service-health/resource-health-checks-resource-types.md) 情況和計量，而不需要任何 [設定](../platform/metrics-supported.md) 。 它也可讓您存取網路監視功能，例如連線 [監視器](../../network-watcher/connection-monitor-overview.md)、 [網路安全性群組的流量記錄 (nsg) ](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)和使用 [分析](../../network-watcher/traffic-analytics.md)。 它還提供其他網路 [診斷](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) 功能。
 
 網路的 Azure 監視器是以監視的這些主要元件為結構：
 - [網路健康情況和計量](#networkhealth)

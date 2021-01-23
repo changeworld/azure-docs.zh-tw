@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 537b01e39bf911c7bf0b16c29ff1611e810410f9
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: 9d33944e046e1e5e2324f73ae26c78cf29d8f97d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912847"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734709"
 ---
 # <a name="tutorial-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 平衡 Azure 中 Windows 虛擬機器的負載以建立高可用性應用程式
 負載平衡會將傳入要求分散到多部虛擬機器，藉此提供高可用性。 在本教學課程中，您會了解 Azure Load Balancer 的不同元件，以分散流量並提供高可用性。 您會了解如何：
@@ -40,7 +40,7 @@ Azure Load Balancer 是 Layer-4 (TCP、UDP) 負載平衡器，可將連入流量
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="create-azure-load-balancer"></a>建立 Azure Load Balancer
 本節將詳細說明如何建立及設定負載平衡器的每個元件。 請先使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組，才可建立負載平衡器。 下列範例會在 EastUS 位置建立名為 myResourceGroupLoadBalancer 的資源群組：
@@ -188,7 +188,7 @@ $availabilitySet = New-AzAvailabilitySet `
   -PlatformUpdateDomainCount 2
 ```
 
-使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) 來設定 VM 的系統管理員使用者名稱和密碼：
+使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential) 來設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell-interactive
 $cred = Get-Credential

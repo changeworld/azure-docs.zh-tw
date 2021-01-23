@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6f25ff02dee16812898d77d0e801f927b354dc78
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 11e21f376ea3b5cf580d54780509529b4536718b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918129"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734169"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>適用于 Azure 資料總管 (preview 的 Azure 監視器) 
 
@@ -49,7 +49,7 @@ ms.locfileid: "97918129"
 
 下拉式清單下的計數器磚會匯總所選訂用帳戶中的 Azure 資料總管叢集總數，並反映選取的數目。 這些資料行有條件式色彩 codings：保持運作、CPU、內嵌使用率和快取使用率。 橙色編碼的儲存格具有對叢集而言不具持續性的值。 
 
-若要進一步瞭解每個度量的意義，建議您閱讀 [Azure 資料總管計量](https://docs.microsoft.com/azure/data-explorer/using-metrics#cluster-metrics)的相關檔。
+若要進一步瞭解每個度量的意義，建議您閱讀 [Azure 資料總管計量](/azure/data-explorer/using-metrics#cluster-metrics)的相關檔。
 
 ### <a name="query-performance-tab"></a>[查詢效能] 索引標籤
 
@@ -81,7 +81,7 @@ ms.locfileid: "97918129"
 
 您也可以從 Azure 監視器 insights 視圖中選取 Azure 資料總管叢集的資源名稱，以存取這些視圖。
 
-適用于 Azure 資料總管的 Azure 監視器結合了記錄和度量，以提供全域監視解決方案。 包含以記錄為基礎的視覺效果需要使用者 [啟用其 Azure 資料總管叢集的診斷記錄，並將其傳送至 Log Analytics 工作區](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs)。 應啟用的診斷記錄如下： **Command**、 **Query**、 **TableDetails** 和 **TableUsageStatistics**。
+適用于 Azure 資料總管的 Azure 監視器結合了記錄和度量，以提供全域監視解決方案。 包含以記錄為基礎的視覺效果需要使用者 [啟用其 Azure 資料總管叢集的診斷記錄，並將其傳送至 Log Analytics 工作區](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs)。 應啟用的診斷記錄如下： **Command**、 **Query**、 **TableDetails** 和 **TableUsageStatistics**。
 
 ![藍色按鈕的螢幕擷取畫面，其中顯示「啟用記錄以供監視」文字](./media/data-explorer/enable-logs.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "97918129"
 
 - 計量圖格會反白顯示叢集的可用性和整體狀態，以快速評估其健康情況。
 
-- 主動式 [Advisor 建議](https://docs.microsoft.com/azure/data-explorer/azure-advisor) 和 [資源健康](https://docs.microsoft.com/azure/data-explorer/monitor-with-resource-health) 狀態的摘要。
+- 主動式 [Advisor 建議](/azure/data-explorer/azure-advisor) 和 [資源健康](/azure/data-explorer/monitor-with-resource-health) 狀態的摘要。
 
 - 顯示最高 CPU 和記憶體取用者的圖表，以及一段時間內的唯一使用者數目。
 
@@ -114,7 +114,7 @@ ms.locfileid: "97918129"
 
 [ **資料表** ] 索引標籤會顯示叢集中資料表的最新和歷程記錄屬性。 您可以查看哪些資料表耗用最多空間、依資料表大小追蹤成長歷程記錄、經常性存取資料，以及一段時間內的資料列數目。
 
-[ **快** 取] 索引標籤可讓使用者分析其實際查詢的查詢模式，並將其與針對每個資料表) 所設定的快取原則 (進行比較。 您可以識別最多查詢和資料表所使用的資料表（完全不會查詢），並據此調整快取原則。 您可能會在 Azure Advisor 的特定資料表上取得特定的快取原則建議， (快取建議僅適用于 [主要 Azure Advisor 儀表板](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)) ，根據過去30天內的實際查詢查閱，以及至少95% 的查詢的未優化快取原則。 Azure Advisor 中的快取縮減建議適用于「以資料系結」的叢集 (這表示叢集具有低 CPU 和低內嵌使用率，但由於資料容量很高，所以叢集無法相應縮小或向下調整) 。
+[ **快** 取] 索引標籤可讓使用者分析其實際查詢的查詢模式，並將其與針對每個資料表) 所設定的快取原則 (進行比較。 您可以識別最多查詢和資料表所使用的資料表（完全不會查詢），並據此調整快取原則。 您可能會在 Azure Advisor 的特定資料表上取得特定的快取原則建議， (快取建議僅適用于 [主要 Azure Advisor 儀表板](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations)) ，根據過去30天內的實際查詢查閱，以及至少95% 的查詢的未優化快取原則。 Azure Advisor 中的快取縮減建議適用于「以資料系結」的叢集 (這表示叢集具有低 CPU 和低內嵌使用率，但由於資料容量很高，所以叢集無法相應縮小或向下調整) 。
 
 [![快取詳細資料的螢幕擷取畫面](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -153,7 +153,7 @@ ms.locfileid: "97918129"
 
 ### <a name="why-do-i-not-see-any-data-for-my-azure-data-explorer-cluster-under-the-usage-tables-or-cache-sections"></a>為什麼我在 [使用量]、[資料表] 或 [快取] 區段底下看不到 Azure 資料總管叢集的任何資料？
 
-若要查看以記錄為基礎的資料，您必須為每個想要監視的 Azure 資料總管叢集 [啟用診斷記錄](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) 。 這可在每個叢集的診斷設定下完成。 您必須將資料傳送至 Log Analytics 工作區。 應啟用的診斷記錄如下： Command、Query、TableDetails 和 TableUsageStatistics。
+若要查看以記錄為基礎的資料，您必須為每個想要監視的 Azure 資料總管叢集 [啟用診斷記錄](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs) 。 這可在每個叢集的診斷設定下完成。 您必須將資料傳送至 Log Analytics 工作區。 應啟用的診斷記錄如下： Command、Query、TableDetails 和 TableUsageStatistics。
 
 ### <a name="i-have-already-enabled-logs-for-my-azure-data-explorer-cluster-why-am-i-still-unable-to-see-my-data-under-commands-and-queries"></a>我已為 Azure 資料總管叢集啟用記錄，為什麼仍無法在命令和查詢下查看我的資料？
 

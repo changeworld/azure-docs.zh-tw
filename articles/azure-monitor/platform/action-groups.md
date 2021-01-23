@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 444b514dfb1798ff810e84fc4e9d50001dbaee1c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 8e260ae8310807ef9e0dad7d4fe21df8caad9b48
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685783"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735288"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 
@@ -148,7 +148,7 @@ ms.locfileid: "98685783"
 您在動作群組中可以有有限數量的電子郵件動作。 請參閱[速率限制資訊](./alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函式
-在 [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) 中呼叫現有的 HTTP 觸發程序端點。
+在 [Azure Functions](../../azure-functions/functions-get-started.md) 中呼叫現有的 HTTP 觸發程序端點。
 
 您在動作群組中可以有有限數量的 Function 動作。
 

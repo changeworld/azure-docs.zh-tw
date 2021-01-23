@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 40ea367c1298a916df541d362b85e8d485d193f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505268"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734927"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>儲存在 Log Analytics 和 Application Insights 中的個人資料指引
 
@@ -91,7 +91,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 我們已將處理「清除」API 路徑的功能納入到隱私權中。 請謹慎使用此路徑，原因是這項操作會引發相關風險、可能影響效能，而且可能會扭曲整個彙總、量測和 Log Analytics 的其他方面。 如需替代的私人資料處理方法，請參閱[個人資料處理策略](#strategy-for-personal-data-handling)一節。
 
 > [!NOTE]
-> 執行清除作業之後，當 [清除作業狀態](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) 為 *暫* 止時，就無法存取資料。 
+> 執行清除作業之後，當 [清除作業狀態](/rest/api/loganalytics/workspacepurge/getpurgestatus) 為 *暫* 止時，就無法存取資料。 
 
 清除作業極需相關權限，若未對 Azure 中的應用程式或使用者 (甚至包括資源擁有者) 明確授與 Azure Resource Manager 角色，其將無權執行此作業。 這個角色便是「資料清除者」，由於可能會遺失資料，委派此角色時請務必小心。 
 
@@ -129,4 +129,3 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 ## <a name="next-steps"></a>後續步驟
 - 若要深入了解 Log Analytics 資料的收集、處理和保護方式，請參閱 [Log Analytics 資料安全性](./data-security.md)。
 - 若要深入了解 Application Insights 資料的收集、處理和保護方式，請參閱 [Application Insights 資料安全性](../app/data-retention-privacy.md)。
-

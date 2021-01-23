@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0a1221a8de10fd18768a1a0f0ac08277dc2901d6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013478"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735028"
 ---
 # <a name="app-service-environment-networking"></a>App Service 環境網路
 
@@ -52,7 +52,7 @@ ASE 會接收埠80和443上的應用程式流量。  ASE 沒有任何輸入或�
 
 ## <a name="dns"></a>DNS
 
-您 ASE 中的應用程式將會使用您的 VNet 設定所在的 DNS。 遵循 [使用 App Service 環境](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration) 中的指示，將您的 DNS 伺服器設定為指向您的 ASE。 如果您希望某些應用程式使用不同的 DNS 伺服器，而不是使用您的 VNet 設定，您可以使用應用程式設定 WEBSITE_DNS_SERVER 和 WEBSITE_DNS_ALT_SERVER，以手動方式在每個應用程式上設定它。 應用程式設定 WEBSITE_DNS_ALT_SERVER 設定次要 DNS 伺服器。 只有當主要 DNS 伺服器沒有回應時，才會使用次要 DNS 伺服器。 
+您 ASE 中的應用程式將會使用您的 VNet 設定所在的 DNS。 遵循 [使用 App Service 環境](./using.md#dns-configuration) 中的指示，將您的 DNS 伺服器設定為指向您的 ASE。 如果您希望某些應用程式使用不同的 DNS 伺服器，而不是使用您的 VNet 設定，您可以使用應用程式設定 WEBSITE_DNS_SERVER 和 WEBSITE_DNS_ALT_SERVER，以手動方式在每個應用程式上設定它。 應用程式設定 WEBSITE_DNS_ALT_SERVER 設定次要 DNS 伺服器。 只有當主要 DNS 伺服器沒有回應時，才會使用次要 DNS 伺服器。 
 
 ## <a name="preview-limitation"></a>預覽限制
 
@@ -61,4 +61,3 @@ ASEv3 中有幾個無法使用的網路功能。  ASEv3 中無法使用的專案
 • FTP •遠端 debug •外部負載平衡器部署•能夠存取容器部署的私人容器登錄•能夠呼叫全域對等互連的 Vnet •能夠以服務端點或私人端點保護的儲存體進行備份/還原帳戶•能夠讓應用程式設定 keyvault 服務端點或私人端點安全 keyvault 帳戶上的參考•能夠將 BYOS 用於服務端點或私人端點安全的儲存體帳戶•使用網路監看員或連出流量的 NSG 流程
     
     
-

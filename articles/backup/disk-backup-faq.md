@@ -3,12 +3,12 @@ title: 關於 Azure 磁片備份的常見問題
 description: 取得有關 Azure 磁片備份的常見問題的解答
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 4c4c9f4b8388fed95a19c49b705981b9b9bce2e0
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 3ef18a7d178075194e24889477768583f05f0cdd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557504"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734557"
 ---
 # <a name="frequently-asked-questions-about-azure-disk-backup-in-preview"></a>有關 Azure 磁片備份 (預覽版的常見問題) 
 
@@ -37,23 +37,23 @@ Azure 磁片備份提供受控磁片的操作層備份。 也就是說，在排�
 
 ### <a name="why-must-the-snapshot-resource-group-be-in-same-subscription-as-that-of-the-disk-being-backed-up"></a>快照集資源群組為何必須與要備份的磁片位於相同的訂用帳戶中？
 
-您無法為該磁片訂用帳戶以外的特定磁片建立增量快照集。 因此，請選擇與要備份之磁片相同的訂用帳戶中的資源群組。 深入瞭解受控磁片的累加 [式快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 集。
+您無法為該磁片訂用帳戶以外的特定磁片建立增量快照集。 因此，請選擇與要備份之磁片相同的訂用帳戶中的資源群組。 深入瞭解受控磁片的累加 [式快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) 集。
 
 ### <a name="why-do-i-need-to-provide-role-assignments-to-be-able-to-configure-backups-perform-scheduled-and-on-demand-backups-and-restore-operations"></a>為什麼我需要提供角色指派才能設定備份、執行排程備份和隨選備份，以及還原作業？
 
-Azure 磁片備份使用最低許可權方法來探索、保護和還原您訂用帳戶中的受控磁片。 為了達成此目的，Azure 備份使用 [備份保存庫](backup-vault-overview.md) 的受控識別來存取其他 Azure 資源。 系統指派的受控識別會限制為每個資源一個，並系結到此資源的生命週期。 您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與受控識別。 受控識別是特殊類型的服務主體，只可搭配 Azure 資源使用。 深入了解[受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 根據預設，備份保存庫不會有許可權存取要備份的磁片、建立週期性快照集、在保留期限後刪除快照集，以及從備份復原磁碟。 藉由明確授與角色指派給備份保存庫的受控識別，您就可以控制對訂用帳戶上資源的版權管理。
+Azure 磁片備份使用最低許可權方法來探索、保護和還原您訂用帳戶中的受控磁片。 為了達成此目的，Azure 備份使用 [備份保存庫](backup-vault-overview.md) 的受控識別來存取其他 Azure 資源。 系統指派的受控識別會限制為每個資源一個，並系結到此資源的生命週期。 您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與受控識別。 受控識別是特殊類型的服務主體，只可搭配 Azure 資源使用。 深入了解[受控識別](../active-directory/managed-identities-azure-resources/overview.md)。 根據預設，備份保存庫不會有許可權存取要備份的磁片、建立週期性快照集、在保留期限後刪除快照集，以及從備份復原磁碟。 藉由明確授與角色指派給備份保存庫的受控識別，您就可以控制對訂用帳戶上資源的版權管理。
 
 ### <a name="why-does-backup-policy-limit-the-retention-duration"></a>備份原則為何會限制保留期限？
 
-Azure 磁片備份使用增量快照集，其限制為每個磁片200個快照集。 為了讓您在排程的備份之外進行隨選備份，備份原則會將備份總數限制為180。 深入瞭解受控磁片的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 集。
+Azure 磁片備份使用增量快照集，其限制為每個磁片200個快照集。 為了讓您在排程的備份之外進行隨選備份，備份原則會將備份總數限制為180。 深入瞭解受控磁片的 [增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) 集。
 
 ### <a name="how-does-the-hourly-and-daily-backup-frequency-work-in-the-backup-policy"></a>每小時和每日備份頻率在備份原則中的運作方式為何？
 
-Azure 磁片備份每天提供多個備份。 如果您需要更頻繁的備份，請選擇 **每小時** 備份頻率。 備份會根據選取的 **時間** 間隔進行排程。 例如，如果您選取 **每4小時**，則會大約每4小時進行備份，讓備份在一天內平均分散。 如果備份一天的時間足夠，請選擇 **每日** 備份頻率。 在 [每日備份頻率] 中，您可以指定要執行備份的當日時間。 請務必注意，一天中的時程表示備份開始時間，而不是備份完成的時間。 完成備份作業所需的時間取決於各種因素，包括連續備份之間的流失率。 不過，Azure 磁片備份是無代理程式備份，它會使用不會影響生產應用程式效能的累加 [式快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal) 集。
+Azure 磁片備份每天提供多個備份。 如果您需要更頻繁的備份，請選擇 **每小時** 備份頻率。 備份會根據選取的 **時間** 間隔進行排程。 例如，如果您選取 **每4小時**，則會大約每4小時進行備份，讓備份在一天內平均分散。 如果備份一天的時間足夠，請選擇 **每日** 備份頻率。 在 [每日備份頻率] 中，您可以指定要執行備份的當日時間。 請務必注意，一天中的時程表示備份開始時間，而不是備份完成的時間。 完成備份作業所需的時間取決於各種因素，包括連續備份之間的流失率。 不過，Azure 磁片備份是無代理程式備份，它會使用不會影響生產應用程式效能的累加 [式快照](../virtual-machines/disks-incremental-snapshots.md) 集。
 
 ### <a name="why-does-the-backup-vaults-redundancy-setting-not-apply-to-the-backups-stored-in-operational-tier-the-snapshot-resource-group"></a>為什麼備份保存庫的冗余設定不適用於 (快照集資源群組) 的作業層中儲存的備份？
 
-Azure 備份使用受控磁片的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 集，其只會在標準 HDD 儲存體上的上一個快照集之後，將差異變更儲存至磁片，不論父磁片的儲存體類型為何。 為了更可靠，增量快照集會儲存在區域冗余儲存體 (ZRS) 預設為支援 ZRS 的區域。 目前，Azure 磁片備份支援不會將備份複製到備份保存庫儲存體之受控磁片的操作備份。 因此，備份保存庫的備份儲存體冗余設定不會套用至復原點。
+Azure 備份使用受控磁片的 [增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) 集，其只會在標準 HDD 儲存體上的上一個快照集之後，將差異變更儲存至磁片，不論父磁片的儲存體類型為何。 為了更可靠，增量快照集會儲存在區域冗余儲存體 (ZRS) 預設為支援 ZRS 的區域。 目前，Azure 磁片備份支援不會將備份複製到備份保存庫儲存體之受控磁片的操作備份。 因此，備份保存庫的備份儲存體冗余設定不會套用至復原點。
 
 ### <a name="can-i-use-backup-center-to-configure-backups-and-manage-backup-instances-for-azure-disks"></a>我可以使用備份中心來設定備份，以及管理 Azure 磁片的備份實例嗎？
 
@@ -61,7 +61,7 @@ Azure 備份使用受控磁片的 [增量快照](https://docs.microsoft.com/azur
 
 ### <a name="why-do-i-need-to-create-a-backup-vault-and-not-use-a-recovery-services-vault"></a>為什麼我需要建立備份保存庫，而不使用復原服務保存庫？
 
-備份保存庫是 Azure 中的儲存體實體，可儲存 Azure 備份支援之特定較新工作負載的備份資料。 您可以使用備份保存庫來保存各種 Azure 服務（例如適用於 PostgreSQL 的 Azure 資料庫伺服器、Azure 磁片和 Azure 備份將支援的較新工作負載）的備份資料。 備份保存庫可讓您輕鬆地組織您的備份資料，同時將管理額外負荷降到最低。 若要深入瞭解，請參閱 [備份保存庫](https://docs.microsoft.com/azure/backup/backup-vault-overview) 。
+備份保存庫是 Azure 中的儲存體實體，可儲存 Azure 備份支援之特定較新工作負載的備份資料。 您可以使用備份保存庫來保存各種 Azure 服務（例如適用於 PostgreSQL 的 Azure 資料庫伺服器、Azure 磁片和 Azure 備份將支援的較新工作負載）的備份資料。 備份保存庫可讓您輕鬆地組織您的備份資料，同時將管理額外負荷降到最低。 若要深入瞭解，請參閱 [備份保存庫](./backup-vault-overview.md) 。
 
 ### <a name="can-the-disk-to-be-backed-up-and-the-backup-vault-be-in-different-subscriptions"></a>磁片可以備份，且備份保存庫位於不同的訂用帳戶嗎？
 
@@ -132,4 +132,4 @@ Azure 備份使用受控磁片的 [增量快照](https://docs.microsoft.com/azur
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 磁片備份支援矩陣](disk-backup-support-matrix.md)
+- [Azure 磁碟備份支援矩陣](disk-backup-support-matrix.md)

@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732099"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734961"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>使用 Azure 私人連結將網路安全地連線到 Azure 監視器
 
@@ -149,7 +149,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
  
    b.    請在 [與私人 DNS 區域整合] 選擇 [是] ，讓它自動建立新的私人 DNS 區域。 實際的 DNS 區域可能與下列螢幕擷取畫面中顯示的不同。 
    > [!NOTE]
-   > 如果您選擇 [ **否** ] 並偏好手動管理 DNS 記錄，請先完成您的 Private Link （包括此私人端點和 AMPLS 設定）。 然後，根據 [Azure 私人端點 DNS](../../private-link/private-endpoint-dns.md)設定中的指示來設定您的 DNS。 請務必建立空白記錄，以準備 Private Link 安裝。 您所建立的 DNS 記錄可以覆寫現有的設定，並影響您與 Azure 監視器的連線能力。
+   > 如果您選擇 [ **否** ] 並偏好手動管理 DNS 記錄，請先完成您的 Private Link （包括此私人端點和 AMPLS 設定）。 然後，根據 [Azure 私人端點 DNS 設定](../../private-link/private-endpoint-dns.md)中的指示來設定您的 DNS。 在準備您的私人連結設定時，請務必不要建立空白記錄。 您所建立的 DNS 記錄可以覆寫現有的設定，並影響您與 Azure 監視器的連線能力。
  
    c.    按一下 [檢閱 + 建立]。
  
@@ -217,7 +217,7 @@ Azure 監視器私人連結範圍是一種群組資源，可將一或多個私�
 
 您可以使用 Azure Resource Manager 範本、REST 和命令列介面，將稍早所述的程式自動化。
 
-若要建立及管理私人連結範圍，請使用 [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) 或 [Azure CLI (az 監視器私用連結範圍) ](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。
+若要建立及管理私人連結範圍，請使用 [REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) 或 [Azure CLI (az 監視器私用連結範圍) ](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)。
 
 若要管理網路存取，請在 [Log Analytics 工作區](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)或 [Application Insights 元件](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)上使用 `[--ingestion-access {Disabled, Enabled}]` 和 `[--query-access {Disabled, Enabled}]` 旗標。
 

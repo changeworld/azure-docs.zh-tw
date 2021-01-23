@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51f6a2ac4f524ac2a504fb8e0c3dd90ec25c9f93
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016024"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734725"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺3.11 的一般必要條件
 
@@ -134,7 +134,7 @@ az ad sp create-for-rbac --name openshiftsp \
  > [!WARNING] 
  > 請務必寫下安全密碼，因為無法再次取得此密碼。
 
-如需有關服務主體的詳細資訊，請參閱[使用 Azure CLI 建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)。
+如需有關服務主體的詳細資訊，請參閱[使用 Azure CLI 建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>僅適用于 Resource Manager 範本的必要條件
 

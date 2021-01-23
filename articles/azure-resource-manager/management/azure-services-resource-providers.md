@@ -3,12 +3,12 @@ title: Azure 服務的資源提供者
 description: 列出 Azure Resource Manager 的所有資源提供者命名空間，並顯示該命名空間的 Azure 服務。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c319a6d06cbbcf5d36178c37207cc13f295a5897
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 581c25b384bf6e2865a21f083ba12eef2e5e8bcd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702848"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733782"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者 \(部分機器翻譯\)
 
@@ -175,7 +175,7 @@ ms.locfileid: "98702848"
 | Microsoft.Synapse | [Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.TimeSeriesInsights | [Azure 時間序列深入解析](../../time-series-insights/index.yml) |
 | Microsoft.Token | 權杖 |
-| Microsoft.VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
+| Microsoft.VirtualMachineImages | [Azure Image Builder](../../virtual-machines/image-builder-overview.md) |
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/) |
 | Microsoft.VMware | [Azure VMware 解決方案](../../azure-vmware/index.yml) |
 | Microsoft.VMwareCloudSimple | [由 CloudSimple 提供的 Azure VMware 解決方案](../../vmware-cloudsimple/index.md) |

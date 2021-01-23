@@ -4,12 +4,12 @@ description: 了解如何建立私人 Azure Kubernetes Service (AKS) 叢集
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 2b0cc8a2fe9a45120bf0b74dbad5e107fd860845
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 66072032b3fd1ac33bef60922c62f73a8cfb11bd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664362"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734659"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>建立私人 Azure Kubernetes Service 叢集
 
@@ -74,7 +74,7 @@ az aks create \
 2. 「無」表示 AKS 將不會建立私人 DNS 區域。  這需要您攜帶自己的 DNS 伺服器，並設定私人 FQDN 的 DNS 解析。  如果您未設定 DNS 解析，則只能在代理程式節點內解析 DNS，並且在部署後會導致叢集問題。
 3. 「自訂私人 dns 區功能變數名稱稱」的格式應該適用于 azure 全球雲端： `privatelink.<region>.azmk8s.io` 。 您將需要該私人 DNS 區域的資源識別碼。  此外，您還需要使用者指派的身分識別或服務主體，且至少 `private dns zone contributor` 要有自訂私人 dns 區域的角色。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 * AKS Preview 版本0.4.71 或更新版本
 * Api 版本2020-11-01 或更新版本
@@ -121,18 +121,18 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您必
 3. 在包含叢集的 VNet 有自訂 DNS 設定 (4) 的情況下，除非私人 DNS 區域已連結至包含自訂 DNS 解析程式 (5) 的 VNet，否則叢集部署將會失敗。 在叢集布建期間建立私人區域，或在使用事件型部署 (機制（例如，Azure 事件方格和 Azure Functions) ）偵測到建立區域時，可以手動建立此連結。
 
 > [!NOTE]
-> 如果您使用「 [攜帶您自己的路由表與 kubenet](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) ，並將您自己的 DNS 與私人叢集整合，叢集建立將會失敗。 在叢集建立失敗之後，您必須將節點資源群組中的 [RouteTable](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) 與子網產生關聯，才能成功建立。
+> 如果您使用「 [攜帶您自己的路由表與 kubenet](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) ，並將您自己的 DNS 與私人叢集整合，叢集建立將會失敗。 在叢集建立失敗之後，您必須將節點資源群組中的 [RouteTable](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) 與子網產生關聯，才能成功建立。
 
 ## <a name="limitations"></a>限制 
 * IP 授權範圍無法套用至私人 api 伺服器端點，只適用于公用 API 伺服器
 * [Azure Private Link 服務限制][private-link-service]適用於私人叢集。
-* 不支援搭配私人叢集使用 Azure DevOps Microsoft 裝載的代理程式。 請考慮使用[自我裝載代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser&preserve-view=true)。 
+* 不支援搭配私人叢集使用 Azure DevOps Microsoft 裝載的代理程式。 請考慮使用[自我裝載代理程式](/azure/devops/pipelines/agents/agents?preserve-view=true&tabs=browser&view=azure-devops)。 
 * 對於需要啟用 Azure Container Registry 以使用私人 AKS 的客戶，必須以代理程式叢集虛擬網路來與 Container Registry 虛擬網路對等互連。
 * 不支援將現有的 AKS 叢集轉換成私人叢集
 * 刪除或修改客戶子網路中的私人端點，會導致叢集停止運作。 
 * 目前不支援適用於容器的 Azure 監視器即時資料。
 * 當客戶在自己的 DNS 伺服器上更新 A 記錄之後，這些 pod 仍會在遷移後將 apiserver FQDN 解析為較舊的 IP，直到重新開機為止。 客戶必須在控制平面遷移之後，重新開機 hostNetwork pod 和預設 DNSPolicy pod。
-* 在控制平面上進行維護的情況下，您的 [AKS IP](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.) 可能會變更。 在此情況下，您必須在自訂 DNS 伺服器上將指向 API 伺服器私人 IP 的 A 記錄更新為，然後使用 hostNetwork 重新開機任何自訂 pod 或部署。
+* 在控制平面上進行維護的情況下，您的 [AKS IP](./limit-egress-traffic.md) 可能會變更。 在此情況下，您必須在自訂 DNS 伺服器上將指向 API 伺服器私人 IP 的 A 記錄更新為，然後使用 hostNetwork 重新開機任何自訂 pod 或部署。
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

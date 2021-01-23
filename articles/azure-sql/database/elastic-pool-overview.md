@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: d1ba9445441f38c55b40a8f8ca55471ea8b0a06d
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008583"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732689"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>彈性集區可協助您管理及調整 Azure SQL Database 中的多個資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -156,7 +156,7 @@ MAX ( # B0  *每個 Db 的平均 vCore 使用率*>，<*同時尖峰* db x *尖�
 
 在 Azure 入口網站中，您可以監視彈性集區與集區內資料庫的使用率。 也可以對彈性集區進行一些變更，並且一次提交所有的變更。 這些變更包括新增或移除資料庫、變更您的彈性集區設定，或變更您的資料庫設定。
 
-您可以使用內建的 [效能監視](https://docs.microsoft.com/azure/azure-sql/database/performance-guidance) 和 [警示工具](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)，並結合效能評等。  此外，SQL Database 可[發出計量和資源記錄](https://docs.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal)，以供更輕鬆地進行監視。
+您可以使用內建的 [效能監視](./performance-guidance.md) 和 [警示工具](./alerts-insights-configure-portal.md)，並結合效能評等。  此外，SQL Database 可[發出計量和資源記錄](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-portal)，以供更輕鬆地進行監視。
 
 ## <a name="customer-case-studies"></a>客戶案例研究
 

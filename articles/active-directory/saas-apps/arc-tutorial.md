@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: fe6f4a1c66b07a518c4bccad9027c4d16e3d18a6
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: 0b1be3aa251b0248d3bbd859a183c7483fd9e38c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913847"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735357"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-publishing---sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Arc Publishing - SSO 整合
 
@@ -104,7 +104,7 @@ ms.locfileid: "97913847"
     | groups | user.assignedroles |
 
     > [!NOTE]
-    > 這裡的 **groups** 屬性會對應到 **user.assignedroles**。 這些自訂角色會建立於 Azure AD 中，以對應回應用程式中的群組名稱。 您可以在[這裡](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) \(機器翻譯\) 找到更多如何在 Azure AD 中建立自訂角色的指導方針。
+    > 這裡的 **groups** 屬性會對應到 **user.assignedroles**。 這些自訂角色會建立於 Azure AD 中，以對應回應用程式中的群組名稱。 您可以在[這裡](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview) \(機器翻譯\) 找到更多如何在 Azure AD 中建立自訂角色的指導方針。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -163,9 +163,9 @@ ms.locfileid: "97913847"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Arc Publishing - SSO 
 
-您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [Arc Publishing - SSO] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Arc Publishing - SSO。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [Arc Publishing - SSO] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Arc Publishing - SSO。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Arc Publishing - SSO 後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+設定 Arc Publishing - SSO 後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

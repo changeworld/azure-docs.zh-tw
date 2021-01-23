@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 4d2a55355318a1bf916017fa77026a87a95b7f57
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809712"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733835"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>在 ARM 範本中使用部署腳本
 
@@ -542,7 +542,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 > [!NOTE]
 > 不建議針對其他目的使用由指令碼服務產生的儲存體帳戶和容器執行個體。 視指令碼生命週期而定，可能會移除這兩個資源。
 
-容器實例和儲存體帳戶會根據來刪除 `cleanupPreference` 。 但是，如果腳本失敗且 `cleanupPreference` 未設定為 [ **永遠**]，部署程式會自動讓容器執行一小時的時間。 您可以使用此小時來對腳本進行疑難排解。 如果您想要在成功部署之後讓容器保持執行，請將睡眠步驟新增至腳本。 例如，將 [ [開始-睡眠](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) ] 新增至腳本的結尾。 如果您未新增睡眠步驟，容器會設定為終端狀態，而且即使尚未刪除也無法存取。
+容器實例和儲存體帳戶會根據來刪除 `cleanupPreference` 。 但是，如果腳本失敗且 `cleanupPreference` 未設定為 [ **永遠**]，部署程式會自動讓容器執行一小時的時間。 您可以使用此小時來對腳本進行疑難排解。 如果您想要在成功部署之後讓容器保持執行，請將睡眠步驟新增至腳本。 例如，將 [ [開始-睡眠](/powershell/module/microsoft.powershell.utility/start-sleep) ] 新增至腳本的結尾。 如果您未新增睡眠步驟，容器會設定為終端狀態，而且即使尚未刪除也無法存取。
 
 ## <a name="run-script-more-than-once"></a>執行指令碼超過一次
 

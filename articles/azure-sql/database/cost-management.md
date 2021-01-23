@@ -7,23 +7,23 @@ ms.custom: subject-cost-optimization
 ms.service: sql-database
 ms.topic: how-to
 ms.date: 01/15/2021
-ms.openlocfilehash: 8d36166a67e683dd7f15eef18d589562b39ba568
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 56cf30d89460df8ac50d258bd8b29cf4e7236690
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600629"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734625"
 ---
 # <a name="plan-and-manage-costs-for-azure-sql-database"></a>規劃和管理 Azure SQL Database 的成本
 
 本文說明如何規劃和管理 Azure SQL Database 的成本。 首先，請使用 Azure 定價計算機來新增 Azure 資源，並查看預估成本。 當您開始使用 Azure SQL Database 資源之後，請使用成本管理功能來設定預算和監視成本。 您也可以查看預測成本，並找出花費趨勢來識別您可能想要採取行動的領域。Azure SQL Database 的成本只是您 Azure 帳單中的每月成本的一部分。 雖然本文說明如何規劃和管理 Azure SQL Database 的成本，但您必須支付 Azure 訂用帳戶中使用的所有 Azure 服務和資源的費用，包括任何協力廠商服務。
 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 成本分析支援大部分的 Azure 帳戶類型，但並非全部。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本資料，您至少需要 Azure 帳戶的讀取存取權。 
 
-如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../../cost-management/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 
 ## <a name="sql-database-initial-cost-considerations"></a>SQL Database 初始成本考慮
@@ -79,7 +79,7 @@ Azure SQL Database 會在 Azure 基礎結構上執行，此基礎結構會在您
 
 
 
-如果您的 Azure 訂用帳戶有消費限制，Azure 會讓您無法消費于您的點數金額。 當您建立和使用 Azure 資源時，會使用您的點數。 當您達到點數限制時，就會在該計費期間的剩餘時間內停用您所部署的資源。 您無法變更點數限制，但可以將它移除。 如需消費限制的詳細資訊，請參閱 [Azure 消費限制](https://docs.microsoft.com/azure/billing/billing-spending-limit)。
+如果您的 Azure 訂用帳戶有消費限制，Azure 會讓您無法消費于您的點數金額。 當您建立和使用 Azure 資源時，會使用您的點數。 當您達到點數限制時，就會在該計費期間的剩餘時間內停用您所部署的資源。 您無法變更點數限制，但可以將它移除。 如需消費限制的詳細資訊，請參閱 [Azure 消費限制](../../cost-management-billing/manage/spending-limit.md)。
 
 ## <a name="monitor-costs"></a>監視成本
 
@@ -91,13 +91,13 @@ Azure SQL Database 會在 Azure 基礎結構上執行，此基礎結構會在您
 
    :::image type="content" source="media/cost-management/cost-analysis.png" alt-text="顯示 Azure 入口網站中累積成本的範例":::
 
-您可以從這裡自行探索成本。 如需有關不同成本分析設定的詳細資訊和詳細資訊，請參閱 [開始分析成本](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+您可以從這裡自行探索成本。 如需有關不同成本分析設定的詳細資訊和詳細資訊，請參閱 [開始分析成本](../../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
 ## <a name="create-budgets"></a>建立預算
 
 <!-- Note to Azure service writer: Modify the following as needed for your service. -->
 
-您可以建立 [預算](../../cost-management/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 來管理成本，並建立 [警示](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 來自動通知專案關係人有關消費異常和超支風險。 警示是以支出為基礎 (相較於預算和成本閾值)。 系統會為 Azure 訂用帳戶和資源群組建立預算和警示，使其在整體成本監視策略中很有用。 
+您可以建立 [預算](../../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 來管理成本，並建立 [警示](../../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 來自動通知專案關係人有關消費異常和超支風險。 警示是以支出為基礎 (相較於預算和成本閾值)。 系統會為 Azure 訂用帳戶和資源群組建立預算和警示，使其在整體成本監視策略中很有用。 
 
 如果您想要在監視中有更多細微性，可以使用 Azure 中特定資源或服務的篩選來建立預算。 篩選器可協助確保您不會意外地建立新的資源，而需要支付額外的費用。 如需建立預算時篩選選項的詳細資訊，請參閱 [群組和篩選選項](../../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
@@ -117,5 +117,5 @@ Azure SQL Database 也可讓您相應增加或減少資源，以根據您的應�
 
 - 瞭解 [如何使用 Azure 成本管理來優化您的雲端投資](../../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 - 深入瞭解如何使用 [成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)來管理成本。
-- 瞭解如何避免非 [預期的成本](../../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
-- 採用 [成本管理](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引導式學習課程。
+- 瞭解如何避免非 [預期的成本](../../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 採用 [成本管理](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引導式學習課程。

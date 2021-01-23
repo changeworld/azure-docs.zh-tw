@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 94923b13181290a290f13339da5b05f6fdddff38
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: d9c2bec575f2c7a948f3eb6e65be6a735a3c03e8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98252134"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733802"
 ---
 # <a name="tutorial-getting-started-with-always-encrypted-with-secure-enclaves-in-azure-sql-database"></a>教學課程：在 Azure SQL Database 中使用安全記憶體保護區來開始使用 Always Encrypted
 
@@ -25,19 +25,19 @@ ms.locfileid: "98252134"
 > [!NOTE]
 > Always Encrypted 與 Azure SQL Database 的安全記憶體保護區目前處於 **公開預覽** 狀態。
 
-本教學課程會教您如何以 Azure SQL Database [的安全記憶體保護區](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) 開始使用 Always Encrypted。 它會顯示：
+本教學課程會教您如何以 Azure SQL Database [的安全記憶體保護區](/sql/relational-databases/security/encryption/always-encrypted-enclaves) 開始使用 Always Encrypted。 它會顯示：
 
 > [!div class="checklist"]
 > - 如何使用安全記憶體保護區建立用來測試和評估 Always Encrypted 的環境。
 > - 如何使用 SQL Server Management Studio (SSMS) ，就地加密資料並針對加密資料行發出豐富的機密查詢。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-本教學課程需要 Azure PowerShell 和 [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+本教學課程需要 Azure PowerShell 和 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 ### <a name="powershell-requirements"></a>PowerShell 需求
 
-如需如何安裝和執行 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 概觀](https://docs.microsoft.com/powershell/azure)。 
+如需如何安裝和執行 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 概觀](/powershell/azure)。 
 
 支援證明作業所需的 Az 模組最低版本：
 
@@ -66,7 +66,7 @@ PowerShell 資源庫已淘汰傳輸層安全性 (TLS) 1.0 和1.1 版。 建議�
 
 ### <a name="ssms-requirements"></a>SSMS 需求
 
-如需有關如何下載 SSMS 的詳細資訊，請參閱 [下載 SQL Server Management Studio (ssms) ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 。
+如需有關如何下載 SSMS 的詳細資訊，請參閱 [下載 SQL Server Management Studio (ssms) ](/sql/ssms/download-sql-server-management-studio-ssms) 。
 
 所需的 SSMS 最小版本為18.8。
 
@@ -75,7 +75,7 @@ PowerShell 資源庫已淘汰傳輸層安全性 (TLS) 1.0 和1.1 版。 建議�
 
  在此步驟中，您將使用 DC 系列硬體設定來建立新的 Azure SQL Database 邏輯伺服器和新的資料庫。 Always Encrypted 在 Azure SQL Database 中使用安全記憶體保護區，會使用 DC 系列硬體設定中支援的 Intel SGX 記憶體保護區。 如需詳細資訊，請參閱 [DC 系列](service-tiers-vcore.md#dc-series)。
 
-1. 開啟 PowerShell 主控台並登入 Azure。 如有需要，請 [切換至](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps) 您在本教學課程中使用的訂用帳戶。
+1. 開啟 PowerShell 主控台並登入 Azure。 如有需要，請 [切換至](/powershell/azure/manage-subscriptions-azureps) 您在本教學課程中使用的訂用帳戶。
 
   ```PowerShell
   Connect-AzAccount
@@ -300,7 +300,7 @@ PowerShell 資源庫已淘汰傳輸層安全性 (TLS) 1.0 和1.1 版。 建議�
 
         ![使用證明連接](media/always-encrypted-enclaves/connect-to-server-configure-attestation.png)
 
-    7. 選取 [連線]。
+    7. 選取 [連線]  。
     8. 如果系統提示您啟用 Always Encrypted 查詢的參數化，請選取 [ **啟用**]。
 
 
@@ -356,10 +356,10 @@ PowerShell 資源庫已淘汰傳輸層安全性 (TLS) 1.0 和1.1 版。 建議�
 ## <a name="next-steps"></a>後續步驟
 
 完成本教學課程之後，您可以移至下列其中一個教學課程：
-- [教學課程：使用具有安全記憶體保護區的 Always Encrypted 開發 .NET 應用程式](https://docs.microsoft.com/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
-- [教學課程：使用具有安全記憶體保護區的 Always Encrypted 開發 .NET Framework 應用程式](https://docs.microsoft.com/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
-- [教學課程：使用隨機化加密在已啟用記憶體保護區的資料行上建立及使用索引](https://docs.microsoft.com/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
+- [教學課程：使用具有安全記憶體保護區的 Always Encrypted 開發 .NET 應用程式](/sql/connect/ado-net/sql/tutorial-always-encrypted-enclaves-develop-net-apps)
+- [教學課程：使用具有安全記憶體保護區的 Always Encrypted 開發 .NET Framework 應用程式](/sql/relational-databases/security/tutorial-always-encrypted-enclaves-develop-net-framework-apps)
+- [教學課程：使用隨機化加密在已啟用記憶體保護區的資料行上建立及使用索引](/sql/relational-databases/security/tutorial-creating-using-indexes-on-enclave-enabled-columns-using-randomized-encryption)
 
 ## <a name="see-also"></a>另請參閱
 
-- [設定和使用具有安全記憶體保護區的 Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)
+- [設定和使用具有安全記憶體保護區的 Always Encrypted](/sql/relational-databases/security/encryption/configure-always-encrypted-enclaves)

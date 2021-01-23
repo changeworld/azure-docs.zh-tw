@@ -7,17 +7,17 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0b32158ad58a663f7d85b9814bb4f2c1c55e4178
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
-ms.translationtype: HT
+ms.openlocfilehash: 5cb767c639c7ff1d9888085caa036571376cc596
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922444"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734140"
 ---
 # <a name="examples-of-an-attestation-policy-signer-certificate"></a>證明原則簽署者憑證的範例
 
 Microsoft Azure 證明會使用與證明提供者相關聯的原則簽署者憑證來驗證已簽署的原則。
-深入了解[原則簽署的優點](/azure/attestation/basic-concepts/#benefits-of-policy-signing)
+深入了解[原則簽署的優點](./basic-concepts.md#benefits-of-policy-signing)
 
 **要在建立提供者流程中使用的原則簽署者憑證檔案格式**
 

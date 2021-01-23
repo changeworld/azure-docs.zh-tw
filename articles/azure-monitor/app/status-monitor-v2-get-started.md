@@ -4,14 +4,14 @@ description: Application Insights 代理程式的快速入門手冊。 無須重
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
-ms.date: 04/23/2019
+ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 690304ecef80d988f9a554cd10ce4689f5c72133
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0c0102f4d0f23fd7f306f431de7e90174796a56
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89070134"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732640"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Azure 監視器內部部署伺服器的 Application Insights 代理程式入門
 
@@ -21,11 +21,18 @@ ms.locfileid: "89070134"
 
 如需這些命令的說明、自訂指示和疑難排解的相關資訊，請參閱 [詳細的指示](status-monitor-v2-detailed-instructions.md)。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始進行。
 
 ## <a name="download-and-install-via-powershell-gallery"></a>下載並安裝 PowerShell 資源庫
 
-### <a name="install-prerequisites"></a>安裝必要條件
+### <a name="install-prerequisites"></a>安裝先決條件
+
+> [!NOTE]
+> 從2020年4月起，PowerShell 資源庫已淘汰 TLS 1.1 和1.0。
+>
+> 如需 additionnal 可能需要的必要條件，請參閱 [POWERSHELL 資源庫 TLS 支援](https://devblogs.microsoft.com/powershell/powershell-gallery-tls-support)。
+>
+
 以系統管理員身分執行 PowerShell。
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force

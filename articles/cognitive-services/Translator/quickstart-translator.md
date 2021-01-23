@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: 翻譯工具, 翻譯工具服務, 翻譯文字, 進行文字音譯, 語言偵測
-ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
-ms.translationtype: HT
+ms.openlocfilehash: 38bd4d28a8ae4c737155cd74bcb39d1acfaf699c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369523"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733489"
 ---
 # <a name="quickstart-get-started-with-translator"></a>快速入門：開始使用翻譯工具
 
@@ -123,7 +123,7 @@ ms.locfileid: "94369523"
 
 ## <a name="keys-and-endpoints"></a>[金鑰和端點]
 
-為方便說明，此頁面上的範例會使用硬式編碼的金鑰和端點。 切記， **完成時請從程式碼中移除金鑰** ，且 **切勿公開發佈金鑰** 。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../cognitive-services-security.md)一文。
+為方便說明，此頁面上的範例會使用硬式編碼的金鑰和端點。 切記，**完成時請從程式碼中移除金鑰**，且 **切勿公開發佈金鑰**。 在生產環境中，請考慮使用安全的方式來儲存及存取您的認證。 如需詳細資訊，請參閱認知服務[安全性](../cognitive-services-security.md)一文。
 
 ## <a name="translate-text"></a>翻譯文字 
 
@@ -968,7 +968,8 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 若要從 `translate` 端點取得音譯，請使用 `toScript` 參數。
 
-> ![附註] 如需可用語言和音譯選項的完整清單，請參閱[語言支援](language-support.md)。
+> [!NOTE]
+> 如需可用語言和音譯選項的完整清單，請參閱 [語言支援](language-support.md)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1247,7 +1248,8 @@ print(json.dumps(response, sort_keys=True, ensure_ascii=False, indent=4, separat
 
 您也可以使用 `transliterate` 端點來取得音譯。 使用音譯端點時，您必須提供來源語言 (`language`)、來源文字/字母 (`fromScript`) 以及輸出文字/字母 (`toScript`) 作為參數。 在此範例中，我們將取得 สวัสดี 的音譯。 
 
-> ![附註] 如需可用語言和音譯選項的完整清單，請參閱[語言支援](language-support.md)。
+> [!NOTE]
+> 如需可用語言和音譯選項的完整清單，請參閱 [語言支援](language-support.md)。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

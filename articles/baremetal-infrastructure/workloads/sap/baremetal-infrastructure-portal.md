@@ -3,12 +3,12 @@ title: Azure 中的 BareMetal 實例單位
 description: 瞭解如何透過 Azure 入口網站識別 BareMetal 實例單位並與其互動。
 ms.topic: how-to
 ms.date: 1/4/2021
-ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861025"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733258"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>透過 Azure 入口網站管理 BareMetal 執行個體
  
@@ -50,7 +50,7 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
 1. 選取 **資源提供者** ，並在搜尋中輸入 **BareMetalInfrastructure** 。 應該 **註冊** 資源提供者，如影像所示。
  
 >[!NOTE]
->如果資源提供者未註冊，請選取 [ **註冊**]。
+>若資源提供者未註冊，請選取 [註冊]。
  
 :::image type="content" source="media/baremetal-infrastructure-portal/register-resource-provider-azure-portal.png" alt-text="顯示已註冊之 BareMetal 實例單位的螢幕擷取畫面":::
  
@@ -97,7 +97,7 @@ az provider register --namespace Microsoft.BareMetalInfrastructure
 >[!NOTE]
 >Rev 4.2 是最新的更名 BareMetal 基礎結構，使用現有的 Rev 4 架構。 Rev 4 可 (VM) 主機，更接近 Azure 虛擬機器。 它大幅改善了 Azure Vm 和 BareMetal 實例單位（部署于 Rev 4 戳記或資料列）之間的網路延遲。 您可以透過 Azure 入口網站存取和管理您的 BareMetal 實例。 如需詳細資訊，請參閱 [Azure 上的 BareMetal 基礎結構](baremetal-overview-architecture.md)。
  
-此外，您可以在右側找到 [Azure 鄰近放置群組的](../../../virtual-machines/linux/co-location.md) 名稱，此名稱會針對每個已部署的 BareMetal 實例單位自動建立。 當您部署裝載應用層的 Azure Vm 時，請參考鄰近位置群組。 當您使用與 BareMetal 實例單位相關聯的鄰近位置群組時，請確定 Azure Vm 會部署到接近 BareMetal 實例單位。
+此外，您可以在右側找到 [Azure 鄰近放置群組的](../../../virtual-machines/co-location.md) 名稱，此名稱會針對每個已部署的 BareMetal 實例單位自動建立。 當您部署裝載應用層的 Azure Vm 時，請參考鄰近位置群組。 當您使用與 BareMetal 實例單位相關聯的鄰近位置群組時，請確定 Azure Vm 會部署到接近 BareMetal 實例單位。
  
 >[!TIP]
 >若要在與修訂版4.x 相同的 Azure 資料中心尋找應用層，請參閱 [Azure 鄰近放置群組以取得最佳的網路延遲](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md)。

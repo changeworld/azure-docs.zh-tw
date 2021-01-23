@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 4c77103dbb043ef9d6af9a4078b3e574ab5f953f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: ded1406c47bb3f00c366da7a5b28319f3712f8a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253335"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733751"
 ---
 # <a name="enable-intel-sgx-for-your-azure-sql-database"></a>為您的 Azure SQL Database 啟用 Intel SGX 
 
@@ -25,7 +25,7 @@ ms.locfileid: "98253335"
 > [!NOTE]
 > Always Encrypted 與 Azure SQL Database 的安全記憶體保護區目前處於 **公開預覽** 狀態。
 
-在 Azure SQL Database 中[使用安全記憶體保護區 Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves)會使用[Intel Software Guard 延伸模組 (intel SGX) ](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/)記憶體保護區。 若要讓 Intel SGX 可供使用，資料庫必須使用 [vCore 模型](service-tiers-vcore.md) 和 [DC 系列](service-tiers-vcore.md#dc-series) 硬體世代。
+在 Azure SQL Database 中[使用安全記憶體保護區 Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-enclaves)會使用[Intel Software Guard 延伸模組 (intel SGX) ](https://itpeernetwork.intel.com/microsoft-azure-confidential-computing/)記憶體保護區。 若要讓 Intel SGX 可供使用，資料庫必須使用 [vCore 模型](service-tiers-vcore.md) 和 [DC 系列](service-tiers-vcore.md#dc-series) 硬體世代。
 
 設定 DC 系列硬體產生來啟用 Intel SGX 記憶體保護區是 Azure SQL Database 系統管理員的責任。 設定 [SGX 記憶體保護區和證明時，請參閱角色和責任](always-encrypted-enclaves-plan.md#roles-and-responsibilities-when-configuring-sgx-enclaves-and-attestation)。
 
