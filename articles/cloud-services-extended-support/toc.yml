@@ -1,0 +1,97 @@
+- name: 雲端服務 (延伸支援) 檔
+  href: index.yml
+- name: 概觀
+  items:
+    - name: '關於雲端服務 (延伸支援) '
+      href: overview.md
+    - name: 部署的必要條件
+      href: deploy-prerequisite.md
+    - name: 設定檔和封裝
+      href: cloud-services-model-and-package.md
+- name: 教學課程
+  items:
+    - name: 部署雲端服務-入口網站
+      href: deploy-portal.md
+    - name: 部署雲端服務-PowerShell
+      href: deploy-powershell.md
+    - name: 部署雲端服務-範本
+      href: deploy-template.md
+    - name: 部署雲端服務-Visual Studio
+      href: deploy-visual-studio.md
+  expanded: true
+- name: 概念
+  items:
+    - name: 可用的 VM 大小
+      href: available-sizes.md
+    - name: 常見問題集
+      href: faq.md
+    - name: 客體 OS 修補程式
+      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: 客體 OS 淘汰
+      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: 客體 OS 發佈新聞
+      href: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: XML 結構描述
+      items:
+        - name: 進行中的 XML 架構
+          href: schema-csdef-file.md
+        - name: LoadBalancerProbe 架構
+          href: schema-csdef-loadbalancerprobe.md
+        - name: WebRole 架構
+          href: schema-csdef-webrole.md
+        - name: WorkerRole 架構
+          href: schema-csdef-workerrole.md
+        - name: NetworkTrafficRules 架構
+          href: schema-csdef-networktrafficrules.md
+        - name: .Cscfg XML 架構
+          href: schema-cscfg-file.md
+        - name: 角色架構
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration 架構
+          href: schema-cscfg-networkconfiguration.md
+- name: 作法
+  items:
+    - name: 延伸模組總覽
+      href: extensions.md
+    - name: 套用遠端桌面延伸模組
+      href: enable-rdp.md
+    - name: 套用 WAD 延伸模組
+      href: enable-wad.md
+    - name: 啟用警示
+      href: enable-alerts.md
+    - name: 設定調整
+      href: configure-scaling.md
+    - name: 憑證
+      href: certificates-and-key-vault.md
+- name: 範例
+  items:
+    - name: 建立新的雲端服務
+      href: sample-create-cloud-service.md
+    - name: 取得雲端服務詳細資料
+      href: sample-get-cloud-service.md
+    - name: 重設雲端服務
+      href: sample-reset-cloud-service.md
+- name: 參考
+  items:
+    - name: Az. CloudService 模組
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+    - name: PowerShell Cmdlet
+      href: 'https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice'
+    - name: ARM 範本參考
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+- name: 資源
+  items:
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: 學習路徑
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: 定價計算機
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服務更新
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='

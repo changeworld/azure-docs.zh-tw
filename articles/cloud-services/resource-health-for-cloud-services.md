@@ -1,20 +1,25 @@
 ---
 title: 適用于雲端服務 (傳統) 的資源健康狀態
 description: '本文討論資源健康狀態檢查 (RHC) Microsoft Azure 雲端服務 (傳統的支援) '
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 9/1/2020
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072708"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743503"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>資源健康狀態檢查 (RHC Azure 雲端服務 (傳統) 的) 支援
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 本文討論資源健康狀態檢查 (RHC) [Microsoft Azure 雲端服務 (傳統](https://azure.microsoft.com/services/cloud-services)的支援) 
 
 雲端服務的[Azure 資源健康狀態](../service-health/resource-health-overview.md)可協助您診斷並取得影響雲端服務部署、角色 & 角色實例的服務問題支援。 它會報告部署、角色 & 角色實例層級的雲端服務目前和過去的健康情況。
@@ -64,7 +69,7 @@ Azure 狀態會回報影響一組廣泛 Azure 客戶的問題。 資源健康狀
 | Unknown | 目前無法判斷此虛擬機器的健全狀況 |
 | 已停止和解除配置 | 由於已授權的使用者或程序提出要求，此虛擬機器正在停止並解除配置 |
 | 設定資源健康狀態 | 正在設定此資源的資源健康狀態。 資源健康狀態會監看您的 Azure 資源，以提供受到影響的持續性和過去事件的詳細資料 |
-| 無法使用 | 您的虛擬機器無法使用。 我們正試著自動復原您的虛擬機器，並判斷問題來源。 目前不需要其他動作 |
+| [無法使用] | 您的虛擬機器無法使用。 我們正試著自動復原您的虛擬機器，並判斷問題來源。 目前不需要其他動作 |
 | 已降級 | 您的虛擬機器已降級。 我們正試著自動復原您的虛擬機器，並判斷問題來源。 目前不需要其他動作 |
 | 主機伺服器硬體失敗 | 此虛擬機器受到主機伺服器上嚴重的 {HardwareCategory} 失敗所影響。 Azure 會將您的虛擬機器重新部署到狀況良好的主機伺服器 |
 | 由於硬體降級而排程的遷移 | Azure 發現主機伺服器的 {0} 已降級，短時間內可能會發生失敗。 如果可行，我們會盡快對虛擬機器進行即時移轉，或在 {1} (UTC) 之後重新部署虛擬機器。 若要將您服務的風險降至最低，並在系統起始的遷移發生之前硬體失敗，建議您儘快重新部署虛擬機器 |
@@ -96,7 +101,7 @@ Azure 狀態會回報影響一組廣泛 Azure 客戶的問題。 資源健康狀
 | 遠端磁片已中斷連線 | 很抱歉，因為遠端磁碟的連線中斷，您的虛擬機器無法使用。 我們正在努力重建磁碟連線。 目前不需要其他動作 |
 | Azure 服務問題 | 您的虛擬機器受到 Azure 服務問題影響 |
 | 網路問題 | 此虛擬機器受到機架內部網路裝置的影響 |
-| 無法使用 | 您的虛擬機器無法使用。 目前無法判斷此停機時間的原因 |
+| [無法使用] | 您的虛擬機器無法使用。 目前無法判斷此停機時間的原因 |
 | 主機伺服器重新開機 | 很抱歉，因為主機伺服器非預期地重新開機，所以您的虛擬機器無法使用。 主機伺服器發生未預期的問題，導致我們無法自動復原您的虛擬機器 |
 | 因為主機失敗而重新部署 | 很抱歉，因為主機伺服器上發生非預期的失敗，所以您的虛擬機器無法使用。 主機發生未預期的問題，導致我們無法自動復原您的虛擬機器 |
 | 未預期的主機失敗 | 很抱歉，因為主機伺服器上發生非預期的失敗，所以您的虛擬機器無法使用。 主機發生未預期的問題，導致我們無法自動復原您的虛擬機器 |
