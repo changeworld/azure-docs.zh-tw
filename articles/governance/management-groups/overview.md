@@ -1,15 +1,15 @@
 ---
 title: 使用管理群組來組織資源 - Azure Governance
 description: 了解管理群組及權限如何運作，以及如何使用。
-ms.date: 11/17/2020
+ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 9f23a279733169f17f0f82cb80aa08bfafcd45d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: e86501527ff68319fc8d2e942e7ffa977dcecbe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030666"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736317"
 ---
 # <a name="what-are-azure-management-groups"></a>什麼是 Azure 管理群組？
 
@@ -162,16 +162,16 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 - 將訂用帳戶移至新的父系 MG 之前，請先從訂用帳戶中移除角色指派。
 - 將訂用帳戶新增至角色定義的可指派範圍。
 - 變更角色定義內的可指派範圍。 在上述範例中，您可以將可指派的範圍從 [行銷] 更新為 [根管理群組]，讓階層的兩個分支都可以觸達該定義。  
-- 建立將在另一個分支中定義的其他自訂角色。 這個新角色會要求您也要在訂用帳戶上變更角色指派。  
+- 建立另一個定義在另一個分支中的自訂角色。 這個新角色也需要在訂用帳戶上變更角色指派。  
 
 ### <a name="limitations"></a>限制  
 
 在管理群組上使用自訂角色時，有一些限制存在。 
 
  - 您只能在新角色的可指派範圍中定義一個管理群組。 這項限制是為了減少角色定義和角色指派中斷連線的情況。 當具有角色指派的訂用帳戶或管理群組移至沒有角色定義的不同父系時，就會發生這種情況。  
- - 無法在管理群組自訂角色中定義資源提供者資料平面動作。 有這項限制是因為更新資料平面資源提供者時會發生延遲問題。
-   此延遲問題正在處理中，而且將從角色定義停用這些動作，以降低任何風險。
- - Azure Resource Manager 不會驗證角色定義的可指派範圍中是否存在管理群組。 如果有錯字或列出了不正確的管理群組識別碼，則仍會建立角色定義。
+ - 無法在管理群組自訂角色中定義資源提供者資料平面動作。 有這項限制是因為更新資料平面資源提供者時會發生延遲問題。 此延遲問題正在處理中，而且將從角色定義停用這些動作，以降低任何風險。
+ - Azure Resource Manager 不會驗證角色定義的可指派範圍中是否存在管理群組。 如果列出的錯誤或管理群組識別碼不正確，仍會建立角色定義。
+ - 不支援具有 _dataActions_ 角色的角色指派。 請改為在訂用帳戶範圍建立角色指派。
 
 > [!IMPORTANT]
 > 將管理群組新增至 `AssignableScopes` 的服務目前為預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。

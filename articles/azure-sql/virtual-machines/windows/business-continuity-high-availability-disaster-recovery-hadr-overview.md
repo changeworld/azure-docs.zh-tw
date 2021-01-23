@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 1a0d1018991be9d78623b0826aeab3d13958e996
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 4443ccfe8d570e50352cbb70c83d6094132038cc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504129"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736888"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的商務持續性和 HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -75,7 +75,7 @@ Azure 支援下列商務持續性 SQL Server 技術：
 | 技術 | 範例架構 |
 | --- | --- |
 | **可用性群組** |為了進行跨網站的嚴重損壞修復，部分可用性複本會在 Azure VM 中執行，而其他複本會在內部部署執行。 生產網站可以是內部部署或是在 Azure 資料中心。<br/>![可用性群組](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-alwayson.png)<br/>由於所有可用性複本都必須位於相同的容錯移轉叢集中，因此該叢集必須同時跨這兩個網路 (多重子網路的容錯移轉叢集)。 此組態需要 Azure 與內部部署網路之間的 VPN 連線。<br/><br/>若要成功對資料庫進行災害復原，您也應該在災害復原網站安裝複本網域控制站。|
-| **資料庫鏡像** |一個合作夥伴在 Azure VM 中執行，另一個在內部部署執行，以使用伺服器憑證進行跨網站嚴重損壞修復。 合作夥伴不需要位於相同的 Active Directory 網域，也不需要 VPN 連線。<br/>![資料庫鏡像](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-dbmirroring.png)<br/>另一個資料庫鏡像案例，則是為了進行跨網站災害復原復，讓一個合作夥伴在 Azure VM 中執行，並讓其他合作夥伴在相同 Active Directory 網域的內部部署中執行。 需要 [Azure 虛擬網路與內部部署之間的 VPN 連線](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。<br/><br/>若要成功對資料庫進行災害復原，您也應該在災害復原網站安裝複本網域控制站。 Azure VM 上的 SQL Server 2008 或 SQL Server 2008 R2 不支援 SQL Server 資料庫鏡像。 |
+| **資料庫鏡像** |一個合作夥伴在 Azure VM 中執行，另一個在內部部署執行，以使用伺服器憑證進行跨網站嚴重損壞修復。 合作夥伴不需要位於相同的 Active Directory 網域，也不需要 VPN 連線。<br/>![資料庫鏡像](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-dbmirroring.png)<br/>另一個資料庫鏡像案例，則是為了進行跨網站災害復原復，讓一個合作夥伴在 Azure VM 中執行，並讓其他合作夥伴在相同 Active Directory 網域的內部部署中執行。 需要 [Azure 虛擬網路與內部部署之間的 VPN 連線](../../../vpn-gateway/tutorial-site-to-site-portal.md)。<br/><br/>若要成功對資料庫進行災害復原，您也應該在災害復原網站安裝複本網域控制站。 Azure VM 上的 SQL Server 2008 或 SQL Server 2008 R2 不支援 SQL Server 資料庫鏡像。 |
 | **記錄傳送** |為了進行跨網站嚴重損壞修復，一個合作夥伴會在 Azure VM 中執行，而其他合作夥伴會在內部部署中執行。 記錄傳送依賴 Windows 檔案共用，因此需要 Azure 虛擬網路和內部部署網路之間的 VPN 連線。<br/>![記錄傳送](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-log-shipping.png)<br/>若要成功對資料庫進行災害復原，您也應該在災害復原網站安裝複本網域控制站。 |
 | **使用 Azure Blob 儲存體進行備份和還原** |內部部署生產資料庫直接備份到 Azure Blob 儲存體，以進行嚴重損壞修復。<br/>![備份與還原](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-backup-restore.png)<br/>如需詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 備份和還原](../../../azure-sql/virtual-machines/windows/backup-restore.md)。 |
 | **使用 Azure Site Recovery 將 SQL Server 複寫和容錯移轉至 Azure** |內部部署生產環境 SQL Server 實例會直接複寫到 Azure 儲存體，以進行嚴重損壞修復。<br/>![使用 Azure Site Recovery 複寫](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-dr-standalone-sqlserver-asr.png)<br/>如需詳細資訊，請參閱[使用 SQL Server 嚴重損壞修復和 Azure Site Recovery 保護 SQL Server](../../../site-recovery/site-recovery-sql.md)。 |

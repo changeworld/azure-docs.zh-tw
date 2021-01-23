@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
-ms.translationtype: HT
+ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948947"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737315"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>設定 Azure 自訂提供者的 Azure Functions
 
@@ -21,7 +21,7 @@ ms.locfileid: "91948947"
 > [!NOTE]
 > 在本教學課程中，您會建立使用 Azure 函式應用程式的簡單服務端點。 不過，自訂提供者可以使用任何可公開存取的端點。 替代方案包括 Azure Logic Apps、Azure APIM，以及 Azure App Service 的 Web Apps 功能。
 
-若要開始本教學課程，請先遵循[在 Azure 入口網站中建立您的第一個 Azure 函式](../../azure-functions/functions-create-first-azure-function.md)教學課程。 該教學課程會建立可在 Azure 入口網站中修改的 .NET Core Webhook 函式。 這也是目前教學課程的基礎。
+若要開始本教學課程，請先遵循[在 Azure 入口網站中建立您的第一個 Azure 函式](../../azure-functions/functions-get-started.md)教學課程。 該教學課程會建立可在 Azure 入口網站中修改的 .NET Core Webhook 函式。 這也是目前教學課程的基礎。
 
 ## <a name="install-azure-table-storage-bindings"></a>安裝 Azure 資料表儲存體繫結
 

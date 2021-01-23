@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c8532637e695b506e372817e6f4531f9a323936b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 25f555038c1ce0d960266eacc673a62a1ffd5ac0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632612"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736357"
 ---
 # <a name="get-started-with-azure-application-consistent-snapshot-tool-preview"></a>開始使用 Azure 應用程式一致的快照集工具 (預覽) 
 
@@ -126,7 +126,7 @@ gpg: Good signature from "Microsoft (Release signing)
 - SKU 類型 I
 - SKU 類型 II
 
-查看 [適用于 HANA 大型實例的支援案例](/azure/virtual-machines/workloads/sap/hana-supported-scenario)
+查看 [適用于 HANA 大型實例的支援案例](../virtual-machines/workloads/sap/hana-supported-scenario.md)
 
 ## <a name="snapshot-support-matrix-from-sap"></a>來自 SAP 的快照集支援矩陣
 
@@ -182,6 +182,6 @@ gpg: Good signature from "Microsoft (Release signing)
 - [如何監視從主要到 DR 網站的資料複寫](azacsnap-disaster-recovery.md#monitor-data-replication-from-primary-to-dr-site)
 - [如何執行容錯移轉至 DR 網站？](azacsnap-disaster-recovery.md#perform-a-failover-to-dr-site)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [安裝 Azure 應用程式一致的快照集工具](azacsnap-installation.md)

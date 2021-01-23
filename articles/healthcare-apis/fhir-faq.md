@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd6f32213a511987c0508dcc954252b2fd4e48f6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452936"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737586"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR 的常見問題
 
@@ -105,6 +105,12 @@ _Count 目前的限制為100。 如果您將 _count 設定為100以上，您將�
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>搜尋 Azure API for FHIR 中的資源時，預設排序為何？
 
 我們支援依上次更新日期排序： _sort = _lastUpdated。 如需其他支援之搜尋參數的詳細資訊，請參閱 [支援的功能頁面](./fhir-features-supported.md#search)。
+
+### <a name="does-the-azure-api-for-fhir-support-everything"></a>Azure API for FHIR 支援 $everything 嗎？ 
+
+否。 目前我們不支援 $everything。 不過，您可以透過兩個 API 呼叫來達成。 例如，若要取得患者 $ all，您可以先使用/Patient/[ID] 抓取患者記錄，然後再使用/Patient/[ID]/* 取得第二次呼叫以抓取所有患者資料。
+
+您可以在這個 [社區文章](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type)中查看更多詳細資料。 
 
 ### <a name="how-does-export-work"></a>$Export 如何運作？
 

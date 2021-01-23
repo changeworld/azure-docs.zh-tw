@@ -3,12 +3,12 @@ title: 使用適用於 Node.js 的 Azure Batch 用戶端程式庫
 description: 了解 Azure Batch 的基本概念和使用 Node.js 建置簡單的解決方案。
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 8d34d5bbb302e3781aabdd697de11d3d492b879a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: HT
+ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106694"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737281"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>開始使用適用於 Node.js 的 Batch SDK
 
@@ -38,7 +38,7 @@ Node.js 用戶端會使用準備工作部署批次作業 (稍後詳細說明) �
 
 > [!TIP]
 > 指定連結中的 Node.js 用戶端不包含要部署為 Azure 函式應用程式的特定程式碼。 您可以參考下列連結，以取得建立函式應用程式的指示。
-> - [建立函式應用程式](../azure-functions/functions-create-first-azure-function.md)
+> - [建立函式應用程式](../azure-functions/functions-get-started.md)
 > - [建立計時器觸發程序函式](../azure-functions/functions-bindings-timer.md)
 
 ## <a name="build-the-application"></a>建置應用程式

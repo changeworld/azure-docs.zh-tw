@@ -4,12 +4,12 @@ description: '深入瞭解使用長期保留 (預覽版適用於 PostgreSQL 的 
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569482"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737567"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>使用長期保留的適用於 PostgreSQL 的 Azure 資料庫備份 (預覽) 
 
@@ -31,7 +31,7 @@ Azure 備份與 Azure 資料庫服務共同建立了企業級的備份解決方�
 
 |支援  |詳細資料  |
 |---------|---------|
-|支援的部署   |  [適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
+|支援的部署   |  [適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器](../postgresql/overview.md#azure-database-for-postgresql---single-server)     |
 |支援的 Azure 區域 |  美國東部、美國東部2、美國中部、美國中南部、美國西部、美國西部2、美國中西部、巴西南部、加拿大中部、歐洲北部、歐洲西部、英國南部、英國西部、德國中西部、瑞士北部、瑞士西部、東亞、南部東亞、日本東部、日本西部、韓國中部、南韓南部、印度中部、澳大利亞東部、澳大利亞中部、澳大利亞中部2、阿拉伯聯合大公國北部  |
 |支援的 Azure 于 postgresql 版本    |   9.5、9.6、10、11      |
 

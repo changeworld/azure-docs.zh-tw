@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 6914fb50cdb157cf8ef7b5433ebbde47eff8fc32
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 4e8dce970c9e7cfb2aa7887cf1fb3ed6ef9030a1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539810"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735572"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>教學課程：Azure Active Directory 與 Zscaler Beta 整合
 
@@ -27,7 +27,7 @@ ms.locfileid: "98539810"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Zscaler Beta。 此存取控制稱為單一登入 (SSO)。
 * 使用 Azure 入口網站集中管理您的帳戶。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要設定 Azure AD 與 Zscaler Beta 的整合，您需要下列項目：
 
@@ -108,7 +108,7 @@ ms.locfileid: "98539810"
     g. 選取 [儲存]。
 
     > [!NOTE]
-    > 請按一下[這裡](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)，以了解如何在 Azure AD 中設定角色。
+    > 請按一下[這裡](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)，以了解如何在 Azure AD 中設定角色。
 
 7. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，選取 [下載] 以下載 [憑證 (Base64)]。 將其儲存在您的電腦上。
 
@@ -236,7 +236,7 @@ ms.locfileid: "98539810"
 
 * 直接前往 Zscaler Beta 登入 URL，並從該處起始登入流程。
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 [Zscaler Beta] 圖格時，這會重新導向至 Zscaler Beta 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 [Zscaler Beta] 圖格時，這會重新導向至 Zscaler Beta 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: e1858047e9fc64be67cdea82aaca8113135f0b2a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5a216e39ca32b16de405c7924d08da52c6eae4c1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250718"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736948"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教學課程：整合 Sage Intacct 與 Azure Active Directory
 
@@ -26,7 +26,7 @@ ms.locfileid: "98250718"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Sage Intacct。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -206,7 +206,7 @@ ms.locfileid: "98250718"
 
 * 按一下 [在 Azure 入口網站測試此應用程式]，您應該會自動登入您已設定 SSO 的 Sage Intacct
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 [Sage Intacct] 磚時，應該會自動登入您已設定 SSO 的 Sage Intacct。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 [Sage Intacct] 磚時，應該會自動登入您已設定 SSO 的 Sage Intacct。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

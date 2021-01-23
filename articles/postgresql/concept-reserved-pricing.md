@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 8343c06992c896986ba26a90171e25f9c8c4f2f8
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9b8dafa4a69358b3f6f09551ac426b908750e2f4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600099"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735467"
 ---
 # <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>預付適用於 PostgreSQL 的 Azure 資料庫-具有保留容量的單一伺服器計算資源
 
@@ -35,7 +35,7 @@ ms.locfileid: "98600099"
 
 保留大小應該以特定區域內現有或即將部署的伺服器所使用的總計算量為基礎，並且使用相同的效能層級和硬體世代。</br>
 
-例如，假設您執行的是一個一般用途第5代– 32 vCore 于 postgresql 資料庫，以及兩個記憶體優化第5代-16 vCore 于 postgresql 資料庫。 此外，假設您打算在下個月內部署額外的一般目的第5代– 32 vCore 資料庫伺服器，以及一個記憶體優化的第5代– 16 vCore 資料庫伺服器。 假設您知道您將需要這些資源至少一年。 在此情況下，您應該購買 64 (2x32) 虛擬核心、單一資料庫一般目的一年的保留-第5代和 48 (2x16 + 16) vCore 單一資料庫記憶體優化-第5代的一年保留
+例如，假設您執行的是一個一般用途第5代– 32 vCore 于 postgresql 資料庫，以及兩個記憶體優化第5代-16 vCore 于 postgresql 資料庫。 此外，假設您打算在下個月內部署額外的一般目的第5代– 8 vCore 資料庫伺服器，以及一個記憶體優化的第5代– 32 vCore 資料庫伺服器。 假設您知道您將需要這些資源至少一年。 在此情況下，您應該購買 40 (32 + 8) 虛擬核心，一年保留單一資料庫一般目的-第5代和 64 (2x16 + 32) vCore 一年保留單一資料庫記憶體優化-第5代
 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>購買適用於 PostgreSQL 的 Azure 資料庫保留容量
@@ -67,7 +67,8 @@ ms.locfileid: "98600099"
 
 ## <a name="vcore-size-flexibility"></a>vCore 大小彈性
 
-vCore 大小彈性可協助您在效能層級和區域內相應增加或相應減少，而不會失去保留容量優勢。 
+vCore 大小彈性可協助您在效能層級和區域內相應增加或相應減少，而不會失去保留容量優勢。 如果您的虛擬核心規模比您的保留容量更高，則會以隨用隨付定價向您收取超過虛擬核心的費用。
+
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
 

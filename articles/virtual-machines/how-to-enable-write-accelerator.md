@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 2/20/2019
 ms.author: raiye
 ms.subservice: disks
-ms.openlocfilehash: e4f6cefd56c12162b370c78b6df2cd29ece030f1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 827643866c23583051bc290c2c50bed3f1bdd421
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515707"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737909"
 ---
 # <a name="enable-write-accelerator"></a>啟用寫入加速器
 
@@ -57,13 +57,13 @@ ms.locfileid: "92515707"
 | M16ms，M16s | 2 | 2500 |
 | M8ms，M8s | 1 | 1250 |
 
-IOPS 限制是針對每部虛擬機器而「不是」** 每個磁碟。 所有寫入加速器磁碟都會共用相同的每部虛擬機器 IOPS 限制。 連接的磁片不能超過 VM 的寫入加速器 IOPS 限制。 例如，即使連接的磁片可以執行 30000 IOPS，系統還是不允許磁片超過 20000 IOPS 來進行 M416ms_v2。
+IOPS 限制是針對每部虛擬機器而「不是」每個磁碟。 所有寫入加速器磁碟都會共用相同的每部虛擬機器 IOPS 限制。 連接的磁片不能超過 VM 的寫入加速器 IOPS 限制。 例如，即使連接的磁片可以執行 30000 IOPS，系統還是不允許磁片超過 20000 IOPS 來進行 M416ms_v2。
 
 ## <a name="enabling-write-accelerator-on-a-specific-disk"></a>在特定磁碟上啟用寫入加速器
 
 接下來的幾節將說明如何在 Azure 進階儲存體 VHD 上啟用寫入加速器。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 以下先決條件適用於本文撰寫時的寫入加速器使用：
 
@@ -77,23 +77,23 @@ IOPS 限制是針對每部虛擬機器而「不是」** 每個磁碟。 所有�
 
 下列 Cmdlet 中已加入了新的開關參數 **-WriteAccelerator**：
 
-- [設定->set-azvmosdisk](/powershell/module/az.compute/set-azvmosdisk?view=azurermps-6.0.0)
-- [Add-AzVMDataDisk](/powershell/module/az.compute/Add-AzVMDataDisk?view=azurermps-6.0.0)
-- [Set-AzVMDataDisk](/powershell/module/az.compute/Set-AzVMDataDisk?view=azurermps-6.0.0)
-- [Add-AzVmssDataDisk](/powershell/module/az.compute/Add-AzVmssDataDisk?view=azurermps-6.0.0)
+- [設定->set-azvmosdisk](/powershell/module/az.compute/set-azvmosdisk)
+- [Add-AzVMDataDisk](/powershell/module/az.compute/Add-AzVMDataDisk)
+- [Set-AzVMDataDisk](/powershell/module/az.compute/Set-AzVMDataDisk)
+- [Add-AzVmssDataDisk](/powershell/module/az.compute/Add-AzVmssDataDisk)
 
 未提供參數等於將屬性設為 false，而且會部署沒有寫入加速器支援的磁碟。
 
 新的切換參數 **將 osdiskwriteaccelerator** 已新增至下列 Cmdlet：
 
-- [Set-AzVmssStorageProfile](/powershell/module/az.compute/Set-AzVmssStorageProfile?view=azurermps-6.0.0)
+- [Set-AzVmssStorageProfile](/powershell/module/az.compute/Set-AzVmssStorageProfile)
 
 未指定參數等於將屬性設為 false (預設)，而且會傳回不利用寫入加速器的磁碟。
 
 下列 Cmdlet 已加入了新的選擇性布林值 (不可使用 null 值) 參數 **-OsDiskWriteAccelerator**：
 
-- [Update-AzVM](/powershell/module/az.compute/Update-AzVM?view=azurermps-6.0.0)
-- [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss?view=azurermps-6.0.0)
+- [Update-AzVM](/powershell/module/az.compute/Update-AzVM)
+- [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss)
 
 指定 $true 或 $false 來控制磁碟的 Azure 寫入加速器支援。
 
@@ -168,13 +168,13 @@ Update-AzVM -ResourceGroupName $rgname -VM $vm
 
 ## <a name="enabling-write-accelerator-using-the-azure-cli"></a>使用 Azure CLI 啟用寫入加速器
 
-您可以使用 [Azure CLI](/cli/azure/?view=azure-cli-latest) 啟用寫入加速器。
+您可以使用 [Azure CLI](/cli/azure/) 啟用寫入加速器。
 
-若要在現有磁碟上啟用寫入加速器，請使用 [az vm update](/cli/azure/vm?view=azure-cli-latest#az-vm-update)，如果您將 diskName、VMName 和 ResourceGroup 取代為您自己的值，可以使用下列範例：`az vm update -g group1 -n vm1 -write-accelerator 1=true`
+若要在現有磁碟上啟用寫入加速器，請使用 [az vm update](/cli/azure/vm#az_vm_update)，如果您將 diskName、VMName 和 ResourceGroup 取代為您自己的值，可以使用下列範例：`az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
-若要將磁碟與已啟用寫入加速器連結，請使用 [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach)，如果您要取代為您自己的值，可以使用下列範例：`az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
+若要將磁碟與已啟用寫入加速器連結，請使用 [az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach)，如果您要取代為您自己的值，可以使用下列範例：`az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
 
-若要停用寫入加速器，請使用 [az vm update](/cli/azure/vm?view=azure-cli-latest#az-vm-update)，並將屬性設定為 false： `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+若要停用寫入加速器，請使用 [az vm update](/cli/azure/vm#az_vm_update)，並將屬性設定為 false： `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
 ## <a name="enabling-write-accelerator-using-rest-apis"></a>使用 Rest API 啟用寫入加速器
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
-ms.openlocfilehash: 94e3b95e5e1d3c65550046c5db56e0f783fd60c3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8ae41167b642be75c7bb99042bca829fd8c1728e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976278"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736343"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>針對允許存取現有 Azure VNET 的 Windows Vm 使用 Azure 映射產生器
 
@@ -90,7 +90,7 @@ $nsgName="aibdemoNsg"
 New-AzResourceGroup -Name $imageResourceGroup -Location $location
 ```
 
-## <a name="configure-networking"></a>設定網路功能
+## <a name="configure-networking"></a>設定網路
 
 如果您沒有現有的 VNET\Subnet\NSG，請使用下列腳本來建立一個。
 
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>建立 VM
 
-組建完成後，您就可以從映射建立 VM。 使用 [PowerShell New-AzVM 檔](/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)中的範例。
+組建完成後，您就可以從映射建立 VM。 使用 [PowerShell New-AzVM 檔](/powershell/module/az.compute/new-azvm#description)中的範例。
 
 ## <a name="clean-up"></a>清除
 

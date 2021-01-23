@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c27ef1af3e439b22f00f9247b5270118bbe9ca89
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197705"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737230"
 ---
 # <a name="azure-security-baseline-for-batch"></a>適用于 Batch 的 Azure 安全性基準
 
@@ -62,9 +62,9 @@ ms.locfileid: "98197705"
 
 **指導** 方針：在保護您 Azure Batch 集區的虛擬網路上，啟用 Azure DDoS (分散式阻斷服務) 標準保護，以防範 DDoS 攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
 
-- [如何設定 DDoS 保護](/azure/virtual-network/manage-ddos-protection)
+- [如何設定 DDoS 保護](../ddos-protection/manage-ddos-protection.md)
 
-- [了解 Azure 資訊安全中心的整合式威脅情報](/azure/security-center/security-center-alerts-service-layer)
+- [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/azure-defender.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -126,7 +126,7 @@ ms.locfileid: "98197705"
 
 您可使用 Azure PowerShell 或 Azure CLI，根以據資源的標籤對資源進行查詢或執行動作。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 - [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
@@ -140,7 +140,7 @@ ms.locfileid: "98197705"
 
 **指導** 方針：使用 Azure 活動記錄監視網路資源設定，並偵測與您的 Azure Batch 集區相關的網路資源變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
-- [如何檢視及擷取 Azure 活動記錄事件](/azure/azure-monitor/platform/activity-log-view) 
+- [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
 - [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -188,7 +188,7 @@ ms.locfileid: "98197705"
 
 - [如何從您的 Azure Batch 帳戶收集診斷記錄](batch-diagnostics.md#batch-diagnostics)
 
-- [如何從遠端連線到 Azure Batch 集區節點](/azure/batch/batch-api-basics#error-handling)
+- [如何從遠端連線到 Azure Batch 集區節點](./batch-service-workflow-features.md#basic-workflow)
 
 **Azure 資訊安全中心監視**：是
 
@@ -260,9 +260,9 @@ ms.locfileid: "98197705"
 
 此外，您也可以使用 Azure 資訊安全中心的身分識別和存取管理建議。
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [如何使用 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
@@ -324,7 +324,7 @@ ms.locfileid: "98197705"
 
 **指導** 方針：如果您已使用 Azure Active Directory Azure Batch 應用程式的整合式驗證，則在環境中發生可疑或不安全的活動時，請使用 Azure Active Directory 的安全性報告來產生記錄和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
 
-- [如何識別已標示為有風險活動的 Azure AD 使用者](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [如何識別已標示為有風險活動的 Azure AD 使用者](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何在 Azure 資訊安全中心中監視使用者身分識別和存取活動](../security-center/security-center-identity-access.md)
 
@@ -378,7 +378,7 @@ ms.locfileid: "98197705"
 
 **指導** 方針：使用 Azure Active Directory 風險偵測和 Identity Protection 功能，對偵測到與使用者身分識別相關的可疑動作設定自動回應。 此外，您可以將資料內嵌到 Azure Sentinel 以進行進一步的調查。
 
-- [如何檢視有風險的 Azure AD 登入](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -406,7 +406,7 @@ ms.locfileid: "98197705"
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的 Azure 資源。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -418,7 +418,7 @@ ms.locfileid: "98197705"
 
 - [如何在虛擬網路內建立 Azure Batch 集區](batch-virtual-network.md)
 
-- [如何保護 Azure 儲存體帳戶](/azure/storage/common/storage-security-guide)
+- [如何保護 Azure 儲存體帳戶](../storage/blobs/security-recommendations.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -434,7 +434,7 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
-- [如何保護 Azure 儲存體帳戶](/azure/storage/common/storage-security-guide)
+- [如何保護 Azure 儲存體帳戶](../storage/blobs/security-recommendations.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -462,7 +462,7 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 - [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
-- [如何保護 Azure 儲存體帳戶](/azure/storage/common/storage-security-guide)
+- [如何保護 Azure 儲存體帳戶](../storage/blobs/security-recommendations.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -498,9 +498,9 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 您可以使用 Azure 磁片加密來協助保護您的資料，以符合組織的安全性和合規性承諾。 所有受控磁片、快照集、映射以及寫入現有磁片的資料，都會自動以平臺管理的金鑰進行待用加密。
 
-- [如何管理 Azure 儲存體帳戶的加密金鑰](/azure/storage/common/storage-encryption-keys-portal)
+- [如何管理 Azure 儲存體帳戶的加密金鑰](../storage/common/customer-managed-keys-configure-key-vault.md)
 
-- [如何設定客戶管理的加密金鑰](/azure/storage/common/storage-encryption-keys-portal)
+- [如何設定客戶管理的加密金鑰](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [如何建立已啟用磁片加密的集區](disk-encryption.md)
 
@@ -580,7 +580,7 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 - [如何使用 Azure Resource Graph Explorer 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-- [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [了解 Azure RBAC](../role-based-access-control/overview.md)
 
@@ -592,7 +592,7 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 **指引**：將標籤套用至提供中繼資料的 Azure 資源，以邏輯方式依分類組織這些資源。
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -602,11 +602,11 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 **指導** 方針：使用標記、管理群組和個別訂用帳戶（如果適用）來組織和追蹤資產。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-- [如何建立額外的 Azure 訂閱](/azure/billing/billing-create-subscription)
+- [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-- [如何建立管理群組](/azure/governance/management-groups/create)
+- [如何建立管理群組](../governance/management-groups/create-management-group-portal.md)
 
-- [如何建立和使用標籤](/azure/azure-resource-manager/resource-group-using-tags)
+- [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -701,7 +701,7 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 **指導** 方針：使用 "Microsoft.Batch" 命名空間中 Azure 原則別名來建立自訂原則，以對 Azure Batch 帳戶和集區的設定進行審核或強制執行。
 
-- [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -747,9 +747,9 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 **指導** 方針：如果您 Azure Batch 帳戶、集區或相關資源使用自訂 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
-- [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos 文件](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -791,7 +791,7 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 - 子網應該與網路安全性群組相關聯-儲存體帳戶應該使用虛擬網路服務端點
 - 應啟用 Batch 帳戶中的診斷記錄
 
-- [如何查看可用 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [如何查看可用 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
@@ -884,7 +884,7 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 - [如何設定 Azure 儲存體帳戶的儲存體冗余](../storage/common/storage-redundancy.md)
 
-- [如何在 Azure 中備份金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure 資訊安全中心監視**：是
 
@@ -894,9 +894,9 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 **指導** 方針：如果您要為 Azure 儲存體帳戶或任何其他與 Azure Batch 執行相關的資源管理您自己的金鑰，請定期測試備份金鑰的還原。
 
-- [如何在 Azure 中備份金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
-- [如何使用 PowerShell 還原客戶管理的金鑰](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [如何使用 PowerShell 還原客戶管理的金鑰](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -906,7 +906,7 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 **指導** 方針：如果 Azure Key Vault 用來保存任何與 Azure Batch 集區儲存體帳戶相關的金鑰，請啟用 Azure Key Vault 中的 Soft-Delete，以防止遭到意外或惡意刪除的金鑰。
 
-- [如何在 Azure Key Vault 中啟用虛刪除](/azure/key-vault/key-vault-soft-delete-powershell)
+- [如何在 Azure Key Vault 中啟用虛刪除](../key-vault/general/key-vault-recovery.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -994,5 +994,5 @@ Azure 儲存體或計算資源尚無法使用資料識別、分類和遺失防�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定 V2 概觀](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定 V2 概觀](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

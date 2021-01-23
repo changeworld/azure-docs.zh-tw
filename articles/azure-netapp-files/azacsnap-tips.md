@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 86d7b1a6d361ebbc0d8419d184f9a11d390a37f1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 08edd86fd19e7698a791e411f42a2a89084a91f7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803182"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737128"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>使用 Azure 應用程式一致的快照集工具 (preview) 的秘訣和訣竅
 
@@ -27,7 +27,7 @@ ms.locfileid: "97803182"
 
 ## <a name="limit-service-principal-permissions"></a>限制服務主體許可權
 
-可能需要限制 AzAcSnap 服務主體的範圍。  如需 Azure 資源更細緻存取權管理的詳細資訊，請參閱 [AZURE RBAC 檔](https://docs.microsoft.com/azure/role-based-access-control/) 。  
+可能需要限制 AzAcSnap 服務主體的範圍。  如需 Azure 資源更細緻存取權管理的詳細資訊，請參閱 [AZURE RBAC 檔](../role-based-access-control/index.yml) 。  
 
 以下是範例角色定義，其中包含 AzAcSnap 運作所需的最少必要動作。
 

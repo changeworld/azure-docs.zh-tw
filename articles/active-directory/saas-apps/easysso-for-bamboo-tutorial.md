@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: fec95dc033eb5eacaf79f5bbd2b6b294628667b9
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: HT
+ms.openlocfilehash: 3d784979876857e94c1e09ffc5b7bef11c0a0d04
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97725066"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735960"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 EasySSO for Bamboo 整合
 
@@ -199,7 +199,7 @@ ms.locfileid: "97725066"
 
 在本節中，您會使用「我的應用程式」來測試您的 Azure AD 單一登入設定。
 
-當您按一下「我的應用程式」中的 [EasySSO for Bamboo] 圖格時，應該會自動登入您已設定 SSO 的 Bamboo 執行個體。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您按一下「我的應用程式」中的 [EasySSO for Bamboo] 圖格時，應該會自動登入您已設定 SSO 的 Bamboo 執行個體。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ### <a name="sp-initiated-workflow"></a>SP 起始的工作流程
 

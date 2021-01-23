@@ -3,12 +3,12 @@ title: Azure Batch 集區的 Azure 檔案共用
 description: 如何從 Linux 中的計算節點或 Azure Batch 中的 Windows 集區，裝載 Azure Files 共用。
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 6bbaba20512a17de563e74ba095057c5c3f71f6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5682e7ba853973592c3a650a06ce72615cec7b6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986418"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735489"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>搭配 Batch 集區使用 Azure 檔案共用
 
@@ -20,7 +20,7 @@ ms.locfileid: "87986418"
 
 * Azure 檔案共用不但[符合成本效益](https://azure.microsoft.com/pricing/details/storage/files/)，還能設定將資料複寫到另一個區域，因此達成全域備援的目標。 
 
-* 您可同時從內部部署電腦裝載 Azure 檔案共用。 不過，請確定您瞭解在使用 REST Api 時的 [並行影響](../storage/common/storage-concurrency.md) 。
+* 您可同時從內部部署電腦裝載 Azure 檔案共用。 不過，請確定您瞭解在使用 REST Api 時的 [並行影響](../storage/blobs/concurrency-manage.md) 。
 
 * 另請參閱 Azure 檔案共用的一般[規劃考量](../storage/files/storage-files-planning.md)。
 

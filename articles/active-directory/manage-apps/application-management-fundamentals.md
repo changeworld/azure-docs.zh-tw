@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5aaf4bbff4c093872228d647d3850667fb9777
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d7a570fb322d24bf0d32efcb6f1a2ee515862755
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656402"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736964"
 ---
 # <a name="application-management-best-practices"></a>應用程式管理的最佳做法
 
@@ -33,9 +33,9 @@ ms.locfileid: "94656402"
 | 檢查應用程式的 Azure AD 應用程式資源庫  | Azure AD 有一個資源庫，其中包含數千個預先整合的應用程式，這些應用程式會使用企業單一登入 (SSO) 來啟用。 如需應用程式特定的安裝指引，請參閱 [SaaS 應用程式教學課程清單](../saas-apps/tutorial-list.md)。  | 
 | 使用同盟 SAML 型 SSO  | 當應用程式支援時，請搭配 Azure AD 使用同盟的 SAML 型 SSO，而不是以密碼為基礎的 SSO 和 ADFS。  | 
 | 使用 SHA-256 進行憑證簽署  | Azure AD 預設會使用 SHA-256 演算法來簽署 SAML 回應。 除非應用程式需要 SHA-1 (請參閱 [憑證簽章選項](certificate-signing-options.md) 和 [應用程式登入問題](application-sign-in-problem-application-error.md)，否則請使用 sha-256。 )   | 
-| 需要使用者指派  | 依預設，使用者可以存取您的企業應用程式，而不需指派給他們。 但是，如果應用程式公開角色，或您想要讓應用程式出現在使用者的我的應用程式上，則需要使用者指派。  (請參閱 [整合應用程式的開發人員指引](developer-guidance-for-integrating-applications.md)。 )   | 
+| 需要使用者指派  | 依預設，使用者可以存取您的企業應用程式，而不需指派給他們。 但是，如果應用程式公開角色，或您想要讓應用程式出現在使用者的我的應用程式上，則需要使用者指派。  | 
 | 將我的應用程式部署至您的使用者 | [我的應用程式](end-user-experiences.md) `https://myapps.microsoft.com` 是以網頁為基礎的入口網站，可為使用者提供指派的雲端應用程式的單一進入點。 新增群組管理和自助式密碼重設等其他功能時，使用者可以在我的應用程式中找到它們。 請參閱 [規劃我的應用程式部署](access-panel-deployment-plan.md)。
-| 使用群組指派  | 如果包含在您的訂用帳戶中，請將群組指派給應用程式，讓您可以將進行中的存取管理委派給群組擁有者。  (請參閱 [整合應用程式的開發人員指引](developer-guidance-for-integrating-applications.md)。 )    | 
+| 使用群組指派  | 如果包含在您的訂用帳戶中，請將群組指派給應用程式，讓您可以將進行中的存取管理委派給群組擁有者。  | 
 | 建立管理憑證的流程 | 簽署憑證的最長存留期為三年。 若要避免或最小化由於憑證過期所造成的中斷情況，請使用角色和電子郵件通訊群組清單，以確保會嚴密監視與憑證相關的變更通知。 |
 
 ## <a name="provisioning-recommendations"></a>布建建議

@@ -7,12 +7,12 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 0f91bb33116947312173d8f22929b8548d23a9ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 151bc827cc92c749edd2899cb331eebd22e171a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292276"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737824"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>在 Linux 虛擬機器中執行指令碼
 
@@ -33,7 +33,7 @@ ms.locfileid: "87292276"
 [執行命令](run-command.md)功能可使用指令碼進行虛擬機器和應用程式管理以及疑難排解，即使無法觸達電腦也可進行 (例如在客體防火牆未開啟 RDP 或 SSH 連接埠時)。
 
 * 在 Azure 虛擬機器中執行指令碼。
-* 可使用 [Azure 入口網站](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) 或 [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) 執行
+* 可使用 [Azure 入口網站](run-command.md)、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke) 或 [PowerShell](/powershell/module/az.compute/invoke-azvmruncommand) 執行
 * 快速執行指令碼和檢視輸出，並視需要在 Azure 入口網站中重複進行。
 * 您可以直接輸入指令碼，或是執行其中一個內建的指令碼。
 * 在 Windows 機器中執行 PowerShell 指令碼，並在 Linux 機器中執行 Bash 指令碼。
@@ -63,7 +63,7 @@ ms.locfileid: "87292276"
 * 以本機使用者帳戶登入機器。
 * 無論機器的網路或作業系統狀態為何，需要存取虛擬機器時均可使用。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入了解可在虛擬機器中執行指令碼和命令的不同功能。
 

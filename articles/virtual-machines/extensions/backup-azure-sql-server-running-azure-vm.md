@@ -8,19 +8,19 @@ ms.subservice: extensions
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 66675f77d480ce8d9f21e5ffb507c475337c9dab
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c6a071956565a8bbc31e5be362c41a7c39d8f551
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490725"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738045"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>在 Azure VM 中執行 SQL Server 的 Azure 備份
 
 在其他供應專案之間 Azure 備份，可支援備份工作負載，例如在 Azure Vm 中執行的 SQL Server。 由於 SQL 應用程式是在 Azure VM 中執行，因此備份服務需要存取應用程式的許可權，並提取必要的詳細資料。
 若要這樣做，Azure 備份在使用者所觸發的註冊程式期間，于執行 SQL Server 的 VM 上安裝 **AzureBackupWindowsWorkload** 擴充功能。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如需支援的案例清單，請參閱 Azure 備份所支援的支援 [矩陣](../../backup/sql-support-matrix.md#scenario-support) 。
 
@@ -87,7 +87,7 @@ Azure 備份支援 NSG 標記、部署 proxy 伺服器或列出的 IP 範圍;如
 
 名稱 | 值/範例 | 資料類型
  --- | --- | ---
-locale | zh-tw  |  字串
+地區設定 | zh-tw  |  字串
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | 字串
 objectStr <br/>  (>publicsettings)   | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250 YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ = =" | 字串
 commandStartTimeUTCTicks | "636967192566036845"  | 字串
@@ -102,7 +102,7 @@ statusBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrexten
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-您必須使用復原服務保存庫來「註冊」包含 SQL 應用程式的 Azure VM。 在註冊期間，AzureBackupWindowsWorkload 擴充功能會安裝在 VM 上。 使用 [AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) 指令 Cmdlet 來註冊 VM。
+您必須使用復原服務保存庫來「註冊」包含 SQL 應用程式的 Azure VM。 在註冊期間，AzureBackupWindowsWorkload 擴充功能會安裝在 VM 上。 使用 [AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer) 指令 Cmdlet 來註冊 VM。
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>

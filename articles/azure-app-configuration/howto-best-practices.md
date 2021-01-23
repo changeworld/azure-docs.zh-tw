@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1e5a04d385ba6c6dda5b52b23fd4793860f991dc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200442"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737196"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 應用程式組態最佳作法
 
@@ -92,7 +92,7 @@ configBuilder.AddAzureAppConfiguration(options => {
 
 ## <a name="client-applications-in-app-configuration"></a>應用程式設定中的用戶端應用程式 
 
-對應用程式設定的要求過多可能會導致節流或超額費用。 應用程式會利用目前可用的快取和智慧型重新整理，將所傳送的要求數目優化。 您可以避免直接連線至設定存放區，以在高容量用戶端應用程式中鏡像此進程。 相反地，用戶端應用程式會連接到自訂服務，而此服務會與設定存放區進行通訊。 此 proxy 解決方案可確保用戶端應用程式不會處理設定存放區上的節流限制。 如需節流的詳細資訊，請參閱 [常見問題](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration)。  
+對應用程式設定的要求過多可能會導致節流或超額費用。 應用程式會利用目前可用的快取和智慧型重新整理，將所傳送的要求數目優化。 您可以避免直接連線至設定存放區，以在高容量用戶端應用程式中鏡像此進程。 相反地，用戶端應用程式會連接到自訂服務，而此服務會與設定存放區進行通訊。 此 proxy 解決方案可確保用戶端應用程式不會處理設定存放區上的節流限制。 如需節流的詳細資訊，請參閱 [常見問題](./faq.md#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration)。  
 
 ## <a name="next-steps"></a>後續步驟
 

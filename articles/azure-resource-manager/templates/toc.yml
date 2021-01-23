@@ -298,8 +298,6 @@
       href: template-best-practices.md
     - name: 常見問題集
       href: frequently-asked-questions.md
-    - name: 範本規格
-      href: template-specs.md
     - name: 雲端一致性範本
       href: templates-cloud-consistency.md
     - name: 部署模式
@@ -423,6 +421,12 @@
           href: test-toolkit.md
         - name: 測試案例
           href: test-cases.md
+    - name: 範本規格
+      items:
+        - name: 建立和部署範本規格
+          href: template-specs.md
+        - name: 轉換入口網站範本資源庫
+          href: convert-to-template-spec.md
     - name: CI/CD
       items:
         - name: 具有管線的 ARM 範本

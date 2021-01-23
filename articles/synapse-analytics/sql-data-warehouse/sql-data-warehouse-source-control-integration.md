@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 56b417c65eae0df9b073cf72fe87ce0002fc2ba0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
-ms.translationtype: HT
+ms.openlocfilehash: 0eeea04cd42498c5ba066a3a3e977c92b2906292
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115832"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738028"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中專用 SQL 集區的原始檔控制整合
 
@@ -51,7 +51,7 @@ ms.locfileid: "98115832"
 
    ![複製角色](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "複製存放庫")
 
-如需使用 Visual Studio 連線專案的詳細資訊，請參閱[連線至 Team Explorer 中的專案](/visualstudio/ide/connect-team-project?view=vs-2019)。 如需使用 Visual Studio 複製存放庫的指導，請參閱[複製現有的 Git 存放庫](/azure/devops/repos/git/clone?tabs=visual-studio&view=azure-devops)一文。 
+如需使用 Visual Studio 連線專案的詳細資訊，請參閱[連線至 Team Explorer 中的專案](/visualstudio/ide/connect-team-project?view=vs-2019&preserve-view=true)。 如需使用 Visual Studio 複製存放庫的指導，請參閱[複製現有的 Git 存放庫](/azure/devops/repos/git/clone?tabs=visual-studio&view=azure-devops&preserve-view=true)一文。 
 
 ## <a name="create-and-connect-your-project"></a>建立及連結您的專案
 

@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0de1f1c1012315d2b9e6dd0297443f2633440869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03536bbfedc7f5ecf2fe8d8bb6bd3035f27b72c7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970975"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737875"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>建立及設定適用於 Azure 磁碟加密的金鑰保存庫
 
@@ -45,7 +45,7 @@ Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金�
 
 ### <a name="connect-to-your-azure-account"></a>連線至您的 Azure 帳戶
 
-在使用 Azure CLI 或 Azure PowerShell 之前，必須先連線到您的 Azure 訂用帳戶。 若要這麼做，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)、[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps?view=azps-2.5.0)，或在出現提示時將您的登入資訊提供給 Azure 入口網站。
+在使用 Azure CLI 或 Azure PowerShell 之前，必須先連線到您的 Azure 訂用帳戶。 若要這麼做，請[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli)、[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps)，或在出現提示時將您的登入資訊提供給 Azure 入口網站。
 
 ```azurecli-interactive
 az login

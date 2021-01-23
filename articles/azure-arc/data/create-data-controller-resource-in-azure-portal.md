@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 297efa83fb1563e3a360f652a6ac1bc2b1679998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90934638"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737298"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>在 Azure 入口網站中建立 Azure Arc 資料控制器
 
@@ -40,12 +40,16 @@ Azure Arc 在 Azure 入口網站中開始的許多建立體驗，即使要建立
 6. 按一下 [ **資料控制器詳細資料** ] 按鈕。
 7. 選擇訂用帳戶、資源群組和 Azure 位置，就像您在 Azure 入口網站中建立的任何其他資源一樣。 在此情況下，您選取的 Azure 位置將會是將儲存資源相關中繼資料的位置。  資源本身將會建立在您選擇的任何基礎結構上。 它不需要在 Azure 基礎結構上。
 8. 輸入資料控制器的名稱。
-9. 目前在預覽中只支援間接連接模式。
-10. 選取部署設定檔。
-11. 按一下 [ **在 Azure Studio 中開啟** ] 按鈕。
-12. 在下一個畫面中，您會看到所選項目的摘要以及產生的筆記本。  您可以按一下 [ **下載** 布建筆記本] 按鈕來下載筆記本。
-13. 在 Azure Data Studio 中開啟筆記本，然後按一下頂端的 [ **全部執行** ] 按鈕。
-14. 依照筆記本中的提示和指示完成建立資料控制器。
+9. 選取資料控制器的連接模式。 深入瞭解 [連接模式和需求](./connectivity.md)。 
+
+   > [!NOTE] 
+   > 如果您選取 [ **直接** 連線模式]，請確定已透過 [ [建立服務主體](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal)] 中所述的環境變數來設定服務主體認證。 
+
+1. 選取部署設定檔。
+1. 按一下 [ **在 Azure Studio 中開啟** ] 按鈕。
+1. 在下一個畫面中，您會看到所選項目的摘要以及產生的筆記本。  您可以按一下 [ **下載** 布建筆記本] 按鈕來下載筆記本。
+1. 在 Azure Data Studio 中開啟筆記本，然後按一下頂端的 [ **全部執行** ] 按鈕。
+1. 依照筆記本中的提示和指示完成建立資料控制器。
 
 ## <a name="monitoring-the-creation-status"></a>監視建立狀態
 

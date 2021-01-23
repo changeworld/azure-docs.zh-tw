@@ -82,7 +82,7 @@
           href: workspace-connected-regions.md
     - name: 安全性
       items:
-        - name: 總覽
+        - name: 概觀
           href: sql-data-warehouse-overview-manage-security.md
         - name: 進階資料安全性
           items:
@@ -106,7 +106,7 @@
               href: ../../azure-sql/database/vnet-service-endpoint-rule-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
         - name: 驗證
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql-data-warehouse-authentication.md
             - name: Azure Active Directory
               href: ../../azure-sql/database/authentication-aad-overview.md?bc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2fsql-data-warehouse%2ftoc.json
@@ -140,7 +140,7 @@
           href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
     - name: 部署
       items:
-        - name: 總覽
+        - name: 概觀
           href: sql-data-warehouse-overview-develop.md
         - name: 最佳作法
           href: sql-data-warehouse-best-practices-development.md
@@ -366,6 +366,8 @@
           href: sql-data-warehouse-restore-deleted-dw.md
         - name: 從異地備份還原
           href: sql-data-warehouse-restore-from-geo-backup.md
+        - name: 停用異地備份
+          href: disable-geo-backup.md
     - name: 整合
       items:
         - name: 使用機器學習服務

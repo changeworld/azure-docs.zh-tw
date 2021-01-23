@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 990c396c859477c83e0ef421659a299920ee0c35
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 44d78d9a47f86520a3a4778806c4ddc0f96eec94
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209129"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737892"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Linux 虛擬機器的 Azure Hybrid Benefit 套用方式
 
@@ -155,7 +155,7 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 從 VM 本身中，您可以在 Azure Instance Metadata Service 中查詢證明中繼資料，以判斷 VM 的 `licenseType` 值。 `licenseType`或的值 `RHEL_BYOS` `SLES_BYOS` 會指出您的 VM 已啟用權益。 [深入瞭解證明中繼資料](./instance-metadata-service.md#attested-data)。
 
-## <a name="compliance"></a>合規性
+## <a name="compliance"></a>法規遵循
 
 ### <a name="red-hat"></a>Red Hat
 
@@ -227,4 +227,4 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 | 「無法完成動作，因為我們的記錄顯示您尚未成功啟用 Azure 訂用帳戶上的 Red Hat Cloud 存取 ...」。 | 若要使用 RHEL Vm 的優點，您必須先 [向 Red Hat Cloud Access 註冊您的 Azure 訂用](https://access.redhat.com/management/cloud)帳戶。
 
 ## <a name="next-steps"></a>後續步驟
-* [瞭解如何使用 Azure Hybrid Benefit 來建立和更新 Vm，以及新增授權類型 (RHEL_BYOS、SLES_BYOS) Azure CLI](/cli/azure/vm?preserve-view=true&view=azure-cli-latest)
+* [瞭解如何使用 Azure Hybrid Benefit 來建立和更新 Vm，以及新增授權類型 (RHEL_BYOS、SLES_BYOS) Azure CLI](/cli/azure/vm)

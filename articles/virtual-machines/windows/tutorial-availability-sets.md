@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2617308d342be19f74e1f3145a1137fadb04d073
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914683"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736647"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立及部署高可用性的虛擬機器
 
@@ -41,7 +41,7 @@ ms.locfileid: "97914683"
 
 Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中的步驟。 它具有預先安裝和設定的共用 Azure 工具，可與您的帳戶搭配使用。 
 
-若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
+若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看] 即可。 您也可以移至 [https://shell.azure.com/powershell](https://shell.azure.com/powershell)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
 ## <a name="create-an-availability-set"></a>建立可用性設定組
 
@@ -75,7 +75,7 @@ New-AzAvailabilitySet `
 
 您在透過 [New-AzVM](/powershell/module/az.compute/new-azvm) 建立 VM 時，會使用 `-AvailabilitySetName` 參數來指定可用性設定組的名稱。
 
-首先，使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) 設定 VM 的系統管理員使用者名稱和密碼：
+首先，使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential) 設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell-interactive
 $cred = Get-Credential

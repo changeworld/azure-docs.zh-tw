@@ -3,12 +3,12 @@ title: 使用客戶管理的金鑰來加密備份資料
 description: 瞭解 Azure 備份如何讓您使用客戶管理的金鑰 (CMK) 來加密備份資料。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562755"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735855"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
 
@@ -77,7 +77,7 @@ Azure 備份使用系統指派的受控識別來驗證復原服務保存庫，�
 
 **使用 PowerShell：**
 
-使用 [>new-azrecoveryservicesvault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) 命令為復原服務保存庫啟用系統指派的受控識別。
+使用 [>new-azrecoveryservicesvault](/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) 命令為復原服務保存庫啟用系統指派的受控識別。
 
 範例：
 
@@ -121,7 +121,7 @@ Type        : SystemAssigned
 
 **使用 PowerShell**：
 
-使用 [AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) 命令可使用客戶管理的金鑰來啟用加密，以及指派或更新要使用的加密金鑰。
+使用 [AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) 命令可使用客戶管理的金鑰來啟用加密，以及指派或更新要使用的加密金鑰。
 
 範例：
 
@@ -290,7 +290,7 @@ InfrastructureEncryptionState : Disabled
 
 **使用 PowerShell**：
 
-使用 [>backup-azrecoveryservicesbackupitem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) 命令搭配參數 [ `-DiskEncryptionSetId <string>` ]，以 [指定](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset) 要用來加密復原磁碟的 DES。 如需從 VM 備份復原磁碟的詳細資訊，請參閱 [這篇文章](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm)。
+使用 [>backup-azrecoveryservicesbackupitem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) 命令搭配參數 [ `-DiskEncryptionSetId <string>` ]，以 [指定](/powershell/module/az.compute/get-azdiskencryptionset) 要用來加密復原磁碟的 DES。 如需從 VM 備份復原磁碟的詳細資訊，請參閱 [這篇文章](./backup-azure-vms-automation.md#restore-an-azure-vm)。
 
 範例：
 

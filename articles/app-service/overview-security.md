@@ -5,12 +5,12 @@ keywords: azure app service, web 應用程式, 行動應用程式, api 應用程
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961494"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736100"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service 中的安全性
 
@@ -43,7 +43,7 @@ App Service 同時支援使用 FTP 和 FTPS 來部署您的檔案。 不過，�
 
 根據預設，App Service 應用程式會接受來自網際網路所有 IP 位址的要求，但是您可以限制存取一小部分的 IP 位址。 Windows 上的 App Service 可讓您定義允許存取應用程式的 IP 位址清單。 允許清單可以包含個別 IP 位址，或以子網路遮罩所定義的 IP 位址範圍。 如需詳細資訊，請參閱 [Azure App Service 靜態 IP 限制](app-service-ip-restrictions.md)。
 
-針對 Windows 上的 App Service，您也可以藉由設定_web.config_來動態限制 IP 位址。如需詳細資訊，請參閱[動態 \<dynamicIpSecurity> IP 安全性](/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
+針對 Windows 上的 App Service，您也可以藉由設定 _web.config_ 來動態限制 IP 位址。如需詳細資訊，請參閱 [動態 \<dynamicIpSecurity> IP 安全性](/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
 
 ## <a name="client-authentication-and-authorization"></a>用戶端驗證與授權
 
@@ -85,8 +85,8 @@ App Service 驗證和授權支援多個驗證提供者，包括 Azure Active Dir
 您可以用三種方式安全地存取內部部署資源，例如資料庫： 
 
 - [混合式連線](app-service-hybrid-connections.md) - 透過 TCP 通道，建立遠端資源的點對點連線。 使用 TLS 1.2 搭配共用存取簽章 (SAS) 金鑰，可以建立 TCP 通道。
-- 透過站對站 VPN 的[虛擬網路整合](web-sites-integrate-with-vnet.md) – 如 [Azure 虛擬網路內的資源](#resources-inside-an-azure-virtual-network)所述，但是虛擬網路可以透過[站對站 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 連線到您的內部部署網路。 在此網路拓撲中，您的應用程式可以連接到內部部署資源，例如虛擬網路中的其他資源。
-- 採用站對站 VPN 的 [App Service 環境](environment/intro.md) – 如 [Azure 虛擬網路內的資源](#resources-inside-an-azure-virtual-network)所述，但是虛擬網路可以透過[站對站 VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) 連線到您的內部部署網路。 在此網路拓撲中，您的應用程式可以連接到內部部署資源，例如虛擬網路中的其他資源。
+- 透過站對站 VPN 的[虛擬網路整合](web-sites-integrate-with-vnet.md) – 如 [Azure 虛擬網路內的資源](#resources-inside-an-azure-virtual-network)所述，但是虛擬網路可以透過[站對站 VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 連線到您的內部部署網路。 在此網路拓撲中，您的應用程式可以連接到內部部署資源，例如虛擬網路中的其他資源。
+- 採用站對站 VPN 的 [App Service 環境](environment/intro.md) – 如 [Azure 虛擬網路內的資源](#resources-inside-an-azure-virtual-network)所述，但是虛擬網路可以透過[站對站 VPN](../vpn-gateway/tutorial-site-to-site-portal.md) 連線到您的內部部署網路。 在此網路拓撲中，您的應用程式可以連接到內部部署資源，例如虛擬網路中的其他資源。
 
 ## <a name="application-secrets"></a>應用程式祕密
 

@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071726"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738113"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure 開機診斷
 
@@ -45,7 +45,7 @@ ms.locfileid: "98071726"
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-enable-portal.png" alt-text="在 VM 建立期間啟用 managed 開機診斷的螢幕擷取畫面。":::
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>使用 CLI 啟用受控開機診斷
-Azure CLI 2.12.0 和更新版本支援使用受管理的儲存體帳戶開機診斷。 如果您未輸入儲存體帳戶的名稱或 URI，將會使用受管理的帳戶。 如需詳細資訊和程式碼範例，請參閱 [開機診斷的 CLI 檔](/cli/azure/vm/boot-diagnostics?preserve-view=true&view=azure-cli-latest)。
+Azure CLI 2.12.0 和更新版本支援使用受管理的儲存體帳戶開機診斷。 如果您未輸入儲存體帳戶的名稱或 URI，將會使用受管理的帳戶。 如需詳細資訊和程式碼範例，請參閱 [開機診斷的 CLI 檔](/cli/azure/vm/boot-diagnostics)。
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>使用 Azure Resource Manager (ARM) 範本啟用受控開機診斷
 API 版本2020-06-01 之後的所有專案都支援受控開機診斷。 如需詳細資訊，請參閱 [開機診斷實例查看](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics)。

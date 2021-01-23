@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6538243cf8fc12131e1480c8578bfa8739c4f561
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e3ebd83646353e34c239e7d1812e380b9e9d2e26
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676284"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737518"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics 版本資訊中先前 (SQL DW) 專用 SQL 集區
 
@@ -52,7 +52,7 @@ ms.locfileid: "98676284"
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
 |**T-sql 內嵌 Table-Valued 函式 (預覽)**|在此版本中，您現在可以使用 Transact-sql 建立內嵌資料表值函式，並查詢其結果，就像處理資料表一樣。 這項功能目前為預覽狀態，在 GA 的工具中將會支援此功能。 如需詳細資訊，請參閱 [CREATE FUNCTION (Azure Synapse Analytics) ](/sql/t-sql/statements/create-function-sql-data-warehouse?view=azure-sqldw-latest&preserve-view=true)。|
-|**MERGE 命令 (preview)**|您現在可以從與來源資料表聯結的結果，在目標資料表上執行插入、更新或刪除作業。 例如，您可以根據在另一個資料表中所找到的差異在資料表中插入、更新或刪除資料列，以同步處理兩個資料表。  檢查 [合併](/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) 以取得詳細資料。|
+|**MERGE 命令 (preview)**|您現在可以從與來源資料表聯結的結果，在目標資料表上執行插入、更新或刪除作業。 例如，您可以根據在另一個資料表中所找到的差異在資料表中插入、更新或刪除資料列，以同步處理兩個資料表。  檢查 [合併](/sql/t-sql/statements/merge-transact-sql??view=azure-sqldw-latest&preserve-view=true) 以取得詳細資料。|
 
 ## <a name="aug-2020"></a>2020年8月
 
@@ -68,7 +68,7 @@ ms.locfileid: "98676284"
 |**資料行層級加密 (公開預覽)**|使用 Transact-sql 將對稱式加密套用至資料行，以保護您 Azure Synapse Analytics 中的機密資訊。 資料行層級加密具有內建函數，可讓您使用以憑證、密碼、對稱金鑰或非對稱金鑰進一步保護的對稱金鑰來加密資料。 如需詳細資訊，請造訪 [加密資料行](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest&preserve-view=true)。|
 |**(GA) 的相容性層級支援**|在此版本中，使用者現在可以設定資料庫的相容性層級，以取得特定版本 Synapse SQL 引擎的 Transact-SQL 語言和查詢處理行為。 如需詳細資訊，請參閱 [sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 和[改變資料庫範圍設定](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)。|
 |**資料列層級安全性**|此版本包含在其上強制執行 RLS 之資料列的更新和刪除作業的改進。 在此版本中，如果內建函式未參考 DML 目標資料表中的任何資料行，則具有 ' is_rolemember ' 等內建函式的更新和刪除作業將會成功。 在這項改進之前，這些作業會因為基礎 DML 作業的限制而失敗。|
-|**DBCC SHRINKDATABASE (GA)**|您現在可以壓縮指定之資料庫中的資料和記錄檔大小。 如需詳細資訊，請參閱 [檔](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)。|
+|**DBCC SHRINKDATABASE (GA)**|您現在可以壓縮指定之資料庫中的資料和記錄檔大小。 如需詳細資訊，請參閱 [檔](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=azure-sqldw-latest&preserve-view=true)。|
 
 ## <a name="may-2020"></a>2020 年 5 月
 

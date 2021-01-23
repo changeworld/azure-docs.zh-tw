@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 4c7ba5806707e818f0ef13717d5f00b542c37614
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 16cd4685f513eb628372802cc158195b81bce72a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092732"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736166"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用 App Service 和 Azure Functions 的受控身分識別
 
@@ -526,4 +526,4 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 - [使用受控識別安全地存取 Azure 儲存體](scenario-secure-app-access-storage.md)
 - [使用受控識別安全地呼叫 Microsoft Graph](scenario-secure-app-access-microsoft-graph-as-app.md)
 
-[Microsoft.Azure.Services.AppAuthentication 參考]: ../key-vault/general/service-to-service-authentication.md
+[Microsoft.Azure.Services.AppAuthentication 參考]: /dotnet/api/overview/azure/service-to-service-authentication

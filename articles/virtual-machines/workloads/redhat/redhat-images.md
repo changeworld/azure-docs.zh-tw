@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: dbff136ac5787ef9549cca9dc8f946c56a138986
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 293245d6778a40e234cdca177905c15dc88dd04f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900496"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737756"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映射總覽
 
@@ -60,8 +60,8 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> 一般而言，比較版本以決定最新版本的程序會遵循 [CompareTo 方法](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_)來進行。
-此映射版本比較是藉由比較這些值做為 [版本](/dotnet/api/system.version.-ctor?view=netframework-4.8) 物件（而不是字串）來完成。
+> 一般而言，比較版本以決定最新版本的程序會遵循 [CompareTo 方法](/dotnet/api/system.version.compareto#system_version_compareto_system_version_)來進行。
+此映射版本比較是藉由比較這些值做為 [版本](/dotnet/api/system.version.-ctor) 物件（而不是字串）來完成。
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 映射類型
 
@@ -146,7 +146,7 @@ RedHat:RHEL:7.6:7.6.2019102813
 RHEL 7.4      |RedHat： RHEL：7.4：7.4.2019041718 | 預設會 EUS 2019 年4月和之後發行的映射。|
 RHEL 7.5      |RedHat： RHEL：7.5：7.5.2019060305 | 預設會 EUS 在2019年6月和之後發佈的映射。 |
 RHEL 7.6      |RedHat： RHEL：7.6：7.6.2019052206 | 預設會 EUS 發佈的映射（2019和更新版本）。 |
-RHEL 8。0      |不適用                            | Red Hat 沒有任何可用的 EUS。                               |
+RHEL 8。0      |N/A                            | Red Hat 沒有任何可用的 EUS。                               |
 
 ### <a name="update-services-for-sap"></a>適用于 SAP 的更新服務
 

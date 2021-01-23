@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 0691411f57944f8203120ec2a6ed19013135458c
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 8db556709f68a1184046989a15fad147542a05a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920248"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735736"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器中計劃性維護通知
 
@@ -25,7 +25,7 @@ ms.locfileid: "94920248"
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>預定進行的維護-持續時間和客戶影響
 
-針對指定的 Azure 區域進行預定的維護通常預期會執行15小時。 如果有需要，此視窗也包含可執行復原計畫的緩衝區時間。 在規劃的維護期間，可能會有資料庫伺服器重新開機或容錯移轉，這可能會導致使用者短暫無法使用資料庫伺服器。 適用於 PostgreSQL 的 Azure 資料庫伺服器正在容器中執行，因此資料庫伺服器重新開機通常會快速完成，通常會在60-120 秒內完成。 整個規劃的維護事件（包括每個伺服器重新開機）都會由工程團隊進行審慎的監控。 伺服器容錯移轉時間取決於資料庫復原時間，如果您在容錯移轉時，伺服器上有繁重的交易活動，可能會導致資料庫上線。 若要避免較長的重新開機時間，建議您在規劃的維護事件期間，避免任何長時間執行的交易 (大量載入) 。
+針對指定的 Azure 區域預定進行的維修，通常會在15小時內完成。 此時間範圍也包含緩衝時間，可在必要時執行復原計畫。 適用於 PostgreSQL 的 Azure 資料庫伺服器正在容器中執行，因此資料庫伺服器重新開機通常需要60-120 秒的時間才能完成，但沒有決定性的方法可以得知在此15小時內的時間範圍內，您的伺服器將受到影響。 整個規劃的維護事件（包括每個伺服器重新開機）都會由工程團隊進行審慎的監控。 伺服器容錯移轉時間取決於資料庫復原，如果您在容錯移轉時，伺服器上有繁重的交易活動，可能會導致資料庫上線。 若要避免較長的重新開機時間，建議您在規劃的維護事件期間，避免任何長時間執行的交易 (大量載入) 。
 
 總而言之，雖然規劃的維護事件會執行15小時，但是根據伺服器上的交易活動，個別伺服器的影響通常會持續60秒。 在規劃的維護開始前，會傳送一則通知到72的行事歷時數，另一個則是針對指定區域進行維護。
 

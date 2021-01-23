@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 73984694d764234e9e1ec11e6b189a9ad85d97a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969971"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737399"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>針對 Azure 映射產生器服務進行疑難排解
 
@@ -50,7 +50,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 範本已經存在。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 如果您提交映射設定範本，但提交失敗，則範本成品仍然存在。 刪除失敗的範本。
 
@@ -73,7 +73,7 @@ Microsoft.VirtualMachineImages/imageTemplates 'helloImageTemplateforSIG01' faile
 
 在大部分情況下，因為缺少許可權，所以會發生資源部署失敗錯誤。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 根據您的案例，Azure 映射產生器可能需要下列許可權：
 - 來源映射或共用映射庫資源群組
@@ -95,7 +95,7 @@ Status=403 Code="AuthorizationFailed" Message="The client '......' with object i
 
 缺少許可權。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 根據您的案例，Azure 映射產生器可能需要下列許可權：
 * 來源映射或共用映射庫資源群組
@@ -115,7 +115,7 @@ Status=404 Code="ResourceNotFound" Message="The Resource 'Microsoft.Compute/gall
 
 Azure 映射產生器找不到來源映射。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 請確定來源映射正確，且存在於 Azure 映射產生器服務的位置。
 
@@ -131,7 +131,7 @@ Downloading external file (<myFile>) to local file (xxxxx.0.customizer.fp) [atte
 
 檔案名或位置不正確，或無法連線到該位置。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 請確定該檔案可供存取。 請確認名稱和位置是否正確。
 
@@ -152,7 +152,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 當映射組建正在執行時，會建立記錄並儲存在儲存體帳戶中。 當您建立映射範本成品時，Azure 映射產生器會在暫存資源群組中建立儲存體帳戶。
 
-儲存體帳戶名稱會使用下列模式： **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\> **
+儲存體帳戶名稱會使用下列模式： **IT_ \<ImageResourceGroupName\> _\<TemplateName\>_ \<GUID\>**
 
 例如， *IT_aibmdi_helloImageTemplateLinux01*。
 
@@ -194,7 +194,7 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
     PACKER OUT ==> azure-arm: Connected to SSH!
     ```
 
-4. 執行自訂階段。 當自訂執行時，您可以藉由檢查自訂 .log 來識別這些自訂。 搜尋 * (遙測) *。
+4. 執行自訂階段。 當自訂執行時，您可以藉由檢查自訂 .log 來識別這些自訂。 搜尋 *(遙測)*。
     ```text
     (telemetry) Starting provisioner windows-update
     (telemetry) ending windows-update
@@ -243,9 +243,9 @@ Get-AzImageBuilderTemplate -ImageTemplateName  <imageTemplateName> -ResourceGrou
 
 自訂失敗。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
-查看記錄以找出自訂失敗。 搜尋 * (遙測) *。 
+查看記錄以找出自訂失敗。 搜尋 *(遙測)*。 
 
 例如：
 ```text
@@ -273,7 +273,7 @@ Deployment failed. Correlation ID: xxxxx-xxxx-xxxx-xxxx-xxxxxxxxx. Failed in bui
 
 組建超過組建的超時時間。 此錯誤會出現在 ' lastrunstatus ' 中。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 1. 檢查自訂 .log。 識別最後一個要執行的自訂器。 `(telemetry)`從記錄檔底部開始搜尋。 
 
@@ -306,7 +306,7 @@ myBigFile.zip 826000 B / 826000 B  100.00%
 
 檔案自訂員正在下載大型檔案。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 檔案自訂項僅適用于小於 20 MB 的小型檔案下載。 針對較大的檔案下載，請使用腳本或內嵌命令。 例如，在 Linux 上，您可以使用 `wget` 或 `curl` 。 在 Windows 上，您可以使用 `Invoke-WebRequest` 。
 
@@ -320,7 +320,7 @@ Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in dis
 
 #### <a name="cause"></a>原因
 
-影像產生器超時，等候將映射新增並複寫到共用映射庫 (SIG) 。 如果映射要插入至 SIG，則可以假設映射組建成功。 但是，整體進程失敗，因為映射產生器正在等待共用映射庫完成複寫。 即使組建失敗，還是會繼續複寫。 您可以藉由檢查散發 *runOutput*來取得映射版本的屬性。
+影像產生器超時，等候將映射新增並複寫到共用映射庫 (SIG) 。 如果映射要插入至 SIG，則可以假設映射組建成功。 但是，整體進程失敗，因為映射產生器正在等待共用映射庫完成複寫。 即使組建失敗，還是會繼續複寫。 您可以藉由檢查散發 *runOutput* 來取得映射版本的屬性。
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -329,7 +329,7 @@ az resource show \
     --api-version=2019-05-01-preview
 ```
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 增加 **buildTimeoutInMinutes**。
  
@@ -384,7 +384,7 @@ az resource show \
 
 資源耗盡。 使用預設組建 VM 大小 D1_V2 Windows Update 執行時，通常會看到此問題。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 增加組建 VM 大小。
 
@@ -411,7 +411,7 @@ Done exporting Packer logs to Azure for Packer prefix: [a170b40d-2d77-4ac3-8719-
 
 等候建立所需的 Azure 資源所造成的超時時間。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 請重新執行組建，然後再試一次。
 
@@ -432,7 +432,7 @@ Done exporting Packer logs to Azure for Packer prefix: [a170b40d-2d77-4ac3-8719-
 
 缺少許可權。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 重新檢查 Azure 映射產生器具有其所需的擁有權限。 
 
@@ -498,7 +498,7 @@ Done exporting Packer logs to Azure for Packer prefix: [a170b40d-2d77-4ac3-8719-
 
 原因可能是因為 D1_V2 VM 大小的時間問題。 如果自訂受限且在三秒內執行，則 Azure 映射產生器會執行 sysprep 命令以取消布建。 當 Azure 映射建立器解除布建時，sysprep 命令會檢查是否有 *WindowsAzureGuestAgent*，而這可能不會完整安裝，而導致計時問題。 
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 增加 VM 大小。 或者，您可以新增60秒的 PowerShell 睡眠自訂，以避免計時問題。
 
@@ -521,7 +521,7 @@ PACKER ERR 2020/03/26 22:11:25 [INFO] RPC endpoint: Communicator ended with: 230
 #### <a name="cause"></a>原因
 映射產生器服務會使用埠 22 (Linux) ，或 5986 (Windows) 連接到組建 VM，這會在映射組建期間服務與組建 VM 中斷連線時發生。 中斷連接的原因可能會有所不同，但在腳本中啟用或設定防火牆可能會封鎖上述埠。
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 請參閱您的腳本，以進行防火牆變更/啟用，或對 SSH 或 WinRM 的變更，並確保在上述埠上的服務與組建 VM 之間有固定的連線能力。 如需有關 Image Builder 網路功能的詳細資訊，請參閱 [需求](./image-builder-networking.md)。
 
 ## <a name="devops-task"></a>DevOps 工作 
@@ -586,9 +586,9 @@ template name:  t_1556938436xxx
 
 如果使用者未取消組建，Azure DevOps 的使用者代理程式會將其取消。 由於 Azure DevOps 的功能，最有可能發生1小時的超時時間。 如果您使用的是私用專案和代理程式，則會收到60分鐘的組建時間。 如果組建超過此時間，DevOps 會取消正在執行的工作。
 
-如需 Azure DevOps 功能和限制的詳細資訊，請參閱 [Microsoft 裝載的代理程式](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations)
+如需 Azure DevOps 功能和限制的詳細資訊，請參閱 [Microsoft 裝載的代理程式](/azure/devops/pipelines/agents/hosted#capabilities-and-limitations)
  
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 您可以裝載自己的 DevOps 代理程式，或查看以縮短組建的時間。 例如，如果您要散發至共用映射庫，請複製到一個區域。 如果您想要以非同步方式複寫。 
 
@@ -600,7 +600,7 @@ template name:  t_1556938436xxx
 Please wait for the Windows Modules Installer
 ```
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 首先，在映射組建中，將 Windows 重新開機自訂程式新增為最後一次自訂，並完成所有的軟體安裝，以確認沒有任何未完成的重新開機。 最後，將 [/mode： vm](/windows-hardware/manufacture/desktop/sysprep-command-line-options) 選項新增至 AIB 使用的預設 sysprep，如下所示：「從 AIB 映射建立的 vm 未成功建立」 > ' 覆寫命令」  
 
  

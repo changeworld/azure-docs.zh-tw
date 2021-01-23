@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 117bc71ba304445e3186b4e633f5888647be9223
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685624"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737960"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -36,6 +36,7 @@ ms.locfileid: "98685624"
     + 已修正服務的問題。請重載 ( # A1 以在本機部署中收取 score.py 的變更。
     + `run.get_details()` 有一個名為 "submittedBy" 的額外欄位，會顯示此執行的作者名稱。
     + 已編輯的模型。請註冊方法檔，以提及如何直接從執行中註冊模型
+    + 修正 IOT-Server 連接狀態變更處理問題。
    
 
 ## <a name="2020-12-31"></a>2020-12-31
@@ -895,7 +896,7 @@ ms.locfileid: "98685624"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
     
-| 以 Web 為基礎的工具  |     Description  |
+| 以 Web 為基礎的工具  |     描述  |
 |---|---|
 | Azure ML Studio 筆記本   |     第一次針對筆記本檔案進行類別撰寫，並支援 Azure ML Python SDK 中所有可用的作業。 | 
 
@@ -1407,7 +1408,7 @@ ms.locfileid: "98685624"
 
 從 studio 存取下列以網頁為基礎的編寫工具：
 
-| 以 Web 為基礎的工具 | Description | 
+| 以 Web 為基礎的工具 | 描述 | 
 |-|-|-|
 | 筆記本 VM (預覽)  | 完全受控的雲端式工作站 | 
 | [自動化機器學習](tutorial-first-experiment-automated-ml.md) (預覽)  | 自動化機器學習模型開發的程式碼體驗 | 
@@ -2278,6 +2279,6 @@ Azure Machine Learning 現在是事件方格的資源提供者，您可以透過
   + 新記錄檔檢視器
   + [活動] 索引標籤中的實驗執行、計算、模型、映射和部署的連結
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 閱讀 [Azure Machine Learning](overview-what-is-azure-ml.md) 概觀。

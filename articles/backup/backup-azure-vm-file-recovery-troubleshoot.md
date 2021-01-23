@@ -3,12 +3,12 @@ title: 針對 Azure VM 檔復原進行疑難排解
 description: 針對從 Azure VM 備份復原檔案和資料夾時所發生的問題進行疑難排解。
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: aec69b91ad1dae5864e5e8fba61c53e6d15887f4
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624501"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735872"
 ---
 # <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>針對 Azure VM 備份的檔案復原問題進行疑難排解
 
@@ -46,7 +46,7 @@ ms.locfileid: "98624501"
 
 ### <a name="you-cant-download-the-script"></a>您無法下載腳本
 
-1. 確定您擁有 [下載腳本的必要許可權](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script)。
+1. 確定您擁有 [下載腳本的必要許可權](./backup-azure-restore-files-from-vm.md#select-recovery-point-who-can-generate-script)。
 1. 確認與 Azure 目標 Ip 的連接。 從提升許可權的命令提示字元中執行下列其中一個命令：
 
    `nslookup download.microsoft.com`
@@ -67,7 +67,7 @@ ms.locfileid: "98624501"
 
 您可能會看到「連接到目標時攔截到例外狀況」錯誤訊息。
 
-1. 確定執行腳本的電腦符合 [存取需求](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script)。
+1. 確定執行腳本的電腦符合 [存取需求](./backup-azure-restore-files-from-vm.md#step-4-access-requirements-to-successfully-run-the-script)。
 1. 確認與 Azure 目標 Ip 的連接。 從提升許可權的命令提示字元中執行下列其中一個命令：
 
    `nslookup download.microsoft.com`

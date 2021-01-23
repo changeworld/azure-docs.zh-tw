@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e603442bdecf9a627172e24390b06cef573f475
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 10c1680afd6cd6673efe3fe9d2397a0dc6a04859
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028564"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738520"
 ---
 視用戶端的作業系統而定，從遠端連線到裝置的程式會有所不同。
 
@@ -23,6 +23,8 @@ ms.locfileid: "96028564"
 2. 確定您的用戶端上正在執行 Windows 遠端管理服務。 在命令提示字元中，輸入：
 
     `winrm quickconfig`
+
+    如需詳細資訊，請參閱 [Installation and Configuration for Windows Remote Management](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management#quick-default-configuration) (Windows 遠端管理的安裝和設定)。
 
 3. 將變數指派給裝置 IP 位址。
 

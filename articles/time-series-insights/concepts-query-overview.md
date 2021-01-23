@@ -8,16 +8,16 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 5682cf9856ad8969d930d72f53e888b03ff6ae75
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: bf743bf1997a339664a6da2e5c02f1bcc1deea26
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020856"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736746"
 ---
-# <a name="querying-data-from-azure-time-series-insights-gen2"></a>查詢 Azure 時間序列深入解析 Gen2 中的資料
+# <a name="querying-data-from-azure-time-series-insights-gen2"></a>從 Azure 時間序列深入解析 Gen2 查詢資料 (機器翻譯)
 
 Azure 時間序列深入解析 Gen2 可讓您透過公用介面 Api，在環境中儲存的事件和中繼資料上進行查詢。 [AZURE 時間序列深入解析 TSI Explorer](./concepts-ux-panels.md)也會使用這些 api。
 
@@ -70,7 +70,7 @@ Azure 時間序列深入解析 Gen2 使用以字串為基礎的豐富運算式�
 
   回應集中傳回的時間戳記是左邊的間隔界限，而不是間隔中的取樣事件。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解可在 [時間序列模型](./concepts-model-overview.md)中定義的不同變數。
 * 閱讀有關如何從 [Azure 時間序列深入解析 Explorer](./concepts-ux-panels.md)查詢資料的詳細資訊。

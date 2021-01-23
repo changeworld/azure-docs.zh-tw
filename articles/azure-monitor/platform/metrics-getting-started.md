@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: e31eb8deb3102ab03809f01e33b1e6548113dae4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250395"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736384"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>開始使用 Azure 計量瀏覽器
 
@@ -29,7 +29,7 @@ Azure 監視器計量瀏覽器是 Microsoft Azure 入口網站的一個元件，
 
 若要建立度量圖表，請從您的資源、資源群組、訂用帳戶或 Azure 監視器視圖開啟 [ **計量** ] 索引標籤，然後遵循下列步驟：
 
-1. 按一下 [選取範圍] 按鈕，以開啟資源範圍選取器。 這可讓您選取您想要查看其計量) 的資源 (。 如果您從資源的功能表開啟計量瀏覽器，則應該已經填入資源。 若要瞭解如何跨多個資源查看計量，請 [閱讀這篇文章](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-dynamic-scope)。
+1. 按一下 [選取範圍] 按鈕，以開啟資源範圍選取器。 這可讓您選取您想要查看其計量) 的資源 (。 如果您從資源的功能表開啟計量瀏覽器，則應該已經填入資源。 若要瞭解如何跨多個資源查看計量，請 [閱讀這篇文章](./metrics-dynamic-scope.md)。
     > ![選取資源](./media/metrics-getting-started/scope-picker.png)
 
 2. 針對某些資源，您必須挑選命名空間。 命名空間只是組織計量而讓您可以輕鬆找到計量的一種方式。 例如，儲存體帳戶有個別的命名空間，用來儲存檔案、資料表、Blob 和佇列計量。 許多資源類型只有一個命名空間。

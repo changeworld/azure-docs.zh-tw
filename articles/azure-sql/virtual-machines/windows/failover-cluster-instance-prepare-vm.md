@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 10f01fd5943928eda1f1e4518f30c8e3ccf56b46
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223154"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737790"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>針對 Azure Vm 上的 FCI (SQL Server 準備虛擬機器) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "98223154"
 
 若要深入瞭解，請參閱 [使用 Azure vm 上的 SQL Server](failover-cluster-instance-overview.md) 和叢集 [最佳作法](hadr-cluster-best-practices.md)的 FCI 總覽。 
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 - Microsoft Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
 - Azure 虛擬機器上的 Windows 網域或內部部署資料中心會透過虛擬網路配對延伸至 Azure。
@@ -44,7 +44,7 @@ ms.locfileid: "98223154"
 
 ## <a name="configure-vm-availability"></a>設定 VM 可用性 
 
-「容錯移轉叢集」功能需要將虛擬機器放置於 [可用性設定組](../../../virtual-machines/linux/tutorial-availability-sets.md) 或 [可用性區域](../../../availability-zones/az-overview.md#availability-zones)中。 如果您選擇可用性設定組，您可以使用 [鄰近放置群組](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) 來找出更接近的 vm。 事實上，鄰近放置群組是使用 Azure 共用磁片的必要條件。 
+「容錯移轉叢集」功能需要將虛擬機器放置於 [可用性設定組](../../../virtual-machines/linux/tutorial-availability-sets.md) 或 [可用性區域](../../../availability-zones/az-overview.md#availability-zones)中。 如果您選擇可用性設定組，您可以使用 [鄰近放置群組](../../../virtual-machines/co-location.md#proximity-placement-groups) 來找出更接近的 vm。 事實上，鄰近放置群組是使用 Azure 共用磁片的必要條件。 
 
 請小心選取符合您預期叢集設定的 VM 可用性選項： 
 

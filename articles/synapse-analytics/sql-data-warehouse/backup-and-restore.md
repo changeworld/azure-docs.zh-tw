@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: d8c680ec30dcecc56c064f08e4690cbbde9c2377
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 842f2f92133664f58ca60d6d30181d48d63271eb
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679908"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736300"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse 專用 SQL 集區中的備份與還原
 
@@ -71,8 +71,16 @@ order by run_id desc
 
 每天建立一次異地備份至 [配對的資料中心](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 異地還原的 RPO 為 24 小時。 您可以將異地備份還原到支援專用 SQL 集區之任何其他區域中的伺服器。 萬一您無法存取主要地區中的還原點，異地備份可以確保您能夠還原資料倉儲。
 
+如果您的專用 SQL 集區不需要異地備份，您可以將其停用並節省嚴重損壞修復儲存體成本。 若要這樣做，請參閱作法 [指南：停用專用 sql 集區的異地備份 (先前為 SQL DW) ](disable-geo-backup.md)。 請注意，如果您停用異地備份，如果您的主要 Azure 資料中心無法使用，您將無法將專用的 SQL 集區復原到配對的 Azure 區域。 
+
 > [!NOTE]
 > 如果您的異地備份需要較短的 RPO，請[在此](https://feedback.azure.com/forums/307516-sql-data-warehouse)投票給這項功能。 您也可以建立使用者定義的還原點，並從新建立的還原點還原到不同區域中的新資料倉儲。 還原之後，資料倉儲會上線，而您可以無限期地暫停它來節省計算成本。 暫停的資料庫會產生儲存體費用，以「Azure 進階儲存體」費率計費。 如果您需要作用中的資料倉儲副本，您可以讓其恢復運上線 (只需幾分鐘的時間)。
+
+## <a name="data-residency"></a>資料存留處 
+
+如果您配對的資料中心位於您的地理界限之外，您可以退出宣告地理位置多餘的儲存體，以確保您的資料會保留在您的地理界限內。 當您在建立或還原先前為 SQL DW) 的專用 SQL (集區時，透過地理位置重複的儲存體選項，在布建您專用的 SQL 集區 (先前的 SQL DW) 時，可以完成這項操作。 
+
+若要確認您配對的資料中心位於不同的國家/地區，請參閱 [Azure 配對的區域](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="backup-and-restore-costs"></a>備份與還原成本
 
@@ -105,6 +113,6 @@ order by run_id desc
 > [!NOTE]
 > 若要執行異地備援還原，您不可選擇退出這項功能。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需還原點的詳細資訊，請參閱 [使用者定義的還原點](sql-data-warehouse-restore-points.md)

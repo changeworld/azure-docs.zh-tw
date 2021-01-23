@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 01a41e9acccdb40bf198031d13c3ea3f13c079ce
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8b862238c0c04fae72659d644dbaf882d00cca19
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180144"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735685"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>採用 Azure Resource Manager 範本的預期狀態設定延伸模組
 
@@ -32,7 +32,7 @@ ms.locfileid: "98180144"
 
 下列程式碼片段會進入範本的 **Resource** 區段。
 DSC 延伸模組會繼承預設的延伸模組屬性。
-如需詳細資訊，請參閱 [VirtualMachineExtension 類別](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet)(英文\)。
+如需詳細資訊，請參閱 [VirtualMachineExtension 類別](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension)(英文\)。
 
 ```json
 {
@@ -85,7 +85,7 @@ DSC 延伸模組會繼承預設的延伸模組屬性。
 在 **extensions** 下方新增 DSC 擴充功能的詳細資料。
 
 DSC 延伸模組會繼承預設的延伸模組屬性。
-如需詳細資訊，請參閱 [VirtualMachineScaleSetExtension 類別](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet)(英文\)。
+如需詳細資訊，請參閱 [VirtualMachineScaleSetExtension 類別](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension)(英文\)。
 
 ```json
 "extensionProfile": {

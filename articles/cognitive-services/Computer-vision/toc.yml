@@ -139,7 +139,7 @@
         - name: 探索映像處理應用程式
           href: Tutorials/CSharpTutorial.md
         - name: 其他電腦視覺範例
-          href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=computer-vision'
+          href: /samples/browse/?products=azure&terms=computer-vision
     - name: 常見問題集
       href: FAQ.md
     - name: 類別分類法

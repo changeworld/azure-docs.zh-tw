@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f9f37bc27c54971c15db457abf157e04cc5d60e8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: b28d7ee5d2eeb1015695e32e5918bd94f9051050
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914666"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736663"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視變更及更新 Windows 虛擬機器
 
@@ -37,7 +37,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 若要在本教學課程中設定 Azure 監視和更新管理，您需要在 Azure 中擁有 Windows VM。
 
-首先，使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) 設定 VM 的系統管理員使用者名稱和密碼：
+首先，使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential) 設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell-interactive
 $cred = Get-Credential

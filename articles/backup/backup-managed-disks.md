@@ -3,12 +3,12 @@ title: 備份 Azure 受控磁碟
 description: 瞭解如何從 Azure 入口網站備份 Azure 受控磁碟。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573117"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738147"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>在預覽中備份 Azure 受控磁碟 () 
 
@@ -17,7 +17,7 @@ ms.locfileid: "98573117"
 >
 >[填寫此表單](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) 以註冊預覽。
 
-本文說明如何從 Azure 入口網站備份 [Azure 受控磁片](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) 。
+本文說明如何從 Azure 入口網站備份 [Azure 受控磁片](../virtual-machines/managed-disks-overview.md) 。
 
 在本文中，您將學會如何：
 
@@ -46,7 +46,7 @@ ms.locfileid: "98573117"
 
    ![起始：建立保存庫](./media/backup-managed-disks/initiate-create-vault.png)
 
-1. 在 [ **基本** ] 索引標籤中，提供訂用帳戶、資源群組、備份保存庫名稱、區域和備份儲存體冗余。 選取 [ **審核 + 建立**] 繼續進行。 深入瞭解如何 [建立備份保存庫](https://docs.microsoft.com/azure/backup/backup-vault-overview#create-a-backup-vault)。
+1. 在 [ **基本** ] 索引標籤中，提供訂用帳戶、資源群組、備份保存庫名稱、區域和備份儲存體冗余。 選取 [ **審核 + 建立**] 繼續進行。 深入瞭解如何 [建立備份保存庫](./backup-vault-overview.md#create-a-backup-vault)。
 
    ![檢查和建立保存庫](./media/backup-managed-disks/review-and-create.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "98573117"
 
    ![選取備份排程頻率](./media/backup-managed-disks/backup-schedule-frequency.png)
 
-   Azure 磁片備份每天提供多個備份。 如果您需要更頻繁的備份，請選擇 [ **每小時** 備份頻率]，讓您能夠以每4、6、8或12小時的間隔進行備份。 備份會根據選取的 **時間** 間隔進行排程。 例如，如果您選取 **每4小時**，則會在每隔4小時的間隔內大約進行備份，讓備份在一天內平均分散。 如果一天備份已足夠，請選擇 **每日** 備份頻率。 在 [每日備份頻率] 中，您可以指定執行備份的當日時間。 請務必注意，一天中的時程表示備份開始時間，而不是備份完成的時間。 完成備份作業所需的時間取決於各種因素，包括磁片的大小，以及連續備份之間的流失率。 不過，Azure 磁片備份是使用 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal)的無代理程式備份，這不會影響生產應用程式的效能。
+   Azure 磁片備份每天提供多個備份。 如果您需要更頻繁的備份，請選擇 [ **每小時** 備份頻率]，讓您能夠以每4、6、8或12小時的間隔進行備份。 備份會根據選取的 **時間** 間隔進行排程。 例如，如果您選取 **每4小時**，則會在每隔4小時的間隔內大約進行備份，讓備份在一天內平均分散。 如果一天備份已足夠，請選擇 **每日** 備份頻率。 在 [每日備份頻率] 中，您可以指定執行備份的當日時間。 請務必注意，一天中的時程表示備份開始時間，而不是備份完成的時間。 完成備份作業所需的時間取決於各種因素，包括磁片的大小，以及連續備份之間的流失率。 不過，Azure 磁片備份是使用 [增量快照](../virtual-machines/disks-incremental-snapshots.md)的無代理程式備份，這不會影響生產應用程式的效能。
 
 1. 在 [ **備份原則** ] 索引標籤中，選取符合復原點目標的保留設定 (RPO) 需求。
 
@@ -80,7 +80,7 @@ ms.locfileid: "98573117"
    ![保留設定](./media/backup-managed-disks/retention-settings.png)
 
    >[!NOTE]
-   >受控磁碟的 Azure 備份會使用每個磁片最多200個快照集的累加式快照集。 為了讓您在排程的備份之外進行隨選備份，備份原則會將備份總數限制為180。 深入瞭解受控磁片的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 集。
+   >受控磁碟的 Azure 備份會使用每個磁片最多200個快照集的累加式快照集。 為了讓您在排程的備份之外進行隨選備份，備份原則會將備份總數限制為180。 深入瞭解受控磁片的 [增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) 集。
 
 1. 選取 [ **審核 + 建立**]，完成備份原則的建立。
 
@@ -88,7 +88,7 @@ ms.locfileid: "98573117"
 
 備份保存庫會使用受控識別來存取其他 Azure 資源。 若要設定受控磁片的備份，備份保存庫的受控識別需要來源磁片上的一組許可權，以及建立及管理快照集的資源群組。
 
-系統指派的受控識別會限制為每個資源一個，並系結到此資源的生命週期。 您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與受控識別。 受控識別是特殊類型的服務主體，只可搭配 Azure 資源使用。 深入瞭解 [受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
+系統指派的受控識別會限制為每個資源一個，並系結到此資源的生命週期。 您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與受控識別。 受控識別是特殊類型的服務主體，只可搭配 Azure 資源使用。 深入瞭解 [受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
 
 若要設定受控磁片的備份，必須具備下列必要條件：
 
@@ -115,7 +115,7 @@ ms.locfileid: "98573117"
 
    - 您可以使用此資源群組，將快照集儲存在要 (或計畫) 備份的多個磁片上。  
 
-   - 您無法為該磁片訂用帳戶以外的特定磁片建立增量快照集。 因此，請選擇與要備份之磁片相同的訂用帳戶中的資源群組。 深入瞭解受控磁片的累加 [式快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 集。
+   - 您無法為該磁片訂用帳戶以外的特定磁片建立增量快照集。 因此，請選擇與要備份之磁片相同的訂用帳戶中的資源群組。 深入瞭解受控磁片的累加 [式快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) 集。
 
    若要指派角色，請遵循下列步驟：
 
@@ -129,8 +129,6 @@ ms.locfileid: "98573117"
    >輸入備份保存庫名稱，以選取保存庫的受控識別。
 
    ![新增磁片快照集參與者角色](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
-
-1. 如果要備份的磁片使用 [客戶管理的金鑰進行加密 (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal)或使用 [以平臺管理的金鑰和客戶管理的金鑰進行雙重加密](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)，然後在 **磁片加密集** 資源上，將「**讀取** 者」角色許可權指派給備份保存庫的受控識別。
 
 1. 確認備份保存庫的受控識別在來源磁片和資源群組上有一組正確的角色指派，作為快照資料存放區。
 
@@ -154,7 +152,7 @@ ms.locfileid: "98573117"
    ![選取 Azure 磁片](./media/backup-managed-disks/select-azure-disk.png)
 
    >[!NOTE]
-   >Azure 備份使用受控磁片的 [增量快照](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) 集，這會在標準 HDD 儲存體上的上一個快照集之後，只儲存磁片的差異變更，不論父磁片的儲存體類型為何。 針對額外的可靠性，增量快照集會儲存在區域冗余儲存體 (ZRS) 預設位於支援 ZRS 的區域中。 目前，Azure 磁片備份支援不會將備份複製到備份保存庫儲存體之受控磁片的操作備份。 因此，備份保存庫的備份儲存體冗余設定不會套用至復原點。
+   >Azure 備份使用受控磁片的 [增量快照](../virtual-machines/disks-incremental-snapshots.md#restrictions) 集，這會在標準 HDD 儲存體上的上一個快照集之後，只儲存磁片的差異變更，不論父磁片的儲存體類型為何。 針對額外的可靠性，增量快照集會儲存在區域冗余儲存體 (ZRS) 預設位於支援 ZRS 的區域中。 目前，Azure 磁片備份支援不會將備份複製到備份保存庫儲存體之受控磁片的操作備份。 因此，備份保存庫的備份儲存體冗余設定不會套用至復原點。
 
 1. 在 [ **備份原則** ] 索引標籤中，選擇備份原則。
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: '使用 Gitops) 將來設定啟用 Azure Arc 的 Kubernetes 叢集 (預覽) '
 keywords: Gitops) 將、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、AKS、容器
-ms.openlocfilehash: 751b274a9cae68f6bc9b1adc45804f2dd2ef4c72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684752"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737179"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在已啟用 Arc 的 Kubernetes 叢集上使用 GitOps 部署設定 (預覽)
 
@@ -138,7 +138,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > 只有 Helm 運算子圖表版本 >= 1.2.0 才支援 HTTPS Helm release 私用驗證。  預設會使用版本1.2.0。
 > 目前不支援 Azure Kubernetes Services 受控叢集的 HTTPS Helm release 私用驗證。
-> 如果您需要透過 proxy 存取 Git 儲存機制的 Flux，則必須使用 proxy 設定來更新 Azure Arc 代理程式。 [詳細資訊](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
+> 如果您需要透過 proxy 存取 Git 儲存機制的 Flux，則必須使用 proxy 設定來更新 Azure Arc 代理程式。 [詳細資訊](./connect-cluster.md#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>其他參數
 

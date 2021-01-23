@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
-ms.translationtype: HT
+ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503789"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735770"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 訂用帳戶
 
@@ -79,7 +79,7 @@ ms.locfileid: "97503789"
 
 ## <a name="reactivate-a-subscription"></a>重新啟用訂用帳戶
 
-如果您不小心取消採用隨用隨付費率的訂用帳戶，您可以[在帳戶中心重新啟動它](subscription-disabled.md)。
+如果您不小心取消採用隨用隨付費率的訂用帳戶，您可以 [在 Azure 入口網站中重新啟用它](subscription-disabled.md)。
 
 如果您的訂用帳戶不是採用隨用隨付費率的訂用帳戶，請在取消後的 90 天內與支援服務連絡，以重新啟用您的訂用帳戶。
 
@@ -101,4 +101,4 @@ ms.locfileid: "97503789"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如有需要，您可以在[帳戶中心](subscription-disabled.md)重新啟用隨用隨付訂用帳戶。
+- 如有需要，您可以在 [Azure 入口網站](subscription-disabled.md)中重新啟用隨用隨付訂用帳戶。

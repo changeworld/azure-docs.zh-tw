@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: 0c201ce984a216a5cc62e221c0433f83a7eeabae
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7b37934ff3b867b83c2c958d52bea2dd4db01354
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021757"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736796"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 時間序列深入解析 Gen2 中的時間序列模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "95021757"
 > * 請移至 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples) 環境，以取得即時時間序列模型範例。
 > * 瞭解如何使用 Azure 時間序列深入解析 Explorer [來使用時間序列模型](./how-to-edit-your-model.md) 。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 傳統上，從 IoT 裝置收集的資料缺發關聯的資訊，因此很難快速地尋找及分析感應器。 時間序列模型的主要動機是簡化尋找及分析 IoT 或時間序列資料的動機。 它藉由啟用時間序列資料的鑒藏、維護和擴充，協助準備取用者就緒的資料集來進行分析，以達成此目標。
 
@@ -75,7 +75,7 @@ ms.locfileid: "95021757"
 
 [![時間序列模型總覽圖表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-您可以透過 [Azure 時間序列深入解析 Explorer]()來建立及管理時間序列模型。 時間序列模型設定可以透過 [模型設定 API](/rest/api/time-series-insights/reference-model-apis)來管理。
+您可以透過 [Azure 時間序列深入解析 Explorer](https://docs.microsoft.com/azure/time-series-insights/concepts-ux-panels)來建立及管理時間序列模型。 時間序列模型設定可以透過 [模型設定 API](/rest/api/time-series-insights/reference-model-apis)來管理。
 
 ## <a name="time-series-model-instances"></a>時間序列模型執行個體
 
@@ -97,7 +97,7 @@ ms.locfileid: "95021757"
 
 實例是由 **timeSeriesId**、 **typeId**、 **name**、 **description**、 **hierarchyIds** 和 **instanceFields** 所定義。 每個實例只能對應到一個 *類型*，以及一個或 *多個* 階層。
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 | --- | ---|
 | timeSeriesId | 與實例相關聯之時間序列的唯一識別碼。 在大部分情況下，實例是由 deviceId 或 assetId 之類的屬性來唯一識別。 在某些情況下，可以使用更明確的複合識別碼，最多可結合3個屬性。 |
 | typeId | 與實例相關聯的時間序列模型類型之區分大小寫的唯一字串識別碼。 依預設，所有探索到的新實例都會與預設型別建立關聯。
@@ -286,7 +286,7 @@ ms.locfileid: "95021757"
 
 時間序列模型類型可以有許多變數，以指定事件的公式和計算規則。 深入瞭解 [如何定義時間序列模型變數](./concepts-variables.md)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 如需有關如何透過 Api 編輯模型的詳細資訊，請參閱 [時間序列模型](/rest/api/time-series-insights/reference-model-apis) 參考檔。
 

@@ -5,18 +5,18 @@ description: 針對 Azure SQL Database 和 SQL 受控執行個體折扣使用現
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: features
-ms.custom: sqldbrb=4, devx-track-azurecli
+ms.custom: sqldbrb=4
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 11/13/2019
-ms.openlocfilehash: 872b36eae9142473885885d5bf5ad3fa10ae5ccb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 51cf4a4d3aa3cb4654b141a98064460a7152fcec
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841592"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737450"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid Benefit-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -89,8 +89,8 @@ SQL Database 的客戶與 SQL Server 的 Azure Hybrid Benefit 有下列相關聯
 
 |授權使用量|SQL Server 的 Azure Hybrid Benefit 有何説明？|
 |---|---|
-|具有 SA 的 SQL Server Enterprise Edition 核心客戶|<li>可以支付一般用途或業務關鍵 SKU 的基本費率</li><br><li>1 個內部部署核心 = 一般目的 SKU 中的 4 個核心</li><br><li>1 個內部部署核心 = 業務關鍵 SKU 中的 1 個核心</li>|
-|具有 SA 的 SQL Server Standard Edition 核心客戶|<li>只能支付一般目的 SKU 的基本費率</li><br><li>1 個內部部署核心 = 一般目的 SKU 中的 1 個核心</li>|
+|具有 SA 的 SQL Server Enterprise Edition 核心客戶|<li>可以根據超大規模、一般用途或業務關鍵 SKU 支付基本費率</li><br><li>1個內部部署核心 = 超大規模 SKU 中的4個核心</li><br><li>1 個內部部署核心 = 一般目的 SKU 中的 4 個核心</li><br><li>1 個內部部署核心 = 業務關鍵 SKU 中的 1 個核心</li>|
+|具有 SA 的 SQL Server Standard Edition 核心客戶|<li>只能支付超大規模和一般用途 SKU 的基本費率</li><br><li>1個內部部署核心 = 超大規模 SKU 中的1個核心</li><br><li>1 個內部部署核心 = 一般目的 SKU 中的 1 個核心</li>|
 |||
 
 

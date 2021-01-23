@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: 5baa6d57bd3895640f1654cf7a5ebca52f101cbe
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dae77dfb72fb6b11721500686991f2b199606b99
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970566"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737858"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>使用執行命令在 Linux VM 中執行 Shell 指令碼
 
@@ -21,7 +21,7 @@ ms.locfileid: "91970566"
 
 ## <a name="benefits"></a>優點
 
-您可以透過多種方式來存取虛擬機器。 執行命令可以使用虛擬機器代理程式，在虛擬機器上遠端執行指令碼。 您可透過 Azure 入口網站、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) 或適用於 Linux VM 的 [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)來使用 [執行] 命令。
+您可以透過多種方式來存取虛擬機器。 執行命令可以使用虛擬機器代理程式，在虛擬機器上遠端執行指令碼。 您可透過 Azure 入口網站、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) 或適用於 Linux VM 的 [Azure CLI](/cli/azure/vm/run-command#az_vm_run_command_invoke)來使用 [執行] 命令。
 
 這項功能在您想要在虛擬機器中執行指令碼的所有情況下都很有用。 這是針對因網路或管理使用者設定不當而未開啟 RDP 或 SSH 連接埠的虛擬機器，進行疑難排解和修復的唯一方法。
 
@@ -56,7 +56,7 @@ The entity was not found in this Azure location
 
 ## <a name="azure-cli"></a>Azure CLI
 
-下列範例使用 [az vm run-command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) 命令來在 Azure Linux VM 上執行 Shell 指令碼。
+下列範例使用 [az vm run-command](/cli/azure/vm/run-command#az_vm_run_command_invoke) 命令來在 Azure Linux VM 上執行 Shell 指令碼。
 
 ```azurecli-interactive
 az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript --scripts "apt-get update && apt-get install -y nginx"

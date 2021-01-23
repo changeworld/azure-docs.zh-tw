@@ -4,12 +4,12 @@ description: 尋找有關使用 Azure 備份備份 Azure Vm 上的 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 56dcf29a5c703a72fd137a5f1bf129f568a03b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734108"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735804"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有關在 Azure VM 備份上執行的 SQL Server 資料庫的常見問題
 
@@ -108,7 +108,7 @@ Azure 備份復原服務保存庫可以偵測和保護與保存庫位於相同�
 
 ## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Azure 備份是否在資料流程上執行總和檢查碼運算？
 
-我們會在資料流程上執行總和檢查碼運算。 不過，這不會與 SQL 總和 [檢查](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)碼混淆。
+我們會在資料流程上執行總和檢查碼運算。 不過，這不會與 SQL 總和 [檢查](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)碼混淆。
 Azure 工作負載備份會計算資料流程上的總和檢查碼，並且在備份作業期間明確地儲存總和檢查碼。 然後，在還原作業期間，會將此總和檢查碼串流視為參考，並交叉驗證資料流程的總和檢查碼，以確保資料一致。
 
 ## <a name="next-steps"></a>後續步驟

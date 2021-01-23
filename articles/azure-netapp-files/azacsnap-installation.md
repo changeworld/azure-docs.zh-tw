@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 5c2182fc80c3745e0238c378c1cade0530393181
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632611"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737162"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>安裝 Azure 應用程式一致的快照集工具 (預覽) 
 
@@ -34,9 +34,9 @@ ms.locfileid: "97632611"
 
 遵循指導方針來設定和執行快照集和嚴重損壞修復命令。 建議您在安裝和使用快照集工具之前，以 root 的形式完成下列步驟。
 
-1. **作業系統已修補**：請參閱 [如何在 Azure 上安裝和設定 SAP Hana (大型) 實例](/azure/virtual-machines/workloads/sap/hana-installation#setting-up-smt-server-for-suse-linux)的修補和 SMT 設定。
+1. **作業系統已修補**：請參閱 [如何在 Azure 上安裝和設定 SAP Hana (大型) 實例](../virtual-machines/workloads/sap/hana-installation.md#operating-system)的修補和 SMT 設定。
 1. **已設定時間同步** 處理。 客戶必須提供 NTP 相容的時間伺服器，並據以設定 OS。
-1. **已安裝 hana** ：請參閱 [hana 資料庫上的 SAP NetWeaver 安裝](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/21/sap-netweaver-installation-on-hana-database/)中的 hana 安裝指示。
+1. **已安裝 hana** ：請參閱 [hana 資料庫上的 SAP NetWeaver 安裝](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database)中的 hana 安裝指示。
 1. **[啟用與存放裝置的通訊](#enable-communication-with-storage)** (請參閱個別的區段以取得詳細資料) ：客戶必須使用私用/公開金鑰組來設定 SSH，並為每個節點提供公開金鑰，在此節點中，快照集工具是規劃要在儲存體後端上執行，以進行安裝的 Microsoft 作業。
    1. **針對 Azure NetApp Files (參閱個別區段以取得詳細資料)**：客戶必須產生服務主體驗證檔案。
    1. **針對「Azure 大型實例」 (請參閱個別的區段以取得詳細資料)**：客戶必須以私用/公開金鑰組設定 SSH，並為每個要執行快照集工具的每個節點提供公開金鑰，以供在儲存體後端進行設定的 Microsoft 作業。
@@ -714,6 +714,6 @@ global.ini,DEFAULT,,,persistence,log_backup_timeout_s,900
 global.ini,SYSTEM,,,persistence,log_backup_timeout_s,300
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [設定 Azure 應用程式一致的快照集工具](azacsnap-cmd-ref-configure.md)

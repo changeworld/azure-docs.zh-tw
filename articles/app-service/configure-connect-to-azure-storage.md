@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: e75eef86a4a0c679a44a61267f94d337538daaa8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: ab27de9274043439f790a8fecd443223e5f26b08
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007614"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736199"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>存取 Azure 儲存體 (預覽) 做為 App Service 中容器的網路共用
 
@@ -33,13 +33,13 @@ ms.locfileid: "97007614"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ::: zone pivot="container-windows"
 
 - [Azure App Service 中的現有 Windows 容器應用程式](quickstart-custom-container.md)
 - [建立 Azure 檔案共用](../storage/files/storage-how-to-use-files-cli.md)
-- [將檔案上傳至 Azure 檔案共用](../storage/files/storage-files-deployment-guide.md)
+- [將檔案上傳至 Azure 檔案共用](../storage/files/storage-how-to-create-file-share.md)
 
 ::: zone-end
 

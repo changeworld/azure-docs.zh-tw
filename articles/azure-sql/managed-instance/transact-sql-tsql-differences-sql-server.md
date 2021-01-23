@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 6634ab3521fee3062ecee465eaf6dcda80ee6ff8
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0a462c7d713ea9285096db48b4a3bb5c5b0d9874
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98699509"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737365"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -508,15 +508,14 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 ### <a name="subnet"></a>子網路
 -  您無法將任何其他資源放在已部署 SQL 受控執行個體的子網中， (例如虛擬機器) 。 使用不同的子網部署這些資源。
-- 子網必須有足夠的可用 [IP 位址](connectivity-architecture-overview.md#network-requirements)數目。 最小值為16，而建議在子網中至少有32個 IP 位址。
-- [服務端點無法與 SQL 受控執行個體的子網相關聯](connectivity-architecture-overview.md#network-requirements)。 當您建立虛擬網路時，請確定已停用 [服務端點] 選項。
+- 子網必須有足夠的可用 [IP 位址](connectivity-architecture-overview.md#network-requirements)數目。 最小值是在子網中至少有32個 IP 位址。
 - 您可以在區域中部署的虛擬核心和實例類型數目有一些 [限制和限制](resource-limits.md#regional-resource-limitations)。
-- [子網上必須套用一些安全性規則](connectivity-architecture-overview.md#network-requirements)。
+- 子網必須套用 [網路](connectivity-architecture-overview.md#network-requirements) 設定。
 
 ### <a name="vnet"></a>VNET
 - 您可以使用資源模型部署 VNet-不支援 VNet 的傳統模型。
 - 建立 SQL 受控執行個體之後，不支援將 SQL 受控執行個體或 VNet 移至另一個資源群組或訂用帳戶。
-- 某些服務（例如 App Service 環境、邏輯應用程式和 SQL 受控執行個體 (用於異地複寫、異動複寫或透過連結的伺服器）) 無法存取不同區域中的 SQL 受控執行個體（如果其 Vnet 是使用 [全域對等互連](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)）。 您可以透過 ExpressRoute 或透過 vnet 閘道的 VNet 對 VNet 連接到這些資源。
+- 針對在 9/22/2020 [全域對等互連](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) 之前建立的虛擬叢集中所裝載的 SQL 受控實例，則不受支援。 您可以透過 ExpressRoute 或透過 vnet 閘道的 VNet 對 VNet 連接到這些資源。
 
 ### <a name="failover-groups"></a>容錯移轉群組
 系統資料庫不會複寫至容錯移轉群組中的次要實例。 因此，除非在次要資料庫上以手動方式建立物件，否則不可能在次要實例上相依于系統資料庫中物件的案例。

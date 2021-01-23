@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3eeaf5f343b6026e02d17e4d3bd90dba4b991c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373397"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737040"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>透過 REST API 建立使用 SSH 驗證的 Linux 虛擬機器
 
@@ -21,12 +21,12 @@ Azure 中的 Linux 虛擬機器 (VM) 包含各種資源，例如磁碟和網路�
 
 本文說明如何使用 REST API 建立 Linux VM，來執行使用受控磁碟和 SSH 驗證的 Ubuntu 18.04-LTS。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 在建立及提交要求之前，您需要：
 
 * 您訂用帳戶的 `{subscription-id}`
-  * 如果您有多個訂用帳戶，請參閱[使用多個訂用帳戶](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
+  * 如果您有多個訂用帳戶，請參閱[使用多個訂用帳戶](/cli/azure/manage-azure-subscriptions-azure-cli)
 * 您事先建立的 `{resourceGroupName}`
 * 相同資源群組中的[虛擬網路介面](../../virtual-network/virtual-network-network-interface.md)
 * SSH 金鑰組 (如果您還沒有的話，可以[產生新的金鑰組](mac-create-ssh-keys.md))
@@ -54,7 +54,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 以下是用來建立要求本文的常用定義：
 
-| 名稱                       | 必要 | 類型                                                                                | 說明  |
+| 名稱                       | 必要 | 類型                                                                                | 描述  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | 字串                                                                              | 資源位置。 |
 | NAME                       |          | 字串                                                                              | 虛擬機器的名稱。 |
@@ -63,7 +63,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 指定虛擬機器的作業系統設定。 |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | 指定虛擬機器的網路介面。 |
 
-範例要求本文如下所示。 請確定您在 `{computerName}` 和 `{name}` 參數中指定 VM 名稱、指定您已在 `networkInterfaces` 底下建立的網路介面名稱、在 `adminUsername` 和 `path` 中指定您的使用者名稱，以及在 `keyData` 中指定您 SSH 金鑰組的「公用」** 部分 (舉例來說，位於 `~/.ssh/id_rsa.pub`)。 您想要修改的其他參數包括 `location` 和 `vmSize`。  
+範例要求本文如下所示。 請確定您在 `{computerName}` 和 `{name}` 參數中指定 VM 名稱、指定您已在 `networkInterfaces` 底下建立的網路介面名稱、在 `adminUsername` 和 `path` 中指定您的使用者名稱，以及在 `keyData` 中指定您 SSH 金鑰組的「公用」部分 (舉例來說，位於 `~/.ssh/id_rsa.pub`)。 您想要修改的其他參數包括 `location` 和 `vmSize`。  
 
 ```json
 {
@@ -122,13 +122,13 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="sending-the-request"></a>傳送要求
 
-您可以使用喜好的用戶端來傳送這個 HTTP 要求。 也可以按一下 [試用]**** 按鈕，使用[瀏覽器內工具](/rest/api/compute/virtualmachines/createorupdate)。
+您可以使用喜好的用戶端來傳送這個 HTTP 要求。 也可以按一下 [試用] 按鈕，使用[瀏覽器內工具](/rest/api/compute/virtualmachines/createorupdate)。
 
 ### <a name="responses"></a>回應
 
 建立或更新虛擬機器的作業會有兩個成功的回應：
 
-| 名稱        | 類型                                                                              | 說明 |
+| 名稱        | 類型                                                                              | 描述 |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 確定      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 確定          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 建立時間     |
@@ -144,7 +144,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 如需 REST API 回應的詳細資訊，請參閱[處理回應訊息](/rest/api/azure/#process-the-response-message)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure REST API 或諸如 Azure CLI 或 Azure PowerShell 等其他管理工具的詳細資訊，請參閱下列內容：
 

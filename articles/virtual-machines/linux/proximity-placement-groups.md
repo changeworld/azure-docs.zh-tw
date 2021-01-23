@@ -1,5 +1,5 @@
 ---
-title: 使用鄰近位置群組
+title: 使用鄰近放置群組
 description: 瞭解如何在 Azure 中建立和使用虛擬機器的鄰近放置群組。
 author: cynthn
 ms.service: virtual-machines
@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: ee172203d6aa54b4b539356835f8a6bf2d21bad3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ea50d0fdc5a772cae449951901af36eed4e93771
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288421"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737620"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>使用 Azure CLI 將 VM 部署至鄰近放置群組
 
@@ -67,8 +67,8 @@ az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 
 ## <a name="scale-sets"></a>擴展集
 
-您也可以在鄰近放置群組中建立擴展集。 使用 `--ppg` 與 [az vmss create](/cli/azure/vmss?view=azure-cli-latest#az-vmss-create) 相同的參數來建立擴展集，並在相同的鄰近放置群組中建立所有的實例。
+您也可以在鄰近放置群組中建立擴展集。 使用 `--ppg` 與 [az vmss create](/cli/azure/vmss#az_vmss_create) 相同的參數來建立擴展集，並在相同的鄰近放置群組中建立所有的實例。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解鄰近放置群組的 [Azure CLI](/cli/azure/ppg) 命令。

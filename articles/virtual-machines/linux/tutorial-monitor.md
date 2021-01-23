@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a21df6e5f8d437415bb5376969d56d26153b5c5f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
-ms.translationtype: HT
+ms.openlocfilehash: f100df39ad92a3e8062c01a48a9f68730a3badb8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500456"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736713"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視 Linux 虛擬機器
 
@@ -46,13 +46,13 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 ## <a name="create-vm"></a>建立 VM
 
-若要查看作用中的診斷和計量，您需要 VM。 首先，使用 [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) 建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroupMonitor 的資源群組。
+若要查看作用中的診斷和計量，您需要 VM。 首先，使用 [az group create](/cli/azure/group#az_group_create) 建立資源群組。 下列範例會在 eastus 位置建立名為 myResourceGroupMonitor 的資源群組。
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-現在，使用 [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) 建立 VM。 下列範例會建立名為 myVM 的 VM，並產生 SSH 金鑰 (如果 ~/.ssh/ 中沒有這些金鑰的話)︰
+現在，使用 [az vm create](/cli/azure/vm#az_vm_create) 建立 VM。 下列範例會建立名為 myVM 的 VM，並產生 SSH 金鑰 (如果 ~/.ssh/ 中沒有這些金鑰的話)︰
 
 ```azurecli-interactive
 az vm create \
@@ -67,7 +67,7 @@ az vm create \
 
 當 Linux VM 開機，開機診斷擴充功能會擷取開機輸出，並儲存在 Azure 儲存體。 這項資料可以用於 VM 開機問題的疑難排解。 當您使用 Azure CLI 建立 Linux VM 時，開機診斷不會自動啟用。
 
-啟用開機診斷之前，需要建立儲存體帳戶用來儲存開機記錄。 儲存體帳戶必須具有全域唯一的名稱，介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。 使用 [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) 建立儲存體帳戶。 在此範例中，使用隨機字串來建立唯一的儲存體帳戶名稱。
+啟用開機診斷之前，需要建立儲存體帳戶用來儲存開機記錄。 儲存體帳戶必須具有全域唯一的名稱，介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。 使用 [az storage account create](/cli/azure/storage/account#az_storage_account_create) 建立儲存體帳戶。 在此範例中，使用隨機字串來建立唯一的儲存體帳戶名稱。
 
 ```azurecli-interactive
 storageacct=mydiagdata$RANDOM
@@ -96,13 +96,13 @@ az vm boot-diagnostics enable \
 
 ## <a name="view-boot-diagnostics"></a>檢視開機診斷
 
-開機診斷啟用後，每次您停止並啟動 VM 時，開機程序的相關資訊便會寫入記錄檔。 在此範例中，先使用 [az vm deallocate](/cli/azure/vm?view=azure-cli-latest#az-vm-deallocate) 命令將 VM 解除配置，如下所示：
+開機診斷啟用後，每次您停止並啟動 VM 時，開機程序的相關資訊便會寫入記錄檔。 在此範例中，先使用 [az vm deallocate](/cli/azure/vm#az_vm_deallocate) 命令將 VM 解除配置，如下所示：
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 ```
 
-現在，使用 [az vm start](/cli/azure/vm?view=azure-cli-latest#az-vm-start) 命令啟動 VM，如下所示：
+現在，使用 [az vm start](/cli/azure/vm#az_vm_start) 命令啟動 VM，如下所示：
 
 ```azurecli-interactive
 az vm start --resource-group myResourceGroupMonitor --name myVM

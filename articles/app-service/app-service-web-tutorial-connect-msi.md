@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: f043f7ed63353dcb9cf9fd26690da97b902f32a6
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
-ms.translationtype: HT
+ms.openlocfilehash: 2c19ee2b8e7ec3c695b2c76c46402c118c559b40
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108614"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736233"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
@@ -130,7 +130,7 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 - 尋找名為 `MyDbConnection` 的連接字串，並將其 `connectionString` 值取代為 `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`。 將 _\<server-name>_ 和 _\<db-name>_ 取代為您的伺服器名稱和資料庫名稱。
 
 > [!NOTE]
-> 您剛註冊的 SqlAuthenticationProvider 是以您稍早安裝的 AppAuthentication 程式庫為基礎。 根據預設，其會使用系統指派的身分識別。 若要利用使用者指派的身分識別，您需要提供其他組態。 請參閱 AppAuthentication 程式庫的[連接字串支援](../key-vault/general/service-to-service-authentication.md#connection-string-support)。
+> 您剛註冊的 SqlAuthenticationProvider 是以您稍早安裝的 AppAuthentication 程式庫為基礎。 根據預設，其會使用系統指派的身分識別。 若要利用使用者指派的身分識別，您需要提供其他組態。 請參閱 AppAuthentication 程式庫的[連接字串支援](/dotnet/api/overview/azure/service-to-service-authentication#connection-string-support)。
 
 這就是要連線至 SQL Database 所需的所有項目。 在 Visual Studio 中進行偵錯時，程式碼會使用您在[設定 Visual Studio](#set-up-visual-studio) 中所設定的 Azure AD 使用者。 稍後，您將設定 SQL Database 以允許來自 App Service 應用程式受控識別的連線。
 

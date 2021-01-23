@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: c9db5ab471f743ffbf3ae4e140ad4cb32d0a3d6c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
-ms.translationtype: HT
+ms.openlocfilehash: 6e4cb3c372b696b203d2441c74a6cafff175af47
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97670184"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736126"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Alibaba Cloud Service (角色型 SSO) 整合
 
@@ -94,7 +94,7 @@ ms.locfileid: "97670184"
     > [!Note]
     > 如果 [識別碼]  和 [回覆 URL]  值未自動填入，則請根據您的需求手動填入這些值。
 
-1. Alibaba Cloud Service (角色型 SSO) 需要在 Azure AD 中設定角色。 角色宣告已預先設定，因此您不需要進行設定，但您仍然需要使用[本文](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)在 Azure AD 中建立角色。
+1. Alibaba Cloud Service (角色型 SSO) 需要在 Azure AD 中設定角色。 角色宣告已預先設定，因此您不需要進行設定，但您仍然需要使用[本文](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)在 Azure AD 中建立角色。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: tamram
 ms.reviewer: twooley
-ms.openlocfilehash: 8de395e34b43a4edad2affa591adb8ab34ff9e66
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 002e8650a5555b70caf09179e03ce1bad1acdef5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921701"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737535"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 [Blobfuse](https://github.com/Azure/azure-storage-fuse) 是 Azure Blob 儲存體的虛擬檔案系統驅動程式。 Blobfuse 可讓您透過 Linux 檔案系統存取您儲存體帳戶中現有的區塊 Blob 資料。 Blobfuse 會使用具有正斜線 '/' 的虛擬目錄配置作為分隔符號。  
 
 本指南示範如何使用 Blobfuse，以及如何在 Linux 上掛接 Blob 儲存體容器並存取資料。 若要深入了解 Blobfuse，請閱讀 [Blobfuse 存放庫](https://github.com/Azure/azure-storage-fuse)中的詳細資料。
@@ -28,9 +28,9 @@ ms.locfileid: "96921701"
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>在 Linux 上安裝 Blobfuse
-在 [Microsoft 的 Linux 軟體存放庫](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)可取得適用於 Ubuntu 和 RHEL 散發套件的 Blobfuse 二進位檔案。 若要在這些發行版本上安裝 Blobfuse，請設定清單中的任一個存放庫。 如果您的發行版本沒有可用的二進位檔，您也可以遵循 [Azure 儲存體安裝步驟](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) \(英文\)，從原始程式碼建置二進位檔。
+適用于 [Linux 的 Microsoft 軟體存放庫](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) （適用于 Ubuntu、DEBIAN、SUSE、CentoOS、ORACLE LINUX 和 RHEL 散發套件）有提供 Blobfuse 二進位檔。 若要在這些發行版本上安裝 Blobfuse，請設定清單中的任一個存放庫。 如果您的發行版本沒有可用的二進位檔，您也可以遵循 [Azure 儲存體安裝步驟](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) \(英文\)，從原始程式碼建置二進位檔。
 
-Blobfuse 支援 Ubuntu 14.04、16.04、18.04 和20.04 的安裝。 執行此命令以確定您已部署其中一個版本：
+Blobfuse 支援在 Ubuntu 版本上安裝：16.04、18.04 和20.04、RHELversions：7.5、7.8、8.0、8.1、8.2、CentOS 版本：7.0、8.0、Debian 版本：9.0、10.0、SUSE 版本：15、OracleLinux 8.1。 執行此命令以確定您已部署其中一個版本：
 ```
 lsb_release -a
 ```
@@ -38,16 +38,16 @@ lsb_release -a
 ### <a name="configure-the-microsoft-package-repository"></a>設定 Microsoft 封裝存放庫
 設定 [Microsoft 產品的 Linux 封裝存放庫](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)。
 
-以 Enterprise Linux 6 發行版為例：
+例如，在 Enterprise Linux 8 散發：
 ```bash
-sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
+sudo rpm -Uvh https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm
 ```
 
 同樣地，將 URL 變更為 `.../rhel/7/...`，以指向 Enterprise Linux 7 發行版本。
 
-另一個範例是 Ubuntu 14.04 發行版本：
+Ubuntu 20.04 散發套件的另一個範例：
 ```bash
-wget https://packages.microsoft.com/config/ubuntu/14.04/packages-microsoft-prod.deb
+wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: becf9f8c7f6a967ed63cfd3040de90de76e32fff
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 8daec71745c9eff9a7db5bb34cb3596973def4aa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607264"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736406"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>在 Azure Vm 上建立具有 Azure 共用磁片 (SQL Server 的 FCI) 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "97607264"
 在您完成本文中的指示之前，您應該已經有：
 
 - Azure 訂用帳戶。 [免費](https://azure.microsoft.com/free/)開始使用。 
-- [兩部或多部 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)。 支援進階 SSD 和[可用性區域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)的[可用性設定](../../../virtual-machines/windows/tutorial-availability-sets.md)組和[鄰近放置群組](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (ppg) 支援 Ultra 磁片。 如果您使用 PPG，所有節點都必須存在於相同的群組中。
+- [兩部或多部 Windows Azure 虛擬機器](failover-cluster-instance-prepare-vm.md)。 支援進階 SSD 和[可用性區域](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address)的[可用性設定](../../../virtual-machines/windows/tutorial-availability-sets.md)組和[鄰近放置群組](../../../virtual-machines/co-location.md#proximity-placement-groups) (ppg) 支援 Ultra 磁片。 如果您使用 PPG，所有節點都必須存在於相同的群組中。
 - 具有在 Azure 虛擬機器和 Active Directory 中建立物件權限的帳戶。
 - [PowerShell](/powershell/azure/install-az-ps)的最新版本。 
 

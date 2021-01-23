@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: ricmmartins
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/22/2021
 ms.author: ricmart
-ms.openlocfilehash: 3b9e60eb037182318e9d1ef7336565908a9c8f32
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a0655ce1d2e9939981bb4fd3280af80e359ea1e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664778"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737739"
 ---
 # <a name="create-a-vpn-connection-between-azure-and-aws-using-managed-solutions"></a>使用受控解決方案建立 Azure 與 AWS 之間的 VPN 連線
 
@@ -42,6 +42,8 @@ ms.locfileid: "98664778"
 
 本文會使用下列範例值和設定：
 
+* **閘道名稱：** vpn-azure-aws
+* **區域：** 美國東部
 * **閘道類型：** VPN
 * **VPN 類型：** 以路由為基礎
 * **SKU：** VpnGw1
@@ -173,15 +175,13 @@ AWS 會建立兩個 IPsec 通道以供高可用性之用。 下列範例會顯�
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-tunnels.png" alt-text="Azure 連接狀態":::
 
-1. 查看 AWS 連接。
+1. 查看 AWS 連接。 在此範例中，您可以看到現在已建立連接。
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-tunnels.png" alt-text="AWS 連接狀態":::
 
-現在已建立連接。
+## <a name="to-test-connections"></a>測試連接
 
-## <a name="test-connections"></a>測試連接
-
-1. 將網際網路閘道新增至 VPC 的 AWS。 網際網路閘道是 Amazon VPN 與網際網路之間的邏輯連線。 此資源可讓您透過網際網路從 AWS 公用 IP 透過測試 VM 連接。 VPN 連接不需要此資源。 我們只會使用它來進行測試。
+1. 將 **網際網路閘道** 新增至 AWS 上的 VPC。 網際網路閘道是 Amazon VPN 與網際網路之間的邏輯連線。 此資源可讓您透過網際網路從 AWS 公用 IP 透過測試 VM 連接。 VPN 連接不需要此資源。 我們只會使用它來進行測試。
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/create-igw.png" alt-text="建立網際網路閘道":::
 
@@ -201,11 +201,11 @@ AWS 會建立兩個 IPsec 通道以供高可用性之用。 下列範例會顯�
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-effective-routes.png" alt-text="檢查有效路由":::
 
-1. 從 Azure 上的 Linux VM，環境類似于下列範例。
+1. 您可以從 Azure 上的 Linux VM 進行測試。 結果看起來會與下列範例類似。
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/azure-overview.png" alt-text="Linux VM 的 Azure 總覽":::
 
-1. 從 AWS 上的 Linux VM，環境類似于下列範例。
+1. 您也可以從 AWS 上的 Linux VM 進行測試。 結果看起來會與下列範例類似。
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-overview.png" alt-text="Linux VM 的 AWS 總覽":::
 
@@ -217,6 +217,6 @@ AWS 會建立兩個 IPsec 通道以供高可用性之用。 下列範例會顯�
 
    :::image type="content" source="./media/create-vpn-azure-aws-managed-solutions/aws-ping.png" alt-text="從 AWS 進行 Ping 測試":::
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需有關 AWS 支援 IKEv2 的詳細資訊，請參閱 [AWS 文章](https://aws.amazon.com/about-aws/whats-new/2019/02/aws-site-to-site-vpn-now-supports-ikev2/)。

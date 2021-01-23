@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 5e83c599ceed76927f2a313f78c83638d708f1bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
-ms.translationtype: HT
+ms.openlocfilehash: 81005a3032355f566aef2a6794cf2ec5038b0dd8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985131"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737111"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>使用 PowerShell 在 Azure 中備份虛擬機器
 
@@ -18,7 +18,7 @@ ms.locfileid: "90985131"
 
 [Azure 備份](backup-overview.md)會備份內部部署機器與應用程式，以及 Azure VM。 本文說明如何使用 AZ 模組來備份 Azure VM。 此外，您可以使用 [Azure CLI](quick-backup-vm-cli.md) 或在[Azure 入口網站](quick-backup-vm-portal.md)中備份 VM。
 
-本快速入門能夠在現有的 Azure VM 上進行備份。 如果您需要建立 VM，您可以[使用 Azure PowerShell 來建立 VM](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)。
+本快速入門能夠在現有的 Azure VM 上進行備份。 如果您需要建立 VM，您可以[使用 Azure PowerShell 來建立 VM](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json)。
 
 本快速入門需要 Azure PowerShell AZ 模組 1.0.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "90985131"
 當您建立保存庫：
 
 - 針對資源群組和位置，指定您想要備份的資源群組和 VM 的位置。
-- 如果您使用[範例指令碼](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)來建立 VM，則資源群組為 **myResourceGroup**、VM 為***myVM**，而資源位於 **WestEurope** 區域。
+- 如果您使用此 [範例腳本](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json) 來建立 VM，則資源群組為 **myResourceGroup**，VM 為 **_MyVM_*，而資源位於 **WestEurope** 區域中。
 - 「Azure 備份」會自動處理用於備份資料的儲存體。 保存庫預設會使用[異地備援儲存體 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)。 異地備援可確保會將備份的資料複寫到與主要區域相距數百英哩的次要 Azure 區域。
 
 現在請建立保存庫：

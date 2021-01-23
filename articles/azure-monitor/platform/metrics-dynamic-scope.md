@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 4c895b287f72929e2a0571ccc2cae8cc4f673388
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5f5f75e63a0b201144329a6e2b7c0d503de54692
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250480"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736468"
 ---
 # <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>在 Azure 計量瀏覽器中查看多個資源
 
@@ -33,7 +33,7 @@ ms.locfileid: "98250480"
 ![顯示與多個資源相容之資源功能表的螢幕擷取畫面。](./media/metrics-charts/020.png)
 
 > [!WARNING] 
-> 您必須具有訂用帳戶層級的「監視讀者」許可權，以將多個資源、資源群組或訂用帳戶的計量視覺化。 如需詳細資訊，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+> 您必須具有訂用帳戶層級的「監視讀者」許可權，以將多個資源、資源群組或訂用帳戶的計量視覺化。 如需詳細資訊，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 
 若要將多個資源的計量視覺化，請從選取資源範圍選取器內的多個資源開始。 
 
@@ -81,13 +81,12 @@ ms.locfileid: "98250480"
 
 ## <a name="pin-multiple-resource-charts"></a>釘選多個資源圖表 
 
-在資源群組和訂用帳戶間視覺化度量的多資源圖表，需要使用者擁有訂用帳戶層級的「 *讀取* 者」許可權。 確定您釘選多個資源圖表之儀表板的所有使用者都有足夠的許可權。 如需詳細資訊，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
+在資源群組和訂用帳戶間視覺化度量的多資源圖表，需要使用者擁有訂用帳戶層級的「 *讀取* 者」許可權。 確定您釘選多個資源圖表之儀表板的所有使用者都有足夠的許可權。 如需詳細資訊，請參閱 [使用 Azure 入口網站新增或移除 Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)。
 
-若要將多個資源圖表釘選到儀表板，請參閱 [釘選到儀表板](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pinning-to-dashboards)。 
+若要將多個資源圖表釘選到儀表板，請參閱 [釘選到儀表板](./metrics-charts.md#pinning-to-dashboards)。 
 
 ## <a name="next-steps"></a>後續步驟
 
 * [針對計量瀏覽器進行疑難排解](metrics-troubleshoot.md)
 * [查看 Azure 服務的可用計量清單](metrics-supported.md)
 * [查看已設定的圖表範例](metric-chart-samples.md)
-

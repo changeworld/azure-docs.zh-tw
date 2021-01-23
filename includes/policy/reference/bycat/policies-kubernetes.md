@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 8eeb8f5105bc93b760903374a513cd10e327b570
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: 4c7cb43c40a7251550ee1993110448d7f0c301cb
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98047184"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98738504"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -39,6 +39,7 @@ ms.locfileid: "98047184"
 |[Kubernetes 叢集 Pod 及容器只應使用允許的 SELinux 選項](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e6c427-07d9-46ab-9689-bfa85431e636) |此原則可確保 Pod 和容器在 Kubernetes 叢集中只會使用允許的 SELinux 選項。 此原則已針對 Kubernetes Service (AKS) 正式推出，以及 AKS 引擎和已啟用 Azure Arc Kubernetes 的預覽。 如需使用此原則的指示，請造訪 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |Audit, Deny, Disabled |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/SELinux.json) |
 |[Kubernetes 叢集中的 Pod 只能使用允許的磁碟區類型](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec) |此原則可確保 Pod 在 Kubernetes 叢集中只會使用允許的磁碟區類型。 此原則已針對 Kubernetes Service (AKS) 正式推出，以及 AKS 引擎和已啟用 Azure Arc Kubernetes 的預覽。 如需使用此原則的指示，請造訪 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |Audit, Deny, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedVolumeTypes.json) |
 |[Kubernetes 叢集中的 Pod 只能使用核准的主機網路及連接埠範圍](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |此原則可在 Kubernetes 叢集中控制 Pod 如何存取主機網路和允許的主機連接埠範圍。 此原則已針對 Kubernetes Service (AKS) 正式推出，以及 AKS 引擎和已啟用 Azure Arc Kubernetes 的預覽。 如需使用此原則的指示，請造訪 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |Audit, Deny, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/HostNetworkPorts.json) |
+|[Kubernetes 叢集服務只應使用允許的外部 Ip](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd46c275d-1680-448d-b2ec-e495a3b6cc89) |使用允許的外部 Ip 來避免 Kubernetes 叢集中的潛在攻擊 (CVE-2020-8554) 。 如需詳細資訊，請參閱 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |Audit, Deny, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedExternalIPs.json) |
 |[Kubernetes 叢集應停用自動掛接 API 認證](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F423dd1ba-798e-40e4-9c4d-b6902674b423) |停用自動掛接 API 認證，防止可能遭盜用的 Pod 資源對 Kubernetes 叢集執行 API 命令。 如需使用此原則的指示，請移至 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |Audit, Deny, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockAutomountToken.json) |
 |[Kubernetes 叢集不應允許容器提升權限](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |此原則不允許容器在 Kubernetes 叢集中使用權限提升。 此原則已針對 Kubernetes Service (AKS) 正式推出，以及 AKS 引擎和已啟用 Azure Arc Kubernetes 的預覽。 如需使用此原則的指示，請造訪 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |Audit, Deny, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilegeEscalation.json) |
 |[Kubernetes 叢集不應使用特定的安全性功能](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa27c700f-8a22-44ec-961c-41625264370b) |避免使用 Kubernetes 叢集中的特定安全性功能，以防止未授與權限存取 Pod 資源。 如需使用此原則的指示，請造訪 [https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)。 |Audit, Deny, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerDisallowedCapabilities.json) |

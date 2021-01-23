@@ -8,20 +8,20 @@ ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: c231aab47f154b6150368b504872d87317c790cc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9f0642d3421e775d1c6930b672b37643a961178f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359947"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736283"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>使用 Azure PowerShell 模組啟用受控磁片的雙重靜態加密
 
 Azure 磁碟儲存體支援受控磁片的雙重靜態加密。 如需有關靜態加密和其他受控磁片加密類型的概念資訊，請參閱磁片加密文章中的 [雙重加密靜態](../disk-encryption.md#double-encryption-at-rest) 一節。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-安裝最新的 [Azure PowerShell 版本](/powershell/azure/install-az-ps)，然後使用 [[disconnect-azaccount]](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0)登入 Azure 帳戶。
+安裝最新的 [Azure PowerShell 版本](/powershell/azure/install-az-ps)，然後使用 [[disconnect-azaccount]](/powershell/module/az.accounts/connect-azaccount)登入 Azure 帳戶。
 
 ## <a name="getting-started"></a>開始使用
 

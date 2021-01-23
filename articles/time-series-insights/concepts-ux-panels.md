@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 01/22/2021
 ms.custom: seodec18
-ms.openlocfilehash: edfbbdd1b30cba74cf4f63d6b5e84c2e616e1a0f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 55e102cc7e27cbcd9a65999f590c8264f1ad4434
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020975"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736847"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure 時間序列深入解析總管
 
 本文說明 Azure 時間序列深入解析 Gen2 [示範環境](https://insights.timeseries.azure.com/preview/demo)內可用的各種功能和選項。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用 Azure 時間序列深入解析 Explorer，您必須：
 
@@ -219,7 +219,7 @@ Azure 時間序列深入解析的 Gen2 條款面板會顯示，而不是階層�
 | `<`, `>`, `<=`, `>=` | Double、DateTime、TimeSpan | |
 | `=`, `!=`, `<>` | String、Bool、Double、DateTime、TimeSpan、NULL |
 | `IN` | String、Bool、Double、DateTime、TimeSpan、NULL | 所有的運算元都應該是相同的類型或是 NULL 常數。 |
-| `HAS` | 字串 | 右邊只允許常數位串常值。 不允許空字串和 Null。 |
+| `HAS` | String | 右邊只允許常數位串常值。 不允許空字串和 Null。 |
 
 若要深入瞭解支援的查詢作業和資料類型，請參閱 [ (TSX) 的時間序列運算式 ](/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
@@ -237,7 +237,7 @@ Azure 時間序列深入解析的 Gen2 條款面板會顯示，而不是階層�
 
   [![取消已查詢和已篩選的選項](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何將 [資料擷取](./concepts-ingestion-overview.md) 至您的環境。
 

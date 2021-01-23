@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: e6b4175f4f47c9dd378bec84da2575c079a2079f
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: 440fe52689a345eec36c3ac613d6bc2cc2dccc13
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014394"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>教學課程：Azure Active Directory 與 Amazon Web Services (AWS) 整合 (舊版教學課程)
 
@@ -144,7 +144,7 @@ Amazon Web Services (AWS) 與 Azure AD 整合提供下列優點：
     g. 按一下 [檔案]  。
 
     >[!NOTE]
-    >如需 Azure AD 中各種角色的詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
+    >如需 Azure AD 中各種角色的詳細資訊，請參閱[這裡](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
 
 7. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，按一下 [下載] 以下載 **同盟中繼資料 XML** 並將其儲存在電腦上。
 

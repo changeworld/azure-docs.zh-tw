@@ -5,13 +5,13 @@ author: shreyasharmamsft
 ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: f1c394bb1a568d59e0821b61e7acfcf8f25290f7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 01/22/2021
+ms.openlocfilehash: fd08dc98fa47617bbc7c8d1fff895377837a7327
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020754"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736729"
 ---
 # <a name="time-series-model-variables"></a>時間序列模型變數
 
@@ -29,7 +29,7 @@ ms.locfileid: "95020754"
 
 ## <a name="numeric-variables"></a>數值變數
 
-| 變數屬性 | Description |
+| 變數屬性 | 描述 |
 | --- | ---|
 | 變數篩選條件 | 篩選準則是選擇性的條件式子句，用來限制要考慮用於計算的資料列數目。 |
 | 變數值 | 用於計算的遙測值來自裝置或感應器，或使用時間序列運算式進行轉換。 數數值型別變數的類型必須是 *Double*。|
@@ -59,7 +59,7 @@ ms.locfileid: "95020754"
 
 ## <a name="categorical-variables"></a>類別變數
 
-| 變數屬性 | Description |
+| 變數屬性 | 描述 |
 | --- | ---|
 | 變數篩選條件 | 篩選準則是選擇性的條件式子句，用來限制要考慮用於計算的資料列數目。 |
 | 變數值 | 用於計算的遙測值來自裝置或感應器。 類別種類變數必須是 *Long* 或 *String*。 |
@@ -99,7 +99,7 @@ ms.locfileid: "95020754"
 
 ## <a name="aggregate-variables"></a>匯總變數
 
-| 變數屬性 | Description |
+| 變數屬性 | 描述 |
 | --- | ---|
 | 變數篩選條件 | 篩選準則是選擇性的條件式子句，用來限制要考慮用於計算的資料列數目。 |
 | 變數彙總 | 透過 [匯總變數種類支援的彙總函式](/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind)執行計算。 |
@@ -118,7 +118,7 @@ ms.locfileid: "95020754"
 
 變數會儲存在時間序列模型的類型定義中，而且可以透過 Api 以內嵌方式提供，以覆寫或補充預存的定義。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解 [時間序列模型](./concepts-model-overview.md)。
 

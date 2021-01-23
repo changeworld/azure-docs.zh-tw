@@ -3,12 +3,12 @@ title: 還原 Azure 受控磁碟
 description: 瞭解如何從 Azure 入口網站還原 Azure 受控磁碟。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 848a7476b1c5095d4e4d3156d4c7ce33da777090
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611129"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737371"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>還原預覽版中的 Azure 受控磁碟 () 
 
@@ -17,7 +17,7 @@ ms.locfileid: "98611129"
 >
 >[填寫此表單](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u) 以註冊預覽。
 
-本文說明如何從 Azure 備份所建立的還原點還原 [Azure 受控磁碟](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) 。
+本文說明如何從 Azure 備份所建立的還原點還原 [Azure 受控磁碟](../virtual-machines/managed-disks-overview.md) 。
 
 目前，Original-Location 復原 (OLR) 選項，藉由取代不支援備份的現有來源磁片來進行還原。 您可以從復原點還原，以在與來源磁片相同的資源群組中建立新的磁片，以從中取得備份或任何其他資源群組。 這就是所謂的 Alternate-Location 復原 (ALR) ，這有助於保持來源磁片和還原 (新的) 磁片。
 
@@ -31,7 +31,7 @@ ms.locfileid: "98611129"
 
 備份保存庫會使用受控識別來存取其他 Azure 資源。 若要從備份還原，備份保存庫的受控識別需要在磁片還原的資源群組上有一組許可權。
 
-備份保存庫會使用系統指派的受控識別，限制為每個資源一個，並系結到此資源的生命週期。 您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與受控識別。 受控識別是特殊類型的服務主體，只可搭配 Azure 資源使用。 深入瞭解 [受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
+備份保存庫會使用系統指派的受控識別，限制為每個資源一個，並系結到此資源的生命週期。 您可以使用 Azure 角色型存取控制 (Azure RBAC) ，將許可權授與受控識別。 受控識別是特殊類型的服務主體，只可搭配 Azure 資源使用。 深入瞭解 [受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
 
 執行還原作業需要下列先決條件：
 
@@ -89,7 +89,7 @@ ms.locfileid: "98611129"
     ![還原參數](./media/restore-managed-disks/restore-parameters.png)
 
     >[!TIP]
-    >使用磁片備份解決方案 Azure 備份備份的磁片也可以透過使用 Azure VM 備份解決方案與復原服務保存庫進行備份 Azure 備份。 如果您已設定此磁片所連接之 Azure VM 的保護，您也可以使用 Azure VM 還原作業。 您可以選擇從對應的 Azure VM 備份實例的復原點還原 VM，或磁片和檔案或資料夾。 如需詳細資訊，請參閱 [AZURE VM 備份](https://docs.microsoft.com/azure/backup/about-azure-vm-restore)。
+    >使用磁片備份解決方案 Azure 備份備份的磁片也可以透過使用 Azure VM 備份解決方案與復原服務保存庫進行備份 Azure 備份。 如果您已設定此磁片所連接之 Azure VM 的保護，您也可以使用 Azure VM 還原作業。 您可以選擇從對應的 Azure VM 備份實例的復原點還原 VM，或磁片和檔案或資料夾。 如需詳細資訊，請參閱 [AZURE VM 備份](./about-azure-vm-restore.md)。
 
 1. 驗證成功之後，請選取 [ **還原** ] 以啟動還原作業。
 
@@ -109,9 +109,9 @@ Restore 會在還原作業期間提供的目標資源群組中，從選取的復
 
     ![交換 OS 磁片](./media/restore-managed-disks/swap-os-disks.png)
 
-- 針對 Windows 虛擬機器，如果還原的磁片是資料磁片，請遵循指示從虛擬機器卸 [離原始資料磁片](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-the-portal) 。 然後 [將還原的磁片連接](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal) 至虛擬機器。 遵循指示，將虛擬機器 [的 OS 磁片](https://docs.microsoft.com/azure/virtual-machines/windows/os-disk-swap) 與還原的磁片交換。
+- 針對 Windows 虛擬機器，如果還原的磁片是資料磁片，請遵循指示從虛擬機器卸 [離原始資料磁片](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-the-portal) 。 然後 [將還原的磁片連接](../virtual-machines/windows/attach-managed-disk-portal.md) 至虛擬機器。 遵循指示，將虛擬機器 [的 OS 磁片](../virtual-machines/windows/os-disk-swap.md) 與還原的磁片交換。
 
-- 針對 Linux 虛擬機器，如果還原的磁片是資料磁片，請遵循指示從虛擬機器卸 [離原始資料磁片](https://docs.microsoft.com/azure/virtual-machines/linux/detach-disk#detach-a-data-disk-using-the-portal) 。 然後 [將還原的磁片連接](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#attach-an-existing-disk) 至虛擬機器。 遵循指示，將虛擬機器 [的 OS 磁片](https://docs.microsoft.com/azure/virtual-machines/linux/os-disk-swap) 與還原的磁片交換。
+- 針對 Linux 虛擬機器，如果還原的磁片是資料磁片，請遵循指示從虛擬機器卸 [離原始資料磁片](../virtual-machines/linux/detach-disk.md#detach-a-data-disk-using-the-portal) 。 然後 [將還原的磁片連接](../virtual-machines/linux/attach-disk-portal.md#attach-an-existing-disk) 至虛擬機器。 遵循指示，將虛擬機器 [的 OS 磁片](../virtual-machines/linux/os-disk-swap.md) 與還原的磁片交換。
 
 建議您在順利完成還原作業之後，從 **目標資源群組** 上的備份保存庫的受控識別撤銷 **磁片還原操作員** 角色指派。
 

@@ -3,12 +3,12 @@ title: 針對 Azure 磁片備份中的備份失敗進行疑難排解
 description: 瞭解如何針對 Azure 磁片備份中的備份失敗進行疑難排解
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3e7c81d70fc898528532a841a484bf6fff8b83a7
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611231"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737722"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>針對 Azure 磁片備份中的備份失敗進行疑難排解 (預覽版) 
 
@@ -115,7 +115,7 @@ ms.locfileid: "98611231"
 
 錯誤訊息：因為訂用帳戶已達到磁片配額上限，所以作業失敗。
 
-建議動作：如需進一步指引，請參閱 [Azure 訂用帳戶和服務限制和配額檔](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) 或聯絡 Microsoft 支援服務。
+建議動作：如需進一步指引，請參閱 [Azure 訂用帳戶和服務限制和配額檔](../azure-resource-manager/management/azure-subscription-service-limits.md) 或聯絡 Microsoft 支援服務。
 
 ### <a name="error-code-usererrordiskbackuprestorergormsipermissionsnotpresent"></a>錯誤碼： UserErrorDiskBackupRestoreRGOrMSIPermissionsNotPresent
 

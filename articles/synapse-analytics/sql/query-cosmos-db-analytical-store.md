@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2059608faa8ce148e5823e48eff6abf9e71c9b01
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222100"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735428"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>在 Azure Synapse Link Preview 中使用無伺服器 SQL 集區查詢 Azure Cosmos DB 資料
 
@@ -24,7 +24,7 @@ ms.locfileid: "98222100"
 
 無伺服器 SQL 集區可讓您以近乎即時的方式，分析您 Azure Cosmos DB 容器中以 [Azure Synapse 連結](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 啟用的資料，而不會影響交易式工作負載的效能。 它提供熟悉的 T-sql 語法來查詢 [分析存放區](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 中的資料，以及透過 t-sql 介面 (BI) 和臨機操作查詢工具的各種商業智慧整合式連接。
 
-針對查詢 Azure Cosmos DB，會透過[OPENROWSET](develop-openrowset.md)函數支援完整的[選取](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15)介面區，其中包含大部分的[SQL 函數和運算子](overview-features.md)。 您也可以使用 [create external table as select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) ，儲存從 Azure Cosmos DB 中讀取資料的查詢結果，以及 Azure Blob 儲存體或 Azure Data Lake Storage 中的資料。 您目前無法使用 CETAS 將無伺服器 SQL 集區查詢結果儲存至 Azure Cosmos DB。
+針對查詢 Azure Cosmos DB，會透過[OPENROWSET](develop-openrowset.md)函數支援完整的[選取](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true)介面區，其中包含大部分的[SQL 函數和運算子](overview-features.md)。 您也可以使用 [create external table as select](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) ，儲存從 Azure Cosmos DB 中讀取資料的查詢結果，以及 Azure Blob 儲存體或 Azure Data Lake Storage 中的資料。 您目前無法使用 CETAS 將無伺服器 SQL 集區查詢結果儲存至 Azure Cosmos DB。
 
 在本文中，您將瞭解如何使用無伺服器 SQL 集區來撰寫查詢，該查詢將會從使用 Azure Synapse 連結啟用的 Azure Cosmos DB 容器查詢資料。 然後，您可以深入瞭解如何在 Azure Cosmos DB 容器上建立無伺服器的 SQL 集區，並在 [本教學](./tutorial-data-analyst.md)課程中將它們連接到 Power BI 模型。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 54386bd7431c2003dd29a905b3b696f69a39d2d9
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: c87eb3b52843f4de39d0c037bdf452160be1ca2b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914428"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735953"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-colortokens-ztna"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ColorTokens ZTNA 整合
 
@@ -92,7 +92,7 @@ ms.locfileid: "97914428"
     | 群組 | user.groups |
 
     > [!NOTE]
-    > 請按一下[此處](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)來了解如何在 Azure AD 中建立角色。
+    > 請按一下[此處](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)來了解如何在 Azure AD 中建立角色。
 
 1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
 
@@ -142,7 +142,7 @@ ms.locfileid: "97914428"
 
 * 直接移至 ColorTokens ZTNA 登入 URL，然後從該處起始登入流程。
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [ColorTokens ZTNA] 圖格時，將會重新導向至 ColorTokens ZTNA 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [ColorTokens ZTNA] 圖格時，將會重新導向至 ColorTokens ZTNA 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

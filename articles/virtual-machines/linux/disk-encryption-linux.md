@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: efe24b3d1f6e22cc7f054691cb75a4ccede7aa4b
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: eb7db3c95fb56ebbd62d6cf882a75ce03baeb75d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912439"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736049"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
@@ -42,11 +42,11 @@ Azure 磁碟加密可以透過 [Azure CLI](/cli/azure) 和 [Azure PowerShell](/p
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI 2.0](/cli/azure) 是命令列工具，可用於管理 Azure 資源。 CLI 的設計是要讓您能夠彈性地查詢資料、以非封鎖處理序的形式支援長時間執行作業，並輕鬆地撰寫指令碼。 您可以遵循[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 中的步驟，將其安裝到本機。
+[Azure CLI 2.0](/cli/azure) 是命令列工具，可用於管理 Azure 資源。 CLI 的設計是要讓您能夠彈性地查詢資料、以非封鎖處理序的形式支援長時間執行作業，並輕鬆地撰寫指令碼。 您可以遵循[安裝 Azure CLI](/cli/azure/install-azure-cli) 中的步驟，將其安裝到本機。
 
  
 
-若要[使用 Azure CLI 登入您的 Azure 帳戶](/cli/azure/authenticate-azure-cli)，請使用 [az login](/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令。
+若要[使用 Azure CLI 登入您的 Azure 帳戶](/cli/azure/authenticate-azure-cli)，請使用 [az login](/cli/azure/reference-index#az_login) 命令。
 
 ```azurecli
 az login
@@ -72,13 +72,13 @@ az account set --subscription "<subscription name or ID>"
 
 如果您已將它安裝在本機上，請確定您是使用最新版的 Azure PowerShell SDK 版本來設定 Azure 磁碟加密。 下載最新版的 [Azure PowerShell 版本](https://github.com/Azure/azure-powershell/releases)。
 
-若要[使用 Azure PowerShell 登入您的 Azure 帳戶](/powershell/azure/authenticate-azureps?view=azps-2.5.0)，請使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) Cmdlet。
+若要[使用 Azure PowerShell 登入您的 Azure 帳戶](/powershell/azure/authenticate-azureps)，請使用 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) Cmdlet。
 
 ```powershell
 Connect-AzAccount
 ```
 
-如果您有多個訂用帳戶，而且想要指定其中一個，請使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) Cmdlet 來列出這些訂用帳戶，後面接著 [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) Cmdlet：
+如果您有多個訂用帳戶，而且想要指定其中一個，請使用 [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) Cmdlet 來列出這些訂用帳戶，後面接著 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) Cmdlet：
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>
@@ -86,7 +86,7 @@ Set-AzContext -Subscription -Subscription <SubscriptionId>
 
 執行 [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext) Cmdlet 能確認所選取的訂用帳戶是否正確。
 
-若要確認是否已安裝 Azure 磁碟加密 Cmdlet，請使用 [Get-command](/powershell/module/microsoft.powershell.core/get-command?view=powershell-6) Cmdlet：
+若要確認是否已安裝 Azure 磁碟加密 Cmdlet，請使用 [Get-command](/powershell/module/microsoft.powershell.core/get-command) Cmdlet：
      
 ```powershell
 Get-command *diskencryption*
@@ -104,9 +104,9 @@ Get-command *diskencryption*
 
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-using-azure-cli"></a>使用 Azure CLI 在現有或執行中的 Linux VM 上啟用加密 
 
-您可以安裝並使用 [Azure CLI](/cli/azure/?view=azure-cli-latest) 命令列工具，在加密的 VHD 上啟用磁碟加密。 您可以在瀏覽器中將它與 [Azure Cloud Shell](../../cloud-shell/overview.md) 搭配使用，或可將它安裝在本機電腦上，並在任何 PowerShell 工作階段中使用它。 若要在 Azure 中現有或執行中的 Linux VM 上啟用加密，請使用下列 CLI 命令：
+您可以安裝並使用 [Azure CLI](/cli/azure/) 命令列工具，在加密的 VHD 上啟用磁碟加密。 您可以在瀏覽器中將它與 [Azure Cloud Shell](../../cloud-shell/overview.md) 搭配使用，或可將它安裝在本機電腦上，並在任何 PowerShell 工作階段中使用它。 若要在 Azure 中現有或執行中的 Linux VM 上啟用加密，請使用下列 CLI 命令：
 
-在 Azure 中使用 [az vm encryption enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-show) 命令以在執行中的虛擬機器上啟用加密。
+在 Azure 中使用 [az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_show) 命令以在執行中的虛擬機器上啟用加密。
 
 - **加密執行中的 VM：**
 
@@ -283,7 +283,7 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -Di
     echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab
     ```
     
-1. 執行 Azure PowerShell [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-3.8.0&preserve-view=true) Cmdlet 搭配 -EncryptFormatAll 來加密這些磁碟。
+1. 執行 Azure PowerShell [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) Cmdlet 搭配 -EncryptFormatAll 來加密這些磁碟。
 
     ```azurepowershell-interactive
     $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 26874c33c496b57bf6317a7b837b3afddc2f5e37
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 41457f26c22e3b8ed529ce77cfaf452618b03655
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955645"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737637"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>使用 Azure 原則來限制 Linux VM 上的延伸模組安裝
 
@@ -98,7 +98,7 @@ vim ~/clouddrive/azurepolicy.parameters.json
 
 ## <a name="create-the-policy"></a>建立政策
 
-原則定義是一個用來儲存您所要使用之設定的物件。 原則定義會使用規則檔和參數檔來定義原則。 請使用 [az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest) 來建立原則定義。
+原則定義是一個用來儲存您所要使用之設定的物件。 原則定義會使用規則檔和參數檔來定義原則。 請使用 [az policy definition create](/cli/azure/role/assignment) 來建立原則定義。
 
 在此範例中，規則和參數是您在 Cloud Shell 中以 .json 檔案形式建立並儲存的檔案。
 
@@ -117,7 +117,7 @@ az policy definition create \
 
 以下範例會使用 [az policy assignment create](/cli/azure/policy/assignment) 將原則指派給資源群組。 任何建立在 **myResourceGroup** 資源群組中的 VM 都將無法安裝「Linux VM 存取」或適用於 Linux 的「自訂指令碼」延伸模組。 資源群組必須已存在，您才能指派原則。
 
-請使用 [az account list](/cli/azure/account?view=azure-cli-latest) 來取得您的訂用帳戶 ID，以用來取代範例中的 ID。
+請使用 [az account list](/cli/azure/account) 來取得您的訂用帳戶 ID，以用來取代範例中的 ID。
 
 
 ```azurecli-interactive

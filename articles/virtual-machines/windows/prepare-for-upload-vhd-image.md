@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e409211c167f7b29128faf9fdfc02aa5c0a7d0e3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976177"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736249"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>準備 Windows VHD 或 VHDX 以上傳至 Azure
 
@@ -379,7 +379,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 |                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726          | 10.0.14393.251 - KB4022715                  | 10.0.15063.483             | -                                           | -                                           |
 |                         | vmswitch.sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.138             | -                                           | -                                           |
 | 核心                    | ntoskrnl.exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726          | 10.0.14393.1358 - KB4022715                 | 10.0.15063.483             | -                                           | -                                           |
-| 遠端桌面服務 | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.0               | -                                           | -                                           |
+| 遠端桌面服務問題 | rdpcorets.dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726          | 10.0.14393.1198 - KB4022715                 | 10.0.15063.0               | -                                           | -                                           |
 |                         | termsrv.dll    | 6.1.7601.23403 - KB3125574                | 6.2.9200.17048 - KB2973501                  | 6.3.9600.17415 - KB3000850          | 10.0.14393.0 - KB4022715                    | 10.0.15063.0               | -                                           | -                                           |
 |                         | termdd.sys     | 6.1.7601.23403 - KB3125574                | -                                           | -                                   | -                                           | -                          | -                                           | -                                           |
 |                         | win32k.sys     | 6.1.7601.23807 - KB4022719                | 6.2.9200.22168 - KB4022718                  | 6.3.9600.18698 - KB4022726          | 10.0.14393.594 - KB4022715                  | -                          | -                                           | -                                           |
@@ -402,7 +402,7 @@ Sysprep 藉由移除所有個人資料和重設數個元件來提供「現成」
 
 您通常 `sysprep.exe` 會執行以建立範本，您可以在其中部署數個具有特定設定的其他 vm。 此範本稱為 *一般化映射*。
 
-若只要從一個磁片建立一個 VM，就不需要使用 Sysprep。 相反地，您可以從 *特製化映射*建立 VM。 如需有關如何從特製化磁片建立 VM 的詳細資訊，請參閱：
+若只要從一個磁片建立一個 VM，就不需要使用 Sysprep。 相反地，您可以從 *特製化映射* 建立 VM。 如需有關如何從特製化磁片建立 VM 的詳細資訊，請參閱：
 
 - [從特殊化磁碟建立 VM](create-vm-specialized.md)
 - [從特殊化 VHD 磁碟建立 VM](./create-vm-specialized-portal.md)
@@ -423,17 +423,17 @@ Sysprep 藉由移除所有個人資料和重設數個元件來提供「現成」
 1. 以系統管理員身分執行 PowerShell 會話。
 1.  (C:\Windows\Panther) 刪除 >\panther\setupact.log 目錄。
 1. 將目錄變更為 `%windir%\system32\sysprep` 。 然後執行 `sysprep.exe`。
-1. 在 [ **系統準備工具** ] 對話方塊中，選取 [ **進入系統全新體驗] (OOBE) **，然後確定已選取 [ **一般化** ] 核取方塊。
+1. 在 [ **系統準備工具** ] 對話方塊中，選取 [ **進入系統全新體驗] (OOBE)**，然後確定已選取 [ **一般化** ] 核取方塊。
 
     ![系統準備工具](media/prepare-for-upload-vhd-image/syspre.png)
 1. 在 [關機選項] 中選取 [關機]。
-1. 選取 [確定]  。
+1. 選取 [確定]。
 1. Sysprep 完成時，關閉 VM。 請勿使用 [ **重新開機** ] 來關閉 VM。
 
 現在已準備好上傳 VHD。 如需如何從一般化磁片建立 VM 的詳細資訊，請參閱 [上傳一般化 VHD 並使用它在 Azure 中建立新的 vm](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized)。
 
 >[!NOTE]
-> 不支援自訂的 *unattend.xml* 檔案。 雖然我們支援 **additionalUnattendContent** 屬性，但僅提供有限的支援，可將 [microsoft windows shell 安裝](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 選項新增至 Azure 布建代理程式所使用的 *unattend.xml* 檔案中。 例如，您可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) 來新增 FirstLogonCommands 和 LogonCommands。 如需詳細資訊，請參閱 [AdditionalUnattendContent FirstLogonCommands 範例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
+> 不支援自訂的 *unattend.xml* 檔案。 雖然我們支援 **additionalUnattendContent** 屬性，但僅提供有限的支援，可將 [microsoft windows shell 安裝](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) 選項新增至 Azure 布建代理程式所使用的 *unattend.xml* 檔案中。 例如，您可以使用 [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent) 來新增 FirstLogonCommands 和 LogonCommands。 如需詳細資訊，請參閱 [AdditionalUnattendContent FirstLogonCommands 範例](https://github.com/Azure/azure-quickstart-templates/issues/1407)。
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>將虛擬磁片轉換成固定大小的 VHD
 

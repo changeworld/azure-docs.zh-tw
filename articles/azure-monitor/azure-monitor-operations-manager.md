@@ -6,29 +6,29 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c213a38286de05df5c3be8e3498bcca4ab6e1fbf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251823"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736139"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>適用于現有 Operations Manager 客戶的 Azure 監視器
-本文提供的指導方針適用于目前使用 [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) 且正在規劃將商務應用程式和其他資源遷移至 Azure 的 [Azure 監視器](overview.md) 。 它會假設您的終極目標是完整轉換至雲端，以 Azure 監視器盡可能地取代 Operations Manager 功能，而不會危及您的業務和 IT 營運需求。 
+本文提供的指導方針適用于目前使用 [System Center Operations Manager](/system-center/scom/welcome) 且正在規劃將商務應用程式和其他資源遷移至 Azure 的 [Azure 監視器](overview.md) 。 它會假設您的終極目標是完整轉換至雲端，以 Azure 監視器盡可能地取代 Operations Manager 功能，而不會危及您的業務和 IT 營運需求。 
 
 本文中所做的特定建議將隨著 Azure 監視器和 Operations Manager 新增功能而變更。 不過，基本策略仍維持一致。
 
 > [!IMPORTANT]
 > 執行此處所述的數個 Azure 監視器功能需要成本，因此您應該在整個環境中部署之前評估其價值。
 
-## <a name="prerequisites"></a>必要條件
-本文假設您已使用 [Operations Manager](https://docs.microsoft.com/system-center/scom) ，且至少對 [Azure 監視器](overview.md)有基本的瞭解。 如需這兩者之間的完整比較，請參閱 [雲端監視指南：監視平臺總覽](/azure/cloud-adoption-framework/manage/monitor/platform-overview)。 該文章詳述與兩者之間的特定功能差異，以協助您瞭解此處所做的一些建議。 
+## <a name="prerequisites"></a>Prerequisites
+本文假設您已使用 [Operations Manager](/system-center/scom) ，且至少對 [Azure 監視器](overview.md)有基本的瞭解。 如需這兩者之間的完整比較，請參閱 [雲端監視指南：監視平臺總覽](/azure/cloud-adoption-framework/manage/monitor/platform-overview)。 該文章詳述與兩者之間的特定功能差異，以協助您瞭解此處所做的一些建議。 
 
 
 ## <a name="general-strategy"></a>一般策略
 由於平臺本質上不同，因此沒有可將資產從 Operations Manager 轉換 Azure 監視器的遷移工具。 當您繼續使用 Operations Manager 時，您的遷移會改為構成 [標準的 Azure 監視器實施](deploy.md) 。 當您自訂 Azure 監視器以符合不同應用程式和元件的需求，並隨著其獲得更多功能，您就可以開始在 Operations Manager 淘汰不同的管理元件和代理程式。
 
-本文中建議的一般策略與 [雲端監視指南](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/)中的相同，它會建議 [混合式雲端監視](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) 策略，讓您能夠逐漸轉換到雲端。 雖然有些功能可能會重迭，但此策略可讓您在更熟悉新平臺的情況下維護現有的商務程式。 您只能將其取代為 Azure 監視器的 Operations Manager 功能。 使用多個監視工具會增加複雜度，但可讓您利用 Azure 監視器的能力來監視新一代雲端工作負載，同時保有 Operations Manager 監視可能是內部部署或其他雲端中的伺服器軟體和基礎結構元件的能力。 
+本文中建議的一般策略與 [雲端監視指南](/azure/cloud-adoption-framework/manage/monitor/)中的相同，它會建議 [混合式雲端監視](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) 策略，讓您能夠逐漸轉換到雲端。 雖然有些功能可能會重迭，但此策略可讓您在更熟悉新平臺的情況下維護現有的商務程式。 您只能將其取代為 Azure 監視器的 Operations Manager 功能。 使用多個監視工具會增加複雜度，但可讓您利用 Azure 監視器的能力來監視新一代雲端工作負載，同時保有 Operations Manager 監視可能是內部部署或其他雲端中的伺服器軟體和基礎結構元件的能力。 
 
 
 ## <a name="components-to-monitor"></a>要監視的元件
@@ -37,7 +37,7 @@ ms.locfileid: "98251823"
 在雲端之前，您使用 Operations Manager 來監視所有的圖層。 當您開始以基礎結構即服務 (IaaS) 進行轉換時，您會繼續使用虛擬機器的 Operations Manager，但開始為您的雲端資源使用 Azure 監視器。 當您使用「平臺即服務」 (PaaS) 來進一步轉換至新式應用程式時，您可以將焦點放在 Azure 監視器，並開始淘汰 Operations Manager 功能。
 
 
-![雲端模型](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
+![雲端模型](/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
 
 您可以將這些層級簡化為下列類別，這會在本文的其餘部分中進一步說明。 雖然您環境中的每個監視工作負載可能無法整齊放入其中一個類別，但每個工作負載都應該接近特定類別，才能套用一般建議。
 
