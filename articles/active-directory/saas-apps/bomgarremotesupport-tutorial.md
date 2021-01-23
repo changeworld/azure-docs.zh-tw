@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/12/2020
 ms.author: jeedes
-ms.openlocfilehash: c11d8aaa578006c7dbd96b457399df5b17fd9bd8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
-ms.translationtype: HT
+ms.openlocfilehash: f9e4af3330ecf5fbe161f7ba92ddf96eb04880a1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95914889"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728019"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 BeyondTrust 遠端支援整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "95914889"
 * 讓使用者使用其 Azure AD 帳戶自動登入 BeyondTrust 遠端支援。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -78,7 +78,7 @@ ms.locfileid: "95914889"
 
     a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<HOSTNAME>.bomgar.com/saml`
 
-    b. 在 [識別碼]  方塊中，使用下列模式輸入 URL：`https://<HOSTNAME>.bomgar.com`
+    b. 在 [識別碼] 方塊中，使用下列模式輸入 URL：`https://<HOSTNAME>.bomgar.com`
 
     c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<HOSTNAME>.bomgar.com/saml/sso`
 
@@ -189,8 +189,8 @@ ms.locfileid: "95914889"
 
 * 直接移至 BeyondTrust 遠端支援登入 URL，然後從該處起始登入流程。
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [BeyondTrust 遠端支援] 圖格時，將會重新導向至 BeyondTrust 遠端支援登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [BeyondTrust 遠端支援] 圖格時，將會重新導向至 BeyondTrust 遠端支援登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 BeyondTrust 遠端支援後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+設定 BeyondTrust 遠端支援後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-aad)

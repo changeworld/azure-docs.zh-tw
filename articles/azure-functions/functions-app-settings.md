@@ -3,12 +3,12 @@ title: Azure Functions 的應用程式設定參考
 description: Azure Functions 應用程式設定或環境變數的參考文件。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 80b2daebbd64f08dd4f5d728b2a9a4ee04b8952f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937105"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728987"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的應用程式設定參考
 
@@ -25,7 +25,7 @@ ms.locfileid: "97937105"
 
 Application Insights 的檢測金鑰。 只使用或的其中一個 `APPINSIGHTS_INSTRUMENTATIONKEY` `APPLICATIONINSIGHTS_CONNECTION_STRING` 。 當 Application Insights 在主權雲端中執行時，請使用 `APPLICATIONINSIGHTS_CONNECTION_STRING` 。 如需詳細資訊，請參閱 [如何設定 Azure Functions 的監視](configure-monitoring.md)。 
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
 
@@ -38,7 +38,7 @@ Application Insights 的連接字串。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 
 
 如需詳細資訊，請參閱 [連接字串](../azure-monitor/app/sdk-connection-string.md)。 
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey = [key]; IngestionEndpoint = [url];LiveEndpoint = [url];ProfilerEndpoint = [url];SnapshotEndpoint = [url];|
 
@@ -90,7 +90,7 @@ Application Insights 的連接字串。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 
 
 選擇性儲存體帳戶連接字串，用於儲存記錄並將它們顯示在入口網站的 [監視器] 索引標籤中。 這項設定僅適用于以 Azure Functions 執行時間1.x 版為目標的應用程式。 儲存體帳戶必須是一般用途的帳戶，支援 Blob、佇列和資料表。 若要深入了解，請參閱[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>|
 
@@ -101,7 +101,7 @@ Application Insights 的連接字串。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 
 
 `true` 表示停用針對函式應用程式根 URL 所顯示的預設登陸頁面。 預設為 `false`。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |AzureWebJobsDisableHomepage|true|
 
@@ -113,7 +113,7 @@ Application Insights 的連接字串。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 
 
 `true` 表示在編譯 .NET 程式碼時使用「釋放」模式；`false` 表示使用「偵錯」模式。 預設為 `true`。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |AzureWebJobsDotNetReleaseCompilation|true|
 
@@ -121,7 +121,7 @@ Application Insights 的連接字串。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 
 
 要啟用的搶鮮版 (Beta) 功能清單 (以逗號分隔)。 這些旗標所啟用的搶鮮版 (Beta) 功能還不適合在生產環境內使用，但在上線之前可以針對實驗使用予以啟用。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1,feature2|
 
@@ -129,7 +129,7 @@ Application Insights 的連接字串。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 
 
 指定要用於金鑰儲存的存放庫或提供者。 目前支援的存放庫是 Blob 儲存體 ("Blob") 和本機檔案系統 ("Files")。 預設值在第 2 版中為 Blob，在第 1 版中則為檔案系統。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |AzureWebJobsSecretStorageType|檔案儲存體|
 
@@ -137,7 +137,7 @@ Application Insights 的連接字串。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 
 
 Azure Functions 執行時間會使用此儲存體帳戶連接字串來進行一般作業。 此儲存體帳戶的一些用途包括金鑰管理、計時器觸發程式管理，以及事件中樞檢查點。 儲存體帳戶必須是一般用途的帳戶，支援 Blob、佇列和資料表。 請參閱[儲存體帳戶](functions-infrastructure-as-code.md#storage-account)和[儲存體帳戶需求](storage-considerations.md#storage-account-requirements)。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |AzureWebJobsStorage|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
 
@@ -145,7 +145,7 @@ Azure Functions 執行時間會使用此儲存體帳戶連接字串來進行一�
 
 用於 TypeScript 之編譯器的路徑。 可讓您覆寫預設值 (需要的話)。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%HOME%\typescript|
 
@@ -153,7 +153,7 @@ Azure Functions 執行時間會使用此儲存體帳戶連接字串來進行一�
 
 指定是否啟用 Azure 入口網站中的編輯。 有效值為 "readwrite" 和 "readonly"。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |FUNCTION\_APP\_EDIT\_MODE|readonly|
 
@@ -161,7 +161,7 @@ Azure Functions 執行時間會使用此儲存體帳戶連接字串來進行一�
 
 要在此函式應用程式中使用的 Functions 執行階段版本。 含主要版本的波狀符號表示使用該主要版本的最新版本 (例如，"~2")。 有相同主要版本的新版本可用時，會將它們自動安裝在函式應用程式中。 若要將應用程式釘選至特定版本，請使用完整版本號碼 (例如，"2.0.12345")。 預設值為 "~2"。 `~1` 的值會將您的應用程式釘選至 1.x 版執行階段。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
 
@@ -174,7 +174,7 @@ Azure Functions 執行時間會使用此儲存體帳戶連接字串來進行一�
 
 需要將函式 [ \_ 擴充功能 \_ 版本](functions-app-settings.md#functions_extension_version) 設定為 `~3` 。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |函數 \_ V2 \_ 相容性 \_ 模式|true|
 
@@ -182,7 +182,7 @@ Azure Functions 執行時間會使用此儲存體帳戶連接字串來進行一�
 
 指定語言工作者進程的最大數目，預設值為 `1` 。 允許的最大值為 `10` 。 函式呼叫會平均分散在不同的語言工作者進程中。 每隔10秒就會產生一次語言工作者進程，直到 \_ 達到函式工作者 \_ 進程計數所設定的計數為止 \_ 。 使用多個語言工作者進程與 [縮放](functions-scale.md)不同。 當您的工作負載混合 CPU 系結和 i/o 系結調用時，請考慮使用此設定。 此設定適用于所有 non-.NET 語言。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |函數 \_ 工作者 \_ 進程 \_ 計數|2|
 
@@ -190,7 +190,7 @@ Azure Functions 執行時間會使用此儲存體帳戶連接字串來進行一�
 
 指定 Python 語言背景工作角色用來執行函式調用的執行緒數目上限，預設值 `1` 為 Python 版本的預設值 `3.8` 。 針對 Python 版本 `3.9` 和更新版本，此值會設定為 `None` 。 請注意，此設定不保證在執行期間將設定的執行緒數目。 此設定可讓 Python 將執行緒數目展開為指定的值。 此設定僅適用于 Python 函數應用程式。 此外，此設定會套用至同步函式調用，而不會用於協同程式。
 
-|答案|範例值|最大值|
+|Key|範例值|最大值|
 |---|------------|---------|
 |PYTHON \_ \_ 執行緒執行緒 \_ 計數|2|32|
 
@@ -199,7 +199,7 @@ Azure Functions 執行時間會使用此儲存體帳戶連接字串來進行一�
 
 要在函式應用程式中載入的語言背景工作角色執行階段。  這會對應至您應用程式 (例如，"dotnet") 中所使用的語言。 對於使用多種語言的函式，您必須將其發佈到多個應用程式，每個都有對應的背景工作角色執行階段值。  有效的值包括 `dotnet` (c #/f # ) 、 `node` (JavaScript/TypeScript) 、 `java` (JAVA) 、 `powershell` (PowerShell) 和 `python` (Python) 。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
@@ -207,7 +207,7 @@ Azure Functions 執行時間會使用此儲存體帳戶連接字串來進行一�
 
 此設定的值表示適用于 Python 應用程式的自訂套件索引 URL。 當您需要使用在額外的封裝索引中找到的自訂相依性來執行遠端組建時，請使用此設定。   
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |PIP \_ 額外 \_ 索引 \_ URL|http://my.custom.package.repo/simple |
 
@@ -219,7 +219,7 @@ _此設定目前為預覽狀態。_
 
 此設定會控制 Azure Functions 調整控制器的記錄。 如需詳細資訊，請參閱 [調整控制器記錄](functions-monitoring.md#scale-controller-logs)。
 
-|答案|範例值|
+|Key|範例值|
 |-|-|
 |SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights： Verbose|
 
@@ -229,27 +229,33 @@ _此設定目前為預覽狀態。_
 
 ## <a name="website_contentazurefileconnectionstring"></a>網站 \_ CONTENTAZUREFILECONNECTIONSTRING
 
-僅適用于使用量 & Premium 方案。 函式應用程式碼和設定儲存所在之儲存體帳戶的連接字串。 請參閱[建立函式應用程式](functions-infrastructure-as-code.md#create-a-function-app)。
+儲存體帳戶的連接字串，其中函式應用程式程式碼和設定會儲存在 Windows 上執行的事件驅動調整計畫中。 如需詳細資訊，請參閱 [建立函數應用程式](functions-infrastructure-as-code.md#windows)。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[name];AccountKey=[key]|
+
+只有在部署到在 Windows 上執行的耗用量或高階方案時，才會使用。 不支援 Linux。 變更或移除此設定可能會導致您的函數應用程式無法啟動。 若要深入瞭解，請參閱 [這篇疑難排解文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。 
 
 ## <a name="website_contentovervnet"></a>網站 \_ CONTENTOVERVNET
 
 僅適用于 Premium 方案。 的值可讓您的函式 `1` 應用程式在您的儲存體帳戶限制為虛擬網路時進行調整。 將您的儲存體帳戶限制為虛擬網路時，您應該啟用此設定。 若要深入瞭解，請參閱將 [您的儲存體帳戶限制為虛擬網路](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview)。 
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |WEBSITE_CONTENTOVERVNET|1|
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
-僅適用于使用量 & Premium 方案。 函式應用程式碼和設定的檔案路徑。 Used with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. 預設值是開頭為函式應用程式名稱的唯一字串。 請參閱[建立函式應用程式](functions-infrastructure-as-code.md#create-a-function-app)。
+函式應用程式程式碼的檔案路徑，以及 Windows 上事件驅動調整計畫中的設定。 Used with WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. 預設值是開頭為函式應用程式名稱的唯一字串。 請參閱[建立函式應用程式](functions-infrastructure-as-code.md#windows)。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
+
+僅供函式應用程式在 Windows 上執行的耗用量或高階方案上使用。 不支援 Linux。 變更或移除此設定可能會導致您的函數應用程式無法啟動。 若要深入瞭解，請參閱 [這篇疑難排解文章](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)。
+
+使用 Azure Resource Manager 在部署期間建立函數應用程式時，請勿在範本中包含 WEBSITE_CONTENTSHARE。 此應用程式設定會在部署期間產生。 若要深入瞭解，請參閱 [將函數應用程式的資源部署自動化](functions-infrastructure-as-code.md#windows)。   
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
@@ -258,7 +264,7 @@ _此設定目前為預覽狀態。_
 > [!IMPORTANT]
 > 此設定目前為預覽狀態。  已新增函式 [最大 scale out 的應用程式屬性](./event-driven-scaling.md#limit-scale-out) ，而且是限制 scale out 的建議方式。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|5|
 
@@ -267,7 +273,7 @@ _此設定目前為預覽狀態。_
 _僅限 Windows。_  
 設定當您在 Windows 上執行函數應用程式時，所要使用的 Node.js 版本。 您應該使用波狀符號 (~) 讓執行時間使用目標主要版本的最新可用版本。 例如，當設定為時 `~10` ，就會使用 Node.js 10 的最新版本。 當主要版本以波狀符號為目標時，您不需要手動更新次要版本。 
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |WEBSITE\_NODE\_DEFAULT_VERSION|~ 10|
 
@@ -275,7 +281,7 @@ _僅限 Windows。_
 
 可讓函式應用程式從掛接的套件檔案執行。
 
-|答案|範例值|
+|Key|範例值|
 |---|------------|
 |WEBSITE\_RUN\_FROM\_PACKAGE|1|
 
@@ -285,7 +291,7 @@ _僅限 Windows。_
 
 可讓您設定函數應用程式的時區。 
 
-|答案|OS|範例值|
+|Key|OS|範例值|
 |---|--|------------|
 |網站 \_ 時區 \_|Windows|美加東部標準時間|
 |網站 \_ 時區 \_|Linux|北美洲/New_York|

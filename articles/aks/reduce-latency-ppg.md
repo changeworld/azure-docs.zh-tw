@@ -5,19 +5,19 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: fa81e293bc5e53a852bdb404f9e6d41c4297647b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: c30051008474a32ae6c847ee3f840c8ae35b469b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349030"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726795"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups"></a>使用鄰近位置群組減少延遲
 
 > [!Note]
 > 在 AKS 上使用鄰近位置群組時，共置只會套用至代理程式節點。 節點對節點和對應的託管 pod 至 pod 延遲已獲得改善。 共置不會影響叢集控制平面的放置。
 
-在 Azure 中部署您的應用程式時，跨區域或可用性區域將虛擬機器 (VM) 實例分散會建立網路延遲，這可能會影響應用程式的整體效能。 近接位置群組是用來確保 Azure 計算資源實際位於彼此附近的邏輯群組。 某些應用程式（像是遊戲、工程模擬和高頻率交易 (HFT) 需要低延遲和快速完成的工作。 針對 (HPC) 案例的高效能運算，請考慮針對叢集的節點集區使用 [鄰近放置群組](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) 。
+在 Azure 中部署您的應用程式時，跨區域或可用性區域將虛擬機器 (VM) 實例分散會建立網路延遲，這可能會影響應用程式的整體效能。 近接位置群組是用來確保 Azure 計算資源實際位於彼此附近的邏輯群組。 某些應用程式（像是遊戲、工程模擬和高頻率交易 (HFT) 需要低延遲和快速完成的工作。 針對 (HPC) 案例的高效能運算，請考慮針對叢集的節點集區使用 [鄰近放置群組](../virtual-machines/co-location.md#proximity-placement-groups) (PPG) 。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -133,7 +133,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[proximity-placement-groups]: ../virtual-machines/linux/co-location.md#proximity-placement-groups
+[proximity-placement-groups]: ../virtual-machines/co-location.md#proximity-placement-groups
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [system-pool]: ./use-system-pools.md
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add

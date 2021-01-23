@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2dba9fbcbddbc7a66763636986f3d98f4f95332c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b75f4c85831fe66158da875c21af60ee73531026
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683126"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728251"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>在 Azure Kubernetes Service (AKS)  (preview 中使用 Azure 磁片容器存放裝置介面 (CSI) 驅動程式) 
 Azure 磁片容器存放裝置介面 (CSI) 驅動程式是符合 [CSI 規格規範](https://github.com/container-storage-interface/spec/blob/master/spec.md)的驅動程式，AZURE KUBERNETES SERVICE (AKS) 用來管理 Azure 磁片的生命週期。
@@ -101,7 +101,7 @@ storageclass.storage.k8s.io/azuredisk-csi-waitforfirstconsumer created
 
 ## <a name="volume-snapshots"></a>磁碟區快照
 
-Azure 磁片 CSI 驅動程式支援建立 [永久性磁片區的快照](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)集。 作為這項功能的一部分，驅動程式可以根據預設值 (中設定的值來執行 *完整* 或 [*增量* 快照](../virtual-machines/windows/disks-incremental-snapshots.md) 集 `incremental` ，這是) 。
+Azure 磁片 CSI 驅動程式支援建立 [永久性磁片區的快照](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html)集。 作為這項功能的一部分，驅動程式可以根據預設值 (中設定的值來執行 *完整* 或 [*增量* 快照](../virtual-machines/disks-incremental-snapshots.md) 集 `incremental` ，這是) 。
 
 如需所有參數的詳細資訊，請參閱 [磁片區快照集類別參數](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass)。
 
@@ -370,7 +370,7 @@ deployment/deployment-azuredisk created
 
 Azure 磁片 CSI 驅動程式也支援 Windows 節點和容器。 如果您想要使用 Windows 容器，請遵循 [windows 容器教學](windows-container-cli.md) 課程來新增 windows 節點集區。
 
-當您擁有 Windows 節點集區之後，您現在可以使用內建的儲存類別，例如 `managed-csi` 。 您可以[Windows-based stateful set](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) `data.txt` 使用[kubectl apply][kubectl-apply]命令部署下列命令，以部署將時間戳記儲存至檔案的範例 Windows 型具狀態設定：
+當您擁有 Windows 節點集區之後，您現在可以使用內建的儲存類別，例如 `managed-csi` 。 您可以[](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) `data.txt` 使用[kubectl apply][kubectl-apply]命令部署下列命令，以部署將時間戳記儲存至檔案的範例 Windows 型具狀態設定：
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/windows/statefulset.yaml

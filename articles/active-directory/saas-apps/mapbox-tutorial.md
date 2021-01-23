@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: fcee52d585d465b06e7b0dc8d70dc35fb66d2615
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: e74018d4b145f8dec44137ca1a3b0713b1b5cadd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916162"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728546"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mapbox"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Mapbox 整合
 
@@ -91,7 +91,7 @@ ms.locfileid: "97916162"
     | | |
 
     > [!NOTE]
-    > 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
+    > 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (原始)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
@@ -163,7 +163,7 @@ ms.locfileid: "97916162"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Mapbox
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 [Mapbox] 圖格時，應該會自動登入您已設定 SSO 的 Mapbox。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 [Mapbox] 圖格時，應該會自動登入您已設定 SSO 的 Mapbox。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

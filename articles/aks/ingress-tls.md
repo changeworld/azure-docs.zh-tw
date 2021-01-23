@@ -5,12 +5,12 @@ description: 瞭解如何安裝和設定 NGINX 輸入控制器，以使用 Let's
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 0b0e26262f75ba8030188a2bffbce8282b38bca8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1faabdda869bbaba8027df121d080b0fb421e9f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219635"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728887"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 上建立 HTTPS 輸入控制器
 
@@ -60,7 +60,8 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 在安裝期間，會為輸入控制器建立 Azure 公用 IP 位址。 在輸入控制器的生命週期內，此公用 IP 位址都是靜態的。 如果您刪除輸入控制器，公用 IP 位址指派將會遺失。 如果您後續又建立其他輸入控制器，將會指派新的公用 IP 位址。 如果您想要持續使用公用 IP 位址，您可以改為[使用靜態公用 IP 位址建立輸入控制器][aks-ingress-static-tls]。
@@ -125,13 +126,13 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install the cert-manager Helm chart
-helm install \
-  cert-manager \
+helm install cert-manager jetstack/cert-manager \
   --namespace ingress-basic \
   --version v0.16.1 \
   --set installCRDs=true \
-  --set nodeSelector."beta\.kubernetes\.io/os"=linux \
-  jetstack/cert-manager
+  --set nodeSelector."kubernetes\.io/os"=linux \
+  --set webhook.nodeSelector."kubernetes\.io/os"=linux \
+  --set cainjector.nodeSelector."kubernetes\.io/os"=linux
 ```
 
 如需 cert-manager 設定的詳細資訊，請參閱 [cert-manager 專案][cert-manager]。

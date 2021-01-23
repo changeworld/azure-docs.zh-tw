@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914955"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728086"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>使用 Azure Pipelines 將設定提取至應用程式設定
 
 [Azure 應用程式組態](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task)工作會從您的應用程式設定存放區提取索引鍵/值，並將其設定為 Azure 管線變數，以供後續工作取用。 這項工作可補充將從設定檔中的索引鍵/值推送到應用程式設定存放區的 [Azure 應用程式組態推送](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) 工作。 如需詳細資訊，請參閱 [使用 Azure Pipelines 將設定推送至應用程式設定](push-kv-devops-pipeline.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 - 應用程式設定存放區-在 [Azure 入口網站](https://portal.azure.com)中免費建立一個。
@@ -47,7 +47,7 @@ ms.locfileid: "97914955"
 
 將適當的應用程式設定角色指派給在工作中使用的服務連線，讓工作可以存取應用程式設定存放區。
 
-1. 流覽至您的目標應用程式設定存放區。 如需設定應用程式設定存放區的逐步解說，請參閱其中一個 Azure 應用程式組態快速入門中的 [建立應用程式設定存放區](/azure/azure-app-configuration/quickstart-dotnet-core-app#create-an-app-configuration-store) 。
+1. 流覽至您的目標應用程式設定存放區。 如需設定應用程式設定存放區的逐步解說，請參閱其中一個 Azure 應用程式組態快速入門中的 [建立應用程式設定存放區](./quickstart-dotnet-core-app.md#create-an-app-configuration-store) 。
 1. 選取左側的 [ **存取控制] (IAM)**。
 1. 在頂端，選取 [ **+ 新增** ]，然後選擇 [ **新增角色指派**]。
 1. 在 [ **角色**] 底下，選取 [ **應用程式設定資料讀取器**]。 此角色可讓工作從應用程式設定存放區讀取。 

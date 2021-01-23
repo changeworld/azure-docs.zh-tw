@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 06b538f0f218beab2549b027a5da9dcc594969a4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: HT
+ms.openlocfilehash: 12752e3d3cc08e8a13e9679725fbb6678c4bbd71
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586851"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728679"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-academy-attendance"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Academy Attendance 整合
 
@@ -97,7 +97,7 @@ ms.locfileid: "97586851"
     | 角色 (role)      | user.assignedroles |
 
     > [!NOTE]
-    > Academy Attendance 支援兩種使用者角色：**講師** 和 **學生**。 在 Azure AD 中設定這些角色，以便您可以將使用者指派為適當的角色。 請參閱[這份](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)文件，該文件說明如何在 Azure AD 中建立自訂角色。
+    > Academy Attendance 支援兩種使用者角色：**講師** 和 **學生**。 在 Azure AD 中設定這些角色，以便您可以將使用者指派為適當的角色。 請參閱[這份](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)文件，該文件說明如何在 Azure AD 中建立自訂角色。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -147,9 +147,9 @@ ms.locfileid: "97586851"
 
 * 直接移至 Academy Attendance 登入 URL，然後從該處起始登入流程。
 
-* 您可以使用 Microsoft 的「我的應用程式」。 按一下我的應用程式中的 [Academy Attendance] 圖格時，系統會將您重新導向至 Academy Attendance 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 按一下我的應用程式中的 [Academy Attendance] 圖格時，系統會將您重新導向至 Academy Attendance 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Academy Attendance 後，您可以強制執行工作階段控制項，以即時防止貴組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+設定 Academy Attendance 後，您可以強制執行工作階段控制項，以即時防止貴組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

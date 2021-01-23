@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: f071159b8e1a25776fad5e662f4ea18573764a89
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
-ms.translationtype: HT
+ms.openlocfilehash: 480e501f8683fad405abc5e07cb43eec8ae8444c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97364376"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727849"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-burp-suite-enterprise-edition"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Burp Suite Enterprise Edition 整合
 
@@ -144,9 +144,9 @@ ms.locfileid: "97364376"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，應該會自動登入您已設定 SSO 的 Burp Suite Enterprise Edition
 
-* 您可以使用 Microsoft 的「我的應用程式」。 在我的應用程式中按一下 [Burp Suite Enterprise Edition]，應該會自動登入您已設定 SSO 的 Burp Suite Enterprise Edition。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 在我的應用程式中按一下 [Burp Suite Enterprise Edition]，應該會自動登入您已設定 SSO 的 Burp Suite Enterprise Edition。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Burp Suite Enterprise Edition 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+設定 Burp Suite Enterprise Edition 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

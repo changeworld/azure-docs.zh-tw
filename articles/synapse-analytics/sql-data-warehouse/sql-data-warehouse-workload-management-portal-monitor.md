@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 3ea6318ff4a1f99218caea83c2d83ee1f62ef697
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 04a3fa79a6940a5b7a4bb98d08aa8be48a442903
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98679630"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728595"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring"></a>Azure Synapse Analytics - 工作負載管理入口網站監視
 
@@ -29,7 +29,7 @@ ms.locfileid: "98679630"
 |標準名稱                    |描述  |彙總類型 |
 |-------------------------------|-------------|-----------------|
 |有效的容量資源百分比 | 有效的容量資源百分比是工作負載群組可存取的資源百分比固定限制，此數值會將配置給其他工作負載群組的「有效的最低資源百分比」列入考量。 有效的容量資源百分比計量是使用 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 語法中的 `CAP_PERCENTAGE_RESOURCE` 參數來設定。  有效值如此處所述。<br><br>例如，如果工作負載群組 `DataLoads` 是以 `CAP_PERCENTAGE_RESOURCE` = 100 建立，而且另一個工作負載群組是以 25% 的有效最小資源百分比所建立，則 `DataLoads` 工作負載群組的「有效容量上限資源百分比」 為75%。<br><br>有效的容量資源百分比會決定工作負載群組可以達成的平行存取上限 (以及因而導致的潛在輸送量)。  如果需要的額外輸送量超過「有效容量資源百分比」計量目前所回報的值，請增加 `CAP_PERCENTAGE_RESOURCE`、減少其他工作負載群組的 `MIN_PERCENTAGE_RESOURCE`，或擴大執行個體以新增更多資源。  減少 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 可能會增加並行，但可能不會增加整體輸送量。| Min、Avg、Max |
-|有效的最低資源百分比 |有效的最低資源百分比是針對工作負載群組將服務層級所需的最低資源列入考量，所保留和隔離的最低資源百分比。  有效的最低資源百分比計量是使用 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 語法中的 `MIN_PERCENTAGE_RESOURCE` 參數來設定。  有效值如[此處](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values)所述。<br><br>當此計量未經過篩選或分割時，請使用 Sum 匯總類型以監視系統上設定的總工作負載隔離。<br><br>「有效的最低資源百分比」會決定工作負載群組可以達成的保證平行存取較低繫結 (以及因而導致的保證輸送量)。  如果需要的額外保證資源數量比「有效的最低資源百分比」計量目前回報的數量多，請增加針對工作負載群組設定的 `MIN_PERCENTAGE_RESOURCE` 參數。  減少 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 可能會增加並行，但可能不會增加整體輸送量。 |Min、Avg、Max|
+|有效的最低資源百分比 |有效的最低資源百分比是針對工作負載群組將服務層級所需的最低資源列入考量，所保留和隔離的最低資源百分比。  有效的最低資源百分比計量是使用 [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) 語法中的 `MIN_PERCENTAGE_RESOURCE` 參數來設定。  有效值如[此處](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json?view=azure-sqldw-latest&preserve-view=true#effective-values)所述。<br><br>當此計量未經過篩選或分割時，請使用 Sum 匯總類型以監視系統上設定的總工作負載隔離。<br><br>「有效的最低資源百分比」會決定工作負載群組可以達成的保證平行存取較低繫結 (以及因而導致的保證輸送量)。  如果需要的額外保證資源數量比「有效的最低資源百分比」計量目前回報的數量多，請增加針對工作負載群組設定的 `MIN_PERCENTAGE_RESOURCE` 參數。  減少 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 可能會增加並行，但可能不會增加整體輸送量。 |Min、Avg、Max|
 |工作負載群組使用中查詢  |此計量會回報工作負載群組內的使用中查詢。  使用未篩選或分矵的此計量可顯示在系統上執行的所有使用中查詢。|Sum         |
 |依最大資源百分比配置的工作負載群組 |此標準會顯示相對於每個工作負載群組的「有效容量資源百分比」的資源配置百分比。  此計量可提供工作負載群組的有效使用率。<br><br>假設有一個工作負載群組 `DataLoads` 其「有效的容量資源百分比」為 75%，而 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 設定為25%。  如果單一查詢在此工作負載群組中執行，則篩選為 `DataLoads` 的「依資源百分比上限配置的工作負載群組」值會是 33% (25%/75%)。<br><br>使用此計量來識別工作負載群組的使用率。  接近 100% 的值表示工作負載群組可用的所有資源均在使用中。  此外，顯示值大於零之相同工作負載群組的「已排入佇列的工作負載群組查詢計量」會指出若已配置，工作負載群組會使用的額外資源。  相反地，如果此計量一致較低，且「工作負載群組使用中查詢」 也較低，則表示系統未使用工作負載群組。  如果「有效的容量資源百分比」大於零，表示[工作負載隔離的使用量過低](#underutilized-workload-isolation)，這種情況會特別有問題。|Min、Avg、Max |
 |依系統百分比配置的工作負載群組 | 此計量會顯示相對於整個系統的資源配置百分比。<br><br>假設有一個 `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 設定為 25% 的工作負載群組 `DataLoads`。  如果單一查詢在此工作負載群組中執行，則篩選為 `DataLoads` 的「依系統百分比配置的工作負載群組」值會是 25% (25%/100%)。|Min、Avg、Max |

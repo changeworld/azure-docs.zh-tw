@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 07a17fafaea1f9f74dde901bbeae11fcbe148885
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: b37a5332e7c8f21d4309102b6b111953c1765ea6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916111"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729374"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tickitlms-learn"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 TickitLMS Learn 整合
 
@@ -97,7 +97,7 @@ ms.locfileid: "97916111"
     | reportsto | user.reportsto |
 
     > [!NOTE]
-    > TickitLMS Learn 需要將使用者的角色指派給應用程式。 請在 Azure AD 中設定這些角色，以便為使用者指派適當的角色。 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
+    > TickitLMS Learn 需要將使用者的角色指派給應用程式。 請在 Azure AD 中設定這些角色，以便為使用者指派適當的角色。 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]，並將資料儲存在您的電腦上。
 
@@ -148,7 +148,7 @@ ms.locfileid: "97916111"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 TickitLMS Learn 
 
-您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [TickitLMS Learn] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 TickitLMS Learn。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [TickitLMS Learn] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 TickitLMS Learn。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

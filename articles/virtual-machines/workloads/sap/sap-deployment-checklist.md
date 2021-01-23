@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 601f268f81c222ada5a4f99b05ae8ffcdfc13a23
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ca2a844364d11dbb5ac2a244945e07d8ca725c1c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916281"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728435"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
 
@@ -66,7 +66,7 @@ ms.locfileid: "97916281"
     - 高可用性和嚴重損壞修復架構。
         - 根據 RTO 和 RPO，定義高可用性和嚴重損壞修復架構所需的外觀。
         - 若要瞭解區域內的高可用性，請檢查所需的 DBMS 在 Azure 中提供的功能。 大部分 DBMS 封裝都提供同步熱待命的同步方法，我們建議用於生產系統。 此外，請檢查適用于不同資料庫的 SAP 相關檔，從適用于 [sap 工作負載的 Azure 虛擬機器 DBMS 部署](./dbms_guide_general.md) 和相關檔的考慮開始。
-           不支援使用 Windows Server 容錯移轉叢集搭配 DBMS 層的共用磁片設定，例如 [SQL Server 所述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017&preserve-view=true)。 相反地，請使用類似下列的解決方案：
+           不支援使用 Windows Server 容錯移轉叢集搭配 DBMS 層的共用磁片設定，例如 [SQL Server 所述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)。 相反地，請使用類似下列的解決方案：
            - [SQL Server AlwaysOn](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle 資料保護](../oracle/configure-oracle-dataguard.md)
            - [HANA 系統複寫](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)

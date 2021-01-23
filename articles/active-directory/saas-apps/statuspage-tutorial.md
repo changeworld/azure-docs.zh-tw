@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 40cb3c6e326cbacfbfb9879cfa92b5780d86fe99
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
-ms.translationtype: HT
+ms.openlocfilehash: cc3ce56ecd17d627001f4925355c055afdc09d22
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724199"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729602"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-statuspage"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 StatusPage 整合
 
@@ -206,7 +206,7 @@ StatusPage 支援 Just-in-Time 佈建。 您已在[設定 Azure AD 單一登入]
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入已設定 SSO 的 StatusPage
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [StatusPage] 圖格時，應該會自動登入已設定 SSO 的 StatusPage。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 [StatusPage] 圖格時，應該會自動登入已設定 SSO 的 StatusPage。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

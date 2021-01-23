@@ -7,12 +7,12 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fec4ba8cba33a1d52d8f330308645fb616921ba4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97604969"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726794"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>使用 GitHub Actions 將自訂容器部署至 App Service
 
@@ -50,7 +50,7 @@ ms.locfileid: "97604969"
 1. 在 [ **總覽** ] 頁面上，選取 [ **取得發行設定檔**]。
 
     > [!NOTE]
-    > 從2020年10月起，Linux web apps 將需要在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下載檔案之前** 將應用程式設定設為。 未來將會移除這項需求。 請參閱 [Azure 入口網站中的設定 App Service 應用程式](/azure/app-service/configure-common)，以瞭解如何設定常見的 web 應用程式設定。  
+    > 從2020年10月起，Linux web apps 將需要在 `WEBSITE_WEBDEPLOY_USE_SCM` `true` **下載檔案之前** 將應用程式設定設為。 未來將會移除這項需求。 請參閱 [Azure 入口網站中的設定 App Service 應用程式](./configure-common.md)，以瞭解如何設定常見的 web 應用程式設定。  
 
 1. 儲存下載的檔案。 您將使用檔案的內容來建立 GitHub 秘密。
 

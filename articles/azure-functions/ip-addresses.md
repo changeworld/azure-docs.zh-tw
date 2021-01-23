@@ -3,12 +3,12 @@ title: Azure 中的 IP 位址 中的 IP 位址
 description: 了解如何尋找函式應用程式的輸入和輸出 IP 位址，以及造成其變更的原因。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 291a1cda7b8a2acc5426ea255519e1c2e58a2d7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936714"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726726"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure 中的 IP 位址 中的 IP 位址
 
@@ -27,8 +27,7 @@ IP 位址與函式應用程式相關聯，而非與個別函式相關聯。 傳�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 巡覽至函式應用程式。
-3. 選取 [ **平臺功能**]。
-4. 選取 [屬性]，以及 [虛擬 IP 位址] 之下的輸入 IP 位址。
+3. 在 [設定]  下方，選取 [屬性]  。 輸入 IP 位址會出現在 [ **虛擬 IP 位址**] 下。
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>函式應用程式輸出 IP 位址
 

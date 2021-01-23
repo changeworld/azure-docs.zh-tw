@@ -3,12 +3,12 @@ title: 使用 CLI 更新現有的 VM 備份原則
 description: 瞭解如何使用 Azure CLI 來更新現有的 VM 備份原則。
 ms.topic: conceptual
 ms.date: 12/31/2020
-ms.openlocfilehash: ba4ded4c82a1eaea7c20ea94da580a8702467b85
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 33083d6585d2b9296cd184ba258b8d2143d685b4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858828"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728573"
 ---
 # <a name="update-the-existing-vm-backup-policy-using-cli"></a>使用 CLI 更新現有的 VM 備份原則
 
@@ -18,7 +18,7 @@ ms.locfileid: "97858828"
 
 若要修改現有的 VM 備份原則，請遵循下列步驟：
 
-1. 執行 [az backup policy show](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_show) 命令以取得您想要更新之原則的詳細資料。
+1. 執行 [az backup policy show](/cli/azure/backup/policy#az_backup_policy_show) 命令以取得您想要更新之原則的詳細資料。
 
     範例：
 
@@ -101,14 +101,14 @@ ms.locfileid: "97858828"
     ```
 
 1. 儲存變更。
-1. 執行 [az backup policy set](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_set) 命令，並將更新的 JSON 檔案的完整路徑傳遞為 **--policy** 參數的值。
+1. 執行 [az backup policy set](/cli/azure/backup/policy#az_backup_policy_set) 命令，並將更新的 JSON 檔案的完整路徑傳遞為 **--policy** 參數的值。
 
     ```azurecli
     az backup policy set --resource-group rg1234 --vault-name testvault --policy C:\temp2\Policy.json --name testing123
     ```
 
 >[!NOTE]
->您也可以執行 [az backup policy get-default-vm](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) 命令來取得範例 JSON 原則。
+>您也可以執行 [az backup policy get-default-vm](/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) 命令來取得範例 JSON 原則。
 
 ## <a name="next-steps"></a>後續步驟
 

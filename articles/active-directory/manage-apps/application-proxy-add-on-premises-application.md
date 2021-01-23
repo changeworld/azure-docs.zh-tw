@@ -12,12 +12,12 @@ ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 6b46a5ea71bf8c9705ffc3bc51ea48f4b0c28502
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 6f8fdb23222944eab4742d1e972280e1e27e30a3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660759"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728509"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
@@ -97,7 +97,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 1. 重新啟動伺服器。
 
 > [!Note]
-> Microsoft 正在更新 Azure 服務，以使用來自一組不同根憑證授權單位 (CA) 的 TLS 憑證。 由於目前的 CA 憑證不符合其中一個 CA/瀏覽器論壇基準需求，因此需要進行此項變更。 如需詳細資訊，請參閱 [Azure TLS 憑證變更](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes)。
+> Microsoft 正在更新 Azure 服務，以使用來自一組不同根憑證授權單位 (CA) 的 TLS 憑證。 由於目前的 CA 憑證不符合其中一個 CA/瀏覽器論壇基準需求，因此需要進行此項變更。 如需詳細資訊，請參閱 [Azure TLS 憑證變更](../../security/fundamentals/tls-certificate-changes.md)。
 
 ## <a name="prepare-your-on-premises-environment"></a>準備內部部署環境
 

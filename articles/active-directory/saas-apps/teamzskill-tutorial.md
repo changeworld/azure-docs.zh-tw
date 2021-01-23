@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 643cfd1efcc03f0a5d36e4ba53213bba18fc422d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: 22e237a3451c87fd4867949b9aa94d19b6fcbbdf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914649"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729423"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamzskill"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 TeamzSkill 整合
 
@@ -106,7 +106,7 @@ ms.locfileid: "97914649"
     | 角色 (role) | user.assignedroles |
 
     > [!NOTE]
-    > TeamzSkill 需要將使用者的角色指派給應用程式。 請在 Azure AD 中設定這些角色，以便為使用者指派適當的角色。 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)。
+    > TeamzSkill 需要將使用者的角色指派給應用程式。 請在 Azure AD 中設定這些角色，以便為使用者指派適當的角色。 若要了解如何在 Azure AD 中設定角色，請參閱[此文章](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 

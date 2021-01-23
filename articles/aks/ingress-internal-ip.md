@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中安裝及�
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 6c848160afc6a6a755e967dd8517e48240bc113e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 976c5581ad217064da37b0b092d2d634d30cb7e5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685880"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729156"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立內部虛擬網路的輸入控制器
 
@@ -68,7 +68,8 @@ helm install nginx-ingress ingress-nginx/ingress-nginx \
     -f internal-ingress.yaml \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
+    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
+    --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 當針對 NGINX 輸入控制器建立 Kubernetes 負載平衡器服務時，系統會指派您的內部 IP 位址。 若要取得公用 IP 位址，請使用 `kubectl get service` 命令。

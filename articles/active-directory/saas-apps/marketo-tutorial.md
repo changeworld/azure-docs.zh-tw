@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jeedes
-ms.openlocfilehash: d4f8e71a0afbb1b00313d5e100ba8b3fd2b4e2ce
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
-ms.translationtype: HT
+ms.openlocfilehash: f0bf99748363505e362d3c35e53a51be3a03e938
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185745"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>教學課程：Azure Active Directory 與 Marketo 整合
 
@@ -252,7 +252,7 @@ Marketo 與 Azure AD 整合提供下列優點：
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Marketo
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 Marketo 圖格時，應該會自動登入您已設定 SSO 的 Marketo。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 Marketo 圖格時，應該會自動登入您已設定 SSO 的 Marketo。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

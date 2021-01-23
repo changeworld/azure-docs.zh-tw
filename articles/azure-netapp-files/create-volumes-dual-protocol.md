@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/12/2020
+ms.date: 01/22/2020
 ms.author: b-juche
-ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 47aefecce846f58128335768018ba59d3520bd87
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133152"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726675"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>建立適用于 Azure NetApp Files 的雙重通訊協定 (NFSv3 和 SMB) 磁片區
 
@@ -51,6 +51,7 @@ Azure NetApp Files 支援使用 NFS (NFSv3 和 Nfsv4.1 4.1) 、SMB3 或雙協定
     | `Unix`    | NFS   | NFSv3 模式位   | UNIX  | NFS 和 Windows   |
     | `Ntfs`    | Windows   | NTFS Acl     | NTFS  |NFS 和 Windows|
 * 使用 NFS 裝載 NTFS 安全性樣式磁片區的 UNIX 使用者，將會被驗證為 `root` 適用于 UNIX 的 Windows 使用者 `root` 和 `pcuser` 所有其他使用者。 使用 NFS 時，請確定這些使用者帳戶都存在於您的 Active Directory 中。 
+* 您不需要伺服器根 CA 憑證來建立雙重通訊協定磁片區。 只有在啟用 LDAP over TLS 時，才需要此功能。
 
 
 ## <a name="create-a-dual-protocol-volume"></a>建立雙重通訊協定磁碟區

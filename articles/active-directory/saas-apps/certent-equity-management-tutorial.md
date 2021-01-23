@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 6df44b0de8f4578de6dca61c4423b4e24c39e5f9
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: 360aad288b4f91cb784e0f0e0cfd7dea47a140fc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916213"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98727932"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-certent-equity-management"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Certent Equity Management 整合
 
@@ -96,7 +96,7 @@ ms.locfileid: "97916213"
     | ROLE | user.assignedroles |
 
     > [!NOTE]
-    > 請按一下 [這裡](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)，以了解如何在 Azure AD 中設定 **角色**。
+    > 請按一下 [這裡](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)，以了解如何在 Azure AD 中設定 **角色**。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -144,9 +144,9 @@ ms.locfileid: "97916213"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 Certent Equity Management
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 Certent Equity Management 圖格時，應該會自動登入您已設定 SSO 的 Certent Equity Management。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 Certent Equity Management 圖格時，應該會自動登入您已設定 SSO 的 Certent Equity Management。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Certent Equity Management 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外流和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+設定 Certent Equity Management 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外流和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

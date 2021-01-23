@@ -4,12 +4,12 @@ description: 將您自己的金鑰 (BYOK) ，以加密 AKS OS 和資料磁片。
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: c71052f44f6912006a952bae16fd89ec1dc937db
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 60a7e36039500ccb8a46fd1f5998c23c37174689
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607886"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728130"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS 中使用 Azure 磁片 (BYOK) 攜帶您自己的金鑰) 
 
@@ -19,7 +19,7 @@ Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設�
 * 資料磁片加密支援僅限於執行 Kubernetes 1.17 版和更新版本的 AKS 叢集。
 * 只有在建立 AKS 叢集時，才可以啟用使用客戶管理的金鑰來加密 OS 和資料磁片。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 * 使用 Key Vault 加密受控磁片時，您必須啟用 *Azure Key Vault* 的虛刪除和清除保護。
 * 您需要 Azure CLI 2.11.1 版或更新版本。
 
@@ -155,4 +155,4 @@ kubectl apply -f byok-azure-disk.yaml
 [customer-managed-keys-windows]: ../virtual-machines/disk-encryption.md#customer-managed-keys
 [customer-managed-keys-linux]: ../virtual-machines/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
-[supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions
+[supported-regions]: ../virtual-machines/disk-encryption.md#supported-regions
