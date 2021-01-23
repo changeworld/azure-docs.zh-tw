@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 605bae706bbc1db2e008b8d050cbba9eacd16933
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209775"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702197"
 ---
 # <a name="prepare-data-for-custom-speech"></a>準備自訂語音的資料
 
@@ -174,7 +174,7 @@ speech03.wav    the lazy dog was not amused
 
 此外，您也會想要考慮下列限制：
 
-* 避免重複字元超過四次。 例如： "aaaa" 或 "uuuu"。
+* 避免重複的字元、單字或單字群組超過三次。 例如： "aaaa"、"yes yes yes" 或 "這就是它所在的。 語音服務可能會捨棄太多重複的行。
 * 請勿使用上述的特殊字元或 UTF-8 字元 `U+00A1` 。
 * Uri 將會遭到拒絕。
 

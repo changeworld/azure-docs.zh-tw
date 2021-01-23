@@ -3,12 +3,12 @@ title: Azure 服務的資源提供者
 description: 列出 Azure Resource Manager 的所有資源提供者命名空間，並顯示該命名空間的 Azure 服務。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 5e89b2b7cf7c27a501d93f63c74d81d8fb40883c
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c319a6d06cbbcf5d36178c37207cc13f295a5897
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033539"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702848"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者 \(部分機器翻譯\)
 
@@ -82,7 +82,7 @@ ms.locfileid: "97033539"
 | Microsoft.DBforPostgreSQL | [適用於 PostgreSQL 的 Azure 資料庫](../../postgresql/index.yml) |
 | Microsoft.DeploymentManager | [Azure Deployment Manager](../templates/deployment-manager-overview.md) |
 | Microsoft.DesktopVirtualization | [Windows 虛擬桌面](../../virtual-desktop/index.yml) |
-| Microsoft.Devices | [Azure IoT 中心](../../iot-hub/index.yml)<br />[Azure IoT 中樞裝置佈建服務](../../iot-dps/index.yml) |
+| Microsoft.Devices | [Azure IoT 中樞](../../iot-hub/index.yml)<br />[Azure IoT 中樞裝置佈建服務](../../iot-dps/index.yml) |
 | Microsoft.DevOps | [Azure DevOps](/azure/devops/) |
 | Microsoft.DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) \(英文\) |
 | Microsoft.DevTestLab | [Azure 實驗室服務](../../lab-services/index.yml) |
@@ -102,7 +102,7 @@ ms.locfileid: "97033539"
 | Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Microsoft.HybridData | [StorSimple](../../storsimple/index.yml) |
 | HybridNetwork  | [私人 Edge 區域](../../networking/edge-zones-overview.md) |
-| Microsoft.ImportExport | [Azure 匯入/匯出](../../storage/common/storage-import-export-service.md) |
+| Microsoft.ImportExport | [Azure 匯入/匯出](../../import-export/storage-import-export-service.md) |
 | microsoft.insights | [Azure 監視器](../../azure-monitor/index.yml) |
 | Microsoft.IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
 | Microsoft.IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
@@ -165,9 +165,9 @@ ms.locfileid: "97033539"
 | Microsoft.Solutions | [Azure 受控應用程式](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../azure-sql/database/index.yml)<br /> [Azure SQL 受控執行個體](../../azure-sql/managed-instance/index.yml) <br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.SqlVirtualMachine | [Azure 虛擬機器上的 SQL Server](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) |
-| Microsoft.Storage | [Storage](../../storage/index.yml) |
+| Microsoft.Storage | [儲存體](../../storage/index.yml) |
 | Microsoft.StorageCache | [Azure HPC Cache](../../hpc-cache/index.yml) |
-| Microsoft.StorageSync | [Storage](../../storage/index.yml) |
+| Microsoft.StorageSync | [儲存體](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.StreamAnalytics | [Azure 串流分析](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | core |

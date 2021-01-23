@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 90cc38a7fe73ddfd3e20d29d299eef5da8dc87ed
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: 0b5970381ed6a8dcf9a64632c4c9478c38944d54
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98047187"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700690"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -37,6 +37,6 @@ ms.locfileid: "98047187"
 |[虛擬機器應該連線到已核准的虛擬網路](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd416745a-506c-48b6-8ab1-83cb814bcaa3) |此原則會稽核任何連線到未核准之虛擬網路的虛擬機器。 |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ApprovedVirtualNetwork_Audit.json) |
 |[虛擬網路應該使用指定的虛擬網路閘道](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff1776c76-f58c-4245-a8d0-2b207198dc8b) |此原則會稽核任何虛擬網路是否預設路由未指向指定的虛擬網路閘道。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetwork_ApprovedVirtualNetworkGateway_AuditIfNotExists.json) |
 |[應為應用程式閘道啟用 Web 應用程式防火牆 (WAF)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |在公開的 Web 應用程式前方部署 Azure Web 應用程式防火牆 (WAF)，以另外檢查傳入的流量。 Web 應用程式防火牆 (WAF) 可集中保護 Web 應用程式，使其免於遭受常見惡意探索和弱點的攻擊，例如 SQL 插入式攻擊、跨網站指令碼攻擊、本機和遠端檔案執行。 您也可以透過自訂規則，來依國家/地區、IP 位址範圍和其他 http(s) 參數限制對 Web 應用程式的存取。 |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
-|[應為 Azure Front Door Service 啟用 Web 應用程式防火牆 (WAF)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |在公開的 Web 應用程式前方部署 Azure Web 應用程式防火牆 (WAF)，以另外檢查傳入的流量。 Web 應用程式防火牆 (WAF) 可集中保護 Web 應用程式，使其免於遭受常見惡意探索和弱點的攻擊，例如 SQL 插入式攻擊、跨網站指令碼攻擊、本機和遠端檔案執行。 您也可以透過自訂規則，來依國家/地區、IP 位址範圍和其他 http(s) 參數限制對 Web 應用程式的存取。 |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |
+|[應針對 Azure Front Door 服務服務啟用 Web 應用程式防火牆 (WAF) ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |在公開的 Web 應用程式前方部署 Azure Web 應用程式防火牆 (WAF)，以另外檢查傳入的流量。 Web 應用程式防火牆 (WAF) 可集中保護 Web 應用程式，使其免於遭受常見惡意探索和弱點的攻擊，例如 SQL 插入式攻擊、跨網站指令碼攻擊、本機和遠端檔案執行。 您也可以透過自訂規則，來依國家/地區、IP 位址範圍和其他 http(s) 參數限制對 Web 應用程式的存取。 |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |
 |[Web 應用程式防火牆 (WAF) 應對應用程式閘道使用指定的模式](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096) |在應用程式閘道的所有 Web 應用程式防火牆原則上授權使用「偵測」或「預防」模式。 |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayMode_Audit.json) |
 |[Web 應用程式防火牆 (WAF) 應對 Azure Front Door Service 使用指定的模式](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F425bea59-a659-4cbb-8d31-34499bd030b8) |在 Azure Front Door Service 的所有 Web 應用程式防火牆原則上授權使用「偵測」或「預防」模式。 |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Mode_Audit.json) |

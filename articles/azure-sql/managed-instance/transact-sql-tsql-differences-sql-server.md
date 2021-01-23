@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 6fb17ead2546875c0f334aae322f8fb070e8f1ea
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6634ab3521fee3062ecee465eaf6dcda80ee6ff8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684898"
+ms.locfileid: "98699509"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL 受控執行個體之間的 t-sql 差異
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -168,7 +168,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
     - 從 SQL 受控執行個體匯出資料庫，並匯入至相同 Azure AD 網域內的 SQL Database。 
     - 從 SQL Database 匯出資料庫，並匯入至相同 Azure AD 網域內的 SQL 受控執行個體。
     - 從 SQL 受控執行個體匯出資料庫，並匯入至 SQL Server (2012 版或更新版本) 。
-      - 在此設定中，所有 Azure AD 使用者都會建立為 SQL Server 資料庫主體 (使用者) 沒有登入。 使用者的類型會列為 `SQL` ，而且 `SQL_USER` 在 sys.database_principals) 中會顯示為。 其許可權和角色會保留在 SQL Server 資料庫中繼資料中，並且可用於模擬。 不過，它們無法用來存取並使用其認證登入 SQL Server。
+      - 在此設定中，系統會將所有 Azure AD 使用者建立為 SQL Server 資料庫主體， (使用者) 沒有登入。 使用者的類型會列為 `SQL` ， `SQL_USER` 在 sys.database_principals) 中會顯示為。 其許可權和角色會保留在 SQL Server 資料庫中繼資料中，並且可用於模擬。 不過，它們無法用來存取並使用其認證登入 SQL Server。
 
 - 只有 SQL 受控執行個體布建程式所建立的伺服器層級主體登入、伺服器角色的成員（例如 `securityadmin` 或），或在 `sysadmin` 伺服器層級具有 ALTER ANY login 許可權的其他登入，才能在 SQL 受控執行個體的 master 資料庫中，建立 Azure AD 的伺服器主體)  (登入。
 - 如果登入是 SQL 主體，只有屬於 `sysadmin` 角色一部分的登入可以使用 create 命令來為 Azure AD 帳戶建立登入。
@@ -277,7 +277,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
 - `SINGLE_USER`
 - `WITNESS`
 
-某些 `ALTER DATABASE` 語句 (例如， [設定](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql) 內含專案) 可能暫時失敗，例如在自動資料庫備份期間，或在建立資料庫之後。 在此情況下， `ALTER DATABASE` 應該重試語句。 如需相關錯誤訊息的詳細資訊和詳細資訊，請參閱「 [備註」一節](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)。
+某些 `ALTER DATABASE` 語句 (例如， [設定](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql) 內含專案) 可能暫時失敗，例如在自動資料庫備份期間，或在建立資料庫之後。 在此情況下， `ALTER DATABASE` 應該重試語句。 如需相關錯誤訊息的詳細資訊，請參閱「 [備註」一節](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)。
 
 如需詳細資訊，請參閱 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options)。
 
@@ -305,7 +305,7 @@ SQL 受控執行個體無法存取檔案，所以無法建立密碼編譯提供�
   - 尚不支援警示。
   - 不支援 proxy。
 - 不支援 EventLog。
-- 使用者必須直接對應到 Azure AD 伺服器主體 (登入) ，才能建立、修改或執行 SQL Agent 作業。 未直接對應的使用者（例如，屬於 Azure AD 群組且擁有建立、修改或執行 SQL Agent 作業之許可權的使用者，將無法有效執行這些動作。 這是因為受控執行個體模擬和 [執行為限制](#logins-and-users)。
+- 使用者必須直接對應到 Azure AD 伺服器主體 (登入) ，才能建立、修改或執行 SQL Agent 作業。 例如，如果使用者屬於具有建立、修改或執行 SQL Agent 作業之許可權的 Azure AD 群組，則這些使用者將無法有效執行這些動作。 這是因為受控執行個體模擬和 [執行為限制](#logins-and-users)。
 
 目前不支援下列 SQL Agent 功能：
 
@@ -400,12 +400,12 @@ Azure SQL 受控執行個體目前不支援在內部部署或 Azure 虛擬機器
 SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 - 支援的目標為 SQL 受控執行個體、SQL Database、Azure Synapse SQL [無伺服器](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 和專用集區，以及 SQL Server 實例。 
-- 連結的伺服器不支援 (MS DTC) 的分散式可寫入交易。
+- 可以在受控實例之間進行分散式可寫入交易。 如需詳細資訊，請參閱 [分散式交易](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)。 但是，不支援 MS DTC。
 - 不支援的目標為檔案、Analysis Services 和其他 RDBMS。 請嘗試使用 Azure Blob 儲存體的原生 CSV 匯入，或使用檔案匯 `BULK INSERT` `OPENROWSET` 入的替代方式，或 [在 Azure Synapse Analytics 中使用無伺服器 SQL 集](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)區來載入檔案。
 
 作業： 
 
-- 不支援跨執行個體寫入交易。
+- 只有受管理的實例支援[跨實例](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)寫入交易。
 - 支援使用 `sp_dropserver` 卸除連結的伺服器。 請參閱 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql)。
 - `OPENROWSET`函數只能用來在 SQL Server 實例上執行查詢。 它們可以是受控、內部部署或虛擬機器。 請參閱 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql)。
 - `OPENDATASOURCE`函數只能用來在 SQL Server 實例上執行查詢。 它們可以是受控、內部部署或虛擬機器。 僅 `SQLNCLI` 支援、 `SQLNCLI11` 和 `SQLOLEDB` 值做為提供者。 例如 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`。 請參閱 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql)。
@@ -413,7 +413,7 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 ### <a name="polybase"></a>PolyBase
 
-只有 Azure SQL database、Azure SQL 受控實例和 Azure Synapse 集區的公開預覽) 中，唯一可用的外部來源類型是 RDBMS (。 您可以使用 [參考 Synapse Analytics 中無伺服器 SQL 集區的外部資料表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) ，作為直接從 Azure 儲存體讀取之 Polybase 外部資料表的因應措施。 在 Azure SQL 受控實例中，您可以在 Synapse 分析或 SQL Server 中，使用連結的伺服器來執行 [無伺服器的 SQL 集](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 區，以讀取 Azure 儲存體資料。
+唯一可用的外部來源類型是 RDBMS (在公開預覽中) Azure SQL database、Azure SQL 受控實例和 Azure Synapse 集區。 您可以使用 [參考 Synapse Analytics 中無伺服器 SQL 集區的外部資料表](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) ，作為直接從 Azure 儲存體讀取之 Polybase 外部資料表的因應措施。 在 Azure SQL 受控實例中，您可以在 Synapse 分析或 SQL Server 中，使用連結的伺服器來執行 [無伺服器的 SQL 集](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) 區，以讀取 Azure 儲存體資料。
 如需 PolyBase 的相關資訊，請參閱 [polybase](/sql/relational-databases/polybase/polybase-guide)。
 
 ### <a name="replication"></a>複寫
@@ -551,7 +551,7 @@ SQL 受控執行個體中連結的伺服器支援數量有限的目標：
 
 SQL 受控執行個體將詳細資訊放在錯誤記錄檔中。 錯誤記錄檔中會記錄許多內部系統事件。 您可以使用自訂程式來讀取錯誤記錄檔，以篩選出一些不相關的專案。 如需詳細資訊，請參閱適用于) 的 [sql 受控執行個體-sp_readmierrorlog](/archive/blogs/sqlcat/azure-sql-db-managed-instance-sp_readmierrorlog) 或 [sql 受控執行個體延伸模組 (preview Azure Data Studio ](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) 。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 如需 SQL 受控執行個體的詳細資訊，請參閱 [何謂 sql 受控執行個體？](sql-managed-instance-paas-overview.md)
 - 如需功能和比較清單，請參閱 [AZURE SQL 受控執行個體功能比較](../database/features-comparison.md)。

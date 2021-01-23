@@ -1,24 +1,24 @@
 ---
-title: 了解 Enterprise 合約的 Azure 保留使用量
-description: 學習如何看懂使用量，以了解 Enterprise 註冊的 Azure 保留套用情形。
+title: 瞭解 Enterprise 合約和 Microsoft 客戶合約的 Azure 保留使用量
+description: 瞭解如何讀取您的使用量資訊，以瞭解如何將 Azure 保留套用至 Enterprise 合約和 Microsoft 客戶合約使用量。
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/19/2020
 ms.author: banders
-ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
-ms.translationtype: HT
+ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545599"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683712"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>取得 Enterprise 合約保留成本和使用量
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>取得 Enterprise 合約並 Microsoft 客戶合約保留成本和使用量
 
-保留成本和使用量資料適用於 Azure 入口網站和 REST API 中的 Enterprise 合約客戶。 本文可協助您：
+保留成本和使用量的增強資料適用于 Enterprise 合約 (EA) 以及 Microsoft 客戶合約 (MCA) 成本管理中的使用量。 本文可協助您：
 
 - 取得保留購買資料
 - 知道哪個訂用帳戶、資源群組或資源使用了保留
@@ -61,9 +61,7 @@ Azure 使用量資料中的其他可用資訊已變更：
 
 您可以使用 API 來取得資料，或從 Azure 入口網站下載資料。
 
-您可以呼叫[使用量詳細資料 API](/rest/api/consumption/usagedetails/list)來取得新資料。 如需術語的詳細資訊，請參閱[使用量詞彙](../understand/understand-usage.md)。 呼叫端應該是使用 [EA 入口網站](https://ea.azure.com)之 Enterprise 合約的企業系統管理員。 唯讀企業系統管理員也可以取得資料。
-
-請注意，在[適用於 Enterprise 客戶的報告 API - 使用量詳細資料](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)中無法取得此資料。
+您可以呼叫[使用量詳細資料 API](/rest/api/consumption/usagedetails/list)來取得新資料。 如需術語的詳細資訊，請參閱[使用量詞彙](../understand/understand-usage.md)。
 
 以下是對使用量詳細資料 API 的呼叫範例：
 
@@ -87,7 +85,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>下載含有新資料的使用量 CSV 檔案
 
-如果您是 EA 管理員，您可以從 Azure 入口網站下載包含新使用量資料的 CSV 檔案。 這項資料無法從 EA 入口網站 (ea.azure.com) 取得，您必須從 Azure 入口網站 (portal.azure.com) 下載使用量檔案，才能看到新的資料。
+如果您是 EA 系統管理員，您可以從 Azure 入口網站下載包含新使用量資料的 CSV 檔案。 這項資料無法從 EA 入口網站 (ea.azure.com) 取得，您必須從 Azure 入口網站 (portal.azure.com) 下載使用量檔案，才能看到新的資料。
 
 在 Azure 入口網站中，瀏覽至[成本管理 + 帳單](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts)。
 
@@ -121,7 +119,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 - 資源 (例如 VM)
 - 資源群組
-- Tags
+- 標籤
 - 訂用帳戶
 
 ### <a name="get-the-blended-rate-for-chargeback"></a>取得退款的混合費率
@@ -150,7 +148,7 @@ https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enroll
 
 依費用類型分組，以查看使用量、購買和退費的細目；或依保留分組以取得保留和隨選成本的細目。 請記住，當您查看實際成本時，您會看到的唯一保留成本就是購買，但成本將會分攤給在查看分攤成本時使用權益的個別資源。 在查看分攤成本時，您也會看到新的 **UnusedReservation** 費用類型。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
+## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
 
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 

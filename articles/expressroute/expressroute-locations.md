@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 01/21/2021
+ms.date: 01/22/2021
 ms.author: duau
-ms.openlocfilehash: 589f8bef7e5023a3667ce0ebf9a14637b007223d
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a97efd3e1a0384ba9896ba68bc67d4cf67c0c046
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664056"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702738"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 連線能力合作夥伴和對等互連位置
 
@@ -132,7 +132,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |支援 |支援 |阿姆斯特丹、芝加哥、達拉斯、倫敦、新港 (威爾斯)、聖保羅、西雅圖、矽谷、新加坡、華盛頓特區 |
 | **LG CNS** |支援 |支援 |釜山、首爾 |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |支援 |支援 |開普敦、約翰尼斯堡 |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支援 |支援 |阿姆斯特丹、亞特蘭大、奧克蘭、芝加哥、達拉斯、丹佛、Dubai2、都柏林、法蘭克福、Geneva、香港特別行政區、內華達州、倫敦、倫敦2、洛杉磯、墨爾本、邁阿密、蒙特利爾、紐約、Oslo、達拉斯、魁北克市、San Antonio、西雅圖、矽谷、新加坡、新加坡2、Stavanger、斯德哥爾摩、華盛頓特區、Sydney2、Tokyo2、斯德哥爾摩、華盛頓特區、華盛頓特區、蘇黎世 |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支援 |支援 |阿姆斯特丹、亞特蘭大、奧克蘭、芝加哥、達拉斯、丹佛、Dubai2、都柏林、法蘭克福、Geneva、香港、香港 Kong2、華盛頓特區、倫敦、倫敦2、洛杉磯、墨爾本、邁阿密、蒙特利爾、紐約、大阪、Oslo、、魁北克市、San Antonio、西雅圖、矽谷、新加坡、新加坡2、Stavanger、斯德哥爾摩、華盛頓特區、Sydney2、東京、Tokyo2 多倫多、華盛頓特區、華盛頓特區、蘇黎世 |
 | **[MTN](https://www.mtnbusiness.co.za/en/Cloud-Solutions/Pages/microsoft-express-route.aspx)** |支援 |支援 |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |支援 |支援 |達拉斯、洛杉磯、邁阿密、聖保羅、華盛頓特區 |
 | **[新一代資料](https://vantage-dc-cardiff.co.uk/)** |支援 |支援 |Newport(Wales) |

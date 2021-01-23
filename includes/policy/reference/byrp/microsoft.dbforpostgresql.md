@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 703b1925b40663eced1fc4652387b45d03bb16ae
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 7e86ab3f6377c8a9e2e8a831c1219f533c882609
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049235"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703340"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[應為 PostgreSQL 伺服器啟用自備金鑰資料保護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18adea5e-f416-4d0f-8aa8-d24321e3e274) |使用客戶管理的金鑰來管理您于 postgresql 伺服器的待用加密。 根據預設，資料會使用服務管理的金鑰進行待用加密，但客戶管理的金鑰 (CMK) 通常需要符合法規合規性標準。 Cmk 可讓資料使用您所建立和擁有的 Azure Key Vault 金鑰進行加密。 您對金鑰生命週期擁有完全的控制權和責任，包括輪替和管理。 |AuditIfNotExists, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableByok_Audit.json) |
+|[應為 PostgreSQL 伺服器啟用自備金鑰資料保護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18adea5e-f416-4d0f-8aa8-d24321e3e274) |使用客戶自控金鑰來管理 PostgreSQL 伺服器的待用加密。 根據預設，資料會使用服務管理的金鑰進行待用加密，但通常需要有客戶自控金鑰 (CMK) 才能符合法規合規性標準。 CMK 可讓您使用由您建立及擁有的 Azure Key Vault 金鑰來加密資料。 您對金鑰生命週期擁有完全的控制權和責任，包括輪替和管理。 |AuditIfNotExists, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableByok_Audit.json) |
 |[應為 PostgreSQL 資料庫伺服器啟用連線節流](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5345bb39-67dc-4960-a1bf-427e16b9a0bd) |此原則可協助稽核您環境中任何未啟用連線節流的 PostgreSQL 資料庫。 此設定可針對每個發生太多無效密碼登入失敗的 IP 啟用暫時連線節流。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_ConnectionThrottling_Enabled_Audit.json) |
 |[應為 PostgreSQL 資料庫伺服器記錄中斷連線。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feb6f77b9-bd53-4e35-a23d-7f65d5f0e446) |此原則可協助稽核您環境中任何未啟用 log_disconnections 的 PostgreSQL 資料庫。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableLogDisconnections_Audit.json) |
 |[應為 PostgreSQL 資料庫伺服器啟用 [強制執行 SSL 連線]](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd158790f-bfb0-486c-8631-2dc6b4e8e6af) |適用於 PostgreSQL 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將適用於 PostgreSQL 的 Azure 資料庫伺服器連線至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。 此設定會強制一律啟用 SSL，以存取您的資料庫伺服器。 |Audit, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableSSL_Audit.json) |
@@ -26,4 +26,4 @@ ms.locfileid: "98049235"
 |[PostgreSQL 伺服器應使用虛擬網路服務端點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3c14b034-bcb6-4905-94e7-5b8e98a47b65) |使用虛擬網路形式的防火牆規則，讓流量從特定子網路進入適用於 PostgreSQL 的 Azure 資料庫，同時確保流量會保持在 Azure 界限內。 此原則可讓您在使用擁有虛擬網路服務端點的適用於 PostgreSQL 的 Azure 資料庫情況下進行稽核。 |AuditIfNotExists, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_VirtualNetworkServiceEndpoint_Audit.json) |
 |[PostgreSQL 伺服器應啟用私人端點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0564d078-92f5-4f97-8398-b9f58a51f70b) |私人端點連線透過啟用與適用於 PostgreSQL 的 Azure 資料庫的私人連線，可強制執行安全通訊。 設定私人端點連線，僅存取來自已知網路的流量，並防止其他所有 IP 位址 (包括 Azure 內) 的存取。 |AuditIfNotExists, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnablePrivateEndPoint_Audit.json) |
 |[應為 PostgreSQL 彈性伺服器停用公用網路存取](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5e1de0e3-42cb-4ebc-a86d-61d0c619ca48) |停用公用網路存取屬性可確保適用於 PostgreSQL 的 Azure 資料庫彈性伺服器只能從私人端點存取，藉此改善安全性。 此設定會嚴格停用從 Azure IP 範圍外任何公用位址空間進行的存取，並拒絕所有符合 IP 或虛擬網路型防火牆規則的登入。 |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_FlexibleServers_DisablePublicNetworkAccess_Audit.json) |
-|[應為 PostgreSQL 伺服器停用公用網路存取](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb52376f7-9612-48a1-81cd-1ffe4b61032c) |停用 [公用網路存取] 屬性來改善安全性，並確保您的適用於 PostgreSQL 的 Azure 資料庫只能從私人端點存取。 此設定會停用從 Azure IP 範圍以外的任何公用位址空間進行存取，並拒絕所有符合 IP 或虛擬網路型防火牆規則的登入。 |Audit, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_DisablePublicNetworkAccess_Audit.json) |
+|[應為 PostgreSQL 伺服器停用公用網路存取](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb52376f7-9612-48a1-81cd-1ffe4b61032c) |停用公用網路存取屬性可確保適用於 PostgreSQL 的 Azure 資料庫只能從私人端點存取，藉此改善安全性。 此設定會停用從 Azure IP 範圍外任何公用位址空間進行的存取，並拒絕所有符合 IP 或虛擬網路型防火牆規則的登入。 |Audit, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_DisablePublicNetworkAccess_Audit.json) |

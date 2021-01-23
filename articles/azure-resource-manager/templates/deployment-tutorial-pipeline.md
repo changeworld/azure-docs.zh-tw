@@ -4,12 +4,12 @@ description: 了解如何持續建置、測試及部署 Azure Resource Manager �
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
-ms.translationtype: HT
+ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588126"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701707"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>教學課程：ARM 範本與 Azure Pipelines 的持續整合
 
@@ -39,12 +39,12 @@ Azure DevOps 提供開發人員服務，以支援小組規劃工作、共同作�
 
 * **GitHub 帳戶**，您會用它為您的範本建立存放庫。 如果您沒有存放庫，您可以[免費建立一個](https://github.com)。 如需使用 GitHub 存放庫的詳細資訊，請參閱[建置 GitHub 存放庫](/azure/devops/pipelines/repos/github)。
 * **安裝 Git**。 此教學課程的指示使用 *Git Bash* 或 *Git Shell*。 如需指示，請參閱 [安裝 Git](https://www.atlassian.com/git/tutorials/install-git)。
-* **Azure DevOps 組織**。 如果您沒有組織，您可以免費建立一個。 請參閱[建立組織或專案集合](/azure/devops/organizations/accounts/create-organization?view=azure-devops)。
+* **Azure DevOps 組織**。 如果您沒有組織，您可以免費建立一個。 請參閱[建立組織或專案集合](/azure/devops/organizations/accounts/create-organization)。
 * (選擇性) **Visual Studio Code 搭配 Resource Manager Tools 擴充功能**。 請參閱[快速入門：使用 Visual Studio Code 建立 ARM 範本](quickstart-create-templates-use-visual-studio-code.md)。
 
 ## <a name="prepare-a-github-repository"></a>準備 GitHub 存放庫
 
-GitHub 可用來儲存專案原始程式碼，包括 Resource Manager 範本。 對於其他支援的存放庫，請參閱[Azure DevOps 支援的存放庫](/azure/devops/pipelines/repos/?view=azure-devops)。
+GitHub 可用來儲存專案原始程式碼，包括 Resource Manager 範本。 對於其他支援的存放庫，請參閱[Azure DevOps 支援的存放庫](/azure/devops/pipelines/repos/)。
 
 ### <a name="create-a-github-repository"></a>建立 GitHub 存放庫
 

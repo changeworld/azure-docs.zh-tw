@@ -1,16 +1,16 @@
 ---
 title: Azure Logic Apps 的內建原則定義
 description: 列出適用於 Azure Logic Apps 的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 ms.suite: integration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b168b1015c17b29db6e8d3b10fb2c907c6067b08
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 48b427703f174771af7ef584e392a8c376042a68
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050031"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701988"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的 Azure 原則內建定義
 

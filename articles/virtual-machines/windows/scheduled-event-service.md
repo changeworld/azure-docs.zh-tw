@@ -1,20 +1,20 @@
 ---
-title: 在 Azure 中監視 Windows VM 的 Scheduled Events
+title: 在 Azure 中監視 Vm 的排程事件
 description: 了解如何監視 Azure 虛擬機器的 Scheduled Events。
 author: mysarn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 0d1edde5ac1b83feab458eb5d12d524163d3ffb1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483295"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702265"
 ---
-# <a name="monitoring-scheduled-events"></a>監視 Scheduled Events
+# <a name="monitor-scheduled-events-for-your-azure-vms"></a>監視 Azure Vm 的排程事件
 
 每天都會將更新套用到 Azure 的不同部分，以確保執行服務的安全並保持在最新狀態。 除了已規劃的更新之外，也可能包含未在規劃中的事件。 例如，如果偵測到任何硬體效能降低或錯誤，則 Azure 服務可能需要執行未在規劃中的維護。 使用即時移轉時，記憶體會保留更新且通常會對更新的影響進行嚴格限制；在大多數情況下，這些事件對客戶而言幾乎為完全透明化且不會有任何影響，最多對虛擬機器造成幾秒鐘的凍結。 不過，對於某些應用程式，即使只有幾秒鐘的虛擬機器凍結也可能會造成影響。 建議事先了解即將推出的 Azure 維護，以確保擁有這些應用程式的最佳體驗。 [Scheduled Events 服務](scheduled-events.md)提供程式設計介面，以通知即將進行維護，並讓您順利地處理維護。 
 
@@ -39,7 +39,7 @@ Scheduled Events 是 [Azure Instance Metadata Service](instance-metadata-service
 
 ## <a name="set-up-the-environment"></a>設定 Azure 環境
 
-在可用性設定組中，現在應該有兩部初始 VM。 現在，我們需要在相同的可用性設定組中建立第三部 VM，其稱為 myCollectorVM。 
+在可用性設定組中，現在應該有兩部初始 VM。 現在，我們需要 `myCollectorVM` 在相同的可用性設定組中建立第三個 VM，稱為。 
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -150,7 +150,7 @@ New-AzVm `
     | project-away RenderedDescription,ReqJson
     ```
 
-1. 選取 [儲存]，然後在 [名稱] 中鍵入 *logQuery*、將 [類型] 保持為 [查詢]、在 [類別] 中鍵入 *VMLogs*，然後選取 [儲存]。 
+1. 選取 [ **儲存**]，然後輸入 `ogQuery` [名稱]，將 **查詢** 保留為類型，輸入 `VMLogs` 做為 **類別目錄**，然後選取 [ **儲存**]。 
 
     ![儲存查詢](./media/notifications/save-query.png)
 
@@ -160,7 +160,7 @@ New-AzVm `
 1. 在 [閾值] 中，輸入 *0*，然後選取 [完成]。
 1. 在 [動作] 底下，選取 [建立動作群組]。 [新增動作群組] 頁面隨即開啟。
 1. 在 [動作群組名稱] 中，鍵入 *myActionGroup*。
-1. 在 [簡短名稱] 中，輸入 **myActionGroup**。
+1. 在 [簡短名稱] 中，輸入 *myActionGroup*。
 1. 在 [資源群組]中，選取 [myResourceGroupAvailability]。
 1. 在 動作 下的 動作名稱 中鍵入 **Email**，然後選取 電子郵件/SMS/推播/語音。 [電子郵件/SMS/推播/語音] 頁面隨即開啟。
 1. 選取 [電子郵件]，鍵入電子郵件地址，然後選取 [確定]。

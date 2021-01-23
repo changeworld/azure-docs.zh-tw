@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 103e4453ecf848822db0d82bc13e93b0c8c68331
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654620"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702129"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure 資料箱磁碟：常見問題集
 
@@ -66,7 +66,7 @@ A. 資料箱磁碟僅支援在與目的地相同的國家/地區內內嵌資料�
 
 ### <a name="option-1"></a>選項 1： 
 
-使用[azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)，從加拿大的來源位置將包含資料的[支援磁片](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks)傳送到 azure 美國西部資料中心。
+使用[azure 匯入/匯出服務](../import-export/storage-import-export-service.md)，從加拿大的來源位置將包含資料的[支援磁片](../import-export/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks)傳送到 azure 美國西部資料中心。
 
 ### <a name="option-2"></a>選項 2：
 

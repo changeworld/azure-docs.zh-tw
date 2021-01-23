@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9aca01bae7911d2b6234d48bedc14b116e911a79
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675367"
+ms.locfileid: "98703202"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV 合作夥伴
 
@@ -40,7 +40,6 @@ Microsoft 與下列 Isv 進行身分識別驗證和驗證的合作夥伴。
 |![Experian 標誌的螢幕擷取畫面。](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) 是身分識別驗證和證明提供者，可根據使用者屬性來執行風險評定，以防止詐騙。 |
 |![IDology 標誌的螢幕擷取畫面。](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) 是身分識別驗證和證明提供者，具有識別碼驗證解決方案、詐騙防護解決方案、合規性解決方案及其他資訊。|
 |![Jumio 標誌的螢幕擷取畫面。](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) 是一種識別碼驗證服務，可啟用即時自動化識別碼驗證，保護客戶資料。 |
-|![無索引鍵標誌的螢幕擷取畫面。](./media/partner-gallery/keyless-logo.png) | [無索引鍵](./partner-keyless.md) 是一項識別碼驗證服務，以臉部生物特徵辨識掃描的形式提供驗證，並免除詐騙、網路釣魚和認證的重複使用。
 | ![LexisNexis 標誌的螢幕擷取畫面。](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) 是一種分析和身分識別驗證提供者，可驗證使用者的身分識別，並根據使用者的裝置提供完整的風險評估。 |
 | ![Onfido 標誌的螢幕擷取畫面](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) 是一種檔識別碼和臉部生物特徵辨識驗證解決方案，可讓公司即時符合 *您的客戶* 和身分識別需求。  |
 
@@ -52,6 +51,7 @@ Microsoft 與下列 Isv 進行 MFA 和無密碼 authentication 的合作夥伴�
 |:-------------------------|:--------------|
 | ![Hypr 標誌的螢幕擷取畫面](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) 是一種無密碼 authentication 提供者，可將密碼取代為公開金鑰加密，以免除詐騙、網路釣魚和認證的重複使用。 |
 | ![Itsme 標誌的螢幕擷取畫面](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) 是一種電子識別、驗證和信任服務， () eiDAS 符合規範的數位識別碼解決方案，可讓使用者安全地登入，而不需要卡片讀卡機、密碼、雙因素驗證，以及多個 PIN 碼。 |
+|![無索引鍵標誌的螢幕擷取畫面。](./media/partner-gallery/keyless-logo.png) | [無索引鍵](./partner-keyless.md) 是一種無密碼 authentication 提供者，以臉部生物特徵辨識掃描的形式提供驗證，並免除詐騙、網路釣魚和認證的重複使用。
 | ![尼維斯標誌的螢幕擷取畫面](./media/partner-gallery/nevis-logo.png) | [尼維斯](./partner-nevis.md) 會啟用無密碼 authentication，並提供行動優先、完整品牌的終端使用者體驗，並提供尼維斯存取應用程式，以進行強式客戶驗證並符合 PSD2 交易需求。 |
 | ![Trusona 標誌的螢幕擷取畫面](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) 整合可協助您安全地登入，並啟用無密碼 AUTHENTICATION、MFA 和數位授權掃描。 |
 | ![Twilio 標誌的螢幕擷取畫面。](./media/partner-gallery/twilio-logo.png) | [Twilio Verify 應用程式](./partner-twilio.md) 提供多個解決方案，可透過 SMS 單次密碼 (OTP) 、時間型單次密碼 (TOTP) 和推播通知，以及符合 PSD2 的 SCA 需求來啟用 MFA。 |
@@ -83,6 +83,6 @@ Microsoft 與下列 Isv 合作提供安全性。
 
 - [Azure AD B2C 中的自訂原則入門](./custom-policy-get-started.md?tabs=applications)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 在所述的表格中選取合作夥伴，以瞭解如何將解決方案與 Azure AD B2C 整合。

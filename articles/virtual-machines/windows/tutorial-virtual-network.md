@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 22993e8a1513ae34b3752ebd80c60761467f396e
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: d61f4be63a2f3b2f75228848e2e4fe18fb27f598
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912660"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702054"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 來建立及管理 Windows 虛擬機器的 Azure 虛擬網路
 
@@ -280,7 +280,4 @@ New-AzVM `
 > * 保護網路流量
 > * 建立後端 VM
 
-請前進到下一個教學課程，了解如何使用 Azure 備份監視保護虛擬機器上的資料。
-
-> [!div class="nextstepaction"]
-> [備份 Azure 中的 Windows 虛擬機器](./tutorial-backup-vms.md)
+若要瞭解如何保護您的 VM 磁片，請參閱 [磁片的備份和](backup-and-disaster-recovery-for-azure-iaas-disks.md)嚴重損壞修復。

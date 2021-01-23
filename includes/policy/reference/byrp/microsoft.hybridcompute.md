@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 280b45bf4fd13eb2132aa053a091cf6830fe5280
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 76f9d0496db50503f11858573417dcd58eda93c8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046632"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701184"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -54,7 +54,7 @@ ms.locfileid: "98046632"
 |[Linux 電腦應符合 Azure 安全性基準的需求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) |需要將必要條件部署至原則指派範圍。 如需詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 如果 Linux 機器應符合 Azure 安全性基準的需求，則機器不符合規範 |AuditIfNotExists, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AzureLinuxBaseline_AINE.json) |
 |[Linux Azure Arc 機器上應安裝 Log Analytics 代理程式](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F842c54e8-c2f9-4d79-ae8d-38d8b8019373) |此原則會稽核 Linux Azure Arc 機器是否未安裝 Log Analytics 代理程式。 |AuditIfNotExists, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Arc_Linux_LogAnalytics_Audit.json) |
 |[Windows Azure Arc 機器上應安裝 Log Analytics 代理程式](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd69b1763-b96d-40b8-a2d9-ca31e9fd0d3e) |此原則會稽核 Windows Azure Arc 機器是否未安裝 Log Analytics 代理程式。 |AuditIfNotExists, Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Arc_Windows_LogAnalytics_Audit.json) |
-|[應補救電腦上 SQL server 的弱點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6ba6d016-e7c3-4842-b8f2-4992ebc0d72d) |SQL 弱點評定會掃描資料庫有無安全性弱點，並公開任何與最佳做法不同的差異，例如設定不正確、過多權限，以及未保護敏感性資料等等。 解決找到的弱點可以大幅改善您的資料庫安全性狀況。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerSQLVulnerabilityAssessment_Audit.json) |
+|[應補救電腦上 SQL 伺服器的弱點](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6ba6d016-e7c3-4842-b8f2-4992ebc0d72d) |SQL 弱點評定會掃描資料庫有無安全性弱點，並公開任何與最佳做法不同的差異，例如設定不正確、過多權限，以及未保護敏感性資料等等。 解決找到的弱點可以大幅改進資料庫的安全性態勢。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerSQLVulnerabilityAssessment_Audit.json) |
 |[Windows 電腦應符合「系統管理範本 - 控制台」的需求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3aa2661b-02d7-4ba6-99bc-dc36b10489fd) |Windows 電腦在 [系統管理範本 - 控制台] 類別中應具有指定的群組原則設定，以將輸入個人化和防止啟用鎖定畫面。 此原則會要求必須已將來賓組態必要條件部署至原則指派範圍。 如需詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministrativeTemplatesControlPanel_AINE.json) |
 |[Windows 電腦應符合「系統管理範本 - MSS (舊版)」的需求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe0a7e899-2ce2-4253-8a13-d808fdeb75af) |Windows 電腦的 [系統管理範本 - MSS (舊版)] 類別中應具有指定的群組原則設定，以用於自動登入、螢幕保護裝置、網路行為、安全 DLL 和事件記錄檔。 此原則會要求必須已將來賓組態必要條件部署至原則指派範圍。 如需詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministrativeTemplatesMSSLegacy_AINE.json) |
 |[Windows 電腦應符合「系統管理範本 - 網路」的需求](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67e010c1-640d-438e-a3a5-feaccb533a98) |Windows 電腦在 [系統管理範本 - 網路] 類別中應具有指定的 [群組原則] 設定，以進行來賓登入、同時連線、網路橋接器、ICS 和多點傳送名稱解析。 此原則會要求必須已將來賓組態必要條件部署至原則指派範圍。 如需詳細資訊，請造訪 [https://aka.ms/gcpol](https://aka.ms/gcpol)。 |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_AdministrativeTemplatesNetwork_AINE.json) |

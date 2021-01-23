@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4a9a6b61e392ed2efd68cdcb1cf7e53d6bde5ccd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d984a303234a24423ceae100bd139cb484d6495
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249676"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702780"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>預估及管理 Azure 認知搜尋服務的容量
 
 在 [提供搜尋服務](search-create-service-portal.md) 並鎖定特定定價層之前，請花幾分鐘的時間來瞭解容量的運作方式，以及如何調整複本和資料分割以因應工作負載波動。
 
-容量是 [服務層](search-sku-tier.md)的功能。 階層會依最大儲存空間、每個資料分割儲存體，以及您可以建立之物件數目的最大限制來區分。 基本層是專為具有適度儲存需求的應用程式所設計， (一個資料分割) 但可以在高可用性設定中執行 (3 個複本) 。 其他層則是針對特定的工作負載或模式（例如多租使用者）所設計。 就內部而言，在這些層級上建立的服務會受益于有助於這些案例的硬體。
+容量是 [服務層](search-sku-tier.md)的函式，可建立每個服務的最大儲存空間、每個分割區，以及您可以建立之物件數目的最大限制。 基本層是專為具有適度儲存需求的應用程式所設計， (一個資料分割) 但可以在高可用性設定中執行 (3 個複本) 。 其他層則是針對特定的工作負載或模式（例如多租使用者）所設計。 就內部而言，在這些層級上建立的服務會受益于有助於這些案例的硬體。
 
 Azure 認知搜尋中的擴充性架構是以彈性的複本和資料分割組合為基礎，因此您可以根據您是否需要更多查詢或索引編制功能來改變容量。 一旦建立服務之後，您就可以單獨增加或減少複本或資料分割的數目。 成本會隨著每個額外的實體資源而增加，但在大型工作負載完成後，您可以減少調整以降低帳單。 視層級和調整大小而定，增加或減少容量可能需要15分鐘到數小時的時間。
 

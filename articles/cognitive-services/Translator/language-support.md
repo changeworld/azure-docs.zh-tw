@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 60da61d094316b29c8fbc5454472bb898d693937
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e8e54a97c13a69fce2e80676fa68d6d795736a83
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681578"
+ms.locfileid: "98703117"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -194,6 +194,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | Language    | 語言代碼 | 指令碼 | 去/從 | 指令碼|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯文 | `ar` | 阿拉伯文 `Arab` | <--> | 拉丁文 `Latn` |
+| 阿薩姆文 | `as` | 孟加拉文 `Beng` | <--> | 拉丁文 `Latn` |
 | 孟加拉文  | `bn` | 孟加拉文 `Beng` | <--> | 拉丁文 `Latn` |
 |白俄羅斯文| `be` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
 |保加利亞文| `bg` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
@@ -208,6 +209,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | 日文 | `ja` | 日文 `Jpan` | <--> | 拉丁文 `Latn` |
 | 坎那達文 | `kn` | 坎那達文 `Knda` | <--> | 拉丁文 `Latn` |
 |哈薩克文| `kk` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
+|韓文| `ko` | 朝鮮語 `Kore`  | <--> | 拉丁文 `Latn` |
 |吉爾吉斯文| `ky` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
 |馬其頓文| `mk` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
 | 馬來亞拉姆文 | `ml` | 馬來亞拉姆文 `Mlym` | <--> | 拉丁文 `Latn` |
@@ -220,6 +222,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | 塞爾維亞文 (斯拉夫) | `sr-Cyrl` | 斯拉夫文 `Cyrl`  | --> | 拉丁文 `Latn` |
 | 塞爾維亞文 (拉丁) | `sr-Latn` | 拉丁文 `Latn` | --> | 斯拉夫文 `Cyrl`|
 |信德文| `sd` | 阿拉伯文 `Arab`  | <--> | 拉丁文 `Latn` |
+|僧伽羅文| `si` | 僧伽 `Sinh`  | <--> | 拉丁文 `Latn` |
 |塔吉克文| `tg` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
 | 坦米爾文 | `ta` | 坦米爾文 `Taml` | <--> | 拉丁文 `Latn` |
 |韃靼文| `tt` | 斯拉夫文 `Cyrl`  | <--> | 拉丁文 `Latn` |
@@ -366,7 +369,7 @@ Translator 會偵測下列翻譯和音譯語言。
 ### <a name="speech-to-text"></a>語音轉文字
 將語音轉換成文字，以轉譯成您選擇的文字語言。 語音轉換文字用於語音轉換文字翻譯，或用於與語音合成搭配使用的語音轉換語音翻譯。
 
-| 語言    |
+| Language    |
 |:----------- |
 |阿拉伯文|
 |粵語 (繁體中文)|
@@ -401,7 +404,7 @@ Translator 會偵測下列翻譯和音譯語言。
 ### <a name="text-to-speech"></a>文字轉換語音
 將文字轉換成語音。 文字轉換語音是用來在搭配語音轉換文字使用時，新增聲音轉換結果的聲音輸出，或語音轉換語音翻譯的輸出。 
 
-| 語言 |
+| Language |
 |:-|
 | 阿拉伯文 |
 | 保加利亞文 |

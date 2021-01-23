@@ -3,17 +3,17 @@ title: Azure 企業版 REST API
 description: 本文將說明要與您 Azure 企業註冊搭配使用的 REST API。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
-ms.translationtype: HT
+ms.openlocfilehash: 1fdf64053a55eb33d80ed461c231e8c6dd84d63b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132579"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677726"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure 企業版 REST API
 
@@ -93,17 +93,9 @@ Swagger 端點可在下列 API 的 [Enterprise Reporting v3 API](https://consump
 
 目前計費月份中的使用量和帳單資料檔案會每 24 小時更新一次。 不過，最多可能會有三天的資料延遲發生。 例如，如果發生使用量的時間是星期一，則資料可能會到星期四才出現在資料檔案中。
 
-### <a name="test-enrollment-for-development"></a>測試註冊以用於開發
-
-如果您是沒有 Azure 合約註冊的合作夥伴或開發人員，但想要存取 API，您可以使用測試註冊。 註冊名稱為 _EnrollmentNumber 100_ ，您可以尋找並測試直到 2018 年 6月的使用量資訊。 接著，可以使用下列金鑰來呼叫 API 並查看範例資料。
-
-```
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiMTAwIiwiSWQiOiI1ZTc2ZmNiMy0xN2I4LTQ5ZDItYjdkOC0zMDU0YjUwOWY0MWYiLCJSZXBvcnRWaWV3IjoiU3lzdGVtIiwiUGFydG5lcklkIjoiIiwiRGVwYXJ0bWVudElkIjoiIiwiQWNjb3VudElkIjoiIiwiaXNzIjoiZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiYXVkIjoiY2xpZW50LmVhLm1pY3Jvc29mdGF6dXJlLmNvbSIsImV4cCI6MTU4NjM5MDA2OSwibmJmIjoxNTcwNTc4ODY5fQ.lENR5pCBph6iZCVexUlN1b-j7StaILCyBewVHoILD-_fn8S2o2bHY1qUseGOkBwNlaFQfk2OZIo-jQYvnf3eP3UNrNVTCINT0APbc1RqgwSjZSxugVVHH9jnSzEjONkJaSKmi4tlidk6zkF1-uY-TPJkKxYN_9ar7BgLshF9JGXk7t8OZhxSCxDZc-smntu6ORFDl4gRZZVBKXhqOGjOAdYX5tPiGDF2Bxb68RSzh9Xyr5PXxKLx5yivZzUdo0-GFHo13V9w6a5VQM4R1w4_ro8jF8WAo3mpGZ_ovx_U5IY6zMNmi_AoA1mUyvTGotgcu94RragutoJRxAGHbNJZ0Q
-```
-
 ### <a name="azure-service-catalog"></a>Azure 服務目錄
 
-所有 Azure 服務都會發佈到 Azure 儲存體部落格中的 CSV 格式目錄。 如果您需要為您的系統建立所有 Azure 服務的規劃目錄，則此目錄就很有用。 目前的目錄位於 [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv)。
+所有 Azure 服務都會發佈到 Azure 儲存體部落格中的 CSV 格式目錄。 如果您需要為您的系統建立所有 Azure 服務的規劃目錄，則此目錄就很有用。 目前的目錄是 [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv) 。
 
 ### <a name="csv-data-file-details"></a>CSV 資料檔案詳細資料
 
@@ -123,28 +115,28 @@ JSON 格式是從 CSV 報表產生的。 因此，此格式與摘要 CSV 格式�
 | 訂用帳戶名稱 | SubscriptionName | SubscriptionName |   |
 | Date | Date | Date | 顯示服務目錄報表執行的日期。 格式為不含時間戳記的日期字串。 |
 | Month | Month | Month |   |
-| Day | Day | Day |   |
-| Year | Year | Year |   |
-| Products | BillableItemName | Products |   |
-| 計量識別碼 | ResourceGUID | 計量識別碼 |   |
+| 日 | 日 | 日 |   |
+| 年 | 年 | 年 |   |
+| Product | BillableItemName | Product |   |
+| Meter ID | ResourceGUID | MeterId |   |
 | 計量類別 | 服務 | MeterCategory | 有助於尋找服務。 適用於具有多個 ServiceType 的服務。 例如：虛擬機器。 |
-| 計量子類別 | ServiceType | MeterSubCategory | 提供服務的第二層詳細資料。 例如：A1 VM (非 Windows)。  |
-| 計量區域 | ServiceRegion | MeterRegion | 服務所需的第三層詳細資料。 有助於尋找 ResourceGUID 的區域內容。 |
+| Meter Sub-Category | ServiceType | MeterSubCategory | 提供服務的第二層詳細資料。 例如：A1 VM (非 Windows)。  |
+| Meter Region | ServiceRegion | MeterRegion | 服務所需的第三層詳細資料。 有助於尋找 ResourceGUID 的區域內容。 |
 | 計量名稱 | ServiceResource | MeterName | 服務的名稱。 |
-| 已耗用的數量 | ResourceQtyConsumed | ConsumedQuantity |   |
+| Consumed Quantity | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
-| 資源位置 | ServiceSubRegion | ResourceLocation |   |
-| 已耗用的服務 | ServiceInfo | ConsumedService |   |
-| 執行個體識別碼 | 元件 | InstanceId |   |
+| Resource Location | ServiceSubRegion | ResourceLocation |   |
+| Consumed Service | ServiceInfo | ConsumedService |   |
+| Instance ID | 元件 | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
-| Tags | Tags | Tags |   |
-| 儲存體服務識別碼   | OrderNumber | StoreServiceIdentifier   |   |
+| 標籤 | 標籤 | 標籤 |   |
+| Store Service Identifier   | OrderNumber | StoreServiceIdentifier   |   |
 | 部門名稱 | DepartmentName | DepartmentName |   |
-| 成本中心 | CostCenter | CostCenter |   |
-| 測量單位 | UnitOfMeasure | UnitOfMeasure | 範例值：小時、GB、事件、推播、單位、單位時數、MB、每日單位 |
+| Cost Center | CostCenter | CostCenter |   |
+| 測量單位 | UnitOfMeasure | UnitOfMeasure | 範例值：時數、GB、事件、推播、單位、單位時數、MB、每日單位 |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
 
 #### <a name="azure-marketplace-report"></a>Azure Marketplace 報表
@@ -158,22 +150,22 @@ JSON 格式是從 CSV 報表產生的。 因此，此格式與摘要 CSV 格式�
 | 訂用帳戶名稱 | SubscriptionName |  SubscriptionName |
 | Date | BillingCycle |  日期 (僅限日期字串。 無時間戳記)
 | Month | Month |  Month |
-| Day | Day |  Day |
-| Year | Year |  Year |
-| 計量識別碼 | MeterResourceId |  計量識別碼 |
+| 日 | 日 |  日 |
+| 年 | 年 |  年 |
+| Meter ID | MeterResourceId |  MeterId |
 | 發行者名稱 | PublisherFriendlyName |  PublisherName |
 | 供應項目名稱 | OfferFriendlyName |  OfferName |
 | 方案名稱 | PlanFriendlyName |  PlanName |
-| 已耗用的數量 | BilledQty |  ConsumedQuantity |
+| Consumed Quantity | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
 | ExtendedCost | ExtendedCost | ExtendedCost |
 | 測量單位 | UnitOfMeasure | UnitOfMeasure |
-| 執行個體識別碼 | InstanceId | InstanceId |
+| Instance ID | InstanceId | InstanceId |
 | 其他資訊 | AdditionalInfo | AdditionalInfo |
-| Tags | Tags | Tags |
+| 標籤 | 標籤 | 標籤 |
 | 訂單編號 | OrderNumber | OrderNumber |
 | 部門名稱 | DepartmentNames | DepartmentName |
-| 成本中心 | CostCenters |  CostCenter |
+| Cost Center | CostCenters |  CostCenter |
 | 資源群組 | ResourceGroup |  ResourceGroup |
 
 #### <a name="price-sheet"></a>價位表

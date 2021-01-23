@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968869"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702214"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>複製活動中的架構和資料類型對應
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -185,6 +185,9 @@ ms.locfileid: "97968869"
 2. 選取您要從中反復查看和解壓縮資料的陣列。 它會自動填入做為 **集合參考**。 請注意，這類操作只支援單一陣列。
 
 3. 將需要的欄位對應到接收。 Data Factory 會自動判斷階層式端的對應 JSON 路徑。
+
+> [!NOTE]
+> 對於標示為集合參考的陣列是空的，而且選取了核取方塊，則會略過整個記錄。
 
 ![使用 UI 將階層式對應至表格式](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 

@@ -1,18 +1,18 @@
 ---
 title: 內建原則定義
 description: 列出 Azure Synapse Analytics Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 85486f92c0b19d341255e74c714b41ddd4449135
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 8d183df7f50df8bdbaef2d4022aaada637802aae
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051188"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701311"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-synapse-analytics"></a>Azure 原則 Azure Synapse Analytics 的內建定義 
 

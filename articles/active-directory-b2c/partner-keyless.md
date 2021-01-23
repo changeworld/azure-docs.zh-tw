@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 7e6f19e03eee6fb6ddf946ea79d197a231f5f113
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690307"
+ms.locfileid: "98702949"
 ---
-# <a name="tutorial-for-configuring-keyless-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定無索引鍵的教學課程
+# <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>教學課程：使用 Azure Active Directory B2C 設定無索引鍵
 
 在此範例教學課程中，我們會提供有關如何使用 [無索引鍵](https://keyless.io/)來設定 AZURE ACTIVE DIRECTORY (AD) B2C 的指引。 使用 Azure AD B2C 作為身分識別提供者時，您可以將無索引鍵與任何客戶應用程式整合，為您的使用者提供真正的無密碼驗證。
 
@@ -129,7 +129,7 @@ ms.locfileid: "98690307"
 
 9. 在 [ **使用者屬性和權杖宣告**] 底下，選取 [收集屬性] 選項中的 [ **電子郵件地址** ]。 您可以將 Azure Active Directory 可針對使用者收集的所有屬性，連同 Azure AD B2C 可傳回用戶端應用程式的宣告一起加入。
 
-10. 選取 [建立]。
+10. 選取 [建立]  。
 
 11. 建立成功之後，請選取新的 **使用者流程**。
 
@@ -153,7 +153,7 @@ ms.locfileid: "98690307"
 
 5. 建立使用者屬性之後，會在流程期間呼叫無索引鍵。 如果流程未完成，請檢查使用者是否未儲存在目錄中。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱下列文章：
 

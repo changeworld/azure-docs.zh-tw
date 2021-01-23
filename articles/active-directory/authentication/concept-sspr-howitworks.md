@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779357"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703270"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>運作方式：Azure AD 自助式密碼重設
 
@@ -137,7 +137,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 當註冊自助式密碼重設時，使用者無法選擇註冊其行動應用程式 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 。 使用者可以在中註冊其行動應用程式 [https://aka.ms/mfasetup](https://aka.ms/mfasetup) ，或在的結合安全性資訊註冊中註冊 [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) 。
 
 > [!IMPORTANT]
-> 只有在需要方法時，才能選取驗證器應用程式作為唯一的驗證方法。 同樣地，在需要兩個方法時，不能選取驗證器應用程式和一個額外的方法。
+> 當只需要一個方法時，無法選取驗證器應用程式作為唯一的驗證方法。 同樣地，在需要兩個方法時，不能選取驗證器應用程式和一個額外的方法。
 >
 > 當您將包含驗證器應用程式的 SSPR 原則設定為方法時，如果需要一個方法，則至少應選取一個額外的方法，而且必須在設定兩個方法時，選取至少兩個額外的方法。
 >

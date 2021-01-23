@@ -1,30 +1,30 @@
 ---
 title: 變更 Azure 訂用帳戶供應項目
-description: 了解如何使用 Azure 帳戶中心來變更 Azure 訂閱以及改用其他供應項目。
+description: 瞭解如何變更您的 Azure 訂用帳戶，並切換至不同的供應專案。
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/20/2021
 ms.author: banders
-ms.openlocfilehash: e62ea7052420e2d0c20b99935659a5443540a942
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
-ms.translationtype: HT
+ms.openlocfilehash: dd8040effc5972d86e620793e437f5b185e12603
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686814"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685443"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>將 Azure 訂用帳戶變更為其他供應項目
 
-身為客戶的您如有[採用隨用隨付費率的個別訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)，您可以將 Azure 訂用帳戶切換為[帳戶中心](https://account.windowsazure.com/Subscriptions)的其他供應項目。 例如，您可以使用這項功能，利用 [Visual Studio 訂閱者的每月信用額度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
+當客戶使用隨用隨 [付訂](https://azure.microsoft.com/offers/ms-azr-0003p/) 用帳戶時，您可以將 Azure 訂用帳戶切換至 Azure 入口網站中的另一個供應專案。 例如，您可以使用這項功能，利用 [Visual Studio 訂閱者的每月信用額度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
 
 **只想要從免費試用版升級？** 請參閱[升級您的訂用帳戶](upgrade-azure-subscription.md)。
 
 ## <a name="whats-supported"></a>支援的項目：
 
-您可以使用隨用隨付費率，從個別的訂用帳戶切換到：
+您可以從隨用隨付訂用帳戶切換為：
 
 - [隨用隨付開發/測試](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)
@@ -35,43 +35,31 @@ ms.locfileid: "88686814"
 
 > [!NOTE]
 > 如需其他供應項目變更，請[連絡支援中心](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
->
->
 
 ## <a name="switch-subscription-offer"></a>切換訂用帳戶供應項目
 
-> [!VIDEO https://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/Switch-to-a-different-Azure-offer/player]
->
->
-
-1. 登入 [Azure 帳戶中心](https://account.windowsazure.com/Subscriptions)。
-1. 使用隨用隨付費率來選取您的個別訂用帳戶。
-1. 按一下 [切換到其他供應項目] 。 只有當您有使用隨用隨付費率的個別訂用帳戶，並已完成第一個計費期間時，才可以使用此選項。
-
-   ![請注意頁面右側的 [切換供應項目] 按鈕](./media/switch-azure-offer/switchbutton.png)
-1. 從您的訂用帳戶可切換的供應項目清單中**選取所需的供應項目**。 這份清單會根據您帳戶相關聯的會員資格而有所不同。 如果沒有清單，請檢查[您可切換的可用供應項目清單](#whats-supported)，並確定您有正確的會員資格。
-
-   ![選取您要切換的目標供應項目](./media/switch-azure-offer/selectoffer.png)
-1. 根據您所切換的供應項目，您可能會看到有關切換所造成之影響的附註。 在您繼續進行之前，請先仔細瀏覽這份清單並依照指示操作。
-
-   ![檢閱注意事項](./media/switch-azure-offer/thingstonote.png)
-1. 您可以重新命名訂用帳戶。 預設不會將其設定為新的供應項目名稱。 按一下 [切換供應項目]  以完成程序。
-
-   ![按一下綠色按鈕](./media/switch-azure-offer/confirmpage.png)
-1. 成功！ 您的訂用帳戶現在已經切換到新的供應項目。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 流覽至 [訂用帳戶] **，然後選取** 您的隨用隨付訂用帳戶。
+1. 在頁面頂端，選取 [ **切換供應** 專案]。 只有當您有隨用隨付訂用帳戶，且已完成第一個計費週期時，才能使用此選項。  
+    :::image type="content" source="./media/switch-azure-offer/switch-offer.png" alt-text="ALTImage 顯示使用交換器供應專案的訂用帳戶詳細資料 optionTEXT" lightbox="./media/switch-azure-offer/switch-offer.png" :::
+1. 從您的訂用帳戶可切換的供應專案清單中選取您想要的供應專案。 這份清單會根據您帳戶相關聯的會員資格而有所不同。 如果沒有清單，請檢查[您可切換的可用供應項目清單](#whats-supported)，並確定您有正確的會員資格。 然後選取 [下一步]。
+    :::image type="content" source="./media/switch-azure-offer/select-offer.png" alt-text="選取您要切換的目標供應項目" lightbox="./media/switch-azure-offer/select-offer.png" :::
+    根據您所切換的供應項目，您可能會看到有關切換所造成之影響的附註。 在您繼續進行之前，請先仔細瀏覽這份清單並依照指示操作。 您可能也需要驗證您的電話號碼。
+1. 查看任何附注或驗證您的電話號碼之後，請選取 [ **切換供應** 專案]。
+1. 您的訂用帳戶現在已經切換到新的供應項目。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 下列各節可回答常見問題。
 
 ### <a name="what-is-an-azure-offer"></a>什麼是 Azure 供應項目？
 
-Azure 供應項目是您擁有之 Azure 訂用帳戶的「類型」。 例如，[採用隨用隨付費率的訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)、[Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) 和 [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) 皆為 Azure 供應項目。 每個供應項目有不同的[條款](https://azure.microsoft.com/support/legal/offer-details/)，有些則有特殊優點。 您可以在帳戶中心的 [訂用帳戶] 頁面中找到訂用帳戶的供應項目。 按一下供應項目名稱以取得更多詳細資料。
+Azure 供應項目是您擁有之 Azure 訂用帳戶的「類型」。 例如，[採用隨用隨付費率的訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)、[Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) 和 [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) 皆為 Azure 供應項目。 每個供應項目有不同的[條款](https://azure.microsoft.com/support/legal/offer-details/)，有些則有特殊優點。 訂用帳戶的供應專案會顯示在 [訂閱詳細資料] 頁面上。
 
-   ![按一下帳戶中心的 [供應項目] 連結以取得更多詳細資料](./media/switch-azure-offer/offerlink01.png)
+:::image type="content" source="./media/switch-azure-offer/subscription-details.png" alt-text="顯示供應專案類型的訂用帳戶詳細資料頁面" lightbox="./media/switch-azure-offer/subscription-details.png" :::
 
 ### <a name="why-dont-i-see-the-button"></a>為什麼看不到該按鈕？
 
-在下列情況下，您可能看不到 [切換為其他供應項目] 選項：
+如果有下列情況，您可能看不到 [ **切換供應** 專案] 選項：
 
 * 您沒有[採用隨用隨付費率的訂用帳戶](https://azure.microsoft.com/offers/ms-azr-0003p/)。 目前只有採用隨用隨付費率的訂用帳戶可以轉換成其他供應項目。
   * 如果您有[免費試用](https://azure.microsoft.com/free/)，請了解如何[升級至隨用隨付](upgrade-azure-subscription.md)。
@@ -85,7 +73,7 @@ Azure 供應項目是您擁有之 Azure 訂用帳戶的「類型」。 例如，
 
 ### <a name="what-does-switching-azure-offers-do-to-my-service-and-billing"></a>切換 Azure 供應項目對我的服務和帳單有什麼好處？
 
-這裡說明當您在「帳戶中心」中切換 Azure 供應項目時的詳細資料。
+以下是切換 Azure 供應專案時所發生狀況的詳細資料。
 
 #### <a name="no-service-downtime"></a>沒有服務停機時間
 
@@ -102,7 +90,7 @@ Azure 供應項目是您擁有之 Azure 訂用帳戶的「類型」。 例如，
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>我可以從採用隨用隨付費率的訂用帳戶遷移至雲端解決方案提供者 (CSP) 或 Enterprise 合約 (EA) 嗎？
 
 * 要遷移至 CSP，請參閱[在訂閱者與 CSP 之間轉移 Azure 訂用帳戶](transfer-subscriptions-subscribers-csp.md)。
-* 若要移轉至 EA，可請您的註冊系統管理員將您的帳戶新增至 EA。 請遵循邀請電子郵件中的指示，將訂用帳戶移至 EA 註冊底下。 若要深入了解，請參閱 EA 入口網站中的[與現有帳戶相關聯](https://ea.azure.com/helpdocs/associateExistingAccount)。
+* 若要移轉至 EA，可請您的註冊系統管理員將您的帳戶新增至 EA。 依照邀請電子郵件中的指示，將您的訂用帳戶移至 EA 註冊下。
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>是否可以將資料與服務移轉至新的訂用帳戶？
 

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 36f266a8402721dffecc9e80c4f769bd51b0e172
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539096"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700596"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
@@ -36,7 +36,7 @@ ms.locfileid: "98539096"
 | [Microsoft.ClassicCompute](#microsoftclassiccompute) |
 | [Microsoft.Compute](#microsoftcompute) |
 | [Microsoft.ServiceFabric](#microsoftservicefabric) |
-| **網路** |
+| **網路功能** |
 | [Microsoft.Cdn](#microsoftcdn) |
 | [Microsoft.ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
@@ -646,7 +646,7 @@ Azure 服務： [Service Fabric](../service-fabric/index.yml)
 > | Microsoft.ServiceFabric/locations/operations/read | 依位置讀取任何作業 |
 > | Microsoft.ServiceFabric/operations/read | 讀取任何可用的作業 |
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 ### <a name="microsoftcdn"></a>Microsoft.Cdn
 
@@ -1464,7 +1464,7 @@ Azure 服務： [Azure 資料箱](../databox/index.yml)
 
 ### <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
-Azure 服務： [azure 匯入/匯出](../storage/common/storage-import-export-service.md)
+Azure 服務： [azure 匯入/匯出](../import-export/storage-import-export-service.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -10079,5 +10079,5 @@ Azure 服務： [Azure 數位 Twins](../digital-twins/index.yml)
 ## <a name="next-steps"></a>後續步驟
 
 - [將資源提供者與服務配對](../azure-resource-manager/management/azure-services-resource-providers.md)
-- [Azure 內建角色](built-in-roles.md)
+- [Azure 內建角色](built-in-roles.md) (機器翻譯)
 - [雲端採用架構：Azure 中的資源存取管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

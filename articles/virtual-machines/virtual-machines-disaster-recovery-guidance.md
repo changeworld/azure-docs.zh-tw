@@ -1,19 +1,21 @@
 ---
-title: 嚴重損壞修復案例
+title: Azure 服務中斷
 description: 了解發生影響 Azure 虛擬機器的 Azure 服務中斷事件時該怎麼辦。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 0d659f0bc65d3dbe7cbb656d505275a52a9742eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: ''
+ms.openlocfilehash: 5c6036a65fa449986f5c085202fefa752e3a414a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976618"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701028"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>如果 Azure 服務中斷影響 Azure Vm，該怎麼辦
+
 Microsoft 的同仁一向努力確保提供您需要的服務。 有時候因為不可抗力之影響，造成服務意外中斷。
 
 Microsoft 為其服務提供服務等級協定 (SLA)，作為執行時間和連接承諾。 個別的 Azure 服務 SLA 位於 [Azure 服務等級協定](https://azure.microsoft.com/support/legal/sla/)。
