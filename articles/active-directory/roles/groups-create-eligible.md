@@ -2,23 +2,23 @@
 title: 建立群組以在 Azure Active Directory 中指派角色 |Microsoft Docs
 description: 瞭解如何在 Azure AD 中建立可指派角色的群組。 在 Azure 入口網站、PowerShell 或圖形 API 中管理 Azure 角色。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2c42f407ee31a792a6634a813358d428120b46
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 3f06a1e9ea83fc7ad758ad17245ffa5d7ca973f6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378613"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742093"
 ---
 # <a name="create-a-role-assignable-group-in-azure-active-directory"></a>在 Azure Active Directory 中建立可指派角色的群組
 
@@ -27,12 +27,12 @@ ms.locfileid: "93378613"
 ## <a name="using-azure-ad-admin-center"></a>使用 Azure AD 系統管理中心
 
 1. 使用 Azure AD 組織的特殊權限角色管理員或全域系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
-1. 選取 [ **群組**  >  **所有群組** ]  >  **新群組** 。
+1. 選取 [**群組**  >  **所有群組**]  >  **新群組**。
 
     [![開啟 Azure Active Directory 並建立新的群組。](./media/groups-create-eligible/new-group.png "開啟 Azure Active Directory 並建立新的群組。")](./media/groups-create-eligible/new-group.png#<lightbox>)
 
 1. 在 [ **新增群組** ] 索引標籤上，提供群組類型、名稱和描述。
-1. 開啟 **Azure AD 角色可以指派給群組** 。 只有特殊許可權角色管理員和全域管理員可以看到此切換參數，因為這些只有兩個可設定交換器的角色。
+1. 開啟 **Azure AD 角色可以指派給群組**。 只有特殊許可權角色管理員和全域管理員可以看到此切換參數，因為這些只有兩個可設定交換器的角色。
 
     [![讓新群組符合角色指派的資格](./media/groups-create-eligible/eligible-switch.png "讓新群組符合角色指派的資格")](./media/groups-create-eligible/eligible-switch.png#<lightbox>)
 
@@ -40,7 +40,7 @@ ms.locfileid: "93378613"
 
     [![將成員新增至角色可指派的群組並指派角色。](./media/groups-create-eligible/specify-members.png "將成員新增至角色可指派的群組並指派角色。")](./media/groups-create-eligible/specify-members.png#<lightbox>)
 
-1. 指定成員和擁有者之後，請選取 [ **建立** ]。
+1. 指定成員和擁有者之後，請選取 [ **建立**]。
 
     [![[建立] 按鈕位於頁面的底部。](./media/groups-create-eligible/create-button.png "[建立] 按鈕位於頁面的底部。")](./media/groups-create-eligible/create-button.png#<lightbox>)
 

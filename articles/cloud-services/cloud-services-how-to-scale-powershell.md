@@ -1,21 +1,24 @@
 ---
-title: 在 Windows PowerShell 中調整 Azure 雲端服務 |Microsoft Docs
+title: 在 Windows PowerShell 中調整 Azure 雲端服務 (傳統) |Microsoft Docs
 description: (傳統) 了解如何使用 PowerShell 在 Azure 中相應放大或縮小 Web 角色或背景工作角色。
-services: cloud-services
-author: mmccrory
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/01/2016
-ms.author: memccror
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c2cec08d86760694ec3c41a98af62c6b86e0a4c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a090da1933b0fcd6edb5b2415c773f9efcb27387
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071086"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743299"
 ---
-# <a name="how-to-scale-a-cloud-service-in-powershell"></a>如何在 PowerShell 中調整雲端服務
+# <a name="how-to-scale-an-azure-cloud-service-classic-in-powershell"></a>如何在 PowerShell 中調整 Azure 雲端服務 (傳統) 
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 您可以使用 Windows PowerShell 來新增或移除執行個體，以相應放大或縮小 Web 角色或背景工作角色。  
 
@@ -69,7 +72,7 @@ Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -S
 
 ## <a name="scale-in-the-role-by-removing-instances"></a>移除執行個體以相應縮小角色
 
-您可以用相同方式移除執行個體，以相應縮小角色。 將 **Set-AzureRole**的 **Count** 參數設定為您希望相應縮小作業完成之後存在的執行個體數目。
+您可以用相同方式移除執行個體，以相應縮小角色。 將 **Set-AzureRole** 的 **Count** 參數設定為您希望相應縮小作業完成之後存在的執行個體數目。
 
 ## <a name="next-steps"></a>後續步驟
 

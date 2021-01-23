@@ -1,22 +1,24 @@
 ---
-title: Azure 雲端服務角色結構描述 | Microsoft Docs
+title: Azure 雲端服務 (傳統) 角色架構 |Microsoft Docs
 description: 服務設定檔的 Role 元素會指定要為每個角色、設定值和憑證指紋部署多少角色實例。
-ms.custom: ''
-ms.date: 12/07/2016
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 12
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2dc8e14a4e4d8855abb615632bb7d43b9034d360
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79528416"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743435"
 ---
-# <a name="azure-cloud-services-config-role-schema"></a>Azure 雲端服務設定角色結構描述
+# <a name="azure-cloud-services-classic-config-role-schema"></a>Azure 雲端服務 (傳統) Config 角色架構
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 組態檔的 `Role` 元素會指定要為服務中每個角色部署的角色執行個體數目、任何組態設定的值，以及與角色相關聯之任何憑證的指紋。
 

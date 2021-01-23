@@ -1,23 +1,26 @@
 ---
-title: 雲端服務中角色的通訊 | Microsoft Docs
+title: 雲端服務中角色的通訊 (傳統) |Microsoft Docs
 description: 您可以為雲端服務中的角色執行個體定義端點 (http、https、tcp、udp)，以便與外部或在其他角色執行個體之間通訊。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/14/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 82aa1579a1f7feb36732153341e1eacf266a7218
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75386335"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743027"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>啟用 Azure 中角色執行個體的通訊
-雲端服務角色透過內部和外部連線通訊。 外部連接稱為**輸入端點**，而內部連接稱為**內部端點**。 本主題描述如何修改 [服務定義](cloud-services-model-and-package.md#csdef) 以建立端點。
+# <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>啟用 Azure 雲端服務 (傳統) 中角色實例的通訊
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
+雲端服務角色透過內部和外部連線通訊。 外部連接稱為 **輸入端點**，而內部連接稱為 **內部端點**。 本主題描述如何修改 [服務定義](cloud-services-model-and-package.md#csdef) 以建立端點。
 
 ## <a name="input-endpoint"></a>輸入端點
 輸入端點是在您要對外公開連接埠時使用。 您可以指定通訊協定類型端點連接埠，稍後這些連接埠將套用至端點的外部和內部連接埠。 您也可以使用 [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) 屬性為端點指定不同的內部連接埠。
@@ -106,7 +109,7 @@ int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].
 > 
 > 
 
-若要判斷角色執行個體上內部端點的連接埠號碼，您可以使用 [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) 屬性，以傳回包含端點名稱及其對應 IP 位址與連接埠的 Dictionary 物件。 [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) 屬性會傳回指定端點的 IP 位址和連接埠。 **PublicIPEndpoint** 屬性會傳回負載平衡端點的連接埠。 未使用 **PublicIPEndpoint** 屬性的 IP 位址部分。
+若要判斷角色實例上內部端點的埠號碼，您可以使用 [`InstanceEndpoints`](/previous-versions/azure/reference/ee741917(v=azure.100)) 屬性傳回包含端點名稱及其對應 IP 位址與埠的字典物件。 屬性會傳回 [`IPEndpoint`](/previous-versions/azure/reference/ee741919(v=azure.100)) 指定端點的 IP 位址和埠。 屬性會傳回 `PublicIPEndpoint` 負載平衡端點的埠。 未使用屬性的 IP 位址部分 `PublicIPEndpoint` 。
 
 以下是逐一查看角色執行個體的範例。
 
@@ -255,7 +258,7 @@ namespace WorkerRole1
 
 根據預設，定義內部端點之後，來自任何角色的通訊都可以在沒有任何限制的情況下流向角色的內部端點。 若要限制通訊，您必須在服務定義檔中將 **NetworkTrafficRules** 元素新增至 **ServiceDefinition** 元素。
 
-### <a name="scenario-1"></a>實例 1
+### <a name="scenario-1"></a>案例 1
 只允許從 **WebRole1** 至 **WorkerRole1** 的網路流量。
 
 ```xml

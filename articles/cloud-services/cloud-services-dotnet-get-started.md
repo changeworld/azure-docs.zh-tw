@@ -1,26 +1,27 @@
 ---
-title: 開始使用 Azure 雲端服務和 ASP.NET | Microsoft Docs
+title: Azure 雲端服務 (傳統) 和 ASP.NET 入門 |Microsoft Docs
 description: 了解如何使用 ASP.NET MVC 和 Azure 建立多層式應用程式。 應用程式在雲端服務中執行，具備 Web 角色和背景工作角色。 它使用 Entity Framework、SQL Database 及 Azure 儲存體佇列和 Blob。
-services: cloud-services, storage
-documentationcenter: .net
-author: tgore03
-manager: carmonm
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
-ms.topic: conceptual
-ms.date: 05/15/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: a875c036c79419357f1134c32f62fdb060fec7c6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ae7fd5a7c9bc858cb18473374e7bd5589717eac6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562288"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742075"
 ---
-# <a name="get-started-with-azure-cloud-services-and-aspnet"></a>開始使用 Azure 雲端服務和 ASP.NET
+# <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a>開始使用 Azure 雲端服務 (傳統) 和 ASP.NET
 
 ## <a name="overview"></a>概觀
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 本教學課程示範如何建立具有 ASP.NET MVC 前端的多層式 .NET 應用程式，並將它部署到 [Azure 雲端服務](cloud-services-choose-me.md)。 應用程式會使用 [Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100))、[Azure Blob 服務](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 佇列服務](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 您可以從 MSDN Code Gallery [下載 Visual Studio 專案](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) 。
 
 本教學課程將示範如何在本機建置並執行應用程式、如何將應用程式部署至 Azure 並且在雲端執行，以及如何從頭建置應用程式。 之後，如果需要，也可以自從頭建置應用程式開始，然後執行測試和部署步驟。
@@ -28,7 +29,7 @@ ms.locfileid: "97562288"
 ## <a name="contoso-ads-application"></a>Contoso Ads 應用程式
 此應用程式是廣告看板。 使用者透過輸入文字和上傳影像來建立廣告。 他們可以看到含有縮圖影像的廣告清單，也可以在選取廣告來查看詳細資料時查看完整大小的影像。
 
-![Ad list](./media/cloud-services-dotnet-get-started/list.png)
+![影像顯示 Ad 清單](./media/cloud-services-dotnet-get-started/list.png)
 
 此應用程式會使用 [以佇列為中心的工作模式](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) ，將建立縮圖的 CPU 密集工作轉變為後端程序。
 
@@ -43,7 +44,7 @@ ms.locfileid: "97562288"
 * 如何上傳檔案並將檔案儲存在 Azure Blob 服務。
 * 如何將 Azure 佇列服務用於層級之間的通訊。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本教學課程假設您了解 [Azure 雲端服務的基本概念](cloud-services-choose-me.md)，例如「Web 角色」和「背景工作角色」術語。  同時也假設您知道如何在 Visual Studio 中使用 [ASP.NET MVC](https://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started) 或 [Web Form](https://www.asp.net/web-forms/tutorials/aspnet-45/getting-started-with-aspnet-45-web-forms/introduction-and-overview) 專案。 範例應用程式使用 MVC，但大多數的教學課程內容亦適用於 Web Form。
 
 您不需 Azure 訂用帳戶即可在本機執行應用程式，但需要訂用帳戶才能將應用程式部署至雲端。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A55E3C668)或是[申請免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A55E3C668)。
@@ -60,7 +61,7 @@ ms.locfileid: "97562288"
 ## <a name="application-architecture"></a>應用程式架構
 本應用程式會將廣告儲存在 SQL 資料庫中，使用 Entity Framework Code First 來建立表格和存取資料。 針對每個廣告，資料庫都會儲存兩個 URL：一個用於完整大小的影像，而另一個用於縮圖。
 
-![Ad table](./media/cloud-services-dotnet-get-started/adtable.png)
+![這是 Ad 資料表的影像](./media/cloud-services-dotnet-get-started/adtable.png)
 
 使用者上傳影像時，執行 Web 角色的前端會將影像儲存在 [Azure Blob](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)，並將廣告資訊儲存在資料庫中，加上指向 Blob 的 URL。 同時會將訊息寫入 Azure 佇列。 執行背景工作角色的後端程序會定期輪詢佇列，看看是否有新訊息。 出現新訊息時，背景工作角色會建立該影像的縮圖，並更新該廣告的縮圖 URL 資料庫欄位。 下圖顯示應用程式的這些部分的互動情況。
 
@@ -83,11 +84,11 @@ ms.locfileid: "97562288"
 
     第一次執行雲端服務專案時，需要約一分鐘的時間，才能啟動模擬器。 模擬器啟動完成時，預設的瀏覽器會開啟到應用程式首頁。
 
-    ![Contoso Ads architecture](./media/cloud-services-dotnet-get-started/home.png)
+    ![Contoso Ads 架構1](./media/cloud-services-dotnet-get-started/home.png)
 8. 按一下 [建立廣告]。
 9. 輸入部分測試資料，選取要上傳的 *.jpg* 影像，然後按一下 [ **建立**]。
 
-    ![Create page](./media/cloud-services-dotnet-get-started/create.png)
+    ![影像顯示建立頁面](./media/cloud-services-dotnet-get-started/create.png)
 
     應用程式會進入索引頁面，但不會顯示新廣告的縮圖，因為處理尚未發生。
 10. 稍候片刻，然後重新整理索引頁面以查看縮圖。
@@ -125,11 +126,11 @@ Azure 雲端服務是應用程式將執行所在的環境。
 5. 選擇您要部署應用程式的區域。
 
     此欄位會指定將託管您的雲端服務的資料中心。 針對生產應用程式，您應該選擇距離客戶最近的區域。 針對此教學課程，請選擇離您最近的區域。
-5. 按一下 [建立]  。
+5. 按一下頁面底部的 [新增]  。
 
     在下面的影像中，已建立 URL 為 CSvccontosoads.cloudapp.net 的雲端服務。
 
-    ![New Cloud Service](./media/cloud-services-dotnet-get-started/newcs.png)
+    ![影像顯示新的雲端服務](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-a-database-in-azure-sql-database"></a>在 Azure SQL Database 中建立資料庫
 應用程式在雲端中執行時，將會使用雲端式資料庫。
@@ -154,7 +155,7 @@ Azure 雲端服務是應用程式將執行所在的環境。
 9. 對新的伺服器按一下 [選取]。
 
     ![New server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. 按一下 [建立]  。
+10. 按一下頁面底部的 [新增]  。
 
 ### <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 Azure 儲存體帳戶可提供在雲端中儲存佇列和 Blob 資料的資源。
@@ -177,7 +178,7 @@ Azure 儲存體帳戶可提供在雲端中儲存佇列和 Blob 資料的資源�
     當雲端服務與儲存體帳戶位於不同的資料中心 (不同的區域) 時，延遲時間會增加，而且您將由於使用資料中心外的頻寬而付費。 資料中心內的頻寬則是免費的。
 
     Azure 同質群組提供一種機制，可將資料中心內的資源之間的距離縮至最短，因而可以減少延遲時間。 本教學課程不會使用同質群組。 如需詳細資訊，請參閱 [如何在 Azure 中建立同質群組](/previous-versions/azure/reference/gg715317(v=azure.100))(英文)。
-7. 按一下 [建立]  。
+7. 按一下頁面底部的 [新增]  。
 
     ![New storage account](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -230,7 +231,7 @@ Web 角色專案和背景工作角色專案的 Azure 儲存體帳戶連接字串
 
 1. 在 [方案總管] 中，於 **ContosoAdsCloudService** 專案的 [角色] 下的 **ContosoAdsWeb** 上按一下滑鼠右鍵，然後按一下 [屬性]。
 
-    ![Role properties](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![影像顯示角色屬性](./media/cloud-services-dotnet-get-started/roleproperties.png)
 2. 按一下 [ **設定** ] 索引標籤。在 [ **服務** 設定] 下拉式清單方塊中，選擇 [ **雲端**]。
 
     ![Cloud configuration](./media/cloud-services-dotnet-get-started/sccloud.png)
@@ -378,7 +379,8 @@ Web 角色專案和背景工作角色專案的 Azure 儲存體帳戶連接字串
 2. 儲存您的變更。
 3. 在 ContosoAdsCloudService 專案中，於 [角色] 下的 ContosoAdsWeb 上按一下滑鼠右鍵，然後按一下 [屬性]。
 
-    ![醒目顯示 [角色] 下 [屬性] 功能表選項的螢幕擷取畫面。](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![角色屬性影像](./media/cloud-services-dotnet-get-started/roleproperties.png)
+
 4. 在 **ContosoAdsWeb [Role]** 屬性視窗中，按一下 [設定] 索引標籤，然後按一下 [新增設定]。
 
     將 [服務組態] 保持設為 [所有組態]。

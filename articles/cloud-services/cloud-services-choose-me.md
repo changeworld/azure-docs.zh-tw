@@ -1,20 +1,25 @@
 ---
-title: 什麼是 Azure 雲端服務 | Microsoft Docs
+title: 什麼是傳統) 的 Azure 雲端服務 (|Microsoft Docs
 description: 瞭解 Azure 雲端服務的內容，特別是設計來支援可調整、可靠且運作成本低廉的應用程式。
-services: cloud-services
-author: tgore03
-ms.service: multiple
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: cbb9aae57b952c05aa722f81309158a11aef826b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88224283"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742806"
 ---
-# <a name="overview-of-azure-cloud-services"></a>Azure 雲端服務概觀
+# <a name="overview-of-azure-cloud-services-classic"></a>Azure 雲端服務 (傳統) 的總覽
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 Azure 雲端服務是[平台即服務](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 的一個範例。 這項技術如同 [Azure App Service](../app-service/overview.md)，是專為支援可調整、穩定可靠且操作成本低的應用程式而設計。 如同 App Service 是裝載於虛擬機器 (VM) 上，Azure 雲端服務也是如此。 不過，您可更充分地掌控 VM。 您可以使用 Azure 雲端服務在 VM 上安裝您自己的軟體，並從遠端加以存取。
 
 ![Azure 雲端服務圖表](./media/cloud-services-choose-me/diagram.png)

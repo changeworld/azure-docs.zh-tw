@@ -1,22 +1,25 @@
 ---
-title: Azure 雲端服務 NetworkConfiguration 結構描述 | Microsoft Docs
+title: Azure 雲端服務 (傳統) NetworkConfiguration 架構 |Microsoft Docs
 description: 瞭解服務設定檔中 NetworkConfiguration 元素的子項目，以指定虛擬網路和 DNS 值。
-ms.custom: ''
-ms.date: 12/07/2016
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 28
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: a3f62bb33332e818cc40c5195a1cc2f667f819b4
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+'---thor': tagore
+ms.openlocfilehash: acf4c050ade21a6e5fc51ee6ace512eff00360ab
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072572"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743452"
 ---
-# <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 雲端服務組態 NetworkConfiguration 結構描述
+# <a name="azure-cloud-services-classic-config-networkconfiguration-schema"></a>Azure 雲端服務 (傳統) Config NetworkConfiguration 架構
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 服務組態檔的 `NetworkConfiguration` 元素會指定虛擬網路和 DNS 值。 雲端服務的這些設定是選擇性的。
 

@@ -2,25 +2,38 @@
 title: Azure 服務匯流排主題篩選 | Microsoft Docs
 description: 本文說明訂閱者如何藉由指定篩選準則，來定義要從主題接收哪些訊息。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 04ae585c42f8acfbf338bf23befb32a5521fcf57
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 01/22/2021
+ms.openlocfilehash: 63cf6e67d4fa32c5c7f52f569094e1165554108c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889026"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742959"
 ---
 # <a name="topic-filters-and-actions"></a>主題篩選和動作
 
-訂閱者可以定義他們想要接收某個主題的哪些訊息。 這些訊息會以一或多個具名訂用帳戶規則的形式來指定。 每條規則都由一個選取特定訊息的條件，以及一個為選定訊息加上註解的動作所組成。 對於每個比對規則條件，訂用帳戶會產生一份能針對每條比對規則加上不同註解的訊息。
+訂閱者可以定義他們想要接收某個主題的哪些訊息。 這些訊息會以一或多個具名訂用帳戶規則的形式來指定。 每個規則都包含一個 **篩選** 條件，可選取特定的訊息，並 **選擇性地** 包含標注選取之訊息的 **動作** 。 
+
+即使您有多個比對規則，所有 **沒有動作** 的規則都會使用條件來結合 `OR` ，並在訂用帳戶上產生 **單一訊息** 。 
+
+**具有動作** 的每個規則都會產生訊息的複本。 此訊息將會有一個名為的屬性， `RuleName` 其中的值是相符規則的名稱。 動作可能會新增或更新屬性，或刪除原始訊息中的屬性，以在訂用帳戶上產生訊息。 
+
+考慮下列案例：
+
+- 訂用帳戶有五個規則。
+- 有兩個規則包含動作。
+- 三個規則不包含動作。
+
+在此範例中，如果您傳送一則符合全部五個規則的訊息，則會在訂用帳戶上取得三則訊息。 這是兩個包含動作的訊息，以及三個沒有動作的規則的一則訊息。 
 
 每個新建立的主題訂用帳戶都有最初的預設訂用帳戶規則。 如果您未明確指定規則的篩選條件，套用的篩選是讓所有訊息都能選入訂用帳戶的 **true** 篩選。 預設規則沒有任何關聯的註解動作。
 
+## <a name="filters"></a>篩選器
 服務匯流排支援三個篩選條件：
 
--   布林篩選 - **TrueFilter** 和 **FalseFilter** 能讓您針對訂用帳戶選取所有抵達的訊息 (**true**)，或所有抵達的訊息都不選取 (**false**)。 這兩個篩選準則衍生自 SQL 篩選。 
-
 -   SQL 篩選 - **SqlFilter** 保留類似 SQL 的條件運算式，系統會在訊息代理程式中根據抵達訊息的使用者定義屬性和系統屬性加以評估。 條件運算式中的所有系統屬性都必須加上 `sys.` 前置詞。 [篩選準則的 SQL 語言子集](service-bus-messaging-sql-filter.md)會測試是否存在屬性 (`EXISTS`) 、null 值 (`IS NULL`) 、邏輯 NOT/AND/OR、關係運算子、簡單數值算術和簡單的文字模式比對 `LIKE` 。
+
+-   布林篩選 - **TrueFilter** 和 **FalseFilter** 能讓您針對訂用帳戶選取所有抵達的訊息 (**true**)，或所有抵達的訊息都不選取 (**false**)。 這兩個篩選準則衍生自 SQL 篩選。 
 
 -   相互關聯篩選 - **CorrelationFilter** 能保留一組條件，比對抵達訊息中一或多個使用者或系統屬性。 常見用法是針對 **CorrelationId** 屬性進行比對，但應用程式也可以選擇符合下列屬性：
 
@@ -53,74 +66,8 @@ ms.locfileid: "94889026"
 
 路由能透過可預測但不一定排斥的方式，使用篩選將訊息散發到主體訂用帳戶。 搭配[自動轉送](service-bus-auto-forwarding.md)功能，主題篩選能用來在服務匯流排命名空間內建立複雜的路由圖表，於 Azure 區域中散發訊息。 有了 Azure Functions 或 Azure Logic Apps 作為 Azure 服務匯流排命名空間之間的橋樑，您可以透過與企業營運應用程式的直接整合建立複雜的全域拓撲。
 
-## <a name="examples"></a>範例
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
 
-### <a name="set-rule-action-for-a-sql-filter"></a>設定 SQL 篩選準則的規則動作
-
-```csharp
-// instantiate the ManagementClient
-this.mgmtClient = new ManagementClient(connectionString);
-
-// create the SQL filter
-var sqlFilter = new SqlFilter("source = @stringParam");
-
-// assign value for the parameter
-sqlFilter.Parameters.Add("@stringParam", "orders");
-
-// instantiate the Rule = Filter + Action
-var filterActionRule = new RuleDescription
-{
-    Name = "filterActionRule",
-    Filter = sqlFilter,
-    Action = new SqlRuleAction("SET source='routedOrders'")
-};
-
-// create the rule on Service Bus
-await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
-```
-
-### <a name="sql-filter-on-a-system-property"></a>系統屬性上的 SQL 篩選
-
-```csharp
-sys.Label LIKE '%bus%'`
-```
-
-### <a name="using-or"></a>使用或 
-
-```csharp
-sys.Label LIKE '%bus%' OR user.tag IN ('queue', 'topic', 'subscription')
-```
-
-### <a name="using-in-and-not-in"></a>使用 IN 和 NOT IN
-
-```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
-
-sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
-
-sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
-```
-
-如需使用這些篩選器的 c # 範例，請參閱 [GitHub 上的主題篩選範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)。
-
-### <a name="correlation-filter-using-correlationid"></a>使用 CorrelationID 的相互關聯篩選
-
-```csharp
-new CorrelationFilter("Contoso");
-```
-
-它會篩選 `CorrelationID` 設定為的訊息 `Contoso` 。 
-
-### <a name="correlation-filter-using-system-and-user-properties"></a>使用系統和使用者屬性的相互關聯篩選
-
-```csharp
-var filter = new CorrelationFilter();
-filter.Label = "Important";
-filter.ReplyTo = "johndoe@contoso.com";
-filter.Properties["color"] = "Red";
-```
-
-這相當於： `sys.ReplyTo = 'johndoe@contoso.com' AND sys.Label = 'Important' AND color = 'Red'`
 
 
 > [!NOTE]

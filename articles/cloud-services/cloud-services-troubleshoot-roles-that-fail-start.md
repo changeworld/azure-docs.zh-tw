@@ -1,27 +1,25 @@
 ---
 title: 針對無法啟動的角色進行疑難排解 | Microsoft Docs
 description: 以下是雲端服務角色無法啟動的一些常見原因。 此外也提供這些問題的解決方案。
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: bedf4dd2a955a8ffe648b47c1691e77ac1fdb8f5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2453fa2d9b4e78b60d4922e09347799266a84cff
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187794"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743214"
 ---
-# <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>對無法啟動的雲端服務角色進行疑難排解
+# <a name="troubleshoot-azure-cloud-service-classic-roles-that-fail-to-start"></a>針對無法啟動的 Azure 雲端服務 (傳統) 角色進行疑難排解
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 以下是與無法啟動的 Azure 雲端服務角色相關的一些常見問題和解決方案。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -69,7 +67,7 @@ ms.locfileid: "96187794"
 7. 輸入 `IPconfig`。
 8. 記下 IPV4 位址值。
 9. 開啟 Internet Explorer。
-10. 輸入 Web 應用程式的位址和名稱。 例如 `http://<IPV4 Address>/default.aspx`。
+10. 輸入 Web 應用程式的位址和名稱。 例如： `http://<IPV4 Address>/default.aspx` 。
 
 瀏覽至網站現在會傳回更明確的錯誤訊息：
 

@@ -2,23 +2,23 @@
 title: 查看和指派系統管理員角色許可權-Azure AD |Microsoft Docs
 description: 您現在可以查看和管理入口網站中的 Azure AD 系統管理員角色成員。 針對經常管理角色指派的人員。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9330c6d34dcf5a799d65ebba176565ff031cb956
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 26217930b79b958ae86d976d06a28ba4a4852ab6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376777"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742007"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中檢視和指派系統管理員角色
 
@@ -26,7 +26,7 @@ ms.locfileid: "93376777"
 
 ## <a name="view-all-roles"></a>檢視所有角色
 
-1. 登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 [ **Azure Active Directory** ]。
+1. 登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 [ **Azure Active Directory**]。
 
 1. 選取 [ **角色和系統管理員** ]，以查看所有可用角色的清單。
 
@@ -59,13 +59,13 @@ ms.locfileid: "93376777"
 
 ## <a name="download-role-assignments"></a>下載角色指派
 
-若要下載特定角色的所有指派，請在 [ **角色和系統管理員** ] 頁面上，選取角色，然後選取 [ **下載角色指派** ]。 會下載 CSV 檔案，其中列出該角色所有範圍的指派。
+若要下載特定角色的所有指派，請在 [ **角色和系統管理員** ] 頁面上，選取角色，然後選取 [ **下載角色指派**]。 會下載 CSV 檔案，其中列出該角色所有範圍的指派。
 
 ![下載角色的所有指派](./media/manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>指派角色
 
-1. 以全域管理員或特殊許可權角色管理員許可權登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 **Azure Active Directory** 。
+1. 以全域管理員或特殊許可權角色管理員許可權登入 [Azure 入口網站](https://portal.azure.com) ，然後選取 **Azure Active Directory**。
 
 1. 選取 [ **角色和系統管理員** ]，以查看所有可用角色的清單。
 

@@ -3,12 +3,12 @@ title: Azure Batch 在雲端中執行大規模平行作業
 description: 了解如何將 Azure Batch 服務用於大規模的平行工作負載和 HPC 工作負載
 ms.topic: overview
 ms.date: 07/30/2020
-ms.openlocfilehash: 93dcf19b3b6af0f369fe19b7823bf43d597a9c21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
-ms.translationtype: HT
+ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106643"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743095"
 ---
 # <a name="what-is-azure-batch"></a>什麼是 Azure Batch？
 
@@ -74,6 +74,9 @@ Batch 的一個常見案例涉及在一組計算節點上相應放大本質平�
 請記住，上述工作流程只是 Batch 的其中一種使用方式，還有許多其他功能和選項可供使用。 例如，您可以在每個計算節點上[平行執行多項工作](batch-parallel-node-tasks.md)。 或者，您也可以使用[作業的準備與完成工作](batch-job-prep-release.md)為您的作業準備節點，並在之後加以清除。
 
 如需集區、節點、作業和工作等功能的概觀，請參閱 [Batch 服務工作流程和資源](batch-service-workflow-features.md)。 另請參閱最新的 [Batch 服務更新](https://azure.microsoft.com/updates/?product=batch)。
+
+## <a name="in-region-data-residency"></a>區域內資料落地
+Azure Batch 不會在其部署所在的區域中移動或儲存客戶資料。 
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,26 +1,25 @@
 ---
-title: Azure 雲端服務 .Def WorkerRole 架構 |Microsoft Docs
+title: Azure 雲端服務 (傳統) WorkerRole 架構 |Microsoft Docs
 description: Azure 背景工作角色可用於一般化開發，並且可以執行 web 角色的背景處理。 瞭解 Azure 背景工作角色架構。
-services: cloud-services
-ms.custom: ''
-ms.date: 04/14/2015
-ms.reviewer: ''
+ms.topic: article
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
-ms.topic: reference
-ms.assetid: 41cd46bc-c479-43fa-96e5-d6c83e4e6d89
-caps.latest.revision: 55
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 26225442c72fb209bb1ac4cd2bf4777fb39542fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 0871527187a3d678cb2b94bd8dc342cf2abde1ba
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005158"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743129"
 ---
-# <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure 雲端服務定義 WorkerRole 結構描述
+# <a name="azure-cloud-services-classic-definition-workerrole-schema"></a>Azure 雲端服務 (傳統) 定義 WorkerRole 架構
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色執行背景處理。
 
 服務定義檔的預設副檔名為 .csdef。

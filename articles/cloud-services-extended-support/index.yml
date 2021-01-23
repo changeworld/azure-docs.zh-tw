@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Azure 雲端服務 (延伸支援) 檔
+summary: 了解如何使用雲端服務來裝載及執行高度可用且可調整的雲端應用程式和 API。 示範如何管理虛擬機器主機，以及設定、修補和安裝軟體。
+metadata:
+  title: Azure 雲端服務 (延伸支援) 檔
+  description: 說明如何使用雲端服務來裝載及執行高度可用且可調整的雲端應用程式和 API。
+  ms.service: cloud-services-extended-support
+  service: cloud-services-extended-support
+  ms.topic: landing-page
+  author: mimckitt
+  ms.author: mimckitt
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 8f999851c1566b2a488daa4bdc5da73761f7ce0b
+  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+  ms.translationtype: MT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98745237"
+landingContent:
+- title: '關於雲端服務 (延伸支援) '
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什麼是雲端服務 (延伸支援) ？
+      url: overview.md
+    - text: 部署的必要條件
+      url: deploy-prerequisite.md
+    - text: 設定檔和封裝
+      url: cloud-services-model-and-package.md
+- title: 教學課程
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 使用 PowerShell 進行部署
+      url: deploy-powershell.md
+    - text: 使用 Azure 入口網站部署
+      url: deploy-portal.md
+    - text: 使用 ARM 範本部署
+      url: deploy-template.md
+    - text: 使用 Visual Studio 進行部署
+      url: deploy-visual-studio.md
+- title: 概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 可用大小
+      url: available-sizes.md
+    - text: 常見問題集
+      url: faq.md
+- title: 使用說明指南
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 延伸模組
+      url: extensions.md
+    - text: 啟用警示
+      url: enable-alerts.md
+    - text: 設定調整
+      url: configure-scaling.md
+    - text: 憑證
+      url: certificates-and-key-vault.md
+- title: 範例
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: 建立雲端服務部署
+      url: sample-create-cloud-service.md
+    - text: 取得雲端服務部署的相關資訊
+      url: sample-get-cloud-service.md
+    - text: 更新雲端服務部署
+      url: sample-update-cloud-service.md
+    - text: 重設雲端服務部署
+      url: sample-reset-cloud-service.md
+- title: 架構資訊
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Config 架構
+      url: schema-cscfg-file.md
+    - text: 定義架構
+      url: schema-csdef-file.md
+    - text: Config 角色架構
+      url: schema-cscfg-role.md

@@ -2,23 +2,23 @@
 title: 針對指派給雲端群組的角色進行疑難排解常見問題-Azure Active Directory |Microsoft Docs
 description: 瞭解在 Azure Active Directory 中將角色指派給群組的一些常見問題和疑難排解秘訣。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 0ff906654dc91c7b1980292efd2a737503e684e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861930"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742908"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>對指派給雲端群組的角色進行疑難排解
 
@@ -61,7 +61,7 @@ Microsoft Teams 服務管理員 | 目錄擁有者  | &nbsp; | ✔️  | &nbsp;  
 SharePoint 管理員 | 目錄擁有者 | &nbsp; | ✔️  | &nbsp;  | ✔️ 
 應用程式管理員 | 目錄擁有者  | &nbsp;  | &nbsp; | ✔️  | &nbsp;
 雲端應用程式系統管理員 | 目錄擁有者  | &nbsp;  | &nbsp; | ✔️  | &nbsp;
-User | 目錄擁有者 | 只有當群組擁有者 | 只有當群組擁有者 | 只有在應用程式擁有者  | &nbsp;
+使用者 | 目錄擁有者 | 只有當群組擁有者 | 只有當群組擁有者 | 只有在應用程式擁有者  | &nbsp;
 
 \*群組不是角色可指派;也就是說，isAssignableToRole = false。 如果群組可指派角色，則建立存取套件的人員也必須是角色可指派群組的擁有者。
 

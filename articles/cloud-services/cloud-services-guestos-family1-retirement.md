@@ -9,14 +9,15 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f6d3feee95d4cce654b2cc1547b8bd7f4eb45d2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073388"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743010"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>客體作業系統系列 1 淘汰通知
+
 我們早在 2013 年 6 月 1 日宣佈客體作業系統系列 1 的淘汰資訊。
 
 **2014 年 9 月 2 日** 以 Windows Server 2008 作業系統為基礎的 Azure 客體作業系統 (客體 OS) 系列 1.x 已正式淘汰。 所有使用系列 1 部署新服務或升級現有服務的嘗試均會失敗並且會出現錯誤訊息，通知您客體作業系統系列 1 已遭到淘汰。

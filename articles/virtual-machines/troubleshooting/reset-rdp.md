@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 2f242de3bfa6a2bc95dc46b4ca5c10222b755a2f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 720d25079e1350315c9f403a8215f650db49ceb7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200918"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743078"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>在 Windows VM 中重設遠端桌面服務或其系統管理員密碼
 如果您無法連線到 Windows 虛擬機器 (VM)，您可以重設本機系統管理員密碼，或重設遠端桌面服務設定 (Windows 網域控制站上不支援)。 若要重設密碼，請使用 Azure 入口網站或 Azure PowerShell 中的 VM 存取延伸模組。 當您登入 VM 之後，請重設該本機系統管理員的密碼。  
@@ -90,10 +90,14 @@ ms.locfileid: "98200918"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如果 Azure VM 存取延伸模組沒有回應，而且您無法重設密碼，則可[離線重設本機 Windows 密碼](reset-local-password-without-agent.md)。 此為更進階的方法，會要求您將有問題之 VM 中的虛擬硬碟連線至另一個 VM。 請先依照本文中說明的步驟進行，只有在這些步驟不可行時才嘗試離線密碼重設方法。
+
+- 如果 Azure VM 存取延伸模組無法安裝，您可以針對 [VM 擴充功能問題進行疑難排解](../extensions/troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+
+- 如果您無法使用 VM 存取延伸模組來重設密碼，則可以 [離線重設本機 Windows 密碼](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 此為更進階的方法，會要求您將有問題之 VM 中的虛擬硬碟連線至另一個 VM。 請先依照本文中說明的步驟進行，只有在這些步驟不可行時才嘗試離線密碼重設方法。
 
 - [瞭解 AZURE VM 擴充功能和功能](../extensions/features-windows.md)。
 
 - [使用 RDP 或 SSH 連接到 Azure 虛擬機器](/previous-versions/azure/dn535788(v=azure.100))。
 
-- [針對以 Windows 為基礎的 Azure 虛擬機器的遠端桌面連線進行疑難排解](troubleshoot-rdp-connection.md)。
+
+- [針對以 Windows 為基礎的 Azure 虛擬機器的遠端桌面連線進行疑難排解](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

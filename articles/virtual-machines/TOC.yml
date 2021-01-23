@@ -903,16 +903,14 @@
               href: ./workloads/redhat/redhat-rhui.md
 - name: 映像
   items:
-    - name: Marketplace 映像
+    - name: 尋找 Azure Marketplace 映射
       items:
-        - name: 尋找 Azure Marketplace 映射
-          items:
-            - name: CLI
-              href: ./linux/cli-ps-findimage.md
-            - name: PowerShell
-              href: ./windows/cli-ps-findimage.md
-            - name: Windows 用戶端映射
-              href: ./windows/client-images.md
+        - name: CLI
+          href: ./linux/cli-ps-findimage.md
+        - name: PowerShell
+          href: ./windows/cli-ps-findimage.md
+        - name: Windows 用戶端映射
+          href: ./windows/client-images.md
     - name: Linux 自訂映射
       items:
         - name: 概觀
@@ -1058,6 +1056,8 @@
           href: image-version-encryption.md
         - name: 來自映像版本的受控磁碟
           href: managed-disk-from-image-version.md
+        - name: 購買方案資訊
+          href: marketplace-images.md
     - name: 映像產生器 (預覽)
       items:
         - name: 概觀
@@ -1105,8 +1105,6 @@
           href: ./linux/image-builder-user-assigned-identity.md
         - name: 疑難排解
           href: ./linux/image-builder-troubleshoot.md
-    - name: 購買方案資訊
-      href: marketplace-images.md
     - name: 使用 Packer 建置映像
       items:
         - name: Linux

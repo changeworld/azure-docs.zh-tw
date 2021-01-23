@@ -1,21 +1,24 @@
 ---
-title: 如何設定雲端服務 (入口網站) | Microsoft Docs
+title: 如何設定雲端服務 (傳統) -入口網站 |Microsoft Docs
 description: 了解如何在 Azure 中設定雲端服務。 了解更新雲端服務組態和設定角色執行個體的遠端存取。 這些範例使用 Azure 入口網站。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/07/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 4f2b5716e253f2810ff953a10c879574c6a6c342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f16fcfe227663958279281659b09929a4cd2d386
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576654"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743418"
 ---
-# <a name="how-to-configure-cloud-services"></a>如何設定雲端服務
+# <a name="how-to-configure-and-azure-cloud-service-classic"></a>如何設定 Azure 雲端服務 (傳統) 
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 您可以在 Azure 入口網站中設定雲端服務的最常用設定。 或者，如果您想要直接更新組態檔，可以下載要更新的服務組態檔、上傳更新過的檔案，然後將雲端服務更新為使用這些組態變更。 使用上述任一種方式，都會將組態更新推送到所有角色執行個體。
 
@@ -29,7 +32,7 @@ ms.locfileid: "91576654"
 
 ![設定頁面](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-[設定]**** 或 [所有設定]**** 連結將開啟 [設定]****，讓您可以變更**屬性**、變更**設定**、管理**憑證**、設定**警示規則**，以及管理可存取此雲端服務的**使用者**。
+[設定] 或 [所有設定] 連結將開啟 [設定]，讓您可以變更 **屬性**、變更 **設定**、管理 **憑證**、設定 **警示規則**，以及管理可存取此雲端服務的 **使用者**。
 
 ![Azure 雲端服務設定](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
@@ -37,7 +40,7 @@ ms.locfileid: "91576654"
 
 根據預設，Azure 會將客體作業系統定期更新為您在服務組態 (.cscfg) 中指定的作業系統系列內最新支援的映像，例如 Windows Server 2016。
 
-如果您需要將目標設為特定的作業系統版本，可以在 [設定]**** 中進行設定。
+如果您需要將目標設為特定的作業系統版本，可以在 [設定] 中進行設定。
 
 ![設定作業系統版本](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
 
@@ -50,7 +53,7 @@ ms.locfileid: "91576654"
 
 ![醒目提示 [警示規則] 選項的 [設定] 的螢幕擷取畫面，其中反白顯示並以紅色標示，並以紅色顯示 [新增警示] 選項。](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
-您可以從這裡設定警示。 您可以使用 [計量]**** 下拉式方塊，以設定下列資料類型的警示。
+您可以從這裡設定警示。 您可以使用 [計量] 下拉式方塊，以設定下列資料類型的警示。
 
 * 磁碟讀取
 * 磁碟寫入
@@ -62,7 +65,7 @@ ms.locfileid: "91576654"
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>從計量圖格設定監視
 
-**Settings**  >  您可以在雲端服務的 [**監視**] 區段中，按一下其中一個計量圖格，而不是使用設定**警示規則**。
+  >  您可以在雲端服務的 [**監視**] 區段中，按一下其中一個計量圖格，而不是使用設定 **警示規則**。
 
 ![雲端服務監視](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
@@ -84,7 +87,7 @@ ms.locfileid: "91576654"
 
 您可能需要透過[服務組態 (cscfg)](cloud-services-model-and-package.md#cscfg) 檔案來重新設定雲端服務。 首先，您需要下載 .cscfg 檔案，進行修改，然後上傳。
 
-1. 按一下 [設定]**** 圖示或 [所有設定]**** 連結，以開啟 [設定]****。
+1. 按一下 [設定] 圖示或 [所有設定] 連結，以開啟 [設定]。
 
     ![設定頁面](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 2. 按一下 [ **組態** ] 項目。

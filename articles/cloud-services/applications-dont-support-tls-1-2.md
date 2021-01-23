@@ -12,14 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 70bcf5bce1c8c07633baf070149a9bb80c331d9c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075666"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742568"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>針對不支援 TLS 1.2 的應用程式進行疑難排解
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 本文說明如何啟用舊版 TLS 通訊協定 (TLS 1.0 和 1.1)，以及套用舊版加密套件，以支援 Windows Server 2019 雲端服務 Web 和背景工作角色上的其他通訊協定。 
 
 我們了解雖然我們正在採取步驟來取代 TLS 1.0 和 TLS 1.1，但是我們的客戶可能需要支援舊版通訊協定和加密套件，直到他們可以規劃其淘汰為止。  雖然我們不建議重新啟用這些舊版值，但是我們會提供指引來協助客戶。 我們鼓勵客戶在實作本文中所述的變更之前，先評估迴歸的風險。 

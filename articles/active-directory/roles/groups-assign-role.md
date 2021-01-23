@@ -2,23 +2,23 @@
 title: 在 Azure Active Directory 中將角色指派給雲端群組 |Microsoft Docs
 description: 將 Azure AD 角色指派給 Azure 入口網站、PowerShell 或圖形 API 中角色可指派的群組。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb81b5dc98bf75a17e55abafdebfbeca68774a99
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379140"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742942"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>在 Azure Active Directory 中將角色指派給雲端群組
 
@@ -30,9 +30,9 @@ ms.locfileid: "93379140"
 
 1. 使用 Azure AD 組織的特殊權限角色管理員或全域系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) 。
 
-1. 選取 **Azure Active Directory**  >  **角色和系統管理員** ，然後選取您想要指派的角色。
+1. 選取 **Azure Active Directory**  >  **角色和系統管理員**，然後選取您想要指派的角色。
 
-1. 在 [ **_角色名稱_*_] 頁面上，選取 [> _* 新增指派** ]。
+1. 在 [ **_角色名稱_*_] 頁面上，選取 [> _* 新增指派**]。
 
    ![新增角色指派](./media/groups-assign-role/add-assignment.png)
 

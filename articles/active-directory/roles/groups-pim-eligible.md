@@ -2,23 +2,23 @@
 title: 使用 Azure AD 中的 Privileged Identity Management 將角色指派給群組 |Microsoft Docs
 description: 瞭解如何使用 Azure AD Privileged Identity Management (PIM) ，將 Azure Active Directory (Azure AD) 角色指派給群組。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74ad503374e0148e9813508b6c7f8b21e2dca7a3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 10f179ab1bf328a2132c9206580dfa58efb80f1b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379157"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741916"
 ---
 # <a name="assign-a-role-to-a-group-using-privileged-identity-management"></a>使用 Privileged Identity Management 將角色指派給群組
 
@@ -37,7 +37,7 @@ ms.locfileid: "93379157"
 
     ![顯示 [新增指派] 頁面的螢幕擷取畫面，其中已醒目提示 [選取角色] 和 [Select member (s) ] 區段。](./media/groups-pim-eligible/select-member.png)
 
-1. 選取所需的成員資格設定。 若為需要啟用的角色，請選擇 [ **符合資格** ]。 依預設，使用者會永久符合資格，但您也可以設定使用者資格的開始和結束時間。 完成之後，請按 [儲存並加入] 以完成角色指派。
+1. 選取所需的成員資格設定。 若為需要啟用的角色，請選擇 [ **符合資格**]。 依預設，使用者會永久符合資格，但您也可以設定使用者資格的開始和結束時間。 完成之後，請按 [儲存並加入] 以完成角色指派。
 
     ![選取您要為其指派角色的使用者](./media/groups-pim-eligible/set-assignment-settings.png)
 

@@ -1,24 +1,25 @@
 ---
-title: 在 Azure 雲端服務角色上安裝 .NET | Microsoft Docs
+title: 在 Azure 雲端服務 (傳統) 角色上安裝 .NET |Microsoft Docs
 description: 本文說明如何在雲端服務 Web 和背景工作角色上手動安裝 .NET Framework
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-dotnet
 ms.topic: article
-ms.date: 06/22/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6de4b79560557fc86edb9e1a25e32a6a1983ceb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 18665fabad079a8759f26be8834b2fe029ab5f49
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932231"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742772"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>在 Azure 雲端服務角色上安裝 .NET
+# <a name="install-net-on-azure-cloud-services-classic-roles"></a>在 Azure 雲端服務 (傳統) 角色上安裝 .NET
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 本文說明如何安裝未隨附於 Azure 客體 OS 的 .NET Framework 版本。 若要設定雲端服務 web 和背景工作角色，您可以在客體 OS 上使用 .NET。
 
 例如，您可以在來賓 OS 系列4上安裝 .NET Framework 4.6.2，而不會隨附任何 .NET Framework 4.6 版本。  (來賓 OS 系列5隨附 .NET Framework 4.6 ) 。如需 Azure 虛擬作業系統版本的最新資訊，請參閱 Azure 虛擬作業系統 [版本新聞](cloud-services-guestos-update-matrix.md)。 
@@ -35,12 +36,12 @@ ms.locfileid: "88932231"
 * [.NET Framework 4.7.2 web 安裝程式](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET Framework 4.6.2 web 安裝程式](https://www.microsoft.com/download/details.aspx?id=53345)
 
-若要新增 web** 角色的安裝程式：
-  1. 在 [方案總管]**** 中，於雲端服務專案中的 [角色]**** 下，以滑鼠右鍵按一下您的 web** 角色，然後依序選取 [新增]**** > [新增資料夾]****。 建立名為 **bin**的資料夾。
+若要新增 web 角色的安裝程式：
+  1. 在 [方案總管] 中，於雲端服務專案中的 [角色] 下，以滑鼠右鍵按一下您的 web角色，然後依序選取 [新增] > [新增資料夾]。 建立名為 **bin** 的資料夾。
   2. 以滑鼠右鍵按一下 [bin] 資料夾，然後選取 [**加入**  >  **現有專案**]。 選取 .NET 安裝程式，並將它加入至 bin 資料夾。
   
-若要新增 worker** 角色的安裝程式：
-* 以滑鼠右鍵按一下您的 worker** 角色，然後依序選取 [新增]**** > [現有項目]****。 選取 .NET 安裝程式，並將它加入至角色。 
+若要新增 worker 角色的安裝程式：
+* 以滑鼠右鍵按一下您的 worker 角色，然後依序選取 [新增] > [現有項目]。 選取 .NET 安裝程式，並將它加入至角色。 
 
 以這個方式將檔案新增至角色內容資料夾時，檔案就會自動新增至雲端服務套件。 然後檔案就會部署到虛擬機器上的一致位置。 為雲端服務中的每個 Web 和背景工作角色重複此程序，以便所有角色都有安裝程式副本。
 
@@ -198,7 +199,7 @@ ms.locfileid: "88932231"
    EXIT /B 0
    ```
 
-3. 使用方案總管中的 [**加入**現有專案]，將安裝 .cmd 檔案新增至每個角色，  >  **Existing Item**如本主題稍早所述。 **Solution Explorer** 
+3. 使用方案總管中的 [**加入** 現有專案]，將安裝 .cmd 檔案新增至每個角色，  >  如本主題稍早所述。  
 
     完成此步驟之後，所有角色應該都有 .NET 安裝程式檔案，以及 install.cmd 檔案。
 
@@ -208,7 +209,7 @@ ms.locfileid: "88932231"
 如要簡化針對安裝問題進行疑難排解，您可以設定 Azure 診斷，來將啟動工作指令碼或 .NET 安裝程式所產生的所有記錄檔傳輸到 Azure Blob 儲存體。 您可以使用這種方法，從 Blob 儲存體下載記錄，而無需遠端桌面到角色，即可檢視記錄。
 
 
-若要設定診斷，請開啟 diagnostics.wadcfgx 檔案，並在 [目錄]**** 節點下新增下列內容： 
+若要設定診斷，請開啟 diagnostics.wadcfgx 檔案，並在 [目錄] 節點下新增下列內容： 
 
 ```xml 
 <DataSources>
@@ -218,10 +219,10 @@ ms.locfileid: "88932231"
 </DataSources>
 ```
 
-這個 XML 會將診斷設定為將 NETFXInstall**** 資源下 log 目錄中的檔案，傳輸到 **netfx-install** Blob 容器中的診斷儲存體帳戶。
+這個 XML 會將診斷設定為將 NETFXInstall 資源下 log 目錄中的檔案，傳輸到 **netfx-install** Blob 容器中的診斷儲存體帳戶。
 
 ## <a name="deploy-your-cloud-service"></a>部署您的雲端服務
-部署雲端服務時，啟動工作會安裝 .NET Framework (如果尚未安裝)。 安裝架構時，雲端服務角色會處於忙碌** 狀態。 如果架構安裝需要重新啟動，服務角色可能也會重新啟動。 
+部署雲端服務時，啟動工作會安裝 .NET Framework (如果尚未安裝)。 安裝架構時，雲端服務角色會處於忙碌狀態。 如果架構安裝需要重新啟動，服務角色可能也會重新啟動。 
 
 ## <a name="additional-resources"></a>其他資源
 * [安裝 .NET Framework][Installing the .NET Framework]

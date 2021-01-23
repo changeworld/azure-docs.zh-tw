@@ -1,28 +1,24 @@
 ---
 title: 設定和管理問題常見問題
-titleSuffix: Azure Cloud Services
 description: 本文列出 Microsoft Azure 雲端服務之設定和管理的相關常見問題集。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: genli
-ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011011"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742585"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之設定和管理問題：常見問題集 (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure 雲端服務 (傳統) 的設定和管理問題：常見問題 (常見問題) 
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 本文包含 [Microsoft Azure 雲端服務](https://azure.microsoft.com/services/cloud-services)之設定和管理問題的相關常見問題集。 您也可以參閱 [雲端服務 VM 大小頁面](cloud-services-sizes-specs.md) 以取得大小資訊。
 
@@ -62,7 +58,7 @@ ms.locfileid: "96011011"
 
 **泛型**
 
-- [如何將 "nosniff" 新增至我的網站？](#how-do-i-add-nosniff-to-my-website)
+- [如何? 新增 `nosniff` 至我的網站？](#how-do-i-add-nosniff-to-my-website)
 - [如何自訂 Web 角色的 IIS？](#how-do-i-customize-iis-for-a-web-role)
 - [我的雲端服務配額限制為何？](#what-is-the-quota-limit-for-my-cloud-service)
 - [為什麼我的雲端服務 VM 上的磁片磁碟機會顯示極少的可用磁碟空間？](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
@@ -128,7 +124,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-即將推出可針對您的 csdef 和 cscfg 上傳位置選擇 Blob 或本機的功能。 使用 [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0)，您可以設定每個位置的值。
+即將推出可針對您的 csdef 和 cscfg 上傳位置選擇 Blob 或本機的功能。 使用 [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true)，您可以設定每個位置的值。
 
 監視執行個體層級計量的功能。 [如何監視雲端服務](cloud-services-how-to-monitor.md)中還有更多其他監視功能。
 
@@ -148,7 +144,7 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 2. [透過 .NET 程式碼啟用](./cloud-services-dotnet-diagnostics.md)
 3. [透過 PowerShell 啟用](./cloud-services-diagnostics-powershell.md)
 
-若要取得雲端服務的目前 WAD 設定，您可以使用 [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) ps cmd 或您可以從入口網站的 [雲端服務] --> [延伸模組] 刀鋒視窗中檢視它。
+若要取得雲端服務目前的 WAD 設定，您可以使用 [AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PowerShell cmd，也可以透過入口網站，從 [雲端服務--> 延伸模組] 分頁中加以查看。
 
 
 ## <a name="network-configuration"></a>網路組態
@@ -233,7 +229,7 @@ Microsoft 會遵循嚴格的程序，不允許內部工程師在沒有擁有者�
 1. 以滑鼠右鍵按一下您下載的 RDP 檔案，然後選取 [編輯]。
 2. 新增 "&#92;" 作為使用者名稱的前置詞。 例如，使用 **.\username** 而不是 **username**。
 
-## <a name="scaling"></a>調整大小
+## <a name="scaling"></a>擴縮
 
 ### <a name="i-cannot-scale-beyond-x-instances"></a>我不能調整超過 X 個執行個體
 您的 Azure 訂用帳戶對於您可以使用的核心數目有限制。 如果您已使用所有可用的核心，調整將無法運作。 例如，如果您有 100 個核心的限制，這表示您的雲端服務可以有 100 個 A1 大小的虛擬機器執行個體，或 50 個 A2 大小的虛擬機器執行個體。
@@ -254,7 +250,7 @@ Microsoft 會遵循嚴格的程序，不允許內部工程師在沒有擁有者�
 
 ## <a name="generic"></a>泛型
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>如何將 "nosniff" 新增至我的網站？
+### <a name="how-do-i-add-nosniff-to-my-website"></a>如何? 新增 `nosniff` 至我的網站？
 若要防止用戶端探查 MIME 類型，請在您的 *web.config* 檔案中加入一項設定。
 
 ```xml
@@ -284,11 +280,11 @@ Microsoft 會遵循嚴格的程序，不允許內部工程師在沒有擁有者�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>為什麼我雲端服務虛擬機器上的磁碟機顯示幾乎沒有可用的磁碟空間？
 這是預期的行為，並不會對您的應用程式造成任何問題。 在 Azure PaaS 虛擬機器中會開啟 %approot% 磁碟機的日誌記錄，基本上會消耗兩倍檔案通常所佔用的空間量。 不過，要留意幾件事，基本上這就會變得沒有問題。
 
-% Approot% 磁片磁碟機大小的計算方式為 \<size of .cspkg + max journal size + a margin of free space> ，或 1.5 GB （以較大者為准）。 您 VM 的大小對這個計算方式並無任何影響。 (VM 大小只會影響暫存 C: 磁碟機的大小。) 
+%approot% 磁碟機大小會以 <.cspkg 的大小 + 最大的日誌大小 + 可用空間的邊界> 來計算，或 1.5 GB，兩者取其較大。 您 VM 的大小對這個計算方式並無任何影響。 (VM 大小只會影響暫存 C: 磁碟機的大小。) 
 
 它不支援寫入 %approot% 磁碟機。 如果您要寫入 Azure VM 中，必須在暫存 LocalStorage 資源中進行 (或其他選項，例如 Blob 儲存體、Azure 檔案等)。 因此在 %approot% 資料夾上的可用空間數量沒有任何意義。 如果您不確定應用程式是否要寫入 %approot% 磁碟機中，一律可以讓您的服務執行幾天，然後比較「之前」和「之後」的大小。 
 
-Azure 不會將任何內容寫入 %approot% 磁碟機。 一旦從 .cspkg 建立 VHD 並將其掛接至 Azure VM 後，唯一可能會寫入此磁碟機的就是您的應用程式。 
+Azure 不會將任何內容寫入 %approot% 磁碟機。 從您的 VHD 建立並掛接 `.cspkg` 到 AZURE VM 之後，唯一可能會寫入此磁片磁碟機的是您的應用程式。 
 
 日誌設定是不可設定的，因此您無法將它關閉。
 
@@ -297,7 +293,7 @@ Azure 不會將任何內容寫入 %approot% 磁碟機。 一旦從 .cspkg 建立
 您可以在「啟動工作」中使用 PowerShell 指令碼來啟用反惡意程式碼擴充功能。 請遵循下列這些文章中的步驟加以實作： 
  
 - [建立 PowerShell 啟動工作](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
 
 如需反惡意程式碼部署情節及如何從入口網站加以啟用的詳細資訊，請參閱[反惡意程式碼部署情節](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)。
 

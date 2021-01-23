@@ -1,20 +1,25 @@
 ---
-title: 在 Azure 雲端服務中執行啟動工作 | Microsoft Docs
+title: 在 Azure 雲端服務 (傳統) 中執行啟動工作 |Microsoft Docs
 description: 啟動工作可協助您為應用程式備妥雲端服務環境。 本文將說明啟動工作的運作方式，以及建立啟動工作的方法
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 25190075bdd13bd4b75dd82c97ee06ee60f4c26c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020699"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743180"
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何設定和執行雲端服務的啟動工作
+# <a name="how-to-configure-and-run-startup-tasks-for-an-azure-cloud-service-classic"></a>如何設定和執行 Azure 雲端服務的啟動工作 (傳統) 
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 您可以利用啟動工作，在角色啟動之前執行作業。 您可能想要執行的作業包括安裝元件、註冊 COM 元件、設定登錄機碼，或啟動長時間執行的處理序。
 
 > [!NOTE]

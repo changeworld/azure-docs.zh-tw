@@ -1,24 +1,24 @@
 ---
-title: 建立 Node.js Express 應用程式並部署到 Azure 雲端服務
-titleSuffix: Azure Cloud Services
+title: '建立 Node.js Express 應用程式，並將其部署至 Azure 雲端服務 (傳統) '
 description: 您可以使用本教學課程來建立新的應用程式，其使用 Express 模組，其提供用來建立 Node.js web 應用程式的 MVC 架構。
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 7ecaccf36988e94d0cb1114bd04c5d571d4fe86d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e15af589b3a3c496738c97c0c2c6429ba708ba7e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071858"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743333"
 ---
-# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>在 Azure 雲端服務上使用 Express 建置和部署 Node.js Web 應用程式
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>在 Azure 雲端服務 (傳統) 上使用 Express 來建立和部署 Node.js web 應用程式
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 Node.js 包含核心執行時期的一組最低功能。
 開發人員在開發 Node.js 應用程式時，通常會使用協力廠商模組來提供更多功能。 在本教學課程中，您將使用 [Express](https://github.com/expressjs/express) 模組來建立新的應用程式，此模組提供用於建立 Node.js Web 應用程式的 MVC 架構。
@@ -32,7 +32,7 @@ Node.js 包含核心執行時期的一組最低功能。
 
 請執行下列步驟來建立名為 'expressapp' 的新雲端服務專案：
 
-1. 從 [開始功能表]**** 或 [開始畫面]**** 搜尋 **Windows PowerShell**。 最後，用滑鼠右鍵按一下 [Windows PowerShell]****，然後選取 [以系統管理員身分執行]****。
+1. 從 [開始功能表] 或 [開始畫面] 搜尋 **Windows PowerShell**。 最後，用滑鼠右鍵按一下 [Windows PowerShell]，然後選取 [以系統管理員身分執行]。
 
     ![Azure PowerShell icon](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 2. 切換至 **c:\\node** 目錄，然後輸入下列命令來建立名為 **expressapp** 的新方案和名為 **WebRole1** 的 Web 角色：

@@ -3,12 +3,12 @@ title: Azure 服務匯流排訂用帳戶規則 SQL 動作語法 |Microsoft Docs
 description: 本文提供 SQL 規則動作語法的參考。 這些動作是以以 SQL 語言為基礎的語法撰寫，以針對訊息執行。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 606281d42d5598d7f73312990d3a19775a202c08
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f7b8cdfcccc22508b98a42391d2a0ef9955232d0
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632806"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742672"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>訂用帳戶規則 SQL 動作語法
 
@@ -53,11 +53,11 @@ ms.locfileid: "98632806"
   
 ## <a name="arguments"></a>引數  
   
--   `<scope>` 是表示 `<property_name>` 範圍的選擇性字串。 有效值為 `sys` 或 `user`。 `sys` 值表示系統範圍，當中 `<property_name>` 為 [BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公用屬性名稱。 `user` 表示使用者範圍，當中 `<property_name>` 為 [BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的索引鍵。 如果 `<scope>` 未指定，則 `user` 範圍是預設範圍。  
+-   `<scope>` 是表示 `<property_name>` 範圍的選擇性字串。 有效值為 `sys` 或 `user`。 `sys` 值表示系統範圍，當中 `<property_name>` 為 [BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)的公用屬性名稱。 `user` 表示使用者範圍，當中 `<property_name>` 為 [BrokeredMessage 類別](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)字典的索引鍵。 `user` 如果未指定，範圍即為預設範圍 `<scope>` 。  
   
 ### <a name="remarks"></a>備註  
 
-嘗試存取不存在的系統屬性時會發生錯誤，而嘗試存取不存在的使用者屬性時不會發生錯誤。 反之，不存在的使用者屬性會內部評估為未知的值。 未知的值在運算子評估期間會特別處理。  
+嘗試存取不存在的系統屬性是一項錯誤，但嘗試存取不存在的使用者屬性不是錯誤。 反之，不存在的使用者屬性會內部評估為未知的值。 未知的值在運算子評估期間會特別處理。  
   
 ## <a name="property_name"></a>property_name  
   
@@ -84,7 +84,7 @@ ms.locfileid: "98632806"
   
  `[:IsDigit:]` 表示分類為十進位數字的任何 Unicode 字元。 如果 `c` 為 Unicode 數字，`System.Char.IsDigit(c)` 會傳回 `true`。  
   
- `<regular_identifier>` 不能是保留的關鍵字。  
+ `<regular_identifier>`不可以是保留關鍵字。  
   
  `<delimited_identifier>` 是使用左/右方括弧 ([]) 括住的任何字串。 右方括弧會以兩個右方括弧代表。 以下為 `<delimited_identifier>`的範例：  
   
@@ -94,7 +94,7 @@ ms.locfileid: "98632806"
   
 ```  
   
- `<quoted_identifier>` 是以雙引號括住的任何字串。 識別項中的雙引號會以兩個雙引號表示。 不建議使用引號識別項，因為它容易與字串常數造成混淆。 盡可能使用分隔的識別碼。 以下是 `<quoted_identifier>` 的範例：  
+ `<quoted_identifier>` 是以雙引號括住的任何字串。 識別項中的雙引號會以兩個雙引號表示。 不建議使用引號識別碼，因為它很容易與字串常數混淆。 盡可能使用分隔的識別碼。 以下是 `<quoted_identifier>` 的範例：  
   
 ```  
 "Contoso & Northwind"  
@@ -137,7 +137,7 @@ ms.locfileid: "98632806"
   
 ### <a name="arguments"></a>引數  
   
--   `<integer_constant>` 是數字的字串，不會以引號括住且不包含小數點。 值會在內部儲存為 `System.Int64`，並遵循相同的範圍。  
+-   `<integer_constant>` 是數位的字串，不會以引號括住，且不含小數點。 值會在內部儲存為 `System.Int64`，並遵循相同的範圍。  
   
      以下為長常數的範例：  
   
@@ -146,9 +146,9 @@ ms.locfileid: "98632806"
     2  
     ```  
   
--   `<decimal_constant>` 是數字的字串，不會以引號括住，且包含小數點。 值會在內部儲存為 `System.Double`，並遵循相同的範圍/精確度。  
+-   `<decimal_constant>` 是數位的字串，不會以引號括住，且包含小數點。 值會在內部儲存為 `System.Double`，並遵循相同的範圍/精確度。  
   
-     在未來版本中，這個數字可能會以不同的資料類型儲存，以支援實際數字的語意，因此您不應依賴 `<decimal_constant>` 的基本資料型別是 `System.Double`。  
+     在未來的版本中，這個數位可能會儲存在不同的資料類型，以支援精確的數位語義，因此您不應該依賴基礎資料類型的 `System.Double` 事實 `<decimal_constant>` 。  
   
      以下是十進位常數的範例：  
   
@@ -195,9 +195,11 @@ ms.locfileid: "98632806"
   
 ### <a name="remarks"></a>備註  
 
-`newid()` 函式會傳回由 `System.Guid.NewGuid()` 方法所產生的 **System.Guid**。  
+函數會傳回 `newid()` `System.Guid` 方法所產生的 `System.Guid.NewGuid()` 。  
   
 `property(name)` 函式會傳回 `name`所參考的屬性值 。 `name` 可以是任何會傳回字串值的有效運算式。  
+
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
   
 ## <a name="considerations"></a>考量
 
@@ -205,14 +207,14 @@ ms.locfileid: "98632806"
 - REMOVE 是用來移除屬性。
 - 當運算式類型和現有的屬性型別不同時，SET 會盡可能執行隱含轉換。
 - 如果參考不存在的系統屬性，動作就會失敗。
-- 如果參考不存在的使用者屬性，動作就不會失敗。
+- 如果參考不存在的使用者屬性，動作不會失敗。
 - 不存在的使用者屬性會內部評估為「不明」，評估運算子時遵循與 [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) 相同的語意。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [SQLRuleAction 類別 ( .NET Framework) ](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 - [SQLRuleAction 類別 ( .NET Standard) ](/dotnet/api/microsoft.azure.servicebus.sqlruleaction)
 - [ (JAVA) 的 SqlRuleAction 類別 ](/java/api/com.microsoft.azure.servicebus.rules.sqlruleaction)
 - [SqlRuleAction (JavaScript) ](/javascript/api/@azure/service-bus/sqlruleaction)
-- [az 進行的主題訂用帳戶規則](/cli/azure/servicebus/topic/subscription/rule)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
 - [新 AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

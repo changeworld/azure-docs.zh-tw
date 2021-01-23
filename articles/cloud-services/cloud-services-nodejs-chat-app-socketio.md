@@ -1,31 +1,32 @@
 ---
 title: 使用 Socket.io 的 Node.js 應用程式 - Azure
 description: 使用本教學課程來瞭解如何裝載通訊端。Azure 上以 IO 為基礎的聊天應用程式。 Socket.IO 提供 node.js 伺服器和用戶端的即時通訊。
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: ef7325b53f7d6450acdff4664f3e338c31be9612
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077213"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743316"
 ---
-# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>在 Azure 雲端服務上使用 Socket.IO 建立 Node.js 交談應用程式
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>使用 Socket.IO 在 Azure 雲端服務 (傳統) 上建立 Node.js 的聊天應用程式
 
-Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學課程引導您將 socket.IO 型交談應用程式裝載於 Azure 上。 如需 Socket.IO 的詳細資訊，請參閱 [socket.io](https://socket.io)。
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
+Socket.IO 提供 node.js 伺服器與用戶端之間的即時通訊。 本教學課程引導您將 socket.IO 型交談應用程式裝載於 Azure 上。 如需 Socket.IO 的詳細資訊，請參閱 [socket.io](https://socket.io)。
 
 完成之應用程式的螢幕擷取畫面如下：
 
 ![A browser window displaying the service hosted on Azure][completed-app]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 請確定已安裝下列產品及版本，以順利完成本文中的範例：
 
 * 安裝 [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
@@ -35,7 +36,7 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
 ## <a name="create-a-cloud-service-project"></a>建立雲端服務專案
 下列步驟會建立雲端服務專案來裝載 Socket.IO 應用程式。
 
-1. 從 [開始功能表]**** 或 [開始畫面]**** 搜尋 **Windows PowerShell**。 最後，用滑鼠右鍵按一下 [Windows PowerShell]****，然後選取 [以系統管理員身分執行]****。
+1. 從 [開始功能表] 或 [開始畫面] 搜尋 **Windows PowerShell**。 最後，用滑鼠右鍵按一下 [Windows PowerShell]，然後選取 [以系統管理員身分執行]。
 
     ![Azure PowerShell icon][powershell-menu]
 2. 建立名為 **c:\\node** 的目錄。
@@ -50,7 +51,7 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
     PS C:\> cd node
     ```
 
-4. 然後輸入下列命令來建立名為 **chatapp** 的新方案和名為 **WorkerRole1** 的背景工作角色：
+4. 輸入下列命令來建立名為的新方案 `chatapp` 和名為的背景工作角色 `WorkerRole1` ：
 
     ```powershell
     PS C:\node> New-AzureServiceProject chatapp
@@ -64,7 +65,7 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
 ## <a name="download-the-chat-example"></a>下載交談範例
 在此專案中，我們使用 [Socket.IO GitHub 儲存機制]中的交談範例。 請執行下列步驟來下載範例，並將它加入至您先前建立的專案。
 
-1. 使用 [Clone] **** 按鈕來建立儲存機制的本機複本。 您也可以使用 [ZIP] **** 按鈕來下載專案。
+1. 使用 [Clone]  按鈕來建立儲存機制的本機複本。 您也可以使用 [ZIP]  按鈕來下載專案。
 
    ![檢視 https://github.com/LearnBoost/socket.io/tree/master/examples/chat 的瀏覽器視窗，且 ZIP 下載圖示反白顯示](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
 2. 瀏覽本機儲存機制的目錄結構，直到找到 **examples\\chat** 目錄為止。 將此目錄的內容複製到稍早建立的 **C:\\node\\chatapp\\WorkerRole1** 目錄。
@@ -92,14 +93,14 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
 3. 為了確保應用程式在正確的連接埠上接聽，請在 [記事本] 或您喜歡的編輯器中開啟 server.js，然後變更下列這一行，將 **3000** 改為 **process.env.port**，如下所示：
 
     ```js
-    //app.listen(3000, function () {            //Original
+    //app.listen(3000, function () {            //Original
     app.listen(process.env.port, function () {  //Updated
       var addr = app.address();
       console.log('   app listening on http://' + addr.address + ':' + addr.port);
     });
     ```
 
-儲存 **server.js**的變更之後，請使用下列步驟來安裝必要的模組，然後在 Azure 模擬器中測試應用程式：
+儲存 **server.js** 的變更之後，請使用下列步驟來安裝必要的模組，然後在 Azure 模擬器中測試應用程式：
 
 1. 使用 **Azure PowerShell**，切換至 **C:\\node\\chatapp\\WorkerRole1** 目錄，再使用下列命令來安裝此應用程式所需的模組：
 
@@ -139,7 +140,7 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. 若要將應用程式部署至 Azure，請使用 **Publish-AzureServiceProject** Cmdlet。 例如︰
+5. 若要將應用程式部署至 Azure，請使用 **Publish-AzureServiceProject** Cmdlet。 例如：
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217833"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743112"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虛擬桌面使用 Microsoft 小組
 
@@ -25,7 +25,7 @@ Windows 虛擬桌面的 Microsoft 小組支援聊天與協同作業。 使用媒
 
 使用 Microsoft 團隊的媒體優化，Windows 桌面用戶端會在本機處理適用于小組通話和會議的音訊和影片。 您仍然可以搭配其他用戶端使用 Windows 虛擬桌面的 Microsoft 小組，而不需要優化通話和會議。 所有平臺都支援小組聊天和共同作業功能。 若要重新導向遠端會話中的本機裝置，請參閱 [自訂主機集區的遠端桌面通訊協定屬性](#customize-remote-desktop-protocol-properties-for-a-host-pool)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在 Windows 虛擬桌面電腦上使用 Microsoft 小組之前，您必須執行下列動作：
 
@@ -146,6 +146,7 @@ Windows 虛擬桌面的 Microsoft 小組支援聊天與協同作業。 使用媒
 - Windows 虛擬桌面的團隊一次只支援一個傳入的影片輸入。 這表示每當有人嘗試共用其畫面時，就會顯示其畫面，而不是會議領導人的畫面。
 - 由於 WebRTC 限制，內送和外寄影片串流解析僅限720p。
 - 小組應用程式不支援隱藏隱藏按鈕或其他裝置的 LED 控制項。
+- VDI 環境中目前不支援新的會議體驗 (NME) 。
 
 針對與虛擬化環境無關的小組已知問題，請參閱 [您組織中的支援小組](/microsoftteams/known-issues)
 

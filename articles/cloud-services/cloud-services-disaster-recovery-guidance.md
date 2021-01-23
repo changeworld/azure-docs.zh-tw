@@ -1,23 +1,25 @@
 ---
-title: 處理影響 Azure 雲端服務的 Azure 服務中斷
-titleSuffix: Azure Cloud Services
+title: 處理會影響 Azure 雲端服務 (傳統) 的 Azure 服務中斷
 description: 了解發生影響 Azure 雲端服務的 Azure 服務中斷事件時該怎麼辦。
-services: cloud-services
-documentationcenter: ''
-author: mmccrory
-ms.service: cloud-services
-ms.workload: cloud-services
 ms.topic: article
-ms.date: 04/04/2017
-ms.author: memccror
-ms.openlocfilehash: 6ae1509d552de1d5473c7d995af2db68d7113e79
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: cdd6c9da5a1895d4aadd73133734cd4c8204ecf1
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077519"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742160"
 ---
-# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>發生影響 Azure 雲端服務的 Azure 服務中斷事件時該怎麼辦
+# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services-classic"></a>發生影響 Azure 雲端服務 (傳統) 的 Azure 服務中斷事件時該怎麼辦
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 Microsoft 的同仁一向努力確保提供您需要的服務。 有時候因為不可抗力之影響，造成服務意外中斷。
 
 Microsoft 為其服務提供服務等級協定 (SLA)，作為執行時間和連接承諾。 個別的 Azure 服務 SLA 位於 [Azure 服務等級協定](https://azure.microsoft.com/support/legal/sla/)。

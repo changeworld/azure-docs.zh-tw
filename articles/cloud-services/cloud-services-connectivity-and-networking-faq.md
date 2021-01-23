@@ -1,28 +1,24 @@
 ---
 title: 連線和網路問題
-titleSuffix: Azure Cloud Services
 description: 本文列出 Microsoft Azure 雲端服務之連線能力和網路服務的相關常見問題集。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/23/2018
-ms.author: genli
-ms.openlocfilehash: d8f57cc16cad4c0b081478932f820c983e4bbdc7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c7b83c615e4ac19e10b5c4f6cc1a102206b1a39a
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070022"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742415"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之連線能力和網路服務問題：常見問題集 (FAQ)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure 雲端服務 (傳統) 的連線能力和網路問題：常見問題 (常見問題) 
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 本文包含 [Azure 雲端服務](https://azure.microsoft.com/services/cloud-services)之連線能力和網路服務問題的相關常見問題集。 如需有關規模大小的資訊，請參閱[雲端服務 VM 大小頁面](cloud-services-sizes-specs.md)。
 
@@ -32,7 +28,7 @@ ms.locfileid: "92070022"
 首先，請確定您想要保留其 IP 的虛擬機器執行個體已開啟。 其次，請確定您會將保留的 IP 同時用於預備與生產部署。 *勿* 於部署正在升級時變更設定。
 
 ## <a name="how-do-i-use-remote-desktop-when-i-have-an-nsg"></a>當我有 NSG 時，應如何使用遠端桌面？
-將規則加入到 NSG，以允許連接埠 **3389** 和 **20000** 上的流量。 遠端桌面使用者連接埠 **3389**。 系統已為雲端服務執行個體進行負載平衡，因此您無法直接控制要連線的執行個體。 RemoteForwarder** 與 RemoteAccess** 代理程式會管理遠端桌面通訊協定 (RDP) 流量，並允許用戶端傳送 RDP Cookie 並指定要連線的個別執行個體。 RemoteForwarder** 與 RemoteAccess** 代理程式要求您必須開啟連接埠 **20000**，這在您使用 NSG 的情況下可能是封鎖的。
+將規則加入到 NSG，以允許連接埠 **3389** 和 **20000** 上的流量。 遠端桌面使用者連接埠 **3389**。 系統已為雲端服務執行個體進行負載平衡，因此您無法直接控制要連線的執行個體。 RemoteForwarder 與 RemoteAccess 代理程式會管理遠端桌面通訊協定 (RDP) 流量，並允許用戶端傳送 RDP Cookie 並指定要連線的個別執行個體。 RemoteForwarder 與 RemoteAccess 代理程式要求您必須開啟連接埠 **20000**，這在您使用 NSG 的情況下可能是封鎖的。
 
 ## <a name="can-i-ping-a-cloud-service"></a>是否可偵測雲端服務？
 
@@ -50,9 +46,9 @@ Azure 會實作多層的網路安全性，可保護其平台服務免於遭受�
 ## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>當我嘗試 RDP 到我的雲端服務執行個體時，會收到這個訊息：「使用者帳戶已過期」。
 當您略過 RDP 設定中所設定的到期日時，可能會收到「此使用者帳戶已過期」的錯誤訊息。 您可以從入口網站中變更到期日，方法是遵循下列步驟：
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)、移至您的雲端服務，然後選取 [遠端桌面]**** 索引標籤。
+1. 登入 [Azure 入口網站](https://portal.azure.com)、移至您的雲端服務，然後選取 [遠端桌面] 索引標籤。
 
-2. 選取 [生產]**** 或 [預備]**** 部署位置。
+2. 選取 [生產] 或 [預備] 部署位置。
 
 3. 變更「**到期日**」的日期，然後儲存設定。
 

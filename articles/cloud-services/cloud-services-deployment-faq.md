@@ -1,28 +1,24 @@
 ---
 title: Microsoft Azure 雲端服務之部署問題的常見問題集 | Microsoft Docs
 description: 本文列出 Microsoft Azure 雲端服務之部署的相關常見問題集。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
-ms.author: genli
-ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75980636"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742211"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure 雲端服務之部署問題：常見問題集 (FAQ)
+# <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure 雲端服務 (傳統) 的部署問題：常見問題 (常見問題) 
 
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 本文包含 [Microsoft Azure 雲端服務](https://azure.microsoft.com/services/cloud-services)之部署問題的相關常見問題集。 您也可以參閱 [雲端服務 VM 大小頁面](cloud-services-sizes-specs.md) 以取得大小資訊。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -63,9 +59,9 @@ ms.locfileid: "75980636"
 
 如需詳細資訊，請參閱[如何更新雲端服務](cloud-services-update-azure-service.md)。
 
-## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>為什麼我在使用 Azure Resource Manager 儲存體帳戶時，無法透過服務管理 API 或 PowerShell 部署雲端服務？ 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>為什麼我在使用 Azure Resource Manager 儲存體帳戶時，無法透過服務管理 API 或 PowerShell 部署雲端服務？ 
 
-由於雲端服務是與 Azure Resource Manager 模型不直接相容的傳統資源，因此無法將它與 Azure Resource Manager 的儲存體帳戶建立關聯。 以下提供一些選項： 
+由於雲端服務是與 Azure Resource Manager 模型不直接相容的傳統資源，因此無法將它與 Azure Resource Manager 的儲存體帳戶建立關聯。 以下提供一些選項： 
 
 - 透過 REST API 部署。
 
@@ -73,7 +69,7 @@ ms.locfileid: "75980636"
 
 - 透過 [Azure 入口網站](https://portal.azure.com)部署。
 
-    這會從 [Azure 入口網站](https://portal.azure.com) 運作，因為呼叫會透過 proxy/填充碼進行，以允許 Azure Resource Manager 和傳統資源之間的通訊。 
+    這會從 [Azure 入口網站](https://portal.azure.com) 運作，因為呼叫會透過 proxy/填充碼進行，以允許 Azure Resource Manager 和傳統資源之間的通訊。 
 
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>為何 Azure 入口網站要求我提供儲存體帳戶進行部署？
 

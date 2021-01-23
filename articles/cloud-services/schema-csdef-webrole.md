@@ -1,26 +1,25 @@
 ---
-title: Azure 雲端服務 .Def WebRole 架構 |Microsoft Docs
+title: Azure 雲端服務 (傳統) WebRole 架構 |Microsoft Docs
 description: Azure web 角色是針對支援 ASP.NET、PHP、WCF 和 FastCGI 的 web 應用程式設計所自訂的。 瞭解 web 角色的服務定義元素。
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
-ms.reviewer: ''
+ms.topic: article
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
-ms.topic: reference
-ms.assetid: 85368e4e-a0db-4c02-8dbc-8e2928fa6091
-caps.latest.revision: 60
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 4368bb38a280461fdd77348de60a0e5793ee9582
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 3c5811649d7d6c0aa1e90ed34c61be6a7f9339f8
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011314"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743146"
 ---
-# <a name="azure-cloud-services-definition-webrole-schema"></a>Azure 雲端服務定義 WebRole 結構描述
+# <a name="azure-cloud-services-classic-definition-webrole-schema"></a>Azure 雲端服務 (傳統) 定義 WebRole 架構
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 Azure Web 角色是專為 IIS 7 所支援之 Web 應用程式的程式設計 (例如，ASP.NET、PHP、Windows Communication Foundation 及 FastCGI) 所自訂的角色。
 
 服務定義檔的預設副檔名為 .csdef。
@@ -405,7 +404,7 @@ Azure Web 角色是專為 IIS 7 所支援之 Web 應用程式的程式設計 (�
 | 屬性 | 類型 | 描述 |  
 | --------- | ---- | ----------- |  
 |NAME|字串|必要。 指定用來識別虛擬目錄的名稱。|  
-|value|physicalDirectory|必要。 指定開發機器上包含網站或虛擬目錄內容的路徑。 在計算模擬器中，IIS 會設定為從這個位置擷取內容。 在部署至 Azure 時，實體目錄的內容會連同服務的其餘部分一起封裝。 當服務套件部署至 Azure 時，系統會對 IIS 設定解除封裝之內容的位置。|  
+|值|physicalDirectory|必要。 指定開發機器上包含網站或虛擬目錄內容的路徑。 在計算模擬器中，IIS 會設定為從這個位置擷取內容。 在部署至 Azure 時，實體目錄的內容會連同服務的其餘部分一起封裝。 當服務套件部署至 Azure 時，系統會對 IIS 設定解除封裝之內容的位置。|  
 
 ##  <a name="bindings"></a><a name="Bindings"></a> 綁定  
 `Bindings` 元素會說明網站之繫結的集合。 它是 `Binding` 元素的父代元素。 每個 `Site` 元素都需要此元素。 如需如何設定端點的詳細資訊，請參閱[啟用角色執行個體的通訊](cloud-services-enable-communication-role-instances.md)。

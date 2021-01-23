@@ -1,21 +1,24 @@
 ---
 title: 設定雲端服務的 TLS |Microsoft Docs
 description: 瞭解如何為 web 角色指定 HTTPS 端點，以及如何上傳 TLS/SSL 憑證來保護您的應用程式。 這些範例使用 Azure 入口網站。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/26/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 33aa088efd7768153d4a17472d82e0826f4ffa6b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82024841"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742636"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>在 Azure 中設定應用程式的 TLS
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 傳輸層安全性 (TLS) （先前稱為安全通訊端層） (SSL) 加密，是保護網際網路上傳送的資料最常用的方法。 此常見工作討論如何指定 web 角色的 HTTPS 端點，以及如何上傳 TLS/SSL 憑證來保護您的應用程式。
 
@@ -34,7 +37,7 @@ ms.locfileid: "82024841"
 
 * 憑證必須包含公開金鑰。
 * 憑證必須是為了進行金鑰交換而建立，且可匯出成個人資訊交換檔 (.pfx)。
-* 憑證的主體名稱必須符合用來存取雲端服務的網域。 您無法從憑證授權單位單位取得 cloudapp.net 網域 (CA) 的 TLS/SSL 憑證。 您必須取得要在存取您的服務時使用的自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用來存取應用程式的自訂網域名稱。 例如，如果您的自訂功能變數名稱為 **contoso.com** ，您會向 CA 要求 ***. contoso.com** 或 **www \. contoso.com**的憑證。
+* 憑證的主體名稱必須符合用來存取雲端服務的網域。 您無法從憑證授權單位單位取得 cloudapp.net 網域 (CA) 的 TLS/SSL 憑證。 您必須取得要在存取您的服務時使用的自訂網域名稱。 當您向 CA 要求憑證時，憑證的主體名稱必須符合用來存取應用程式的自訂網域名稱。 例如，如果您的自訂功能變數名稱為 **contoso.com** ，您會向 CA 要求 **_. contoso.com_* 或 **www \. contoso.com** 的憑證。
 * 憑證至少必須以 2048 位元加密。
 
 基於測試目的，您可以 [建立](cloud-services-certs-create.md) 並使用自我簽署憑證。 自我簽署憑證不是由 CA 驗證，因此可以使用 cloudapp.net 網域做為網站 URL。 例如，以下工作即使用自我簽署憑證，該憑證中使用的一般名稱 (CN) 為 **sslexample.cloudapp.net**。
@@ -46,7 +49,7 @@ ms.locfileid: "82024841"
 ## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>步驟 2：修改服務定義檔和組態檔
 您的應用程式必須已設定為使用憑證，而且您必須新增 HTTPS 端點。 因此，您需要更新服務定義檔與服務組態檔。
 
-1. 在開發環境中，開啟服務定義檔 (CSDEF)、在 [WebRole]**** 區段內新增 [Certificates]**** 區段，並新增下列憑證 (及中繼憑證) 相關資訊：
+1. 在開發環境中，開啟服務定義檔 (CSDEF)、在 [WebRole] 區段內新增 [Certificates] 區段，並新增下列憑證 (及中繼憑證) 相關資訊：
 
    ```xml
     <WebRole name="CertificateTesting" vmsize="Small">
@@ -76,7 +79,7 @@ ms.locfileid: "82024841"
 
    權限 (`permissionLevel` 屬性) 可設為下列其中一個值：
 
-   | 權限值 | 說明 |
+   | 權限值 | 描述 |
    | --- | --- |
    | limitedOrElevated |**(預設值)** 所有角色處理序都可以存取私密金鑰。 |
    | elevated |只有較高權限的處理序可以存取私密金鑰。 |
@@ -111,7 +114,7 @@ ms.locfileid: "82024841"
     ```
 
    如此即已對服務定義檔完成所有必要變更，但是您仍然需要將憑證資訊新增至服務組態檔。
-4. 在服務組態檔 (CSCFG) ServiceConfiguration.Cloud.cscfg 中，新增**憑證**值以取代您的憑證。 下列程式碼範例會提供 [憑證]**** 區段的詳細資料，指紋值除外。
+4. 在服務組態檔 (CSCFG) ServiceConfiguration.Cloud.cscfg 中，新增 **憑證** 值以取代您的憑證。 下列程式碼範例會提供 [憑證] 區段的詳細資料，指紋值除外。
 
    ```xml
     <Role name="Deployment">
@@ -135,7 +138,7 @@ ms.locfileid: "82024841"
 ## <a name="step-3-upload-a-certificate"></a>步驟 3：上傳憑證
 連線到 Azure 入口網站並...
 
-1. 在入口網站的 [所有資源]**** 區段中，選取您的雲端服務。
+1. 在入口網站的 [所有資源] 區段中，選取您的雲端服務。
 
     ![發佈您的雲端服務](media/cloud-services-configure-ssl-certificate-portal/browse.png)
 
@@ -143,16 +146,16 @@ ms.locfileid: "82024841"
 
     ![按一下憑證圖示](media/cloud-services-configure-ssl-certificate-portal/certificate-item.png)
 
-3. 按一下憑證區上方的 [上傳]****。
+3. 按一下憑證區上方的 [上傳]。
 
     ![按一下 [上傳] 功能表項目](media/cloud-services-configure-ssl-certificate-portal/Upload_menu.png)
 
-4. 提供 [檔案]****、[密碼]****，然後按一下資料輸入區底部的 [上傳]****。
+4. 提供 [檔案]、[密碼]，然後按一下資料輸入區底部的 [上傳]。
 
 ## <a name="step-4-connect-to-the-role-instance-by-using-https"></a>步驟 4：使用 HTTPS 來連線至角色執行個體
 您的部署已在 Azure 啟動並執行，現在您可以使用 HTTPS 來與其連線。
 
-1. 按一下 [網站 URL]**** 開啟網頁瀏覽器。
+1. 按一下 [網站 URL] 開啟網頁瀏覽器。
 
    ![按一下網站 URL](media/cloud-services-configure-ssl-certificate-portal/navigate.png)
 
@@ -166,12 +169,12 @@ ms.locfileid: "82024841"
    ![網站預覽](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > 如果您想要使用 TLS 進行預備部署，而不是生產環境部署，您必須先判斷用於預備部署的 URL。 部署雲端服務之後，預備環境的 URL 即由**部署 ID** GUID 決定，格式如下：`https://deployment-id.cloudapp.net/`  
+   > 如果您想要使用 TLS 進行預備部署，而不是生產環境部署，您必須先判斷用於預備部署的 URL。 部署雲端服務之後，預備環境的 URL 即由 **部署 ID** GUID 決定，格式如下：`https://deployment-id.cloudapp.net/`  
    >
    > 建立一般名稱 (CN) 等於 GUID 型 URL (如 **328187776e774ceda8fc57609d404462.cloudapp.net**) 的憑證。 使用入口網站將憑證新增至預備的雲端服務。 接著，將憑證資訊新增至 CSDEF 和 CSCFG 檔案、重新封裝應用程式，然後更新預備的部署以使用新套件。
    >
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * [雲端服務的一般設定](cloud-services-how-to-configure-portal.md)。
 * 了解如何 [部署雲端服務](cloud-services-how-to-create-deploy-portal.md)。
 * 設定 [自訂功能變數名稱](cloud-services-custom-domain-name-portal.md)。

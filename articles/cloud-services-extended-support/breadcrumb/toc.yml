@@ -1,0 +1,11 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: '雲端服務 (延伸支援) '
+      tocHref: /azure/cloud-services-extended-support/
+      topicHref: /azure/cloud-services-extended-support/index
+      items:
+        - name: 雲端服務
+          tocHref: /azure/cloud-services/
+          topicHref: /azure/cloud-services/index

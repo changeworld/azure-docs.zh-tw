@@ -1,27 +1,31 @@
 ---
-title: 如何建立和部署雲端服務 | Microsoft Docs
+title: 如何建立和部署雲端服務 (傳統) |Microsoft Docs
 description: 瞭解如何使用「快速建立」方法來建立雲端服務，並使用上傳功能在 Azure 中上傳和部署雲端服務套件。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 879b86714adf50b5a4da4398389405063ac046dc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164159"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743401"
 ---
-# <a name="how-to-create-and-deploy-a-cloud-service"></a>如何建立和部署雲端服務
-Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快速建立」** 和「自訂建立」**。
+# <a name="how-to-create-and-deploy-an-azure-cloud-service-classic"></a>如何建立及部署 Azure 雲端服務 (傳統) 
 
-本主題說明如何使用「快速建立」方法建立新的雲端服務，然後使用 [上傳] **** 上傳雲端服務封裝並在 Azure 中部署。 當您使用這個方法時，Azure 入口網站會在過程中提供便利的連結，讓您完成所有要求。 如果您準備在建立雲端服務時加以部署，可以同時使用 [自訂建立] 進行這兩項作業。
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
+Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快速建立」和「自訂建立」。
+
+本主題說明如何使用「快速建立」方法建立新的雲端服務，然後使用 [上傳]  上傳雲端服務封裝並在 Azure 中部署。 當您使用這個方法時，Azure 入口網站會在過程中提供便利的連結，讓您完成所有要求。 如果您準備在建立雲端服務時加以部署，可以同時使用 [自訂建立] 進行這兩項作業。
 
 > [!NOTE]
-> 如果您計劃從 Azure DevOps 發佈您的雲端服務，請使用快速建立，然後從 Azure 快速入門或儀表板設定 Azure DevOps 發佈。 如需詳細資訊，請參閱[使用 Azure DevOps 持續傳遞至 Azure][TFSTutorialForCloudService]，或參閱 [快速入門]**** 頁面的說明。
+> 如果您計劃從 Azure DevOps 發佈您的雲端服務，請使用快速建立，然後從 Azure 快速入門或儀表板設定 Azure DevOps 發佈。 如需詳細資訊，請參閱[使用 Azure DevOps 持續傳遞至 Azure][TFSTutorialForCloudService]，或參閱 [快速入門] 頁面的說明。
 >
 >
 
@@ -49,38 +53,39 @@ Azure 入口網站提供兩種方法讓您建立和部署雲端服務：「快�
 若要使用 Web 角色或背景工作角色的部署來建立雲端服務，您必須 [建立服務封裝](cloud-services-model-and-package.md#servicepackagecspkg)。
 
 ## <a name="before-you-begin"></a>開始之前
-* 如果您尚未安裝 Azure SDK，請按一下 [安裝 Azure SDK]**** 開啟 [Azure 下載頁面](https://azure.microsoft.com/downloads/)，然後依照您偏好使用的程式碼開發語言下載 SDK。 (您稍後將有機會這麼做。)
+* 如果您尚未安裝 Azure SDK，請按一下 [安裝 Azure SDK] 開啟 [Azure 下載頁面](https://azure.microsoft.com/downloads/)，然後依照您偏好使用的程式碼開發語言下載 SDK。 (您稍後將有機會這麼做。)
 * 如果任何角色執行個體需要憑證，請建立憑證。 雲端服務需要含有私密金鑰的 .pfx 檔。 您建立並部署雲端服務時，可以將憑證上傳至 Azure。
 
 ## <a name="create-and-deploy"></a>建立和部署
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 按一下 [建立資源] > [計算]****，然後向下捲動至 [雲端服務]**** 並按一下。
+2. 按一下 [建立資源] > [計算]，然後向下捲動至 [雲端服務] 並按一下。
 
-    ![顯示 [建立資源 > 計算] 下的 [雲端服務] 選項的螢幕擷取畫面。](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-3. 在新的 [雲端服務]**** 窗格中，輸入 [DNS 名稱]**** 的值。
+    ![發佈您的雲端 service1](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+
+3. 在新的 [雲端服務] 窗格中，輸入 [DNS 名稱] 的值。
 4. 建立新的 **資源群組** ，或選取現有的資源群組。
 5. 選取 [位置] 。
-6. 按一下 **[封裝]**。 這會開啟 [上傳套件]**** 窗格。 填寫必要欄位。 如果您的任一個角色包含單一執行個體，請確定核取 [即使一個或多個角色包含單一執行個體，也要部署] **** 。
-7. 請確定已選取 [開始部署] **** 。
-8. 按一下 [確定]**** 以關閉 [上傳套件]**** 窗格。
-9. 如果您沒有任何憑證可新增，請按一下 [建立] ****。
+6. 按一下 **[封裝]**。 這會開啟 [上傳套件] 窗格。 填寫必要欄位。 如果您的任一個角色包含單一執行個體，請確定核取 [即使一個或多個角色包含單一執行個體，也要部署]  。
+7. 請確定已選取 [開始部署]  。
+8. 按一下 [確定] 以關閉 [上傳套件] 窗格。
+9. 如果您沒有任何憑證可新增，請按一下 [建立] 。
 
-    ![發佈您的雲端服務](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![發佈您的雲端 service2](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>上傳憑證
 如果您的部署套件 [設定為使用憑證](cloud-services-configure-ssl-certificate-portal.md#modify)，您現在可以上傳憑證。
 
 1. 選取 [ **憑證**]，然後在 [ **新增憑證** ] 窗格中，選取 TLS/SSL 憑證 .pfx 檔案，然後提供憑證的 **密碼** ，
-2. 按一下 [附加憑證]****，然後按一下 [新增憑證]**** 窗格中的 [確定]****。
-3. 按一下 [雲端服務]**** 窗格中的 [建立]****。 當部署達到了 [就緒] **** 狀態時，您可以繼續進行接下來的步驟。
+2. 按一下 [附加憑證]，然後按一下 [新增憑證] 窗格中的 [確定]。
+3. 按一下 [雲端服務] 窗格中的 [建立]。 當部署達到了 [就緒]  狀態時，您可以繼續進行接下來的步驟。
 
-    ![醒目顯示上傳憑證程式的螢幕擷取畫面。](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![發佈您的雲端 service3](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>確認部署是否成功完成
 1. 按一下雲端服務執行個體。
 
-    狀態應該會顯示服務為 [正在執行] ****。
-2. 在 [基本功能]**** 下，按一下 [網站 URL]****，在網頁瀏覽器中開啟您的雲端服務。
+    狀態應該會顯示服務為 [正在執行] 。
+2. 在 [基本功能] 下，按一下 [網站 URL]，在網頁瀏覽器中開啟您的雲端服務。
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 

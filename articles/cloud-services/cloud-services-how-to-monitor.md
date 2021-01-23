@@ -1,21 +1,24 @@
 ---
-title: 監視 Azure 雲端服務 | Microsoft Docs
+title: " (傳統) 監視 Azure 雲端服務 |Microsoft Docs"
 description: 描述監視 Azure 雲端服務所涉及的作業以及您的一些選項。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 01/29/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 60f320f86860cca482cdf25c7d93f84dae8c4e5f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847252"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743367"
 ---
-# <a name="introduction-to-cloud-service-monitoring"></a>雲端服務監視簡介
+# <a name="introduction-to-cloud-service-classic-monitoring"></a>雲端服務 (傳統) 監視簡介
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 您可以監視任何雲端服務的關鍵效能計量。 每個雲端服務角色都會收集最少資料：CPU 使用量、網路使用量和磁碟使用狀況。 如果雲端服務已將 `Microsoft.Azure.Diagnostics` 延伸模組套用至角色，則該角色可以收集其他資料點。 本文介紹 Azure Diagnostics for Cloud Services。
 
@@ -52,9 +55,9 @@ ms.locfileid: "85847252"
 
 ## <a name="setup-diagnostics-extension"></a>設定診斷延伸模組
 
-首先，如果您沒有**傳統**儲存體帳戶，則請[建立傳統儲存體帳戶](../storage/common/storage-account-create.md)。 請確定建立已指定**傳統部署模型**的儲存體帳戶。
+首先，如果您沒有 **傳統** 儲存體帳戶，則請 [建立傳統儲存體帳戶](../storage/common/storage-account-create.md)。 請確定建立已指定 **傳統部署模型** 的儲存體帳戶。
 
-接下來，巡覽至 [儲存體帳戶 (傳統)]**** 資源。 選取 [**設定**  >  **存取金鑰**]，然後複製**主要連接字串**值。 雲端服務需要有此值。 
+接下來，巡覽至 [儲存體帳戶 (傳統)] 資源。 選取 [**設定**  >  **存取金鑰**]，然後複製 **主要連接字串** 值。 雲端服務需要有此值。 
 
 您必須變更兩個設定檔才能啟用進階診斷：**ServiceDefinition.csdef** 和 **ServiceConfiguration.cscfg**。
 
@@ -71,7 +74,7 @@ ms.locfileid: "85847252"
 
 這會定義必須新增至每個 **ServiceConfiguration.cscfg** 檔案的新設定。 
 
-您很可能會有兩個 **.cscfg** 檔案，一個名為 **ServiceConfiguration.cloud.cscfg** 以用於部署至 Azure，一個名為 **ServiceConfiguration.local.cscfg** 以在模擬環境中用於本機部署。 開啟並變更每個 **.cscfg** 檔案。 新增名為 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 的設定。 將值設定為傳統儲存體帳戶的**主要連接字串**。 如果您想要在開發電腦上使用本機儲存體，請使用 `UseDevelopmentStorage=true`。
+您很可能會有兩個 **.cscfg** 檔案，一個名為 **ServiceConfiguration.cloud.cscfg** 以用於部署至 Azure，一個名為 **ServiceConfiguration.local.cscfg** 以在模擬環境中用於本機部署。 開啟並變更每個 **.cscfg** 檔案。 新增名為 `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` 的設定。 將值設定為傳統儲存體帳戶的 **主要連接字串**。 如果您想要在開發電腦上使用本機儲存體，請使用 `UseDevelopmentStorage=true`。
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
@@ -92,7 +95,7 @@ ms.locfileid: "85847252"
 請注意，雖然您可以使用 Application Insights 來顯示透過 Windows Azure 診斷延伸模組所指定的效能計數器 (和其他設定)，但是只有將 Application Insights SDK 整合到背景工作和 Web 角色，才能獲得較豐富的體驗。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [瞭解如何使用雲端服務 Application Insights](../azure-monitor/app/cloudservices.md)
 - [設定效能計數器](diagnostics-performance-counters.md)

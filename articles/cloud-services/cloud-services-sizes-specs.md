@@ -1,21 +1,25 @@
 ---
-title: Azure 雲端服務的虛擬機器大小 | Microsoft Docs
+title: 適用于 Azure 雲端服務 (傳統) 的虛擬機器大小 |Microsoft Docs
 description: 列出 Azure 雲端服務 Web 和背景工作角色的各種虛擬機器大小 (和識別碼)。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: b617ba8db8f9dbb1c25ac34aa879613c29c723b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 55fa3ab4e5bd4472f7dae9692ae3ac9bcfa8e2b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340283"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743163"
 ---
-# <a name="sizes-for-cloud-services"></a>雲端服務的大小
+# <a name="sizes-for-cloud-services-classic"></a>雲端服務的大小 (傳統) 
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 本主題描述雲端服務角色執行個體 (Web 角色和背景工作角色)的可用大小和選項。 同時也提供計劃使用這些資源時，需注意的部署考量。 每種大小都有一個識別碼，可讓您放入[服務定義檔](cloud-services-model-and-package.md#csdef)。 每種大小的價格可以在[雲端服務價格](https://azure.microsoft.com/pricing/details/cloud-services/)頁面上取得。
 
 > [!NOTE]
