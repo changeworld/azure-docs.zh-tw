@@ -2,23 +2,23 @@
 title: 移除建立應用程式註冊的限制 - Azure AD | Microsoft Docs
 description: 在 Azure AD Active Directory 中指派自訂角色以授與無限制應用程式註冊
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: quickstart
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a78296d3fd040b047c2a6cc3761d429883aa9d1
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
-ms.translationtype: HT
+ms.openlocfilehash: 260b0621bf204c6d7593b3696c602665c42ad77e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378783"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740851"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>快速入門：授與建立無限制應用程式註冊的權限
 

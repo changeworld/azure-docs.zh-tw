@@ -3,25 +3,25 @@ title: 指派和列出具有管理單位範圍的角色-Azure Active Directory |
 description: 使用管理單位來限制 Azure Active Directory 中的角色指派範圍。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73ed2741c7dd754127a57642703b650a70637c63
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: ecfa9186ef42d4822c9b3053d76b7c0160841621
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393433"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740392"
 ---
-# <a name="assign-scoped-roles-to-an-administrative-unit"></a>將限域角色指派給管理單位
+# <a name="assign-scoped-roles-to-an-administrative-unit"></a>將範圍角色指派至管理單位
 
 在 Azure Active Directory (Azure AD) ，如需更細微的系統管理控制，您可以將使用者指派至範圍限制為一或多個系統管理單位的 Azure AD 角色。
 
@@ -52,15 +52,15 @@ ms.locfileid: "93393433"
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 在 Azure 入口網站中，移至 **Azure AD** 。
+1. 在 Azure 入口網站中，移至 **Azure AD**。
 
-1. 選取 [ **管理單位** ]，然後選取您要指派使用者角色範圍的管理單位。 
+1. 選取 [ **管理單位**]，然後選取您要指派使用者角色範圍的管理單位。 
 
 1. 在左窗格中，選取 [ **角色和系統管理員** ] 來列出所有可用的角色。
 
    ![[角色和系統管理員] 窗格的螢幕擷取畫面，用來選取您要指派其角色範圍的管理單位。](./media/admin-units-assign-roles/select-role-to-scope.png)
 
-1. 選取要指派的角色，然後選取 [ **新增指派** ]。 
+1. 選取要指派的角色，然後選取 [ **新增指派**]。 
 
 1. 在 [ **新增指派** ] 窗格中，選取要指派給角色的一或多個使用者。
 
@@ -105,11 +105,11 @@ Request body
 
 您可以在 Azure AD 的 [ [管理單位] 區段](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)中，查看以管理單位範圍建立的所有角色指派。 
 
-1. 在 Azure 入口網站中，移至 **Azure AD** 。
+1. 在 Azure 入口網站中，移至 **Azure AD**。
 
-1. 在左窗格中，選取 [ **管理單位** ]，然後選取您想要查看的角色指派清單的管理單位。 
+1. 在左窗格中，選取 [ **管理單位**]，然後選取您想要查看的角色指派清單的管理單位。 
 
-1. 選取 [ **角色和系統管理員** ]，然後開啟角色以在管理單位中查看指派。
+1. 選取 [ **角色和系統管理員**]，然後開啟角色以在管理單位中查看指派。
 
 ### <a name="use-powershell"></a>使用 PowerShell
 

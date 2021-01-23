@@ -1,21 +1,26 @@
 ---
-title: 什麼是雲端服務模型和封裝 | Microsoft Docs
+title: 什麼是雲端服務 (傳統) 模型和套件 |Microsoft Docs
 description: 說明 Azure 中的雲端服務模型 (.csdef、.cscfg) 和封裝 (.cspkg)
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 180295599082a762fc525c4740079ceefc0954a1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 1cf8e966b80e005a0cb2cf7ea46f355e38cb0011
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077179"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741531"
 ---
-# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什麼是雲端服務模型？如何封裝？
-雲端服務是從三個元件建立的，也就是服務定義 (.csdef)**、服務組態 (.cscfg)** 和服務封裝 (.cspkg)**。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 這兩個檔案是以 XML 為基礎，描述雲端服務的結構及其設定方式，統稱為模型。 **ServicePackage.cspkg** 是從 **ServiceDefinition.csdef** 產生的 zip 檔案，此外，包含所有必要的二進位型相依性。 Azure 會從 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 建立雲端服務。
+# <a name="what-is-the-cloud-service-classic-model-and-how-do-i-package-it"></a>什麼是雲端服務 (傳統) 模型，以及如何封裝？
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
+雲端服務是從三個元件建立的，也就是服務定義 (.csdef)、服務組態 (.cscfg) 和服務封裝 (.cspkg)。 **ServiceDefinition.csdef** 和 **ServiceConfig.cscfg** 這兩個檔案是以 XML 為基礎，描述雲端服務的結構及其設定方式，統稱為模型。 **ServicePackage.cspkg** 是從 **ServiceDefinition.csdef** 產生的 zip 檔案，此外，包含所有必要的二進位型相依性。 Azure 會從 **ServicePackage.cspkg** 和 **ServiceConfig.cscfg** 建立雲端服務。
 
 一旦雲端服務在 Azure 中執行之後，您就可以透過 **ServiceConfig.cscfg** 檔案重新設定它，但您無法改變定義。
 
@@ -148,7 +153,7 @@ ms.locfileid: "92077179"
 <p/>
 
 > [!NOTE]
-> 您可以使用文字編輯器，將憑證指紋新增至組態檔。 或者，在 Visual Studio 中，也可以在角色 [屬性]**** 頁面的 [憑證]**** 索引標籤上新增值。
+> 您可以使用文字編輯器，將憑證指紋新增至組態檔。 或者，在 Visual Studio 中，也可以在角色 [屬性] 頁面的 [憑證] 索引標籤上新增值。
 > 
 > 
 
@@ -236,7 +241,7 @@ Azure 對於 Web 角色，僅允許一個進入點。 這表示所有流量都�
 <p />
 
 > [!TIP]
-> 在本機於 **Microsoft Azure 計算模擬器**中執行雲端服務，並使用 **/copyonly** 選項。 此選項會將應用程式的二進位檔案複製到目錄配置中，在計算模擬器中就可以從那裡執行它們。
+> 在本機於 **Microsoft Azure 計算模擬器** 中執行雲端服務，並使用 **/copyonly** 選項。 此選項會將應用程式的二進位檔案複製到目錄配置中，在計算模擬器中就可以從那裡執行它們。
 > 
 > 
 

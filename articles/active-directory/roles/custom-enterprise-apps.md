@@ -2,23 +2,23 @@
 title: 企業應用程式存取指派的自訂角色許可權-Azure Active Directory |Microsoft Docs
 description: 在 Azure Active Directory 中建立並指派企業應用程式存取的自訂 Azure AD 角色
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0932e4b6163264b0b514958e1e898b297e249870
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d3cb65503ffab610f9545acb313f7284ffb11ed1
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378545"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741140"
 ---
 # <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>指派自訂角色來管理 Azure Active Directory 中的企業應用程式
 
@@ -50,11 +50,11 @@ ms.locfileid: "93378545"
 
     ![從 Azure AD 中的 [角色] 清單新增自訂角色](./media/custom-enterprise-apps/new-custom-role.png)
 
-1. 在 [ **基本** ] 索引標籤上，提供角色名稱的 [管理使用者和群組指派] 和角色描述的 [授與管理使用者和群組指派的許可權]，然後選取 **[下一步** ]。
+1. 在 [ **基本** ] 索引標籤上，提供角色名稱的 [管理使用者和群組指派] 和角色描述的 [授與管理使用者和群組指派的許可權]，然後選取 **[下一步**]。
 
     ![提供自訂角色的名稱和描述](./media/custom-enterprise-apps/role-name-and-description.png)
 
-1. 在 [ **許可權** ] 索引標籤的 [搜尋] 方塊中輸入 "ServicePrincipals/serviceprincipals.approleassignedto/update"，然後選取所需許可權旁的核取方塊，然後選取 [ **下一步** ]。
+1. 在 [ **許可權** ] 索引標籤的 [搜尋] 方塊中輸入 "ServicePrincipals/serviceprincipals.approleassignedto/update"，然後選取所需許可權旁的核取方塊，然後選取 [ **下一步**]。
 
     ![將許可權新增至自訂角色](./media/custom-enterprise-apps/role-custom-permissions.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "93378545"
 
     ![開啟角色和系統管理員，並搜尋自訂角色](./media/custom-enterprise-apps/select-custom-role.png)
 
-1. 選取 [ **新增指派** ]，選取所需的使用者，然後按一下 [ **選取** ] 將角色指派新增至使用者。
+1. 選取 [ **新增指派**]，選取所需的使用者，然後按一下 [ **選取** ] 將角色指派新增至使用者。
 
     ![將自訂角色的指派新增至使用者](./media/custom-enterprise-apps/assign-user-to-role.png)
 

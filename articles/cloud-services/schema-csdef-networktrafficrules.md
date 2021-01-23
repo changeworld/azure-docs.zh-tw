@@ -1,26 +1,25 @@
 ---
-title: Azure 雲端服務 .Def NetworkTrafficRules 架構 |Microsoft Docs
+title: Azure 雲端服務 (傳統) NetworkTrafficRules 架構 |Microsoft Docs
 description: 瞭解 NetworkTrafficRules，這會限制可存取角色內部端點的角色。 它會結合服務定義檔中的角色。
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
-ms.reviewer: ''
+ms.topic: article
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
-ms.topic: reference
-ms.assetid: 351b369f-365e-46c1-82ce-03fc3655cc88
-caps.latest.revision: 17
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2c8ab53068b71652d03d03bf79a224fe5e34dff3
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79534723"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739763"
 ---
-# <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure 雲端服務定義 NetworkTrafficRules 結構描述
+# <a name="azure-cloud-services-classic-definition-networktrafficrules-schema"></a>Azure 雲端服務 (傳統) 定義 NetworkTrafficRules 架構
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 `NetworkTrafficRules` 節點是服務定義檔中的選擇性元素，它指定角色如何彼此通訊。 它會限制哪些角色可以存取特定角色的內部端點。 `NetworkTrafficRules` 不是獨立元素；它會與服務定義檔中的兩個或多個角色結合。
 
 服務定義檔的預設副檔名為 .csdef。

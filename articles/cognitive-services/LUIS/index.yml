@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) 文件
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) 服務可讓應用程式了解人在文字中所表達的意思。 LUIS 使用機器學習，讓開發人員建置應用程式，來可接收使用者的自然語言輸入，並從其中擷取意義。
-  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
-  ms.translationtype: HT
+  ms.openlocfilehash: ca9209295d8265eeac5545091e4d4c5c9678e994
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95019376"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98738062"
 landingContent:
 - title: 關於 Language Understanding (LUIS)
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 入口網站：建立新的 LUIS 應用程式
       url: get-started-portal-build-app.md
     - text: 使用 C# SDK
-      url: azure-sdk-quickstart.md?pivots=programming-language-csharp
+      url: ./client-libraries-rest-api.md?pivots=rest-api
     - text: 使用 Python SDK
-      url: azure-sdk-quickstart.md?pivots=programming-language-python
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: 建立新的 LUIS 應用程式
@@ -82,13 +82,13 @@ landingContent:
     - text: 互動式測試
       url: luis-concept-test.md
     - text: 批次測試
-      url: luis-concept-batch-test.md
+      url: ./luis-how-to-batch-test.md
   - linkListType: quickstart
     links:
     - text: 入口網站：將應用程式部署至預測端點
       url: get-started-portal-deploy-app.md
     - text: 使用 SDK
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: 為您的應用程式設定版本
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 使用 SDK
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: quickstart
     links:
     - text: 使用 REST 搭配 C#

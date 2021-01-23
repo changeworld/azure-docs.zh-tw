@@ -3,23 +3,23 @@ title: Azure Active Directory 中的管理單位 | Microsoft Docs
 description: 使用管理單位在 Azure Active Directory 中進行更細微的權限委派。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: overview
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 792e8cd1e70f901385ed3b225a753024e06f2df0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
-ms.translationtype: HT
+ms.openlocfilehash: e82be52cff824c69dd2fe4ea5e7e1c0d7489be1d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394589"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740324"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory 中的管理單位
 
@@ -85,7 +85,7 @@ ms.locfileid: "93394589"
 | 個別新增和移除管理單位成員    |   支援    |   支援   |    不支援 |
 | 使用 CSV 檔案大量新增和移除管理單位成員   |    不支援     |  支援   |    沒有支援計劃 |
 | 指派管理單位範圍的系統管理員  |     支援    |   支援    |   不支援 |
-| 根據屬性動態新增和移除管理單位成員 | 不支援 | 不受支援 | 不支援
+| 根據屬性動態新增和移除管理單位成員 | 不支援 | 不支援 | 不支援
 
 ### <a name="user-management"></a>使用者管理
 

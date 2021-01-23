@@ -4,16 +4,16 @@ description: 了解如何建立執行 OpenShift 4 的 Azure Red Hat OpenShift �
 ms.service: container-service
 ms.topic: article
 ms.date: 03/12/2020
-author: georgewallace
-ms.author: gwallace
+author: sakthi-vetrivel
+ms.author: suvetriv
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3864d48399f00d5cfbdfa0a94939be0d88a73322
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 6daeb617e7d1922427fe1889b41512a61c5067cf
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928054"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740919"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>建立 Azure Red Hat OpenShift 4 私人叢集
 
@@ -23,7 +23,7 @@ ms.locfileid: "92928054"
 > * 設定必要條件，並建立必要的虛擬網路和子網路
 > * 使用私人 API 伺服器端點與私人輸入控制器來部署叢集
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -192,7 +192,7 @@ az aro create \
 執行 `az aro create` 命令之後，一般大約需要 35 分鐘的時間來建立叢集。
 
 >[!IMPORTANT]
-> 如果您選擇指定自訂網域 (例如 **foo.example.com** )，OpenShift 主控台將會以類似 `https://console-openshift-console.apps.foo.example.com` 的 URL 來提供，而不是內建的網域：`https://console-openshift-console.apps.<random>.<location>.aroapp.io`。
+> 如果您選擇指定自訂網域 (例如 **foo.example.com**)，OpenShift 主控台將會以類似 `https://console-openshift-console.apps.foo.example.com` 的 URL 來提供，而不是內建的網域：`https://console-openshift-console.apps.<random>.<location>.aroapp.io`。
 >
 > 根據預設，OpenShift 會針對 `*.apps.<random>.<location>.aroapp.io` 上建立的所有路由使用自我簽署憑證。  如果您在連線至叢集之後，選擇自訂 DNS，則必須遵循 OpenShift 文件來[為您的輸入控制器設定自訂 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) \(英文\)，並[為您的 API 伺服器自訂 CA](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html) \(英文\)。
 
@@ -235,7 +235,7 @@ az aro list-credentials \
 
 在您登入 OpenShift Web 主控台後，按一下右上方的 **？** ，然後按一下 [命令列工具]  。 下載適合您電腦的版本。
 
-![Azure Red Hat OpenShift 登入畫面](media/aro4-download-cli.png)
+![顯示 Azure Red Hat OpenShift 登入畫面的影像](media/aro4-download-cli.png)
 
 您也可以從 <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> 下載適合您電腦的最新 CLI 版本。
 

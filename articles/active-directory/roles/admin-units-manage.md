@@ -3,23 +3,23 @@ title: 新增和移除管理單位-Azure Active Directory |Microsoft Docs
 description: 使用管理單位來限制 Azure Active Directory 中的角色許可權範圍。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbe76d21d948525421790f574830da7b3a163216
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395388"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740443"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>在 Azure Active Directory 中管理管理單位
 
@@ -31,9 +31,9 @@ ms.locfileid: "93395388"
 
     a. 在 Azure 入口網站中，移至 Azure AD。 
     
-    b. 在應用程式清單中，選取 [ **Graph 總管** ]。
+    b. 在應用程式清單中，選取 [ **Graph 總管**]。
     
-    c. 在 [ **許可權** ] 窗格中，選取 **[授與系統管理員同意以進行 Graph 總管** ]。
+    c. 在 [ **許可權** ] 窗格中，選取 **[授與系統管理員同意以進行 Graph 總管**]。
 
     ![顯示 [授與 Graph 總管的系統管理員同意] 連結的螢幕擷取畫面。](./media/admin-units-manage/select-graph-explorer.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "93395388"
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 在 Azure 入口網站中，移至 Azure AD。 然後，在左窗格中選取 [ **管理單位** ]。
+1. 在 Azure 入口網站中，移至 Azure AD。 然後，在左窗格中選取 [ **管理單位**]。
 
     ![Azure AD 中 [管理單位] 連結的螢幕擷取畫面。](./media/admin-units-manage/nav-to-admin-units.png)
 
@@ -85,9 +85,9 @@ Request body
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 在 Azure 入口網站中，移至 [ **Azure AD** ]，然後選取 [ **管理單位** ]。 
-1. 選取要刪除的管理單位，然後選取 [ **刪除** ]。 
-1. 若要確認您想要刪除管理單位，請選取 **[是]** 。 系統管理單位已刪除。
+1. 在 Azure 入口網站中，移至 [ **Azure AD**]，然後選取 [ **管理單位**]。 
+1. 選取要刪除的管理單位，然後選取 [ **刪除**]。 
+1. 若要確認您想要刪除管理單位，請選取 **[是]**。 系統管理單位已刪除。
 
 ![系統管理單位刪除按鈕和確認視窗的螢幕擷取畫面。](./media/admin-units-manage/select-admin-unit-to-delete.png)
 

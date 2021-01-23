@@ -2,7 +2,7 @@
 title: Azure AD 角色描述和許可權-Azure Active Directory |Microsoft Docs
 description: 系統管理員角色可以新增使用者、指派系統管理角色、重設使用者密碼、管理使用者授權或管理網域。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 search.appverid: MET150
 ms.service: active-directory
@@ -10,16 +10,16 @@ ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a66ad61afe1439a80d750097d3c90d010547539
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 40269f6b1553d73af43b4cf86127eaa97524dd57
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98622403"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740902"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 

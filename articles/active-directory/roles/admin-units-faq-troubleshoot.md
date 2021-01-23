@@ -3,23 +3,23 @@ title: 管理單位疑難排解和常見問題-Azure Active Directory |Microsoft
 description: 調查管理單位，以 Azure Active Directory 中的限制範圍授與許可權。
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f585be2057bda19038fff1066e7864c6796576c0
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 0fb61388b13b912166c9c07b9ee28b365c4a63b9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394674"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740375"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD 管理單位：疑難排解和常見問題
 

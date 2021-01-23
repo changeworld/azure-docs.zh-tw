@@ -1,27 +1,25 @@
 ---
-title: 雲端服務角色回收的常見原因 | Microsoft Docs
+title: 雲端服務 (傳統) 角色回收的常見原因 |Microsoft Docs
 description: 突然回收的雲端服務角色可能會造成顯著的停機時間。 以下是導致角色回收的一些常見問題，或許有助於縮短停機時間。
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 0484eb919a9de11b64dcc3334c5a9a942d875ca6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9610b32207f8367b9415c0881e49b54e24c49ad7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075122"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741157"
 ---
-# <a name="common-issues-that-cause-roles-to-recycle"></a>導致角色回收的常見問題
+# <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>導致 Azure 雲端服務 (傳統) 角色回收的常見問題
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 本文討論部署問題的常見原因，和可協助您解決這些問題的疑難排解秘訣。 應用程式出現問題的徵候之一，是角色執行個體無法啟動，或是在初始化中、忙碌和停止中狀態之間循環。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -31,9 +29,9 @@ ms.locfileid: "92075122"
 
 在您建置及封裝應用程式之前，請確認下列項目：
 
-* 如果使用 Visual studio，請確定您不屬於 Azure SDK 或 .NET Framework 的專案中每個參考的組件，[複製到本機]**** 屬性都設定為 [True]****。
+* 如果使用 Visual studio，請確定您不屬於 Azure SDK 或 .NET Framework 的專案中每個參考的組件，[複製到本機] 屬性都設定為 [True]。
 * 確定 web.config 檔案未參考 compilation 元素中任何未使用的組件。
-* 每個 .cshtml 檔案的 [建置動作]**** 都設為 [內容]****。 這可確保檔案會正確出現在封裝中，並且讓其他參考的檔案出現在封裝中。
+* 每個 .cshtml 檔案的 [建置動作] 都設為 [內容]。 這可確保檔案會正確出現在封裝中，並且讓其他參考的檔案出現在封裝中。
 
 ## <a name="assembly-targets-wrong-platform"></a>組件以錯誤的平台作為目標
 Azure 是 64 位元環境。 因此，針對 32 位元目標編譯的 .NET 組件無法在 Azure 上運作。
@@ -60,7 +58,7 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
   如果您使用 Azure Tools for Microsoft Visual Studio 開發應用程式，您可以使用屬性頁面來設定此值。
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>匯出的憑證未包含私密金鑰
-若要在 TLS 下執行 web 角色，您必須確定匯出的管理憑證包含私密金鑰。 如果您使用「Windows 憑證管理員」** 匯出憑證，請務必針對 [匯出私密金鑰]**** 選項選取 [是]****。 憑證必須匯出為 PFX 格式，這是目前唯一支援的格式。
+若要在 TLS 下執行 web 角色，您必須確定匯出的管理憑證包含私密金鑰。 如果您使用「Windows 憑證管理員」匯出憑證，請務必針對 [匯出私密金鑰] 選項選取 [是]。 憑證必須匯出為 PFX 格式，這是目前唯一支援的格式。
 
 ## <a name="next-steps"></a>後續步驟
 檢視更多雲端服務的 [疑難排解文章](../index.yml?product=cloud-services&tag=top-support-issue) 。

@@ -3,23 +3,23 @@ title: 新增、移除及列出管理單位中的使用者-Azure Active Director
 description: 在 Azure Active Directory 的管理單位中管理使用者及其角色許可權
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b490e03ea7ac0a3bc780fa731629217126b6828a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395524"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740511"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>在 Azure Active Directory 的管理單位中新增和管理使用者
 
@@ -39,7 +39,7 @@ ms.locfileid: "93395524"
 
    1. 選取 [ **使用者** ]，然後開啟使用者的設定檔，選取要指派給管理單位的使用者。
    
-   1. 選取 [ **管理單位** ]。 
+   1. 選取 [ **管理單位**]。 
    
    1. 若要將使用者指派給一個或多個管理單位，請選取 [ **指派給管理單位** ]，然後在右窗格中選取您要指派給使用者的管理單位。
 
@@ -48,8 +48,8 @@ ms.locfileid: "93395524"
 - 從管理單位指派個別使用者：
 
    1. 使用具有特殊許可權的角色系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com) 。
-   1. 選取 [ **管理單位** ]，然後選取要指派使用者的管理單位。
-   1. 選取 [ **所有使用者** ]，選取 [ **新增成員** ]，然後在 [ **新增成員** ] 窗格中，選取您要指派給管理單位的一或多個使用者。
+   1. 選取 [ **管理單位**]，然後選取要指派使用者的管理單位。
+   1. 選取 [ **所有使用者**]，選取 [ **新增成員** ]，然後在 [ **新增成員** ] 窗格中，選取您要指派給管理單位的一或多個使用者。
 
         ![將使用者指派給管理單位的管理單位 [使用者] 窗格螢幕擷取畫面。](./media/admin-units-add-manage-users/assign-to-admin-unit.png)
 
@@ -57,11 +57,11 @@ ms.locfileid: "93395524"
 
    1. 使用具有特殊許可權的角色系統管理員許可權登入 [Azure AD admin center](https://portal.azure.com) 。
 
-   1. 選取 [ **管理單位** ]。
+   1. 選取 [ **管理單位**]。
 
    1. 選取您要新增使用者的管理單位。
 
-   1. 選取 **使用者**  >  **大量活動**  >  **大量新增成員** 。 然後，您可以將逗點分隔值 (CSV) 範本中下載並編輯檔案。 格式很簡單，需要在每一行加入單一使用者主要名稱。 檔案準備就緒後，請將它儲存到適當的位置，然後將它上傳做為此步驟的一部分。
+   1. 選取 **使用者**  >  **大量活動**  >  **大量新增成員**。 然後，您可以將逗點分隔值 (CSV) 範本中下載並編輯檔案。 格式很簡單，需要在每一行加入單一使用者主要名稱。 檔案準備就緒後，請將它儲存到適當的位置，然後將它上傳做為此步驟的一部分。
 
       ![[使用者] 窗格的螢幕擷取畫面，可將使用者指派給管理單位做為大量操作。](./media/admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 
@@ -103,7 +103,7 @@ Request body
 
 在 Azure 入口網站中，您可以執行下列動作來開啟使用者的設定檔：
 
-1. 移至 **Azure AD** ，然後選取 [ **使用者** ]。
+1. 移至 **Azure AD**，然後選取 [ **使用者**]。
 
 1. 選取您要查看其設定檔的使用者。
 
@@ -135,15 +135,15 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 您可以使用下列兩種方式之一，從管理單位移除使用者： 
 
-* 在 [Azure 入口網站中，移至 [ **Azure AD** ]，然後選取 [ **使用者** ]。 
+* 在 [Azure 入口網站中，移至 [ **Azure AD**]，然後選取 [ **使用者**]。 
   1. 選取使用者以開啟使用者的設定檔。 
-  1. 選取您要從中移除使用者的系統管理單位，然後選取 [ **從管理單位移除** ]。
+  1. 選取您要從中移除使用者的系統管理單位，然後選取 [ **從管理單位移除**]。
 
      ![顯示如何從使用者的 [設定檔] 窗格中，將使用者從管理單位移除的螢幕擷取畫面。](./media/admin-units-add-manage-users/user-remove-admin-units.png)
 
-* 在 Azure 入口網站中，移至 [ **Azure AD** ]，然後選取 [ **管理單位** ]。
+* 在 Azure 入口網站中，移至 [ **Azure AD**]，然後選取 [ **管理單位**]。
   1. 選取您要從中移除使用者的管理單位。 
-  1. 選取使用者，然後選取 [ **移除成員** ]。
+  1. 選取使用者，然後選取 [ **移除成員**]。
   
      ![顯示如何在系統管理單位層級移除使用者的螢幕擷取畫面。](./media/admin-units-add-manage-users/admin-units-remove-user.png)
 
@@ -165,11 +165,11 @@ Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
 
 若要從管理單位移除多個使用者，請執行下列動作：
 
-1. 在 Azure 入口網站中，移至 **Azure AD** 。
+1. 在 Azure 入口網站中，移至 **Azure AD**。
 
-1. 選取 [ **管理單位** ]，然後選取您想要從中移除使用者的管理單位。 
+1. 選取 [ **管理單位**]，然後選取您想要從中移除使用者的管理單位。 
 
-1. 選取 [ **大量移除成員** ]，然後下載您要用來列出您想要移除之使用者的 CSV 範本。
+1. 選取 [ **大量移除成員**]，然後下載您要用來列出您想要移除之使用者的 CSV 範本。
 
    ![螢幕擷取畫面，顯示 [使用者] 窗格上的 [大量移除成員] 連結。](./media/admin-units-add-manage-users/bulk-user-remove.png)
 
@@ -177,7 +177,7 @@ Remove-AzureADMSAdministrativeUnitMember -Id $auId -MemberId $memberUserObjId
 
    ![已編輯之 CSV 檔案的螢幕擷取畫面，可從大量的管理單位中移除使用者。](./media/admin-units-add-manage-users/bulk-user-entries.png)
 
-1. 儲存您的變更、上傳檔案，然後選取 [ **提交** ]。
+1. 儲存您的變更、上傳檔案，然後選取 [ **提交**]。
 
 ## <a name="next-steps"></a>後續步驟
 

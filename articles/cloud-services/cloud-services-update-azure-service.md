@@ -1,20 +1,24 @@
 ---
-title: 如何更新雲端服務 | Microsoft Docs
+title: 如何更新傳統)  (的雲端服務 |Microsoft Docs
 description: 了解如何在 Azure 中更新雲端服務。 了解如何繼續進行雲端服務更新來確保可用性。
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075037"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741106"
 ---
-# <a name="how-to-update-a-cloud-service"></a>如何更新雲端服務
+# <a name="how-to-update-an-azure-cloud-service-classic"></a>如何更新 (傳統) 的 Azure 雲端服務
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 更新雲端服務 (包括其角色和客體 OS) 是一個包含三步驟的程序。 首先，必須上傳新雲端服務或作業系統版本的二進位檔和組態檔案。 接著，Azure 會根據新雲端服務版本的需求，保留雲端服務的計算和網路資源。 最後，Azure 會執行輪流升級，以累加方式將租用戶更新為新版本或客體 OS，同時保留您的可用性。 本文將討論最後一個步驟 (輪流升級) 的細節。
 
@@ -26,7 +30,7 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 當您在服務中執行一或多個角色的就地更新時，Azure 會根據所屬的升級網域來更新角色執行個體集合。 Azure 會更新指定的升級網域中的所有執行個體 (予以停止、更新、重新上線)，然後移到下一個網域。 Azure 只會停止在目前升級網域中執行的執行個體，以確保更新儘可能對執行中的服務造成最小的影響。 如需詳細資訊，請參閱本文後面的 [如何繼續進行更新](#howanupgradeproceeds) 。
 
 > [!NOTE]
-> 雖然 Azure 內容中的**更新**和**升級**有稍微不同的含義，但是在本文件中，這兩個詞彙可交替用於處理序和功能說明中。
+> 雖然 Azure 內容中的 **更新** 和 **升級** 有稍微不同的含義，但是在本文件中，這兩個詞彙可交替用於處理序和功能說明中。
 >
 >
 
@@ -99,7 +103,7 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 
 將服務從單一執行個體升級為多個執行個體時，由於 Azure 升級服務的方式，您的服務將會在執行升級時關閉。 保證服務可用性的服務等級協定僅適用於已部署多個執行個體的服務。 下列清單說明每個 Azure 服務升級案例如何影響每個磁碟機上的資料：
 
-|狀況|C 磁碟機|D 磁碟機|E 磁碟機|
+|案例|C 磁碟機|D 磁碟機|E 磁碟機|
 |--------|-------|-------|-------|
 |VM 重新啟動|保留|保留|保留|
 |入口網站重新啟動|保留|保留|終結|
@@ -114,10 +118,10 @@ Azure 會將您的角色執行個體組織成名為升級網域 (UD) 的邏輯�
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>復原更新
-Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服務上起始其他作業，以提供在更新期間管理服務的彈性。 只有當更新 (組態變更) 或升級在部署中處於**進行中**狀態時，才可執行回復。 只要服務有至少一個執行個體尚未更新為新版本，更新或升級就會被視為進行中。 若要測試是否允許復原，請檢查[取得部署](/previous-versions/azure/reference/ee460804(v=azure.100))和[取得雲端服務屬性](/previous-versions/azure/reference/ee460806(v=azure.100))作業所傳回的 RollbackAllowed 旗標值是否設定為 true。
+Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服務上起始其他作業，以提供在更新期間管理服務的彈性。 只有當更新 (組態變更) 或升級在部署中處於 **進行中** 狀態時，才可執行回復。 只要服務有至少一個執行個體尚未更新為新版本，更新或升級就會被視為進行中。 若要測試是否允許復原，請檢查[取得部署](/previous-versions/azure/reference/ee460804(v=azure.100))和[取得雲端服務屬性](/previous-versions/azure/reference/ee460806(v=azure.100))作業所傳回的 RollbackAllowed 旗標值是否設定為 true。
 
 > [!NOTE]
-> 只有針對**就地**更新或升級呼叫 Rollback 才合理，因為 VIP 交換升級牽涉到以另一個執行個體取代您的服務的一整個執行中的執行個體。
+> 只有針對 **就地** 更新或升級呼叫 Rollback 才合理，因為 VIP 交換升級牽涉到以另一個執行個體取代您的服務的一整個執行中的執行個體。
 >
 >
 
@@ -149,7 +153,7 @@ Azure 讓您在 Azure 網狀架構控制器接受初始更新要求後，於服�
 <a name="multiplemutatingoperations"></a>
 
 ## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>在進行中的部署上起始多項變更作業
-在某些情況下，您可能想要在進行中的部署上起始多項同時變更作業。 例如，您可能執行服務更新，而當該更新推展於您的服務時，您想要進行一些變更，例如復原更新、套用不同的更新，或甚至刪除部署。 如果服務升級包含會使已升級的角色執行個體反覆損毀的不良程式碼，則可能必須這麼做。 在此情況下，Azure 網狀架構控制器將無法繼續套用該升級，因為已升級網域中的執行個體數目不足屬於正常狀況。 這個狀態稱為「停滯部署」**。 復原更新或在失敗的更新之上套用全新的更新，即可脫離停滯部署狀態。
+在某些情況下，您可能想要在進行中的部署上起始多項同時變更作業。 例如，您可能執行服務更新，而當該更新推展於您的服務時，您想要進行一些變更，例如復原更新、套用不同的更新，或甚至刪除部署。 如果服務升級包含會使已升級的角色執行個體反覆損毀的不良程式碼，則可能必須這麼做。 在此情況下，Azure 網狀架構控制器將無法繼續套用該升級，因為已升級網域中的執行個體數目不足屬於正常狀況。 這個狀態稱為「停滯部署」。 復原更新或在失敗的更新之上套用全新的更新，即可脫離停滯部署狀態。
 
 一旦 Azure 網狀架構控制器收到更新或升級服務的初始要求，您就可以開始進行後續的變更作業。 也就是說，您不必等候初始作業完成，即可開始進行另一個變更作業。
 

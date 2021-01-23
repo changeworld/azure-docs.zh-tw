@@ -1,23 +1,24 @@
 ---
 title: Node.js 入門指南
 description: 了解如何建立簡單的 Node.js Web 應用程式，並將它部署至 Azure 雲端服務。
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: nodejs
-ms.topic: conceptual
-ms.date: 08/17/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 86bc968c922bcfb90da9ae2babd456ce4db81cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9889e0e95db84b4dbc5856ba6425f0f303161068
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327471"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741616"
 ---
-# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>建立 Node.js 應用程式並部署到 Azure 雲端服務
+# <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service-classic"></a>建立 Node.js 應用程式，並將其部署至 Azure 雲端服務 (傳統) 
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
 
 本教學課程示範如何建立在 Azure 雲端服務中執行的簡單 Node.js 應用程式。 雲端服務是 Azure 中可擴充雲端應用程式的建置組塊。 可以個別獨立管理和向外延展應用程式的前端和後端元件。  雲端服務提供穩定代管各個角色的強固專用虛擬機器。
 
@@ -32,7 +33,7 @@ ms.locfileid: "91327471"
 
 ![顯示 Hello World 網頁的網頁瀏覽器][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 > [!NOTE]
 > 本教學課程使用 Azure PowerShell (需要 Windows)。
 
@@ -44,7 +45,7 @@ ms.locfileid: "91327471"
 ## <a name="create-an-azure-cloud-service-project"></a>建立 Azure 雲端服務專案
 執行下列工作，建立新的 Azure 雲端服務專案以及基本的 Node.js 樣板：
 
-1. 以系統管理員身分執行 **Windows PowerShell**；從 [開始功能表]**** 或 [開始畫面]**** 中，搜尋 [Windows PowerShell]****。
+1. 以系統管理員身分執行 **Windows PowerShell**；從 [開始功能表] 或 [開始畫面] 中，搜尋 [Windows PowerShell]。
 2. [連線 PowerShell] 至您的訂用帳戶。
 3. 輸入下列 PowerShell Cmdlet 來建立專案：
 

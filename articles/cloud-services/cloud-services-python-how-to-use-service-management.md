@@ -1,28 +1,25 @@
 ---
 title: 使用服務管理 API (Python) - 功能指南
 description: 了解如何透過程式設計從 Python 執行一般服務管理工作。
-services: cloud-services
-documentationcenter: python
-author: tanmaygore
-manager: vashan
-editor: ''
-ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: python
 ms.topic: article
-ms.date: 05/30/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-python
-ms.openlocfilehash: ef155116904ee0d3ecab250a254010e2f7664757
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 02993f2b79e37e5e50c20c4ee07220bcbd36edb8
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073983"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741395"
 ---
 # <a name="use-service-management-from-python"></a>從 Python 使用服務管理
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 本指南說明如何以程式設計方式，從 Python 執行一般服務管理工作。 [適用於 Python 的 Azure SDK](https://github.com/Azure/azure-sdk-for-python) \(英文\) 中的 **ServiceManagementService** 類別支援以程式設計方式存取 [Azure 入口網站][management-portal]中提供的大部分服務管理相關功能。 您可以使用此功能來建立、更新和刪除雲端服務、部署、資料管理服務，以及虛擬機器。 建置需要透過程式設計方式存取服務管理的應用程式時，此功能十分實用。
 
 ## <a name="what-is-service-management"></a><a name="WhatIs"> </a>什麼是服務管理？
@@ -59,7 +56,7 @@ openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
 如需有關 Azure 憑證的詳細資訊，請參閱 [Azure 雲端服務的憑證概觀](cloud-services-certs-create.md)。 如需 OpenSSL 參數的完整說明，請參閱中的檔 [https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html) 。
 
-建立這些檔案之後，請將 `.cer` 檔案上傳到 Azure。 在 [Azure 入口網站][management-portal]中的 [設定]**** 索引標籤上，選取 [上傳]****。 請記下您儲存 `.pem` 檔案的位置。
+建立這些檔案之後，請將 `.cer` 檔案上傳到 Azure。 在 [Azure 入口網站][management-portal]中的 [設定] 索引標籤上，選取 [上傳]。 請記下您儲存 `.pem` 檔案的位置。
 
 在您取得訂用帳戶 ID 之後，請建立憑證，然後將 `.cer` 檔案上傳到 Azure，連線到 Azure 管理端點。 請將訂用帳戶 ID 和 `.pem` 檔案的路徑傳遞給 **ServiceManagementService** 來進行連線。
 
@@ -76,17 +73,17 @@ sms = ServiceManagementService(subscription_id, certificate_path)
 在上一個範例中， `sms` 是 **ServiceManagementService** 物件。 **ServiceManagementService** 類別是用來管理 Azure 服務的主要類別。
 
 ### <a name="management-certificates-on-windows-makecert"></a>Windows 上的管理憑證 (MakeCert)
-您可以使用 `makecert.exe`，在您的電腦上建立自我簽署管理憑證。 請以**系統管理員**身分開啟 **Visual Studio 命令提示字元**，然後使用下列命令 (將 *AzureCertificate* 取代為您想要使用的憑證名稱)：
+您可以使用 `makecert.exe`，在您的電腦上建立自我簽署管理憑證。 請以 **系統管理員** 身分開啟 **Visual Studio 命令提示字元**，然後使用下列命令 (將 *AzureCertificate* 取代為您想要使用的憑證名稱)：
 
 ```console
 makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 ```
 
-此命令會建立 `.cer` 檔案，並將其安裝在 [個人]**** 憑證存放區中。 如需詳細資訊，請參閱 [Azure 雲端服務的憑證概觀](cloud-services-certs-create.md)。
+此命令會建立 `.cer` 檔案，並將其安裝在 [個人] 憑證存放區中。 如需詳細資訊，請參閱 [Azure 雲端服務的憑證概觀](cloud-services-certs-create.md)。
 
-建立憑證之後，請將 `.cer` 檔案上傳到 Azure。 在 [Azure 入口網站][management-portal]中的 [設定]**** 索引標籤上，選取 [上傳]****。
+建立憑證之後，請將 `.cer` 檔案上傳到 Azure。 在 [Azure 入口網站][management-portal]中的 [設定] 索引標籤上，選取 [上傳]。
 
-在您取得訂用帳戶 ID 之後，請建立憑證，然後將 `.cer` 檔案上傳到 Azure，連線到 Azure 管理端點。 將訂用帳戶 ID 和您 [個人]**** 憑證存放區中憑證的位置傳遞給 **ServiceManagementService** (同樣地，將 *AzureCertificate* 取代為您憑證的名稱) 來進行連線。
+在您取得訂用帳戶 ID 之後，請建立憑證，然後將 `.cer` 檔案上傳到 Azure，連線到 Azure 管理端點。 將訂用帳戶 ID 和您 [個人] 憑證存放區中憑證的位置傳遞給 **ServiceManagementService** (同樣地，將 *AzureCertificate* 取代為您憑證的名稱) 來進行連線。
 
 ```python
 from azure import *
@@ -181,7 +178,7 @@ sms.delete_hosted_service('myhostedservice')
 
 您必須先刪除服務的所有部署，才能刪除該服務。 如需詳細資訊，請參閱[刪除部署](#DeleteDeployment)。
 
-## <a name="delete-a-deployment"></a><a name="DeleteDeployment"> </a>刪除部署
+## <a name="delete-a-deployment"></a><a name="DeleteDeployment"></a>刪除部署
 若要刪除部署，請使用 **delete\_deployment** 方法。 下列範例示範如何刪除名為 `v1` 的部署：
 
 ```python
@@ -243,7 +240,7 @@ sms.delete_storage_account('mystorageaccount')
 ```
 
 ## <a name="list-available-operating-systems"></a><a name="ListOperatingSystems"> </a>列出可用的作業系統
-若要列出可用來裝載服務的作業系統，請使用 **清單 \_ 作業系統 \_ ** 方法。
+若要列出可用來裝載服務的作業系統，請使用 **清單 \_ 作業系統 \_** 方法。
 
 ```python
 from azure import *
@@ -413,7 +410,7 @@ result = sms.capture_vm_image(
     )
 ```
 
-若要確定您已成功擷取映像，請使用 **list\_vm\_images**API。 請確定您的映像顯示在結果中。
+若要確定您已成功擷取映像，請使用 **list\_vm\_images** API。 請確定您的映像顯示在結果中。
 
 ```python
 images = sms.list_vm_images()

@@ -1,8 +1,8 @@
-- name: 雲端服務文件
+- name: 雲端服務 (傳統) 檔
   href: index.yml
 - name: 概觀
   items:
-    - name: 什麼是雲端服務？
+    - name: 什麼是雲端服務 (傳統) ？
       href: cloud-services-choose-me.md
     - name: 雲端服務組態檔與封裝
       href: cloud-services-model-and-package.md

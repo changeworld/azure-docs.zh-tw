@@ -1,30 +1,33 @@
 ---
-title: 處理雲端服務生命週期事件 | Microsoft Docs
+title: 處理雲端服務 (傳統) 生命週期事件 |Microsoft Docs
 description: 瞭解如何在 .NET 中使用雲端服務角色的生命週期方法，包括 RoleEntryPoint，其提供方法來回應生命週期事件。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: b5aa4bd061647f63ebcc70109f0ba21b39e814cc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930055"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741327"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>在 .NET 中自訂 Web 或背景工作角色的生命週期
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 當您建立背景工作角色時，擴充可為您提供覆寫方法並讓您回應生命週期事件的 [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) 類別。 若是 Web 角色，此類別是選擇性的，因此您必須使用它來回應生命週期事件。
 
 ## <a name="extend-the-roleentrypoint-class"></a>擴充 RoleEntryPoint 類別
-[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) 類別包含 Azure 在**啟動**、**執行**或**停止** Web 或背景工作角色時所呼叫的方法。 您可以選擇性地覆寫這些方法來管理角色初始化、角色關機順序或角色的執行緒。 
+[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) 類別包含 Azure 在 **啟動**、**執行** 或 **停止** Web 或背景工作角色時所呼叫的方法。 您可以選擇性地覆寫這些方法來管理角色初始化、角色關機順序或角色的執行緒。 
 
 擴充 **RoleEntryPoint** 時，應留意下列方法的行為：
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))方法會傳回布林值，因此可以從這個方法傳回**false** 。
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))方法會傳回布林值，因此可以從這個方法傳回 **false** 。
   
    如果您的程式碼傳回 **false**，會突然終止角色處理序，而不會執行您既有的任何關機順序。 一般而言，您應該避免從 **OnStart** 方法傳回 **false**。
 * **RoleEntryPoint** 方法多載未能攔截的任何例外狀況，將一律視為未處理的例外狀況。
@@ -34,7 +37,7 @@ ms.locfileid: "88930055"
 如果您的角色無法啟動，或在初始化、忙碌和停止狀態之間循環，每次角色重新啟動時，您的程式碼可能會在其中一個生命週期事件內擲回未處理的例外狀況。 在此情況下，請使用 [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) 事件判別例外狀況的原因並加以適當地處理。 您的角色可能也會從 [Run](/previous-versions/azure/reference/ee772746(v=azure.100)) 方法傳回，而導致該角色重新啟動。 如需有關部署狀態的詳細資訊，請參閱 [導致角色循環的常見問題](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)。
 
 > [!NOTE]
-> 如果您使用 **Azure Tools for Microsoft Visual Studio** 開發您的應用程式，角色專案範本會在 WebRole.cs** 及 WorkerRole.cs** 檔案中，自動為您擴充 **RoleEntryPoint** 類別。
+> 如果您使用 **Azure Tools for Microsoft Visual Studio** 開發您的應用程式，角色專案範本會在 WebRole.cs 及 WorkerRole.cs 檔案中，自動為您擴充 **RoleEntryPoint** 類別。
 > 
 > 
 

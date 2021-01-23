@@ -1,21 +1,25 @@
 ---
-title: 雲端服務的常見啟動工作 | Microsoft Docs
+title: 雲端服務 (傳統) 的常見啟動工作 |Microsoft Docs
 description: 提供一些常見的啟動工作範例，做為您在雲端服務 Web 角色或背景工作角色中執行的參考。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f55b225e615a3e7a5fbcf56b405054883d3b5413
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075173"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741191"
 ---
-# <a name="common-cloud-service-startup-tasks"></a>常見的雲端服務啟動工作
+# <a name="common-cloud-service-classic-startup-tasks"></a>常見的雲端服務 (傳統) 啟動工作
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 本文提供一些常見的啟動工作範例，做為您在雲端服務中執行的參考。 您可以利用啟動工作，在角色啟動之前執行作業。 您可能想要執行的作業包括安裝元件、註冊 COM 元件、設定登錄機碼，或啟動長時間執行的處理序。 
 
 請參閱 [這篇文章](cloud-services-startup-tasks.md) ，了解啟動工作的運作方式，特別是該如何建立定義啟動工作的項目。
@@ -83,7 +87,7 @@ ms.locfileid: "92075173"
 *Startup.cmd* 批次檔會使用 *AppCmd.exe*，在 *Web.config* 檔案中新增 JSON 的 compression 區段和 compression 項目。 預期的 **errorlevel** = 183 會使用 VERIFY.EXE 命令列程式設為零。 非預期的 errorlevel 會記錄至 StartupErrorLog.txt。
 
 ```cmd
-REM   *** Add a compression section to the Web.config file. ***
+REM   **_ Add a compression section to the Web.config file. _*_
 %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 
 REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. This error is expected if this
@@ -98,7 +102,7 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   *** Add compression for json. ***
+REM   _*_ Add compression for json. _*_
 %windir%\system32\inetsrv\appcmd set config  -section:system.webServer/httpCompression /+"dynamicTypes.[mimeType='application/json; charset=utf-8',enabled='True']" /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 IF %ERRORLEVEL% NEQ 0 (
@@ -106,10 +110,10 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   *** Exit batch file. ***
+REM   _*_ Exit batch file. _*_
 EXIT /b 0
 
-REM   *** Log error and exit ***
+REM   _*_ Log error and exit _*_
 :ErrorExit
 REM   Report the date, time, and ERRORLEVEL of the error.
 DATE /T >> "%TEMP%\StartupLog.txt" 2>&1
@@ -125,7 +129,7 @@ Azure 實際上擁有兩個防火牆。 第一道防火牆會控制虛擬機器�
 
 Azure 會針對在角色內啟動的處理序建立防火牆規則。 例如，在您啟動服務或程式時，Azure 會自動建立必要的防火牆規則，藉此允許該服務與網際網路通訊。 不過，如果您建立的服務是由角色外部的處理序啟動 (像是 COM+ 服務，或是 Windows 排程器工作)，您就必須手動建立防火牆規則以允許存取該服務。 您可以使用啟動工作建立這些防火牆規則。
 
-建立防火牆規則的啟動工作必須具有 [executionContext][Environment] (提高權限) 的 **executionContext**，就會執行失敗。 將以下啟動工作加入 [ServiceDefinition.csdef] 檔案。
+建立防火牆[規則的啟動]工作必須具有 _ * 提高許可權的[executionCoNtext]工作。 將以下啟動工作加入 [ServiceDefinition.csdef] 檔案。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -153,7 +157,7 @@ EXIT /B %errorlevel%
 ## <a name="block-a-specific-ip-address"></a>封鎖特定的 IP 位址
 您可以透過修改 IIS **web.config** 檔來限制 Azure Web 角色只能存取一組指定的 IP 位址。 您也必須使用命令檔來解除鎖定 **ApplicationHost.config** 檔案的 **ipSecurity** 區段。
 
-若要解除鎖定 **ApplicationHost.config** 檔案的 **ipSecurity** 區段，請建立會在角色啟動時執行的命令檔。 在 Web 角色的根層級建立名為 **startup** 的資料夾，然後在此資料夾中建立名為 **startup.cmd** 的批次檔。 將這個檔案新增至 Visual Studio 專案，並將屬性設為 [一律複製]****，以確保將它納入套件中。
+若要解除鎖定 **ApplicationHost.config** 檔案的 **ipSecurity** 區段，請建立會在角色啟動時執行的命令檔。 在 Web 角色的根層級建立名為 **startup** 的資料夾，然後在此資料夾中建立名為 **startup.cmd** 的批次檔。 將這個檔案新增至 Visual Studio 專案，並將屬性設為 [一律複製]，以確保將它納入套件中。
 
 將以下啟動工作加入 [ServiceDefinition.csdef] 檔案。
 

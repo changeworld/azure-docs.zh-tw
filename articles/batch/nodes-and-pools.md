@@ -3,12 +3,12 @@ title: Azure Batch 中的節點和集區
 description: 從開發觀點了解計算節點和集區，以及如何在 Azure Batch 工作流程中使用。
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934640"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741769"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的節點和集區
 
@@ -114,7 +114,7 @@ Azure 多餘的容量不足時，可能會佔用低優先順序的節點。 如�
 
 ## <a name="node-size"></a>節點大小
 
-當您建立 Azure Batch 集區時，您可以從幾乎所有的 VM 系列及 Azure 中可用的大小進行選擇。 Azure 針對不同的工作負載提供各種 VM 大小，包括特製化的 [HPC](../virtual-machines/sizes-hpc.md)或[已啟用的 GPU](../virtual-machines/sizes-gpu.md) VM 大小。 
+當您建立 Azure Batch 集區時，您可以從幾乎所有的 VM 系列及 Azure 中可用的大小進行選擇。 Azure 針對不同的工作負載提供各種 VM 大小，包括特製化的 [HPC](../virtual-machines/sizes-hpc.md)或[已啟用的 GPU](../virtual-machines/sizes-gpu.md) VM 大小。 請注意，只有在建立集區時，才可選擇節點大小。 換句話說，一旦建立集區之後，就無法變更其節點大小。
 
 如需詳細資訊，請參閱[為 Azure Batch 集區中的運算節點選擇 VM 大小](batch-pool-vm-sizes.md)。
 

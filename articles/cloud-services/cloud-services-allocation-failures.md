@@ -1,28 +1,26 @@
 ---
-title: 針對雲端服務配置失敗進行疑難排解 | Microsoft Docs
+title: 針對雲端服務 (傳統) 配置失敗進行疑難排解 |Microsoft Docs
 description: 針對部署 Azure 雲端服務時發生的配置失敗進行疑難排解。 瞭解配置的運作方式，以及配置可能失敗的原因。
-services: azure-service-management, cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 529157eb-e4a1-4388-aa2b-09e8b923af74
+ms.topic: article
 ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: ibiza
-ms.topic: troubleshooting
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 1d82b7223c2b392e6b9aebffdc545dc38b38ca2f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 0c172add9aa49b2ca64d2fb2281d326256e3aec7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074221"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741582"
 ---
-# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>疑難排解在 Azure 中部署雲端服務時發生的配置失敗
-## <a name="summary"></a>摘要
+# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-classic-in-azure"></a>當您在 Azure 中部署雲端服務 (傳統) 時，對配置失敗進行疑難排解
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
+## <a name="summary"></a>[摘要]
 當您部署執行個體至雲端服務或加入新的 Web 或背景工作角色執行個體時，Microsoft Azure 會配置計算資源。 執行這些作業時，即使尚未達到 Azure 訂用帳戶限制，也可能偶爾發生錯誤。 本文說明一些常見配置失敗的原因，並建議可能的補救方法。 規劃服務的部署時，本資訊可能也很有用。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]

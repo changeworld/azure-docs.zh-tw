@@ -2,23 +2,23 @@
 title: 在 Azure Active Directory 中查看指派給群組的角色 |Microsoft Docs
 description: 瞭解如何使用 Azure AD 系統管理中心來查看指派給群組的角色。 查看群組和指派的角色是預設的使用者權限。
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8fdfd99b2ef5c1578bc9e87534461d68398c9f6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 1a1939be42126606fdae261e60c890c71374c894
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378273"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741820"
 ---
 # <a name="view-roles-assigned-to-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中查看指派給群組的角色
 
@@ -28,7 +28,7 @@ ms.locfileid: "93378273"
 
 1. 選取您感興趣的群組。
 
-1. 選取 [ **指派的角色** ]。 您現在可以看到指派給此群組的所有 Azure AD 角色。
+1. 選取 [ **指派的角色**]。 您現在可以看到指派給此群組的所有 Azure AD 角色。
 
    ![查看指派給所選群組的所有角色](./media/groups-view-assignments/view-assignments.png)
 

@@ -3,22 +3,22 @@ title: 使用我的員工來委派使用者管理 (預覽版) -Azure AD |Microso
 description: 使用「我的員工」和管理單位來委派使用者管理
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.date: 05/08/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 927d1f6dff9a24fb8427bb9c353e6cc61ac6a1f0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92374763"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740137"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>使用「我的員工」 (預覽版來管理您的使用者) 
 
@@ -54,7 +54,7 @@ ms.locfileid: "92374763"
 設定 au 之後，您可以將此範圍套用至存取我的員工的使用者。 只有獲派系統管理角色的使用者可以存取我的員工。 若要啟用我的員工，請完成下列步驟：
 
 1. 以使用者系統管理員身分登入 Azure 入口網站。
-2. 流覽至**Azure Active Directory**  >  **使用者設定**  >  **使用者功能**預覽  >  **管理使用者功能預覽設定**。
+2. 流覽至 **Azure Active Directory**  >  **使用者設定**  >  **使用者功能** 預覽  >  **管理使用者功能預覽設定**。
 3. 在 [系統 **管理員**] 下，您可以選擇啟用 [所有使用者]、[選取的使用者] 或 [無使用者存取]。
 
 > [!Note]
@@ -87,10 +87,10 @@ ms.locfileid: "92374763"
 
 下列角色具有重設使用者密碼的許可權：
 
-- [驗證系統管理員](permissions-reference.md#authentication-administrator)
-- [特殊權限驗證管理員](permissions-reference.md#privileged-authentication-administrator)
+- [驗證管理員](permissions-reference.md#authentication-administrator)
+- [特殊許可權驗證管理員](permissions-reference.md#privileged-authentication-administrator)
 - [全域管理員](permissions-reference.md#global-administrator--company-administrator)
-- [服務台管理員](permissions-reference.md#helpdesk-administrator)
+- [技術服務人員管理員](permissions-reference.md#helpdesk-administrator)
 - [使用者管理員](permissions-reference.md#user-administrator)
 - [密碼管理員](permissions-reference.md#password-administrator)
 
@@ -115,8 +115,8 @@ ms.locfileid: "92374763"
 
 若要管理使用者的電話號碼，您必須獲指派下列其中一個角色：
 
-- [驗證系統管理員](permissions-reference.md#authentication-administrator)
-- [特殊權限驗證管理員](permissions-reference.md#privileged-authentication-administrator)
+- [驗證管理員](permissions-reference.md#authentication-administrator)
+- [特殊許可權驗證管理員](permissions-reference.md#privileged-authentication-administrator)
 - [全域管理員](permissions-reference.md#global-administrator--company-administrator)
 
 ## <a name="search"></a>搜尋

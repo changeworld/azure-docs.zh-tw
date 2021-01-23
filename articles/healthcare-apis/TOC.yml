@@ -21,8 +21,13 @@
         - name: 使用 ARM 範本
           displayName: Resource Manager
           href: fhir-paas-arm-template-quickstart.md
-    - name: 部署 Azure IoT Connector for FHIR (預覽) - 入口網站
-      href: iot-fhir-portal-quickstart.md
+    - name: 部署 Azure IoT Connector for FHIR (預覽)
+      expanded: false
+      items:
+        - name: 使用入口網站
+          href: iot-fhir-portal-quickstart.md
+        - name: 使用 ARM 範本
+          href: iot-fhir-arm-template-quickstart.md
 - name: 教學課程
   expanded: false
   items:

@@ -1,22 +1,25 @@
 ---
-title: Azure 雲端服務 .Def LoadBalancerProbe 架構 |Microsoft Docs
+title: Azure 雲端服務 (傳統) LoadBalancerProbe 架構 |Microsoft Docs
 description: 客戶定義的 LoadBalancerProbe 是角色實例中端點的健康情況探查。 它會結合服務定義檔中的 web 角色或背景工作角色。
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 14
-author: georgewallace
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79537341"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739780"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure 雲端服務定義 LoadBalancerProbe 結構描述
+# <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>Azure 雲端服務 (傳統) 定義 LoadBalancerProbe 架構
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 負載平衡器探查是客戶定義的健康情況探查，可探查 UDP 端點和角色執行個體中的端點。 `LoadBalancerProbe` 不是獨立元素；它會與服務定義檔中的 Web 角色或背景工作角色結合。 `LoadBalancerProbe` 可由多個角色使用。
 
 服務定義檔的預設副檔名為 .csdef。

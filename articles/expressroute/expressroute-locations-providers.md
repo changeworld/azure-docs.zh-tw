@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/22/2021
 ms.author: duau
-ms.openlocfilehash: 28d8f25d485eccfa98439649652f982ed87091f5
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 120261cdb902fbdd089c73320a847191005f149b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663074"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740579"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -101,7 +101,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **Frankfurt2** | [Equinix FR7](https://www.equinix.com/locations/europe-colocation/germany-colocation/frankfurt-data-centers/fr7/) | 1 | 德國中西部 | 10G、100G | |
 | **日內瓦** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G、100G | Equinix、Megaport |
 | **香港** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 東亞 | 10G | Aryaka networks Networks、英屬電信、CenturyLink Cloud Connect、首席電信、中國電信 Global、中國 Unicom、Equinix、InterCloud、Megaport、NTT 通訊、橙色、PCCW 全球受限、Tata 通訊、Telia 承運商、Verizon |
-| **香港 2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 東亞 | 10G | 中國行動國際、中國電訊全球、PCCW Global 有限、SingTel |
+| **香港 2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 東亞 | 10G | 中國行動國際、中國電信 Global、Megaport、PCCW Global 受限、SingTel |
 | **雅加達** | Telin，Telkom 印尼 | 4 | n/a | 10G | Telin |
 | **約翰尼斯堡** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南非北部 | 10G | BCX、British Telecom、Internet Solutions - Cloud Connect、Liquid Telecom、Orange、Teraco |
 | **吉隆坡** | [TIME dotCom Menara AIMS](https://www.time.com.my/enterprise/connectivity/direct-cloud) | 2 | n/a | n/a | TIME dotCom |
@@ -237,7 +237,7 @@ Azure 國家雲端彼此隔離，也與全球商業 Azure 隔離。 某個 Azure
 | **Slough** | Equinix | HSO|
 | **雪梨** | Megaport | Macquarie Telecom Group|
 | **東京** | Equinix | ARTERIA Networks Corporation, BroadBand Tower, Inc. |
-| **多倫多** | Equinix、Megaport | Airgate Technologies Inc.、Beanfield Metroconnect、Aptum Technologies、IVedha Inc、Rogers、Thinktel、Zirro|
+| **多倫多** | Equinix、Megaport | Airgate 技術 Inc.、Beanfield Metroconnect、Aptum 技術、IVedha Inc.、Oncore Cloud Services Inc.、Rogers、Thinktel、Zirro|
 | **華盛頓** |Equinix | Altice Business、BICS、Cox Business、Crown Castle、Gtt Communications Inc、Epsilon Telecommunications Limited、Masergy、Windstream |
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute 系統整合者

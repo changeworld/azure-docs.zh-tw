@@ -1,21 +1,25 @@
 ---
-title: 雲端服務和管理憑證 | Microsoft Docs
+title: 雲端服務 (傳統) 和管理憑證 |Microsoft Docs
 description: 瞭解如何建立和部署雲端服務的憑證，以及在 Azure 中使用管理 API 進行驗證。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c73f9812f344eecf4e51f43405b48693ddfa191b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072419"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739729"
 ---
-# <a name="certificates-overview-for-azure-cloud-services"></a>Azure 雲端服務的憑證概觀
+# <a name="certificates-overview-for-azure-cloud-services-classic"></a>Azure 雲端服務 (傳統) 的憑證總覽
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 在 Azure 中，憑證用於雲端服務 ([服務憑證](#what-are-service-certificates)) 與驗證管理 API ([管理憑證](#what-are-management-certificates))。 本主題提供兩種憑證類型、如何[建立](#create)這些憑證類型，以及如何將其部署到 Azure 的一般概觀。
 
 在 Azure 中使用的憑證是 x.509 v3 憑證，而且可以由其他受信任的憑證簽署，或者可以自我簽署。 自我簽署的憑證是由自己的建立者簽署，因此預設不受到信任。 大部分的瀏覽器都可以忽略這個問題。 您應該僅在開發和測試雲端服務時使用自我簽署的憑證。 

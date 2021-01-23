@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: aa829f8f3de145cf831719a39cfb66163d9cc4f9
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: f922e7a2755a6e26a0d9f93f2668753e2f4dad5a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98633924"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738164"
 ---
 # <a name="what-is-data-wrangling"></a>什麼是資料整頓？
 
@@ -27,6 +27,8 @@ Data Factory 藉由將 M 轉譯成 Azure Data Factory 的資料流程，將 Powe
 > Azure Data Factory 中的 Power Query 活動目前提供公開預覽
 
 ## <a name="use-cases"></a>使用案例
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4MFkW]
 
 ### <a name="fast-interactive-data-exploration-and-preparation"></a>快速的互動式資料探索和準備
 
@@ -62,6 +64,6 @@ Data Factory 藉由將 M 轉譯成 Azure Data Factory 的資料流程，將 Powe
 
 如需有關支援之轉換的詳細資訊，請參閱 [資料整頓函數](wrangling-functions.md)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 瞭解如何 [建立 Power Query 混合的資料整頓](wrangling-tutorial.md)。

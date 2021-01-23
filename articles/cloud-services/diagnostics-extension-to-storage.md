@@ -8,14 +8,18 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 9e16d77c36f382e72d5e9902b07afbbec50b6876
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4962d5f048cf41eca50a77a0dedad3cef48ac1f0
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88723249"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740069"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>在 Azure 儲存體中儲存和檢視診斷資料
+
+> [!IMPORTANT]
+> [Azure 雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md) 是 Azure 雲端服務產品的新 Azure Resource Manager 型部署模型。透過這種變更，在以 Azure Service Manager 為基礎的部署模型上執行的 Azure 雲端服務，已重新命名為雲端服務 (傳統) ，而且所有新的部署都應該使用 [雲端服務 (延伸支援) ](../cloud-services-extended-support/overview.md)。
+
 診斷資料不會永久儲存，除非您將它傳送至 Microsoft Azure 儲存體模擬器或 Azure 儲存體。 一旦位於儲存體，即可利用其中一個可用的工具進行檢視。
 
 ## <a name="specify-a-storage-account"></a>指定儲存體帳戶
@@ -33,12 +37,12 @@ ms.locfileid: "88723249"
 
 | 資料來源 | 儲存體格式 |
 | --- | --- |
-| Azure 記錄 |Table |
+| Azure 記錄 |資料表 |
 | IIS 7.0 記錄 |Blob |
-| Azure 診斷基礎結構記錄 |Table |
+| Azure 診斷基礎結構記錄 |資料表 |
 | 失敗要求追蹤記錄 |Blob |
-| Windows 事件記錄檔 |Table |
-| 效能計數器 |Table |
+| Windows 事件記錄檔 |資料表 |
+| 效能計數器 |資料表 |
 | 損毀傾印 |Blob |
 | 自訂錯誤記錄 |Blob |
 
