@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c45b362bc37df71346fc3b635c8ae4a51f62cdc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de01788c01d4d6dedd9563faaaac07bff30bbd97
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919431"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724754"
 ---
 # <a name="build-resilience-in-your-hybrid-architecture"></a>打造混合式架構的復原能力
 
@@ -82,7 +82,7 @@ Azure AD 的最簡單且最具復原性的混合式驗證選項是 [密碼雜湊
 
 同盟牽涉到在 Azure AD 和 federation service 之間建立信任關係，包括端點交換、權杖簽署憑證，以及其他中繼資料。 當要求 Azure AD 時，它會讀取設定，並將使用者重新導向至設定的端點。 此時，使用者會與 federation service 互動，而此服務會發出 Azure AD 所驗證的 SAML 判斷提示。 
 
-下圖顯示企業 Active Directory 同盟服務 (AD FS) 的部署，包括跨多個內部部署資料中心的重複同盟和 web 應用程式 proxy 伺服器。 此設定依賴商業網路基礎結構元件，例如 DNS、具有地理親和性功能的網路負載平衡、防火牆等等。所有內部部署元件和連線都很容易失敗。 如需詳細資訊，請造訪 [AD FS 容量規劃檔](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) 。
+下圖顯示企業 Active Directory 同盟服務 (AD FS) 的部署，包括跨多個內部部署資料中心的重複同盟和 web 應用程式 proxy 伺服器。 此設定依賴商業網路基礎結構元件，例如 DNS、具有地理親和性功能的網路負載平衡、防火牆等等。所有內部部署元件和連線都很容易失敗。 如需詳細資訊，請造訪 [AD FS 容量規劃檔](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity) 。
 
 > [!NOTE]
 >  同盟具有最高的內部部署相依性數目，因此是最可能的失敗點。 雖然此圖顯示 AD FS，但其他內部部署身分識別提供者會受到類似的設計考慮，以達成高可用性、擴充性及容錯移轉。
@@ -99,9 +99,9 @@ Azure AD 的最簡單且最具復原性的混合式驗證選項是 [密碼雜湊
 
 * [Azure AD 同盟相容性清單](../hybrid/how-to-connect-fed-compatibility.md)
 
-* 遵循 [AD FS 容量規劃檔](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity)
+* 遵循 [AD FS 容量規劃檔](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity)
 
-* [在 Azure IaaS 中部署 AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+* [在 Azure IaaS 中部署 AD FS](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
 
 * [啟用 PHS](../hybrid/tutorial-phs-backup.md) 搭配您的同盟
 

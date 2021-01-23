@@ -3,12 +3,12 @@ title: Batch 安全性與合規性的最佳作法
 description: 學習利用您的 Azure Batch 解決方案強化安全性的最佳作法和實用秘訣。
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9732ffb810a1038a6f402a46fa8b809f180f0a8
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802281"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723807"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>Batch 安全性與合規性的最佳作法
 
@@ -137,8 +137,8 @@ Batch Api 儲存的某些資訊（例如帳戶憑證、作業和工作中繼資�
 
 為了增加安全性，請使用下列其中一種 Azure 磁片加密功能來加密這些磁片：
 
-- [使用平臺管理的金鑰進行靜態受控磁片加密](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
-- [使用平臺管理的金鑰在主機上加密](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [使用平臺管理的金鑰進行靜態受控磁片加密](../virtual-machines/disk-encryption.md#platform-managed-keys)
+- [使用平臺管理的金鑰在主機上加密](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure 磁碟加密](disk-encryption.md)
 
 ## <a name="securely-access-services-from-compute-nodes"></a>從計算節點安全地存取服務

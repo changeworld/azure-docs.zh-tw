@@ -3,12 +3,12 @@ title: Azure 備份詞彙
 description: 本文定義有助於搭配 Azure 備份使用的術語。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 121258665ab275fdcffd618e7c0cf1b3e0537e70
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661471"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723909"
 ---
 # <a name="azure-backup-glossary"></a>Azure 備份詞彙
 
@@ -21,7 +21,7 @@ ms.locfileid: "98661471"
 
 ## <a name="afs-azure-file-shares"></a>Azure 檔案共用) 的 AFS (
 
-請參閱 [Azure 檔案儲存體檔](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)。
+請參閱 [Azure 檔案儲存體檔](../storage/files/storage-files-introduction.md)。
 
 ## <a name="alternate-location-recovery"></a>替代位置復原
 
@@ -35,7 +35,7 @@ ms.locfileid: "98661471"
 
 ## <a name="azure-resource-manager-arm-templates"></a>Azure Resource Manager (ARM) 範本
 
-請參閱 [ARM 範本檔](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)。
+請參閱 [ARM 範本檔](../azure-resource-manager/templates/overview.md)。
 
 ## <a name="autoprotection-for-databases"></a>適用于資料庫) 的 start-autoprotection (
 
@@ -49,38 +49,38 @@ Azure 備份提供三種類型的複寫，讓您的儲存體和資料具有高�
 
 ### <a name="lrs"></a>LRS
 
-[本機冗余儲存體 (LRS) ](https://docs.microsoft.com/azure/storage/common/storage-redundancy#locally-redundant-storage) 複寫您的備份資料三次 (它會在資料中心的儲存體縮放單位中建立三份備份資料) 。 備份資料的所有複本都存在於相同的區域中。 LRS 是一種低成本的選項，可保護您的備份資料免于本機硬體失敗。
+[本機冗余儲存體 (LRS) ](../storage/common/storage-redundancy.md#locally-redundant-storage) 複寫您的備份資料三次 (它會在資料中心的儲存體縮放單位中建立三份備份資料) 。 備份資料的所有複本都存在於相同的區域中。 LRS 是一種低成本的選項，可保護您的備份資料免于本機硬體失敗。
 
 ### <a name="grs"></a>GRS
 
-[異地備援儲存體 (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage) 是預設且建議使用的複寫選項。 GRS 會將您的備份資料複寫到與來源資料的主要位置相距數百英里的次要區域。 GRS 成本超過 LRS，但 GRS 可針對您的備份資料提供較高的持久性層級，即使發生區域中斷也是如此。
+[異地備援儲存體 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 是預設且建議使用的複寫選項。 GRS 會將您的備份資料複寫到與來源資料的主要位置相距數百英里的次要區域。 GRS 成本超過 LRS，但 GRS 可針對您的備份資料提供較高的持久性層級，即使發生區域中斷也是如此。
 
 >[!NOTE]
 >若為已啟用跨區域還原功能的 GRS 保存庫，則會將備份儲存體從 GRS 升級至 GRS (讀取存取權 Geo-Redundant 儲存體) 。
 
 ### <a name="zrs"></a>ZRS
 
-[區域冗余儲存體 (ZRS) ](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage) 會將備份資料複寫至 [可用性區域](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)，以保證相同區域中的備份資料存放區和復原。 因此，您可以在 ZRS 中備份需要 [資料](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) 存放區的重要工作負載。
+[區域冗余儲存體 (ZRS) ](../storage/common/storage-redundancy.md#zone-redundant-storage) 會將備份資料複寫至 [可用性區域](../availability-zones/az-overview.md#availability-zones)，以保證相同區域中的備份資料存放區和復原。 因此，您可以在 ZRS 中備份需要 [資料](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) 存放區的重要工作負載。
 
 ## <a name="azure-command-line-interface-cli"></a>Azure 命令列介面 (CLI)
 
-請參閱 [Azure CLI 檔](https://docs.microsoft.com/cli/azure/what-is-azure-cli)。
+請參閱 [Azure CLI 檔](/cli/azure/what-is-azure-cli)。
 
 ## <a name="azure-policy"></a>Azure 原則
 
-請參閱 [Azure 原則檔](https://docs.microsoft.com/azure/governance/policy/overview)。
+請參閱 [Azure 原則檔](../governance/policy/overview.md)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-請參閱 [Azure PowerShell 檔](https://docs.microsoft.com/powershell/azure/)。
+請參閱 [Azure PowerShell 檔](/powershell/azure/)。
 
 ## <a name="azure-resource-manager-arm"></a>Azure Resource Manager (ARM) 
 
-請參閱 [Azure Resource Manager 檔](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)。
+請參閱 [Azure Resource Manager 檔](../azure-resource-manager/management/overview.md)。
 
 ## <a name="azure-disk-encryption-ade"></a>Azure 磁碟加密 (ADE)
 
-請參閱 [Azure 磁碟加密檔](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss)。
+請參閱 [Azure 磁碟加密檔](../security/fundamentals/azure-disk-encryption-vms-vmss.md)。
 
 ## <a name="backend-storage--cloud-storage--backup-storage"></a>後端儲存體/雲端儲存體/備份儲存體
 
@@ -124,11 +124,11 @@ BCDR 牽涉到一組組織必須採用的流程，以確保應用程式和工作
 
 ## <a name="cross-region-restore-crr"></a>跨區域還原 (CRR) 
 
-作為其中一個 [還原選項](backup-azure-arm-restore-vms.md#restore-options)，跨區域還原 (CRR) 可讓您在次要區域（也就是 [Azure 配對的區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)）中還原備份專案。
+作為其中一個 [還原選項](backup-azure-arm-restore-vms.md#restore-options)，跨區域還原 (CRR) 可讓您在次要區域（也就是 [Azure 配對的區域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中還原備份專案。
 
 ## <a name="data-box"></a>資料箱
 
-請參閱 [資料箱檔](https://docs.microsoft.com/azure/databox/data-box-overview)。
+請參閱 [資料箱檔](../databox/data-box-overview.md)。
 
 ## <a name="datasource"></a>資料來源
 
@@ -138,11 +138,11 @@ BCDR 牽涉到一組組織必須採用的流程，以確保應用程式和工作
 
  (工作負載特定的詞彙) 
 
-請參閱 [DPM 檔](https://docs.microsoft.com/system-center/dpm/dpm-overview)。
+請參閱 [DPM 檔](/system-center/dpm/dpm-overview)。
 
 ## <a name="expressroute"></a>ExpressRoute
 
-請參閱 [ExpressRoute 檔](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)。
+請參閱 [ExpressRoute 檔](../expressroute/expressroute-introduction.md)。
 
 ## <a name="file-system-consistent-backup"></a>檔案系統一致備份
 
@@ -164,7 +164,7 @@ GFS (祖父-父親) 備份原則可讓您定義每日、每月和每年備份排
 
 ## <a name="iaas-vms--azure-vms"></a>IaaS Vm/Azure Vm
 
-請參閱 [AZURE VM 檔](https://docs.microsoft.com/azure/virtual-machines/)。
+請參閱 [AZURE VM 檔](../virtual-machines/index.yml)。
 
 ## <a name="incremental-backup"></a>增量備份
 
@@ -196,7 +196,7 @@ GFS (祖父-父親) 備份原則可讓您定義每日、每月和每年備份排
 
 ## <a name="managed-disks"></a>受控磁碟
 
-請參閱 [受控磁片檔](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview)。
+請參閱 [受控磁片檔](../virtual-machines/managed-disks-overview.md)。
 
 ## <a name="mars-agent"></a>MARS 代理程式
 
@@ -206,7 +206,7 @@ GFS (祖父-父親) 備份原則可讓您定義每日、每月和每年備份排
 
 ## <a name="nsg-network-security-group"></a>NSG (網路安全性群組) 
 
-請參閱 [NSG 檔](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)。
+請參閱 [NSG 檔](../virtual-network/network-security-groups-overview.md)。
 
 ## <a name="offline-seeding"></a>離線植入
 
@@ -228,7 +228,7 @@ GFS (祖父-父親) 備份原則可讓您定義每日、每月和每年備份排
 
 ## <a name="private-endpoint"></a>私人端點
 
-請參閱 [私人端點檔](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)集。
+請參閱 [私人端點檔](../private-link/private-endpoint-overview.md)集。
 
 ## <a name="protected-instance"></a>受保護的實例
 
@@ -236,7 +236,7 @@ GFS (祖父-父親) 備份原則可讓您定義每日、每月和每年備份排
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (角色型存取控制) 
 
-請參閱 [RBAC 檔](https://docs.microsoft.com/azure/role-based-access-control/overview)。
+請參閱 [RBAC 檔](../role-based-access-control/overview.md)。
 
 ## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>復原點/還原點/保留點/時間點 (PIT) 
 
@@ -248,11 +248,11 @@ GFS (祖父-父親) 備份原則可讓您定義每日、每月和每年備份排
 
 ## <a name="resource-group"></a>資源群組
 
-請參閱 [Azure Resource Manager 檔](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group)。
+請參閱 [Azure Resource Manager 檔](../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group)。
 
 ## <a name="rest-api"></a>REST API
 
-請參閱 [Azure REST API 檔](https://docs.microsoft.com/rest/api/azure/)。
+請參閱 [Azure REST API 檔](/rest/api/azure/)。
 
 ## <a name="retention-rule"></a>保留規則
 
@@ -272,7 +272,7 @@ RTO 表示資料遺失案例後，可將資料還原到上次可用時間點的�
 
 ## <a name="secondary-region--paired-region"></a>次要區域/配對區域
 
-區域配對是由相同地理位置內的兩個區域所組成。 其中一個是主要區域，另一個則是次要區域。 某些 Azure 服務會使用配對的區域 (包括具有 GRS 設定的 Azure 備份) 以確保業務持續性，並防止資料遺失。 [深入了解](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+區域配對是由相同地理位置內的兩個區域所組成。 其中一個是主要區域，另一個則是次要區域。 某些 Azure 服務會使用配對的區域 (包括具有 GRS 設定的 Azure 備份) 以確保業務持續性，並防止資料遺失。 [深入了解](../best-practices-availability-paired-regions.md)。
 
 ## <a name="soft-delete"></a>虛刪除
 
@@ -280,11 +280,11 @@ RTO 表示資料遺失案例後，可將資料還原到上次可用時間點的�
 
 ## <a name="snapshot"></a>快照式
 
-快照集是虛擬硬碟 (VHD) 或 Azure 檔案共用的完整唯讀複本。 深入瞭解 [磁片快照](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) 集和檔案 [快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)集。
+快照集是虛擬硬碟 (VHD) 或 Azure 檔案共用的完整唯讀複本。 深入瞭解 [磁片快照](../virtual-machines/windows/snapshot-copy-managed-disk.md) 集和檔案 [快照](../storage/files/storage-snapshots-files.md)集。
 
 ## <a name="storage-account"></a>儲存體帳戶
 
-請參閱 [儲存體帳戶檔](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
+請參閱 [儲存體帳戶檔](../storage/common/storage-account-overview.md)。
 
 ## <a name="subscription"></a>訂用帳戶
 
@@ -302,7 +302,7 @@ Azure 訂用帳戶是用來在 Azure 中佈建資源的邏輯容器。 它會保
 
 ## <a name="unmanaged-disk"></a>非受控磁碟
 
-請參閱 [非受控磁片檔](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance#azure-unmanaged-disks)。
+請參閱 [非受控磁片檔](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks)。
 
 ## <a name="vault"></a>保存庫
 
@@ -314,13 +314,13 @@ Azure 中存放備份資料的儲存實體。 它也是 RBAC 和帳單的單位�
 
 ## <a name="vnet-virtual-network"></a>VNET (虛擬網路) 
 
-請參閱 [VNET 檔](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)。
+請參閱 [VNET 檔](../virtual-network/virtual-networks-overview.md)。
 
 ## <a name="vss-windows-volume-shadow-copy-service"></a>VSS (Windows 磁碟區陰影複製服務) 
 
-請參閱 [VSS 檔](https://docs.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service)。
+請參閱 [VSS 檔](/windows-server/storage/file-server/volume-shadow-copy-service)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure 備份總覽](backup-overview.md)
 - [Azure 備份的架構與元件](backup-architecture.md)

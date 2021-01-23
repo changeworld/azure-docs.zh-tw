@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ad36c2a7f47948d9362b85e78355e6046cda703
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919415"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724622"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>使用連續存取評估來建立復原能力
 
-[持續存取評估](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) (CAE) 可讓 Azure AD 應用程式訂閱可進行評估和強制執行的重大事件。 這包括評估下列事件：
+[持續存取評估](../conditional-access/concept-continuous-access-evaluation.md) (CAE) 可讓 Azure AD 應用程式訂閱可進行評估和強制執行的重大事件。 這包括評估下列事件：
 
 * 正在刪除或停用的使用者帳戶
 
@@ -48,11 +48,11 @@ Microsoft 與業界合作，以建立可讓協力廠商應用程式使用這項�
 
 ## <a name="how-do-i-implement-cae"></a>如何? 執行 CAE？
 
-* 在 Azure AD 安全性設定中[啟用 CAE](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) 。
+* 在 Azure AD 安全性設定中[啟用 CAE](../conditional-access/concept-continuous-access-evaluation.md) 。
 
-* 確定您的組織使用 Microsoft Office 原生應用程式的 [相容版本](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) 。
+* 確定您的組織使用 Microsoft Office 原生應用程式的 [相容版本](../conditional-access/concept-continuous-access-evaluation.md) 。
 
-* [優化您的重新驗證提示](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime)。
+* [優化您的重新驗證提示](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)。
 
  
 ## <a name="next-steps"></a>後續步驟

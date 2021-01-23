@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: fc15176318dcfae99434f50a0b4370f371cec05a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b32f9dd10d9bd03a7e446616d9941e7bd1a9c3ed
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938234"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724903"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>提升您開發的用戶端應用程式中驗證和授權的復原能力
 
@@ -24,13 +24,13 @@ ms.locfileid: "96938234"
 
 ## <a name="use-the-microsoft-authentication-library-msal"></a>使用 Microsoft 驗證程式庫 (MSAL) 
 
-[Microsoft 驗證程式庫 (MSAL) ](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)是[microsoft 身分識別平臺](https://docs.microsoft.com/azure/active-directory/develop)的重要部分。 它可簡化和管理取得、管理、快取和重新整理權杖，並使用最佳作法來進行復原。 MSAL 的設計目的是為了啟用安全的解決方案，讓開發人員不必擔心執行的詳細資料。
+[Microsoft 驗證程式庫 (MSAL) ](../develop/msal-overview.md)是[microsoft 身分識別平臺](../develop/index.yml)的重要部分。 它可簡化和管理取得、管理、快取和重新整理權杖，並使用最佳作法來進行復原。 MSAL 的設計目的是為了啟用安全的解決方案，讓開發人員不必擔心執行的詳細資料。
 
-MSAL 會快取權杖，並使用無訊息的權杖取得模式。 它也會自動序列化平臺上的權杖快取，原生提供 Windows UWP、iOS 和 Android 等安全存儲裝置。 開發人員可以在使用 [Microsoft](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)、 [MSAL.NET](https://docs.microsoft.com/azure/active-directory/develop/msal-net-token-cache-serialization)、 [MSAL For JAVA](https://docs.microsoft.com/azure/active-directory/develop/msal-java-token-cache-serialization)和 [MSAL for Python](https://docs.microsoft.com/azure/active-directory/develop/msal-python-token-cache-serialization)時，自訂序列化行為。
+MSAL 會快取權杖，並使用無訊息的權杖取得模式。 它也會自動序列化平臺上的權杖快取，原生提供 Windows UWP、iOS 和 Android 等安全存儲裝置。 開發人員可以在使用 [Microsoft](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)、 [MSAL.NET](../develop/msal-net-token-cache-serialization.md)、 [MSAL For JAVA](../develop/msal-java-token-cache-serialization.md)和 [MSAL for Python](../develop/msal-python-token-cache-serialization.md)時，自訂序列化行為。
 
 ![使用 MSAL 呼叫 Microsoft 身分識別之裝置與應用程式的影像](media/resilience-client-app/resilience-with-microsoft-authentication-library.png)
 
-使用 MSAL 時，會自動支援權杖快取、重新整理和無訊息取得。 您可以使用簡單模式來取得新式驗證所需的權杖。 我們支援許多語言，而且您可以在我們的 [範例](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) 頁面上找到符合您的語言和案例的範例。
+使用 MSAL 時，會自動支援權杖快取、重新整理和無訊息取得。 您可以使用簡單模式來取得新式驗證所需的權杖。 我們支援許多語言，而且您可以在我們的 [範例](../develop/sample-v2-code.md) 頁面上找到符合您的語言和案例的範例。
 
 ## <a name="c"></a>[C#](#tab/csharp)
 
@@ -105,7 +105,7 @@ return myMSALObj.acquireTokenSilent(request).catch(error => {
 
 ### <a name="serialize-and-persist-tokens"></a>序列化和保存權杖
 
-應用程式應該安全地序列化其權杖快取，以保存應用程式實例之間的權杖。 只要權杖的有效存留期內，就可以重複使用權杖。 重新整理[權杖](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)，以及越來越多的[存取權杖](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)都會發出許多小時的時間。 此有效時間可以跨越使用者多次啟動您的應用程式。 當您的應用程式啟動時，它應該會檢查是否有可使用的有效存取或重新整理權杖。 這會增加應用程式的復原能力和效能，因為它可避免任何不必要的 Microsoft 身分識別呼叫。
+應用程式應該安全地序列化其權杖快取，以保存應用程式實例之間的權杖。 只要權杖的有效存留期內，就可以重複使用權杖。 重新整理[權杖](../develop/v2-oauth2-auth-code-flow.md#refresh-the-access-token)，以及越來越多的[存取權杖](../develop/access-tokens.md)都會發出許多小時的時間。 此有效時間可以跨越使用者多次啟動您的應用程式。 當您的應用程式啟動時，它應該會檢查是否有可使用的有效存取或重新整理權杖。 這會增加應用程式的復原能力和效能，因為它可避免任何不必要的 Microsoft 身分識別呼叫。
 
 ![呼叫 Microsoft 身分識別的應用程式，但呼叫會透過權杖快取，以及執行應用程式的裝置上的權杖存放區來進行](media/resilience-client-app/token-store.png)
 
@@ -136,14 +136,14 @@ return myMSALObj.acquireTokenSilent(request).catch(error => {
 
 ### <a name="tokens"></a>權杖
 
-身分識別 (識別碼) 權杖和存取權杖包含提供主體相關資訊的標準宣告。 這些記錄在 [microsoft 身分識別平臺識別碼權杖](https://docs.microsoft.com/azure/active-directory/develop/id-tokens) 和 [microsoft 身分識別平臺存取權杖](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)中。 如果您的應用程式所需的資訊已經存在於權杖中，則最有效率的方法就是使用權杖宣告，因為這會儲存額外的網路呼叫段無意，以個別取得資訊。 較少的網路呼叫表示應用程式的整體恢復能力較高。
+身分識別 (識別碼) 權杖和存取權杖包含提供主體相關資訊的標準宣告。 這些記錄在 [microsoft 身分識別平臺識別碼權杖](../develop/id-tokens.md) 和 [microsoft 身分識別平臺存取權杖](../develop/access-tokens.md)中。 如果您的應用程式所需的資訊已經存在於權杖中，則最有效率的方法就是使用權杖宣告，因為這會儲存額外的網路呼叫段無意，以個別取得資訊。 較少的網路呼叫表示應用程式的整體恢復能力較高。
 
 > [!NOTE]
 > 有些應用程式會呼叫「使用者類型」端點，以取得已驗證使用者的相關宣告。 您的應用程式可以接收的識別碼權杖中所提供的資訊，是它可以從使用者資訊端點取得的資訊超集合。 您的應用程式應該使用識別碼權杖來取得使用者的相關資訊，而不是呼叫使用者資訊端點。
 
-應用程式開發人員可以使用 [選擇性宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)來增強標準權杖宣告。 其中一個常見的選擇性宣告是 [群組](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims#configuring-groups-optional-claims)。 有幾種方式可以新增群組宣告。 [應用程式群組] 選項只包含指派給應用程式的群組。 「所有」或「安全性群組」選項包括相同租使用者中所有應用程式的群組，可將許多群組新增至權杖。 在您的案例中評估效果很重要，因為它可能會導致權杖膨脹，甚至需要額外的呼叫來取得群組的完整清單，藉以在權杖中要求群組來消除效率。
+應用程式開發人員可以使用 [選擇性宣告](../develop/active-directory-optional-claims.md)來增強標準權杖宣告。 其中一個常見的選擇性宣告是 [群組](../develop/active-directory-optional-claims.md#configuring-groups-optional-claims)。 有幾種方式可以新增群組宣告。 [應用程式群組] 選項只包含指派給應用程式的群組。 「所有」或「安全性群組」選項包括相同租使用者中所有應用程式的群組，可將許多群組新增至權杖。 在您的案例中評估效果很重要，因為它可能會導致權杖膨脹，甚至需要額外的呼叫來取得群組的完整清單，藉以在權杖中要求群組來消除效率。
 
-您可以改為使用和包含應用程式角色，而不是在您的權杖中使用群組。 開發人員可以使用入口網站或 Api 來定義其應用程式和 Api 的 [應用程式角色](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) ，讓客戶可以從其目錄進行管理。 然後 IT 專業人員可以將角色指派給不同的使用者和群組，以控制誰可以存取哪些內容和功能。 針對應用程式或 API 發出權杖時，指派給使用者的角色將可在權杖的 role 宣告中使用。 直接在權杖中取得這項資訊可以節省額外的 Api 呼叫。
+您可以改為使用和包含應用程式角色，而不是在您的權杖中使用群組。 開發人員可以使用入口網站或 Api 來定義其應用程式和 Api 的 [應用程式角色](../develop/howto-add-app-roles-in-azure-ad-apps.md) ，讓客戶可以從其目錄進行管理。 然後 IT 專業人員可以將角色指派給不同的使用者和群組，以控制誰可以存取哪些內容和功能。 針對應用程式或 API 發出權杖時，指派給使用者的角色將可在權杖的 role 宣告中使用。 直接在權杖中取得這項資訊可以節省額外的 Api 呼叫。
 
 最後，IT 系統管理員也可以根據租使用者中的特定資訊來新增宣告。 例如，企業可擁有具有企業特定使用者識別碼的擴充功能。
 
@@ -155,26 +155,26 @@ Microsoft Graph 提供統一的 API 端點，以存取描述組織中生產力�
 
 應用程式只需要單一權杖即可存取所有的 Microsoft 365。 這比使用舊版 Api （例如 Microsoft Exchange 或 Microsoft SharePoint） Microsoft 365 專用的 Api 更具彈性，需要多個權杖。
 
-使用 Microsoft Graph Api 時，我們建議您使用 [MICROSOFT GRAPH SDK](https://docs.microsoft.com/graph/sdks/sdks-overview)。 Microsoft Graph Sdk 的設計目的是要簡化可存取 Microsoft Graph 的高品質、有效率且彈性的應用程式。
+使用 Microsoft Graph Api 時，我們建議您使用 [MICROSOFT GRAPH SDK](/graph/sdks/sdks-overview)。 Microsoft Graph Sdk 的設計目的是要簡化可存取 Microsoft Graph 的高品質、有效率且彈性的應用程式。
 
 針對授權決策，開發人員應該考慮何時使用權杖中可用的宣告做為某些 Microsoft Graph 呼叫的替代方案。 如先前所述，開發人員可以在其權杖中要求群組、應用程式角色和選擇性宣告。 在恢復功能方面，使用 Microsoft Graph 進行授權需要額外的網路呼叫，依賴 Microsoft 身分識別 (來取得權杖，以存取 Microsoft Graph) 和 Microsoft Graph 本身。 不過，如果您的應用程式已經依賴 Microsoft Graph 做為其資料層，則依賴圖形進行授權並不需要額外的風險。
 
 ## <a name="use-broker-authentication-on-mobile-devices"></a>在行動裝置上使用 broker 驗證
 
-在行動裝置上，使用驗證代理程式（例如 Microsoft Authenticator）將會改善復原能力。 Broker 增加了與其他選項（例如系統瀏覽器或內嵌的瀏覽器）一起提供的優點。 驗證代理程式可以利用主要的重新整理 [權杖](https://docs.microsoft.com/azure/active-directory/devices/concept-primary-refresh-token) (PRT) ，其中包含有關使用者和裝置的宣告，而且可用來取得驗證權杖以從裝置存取其他應用程式。 當 PRT 用來要求存取應用程式時，它的裝置和 MFA 宣告會受到 Azure AD 的信任。 這可避免額外的步驟再次驗證裝置，從而提高復原能力。 使用者不會在同一部裝置上遇到多個 MFA 提示，因此藉由減少對外部服務的相依性，並提升使用者體驗來提高復原能力。
+在行動裝置上，使用驗證代理程式（例如 Microsoft Authenticator）將會改善復原能力。 Broker 增加了與其他選項（例如系統瀏覽器或內嵌的瀏覽器）一起提供的優點。 驗證代理程式可以利用主要的重新整理 [權杖](../devices/concept-primary-refresh-token.md) (PRT) ，其中包含有關使用者和裝置的宣告，而且可用來取得驗證權杖以從裝置存取其他應用程式。 當 PRT 用來要求存取應用程式時，它的裝置和 MFA 宣告會受到 Azure AD 的信任。 這可避免額外的步驟再次驗證裝置，從而提高復原能力。 使用者不會在同一部裝置上遇到多個 MFA 提示，因此藉由減少對外部服務的相依性，並提升使用者體驗來提高復原能力。
 
 ![呼叫 Microsoft 身分識別的應用程式，但呼叫會透過權杖快取，以及執行應用程式的裝置上的權杖存放區和驗證代理程式進行](media/resilience-client-app/authentication-broker.png)
 
 MSAL 會自動支援 Broker 驗證。 您可以在下列頁面找到有關使用代理驗證的詳細資訊：
 
-- [在 macOS 和 iOS 上設定 SSO](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-macos-ios#sso-through-authentication-broker-on-ios)
-- [如何使用 MSAL 在 Android 上啟用跨應用程式的 SSO](https://docs.microsoft.com/azure/active-directory/develop/msal-android-single-sign-on)
+- [在 macOS 和 iOS 上設定 SSO](../develop/single-sign-on-macos-ios.md#sso-through-authentication-broker-on-ios)
+- [如何使用 MSAL 在 Android 上啟用跨應用程式的 SSO](../develop/msal-android-single-sign-on.md)
 
 ## <a name="adopt-continuous-access-evaluation"></a>採用連續存取評估
 
-[持續存取評估 (CAE) ](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation) 是最新的開發，可利用長期的權杖來提高應用程式的安全性和彈性。 CAE 是一種新興的產業標準，是在 OpenID Foundation 的共用信號和事件工作群組中開發。 使用 CAE 時，您可以根據 [重大事件](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation#critical-event-evaluation) 和 [原則評估](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-continuous-access-evaluation#conditional-access-policy-evaluation-preview)來撤銷存取權杖，而不需依賴簡短的權杖存留期。 針對某些資源 Api，因為風險和原則會即時評估，CAE 可能會大幅增加最多28小時的權杖存留期。 由於資源 Api 和應用程式採用 CAE，因此 Microsoft 身分識別將能夠發出可撤銷的存取權杖，並可在一段長時間內有效。 這些長期的權杖將由 MSAL 主動重新整理。
+[持續存取評估 (CAE) ](../conditional-access/concept-continuous-access-evaluation.md) 是最新的開發，可利用長期的權杖來提高應用程式的安全性和彈性。 CAE 是一種新興的產業標準，是在 OpenID Foundation 的共用信號和事件工作群組中開發。 使用 CAE 時，您可以根據 [重大事件](../conditional-access/concept-continuous-access-evaluation.md#critical-event-evaluation) 和 [原則評估](../conditional-access/concept-continuous-access-evaluation.md#conditional-access-policy-evaluation-preview)來撤銷存取權杖，而不需依賴簡短的權杖存留期。 針對某些資源 Api，因為風險和原則會即時評估，CAE 可能會大幅增加最多28小時的權杖存留期。 由於資源 Api 和應用程式採用 CAE，因此 Microsoft 身分識別將能夠發出可撤銷的存取權杖，並可在一段長時間內有效。 這些長期的權杖將由 MSAL 主動重新整理。
 
-雖然 CAE 是在早期階段，但 [現在可以開發用戶端應用程式](../develop/app-resilience-continuous-access-evaluation.md) ，以在應用程式) 應用程式使用採用 CAE 的資源 (api 時受益于 CAE。 當更多資源採用 CAE 時，您的應用程式也可以為這些資源取得啟用 CAE 的權杖。 Microsoft Graph API 和 [Microsoft Graph sdk](https://docs.microsoft.com/graph/sdks/sdks-overview)將于2021年初預覽 CAE 功能。 如果您想要透過 CAE 參與 Microsoft Graph 的公開預覽，您可以讓我們知道您有興趣： [https://aka.ms/GraphCAEPreview](https://aka.ms/GraphCAEPreview) 。
+雖然 CAE 是在早期階段，但 [現在可以開發用戶端應用程式](../develop/app-resilience-continuous-access-evaluation.md) ，以在應用程式) 應用程式使用採用 CAE 的資源 (api 時受益于 CAE。 當更多資源採用 CAE 時，您的應用程式也可以為這些資源取得啟用 CAE 的權杖。 Microsoft Graph API 和 [Microsoft Graph sdk](/graph/sdks/sdks-overview)將于2021年初預覽 CAE 功能。 如果您想要透過 CAE 參與 Microsoft Graph 的公開預覽，您可以讓我們知道您有興趣： [https://aka.ms/GraphCAEPreview](https://aka.ms/GraphCAEPreview) 。
 
 如果您開發資源 Api，我們鼓勵您參與 [共用信號和事件 WG](https://openid.net/wg/sse/)。 我們會使用此群組來啟用 Microsoft 身分識別與資源提供者之間的安全性事件共用。
 

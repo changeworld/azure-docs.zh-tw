@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c556940ace02f2e7bf0354e67d32df7c5c6714e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032757"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724266"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的預設使用者權限是什麼？
 在 Azure Active Directory (Azure AD) 中，所有使用者都會獲得一組預設權限。 使用者的存取權包含使用者類型、其[角色指派](active-directory-users-assign-role-azure-portal.md)，以及個別物件的擁有權。 本文說明這些預設權限，並包含成員與來賓使用者預設值的比較。 只能在 Azure AD 中的使用者設定中變更預設使用者權限。
@@ -63,7 +63,7 @@ ms.locfileid: "97032757"
 
 權限 | 設定說明
 ---------- | ------------
-來賓使用者存取限制 (預覽)  | 將此選項設定為 **來賓使用者時，與成員相同的存取權** 是依預設將所有成員使用者權限授與來賓使用者。<p>將此選項設定為 **[來賓使用者存取權] 會限制為其本身目錄物件的屬性和成員資格** ，預設只會限制來賓存取自己的使用者設定檔。 即使是依使用者主體名稱、ObjectId 或顯示名稱進行搜尋，也不再允許存取其他使用者。 也不再允許存取包含群組成員資格的群組資訊。<p>**注意**：此設定不會防止存取某些 Microsoft 365 服務（例如 Microsoft 小組）中加入的群組。 若要深入瞭解，請參閱 [Microsoft 團隊的來賓存取權](https://docs.microsoft.com/MicrosoftTeams/guest-access) 。<p>無論此許可權設定為何，來賓使用者仍可新增至系統管理員角色。
+來賓使用者存取限制 (預覽)  | 將此選項設定為 **來賓使用者時，與成員相同的存取權** 是依預設將所有成員使用者權限授與來賓使用者。<p>將此選項設定為 **[來賓使用者存取權] 會限制為其本身目錄物件的屬性和成員資格** ，預設只會限制來賓存取自己的使用者設定檔。 即使是依使用者主體名稱、ObjectId 或顯示名稱進行搜尋，也不再允許存取其他使用者。 也不再允許存取包含群組成員資格的群組資訊。<p>**注意**：此設定不會防止存取某些 Microsoft 365 服務（例如 Microsoft 小組）中加入的群組。 若要深入瞭解，請參閱 [Microsoft 團隊的來賓存取權](/MicrosoftTeams/guest-access) 。<p>無論此許可權設定為何，來賓使用者仍可新增至系統管理員角色。
 來賓可邀請 | 將此選項設定為 [是] 可讓來賓邀請其他來賓。 若要深入瞭解，請參閱 [委派 B2B 共同作業的邀請](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) 。
 成員可邀請 | 將此選項設定為 [是] 可讓您目錄的非系統管理員成員邀請來賓。 若要深入瞭解，請參閱 [委派 B2B 共同作業的邀請](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings) 。
 系統管理員和來賓邀請者角色中的使用者可邀請 | 將此選項設定為 [是] 可讓「來賓邀請者」角色中的系統管理員和使用者邀請來賓。 若設定為 [是]，則不論成員是否可以邀請設定，來賓邀請者角色中的使用者仍然可以邀請來賓。 若要深入瞭解，請參閱 [委派 B2B 共同作業的邀請](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user) 。

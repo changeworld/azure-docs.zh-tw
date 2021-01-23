@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: b5c659a673ece8fd7fbb9566d8bb84201a668a7f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
-ms.translationtype: HT
+ms.openlocfilehash: 9d378b21132e6646329c459401255ef9a3ed9426
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964077"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724232"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式組態建立 Azure Functions 應用程式
 
@@ -44,7 +44,7 @@ ms.locfileid: "97964077"
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
-此專案會[在 .NET Azure Functions 中使用相依性插入](/azure/azure-functions/functions-dotnet-dependency-injection)，並新增 Azure 應用程式組態作為額外的組態來源。
+此專案會[在 .NET Azure Functions 中使用相依性插入](../azure-functions/functions-dotnet-dependency-injection.md)，並新增 Azure 應用程式組態作為額外的組態來源。
 
 1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽] 索引標籤上，搜尋下列 NuGet 套件並新增至您的專案。
    - [Microsoft.Extensions.Configuration.AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) 4.1.0 版或更新版本

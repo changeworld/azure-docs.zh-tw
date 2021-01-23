@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1459dd41fcdc30a29a5f9f93ec9704083767a342
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562118"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725666"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的驗證方法？
 
@@ -70,7 +70,7 @@ Azure AD Multi-Factor Authentication (MFA) 在使用者登入時，只會使用�
 |  (預覽版的 FIDO2 安全性金鑰)    | 是                    | MFA                       |
 | OATH 硬體權杖 (預覽) | 否                     | MFA                       |
 | OATH 軟體權杖           | 否                     | MFA                       |
-| SMS                            | 是 (預覽)          | MFA 和 SSPR              |
+| SMS                            | 是                    | MFA 和 SSPR              |
 | 語音通話                     | 否                     | MFA 和 SSPR              |
 | 密碼                       | 是                    |                           |
 
@@ -83,7 +83,7 @@ Azure AD Multi-Factor Authentication (MFA) 在使用者登入時，只會使用�
 * [ (預覽版的 FIDO2 安全性金鑰) ](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH 硬體權杖 (預覽)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [OATH 軟體權杖](concept-authentication-oath-tokens.md#oath-software-tokens)
-* SMS 登 [入 (預覽版) ](howto-authentication-sms-signin.md) 和 [驗證](concept-authentication-phone-options.md#mobile-phone-verification)
+* [SMS 登入](howto-authentication-sms-signin.md) 和 [驗證](concept-authentication-phone-options.md#mobile-phone-verification)
 * [語音通話驗證](concept-authentication-phone-options.md)
 * 密碼
 

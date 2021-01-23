@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6814cafcf6dafa6f007bdd9d3623d30ef079084
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 37c27e84f15a01a2d8832baae137518685de59a8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222440"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725436"
 ---
 # <a name="determine-your-security-posture-for-external-access"></a>判斷外部存取的安全性狀態 
 
@@ -69,7 +69,7 @@ IT 控管和委派存取的目標不同。
 
 * **控制應用程式、資料和內容的存取權**。 這可以透過各種不同的方法來完成，視您的 [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) 版本和 [Microsoft 365](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)而定。 
 
-* **減少受攻擊面**。 特殊[許可權身分識別管理](../privileged-identity-management/pim-configure.md)、[資料遺失防止 (DLP) ](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)和[加密功能](https://docs.microsoft.com/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)會減少受攻擊面。
+* **減少受攻擊面**。 特殊[許可權身分識別管理](../privileged-identity-management/pim-configure.md)、[資料遺失防止 (DLP) ](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)和[加密功能](/exchange/security-and-compliance/data-loss-prevention/data-loss-prevention)會減少受攻擊面。
 
 * **定期審核活動和審核記錄，以確認合規性**。 它可以透過權利管理將存取決策委派給企業擁有者，而存取評論則提供定期確認持續存取的方式。 具有敏感度標籤的自動化資料分類可協助自動化機密內容的加密，讓員工的使用者能輕鬆地遵守。
 
@@ -96,4 +96,3 @@ IT 控管和委派存取的目標不同。
 9. [安全存取 Microsoft 小組、OneDrive 和 SharePoint](9-secure-access-teams-sharepoint.md)
  
 
- 

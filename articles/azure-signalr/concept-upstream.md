@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 6752a9564dc0d9351d1c21f5be14eb626186ac0d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763110"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724050"
 ---
 # <a name="upstream-settings"></a>上游設定
 
@@ -59,7 +59,7 @@ http://host.com/chat/api/messages/broadcast
 
 1. 新增系統指派的身分識別或使用者指派的身分識別。 瞭解 [如何在 Azure 入口網站中新增受控識別](./howto-use-managed-identity.md#add-a-system-assigned-identity)
 
-2. 在 Key Vault 的存取原則中，授與受控識別的密碼讀取權限。 請參閱 [使用 Azure 入口網站指派 Key Vault 存取原則](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+2. 在 Key Vault 的存取原則中，授與受控識別的密碼讀取權限。 請參閱 [使用 Azure 入口網站指派 Key Vault 存取原則](../key-vault/general/assign-access-policy-portal.md)
 
 3. 以上游 URL 模式中的語法取代您的機密文字 `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` 。
 
@@ -136,7 +136,7 @@ POST
 
 ### <a name="request-header"></a>要求標頭
 
-|名稱 |描述|
+|Name |描述|
 |---------|---------|
 |X-ASRS-連接識別碼 |用戶端連接的連接識別碼。|
 |X-ASRS-中樞 |用戶端連接所屬的中樞。|
@@ -160,7 +160,7 @@ Content-type： `application/json`
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|
-|[錯誤] |字串 |關閉連接的錯誤訊息。 當連接關閉但沒有錯誤時為空白。|
+|錯誤 |字串 |關閉連接的錯誤訊息。 當連接關閉但沒有錯誤時為空白。|
 
 #### <a name="invocation-message"></a>調用訊息
 
@@ -172,7 +172,7 @@ Content-type： `application/json` 或 `application/x-msgpack`
 |目標 |字串 | 與事件相同，而且與 [調用訊息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的目標相同。 |
 |引數 |物件的陣列 |陣列，其中包含要套用至中所參考之方法的引數 `Target` 。 |
 
-### <a name="signature"></a>簽章
+### <a name="signature"></a>簽名
 
 服務將會 `X-ASRS-Connection-Id` 使用主要存取金鑰和次要存取金鑰作為金鑰來計算值的 SHA256 碼 `HMAC` 。 `X-ASRS-Signature`當對上游提出 HTTP 要求時，服務會在標頭中設定它：
 ```

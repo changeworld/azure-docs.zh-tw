@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6da9f27e25fa5543f949716824f54af2b9f1ad1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 12b5c95b67f8fada29914d3a8de559280e6145f8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132540"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724215"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -100,7 +100,7 @@ Microsoft 已為 Azure AD Connect 部署了新的端點 (API)，以提升 Azure 
 - [Bizagi Studio for Digital Process Automation](../saas-apps/bizagi-studio-for-digital-process-automation-provisioning-tutorial.md)
 - [CybSafe](../saas-apps/cybsafe-provisioning-tutorial.md)
 - [GroupTalk](../saas-apps/grouptalk-provisioning-tutorial.md)
-- [PaperCut 雲端列印管理](/azure/active-directory/saas-apps/papercut-cloud-print-management-provisioning-tutorial)
+- [PaperCut 雲端列印管理](../saas-apps/papercut-cloud-print-management-provisioning-tutorial.md)
 - [Parsable](../saas-apps/parsable-provisioning-tutorial.md)
 - [Shopify Plus](../saas-apps/shopify-plus-provisioning-tutorial.md)
 
@@ -191,7 +191,7 @@ Azure Active Directory 將在2021年6月30日前，于 Azure Active Directory �
 **服務類別：** Rbac  
 **產品功能：** 存取控制
  
- [委派企業應用程式管理的自訂 RBAC 角色](../users-groups-roles/roles-custom-available-permissions.md) 現在處於公開預覽狀態。 這些新的許可權是以應用程式註冊管理的自訂角色為依據，可讓您更精確地控制系統管理員所擁有的存取權。 經過一段時間之後，將會發行額外的委派管理 Azure AD 許可權。
+ [委派企業應用程式管理的自訂 RBAC 角色](../roles/custom-available-permissions.md) 現在處於公開預覽狀態。 這些新的許可權是以應用程式註冊管理的自訂角色為依據，可讓您更精確地控制系統管理員所擁有的存取權。 經過一段時間之後，將會發行額外的委派管理 Azure AD 許可權。
 
 一些常見的委派案例：
 - 指派可以存取 SAML 型單一登入應用程式的使用者和群組
@@ -247,7 +247,7 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 原本就支援使用標頭
 - [Tic](../saas-apps/tic-tac-mobile-provisioning-tutorial.md)
 - [Visibly](../saas-apps/visibly-provisioning-tutorial.md)
 
-如需詳細資訊，請參閱 [使用 Azure AD 將使用者布建自動化至 SaaS 應用程式](../manage-apps/user-provisioning.md)。
+如需詳細資訊，請參閱 [使用 Azure AD 將使用者布建自動化至 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
  
 ---
 
@@ -301,7 +301,7 @@ Azure Active Directory (Azure AD) 應用程式 Proxy 原本就支援使用標頭
  
 先前，您可以透過/bitlocker 端點來復原 BitLocker 金鑰。 我們最終將會淘汰此端點，且客戶應該開始取用現在落在/informationProtection. 之下的 API 
 
-請參閱 [BitLocker 修復 API](https://docs.microsoft.com/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) ，以取得檔的更新，以反映這些變更。
+請參閱 [BitLocker 修復 API](/graph/api/resources/bitlockerrecoverykey?view=graph-rest-beta) ，以取得檔的更新，以反映這些變更。
 
 ---
 
@@ -1126,4 +1126,3 @@ Azure Multi-Factor Authentication 軟體發展 (Azure MFA SDK) 已于2018年11�
 
 ---
 
- 

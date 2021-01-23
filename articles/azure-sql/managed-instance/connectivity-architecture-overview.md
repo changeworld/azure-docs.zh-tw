@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: 9a35c0dc8a3b994b015d7a8d64f76f7e10d95a00
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 58563629b30e7be764732a9810162e1a0b1931e6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722397"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725831"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL 受控執行個體的連線架構
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -107,28 +107,28 @@ Azure 會使用管理端點來管理 SQL 受控執行個體。 此端點位於�
 - **足夠的 IP 位址：** SQL 受控執行個體子網至少必須有32個 IP 位址。 如需詳細資訊，請參閱 [決定 SQL 受控執行個體的子網大小](vnet-subnet-determine-size.md)。 當您設定受控實例以滿足[SQL 受控執行個體的網路需求](#network-requirements)之後，就可以在[現有網路](vnet-existing-add-subnet.md)中部署受控實例。 否則，請建立[新的網路和子網](virtual-network-subnet-create-arm-template.md)。
 
 > [!IMPORTANT]
-> 當您建立受控實例時，網路意圖原則會套用至子網，以防止不相容的網路設定變更。 從子網移除最後一個實例之後，也會移除網路意圖原則。 以下規則僅供資訊參考之用，您不應該使用 ARM 範本/PowerShell/CLI 來部署它們。 如果您想要使用最新的官方範本，您一律可以 [從入口網站取得](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal)。
+> 當您建立受控實例時，網路意圖原則會套用至子網，以防止不相容的網路設定變更。 從子網移除最後一個實例之後，也會移除網路意圖原則。 以下規則僅供資訊參考之用，您不應該使用 ARM 範本/PowerShell/CLI 來部署它們。 如果您想要使用最新的官方範本，您一律可以 [從入口網站取得](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>具有服務輔助子網設定的強制輸入安全性規則
 
 | 名稱       |連接埠                        |通訊協定|來源           |Destination|動作|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |允許 |
-|            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |允許 |
-|            |9000、9003                  |TCP     |CorpnetPublic    |MI SUBNET  |允許 |
-|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |允許 |
-|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |允許 |
+|管理  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
+|            |9000、9003                  |TCP     |CorpnetSaw       |MI SUBNET  |Allow |
+|            |9000、9003                  |TCP     |CorpnetPublic    |MI SUBNET  |Allow |
+|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |Allow |
+|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |Allow |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>具有服務輔助子網設定的強制輸出安全性規則
 
 | 名稱       |連接埠          |通訊協定|來源           |Destination|動作|
 |------------|--------------|--------|-----------------|-----------|------|
-|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |允許 |
-|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允許 |
+|管理  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
+|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |Allow |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>具有服務輔助子網設定的使用者定義路由
 
-|名稱|位址首碼|下一個躍點|
+|Name|位址首碼|下一個躍點|
 |----|--------------|-------|
 |子網對 vnetlocal|MI SUBNET|虛擬網路|
 |mi-13-64-11-nexthop-網際網路|13.64.0.0/11|網際網路|

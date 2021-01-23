@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: api-management
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 799ef33e78737bfd2e1c1a1cfa4991f44c8f5ec0
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e171e642440b7c6c99353169e426a722885f1bcf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599641"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725932"
 ---
 # <a name="plan-and-manage-costs-for-api-management"></a>規劃和管理 API 管理的成本
 
@@ -20,7 +20,7 @@ ms.locfileid: "98599641"
 
 API 管理的成本只是您的 Azure 帳單中的每月成本的一部分。 雖然本文說明如何規劃和管理 API 管理的成本，但您必須針對 Azure 訂用帳戶中使用的所有 Azure 服務和資源（包括協力廠商服務）支付費用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 成本管理中的成本分析支援大部分的 Azure 帳戶類型，但並非全部。 若要檢視所支援帳戶類型的完整清單，請參閱[了解成本管理資料](../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。 若要查看成本資料，您至少需要 Azure 帳戶的讀取存取權。 如需 Azure 成本管理資料的存取權指派相關資訊，請參閱[指派資料的存取權](../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 
@@ -108,7 +108,7 @@ API 管理的成本只是您的 Azure 帳單中的每月成本的一部分。 �
 
 - 瞭解 [如何使用 Azure 成本管理來優化您的雲端投資](../cost-management-billing/costs/cost-mgt-best-practices.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
 - 深入瞭解如何使用 [成本分析](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)來管理成本。
-- 瞭解如何避免非 [預期的成本](../cost-management-billing/manage/getting-started.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
-- 採用 [成本管理](https://docs.microsoft.com/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引導式學習課程。
+- 瞭解如何避免非 [預期的成本](../cost-management-billing/cost-management-billing-overview.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)。
+- 採用 [成本管理](/learn/paths/control-spending-manage-bills?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) 引導式學習課程。
 - 深入瞭解 API 管理 [容量](api-management-capacity.md)。
 - 請參閱使用[Azure 入口網站](upgrade-and-scale.md)來調整及升級 API 管理的步驟，[並瞭解自動調整規模。](api-management-howto-autoscale.md)

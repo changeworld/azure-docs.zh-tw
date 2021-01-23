@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4b649942a52c51aef0d6edd17b913f75e1fb247b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a1b621b5d5601e6d8bffef48e23d217e0eee1d6a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674162"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725814"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions 中函數應用程式的自動化資源部署
 
@@ -212,9 +212,11 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 
 ### <a name="create-a-function-app"></a>建立函數應用程式
 
+在取用方案中執行的函式應用程式所需的設定延遲于 Windows 和 Linux 之間。 
+
 #### <a name="windows"></a>Windows
 
-在 Windows 上，取用方案需要網站設定中的兩個額外設定： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 這些屬性能設定儲存函數應用程式程式碼和組態的儲存體帳戶和檔案路徑。
+在 Windows 上，使用方式方案需要網站設定中的額外設定： [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) 。 這個屬性會設定儲存函數應用程式程式碼和設定的儲存體帳戶。
 
 ```json
 {
@@ -238,10 +240,6 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -259,9 +257,12 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 }
 ```
 
+> [!IMPORTANT]
+> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare)當您第一次建立網站時，請勿設定為您產生的設定。  
+
 #### <a name="linux"></a>Linux
 
-在 Linux 上，函數應用程式必須 `kind` 將其設定為 `functionapp,linux` ，而且必須將 `reserved` 屬性設定為 `true` ：
+在 Linux 上，函數應用程式必須 `kind` 將其設定為 `functionapp,linux` ，而且必須將 `reserved` 屬性設定為 `true` 。 
 
 ```json
 {
@@ -299,8 +300,9 @@ Azure Functions 執行階段會使用 `AzureWebJobsStorage` 連接字串來建�
 }
 ```
 
-<a name="premium"></a>
+[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) Linux 不支援和設定。
 
+<a name="premium"></a>
 ## <a name="deploy-on-premium-plan"></a>在 Premium 方案上部署
 
 Premium 方案提供與取用方案相同的調整，但包含專屬資源和額外的功能。 若要深入瞭解，請參閱 [Azure Functions Premium 方案](./functions-premium-plan.md)。
@@ -332,7 +334,7 @@ Premium 方案是一種特殊類型的「serverfarm」資源。 您可以 `EP1` 
 
 ### <a name="create-a-function-app"></a>建立函數應用程式
 
-Premium 方案上的函式應用程式必須將 `serverFarmId` 屬性設定為稍早建立之方案的資源識別碼。 此外，Premium 方案還需要網站設定中的兩個額外設定： `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` 和 `WEBSITE_CONTENTSHARE` 。 這些屬性能設定儲存函數應用程式程式碼和組態的儲存體帳戶和檔案路徑。
+Premium 方案上的函式應用程式必須將 `serverFarmId` 屬性設定為稍早建立之方案的資源識別碼。 此外，高階方案還需要網站設定中的額外設定： [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) 。 這個屬性會設定儲存函數應用程式程式碼和設定的儲存體帳戶。
 
 ```json
 {
@@ -358,10 +360,6 @@ Premium 方案上的函式應用程式必須將 `serverFarmId` 屬性設定為�
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -378,6 +376,8 @@ Premium 方案上的函式應用程式必須將 `serverFarmId` 屬性設定為�
     }
 }
 ```
+> [!IMPORTANT]
+> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare)當您第一次建立網站時，請勿設定為您產生的設定。  
 
 <a name="app-service-plan"></a>
 
@@ -686,7 +686,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 若要測試此部署，您可以使用 [像這樣的範本](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) ，在取用方案中于 Windows 上建立函數應用程式。 取代為 `<function-app-name>` 函數應用程式的唯一名稱。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 深入了解如何開發並設定 Azure Functions。
 

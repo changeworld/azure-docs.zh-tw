@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
-ms.translationtype: HT
+ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046068"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724241"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>快速入門：將功能旗標新增至 Azure Functions 應用程式
 
@@ -46,7 +46,7 @@ ms.locfileid: "98046068"
 
 ## <a name="connect-to-an-app-configuration-store"></a>連線至應用程式組態存放區
 
-此專案將[在 .NET Azure Functions 中使用相依性插入](/azure/azure-functions/functions-dotnet-dependency-injection)。 其會將 Azure 應用程式組態新增為您的功能旗標儲存所在的額外組態來源。
+此專案將[在 .NET Azure Functions 中使用相依性插入](../azure-functions/functions-dotnet-dependency-injection.md)。 其會將 Azure 應用程式組態新增為您的功能旗標儲存所在的額外組態來源。
 
 1. 以滑鼠右鍵按一下專案，然後選取 [管理 NuGet 套件]  。 在 [瀏覽] 索引標籤上，搜尋下列 NuGet 套件並新增至您的專案。
    - [Microsoft.Extensions.Configuration.AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/) 4.1.0 版或更新版本

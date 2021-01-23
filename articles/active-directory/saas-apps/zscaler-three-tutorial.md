@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 054afcc4fb0f137a49e4b200ca7399424aba9adc
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: HT
+ms.openlocfilehash: 75d95ff77b48e7b1102900bc103e6930282e21e3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936545"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726203"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Zscaler Three 整合
 
@@ -94,7 +94,7 @@ ms.locfileid: "97936545"
     | memberOf | user.assignedroles |
 
     > [!NOTE]
-    > 請按一下[這裡](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)，以了解如何在 Azure AD 中設定角色。
+    > 請按一下[這裡](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui--preview)，以了解如何在 Azure AD 中設定角色。
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -228,7 +228,7 @@ ms.locfileid: "97936545"
 
 * 直接移至 Zscaler Three 登入 URL，然後從該處起始登入流程。
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 Zscaler Three 圖格時，將會重新導向至 Zscaler Three 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 Zscaler Three 圖格時，將會重新導向至 Zscaler Three 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c0d63df3e5525b200723db209d05e5eb5013e23
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222355"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725387"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>使用 Azure Active Directory B2B 共同作業來轉換為控管共同作業 
 
@@ -100,7 +100,7 @@ ms.locfileid: "98222355"
 
 如果您使用 Azure AD 權利管理，您可以設定外部使用者的問題來回答。 然後會向核准者顯示問題，以協助他們做出決策。 您可以針對每個 [存取套件原則](../governance/entitlement-management-access-package-approval-policy.md) 設定不同的問題集，讓核准者可以有相關的資訊來存取他們所核准的存取權。 例如，如果某個存取套件適用于廠商存取，則可能會要求要求者提供其廠商合約號碼。 適用于供應商的不同存取套件可能會要求其來源國家/地區。
 
-如果您使用自助入口網站，您可以使用 [API 連接器](../external-identities/api-connectors-overview.md) 來收集使用者註冊時的其他相關屬性。 然後，您可以使用這些屬性來指派存取權。 例如，如果您在註冊程式期間收集其供應商識別碼，您可以使用該屬性，將它們動態指派給該供應商的群組或存取套件。 您可以在 Azure 入口網站中建立自訂屬性，並在您的自助式註冊使用者流程中加以使用。 您也可以使用 [Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api) 來讀取和寫入這些屬性。 
+如果您使用自助入口網站，您可以使用 [API 連接器](../external-identities/api-connectors-overview.md) 來收集使用者註冊時的其他相關屬性。 然後，您可以使用這些屬性來指派存取權。 例如，如果您在註冊程式期間收集其供應商識別碼，您可以使用該屬性，將它們動態指派給該供應商的群組或存取套件。 您可以在 Azure 入口網站中建立自訂屬性，並在您的自助式註冊使用者流程中加以使用。 您也可以使用 [Microsoft Graph API](../../active-directory-b2c/manage-user-accounts-graph-api.md) 來讀取和寫入這些屬性。 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>針對 Azure AD 使用者的邀請兌換進行疑難排解
 
@@ -132,7 +132,7 @@ ms.locfileid: "98222355"
 
 * **封鎖對 Azure 入口網站的存取。您可以進行罕見的必要例外** 狀況。 
 
-   * 建立包含所有來賓和外部使用者的條件式存取原則，然後 [執行原則來封鎖存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)。
+   * 建立包含所有來賓和外部使用者的條件式存取原則，然後 [執行原則來封鎖存取](../../role-based-access-control/conditional-access-azure-management.md)。
 
  
 
@@ -185,7 +185,7 @@ ms.locfileid: "98222355"
 
 ### <a name="direct-sharing-through-sharepoint-and-onedrive"></a>透過 SharePoint 和 OneDrive 的直接共用
 
-透過 SharePoint 和 OneDrive 的直接共用可將使用者新增至權利管理程式之外。 若要深入瞭解這些設定，請參閱使用 [Microsoft 小組、SharePoint 和商務用 onedrive 來管理存取權](9-secure-access-teams-sharepoint.md) 。您也可以視需要 [封鎖使用者個人 OneDrive 的使用](https://docs.microsoft.com/office365/troubleshoot/group-policy/block-onedrive-use-from-office) 。
+透過 SharePoint 和 OneDrive 的直接共用可將使用者新增至權利管理程式之外。 若要深入瞭解這些設定，請參閱使用 [Microsoft 小組、SharePoint 和商務用 onedrive 來管理存取權](9-secure-access-teams-sharepoint.md) 。您也可以視需要 [封鎖使用者個人 OneDrive 的使用](/office365/troubleshoot/group-policy/block-onedrive-use-from-office) 。
 
 ### <a name="sending-documents-through-email"></a>透過電子郵件傳送檔
 
@@ -197,9 +197,9 @@ ms.locfileid: "98222355"
 
 如需管理待批准應用程式的詳細資訊，請參閱：
 
-* [治理連線的應用程式](https://docs.microsoft.com/cloud-app-security/governance-actions)
+* [治理連線的應用程式](/cloud-app-security/governance-actions)
 
-* [批准和 unsanctioning 應用程式。](https://docs.microsoft.com/cloud-app-security/governance-discovery)
+* [批准和 unsanctioning 應用程式。](/cloud-app-security/governance-discovery)
 
  
 ### <a name="next-steps"></a>後續步驟

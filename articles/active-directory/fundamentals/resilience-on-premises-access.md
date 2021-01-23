@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8bfc3fb239f30911eddf0aa27496a465e36c486
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8fed78d7d2250d749ced7fe343689df76329b60d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919419"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724655"
 ---
 # <a name="build-resilience-in-application-access-with-application-proxy"></a>使用應用程式 Proxy 來建立應用程式存取的復原能力
 
@@ -27,7 +27,7 @@ ms.locfileid: "95919419"
 使用者透過透過應用程式 Proxy 發佈的 URL 來存取內部部署資源。 系統會將他們重新導向至 Azure AD 登入頁面。 Azure AD 中的應用程式 Proxy 服務會將權杖傳送至公司網路中的「應用程式 Proxy」連接器，此連接器會將權杖傳遞給內部部署 Active Directory 驗證的使用者接著可以存取內部部署資源。 在下圖 [中，連接器](../manage-apps/application-proxy-connectors.md) 會顯示在 [連接器群組](../manage-apps/application-proxy-connector-groups.md)中。
 
 > [!IMPORTANT]
-> 當您透過應用程式 Proxy 發佈應用程式時，您必須 [針對應用程式 proxy 連接器，執行容量規劃和適當的複製](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning)。
+> 當您透過應用程式 Proxy 發佈應用程式時，您必須 [針對應用程式 proxy 連接器，執行容量規劃和適當的複製](../manage-apps/application-proxy-connectors.md#capacity-planning)。
 
 ![應用程式 y 的架構圖](./media/resilience-on-prem-access/admin-resilience-app-proxy.png))
 

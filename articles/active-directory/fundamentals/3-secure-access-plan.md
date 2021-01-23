@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222325"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725206"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. 建立外部存取的安全性計畫 
 
@@ -93,7 +93,7 @@ ms.locfileid: "98222325"
 | 高風險| 外部使用者必須一律需要 MFA |
 
 
-現在，您可以 [對租使用者中的 B2B 使用者強制執行多重要素驗證](https://docs.microsoft.com/azure/active-directory/external-identities/b2b-tutorial-require-mfa)。 
+現在，您可以 [對租使用者中的 B2B 使用者強制執行多重要素驗證](../external-identities/b2b-tutorial-require-mfa.md)。 
 
 **以使用者和裝置為基礎的登入條件**。
 
@@ -106,11 +106,11 @@ ms.locfileid: "98222325"
 
 現在，若要使用裝置狀態作為原則的輸入，裝置必須註冊或加入您的租使用者。 
 
-您可以使用以身分[識別保護風險為基礎的原則](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk)。 不過，使用者的主租使用者中必須降低問題。
+您可以使用以身分[識別保護風險為基礎的原則](../conditional-access/howto-conditional-access-policy-risk.md)。 不過，使用者的主租使用者中必須降低問題。
 
-針對 [網路位置](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-location)，您可以限制存取您擁有的任何 IP 位址範圍。 如果您只想要外部夥伴在您組織的網站上存取應用程式，則可以使用此資訊。
+針對 [網路位置](../conditional-access/howto-conditional-access-policy-location.md)，您可以限制存取您擁有的任何 IP 位址範圍。 如果您只想要外部夥伴在您組織的網站上存取應用程式，則可以使用此資訊。
 
-[深入瞭解條件式存取原則](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)。
+[深入瞭解條件式存取原則](../conditional-access/overview.md)。
 
 ## <a name="document-access-review-policies"></a>檔存取稽核原則
 
@@ -126,13 +126,13 @@ ms.locfileid: "98222325"
 
 * **權利管理存取權審核**。 使用權利管理中的功能
 
-   * [會自動使存取套件過期](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-lifecycle-policy)，並讓外部使用者存取包含的資源。
+   * [會自動使存取套件過期](../governance/entitlement-management-access-package-lifecycle-policy.md)，並讓外部使用者存取包含的資源。
 
-   * 設定存取評論的 [必要審核頻率](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-reviews-create) 。
+   * 設定存取評論的 [必要審核頻率](../governance/entitlement-management-access-reviews-create.md) 。
 
-   * 如果您要使用 [已連線的組織](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-organization) 將單一夥伴的所有使用者分組，請以商務擁有者和合作夥伴代表排程定期審核。
+   * 如果您要使用 [已連線的組織](../governance/entitlement-management-organization.md) 將單一夥伴的所有使用者分組，請以商務擁有者和合作夥伴代表排程定期審核。
 
-* **Microsoft 365 群組**。 針對要邀請外部使用者的 Microsoft 365 群組設定 [群組到期原則](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) 。 
+* **Microsoft 365 群組**。 針對要邀請外部使用者的 Microsoft 365 群組設定 [群組到期原則](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) 。 
 
 * **其他選項**。 如果外部使用者具有權利管理存取套件或 Microsoft 365 群組以外的存取權，請設定商務程式，以在帳戶應設為非使用中或已刪除時進行審查。 例如：
 
@@ -146,9 +146,9 @@ ms.locfileid: "98222325"
 
 現在您已知道您想要控制存取權、如何將這些資產分組以進行一般存取，以及必要的登入和存取稽核原則，您可以決定如何完成您的計畫。 
 
-某些功能（例如 [權利管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)）僅適用于 Azure AD Premium 2 (P2) 授權。 Microsoft 365 E5 和 Office 365 E5 授權包含 Azure AD P2 授權。 
+某些功能（例如 [權利管理](../governance/entitlement-management-overview.md)）僅適用于 Azure AD Premium 2 (P2) 授權。 Microsoft 365 E5 和 Office 365 E5 授權包含 Azure AD P2 授權。 
 
-Microsoft 365、Office 365 和 Azure AD 的其他組合也可提供管理外部使用者的部分功能。 如需詳細資訊，請參閱 [資訊保護](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) 。
+Microsoft 365、Office 365 和 Azure AD 的其他組合也可提供管理外部使用者的部分功能。 如需詳細資訊，請參閱 [資訊保護](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance) 。
 
 > [!NOTE]
 > 授權為每位使用者。 因此，您可以在 Azure AD P2 或 Microsoft 365 E5 層級，讓特定使用者（包括系統管理員和企業擁有者）委派存取控制，而不需要為所有使用者啟用這些授權。 您的第一個50000外部使用者是免費的。 如果您未為其他內部使用者啟用 P2 授權，他們將無法使用權利管理功能，例如存取套件。 
@@ -159,7 +159,7 @@ Azure AD P2 和 Microsoft 365 E5 都有一套完整的安全性和治理工具�
 
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning-bolded-entries-are-preferred-methods"></a>布建、登入、檢查存取權，以及取消布建。 粗體專案是慣用的方法
 
-| 功能| 提供外部使用者| 強制登入先決條件。| 檢閱存取| 取消布建存取權 |
+| 特徵| 提供外部使用者| 強制登入先決條件。| 檢閱存取| 取消布建存取權 |
 | - | - | - | - | - |
 | Azure AD B2B 共同作業| 透過電子郵件、OTP、自助服務邀請| | **每個合作夥伴的定期審核**| 移除帳戶<br>限制登入 |
 | 權利管理| **透過指派或自助存取新增使用者**| | 存取權檢閱|**存取套件的到期或移除**|
@@ -170,7 +170,7 @@ Azure AD P2 和 Microsoft 365 E5 都有一套完整的安全性和治理工具�
 
  ### <a name="access-to-resources-bolded-entries-are-preferred-methods"></a>資源的存取權。 粗體專案是慣用的方法
 
-|功能 | 應用程式 & 資源存取| SharePoint & OneDrive 存取權| 小組存取| 電子郵件 & 檔安全性 |
+|特徵 | 應用程式 & 資源存取| SharePoint & OneDrive 存取權| 小組存取| 電子郵件 & 檔安全性 |
 | - |-|-|-|-|
 | 權利管理| **透過指派或自助存取新增使用者**| **存取套件**| **存取套件**|  |
 | Office 365 群組| | 存取網站 (s)  (和相關聯的內容) 包含在群組中| 存取小組 (以及群組中包含的相關內容) |  |
@@ -180,7 +180,7 @@ Azure AD P2 和 Microsoft 365 E5 都有一套完整的安全性和治理工具�
 
 ### <a name="entitlement-management"></a>權利管理 
 
-[權利管理存取套件](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-create) 可讓您布建和解除布建群組和小組、應用程式和 SharePoint 網站的存取權。 您可以定義允許存取哪些已連線的組織、是否允許自助服務要求，以及需要哪些核准工作流程 (如果有任何) 授與存取權。 若要確保存取的時間不會超過所需的時間，您可以定義每個存取套件的到期原則和存取權評論。 
+[權利管理存取套件](../governance/entitlement-management-access-package-create.md) 可讓您布建和解除布建群組和小組、應用程式和 SharePoint 網站的存取權。 您可以定義允許存取哪些已連線的組織、是否允許自助服務要求，以及需要哪些核准工作流程 (如果有任何) 授與存取權。 若要確保存取的時間不會超過所需的時間，您可以定義每個存取套件的到期原則和存取權評論。 
 
  
 
@@ -190,7 +190,7 @@ Azure AD P2 和 Microsoft 365 E5 都有一套完整的安全性和治理工具�
 ### <a name="provisioning-signing-in-reviewing-access-and-deprovisioning"></a>布建、登入、檢查存取和取消布建
 
 
-|功能 | 提供外部使用者| 強制登入需求| 檢閱存取| 取消布建存取權 |
+|特徵 | 提供外部使用者| 強制登入需求| 檢閱存取| 取消布建存取權 |
 | - |-|-|-|-|
 | Azure AD B2B 共同作業| **透過電子郵件、OTP、自助服務邀請**| 直接 B2B 同盟| **每個合作夥伴的定期審核**| 移除帳戶<br>限制登入 |
 | Microsoft 或 Office 365 群組| | | | 群組的到期或刪除。<br>從群組移除。 |
@@ -200,7 +200,7 @@ Azure AD P2 和 Microsoft 365 E5 都有一套完整的安全性和治理工具�
 
  ### <a name="access-to-resources"></a>資源的存取權。
 
-|功能 | 應用程式 & 資源存取| SharePoint & OneDrive 存取權| 小組存取| 電子郵件 & 檔安全性 |
+|特徵 | 應用程式 & 資源存取| SharePoint & OneDrive 存取權| 小組存取| 電子郵件 & 檔安全性 |
 | - |-|-|-|-|
 | Microsoft 或 Office 365 群組| | **存取網站 (s) 包含在群組 (和相關聯的內容)**|**存取 Microsoft 365 群組所包含的小組 (和相關聯的內容)**|  |
 | 敏感度標籤| | 手動分類和限制存取| 手動分類並限制存取。| 手動分類以限制和加密 |

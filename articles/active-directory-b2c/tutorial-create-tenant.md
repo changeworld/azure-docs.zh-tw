@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5229175af618f897caeae7310338cbe51966a48d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: HT
+ms.openlocfilehash: 4b8292d99bd16f9b6f98f4ae8ca82edbfc02ff76
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859579"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725749"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教學課程：建立 Active Directory B2C 租用戶
 
@@ -68,7 +68,7 @@ ms.locfileid: "96859579"
     ![使用 Azure 入口網站中的範例值建立租用戶表單](media/tutorial-create-tenant/review-and-create-tenant.png)
 
 1. 選取 [檢閱 + 建立]。
-1. 檢閱您的目錄設定。 然後選取 [建立]。
+1. 檢閱您的目錄設定。 然後選取 [建立]。 針對 [部署錯誤進行疑難排解](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)。
 
 您可以將多個 Azure AD B2C 租用戶連結至單一 Azure 訂用帳戶，以供計費之用。 若要連結租用戶，您必須是 Azure AD B2C 租用戶中的系統管理員，且在 Azure 訂用帳戶中至少指派一個參與者角色。 請參閱[將 Azure AD B2C 租用戶連結至訂用帳戶](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)。
 

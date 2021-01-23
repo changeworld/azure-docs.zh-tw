@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6d476be7a417cfc31cca76d3409074aaaa281a56
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602179"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724605"
 ---
 # <a name="build-resilience-with-device-states"></a>以裝置狀態建立恢復功能
 
@@ -40,11 +40,11 @@ ms.locfileid: "96602179"
 
   如果您的組織中有較舊版本的 Windows，請將這些裝置升級為使用 Windows 10。
 
-* 使用 [Microsoft Edge](https://docs.microsoft.com/deployedge/microsoft-edge-security-identity) 或 Google Chrome 搭配 [支援](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)的 [延伸](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) 模組，將使用者瀏覽器的存取權標準化，以使用 PRT 啟用無縫 SSO 至 web 應用程式。
+* 使用 [Microsoft Edge](/deployedge/microsoft-edge-security-identity) 或 Google Chrome 搭配 [支援](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)的 [延伸](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) 模組，將使用者瀏覽器的存取權標準化，以使用 PRT 啟用無縫 SSO 至 web 應用程式。
 
-* 針對個人或公司擁有的 iOS 和 Android 裝置，部署 [Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md)。 除了多重要素驗證和無密碼登入功能之外，Microsoft Authenticator 的應用程式會透過代理驗證，讓使用者能夠透過代理 [驗證](../develop/brokered-auth.md) ，在原生應用程式之間啟用單一登入，以提供較少的終端使用者驗證提示。
+* 針對個人或公司擁有的 iOS 和 Android 裝置，部署 [Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md)。 除了多重要素驗證和無密碼登入功能之外，Microsoft Authenticator 的應用程式會透過代理驗證，讓使用者能夠透過代理 [驗證](../develop/msal-android-single-sign-on.md) ，在原生應用程式之間啟用單一登入，以提供較少的終端使用者驗證提示。
 
-* 針對個人或公司所擁有的 iOS 和 Android 裝置，使用行動 [應用程式管理](https://docs.microsoft.com/mem/intune/apps/app-management) ，以較少的驗證要求安全地存取公司資源。 
+* 針對個人或公司所擁有的 iOS 和 Android 裝置，使用行動 [應用程式管理](/mem/intune/apps/app-management) ，以較少的驗證要求安全地存取公司資源。 
 
 * [使用適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式 (preview) ](../develop/apple-sso-plugin.md)。 這會註冊裝置，並在瀏覽器和原生 Azure AD 應用程式之間提供 SSO。 
 

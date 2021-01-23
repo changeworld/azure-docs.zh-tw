@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012830"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725584"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Azure Active Directory-phone 選項中的驗證方法
 
-若要使用簡訊進行直接驗證，您可以[為使用者設定和啟用 SMS 型驗證 (預覽)](howto-authentication-sms-signin.md)。 SMS 型登入很適合第一線工作者使用。 使用 SMS 型登入，使用者不需要知道使用者名稱和密碼，即可存取應用程式和服務。 使用者會改為輸入其已註冊的行動電話號碼、接收包含驗證碼的簡訊，然後在登入介面中輸入驗證碼。
+若要使用文字訊息進行直接驗證，您可以 [設定和啟用使用者進行 SMS 驗證](howto-authentication-sms-signin.md)。 SMS 登入適用于 Frontline 背景工作。 使用 SMS 型登入，使用者不需要知道使用者名稱和密碼，即可存取應用程式和服務。 使用者會改為輸入其已註冊的行動電話號碼、接收包含驗證碼的簡訊，然後在登入介面中輸入驗證碼。
 
 使用者也可以使用行動電話或辦公室電話，作為在 Azure AD Multi-Factor Authentication 或 (SSPR) 的自助式密碼重設期間所使用的次要驗證形式來驗證自己。
 

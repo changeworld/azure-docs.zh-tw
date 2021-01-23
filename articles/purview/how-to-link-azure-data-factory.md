@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928761"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723875"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>如何連接 Azure Data Factory 和 Azure 範疇
 
@@ -99,12 +99,12 @@ Data Factory 與範疇之間的整合僅支援 Data Factory 支援的資料系�
 
 | 資料儲存系統 | 支援作為來源 | 支援作為接收 |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 (沒有 JSON 支援)  | 是 | 是 (非二進位複製)  |
-| ADLS Gen2 (沒有 JSON 支援)  | 是 | 是 |
-| Azure Blob (沒有 JSON 支援)  | 是 | 是 |
-| Azure Cosmos DB (SQL API) | 是 | 是 |
+| ADLS Gen1 | 是 | 是 (非二進位複製)  |
+| ADLS Gen2 | 是 | 是 |
+| Azure Blob | 是 | 是 |
+| Azure Cosmos DB (SQL API)  | 是 | 是 |
 | Azure Cosmos DB (Mongo API)  | 是 | 是 |
-| Azure 認知搜尋 | 是 | 是 |
+| Azue 認知搜尋 | 是 | 是 |
 | Azure 資料總管 | 是 | 是 |
 | 適用于 Maria 資料庫的 Azure 資料庫 \* | 是 | 是 |
 | 適用于 MYSQL 的 Azure 資料庫 \* | 是 | 是 |

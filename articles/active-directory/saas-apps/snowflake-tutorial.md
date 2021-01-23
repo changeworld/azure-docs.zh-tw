@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2020
 ms.author: jeedes
-ms.openlocfilehash: f516f51c2e059526b4e678f2779ef0ad059c74e7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
-ms.translationtype: HT
+ms.openlocfilehash: 1af0209265ec4945950120e80a83e19c8ab2eb4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968546"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>教學課程：Azure Active Directory 與 Snowflake 整合
 
@@ -184,7 +184,7 @@ ms.locfileid: "97968546"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入已設定 SSO 的 Snowflake 
 
-您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [Snowflake] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Snowflake。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [Snowflake] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 Snowflake。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

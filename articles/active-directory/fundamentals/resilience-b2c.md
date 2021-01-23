@@ -13,16 +13,16 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba7b8ff2555fd7014cf16f66745721c6425ff868
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: b40918db03c260f899c36d306c892b787cc6371c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029518"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724886"
 ---
 # <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 在您的客戶身分識別和存取管理中打造復原能力
 
-[Azure Active Directory (AD) B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview) 是客戶身分識別和存取管理 (CIAM) 平臺，其設計目的是協助您成功地啟動您的重要客戶應用程式。 我們有許多內建的 [恢復](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/) 功能，其設計目的是為了協助我們的服務調整您的需求，並在可能發生中斷的情況下提高復原能力。 此外，當您啟動任務關鍵性應用程式時，請務必考慮您應用程式中的各種設計和設定專案，以及如何在 Azure AD B2C 內設定應用程式，以確保您可以在回應中斷或失敗案例時取得復原行為。 在本文中，我們將討論一些可協助您提高復原能力的最佳作法。
+[Azure Active Directory (AD) B2C](../../active-directory-b2c/overview.md) 是客戶身分識別和存取管理 (CIAM) 平臺，其設計目的是協助您成功地啟動您的重要客戶應用程式。 我們有許多內建的 [恢復](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/) 功能，其設計目的是為了協助我們的服務調整您的需求，並在可能發生中斷的情況下提高復原能力。 此外，當您啟動任務關鍵性應用程式時，請務必考慮您應用程式中的各種設計和設定專案，以及如何在 Azure AD B2C 內設定應用程式，以確保您可以在回應中斷或失敗案例時取得復原行為。 在本文中，我們將討論一些可協助您提高復原能力的最佳作法。
 
 復原服務是一種持續運作（儘管中斷）的服務。 您可以透過下列方式，協助改善服務中的復原能力：
 
@@ -49,3 +49,6 @@ ms.locfileid: "96029518"
 - [在您的驗證基礎結構中建立恢復功能](resilience-in-infrastructure.md)
 
 - [提高應用程式中驗證和授權的復原能力](resilience-app-development-overview.md)
+
+觀賞這段影片，瞭解如何使用 Azure AD B2C 建立彈性且可擴充的流程。
+>[!Video https://www.youtube.com/embed/8f_Ozpw9yTs]

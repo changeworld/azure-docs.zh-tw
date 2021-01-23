@@ -17,12 +17,12 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7d02b48d30fa558f8fd12f92705046dab74057
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: deab3460baf9c46e2a3073eb41b738b0e7ad586f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624230"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726296"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報表 (預覽) 
 
@@ -43,12 +43,12 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 * 哪些使用者已成功從 Adobe 移除？
 * 已成功在 Active Directory 中建立 Workday 的使用者？ 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
 * 應用程式擁有者可以查看他們所擁有之應用程式的記錄
 * 安全性系統管理員、安全性讀取者、報告讀取者、應用程式系統管理員和雲端應用程式系統管理員角色中的使用者
-* 具有[provisioningLogs 許可權](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)的自訂角色使用者
+* 具有[provisioningLogs 許可權](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)的自訂角色使用者
 * 全域系統管理員
 
 
@@ -180,7 +180,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 修改的屬性
 
-- 摘要
+- [摘要]
 
 
 ![布建詳細資料](./media/concept-provisioning-logs/provisioning-tabs.png "定位點")
@@ -211,7 +211,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 **修改過的屬性** 會顯示舊值和新值。 在沒有舊值的情況下，舊的值資料行是空白的。 
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>[摘要]
 
 [ **摘要** ] 索引標籤提供來源和目標系統中物件的發生狀況和識別碼的總覽。 
 

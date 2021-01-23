@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aebfaa176992b7e20824518bc214a6688ae493
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a0668b3ea651d129dc076e5f2247e38f5ab7d0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703580"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725490"
 ---
 # <a name="email-one-time-passcode-authentication"></a>電子郵件單次密碼驗證
 
@@ -102,7 +102,7 @@ ms.locfileid: "97703580"
 
 ![啟用電子郵件單次密碼選擇](media/delegate-invitations/enable-email-otp-opted-in.png)
 
-但是，如果您想要選擇不使用此功能，並允許它在2021年3月自動啟用，您可以使用 Microsoft Graph API [電子郵件驗證方法設定資源類型](https://aka.ms/exid-graphemailauth)來還原為預設值。 還原為預設值之後， **來賓的電子郵件單次密碼** 下將提供下列選項：
+但是，如果您想要選擇不使用此功能，並允許它在2021年3月自動啟用，您可以使用 Microsoft Graph API [電子郵件驗證方法設定資源類型](/graph/api/resources/emailauthenticationmethodconfiguration)來還原為預設值。 還原為預設值之後， **來賓的電子郵件單次密碼** 下將提供下列選項：
 
 - **在2021年3月自動為來賓啟用電子郵件單次密碼**。  (預設) 如果您的租使用者尚未啟用電子郵件單次密碼功能，則會在2021年3月自動開啟。 如果您想要在該時間啟用功能，則不需要採取任何進一步的動作。 如果您已經啟用或停用此功能，將無法使用此選項。
 

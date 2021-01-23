@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecddb950c06c9f8e61f31e104051f5e3b3640ae5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201343"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725005"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>保護來自內部部署攻擊的 Microsoft 365
 
@@ -60,7 +60,7 @@ ms.locfileid: "98201343"
 
      *  只能使用 Azure 受控工作站進行存取。
 
-這些是限制使用的帳戶。 **在 Microsoft 365 中，不應該有具有系統管理許可權的內部部署帳戶。** 如需詳細資訊，請參閱 [Microsoft 365 系統管理員角色的總覽](https://docs.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)。
+這些是限制使用的帳戶。 **在 Microsoft 365 中，不應該有具有系統管理許可權的內部部署帳戶。** 如需詳細資訊，請參閱 [Microsoft 365 系統管理員角色的總覽](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide)。
 另請參閱 [Azure Active Directory 中 Microsoft 365 的角色](../roles/m365-workload-docs.md)。
 
 *  **從 Microsoft 365 管理裝置。** 使用 Azure AD 加入和雲端式行動裝置管理 (MDM) 來消除內部部署裝置管理基礎結構的相依性，這可能會危害裝置和安全性控制措施。
@@ -82,7 +82,7 @@ ms.locfileid: "98201343"
 
 * 使用僅限雲端的帳戶進行 Azure AD 和 Microsoft 365 特殊許可權的角色。 d
 
-* 部署特殊許可權 [存取裝置](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) 以進行特殊許可權存取，以管理 Microsoft 365 和 Azure AD。
+* 部署特殊許可權 [存取裝置](/security/compass/privileged-access-devices#device-roles-and-profiles) 以進行特殊許可權存取，以管理 Microsoft 365 和 Azure AD。
 
 *  立即部署 [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM)  (JIT) 存取具有特殊許可權角色的所有人帳戶，以及需要增強式驗證才能啟用角色。
 
@@ -92,7 +92,7 @@ ms.locfileid: "98201343"
 
 * 部署 [緊急存取帳戶](../roles/security-emergency-access.md) ，且不要使用內部部署密碼保存庫來儲存認證。
 
-如需詳細資訊，請參閱保護特殊許可權 [存取](https://aka.ms/SPA)，此主題有詳細的指引。 此外，請參閱 [Azure AD 中系統管理員的安全存取做法](../roles/security-planning.md)。
+如需詳細資訊，請參閱保護特殊許可權 [存取](/security/compass/overview)，此主題有詳細的指引。 此外，請參閱 [Azure AD 中系統管理員的安全存取做法](../roles/security-planning.md)。
 
 ### <a name="use-cloud-authentication"></a>使用雲端驗證 
 
@@ -100,15 +100,15 @@ ms.locfileid: "98201343"
 
 * [部署無密碼 authentication](../authentication/howto-authentication-passwordless-deployment.md)：部署無密碼認證，盡可能減少密碼的使用。 這些認證會以原生方式在雲端中進行管理和驗證。 從下列選項進行選擇：
 
-   * [商務 Windows Hello](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/passwordless-strategy)
+   * [商務 Windows Hello](/windows/security/identity-protection/hello-for-business/passwordless-strategy)
 
    * [Authenticator 應用程式](../authentication/howto-authentication-passwordless-phone.md)
 
    * [FIDO2 安全性金鑰](../authentication/howto-authentication-passwordless-security-key-windows.md)
 
-* [部署 Multi-Factor Authentication](https://aka.ms/deploymentplans/mfa)： [使用 Azure AD MFA 布建多個強式認證](../fundamentals/resilience-in-credentials.md)。 如此一來，雲端資源的存取權除了可操作的內部部署密碼之外，還需要 Azure AD 中管理的認證。
+* [部署 Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)： [使用 Azure AD MFA 布建多個強式認證](../fundamentals/resilience-in-credentials.md)。 如此一來，雲端資源的存取權除了可操作的內部部署密碼之外，還需要 Azure AD 中管理的認證。
 
-   * 如需詳細資訊，請參閱 [使用 Azure Active Directory 建立彈性的存取控制管理原則](https://aka.ms/resilientaad)。
+   * 如需詳細資訊，請參閱 [使用 Azure Active Directory 建立彈性的存取控制管理原則](./resilience-overview.md)。
 
 **限制和取捨**
 
@@ -131,7 +131,7 @@ ms.locfileid: "98201343"
 
    *  限制來賓存取目錄中的群組和其他屬性。 使用外部共同作業設定，以限制來賓讀取不是其成員之群組的能力。 
 
-    *   封鎖對 Azure 入口網站的存取。 您可以進行罕見的必要例外狀況。  建立包含所有來賓和外部使用者的條件式存取原則，然後 [執行原則來封鎖存取](/azure/role-based-access-control/conditional-access-azure-management)。 
+    *   封鎖對 Azure 入口網站的存取。 您可以進行罕見的必要例外狀況。  建立包含所有來賓和外部使用者的條件式存取原則，然後 [執行原則來封鎖存取](../../role-based-access-control/conditional-access-azure-management.md)。 
 
 * **中斷** 連線的樹系：使用 [Azure AD 雲端](../cloud-provisioning/what-is-cloud-provisioning.md)布建。 這可讓您連線到中斷連線的樹系，而不需要建立跨樹系連線或信任，進而放寬內部部署缺口的影響。 * 
  
@@ -143,7 +143,7 @@ ms.locfileid: "98201343"
 
 雲端群組可讓您將共同作業和存取權與內部部署基礎結構分離開來。
 
-* 共同作業 **：** 使用 Microsoft 365 群組和 Microsoft 團隊進行新式共同作業。 解除委任內部部署通訊群組清單，並 [將通訊群組清單升級為 Outlook 中的 Microsoft 365 群組](https://docs.microsoft.com/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide)。
+* 共同作業 **：** 使用 Microsoft 365 群組和 Microsoft 團隊進行新式共同作業。 解除委任內部部署通訊群組清單，並 [將通訊群組清單升級為 Outlook 中的 Microsoft 365 群組](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide)。
 
 * **存取：** 使用 Azure AD 安全性群組或 Microsoft 365 群組，在 Azure AD 中授權存取應用程式。
 * **Office 365 授權：** 使用以群組為基礎的授權，以使用僅限雲端的群組布建至 Office 365。 這會將群組成員資格的控制與內部部署基礎結構分開。
@@ -156,7 +156,7 @@ ms.locfileid: "98201343"
 
 使用 Azure AD 功能來安全地管理裝置。
 
--   **使用 Windows 10 工作站：使用** MDM 原則 [部署 Azure AD 加入](../devices/azureadjoin-plan.md) 的裝置。 啟用 [Windows Autopilot](https://docs.microsoft.com/mem/autopilot/windows-autopilot) ，以提供完全自動化的布建體驗。
+-   **使用 Windows 10 工作站：使用** MDM 原則 [部署 Azure AD 加入](../devices/azureadjoin-plan.md) 的裝置。 啟用 [Windows Autopilot](/mem/autopilot/windows-autopilot) ，以提供完全自動化的布建體驗。
 
     -   取代 Windows 8.1 和先前的電腦。
 
@@ -164,7 +164,7 @@ ms.locfileid: "98201343"
 
     -   使用 [Microsoft Intune](https://www.microsoft.com/en/microsoft-365/enterprise-mobility-security/microsoft-intune) 作為所有裝置管理工作負載的授權來源。
 
--   [**部署特殊許可權存取裝置**](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) 以進行特殊許可權存取，以管理 Microsoft 365 和 Azure AD。
+-   [**部署特殊許可權存取裝置**](/security/compass/privileged-access-devices#device-roles-and-profiles) 以進行特殊許可權存取，以管理 Microsoft 365 和 Azure AD。
 
  ## <a name="workloads-applications-and-resources"></a>工作負載、應用程式和資源 
 
@@ -181,19 +181,19 @@ ms.locfileid: "98201343"
 
 *  **應用程式和工作負載伺服器**
 
-   * 需要伺服器的應用程式或資源可以遷移至 Azure IaaS，並使用 [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) (Azure AD DS) 將信任和相依性與 AD 內部部署的相依性分離。 為了達成這種分離，用於 Azure AD DS 的虛擬網路應該不會連接到公司網路。
+   * 需要伺服器的應用程式或資源可以遷移至 Azure IaaS，並使用 [Azure AD Domain Services](../../active-directory-domain-services/overview.md) (Azure AD DS) 將信任和相依性與 AD 內部部署的相依性分離。 為了達成這種分離，用於 Azure AD DS 的虛擬網路應該不會連接到公司網路。
 
-   * 遵循 [認證分層](https://aka.ms/TierModel)的指導方針。 應用程式伺服器通常視為第1層資產。
+   * 遵循 [認證分層](/security/compass/privileged-access-access-model#ADATM_BM)的指導方針。 應用程式伺服器通常視為第1層資產。
 
  ## <a name="conditional-access-policies"></a>條件式存取原則
 
-使用 Azure AD 條件式存取來解讀信號，並根據它們進行驗證決策。 如需詳細資訊，請參閱 [條件式存取部署計畫。](https://aka.ms/deploymentplans/ca)
+使用 Azure AD 條件式存取來解讀信號，並根據它們進行驗證決策。 如需詳細資訊，請參閱 [條件式存取部署計畫。](../conditional-access/plan-conditional-access.md)
 
 * [舊版驗證通訊協定](../fundamentals/auth-sync-overview.md)：使用條件式存取，盡可能 [封鎖傳統驗證](../conditional-access/howto-conditional-access-policy-block-legacy.md) 通訊協定。 此外，請使用應用程式特定設定，在應用層級停用舊版驗證通訊協定。
 
-   * 請參閱 [Exchange online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) 和 [SharePoint online](https://docs.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)的特定詳細資料。
+   * 請參閱 [Exchange online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) 和 [SharePoint online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)的特定詳細資料。
 
-* 執行建議的身分 [識別和裝置存取設定。](https://docs.microsoft.com/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
+* 執行建議的身分 [識別和裝置存取設定。](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
 
 * 如果您使用的 Azure AD 版本不包含條件式存取，請確定您使用的是 [Azure AD 安全性預設值](../fundamentals/concept-fundamentals-security-defaults.md)。
 
@@ -206,13 +206,13 @@ ms.locfileid: "98201343"
 
 除了您組織專屬的任何案例之外，還可以監視下列主要案例。 例如，您應該主動監視對商務關鍵應用程式和資源的存取。
 
-* **可疑活動**：應針對可疑活動監視所有 [Azure AD 風險事件](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#risk-detection-and-remediation) 。 [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) 原本就與 Azure 資訊安全中心整合。
+* **可疑活動**：應針對可疑活動監視所有 [Azure AD 風險事件](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) 。 [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) 原本就與 Azure 資訊安全中心整合。
 
    * 定義名為「 [位置](../reports-monitoring/quickstart-configure-named-locations.md) 」的網路，以避免在以位置為基礎的信號上偵測出雜訊。 
 *  **使用者實體行為分析 (UEBA) 警示** 使用 UEBA 取得異常偵測的見解。
-   * Microsoft Cloud App Discovery (MCAS) 提供 [雲端 UEBA](https://docs.microsoft.com/cloud-app-security/tutorial-ueba)。
+   * Microsoft Cloud App Discovery (MCAS) 提供 [雲端 UEBA](/cloud-app-security/tutorial-ueba)。
 
-   * 您可以 [從 Azure ATP 整合內部部署 UEBA](https://docs.microsoft.com/defender-for-identity/install-step2)。 MCAS 會讀取來自 Azure AD Identity Protection 的信號。 
+   * 您可以 [從 Azure ATP 整合內部部署 UEBA](/defender-for-identity/install-step2)。 MCAS 會讀取來自 Azure AD Identity Protection 的信號。 
 
 * **緊急存取帳戶活動**：使用 [緊急存取帳戶](../roles/security-emergency-access.md) 的任何存取都應受監視，並建立警示以進行調查。 此監視必須包含： 
 
@@ -223,7 +223,7 @@ ms.locfileid: "98201343"
    * 群組成員資格的任何更新。 
 
    *    應用程式指派。 
-* 特殊 **許可權角色活動**：設定和審核 [Azure AD PIM 所產生的安全性警示](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-configure-security-alerts?tabs=new#security-alerts)。
+* 特殊 **許可權角色活動**：設定和審核 [Azure AD PIM 所產生的安全性警示](../privileged-identity-management/pim-how-to-configure-security-alerts.md?tabs=new#security-alerts)。
     藉由在每次直接指派使用者時產生警示，來監視 PIM 外的特殊許可權角色的直接指派。
 * **Azure AD 整個租使用者的** 設定：對租使用者範圍設定的任何變更都應該在系統中產生警示。 這些包括但不限於
   *  更新自訂網域  
@@ -254,11 +254,11 @@ ms.locfileid: "98201343"
 
    * 風險事件 
 
-Azure AD 為登入活動記錄和審核記錄提供 [Azure 監視器整合](../reports-monitoring/concept-activity-logs-azure-monitor.md) 。 您可以透過 [MICROSOFT GRAPH API](https://aka.ms/AzureADSecuredAzure/32b)來內嵌風險事件。 您可以 [將 Azure AD 記錄串流至 Azure 監視器記錄](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。
+Azure AD 為登入活動記錄和審核記錄提供 [Azure 監視器整合](../reports-monitoring/concept-activity-logs-azure-monitor.md) 。 您可以透過 [MICROSOFT GRAPH API](/graph/api/resources/identityriskevent)來內嵌風險事件。 您可以 [將 Azure AD 記錄串流至 Azure 監視器記錄](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。
 
 * **混合式基礎結構 OS 安全性記錄。** 所有的混合式身分識別基礎結構作業系統記錄都應該封存，並謹慎監視為 <br>第0層系統，提供介面區的含意。 這包括： 
 
-   *  Azure AD Connect。 您必須部署[Azure AD Connect Health](https://aka.ms/AzureADSecuredAzure/32e) ，才能監視身分識別同步處理。
+   *  Azure AD Connect。 您必須部署[Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md) ，才能監視身分識別同步處理。
 
    *  應用程式 Proxy 代理程式 
 

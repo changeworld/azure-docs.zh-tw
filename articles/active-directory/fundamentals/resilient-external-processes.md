@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c96856c988cae891e64ddf460d61851102e4666c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 58ef522f5b048db0ef120625d9e894c8e14c070e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919396"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724402"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>具有外部進程的復原介面
 
@@ -28,7 +28,7 @@ ms.locfileid: "95919396"
 
 ## <a name="ensure-correct-placement-of-the-apis"></a>確定 Api 的位置正確
 
-身分識別體驗架構 (IEF) 原則可讓您使用 [RESTFUL API 技術設定檔](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile)來呼叫外部系統。 外部系統不受 IEF 執行時間環境的控制，而且是潛在的失敗點。
+身分識別體驗架構 (IEF) 原則可讓您使用 [RESTFUL API 技術設定檔](../../active-directory-b2c/restful-technical-profile.md)來呼叫外部系統。 外部系統不受 IEF 執行時間環境的控制，而且是潛在的失敗點。
 
 ### <a name="how-to-manage-external-systems-using-apis"></a>如何使用 Api 管理外部系統
 
@@ -38,11 +38,11 @@ ms.locfileid: "95919396"
 
 - 盡可能從預先驗證的路徑移除 API 呼叫。 如果您無法這樣做，則必須針對阻絕服務 (DoS) 和分散式阻絕服務 (DDoS) 攻擊，在您的 Api 之前放置嚴格保護。 攻擊者可以載入登入頁面，並嘗試使用 DoS 攻擊來氾濫您的 API，並讓您的應用程式癱瘓。 例如，在登入中使用 CAPTCHA，註冊流程可以提供協助。
 
-- 在使用身分識別提供者登入或建立使用者之前，請盡可能使用內 [建註冊使用者流程的 API 連接器](https://docs.microsoft.com/azure/active-directory-b2c/api-connectors-overview) ，以與 web api 整合。 由於使用者流程已經過廣泛的測試，因此您可能不需要執行使用者流程層級的功能、效能或規模測試。 您仍然需要測試應用程式的功能、效能和規模。
+- 在使用身分識別提供者登入或建立使用者之前，請盡可能使用內 [建註冊使用者流程的 API 連接器](../../active-directory-b2c/api-connectors-overview.md) ，以與 web api 整合。 由於使用者流程已經過廣泛的測試，因此您可能不需要執行使用者流程層級的功能、效能或規模測試。 您仍然需要測試應用程式的功能、效能和規模。
 
-- Azure AD RESTFul API [技術設定檔](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile) 不會提供任何快取行為。 相反地，RESTFul API 設定檔會執行重試邏輯和原則內建的超時時間。
+- Azure AD RESTFul API [技術設定檔](../../active-directory-b2c/restful-technical-profile.md) 不會提供任何快取行為。 相反地，RESTFul API 設定檔會執行重試邏輯和原則內建的超時時間。
 
-- 對於需要寫入資料的 Api，請將工作排入佇列，讓背景工作角色執行這類工作。 您可以使用 [Azure 佇列](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction) 之類的服務。 這會讓 API 傳回有效率地提高原則執行效能。  
+- 對於需要寫入資料的 Api，請將工作排入佇列，讓背景工作角色執行這類工作。 您可以使用 [Azure 佇列](../../storage/queues/storage-queues-introduction.md) 之類的服務。 這會讓 API 傳回有效率地提高原則執行效能。  
 
 ## <a name="api-error-handling"></a>API 錯誤處理
 
@@ -50,11 +50,11 @@ ms.locfileid: "95919396"
 
 ### <a name="how-to-gracefully-handle-api-errors"></a>如何正常處理 API 錯誤
 
-- API 可能會因各種原因而失敗，讓您的應用程式能夠復原這類失敗。 如果 API 無法完成要求，則傳回[HTTP 4xx 錯誤訊息](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile#returning-validation-error-message)。 在 Azure AD B2C 原則中，請嘗試正常處理 API 無法使用的情況，而且可能會呈現較少的體驗。
+- API 可能會因各種原因而失敗，讓您的應用程式能夠復原這類失敗。 如果 API 無法完成要求，則傳回[HTTP 4xx 錯誤訊息](../../active-directory-b2c/restful-technical-profile.md#returning-validation-error-message)。 在 Azure AD B2C 原則中，請嘗試正常處理 API 無法使用的情況，而且可能會呈現較少的體驗。
 
-- [正常處理暫時性錯誤](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile#error-handling)。 RESTFul API 設定檔可讓您設定各種 [斷路](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)器的錯誤訊息。
+- [正常處理暫時性錯誤](../../active-directory-b2c/restful-technical-profile.md#error-handling)。 RESTFul API 設定檔可讓您設定各種 [斷路](/azure/architecture/patterns/circuit-breaker)器的錯誤訊息。
 
-- 主動監視並使用持續整合/持續傳遞 (CICD) ，輪替 API 存取認證，例如 [技術設定檔引擎](https://docs.microsoft.com/azure/active-directory-b2c/restful-technical-profile)所使用的密碼和憑證。
+- 主動監視並使用持續整合/持續傳遞 (CICD) ，輪替 API 存取認證，例如 [技術設定檔引擎](../../active-directory-b2c/restful-technical-profile.md)所使用的密碼和憑證。
 
 ## <a name="api-management---best-practices"></a>API 管理-最佳作法
 
@@ -64,7 +64,7 @@ ms.locfileid: "95919396"
 
 - API 管理 (APIM) 發佈、管理及分析您的 Api。 APIM 也會處理驗證，以提供後端服務和微服務的安全存取。 使用 API 閘道來向外擴充 API 部署、快取和負載平衡。
 
-- 建議您在使用者旅程圖的開頭取得正確的權杖，而不是針對每個 API 呼叫多次，並 [保護 Azure APIM API](https://docs.microsoft.com/azure/active-directory-b2c/secure-api-management?tabs=app-reg-ga)。
+- 建議您在使用者旅程圖的開頭取得正確的權杖，而不是針對每個 API 呼叫多次，並 [保護 Azure APIM API](../../active-directory-b2c/secure-api-management.md?tabs=app-reg-ga)。
 
 ## <a name="next-steps"></a>後續步驟
 

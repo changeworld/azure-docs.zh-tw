@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/26/2020
 ms.author: jeedes
-ms.openlocfilehash: fba29f77d67c5b571253b842f865ae29a6ccfacd
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
-ms.translationtype: HT
+ms.openlocfilehash: a903eb6000cdd5212ad358cae4952e27a4719070
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968376"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725256"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SuccessFactors 整合
 
@@ -225,7 +225,7 @@ ms.locfileid: "97968376"
 
 * 直接移至 SuccessFactors 登入 URL，然後從該處起始登入流程。
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 SuccessFactors 圖格時，將會重新導向至 SuccessFactors 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您按一下「我的應用程式」中的 SuccessFactors 圖格時，將會重新導向至 SuccessFactors 登入 URL。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

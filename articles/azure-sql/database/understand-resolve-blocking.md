@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: d3bd63566daaf6e1d3e3343b5956d8a8d5fc8ea5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224451"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725781"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>瞭解和解決 Azure SQL Database 封鎖問題
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -227,9 +227,9 @@ AND object_name(p.object_id) = '<table_name>';
 
     | 資源 | [格式] | 範例 | 說明 | 
     |:-|:-|:-|:-|
-    | Table | DatabaseID： ObjectID： IndexID | TAB：5:261575970:1 | 在此情況下，資料庫識別碼5是 pubs 範例資料庫，而物件識別碼261575970是標題資料表，1是叢集索引。 |
+    | 資料表 | DatabaseID： ObjectID： IndexID | TAB：5:261575970:1 | 在此情況下，資料庫識別碼5是 pubs 範例資料庫，而物件識別碼261575970是標題資料表，1是叢集索引。 |
     | 頁面 | DatabaseID： FileID： PageID | 頁面：5:1:104 | 在此情況下，資料庫識別碼5為 pubs，檔案識別碼1是主要資料檔案，而頁面104是屬於 titles 資料表的頁面。 若要識別頁面所屬的 object_id，請使用動態管理函式 [sys.dm_db_page_info](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-page-info-transact-sql)，傳入 DatabaseID、FileId、PageId 中的 `wait_resource` 。 | 
-    | 答案 | DatabaseID： Hobt_id 索引鍵的 (雜湊值)  | 機碼： 5:72057594044284928 (3300a4f361aa)  | 在此情況下，資料庫識別碼5為 Pubs，Hobt_ID 72057594044284928 對應至 object_id 261575970 (標題資料表) 的 index_id 2。 使用 sys. 分割目錄檢視，將 hobt_id 與特定 index_id 和 object_id。 沒有任何方法可將索引鍵雜湊取消至特定的索引鍵值。 |
+    | Key | DatabaseID： Hobt_id 索引鍵的 (雜湊值)  | 機碼： 5:72057594044284928 (3300a4f361aa)  | 在此情況下，資料庫識別碼5為 Pubs，Hobt_ID 72057594044284928 對應至 object_id 261575970 (標題資料表) 的 index_id 2。 使用 sys. 分割目錄檢視，將 hobt_id 與特定 index_id 和 object_id。 沒有任何方法可將索引鍵雜湊取消至特定的索引鍵值。 |
     | 資料列 | DatabaseID： FileID： PageID：插槽 (資料列)  | RID：5:1:104:3 | 在此情況下，資料庫識別碼5為 pubs，檔案識別碼1是主要資料檔案，頁面104是屬於標題資料表的頁面，而插槽3表示資料列在頁面上的位置。 |
     | 編譯  | DatabaseID： FileID： PageID：插槽 (資料列)  | RID：5:1:104:3 | 在此情況下，資料庫識別碼5為 pubs，檔案識別碼1是主要資料檔案，頁面104是屬於標題資料表的頁面，而插槽3表示資料列在頁面上的位置。 |
 
@@ -286,8 +286,8 @@ AND object_name(p.object_id) = '<table_name>';
 |:-|:-|:-|:-|:-|:-|--|
 | 1 | NOT NULL | >= 0 | 可執行的 | 是，查詢完成時。 | 在 sys.dm_exec_sessions 中， **讀取**、 **cpu_time** 和/或 **memory_usage** 的資料行會隨著時間增加。 完成時，查詢的持續時間會很高。 |
 | 2 | NULL | \>0 | 睡眠中 | 否，但可以終止 SPID。 | 這個 SPID 的擴充事件會話可能會出現注意信號，表示已發生查詢超時或取消。 |
-| 3 | NULL | \>= 0 | 可執行的 | 不會。 在用戶端提取所有資料列或關閉連接之前，將無法解析。 SPID 可以被終止，但最多可能需要30秒的時間。 | 如果 open_transaction_count = 0，而 SPID 持有鎖定，但交易隔離等級為預設 (READ COMMMITTED) ，則這可能是原因。 |  
-| 4 | 不定 | \>= 0 | 可執行的 | 不會。 在用戶端取消查詢或關閉連接之前，將無法解析。 Spid 可以被終止，但最多可能需要30秒的時間。 | 在封鎖鏈的標頭中，sys.dm_exec_sessions 的 **hostname** 資料行，將會與它所封鎖的其中一個 spid 相同。 |  
+| 3 | NULL | \>= 0 | 可執行的 | 否。 在用戶端提取所有資料列或關閉連接之前，將無法解析。 SPID 可以被終止，但最多可能需要30秒的時間。 | 如果 open_transaction_count = 0，而 SPID 持有鎖定，但交易隔離等級為預設 (READ COMMMITTED) ，則這可能是原因。 |  
+| 4 | 不定 | \>= 0 | 可執行的 | 否。 在用戶端取消查詢或關閉連接之前，將無法解析。 Spid 可以被終止，但最多可能需要30秒的時間。 | 在封鎖鏈的標頭中，sys.dm_exec_sessions 的 **hostname** 資料行，將會與它所封鎖的其中一個 spid 相同。 |  
 | 5 | NULL | \>0 | 復原 | 是。 | 這個 SPID 的「擴充事件」會話可能會出現注意信號，表示已發生查詢超時或取消，或只是已發出 rollback 語句。 |  
 | 6 | NULL | \>0 | 睡眠中 | 最終。 當 Windows NT 判斷會話已不再處於使用中狀態時，Azure SQL Database 連線將會中斷。 | `last_request_start_time`Sys.dm_exec_sessions 中的值比目前時間更早。 |
 
@@ -345,7 +345,7 @@ AND object_name(p.object_id) = '<table_name>';
     將查詢傳送至伺服器之後，所有的應用程式都必須立即將所有結果資料列提取到完成。 如果應用程式不會提取所有結果資料列，則鎖定可以保留在資料表上，封鎖其他使用者。 如果您使用的應用程式會以透明方式將 SQL 語句提交至伺服器，則應用程式必須提取所有結果資料列。 如果未 (，且無法設定為) ，您可能無法解決封鎖問題。 若要避免這個問題，您可以將效能不佳的應用程式限制在報告或決策支援資料庫中。
     
     > [!NOTE]
-    > 請參閱連接到 Azure SQL Database 之應用程式的 [重試邏輯指引](/azure/azure-sql/database/troubleshoot-common-connectivity-issues#retry-logic-for-transient-errors) 。 
+    > 請參閱連接到 Azure SQL Database 之應用程式的 [重試邏輯指引](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors) 。 
     
     **解決** 方式：必須重新撰寫應用程式，才能將結果的所有資料列提取到完成。 這並不會排除在查詢的 [ORDER BY 子句中使用 OFFSET 和 FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) 來執行伺服器端分頁的規則。
 
@@ -369,7 +369,7 @@ AND object_name(p.object_id) = '<table_name>';
     KILL 99
     ```
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [Azure SQL Database 和 Azure SQL 受控執行個體監視和效能微調](/monitor-tune-overview.md)
 * [使用查詢存放區來監視效能](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)

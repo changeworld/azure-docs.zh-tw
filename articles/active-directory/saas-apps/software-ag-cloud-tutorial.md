@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: f6f56958fb63e73e254a45e7cf8ad457be8269ef
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
-ms.translationtype: HT
+ms.openlocfilehash: c2a2446da0e1ccf1b3dab88fe898b179291ddaba
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607638"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726097"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Software AG Cloud 整合 | Microsoft Docs
 
@@ -155,6 +155,4 @@ I在本節中，您會使用下列選項來測試您的 Azure AD 單一登入組
 
 ## <a name="next-steps"></a>後續步驟
 
-設定 Software AG Cloud 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+設定 Software AG Cloud 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

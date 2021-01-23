@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 18c626a11724b585bf699f8be470b439177991ae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: fdca04c645e1bb956c8e9f294c702b639c8e2f74
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250832"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726363"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-identity-management"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Adobe 身分識別管理整合
 
@@ -26,7 +26,7 @@ ms.locfileid: "98250832"
 * 讓使用者使用其 Azure AD 帳戶自動登入 Adobe 身分識別管理。
 * 在 Azure 入口網站集中管理您的帳戶。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始，您需要下列項目：
 
@@ -164,7 +164,7 @@ ms.locfileid: "98250832"
 
 * 直接移至 Adobe Identity Management 登入 URL，並從該處起始登入流程。
 
-* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 [Adobe 身分識別管理] 圖格時，這會重新導向至 [Adobe 身分識別管理登入 URL]。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+* 您可以使用 Microsoft 的「我的應用程式」。 當您在我的應用程式中按一下 [Adobe 身分識別管理] 圖格時，這會重新導向至 [Adobe 身分識別管理登入 URL]。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

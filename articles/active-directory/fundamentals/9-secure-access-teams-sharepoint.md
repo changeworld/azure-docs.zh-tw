@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18036644dc4df51bfacc5019f70ae7694757f753
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 218208891cccb4f606a574a9c1c09f30c4ac0b11
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222236"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725073"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>保護 Microsoft 小組、SharePoint 和商務用 OneDrive 的外部存取 
 
@@ -77,7 +77,7 @@ Microsoft 365 中的共用屬於外部身分識別的一部分 [|](https://aad.p
 
 ## <a name="govern-access-in-teams"></a>管理小組中的存取權
 
-[小組會區分外部使用者 (組織外部的任何人) 和來賓使用者 (來賓帳戶) ](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH)) 。 您可以在 [小組系統管理員入口網站](https://admin.teams.microsoft.com/company-wide-settings/external-communications) 中，以全組織設定來管理協同作業設定。 
+[小組會區分外部使用者 (組織外部的任何人) 和來賓使用者 (來賓帳戶) ](/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH%e2%80%8b)) 。 您可以在 [小組系統管理員入口網站](https://admin.teams.microsoft.com/company-wide-settings/external-communications) 中，以全組織設定來管理協同作業設定。 
 
 > [!NOTE]
 > Azure Active Directory 中的外部身分識別共同作業設定會控制有效的許可權。 您可以增加小組的限制，但不能減少在 Azure AD 中設定的限制。
@@ -88,13 +88,13 @@ Microsoft 365 中的共用屬於外部身分識別的一部分 [|](https://aad.p
 
 若要深入瞭解如何管理小組的外部存取，請參閱下列資源。
 
-* [管理 Microsoft 團隊的外部存取](https://docs.microsoft.com/microsoftteams/manage-external-access)
+* [管理 Microsoft 團隊的外部存取](/microsoftteams/manage-external-access)
 
-* [Microsoft 365 身分識別模型和 Azure Active Directory](https://docs.microsoft.com/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
+* [Microsoft 365 身分識別模型和 Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
 
-* [Microsoft 小組的身分識別模型與驗證](https://docs.microsoft.com/MicrosoftTeams/identify-models-authentication)
+* [Microsoft 小組的身分識別模型與驗證](/MicrosoftTeams/identify-models-authentication)
 
-* [Microsoft 小組的敏感度標籤](https://docs.microsoft.com/MicrosoftTeams/sensitivity-labels)
+* [Microsoft 小組的敏感度標籤](/MicrosoftTeams/sensitivity-labels)
 
 ## <a name="govern-access-in-sharepoint-and-onedrive"></a>在 SharePoint 和 OneDrive 中管理存取權
 
@@ -102,9 +102,9 @@ SharePoint 系統管理員有許多可供共同作業的設定。 整個組織�
 
 ### <a name="integrating-sharepoint-and-one-drive-with-azure-ad-b2b"></a>將 SharePoint 和一個磁片磁碟機與 Azure AD B2B 整合
 
-在您管理外部共同作業的整體策略中，我們建議您 [啟用 SharePoint 和 OneDrive 與 AZURE AD B2B 整合的預覽](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview) 。
+在您管理外部共同作業的整體策略中，我們建議您 [啟用 SharePoint 和 OneDrive 與 AZURE AD B2B 整合的預覽](/sharepoint/sharepoint-azureb2b-integration-preview) 。
 
-Azure AD B2B 提供來賓使用者的驗證和管理。 使用 SharePoint 和 OneDrive 整合時， [AZURE AD B2B 單次密碼](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) 可用於檔案、資料夾、清單專案、文件庫和網站的外部共用。 這項功能提供來自現有 [安全外部共用收件者體驗](https://docs.microsoft.com/sharepoint/what-s-new-in-sharing-in-targeted-release)的升級體驗。
+Azure AD B2B 提供來賓使用者的驗證和管理。 使用 SharePoint 和 OneDrive 整合時， [AZURE AD B2B 單次密碼](../external-identities/one-time-passcode.md) 可用於檔案、資料夾、清單專案、文件庫和網站的外部共用。 這項功能提供來自現有 [安全外部共用收件者體驗](/sharepoint/what-s-new-in-sharing-in-targeted-release)的升級體驗。
 
 > [!NOTE]
 > 如果您啟用 Azure AD B2B 整合的預覽，則 SharePoint 和 OneDrive 共用會受限於 Azure AD 的組織關係設定，例如 **成員可以邀請** ，以及 **來賓可以邀請**。
@@ -171,9 +171,9 @@ SharePoint 與 Azure AD B2B 的整合變更了控制項與帳戶的互動方式�
 
 若要深入瞭解如何管理對 SharePoint 的外部存取，請參閱下列各項：
 
-* [SharePoint 外部共用總覽](https://docs.microsoft.com/sharepoint/external-sharing-overview)
+* [SharePoint 外部共用總覽](/sharepoint/external-sharing-overview)
 
-* [SharePoint 和 OneDrive 與 Azure AD B2B 整合](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview)
+* [SharePoint 和 OneDrive 與 Azure AD B2B 整合](/sharepoint/sharepoint-azureb2b-integration-preview)
 
 #### <a name="next-steps"></a>後續步驟
 

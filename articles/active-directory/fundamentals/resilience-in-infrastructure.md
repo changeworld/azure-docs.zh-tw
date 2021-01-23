@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 64fe4b8c217ec46cbb6dd046339c3ac65eebb121
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498552"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724672"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>在您的身分識別與存取管理基礎結構中建立恢復功能
 
@@ -32,7 +32,7 @@ Azure Active Directory 是全域雲端身分識別和存取管理系統，可為
 
 * 身分識別作業小組
 
-另請參閱 [應用程式開發人員](https://aka.ms/azureadresilience/developer) 和 [Azure AD B2C 系統](resilience-b2c.md)的檔。
+另請參閱 [應用程式開發人員](./resilience-app-development-overview.md) 和 [Azure AD B2C 系統](resilience-b2c.md)的檔。
 
 ## <a name="what-is-resilience"></a>什麼是復原？
 
@@ -44,7 +44,7 @@ Azure Active Directory 是全域雲端身分識別和存取管理系統，可為
 
 在權杖型驗證系統（例如 Azure AD）中，使用者的應用程式 (用戶端) 必須先從身分識別系統取得安全性權杖，才能存取應用程式或其他資源。 在有效期間內，用戶端可以多次呈現相同的權杖，以存取應用程式。
 
-當呈現給應用程式的權杖到期時，應用程式會拒絕權杖，而且用戶端必須從 Azure AD 取得新權杖。 取得新權杖可能需要使用者互動，例如認證提示或符合驗證系統的其他需求。 使用長期的權杖減少驗證呼叫的頻率，可減少不必要的互動。 不過，您必須使用較少的原則評估所建立的風險來平衡權杖生命週期。 如需有關管理權杖存留期的詳細資訊，請參閱這篇有關將重新 [驗證提示優化](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime)的文章。
+當呈現給應用程式的權杖到期時，應用程式會拒絕權杖，而且用戶端必須從 Azure AD 取得新權杖。 取得新權杖可能需要使用者互動，例如認證提示或符合驗證系統的其他需求。 使用長期的權杖減少驗證呼叫的頻率，可減少不必要的互動。 不過，您必須使用較少的原則評估所建立的風險來平衡權杖生命週期。 如需有關管理權杖存留期的詳細資訊，請參閱這篇有關將重新 [驗證提示優化](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)的文章。
 
 ## <a name="ways-to-increase-resilience"></a>提高復原能力的方法
 下圖顯示可提高復原能力的六個具體方式。 本文的後續步驟部分中所連結的文章會詳細說明每個方法。

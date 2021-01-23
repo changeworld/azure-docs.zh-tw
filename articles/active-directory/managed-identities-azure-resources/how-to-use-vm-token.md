@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bed64df921326ad4d219f934f7a7bc6860bfc7d8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 541f76ad825f492679530902c571096ca4b01902
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861896"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726226"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>了解如何在 Azure VM 上使用 Azure 資源受控識別來取得存取權杖 
 
@@ -30,7 +30,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 本文提供各種取得權杖的程式碼和指令碼，以及處理權杖到期和 HTTP 錯誤等重要主題的指引。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>使用適用於 .NET 的 Microsoft.Azure.Services.AppAuthentication 程式庫取得權杖
 
-對於 .NET 應用程式和函式，使用 Azure 資源受控識別的最簡單方式就是透過 Microsoft.Azure.Services.AppAuthentication 套件。 該程式庫還能讓您使用來自 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 整合式驗證的使用者帳戶，在部署機器上以本機方式測試程式碼。 如需使用此程式庫之本機開發選項的詳細資訊，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考](../../key-vault/general/service-to-service-authentication.md)。 本節示範如何在您的程式碼中開始使用程式庫。
+對於 .NET 應用程式和函式，使用 Azure 資源受控識別的最簡單方式就是透過 Microsoft.Azure.Services.AppAuthentication 套件。 該程式庫還能讓您使用來自 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 整合式驗證的使用者帳戶，在部署機器上以本機方式測試程式碼。 如需使用此程式庫之本機開發選項的詳細資訊，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考](/dotnet/api/overview/azure/service-to-service-authentication)。 本節示範如何在您的程式碼中開始使用程式庫。
 
 1. 將 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 套件的參考新增至應用程式。
 
@@ -141,7 +141,7 @@ Content-Type: application/json
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-若要深入了解 Microsoft.Azure.Services.AppAuthentication 和它公開的作業，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考](../../key-vault/general/service-to-service-authentication.md)和[採用 Azure 資源受控識別的 App Service 和 KeyVault .NET 範例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+若要深入了解 Microsoft.Azure.Services.AppAuthentication 和它公開的作業，請參閱 [Microsoft.Azure.Services.AppAuthentication 參考](/dotnet/api/overview/azure/service-to-service-authentication)和[採用 Azure 資源受控識別的 App Service 和 KeyVault .NET 範例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 ## <a name="get-a-token-using-c"></a>使用 C# 取得權杖
 

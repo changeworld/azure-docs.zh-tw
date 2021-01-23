@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9de0ce5e83b33cd793953e2b863f26dffafe58ee
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222389"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725173"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>使用權利管理管理外部存取 
 
@@ -94,15 +94,15 @@ ms.locfileid: "98222389"
 
 ## <a name="using-automation-in-entitlement-management"></a>在權利管理中使用自動化
 
-您可以 [使用 Microsoft Graph 來執行權利管理功能](https://docs.microsoft.com/graph/tutorial-access-package-api)，包括
+您可以 [使用 Microsoft Graph 來執行權利管理功能](/graph/tutorial-access-package-api)，包括
 
-* [管理存取套件](https://docs.microsoft.com/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [管理存取套件](/graph/api/resources/accesspackage?view=graph-rest-beta)
 
-* [管理存取權檢閱](https://docs.microsoft.com/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [管理存取權檢閱](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
 
-* [管理已連線的組織](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [管理已連線的組織](/graph/api/resources/connectedorganization?view=graph-rest-beta)
 
-* [管理權利管理設定](https://docs.microsoft.com/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [管理權利管理設定](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
 
 ## <a name="recommendations"></a>建議 
 
@@ -112,7 +112,7 @@ ms.locfileid: "98222389"
 
 * 如果您的目錄中已有 B2B 使用者，您也可以直接將它們指派給適當的存取套件。
 
-* 您可以在 [Azure 入口網站](../governance/entitlement-management-access-package-assignments.md)中指派存取權，或透過 [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta)指派。
+* 您可以在 [Azure 入口網站](../governance/entitlement-management-access-package-assignments.md)中指派存取權，或透過 [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta)指派。
 
 **當使用者的存取套件到期時，請使用您的身分識別治理設定來移除目錄中的使用者**。
 
@@ -173,4 +173,3 @@ ms.locfileid: "98222389"
 
  
 
- 

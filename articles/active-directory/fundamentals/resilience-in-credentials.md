@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5fd5cf419adb137df5c578e3b17b88749215be5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 399d2f71fa20d63dce89cf3be5c12ffd63264895
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919451"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724705"
 ---
 # <a name="build-resilience-with-credential-management"></a>使用認證管理建立恢復功能
 
@@ -61,7 +61,7 @@ ms.locfileid: "95919451"
 
 * 針對從 Windows Server Active Directory 同步處理的混合式帳戶，開啟 [密碼雜湊同步](../hybrid/whatis-phs.md) 處理。 這個選項可以與同盟服務（例如 AD FS）一起啟用，並且在 federation service 失敗時提供回復。
 
-* [分析多重要素驗證方法的使用方式](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/) ，以改善使用者的體驗。
+* [分析多重要素驗證方法的使用方式](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/) ，以改善使用者的體驗。
 
 * [實行彈性的存取控制策略](../authentication/concept-resilient-controls.md)
 

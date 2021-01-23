@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 0300d6216862cf1533c431a13977dbeea52d4414
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
-ms.translationtype: HT
+ms.openlocfilehash: 53abb706bd741e4a7ce548a89dc324dc68376179
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354772"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725404"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rightcrowd-workforce-management"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 RightCrowd Workforce Management 整合 | Microsoft Docs
 
@@ -147,11 +147,9 @@ ms.locfileid: "96354772"
 
 * 在 Azure 入口網站中按一下 [測試此應用程式]，您應該會自動登入您已設定 SSO 的 RightCrowd Workforce Management 
 
-您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [RightCrowd Workforce Management] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 RightCrowd Workforce Management。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+您也可以使用 Microsoft「我的應用程式」，以任何模式測試應用程式。 當您按一下「我的應用程式」中的 [RightCrowd Workforce Management] 圖格時，如果是在 SP 模式中設定，您會重新導向至 [應用程式登入] 頁面來起始登入流程，如果在 IDP 模式中設定，則應該會自動登入已設定 SSO 的 RightCrowd Workforce Management。 如需「我的應用程式」的詳細資訊，請參閱[我的應用程式簡介](../user-help/my-apps-portal-end-user-access.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在設定 RightCrowd Workforce Management 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外流和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
-
-
+在設定 RightCrowd Workforce Management 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外流和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](/cloud-app-security/proxy-deployment-any-app)。

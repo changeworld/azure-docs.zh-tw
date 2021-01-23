@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630287"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724436"
 ---
 # <a name="resilient-end-user-experience"></a>復原的終端使用者體驗
 
@@ -34,19 +34,19 @@ ms.locfileid: "97630287"
 
 ## <a name="choose-between-user-flow-and-custom-policy"></a>在使用者流程和自訂原則之間進行選擇  
 
-為了協助您設定最常見的身分識別工作，Azure AD B2C 提供內建的可設定 [使用者流程](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-overview)。 您也可以建立自己的 [自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)，以提供最大的彈性。 不過，建議您只使用自訂原則來處理複雜的案例。
+為了協助您設定最常見的身分識別工作，Azure AD B2C 提供內建的可設定 [使用者流程](../../active-directory-b2c/user-flow-overview.md)。 您也可以建立自己的 [自訂原則](../../active-directory-b2c/custom-policy-overview.md)，以提供最大的彈性。 不過，建議您只使用自訂原則來處理複雜的案例。
 
 ### <a name="how-to-decide-between-user-flow-and-custom-policy"></a>如何在使用者流程和自訂原則之間做決定
 
 如果您的業務需求符合您的需求，請選擇內建的使用者流程。 自從經過 Microsoft 廣泛測試之後，您可以將驗證這些身分識別使用者流程的原則層級功能、效能或規模的測試降至最低。 您仍然需要測試應用程式的功能、效能和規模。
 
-如果您因為商務需求而 [選擇自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) ，請務必針對功能、效能或規模調整執行原則層級的測試，以及應用層級的測試。
+如果您因為商務需求而 [選擇自訂原則](../../active-directory-b2c/custom-policy-get-started.md) ，請務必針對功能、效能或規模調整執行原則層級的測試，以及應用層級的測試。
 
-請參閱 [比較使用者流程和自訂](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview#comparing-user-flows-and-custom-policies) 原則的文章，以協助您決定。
+請參閱 [比較使用者流程和自訂](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies) 原則的文章，以協助您決定。
 
 ## <a name="choose-multiple-idps"></a>選擇多個 Idp
 
-使用外部身分 [識別提供者](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) （例如 Facebook）時，請務必在外部提供者變成無法使用時，擁有回溯方案。
+使用外部身分 [識別提供者](../../active-directory-b2c/technical-overview.md#external-identity-providers) （例如 Facebook）時，請務必在外部提供者變成無法使用時，擁有回溯方案。
 
 ### <a name="how-to-set-up-multiple-idps"></a>如何設定多個 Idp
 
@@ -58,11 +58,11 @@ ms.locfileid: "97630287"
 
  2. 設定設定檔原則，以允許使用者在登入後將 [其他身分識別連結到其帳戶](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking) 。
 
- 3. 通知並允許使用者在中斷期間 [切換至替代 IDP](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri) 。
+ 3. 通知並允許使用者在中斷期間 [切換至替代 IDP](../../active-directory-b2c/customize-ui-with-html.md#configure-dynamic-custom-page-content-uri) 。
 
 ## <a name="availability-of-multi-factor-authentication"></a>多重要素驗證的可用性
 
-使用 [電話語音進行多重要素驗證 (MFA) ](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication)時，請務必考慮使用替代服務提供者。 當地的電訊或電話服務提供者可能會在服務中遇到中斷。
+使用 [電話語音進行多重要素驗證 (MFA) ](../../active-directory-b2c/phone-authentication.md)時，請務必考慮使用替代服務提供者。 當地的電訊或電話服務提供者可能會在服務中遇到中斷。
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>如何選擇替代 MFA  
 
@@ -95,7 +95,7 @@ Azure AD B2C 服務使用內建的電話型 MFA 提供者，提供以時間為�
 
 透過端對端案例和負載測試，定期測試您的 CDN 可用性和內容發佈效能。 如果您正在規劃即將推出的激增（因為促銷或假日流量），請修改您的負載測試估計值。
   
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [Azure AD B2C 開發人員的復原能力資源](resilience-b2c.md)
   
