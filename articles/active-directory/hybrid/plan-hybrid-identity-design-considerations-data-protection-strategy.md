@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e991fb0c60e8f08eb43cb7799027d4200263c9b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bac3f53def6db1038a6dd7e45d7933daa22df9f0
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659547"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703847"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>定義混合式身分識別解決方案的資料保護策略
 在這項工作中，您將為混合式身分識別解決方案定義資料保護策略，以符合您已定義的商務需求：
@@ -37,7 +37,7 @@ ms.locfileid: "89659547"
 
 驗證之後，可從驗證權杖讀取使用者主體名稱 (UPN)。 然後，授權系統會判斷對應到使用者網域的複寫分割區和容器。 使用者的存在情形、啟用狀態和角色的相關資訊，可協助授權系統判斷這名使用者在此工作階段中對目標租用戶的存取是否已獲授權。 特定的授權動作 (具體而言，如建立使用者和密碼重設) 會建立可供租用戶管理員用來管理法規遵循工作或調查的稽核記錄。
 
-由於資料數量、頻寬可用性或其他考量，透過網際網路連線將資料從您的內部部署資料中心移至 Azure 儲存體中，並不一定永遠可行。 [Azure 儲存體匯入/匯出服務](../../storage/common/storage-import-export-service.md) 提供以硬體為基礎的選項，可讓您在 Blob 儲存體中放置/擷取大量資料。 它可讓您將 [BitLocker 加密](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2)硬碟直接傳送至 Azure 資料中心，而雲端操作員會在此處將內容上傳至您的儲存體帳戶，或是將您的 Azure 資料下載到您的磁碟機歸還給您。 在此程序中只能使用加密磁碟 (使用服務本身在工作設定期間產生的 BitLocker 金鑰)。 BitLocker 金鑰會個別提供給 Azure，藉此提供頻外金鑰共用。
+由於資料數量、頻寬可用性或其他考量，透過網際網路連線將資料從您的內部部署資料中心移至 Azure 儲存體中，並不一定永遠可行。 [Azure 儲存體匯入/匯出服務](../../import-export/storage-import-export-service.md) 提供以硬體為基礎的選項，可讓您在 Blob 儲存體中放置/擷取大量資料。 它可讓您將 [BitLocker 加密](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn306081(v=ws.11)#BKMK_BL2012R2)硬碟直接傳送至 Azure 資料中心，而雲端操作員會在此處將內容上傳至您的儲存體帳戶，或是將您的 Azure 資料下載到您的磁碟機歸還給您。 在此程序中只能使用加密磁碟 (使用服務本身在工作設定期間產生的 BitLocker 金鑰)。 BitLocker 金鑰會個別提供給 Azure，藉此提供頻外金鑰共用。
 
 由於傳輸中的資料可能在不同情況下進行，因此也需要了解 Microsoft Azure 會使用 [虛擬網路](https://azure.microsoft.com/documentation/services/virtual-network/) 隔離租用戶彼此之間的流量，它所採用的機制有可能是主機和客體層級防火牆、IP 封包篩選、連接埠封鎖和 HTTPS 端點等。 不過，Azure 的內部通訊大多也會加密，包括基礎結構對基礎結構和基礎結構對客戶 (內部部署) 的通訊。 另一個重要的案例是 Azure 資料中心內的通訊；Microsoft 會管理網路，以確保沒有 VM 可以模擬或竊聽其他 VM 的 IP 位址。 在存取 Azure 儲存體或 SQL Database，或是在連接到雲端服務時，會使用 TLS/SSL。 在此情況下，客戶的系統管理員會負責取得 TLS/SSL 憑證，並將其部署至其租用戶基礎結構。 透過 Microsoft Azure 虛擬網路在相同部署中的虛擬機器之間或單一部署中的租用戶之間移動的資料流量，可透過加密的通訊協定 (例如 HTTPS、SSL/TLS 或其他通訊協定) 受到保護。
 

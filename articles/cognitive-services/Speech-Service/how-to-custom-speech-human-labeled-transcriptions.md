@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126881"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704426"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>如何建立人為標記的轉譯
 
@@ -47,6 +47,8 @@ ms.locfileid: "98126881"
 - 非字母字元或混合的英數位元應轉譯成發音。
 - 不應編輯發音為單字的縮寫 (例如「雷達圖」、「鐳射」、「RAM」或「NATO」 ) 。
 - 寫出發音為個別字母的縮寫，並以空格分隔每個字母。
+- 如果您使用音訊，請轉譯數位作為符合音訊的單字 (例如，"101" 可能會發音為 "1 0 1" 或 "101" ) 。
+- 請避免重複字元、單字或字組超過三次，例如 "yes yes yes" （是）。 語音服務可能會捨棄具有這類重複的程式程式碼。
 
 以下是一些您應該對轉譯執行的正規化範例：
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac86dfba02b54730773a1d243981e85d563517e7
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: aac1fb8e2da7a3c84b3abff47c8f476b9fb9049c
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183825"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704333"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>教學課程：建立 Azure 資料箱的匯出順序
 
@@ -28,7 +28,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 > * 追蹤匯出順序
 > * 取消匯出順序
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 訂購裝置之前，請先完成下列資料箱服務和裝置的設定必要條件。
 
@@ -58,7 +58,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![建立資源](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-resource.png)
 
-3. 選取 [建立]。
+3. 選取 [建立]  。
 
    ![建立 Azure 資料箱資源](media/data-box-deploy-export-ordered/azure-data-box-export-order-create-data-box-resource.png)
 
@@ -100,7 +100,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
     |---------|---------|
     |儲存體帳戶     | 您要從中匯出資料的 Azure 儲存體帳戶。 |
     |匯出類型     | 指定要從 **所有物件** 匯出的資料類型，並 **使用 XML** 檔案。<ul><li> **所有物件** -指定作業會根據您的 **傳送選項選項** 來匯出所有資料。</li><li> **使用 xml** 檔案-指定 xml 檔案，其中包含要從儲存體帳戶匯出之 blob 和/或檔案的一組路徑和首碼。 XML 檔案必須位於所選儲存體帳戶的容器中，而且目前不支援從檔案共用選取。 檔案必須是非空白 .xml 檔案。</li></ul>        |
-    |傳送選項     |  從 [全 **選**]、[ **所有 blob**] 和 [ **所有** 檔案] 指定資料傳輸選項。 <ul><li> **全選** -指定匯出所有 blob 和 Azure 檔案儲存體。 如果您使用僅支援 blob (Blob 儲存體帳戶) 的儲存體帳戶，將無法選取 [ **所有** 檔案] 選項。</li><li> **所有 blob** -指定只匯出區塊和分頁 blob。</li><li> **所有** 檔案-指定匯出所有檔案，但不包括 blob。 您 (GPv1 和 GPv2、premium 儲存體或 blob 儲存體) 的儲存體帳戶類型，會決定您可以匯出的資料類型。 如需詳細資訊，請參閱 [支援的儲存體帳戶以進行匯出](../storage/common/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
+    |傳送選項     |  從 [全 **選**]、[ **所有 blob**] 和 [ **所有** 檔案] 指定資料傳輸選項。 <ul><li> **全選** -指定匯出所有 blob 和 Azure 檔案儲存體。 如果您使用僅支援 blob (Blob 儲存體帳戶) 的儲存體帳戶，將無法選取 [ **所有** 檔案] 選項。</li><li> **所有 blob** -指定只匯出區塊和分頁 blob。</li><li> **所有** 檔案-指定匯出所有檔案，但不包括 blob。 您 (GPv1 和 GPv2、premium 儲存體或 blob 儲存體) 的儲存體帳戶類型，會決定您可以匯出的資料類型。 如需詳細資訊，請參閱 [支援的儲存體帳戶以進行匯出](../import-export/storage-import-export-requirements.md#supported-storage-types)。</li></ul>         |
     |包含詳細資訊記錄     | 指出您是否想要包含已成功匯出之所有檔案清單的詳細資訊記錄檔。        |
 
     > [!NOTE]
@@ -181,7 +181,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
     使用者指派的受控識別是一項獨立的 Azure 資源，可用來管理多個資源。 如需詳細資訊，請參閱[受控識別類型](/azure/active-directory/managed-identities-azure-resources/overview)。  
 
-    如果您需要建立新的受控識別，請依照 [使用 Azure 入口網站建立、列出、刪除或指派角色給使用者指派的受控識別](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指導方針。
+    如果您需要建立新的受控識別，請遵循[使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)中的指引。
     
     ![選取使用者身分識別](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
 
@@ -242,7 +242,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![選取匯出選項，新增容器設定](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-file-container-settings.png)
 
-4. 選取 [建立]。
+4. 選取 [建立]  。
 
    ![選取 [匯出選項]，建立新的容器。](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-create-container.png)
 
@@ -254,7 +254,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
    ![查看容器詳細資料](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-view-container-details.png)
 
-6. 按兩下容器將會顯示 [容器屬性] 視圖。 您現在想要附加 (或流覽至) 您的 XML 檔案，其中包含您要匯出的 blob 和/或 Azure 檔案儲存體清單。 選取 [上傳] 。
+6. 按兩下容器將會顯示 [容器屬性] 視圖。 您現在想要附加 (或流覽至) 您的 XML 檔案，其中包含您要匯出的 blob 和/或 Azure 檔案儲存體清單。 選取 [上傳]。
 
    ![將 Blob 上傳至容器](media/data-box-deploy-export-ordered/azure-data-box-export-sms-use-xml-blob-to-container.png)
 
@@ -330,7 +330,7 @@ Azure 資料箱是一種混合式解決方案，可讓您將資料從 Azure 移�
 
 下表顯示有效 Blob 路徑範例：
 
-   | 選取器 | Blob 路徑 | Description |
+   | 選取器 | Blob 路徑 | 描述 |
    | --- | --- | --- |
    | 開始於 |/ |匯出儲存體帳戶中的所有 Blob |
    | 開始於 |/$root/ |匯出根容器中的所有 Blob |

@@ -1,15 +1,15 @@
 ---
 title: Azure 事件方格的內建原則定義
 description: 列出適用於 Azure 事件方格的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 2643dac6c37258da7bf8e81ce831dd04652cc7ce
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 36f86cc1291e49796c0b6edcb8e955b13bca3ef8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050899"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703519"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-grid"></a>適用於 Azure 事件方格的 Azure 原則內建定義
 

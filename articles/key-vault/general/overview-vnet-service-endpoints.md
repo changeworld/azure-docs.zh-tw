@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 9dcabe10822fd09c8f7a0da6259d81a089c1a042
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 4a817f386d68c144968540dd05f3fa6859bb0acc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936289"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704164"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虛擬網路服務端點
 
@@ -43,7 +43,7 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 | --- | --- |
 |Azure 虛擬機器部署服務|[Deploy Certificates to VMs from customer-managed Key Vault (將憑證從客戶管理的 Key Vault 部署到 VM)](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault)。|
 |Azure Resource Manager 範本部署服務|[在部署期間傳遞安全的值](../../azure-resource-manager/templates/key-vault-parameter.md)。|
-|Azure 應用程式閘道 v2 SKU|[使用 Key Vault 憑證的 TLS 終止](../../application-gateway/key-vault-certs.md)|
+|Azure 應用程式閘道 v2 SKU|[使用金鑰保存庫憑證的 TLS 終止](../../application-gateway/key-vault-certs.md)|
 |Azure Disk Encryption 磁碟區加密服務|允許在虛擬機器部署期間，存取 BitLocker 金鑰 (Windows VM) 或 DM 複雜密碼 (Linux VM) 和金鑰加密金鑰。 這可啟用 [Azure 磁碟加密](../../security/fundamentals/encryption-overview.md)。|
 |Azure 備份|使用 [Azure 備份](../../backup/backup-overview.md)，在 Azure 虛擬機器備份期間，允許相關金鑰和祕密的備份和還原。|
 |Exchange Online 和 SharePoint Online|允許使用[客戶金鑰](/microsoft-365/compliance/customer-key-overview)存取 Azure 儲存體服務加密的客戶金鑰。|
@@ -57,7 +57,7 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 |Azure Data Factory|[從 Data Factory 提取 Key Vault 中的資料存放區認證](https://go.microsoft.com/fwlink/?linkid=2109491)|
 |Azure 事件中心|[允許存取客戶管理金鑰的金鑰保存庫案例](../../event-hubs/configure-customer-managed-key.md)|
 |Azure 服務匯流排|[允許存取客戶管理金鑰的金鑰保存庫案例](../../service-bus-messaging/configure-customer-managed-key.md)|
-|Azure 匯入/匯出| [在 Azure Key Vault 中使用客戶管理的金鑰進行匯入/匯出服務](../../storage/common/storage-import-export-encryption-key-portal.md)
+|Azure 匯入/匯出| [在 Azure Key Vault 中使用客戶管理的金鑰進行匯入/匯出服務](../../import-export/storage-import-export-encryption-key-portal.md)
 |Azure Container Registry|[使用客戶管理的金鑰進行登錄加密](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]

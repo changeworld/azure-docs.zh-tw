@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 36c12fa7dd37ce1ffebde16cf6ca856d9fcdca0a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 607b588d3371b20c2b3fa9854e27a7ccdfe2e551
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93391971"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703762"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體有哪些新功能？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,7 +78,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 ### <a name="sql-managed-instance-h2-2019-updates"></a>SQL 受控執行個體 H2 2019 更新
 
 - [服務輔助子網](https://azure.microsoft.com/updates/service-aided-subnet-configuration-for-managed-instance-in-azure-sql-database-available/) 設定是管理子網設定的安全且方便的方式，可讓您在 SQL 受控執行個體確保管理流量不中斷的流程時，控制資料流量。
-- [透明資料加密 (TDE) 與攜帶您自己的金鑰 (BYOK) ](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/) 可為待用資料保護提供攜帶您自己的金鑰 (BYOK) 案例，並可讓組織將金鑰和資料的管理責任分開。
+- [透明資料加密 (TDE) 與攜帶您自己的金鑰 (BYOK) ](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/) 可針對待用資料保護提供自備金鑰 (BYOK) 案例，並可讓組織將金鑰和資料的管理責任分開。
 - [自動容錯移轉群組](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/) 可讓您將所有資料庫從主要實例複寫到另一個區域中的次要實例。
 - [全域追蹤旗標](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/) 可讓您設定 SQL 受控執行個體行為。
 
@@ -92,12 +92,13 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
   - 將 SQL 受控執行個體設定為使用 [公用端點](../managed-instance/public-endpoint-configure.md)、 [Proxy 覆寫](connectivity-architecture.md#connection-policy) 連線以取得較佳的網路效能、 <a href="https://aka.ms/four-cores-sql-mi-update"> 4 虛擬核心第5代硬體世代</a> 或設定 <a href="/azure/azure-sql/database/automated-backups-overview">備份保留最多35天</a> 以進行時間點還原。 [長期備份保留](long-term-retention-overview.md#sql-managed-instance-support) (最多10年的) 目前處於有限的公開預覽狀態。  
   - 新功能可讓您使用 PowerShell、[重新命名資料庫](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[刪除虛擬叢集](../managed-instance/virtual-cluster-delete.md)，將<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">資料庫異地還原至另一個資料中心</a>。
   - 新的內建 [實例參與者角色](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) 可將責任 (SoD) 合規性與安全性原則和符合企業標準的合規性分開。
-  - 您可以在下列 Azure Government 區域中取得 SQL 受控執行個體，以 GA (US Gov 德克薩斯州、US Gov 亞利桑那州) 以及中國北部2和中國東部2。 也可在下列公用區域中使用：澳大利亞中部、澳大利亞中部2、巴西南部、法國南部、阿拉伯聯合大公國中部、阿拉伯聯合大公國北部、南非北部、南非西部。
+  - 您可以在下列 Azure Government 區域中取得 SQL 受控執行個體，以 GA (US Gov 德克薩斯州、US Gov 亞利桑那州) 和中國北部2和中國東部2。 也可在下列公用區域中使用：澳大利亞中部、澳大利亞中部2、巴西南部、法國南部、阿拉伯聯合大公國中部、阿拉伯聯合大公國北部、南非北部、南非西部。
 
 ## <a name="known-issues"></a>已知問題
 
 |問題  |探索日期  |狀態  |解決日期  |
 |---------|---------|---------|---------|
+|[@query使用參數時，程式 sp_send_dbmail 可能會暫時失敗](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Jan 2021|有因應措施||
 |[從伺服器信任群組移除受控執行個體之後，可以執行分散式交易](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|10月2020|有因應措施||
 |[受控執行個體調整作業之後，無法執行分散式交易](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|10月2020|有因應措施||
 |[BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql) /Azure SQL 中的[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15)和 `BACKUP` / `RESTORE` 受控執行個體中的語句無法使用 Azure AD 管理身分識別來向 Azure 儲存體進行驗證|Sep 2020|有因應措施||
@@ -115,7 +116,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 |[可能需要在容錯移轉後重新設定商務關鍵服務層級上的 Resource Governor](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Sep 2019|有因應措施||
 |[服務層升級之後，必須重新初始化跨資料庫的 Service Broker 對話方塊](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|2019年8月|有因應措施||
 |[不支援模擬 Azure AD 的登入類型](#impersonation-of-azure-ad-login-types-is-not-supported)|2019年7月|沒有解決方法||
-|[@query sp_send_db_mail 中不支援參數](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|沒有解決方法||
+|[@query sp_send_db_mail 中不支援參數](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|已解決|Jan 2021|
 |[在異地容錯移轉之後，必須重新設定異動複寫](#transactional-replication-must-be-reconfigured-after-geo-failover)|三月2019|沒有解決方法||
 |[在還原作業期間使用暫存資料庫](#temporary-database-is-used-during-restore-operation)||有因應措施||
 |[TEMPDB 結構和內容已重新建立](#tempdb-structure-and-content-is-re-created)||沒有解決方法||
@@ -128,6 +129,29 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 |如果源資料庫包含記憶體內部 OLTP 物件，則從商務關鍵層還原至一般用途層的時間點資料庫還原將不會成功。||已解決|10月2019|
 |具有外部 (非 Azure) mail 伺服器使用安全連線的 Database mail 功能||已解決|10月2019|
 |SQL 受控執行個體不支援包含的資料庫||已解決|2019年8月|
+
+### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>@query使用參數時，程式 sp_send_dbmail 可能會暫時失敗
+
+使用參數時，程式 sp_send_dbmail 暫時可能會失敗 `@query` 。 發生此問題時，每次執行程式 sp_send_dbmail 都會失敗，並出現錯誤 `Msg 22050, Level 16, State 1` 和訊息 `Failed to initialize sqlcmd library with error number -2147467259` 。 若要能夠正確地看到此錯誤，請使用參數的預設值0呼叫程式 `@exclude_query_output` ，否則不會傳播錯誤。
+這個問題是因為已知的錯誤（bug）與 sp_send_dbmail 使用模擬和連線共用的方式有關。
+若要解決此問題，請將電子郵件傳送到依賴 output 參數的重試邏輯 `@mailitem_id` 。 如果執行失敗，則參數值會是 Null，指出 sp_send_dbmail 應該再呼叫一次，才能成功傳送電子郵件。 以下是此重試邏輯的範例。
+```sql
+CREATE PROCEDURE send_dbmail_with_retry AS
+BEGIN
+    DECLARE @miid INT
+    EXEC msdb.dbo.sp_send_dbmail
+        @recipients = 'name@mail.com', @subject = 'Subject', @query = 'select * from dbo.test_table',
+        @profile_name ='AzureManagedInstance_dbmail_profile', @execute_query_database = 'testdb',
+        @mailitem_id = @miid OUTPUT
+
+    -- If sp_send_dbmail returned NULL @mailidem_id then retry sending email.
+    --
+    IF (@miid is NULL)
+    EXEC msdb.dbo.sp_send_dbmail
+        @recipients = 'name@mail.com', @subject = 'Subject', @query = 'select * from dbo.test_table',
+        @profile_name ='AzureManagedInstance_dbmail_profile', @execute_query_database = 'testdb',
+END
+```
 
 ### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>從伺服器信任群組移除受控執行個體之後，可以執行分散式交易
 
@@ -156,7 +180,7 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 在某些情況下，用來存取 Azure AD 和 Azure Key Vault (AKV) 服務的服務主體可能會有問題。 因此，此問題會影響 Azure AD authentication 和透明資料庫加密 (TDE) 與 SQL 受控執行個體的使用方式。 這可能是間歇性的連線問題，或是無法執行語句，例如從外部提供者建立登入/使用者，或是以登入/使用者身分執行。 在新的 Azure SQL 受控執行個體上使用客戶管理的金鑰來設定 TDE，在某些情況下可能也無法運作。
 
-因應 **措施：若** 要在執行任何 update 命令之前防止 SQL 受控執行個體發生此問題，或在更新命令之後遇到此問題，請移至 Azure 入口網站，存取 SQL 受控執行個體 Active Directory 系統 [管理](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)分頁。 確認您是否可以看到錯誤訊息「受控執行個體需要服務主體才能存取 Azure Active Directory。 按一下這裡以建立服務主體」。 如果您遇到這個錯誤訊息，請按一下該訊息，然後依照所提供的逐步指示進行，直到解決此錯誤為止。
+因應 **措施：若** 要在執行任何 update 命令之前防止 SQL 受控執行個體發生此問題，或在更新命令之後遇到此問題，請移至 Azure 入口網站，存取 SQL 受控執行個體 Active Directory 系統 [管理](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal)分頁。 確認您是否可以看到錯誤訊息「受控執行個體需要服務主體才能存取 Azure Active Directory。 按一下這裡以建立服務主體」。 如果您遇到這個錯誤訊息，請按一下它，並依照提供的逐步指示進行，直到解決此錯誤為止。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>還原沒有總和檢查碼的手動備份可能會失敗
 
@@ -228,7 +252,7 @@ SQL Server 和 SQL 受控執行個體 [不允許使用者捨棄非空白](/sql/r
 
 ### <a name="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>服務層升級之後，必須重新初始化跨資料庫的 Service Broker 對話方塊
 
-在變更服務層級作業之後，跨資料庫的 Service Broker 對話方塊將會停止將訊息傳遞至其他資料庫中的服務。 訊息不會 *遺失* ，而且可以在寄件者佇列中找到。 SQL 受控執行個體中虛擬核心或實例儲存體大小的任何變更，將會 `service_broke_guid` 針對所有資料庫變更 [sys. 資料庫](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) 視圖中的值。 任何 `DIALOG` 使用參考其他資料庫中的服務代理程式之 [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) 語句所建立的，將會停止將訊息傳遞至目標服務。
+在變更服務層級作業之後，跨資料庫的 Service Broker 對話方塊將會停止將訊息傳遞至其他資料庫中的服務。 訊息不會 *遺失*，而且可以在寄件者佇列中找到。 SQL 受控執行個體中虛擬核心或實例儲存體大小的任何變更，將會 `service_broke_guid` 針對所有資料庫變更 [sys. 資料庫](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) 視圖中的值。 任何 `DIALOG` 使用參考其他資料庫中的服務代理程式之 [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) 語句所建立的，將會停止將訊息傳遞至目標服務。
 
 因應 **措施：在** 更新服務層之前，請先停止使用跨資料庫 Service Broker 對話交談的任何活動，然後再重新初始化。 如果有剩餘的訊息在服務層變更後未傳遞，請從來源佇列中讀取訊息，並將它們重新傳送至目標佇列。
 
@@ -324,13 +348,13 @@ using (var scope = new TransactionScope())
 
 ```
 
-因應措施 **(在2020年3月) 之後不需要** ：使用 [SqlConnection. >sqlconnection.changedatabase (字串)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase)在連接內容中使用另一個資料庫，而不是使用兩個連接。
+因應措施 **(在2020年3月) 之後不需要**：使用 [SqlConnection. >sqlconnection.changedatabase (字串)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase)在連接內容中使用另一個資料庫，而不是使用兩個連接。
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR 模組與連結的伺服器有時候無法參考本機 IP 位址
 
 SQL 受控執行個體中的 CLR 模組與參考目前實例的連結伺服器或分散式查詢有時無法解析本機實例的 IP。 此錯誤為暫時性問題。
 
-因應措施：如有可能，請在 CLR 模組中 **使用內容連接** 。
+因應措施：如有可能，請在 CLR 模組中 **使用內容連接**。
 
 ## <a name="updates"></a>更新
 

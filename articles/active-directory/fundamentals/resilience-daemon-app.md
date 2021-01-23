@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 74bfc9eeeb8375fca2c88a3fd3c31f17e130fc99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7b8f893026bb96c8d768d2e6d07d0240ecb81fa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919453"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724836"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-daemon-applications-you-develop"></a>提高在您開發的 daemon 應用程式中驗證和授權的復原能力
 
@@ -26,7 +26,7 @@ ms.locfileid: "95919453"
 
 ## <a name="use-managed-identities-for-azure-resources"></a>使用適用于 Azure 資源的受控識別
 
-在 Microsoft Azure 上建立 daemon 應用程式的開發人員可以使用 [適用于 Azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。 受控識別不需要開發人員管理秘密和認證。 這項功能可避免憑證到期、輪替錯誤或信任方面的錯誤，進而改善復原能力。 它也有幾個專門用來提高復原能力的內建功能。
+在 Microsoft Azure 上建立 daemon 應用程式的開發人員可以使用 [適用于 Azure 資源的受控](../managed-identities-azure-resources/overview.md)識別。 受控識別不需要開發人員管理秘密和認證。 這項功能可避免憑證到期、輪替錯誤或信任方面的錯誤，進而改善復原能力。 它也有幾個專門用來提高復原能力的內建功能。
 
 受控識別會使用來自 Microsoft 身分識別的長期存取權杖和資訊，在現有權杖到期前的大型時段內主動取得新權杖。 嘗試取得新的權杖時，您的應用程式可以繼續執行。
 
@@ -34,11 +34,11 @@ ms.locfileid: "95919453"
 
 ## <a name="use-the-microsoft-authentication-library"></a>使用 Microsoft 驗證程式庫
 
-不使用受控識別的背景程式應用程式開發人員可以使用 [Microsoft 驗證程式庫 (MSAL) ](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)，讓您能夠輕鬆地執行驗證和授權，並自動使用最佳作法來進行復原。 MSAL 可讓您更輕鬆地提供所需的用戶端認證。 例如，使用以憑證為基礎的認證時，您的應用程式不需要執行建立和簽署 JSON Web 權杖判斷提示。
+不使用受控識別的背景程式應用程式開發人員可以使用 [Microsoft 驗證程式庫 (MSAL) ](../develop/msal-overview.md)，讓您能夠輕鬆地執行驗證和授權，並自動使用最佳作法來進行復原。 MSAL 可讓您更輕鬆地提供所需的用戶端認證。 例如，使用以憑證為基礎的認證時，您的應用程式不需要執行建立和簽署 JSON Web 權杖判斷提示。
 
 ### <a name="use-microsoftidentityweb-for-net-developers"></a>使用適用于 .NET 開發人員的 Web.config
 
-在 ASP.NET Core 上建立 daemon 應用程式的開發人員可以使用 [web.config](https://docs.microsoft.com/azure/active-directory/develop/microsoft-identity-web) 程式庫。 此程式庫建置於 MSAL 之上，讓 ASP.NET Core 應用程式更容易執行授權。 它包含數個分散式應用程式的 [分散式權杖](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) 快取策略，可在多個區域中執行。
+在 ASP.NET Core 上建立 daemon 應用程式的開發人員可以使用 [web.config](../develop/microsoft-identity-web.md) 程式庫。 此程式庫建置於 MSAL 之上，讓 ASP.NET Core 應用程式更容易執行授權。 它包含數個分散式應用程式的 [分散式權杖](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) 快取策略，可在多個區域中執行。
 
 ## <a name="cache-and-store-tokens"></a>快取和儲存權杖
 

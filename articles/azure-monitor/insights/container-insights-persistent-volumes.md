@@ -3,16 +3,16 @@ title: 使用容器的 Azure 監視器設定 PV 監視 |Microsoft Docs
 description: 本文說明如何使用容器的 Azure 監視器來設定具有持續性磁片區的監視 Kubernetes 叢集。
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e7c547c137fc84e6e6dfb2807b871ef0329a3c13
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7da6bc88e7c8526e3940714502d3c92d2f37dd8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186842"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704468"
 ---
 # <a name="configure-pv-monitoring-with-azure-monitor-for-containers"></a>使用容器的 Azure 監視器設定 PV 監視
 
-從代理程式版本 *ciprod10052020* 開始，適用于容器的 Azure 監視器整合式代理程式現在支援監視 PV (持續性磁片區) 使用量。
+從代理程式版本 *ciprod10052020* 開始，容器整合式代理程式的 Azure 監視器現在支援監視 PV (永久性磁片區) 使用量。
 
 ## <a name="pv-metrics"></a>PV 計量
 

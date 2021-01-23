@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 61d5dd02a1a8ce7f24db19528a7df1e67410c1da
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 82ec8caa96ff9139a1d198324fd3ddcd2b03f999
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045867"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703696"
 ---
 |名稱<br /><sub>(Azure 入口網站)</sub> |描述 |效果 |版本<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -31,7 +31,7 @@ ms.locfileid: "98045867"
 |[子網路應該與網路安全性群組建立關聯](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe71308d3-144b-4262-b144-efdc3cc90517) |使用網路安全性群組 (NSG) 限制 VM 的存取，保護您的子網路遠離潛在威脅。 NSG 包含存取控制清單 (ACL) 規則的清單，可允許或拒絕子網路的網路流量。 |AuditIfNotExists, Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_NetworkSecurityGroupsOnSubnets_Audit.json) |
 |[虛擬機器應該連線到已核准的虛擬網路](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd416745a-506c-48b6-8ab1-83cb814bcaa3) |此原則會稽核任何連線到未核准之虛擬網路的虛擬機器。 |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ApprovedVirtualNetwork_Audit.json) |
 |[虛擬網路應該使用指定的虛擬網路閘道](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff1776c76-f58c-4245-a8d0-2b207198dc8b) |此原則會稽核任何虛擬網路是否預設路由未指向指定的虛擬網路閘道。 |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetwork_ApprovedVirtualNetworkGateway_AuditIfNotExists.json) |
-|[應為應用程式閘道啟用 Web 應用程式防火牆 (WAF)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |將 Azure Web 應用程式防火牆 (WAF) 部署在公開的 web 應用程式前面，以額外檢查連入流量。 Web 應用程式防火牆 (WAF) 為您的 web 應用程式提供集中式保護，免于遭受常見的惡意探索和弱點，例如 SQL 插入式攻擊、跨網站腳本、本機和遠端檔案執行。 您也可以透過自訂規則，以國家/地區、IP 位址範圍及其他 HTTP (s) 參數來限制 web 應用程式的存取。 |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
-|[應針對 Azure Front Door 服務服務啟用 Web 應用程式防火牆 (WAF) ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |將 Azure Web 應用程式防火牆 (WAF) 部署在公開的 web 應用程式前面，以額外檢查連入流量。 Web 應用程式防火牆 (WAF) 為您的 web 應用程式提供集中式保護，免于遭受常見的惡意探索和弱點，例如 SQL 插入式攻擊、跨網站腳本、本機和遠端檔案執行。 您也可以透過自訂規則，以國家/地區、IP 位址範圍及其他 HTTP (s) 參數來限制 web 應用程式的存取。 |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |
+|[應為應用程式閘道啟用 Web 應用程式防火牆 (WAF)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66) |在公開的 Web 應用程式前方部署 Azure Web 應用程式防火牆 (WAF)，以另外檢查傳入的流量。 Web 應用程式防火牆 (WAF) 可集中保護 Web 應用程式，使其免於遭受常見惡意探索和弱點的攻擊，例如 SQL 插入式攻擊、跨網站指令碼攻擊、本機和遠端檔案執行。 您也可以透過自訂規則，來依國家/地區、IP 位址範圍和其他 http(s) 參數限制對 Web 應用程式的存取。 |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayEnabled_Audit.json) |
+|[應針對 Azure Front Door 服務服務啟用 Web 應用程式防火牆 (WAF) ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F055aa869-bc98-4af8-bafc-23f1ab6ffe2c) |在公開的 Web 應用程式前方部署 Azure Web 應用程式防火牆 (WAF)，以另外檢查傳入的流量。 Web 應用程式防火牆 (WAF) 可集中保護 Web 應用程式，使其免於遭受常見惡意探索和弱點的攻擊，例如 SQL 插入式攻擊、跨網站指令碼攻擊、本機和遠端檔案執行。 您也可以透過自訂規則，來依國家/地區、IP 位址範圍和其他 http(s) 參數限制對 Web 應用程式的存取。 |Audit, Deny, Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Enabled_Audit.json) |
 |[Web 應用程式防火牆 (WAF) 應對應用程式閘道使用指定的模式](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096) |在應用程式閘道的所有 Web 應用程式防火牆原則上授權使用「偵測」或「預防」模式。 |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AppGatewayMode_Audit.json) |
 |[Web 應用程式防火牆 (WAF) 應對 Azure Front Door Service 使用指定的模式](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F425bea59-a659-4cbb-8d31-34499bd030b8) |在 Azure Front Door Service 的所有 Web 應用程式防火牆原則上授權使用「偵測」或「預防」模式。 |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/WAF_AFD_Mode_Audit.json) |

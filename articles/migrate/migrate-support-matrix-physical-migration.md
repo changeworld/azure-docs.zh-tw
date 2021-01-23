@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 4ebc363f29ed8956d10e91f41be1d257cbcc492f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562635"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703881"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>實體伺服器遷移的支援矩陣
 
@@ -81,7 +81,7 @@ ms.locfileid: "98562635"
 作業系統磁碟大小 | 最多 2,048 GB。 | 若不支援，則檢查會失敗。
 作業系統磁碟計數 | 1 | 若不支援，則檢查會失敗。
 資料磁碟計數 | 64 或以下。 | 若不支援，則檢查會失敗。
-資料磁碟大小 | 最多 4,095 GB | 若不支援，則檢查會失敗。
+資料磁碟大小 | 最高 32 TB | 若不支援，則檢查會失敗。
 網路介面卡 | 支援多個介面卡。 |
 共用 VHD | 不支援。 | 若不支援，則檢查會失敗。
 FC 磁碟 | 不支援。 | 若不支援，則檢查會失敗。

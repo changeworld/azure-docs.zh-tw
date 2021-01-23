@@ -5,20 +5,23 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/22/2021
 ms.author: victorh
-ms.openlocfilehash: 2ff61d06885c182454c99ee7e982a3a1a1f5013c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2c89eb19025212490d29c97a061da52e779ecf42
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690331"
+ms.locfileid: "98704392"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure 防火牆主動式 FTP 支援
 
 使用 Active FTP 時，FTP 伺服器會起始對指定 FTP 用戶端資料埠的資料連線。 用戶端網路上的防火牆通常會封鎖內部用戶端埠的外部連線要求。 如需詳細資訊，請參閱 [主動式 ftp 與被動式 ftp，這是一種明確的說明](https://slacksite.com/other/ftp.html)。
 
 根據預設，Azure 防火牆上的主動式 FTP 支援會停用，以防止使用 FTP 命令的 FTP 彈跳攻擊 `PORT` 。 不過，當您使用 Azure PowerShell、Azure CLI 或 Azure ARM 範本進行部署時，您可以啟用 Active FTP。
+
+> [!NOTE]
+> 目前，只有在虛擬網路中部署的防火牆支援主動式 FTP。 稍後將新增虛擬 WAN 支援。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -39,6 +42,6 @@ ms.locfileid: "98690331"
 ```
 如需詳細資訊，請參閱 [Microsoft. Network azureFirewalls](/azure/templates/microsoft.network/azurefirewalls)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要瞭解如何部署 Azure 防火牆，請參閱 [使用 Azure PowerShell 部署和設定 Azure 防火牆](deploy-ps.md)。

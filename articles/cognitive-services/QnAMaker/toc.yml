@@ -14,9 +14,7 @@
           href: Quickstarts/create-publish-knowledge-base.md
         - name: 查詢知識庫
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: 使用 REST
-      href: Quickstarts/quickstart-rest-curl.md
-    - name: 使用 SDK
+    - name: 使用用戶端程式庫或 REST API
       href: Quickstarts/quickstart-sdk.md
 - name: 教學課程
   items:

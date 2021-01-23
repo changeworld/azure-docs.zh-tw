@@ -7,15 +7,15 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5671ec68901be289a87c23b6883160f9cda2b651
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060447"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733178"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>使用 Azure 監視器跨資源查詢 Azure 資料總管
-Azure 監視器支援 Azure 資料總管、 [Application Insights](/azure/azure-monitor/app/app-insights-overview)與 [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)之間的跨服務查詢。 然後，您可以使用 Log Analytics/Application Insights 工具來查詢您的 Azure 資料總管叢集，並在跨服務查詢中加以參考。 本文說明如何進行跨服務查詢。
+Azure 監視器支援 Azure 資料總管、 [Application Insights](../app/app-insights-overview.md)與 [Log Analytics](./data-platform-logs.md)之間的跨服務查詢。 然後，您可以使用 Log Analytics/Application Insights 工具來查詢您的 Azure 資料總管叢集，並在跨服務查詢中加以參考。 本文說明如何進行跨服務查詢。
 
 下圖顯示 Azure 監視器的跨服務流程：
 
@@ -62,8 +62,8 @@ union customEvents, CL1 | take 10
 
 如果 Azure 資料總管資源位於租使用者 A 中，而 Log Analytics 工作區位於租使用者 B 中，請使用下列其中一種方法：
 
-*  Azure 資料總管可讓您為不同租用戶中的主體新增角色。 在租使用者 B 中新增您的使用者識別碼，作為 Azure 資料總管叢集上的授權使用者。 驗證 Azure 資料總管叢集中的 [TrustedExternalTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) 屬性包含租使用者 b。請在租使用者 b 中完整執行跨查詢。
-*  使用 [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) 將 Azure 監視器資源投影至租使用者 A。
+*  Azure 資料總管可讓您為不同租用戶中的主體新增角色。 在租使用者 B 中新增您的使用者識別碼，作為 Azure 資料總管叢集上的授權使用者。 驗證 Azure 資料總管叢集中的 [TrustedExternalTenant](/powershell/module/az.kusto/update-azkustocluster) 屬性包含租使用者 b。請在租使用者 b 中完整執行跨查詢。
+*  使用 [Lighthouse](../../lighthouse/index.yml) 將 Azure 監視器資源投影至租使用者 A。
 
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>從不同的租用戶連線到 Azure 資料總管叢集
 
@@ -72,6 +72,6 @@ Kusto Explorer 會自動將您登入使用者帳戶原本所屬的租使用者�
 `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>後續步驟
-* [撰寫查詢](https://docs.microsoft.com/azure/data-explorer/write-queries)
-* [使用 Azure 資料總管在 Azure 監視器中查詢資料](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
-* [在 Azure 監視器中執行跨資源記錄查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
+* [撰寫查詢](/azure/data-explorer/write-queries)
+* [使用 Azure 資料總管在 Azure 監視器中查詢資料](/azure/data-explorer/query-monitor-data)
+* [在 Azure 監視器中執行跨資源記錄查詢](../log-query/cross-workspace-query.md)

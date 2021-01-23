@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968444"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703864"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移轉的支援矩陣
 
@@ -166,7 +166,7 @@ VM | 在 Vm 上執行的行動服務會與內部部署複寫設備通訊， (設
 作業系統磁碟大小 | 最多 2,048 GB。 
 作業系統磁碟計數 | 1 
 資料磁碟計數 | 64 或以下。 
-資料磁碟大小 | 最高 8095 GB
+資料磁碟大小 | 最高 32 TB
 網路介面卡 | 支援多個介面卡。
 共用 VHD | 不支援。 
 FC 磁碟 | 不支援。 

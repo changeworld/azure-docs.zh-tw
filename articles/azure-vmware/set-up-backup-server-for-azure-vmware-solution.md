@@ -3,12 +3,12 @@ title: 設定 Azure VMware 解決方案的 Azure 備份伺服器
 description: 設定您的 Azure VMware 解決方案環境，以使用 Azure 備份伺服器來備份虛擬機器。
 ms.topic: how-to
 ms.date: 10/23/2020
-ms.openlocfilehash: e71ec19402d22643d51f1435d1abcf56b20a290b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517373"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703397"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>設定 Azure VMware 解決方案的 Azure 備份伺服器
 
@@ -33,7 +33,7 @@ Azure 備份伺服器可以將備份資料儲存至：
 
 - **無代理程式備份：** Azure 備份伺服器不需要在 vCenter 或 ESXi 伺服器上安裝代理程式來備份 VM。 相反地，只需提供 IP 位址或完整功能變數名稱 (FQDN) ，以及用來向 Azure 備份伺服器驗證 VMware 伺服器的登入認證。
 - **雲端整合式備份：** Azure 備份伺服器可保護磁片和雲端的工作負載。 Azure 備份伺服器的備份和復原工作流程可協助您管理長期保留和異地備份。
-- 偵測**並保護 vCenter 所管理的 vm：** Azure 備份伺服器會偵測並保護部署于 vCenter 或 ESXi 伺服器上的 Vm。 Azure 備份伺服器也會偵測 vCenter 所管理的 Vm，讓您可以保護大型部署。
+- 偵測 **並保護 vCenter 所管理的 vm：** Azure 備份伺服器會偵測並保護部署于 vCenter 或 ESXi 伺服器上的 Vm。 Azure 備份伺服器也會偵測 vCenter 所管理的 Vm，讓您可以保護大型部署。
 - **資料夾層級自動保護：** vCenter 可讓您在 vm 資料夾中組織您的 vm。 Azure 備份伺服器會偵測這些資料夾。 您可以使用它來保護資料夾層級的 Vm，包括所有子資料夾。 保護資料夾時，Azure 備份伺服器會保護該資料夾中的 Vm，並保護稍後新增的 Vm。 Azure 備份伺服器每天偵測到新的 Vm，並自動加以保護。 當您在遞迴資料夾中組織 Vm 時，Azure 備份伺服器會自動偵測並保護部署在遞迴資料夾中的新 Vm。
 - **Azure 備份伺服器繼續保護叢集中的 VMotioned vm：** 當 Vm vMotioned 在叢集內進行負載平衡時，Azure 備份伺服器會自動偵測並繼續 VM 保護。
 - **更快速地復原所需** 的檔案：Azure 備份伺服器可以從 Windows VM 復原檔案或資料夾，而不需要復原整個 VM。
@@ -119,7 +119,7 @@ Azure 備份伺服器需要磁片才能安裝。
 如果您想要調整部署，您有以下幾種選擇：
 
 - **擴大**：將 Azure 備份伺服器 VM 的大小從系列增加為 DS3 系列，並增加本機儲存體。
-- 卸載**資料**：將較舊的資料傳送至 Azure，並只在附加至 Azure 備份伺服器機的儲存體上保留最新的資料。
+- 卸載 **資料**：將較舊的資料傳送至 Azure，並只在附加至 Azure 備份伺服器機的儲存體上保留最新的資料。
 - **Scale out**：新增更多 Azure 備份伺服器電腦以保護工作負載。
 
 ### <a name="net-framework"></a>.NET Framework
@@ -154,7 +154,7 @@ Azure 備份伺服器的 VM 必須加入網域。 在 VM 上具有系統管理�
 
    [復原服務保存庫] 對話方塊隨即開啟。
 
-1. 輸入 **名稱**、 **訂**用帳戶、 **資源群組**和 **位置**的值。
+1. 輸入 **名稱**、 **訂** 用帳戶、 **資源群組** 和 **位置** 的值。
 
    ![設定復原服務保存庫。](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
@@ -178,9 +178,9 @@ Azure 備份伺服器的 VM 必須加入網域。 在 VM 上具有系統管理�
 > [!IMPORTANT]
 > 在保存庫中設定備份之前，必須先為復原服務保存庫變更儲存體複寫類型的設定，以進行 **本機冗余/地理位置冗余** 。 設定備份之後，修改它的選項已停用，而且您無法變更儲存體複寫類型。
 
-1. 從復原 **服務保存庫**中，選取新的保存庫。 
+1. 從復原 **服務保存庫** 中，選取新的保存庫。 
 
-1. 在 [設定]  下方，選取 [屬性]  。 在 [ **備份**設定] 下，選取 [ **更新**]。
+1. 在 [設定]  下方，選取 [屬性]  。 在 [ **備份** 設定] 下，選取 [ **更新**]。
 
 1. 選取儲存體複寫類型，然後選取 [**儲存]。**
 
@@ -196,7 +196,7 @@ Azure 備份伺服器的 VM 必須加入網域。 在 VM 上具有系統管理�
 
    1. 在資源清單中，輸入復原 **服務**。
 
-   1. 當您開始輸入時，清單會根據您輸入的文字進行篩選。 當您看到 [復原服務保存庫] **** 時，請選取它。
+   1. 當您開始輸入時，清單會根據您輸入的文字進行篩選。 當您看到 [復原服務保存庫] 時，請選取它。
 
    ![建立復原服務保存庫的步驟1](../backup/media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -210,29 +210,29 @@ Azure 備份伺服器的 VM 必須加入網域。 在 VM 上具有系統管理�
 
    ![預設會開啟 [設定] 選項。 如果已關閉，請選取 [設定] 以開啟它。](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
 
-1. 選取 [ **備份** ] 以開啟 **消費者入門** wizard。
+1. 選取 [ **備份** ] 以開啟 **開始使用** wizard。
 
-   ![選取 [備份] 以開啟消費者入門 wizard。](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
+   ![選取 [備份] 以開啟開始使用 wizard。](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
 1. 在開啟的視窗中：
 
    1. 從 [ **工作負載的執行位置？** ] 功能表中選取 [內部 **部署**]。
 
-      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-on-premises-workload.png" alt-text="Azure 備份伺服器會部署為 Azure 基礎結構即服務 (IaaS) VM，以保護 Azure VMware 解決方案 Vm。":::
+      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-on-premises-workload.png" alt-text="您的工作負載在何處執行？":::
 
    1. 從 [ **您要備份什麼？** ] 功能表中，使用 Azure 備份伺服器選取您要保護的工作負載。
 
    1. 選取 [ **準備基礎結構** ] 以下載並安裝 Azure 備份伺服器和保存庫認證。
 
-      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="Azure 備份伺服器會部署為 Azure 基礎結構即服務 (IaaS) VM，以保護 Azure VMware 解決方案 Vm。":::
+      :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure.png" alt-text="準備基礎結構":::
 
 1. 在開啟的 [ **準備基礎結構** ] 視窗中：
 
    1. 選取 **下載** 連結來安裝 Azure 備份伺服器。
 
-   1. 1. 選取 **已下載或使用最新 Azure 備份伺服器安裝** ，然後 **下載** 以下載保存庫認證。 當您向復原服務保存庫註冊 Azure 備份伺服器時，將會使用這些認證。 這些連結會帶您前往下載中心，您可以在此下載軟體套件。
+   1. 選取 **已下載或使用最新 Azure 備份伺服器安裝** ，然後 **下載** 以下載保存庫認證。 當您向復原服務保存庫註冊 Azure 備份伺服器時，將會使用這些認證。 這些連結會帶您前往下載中心，您可以在此下載軟體套件。
 
-   :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="Azure 備份伺服器會部署為 Azure 基礎結構即服務 (IaaS) VM，以保護 Azure VMware 解決方案 Vm。":::
+   :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="準備基礎結構-Azure 備份伺服器":::
 
 1. 在下載頁面上，選取所有檔案，然後選取 **[下一步]**。
 
@@ -288,7 +288,7 @@ Azure 備份伺服器的 VM 必須加入網域。 在 VM 上具有系統管理�
 
    **使用 SQL Server 2017 設定 reporting services**
 
-   如果您使用 SQL Server 2017 的實例，您必須手動設定 SQL Server 2017 Reporting Services (SSRS) 。 設定 SSRS 之後，請務必將 SSRS 的 **IsInitialized** 屬性設定為 **True**。 當設為 **True**時，Azure 備份伺服器會假設 ssrs 已設定並略過 ssrs 設定。
+   如果您使用 SQL Server 2017 的實例，您必須手動設定 SQL Server 2017 Reporting Services (SSRS) 。 設定 SSRS 之後，請務必將 SSRS 的 **IsInitialized** 屬性設定為 **True**。 當設為 **True** 時，Azure 備份伺服器會假設 ssrs 已設定並略過 ssrs 設定。
 
    若要檢查 SSRS 設定狀態，請執行：
 
@@ -303,9 +303,9 @@ Azure 備份伺服器的 VM 必須加入網域。 在 VM 上具有系統管理�
    將下列值使用於 SSRS 設定：
 
    * **服務帳戶**： **使用內建帳戶** 應為 **Network Service**。
-   * **Web 服務 URL**：應**ReportServer_ \<SQLInstanceName> ****虛擬目錄**。
-   * **資料庫**： **DatabaseName**應為**ReportServer $ \<SQLInstanceName> **。
-   * **入口網站 URL**：應**Reports_ \<SQLInstanceName> ****虛擬目錄**。
+   * **Web 服務 URL**：應 **ReportServer_ \<SQLInstanceName>****虛擬目錄**。
+   * **資料庫**： **DatabaseName** 應為 **ReportServer $ \<SQLInstanceName>**。
+   * **入口網站 URL**：應 **Reports_ \<SQLInstanceName>****虛擬目錄**。
 
    [深入了解](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode) SSRS 設定。
 

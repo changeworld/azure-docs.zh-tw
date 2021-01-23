@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: e603e99c1aa9c49d20bdb281bbfd96131ae2efdd
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 3470e07c1b5673efa6cd015e43e077828da1573e
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98663616"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703660"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>在 Windows 裝置上安裝和布建適用于 Linux 的 Azure IoT Edge (Preview) 
 
@@ -28,7 +28,7 @@ Windows 上適用于 Linux 的 Azure IoT Edge 可讓您使用 Linux 虛擬機器
 >[!NOTE]
 >Windows 上適用于 Linux 的 IoT Edge 處於 [公開預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)狀態。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 具有有效訂用帳戶的 Azure 帳戶。 如果您沒有 [Azure 訂用帳戶](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -162,7 +162,7 @@ Windows 上適用于 Linux 的 Azure IoT Edge 支援下列布建方法：
    如果的執行原則 `local machine` 不是 `AllSigned` ，您可以使用下列程式來設定執行原則：
 
    ```azurepowershell-interactive
-   Set-ExecutionPolicy - ExecutionPolicy AllSigned -Force
+   Set-ExecutionPolicy -ExecutionPolicy AllSigned -Force
    ```
 
 1. 在 Windows 部署上建立適用于 Linux 的 IoT Edge。
@@ -337,6 +337,6 @@ Windows 上適用于 Linux 的 Azure IoT Edge 支援下列布建方法：
        sudo iotedge check
        ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 繼續 [部署 IoT Edge 課程模組](how-to-deploy-modules-portal.md) ，以瞭解如何將模組部署到您的裝置。

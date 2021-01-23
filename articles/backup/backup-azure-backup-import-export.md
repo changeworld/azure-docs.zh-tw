@@ -4,18 +4,18 @@ description: 瞭解如何使用「Azure 匯入/匯出服務」 Azure 備份從�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: f3cf44a34babab79d135923db040630a1c8e3dfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ea470c2e732b7e0ef46e9e5fa78c744aa30c955
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88892009"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704358"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure 備份中的離線備份工作流程
 
 Azure 備份有數個可提升效率的內建功能，能在資料初始完整備份至 Azure 的期間節省網路和儲存體成本。 初始完整備份通常會傳輸大量資料且需要更多網路頻寬，相較之下，後續備份只傳輸差異/增量部分。 透過離線植入程序，Azure 備份可以使用磁碟將離線備份資料上傳至 Azure。
 
-Azure 備份離線植入程式與 [Azure 匯入/匯出服務](../storage/common/storage-import-export-service.md)緊密整合。 您可以使用這項服務，使用磁片將初始備份資料傳輸至 Azure。 如果您有 tb (Tb 的初始備份資料) 需要透過高延遲和低頻寬網路傳輸的資料，您可以使用離線植入工作流程，將一或多個硬碟上的初始備份複本傳送至 Azure 資料中心。 下圖提供工作流程中的步驟概觀。
+Azure 備份離線植入程式與 [Azure 匯入/匯出服務](../import-export/storage-import-export-service.md)緊密整合。 您可以使用這項服務，使用磁片將初始備份資料傳輸至 Azure。 如果您有 tb (Tb 的初始備份資料) 需要透過高延遲和低頻寬網路傳輸的資料，您可以使用離線植入工作流程，將一或多個硬碟上的初始備份複本傳送至 Azure 資料中心。 下圖提供工作流程中的步驟概觀。
 
   ![離線匯入工作流程處理的總覽](./media/backup-azure-backup-import-export/offlinebackupworkflowoverview.png)
 
@@ -64,12 +64,12 @@ Azure 備份離線植入程式與 [Azure 匯入/匯出服務](../storage/common/
         ![註冊資源提供者](./media/backup-azure-backup-import-export/registerimportexport.png)
 
 * 會建立預備位置，可以是網路共用或電腦上的任何其他磁碟機 (內接式或外接式)，且必須有足夠磁碟空間保存您的初始複本。 例如，如果您想要備份 500 GB 的檔案伺服器，請確定預備區域至少為 500 GB。 (因為會壓縮，所以使用量更小。)
-* 當您將磁片傳送至 Azure 時，請只使用2.5 英寸 SSD 或 2.5/英寸或 3.5-英寸 SATA II/III 內部硬碟。 您可以使用高達 10 TB 的硬碟。 如需服務支援的最新一組磁碟機，請參閱 [Azure 匯入/匯出服務文件](../storage/common/storage-import-export-requirements.md#supported-hardware) \(部分機器翻譯\)。
-* SATA 磁碟機必須連接到一個電腦 (又稱為「複本電腦」**)，在其中可將備份資料從「暫存位置」複製到 SATA 磁碟機。 確定已在複製電腦上啟用 BitLocker。
+* 當您將磁片傳送至 Azure 時，請只使用2.5 英寸 SSD 或 2.5/英寸或 3.5-英寸 SATA II/III 內部硬碟。 您可以使用高達 10 TB 的硬碟。 如需服務支援的最新一組磁碟機，請參閱 [Azure 匯入/匯出服務文件](../import-export/storage-import-export-requirements.md#supported-hardware) \(部分機器翻譯\)。
+* SATA 磁碟機必須連接到一個電腦 (又稱為「複本電腦」)，在其中可將備份資料從「暫存位置」複製到 SATA 磁碟機。 確定已在複製電腦上啟用 BitLocker。
 
 ## <a name="workflow"></a>工作流程
 
-本節說明離線備份工作流程，以便將您的資料傳遞至 Azure 資料中心，並上傳至 Azure 儲存體。 如果您有關于匯入服務或處理常式任何層面的問題，請參閱 [Azure 匯入/匯出服務的總覽檔](../storage/common/storage-import-export-service.md)。
+本節說明離線備份工作流程，以便將您的資料傳遞至 Azure 資料中心，並上傳至 Azure 儲存體。 如果您有關于匯入服務或處理常式任何層面的問題，請參閱 [Azure 匯入/匯出服務的總覽檔](../import-export/storage-import-export-service.md)。
 
 ## <a name="initiate-offline-backup"></a>起始離線備份
 
@@ -129,7 +129,7 @@ Azure 備份離線植入程式與 [Azure 匯入/匯出服務](../storage/common/
      > [!IMPORTANT]
      > 如果來源電腦是虛擬機器，則複製電腦必須是與來源電腦不同的實體伺服器或用戶端機器。
 
-1. 使用 *AzureOfflineBackupDiskPrep* 公用程式目錄作為目前的目錄，在複製電腦上開啟提高許可權的命令提示字元。 執行下列命令：
+1. 使用 *AzureOfflineBackupDiskPrep* 公用程式目錄作為目前的目錄，在複製電腦上開啟提高許可權的命令提示字元。 執行以下命令：
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
@@ -173,7 +173,7 @@ Azure 備份離線植入程式與 [Azure 匯入/匯出服務](../storage/common/
 * 傳回磁片的運送詳細資料。
 
 1. 登入 Azure 訂用帳戶。
-1. 在主功能表上，選取 [ **所有服務**]。 在 [ **所有服務** ] 對話方塊中，輸入匯 **入**。 當您看到匯 **入/匯出作業**時，請選取它。
+1. 在主功能表上，選取 [ **所有服務**]。 在 [ **所有服務** ] 對話方塊中，輸入匯 **入**。 當您看到匯 **入/匯出作業** 時，請選取它。
 
     ![輸入出貨資訊](./media/backup-azure-backup-import-export/search-import-job.png)<br/>
 
@@ -202,7 +202,7 @@ Azure 備份離線植入程式與 [Azure 匯入/匯出服務](../storage/common/
 
 ### <a name="monitor-azure-import-job-status"></a>監視 Azure 匯入作業狀態
 
-您可以從 Azure 入口網站監視匯入作業的狀態。 移至 [匯 **入/匯出作業** ] 頁面，然後選取您的作業。 如需匯入作業狀態的詳細資訊，請參閱 [什麼是 Azure 匯入/匯出服務？](../storage/common/storage-import-export-service.md)。
+您可以從 Azure 入口網站監視匯入作業的狀態。 移至 [匯 **入/匯出作業** ] 頁面，然後選取您的作業。 如需匯入作業狀態的詳細資訊，請參閱 [什麼是 Azure 匯入/匯出服務？](../import-export/storage-import-export-service.md)。
 
 ### <a name="finish-the-workflow"></a>完成工作流程
 
@@ -216,6 +216,6 @@ Azure 備份離線植入程式與 [Azure 匯入/匯出服務](../storage/common/
 
 初始備份完成後，您可以安全地刪除匯入至 Azure 儲存體容器的資料，以及預備位置中的備份資料。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* 如有任何關於 Azure 匯入/匯出服務工作流程的問題，請參閱 [使用 Microsoft Azure 匯入/匯出服務將資料傳輸至 Blob 儲存體](../storage/common/storage-import-export-service.md)。
+* 如有任何關於 Azure 匯入/匯出服務工作流程的問題，請參閱 [使用 Microsoft Azure 匯入/匯出服務將資料傳輸至 Blob 儲存體](../import-export/storage-import-export-service.md)。

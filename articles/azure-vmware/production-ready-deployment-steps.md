@@ -3,12 +3,12 @@ title: 規劃 Azure VMware 解決方案部署
 description: 本文概述 Azure VMware 解決方案部署工作流程。  最終結果是準備好用於建立和移轉虛擬機器 (VM) 的環境。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
-ms.translationtype: HT
+ms.openlocfilehash: cdf4ddd6166920fa7461bfd85e01ef0efd6dfbb9
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912728"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704554"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>規劃 Azure VMware 解決方案部署
 
@@ -95,26 +95,32 @@ Azure VMware 解決方案、您現有的 Azure 環境，以及內部部署環境
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure 虛擬網路以附加 Azure VMware 解決方案
 
-若要存取 Azure VMware 解決方案私人雲端，隨附於 Azure VMware 解決方案的 ExpressRoute 電路必須附加到 Azure 虛擬網路。  在部署期間，您可以定義新的虛擬網路，或選擇現有的虛擬網路。
+在此步驟中，您將識別 ExpressRoute 虛擬網路閘道，並支援用來連線到 Azure VMware 解決方案 ExpressRoute 線路的 Azure 虛擬網路。  ExpressRoute 線路可加速 Azure VMware 解決方案私人雲端與其他 Azure 服務、Azure 資源和內部部署環境之間的連線。
 
-來自 Azure VMware 解決方案的 ExpressRoute 電路會連線到您在此步驟中定義的 Azure 虛擬網路中的 ExpressRoute 閘道。  
-
->[!IMPORTANT]
->您可以使用現有的 ExpressRoute 閘道連線至 Azure VMware 解決方案，前提是不可超過每個虛擬網路四個 ExpressRoute 線路的限制。  不過，若要透過 ExpressRoute 從內部部署存取 Azure VMware 解決方案，則必須要有 ExpressRoute Global Reach，因為 ExpressRoute 閘道不會在其連線的線路之間提供可轉移的路由。  
-
-如果您想要將 ExpressRoute 電路從 Azure VMware 解決方案連線到現有的 ExpressRoute 閘道，您可以在部署之後執行此動作。  
-
-因此，在摘要中，您要將 Azure VMware 解決方案連線到現有的 Express Route 閘道嗎？  
-
-* **是** = 識別部署期間未使用的虛擬網路。
-* **否** = 識別現有的虛擬網路或在部署期間建立新的虛擬網路。
-
-不論是哪一種，請記載您想要在此步驟中執行的動作。
-
->[!NOTE]
->您的內部部署環境和 Azure VMware 解決方案會看到此虛擬網路，因此請確定您在此虛擬網路和子網路中使用的任何 IP 區段不會重疊。
+您可以使用 *現有* 或 *新* 的 ExpressRoute 虛擬網路閘道。
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="身分識別 - Azure 虛擬網路以附加 Azure VMware 解決方案" border="false":::
+
+### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>使用現有的 ExpressRoute 虛擬網路閘道
+
+如果您使用 *現有* 的 ExpressRoute 虛擬網路閘道，則在部署私用雲端之後，就會建立 Azure VMware 解決方案 ExpressRoute 電路。  因此，您不需要填入 [ **虛擬網路** ] 欄位。  
+
+請記下您將使用的 ExpressRoute 虛擬網路閘道，然後繼續進行下一個步驟。
+
+### <a name="create-a-new-expressroute-virtual-network-gateway"></a>建立新的 ExpressRoute 虛擬網路閘道
+
+如果建立 *新* 的 ExpressRoute 虛擬網路閘道，則可以使用現有的 azure 虛擬網路，也可以建立新的 Azure 虛擬網路。  
+
+如果選擇使用現有的 Azure 虛擬網路，請確認虛擬網路中沒有預先存在的 ExpressRoute 虛擬網路閘道，並在 [建立私人雲端部署] 畫面的 [虛擬網路] 下拉式清單中選取它。
+
+如果您選擇建立新的 Azure 虛擬網路，則可以在建立私人雲端部署畫面的 [建立新的虛擬網路選項] 區段中，事先或在部署期間建立它。
+
+以下是 [ **建立私用雲端** 部署] 畫面的影像，並以紅色說明，這是本節所提及的 Azure **虛擬網路** 欄位，供您參考。
+
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Azure VMware 解決方案部署畫面的螢幕擷取畫面，其中已將虛擬網路閘道圈起來。":::
+
+>[!NOTE]
+>您的內部部署環境和 Azure VMware 解決方案可能會看到任何即將使用或建立的虛擬網路，因此請確定您在此虛擬網路和子網中使用的任何 IP 區段都不會重迭。
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX 網路區段
 

@@ -7,16 +7,16 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8942735ed65f8aa0cf6d315568e00412adcb353a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a31ef69d84f64e4bcaa46adac26a29d2cc367351
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060532"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731695"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>使用 Azure 資料總管來查詢 Azure 監視器中的資料 (預覽)
 
-Azure 資料總管支援 Azure 資料總管、 [Application Insights (AI) ](/azure/azure-monitor/app/app-insights-overview)和 [LOG Analytics (LA) ](/azure/azure-monitor/platform/data-platform-logs)之間的跨服務查詢。 然後，您可以使用 Azure 資料總管工具來查詢 Log Analytics/Application Insights 工作區，並在跨服務查詢中加以參考。 本文說明如何進行跨服務查詢，以及如何將 Log Analytics/Application Insights 工作區新增至 Azure 資料總管 Web UI。
+Azure 資料總管支援 Azure 資料總管、 [Application Insights (AI) ](../app/app-insights-overview.md)和 [LOG Analytics (LA) ](./data-platform-logs.md)之間的跨服務查詢。 然後，您可以使用 Azure 資料總管工具來查詢 Log Analytics/Application Insights 工作區，並在跨服務查詢中加以參考。 本文說明如何進行跨服務查詢，以及如何將 Log Analytics/Application Insights 工作區新增至 Azure 資料總管 Web UI。
 
 Azure 資料總管跨服務查詢流程： :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="azure 資料瀏覽器 proxy 流程。":::
 
@@ -62,7 +62,7 @@ Azure 資料總管跨服務查詢流程： :::image type="content" source="media
 > * 資料庫名稱的名稱應該與跨服務查詢中指定的資源相同。 名稱區分大小寫。
 > * 在跨叢集查詢中，請確定 Application Insights 應用程式和 Log Analytics 工作區的命名是正確的。
 > * 如果名稱包含特殊字元，則會以跨服務查詢中的 URL 編碼來取代它們。
-> * 如果名稱中包含不符合 [KQL 識別碼名稱規則](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names)的字元，則會以破折號 **-** 字元來取代。
+> * 如果名稱中包含不符合 [KQL 識別碼名稱規則](/azure/data-explorer/kusto/query/schema-entities/entity-names)的字元，則會以破折號 **-** 字元來取代。
 
 ### <a name="direct-query-on-your-log-analytics-or-application-insights-workspaces-from-azure-data-explorer-client-tools"></a>從 Azure 資料總管用戶端工具直接查詢您的 Log Analytics 或 Application Insights 工作區
 
@@ -90,7 +90,7 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="從 Azure 資料總管的跨服務查詢。":::
 
-若使用 [`join` 運算子](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator) (而不是 union)，可能需要 [`hint`](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator#join-hints) 在 Azure 資料總管原生叢集上執行該運算子。
+若使用 [`join` 運算子](/azure/data-explorer/kusto/query/joinoperator) (而不是 union)，可能需要 [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) 在 Azure 資料總管原生叢集上執行該運算子。
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>將一個租用戶中的 Azure 資料總管叢集資料與另一個租用戶中的 Azure 監視器資源資料聯結
 
@@ -98,9 +98,9 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 如果 Azure 資料總管資源是在租用戶 'A' 中，而 Log Analytics 工作區是在租用戶 'B' 中，請使用下列兩種方法的其中一種：
 
-1. Azure 資料總管可讓您為不同租用戶中的主體新增角色。 將租用戶 'B' 中的使用者識別碼新增為 Azure 資料總管叢集上的授權使用者。 驗證 Azure 資料總管叢集上的 ['TrustedExternalTenant'](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) 屬性是否包含租用戶 'B'。 在租用戶 'B' 中完整地執行交叉查詢。
+1. Azure 資料總管可讓您為不同租用戶中的主體新增角色。 將租用戶 'B' 中的使用者識別碼新增為 Azure 資料總管叢集上的授權使用者。 驗證 Azure 資料總管叢集上的 ['TrustedExternalTenant'](/powershell/module/az.kusto/update-azkustocluster) 屬性是否包含租用戶 'B'。 在租用戶 'B' 中完整地執行交叉查詢。
 
-2. 使用 [Lighthouse](https://docs.microsoft.com/azure/lighthouse/) 將 Azure 監視器資源投射到租用戶 'A'。
+2. 使用 [Lighthouse](../../lighthouse/index.yml) 將 Azure 監視器資源投射到租用戶 'A'。
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>從不同的租用戶連線到 Azure 資料總管叢集
 
 Kusto Explorer 會自動將您登入使用者帳戶原先所屬的租用戶。 若要使用相同的使用者帳戶存取其他租用戶中的資源，必須在連接字串中明確指定 `tenantId`：`Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=`**TenantId**
@@ -134,4 +134,4 @@ Azure 資料總管跨服務查詢支援 Application Insights 和 Log Analytics �
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [Log Analytics 工作區和 Application Insights 的資料結構](data-platform-logs.md)。
-- 瞭解如何 [在 Azure 資料總管中撰寫查詢](https://docs.microsoft.com/azure/data-explorer/write-queries)。
+- 瞭解如何 [在 Azure 資料總管中撰寫查詢](/azure/data-explorer/write-queries)。

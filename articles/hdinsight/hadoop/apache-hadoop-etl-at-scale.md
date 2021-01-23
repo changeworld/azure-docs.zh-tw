@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e7a8a72d0669f39cc27c997d83af1e6272d045a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462171"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704147"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模擷取、轉換和載入 (ETL)
 
@@ -82,7 +82,7 @@ Data Lake Storage 已針對事件擷取，透過 Azure 事件中樞或 Apache St
 
 - **Azure ExpressRoute：** 在 Azure 資料中心與內部部署基礎結構之間建立私人連線。 這些連線為傳輸大量資料提供一個可靠的選項。 如需詳細資訊，請參閱 [Azure ExpressRoute 文件](../../expressroute/expressroute-introduction.md)。
 
-- **從硬碟上傳資料：** 您可以使用 [Azure 匯入/匯出服務](../../storage/common/storage-import-export-service.md)，將含有您資料的硬碟送到 Azure 資料中心。 您的資料會先上傳到 Azure Blob 儲存體。 接下來，您可以使用 Azure Data Factory 或 AdlCopy 工具，將資料從 Azure Blob 儲存體複製到 Data Lake Storage。
+- **從硬碟上傳資料：** 您可以使用 [Azure 匯入/匯出服務](../../import-export/storage-import-export-service.md)，將含有您資料的硬碟送到 Azure 資料中心。 您的資料會先上傳到 Azure Blob 儲存體。 接下來，您可以使用 Azure Data Factory 或 AdlCopy 工具，將資料從 Azure Blob 儲存體複製到 Data Lake Storage。
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 

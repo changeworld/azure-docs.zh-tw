@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: ea21a56249c8eaa7c6b329b755e96b21b91ebaa1
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: c63ea4f9cdb961ca492d5dcf22a89627864236cd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632303"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733195"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>支援可用性區域的 Azure 服務
 
@@ -37,7 +37,7 @@ ms.locfileid: "98632303"
 - **非區域服務** -不具有特定 Azure 區域相依性的服務，讓他們能夠復原整個區域的中斷，以及全區域中斷。
 
 
-若要在 Azure 上達到全面性的商務持續性，請使用「可用性區域」與 Azure 地區配對的組合來建置您的應用程式架構。 您可以使用 Azure 地區內的「可用性區域」來同步複寫應用程式和資料以提供高可用性，並以非同步方式跨 Azure 地區複寫以提供災害復原保護。 若要深入瞭解，請參閱 [使用可用性區域來建立高可用性的解決方案](https://docs.microsoft.com/azure/architecture/high-availability/building-solutions-for-high-availability)。 
+若要在 Azure 上達到全面性的商務持續性，請使用「可用性區域」與 Azure 地區配對的組合來建置您的應用程式架構。 您可以使用 Azure 地區內的「可用性區域」來同步複寫應用程式和資料以提供高可用性，並以非同步方式跨 Azure 地區複寫以提供災害復原保護。 若要深入瞭解，請參閱 [使用可用性區域來建立高可用性的解決方案](/azure/architecture/high-availability/building-solutions-for-high-availability)。 
 
 
 ### <a name="azure-services-supporting-availability-zones"></a>支援可用性區域的 Azure 服務
@@ -205,8 +205,8 @@ Azure 提供下欄區域可用性區域支援：
 - [建立虛擬機器](../virtual-machines/windows/create-portal-availability-zone.md)
 - [使用 PowerShell 來新增受控磁碟](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [建立區域備援虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [使用具有區域備援前端的標準 Load Balancer 來進行跨區域的 VM 負載平衡](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-cli?tabs=option-1-create-load-balancer-standard)
-- [使用具有區域前端的標準 Load Balancer 來進行區域內的 VM 負載平衡](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-cli?tabs=option-1-create-load-balancer-standard)
+- [使用具有區域備援前端的標準 Load Balancer 來進行跨區域的 VM 負載平衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard)
+- [使用具有區域前端的標準 Load Balancer 來進行區域內的 VM 負載平衡](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard)
 - [區域備援儲存體](../storage/common/storage-redundancy.md)
 - [SQL Database 一般用途層](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [事件中樞異地災害復原](../event-hubs/event-hubs-geo-dr.md#availability-zones)
@@ -214,11 +214,11 @@ Azure 提供下欄區域可用性區域支援：
 - [建立區域備援虛擬網路閘道](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 - [新增 Azure Cosmos DB 的區域多餘區域](../cosmos-db/high-availability.md#availability-zone-support)
 - [開始使用 Azure Cache for Redis 可用性區域](https://gist.github.com/JonCole/92c669ea482bbb7996f6428fb6c3eb97#file-redisazgettingstarted-md)
-- [建立 Azure Active Directory Domain Services 執行個體](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance)
+- [建立 Azure Active Directory Domain Services 執行個體](../active-directory-domain-services/tutorial-create-instance.md)
 - [建立 Azure Kubernetes Service (AKS) 使用可用性區域的叢集](../aks/availability-zones.md)
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [Azure 中的區域和可用性區域](az-overview.md) \(部分機器翻譯\)

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: 15714405c683889c0f783359011a0f0f5f9f3f43
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: d99f9326b3113742fdc0c14a4ae39d552df47edd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201785"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730151"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 建立並管理 Windows VM
 
@@ -567,4 +567,4 @@ compute_client = ComputeManagementClient(
 ## <a name="next-steps"></a>後續步驟
 
 - 如果部署有問題，下一個步驟就是查看 [使用 Azure 入口網站針對資源群組部署進行疑難排解](../../azure-resource-manager/templates/deployment-history.md)
-- 深入了解 [Azure Python 程式庫](/python/api/overview/azure/?view=azure-python)
+- 深入了解 [Azure Python 程式庫](/python/api/overview/azure/)

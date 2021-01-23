@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 01/22/2021
 ms.author: victorh
-ms.openlocfilehash: dc1eb64b5cfb527c10967a1a46525a418fdc37e3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6910fda855402d2f99994da1e835560be84ca2dd
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673992"
+ms.locfileid: "98703372"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Azure 防火牆中的 IP 群組
 
@@ -28,7 +28,7 @@ IP 群組可以有單一 IP 位址、多個 IP 位址，或一或多個 IP 位�
 您可以在 azure 中跨區域和訂用帳戶的 Azure 防火牆 DNAT、網路和應用程式規則中重複使用 IP 群組。 組名必須是唯一的。 您可以在 Azure 入口網站、Azure CLI 或 REST API 中設定 IP 群組。 提供範例範本以協助您開始使用。
 
 > [!NOTE]
-> Azure 國家/地區雲端環境中目前無法使用 IP 群組。
+> IP 群組目前在 Azure 國家雲端環境中無法使用。
 
 ## <a name="sample-format"></a>樣本格式
 
@@ -87,6 +87,6 @@ IP 群組適用于所有公用雲端區域。
 - [New-AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule?view=azps-3.4.0)
 - [新 AzFirewallNatRule](/powershell/module/az.network/new-azfirewallnatrule?view=azps-3.4.0)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何 [部署和設定 Azure 防火牆](tutorial-firewall-deploy-portal.md)。
