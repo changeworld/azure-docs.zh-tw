@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 38f37ff2fe150a9e1998fbe5e963b8737a6e1533
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 11aa739beeb07c3de056d8a2430b556fcc40b178
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737960"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746725"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning 版本資訊
 
@@ -493,8 +493,8 @@ ms.locfileid: "98737960"
     + 使用者現在可以使用參數來指定預測工作的時間序列頻率 `freq` 。
   + **azureml-train-automl-runtime**
     + 改進了最佳模型說明失敗時的主控台輸出。
-    + 已將 "backlist_models" 輸入參數重新命名為 "blocked_models"。
-      + 已將 "whitelist_models" 輸入參數重新命名為 "allowed_models"。
+    + 將輸入參數重新命名為 "blocked_models"，以移除敏感性詞彙。
+      + 將輸入參數重新命名為 "allowed_models"，以移除敏感性詞彙。
     + 使用者現在可以使用參數來指定預測工作的時間序列頻率 `freq` 。
 
   

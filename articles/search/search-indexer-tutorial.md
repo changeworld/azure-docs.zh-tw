@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 960657d27be4b9dab9f242428592bbb404a49d86
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
-ms.translationtype: HT
+ms.openlocfilehash: e2ca5f42120661b887d07e697596f41cb7a7fce4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697164"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745762"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>教學課程：使用 .NET SDK 為 Azure SQL 資料編製索引
 
@@ -107,14 +107,14 @@ API 呼叫需要用到服務 URL 和存取金鑰。 建立搜尋服務時需要�
 
 1. 在方案總管中開啟 **appsettings.json**，以提供連線資訊。
 
-1. 就 `searchServiceName` 而言，如果完整 URL 是 "https://my-demo-service.search.windows.net"，則應提供的服務名稱就是 "my-demo-service"。
+1. 若是 `SearchServiceEndPoint` ，如果服務總覽頁面上的完整 URL 是 " https://my-demo-service.search.windows.net "，則要提供的值就是該 url。
 
 1. `AzureSqlConnectionString` 的字串格式如下所示：`"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
-      "SearchServiceName": "<placeholder-Azure-Search-service-name>",
-      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
+      "SearchServiceEndPoint": "<placeholder-search-url>",
+      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-search-service>",
       "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
@@ -130,11 +130,12 @@ API 呼叫需要用到服務 URL 和存取金鑰。 建立搜尋服務時需要�
 
 ### <a name="in-hotelcs"></a>在 hotel.cs 中
 
-索引結構描述會定義欄位集合，包括用於指定允許作業的屬性，例如欄位是否可全文檢索搜尋、可篩選，或可排序 (如 HotelName 的下列欄位定義中所示)。 
+索引結構描述會定義欄位集合，包括用於指定允許作業的屬性，例如欄位是否可全文檢索搜尋、可篩選，或可排序 (如 HotelName 的下列欄位定義中所示)。 [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield)可由定義進行全文檢索搜尋。 系統會明確指派其他屬性。
 
 ```csharp
 . . . 
-[IsSearchable, IsFilterable, IsSortable]
+[SearchableField(IsFilterable = true, IsSortable = true)]
+[JsonPropertyName("hotelName")]
 public string HotelName { get; set; }
 . . .
 ```
@@ -143,59 +144,73 @@ public string HotelName { get; set; }
 
 ### <a name="in-programcs"></a>在 Program.cs 中
 
-主要程式包含用於建立用戶端、索引、資料來源和索引子的邏輯。 在您可能會執行此程式多次的假設之下，此程式碼會檢查並刪除現有的同名資源。
+主要套裝程式含建立 [索引子用戶端](/dotnet/api/azure.search.documents.indexes.models.searchindexer)、索引、資料來源和索引子的邏輯。 在您可能會執行此程式多次的假設之下，此程式碼會檢查並刪除現有的同名資源。
 
-資料來源物件上會配置專屬於 Azure SQL Database 資源的設定，包括[部份或增量索引編製](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)，以充分利用 Azure SQL 的內建[變更偵測功能](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 在 Azure SQL 中，示範用的飯店資料庫具有名為 **IsDeleted** 的「虛刪除」資料行。 當此資料行在資料庫中設定為 true 時，索引子就會從 Azure 認知搜尋索引中移除對應文件。
+資料來源物件上會配置專屬於 Azure SQL Database 資源的設定，包括[部份或增量索引編製](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)，以充分利用 Azure SQL 的內建[變更偵測功能](/sql/relational-databases/track-changes/about-change-tracking-sql-server)。 Azure SQL 中的來源示範飯店資料庫具有名為 **IsDeleted** 的「虛刪除」資料行。 當此資料行在資料庫中設定為 true 時，索引子就會從 Azure 認知搜尋索引中移除對應文件。
 
-  ```csharp
-  Console.WriteLine("Creating data source...");
+```csharp
+Console.WriteLine("Creating data source...");
 
-  DataSource dataSource = DataSource.AzureSql(
-      name: "azure-sql",
-      sqlConnectionString: configuration["AzureSQLConnectionString"],
-      tableOrViewName: "hotels",
-      deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
-          softDeleteColumnName: "IsDeleted",
-          softDeleteMarkerValue: "true"));
-  dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+var dataSource =
+      new SearchIndexerDataSourceConnection(
+         "hotels-sql-ds",
+         SearchIndexerDataSourceType.AzureSql,
+         configuration["AzureSQLConnectionString"],
+         new SearchIndexerDataContainer("hotels"));
 
-  searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
-  ```
+indexerClient.CreateOrUpdateDataSourceConnection(dataSource);
+```
 
-索引子物件可跨平台使用，不論來源為何，其中的設定、排程和引動過程都相同。 此索引子範例包括排程及用於清除索引子記錄的重設選項，並且會呼叫方法來立即建立並執行索引子。
+索引子物件可跨平台使用，不論來源為何，其中的設定、排程和引動過程都相同。 此索引子範例包括排程及用於清除索引子記錄的重設選項，並且會呼叫方法來立即建立並執行索引子。 若要建立或更新索引子，請使用 [CreateOrUpdateIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.createorupdateindexerasync)。
 
-  ```csharp
-  Console.WriteLine("Creating Azure SQL indexer...");
-  Indexer indexer = new Indexer(
-      name: "azure-sql-indexer",
-      dataSourceName: dataSource.Name,
-      targetIndexName: index.Name,
-      schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-  // Indexers contain metadata about how much they have already indexed
-  // If we already ran the sample, the indexer will remember that it already
-  // indexed the sample data and not run again
-  // To avoid this, reset the indexer if it exists
-  exists = await searchService.Indexers.ExistsAsync(indexer.Name);
-  if (exists)
-  {
-      await searchService.Indexers.ResetAsync(indexer.Name);
-  }
+```csharp
+Console.WriteLine("Creating Azure SQL indexer...");
 
-  await searchService.Indexers.CreateOrUpdateAsync(indexer);
+var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+{
+      StartTime = DateTimeOffset.Now
+};
 
-  // We created the indexer with a schedule, but we also
-  // want to run it immediately
-  Console.WriteLine("Running Azure SQL indexer...");
+var parameters = new IndexingParameters()
+{
+      BatchSize = 100,
+      MaxFailedItems = 0,
+      MaxFailedItemsPerBatch = 0
+};
 
-  try
-  {
-      await searchService.Indexers.RunAsync(indexer.Name);
-  }
-  catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
-  {
+// Indexer declarations require a data source and search index.
+// Common optional properties include a schedule, parameters, and field mappings
+// The field mappings below are redundant due to how the Hotel class is defined, but 
+// we included them anyway to show the syntax 
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+      Description = "Data indexer",
+      Schedule = schedule,
+      Parameters = parameters,
+      FieldMappings =
+      {
+         new FieldMapping("_id") {TargetFieldName = "HotelId"},
+         new FieldMapping("Amenities") {TargetFieldName = "Tags"}
+      }
+};
+
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
+```
+
+索引子執行通常是排程的，但在開發期間，您可能會想要使用 [RunIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexerasync)立即執行索引子。
+
+```csharp
+Console.WriteLine("Running Azure SQL indexer...");
+
+try
+{
+      await indexerClient.RunIndexerAsync(indexer.Name);
+}
+catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+{
       Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
-  }
-  ```
+}
+```
 
 ## <a name="4---build-the-solution"></a>4 - 建置解決方案
 
@@ -205,9 +220,9 @@ public string HotelName { get; set; }
 
 您的程式碼會在 Visual Studio 本機執行，並連線到您在 Azure 上的搜尋服務，搜尋服務再連線到 Azure SQL Database 並擷取資料集。 由於要進行的作業很多，所以會有數個潛在的失敗點。 如果您收到錯誤，請先檢查下列條件：
 
-+ 您提供搜尋服務連線資訊受限於本教學課程中的服務名稱。 如果您輸入了完整 URL，作業會在索引建立時停止，出現連線失敗錯誤。
++ 您提供的搜尋服務連接資訊是完整的 URL。 如果您只輸入服務名稱，作業會在建立索引時停止，而且會發生連接錯誤。
 
-+ **appsettings.json** 中的資料庫連線資訊。 它應該是從入口網站取得的 ADO.NET 連接字串，已修改成包含您的資料庫適用的使用者名稱和密碼。 使用者帳戶必須具有擷取資料的權限。 您的本機用戶端 IP 位址則必須獲得允許而能進行存取。
++ **appsettings.json** 中的資料庫連線資訊。 它應該是從入口網站取得的 ADO.NET 連接字串，已修改成包含您的資料庫適用的使用者名稱和密碼。 使用者帳戶必須具有擷取資料的權限。 您必須允許本機用戶端 IP 位址透過防火牆進行輸入存取。
 
 + 資源限制。 回想一下，免費層有 3 個索引、索引子和資料來源的限制。 最大限制的服務無法建立新的物件。
 

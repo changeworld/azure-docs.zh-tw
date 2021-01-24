@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 931189a6740009bd26472c186057fa0e6ef5fddf
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 249afa361946e85a8c8ff241f07d7aae608949ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624887"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745695"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights
 
@@ -323,8 +323,3 @@ import com.microsoft.applicationinsights.web.internal.ThreadContext;
 RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
 requestTelemetry.setName("myname");
 ```
-
-> [!NOTE]
-> 除了上述的其他所有作業之外 `RequestTelemetry` `ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry()` ，也會快速失敗並擲回例外狀況，讓您知道在3.0 代理程式下是未定義的行為。
->
-> 如果您需要其他任何方法的互通性， `RequestTelemetry` 請開啟問題讓我們知道 https://github.com/microsoft/ApplicationInsights-Java/issues 。

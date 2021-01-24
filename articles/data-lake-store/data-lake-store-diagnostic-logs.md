@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: aac0139e09866ce44d25989119b2eafb31e76961
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 07bf22cfc683d8c6f2c765364334ed1594e2fdaa
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610449"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745879"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>存取 Azure Data Lake Storage Gen1 的診斷記錄
 了解如何啟用 Azure Data Lake Storage Gen1 帳戶的診斷記錄，以及如何檢視針對您帳戶收集的記錄。
 
 組織可以針對其 Azure Data Lake Storage Gen1 帳戶啟用診斷記錄，以收集資料存取審核記錄，以提供存取資料的使用者清單、存取資料的頻率、帳戶中儲存的資料量等資訊。啟用時，診斷和/或要求會以最大的方式登入。 只有在對服務端點提出要求時，才會建立要求和診斷記錄項目。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帳戶**。 請遵循[透過 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 的指示。
 
@@ -50,7 +50,7 @@ ms.locfileid: "98610449"
      
    * 指定要取得稽核記錄、要求記錄或兩者。
    * 指定的資料的保留天數。 只有在您使用 Azure 儲存體帳戶來封存記錄資料時，才適用保留期。
-   * 按一下 [檔案] 。
+   * 按一下 [儲存]。
 
 一旦您啟用了診斷設定，即可在 [診斷記錄]  索引標籤中查看記錄。
 
@@ -106,7 +106,7 @@ ms.locfileid: "98610449"
         "callerIpAddress": "::ffff:1.1.1.1",
         "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
         "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"StoreIngressSize":0 ,"StoreEgressSize":4096,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z","QueryParameters":"api-version=<version>&op=<operationName>"}
     }
     ,
     . . . .
@@ -115,7 +115,7 @@ ms.locfileid: "98610449"
 ```
 
 #### <a name="request-log-schema"></a>要求記錄的結構描述
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | time |String |記錄的時間戳記 (UTC 時間) |
 | resourceId |String |作業發生之資源的識別碼 |
@@ -128,7 +128,7 @@ ms.locfileid: "98610449"
 | properties |JSON |如需詳細資料，請參閱下文 |
 
 #### <a name="request-log-properties-schema"></a>要求記錄屬性結構描述
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | HttpMethod |String |作業使用的 HTTP 方法。 例如，GET。 |
 | 路徑 |String |執行作業的所在路徑 |
@@ -138,6 +138,7 @@ ms.locfileid: "98610449"
 | EndTime |String |伺服器傳送回應的時間 |
 | StoreIngressSize |long |輸入至 Data Lake Store 的大小（以位元組為單位） |
 | StoreEgressSize |long |從 Data Lake Store 輸出的位元組大小 |
+| QueryParameters |String |描述：這些是 HTTP 查詢參數。 範例1： api-version = 2014-01-01&op = getfilestatus 範例2： op = APPEND&append = true&syncFlag = DATA&filesessionid = bee3355a-4925-4435-bb4d-ceea52811aeb&leaseid = bee3355a-4925-4435-bb4d-ceea52811aeb&offset = 28313319&api-version = 2017-08-01 |
 
 ### <a name="audit-logs"></a>稽核記錄
 以下是採用 JSON 格式之稽核記錄中的範例項目。 每個 blob 都有一個名為「 **記錄** 」的根物件，其中包含記錄物件的陣列。
@@ -166,7 +167,7 @@ ms.locfileid: "98610449"
 ```
 
 #### <a name="audit-log-schema"></a>稽核記錄的結構描述
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | time |String |記錄的時間戳記 (UTC 時間) |
 | resourceId |String |作業發生之資源的識別碼 |
@@ -179,7 +180,7 @@ ms.locfileid: "98610449"
 | properties |JSON |如需詳細資料，請參閱下文 |
 
 #### <a name="audit-log-properties-schema"></a>稽核記錄屬性結構描述
-| 名稱 | 類型 | 說明 |
+| 名稱 | 類型 | 描述 |
 | --- | --- | --- |
 | StreamName |String |執行作業的所在路徑 |
 

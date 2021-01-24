@@ -11,19 +11,16 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d436414393d77c83acc835110f17e55e491dce1
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 695261ceae9d64be9395e6de082f97be04292078
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503484"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745980"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication 之 NPS 延伸模組的進階設定選項
 
 網路原則伺服器 (NPS) 擴充功能會將您的雲端式 Azure AD Multi-Factor Authentication 功能延伸至您的內部部署基礎結構。 本文假設您已經安裝延伸模組，而現在想要知道如何為您的需求自訂延伸模組。
-
-> [!NOTE]
-> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 ## <a name="alternate-login-id"></a>替代登入識別碼
 
@@ -54,7 +51,7 @@ ms.locfileid: "97503484"
 > [!NOTE]
 > 安裝程式預設不會建立此登錄機碼，而且在重新開機服務時，AuthZOptCh 記錄中會出現錯誤。 您可以忽略記錄檔中的這個錯誤，但如果建立此登錄機碼，並在不需要時保留空白，則不會傳回錯誤訊息。
 
-從存在的 IP 位址傳入要求時 `IP_WHITELIST` ，會略過雙步驟驗證。 IP 清單會與 RADIUS 要求的 *傳入沒有 ratnasipaddress* 屬性中所提供的 ip 位址進行比較。 如果傳入沒有 ratNASIPAddress 屬性的 RADIUS 要求，則會記錄下列警告：「P_WHITE_LIST_WARNING::IP 允許清單將會予以忽略，因為 RADIUS 要求的 NasIpAddress 屬性中遺漏來源 IP」。
+從存在的 IP 位址傳入要求時 `IP_WHITELIST` ，會略過雙步驟驗證。 IP 清單會與 RADIUS 要求的 *傳入沒有 ratnasipaddress* 屬性中所提供的 ip 位址進行比較。 如果在沒有傳入沒有 ratnasipaddress 屬性的情況下傳入 RADIUS 要求，則會記錄警告：「因為 RADIUS 要求 NasIpAddress 屬性中遺失來源 IP，所以會忽略「IP_WHITE_LIST_WARNING：： IP 白名單」。
 
 ## <a name="next-steps"></a>後續步驟
 

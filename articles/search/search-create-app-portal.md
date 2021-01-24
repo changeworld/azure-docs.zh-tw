@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
-ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
-ms.translationtype: HT
+ms.date: 01/23/2021
+ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91399817"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745745"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>快速入門：在入口網站中建立示範應用程式 (Azure 認知搜尋)
 
@@ -33,7 +33,7 @@ ms.locfileid: "91399817"
 
 + [搜尋索引](search-what-is-an-index.md)可作為所產生應用程式的基礎。 
 
-  本快速入門會使用內建的房地產資料和索引範例，因為其具有縮圖影像 (精靈可支援將影像新增至結果頁面)。 若要建立此練習中所用的索引，請執行**匯入資料**精靈，並選擇 realestate-us-sample 資料來源。
+  本快速入門會使用內建的房地產資料和索引範例，因為其具有縮圖影像 (精靈可支援將影像新增至結果頁面)。 若要建立此練習中所用的索引，請執行 **匯入資料** 精靈，並選擇 realestate-us-sample 資料來源。
 
   :::image type="content" source="media/search-create-app-portal/import-data-realestate.png" alt-text="資料範例的資料來源頁面" border="false":::
 
@@ -61,7 +61,7 @@ ms.locfileid: "91399817"
 
 1. 在 [描述] 中，請選擇會提供詳細資料的欄位，以便協助使用者決定是否要點選以獲得該特定文件。
 
-   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="資料範例的資料來源頁面" border="false":::
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="設定範例資料的結果" border="false":::
 
 ## <a name="add-a-sidebar"></a>新增提要欄位
 
@@ -72,8 +72,9 @@ ms.locfileid: "91399817"
 > [!TIP]
 > 您可以在入口網站中檢視整個索引結構描述。 請在每個索引的 [概觀] 頁面中，尋找 [索引定義 (JSON)] 連結。 符合多面向導覽資格的欄位會有「可篩選：true」和「可 Facet：true」屬性。
 
-接受目前選取的 Facet，並繼續進行下一頁。
+1. 在嚮導中，選取頁面頂端的 [ **提要** 欄位] 索引標籤。 您將會在索引中看到屬性為可篩選和可 facet 的所有欄位清單。
 
+1. 接受目前選取的多面向欄位，然後繼續前往下一個頁面。
 
 ## <a name="add-typeahead"></a>新增自動提示
 
@@ -83,24 +84,48 @@ ms.locfileid: "91399817"
 
 下列螢幕擷取畫面顯示精靈中的選項，以及應用程式中所呈現的頁面。 您可以看到欄位選取項目的使用方式，以及「顯示欄位名稱」如何用來在建議內包含或排除標籤。
 
-:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="資料範例的資料來源頁面":::
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="查詢建議設定":::
+
+## <a name="add-suggestions"></a>新增建議
+
+建議是指附加至搜尋方塊的自動查詢提示。 認知搜尋支援兩種 *：自動* 完成部分輸入的搜尋字詞，以及根據可能符合之檔的下拉式清單 *建議* 。
+
+Wizard 支援建議，而可提供建議結果的欄位則是衍生自 [`Suggesters`](index-add-suggesters.md) 索引中的結構：
+
+```JSON
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": [
+        "number",
+        "street",
+        "city",
+        "region",
+        "postCode",
+        "tags"
+      ]
+```
+
+1. 在嚮導中，選取頁面頂端的 [ **建議** ] 索引標籤。 您會看到索引架構中指定為建議提供者的所有欄位清單。
+
+1. 接受目前的選取範圍，然後繼續前往下一個頁面。
 
 ## <a name="create-download-and-execute"></a>建立、下載和執行
 
-1. 選取 [建立示範應用程式] 來產生 HTML 檔案。
+1. 選取頁面底部的 [ **建立示範應用程式** ] 以產生 HTML 檔案。
 
 1. 出現提示時，選取 [下載應用程式] 來下載檔案。
 
-1. 開啟 檔案。 您應該會看到類似下列螢幕擷取畫面的頁面。 輸入一個詞並使用篩選條件來縮小結果範圍。 
+1. 開啟檔案，然後按一下 [搜尋] 按鈕。 此動作會執行查詢，這可以是傳回 `*` 任意結果集 () 的空查詢。 頁面看起來應該類似下列螢幕擷取畫面。 輸入一個詞並使用篩選條件來縮小結果範圍。 
 
 基礎索引會由所產生的虛構資料構成，這些資料已複製到各個文件，且描述有時會與影像不符。 當您建立以自己的索引為基礎的應用程式時，應該會有更完整的體驗。
 
-:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="資料範例的資料來源頁面":::
-
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="執行應用程式":::
 
 ## <a name="clean-up-resources"></a>清除資源
 
-使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
+使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 資源若繼續執行，您將必須付費。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
 
 您可以使用左導覽窗格中的 [所有資源] 或 [資源群組] 連結，在入口網站中尋找和管理資源。
 
@@ -108,7 +133,7 @@ ms.locfileid: "91399817"
 
 ## <a name="next-steps"></a>後續步驟
 
-雖然預設應用程式很適合用於初始探索和小型工作，但在初期檢閱 API 將協助您了解更深層級的概念和工作流程：
+示範應用程式很適合用來建立原型，因為您不需要撰寫 JavaScript 或前端程式碼，就能模擬終端使用者體驗。 如需前端功能的詳細資訊，請從多面向導覽開始：
 
 > [!div class="nextstepaction"]
-> [使用 .NET SDK 建立索引](./search-get-started-dotnet.md)
+> [如何建立 facet 篩選](search-filters-facets.md)

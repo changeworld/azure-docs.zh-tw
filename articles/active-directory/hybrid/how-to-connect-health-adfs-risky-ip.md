@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d74272d77183baa2284265aee298967f641250
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e0b76d2f943f254eb06208e2c190bae4d4088030
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504877"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746065"
 ---
 # <a name="risky-ip-report-public-preview"></a>具風險的 IP 報告 (公開預覽) 
 AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證服務給終端使用者存取 SaaS 應用程式，例如 Microsoft 365。 在此情況下，不良執行者便有機會嘗試登入您的 AD FS 系統，以猜出終端使用者的密碼並存取應用程式資源。 自 Windows Server 2012 R2 中的 AD FS 開始，AD FS 會提供外部網路帳戶鎖定功能以避免這類攻擊。 如果您使用較低的版本，我們強烈建議您將 AD FS 系統升級至 Windows Server 2016。 <br />
@@ -37,9 +37,6 @@ AD FS 客戶可能會向網際網路公開密碼驗證端點，以提供驗證�
 > 若要使用此報告，您必須確定已啟用 AD FS 稽核。 如需詳細資訊，請參閱 [啟用 AD FS 的稽核](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs)。 <br />
 > 若要存取預覽，則需要全域管理員或[安全性讀取者](../../role-based-access-control/built-in-roles.md#security-reader)的權限。  
 >
-
-> [!NOTE]
-> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 ## <a name="what-is-in-the-report"></a>報表中有哪些內容？
 失敗的登入活動用戶端 IP 位址是透過 Web 應用程式 Proxy 伺服器進行匯總。 「具風險的 IP 報告」中的每個項目會顯示有關已超過指定閾值之失敗 AD FS 登入活動的彙總資訊。 它會提供下列資訊： ![ 顯示具有醒目提示資料行標頭之具風險 IP 報告的螢幕擷取畫面。](./media/how-to-connect-health-adfs/report4a.png)

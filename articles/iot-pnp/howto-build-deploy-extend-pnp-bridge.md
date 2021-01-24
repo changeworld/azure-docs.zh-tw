@@ -1,27 +1,26 @@
 ---
-title: 如何建立、部署及擴充 IoT 隨插即用 bridge |Microsoft Docs
-description: 識別 IoT 隨插即用 bridge 元件。 瞭解如何擴充橋接器，以及如何在 IoT 裝置、閘道和 IoT Edge 模組上執行。
+title: 如何建立和部署 IoT 隨插即用 bridge |Microsoft Docs
+description: 識別 IoT 隨插即用 bridge 元件。 瞭解如何在 IoT 裝置、閘道和 IoT Edge 模組上執行。
 author: usivagna
 ms.author: ugans
-ms.date: 12/11/2020
+ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 43c89b0fac08bf9f2c72f885fbf4788371876b17
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b7947eab93ebc8e523e163af601893522132e06a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678571"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745662"
 ---
-# <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>建立、部署及擴充 IoT 隨插即用橋接器
+# <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>建立並部署 IoT 隨插即用橋接器
 
-IoT 隨插即用橋接器可讓您將連接至閘道的現有裝置連線到 IoT 中樞。 您可以使用橋接器將 IoT 隨插即用介面對應到連接的裝置。 IoT 隨插即用介面會定義裝置所傳送的遙測、裝置與雲端之間的屬性同步，以及裝置所回應的命令。 您可以在 Windows 或 Linux 閘道上安裝和設定開放原始碼橋接器應用程式。
+[IoT 隨插即用橋接器](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture)可讓您將連接至閘道的現有裝置連線到 IoT 中樞。 您可以使用橋接器將 IoT 隨插即用介面對應到連接的裝置。 IoT 隨插即用介面會定義裝置所傳送的遙測、裝置與雲端之間的屬性同步，以及裝置所回應的命令。 您可以在 Windows 或 Linux 閘道上安裝和設定開放原始碼橋接器應用程式。 此外，橋接器也可以 Azure IoT Edge 執行時間模組的形式來執行。
 
 本文詳細說明如何：
 
 - 設定橋接器。
-- 藉由建立新的介面卡來擴充橋接器。
 - 如何在各種環境中建立並執行橋接器。
 
 如需示範如何使用橋接器的簡單範例，請參閱 [如何將在 Linux 或 Windows 上執行的 IoT 隨插即用 bridge 範例連線到 IoT 中樞](howto-use-iot-pnp-bridge.md)。
@@ -77,97 +76,6 @@ IoT 隨插即用橋接器可讓您將連接至閘道的現有裝置連線到 IoT
 ### <a name="iot-edge-module-configuration"></a>IoT Edge 模組設定
 
 當橋接器在 IoT Edge 執行時間以 IoT Edge 模組的形式執行時，會從雲端傳送設定檔以作為 `PnpBridgeConfig` 所需屬性的更新。 橋接器會在設定介面卡和元件之前，先等候這個屬性更新。
-
-## <a name="extend-the-bridge"></a>擴充橋接器
-
-若要擴充橋接器的功能，您可以撰寫自己的橋接器介面卡。
-
-橋接器使用介面卡來：
-
-- 建立裝置與雲端之間的連接。
-- 啟用裝置與雲端之間的資料流程。
-- 從雲端啟用裝置管理。
-
-每個橋接器介面卡都必須：
-
-- 建立數位 twins 介面。
-- 使用介面將裝置端功能系結至雲端式功能，例如遙測、屬性和命令。
-- 使用裝置硬體或固件來建立控制和資料通訊。
-
-每個橋接器介面卡都會根據介面卡連線到裝置的方式與裝置互動，與特定類型的裝置互動。 即使與裝置的通訊使用信號交換通訊協定，橋接器介面卡還是可以有多種方式來解讀裝置中的資料。 在此案例中，橋接器介面卡會使用設定檔案中的介面卡資訊，來判斷介面卡應用來剖析資料的 *介面* 設定。
-
-若要與裝置互動，橋接器介面卡會使用裝置所支援的通訊協定，以及基礎作業系統或裝置廠商所提供的 Api。
-
-為了與雲端互動，橋接器介面卡會使用 Azure IoT 裝置 C SDK 提供的 Api 來傳送遙測、建立數位對應項介面、傳送屬性更新，以及建立屬性更新和命令的回呼函數。
-
-### <a name="create-a-bridge-adapter"></a>建立橋接器介面卡
-
-橋接器需要橋接器介面卡來執行 [_PNP_ADAPTER](https://github.com/Azure/iot-plug-and-play-bridge/blob/9964f7f9f77ecbf4db3b60960b69af57fd83a871/pnpbridge/src/pnpbridge/inc/pnpadapter_api.h#L296) 介面中定義的 api：
-
-```c
-typedef struct _PNP_ADAPTER {
-  // Identity of the IoT Plug and Play adapter that is retrieved from the config
-  const char* identity;
-
-  PNPBRIDGE_ADAPTER_CREATE createAdapter;
-  PNPBRIDGE_COMPONENT_CREATE createPnpComponent;
-  PNPBRIDGE_COMPONENT_START startPnpComponent;
-  PNPBRIDGE_COMPONENT_STOP stopPnpComponent;
-  PNPBRIDGE_COMPONENT_DESTROY destroyPnpComponent;
-  PNPBRIDGE_ADAPTER_DESTOY destroyAdapter;
-} PNP_ADAPTER, * PPNP_ADAPTER;
-```
-
-在此介面中：
-
-- `PNPBRIDGE_ADAPTER_CREATE` 建立介面卡，並設定介面管理資源。 介面卡也可能依賴全域介面卡參數來建立介面卡。 此函式會針對單一介面卡呼叫一次。
-- `PNPBRIDGE_COMPONENT_CREATE` 建立數位對應項用戶端介面，並系結回呼函數。 介面卡會起始裝置的通道。 介面卡可設定資源以啟用遙測流程，但在呼叫之前，不會開始報告遙測 `PNPBRIDGE_COMPONENT_START` 。 此函式會針對設定檔中的每個介面元件呼叫一次。
-- `PNPBRIDGE_COMPONENT_START` 呼叫以讓橋接器介面卡開始將遙測從裝置轉送到數位對應項用戶端。 此函式會針對設定檔中的每個介面元件呼叫一次。
-- `PNPBRIDGE_COMPONENT_STOP` 停止遙測流程。
-- `PNPBRIDGE_COMPONENT_DESTROY` 終結數位對應項用戶端和相關聯的介面資源。 當橋接器中斷或發生嚴重錯誤時，設定檔中的每個介面元件都會呼叫此函式一次。
-- `PNPBRIDGE_ADAPTER_DESTROY` 清除橋接器介面卡資源。
-
-### <a name="bridge-core-interaction-with-bridge-adapters"></a>使用橋接器介面卡橋接核心互動
-
-下列清單概述橋接器啟動時會發生什麼事：
-
-1. 橋接器開始時，橋接器介面卡管理員會查看設定檔中定義的每個介面元件，並 `PNPBRIDGE_ADAPTER_CREATE` 在適當的介面卡上呼叫。 介面卡可能會使用全域介面卡設定參數來設定資源，以支援各種 *介面* 設定。
-1. 針對設定檔中的每個裝置，橋接器管理員會 `PNPBRIDGE_COMPONENT_CREATE` 在適當的橋接器介面卡中呼叫，以起始介面建立。
-1. 介面卡會接收介面元件的任何選用介面卡設定，並使用此資訊來設定裝置的連線。
-1. 介面卡會建立數位對應項用戶端介面，並系結屬性更新和命令的回呼函數。 建立裝置連線時，不應該在數位對應項介面建立成功之後封鎖回呼的回呼。 作用中的裝置連線與橋接器所建立的 active interface 用戶端無關。 如果連接失敗，介面卡會假設裝置處於非使用中狀態。 橋接器介面卡可以選擇重試進行此連接。
-1. 在橋接器介面卡管理員建立設定檔中指定的所有介面元件之後，它會向 Azure IoT 中樞註冊所有介面。 註冊是封鎖的非同步呼叫。 當呼叫完成時，它會觸發橋接器介面卡中的回呼，然後開始處理雲端中的屬性和命令回呼。
-1. 橋接器介面卡管理員接著會 `PNPBRIDGE_INTERFACE_START` 在每個元件上呼叫，且橋接器介面卡會開始向數位對應項用戶端報告遙測。
-
-### <a name="design-guidelines"></a>設計指導方針
-
-當您開發新的橋接器介面卡時，請遵循下列指導方針：
-
-- 判斷支援哪些裝置功能，以及使用此介面卡的元件介面定義看起來會像這樣。
-- 判斷介面卡需要在設定檔中定義的介面和全域參數。
-- 識別支援元件屬性和命令所需的低層級裝置通訊。
-- 判斷介面卡如何剖析裝置中的原始資料，並將它轉換成 IoT 隨插即用介面定義所指定的遙測類型。
-- 執行先前所述的橋接器介面卡介面。
-- 將新的介面卡新增至介面卡資訊清單，並建立橋接器。
-
-### <a name="enable-a-new-bridge-adapter"></a>啟用新的橋接器介面卡
-
-您可以在 [adapter_manifest](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/shared/adapter_manifest.c)中新增參考，藉以啟用橋接器中的介面卡：
-
-```c
-  extern PNP_ADAPTER MyPnpAdapter;
-  PPNP_ADAPTER PNP_ADAPTER_MANIFEST[] = {
-    .
-    .
-    &MyPnpAdapter
-  }
-```
-
-> [!IMPORTANT]
-> 系統會依序叫用橋接器介面卡回呼。 介面卡不應封鎖回呼，因為這可防止橋接器核心進行進度。
-
-### <a name="sample-camera-adapter"></a>範例攝影機介面卡
-
-[攝影機介面卡讀我檔案](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/Camera/readme.md)說明您可以啟用的範例攝影機介面卡。
 
 ## <a name="build-and-run-the-bridge-on-an-iot-device-or-gateway"></a>在 IoT 裝置或閘道上建立並執行橋接器
 
@@ -378,7 +286,6 @@ git submodule update --init --recursive
 開啟 *pnpbridge\Dockerfile.amd64* 檔案。 編輯環境變數定義，如下所示：
 
 ```dockerfile
-ENV IOTHUB_DEVICE_CONNECTION_STRING="{Add your device connection string here}"
 ENV PNP_BRIDGE_ROOT_MODEL_ID="dtmi:com:example:RootPnpBridgeSampleDevice;1"
 ENV PNP_BRIDGE_HUB_TRACING_ENABLED="false"
 ENV IOTEDGE_WORKLOADURI="something"
@@ -541,6 +448,6 @@ az group delete -n bridge-edge-resources
 
 *pnpbridge\src\adapters*：各種 IoT 隨插即用 bridge 介面卡的原始程式碼。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解 IoT 隨插即用橋接器，請造訪 [IoT 隨插即用 bridge](https://github.com/Azure/iot-plug-and-play-bridge) GitHub 存放庫。

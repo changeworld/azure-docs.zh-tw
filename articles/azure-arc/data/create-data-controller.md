@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cd41f740d3cdb8130199a5dda6e73209637d5142
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608777"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745929"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>建立 Azure Arc 資料控制器
 
@@ -54,7 +54,7 @@ ms.locfileid: "97608777"
 - **資料控制器使用者名稱** -資料控制器系統管理員使用者的任何使用者名稱。
 - **資料控制器密碼** -資料控制器系統管理員使用者的密碼。
 - **Kubernetes 命名空間的名稱** -您想要在其中建立資料控制器的 Kubernetes 命名空間名稱。
-- 連線 **能力模式**-叢集的連線 [模式](./connectivity.md)。 目前僅支援「間接」。
+- 連線 **模式**-連線模式會判斷從您的 Azure Arc 啟用的資料服務環境到 Azure 的連線程度。 預覽版目前僅支援間接連接且直接連接的模式。  如需詳細資訊，請參閱 [連接模式](./connectivity.md)。 
 - **Azure 訂** 用帳戶識別碼-azure 訂用帳戶 GUID，適用于您想要在 azure 中建立資料控制器資源的位置。
 - **Azure 資源組名** -您想要在 Azure 中建立資料控制器資源的資源組名。
 - **Azure 位置** -資料控制器資源中繼資料將儲存在 azure 中的 azure 位置。 如需可用區域的清單，請參閱 [Azure 全球基礎結構/產品（依區域](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)）。

@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/26/2020
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484272"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746742"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -63,10 +63,22 @@ Azure 針對 Azure Standard 和 premium 儲存體上的 Vhd 提供兩種部署�
 - 根據 [SAP 工作負載的 Azure 儲存體類型](./planning-guide-storage.md) 決定儲存體類型，並 [選取磁片類型](../../disks-types.md)
 - 當調整大小或決定 VM 時，會考慮整體 VM 的 i/o 輸送量和 IOPS 限制。 整體 VM 儲存體輸送量記載于一文 [記憶體優化的虛擬機器大小](../../sizes-memory.md)
 - 當您決定儲存設定時，請嘗試使用您的 **/hana/data** 磁片區設定來維持低於 VM 的整體輸送量。 寫入儲存點、SAP Hana 可能會主動發出 i/o。 當您寫入儲存點時，很容易就能推送至 **/hana/data** 磁片區的輸送量限制。 如果建立 **/hana/data** (磁片區的磁片) 的輸送量高於您 VM 所允許的輸送量，您可能會遇到由儲存點寫入所使用的輸送量會干擾重做記錄寫入的輸送量需求的情況。 可能會影響應用程式輸送量的情況
-- 如果您使用 Azure premium 儲存體，最便宜的設定是使用邏輯磁片區管理員來建立等量集來建立 **/hana/data** 和 **/hana/log** 磁片區
+
 
 > [!IMPORTANT]
 > 儲存體設定的建議就是開始使用的指示。 執行工作負載並分析儲存體使用模式時，您可能會發現您未利用提供的所有儲存體頻寬或 IOPS。 您可以考慮在存放裝置上縮減。 相反地，您的工作負載可能需要比使用這些設定所建議更多的儲存體輸送量。 因此，您可能需要部署更多容量、IOPS 或輸送量。 在需要儲存體容量之間的張力領域中，需要儲存體延遲、儲存體輸送量和需要的儲存體輸送量，以及最便宜的設定，Azure 會提供足夠的不同儲存體類型，具有不同的功能和不同的價位，以找出並調整為您和您的 HANA 工作負載的正確危害。
+
+
+## <a name="stripe-sets-versus-sap-hana-data-volume-partitioning"></a>等量集合與 SAP Hana 資料磁片區分割
+當您將 **/hana/data** 和/或 **/hana/log** 磁片區分割成多個 azure 磁片時，使用 Azure premium 儲存體可能會達到最佳的價格/效能比率。 而不是部署更大的磁片區，以提供所需的 IOPS 或輸送量。 到目前為止，這是針對屬於 Linux 的 LVM 和 MDADM 磁片區管理員所完成。 等量磁片的方法是數十年以前的已知。 因為這些等量磁片區會達到您可能需要的 IOPS 或輸送量功能，所以會增加管理這些等量磁片區的複雜性。 尤其是在磁片區需要擴充容量的情況下。 至少在 **/hana/data** 中，SAP 引進了替代方法，可達成相同的目標，以在多個 Azure 磁片上進行分割。 由於 SAP Hana 2.0 SPS03，HANA indexserver 能夠將其 i/o 活動分割至位於不同 Azure 磁片上的多個 HANA 資料檔案。 優點是您不需要負責建立及管理跨不同 Azure 磁片的等量磁片區。 資料磁片區資料分割的 SAP Hana 功能將在中詳細說明：
+
+- [HANA 系統管理員指南](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [SAP Hana 的相關 Blog-分割資料磁片區](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP Note #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP Note #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
+閱讀詳細資料，顯然利用這項功能會使磁片區管理員為基礎的等量集合變得更複雜。 您也會發現 HANA 資料磁片區資料分割不只適用于 Azure 儲存體等 Azure 區塊儲存體。 您也可以使用這項功能來跨 NFS 共用，以防這些共用有 IOPS 或輸送量限制。  
+
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O 排程器模式
 Linux 有數個不同的 I/O 排程模式。 Linux 廠商和 SAP 的一般建議是重新設定磁碟區的 I/O 排程器模式，從 **mq-deadline** 或 **kyber** 模式設定為 **noop** (非 multiqueue) 或 **none** (multiqueue) 模式。 詳細資料記載於 [SAP 附註編號 #1984787](https://launchpad.support.sap.com/#/notes/1984787)。 

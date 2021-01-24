@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608583"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745728"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在執行 CentOS 的 StorSimple 主機上設定 MPIO
 本文說明在 Centos 6.6 主機伺服器上設定多重路徑 IO (MPIO) 所需的步驟。 主機伺服器會連線到您的 Microsoft Azure StorSimple 裝置，以透過 iSCSI 啟動器取得高可用性。 文中詳細描述多重路徑裝置的自動探索，以及 StorSimple 磁碟區特有的設定。
@@ -21,10 +21,6 @@ ms.locfileid: "96608583"
 
 > [!NOTE]
 > StorSimple 雲端設備無法使用此程序。 如需詳細資訊，請參閱〈如何設定雲端設備的主機伺服器〉。
-
-> [!NOTE]
-> 本文包含「詞彙封鎖項」的參考，這是 Microsoft 不再使用 *的詞彙。* 從軟體移除字詞時，我們會將它從本文中移除。
-
 
 ## <a name="about-multipathing"></a>關於多重路徑
 多重路徑功能可讓您在主機伺服器與儲存體裝置之間設定多個 I/O 路徑。 這些 I/O 路徑是可包含不同纜線、開關、網路介面及控制站的實體 SAN 連線。 多重路徑功能會彙總 I/O 路徑，以設定與所有彙總路徑相關聯的新裝置。
@@ -54,7 +50,7 @@ multipath.conf 有五個區段：
 
 - **系統層級的預設值** *(defaults)*：您可以覆寫系統層級預設值。
 - **列入封鎖清單的裝置** *(blacklist)*：您可以指定不受 device-mapper 控制的裝置清單。
-- **封鎖清單例外狀況 (blacklist_exceptions)** ：您可以識別要被視為多重路徑裝置的特定裝置，即使這些裝置已列入封鎖清單。
+- 封鎖封鎖 **例外** 狀況 *(blacklist_exceptions)*：您可以識別要視為多重路徑裝置的特定裝置，即使是封鎖清單中所列的裝置也一樣。
 - **儲存體控制站特定設定** *(devices)*：您可以指定將套用到裝置的組態設定 (具有廠商和產品資訊)。
 - **裝置特定設定** *(multipaths)*：您可以使用本節來微調個別 LUN 的組態設定。
 
@@ -63,7 +59,7 @@ multipath.conf 有五個區段：
 
 下列程序描述有兩個網路介面的 StorSimple 裝置連接到有兩個網路介面的主機時，要如何設定多重路徑。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 本節將詳細說明 CentOS 伺服器和 StorSimple 裝置的設定必要條件。
 
 ### <a name="on-centos-host"></a>在 CentOS 主機上
@@ -215,12 +211,12 @@ multipath.conf 有五個區段：
     ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>步驟 2：為 StorSimple 磁碟區設定多重路徑
-根據預設，所有裝置都會列入 multipath.conf 檔案的封鎖清單並遭到略過。 您必須建立封鎖清單例外狀況，允許 StorSimple 裝置中的磁碟區啟動多重路徑。
+依預設，所有裝置都是在多路徑的封鎖檔案中進行，並會被略過。 您將需要建立封鎖清單例外狀況，以允許來自 StorSimple 裝置之磁片區的多重路徑。
 
 1. 編輯 `/etc/mulitpath.conf` 檔案。 輸入：
    
     `vi /etc/multipath.conf`
-1. 找出 multipath.conf 檔案中的 blacklist_exceptions 區段。 您的 StorSimple 裝置必須列為本節中的封鎖清單例外狀況。 您可以在此檔案中取消註解相關行，如下所示修改該檔案 (僅使用您所用裝置的特定模型)︰
+1. 找出 multipath.conf 檔案中的 blacklist_exceptions 區段。 您的 StorSimple 裝置必須在此區段中列為封鎖清單例外狀況。 您可以在此檔案中取消註解相關行，如下所示修改該檔案 (僅使用您所用裝置的特定模型)︰
    
     ```config
     blacklist_exceptions {
@@ -441,7 +437,7 @@ dm-3 devnode blacklisted, unmonitored
 | **多重路徑** |`service multipathd start` |啟動多重路徑 daemon |
 | &nbsp; |`service multipathd stop` |停止多重路徑 daemon |
 | &nbsp; |`service multipathd restart` |重新啟動多重路徑 daemon |
-| &nbsp; |`chkconfig multipathd on` </br> 或者 </br> `mpathconf -with_chkconfig y` |啟用多重路徑 daemon 以在開機時啟動 |
+| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |啟用多重路徑 daemon 以在開機時啟動 |
 | &nbsp; |`multipathd -k` |啟動互動式主控台以進行疑難排解 |
 | &nbsp; |`multipath -l` |列出多重路徑連接和裝置 |
 | &nbsp; |`mpathconf --enable` |在 `/etc/mulitpath.conf` |

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: 7af13147804fd1e50a033635985c08b9c62f76ba
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 22c7a70379649876de4af88080543438e58998a6
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200986"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746640"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>在執行 Linux 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式
 
@@ -22,9 +22,6 @@ ms.locfileid: "98200986"
 如果選擇手動安裝 NVIDIA GPU 驅動程式，本文提供支援的發行版本、驅動程式，以及安裝和驗證步驟。 驅動程式手動設定資訊也適用於 [Windows VM](../windows/n-series-driver-setup.md)。
 
 如需 N 系列 VM 規格、儲存體容量與磁碟的詳細資料，請參閱 [GPU Linux VM 大小](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json)。 
-
-> [!NOTE]
-> 本文包含「詞彙封鎖項」的參考，這是 Microsoft 不再使用 *的詞彙。* 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 

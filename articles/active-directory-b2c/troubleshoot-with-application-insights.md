@@ -12,12 +12,12 @@ ms.date: 10/16/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1628d78c9d1e4db1f59982d696dcc886646fe604
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 33504487b6175023e18893812c533950305cb1d3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132052"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745997"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>使用 Application Insights 收集 Azure Active Directory B2C 記錄
 
@@ -26,7 +26,7 @@ ms.locfileid: "92132052"
 此處所述的詳細活動記錄應該 **只** 在開發自訂原則期間啟用。
 
 > [!WARNING]
-> 請勿 `DeploymentMode` `Developer` 在生產環境中將設定為。 記錄會收集所有與身分識別提供者一起傳送的宣告。 身為開發人員，您必須負責 Application Insights 記錄中收集的任何個人資料。 只有當原則是以 **開發人員模式**放置時，才會收集這些詳細的記錄檔。
+> 請勿 `DeploymentMode` `Development` 在生產環境中將設定為。 記錄會收集所有與身分識別提供者一起傳送的宣告。 身為開發人員，您必須負責 Application Insights 記錄中收集的任何個人資料。 只有當原則是以 **開發人員模式** 放置時，才會收集這些詳細的記錄檔。
 
 ## <a name="set-up-application-insights"></a>設定 Application Insights
 
@@ -59,7 +59,7 @@ ms.locfileid: "92132052"
     ```
 
     * `DeveloperMode="true"` 告知 ApplicationInsights 透過處理管線加速遙測。 適用于開發，但限制于大量的磁片區。 在生產環境中，將設定 `DeveloperMode` 為 `false` 。
-    * `ClientEnabled="true"` 傳送 ApplicationInsights 用戶端腳本，以追蹤頁面流覽和用戶端錯誤。 您可以在 Application Insights 入口網站的 **browserTimings** 資料表中加以查看。 藉由設定 `ClientEnabled= "true"` ，您可以將 Application Insights 新增至頁面腳本，並取得頁面載入和 ajax 呼叫、計數、瀏覽器例外狀況和 ajax 失敗詳細資料，以及使用者和會話計數的時間。 這個欄位是 **選擇性**欄位，預設會設定為 `false` 。
+    * `ClientEnabled="true"` 傳送 ApplicationInsights 用戶端腳本，以追蹤頁面流覽和用戶端錯誤。 您可以在 Application Insights 入口網站的 **browserTimings** 資料表中加以查看。 藉由設定 `ClientEnabled= "true"` ，您可以將 Application Insights 新增至頁面腳本，並取得頁面載入和 ajax 呼叫、計數、瀏覽器例外狀況和 ajax 失敗詳細資料，以及使用者和會話計數的時間。 這個欄位是 **選擇性** 欄位，預設會設定為 `false` 。
     * `ServerEnabled="true"` 會將現有的 UserJourneyRecorder JSON 當作自訂事件傳送至 Application Insights。
 
     例如：

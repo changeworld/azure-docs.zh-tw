@@ -1,5 +1,5 @@
 ---
-title: 範圍 SDK
+title: Horizon SDK
 titleSuffix: Azure Defender for IoT
 description: 範圍 SDK 可讓適用于 IoT 的 Azure Defender 開發人員設計 dissector 外掛程式，以將網路流量解碼，讓 IoT 網路分析程式的自動化 Defender 可以進行處理。
 author: shhazam-ms
@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d6105f65508eff59164246020d9a3f286b68c5a1
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210521"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746014"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>範圍專屬通訊協定 dissector
 
@@ -95,7 +95,7 @@ SDK 支援各種自訂選項，包括：
 
 ## <a name="about-the-environment-and-setup"></a>關於環境和設定 
 
-### <a name="requirements"></a>規格需求 
+### <a name="requirements"></a>需求 
 
 - 慣用的開發環境是 Linux。 如果您是在 Windows 環境中進行開發，請考慮將 VM 與 Linux 系統搭配使用。
 
@@ -885,7 +885,7 @@ extern "C" {
 
 例如，針對以 TCP 為基礎的值，您可以使用 IPv4 層的值。 您可以從這一層中，將值（例如封包的來源）和目的地等值解壓縮。
 
-為了達到此目的，必須使用屬性來更新 JSON 設定檔案 `whitelist` 。
+為了達到此目的，必須使用屬性來更新 JSON 設定檔案 `whitelists` 。
 
 ## <a name="allow-list-data-mining-fields"></a>允許清單 (資料採礦) 欄位
 
@@ -1606,7 +1606,7 @@ dependency": { "field": "CyberXHorizonProtocol.function"  }}]
 1.  登入您的感應器。
 
 
-2. 選取 [上傳] 。
+2. 選取 [上傳]。
 
     :::image type="content" source="media/references-horizon-sdk/upload.png" alt-text="上傳您的外掛程式。":::
 

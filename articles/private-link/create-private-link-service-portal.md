@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: allensu
-ms.openlocfilehash: 3e9ade329d2b26d36763db579b0fcec03e938aad
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
-ms.translationtype: HT
+ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555452"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746402"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Private Link 服務
 
@@ -171,7 +171,7 @@ ms.locfileid: "98555452"
 
 4. 保留其餘的預設值，然後選取 [確定]。
 
-## <a name="create-a-private-link-service"></a>建立 Private Link 服務
+## <a name="create-a-private-link-service"></a>建立私人連結服務
 
 在本節中，您將建立標準負載平衡器後方的 Private Link 服務。
 
@@ -217,9 +217,115 @@ ms.locfileid: "98555452"
 
 12. 在 [檢閱 + 建立] 索引標籤中，選取 [建立]。
 
+系統會建立您的私人連結服務，並可接收流量。 如果您想要查看流量流程，請在您的標準負載平衡器後方設定您的應用程式。
+
+
+## <a name="create-private-endpoint"></a>建立私人端點
+
+在本節中，您會將 private link 服務對應至私人端點。 虛擬網路包含私用連結服務的私人端點。 此虛擬網路包含可存取私用連結服務的資源。
+
+### <a name="create-private-endpoint-virtual-network"></a>建立私人端點虛擬網路
+
+1. 在畫面的左上方，選取 [建立資源] > [網路] > [虛擬網路]  ，或在搜尋方塊中搜尋 [虛擬網路]  。
+
+2. 在 [建立虛擬網路] 中，在 [基本] 索引標籤中輸入或選取這項資訊：
+
+    | **設定**          | **值**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **專案詳細資料**  |                                                                 |
+    | 訂用帳戶     | 選取您的 Azure 訂用帳戶                                  |
+    | 資源群組   | 選取 **CreatePrivLinkService-rg** |
+    | **執行個體詳細資料** |                                                                 |
+    | 名稱             | 輸入 **myVNetPE**                                    |
+    | 區域           | 選取 [美國東部 2]。 |
+
+3. 選取 [IP 位址] 索引標籤，或選取頁面底部的 [下一步：IP 位置] 按鈕。
+
+4. 在 [IP 位址] 索引標籤中，輸入這項資訊：
+
+    | 設定            | 值                      |
+    |--------------------|----------------------------|
+    | IPv4 位址空間 | 輸入 **11.1.0.0/16** |
+
+5. 在 [子網路名稱] 下，選取 [預設] 字組。
+
+6. 在 [編輯子網路] 中，輸入這項資訊：
+
+    | 設定            | 值                      |
+    |--------------------|----------------------------|
+    | 子網路名稱 | 輸入 **mySubnetPE** |
+    | 子網路位址範圍 | 輸入 **11.1.0.0/24** |
+
+7. 選取 [儲存]。
+
+8. 選取 [檢閱 + 建立]  索引標籤，或選取 [檢閱 + 建立]  按鈕。
+
+9. 選取 [建立]  。
+
+### <a name="create-private-endpoint"></a>建立私人端點
+
+1. 在入口網站的畫面左上角，選取 [建立資源] > [網路] > [Private Link]，或在搜尋方塊中輸入 **Private Link**。
+
+2. 選取 [建立]。
+
+3. 在 **Private Link 中心** 內，選取左側功能表中的 [私人端點]。
+
+4. 在 [私人端點] 中，選取 [+ 新增]。
+
+5. 在 [建立私人端點] 的 [基本] 索引標籤中，輸入或選取這項資訊：
+
+    | 設定 | 值 |
+    | ------- | ----- |
+    | **專案詳細資料** | |
+    | 訂用帳戶 | 選取您的訂用帳戶。 |
+    | 資源群組 | 選取 **CreatePrivLinkService-rg**。 您已在上一節中建立此資源群組。|
+    | **執行個體詳細資料** |  |
+    | 名稱  | 輸入 myPrivateEndpoint。 |
+    | 區域 | 選取 [美國東部 2]。 |
+
+6. 選取 [資源] 索引標籤或 [下一步：資源] 按鈕 (位於頁面底部)。
+    
+7. 在 [資源] 中，輸入或選取這項資訊：
+
+    | 設定 | 值 |
+    | ------- | ----- |
+    | 連線方法 | 選取 [連線到我目錄中的 Azure 資源]。 |
+    | 訂用帳戶 | 選取您的訂用帳戶。 |
+    | 資源類型 | 選取 [ **Microsoft. Network/privateLinkServices**]。 |
+    | 資源 | 選取 [ **myPrivateLinkService**]。 |
+
+8. 選取 [設定] 索引標籤或 [下一步：設定] 按鈕 (位於畫面底部)。
+
+9. 在 [設定] 中，輸入或選取這項資訊：
+
+    | 設定 | 值 |
+    | ------- | ----- |
+    | **網路功能** |  |
+    | 虛擬網路 | 選取 [ **myVNetPE**]。 |
+    | 子網路 | 選取 [ **mySubnetPE**]。 |
+
+10. 選取 [ **審核 + 建立** ] 索引標籤，或畫面底部的 [ **審核 + 建立** ] 按鈕。
+
+11. 選取 [建立]  。
+
+### <a name="ip-address-of-private-endpoint"></a>私人端點的 IP 位址
+
+在本節中，您會找到與負載平衡器和私用連結服務對應的私人端點 IP 位址。
+
+1. 在 Azure 入口網站的左側資料行中，選取 [ **資源群組**]。
+
+2. 選取 **CreatePrivLinkService-rg** 資源群組。
+
+3. 在 **CreatePrivLinkService-rg** 資源群組中，選取 [ **myPrivateEndpoint**]。
+
+4. 在 **myPrivateEndpoint** 的 [**總覽**] 頁面中，選取與私人端點相關聯的網路介面名稱。  網路介面名稱的開頭為 **myPrivateEndpoint nic**。
+
+5. 在私人端點 nic 的 [ **總覽** ] 頁面中，端點的 ip 位址會顯示在 [ **私人 IP 位址**] 中。
+    
+
 ## <a name="clean-up-resources"></a>清除資源
 
-當您使用完 Private Link 服務時，請刪除資源群組以清除本快速入門中使用的資源。
+當您使用 private link 服務完成時，請刪除資源群組以清除本快速入門中使用的資源。
 
 1. 在入口網站頂端的 [搜尋] 方塊中，輸入 [CreatePrivLinkService-rg]，然後從搜尋結果中選取 [CreatePrivLinkService-rg]。
 1. 選取 [刪除資源群組]。
@@ -231,7 +337,8 @@ ms.locfileid: "98555452"
 在本快速入門中，您已：
 
 * 建立虛擬網路和內部 Azure Load Balancer。
-* 建立私人連結服務
+* 已建立 private link 服務。
+* 建立私人連結服務的虛擬網路和私人端點。
 
 若要深入了解 Azure 私人端點，請繼續：
 > [!div class="nextstepaction"]

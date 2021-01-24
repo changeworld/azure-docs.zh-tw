@@ -8,19 +8,16 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 890e2b972818cf9805623d94709ce5631b50aaf5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608600"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746504"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 應用程式防火牆 CRS 規則群組和規則
 
 應用程式閘道 web 應用程式防火牆 (WAF) 會保護 web 應用程式免於一般安全性弱點和攻擊。 這是透過根據 OWASP 核心規則集3.1、3.0 或2.2.9 所定義的規則來完成。 您可以依規則逐一停用這些規則。 本文包含目前提供的規則和規則集。
-
-> [!NOTE]
-> 本文包含「詞彙封鎖項」的參考，這是 Microsoft 不再使用 *的詞彙。* 從軟體移除字詞時，我們會將它從本文中移除。
 
 ## <a name="core-rule-sets"></a>核心規則集
 
@@ -262,7 +259,7 @@ CRS 2.2.9 包含10個規則群組，如下表所示。 每個群組包含多個�
 |941150|XSS 篩選器 - 類別 5 = 不允許的 HTML 屬性|
 |941160|NoScript XSS InjectionChecker： HTML 插入|
 |941170|NoScript XSS InjectionChecker：屬性插入|
-|941180|節點狀態驗證封鎖清單關鍵字|
+|941180|Node-Validator 封鎖清單關鍵字|
 |941190|使用樣式表單的 XSS|
 |941200|使用 VML 框架的 XSS|
 |941210|使用模糊 JAVAscript 的 XSS|
@@ -490,7 +487,7 @@ CRS 2.2.9 包含10個規則群組，如下表所示。 每個群組包含多個�
 |941130|XSS 篩選器 - 類別 3 = 屬性向量|
 |941140|XSS 篩選器 - 類別 4 = JavaScript URI 向量|
 |941150|XSS 篩選器 - 類別 5 = 不允許的 HTML 屬性|
-|941180|節點狀態驗證封鎖清單關鍵字|
+|941180|Node-Validator 封鎖清單關鍵字|
 |941190|使用樣式表單的 XSS|
 |941200|使用 VML 框架的 XSS|
 |941210|使用模糊 JAVAscript 的 XSS|

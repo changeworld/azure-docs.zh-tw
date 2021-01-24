@@ -1,23 +1,23 @@
 ---
-title: 教學課程：使用 Azure Machine Learning 建立和部署自訂技能
+title: 範例：建立及部署具有 Azure Machine Learning 的自訂技能
 titleSuffix: Azure Cognitive Search
-description: 此教學課程將示範如何使用 Azure Machine Learning 來建置及部署 Azure 認知搜尋 AI 擴充管線的自訂技能。
+description: 此範例示範如何使用 Azure Machine Learning 來建立和部署 Azure 認知搜尋的 AI 擴充管線的自訂技能。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: fa961a5a6d3a3b827a082fbac2acc3431ac40949
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
-ms.translationtype: HT
+ms.openlocfilehash: 98d8395236bf955eed88f36c03c96981fa0e4b6b
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057598"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745629"
 ---
-# <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>教學課程：使用 Azure Machine Learning 建置和部署自訂技能 
+# <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>範例：使用 Azure Machine Learning 建立和部署自訂技能 
 
-在本教學課程中，您將使用[飯店評論資料集](https://www.kaggle.com/datafiniti/hotel-reviews) (依據 Creative Commons 授權 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt) 散佈)，使用 Azure Machine Learning 建立[自訂技能](./cognitive-search-aml-skill.md)，以從評論擷取層面式情感。 這可讓您在相同評論內指派正面和負面情感，以正確歸類至已識別的實體，例如員工、會議室、大廳或集區。
+在此範例中，您將使用 Commons 授權[CC BY NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt)) 的「[飯店評論」資料集](https://www.kaggle.com/datafiniti/hotel-reviews) (發佈，以使用 Azure Machine Learning 從評論中將外觀型情感解壓縮以建立[自訂技能](./cognitive-search-aml-skill.md)。 這可讓您在相同評論內指派正面和負面情感，以正確歸類至已識別的實體，例如員工、會議室、大廳或集區。
 
 若要對 Azure Machine Learning 中的層面式情感模型定型，您將使用 [nlp 食譜存放庫](https://github.com/microsoft/nlp-recipes/tree/master/examples/sentiment_analysis/absa)。 然後，此模型會部署為 Azure Kubernetes 叢集上的端點。 部署之後，端點就會新增至擴充管線，做為認知搜尋服務所使用的 AML 技能。
 

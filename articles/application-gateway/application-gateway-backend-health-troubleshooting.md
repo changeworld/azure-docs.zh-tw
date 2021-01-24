@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934895"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746099"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>針對應用程式閘道中的後端健康情況問題進行疑難排解
 ==================================================
@@ -21,9 +21,6 @@ ms.locfileid: "97934895"
 --------
 
 根據預設，Azure 應用程式閘道會探查後端伺服器，以檢查其健全狀態，並檢查其是否已準備好處理要求。 使用者也可以建立自訂探查來提及主機名稱、要探查的路徑，以及要接受為「良好」的狀態碼。 在每個案例中，如果後端伺服器未成功回應，應用程式閘道會將伺服器標示為「狀況不良」，並停止將要求轉送到伺服器。 伺服器開始回應成功之後，應用程式閘道繼續轉送要求。
-
-> [!NOTE]
-> 本文包含字詞「*允許清單*」的參考 (Microsoft 已不再使用該字詞)。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ### <a name="how-to-check-backend-health"></a>如何檢查後端健康情況
 
@@ -245,7 +242,7 @@ BackendAddressPoolsText : [
 
 #### <a name="trusted-root-certificate-mismatch"></a>受信任的根憑證不相符
 
-**訊息：** 後端所使用伺服器憑證的根憑證不符合新增至應用程式閘道的受信任根憑證。 確保您已新增正確的根憑證，以將後端列入白名單
+**訊息：** 後端所使用伺服器憑證的根憑證不符合新增至應用程式閘道的受信任根憑證。 確定您已新增正確的根憑證以允許清單後端。
 
 **原因：** 進行應用程式閘道 v2 的端對端 SSL 時，必須先驗證後端伺服器的憑證，才能將伺服器視為「良好」。
 若要讓 TLS/SSL 憑證受到信任，後端伺服器憑證必須由應用程式閘道的信任存放區中所包含的 CA 發行。 如果憑證不是由信任的 CA 所發行 (例如，使用自我簽署憑證)，則使用者應將簽發者的憑證上傳至應用程式閘道。

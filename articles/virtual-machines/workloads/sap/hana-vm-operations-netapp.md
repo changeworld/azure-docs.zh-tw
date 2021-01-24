@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 906879c44a2d7a3248f3d3ac0c9fec7ced7f2a4f
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570077"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746538"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>Azure NetApp Files for SAP HANA 上的 NFS v4.1 磁碟區
 
@@ -62,7 +62,13 @@ Azure NetApp 磁碟區的輸送量是磁碟區大小的功能和服務等級，�
 
 下表示范建立大型「標準」磁片區來儲存備份，以及建立大於 12 TB 的「Ultra」磁片區並不合理，因為會超過單一 LIF 的實體頻寬容量。 
 
-LIF 和單一 Linux 會話的最大輸送量介於1.2 到 1.4 GB/秒之間。 
+LIF 和單一 Linux 會話的最大輸送量介於1.2 到 1.4 GB/秒之間。 如果您需要更多的/hana/data 輸送量，可以使用 SAP Hana 資料磁片區分割，將資料重載或 HANA 儲存點之間的 i/o 活動帶到多個 NFS 共用上的多個 HANA 資料檔案。 如需有關 HANA 資料磁片區等量的詳細資訊，請參閱下列文章：
+
+- [HANA 系統管理員指南](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [SAP Hana 的相關 Blog-分割資料磁片區](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP Note #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP Note #2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
 
 | 大小  | 輸送量標準 | 輸送量 Premium | Ultra 的輸送量 |
 | --- | --- | --- | --- |

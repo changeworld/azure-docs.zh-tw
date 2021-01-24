@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
-ms.translationtype: HT
+ms.date: 01/25/2021
+ms.openlocfilehash: a7a010e3c60d6b96947597878fcd870e9845b2b3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701274"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746132"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>教學課程：使用 REST 為 Azure 儲存體中的 JSON Blob 編製索引
 
@@ -98,13 +98,13 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 
 1. 在 [設定]   >  [金鑰]  中，取得服務上完整權限的管理金鑰。 可互換的管理金鑰有兩個，可在您需要變換金鑰時提供商務持續性。 您可以在新增、修改及刪除物件的要求上使用主要或次要金鑰。
 
-:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="取得 HTTP 端點和存取金鑰" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="取得 HTTP 端點和存取金鑰" border="false":::
 
 所有要求均都需要在傳送至您服務上的每個要求上使用 API 金鑰。 擁有有效的金鑰就能為每個要求在傳送要求之應用程式與處理要求之服務間建立信任。
 
 ## <a name="2---set-up-postman"></a>2 - 設定 Postman
 
-啟動 Postman 及設定 HTTP 要求。 如果您不熟悉此工具，請參閱[探索 Azure 認知搜尋 REST API](search-get-started-rest.md)。
+啟動 Postman 及設定 HTTP 要求。 如果您不熟悉此工具，請參閱 [使用 REST Api 建立搜尋索引](search-get-started-rest.md)。
 
 本教學課程中用於各個呼叫的要求方法為 **POST** 和 **GET**。 您將對搜尋服務進行三個 API 呼叫，以建立資料來源、索引及索引子。 資料來源包括指向您儲存體帳戶和您 JSON 資料的指標。 您的搜尋服務會在載入資料時進行連線。
 
@@ -158,7 +158,7 @@ URI 必須指定 api-version，且每個呼叫都應傳回 **201 已建立**。 
     ```
 
 ## <a name="4---create-an-index"></a>4 - 建立索引
-    
+
 第二個呼叫為[建立索引 API](/rest/api/searchservice/create-index)，進而建立可儲存所有可搜尋資料的 Azure 認知搜尋索引。 索引會指定所有參數及其屬性。
 
 1. 將此呼叫的端點設定為 `https://[service name].search.windows.net/indexes?api-version=2020-06-30`。 使用您的搜尋服務名稱來取代 `[service name]`。

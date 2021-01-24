@@ -3,17 +3,17 @@ title: IoT 隨插即用橋接器 |Microsoft Docs
 description: 瞭解 IoT 隨插即用橋接器，以及如何使用它來將連接至 Windows 或 Linux 閘道的現有裝置連線為 IoT 隨插即用裝置。
 author: usivagna
 ms.author: ugans
-ms.date: 09/22/2020
+ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 34af380d057ad47811e394da1e7a29198e102920
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 05b9df2c5083d24ae6a78212bdd29cd1c740e1d1
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672775"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746487"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT 隨插即用橋接器
 
@@ -36,7 +36,7 @@ IoT 隨插即用橋接器預設支援下列類型的週邊設備，以及介面�
 |[SerialPnP 介面卡](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md) 會連接透過序列連接進行通訊的裝置。               |是|是|
 |[WINDOWS USB 週邊設備](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md) 使用介面卡支援的裝置介面類別別清單來連接具有特定硬體識別碼的裝置。  |是|不適用|
 
-若要瞭解如何擴充 IoT 隨插即用橋接器以支援其他裝置通訊協定，請參閱 [建立、部署及擴充 IoT 隨插即用橋接器](howto-build-deploy-extend-pnp-bridge.md)。
+若要瞭解如何擴充 IoT 隨插即用橋接器以支援其他裝置通訊協定，請參閱 [擴充 IoT 隨插即用橋接器](howto-author-pnp-bridge-adapter.md)。 若要瞭解如何建立和部署 IoT 隨插即用橋接器，請參閱 [組建和部署 IoT 隨插即用橋接器](howto-build-deploy-extend-pnp-bridge.md)。
 
 ## <a name="iot-plug-and-play-bridge-architecture"></a>IoT 隨插即用 bridge 架構
 
@@ -148,6 +148,7 @@ IoT 隨插即用橋接器使用以 JSON 為基礎的設定檔，其指定：
 
 現在您已大致瞭解 IoT 隨插即用橋接器的架構，接下來的步驟是深入瞭解：
 
-- [如何使用 IoT 隨插即用橋接器](./howto-use-iot-pnp-bridge.md)
-- [建立、部署及擴充 IoT 隨插即用橋接器](howto-build-deploy-extend-pnp-bridge.md)
+- [如何將在 Linux 或 Windows 上執行的 IoT 隨插即用 bridge 範例連線到 IoT 中樞](./howto-use-iot-pnp-bridge.md)
+- [組建和部署 IoT 隨插即用橋接器](howto-build-deploy-extend-pnp-bridge.md)
+- [擴充 IoT 隨插即用橋接器](howto-build-deploy-extend-pnp-bridge.md)
 - [在 GitHub 上 IoT 隨插即用 bridge](https://github.com/Azure/iot-plug-and-play-bridge)

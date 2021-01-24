@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2021
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 6d656dbb3fb50091fc8721ba40431b37f77c4ad6
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 1b034c0f1c62eecf8139ed908a5a242060f3e886
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98662942"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746555"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>未來 Azure 資訊安全中心的重要變更
 
@@ -31,10 +31,40 @@ ms.locfileid: "98662942"
 
 ## <a name="planned-changes"></a>規劃的變更
 
+- [Kubernetes 工作負載保護建議即將正式推出 (GA) ](#kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga)
 - [「套用系統更新」安全性控制已被取代的兩個建議](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL 資料分類建議的增強功能](#enhancements-to-sql-data-classification-recommendation)
 - [已新增 35 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
 
+
+### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Kubernetes 工作負載保護建議即將正式推出 (GA) 
+
+**變更的預估日期：** 2021 年 1 月
+
+[保護您的 Kubernetes 工作負載](kubernetes-workload-protections.md)中所述的 Kubernetes 工作負載保護建議目前為預覽狀態。 當建議處於預覽狀態時，不會轉譯資源狀況不良，且不會包含在您的安全分數的計算中。
+
+這些建議即將正式推出 (GA) *，因此會* 包含在分數計算中。 如果您尚未補救它們，這可能會對您的安全分數造成些許影響。
+
+盡可能補救它們 (瞭解 Azure 資訊安全中心) 中的 [補救建議](security-center-remediate-recommendations.md) 。
+
+Kubernetes 工作負載保護建議如下：
+
+- 您應在您的叢集上安裝並啟用 Kubernetes 的 Azure 原則附加元件
+- 應強制執行容器 CPU 與記憶體限制
+- 應避免特殊權限容器
+- 應強制容器使用不可變 (唯讀) 的根檔案系統
+- 應避免權限提升的容器
+- 應避免以根使用者的身分執行容器
+- 應避免容器共用敏感性主機命名空間
+- 應強制容器使用最低權限的 Linux 功能
+- Pod HostPath 磁碟區掛接的使用應限制於已知清單
+- 容器只能在允許的連接埠上接聽
+- 服務只能在允許的連接埠上接聽
+- 應限制主機網路與連接埠的使用方式
+- 應限制容器 AppArmor 設定檔的覆寫或停用
+- 容器映射只應從信任的登錄部署             
+
+深入瞭解這些建議，以 [保護您的 Kubernetes 工作負載](kubernetes-workload-protections.md)。
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>「套用系統更新」安全性控制已被取代的兩個建議 
 

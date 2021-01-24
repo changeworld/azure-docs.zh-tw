@@ -5,14 +5,14 @@ services: private-link
 author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 01/20/2021
+ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: 66ad5aae9f8175d154bb07a8b112dada175a205a
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: e8d76e12dea27338e965d8e77871427e9dfabf23
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610058"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746674"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 建立 Private Link 服務
 
@@ -156,7 +156,11 @@ $ipsettings = @{
 $ipconfig = New-AzPrivateLinkServiceIpConfig @ipsettings
 
 ## Place the load balancer frontend configuration into a variable. ##
-$fe = Get-AzLoadBalancer -Name 'myLoadBalancer' | Get-AzLoadBalancerFrontendIpConfig
+$par = @{
+    Name = 'myLoadBalancer'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$fe = Get-AzLoadBalancer @par | Get-AzLoadBalancerFrontendIpConfig
 
 ## Create the private link service for the load balancer. ##
 $privlinksettings = @{
@@ -167,6 +171,129 @@ $privlinksettings = @{
     IpConfiguration = $ipconfig
 }
 New-AzPrivateLinkService @privlinksettings
+
+```
+
+系統會建立您的私人連結服務，並可接收流量。 如果您想要查看流量流程，請在您的標準負載平衡器後方設定您的應用程式。
+
+## <a name="create-private-endpoint"></a>建立私人端點
+
+在本節中，您會將 private link 服務對應至私人端點。 虛擬網路包含私用連結服務的私人端點。 此虛擬網路包含可存取私用連結服務的資源。
+
+### <a name="create-private-endpoint-virtual-network"></a>建立私人端點虛擬網路
+
+* 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路。
+
+```azurepowershell-interactive
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'mySubnetPE'
+    AddressPrefix = '11.1.0.0/24'
+    PrivateEndpointNetworkPolicies = 'Disabled'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
+
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    AddressPrefix = '11.1.0.0/16'
+    Subnet = $subnetConfig
+}
+$vnetpe = New-AzVirtualNetwork @net
+
+```
+
+### <a name="create-endpoint-and-connection"></a>建立端點和連接
+
+* 使用 [AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) 將您稍早建立之私用連結服務的設定放在變數中，以供稍後使用。
+
+* 使用 [AzPrivateLinkServiceConnection](/powershell/module/az.network/new-azprivatelinkserviceconnection) 建立連線設定。
+
+* 使用 [AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) 建立端點。
+
+
+
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
+
+## Create the private link configuration and place in variable. ##
+$par2 = @{
+    Name = 'myPrivateLinkConnection'
+    PrivateLinkServiceId = $pls.Id
+}
+$plsConnection = New-AzPrivateLinkServiceConnection @par2
+
+## Place the virtual network into a variable. ##
+$par3 = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$vnetpe = Get-AzVirtualNetwork @par3
+
+## Create private endpoint ##
+$par4 = @{
+    Name = 'MyPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    Subnet = $vnetpe.subnets[0]
+    PrivateLinkServiceConnection = $plsConnection
+}
+New-AzPrivateEndpoint @par4 -ByManualRequest
+```
+
+### <a name="approve-the-private-endpoint-connection"></a>核准私人端點連線
+
+在本節中，您將核准您在先前的步驟中建立的連接。
+
+* 使用 [AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnnection) 核准連接。
+
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
+
+$par2 = @{
+    Name = $pls.PrivateEndpointConnections[0].Name
+    ServiceName = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Description = 'Approved'
+}
+Approve-AzPrivateEndpointConnection @par2
+
+```
+
+### <a name="ip-address-of-private-endpoint"></a>私人端點的 IP 位址
+
+在本節中，您會找到與負載平衡器和私用連結服務對應的私人端點 IP 位址。
+
+* 使用 [AzPrivateEndpoint](/powershell/module/az.network/get-azprivateendpoint) 來取得 IP 位址。
+
+```azurepowershell-interactive
+## Get private endpoint and the IP address and place in a variable for display. ##
+$par1 = @{
+    Name = 'myPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    ExpandResource = 'networkinterfaces'
+}
+$pe = Get-AzPrivateEndpoint @par1
+
+## Display the IP address by expanding the variable. ##
+$pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+```
+
+```bash
+❯ $pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+11.1.0.4
 ```
 
 ## <a name="clean-up-resources"></a>清除資源

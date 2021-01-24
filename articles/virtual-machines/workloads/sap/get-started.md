@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b323268c625ed25236cf4a9f9faa17606bd967c
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 0a0f17df13b5b101aebf585b7f1f3fb2a5b48006
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570060"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746048"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -84,6 +84,7 @@ SAP 應用層和 DBMS 的高可用性記載于從[適用于 Sap NetWeaver 的 Az
 
 ## <a name="change-log"></a>變更記錄
 
+- 01/23/2021：引入 HANA 資料磁片區資料分割的功能，以在不同的 Azure 磁片或 NFS 共用上對 HANA 資料檔案進行等量的資料分割，而不使用磁片區管理員，SAP Hana Azure NetApp Files 上的 [azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 設定和 [nfs 4.1 磁片區，SAP Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)
 - 01/18/2021：在 azure 虛擬機器中新增了 azure net Apps 檔案型 NFS for Oracle 的支援，這些支援適用于[SAP 工作負載的 ORACLE DBMS 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)，並在[azure NetApp Files 上的](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)資料表中調整十進位數以進行 SAP Hana
 - 01/11/2021：在 rhel [FOR sap 應用程式上的 Azure vm 上，適用于 SAP nw](./high-availability-guide-rhel.md)的 ha，在 rhel 上的 azure vm 上使用適用于 sap nw 的 ha，在 rhel 上的 azure vm 上 [具有 ANF](./high-availability-guide-rhel-netapp-files.md) 和 [ha](./high-availability-guide-rhel-multi-sid.md) ，可調整命令以同時適用于 RHEL8 和 RHEL7，以及 ENSA1 和 ENSA2
 - 01/05/2021：在具有 [ANF ON SLES 的 Azure vm 上使用待命節點進行相應](./sap-hana-scale-out-standby-netapp-files-suse.md) 放大的 SAP Hana 變更，並 [在 azure vm 上使用待命節點與 ANF on RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md)進行相應放大，SAP Hana 並修改建議的設定，以允許 SAP 主機代理程式管理本機埠範圍  

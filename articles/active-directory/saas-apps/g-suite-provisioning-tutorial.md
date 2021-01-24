@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: c3f61c3fe688a0b7533902fb0caa19b67f883482
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
-ms.translationtype: HT
+ms.openlocfilehash: 5243e9490c9de0d6df1520edb970da93fabef85a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901584"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746116"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教學課程︰設定 G Suite 來自動佈建使用者
 
@@ -24,9 +24,6 @@ ms.locfileid: "97901584"
 
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
-
-> [!NOTE]
-> 本文包含字詞「*允許清單*」的參考 (Microsoft 已不再使用該字詞)。 從軟體中移除該字詞時，我們也會將其從本文中移除。
 
 ## <a name="capabilities-supported"></a>支援的功能
 > [!div class="checklist"]
@@ -160,10 +157,10 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
    |屬性|類型|
    |---|---|
    |primaryEmail|字串|
-   |relations.[type eq "manager"].value|String|
+   |relations.[type eq "manager"].value|字串|
    |name.familyName|String|
    |name.givenName|String|
-   |暫止|字串|
+   |暫止|String|
    |externalIds.[type eq "custom"].value|字串|
    |externalIds.[type eq "organization"].value|字串|
    |addresses.[type eq "work"].country|字串|
@@ -242,7 +239,7 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
       |---|---|
       |電子郵件|字串|
       |成員|字串|
-      |NAME|String|
+      |NAME|字串|
       |description|String|
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。

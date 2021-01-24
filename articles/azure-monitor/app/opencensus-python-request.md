@@ -6,21 +6,18 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4b88550ad489607bb66eb737067190d45a466a43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 4abb795335bfcb2c9b335d4fb09ddc9fdb2476b4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607070"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746572"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 追蹤連入要求
 
 傳入的要求資料是使用 OpenCensus Python 及其各種整合來收集。 追蹤傳送至 web 應用程式的傳入要求資料（建立在熱門的 web 架構 `django` 和上） `flask` `pyramid` 。 然後，資料會傳送至 Azure 監視器作為遙測下的 Application Insights `requests` 。
 
 首先，使用最新的 [OpenCensus PYTHON SDK](./opencensus-python.md)來檢測您的 python 應用程式。
-
-> [!NOTE]
-> 本文包含「詞彙封鎖項」的參考，這是 Microsoft 不再使用 *的詞彙。* 從軟體移除字詞時，我們會將它從本文中移除。
 
 ## <a name="tracking-django-applications"></a>追蹤 Django 應用程式
 
@@ -36,7 +33,7 @@ ms.locfileid: "96607070"
     )
     ```
 
-3. 請確定您的下已正確設定 `settings.py` AzureExporter `OPENCENSUS` 。 針對您不想要追蹤的 url 要求，將其新增至 `BLACKLIST_PATHS` 。
+3. 請確定您的下已正確設定 `settings.py` AzureExporter `OPENCENSUS` 。 針對您不想要追蹤的 url 要求，將其新增至 `EXCLUDELIST_PATHS` 。
 
     ```python
     OPENCENSUS = {
@@ -45,7 +42,7 @@ ms.locfileid: "96607070"
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -77,7 +74,7 @@ ms.locfileid: "96607070"
     
     ```
 
-2. 您也可以透過設定您的 `flask` 應用程式 `app.config` 。 針對您不想要追蹤的 url 要求，將其新增至 `BLACKLIST_PATHS` 。
+2. 您也可以透過設定您的 `flask` 應用程式 `app.config` 。 針對您不想要追蹤的 url 要求，將其新增至 `EXCLUDELIST_PATHS` 。
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -86,7 +83,7 @@ ms.locfileid: "96607070"
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                 connection_string="InstrumentationKey=<your-ikey-here>",
             )''',
-            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+            'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -103,7 +100,7 @@ ms.locfileid: "96607070"
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. 您可以 `pyramid` 直接在程式碼中設定您的補間。 針對您不想要追蹤的 url 要求，將其新增至 `BLACKLIST_PATHS` 。
+2. 您可以 `pyramid` 直接在程式碼中設定您的補間。 針對您不想要追蹤的 url 要求，將其新增至 `EXCLUDELIST_PATHS` 。
 
     ```python
     settings = {
@@ -113,7 +110,7 @@ ms.locfileid: "96607070"
                 'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
                     connection_string="InstrumentationKey=<your-ikey-here>",
                 )''',
-                'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
+                'EXCLUDELIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
             }
         }
     }

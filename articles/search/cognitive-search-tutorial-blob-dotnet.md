@@ -7,14 +7,14 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: HT
+ms.openlocfilehash: 4bda56f3037469477ddfe059dd20c14cd34586d8
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787953"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745712"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>教學課程：使用 .NET SDK 以 AI 方式從 Azure Blob 產生可搜尋的內容
 
@@ -23,8 +23,8 @@ ms.locfileid: "92787953"
 在本教學課程中，您將學會如何：
 
 > [!div class="checklist"]
-> * 設定開發環境。
-> * 定義管線以透過 Blob 使用 OCR、語言偵測、實體和關鍵片語辨識。
+> * 設定開發環境
+> * 定義使用 OCR、語言偵測和實體和關鍵字組辨識的管線。
 > * 執行管線以叫用轉換，以及建立和載入搜尋索引。
 > * 使用全文檢索搜尋和豐富的查詢語法來探索結果。
 
@@ -32,9 +32,11 @@ ms.locfileid: "92787953"
 
 ## <a name="overview"></a>總覽
 
-本教學課程使用 C# 和 **Azure.Search.Documents** 用戶端程式庫來建立資料來源、索引、索引子和技能集。
+本教學課程使用 c # 和 [ **Azure.Search.Documents** 用戶端程式庫](/dotnet/api/overview/azure/search.documents-readme)，來建立資料來源、索引、索引子和技能集。
 
-技能集會使用以認知服務 API 為基礎的內建技能。 管線中的步驟包括影像上的光學字元辨識 (OCR)、文字的語言偵測、關鍵片語擷取和實體辨識 (組織)。 新的資訊會儲存在您可於查詢、Facet 和篩選中運用的新欄位。
+索引子會連接至資料來源物件中所指定的 blob 容器，並將所有已編制索引的內容傳送至現有的搜尋索引。
+
+技能集會附加至索引子。 它使用 Microsoft 內建的技能來尋找和解壓縮資訊。 管線中的步驟包括影像上的光學字元辨識 (OCR)、文字的語言偵測、關鍵片語擷取和實體辨識 (組織)。 管線所建立的新資訊會儲存在索引的新欄位中。 填入索引後，您就可以使用查詢、facet 和篩選器中的欄位。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -72,13 +74,13 @@ ms.locfileid: "92787953"
 
 1. 在 [基本] 索引標籤中，需要下列項目。 接受所有其他項目的預設值。
 
-   * **資源群組** 。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
+   * **資源群組**。 選取現有群組或建立一個新的群組，但必須對所有服務使用相同的群組，以便您一起管理這些服務。
 
-   * **儲存體帳戶名稱** 。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus。 
+   * **儲存體帳戶名稱**。 如果您認為您可能會有多個相同類型的資源，請透過名稱在類型和區域上做出區別，例如 blobstoragewestus。 
 
-   * **位置** 。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
+   * **位置**。 可能的話，請選擇用於 Azure 認知搜尋和認知服務的相同位置。 單一位置可避免產生頻寬費用。
 
-   * **帳戶種類** 。 選擇預設值 [StorageV2 (一般用途 v2)]。
+   * **帳戶種類**。 選擇預設值 [StorageV2 (一般用途 v2)]。
 
 1. 按一下 [檢閱 + 建立] 以建立服務。
 
@@ -173,7 +175,7 @@ AI 擴充以認知服務為後盾，包括用於自然語言和影像處理的�
 
 新增您的搜尋服務與 Blob 儲存體帳戶資訊。 您應該記得，您可以從上一節所指示的服務佈建步驟中取得這項資訊。
 
-針對 **SearchServiceUri** ，輸入完整的 URL。
+針對 **SearchServiceUri**，輸入完整的 URL。
 
 ### <a name="add-namespaces"></a>新增命名空間
 

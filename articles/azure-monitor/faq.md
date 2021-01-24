@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 7336078d1f04b9dcb6c2f229654f1c36d9b3114b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: bc229974cf14ba364e5e7111dc1d2704e03c3635
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919977"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746793"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -345,7 +345,9 @@ WireData
 
 在查閱地理位置屬性之後，用戶端 Web 位址的 **所有** 八位元資料一律會設定為 0。
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>我可以在網頁原始碼中看見檢測金鑰。 
+[Application Insights JAVASCRIPT SDK](app/javascript.md)預設不會在其自動完成中包含任何個人資料。 不過，SDK 可能會挑選您應用程式中使用的某些個人資料 (例如，中的完整名稱 `window.title` 或 XHR URL 查詢參數中的帳戶識別碼) 。 針對自訂的個人資料遮罩，新增 [遙測初始化運算式](app/api-filtering-sampling.md#javascript-web-applications)。
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>我可以在網頁原始碼中看見檢測金鑰。
 
 * 這在監視解決方案中是常見的做法。
 * 無法使用它來竊取您的資料。

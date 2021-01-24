@@ -4,12 +4,12 @@ description: 本文討論有關 Azure Site Recovery 的一般熱門問題。
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109550"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746470"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>關於 Azure Site Recovery 的一般問題
 
@@ -344,6 +344,14 @@ Azure 是針對復原能力而設計的。 Site Recovery 已設計成可根據 A
 
 * [針對 VMware 虛擬機器](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [針對 Hyper-V 虛擬機器](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
+
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>完成遷移、認可和停用複寫之間有何差異？
+
+從來源位置將機器容錯移轉至目標位置之後，有三個選項可供您選擇。 所有三種服務都有不同的用途-
+
+1.  **完成遷移** 表示您將不再回到來源位置。 您已遷移至目的地區域，現在您已經完成。 按一下 [完成遷移] 會在內部認可並停用複寫。 
+2.  **Commit** 表示這不是複寫程式的結尾。 複寫專案以及所有設定都會保留下來，您可以在稍後的時間點 **重新保護** ，以啟用將機器複寫回來源區域的時間點。 
+3.  **停** 用複寫將會停用複寫，並移除所有相關設定。 它不會影響目的地區域中已經存在的電腦。
 
 ## <a name="automation"></a>自動化
 
