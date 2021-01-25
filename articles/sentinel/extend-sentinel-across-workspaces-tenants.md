@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95483908"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757114"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>跨工作區和租用戶擴充 Azure Sentinel
 
@@ -94,18 +94,18 @@ Azure Sentinel 支援 [在單一查詢中查詢多個工作區](../azure-monitor
 
 然後，您可以從開始，在這兩個工作區中撰寫查詢 `unionSecurityEvent | where ...` 。
 
-#### <a name="scheduled-alerts"></a>排程的警示
+#### <a name="cross-workspace-analytics-rules"></a>跨工作區分析規則<a name="scheduled-alerts"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
+跨工作區查詢現在可包含在已排程的分析規則中，但有下列限制：
 
-跨工作區查詢現在可以包含在分析規則的排程警示中，但有下列限制：
-
-- 單一查詢中最多可以包含10個工作區。
+- 單一查詢中最多隻能包含15個工作區。
 - 您必須在查詢中參考的每個工作區上部署 Azure Sentinel。
 
 > [!NOTE] 
 > 在相同的查詢中查詢多個工作區可能會影響效能，因此只有在邏輯需要這項功能時才建議使用。
 
-### <a name="using-cross-workspace-workbooks"></a>使用跨工作區活頁簿
-
+#### <a name="cross-workspace-workbooks"></a>跨工作區活頁簿<a name="using-cross-workspace-workbooks"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
 活頁[簿](./overview.md#workbooks)會提供要 Azure Sentinel 的儀表板和應用程式。 使用多個工作區時，它們會跨工作區提供監視和動作。
 
 活頁簿可以使用三種方法的其中一種來提供跨工作區查詢，每個方法都能滿足不同層級的使用者專長：
@@ -117,7 +117,7 @@ Azure Sentinel 支援 [在單一查詢中查詢多個工作區](../azure-monitor
 | 以互動方式編輯活頁簿 | 修改現有活頁簿的 advanced 使用者可以編輯其中的查詢，使用編輯器中的工作區選取器選取目標工作區。 | 此選項可讓 power 使用者輕鬆地修改現有的活頁簿，以使用多個工作區。 |
 |
 
-### <a name="cross-workspace-hunting"></a>跨工作區搜尋
+#### <a name="cross-workspace-hunting"></a>跨工作區搜尋
 
 Azure Sentinel 提供預先載入的查詢範例，以協助您開始使用，並讓您熟悉資料表和查詢語言。 這些內建的搜尋查詢是由 Microsoft 安全性研究人員持續開發的，這兩個方法都是在加入新的查詢和微調現有的查詢時，提供您尋找新偵測的進入點，並找出安全性工具可能未偵測到的入侵徵兆。  
 

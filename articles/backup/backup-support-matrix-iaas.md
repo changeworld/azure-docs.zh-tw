@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: ade92e445897e36139e74353fa703ddf50d3f9b3
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d3329d9cac9547fbe9ec971bb8944f50971732b5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562721"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757401"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -81,6 +81,7 @@ Azure 備份不支援 32 位元作業系統。
 - Azure 備份不支援 32 位元作業系統。
 - 只要 VM 上已有[適用於 Linux 的 Azure VM 代理程式](../virtual-machines/extensions/agent-linux.md) (機器翻譯)，且支援 Python，即可使用其他自備 Linux 發行版本。
 - 如果未安裝 Python 2.7 版，Azure 備份不支援 proxy 設定的 Linux VM。
+- Azure 備份不支援將從存放裝置或任何其他 NFS 伺服器掛接的 NFS 檔案備份到 Linux 或 Windows 電腦。 它只會備份本機連接至 VM 的磁片。
 
 ## <a name="backup-frequency-and-retention"></a>備份頻率和保留期
 
@@ -144,10 +145,11 @@ VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<b
 備份已移轉至 Azure 的 VM| 支援。<br/><br/> 若要備份 VM，必須在已移轉的機器上安裝 VM 代理程式。
 備份多部 VM 一致性 | Azure 備份不會跨多個 Vm 提供資料和應用程式一致性。
 使用[診斷設定](../azure-monitor/platform/platform-logs-overview.md) (機器翻譯) 進行備份  | 不支援。 <br/><br/> 如果使用 [[新建]](backup-azure-arm-restore-vms.md#create-a-vm) 選項來觸發透過診斷設定還原 Azure VM，則還原會失敗。
-還原區域固定的 VM | 支援在2019年1月之後備份的 VM，以及 [可用性區域](https://azure.microsoft.com/global-infrastructure/availability-zones/) 可) 的 (。<br/><br/>我們目前支援還原至已釘選在 Vm 中的相同區域。 不過，如果該區域不受支援，則還原會失敗。
+還原區域固定的 VM | 支援在2019年1月之後備份的 VM，以及 [可用性區域](https://azure.microsoft.com/global-infrastructure/availability-zones/) 可) 的 (。<br/><br/>我們目前支援還原至已釘選在 Vm 中的相同區域。 但是，如果區域因為中斷而無法使用，則還原將會失敗。
 第 2 代 VM | 支援 <br> Azure 備份支援[第 2 代 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) 的備份和還原。 當這些 Vm 從復原點還原時，就會還原為 [Gen2 vm](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。
 使用鎖定備份 Azure Vm | 未受管理的 Vm 不支援。 <br><br> 受管理的 Vm 支援。
 [Spot VM](../virtual-machines/spot-vms.md) | 不支援。 Azure 備份將現成的 Vm 還原為一般的 Azure Vm。
+[Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | 支援
 
 ## <a name="vm-storage-support"></a>VM 儲存體支援
 
@@ -165,6 +167,7 @@ Azure VM 資料磁碟 | 支援最多32個磁片的 Azure Vm 備份。<br><br> �
 共用存放裝置| 不支援使用叢集共用磁碟區 (CSV) 或 Scale-Out 檔案伺服器來備份 Vm。 CSV 寫入器可能會在備份期間失敗。 還原時，包含 CSV 磁碟區的磁碟可能無法執行。
 [共用磁碟](../virtual-machines/disks-shared-enable.md) | 不支援。
 Ultra SSD 磁片 | 不支援。 如需詳細資訊，請參閱下列 [限制](selective-disk-backup-restore.md#limitations)。
+[暫存磁片](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk) | Azure 備份不會備份暫存磁片。
 
 ## <a name="vm-network-support"></a>VM 網路支援
 

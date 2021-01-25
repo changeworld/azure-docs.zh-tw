@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 833837c317d22bf031aee4608ff4c93775736a34
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008362"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757435"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -150,7 +150,7 @@ Azure 備份已新增跨區域還原功能來加強資料可用性和復原功�
 
 | 備份管理類型 | 支援                                                    | 支援的區域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 是。   支援加密 VM 和磁碟小於 4 TB 的 VM | 所有 Azure 公用區域。  |
+| Azure VM               | 支援具有受控和非受控磁片的 Azure Vm。 傳統 VM 不支援。 | 所有 Azure 公用區域。  |
 | SQL/SAP HANA | 是                                                          | 法國以外的所有公用區域 |
 | MARS 代理程式/內部部署  | 否                                                           | N/A               |
 | Azure 檔案共用) 的 AFS (                 | 否                                                           | N/A               |

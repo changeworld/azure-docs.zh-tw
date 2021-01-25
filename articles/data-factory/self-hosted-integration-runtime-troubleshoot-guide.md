@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: ccebdbf428180f8ff4ab10dc6007c3ec35a66362
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503568"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757673"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行階段進行疑難排解
 
@@ -67,31 +67,6 @@ ms.locfileid: "97503568"
 #### <a name="resolution"></a>解決方案
 
 檢查 IR 節點上的資源使用方式和並行活動執行。 調整活動執行的內部和觸發時間，以避免同時在單一 IR 節點上執行太多的作業。
-
-
-### <a name="ssltls-certificate-issue"></a>SSL/TLS 憑證問題
-
-#### <a name="symptoms"></a>徵兆
-
-當您嘗試啟用安全通訊端層 (SSL) /傳輸層安全性 (TLS) 憑證 (advanced) ，方法是在選取 **自我裝載的 IR (**  >  **從內部** 網路 Configuration Manager 進行遠端存取之後，選擇憑證) ，您會收到下列錯誤：
-
-「遠端存取設定無效。 外寄訊息的身分識別檢查失敗。 遠端端點的預期 DNS 身分識別為 ' abc.microsoft.com '，但遠端端點提供的 DNS 宣告為 ' microsoft.com '。 如果這是合法的遠端端點，您可以在建立通道 proxy 時，明確指定 DNS 身分識別 ' microsoft.com ' 作為 EndpointAddress 的 Identity 屬性，以修正此問題。
-
-在上述範例中，選擇的憑證附加了 "microsoft.com"。
-
-#### <a name="cause"></a>原因
-
-這是 Windows Communication Foundation (WCF) 的已知問題。 WCF SSL/TLS 驗證只會檢查 **主體替代名稱** 中的最後一個 DNSNAME (SAN) ] 欄位。 
-
-#### <a name="resolution"></a>解決方案
-
-Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 發生此問題的原因通常是 SSL 憑證不正確。 SAN 中的最後一個 DNSName 應該有效。 
-
-若要確認並修正 DNSName，請執行下列動作： 
-
-1. 開啟管理主控台。
-1. 在 [**憑證詳細資料**] 底下，再次檢查 [主旨] 和 [**主體別名**] 方塊 **中的值**。 例如，"DNS Name = microsoft.com.com" 不是有效的名稱。
-1. 請洽詢憑證發行公司，以移除不正確的 DNSName。
 
 ### <a name="concurrent-jobs-limit-issue"></a>並行作業數限制問題
 
@@ -296,11 +271,11 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 發生此問�
 #### <a name="symptoms"></a>徵兆
 
 * 您已將 PFX 檔案匯入至憑證存放區。
-* 當您透過 IR Configuration Manager UI 選取憑證時，您收到下列錯誤訊息：
+* 當您透過 IR 設定管理員 UI 選取憑證時，您收到下列錯誤訊息：
 
    「無法變更內部網路通訊加密模式。 可能是憑證 ' \<*certificate name*> ' 可能沒有能夠進行金鑰交換的私密金鑰，或該處理常式可能沒有私密金鑰的存取權限。 請參閱內部例外狀況以取得詳細資料。」
 
-    ![Integration Runtime Configuration Manager 設定] 窗格的螢幕擷取畫面，其中顯示「遺失私密金鑰」錯誤訊息。](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
+    ![Integration Runtime 設定管理員設定] 窗格的螢幕擷取畫面，其中顯示「遺失私密金鑰」錯誤訊息。](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
 
 #### <a name="cause"></a>原因
 
@@ -330,7 +305,7 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 發生此問�
 
 「Integration Runtime (自我裝載) 節點在註冊期間發生錯誤。 無法連接至 Integration Runtime (自我裝載) 主機服務」。
 
-![顯示 IR 註冊錯誤 Integration Runtime Configuration Manager 視窗的螢幕擷取畫面。](media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png)
+![顯示 IR 註冊錯誤 Integration Runtime 設定管理員視窗的螢幕擷取畫面。](media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png)
 
 #### <a name="cause"></a>原因
 
@@ -390,9 +365,9 @@ Azure Data Factory v2 自我裝載 IR 支援萬用字元憑證。 發生此問�
 
 #### <a name="symptoms"></a>徵兆
 
-當您註冊自我裝載 IR 時，[暫存器] 按鈕不會顯示 **在 [Configuration Manager** ] 窗格中。
+當您註冊自我裝載 IR 時，[暫存器] 按鈕不會顯示 **在 [設定管理員** ] 窗格中。
 
-![Configuration Manager 窗格的螢幕擷取畫面，顯示未註冊 integration runtime 節點的訊息。](media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png)
+![設定管理員窗格的螢幕擷取畫面，顯示未註冊 integration runtime 節點的訊息。](media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png)
 
 #### <a name="cause"></a>原因
 
@@ -451,7 +426,7 @@ Integration runtime 安裝取決於 Windows Installer 服務。 基於下列原�
 
 #### <a name="symptoms"></a>徵兆
 
-當您透過 Microsoft Integration Runtime Configuration Manager 安裝自我裝載 IR 時，會產生具有信任憑證授權單位單位的憑證 (CA) 。 無法套用憑證來加密兩個節點之間的通訊，並顯示下列錯誤訊息： 
+當您透過 Microsoft Integration Runtime 設定管理員安裝自我裝載 IR 時，會產生具有信任憑證授權單位單位的憑證 (CA) 。 無法套用憑證來加密兩個節點之間的通訊，並顯示下列錯誤訊息： 
 
 「無法變更內部網路通訊加密模式：無法授與 Integration Runtime 服務帳戶對憑證 ' ' 的存取權 \<*certificate name*> 。 錯誤碼103」
 
@@ -508,7 +483,7 @@ Integration runtime 安裝取決於 Windows Installer 服務。 基於下列原�
 
 #### <a name="symptoms"></a>徵兆
 
-當您嘗試註冊自我裝載整合執行時間時，Configuration Manager 會顯示下列錯誤訊息：
+當您嘗試註冊自我裝載整合執行時間時，設定管理員會顯示下列錯誤訊息：
 
 「Integration Runtime (自我裝載的) 節點在註冊期間發生錯誤」。
 

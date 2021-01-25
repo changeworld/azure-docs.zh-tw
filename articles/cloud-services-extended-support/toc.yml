@@ -21,10 +21,10 @@
   expanded: true
 - name: 概念
   items:
+    - name: 延伸模組
+      href: extensions.md
     - name: 可用的 VM 大小
       href: available-sizes.md
-    - name: 常見問題集
-      href: faq.md
     - name: 客體 OS 修補程式
       href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
     - name: 客體 OS 淘汰
@@ -49,10 +49,10 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration 架構
           href: schema-cscfg-networkconfiguration.md
+    - name: 常見問題集
+      href: faq.md
 - name: 作法
   items:
-    - name: 延伸模組總覽
-      href: extensions.md
     - name: 套用遠端桌面延伸模組
       href: enable-rdp.md
     - name: 套用 WAD 延伸模組
@@ -83,6 +83,8 @@
       href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+    - name: SDK
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
 - name: 資源
   items:
     - name: Azure 藍圖

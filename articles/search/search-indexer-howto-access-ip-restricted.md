@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 12943d5d22a9e81c7e99522fa4728f4798549682
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01a88be9c54a2701130daace26c44159ee364e4c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499946"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757238"
 ---
 # <a name="configure-ip-firewall-rules-to-allow-indexer-connections-azure-cognitive-search"></a>設定 IP 防火牆規則，以允許 (Azure 認知搜尋) 的索引子連接
 
@@ -30,7 +30,7 @@ Azure 資源（例如儲存體帳戶、Cosmos DB 帳戶和 Azure SQL Server）�
 
    ![取得服務 FQDN](media\search-indexer-howto-secure-access\search-service-portal.png "取得服務 FQDN")
 
-您可以藉由執行 `nslookup` (或 FQDN 的) 來取得搜尋服務的 IP 位址 `ping` 。 在下列範例中，您會將 "10.50.10.50" 新增至 Azure 儲存體防火牆上的輸入規則。
+您可以藉由執行 `nslookup` (或 FQDN 的) 來取得搜尋服務的 IP 位址 `ping` 。 在下列範例中，您會將 "150.0.0.1" 新增至 Azure 儲存體防火牆上的輸入規則。 在防火牆設定更新之後，最多可能需要15分鐘的時間，搜尋服務索引子才能夠存取 Azure 儲存體帳戶。
 
 ```azurepowershell
 

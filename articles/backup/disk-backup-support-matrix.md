@@ -4,12 +4,12 @@ description: 提供支援設定的摘要，以及 Azure 磁片備份的限制。
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 2030ee3f098317da9cda8b15fec1562f31cae7ee
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 5281a5f0b833759c2594b6748cf06f2e12c03822
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746031"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757469"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>預覽版中的 Azure 磁片備份支援矩陣 () 
 
@@ -22,7 +22,7 @@ ms.locfileid: "98746031"
 
 ## <a name="supported-regions"></a>支援區域
 
-Azure 磁片備份于下欄區域提供預覽：美國中西部、韓國中部、南韓南部。 
+Azure 磁片備份于下欄區域提供預覽：美國中西部、東部美國2、韓國中部、南韓南部、日本西部、阿拉伯聯合大公國北部。 
 
 當有更多區域可供使用時，將會宣佈更多區域。
 

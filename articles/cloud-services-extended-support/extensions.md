@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: c2eddf75f99b751773220ae677d66fe8c09abb0e
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: f9029a36dc3b778e139b4553524e8e2ca6b4bbad
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744360"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757164"
 ---
 # <a name="extensions-for-cloud-services-extended-support"></a>適用于雲端服務的擴充功能 (延伸支援) 
 
@@ -35,7 +35,7 @@ ms.locfileid: "98744360"
 
 使用進階監視，其他計量會依 5 分鐘、1 小時和 12 小時的間隔進行取樣和收集。 彙總的資料會儲存在儲存體帳戶和資料表中，並會在 10 天之後予以清除。 所使用的儲存體帳戶是依角色所設定；您可以對不同的角色使用不同的儲存體帳戶。 
 
-您可以透過[PowerShell](deploy-powershell.md)或[ARM 範本](deploy-template.md)，為雲端服務啟用 (延伸支援) 的 Windows Azure 診斷擴充功能
+如需詳細資訊，請參閱 [在雲端服務中套用 Windows Azure 診斷擴充功能 (延伸支援) ](enable-wad.md)
 
 
 ## <a name="next-steps"></a>後續步驟 

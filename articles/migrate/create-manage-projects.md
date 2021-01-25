@@ -6,16 +6,16 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 750cf0a938fffd4e5bfe25811bb276f7cb1b5583
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567788"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757554"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>建立和管理 Azure Migrate 專案
 
-本文說明如何建立、管理和刪除 [Azure Migrate](migrate-services-overview.md) 專案。 如果您使用的是傳統 Azure Migrate 專案，請刪除這些專案，然後遵循步驟來建立新的 Azure Migrate 專案。 您無法將傳統 Azure Migrate 專案或元件升級為 Azure Migrate。
+本文說明如何建立、管理和刪除 [Azure Migrate](migrate-services-overview.md) 專案。 如果您使用的是傳統 Azure Migrate 專案，請刪除這些專案，然後遵循步驟來建立新的 Azure Migrate 專案。 您無法將傳統 Azure Migrate 專案或元件升級為 Azure Migrate。 開始建立程式之前，請先參閱 [常見問題](https://docs.microsoft.com/azure/migrate/resources-faq#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version) 。
 
 Azure Migrate 專案可用來儲存從您評估或遷移的環境中收集到的探索、評量和移轉中繼資料。 在專案中，您可以追蹤探索到的資產、建立評量，以及協調遷移至 Azure。  
 
@@ -46,7 +46,7 @@ Azure Migrate 專案可用來儲存從您評估或遷移的環境中收集到的
     - 地理位置只會用來儲存從內部部署電腦收集的中繼資料。 您可以選取任何目的地區域以進行遷移。 
     - 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
 
-8. 選取 [建立]。
+8. 選取 [建立]  。
 
    ![輸入專案設定的頁面](./media/create-manage-projects/project-details.png)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: f2807501b1e18d4cbffaa34d70bccf8d70565266
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747218"
+ms.locfileid: "98757537"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -126,7 +126,7 @@ Authorization: Bearer <token>
 ## <a name="create-cluster"></a>建立叢集
 
 叢集支援兩種 [受控識別類型](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)：系統指派和使用者指派，而您可以根據您的案例，在叢集中定義單一身分識別。 
-- 當身分識別 `type` 設定為 "*SystemAssigned*" 時，系統指派的受控識別更為簡單，而且會自動產生叢集。 稍後可以使用此身分識別，將叢集存取權授與您的 Key Vault。 
+- 當身分識別 `type` 設定為 "*SystemAssigned*" 時，系統指派的受控識別更為簡單，而且會自動產生叢集。 稍後可以使用此身分識別，將您 Key Vault 的儲存存取權授與包裝和解除包裝作業。 
   
   叢集中的身分識別設定，適用于系統指派的受控識別
   ```json
@@ -137,7 +137,7 @@ Authorization: Bearer <token>
   }
   ```
 
-- 如果您想要在建立叢集時設定客戶管理的金鑰，您應該在 Key Vault 事先取得金鑰和使用者指派的身分識別，然後使用這些設定來建立叢集：身分識別 `type` 為 "*UserAssigned*"， `UserAssignedIdentities` 並具有身分識別的資源識別碼。
+- 如果您想要在建立叢集時設定客戶管理的金鑰，您應該在 Key Vault 事先取得金鑰和使用者指派的身分識別，然後使用這些設定來建立叢集：身分識別 `type` 為 "*UserAssigned*"，以及 `UserAssignedIdentities` 您身分識別的 *資源識別碼* 。
 
   使用者指派的受控識別叢集中的身分識別設定
   ```json
@@ -151,27 +151,7 @@ Authorization: Bearer <token>
   ```
 
 > [!IMPORTANT]
-> 如果您的 Key Vault 位於 Private-Link (vNet) ，則無法搭配使用者指派的受控識別使用客戶管理的金鑰。 在此案例中，您可以使用系統指派的受控識別。
-
-```json
-{
-  "identity": {
-    "type": "SystemAssigned"
-}
-```
- 
-替換為：
-
-```json
-{
-  "identity": {
-  "type": "UserAssigned",
-    "userAssignedIdentities": {
-      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<user-assigned-managed-identity-name>"
-      }
-}
-```
-
+> 如果您的 Key Vault 位於 Private-Link (vNet) ，則無法使用使用者指派的受控識別。 在此案例中，您可以使用系統指派的受控識別。
 
 請依照 [專用叢集文章](../log-query/logs-dedicated-clusters.md#creating-a-cluster)中所述的程式進行操作。 
 

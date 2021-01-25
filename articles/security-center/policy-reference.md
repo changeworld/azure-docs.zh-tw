@@ -1,25 +1,25 @@
 ---
 title: 適用於 Azure 資訊安全中心的內建原則定義
 description: 列出適用於 Azure 資訊安全中心的 Azure 原則內建原則定義。 這些內建原則定義提供管理 Azure 資源的常見方法。
-ms.date: 01/21/2021
+ms.date: 01/24/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 3f667ed48a5188ce63665025786e990c47a9690b
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 1192e765dc3cc001f8d1a1c6a28fe1a5cf4c9ecc
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700772"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757266"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>適用於 Azure 資訊安全中心的 Azure 原則內建定義
 
 此頁面是與 Azure 資訊安全中心相關的 [Azure 原則](../governance/policy/overview.md) 內建原則定義的索引。 可用的原則定義群組如下：
 
 - [方案](#azure-security-center-initiatives)群組會列出「安全性中心」類別中的 Azure 原則計畫定義。
-- [預設的方案](#azure-security-center-initiatives)群組會列出屬於[Azure 資訊安全中心](./index.yml)預設方案一部分的所有 Azure 原則定義。
+- [預設的方案](#azure-security-center-initiatives)群組會列出屬於「安全性中心」預設方案（ [Azure 安全性基準測試](../security/benchmarks/introduction.md)）一部分的所有 Azure 原則定義。 這份由 Microsoft 所撰寫、普遍遵循的基準測試，是以 [網際網路安全性 (CIS) ](https://www.cisecurity.org/benchmark/azure/) 和 [美國國家標準和技術協會 (NIST) ](https://www.nist.gov/) 為中心，並著重于以雲端為中心的安全性。
 - [類別目錄](#azure-security-center-category)群組會列出「安全性中心」類別中的所有 Azure 原則定義。
 
 如需有關安全性原則的詳細資訊，請參閱[搭配使用安全性原則](./tutorial-security-policy.md)。 如需其他服務的其他內建 Azure 原則，請參閱 [Azure 原則內建定義](../governance/policy/samples/built-in-policies.md)。

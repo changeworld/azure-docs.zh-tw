@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 將 VMware Vm 和實體伺服器的災難復原至 Azure 的支援。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 4bf0227cf11b21d7cde2807d465385bfc2b998b5
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a3c339213d0fa9a39995b1109fa72f49b466d277
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573049"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757740"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -78,10 +78,10 @@ Site Recovery 支援複寫任何執行於所支援機器上的工作負載。
 Windows Server 2019 | 從 [更新彙總套件 34](https://support.microsoft.com/help/4490016) (行動服務) 的9.22 版開始支援。
 Windows Server 2016 64 位 | 支援伺服器核心、含有桌面體驗的伺服器。
 Windows Server 2012 R2/Windows Server 2012 | 支援。
-Windows Server 2008 R2 SP1 和更新版本。 | 支援。<br/><br/> 從行動服務代理程式的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版，您必須在執行 Windows 2008 R2 SP1 或更新版本的電腦上安裝 [服務堆疊更新 (SSU) ](https://support.microsoft.com/help/4490628) 和 [sha-1 更新](https://support.microsoft.com/help/4474419) 。 2019 年 9 月起不支援 SHA-1，而且如果未啟用 SHA-2 程式碼簽署，代理程式擴充功能將不會如預期般安裝/升級。 深入了解 [SHA-2 升級和需求](https://aka.ms/SHA-2KB)。
-Windows Server 2008 SP2 或更新版本 (64 位/32 位)  |  僅支援遷移。 [深入了解](migrate-tutorial-windows-server-2008.md)。<br/><br/> 從行動服務代理程式的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版，您需要在 WINDOWS 2008 SP2 機器上安裝 [服務堆疊更新 (SSU) ](https://support.microsoft.com/help/4493730) 和 [sha-1 更新](https://support.microsoft.com/help/4474419) 。 2019年9月不支援 ISHA-1，如果未啟用 SHA-1 程式碼簽署，則代理程式延伸模組將不會如預期般安裝/升級。 深入了解 [SHA-2 升級和需求](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
+Windows Server 2008 R2 SP1 和更新版本。 | 支援。<br/><br/> 從行動服務代理程式的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版，您必須在執行 Windows 2008 R2 SP1 或更新版本的電腦上安裝 [服務堆疊更新 (SSU) ](https://support.microsoft.com/help/4490628) 和 [sha-1 更新](https://support.microsoft.com/help/4474419) 。 2019 年 9 月起不支援 SHA-1，而且如果未啟用 SHA-2 程式碼簽署，代理程式擴充功能將不會如預期般安裝/升級。 深入了解 [SHA-2 升級和需求](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339)。
+Windows Server 2008 SP2 或更新版本 (64 位/32 位)  |  僅支援遷移。 [深入了解](migrate-tutorial-windows-server-2008.md)。<br/><br/> 從行動服務代理程式的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版，您需要在 WINDOWS 2008 SP2 機器上安裝 [服務堆疊更新 (SSU) ](https://support.microsoft.com/help/4493730) 和 [sha-1 更新](https://support.microsoft.com/help/4474419) 。 2019 年 9 月起不支援 SHA-1，而且如果未啟用 SHA-2 程式碼簽署，代理程式擴充功能將不會如預期般安裝/升級。 深入了解 [SHA-2 升級和需求](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339)。
 Windows 10、Windows 8.1、Windows 8 | 僅支援64位系統。 不支援32位系統。
-Windows 7 SP1 （含 SP1）64位 | 從 [更新彙總套件 36](https://support.microsoft.com/help/4503156) (行動服務) 的9.22 版開始支援。 </br></br> 從行動服務代理程式的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 中，您需要在 WINDOWS 7 SP1 電腦上安裝 [服務堆疊更新 (SSU) ](https://support.microsoft.com/help/4490628) 和 [sha-1 更新](https://support.microsoft.com/help/4474419) 。  2019 年 9 月起不支援 SHA-1，而且如果未啟用 SHA-2 程式碼簽署，代理程式擴充功能將不會如預期般安裝/升級。 深入了解 [SHA-2 升級和需求](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
+Windows 7 SP1 （含 SP1）64位 | 從 [更新彙總套件 36](https://support.microsoft.com/help/4503156) (行動服務) 的9.22 版開始支援。 </br></br> 從行動服務代理程式的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 中，您需要在 WINDOWS 7 SP1 電腦上安裝 [服務堆疊更新 (SSU) ](https://support.microsoft.com/help/4490628) 和 [sha-1 更新](https://support.microsoft.com/help/4474419) 。  2019 年 9 月起不支援 SHA-1，而且如果未啟用 SHA-2 程式碼簽署，代理程式擴充功能將不會如預期般安裝/升級。 深入了解 [SHA-2 升級和需求](https://support.microsoft.com/topic/sha-2-code-signing-support-update-for-windows-server-2008-r2-windows-7-and-windows-server-2008-september-23-2019-84a8aad5-d8d9-2d5c-6d78-34f9aa5f8339)。
 
 ### <a name="for-linux"></a>若為 Linux
 
@@ -184,16 +184,16 @@ XFSv5 | XFS 檔案系統上的 XFSv5 功能（例如中繼資料總和檢查碼�
 **元件** | **支援**
 --- | ---
 主機網路 NIC 小組 | 支援 VMware VM。 <br/><br/>不支援實體機器複寫。
-主機網路 VLAN | 可以。
-主機網路 IPv4 | 可以。
-主機網路 IPv6 | 不會。
-客體/伺服器網路 NIC 小組 | 不會。
-客體/伺服器網路 IPv4 | 可以。
-客體/伺服器網路 IPv6 | 不會。
-客體/伺服器網路靜態 IP (Windows) | 可以。
-客體/伺服器網路靜態 IP (Linux) | 可以。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
-客體/伺服器網路多重 NIC | 可以。
-Site Recovery 服務的 Private link 存取權 | 可以。 [深入了解](hybrid-how-to-enable-replication-private-endpoints.md)。
+主機網路 VLAN | 是。
+主機網路 IPv4 | 是。
+主機網路 IPv6 | 否。
+客體/伺服器網路 NIC 小組 | 否。
+客體/伺服器網路 IPv4 | 是。
+客體/伺服器網路 IPv6 | 否。
+客體/伺服器網路靜態 IP (Windows) | 是。
+客體/伺服器網路靜態 IP (Linux) | 是。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
+客體/伺服器網路多重 NIC | 是。
+Site Recovery 服務的 Private link 存取權 | 是。 [深入了解](hybrid-how-to-enable-replication-private-endpoints.md)。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 網路 (容錯移轉後)
@@ -266,7 +266,7 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 進階儲存體 | 是
 安全傳輸選項 | 是
 匯入/匯出服務 | 否
-適用于 Vnet 的 Azure 儲存體防火牆 | 可以。<br/> 設定在目標儲存體/快取儲存體帳戶上 (用來儲存複寫資料) 。
+適用于 Vnet 的 Azure 儲存體防火牆 | 是。<br/> 設定在目標儲存體/快取儲存體帳戶上 (用來儲存複寫資料) 。
 一般用途 v2 儲存體帳戶 (經常性存取層和非經常性存取層)  | 是，V2 相較于 V1) ， (的交易成本明顯較高
 
 ## <a name="azure-compute"></a>Azure 計算
@@ -338,7 +338,7 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 
 ## <a name="obtain-latest-components"></a>取得最新的元件
 
-**名稱** | **描述** | **詳細資料**
+**名稱** | **說明** | **詳細資料**
 --- | --- | ---
 組態伺服器 | 已安裝在內部部署環境。<br/> 協調內部部署 VMware 伺服器或實體機器與 Azure 之間的通訊。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md) 設定伺服器。<br/> - [瞭解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) 如何升級至最新版本。<br/> - [瞭解](vmware-azure-deploy-configuration-server.md) 設定伺服器的設定。
 處理序伺服器 | 預設會安裝在組態伺服器上。<br/> 接收復寫資料、以快取、壓縮和加密進行優化，然後將其傳送至 Azure。<br/> 當您的部署成長時，您可以新增額外的進程伺服器來處理更大量的複寫流量。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md) 進程伺服器。<br/> - [瞭解](vmware-azure-manage-process-server.md#upgrade-a-process-server) 如何升級至最新版本。<br/> - [瞭解如何](vmware-physical-large-deployment.md#set-up-a-process-server) 設定相應放大進程伺服器。

@@ -3,16 +3,16 @@ title: 將您的 GCP 帳戶連線至 Azure 資訊安全中心
 description: 從 Azure 資訊安全中心監視您的 GCP 資源
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1095222f332e7a66f684feddf1fdab17704ca658
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
-ms.translationtype: HT
+ms.openlocfilehash: d5f8278765c3f62fded44e4b89fb5fded6137c94
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573539"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757605"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>將您的 GCP 帳戶連線到 Azure 資訊安全中心
 
@@ -36,7 +36,7 @@ Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google C
 
 |層面|詳細資料|
 |----|:----|
-|版本狀態：|預覽<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|版本狀態：|公開上市 (GA) |
 |定價：|需要[適用於伺服器的 Azure Defender](defender-for-servers-introduction.md)|
 |必要的角色和權限：|相關 Azure 訂用帳戶上的 **擁有者** 或 **參與者**|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)|

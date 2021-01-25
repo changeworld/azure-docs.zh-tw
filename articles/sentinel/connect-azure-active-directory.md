@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
-ms.openlocfilehash: e84484990725b0c39b132aead51e9b01dbb7e7ef
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 409a316bd9c4222dd9b8ff30e42e37d23805c38b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98632286"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757757"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad"></a>將資料從 Azure Active Directory 的 (Azure AD) 
 
@@ -44,12 +44,12 @@ ms.locfileid: "98632286"
 
 1. 將您想要串流至 Azure Sentinel 的記錄檔類型旁的核取方塊標記，然後按一下 **[連接]**。 以下是您可以選擇的記錄類型：
 
-    - 登入記錄
-    - 稽核記錄
-    - 非互動式使用者登入記錄
-    - 服務主體登入記錄
-    - 受控識別登入記錄
-    - 佈建記錄
+    - **登入記錄**：使用受控應用程式和使用者登入活動的相關資訊。
+    - **Audit logs**：有關使用者和群組管理、受控應用程式和目錄活動的系統活動資訊。
+    - **非互動式使用者登入記錄**：用戶端代表使用者執行的登入相關資訊，不需要使用者進行任何互動或驗證因素。
+    - **服務主體登入記錄**：依應用程式和服務主體登入不牽涉到任何使用者的相關資訊。 在這些登入中，應用程式或服務會代表自己提供認證，以驗證或存取資源。
+    - **受控識別登入記錄**： azure 資源的登入，這些資源具有由 azure 管理的秘密。
+    - 布建 **記錄**：有關 Azure AD 布建服務所布建之使用者、群組和角色的系統活動資訊。
 
 ## <a name="find-your-data"></a>尋找您的資料
 
@@ -64,7 +64,7 @@ ms.locfileid: "98632286"
 
 若要查詢 Azure AD 記錄，請在查詢視窗的頂端輸入相關的資料表名稱。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本檔中，您已瞭解如何將 Azure Active Directory 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。

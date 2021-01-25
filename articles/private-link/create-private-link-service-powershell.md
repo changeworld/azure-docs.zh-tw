@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: e8d76e12dea27338e965d8e77871427e9dfabf23
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: d48903a05a4e9b530dcd3e83e0c14c37dcc74797
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746674"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757520"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>使用 Azure PowerShell 建立 Private Link 服務
 
@@ -35,7 +35,7 @@ Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 New-AzResourceGroup -Name 'CreatePrivLinkService-rg' -Location 'eastus2'
 
 ```
----
+
 ## <a name="create-an-internal-load-balancer"></a>建立內部負載平衡器
 
 在本節中，您會建立虛擬網路和內部 Azure Load Balancer。
@@ -252,7 +252,7 @@ New-AzPrivateEndpoint @par4 -ByManualRequest
 
 在本節中，您將核准您在先前的步驟中建立的連接。
 
-* 使用 [AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnnection) 核准連接。
+* 使用 [AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnection) 核准連接。
 
 ```azurepowershell-interactive
 ## Place the private link service configuration into variable. ##
@@ -313,5 +313,5 @@ Remove-AzResourceGroup -Name 'CreatePrivLinkService-rg'
 
 若要深入了解 Azure 私人端點，請繼續：
 > [!div class="nextstepaction"]
-> [快速入門：使用 Azure powershell 建立私人端點](create-private-endpoint-powershell.md)
+> [快速入門：使用 Azure Powershell 建立私人端點](create-private-endpoint-powershell.md)
 

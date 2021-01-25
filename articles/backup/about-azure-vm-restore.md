@@ -3,12 +3,12 @@ title: 關於 Azure 虛擬機器還原程式
 description: 瞭解 Azure 備份服務如何還原 Azure 虛擬機器
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 67af1ed193c289358f929953bc3caa5d04ef7e09
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: f42266e64170b314f10fbfc026873d694ea58b9a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171762"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757723"
 ---
 # <a name="about-azure-vm-restore"></a>關於 Azure VM 還原
 
@@ -18,23 +18,23 @@ ms.locfileid: "92171762"
 
 - **復原點** (也稱為 **還原點**) ：復原點是正在備份的原始資料複本。
 
-- 階層** (快照集與保存庫) **： Azure VM 備份會分兩個階段進行：
+- 階層 **(快照集與保存庫)**： Azure VM 備份會分兩個階段進行：
 
   - 在第1階段中，所建立的快照集會與磁片一併儲存。 這稱為 **快照集層**。 快照集層還原的 (比從保存庫) 還原更快，因為它們會在觸發還原之前，消除快照集複製到保存庫的等候時間。 因此，從快照集層還原也稱為「 [立即還原](./backup-instant-restore-capability.md)」。
   - 在階段2中，快照集會傳送並儲存在 Azure 備份服務所管理的保存庫中。 這稱為保存 **庫層**。
 
-- **原始位置復原 (OLR) **：從還原點完成復原到來源 Azure VM （從備份取得的位置），並以復原點中儲存的狀態取代。 這會取代來源 VM 的 OS 磁片和資料磁片 (s) 。
+- **原始位置復原 (OLR)**：從還原點完成復原到來源 Azure VM （從備份取得的位置），並以復原點中儲存的狀態取代。 這會取代來源 VM 的 OS 磁片和資料磁片 (s) 。
 
-- **替代位置復原 (ALR) **：從復原點復原到執行備份的源伺服器以外的伺服器。
+- **替代位置復原 (ALR)**：從復原點復原到執行備份的源伺服器以外的伺服器。
 
 - **專案層級還原 (ILR) ：** 從復原點還原 VM 內的個別檔案或資料夾
 
-- **可用性 (複寫類型) **： Azure 備份提供兩種複寫類型，以保持儲存體/資料的高可用性：
+- **可用性 (複寫類型)**： Azure 備份提供兩種複寫類型，以保持儲存體/資料的高可用性：
   - [本地備援儲存體 (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) 會將資料複寫至資料中心的儲存體縮放單位三次 (建立三個資料複本)。 此資料的所有複本都存在於相同的區域內。 LRS 是保護資料免於本機硬體失敗的低成本選項。
   - [異地備援儲存體 (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) 是預設且建議使用的複寫選項。 GRS 會將資料複寫到次要地區 (與來源資料主要位置距離數百英哩)。 GRS 的價格高於 LRS，但可為您的資料提供更高層級的持久性，即使遭受區域性中斷也不影響。
   - [區域備援儲存體 (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) 會在[可用性區域](../availability-zones/az-overview.md#availability-zones)中複寫您的資料，保證相同區域中的資料落地和復原。 ZRS 不會停機。 因此，您需要[資料落地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)且必須沒有停機時間的重要工作負載，可以在 ZRS 中備份。
 
-- **跨區域還原 (crr) **：作為其中一個 [還原選項](./backup-azure-arm-restore-vms.md#restore-options)、跨區域還原 (CRR) 可讓您在次要區域（也就是 [Azure 配對的區域](../best-practices-availability-paired-regions.md#what-are-paired-regions)）中還原 azure vm。
+- **跨區域還原 (crr)**：作為其中一個 [還原選項](./backup-azure-arm-restore-vms.md#restore-options)、跨區域還原 (CRR) 讓您能夠在次要區域（即 [azure 配對的區域](../best-practices-availability-paired-regions.md#what-are-paired-regions) ）中還原 azure vm，您可以隨時、在部分或完全中斷期間，或在您選擇的任何時間還原次要區域中的資料。 
 
 ## <a name="restore-scenarios"></a>還原實例
 
@@ -43,9 +43,9 @@ ms.locfileid: "92171762"
 | **案例**                                                 | **完成的工作**                                             | **使用時機**                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [還原以建立新的虛擬機器](./backup-azure-arm-restore-vms.md) | 如果來源 VM 仍然存在) 或 ALR，則將整個 VM 還原至 OLR ( | <li> 如果來源 VM 遺失或損毀，您可以還原整個 VM  <li> 您可以建立 VM 的複本  <li> 您可以執行審核或合規性的還原演練  <li> 此選項不適用於從 Marketplace 映射建立的 Azure Vm (也就是因為授權已過期) ，所以無法使用。 |
-| [還原 VM 的磁片](./backup-azure-arm-restore-vms.md#restore-disks) | 還原連接至 VM 的磁片                             |  所有磁片：此選項會建立範本並復原磁碟。 您可以使用特殊設定來編輯此範本 (例如，可用性設定組) 符合您的需求，然後使用範本並復原磁碟來重新建立 VM。 |
-| [還原 VM 內的特定檔案](./backup-azure-restore-files-from-vm.md) | 選擇 [還原點]、[流覽]、[選取檔案]，然後將它們還原至與備份 VM 相同的 (或相容) 作業系統。 |  如果您知道要還原的特定檔案，請使用此選項，而不是還原整個 VM。 |
-| [還原已加密的 VM](./backup-azure-vms-encryption.md) | 從入口網站復原磁碟，然後使用 PowerShell 來建立 VM | <li> [具有 Azure Active Directory 的已加密 VM](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [未 Azure AD 的已加密 VM](../virtual-machines/windows/disk-encryption-windows.md) <li> [已將*Azure AD*遷移至*但未 Azure AD*的已加密 VM](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
+| [還原 VM 的磁片](./backup-azure-arm-restore-vms.md#restore-disks) | 還原已連結至 VM 的磁碟                             |  所有磁片：此選項會建立範本並復原磁碟。 您可以使用特殊設定來編輯此範本 (例如，可用性設定組) 符合您的需求，然後使用範本並復原磁碟來重新建立 VM。 |
+| [還原 VM 中的特定檔案](./backup-azure-restore-files-from-vm.md) | 選擇 [還原點]、[流覽]、[選取檔案]，然後將它們還原至與備份 VM 相同的 (或相容) 作業系統。 |  如果您知道要還原的特定檔案，請使用此選項，而不是還原整個 VM。 |
+| [還原已加密的 VM](./backup-azure-vms-encryption.md) | 從入口網站復原磁碟，然後使用 PowerShell 來建立 VM | <li> [具有 Azure Active Directory 的已加密 VM](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [未 Azure AD 的已加密 VM](../virtual-machines/windows/disk-encryption-windows.md) <li> [已將 *Azure AD* 遷移至 *但未 Azure AD* 的已加密 VM](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
 | [跨區域還原](./backup-azure-arm-restore-vms.md#cross-region-restore) | 建立新的 VM，或將磁片還原至 (Azure 配對區域的次要區域)  | <li> **完全中斷**：使用跨區域還原功能時，不會有等候時間來復原次要區域中的資料。 即使在 Azure 宣告中斷之前，您也可以在次要區域中起始還原。 <li> **部分中斷**：可能會在特定的儲存體叢集中發生停機狀況，其中 Azure 備份儲存您的備份資料，甚至是在網路中，連接到與備份資料相關聯的 Azure 備份和儲存叢集。 使用跨區域還原，您可以在次要區域中使用備份資料的複本，在次要區域中執行還原。 <li> **沒有中斷**：您可以使用次要區域資料來進行商務持續性和嚴重損壞修復， (BCDR) 演練進行審核或合規性的用途。 這可讓您在次要區域中執行已備份資料的還原，即使主要區域的商務持續性和嚴重損壞修復演練沒有完整或部分中斷。  |
 
 ## <a name="next-steps"></a>後續步驟

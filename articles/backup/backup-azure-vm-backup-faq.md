@@ -3,12 +3,12 @@ title: 常見問題-備份 Azure Vm
 description: 在本文中，探索使用 Azure 備份服務備份 Azure Vm 的常見問題解答。
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: edc48aaf0a05867de81bd7d5f64f8be4e54ddb8a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008345"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757503"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
@@ -113,6 +113,10 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 ### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>如果在備份期間發生租使用者變更時，是否保留受控識別？
 
 如果發生 [租使用者變更](/azure/devops/organizations/accounts/change-azure-ad-connection) ，您就必須停用並重新啟用 [受控](../active-directory/managed-identities-azure-resources/overview.md) 識別，才能讓備份再次運作。
+
+### <a name="does-azure-backup-support-backing-up-nfs-files-mounted-from-storage"></a>Azure 備份支援備份從儲存體掛接的 NFS 檔案嗎？
+
+Azure 備份不支援將從存放裝置或任何其他 NFS 伺服器掛接的 NFS 檔案備份到 Linux 或 Windows 電腦。 它只會備份本機連接至 VM 的磁片。
 
 ## <a name="restore"></a>還原
 

@@ -12,18 +12,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: b52fbd820c4b4603481f585ea0b0983720cabb22
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
-ms.translationtype: HT
+ms.openlocfilehash: 3ed290cc35195dfb02db9fbb72f092f6f4688291
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709075"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757300"
 ---
 # <a name="what-is-azure-security-center"></a>什麼是 Azure 資訊安全中心？
-
-[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure 資訊安全中心是統一基礎結構安全性管理系統，可強化資料中心的安全性狀態，並在雲端 (無論在 Azure 中與否) 及內部部署的混合式工作負載全面提供進階威脅防護。
 
@@ -74,7 +72,7 @@ Azure 資訊安全中心可讓您加強安全性狀態。 這表示其可協助�
 
 ### <a name="continuous-assessments"></a>持續評量
 
-資訊安全中心會持續探索部署於工作負載的新資源，並評估其是否根據安全性最佳做法來設定，若非如此則會加上旗標，並提供建議您必須優先修正以保護機器的事項清單。
+資訊安全中心會持續探索部署於工作負載的新資源，並評估其是否根據安全性最佳做法來設定，若非如此則會加上旗標，並提供建議您必須優先修正以保護機器的事項清單。 這份建議清單是由 Microsoft 所撰寫的 azure [安全性基準測試](../security/benchmarks/introduction.md)所提供，並支援 Microsoft 所撰寫的 azure 專屬指導方針，以提供以通用合規性架構為基礎的安全性和合規性最佳作法。 這項廣泛的基準測試建基於 [網際網路安全性 (CIS) ](https://www.cisecurity.org/benchmark/azure/) 的控制，以及美國的 [標準與技術局 (NIST) ](https://www.nist.gov/) ，並著重于以雲端為中心的安全性。
 
 為了協助您了解每個建議對整體安全性狀態的重要性，資訊安全中心將建議分組為安全性控制，並將 **安全分數** 值新增至每項控制。 這對於讓您 **排定安全性工作的順位** 十分重要。
 
