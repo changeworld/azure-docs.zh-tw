@@ -9,12 +9,12 @@ ms.author: mariusu
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8faa6533ba4dc7fad61c045278c5504c5f78d900
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
-ms.translationtype: HT
+ms.openlocfilehash: a00f319c55665695879aac3c8ba711ce13fd5d4e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888958"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763046"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>開始使用 Web 通話範例
 
@@ -96,6 +96,7 @@ SDK 初始化之後，您應該會看到下列內容：
 - 熟悉如何[使用通話用戶端程式庫](../quickstarts/voice-video-calling/calling-client-samples.md)
 - 深入了解[通話的運作方式](../concepts/voice-video-calling/about-call-types.md)
 - 檢閱 [API 參考文件](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)
+- 查看 [Contoso Med-v 應用程式](https://github.com/Azure-Samples/communication-services-contoso-med-app) 範例
 
 ## <a name="additional-reading"></a>延伸閱讀
 

@@ -1,9 +1,9 @@
 ---
 title: Azure IoT Central 中的裝置連線能力 | Microsoft Docs
 description: 本文介紹 Azure IoT Central 裝置連線能力的重要相關概念
-author: dominicbetts
-ms.author: dobett
-ms.date: 10/22/2020
+author: TheJasonAndrew
+ms.author: v-anjaso@microsoft.com
+ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a0ba695adb25adb6d339535bb9496630eaec70bb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033168"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762794"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -234,13 +234,18 @@ Azure 裝置 Sdk 提供最簡單的方式來執行您的裝置程式碼。 可�
 所有裝置在與 IoT 中樞通訊時，都會使用下列 IoT 中樞連線能力選項：
 
 - [裝置到雲端傳訊](../../iot-hub/iot-hub-devguide-messages-d2c.md)
+- [雲端到裝置的訊息](../../iot-hub/iot-hub-csharp-csharp-c2d.md)
 - [裝置 twins](../../iot-hub/iot-hub-devguide-device-twins.md)
+
+> [!NOTE]
+> Azure 現在支援
 
 下表摘要說明 Azure IoT Central 裝置功能與 IoT 中樞功能的對應方式：
 
 | Azure IoT 中心 | Azure IoT 中樞 |
 | ----------- | ------- |
 | 遙測 | 裝置到雲端傳訊 |
+| 離線命令 | 雲端到裝置傳訊 |
 | 屬性 | 裝置對應項的報告屬性 |
 | 屬性 (可寫入) | 裝置對應項所需和所報告的屬性 |
 | 命令 | 直接方法 |

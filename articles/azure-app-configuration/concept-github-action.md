@@ -6,12 +6,12 @@ ms.author: alkemper
 ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 588efd692119c9e2831e16c1ce26c2759898a1e5
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 1c290032f7a33079b560d3c4cc1fcb9526e70331
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607359"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762154"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>將您的 GitHub 存放庫同步至應用程式組態
 
@@ -20,9 +20,9 @@ ms.locfileid: "97607359"
 &nbsp;&nbsp;&nbsp;&nbsp;•   更新設定而不需要重新部署整個應用程式 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;•   與 Azure App Service 和 Functions 之類的服務整合。 
 
-GitHub Actions [工作流程](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)會在 GitHub 存放庫中定義自動化程序。 「Azure 應用程式組態同步」動作會在對來源存放庫進行變更時，觸發應用程式組態執行個體的更新。 其使用在您存放庫的 `/.github/workflows/` 路徑中找到的 YAML (.yml) 檔案，來定義步驟和參數。 您可以在推送、檢閱應用程式設定檔，或對其進行分支時，觸發設定更新，就像您處理應用程式程式碼一樣。
+GitHub Actions [工作流程](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions)會在 GitHub 存放庫中定義自動化程序。 「Azure 應用程式組態同步」動作會在對來源存放庫進行變更時，觸發應用程式組態執行個體的更新。 其使用在您存放庫的 `/.github/workflows/` 路徑中找到的 YAML (.yml) 檔案，來定義步驟和參數。 您可以在推送、檢閱應用程式設定檔，或對其進行分支時，觸發設定更新，就像您處理應用程式程式碼一樣。
 
-GitHub [文件](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions) \(英文\) 提供 GitHub 工作流程和動作的深入觀點。 
+GitHub [文件](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions) \(英文\) 提供 GitHub 工作流程和動作的深入觀點。 
 
 ## <a name="enable-github-actions-in-your-repository"></a>在您的存放庫中啟用 GitHub Actions
 若要開始使用此 GitHub 動作，請移至您的存放庫，然後選取 [ **動作** ] 索引標籤。選取 [ **新增工作流程**]，然後 **自行設定工作流程**。 最後，在 Marketplace 中搜尋「Azure App Configuration Sync」。
@@ -35,7 +35,7 @@ GitHub [文件](https://docs.github.com/en/free-pro-team@latest/actions/learn-gi
 ## <a name="sync-configuration-files-after-a-push"></a>推送之後同步處理設定檔
 當變更推送至 `appsettings.json` 時，此動作會同步處理 Azure 應用程式組態檔案。 當開發人員將變更推送到 `appsettings.json` 時，應用程式組態同步動作會使用新的值來更新應用程式組態執行個體。
 
-此工作流程的第一個區段指定在包含至主要分支的 *推送* 上觸發動作 `appsettings.json` 。  第二個區段列出觸發動作之後所執行的作業。 動作會簽出相關檔案，並使用儲存在存放庫中作為祕密的連接字串來更新應用程式組態執行個體。  如需在 GitHub 中使用祕密的詳細資訊，請參閱關於建立及使用已加密祕密的 [GitHub 的文章](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) \(英文\)。
+此工作流程的第一個區段指定在包含至主要分支的 *推送* 上觸發動作 `appsettings.json` 。  第二個區段列出觸發動作之後所執行的作業。 動作會簽出相關檔案，並使用儲存在存放庫中作為祕密的連接字串來更新應用程式組態執行個體。  如需在 GitHub 中使用祕密的詳細資訊，請參閱關於建立及使用已加密祕密的 [GitHub 的文章](https://docs.github.com/en/actions/reference/encrypted-secrets) \(英文\)。
 
 ```json
 on: 
@@ -300,7 +300,7 @@ jobs:
 | Object:Inner | {"InnerKey":"InnerValue"} |
 
 ## <a name="understand-action-inputs"></a>了解動作輸入
-輸入參數會指定動作在執行階段所使用的資料。  下列表格包含應用程式組態同步處理所接受的輸入參數，以及每個的預期值。  如需 GitHub Actions 之動作輸入的詳細資訊，請參閱 GitHub 的[文件](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#inputs) \(英文\)。
+輸入參數會指定動作在執行階段所使用的資料。  下列表格包含應用程式組態同步處理所接受的輸入參數，以及每個的預期值。  如需 GitHub Actions 之動作輸入的詳細資訊，請參閱 GitHub 的[文件](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions#inputs) \(英文\)。
 
 > [!Note]
 > 輸入識別碼不區分大小寫。

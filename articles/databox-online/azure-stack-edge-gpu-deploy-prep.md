@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/05/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: e8b58069dc41d5272c67edcb1f05ebd9f1bc5ad4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
-ms.translationtype: HT
+ms.openlocfilehash: 277b1a46ad480be8313f6971dc600d3dd911c09d
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935594"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762359"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>教學課程：準備部署 Azure Stack Edge Pro 搭配 GPU 
 
@@ -157,18 +157,18 @@ ms.locfileid: "97935594"
 
 11. 選取 [建立]。
 
-建立資源需要幾分鐘的時間。 也會建立一個 MSI，讓 Azure Stack Edge 裝置與 Azure 中的資源提供者進行通訊。
+    建立資源需要幾分鐘的時間。 也會建立一個 MSI，讓 Azure Stack Edge 裝置與 Azure 中的資源提供者進行通訊。
 
-順利建立及部署資源之後，您就會接獲通知。 選取 [前往資源]  。
+    順利建立及部署資源之後，您就會接獲通知。 選取 [前往資源]  。
 
-![移至 Azure Stack Edge Pro 資源](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
+    ![移至 Azure Stack Edge Pro 資源](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-1.png)
 
 下單之後，Microsoft 會檢閱順訂單並與您接洽 (透過電子郵件) 交貨詳細資料。
 
 <!--![Notification for review of the Azure Stack Edge Pro order](media/azure-stack-edge-gpu-deploy-prep/azure-stack-edge-resource-2.png)-->
 
 > [!NOTE]
->如果您想要一次建立多個訂單或複製現有訂單，則可以使用 [Azure 範例中的指令碼](https://github.com/Azure-Samples/azure-stack-edge-order)。 如需詳細資訊，請參閱讀我檔案。
+> 如果您想要一次建立多個訂單或複製現有訂單，則可以使用 [Azure 範例中的指令碼](https://github.com/Azure-Samples/azure-stack-edge-order)。 如需詳細資訊，請參閱讀我檔案。
 
 如果您在訂單處理期間遇到任何問題，請參閱[訂單問題疑難排解](azure-stack-edge-troubleshoot-ordering.md)。
 

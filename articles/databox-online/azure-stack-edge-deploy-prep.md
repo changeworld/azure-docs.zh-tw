@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/06/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
-ms.translationtype: HT
+ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968482"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761716"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>教學課程：準備部署 Azure Stack Edge Pro  
 
@@ -60,7 +60,7 @@ ms.locfileid: "97968482"
   * 您應該是訂用帳戶層級的 **擁有者**，才能授與參與者存取權。 若要將參與者存取權授與其他人，請在 Azure 入口網站中移至 [所有服務] > [訂用帳戶] > [存取控制 (IAM)] > [+ 新增] > [新增角色指派]。 如需詳細資訊，請參閱[教學課程：使用 Azure 入口網站為使用者授與 Azure 資源的存取權](../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
   * 若要建立任何 Azure Stack Edge/ 資料箱閘道資源，您應該要有以資源群組層級作為範圍的參與者權限 (或更高權限)。 您也需要確定已註冊 `Microsoft.DataBoxEdge` 資源提供者。 如需如何註冊資源提供者的相關資訊，請參閱[註冊資源提供者](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
-  * 若要建立任何 IoT 中樞資源，請確定已註冊該 Microsoft.Devices 提供者。 如需有關如何註冊的資訊，請移至[註冊資源提供者](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
+  * 若要建立任何 IoT 中樞資源，請確定已註冊 Microsoft 裝置提供者。 如需有關如何註冊的資訊，請移至[註冊資源提供者](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
   * 同樣的，若要建立儲存體帳戶資源，您需要以資源群組層級作為範圍的參與者存取權限 (或更高權限)。 根據預設，Azure 儲存體是已註冊的資源提供者。
 * 您有 Azure Active Directory 圖形 API 的管理員或使用者存取權。 如需詳細資訊，請參閱 [Azure Active Directory 圖形 API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 * 您擁有的 Microsoft Azure 儲存體帳戶具有存取認證。
@@ -118,14 +118,14 @@ ms.locfileid: "97968482"
 
     |設定  |值  |
     |---------|---------|
-    |名稱   | 可識別資源的易記名稱。<br>此名稱介於 2 到 50 個字元之間，並且可包含字母、數字和連字號。<br> 名稱必須以字母或數字為開頭或結尾。        |
+    |名稱   | 可識別資源的易記名稱。<br>名稱的長度為2和50個字元，包括字母、數位和連字號。<br> 名稱必須以字母或數字為開頭或結尾。        |
     |區域     |如需 Azure Stack Edge 適用區域的完整清單，請參閱[依區域提供的 Azure 產品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)。 如果使用 Azure Government，如 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)所示的所有政府區域都適用。<br> 請選擇與您要部署裝置的地理區域最接近的位置。|
 
     ![專案和執行個體詳細資料](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
 
 5. 完成時，選取 [下一步:交貨地址]。
 
-    - 如果您已經有一個裝置，請選取 [我有 Azure Stack Edge Pro 裝置] 的下拉式方塊。
+    - 如果您已經有裝置，請選取 [ **我有 Azure Stack Edge 裝置** 的下拉式方塊。
     - 如果這是您所訂購的新裝置，請輸入連絡人姓名、公司、裝置交貨地址和連絡資訊。
 
     ![新裝置的交貨地址](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
@@ -138,19 +138,23 @@ ms.locfileid: "97968482"
 
 8. 選取 [建立]。
 
-建立資源需要幾分鐘的時間。 順利建立及部署資源之後，您就會接獲通知。 選取 [前往資源]。
+   建立資源需要幾分鐘的時間。 順利建立及部署資源之後，您就會接獲通知。 選取 [前往資源]。
 
-![移至 Azure Stack Edge 資源](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
+   ![移至 Azure Stack Edge 資源](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
 
 下單之後，Microsoft 會檢閱順訂單並與您接洽 (透過電子郵件) 交貨詳細資料。
 
 ![檢閱 Azure Stack Edge Pro 訂單的通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
 
+
+> [!NOTE]
+> 如果您想要一次建立多個訂單或複製現有訂單，則可以使用 [Azure 範例中的指令碼](https://github.com/Azure-Samples/azure-stack-edge-order)。 如需詳細資訊，請參閱讀我檔案。
+
 ## <a name="get-the-activation-key"></a>取得啟用金鑰
 
 在 Azure Stack Edge 資源已啟動並執行之後，您將必須取得啟用金鑰。 此金鑰可用來啟動 Azure Stack Edge Pro 裝置，並將其與資源連線。 您現在可以在 Azure 入口網站中取得此金鑰。
 
-1. 移至您所建立的資源，然後選取 [概觀]。 您會看到訂單處理結果的通知。
+1. 移至您建立的資源，然後選取 **[總覽**]。 您會看到訂單處理結果的通知。
 
     ![選取 [概觀]](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 

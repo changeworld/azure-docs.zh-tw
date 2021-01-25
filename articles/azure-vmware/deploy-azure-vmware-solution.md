@@ -2,17 +2,20 @@
 title: 部署及設定 Azure VMware 解決方案
 description: 了解如何使用在規劃階段中收集到的資訊來部署 Azure VMware 解決方案私人雲端。
 ms.topic: tutorial
-ms.date: 11/09/2020
-ms.openlocfilehash: 7e31b9236a3c75009d15bde35019036b6db55cab
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
-ms.translationtype: HT
+ms.date: 12/24/2020
+ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861508"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760880"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>部署及設定 Azure VMware 解決方案
 
-在本文中，您將使用[規劃一節](production-ready-deployment-steps.md)中的資訊來部署 Azure VMware 解決方案。 如果您尚未定義資訊，請回到[規劃一節](production-ready-deployment-steps.md)，再繼續進行。
+在本文中，您將使用[規劃一節](production-ready-deployment-steps.md)中的資訊來部署 Azure VMware 解決方案。 
+
+>[!IMPORTANT]
+>如果您尚未定義資訊，請返回 [ [規劃] 區段](production-ready-deployment-steps.md) ，再繼續進行。
 
 ## <a name="register-the-resource-provider"></a>註冊資源提供者
 
@@ -36,25 +39,26 @@ ms.locfileid: "96861508"
 >[!IMPORTANT]
 >如果您在 [建立私人雲端] 畫面上的初始佈建步驟期間，將 [虛擬網路] 選項保留空白，請先完成 [設定 VMware 私人雲端的網路功能](tutorial-configure-networking.md)教學課程 **之後**，再繼續進行本節。  
 
-部署 Azure VMware 解決方案之後，您將建立虛擬網路的跳躍箱，以連線至 vCenter 和 NSX。 設定 ExpressRoute 電路和 ExpressRoute Global Reach 之後，就不需要跳躍箱。  但是，在您的 Azure VMware 解決方案中觸達 vCenter 和 NSX 十分方便。  
+部署 Azure VMware 解決方案之後，您將建立虛擬網路的跳躍箱來連線至 vCenter 和 NSX。 設定 ExpressRoute 電路和 ExpressRoute Global Reach 之後，就不需要跳躍箱。  但是，在您的 Azure VMware 解決方案中觸達 vCenter 和 NSX 十分方便。  
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="建立 Azure VMware 解決方案跳躍箱" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-若要在虛擬網路中建立您[在部署過程中識別或建立](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution)的虛擬機器 (VM)，請遵循下列指示： 
+若要在虛擬網路中建立虛擬機器 (VM) 在您于部署程式中 [識別或建立](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution)的虛擬網路中，請遵循下列指示： 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
 ## <a name="connect-to-a-virtual-network-with-expressroute"></a>透過 ExpressRoute 的虛擬網路
 
-如果您未在部署步驟中定義虛擬網路，而您的目的是要將 Azure VMware 解決方案的 ExpressRoute 連線到現有的 ExpressRoute 閘道，請遵循下列步驟。
+>[!IMPORTANT]
+>如果您已在 Azure 的部署畫面中定義虛擬網路，請跳至下一節。
 
-如果您已在 Azure 的部署畫面中定義虛擬網路，請跳至下一節。
+如果您未在部署步驟中定義虛擬網路，而您的目的是要將 Azure VMware 解決方案的 ExpressRoute 連線到現有的 ExpressRoute 閘道，請遵循下列步驟。
 
 [!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
 ## <a name="verify-network-routes-advertised"></a>確認已公告網路路由
 
-跳躍箱位於 Azure VMware 解決方案透過其 ExpressRoute 電路連線的虛擬網路中。  在 Azure 中，移至跳躍箱的網路介面，並[檢視有效路由](../virtual-network/manage-route-table.md#view-effective-routes)。
+跳躍方塊位於虛擬網路中，Azure VMware 解決方案會透過其 ExpressRoute 線路進行連線。  在 Azure 中，移至跳躍箱的網路介面，並[檢視有效路由](../virtual-network/manage-route-table.md#view-effective-routes)。
 
 在 [有效路由] 清單中，您應該會看到在 Azure VMware 解決方案部署過程中建立的網路。 您會在本文稍早的[部署步驟](#deploy-azure-vmware-solution)期間，看到多個衍生自[`/22`您所定義網路](production-ready-deployment-steps.md#ip-address-segment)的網路。
 
@@ -70,7 +74,7 @@ ms.locfileid: "96861508"
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>在 Azure VMware 解決方案中建立網路區段
 
-您可以使用 NSX-T 在您的 Azure VMware 解決方案環境中建立新的網路區段。  您已在[規劃一節](production-ready-deployment-steps.md)中定義要建立的網路。  如果您尚未定義，請回到[規劃一節](production-ready-deployment-steps.md)，再繼續進行。
+您可以使用 NSX-T 在您的 Azure VMware 解決方案環境中建立新的網路區段。  您已在 [ [規劃] 區段](production-ready-deployment-steps.md)中定義您想要建立的網路。  如果您尚未定義，請回到[規劃一節](production-ready-deployment-steps.md)，再繼續進行。
 
 >[!IMPORTANT]
 >請確定您所定義的 CIDR 網路位址區塊不會與 Azure 或內部部署環境中的任何項目重疊。  
@@ -79,9 +83,9 @@ ms.locfileid: "96861508"
 
 ## <a name="verify-advertised-nsx-t-segment"></a>驗證已公告的 NSX-T 區段
 
-回到[確認公告的網路路由](#verify-network-routes-advertised)步驟。 您會在清單中看到一個額外的路由，代表您在上一個步驟中建立的網路區段。  
+回到[確認公告的網路路由](#verify-network-routes-advertised)步驟。 您將會在清單中看到其他路由，代表您在上一個步驟中建立的網路區段。  
 
-針對虛擬機器，您將指派您在「[在 Azure VMware 解決方案上建立網路區段](#create-a-network-segment-on-azure-vmware-solution)」步驟中建立的區段。  
+針對虛擬機器，您將指派您在「在 [Azure VMware 解決方案上建立網路區段](#create-a-network-segment-on-azure-vmware-solution) 」步驟中建立的區段。  
 
 因為需要 DNS，請識別您想要使用的 DNS 伺服器。  
 
@@ -104,13 +108,13 @@ ms.locfileid: "96861508"
 
 ## <a name="add-a-vm-on-the-nsx-t-network-segment"></a>在 NSX-T 網路區段上新增 VM
 
-在您的 Azure VMware 解決方案 vCenter 中部署 VM，並使用其驗證從您的 Azure VMware 解決方案網路到以下位置的連線能力：
+在您的 Azure VMware 解決方案 vCenter 中，部署 VM 並使用它來確認從您的 Azure VMware 解決方案網路連線到：
 
 - 網際網路
 - Azure 虛擬網路
 - 內部部署。  
 
-如同在任何 vSphere 環境中一樣部署 VM。  將 VM 連結至您先前在 NSX-T 中建立的其中一個網路區段。  
+如同在任何 vSphere 環境中一樣部署 VM。  將 VM 連接到您先前在 NSX-T 中建立的其中一個網路區段。  
 
 >[!NOTE]
 >如果您設定了 DHCP 伺服器，就會從其取得 VM 的網路組態 (請記得設定範圍)。  如果您要以靜態方式設定，請照常設定。
@@ -119,15 +123,14 @@ ms.locfileid: "96861508"
 
 登入在上一個步驟中建立的 VM，並確認連線能力；
 
-1. 偵測網際網路上的 IP。
-2. 透過網頁瀏覽器移至網際網路網站。
+1. Ping 網際網路上的 IP。
+2. 在網頁瀏覽器中，移至網際網路網站。
 3. 偵測位於 Azure 虛擬網路的跳躍箱。
 
->[!IMPORTANT]
->此時，Azure VMware 解決方案已啟動並執行，且您已成功建立與 Azure 虛擬網路和網際網路之間的連線能力。
+Azure VMware 解決方案現在已啟動並在執行中，而且您已成功建立與 Azure 虛擬網路和網際網路的連線能力。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
-在下一節中，您會透過 ExpressRoute 將 Azure VMware 解決方案連線到您的內部部署網路。
+在下一節中，您會透過 ExpressRoute 將 Azure VMware 解決方案連線至您的內部部署網路。
 > [!div class="nextstepaction"]
 > [將 Azure VMware 解決方案連線到您的內部部署環境](azure-vmware-solution-on-premises.md)

@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: f1a1d43f9bfc960628447a3c20e7dab2ac701dc5
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588585"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762582"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 應用程式 Proxy 常見問題
 
@@ -101,6 +101,10 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\W
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>預設和「長」後端超時的長度為何？ 是否可以延長期限？
 
 預設長度是85秒。 "Long" 設定為180秒。 無法延長超時限制。
+
+### <a name="can-a-service-principal-manage-application-proxy-using-powershell-or-microsoft-graph-apis"></a>服務主體可以使用 Powershell 或 Microsoft Graph Api 來管理應用程式 Proxy 嗎？
+
+否，目前不支援。
 
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>如何? 變更我的應用程式載入的登陸頁面？
 

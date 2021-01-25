@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/10/2020
+ms.date: 1/25/2021
 ms.author: kenwith
-ms.openlocfilehash: efdbec10c74a6b1892df13b8308538e61f42f679
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 2a27124ea76d6e5aaa7ec4b8ca36c388718ffb94
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673496"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761295"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>教學課程 - 在 Azure Active Directory 中自訂 SaaS 應用程式的使用者佈建屬性對應
 
@@ -75,7 +75,7 @@ Microsoft Azure AD 支援將使用者佈建至 Salesforce、G Suite 等第三方
   - **僅限建立期間** - 僅將此對應套用於使用者建立動作。
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>比對來源和目標系統中的使用者
-Azure AD 佈建服務可以部署在 "greenfield" 案例中 (使用者不存在於目標系統中) 和 "brownfield" 案例中 (使用者已存在於目標系統中)。 為了支援這兩種案例，佈建服務會使用比對屬性的概念。 比對屬性可讓您決定如何唯一識別來源中的使用者，並比對目標中的使用者。 在規劃部署的過程中，請找出可用來對來源和目標系統中的使用者進行唯一識別的屬性。 注意事項：
+Azure AD 布建服務可部署在「環保現場」案例中， (使用者不會在目標系統中結束) 和「棕色地帶」案例 (使用者已存在於目標系統) 中。 為了支援這兩種案例，佈建服務會使用比對屬性的概念。 比對屬性可讓您決定如何唯一識別來源中的使用者，並比對目標中的使用者。 在規劃部署的過程中，請找出可用來對來源和目標系統中的使用者進行唯一識別的屬性。 注意事項：
 
 - **比對屬性必須是唯一的：** 客戶常會使用 userPrincipalName、mail 或物件識別碼等屬性作為比對屬性。
 - **可將多個屬性作為比對屬性：** 您可以定義多個要在比對使用者時評估的屬性，及其評估順序 (定義為 UI 中的比對優先順序)。 例如，如果您將三個屬性定義為比對屬性，且在評估前兩個屬性之後即找出唯一相符的使用者，服務就不會評估第三個屬性。 服務會依照指定的順序評估比對屬性，並在找到相符項目時停止評估。  
@@ -156,6 +156,7 @@ SCIM 應用程式的屬性名稱必須遵循下列範例顯示的模式。 可�
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
      "userName":"bjensen",
+     "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
      "name":{
        "formatted":"Ms. Barbara J Jensen III",

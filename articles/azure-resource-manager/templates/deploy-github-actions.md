@@ -4,24 +4,24 @@ description: 說明如何使用 GitHub Actions)  (ARM 範本部署 Azure Resourc
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 4c1f59e9a18e7359ae543b0311baea0c2a4ab8d6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 67d4ac51e3e1f84f6a9acd0fc94d5818355d3954
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674327"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762079"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>使用 GitHub Actions 部署 ARM 範本
 
-[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) 是 GitHub 中的一組功能，可讓您在儲存程式碼及共同處理提取要求和問題的相同位置，自動化軟體發展工作流程。
+[GitHub Actions](https://docs.github.com/en/actions) 是 GitHub 中的一組功能，可讓您在儲存程式碼及共同處理提取要求和問題的相同位置，自動化軟體發展工作流程。
 
 使用 [ [部署 Azure Resource Manager 範本] 動作](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) ，自動將 Azure Resource Manager 範本 (ARM 範本部署到 Azure) 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。
-    - 用於儲存 Resource Manager 範本和工作流程檔案的 GitHub 存放庫。 若要建立一個，請參閱[建立新的存放庫](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-new-repository) \(英文\)。
+    - 用於儲存 Resource Manager 範本和工作流程檔案的 GitHub 存放庫。 若要建立一個，請參閱[建立新的存放庫](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository) \(英文\)。
 
 
 ## <a name="workflow-file-overview"></a>工作流程檔案概觀

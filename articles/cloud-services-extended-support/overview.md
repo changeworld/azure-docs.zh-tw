@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cf7c4b881697b664403d8c817c3b9e48fb48944d
-ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
+ms.openlocfilehash: 969f60cd92e8c1cbe93f1646cccd08c942ad9923
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/24/2021
-ms.locfileid: "98746759"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762825"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>關於 Azure 雲端服務 (延伸支援) 
 
@@ -27,9 +27,11 @@ ms.locfileid: "98746759"
 
 ## <a name="what-does-not-change"></a>不會變更的內容 
 - 您可以建立程式碼、定義設定，並將其部署到 Azure。 Azure 會設定計算環境、執行您的程式碼，然後為您進行監視及維護。
-- 雲端服務 (延伸支援) 也支援兩種類型的角色： [web 和背景工作](../cloud-services/cloud-services-choose-me.md)角色。 
-- 這三個元件、服務定義 ( 的) 、服務設定 ( .cscfg) ，以及雲端服務 ( 的服務套件會繼續進行，而且其 [格式](cloud-services-model-and-package.md)不會變更。 
-- 執行時間程式碼不需要進行任何變更，因為資料平面是相同的，而且控制平面只會變更。  
+- 雲端服務 (延伸支援) 也支援兩種類型的角色： [web 和背景工作](../cloud-services/cloud-services-choose-me.md)角色。 Web 角色和背景工作角色的設計、架構或元件沒有任何變更。 
+- 雲端服務的三個元件、服務定義 ( 的) 、服務設定 ( .cscfg) 以及服務套件 (. .cspkg) 繼續進行，而且其 [格式](cloud-services-model-and-package.md)不會變更。 
+- 執行時間程式碼不需要進行任何變更，因為資料平面是相同的，而且控制平面只會變更。 
+- Azure GuestOS 版本和相關更新會與雲端服務 (傳統) 
+- 更新網域相關的基礎更新程式、升級的進行方式、回復和在更新期間所允許的服務變更不會變更
 
 ## <a name="changes-in-deployment-model"></a>部署模型中的變更
 

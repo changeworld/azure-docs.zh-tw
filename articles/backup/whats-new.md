@@ -3,12 +3,12 @@ title: Azure 備份的新功能
 description: 瞭解 Azure 備份中的新功能。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 935c2a806ed3b08f19e680bf1522d98a9ad67666
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730284"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762374"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure 備份的新功能
 
@@ -19,20 +19,20 @@ Azure 備份不斷地改進和釋出新功能，以增強 Azure 中資料的保�
 ## <a name="updates-summary"></a>更新摘要
 
 - 2021 年 1 月
-  - [Azure 磁片備份 (預覽版) ](disk-backup-overview.md)
-  - [使用客戶管理的金鑰進行待用加密現已正式推出](encryption-at-rest-with-cmk.md)
+  - [Azure 磁片備份 (預覽版) ](#azure-disk-backup-in-preview)
+  - [使用客戶管理的金鑰進行待用加密 (公開上市) ](#encryption-at-rest-using-customer-managed-keys)
 - 2020 年 11 月
   - [適用于 Azure 檔案共用 (AFS) 備份的 Azure Resource Manager 範本](#azure-resource-manager-template-for-afs-backup)
-  - [Azure Vm 上的 SAP Hana 資料庫增量備份](#incremental-backups-for-sap-hana-databases)
+  - [Azure Vm 上 SAP Hana 資料庫的增量備份 (預覽) ](#incremental-backups-for-sap-hana-databases-in-preview)
 - 2020 年 9 月
-  - [備份中心](#backup-center)
-  - [備份適用於 PostgreSQL 的 Azure 資料庫](#backup-azure-database-for-postgresql)
+  - [預覽) 的備份中心 (](#backup-center-in-preview)
+  - [預覽版中的備份適用於 PostgreSQL 的 Azure 資料庫 () ](#backup-azure-database-for-postgresql-in-preview)
   - [選擇性磁片備份和還原](#selective-disk-backup-and-restore)
-  - [Azure Vm 上 SQL Server 和 SAP Hana 資料庫的跨區域還原](#cross-region-restore-for-sql-server-and-sap-hana)
-  - [支援最多32個磁片的 Vm 備份](#support-for-backup-of-vms-with-up-to-32-disks)
+  - [Azure Vm 上 SQL Server 和 SAP Hana 資料庫的跨區域還原 (預覽) ](#cross-region-restore-for-sql-server-and-sap-hana-in-preview)
+  - [支援最多32個磁片的 Vm 備份 (正式推出) ](#support-for-backup-of-vms-with-up-to-32-disks)
   - [Azure Vm 中 SQL 的簡化備份設定體驗](#simpler-backup-configuration-for-sql-in-azure-vms)
-  - [RHEL Azure 虛擬機器中的備份 SAP Hana](#backup-sap-hana-in-rhel-azure-virtual-machines)
-  - [適用于備份資料的區域冗余儲存體 (ZRS) ](#zone-redundant-storage-zrs-for-backup-data)
+  - [RHEL Azure 虛擬機器中的備份 SAP Hana (預覽) ](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
+  - [適用于備份資料的區域冗余儲存體 (ZRS)  (預覽) ](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure Vm 中 SQL Server 和 SAP Hana 工作負載的虛刪除](#soft-delete-for-sql-server-and-sap-hana-workloads)
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure 磁片備份 (預覽版) 
@@ -53,13 +53,13 @@ Azure 備份現在支援使用 Azure Resource Manager (ARM) 範本來設定現�
 
 如需詳細資訊，請參閱 [Azure 備份的 Azure Resource Manager 範本](backup-rm-template-samples.md)。
 
-## <a name="incremental-backups-for-sap-hana-databases"></a>SAP Hana 資料庫的增量備份
+## <a name="incremental-backups-for-sap-hana-databases-in-preview"></a>SAP Hana 資料庫的增量備份 (預覽) 
 
 Azure 備份現在針對裝載于 Azure Vm 上的 SAP Hana 資料庫支援增量備份。 這可讓您更快速且更符合成本效益的方式備份您的 SAP Hana 資料。
 
 如需詳細資訊，請參閱 [建立備份原則期間的各種可用選項](sap-hana-faq-backup-azure-vm.md#policy) ，以及 [如何建立 SAP Hana 資料庫的備份原則](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)。
 
-## <a name="backup-center"></a>備份中心
+## <a name="backup-center-in-preview"></a>預覽) 的備份中心 (
 
 Azure 備份已啟用新的原生管理功能，可從中央主控台管理整個備份資產。 備份中心可讓您以一致的方式，以一致的方式監視、操作、管理及優化資料保護，以符合 Azure 的原生管理體驗。
 
@@ -67,7 +67,7 @@ Azure 備份已啟用新的原生管理功能，可從中央主控台管理整�
 
 如需詳細資訊，請參閱 [備份中心的總覽](backup-center-overview.md)。
 
-## <a name="backup-azure-database-for-postgresql"></a>備份適用於 PostgreSQL 的 Azure 資料庫
+## <a name="backup-azure-database-for-postgresql-in-preview"></a>預覽版中的備份適用於 PostgreSQL 的 Azure 資料庫 () 
 
 Azure 備份和 Azure 資料庫服務已建立 Azure 于 postgresql (的企業級備份解決方案，現已推出預覽) 。 現在您可以使用客戶控制的備份原則來滿足您的資料保護和合規性需求，讓備份保留最多10年的時間。 如此一來，您就可以更細微地控制在個別資料庫層級上管理備份和還原作業。 同樣地，您可以輕鬆地在於 postgresql 版本或 blob 儲存體間還原。
 
@@ -79,7 +79,7 @@ Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的�
 
 如需詳細資訊，請參閱 [Azure 虛擬機器的選擇性磁片備份和還原](selective-disk-backup-restore.md)。
 
-## <a name="cross-region-restore-for-sql-server-and-sap-hana"></a>SQL Server 和 SAP Hana 的跨區域還原
+## <a name="cross-region-restore-for-sql-server-and-sap-hana-in-preview"></a>SQL Server 的跨區域還原和預覽中的 SAP Hana () 
 
 隨著跨區域還原的推出，您現在可以在次要區域中起始還原，以降低環境主要區域中的即時停機問題。 這會讓次要區域還原完全由客戶控制。 Azure 備份使用複寫至次要區域的備份資料進行這類還原。
 
@@ -99,13 +99,13 @@ Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的�
 
 如需詳細資訊，請參閱 [[VM] 窗格中的 [備份 SQL Server]](backup-sql-server-vm-from-vm-pane.md)。
 
-## <a name="backup-sap-hana-in-rhel-azure-virtual-machines"></a>RHEL Azure 虛擬機器中的備份 SAP Hana
+## <a name="backup-sap-hana-in-rhel-azure-virtual-machines-in-preview"></a>RHEL Azure 虛擬機器中的備份 SAP Hana (預覽) 
 
 Azure 備份是適用于 Azure 的原生備份解決方案，而且是由 SAP 認證的 BackInt。 Azure 備份現已新增 Red Hat Enterprise Linux (RHEL) 的支援，這是執行 SAP Hana 最普遍使用的 Linux 作業系統之一。
 
 如需詳細資訊，請參閱 [SAP Hana 資料庫備份案例支援矩陣](sap-hana-backup-support-matrix.md#scenario-support)。
 
-## <a name="zone-redundant-storage-zrs-for-backup-data"></a>適用于備份資料的區域冗余儲存體 (ZRS) 
+## <a name="zone-redundant-storage-zrs-for-backup-data-in-preview"></a>適用于備份資料的區域冗余儲存體 (ZRS)  (預覽) 
 
 Azure 儲存體可提供高效能、高可用性和高資料復原的絕佳平衡，以及其不同的冗余選項。 Azure 備份也可讓您將這些優點延伸至備份資料，以及將備份儲存在本機冗余儲存體的選項， (LRS) 和異地複寫儲存體 (GRS) 。 現在有額外的持久性選項，其中新增了區域冗余儲存體 (ZRS) 的支援。
 

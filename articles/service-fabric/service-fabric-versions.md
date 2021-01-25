@@ -1,46 +1,49 @@
 ---
-title: Azure Service Fabric 中支援的叢集版本
+title: 升級您的 Azure Service Fabric 叢集版本
 description: 瞭解 Azure Service Fabric 中的叢集版本，包括 Service Fabric team blog 中最新版本的連結。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 82b90d6b0acf5d83f9509abd9ee4b34cb74d1b48
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b7234a60c98c42716e5b294c356062ec7001aef7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736779"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762638"
 ---
-# <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
+# <a name="upgrade-your-azure-service-fabric-cluster-version"></a>升級您的 Azure Service Fabric 叢集版本
 
 確定您的叢集一律執行支援的 Azure Service Fabric 版本。 在我們宣佈發行新版 Service Fabric 的最少60天后，就會結束對前一版的支援。 您可以在 [Service Fabric team blog](https://azure.microsoft.com/updates/?product=service-fabric)上找到新版本的公告。
 
-針對特定版本的 Service Fabric 執行時間，您可以使用指定或較舊版本的 SDK/NuGet 套件。 不支援較新版本的套件，而且可能會有以較舊叢集為目標的問題，因為它們可能具有這些環境不支援的功能或通訊協定變更。
+針對每個版本的 Service Fabric 執行時間，您可以使用指定或較舊版本的 SDK/NuGet 套件。 較新版本的套件可能無法以較舊的叢集為目標。 較舊的叢集可能會有較新的封裝環境不支援的功能或通訊協定變更。
 
-請參閱下列檔，以取得如何讓您的叢集保持執行支援的 Service Fabric 版本的詳細資料：
+請參閱下列文章，以取得如何讓您的叢集保持執行支援的 Service Fabric 版本的詳細資料：
 
 - [升級 Azure Service Fabric 叢集](service-fabric-cluster-upgrade.md)
 - [升級在獨立 Windows Server 叢集上執行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)
 
-
 ## <a name="unsupported-versions"></a>不支援的版本
 
-### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>5.7 和以下6.3.63 之間版本的升級警示。 *
-為了改善安全性和可用性，Azure 基礎結構將會進行變更，而這可能會影響 Service Fabric 客戶。 **從5.7 到6.3 的不支援版本上的所有 Service Fabric 叢集都會受到影響**。 解決此變更需要更新 Service Fabric 執行時間，而這些執行時間已可供所有區域中的所有支援 Service Fabric 版本使用。
+### <a name="upgrade-alert-for-versions-between-57-and-6363"></a>5.7 與6.3.63 之間版本的升級警示。 *
 
-我們會要求並建議您採取動作，以升級至最新支援的版本，並于 **1 月19日 2021** ，以避免服務中斷。如果您有支援方案，而且需要技術協助，請開啟 Azure Service Fabric 的支援要求，並在支援票證中提及此內容，以透過 Azure 支援通道與我們聯繫。
+為了改進安全性和可用性，Azure 基礎結構已進行變更，可能會影響 Service Fabric 客戶。 此變更會影響所有執行5.7 至6.3 版的 Service Fabric 叢集。
 
-#### <a name="impact-if-not-upgraded-to-supported-versions"></a>如果未升級至支援的版本時的影響
+所有區域中所有支援的 Service Fabric 版本都可使用 Service Fabric 執行時間的更新。 請于2021年1月19日之前升級為其中一個最新支援的版本，以避免服務中斷。
 
-**在不支援的版本（從5.7 到6.3.63）執行的 Azure Service Fabric 叢集。 \*** 如果您未在2021年1月19日升級為下列支援版本的其中一個，將無法啟動，也無法使用。
+如果您有支援方案，且需要技術協助，請透過 Azure 支援通道來觸及。 開啟 Azure Service Fabric 的支援要求，並在支援票證中提及此內容。
 
-#### <a name="required-action"></a>必要的動作
-升級至下列 Service Fabric 支援的版本，以避免停機或與此變更相關的功能遺失。 請確定您的叢集至少執行了這些版本，以防止您的環境發生問題。
+#### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果您未升級至支援的版本
 
-  ###### <a name="supported-service-fabric-runtime-versions"></a>支援的 Service Fabric 執行階段版本
-   如果您不在下面列出的 Service Fabric 支援版本，請升級為其中一個已包含必要變更的版本，以防止叢集停機。 **注意：** 7.2 的所有發行版本都包含必要的變更。
+從5.7 到6.3.63 的版本上執行的 Azure Service Fabric 叢集。如果您未于2021年1月19日升級，將無法使用。
+
+#### <a name="required-action"></a>必要動作
+
+升級至支援的 Service Fabric 版本，以避免停機或與此變更相關的功能遺失。 確定您的叢集至少執行下列版本，以防止您的環境發生問題。
+
+> [!Note]
+> 7.2 的所有發行版本都包含必要的變更。
   
-  | OS | 叢集中目前的 Service Fabric 執行時間 | CU/Patch 版本  | 
-  | --- | --- |--- | 
+  | OS | 叢集中目前的 Service Fabric 執行時間 | CU/Patch 版本 |
+  | --- | --- |--- |
   | Windows | 7.0. * | 7.0.478.9590 |
   | Windows | 7.1. * | 7.1.503.9590 |
   | Windows | 7.2. * | 7.2. * |
@@ -49,28 +52,32 @@ ms.locfileid: "98736779"
   | Linux Ubuntu 18.04 | 7.1. * | 7.1.455.1804 |
   | Linux Ubuntu 16.04 | 7.2. * | 7.2. * |
   | Linux Ubuntu 18.04 | 7.2. * | 7.2. * |
- 
-### <a name="upgrade-alert-for-versions-greater-than-63"></a>版本超過6.3 的升級警示 
-為了改善安全性和可用性，Azure 基礎結構將會進行變更，而這可能會影響 Service Fabric 客戶。 **所有使用 [容器的開放網路功能功能的](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)Service Fabric 叢集，在不支援的版本（大於6.3）和低於7.0 的版本上執行，且不相容的支援版本從7.0 開始會受到影響**。 解決此變更需要更新 Service Fabric 執行時間，而這些執行時間已可供所有區域中的所有支援 Service Fabric 版本使用。
 
- #### <a name="impact-if-not-upgraded-to-supported-versions"></a>如果未升級至支援的版本時的影響
-  **使用 [容器的開放網路功能功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)的 Azure Service Fabric 叢集功能適用于容器，並在大於6.3 且** 不包含變更的版本上執行，如果未在 **2021 年1月 19** 日升級為下列支援版本的其中一個，則會遇到功能遺失或服務中斷的情況。
- 
-  - 如果叢集 **執行的 Service Fabric 大於6.3 但未使用開放網路功能功能**，叢集將會保持運作。
+### <a name="upgrade-alert-for-versions-later-than-63"></a>6.3 以後版本的升級警示
 
- - 如果叢集 **執行的 Service Fabric 大於6.3，並使用 [適用于容器的開放網路功能功能](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** ，叢集可能會變成無法使用，而且將會停止運作，而導致工作負載的服務中斷。
- 
- -   若 **為 [在7.0 和7.0.466 之間執行 Windows 版本的叢集 () 包含的兩個版本](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-version-names)，且 windows 作業系統已啟用 windows 容器功能。注意： Linux 版本7.0.457、7.0.464 和7.0.465 不會受到影響**。
-    - **影響**：叢集將會停止運作，而導致您的工作負載服務中斷。
-       
-#### <a name="required-action"></a>必要的動作
-升級至下列 Service Fabric 支援的版本，以避免停機或與此變更相關的功能遺失。 請確定您的叢集至少執行了這些版本，以防止您的環境發生問題。 
- 
- ###### <a name="supported-service-fabric-runtime-versions"></a>支援的 Service Fabric 執行階段版本
- 如果您不在下面列出的 Service Fabric 支援版本，請升級為其中一個已包含必要變更的版本，以防止功能遺失。  **注意：** 7.2 的所有發行版本都包含必要的變更。
- 
-  | OS | 叢集中目前的 Service Fabric 執行時間 | CU/Patch 版本  | 
-  | --- | --- |--- | 
+為了改進安全性和可用性，Azure 基礎結構已進行變更，可能會影響 Service Fabric 客戶。 這種變更將會影響使用 [容器開放網路模式](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) 的所有 Service Fabric 叢集，並執行6.3 至7.0 或更新版本不相容的支援版本（7.0）。 所有區域中所有支援的 Service Fabric 版本都可使用 Service Fabric 執行時間的更新。
+
+#### <a name="if-you-dont-upgrade-to-a-supported-version"></a>如果您未升級至支援的版本
+
+如果 Azure Service Fabric 叢集在6.3 年1月 2021 19 日未升級為支援的版本，則在以後版本上執行的叢集將會遇到功能或服務中斷的遺失。
+
+服務中斷可能包括下列各項：
+
+- *未* 使用 **開放式** 模式的版本：叢集將會保持啟動，但 **開放式** 模式將會停止運作，這可能會導致工作負載的服務中斷。
+
+- 使用 **開放式***模式的版本*：叢集可能會變成無法使用，而且會停止運作，這可能會導致您的工作負載服務中斷。
+  
+#### <a name="required-action"></a>必要動作
+
+若要避免停機或功能遺失，請確定您的叢集正在執行下列其中一個版本。
+
+資料表中的 Service Fabric 版本包含必要的變更，以防止功能遺失。 請確定您使用的是其中一個版本。  
+
+> [!Note]
+> 7.2 的所有發行版本都包含必要的變更。
+
+  | OS | 叢集中目前的 Service Fabric 執行時間 | CU/Patch 版本 |
+  | --- | --- |--- |
   | Windows | 7.0. * | 7.0.478.9590 |
   | Windows | 7.1. * | 7.1.503.9590 |
   | Windows | 7.2. * | 7.2. * |
@@ -81,6 +88,7 @@ ms.locfileid: "98736779"
   | Linux Ubuntu 18.04 | 7.2. * | 7.2. * |
 
 ## <a name="supported-versions"></a>支援的版本
+
 下表列出 Service Fabric 的版本及其支援結束日期。
 
 | 叢集中的 Service Fabric 執行階段 | 可直接自叢集版本升級 |相容的 SDK 或 NuGet 套件版本 | 結束支援 |
@@ -135,28 +143,28 @@ ms.locfileid: "98736779"
 
 | 版本名稱 | Windows 版本號碼 | Linux 版本號碼 |
 | --- | --- | --- |
-| 5.3 RTO | 5.3.121.9494 | NA |
-| 5.3 CU1 | 5.3.204.9494 | NA |
-| 5.3 CU2 | 5.3.301.9590 | NA |
-| 5.3 CU3 | 5.3.311.9590 | NA |
-| 5.4 CU2 | 5.4.164.9494 | NA |
-| 5.5 CU1 | 5.5.216.0    | NA |
-| 5.5 CU2 | 5.5.219.0    | NA |
-| 5.5 CU3 | 5.5.227.0    | NA |
-| 5.5 CU4 | 5.5.232.0 | NA |
-| 5.6 RTO | 5.6.204.9494 以上 | NA |
-| 5.6 CU2 | 5.6.210.9494 | NA |
-| 5.6 CU3 | 5.6.220.9494 | NA |
-| 5.7 RTO | 5.7.198.9494 | NA |
-| 5.7 CU4 | 5.7.221.9494 | NA |
+| 5.3 RTO | 5.3.121.9494 | 不適用|
+| 5.3 CU1 | 5.3.204.9494 | 不適用|
+| 5.3 CU2 | 5.3.301.9590 | 不適用|
+| 5.3 CU3 | 5.3.311.9590 | 不適用|
+| 5.4 CU2 | 5.4.164.9494 | 不適用|
+| 5.5 CU1 | 5.5.216.0    | 不適用|
+| 5.5 CU2 | 5.5.219.0 | 不適用|
+| 5.5 CU3 | 5.5.227.0 | 不適用|
+| 5.5 CU4 | 5.5.232.0 | 不適用|
+| 5.6 RTO | 5.6.204.9494 以上 | 不適用|
+| 5.6 CU2 | 5.6.210.9494 | 不適用|
+| 5.6 CU3 | 5.6.220.9494 | 不適用|
+| 5.7 RTO | 5.7.198.9494 | 不適用|
+| 5.7 CU4 | 5.7.221.9494 | 不適用|
 | 6.0 RTO | 6.0.211.9494 | 6.0.120.1 |
 | 6.0 CU1 | 6.0.219.9494 | 6.0.127.1 |
 | 6.0 CU2 | 6.0.232.9494 | 6.0.133.1 |
 | 6.1 CU1 | 6.1.456.9494 | 6.1.183.1 |
 | 6.1 CU2 | 6.1.467.9494 | 6.1.185.1 |
-| 6.1 CU3 | 6.1.472.9494 | NA |
+| 6.1 CU3 | 6.1.472.9494 | 不適用|
 | 6.1 CU4 | 6.1.480.9494 | 6.1.187.1 |
-| 6.2 RTO | 6.2.269.9494 | 6.2.184.1 | 
+| 6.2 RTO | 6.2.269.9494 | 6.2.184.1 |
 | 6.2 CU1 | 6.2.274.9494 | 6.2.191.1 |
 | 6.2 CU2 | 6.2.283.9494 | 6.2.194.1 |
 | 6.2 CU3 | 6.2.301.9494 | 6.2.199.1 |
@@ -164,13 +172,13 @@ ms.locfileid: "98736779"
 | 6.3 CU1 | 6.3.176.9494 | 6.3.124.1 |
 | 6.3 CU1 | 6.3.187.9494 | 6.3.129.1 |
 | 6.4 RTO | 6.4.617.9590 | 6.4.625.1 |
-| 6.4 CU2 | 6.4.622.9590 | NA |
+| 6.4 CU2 | 6.4.622.9590 | 不適用|
 | 6.4 CU3 | 6.4.637.9590 | 6.4.634.1 |
 | 6.4 CU4 | 6.4.644.9590 | 6.4.639.1 |
 | 6.4 CU5 | 6.4.654.9590 | 6.4.649.1 |
-| 6.4 CU6 | 6.4.658.9590 | NA |
+| 6.4 CU6 | 6.4.658.9590 | 不適用|
 | 6.4 CU7 | 6.4.664.9590 | 6.4.661.1 |
-| 6.4 CU8 | 6.4.670.9590 | NA |
+| 6.4 CU8 | 6.4.670.9590 | 不適用|
 | 6.5 RTO | 6.5.639.9590 | 6.5.435.1 版 |
 | 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6.5 CU2 | 6.5.658.9590 | 6.5.460.1 |
@@ -189,8 +197,7 @@ ms.locfileid: "98736779"
 | 7.1 CU5 | 7.1.458.9590 | 7.1.454.1 |
 | 7.1 CU6 | 7.1.459.9590 | 7.1.455.1 |
 | 7.1 CU8 | 7.1.503.9590 | 7.1.508.1 |
-| 7.2 RTO | 7.2.413.9590 | NA |
+| 7.2 RTO | 7.2.413.9590 | 不適用|
 | 7.2 CU2 | 7.2.432.9590 | 7.2.431.1 |
-| 7.2 CU3 | 7.2.433.9590 | NA |
+| 7.2 CU3 | 7.2.433.9590 | 不適用|
 | 7.2 CU4 | 7.2.445.9590 | 7.2.447.1 |
-

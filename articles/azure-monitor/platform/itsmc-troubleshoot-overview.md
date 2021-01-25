@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: a4a7b7a4008d5cc4636e2d533c225a618f35af05
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98611180"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761975"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>針對 ITSM 連接器中的問題進行疑難排解
 
@@ -43,24 +43,23 @@ ITSM 可讓您選擇將警示傳送至外部票證系統，例如 ServiceNow。
 
 ![顯示 Log Analytics 畫面的螢幕擷取畫面。](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="troubleshoot-itsm-connections"></a>針對 ITSM 連線進行疑難排解
-
-- 如果連接無法連線到 ITSM 系統，而且您 **在儲存連接訊息時發生錯誤** ，請執行下列步驟：
-   - 針對 ServiceNow、Cherwell 和 Provance 連線：  
-     - 確定您已正確輸入每個連線的使用者名稱、密碼、用戶端識別碼和用戶端密碼。  
-     - 請確定您在對應的 ITSM 產品中有足夠的許可權，才能建立連接。  
-   - 針對 Service Manager 連接：  
-     - 確定已成功部署 web 應用程式，且已建立混合式連接。 若要確認是否已成功建立與內部部署 Service Manager 電腦的連線，請移至 web 應用程式 URL，如建立 [混合](./itsmc-connections-scsm.md#configure-the-hybrid-connection)式連線的檔中所述。  
-
-- 如果記錄分析警示引發但未在 ITSM 產品中建立工作專案，如果設定專案未建立/連結至工作專案，或其他資訊，請參閱下列資源：
-   -  ITSMC：解決方案會顯示連線、工作專案、電腦等的 [摘要](itsmc-dashboard.md)。 選取具有 **連接器狀態** 標籤的磚。 這樣做會讓您使用相關查詢來 **記錄搜尋** 。 查看記錄檔記錄，以 `LogType_S` `ERROR` 取得詳細資訊。
-   您可以在此查看資料表中有關訊息的詳細[資料。](itsmc-dashboard-errors.md)
-   - **記錄搜尋** 頁面：使用查詢直接查看錯誤和相關資訊 `*ServiceDeskLog_CL*` 。
-
 ## <a name="common-symptoms---how-should-it-be-resolved"></a>常見的徵兆-如何解決此問題？
 
 下列清單包含常見的徵兆，以及如何解決此問題：
 
+* **徵兆**：如果連接無法連線到 ITSM 系統，而且您 **在儲存連接訊息時收到錯誤** 。
+
+    **原因**：原因可以是其中一個選項：
+    * 不正確的認證
+     * 權限不足
+     * 應正確部署 Web 應用程式
+
+    **解決方案**：
+    * 針對 ServiceNow、Cherwell 和 Provance 連線：
+        * 確定您已正確輸入每個連線的使用者名稱、密碼、用戶端識別碼和用戶端密碼。  
+        * 針對 ServiceNow：確定您在對應的 ITSM 產品中有足夠的許可權，以 [指定](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role)的方式進行連接。
+  * 針對 Service Manager 連接：  
+      * 確定已成功部署 web 應用程式，且已建立混合式連接。 若要確認是否已成功建立與內部部署 Service Manager 電腦的連線，請移至 web 應用程式 URL，如建立 [混合](./itsmc-connections-scsm.md#configure-the-hybrid-connection)式連線的檔中所述。  
 * **徵兆**：已建立重複的工作專案
 
     **原因**：原因可以是下列兩個選項之一：

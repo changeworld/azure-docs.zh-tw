@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541368"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762696"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>訓練您 LUIS 應用程式的作用中版本
 
@@ -28,9 +28,9 @@ ms.locfileid: "91541368"
 
 若要在 [LUIS 入口網站](https://www.luis.ai)中開始反覆程序，您必須至少先將 LUIS 應用程式定型一次。 請在訓練之前，確定每個意圖都至少有一個語調。
 
-1. 在 [我的應用程式]**** 頁面上選取應用程式名稱，來存取應用程式。
+1. 在 [我的應用程式] 頁面上選取應用程式名稱，來存取應用程式。
 
-1. 在應用程式中，選取上方面板中的 [訓練]****。
+1. 在應用程式中，選取上方面板中的 [訓練]。
 
 1. 定型完成時，瀏覽器頂端會出現通知。
 
@@ -40,9 +40,15 @@ ms.locfileid: "91541368"
 
 ## <a name="train-with-all-data"></a>以所有資料進行訓練
 
-訓練會使用一小部分的負面取樣。 如果您想要使用所有資料，而不是使用小規模的負取樣，請使用 [API](#version-settings-api-use-of-usealltrainingdata)。
+訓練會使用一小部分的負面取樣。 您可以使用入口網站或 API 來使用所有可用的資料。 
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>版本設定 API 使用 UseAllTrainingData
+### <a name="using-the-luis-portal"></a>使用 LUIS 入口網站
+
+登入 [LUIS 入口網站](https://www.luis.ai/) ，然後按一下您的應用程式。 選取畫面頂端的 [ **管理** ]，然後選取 [ **設定** ]，並啟用或停 **用 [使用-具決定性訓練** ] 選項。 停用時，定型將會使用所有可用的資料。
+
+![啟用或停用非決定性定型的按鈕](./media/non-determinstic-training.png)
+
+### <a name="using-the-version-settings-api"></a>使用版本設定 API
 
 使用 [版本設定 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 並將 `UseAllTrainingData` 設定為 true，以關閉這項功能。
 
@@ -52,7 +58,7 @@ ms.locfileid: "91541368"
 
 ## <a name="training-with-the-rest-apis"></a>使用 REST API 進行定型
 
-在 LUIS 入口網站中，定型是只要按 [Train] \(定型\)**** 按鈕的單一步驟。 使用 REST API 進行定型是一個兩步驟程序。 首先是使用 HTTP POST 來[要求定型](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)。 接著是使用 HTTP Get 來要求[定型狀態](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)。
+在 LUIS 入口網站中，定型是只要按 [Train] \(定型\) 按鈕的單一步驟。 使用 REST API 進行定型是一個兩步驟程序。 首先是使用 HTTP POST 來[要求定型](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45)。 接著是使用 HTTP Get 來要求[定型狀態](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46)。
 
 若要知道定型何時完成，您必須輪詢該狀態，直到所有模型都定型成功為止。
 

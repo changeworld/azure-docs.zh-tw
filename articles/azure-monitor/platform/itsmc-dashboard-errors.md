@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 9521c13b21317bb0a782b0bea0b08312ff24b113
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610347"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762753"
 ---
-# <a name="errors-in-the-connector-status"></a>連接器狀態中的錯誤
+# <a name="errors-in-the-connector-status-section"></a>連接器狀態欄段中的錯誤
 
-在 [連接器狀態] 清單中，您可以找到可協助您修正 ITSM 連接器問題的錯誤。
+在儀表板的 [連接器狀態清單] 區段中，您可以找到可協助您修正 ITSM 連接器問題的錯誤。
 
 ## <a name="status-common-errors"></a>狀態常見錯誤
 
-在本節中，您可以找到 [連接器狀態] 區段中顯示的常見錯誤，以及您應該如何解決此問題：
+在本節中，您可以找到 [連接器狀態] 區段中顯示的常見錯誤，以及應如何解決這些錯誤：
 
 * **錯誤**：「來自 ServiceNow 的非預期回應，以及成功狀態碼。 回應： {"import_set"： "{import_set_id}"，"staging_table"： "x_mioms_microsoft_oms_incident"，"result"： [{"transform_map"： "OMS Incident"，"table"： "incident"，"status"： "error"，"error_message"： "{找不到目標記錄 |不正確資料表 |臨時表 "}" 無效
 
@@ -27,7 +27,7 @@ ms.locfileid: "98610347"
   * 在 ServiceNow 實例中部署的自訂腳本會導致事件被忽略。
   * 「OMS 整合器應用程式」程式碼本身是在 ServiceNow 端修改的，例如 onBefore 腳本。
 
-  **解決方法**：停用資料匯入路徑的所有自訂腳本或程式碼修改。
+  **解決方法**：停用所有自訂腳本或修改程式碼。
 
 * **錯誤**： "{" Error "： {" message "：" Operation Failed "，" detail "：" ACL 例外狀況更新失敗，因為安全性條件約束 "}"
 
@@ -58,7 +58,7 @@ ms.locfileid: "98610347"
     **原因**：已刪除 ITSM 連接器。
 
     **解決** 方式： ITSM 連接器已刪除，但仍有定義與其相關聯的 ITSM 動作群組。 有2個選項可解決此問題：
-  * 尋找並停用或刪除這類動作
+  * 尋找並停用或刪除這類動作群組
   * [重新設定動作群組](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) ，以使用現有的 ITSM 連接器。
   * [建立新的 ITSM 連接器](./itsmc-definition.md#create-an-itsm-connection) ，並 [重新設定動作群組以使用它](itsmc-definition.md#create-itsm-work-items-from-azure-alerts)。
 

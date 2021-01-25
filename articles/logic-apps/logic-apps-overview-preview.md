@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 01/22/2021
+ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936119"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760626"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>總覽： Azure Logic Apps 預覽
 
@@ -139,6 +139,8 @@ Azure Logic Apps Preview 包含許多目前和額外的功能，例如：
 
 * 當您的 Azure 訂用帳戶和邏輯應用程式設定支援時，請使用 [Application Insights](../azure-monitor/app/app-insights-overview.md) 為您的邏輯應用程式啟用診斷記錄和追蹤功能。
 
+* 針對邏輯應用程式中個別工作流程所使用的受控連線重新產生存取金鑰 **(預覽版)** 資源。 針對這項工作，請 [針對 **Logic Apps** 資源遵循相同的步驟，但在個別的工作流程層級](logic-apps-securing-a-logic-app.md#regenerate-access-keys)，而不是邏輯應用程式資源層級。
+
 > [!NOTE]
 > 如需目前已知問題的相關資訊，請參閱 [GitHub 中的 Logic Apps 公開預覽的已知問題頁面](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)。
 
@@ -165,7 +167,7 @@ Azure Logic Apps Preview 包含許多目前和額外的功能，例如：
 
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>變更、受限、無法使用或不支援的功能
 
-在 Azure Logic Apps Preview 中，這些功能有變更，或是目前受限、無法使用或不受支援：
+在 Azure Logic Apps Preview 中，這些功能已變更，或目前受限、無法使用或不受支援：
 
 * **觸發程式和動作**：某些內建的觸發程式無法使用，例如滑動視窗和批次。 若要啟動您的工作流程，請使用 [內建的週期、要求、HTTP、Http Webhook、事件中樞或服務匯流排觸發](../connectors/apis-list.md)程式。 內建的觸發程式和動作會以原生方式在 Azure Logic Apps Preview 執行時間中執行，而受控連接器則是部署在 Azure 中。 在設計工具中，內建的觸發程式和動作會出現在 **內建** 索引標籤底下，而受控連接器觸發程式和動作則出現在 [ **Azure** ] 索引標籤底下。
 

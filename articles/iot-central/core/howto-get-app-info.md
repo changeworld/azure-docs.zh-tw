@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 06/26/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 12ba8526be68d2cb15e37510e66f959ab65c6e99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5118fa22a198ee6871a4cfb455e88d345d6a44e0
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85802012"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760842"
 ---
 # <a name="about-your-application"></a>關於您的應用程式
 
@@ -37,6 +37,8 @@ ms.locfileid: "85802012"
 
     使用 [ **複製資訊** ] 按鈕將資訊複製到剪貼簿。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 現在您已經知道如何找到 IoT Central 應用程式的版本，建議的下一個步驟是繼續探索系統管理員的操作說明文章： [變更 IoT Central 應用程式設定](howto-administer.md)。
+
+如果您有 V2 應用程式，請參閱將 [v2 IoT Central 應用程式遷移至 V3](howto-migrate.md)。

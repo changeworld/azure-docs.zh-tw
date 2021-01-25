@@ -2,14 +2,14 @@
 title: 可用性和一致性 - Azure 事件中樞 | Microsoft Docs
 description: 如何使用分割區，以便透過 Azure 事件中樞提供最大數量的可用性和一致性。
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7b97d76f29ee8b7e44373c865baa09ba5ea4dd23
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 5ffa2df992eb0c22aafbbb7436250405998d8073
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98631914"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762809"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中樞的可用性和一致性
 
@@ -22,6 +22,11 @@ Brewer 的理論會定義一致性和可用性，如下所示：
 * 分割區容錯：即使發生分割區失敗，資料處理系統還是能夠繼續處理資料。
 * 可用性：非失敗節點會在合理的時間 (不含錯誤或逾時) 內傳回合理的回應。
 * 一致性：保證讀取會傳回指定用戶端的最新寫入。
+
+> [!NOTE]
+> 「 **磁碟分割** 」一詞是用於事件中樞和 CAP 定理中的不同內容。 
+> - **事件中樞** 會將事件組織成一或多個資料分割。 分割區是獨立的，而且包含自己的資料序列，它們通常會以不同的速率成長。 如需詳細資訊，請參閱[分割區](event-hubs-features.md#partitions)。
+> - 在 **CAP 定理** 中，資料分割是分散式系統中節點之間的通訊中斷。
 
 ## <a name="partition-tolerance"></a>分割區容錯
 「事件中樞」是建置在已分割的資料模型上。 您可以在安裝時設定事件中樞中的分割區數目，但之後即無法變更此值。 由於您必須將分割區與事件中樞搭配使用，因此必須決定應用程式相關的可用性和一致性。

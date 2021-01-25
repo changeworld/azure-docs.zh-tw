@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service (AKS) 叢集設定以主�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 14ec39272bf2f434aaa57217a90667a62e82901a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6b23bf285d89a5f3285825feef849b3d168ed62f
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183289"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762031"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS)  (preview) 上的主機型加密
 
@@ -23,37 +23,35 @@ ms.locfileid: "96183289"
 > [!NOTE]
 > 以主機為基礎的加密功能可在 [azure 區域][supported-regions] 中使用，這些區域支援 azure 受控磁片的伺服器端加密，且僅支援特定的 [支援 VM 大小][supported-sizes]。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 - 確定您已 `aks-preview` 安裝 CLI 擴充功能 v 0.4.55 或更高版本
-- 確定您在 [ `EncryptionAtHost` 已啟用] 下有功能旗標 `Microsoft.Compute` 。
 - 確定您在 [ `EnableEncryptionAtHostPreview` 已啟用] 下有功能旗標 `Microsoft.ContainerService` 。
 
+若要能夠針對您的 Vm 或虛擬機器擴展集使用主機加密，您必須在訂用帳戶上啟用此功能。 傳送電子郵件給 encryptionAtHost@microsoft.com 您的訂用帳戶識別碼，以取得訂用帳戶啟用的功能。
+
 ### <a name="register-encryptionathost--preview-features"></a>註冊 `EncryptionAtHost`  預覽功能
+
+> [!IMPORTANT]
+> 您必須 encryptionAtHost@microsoft 使用您的訂用帳戶 id 來傳送電子郵件，以取得針對計算資源啟用的功能。 您無法自行為這些資源啟用。 您可以自行在 container service 上啟用它。
 
 若要建立使用以主機為基礎之加密的 AKS 叢集，您必須 `EnableEncryptionAtHostPreview` 在訂用帳戶上啟用和 `EncryptionAtHost` 功能旗標。
 
 `EncryptionAtHost`使用[az feature register][az-feature-register]命令註冊功能旗標，如下列範例所示：
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
-
 az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 狀態需要幾分鐘的時間才會顯示「已註冊」。 您可以使用 [az feature list][az-feature-list] 命令檢查註冊狀態：
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
-
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 準備好時，請 `Microsoft.ContainerService` `Microsoft.Compute` 使用 [az provider register][az-provider-register] 命令重新整理和資源提供者的註冊：
 
 ```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-
 az provider register --namespace Microsoft.ContainerService
 ```
 

@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9ec8a5fe5de751e40ebaa17629ff72c5f6b2adca
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979977"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761382"
 ---
 # <a name="application-configuration-options"></a>應用程式設定選項
 
@@ -147,8 +147,20 @@ Azure AD cloud 授權單位有兩個部分：
 此選項會指定機密用戶端應用程式的用戶端密碼。 此密碼 (應用程式密碼) 是由應用程式註冊入口網站提供，或在使用 PowerShell AzureAD、PowerShell AzureRM 或 Azure CLI 的應用程式註冊期間提供給 Azure AD。
 
 ## <a name="logging"></a>記錄
+為了協助偵測和驗證失敗的疑難排解案例，Microsoft 驗證程式庫提供內建的記錄支援。 記錄是下列文章中涵蓋的每個程式庫：
 
-其他設定選項可啟用記錄和疑難排解。 請參閱 [記錄](msal-logging.md) 文章，以取得如何使用這些專案的詳細資料。
+:::row:::
+    :::column:::
+        - [MSAL.NET 中的記錄](msal-logging-dotnet.md)
+        - [Android 版 MSAL 中的記錄](msal-logging-android.md)
+        - [MSAL.js 中的記錄](msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [iOS/macOS 版 MSAL 中的記錄](msal-logging-ios.md)
+        - [Java 版 MSAL 中的記錄](msal-logging-java.md)
+        - [Python 版 MSAL 中的記錄](msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>後續步驟
 

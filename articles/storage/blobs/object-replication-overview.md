@@ -10,12 +10,12 @@ ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e7fa6b1ee7c92f82c3e15335991f5a240c7acc52
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178971"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762878"
 ---
 # <a name="object-replication-for-block-blobs"></a>區塊 blob 的物件複寫
 
@@ -88,7 +88,9 @@ ms.locfileid: "98178971"
 
 您也可以指定一或多個篩選作為複製規則的一部分，以依前置詞篩選區塊 Blob。 當您指定前置詞時，只有符合來源容器中該前置詞的 Blob 才會複製到目的地容器。
 
-來源和目的地容器必須同時存在，您才能在規則中加以指定。 建立複寫原則之後，目的地容器會變成唯讀。 任何寫入目的地容器的嘗試都會失敗，錯誤碼為 409 (衝突)。 不過，您可以在目的地容器中的 blob 上呼叫「 [設定 Blob 層](/rest/api/storageservices/set-blob-tier) 」作業，以將它移至封存層。 如需封存層的詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取層和封存存取層](storage-blob-storage-tiers.md#archive-access-tier)。
+來源和目的地容器必須同時存在，您才能在規則中加以指定。 建立複寫原則之後，不允許對目的地容器進行寫入作業。 任何寫入目的地容器的嘗試都會失敗，錯誤碼為 409 (衝突)。 若要寫入已設定複寫規則的目的地容器，您必須刪除針對該容器所設定的規則，或移除複寫原則。 當複寫原則為使用中時，允許對目的地容器的讀取和刪除作業。
+
+您可以對目的地容器中的 blob 呼叫「 [設定 Blob 層](/rest/api/storageservices/set-blob-tier) 」作業，以將其移至封存層。 如需封存層的詳細資訊，請參閱 [Azure Blob 儲存體：經常性存取、非經常性存取層和封存存取層](storage-blob-storage-tiers.md#archive-access-tier)。
 
 ## <a name="replication-status"></a>複寫狀態
 
@@ -104,7 +106,7 @@ ms.locfileid: "98178971"
 
 物件複寫會針對來源和目的地帳戶的讀取和寫入交易產生額外成本，以及將資料從來源帳戶複製到目的地帳戶的輸出費用，以及讀取處理變更摘要的費用。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - [設定物件複寫](object-replication-configure.md)
 - [Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)

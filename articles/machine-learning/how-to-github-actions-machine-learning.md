@@ -10,21 +10,21 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: e7f6066cb7ed5c166d3e2bdc3f895073b05b92b9
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 8bce95b65d9b944505d7f9153159b342e49427cd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605020"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762905"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>搭配 Azure Machine Learning 使用 GitHub Actions
 
-開始使用 [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) ，在 Azure Machine Learning 上訓練模型。 
+開始使用 [GitHub Actions](https://docs.github.com/en/actions) ，在 Azure Machine Learning 上訓練模型。 
 
 > [!NOTE]
 > 適用于 Azure Machine Learning 的 GitHub Actions 會依原樣提供，而且 Microsoft 不會完全支援。 如果您遇到特定動作的問題，請在該動作的儲存機制中開啟問題。 例如，如果您遇到 aml-部署動作的問題，請報告存放庫中的問題 [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) 。
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>必要條件 
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。  

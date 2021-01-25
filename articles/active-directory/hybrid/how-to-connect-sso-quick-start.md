@@ -16,21 +16,18 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504384"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762262"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory 無縫單一登入：快速入門
 
 ## <a name="deploy-seamless-single-sign-on"></a>部署無縫單一登入
 
 使用者位於連線到公司網路的公司桌上型電腦時，Azure Active Directory (Azure AD) 無縫單一登入 (無縫 SSO) 會自動登入使用者。 無縫 SSO 可讓使用者輕鬆存取雲端式應用程式，而不需要任何額外的內部部署元件。
-
-> [!NOTE]
-> 本文包含「詞彙 *白名單*」的參考，這是 Microsoft 不再使用的詞彙。 從軟體移除字詞時，我們會將它從本文中移除。
 
 若要部署無縫 SSO，請遵循下列步驟。
 
@@ -40,7 +37,7 @@ ms.locfileid: "97504384"
 
 * **設定 Azure AD Connect 伺服器**：如果您使用 [傳遞驗證](how-to-connect-pta.md)作為登入方法，不需要進行額外的必要條件檢查。 如果您使用[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)作為登入方法，而且 Azure AD Connect 與 Azure AD 之間有防火牆，請確定︰
    - 您使用 Azure AD Connect 1.1.644.0 或更新版本。 
-   - 如果您的防火牆或 proxy 允許，請在埠443上將連線新增至允許的 **\* msappproxy.net** url 清單。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。 只有啟用此功能時，此必要條件才適用。 不需要實際的使用者登入。
+   - 如果您的防火牆或 proxy 允許，請在埠443上將連線新增至允許的 **\* msappproxy.net** url 清單。 如果您需要特定的 URL （而不是萬用字元）進行 proxy 設定，您可以設定 **tenantid.registration.msappproxy.net**，其中 tenantid 是您要設定功能的租使用者 GUID。 如果您的組織中不可能有 URL 型 proxy 例外狀況，您可以改為允許存取 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)（每週更新）。 只有啟用此功能時，此必要條件才適用。 不需要實際的使用者登入。
 
     >[!NOTE]
     >Azure AD Connect 版本 1.1.557.0、1.1.558.0、1.1.561.0 和 1.1.614.0 具有與密碼雜湊同步處理相關的問題。 如果您 _不_ 想要使用密碼雜湊同步處理搭配傳遞驗證，請閱讀 [Azure AD Connect 版本](./reference-connect-version-history.md) 資訊，以深入瞭解。

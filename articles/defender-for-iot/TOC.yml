@@ -81,38 +81,51 @@
           items:
             - name: 識別所需的設備
               href: how-to-identify-required-appliances.md
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
             - name: 安裝軟體
               href: how-to-install-software.md
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
             - name: 設定網路
               href: how-to-set-up-your-network.md
+              displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
         - name: 準備網路
           items:
             - name: 上線感應器
               href: how-to-manage-sensors-on-the-cloud.md
+              displayName: 'onboard, cloud, register, activate'
             - name: 啟用和設定感應器
               href: how-to-activate-and-set-up-your-sensor.md
+              displayName: 'onboard, register, activation, certificate, cloud connected, sign in, login, setup, learning mode, initial'
         - name: 準備內部部署管理主控台
           items:
             - name: 啟用和設定內部部署管理主控台
               href: how-to-activate-and-set-up-your-on-premises-management-console.md
+              displayName: 'activate, certificate, sign in, login, setup, initial, committed'
             - name: 設定高可用性
               href: how-to-set-up-high-availability.md
+              displayName: 'primary, secondary, failover, failback fail, recovery'
         - name: 管理使用者和使用者存取
           items:
             - name: 建立和管理使用者
               href: how-to-create-and-manage-users.md
+              displayName: 'Active Directory, roles, permissions'
             - name: 定義全域使用者存取控制
               href: how-to-define-global-user-access-control.md
+              displayName: 'business unit, site, region'
         - name: 控制監視到的流量
           href: how-to-control-what-traffic-is-monitored.md
+          displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
         - name: 從內部部署管理主控台管理感應器
           href: how-to-manage-sensors-from-the-on-premises-management-console.md
+          displayName: 'disconnect, connect, activation file, sensor backup'
         - name: 管理個別感應器
           href: how-to-manage-individual-sensors.md
+          displayName: 'activation, certificate, connect, timezone time zone, backup, restore, software update, failure'
         - name: 管理雲端上的感應器
           href: how-to-manage-sensors-on-the-cloud.md
         - name: 管理內部部署管理主控台
           href: how-to-manage-the-on-premises-management-console.md
+          displayName: 'activation, certificate, software update, backup, restore, proxy, password recovery'
         - name: 使用威脅情報套件
           href: how-to-work-with-threat-intelligence-packages.md
         - name: 使用裝置清查資訊
@@ -145,12 +158,16 @@
           items:
             - name: 使用裝置通知
               href: how-to-work-with-device-notifications.md
+              displayName: 'notifications, operating systems, enrich, device information, classification'
             - name: 增強連接埠和 VLAN 名稱解析
               href: how-to-enhance-port-and-vlan-name-resolution.md
+              displayName: 'port, VLAN'
             - name: 匯入裝置資訊
               href: how-to-import-device-information.md
+              displayName: 'import, enrich'
         - name: 追蹤感應器活動
           href: how-to-track-sensor-activity.md
+          displayName: 'timeline, time line, time-line, event'
         - name: 產生報表
           href: how-to-generate-reports.md
         - name: 對感應器和內部部署管理主控台進行疑難排解

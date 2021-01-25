@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: cc356b307a752b10ba6f1c1a7151381c5644ca1e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035218"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762727"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 動作進行持續傳遞
 
 使用 [GitHub Actions](https://github.com/features/actions) 定義工作流程，以在 Azure Functions 中自動建立程式碼並部署至您的函數應用程式。 
 
-在 GitHub Actions 中， [工作流程](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) 是您在 GitHub 存放庫中定義的自動化流程。 此程式會告知 GitHub 如何在 GitHub 上建立及部署您的函數應用程式專案。 
+在 GitHub Actions 中， [工作流程](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) 是您在 GitHub 存放庫中定義的自動化流程。 此程式會告知 GitHub 如何在 GitHub 上建立及部署您的函數應用程式專案。 
 
 工作流程是由您存放庫內 `/.github/workflows/` 路徑中的 YAML (. yml) 檔案所定義的。 此定義包含組成工作流程的各種步驟與參數。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "98035218"
 
 您可以使用發行設定檔，以 Azure Functions 進行 GitHub Actions 驗證的建議方式。 您也可以使用服務主體進行驗證。 若要深入瞭解，請參閱 [此 GitHub Actions 存放庫](https://github.com/Azure/functions-action)。 
 
-將您的發佈設定檔認證儲存為 [GitHub 秘密](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)之後，您會在工作流程中使用此秘密來向 Azure 進行驗證。 
+將您的發佈設定檔認證儲存為 [GitHub 秘密](https://docs.github.com/en/actions/reference/encrypted-secrets)之後，您會在工作流程中使用此秘密來向 Azure 進行驗證。 
 
 #### <a name="download-your-publish-profile"></a>下載您的發行設定檔
 
@@ -496,7 +496,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [深入瞭解 Azure 和 GitHub 整合](/azure/developer/github/)

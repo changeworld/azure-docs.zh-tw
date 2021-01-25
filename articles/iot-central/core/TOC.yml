@@ -157,6 +157,8 @@
               href: howto-use-app-templates.md
             - name: 監視應用程式健康情況
               href: howto-monitor-application-health.md
+            - name: 將 V2 遷移至 V3 應用程式
+              href: howto-migrate.md
             - name: 關於您的應用程式
               href: howto-get-app-info.md
             - name: 捲動 X.509 憑證

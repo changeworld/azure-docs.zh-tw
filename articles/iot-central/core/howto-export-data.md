@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 74de0481bf6786d245fb96f5d102ab72a00031c8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065383"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760903"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>使用資料匯出將 IoT 資料匯出至雲端目的地
 
@@ -36,11 +36,13 @@ ms.locfileid: "98065383"
 
 若要使用資料匯出功能，您必須有 [V3 應用程式](howto-get-app-info.md)，而且必須擁有 [資料匯出](howto-manage-users-roles.md) 許可權。
 
+如果您有 V2 應用程式，請參閱將 [v2 IoT Central 應用程式遷移至 V3](howto-migrate.md)。
+
 ## <a name="set-up-export-destination"></a>設定匯出目的地
 
 設定資料匯出之前，您必須先有匯出目的地。 目前提供下列目的地類型：
 
-- Azure 事件中樞
+- Azure 事件中心
 - Azure 服務匯流排佇列
 - Azure 服務匯流排主題
 - Azure Blob 儲存體
@@ -276,8 +278,8 @@ ms.locfileid: "98065383"
 | 功能  | 舊版資料匯出 | 新增資料匯出 |
 | :------------- | :---------- | :----------- |
 | 可用的資料類型 | 遙測、裝置、裝置範本 | 遙測，屬性變更 |
-| 篩選 | None | 取決於匯出的資料類型。 針對遙測，依遙測篩選、訊息屬性、屬性值 |
-| 擴充 | None | 使用裝置上的自訂字串或屬性值進行擴充 |
+| 篩選 | 無 | 取決於匯出的資料類型。 針對遙測，依遙測篩選、訊息屬性、屬性值 |
+| 擴充 | 無 | 使用裝置上的自訂字串或屬性值進行擴充 |
 | 目的地 | Azure 事件中樞、Azure 服務匯流排佇列和主題，Azure Blob 儲存體 | 與舊版資料匯出和 webhook 相同|
 | 支援的應用程式版本 | V2、V3 | 僅限第 3 版 |
 | 值得注意的限制 | 每個應用程式5個匯出，每個匯出1個目的地 | 10個匯出-每個應用程式的目的地連線數 |

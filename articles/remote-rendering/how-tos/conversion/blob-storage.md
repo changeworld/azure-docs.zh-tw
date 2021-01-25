@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 96a2fde3e510c6eb7146da9c92d93f69111e8c80
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cfc10658463888e43ea1a24dfefd3f8939ec8ef7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206538"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762780"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>使用 Azure Blob 儲存體進行模型轉換
 
-[模型轉換](model-conversion.md)服務需要存取 Azure blob 儲存體，才能取得輸入資料並儲存輸出資料。 本文說明如何執行最常見的步驟。
+[模型轉換](model-conversion.md)服務需要 Azure Blob 儲存體的存取權，才能取得輸入資料並儲存輸出資料。 本文說明如何執行最常見的步驟。
 
 ## <a name="prepare-azure-storage-accounts"></a>準備 Azure 儲存體帳戶
 

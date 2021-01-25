@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09325289dd5cb83bfc26dd26b266d50b622fe098
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742021"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763078"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>針對您的 Azure Stack Edge Pro 問題進行疑難排解
 
@@ -26,12 +26,13 @@ ms.locfileid: "91742021"
 > * 執行診斷
 > * 收集支援套件
 > * 使用記錄進行疑難排解
+> * 針對 IoT Edge 錯誤進行疑難排解
 
 ## <a name="run-diagnostics"></a>執行診斷
 
 若要診斷任何裝置錯誤並進行疑難排解，您可以執行診斷測試。 在您裝置的本機 Web UI 中執行下列步驟，以執行診斷測試。
 
-1. 在本機 Web UI 中，移至 [疑難排解] > [診斷測試]****。 選取您要執行的測試，然後選取 [ **執行測試**]。 這會執行測試，以診斷您的網路、裝置、Web Proxy、時間或雲端設定的任何可能問題。 您會收到裝置正在執行測試的通知。
+1. 在本機 Web UI 中，移至 [疑難排解] > [診斷測試]。 選取您要執行的測試，然後選取 [ **執行測試**]。 這會執行測試，以診斷您的網路、裝置、Web Proxy、時間或雲端設定的任何可能問題。 您會收到裝置正在執行測試的通知。
 
     ![選取測試](media/azure-stack-edge-troubleshoot/run-diag-1.png)
 
@@ -49,7 +50,7 @@ ms.locfileid: "91742021"
 
 執行下列步驟來收集支援套件。
 
-1. 在本機 Web UI 中，移至 [疑難排解] > [支援]****。 選取 [ **建立支援套件**]。 系統會開始收集支援套件。 套件收集可能需要幾分鐘的時間。
+1. 在本機 Web UI 中，移至 [疑難排解] > [支援]。 選取 [ **建立支援套件**]。 系統會開始收集支援套件。 套件收集可能需要幾分鐘的時間。
 
     ![按一下 [新增使用者]](media/azure-stack-edge-troubleshoot/collect-logs-1.png)
 
@@ -81,6 +82,10 @@ ms.locfileid: "91742021"
 3. 當您在此檔案中看到錯誤 (在範例) 中反白顯示時，請記下錯誤碼，在此案例中為16001。 針對下列錯誤參考，查閱此錯誤碼的說明。
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
+
+## <a name="troubleshoot-iot-edge-errors"></a>針對 IoT Edge 錯誤進行疑難排解
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

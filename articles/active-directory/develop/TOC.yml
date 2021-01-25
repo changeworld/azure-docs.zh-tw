@@ -329,7 +329,7 @@
               href: msal-error-handling-dotnet.md
               displayName: 'handling, catch'
             - name: MSAL.NET 中的記錄
-              href: msal-logging.md?tabs=dotnet
+              href: msal-logging-dotnet.md
             - name: 從快取中取得權杖
               href: msal-net-acquire-token-silently.md
             - name: 權杖快取序列化
@@ -371,7 +371,7 @@
               href: msal-error-handling-js.md
               displayName: 'handling, catch'
             - name: MSAL.js 中的記錄
-              href: msal-logging.md?tabs=javascript
+              href: msal-logging-js.md
         - name: 適用於 iOS 和 macOS 的 MSAL
           items:
             - name: 適用於 iOS 和 macOS 的 MSAL 相異之處
@@ -401,7 +401,7 @@
               href: msal-error-handling-ios.md
               displayName: 'handling, catch'
             - name: iOS/macOS 版 MSAL 中的記錄
-              href: msal-logging.md?tabs=swift
+              href: msal-logging-ios.md
         - name: 適用於 Python 的 MSAL
           items:
             - name: 自訂權杖快取序列化
@@ -414,7 +414,7 @@
               href: msal-error-handling-python.md
               displayName: 'handling, catch'
             - name: Python 版 MSAL 中的記錄
-              href: msal-logging.md?tabs=python
+              href: msal-logging-python.md
         - name: 適用於 Java 的 MSAL
           items:
             - name: 自訂權杖快取序列化
@@ -429,7 +429,7 @@
               href: msal-error-handling-java.md
               displayName: 'handling, catch'
             - name: Java 版 MSAL 中的記錄
-              href: msal-logging.md?tabs=java
+              href: msal-logging-java.md
         - name: 適用於 Android 的 MSAL
           items:
             - name: 帳戶和租用戶設定檔
@@ -449,7 +449,7 @@
               href: msal-android-handling-exceptions.md
               displayName: 'android, mobile, handling, catch'
             - name: Android 版 MSAL 中的記錄
-              href: msal-logging.md?tabs=android
+              href: msal-logging-android.md
     - name: 自訂權杖和宣告
       items:
         - name: 設定角色宣告

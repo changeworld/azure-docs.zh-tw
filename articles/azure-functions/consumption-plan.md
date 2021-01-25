@@ -3,12 +3,12 @@ title: Azure Functions 耗用量方案裝載
 description: 瞭解 Azure 函數取用方案裝載如何讓您在可動態調整規模的環境中執行程式碼，但您只需支付執行期間所使用的資源費用。
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: ffb556ce48f18702e06fcdb02dda84f41ae5f906
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: d292a70a8dfaa4cebdb99f2bcb5420c8b8ab9cd8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684686"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760543"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions 耗用量方案裝載
 
@@ -16,7 +16,7 @@ ms.locfileid: "98684686"
 
 ## <a name="benefits"></a>優點
 
-即使在高負載期間也會自動調整取用方案的規模。 在取用方案中執行函式時，只有在您的函式執行時才會向您收取計算資源的費用。 在取用方案中，函式執行會在一段可設定的時間之後逾時。
+取用方案會自動調整，即使在高負載期間也會自動調整。 在取用方案中執行函式時，只有在您的函式執行時才會向您收取計算資源的費用。 在取用方案中，函式執行會在一段可設定的時間之後逾時。
 
 如需將取用方案與其他方案和裝載類型的比較，請參閱函式 [規模和裝載選項](functions-scale.md)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "98684686"
 
 相同區域中的函數應用程式可以指派給相同的取用方案。 在相同的取用方案中執行多個應用程式不會造成任何不利或影響。 將多個應用程式指派給相同的取用方案，並不會影響每個應用程式的復原能力、擴充性或可靠性。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 + [Azure Functions 裝載選項](functions-scale.md)
 + [Azure Functions 中的事件驅動規模調整](event-driven-scaling.md)

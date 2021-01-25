@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d348b8c2325c7bc2cdaa28356151647a9430684f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247041"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762976"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分段推出移轉至雲端驗證 (預覽)
 
@@ -61,7 +61,10 @@ ms.locfileid: "98247041"
 - 使用 Azure AD Connect 佈建到 Azure AD 的使用者。 不適用於僅限雲端的使用者。
 
 - 瀏覽器和「新式驗證」用戶端上的使用者登入流量。 使用舊版驗證的應用程式或雲端服務，將會回到同盟驗證流程。 例如已關閉新式驗證的 Exchange online，或不支援新式驗證的 Outlook 2010。
+
 - 群組大小目前限制為 50,000 位使用者。  如果的群組大於 50,000 位使用者，建議將此群組分割為多個群組以進行分段推出。
+
+- Windows 10 混合式聯結或 Azure AD 加入主要重新整理權杖，而不會向同盟伺服器取得 Windows 10 1903 版和更新版本的同盟伺服器（當使用者的 UPN 是可路由的，且在 Azure AD 中驗證了網域尾碼）時。
 
 ## <a name="unsupported-scenarios"></a>不支援的情節
 
@@ -87,6 +90,10 @@ ms.locfileid: "98247041"
 - 在第一次新增安全性群組以進行分段推出時，會限制為 200 位使用者，以避免 UX 逾時。新增群組後，即可視需要將更多使用者直接新增至群組。
 
 - 當使用者處於分段推出時，當啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 時，密碼到期原則會設定為90天，而且沒有可供自訂的選項。 
+
+- Windows 10 混合式聯結或 Azure AD 加入主要重新整理權杖，以取得1903之前的 Windows 10 版本。 即使登入的使用者位於分段推出的範圍內，此案例仍會切換回同盟伺服器的 WS-Trust 端點。
+
+- 當使用者的內部部署 UPN 無法路由傳送時，Windows 10 混合式聯結或 Azure AD 加入所有版本的主要重新整理權杖。 此案例會在分段推出模式中切換回 WS-Trust 端點，但在預備遷移完成且使用者登入不再依賴同盟伺服器時，將會停止運作。
 
 
 ## <a name="get-started-with-staged-rollout"></a>開始使用分段推出

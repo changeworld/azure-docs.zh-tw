@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779578"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762397"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何在 Azure API 管理中使用服務備份和還原實作災害復原
 
@@ -68,7 +68,7 @@ ms.locfileid: "96779578"
 4. 輸入應用程式的名稱。
 5. 針對應用程式類型，選取 [原生]。
 6. 輸入 [重新導向 URI] 的預留位置 URL，例如 `http://resources`，因為它是必要的欄位，但稍後不會使用這個值。 按一下核取方塊以儲存應用程式。
-7. 按一下 [建立]  。
+7. 按一下頁面底部的 [新增]  。
 
 ### <a name="add-an-application"></a>新增應用程式
 
@@ -221,8 +221,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ## <a name="what-is-not-backed-up"></a>未備份的內容
 -   備份 **不包含** 用來建立分析報告的 **使用量資料**。 請使用 [Azure API 管理 REST API][azure api management rest api] 來定期擷取分析報告，以利妥善保存。
--   [自訂網域 TLS/SSL](configure-custom-domain.md) 憑證
--   [自訂 CA 憑證](api-management-howto-ca-certificates.md)，其中包含客戶上傳的中繼或根憑證
+-   [自訂網域 TLS/SSL](configure-custom-domain.md) 憑證。
+-   [自訂 CA 憑證](api-management-howto-ca-certificates.md)，其中包含客戶上傳的中繼或根憑證。
 -   [虛擬網路](api-management-using-with-vnet.md) 整合設定。
 -   [受控識別](api-management-howto-use-managed-service-identity.md) 設定。
 -   [Azure 監視器診斷](api-management-howto-use-azure-monitor.md) 配置。

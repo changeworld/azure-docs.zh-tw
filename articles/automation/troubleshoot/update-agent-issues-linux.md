@@ -4,17 +4,17 @@ description: 本文說明如何疑難排解並解決更新管理中的 Linux Win
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7ac5e8324d9979b17ee93d16b3e007fe7916a8a
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83680868"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762618"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>針對 Linux 更新代理程式問題進行疑難排解
 
@@ -27,14 +27,14 @@ ms.locfileid: "83680868"
 > [!NOTE]
 > Azure 入口網站顯示的內容與機器目前的狀態間，可能略有延遲。
 
-本文探討如何對 Azure 入口網站中的 Azure 機器以及[離線案例](#troubleshoot-offline)中的非 Azure 機器，執行疑難排解員。 
+本文探討如何對 Azure 入口網站中的 Azure 機器以及[離線案例](#troubleshoot-offline)中的非 Azure 機器，執行疑難排解員。
 
 > [!NOTE]
 > 疑難排解員指令碼目前不會透過 Proxy 伺服器 (如已設定) 路由流量。
 
 ## <a name="start-the-troubleshooter"></a>啟動疑難排解員
 
-若為 Azure 機器，請在入口網站的 [更新代理程式整備程度] 資料行下選取**疑難排解**連結，即可開啟 [對更新代理程式進行疑難排解] 頁面。 若為非 Azure 機器，則此連結會連往本文。 若要對非 Azure 機器進行疑難排解，請參閱＜離線疑難排解＞一節中的指示。
+若為 Azure 機器，請在入口網站的 [更新代理程式整備程度] 資料行下選取 **疑難排解** 連結，即可開啟 [對更新代理程式進行疑難排解] 頁面。 若為非 Azure 機器，則此連結會連往本文。 若要對非 Azure 機器進行疑難排解，請參閱＜離線疑難排解＞一節中的指示。
 
 ![VM 清單頁面](../media/update-agent-issues-linux/vm-list.png)
 
@@ -90,7 +90,6 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 此檢查確保混合式 Runbook 背景工作正在機器上執行。 若混合式 Runbook 背景工作角色正常執行，則應會出現下列範例的處理序。
 
-
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
 nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
@@ -129,7 +128,7 @@ Proxy 和防火牆設定必須允許「混合式 Runbook 背景工作角色」�
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>離線疑難排解
 
-您可以藉由在本機執行指令碼，在「混合式 Runbook 背景工作角色」上離線使用疑難排解員。 您可以在指令碼中心找到 Python 指令碼 [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6)。 以下範例顯示此指令碼的輸出範例：
+您可以藉由在本機執行指令碼，在「混合式 Runbook 背景工作角色」上離線使用疑難排解員。 您可以在 GitHub 中找到 Python 腳本[UM_Linux_Troubleshooter_Offline .py。](https://github.com/Azure/updatemanagement/blob/main/UM_Linux_Troubleshooter_Offline.py) 以下範例顯示此指令碼的輸出範例：
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2

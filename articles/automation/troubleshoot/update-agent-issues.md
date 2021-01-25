@@ -4,17 +4,17 @@ description: 本文說明如何在更新管理期間對 Windows 更新代理程�
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/16/2020
+ms.date: 01/25/2020
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5c2cc014c87a345507e9c0f99c507d151d59b86
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187127"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762118"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>針對 Windows 更新代理程式問題進行疑難排解
 
@@ -27,10 +27,10 @@ ms.locfileid: "86187127"
 > [!NOTE]
 > Azure 入口網站所顯示的內容，與電腦目前的狀態之間可能會有一點延遲。
 
-本文探討如何以 Azure 入口網站與非 Azure 機器在[離線情況](#troubleshoot-offline)下執行 Azure 機器的疑難排解員。 
+本文探討如何以 Azure 入口網站與非 Azure 機器在[離線情況](#troubleshoot-offline)下執行 Azure 機器的疑難排解員。
 
 > [!NOTE]
-> 疑難排解指令碼現在包含 Windows Server Update Services (WSUS) 和自動下載並安裝金鑰的檢查。 
+> 疑難排解指令碼現在包含 Windows Server Update Services (WSUS) 和自動下載並安裝金鑰的檢查。
 
 ## <a name="start-the-troubleshooter"></a>啟動疑難排解員
 
@@ -110,7 +110,7 @@ Crypto 資料夾存取權檢查會判斷本機系統帳戶是否能夠存取 C:\
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>離線疑難排解
 
-您可以藉由在本機執行指令碼，對「混合式 Runbook 背景工作角色」使用疑難排解員。 從 PowerShell 資源庫取得下列指令碼：[Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). 若要執行此指令碼，您必須安裝 WMF 4.0 或更新版本。 若要下載最新版的 PowerShell，請參閱[安裝各種版本的 PowerShell](/powershell/scripting/install/installing-powershell)。
+您可以藉由在本機執行指令碼，對「混合式 Runbook 背景工作角色」使用疑難排解員。 從 GitHub 取得下列腳本： [UM_Windows_Troubleshooter_Offline.ps1](https://github.com/Azure/updatemanagement/blob/main/UM_Windows_Troubleshooter_Offline.ps1)。 若要執行此指令碼，您必須安裝 WMF 4.0 或更新版本。 若要下載最新版的 PowerShell，請參閱[安裝各種版本的 PowerShell](/powershell/scripting/install/installing-powershell)。
 
 此指令碼的輸出會如下列範例所示：
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 91b3e2e86394c889f6fa40f527dd0dd212e1cb57
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210336"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763091"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教學課程：訂購 Azure 資料箱
 
@@ -231,7 +231,7 @@ PS C:\Windows\System32>
     |來源國家/區域    |    選取您的資料目前所在的國家/地區。         |
     |目的地 Azure 區域     |     選取要傳輸資料的 Azure 區域。 <br> 如需詳細資訊，請移至[區域可用性](data-box-overview.md#region-availability)。            |
 
-    [![開始 Azure 資料箱匯入訂單](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
+    ![開始 Azure 資料箱匯入訂單](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
 
 5. 選取 [資料箱]。 單一訂單的最大可用容量是 80 TB。 您可以建立多份訂單以訂購更大的資料大小。
 

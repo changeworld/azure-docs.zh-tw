@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 48ee05eebd91c60fa2cfecc80898d3be54367269
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854820"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762676"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -74,7 +74,7 @@ Azure NetApp Files 支援使用 NFS 建立磁片區 (NFSv3 和 Nfsv4.1 4.1) 、S
 
     如需 AD 站台和服務的相關資訊，請參閱[設計站台拓撲](/windows-server/identity/ad-ds/plan/designing-the-site-topology)。 
     
-* 您可以勾選 [[聯結 Active Directory](#create-an-active-directory-connection) ] 視窗中的 [ **aes 加密**] 方塊，為 SMB 磁片區啟用 aes 加密。 Azure NetApp Files 支援 DES、Kerberos AES 128 和 Kerberos AES 256 加密類型， (從最安全到最安全的) 。 如果您啟用 AES 加密，用來聯結 Active Directory 的使用者認證必須啟用最高對應的帳戶選項，以符合您的 Active Directory 啟用的功能。    
+* 您可以勾選 [[聯結 Active Directory](#create-an-active-directory-connection) ] 視窗中的 [ **aes 加密**] 方塊，以啟用 AD 驗證的 aes 加密。 Azure NetApp Files 支援 DES、Kerberos AES 128 和 Kerberos AES 256 加密類型， (從最安全到最安全的) 。 如果您啟用 AES 加密，用來聯結 Active Directory 的使用者認證必須啟用最高對應的帳戶選項，以符合您的 Active Directory 啟用的功能。    
 
     例如，如果您的 Active Directory 只有 AES-128 功能，您必須為使用者認證啟用 AES-128 帳戶選項。 如果您的 Active Directory 具有 AES-256 功能，您必須啟用 AES-256 帳戶選項 (這也支援 AES-128) 。 如果您的 Active Directory 沒有任何 Kerberos 加密功能，則 Azure NetApp Files 預設會使用 DES。  
 

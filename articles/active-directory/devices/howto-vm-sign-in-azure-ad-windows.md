@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22a4bdc92ea2a91425c1070a5837c672307de665
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683771"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760997"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (Preview 登入 Azure 中的 Windows 虛擬機器) 
 
@@ -39,7 +39,7 @@ ms.locfileid: "98683771"
 > [!NOTE]
 > 啟用這項功能之後，您在 Azure 中的 Windows Vm 將 Azure AD 聯結。 您無法將它加入其他網域（例如內部部署 AD 或 Azure AD DS）。 如果您需要這樣做，您必須卸載擴充功能，將 VM 與 Azure AD 租使用者中斷連線。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 ### <a name="supported-azure-regions-and-windows-distributions"></a>支援的 Azure 區域和 Windows 散發套件
 
@@ -350,7 +350,9 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 > [!NOTE]
 > Windows 10 Build 20H1 新增了 Azure AD 已註冊電腦的支援，以起始對您 VM 的 RDP 連線。 使用註冊的 Azure AD (未 Azure AD 加入或混合式 Azure AD 加入的) PC 作為 RDP 用戶端，以起始與您 VM 的連線時，您必須以 AzureAD\UPn (的格式輸入認證，例如 AzureAD\john@contoso.com) 。
 
-此外，也請確認 AADLoginForWindows 延伸模組在 Azure AD 聯結完成後尚未卸載。
+確認 Azure AD 聯結完成之後，未卸載 AADLoginForWindows 延伸模組。
+
+此外，請確定伺服器 *和* 用戶端上都已啟用安全性原則 [網路安全性：允許對這部電腦的 PKU2U authentication 要求使用線上身分識別]。
  
 #### <a name="mfa-sign-in-method-required"></a>需要 MFA 登入方法
 
@@ -371,6 +373,6 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 請分享您對此預覽功能的意見反應，或在 [Azure AD 意見反應論壇](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032)上使用它來報告問題。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure Active Directory 的詳細資訊，請參閱[什麼是 Azure Active Directory](../fundamentals/active-directory-whatis.md)

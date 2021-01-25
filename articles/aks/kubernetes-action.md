@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: d03acab340e593a925f042ca41f9e8967b468858
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 94134360de49a066f825cbb0c85712995d90b37f
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605440"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761457"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>部署至 Kubernetes 服務的 GitHub Actions
 
-[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) 可讓您彈性地建置自動化軟體開發生命週期工作流程。 您可以使用多個 Kubernetes 動作，從 Azure Container Registry 部署至容器，以 GitHub Actions 的 Azure Kubernetes Service。 
+[GitHub Actions](https://docs.github.com/en/actions) 可讓您彈性地建置自動化軟體開發生命週期工作流程。 您可以使用多個 Kubernetes 動作，從 Azure Container Registry 部署至容器，以 GitHub Actions 的 Azure Kubernetes Service。 
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>必要條件 
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - GitHub 帳戶。 如果您沒有帳戶，請[免費](https://github.com/join)註冊。  
