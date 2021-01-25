@@ -1,5 +1,6 @@
 ---
-title: 將單一頁面應用程式移至生產-Microsoft 身分識別平臺 |蔚藍
+title: 將單一頁面應用程式移至生產環境
+titleSuffix: Microsoft identity platform
 description: '瞭解如何建立單一頁面應用程式 (移至生產環境) '
 services: active-directory
 author: navyasric
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0a51442870fb72e2b3cd93d9f03736d2c679ed06
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0c1e9e6da02478f5e4703676b74fc8247a4f619b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442815"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753531"
 ---
 # <a name="single-page-application-move-to-production"></a>單一頁面應用程式：移至生產環境
 
@@ -36,11 +37,11 @@ ms.locfileid: "94442815"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 快速入門範例的深入探討，其中說明如何使用 **MSAL.js** ： [JavaScript SPA 教學](./tutorial-v2-javascript-spa.md)課程來登入使用者，以及取得存取權杖以呼叫 **Microsoft Graph API** 的程式碼。
+- 快速入門範例的深入探討，其中說明如何使用 **MSAL.js**： [JavaScript SPA 教學](./tutorial-v2-javascript-spa.md)課程來登入使用者，以及取得存取權杖以呼叫 **Microsoft Graph API** 的程式碼。
 
-- 示範如何使用 **MSAL.js** ： [SPA 與 ASP.NET 後端](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)，為您自己的後端 web API 取得權杖 (ASP.NET Core) 的範例。
+- 示範如何使用 **MSAL.js**： [SPA 與 ASP.NET 後端](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)，為您自己的後端 web API 取得權杖 (ASP.NET Core) 的範例。
 
-- 示範如何使用 **passport-azure-ad** ： [Node.js web api (Azure AD](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)來驗證後端 Web api ( # A0) 的存取權杖的範例。
+- 示範如何使用 **passport-azure-ad**： [Node.js web api (Azure AD](https://github.com/Azure-Samples/active-directory-javascript-nodejs-webapi-v2)來驗證後端 Web api ( # A0) 的存取權杖的範例。
 
 - 此範例示範如何使用 **MSAL.js** ，在以 **Azure Active Directory B2C** (Azure AD B2C) ： [SPA 與 Azure AD B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)註冊的應用程式中登入使用者。
 

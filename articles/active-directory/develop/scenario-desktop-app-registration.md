@@ -1,5 +1,6 @@
 ---
-title: 註冊呼叫 web Api 的桌面應用程式-Microsoft 身分識別平臺 |蔚藍
+title: 註冊呼叫 web Api 的桌面應用程式 |蔚藍
+titleSuffix: Microsoft identity platform
 description: '瞭解如何建立傳統型應用程式，以呼叫 (應用程式註冊的 web Api) '
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c769fd86f432d135542c1f09b83ea5a01c6ab0a6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 46c8127a93cef8f662930fffd07a2fa3d22b8871
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250599"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753708"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>呼叫 web Api 的桌面應用程式：應用程式註冊
 

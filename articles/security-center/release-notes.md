@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/21/2021
+ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: d171e3a7f1f0d63d0a5d130c6e19b246bf0cd795
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 349f0b72ad7f3cb98e8f4ae9105efa9718f0b11b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661809"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752252"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -33,13 +33,40 @@ ms.locfileid: "98661809"
 
 ## <a name="january-2021"></a>2021 年 1 月
 
-12 月的更新包括：
+1月更新包括：
 
+- [Azure 安全性基準測試現在是 Azure 資訊安全中心的預設原則方案](#azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center)
 - [適用于內部部署和多雲端電腦的弱點評定已正式推出 (GA) ](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
+- [管理群組的安全分數現在可供預覽](#secure-score-for-management-groups-is-now-available-in-preview)
 - [安全分數 API 已正式推出 (GA) ](#secure-score-api-is-released-for-general-availability-ga)
+- [正式推出的多雲端連接器 (GA) ](#multi-cloud-connectors-are-released-for-general-availability-ga)
+- [從您的訂用帳戶和管理群組的安全分數豁免整個建議](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
+- [使用者現在可以向全域管理員要求整個租使用者的可見度](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
+- [已新增 35 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [已篩選建議清單的 CSV 匯出](#csv-export-of-filtered-list-of-recommendations)
 - [「不適用」資源現在在 Azure 原則評量中回報為「符合規範」](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 
+
+### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Azure 安全性基準測試現在是 Azure 資訊安全中心的預設原則方案
+
+Azure 安全性效能評定是 Microsoft 針對以通用合規性架構為基礎的安全性和合規性最佳做法所撰寫的一組 Azure 特定指導方針。 這項廣泛的基準測試建基於 [網際網路安全性 (CIS) ](https://www.cisecurity.org/benchmark/azure/) 的控制，以及美國的 [標準與技術局 (NIST) ](https://www.nist.gov/) ，並著重于以雲端為中心的安全性。
+
+在最近幾個月，安全性中心的內建安全性建議清單大幅成長，可擴展我們對此基準測試的涵蓋範圍。
+
+從這個版本開始，基準測試是安全中心建議的基礎，而且完全整合為預設原則計畫。 
+
+所有 Azure 服務都有其檔中的 [安全性基準] 頁面。 例如， [這是安全中心的基準](security-baseline.md)。 這些基準建基於 Azure 安全性基準。
+
+如果您使用的是安全性中心的法規合規性儀表板，您會在轉換期間看到基準測試的兩個實例：
+
+:::image type="content" source="media/release-notes/regulatory-compliance-with-azure-security-benchmark.png" alt-text="顯示 Azure 安全性基準測試 Azure 資訊安全中心的法規合規性儀表板":::
+
+現有的建議並不受影響，而且當基準測試增加時，變更將會自動反映在安全性中心內。 
+
+若要深入瞭解，請參閱下列頁面：
+
+- [深入了解 Azure 安全性效能評定](../security/benchmarks/introduction.md)
+- [如何在法規合規性儀表板中自訂一組標準](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>適用于內部部署和多雲端電腦的弱點評定已正式推出 (GA) 
 
@@ -63,6 +90,14 @@ ms.locfileid: "98661809"
 [深入了解已啟用 Azure Arc 的伺服器](../azure-arc/servers/index.yml)。
 
 
+### <a name="secure-score-for-management-groups-is-now-available-in-preview"></a>管理群組的安全分數現在可供預覽
+
+除了訂用帳戶層級以外，[安全分數] 頁面現在會顯示管理群組的匯總安全分數。 現在您可以看到組織中的管理群組清單以及每個管理群組的分數。
+
+:::image type="content" source="media/secure-score-security-controls/secure-score-management-groups.png" alt-text="為您的管理群組查看安全分數。":::
+
+深入了解 [Azure 資訊安全中心內的安全分數和安全性控制項](secure-score-security-controls.md)。
+
 ### <a name="secure-score-api-is-released-for-general-availability-ga"></a>安全分數 API 已正式推出 (GA) 
 
 您現在可以透過 [安全分數 API](/rest/api/securitycenter/securescores/)來存取您的分數。 API 方法可讓您靈活地查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用 **安全分數** API 來取得特定訂用帳戶的分數。 此外，您可以使用 **安全分數控制項** API 來列出您訂用帳戶的安全性控制項和目前分數。
@@ -70,6 +105,87 @@ ms.locfileid: "98661809"
 如需安全分數 API 搭配使用外部工具的範例，請參閱 [GitHub 社群的安全分數區域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
 
 深入了解 [Azure 資訊安全中心內的安全分數和安全性控制項](secure-score-security-controls.md)。
+
+
+### <a name="multi-cloud-connectors-are-released-for-general-availability-ga"></a>正式推出的多雲端連接器 (GA) 
+
+由於雲端工作負載通常需要跨越多個雲端平台，因此雲端安全性服務必須執行相同動作。
+
+Azure 資訊安全中心會保護 Azure、Amazon Web Services (AWS) 和 Google Cloud Platform (GCP) 中的工作負載。
+
+連接您的 AWS 或 GCP 帳戶可將其原生安全性工具（例如 AWS 安全性中樞和 GCP 安全性命令中心）整合到 Azure 資訊安全中心中。
+
+這項功能表示，在所有主要雲端環境中，安全中心都會提供可見度和保護。 這項整合的一些優點：
+
+- 自動代理程式布建-安全性中心使用 Azure Arc 將 Log Analytics 代理程式部署至您的 AWS 實例
+- 原則管理
+- 弱點管理
+- 內嵌端點偵測和回應 (EDR)
+- 安全性設定錯誤的偵測
+- 顯示所有雲端提供者的安全性建議的單一視圖
+- 將您所有的資源納入安全中心的安全分數計算
+- AWS 和 GCP 資源的法規合規性評量
+
+從 [安全性中心] 的功能表中，選取 [ **多個雲端連接器** ]，您會看到建立新連接器的選項：
+
+:::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="資訊安全中心的 [多重雲端連接器] 頁面上的 [新增 AWS 帳戶] 按鈕":::
+
+深入瞭解：
+- [將您的 AWS 帳戶連線到 Azure 資訊安全中心](quickstart-onboard-aws.md)
+- [將您的 GCP 帳戶連線到 Azure 資訊安全中心](quickstart-onboard-gcp.md)
+
+
+### <a name="exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups"></a>從您的訂用帳戶和管理群組的安全分數豁免整個建議
+
+我們即將擴充豁免功能，以包含完整的建議。 提供進一步的選項，讓您可以微調安全性中心針對您的訂用帳戶、管理群組或資源所做的安全性建議。
+
+有時候，當您知道問題已由協力廠商工具解決（未偵測到安全性中心）時，資源將會列為狀況不良。 或者，建議會顯示在您覺得不屬於的範圍中。 建議對於特定訂用帳戶可能不適當。 或者，您的組織只決定接受與特定資源或建議相關的風險。
+
+使用這項預覽功能，您現在可以針對下列建議建立豁免：
+
+- **豁免資源** 以確保在未來未與狀況不良的資源一起列出，且不會影響您的安全分數。 資源將列為不適用，且原因會顯示為「豁免」，並顯示您所選取的特定理由。
+
+- **豁免訂用帳戶或管理群組** ，以確保建議不會影響您的安全分數，未來將不會顯示該訂用帳戶或管理群組。 這與現有資源和您在未來建立的任何資源相關。 建議將會標示您針對所選範圍選取的特定理由。
+
+深入瞭解如何 [從您的安全分數排除資源和建議](exempt-resource.md)。
+
+
+
+### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>使用者現在可以向全域管理員要求整個租使用者的可見度
+
+如果使用者沒有看到安全性中心資料的許可權，他們現在會看到其組織全域管理員的連結要求許可權。 要求會包含想要的角色，以及其必要原因的理由。
+
+:::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="橫幅會通知使用者，他們可以要求整個租使用者的許可權。":::
+
+[當您的許可權不足時，請在要求租使用者範圍內](security-center-management-groups.md#request-tenant-wide-permissions-when-yours-are-insufficient)深入瞭解。
+
+
+### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>已新增 35 個預覽建議，以增加 Azure 安全性效能評定的涵蓋範圍
+
+Azure 安全性基準測試是 Azure 資訊安全中心中的預設原則方案。 
+
+為了提高此基準測試的涵蓋範圍，已將下列 35 preview 建議新增至「安全性中心」。
+
+> [!TIP]
+> 預覽建議不會將資源轉譯為「狀況不良」，這些項目也不會納入您安全分數的計算範圍。 您可以盡可能加以補救，以在預覽期間結束時計入您的分數。 若要了解如何回應這些建議，請參閱[Azure 資訊安全中心的補救建議](security-center-remediate-recommendations.md)。
+
+| 安全性控制                     | 新建議                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 啟用待用加密            | - Azure Cosmos DB 帳戶應使用客戶自控金鑰加密待用資料<br>- Azure Machine Learning 工作區應使用客戶自控金鑰 (CMK) 進行加密<br>- 應為 MySQL 伺服器啟用自備金鑰資料保護<br>- 應為 PostgreSQL 伺服器啟用自備金鑰資料保護<br>- 認知服務帳戶應使用客戶自控金鑰 (CMK) 來啟用資料加密<br>- 應使用客戶自控金鑰 (CMK) 進行加密<br>- SQL 受控執行個體應使用客戶自控金鑰來加密待用資料<br>- SQL 伺服器應使用客戶自控金鑰來加密待用資料<br>- 儲存體帳戶應使用客戶自控金鑰 (CMK) 進行加密                                                                                                                                                              |
+| 實作安全性最佳做法    | - 訂用帳戶應具有連絡人電子郵件地址以處理安全性問題<br> - 您的訂用帳戶上應啟用 Log Analytics 代理程式的自動化佈建<br> - 應針對高嚴重性警示啟用電子郵件通知<br> - 應已針對高嚴重性警示啟用傳送給訂用帳戶擁有者的電子郵件通知<br> - 金鑰保存庫應啟用清除保護<br> - 金鑰保存庫應已啟用虛刪除 |
+| 管理存取權和權限        | - 函數應用程式應啟用「用戶端憑證 (傳入用戶端憑證)」 |
+| 保護應用程式防範 DDoS 攻擊 | - 應為應用程式閘道啟用 Web 應用程式防火牆 (WAF)<br> - 應為 Azure Front Door Service 啟用 Web 應用程式防火牆 (WAF) |
+| 限制未經授權的網路存取 | - 應該在 Key Vault 上啟用防火牆<br> - 應設定 Key Vault 的私人端點<br> - 應用程式設定應使用私人連結<br> - Azure Cache for Redis 應位於虛擬網路內<br> - Azure 事件方格網域應使用私人連結<br> - Azure 事件方格主題應使用私人連結<br> - Azure Machine Learning 工作區應使用私人連結<br> - Azure SignalR Service 應使用私人連結<br> - Azure Spring Cloud 應使用網路插入<br> - 不應允許不受限制的網路存取<br> - 容器登錄應使用私人連結<br> - 應為 MariaDB 伺服器停用公用網路存取<br> - 應為 MySQL 伺服器停用公用網路存取<br> - 應為 PostgreSQL 伺服器停用公用網路存取<br> - 儲存體帳戶應使用私人連結連線<br> - 儲存體帳戶應使用虛擬網路規則來限制網路存取<br> - VM 映像產生器範本應使用私人連結|
+|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+相關連結：
+
+- [深入了解 Azure 安全性效能評定](../security/benchmarks/introduction.md)
+- [深入了解適用於 MariaDB 的 Azure 資料庫](../mariadb/overview.md)
+- [深入了解適用於 MySQL 的 Azure 資料庫](../mysql/overview.md)
+- [深入了解適用於 PostgreSQL 的 Azure 資料庫](../postgresql/overview.md)
+
+
 
 
 ### <a name="csv-export-of-filtered-list-of-recommendations"></a>已篩選建議清單的 CSV 匯出 

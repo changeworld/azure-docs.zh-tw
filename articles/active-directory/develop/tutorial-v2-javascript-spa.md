@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 51b548beae57ce1da32006b61dfd222b0a4e6218
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
-ms.translationtype: HT
+ms.openlocfilehash: 874488e5de7888edad5310afce1afd1baec4ece0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015856"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753065"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>教學課程：登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft Graph API
 
@@ -45,7 +45,7 @@ ms.locfileid: "98015856"
 
 ![示範本教學課程所產生的應用程式範例如何運作](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-此指南建立的範例應用程式可讓 JavaScript SPA 查詢 Microsoft Graph API，或查詢可接受來自 Microsoft 身分識別平台端點之權杖的 Web API。 在此案例中，當使用者登入之後，系統會透過授權標頭要求一個存取權杖，並將其新增到 HTTP 要求。 系統會使用此權杖以透過 **MS 圖形 API** 來取得使用者的設定檔和郵件。
+本指南所建立的範例應用程式可讓 JavaScript SPA 查詢 Microsoft Graph API，或可接受來自 Microsoft 身分識別平臺之權杖的 web API。 在此案例中，當使用者登入之後，系統會透過授權標頭要求一個存取權杖，並將其新增到 HTTP 要求。 系統會使用此權杖以透過 **MS 圖形 API** 來取得使用者的設定檔和郵件。
 
 權杖取得和更新作業是由[適用於 JavaScript 的 Microsoft Authentication Library (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-js) 負責處理的。
 
@@ -413,13 +413,13 @@ ms.locfileid: "98015856"
 
 #### <a name="get-a-user-token-interactively"></a>以互動方式取得使用者權杖
 
-初次登入之後，您不希望在使用者每次必須要求權杖來存取資源時，都要求使用者重新驗證。 因此，通常應該使用 acquireTokenSilent 以取得權杖。 但是，您有可能必須強制使用者與 Microsoft 身分識別平台端點互動。 範例包括：
+初次登入之後，您不希望在使用者每次必須要求權杖來存取資源時，都要求使用者重新驗證。 因此，通常應該使用 acquireTokenSilent 以取得權杖。 不過，在某些情況下，您需要強制使用者與 Microsoft 身分識別平臺互動。 範例包括：
 
 - 使用者需要重新輸入其認證，因為密碼已過期。
 - 您的應用程式要求資源存取權，而您需要使用者同意。
 - 需要雙因素驗證。
 
-呼叫 acquireTokenPopup 開啟快顯視窗 (或呼叫 acquireTokenRedirect 將使用者重新導向至 Microsoft 身分識別平台端點)。 在該視窗中，使用者必須藉由確認其認證、同意必要的資源，或完成雙因素驗證來進行互動。
+呼叫 *>acquiretokenpopup* 會開啟快顯視窗 (或 *>acquiretokenredirect* 會將使用者重新導向至 Microsoft 身分識別平臺) 。 在該視窗中，使用者必須藉由確認其認證、同意必要的資源，或完成雙因素驗證來進行互動。
 
 #### <a name="get-a-user-token-silently"></a>以無訊息方式取得使用者權杖
 
@@ -483,7 +483,7 @@ ms.locfileid: "98015856"
    ```
 1. 在瀏覽器中輸入 **http://localhost:3000** 或 **http://localhost:{port}** ，其中 *port* 是 Web 伺服器將會接聽的連接埠。 您應該會看到 index.html 檔案和 [登入] 按鈕。
 
-在瀏覽器載入您的 index.html 檔案之後，請選取 [登入]。 系統會提示您使用 Microsoft 身分識別平台端點登入：
+在瀏覽器載入您的 index.html 檔案之後，請選取 [登入]。 系統會提示您使用 Microsoft 身分識別平臺登入：
 
 ![JavaScript SPA 帳戶登入視窗](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

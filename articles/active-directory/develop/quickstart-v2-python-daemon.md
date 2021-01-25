@@ -1,7 +1,7 @@
 ---
 title: 快速入門：從 Python 精靈呼叫 Microsoft Graph | Azure
 titleSuffix: Microsoft identity platform
-description: 在本快速入門中，您會了解 Python 程序如何使用應用程式本身的身分識別來取得存取權杖，並呼叫受 Microsoft 身分識別平台端點保護的 API
+description: 在本快速入門中，您將瞭解 Python 進程如何取得存取權杖，並使用應用程式本身的身分識別來呼叫受 Microsoft 身分識別平臺保護的 API
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 47aaf67c9ae2402e0445de60de439b77242bd87d
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 04c3497e41aba301d5cf16cd6cc723409d1f4175
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178223"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754067"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入門：使用應用程式的身分識別取得權杖，並從 Python 主控台應用程式呼叫 Microsoft Graph API
 

@@ -13,16 +13,16 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de1fcdc259de3f72e35feb411bcc836354352eb4
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256580"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752597"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 身分識別平台和 OpenID Connect 通訊協定
 
-OpenID Connect (OIDC) 是建置於 OAuth 2.0 的驗證通訊協定，可用來安全地將使用者登入應用程式。 當您使用 Microsoft 身分識別平臺端點的 OpenID Connect 執行時，可以將登入及 API 存取新增至您的應用程式。 本文說明如何與語言無關，並描述如何在不使用任何 [Microsoft 開放原始](reference-v2-libraries.md)碼程式庫的情況下傳送和接收 HTTP 訊息。
+OpenID Connect (OIDC) 是建置於 OAuth 2.0 的驗證通訊協定，可用來安全地將使用者登入應用程式。 當您使用 Microsoft 身分識別平臺的 OpenID Connect 執行時，可以將登入及 API 存取新增至您的應用程式。 本文說明如何與語言無關，並描述如何在不使用任何 [Microsoft 開放原始](reference-v2-libraries.md)碼程式庫的情況下傳送和接收 HTTP 訊息。
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 擴充 oauth 2.0 *授權* 通訊協定以作為 *驗證* 通訊協定使用，以便您可以使用 OAuth 進行單一登入。 OpenID Connect 引進了「識別碼權杖」的概念，這是一種安全性權杖，可讓用戶端確認使用者的身分識別。 識別碼權杖也會取得使用者的相關基本設定檔資訊。 它也引進了「使用者類型」 [端點](userinfo.md)，這個 API 會傳回使用者的相關資訊。 
 
@@ -88,7 +88,7 @@ Host: login.microsoftonline.com
 
 如果您的應用程式因使用 [claims-mapping](active-directory-claims-mapping.md) 功能而具有自訂簽署金鑰，您必須附加包含應用程式識別碼的 `appid` 查詢參數，以取得指向您應用程式簽署金鑰資訊的 `jwks_uri`。 例如：`https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 包含內容為 `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e` 的 `jwks_uri`。
 
-一般而言，您可使用此中繼資料文件來設定 OpenID Connect 程式庫或 SDK；程式庫會使用中繼資料來執行其工作。 不過，如果您並非使用預先建置的 OpenID Connect 程式庫，則可遵循此文章其餘部分中的步驟，來使用 Microsoft 身分識別平台端點在 Web 應用程式中進行登入。
+一般而言，您可使用此中繼資料文件來設定 OpenID Connect 程式庫或 SDK；程式庫會使用中繼資料來執行其工作。 不過，如果您不是使用預先建立的 OpenID Connect 程式庫，您可以遵循本文其餘部分中的步驟，在 web 應用程式中使用 Microsoft 身分識別平臺進行登入。
 
 ## <a name="send-the-sign-in-request"></a>傳送登入要求
 
@@ -119,20 +119,20 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 參數 | 條件 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必要 | 您可以要求路徑中使用 `{tenant}` 值來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需詳細資訊，請參閱[通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。 |
-| `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
+| `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的 **應用程式 (用戶端) 識別碼**。 |
 | `response_type` | 必要 | 必須包含 OpenID Connect 登入的 `id_token` 。 它也可能包含其他 `response_type` 值，例如 `code`。 |
 | `redirect_uri` | 建議 | 應用程式的重新導向 URI，您的應用程式可在此傳送及接收驗證回應。 它必須與您在入口網站中註冊的其中一個重新導向 URI 完全相符，只是它必須是採用 URL 編碼。 如果不存在，端點將會隨機挑選一個已註冊的 redirect_uri 來將使用者傳送回去。 |
 | `scope` | 必要 | 範圍的空格分隔清單。 針對 OpenID Connect，即必須包含範圍 `openid`，其會在同意 UI 中轉譯成「讓您登入」權限。 您也可以在此要求中包含其他範圍來要求同意。 |
 | `nonce` | 必要 | 一個由應用程式產生且包含在要求中的值，此值會以宣告方式包含在產生的 id_token 中。 應用程式可以確認此值來減輕權杖重新執行攻擊的影響。 此值通常是一個隨機的唯一字串，可用來識別要求的來源。 |
 | `response_mode` | 建議 | 指定將產生的授權碼傳回到應用程式所應該使用的方法。 可以是 `form_post` 或 `fragment`。 針對 Web 應用程式，建議使用 `response_mode=form_post`，以確保會以最安全的方式將權杖傳輸至您的應用程式。 |
 | `state` | 建議 | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 通常會使用一個隨機產生的唯一值來[防止跨站台偽造要求攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此狀態也用來在驗證要求出現之前，於應用程式中將使用者狀態的相關資訊 (例如使用者所在的網頁或檢視) 編碼。 |
-| `prompt` | 選用 | 表示需要的使用者互動類型。 此時唯有 `login`、`none` 及 `consent` 是有效值。 `prompt=login` 宣告會強制使用者在該要求上輸入其認證，亦即取消單一登入。 `prompt=none` 宣告則相反。 此宣告會確保無論如何都不會對使用者顯示任何互動式提示。 如果無法透過單一登入以無訊息方式完成要求，Microsoft 身分識別平台端點就會傳回錯誤。 `prompt=consent` 宣告會在使用者登入之後觸發 OAuth 同意對話方塊。 該對話方塊會請使用者將權限授與應用程式。 |
+| `prompt` | 選用 | 表示需要的使用者互動類型。 此時唯有 `login`、`none` 及 `consent` 是有效值。 `prompt=login` 宣告會強制使用者在該要求上輸入其認證，亦即取消單一登入。 `prompt=none` 宣告則相反。 此宣告會確保無論如何都不會對使用者顯示任何互動式提示。 如果要求無法透過單一登入以無訊息方式完成，Microsoft 身分識別平臺會傳回錯誤。 `prompt=consent` 宣告會在使用者登入之後觸發 OAuth 同意對話方塊。 該對話方塊會請使用者將權限授與應用程式。 |
 | `login_hint` | 選用 | 如果您事先知道使用者名稱，便可使用此參數為使用者預先填入登入頁面的使用者名稱和電子郵件地址欄位。 通常應用程式會在重新驗證期間，在已經使用 `preferred_username` 宣告從稍早的登入中擷取使用者名稱之後，使用此參數。 |
 | `domain_hint` | 選用 | 使用者於同盟目錄中的領域。  這會略過使用者在登入頁面上經歷的電子郵件型探索程序，以提供稍微更流暢的使用者體驗。 針對透過如 AD FS 的內部部署目錄進行同盟的租用戶，這通常會因現有的登入工作階段而導致流暢的登入。 |
 
-此時，系統會要求使用者輸入其認證並完成驗證。 Microsoft 身分識別平台端點會確認使用者已經同意 `scope` 查詢參數所指出的權限。 如果使用者尚未同意那些權限中的任何一項，Microsoft 身分識別平台端點就會提示使用者同意必要的權限。 您可以深入了解[權限、同意及多租用戶應用程式](v2-permissions-and-consent.md)。
+此時，系統會要求使用者輸入其認證並完成驗證。 Microsoft 身分識別平臺會確認使用者是否已同意查詢參數中所指出的許可權 `scope` 。 如果使用者未同意這些許可權的任何一項，Microsoft 身分識別平臺會提示使用者同意必要的許可權。 您可以深入了解[權限、同意及多租用戶應用程式](v2-permissions-and-consent.md)。
 
-在使用者驗證並授與同意之後，Microsoft 身分識別平台端點會使用 `response_mode` 參數中指定的方法，於指定的重新導向 URI 將回應傳回給您的應用程式。
+在使用者驗證並授與同意之後，Microsoft 身分識別平臺會使用參數中指定的方法，在指定的重新導向 URI 上將回應傳回給您的應用程式 `response_mode` 。
 
 ### <a name="successful-response"></a>成功回應
 
@@ -184,7 +184,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ## <a name="validate-the-id-token"></a>驗證識別碼權杖
 
-只接收 id_token 不一定足以驗證使用者;您也可能需要驗證 id_token 的簽章，並根據您應用程式的需求來確認權杖中的宣告。 就像所有的 OIDC 平臺一樣，Microsoft 身分識別平臺端點會使用 [JSON Web 權杖 (jwt) ](https://tools.ietf.org/html/rfc7519) 和公開金鑰加密來簽署識別碼權杖，並確認它們是有效的。
+只接收 id_token 不一定足以驗證使用者;您也可能需要驗證 id_token 的簽章，並根據您應用程式的需求來確認權杖中的宣告。 就像所有的 OIDC 平臺一樣，Microsoft 身分識別平臺會使用 [JSON Web 權杖 (jwt) ](https://tools.ietf.org/html/rfc7519) 和公開金鑰加密來簽署識別碼權杖，並確認它們是有效的。
 
 並非所有應用程式都能受益于驗證識別碼權杖-原生應用程式和單一頁面應用程式，而不是驗證識別碼權杖很有説明。  具有裝置 (或流覽) 器之實體存取權的人，可以略過驗證，方法是將網路流量編輯至裝置，以提供假的權杖和金鑰，只是要將應用程式進行偵錯工具以略過驗證邏輯。  另一方面，使用識別碼權杖進行授權的 web 應用程式和 Api 必須謹慎地驗證識別碼權杖，因為它們會控制資料的存取權。
 
@@ -283,7 +283,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ## <a name="send-a-sign-out-request"></a>傳送登出要求
 
-當您想要將使用者登出應用程式時，只是清除應用程式的 Cookie 或結束使用者的工作階段還是不夠。 您還必須將使用者重新導向至 Microsoft 身分識別平台端點以登出。如果不這樣做，使用者不需要再次輸入認證就能重新向應用程式進行驗證，因為他們與 Microsoft 身分識別平台端點之間仍然存在有效的單一登入工作階段。
+當您想要將使用者登出應用程式時，只是清除應用程式的 Cookie 或結束使用者的工作階段還是不夠。 您也必須將使用者重新導向至 Microsoft 身分識別平臺來登出。如果您沒有這麼做，使用者會就重新驗證至您的應用程式，而不會再次輸入其認證，因為它們會與 Microsoft 身分識別平臺有有效的單一登入會話。
 
 您可以將使用者重新導向至 OpenID Connect 中繼資料文件中所列出的 `end_session_endpoint`：
 
@@ -294,11 +294,11 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | 參數 | 條件 | 描述 |
 | ----------------------- | ------------------------------- | ------------ |
-| `post_logout_redirect_uri` | 建議 | 使用者在成功登出之後，要重新導致到的 URL。若未包含此參數，則使用者會看到由 Microsoft 身分識別平台端點所產生的一般訊息。 此 URL 必須與您在應用程式註冊入口網站中為應用程式註冊的其中一個重新導向 URI 相符。 |
+| `post_logout_redirect_uri` | 建議 | 使用者在成功登出之後，重新導向至的 URL。如果未包含此參數，使用者會看到由 Microsoft 身分識別平臺所產生的一般訊息。 此 URL 必須與您在應用程式註冊入口網站中為應用程式註冊的其中一個重新導向 URI 相符。 |
 
 ## <a name="single-sign-out"></a>單一登出
 
-當您將使用者重新導向至 `end_session_endpoint` 時，Microsoft 身分識別平台端點會從瀏覽器中清除使用者的工作階段。 不過，使用者可能仍然登入其他使用 Microsoft 帳戶進行驗證的應用程式。 為了讓那些應用程式能同時將使用者登出，Microsoft 身分識別平台端點會將 HTTP GET 要求傳送至使用者目前登入之所有應用程式的已註冊 `LogoutUrl`。 應用程式必須藉由清除任何可識別使用者的工作階段並傳回 `200` 回應，以回應此要求。 如果您想要在應用程式中支援單一登出，您必須在應用程式的程式碼中實作這類 `LogoutUrl`。 您可以從應用程式註冊入口網站設定 `LogoutUrl`。
+當您將使用者重新導向至時 `end_session_endpoint` ，Microsoft 身分識別平臺會清除瀏覽器中的使用者會話。 不過，使用者可能仍然登入其他使用 Microsoft 帳戶進行驗證的應用程式。 為了讓這些應用程式能同時將使用者登出，Microsoft 身分識別平臺會將 HTTP GET 要求傳送至 `LogoutUrl` 使用者目前登入之所有應用程式的註冊。 應用程式必須藉由清除任何可識別使用者的工作階段並傳回 `200` 回應，以回應此要求。 如果您想要在應用程式中支援單一登出，您必須在應用程式的程式碼中實作這類 `LogoutUrl`。 您可以從應用程式註冊入口網站設定 `LogoutUrl`。
 
 ## <a name="next-steps"></a>後續步驟
 

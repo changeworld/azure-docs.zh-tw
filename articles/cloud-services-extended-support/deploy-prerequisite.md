@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 45f2b75be9a0090b883c5cc62a0886366e81a302
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 28c7f2c0a61150b2014f669f37ac84ee3a94aebf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744212"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752161"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>部署 Azure 雲端服務 (延伸支援的必要條件) 
 
@@ -42,12 +42,12 @@ CloudServices           Microsoft.Compute    Registered
 ## <a name="required-service-configuration-cscfg-file-updates"></a>必要的服務設定 ( .cscfg) 檔案更新
 
 ### <a name="1-virtual-network"></a>1) 虛擬網路
-雲端服務 (延伸支援) 部署必須在虛擬網路中。 您可以透過 [Azure 入口網站](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)、 [PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell)、 [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) 或 [ARM 範本](https://docs.microsoft.com/azure/virtual-network/quick-create-template)來建立虛擬網路。 您也必須在服務設定中參考虛擬網路和子網 ( .cscfg) `NetworkConfiguration` 一節中。 
+雲端服務 (延伸支援) 部署必須在虛擬網路中。 您可以透過 [Azure 入口網站](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)、 [PowerShell](https://docs.microsoft.com/azure/virtual-network/quick-create-powershell)、 [Azure CLI](https://docs.microsoft.com/azure/virtual-network/quick-create-cli) 或 [ARM 範本](https://docs.microsoft.com/azure/virtual-network/quick-create-template)來建立虛擬網路。 您也必須在服務設定中參考虛擬網路和子網 ( .cscfg) 在 [NetworkConfiguration](schema-cscfg-networkconfiguration.md) 區段下。 
 
 如果虛擬網路屬於與雲端服務相同的資源群組，則只參考服務設定中的虛擬網路名稱 ( .cscfg) 檔案已足夠。 如果虛擬網路和雲端服務位於兩個不同的資源群組中，則必須在服務設定 ( .cscfg) 檔案中指定虛擬網路的完整 Azure Resource Manager 識別碼。
  
 #### <a name="virtual-network-located-in-same-resource-group"></a>位於相同資源群組中的虛擬網路
-```json
+```xml
 <VirtualNetworkSite name="<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
@@ -58,8 +58,8 @@ CloudServices           Microsoft.Compute    Registered
 ```
 
 #### <a name="virtual-network-located-in-different-resource-group"></a>位於不同資源群組中的虛擬網路
-```json
-“/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/> 
+```xml
+<VirtualNetworkSite name="/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>"/> 
 <AddressAssignments> 
 <InstanceAddress roleName="<role-name>"> 
 <Subnets> 

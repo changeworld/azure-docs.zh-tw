@@ -1,5 +1,6 @@
 ---
-title: 設定登入使用者的 web 應用程式-Microsoft 身分識別平臺 |蔚藍
+title: 設定用來登入使用者的 web 應用程式 |蔚藍
+titleSuffix: Microsoft identity platform
 description: '瞭解如何建立 web 應用程式，以 (程式碼設定登入使用者) '
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443648"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753262"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>登入使用者的 Web 應用程式：程式碼設定
 
@@ -202,7 +203,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 ## <a name="initialization-code"></a>初始化程式碼
 
-初始化程式碼會根據平臺而有所不同。 針對 ASP.NET Core 和 ASP.NET，登入使用者會委派給 OpenID Connect 中介軟體。 ASP.NET 或 ASP.NET Core 範本會產生 Azure Active Directory (Azure AD) v1.0 端點的 web 應用程式。 需要進行某些設定，才能將其適應 Microsoft 身分識別平臺 (v2.0) 端點。 在 JAVA 的案例中，它會與應用程式的合作進行春季處理。
+初始化程式碼會根據平臺而有所不同。 針對 ASP.NET Core 和 ASP.NET，登入使用者會委派給 OpenID Connect 中介軟體。 ASP.NET 或 ASP.NET Core 範本會產生 Azure Active Directory (Azure AD) v1.0 端點的 web 應用程式。 需要進行一些設定，才能將其調整為 Microsoft 身分識別平臺。 在 JAVA 的案例中，它會與應用程式的合作進行春季處理。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -262,7 +263,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 - `AddMicrosoftIdentityWebAppAuthentication`擴充方法是在 **web.config** 中定義。 強烈
   - 新增驗證服務。
   - 設定選項以從 "AzureAD" 區段讀取設定檔 () 
-  - 設定 OpenID Connect 選項，讓授權單位是 Microsoft 身分識別平臺端點。
+  - 設定 OpenID Connect 選項，讓授權單位是 Microsoft 身分識別平臺。
   - 驗證權杖的簽發者。
   - 確保對應至名稱的宣告會從識別碼權杖中的宣告進行對應 `preferred_username` 。
 
@@ -291,7 +292,7 @@ ASP.NET web 應用程式和 web Api 中的驗證相關程式碼位於 [App_Start
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
+     // Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
      // `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/.
      ClientId = clientId,

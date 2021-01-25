@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
-ms.translationtype: HT
+ms.openlocfilehash: 8b12df62a7080e57e47b52cb79ed8a67e12bd526
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178240"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753102"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>教學課程：將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
 在本教學課程中，您會建置 ASP.NET MVC Web 應用程式，以使用 Open Web Interface for .NET (OWIN) 中介軟體和 Microsoft 身分識別平台來登入使用者。
 
-當您完成此指南時，您的應用程式就能夠接受來自 outlook.com 和 live.com 等個人帳戶的登入。 此外，與 Microsoft 身分識別平台整合的任何公司或組織中的公司和學校帳戶也可以登入您的應用程式。
+當您完成此指南時，您的應用程式就能夠接受來自 outlook.com 和 live.com 等個人帳戶的登入。 此外，與 Microsoft 身分識別平臺整合的任何公司或組織中的公司和學校帳戶，都將能夠登入您的應用程式。
 
 本教學課程內容：
 
@@ -119,7 +119,7 @@ ms.locfileid: "98178240"
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed of the Microsoft identity platform and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -406,14 +406,13 @@ ms.locfileid: "98178240"
 <br/><br/>
 ![登入您的 Microsoft 帳戶](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
-
-與 Microsoft 身分識別平台整合的應用程式，會遵循可讓使用者和系統管理員控制資料存取方式的授權模型。 使用者向 Microsoft 身分識別平台進行驗證以存取此應用程式之後，系統會提示他們同意應用程式所要求的權限 (「檢視您的基本設定檔」和「持續存取您允許存取的資料」)。 接受這些權限之後，使用者會繼續處理應用程式的結果。 不過，如果發生下列其中一種情況，使用者可能會看到 **需要管理員同意** 的頁面：
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft 身分識別平台中的權限和同意
+與 Microsoft 身分識別平臺整合的應用程式會遵循授權模型，讓使用者和系統管理員控制資料的存取方式。 當使用者使用 Microsoft 身分識別平臺進行驗證以存取此應用程式之後，系統會提示他們同意應用程式所要求的許可權 ( 「請參閱您的基本設定檔」和「維持存取權給您存取的資料」 ) 。 接受這些權限之後，使用者會繼續處理應用程式的結果。 不過，如果發生下列其中一種情況，使用者可能會看到 **需要管理員同意** 的頁面：
 
 - 應用程式開發人員新增任何其他需要 **管理員同意** 的權限。
 - 或租用戶經過設定 (在 [企業應用程式] -> [使用者設定]  中)，使得使用者無法自行同意應用程式存取公司資料。
 
-如需詳細資訊，請參閱 [Microsoft 身分識別平台端點中的權限和同意](./v2-permissions-and-consent.md)。
+如需詳細資訊，請參閱 [Microsoft 身分識別平臺中的許可權和同意](./v2-permissions-and-consent.md)。
 
 ### <a name="view-application-results"></a>檢視應用程式結果
 

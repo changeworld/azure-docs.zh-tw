@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 532fcc7db849af192ceddb1c239e99f31a2a3088
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b475d8072c4103e8a532cdf703e2d75b0c8aafa2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178461"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754158"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入門：登入使用者並取得 JavaScript SPA 中的存取權杖
 
@@ -54,7 +54,7 @@ ms.locfileid: "98178461"
 > 1. 輸入應用程式的 **名稱**。 您的應用程式使用者可能會看到此名稱，您可以稍後再變更。
 > 1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]。
 > 1. 選取 [註冊]。 在應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
-> 1. 本快速入門需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在所註冊應用程式的左側窗格中，選取 [驗證]。
+> 1. 本快速入門需要啟用[隱含授與流程](v2-oauth2-implicit-grant-flow.md)。 在 [管理] 底下，選取 [驗證]。
 > 1. 在 [平台設定] 下，選取 [新增平台]。 左側會開啟一個面板。 在該處選取 [Web 應用程式] 區域。
 > 1. 同樣在左側，將 [重新導向 URI] 值設定為 `http://localhost:3000/`。 然後，選取 [存取權杖] 和 [識別碼權杖]。
 > 1. 選取 [設定] 。
@@ -266,14 +266,14 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>以互動方式取得使用者權杖
 
-在某些情況下，您可能必須強制使用者與 Microsoft 身分識別平台端點互動。 例如：
+在某些情況下，您需要強制使用者與 Microsoft 身分識別平臺互動。 例如：
 * 使用者可能需要重新輸入其認證，因為密碼已過期。
 * 您的應用程式要求其他資源範圍的存取權，需要使用者同意。
 * 需要雙因素驗證。
 
 大部分應用程式的一般建議模式是先呼叫 `acquireTokenSilent`，再捕捉例外狀況，然後呼叫 `acquireTokenPopup` (或 `acquireTokenRedirect`) 以啟動互動式要求。
 
-呼叫 `acquireTokenPopup` 會導致登入快顯視窗。 (或 `acquireTokenRedirect` 會導致將使用者重新導向至 Microsoft 身分識別平台端點)。在該視窗中，使用者必須藉由確認其認證、同意必要的資源，或完成雙因素驗證來進行互動。
+呼叫 `acquireTokenPopup` 會導致登入快顯視窗。  (或 `acquireTokenRedirect` 導致將使用者重新導向至 Microsoft 身分識別平臺) 。 在該視窗中，使用者必須藉由確認其認證、同意必要的資源，或完成雙因素驗證來進行互動。
 
 ```javascript
 // Add here scopes for access token to be used at MS Graph API endpoints.

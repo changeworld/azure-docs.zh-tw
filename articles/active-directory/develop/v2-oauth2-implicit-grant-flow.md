@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4b5465cc5c1c3447af5303a5c0bfe82874705362
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 97f4642d69d4a432b823bd1cd7cdbdd9fc7f270d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511182"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752741"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 身分識別平臺和隱含授與流程
 
@@ -41,7 +41,7 @@ Microsoft 身分識別平臺支援 oauth [2.0 規格](https://tools.ietf.org/htm
 
 ## <a name="send-the-sign-in-request"></a>傳送登入要求
 
-若要一開始將使用者登入您的應用程式，您可以傳送 [OpenID Connect](v2-protocols-oidc.md) 的驗證要求，並 `id_token` 從 Microsoft 身分識別平臺端點取得。
+若要一開始將使用者登入您的應用程式，您可以傳送 [OpenID Connect](v2-protocols-oidc.md) 的驗證要求，並 `id_token` 從 Microsoft 身分識別平臺取得。
 
 > [!IMPORTANT]
 > 若要成功要求識別碼權杖及/或存取權杖， [Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面中的應用程式註冊必須啟用對應的隱含授與流程，方法是選取 [**識別碼權杖**] 和，或在 **隱含授** 與區段下 **存取權杖**。 如果未啟用，則 `unsupported_response` 會傳回錯誤： **此用戶端不允許為輸入參數 ' response_type ' 提供的值。預期的值為 ' code '**
@@ -73,15 +73,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_mode` | 選用 |指定應該用來將所產生權杖傳回給應用程式的方法。 預設只會查詢存取權杖，但如果要求包含 id_token，則為片段。 |
 | `state` | 建議使用 |同樣會隨權杖回應傳回之要求中所包含的值。 其可以是您想要之任何內容的字串。 隨機產生的唯一值通常用於 [防止跨站台要求偽造攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此狀態也可用來在驗證要求發生之前，將使用者狀態的相關資訊編碼，例如他們所在的頁面或檢視。 |
 | `nonce` | 必要 |包含在要求中的值 (由應用程式產生)，該值將會以宣告的形式包含在產生的 id_token 中。 然後，應用程式可以驗證此值，以減輕權杖重新執行所造成的攻擊。 此值通常是隨機的唯一字串，可以用來識別要求的來源。 只有在要求 id_token 時才需要。 |
-| `prompt` | 選用 |表示必要的使用者互動類型。 目前的有效值只有 'login'、'none'、'select_account' 和 'consent'。 `prompt=login` 會強制使用者在該要求上輸入認證，否定單一登入。 `prompt=none` 相反-它會確保不會對使用者顯示任何互動式提示。 如果要求無法透過單一登入以無訊息方式完成，Microsoft 身分識別平臺端點將會傳回錯誤。 `prompt=select_account` 會將使用者傳送至帳戶選擇器，工作階段中記下的所有帳戶都會出現在當中。 `prompt=consent` 會在使用者登入之後觸發 OAuth 同意對話方塊，詢問使用者是否要授與權限給應用程式。 |
+| `prompt` | 選用 |表示必要的使用者互動類型。 目前的有效值只有 'login'、'none'、'select_account' 和 'consent'。 `prompt=login` 會強制使用者在該要求上輸入認證，否定單一登入。 `prompt=none` 相反-它會確保不會對使用者顯示任何互動式提示。 如果要求無法透過單一登入以無訊息方式完成，Microsoft 身分識別平臺將會傳回錯誤。 `prompt=select_account` 會將使用者傳送至帳戶選擇器，工作階段中記下的所有帳戶都會出現在當中。 `prompt=consent` 會在使用者登入之後觸發 OAuth 同意對話方塊，詢問使用者是否要授與權限給應用程式。 |
 | `login_hint`  |選用 |如果您事先知道使用者的使用者名稱，可以用此項目來預先填入使用者登入頁面上的使用者名稱/電子郵件地址欄位。 通常，應用程式會在重新驗證期間使用此參數，並已使用宣告將使用者名稱從先前的登入解壓縮 `preferred_username` 。|
 | `domain_hint` | 選用 |如果包含，它會略過使用者在登入頁面上經歷的電子郵件式探索程式，進而讓使用者體驗稍微簡化。 此參數通常用於在單一租使用者中操作的企業營運應用程式，在該租使用者中會提供指定租使用者內的功能變數名稱，並將使用者轉送至該租使用者的同盟提供者。  請注意，此提示會防止來賓登入此應用程式，並限制使用雲端認證（例如 FIDO）。  |
 
-此時，會要求使用者輸入其認證並完成驗證。 Microsoft 身分識別平台端點也會確認使用者已經同意 `scope` 查詢參數所指出的權限。 如果使用者 **完全未** 同意這些權限的任一項，其會要求使用者同意必要權限。 如需詳細資訊，請參閱[權限、同意及多租用戶應用程式](v2-permissions-and-consent.md)。
+此時，系統會要求使用者輸入其認證並完成驗證。 Microsoft 身分識別平臺也會確保使用者已同意查詢參數中所指出的許可權 `scope` 。 如果使用者 **完全未** 同意這些權限的任一項，其會要求使用者同意必要權限。 如需詳細資訊，請參閱[權限、同意及多租用戶應用程式](v2-permissions-and-consent.md)。
 
-一旦使用者驗證並同意，Microsoft 身分識別平台端點就會使用 `response_mode` 參數中指定的方法，將回應傳回至位於指定 `redirect_uri` 所在的應用程式。
+一旦使用者驗證並授與同意，Microsoft 身分識別平臺將會 `redirect_uri` 使用參數中指定的方法，將回應傳回給您的應用程式 `response_mode` 。
 
-#### <a name="successful-response"></a>成功回應
+#### <a name="successful-response"></a>成功的回應
 
 使用 `response_mode=fragment` 及 `response_type=id_token+code` 的成功回應如下所示 (內含分行符號以利閱讀)：
 
@@ -92,7 +92,7 @@ code=0.AgAAktYV-sfpYESnQynylW_UKZmH-C9y_G1A
 &state=12345
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
 | `code` | 如果 `response_type` 包含 `code` 則納入。 這是適合用於 [授權碼流程](v2-oauth2-auth-code-flow.md)的授權碼。  |
 | `access_token` |如果 `response_type` 包含 `token` 則納入。 應用程式要求的存取權杖。 存取權杖不應解碼或檢查，它應該被視為不透明的字串。 |
@@ -165,7 +165,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fgraph.microsoft.com%2Fdirectory.read
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --- | --- |
 | `access_token` |如果 `response_type` 包含 `token` 則納入。 應用程式要求的存取權杖，在此案例中為 Microsoft Graph 的存取權杖。 存取權杖不應解碼或檢查，它應該被視為不透明的字串。 |
 | `token_type` | 一律為 `Bearer`。 |
@@ -199,7 +199,7 @@ error=user_authentication_required
 
 ## <a name="send-a-sign-out-request"></a>傳送登出要求
 
-OpenID Connect `end_session_endpoint` 可讓您的應用程式將要求傳送至 microsoft 身分識別平臺端點，以結束使用者的會話，並清除 microsoft 身分識別平臺端點所設定的 cookie。 若要將使用者從 Web 應用程式完全登出，您的應用程式應結束自己和使用者之間的工作階段 (通常是透過清除權杖快取或卸除 Cookie)，然後將瀏覽器重新導向至：
+此 OpenID Connect `end_session_endpoint` 可讓您的應用程式將要求傳送至 microsoft 身分識別平臺，以結束使用者的會話，並清除 Microsoft 身分識別平臺所設定的 cookie。 若要將使用者從 Web 應用程式完全登出，您的應用程式應結束自己和使用者之間的工作階段 (通常是透過清除權杖快取或卸除 Cookie)，然後將瀏覽器重新導向至：
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
@@ -208,7 +208,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 | 參數 | 類型 | 描述 |
 | --- | --- | --- |
 | `tenant` |required |要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。 |
-| `post_logout_redirect_uri` | 建議使用 | 使用者在完成登出之後應該要返回的 URL。 這個值必須符合為應用程式註冊的其中一個重新導向 URI。 如果未包含，Microsoft 身分識別平臺端點將會顯示一般訊息給使用者。 |
+| `post_logout_redirect_uri` | 建議使用 | 使用者在完成登出之後應該要返回的 URL。 這個值必須符合為應用程式註冊的其中一個重新導向 URI。 如果未包含，Microsoft 身分識別平臺將會顯示一般訊息給使用者。 |
 
 ## <a name="next-steps"></a>後續步驟
 

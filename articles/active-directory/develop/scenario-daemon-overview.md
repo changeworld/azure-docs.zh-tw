@@ -1,5 +1,6 @@
 ---
-title: 建立可呼叫 web Api 的 daemon 應用程式-Microsoft 身分識別平臺 |蔚藍
+title: 建立可呼叫 web Api 的 daemon 應用程式 |蔚藍
+titleSuffix: Microsoft identity platform
 description: 瞭解如何建立可呼叫 web Api 的 daemon 應用程式
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e63a948260863c93a92e4241044be5e0baf8afca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443257"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753824"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>案例：呼叫 Web API 的精靈應用程式
 
@@ -45,7 +46,7 @@ ms.locfileid: "94443257"
 
 > [!IMPORTANT]
 >
-> - 使用者無法與 daemon 應用程式互動。 Daemon 應用程式需要自己的身分識別。 這種類型的應用程式會使用其應用程式識別來要求存取權杖，並將其應用程式識別碼、認證 (密碼或憑證) ，以及將應用程式識別碼 URI 呈現給 Azure AD。 成功驗證之後，背景程式會從 Microsoft 身分識別平臺端點接收存取權杖 (和重新整理權杖) 。 然後，此權杖會用來呼叫 web API (，並視需要重新整理) 。
+> - 使用者無法與 daemon 應用程式互動。 Daemon 應用程式需要自己的身分識別。 這種類型的應用程式會使用其應用程式識別來要求存取權杖，並將其應用程式識別碼、認證 (密碼或憑證) ，以及將應用程式識別碼 URI 呈現給 Azure AD。 成功驗證之後，背景程式會收到 (的存取權杖，以及從 Microsoft 身分識別平臺) 的重新整理權杖。 然後，此權杖會用來呼叫 web API (，並視需要重新整理) 。
 > - 因為使用者無法與背景程式應用程式互動，所以不可能進行累加式同意。 所有必要的 API 許可權都必須在應用程式註冊時進行設定。 應用程式的程式碼只會要求靜態定義的許可權。 這也表示 daemon 應用程式不支援累加式同意。
 
 針對開發人員，此案例的端對端體驗具有下列層面：

@@ -13,16 +13,16 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7bdb36566d7c501dc5ca5604f8c6963258aa951c
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: f3dee72180d0850ce6d920c7e3180cebcbe2f4b4
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208534"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753039"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>教學課程：從 Android 應用程式登入使用者並呼叫 Microsoft Graph API
 
-在本教學課程中，您會建置與 Microsoft 身分識別平台整合的 Android 應用程式，將使用者登入，並取得存取權杖以呼叫 Microsoft Graph API。
+在本教學課程中，您會建立與 Microsoft 身分識別平臺整合的 Android 應用程式，以登入使用者並取得存取權杖以呼叫 Microsoft Graph API。
 
 完成本教學課程後，您的應用程式會接受使用個人Microsoft 帳戶 (包括 outlook.com、live.com 和其他帳戶)，以及採用 Azure Active Directory 的公司或組織所提供的公司或學校帳戶登入。
 

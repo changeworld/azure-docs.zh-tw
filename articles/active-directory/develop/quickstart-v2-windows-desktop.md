@@ -1,6 +1,6 @@
 ---
 title: 快速入門：在通用 Windows 平台傳統型應用程式中登入使用者並呼叫 Microsoft Graph | Azure
-description: 在本快速入門中，了解 Windows 桌面 .NET (XAML) 應用程式如何取得存取權杖，以及呼叫受 Microsoft 身分識別平台端點保護的 API
+description: 在本快速入門中，您將瞭解 Windows desktop .NET (XAML) 應用程式如何取得存取權杖，以及呼叫受 Microsoft 身分識別平臺保護的 API。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1cac8ab4ccf23047bd5eb2d15c174a2009f2864a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b54438441b0e34cccda7fbec37dc1d1740101e9e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178291"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753999"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入門：取得權杖，並從 Windows 傳統型應用程式呼叫 Microsoft Graph API
 
@@ -145,7 +145,7 @@ MSAL 有兩種取得權杖的方法：`AcquireTokenInteractive` 與 `AcquireToke
 
 #### <a name="get-a-user-token-interactively"></a>以互動方式取得使用者權杖
 
-有些情況需要強制使用者透過快顯視窗與 Microsoft 身分識別平台端點進行互動，以驗證其認證或取得同意。 部分範例包括：
+有些情況需要強制使用者透過快顯視窗與 Microsoft 身分識別平臺互動，以驗證其認證或提供同意。 部分範例包括：
 
 - 使用者首次登入應用程式
 - 使用者因為密碼已過期而可能需要重新輸入其認證時

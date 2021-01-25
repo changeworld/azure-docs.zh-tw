@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 58e8fd5006e72465e35912a5b15cade1201d680f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 323c9e207e5a16ba3e5907862e7a1eba84cc02e6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680310"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754185"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>快速入門：使用驗證碼流程在回應 SPA 中登入和取得存取權杖
 
@@ -40,9 +40,7 @@ ms.locfileid: "98680310"
 >
 > ### <a name="option-1-express-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選項 1 (快速)：註冊和自動設定您的應用程式，然後下載程式碼範例
 >
-> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您的帳戶可讓您存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure AD 租用戶。
-> 1. 選取 [應用程式註冊](https://aka.ms/AAatrux)。
+> 1. 移至 <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure 入口網站 - 應用程式註冊<span class="docon docon-navigate-external x-hidden-focus"></span></a>快速入門體驗。
 > 1. 輸入應用程式的名稱。
 > 1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]。
 > 1. 選取 [註冊]。
@@ -52,18 +50,17 @@ ms.locfileid: "98680310"
 >
 > #### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 >
-> 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-> 1. 如果您的帳戶可讓您存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure AD 租用戶。
-> 1. 選取 [應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)。
-> 1. 選取 [新增註冊]。
+> 1. 登入 <a href="https://portal.azure.com/" target="_blank">Azure 入口網站<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+> 1. 如果您有多個租用的存取權，請使用頂端功能表中的 **目錄 + 訂用帳戶** 篩選條件 :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: 來選取要在其中註冊應用程式的租用戶。
+> 1. 搜尋並選取 [Azure Active Directory]  。
+> 1. 在 **管理** 下選取 [應用程式註冊] > [新增註冊]。
 > 1. [註冊應用程式] 頁面出現時，輸入您應用程式的名稱。
 > 1. 在 [支援的帳戶類型] 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]。
 > 1. 選取 [註冊]。 在應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
-> 1. 在所註冊應用程式的左側窗格中，選取 [驗證]。
-> 1. 在 [ **平臺** 設定] 下，選取 `Add a platform` 。
-> 1. 在產生的視窗中，選取 [ **單一頁面應用程式**]。
+> 1. 在 [管理] 底下，選取 [驗證]。
+> 1. 在 [平台設定] 下，選取 [新增平台]。 在開啟的窗格中，選取 [單頁應用程式]。
 > 1. 將 [重新 **導向 uri** ] 值設定為 `http://localhost:3000/` 。 這是預設的埠 NodeJS 將在您的本機電腦上接聽。 在成功驗證使用者之後，我們會將驗證回應傳回給這個 URI。 
-> 1. 按一下 [ **設定** ] 按鈕以套用變更。
+> 1. 選取 [ **設定** ] 以套用變更。
 > 1. 在 [ **平臺** 設定] 下，展開 [ **單一頁面應用程式**]。
 > 1. 確認在 **[授與類型**] 下 ![ 已設定您的重新 ](media/quickstart-v2-javascript/green-check.png) 導向 URI 符合使用 PKCE 授權碼流程的資格。
 
@@ -179,7 +176,7 @@ ms.locfileid: "98680310"
 
 ### <a name="msaljs"></a>msal.js
 
-MSAL.js 程式庫會登入使用者並要求權杖，該權杖是用來存取受 Microsoft 身分識別平台保護的 API。
+MSAL.js 程式庫會登入使用者，並要求用來存取受 Microsoft 身分識別平臺保護之 API 的權杖。
 
 如果您已安裝 Node.js，則可以利用 Node.js 套件管理員 (npm) 下載最新版本：
 

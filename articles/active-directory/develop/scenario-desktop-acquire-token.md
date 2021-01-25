@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 040f9fa67617b058138926310706f4bc56c4ff62
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: a2048a509bdbe11c948ac8eb2daa6e78013c2fa5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680968"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753784"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 Web API 的傳統型應用程式：取得權杖
 
@@ -439,7 +439,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 - 此流程已針對 .NET 傳統型、.NET Core 和 UWP 應用程式啟用。
 
-如需有關同意的詳細資訊，請參閱 [Microsoft 身分識別平台的權限和同意](./v2-permissions-and-consent.md)。
+如需同意的詳細資訊，請參閱 [Microsoft 身分識別平臺許可權與同意](./v2-permissions-and-consent.md)。
 
 ### <a name="learn-how-to-use-it"></a>了解其使用方式
 
@@ -1405,6 +1405,6 @@ namespace CommonCacheMsalV3
 
 [!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 移至本案例的下一篇文章， [從桌面應用程式呼叫 WEB API](scenario-desktop-call-api.md)。

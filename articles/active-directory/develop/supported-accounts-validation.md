@@ -1,5 +1,6 @@
 ---
-title: 依支援的帳戶類型的驗證差異-Microsoft 身分識別平臺 |蔚藍
+title: 依支援的帳戶類型的驗證差異 |蔚藍
+titleSuffix: Microsoft identity platform
 description: 針對使用 Microsoft 身分識別平臺註冊應用程式時，針對不同支援的帳戶類型，瞭解各種屬性的驗證差異。
 author: SureshJa
 ms.author: sureshja
@@ -10,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77521150e73014c5568003597059a9d32f6e80ee
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87336339"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752958"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>依支援的帳戶類型的驗證差異 (signInAudience) 
 
@@ -27,7 +28,7 @@ ms.locfileid: "87336339"
 - *>azureadmultipleorgs*：任何組織目錄中的帳戶 (多租使用者) 
 - *AzureADandPersonalMicrosoftAccount*：任何組織目錄中的帳戶 (多租使用者) 和個人 Microsoft 帳戶 (例如 Skype、Xbox 和 Outlook.com) 
 
-針對已註冊的應用程式，您可以在應用程式的 [ **驗證** ] 區段中找到支援的帳戶類型的值。 您也可以在 `signInAudience` **資訊清單**中的屬性下找到它。
+針對已註冊的應用程式，您可以在應用程式的 [ **驗證** ] 區段中找到支援的帳戶類型的值。 您也可以在 `signInAudience` **資訊清單** 中的屬性下找到它。
 
 您為此屬性選取的值會影響其他應用程式物件屬性。 因此，如果您變更此屬性，您可能需要先變更其他屬性。
 
@@ -47,7 +48,7 @@ ms.locfileid: "87336339"
 
 * 應用程式物件的所有集合屬性有大約1000個專案的全域限制
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解 [應用程式註冊](app-objects-and-service-principals.md)
 - 了解[應用程式資訊清單](reference-app-manifest.md)

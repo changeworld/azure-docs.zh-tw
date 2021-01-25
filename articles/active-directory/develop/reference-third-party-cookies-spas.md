@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: eed4e919684575bb2c63170d91517b661fac4acf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104575"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753965"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>處理 Safari 中的 ITP，以及其他會封鎖協力廠商 Cookie 的瀏覽器
 
@@ -77,7 +77,7 @@ Web 應用程式中常見的模式是使用 iframe 將一個應用程式內嵌�
 
 將重新整理權杖發行至瀏覽器會視為安全性問題。 跨網站指令碼 (XSS) 攻擊或遭盜用的 JS 套件可以竊取重新整理權杖，並從遠端加以使用，直到其過期或撤銷為止。 為了將重新整理權杖遭竊的風險降至最低，SPA 只會發出 24 小時有效的權杖。 在 24 小時之後，應用程式必須透過最上層框架取得新的授權碼，才能造訪登入頁面。
 
-選擇這種有限存留期的重新整理權杖模式，做為安全性與降級 UX 之間的平衡。 若沒有重新整理權杖或協力廠商 Cookie，則在需要新的或其他權杖時，授權碼流程 (如 [OAuth 目前安全性最佳做法草稿](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14) 所建議) 會變得很繁重。 每次權杖過期時 (Microsoft 身分識別平台權杖通常是每小時)，每個單一權杖都需要完整的頁面重新導向或快顯視窗。
+選擇這種有限存留期的重新整理權杖模式，做為安全性與降級 UX 之間的平衡。 若沒有重新整理權杖或協力廠商 Cookie，則在需要新的或其他權杖時，授權碼流程 (如 [OAuth 目前安全性最佳做法草稿](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14) 所建議) 會變得很繁重。 每個單一權杖都需要完整的頁面重新導向或快顯，每次權杖每隔一小時 (，通常是針對 Microsoft 身分識別平臺權杖) 。
 
 ## <a name="next-steps"></a>後續步驟
 

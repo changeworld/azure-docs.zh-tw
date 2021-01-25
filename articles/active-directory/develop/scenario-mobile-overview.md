@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f60e21f98092df65ef01e68fe9c2e64833a24855
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a678e8545f761e98abbdf026886afa624f9d2b4e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063207"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753646"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>案例：呼叫 Web API 的行動應用程式
 
@@ -34,7 +34,7 @@ ms.locfileid: "98063207"
 
 ## <a name="overview"></a>概觀
 
-行動裝置應用程式必須具備個人化、流暢的使用者體驗。  Microsoft 身分識別平臺可讓行動開發人員為 iOS 和 Android 使用者建立該體驗。 您的應用程式可以 Azure Active Directory (Azure AD) 使用者、個人 Microsoft 帳戶使用者和 Azure AD B2C 使用者登入。 它也可以取得權杖來代表他們呼叫 web API。 為了實施這些流程，我們將使用 Microsoft 驗證程式庫 (MSAL) 。 MSAL 實行業界標準 [oauth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)。
+行動裝置應用程式必須具備個人化、流暢的使用者體驗。 Microsoft 身分識別平臺可讓行動開發人員為 iOS 和 Android 使用者建立該體驗。 您的應用程式可以 Azure Active Directory (Azure AD) 使用者、個人 Microsoft 帳戶使用者和 Azure AD B2C 使用者登入。 它也可以取得權杖來代表他們呼叫 web API。 為了實施這些流程，我們將使用 Microsoft 驗證程式庫 (MSAL) 。 MSAL 實行業界標準 [oauth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)。
 
 ![精靈應用程式](./media/scenarios/mobile-app.svg)
 

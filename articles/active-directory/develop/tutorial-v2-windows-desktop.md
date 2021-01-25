@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0d759b3af097067ba0c9215b65b212d50474d571
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
-ms.translationtype: HT
+ms.openlocfilehash: 5bfdf90ddbd500fd9d1c504bd37ed4ac35d8bf70
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178342"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752762"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>教學課程：從 Windows 傳統型應用程式呼叫 Microsoft 圖形 API
 
@@ -47,7 +47,7 @@ ms.locfileid: "98178342"
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>處理權杖取得以存取受保護的 Web API
 
-使用者經過驗證之後，應用程式範例就會收到一個權杖，其可用來查詢 Microsoft Graph API 或由開發人員所用 Microsoft 身分識別平台保護的 Web API。
+使用者經過驗證之後，範例應用程式會收到一個權杖，您可用來查詢 Microsoft Graph API 或由 Microsoft 身分識別平臺保護的 web API。
 
 例如，Microsoft Graph 需要可允許存取特定資源的權杖。 例如，需要權杖才能讀取使用者的設定檔、存取使用者的行事曆，或傳送電子郵件。 您的應用程式可以使用 MSAL 要求存取權杖，以透過指定 API 範圍來存取這些資源。 此存取權杖接著會新增到 HTTP 授權標頭，這是針對受保護資源進行之每個呼叫的授權標頭。
 

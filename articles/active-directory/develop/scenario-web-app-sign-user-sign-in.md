@@ -1,5 +1,6 @@
 ---
-title: 撰寫可登入/登出使用者的 web 應用程式-Microsoft 身分識別平臺 |蔚藍
+title: 撰寫可登入/登出使用者的 web 應用程式 |蔚藍
+titleSuffix: Microsoft identity platform
 description: 瞭解如何建立可登入/登出使用者的 web 應用程式
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e7397f6d02d71a6344953b8210b0349b9ee26360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443546"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753001"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>登入使用者的 Web 應用程式：登入和登出
 
@@ -33,7 +34,7 @@ ms.locfileid: "94443546"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core 中，針對 Microsoft 身分識別平臺應用程式，[登 **入** ] 按鈕會在 MVC 應用程式的 (中公開， `Views\Shared\_LoginPartial.cshtml`) 或 `Pages\Shared\_LoginPartial.cshtm` 針對 Razor 應用程式)  (。 只有當使用者未通過驗證時，才會顯示。 也就是說，當使用者尚未登入或登出時，就會顯示它。相反地，當使用者已登入時，就會顯示 [ **登出** ] 按鈕。 請注意，帳戶控制器會定義在名為 **MicrosoftIdentity** 的區域中的 [ **使用者** 名稱] NuGet 套件中。
+在 ASP.NET Core 中，針對 Microsoft 身分識別平臺應用程式，[登 **入** ] 按鈕會在 MVC 應用程式的 (中公開， `Views\Shared\_LoginPartial.cshtml`) 或 `Pages\Shared\_LoginPartial.cshtm` 針對 Razor 應用程式)  (。 只有當使用者未通過驗證時，才會顯示。 也就是說，當使用者尚未登入或登出時，就會顯示它。相反地，當使用者已登入時，就會顯示 [ **登出** ] 按鈕。 請注意，帳戶控制器會定義在名為 **MicrosoftIdentity** 的區域中的 [**使用者** 名稱] NuGet 套件中。
 
 ```html
 <ul class="navbar-nav">
@@ -213,7 +214,7 @@ def _get_token_from_cache(scope=None):
 從 web 應用程式登出，會比從 web 應用程式的狀態移除登入帳戶的相關資訊更多。
 Web 應用程式也必須將使用者重新導向至 Microsoft 身分識別平臺 `logout` 端點，才能登出。
 
-當您的 web 應用程式將使用者重新導向至 `logout` 端點時，此端點會清除瀏覽器中的使用者會話。 如果您的應用程式未移至 `logout` 端點，使用者會重新驗證您的應用程式，而不需要再次輸入認證。 原因是他們會與 Microsoft 身分識別平臺端點具有有效的單一登入會話。
+當您的 web 應用程式將使用者重新導向至 `logout` 端點時，此端點會清除瀏覽器中的使用者會話。 如果您的應用程式未移至 `logout` 端點，使用者會重新驗證您的應用程式，而不需要再次輸入認證。 原因是他們會與 Microsoft 身分識別平臺擁有有效的單一登入會話。
 
 若要深入瞭解，請參閱 Microsoft 身分識別平臺中的 [傳送登出要求](v2-protocols-oidc.md#send-a-sign-out-request) 一節 [和 OpenID Connect 的通訊協定](v2-protocols-oidc.md) 檔。
 
@@ -221,15 +222,15 @@ Web 應用程式也必須將使用者重新導向至 Microsoft 身分識別平�
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `https://localhost:44321/signout-oidc` 在 [ **驗證** ] 頁面上的 [ **Advanced Settings** ] 區段的 [ **登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [ 註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
+在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `https://localhost:44321/signout-oidc` 在 [**驗證**] 頁面上的 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [ 註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `https://localhost:44308/Account/EndSession` 在 [ **驗證** ] 頁面上的 [ **Advanced Settings** ] 區段的 [ **登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
+在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `https://localhost:44308/Account/EndSession` 在 [**驗證**] 頁面上的 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。 如需詳細資訊，請參閱 [註冊 webApp 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `http://localhost:8080/msal4jsample/sign_out` 在 [ **驗證** ] 頁面上的 [ **Advanced Settings** ] 區段的 [ **登出 URL** ] 欄位中註冊。
+在應用程式註冊期間，您會註冊登出後的 URI。 在本教學課程中，您已 `http://localhost:8080/msal4jsample/sign_out` 在 [**驗證**] 頁面上的 [ **Advanced Settings** ] 區段的 [**登出 URL** ] 欄位中註冊。
 
 # <a name="python"></a>[Python](#tab/python)
 

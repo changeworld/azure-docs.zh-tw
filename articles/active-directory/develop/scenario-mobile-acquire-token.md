@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063071"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753625"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>取得可呼叫 web Api 的行動應用程式權杖
 
@@ -243,7 +243,7 @@ catch(MsalUiRequiredException)
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-`WithExtraScopeToConsent`在您希望使用者對數個資源提供預先同意的 advanced 案例中使用修飾詞。 如果您不想要使用累加式同意（通常搭配 MSAL.NET 或 Microsoft 身分識別平臺2.0 使用），您可以使用此修飾詞。 如需詳細資訊，請參閱[將數個資源進行預先同意](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)。
+`WithExtraScopeToConsent`在您希望使用者對數個資源提供預先同意的 advanced 案例中使用修飾詞。 如果您不想要使用累加式同意（通常搭配 MSAL.NET 或 Microsoft 身分識別平臺使用），您可以使用此修飾詞。 如需詳細資訊，請參閱[將數個資源進行預先同意](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)。
 
 以下是程式碼範例：
 

@@ -13,23 +13,23 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0282e4f52db8557364cdabe197fa0da63204e42
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91812534"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752644"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 身分識別平台和 OAuth 2.0 資源擁有者密碼認證授與
 
-Microsoft 身分識別平台支援 [OAuth 2.0 資源擁有者密碼認證 (ROPC) 授與](https://tools.ietf.org/html/rfc6749#section-4.3) \(英文\)，可讓應用程式藉由直接處理其密碼來登入使用者。  此文章說明如何在您的應用程式中直接針對通訊協定進行程式設計。  可能的話，建議您改為使用支援的 Microsoft 驗證程式庫 (MSAL)，以[取得權杖並呼叫受保護的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另請參閱[使用 MSAL 的範例應用程式](sample-v2-code.md)。
+Microsoft 身分識別平臺支援 [OAuth 2.0 資源擁有者密碼認證 (ROPC) 授](https://tools.ietf.org/html/rfc6749#section-4.3)與，可讓應用程式直接處理其密碼以登入使用者。  此文章說明如何在您的應用程式中直接針對通訊協定進行程式設計。  可能的話，建議您改為使用支援的 Microsoft 驗證程式庫 (MSAL)，以[取得權杖並呼叫受保護的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另請參閱[使用 MSAL 的範例應用程式](sample-v2-code.md)。
 
 > [!WARNING]
 > Microsoft 建議您「不要」使用 ROPC 流程。 在大部分的情況下，有更安全的可用替代方案，也建議使用這些方案。 此流程在應用程式中需要非常高的信任度，而且帶有未在其他流程中出現的風險。 您應該只在其他更安全的流程都無法使用時，才使用此流程。
 
 > [!IMPORTANT]
 >
-> * Microsoft 身分識別平台端點僅針對 Azure AD 租用戶支援 ROPC，而不會針對個人帳戶提供支援。 因此您必須使用租用戶特定端點 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 或 `organizations` 端點。
+> * Microsoft 身分識別平臺僅支援 Azure AD 租使用者的 ROPC，而非個人帳戶。 因此您必須使用租用戶特定端點 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 或 `organizations` 端點。
 > * 受邀加入 Azure AD 租用戶的個人帳戶無法使用 ROPC。
 > * 沒有密碼的帳戶無法透過 ROPC 登入。 針對此案例，建議您改用不同的應用程式流程。
 > * 如果使用者必須使用[多重要素驗證 (MFA)](../authentication/concept-mfa-howitworks.md) 來登入應用程式，則會遭到封鎖。

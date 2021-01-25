@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 62f4f629e44d317d36e182adb48f8f00b9f1c2b3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 4665e4240d7563a585b7c224365172d69d7efddf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063054"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753882"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>如何設定應用程式的單一登入
 
@@ -41,6 +41,6 @@ ms.locfileid: "98063054"
 
 [將應用程式整合到 AzureAD](./quickstart-register-app.md)<br>
 
-[Microsoft 身分識別平台端點中的權限和同意](./v2-permissions-and-consent.md)<br>
+[Microsoft 身分識別平台中的權限和同意](./v2-permissions-and-consent.md)<br>
 
 [AzureAD StackOverflow (英文)](https://stackoverflow.com/questions/tagged/azure-active-directory)

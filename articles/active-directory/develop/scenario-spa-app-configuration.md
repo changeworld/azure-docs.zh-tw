@@ -1,5 +1,6 @@
 ---
-title: 設定單一頁面應用程式-Microsoft 身分識別平臺 |蔚藍
+title: 設定單一頁面應用程式 |蔚藍
+titleSuffix: Microsoft identity platform
 description: '瞭解如何建立單一頁面應用程式 (應用程式的程式碼設定) '
 services: active-directory
 author: navyasric
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 30a9b710ffbf98ebc523217a3b8a7fd9a2640c49
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5cbb576a7fcfb2daf492a149130aa7c99fe10ac5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443036"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753616"
 ---
 # <a name="single-page-application-code-configuration"></a>單一頁面應用程式：程式碼設定
 
